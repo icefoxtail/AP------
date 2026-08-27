@@ -2,6 +2,7 @@
 ## PDF·페이지 이미지 기반 신규 제작 / 기존 JS 검수·수정 / 이미지 에셋 / 1·2·3차 검수 / 최종 ZIP 봉인 전 단계
 ### Integrated Clean Edition — 2026-08-25
 ### Revision: 기존 v1.2 전 규칙 유지 + MIDDLE SCHOOL GRADE 1 SOLUTION MANDATORY LOCK — 중1 solution 공란 허용 예외 폐기 / 전 학년 일반 문항 solution 필수 / G3 SOLUTION 비공란 게이트 / 중1 해설 미작성 HARD_FAIL 추가
+### Revision Addendum 2026-08-26: 14장 ENGINE CAPABILITY LOCK 보강 — solutionImage 엔진 지원 확인과 시험지별 브라우저 렌더 게이트 분리 / 지원 확인된 필드는 렌더 미실시만으로 1차 FAIL 금지
 
 ---
 
@@ -1648,13 +1649,62 @@ choices: []
 
 ---
 
-# 14. 해설용 그래프·solutionImage 조건부 규칙
+# 14. 해설용 그래프·solutionImage / ENGINE CAPABILITY LOCK
 
-`solutionImage` 계열은 **실제 engine.html에서 해당 필드를 지원하는 것이 확인된 경우에만 사용**한다.
+`solutionImage` 계열은 **엔진 기능 지원 여부**와 **해당 시험지의 실제 브라우저 렌더 여부**를 분리하여 판정한다.
 
-엔진 지원이 확인되지 않은 상태에서 기본 스키마처럼 자동 추가하지 않는다.
+핵심 원칙:
+> `FIELD SUPPORT CHECK`와 `PER-EXAM RENDER CHECK`는 서로 다른 게이트다.
 
-지원 확인 시 사용 가능한 조건부 확장 필드 예:
+따라서 `solutionImage`가 실제 운영 엔진에서 지원되는 것이 확인되었다면,
+이번 시험지에서 브라우저 실렌더를 수행하지 않았다는 이유만으로
+해당 문항의 1차 구조·무결성을 FAIL 처리하지 않는다.
+
+## 14-1. ENGINE CAPABILITY LOCK — 엔진 기능 지원 확인
+
+`solutionImage` 계열 지원 여부는 다음 둘 중 하나로 확인할 수 있다.
+
+### A. 실제 엔진 코드 정적 검사
+현재 운영 `engine.html` 또는 실제 렌더 코드에서 다음을 확인한다.
+
+- `solutionImage` 또는 대응 필드를 읽는 코드가 존재
+- 해설(`sol`) 렌더 경로가 존재
+- 시험지(`exam`)·정답(`ans`) 모드와 구분되는 분기 또는 동등한 노출 제어가 존재
+- 이미지 경로를 실제 DOM/image 렌더 대상으로 사용하는 코드가 존재
+
+### B. 승인된 ENGINE_CAPABILITY 기록
+이미 동일 운영 엔진에서 기능 지원을 검증했다면,
+다음 정보를 별도 capability 기록으로 잠글 수 있다.
+
+권장 파일:
+```text
+reports/ENGINE_CAPABILITY_LOCK.md
+```
+
+권장 기록:
+```text
+engine_version
+engine_sha256
+checked_at
+evidence_type: static_code / browser_verified
+supported_fields
+supported_modes
+solutionImage_supported: YES/NO
+```
+
+동일한 `engine_version` 또는 `engine_sha256`이 유지되는 동안에는
+시험지마다 같은 기능 지원 여부를 반복 검증할 필요가 없다.
+
+다음 경우 capability lock을 다시 확인한다.
+- `engine.html` 또는 렌더 엔진 SHA 변경
+- 렌더 관련 코드 수정
+- 지원 필드명 변경
+- exam/ans/sol 모드 분기 변경
+- 기존 capability 기록과 실제 코드가 충돌하는 증거 발견
+
+## 14-2. 조건부 확장 필드
+
+엔진 지원 확인 시 사용할 수 있는 예:
 ```js
 solutionImage
 solutionImageAlt
@@ -1662,15 +1712,118 @@ solutionImageCaption
 solutionImageSize
 ```
 
-문제용 `image`와 해설용 이미지는 별도 파일로 관리한다.
+위 필드는 **엔진 지원이 확인된 조건부 확장 필드**이며,
+기본 필수 스키마 필드와는 구분한다.
 
-해설 그래프가 사용되면:
+신규 문항에 엔진 미확인 확장 필드를 임의 추가하지 않는다.
+
+단, 기존 JS에 `solutionImage`가 이미 존재하는 경우
+엔진 지원 여부를 확인하지 않았다는 이유만으로 즉시 삭제하거나 1차 FAIL 처리하지 않는다.
+먼저 `ENGINE CAPABILITY LOCK`을 확인하고,
+확인이 불가능하면 해당 기능만 `NOT TESTED`로 둔다.
+
+## 14-3. 문제용 image와 해설용 solutionImage 분리
+
+문제용 `image`와 해설용 이미지는 별도 역할로 관리한다.
+
+예:
+```js
+image: "assets/images/{examTitle}/q08.png",
+solutionImage: "assets/images/{examTitle}/q08-solution.png"
+```
+
+검수:
+- 각 경로의 실제 파일 존재
+- PNG/JPG decode 가능
+- 시험지명 경로 정합
+- 잘림·오염·안전여백 확인
+- 해설 본문과 이미지 내용 일치
+- `solutionImage`로 참조된 파일은 고아 에셋으로 판정하지 않음
+- 문제용과 해설용 파일의 SHA가 우연히 같더라도 역할이 명확하고 경로가 정상이라면 그 자체로 FAIL 처리하지 않음
+
+## 14-4. 해설 이미지 노출 모드
+
+해설 그래프 또는 해설 이미지는 원칙적으로:
 - exam 모드 노출 0
 - ans 모드 노출 0
 - sol 모드에서만 표시
-- 경로·decode·크기·캡션·본문 일치 확인
 
-엔진 지원 여부가 미확인이라면 해당 기능은 `NOT TESTED`로 둔다.
+엔진 정적 코드에서 위 모드 분기가 확인되면
+**기능 지원 상태는 PASS 가능**하다.
+
+실제 브라우저 렌더를 수행한 경우:
+- exam 모드 미노출 확인
+- ans 모드 미노출 확인
+- sol 모드 표시 확인
+- 크기·캡션·본문 순서 확인
+
+## 14-5. CAPABILITY 판정과 RENDER 판정 분리
+
+### CASE A — 엔진 지원 확인 + 실제 브라우저 렌더 확인
+```text
+engine_capability: PASS
+solutionImage_path: PASS
+browser_render: PASS
+```
+→ 구조·에셋·렌더 모두 PASS 가능.
+
+### CASE B — 엔진 지원 확인 + 이번 시험지 브라우저 렌더 미실시
+```text
+engine_capability: PASS
+solutionImage_path: PASS
+browser_render: NOT_TESTED
+```
+→ **문항의 1차 구조·무결성은 PASS 가능.**
+→ `solutionImage` 존재만으로 FAIL 처리 금지.
+→ 실제 렌더 게이트만 `NOT_TESTED`로 기록한다.
+
+### CASE C — 엔진 지원 여부 자체가 미확인
+```text
+engine_capability: NOT_TESTED
+browser_render: NOT_TESTED
+```
+→ 신규 `solutionImage` 자동 추가 금지.
+→ 기존 필드가 존재한다면 해당 기능만 `NOT_TESTED`로 기록하고 capability 확인 대상으로 넘긴다.
+→ **필드 존재 자체만으로 문항 수학/원문/메타 FAIL을 만들지 않는다.**
+→ 단, 실제 런타임 오류·경로 누락·decode 실패가 확인되면 해당 항목은 FAIL.
+
+### CASE D — 현재 운영 엔진이 해당 필드를 지원하지 않음이 확인
+```text
+engine_capability: FAIL
+```
+→ `solutionImage` 사용 불가.
+→ 지원 가능한 inline SVG/HTML 또는 기존 엔진 호환 방식으로 전환한다.
+
+## 14-6. FAIL / NOT TESTED 오탐 방지
+
+다음은 금지한다.
+
+- 현재 시험지에 `engine.html`이 첨부되지 않았다는 이유만으로 이미 지원 확인된 `solutionImage`를 FAIL 처리
+- capability 확인 없이 기존 `solutionImage`를 임의 삭제
+- `solutionImage`로 정상 참조된 파일을 고아 PNG로 판정
+- 브라우저 실렌더 미실시를 1차 SOURCE/STRUCTURE FAIL과 혼동
+- 엔진 기능 지원 여부와 개별 시험지 에셋 경로 오류를 같은 사유로 묶어 판정
+
+판정은 반드시 분리한다.
+```text
+FIELD SUPPORT
+ASSET PATH / DECODE
+SOURCE / SOLUTION CONSISTENCY
+BROWSER RENDER
+```
+
+## 14-7. 최종 보고 문구
+
+엔진 지원은 확인되었으나 브라우저 렌더를 수행하지 않았다면:
+```text
+solutionImage engine capability: PASS
+solutionImage asset/path/decode: PASS
+browser sol-mode render: NOT_TESTED
+1차 구조·무결성: PASS
+```
+
+이 경우 `browser sol-mode render: NOT_TESTED`는
+해당 문항의 원문·수학·메타 PASS를 취소하는 사유가 아니다.
 
 ---
 

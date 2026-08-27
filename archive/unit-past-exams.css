@@ -45,6 +45,24 @@
 .unit-eyebrow { margin-bottom: 6px; color: var(--unit-accent); font-size: 11px; font-weight: 900; letter-spacing: .08em; }
 .unit-filter-badge { flex: 0 0 auto; padding: 7px 10px; border-radius: 999px; background: #f0f3f7; color: #526175; font-size: 12px; font-weight: 800; }
 .unit-filter-panel { margin: 18px 0 20px; padding: 18px; border: 1px solid #e4e9f0; border-radius: 16px; background: #f8fafc; }
+.unit-collection { margin: 18px 0 24px; padding: 18px; border: 1px solid #f0d4c6; border-radius: 16px; background: linear-gradient(180deg, #fffaf7 0%, #fff 100%); }
+.unit-collection-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 15px; }
+.unit-collection-head h3 { margin: 0 0 5px; font-size: 17px; }
+.unit-collection-head p { margin: 0; color: var(--unit-muted); font-size: 12px; line-height: 1.6; }
+.unit-collection-summary { flex: 0 0 auto; max-width: 300px; padding: 9px 11px; border-radius: 10px; background: #fff; color: #8f4425; font-size: 12px; font-weight: 800; }
+.unit-collection-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.unit-collection-grid .unit-filter-field { min-height: 100%; }
+.unit-collection-range, .unit-collection-year-range { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 9px; }
+.unit-collection-range label, .unit-collection-year-range label, .unit-collection-count-input { display: grid; gap: 5px; color: #526175; font-size: 11px; font-weight: 800; }
+.unit-collection-range select, .unit-collection-year-range input, .unit-collection-count-input input, #unit-collection-scope, #unit-collection-year-mode, #unit-collection-year, #unit-collection-year-count { width: 100%; border: 1px solid #d7dee8; border-radius: 9px; padding: 9px 10px; background: #fff; color: var(--unit-ink); }
+.unit-collection-school-field { grid-column: span 2; }
+.unit-collection-school-field select, #unit-collection-subunits { width: 100%; min-height: 112px; border: 1px solid #d7dee8; border-radius: 9px; padding: 4px; color: var(--unit-ink); background: #fff; }
+.unit-collection-grid .unit-choice-list { padding-bottom: 2px; }
+.unit-collection-count-input { width: min(180px, 100%); margin-top: 10px; }
+.unit-collection .unit-relax-choice { display: inline-flex; margin-top: 8px; }
+.unit-collection .unit-mode-field { margin-top: 12px; }
+.unit-collection .unit-filter-actions { margin-bottom: 0; }
+.unit-collection #unit-collection-report { margin-top: 16px; margin-bottom: 0; }
 .unit-filter-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
 .unit-filter-panel-head h3 { margin: 0 0 5px; font-size: 16px; }
 .unit-filter-panel-head p { margin: 0; color: var(--unit-muted); font-size: 12px; line-height: 1.6; }
@@ -132,6 +150,8 @@
 @media (max-width: 850px) {
   .unit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .unit-filter-grid { grid-template-columns: 1fr; }
+  .unit-collection-grid { grid-template-columns: 1fr; }
+  .unit-collection-school-field { grid-column: auto; }
 }
 @media (max-width: 580px) {
   .unit-shell { width: min(100% - 20px, 1180px); padding-top: 16px; }
@@ -145,6 +165,8 @@
   .unit-btn { flex: 1; }
   .unit-source-list { grid-template-columns: 1fr; }
   .unit-detail-head, .unit-filter-panel-head, .unit-selection-head { flex-direction: column; }
+  .unit-collection-head { flex-direction: column; }
+  .unit-collection-summary { max-width: none; width: 100%; }
   .unit-filter-summary { width: 100%; }
   .unit-quick-fields { flex-direction: column; }
   .unit-quick-fields label:last-child { width: auto; }
@@ -154,4 +176,5 @@
   .unit-selection-head .unit-paper-actions { width: 100%; }
   .unit-filter-actions { align-items: stretch; flex-direction: column; }
   .unit-filter-actions .unit-btn { width: 100%; }
+  .unit-collection-range, .unit-collection-year-range { grid-template-columns: 1fr; }
 }

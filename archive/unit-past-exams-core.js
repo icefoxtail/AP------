@@ -335,12 +335,71 @@
     return left < right ? -1 : left > right ? 1 : 0;
   }
 
-  function getYear(record) {
+  function normalizeExamYear(value) {
+    const n = Number(value);
+    if (!Number.isInteger(n) || n < 0) return 0;
+    return n < 100 ? 2000 + n : n;
+  }
+
+  function getYearFromSourceFile(record) {
     const file = normalizePath(record && (record.sourceFile || record._sourceFile));
     const match = file.split('/').pop().match(/^(\d{2,4})_/);
     if (!match) return 9999;
-    const n = Number(match[1]);
-    return n < 100 ? 2000 + n : n;
+    return normalizeExamYear(match[1]) || 9999;
+  }
+
+  function getExamYear(record) {
+    const explicit = normalizeExamYear(record && (record.examYear ?? record.exam_year ?? record.year));
+    return explicit || getYearFromSourceFile(record);
+  }
+
+  function getYear(record) {
+    return getExamYear(record);
+  }
+
+  function getSchool(record) {
+    const explicit = String(record && (record.school || record.schoolName || record.school_name) || '').trim();
+    if (explicit) return explicit;
+    const file = normalizePath(record && (record.sourceFile || record._sourceFile));
+    const filename = file.split('/').pop().replace(/\.js$/i, '');
+    const parts = filename.split('_');
+    return String(parts[1] || '').trim();
+  }
+
+  function normalizeSchoolKey(value) {
+    return String(value || '')
+      .normalize('NFKC')
+      .trim()
+      .replace(/\s+/g, '')
+      .toLocaleLowerCase();
+  }
+
+  function getSchoolKey(record) {
+    const explicit = String(record && (record.schoolKey || record.school_key) || '').trim();
+    return explicit || normalizeSchoolKey(getSchool(record));
+  }
+
+  function getSchoolLabel(record) {
+    return getSchool(record) || '학교 미상';
+  }
+
+  function getSemester(record) {
+    const explicit = String(record && (record.semester || record.semesterNo || record.semester_no) || '').trim();
+    if (explicit === '1' || explicit === '2') return explicit;
+    const period = getPeriod(record && record.sourceFile);
+    return period.startsWith('1') || period.startsWith('2') ? period.slice(0, 1) : '';
+  }
+
+  function getExamType(record) {
+    const explicit = String(record && (record.examType || record.exam_type) || '').trim().toLowerCase();
+    if (explicit === 'mid' || explicit === '중간') return 'mid';
+    if (explicit === 'final' || explicit === '기말') return 'final';
+    const period = getPeriod(record && record.sourceFile);
+    return period.endsWith('mid') || period.endsWith('final') ? period.slice(1) : '';
+  }
+
+  function getSourceExamKey(record) {
+    return normalizePath(record && (record.sourceExamKey || record.source_exam_key || record.sourceFile || record._sourceFile));
   }
 
   function compareRecords(a, b) {
@@ -351,6 +410,47 @@
     if (yearDiff) return yearDiff;
     const fileDiff = compareText(normalizePath(a.sourceFile), normalizePath(b.sourceFile));
     return fileDiff || getQuestionNo(a) - getQuestionNo(b);
+  }
+
+  function getCollectionUnitKey(record) {
+    return String(record && (record.mappedUnitKey || record.collectionUnitKey || record.unitKey) || '').trim();
+  }
+
+  function normalizeCollectionScopeMode(value) {
+    const mode = String(value || '').trim();
+    if (mode === 'unit') return 'current';
+    return ['current', 'range', 'cumulative', 'course'].includes(mode) ? mode : 'current';
+  }
+
+  function getCollectionScopeUnits(profileOrId, options = {}) {
+    const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
+    const currentKey = String(options.unitKey || options.selectedUnitKey || '').trim();
+    const current = profile.units.find(unit => unit.key === currentKey);
+    const scopeMode = normalizeCollectionScopeMode(options.scopeMode || options.collectionScope);
+    const course = String(options.course || options.courseKey || current?.course || '').trim();
+    const courseUnits = profile.units.filter(unit => !course || unit.course === course);
+    if (scopeMode === 'course') return courseUnits;
+    if (!current) return [];
+    if (scopeMode === 'cumulative') {
+      return courseUnits.filter(unit => unit.order <= current.order);
+    }
+    if (scopeMode === 'range') {
+      const startKey = String(options.startUnitKey || options.rangeStartUnitKey || current.key).trim();
+      const endKey = String(options.endUnitKey || options.rangeEndUnitKey || current.key).trim();
+      const start = courseUnits.find(unit => unit.key === startKey) || current;
+      const end = courseUnits.find(unit => unit.key === endKey) || current;
+      const low = Math.min(start.order, end.order);
+      const high = Math.max(start.order, end.order);
+      return courseUnits.filter(unit => unit.order >= low && unit.order <= high);
+    }
+    return [current];
+  }
+
+  function getCollectionScopeRecords(records, profileOrId, options = {}) {
+    const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
+    const unitKeys = new Set(getCollectionScopeUnits(profile, options).map(unit => unit.key));
+    if (!unitKeys.size) return [];
+    return (Array.isArray(records) ? records : []).filter(record => unitKeys.has(getCollectionUnitKey(record)));
   }
 
   // The archive contains a few legacy values such as "[중]" and values from
@@ -438,6 +538,264 @@
       if (filters.includeUnclassified !== true && (subUnitKey === '__unclassified__' || difficulty === '미분류')) return false;
       return true;
     });
+  }
+
+  function normalizeCollectionYearMode(value) {
+    const mode = String(value || '').trim();
+    if (mode === 'recent' || mode === 'recent3') return 'recentAvailable';
+    if (mode === 'recent5') return 'recentAvailable';
+    return ['exact', 'recentAvailable', 'range'].includes(mode) ? mode : 'exact';
+  }
+
+  function normalizeCollectionOptions(options = {}) {
+    const yearModeInput = options.yearMode || options.collectionYearMode || '';
+    const schoolKeys = [...new Set((Array.isArray(options.schoolKeys) ? options.schoolKeys : String(options.schoolKeys || '').split(','))
+      .map(value => String(value || '').trim()).filter(Boolean))];
+    const difficultyBuckets = [...new Set((Array.isArray(options.difficultyBuckets) ? options.difficultyBuckets : [])
+      .map(normalizeDifficulty))];
+    const yearMode = normalizeCollectionYearMode(yearModeInput);
+    const requestedYear = normalizeExamYear(options.year || options.examYear);
+    const recentCount = Math.max(1, Math.min(20, Number(options.yearCount || options.recentYearCount || (String(yearModeInput) === 'recent5' ? 5 : 3))));
+    const yearFrom = normalizeExamYear(options.yearFrom || options.rangeYearFrom);
+    const yearTo = normalizeExamYear(options.yearTo || options.rangeYearTo);
+    const count = Math.max(0, Math.floor(Number(options.count || options.collectionCount || 0)));
+    return {
+      ...options,
+      scopeMode: normalizeCollectionScopeMode(options.scopeMode || options.collectionScope),
+      yearMode,
+      year: requestedYear,
+      yearCount: recentCount,
+      yearFrom,
+      yearTo,
+      schoolKeys,
+      subUnitKeys: Array.isArray(options.subUnitKeys) ? options.subUnitKeys : [],
+      difficultyBuckets,
+      includeUnclassified: options.includeUnclassified === true,
+      outputMode: options.outputMode === 'combined' ? 'combined' : 'school',
+      countMode: options.countMode === 'fixed' ? 'fixed' : 'all',
+      count,
+      target: Number(options.target || COMMON_SCOPE.targetQuestionsPerPaper),
+      max: Number(options.max || COMMON_SCOPE.hardMaxQuestionsPerPaper)
+    };
+  }
+
+  function isValidExamYear(year) {
+    return Number.isInteger(year) && year >= 1900 && year <= 2200;
+  }
+
+  function resolveCollectionYearsBySchool(records, options = {}) {
+    const normalized = normalizeCollectionOptions(options);
+    const yearsBySchool = new Map();
+    for (const record of Array.isArray(records) ? records : []) {
+      const year = getExamYear(record);
+      if (!isValidExamYear(year)) continue;
+      const key = getSchoolKey(record) || '__unknown__';
+      if (!yearsBySchool.has(key)) yearsBySchool.set(key, new Set());
+      yearsBySchool.get(key).add(year);
+    }
+
+    const bySchool = {};
+    const selected = new Set();
+    for (const [schoolKey, yearSet] of yearsBySchool.entries()) {
+      const available = [...yearSet].sort((a, b) => b - a);
+      let years = available;
+      if (normalized.yearMode === 'exact') {
+        const exact = normalized.year || available[0] || 0;
+        years = exact && available.includes(exact) ? [exact] : [];
+      } else if (normalized.yearMode === 'recentAvailable') {
+        years = available.slice(0, normalized.yearCount);
+      } else if (normalized.yearMode === 'range') {
+        const low = Math.min(normalized.yearFrom || 0, normalized.yearTo || normalized.yearFrom || 9999);
+        const high = Math.max(normalized.yearFrom || 0, normalized.yearTo || normalized.yearFrom || 0);
+        years = available.filter(year => year >= low && year <= high);
+      }
+      bySchool[schoolKey] = years;
+      years.forEach(year => selected.add(year));
+    }
+    return {
+      mode: normalized.yearMode,
+      year: normalized.year || 0,
+      yearCount: normalized.yearCount,
+      yearFrom: normalized.yearFrom || 0,
+      yearTo: normalized.yearTo || 0,
+      bySchool,
+      selectedYears: [...selected].sort((a, b) => b - a),
+      availableYears: [...new Set(Object.values(bySchool).flatMap(years => years))].sort((a, b) => b - a)
+    };
+  }
+
+  function getCollectionSelectionContext(records, profileOrId, options = {}) {
+    const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
+    const normalized = normalizeCollectionOptions(options);
+    const scoped = getCollectionScopeRecords(records, profile, normalized);
+    const detailFiltered = filterUnitRecords(scoped, normalized);
+    const requestedSchools = new Set(normalized.schoolKeys);
+    const schoolFiltered = detailFiltered.filter(record => {
+      const schoolKey = getSchoolKey(record) || '__unknown__';
+      return !requestedSchools.size || requestedSchools.has(schoolKey);
+    });
+    const yearSelection = resolveCollectionYearsBySchool(schoolFiltered, normalized);
+    const allowedYearsBySchool = new Map(Object.entries(yearSelection.bySchool).map(([key, years]) => [key, new Set(years)]));
+    const candidates = dedupeRecords(schoolFiltered.filter(record => {
+      const schoolKey = getSchoolKey(record) || '__unknown__';
+      const years = allowedYearsBySchool.get(schoolKey);
+      return Boolean(years && years.has(getExamYear(record)));
+    }));
+    return { profile, options: normalized, scoped, detailFiltered, schoolFiltered, candidates, yearSelection };
+  }
+
+  function getCollectionSchoolOptions(records, profileOrId, options = {}) {
+    const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
+    const normalized = normalizeCollectionOptions({ ...options, schoolKeys: [] });
+    const scoped = getCollectionScopeRecords(records, profile, normalized);
+    const filtered = filterUnitRecords(scoped, normalized);
+    const groups = new Map();
+    for (const record of filtered) {
+      const key = getSchoolKey(record) || '__unknown__';
+      const group = groups.get(key) || { key, label: getSchoolLabel(record), count: 0, years: new Set() };
+      group.count += 1;
+      const year = getExamYear(record);
+      if (isValidExamYear(year)) group.years.add(year);
+      groups.set(key, group);
+    }
+    return [...groups.values()]
+      .map(group => ({ ...group, years: [...group.years].sort((a, b) => b - a) }))
+      .sort((a, b) => compareText(a.label, b.label) || compareText(a.key, b.key));
+  }
+
+  function getCollectionYearOptions(records, profileOrId, options = {}) {
+    const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
+    const normalized = normalizeCollectionOptions({ ...options, schoolKeys: [] });
+    const scoped = getCollectionScopeRecords(records, profile, normalized);
+    const filtered = filterUnitRecords(scoped, normalized);
+    return [...new Set(filtered.map(getExamYear).filter(isValidExamYear))].sort((a, b) => b - a);
+  }
+
+  function compareCollectionRecords(a, b) {
+    const schoolDiff = compareText(getSchoolKey(a), getSchoolKey(b));
+    if (schoolDiff) return schoolDiff;
+    const yearDiff = getExamYear(b) - getExamYear(a);
+    if (yearDiff) return yearDiff;
+    const periodOrder = { '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 };
+    const periodDiff = (periodOrder[getPeriod(a.sourceFile)] || 99) - (periodOrder[getPeriod(b.sourceFile)] || 99);
+    if (periodDiff) return periodDiff;
+    const sourceDiff = compareText(getSourceExamKey(a), getSourceExamKey(b));
+    return sourceDiff || getQuestionNo(a) - getQuestionNo(b);
+  }
+
+  function selectBalancedCollectionRecords(records, requestedCount) {
+    const limit = Math.max(0, Number(requestedCount || 0));
+    if (!limit) return [];
+    const bySchool = new Map();
+    for (const record of dedupeRecords(records)) {
+      const schoolKey = getSchoolKey(record) || '__unknown__';
+      if (!bySchool.has(schoolKey)) bySchool.set(schoolKey, []);
+      bySchool.get(schoolKey).push(record);
+    }
+    const schoolPools = [...bySchool.entries()]
+      .sort((a, b) => compareText(getSchoolLabel(a[1][0]), getSchoolLabel(b[1][0])) || compareText(a[0], b[0]))
+      .map(([schoolKey, schoolRecords]) => {
+        const byYear = new Map();
+        schoolRecords.sort(compareCollectionRecords).forEach(record => {
+          const year = getExamYear(record);
+          if (!byYear.has(year)) byYear.set(year, []);
+          byYear.get(year).push(record);
+        });
+        return {
+          schoolKey,
+          groups: [...byYear.entries()].sort((a, b) => b[0] - a[0]).map(([year, items]) => ({ year, items, index: 0 })),
+          pointer: 0
+        };
+      });
+    const selected = [];
+    while (selected.length < limit) {
+      let progressed = false;
+      for (const pool of schoolPools) {
+        if (selected.length >= limit) break;
+        if (!pool.groups.length) continue;
+        for (let attempt = 0; attempt < pool.groups.length; attempt += 1) {
+          const group = pool.groups[pool.pointer % pool.groups.length];
+          pool.pointer += 1;
+          if (group.index >= group.items.length) continue;
+          selected.push(group.items[group.index]);
+          group.index += 1;
+          progressed = true;
+          break;
+        }
+      }
+      if (!progressed) break;
+    }
+    return selected.sort(compareCollectionRecords);
+  }
+
+  function buildCollectionPapers(records, profileOrId, options = {}) {
+    const context = getCollectionSelectionContext(records, profileOrId, options);
+    const { candidates, options: normalized, yearSelection } = context;
+    const selectedSchoolKeys = normalized.schoolKeys.length
+      ? normalized.schoolKeys
+      : [...new Set(context.schoolFiltered.map(record => getSchoolKey(record) || '__unknown__'))];
+    const recordsBySchool = new Map();
+    const selectedBySchool = new Map();
+    for (const record of candidates) {
+      const key = getSchoolKey(record) || '__unknown__';
+      if (!recordsBySchool.has(key)) recordsBySchool.set(key, []);
+      recordsBySchool.get(key).push(record);
+    }
+    for (const [key, items] of recordsBySchool.entries()) items.sort(compareCollectionRecords);
+    const schoolLabel = schoolKey => getSchoolLabel((recordsBySchool.get(schoolKey) || context.schoolFiltered.filter(record => (getSchoolKey(record) || '__unknown__') === schoolKey))[0] || { school: schoolKey });
+    selectedSchoolKeys.sort((a, b) => compareText(schoolLabel(a), schoolLabel(b)) || compareText(a, b));
+
+    const paperGroups = [];
+    let shortage = 0;
+    if (normalized.outputMode === 'school') {
+      for (const schoolKey of selectedSchoolKeys) {
+        const schoolRecords = recordsBySchool.get(schoolKey) || [];
+        const selected = normalized.countMode === 'fixed' ? schoolRecords.slice(0, normalized.count) : schoolRecords.slice();
+        if (normalized.countMode === 'fixed') shortage += Math.max(0, normalized.count - selected.length);
+        selectedBySchool.set(schoolKey, selected);
+        const chunks = splitIntoPapers(selected, { target: normalized.target, max: normalized.max, compare: compareCollectionRecords });
+        chunks.forEach((paperRecords, index) => paperGroups.push({
+          records: paperRecords, schoolKey, school: getSchoolLabel(schoolRecords[0] || { school: schoolKey }), index: index + 1
+        }));
+      }
+    } else {
+      const selected = normalized.countMode === 'fixed'
+        ? selectBalancedCollectionRecords(candidates, normalized.count)
+        : candidates.slice().sort(compareCollectionRecords);
+      if (normalized.countMode === 'fixed') shortage = Math.max(0, normalized.count - selected.length);
+      selected.forEach(record => {
+        const key = getSchoolKey(record) || '__unknown__';
+        if (!selectedBySchool.has(key)) selectedBySchool.set(key, []);
+        selectedBySchool.get(key).push(record);
+      });
+      const chunks = splitIntoPapers(selected, { target: normalized.target, max: normalized.max, compare: compareCollectionRecords });
+      chunks.forEach((paperRecords, index) => paperGroups.push({ records: paperRecords, schoolKey: '', school: '학교 통합', index: index + 1 }));
+    }
+
+    const schools = selectedSchoolKeys.map(schoolKey => {
+      const schoolRecords = recordsBySchool.get(schoolKey) || [];
+      return {
+        key: schoolKey,
+        label: getSchoolLabel(schoolRecords[0] || { school: schoolKey }),
+        candidateCount: schoolRecords.length,
+        selectedCount: (selectedBySchool.get(schoolKey) || []).length,
+        years: yearSelection.bySchool[schoolKey] || []
+      };
+    });
+    const selectedCount = paperGroups.reduce((sum, paper) => sum + paper.records.length, 0);
+    return {
+      ok: selectedCount > 0 && shortage === 0,
+      options: normalized,
+      scopeUnits: getCollectionScopeUnits(context.profile, normalized),
+      candidateCount: candidates.length,
+      selectedCount,
+      shortage,
+      yearSelection,
+      schools,
+      records: candidates,
+      papers: paperGroups,
+      outputMode: normalized.outputMode
+    };
   }
 
   function stableSelectionScore(record, seed) {
@@ -615,7 +973,8 @@
     const target = Number(options.target || COMMON_SCOPE.targetQuestionsPerPaper);
     const max = Number(options.max || COMMON_SCOPE.hardMaxQuestionsPerPaper);
     if (!(target > 0 && max >= target)) throw new Error('invalid paper split limits');
-    const sorted = [...records].sort(compareRecords);
+    const comparator = typeof options.compare === 'function' ? options.compare : compareRecords;
+    const sorted = [...records].sort(comparator);
     const grouped = [];
     for (const record of sorted) {
       const file = normalizePath(record.sourceFile);
@@ -654,7 +1013,9 @@
       subUnitKeys: selection.subUnitKeys || [],
       difficultyBuckets: selection.difficultyBuckets || [],
       difficultyPlan: selection.difficultyPlan || [],
-      seed: selection.seed || ''
+      seed: selection.seed || '',
+      collection: selection.collection || null,
+      paperKey: selection.paperKey || ''
     });
     return `unitpast_${scope.id}_${unitKey}_${fnv1a(`${scope.id}|${unitKey}|${selectionKey}|${identity}`)}`;
   }
@@ -714,6 +1075,14 @@
     getQuestionNo,
     getQuestionUid,
     getPeriod,
+    getYear,
+    getExamYear,
+    getSchool,
+    getSchoolKey,
+    getSchoolLabel,
+    getSemester,
+    getExamType,
+    getSourceExamKey,
     isInScope,
     classifyRecord,
     compareRecords,
@@ -728,6 +1097,15 @@
     getDifficultySummary,
     getSubUnitOptions,
     filterUnitRecords,
+    getCollectionScopeUnits,
+    getCollectionScopeRecords,
+    getCollectionSchoolOptions,
+    getCollectionYearOptions,
+    resolveCollectionYearsBySchool,
+    compareCollectionRecords,
+    selectBalancedCollectionRecords,
+    filterCollectionRecords: (records, profileOrId, options = {}) => getCollectionSelectionContext(records, profileOrId, options).candidates,
+    buildCollectionPapers,
     selectRecords,
     selectByBlueprint,
     splitIntoPapers,

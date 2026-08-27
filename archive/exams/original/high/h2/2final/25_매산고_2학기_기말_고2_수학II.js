@@ -1,6 +1,4 @@
-window.examTitle="25_매산고_2학기_기말_고2_수학II";window.archiveStatus="metadata_and_prompt_transcription_only";
-const UNIT={"함수의 극한":["H15-M2-01",1],"함수의 연속":["H15-M2-02",2],"미분계수":["H15-M2-03",3],"도함수":["H15-M2-04",4],"접선의 방정식":["H15-M2-05",5],"도함수의 활용":["H15-M2-06",6],"부정적분":["H15-M2-07",7],"정적분":["H15-M2-08",8],"정적분의 활용":["H15-M2-09",9]};
-function makeQuestion(id,level,category,unit,questionType,content,choices=[],extra={}){const[standardUnitKey,standardUnitOrder]=UNIT[unit];return{id,level,category,originalCategory:unit,standardCourse:"수학II",standardUnitKey,standardUnit:unit,standardUnitOrder,questionType,layoutTag:"grid",tags:[questionType,category],wide:questionType==="서술형",content,...(choices.length?{choices}:{}),...extra,answer:"",solution:""};}
+window.examTitle="25_매산고_2학기_기말_고2_수학II";
 window.questionBank=[
   {
     "id": 1,
@@ -14,7 +12,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "극솟값"
     ],
     "wide": false,
@@ -27,9 +24,9 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "solution": "[키포인트] 극솟값을 갖는 점에서는 도함수의 값이 0이고, 그 점에서 극소인지도 확인해야 한다.\n$f'(x)=3x^2-3a$이므로 $f'(1)=0$에서 $3-3a=0$, 따라서 $a=1$이다.\n또 $f''(x)=6x$이므로 $f''(1)=6\\gt 0$이다. 따라서 $x=1$에서 실제로 극솟값을 갖는다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -45,11 +42,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "부정적분"
     ],
     "wide": false,
-    "content": "$f(x)=4x^3-6$의 한 부정적분 $F(x)$에 대하여 $F'(0)=12$일 때, $F'(2)$의 값을 구한 것은? [3점]",
+    "content": "$f(x)=4x^3-6$의 한 부정적분 $F(x)$에 대하여 $F(0)=12$일 때, $F(2)$의 값을 구한 것은? [3점]",
     "choices": [
       "$13$",
       "$14$",
@@ -57,10 +53,10 @@ window.questionBank=[
       "$16$",
       "$17$"
     ],
-    "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-07-INTEGRAL",
-    "subUnit": "integral",
+    "answer": "④",
+    "solution": "[키포인트] $F(x)$는 $f(x)$의 부정적분이므로 먼저 $F(x)$를 구한 뒤 $F(0)=12$를 이용한다.\n$f(x)=4x^3-6$이므로 $F(x)=x^4-6x+C$이다. $F(0)=12$에서 $C=12$이므로 $F(x)=x^4-6x+12$이다.\n따라서 $F(2)=16-12+12=16$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+    "subUnit": "부정적분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -76,7 +72,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "정적분"
     ],
     "wide": false,
@@ -89,9 +84,9 @@ window.questionBank=[
       "$9$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 다항함수를 항별로 적분한 뒤 위끝값과 아래끝값을 대입한다.\n$\\displaystyle\\int(3x^2-6x+5)dx=x^3-3x^2+5x$이므로\n$\\displaystyle\\int_1^2(3x^2-6x+5)dx=[x^3-3x^2+5x]_1^2=6-3=3$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -107,11 +102,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "속도와 가속도"
     ],
     "wide": false,
-    "content": "원점에서 출발하여 수직선 위를 움직이는 점 P의 시각 $t$에서의 위치 $x=-t^3+6t^2$이다. 이때, $t=1$에서의 점 P의 속도와 가속도의 합을 구한 것은? [3.2점]",
+    "content": "원점에서 출발하여 수직선 위를 움직이는 점 P의 시각 $t$에서의 위치 $x$가 $x=-t^3+6t^2$이다. 이때, $t=1$에서의 점 P의 속도와 가속도의 합을 구한 것은? [3.2점]",
     "choices": [
       "$13$",
       "$14$",
@@ -120,9 +114,9 @@ window.questionBank=[
       "$17$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 위치를 한 번 미분하면 속도, 두 번 미분하면 가속도이다.\n$x(t)=-t^3+6t^2$이므로 $v(t)=x'(t)=-3t^2+12t$, $a(t)=v'(t)=-6t+12$이다.\n$t=1$에서 $v(1)=9$, $a(1)=6$이므로 그 합은 $15$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -138,11 +132,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "방정식의 실근"
     ],
     "wide": false,
-    "content": "방정식 $2x^3-2x^2+4=4x^2-a$가 서로 다른 세 실근을 갖도록 하는 실수 $a$의 값의 범위가 $m<a<n$일 때, $n-m$의 값을 구한 것은? [3.3점]",
+    "content": "방정식 $2x^3-2x^2+4=4x^2-a$가 서로 다른 세 실근을 갖도록 하는 실수 $a$의 값의 범위가 $m\\lt a\\lt n$일 때, $n-m$의 값을 구한 것은? [3.3점]",
     "choices": [
       "$4$",
       "$5$",
@@ -150,10 +143,10 @@ window.questionBank=[
       "$7$",
       "$8$"
     ],
-    "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "⑤",
+    "solution": "[키포인트] 삼차방정식이 서로 다른 세 실근을 가지려면 삼차함수의 극댓값은 양수, 극솟값은 음수여야 한다.\n방정식을 $2x^3-6x^2+a+4=0$으로 정리하고 $h(x)=2x^3-6x^2+a+4$라 두자. $h'(x)=6x(x-2)$이므로 $x=0$에서 극대, $x=2$에서 극소이다.\n$h(0)=a+4$, $h(2)=a-4$이므로 서로 다른 세 실근을 가지려면 $a+4\\gt 0$, $a-4\\lt 0$이어야 한다. 따라서 $-4\\lt a\\lt 4$이다.\n$m=-4$, $n=4$이므로 $n-m=8$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -169,11 +162,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "도형의 넓이"
     ],
     "wide": false,
-    "content": "곡선 $y=-2x^2+6x$과 직선 $y=-2mx$로 둘러싸인 도형의 넓이가 $\\dfrac{125}{3}$일 때, 상수 $m$의 값을 구한 것은? (단, $m>0$) [3.6점]",
+    "content": "곡선 $y=-2x^2+6x$과 직선 $y=-2mx$로 둘러싸인 도형의 넓이가 $\\dfrac{125}{3}$일 때, 상수 $m$의 값을 구한 것은? (단, $m\\gt 0$) [3.6점]",
     "choices": [
       "$1$",
       "$2$",
@@ -181,12 +173,10 @@ window.questionBank=[
       "$4$",
       "$5$"
     ],
-    "sourceCorrection": "원본의 인쇄된 단서가 취소선 처리되어 있고, 바로 아래에 손글씨로 m>0이 정정되어 있음.",
-    "sourcePage": "../pages/page-2.png",
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 두 그래프의 교점을 구한 뒤 위의 함수에서 아래의 함수를 빼서 넓이를 적분한다.\n$-2x^2+6x=-2mx$에서 $2x(m+3-x)=0$이므로 교점의 $x$좌표는 $0$, $m+3$이다. $m\\gt 0$이므로 $0\\lt x\\lt m+3$에서 포물선이 직선보다 위에 있다.\n따라서 넓이는 $\\displaystyle\\int_0^{m+3}2x(m+3-x)dx=\\dfrac{(m+3)^3}{3}$이다. 이것이 $\\dfrac{125}{3}$이므로 $(m+3)^3=125$, $m+3=5$이고 $m=2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -202,7 +192,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "홀함수와 방정식"
     ],
     "wide": false,
@@ -215,9 +204,9 @@ window.questionBank=[
       "$-5$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "solution": "[키포인트] 홀함수인 최고차항 계수 $1$의 삼차함수는 $f(x)=x^3+px$ 꼴이고, $|f(x)|=16$의 실근 개수는 수평선과의 접점 조건으로 판단한다.\n$f(-x)+f(x)=0$이므로 $f(x)=x^3+px$이다. $|f(x)|=16$이 서로 다른 네 실근을 가지려면 홀함수의 대칭성에 의해 $f(x)=16$이 서로 다른 두 실근을 가져야 하므로, $y=16$은 삼차함수의 극댓값에서 접한다.\n극댓값이 생기는 점을 $x=-r$ $(r\\gt 0)$라 하면 $f'(-r)=3r^2+p=0$에서 $p=-3r^2$이다. 또한 $f(-r)=-r^3-pr=2r^3=16$이므로 $r=2$, $p=-12$이고 $f(1)=-11$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -233,7 +222,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "정적분으로 정의된 함수"
     ],
     "wide": false,
@@ -246,9 +234,9 @@ window.questionBank=[
       "$2$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 정적분 전체를 하나의 상수로 두면 함수식과 적분값 사이의 일차방정식을 만들 수 있다.\n$A=\\displaystyle\\int_0^2f(t)dt$라 두면 $f(x)=x^3+x+2A$이다. 양변을 $0$부터 $2$까지 적분하면\n$A=\\displaystyle\\int_0^2(t^3+t+2A)dt=4+2+4A=6+4A$이므로 $A=-2$이다. 따라서 $f(1)=1+1+2(-2)=-2$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -264,11 +252,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "부정적분"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\displaystyle\\int\\frac{x^n}{n}dx$에 대하여 $f(0)=0$일 때, 상수 $k$에 대하여 $\\displaystyle\\sum_{n=1}^{10}f(1)=k$를 만족한다. 이때, $22k$의 값을 구한 것은? [4.1점]",
+    "content": "함수 $f(x)=\\displaystyle\\int\\dfrac{x^n}{n}dx$에 대하여 $f(0)=0$일 때, 상수 $k$에 대하여 $\\displaystyle\\sum_{n=1}^{10}f(1)=k$를 만족한다. 이때, $22k$의 값을 구한 것은? [4.1점]",
     "choices": [
       "$5$",
       "$10$",
@@ -277,9 +264,9 @@ window.questionBank=[
       "$25$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-07-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] 적분상수는 $f(0)=0$으로 정하고, 합은 부분분수로 망원합을 만든다.\n$f(x)=\\displaystyle\\int\\dfrac{x^n}{n}dx=\\dfrac{x^{n+1}}{n(n+1)}+C$이고 $f(0)=0$이므로 $C=0$이다. 따라서 $f(1)=\\dfrac1{n(n+1)}$이다.\n$k=\\displaystyle\\sum_{n=1}^{10}\\dfrac1{n(n+1)}=\\sum_{n=1}^{10}\\left(\\dfrac1n-\\dfrac1{n+1}\\right)=1-\\dfrac1{11}=\\dfrac{10}{11}$이므로 $22k=20$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+    "subUnit": "부정적분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -295,11 +282,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "부등식과 미분"
     ],
     "wide": false,
-    "content": "$x\\ge1$일 때, $2$ 이상의 자연수 $n$에 대하여 모든 실수 $x$에서 부등식 $x^n-nx+(n-1)^2>0$이 항상 성립하도록 하는 자연수 $n$의 최솟값을 구한 것은? [4.1점]",
+    "content": "$2$ 이상의 자연수 $n$에 대하여 모든 실수 $x$에서 부등식 $x^n-nx+(n-1)^2\\gt 0$이 항상 성립하도록 하는 자연수 $n$의 최솟값을 구한 것은? [4.1점]",
     "choices": [
       "$2$",
       "$3$",
@@ -308,9 +294,9 @@ window.questionBank=[
       "$6$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "solution": "[키포인트] 가장 작은 자연수부터 부등식이 모든 실수에서 항상 양수인지 확인한다.\n$n=2$이면 $x^2-2x+1=(x-1)^2$이므로 $x=1$에서 $0$이 되어 조건을 만족하지 않는다.\n$n=3$이면 $x^3-3x+4$이고 $x$가 충분히 작은 음수가 되면 식의 값도 음수가 되므로 모든 실수에서 양수일 수 없다.\n$n=4$이면 $h(x)=x^4-4x+9$라 할 때 $h'(x)=4(x^3-1)$이므로 $x=1$에서 최솟값을 갖고, $h(1)=6\\gt 0$이다. 따라서 모든 실수 $x$에서 부등식이 성립하므로 조건을 만족하는 $n$의 최솟값은 $4$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -326,11 +312,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "다항함수의 성질"
     ],
     "wide": false,
-    "content": "모든 실수 $x$에 대하여 정의된 다항함수 $f(x)$가 있다. 이때, 함수 $f(x)$에 대하여 보기에서 옳은 것만을 모두 고른 것은? (단, $f(x)$는 상수함수가 아니다.) [4.2점]<br><보기><br>ㄱ. 함수 $f(x)$는 항상 극값을 갖는다.<br>ㄴ. 함수 $f(x)f'(x)$의 차수는 홀수이다.<br>ㄷ. 모든 실수 $x$에 대하여 $f(x)=f(-x)$를 만족하면 극값이 적어도 하나 존재한다.",
+    "content": "모든 실수 $x$에 대하여 정의된 다항함수 $f(x)$가 있다. 이때, 함수 $f(x)$에 대하여 보기에서 옳은 것만을 모두 고른 것은? (단, $f(x)$는 상수함수가 아니다.) [4.2점]<div class=\"question-note-box\"><div>&lt;보기&gt;</div>ㄱ. 함수 $f(x)$는 항상 극값을 갖는다.<br>ㄴ. 함수 $f(x)f'(x)$의 차수는 홀수이다.<br>ㄷ. 모든 실수 $x$에 대하여 $f(x)=f(-x)$를 만족하면 극값이 적어도 하나 존재한다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -339,9 +324,9 @@ window.questionBank=[
       "ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "solution": "[키포인트] 각 명제를 반례 또는 다항함수의 차수와 성질로 각각 판단한다.\nㄱ. $f(x)=x^3$은 상수함수가 아니지만 극값을 갖지 않으므로 거짓이다.\nㄴ. $f(x)$의 차수를 $n$이라 하면 $f'(x)$의 차수는 $n-1$이므로 $f(x)f'(x)$의 차수는 $2n-1$로 홀수이다. 따라서 참이다.\nㄷ. $f(x)=f(-x)$인 비상수 다항함수는 짝함수이므로 차수가 짝수이다. 최고차항의 계수에 따라 양쪽 끝에서 모두 $+\\infty$ 또는 모두 $-\\infty$로 가므로 적어도 하나의 극솟값 또는 극댓값을 갖는다. 따라서 참이다.\n옳은 것은 ㄴ, ㄷ이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -357,7 +342,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "적분과 최댓값·최솟값"
     ],
     "wide": false,
@@ -370,15 +354,15 @@ window.questionBank=[
       "$\\dfrac83$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-08-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 절댓값의 기준점 $2x$가 적분구간 $[1,6]$ 안에 있으므로 그 점에서 적분을 나눈다.\n$u=2x$라 두면 $1\\le u\\le6$이고\n$f(x)=\\displaystyle\\int_1^u(u-t)dt+\\int_u^6(t-u)dt=\\dfrac{(u-1)^2+(6-u)^2}{2}$이다.\n이를 정리하면 $f(x)=\\left(u-\\dfrac72\\right)^2+\\dfrac{25}{4}$이므로 최솟값은 $m=\\dfrac{25}{4}$이다. 최댓값은 구간의 양 끝 $u=1,6$에서 $M=\\dfrac{25}{2}$이므로 $\\dfrac{M}{m}=2$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
   {
     "id": 13,
-    "level": "중",
+    "level": "상",
     "category": "극값의 개수",
     "originalCategory": "도함수의 활용",
     "standardCourse": "수학II",
@@ -388,7 +372,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "극값의 개수"
     ],
     "wide": false,
@@ -400,10 +383,10 @@ window.questionBank=[
       "$4$",
       "$5$"
     ],
-    "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "④",
+    "solution": "[키포인트] 삼차함수가 극값을 두 개 가지려면 도함수인 이차방정식이 서로 다른 두 실근을 가져야 하며, 원래 함수가 실제 삼차함수인지도 확인해야 한다.\n$f'(x)=3(a-2)x^2-2ax+(a+2)$이다. 이 이차방정식이 서로 다른 두 실근을 가지려면 판별식이 양수여야 하므로\n$(-2a)^2-4\\cdot3(a-2)(a+2)=8(6-a^2)\\gt 0$이다. 따라서 $|a|\\lt \\sqrt6$이므로 정수 $a$는 $-2,-1,0,1,2$이다.\n그런데 $a=2$이면 $x^3$의 계수가 $0$이 되어 $f(x)$가 삼차함수가 아니므로 제외한다. 따라서 가능한 정수 $a$는 $4$개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -419,7 +402,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "합성함수와 방정식"
     ],
     "wide": false,
@@ -432,9 +414,9 @@ window.questionBank=[
       "$15$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "solution": "[키포인트] 먼저 $g(x)$의 치역을 구한 뒤 그 범위에서 $f$의 최솟값을 구한다.\n$x\\ne0$에서 $x^2+\\dfrac4{x^2}\\ge4$이므로 $g(x)=x^2+\\dfrac4{x^2}-3\\ge1$이다. 또한 등호가 가능한 값이 있으므로 $g(x)$의 치역은 $[1,\\infty)$이다.\n따라서 $(f\\circ g)(x)$가 가질 수 있는 최솟값은 $u\\ge1$에서 $f(u)$의 최솟값과 같다. $f'(u)=4(u-1)(u-2)(u+3)$이므로 $u=1$에서 $u=2$까지 감소하고 $u=2$ 이후 증가한다.\n$f(2)=16-56+48+3=11$이므로 가능한 $k$의 최솟값은 $11$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -450,7 +432,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "속도"
     ],
     "wide": false,
@@ -463,9 +444,9 @@ window.questionBank=[
       "$16$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "solution": "[키포인트] 두 점의 위치를 속도에서 적분해 구하고, 만나는 시각 $t$에 대해 $k$를 함수로 나타내어 최댓값을 구한다.\n점 P의 위치는 $x_P(t)=\\displaystyle\\int_0^t(20s-9s^2)ds=10t^2-3t^3$이고, 점 Q의 위치는 $x_Q(t)=8+kt$이다. 두 점이 만나는 시각은 $t\\gt 0$이므로\n$10t^2-3t^3=8+kt$에서 $k=10t-3t^2-\\dfrac8t$이다.\n$K(t)=10t-3t^2-\\dfrac8t$라 하면 $K'(t)=10-6t+\\dfrac8{t^2}=\\dfrac{-2(t-2)(3t^2+t+2)}{t^2}$이다. $3t^2+t+2\\gt 0$이므로 $K(t)$는 $t=2$에서 최댓값을 갖는다.\n$p=K(2)=4$이므로 $p^2=16$이다. 따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -481,11 +462,10 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "사차함수와 적분함수"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 $1$인 사차함수 $f(x)$와 $x\\ge0$에서 정의된 함수 $g(x)=\\displaystyle\\int_{-x}^{2x}\\{f(t)-|f(t)|\\}dt$가 다음 조건을 만족시킨다.<br>(가) $f(0)=f'(0)=0$<br>(나) $0<x<2$와 $x>5$에서 $g(x)$는 상수함수이다.<br>(다) $2<x<5$에서 $g(x)$는 감소함수이다.<br>이때, $f(1)$의 값을 구하시오. (단, $f(x)=0$의 모든 실근은 음이 아닌 실수이다.) [5.4점]",
+    "content": "최고차항의 계수가 $1$인 사차함수 $f(x)$와 $x\\ge0$에서 정의된 함수 $g(x)=\\displaystyle\\int_{-x}^{2x}\\{f(t)-|f(t)|\\}dt$가 다음 조건을 만족시킨다.<div class=\"question-note-box\">(가) $f(0)=f'(0)=0$<br>(나) $0\\lt x\\lt 2$과 $x\\gt 5$에서 $g(x)$는 상수함수이다.<br>(다) $2\\lt x\\lt 5$에서 $g(x)$는 감소함수이다.</div>이때, $f(1)$의 값을 구하시오. (단, $f(x)=0$의 모든 실근은 음이 아닌 실수이다.) [5.4점]",
     "choices": [
       "$23$",
       "$25$",
@@ -494,9 +474,9 @@ window.questionBank=[
       "$31$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
+    "solution": "[키포인트] $f(t)-|f(t)|$은 $f(t)\\ge0$일 때 $0$, $f(t)\\lt 0$일 때 음수가 된다는 점을 이용해 $g(x)$의 상수·감소 조건을 $f$의 부호로 바꾼다.\n$H(t)=f(t)-|f(t)|$라 두면 항상 $H(t)\\le0$이다. $f$는 최고차항의 계수가 $1$인 사차함수이고 음의 실근이 없으므로 $t\\lt 0$에서는 $f(t)\\gt 0$, 따라서 $H(t)=0$이다. 그러므로 $x\\ge0$에서 $g(x)=\\displaystyle\\int_0^{2x}H(t)dt$이다.\n$0\\lt x\\lt 2$에서 $g$가 상수이므로 $0\\lt t\\lt 4$에서 $H(t)=0$, 즉 $f(t)\\ge0$이다. 반면 $2\\lt x\\lt 5$에서 $g$가 엄밀히 감소하므로 $x=2$의 바로 오른쪽에서 적분값이 실제로 감소해야 한다. 따라서 $f(4)\\gt 0$일 수 없고 연속성에 의해 $f(4)=0$이다. 같은 이유로 $x=5$의 바로 왼쪽까지 감소하다가 $x\\gt 5$에서 상수가 되므로 $f(10)=0$이다.\n또 $f(0)=f'(0)=0$이므로 $0$은 적어도 이중근이다. 사차함수이고 최고차항의 계수가 $1$이므로 네 근의 중복도까지 합하면 $f(x)=x^2(x-4)(x-10)$으로 확정된다. 따라서 $f(1)=27$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -510,18 +490,17 @@ window.questionBank=[
     "standardUnitKey": "H15-M2-06",
     "standardUnit": "도함수의 활용",
     "standardUnitOrder": 6,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
-      "서술형",
       "극댓값과 극솟값"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[서답형 1번] 함수 $f(x)=x^3+ax^2+bx-4$가 $x=1$에서 극댓값 $0$을 가진다. 이때, 상수 $a$, $b$와 함수 $f(x)$의 극솟값 $m$에 대하여 $a+b+m$의 값을 구하시오. [4점]",
-    "answer": "⑤",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "$-1$",
+    "solution": "[키포인트] $x=1$에서 극댓값 $0$이라는 조건은 $f(1)=0$, $f'(1)=0$ 두 식으로 바꾼다.\n$f(1)=1+a+b-4=0$이므로 $a+b=3$이다. 또 $f'(x)=3x^2+2ax+b$이므로 $f'(1)=3+2a+b=0$이다. 두 식을 풀면 $a=-6$, $b=9$이다.\n따라서 $f(x)=x^3-6x^2+9x-4$이고 $f'(x)=3(x-1)(x-3)$이다. $x=1$에서 극대, $x=3$에서 극소이므로 극솟값은 $m=f(3)=-4$이다.\n따라서 구하는 값은 $a+b+m=3-4=-1$이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -535,16 +514,15 @@ window.questionBank=[
     "standardUnitKey": "H15-M2-08",
     "standardUnit": "정적분",
     "standardUnitOrder": 8,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
-      "서술형",
       "적분방정식"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[서답형 2번] 다항함수 $f(x)$가 임의의 실수 $x$에 대하여 $\\displaystyle\\int_2^x(x-t)f(t)dt=x^3+ax^2+b$를 만족시킬 때, $a+b$의 값을 구하시오. [5점]",
-    "answer": "②",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "answer": "$1$",
+    "solution": "[키포인트] 적분식에 $x=2$를 대입하고, 그다음 양변을 미분한 식에 다시 $x=2$를 대입하면 $a$, $b$를 차례로 구할 수 있다.\n$x=2$를 대입하면 왼쪽 적분값은 $0$이므로 $8+4a+b=0$이다.\n왼쪽을 $x\\displaystyle\\int_2^x f(t)dt-\\int_2^x t f(t)dt$로 보고 미분하면 $\\displaystyle\\int_2^x f(t)dt$가 된다. 따라서 $\\displaystyle\\int_2^x f(t)dt=3x^2+2ax$이다. 여기에 $x=2$를 대입하면 $0=12+4a$이므로 $a=-3$이다.\n처음 식 $8+4a+b=0$에 대입하면 $b=4$이다. 따라서 구하는 값은 $a+b=1$이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -560,16 +538,15 @@ window.questionBank=[
     "standardUnitKey": "H15-M2-02",
     "standardUnit": "함수의 연속",
     "standardUnitOrder": 2,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
-      "서술형",
       "연속과 삼차함수"
     ],
-    "wide": true,
-    "content": "[서답형 3번] 최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)=\\begin{cases}f(x)&(x\\le t)\\\\-f(x)&(x>t)\\end{cases}$는 실수 전체의 집합에서 연속이고 다음 조건을 만족한다.<br>(가) $g(x)$는 서로 다른 세 점 $(\\alpha,g(\\alpha))$, $(\\beta,g(\\beta))$, $(\\gamma,g(\\gamma))$에서 극값을 가진다. (단, $\\alpha<\\beta$)<br>(나) $g(\\gamma)=-2$이고, $g(\\alpha)+g(\\beta)+g(\\gamma)=-2$이다.<br>이때, $2(\\beta-\\alpha)^3$의 값을 구하시오. [6점]",
-    "answer": "②",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "wide": false,
+    "content": "[서답형 3번] 최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)=\\begin{cases}f(x)&(x\\le t)\\\\-f(x)&(x\\gt t)\\end{cases}$는 실수 전체의 집합에서 연속이고 다음 조건을 만족한다.<div class=\"question-note-box\">(가) $g(x)$는 서로 다른 세 점 $(\\alpha,g(\\alpha))$, $(\\beta,g(\\beta))$, $(\\gamma,g(\\gamma))$에서 극값을 가진다. (단, $\\alpha\\lt \\beta$)<br>(나) $g(\\gamma)=-20$이고, $g(\\alpha)+g(\\beta)+g(\\gamma)=-20$이다.</div>이때, $2(\\beta-\\alpha)^3$의 값을 구하시오. [6점]",
+    "answer": "$270$",
+    "solution": "[키포인트] $g$가 $x=t$에서 연속이려면 $f(t)=0$이고, 세 극값 중 하나는 부호가 바뀌는 점 $t$에서 생긴다. 나머지 극값 조건으로 두 근 사이 거리를 결정한다.\n연속 조건에서 $g(t^-)=f(t)$, $g(t^+)=-f(t)$가 같아야 하므로 $f(t)=0$이고 $g(t)=0$이다. 삼차함수 $f$의 도함수는 근을 최대 두 개 가지므로, $g$가 서로 다른 세 점에서 극값을 가지려면 $x=t$도 그 세 극값점 중 하나이고 나머지 두 점은 $f'(x)=0$인 점들이다.\n$g(\\gamma)=-20$이므로 $\\gamma\\ne t$이다. 따라서 $t$는 $\\alpha$, $\\beta$ 중 하나이다. 또 $g(\\alpha)+g(\\beta)+g(\\gamma)=-20$이므로 $g(\\alpha)+g(\\beta)=0$이다. $g(t)=0$이므로 $\\alpha$, $\\beta$ 중 다른 한 점의 함수값도 $0$이다. 따라서 $f$는 $\\alpha$, $\\beta$ 중 한 점을 이중근, 다른 점을 단순근으로 갖는다. $d=\\beta-\\alpha\\gt 0$이라 두자.\n이중근이 $\\alpha$인 경우 $f(x)=(x-\\alpha)^2(x-\\beta)$이고, 나머지 극값점은 $x=\\alpha+\\dfrac{2d}{3}$이다. 그때의 $g$의 극값은 $-\\dfrac{4d^3}{27}$이다. 이중근이 $\\beta$인 경우에도 부호가 바뀌는 정의를 반영하면 나머지 $g$의 극값은 똑같이 $-\\dfrac{4d^3}{27}$이다.\n$g(\\gamma)=-20$이므로 $-\\dfrac{4d^3}{27}=-20$, 따라서 $d^3=135$이다. 그러므로 $2(\\beta-\\alpha)^3=270$이다.\n따라서 구하는 값은 $270$이다.",
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -591,12 +568,12 @@ window.questionBank=[
       "서술형",
       "운동 방향"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[서답형 4번] 원점에서 출발하여 수직선 위를 움직이는 점 P의 시각 $t$에서의 위치 $x$가 $x=3t^3-\\dfrac{27}{2}t^2+18t$이다. 점 P가 $x=a$, $x=b$에서 운동방향을 바꾼다고 할 때, $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a\\ne b$이다.) [5점]",
-    "answer": "①",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "$\\dfrac{27}{2}$",
+    "solution": "[키포인트] 운동방향이 바뀌는 시각은 속도의 부호가 바뀌는 시각이므로 위치함수를 미분해 찾는다.\n$x(t)=3t^3-\\dfrac{27}{2}t^2+18t$이므로 속도는 $v(t)=9t^2-27t+18=9(t-1)(t-2)$이다. 따라서 $t=1$, $t=2$에서 속도의 부호가 바뀌어 운동방향을 바꾼다.\n$x(1)=3-\\dfrac{27}{2}+18=\\dfrac{15}{2}$, $x(2)=24-54+36=6$이므로 $a$, $b$는 $\\dfrac{15}{2}$와 $6$이다.\n따라서 구하는 값은 $a+b=\\dfrac{27}{2}$이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -616,12 +593,12 @@ window.questionBank=[
       "서술형",
       "삼차함수와 극값"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[서답형 5번] 삼차함수 $f(x)$와 두 다항함수 $g(x)=x^3+3x+3$, $h(x)=x^2+1$에 대하여 두 삼차함수 $f(x)-g(x)$와 $f(x)-h(x)$가 모두 극값을 갖지 않는다. $f'(-1)=6$일 때, $f'(2)$의 최솟값을 구하고, 그 과정을 서술하시오. [7점]",
-    "answer": "④",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "answer": "$6$",
+    "solution": "[키포인트] 삼차함수가 극값을 갖지 않으려면 그 도함수인 이차함수의 판별식이 $0$ 이하이어야 한다. 두 조건을 연립하면 계수의 범위가 정해진다.\n$f(x)=ax^3+bx^2+cx+d$라 두자. $f'(-1)=6$에서 $3a-2b+c=6$, 즉 $c=6-3a+2b$이다.\n$f(x)-g(x)$가 삼차함수이고 극값을 갖지 않으므로 $(f-g)'(x)=3(a-1)x^2+2bx+(c-3)$의 판별식이 $0$ 이하이다. 판별식을 $4$로 나눈 값은 $b^2-3(a-1)(c-3)=(3a-b-3)^2$이므로 $b=3a-3$이다. 따라서 $c=3a$이다.\n또 $f(x)-h(x)$가 극값을 갖지 않으므로 $(f-h)'(x)=3ax^2+2(b-1)x+c$의 판별식이 $0$ 이하이다. $b=3a-3$, $c=3a$를 대입하면 $(b-1)^2-3ac=-8(3a-2)\\le0$이므로 $a\\ge\\dfrac23$이다.\n$f'(2)=12a+4b+c=27a-12$이므로 최솟값은 $a=\\dfrac23$일 때 $6$이다. 따라서 구하는 최솟값은 $6$이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -641,12 +618,12 @@ window.questionBank=[
       "서술형",
       "도함수와 극값"
     ],
-    "wide": true,
-    "content": "[서답형 6번] 최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 두 함수 $f(x)$, $g(x)$는 다음 조건을 만족시킨다.<br>(가) 함수 $f(x)$는 $x=2$에서 극솟값 $0$을 갖는다.<br>(나) $g'(x)=f(x)+(x-2)f'(x)$<br>(다) 함수 $g(x)$는 $x=\\dfrac12$일 때, 최솟값 $-\\dfrac{21}{16}$을 갖는다.<br>이때, $f(1)+g(1)$의 값을 구하고, 그 과정을 서술하시오. [8점]",
-    "answer": "③",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "wide": false,
+    "content": "[서답형 6번] 최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 두 함수 $f(x)$, $g(x)$는 다음 조건을 만족시킨다.<div class=\"question-note-box\">(가) 함수 $f(x)$는 $x=2$에서 극솟값 $0$을 갖는다.<br>(나) $g'(x)=f(x)+(x-2)f'(x)$<br>(다) 함수 $g(x)$는 $x=\\dfrac12$일 때, 최솟값 $-\\dfrac{21}{16}$을 갖는다.</div>이때, $f(1)+g(1)$의 값을 구하고, 그 과정을 서술하시오. [8점]",
+    "answer": "$\\dfrac{3}{8}$",
+    "solution": "[키포인트] $f$가 $x=2$에서 극솟값 $0$을 가지므로 $x=2$는 이중근이다. 또한 (나)는 $g'(x)$가 곱의 미분 형태임을 이용한다.\n$f(x)$는 최고차항의 계수가 $1$인 삼차함수이고 $f(2)=f'(2)=0$이므로 $f(x)=(x-2)^2(x-a)$로 둘 수 있다.\n(나)에서 $g'(x)=f(x)+(x-2)f'(x)=\\dfrac{d}{dx}[(x-2)f(x)]$이므로 $g(x)=(x-2)f(x)+C$이다. $g$가 $x=\\dfrac12$에서 최솟값을 가지므로 $g'(\\dfrac12)=0$이다. 그런데 $g'(x)=(x-2)^2(4x-3a-2)$이므로 $g'(\\dfrac12)=-\\dfrac{27a}{4}=0$, 따라서 $a=0$이다.\n그러므로 $f(x)=x(x-2)^2$, $g(x)=x(x-2)^3+C$이다. $g(\\dfrac12)=-\\dfrac{21}{16}$을 대입하면 $-\\dfrac{27}{16}+C=-\\dfrac{21}{16}$이므로 $C=\\dfrac38$이다.\n$f(1)=1$, $g(1)=-1+\\dfrac38=-\\dfrac58$이므로 $f(1)+g(1)=\\dfrac38$이다.\n따라서 구하는 값은 $\\dfrac38$이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

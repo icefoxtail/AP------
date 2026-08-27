@@ -26,13 +26,13 @@ window.questionBank = [
     "content": "다음 중 옳은 것은?",
     "choices": [
       "$64$의 제곱근은 $8$이다.",
-      "$\\\\sqrt{(-3)^2} = -3$",
-      "제곱근 $6$은 $\\\\sqrt{6}$이다.",
-      "$\\\\sqrt{25}$의 제곱근은 $\\\\pm 5$이다.",
-      "$(-6)^2$의 제곱근은 $\\\\pm \\\\sqrt{6}$이다."
+      "$\\sqrt{(-3)^2} = -3$",
+      "제곱근 $6$은 $\\sqrt{6}$이다.",
+      "$\\sqrt{25}$의 제곱근은 $\\pm 5$이다.",
+      "$(-6)^2$의 제곱근은 $\\pm \\sqrt{6}$이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 제곱근의 정의와 표현 방식을 정확히 구분한다.\n\n[조건 정리]\n- $a$의 제곱근: 제곱하여 $a$가 되는 수, 즉 $x^2=a$를 만족하는 $x$ ($\\\\pm\\\\sqrt{a}$)\n- 제곱근 $a$: 기호 $\\\\sqrt{a}$를 읽는 법\n\n[풀이 과정]\n① $64$의 제곱근은 $\\\\pm 8$이다.\n② $\\\\sqrt{(-3)^2} = \\\\sqrt{9} = 3$이다.\n③ 제곱근 $6$은 $\\\\sqrt{6}$을 의미하므로 옳은 설명이다.\n④ $\\\\sqrt{25}=5$이므로, $\\\\sqrt{25}$의 제곱근은 $5$의 제곱근인 $\\\\pm \\\\sqrt{5}$이다.\n⑤ $(-6)^2 = 36$이므로, $(-6)^2$의 제곱근은 $\\\\pm 6$이다.\n\n[결론] 따라서 옳은 것은 ③이다.",
+    "solution": "[키포인트] 제곱근의 정의와 표현 방식을 정확히 구분한다.\n\n[조건 정리]\n- $a$의 제곱근: 제곱하여 $a$가 되는 수, 즉 $x^2=a$를 만족하는 $x$ ($\\pm\\sqrt{a}$)\n- 제곱근 $a$: 기호 $\\sqrt{a}$를 읽는 법\n\n[풀이 과정]\n① $64$의 제곱근은 $\\pm 8$이다.\n② $\\sqrt{(-3)^2} = \\sqrt{9} = 3$이다.\n③ 제곱근 $6$은 $\\sqrt{6}$을 의미하므로 옳은 설명이다.\n④ $\\sqrt{25}=5$이므로, $\\sqrt{25}$의 제곱근은 $5$의 제곱근인 $\\pm \\sqrt{5}$이다.\n⑤ $(-6)^2 = 36$이므로, $(-6)^2$의 제곱근은 $\\pm 6$이다.\n\n[결론] 따라서 옳은 것은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -62,14 +62,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 옳지 않은 것은?",
     "choices": [
-      "$\\\\sqrt{5^2} = 5$",
-      "$-(\\\\sqrt{11})^2 = -11$",
-      "$\\\\sqrt{(-7)^2} = 7$",
-      "$(-\\\\sqrt{6})^2 = -6$",
-      "$\\\\sqrt{16} = 4$"
+      "$\\sqrt{5^2} = 5$",
+      "$-(\\sqrt{11})^2 = -11$",
+      "$\\sqrt{(-7)^2} = 7$",
+      "$(-\\sqrt{6})^2 = -6$",
+      "$\\sqrt{16} = 4$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 제곱근의 기본 성질 $(\\\\sqrt{a})^2 = a$, $(-\\\\sqrt{a})^2 = a$ (단, $a \\\\gt 0$)를 이용한다.\n\n[조건 정리]\n양수 $a$에 대하여\n- $(\\\\sqrt{a})^2 = a$\n- $(-\\\\sqrt{a})^2 = a$\n- $\\\\sqrt{a^2} = a$\n- $\\\\sqrt{(-a)^2} = a$\n\n[풀이 과정]\n① $\\\\sqrt{5^2} = 5$ (옳음)\n② $-(\\\\sqrt{11})^2 = -(11) = -11$ (옳음)\n③ $\\\\sqrt{(-7)^2} = 7$ (옳음)\n④ $(-\\\\sqrt{6})^2$은 $-\\\\sqrt{6}$을 제곱한 것이므로 양수인 $6$이 되어야 한다. $-6$이라 하였으므로 옳지 않다.\n⑤ $\\\\sqrt{16} = \\\\sqrt{4^2} = 4$ (옳음)\n\n[결론] 따라서 옳지 않은 것은 ④이다.",
+    "solution": "[키포인트] 제곱근의 기본 성질 $(\\sqrt{a})^2 = a$, $(-\\sqrt{a})^2 = a$ (단, $a \\gt 0$)를 이용한다.\n\n[조건 정리]\n양수 $a$에 대하여\n- $(\\sqrt{a})^2 = a$\n- $(-\\sqrt{a})^2 = a$\n- $\\sqrt{a^2} = a$\n- $\\sqrt{(-a)^2} = a$\n\n[풀이 과정]\n① $\\sqrt{5^2} = 5$ (옳음)\n② $-(\\sqrt{11})^2 = -(11) = -11$ (옳음)\n③ $\\sqrt{(-7)^2} = 7$ (옳음)\n④ $(-\\sqrt{6})^2$은 $-\\sqrt{6}$을 제곱한 것이므로 양수인 $6$이 되어야 한다. $-6$이라 하였으므로 옳지 않다.\n⑤ $\\sqrt{16} = \\sqrt{4^2} = 4$ (옳음)\n\n[결론] 따라서 옳지 않은 것은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -97,7 +97,7 @@ window.questionBank = [
       "개수세기"
     ],
     "wide": false,
-    "content": "다음 보기 중에서 무리수로 나타내어지는 것의 개수는?\n<보기>\n$\\\\sqrt{\\\\frac{4}{25}}, \\\\pi, \\\\sqrt{9}, 0.11\\dot{5}, \\\\sqrt{11}, 2+\\\\sqrt{3}, \\\\sqrt{1000}$",
+    "content": "다음 보기 중에서 무리수로 나타내어지는 것의 개수는?\n<보기>\n$\\sqrt{\\frac{4}{25}}, \\pi, \\sqrt{9}, 0.11\\dot{5}, \\sqrt{11}, 2+\\sqrt{3}, \\sqrt{1000}$",
     "choices": [
       "2",
       "3",
@@ -106,7 +106,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "③",
-    "solution": "[키포인트] 유리수는 분수 꼴로 나타낼 수 있는 수이고, 무리수는 순환하지 않는 무한소수이다.\n\n[조건 정리]\n- 유리수: $\\\\sqrt{\\\\text{제곱수}}$, 순환소수, 유한소수 등\n- 무리수: $\\\\pi$, $\\\\sqrt{\\\\text{비제곱수}}$ 등\n\n[풀이 과정]\n- $\\\\sqrt{\\\\frac{4}{25}} = \\\\frac{2}{5}$ (유리수)\n- $\\\\pi$ (무리수)\n- $\\\\sqrt{9} = 3$ (유리수)\n- $0.11\\dot{5}$ (순환소수이므로 유리수)\n- $\\\\sqrt{11}$ (무리수)\n- $2+\\\\sqrt{3}$ (유리수+무리수이므로 무리수)\n- $\\\\sqrt{1000} = 10\\\\sqrt{10}$ (무리수)\n무리수는 $\\\\pi, \\\\sqrt{11}, 2+\\\\sqrt{3}, \\\\sqrt{1000}$으로 총 4개이다.\n\n[결론] 따라서 정답은 ③이다.",
+    "solution": "[키포인트] 유리수는 분수 꼴로 나타낼 수 있는 수이고, 무리수는 순환하지 않는 무한소수이다.\n\n[조건 정리]\n- 유리수: $\\sqrt{\\text{제곱수}}$, 순환소수, 유한소수 등\n- 무리수: $\\pi$, $\\sqrt{\\text{비제곱수}}$ 등\n\n[풀이 과정]\n- $\\sqrt{\\frac{4}{25}} = \\frac{2}{5}$ (유리수)\n- $\\pi$ (무리수)\n- $\\sqrt{9} = 3$ (유리수)\n- $0.11\\dot{5}$ (순환소수이므로 유리수)\n- $\\sqrt{11}$ (무리수)\n- $2+\\sqrt{3}$ (유리수+무리수이므로 무리수)\n- $\\sqrt{1000} = 10\\sqrt{10}$ (무리수)\n무리수는 $\\pi, \\sqrt{11}, 2+\\sqrt{3}, \\sqrt{1000}$으로 총 4개이다.\n\n[결론] 따라서 정답은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -132,7 +132,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$\\\\sqrt{20-n}$이 자연수가 되도록 하는 자연수 $n$값 중 가장 작은 자연수를 $A$, 가장 큰 자연수를 $B$라 할 때, $A+B$의 값은?",
+    "content": "$\\sqrt{20-n}$이 자연수가 되도록 하는 자연수 $n$값 중 가장 작은 자연수를 $A$, 가장 큰 자연수를 $B$라 할 때, $A+B$의 값은?",
     "choices": [
       "23",
       "24",
@@ -141,7 +141,7 @@ window.questionBank = [
       "27"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\\\sqrt{k}$가 자연수가 되려면 $k$가 $0$보다 큰 제곱수여야 한다.\n\n[조건 정리]\n$20-n$은 $20$보다 작은 양의 제곱수여야 한다. ($n$은 자연수이므로 $20-n \\\\lt 20$)\n\n[풀이 과정]\n$20-n \\\\in \\{1, 4, 9, 16\\}$인 경우를 찾는다.\n- $20-n=1 \\\\implies n=19$\n- $20-n=4 \\\\implies n=16$\n- $20-n=9 \\\\implies n=11$\n- $20-n=16 \\\\implies n=4$\n가능한 자연수 $n$은 $4, 11, 16, 19$이다.\n따라서 가장 작은 자연수 $A=4$, 가장 큰 자연수 $B=19$이다.\n$A+B = 4+19 = 23$\n\n[결론] 따라서 구하는 값은 23이다.",
+    "solution": "[키포인트] $\\sqrt{k}$가 자연수가 되려면 $k$가 $0$보다 큰 제곱수여야 한다.\n\n[조건 정리]\n$20-n$은 $20$보다 작은 양의 제곱수여야 한다. ($n$은 자연수이므로 $20-n \\lt 20$)\n\n[풀이 과정]\n$20-n \\in \\{1, 4, 9, 16\\}$인 경우를 찾는다.\n- $20-n=1 \\implies n=19$\n- $20-n=4 \\implies n=16$\n- $20-n=9 \\implies n=11$\n- $20-n=16 \\implies n=4$\n가능한 자연수 $n$은 $4, 11, 16, 19$이다.\n따라서 가장 작은 자연수 $A=4$, 가장 큰 자연수 $B=19$이다.\n$A+B = 4+19 = 23$\n\n[결론] 따라서 구하는 값은 23이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -162,16 +162,16 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 수직선과 직각삼각형 $ABC$를 그리고, 점 $A$를 중심으로 하고 $\\\\overline{AC}$를 반지름으로 하는 원을 그린 것이다. 원이 수직선과 만나는 두 점을 각각 $P, Q$라 할 때, $P-Q$의 값은? [4점]\n<svg width=\"280\" height=\"150\" viewBox=\"0 0 280 150\" xmlns=\"http://www.w3.org/2000/svg\">\n<defs>\n<marker id=\"arrow_r\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker>\n<marker id=\"arrow_l\" markerWidth=\"10\" markerHeight=\"10\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M6,0 L6,6 L0,3 z\" fill=\"black\"/></marker>\n</defs>\n<line x1=\"20\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1.2\" marker-end=\"url(#arrow_r)\" marker-start=\"url(#arrow_l)\"/>\n<path d=\"M 25.15,120 A 84.85,84.85 0 0 1 194.85,120\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n<line x1=\"110\" y1=\"120\" x2=\"170\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/>\n<line x1=\"170\" y1=\"120\" x2=\"170\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/>\n<line x1=\"110\" y1=\"120\" x2=\"170\" y2=\"120\" stroke=\"black\" stroke-width=\"1.2\"/>\n<text x=\"110\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">A</text>\n<text x=\"160\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">B</text>\n<text x=\"175\" y=\"55\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">C</text>\n<text x=\"195\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">P</text>\n<text x=\"25\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">Q</text>\n<text x=\"20\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">-1</text>\n<text x=\"50\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">0</text>\n<text x=\"80\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">1</text>\n<text x=\"110\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">2</text>\n<text x=\"140\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">3</text>\n<text x=\"170\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">4</text>\n<text x=\"200\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">5</text>\n</svg>",
+    "content": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 수직선과 직각삼각형 $ABC$를 그리고, 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원을 그린 것이다. 원이 수직선과 만나는 두 점을 각각 $P, Q$라 할 때, $P-Q$의 값은? [4점]\n<svg width=\"280\" height=\"150\" viewBox=\"0 0 280 150\" xmlns=\"http://www.w3.org/2000/svg\">\n<defs>\n<marker id=\"arrow_r\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker>\n<marker id=\"arrow_l\" markerWidth=\"10\" markerHeight=\"10\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M6,0 L6,6 L0,3 z\" fill=\"black\"/></marker>\n</defs>\n<line x1=\"20\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"black\" stroke-width=\"1.2\" marker-end=\"url(#arrow_r)\" marker-start=\"url(#arrow_l)\"/>\n<path d=\"M 25.15,120 A 84.85,84.85 0 0 1 194.85,120\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n<line x1=\"110\" y1=\"120\" x2=\"170\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/>\n<line x1=\"170\" y1=\"120\" x2=\"170\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/>\n<line x1=\"110\" y1=\"120\" x2=\"170\" y2=\"120\" stroke=\"black\" stroke-width=\"1.2\"/>\n<text x=\"110\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">A</text>\n<text x=\"160\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">B</text>\n<text x=\"175\" y=\"55\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">C</text>\n<text x=\"195\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">P</text>\n<text x=\"25\" y=\"115\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">Q</text>\n<text x=\"20\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">-1</text>\n<text x=\"50\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">0</text>\n<text x=\"80\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">1</text>\n<text x=\"110\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">2</text>\n<text x=\"140\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">3</text>\n<text x=\"170\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">4</text>\n<text x=\"200\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\" font-family=\"serif\">5</text>\n</svg>",
     "choices": [
-      "$-4\\\\sqrt{2}$",
+      "$-4\\sqrt{2}$",
       "$0$",
-      "$2\\\\sqrt{2}$",
+      "$2\\sqrt{2}$",
       "$4$",
-      "$4\\\\sqrt{2}$"
+      "$4\\sqrt{2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 수직선 위 점의 좌표에 적용한다.\n\n1단계: 직각삼각형 $ABC$에서 밑변 $\\\\overline{AB}$의 길이는 $4-2=2$이고, 높이 $\\\\overline{BC}$의 길이는 $2$이다.\n피타고라스 정리에 의해 빗변 $\\\\overline{AC}$의 길이는 $\\\\sqrt{2^2 + 2^2} = \\\\sqrt{8} = 2\\\\sqrt{2}$이다.\n\n2단계: 점 $A$를 중심으로 하고 $\\\\overline{AC}$를 반지름으로 하는 원이 수직선과 만나는 점 $P$, $Q$의 좌표는 중심인 점 $A$의 좌표 $2$를 기준으로 반지름만큼 더하거나 뺀 값이다.\n$P = 2 + 2\\\\sqrt{2}$, $Q = 2 - 2\\\\sqrt{2}$이다.\n\n3단계: 구하고자 하는 값 $P-Q$를 계산하면\n$(2 + 2\\\\sqrt{2}) - (2 - 2\\\\sqrt{2}) = 4\\\\sqrt{2}$이다.\n\n[결론] 따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 수직선 위 점의 좌표에 적용한다.\n\n1단계: 직각삼각형 $ABC$에서 밑변 $\\overline{AB}$의 길이는 $4-2=2$이고, 높이 $\\overline{BC}$의 길이는 $2$이다.\n피타고라스 정리에 의해 빗변 $\\overline{AC}$의 길이는 $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$이다.\n\n2단계: 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원이 수직선과 만나는 점 $P$, $Q$의 좌표는 중심인 점 $A$의 좌표 $2$를 기준으로 반지름만큼 더하거나 뺀 값이다.\n$P = 2 + 2\\sqrt{2}$, $Q = 2 - 2\\sqrt{2}$이다.\n\n3단계: 구하고자 하는 값 $P-Q$를 계산하면\n$(2 + 2\\sqrt{2}) - (2 - 2\\sqrt{2}) = 4\\sqrt{2}$이다.\n\n[결론] 따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -199,14 +199,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 두 실수의 대소 관계가 옳지 않은 것은?",
     "choices": [
-      "$\\\\sqrt{2}+1 \\\\lt \\\\sqrt{3}+1$",
-      "$5-\\\\sqrt{6} \\\\lt 2-\\\\sqrt{6}$",
-      "$\\\\sqrt{11}-1 \\\\gt 2$",
-      "$\\\\sqrt{7}-3 \\\\lt \\\\sqrt{8}-3$",
-      "$\\\\sqrt{2}+\\\\sqrt{3} \\\\lt \\\\sqrt{3}+\\\\sqrt{5}$"
+      "$\\sqrt{2}+1 \\lt \\sqrt{3}+1$",
+      "$5-\\sqrt{6} \\lt 2-\\sqrt{6}$",
+      "$\\sqrt{11}-1 \\gt 2$",
+      "$\\sqrt{7}-3 \\lt \\sqrt{8}-3$",
+      "$\\sqrt{2}+\\sqrt{3} \\lt \\sqrt{3}+\\sqrt{5}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 양변에 같은 수를 더하거나 빼도 부등호의 방향은 바뀌지 않음을 이용한다.\n\n[풀이 과정]\n① 양변에서 $1$을 빼면 $\\\\sqrt{2} \\\\lt \\\\sqrt{3}$ (참)\n② 양변에 $\\\\sqrt{6}$을 더하면 $5 \\\\lt 2$가 되어 거짓이다.\n③ 양변에 $1$을 더하면 $\\\\sqrt{11} \\\\gt 3$. 즉, $\\\\sqrt{11} \\\\gt \\\\sqrt{9}$이므로 참이다.\n④ 양변에 $3$을 더하면 $\\\\sqrt{7} \\\\lt \\\\sqrt{8}$ (참)\n⑤ 양변에서 $\\\\sqrt{3}$을 빼면 $\\\\sqrt{2} \\\\lt \\\\sqrt{5}$ (참)\n\n[결론] 따라서 옳지 않은 것은 ②이다.",
+    "solution": "[키포인트] 양변에 같은 수를 더하거나 빼도 부등호의 방향은 바뀌지 않음을 이용한다.\n\n[풀이 과정]\n① 양변에서 $1$을 빼면 $\\sqrt{2} \\lt \\sqrt{3}$ (참)\n② 양변에 $\\sqrt{6}$을 더하면 $5 \\lt 2$가 되어 거짓이다.\n③ 양변에 $1$을 더하면 $\\sqrt{11} \\gt 3$. 즉, $\\sqrt{11} \\gt \\sqrt{9}$이므로 참이다.\n④ 양변에 $3$을 더하면 $\\sqrt{7} \\lt \\sqrt{8}$ (참)\n⑤ 양변에서 $\\sqrt{3}$을 빼면 $\\sqrt{2} \\lt \\sqrt{5}$ (참)\n\n[결론] 따라서 옳지 않은 것은 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -236,14 +236,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 분모를 유리화한 것으로 옳지 않은 것은?",
     "choices": [
-      "$\\\\frac{1}{\\\\sqrt{3}} = \\\\frac{\\\\sqrt{3}}{3}$",
-      "$\\\\frac{3}{\\\\sqrt{8}} = \\\\frac{3\\\\sqrt{2}}{4}$",
-      "$\\\\frac{\\\\sqrt{2}}{5\\\\sqrt{3}} = \\\\frac{\\\\sqrt{6}}{15}$",
-      "$\\\\frac{6}{\\\\sqrt{24}} = \\\\frac{1}{2}$",
-      "$\\\\frac{4}{\\\\sqrt{2}} = 2\\\\sqrt{2}$"
+      "$\\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$",
+      "$\\frac{3}{\\sqrt{8}} = \\frac{3\\sqrt{2}}{4}$",
+      "$\\frac{\\sqrt{2}}{5\\sqrt{3}} = \\frac{\\sqrt{6}}{15}$",
+      "$\\frac{6}{\\sqrt{24}} = \\frac{1}{2}$",
+      "$\\frac{4}{\\sqrt{2}} = 2\\sqrt{2}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 분모와 분자에 같은 무리수를 곱하여 분모를 유리수로 변형한다.\n\n[풀이 과정]\n① $\\\\frac{1 \\\\times \\\\sqrt{3}}{\\\\sqrt{3} \\\\times \\\\sqrt{3}} = \\\\frac{\\\\sqrt{3}}{3}$ (옳음)\n② $\\\\frac{3}{2\\\\sqrt{2}} = \\\\frac{3 \\\\times \\\\sqrt{2}}{2\\\\sqrt{2} \\\\times \\\\sqrt{2}} = \\\\frac{3\\\\sqrt{2}}{4}$ (옳음)\n③ $\\\\frac{\\\\sqrt{2} \\\\times \\\\sqrt{3}}{5\\\\sqrt{3} \\\\times \\\\sqrt{3}} = \\\\frac{\\\\sqrt{6}}{15}$ (옳음)\n④ $\\\\frac{6}{\\\\sqrt{24}} = \\\\frac{6}{2\\\\sqrt{6}} = \\\\frac{3}{\\\\sqrt{6}} = \\\\frac{3\\\\sqrt{6}}{6} = \\\\frac{\\\\sqrt{6}}{2}$이다. $\\\\frac{1}{2}$은 옳지 않은 결과이다.\n⑤ $\\\\frac{4 \\\\times \\\\sqrt{2}}{\\\\sqrt{2} \\\\times \\\\sqrt{2}} = \\\\frac{4\\\\sqrt{2}}{2} = 2\\\\sqrt{2}$ (옳음)\n\n[결론] 따라서 옳지 않은 것은 ④이다.",
+    "solution": "[키포인트] 분모와 분자에 같은 무리수를 곱하여 분모를 유리수로 변형한다.\n\n[풀이 과정]\n① $\\frac{1 \\times \\sqrt{3}}{\\sqrt{3} \\times \\sqrt{3}} = \\frac{\\sqrt{3}}{3}$ (옳음)\n② $\\frac{3}{2\\sqrt{2}} = \\frac{3 \\times \\sqrt{2}}{2\\sqrt{2} \\times \\sqrt{2}} = \\frac{3\\sqrt{2}}{4}$ (옳음)\n③ $\\frac{\\sqrt{2} \\times \\sqrt{3}}{5\\sqrt{3} \\times \\sqrt{3}} = \\frac{\\sqrt{6}}{15}$ (옳음)\n④ $\\frac{6}{\\sqrt{24}} = \\frac{6}{2\\sqrt{6}} = \\frac{3}{\\sqrt{6}} = \\frac{3\\sqrt{6}}{6} = \\frac{\\sqrt{6}}{2}$이다. $\\frac{1}{2}$은 옳지 않은 결과이다.\n⑤ $\\frac{4 \\times \\sqrt{2}}{\\sqrt{2} \\times \\sqrt{2}} = \\frac{4\\sqrt{2}}{2} = 2\\sqrt{2}$ (옳음)\n\n[결론] 따라서 옳지 않은 것은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -270,14 +270,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 계산 결과가 가장 큰 것은?",
     "choices": [
-      "$\\\\sqrt{2} \\\\times \\\\sqrt{5}$",
-      "$\\\\sqrt{42} \\\\div \\\\sqrt{7}$",
-      "$4\\\\sqrt{5} \\\\div \\\\sqrt{10}$",
-      "$\\\\sqrt{3} \\\\div \\\\sqrt{6} \\\\times \\\\sqrt{12}$",
-      "$\\\\sqrt{3} \\\\times \\\\frac{3}{\\\\sqrt{3}}$"
+      "$\\sqrt{2} \\times \\sqrt{5}$",
+      "$\\sqrt{42} \\div \\sqrt{7}$",
+      "$4\\sqrt{5} \\div \\sqrt{10}$",
+      "$\\sqrt{3} \\div \\sqrt{6} \\times \\sqrt{12}$",
+      "$\\sqrt{3} \\times \\frac{3}{\\sqrt{3}}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각 식을 간단히 하여 $\\\\sqrt{k}$ 형태로 비교한다.\n\n[풀이 과정]\n① $\\\\sqrt{2} \\\\times \\\\sqrt{5} = \\\\sqrt{10}$\n② $\\\\sqrt{42} \\\\div \\\\sqrt{7} = \\\\sqrt{6}$\n③ $4\\\\sqrt{5} \\\\div \\\\sqrt{10} = \\\\frac{4}{\\\\sqrt{2}} = 2\\\\sqrt{2} = \\\\sqrt{8}$\n④ $\\\\sqrt{3} \\\\div \\\\sqrt{6} \\\\times \\\\sqrt{12} = \\\\frac{1}{\\\\sqrt{2}} \\\\times \\\\sqrt{12} = \\\\sqrt{6}$\n⑤ $\\\\sqrt{3} \\\\times \\\\frac{3}{\\\\sqrt{3}} = 3 = \\\\sqrt{9}$\n$\\\\sqrt{10}, \\\\sqrt{6}, \\\\sqrt{8}, \\\\sqrt{6}, \\\\sqrt{9}$ 중에서 가장 큰 값은 $\\\\sqrt{10}$이다.\n\n[결론] 따라서 계산 결과가 가장 큰 것은 ①이다.",
+    "solution": "[키포인트] 각 식을 간단히 하여 $\\sqrt{k}$ 형태로 비교한다.\n\n[풀이 과정]\n① $\\sqrt{2} \\times \\sqrt{5} = \\sqrt{10}$\n② $\\sqrt{42} \\div \\sqrt{7} = \\sqrt{6}$\n③ $4\\sqrt{5} \\div \\sqrt{10} = \\frac{4}{\\sqrt{2}} = 2\\sqrt{2} = \\sqrt{8}$\n④ $\\sqrt{3} \\div \\sqrt{6} \\times \\sqrt{12} = \\frac{1}{\\sqrt{2}} \\times \\sqrt{12} = \\sqrt{6}$\n⑤ $\\sqrt{3} \\times \\frac{3}{\\sqrt{3}} = 3 = \\sqrt{9}$\n$\\sqrt{10}, \\sqrt{6}, \\sqrt{8}, \\sqrt{6}, \\sqrt{9}$ 중에서 가장 큰 값은 $\\sqrt{10}$이다.\n\n[결론] 따라서 계산 결과가 가장 큰 것은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -302,16 +302,16 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$\\\\sqrt{32}=a\\\\sqrt{2}, 4\\\\sqrt{3}=\\\\sqrt{b}$일 때, $\\\\sqrt{\\\\frac{b}{a}}$의 값은?",
+    "content": "$\\sqrt{32}=a\\sqrt{2}, 4\\sqrt{3}=\\sqrt{b}$일 때, $\\sqrt{\\frac{b}{a}}$의 값은?",
     "choices": [
-      "$\\\\sqrt{2}$",
-      "$\\\\sqrt{5}$",
-      "$2\\\\sqrt{2}$",
-      "$2\\\\sqrt{3}$",
-      "$3\\\\sqrt{3}$"
+      "$\\sqrt{2}$",
+      "$\\sqrt{5}$",
+      "$2\\sqrt{2}$",
+      "$2\\sqrt{3}$",
+      "$3\\sqrt{3}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $k\\\\sqrt{m} = \\\\sqrt{k^2 m}$임을 이용하여 식을 변형한다.\n\n[조건 정리]\n- $\\\\sqrt{32} = \\\\sqrt{16 \\\\times 2} = 4\\\\sqrt{2}$ 이므로 $a = 4$이다.\n- $4\\\\sqrt{3} = \\\\sqrt{16 \\\\times 3} = \\\\sqrt{48}$ 이므로 $b = 48$이다.\n\n[풀이 과정]\n$\\\\sqrt{\\\\frac{b}{a}} = \\\\sqrt{\\\\frac{48}{4}} = \\\\sqrt{12} = 2\\\\sqrt{3}$이다.\n\n[결론] 따라서 구하는 값은 ④이다.",
+    "solution": "[키포인트] $k\\sqrt{m} = \\sqrt{k^2 m}$임을 이용하여 식을 변형한다.\n\n[조건 정리]\n- $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$ 이므로 $a = 4$이다.\n- $4\\sqrt{3} = \\sqrt{16 \\times 3} = \\sqrt{48}$ 이므로 $b = 48$이다.\n\n[풀이 과정]\n$\\sqrt{\\frac{b}{a}} = \\sqrt{\\frac{48}{4}} = \\sqrt{12} = 2\\sqrt{3}$이다.\n\n[결론] 따라서 구하는 값은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -338,7 +338,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "자연수 $x$에 대하여 $\\\\sqrt{x}$ 이하의 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+ \\cdots + f(16)+f(17)$의 값은?",
+    "content": "자연수 $x$에 대하여 $\\sqrt{x}$ 이하의 자연수의 개수를 $f(x)$라 할 때, $f(1)+f(2)+ \\cdots + f(16)+f(17)$의 값은?",
     "choices": [
       "38",
       "39",
@@ -347,7 +347,7 @@ window.questionBank = [
       "42"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $f(x)$는 $\\\\sqrt{x}$의 정수 부분과 같다.\n\n[풀이 과정]\n- $1 \\le x \\\\lt 4$ 인 경우: $\\\\sqrt{x}$는 $1$ 이상 $2$ 미만이므로 $f(x)=1$. ($x=1, 2, 3$의 $3$개) $\\\\implies 1 \\\\times 3 = 3$\n- $4 \\le x \\\\lt 9$ 인 경우: $\\\\sqrt{x}$는 $2$ 이상 $3$ 미만이므로 $f(x)=2$. ($x=4, 5, 6, 7, 8$의 $5$개) $\\\\implies 2 \\\\times 5 = 10$\n- $9 \\le x \\\\lt 16$ 인 경우: $\\\\sqrt{x}$는 $3$ 이상 $4$ 미만이므로 $f(x)=3$. ($x=9, 10, 11, 12, 13, 14, 15$의 $7$개) $\\\\implies 3 \\\\times 7 = 21$\n- $16 \\le x \\le 17$ 인 경우: $\\\\sqrt{x}$는 $4$ 이상 $5$ 미만이므로 $f(x)=4$. ($x=16, 17$의 $2$개) $\\\\implies 4 \\\\times 2 = 8$\n전체 합 $= 3 + 10 + 21 + 8 = 42$\n\n[결론] 따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] $f(x)$는 $\\sqrt{x}$의 정수 부분과 같다.\n\n[풀이 과정]\n- $1 \\le x \\lt 4$ 인 경우: $\\sqrt{x}$는 $1$ 이상 $2$ 미만이므로 $f(x)=1$. ($x=1, 2, 3$의 $3$개) $\\implies 1 \\times 3 = 3$\n- $4 \\le x \\lt 9$ 인 경우: $\\sqrt{x}$는 $2$ 이상 $3$ 미만이므로 $f(x)=2$. ($x=4, 5, 6, 7, 8$의 $5$개) $\\implies 2 \\times 5 = 10$\n- $9 \\le x \\lt 16$ 인 경우: $\\sqrt{x}$는 $3$ 이상 $4$ 미만이므로 $f(x)=3$. ($x=9, 10, 11, 12, 13, 14, 15$의 $7$개) $\\implies 3 \\times 7 = 21$\n- $16 \\le x \\le 17$ 인 경우: $\\sqrt{x}$는 $4$ 이상 $5$ 미만이므로 $f(x)=4$. ($x=16, 17$의 $2$개) $\\implies 4 \\times 2 = 8$\n전체 합 $= 3 + 10 + 21 + 8 = 42$\n\n[결론] 따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -372,16 +372,16 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$\\\\sqrt{24}+\\\\frac{2}{\\\\sqrt{2}}+\\\\sqrt{2} \\\\times \\\\sqrt{3}$을 계산하면?",
+    "content": "$\\sqrt{24}+\\frac{2}{\\sqrt{2}}+\\sqrt{2} \\times \\sqrt{3}$을 계산하면?",
     "choices": [
-      "$\\\\sqrt{2}+3\\\\sqrt{6}$",
-      "$2\\\\sqrt{3}$",
-      "$2\\\\sqrt{6}$",
-      "$3\\\\sqrt{3}+\\\\sqrt{6}$",
-      "$2\\\\sqrt{2}+5\\\\sqrt{3}$"
+      "$\\sqrt{2}+3\\sqrt{6}$",
+      "$2\\sqrt{3}$",
+      "$2\\sqrt{6}$",
+      "$3\\sqrt{3}+\\sqrt{6}$",
+      "$2\\sqrt{2}+5\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 근호 안의 수를 꺼내고 유리화하여 간단히 한 후 동류항끼리 더한다.\n\n[풀이 과정]\n- $\\\\sqrt{24} = 2\\\\sqrt{6}$\n- $\\\\frac{2}{\\\\sqrt{2}} = \\\\frac{2\\\\sqrt{2}}{2} = \\\\sqrt{2}$\n- $\\\\sqrt{2} \\\\times \\\\sqrt{3} = \\\\sqrt{6}$\n따라서 $2\\\\sqrt{6} + \\\\sqrt{2} + \\\\sqrt{6} = \\\\sqrt{2} + 3\\\\sqrt{6}$이다.\n\n[결론] 따라서 정답은 ①이다.",
+    "solution": "[키포인트] 근호 안의 수를 꺼내고 유리화하여 간단히 한 후 동류항끼리 더한다.\n\n[풀이 과정]\n- $\\sqrt{24} = 2\\sqrt{6}$\n- $\\frac{2}{\\sqrt{2}} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2}$\n- $\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}$\n따라서 $2\\sqrt{6} + \\sqrt{2} + \\sqrt{6} = \\sqrt{2} + 3\\sqrt{6}$이다.\n\n[결론] 따라서 정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -406,16 +406,16 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$\\\\sqrt{3}(\\\\sqrt{5}+4) - \\\\sqrt{5}(2\\\\sqrt{3}-\\\\sqrt{15})$을 계산하면?",
+    "content": "$\\sqrt{3}(\\sqrt{5}+4) - \\sqrt{5}(2\\sqrt{3}-\\sqrt{15})$을 계산하면?",
     "choices": [
-      "$\\\\sqrt{15}-3\\\\sqrt{3}$",
-      "$-\\\\sqrt{15}+9\\\\sqrt{3}$",
-      "$-3\\\\sqrt{15}-\\\\sqrt{3}$",
-      "$-3\\\\sqrt{15}+\\\\sqrt{3}$",
-      "$-\\\\sqrt{15}-9\\\\sqrt{3}$"
+      "$\\sqrt{15}-3\\sqrt{3}$",
+      "$-\\sqrt{15}+9\\sqrt{3}$",
+      "$-3\\sqrt{15}-\\sqrt{3}$",
+      "$-3\\sqrt{15}+\\sqrt{3}$",
+      "$-\\sqrt{15}-9\\sqrt{3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 분배법칙을 사용하여 괄호를 전개한 후 계산한다.\n\n[풀이 과정]\n- 앞 항: $\\\\sqrt{3}(\\\\sqrt{5}+4) = \\\\sqrt{15} + 4\\\\sqrt{3}$\n- 뒤 항: $-\\\\sqrt{5}(2\\\\sqrt{3}-\\\\sqrt{15}) = -2\\\\sqrt{15} + \\\\sqrt{75} = -2\\\\sqrt{15} + 5\\\\sqrt{3}$\n식을 합치면 $(\\\\sqrt{15} + 4\\\\sqrt{3}) + (-2\\\\sqrt{15} + 5\\\\sqrt{3}) = -\\\\sqrt{15} + 9\\\\sqrt{3}$이다.\n\n[결론] 따라서 정답은 ②이다.",
+    "solution": "[키포인트] 분배법칙을 사용하여 괄호를 전개한 후 계산한다.\n\n[풀이 과정]\n- 앞 항: $\\sqrt{3}(\\sqrt{5}+4) = \\sqrt{15} + 4\\sqrt{3}$\n- 뒤 항: $-\\sqrt{5}(2\\sqrt{3}-\\sqrt{15}) = -2\\sqrt{15} + \\sqrt{75} = -2\\sqrt{15} + 5\\sqrt{3}$\n식을 합치면 $(\\sqrt{15} + 4\\sqrt{3}) + (-2\\sqrt{15} + 5\\sqrt{3}) = -\\sqrt{15} + 9\\sqrt{3}$이다.\n\n[결론] 따라서 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
@@ -441,7 +441,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$\\\\sqrt{32}+2\\\\sqrt{24}-\\\\sqrt{2}\\\\left(2+\\\\frac{6}{\\\\sqrt{12}}\\\\right)=a\\\\sqrt{2}+b\\\\sqrt{6}$이 성립할 때, $a-b$의 값을 구하면? (단, $a, b$는 유리수이다.)",
+    "content": "$\\sqrt{32}+2\\sqrt{24}-\\sqrt{2}\\left(2+\\frac{6}{\\sqrt{12}}\\right)=a\\sqrt{2}+b\\sqrt{6}$이 성립할 때, $a-b$의 값을 구하면? (단, $a, b$는 유리수이다.)",
     "choices": [
       "-2",
       "-1",
@@ -450,7 +450,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "②",
-    "solution": "[키포인트] 좌변을 정리하여 $a\\\\sqrt{2}+b\\\\sqrt{6}$ 꼴로 만든다.\n\n[풀이 과정]\n$\\\\sqrt{32} = 4\\\\sqrt{2}$\n$2\\\\sqrt{24} = 4\\\\sqrt{6}$\n$\\\\sqrt{2}\\\\left(2+\\\\frac{6}{\\\\sqrt{12}}\\\\right) = 2\\\\sqrt{2} + \\\\frac{6\\\\sqrt{2}}{2\\\\sqrt{3}} = 2\\\\sqrt{2} + \\\\frac{3\\\\sqrt{2}}{\\\\sqrt{3}} = 2\\\\sqrt{2} + \\\\sqrt{6}$\n전체 식 $= 4\\\\sqrt{2} + 4\\\\sqrt{6} - (2\\\\sqrt{2} + \\\\sqrt{6}) = 2\\\\sqrt{2} + 3\\\\sqrt{6}$\n따라서 $a=2, b=3$이므로, $a-b = 2-3 = -1$이다.\n\n[결론] 따라서 정답은 ②이다.",
+    "solution": "[키포인트] 좌변을 정리하여 $a\\sqrt{2}+b\\sqrt{6}$ 꼴로 만든다.\n\n[풀이 과정]\n$\\sqrt{32} = 4\\sqrt{2}$\n$2\\sqrt{24} = 4\\sqrt{6}$\n$\\sqrt{2}\\left(2+\\frac{6}{\\sqrt{12}}\\right) = 2\\sqrt{2} + \\frac{6\\sqrt{2}}{2\\sqrt{3}} = 2\\sqrt{2} + \\frac{3\\sqrt{2}}{\\sqrt{3}} = 2\\sqrt{2} + \\sqrt{6}$\n전체 식 $= 4\\sqrt{2} + 4\\sqrt{6} - (2\\sqrt{2} + \\sqrt{6}) = 2\\sqrt{2} + 3\\sqrt{6}$\n따라서 $a=2, b=3$이므로, $a-b = 2-3 = -1$이다.\n\n[결론] 따라서 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -552,14 +552,14 @@ window.questionBank = [
     "wide": false,
     "content": "$x^2+(2p+1)x+9$가 완전제곱식이 될 때, 상수 $p$의 값을 모두 곱하면?",
     "choices": [
-      "$-\\\\frac{35}{4}$",
+      "$-\\frac{35}{4}$",
       "-8",
-      "$-\\\\frac{13}{2}$",
-      "$-\\\\frac{9}{2}$",
-      "$-\\\\frac{15}{4}$"
+      "$-\\frac{13}{2}$",
+      "$-\\frac{9}{2}$",
+      "$-\\frac{15}{4}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 이차식 $x^2+Ax+B$가 완전제곱식이 되려면 $A = \\\\pm 2\\\\sqrt{B}$여야 한다.\n\n[풀이 과정]\n상수항이 $9 = 3^2$이므로, 일차항의 계수 $2p+1$은 $\\\\pm 2 \\\\times 3 = \\\\pm 6$이어야 한다.\n1) $2p+1 = 6 \\\\implies 2p = 5 \\\\implies p = \\\\frac{5}{2}$\n2) $2p+1 = -6 \\\\implies 2p = -7 \\\\implies p = -\\\\frac{7}{2}$\n모든 $p$값의 곱은 $\\\\frac{5}{2} \\\\times \\\\left(-\\\\frac{7}{2}\\\\right) = -\\\\frac{35}{4}$이다.\n\n[결론] 따라서 정답은 ①이다.",
+    "solution": "[키포인트] 이차식 $x^2+Ax+B$가 완전제곱식이 되려면 $A = \\pm 2\\sqrt{B}$여야 한다.\n\n[풀이 과정]\n상수항이 $9 = 3^2$이므로, 일차항의 계수 $2p+1$은 $\\pm 2 \\times 3 = \\pm 6$이어야 한다.\n1) $2p+1 = 6 \\implies 2p = 5 \\implies p = \\frac{5}{2}$\n2) $2p+1 = -6 \\implies 2p = -7 \\implies p = -\\frac{7}{2}$\n모든 $p$값의 곱은 $\\frac{5}{2} \\times \\left(-\\frac{7}{2}\\right) = -\\frac{35}{4}$이다.\n\n[결론] 따라서 정답은 ①이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -657,7 +657,7 @@ window.questionBank = [
       "범위"
     ],
     "wide": false,
-    "content": "$-2 \\\\lt x \\\\lt \\\\frac{1}{3}$일 때, $\\\\sqrt{x^2+4x+4}+\\\\sqrt{9x^2-6x+1}$을 간단히 하면?",
+    "content": "$-2 \\lt x \\lt \\frac{1}{3}$일 때, $\\sqrt{x^2+4x+4}+\\sqrt{9x^2-6x+1}$을 간단히 하면?",
     "choices": [
       "$-2x-3$",
       "$-2x+3$",
@@ -666,7 +666,7 @@ window.questionBank = [
       "$5x+1$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $\\\\sqrt{a^2} = |a|$ 성질을 이용하고 범위에 따른 부호를 판단한다.\n\n[조건 정리]\n$-2 \\\\lt x \\\\lt \\\\frac{1}{3}$ 일 때, $x+2 \\\\gt 0$ 이고 $3x-1 \\\\lt 0$ 이다.\n\n[풀이 과정]\n$\\\\sqrt{x^2+4x+4} = \\\\sqrt{(x+2)^2} = |x+2| = x+2$\n$\\\\sqrt{9x^2-6x+1} = \\\\sqrt{(3x-1)^2} = |3x-1| = -(3x-1) = -3x+1$\n두 식의 합은 $(x+2) + (-3x+1) = -2x+3$ 이다.\n\n[결론] 따라서 정답은 ②이다.",
+    "solution": "[키포인트] $\\sqrt{a^2} = |a|$ 성질을 이용하고 범위에 따른 부호를 판단한다.\n\n[조건 정리]\n$-2 \\lt x \\lt \\frac{1}{3}$ 일 때, $x+2 \\gt 0$ 이고 $3x-1 \\lt 0$ 이다.\n\n[풀이 과정]\n$\\sqrt{x^2+4x+4} = \\sqrt{(x+2)^2} = |x+2| = x+2$\n$\\sqrt{9x^2-6x+1} = \\sqrt{(3x-1)^2} = |3x-1| = -(3x-1) = -3x+1$\n두 식의 합은 $(x+2) + (-3x+1) = -2x+3$ 이다.\n\n[결론] 따라서 정답은 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -724,10 +724,10 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서술형1] 다음 수의 제곱근을 풀이 과정을 쓰고 구하시오.\n(1) $36$의 제곱근을 구하면?\n(2) $\\\\sqrt{81}$의 제곱근을 구하면?",
+    "content": "[서술형1] 다음 수의 제곱근을 풀이 과정을 쓰고 구하시오.\n(1) $36$의 제곱근을 구하면?\n(2) $\\sqrt{81}$의 제곱근을 구하면?",
     "choices": [],
-    "answer": "(1) $\\\\pm 6$, (2) $\\\\pm 3$",
-    "solution": "[키포인트] 제곱하여 $a$가 되는 수(양수 기준 $\\\\pm\\\\sqrt{a}$)를 찾는다.\n\n[풀이 과정]\n(1) $6^2 = 36$, $(-6)^2 = 36$ 이므로 $36$의 제곱근은 $\\\\pm 6$이다.\n(2) $\\\\sqrt{81} = 9$이다. $9$의 제곱근은 $3^2=9, (-3)^2=9$ 이므로 $\\\\pm 3$이다.\n\n[결론] 따라서 정답은 (1) $\\\\pm 6$, (2) $\\\\pm 3$이다.",
+    "answer": "(1) $\\pm 6$, (2) $\\pm 3$",
+    "solution": "[키포인트] 제곱하여 $a$가 되는 수(양수 기준 $\\pm\\sqrt{a}$)를 찾는다.\n\n[풀이 과정]\n(1) $6^2 = 36$, $(-6)^2 = 36$ 이므로 $36$의 제곱근은 $\\pm 6$이다.\n(2) $\\sqrt{81} = 9$이다. $9$의 제곱근은 $3^2=9, (-3)^2=9$ 이므로 $\\pm 3$이다.\n\n[결론] 따라서 정답은 (1) $\\pm 6$, (2) $\\pm 3$이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -748,10 +748,10 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서술형2] $6-\\\\sqrt{5}$의 소수 부분을 $x$라고 하면 $\\\\frac{3+x}{3-x}=A+B\\\\sqrt{5}$이다. 이때, 유리수 $A+B$의 값을 풀이 과정을 쓰고 구하시오. (단, $A, B$는 유리수)",
+    "content": "[서술형2] $6-\\sqrt{5}$의 소수 부분을 $x$라고 하면 $\\frac{3+x}{3-x}=A+B\\sqrt{5}$이다. 이때, 유리수 $A+B$의 값을 풀이 과정을 쓰고 구하시오. (단, $A, B$는 유리수)",
     "choices": [],
-    "answer": "$\\\\frac{1}{5}$",
-    "solution": "[키포인트] 소수 부분 $x = (\\\\text{전체 수}) - (\\\\text{정수 부분})$임을 이용한다.\n\n[풀이 과정]\n$2 \\\\lt \\\\sqrt{5} \\\\lt 3$ 이므로 $-3 \\\\lt -\\\\sqrt{5} \\\\lt -2$이다.\n$6$을 더하면 $3 \\\\lt 6-\\\\sqrt{5} \\\\lt 4$ 이므로 정수 부분은 $3$이다.\n따라서 소수 부분 $x = (6-\\\\sqrt{5}) - 3 = 3-\\\\sqrt{5}$이다.\n$\\\\frac{3+x}{3-x} = \\\\frac{3+(3-\\\\sqrt{5})}{3-(3-\\\\sqrt{5})} = \\\\frac{6-\\\\sqrt{5}}{\\\\sqrt{5}} = \\\\frac{6\\\\sqrt{5}-5}{5} = -1 + \\\\frac{6}{5}\\\\sqrt{5}$ 이다.\n$A = -1$, $B = \\\\frac{6}{5}$ 이므로 $A+B = -1 + \\\\frac{6}{5} = \\\\frac{1}{5}$이다.\n\n[결론] 따라서 $A+B$의 값은 $\\\\frac{1}{5}$이다.",
+    "answer": "$\\frac{1}{5}$",
+    "solution": "[키포인트] 소수 부분 $x = (\\text{전체 수}) - (\\text{정수 부분})$임을 이용한다.\n\n[풀이 과정]\n$2 \\lt \\sqrt{5} \\lt 3$ 이므로 $-3 \\lt -\\sqrt{5} \\lt -2$이다.\n$6$을 더하면 $3 \\lt 6-\\sqrt{5} \\lt 4$ 이므로 정수 부분은 $3$이다.\n따라서 소수 부분 $x = (6-\\sqrt{5}) - 3 = 3-\\sqrt{5}$이다.\n$\\frac{3+x}{3-x} = \\frac{3+(3-\\sqrt{5})}{3-(3-\\sqrt{5})} = \\frac{6-\\sqrt{5}}{\\sqrt{5}} = \\frac{6\\sqrt{5}-5}{5} = -1 + \\frac{6}{5}\\sqrt{5}$ 이다.\n$A = -1$, $B = \\frac{6}{5}$ 이므로 $A+B = -1 + \\frac{6}{5} = \\frac{1}{5}$이다.\n\n[결론] 따라서 $A+B$의 값은 $\\frac{1}{5}$이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -775,7 +775,7 @@ window.questionBank = [
     "content": "[서술형3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 $44$이고, 넓이의 합은 $65$이다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.\n(1) 두 정사각형의 둘레의 길이의 합이 $44$임을 등식으로 나타내시오.\n(2) 두 정사각형의 넓이의 합이 $65$임을 등식으로 나타내시오.\n(3) 곱셈 공식을 이용하여 두 정사각형의 둘레의 길이의 곱을 구하시오.",
     "choices": [],
     "answer": "(1) $4x+4y=44$, (2) $x^2+y^2=65$, (3) $448$",
-    "solution": "[키포인트] 도형의 길이와 넓이 조건을 식화하고 곱셈 공식 변형을 이용한다.\n\n[풀이 과정]\n(1) 둘레의 합: $4x+4y = 44$ (또는 $x+y=11$)\n(2) 넓이의 합: $x^2+y^2 = 65$\n(3) 둘레의 길이의 곱 $4x \\\\times 4y = 16xy$를 구해야 한다.\n$(x+y)^2 = x^2+y^2+2xy$ 에 (1), (2)의 결과를 대입하면 $11^2 = 65 + 2xy \\\\implies 121 - 65 = 2xy \\\\implies 56 = 2xy \\\\implies xy = 28$ 이다.\n따라서 둘레의 곱은 $16 \\\\times 28 = 448$이다.\n\n[결론] 따라서 구하는 값은 $448$이다.",
+    "solution": "[키포인트] 도형의 길이와 넓이 조건을 식화하고 곱셈 공식 변형을 이용한다.\n\n[풀이 과정]\n(1) 둘레의 합: $4x+4y = 44$ (또는 $x+y=11$)\n(2) 넓이의 합: $x^2+y^2 = 65$\n(3) 둘레의 길이의 곱 $4x \\times 4y = 16xy$를 구해야 한다.\n$(x+y)^2 = x^2+y^2+2xy$ 에 (1), (2)의 결과를 대입하면 $11^2 = 65 + 2xy \\implies 121 - 65 = 2xy \\implies 56 = 2xy \\implies xy = 28$ 이다.\n따라서 둘레의 곱은 $16 \\times 28 = 448$이다.\n\n[결론] 따라서 구하는 값은 $448$이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -806,3 +806,52 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented"
   }
 ];
+
+const REWRITTEN_SOLUTIONS = {
+  1: "[키포인트] 제곱근의 정의와 양의 제곱근의 표기를 구분한다.\\n정석 풀이: ① $64$의 제곱근은 $\\pm8$이다. ② $\\sqrt{(-3)^2}=3$이다. ③ ‘제곱근 6’은 $\\sqrt6$을 뜻하므로 옳다. ④ $\\sqrt{25}=5$의 제곱근은 $\\pm\\sqrt5$이다. ⑤ $(-6)^2=36$의 제곱근은 $\\pm6$이다.\\n따라서 정답은 ③이다.",
+  2: "[키포인트] 제곱근을 제곱한 값과 음의 수를 제곱한 값은 구분하여 계산한다.\\n정석 풀이: ① $\\sqrt{5^2}=5$, ② $-(\\sqrt{11})^2=-11$, ③ $\\sqrt{(-7)^2}=7$, ⑤ $\\sqrt{16}=4$이므로 모두 옳다. ④는 $(-\\sqrt6)^2=6$이어야 하는데 $-6$으로 나타내었으므로 옳지 않다.\\n따라서 정답은 ④이다.",
+  3: "[키포인트] 제곱근과 소수의 종류를 판별하여 무리수의 개수를 센다.\\n정석 풀이: $\\sqrt{\\dfrac4{25}}=\\dfrac25$, $\\sqrt9=3$, $0.11\\dot5$는 유리수이다. 반면 $\\pi$, $\\sqrt{11}$, $2+\\sqrt3$, $\\sqrt{1000}=10\\sqrt{10}$은 무리수이다. 따라서 무리수는 $4$개이다.\\n따라서 정답은 ③이다.",
+  4: "[키포인트] 제곱근이 자연수가 되려면 근호 안의 수가 양의 제곱수여야 한다.\\n정석 풀이: $20-n$이 $20$보다 작은 양의 제곱수이므로 $20-n\\in\\{1,4,9,16\\}$이다. 이에 따라 $n=19,16,11,4$이고, 가장 작은 값과 가장 큰 값은 각각 $A=4$, $B=19$이다. 따라서 $A+B=4+19=23$이다.\\n따라서 정답은 ①이다.",
+  6: "[키포인트] 같은 수를 더하거나 빼는 것은 부등호의 방향에 영향을 주지 않는다.\\n정석 풀이: ①은 $\\sqrt2<\\sqrt3$, ④는 $\\sqrt7<\\sqrt8$, ⑤는 $\\sqrt2<\\sqrt5$이므로 옳다. ③도 $\\sqrt{11}>3=\\sqrt9$이므로 옳다. ②에 $\\sqrt6$을 더하면 $5<2$가 되어 거짓이다.\\n따라서 정답은 ②이다.",
+  7: "[키포인트] 분자와 분모에 같은 무리수를 곱하여 분모를 유리수로 만든다.\\n정석 풀이: ① $\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}$, ② $\\dfrac3{\\sqrt8}=\\dfrac3{2\\sqrt2}=\\dfrac{3\\sqrt2}{4}$, ③ $\\dfrac{\\sqrt2}{5\\sqrt3}=\\dfrac{\\sqrt6}{15}$, ⑤ $\\dfrac4{\\sqrt2}=2\\sqrt2$이다. ④는 $\\dfrac6{\\sqrt{24}}=\\dfrac6{2\\sqrt6}=\\dfrac{\\sqrt6}{2}$이므로 $\\dfrac12$가 아니다.\\n따라서 정답은 ④이다.",
+  8: "[키포인트] 각 식을 간단히 하여 같은 형태로 비교한다.\\n정석 풀이: ① $\\sqrt2\\times\\sqrt5=\\sqrt{10}$, ② $\\sqrt{42}\\div\\sqrt7=\\sqrt6$, ③ $4\\sqrt5\\div\\sqrt{10}=2\\sqrt2=\\sqrt8$, ④ $\\sqrt3\\div\\sqrt6\\times\\sqrt{12}=\\sqrt6$, ⑤ $\\sqrt3\\times\\dfrac3{\\sqrt3}=3=\\sqrt9$이다. $\\sqrt{10}$이 가장 크므로\\n따라서 정답은 ①이다.",
+  9: "[키포인트] 제곱근의 성질로 $a,b$를 정한 뒤 대입한다.\\n정석 풀이: $\\sqrt{32}=4\\sqrt2$이므로 $a=4$이고, $4\\sqrt3=\\sqrt{48}$이므로 $b=48$이다. 따라서 $\\sqrt{\\dfrac ba}=\\sqrt{\\dfrac{48}{4}}=\\sqrt{12}=2\\sqrt3$이다.\\n따라서 정답은 ④이다.",
+  15: "[키포인트] 곱셈 공식을 전개하여 각 보기의 계수를 비교한다.\\n정석 풀이: ① $(x+3)(x-7)=x^2-4x-21$, ② $(2x+y)^2=4x^2+4xy+y^2$, ③ $(x+5)^2=x^2+10x+25$, ④ $(x+5)(x-5)=x^2-25$이다. ⑤의 좌변은 $(x+3)(3x-4)=3x^2+5x-12$인데 우변은 $3x^2-5x-12$이므로 옳지 않다.\\n따라서 정답은 ⑤이다.",
+  21: "[키포인트] 어떤 수의 제곱근은 제곱하여 그 수가 되는 두 수를 구하는 것이다.\\n정석 풀이: (1) $6^2=36$, $(-6)^2=36$이므로 $36$의 제곱근은 $\\pm6$이다. (2) $\\sqrt{81}=9$이고 $3^2=9$, $(-3)^2=9$이므로 $\\sqrt{81}$의 제곱근은 $\\pm3$이다.\\n따라서 구하는 값은 (1) $\\pm6$, (2) $\\pm3$이다.",
+  22: "[키포인트] 소수 부분은 수에서 정수 부분을 뺀 값이다.\\n정석 풀이: $2<\\sqrt5<3$이므로 $3<6-\\sqrt5<4$이다. 정수 부분은 $3$이고 소수 부분은 $x=3-\\sqrt5$이다. 따라서 $\\dfrac{3+x}{3-x}=\\dfrac{6-\\sqrt5}{\\sqrt5}=\\dfrac{6\\sqrt5-5}{5}=-1+\\dfrac65\\sqrt5$이다. 그러므로 $A=-1$, $B=\\dfrac65$이고 $A+B=\\dfrac15$이다.\\n따라서 구하는 값은 $A+B=\\dfrac15$이다.",
+  23: "[키포인트] 둘레와 넓이의 조건을 식으로 나타낸 뒤 곱셈 공식으로 $xy$를 구한다.\\n정석 풀이: (1) 두 정사각형의 둘레의 합은 $4x+4y=44$이다. (2) 넓이의 합은 $x^2+y^2=65$이다. (3) $x+y=11$이므로 $(x+y)^2=x^2+y^2+2xy$에서 $121=65+2xy$, 따라서 $xy=28$이다. 두 둘레의 곱은 $(4x)(4y)=16xy=16\\times28=448$이다.\\n따라서 구하는 값은 (1) $4x+4y=44$, (2) $x^2+y^2=65$, (3) $448$이다.",
+  24: "[키포인트] 두 다항식을 인수분해하여 공통으로 나타나는 인수를 찾는다.\\n정석 풀이: $2x^2-5x-3=(2x+1)(x-3)$이고, $x^2-8x+15=(x-3)(x-5)$이다. 두 식에 공통으로 포함된 인수는 $x-3$이다.\\n따라서 구하는 값은 공통인수 $x-3$이다."
+};
+for (const question of window.questionBank) {
+  if (REWRITTEN_SOLUTIONS[question.id]) question.solution = REWRITTEN_SOLUTIONS[question.id];
+}
+// 2026-08-26 v2.1 solution format normalization
+const FORMAT_V21_SOLUTIONS = {
+  1: "[키포인트] 제곱근의 정의와 양의 제곱근의 표기를 구분한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: ① $64$의 제곱근은 $\\pm8$이다. ② $\\sqrt{(-3)^2}=3$이다. ③ ‘제곱근 6’은 $\\sqrt6$을 뜻하므로 옳다. ④ $\\sqrt{25}=5$의 제곱근은 $\\pm\\sqrt5$이다. ⑤ $(-6)^2=36$의 제곱근은 $\\pm6$이다.\n따라서 정답은 ③이다.",
+  2: "[키포인트] 제곱근을 제곱한 값과 음의 수를 제곱한 값은 구분하여 계산한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: ① $\\sqrt{5^2}=5$, ② $-(\\sqrt{11})^2=-11$, ③ $\\sqrt{(-7)^2}=7$, ⑤ $\\sqrt{16}=4$이므로 모두 옳다. ④는 $(-\\sqrt6)^2=6$이어야 하는데 $-6$으로 나타내었으므로 옳지 않다.\n따라서 정답은 ④이다.",
+  3: "[키포인트] 제곱근과 소수의 종류를 판별하여 무리수의 개수를 센다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: $\\sqrt{\\dfrac4{25}}=\\dfrac25$, $\\sqrt9=3$, $0.11\\dot5$는 유리수이다. 반면 $\\pi$, $\\sqrt{11}$, $2+\\sqrt3$, $\\sqrt{1000}=10\\sqrt{10}$은 무리수이다. 따라서 무리수는 $4$개이다.\n따라서 정답은 ③이다.",
+  4: "[키포인트] 제곱근이 자연수가 되려면 근호 안의 수가 양의 제곱수여야 한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: $20-n$이 $20$보다 작은 양의 제곱수이므로 $20-n\\in\\{1,4,9,16\\}$이다. 이에 따라 $n=19,16,11,4$이고, 가장 작은 값과 가장 큰 값은 각각 $A=4$, $B=19$이다. 따라서 $A+B=4+19=23$이다.\n따라서 정답은 ①이다.",
+  5: "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 수직선 위 점의 좌표에 적용한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 직각삼각형 $ABC$에서 밑변 $\\overline{AB}$의 길이는 $4-2=2$이고, 높이 $\\overline{BC}$의 길이는 $2$이다.\n피타고라스 정리에 의해 빗변 $\\overline{AC}$의 길이는 $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$이다.\n\n2단계: 점 $A$를 중심으로 하고 $\\overline{AC}$를 반지름으로 하는 원이 수직선과 만나는 점 $P$, $Q$의 좌표는 중심인 점 $A$의 좌표 $2$를 기준으로 반지름만큼 더하거나 뺀 값이다.\n$P = 2 + 2\\sqrt{2}$, $Q = 2 - 2\\sqrt{2}$이다.\n\n3단계: 구하고자 하는 값 $P-Q$를 계산하면\n$(2 + 2\\sqrt{2}) - (2 - 2\\sqrt{2}) = 4\\sqrt{2}$이다.\n따라서 정답은 ⑤이다.",
+  6: "[키포인트] 같은 수를 더하거나 빼는 것은 부등호의 방향에 영향을 주지 않는다.\n조건 정리: 문제에서 주어진 조건과 구하려는 값을 풀이에 필요한 식으로 정리한다.\n풀이 방향: 조건에서 얻은 식을 순서대로 계산하여 구하려는 값을 확정한다.\n정석 풀이: ①은 $\\sqrt2<\\sqrt3$, ④는 $\\sqrt7<\\sqrt8$, ⑤는 $\\sqrt2<\\sqrt5$이므로 옳다. ③도 $\\sqrt{11}>3=\\sqrt9$이므로 옳다. ②에 $\\sqrt6$을 더하면 $5<2$가 되어 거짓이다.\n따라서 정답은 ②이다.",
+  7: "[키포인트] 분자와 분모에 같은 무리수를 곱하여 분모를 유리수로 만든다.\n조건 정리: 문제에서 주어진 조건과 구하려는 값을 풀이에 필요한 식으로 정리한다.\n풀이 방향: 조건에서 얻은 식을 순서대로 계산하여 구하려는 값을 확정한다.\n정석 풀이: ① $\\dfrac1{\\sqrt3}=\\dfrac{\\sqrt3}{3}$, ② $\\dfrac3{\\sqrt8}=\\dfrac3{2\\sqrt2}=\\dfrac{3\\sqrt2}{4}$, ③ $\\dfrac{\\sqrt2}{5\\sqrt3}=\\dfrac{\\sqrt6}{15}$, ⑤ $\\dfrac4{\\sqrt2}=2\\sqrt2$이다. ④는 $\\dfrac6{\\sqrt{24}}=\\dfrac6{2\\sqrt6}=\\dfrac{\\sqrt6}{2}$이므로 $\\dfrac12$가 아니다.\n따라서 정답은 ④이다.",
+  8: "[키포인트] 각 식을 간단히 하여 같은 형태로 비교한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: ① $\\sqrt2\\times\\sqrt5=\\sqrt{10}$, ② $\\sqrt{42}\\div\\sqrt7=\\sqrt6$, ③ $4\\sqrt5\\div\\sqrt{10}=2\\sqrt2=\\sqrt8$, ④ $\\sqrt3\\div\\sqrt6\\times\\sqrt{12}=\\sqrt6$, ⑤ $\\sqrt3\\times\\dfrac3{\\sqrt3}=3=\\sqrt9$이다. $\\sqrt{10}$이 가장 크므로\n따라서 정답은 ①이다.",
+  9: "[키포인트] 제곱근의 성질로 $a,b$를 정한 뒤 대입한다.\n조건 정리: 문제에서 주어진 조건과 구하려는 값을 풀이에 필요한 식으로 정리한다.\n풀이 방향: 조건에서 얻은 식을 순서대로 계산하여 구하려는 값을 확정한다.\n정석 풀이: $\\sqrt{32}=4\\sqrt2$이므로 $a=4$이고, $4\\sqrt3=\\sqrt{48}$이므로 $b=48$이다. 따라서 $\\sqrt{\\dfrac ba}=\\sqrt{\\dfrac{48}{4}}=\\sqrt{12}=2\\sqrt3$이다.\n따라서 정답은 ④이다.",
+  10: "[키포인트] $f(x)$는 $\\sqrt{x}$의 정수 부분과 같다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: - $1 \\le x \\lt 4$ 인 경우: $\\sqrt{x}$는 $1$ 이상 $2$ 미만이므로 $f(x)=1$. ($x=1, 2, 3$의 $3$개) $\\implies 1 \\times 3 = 3$\n- $4 \\le x \\lt 9$ 인 경우: $\\sqrt{x}$는 $2$ 이상 $3$ 미만이므로 $f(x)=2$. ($x=4, 5, 6, 7, 8$의 $5$개) $\\implies 2 \\times 5 = 10$\n- $9 \\le x \\lt 16$ 인 경우: $\\sqrt{x}$는 $3$ 이상 $4$ 미만이므로 $f(x)=3$. ($x=9, 10, 11, 12, 13, 14, 15$의 $7$개) $\\implies 3 \\times 7 = 21$\n- $16 \\le x \\le 17$ 인 경우: $\\sqrt{x}$는 $4$ 이상 $5$ 미만이므로 $f(x)=4$. ($x=16, 17$의 $2$개) $\\implies 4 \\times 2 = 8$\n전체 합 $= 3 + 10 + 21 + 8 = 42$\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ⑤이다.",
+  11: "[키포인트] 근호 안의 수를 꺼내고 유리화하여 간단히 한 후 동류항끼리 더한다.\n조건 정리: 문제에서 주어진 조건과 구하려는 값을 풀이에 필요한 식으로 정리한다.\n풀이 방향: 조건에서 얻은 식을 순서대로 계산하여 구하려는 값을 확정한다.\n정석 풀이: - $\\sqrt{24} = 2\\sqrt{6}$\n- $\\frac{2}{\\sqrt{2}} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2}$\n- $\\sqrt{2} \\times \\sqrt{3} = \\sqrt{6}$\n따라서 정답은 ①이다.",
+  12: "[키포인트] 분배법칙을 사용하여 괄호를 전개한 후 계산한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: - 앞 항: $\\sqrt{3}(\\sqrt{5}+4) = \\sqrt{15} + 4\\sqrt{3}$\n- 뒤 항: $-\\sqrt{5}(2\\sqrt{3}-\\sqrt{15}) = -2\\sqrt{15} + \\sqrt{75} = -2\\sqrt{15} + 5\\sqrt{3}$\n식을 합치면 $(\\sqrt{15} + 4\\sqrt{3}) + (-2\\sqrt{15} + 5\\sqrt{3}) = -\\sqrt{15} + 9\\sqrt{3}$이다.\n따라서 정답은 ②이다.",
+  13: "[키포인트] 좌변을 정리하여 $a\\sqrt{2}+b\\sqrt{6}$ 꼴로 만든다.\n조건 정리: 문제에서 주어진 조건과 구하려는 값을 풀이에 필요한 식으로 정리한다.\n풀이 방향: 조건에서 얻은 식을 순서대로 계산하여 구하려는 값을 확정한다.\n정석 풀이: $\\sqrt{32} = 4\\sqrt{2}$\n$2\\sqrt{24} = 4\\sqrt{6}$\n$\\sqrt{2}\\left(2+\\frac{6}{\\sqrt{12}}\\right) = 2\\sqrt{2} + \\frac{6\\sqrt{2}}{2\\sqrt{3}} = 2\\sqrt{2} + \\frac{3\\sqrt{2}}{\\sqrt{3}} = 2\\sqrt{2} + \\sqrt{6}$\n전체 식 $= 4\\sqrt{2} + 4\\sqrt{6} - (2\\sqrt{2} + \\sqrt{6}) = 2\\sqrt{2} + 3\\sqrt{6}$\n따라서 정답은 ②이다.",
+  14: "[키포인트] 분배법칙을 이용해 식을 전개하고 각 항의 계수를 비교한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: $(2x+a)(3x+5) = 6x^2 + 10x + 3ax + 5a = 6x^2 + (10+3a)x + 5a$ 이다.\n상수항을 비교하면 $5a = 10$ 이므로 $a = 2$이다.\n$x$의 계수를 비교하면 $b = 10+3a = 10+3(2) = 16$이다.\n따라서 정답은 ④이다.",
+  15: "[키포인트] 곱셈 공식을 전개하여 각 보기의 계수를 비교한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: ① $(x+3)(x-7)=x^2-4x-21$, ② $(2x+y)^2=4x^2+4xy+y^2$, ③ $(x+5)^2=x^2+10x+25$, ④ $(x+5)(x-5)=x^2-25$이다. ⑤의 좌변은 $(x+3)(3x-4)=3x^2+5x-12$인데 우변은 $3x^2-5x-12$이므로 옳지 않다.\n따라서 정답은 ⑤이다.",
+  16: "[키포인트] 이차식 $x^2+Ax+B$가 완전제곱식이 되려면 $A = \\pm 2\\sqrt{B}$여야 한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: 상수항이 $9 = 3^2$이므로, 일차항의 계수 $2p+1$은 $\\pm 2 \\times 3 = \\pm 6$이어야 한다.\n1) $2p+1 = 6 \\implies 2p = 5 \\implies p = \\frac{5}{2}$\n2) $2p+1 = -6 \\implies 2p = -7 \\implies p = -\\frac{7}{2}$\n모든 $p$값의 곱은 $\\frac{5}{2} \\times \\left(-\\frac{7}{2}\\right) = -\\frac{35}{4}$이다.\n따라서 정답은 ①이다.",
+  17: "[키포인트] 곱셈 공식을 이용하여 식을 전개하고 동류항을 정리한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: $(3x-y)^2 = 9x^2 - 6xy + y^2$\n$(2x+y)(2x-y) = 4x^2 - y^2$\n주어진 식 $= (9x^2 - 6xy + y^2) - (4x^2 - y^2) = 5x^2 - 6xy + 2y^2$ 이다.\n$x^2$의 계수 $a = 5$, $y^2$의 계수 $b = 2$이다.\n따라서 정답은 ⑤이다.",
+  18: "[키포인트] 각 식을 인수분해하여 $(x-2)$가 포함되는지 확인한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: ① $x(x-2)$ (인수 가짐)\n② $(x-2)^2$ (인수 가짐)\n③ $x^2+x-2 = (x+2)(x-1)$ (인수 갖지 않음)\n④ $(x+3)(x-2)$ (인수 가짐)\n⑤ $(x+2)(x-2)$ (인수 가짐)\n따라서 정답은 ③이다.",
+  19: "[키포인트] $\\sqrt{a^2} = |a|$ 성질을 이용하고 범위에 따른 부호를 판단한다.\n조건 정리: $-2 \\lt x \\lt \\frac{1}{3}$ 일 때, $x+2 \\gt 0$ 이고 $3x-1 \\lt 0$ 이다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: $\\sqrt{x^2+4x+4} = \\sqrt{(x+2)^2} = |x+2| = x+2$\n$\\sqrt{9x^2-6x+1} = \\sqrt{(3x-1)^2} = |3x-1| = -(3x-1) = -3x+1$\n두 식의 합은 $(x+2) + (-3x+1) = -2x+3$ 이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ②이다.",
+  20: "[키포인트] 공통인수로 묶어 인수분해한 후 곱셈 공식의 변형을 활용한다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: $x^2y+xy^2-x-y = xy(x+y)-(x+y) = (x+y)(xy-1)$ 이다.\n$x+y=4$를 대입하면 $4(xy-1) = 16$ 이므로 $xy-1 = 4$, 즉 $xy = 5$이다.\n$x^2+y^2 = (x+y)^2 - 2xy = 4^2 - 2(5) = 16-10 = 6$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ⑤이다.",
+  21: "[키포인트] 어떤 수의 제곱근은 제곱하여 그 수가 되는 두 수를 구하는 것이다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: (1) $6^2=36$, $(-6)^2=36$이므로 $36$의 제곱근은 $\\pm6$이다. (2) $\\sqrt{81}=9$이고 $3^2=9$, $(-3)^2=9$이므로 $\\sqrt{81}$의 제곱근은 $\\pm3$이다.\n따라서 구하는 값은 (1) $\\pm 6$, (2) $\\pm 3$이다.",
+  22: "[키포인트] 소수 부분은 수에서 정수 부분을 뺀 값이다.\n조건 정리: 주어진 식의 계수·근·부호 조건과 구하려는 값을 정리한다.\n풀이 방향: 식의 구조를 정리한 뒤 조건에 맞는 공식과 계산을 순서대로 적용한다.\n정석 풀이: $2<\\sqrt5<3$이므로 $3<6-\\sqrt5<4$이다. 정수 부분은 $3$이고 소수 부분은 $x=3-\\sqrt5$이다. 따라서 $\\dfrac{3+x}{3-x}=\\dfrac{6-\\sqrt5}{\\sqrt5}=\\dfrac{6\\sqrt5-5}{5}=-1+\\dfrac65\\sqrt5$이다. 그러므로 $A=-1$, $B=\\dfrac65$이고 $A+B=\\dfrac15$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 구하는 값은 $\\frac{1}{5}$이다.",
+  23: "[키포인트] 둘레와 넓이의 조건을 식으로 나타낸 뒤 곱셈 공식으로 $xy$를 구한다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: (1) 두 정사각형의 둘레의 합은 $4x+4y=44$이다. (2) 넓이의 합은 $x^2+y^2=65$이다. (3) $x+y=11$이므로 $(x+y)^2=x^2+y^2+2xy$에서 $121=65+2xy$, 따라서 $xy=28$이다. 두 둘레의 곱은 $(4x)(4y)=16xy=16\\times28=448$이다.\n따라서 구하는 값은 (1) $4x+4y=44$, (2) $x^2+y^2=65$, (3) $448$이다.",
+  24: "[키포인트] 두 다항식을 인수분해하여 공통으로 나타나는 인수를 찾는다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: $2x^2-5x-3=(2x+1)(x-3)$이고, $x^2-8x+15=(x-3)(x-5)$이다. 두 식에 공통으로 포함된 인수는 $x-3$이다.\n따라서 구하는 값은 (1) $(2x+1)(x-3), (x-3)(x-5)$, (2) $x-3$이다."
+};
+for (const question of window.questionBank) {
+  if (Object.prototype.hasOwnProperty.call(FORMAT_V21_SOLUTIONS, question.id)) question.solution = FORMAT_V21_SOLUTIONS[question.id];
+}

@@ -1,8 +1,9 @@
-window.examTitle="25_제일고_2학기_기말_고2_확률과통계_기출";window.archiveStatus="metadata_and_prompt_transcription_only";const U={"확률분포":["H15-PS-05",5],"통계적 추정":["H15-PS-06",6]};function q(id,u,t,c,ch=[]){const[k,o]=U[u];return{id,level:"고2",category:u,originalCategory:u,standardCourse:"확률과 통계",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags:[t,u,"확률과 통계"],wide:t==="서술형",content:c,...(ch.length?{choices:ch}:{}),answer:"",solution:""}}
-window.questionBank=[
+window.examTitle = "25_제일고_2학기_기말_고2_확률과통계_기출";
+
+window.questionBank = [
   {
     "id": 1,
-    "level": "고2",
+    "level": "중",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -12,12 +13,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "확률변수 $X$가 이항분포 $B(48,p)$를 따르고 $V(X)=9$일 때, $p$의 값을 구하면? (단, $0\\le p<\\\\dfrac12$이다.) [3.5점]",
+    "content": "확률변수 $X$가 이항분포 $B(48,p)$를 따르고 $V(X)=9$일 때, $p$의 값을 구하면? (단, $0\\le p<\\dfrac12$이다.) [3.5점]",
     "choices": [
       "$\\dfrac13$",
       "$\\dfrac14$",
@@ -26,15 +26,16 @@ window.questionBank=[
       "$\\dfrac17$"
     ],
     "answer": "②",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 주어진 확률변수의 분포와 확률 조건을 식으로 정리하여 계산한다.\n조건 정리: 확률변수의 분포, 매개변수 조건과 구하려는 확률·기댓값을 정리한다.\n풀이 방향: 분포의 정의와 확률의 성질을 이용하여 필요한 확률과 기댓값을 차례로 계산한다.\n정석 풀이: 이항분포의 분산은 np(1−p)이므로 48p(1−p)=9, 즉 16p²−16p+3=0이다. 인수분해하면 (4p−1)(4p−3)=0이어서 p=1/4 또는 3/4인데, p<1/2 조건을 만족하는 것은 p=1/4이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 2,
-    "level": "고2",
+    "level": "하",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -44,7 +45,6 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
@@ -58,15 +58,16 @@ window.questionBank=[
       "여수발 제주도행 비행기의 비행 시간"
     ],
     "answer": "⑤",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 셀 수 있는 값을 갖는지, 연속된 구간의 값을 갖는지 구분한다.\n조건 정리: 정지 횟수, 자녀 수, 득점 수, 당첨 개수는 정수처럼 셀 수 있는 값이고, 비행 시간은 구간의 모든 실수값을 가질 수 있다.\n풀이 방향: 각 확률변수의 값의 형태를 비교하여 연속확률변수를 고른다.\n정석 풀이: 출퇴근길 신호등 정지 횟수, 특정 성별의 자녀 수, 경기 득점 수, 당첨된 개수는 모두 하나씩 세는 이산확률변수이다. 반면 비행 시간은 $3.2$시간, $3.21$시간처럼 연속된 실수값을 가질 수 있으므로 연속확률변수이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 3,
-    "level": "고2",
+    "level": "하",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -76,12 +77,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "다음 표는 A고등학교 2학년 1학기 중간고사에서 국어, 영어, 수학 과목에 대한 재석이의 점수와 전체 학생의 점수의 평균, 표준편차를 나타낸 것이다. 전체 학생의 국어, 영어, 수학 과목의 점수가 각각 정규분포를 따른다고 할 때, 세 과목 중에서 재석이의 성적이 상대적으로 가장 높은 과목과 가장 낮은 과목을 순서대로 짝지은 것은? [3.7점]\\n과목: 국어, 영어, 수학\\n재석이의 점수: $70,80,83$점\\n전체 학생의 평균: $55,75,68$점\\n전체 학생의 표준편차: $5,5,10$점",
+    "content": "다음 표는 A고등학교 2학년 1학기 중간고사에서 국어, 영어, 수학 과목에 대한 재석이의 점수와 전체 학생의 점수의 평균, 표준편차를 나타낸 것이다. 전체 학생의 국어, 영어, 수학 과목의 점수가 각각 정규분포를 따른다고 할 때, 세 과목 중에서 재석이의 성적이 상대적으로 가장 높은 과목과 가장 낮은 과목을 순서대로 짝지은 것은? [3.7점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>과목</th><th>국어</th><th>영어</th><th>수학</th></tr></thead><tbody><tr><th>재석이의 점수</th><td>70점</td><td>80점</td><td>83점</td></tr><tr><th>전체 학생의 평균</th><td>55점</td><td>75점</td><td>68점</td></tr><tr><th>전체 학생의 표준편차</th><td>6점</td><td>5점</td><td>10점</td></tr></tbody></table></div>",
     "choices": [
       "국어, 영어",
       "국어, 수학",
@@ -90,15 +91,16 @@ window.questionBank=[
       "영어, 수학"
     ],
     "answer": "①",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 서로 다른 과목의 상대적 성적은 표준점수로 비교한다.\n조건 정리: 표준점수는 점수에서 평균을 뺀 값을 표준편차로 나눈 값이다.\n풀이 방향: 세 과목의 표준점수를 구하여 가장 큰 값과 가장 작은 값을 비교한다.\n정석 풀이: 국어의 표준점수는 $\\dfrac{70-55}{6}=2.5$, 영어는 $\\dfrac{80-75}{5}=1$, 수학은 $\\dfrac{83-68}{10}=1.5$이다. 따라서 가장 높은 상대 성적은 국어이고 가장 낮은 상대 성적은 영어이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 4,
-    "level": "고2",
+    "level": "중",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -108,12 +110,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "확률변수 $X$의 확률질량함수가\\n$P(X=x)=\\\\begin{cases}\\\\dfrac{x+a}{12}&(x=-2,-1,0)\\\\[2pt]\\\\dfrac{ax}{12}&(x=1,2)\\\\end{cases}$\\n일 때, $E(6X)$의 값을 구하면? [3.7점]",
+    "content": "확률변수 $X$의 확률질량함수가\\n$P(X=x)=\\begin{cases}\\dfrac{x+a}{12}&(x=-2,-1,0)\\\\[2pt]\\dfrac{ax}{12}&(x=1,2)\\end{cases}$\\n일 때, $E(6X)$의 값을 구하면? [3.7점]",
     "choices": [
       "$1$",
       "$2$",
@@ -122,15 +123,16 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 확률질량함수의 확률 합이 1이라는 조건으로 $a$를 정한 뒤 기댓값의 선형성을 이용한다.\n조건 정리: $P(X=x)=\\dfrac{x+a}{12}$ $(x=-2,-1,0)$, $P(X=x)=\\dfrac{ax}{12}$ $(x=1,2)$이다.\n풀이 방향: 먼저 모든 확률의 합으로 $a$를 구하고 $E(X)$를 계산한다.\n정석 풀이: 확률의 합이 1이므로 $\\dfrac{a-2+a-1+a+a+2a}{12}=1$이다. 따라서 $6a-3=12$에서 $a=\\dfrac52$이다.\n$E(X)=\\dfrac{-2(a-2)-(a-1)+a+4a}{12}=\\dfrac{2a+5}{12}=\\dfrac56$이므로 $E(6X)=6E(X)=5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 5,
-    "level": "고2",
+    "level": "하",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -140,12 +142,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "어느 모집단은 정규분포 $N(50,64)$를 따른다고 한다. 크기가 $8$인 표본을 임의추출할 때, 표본평균 $\\\\overline X$에 대하여 $E(\\\\overline X^2)$의 값을 구하면? [3.7점]",
+    "content": "어느 모집단은 정규분포 $N(50,64)$를 따른다고 한다. 크기가 $8$인 표본을 임의추출할 때, 표본평균 $\\overline X$에 대하여 $E(\\overline X^2)$의 값을 구하면? [3.7점]",
     "choices": [
       "$2501$",
       "$2508$",
@@ -154,15 +155,16 @@ window.questionBank=[
       "$2564$"
     ],
     "answer": "②",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 표본평균의 분산과 제곱의 평균 사이의 관계를 이용한다.\n조건 정리: 모집단은 $N(50,64)$이고 표본의 크기는 $8$이다.\n풀이 방향: $E(\\overline X)$와 $V(\\overline X)$를 구한 뒤 $E(\\overline X^2)=V(\\overline X)+\\{E(\\overline X)\\}^2$를 적용한다.\n정석 풀이: $E(\\overline X)=50$이고 $V(\\overline X)=\\dfrac{64}{8}=8$이다. 따라서 $E(\\overline X^2)=8+50^2=8+2500=2508$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 6,
-    "level": "고2",
+    "level": "하",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -172,12 +174,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "상자 안에 $4,3,2,1,1$이 각각 적힌 $5$개의 공이 들어 있다. 이 상자에서 $2$개의 공을 임의추출하여 공에 적힌 숫자의 평균을 $\\\\overline X$라 할 때, $E(5\\\\overline X-3)$의 값을 구하면? [3.7점]",
+    "content": "상자 안에 $4,3,2,1,1$이 각각 적힌 $5$개의 공이 들어 있다. 이 상자에서 $2$개의 공을 임의추출하여 공에 적힌 숫자의 평균을 $\\overline X$라 할 때, $E(5\\overline X-3)$의 값을 구하면? [3.7점]",
     "choices": [
       "$8$",
       "$9$",
@@ -186,15 +187,16 @@ window.questionBank=[
       "$12$"
     ],
     "answer": "①",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 무작위 표본평균의 기댓값은 상자 안 전체 숫자의 평균과 같다.\n조건 정리: 공에 적힌 숫자의 합은 $4+3+2+1+1=11$이고 공은 $5$개이다.\n풀이 방향: $E(\\overline X)$를 구한 뒤 기댓값의 선형성을 적용한다.\n정석 풀이: 비복원으로 $2$개를 뽑더라도 각 공이 뽑힐 가능성은 대칭적이므로 $E(\\overline X)=\\dfrac{11}{5}$이다. 그러므로 $E(5\\overline X-3)=5E(\\overline X)-3=5\\times\\dfrac{11}{5}-3=8$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 7,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -204,12 +206,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "어느 학교 학생들의 통학시간은 평균이 $30$, 표준편차가 $\\\\sigma$인 정규분포를 따른다고 한다. 이 학교 학생들을 대상으로 $16$명을 임의로 추출하여 조사한 통학시간의 표본평균 $\\\\overline X$에 대하여 $P(30\\le\\\\overline X\\le36)=0.4772$를 만족시키는 $\\\\sigma$의 값을 표준정규분포표를 이용하여 구하면? [4.0점]\\n$P(0\\le Z\\le0.5)=0.1915$, $P(0\\le Z\\le1.0)=0.3413$, $P(0\\le Z\\le1.5)=0.4332$, $P(0\\le Z\\le2.0)=0.4772$, $P(0\\le Z\\le2.5)=0.4938$",
+    "content": "어느 학교 학생들의 통학시간은 평균이 $30$, 표준편차가 $\\sigma$인 정규분포를 따른다고 한다. 이 학교 학생들을 대상으로 $16$명을 임의로 추출하여 조사한 통학시간의 표본평균 $\\overline X$에 대하여 $P(30\\le\\overline X\\le36)=0.4772$를 만족시키는 $\\sigma$의 값을 표준정규분포표를 이용하여 구하면? [4.0점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></tbody></table></div>",
     "choices": [
       "$8$",
       "$9$",
@@ -218,15 +220,16 @@ window.questionBank=[
       "$12$"
     ],
     "answer": "⑤",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 표본평균의 표준편차를 구한 뒤 주어진 확률을 표준정규분포표와 연결한다.\n조건 정리: 모집단의 평균은 $30$, 표준편차는 $\\sigma$, 표본 크기는 $16$이다.\n풀이 방향: $\\overline X$의 표준편차를 구하고 구간의 양 끝을 표준화한다.\n정석 풀이: $\\overline X$의 평균은 $30$, 표준편차는 $\\dfrac{\\sigma}{\\sqrt{16}}=\\dfrac\\sigma4$이다. 따라서 $P(30\\le\\overline X\\le36)=P\\left(0\\le Z\\le\\dfrac{6}{\\sigma/4}\\right)=P\\left(0\\le Z\\le\\dfrac{24}{\\sigma}\\right)=0.4772$이다. 표에서 $P(0\\le Z\\le2)=0.4772$이므로 $\\dfrac{24}{\\sigma}=2$, 즉 $\\sigma=12$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 8,
-    "level": "고2",
+    "level": "상",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -236,12 +239,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
-      "확률과 통계"
+      "확률과 통계",
+      "그래프"
     ],
     "wide": false,
-    "content": "연속확률변수 $X$가 갖는 값의 범위는 $0\\le X\\le a$이고, $X$의 확률밀도함수의 그래프는 원점에서 시작하여 점 $(b,c)$까지 직선으로 증가한 뒤 점 $(a,0)$까지 직선으로 감소하는 삼각형 모양이다. $P(X\\le b)-P(X\\ge b)=\\\\dfrac13$, $P(X\\le1)=\\\\dfrac16$일 때, $a\\\\times b\\\\times c$의 값을 구하면? (단, $a,b,c$는 상수이다.) [4.0점]",
+    "content": "연속확률변수 $X$가 갖는 값의 범위는 $0\\le X\\le a$이고, $X$의 확률밀도함수의 그래프는 다음과 같다.<br>$P(X\\le b)-P(X\\ge b)=\\dfrac13$, $P(X\\le1)=\\dfrac16$일 때, $a\\times b\\times c$의 값을 구하면? (단, $a,b,c$는 상수이다.) [4.0점]",
     "choices": [
       "$1$",
       "$2$",
@@ -250,15 +253,20 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 삼각형의 넓이와 누적확률을 연결하여 $a,b,c$를 차례로 정한다.\n조건 정리: 전체 삼각형의 넓이는 1이고, $F(x)=P(X\\le x)$라 하자.\n풀이 방향: 먼저 $P(X\\le b)-P(X\\ge b)$로 $F(b)$를 구한 뒤, $1$의 위치를 확인하여 넓이식을 세운다.\n정석 풀이: 연속확률변수이므로 $P(X\\le b)+P(X\\ge b)=1$이다. 따라서 $2F(b)-1=\\dfrac13$에서 $F(b)=\\dfrac23$이다. 왼쪽 작은 삼각형과 전체 삼각형의 넓이 비는 $\\dfrac ba$이므로 $\\dfrac ba=\\dfrac23$, 즉 $b=\\dfrac{2a}{3}$이다.\n$F(1)=\\dfrac16<F(b)$이므로 $1<b$이다. 따라서 $x=1$은 증가하는 직선 부분에 있고, 그때까지의 넓이는 $\\dfrac12\\times1\\times\\dfrac cb=\\dfrac16$이다. 그러므로 $\\dfrac cb=\\dfrac13$이다.\n전체 넓이에서 $\\dfrac12ac=1$이므로 $c=\\dfrac2a$이고, $\\dfrac cb=\\dfrac13$에서 $ab=6$을 얻는다. $b=\\dfrac{2a}{3}$과 $ab=6$을 함께 쓰면 $a=3$, $b=2$, $c=\\dfrac23$이다.\n따라서 $abc=3\\times2\\times\\dfrac23=4$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf",
+    "image": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08.png",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08-solution.png",
+    "imageKind": "graph",
+    "visualAssetStatus": "asset_verified"
   },
   {
     "id": 9,
-    "level": "고2",
+    "level": "중",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -268,12 +276,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "집합 $A=\\{1,2,3\\}$에 대하여 $A$에서 $A$로의 모든 함수 $f$ 중에서 임의로 하나를 택할 때, 치역의 원소의 개수를 확률변수 $X$라고 하자. $E\\\\left(X-\\\\dfrac19\\\\right)$의 값을 구하면? [4.0점]",
+    "content": "집합 $A=\\{1,2,3\\}$에 대하여 $A$에서 $A$로의 모든 함수 $f$ 중에서 임의로 하나를 택할 때, 치역의 원소의 개수를 확률변수 $X$라고 하자. $E\\left(X-\\dfrac19\\right)$의 값을 구하면? [4.0점]",
     "choices": [
       "$1$",
       "$\\dfrac59$",
@@ -282,15 +289,16 @@ window.questionBank=[
       "$3$"
     ],
     "answer": "③",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 치역의 원소 개수별 함수의 개수를 세어 기댓값을 계산한다.\n조건 정리: $A=\\{1,2,3\\}$에서 $A$로 가는 함수는 모두 $3^3=27$개이고, $X$는 치역의 원소 개수이다.\n풀이 방향: 치역의 원소 개수가 1, 2, 3인 경우를 나누어 함수의 개수를 구한다.\n정석 풀이: 치역의 원소 개수가 1이면 상수함수이므로 $3$개이다. 치역으로 사용할 두 원소를 고르는 방법은 $\\binom{3}{2}=3$개이고, 세 원소가 모두 사용되는 함수는 $2^3-2=6$개이므로 이 경우는 $18$개이다. 치역의 원소 개수가 3이면 전단사함수이므로 $3!=6$개이다.\n따라서 $E(X)=\\dfrac{1\\times3+2\\times18+3\\times6}{27}=\\dfrac{19}{9}$이고, $E\\left(X-\\dfrac19\\right)=\\dfrac{19}{9}-\\dfrac19=2$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 10,
-    "level": "고2",
+    "level": "중",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -300,12 +308,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "이항분포 $B(n,p)$를 따르는 확률변수 $X$가 다음 조건을 모두 만족시킬 때, $n+5p$의 값을 구한 것은? (단, $0<p<1$이다.) [4.0점]\\n(가) $P(X=1)=\\\\dfrac{40}{3}\\\\times P(X=0)$\\n(나) $E(X)=8$",
+    "content": "이항분포 $B(n,p)$를 따르는 확률변수 $X$가 다음 조건을 모두 만족시킬 때, $n+5p$의 값을 구한 것은? (단, $0<p<1$이다.) [4.0점]<br><div class=\"question-note-box\">(가) $P(X=1)=\\dfrac{40}{3}\\times P(X=0)$<br>(나) $E(X)=8$</div>",
     "choices": [
       "$21$",
       "$22$",
@@ -314,15 +321,16 @@ window.questionBank=[
       "$25$"
     ],
     "answer": "②",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 이항분포의 두 확률 비와 평균을 이용하여 $n,p$를 결정한다.\n조건 정리: $X\\sim B(n,p)$이고 $P(X=1)=\\dfrac{40}{3}P(X=0)$, $E(X)=8$이다.\n풀이 방향: $P(X=1)$과 $P(X=0)$의 비에서 $np$와 $1-p$의 관계를 구한 뒤 평균 조건과 연립한다.\n정석 풀이: $P(X=1)=np(1-p)^{n-1}$, $P(X=0)=(1-p)^n$이므로 $\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다. 또 $np=E(X)=8$이므로 $\\dfrac8{1-p}=\\dfrac{40}{3}$에서 $1-p=\\dfrac35$, $p=\\dfrac25$이다. 따라서 $n=\\dfrac8{2/5}=20$이고 $n+5p=20+2=22$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 11,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -332,12 +340,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "어느 공장에서 생산되는 과자 $1$봉지의 무게는 평균이 $124\\rm\\,g$, 표준편차가 $6\\rm\\,g$인 정규분포를 따른다고 한다. 이 공장에서 생산된 과자 중 임의추출한 $97$개를 묶어서 한 세트로 판매한다고 할 때, 한 세트의 무게가 $11349\\rm\\,g$ 이하일 확률을 표준정규분포표를 이용하여 구하면? (단, 포장 재료의 무게는 제외) [4.0점]",
+    "content": "어느 공장에서 생산되는 과자 $1$봉지의 무게는 평균이 $124\\rm\\,g$, 표준편차가 $6\\rm\\,g$인 정규분포를 따른다고 한다. 이 공장에서 생산된 과자 중 임의추출한 $9$개를 묶어서 한 세트로 판매한다고 할 때, 한 세트의 무게가 $1134\\rm\\,g$ 이하일 확률을 표준정규분포표를 이용하여 구하면? (단, 포장 재료의 무게는 제외) [4.0점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></tbody></table></div>",
     "choices": [
       "$0.3413$",
       "$0.4772$",
@@ -346,15 +354,16 @@ window.questionBank=[
       "$0.9772$"
     ],
     "answer": "③",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 독립인 제품 무게의 합의 평균과 표준편차를 구하여 표준화한다.\n조건 정리: 한 봉지의 무게는 평균 $124$, 표준편차 $6$인 정규분포이고 $9$개를 한 세트로 묶는다.\n풀이 방향: 합의 분포에서 평균은 9배, 표준편차는 $\\sqrt9$배가 된다는 점을 이용한다.\n정석 풀이: 세트 무게를 $W$라 하면 $E(W)=9\\times124=1116$, $\\sigma_W=6\\sqrt9=18$이다. 따라서 $P(W\\le1134)=P\\left(Z\\le\\dfrac{1134-1116}{18}\\right)=P(Z\\le1)$이다. 표에서 $P(0\\le Z\\le1)=0.3413$이므로 $P(Z\\le1)=0.5+0.3413=0.8413$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 12,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -364,12 +373,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "정규분포를 따르는 어느 모집단에서 표본을 임의추출하여 추정한 모평균 $m$에 대한 신뢰도 $a\\%$의 신뢰구간이 $a\\le m\\le b$일 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [4.0점]\\n<보기>\\nㄱ. 표본의 크기가 일정할 때, 신뢰도가 높아지면 $b-a$ 값은 작아진다.\\nㄴ. 신뢰도가 일정할 때, 표본의 크기가 커지면 $b-a$ 값은 작아진다.\\nㄷ. $b-a$ 값이 일정할 때, 신뢰도가 높아지면 표본의 크기가 커진다.",
+    "content": "정규분포를 따르는 어느 모집단에서 표본을 임의추출하여 추정한 모평균 $m$에 대한 신뢰도 $a\\%$의 신뢰구간이 $a\\le m\\le b$일 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [4.0점]<br>&lt;보기&gt;<br><div class=\"question-note-box\">ㄱ. 표본의 크기가 일정할 때, 신뢰도가 높아지면 $b-a$ 값은 작아진다.<br>ㄴ. 신뢰도가 일정할 때, 표본의 크기가 커지면 $b-a$ 값은 작아진다.<br>ㄷ. $b-a$ 값이 일정할 때, 신뢰도가 높아지면 표본의 크기가 커진다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -378,15 +386,16 @@ window.questionBank=[
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "④",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 신뢰구간의 길이가 신뢰계수와 표본 크기에 따라 어떻게 변하는지 비교한다.\n조건 정리: 신뢰구간의 길이는 $2z\\dfrac{\\sigma}{\\sqrt n}$에 비례한다.\n풀이 방향: 한 조건을 고정했을 때 신뢰도와 표본 크기의 변화가 구간 길이에 미치는 영향을 각각 판단한다.\n정석 풀이: 표본 크기가 일정하면 신뢰도가 높아질수록 $z$가 커지므로 구간의 길이 $b-a$는 커진다. 따라서 ㄱ은 거짓이다. 신뢰도가 일정하면 $z$가 일정하므로 표본 크기가 커질수록 $\\dfrac1{\\sqrt n}$이 작아져 구간의 길이가 작아진다. 따라서 ㄴ은 참이다. 구간의 길이가 일정한데 신뢰도가 높아지면, $z/\\sqrt n$을 일정하게 유지하기 위해 $n$이 커져야 한다. 따라서 ㄷ도 참이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 13,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -396,12 +405,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "표준편차가 $\\\\sigma$인 정규분포를 따르는 모집단에서 크기가 $9$인 표본을 임의추출하여 구한 모평균 $m$에 대한 신뢰도 $95\\%$의 신뢰구간이 $40.2\\le m\\le59.8$이다. 같은 표본을 이용하여 구한 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간에 속하는 자연수의 개수를 구하면? (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0\\le Z\\le1.96)=0.475$, $P(0\\le Z\\le2.58)=0.495$로 계산한다.) [4.0점]",
+    "content": "표준편차가 $\\sigma$인 정규분포를 따르는 모집단에서 크기가 $9$인 표본을 임의추출하여 구한 모평균 $m$에 대한 신뢰도 $95\\%$의 신뢰구간이 $40.2\\le m\\le59.8$이다. 같은 표본을 이용하여 구한 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간에 속하는 자연수의 개수를 구하면? (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0\\le Z\\le1.96)=0.475$, $P(0\\le Z\\le2.58)=0.495$로 계산한다.) [4.0점]",
     "choices": [
       "$21$",
       "$22$",
@@ -410,15 +418,16 @@ window.questionBank=[
       "$25$"
     ],
     "answer": "⑤",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 95% 신뢰구간에서 표본평균과 표준오차를 구한 뒤 99% 구간을 만든다.\n조건 정리: 표본 크기는 $9$, 95% 신뢰구간은 $40.2\\le m\\le59.8$이다.\n풀이 방향: 구간의 중심과 오차한계를 구하고, 신뢰도 99%의 오차한계로 바꾸어 자연수의 개수를 센다.\n정석 풀이: 표본평균은 $\\dfrac{40.2+59.8}{2}=50$이고 95% 오차한계는 $9.8$이다. 따라서 $1.96\\dfrac{\\sigma}{\\sqrt9}=9.8$에서 $\\dfrac\\sigma3=5$이다. 99% 오차한계는 $2.58\\times5=12.9$이므로 신뢰구간은 $50-12.9\\le m\\le50+12.9$, 즉 $37.1\\le m\\le62.9$이다. 이 구간의 자연수는 $38$부터 $62$까지이므로 $62-38+1=25$개이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 14,
-    "level": "고2",
+    "level": "중",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -428,12 +437,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "확률변수 $X$는 정규분포 $N(m,4^2)$을 따르고, 확률변수 $Y$는 정규분포 $N(20,\\\\sigma^2)$을 따른다. 확률변수 $X$의 확률밀도함수 $f(x)$와 두 확률변수 $X,Y$가 다음 조건을 만족시킨다.\\n(가) 모든 실수 $x$에 대하여 $f(x+7)=f(23-x)$이다.\\n(나) $P(X\\ge17)=P(Y\\le17)$\\n$P(X>m-\\\\sigma)$의 값을 표준정규분포표를 이용하여 구한 것은? (단, $\\\\sigma>0$이다.) [4.2점]",
+    "content": "확률변수 $X$는 정규분포 $N(m,4^2)$을 따르고, 확률변수 $Y$는 정규분포 $N(20,\\sigma^2)$을 따른다. 확률변수 $X$의 확률밀도함수 $f(x)$와 두 확률변수 $X,Y$가 다음 조건을 만족시킨다.<br><div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>(가) 모든 실수 $x$에 대하여 $f(x+7)=f(23-x)$이다.</td></tr><tr><td>(나) $P(X\\ge17)=P(Y\\le17)$</td></tr></tbody></table></div><br>$P(X>m-\\sigma)$의 값을 표준정규분포표를 이용하여 구한 것은? (단, $\\sigma>0$이다.) [4.2점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></tbody></table></div>",
     "choices": [
       "$0.6915$",
       "$0.8413$",
@@ -442,30 +451,31 @@ window.questionBank=[
       "$0.9938$"
     ],
     "answer": "③",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 정규분포의 대칭성과 표준화를 이용하여 $m$과 $\\sigma$를 차례로 구한다.\n조건 정리: $X\\sim N(m,4^2)$, $Y\\sim N(20,\\sigma^2)$이고 $f(x+7)=f(23-x)$이다.\n풀이 방향: 밀도함수의 대칭축으로 $m$을 구한 뒤 두 확률의 공통값을 표준화하여 $\\sigma$를 구한다.\n정석 풀이: $f(x+7)=f(23-x)$가 모든 $x$에서 성립하므로 두 입력의 중점인 $\\dfrac{(x+7)+(23-x)}2=15$가 정규분포의 평균이다. 따라서 $m=15$이다.\n$P(X\\ge17)=P\\left(Z\\ge\\dfrac{17-15}{4}\\right)=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다. 조건에 의해 $P(Y\\le17)=0.3085$이고, $P(Z\\le-0.5)=0.3085$이므로 $\\dfrac{17-20}{\\sigma}=-0.5$에서 $\\sigma=6$이다.\n따라서 $P(X>m-\\sigma)=P(X>9)=P\\left(Z>\\dfrac{9-15}{4}\\right)=P(Z>-1.5)=0.5+0.4332=0.9332$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 15,
-    "level": "고2",
-    "category": "통계적 추정",
-    "originalCategory": "통계적 추정",
+    "level": "중",
+    "category": "확률분포",
+    "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H15-PS-06",
-    "standardUnit": "통계적 추정",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "H15-PS-05",
+    "standardUnit": "확률분포",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
-      "통계적 추정",
-      "확률과 통계"
+      "확률과 통계",
+      "확률분포",
+      "표"
     ],
     "wide": false,
-    "content": "어느 과수원에서 수확한 키위의 무게는 평균 $50\\rm\\,g$, 표준편차 $5\\rm\\,g$인 정규분포를 따른다고 한다. 이 키위 중 무게가 $60\\rm\\,g$ 이상인 것을 $1$등급 상품으로 정한다. 이 과수원에서 수확한 키위 중 $2500$개를 임의로 선택할 때 $1$등급 상품이 $57$개 이상일 확률을 아래 표준정규분포표를 이용하여 구한 것은? [4.2점]",
+    "content": "어느 과수원에서 수확한 키위의 무게는 평균 $50\\rm\\,g$, 표준편차 $5\\rm\\,g$인 정규분포를 따른다고 한다. 이 키위 중 무게가 $60\\rm\\,g$ 이상인 것을 $1$등급 상품으로 정한다. 이 과수원에서 수확한 키위 중 $2500$개를 임의로 선택할 때 $1$등급 상품이 $57$개 이상일 확률을 아래 표준정규분포표를 이용하여 구한 것은? [4.2점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.19</td></tr><tr><td>1.0</td><td>0.34</td></tr><tr><td>1.5</td><td>0.43</td></tr><tr><td>2.0</td><td>0.48</td></tr><tr><td>2.5</td><td>0.49</td></tr></tbody></table></div>",
     "choices": [
       "$0.01$",
       "$0.02$",
@@ -474,15 +484,16 @@ window.questionBank=[
       "$0.31$"
     ],
     "answer": "④",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 1등급 상품의 개수를 이항분포로 나타낸 뒤 정규근사한다.\n조건 정리: 한 키위가 1등급일 확률은 $P(X\\ge60)=P(Z\\ge2)=0.5-0.48=0.02$이다.\n풀이 방향: $2500$개 중 1등급 개수를 이항분포로 두고 평균과 표준편차를 구하여 $57$개를 표준화한다.\n정석 풀이: 1등급 상품의 개수를 $Y$라 하면 $Y\\sim B(2500,0.02)$이다. 따라서 $E(Y)=2500\\times0.02=50$, $\\sigma_Y=\\sqrt{2500\\times0.02\\times0.98}=7$이다. 정규근사하면 $P(Y\\ge57)\\approx P\\left(Z\\ge\\dfrac{57-50}{7}\\right)=P(Z\\ge1)$이다. 표에서 $P(0\\le Z\\le1)=0.34$이므로 $P(Z\\ge1)=0.5-0.34=0.16$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 16,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -492,12 +503,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "어느 공장에서 생산되는 제품의 길이 $X$는 평균이 $m$이고 표준편차가 $4$인 정규분포를 따른다고 한다. $P(m\\le X\\le a)=0.3413$일 때, 이 공장에서 생산된 제품 중에서 임의추출한 제품 $16$개의 길이의 표본평균이 $(a-2)$ 이상일 확률을 표준정규분포표를 이용하여 구하면? (단, $a$는 상수이고, 길이의 단위는 $\\rm cm$이다.) [4.2점]",
+    "content": "어느 공장에서 생산되는 제품의 길이 $X$는 평균이 $m$이고 표준편차가 $4$인 정규분포를 따른다고 한다. $P(m\\le X\\le a)=0.3413$일 때, 이 공장에서 생산된 제품 중에서 임의추출한 제품 $16$개의 길이의 표본평균이 $(a-2)$ 이상일 확률을 표준정규분포표를 이용하여 구하면? (단, $a$는 상수이고, 길이의 단위는 $\\rm cm$이다.) [4.2점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></tbody></table></div>",
     "choices": [
       "$0.0062$",
       "$0.0228$",
@@ -506,15 +517,16 @@ window.questionBank=[
       "$0.3085$"
     ],
     "answer": "②",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 표본평균의 분포를 표준화하여 주어진 확률과 표의 값을 연결한다.\n조건 정리: 모집단의 평균은 $m$, 표준편차는 $4$, 표본 크기는 $16$이고 $P(m\\le X\\le a)=0.3413$이다.\n풀이 방향: 먼저 $a-m$을 구한 다음 표본평균의 표준편차로 $a-2$를 표준화한다.\n정석 풀이: $P(m\\le X\\le a)=P\\left(0\\le Z\\le\\dfrac{a-m}{4}\\right)=0.3413$이므로 표에서 $\\dfrac{a-m}{4}=1$이다. 따라서 $a=m+4$이다. 표본평균 $\\overline X$의 표준편차는 $\\dfrac4{\\sqrt{16}}=1$이므로 $a-2=m+2$에 대하여\n$P(\\overline X\\ge a-2)=P(\\overline X\\ge m+2)=P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 17,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -524,12 +536,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "어느 지역 고등학생의 수학 시험 점수는 표준편차가 $10$인 정규분포를 따른다고 한다. 이 지역 고등학생 중에서 $400$명을 임의추출하여 모평균 $m$을 신뢰도 $95\\%$, $a\\%$로 추정한 신뢰구간의 길이는 각각 $l$, $\\\\dfrac34l$이다. $a$의 값을 표준정규분포표를 이용하여 구하면? [4.2점]",
+    "content": "어느 지역 고등학생의 수학 시험 점수는 표준편차가 $10$인 정규분포를 따른다고 한다. 이 지역 고등학생 중에서 $400$명을 임의추출하여 모평균 $m$을 신뢰도 $95\\%$, $a\\%$로 추정한 신뢰구간의 길이는 각각 $l$, $\\dfrac34l$이다. $a$의 값을 표준정규분포표를 이용하여 구하면? [4.2점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.190</td></tr><tr><td>1.0</td><td>0.340</td></tr><tr><td>1.5</td><td>0.430</td></tr><tr><td>2.0</td><td>0.475</td></tr><tr><td>2.5</td><td>0.495</td></tr></tbody></table></div>",
     "choices": [
       "$38$",
       "$64$",
@@ -538,15 +550,16 @@ window.questionBank=[
       "$99$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 신뢰구간의 길이는 신뢰계수에 비례하므로 길이의 비로 새 신뢰계수를 구한다.\n조건 정리: 같은 모집단과 표본 크기 $400$에서 95% 신뢰구간의 길이는 $l$, 다른 신뢰도의 길이는 $\\dfrac34l$이다.\n풀이 방향: 95% 신뢰계수는 표에서 $z=2$로 근사하고, 새 구간의 신뢰계수를 구해 중앙확률로 바꾼다.\n정석 풀이: 신뢰구간의 길이는 $2z\\dfrac{10}{\\sqrt{400}}$이므로 표본 크기와 표준편차가 같을 때 길이의 비는 $z$의 비와 같다. 따라서 새 신뢰도에 대응하는 $z$는 $2\\times\\dfrac34=1.5$이다.\n표에서 $P(0\\le Z\\le1.5)=0.430$이므로 중앙확률은 $2\\times0.430=0.860$이다. 따라서 신뢰도는 $86\\%$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 18,
-    "level": "고2",
+    "level": "상",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -556,12 +569,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "확률분포",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "이산확률변수 $X$에 대한 확률질량함수가 $P(X=n)={}_{100}C_n\\\\left(\\\\dfrac15\\\\right)^n\\\\left(\\\\dfrac45\\\\right)^{100-n}$ $(n=0,1,2,\\ldots,100)$으로 주어질 때, 함수 $f(x)$를 $f(x)=P(X\\ge4x+20)$ $(-5\\le x\\le20)$으로 정의하자. 이때 보기에서 옳은 것을 모두 고른 것은? [4.5점]\\n<보기>\\nㄱ. 확률변수 $X$의 분산은 $16$이다.\\nㄴ. $x_1\\le x_2$이면 $f(x_1)\\le f(x_2)$이다.\\nㄷ. $f(-x)+f(x)<1$을 만족하는 $x$가 적어도 하나 존재한다.",
+    "content": "이산확률변수 $X$에 대한 확률질량함수가 $P(X=n)={}_{100}C_n\\left(\\dfrac15\\right)^n\\left(\\dfrac45\\right)^{100-n}$ $(n=0,1,2,\\ldots,100)$으로 주어질 때, 함수 $f(x)$를 다음과 같이 정의하자.<br><div class=\"question-note-box\">$f(x)=P(X\\ge4x+20)\\quad(-5\\le x\\le20)$</div><br>이때 보기에서 옳은 것을 모두 고른 것은? [4.5점]<br>&lt;보기&gt;<br><div class=\"question-note-box\">ㄱ. 확률변수 $X$의 분산은 $16$이다.<br>ㄴ. $x_1\\le x_2$이면 $f(x_1)\\le f(x_2)$이다.<br>ㄷ. $f(-x)+f(x)<1$을 만족하는 $x$가 적어도 하나 존재한다.</div>",
     "choices": [
       "ㄱ",
       "ㄷ",
@@ -569,16 +581,17 @@ window.questionBank=[
       "ㄱ, ㄷ",
       "ㄱ, ㄴ, ㄷ"
     ],
-    "answer": "①",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "answer": "④",
+    "solution": "[키포인트] ㄷ은 큰 이항확률을 직접 계산하지 않고, 기댓값 $E(X)=20$을 여러 꼬리확률의 합으로 바꾸어 존재성을 확인한다.\n조건 정리: $X\\sim B\\left(100,\\dfrac15\\right)$이므로 $E(X)=20$, $V(X)=16$이다. 또한 $f(x)=P(X\\ge4x+20)$이다.\n풀이 방향: ㄱ은 분산을 계산하고, ㄴ은 $x$가 커질수록 사건 $X\\ge4x+20$이 작아지는 것을 이용한다. ㄷ은 $4x+20$이 반정수가 되도록 몇 개의 $x$를 잡아 확률들을 한꺼번에 비교한다.\n정석 풀이: 먼저\n$V(X)=100\\times\\dfrac15\\times\\dfrac45=16$\n이므로 ㄱ은 참이다.\n\n또 $x_1\\le x_2$이면 $4x_1+20\\le4x_2+20$이므로\n$\\{X\\ge4x_2+20\\}\\subseteq\\{X\\ge4x_1+20\\}$이다.\n따라서 $f(x_1)\\ge f(x_2)$이므로 ㄴ은 거짓이다.\n\n이제 ㄷ을 확인하자.\n$j=0,1,\\ldots,19$에 대하여\n$x_j=\\dfrac{j+\\dfrac12}{4}$\n로 두면 $0<x_j<5$이므로 $x_j$와 $-x_j$는 모두 $f$의 정의역에 들어간다.\n그리고 $X$는 정수값만 가지므로\n$f(-x_j)=P(X\\ge20-j)$,\n$f(x_j)=P(X\\ge21+j)$이다.\n\n따라서 이 20개의 합을 모두 더하면\n$\\displaystyle\\sum_{j=0}^{19}\\{f(-x_j)+f(x_j)\\}\n=P(X\\ge1)+P(X\\ge2)+\\cdots+P(X\\ge40)$\n이 된다.\n\n한편 기댓값의 정의에서\n$E(X)=1P(X=1)+2P(X=2)+\\cdots+100P(X=100)$이다.\n각 항의 계수만큼 같은 확률을 나누어 쓰면\n$E(X)=P(X\\ge1)+P(X\\ge2)+\\cdots+P(X\\ge100)=20$\n으로 정리할 수 있다.\n\n그러므로\n$P(X\\ge1)+\\cdots+P(X\\ge40)<20$\n이다. 실제로 $P(X\\ge41),\\ldots,P(X\\ge100)$이 모두 음수가 아니고, 그중 양수인 항이 있기 때문이다.\n\n따라서 20개의 수\n$f(-x_0)+f(x_0),\\ldots,f(-x_{19})+f(x_{19})$\n의 합이 $20$보다 작으므로, 그중 적어도 하나는 $1$보다 작다.\n즉 $f(-x)+f(x)<1$을 만족하는 $x$가 적어도 하나 존재하므로 ㄷ은 참이다.\n\n옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 19,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -588,12 +601,12 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
     "wide": false,
-    "content": "어느 동물병원에 입원한 반려견의 몸무게를 확률변수 $X$라 할 때, 정규분포를 따르고 다음 조건을 만족한다고 한다.\\n$P(X\\ge4.5)=\\\\dfrac12$\\n$P(X\\le5)+P(Z\\le-1)=1$\\n반려견 중 임의추출한 $25$마리의 몸무게의 표본평균을 $\\\\overline X$라 할 때, $P(\\\\overline X\\ge4.6)$의 값을 표준정규분포표를 이용하여 구하면? (단, 몸무게의 단위는 $\\rm kg$이다.) [4.5점]",
+    "content": "어느 동물병원에 입원한 반려견의 몸무게를 확률변수 $X$라 할 때, 정규분포를 따르고 다음 조건을 만족한다고 한다.<br><div class=\"question-note-box\">$P(X\\ge4.5)=\\dfrac12$<br>$P(X\\le5)+P(Z\\le-1)=1$</div><br>반려견 중 임의추출한 $25$마리의 몸무게의 표본평균을 $\\overline X$라 할 때, $P(\\overline X\\ge4.6)$의 값을 표준정규분포표를 이용하여 구하면? (단, 몸무게의 단위는 $\\rm kg$이다.) [4.5점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.1915</td></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></tbody></table></div>",
     "choices": [
       "$0.1587$",
       "$0.1915$",
@@ -602,15 +615,16 @@ window.questionBank=[
       "$0.4332$"
     ],
     "answer": "①",
-    "solution": "같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 모집단의 평균과 표준편차를 구한 뒤 표본평균을 표준화한다.\n조건 정리: $X$는 정규분포를 따르고 $P(X\\ge4.5)=\\dfrac12$, $P(X\\le5)+P(Z\\le-1)=1$이다.\n풀이 방향: 첫 조건으로 평균을 정하고, 둘째 조건으로 표준편차를 구한 뒤 표본 크기 $25$에 맞게 표준화한다.\n정석 풀이: 정규분포는 평균을 기준으로 대칭이므로 $P(X\\ge4.5)=\\dfrac12$에서 평균은 $4.5$이다. $P(Z\\le-1)=0.1587$이므로 $P(X\\le5)=0.8413=P(Z\\le1)$이다. 따라서 $\\dfrac{5-4.5}{\\sigma}=1$에서 $\\sigma=0.5$이다.\n표본평균의 표준편차는 $\\dfrac{0.5}{\\sqrt{25}}=0.1$이므로 $P(\\overline X\\ge4.6)=P\\left(Z\\ge\\dfrac{4.6-4.5}{0.1}\\right)=P(Z\\ge1)=0.5-0.3413=0.1587$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 20,
-    "level": "고2",
+    "level": "중",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -620,12 +634,11 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "통계적 추정",
       "확률과 통계"
     ],
     "wide": false,
-    "content": "정규분포 $N(m,\\\\sigma^2)$을 따르는 모집단에서 크기가 $n_1$인 표본을 임의추출하여 신뢰도 $95\\%$로 추정한 모평균 $m$의 신뢰구간의 길이는 $l_1$이고, 크기가 $n_2$인 표본을 임의추출하여 신뢰도 $99\\%$로 추정한 모평균의 신뢰구간의 길이는 $l_2$라고 한다. $\\\\dfrac{n_2}{n_1}=25$라 할 때, $\\\\dfrac{l_1}{l_2}$의 값을 구하면? (단, $P(0\\le Z\\le2)=0.475$, $P(0\\le Z\\le2.5)=0.495$로 계산한다.) [4.5점]",
+    "content": "정규분포 $N(m,\\sigma^2)$을 따르는 모집단에서 크기가 $n_1$인 표본을 임의추출하여 신뢰도 $95\\%$로 추정한 모평균 $m$의 신뢰구간의 길이는 $l_1$이고, 크기가 $n_2$인 표본을 임의추출하여 신뢰도 $99\\%$로 추정한 모평균의 신뢰구간의 길이는 $l_2$라고 한다. $\\dfrac{n_2}{n_1}=25$라 할 때, $\\dfrac{l_1}{l_2}$의 값을 구하면? (단, $P(0\\le Z\\le2)=0.475$, $P(0\\le Z\\le2.5)=0.495$로 계산한다.) [4.5점]",
     "choices": [
       "$1$",
       "$2$",
@@ -634,16 +647,17 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "④",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 신뢰구간 길이의 공식에 신뢰도와 표본 크기를 각각 대입한다.\n조건 정리: $l_1=2z_{95}\\dfrac{\\sigma}{\\sqrt{n_1}}$, $l_2=2z_{99}\\dfrac{\\sigma}{\\sqrt{n_2}}$, $\\dfrac{n_2}{n_1}=25$이다.\n풀이 방향: 두 길이의 비에서 공통인 항을 소거하고 표의 신뢰계수를 사용한다.\n정석 풀이: $z_{95}=2$, $z_{99}=2.5$로 근사하면\n$\\dfrac{l_1}{l_2}=\\dfrac{z_{95}}{z_{99}}\\sqrt{\\dfrac{n_2}{n_1}}=\\dfrac2{2.5}\\times5=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 21,
     "choices": [],
-    "level": "고2",
+    "level": "상",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -655,21 +669,23 @@ window.questionBank=[
     "tags": [
       "서술형",
       "확률분포",
-      "확률과 통계"
+      "확률과 통계",
+      "표"
     ],
-    "wide": true,
-    "content": "[서술형 1] 한 개의 주사위를 $n$번 던져 나온 눈의 수가 소수인 횟수를 확률변수 $X$라고 하자. $P\\\\left(\\\\left|X-\\\\dfrac n2\\\\right|\\le9\\\\right)\\ge0.86$을 만족시키는 자연수 $n$의 최댓값을 표준정규분포표를 이용하여 구하는 과정을 구체적으로 서술하시오. (단, $n\\ge40$이다.) [6점, 부분점수 있음]",
+    "wide": false,
+    "content": "[서술형 1] 한 개의 주사위를 $n$번 던져 나온 눈의 수가 소수인 횟수를 확률변수 $X$라고 하자. $P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)\\ge0.86$을 만족시키는 자연수 $n$의 최댓값을 표준정규분포표를 이용하여 구하는 과정을 구체적으로 서술하시오. (단, $n\\ge40$이다.) [6점, 부분점수 있음]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.19</td></tr><tr><td>1.0</td><td>0.34</td></tr><tr><td>1.5</td><td>0.43</td></tr><tr><td>2.0</td><td>0.48</td></tr><tr><td>2.5</td><td>0.49</td></tr></tbody></table></div>",
     "answer": "144",
-    "solution": "풀이: 같은 경우가 중복되지 않도록 경우를 나누어 세고, 각 경우의 수를 합하여 구한다. 주어진 정답과 일치하는 결과는 144이다.",
+    "solution": "[키포인트] 이항분포를 정규분포로 근사하여 주어진 중앙확률 조건을 부등식으로 바꾼다.\n조건 정리: 소수는 $2,3,5$ 세 가지이므로 $X\\sim B\\left(n,\\dfrac12\\right)$이고, $P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)\\ge0.86$이다.\n풀이 방향: $X$를 표준화하여 중앙확률 $0.86$에 대응하는 $z$값을 표에서 찾는다.\n정석 풀이: $E(X)=\\dfrac n2$, $\\sigma_X=\\sqrt{n\\times\\dfrac12\\times\\dfrac12}=\\dfrac{\\sqrt n}{2}$이다. 따라서 정규근사에서\n$P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)=P\\left(|Z|\\le\\dfrac{9}{\\sqrt n/2}\\right)=P\\left(|Z|\\le\\dfrac{18}{\\sqrt n}\\right)$이다. 표에서 $P(0\\le Z\\le1.5)=0.430$이므로 $P(|Z|\\le1.5)=0.86$이다. 중앙확률은 경계값이 클수록 커지므로 $\\dfrac{18}{\\sqrt n}\\ge1.5$이어야 한다.\n$\\sqrt n\\le12$이므로 $n\\le144$이고, 자연수 $n$의 최댓값은 $144$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 구하는 값은 144이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 22,
     "choices": [],
-    "level": "고2",
+    "level": "상",
     "category": "확률분포",
     "originalCategory": "확률분포",
     "standardCourse": "확률과 통계",
@@ -683,19 +699,20 @@ window.questionBank=[
       "확률분포",
       "확률과 통계"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[서술형 2] 주머니 속에 흰 구슬 $4$개, 검은 구슬 $6$개가 들어 있다. $1$이 적힌 카드 $2$장과 $2$가 적힌 카드 $1$장 중 임의의 카드를 한 장 선택하여 카드에 적힌 수만큼 주머니에서 구슬을 임의로 꺼낼 때, 꺼낸 구슬 중에서 흰 구슬의 개수를 확률변수 $X$라 하자. 확률변수 $X$의 확률분포표를 만들고 확률변수 $X$의 평균을 구하는 과정을 구체적으로 서술하시오. [7점, 부분점수 있음]",
     "answer": "8/15",
-    "solution": "풀이: 정답지의 분포표에서 X=0,1,2의 확률은 각각 23/90, 4/9, 2/45이다. 따라서 E(X)=0·(23/90)+1·(4/9)+2·(2/45)=4/9+4/45=20/45+4/45=24/45=8/15이다.",
+    "solution": "[키포인트] 카드 종류별 조건부 확률을 구한 뒤 카드 선택 확률로 가중평균한다.\n조건 정리: $1$이 적힌 카드를 고를 확률은 $\\dfrac23$, $2$가 적힌 카드를 고를 확률은 $\\dfrac13$이다.\n풀이 방향: 카드에 적힌 수가 1인 경우와 2인 경우의 확률분포를 각각 구하고 전체확률정리를 적용한다.\n정석 풀이: 카드 1을 고르면 구슬 한 개를 꺼내므로 $P(X=0\\mid1)=\\dfrac6{10}=\\dfrac35$, $P(X=1\\mid1)=\\dfrac4{10}=\\dfrac25$이다. 카드 2를 고르면 구슬 두 개를 꺼내므로\n$P(X=0\\mid2)=\\dfrac{\\binom62}{\\binom{10}{2}}=\\dfrac13$, $P(X=1\\mid2)=\\dfrac{\\binom41\\binom61}{\\binom{10}{2}}=\\dfrac8{15}$, $P(X=2\\mid2)=\\dfrac{\\binom42}{\\binom{10}{2}}=\\dfrac2{15}$이다.\n따라서 확률분포표는 다음과 같다.\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$X$</th><th>$0$</th><th>$1$</th><th>$2$</th></tr></thead><tbody><tr><th>$P(X=x)$</th><td>$\\dfrac{23}{45}$</td><td>$\\dfrac49$</td><td>$\\dfrac2{45}$</td></tr></tbody></table></div>\n각 확률은 $P(X=0)=\\dfrac23\\times\\dfrac35+\\dfrac13\\times\\dfrac13=\\dfrac{23}{45}$, $P(X=1)=\\dfrac23\\times\\dfrac25+\\dfrac13\\times\\dfrac8{15}=\\dfrac49$, $P(X=2)=\\dfrac13\\times\\dfrac2{15}=\\dfrac2{45}$이다.\n그러므로 $E(X)=0\\times\\dfrac{23}{45}+1\\times\\dfrac49+2\\times\\dfrac2{45}=\\dfrac8{15}$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 구하는 값은 8/15이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   },
   {
     "id": 23,
     "choices": [],
-    "level": "고2",
+    "level": "상",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
@@ -709,13 +726,14 @@ window.questionBank=[
       "통계적 추정",
       "확률과 통계"
     ],
-    "wide": true,
-    "content": "[서술형 3] 모평균이 $m$, 모표준편차가 $\\\\sigma$인 정규분포를 따르는 모집단에 크기가 $36$인 표본을 임의추출하여 얻은 표본평균이 $\\\\overline x$일 때, 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간이 $a\\le m\\le37$이었다. 같은 모집단에서 크기가 $81$인 표본을 임의추출하여 얻은 표본평균이 $\\\\overline x+2$일 때, 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간이 $b\\le m\\le37$이었다. 이때, $a+b$의 값을 구하는 과정을 구체적으로 서술하시오. (단, $P(0\\le Z\\le3)=0.495$로 계산한다.) [7점, 부분점수 있음]",
-    "answer": "45",
-    "solution": "풀이: 문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 45이다.",
+    "wide": false,
+    "content": "[서술형 3] 모평균이 $m$, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에 크기가 $36$인 표본을 임의추출하여 얻은 표본평균이 $\\overline x$일 때, 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간이 $a\\le m\\le37$이었다. 같은 모집단에서 크기가 $81$인 표본을 임의추출하여 얻은 표본평균이 $\\overline x+2$일 때, 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간이 $b\\le m\\le37$이었다. 이때, $a+b$의 값을 구하는 과정을 구체적으로 서술하시오. (단, $P(0\\le Z\\le3)=0.495$로 계산한다.) [7점, 부분점수 있음]",
+    "answer": "54",
+    "solution": "[키포인트] 같은 신뢰도의 신뢰구간에서 오차한계와 표본평균의 관계를 비교한다.\n조건 정리: 99% 신뢰구간의 신뢰계수는 $3$이고, 표본 크기는 각각 $36,81$이다. 첫 구간의 상한과 둘째 구간의 상한이 모두 $37$이다.\n풀이 방향: 두 구간의 상한식을 세워 $\\sigma$와 첫 표본평균을 구한 뒤 하한을 계산한다.\n정석 풀이: 첫 표본평균을 $\\overline x$라 하면 첫 구간의 상한에서 $\\overline x+3\\dfrac\\sigma6=37$, 즉 $\\overline x+\\dfrac\\sigma2=37$이다. 둘째 표본평균은 $\\overline x+2$이므로 둘째 구간의 상한에서 $\\overline x+2+3\\dfrac\\sigma9=37$, 즉 $\\overline x+2+\\dfrac\\sigma3=37$이다.\n두 식을 빼면 $2-\\dfrac\\sigma6=0$이므로 $\\sigma=12$이다. 따라서 $\\overline x=37-6=31$, 첫 하한 $a=31-6=25$이다. 둘째 표본평균은 $33$이고 오차한계는 $3\\times\\dfrac{12}{9}=4$이므로 $b=33-4=29$이다.\n따라서 $a+b=25+29=54$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 구하는 값은 54이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "sourcePdf": "2025_제일고2_확통_2기말.pdf"
   }
 ];

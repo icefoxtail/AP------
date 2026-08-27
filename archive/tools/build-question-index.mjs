@@ -190,6 +190,20 @@ function normalizePath(value) {
     return String(value || '').replace(/\\/g, '/').replace(/^exams\//, '').trim();
 }
 
+function normalizeSchoolKey(value) {
+    return String(value || '')
+        .normalize('NFKC')
+        .trim()
+        .replace(/\s+/g, '')
+        .toLocaleLowerCase();
+}
+
+function normalizeExamYear(value) {
+    const n = Number(value);
+    if (!Number.isInteger(n) || n < 0) return null;
+    return n < 100 ? 2000 + n : n;
+}
+
 /*
  * 인덱스 대상 시험지 파일 수집.
  *
@@ -384,6 +398,12 @@ for (const file of examFiles) {
                 sourceOrdinal: slot + 1,
                 grade: String(meta.grade || '').trim(),
                 subject: String(meta.subject || '').trim(),
+                school: String(meta.school || '').trim(),
+                schoolKey: normalizeSchoolKey(meta.school),
+                examYear: normalizeExamYear(meta.year),
+                semester: String(meta.semester || '').trim(),
+                examType: String(meta.examType || '').trim(),
+                sourceExamKey: sourceFile,
                 id,
                 standardUnit,
                 standardUnitKey,
@@ -483,6 +503,12 @@ const index = finalRecords.map(r => ({
     sourceOrdinal: r.sourceOrdinal,
     grade: r.grade,
     subject: r.subject,
+    school: r.school,
+    schoolKey: r.schoolKey,
+    examYear: r.examYear,
+    semester: r.semester,
+    examType: r.examType,
+    sourceExamKey: r.sourceExamKey,
     id: r.id,
     standardUnit: r.standardUnit,
     standardUnitKey: r.standardUnitKey,

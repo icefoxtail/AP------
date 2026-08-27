@@ -1,8 +1,6 @@
 window.examTitle = "25_매산여고_2학기_기말_고2_수학II";
-window.archiveStatus = "metadata_and_prompt_transcription_only";
-const UNIT={"함수의 극한":["H15-M2-01",1],"함수의 연속":["H15-M2-02",2],"미분계수":["H15-M2-03",3],"도함수":["H15-M2-04",4],"접선의 방정식":["H15-M2-05",5],"도함수의 활용":["H15-M2-06",6],"부정적분":["H15-M2-07",7],"정적분":["H15-M2-08",8],"정적분의 활용":["H15-M2-09",9]};
-function makeQuestion(id,level,category,unit,questionType,content,choices=[],extra={}){const[standardUnitKey,standardUnitOrder]=UNIT[unit];return{id,level,category,originalCategory:unit,standardCourse:"수학II",standardUnitKey,standardUnit:unit,standardUnitOrder,questionType,layoutTag:"grid",tags:[questionType,category],wide:questionType==="서술형",content,...(choices.length?{choices}:{}),...extra,answer:"",solution:""};}
-window.questionBank=[
+
+window.questionBank = [
   {
     "id": 1,
     "level": "하",
@@ -14,10 +12,7 @@ window.questionBank=[
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "도함수"
-    ],
+    "tags": [],
     "wide": false,
     "content": "함수 $f(x)=ax^2+bx$에 대하여 $f(1)=5$, $f'(-1)=2$일 때, 상수 $a$, $b$에 대하여 $ab$의 값은? [3.5점]",
     "choices": [
@@ -28,11 +23,11 @@ window.questionBank=[
       "$9$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] $f(1)$과 $f'(-1)$에서 $a,b$에 대한 두 일차방정식을 만든다.\n조건 정리: $f(1)=a+b=5$이고 $f'(x)=2ax+b$이므로 $f'(-1)=-2a+b=2$이다.\n풀이 방향: 두 식을 연립하여 $a,b$를 구한 뒤 $ab$를 계산한다.\n정석 풀이: $(a+b)-(-2a+b)=3a=3$이므로 $a=1$이다. 따라서 $b=4$이고 $ab=4$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 2,
@@ -45,10 +40,7 @@ window.questionBank=[
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "정적분의 계산"
-    ],
+    "tags": [],
     "wide": false,
     "content": "정적분 $\\displaystyle\\int_0^2\\left(\\dfrac{1}{2}x-5\\right)dx$의 값은? [3.5점]",
     "choices": [
@@ -59,27 +51,24 @@ window.questionBank=[
       "$-10$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 일차식의 정적분은 항별로 원시함수를 구해 상한과 하한을 대입한다.\n조건 정리: $\\displaystyle\\int_0^2\\left(\\dfrac12x-5\\right)dx$를 계산한다.\n풀이 방향: 원시함수 $\\dfrac14x^2-5x$를 이용한다.\n정석 풀이: $\\left[\\dfrac14x^2-5x\\right]_0^2=1-10=-9$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 3,
     "level": "하",
     "category": "곡선과 x축 사이의 넓이",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "곡선과 x축 사이의 넓이"
-    ],
+    "tags": [],
     "wide": false,
     "content": "곡선 $y=x^2-4x+3$과 $x$축으로 둘러싸인 도형의 넓이는? [3.6점]",
     "choices": [
@@ -90,11 +79,11 @@ window.questionBank=[
       "$2$"
     ],
     "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 넓이는 함수값이 음수인 구간에서는 정적분의 부호를 바꾸어 계산한다.\n조건 정리: $x^2-4x+3=(x-1)(x-3)$이므로 교점은 $x=1,3$이고, $1<x<3$에서 함수값은 음수이다.\n풀이 방향: 넓이는 $-\\displaystyle\\int_1^3(x^2-4x+3)dx$이다.\n정석 풀이: $-\\left[\\dfrac13x^3-2x^2+3x\\right]_1^3=\\dfrac43$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -107,10 +96,7 @@ window.questionBank=[
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "속도와 가속도"
-    ],
+    "tags": [],
     "wide": false,
     "content": "수직선 위를 움직이는 점 $P$의 시각 $t$에서의 위치 $x$가 $x=-t^3+3t^2+9t-10$일 때, 점 $P$의 속도가 $0$이 되는 순간의 가속도는? [3.6점]",
     "choices": [
@@ -120,12 +106,12 @@ window.questionBank=[
       "$-10$",
       "$-12$"
     ],
-    "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "⑤",
+    "solution": "[키포인트] 속도는 위치를 한 번 미분하고, 가속도는 속도를 다시 미분한다.\n조건 정리: $x=-t^3+3t^2+9t-10$이므로 $v(t)=-3t^2+6t+9=-3(t-3)(t+1)$이다.\n풀이 방향: 시각은 $t\\ge0$이므로 속도가 $0$인 시각을 찾은 뒤 가속도에 대입한다.\n정석 풀이: $v(t)=0$에서 $t=3$이다. 가속도는 $a(t)=v'(t)=-6t+6$이므로 $a(3)=-18+6=-12$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 5,
@@ -138,10 +124,7 @@ window.questionBank=[
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "곱의 미분"
-    ],
+    "tags": [],
     "wide": false,
     "content": "다항함수 $f(x)$에 대하여 함수 $g(x)$를 $g(x)=(x^2-5x+2)f(x)$라 하자. 곡선 $y=f(x)$ 위의 점 $(1,2)$에서 접선의 방정식이 $y=-2x+4$일 때, $g'(1)$의 값은? [3.7점]",
     "choices": [
@@ -152,27 +135,24 @@ window.questionBank=[
       "$-1$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 접선의 기울기에서 $f'(1)$을 읽고 곱의 미분법을 적용한다.\n조건 정리: 점 $(1,2)$가 곡선 위에 있으므로 $f(1)=2$, 접선 $y=-2x+4$의 기울기에서 $f'(1)=-2$이다.\n풀이 방향: $g(x)=(x^2-5x+2)f(x)$를 미분한다.\n정석 풀이: $g'(x)=(2x-5)f(x)+(x^2-5x+2)f'(x)$이다. 따라서 $g'(1)=(-3)\\cdot2+(-2)\\cdot(-2)=-2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
     "level": "중",
     "category": "접선과 넓이",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "접선과 넓이"
-    ],
+    "tags": [],
     "wide": false,
     "content": "곡선 $y=x^3+1$과 이 곡선 위의 점 $(1,2)$에서 접하는 접선으로 둘러싸인 도형의 넓이는? [3.7점]",
     "choices": [
@@ -183,15 +163,15 @@ window.questionBank=[
       "$\\dfrac{29}{5}$"
     ],
     "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 접선과 곡선의 다른 교점을 구한 뒤 두 그래프의 차를 적분한다.\n조건 정리: $y=x^3+1$에서 $f'(1)=3$이므로 점 $(1,2)$에서의 접선은 $y=3x-1$이다.\n풀이 방향: $x^3+1=3x-1$의 교점을 구하고 곡선과 직선의 위아래를 확인한다.\n정석 풀이: $x^3-3x+2=(x-1)^2(x+2)=0$이므로 교점의 $x$좌표는 $-2,1$이다. $-2<x<1$에서 곡선이 직선 위에 있으므로 넓이는 $\\displaystyle\\int_{-2}^{1}(x^3-3x+2)dx=\\dfrac{27}{4}$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,
-    "level": "하",
+    "level": "중",
     "category": "곱함수의 미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "수학II",
@@ -200,10 +180,7 @@ window.questionBank=[
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "곱함수의 미분계수"
-    ],
+    "tags": [],
     "wide": false,
     "content": "다항함수 $f(x)$, $g(x)$에 대하여 $\\displaystyle\\lim_{x\\to3}\\dfrac{f(x)-2}{x-3}=1$, $\\displaystyle\\lim_{x\\to3}\\dfrac{g(x)-1}{x-3}=2$일 때, 함수 $f(x)g(x)$의 $x=3$에서의 미분계수는? [3.8점]",
     "choices": [
@@ -214,11 +191,11 @@ window.questionBank=[
       "$12$"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 주어진 두 극한은 각각 $f(3),f'(3)$과 $g(3),g'(3)$을 알려 준다.\n조건 정리: 다항함수이므로 첫 극한이 유한하려면 $f(3)=2$이고 그 극한값에서 $f'(3)=1$이다. 같은 이유로 $g(3)=1$, $g'(3)=2$이다.\n풀이 방향: 곱의 미분법을 $x=3$에 적용한다.\n정석 풀이: $(fg)'(3)=f'(3)g(3)+f(3)g'(3)=1\\cdot1+2\\cdot2=5$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+    "subUnit": "미분계수",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,
@@ -231,10 +208,7 @@ window.questionBank=[
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "접선의 y절편"
-    ],
+    "tags": [],
     "wide": false,
     "content": "함수 $f(x)=x^3-(a+3)x^2+2ax$에 대하여 곡선 $y=f(x)$ 위의 점 $(t,f(t))$에서의 접선의 $y$절편을 $g(t)$라 하자. 함수 $g(t)$가 열린 구간 $(0,6)$에서 증가할 때, $a$의 최솟값은? (단, $a$는 상수이다.) [3.8점]",
     "choices": [
@@ -245,11 +219,11 @@ window.questionBank=[
       "$18$"
     ],
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 접선의 $y$절편을 $t$의 함수로 직접 나타낸 뒤 증가 조건을 미분으로 판정한다.\n조건 정리: 점 $(t,f(t))$에서의 접선은 $y-f(t)=f'(t)(x-t)$이므로 $y$절편은 $g(t)=f(t)-tf'(t)$이다.\n풀이 방향: $g'(t)$의 부호가 열린 구간 $(0,6)$에서 양수가 되도록 한다.\n정석 풀이: $g(t)=t^2(a+3-2t)$이고 $g'(t)=2t(a+3-3t)$이다. $0<t<6$에서 $2t>0$이므로 $a+3-3t>0$이어야 한다. $t$가 $6$에 가까워질 때까지 성립하려면 $a+3\\ge18$, 즉 $a\\ge15$이다. $a=15$이면 $g'(t)=6t(6-t)>0$이므로 조건을 만족한다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -262,10 +236,7 @@ window.questionBank=[
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "극댓값"
-    ],
+    "tags": [],
     "wide": false,
     "content": "함수 $f(x)=2x^3+ax^2+bx+3$은 $x=-1$에서 극대이고, $x=4$에서 극소이다. 함수 $f(x)$의 극댓값은? (단, $a$, $b$는 상수이다.) [3.9점]",
     "choices": [
@@ -276,11 +247,11 @@ window.questionBank=[
       "$20$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 극대·극소가 일어나는 두 $x$값은 도함수의 두 근이다.\n조건 정리: $f'(x)=6x^2+2ax+b$는 $x=-1,4$에서 $0$이 된다.\n풀이 방향: 최고차항 계수가 $6$인 이차식으로 도함수를 인수분해한다.\n정석 풀이: $f'(x)=6(x+1)(x-4)=6x^2-18x-24$이므로 $a=-9$, $b=-24$이다. 극댓값은 $f(-1)=-2-9+24+3=16$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 10,
@@ -293,10 +264,7 @@ window.questionBank=[
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "정적분과 극한"
-    ],
+    "tags": [],
     "wide": false,
     "content": "$f(x)=x^4-x^2+2$일 때, $\\displaystyle\\lim_{x\\to2}\\dfrac{1}{x-2}\\int_2^x f(t)dt$의 값은? [3.9점]",
     "choices": [
@@ -307,11 +275,11 @@ window.questionBank=[
       "$14$"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] $\\displaystyle\\int_2^x f(t)dt$를 $x-2$로 나눈 극한은 적분으로 정의된 함수의 $x=2$에서의 미분계수이다.\n조건 정리: $F(x)=\\displaystyle\\int_2^x f(t)dt$라 두면 $F(2)=0$, $F'(2)=f(2)$이다.\n풀이 방향: 주어진 극한을 $F'(2)$로 해석한다.\n정석 풀이: 극한값은 $f(2)=2^4-2^2+2=14$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
@@ -324,10 +292,7 @@ window.questionBank=[
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "극값의 개수"
-    ],
+    "tags": [],
     "wide": false,
     "content": "$f(x)=3x^4-8x^3-3(a-4)x^2$이 극값을 하나만 갖도록 하는 모든 자연수 $a$의 값의 합은? [3.9점]",
     "choices": [
@@ -337,12 +302,12 @@ window.questionBank=[
       "$7$",
       "$15$"
     ],
-    "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "④",
+    "solution": "[키포인트] 도함수의 근이 몇 개인지가 아니라 각 근에서 부호가 실제로 바뀌는지를 확인한다.\n조건 정리: $f'(x)=12x^3-24x^2-6(a-4)x=6x\\{2(x-1)^2+2-a\\}$이다.\n풀이 방향: 자연수 $a$에 따라 두 번째 인수의 근과 중복 여부를 나눈다.\n정석 풀이: $a=1$이면 두 번째 인수가 항상 양수여서 $x=0$에서만 극값을 갖는다. $a=2$이면 $f'(x)=12x(x-1)^2$이므로 $x=1$에서는 부호가 바뀌지 않고 $x=0$에서만 극값을 갖는다. $a>2$에서는 $x=1\\pm\\sqrt{\\dfrac{a-2}{2}}$가 추가되며, 이 중 한 근이 $0$과 겹치는 경우는 $a=4$뿐이다. $a=4$이면 $f'(x)=12x^2(x-2)$이므로 $x=2$에서만 극값을 갖는다. 그 밖의 $a>2$에서는 세 단순근에서 모두 부호가 바뀐다. 따라서 가능한 자연수는 $1,2,4$이고 합은 $7$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -355,10 +320,7 @@ window.questionBank=[
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "합과 곱의 도함수"
-    ],
+    "tags": [],
     "wide": false,
     "content": "두 다항함수 $f(x)$, $g(x)$가<br>$\\dfrac{d}{dx}\\{f(x)+g(x)\\}=2x+5$<br>$\\dfrac{d}{dx}\\{f(x)g(x)\\}=3x^2+12x-1$<br>을 만족시키고 $f(0)=2$, $g(0)=-9$일 때, $f(-5)+g(1)$의 값은? [4.0점]",
     "choices": [
@@ -368,28 +330,25 @@ window.questionBank=[
       "$-6$",
       "$-5$"
     ],
-    "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "answer": "③",
+    "solution": "[키포인트] $f+g$와 $fg$를 먼저 복원하면 $(f-g)^2$도 구할 수 있다.\n조건 정리: $(f+g)'=2x+5$, $(fg)'=3x^2+12x-1$이고 $f(0)+g(0)=-7$, $f(0)g(0)=-18$이다.\n풀이 방향: 두 식을 적분해 $S=f+g$, $P=fg$를 구하고 $(f-g)^2=S^2-4P$를 이용한다.\n정석 풀이: $S=x^2+5x-7$, $P=x^3+6x^2-x-18$이다. 따라서 $S^2-4P=(x^2+3x-11)^2$이다. $f(0)-g(0)=11$이므로 $f-g=-x^2-3x+11$이다. 이에 따라 $f=x+2$, $g=x^2+4x-9$이고 $f(-5)+g(1)=-3-4=-7$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
     "level": "하",
     "category": "속도와 위치",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "속도와 위치"
-    ],
+    "tags": [],
     "wide": false,
     "content": "좌표가 $1$인 점을 출발하여 수직선 위를 움직이는 점 $P$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)=t^2-6t$일 때, 시각 $t=3$에서의 점 $P$의 수직선 위의 위치는? [4.0점]",
     "choices": [
@@ -400,27 +359,24 @@ window.questionBank=[
       "$-19$"
     ],
     "answer": "③",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 위치의 변화량은 속도의 정적분이다.\n조건 정리: 처음 위치는 $1$이고 $v(t)=t^2-6t$이다.\n풀이 방향: $0$부터 $3$까지 속도를 적분해 처음 위치에 더한다.\n정석 풀이: $x(3)=1+\\displaystyle\\int_0^3(t^2-6t)dt=1+\\left[\\dfrac13t^3-3t^2\\right]_0^3=-17$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
-    "level": "하",
+    "level": "중",
     "category": "속도와 거리",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "속도와 거리"
-    ],
+    "tags": [],
     "wide": false,
     "content": "수직선 위를 움직이는 점 $P$의 시각 $t$ $(t\\ge0)$에서의 속도 $v(t)$가 $v(t)=-2t+6$이다. $t=0$부터 $t=6$까지 점 $P$가 움직인 거리는? [4.1점]",
     "choices": [
@@ -431,11 +387,11 @@ window.questionBank=[
       "$21$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "[키포인트] 이동거리는 속도의 절댓값을 적분하므로 방향이 바뀌는 시각에서 구간을 나눈다.\n조건 정리: $v(t)=-2t+6$은 $t=3$에서 부호가 바뀐다.\n풀이 방향: $[0,3]$과 $[3,6]$에서 속도의 절댓값을 각각 적분한다.\n정석 풀이: 이동거리는 $\\displaystyle\\int_0^3(6-2t)dt+\\int_3^6(2t-6)dt=9+9=18$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -448,10 +404,7 @@ window.questionBank=[
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "적분방정식"
-    ],
+    "tags": [],
     "wide": false,
     "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여 $\\displaystyle\\int_1^x f(t)dt=(x+1)f(x)+\\dfrac{2}{3}x^3-2x+a$를 만족시키고, $f(0)=0$일 때, 상수 $a$의 값은? [4.2점]",
     "choices": [
@@ -462,11 +415,11 @@ window.questionBank=[
       "$-\\dfrac{10}{3}$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 적분방정식을 미분하면 $f$의 도함수를 직접 구할 수 있다.\n조건 정리: $\\displaystyle\\int_1^x f(t)dt=(x+1)f(x)+\\dfrac23x^3-2x+a$, $f(0)=0$이다.\n풀이 방향: 양변을 미분해 $f$를 결정한 뒤 원래 식에 값을 대입해 $a$를 구한다.\n정석 풀이: 미분하면 $(x+1)f'(x)=2-2x^2=-2(x-1)(x+1)$이다. 다항함수이므로 $f'(x)=2-2x$, 따라서 $f(x)=2x-x^2+C$이다. $f(0)=0$에서 $C=0$이다. 원래 식에 $x=0$을 대입하면 $a=\\displaystyle\\int_1^0(2t-t^2)dt=-\\dfrac23$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -479,12 +432,9 @@ window.questionBank=[
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "삼차함수와 실근의 개수"
-    ],
+    "tags": [],
     "wide": false,
-    "content": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 모두 만족시킬 때, $f(-1)$의 값은? [4.4점]<br><조건><br>(가) 함수 $f(x)$는 $x=0$에서 극댓값 $30$을 갖는다.<br>(나) 방정식 $|f(x)|=2$의 서로 다른 실근의 개수가 $5$이다.",
+    "content": "최고차항의 계수가 $1$인 삼차함수 $f(x)$가 다음 조건을 모두 만족시킬 때, $f(-1)$의 값은? [4.4점]<br><div class=\"question-note-box\">&lt;조 건&gt;<br>(가) 함수 $f(x)$는 $x=0$에서 극댓값 $30$을 갖는다.<br>(나) 방정식 $|f(x)|=2$의 서로 다른 실근의 개수가 $5$이다.</div>",
     "choices": [
       "$20$",
       "$21$",
@@ -492,28 +442,25 @@ window.questionBank=[
       "$23$",
       "$25$"
     ],
-    "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "④",
+    "solution": "[키포인트] $|f(x)|=2$의 실근 개수는 삼차함수와 두 직선 $y=2$, $y=-2$의 교점 개수를 함께 세어 판단한다.\n조건 정리: 최고차항이 $1$이고 $x=0$에서 극댓값 $30$을 가지므로 $f(x)=x^3+px^2+30$으로 둘 수 있고 $p<0$이다.\n풀이 방향: 다른 극값의 위치를 $x=c$라 하고 실근이 모두 $5$개가 되기 위한 극솟값을 결정한다.\n정석 풀이: $f'(x)=x(3x+2p)$이므로 $c=-\\dfrac{2p}{3}>0$이다. $y=2$와의 교점이 $3$개이고 $y=-2$와의 교점이 $2$개가 되어야 총 $5$개이므로 극솟값은 $-2$이다. $p=-\\dfrac{3c}{2}$이므로 $f(c)=30-\\dfrac12c^3=-2$이다. 따라서 $c=4$, $p=-6$이고 $f(-1)=-1-6+30=23$이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
     "level": "상",
     "category": "이차함수와 정적분",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "이차함수와 정적분"
-    ],
+    "tags": [],
     "wide": false,
     "content": "최고차항의 계수가 $1$인 이차함수 $f(x)$가 $f(5)=0$이고, $\\displaystyle\\int_2^{2025}f(x)dx=\\int_5^{2025}f(x)dx$를 만족시킨다. 곡선 $y=f(x)$와 $x$축으로 둘러싸인 부분의 넓이는? [4.4점]",
     "choices": [
@@ -523,12 +470,12 @@ window.questionBank=[
       "$\\dfrac{7}{6}$",
       "$\\dfrac{4}{3}$"
     ],
-    "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "⑤",
+    "solution": "[키포인트] 두 정적분의 상한이 같으므로 빼면 짧은 구간의 적분 조건으로 바뀐다.\n조건 정리: 최고차항 계수가 $1$이고 $f(5)=0$이므로 $f(x)=(x-5)(x-r)$로 둔다.\n풀이 방향: $\\displaystyle\\int_2^{2025}f=\\int_5^{2025}f$에서 $\\int_2^5f=0$을 얻어 다른 근 $r$을 구한다.\n정석 풀이: $\\displaystyle\\int_2^5(x-5)(x-r)dx=\\dfrac92(r-3)$이므로 $r=3$이다. 따라서 $f(x)=(x-3)(x-5)$이고 $3<x<5$에서 음수이다. 둘러싸인 넓이는 $-\\displaystyle\\int_3^5(x-3)(x-5)dx=\\dfrac43$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,
@@ -541,10 +488,7 @@ window.questionBank=[
     "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "접선과 삼각형의 넓이"
-    ],
+    "tags": [],
     "wide": false,
     "content": "함수 $f(x)=2x^3-6x^2+3$에 대하여 이 곡선 $y=f(x)$ 위의 점 $A(0,3)$에서의 접선을 $l$이라 할 때, 직선 $l$이 곡선과 제 $1$사분면에서 만나는 점을 $B$라 하자. 곡선을 따라 두 점 $A$, $B$ 사이를 움직이는 점 $P$에서 직선 $l$에 내린 수선의 발을 $H$라 할 때, 삼각형 $APH$의 넓이가 최대가 되는 점 $P$의 $x$좌표는? [4.6점]",
     "choices": [
@@ -554,12 +498,12 @@ window.questionBank=[
       "$\\dfrac{5}{2}$",
       "$\\dfrac{11}{4}$"
     ],
-    "answer": "①",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "③",
+    "solution": "[키포인트] 접선이 수평이므로 삼각형 $APH$의 밑변과 높이를 $x$ 하나로 표현할 수 있다.\n조건 정리: $f'(x)=6x^2-12x$이므로 $A(0,3)$에서의 접선은 $l:y=3$이다. $f(x)=3$에서 제1사분면의 다른 교점은 $B(3,3)$이다.\n풀이 방향: $P=(x,f(x))$ $(0\\le x\\le3)$로 두고 삼각형의 넓이를 함수로 만든다.\n정석 풀이: $H=(x,3)$이므로 $AH=x$, $PH=3-f(x)=2x^2(3-x)$이다. 따라서 $S(x)=\\dfrac12\\cdot x\\cdot2x^2(3-x)=x^3(3-x)$이고 $S'(x)=x^2(9-4x)$이다. 내부에서 최대가 되는 점은 $x=\\dfrac94$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 19,
@@ -572,10 +516,7 @@ window.questionBank=[
     "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "함수방정식과 부정적분"
-    ],
+    "tags": [],
     "wide": false,
     "content": "모든 실수 $x$, $y$에 대하여 다항함수 $f(x)$가 $f(x+y)=f(x)+f(y)-6xy$를 만족시킨다.<br>함수 $F(x)$가 $F(x)=\\displaystyle\\int(x-2)f'(x)dx$이고 함수 $F(x)$의 극값이 존재하지 않을 때, $f(5)$의 값은? [4.7점]",
     "choices": [
@@ -585,28 +526,25 @@ window.questionBank=[
       "$-12$",
       "$-15$"
     ],
-    "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-07-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "⑤",
+    "solution": "[키포인트] 함수방정식으로 $f$의 꼴을 먼저 정한 뒤, 부정적분 함수의 극값 조건을 도함수의 부호로 판단한다.\n조건 정리: $f(x+y)=f(x)+f(y)-6xy$이고 $f$는 다항함수이다.\n풀이 방향: $f'(x)$를 구한 뒤 $F'(x)$가 부호를 바꾸지 않도록 한다.\n정석 풀이: $y=0$에서 $f(0)=0$이다. 양변을 $y$에 대하여 미분하고 $y=0$을 대입하면 $f'(x)=f'(0)-6x$이다. $f'(0)=c$라 두면 $f(x)=-3x^2+cx$이다. 한편 $F'(x)=(x-2)f'(x)=(x-2)(-6x+c)$이다. $F$가 극값을 가지지 않으려면 두 근이 같아야 하므로 $c/6=2$, 즉 $c=12$이다. 따라서 $f(5)=-15$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+    "subUnit": "부정적분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
     "level": "상",
     "category": "속도와 거리",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "속도와 거리"
-    ],
+    "tags": [],
     "wide": false,
     "content": "실수 $m$에 대하여 수직선 위를 움직이는 두 점 $P$, $Q$의 시각 $t$ $(t\\ge0)$에서의 속도를 각각 $v_1=\\dfrac{3}{4}t^2+1$, $v_2=mt-4$라 하자. 시각 $t=0$에서 $t=2$까지 두 점 $P$, $Q$가 움직인 거리가 같도록 하는 모든 $m$값의 합은? [4.7점]",
     "choices": [
@@ -616,16 +554,15 @@ window.questionBank=[
       "$8$",
       "$9$"
     ],
-    "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "answer": "②",
+    "solution": "[키포인트] 이동거리는 속도의 절댓값 적분이므로 $v_2=mt-4$가 $0$이 되는 위치에 따라 경우를 나눈다.\n조건 정리: $v_1=\\dfrac34t^2+1>0$이므로 $P$의 이동거리는 $\\displaystyle\\int_0^2\\left(\\dfrac34t^2+1\\right)dt=4$이다.\n풀이 방향: $Q$의 이동거리 $\\int_0^2|mt-4|dt$가 $4$가 되는 $m$을 찾는다.\n정석 풀이: $0<m\\le2$이면 거리는 $8-2m$이므로 $m=2$이다. $m>2$이면 방향 전환 시각은 $4/m$이고 거리는 $2m-8+\\dfrac{16}{m}$이다. 이를 $4$와 같게 두면 $m^2-6m+8=0$이므로 이 경우에는 $m=4$이다. $m\\le0$에서는 조건을 만족하는 값이 없다. 따라서 모든 $m$은 $2,4$이고 합은 $6$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
-    "choices": [],
     "level": "상",
     "category": "적분으로 정의된 함수의 극값",
     "originalCategory": "정적분",
@@ -636,21 +573,20 @@ window.questionBank=[
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형",
-      "적분으로 정의된 함수의 극값"
+      "서술형"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[주관식1 (서술형)] [6점](부분점수 있음)<br>삼차함수 $f(x)=x^3-3x+a$에 대하여 함수 $F(x)=\\displaystyle\\int_0^x f(t)dt$가 오직 하나의 극값을 갖도록 양수 $a$의 최솟값을 구하는 과정을 서술하시오.",
-    "answer": "①",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
-    "subUnitKey": "H15-M2-08-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "choices": [],
+    "answer": "$2$",
+    "solution": "[키포인트] $F'(x)=f(x)$이므로 $F$의 극값 개수는 삼차함수 $f$의 영점에서의 부호 변화로 결정된다.\n조건 정리: $f(x)=x^3-3x+a$이고 $f'(x)=3(x^2-1)$이므로 $f(-1)=a+2$, $f(1)=a-2$이다.\n풀이 방향: 양수 $a$의 범위에 따라 $f(x)=0$의 실근 개수와 중근 여부를 판단한다.\n정석 풀이: $0<a<2$이면 $f(-1)>0$, $f(1)<0$이므로 $f(x)=0$은 서로 다른 세 실근을 가지고 $F$는 세 곳에서 극값을 갖는다. $a=2$이면 $f(x)=(x-1)^2(x+2)$이다. $x=1$은 짝수중근이라 부호가 바뀌지 않고 $x=-2$에서만 부호가 바뀌므로 $F$는 오직 하나의 극값을 갖는다. 따라서 양수 $a$의 최솟값은 $2$이다.\n따라서 구하는 값은 $2$이다.",
+    "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+    "subUnit": "정적분",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,
-    "choices": [],
     "level": "상",
     "category": "절댓값 방정식의 실근",
     "originalCategory": "도함수의 활용",
@@ -662,23 +598,23 @@ window.questionBank=[
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "절댓값 방정식의 실근"
+      "그래프"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[주관식2 (서술형)] [7점](부분점수 있음)<br>함수 $f(x)=\\dfrac{1}{2}x^3-3x^2+\\dfrac{15}{2}x$에 대하여 $x$에 대한 방정식 $f(x)+|f(x)+x|=7x+k$의 서로 다른 실근의 개수가 $4$가 되도록 하는 실수 $k$의 범위를 구하는 과정을 그래프를 그려서 서술하시오.",
-    "answer": "③",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "choices": [],
+    "answer": "$0\\lt k\\lt 4$",
+    "solution": "[키포인트] 절댓값 안의 $f(x)+x$의 부호가 $x$의 부호와 같다는 점을 이용해 방정식을 두 구간으로 나눈다.\n조건 정리: $f(x)+x=\\dfrac12x\\{x^2-6x+17\\}=\\dfrac12x\\{(x-3)^2+8\\}$이므로 그 부호는 $x$의 부호와 같다.\n풀이 방향: $x<0$과 $x\\ge0$에서 방정식을 각각 단순화하고, $x\\ge0$에서는 그래프와 수평선의 교점 개수를 센다.\n정석 풀이: $x<0$이면 $-x=7x+k$이므로 $x=-\\dfrac{k}{8}$이고, 음의 해가 하나 존재하려면 $k>0$이다. $x\\ge0$이면 $x^3-6x^2+9x=k$, 즉 $x(x-3)^2=k$이다. 함수 $\\phi(x)=x(x-3)^2$는 $x\\ge0$에서 $\\phi(0)=0$, $\\phi(1)=4$, $\\phi(3)=0$이고 $\\phi'(x)=3(x-1)(x-3)$이다. 따라서 수평선 $y=k$가 그래프와 서로 다른 세 점에서 만나려면 $0<k<4$이어야 한다.\n<div class=\"sol-visual sol-graph\"><svg viewBox=\"0 0 340 230\" width=\"340\" height=\"230\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"340\" height=\"230\" fill=\"white\"/><line x1=\"38.0\" y1=\"183.3\" x2=\"324.0\" y2=\"183.3\" stroke=\"black\"/><line x1=\"89.1\" y1=\"200.0\" x2=\"89.1\" y2=\"16.0\" stroke=\"black\"/><polyline points=\"89.1,183.3 89.9,180.7 90.8,178.2 91.7,175.8 92.6,173.4 93.5,171.1 94.3,168.8 95.2,166.6 96.1,164.4 97.0,162.3 97.8,160.3 98.7,158.3 99.6,156.4 100.5,154.5 101.4,152.6 102.2,150.9 103.1,149.1 104.0,147.4 104.9,145.8 105.7,144.2 106.6,142.7 107.5,141.2 108.4,139.8 109.3,138.4 110.1,137.1 111.0,135.8 111.9,134.6 112.8,133.4 113.6,132.2 114.5,131.1 115.4,130.0 116.3,129.0 117.2,128.1 118.0,127.1 118.9,126.2 119.8,125.4 120.7,124.6 121.5,123.8 122.4,123.1 123.3,122.4 124.2,121.8 125.0,121.2 125.9,120.6 126.8,120.1 127.7,119.6 128.6,119.1 129.4,118.7 130.3,118.3 131.2,118.0 132.1,117.7 132.9,117.4 133.8,117.2 134.7,117.0 135.6,116.8 136.5,116.6 137.3,116.5 138.2,116.4 139.1,116.4 140.0,116.4 140.8,116.4 141.7,116.4 142.6,116.5 143.5,116.6 144.4,116.7 145.2,116.8 146.1,117.0 147.0,117.2 147.9,117.5 148.7,117.7 149.6,118.0 150.5,118.3 151.4,118.6 152.3,119.0 153.1,119.3 154.0,119.7 154.9,120.1 155.8,120.6 156.6,121.0 157.5,121.5 158.4,122.0 159.3,122.5 160.1,123.1 161.0,123.6 161.9,124.2 162.8,124.8 163.7,125.4 164.5,126.0 165.4,126.6 166.3,127.3 167.2,127.9 168.0,128.6 168.9,129.3 169.8,130.0 170.7,130.7 171.6,131.5 172.4,132.2 173.3,132.9 174.2,133.7 175.1,134.5 175.9,135.3 176.8,136.0 177.7,136.8 178.6,137.7 179.5,138.5 180.3,139.3 181.2,140.1 182.1,140.9 183.0,141.8 183.8,142.6 184.7,143.5 185.6,144.3 186.5,145.2 187.3,146.0 188.2,146.9 189.1,147.7 190.0,148.6 190.9,149.5 191.7,150.3 192.6,151.2 193.5,152.1 194.4,152.9 195.2,153.8 196.1,154.6 197.0,155.5 197.9,156.3 198.8,157.2 199.6,158.0 200.5,158.9 201.4,159.7 202.3,160.5 203.1,161.3 204.0,162.1 204.9,162.9 205.8,163.7 206.7,164.5 207.5,165.3 208.4,166.1 209.3,166.8 210.2,167.6 211.0,168.3 211.9,169.0 212.8,169.8 213.7,170.5 214.6,171.2 215.4,171.8 216.3,172.5 217.2,173.1 218.1,173.8 218.9,174.4 219.8,175.0 220.7,175.6 221.6,176.1 222.4,176.7 223.3,177.2 224.2,177.7 225.1,178.2 226.0,178.7 226.8,179.1 227.7,179.6 228.6,180.0 229.5,180.4 230.3,180.7 231.2,181.1 232.1,181.4 233.0,181.7 233.9,182.0 234.7,182.2 235.6,182.5 236.5,182.7 237.4,182.8 238.2,183.0 239.1,183.1 240.0,183.2 240.9,183.2 241.8,183.3 242.6,183.3 243.5,183.2 244.4,183.2 245.3,183.1 246.1,183.0 247.0,182.8 247.9,182.6 248.8,182.4 249.7,182.2 250.5,181.9 251.4,181.6 252.3,181.2 253.2,180.8 254.0,180.4 254.9,180.0 255.8,179.5 256.7,178.9 257.5,178.3 258.4,177.7 259.3,177.1 260.2,176.4 261.1,175.7 261.9,174.9 262.8,174.1 263.7,173.2 264.6,172.3 265.4,171.4 266.3,170.4 267.2,169.4 268.1,168.3 269.0,167.2 269.8,166.0 270.7,164.8 271.6,163.6 272.5,162.3 273.3,161.0 274.2,159.6 275.1,158.1 276.0,156.6 276.9,155.1 277.7,153.5 278.6,151.9 279.5,150.2 280.4,148.4 281.2,146.7 282.1,144.8 283.0,142.9 283.9,141.0 284.7,139.0 285.6,136.9 286.5,134.8 287.4,132.6 288.3,130.4 289.1,128.1 290.0,125.8 290.9,123.4 291.8,120.9 292.6,118.4 293.5,115.9 294.4,113.2 295.3,110.6 296.2,107.8 297.0,105.0 297.9,102.1 298.8,99.2 299.7,96.2 300.5,93.1 301.4,90.0 302.3,86.8 303.2,83.6 304.1,80.3 304.9,76.9 305.8,73.4 306.7,69.9 307.6,66.4 308.4,62.7 309.3,59.0 310.2,55.2 311.1,51.4 312.0,47.4 312.8,43.4 313.7,39.4 314.6,35.3 315.5,31.0 316.3,26.8\" fill=\"none\" stroke=\"black\" stroke-width=\"1.4\"/><line x1=\"89.1\" y1=\"149.8\" x2=\"308.7\" y2=\"149.8\" stroke=\"black\" stroke-dasharray=\"5 4\"/><circle cx=\"140.1\" cy=\"116.4\" r=\"2.5\" fill=\"black\"/><circle cx=\"242.3\" cy=\"183.3\" r=\"2.5\" fill=\"black\"/><text x=\"145.1\" y=\"111.4\" font-size=\"10\" font-family=\"serif\">(1, 4)</text><text x=\"247.3\" y=\"178.3\" font-size=\"10\" font-family=\"serif\">(3, 0)</text><text x=\"298.5\" y=\"144.8\" font-size=\"10\" font-family=\"serif\">y = k</text><text x=\"316.0\" y=\"201.3\" font-size=\"10\" font-family=\"serif\">x</text><text x=\"96.1\" y=\"26.0\" font-size=\"10\" font-family=\"serif\">y</text><text x=\"95.1\" y=\"112.4\" font-size=\"9\" font-family=\"serif\">4</text><text x=\"137.1\" y=\"198.3\" font-size=\"9\" font-family=\"serif\">1</text><text x=\"239.3\" y=\"198.3\" font-size=\"9\" font-family=\"serif\">3</text></svg></div>\n이때 음의 해 하나와 음이 아닌 해 세 개를 합쳐 서로 다른 실근이 정확히 $4$개가 된다.\n따라서 구하는 범위는 $0\\lt k\\lt 4$이다.",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
-    "choices": [],
     "level": "상",
     "category": "적분으로 정의된 함수와 넓이",
-    "originalCategory": "정적분의 활용",
+    "originalCategory": "적분의 활용",
     "standardCourse": "수학II",
     "standardUnitKey": "H15-M2-09",
     "standardUnit": "적분의 활용",
@@ -686,16 +622,16 @@ window.questionBank=[
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형",
-      "적분으로 정의된 함수와 넓이"
+      "서술형"
     ],
-    "wide": true,
+    "wide": false,
     "content": "[주관식3 (서술형)] [7점](부분점수 있음)<br>실수 $a$ $(a\\gt1)$에 대하여 함수 $f(x)$를 $f(x)=(x+1)(x-1)(x-a)$라 하자. 함수 $g(x)=x^2\\displaystyle\\int_0^x f(t)dt-\\int_0^x t^2f(t)dt$가 오직 하나의 극값을 갖도록 하는 $a$의 최댓값을 $k$라고 할 때, 함수 $h(x)=(x+1)(x-1)(x-k)$의 그래프와 $x$축으로 둘러싸인 도형의 넓이를 구하는 과정을 서술하시오.",
-    "answer": "②",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "H15-M2-09-INTEGRAL",
-    "subUnit": "integral",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "choices": [],
+    "answer": "$2\\sqrt{6}-\\dfrac{1}{4}$",
+    "solution": "[키포인트] $g'(x)$를 인수분해하여 극값 개수를 결정하는 삼차식만 따로 본 뒤, 경계값에서 중근이 생기는 조건을 찾는다.\n조건 정리: $f(x)=(x^2-1)(x-a)$이고 $I(x)=\\displaystyle\\int_0^x f(t)dt$라 하면 $g(x)=x^2I(x)-\\displaystyle\\int_0^x t^2f(t)dt$이다.\n풀이 방향: $g'(x)$를 계산해 $a$의 최대 허용값을 구한 뒤 $h$와 $x$축 사이의 넓이를 계산한다.\n정석 풀이: $g'(x)=2xI(x)=\\dfrac{x^2}{6}Q_a(x)$이고 $Q_a(x)=3x^3-4ax^2-6x+12a$이다. $x=0$의 인수 $x^2$에서는 부호가 바뀌지 않는다. 최대 경계에서 $Q_a$가 중근 $r$을 가진다고 두면 $Q_a(r)=Q_a'(r)=0$이다. $Q_a'(r)=9r^2-8ar-6=0$에서 $a=\\dfrac{9r^2-6}{8r}$이고 이를 $Q_a(r)=0$에 대입하면 $(r-1)(r+1)(r^2-6)=0$이다. $a>1$에 해당하는 경계는 $r=\\sqrt6$, $a=\\sqrt6$이다. 실제로 $Q_{\\sqrt6}(x)=3(x-\\sqrt6)^2\\left(x+\\dfrac{2\\sqrt6}{3}\\right)$이므로 부호가 바뀌는 근은 음의 단순근 하나뿐이다. 또 $a>\\sqrt6$이면 $Q_a(0)>0$, $Q_a(\\sqrt6)=12(\\sqrt6-a)<0$, $Q_a(x)\\to\\infty$ $(x\\to\\infty)$이므로 양의 근이 두 개 생겨 조건을 만족하지 못한다. 따라서 $k=\\sqrt6$이다.\n이제 $h(x)=(x+1)(x-1)(x-\\sqrt6)$의 영점은 $-1,1,\\sqrt6$이다. 넓이는 $\\displaystyle\\int_{-1}^{1}h(x)dx-\\int_1^{\\sqrt6}h(x)dx$이다. 원시함수 $H(x)=\\dfrac14x^4-\\dfrac{\\sqrt6}{3}x^3-\\dfrac12x^2+\\sqrt6x$를 이용하면 두 넓이는 각각 $\\dfrac{4\\sqrt6}{3}$, $-\\dfrac14+\\dfrac{2\\sqrt6}{3}$이다. 따라서 전체 넓이는 $2\\sqrt6-\\dfrac14$이다.\n따라서 구하는 넓이는 $2\\sqrt{6}-\\dfrac{1}{4}$이다.",
+    "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+    "subUnit": "적분의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

@@ -82,6 +82,53 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
   assert.equal(result.mobile768.overflow, false);
   await viewport.reset();
 
+  // School/year collection: exact year, recent available years, and both
+  // school-separated and combined output modes use the same print bridge.
+  const exactUrl = new URL(`${baseUrl}/archive/unit-past-exams.html`);
+  exactUrl.searchParams.set('grade', 'h2');
+  exactUrl.searchParams.set('unit', 'H22-MI1-04');
+  exactUrl.searchParams.set('collection', '1');
+  exactUrl.searchParams.set('collectionYearMode', 'exact');
+  exactUrl.searchParams.set('collectionYear', '2025');
+  exactUrl.hash = `apmsess=${hash}`;
+  await tab.goto(exactUrl.toString());
+  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
+  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 4);
+  result.collectionExact = {
+    report: await page.locator('#unit-collection-report').innerText(),
+    papers: await page.locator('#unit-collection-report .unit-generated-paper').count()
+  };
+  assert.match(result.collectionExact.report, /15개 후보/);
+  assert.equal(result.collectionExact.papers, 4);
+  await page.locator('#unit-collection-report .unit-generated-paper').first().getByRole('button', { name: /일반 출력/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-status').innerText()).includes('준비 완료'), 8000);
+
+  const combinedUrl = new URL(exactUrl.toString());
+  combinedUrl.searchParams.set('collectionOutput', 'combined');
+  combinedUrl.searchParams.set('collectionSchools', '매산고,순천고');
+  await tab.goto(combinedUrl.toString());
+  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
+  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 1);
+  result.collectionCombined = await page.locator('#unit-collection-report').innerText();
+  assert.match(result.collectionCombined, /6개 후보/);
+  assert.match(result.collectionCombined, /학교 통합/);
+
+  const recentUrl = new URL(`${baseUrl}/archive/unit-past-exams.html`);
+  recentUrl.searchParams.set('grade', 'h2');
+  recentUrl.searchParams.set('unit', 'H22-MI1-04');
+  recentUrl.searchParams.set('collection', '1');
+  recentUrl.searchParams.set('collectionYearMode', 'recent3');
+  recentUrl.hash = `apmsess=${hash}`;
+  await tab.goto(recentUrl.toString());
+  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
+  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 8);
+  result.collectionRecentAvailable = await page.locator('#unit-collection-report').innerText();
+  assert.match(result.collectionRecentAvailable, /35개 후보/);
+  assert.match(result.collectionRecentAvailable, /최근 3개년/);
+
   await tab.goto(`${baseUrl}/tests/fixtures/unit-past-exams-fallback.html`);
   await waitFor(tab, async () => (await page.locator('.unit-fallback-actions a').count()) === 2);
   result.fallback = await page.locator('.unit-fallback-actions a').evaluateAll(anchors => anchors.map(anchor => anchor.getAttribute('href')));
