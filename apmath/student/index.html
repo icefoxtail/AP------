@@ -742,7 +742,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.20.1';
+    const STUDENT_APP_VERSION = '2026.08.27.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -985,6 +985,36 @@
       const data = await r.json().catch(() => ({}));
       if (!r.ok || data.success === false) throw new Error(data.message || data.error || '요청 실패');
       return data;
+    }
+    async function downloadExamPdf(assignmentId) {
+      const exam = findOmrExam(assignmentId);
+      if (!exam || !session?.student_id) return toast('다운로드할 시험지를 찾을 수 없습니다.');
+      const headers = {};
+      if (isTeacherPreview) {
+        const teacherToken = readTeacherPreviewToken();
+        if (teacherToken) headers.Authorization = `Bearer ${teacherToken}`;
+      } else if (session.student_token) {
+        headers['X-Student-Token'] = session.student_token;
+      }
+      try {
+        const path = `student-portal/exam-pdf?student_id=${encodeURIComponent(session.student_id)}&assignment_id=${encodeURIComponent(assignmentId)}`;
+        const response = await fetch(`${API_BASE}/${path}`, { headers });
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          throw new Error(data.message || data.error || 'PDF 다운로드 실패');
+        }
+        const blob = await response.blob();
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = `${String(exam.exam_title || '시험지').replace(/[\\/:*?"<>|]/g, '_')}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(href), 1000);
+      } catch (e) {
+        toast(e.message || 'PDF 다운로드에 실패했습니다.');
+      }
     }
     function renderPreviewError(message) {
       setTopStudent('');
@@ -1944,6 +1974,15 @@
         ${solutionUrl ? `<button type="button" class="btn review-btn solution" onclick="openOmrReview('${escapeHtml(exam.assignment_id)}', 'sol')">해설 보기</button>` : '<button type="button" class="btn review-btn solution" disabled>해설 보기</button>'}
       `;
     }
+    function renderOmrPdfAction(exam) {
+      const status = String(exam?.pdf_status || 'pending');
+      if (exam?.pdf_ready || status === 'ready') {
+        return `<button type="button" class="btn review-btn solution" onclick="downloadExamPdf('${escapeHtml(exam.assignment_id)}')">PDF 다운로드</button>`;
+      }
+      if (status === 'generating') return '<button type="button" class="btn review-btn" disabled>PDF 준비 중</button>';
+      if (status === 'failed') return '<button type="button" class="btn review-btn" disabled>PDF 준비 실패</button>';
+      return '';
+    }
     async function renderOmrExams() {
       setTopStudent(homeData?.student?.name || session?.name || '');
       $('app').innerHTML = `
@@ -1973,8 +2012,9 @@
     function renderOmrExamCard(exam) {
       const submitted = Number(exam.is_submitted || 0) === 1;
       const showReview = isOmrReviewAvailable(exam);
+      const showPdf = !!renderOmrPdfAction(exam);
       const isLegacyMixedReview = isLegacyMixedOmrReview(exam);
-      const showActionArea = showReview || isTeacherPreview || !submitted;
+      const showActionArea = showReview || showPdf || isTeacherPreview || !submitted;
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
       const status = submitted ? `완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}` : '';
@@ -1990,6 +2030,7 @@
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
           ${showActionArea ? `
             <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''}">
+              ${showPdf ? renderOmrPdfAction(exam) : ''}
               ${showReview ? renderOmrReviewActions(exam) : ''}
               ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
               ${isTeacherPreview || submitted ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}

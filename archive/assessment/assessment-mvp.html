@@ -1288,6 +1288,7 @@
         archive_file: `MIXED:${key}`,
         source_type: 'mixed',
         mixed_payload_json: JSON.stringify({ questions: pack.questions || [], meta: { customTitle: pack.title || '', packId: pack.id || '' } }),
+        pdf_qpp: Number(options.qpp || _pendingAssessmentQpp || 4),
         pack_id: pack.id,
         grade_label: gradeLabel,
         pack_hash: buildAssessmentPackHash(pack),
@@ -1303,7 +1304,11 @@
         notifyAssessmentQrApiFailure(res.status, 'class-exam-assignments');
         throw new Error(`assignment failed: ${res.status}`);
       }
-      return res.json().catch(() => ({}));
+      const data = await res.json().catch(() => ({}));
+      if (data?.assignment?.pdf_status === 'failed') {
+        throw new Error(data.assignment.pdf_error || '시험지 PDF 생성 실패');
+      }
+      return data;
     }
 
     function renderAssessmentTeacherClassSelector(classes) {
@@ -1613,6 +1618,7 @@
             assignmentBatchId,
             target_scope: 'grade',
             gradeLabel,
+            qpp: _pendingAssessmentQpp,
           });
         }
         closeAssessmentModal();
@@ -1680,6 +1686,7 @@
               assignmentBatchId: options.assignmentBatchId || getAssessmentAssignmentBatchId(pack, options.gradeLabel || pack.grade || 'class'),
               target_scope: options.target_scope || 'class',
               gradeLabel: options.gradeLabel || pack.grade || '',
+              qpp,
             }
           );
           assignmentRegistered = true;

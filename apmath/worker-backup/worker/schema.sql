@@ -273,6 +273,14 @@ CREATE TABLE IF NOT EXISTS class_exam_assignments (
   source_type TEXT DEFAULT 'archive',
   mixed_payload_json TEXT DEFAULT '',
   subject TEXT DEFAULT '',
+  pdf_status TEXT DEFAULT 'pending',
+  pdf_object_key TEXT DEFAULT '',
+  pdf_content_hash TEXT DEFAULT '',
+  pdf_qpp INTEGER DEFAULT 4,
+  pdf_byte_size INTEGER DEFAULT 0,
+  pdf_page_count INTEGER DEFAULT 0,
+  pdf_generated_at TEXT,
+  pdf_error TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   UNIQUE(class_id, exam_title, exam_date, archive_file)
@@ -280,6 +288,12 @@ CREATE TABLE IF NOT EXISTS class_exam_assignments (
 
 CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_source_identity
 ON class_exam_assignments (class_id, exam_date, archive_file);
+
+CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_pdf_status
+ON class_exam_assignments(pdf_status);
+
+CREATE INDEX IF NOT EXISTS idx_class_exam_assignments_pdf_hash
+ON class_exam_assignments(pdf_content_hash);
 
 CREATE TABLE IF NOT EXISTS class_exam_assignment_exclusions (
   assignment_id TEXT NOT NULL,

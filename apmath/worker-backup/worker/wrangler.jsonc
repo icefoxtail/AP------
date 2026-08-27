@@ -6,7 +6,11 @@
 	"vars": {
 		"CLOUDFLARE_ACCOUNT_ID": "0dbb64db1ea0968cbaa4f5a479b665e7",
 		"D1_DATABASE_ID": "146096e8-01f7-49c4-8add-9cb5a5258cde",
-		"D1_DATABASE_NAME": "ap-math-os"
+		"D1_DATABASE_NAME": "ap-math-os",
+		"ARCHIVE_PUBLIC_BASE_URL": "https://icefoxtail.github.io/AP------/archive"
+	},
+	"browser": {
+		"binding": "BROWSER"
 	},
 	"workflows": [
 		{
@@ -38,6 +42,10 @@
 			"bucket_name": "apmath-homework-photo",
 			"binding": "HOMEWORK_PHOTO_BUCKET",
 			"remote": true
+		},
+		{
+			"bucket_name": "apmath-exam-pdfs",
+			"binding": "EXAM_PDF_BUCKET"
 		}
 	]
 }

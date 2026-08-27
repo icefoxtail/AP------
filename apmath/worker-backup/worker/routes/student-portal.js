@@ -1,5 +1,6 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { createAssignmentPdfDownloadResponse } from './exam-pdf.js';
 import { canAccessStudent, isStaffUser } from '../helpers/foundation-db.js';
 import {
   listWrongClinicPacketsForStudent,
@@ -211,6 +212,10 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100) {
       archive_file: row.archive_file || '',
       mixed_payload_json: row.mixed_payload_json || '',
       source_type: row.source_type || '',
+      pdf_status: row.pdf_status || 'pending',
+      pdf_ready: row.pdf_status === 'ready' && !!row.pdf_object_key,
+      pdf_page_count: Number(row.pdf_page_count || 0),
+      pdf_byte_size: Number(row.pdf_byte_size || 0),
       pack_id: row.pack_id || null,
       grade_label: row.grade_label || null,
       created_at: row.created_at || '',
@@ -230,6 +235,35 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
   const id = path[2];
 
   if (resource !== 'student-portal') return null;
+
+  if (method === 'GET' && id === 'exam-pdf') {
+    const studentId = String(url.searchParams.get('student_id') || '').trim();
+    const assignmentId = String(url.searchParams.get('assignment_id') || '').trim();
+    const studentToken = pickStudentPortalToken(url, request);
+    const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken);
+    if (verified.error) return verified.error;
+    if (!assignmentId) return jsonResponse({ success: false, message: 'assignment_id required' }, 400);
+
+    const hasRecipients = await hasClassExamAssignmentRecipients(env);
+    const hasExclusions = await hasClassExamAssignmentExclusions(env);
+    const assignment = await env.DB.prepare(`
+      SELECT cea.*
+      FROM class_exam_assignments cea
+      ${hasRecipients
+        ? 'JOIN class_exam_assignment_recipients ar ON ar.assignment_id = cea.id AND ar.student_id = ?'
+        : 'JOIN class_students cs ON cs.class_id = cea.class_id AND cs.student_id = ?'}
+      WHERE cea.id = ?
+        ${hasExclusions ? `AND NOT EXISTS (
+          SELECT 1 FROM class_exam_assignment_exclusions ex
+          WHERE ex.assignment_id = cea.id AND ex.student_id = ?
+        )` : ''}
+      LIMIT 1
+    `).bind(...(hasExclusions
+      ? [verified.student.id, assignmentId, verified.student.id]
+      : [verified.student.id, assignmentId])).first();
+    if (!assignment) return jsonResponse({ success: false, message: '다운로드할 시험지를 찾을 수 없습니다.' }, 404);
+    return createAssignmentPdfDownloadResponse(env, assignment);
+  }
 
   if (method === 'POST' && id === 'auth') {
     const d = await request.json();

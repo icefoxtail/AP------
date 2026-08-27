@@ -1,6 +1,7 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -21,7 +22,7 @@ async function requireTeacher(request, env, teacher) {
   return teacher || await verifyAuth(request, env);
 }
 
-const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignment_batch_id', 'target_scope', 'subject'];
+const ASSIGNMENT_META_COLUMNS = ['pack_id', 'grade_label', 'pack_hash', 'assignment_batch_id', 'target_scope', 'subject', 'pdf_qpp'];
 const ASSIGNMENT_MIXED_PAYLOAD_COLUMN = 'mixed_payload_json';
 const EXAM_SESSION_META_COLUMNS = ['assignment_id', 'pack_id', 'result_hash', 'analysis_status'];
 const BLUEPRINT_META_COLUMNS = ['assessment_pack_id', 'type_key', 'difficulty'];
@@ -47,6 +48,11 @@ function normalizeOptionalText(value) {
 function normalizeOptionalPositiveInteger(value) {
   const number = Number(value);
   return Number.isInteger(number) && number > 0 ? number : null;
+}
+
+function normalizeAssignmentPdfQpp(value) {
+  const parsed = Number.parseInt(value, 10);
+  return [1, 2, 4, 6].includes(parsed) ? parsed : 4;
 }
 
 function normalizeMixedAssignmentPayload(value, archiveFile) {
@@ -541,7 +547,8 @@ async function ensureClassExamAssignmentForExclusion(env, input) {
     pack_hash: normalizeOptionalText(input.pack_hash),
     assignment_batch_id: normalizeOptionalText(input.assignment_batch_id),
     target_scope: normalizeTargetScope(input.target_scope),
-    subject: normalizeOptionalText(input.subject)
+    subject: normalizeOptionalText(input.subject),
+    pdf_qpp: normalizeAssignmentPdfQpp(input.pdf_qpp ?? input.qpp)
   };
   const assignmentId = crypto.randomUUID();
   const insertColumns = [
@@ -1269,6 +1276,21 @@ export async function handleExams(request, env, teacher, path, url) {
   }
 
   if (resource === 'class-exam-assignments') {
+    if ((method === 'GET' || method === 'POST') && id && path[3] === 'pdf') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      const assignment = await loadClassExamAssignmentById(env, id);
+      if (!assignment) return jsonResponse({ success: false, error: 'assignment not found' }, 404);
+      if (!(await canAccessClass(currentTeacher, assignment.class_id, env))) {
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      }
+      if (method === 'POST') {
+        const refreshed = await ensureAssignmentPdf(env, assignment, { force: true });
+        return jsonResponse({ success: true, assignment: refreshed });
+      }
+      return createAssignmentPdfDownloadResponse(env, assignment);
+    }
+
     if (method === 'POST' && id === 'exclude-student') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -1405,6 +1427,8 @@ export async function handleExams(request, env, teacher, path, url) {
     }
 
     if (method === 'POST') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       const d = await request.json();
       if (!d.class_id || !d.exam_title || !d.exam_date) {
         return jsonResponse({ success: false, error: 'class_id, exam_title, exam_date required' }, 400);
@@ -1434,7 +1458,8 @@ export async function handleExams(request, env, teacher, path, url) {
         pack_hash: normalizeOptionalText(d.pack_hash),
         assignment_batch_id: normalizeOptionalText(d.assignment_batch_id),
         target_scope: normalizeTargetScope(d.target_scope),
-        subject: normalizeOptionalText(d.subject)
+        subject: normalizeOptionalText(d.subject),
+        pdf_qpp: normalizeAssignmentPdfQpp(d.pdf_qpp ?? d.qpp)
       };
       const updateSets = [
         'exam_title = ?',
@@ -1508,10 +1533,11 @@ export async function handleExams(request, env, teacher, path, url) {
           existing.id
         ).run();
 
-        const assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
+        let assignment = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE id = ? LIMIT 1')
           .bind(existing.id).first();
         await snapshotClassExamAssignmentRecipients(env, assignment);
         if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
+        if (archive_file) assignment = await ensureAssignmentPdf(env, assignment);
         return jsonResponse({ success: true, assignment });
       }
 
@@ -1588,6 +1614,7 @@ export async function handleExams(request, env, teacher, path, url) {
 
       await snapshotClassExamAssignmentRecipients(env, assignment);
       if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
+      if (archive_file) assignment = await ensureAssignmentPdf(env, assignment);
       return jsonResponse({ success: true, assignment });
     }
 

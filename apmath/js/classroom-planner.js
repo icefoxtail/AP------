@@ -338,6 +338,47 @@ async function openExamGradeView(classId) {
     `);
 }
 
+async function downloadClassExamPdf(assignmentId) {
+    if (!assignmentId) return toast('출제 정보를 찾을 수 없습니다.', 'warn');
+    try {
+        const response = await fetch(`${CONFIG.API_BASE}/class-exam-assignments/${encodeURIComponent(assignmentId)}/pdf`, {
+            headers: { ...getAuthHeader() }
+        });
+        if (!response.ok) {
+            const data = await response.json().catch(() => ({}));
+            throw new Error(data.error || 'PDF 다운로드 실패');
+        }
+        const blob = await response.blob();
+        const href = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = '시험지.pdf';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(href), 1000);
+    } catch (e) {
+        console.warn('[class exam pdf] download failed:', e);
+        toast(e.message || 'PDF 다운로드에 실패했습니다.', 'warn');
+    }
+}
+
+async function regenerateClassExamPdf(assignmentId, classId, examTitle, examDate, archiveFile = '') {
+    if (!assignmentId) return toast('출제 정보를 찾을 수 없습니다.', 'warn');
+    try {
+        toast('시험지 PDF를 생성하고 있습니다.', 'info');
+        const result = await api.post(`class-exam-assignments/${encodeURIComponent(assignmentId)}/pdf`, {});
+        if (result?.assignment?.pdf_status !== 'ready') {
+            throw new Error(result?.assignment?.pdf_error || 'PDF 생성 실패');
+        }
+        toast('시험지 PDF가 준비되었습니다.', 'success');
+        await openExamDetail(classId, examTitle, examDate, archiveFile);
+    } catch (e) {
+        console.warn('[class exam pdf] regeneration failed:', e);
+        toast(e.message || 'PDF 생성에 실패했습니다.', 'warn');
+    }
+}
+
 async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId });
     let sessionSource = state.db.exam_sessions || [];
@@ -425,6 +466,15 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
     const examArchiveFileObj = sessions.find(s => s.archive_file);
     const examArchiveFile = apJsArg(examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || '');
     const assignmentIdArg = apJsArg(matchedAssignment?.id || '');
+    const pdfStatus = String(matchedAssignment?.pdf_status || 'pending');
+    const pdfCreateLabel = pdfStatus === 'failed' ? 'PDF 다시 생성' : 'PDF 생성';
+    const pdfActionHtml = matchedAssignment?.id
+        ? (pdfStatus === 'ready'
+            ? `<button class="btn apms-button apms-button--primary btn-primary" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="downloadClassExamPdf(${assignmentIdArg})">출제본 PDF</button>`
+            : pdfStatus === 'generating'
+                ? '<button class="btn apms-button apms-button--quiet" style="padding:7px 12px; font-size:12px; border-radius:10px;" disabled>PDF 생성 중</button>'
+                : `<button class="btn apms-button apms-button--quiet" style="padding:7px 12px; font-size:12px; border-radius:10px;" onclick="regenerateClassExamPdf(${assignmentIdArg}, '${classId}', ${apJsArg(examTitle)}, '${examDate}', ${examArchiveFile})">${pdfCreateLabel}</button>`)
+        : '';
     const detailDisplayTitle = getClassroomExamDisplayTitle({
         title: examTitle,
         archiveFile: examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || archiveFile || ''
@@ -466,6 +516,7 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
         <div style="padding: 14px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 16px; text-align: center;">
             <div style="font-size: 14px; font-weight:500; color: var(--text); line-height: 1.4;">제출 완료: <span style="color: var(--success);; font-weight:500;">${submitted.length}명</span> / 전체 ${submitted.length + pending.length}명</div>
             <div style="font-size: 11px; font-weight: 400; color: var(--secondary); margin-top: 4px; line-height: 1.5;">${examDate} · ${qCount}문항 기준</div>
+            ${pdfActionHtml ? `<div style="margin-top:12px;">${pdfActionHtml}</div>` : ''}
         </div>
         <div style="margin-bottom: 24px; border: 1px solid rgba(var(--primary-rgb),0.16); border-radius: 18px; padding: 16px; background: rgba(var(--primary-rgb),0.04);">
             <div style="font-size: 14px; font-weight:500; margin-bottom: 12px; color: var(--primary); line-height: 1.3;">반 취약 단원 TOP</div>
