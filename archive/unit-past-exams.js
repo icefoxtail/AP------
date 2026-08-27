@@ -94,12 +94,23 @@
   function loadQuestionFile(sourceFile) {
     if (state.fileCache.has(sourceFile)) return state.fileCache.get(sourceFile);
     const promise = (async () => {
-      delete window.questions;
-      delete window.questionBank;
-      await loadScript(`exams/${sourceFile}?v=20260826a`);
-      const data = window.questions || window.questionBank;
-      if (!Array.isArray(data)) throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.`);
-      return data.map(question => ({ ...question }));
+      const candidates = core.getSourceFileCandidates(sourceFile);
+      const failures = [];
+      for (const candidate of candidates) {
+        delete window.questions;
+        delete window.questionBank;
+        try {
+          await loadScript(`exams/${candidate}?v=20260827b`);
+        } catch (error) {
+          failures.push(`${candidate}: ${error.message || error}`);
+          continue;
+        }
+        const data = Array.isArray(window.questions) ? window.questions : window.questionBank;
+        if (Array.isArray(data)) return data.map(question => ({ ...question }));
+        failures.push(`${candidate}: questionBank 배열 없음`);
+      }
+      const attempted = failures.length > 1 ? ` 시도 경로: ${candidates.join(', ')}` : '';
+      throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.${attempted}`);
     })().catch(error => { state.fileCache.delete(sourceFile); throw error; });
     state.fileCache.set(sourceFile, promise);
     return promise;
@@ -179,6 +190,7 @@
     const selection = paper.selection || {};
     const collection = selection.collection || null;
     const selectedSubUnits = [...new Map(paper.records.map(record => [record.subUnitKey || '__unclassified__', core.getSubUnitLabel(record) || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
+    const sourceSummary = getPaperSources(paper).map(source => source.label).filter(Boolean).join(' / ');
     const meta = {
       title: paper.title, customTitle: paper.title, identityTitle: paper.title, count: questions.length,
       generatedAt: new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
@@ -188,6 +200,7 @@
       difficultyPlan: selection.difficultyPlan || [], selectionMode: selection.mode || 'legacy', selectionSeed: selection.seed || '',
       collection,
       school: paper.school || '', schoolKey: paper.schoolKey || '',
+      sourceSummary: sourceSummary ? `출처: ${sourceSummary}` : '',
       questionUids: questions.map(question => core.getQuestionUid(question)).filter(Boolean),
       metadataRevision: [...new Set(paper.records.map(record => record.metadataRevision).filter(Boolean))].join(',') || '',
       printHeaderOptions: {
@@ -328,6 +341,8 @@
       yearMode: ['exact', 'recentAvailable', 'range'].includes(params.get('collectionYearMode')) ? params.get('collectionYearMode') : 'exact',
       year: Number(params.get('collectionYear') || 0), yearCount: Number(params.get('collectionYearCount') || 3),
       yearFrom: Number(params.get('collectionYearFrom') || 0), yearTo: Number(params.get('collectionYearTo') || 0),
+      semester: core.normalizeCollectionSemester(params.get('collectionSemester')),
+      examType: core.normalizeCollectionExamType(params.get('collectionExamType')),
       schoolKeys: parseCollectionKeys(params.get('collectionSchools')),
       outputMode: params.get('collectionOutput') === 'combined' ? 'combined' : 'school',
       countMode: params.get('collectionCountMode') === 'fixed' ? 'fixed' : 'all',
@@ -377,6 +392,8 @@
     if (collection.yearMode === 'recentAvailable') url.searchParams.set('collectionYearCount', String(collection.yearCount)); else url.searchParams.delete('collectionYearCount');
     if (collection.yearMode === 'range') { url.searchParams.set('collectionYearFrom', String(collection.yearFrom || '')); url.searchParams.set('collectionYearTo', String(collection.yearTo || '')); }
     else { url.searchParams.delete('collectionYearFrom'); url.searchParams.delete('collectionYearTo'); }
+    if (collection.semester) url.searchParams.set('collectionSemester', collection.semester); else url.searchParams.delete('collectionSemester');
+    if (collection.examType) url.searchParams.set('collectionExamType', collection.examType); else url.searchParams.delete('collectionExamType');
     if (collection.schoolKeys.length) url.searchParams.set('collectionSchools', collection.schoolKeys.join(',')); else url.searchParams.delete('collectionSchools');
     if (collection.outputMode === 'combined') url.searchParams.set('collectionOutput', 'combined'); else url.searchParams.delete('collectionOutput');
     if (collection.countMode === 'fixed') { url.searchParams.set('collectionCountMode', 'fixed'); url.searchParams.set('collectionCount', String(collection.count)); }
@@ -411,6 +428,10 @@
     const yearTo = document.getElementById('unit-collection-year-to');
     if (yearFrom) collection.yearFrom = Number(yearFrom.value || 0);
     if (yearTo) collection.yearTo = Number(yearTo.value || 0);
+    const semester = document.getElementById('unit-collection-semester');
+    if (semester) collection.semester = core.normalizeCollectionSemester(semester.value);
+    const examType = document.getElementById('unit-collection-exam-type');
+    if (examType) collection.examType = core.normalizeCollectionExamType(examType.value);
     collection.schoolKeys = selectedValues('unit-collection-schools');
     collection.outputMode = document.querySelector('input[name="unit-collection-output"]:checked')?.value || collection.outputMode || 'school';
     collection.countMode = document.querySelector('input[name="unit-collection-count-mode"]:checked')?.value || collection.countMode || 'all';
@@ -428,6 +449,30 @@
     renderCollectionPanel(getUnit(state.selectedUnitKey));
   }
 
+  function filterCollectionSchools() {
+    const input = document.getElementById('unit-collection-school-search');
+    const select = document.getElementById('unit-collection-schools');
+    if (!input || !select) return;
+    const query = compact(input.value);
+    [...select.options].forEach(option => {
+      option.hidden = Boolean(query && !compact(option.textContent).includes(query));
+    });
+  }
+
+  function selectAllCollectionSchools() {
+    const select = document.getElementById('unit-collection-schools');
+    if (!select) return;
+    [...select.options].forEach(option => { option.selected = true; });
+    updateCollectionFilter();
+  }
+
+  function clearCollectionSchools() {
+    const select = document.getElementById('unit-collection-schools');
+    if (!select) return;
+    [...select.options].forEach(option => { option.selected = false; });
+    updateCollectionFilter();
+  }
+
   function renderCollectionPanel(unit) {
     const root = document.getElementById('unit-collection-panel');
     if (!root || !unit || !state.catalog) return;
@@ -436,9 +481,10 @@
     const profile = getProfile();
     const allRecords = getCollectionRecords();
     const scopeRecords = core.getCollectionScopeRecords(allRecords, profile, collection);
+    const filteredScopeRecords = core.filterCollectionRecords(scopeRecords, collection);
     const schoolOptions = core.getCollectionSchoolOptions(allRecords, profile, { ...collection, schoolKeys: [] });
     const yearOptions = core.getCollectionYearOptions(allRecords, profile, { ...collection, schoolKeys: [] });
-    const subUnitOptions = core.getSubUnitOptions(scopeRecords);
+    const subUnitOptions = core.getSubUnitOptions(filteredScopeRecords);
     const validSchools = new Set(schoolOptions.map(item => item.key));
     const validSubUnits = new Set(subUnitOptions.map(item => item.key));
     collection.schoolKeys = collection.schoolKeys.filter(key => validSchools.has(key));
@@ -447,8 +493,14 @@
     const selectedDifficulty = new Set(collection.difficultyBuckets);
     const yearMode = collection.yearMode === 'recentAvailable' ? `recent${collection.yearCount}` : collection.yearMode;
     const exactYearOptions = [...new Set([collection.year, ...yearOptions].filter(Boolean))].sort((a, b) => b - a);
-    const yearSelection = core.resolveCollectionYearsBySchool(scopeRecords, collection);
-    const yearSummary = yearSelection.selectedYears.length ? yearSelection.selectedYears.join(', ') : '선택 연도 자료 없음';
+    const yearSelection = core.resolveCollectionYearsBySchool(filteredScopeRecords, collection);
+    const yearSummary = yearSelection.selectedYears.length
+      ? (collection.yearMode === 'recentAvailable' ? `학교별 최근 연도 합집합 ${yearSelection.selectedYears.join(', ')}` : yearSelection.selectedYears.join(', '))
+      : '선택 연도 자료 없음';
+    const periodSummary = [
+      collection.semester ? `${collection.semester}학기` : '',
+      collection.examType ? (collection.examType === 'mid' ? '중간' : '기말') : ''
+    ].filter(Boolean).join(' ');
     const scopeOptions = [
       ['current', `현재 단원 · ${unit.name}`],
       ['cumulative', `누적 범위 · ${unit.course} 1단원부터`],
@@ -459,7 +511,7 @@
     const unitEndOptions = scopeUnits.map(item => `<option value="${item.key}"${collection.endUnitKey === item.key ? ' selected' : ''}>${String(item.order).padStart(2, '0')} · ${escapeHtml(item.name)}</option>`).join('');
     const schoolSelectOptions = schoolOptions.map(item => `<option value="${escapeHtml(item.key)}"${collection.schoolKeys.includes(item.key) ? ' selected' : ''}>${escapeHtml(item.label)} · ${item.years.join('/') || '연도 미상'} (${item.count})</option>`).join('');
     const subUnitSelectOptions = subUnitOptions.map(item => `<option value="${escapeHtml(item.key)}"${collection.subUnitKeys.includes(item.key) ? ' selected' : ''}>${escapeHtml(item.label)} (${item.count})</option>`).join('');
-    root.innerHTML = `<section class="unit-collection"><div class="unit-collection-head"><div><div class="unit-eyebrow">학교·연도 묶음 출제</div><h3>기출 모아뽑기</h3><p>“2025 기출”처럼 특정 연도를 지정하거나, 학교별로 자료가 실제 존재하는 최근 3·5개년을 모읍니다.</p></div><div class="unit-collection-summary" id="unit-collection-summary">${escapeHtml(getCollectionScopeLabel(unit, collection))} · ${escapeHtml(yearSummary)} · 범위 ${scopeRecords.length.toLocaleString()}문항</div></div><div class="unit-collection-grid"><fieldset class="unit-filter-field"><legend>단원 범위</legend><select id="unit-collection-scope" onchange="UnitPastExams.updateCollectionFilter()">${scopeOptions}</select><div class="unit-collection-range${collection.scopeMode === 'range' ? '' : ' is-hidden'}"><label>시작 단원<select id="unit-collection-start" onchange="UnitPastExams.updateCollectionFilter()">${unitSelectOptions}</select></label><label>끝 단원<select id="unit-collection-end" onchange="UnitPastExams.updateCollectionFilter()">${unitEndOptions}</select></label></div><small>현재 단원·누적·단원 범위·과목 전체를 지원합니다.</small></fieldset><fieldset class="unit-filter-field"><legend>연도</legend><select id="unit-collection-year-mode" onchange="UnitPastExams.updateCollectionFilter()"><option value="exact"${yearMode === 'exact' ? ' selected' : ''}>특정 연도</option><option value="recent3"${yearMode === 'recent3' ? ' selected' : ''}>최근 3개년 · 학교별 자료 기준</option><option value="recent5"${yearMode === 'recent5' ? ' selected' : ''}>최근 5개년 · 학교별 자료 기준</option><option value="range"${yearMode === 'range' ? ' selected' : ''}>연도 범위</option></select><select id="unit-collection-year" class="${yearMode === 'exact' ? '' : 'is-hidden'}" onchange="UnitPastExams.updateCollectionFilter()">${exactYearOptions.map(year => `<option value="${year}"${collection.year === year ? ' selected' : ''}>${year}년</option>`).join('')}</select><select id="unit-collection-year-count" class="${yearMode === 'recent3' || yearMode === 'recent5' ? '' : 'is-hidden'}" onchange="UnitPastExams.updateCollectionFilter()"><option value="3"${collection.yearCount === 3 ? ' selected' : ''}>최근 3개년</option><option value="5"${collection.yearCount === 5 ? ' selected' : ''}>최근 5개년</option></select><div class="unit-collection-year-range${yearMode === 'range' ? '' : ' is-hidden'}"><label>시작 연도<input id="unit-collection-year-from" type="number" min="2000" max="2200" value="${collection.yearFrom || ''}" onchange="UnitPastExams.updateCollectionFilter()"></label><label>끝 연도<input id="unit-collection-year-to" type="number" min="2000" max="2200" value="${collection.yearTo || ''}" onchange="UnitPastExams.updateCollectionFilter()"></label></div><small>최근 3·5개년은 빈 연도를 억지로 만들지 않고 학교별 보유 연도만 사용합니다.</small></fieldset><fieldset class="unit-filter-field unit-collection-school-field"><legend>학교 선택</legend><select id="unit-collection-schools" multiple size="6" aria-label="학교 다중 선택" onchange="UnitPastExams.updateCollectionFilter()">${schoolSelectOptions}</select><small>선택하지 않으면 자료가 있는 모든 학교 · 여러 학교를 함께 선택할 수 있습니다.</small></fieldset><fieldset class="unit-filter-field"><legend>소단원·난이도 선택</legend><select id="unit-collection-subunits" multiple size="4" aria-label="모아뽑기 소단원 다중 선택" onchange="UnitPastExams.updateCollectionFilter()">${subUnitSelectOptions}</select><div class="unit-choice-list">${LEVELS.map(level => `<label class="unit-choice"><input type="checkbox" name="unit-collection-difficulty" value="${level}"${selectedDifficulty.has(level) ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>${level}</span></label>`).join('')}</div><label class="unit-relax-choice"><input id="unit-collection-include-unclassified" type="checkbox"${collection.includeUnclassified ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>미분류 포함</span></label><small>선택하지 않으면 해당 범위의 모든 소단원·난이도를 사용합니다.</small></fieldset></div><fieldset class="unit-mode-field"><legend>출력 방식</legend><div class="unit-mode-toggle"><label><input type="radio" name="unit-collection-output" value="school"${collection.outputMode === 'school' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>학교별 문제지</span></label><label><input type="radio" name="unit-collection-output" value="combined"${collection.outputMode === 'combined' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>학교 통합 문제지</span></label></div></fieldset><fieldset class="unit-mode-field"><legend>문항 수</legend><div class="unit-mode-toggle"><label><input type="radio" name="unit-collection-count-mode" value="all"${collection.countMode === 'all' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>조건에 맞는 전체</span></label><label><input type="radio" name="unit-collection-count-mode" value="fixed"${collection.countMode === 'fixed' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>문항 수 제한</span></label></div><label class="unit-collection-count-input">제한 수<input id="unit-collection-count" type="number" min="1" max="500" value="${collection.count}" onchange="UnitPastExams.updateCollectionFilter()"></label><small>문항 수 제한은 학교별 출력에서는 학교마다, 통합 출력에서는 전체에 적용됩니다.</small></fieldset><div class="unit-filter-actions"><button type="button" class="unit-btn primary" onclick="UnitPastExams.generateCollectionPapers()">모아뽑기 미리보기</button><button type="button" class="unit-btn" onclick="UnitPastExams.resetCollectionFilter()">모아뽑기 초기화</button></div><div id="unit-collection-report" class="unit-selection-report" aria-live="polite"></div></section>`;
+    root.innerHTML = `<section class="unit-collection"><div class="unit-collection-head"><div><div class="unit-eyebrow">학교·연도 묶음 출제</div><h3>기출 모아뽑기</h3><p>“2025 기출”처럼 특정 연도를 지정하거나, 학교별로 자료가 실제 존재하는 최근 3·5개년을 모읍니다.</p></div><div class="unit-collection-summary" id="unit-collection-summary">${escapeHtml(getCollectionScopeLabel(unit, collection))} · ${escapeHtml(yearSummary)}${periodSummary ? ` · ${escapeHtml(periodSummary)}` : ''} · 범위 ${filteredScopeRecords.length.toLocaleString()}문항</div></div><div class="unit-collection-grid"><fieldset class="unit-filter-field"><legend>단원 범위</legend><select id="unit-collection-scope" aria-label="모아뽑기 단원 범위" onchange="UnitPastExams.updateCollectionFilter()">${scopeOptions}</select><div class="unit-collection-range${collection.scopeMode === 'range' ? '' : ' is-hidden'}"><label>시작 단원<select id="unit-collection-start" aria-label="모아뽑기 시작 단원" onchange="UnitPastExams.updateCollectionFilter()">${unitSelectOptions}</select></label><label>끝 단원<select id="unit-collection-end" aria-label="모아뽑기 끝 단원" onchange="UnitPastExams.updateCollectionFilter()">${unitEndOptions}</select></label></div><small>현재 단원·누적·단원 범위·과목 전체를 지원합니다.</small></fieldset><fieldset class="unit-filter-field"><legend>연도</legend><select id="unit-collection-year-mode" aria-label="모아뽑기 연도 선택 방식" onchange="UnitPastExams.updateCollectionFilter()"><option value="exact"${yearMode === 'exact' ? ' selected' : ''}>특정 연도</option><option value="recent3"${yearMode === 'recent3' ? ' selected' : ''}>최근 3개년 · 학교별 자료 기준</option><option value="recent5"${yearMode === 'recent5' ? ' selected' : ''}>최근 5개년 · 학교별 자료 기준</option><option value="range"${yearMode === 'range' ? ' selected' : ''}>연도 범위</option></select><select id="unit-collection-year" aria-label="모아뽑기 특정 연도" class="${yearMode === 'exact' ? '' : 'is-hidden'}" onchange="UnitPastExams.updateCollectionFilter()">${exactYearOptions.map(year => `<option value="${year}"${collection.year === year ? ' selected' : ''}>${year}년</option>`).join('')}</select><select id="unit-collection-year-count" aria-label="모아뽑기 최근 연도 수" class="${yearMode === 'recent3' || yearMode === 'recent5' ? '' : 'is-hidden'}" onchange="UnitPastExams.updateCollectionFilter()"><option value="3"${collection.yearCount === 3 ? ' selected' : ''}>최근 3개년</option><option value="5"${collection.yearCount === 5 ? ' selected' : ''}>최근 5개년</option></select><div class="unit-collection-year-range${yearMode === 'range' ? '' : ' is-hidden'}"><label>시작 연도<input id="unit-collection-year-from" type="number" min="2000" max="2200" value="${collection.yearFrom || ''}" onchange="UnitPastExams.updateCollectionFilter()"></label><label>끝 연도<input id="unit-collection-year-to" type="number" min="2000" max="2200" value="${collection.yearTo || ''}" onchange="UnitPastExams.updateCollectionFilter()"></label></div><small>최근 3·5개년은 빈 연도를 억지로 만들지 않고 학교별 보유 연도만 사용합니다.</small></fieldset><fieldset class="unit-filter-field"><legend>시험 시기</legend><div class="unit-collection-period-fields"><label>학기<select id="unit-collection-semester" aria-label="모아뽑기 시험 학기" onchange="UnitPastExams.updateCollectionFilter()"><option value=""${!collection.semester ? ' selected' : ''}>전체 학기</option><option value="1"${collection.semester === '1' ? ' selected' : ''}>1학기</option><option value="2"${collection.semester === '2' ? ' selected' : ''}>2학기</option></select></label><label>시험 종류<select id="unit-collection-exam-type" aria-label="모아뽑기 시험 종류" onchange="UnitPastExams.updateCollectionFilter()"><option value=""${!collection.examType ? ' selected' : ''}>중간·기말 전체</option><option value="mid"${collection.examType === 'mid' ? ' selected' : ''}>중간고사</option><option value="final"${collection.examType === 'final' ? ' selected' : ''}>기말고사</option></select></label></div><small>시험 시기를 선택하면 학교·연도 자료 현황에도 같은 조건이 적용됩니다.</small></fieldset><fieldset class="unit-filter-field unit-collection-school-field"><legend>학교 선택</legend><div class="unit-school-tools"><label class="unit-school-search">학교 검색<input id="unit-collection-school-search" type="search" placeholder="학교명 검색" oninput="UnitPastExams.filterCollectionSchools()"></label><div class="unit-school-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.selectAllCollectionSchools()">전체 선택</button><button type="button" class="unit-btn" onclick="UnitPastExams.clearCollectionSchools()">선택 해제</button></div></div><select id="unit-collection-schools" multiple size="6" aria-label="학교 다중 선택" aria-describedby="unit-collection-school-help" onchange="UnitPastExams.updateCollectionFilter()">${schoolSelectOptions}</select><small id="unit-collection-school-help">선택하지 않으면 자료가 있는 모든 학교 · 여러 학교를 함께 선택할 수 있습니다.</small></fieldset><fieldset class="unit-filter-field"><legend>소단원·난이도 선택</legend><select id="unit-collection-subunits" multiple size="4" aria-label="모아뽑기 소단원 다중 선택" onchange="UnitPastExams.updateCollectionFilter()">${subUnitSelectOptions}</select><div class="unit-choice-list">${LEVELS.map(level => `<label class="unit-choice"><input type="checkbox" name="unit-collection-difficulty" value="${level}"${selectedDifficulty.has(level) ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>${level}</span></label>`).join('')}</div><label class="unit-relax-choice"><input id="unit-collection-include-unclassified" type="checkbox"${collection.includeUnclassified ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>미분류 포함</span></label><small>선택하지 않으면 해당 범위의 모든 소단원·난이도를 사용합니다.</small></fieldset></div><fieldset class="unit-mode-field"><legend>출력 방식</legend><div class="unit-mode-toggle"><label><input type="radio" name="unit-collection-output" value="school"${collection.outputMode === 'school' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>학교별 문제지</span></label><label><input type="radio" name="unit-collection-output" value="combined"${collection.outputMode === 'combined' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>학교 통합 문제지</span></label></div></fieldset><fieldset class="unit-mode-field"><legend>문항 수</legend><div class="unit-mode-toggle"><label><input type="radio" name="unit-collection-count-mode" value="all"${collection.countMode === 'all' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>조건에 맞는 전체</span></label><label><input type="radio" name="unit-collection-count-mode" value="fixed"${collection.countMode === 'fixed' ? ' checked' : ''} onchange="UnitPastExams.updateCollectionFilter()"><span>문항 수 제한</span></label></div><label class="unit-collection-count-input">제한 수<input id="unit-collection-count" type="number" min="1" max="500" value="${collection.count}" onchange="UnitPastExams.updateCollectionFilter()"></label><small>문항 수 제한은 학교별 출력에서는 학교마다, 통합 출력에서는 전체에 적용됩니다.</small></fieldset><div class="unit-filter-actions"><button type="button" class="unit-btn primary" onclick="UnitPastExams.generateCollectionPapers()">모아뽑기 미리보기</button><button type="button" class="unit-btn" onclick="UnitPastExams.resetCollectionFilter()">모아뽑기 초기화</button></div><div id="unit-collection-report" class="unit-selection-report" aria-live="polite"></div></section>`;
   }
 
   function buildCollectionSelection(unit) {
@@ -473,7 +525,8 @@
       difficultyPlan: [], seed: '', collection: {
         scopeMode: collection.scopeMode, scopeUnitKeys: result.scopeUnits.map(item => item.key), scopeLabel: getCollectionScopeLabel(unit, collection),
         course: unit.course, yearMode: collection.yearMode, year: collection.year, yearCount: collection.yearCount,
-        yearFrom: collection.yearFrom, yearTo: collection.yearTo, selectedYearsBySchool: result.yearSelection.bySchool,
+        yearFrom: collection.yearFrom, yearTo: collection.yearTo, semester: collection.semester, examType: collection.examType,
+        selectedYearsBySchool: result.yearSelection.bySchool,
         schoolKeys: [...collection.schoolKeys], outputMode: collection.outputMode, countMode: collection.countMode, count: collection.count
       }
     };
@@ -483,17 +536,22 @@
   function buildCollectionPaperTitle(unit, paper, selection) {
     const collection = selection.collection || {};
     const school = paper.schoolKey ? paper.school : '학교 통합';
-    const base = `${getCollectionYearLabel(collection)} · ${school} · ${collection.scopeLabel || unit.name}`;
+    const period = [collection.semester ? `${collection.semester}학기` : '', collection.examType ? (collection.examType === 'mid' ? '중간' : '기말') : ''].filter(Boolean).join(' ');
+    const base = `${getCollectionYearLabel(collection)}${period ? ` · ${period}` : ''} · ${school} · ${collection.scopeLabel || unit.name}`;
     return base;
   }
 
   function renderCollectionReport(unit, plan, isReady) {
     const root = document.getElementById('unit-collection-report'); if (!root) return;
     const result = plan.result;
-    const schoolRows = result.schools.map(school => `<div class="unit-plan-row ${school.candidateCount ? '' : 'is-short'}"><span>${escapeHtml(school.label)} · ${school.years.length ? escapeHtml(school.years.join(', ')) : '자료 없음'}</span><strong>${school.selectedCount}/${school.candidateCount}</strong></div>`).join('');
+    const schoolRows = result.schools.map(school => `<div class="unit-plan-row ${school.candidateCount ? '' : 'is-short'}"><span>${escapeHtml(school.label)} · ${school.years.length ? escapeHtml(school.years.join(', ')) : '자료 없음'}${school.coverageLabel ? ` · ${escapeHtml(school.coverageLabel)}` : ''}</span><strong>${school.selectedCount}/${school.candidateCount}</strong></div>`).join('');
     const papers = isReady ? state.generatedPapers.filter(paper => paper.unitKey === unit.key && paper.generated) : [];
     const paperActions = papers.map(paper => `<article class="unit-generated-paper"><div><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</span></div><div class="unit-paper-actions"><button class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)">일반 출력</button><button class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)">반 학생에게 출제</button></div></article>`).join('');
-    const issue = !result.candidateCount ? '<div class="unit-empty-result">조건에 맞는 자료가 없습니다. 학교·연도·단원 범위를 조정해 주세요.</div>' : (!isReady ? `<div class="unit-limit-message">요청한 문항 수보다 ${result.shortage}개 부족합니다. 학교별 자료 현황을 확인해 주세요.</div>` : '');
+    const issue = !result.candidateCount
+      ? '<div class="unit-empty-result">조건에 맞는 자료가 없습니다. 학교·연도·단원 범위를 조정해 주세요.</div>'
+      : result.shortage
+        ? `<div class="unit-limit-message">요청한 문항 수보다 ${result.shortage}개 부족합니다. 가능한 ${result.selectedCount}개 문항으로 문제지를 만들었습니다. 학교별 자료 현황을 확인해 주세요.</div>`
+        : '';
     root.innerHTML = `<div class="unit-selection-head"><div><h3>${isReady ? '모아뽑기 미리보기' : '자료 현황 확인 필요'}</h3><p>${result.candidateCount.toLocaleString()}개 후보 · ${result.selectedCount.toLocaleString()}개 선택 · ${result.papers.length}개 문제지 · ${escapeHtml(getCollectionYearLabel(plan.selection.collection))}</p></div></div>${issue}<div class="unit-plan-list">${schoolRows || '<div class="unit-empty-result">학교 자료가 없습니다.</div>'}</div>${isReady && papers.length ? `<div class="unit-generated-list">${paperActions}</div><div class="unit-generated-meta">${result.selectedCount}문항 · ${papers.length}개 문제지</div>` : ''}`;
   }
 
@@ -502,7 +560,7 @@
     syncCollectionUrl();
     const unit = getUnit(state.selectedUnitKey); if (!unit || !state.collectionState) return;
     const plan = buildCollectionSelection(unit); const result = plan.result;
-    if (!result.candidateCount || !result.ok) {
+    if (!result.candidateCount || !result.ok || !result.papers.length) {
       state.generatedPapers = [];
       renderCollectionReport(unit, plan, false);
       setStatus(!result.candidateCount ? '조건에 맞는 기출 자료가 없습니다.' : `조건에 맞는 문항이 ${result.shortage}개 부족합니다.`, true);
@@ -519,7 +577,9 @@
       };
     });
     const firstPaper = state.generatedPapers[0];
-    renderCollectionReport(unit, plan, true); setStatus(`${firstPaper.title} · ${firstPaper.count}문항을 출제할 수 있습니다.`);
+    renderCollectionReport(unit, plan, true); setStatus(result.shortage
+      ? `${firstPaper.title} · ${firstPaper.count}문항을 준비했습니다. 부족 문항 ${result.shortage}개를 확인해 주세요.`
+      : `${firstPaper.title} · ${firstPaper.count}문항을 출제할 수 있습니다.`);
   }
 
   function resetCollectionFilter() {
@@ -775,6 +835,6 @@
     state.index = joinApprovedMetadata(window.questionIndex); const requested = new URLSearchParams(window.location.search).get('grade'); selectProfile(core.PROFILES[requested] ? requested : 'h1');
   }
   window.addEventListener('popstate', restoreFromUrl);
-  window.UnitPastExams = { init, selectProfile, renderDetail, updateDetailFilter, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
+  window.UnitPastExams = { init, selectProfile, renderDetail, updateDetailFilter, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

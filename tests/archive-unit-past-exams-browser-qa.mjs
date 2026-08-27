@@ -104,6 +104,33 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
   await page.locator('#unit-collection-report .unit-generated-paper').first().getByRole('button', { name: /일반 출력/ }).click();
   await waitFor(tab, async () => (await page.locator('#unit-status').innerText()).includes('준비 완료'), 8000);
 
+  const partialUrl = new URL(exactUrl.toString());
+  partialUrl.searchParams.set('collectionCountMode', 'fixed');
+  partialUrl.searchParams.set('collectionCount', '3');
+  await tab.goto(partialUrl.toString());
+  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
+  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 4);
+  result.collectionPartial = await page.locator('#unit-collection-report').innerText();
+  assert.match(result.collectionPartial, /요청한 문항 수보다 1개 부족/);
+  assert.match(result.collectionPartial, /가능한 11개 문항으로/);
+  assert.equal(await page.locator('#unit-collection-report .unit-generated-paper').count(), 4);
+
+  const periodUrl = new URL(exactUrl.toString());
+  await tab.goto(periodUrl.toString());
+  await waitFor(tab, async () => (await page.locator('#unit-collection-semester').count()) === 1);
+  await page.locator('#unit-collection-semester').selectOption('2');
+  await waitFor(tab, async () => (await tab.url()).includes('collectionSemester=2'));
+  await page.locator('#unit-collection-exam-type').selectOption('mid');
+  await waitFor(tab, async () => (await tab.url()).includes('collectionExamType=mid'));
+  result.collectionPeriod = {
+    url: await tab.url(),
+    summary: await page.locator('#unit-collection-summary').innerText()
+  };
+  assert.match(result.collectionPeriod.summary, /2학기 중간/);
+  assert.match(result.collectionPeriod.url, /collectionSemester=2/);
+  assert.match(result.collectionPeriod.url, /collectionExamType=mid/);
+
   const combinedUrl = new URL(exactUrl.toString());
   combinedUrl.searchParams.set('collectionOutput', 'combined');
   combinedUrl.searchParams.set('collectionSchools', '매산고,순천고');
@@ -123,11 +150,23 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
   recentUrl.hash = `apmsess=${hash}`;
   await tab.goto(recentUrl.toString());
   await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
+  await page.locator('#unit-collection-school-search').fill('순천');
+  const searchedSchools = await page.locator('#unit-collection-schools option').evaluateAll(options => options.filter(option => !option.hidden).map(option => option.textContent));
+  assert.ok(searchedSchools.length > 0);
+  assert.ok(searchedSchools.every(label => label.includes('순천')));
+  await page.getByRole('button', { name: /전체 선택/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-collection-schools option:checked').count()) > 0);
+  result.collectionSchoolTools = { selectedAll: await page.locator('#unit-collection-schools option:checked').count() };
+  assert.ok(result.collectionSchoolTools.selectedAll > 0);
+  await page.getByRole('button', { name: /선택 해제/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-collection-schools option:checked').count()) === 0);
+  assert.equal(await page.locator('#unit-collection-schools option:checked').count(), 0);
   await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
   await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 8);
   result.collectionRecentAvailable = await page.locator('#unit-collection-report').innerText();
   assert.match(result.collectionRecentAvailable, /35개 후보/);
   assert.match(result.collectionRecentAvailable, /최근 3개년/);
+  assert.match(result.collectionRecentAvailable, /\d+\/3개년/);
 
   await tab.goto(`${baseUrl}/tests/fixtures/unit-past-exams-fallback.html`);
   await waitFor(tab, async () => (await page.locator('.unit-fallback-actions a').count()) === 2);
