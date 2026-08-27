@@ -359,6 +359,12 @@ for (const file of examFiles) {
         }
 
         const meta = metaByFile.get(sourceFile) || {};
+        const missingMeta = ['grade', 'subject', 'school', 'year', 'semester', 'examType']
+            .filter(field => String(meta[field] ?? '').trim() === '');
+        if (sourceFile.startsWith('original/') && missingMeta.length) {
+            report.failures.push({ sourceFile, error: `required exam metadata missing: ${missingMeta.join(', ')}` });
+            continue;
+        }
         const idSlots = new Map(); // id(문자열) -> [slot,...] (빈 id 포함)
         for (let slot = 0; slot < questions.length; slot += 1) {
             const q = questions[slot];
@@ -784,3 +790,7 @@ console.log(`question-index generated: ${index.length} questions (source ${repor
 console.log(`duplicate_skipped: ${skippedTotal} records in ${duplicateGroups.length} groups; final duplicate qKey: ${finalDupCount}`);
 console.log(`key class: official=${keyClassTotals.official} raw=${keyClassTotals.raw} invalid=${keyClassTotals.invalid} empty=${keyClassTotals.empty} (invalid distinct=${invalidKeyCounts.size})`);
 console.log(`visual: image=${visualTotals.explicitImage} img=${visualTotals.contentImg} svg=${visualTotals.contentSvg} table=${visualTotals.contentTable} total=${visualTotals.hasVisual}`);
+if (report.failures.length) {
+    console.error(`question-index build failed: ${report.failures.length} file(s) require review`);
+    process.exitCode = 1;
+}

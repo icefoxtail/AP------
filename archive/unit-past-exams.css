@@ -55,6 +55,13 @@
 .unit-collection-range, .unit-collection-year-range { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 9px; }
 .unit-collection-range label, .unit-collection-year-range label, .unit-collection-count-input { display: grid; gap: 5px; color: #526175; font-size: 11px; font-weight: 800; }
 .unit-collection-range select, .unit-collection-year-range input, .unit-collection-count-input input, #unit-collection-scope, #unit-collection-year-mode, #unit-collection-year, #unit-collection-year-count { width: 100%; border: 1px solid #d7dee8; border-radius: 9px; padding: 9px 10px; background: #fff; color: var(--unit-ink); }
+.unit-collection-period-fields, .unit-school-tools { display: grid; gap: 8px; }
+.unit-collection-period-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.unit-collection-period-fields label, .unit-school-search { display: grid; gap: 5px; color: #526175; font-size: 12px; font-weight: 800; }
+.unit-collection-period-fields select, .unit-school-search input { width: 100%; border: 1px solid #d7dee8; border-radius: 9px; padding: 9px 10px; background: #fff; color: var(--unit-ink); }
+.unit-school-actions { display: flex; gap: 7px; }
+.unit-school-actions .unit-btn { flex: 1; padding: 7px 9px; font-size: 11px; }
+.unit-school-tools { margin-bottom: 8px; }
 .unit-collection-school-field { grid-column: span 2; }
 .unit-collection-school-field select, #unit-collection-subunits { width: 100%; min-height: 112px; border: 1px solid #d7dee8; border-radius: 9px; padding: 4px; color: var(--unit-ink); background: #fff; }
 .unit-collection-grid .unit-choice-list { padding-bottom: 2px; }
@@ -177,4 +184,5 @@
   .unit-filter-actions { align-items: stretch; flex-direction: column; }
   .unit-filter-actions .unit-btn { width: 100%; }
   .unit-collection-range, .unit-collection-year-range { grid-template-columns: 1fr; }
+  .unit-collection-period-fields { grid-template-columns: 1fr; }
 }
