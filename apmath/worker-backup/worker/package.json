@@ -5,6 +5,7 @@
     "check": "node --check index.js && node --check backup-workflow.js && wrangler deploy --dry-run"
   },
   "devDependencies": {
+    "@cloudflare/puppeteer": "^1.4.0",
     "wrangler": "4.110.0"
   }
 }

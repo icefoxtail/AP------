@@ -89,8 +89,9 @@ assert.strictEqual(
 );
 
 assert(
-  studentPortal.includes('const showActionArea = showReview || isTeacherPreview || !submitted') &&
+  studentPortal.includes('const showActionArea = showReview || showPdf || isTeacherPreview || !submitted') &&
     studentPortal.includes('<div class="omr-actions ${showReview ?') &&
+    studentPortal.includes("${showPdf ? renderOmrPdfAction(exam) : ''}") &&
     studentPortal.includes("${showReview ? renderOmrReviewActions(exam) : ''}") &&
     studentPortal.includes("(isTeacherPreview || submitted) && showReview ? 'is-review-only' : ''") &&
     studentPortal.includes('OMR 작성') &&

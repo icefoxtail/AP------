@@ -997,7 +997,8 @@ async function registerClassExamAssignmentToOS() {
                 question_count: questionCount,
                 archive_file: archiveFile,
                 source_type: 'mixed',
-                mixed_payload_json: mixedPayload
+                mixed_payload_json: mixedPayload,
+                pdf_qpp: AppState.qpp
             })
         });
         if (!res.ok) {

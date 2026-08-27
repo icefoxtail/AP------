@@ -2693,6 +2693,7 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         archive_file: getIndexAssignmentArchiveFile(item),
         source_type: getIndexAssignmentSourceType(item),
         mixed_payload_json: getIndexAssignmentMixedPayload(item),
+        pdf_qpp: Number(options.qpp || AssignTarget?.qpp || _pendingQpp || 4),
         subject: item.subject || '',
         grade_label: gradeLabel,
         assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, gradeLabel),
@@ -2707,7 +2708,11 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         notifyArchiveQrApiFailure(res.status, 'class-exam-assignments');
         throw new Error(`assignment failed: ${res.status}`);
     }
-    return res.json().catch(() => ({}));
+    const data = await res.json().catch(() => ({}));
+    if (data?.assignment?.pdf_status === 'failed') {
+        throw new Error(data.assignment.pdf_error || '시험지 PDF 생성 실패');
+    }
+    return data;
 }
 
 function closeModal() {
@@ -3270,7 +3275,8 @@ async function assignTargetProcessOneClass(classId) {
         await registerIndexClassExamAssignment(st.row, AssignTarget.item, {
             assignmentBatchId: AssignTarget.assignmentBatchId,
             target_scope: AssignTarget.scope,
-            gradeLabel: AssignTarget.grade
+            gradeLabel: AssignTarget.grade,
+            qpp: AssignTarget.qpp
         });
         if (st.studentIds) {
             const excludedIds = st.roster.filter(s => !st.studentIds.has(s.id)).map(s => s.id);
