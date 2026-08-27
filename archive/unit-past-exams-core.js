@@ -248,6 +248,19 @@
     return String(value || '').replace(/\\/g, '/').replace(/^exams\//, '');
   }
 
+  function getSourceFileCandidates(sourceFile) {
+    const normalized = normalizePath(sourceFile);
+    const legacyMatch = normalized.match(/^(.*\/)(final|mid)\/([^/]+)$/);
+    if (!legacyMatch) return [normalized];
+
+    const [, parent, examType, fileName] = legacyMatch;
+    const semester = fileName.match(/(?:^|_)([12])학기(?:_|$)/)?.[1] || '';
+    const periods = semester ? [`${semester}${examType}`] : [`1${examType}`, `2${examType}`];
+    const candidates = periods.map(period => `${parent}${period}/${fileName}`);
+    candidates.push(normalized);
+    return [...new Set(candidates)];
+  }
+
   function getQuestionNo(record) {
     const direct = Number(record && (record.id || record._sourceQuestionNo || record.source_question_no));
     if (Number.isInteger(direct) && direct > 0) return direct;
@@ -540,6 +553,28 @@
     });
   }
 
+  function normalizeCollectionSemester(value) {
+    const normalized = String(value ?? '').trim().toLowerCase();
+    return ['1', '2'].includes(normalized) ? normalized : '';
+  }
+
+  function normalizeCollectionExamType(value) {
+    const normalized = String(value ?? '').trim().toLowerCase();
+    if (normalized === 'mid' || normalized === '중간') return 'mid';
+    if (normalized === 'final' || normalized === '기말') return 'final';
+    return '';
+  }
+
+  function filterCollectionRecords(records, filters = {}) {
+    const semester = normalizeCollectionSemester(filters.semester || filters.collectionSemester);
+    const examType = normalizeCollectionExamType(filters.examType || filters.collectionExamType);
+    return (Array.isArray(records) ? records : []).filter(record => {
+      if (semester && getSemester(record) !== semester) return false;
+      if (examType && getExamType(record) !== examType) return false;
+      return true;
+    });
+  }
+
   function normalizeCollectionYearMode(value) {
     const mode = String(value || '').trim();
     if (mode === 'recent' || mode === 'recent3') return 'recentAvailable';
@@ -570,6 +605,8 @@
       schoolKeys,
       subUnitKeys: Array.isArray(options.subUnitKeys) ? options.subUnitKeys : [],
       difficultyBuckets,
+      semester: normalizeCollectionSemester(options.semester || options.collectionSemester),
+      examType: normalizeCollectionExamType(options.examType || options.collectionExamType),
       includeUnclassified: options.includeUnclassified === true,
       outputMode: options.outputMode === 'combined' ? 'combined' : 'school',
       countMode: options.countMode === 'fixed' ? 'fixed' : 'all',
@@ -586,7 +623,7 @@
   function resolveCollectionYearsBySchool(records, options = {}) {
     const normalized = normalizeCollectionOptions(options);
     const yearsBySchool = new Map();
-    for (const record of Array.isArray(records) ? records : []) {
+    for (const record of filterCollectionRecords(records, normalized)) {
       const year = getExamYear(record);
       if (!isValidExamYear(year)) continue;
       const key = getSchoolKey(record) || '__unknown__';
@@ -628,7 +665,7 @@
     const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
     const normalized = normalizeCollectionOptions(options);
     const scoped = getCollectionScopeRecords(records, profile, normalized);
-    const detailFiltered = filterUnitRecords(scoped, normalized);
+    const detailFiltered = filterCollectionRecords(filterUnitRecords(scoped, normalized), normalized);
     const requestedSchools = new Set(normalized.schoolKeys);
     const schoolFiltered = detailFiltered.filter(record => {
       const schoolKey = getSchoolKey(record) || '__unknown__';
@@ -648,7 +685,7 @@
     const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
     const normalized = normalizeCollectionOptions({ ...options, schoolKeys: [] });
     const scoped = getCollectionScopeRecords(records, profile, normalized);
-    const filtered = filterUnitRecords(scoped, normalized);
+    const filtered = filterCollectionRecords(filterUnitRecords(scoped, normalized), normalized);
     const groups = new Map();
     for (const record of filtered) {
       const key = getSchoolKey(record) || '__unknown__';
@@ -667,7 +704,7 @@
     const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
     const normalized = normalizeCollectionOptions({ ...options, schoolKeys: [] });
     const scoped = getCollectionScopeRecords(records, profile, normalized);
-    const filtered = filterUnitRecords(scoped, normalized);
+    const filtered = filterCollectionRecords(filterUnitRecords(scoped, normalized), normalized);
     return [...new Set(filtered.map(getExamYear).filter(isValidExamYear))].sort((a, b) => b - a);
   }
 
@@ -751,7 +788,7 @@
       for (const schoolKey of selectedSchoolKeys) {
         const schoolRecords = recordsBySchool.get(schoolKey) || [];
         const selected = normalized.countMode === 'fixed' ? schoolRecords.slice(0, normalized.count) : schoolRecords.slice();
-        if (normalized.countMode === 'fixed') shortage += Math.max(0, normalized.count - selected.length);
+        if (normalized.countMode === 'fixed' && schoolRecords.length) shortage += Math.max(0, normalized.count - selected.length);
         selectedBySchool.set(schoolKey, selected);
         const chunks = splitIntoPapers(selected, { target: normalized.target, max: normalized.max, compare: compareCollectionRecords });
         chunks.forEach((paperRecords, index) => paperGroups.push({
@@ -779,12 +816,19 @@
         label: getSchoolLabel(schoolRecords[0] || { school: schoolKey }),
         candidateCount: schoolRecords.length,
         selectedCount: (selectedBySchool.get(schoolKey) || []).length,
-        years: yearSelection.bySchool[schoolKey] || []
+        years: yearSelection.bySchool[schoolKey] || [],
+        coverage: normalized.yearMode === 'recentAvailable'
+          ? { selected: (yearSelection.bySchool[schoolKey] || []).length, requested: normalized.yearCount }
+          : null,
+        coverageLabel: normalized.yearMode === 'recentAvailable'
+          ? `${(yearSelection.bySchool[schoolKey] || []).length}/${normalized.yearCount}개년`
+          : ''
       };
     });
     const selectedCount = paperGroups.reduce((sum, paper) => sum + paper.records.length, 0);
     return {
-      ok: selectedCount > 0 && shortage === 0,
+      ok: selectedCount > 0,
+      complete: selectedCount > 0 && shortage === 0,
       options: normalized,
       scopeUnits: getCollectionScopeUnits(context.profile, normalized),
       candidateCount: candidates.length,
@@ -1072,6 +1116,7 @@
     QUESTION_OVERRIDES: HIGH1_OVERRIDES,
     getProfile,
     normalizePath,
+    getSourceFileCandidates,
     getQuestionNo,
     getQuestionUid,
     getPeriod,
@@ -1097,6 +1142,9 @@
     getDifficultySummary,
     getSubUnitOptions,
     filterUnitRecords,
+    normalizeCollectionSemester,
+    normalizeCollectionExamType,
+    filterCollectionRecords,
     getCollectionScopeUnits,
     getCollectionScopeRecords,
     getCollectionSchoolOptions,
@@ -1104,7 +1152,6 @@
     resolveCollectionYearsBySchool,
     compareCollectionRecords,
     selectBalancedCollectionRecords,
-    filterCollectionRecords: (records, profileOrId, options = {}) => getCollectionSelectionContext(records, profileOrId, options).candidates,
     buildCollectionPapers,
     selectRecords,
     selectByBlueprint,
