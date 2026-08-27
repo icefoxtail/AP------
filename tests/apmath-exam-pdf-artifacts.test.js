@@ -33,7 +33,11 @@ assert.ok(pdfRoute.includes("url.searchParams.set('class'"), 'rendered PDFs shou
 
 assert.ok(examsRoute.includes("path[3] === 'pdf'"), 'teachers should have an assignment PDF endpoint');
 assert.ok(examsRoute.includes('await canAccessClass(currentTeacher, assignment.class_id, env)'), 'teacher downloads should enforce class access');
+assert.ok(examsRoute.includes('await canAccessClass(currentTeacher, d.class_id, env)'), 'issuing an exam should enforce class access');
 assert.ok(examsRoute.includes('assignment = await ensureAssignmentPdf(env, assignment)'), 'issuing an archive exam should generate its PDF');
+assert.ok(examsRoute.includes("assignment?.pdf_status !== 'ready'"), 'failed PDF generation should fail the issuing request');
+assert.ok(examsRoute.includes('[1, 2, 4, 6, 8]'), 'issuing should preserve QPP 8');
+assert.ok(pdfRoute.includes('[1, 2, 4, 6, 8]'), 'PDF rendering should preserve QPP 8');
 assert.ok(studentRoute.includes("id === 'exam-pdf'"), 'students should have a PDF download endpoint');
 assert.ok(studentRoute.includes('class_exam_assignment_recipients'), 'student PDF access should require assignment membership');
 assert.ok(studentRoute.includes('class_exam_assignment_exclusions'), 'excluded students should not receive the PDF');
@@ -43,5 +47,7 @@ assert.ok(classroomPlanner.includes('출제본 PDF'), 'teacher exam detail shoul
 assert.ok(classroomPlanner.includes('PDF 다시 생성'), 'teacher exam detail should support retry after a failed render');
 assert.ok(archiveIndex.includes('pdf_qpp:'), 'archive assignment should persist the selected QPP');
 assert.ok(assessment.includes('pdf_qpp:'), 'mixer assignment should persist the selected QPP');
+assert.ok(assessment.includes('출제본 PDF를 준비하는 중입니다.'), 'mixer class issuing should show PDF progress');
+assert.ok(studentPortal.includes('renderOmrPdfAction(row)'), 'student home cards should expose direct PDF download');
 
 console.log('apmath exam PDF artifact checks passed');

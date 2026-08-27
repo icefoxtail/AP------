@@ -1003,7 +1003,8 @@ async function registerClassExamAssignmentToOS() {
         });
         if (!res.ok) {
             notifyArchiveQrApiFailure(res.status, 'class-exam-assignments');
-            console.warn('[3H] class_exam_assignment 등록 실패:', res.status);
+            const data = await res.json().catch(() => ({}));
+            console.warn('[3H] class_exam_assignment 등록 실패:', data.error || res.status);
             return;
         }
         _classExamAssignmentRegisteredSig = sig;

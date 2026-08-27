@@ -10,7 +10,7 @@ function cleanText(value, maxLength = 500) {
 
 function normalizePdfQpp(value) {
   const parsed = Number.parseInt(value, 10);
-  return [1, 2, 4, 6].includes(parsed) ? parsed : 4;
+  return [1, 2, 4, 6, 8].includes(parsed) ? parsed : 4;
 }
 
 function isMixedAssignment(assignment) {

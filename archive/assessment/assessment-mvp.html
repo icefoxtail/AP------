@@ -1566,7 +1566,7 @@
       document.getElementById('assessmentClassModalOverlay').classList.remove('open');
     }
 
-    function confirmAssessmentClassSelection() {
+    async function confirmAssessmentClassSelection() {
       const select = document.getElementById('assessment-class-select');
       if (!select || !select.value) return;
       const selectedOption = select.options[select.selectedIndex];
@@ -1581,14 +1581,27 @@
           if (classBody) classBody.innerHTML = '<div style="color:var(--warn-text); font-size:13px; margin:20px 0;">문항 수 확인이 필요합니다.</div>';
           return;
         }
-        closeAssessmentModal();
-        goAssessmentMixedEngine(pack, 'exam', _pendingAssessmentQpp, {
-          submitQr: true,
-          classId: selectedClassId,
-          teacherName: selectedTeacherName,
-          className: selectedClassName,
-          target_scope: 'class',
-        });
+        const classBody = document.getElementById('assessmentClassModalBody');
+        const progress = document.createElement('p');
+        progress.setAttribute('role', 'status');
+        progress.setAttribute('aria-live', 'polite');
+        progress.style.cssText = 'color:var(--secondary); font-size:13px; margin:14px 0 0;';
+        progress.textContent = '출제본 PDF를 준비하는 중입니다. 잠시만 기다려 주세요.';
+        classBody?.appendChild(progress);
+        try {
+          await goAssessmentMixedEngine(pack, 'exam', _pendingAssessmentQpp, {
+            submitQr: true,
+            classId: selectedClassId,
+            teacherName: selectedTeacherName,
+            className: selectedClassName,
+            target_scope: 'class',
+          });
+          closeAssessmentModal();
+        } catch (error) {
+          console.error(error);
+          progress.style.color = 'var(--warn-text)';
+          progress.textContent = '출제본 PDF 준비에 실패했습니다. AP Math OS 연결을 확인한 뒤 다시 시도해 주세요.';
+        }
       }
     }
 
@@ -1612,8 +1625,15 @@
       }
       const key = `assessment_${pack.id}_${Date.now()}`;
       const assignmentBatchId = getAssessmentAssignmentBatchId(pack, gradeLabel);
+      const preview = document.getElementById('assessment-grade-class-preview');
       try {
-        for (const row of rows) {
+        for (let index = 0; index < rows.length; index += 1) {
+          const row = rows[index];
+          if (preview) {
+            preview.setAttribute('role', 'status');
+            preview.setAttribute('aria-live', 'polite');
+            preview.textContent = `${index + 1}/${rows.length}개 반의 출제본 PDF를 준비하는 중입니다.`;
+          }
           await registerAssessmentClassExamAssignment(row, pack, key, {
             assignmentBatchId,
             target_scope: 'grade',
@@ -1694,6 +1714,7 @@
           url.searchParams.set('preRegistered', '1');
         } catch (error) {
           console.warn('[assessment assignment] 사전 등록 실패:', error);
+          throw error;
         }
       }
       window.open(appendCurrentArchiveSessionToHash(url.toString()), '_blank');

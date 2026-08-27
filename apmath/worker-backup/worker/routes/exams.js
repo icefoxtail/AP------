@@ -52,7 +52,7 @@ function normalizeOptionalPositiveInteger(value) {
 
 function normalizeAssignmentPdfQpp(value) {
   const parsed = Number.parseInt(value, 10);
-  return [1, 2, 4, 6].includes(parsed) ? parsed : 4;
+  return [1, 2, 4, 6, 8].includes(parsed) ? parsed : 4;
 }
 
 function normalizeMixedAssignmentPayload(value, archiveFile) {
@@ -1438,6 +1438,9 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!cls) {
         return jsonResponse({ success: false, error: 'class not found' }, 404);
       }
+      if (!(await canAccessClass(currentTeacher, d.class_id, env))) {
+        return jsonResponse({ success: false, error: 'Forbidden' }, 403);
+      }
 
       const archive_file = normalizeAssignmentArchiveFile(d.archive_file || '');
       const source_type = d.source_type || 'archive';
@@ -1538,6 +1541,9 @@ export async function handleExams(request, env, teacher, path, url) {
         await snapshotClassExamAssignmentRecipients(env, assignment);
         if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
         if (archive_file) assignment = await ensureAssignmentPdf(env, assignment);
+        if (archive_file && assignment?.pdf_status !== 'ready') {
+          return jsonResponse({ success: false, error: assignment?.pdf_error || '시험지 PDF 생성 실패', assignment }, 502);
+        }
         return jsonResponse({ success: true, assignment });
       }
 
@@ -1615,6 +1621,9 @@ export async function handleExams(request, env, teacher, path, url) {
       await snapshotClassExamAssignmentRecipients(env, assignment);
       if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
       if (archive_file) assignment = await ensureAssignmentPdf(env, assignment);
+      if (archive_file && assignment?.pdf_status !== 'ready') {
+        return jsonResponse({ success: false, error: assignment?.pdf_error || '시험지 PDF 생성 실패', assignment }, 502);
+      }
       return jsonResponse({ success: true, assignment });
     }
 
