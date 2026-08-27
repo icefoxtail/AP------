@@ -265,7 +265,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "그림의 $\\triangle ABC$에서 점 $D$, $E$, $F$는 각각 $\\overline{AB}$, $\\overline{BC}$, $\\overline{CA}$의 중점 일 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은?",
+    "content": "그림의 $\\triangle ABC$에서 점 $D$, $E$, $F$는 각각 $\\overline{AB}$, $\\overline{BC}$, $\\overline{CA}$의 중점 일 때, 보기에서 옳은 것만을 있는 대로 고른 것은?",
     "choices": [
       "㉠",
       "㉠, ㉡",
@@ -298,7 +298,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "다음 &lt;보기&gt;에서 빈 칸 <u>&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;</u>에 각각 알맞은 말을 써 넣은 것을 고르면?",
+    "content": "다음 보기에서 빈 칸 <u>&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;</u>&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;</u>에 각각 알맞은 말을 써 넣은 것을 고르면?",
     "choices": [],
     "answer": "⑤",
     "solution": "[키포인트] 평행선에서 얻는 선분비의 성질의 역은 항상 성립하지 않으며, 직사각형은 가로와 세로의 비를 비교하여 닮음을 판단한다.\n선분의 길이의 비가 같다는 사실만으로 세 직선이 반드시 평행하다고 할 수 없으므로 A는 “평행한 것은 아닙니다.”이다.\n바깥 직사각형은 $15:12=5:4$이고, 테두리 폭이 사방에서 $2\\mathrm{cm}$이므로 안쪽 직사각형은 $11\\mathrm{cm}\\times8\\mathrm{cm}$이다. $11:8\\ne5:4$이므로 두 직사각형은 닮지 않는다.\n따라서 정답은 ⑤이다.",
@@ -324,7 +324,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림의 $\\triangle ABC$에서 세 점 $D$, $E$, $F$는 각각 $\\overline{BC}$, $\\overline{CA}$, $\\overline{AB}$의 중점이고, 세 선분 $\\overline{AD}$, $\\overline{BE}$, $\\overline{CF}$의 교점을 $G$, $\\overline{AD}$와 $\\overline{FE}$의 교점을 $H$, $G$를 지나고 $\\overline{BC}$에 평행한 직선이 $\\overline{AB}$, $\\overline{AC}$와 만나는 점을 각각 $I$, $J$라고 할 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? (5점)",
+    "content": "다음 그림의 $\\triangle ABC$에서 세 점 $D$, $E$, $F$는 각각 $\\overline{BC}$, $\\overline{CA}$, $\\overline{AB}$의 중점이고, 세 선분 $\\overline{AD}$, $\\overline{BE}$, $\\overline{CF}$의 교점을 $G$, $\\overline{AD}$와 $\\overline{FE}$의 교점을 $H$, $G$를 지나고 $\\overline{BC}$에 평행한 직선이 $\\overline{AB}$, $\\overline{AC}$와 만나는 점을 각각 $I$, $J$라고 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (5점)",
     "choices": [
       "㉠",
       "㉠, ㉡",

@@ -11,7 +11,7 @@ assert.match(worker, /analysisArchiveFiles\s*=\s*getInitialDataArchiveCandidates
 assert.match(worker, /SELECT \* FROM exam_question_reviews WHERE archive_file IN/);
 assert.match(worker, /SELECT \* FROM exam_analysis_meta WHERE archive_file IN/);
 
-const helperMatch = worker.match(/function normalizeInitialDataArchiveFile[\s\S]*?function getInitialDataArchiveCandidates[\s\S]*?\n}\n/);
+const helperMatch = worker.match(/function normalizeInitialDataArchiveFile[\s\S]*?function getInitialDataArchiveCandidates[\s\S]*?return Array\.from\(candidates\)\.filter\(Boolean\);\r?\n}\r?\n/);
 assert.ok(helperMatch, 'worker should expose initial-data archive candidate helpers');
 
 const sandbox = {};

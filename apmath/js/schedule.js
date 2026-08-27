@@ -801,6 +801,7 @@ function openExamScheduleModal(baseDateStr = '') {
     if (typeof clearModalSteps === 'function') clearModalSteps();
 
     const todayStr = new Date().toLocaleDateString('sv-SE');
+    const hasExplicitBaseDate = Boolean(baseDateStr);
 
     if (!state.ui) state.ui = {};
     if (baseDateStr) {
@@ -822,10 +823,11 @@ function openExamScheduleModal(baseDateStr = '') {
     const view = getScheduleView();
     if (view === 'month') {
         const targetMonthKey = `${targetYear}-${String(targetMonth + 1).padStart(2, '0')}`;
-        if (!state.ui.examCalendarSelectedDate || !state.ui.examCalendarSelectedDate.startsWith(targetMonthKey)) {
+        if (hasExplicitBaseDate || !state.ui.examCalendarSelectedDate || !state.ui.examCalendarSelectedDate.startsWith(targetMonthKey)) {
             state.ui.examCalendarSelectedDate = todayStr.startsWith(targetMonthKey)
                 ? todayStr
                 : `${targetMonthKey}-01`;
+            if (hasExplicitBaseDate) state.ui.examCalendarSelectedDate = targetMonthKey + '-01';
         }
     }
     const selectedDate = view === 'month' ? (state.ui.examCalendarSelectedDate || '') : '';
