@@ -12,10 +12,10 @@ const fallbackFixture = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'uni
 
 test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 연결한다', () => {
   assert.match(html, /question-meta\.js/);
-  assert.match(html, /unit-past-exams\.css\?v=20260827c/);
+  assert.match(html, /unit-past-exams\.css\?v=20260827e/);
   assert.match(html, /question-index\.js\?v=20260827a/);
   assert.match(html, /unit-past-exams-core\.js\?v=20260827b/);
-  assert.match(html, /unit-past-exams\.js\?v=20260827c/);
+  assert.match(html, /unit-past-exams\.js\?v=20260827e/);
   assert.match(html, /id="unit-stepper"/);
   for (const id of ['unit-subunits', 'unit-difficulty', 'unit-mode', 'unit-quick-preset', 'unit-quick-count', 'unit-advanced-rows', 'unit-selection-report', 'unit-collection-scope', 'unit-collection-year-mode', 'unit-school-list', 'unit-collection-output', 'unit-collection-report']) {
     assert.match(js, new RegExp(id));
