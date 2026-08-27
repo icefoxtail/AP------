@@ -8901,22 +8901,22 @@ window.mainDB = {
       "subject": "수학",
       "contentType": "기출",
       "qCount": 24,
-      "rangeStartUnitKey": "M1-03",
-      "rangeStartUnit": "문자와 식",
-      "rangeStartUnitOrder": 3,
-      "rangeEndUnitKey": "M1-06",
-      "rangeEndUnit": "평면도형의 성질",
-      "rangeEndUnitOrder": 6,
+      "rangeStartUnitKey": "M1-04",
+      "rangeStartUnit": "좌표평면과 그래프",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "M1-07",
+      "rangeEndUnit": "입체도형의 성질",
+      "rangeEndUnitOrder": 7,
       "courseRanges": [
         {
           "standardCourse": "중1 수학",
           "courseCode": "M1",
-          "rangeStartUnitKey": "M1-03",
-          "rangeStartUnit": "문자와 식",
-          "rangeStartUnitOrder": 3,
-          "rangeEndUnitKey": "M1-06",
-          "rangeEndUnit": "평면도형의 성질",
-          "rangeEndUnitOrder": 6
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "중1 수학"
@@ -13491,16 +13491,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-04",
-        "rangeStartUnit": "좌표평면과 그래프",
-        "rangeStartUnitOrder": 4,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13520,16 +13522,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-05",
-        "rangeStartUnit": "기본도형",
-        "rangeStartUnitOrder": 5,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13549,16 +13553,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-05",
-        "rangeStartUnit": "기본도형",
-        "rangeStartUnitOrder": 5,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13578,16 +13584,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-04",
-        "rangeStartUnit": "좌표평면과 그래프",
-        "rangeStartUnitOrder": 4,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13607,16 +13615,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-04",
-        "rangeStartUnit": "좌표평면과 그래프",
-        "rangeStartUnitOrder": 4,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13636,16 +13646,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-05",
-        "rangeStartUnit": "기본도형",
-        "rangeStartUnitOrder": 5,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13665,16 +13677,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-08",
       "rangeEndUnit": "자료의 정리와 해석",
       "rangeEndUnitOrder": 8,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-05",
-        "rangeStartUnit": "기본도형",
-        "rangeStartUnitOrder": 5,
-        "rangeEndUnitKey": "M1-08",
-        "rangeEndUnit": "자료의 정리와 해석",
-        "rangeEndUnitOrder": 8
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-08",
+          "rangeEndUnit": "자료의 정리와 해석",
+          "rangeEndUnitOrder": 8
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13694,16 +13708,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-08",
       "rangeEndUnit": "자료의 정리와 해석",
       "rangeEndUnitOrder": 8,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-05",
-        "rangeStartUnit": "기본도형",
-        "rangeStartUnitOrder": 5,
-        "rangeEndUnitKey": "M1-08",
-        "rangeEndUnit": "자료의 정리와 해석",
-        "rangeEndUnitOrder": 8
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-08",
+          "rangeEndUnit": "자료의 정리와 해석",
+          "rangeEndUnitOrder": 8
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13723,16 +13739,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-05",
-        "rangeStartUnit": "기본도형",
-        "rangeStartUnitOrder": 5,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13752,16 +13770,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M1-07",
       "rangeEndUnit": "입체도형의 성질",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중1 수학",
-        "courseCode": "M1",
-        "rangeStartUnitKey": "M1-04",
-        "rangeStartUnit": "좌표평면과 그래프",
-        "rangeStartUnitOrder": 4,
-        "rangeEndUnitKey": "M1-07",
-        "rangeEndUnit": "입체도형의 성질",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중1 수학"
     },
     {
@@ -13781,16 +13801,18 @@ window.mainDB = {
       "rangeEndUnitKey": "M3-07",
       "rangeEndUnit": "통계",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "중3 수학",
-        "courseCode": "M3",
-        "rangeStartUnitKey": "M3-06",
-        "rangeStartUnit": "원의 성질",
-        "rangeStartUnitOrder": 6,
-        "rangeEndUnitKey": "M3-07",
-        "rangeEndUnit": "통계",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-06",
+          "rangeStartUnit": "원의 성질",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "M3-07",
+          "rangeEndUnit": "통계",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "중3 수학"
     },
     {
@@ -13810,16 +13832,18 @@ window.mainDB = {
       "rangeEndUnitKey": "H22-C2-05",
       "rangeEndUnit": "집합",
       "rangeEndUnitOrder": 5,
-      "courseRanges": [{
-        "standardCourse": "공통수학2",
-        "courseCode": "H22-C2",
-        "rangeStartUnitKey": "H22-C2-01",
-        "rangeStartUnit": "평면좌표",
-        "rangeStartUnitOrder": 1,
-        "rangeEndUnitKey": "H22-C2-05",
-        "rangeEndUnit": "집합",
-        "rangeEndUnitOrder": 5
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
       "primaryStandardCourse": "공통수학2"
     },
     {
@@ -13839,16 +13863,18 @@ window.mainDB = {
       "rangeEndUnitKey": "H22-C2-07",
       "rangeEndUnit": "함수",
       "rangeEndUnitOrder": 7,
-      "courseRanges": [{
-        "standardCourse": "공통수학2",
-        "courseCode": "H22-C2",
-        "rangeStartUnitKey": "H22-C2-01",
-        "rangeStartUnit": "평면좌표",
-        "rangeStartUnitOrder": 1,
-        "rangeEndUnitKey": "H22-C2-07",
-        "rangeEndUnit": "함수",
-        "rangeEndUnitOrder": 7
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-07",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 7
+        }
+      ],
       "primaryStandardCourse": "공통수학2"
     },
     {
@@ -13868,16 +13894,18 @@ window.mainDB = {
       "rangeEndUnitKey": "H22-C2-05",
       "rangeEndUnit": "집합",
       "rangeEndUnitOrder": 5,
-      "courseRanges": [{
-        "standardCourse": "공통수학2",
-        "courseCode": "H22-C2",
-        "rangeStartUnitKey": "H22-C2-01",
-        "rangeStartUnit": "평면좌표",
-        "rangeStartUnitOrder": 1,
-        "rangeEndUnitKey": "H22-C2-05",
-        "rangeEndUnit": "집합",
-        "rangeEndUnitOrder": 5
-      }],
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
       "primaryStandardCourse": "공통수학2"
     }
   ]
