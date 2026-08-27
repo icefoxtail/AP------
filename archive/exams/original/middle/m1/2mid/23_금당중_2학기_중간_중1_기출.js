@@ -470,7 +470,7 @@ window.questionBank = [
       "공간에서의 위치 관계"
     ],
     "wide": false,
-    "content": "공간에 있는 서로 다른 세 직선 $l$, $m$, $n$과 평면 $P$에 대하여 다음 &lt;보기&gt; 중에서 옳은 것을 모두 고른 것은? (5점)<div class=\"note-box\">ㄱ. $l\\parallel m$, $m\\perp n$이면 $l\\perp n$이다.<br>ㄴ. $l\\parallel m$, $m\\perp P$이면 $l\\perp P$이다.<br>ㄷ. $l\\parallel P$, $m\\parallel P$이면 $l\\parallel m$이다.<br>ㄹ. $l\\perp P$, $m\\perp P$이면 $l\\parallel m$이다.</div>",
+    "content": "공간에 있는 서로 다른 세 직선 $l$, $m$, $n$과 평면 $P$에 대하여 다음 보기 중에서 옳은 것을 모두 고른 것은? (5점)<div class=\"note-box\">ㄱ. $l\\parallel m$, $m\\perp n$이면 $l\\perp n$이다.<br>ㄴ. $l\\parallel m$, $m\\perp P$이면 $l\\perp P$이다.<br>ㄷ. $l\\parallel P$, $m\\parallel P$이면 $l\\parallel m$이다.<br>ㄹ. $l\\perp P$, $m\\perp P$이면 $l\\parallel m$이다.</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄷ",

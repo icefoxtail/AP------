@@ -496,7 +496,7 @@ function syncClassroomAttendanceStatusToState(studentId, date, status) {
     }
 
     renderAttendanceLedgerCellIfOpen(sid, d);
-    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId);
+    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId, d);
     return rec;
 }
 
@@ -529,7 +529,7 @@ function syncClassroomHomeworkStatusToState(studentId, date, status) {
     }
 
     renderAttendanceLedgerCellIfOpen(sid, d);
-    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId);
+    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId, d);
     return rec;
 }
 
@@ -583,7 +583,7 @@ function syncAttendanceMetaToState(studentId, date, tags, memo) {
         mRec.updated_at = rec.updated_at;
     }
 
-    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId);
+    if (state.ui?.currentClassId) updateClassroomMonthlyStatusBoardDOM(state.ui.currentClassId, d);
     return rec;
 }
 
@@ -1648,13 +1648,13 @@ function renderClassroomMonthlyStatusBoard(classId, students, today) {
     `;
 }
 
-function updateClassroomMonthlyStatusBoardDOM(classId) {
+function updateClassroomMonthlyStatusBoardDOM(classId, today = '') {
     const root = document.getElementById('classroom-monthly-status-board');
     if (!root) return false;
     const cid = String(classId || state.ui?.currentClassId || '');
     if (!cid) return false;
-    const today = getClassroomOperationDate();
-    root.outerHTML = renderClassroomMonthlyStatusBoard(cid, getClassroomActiveStudents(cid), today);
+    const renderDate = normalizeClassroomDate(today) || getClassroomOperationDate();
+    root.outerHTML = renderClassroomMonthlyStatusBoard(cid, getClassroomActiveStudents(cid), renderDate);
     return true;
 }
 

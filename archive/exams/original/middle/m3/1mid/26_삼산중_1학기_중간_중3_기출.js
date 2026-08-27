@@ -204,7 +204,7 @@ window.questionBank = [
       "순서"
     ],
     "wide": false,
-    "content": "$1<a<b$일 때, <보기>의 수를 작은 것부터 차례대로 나열한 것은? (4점)\\n<보기> $\\sqrt{\\frac{a}{b}},\\sqrt{\\frac{b}{a}},\\frac{a}{b},b$",
+    "content": "$1<a<b$일 때, 보기의 수를 작은 것부터 차례대로 나열한 것은? (4점)\\n<보기> $\\sqrt{\\frac{a}{b}},\\sqrt{\\frac{b}{a}},\\frac{a}{b},b$",
     "choices": [
       "$\\frac{a}{b},\\sqrt{\\frac{b}{a}},b,\\sqrt{\\frac{a}{b}}$",
       "$\\frac{a}{b},\\sqrt{\\frac{a}{b}},\\sqrt{\\frac{b}{a}},b$",
