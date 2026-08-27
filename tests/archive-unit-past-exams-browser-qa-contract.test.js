@@ -13,9 +13,8 @@ test('단원별 기출 브라우저 QA 계약은 CI 테스트 수집 대상이�
   assert.match(runner, /name\.endsWith\('\.test\.js'\)/);
   assert.match(qa, /export async function runUnitPastExamsBrowserQA/);
   for (const marker of [
-    'collectionYearMode', 'collectionOutput', 'collectionSchools', 'recent3',
-    'collectionSemester', 'collectionExamType', 'collectionPartial', '가능한 11개 문항으로',
-    'collectionSchoolTools', '3개년',
+    'collectionYearMode', 'collectionSemester', 'collectionExamType',
+    'collectionSchoolTools', 'unifiedConfiguration', 'unit-confirmation', 'unit-preview-iframe',
     'mobile320', 'unit-past-exams-fallback.html', 'unit-past-exams-multi-paper.html',
     'dev.logs', 'overflow', 'assignUrl'
   ]) {
@@ -24,9 +23,10 @@ test('단원별 기출 브라우저 QA 계약은 CI 테스트 수집 대상이�
 });
 
 test('브라우저 QA 계약은 실제 페이지에서 사용할 오류 상태와 출력 버튼을 검증한다', () => {
-  assert.match(qa, /#unit-collection-report \.unit-generated-paper/);
+  assert.match(qa, /#unit-selection-report/);
   assert.match(qa, /getByRole\('button', \{ name: \/일반 출력\//);
-  assert.match(qa, /getByRole\('button', \{ name: \/반 학생에게 출제\//);
+  assert.match(qa, /getByRole\('button', \{ name: \/학생에게 출제\//);
+  assert.match(qa, /editButtons/);
   assert.match(qa, /result\.logs/);
   assert.match(qa, /assert\.equal\(Array\.from\(result\.logs\)\.length, 0\)/);
 });

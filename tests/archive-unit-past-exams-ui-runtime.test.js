@@ -98,6 +98,6 @@ test('실제 UI 모듈 실행으로 snake_case UID가 catalog 정규화까지 �
   const runtime = createRuntime();
   runtime.window.UnitPastExams.selectProfile('h1');
   runtime.window.UnitPastExams.renderDetail('H22-C-01', { noScroll: true, restore: true });
-  assert.match(runtime.getElement('unit-detail-root').innerHTML, /핵심/);
+  assert.match(runtime.getElement('unit-content').innerHTML, /핵심/);
   assert.equal(core.getQuestionUid({ question_uid: 'runtime-uid' }), 'runtime-uid');
 });

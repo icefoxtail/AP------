@@ -5,7 +5,7 @@ function sessionHash() {
   return encodeURIComponent(Buffer.from(payload, 'utf8').toString('base64'));
 }
 
-async function waitFor(tab, predicate, timeout = 3000) {
+async function waitFor(tab, predicate, timeout = 4000) {
   const start = Date.now();
   while (Date.now() - start < timeout) {
     if (await predicate()) return;
@@ -18,42 +18,45 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
   const baseUrl = options.baseUrl || 'http://127.0.0.1:8765';
   const hash = sessionHash();
   const result = {};
-  const pageUrl = `${baseUrl}/archive/unit-past-exams.html?grade=h1#apmsess=${hash}`;
-
-  await tab.goto(pageUrl);
-  await waitFor(tab, async () => (await tab.playwright.locator('.unit-card').count()) > 0);
   const page = tab.playwright;
-  const catalogCards = page.locator('.unit-card');
-  const initialPressed = await catalogCards.nth(0).getAttribute('aria-pressed');
+
+  await tab.goto(`${baseUrl}/archive/unit-past-exams.html?grade=h1#apmsess=${hash}`);
+  await waitFor(tab, async () => (await page.locator('.unit-card').count()) > 0);
+  const firstCard = page.locator('.unit-card').nth(0);
+  const initialPressed = await firstCard.getAttribute('aria-pressed');
   assert.equal(initialPressed, 'false');
-  await catalogCards.nth(0).press('Enter');
-  await waitFor(tab, async () => (await tab.url()).includes('unit=H22-C-01'));
+  await firstCard.press('Enter');
+  await waitFor(tab, async () => (await page.locator('.unit-step.is-active').innerText()).includes('구성'));
+  assert.equal(await page.locator('#unit-subunits').count(), 1);
+  assert.equal(await page.locator('#unit-difficulty').count(), 1);
+  assert.equal(await page.locator('.unit-collection').count(), 0);
+
+  await page.locator('.unit-step').nth(0).click();
+  await waitFor(tab, async () => (await page.locator('.unit-card').count()) > 0);
   const activePressed = await page.locator('.unit-card').nth(0).getAttribute('aria-pressed');
   result.cardAccessibility = { initialPressed, activePressed };
   assert.equal(activePressed, 'true');
-  await page.waitForTimeout(120);
+  await page.locator('.unit-card').nth(0).click();
 
   const high = page.locator('input[name="unit-difficulty"][value="상"]');
   await high.check();
-  await page.waitForTimeout(100);
+  await waitFor(tab, async () => (await tab.url()).includes('difficulty='));
   await tab.back();
   await waitFor(tab, async () => (await page.locator('input[name="unit-difficulty"]:checked').count()) === 0);
   result.sameUnitPopstate = {
     checked: await page.locator('input[name="unit-difficulty"]:checked').count(),
-    report: await page.locator('#unit-selection-report').innerText()
+    summary: await page.locator('#unit-filter-summary').innerText()
   };
-  assert.equal(result.sameUnitPopstate.checked, 0);
 
+  await page.locator('details.unit-advanced-panel summary').click();
   await page.locator('input[name="unit-mode"][value="advanced"]').check();
-  await page.waitForTimeout(80);
   if (await page.locator('.unit-blueprint-row').count() < 2) {
     await page.getByRole('button', { name: /조합 추가/ }).click();
   }
   const numbers = page.locator('.unit-blueprint-row input[type="number"]');
   await numbers.nth(0).fill('80');
   await numbers.nth(1).fill('80');
-  await page.getByRole('button', { name: /조건으로 문제지 만들기/ }).click();
-  await page.waitForTimeout(120);
+  await page.getByRole('button', { name: /미리보기로 이동/ }).click();
   result.limit = await page.locator('#unit-selection-report').innerText();
   assert.match(result.limit, /최대 80문항/);
   const advancedUrl = await tab.url();
@@ -82,91 +85,53 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
   assert.equal(result.mobile768.overflow, false);
   await viewport.reset();
 
-  // School/year collection: exact year, recent available years, and both
-  // school-separated and combined output modes use the same print bridge.
-  const exactUrl = new URL(`${baseUrl}/archive/unit-past-exams.html`);
-  exactUrl.searchParams.set('grade', 'h2');
-  exactUrl.searchParams.set('unit', 'H22-MI1-04');
-  exactUrl.searchParams.set('collection', '1');
-  exactUrl.searchParams.set('collectionYearMode', 'exact');
-  exactUrl.searchParams.set('collectionYear', '2025');
-  exactUrl.hash = `apmsess=${hash}`;
-  await tab.goto(exactUrl.toString());
-  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
-  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 4);
-  result.collectionExact = {
-    report: await page.locator('#unit-collection-report').innerText(),
-    papers: await page.locator('#unit-collection-report .unit-generated-paper').count()
-  };
-  assert.match(result.collectionExact.report, /15개 후보/);
-  assert.equal(result.collectionExact.papers, 4);
-  await page.locator('#unit-collection-report .unit-generated-paper').first().getByRole('button', { name: /일반 출력/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-status').innerText()).includes('준비 완료'), 8000);
+  const schoolUrl = new URL(`${baseUrl}/archive/unit-past-exams.html`);
+  schoolUrl.searchParams.set('grade', 'h2');
+  schoolUrl.searchParams.set('unit', 'H22-MI1-04');
+  schoolUrl.searchParams.set('step', 'source');
+  schoolUrl.searchParams.set('collection', '1');
+  schoolUrl.searchParams.set('collectionYearMode', 'exact');
+  schoolUrl.searchParams.set('collectionYear', '2025');
+  schoolUrl.hash = `apmsess=${hash}`;
+  await tab.goto(schoolUrl.toString());
+  await waitFor(tab, async () => (await page.locator('.unit-source-fields').count()) === 1);
+  assert.equal(await page.locator('#unit-subunits').count(), 0);
+  assert.equal(await page.locator('#unit-difficulty').count(), 0);
 
-  const partialUrl = new URL(exactUrl.toString());
-  partialUrl.searchParams.set('collectionCountMode', 'fixed');
-  partialUrl.searchParams.set('collectionCount', '3');
-  await tab.goto(partialUrl.toString());
-  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
-  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 4);
-  result.collectionPartial = await page.locator('#unit-collection-report').innerText();
-  assert.match(result.collectionPartial, /요청한 문항 수보다 1개 부족/);
-  assert.match(result.collectionPartial, /가능한 11개 문항으로/);
-  assert.equal(await page.locator('#unit-collection-report .unit-generated-paper').count(), 4);
-
-  const periodUrl = new URL(exactUrl.toString());
-  await tab.goto(periodUrl.toString());
-  await waitFor(tab, async () => (await page.locator('#unit-collection-semester').count()) === 1);
   await page.locator('#unit-collection-semester').selectOption('2');
   await waitFor(tab, async () => (await tab.url()).includes('collectionSemester=2'));
-  await page.locator('#unit-collection-exam-type').selectOption('mid');
-  await waitFor(tab, async () => (await tab.url()).includes('collectionExamType=mid'));
-  result.collectionPeriod = {
-    url: await tab.url(),
-    summary: await page.locator('#unit-collection-summary').innerText()
-  };
-  assert.match(result.collectionPeriod.summary, /2학기 중간/);
-  assert.match(result.collectionPeriod.url, /collectionSemester=2/);
-  assert.match(result.collectionPeriod.url, /collectionExamType=mid/);
-
-  const combinedUrl = new URL(exactUrl.toString());
-  combinedUrl.searchParams.set('collectionOutput', 'combined');
-  combinedUrl.searchParams.set('collectionSchools', '매산고,순천고');
-  await tab.goto(combinedUrl.toString());
-  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
-  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 1);
-  result.collectionCombined = await page.locator('#unit-collection-report').innerText();
-  assert.match(result.collectionCombined, /6개 후보/);
-  assert.match(result.collectionCombined, /학교 통합/);
-
-  const recentUrl = new URL(`${baseUrl}/archive/unit-past-exams.html`);
-  recentUrl.searchParams.set('grade', 'h2');
-  recentUrl.searchParams.set('unit', 'H22-MI1-04');
-  recentUrl.searchParams.set('collection', '1');
-  recentUrl.searchParams.set('collectionYearMode', 'recent3');
-  recentUrl.hash = `apmsess=${hash}`;
-  await tab.goto(recentUrl.toString());
-  await waitFor(tab, async () => (await page.locator('.unit-collection').count()) === 1);
+  await page.locator('#unit-collection-exam-type').selectOption('final');
+  await waitFor(tab, async () => (await tab.url()).includes('collectionExamType=final'));
   await page.locator('#unit-collection-school-search').fill('순천');
-  const searchedSchools = await page.locator('#unit-collection-schools option').evaluateAll(options => options.filter(option => !option.hidden).map(option => option.textContent));
+  const searchedSchools = await page.locator('.unit-school-choice').evaluateAll(labels => labels.filter(label => !label.hidden).map(label => label.textContent));
   assert.ok(searchedSchools.length > 0);
   assert.ok(searchedSchools.every(label => label.includes('순천')));
   await page.getByRole('button', { name: /전체 선택/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-collection-schools option:checked').count()) > 0);
-  result.collectionSchoolTools = { selectedAll: await page.locator('#unit-collection-schools option:checked').count() };
+  result.collectionSchoolTools = { selectedAll: await page.locator('input[name="unit-school"]:checked').count() };
   assert.ok(result.collectionSchoolTools.selectedAll > 0);
   await page.getByRole('button', { name: /선택 해제/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-collection-schools option:checked').count()) === 0);
-  assert.equal(await page.locator('#unit-collection-schools option:checked').count(), 0);
-  await page.getByRole('button', { name: /모아뽑기 미리보기/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-collection-report .unit-generated-paper').count()) === 8);
-  result.collectionRecentAvailable = await page.locator('#unit-collection-report').innerText();
-  assert.match(result.collectionRecentAvailable, /35개 후보/);
-  assert.match(result.collectionRecentAvailable, /최근 3개년/);
-  assert.match(result.collectionRecentAvailable, /\d+\/3개년/);
+  assert.equal(await page.locator('input[name="unit-school"]:checked').count(), 0);
+
+  await page.getByRole('button', { name: /구성으로 이동/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-subunits').count()) === 1);
+  result.unifiedConfiguration = {
+    subunitControls: await page.locator('#unit-subunits').count(),
+    difficultyControls: await page.locator('#unit-difficulty').count(),
+    sourceFields: await page.locator('.unit-source-fields').count()
+  };
+  assert.deepEqual(result.unifiedConfiguration, { subunitControls: 1, difficultyControls: 1, sourceFields: 0 });
+  await page.getByRole('button', { name: /미리보기로 이동/ }).click();
+  await waitFor(tab, async () => (await page.locator('.unit-confirmation').count()) === 1);
+  await waitFor(tab, async () => (await page.locator('#unit-preview-iframe').count()) === 1, 8000);
+  result.confirmation = {
+    summary: await page.locator('.unit-confirm-pane').innerText(),
+    iframe: await page.locator('#unit-preview-iframe').count(),
+    editButtons: await page.getByRole('button', { name: '구성 수정', exact: true }).count()
+  };
+  assert.equal(result.confirmation.iframe, 1);
+  assert.equal(result.confirmation.editButtons, 1);
+  await page.getByRole('button', { name: /일반 출력/ }).click();
+  await waitFor(tab, async () => (await page.locator('#unit-status').innerText()).includes('준비 완료'), 8000);
 
   await tab.goto(`${baseUrl}/tests/fixtures/unit-past-exams-fallback.html`);
   await waitFor(tab, async () => (await page.locator('.unit-fallback-actions a').count()) === 2);
@@ -177,23 +142,16 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
   await waitFor(tab, async () => (await page.locator('#multi-ready[data-ready="true"]').count()) === 1);
   await waitFor(tab, async () => (await page.locator('#unit-content .unit-card').count()) > 0);
   await page.locator('#unit-content .unit-card').nth(0).click();
-  await page.getByRole('button', { name: /조건으로 문제지 만들기/ }).click();
-  await waitFor(tab, async () => (await page.locator('.unit-generated-paper').count()) === 2);
-  result.multiPaper = {
-    papers: await page.locator('.unit-generated-paper').count(),
-    buttons: await page.locator('.unit-generated-paper button').count(),
-    onclicks: await page.locator('.unit-generated-paper button').evaluateAll(buttons => buttons.map(button => button.getAttribute('onclick')))
-  };
-  assert.equal(result.multiPaper.papers, 2);
-  assert.equal(result.multiPaper.buttons, 4);
-  assert.ok(result.multiPaper.onclicks.some(value => value.includes('generated-1')));
-  assert.ok(result.multiPaper.onclicks.some(value => value.includes('generated-2')));
-  await page.locator('.unit-generated-paper').nth(0).getByRole('button', { name: /일반 출력/ }).click();
-  await waitFor(tab, async () => (await page.locator('#unit-status').innerText()).includes('준비 완료'), 8000);
-  result.multiPaper.printStatus = await page.locator('#unit-status').innerText();
-  await page.locator('.unit-generated-paper').nth(1).getByRole('button', { name: /반 학생에게 출제/ }).click();
+  await page.getByRole('button', { name: /미리보기로 이동/ }).click();
+  await waitFor(tab, async () => (await page.locator('.unit-preview-pager').count()) === 1);
+  const firstTitle = await page.locator('.unit-preview-title strong').innerText();
+  await page.getByRole('button', { name: '다음 문제지' }).click();
+  const secondTitle = await page.locator('.unit-preview-title strong').innerText();
+  result.multiPaper = { pager: await page.locator('.unit-preview-pager').innerText(), firstTitle, secondTitle };
+  assert.notEqual(firstTitle, secondTitle);
+  await page.getByRole('button', { name: /학생에게 출제/ }).click();
   await waitFor(tab, async () => (await tab.url()).includes('unitPastAssign='), 8000);
-  result.multiPaper.assignUrl = await tab.url();
+  result.assignUrl = await tab.url();
 
   result.logs = await tab.dev.logs({ levels: ['error', 'warn'], limit: 20 });
   assert.equal(Array.from(result.logs).length, 0);

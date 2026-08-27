@@ -4,36 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>단원별 기출 · JS 아카이브</title>
-  <link rel="stylesheet" href="unit-past-exams.css?v=20260827b">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="unit-past-exams.css?v=20260827c">
 </head>
 <body class="unit-page">
   <main class="unit-shell">
-    <div class="unit-top">
-      <button class="unit-back" type="button" onclick="location.href='index.html'">← JS 아카이브</button>
-      <label class="unit-qpp">페이지당 문항 수
-        <select id="unit-qpp"><option value="4" selected>4문항</option><option value="6">6문항</option><option value="8">8문항</option></select>
-      </label>
-    </div>
-    <section class="unit-hero">
-      <div class="unit-kicker" id="unit-kicker">2022 개정 교육과정</div>
-      <h1 id="unit-title">단원별 기출</h1>
-      <p>학교 기출을 2022 개정 단원 순서로 모았습니다. 단원을 선택하면 인쇄와 학생 오답관리에 맞게 나뉜 문제지를 바로 출력할 수 있습니다.</p>
-      <div class="unit-grade-tabs" role="tablist" aria-label="학년 선택">
-        <button type="button" class="unit-grade-tab" data-profile="h1" role="tab" onclick="UnitPastExams.selectProfile('h1')">고1</button>
-        <button type="button" class="unit-grade-tab" data-profile="h2" role="tab" onclick="UnitPastExams.selectProfile('h2')">고2</button>
-        <button type="button" class="unit-grade-tab" data-profile="m3" role="tab" onclick="UnitPastExams.selectProfile('m3')">중3</button>
-        <button type="button" class="unit-grade-tab" data-profile="m2" role="tab" onclick="UnitPastExams.selectProfile('m2')">중2</button>
-        <button type="button" class="unit-grade-tab" data-profile="m1" role="tab" onclick="UnitPastExams.selectProfile('m1')">중1</button>
+    <header class="unit-appbar">
+      <button class="unit-back" type="button" onclick="location.href='index.html'" aria-label="JS 아카이브로 돌아가기"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span>JS 아카이브</span></button>
+      <div class="unit-brand">
+        <div class="unit-kicker" id="unit-kicker">2022 개정 교육과정</div>
+        <h1 id="unit-title">단원별 기출</h1>
       </div>
-      <div class="unit-summary" id="unit-summary"></div>
-    </section>
-    <div class="unit-status" id="unit-status" role="status" aria-live="polite">문항 인덱스를 불러오는 중입니다.</div>
+      <div class="unit-summary" id="unit-summary" aria-live="polite"></div>
+      <select id="unit-qpp" class="unit-visually-hidden" tabindex="-1" aria-hidden="true"><option value="4" selected>4문항</option><option value="6">6문항</option><option value="8">8문항</option></select>
+    </header>
+    <nav class="unit-stepper" id="unit-stepper" aria-label="단원별 기출 진행 단계"></nav>
+    <div class="unit-status is-loading" id="unit-status" role="status" aria-live="polite">문항 인덱스를 불러오는 중입니다.</div>
     <div id="unit-content"><div class="unit-loading">단원별 문항을 집계하는 중입니다.</div></div>
   </main>
   <script src="unit-past-exams-core.js?v=20260827b"></script>
   <script src="question-index.js?v=20260827a"></script>
   <script src="question-meta.js?v=20260826b"></script>
-  <script src="unit-past-exams.js?v=20260827b"></script>
+  <script src="unit-past-exams.js?v=20260827c"></script>
   <script>window.UnitPastExams.init();</script>
 </body>
 </html>
