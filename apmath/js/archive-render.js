@@ -2,6 +2,17 @@
     'use strict';
 
     const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+    const ARCHIVE_ASSET_CACHE_VERSION = '20260828.1';
+
+    function withArchiveAssetCacheBuster(url) {
+        const raw = String(url || '').trim();
+        if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
+        const hashIndex = raw.indexOf('#');
+        const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
+        const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
+        const separator = base.includes('?') ? '&' : '?';
+        return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
+    }
 
     function normalizeArchiveFile(file) {
         const raw = String(file || '').trim();
@@ -23,7 +34,7 @@
             path = (dir ? `${dir}/` : '') + path;
         }
         const encoded = path.split('/').map(part => encodeURIComponent(part)).join('/');
-        return ARCHIVE_BASE_URL + encoded;
+        return withArchiveAssetCacheBuster(ARCHIVE_BASE_URL + encoded);
     }
 
     function rewriteImgSrcInHtml(html, archiveFile) {
@@ -90,6 +101,7 @@
 
     window.ApArchiveRender = {
         ARCHIVE_BASE_URL,
+        ARCHIVE_ASSET_CACHE_VERSION,
         normalizeArchiveFile,
         resolveArchiveAssetUrl,
         rewriteImgSrcInHtml,

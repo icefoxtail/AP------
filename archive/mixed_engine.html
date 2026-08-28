@@ -455,6 +455,10 @@
 /**
  * Stage E Mixed Engine v1.6.2 (Rulebook v1.9 Final Fix + Image Field + Sol Reverted)
  */
+// GitHub Pages/Fastly may keep an unchanged image URL for up to 10 minutes.
+// Bump this value when replacing an archive image so clients receive the new bytes.
+const ARCHIVE_ASSET_CACHE_VERSION = '20260828.1';
+
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
@@ -1462,7 +1466,17 @@ function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${q.image}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${withArchiveAssetCacheBuster(q.image)}"></div>`;
+}
+
+function withArchiveAssetCacheBuster(src) {
+    const raw = String(src == null ? '' : src).trim();
+    if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
+    const hashIndex = raw.indexOf('#');
+    const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
+    const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
+    const separator = base.includes('?') ? '&' : '?';
+    return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
 }
 
 function escapeArchiveHtmlAttribute(value) {
@@ -1481,7 +1495,7 @@ function renderSolutionImageHTML(q) {
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
-    return `<span class="sol-image-wrap image-${size}"><img src="${escapeArchiveHtmlAttribute(q.solutionImage)}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    return `<span class="sol-image-wrap image-${size}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.solutionImage))}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
