@@ -1,0 +1,916 @@
+{
+  "protocol": {
+    "file": "docs/rules/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+    "sha256": "DEC01379D07B2BA171F9D7BEA34723B0534C49128F38B2B2D893277594645C43",
+    "sourceOfTruth": "production JS",
+    "pdfRequired": false
+  },
+  "scope": {
+    "year": 2025,
+    "grade": "고1",
+    "subject": "공통수학2",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "originalExamCount": 8,
+    "targetQuestionCount": 36,
+    "similarExcluded": 3,
+    "similarTargetQuestionsExcluded": 12,
+    "protectedPolicy": "target 밖은 기록만; 사용자 승인 없이는 수정하지 않음"
+  },
+  "solutionEnhancements": [
+    {
+      "exam": "25_금당고_2학기_기말",
+      "file": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+      "questionId": 18,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "기존 교점·거리 풀이 유지; 존재 조건을 두 원의 거리와 반지름 비교 세 경우로 분해하고 정수 범위 누락을 방지",
+      "solutionBeforeSha256": "a4d4f08d59b315fc8d1b4a580eaa45319f55b36a7f8c27f4b251613e6a4c28d7",
+      "solutionAfterSha256": "81c2d343cc54a10dfa0092d08921a024cf3b89ada21bdec933b46bea1029c628",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_기말",
+      "file": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "questionId": 3,
+      "deltaType": "ADDITIVE_ENHANCEMENT_WITH_LATEX_PINPOINT",
+      "deltaSummary": "기존 접선 공식 풀이 유지; 접선의 기하적 의미와 접점·중심 거리로 부호를 재확인하고 LaTeX 표기 결함을 수리",
+      "solutionBeforeSha256": "3668eb6aac9f2f129270455795f6e696163b622c6e6f6465b764d7769b0659c7",
+      "solutionAfterSha256": "93cd747635b6d85a108c30be10bafe0c98ea8629599eba703bedcd89a24e8784",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_기말",
+      "file": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "questionId": 7,
+      "deltaType": "ADDITIVE_ENHANCEMENT_WITH_LATEX_PINPOINT",
+      "deltaSummary": "기존 거리식·근과 계수 풀이 유지; 판별식으로 서로 다른 두 접선 기울기의 실제 존재를 확인하고 LaTeX 표기 결함을 수리",
+      "solutionBeforeSha256": "18ceba5d17acfa36adf5f17dc7913ca1c8ebf3c7e9472453890f99fa741a8cf3",
+      "solutionAfterSha256": "d54759d928ce9e5e80fabd2b57acb524d9d03ee824143a9fdf587cad04068599",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 3,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "표준형과 비교해 중심·반지름·실제 원 여부를 명시",
+      "solutionBeforeSha256": "c16194d612c86c2c07bcf43637906a3eb835b1c86bc212a7b45c9fac32d9465b",
+      "solutionAfterSha256": "e90b91f808421ab7b411da7908d205bd4f1f3170f2be99fd57bc511227ff2fc2",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 4,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "k 변화에 따른 평행선과 접선 두 위치를 시각적으로 설명",
+      "solutionBeforeSha256": "1e3359e4a320ca3cf7ae66c82b216a228cacf72bf4af7bc86e1ce0a8022fea85",
+      "solutionAfterSha256": "f8e30b68e2d1a80a2225cf148622c5216f9eb2c6b9608218a8a55cb2a75f5d02",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 8,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "중심·반지름 제곱의 양수 조건과 자연수 조건을 분리",
+      "solutionBeforeSha256": "393f5c719ac8ae4d1b9de88bc8e1876915a12e93e8c7c0f1bcd8a4b042724dc5",
+      "solutionAfterSha256": "fa4542ca48fa55aedb7dc7ec851f1c5726052ee61e7a376d0da6975ca2c83247",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 11,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "자연수 조건에서 절댓값을 정리하고 접선 경계와 바깥 영역을 구분",
+      "solutionBeforeSha256": "79310472486023912d788dc14c44cea84b9ab033e0fba66a08ad4fcb9314426b",
+      "solutionAfterSha256": "f2cf938802fbdf14f5b618502633baccf02c7aeab171d395ea0b4d56d6801192",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 12,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "접선 공식의 의미와 무게중심 좌표 평균을 보강",
+      "solutionBeforeSha256": "2a3f1837d439e505ba8917af3ed16fc458bff4fba92dfffc38d3de4f84bf1040",
+      "solutionAfterSha256": "327403263d23436400b6ddb8af7c949c3e2eb31a6510ff410389e3025c0318cf",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 16,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "두 수직이등분선과 대각선 넓이 관계를 연결",
+      "solutionBeforeSha256": "b164219e36b460086cd21ed3590e1aed75ce807a63da10ee81586c26923034a2",
+      "solutionAfterSha256": "344c3ef08e03fbf65ef7166aabc0dd5f7c70800332ef340cbb44f472637b5e7f",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 18,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "공통현 존재 조건과 넓이의 두 경우를 분리",
+      "solutionBeforeSha256": "2823a4af8a20463bd85e38b21c1e27698e8ae9c3795681e53f4c87b304832a71",
+      "solutionAfterSha256": "d982304927d0207ab7eebdb800ab67014fe3445c38f8ac443ce155ae5e5fe6b0",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 19,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "직각 꼭짓점 세 경우와 퇴화 삼각형 제외를 명시",
+      "solutionBeforeSha256": "4e26494800f4c465add9e5a3d28ef1ff30d8bb16eb7a14cafca8cde5b4d99655",
+      "solutionAfterSha256": "ea1ee98afdaf3d7f5b018dccba4a8001f1c4da37d129c1ce3473894888c865fa",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "questionId": 21,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "현의 중점·수선·밑변-높이 넓이 관계를 연결",
+      "solutionBeforeSha256": "f22c46f0f4dd78462c836d3149364f16c74606cd0edae993e4201a8c1e10bcb5",
+      "solutionAfterSha256": "8b15a48dbe8a00eb6ecb4e55ac687bba38c7598c7aefd376d47ea1e2aa66882f",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "file": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "questionId": 7,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "지름의 양 끝점에서 중심·반지름을 정하고 표준형 계수와 비교",
+      "solutionBeforeSha256": "3c0d7e1436b03ae6a7e5364943ae2cc76f62b2010627a9c82d1fb0c98e97c6f0",
+      "solutionAfterSha256": "2dcccc34b8520ff33b3fdb1c17ca5e560110c9cb21c53cf8df40ee77490e40fa",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "file": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "questionId": 10,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "두 접선 기울기의 부호와 서로소 자연수 조건을 연결",
+      "solutionBeforeSha256": "d57adc915b7e22d16bf9bdb52beed355fa7980e61e5ad35c09fb3cfcbee1056d",
+      "solutionAfterSha256": "59e4f2f5ad22a15807703f3d8bd0a564dc29095beac6ee5d0d9f7a68394fbb74",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "file": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "questionId": 14,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "반지름 방향과 접선의 법선 관계 및 반지름 제곱 양수 조건을 보강",
+      "solutionBeforeSha256": "be8b08280110003c23cf503ac06cb753a384973b2c3250eef14e00bd737481d7",
+      "solutionAfterSha256": "f5c366538606ad30ef3ade3cfcf4d7961d12575aa44a075b442813e1ba9a2783",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "file": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "questionId": 18,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "제1사분면·B≠O 조건으로 해를 선별하고 두 교점을 모두 대입",
+      "solutionBeforeSha256": "089905d25376c970206b123f3efb138040288a98eaafa07b44e33e53793cb614",
+      "solutionAfterSha256": "8948142c1c6aa42ba8463a9b4d804506c677f98cbceeba42b1f5652ee53f9650",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "file": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "questionId": 20,
+      "deltaType": "ADDITIVE_ENHANCEMENT_WITH_LAYOUT_PINPOINT",
+      "deltaSummary": "제1사분면 접원 중심·두 반지름·두 접점 좌표의 유도를 추가하고 좌표 넓이 계산을 단계화",
+      "solutionBeforeSha256": "855723542fc65e26e2afc473c46124eb59ef1ff4ed5fc61fd076824d2ddf25d7",
+      "solutionAfterSha256": "4a15156417811573d0bebe032149a135e170b3b78d92cd28ebed045bf7441295",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 7,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "접선과 두 교점의 거리 부등식에서 등호 제외 이유를 명시",
+      "solutionBeforeSha256": "707f61e2076a50c6ac7dfc0dfb1a181a0d41d4c8760223158aab97070daae965",
+      "solutionAfterSha256": "dc2c4025ddb9f71f4f4a84545fd8ccddb07a32c6bea00071cfa87c20ec0b894f",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 9,
+      "deltaType": "ADDITIVE_ENHANCEMENT_WITH_SVG_PINPOINT",
+      "deltaSummary": "두 축 접원 네 방향을 분류하고 양의 반지름 해만 선별",
+      "solutionBeforeSha256": "e95805844efd4931b048f51398396188af1d1d9bf7820d3874e2b982a63e718c",
+      "solutionAfterSha256": "d034840bffa5f01bd3b2409b395b6ffef8a0c0a1887b9ae305443fe61875136c",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 10,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "현의 중점에서 중심까지의 수선과 반현 길이를 연결",
+      "solutionBeforeSha256": "77cbbbbc9dafa29344d5b250bdd4208046ad88610b2abce6473a9d35e1d33342",
+      "solutionAfterSha256": "bd48f42062d6a93cdb942393db88d7096aaa4e64f30394bbe1c00ff40b2561b5",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 16,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "두 원의 공통현 중점과 중심-현 거리 관계를 보강",
+      "solutionBeforeSha256": "49f0945dd8901664ec73b35186b03c29f7f695dcfe2273b5194986e52ad6b364",
+      "solutionAfterSha256": "9f6ac1d9edf537ef8f2955f3216e7b65c8248dc9d2f587e2d61c87841ba63f12",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 17,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "접점 현이 중심-외부점 직선에 수직임을 이용해 x좌표 합을 설명",
+      "solutionBeforeSha256": "e224efb7d1d7f0d3631c1641bea504e72fd6ce4c69deacc3700de4596b87351f",
+      "solutionAfterSha256": "20a723d7a7c0f84857dbd6a294e905b189c71acf5459de9aa009a635928519a6",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 19,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "두 매개변수가 서로 다른 근임과 절댓값 거리 처리를 명시",
+      "solutionBeforeSha256": "7e1473f811fab0d4c5c481009ef3172fe00315ff1bd1230075718addb537f621",
+      "solutionAfterSha256": "ce5c4aca57bbc87e484b804b5dfe0d6d82e38de482c7f9191edb0c12cd94ac07",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "questionId": 22,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "원점 접선 조건과 거리식 소거 과정을 설명",
+      "solutionBeforeSha256": "a1cce4671113b2c3b82ba6317503819c2004ea63a32fcf32d432c4774cee1b49",
+      "solutionAfterSha256": "e94be0c4c589c28ee2eb7e3927cf32540452a8192444594e9c89d6e343f96c0e",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "questionId": 14,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "중심-직선 거리와 반지름으로 평행선 교점 개수를 거리별로 분류",
+      "solutionBeforeSha256": "87b20cce511067cf661dec78a33bd702de43cc254e805961a6e355d77c39a4c1",
+      "solutionAfterSha256": "f272fe1638c0c74e54e79613a536c3ec968fd3e0bc7dce1342287f79dfb81566",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "questionId": 17,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "두 원의 식을 빼 공통현 직선을 얻고 계수 비교 과정을 설명",
+      "solutionBeforeSha256": "e772ea7a570707bda048be4af7065170ba39c6f1d9ccfbd11e687c85a63bc1c2",
+      "solutionAfterSha256": "267c9e98dd39d101910a1b2873895c834f1d9dc46919023b784a39e927d154ba",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "file": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "questionId": 21,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "접점 현의 거리·반현 길이·삼각형 높이를 넓이 계산과 연결",
+      "solutionBeforeSha256": "9b47984b9b23b1e8db0eb03a9adb1014f96cb7fda275e072ea28a0bf8bda1c9d",
+      "solutionAfterSha256": "3bcfa331e2097fad82f4208779ffc1b93d4739e1051894a191544639dee5ca35",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "file": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "questionId": 13,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "접선의 거리 조건, 분모의 출처, 두 k 값과 곱의 의미를 단계화",
+      "solutionBeforeSha256": "99ec27cec12acaac7b09176ec341650c2dd1d82833deb5479407e2d3629248cc",
+      "solutionAfterSha256": "c5ee93bb8903e4617eddaa845db5de8bd4f2dfc143bb11bb30953b271d954661",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "file": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "questionId": 16,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "직각삼각형 외접원, 넓이 조건, 무게중심 평균, 제1사분면 해 선택을 연결",
+      "solutionBeforeSha256": "089a49eb1751ef799c8080c438619d73efb19926b89a8e67d4de5274c0f62d75",
+      "solutionAfterSha256": "0c08f1ad557ff7cb450b71490f41262b094ce007ed2c3389dfbace3fc0c895ed",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "file": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "questionId": 17,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "기울기와 길이로 수직변 좌표 변화를 선택하고 지름의 중점·반지름을 설명",
+      "solutionBeforeSha256": "763ee6d8d50599743869ccbbb6468d3aeb7670d5c5ec18996270244db2e8d939",
+      "solutionAfterSha256": "121ebcafffe050c2a3675cfdccd6978bafffc9d2a95f20e81c01ef970fb1dc4c",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "file": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "questionId": 22,
+      "deltaType": "ADDITIVE_ENHANCEMENT",
+      "deltaSummary": "OP=d인 원과 주어진 원의 교점으로 바꾸고 경계·내부 정수별 개수를 분류",
+      "solutionBeforeSha256": "71ff3a922c9890c44ee53589f72c2ae6d68ea8418a77a3a996cb7ed99ec69adb",
+      "solutionAfterSha256": "d8b4633f2da664a9e4d82c73473afe46094fba8c2b3ab308c26e50ee3e953e3c",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "questionId": 3,
+      "deltaType": "CARRIED_FORWARD_INDEPENDENT_PASS",
+      "deltaSummary": "기존 완전제곱식 풀이에 중심·반지름 확인을 보강(기존 독립 PASS 보고서 승계)",
+      "solutionBeforeSha256": "afdf5d23be60e6a5b8aa70c00932c479f79d95eb381d33e21d6d636ae030a9d0",
+      "solutionAfterSha256": "33889581e59deead6c14ae4b506f7718f0d958800c25d88a27a2df44870d1be3",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "questionId": 4,
+      "deltaType": "CARRIED_FORWARD_INDEPENDENT_PASS",
+      "deltaSummary": "기존 접선 거리 풀이에 접선 식과 두 절편 해석을 보강(기존 독립 PASS 보고서 승계)",
+      "solutionBeforeSha256": "5a4b54380693e8f56fd89d9af1665ce3b9fbe20f2c5696c9e0c41abcbb211623",
+      "solutionAfterSha256": "26fa4756a8ab0feba3d2dc5be82f8ea676569d07e8193e836b98b6b8f2a5519d",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "questionId": 6,
+      "deltaType": "CARRIED_FORWARD_INDEPENDENT_PASS",
+      "deltaSummary": "기존 r² 부호 판정에 실원·점·실수 그래프 없음의 차이를 보강(기존 독립 PASS 보고서 승계)",
+      "solutionBeforeSha256": "70750817578bb9720e7d7ba771cb786a706c8bbc2f49852c2c9df01127164a19",
+      "solutionAfterSha256": "1582ee266bb945cebd12a0ca54dcb750e8334b95db3c29b792dab6042e35a3f4",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "questionId": 11,
+      "deltaType": "CARRIED_FORWARD_INDEPENDENT_PASS",
+      "deltaSummary": "기존 거리 부등식에 중심·경계 접선·범위 해석을 보강(기존 독립 PASS 보고서 승계)",
+      "solutionBeforeSha256": "f44e9ccf6aa36067716b30e902a20ccefa5242ea73e7865c7b5446e3bdc4a6b3",
+      "solutionAfterSha256": "2859a663a76fb3b5949f12bdbc98e91b4f114ef75b992f6140bf017c9a0c376b",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "questionId": 22,
+      "deltaType": "CARRIED_FORWARD_INDEPENDENT_PASS",
+      "deltaSummary": "기존 부호 경우와 중심 거리 풀이에 양의 반지름 선별 근거를 보강(기존 독립 PASS 보고서 승계)",
+      "solutionBeforeSha256": "b74959317ae6b73b56f80e43dba48d057904f3469c4ebf28ba4cf419a883221f",
+      "solutionAfterSha256": "07f7eec23869651dc508411aec0a3369005c2e1059a5907a3a4916e66e4246ee",
+      "fields": [
+        "solution",
+        "solutionImage",
+        "solutionImageAlt",
+        "solutionImageCaption",
+        "solutionImageSize"
+      ]
+    }
+  ],
+  "solutionSvgAssets": [
+    {
+      "exam": "25_금당고_2학기_기말",
+      "questionId": 18,
+      "path": "assets/images/25_금당고_2학기_기말_고1_기출/q18-solution.svg"
+    },
+    {
+      "exam": "25_제일고_2학기_기말",
+      "questionId": 3,
+      "path": "assets/images/25_제일고_2학기_기말_고1_기출/q03-solution.svg"
+    },
+    {
+      "exam": "25_제일고_2학기_기말",
+      "questionId": 7,
+      "path": "assets/images/25_제일고_2학기_기말_고1_기출/q07-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 3,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q03-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 4,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q04-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 8,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q08-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 11,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q11-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 12,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q12-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 16,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q16-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 18,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q18-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 19,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q19-solution.svg"
+    },
+    {
+      "exam": "25_금당고_2학기_중간",
+      "questionId": 21,
+      "path": "assets/images/25_금당고_2학기_중간_고1_기출/q21-solution.svg"
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "questionId": 7,
+      "path": "assets/images/25_매산고_2학기_중간_고1_기출/q07-solution.svg"
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "questionId": 10,
+      "path": "assets/images/25_매산고_2학기_중간_고1_기출/q10-solution.svg"
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "questionId": 14,
+      "path": "assets/images/25_매산고_2학기_중간_고1_기출/q14-solution.svg"
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "questionId": 18,
+      "path": "assets/images/25_매산고_2학기_중간_고1_기출/q18-solution.svg"
+    },
+    {
+      "exam": "25_매산고_2학기_중간",
+      "questionId": 20,
+      "path": "assets/images/25_매산고_2학기_중간_고1_기출/q20-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 7,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q07-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 9,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q09-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 10,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q10-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 16,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q16-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 17,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q17-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 19,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q19-solution.svg"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 22,
+      "path": "assets/images/25_순천고_2학기_중간_고1_기출/q22-solution.svg"
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "questionId": 14,
+      "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q14-solution.svg"
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "questionId": 17,
+      "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q17-solution.svg"
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "questionId": 21,
+      "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q21-solution.svg"
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "questionId": 13,
+      "path": "assets/images/25_제일고_2학기_중간_고1_기출/q13-solution.svg"
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "questionId": 16,
+      "path": "assets/images/25_제일고_2학기_중간_고1_기출/q16-solution.svg"
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "questionId": 17,
+      "path": "assets/images/25_제일고_2학기_중간_고1_기출/q17-solution.svg"
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "questionId": 22,
+      "path": "assets/images/25_제일고_2학기_중간_고1_기출/q22-solution.svg"
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "questionId": 3,
+      "path": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg"
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "questionId": 4,
+      "path": "assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg"
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "questionId": 6,
+      "path": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg"
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "questionId": 11,
+      "path": "assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg"
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "questionId": 22,
+      "path": "assets/images/25_효천고_2학기_중간_고1_기출/q22-solution.svg"
+    }
+  ],
+  "pinpointRepairs": [
+    {
+      "exam": "25_매산고_2학기_중간",
+      "questionId": 20,
+      "kind": "solution_layout_pinpoint",
+      "detail": "기존 좌표 넓이식 분리 후, 중심에서 직선까지의 거리식과 두 접점의 수선의 발 좌표 유도를 추가; 계산값 동일"
+    },
+    {
+      "exam": "25_순천고_2학기_중간",
+      "questionId": 9,
+      "kind": "svg_geometry_pinpoint",
+      "detail": "viewBox 밖으로 잘리던 큰 원을 실제 범위 안으로 조정"
+    },
+    {
+      "exam": "25_제일고_2학기_기말",
+      "questionId": 3,
+      "kind": "latex_escape_pinpoint",
+      "detail": "runtime-bare-cdot를 \\cdot로 수리"
+    },
+    {
+      "exam": "25_제일고_2학기_기말",
+      "questionId": 7,
+      "kind": "latex_escape_pinpoint",
+      "detail": "runtime-bare-dfrac/sqrt/cdot를 \\dfrac/\\sqrt/\\cdot로 수리"
+    }
+  ],
+  "approvedCarryForward": [
+    {
+      "exam": "25_효천고_2학기_중간",
+      "questionId": 23,
+      "kind": "approved_out_of_scope_layout_repair",
+      "source": "reports/25_효천고_2학기_중간_고1_원의방정식_수정검수.md"
+    }
+  ],
+  "protectedFindings": [
+    {
+      "exam": "25_매산고_2학기_중간",
+      "mode": "sol",
+      "questionId": 12,
+      "kind": "protected_render_overflow",
+      "metric": "scrollWidth 320 > clientWidth 316",
+      "action": "record-only"
+    },
+    {
+      "exam": "25_순천여고_2학기_중간",
+      "mode": "exam",
+      "questionId": 13,
+      "kind": "protected_render_overflow",
+      "metric": "scrollHeight 588 > clientHeight 497",
+      "action": "record-only"
+    },
+    {
+      "exam": "25_제일고_2학기_중간",
+      "mode": "exam",
+      "questionId": 18,
+      "kind": "protected_render_overflow",
+      "metric": "scrollHeight 504 > clientHeight 497",
+      "action": "record-only"
+    },
+    {
+      "exam": "25_효천고_2학기_중간",
+      "mode": "exam",
+      "questionId": 8,
+      "kind": "protected_render_overflow",
+      "metric": "scrollHeight 650 > clientHeight 497",
+      "action": "record-only"
+    }
+  ],
+  "approvedPostAuditRepairs": [
+    {
+      "approval": "사용자 명시 요청에 따른 q17 렌더 및 보호 문항 overflow 핀포인트 수리",
+      "status": "applied",
+      "items": [
+        {
+          "exam": "25_순천고_2학기_중간",
+          "questionId": 17,
+          "scope": "target",
+          "mode": "sol",
+          "field": "solution",
+          "change": "인라인 수식 내부 줄바꿈을 제거하여 production LaTeX 파서가 수식을 하나의 수식으로 읽도록 수정; 후보 JS도 동기화"
+        },
+        {
+          "exam": "25_매산고_2학기_중간",
+          "questionId": 12,
+          "scope": "protected",
+          "mode": "sol",
+          "field": "content",
+          "change": "overline 수식 앞에 <br>을 삽입하여 우측 MathJax ink overflow를 제거"
+        },
+        {
+          "exam": "25_순천여고_2학기_중간",
+          "questionId": 13,
+          "scope": "protected",
+          "mode": "exam",
+          "field": "layoutTag",
+          "change": "grid에서 fullwidth로 변경하여 세로 clipping 제거"
+        },
+        {
+          "exam": "25_제일고_2학기_중간",
+          "questionId": 18,
+          "scope": "protected",
+          "mode": "exam",
+          "field": "layoutTag",
+          "change": "grid에서 fullwidth로 변경하여 세로 clipping 제거"
+        },
+        {
+          "exam": "25_효천고_2학기_중간",
+          "questionId": 8,
+          "scope": "protected",
+          "mode": "exam",
+          "field": "layoutTag",
+          "change": "grid에서 fullwidth로 변경하여 세로 clipping 제거; 후보 JS도 동기화"
+        },
+        {
+          "exam": "25_순천고_2학기_중간",
+          "questionId": 12,
+          "scope": "protected",
+          "mode": "sol",
+          "field": "solution",
+          "change": "인라인 수식 내부 줄바꿈 4건을 공백으로 치환하여 raw LaTeX 표시 제거; 후보 JS도 동기화"
+        }
+      ]
+    }
+  ],
+  "candidateSync": [
+    {
+      "exam": "25_순천고_2학기_중간",
+      "candidate": "archive/_generated/past-exams/2025-2mid-import/25_순천고_2학기_중간_고1_기출/candidate/25_순천고_2학기_중간_고1_기출.js",
+      "status": "byte-identical"
+    }
+  ],
+  "exclusions": [
+    "similar/** 3 exams / 12 target questions",
+    "types/**",
+    "H22-C2-03 밖의 questions"
+  ]
+}

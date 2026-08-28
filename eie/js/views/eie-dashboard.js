@@ -641,11 +641,10 @@
 
     function renderActionGrid() {
         return `
-            <div class="ap-admin-shortcuts ap-admin-action-grid eie-admin-shortcuts eie-admin-action-grid eie-surface-toolbar eie-surface-toolbar--four" aria-label="원장님 바로가기">
+            <div class="ap-admin-shortcuts ap-admin-action-grid eie-admin-shortcuts eie-admin-action-grid eie-surface-toolbar eie-surface-toolbar--three" aria-label="원장님 바로가기">
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="attendance" aria-label="EIE 출석부" title="출석부"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="4" width="13" height="17" rx="2.2"/><path d="M9 4V3.2A1.2 1.2 0 0 1 10.2 2h3.6A1.2 1.2 0 0 1 15 3.2V4"/><path d="M8.6 12.4l2.1 2.1 4.1-4.2"/></svg></span>출석부</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="timetable" aria-label="EIE 시간표" title="시간표"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.4"/><path d="M3.5 9.5h17"/><path d="M8 3.2v3.4M16 3.2v3.4"/><path d="M7.5 13h3M13.5 13h3M7.5 16.6h3"/></svg></span>시간표</button>
                 <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="grades" aria-label="EIE 성적표" title="성적표"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5v15a2 2 0 0 0 2 2h15"/><path d="M7.5 15l3.2-3.4 2.8 2 4.4-5.3"/></svg></span>성적표</button>
-                <button class="btn ap-admin-action-card eie-admin-shortcut eie-surface-action" type="button" data-eie-route="management" aria-label="EIE 관리" title="관리"><span class="eie-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h8M16.5 7H20"/><path d="M4 17h3.5M11.5 17H20"/><circle cx="14.5" cy="7" r="2.3"/><circle cx="9" cy="17" r="2.3"/></svg></span>관리</button>
             </div>
         `;
     }

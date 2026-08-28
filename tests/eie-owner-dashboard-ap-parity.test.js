@@ -66,10 +66,14 @@ assert(
   'Attendance shortcut should be enabled and route to the implemented attendance board'
 );
 
-// [REDESIGN] 액션 버튼 라인 아이콘(출석부/시간표/성적표/관리)
+// [REDESIGN] 액션 버튼 라인 아이콘(출석부/시간표/성적표)
 assert(
-  (source.match(/eie-action-ico/g) || []).length >= 4,
+  (source.match(/eie-action-ico/g) || []).length >= 3,
   'each EIE action shortcut should carry a line icon for visual parity with AP'
+);
+assert(
+  !source.includes('data-eie-route="management"') && !source.includes('>관리</button>'),
+  'EIE owner dashboard should not expose the management shortcut'
 );
 
 // [REDESIGN] 통계 카드 3개 — 아이콘 + 큰 라벨, 숫자 미노출, 호버 시 학년 브레이크다운

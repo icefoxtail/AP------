@@ -23,23 +23,23 @@ window.questionBank = [
       "약수"
     ],
     "wide": false,
-    "content": "집합 $A$를 $36$의 약수 전체의 집합, 집합 $B$를 $48$의 약수 전체의 집합이라 할 때, $A\\cap B$의 모든 원소의 합은?",
+    "content": "자연수 전체의 집합을 $\\mathbb{N}$이라 하자. 집합 $A=\\{x\\in\\mathbb{N}\\mid \\dfrac{24}{x}\\in\\mathbb{N}\\}$의 원소의 개수는?",
     "choices": [
-      "16",
-      "22",
-      "28",
-      "34",
-      "40"
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 약수의 공통부분을 최대공약수의 약수로 바꾸어 원소를 빠짐없이 센다.\n조건 정리: A는 36의 약수 전체, B는 48의 약수 전체일 때 A∩B의 원소의 합을 구한다.\n풀이 방향: 두 수의 공약수는 최대공약수의 약수라는 성질을 이용한다.\n정석 풀이:\n1. A∩B는 36과 48의 공약수 전체이고, gcd(36,48)=12이다.\n2. 12의 양의 약수는 1,2,3,4,6,12이다.\n3. 따라서 모든 원소의 합은 1+2+3+4+6+12=28이다.\n핵심 확인: 나열한 여섯 수는 모두 36과 48의 약수이고, 다른 공약수는 없다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 집합 조건식의 의미를 약수 조건으로 해석한 뒤 원소를 센다.\n조건 정리: $\\dfrac{24}{x}\\in\\mathbb{N}$을 만족하는 자연수 $x$의 개수를 구한다.\n풀이 방향: $24/x$가 자연수라는 것은 $x$가 $24$의 양의 약수라는 뜻이다.\n정석 풀이:\n1. 집합 $A$의 원소는 $24$의 양의 약수와 정확히 같다.\n2. $24$의 양의 약수는 $1,2,3,4,6,8,12,24$의 $8$개이다.\n3. 따라서 집합 $A$의 원소의 개수는 $8$이다.\n핵심 확인: 조건 제시 방식만 달라졌고, 핵심은 약수 집합의 원소 개수를 세는 것이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 2,
-    "level": "하",
+    "level": "중",
     "category": "집합",
     "originalCategory": "집합",
     "standardCourse": "공통수학2",
@@ -59,23 +59,23 @@ window.questionBank = [
       "공집합"
     ],
     "wide": false,
-    "content": "집합 $\\{a,b,c\\}$의 부분집합이 아닌 것은?",
+    "content": "집합 $A=\\{a,b,c\\}$의 멱집합을 $P(A)$라 하고, $B=P(A)\\cup\\{\\{\\varnothing\\}\\}$라 하자. 집합 $B$의 원소 중 집합 $A$의 부분집합이 아닌 것은?",
     "choices": [
+      "$\\varnothing$",
       "$\\{a\\}$",
-      "$\\{a,b\\}$",
-      "$\\{a,b,c\\}$",
-      "$\\{a,c\\}$",
-      "$\\{a,b,c,d\\}$"
+      "$\\{b,c\\}$",
+      "$A$",
+      "$\\{\\varnothing\\}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 어떤 집합의 부분집합이 되려면 모든 원소가 원래 집합에 속해야 한다.\n조건 정리: 집합 {a,b,c}의 부분집합이 아닌 것을 고른다.\n풀이 방향: 각 선택지의 원소를 {a,b,c}와 대조한다.\n정석 풀이:\n1. {a}, {a,b}, {a,b,c}, {a,c}의 모든 원소는 {a,b,c}에 속한다.\n2. {a,b,c,d}는 d가 원래 집합에 속하지 않으므로 {a,b,c}의 부분집합이 아니다.\n핵심 확인: ⑤만 원래 집합에 없는 원소 d를 포함한다.\n따라서 정답은 ⑤이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 멱집합의 원소는 모두 원래 집합의 부분집합이라는 점을 먼저 이용한다.\\n조건 정리: $B=P(A)\\cup\\{\\{\\varnothing\\}\\}$이고, $B$의 원소 중 $A$의 부분집합이 아닌 것을 찾는다.\\n풀이 방향: $P(A)$에서 온 원소와 새로 추가된 원소 $\\{\\varnothing\\}$을 구분한다.\\n정석 풀이:\\n1. $P(A)$의 모든 원소는 정의상 $A$의 부분집합이다. 따라서 $\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $A$는 모두 $A$의 부분집합이다.\\n2. $\\{\\varnothing\\}$이 $A$의 부분집합이 되려면 $\\varnothing$이 $A$의 원소여야 한다. 그러나 $A$의 원소는 $a,b,c$뿐이므로 $\\varnothing\\notin A$이다.\\n3. 따라서 $\\{\\varnothing\\}$은 $A$의 부분집합이 아니다.\\n따라서 정답은 ⑤이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 3,
-    "level": "하",
+    "level": "중",
     "category": "평면좌표",
     "originalCategory": "평면좌표",
     "standardCourse": "공통수학2",
@@ -84,8 +84,8 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -95,18 +95,18 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "content": "세 점 $A(-2,3)$, $B(1,-1)$, $D(5,2)$와 제4사분면 위의 점 $C(a,b)$를 꼭짓점으로 하는 사각형 $ABCD$가 평행사변형일 때, $ab$의 값은?",
+    "content": "평행사변형 $ABCD$에서 점 $A(1,3)$이고, 두 대각선의 교점이 $E(2,0)$이다. 제$4$사분면 위의 점 $C(a,b)$에 대하여 $ab$의 값은?",
     "choices": [
-      "-20",
-      "-18",
-      "-16",
-      "-14",
-      "-12"
+      "$-12$",
+      "$-9$",
+      "$-6$",
+      "$-3$",
+      "$3$"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 평행사변형의 대각선 중점 또는 벡터 관계를 좌표에 적용한다.\n조건 정리: A(-2,3), B(1,-1), D(5,2)와 C(a,b)가 이루는 평행사변형 ABCD에서 ab를 구한다.\n풀이 방향: A+C=B+D를 이용해 C를 구한다.\n정석 풀이:\n1. C=B+D-A=(1,-1)+(5,2)-(-2,3)=(8,-2)이다.\n2. 따라서 ab=8·(-2)=-16이다.\n핵심 확인: A+C=(6,1), B+D=(6,1)이므로 두 대각선의 중점이 같다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "②",
+    "solution": "[키포인트] 평행사변형의 두 대각선은 서로를 이등분한다.\\n조건 정리: 대각선의 교점 $E(2,0)$는 선분 $AC$의 중점이다.\\n풀이 방향: 중점 공식을 이용해 $C$의 좌표를 복원한다.\\n정석 풀이:\\n1. $E$가 $AC$의 중점이므로 $\\left(\\dfrac{1+a}{2},\\dfrac{3+b}{2}\\right)=(2,0)$이다.\\n2. 따라서 $1+a=4$, $3+b=0$이므로 $a=3$, $b=-3$이다.\\n3. $C(3,-3)$은 제4사분면에 있으므로 조건에 맞고, $ab=3\\times(-3)=-9$이다.\\n따라서 정답은 ②이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -131,18 +131,18 @@ window.questionBank = [
       "차집합"
     ],
     "wide": false,
-    "content": "$a>6$인 실수 $a$에 대하여 두 집합 $A=\\{2,6,a-5\\}$, $B=\\{4,6,a+1\\}$에 대하여 $A\\cap B=\\{6\\}$일 때, $B-A$의 모든 원소의 합은?",
+    "content": "$a>6$인 실수 $a$에 대하여 두 집합 $A=\\{2,6,a-5\\}$, $B=\\{4,6,a+1\\}$이 있다. $A\\cap B=\\{6\\}$이고 $a-5\\in A\\cap B$일 때, $B-A$의 모든 원소의 합은?",
     "choices": [
-      "12",
-      "14",
-      "16",
-      "18",
-      "20"
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$",
+      "$20$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 집합의 교집합 조건을 매개변수의 가능한 값으로 나누어 검토한다.\n조건 정리: a>6이고 A={2,6,a-5}, B={4,6,a+1}, A∩B={6}일 때 B-A의 원소합을 구한다.\n풀이 방향: A의 매개 원소가 B의 고정 원소 4 또는 6이 되는 경우를 먼저 확인한다.\n정석 풀이:\n1. A∩B에 6 이외의 원소가 없어야 하므로 a-5=6인 경우가 가능하다. 이때 a=11이다.\n2. a+1=6이면 a=5이므로 조건 a>6에 맞지 않는다. 다른 일치가 생기면 교집합이 6 이외에도 생긴다.\n3. a=11이면 A={2,6,6}={2,6}, B={4,6,12}이고 B-A={4,12}이다.\n4. 따라서 원소의 합은 16이다.\n핵심 확인: a=11에서는 교집합이 정확히 {6}이고, a>6 조건이 다른 후보를 배제한다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 추가된 원소 조건으로 매개변수 $a$를 먼저 확정한 뒤 차집합을 구한다.\\n조건 정리: $A\\cap B=\\{6\\}$이고 $a-5$가 이 교집합의 원소이다.\\n풀이 방향: $a-5=6$으로 $a$를 정한 뒤 두 집합을 직접 비교한다.\\n정석 풀이:\\n1. $a-5\\in A\\cap B=\\{6\\}$이므로 $a-5=6$이고 $a=11$이다.\\n2. 이때 $A=\\{2,6\\}$, $B=\\{4,6,12\\}$이다.\\n3. 따라서 $B-A=\\{4,12\\}$이고 모든 원소의 합은 $16$이다.\\n핵심 확인: $a=11>6$이고 실제 교집합은 정확히 $\\{6\\}$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -170,31 +170,31 @@ window.questionBank = [
     "wide": false,
     "content": "집합 $A$를 $20$의 약수 전체의 집합이라 할 때, 집합 $A$의 공집합이 아닌 진부분집합의 개수는?",
     "choices": [
-      "58",
-      "60",
-      "62",
-      "64",
-      "66"
+      "$30$",
+      "$31$",
+      "$32$",
+      "$62$",
+      "$63$"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 원소가 n개인 집합의 부분집합 수는 2^n이고, 공집합과 자기 자신을 제외하면 비공집합 진부분집합 수가 된다.\n조건 정리: A는 20의 약수 전체일 때 공집합이 아닌 진부분집합의 개수를 구한다.\n풀이 방향: 20의 약수 개수를 센 뒤 전체 부분집합에서 두 예외를 뺀다.\n정석 풀이:\n1. 20의 양의 약수는 1,2,4,5,10,20으로 6개이다.\n2. 전체 부분집합은 2^6=64개이다.\n3. 공집합과 자기 자신 A를 제외하므로 64-2=62개이다.\n핵심 확인: 진부분집합에는 공집합은 포함되지만 문제에서 공집합을 따로 제외하였으므로 두 개를 제외하는 것이 맞다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "④",
+    "solution": "[키포인트] 원소가 n개인 집합의 부분집합 수는 2^n이고, 공집합과 자기 자신을 제외하면 비공집합 진부분집합 수가 된다.\n조건 정리: A는 20의 약수 전체일 때 공집합이 아닌 진부분집합의 개수를 구한다.\n풀이 방향: 20의 약수 개수를 센 뒤 전체 부분집합에서 두 예외를 뺀다.\n정석 풀이:\n1. 20의 양의 약수는 1,2,4,5,10,20으로 6개이다.\n2. 전체 부분집합은 2^6=64개이다.\n3. 공집합과 자기 자신 A를 제외하므로 64-2=62개이다.\n핵심 확인: 진부분집합에는 공집합은 포함되지만 문제에서 공집합을 따로 제외하였으므로 두 개를 제외하는 것이 맞다.\n따라서 정답은 ④이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 6,
-    "level": "하",
+    "level": "중",
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -204,33 +204,33 @@ window.questionBank = [
       "거리"
     ],
     "wide": false,
-    "content": "평행한 두 직선 $3x+4y-7=0$, $3x+4y+k=0$ 사이의 거리가 $\\dfrac3{\\sqrt5}$가 되도록 하는 모든 실수 $k$의 값의 합은?",
+    "content": "직선 $l:x+y+3=0$과 평행하고 점 $P(k,0)$을 지나는 직선 $m$이 있다. 두 직선 $l$, $m$ 사이의 거리가 $4\\sqrt2$일 때, 가능한 모든 실수 $k$의 값의 합은?",
     "choices": [
-      "-18",
-      "-16",
-      "-14",
-      "-12",
-      "-10"
+      "$-10$",
+      "$-8$",
+      "$-6$",
+      "$-4$",
+      "$-2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 평행한 두 직선 사이의 거리는 상수항의 차이를 법선벡터의 길이로 나눈 값이다.\n조건 정리: 3x+4y-7=0과 3x+4y+k=0 사이의 거리가 3/sqrt(5)일 때 모든 k의 합을 구한다.\n풀이 방향: 거리 공식을 세우고 절댓값 방정식의 두 해를 더한다.\n정석 풀이:\n1. 두 직선 사이의 거리는 |k+7|/sqrt(3^2+4^2)=|k+7|/5이다.\n2. |k+7|/5=3/sqrt(5)이므로 |k+7|=3sqrt(5)이다.\n3. k=-7+3sqrt(5), -7-3sqrt(5)이고 두 값의 합은 -14이다.\n핵심 확인: 두 해는 서로 다른 평행선이며, 절댓값 방정식의 두 경우를 모두 포함하였다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 점을 지나는 평행선의 방정식을 먼저 복원한 뒤 두 평행선 사이의 거리 공식을 적용한다.\\n조건 정리: $m$은 $l:x+y+3=0$과 평행하고 $P(k,0)$을 지난다.\\n풀이 방향: $m$의 상수항을 $k$로 나타낸 뒤 거리 조건을 푼다.\\n정석 풀이:\\n1. $m$은 $l$과 평행하므로 $m:x+y+c=0$으로 둘 수 있다. $P(k,0)$을 지나므로 $k+c=0$, 즉 $c=-k$이다. 따라서 $m:x+y-k=0$이다.\\n2. 두 평행선 사이의 거리는 $\\dfrac{|(-k)-3|}{\\sqrt2}=\\dfrac{|k+3|}{\\sqrt2}$이다.\\n3. 이것이 $4\\sqrt2$이므로 $|k+3|=8$이고 $k=5$ 또는 $k=-11$이다.\\n4. 두 값의 합은 $-6$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 7,
-    "level": "하",
+    "level": "중",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -240,18 +240,18 @@ window.questionBank = [
       "거리"
     ],
     "wide": false,
-    "content": "원 $(x+1)^2+(y-2)^2=r^2$과 직선 $5x+12y-6=0$이 서로 다른 두 점에서 만나도록 하는 자연수 $r$의 최솟값은?",
+    "content": "두 점 $M(0,-4)$, $N(2,0)$의 중점을 중심으로 하고 반지름이 자연수 $r$인 원이 직선 $5x-12y+1=0$과 서로 다른 두 점에서 만난다. 자연수 $r$의 최솟값은?",
     "choices": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5"
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
     ],
-    "answer": "②",
-    "solution": "[키포인트] 원과 직선이 두 점에서 만나려면 중심에서 직선까지의 거리가 반지름보다 작아야 한다.\n조건 정리: 중심 (-1,2), 반지름 r인 원과 5x+12y-6=0이 두 점에서 만날 때 자연수 r의 최솟값을 구한다.\n풀이 방향: 먼저 중심과 직선 사이의 거리를 계산한다.\n정석 풀이:\n1. 중심에서 직선까지의 거리는 |-5+24-6|/13=1이다.\n2. 서로 다른 두 점에서 만나려면 r>1이어야 한다.\n3. 자연수 중 최솟값은 r=2이다.\n핵심 확인: r=1이면 접하고, r=2이면 거리 1보다 반지름이 커서 두 점에서 만난다.\n따라서 정답은 ②이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "③",
+    "solution": "[키포인트] 두 점의 중점으로 원의 중심을 먼저 구한 뒤 중심과 직선 사이의 거리를 비교한다.\\n조건 정리: 원의 중심은 $M(0,-4)$와 $N(2,0)$의 중점이다.\\n풀이 방향: 중심을 구하고, 직선과 서로 다른 두 점에서 만나기 위한 $r>d$ 조건을 적용한다.\\n정석 풀이:\\n1. 중심은 $C\\left(\\dfrac{0+2}{2},\\dfrac{-4+0}{2}\\right)=(1,-2)$이다.\\n2. 중심에서 직선까지의 거리는 $d=\\dfrac{|5\\cdot1-12(-2)+1|}{\\sqrt{5^2+(-12)^2}}=\\dfrac{30}{13}$이다.\\n3. 직선과 원이 서로 다른 두 점에서 만나려면 $r>d$이어야 한다.\\n4. $\\dfrac{30}{13}$보다 큰 자연수의 최솟값은 $3$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -277,18 +277,18 @@ window.questionBank = [
       "직선"
     ],
     "wide": false,
-    "content": "직선 $y=ax+b$를 $x$축의 방향으로 $-1$만큼, $y$축의 방향으로 $2$만큼 평행이동하면 직선 $x-2y+6=0$과 $x$축에서 수직으로 만난다. $a+b$의 값은?",
+    "content": "직선 $y=ax+b$를 $x$축의 방향으로 $-1$만큼, $y$축의 방향으로 $2$만큼 평행이동한 직선이 두 점 $P(-6,0)$, $Q(-4,1)$을 지나는 직선과 $x$축 위에서 수직으로 만난다. $a+b$의 값은?",
     "choices": [
-      "-18",
-      "-16",
-      "-14",
-      "-12",
-      "-10"
+      "$-16$",
+      "$-14$",
+      "$-12$",
+      "$-10$",
+      "$-8$"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 평행이동 후에도 기울기는 보존되고, 수직 조건과 교점 조건을 차례로 적용한다.\n조건 정리: y=ax+b를 (-1,2)만큼 평행이동한 직선이 x-2y+6=0과 x축에서 수직으로 만날 때 a+b를 구한다.\n풀이 방향: 이동 후 직선의 식을 구해 기울기와 x축 교점을 정한다.\n정석 풀이:\n1. 평행이동 후 직선은 y=a(x+1)+b+2=ax+(a+b+2)이다.\n2. x-2y+6=0의 기울기는 1/2이므로 수직 조건에서 a=-2이다.\n3. 두 직선이 x축에서 만나므로 교점은 x-2(0)+6=0에서 (-6,0)이다.\n4. 이동 후 직선에 대입하면 0=(-2)(-6)+(-2+b+2)=12+b이므로 b=-12이다.\n5. 따라서 a+b=-14이다.\n핵심 확인: 이동 후 직선은 y=-2x-12이고 (-6,0)을 지나며 기울기 곱은 -1이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "②",
+    "solution": "[키포인트] 두 점으로 기준 직선의 기울기와 $x$축 교점을 먼저 구한 뒤 평행이동된 직선에 적용한다.\\n조건 정리: $P(-6,0)$, $Q(-4,1)$을 지나는 직선과 이동된 직선이 $x$축 위에서 수직으로 만난다.\\n풀이 방향: 기준 직선의 기울기와 교점을 구하고, 이동 후 직선의 식을 세운다.\\n정석 풀이:\\n1. $PQ$의 기울기는 $\\dfrac{1-0}{-4-(-6)}=\\dfrac12$이다. 따라서 수직인 이동 후 직선의 기울기는 $a=-2$이다.\\n2. $P(-6,0)$가 기준 직선의 $x$축과의 교점이므로 두 직선의 교점은 $(-6,0)$이다.\\n3. $y=ax+b$를 $(-1,2)$만큼 이동하면 $y=a(x+1)+b+2$이다.\\n4. $x=-6$, $y=0$, $a=-2$를 대입하면 $0=(-2)(-5)+b+2=12+b$이므로 $b=-12$이다.\\n5. 따라서 $a+b=-14$이다.\\n따라서 정답은 ②이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -300,10 +300,10 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -313,18 +313,18 @@ window.questionBank = [
       "접하는 원"
     ],
     "wide": false,
-    "content": "점 $(-1,8)$을 지나고 $x$축과 $y$축에 동시에 접하는 두 원의 반지름의 합은?",
+    "content": "점 $Q(1,8)$을 $y$축에 대하여 대칭이동한 점을 $P$라 하자. 점 $P$를 지나고 $x$축과 $y$축에 동시에 접하는 두 원의 반지름의 합은?",
     "choices": [
-      "14",
-      "16",
-      "18",
-      "20",
-      "22"
+      "$14$",
+      "$16$",
+      "$18$",
+      "$20$",
+      "$22$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 좌표축에 접하는 원의 중심을 부호를 고려한 (±r,±r)로 두고 점을 대입한다.\n조건 정리: 점 (-1,8)을 지나고 두 좌표축에 동시에 접하는 두 원의 반지름 합을 구한다.\n풀이 방향: 점이 제2사분면에 있으므로 중심이 (-r,r)인 경우를 조사한다.\n정석 풀이:\n1. 중심을 (-r,r), 반지름을 r이라 하면 (-1+r)^2+(8-r)^2=r^2이다.\n2. 정리하면 r^2-18r+65=0이고, (r-5)(r-13)=0이다.\n3. 양의 반지름은 5,13이므로 합은 18이다. 다른 부호의 중심에서는 양의 해가 나오지 않는다.\n핵심 확인: 중심 (-5,5), (-13,13)의 원은 모두 점 (-1,8)을 지나고 두 축에 접한다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 대칭이동으로 점의 좌표를 먼저 복원한 뒤 두 좌표축에 접하는 원의 중심을 설정한다.\\n조건 정리: $Q(1,8)$을 $y$축 대칭이동하면 $P=(-1,8)$이다.\\n풀이 방향: $P$가 제2사분면에 있으므로 중심을 $(-r,r)$로 두고 반지름 방정식을 푼다.\\n정석 풀이:\\n1. $P=(-1,8)$이다. 두 좌표축에 동시에 접하고 $P$를 지나는 원의 중심을 $(-r,r)$로 두면 반지름은 $r$이다.\\n2. $(-1+r)^2+(8-r)^2=r^2$이므로 $r^2-18r+65=0$이다.\\n3. $(r-5)(r-13)=0$이므로 두 반지름은 $5$, $13$이다.\\n4. 따라서 두 반지름의 합은 $18$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -336,10 +336,10 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -349,18 +349,18 @@ window.questionBank = [
       "직선과 원"
     ],
     "wide": false,
-    "content": "원 $(x+1)^2+(y-3)^2=25$와 직선 $3x+4y+6=0$이 만나는 서로 다른 두 점 사이의 거리는?",
+    "content": "원 $(x+1)^2+(y-3)^2=25$와 두 점 $P(-2,0)$, $Q(2,-3)$을 지나는 직선이 만나는 서로 다른 두 점 사이의 거리는?",
     "choices": [
-      "4",
-      "6",
-      "8",
-      "10",
-      "12"
+      "$4$",
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 원의 중심에서 직선까지의 거리를 구한 뒤 현의 길이 공식을 적용한다.\n조건 정리: 원 (x+1)^2+(y-3)^2=25와 직선 3x+4y+6=0이 만나는 두 점 사이의 거리를 구한다.\n풀이 방향: 중심과 직선 사이의 거리 d를 구하고 현의 길이 2sqrt(r^2-d^2)를 사용한다.\n정석 풀이:\n1. 원의 중심은 C=(-1,3), 반지름은 r=5이다.\n2. 중심에서 직선까지의 거리는 |-3+12+6|/5=3이다.\n3. 직선이 만드는 현의 길이는 2sqrt(5^2-3^2)=2sqrt(16)=8이다.\n핵심 확인: 중심과 직선 사이의 거리 3이 반지름 5보다 작으므로 서로 다른 두 교점이 실제로 존재한다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 두 점으로 직선의 방정식을 먼저 구한 뒤 중심에서 직선까지의 거리와 현의 길이를 계산한다.\\n조건 정리: 원의 중심은 $(-1,3)$, 반지름은 $5$이고, 직선은 $P(-2,0)$, $Q(2,-3)$을 지난다.\\n풀이 방향: $PQ$의 방정식을 만든 뒤 현의 길이 공식을 적용한다.\\n정석 풀이:\\n1. $PQ$의 기울기는 $-\\dfrac34$이므로 직선의 방정식은 $3x+4y+6=0$이다.\\n2. 중심 $(-1,3)$에서 이 직선까지의 거리는 $d=\\dfrac{|-3+12+6|}{5}=3$이다.\\n3. 반지름이 $5$이므로 현의 길이는 $2\\sqrt{5^2-3^2}=2\\sqrt{16}=8$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -387,18 +387,18 @@ window.questionBank = [
     "wide": false,
     "content": "다음 벤다이어그램에서 색칠한 부분을 나타내는 집합은?",
     "choices": [
-      "A∩(B∪C)",
-      "A∩B∩C",
-      "(A−B)∪(A−C)",
-      "(A∪B)∩C",
-      "A−(B∪C)"
+      "$A\\cap(B\\cup C)$",
+      "$A\\cap B\\cap C$",
+      "$(A-B)\\cup(A-C)$",
+      "$(A\\cup B)\\cap C$",
+      "$A-(B\\cup C)$"
     ],
     "answer": "①",
     "solution": "[키포인트] 색칠된 영역을 원소의 포함 조건으로 읽어 집합 연산으로 표현한다.\n조건 정리: 벤다이어그램에서 색칠된 부분은 $A$ 안에 있으면서 $B$ 또는 $C$에도 속하는 영역이다.\n풀이 방향: ‘A 안’은 교집합으로, ‘B 또는 C’는 합집합으로 바꾸어 식을 세운다.\n정석 풀이:\n1. 색칠된 영역은 먼저 $A$ 안으로 제한된다.\n2. 그중 $B$ 또는 $C$에 속하는 부분은 $B\\cup C$이다.\n3. 따라서 색칠된 영역은 $A\\cap(B\\cup C)$이고, 이는 첫 번째 선택지이다.\n핵심 확인: $A$ 밖의 영역은 제외되고 $A\\cap B$와 $A\\cap C$ 두 영역은 모두 포함되므로 $A\\cap(B\\cup C)$가 정확하다.\n따라서 정답은 ①이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
@@ -412,7 +412,7 @@ window.questionBank = [
         "shade"
       ],
       "essentialVisualFacts": "three overlapping circles A,B,C; shade exactly A∩(B∪C)",
-      "assetRef": "plan-locked"
+      "assetRef": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -440,18 +440,18 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "원점 $O$와 직선 $(k+1)x+(k-2)y-k=0$ 사이의 거리가 최대인 직선을 $l$이라 하자. 직선 $l$이 $x$축, $y$축과 만나는 점이 각각 $A$, $B$일 때, 삼각형 $AOB$의 넓이를 $S$라 하자. $36S$의 값은?",
+    "content": "원점 $O$와 직선 $(k+1)x+(k-2)y-k=0$ 사이의 거리가 최대인 직선을 $l$이라 하자. 직선 $l$이 $x$축, $y$축과 만나는 점이 각각 $A$, $B$일 때, $6(\\overline{OA}+\\overline{OB})$의 값은?",
     "choices": [
-      "21",
-      "23",
-      "25",
-      "27",
-      "29"
+      "$9$",
+      "$12$",
+      "$15$",
+      "$18$",
+      "$21$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 거리의 제곱을 매개변수의 함수로 만들고 최댓값을 구한 뒤 절편으로 넓이를 계산한다.\n조건 정리: 원점과 직선 (k+1)x+(k-2)y-k=0 사이의 거리가 최대인 직선 l에서 삼각형 AOB의 넓이를 S라 할 때 36S를 구한다.\n풀이 방향: 거리 제곱을 미분하여 최적 k를 찾는다.\n정석 풀이:\n1. 거리의 제곱은 D(k)=k^2/(2k^2-2k+5)이다.\n2. D'(k)의 분자는 -2k(k-5)이므로 k=5에서 최대이다. 이때 직선은 6x+3y-5=0, 즉 y=-2x+5/3이다.\n3. 절편은 A=(5/6,0), B=(0,5/3)이고 S=(1/2)(5/6)(5/3)=25/36이다.\n4. 따라서 36S=25이다.\n핵심 확인: k=5에서 D(k)=5/9이고 양끝의 극한값 1/2보다 크므로 실제 최댓값이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 거리의 제곱을 완전제곱식으로 비교하여 최댓값이 되는 $k$를 찾는다.\\n조건 정리: 원점과 직선 $(k+1)x+(k-2)y-k=0$ 사이의 거리가 최대일 때 두 절편의 거리 합을 구한다.\\n풀이 방향: 거리 제곱의 상한을 완전제곱식으로 만든 뒤 등호 성립 조건을 찾는다.\\n정석 풀이:\\n1. 거리의 제곱은 $D^2=\\dfrac{k^2}{(k+1)^2+(k-2)^2}=\\dfrac{k^2}{2k^2-2k+5}$이다.\\n2. $5(2k^2-2k+5)-9k^2=(k-5)^2\\ge0$이므로 $9k^2\\le5(2k^2-2k+5)$이다. 따라서 $D^2\\le\\dfrac59$이고 등호는 $k=5$일 때 성립한다.\\n3. $k=5$이면 $l:6x+3y-5=0$이다. 따라서 $A=(5/6,0)$, $B=(0,5/3)$이다.\\n4. $\\overline{OA}+\\overline{OB}=\\dfrac56+\\dfrac53=\\dfrac52$이므로 $6(\\overline{OA}+\\overline{OB})=15$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -486,8 +486,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 차집합을 여집합과 교집합으로 바꾸고 분배 법칙과 드모르간 법칙을 적용한다.\n조건 정리: 세 부분집합 $A,B,C$에 대해 ㄱ, ㄴ, ㄷ의 집합식이 항상 같은지 확인한다.\n풀이 방향: 각 차집합을 $A\\cap B^c$ 꼴로 바꾼 뒤 양변을 같은 집합식으로 정리한다.\n정석 풀이:\n1. $A-B$는 $A\\cap B^c$와 같으므로 ㄱ은 항상 성립한다.\n2. ㄴ의 좌변은\n$(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A\\cap(B\\cap C)^c=A-(B\\cap C)$\n이므로 ㄴ도 항상 성립한다.\n3. 분배 법칙에 의해\n$(A\\cap B)\\cup(A\\cap C)=A\\cap(B\\cup C)$\n이므로 ㄷ도 항상 성립한다.\n4. ㄱ, ㄴ, ㄷ이 모두 항상 참이므로 해당 선택지는 ⑤이다.\n핵심 확인: 세 식 모두 임의의 원소가 양변에 들어가는 조건이 같으므로 특정 집합에 의존하지 않고 성립한다.\n따라서 정답은 ⑤이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -515,16 +515,16 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $n$의 양의 배수를 원소로 하는 집합을 $A_n$이라 하자. $A_n\\subset(A_4\\cap A_6)$, $(A_{36}\\cup A_{72})\\subset A_n$을 만족시키는 모든 자연수 $n$의 개수는?",
     "choices": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5"
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
     ],
     "answer": "②",
     "solution": "[키포인트] 배수 집합의 포함관계를 배수 조건으로 바꾸고, 최대공약수·최소공배수로 자연수 n의 범위를 정한다.\n조건 정리: A_n⊆(A_4∩A_6), (A_36∪A_72)⊆A_n을 만족하는 자연수 n의 개수를 구한다.\n풀이 방향: 교집합과 합집합을 하나의 배수 집합으로 정리한 뒤 n의 약수 조건을 적용한다.\n정석 풀이:\n1. A_4∩A_6=A_12이고 A_36∪A_72=A_36이다.\n2. A_n⊆A_12이려면 12|n이어야 하고, A_36⊆A_n이려면 n|36이어야 한다.\n3. 36의 약수 중 12의 배수는 12,36이다.\n4. 조건을 만족하는 n은 두 개이므로 구하는 개수는 2이다.\n핵심 확인: n=12,36을 직접 대입하면 두 포함관계가 모두 성립하고, 다른 36의 약수에는 12가 배수로 들어가지 않는다.\n따라서 정답은 ②이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -550,7 +550,7 @@ window.questionBank = [
       "최솟값"
     ],
     "wide": false,
-    "content": "원 $x^2+y^2+4x-6y+9=0$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 원이 $x$축과 직선 $y=x$에 동시에 접하도록 하는 두 실수 $a$, $b$에 대하여 $a+b+1$의 최솟값을 고르면?",
+    "content": "두 점 $P(-4,3)$, $Q(0,3)$을 지름의 양 끝점으로 하는 원을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동하였다. 이동한 원이 $x$축과 직선 $y=x$에 동시에 접할 때, $a+b+1$의 최솟값을 고르면?",
     "choices": [
       "$-4-2\\sqrt2$",
       "$-3-2\\sqrt2$",
@@ -559,9 +559,9 @@ window.questionBank = [
       "$-2+2\\sqrt2$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 평행이동한 원의 중심을 구하고 각 직선까지의 거리가 반지름과 같다는 조건을 적용한다.\n조건 정리: 원 x^2+y^2+4x-6y+9=0을 (a,b)만큼 이동한 원이 x축과 y=x에 동시에 접할 때 a+b+1의 최솟값을 구한다.\n풀이 방향: 원의 중심과 반지름을 먼저 구한 뒤 두 접선 조건을 절댓값 방정식으로 바꾼다.\n정석 풀이:\n1. 원의 중심은 (-2,3), 반지름은 2이므로 이동 후 중심은 (a-2,b+3)이다.\n2. x축 접선 조건은 |b+3|=2이므로 b=-1 또는 -5이다.\n3. y=x까지의 거리가 2이므로 |(b+3)-(a-2)|/sqrt(2)=2, 즉 |b-a+5|=2sqrt(2)이다.\n4. b=-5일 때 a=±2sqrt(2)이고 a+b+1=±2sqrt(2)-4이다. b=-1일 때의 최솟값은 4-2sqrt(2)이다.\n5. 전체 최솟값은 -4-2sqrt(2)이다.\n핵심 확인: b=-5, a=-2sqrt(2)를 대입하면 두 직선까지의 거리가 모두 2이고 다른 경우보다 합이 작다.\n따라서 정답은 ①이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 지름의 양 끝점으로 원의 중심과 반지름을 먼저 복원한 뒤 두 접선 조건을 적용한다.\\n조건 정리: $P(-4,3)$, $Q(0,3)$이 지름의 양 끝점이다.\\n풀이 방향: 원의 중심과 반지름을 구하고, 이동한 중심에서 두 직선까지의 거리가 반지름과 같게 한다.\\n정석 풀이:\\n1. 원의 중심은 $(-2,3)$이고 반지름은 $2$이다. 이동 후 중심은 $(a-2,b+3)$이다.\\n2. $x$축에 접하므로 $|b+3|=2$에서 $b=-1$ 또는 $b=-5$이다.\\n3. 직선 $y=x$에 접하므로 $\\dfrac{|(b+3)-(a-2)|}{\\sqrt2}=2$, 즉 $|b-a+5|=2\\sqrt2$이다.\\n4. $a+b+1=2b+6\\mp2\\sqrt2$이고, 가장 작은 값은 $b=-5$에서 $-4-2\\sqrt2$이다.\\n따라서 정답은 ①이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -573,10 +573,10 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -587,7 +587,7 @@ window.questionBank = [
       "직각삼각형"
     ],
     "wide": false,
-    "content": "두 점 $O(0,0)$, $A(12,0)$과 원 $C_1:x^2+y^2-12x-16y+64=0$ 위의 점 $P(a,b)$에 대하여 $\\angle APO=90^\\circ$인 직각삼각형 $APO$의 외접원을 $C_2$라 하자. 두 원 $C_1$과 $C_2$의 두 교점 $P$, $Q$의 거리는?",
+    "content": "점 $O(0,0)$과 점 $M(6,0)$이 있다. 점 $M$이 선분 $OA$의 중점이고, 원 $C_1:x^2+y^2-12x-16y+64=0$ 위의 점 $P$에 대하여 $\\angle APO=90^\\circ$이다. 직각삼각형 $APO$의 외접원을 $C_2$라 할 때, 두 원 $C_1$, $C_2$의 두 교점 $P$, $Q$ 사이의 거리는?",
     "choices": [
       "$2\\sqrt5$",
       "$3\\sqrt5$",
@@ -596,9 +596,9 @@ window.questionBank = [
       "$6\\sqrt5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 직각삼각형의 외접원은 빗변을 지름으로 하므로 두 원의 공통현을 계산한다.\n조건 정리: $O(0,0)$, $A(12,0)$, $\\angle APO=90^\\circ$이고 $P$는 $C_1$ 위에 있다. $C_2$는 직각삼각형 $APO$의 외접원이다.\n풀이 방향: $C_2$를 지름 $AO$인 원으로 나타낸 뒤 $C_1$과 연립하여 공통현의 두 끝점을 구한다.\n정석 풀이:\n1. $\\angle APO=90^\\circ$이므로 직각삼각형의 외접원 $C_2$의 지름은 빗변 $AO$이다. 따라서\n$C_2:(x-6)^2+y^2=36$, 즉 $x^2+y^2-12x=0$이다.\n2. $C_1$의 식과 빼면\n$(x^2+y^2-12x-16y+64)-(x^2+y^2-12x)=-16y+64=0$\n이므로 두 교점이 놓인 공통현은 $y=4$이다.\n3. $y=4$를 $C_2$에 대입하면\n$x^2+16-12x=0$, 즉 $x^2-12x+16=0$이다.\n따라서 두 교점의 $x$좌표는 $x=6\\pm2\\sqrt5$이고, 두 점의 $y$좌표는 모두 $4$이다.\n4. 두 교점 사이의 거리는 같은 $y$좌표를 가지므로\n$(6+2\\sqrt5)-(6-2\\sqrt5)=4\\sqrt5$이다.\n핵심 확인: $x^2-12x+16=0$의 판별식은 $80\\gt0$이므로 서로 다른 두 교점이 실제로 존재한다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 중점 조건으로 $A$를 복원하고 직각삼각형의 외접원이 빗변을 지름으로 한다는 성질을 이용한다.\\n조건 정리: $M(6,0)$은 $OA$의 중점이므로 $A=(12,0)$이다.\\n풀이 방향: $C_2$를 지름 $AO$인 원으로 구한 뒤 두 원의 공통현 길이를 계산한다.\\n정석 풀이:\\n1. $A=(12,0)$이고 $\\angle APO=90^\\circ$이므로 $C_2$의 지름은 $AO$이다. 따라서 $C_2:(x-6)^2+y^2=36$, 즉 $x^2+y^2-12x=0$이다.\\n2. $C_1$은 $(x-6)^2+(y-8)^2=36$이므로 중심 $(6,8)$, 반지름 $6$이다. $C_2$의 중심은 $(6,0)$, 반지름도 $6$이다.\\n3. 두 중심 사이의 거리는 $8$이고 반지름이 같으므로 공통현의 중점은 두 중심의 중점이다. 따라서 공통현의 반쪽 길이는 $\\sqrt{6^2-4^2}=2\\sqrt5$이다.\\n4. 따라서 $PQ=4\\sqrt5$이다.\\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -624,18 +624,18 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "content": "점 $A(11,-2)$에서 원 $(x-3)^2+(y+2)^2=16$에 접선을 그었을 때, 두 개의 접점 $P$, $Q$가 생긴다. 점 $P$, $Q$의 $x$좌표의 합을 구하면?",
+    "content": "원 $x^2+y^2-6x+4y-3=0$과 점 $A(11,-2)$이 있다. 점 $A$에서 이 원에 그은 두 접선의 접점을 $P$, $Q$라 할 때, 점 $P$, $Q$의 $x$좌표의 합은?",
     "choices": [
-      "6",
-      "8",
-      "10",
-      "12",
-      "14"
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 외부점에서 그은 두 접선의 접점은 외부점의 극선 위에 있으므로 접점의 좌표 조건을 한 직선으로 줄인다.\n조건 정리: A=(11,-2)에서 원 (x-3)^2+(y+2)^2=16에 그은 두 접점 P,Q의 x좌표 합을 구한다.\n풀이 방향: 중심 C=(3,-2), 반지름 4에 대한 접점현의 방정식을 구한다.\n정석 풀이:\n1. 외부점 A와 중심 C의 가로 방향 거리는 8이다. 접점 T=(x,y)에 대해 CT·AT=r^2를 쓰면 8(x-3)=16이다.\n2. 따라서 두 접점 P,Q는 모두 x=5 위에 있다.\n3. 그러므로 x_P+x_Q=5+5=10이다.\n핵심 확인: A에서 원까지의 거리는 8>4이므로 두 접선이 존재하고, 접점현 x=5와 원의 교점은 서로 다른 두 점이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 원의 중심과 반지름을 먼저 구하고, 접점에서 반지름과 접선이 수직이라는 조건을 기울기로 나타낸다.\n조건 정리: 원을 완전제곱하면 중심은 $C(3,-2)$, 반지름은 $4$이다.\n풀이 방향: 접점 $T(u,v)$가 원 위에 있다는 식과 $CT\\perp AT$ 조건을 함께 사용한다.\n정석 풀이:\n1. 원의 방정식은 $(x-3)^2+(y+2)^2=16$이다. 접점을 $T(u,v)$라 하면 $(u-3)^2+(v+2)^2=16$이다.\n2. $CT$와 $AT$는 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다. 따라서 $\\dfrac{v+2}{u-3}\\cdot\\dfrac{v+2}{u-11}=-1$이고, $(v+2)^2=-(u-3)(u-11)$이다.\n3. 이 식을 원의 식에 대입하면 $(u-3)^2-(u-3)(u-11)=16$이다. 따라서 $8(u-3)=16$이고 $u=5$이다.\n4. 두 접점 모두 $x$좌표가 $5$이므로 합은 $10$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -665,10 +665,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{3}{\\sqrt{10}}$",
     "solution": "[키포인트] 무게중심으로 꼭짓점 좌표를 구한 뒤 직선과 점 사이의 거리 공식을 적용한다.\n조건 정리: 무게중심 $G(2,3)$, $B(0,-2)$, $C(4,10)$에서 $A$의 좌표와 직선 $BC$까지의 거리를 구한다.\n풀이 방향: 무게중심 공식으로 $A$를 먼저 구하고, $BC$의 방정식을 세워 점과 직선 사이의 거리 공식을 사용한다.\n정석 풀이:\n1. $G=\\dfrac{A+B+C}{3}$이므로\n$A=3G-B-C=(6,9)-(0,-2)-(4,10)=(2,1)$이다.\n2. $B(0,-2)$, $C(4,10)$을 지나는 직선의 기울기는 $\\dfrac{10-(-2)}{4-0}=3$이다. 따라서 $BC$의 방정식은 $y=3x-2$, 즉 $3x-y-2=0$이다.\n3. 점 $A(2,1)$에서 이 직선까지의 거리는\n$h=\\dfrac{|3\\times2-1-2|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{3}{\\sqrt{10}}$이다.\n핵심 확인: $A=(2,1)$을 무게중심 식에 다시 넣으면 $(A+B+C)/3=(2,3)$이고, $A$는 $BC$ 위에 있지 않아 높이가 양수이다.\n따라서 구하는 값은 $\\dfrac{3}{\\sqrt{10}}$이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_순천고_2학기_중간_고1_유사/q18.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q18.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
@@ -681,7 +681,7 @@ window.questionBank = [
         "line"
       ],
       "essentialVisualFacts": "G=(2,3), B=(0,-2), C=(4,10), A=(2,1), BC:y=3x-2, altitude length 3/sqrt(10)",
-      "assetRef": "plan-locked"
+      "assetRef": "assets/images/25_순천고_2학기_중간_고1_유사/q18.svg"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -695,10 +695,10 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -709,12 +709,12 @@ window.questionBank = [
       "거리의 곱"
     ],
     "wide": false,
-    "content": "서답형 2. 원 $x^2+y^2+4px+4qy-81=0$이 직선 $y=mx$와 만나는 두 점을 $P$, $Q$라 할 때, $\\overline{OP}\\cdot\\overline{OQ}$를 구하시오. (단, $p$, $q$, $m$은 실수이고 $O$는 원점이다.)",
+    "content": "원 $x^2+y^2+4px+4qy-81=0$과 원점 $O(0,0)$ 및 점 $R(1,m)$을 지나는 직선 $l$이 만나는 두 점을 $P$, $Q$라 할 때, $\\overline{OP}\\cdot\\overline{OQ}$를 구하시오. (단, $p$, $q$, $m$은 실수이다.)",
     "choices": [],
-    "answer": "81",
-    "solution": "[키포인트] 원의 방정식에 직선 y=mx를 대입한 이차방정식의 두 근을 이용해 원점까지의 두 거리의 곱을 계산한다.\n조건 정리: 원 x^2+y^2+4px+4qy-81=0과 직선 y=mx의 교점 P,Q에 대해 OP·OQ를 구한다.\n풀이 방향: 교점의 x좌표를 t1,t2라 하고 근과 계수의 관계를 적용한다.\n정석 풀이:\n1. y=mx를 대입하면 (1+m^2)x^2+4(p+qm)x-81=0이다.\n2. 두 근을 x1,x2라 하면 x1x2=-81/(1+m^2)이다.\n3. OP=|x1|sqrt(1+m^2), OQ=|x2|sqrt(1+m^2)이므로 OP·OQ=|x1x2|(1+m^2)=81이다.\n핵심 확인: 상수항이 음수이므로 두 근은 서로 다른 부호이고, 절댓값을 취한 곱이 81로 정리된다.\n따라서 구하는 값은 81이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "$81$",
+    "solution": "[키포인트] 원점과 $R(1,m)$을 지나는 직선의 식을 먼저 구한 뒤 교점 방정식의 두 근의 곱을 이용한다.\\n조건 정리: 직선 $l$은 $O(0,0)$과 $R(1,m)$을 지나므로 $y=mx$이다.\\n풀이 방향: 원의 방정식에 $y=mx$를 대입하고 근과 계수의 관계를 거리의 곱에 연결한다.\\n정석 풀이:\\n1. $y=mx$를 대입하면 $(1+m^2)x^2+4(p+qm)x-81=0$이다.\\n2. 두 교점의 $x$좌표를 $x_1,x_2$라 하면 $x_1x_2=-\\dfrac{81}{1+m^2}$이다.\\n3. $OP=|x_1|\\sqrt{1+m^2}$, $OQ=|x_2|\\sqrt{1+m^2}$이므로 $OP\\cdot OQ=|x_1x_2|(1+m^2)=81$이다.\\n따라서 구하는 값은 $81$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -740,12 +740,12 @@ window.questionBank = [
       "경우의 수"
     ],
     "wide": false,
-    "content": "서답형 3. 두 집합 $A$를 $24$의 약수 전체의 집합, $B$를 $18$의 약수 전체의 집합이라 하자. 다음 조건을 만족하는 집합 $X$의 개수를 구하시오. (가) $A\\cap X=X$ (나) $(A\\cap B)\\cup X=X$ (다) $X\\ne A$, $X\\ne B$",
+    "content": "집합 $A$를 $24$의 양의 약수 전체의 집합, 집합 $B$를 $18$과 $30$의 공약수 전체의 집합이라 하자. $B\\subseteq X\\subseteq A$이고 $X\\ne A$를 만족하는 집합 $X$의 개수를 구하시오.",
     "choices": [],
-    "answer": "15",
-    "solution": "[키포인트] 집합의 포함관계를 부분집합 조건으로 바꾸고, 자유롭게 선택할 수 있는 원소 수를 센다.\n조건 정리: A는 24의 약수, B는 18의 약수 전체이고 A∩X=X, (A∩B)∪X=X, X≠A,B를 만족하는 X의 개수를 구한다.\n풀이 방향: 첫 조건에서 X가 A의 부분집합임을, 둘째 조건에서 A∩B가 X에 포함됨을 확인한다.\n정석 풀이:\n1. A={1,2,3,4,6,8,12,24}, B={1,2,3,6,9,18}이고 A∩B={1,2,3,6}이다.\n2. X는 A의 부분집합이면서 1,2,3,6을 반드시 포함한다. 나머지 4,8,12,24는 자유롭게 선택할 수 있다.\n3. 따라서 가능한 X는 2^4=16개이다.\n4. X=A인 한 경우를 제외한다. B는 A의 부분집합이 아니므로 X=B는 애초에 불가능하다.\n5. 구하는 개수는 16-1=15이다.\n핵심 확인: 남은 네 원소의 선택마다 두 집합 조건이 유지되고, 제외하는 것은 X=A 한 가지뿐이다.\n따라서 구하는 값은 15이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "$15$",
+    "solution": "[키포인트] 공약수 집합 $B$를 먼저 구한 뒤 $B$와 $A$ 사이에서 자유롭게 선택할 수 있는 원소를 센다.\\n조건 정리: $A$는 $24$의 약수 집합이고 $B$는 $18$, $30$의 공약수 집합이다.\\n풀이 방향: $B$를 최대공약수의 약수 집합으로 바꾸고 $A-B$의 원소 선택을 센다.\\n정석 풀이:\\n1. $A=\\{1,2,3,4,6,8,12,24\\}$이다. $\\gcd(18,30)=6$이므로 $B=\\{1,2,3,6\\}$이다.\\n2. $B\\subseteq X\\subseteq A$이므로 $1,2,3,6$은 반드시 포함되고 $4,8,12,24$는 각각 포함 여부를 자유롭게 정할 수 있다.\\n3. 가능한 집합은 $2^4=16$개이다. 이 중 $X=A$인 경우 하나를 제외한다.\\n4. 따라서 구하는 집합의 개수는 $15$이다.\\n따라서 구하는 값은 $15$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -770,12 +770,12 @@ window.questionBank = [
       "점과 직선 사이의 거리"
     ],
     "wide": false,
-    "content": "[서·논술형 1] 전체집합 $U=\\{1,2,3,4,5,6\\}$에서 공집합이 아닌 두 부분집합 $A$, $B$가 서로소이고 $A\\cup B=U$가 되도록 한 쌍을 만들고, 두 집합이 서로소라는 조건을 기호로 쓰시오.",
+    "content": "두 점 $P(0,-5)$, $Q(4,-1)$의 중점을 $A$라 하자. 점 $A$에서 직선 $l:x-y+2=0$에 내린 수선의 발을 $H(a,b)$, 점 $A$와 직선 $l$ 사이의 거리를 $c$라 할 때, $a+b+c$의 값을 구하는 풀이과정과 답을 서술하시오.",
     "choices": [],
-    "answer": "$A\\cap B=\\varnothing$; 예: $A=\\{1,3,5\\}$, $B=\\{2,4,6\\}$",
-    "solution": "[키포인트] 서로소의 정의를 교집합으로 나타내고, 합집합 조건을 직접 확인하는 예를 구성한다.\n조건 정리: U={1,2,3,4,5,6}의 공집합이 아닌 두 부분집합 A,B가 서로소이고 A∪B=U가 되도록 한 쌍을 만들며 서로소 조건을 기호로 쓴다.\n풀이 방향: U를 겹치지 않는 두 부분으로 나누고, 공통 원소가 없음을 교집합으로 표현한다.\n정석 풀이:\n1. 서로소라는 뜻은 공통 원소가 없다는 뜻이므로 A∩B=∅이다.\n2. 예를 들어 A={1,3,5}, B={2,4,6}으로 두면 두 집합은 공집합이 아니고 A∩B=∅이다.\n3. 또한 A∪B={1,2,3,4,5,6}=U이므로 모든 조건을 만족한다.\n핵심 확인: 두 집합의 원소가 겹치지 않고 합집합이 U 전체가 되는지 각각 확인하였다.\n따라서 구하는 값은 $A\\cap B=\\varnothing$이고, 가능한 한 쌍은 $A=\\{1,3,5\\}, B=\\{2,4,6\\}$이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "$-1+\\dfrac{7\\sqrt2}{2}$",
+    "solution": "[키포인트] 중점으로 점 $A$의 좌표를 먼저 복원한 뒤 수직인 직선과 거리 공식을 사용한다.\\n조건 정리: $P(0,-5)$, $Q(4,-1)$의 중점이 $A$이다.\\n풀이 방향: $A$를 구하고, $l$에 수직이며 $A$를 지나는 직선과 $l$의 교점으로 $H$를 구한다.\\n정석 풀이:\\n1. $A=\\left(\\dfrac{0+4}{2},\\dfrac{-5+(-1)}{2}\\right)=(2,-3)$이다.\\n2. $l:x-y+2=0$은 $y=x+2$이므로 기울기는 $1$이다. $A$를 지나고 $l$에 수직인 직선은 $y=-x-1$이다.\\n3. $x+2=-x-1$에서 $a=-\\dfrac32$, $b=\\dfrac12$이므로 $a+b=-1$이다.\\n4. 점 $A(2,-3)$과 직선 $x-y+2=0$ 사이의 거리는 $c=\\dfrac{|2-(-3)+2|}{\\sqrt2}=\\dfrac{7\\sqrt2}{2}$이다.\\n5. 따라서 $a+b+c=-1+\\dfrac{7\\sqrt2}{2}$이다.\\n따라서 구하는 값은 $-1+\\dfrac{7\\sqrt2}{2}$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -787,10 +787,10 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-03",
     "standardUnit": "원의 방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -801,13 +801,13 @@ window.questionBank = [
       "점과 직선 사이의 거리"
     ],
     "wide": false,
-    "content": "[서·논술형 2] 무리함수 $y=\\sqrt{x-1}$의 그래프와 직선 $y=2x+k$가 서로 다른 두 점에서 만나기 위한 실수 $k$의 값의 범위를 구하시오.",
+    "content": "점 $(0,8)$에서 원 $x^2+y^2-6x-4y+4=0$에 그은 두 접선에 대하여 다음 물음에 답하시오.<br><br>(1) 주어진 원이 어느 좌표축에 접하는지 밝히고, 그 이유를 쓰시오.<br><br>(2) 기울기가 $m$이고 점 $(0,8)$을 지나는 접선의 방정식을 일반형으로 쓰시오.<br><br>(3) 원의 중심과 접선 사이의 거리가 반지름과 같음을 이용하여 $m$의 값을 구하시오.",
     "choices": [],
-    "answer": "$-2\\le k<-\\dfrac{15}{8}$",
-    "solution": "[키포인트] 치환으로 무리함수와 직선의 교점 조건을 이차방정식으로 바꾸고 두 근의 범위를 함께 확인한다.\n조건 정리: y=sqrt(x-1)과 y=2x+k가 서로 다른 두 점에서 만나기 위한 k의 범위를 구한다.\n풀이 방향: t=sqrt(x-1)로 두면 t≥0, x=t^2+1이므로 판별식과 근의 부호를 적용한다.\n정석 풀이:\n1. 교점에서 t=2(t^2+1)+k이므로 2t^2-t+(k+2)=0이다.\n2. 서로 다른 두 교점을 위해 판별식 1-8(k+2)>0, 즉 k<-15/8이어야 한다.\n3. 두 근이 모두 t≥0이려면 합이 1/2>0이고 곱 (k+2)/2≥0이어야 하므로 k≥-2이다. k=-2에서는 근 0,1/2가 모두 허용된다.\n4. 따라서 -2≤k<-15/8이다.\n핵심 확인: 이 범위에서는 두 근이 서로 다른 음이 아닌 값이고 x=t^2+1로 복원되므로 실제 교점이 두 개이다.\n따라서 구하는 값은 -2≤k<-15/8이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
-    "imageStatus": "new_asset_pending_review",
+    "answer": "$y$축; $mx-y+8=0$; $m=-\\dfrac34$",
+    "solution": "[키포인트] 원의 식을 완전제곱하여 중심과 반지름을 먼저 구한 뒤 접선 조건을 적용한다.\\n조건 정리: $x^2+y^2-6x-4y+4=0$을 정리하면 $(x-3)^2+(y-2)^2=9$이다.\\n정석 풀이:\\n1. 원의 중심은 $(3,2)$이고 반지름은 $3$이다. 중심의 $x$좌표의 절댓값이 반지름과 같으므로 원은 $y$축에 접한다. 따라서 두 접선 중 하나는 $y$축이다.\\n2. 기울기가 $m$이고 $(0,8)$을 지나는 다른 접선은 $y=mx+8$, 즉 $mx-y+8=0$이다.\\n3. 중심 $(3,2)$에서 이 직선까지의 거리가 $3$이므로 $\\dfrac{|3m-2+8|}{\\sqrt{m^2+1}}=3$이다. 양변을 제곱하면 $(3m+6)^2=9(m^2+1)$이다. 이를 정리하면 $36m+27=0$이므로 $m=-\\dfrac34$이다.\\n따라서 구하는 답은 $y$축, $mx-y+8=0$, $m=-\\dfrac34$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
+    "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
   },
@@ -835,12 +835,12 @@ window.questionBank = [
       "최솟값"
     ],
     "wide": false,
-    "content": "서답형 6. 어느 고등학교에서 두 선택 과목 $A$, $B$를 선택한 학생 수를 조사하였다. $A$를 선택한 학생 수는 $28$명, $B$를 선택한 학생 수는 $20$명이고, $A$만 선택하거나 $B$만 선택한 학생 수는 $34$명 이하이다. $A$ 또는 $B$를 선택한 학생 수의 최댓값과 최솟값의 합을 구하시오.",
+    "content": "어느 고등학교에서 두 선택 과목 $A$, $B$를 선택한 학생 수를 조사하였다. $A$를 선택한 학생 수와 $B$를 선택한 학생 수의 합은 $48$명이고 그 차는 $8$명이다. 또한 $A$만 선택하거나 $B$만 선택한 학생 수는 $34$명 이하이다. $A$ 또는 $B$를 선택한 학생 수의 최댓값과 최솟값의 합을 구하시오. (단, $A$를 선택한 학생 수가 더 많다.)",
     "choices": [],
-    "answer": "69",
-    "solution": "[키포인트] 두 집합의 교집합을 미지수로 두고 배타적 선택 인원과 합집합 원소 수를 식으로 나타낸다.\n조건 정리: 어느 고등학교에서 두 선택 과목 $A$, $B$를 선택한 학생 수를 조사하였다. $A$를 선택한 학생 수는 $28$명, $B$를 선택한 학생 수는 $20$명이고, $A$만 선택하거나 $B$만 선택한 학생 수는 $34$명 이하이다. $A$ 또는 $B$를 선택한 학생 수의 최댓값과 최솟값의 합을 구하시오.\n풀이 방향: $t=n(A\\cap B)$라 두고 $0\\le t\\le20$ 및 배타적 선택 조건을 적용한다.\n정석 풀이:\n1. $A$만 선택한 학생 수는 $28-t$, $B$만 선택한 학생 수는 $20-t$이므로 조건에서 $48-2t\\le34$이다. 따라서 $t\\ge7$이다.\n2. 교집합의 범위는 $7\\le t\\le20$이고, 합집합은 $n(A\\cup B)=28+20-t=48-t$이다.\n3. $t=7$일 때 최댓값 $41$, $t=20$일 때 최솟값 $28$이므로 두 값의 합은 $41+28=69$이다.\n핵심 확인: $t=7,20$은 각각 조건을 만족하는 경계값이고, 합집합 공식에 대입하면 $41,28$을 얻는다. 계산 결과는 69이다.\n따라서 구하는 값은 69이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "$69$",
+    "solution": "[키포인트] 두 과목의 선택 인원을 먼저 복원한 뒤 교집합의 크기로 합집합의 범위를 구한다.\\n조건 정리: 두 선택 인원의 합은 $48$, 차는 $8$이고 $A$ 선택 인원이 더 많다.\\n풀이 방향: 먼저 $n(A)$, $n(B)$를 구하고, 두 과목 모두 선택한 학생 수를 $t$로 둔다.\\n정석 풀이:\\n1. $n(A)+n(B)=48$, $n(A)-n(B)=8$이므로 $n(A)=28$, $n(B)=20$이다.\\n2. $t=n(A\\cap B)$라 하면 한 과목만 선택한 학생 수는 $(28-t)+(20-t)=48-2t$이다.\\n3. $48-2t\\le34$에서 $t\\ge7$이고, $0\\le t\\le20$이므로 $7\\le t\\le20$이다.\\n4. $n(A\\cup B)=48-t$이므로 최댓값은 $t=7$일 때 $41$, 최솟값은 $t=20$일 때 $28$이다.\\n5. 두 값의 합은 $69$이다.\\n따라서 구하는 값은 $69$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   }
 ];

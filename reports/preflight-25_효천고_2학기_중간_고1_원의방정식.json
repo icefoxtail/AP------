@@ -1,0 +1,88 @@
+{
+  "workId": "2025-hyocheon-h1-2mid-circle-equation-solution-upgrade",
+  "recordedAt": "2026-08-28",
+  "exam": {
+    "title": "25_효천고_2학기_중간_고1_기출",
+    "source": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+    "sourceSha256Before": "9419E095453059C8BFCC173B6ACAD3BC7C6F848FAF590005149A14D20B4786EB",
+    "questionCount": 23,
+    "dbRecord": "archive/db.js:2823-2851",
+    "questionIndex": "archive/question-index.js"
+  },
+  "scopeLock": {
+    "targetUnitKey": "H22-C2-03",
+    "targetUnit": "원의 방정식",
+    "targetIds": [3, 4, 6, 11, 22],
+    "protectedIds": [1, 2, 5, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23],
+    "allowedFields": ["solution", "solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize", "archive/question-index.js[target IDs only].hasSolutionImage"],
+    "prohibitedChanges": ["content", "choices", "answer", "tags", "standardUnitKey", "subUnitKey", "layoutTag", "wide", "image", "archive/db.js", "archive/question-index.js[all non-target records]", "archive/engine.html"]
+  },
+  "ruleBaseline": {
+    "selected": "docs/rules/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md (current working-tree version)",
+    "sha256": "EE3B83B3580DF6DC0F275100F6F060BAD0DE043377F7F7460438F4FD68CD57D1",
+    "reviewedRequiredSources": [
+      "docs/rules/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+      "docs/rules/해설프로토콜.md",
+      "docs/rules/JS_문항품질_업그레이드.md",
+      "docs/rules/JS아카이브룰북_v2.5.md",
+      "docs/rules/무결성검수.md",
+      "docs/rules/수정프로토콜.md",
+      "docs/rules/문제해설추출.md",
+      "docs/rules/도형추출.md",
+      "docs/rules/JS아카이브_표준단원키_마스터테이블.md",
+      ".codex/skills/apmath-archive-exams/SKILL.md",
+      ".codex/skills/apmath-archive-exams/references/archive-layout.md"
+    ],
+    "manifest": {
+      "path": "docs/rules/MANIFEST.md",
+      "sha256": "6F884037DBE2766C2D4FE5A79B31A1E1CD3CE1F69566D53F60956FC397930DBA",
+      "status": "SOURCE_PACK_DRIFT_RECORDED",
+      "note": "MANIFEST.md does not yet list v1.1 and retains older hashes for several revised rule sources. The user's 2026-08-28 instruction to recheck the rules and start this unit selects the current v1.1 working-tree ruleset for this scoped task. MANIFEST.md itself remains untouched."
+    },
+    "conflictResolution": "The current user-authorized v1.1 target-locked solution upgrade overrides lower-priority legacy rules that prohibit all edits under archive/exams/original. Only the fields and IDs above are permitted."
+  },
+  "curriculumAndMetadata": {
+    "masterCheck": "H22-C2-03 = 원의 방정식; H22-C2-03-CIRCLE_EQUATION is a valid child key.",
+    "targetIndexBefore": [
+      {"id": 3, "subUnitKey": "H22-C2-03-CIRCLE_EQUATION", "hasImage": false, "hasSolutionImage": false},
+      {"id": 4, "subUnitKey": "H22-C2-03-CIRCLE_EQUATION", "hasImage": false, "hasSolutionImage": false},
+      {"id": 6, "subUnitKey": "H22-C2-03-CIRCLE_EQUATION", "hasImage": false, "hasSolutionImage": false},
+      {"id": 11, "subUnitKey": "H22-C2-03-CIRCLE_EQUATION", "hasImage": false, "hasSolutionImage": false},
+      {"id": 22, "subUnitKey": "H22-C2-03-CIRCLE_EQUATION", "hasImage": false, "hasSolutionImage": false}
+    ],
+    "decision": "No taxonomy or DB update is needed. The five target-derived hasSolutionImage flags must be synchronized in question-index.js; no non-target index record may change."
+  },
+  "engineAndAssetInspection": {
+    "engine": "archive/engine.html",
+    "engineSha256": "68B560223C046CFBC702F7DCDAACB36269125E7D0627E22F0D999FB2C57102B5",
+    "verifiedPath": "renderSol -> formatSolutionHtml(solution) + renderSolutionImageHTML(q)",
+    "supportedSolutionImageFields": ["solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize"],
+    "existingExamAssets": ["q08.png", "q13.png", "q14.png", "q18.png"],
+    "targetAssetDecision": "Create separate SVGs only for target solutionImage fields; never overwrite or repurpose original question image assets."
+  },
+  "baselineRender": {
+    "mode": "sol",
+    "url": "http://127.0.0.1:8765/archive/engine.html?mode=sol&data=exams/original/high/h1/2mid/25_%ED%9A%A8%EC%B2%9C%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A01_%EA%B8%B0%EC%B6%9C.js",
+    "pages": 7,
+    "solutionBoxes": 23,
+    "mathErrors": 0,
+    "failedImages": [],
+    "pageOverflow": false,
+    "targetLocations": {"3": 0, "4": 0, "6": 1, "11": 3, "22": 6},
+    "visualFinding": "All five target solutions render without clipping, but none contains a coordinate-plane/circle diagram. This fails the current mandatory student-visual rule for real-circle coordinate-geometry explanations."
+  },
+  "staticBaseline": {
+    "examLint": "PASS (0 FAIL; unrelated q10 warning preserved and outside scope)",
+    "latexEscapeAudit": "PASS for target IDs (no target issues)"
+  },
+  "derivedIndexSync": {
+    "method": "Scoped mechanical update; no whole-index rebuild and no generated-report rewrite.",
+    "field": "hasSolutionImage",
+    "targetIds": [3, 4, 6, 11, 22],
+    "before": false,
+    "after": true,
+    "reason": "archive/tools/build-question-index.mjs derives this field directly from q.solutionImage."
+  },
+  "nextGate": "Independently solve every target question, numerically verify all SVG coordinates/relations, then edit only the locked fields and re-render sol before accepting any change.",
+  "status": "PREFLIGHT_READ: PASS"
+}

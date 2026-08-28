@@ -1,0 +1,179 @@
+{
+  "protocol": {
+    "file": "docs/rules/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+    "sha256": "DEC01379D07B2BA171F9D7BEA34723B0534C49128F38B2B2D893277594645C43",
+    "sourceOfTruth": "production JS",
+    "pdfRequired": false,
+    "workflow": [
+      "STATIC_TARGET_INVENTORY",
+      "ANSWER_SOLUTION_REVIEW",
+      "SOLUTION_DELTA_EVIDENCE",
+      "APPLY_TARGET_CHANGES",
+      "POST_CHANGE_FULL_SOL_RENDER",
+      "EXAM_ANS_SUPPLEMENTARY_RENDER",
+      "INDEPENDENT_REVIEW_1_2_3",
+      "SEAL"
+    ]
+  },
+  "scope": {
+    "year": 2025,
+    "grade": "고1",
+    "subject": "공통수학2",
+    "pathPrefix": "original/high",
+    "standardUnitKey": "H22-C2-03",
+    "standardUnit": "원의 방정식",
+    "targetQuestionCount": 36,
+    "examCount": 8,
+    "excluded": [
+      "archive/exams/similar/**",
+      "archive/exams/types/**",
+      "original/high 이외의 경로",
+      "H22-C2-03 이외의 문항"
+    ],
+    "allowedQuestionFields": [
+      "solution",
+      "solutionImage",
+      "solutionImageAlt",
+      "solutionImageCaption",
+      "solutionImageSize"
+    ],
+    "protectedQuestionPolicy": "targetQuestionIds 밖의 content, choices, answer, solution, image, metadata 및 자산은 변경하지 않고 전후 대조한다."
+  },
+  "exams": [
+    {
+      "file": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+      "sha256Before": "513eafe118625044728769e49487afb3f7d131537ffb8b5b89504b27208a70ff",
+      "qCount": 22,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "final", "qCount": 22 },
+      "targetQuestionIds": [18],
+      "protectedQuestionIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22],
+      "baselineSolutionSha256": { "18": "a4d4f08d59b315fc8d1b4a580eaa45319f55b36a7f8c27f4b251613e6a4c28d7" },
+      "candidateFilesBefore": []
+    },
+    {
+      "file": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "sha256Before": "dd41d9e40826d7a1522f06ae473a9e06ce82df754d2d7199595a4cda57d88b72",
+      "qCount": 22,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "final", "qCount": 22 },
+      "targetQuestionIds": [3, 7],
+      "protectedQuestionIds": [1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+      "baselineSolutionSha256": { "3": "3668eb6aac9f2f129270455795f6e696163b622c6e6f6465b764d7769b0659c7", "7": "18ceba5d17acfa36adf5f17dc7913ca1c8ebf3c7e9472453890f99fa741a8cf3" },
+      "candidateFilesBefore": []
+    },
+    {
+      "file": "original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "sha256Before": "a01a69c8dce144dad962227def72218f2c17895a33c1df7d89cc12ea7dcd0cd4",
+      "qCount": 22,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "mid", "qCount": 22 },
+      "targetQuestionIds": [3, 4, 8, 11, 12, 16, 18, 19, 21],
+      "protectedQuestionIds": [1, 2, 5, 6, 7, 9, 10, 13, 14, 15, 17, 20, 22],
+      "baselineSolutionSha256": {
+        "3": "c16194d612c86c2c07bcf43637906a3eb835b1c86bc212a7b45c9fac32d9465b",
+        "4": "1e3359e4a320ca3cf7ae66c82b216a228cacf72bf4af7bc86e1ce0a8022fea85",
+        "8": "393f5c719ac8ae4d1b9de88bc8e1876915a12e93e8c7c0f1bcd8a4b042724dc5",
+        "11": "79310472486023912d788dc14c44cea84b9ab033e0fba66a08ad4fcb9314426b",
+        "12": "2a3f1837d439e505ba8917af3ed16fc458bff4fba92dfffc38d3de4f84bf1040",
+        "16": "b164219e36b460086cd21ed3590e1aed75ce807a63da10ee81586c26923034a2",
+        "18": "2823a4af8a20463bd85e38b21c1e27698e8ae9c3795681e53f4c87b304832a71",
+        "19": "4e26494800f4c465add9e5a3d28ef1ff30d8bb16eb7a14cafca8cde5b4d99655",
+        "21": "f22c46f0f4dd78462c836d3149364f16c74606cd0edae993e4201a8c1e10bcb5"
+      },
+      "candidateFilesBefore": []
+    },
+    {
+      "file": "original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "sha256Before": "1c6397db1ac0f044295ce06e357006944a242ed4e47a2252cd90ca4aea3798f3",
+      "qCount": 20,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "mid", "qCount": 20 },
+      "targetQuestionIds": [7, 10, 14, 18, 20],
+      "protectedQuestionIds": [1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 15, 16, 17, 19],
+      "baselineSolutionSha256": {
+        "7": "3c0d7e1436b03ae6a7e5364943ae2cc76f62b2010627a9c82d1fb0c98e97c6f0",
+        "10": "d57adc915b7e22d16bf9bdb52beed355fa7980e61e5ad35c09fb3cfcbee1056d",
+        "14": "be8b08280110003c23cf503ac06cb753a384973b2c3250eef14e00bd737481d7",
+        "18": "089905d25376c970206b123f3efb138040288a98eaafa07b44e33e53793cb614",
+        "20": "855723542fc65e26e2afc473c46124eb59ef1ff4ed5fc61fd076824d2ddf25d7"
+      },
+      "candidateFilesBefore": []
+    },
+    {
+      "file": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "sha256Before": "1cd552de851b913a6c0fbb87aee3ca7decea9f25d1573c06d0a6a21784040062",
+      "qCount": 23,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "mid", "qCount": 23 },
+      "targetQuestionIds": [7, 9, 10, 16, 17, 19, 22],
+      "protectedQuestionIds": [1, 2, 3, 4, 5, 6, 8, 11, 12, 13, 14, 15, 18, 20, 21, 23],
+      "baselineSolutionSha256": {
+        "7": "707f61e2076a50c6ac7dfc0dfb1a181a0d41d4c8760223158aab97070daae965",
+        "9": "e95805844efd4931b048f51398396188af1d1d9bf7820d3874e2b982a63e718c",
+        "10": "77cbbbbc9dafa29344d5b250bdd4208046ad88610b2abce6473a9d35e1d33342",
+        "16": "49f0945dd8901664ec73b35186b03c29f7f695dcfe2273b5194986e52ad6b364",
+        "17": "e224efb7d1d7f0d3631c1641bea504e72fd6ce4c69deacc3700de4596b87351f",
+        "19": "7e1473f811fab0d4c5c481009ef3172fe00315ff1bd1230075718addb537f621",
+        "22": "a1cce4671113b2c3b82ba6317503819c2004ea63a32fcf32d432c4774cee1b49"
+      },
+      "candidateFilesBefore": ["archive/_generated/past-exams/2025-2mid-import/25_순천고_2학기_중간_고1_기출/candidate/25_순천고_2학기_중간_고1_기출.js"]
+    },
+    {
+      "file": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "archiveFile": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sha256Before": "bdafe8eb2cef739706fce124d917ae6d84696aeef61b7ac06630d4b63b3d847b",
+      "qCount": 21,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "mid", "qCount": 21 },
+      "targetQuestionIds": [14, 17, 21],
+      "protectedQuestionIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 20],
+      "baselineSolutionSha256": {
+        "14": "87b20cce511067cf661dec78a33bd702de43cc254e805961a6e355d77c39a4c1",
+        "17": "e772ea7a570707bda048be4af7065170ba39c6f1d9ccfbd11e687c85a63bc1c2",
+        "21": "9b47984b9b23b1e8db0eb03a9adb1014f96cb7fda275e072ea28a0bf8bda1c9d"
+      },
+      "candidateFilesBefore": []
+    },
+    {
+      "file": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sha256Before": "b8b1ce4c35066e218da6ed2fa475db2302a793a2c24032e8f39dbb46aef5c0e9",
+      "qCount": 22,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "mid", "qCount": 22 },
+      "targetQuestionIds": [13, 16, 17, 22],
+      "protectedQuestionIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 20, 21],
+      "baselineSolutionSha256": {
+        "13": "99ec27cec12acaac7b09176ec341650c2dd1d82833deb5479407e2d3629248cc",
+        "16": "089a49eb1751ef799c8080c438619d73efb19926b89a8e67d4de5274c0f62d75",
+        "17": "763ee6d8d50599743869ccbbb6468d3aeb7670d5c5ec18996270244db2e8d939",
+        "22": "71ff3a922c9890c44ee53589f72c2ae6d68ea8418a77a3a996cb7ed99ec69adb"
+      },
+      "candidateFilesBefore": []
+    },
+    {
+      "file": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "archiveFile": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256Before": "6ea6362890281bbb7e1a55cb86bb6e56cd74d37f67a4b5275deccc9bece57242",
+      "qCount": 23,
+      "db": { "year": 2025, "grade": "고1", "subject": "공통수학2", "semester": "2", "examType": "mid", "qCount": 23 },
+      "targetQuestionIds": [3, 4, 6, 11, 22],
+      "protectedQuestionIds": [1, 2, 5, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23],
+      "status": "already_completed_independent_pass",
+      "solutionImageCount": 5,
+      "approvedAdditionalRepair": { "questionId": 23, "reason": "전체 sol 렌더에서 기존 해설 overflow 발견 후 사용자 승인으로 solution layout만 핀포인트 수정" },
+      "candidateFilesBefore": ["archive/_generated/past-exams/2025-2mid-import/25_효천고_2학기_중간_고1_기출/candidate/25_효천고_2학기_중간_고1_기출.js"]
+    }
+  ],
+  "staticFindings": {
+    "originalExamCount": 8,
+    "targetQuestionCount": 36,
+    "similarExamCountExcluded": 3,
+    "similarTargetQuestionCountExcluded": 12,
+    "dbAndQuestionIndexPreflight": "DB records and question-index rows exist for all eight original exams; target rows currently haveSolutionImage=false except the five completed 효천고 rows.",
+    "assetPreflight": "New solution SVG is required for each real-circle target question. Existing question images are preserved.",
+    "sourcePackDrift": "MANIFEST.md contains older hashes for some rules/master files; the current approved working protocol and current on-disk JS are recorded explicitly above and must not be mixed with legacy snapshots.",
+    "pdf": "optional; production JS is the authoritative source for this upgrade"
+  },
+  "createdAt": "2026-08-28T00:00:00+09:00",
+  "status": "static_inventory_complete_pending_target_edits"
+}

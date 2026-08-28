@@ -1788,7 +1788,7 @@ function renderAdminControlCenter() {
     `;
 
     const adminShortcutRow = `
-        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--five" aria-label="원장님 바로가기">
+        <div class="ap-admin-shortcuts ap-admin-action-grid ap-surface-toolbar ap-surface-toolbar--four" aria-label="원장님 바로가기">
             <button class="btn ap-admin-action-card ap-surface-action"
                     onclick="if(typeof openAttendanceLedger === 'function') openAttendanceLedger(); else toast('불러오기 실패', 'warn');">
                 <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="4" width="13" height="17" rx="2.2"/><path d="M9 4V3.2A1.2 1.2 0 0 1 10.2 2h3.6A1.2 1.2 0 0 1 15 3.2V4"/><path d="M8.6 12.4l2.1 2.1 4.1-4.2"/></svg></span>
@@ -1805,15 +1805,10 @@ function renderAdminControlCenter() {
                 성적표
             </button>
             <button class="btn ap-admin-action-card ap-surface-action"
-                    data-assessment-archive-url="../archive/assessment/assessment-mvp.html"
-                    onclick="openAdminAssessmentArchiveWindow(event)">
+                    data-archive-url="../archive/index"
+                    onclick="openDashboardArchiveWindow(event)">
                 <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="4.3" rx="1.5"/><path d="M5 8.8v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"/><path d="M10 12.4h4"/></svg></span>
-                시험지 보관함
-            </button>
-            <button class="btn ap-admin-action-card ap-surface-action"
-                    onclick="openAdminOperationMenu()">
-                <span class="ap-action-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h8M16.5 7H20"/><path d="M4 17h3.5M11.5 17H20"/><circle cx="14.5" cy="7" r="2.3"/><circle cx="9" cy="17" r="2.3"/></svg></span>
-                관리
+                아카이브
             </button>
         </div>
     `;
