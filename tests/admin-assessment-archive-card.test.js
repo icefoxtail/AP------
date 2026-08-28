@@ -69,14 +69,14 @@ assert(
   'student metric hover details should use the custom hover panel instead of the browser title tooltip'
 );
 
-const shortcutMatch = dashboardAdmin.match(/ap-admin-shortcuts[\s\S]*?ap-surface-toolbar--five([\s\S]*?)`;/);
-assert(shortcutMatch, 'admin shortcut row should exist and use the five-column toolbar');
+const shortcutMatch = dashboardAdmin.match(/ap-admin-shortcuts[\s\S]*?ap-surface-toolbar--four([\s\S]*?)`;/);
+assert(shortcutMatch, 'admin shortcut row should exist and use the four-column toolbar');
 const shortcutBody = shortcutMatch[1];
 assert(
-  shortcutBody.includes('시험지 보관함') &&
-    shortcutBody.includes('openAdminAssessmentArchiveWindow(event)') &&
-    shortcutBody.includes('../archive/assessment/assessment-mvp.html'),
-  'assessment archive should be a top action button in the shortcut row'
+  shortcutBody.includes('아카이브') &&
+    shortcutBody.includes('openDashboardArchiveWindow(event)') &&
+    shortcutBody.includes('../archive/index'),
+  'archive should be a top action button in the owner shortcut row'
 );
 assert(
   !overviewBody.includes('시험지 보관함') && !overviewBody.includes('renderAdminAssessmentArchiveMetric'),
@@ -93,6 +93,14 @@ assert(
 assert(
   ui.includes('시험지 보관함') && ui.includes('../archive/assessment/assessment-mvp.html'),
   'teacher sidebar should include the assessment archive as a small menu item'
+);
+assert(
+  /drawerItem\('archive',\s*'아카이브',[\s\S]*?openDashboardArchiveWindow\(event\)/.test(ui),
+  'owner sidebar should include the archive home as a small menu item'
+);
+assert(
+  /drawerItem\('manage',\s*'관리',[\s\S]*?openAdminOperationMenu\(\)/.test(ui),
+  'owner sidebar should keep the management entry'
 );
 
 const eieSurfaceActionBlocks = Array.from(
