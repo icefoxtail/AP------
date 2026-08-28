@@ -14,12 +14,13 @@ vm.runInContext(source, context, { filename: 'apmath/js/archive-render.js' });
 const render = context.ApArchiveRender;
 assert.ok(render);
 assert.equal(render.ARCHIVE_BASE_URL, 'https://icefoxtail.github.io/AP------/archive/');
+assert.equal(render.ARCHIVE_ASSET_CACHE_VERSION, '20260828.1');
 assert.equal(render.normalizeArchiveFile('exam-a'), 'exams/exam-a.js');
 assert.equal(render.normalizeArchiveFile('archive/assets/images/q1.png'), 'assets/images/q1.png.js');
 
 assert.equal(
   render.resolveArchiveAssetUrl('assets/images/q1.png', 'exams/final-a.js'),
-  'https://icefoxtail.github.io/AP------/archive/assets/images/q1.png'
+  'https://icefoxtail.github.io/AP------/archive/assets/images/q1.png?v=20260828.1'
 );
 assert.equal(
   render.resolveArchiveAssetUrl('q1.png', 'exams/2026/final-a.js'),

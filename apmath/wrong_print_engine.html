@@ -161,6 +161,7 @@
 <script>
 const STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
 const ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
+const ARCHIVE_ASSET_CACHE_VERSION = '20260828.1';
 // 내부망/로컬에서 출력해도 QR은 항상 공개 URL로 생성한다(학생/학부모 폰에서 열려야 하므로).
 const WRONG_PRINT_PUBLIC_URL = 'https://icefoxtail.github.io/AP------/apmath/wrong_print_engine.html';
 const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
@@ -291,6 +292,16 @@ function getArchiveUrl(file) {
     return ARCHIVE_BASE_URL + encodedPath;
 }
 
+function withArchiveAssetCacheBuster(url) {
+    const raw = String(url || '').trim();
+    if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
+    const hashIndex = raw.indexOf('#');
+    const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
+    const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
+    const separator = base.includes('?') ? '&' : '?';
+    return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
+}
+
 function resolveArchiveAssetUrl(src, archiveFile) {
     const raw = String(src || '').trim();
     if (!raw) return '';
@@ -305,7 +316,7 @@ function resolveArchiveAssetUrl(src, archiveFile) {
         path = (dir ? dir + '/' : '') + path;
     }
     const encoded = path.split('/').map(part => encodeURIComponent(part)).join('/');
-    return ARCHIVE_BASE_URL + encoded;
+    return withArchiveAssetCacheBuster(ARCHIVE_BASE_URL + encoded);
 }
 
 function rewriteImgSrcInHtml(html, archiveFile) {
@@ -313,7 +324,7 @@ function rewriteImgSrcInHtml(html, archiveFile) {
         /(<img\b[^>]*?\bsrc\s*=\s*)(["'])([\s\S]*?)\2/gi,
         (match, pre, quote, src) => {
             const resolved = resolveArchiveAssetUrl(src, archiveFile);
-            return `${pre}${quote}${resolved || src}${quote}`;
+            return `${pre}${quote}${withArchiveAssetCacheBuster(resolved || src)}${quote}`;
         }
     );
 }
@@ -985,7 +996,7 @@ function renderQuestionImageHTML(q) {
     if (!url) return '';
     const size = ['small', 'half', 'medium', 'large', 'full', 'tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(url)}" alt=""></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(withArchiveAssetCacheBuster(url))}" alt=""></div>`;
 }
 
 function getQuestionAnswer(q) {
