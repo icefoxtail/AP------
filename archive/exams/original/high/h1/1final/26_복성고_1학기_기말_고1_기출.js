@@ -691,7 +691,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "&lt;서논술형 3&gt;<br>&lt;서논술형 3&gt;<br>&lt;서논술형 3&gt;<br>&lt;서논술형 3&gt;<br>&lt;서논술형 3&gt;<br>어느 여행사에서 순천에 있는 두 지점 1과 2 사이에 다음 표와 같은 관광 코스를 운영한다고 한다.<div class='question-table-wrap'><table class='question-table'><thead><tr><th>코스</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead><tbody><tr><th>출발 지점</th><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr><tr><th>도착 지점</th><td>2</td><td>2</td><td>1</td><td>1</td><td>2</td></tr></tbody></table></div>$i$지점에서 출발하여 $j$지점에 도착하는 관광 코스의 수를 $(i,j)$성분으로 하는 행렬을 $A$라 할 때, 다음 물음에 대하여 풀이과정과 함께 답하시오. (단, $i=1,2$, $j=1,2$이고, 같은 코스를 여러 번 관광할 수도 있다.) [총 8점]<br>(1) 행렬 $A$를 구하시오. [2점, 부분점수 없음]<br>(2) 행렬 $A$를 이용하여 $i$지점에서 출발하여 세 코스를 이어서 관광하고 $j$지점에 도착하는 모든 경우의 수의 합을 구하시오. [6점, 부분점수 있음]",
+    "content": "&lt;서논술형 3&gt;<br>어느 여행사에서 순천에 있는 두 지점 1과 2 사이에 다음 표와 같은 관광 코스를 운영한다고 한다.<div class='question-table-wrap'><table class='question-table'><thead><tr><th>코스</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead><tbody><tr><th>출발 지점</th><td>1</td><td>1</td><td>2</td><td>2</td><td>2</td></tr><tr><th>도착 지점</th><td>2</td><td>2</td><td>1</td><td>1</td><td>2</td></tr></tbody></table></div>$i$지점에서 출발하여 $j$지점에 도착하는 관광 코스의 수를 $(i,j)$성분으로 하는 행렬을 $A$라 할 때, 다음 물음에 대하여 풀이과정과 함께 답하시오. (단, $i=1,2$, $j=1,2$이고, 같은 코스를 여러 번 관광할 수도 있다.) [총 8점]<br>(1) 행렬 $A$를 구하시오. [2점, 부분점수 없음]<br>(2) 행렬 $A$를 이용하여 $i$지점에서 출발하여 세 코스를 이어서 관광하고 $j$지점에 도착하는 모든 경우의 수의 합을 구하시오. [6점, 부분점수 있음]",
     "choices": [],
     "answer": "$A=\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix},\\ 33$",
     "solution": "[키포인트] 한 번 이동하는 코스 수를 행렬로 나타내면 세 코스를 이어 가는 경우는 행렬의 세제곱으로 계산할 수 있다.\n조건 정리: 1지점에서 1지점으로 가는 코스는 0개, 1지점에서 2지점으로 가는 코스는 A, B의 2개이다. 2지점에서 1지점으로 가는 코스는 C, D의 2개이고, 2지점에서 2지점으로 가는 코스는 E의 1개이다.\n풀이 방향: 먼저 코스 수 행렬 $A$를 만든 뒤 $A^3$을 계산하고 모든 성분을 더한다.\n정석 풀이: (1) 각 출발·도착 지점에 따른 코스 수를 배열하면 $A=\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix}$이다. (2) 두 코스를 이어 가는 경우는 $A^2$의 성분으로 나타나며 $A^2=\\begin{pmatrix}4&2\\\\2&5\\end{pmatrix}$이다. 세 코스를 이어 가는 경우는 $A^3=A^2A=\\begin{pmatrix}4&10\\\\10&9\\end{pmatrix}$이다. 따라서 출발 지점과 도착 지점의 모든 경우를 합한 값은 $4+10+10+9=33$이다.\n따라서 구하는 행렬은 $A=\\begin{pmatrix}0&2\\\\2&1\\end{pmatrix}$이고, 모든 경우의 수의 합은 $33$이다.",
@@ -712,5 +712,4 @@ window.questionBank = [
   question(14).solution += "\\n[원본 문항 주의] (나)는 $k$의 범위를 묻지만 인쇄된 식에는 $x$가 쓰였고 경계의 등호도 빠져 있다. 원문을 그대로 판정하면 (나)는 거짓이며 정답 ④는 유지된다. 올바른 존재 조건은 $k\\le3-\\sqrt{11}$ 또는 $k\\ge3+\\sqrt{11}$이다.";
   question(21).content = "&lt;서논술형 1&gt;<br>" + question(21).content;
   question(22).content = "&lt;서논술형 2&gt;<br>" + question(22).content;
-  question(23).content = "&lt;서논술형 3&gt;<br>" + question(23).content;
 }
