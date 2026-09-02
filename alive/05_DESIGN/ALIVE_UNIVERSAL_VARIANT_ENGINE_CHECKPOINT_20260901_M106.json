@@ -1,0 +1,50 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901_M106",
+  "phase": "Phase 5",
+  "scope": "M1-06 POLYGON_INTERIOR_ANGLE_SUM + CIRCLE_AREA_CIRCUMFERENCE + RECTANGLE_AREA_PERIMETER bounded slices",
+  "status": "ACTIVE_BOUNDED",
+  "unitKey": "M1-06",
+  "familyId": "M1-06_MULTI_FAMILY",
+  "capabilities": {
+    "POLYGON_INTERIOR_ANGLE_SUM": {"A_numeric":"ACTIVE_BOUNDED","B_representation":"ACTIVE_BOUNDED","C_parameter_recovery":"HOLD"},
+    "CIRCLE_AREA_CIRCUMFERENCE": {"A_numeric":"ACTIVE_BOUNDED","B_representation":"ACTIVE_BOUNDED","C_parameter_recovery":"HOLD"},
+    "RECTANGLE_AREA_PERIMETER": {"A_numeric":"ACTIVE_BOUNDED","B_representation":"ACTIVE_BOUNDED","C_parameter_recovery":"HOLD"}
+  },
+  "fixtures": {
+    "count": 18,
+    "general": true,
+    "boundary": true,
+    "composite": true,
+    "coverage": ["다각형 내각합", "원 넓이", "원 둘레", "직사각형 넓이", "직사각형 둘레"],
+    "visualDependency": "MANDATORY",
+    "visualTypes": {"POLYGON_INTERIOR_ANGLE_SUM":"segment_geometry","CIRCLE_AREA_CIRCUMFERENCE":"circle_geometry","RECTANGLE_AREA_PERIMETER":"segment_geometry"}
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-m1-06-a02",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "50471776d389d01f57a8cb32efe25851c8617bd5872a87a87612a9adc846cd47",
+      "renderEvidenceSha256": "79b6cf25ea46a52aa82cfaebc3270902cb1f5d1c701a8f0336ef134b666f4f95",
+      "render": {"exam":"PASS","solution":"PASS","answer":"PASS","lastQuestion":18,"pageCounts":{"exam":5,"solution":9,"answer":1},"svgImageCounts":{"exam":36,"solution":18,"answer":0},"svgImageFailures":0,"unrenderedMath":0,"overflow":0},
+      "resume":"PASS",
+      "closure":"PASS",
+      "publicationStatus":"NOT_PUBLISHED"
+    },
+    {
+      "runId": "20260901-middle-m1-06-b03",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "4d9f4faa410ff9881de5c8e8b2c31402689a6a52589788e228ce4946d40cfaea",
+      "renderEvidenceSha256": "e69cf897492ab89c007a8b2d0f6d20c35d5df0e8b2d57f4de64e2afd90cafff9",
+      "render": {"exam":"PASS","solution":"PASS","answer":"PASS","lastQuestion":18,"pageCounts":{"exam":5,"solution":9,"answer":1},"svgImageCounts":{"exam":36,"solution":18,"answer":0},"svgImageFailures":0,"unrenderedMath":0,"overflow":0},
+      "resume":"PASS",
+      "closure":"PASS",
+      "publicationStatus":"NOT_PUBLISHED"
+    }
+  ],
+  "tests": {"m1_06EngineTests":3,"fullRegressionTests":282,"status":"PASS","compileall":"PASS","packageRoundTrip":"PASS"},
+  "productionArchiveRegistration":"NOT_PERFORMED"
+}

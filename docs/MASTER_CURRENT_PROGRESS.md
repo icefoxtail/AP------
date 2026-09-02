@@ -23,7 +23,7 @@
 | Codex 규칙 문서 | 진행 중 | `docs/codex/*.md` | root의 Codex 실행/검수 규칙과 patch workflow가 하위 폴더로 이동됨 |
 | guides / reports | 진행 중 | `docs/guides/*`, `docs/reports/*` | 디자인/reference/textbook/timetable/initial-data 보조 문서 분리 |
 | archive 구조 | 진행 중 | `docs/archive/*`, `docs/_index/ARCHIVE_INDEX.md` | 완료/과거 결과 폴더 재배치 |
-| AP Math JS 아카이브 세부단원 | 운영 QA 완료 | `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`, `archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-operational-qa-v1.json` | 현재 DB·인덱스·식별 맵은 438개 파일·10,686문항이며, 운영 세부단원 분류 범위 433개 파일·10,522문항은 QA 전 게이트 통과. 중복 ID 정규화와 DB 누락 원본 2건 보강, 이미지 경로 보정, 후보 98개 파일 동기화를 완료했다. original 기출 345개 파일·7,909문항은 content/answer/solution 공란 0건으로 정리했으며, 원본이 없는 수피아여고 q10은 기존 선택지·정답·해설에 맞춘 성립 문항으로 복구하고 question-index·identity runtime·브라우저 3모드 검증을 완료했다. 유형·유사 자료의 출처 확인 가능한 DB 4건을 추가 정리했고, 남은 28개 emptySchool·60개 필수 메타 gap은 source-dependent 보류로 분리했다. 이후 types 4개/304문항과 similar 19개/462문항의 JS 기준 해설을 작성해 전체 빈 해설 inventory를 0건으로 만들고 exam/sol/ans 렌더 QA를 완료했다. 추가로 그림 의존 보류 31건과 동일 범위 보강 2건을 자립형 텍스트 문항으로 교체해 그림 보류 표기 0건을 확인했고, 최종 운영 게이트에서 구조 누락 52건과 examTitle 누락 2건도 보완했다. compatibility map은 현재 사용 공식키 106개를 커버하도록 확장했고 검색 alias 4종을 추가했다. 교차 단원 465건과 수동 라벨 변형 34건을 모두 문항 근거 기반으로 승격했고 잔여 교차·수동 보류는 0건이다. 최신 운영 JS 라벨 변형 inventory는 0행·0문항이다. |
+| AP Math JS 아카이브 세부단원 | 운영 QA 완료 | `docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`, `archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-operational-qa-v1.json` | 현재 DB·인덱스·식별 맵은 438개 파일·10,686문항이며, 운영 세부단원 분류 범위 433개 파일·10,522문항은 QA 전 게이트 통과. 중복 ID 정규화와 DB 누락 원본 2건 보강, 이미지 경로 보정, 후보 98개 파일 동기화를 완료했다. original 기출 345개 파일·7,909문항은 content/answer/solution 공란 0건으로 정리했으며, 원본이 없는 수피아여고 q10은 기존 선택지·정답·해설에 맞춘 성립 문항으로 복구하고 question-index·identity runtime·브라우저 3모드 검증을 완료했다. 유형·유사 자료의 출처 확인 가능한 DB 4건을 추가 정리했고, 남은 28개 emptySchool·60개 필수 메타 gap은 source-dependent 보류로 분리했다. 이후 types 4개/304문항과 similar 19개/462문항의 JS 기준 해설을 작성해 전체 빈 해설 inventory를 0건으로 만들고 exam/sol/ans 렌더 QA를 완료했다. 추가로 그림 의존 보류 31건과 동일 범위 보강 2건을 자립형 텍스트 문항으로 교체해 그림 보류 표기 0건을 확인했고, 최종 운영 게이트에서 구조 누락 52건과 examTitle 누락 2건도 보완했다. compatibility map은 현재 사용 공식키 106개를 커버하도록 확장했고 검색 alias 4종을 추가했다. 교차 단원 465건과 수동 라벨 변형 34건을 모두 문항 근거 기반으로 승격했고 잔여 교차·수동 보류는 0건이다. 최신 운영 JS 라벨 변형 inventory는 0행·0문항이다. |
 | AP Math 운영센터 | 정적 map 대조 완료 | `docs/implemented/CURRENT_FRONTEND_MAP.md`, `docs/implemented/CURRENT_WORKER_ROUTE_MAP.md`, `docs/implemented/CURRENT_DB_MAP.md` | 2026-08-24 주요 frontend 경로·Worker route import/dispatch·schema 참조 대조 완료. 동작/브라우저 QA는 별도 범위 |
 | 학생/반 관리 | 진행 중 | `docs/domains/STUDENTS_CLASSES_DOMAIN.md` | 이번 작업에서 코드 검증 없음 |
 | 리포트 AI / 평가리포트 | 일부 완료 | `docs/domains/REPORT_AI_DOMAIN.md`, `docs/plans/REPORT_AI_NEXT_PLAN.md`, `docs/review-packs/report-cohort-validation-20260824/CODEX_RESULT.md` | cohort identity/grade/dedupe/fallback, 실제 index.js initial-data mock D1 통합, 대표 archive 로컬 HTTP exam/sol/ans smoke, production live read-only에서 cohort 5명·평균 78점 확인. `initial-data`의 blueprint 누락 경로를 확인해 report center archive-scoped lazy load를 보강했고 핵심 회귀 4개·report 관련 테스트 31개 통과. 별도 staging target과 remote 실제 payload는 후속 확인 |
@@ -35,7 +35,7 @@
 
 - `original` 348개 레코드는 필수 DB 메타가 완결됐다.
 - `types` 49개와 `similar` 41개에서 확인된 `emptySchool` 28건·필수 메타 gap 60건은 원본 영구 부재로 간주해 활성 queue에서 제거했다. DB 빈 필드와 감사 기록은 보존하며 재개하지 않는다.
-- `school/year/semester/examType`의 직접 근거·상속 금지·재검토 절차를 `docs/rules/JS아카이브룰북_v2.5.md` 4-4에 확정했다. 이 단계에서는 archive 산출물을 추가 변경하지 않는다.
+- `school/year/semester/examType`의 직접 근거·상속 금지·재검토 절차를 `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md` 4-4에 확정했다. 이 단계에서는 archive 산출물을 추가 변경하지 않는다.
 
 ### AP Math JS 아카이브 세부단원 중간 점검 (2026-08-24)
 
@@ -130,6 +130,20 @@
 - 표준단원 마스터 compiled JSON은 재생성했지만 기존 바이트와 동일했다. master 집계는 표준키 142·세부키 459·개념군 461·문제유형 13·템플릿 18개다.
 - schema validator 0 issues, master-key integrity `gateReady=true`, 사용 공식키 106개를 확인했다. 최신 라벨 변형 inventory는 0행·0문항이며 검색용 alias 4종만 source JS와 분리해 유지한다.
 - 문항 JS·DB·question-index·identity runtime과 commit/push/deploy는 변경하지 않았다.
+
+### docs/rules 규칙팩 통합 재배치 (2026-08-28)
+
+- `docs/rules/00_RULES_INDEX.md`를 단일 진입점으로 추가하고, 기존 규칙 원문을 `01_CANONICAL/`, `02_PIPELINES/`, `03_REVIEW/`, `04_VISUAL/`, `05_DESIGN/`, `90_ARCHIVE/`로 역할별 재배치했다.
+- 기준 원본·운영 프로토콜의 본문은 삭제하지 않았으며, legacy snapshot·DRAFT·구버전은 `90_ARCHIVE/`로 격리했다.
+- 현재 운영 파일 21개의 바이트·SHA-256을 `docs/rules/MANIFEST.md`에 새 경로 기준으로 기록했다.
+- `docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`는 현재형 통합 운영 규칙으로 판정해 운영 pack에 승격했다. 운영 manifest는 21개 파일로 갱신했다.
+- 실렌더 기준을 통합 프로토콜과 최종 무결성 검수에 추가했다. 기준본 잠금 후 `exam / solution / answer` 중간 렌더를 수행하고, 수정 후 최종 ZIP 추출본에서 세 화면을 다시 렌더해야 하며, 세 화면 중 하나라도 `WARN` 또는 `NOT_TESTED`이면 최종 PASS·ZIP 봉인을 허용하지 않는다. `internal-review-live.html`은 사용 가능한 경우 별도 기록한다.
+
+### alive 운영 문서 통합 재배치 (2026-08-28)
+
+- `alive/00_ALIVE_INDEX.md`를 단일 진입점으로 만들고 기존 `protocol/`의 정본·실행·스키마·시각 규격을 `01_CANONICAL/`, `02_PIPELINES/`, `03_SCHEMA/`, `04_VISUAL/`로 재배치했다.
+- 기존 루트 프롬프트 12개는 삭제하지 않고 `alive/90_ARCHIVE/LEGACY_PROMPTS/`로 이동했다. 확장자가 없는 레거시 오류 검증 파일은 원문 보존을 위해 이름을 유지했다.
+- 기존 ALIVE `protocol` 디렉터리는 비운 뒤 제거했으며, 문서 내용 자체는 삭제하지 않았다.
 
 ### AP Math JS 아카이브 source-dependent 메타데이터 영구 종결 (2026-08-24)
 

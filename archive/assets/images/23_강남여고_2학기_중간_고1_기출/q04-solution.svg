@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">문항 4 해설: 교집합과 바깥 영역의 원소 수</title>
+  <desc id="desc">두 집합의 영역에 16, 7, 12, 5를 배치하고 색칠 영역 7과 5를 합산</desc>
+  <defs>
+    <clipPath id="aClip"><circle cx="250" cy="205" r="95"/></clipPath>
+    <clipPath id="bClip"><circle cx="370" cy="205" r="95"/></clipPath>
+    <mask id="outsideMask" maskUnits="userSpaceOnUse" x="35" y="100" width="450" height="210">
+      <rect x="35" y="100" width="450" height="210" fill="white"/>
+      <circle cx="250" cy="205" r="95" fill="black"/><circle cx="370" cy="205" r="95" fill="black"/>
+    </mask>
+  </defs>
+  <style>
+    text{font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;fill:#172033}.muted{fill:#56657a}.math{font-family:Georgia,"Times New Roman",serif}
+  </style>
+  <rect width="760" height="360" rx="18" fill="#f8fafc"/>
+  <text x="30" y="38" font-size="22" font-weight="700">Venn diagram의 네 영역에 수를 배치</text>
+  <text x="30" y="67" class="muted" font-size="15">n(A∩B)=23+19−35=7,  n((A∪B)ᶜ)=40−35=5</text>
+  <rect x="30" y="96" width="460" height="214" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <rect x="35" y="100" width="450" height="210" fill="#fed7aa" fill-opacity=".8" mask="url(#outsideMask)"/>
+  <g clip-path="url(#aClip)"><g clip-path="url(#bClip)"><rect x="35" y="100" width="450" height="210" fill="#bfdbfe"/></g></g>
+  <circle cx="250" cy="205" r="95" fill="none" stroke="#2563eb" stroke-width="3"/>
+  <circle cx="370" cy="205" r="95" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <text x="190" y="145" font-size="20" font-weight="700" fill="#2563eb">A</text><text x="410" y="145" font-size="20" font-weight="700" fill="#15803d">B</text>
+  <text x="190" y="212" text-anchor="middle" font-size="22" font-weight="700">16</text><text x="310" y="212" text-anchor="middle" font-size="22" font-weight="700" fill="#1d4ed8">7</text><text x="430" y="212" text-anchor="middle" font-size="22" font-weight="700">12</text><text x="80" y="212" text-anchor="middle" font-size="22" font-weight="700" fill="#c2410c">5</text>
+  <rect x="500" y="105" width="225" height="198" rx="14" fill="#fff" stroke="#cbd5e1"/>
+  <text x="522" y="140" font-size="16" font-weight="700">색칠한 부분</text>
+  <text x="522" y="178" class="math" font-size="23">(A∩B)∪(A∪B)ᶜ</text>
+  <text x="522" y="220" class="muted" font-size="16">= 7 + 5</text>
+  <text x="522" y="264" font-size="24" font-weight="700" fill="#1d4ed8">= 12  (①)</text>
+</svg>

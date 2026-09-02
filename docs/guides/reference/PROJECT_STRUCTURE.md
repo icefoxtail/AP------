@@ -51,7 +51,7 @@
 | `manual/` | 선생님용 검색형 사용설명서 | 정적 데이터 기반 설명서 |
 | `planner/` | 루트 레벨 독립 플래너 페이지 | `apmath/planner/`와 별도 경로 |
 | `report-ai-proxy/` | 외부 AI 분석 프록시 서버 | Gemini 호출용 Node 서비스 |
-| `alive/` | 문제 생성·검수용 프롬프트 모음 | 운영 문서성 자산 |
+| `alive/` | ALIVE 정본·실행 계약·스키마·레거시 프롬프트 모음 | `00_ALIVE_INDEX.md`가 진입점, `90_ARCHIVE/`는 참고 전용 |
 | `rules/` | 프로젝트 규칙·프로토콜 문서 모음 | 검수/수정/해설 기준 |
 | `.agents/`, `.claude/`, `.codex/` | 에이전트/도구 설정 디렉터리 | 개발 보조 메타 폴더 |
 

@@ -1,0 +1,47 @@
+{
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_ENGINE_CHECKPOINT",
+  "schemaVersion": "0.1.0",
+  "checkpointId": "20260901-M204",
+  "status": "ACTIVE_BOUNDED",
+  "productionArchiveRegistration": "NOT_PERFORMED",
+  "registeredMiddleUnits": ["M1-03", "M2-03", "M2-04"],
+  "unit": {
+    "key": "M2-04",
+    "title": "일차함수와 그래프",
+    "fixtures": 6,
+    "activeTransforms": ["numeric", "representation"],
+    "holdTransforms": ["parameter_recovery"],
+    "mandatoryVisual": "simple_function_graph",
+    "studentSolutionPolicy": "detailed_solution_detail_with_graph"
+  },
+  "runs": [
+    {
+      "runId": "20260901-middle-function-a02",
+      "variantClass": "A",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "2bce61c5d0998bf9b3aac12227a3e43ae260ff2955917d7caacdf38c13038fcd",
+      "renderEvidence": {
+        "exam": {"verdict": "PASS", "pageCount": 2, "lastQuestion": 6, "mathJaxCount": 28, "overflowCount": 0, "badImages": 0},
+        "solution": {"verdict": "PASS", "pageCount": 3, "lastQuestion": 6, "mathJaxCount": 108, "overflowCount": 0, "badImages": 0, "implementationLeakCount": 0},
+        "answer": {"verdict": "PASS", "pageCount": 1, "lastQuestion": 6, "mathJaxCount": 6, "overflowCount": 0, "badImages": 0}
+      },
+      "resume": "PASS",
+      "closure": "PASS"
+    },
+    {
+      "runId": "20260901-middle-function-b02",
+      "variantClass": "B",
+      "status": "SEALED_LOCAL",
+      "packageSha256": "a3e8c05b45f7dc55ff02525e51d284ad4fb41fa13b2b1dc25a98d9d18f1e6a7d",
+      "renderEvidence": {
+        "exam": {"verdict": "PASS", "pageCount": 2, "lastQuestion": 6, "mathJaxCount": 40, "overflowCount": 0, "badImages": 0},
+        "solution": {"verdict": "PASS", "pageCount": 3, "lastQuestion": 6, "mathJaxCount": 114, "overflowCount": 0, "badImages": 0, "implementationLeakCount": 0},
+        "answer": {"verdict": "PASS", "pageCount": 1, "lastQuestion": 6, "mathJaxCount": 6, "overflowCount": 0, "badImages": 0}
+      },
+      "resume": "PASS",
+      "closure": "PASS"
+    }
+  ],
+  "qualityFix": "The pre-fix draft leaked _fmt(...) into student-facing solution text; the f-string fix and regression test were applied before A02/B02 regeneration.",
+  "globalProduction": "HOLD"
+}

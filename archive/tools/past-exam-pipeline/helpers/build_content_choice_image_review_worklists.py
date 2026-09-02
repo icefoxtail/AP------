@@ -259,9 +259,7 @@ def main():
         "generatedAt": now_iso(),
         "root": str(root),
         "rulesApplied": [
-            "rules/무결성검수.md: review only; inspect every question; do not modify during audit",
-            "rules/# 확통 JS 발문·보기·정답·해설 품질 업그레이드 GPT 에이전트 지시.md: full page image first, then JS; content/choices minimum repair only with full-page image evidence; question crops are optional zoom evidence only",
-            "rules/헬모드최종.txt: preserve original wording/order; no invented choices",
+            "docs/rules/03_REVIEW/무결성검수.md: review only; inspect every question; do not modify during audit",
         ],
         "sourceEvidencePolicy": "full_page_first_crop_zoom_only",
         "scope": "content and choices only; answer and solution excluded",

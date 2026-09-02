@@ -49,7 +49,7 @@ window.questionBank = [
       "집합의 상등"
     ],
     "wide": false,
-    "content": "두 집합 $A,B$가 $A=\\{-1,a+3,6\\}$, $B=\\{5,b,6\\}$일 때, $A\\subset B$이고 $B\\subset A$를 만족하는 $a+b$의 값은? [3.5점]",
+    "content": "두 집합 $A,B$가 $A=\\{-1,a+3,6\\}$, $B=\\{5,b,6\\}$일 때, $A\\subseteq B$이고 $B\\subseteq A$를 만족하는 $a+b$의 값은? [3.5점]",
     "choices": [
       "$-1$",
       "$0$",

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" aria-labelledby="title desc">
+  <title id="title">문항 11 해설: A에서 B와 C의 공통 부분을 제외</title>
+  <desc id="desc">세 집합 Venn diagram에서 A 전체를 칠하고 B와 C의 공통 부분만 제외</desc>
+  <defs>
+    <clipPath id="aClip"><circle cx="245" cy="170" r="88"/></clipPath>
+    <clipPath id="bClip"><circle cx="185" cy="238" r="88"/></clipPath>
+    <clipPath id="cClip"><circle cx="305" cy="238" r="88"/></clipPath>
+  </defs>
+  <style>
+    text{font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;fill:#172033}.muted{fill:#56657a}.math{font-family:Georgia,"Times New Roman",serif}
+  </style>
+  <rect width="760" height="390" rx="18" fill="#f8fafc"/>
+  <text x="30" y="38" font-size="22" font-weight="700">A에서 B∩C만 제외하기</text>
+  <text x="30" y="67" class="muted" font-size="15">색칠 영역 = A−(B∩C) = (A−B)∪(A−C)</text>
+  <rect x="30" y="82" width="430" height="260" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <circle cx="245" cy="170" r="88" fill="#bfdbfe" fill-opacity=".9"/>
+  <g clip-path="url(#aClip)"><g clip-path="url(#bClip)"><g clip-path="url(#cClip)"><rect x="35" y="82" width="430" height="260" fill="#fff"/></g></g></g>
+  <circle cx="245" cy="170" r="88" fill="none" stroke="#2563eb" stroke-width="3"/><circle cx="185" cy="238" r="88" fill="none" stroke="#d97706" stroke-width="3"/><circle cx="305" cy="238" r="88" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <text x="245" y="105" text-anchor="middle" font-size="20" font-weight="700" fill="#2563eb">A</text><text x="140" y="285" font-size="20" font-weight="700" fill="#b45309">B</text><text x="345" y="290" font-size="20" font-weight="700" fill="#15803d">C</text>
+  <text x="500" y="128" font-size="16" font-weight="700">영역 해석</text>
+  <text x="500" y="169" class="math" font-size="24">A</text><text x="532" y="169" class="muted" font-size="15">전체를 먼저 칠함</text>
+  <text x="500" y="207" class="math" font-size="24" fill="#dc2626">− (B∩C)</text><text x="620" y="207" class="muted" font-size="15">겹친 중앙만 지움</text>
+  <rect x="500" y="243" width="190" height="49" rx="12" fill="#eff6ff" stroke="#93c5fd"/><text x="595" y="274" text-anchor="middle" font-size="22" font-weight="700" fill="#1d4ed8">정답 ⑤</text>
+</svg>

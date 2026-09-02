@@ -37,6 +37,20 @@ docs/
 
 `rules/`는 AP Math JS 아카이브의 운영 규칙·마스터·검수 프로토콜, `review-packs/`는 검수 전달물, `proposals/`는 실행 경로 밖의 제안 스키마, `awesome-design-md/`는 외부 디자인 참고 자료다. 이 네 디렉터리는 문서 진입 구조에서 제외하지 않는다.
 
+`rules/` 내부는 다음 순서로 나뉜다.
+
+```text
+rules/
+├─ 00_RULES_INDEX.md
+├─ 01_CANONICAL/   # 공통 기준 원본
+├─ 02_PIPELINES/   # 추출·변환·해설·수정
+├─ 03_REVIEW/      # 단계별 검수·무결성
+├─ 04_VISUAL/      # 도형·그래프·SVG
+├─ 05_DESIGN/      # 구현 설계 참고
+├─ 90_ARCHIVE/     # legacy·DRAFT·이전 버전
+└─ MANIFEST.md
+```
+
 ## 2. docs 루트에 남기는 문서와 이유
 
 | 문서 | 이유 |

@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500"><rect width="100%" height="100%" fill="white"/><text x="180" y="50" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="20" font-weight="bold" fill="black">X</text><text x="580" y="50" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="20" font-weight="bold" fill="black">Y</text><circle cx="180" cy="105" r="22" fill="white" stroke="black" stroke-width="2"/><text x="180" y="111" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="16" font-weight="normal" fill="black">2</text><circle cx="180" cy="180" r="22" fill="white" stroke="black" stroke-width="2"/><text x="180" y="186" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="16" font-weight="normal" fill="black">5</text><circle cx="580" cy="105" r="22" fill="white" stroke="black" stroke-width="2"/><text x="580" y="111" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="16" font-weight="normal" fill="black">5</text><circle cx="580" cy="180" r="22" fill="white" stroke="black" stroke-width="2"/><text x="580" y="186" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="16" font-weight="normal" fill="black">8</text><line x1="205" y1="105" x2="555" y2="105" stroke="black" stroke-width="2"/><polygon points="555,105 542,99 542,111" fill="black"/><line x1="205" y1="180" x2="555" y2="180" stroke="black" stroke-width="2"/><polygon points="555,180 542,174 542,186" fill="black"/><text x="380" y="440" text-anchor="middle" font-family="Arial, Malgun Gothic, sans-serif" font-size="18" font-weight="normal" fill="black">f then g</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+<style>
+text { font-family: 'Noto Sans CJK KR', sans-serif; font-size: 24px; }
+.label { font-size: 28px; font-weight: 700; }
+.small { font-size: 22px; }
+</style>
+<defs><marker id="arr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#333"/></marker></defs>
+<rect x="0" y="0" width="900" height="360" fill="white"/>
+<text x="120" y="50" class="label">X</text><text x="430" y="50" class="label">Y</text><text x="740" y="50" class="label">Z</text>
+<ellipse cx="130" cy="195" rx="80" ry="120" fill="none" stroke="#333" stroke-width="2"/>
+<ellipse cx="450" cy="195" rx="80" ry="120" fill="none" stroke="#333" stroke-width="2"/>
+<ellipse cx="760" cy="195" rx="80" ry="120" fill="none" stroke="#333" stroke-width="2"/>
+<text x="124" y="120">1</text><text x="124" y="200">2</text><text x="124" y="280">3</text>
+<text x="442" y="110">4</text><text x="442" y="190">5</text><text x="442" y="270">6</text>
+<text x="752" y="110">7</text><text x="752" y="190">8</text><text x="752" y="270">9</text>
+<path d="M180 115 C260 115, 310 175, 370 175" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M180 195 C250 185, 300 100, 370 100" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M180 275 C250 275, 300 255, 370 255" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M500 105 C580 105, 620 255, 680 255" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M500 185 C570 185, 620 185, 680 185" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<path d="M500 265 C570 265, 620 105, 680 105" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+<text x="270" y="90" class="small">f</text><text x="585" y="90" class="small">g</text>
+</svg>

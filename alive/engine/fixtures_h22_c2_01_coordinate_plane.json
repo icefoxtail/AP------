@@ -1,0 +1,101 @@
+[
+  {
+    "caseId": "h22-c2-01-distance-ordinary",
+    "unitKey": "H22-C2-01",
+    "kind": "distance",
+    "fixtureClass": "ordinary",
+    "coverage": "좌표와 거리",
+    "title": "평면좌표 · 두 점 사이의 거리",
+    "points": {
+      "A": {"x": -2, "y": 1, "label": "A"},
+      "B": {"x": 2, "y": 4, "label": "B"}
+    },
+    "expected": {"distance": 5},
+    "visual": {
+      "xRange": [-4, 5],
+      "yRange": [-2, 6],
+      "caption": "두 점의 좌표에서 거리 d(A,B)를 계산"
+    }
+  },
+  {
+    "caseId": "h22-c2-01-midpoint-vertical-boundary",
+    "unitKey": "H22-C2-01",
+    "kind": "midpoint",
+    "fixtureClass": "boundary_or_degenerate",
+    "coverage": "중점",
+    "title": "평면좌표 · 선분의 중점",
+    "points": {
+      "A": {"x": -1, "y": -3, "label": "A"},
+      "B": {"x": -1, "y": 5, "label": "B"}
+    },
+    "expected": {"point": {"x": -1, "y": 1, "label": "M"}},
+    "visual": {
+      "xRange": [-4, 3],
+      "yRange": [-5, 7],
+      "caption": "중점 M은 두 끝점 좌표의 평균"
+    }
+  },
+  {
+    "caseId": "h22-c2-01-section-ordinary",
+    "unitKey": "H22-C2-01",
+    "kind": "section",
+    "fixtureClass": "ordinary",
+    "coverage": "내분점",
+    "title": "평면좌표 · 선분의 내분점",
+    "points": {
+      "A": {"x": -4, "y": 1, "label": "A"},
+      "B": {"x": 2, "y": 7, "label": "B"}
+    },
+    "ratioAPtoPB": [1, 2],
+    "expected": {"point": {"x": -2, "y": 3, "label": "P"}},
+    "visual": {
+      "xRange": [-5, 4],
+      "yRange": [-1, 8],
+      "caption": "P는 AP:PB=1:2로 선분 AB를 내분"
+    }
+  },
+  {
+    "caseId": "h22-c2-01-centroid-composite",
+    "unitKey": "H22-C2-01",
+    "kind": "centroid",
+    "fixtureClass": "composite_or_exam_like",
+    "coverage": "삼각형의 무게중심",
+    "title": "평면좌표 · 삼각형의 무게중심",
+    "points": {
+      "A": {"x": -3, "y": 0, "label": "A"},
+      "B": {"x": 3, "y": 0, "label": "B"},
+      "C": {"x": 0, "y": 6, "label": "C"}
+    },
+    "expected": {"point": {"x": 0, "y": 2, "label": "G"}},
+    "visual": {
+      "xRange": [-5, 5],
+      "yRange": [-2, 8],
+      "caption": "세 꼭짓점 좌표의 평균으로 무게중심 G를 계산"
+    }
+  },
+  {
+    "caseId": "h22-c2-01-locus-equidistance",
+    "unitKey": "H22-C2-01",
+    "kind": "locus",
+    "fixtureClass": "composite_or_exam_like",
+    "coverage": "평면좌표의 자취",
+    "title": "평면좌표 · 두 점에서 같은 거리에 있는 점의 자취",
+    "points": {
+      "A": {"x": -2, "y": -1, "label": "A"},
+      "B": {"x": 2, "y": -1, "label": "B"}
+    },
+    "locusSamples": [
+      {"x": 0, "y": -3, "label": "P₁"},
+      {"x": 0, "y": 0, "label": "P₂"},
+      {"x": 0, "y": 2, "label": "P₃"}
+    ],
+    "expected": {"equation": {"a": 8, "b": 0, "c": 0}},
+    "visual": {
+      "xRange": [-4, 4],
+      "yRange": [-4, 3],
+      "lineFrom": {"x": 0, "y": -4},
+      "lineTo": {"x": 0, "y": 3},
+      "caption": "A, B에서 같은 거리에 있는 점의 자취는 x=0"
+    }
+  }
+]

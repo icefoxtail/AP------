@@ -68,7 +68,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","원의 방정식","접선","접선의 방정식","도형"],
     "wide": false,
     "content": "원 $x^2+y^2=25$ 위의 점 $(3,4)$에서의 접선의 방정식은?",
     "choices": [
@@ -184,7 +184,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","원의 방정식","접선","기울기","도형"],
     "wide": false,
     "content": "점 $(-1,2)$에서 원 $(x-3)^2+(y+2)^2=4$에 그은 두 접선의 기울기의 곱으로 알맞은 것은?",
     "choices": [

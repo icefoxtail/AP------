@@ -121,6 +121,10 @@ window.questionBank = [
     "wide": false,
     "content": "벤 다이어그램에서 $n(U)=40$, $n(A)=23$, $n(B)=19$, $n(A\\cup B)=35$일 때, 색칠한 부분을 나타내는 집합의 원소의 개수는? [3.2점]",
     "image": "assets/images/23_강남여고_2학기_중간_고1_기출/q04.png",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "두 집합 Venn diagram의 영역별 원소 수와 색칠 영역의 합",
+    "solutionImageCaption": "교집합 7과 바깥 영역 5를 더해 12",
+    "solutionImageSize": "full",
     "choices": [
       "$12$",
       "$13$",

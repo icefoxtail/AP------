@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" aria-labelledby="title desc">
+  <title id="title">문항 4 해설: (A∪B)−(A−C)의 영역</title>
+  <desc id="desc">세 집합 Venn diagram에서 B∩A 여집합, A∩C, B∩C 영역을 합쳐 정답 ⑤를 설명</desc>
+  <defs>
+    <clipPath id="aClip"><circle cx="245" cy="170" r="88"/></clipPath>
+    <clipPath id="bClip"><circle cx="185" cy="238" r="88"/></clipPath>
+    <clipPath id="cClip"><circle cx="305" cy="238" r="88"/></clipPath>
+    <mask id="notA" maskUnits="userSpaceOnUse" x="35" y="82" width="430" height="260">
+      <rect x="35" y="82" width="430" height="260" fill="white"/><circle cx="245" cy="170" r="88" fill="black"/>
+    </mask>
+  </defs>
+  <style>
+    text{font-family:"Noto Sans KR","Malgun Gothic",Arial,sans-serif;fill:#172033}.muted{fill:#56657a}.math{font-family:Georgia,"Times New Roman",serif}
+  </style>
+  <rect width="760" height="390" rx="18" fill="#f8fafc"/>
+  <text x="30" y="38" font-size="22" font-weight="700">차집합은 ‘빼는 영역’을 먼저 지운다</text>
+  <text x="30" y="67" class="muted" font-size="15">(A∪B)−(A−C) = (A∪B)∩(Aᶜ∪C)</text>
+  <rect x="30" y="82" width="430" height="260" rx="12" fill="#fff" stroke="#cbd5e1"/>
+  <g clip-path="url(#bClip)"><rect x="35" y="82" width="430" height="260" fill="#bfdbfe" mask="url(#notA)"/></g>
+  <g clip-path="url(#aClip)"><g clip-path="url(#cClip)"><rect x="35" y="82" width="430" height="260" fill="#bfdbfe"/></g></g>
+  <g clip-path="url(#bClip)"><g clip-path="url(#cClip)"><rect x="35" y="82" width="430" height="260" fill="#bfdbfe"/></g></g>
+  <circle cx="245" cy="170" r="88" fill="none" stroke="#2563eb" stroke-width="3"/><circle cx="185" cy="238" r="88" fill="none" stroke="#d97706" stroke-width="3"/><circle cx="305" cy="238" r="88" fill="none" stroke="#16a34a" stroke-width="3"/>
+  <text x="245" y="110" text-anchor="middle" font-size="20" font-weight="700" fill="#2563eb">A</text><text x="140" y="285" font-size="20" font-weight="700" fill="#b45309">B</text><text x="345" y="290" font-size="20" font-weight="700" fill="#15803d">C</text>
+  <rect x="500" y="100" width="225" height="210" rx="14" fill="#fff" stroke="#cbd5e1"/>
+  <text x="522" y="137" font-size="16" font-weight="700">남는 영역</text>
+  <text x="522" y="174" class="math" font-size="21">B∩Aᶜ</text><text x="570" y="174" class="muted" font-size="15">(B만인 부분)</text>
+  <text x="522" y="207" class="math" font-size="21">∪ (A∩C)</text>
+  <text x="522" y="240" class="math" font-size="21">∪ (B∩C)</text>
+  <rect x="522" y="261" width="68" height="30" rx="15" fill="#2563eb"/><text x="556" y="282" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">⑤</text>
+</svg>

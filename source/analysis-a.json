@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "0.2.0",
+  "artifactType": "SOURCE_ANALYSIS",
+  "artifactId": "source-analysis-a-20260829T032912Z-q003",
+  "producerId": "R03_SOURCE_ANALYSIS:source_analysis:a",
+  "sourceLockSha256": "a4bcf5d1c6d71a934ca07170a3f24b2a141d18ddc8f9464ad122c362395170e0",
+  "analysisLane": "A",
+  "sourceQuestionId": "25_순천여고_2학기_중간_고1_공통수학2:q003",
+  "curriculum": {
+    "course": "공통수학2",
+    "unitKey": "H22-C2-01",
+    "unit": "평면좌표",
+    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+    "subUnit": "평면좌표와 거리"
+  },
+  "solutionStructure": [
+    "세 점의 좌표 차이로 각 변의 방향벡터를 구한다.",
+    "거리의 제곱을 계산하여 AB²=34, AC²=34, BC²=68임을 비교한다.",
+    "AB=AC인 두 변과 BC²=AB²+AC²인 관계를 결합하여 A에서 직각임을 판정한다.",
+    "같은 두 변이 직각을 이루므로 삼각형을 직각이등변삼각형으로 분류한다.",
+    "분류 결과와 일치하는 단일 선택지를 고른다."
+  ],
+  "sourceFingerprint": {
+    "coreInvariants": [
+      "공통수학2의 평면좌표와 거리 맥락에서 세 점이 정하는 비퇴화 삼각형의 종류를 판정한다.",
+      "세 점 A, B, C의 좌표가 주어지고 좌표 차이 또는 거리의 제곱을 이용한다.",
+      "두 변 AB와 AC의 길이가 같고, 이 두 변이 이루는 각 A가 직각이다.",
+      "거리 제곱의 핵심 관계는 AB²=AC²이고 BC²=AB²+AC²이다.",
+      "응답 형식은 분류 결과를 고르는 5지선다 객관식이다."
+    ],
+    "mutableFeatures": [
+      "점 A, B, C의 구체적인 좌표값",
+      "좌표 차이의 부호와 평행이동·회전에 따른 배치",
+      "공통 변의 길이와 각 변의 거리 제곱의 수치",
+      "선택지의 삼각형 분류 표현과 오답 설계",
+      "문항의 시각적 배치 태그 및 서술 문구"
+    ]
+  },
+  "assumptions": [],
+  "unresolvedPoints": [],
+  "questionForm": {
+    "questionType": "MCQ",
+    "choiceCount": 5,
+    "layoutTag": "grid"
+  },
+  "mathematicalEvidence": {
+    "coordinates": {
+      "A": [0, 1],
+      "B": [-5, -2],
+      "C": [3, -4]
+    },
+    "squaredDistances": {
+      "AB": 34,
+      "AC": 34,
+      "BC": 68
+    },
+    "rightAngleWitness": "(B-A)·(C-A)=(-5,-3)·(3,-5)=0",
+    "classification": "A를 직각 꼭짓점으로 하는 직각이등변삼각형"
+  },
+  "difficultySignal": "중: 좌표 차이와 거리 제곱 비교를 정확히 수행한 뒤 등변·직각 조건을 함께 해석해야 한다."
+}

@@ -1,13 +1,13 @@
 # JS아카이브 신규 해설 v2.1 문서 동기화 결과
 
 ## 1. 수정한 파일
-- docs/rules/문제해설추출.md
-- docs/rules/해설프로토콜.md
-- docs/rules/JS아카이브룰북_v2.5.md
-- docs/rules/수정프로토콜.md
-- docs/rules/무결성검수.md
-- docs/rules/JS_문항품질_업그레이드.md
-- docs/rules/수학_문항오류_검증_프로토콜_v2.1.md
+- docs/rules/02_PIPELINES/문제해설추출.md
+- docs/rules/02_PIPELINES/해설프로토콜.md
+- docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md
+- docs/rules/02_PIPELINES/수정프로토콜.md
+- docs/rules/03_REVIEW/무결성검수.md
+- docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md
+- docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md
 - alive/숫자변형생성용.md
 - tools/create_probstat_solution_agent_packs_16x5_20260602.js
 - tools/archive_audit.js
@@ -35,7 +35,6 @@
 - 불확실 문항은 solution에 운영 메모를 넣지 않고 빈 문자열 또는 review_needed/오류 목록으로 분리하도록 정리했다.
 
 ## 4. 2차 확인 대상 결과
-- docs/rules/헬모드최종.md: 추출 단계에서 solution을 붙이지 않는다는 문구가 있어 충돌 수정 없이 확인만 했다.
 - alive/숫자변형생성용.md: 신규 solution 예시와 체크리스트의 `[키포인트]` 강제 문구를 v2.1 자연 풀이 흐름 기준으로 수정했다.
 - tools/create_probstat_solution_agent_packs_16x5_20260602.js: 팩 안내문과 체크리스트의 `[키포인트]` 강제를 제거하고 v2.1 기준으로 바꿨다.
 - tools/archive_audit.js: `[키포인트]` 누락 WARN 대신 solution 결론 확인 WARN으로 조정했다.

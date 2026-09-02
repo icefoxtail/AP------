@@ -1,0 +1,6 @@
+interface:
+  display_name: "APMath ALIVE Adaptive Experiment"
+  short_description: "Luna xhigh 고정 적응형 시험지 비교 파이프라인"
+  default_prompt: "Use $apmath-similar-question-pipeline-adaptive only for an explicit A/B comparison against the baseline whole-exam pipeline. Keep Luna xhigh for every model call, use the isolated adaptive runtime, preserve all quality and browser gates, and never publish to the production Archive."
+policy:
+  allow_implicit_invocation: false

@@ -220,7 +220,7 @@ window.questionBank = [
       "원소개수"
     ],
     "wide": false,
-    "content": "다음 보기 중 옳은 것을 모두 고르면? [3.6점]\nㄱ. $3\\in\\{1,3,5\\}$  ㄴ. $0\\in\\varnothing$  ㄷ. $10\\notin\\{x\\mid x$는 $10$ 미만인 자연수$\\}$  ㄹ. $n(\\{a,b\\})=2$",
+    "content": "다음 보기 중 옳은 것을 모두 고르면? [3.6점]\nㄱ. $3\\in\\{1,3,5\\}$  ㄴ. $0\\in\\varnothing$  ㄷ. $10\\notin\\{x\\mid x$는 $10$ 미만인 자연수$\\}$  ㄹ. $n(\\{a,b\\})=2$ (단, $a\\ne b$)",
     "choices": [
       "ㄱ, ㄴ",
       "ㄴ, ㄷ",
@@ -437,6 +437,10 @@ window.questionBank = [
   },
   {
     "id": 14,
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "A와 B의 해집합을 수직선에 표시한 집합 해설",
+    "solutionImageCaption": "A∩B={x|−1≤x<2}, B={x|−1≤x≤4}에서 a=-3, b=-4",
+    "solutionImageSize": "full",
     "level": "상",
     "category": "집합과 부등식",
     "originalCategory": "집합",
@@ -463,7 +467,7 @@ window.questionBank = [
       "$16$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 먼저 $A,C$를 구간으로 나타내고 합집합과 교집합 조건으로 $B$를 결정한다.\n조건 정리: $x^2-6x+8=(x-2)(x-4)$이고, $x^2+2x+4=(x+1)^2+3$이다.\n풀이 방향: $C=\\mathbb R$임을 확인한 뒤 $A\\cup B=\\mathbb R$, $A\\cap B=[-1,2)$를 동시에 만족하는 $B$를 찾는다.\n정석 풀이: $A=(-\\infty,2)\\cup(4,\\infty)$이고 $C=\\mathbb R$이다. 합집합이 실수 전체가 되려면 $B$가 $[2,4]$를 포함해야 하고, 교집합 조건에서 $B$의 왼쪽 끝은 $-1$, 오른쪽 끝은 $4$여야 하므로 $B=[-1,4]$이다. 따라서 $x^2+ax+b=(x+1)(x-4)=x^2-3x-4$이고 $a=-3$, $b=-4$이다. 그러므로 $ab=12$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 먼저 $A,C$를 부등식의 해집합으로 나타내고 합집합과 교집합 조건으로 $B$를 결정한다.\n조건 정리: $x^2-6x+8=(x-2)(x-4)$이고, $x^2+2x+4=(x+1)^2+3$이다.\n풀이 방향: $C=\\mathbb R$임을 확인한 뒤 $A\\cup B=\\mathbb R$, $A\\cap B=\\{x\\mid-1\\le x<2\\}$를 동시에 만족하는 $B$를 찾는다.\n정석 풀이: $A=\\{x\\mid x<2\\text{ 또는 }x>4\\}$이고 $C=\\mathbb R$이다. 합집합이 실수 전체가 되려면 $B$가 $\\{x\\mid2\\le x\\le4\\}$를 포함해야 하고, 교집합 조건에서 $B$의 왼쪽 끝은 $-1$, 오른쪽 끝은 $4$여야 하므로 $B=\\{x\\mid-1\\le x\\le4\\}$이다. 따라서 $x^2+ax+b=(x+1)(x-4)=x^2-3x-4$이고 $a=-3$, $b=-4$이다. 그러므로 $ab=12$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -531,7 +535,11 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] $\\dfrac{y}{x+2}$를 기울기로 보면 점 $(-2,0)$을 지나 원에 접하는 직선을 찾는 문제가 된다.\n조건 정리: $x^2+y^2=2$이고 $x+2>0$이므로 비의 최댓값은 양의 접선 기울기이다.\n풀이 방향: $t=\\dfrac{y}{x+2}$로 놓고 직선 $tx-y+2t=0$이 원에 접할 조건을 사용한다.\n정석 풀이: 원점과 직선 사이의 거리가 반지름 $\\sqrt2$와 같아야 하므로 $\\dfrac{|2t|}{\\sqrt{t^2+1}}=\\sqrt2$이다. 제곱하면 $4t^2=2t^2+2$이므로 $t^2=1$이고 최댓값에 해당하는 $t=1$이다. 접점은 직선 $y=x+2$와 원의 공통점 $P=(-1,1)$이므로 직선 $OP$의 기울기는 $\\dfrac{1}{-1}=-1$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] $\\dfrac{y}{x+2}$를 기울기로 보면 점 $(-2,0)$을 지나 원에 접하는 직선을 찾는 문제가 된다.\n조건 정리: $x^2+y^2=2$이고 $x+2>0$이므로 비의 최댓값은 양의 접선 기울기이다.\n풀이 방향: $t=\\dfrac{y}{x+2}$로 놓고 직선 $tx-y+2t=0$이 원에 접할 조건을 사용한다.\n정석 풀이: 원점과 직선 사이의 거리가 반지름 $\\sqrt2$와 같아야 하므로 $\\dfrac{|2t|}{\\sqrt{t^2+1}}=\\sqrt2$이다. 제곱하면 $4t^2=2t^2+2$이므로 $t^2=1$이고 최댓값에 해당하는 $t=1$이다. 접점은 직선 $y=x+2$와 원의 공통점 $P=(-1,1)$이므로 직선 $OP$의 기울기는 $\\dfrac{1}{-1}=-1$이다.\n따라서 정답은 ②이다.\n[보강] 분모 x+2는 원 위에서 항상 양수이므로 y/(x+2)는 점 A=(−2,0)에서 점 (x,y)로 향하는 선분의 기울기이다. 최대 기울기 t=1일 때 직선 y=x+2가 원에 접하고 접점은 P=(−1,1)이다. 따라서 OP의 기울기는 1/(−1)=−1이다.",
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "원 x²+y²=2와 외부점 A(−2,0)의 최대 기울기 접선 y=x+2, 접점 P(−1,1), 직선 OP를 표시한 그림",
+    "solutionImageCaption": "비의 최댓값을 접선의 기울기로 바꾸고 접점에서 OP의 기울기를 구한다.",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",

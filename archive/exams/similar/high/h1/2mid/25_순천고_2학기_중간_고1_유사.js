@@ -59,7 +59,7 @@ window.questionBank = [
       "공집합"
     ],
     "wide": false,
-    "content": "집합 $A=\\{a,b,c\\}$의 멱집합을 $P(A)$라 하고, $B=P(A)\\cup\\{\\{\\varnothing\\}\\}$라 하자. 집합 $B$의 원소 중 집합 $A$의 부분집합이 아닌 것은?",
+    "content": "집합 $A=\\{a,b,c\\}$의 모든 부분집합을 원소로 하는 집합을 $P(A)$라 하고, $B=P(A)\\cup\\{\\{\\varnothing\\}\\}$라 하자. 집합 $B$의 원소 중 집합 $A$의 부분집합이 아닌 것은?",
     "choices": [
       "$\\varnothing$",
       "$\\{a\\}$",
@@ -68,7 +68,7 @@ window.questionBank = [
       "$\\{\\varnothing\\}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 멱집합의 원소는 모두 원래 집합의 부분집합이라는 점을 먼저 이용한다.\\n조건 정리: $B=P(A)\\cup\\{\\{\\varnothing\\}\\}$이고, $B$의 원소 중 $A$의 부분집합이 아닌 것을 찾는다.\\n풀이 방향: $P(A)$에서 온 원소와 새로 추가된 원소 $\\{\\varnothing\\}$을 구분한다.\\n정석 풀이:\\n1. $P(A)$의 모든 원소는 정의상 $A$의 부분집합이다. 따라서 $\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $A$는 모두 $A$의 부분집합이다.\\n2. $\\{\\varnothing\\}$이 $A$의 부분집합이 되려면 $\\varnothing$이 $A$의 원소여야 한다. 그러나 $A$의 원소는 $a,b,c$뿐이므로 $\\varnothing\\notin A$이다.\\n3. 따라서 $\\{\\varnothing\\}$은 $A$의 부분집합이 아니다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 문제에서 정의한 $P(A)$의 원소는 모두 원래 집합 $A$의 부분집합이라는 점을 먼저 이용한다.\\n조건 정리: $B=P(A)\\cup\\{\\{\\varnothing\\}\\}$이고, $B$의 원소 중 $A$의 부분집합이 아닌 것을 찾는다.\\n풀이 방향: $P(A)$에서 온 원소와 새로 추가된 원소 $\\{\\varnothing\\}$을 구분한다.\\n정석 풀이:\\n1. $P(A)$의 정의에 따라 그 모든 원소는 $A$의 부분집합이다. 따라서 $\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $A$는 모두 $A$의 부분집합이다.\\n2. $\\{\\varnothing\\}$이 $A$의 부분집합이 되려면 $\\varnothing$이 $A$의 원소여야 한다. 그러나 $A$의 원소는 $a,b,c$뿐이므로 $\\varnothing\\notin A$이다.\\n3. 따라서 $\\{\\varnothing\\}$은 $A$의 부분집합이 아니다.\\n따라서 정답은 ⑤이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
@@ -398,6 +398,10 @@ window.questionBank = [
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_유사/q11-solution.svg",
+    "solutionImageAlt": "A 안에서 B 또는 C에 속하는 영역을 표시한 유사 문항 Venn diagram",
+    "solutionImageCaption": "색칠 영역 = A∩(B∪C)",
+    "solutionImageSize": "full",
     "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_순천고_2학기_중간_고1_유사/q11.svg",
     "visualSpec": {

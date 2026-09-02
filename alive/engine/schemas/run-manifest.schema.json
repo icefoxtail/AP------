@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://apmath.local/alive/run-manifest.schema.json",
+  "title": "ALIVE Run Manifest",
+  "type": "object",
+  "required": ["schemaVersion", "engineVersion", "runId", "status", "currentStage", "request", "sourceResolution", "stages"],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "engineVersion": {"type": "string", "minLength": 1},
+    "runId": {"type": "string", "minLength": 1},
+    "status": {"enum": ["PENDING", "BLOCKED", "READY_FOR_ORCHESTRATION", "ACTIVE", "PHASE2_COMPLETE", "LOCALLY_FROZEN", "FAILED"]},
+    "currentStage": {"type": "string", "pattern": "^R[0-9]{2}_"},
+    "codes": {"type": "array", "items": {"type": "string"}},
+    "request": {"type": "object"},
+    "sourceResolution": {"type": "object"},
+    "sourceLock": {"type": ["object", "null"]},
+    "stages": {
+      "type": "array",
+      "minItems": 19,
+      "items": {
+        "type": "object",
+        "required": ["stageId", "status", "evidence"],
+        "properties": {
+          "stageId": {"type": "string"},
+          "status": {"enum": ["PENDING", "ACTIVE", "PASS", "BLOCKED", "FAIL", "UNVERIFIED", "N_A"]},
+          "evidence": {"type": "array"}
+        }
+      }
+    }
+  }
+}

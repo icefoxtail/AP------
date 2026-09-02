@@ -1,0 +1,29 @@
+{
+  "artifactType": "ALIVE_PHASE6_MIXED_EXAM_PLANNER_FIXTURE",
+  "schemaVersion": "0.1.0",
+  "schoolProfile": {
+    "course": "공통수학1·2",
+    "school": "fixture-school",
+    "term": "midterm",
+    "preserveSourceOrder": true
+  },
+  "targetClasses": ["A", "B", "C"],
+  "targetClassRanges": {
+    "A": {"min": 2, "max": 2},
+    "B": {"min": 2, "max": 2},
+    "C": {"min": 2, "max": 2}
+  },
+  "plannerPolicy": {
+    "allowClassSubstitution": false,
+    "maxVisualCount": 3,
+    "maxConstructedResponseCount": 2
+  },
+  "questions": [
+    {"id": 1, "unitKey": "H22-C-01", "structureFamily": "DIRECT_CALCULATION", "level": "중", "questionType": "객관식", "visualRequired": false},
+    {"id": 2, "unitKey": "H22-C-04", "structureFamily": "QUADRATIC_EQUATION", "level": "중", "questionType": "객관식", "visualRequired": false},
+    {"id": 3, "unitKey": "H22-C2-01", "structureFamily": "COORDINATE_BASIC", "level": "중상", "questionType": "주관식", "visualRequired": true},
+    {"id": 4, "unitKey": "H22-C-05", "structureFamily": "FUNCTION_PARAMETER", "level": "중상", "questionType": "객관식", "visualRequired": false},
+    {"id": 5, "unitKey": "H22-C2-03", "structureFamily": "COORDINATE_GEOMETRY", "level": "상", "questionType": "서술형", "visualRequired": true},
+    {"id": 6, "unitKey": "H22-C-06", "structureFamily": "INEQUALITY_SOLVE", "level": "상", "questionType": "객관식", "visualRequired": false}
+  ]
+}
