@@ -415,7 +415,7 @@ window.questionBank = [
       "$\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 문제에서 정의한 b_ij=a_ji를 네 성분에 직접 적용한다.\n\na_11=(-1)^1+4×1+1=4, a_12=(-1)^1+4×2+1=8, a_21=(-1)^2+4×1+1=6, a_22=(-1)^2+4×2+1=10이다.\n\n따라서 A=[[4,8],[6,10]]이다.\n\n정의 b_ij=a_ji에 따라 b_11=a_11=4, b_12=a_21=6, b_21=a_12=8, b_22=a_22=10이다.\n\n그러므로 B=[[4,6],[8,10]]이고 정답은 ⑤이다.",
+    "solution": "[키포인트] 문제에서 정의한 $b_{ij}=a_{ji}$를 네 성분에 직접 적용한다.\n\n$a_{11}=(-1)^1+4\\times1+1=4,\\quad a_{12}=(-1)^1+4\\times2+1=8,\\quad a_{21}=(-1)^2+4\\times1+1=6,\\quad a_{22}=(-1)^2+4\\times2+1=10$이다.\n\n따라서 $A=\\begin{pmatrix}4&8\\\\6&10\\end{pmatrix}$이다.\n\n정의 $b_{ij}=a_{ji}$에 따라 $b_{11}=a_{11}=4,\\ b_{12}=a_{21}=6,\\ b_{21}=a_{12}=8,\\ b_{22}=a_{22}=10$이다.\n\n그러므로 $B=\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$이고 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -808,7 +808,7 @@ window.questionBank = [
     "content": "이차정사각행렬 $A$가 다음 조건을 만족시킨다.<table class=\"question-table\"><tr><td style=\"padding:3px 5px;\">(가) $A^2-A+E=O$</td><td style=\"padding:3px 5px;\">(나) $A\\begin{pmatrix}1\\\\2\\end{pmatrix}=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$</td></tr></table>이 때 행렬 $A\\begin{pmatrix}-9\\\\6\\end{pmatrix}$의 모든 성분의 합을 구하시오. (단, $E$는 단위행렬, $O$는 영행렬이다.)",
     "choices": [],
     "answer": "6",
-    "solution": "[키포인트] 주어진 2×1 행렬의 곱과 A^2-A+E=O를 이용해 목표 행렬의 성분 합을 구한다.\n\nV=[[1],[2]], W=AV=[[3],[-2]]라 하자. 조건 (가)에서 A^2-A+E=O이므로 A^2=A-E이다.\n\n따라서 A^2V=(A-E)V=AV-V=W-V=[[2],[-4]]이다.\n\n구하려는 2×1 행렬을 V와 W의 계수로 나타내면 cV+dW=[[-9],[6]]이다. 성분을 비교하면 c+3d=-9, 2c-2d=6이다. 둘째 식에서 c-d=3이므로 c=d+3이고, 첫째 식에 대입하면 d=-3, c=0이다.\n\n따라서 [[-9],[6]]=-3W=-3AV이다. 양변에 A를 곱하면 A[[-9],[6]]=-3A^2V=-3[[2],[-4]]=[[-6],[12]]이다. 모든 성분의 합은 6이고 정답은 6이다.",
+    "solution": "[키포인트] 주어진 $2\\times1$ 행렬의 곱과 $A^2-A+E=O$를 이용해 목표 행렬의 성분 합을 구한다.\n\n$V=\\begin{pmatrix}1\\\\2\\end{pmatrix},\\quad W=AV=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$라 하자. 조건 (가)에서 $A^2-A+E=O$이므로 $A^2=A-E$이다.\n\n따라서 $A^2V=(A-E)V=AV-V=W-V=\\begin{pmatrix}2\\\\-4\\end{pmatrix}$이다.\n\n구하려는 $2\\times1$ 행렬을 $V$와 $W$의 계수로 나타내면 $cV+dW=\\begin{pmatrix}-9\\\\6\\end{pmatrix}$이다. 성분을 비교하면 $c+3d=-9,\\ 2c-2d=6$이다. 둘째 식에서 $c-d=3$이므로 $c=d+3$이고, 첫째 식에 대입하면 $d=-3,\\ c=0$이다.\n\n따라서 $\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3W=-3AV$이다. 양변에 $A$를 곱하면 $A\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3A^2V=-3\\begin{pmatrix}2\\\\-4\\end{pmatrix}=\\begin{pmatrix}-6\\\\12\\end{pmatrix}$이다. 모든 성분의 합은 6이고 정답은 6이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
