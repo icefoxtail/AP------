@@ -765,10 +765,35 @@ window.questionBank = [
     "content": "서술형 4. 다항식 $A(x) = x^4 + ax^3 + bx^2 + bx + a$는 일차식의 인수를 갖지 않는다. 계수와 상수항이 모두 정수인 두 다항식 $B(x), C(x)$를 인수로 갖고, $B(x)$를 $C(x)$로 나눈 나머지가 1일 때, $a+b$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "2",
-    "solution": "[원문 대조 주의] 현재 발문만으로는 $B(x),C(x)$의 차수와 $A(x)$와의 곱셈 관계가 명확하지 않다. ‘$A$가 $B,C$를 인수로 갖는다’는 말만으로는 두 인수가 $A=BC$를 이루는지, 서로 다른 인수인지, 최고차항 계수가 무엇인지 알 수 없다. 따라서 $B(x)$를 $C(x)$로 나눈 나머지가 $1$이라는 조건만으로 $a+b$를 독립적으로 확정할 수 없다.\\n\\n기존 해설의 $x+1/x$ 치환은 $A(x)$의 상반다항식 구조를 일부 이용한 것일 뿐, $B,C$의 정확한 정의와 나머지 조건에서 $a=0,b=2$를 도출하는 계수비교가 빠져 있다. 원본 스캔에서 $B,C$의 차수·정의·$A$와의 관계가 누락되었는지 확인하기 전에는 answer 필드의 $2$에 맞춰 조건을 보충하지 않는다.",
+    "solution":"[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.",
     "subUnitKey": "H22-C-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
+
+const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
+
+question(22).content = "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.";
+question(22).answer = "5";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+
+question(22).content = "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.";
+question(22).answer = "5";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.";
+
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "$A(x)=x^4+ax^3+bx^2+bx+a$의 계수 구조만으로는 $a,b$를 하나로 정할 수 없다.\n\n또한 $B(x),C(x)$가 $A(x)$의 인수라는 사실만으로는 두 다항식의 차수, 최고차항 계수, $A(x)$와의 곱셈 관계가 정해지지 않는다. $B(x)$를 $C(x)$로 나눈 나머지가 1이라는 조건은 두 다항식 사이의 나눗셈 조건이지만, $A(x)$의 계수와 연결할 추가 관계가 필요하다.\n\n따라서 이 조건들만으로는 $a+b$를 하나의 값으로 결정할 수 없다.";
+question(22).content = "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.";
+question(22).answer = "5";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.";

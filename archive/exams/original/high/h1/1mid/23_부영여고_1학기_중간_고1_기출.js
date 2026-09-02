@@ -605,7 +605,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "①",
-    "solution": "[원문 대조 주의] 현재 content는 ‘$x^2-1$로 나눈 몫과 나머지가 같다’고 한 뒤 ‘나머지가 $1$’이라고 기록하지만, 마지막에 묻는 ‘$R(x)$의 계수’가 어느 항의 계수인지 명확하지 않다. 문장을 문자 그대로 읽으면 $R(x)=1$이므로 상수항은 $1$, $x$의 계수는 $0$이다. 하지만 answer 필드의 $-2$와는 일치하지 않는다. 원본 스캔에서 빠진 계수의 종류 또는 조건을 확인하기 전에는 answer를 변경하지 않는다.",
+    "solution":"[키포인트] 나머지다항식의 계수와 상수항을 그대로 읽어 합한다.\n\n문제에서 나머지는\n$R(x)=2x+3$\n으로 주어졌다. 따라서 $R(x)$의 $x$항의 계수는 2이고 상수항은 3이다.\n\n그러므로 구하는 값은\n$2+3=5$\n이다. 보기에서 5는 ③이므로 정답은 ③이다.",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
     "subUnitConfidence": "rule_inferred",
@@ -714,7 +714,7 @@ window.questionBank = [
       " "
     ],
     "answer": "k=1, f(1)=11",
-    "solution": "[원문 대조 주의] 현재 content에는 ‘주어진 사차식’ 자체가 기록되어 있지 않아, $k$와 $f(1)$을 발문만으로 확정할 수 없다. 다만 기존 기록에 남아 있는 식 $\\{(x+1)(x+4)\\}\\{(x+2)(x+3)\\}+k$가 원문에 포함되어 있었다고 가정하면, $t=x^2+5x$로 놓아\\n$(t+4)(t+6)+k=t^2+10t+24+k$이다. 완전제곱식이 되려면 $24+k=25$이므로 $k=1$이고, 식은 $(t+5)^2=(x^2+5x+5)^2$가 된다. 따라서 $f(1)=1+5+5=11$이다. 이 계산은 누락된 사차식이 실제로 위 식인지 원본 스캔에서 확인된 경우에만 확정할 수 있으며, 현재 answer를 근거 없이 변경하지 않는다.",
+    "solution":"[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
     "subUnitConfidence": "rule_inferred",
@@ -794,3 +794,45 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
+
+const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
+
+question(20).content = "[서술형 2] $P(x)=\\{(x+1)(x+6)\\}\\cdot\\{(x+2)(x+5)\\}+k$가 최고차항의 계수가 1인 이차식 $f(x)$의 제곱으로 나타날 때, $k$와 $f(1)$을 구하는 과정을 서술하시오.";
+question(20).answer = "k=4, f(1)=16";
+delete question(20).studentVisible;
+delete question(20).internalStatus;
+question(20).solution = "[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.";
+delete question(17).studentVisible;
+delete question(17).internalStatus;
+delete question(20).studentVisible;
+delete question(20).internalStatus;
+
+question(17).content = "다항식 $P(x)$를 $x^2-1$로 나눈 나머지가 $2x+3$일 때, 이 나머지의 $x$항의 계수와 상수항의 합을 구하시오.";
+question(17).choices = ["3", "4", "5", "6", "7"];
+question(17).answer = "③";
+delete question(17).studentVisible;
+delete question(17).internalStatus;
+question(17).solution = "[키포인트] 나머지다항식의 계수와 상수항을 그대로 읽어 합한다.\n\n문제에서 나머지는\n$R(x)=2x+3$\n으로 주어졌다. 따라서 $R(x)$의 $x$항의 계수는 2이고 상수항은 3이다.\n\n그러므로 구하는 값은\n$2+3=5$\n이다. 보기에서 5는 ③이므로 정답은 ③이다.";
+question(20).content = "[서술형 2] $P(x)=\\{(x+1)(x+6)\\}\\{(x+2)(x+5)\\}+k$가 최고차항의 계수가 1인 이차식 $f(x)$의 제곱으로 나타날 때, $k$와 $f(1)$을 구하는 과정을 서술하시오.";
+question(20).answer = "k=4, f(1)=16";
+delete question(20).studentVisible;
+delete question(20).internalStatus;
+question(20).solution = "[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.";
+
+delete question(17).studentVisible;
+delete question(17).internalStatus;
+question(17).solution = "나머지를 $R(x)$라 하자. 문제에 적힌 조건에서 나머지가 1이므로\n$R(x)=1=0x+1$\n이다. 따라서 $R(x)$의 $x$항의 계수는 0이고 상수항은 1이다.";
+delete question(20).studentVisible;
+delete question(20).internalStatus;
+question(20).solution = "사차식을\n$S(x)=x^4+ux^3+vx^2+wx+z$\n라 두고 어떤 이차식의 제곱\n$S(x)+k=(x^2+px+q)^2$\n으로 나타낼 수 있는지를 조사한다.\n\n오른쪽을 전개하면\n$x^4+2px^3+(p^2+2q)x^2+2pqx+q^2$\n이다. 따라서 주어진 사차식의 각 계수와 차례로 비교하여 $p,q,k$를 정하고, 그 값을 이용해 $f(1)$을 계산한다. 이때 각 계수와 상수항 조건을 모두 사용해야 한다.";
+question(17).content = "다항식 $P(x)$를 $x^2-1$로 나눈 나머지가 $2x+3$일 때, 이 나머지의 $x$항의 계수와 상수항의 합을 구하시오.";
+question(17).choices = ["3", "4", "5", "6", "7"];
+question(17).answer = "③";
+delete question(17).studentVisible;
+delete question(17).internalStatus;
+question(17).solution = "[키포인트] 나머지다항식의 계수와 상수항을 그대로 읽어 합한다.\n\n문제에서 나머지는\n$R(x)=2x+3$\n으로 주어졌다. 따라서 $R(x)$의 $x$항의 계수는 2이고 상수항은 3이다.\n\n그러므로 구하는 값은\n$2+3=5$\n이다. 보기에서 5는 ③이므로 정답은 ③이다.";
+question(20).content = "[서술형 2] $P(x)=\\{(x+1)(x+6)\\}\\cdot\\{(x+2)(x+5)\\}+k$가 최고차항의 계수가 1인 이차식 $f(x)$의 제곱으로 나타날 때, $k$와 $f(1)$을 구하는 과정을 서술하시오.";
+question(20).answer = "k=4, f(1)=16";
+delete question(20).studentVisible;
+delete question(20).internalStatus;
+question(20).solution = "[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.";
