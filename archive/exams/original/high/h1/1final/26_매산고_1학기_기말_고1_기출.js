@@ -481,7 +481,7 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "&lt;단답형1&gt;<br>&lt;단답형1&gt;<br>&lt;단답형1&gt;<br>&lt;단답형1&gt;<br>&lt;단답형1&gt;<br>이차정사각행렬 $A=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}$, $B=\\begin{pmatrix}2&-x\\\\0&x\\end{pmatrix}$에 대하여 $AB=\\begin{pmatrix}2&0\\\\2&6\\end{pmatrix}$이 되도록 하는 실수 $x$의 값을 구하시오. [4점]",
+    "content": "&lt;단답형1&gt;<br>이차정사각행렬 $A=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}$, $B=\\begin{pmatrix}2&-x\\\\0&x\\end{pmatrix}$에 대하여 $AB=\\begin{pmatrix}2&0\\\\2&6\\end{pmatrix}$이 되도록 하는 실수 $x$의 값을 구하시오. [4점]",
     "choices": [],
     "answer": "$6$",
     "solution": "[키포인트] 행렬의 곱을 계산하여 같은 위치의 성분을 비교한다.\n조건 정리: $A$의 첫째 행과 $B$의 각 열, 둘째 행과 각 열을 곱한다.\n풀이 방향: $AB$의 $(2,2)$ 성분을 주어진 행렬의 6과 비교한다.\n정석 풀이: $AB=\\begin{pmatrix}1&1\\\\1&2\\end{pmatrix}\\begin{pmatrix}2&-x\\\\0&x\\end{pmatrix}=\\begin{pmatrix}2&-x+x\\\\2&-x+2x\\end{pmatrix}=\\begin{pmatrix}2&0\\\\2&x\\end{pmatrix}$이다. 이것이 $\\begin{pmatrix}2&0\\\\2&6\\end{pmatrix}$와 같으므로 $x=6$이다.\n따라서 구하는 값은 $6$이다.",
@@ -610,10 +610,10 @@ window.questionBank = [
       "행렬"
     ],
     "wide": false,
-    "content": "&lt;서술형3&gt;<br>&lt;서술형3&gt;<br>&lt;서술형3&gt;<br>&lt;서술형3&gt;<br>&lt;서술형3&gt;<br>이차정사각행렬 $A,B$가 $ABA=B+A-2E$, $A+B=BA$를 만족시킬 때, $A^2$의 모든 성분의 합을 구하는 과정을 서술하시오. (단, $E=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [10점]",
+    "content": "&lt;서술형3&gt;<br>이차정사각행렬 $A,B$가 $ABA=B+A-2E$, $A+B=BA$를 만족시킬 때, $A^2$의 모든 성분의 합을 구하는 과정을 서술하시오. (단, $E=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [10점]",
     "choices": [],
     "answer": "$-4$",
-    "solution": "[키포인트] 두 행렬식에서 같은 곱 $BA$와 $ABA$를 반복하여 나타내고, 한 식을 다른 식에 대입해 $B$를 $A$로 표현한다.\n조건 정리: $A+B=BA$이고, 첫째 식의 오른쪽 $B+A-2E$는 $BA-2E$와 같다.\n풀이 방향: 먼저 $(A-E)BA=-2E$를 만든 뒤, 이를 이용하여 $A+3B=2E$를 얻고 마지막으로 $A^2$을 구한다.\n정석 풀이: $ABA=BA-2E$이므로 $ABA-BA=-2E$, 즉 $(A-E)BA=-2E$이다. 이 식의 양변 왼쪽에 $B$를 곱하면 $B(A-E)BA=-2B$이다. 그런데 $A+B=BA$에서 $B(A-E)=A$이므로 왼쪽은 $ABA$가 된다. 따라서 $ABA=-2B$이다. 한편 처음 조건에서 $ABA=BA-2E$이므로 $BA-2E=-2B$, 즉 $BA+2B=2E$이다. 다시 $BA=A+B$를 대입하면 $A+3B=2E$이고, 따라서 $B=\\dfrac{2E-A}{3}$이다. 이를 $BA=A+B$에 대입하면 $\\dfrac{2E-A}{3}A=A+\\dfrac{2E-A}{3}$이다. 양변에 3을 곱하면 $2A-A^2=2A+2E$이므로 $A^2=-2E$이다. 따라서 $A^2=\\begin{pmatrix}-2&0\\\\0&-2\\end{pmatrix}$이고 모든 성분의 합은 $-4$이다.\n따라서 구하는 값은 $-4$이다.",
+    "solution":"[키포인트] 두 조건식에서 같은 곱 $BA$와 $ABA$를 반복하여 나타내고, 한 식을 다른 식에 대입해 $B$를 $A$로 표현한다.\n조건 정리: $A+B=BA$이고, 첫째 식의 오른쪽 $B+A-2E$는 $BA-2E$와 같다.\n풀이 방향: 먼저 $(A-E)BA=-2E$를 만든 뒤, 이를 이용하여 $A+3B=2E$를 얻고 마지막으로 $A^2$을 구한다.\n정석 풀이: $ABA=BA-2E$이므로 $ABA-BA=-2E$, 즉 $(A-E)BA=-2E$이다. 이 식의 양변 왼쪽에 $B$를 곱하면 $B(A-E)BA=-2B$이다. 그런데 $A+B=BA$에서 $B(A-E)=A$이므로 왼쪽은 $ABA$가 된다. 따라서 $ABA=-2B$이다. 한편 처음 조건에서 $ABA=BA-2E$이므로 $BA-2E=-2B$, 즉 $BA+2B=2E$이다. 다시 $BA=A+B$를 대입하면 $A+3B=2E$이고, 따라서 $B=\\dfrac{2E-A}{3}$이다. 이를 $BA=A+B$에 대입하면 $\\dfrac{2E-A}{3}A=A+\\dfrac{2E-A}{3}$이다. 양변에 3을 곱하면 $2A-A^2=2A+2E$이므로 $A^2=-2E$이다. 따라서 $A^2=\\begin{pmatrix}-2&0\\\\0&-2\\end{pmatrix}$이고 모든 성분의 합은 $-4$이다.\n따라서 구하는 값은 $-4$이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -625,10 +625,8 @@ window.questionBank = [
 {
   const question = (id) => window.questionBank.find((q) => q.id === id);
   question(9).solution = question(9).solution.replaceAll("$2\\\\le x\\\\le4$", "$-2\\\\le x\\\\le4$");
-  question(16).content = "&lt;단답형1&gt;<br>" + question(16).content;
   question(17).content = "&lt;단답형2&gt;<br>" + question(17).content;
   question(18).content = "&lt;단답형3&gt;<br>" + question(18).content;
   question(19).content = "&lt;서술형1&gt;<br>" + question(19).content;
   question(20).content = "&lt;서술형2&gt;<br>" + question(20).content;
-  question(21).content = "&lt;서술형3&gt;<br>" + question(21).content;
 }

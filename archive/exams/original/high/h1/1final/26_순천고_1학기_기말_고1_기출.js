@@ -181,7 +181,7 @@ window.questionBank = [
       "$\\begin{pmatrix}3&2\\end{pmatrix}\\begin{pmatrix}13&9\\\\12&8\\end{pmatrix}$의 $(1,1)$ 성분"
     ],
     "answer": "④",
-    "solution": "[키포인트] 구입 개수를 행벡터로 두고 가격표의 열과 곱한다.\\n조건 정리: 돈가스 3개와 우동 2개의 개수는 $\\begin{pmatrix}3&2\\end{pmatrix}$이고, B 식당의 가격은 가격 행렬의 두 번째 열이다.\\n풀이 방향: 행벡터와 가격 행렬을 곱했을 때 두 번째 열과의 곱이 B 식당의 합계가 된다.\\n정석 풀이: $\\begin{pmatrix}3&2\\end{pmatrix}\\begin{pmatrix}13&9\\\\12&8\\end{pmatrix}=\\begin{pmatrix}3\\times13+2\\times12&3\\times9+2\\times8\\end{pmatrix}=\\begin{pmatrix}63&43\\end{pmatrix}$이다. B 식당의 합계 $43$은 이 행렬의 $(1,2)$ 성분이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 구입 개수를 1×2 행렬로 두고 가격표의 열과 곱한다.\\n조건 정리: 돈가스 3개와 우동 2개의 개수는 $\\begin{pmatrix}3&2\\end{pmatrix}$이고, B 식당의 가격은 가격 행렬의 두 번째 열이다.\\n풀이 방향: 1×2 행렬과 가격표 행렬을 곱했을 때 두 번째 열과의 곱이 B 식당의 합계가 된다.\\n정석 풀이: $\\begin{pmatrix}3&2\\end{pmatrix}\\begin{pmatrix}13&9\\\\12&8\\end{pmatrix}=\\begin{pmatrix}3\\times13+2\\times12&3\\times9+2\\times8\\end{pmatrix}=\\begin{pmatrix}63&43\\end{pmatrix}$이다. B 식당의 합계 $43$은 이 행렬의 $(1,2)$ 성분이다.\\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",

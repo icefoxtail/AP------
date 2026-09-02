@@ -415,7 +415,7 @@ window.questionBank = [
       "$\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n먼저 행렬 $A$를 구한 뒤 전치행렬의 정의를 이용한다.\n조건 정리\n$a_{ij}=(-1)^i+4j+1$이다.\n풀이 과정\n$a_{11}=(-1)^1+4\\times1+1=-1+4+1=4$\n$a_{12}=(-1)^1+4\\times2+1=-1+8+1=8$\n$a_{21}=(-1)^2+4\\times1+1=1+4+1=6$\n$a_{22}=(-1)^2+4\\times2+1=1+8+1=10$\n따라서\n$A=\\begin{pmatrix}4&8\\\\6&10\\end{pmatrix}$\n$b_{ij}=a_{ji}$이므로 $B=A^T=\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$\n결론\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 문제에서 정의한 b_ij=a_ji를 네 성분에 직접 적용한다.\n\na_11=(-1)^1+4×1+1=4, a_12=(-1)^1+4×2+1=8, a_21=(-1)^2+4×1+1=6, a_22=(-1)^2+4×2+1=10이다.\n\n따라서 A=[[4,8],[6,10]]이다.\n\n정의 b_ij=a_ji에 따라 b_11=a_11=4, b_12=a_21=6, b_21=a_12=8, b_22=a_22=10이다.\n\n그러므로 B=[[4,6],[8,10]]이고 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -808,7 +808,7 @@ window.questionBank = [
     "content": "이차정사각행렬 $A$가 다음 조건을 만족시킨다.<table class=\"question-table\"><tr><td style=\"padding:3px 5px;\">(가) $A^2-A+E=O$</td><td style=\"padding:3px 5px;\">(나) $A\\begin{pmatrix}1\\\\2\\end{pmatrix}=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$</td></tr></table>이 때 행렬 $A\\begin{pmatrix}-9\\\\6\\end{pmatrix}$의 모든 성분의 합을 구하시오. (단, $E$는 단위행렬, $O$는 영행렬이다.)",
     "choices": [],
     "answer": "6",
-    "solution": "[키포인트]\n주어진 벡터 $\\begin{pmatrix}1\\\\2\\end{pmatrix}$에 대한 상을 알고 있으므로, 조건식 $A^2-A+E=O$를 이용해 다른 벡터의 상도 구할 수 있다.\n조건 정리\n$v=\\begin{pmatrix}1\\\\2\\end{pmatrix}$라 하면 $Av=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$이다.\n또한 $A^2-A+E=O$이므로 $A^2=A-E$이다.\n풀이 방향 설정\n먼저 $A^2v$를 구하고, $\\begin{pmatrix}-9\\\\6\\end{pmatrix}$를 $v$와 $Av$의 일차결합으로 나타낸다.\n풀이 과정\n$Av=\\begin{pmatrix}3\\\\-2\\end{pmatrix}=w$라고 하자.\n그러면\n$A^2v=(A-E)v=Av-v=w-v=\\begin{pmatrix}3\\\\-2\\end{pmatrix}-\\begin{pmatrix}1\\\\2\\end{pmatrix}=\\begin{pmatrix}2\\\\-4\\end{pmatrix}$\n이제\n$c\\begin{pmatrix}1\\\\2\\end{pmatrix}+d\\begin{pmatrix}3\\\\-2\\end{pmatrix}=\\begin{pmatrix}-9\\\\6\\end{pmatrix}$라 두면\n$\\begin{cases}c+3d=-9\\\\2c-2d=6\\end{cases}$\n둘째 식에서 $c-d=3$이므로 $c=d+3$\n이를 첫째 식에 대입하면 $d+3+3d=-9 \\implies 4d=-12 \\implies d=-3$, $c=0$이다.\n따라서\n$\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3w=-3Av$\n양변에 $A$를 곱하면\n$A\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3A^2v=-3\\begin{pmatrix}2\\\\-4\\end{pmatrix}=\\begin{pmatrix}-6\\\\12\\end{pmatrix}$\n모든 성분의 합은 $-6+12=6$이다.\n결론\n따라서 구하는 값은 $6$이다.",
+    "solution": "[키포인트] 주어진 2×1 행렬의 곱과 A^2-A+E=O를 이용해 목표 행렬의 성분 합을 구한다.\n\nV=[[1],[2]], W=AV=[[3],[-2]]라 하자. 조건 (가)에서 A^2-A+E=O이므로 A^2=A-E이다.\n\n따라서 A^2V=(A-E)V=AV-V=W-V=[[2],[-4]]이다.\n\n구하려는 2×1 행렬을 V와 W의 계수로 나타내면 cV+dW=[[-9],[6]]이다. 성분을 비교하면 c+3d=-9, 2c-2d=6이다. 둘째 식에서 c-d=3이므로 c=d+3이고, 첫째 식에 대입하면 d=-3, c=0이다.\n\n따라서 [[-9],[6]]=-3W=-3AV이다. 양변에 A를 곱하면 A[[-9],[6]]=-3A^2V=-3[[2],[-4]]=[[-6],[12]]이다. 모든 성분의 합은 6이고 정답은 6이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
