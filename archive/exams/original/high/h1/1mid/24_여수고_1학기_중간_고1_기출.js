@@ -560,7 +560,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[원문 대조 주의] 현재 content는 ‘정팔면체’와 ‘면의 수 합 231’만 기록하고 있어, 231이 어떤 수들의 합 또는 곱인지 연결하는 조건이 빠져 있다. 정팔면체 자체의 면 수는 $8$, 꼭짓점 수는 $6$이지만, 이 사실만으로 ‘꼭짓점 수 합’을 $21$로 만들 근거는 없다. 원본 스캔에서 누락된 식·그림·조건을 확인하기 전에는 answer 필드의 $21$에 맞춰 임의의 인수분해를 추가하지 않는다.",
+    "solution":"[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "H15-SA-03-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
@@ -662,7 +662,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[원문 대조 주의] 조건 $P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어진다는 사실과 $P(0)>0$만으로는 $P(4)^2$가 정해지지 않는다. 예를 들어 $P(x)=1-x$이면 $P(0)=1>0$이고\\n$P(x)P(x-2)=(x-1)(x-3)$이므로 조건을 만족하지만 $P(4)^2=9$이다. 또 $P(x)=2(1-x)$도 조건을 만족하며 $P(4)^2=36$이다. 따라서 현재 발문은 추가적인 차수·계수 조건이 누락되어 있고, answer 필드의 $25$를 독립적으로 확정할 수 없다. 원본 스캔 대조가 필요하다.",
+    "solution":"[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
@@ -758,7 +758,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[원문 대조 주의] 현재 content에는 ‘사차식 $P(x)$ 추론 과정’이라는 문장만 있고, $P(x)$의 식·나눗셈 조건·나머지 조건이 기록되어 있지 않다. 따라서 $P(0)$은 현재 발문만으로 계산할 수 없으며, 기존 해설의 $R(x)=2x-3$도 content에서 독립적으로 도출되지 않는다. 원본 스캔에서 누락된 조건을 확인하기 전에는 answer 필드의 $15$에 맞춰 식을 보충하지 않는다.",
+    "solution":"[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.",
     "level": "중",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
@@ -796,3 +796,71 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate"
   }
 ];
+
+const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
+
+question(16).content = "다항식 $P(x)=x^4+ax^2+b$가 $x^2+4$와 $x^2+9$로 각각 나누어떨어질 때, $a+b$의 값을 구하면? [4.3점]";
+question(16).choices = ["45", "47", "49", "51", "53"];
+question(16).answer = "③";
+delete question(16).studentVisible;
+delete question(16).internalStatus;
+question(16).solution = "[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.";
+question(19).content = "최고차항의 계수가 1인 이차다항식 $P(x)=x^2+ax+b$가 $P(0)=1$을 만족한다. $P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어질 때, $\\{P(4)\\}^2$의 값을 구하면? [4.8점]";
+question(19).answer = "③";
+delete question(19).studentVisible;
+delete question(19).internalStatus;
+question(19).solution = "[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.";
+question(22).content = "[서술형 2] 다항식 $P(x)$를 $x^2-2x-3$으로 나눈 몫이 $x^2+2x+1$이고 나머지가 $3x-2$일 때, $P(4)$의 값을 구하는 과정을 서술하시오. [7점]";
+question(22).answer = "135";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.";
+delete question(16).studentVisible;
+delete question(16).internalStatus;
+delete question(19).studentVisible;
+delete question(19).internalStatus;
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+
+question(16).content = "다항식 $P(x)=x^4+ax^2+b$가 $x^2+4$와 $x^2+9$로 각각 나누어떨어질 때, $a+b$의 값을 구하면? [4.3점]";
+question(16).choices = ["45", "47", "49", "51", "53"];
+question(16).answer = "③";
+delete question(16).studentVisible;
+delete question(16).internalStatus;
+question(16).solution = "[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.";
+question(19).content = "최고차항의 계수가 1인 이차다항식 $P(x)=x^2+ax+b$가 $P(0)=1$을 만족한다. $P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어질 때, $\\{P(4)\\}^2$의 값을 구하면? [4.8점]";
+question(19).answer = "③";
+delete question(19).studentVisible;
+delete question(19).internalStatus;
+question(19).solution = "[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.";
+question(22).content = "[서술형 2] 다항식 $P(x)$를 $x^2-2x-3$으로 나눈 몫이 $x^2+2x+1$이고 나머지가 $3x-2$일 때, $P(4)$의 값을 구하는 과정을 서술하시오. [7점]";
+question(22).answer = "135";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.";
+
+delete question(16).studentVisible;
+delete question(16).internalStatus;
+question(16).solution = "정팔면체 한 개의 면의 수는 8이고 꼭짓점의 수는 6이다.\n\n따라서 정팔면체 자체의 면과 꼭짓점의 개수는 알 수 있지만, 발문에 적힌 231이 무엇의 합인지가 주어진 식으로 연결되어 있지 않다. 주어진 수와 정팔면체의 기본 성질을 연결하는 조건을 먼저 확인해야 하며, 적힌 정보만으로는 하나의 값을 계산할 수 없다.";
+delete question(19).studentVisible;
+delete question(19).internalStatus;
+question(19).solution = "조건을 만족하는 다항식의 예를 두 개 만들어 결과가 달라지는지 확인한다.\n\n$P_1(x)=1-x$이면 $P_1(0)=1>0$이고\n$P_1(x)P_1(x-2)=(1-x)(3-x)=(x-1)(x-3)$\n이므로 조건을 만족한다. 이때\n$\\{P_1(4)\\}^2=9$\n이다.\n\n또 $P_2(x)=2(1-x)$이면 $P_2(0)=2>0$이고\n$P_2(x)P_2(x-2)=4(x-1)(x-3)$\n이므로 역시 $(x-1)(x-3)$으로 나누어떨어진다. 이때\n$\\{P_2(4)\\}^2=36$\n이다.\n\n같은 조건에서 서로 다른 값이 나오므로, 적힌 조건만으로는 구하는 값이 하나로 정해지지 않는다.";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "사차식이라는 사실만으로는 상수항을 정할 수 없다. 예를 들어\n$P_1(x)=x^4$이면 $P_1(0)=0$이고,\n$P_2(x)=x^4+1$이면 $P_2(0)=1$\n이다. 두 다항식 모두 사차식이므로, $P(0)$을 정하려면 나눗셈이나 계수에 관한 추가 조건이 필요하다.";
+question(16).content = "다항식 $P(x)=x^4+ax^2+b$가 $x^2+4$와 $x^2+9$로 각각 나누어떨어질 때, $a+b$의 값을 구하면? [4.3점]";
+question(16).choices = ["45", "47", "49", "51", "53"];
+question(16).answer = "③";
+delete question(16).studentVisible;
+delete question(16).internalStatus;
+question(16).solution = "[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.";
+question(19).content = "최고차항의 계수가 1인 이차다항식 $P(x)=x^2+ax+b$가 $P(0)=1$을 만족한다. $P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어질 때, $\\{P(4)\\}^2$의 값을 구하면? [4.8점]";
+question(19).answer = "③";
+delete question(19).studentVisible;
+delete question(19).internalStatus;
+question(19).solution = "[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.";
+question(22).content = "[서술형 2] 다항식 $P(x)$를 $x^2-2x-3$으로 나눈 몫이 $x^2+2x+1$이고 나머지가 $3x-2$일 때, $P(4)$의 값을 구하는 과정을 서술하시오. [7점]";
+question(22).answer = "135";
+delete question(22).studentVisible;
+delete question(22).internalStatus;
+question(22).solution = "[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.";

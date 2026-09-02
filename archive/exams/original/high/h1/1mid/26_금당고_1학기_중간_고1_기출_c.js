@@ -604,7 +604,7 @@ window.questionBank = [
     "content": "[서·논술형 1]\\n다음은 삼차다항식 $P(x)=ax^3+bx^2+cx+11$을 $x-3$으로 나누었을 때의 몫과 나머지를 조립제법을 이용하여 구하는 과정의 일부를 나타낸 것이다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\" style=\"width:230px; max-width:230px; margin:8px auto; border-collapse:collapse; table-layout:fixed; font-size:9pt; text-align:center;\">\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; width:34px; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">$a$</td>\\n<td style=\"border:none; padding:3px 5px;\">$b$</td>\\n<td style=\"border:none; padding:3px 5px;\">$c$</td>\\n<td style=\"border:none; padding:3px 5px;\">11</td>\\n</tr>\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; padding:3px 5px;\"></td>\\n<td style=\"border:none; padding:3px 5px;\"></td>\\n<td style=\"border:none; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">$-6$</td>\\n</tr>\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; border-top:1px solid #000; padding:3px 5px;\"></td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">$-2$</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">5</td>\\n</tr>\\n</table>\\n</div>\\n$P(x)$를 $x-5$로 나누었을 때의 나머지를 구하는 과정을 풀이와 함께 상세하게 서술하시오.",
     "choices": [],
     "answer": "11",
-    "solution": "[키포인트] 조립제법 표의 아래 행을 위에서부터 읽어 원래 다항식의 계수를 복원한다.\n\n표에서 몫의 계수가 $1,1,-2$이고 나머지가 $5$이므로\n$a=1,\\quad b+3a=1,\\quad c+3(b+3a)=-2$이다.\n따라서 $b=-2$, $c+3=-2$이므로 $c=-5$이다. 즉\n$P(x)=x^3-2x^2-5x+11$이다.\n\n$x-5$로 나눈 나머지는 $P(5)$이므로\n$P(5)=5^3-2\\cdot5^2-5\\cdot5+11=125-50-25+11=61$이다.\n\n[원문 대조 주의] 현재 저장소의 표와 발문을 그대로 계산하면 나머지는 $61$이다. 그러나 answer 필드에는 $11$이 기록되어 있어 서로 일치하지 않는다. 원본 스캔에서 조립제법 표 또는 질문의 누락·오기를 확인하기 전에는 answer를 변경하지 않는다.",
+    "solution":"[키포인트] 조립제법의 표에서 몫의 계수와 나머지를 읽어 다항식의 계수를 복원한 뒤, 나머지정리로 값을 구한다.\n\n조립제법에서 첫째 줄은 나눠지는 다항식의 계수이고, 마지막 줄은 몫의 계수와 나머지이다. 따라서\n$a=1,\\quad b+3a=1,\\quad c+3(b+3a)=-2$\n이다. 먼저 $a=1$이고 $b+3=1$이므로 $b=-2$이다. 또 $c+3=-2$이므로 $c=-5$이다. 따라서\n$P(x)=x^3-2x^2-5x+11$\n이다.\n\n$P(x)$를 $x-5$로 나눈 나머지는 나머지정리에 따라 $P(5)$이다. 그러므로\n$P(5)=5^3-2\\cdot5^2-5\\cdot5+11\n=125-50-25+11=61$\n이다.\n\n따라서 구하는 나머지는 $61$이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -630,7 +630,7 @@ window.questionBank = [
     "image": "assets/images/26_금당고_1학기_중간_고1_기출/q19.png",
     "choices": [],
     "answer": "125",
-    "solution": "[키포인트] 두 구의 지름을 $d_1,d_2$로 두고, 지름의 합과 겉넓이의 합으로 $d_1d_2$를 구한 뒤 세제곱의 합을 계산한다.\n\n발문에 기록된 조건에 따르면\n$d_1+d_2=8$이고, 구의 겉넓이는 $\\pi d^2$이므로\n$d_1^2+d_2^2=40$이다. 따라서\n$2d_1d_2=(d_1+d_2)^2-(d_1^2+d_2^2)=64-40=24$\n이어서 $d_1d_2=12$이다.\n\n반지름이 $d/2$인 구의 부피는 $\\dfrac{\\pi}{6}d^3$이므로\n$V_1+V_2=\\dfrac{\\pi}{6}(d_1^3+d_2^3)$\n$=\\dfrac{\\pi}{6}((d_1+d_2)^3-3d_1d_2(d_1+d_2))$\n$=\\dfrac{\\pi}{6}(512-288)=\\dfrac{112}{3}\\pi$이다.\n따라서 $a=\\dfrac{112}{3}$이고 $8a=\\dfrac{896}{3}$이다.\n\n[원문 대조 주의] 현재 저장소의 발문을 문자 그대로 계산한 결과는 $\\dfrac{896}{3}$이다. answer 필드의 $125$와 일치하지 않으며, 발문이 ‘다음 그림’의 추가 조건을 생략했을 가능성이 있으므로 원본 스캔 대조가 필요하다.",
+    "solution":"[키포인트] 두 구의 지름을 이용해 겉넓이 조건에서 지름의 곱을 구하고, 세제곱의 합으로 부피의 합을 계산한다.\n\n두 구의 지름을 $d_1,d_2$라 하자. 발문에서\n$d_1+d_2=8$\n이다. 지름이 $d$인 구의 겉넓이는 반지름이 $d/2$이므로\n$4\\pi\\left(\\dfrac d2\\right)^2=\\pi d^2$\n이다. 따라서 겉넓이의 합 조건에서\n$d_1^2+d_2^2=40$\n을 얻는다.\n\n$(d_1+d_2)^2=d_1^2+2d_1d_2+d_2^2$이므로\n$64=40+2d_1d_2$,\n즉 $d_1d_2=12$이다.\n\n지름이 $d$인 구의 부피는\n$\\dfrac43\\pi\\left(\\dfrac d2\\right)^3=\\dfrac{\\pi}{6}d^3$\n이다. 따라서 두 구의 부피의 합은\n$\\dfrac{\\pi}{6}(d_1^3+d_2^3)$\n$=\\dfrac{\\pi}{6}\\{(d_1+d_2)^3-3d_1d_2(d_1+d_2)\\}$\n$=\\dfrac{\\pi}{6}(512-288)=\\dfrac{112}{3}\\pi$\n이다.\n\n그러므로 $a=\\dfrac{112}{3}$이고\n$8a=8\\cdot\\dfrac{112}{3}=\\dfrac{896}{3}$\n이다. 따라서 정답은 $\\dfrac{896}{3}$이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -661,3 +661,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category"
   }
 ];
+
+const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
+
+question(18).answer = "61";
+question(18).solution = "[키포인트] 조립제법의 표에서 몫의 계수와 나머지를 읽어 다항식의 계수를 복원한 뒤, 나머지정리로 값을 구한다.\n\n조립제법에서 첫째 줄은 나눠지는 다항식의 계수이고, 마지막 줄은 몫의 계수와 나머지이다. 따라서\n$a=1,\\quad b+3a=1,\\quad c+3(b+3a)=-2$\n이다. 먼저 $a=1$이고 $b+3=1$이므로 $b=-2$이다. 또 $c+3=-2$이므로 $c=-5$이다. 따라서\n$P(x)=x^3-2x^2-5x+11$\n이다.\n\n$P(x)$를 $x-5$로 나눈 나머지는 나머지정리에 따라 $P(5)$이다. 그러므로\n$P(5)=5^3-2\\cdot5^2-5\\cdot5+11\n=125-50-25+11=61$\n이다.\n\n따라서 구하는 나머지는 $61$이다.";
+question(19).answer = "$\\dfrac{896}{3}$";
+question(19).solution = "[키포인트] 두 구의 지름을 이용해 겉넓이 조건에서 지름의 곱을 구하고, 세제곱의 합으로 부피의 합을 계산한다.\n\n두 구의 지름을 $d_1,d_2$라 하자. 발문에서\n$d_1+d_2=8$\n이다. 지름이 $d$인 구의 겉넓이는 반지름이 $d/2$이므로\n$4\\pi\\left(\\dfrac d2\\right)^2=\\pi d^2$\n이다. 따라서 겉넓이의 합 조건에서\n$d_1^2+d_2^2=40$\n을 얻는다.\n\n$(d_1+d_2)^2=d_1^2+2d_1d_2+d_2^2$이므로\n$64=40+2d_1d_2$,\n즉 $d_1d_2=12$이다.\n\n지름이 $d$인 구의 부피는\n$\\dfrac43\\pi\\left(\\dfrac d2\\right)^3=\\dfrac{\\pi}{6}d^3$\n이다. 따라서 두 구의 부피의 합은\n$\\dfrac{\\pi}{6}(d_1^3+d_2^3)$\n$=\\dfrac{\\pi}{6}\\{(d_1+d_2)^3-3d_1d_2(d_1+d_2)\\}$\n$=\\dfrac{\\pi}{6}(512-288)=\\dfrac{112}{3}\\pi$\n이다.\n\n그러므로 $a=\\dfrac{112}{3}$이고\n$8a=8\\cdot\\dfrac{112}{3}=\\dfrac{896}{3}$\n이다. 따라서 정답은 $\\dfrac{896}{3}$이다.";
