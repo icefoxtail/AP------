@@ -457,7 +457,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "⑤",
-    "solution":"[키포인트] 행렬의 기본 법칙을 직접 확인하고, ㅅ은 주어진 등식만으로 변형한다.\n \nㄱ은 행렬곱의 결합법칙, ㄴ은 분배법칙, ㄷ은 스칼라배와 행렬곱의 관계이므로 참이다. ㄹ은 행렬곱에서 일반적으로 순서를 바꿀 수 없으므로 거짓이다. 예를 들어\n$A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix},\\quad B=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$\n이면 AB와 BA가 서로 다르다.\n \nㅁ은 E^n=E가 항상 성립하므로 참이다. ㅂ은 영인자가 존재하므로 거짓이다. 예를 들어\n$A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix},\\quad B=\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix}$\n이면 A와 B는 모두 O가 아니지만 AB=O이다.\n \nㅅ에서는 A(A+E)=E이므로 A^2+A=E이다. A+E도 A에 대한 식이므로\n(A+E)A=A^2+A=E\n이다. AB=-E의 양변에 왼쪽에서 A+E를 곱하면\n(A+E)AB=-(A+E)\n이고, 결합법칙과 (A+E)A=E에 의해 B=-(A+E)이다.\n따라서\nB^2=(A+E)^2=A^2+2A+E\n=(E-A)+2A+E=A+2E\n이다. 그러므로 ㅅ도 참이다.\n \n참인 것은 ㄱ, ㄴ, ㄷ, ㅁ, ㅅ의 5개이므로 정답은 ⑤이다.",
+    "solution":"[키포인트] 행렬의 기본 법칙을 직접 확인하고, ㅅ은 주어진 등식만으로 변형한다.\n \nㄱ은 행렬곱의 결합법칙, ㄴ은 분배법칙, ㄷ은 스칼라배와 행렬곱의 관계이므로 참이다. ㄹ은 행렬곱에서 일반적으로 순서를 바꿀 수 없으므로 거짓이다. 예를 들어\n$A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix},\\quad B=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$\n이면 AB와 BA가 서로 다르다.\n \nㅁ은 E^n=E가 항상 성립하므로 참이다. ㅂ은 거짓이다. 예를 들어\n$A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix},\\quad B=\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix}$\n이면 A와 B는 모두 O가 아니지만 AB=O이다.\n \nㅅ에서는 A(A+E)=E이므로 A^2+A=E이다. A+E도 A에 대한 식이므로\n(A+E)A=A^2+A=E\n이다. AB=-E의 양변에 왼쪽에서 A+E를 곱하면\n(A+E)AB=-(A+E)\n이고, 결합법칙과 (A+E)A=E에 의해 B=-(A+E)이다.\n따라서\nB^2=(A+E)^2=A^2+2A+E\n=(E-A)+2A+E=A+2E\n이다. 그러므로 ㅅ도 참이다.\n \n참인 것은 ㄱ, ㄴ, ㄷ, ㅁ, ㅅ의 5개이므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",

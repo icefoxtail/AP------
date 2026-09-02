@@ -439,7 +439,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "[키포인트] 행렬의 곱 조건을 구체적인 반례와 결합법칙으로 판단한다.\n\nㄱ은 거짓이다. 예를 들어 A=[[1,0],[0,0]], B=[[0,0],[0,1]]이면 A와 B는 모두 O가 아니지만 AB=O이다.\n\nㄴ도 거짓이다. A=2I, B=3I이면 AB=BA이지만 A≠I이고 B≠I이다.\n\nㄷ은 결합법칙으로\n\nA=AB=A(BA)=(AB)A=A^2\n\n가 되어 참이다. 따라서 항상 옳은 것은 ㄷ 하나이고 정답은 ②이다.",
+    "solution": "[키포인트] 행렬의 곱 조건을 구체적인 반례와 결합법칙으로 판단한다.\n\nㄱ은 거짓이다. 예를 들어 $A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix},\\ B=\\begin{pmatrix}0&0\\\\0&1\\end{pmatrix}$이면 $A$와 $B$는 모두 $O$가 아니지만 $AB=O$이다.\n\nㄴ도 거짓이다. $A=2I,\\ B=3I$이면 $AB=BA$이지만 $A\\ne I$이고 $B\\ne I$이다.\n\nㄷ은 결합법칙으로\n\n$A=AB=A(BA)=(AB)A=A^2$\n\n가 되어 참이다. 따라서 항상 옳은 것은 ㄷ 하나이고 정답은 ②이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
