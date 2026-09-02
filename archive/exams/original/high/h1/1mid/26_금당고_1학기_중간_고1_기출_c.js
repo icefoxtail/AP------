@@ -29,7 +29,7 @@ window.questionBank = [
       "$7x^2+9x-9$"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 다항식의 덧셈에서는 같은 차수의 항끼리 계수를 더한다.\n\n$2A=6x^2+8x-4$이므로\n$2A+B=(6x^2+8x-4)+(x^2+x+3)=7x^2+9x-1$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -63,7 +63,7 @@ window.questionBank = [
       "20"
     ],
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 세제곱의 합 $x^3+y^3$을 $x+y$와 $xy$로 바꾸어 계산한다.\n\n먼저\n$xy=\\dfrac{(x+y)^2-(x^2+y^2)}2=\\dfrac{2^2-6}{2}=-1$이다.\n따라서\n$x^3+y^3=(x+y)^3-3xy(x+y)=2^3-3(-1)\\cdot2=14$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -97,7 +97,7 @@ window.questionBank = [
       "$-5$"
     ],
     "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 전개식에서 $x^2$의 계수와 $y$의 계수를 각각 비교한다.\n\n$(4x-ay+2)^2$에서 $x^2$의 계수는 $16$이고, $y$의 일차항은 상수항 $2$와 $-ay$의 곱에서 생기므로 그 계수는 $-4a$이다.\n조건에 의해 $16=-4a$이므로 $a=-4$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -235,7 +235,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 항등식은 모든 차수의 계수가 같으므로 양변을 전개해 계수비교를 한다.\n\n왼쪽은\n$(2x+3)(x-2)+8=2x^2-x+2$이다.\n오른쪽은\n$ax(x-2)+b(x-2)+cx=ax^2+(-2a+b+c)x-2b$이다.\n따라서\n$a=2,\\quad -2b=2,\\quad -2a+b+c=-1$\n이므로 $b=-1$, $c=4$이다.\n\n그러므로 $a-b+c=2-(-1)+4=7$이고, 정답은 ①이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -374,7 +374,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 일차식 $f(x)$를 빼고 남는 삼차식을 전개해 $a$를 먼저 정한다.\n\n$(x+1)(x+a)^2=x^3+(2a+1)x^2+(a^2+2a)x+a^2$이다. 왼쪽 $x^3+1-f(x)$에는 $x^2$항이 없으므로\n$2a+1=0$, 즉 $a=-\\dfrac12$이다.\n이때 오른쪽의 $x$의 계수는 $a^2+2a=\\dfrac14-1=-\\dfrac34$, 상수항은 $a^2=\\dfrac14$이다. 따라서\n$f(x)=x^3+1-(x+1)(x+a)^2=\\dfrac34x+\\dfrac34$이다.\n\n그러므로 $f(11)=\\dfrac34(11+1)=9$이고, 정답은 ⑤이다.",
     "subUnitKey": "H22-C-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -408,7 +408,7 @@ window.questionBank = [
       "19"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 두 번의 나눗셈에서 같은 나머지를 이용해 나머지다항식의 두 값을 구한다.\n\n$f(x)$를 $x-1$로 나눈 몫을 $Q(x)$라 하면\n$f(x)=(x-1)Q(x)+5$이다. 따라서 $f(1)=5$이다.\n또 $Q(2)=10$이므로\n$f(2)=(2-1)Q(2)+5=15$이다.\n\n$(x-1)(x-2)$로 나눈 나머지를 $R(x)=ax+b$라 하면 $R(1)=f(1)=5$, $R(2)=f(2)=15$이다. 따라서 $a=10$, $b=-5$이고\n$2a+b=20-5=15$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -604,7 +604,7 @@ window.questionBank = [
     "content": "[서·논술형 1]\\n다음은 삼차다항식 $P(x)=ax^3+bx^2+cx+11$을 $x-3$으로 나누었을 때의 몫과 나머지를 조립제법을 이용하여 구하는 과정의 일부를 나타낸 것이다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\" style=\"width:230px; max-width:230px; margin:8px auto; border-collapse:collapse; table-layout:fixed; font-size:9pt; text-align:center;\">\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; width:34px; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">$a$</td>\\n<td style=\"border:none; padding:3px 5px;\">$b$</td>\\n<td style=\"border:none; padding:3px 5px;\">$c$</td>\\n<td style=\"border:none; padding:3px 5px;\">11</td>\\n</tr>\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; padding:3px 5px;\"></td>\\n<td style=\"border:none; padding:3px 5px;\"></td>\\n<td style=\"border:none; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">$-6$</td>\\n</tr>\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; border-top:1px solid #000; padding:3px 5px;\"></td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">$-2$</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">5</td>\\n</tr>\\n</table>\\n</div>\\n$P(x)$를 $x-5$로 나누었을 때의 나머지를 구하는 과정을 풀이와 함께 상세하게 서술하시오.",
     "choices": [],
     "answer": "11",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 11이다.",
+    "solution": "[키포인트] 조립제법 표의 아래 행을 위에서부터 읽어 원래 다항식의 계수를 복원한다.\n\n표에서 몫의 계수가 $1,1,-2$이고 나머지가 $5$이므로\n$a=1,\\quad b+3a=1,\\quad c+3(b+3a)=-2$이다.\n따라서 $b=-2$, $c+3=-2$이므로 $c=-5$이다. 즉\n$P(x)=x^3-2x^2-5x+11$이다.\n\n$x-5$로 나눈 나머지는 $P(5)$이므로\n$P(5)=5^3-2\\cdot5^2-5\\cdot5+11=125-50-25+11=61$이다.\n\n[원문 대조 주의] 현재 저장소의 표와 발문을 그대로 계산하면 나머지는 $61$이다. 그러나 answer 필드에는 $11$이 기록되어 있어 서로 일치하지 않는다. 원본 스캔에서 조립제법 표 또는 질문의 누락·오기를 확인하기 전에는 answer를 변경하지 않는다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -630,7 +630,7 @@ window.questionBank = [
     "image": "assets/images/26_금당고_1학기_중간_고1_기출/q19.png",
     "choices": [],
     "answer": "125",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 125이다.",
+    "solution": "[키포인트] 두 구의 지름을 $d_1,d_2$로 두고, 지름의 합과 겉넓이의 합으로 $d_1d_2$를 구한 뒤 세제곱의 합을 계산한다.\n\n발문에 기록된 조건에 따르면\n$d_1+d_2=8$이고, 구의 겉넓이는 $\\pi d^2$이므로\n$d_1^2+d_2^2=40$이다. 따라서\n$2d_1d_2=(d_1+d_2)^2-(d_1^2+d_2^2)=64-40=24$\n이어서 $d_1d_2=12$이다.\n\n반지름이 $d/2$인 구의 부피는 $\\dfrac{\\pi}{6}d^3$이므로\n$V_1+V_2=\\dfrac{\\pi}{6}(d_1^3+d_2^3)$\n$=\\dfrac{\\pi}{6}((d_1+d_2)^3-3d_1d_2(d_1+d_2))$\n$=\\dfrac{\\pi}{6}(512-288)=\\dfrac{112}{3}\\pi$이다.\n따라서 $a=\\dfrac{112}{3}$이고 $8a=\\dfrac{896}{3}$이다.\n\n[원문 대조 주의] 현재 저장소의 발문을 문자 그대로 계산한 결과는 $\\dfrac{896}{3}$이다. answer 필드의 $125$와 일치하지 않으며, 발문이 ‘다음 그림’의 추가 조건을 생략했을 가능성이 있으므로 원본 스캔 대조가 필요하다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",

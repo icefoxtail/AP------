@@ -1,18 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" role="img" aria-labelledby="title desc">
-  <title id="title">두 축과 직선에 접하는 두 원</title>
-  <desc id="desc">제1사분면에서 두 좌표축과 직선 5x+12y-6=0에 동시에 접하는 두 원의 중심과 접점을 나타낸 그림이다.</desc>
-  <rect width="640" height="280" fill="#fff"/>
-  <text x="320" y="28" text-anchor="middle" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" fill="#1e3a5f">M=(r,r)  와  5x+12y−6=0</text>
-  <rect x="18" y="44" width="365" height="215" rx="8" fill="#f8fafc" stroke="#dbe3ef"/>
-  <line x1="50" y1="223" x2="350" y2="223" stroke="#0f172a" stroke-width="2"/><line x1="76" y1="244" x2="76" y2="59" stroke="#0f172a" stroke-width="2"/>
-  <line x1="50" y1="205" x2="350" y2="92" stroke="#dc2626" stroke-width="2.5"/>
-  <circle cx="94" cy="205" r="18" fill="#dbeafe" fill-opacity=".75" stroke="#2563eb" stroke-width="2.3"/><circle cx="218" cy="153" r="61" fill="#dcfce7" fill-opacity=".55" stroke="#059669" stroke-width="2.4"/>
-  <line x1="94" y1="205" x2="94" y2="223" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="4 3"/><line x1="218" y1="153" x2="218" y2="223" stroke="#059669" stroke-width="1.8" stroke-dasharray="4 3"/><line x1="94" y1="205" x2="94" y2="187" stroke="#2563eb" stroke-width="1.8"/><line x1="218" y1="153" x2="218" y2="92" stroke="#059669" stroke-width="1.8"/>
-  <circle cx="94" cy="205" r="4" fill="#1d4ed8"/><circle cx="218" cy="153" r="4" fill="#047857"/><circle cx="104" cy="201" r="4" fill="#dc2626"/><circle cx="268" cy="123" r="4" fill="#dc2626"/>
-  <text x="99" y="196" font-family="Arial, sans-serif" font-size="15" fill="#1d4ed8">M₁</text><text x="222" y="148" font-family="Arial, sans-serif" font-size="15" fill="#047857">M₂</text><text x="274" y="119" font-family="Arial, sans-serif" font-size="15" fill="#b91c1c">l</text><text x="54" y="243" font-family="Arial, sans-serif" font-size="15">x축</text><text x="80" y="70" font-family="Arial, sans-serif" font-size="15">y축</text>
-  <rect x="407" y="44" width="215" height="215" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
-  <text x="427" y="76" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="18" font-weight="700" fill="#1e3a5f">두 반지름</text>
-  <text x="427" y="112" font-family="Arial, sans-serif" font-size="17">r=1/5, 3/2</text><text x="427" y="145" font-family="Arial, sans-serif" font-size="16">M₁=(1/5,1/5)</text><text x="427" y="177" font-family="Arial, sans-serif" font-size="16">M₂=(3/2,3/2)</text>
-  <line x1="427" y1="189" x2="600" y2="189" stroke="#cbd5e1"/>
-  <text x="427" y="219" font-family="Arial, sans-serif" font-size="15">P₁, P₂: 수선의 발</text><text x="427" y="246" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="17" font-weight="700" fill="#b91c1c">넓이=119/200  →  ⑤</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" role="img" aria-labelledby="title desc">
+  <title id="title">보조점 N으로 두 원과 사각형의 길이 관계 확인</title>
+  <desc id="desc">직선 l에 접하는 두 원의 중심 M1, M2와 접점 P1, P2, 보조점 N을 이용해 직사각형과 직각삼각형의 길이 관계를 나타낸 그림이다.</desc>
+  <rect width="760" height="320" fill="#fff"/>
+  <text x="380" y="28" text-anchor="middle" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" fill="#1e3a5f">보조점 N과 직각삼각형의 길이 관계</text>
+  <rect x="18" y="44" width="430" height="258" rx="8" fill="#f8fafc" stroke="#dbe3ef"/>
+  <line x1="75" y1="245" x2="410" y2="245" stroke="#0f172a" stroke-width="2"/>
+  <line x1="75" y1="278" x2="75" y2="62" stroke="#0f172a" stroke-width="2"/>
+  <text x="385" y="281" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="14">x축</text>
+  <text x="81" y="74" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="14">y축</text>
+  <line x1="75" y1="210" x2="205" y2="260" stroke="#dc2626" stroke-width="2.6"/>
+  <text x="207" y="263" font-family="Arial, sans-serif" font-size="16" fill="#b91c1c">l</text>
+  <circle cx="89" cy="231" r="14" fill="#dbeafe" fill-opacity=".82" stroke="#2563eb" stroke-width="2.2"/>
+  <circle cx="180" cy="140" r="105" fill="#dcfce7" fill-opacity=".42" stroke="#059669" stroke-width="2.4"/>
+  <path d="M89 231 L94 218 L140 237 L134 250 Z" fill="#c4b5fd" fill-opacity=".28" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="5 3"/>
+  <line x1="89" y1="231" x2="134" y2="250" stroke="#7c3aed" stroke-width="2.2"/>
+  <line x1="180" y1="140" x2="134" y2="250" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="89" y1="231" x2="180" y2="140" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <line x1="134" y1="250" x2="140" y2="237" stroke="#f97316" stroke-width="2.2"/>
+  <line x1="140" y1="237" x2="180" y2="140" stroke="#f97316" stroke-width="2.2"/>
+  <path d="M134 241 l8 3 l-3 8" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+  <circle cx="89" cy="231" r="4" fill="#1d4ed8"/><circle cx="180" cy="140" r="4" fill="#047857"/>
+  <circle cx="94" cy="218" r="4" fill="#dc2626"/><circle cx="140" cy="237" r="4" fill="#dc2626"/><circle cx="134" cy="250" r="4" fill="#7c3aed"/>
+  <text x="91" y="226" font-family="Arial, sans-serif" font-size="15" fill="#1d4ed8">M₁</text>
+  <text x="184" y="135" font-family="Arial, sans-serif" font-size="15" fill="#047857">M₂</text>
+  <text x="78" y="211" font-family="Arial, sans-serif" font-size="15" fill="#b91c1c">P₁</text>
+  <text x="143" y="239" font-family="Arial, sans-serif" font-size="15" fill="#b91c1c">P₂</text>
+  <text x="124" y="273" font-family="Arial, sans-serif" font-size="15" fill="#6d28d9">N</text>
+  <text x="99" y="249" font-family="Arial, sans-serif" font-size="13" fill="#6d28d9">M₁N=P₁P₂</text>
+  <text x="151" y="189" font-family="Arial, sans-serif" font-size="13" fill="#ea580c">M₂N</text>
+  <text x="102" y="216" font-family="Arial, sans-serif" font-size="13" fill="#2563eb">r₁=1/5</text>
+  <text x="196" y="189" font-family="Arial, sans-serif" font-size="13" fill="#047857">r₂=3/2</text>
+  <rect x="468" y="44" width="274" height="258" rx="8" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="488" y="75" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="18" font-weight="700" fill="#1e3a5f">길이 관계</text>
+  <text x="488" y="105" font-family="Arial, sans-serif" font-size="15">M₁P₁=r₁=1/5</text>
+  <text x="488" y="130" font-family="Arial, sans-serif" font-size="15">M₂P₂=r₂=3/2</text>
+  <text x="488" y="155" font-family="Arial, sans-serif" font-size="15">P₂N=M₁P₁=1/5</text>
+  <text x="488" y="180" font-family="Arial, sans-serif" font-size="15">M₂N=r₂+r₁=17/10</text>
+  <text x="488" y="205" font-family="Arial, sans-serif" font-size="15">M₁M₂=13√2/10</text>
+  <text x="488" y="230" font-family="Arial, sans-serif" font-size="15">△M₁NM₂는 N에서 직각</text>
+  <text x="488" y="255" font-family="Arial, sans-serif" font-size="15">P₁P₂=M₁N=7/10</text>
+  <line x1="488" y1="266" x2="722" y2="266" stroke="#cbd5e1"/>
+  <text x="488" y="289" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="16" font-weight="700" fill="#b91c1c">넓이=½(1/5+3/2)(7/10)=119/200</text>
 </svg>

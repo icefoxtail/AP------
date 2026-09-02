@@ -647,7 +647,7 @@ window.questionBank = [
       " "
     ],
     "answer": "41",
-    "solution": "<b>[Logical Anchor]</b> 항이 많은 다항식은 한 문자에 대해 정리하여 인수분해함.\\n$x^2(x - 2y - z) + xy(y + 2z) - yz^2$ 등의 복잡한 형태를 다음으로 정리함.\\n$\\implies (x - z)(x^2 - 2xy + y^2) = (x - z)(x - y)^2 = 48$\\n$(x-y)^2$은 $48$의 약수 중 제곱수여야 함.\\n$case 1)  (x-y)^2 = 1 \\implies |x-y|=1, \\ x-z=48$\\n$case 2)  (x-y)^2 = 4 \\implies |x-y|=2, \\ x-z=12$\\n$case 3)  (x-y)^2 = 16 \\implies |x-y|=4, \\ x-z=3$\\n$case 2 조사:  x, z$는 소수이고 차이가 $12$인 수 중 $x=17, z=5$ 가능.\\n이때 $|17-y|=2 \\implies y=19$ (소수)\\n$x+y+z = 17 + 19 + 5 = 41$\\n타 케이스 대비 최솟값이 도출됨.\\n$\\therefore 41$",
+    "solution": "[원문 대조 주의] 현재 기록된 식을 그대로 묶으면\\n$x^3-2x^2y+xy^2-x^2z+2xyz-yz^2=x(x-y)^2-z(x^2-2xy+yz)$\\n이다. 따라서 기존 해설처럼 $(x-z)(x-y)^2$로 인수분해되지 않는다. 실제로 기존 해설의 후보 $(x,y,z)=(17,19,5)$를 현재 식에 대입하면 $1378$이 되어 $48$이 아니다.\\n\\n만약 마지막 항이 기록 오류이고 원문이 $-y^2z$였다면 식은 $(x-z)(x-y)^2=48$이 되어 $x=17$, $y=19$, $z=5$에서 합 $41$을 얻을 수 있다. 그러나 원본 스캔이 없는 현재 상태에서는 어느 식이 원문인지 확정할 수 없으므로, answer 필드의 $41$에 맞춰 현재 식을 고쳐 쓰지 않는다.",
     "subUnitKey": "H15-SA-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
