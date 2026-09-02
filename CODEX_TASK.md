@@ -68,13 +68,13 @@ staging 구조
 1차 수정 대상은 아래 7개 파일이다.
 
 ```text
-docs/rules/문제해설추출.md
-docs/rules/해설프로토콜.md
-docs/rules/JS아카이브룰북_v2.5.md
-docs/rules/수정프로토콜.md
-docs/rules/무결성검수.md
-docs/rules/JS_문항품질_업그레이드.md
-docs/rules/수학_문항오류_검증_프로토콜_v2.1.md
+docs/rules/02_PIPELINES/문제해설추출.md
+docs/rules/02_PIPELINES/해설프로토콜.md
+docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md
+docs/rules/02_PIPELINES/수정프로토콜.md
+docs/rules/03_REVIEW/무결성검수.md
+docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md
+docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md
 ```
 
 2차 확인 대상은 아래 파일이다.
@@ -82,8 +82,7 @@ docs/rules/수학_문항오류_검증_프로토콜_v2.1.md
 단, 마스터 지시 없이 무리하게 전면 수정하지 않는다.
 
 ```text
-docs/rules/헬모드최종.md
-alive/숫자변형생성용.md
+alive/90_ARCHIVE/LEGACY_PROMPTS/숫자변형생성용.md
 tools/create_probstat_solution_agent_packs_16x5_20260602.js
 tools/archive_audit.js
 ```
@@ -606,7 +605,7 @@ solution은 빈 문자열로 둔다.
 
 ## 10. 파일별 수정 지시
 
-### 10-1. `docs/rules/문제해설추출.md`
+### 10-1. `docs/rules/02_PIPELINES/문제해설추출.md`
 
 수정 목표:
 
@@ -640,7 +639,7 @@ solution은 반드시 아래 기본 구조를 따른다.
 
 ---
 
-### 10-2. `docs/rules/해설프로토콜.md`
+### 10-2. `docs/rules/02_PIPELINES/해설프로토콜.md`
 
 수정 목표:
 
@@ -670,7 +669,7 @@ solution은 반드시 아래 기본 구조를 따른다.
 
 ---
 
-### 10-3. `docs/rules/JS아카이브룰북_v2.5.md`
+### 10-3. `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md`
 
 수정 목표:
 
@@ -699,7 +698,7 @@ solution은 반드시 아래 기본 구조를 따른다.
 
 ---
 
-### 10-4. `docs/rules/수정프로토콜.md`
+### 10-4. `docs/rules/02_PIPELINES/수정프로토콜.md`
 
 수정 목표:
 
@@ -725,7 +724,7 @@ solution은 반드시 아래 기본 구조를 따른다.
 
 ---
 
-### 10-5. `docs/rules/무결성검수.md`
+### 10-5. `docs/rules/03_REVIEW/무결성검수.md`
 
 수정 목표:
 
@@ -773,7 +772,7 @@ viewBox 존재
 
 ---
 
-### 10-6. `docs/rules/JS_문항품질_업그레이드.md`
+### 10-6. `docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md`
 
 수정 목표:
 
@@ -820,7 +819,7 @@ answer_solution_match
 
 ---
 
-### 10-7. `docs/rules/수학_문항오류_검증_프로토콜_v2.1.md`
+### 10-7. `docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md`
 
 수정 목표:
 
@@ -854,24 +853,12 @@ solution 검증을 answer 일치, 풀이 충분성, 교육과정, 시각자료 �
 
 ## 11. 2차 확인 대상 처리
 
-### 11-1. `docs/rules/헬모드최종.md`
-
-이 파일은 원본 추출용이므로 전면 수정하지 않는다.
-다만 아래 문구와 충돌하는지 확인한다.
-
-```text
-추출 단계에서는 solution을 붙이지 않는다.
-수리 검토와 수정은 별도 프로토콜에서 수행한다.
-```
-
-충돌이 없다면 보고만 한다.
-
-### 11-2. `alive/숫자변형생성용.md`
+### 11-1. `alive/90_ARCHIVE/LEGACY_PROMPTS/숫자변형생성용.md`
 
 숫자변형 문제에도 신규 solution을 만들 수 있으므로, 구버전 `[키포인트]` 필수 규칙이 남아 있으면 보고한다.
 마스터가 승인하면 v2.1 방식으로 수정한다.
 
-### 11-3. `tools/create_probstat_solution_agent_packs_16x5_20260602.js`
+### 11-2. `tools/create_probstat_solution_agent_packs_16x5_20260602.js`
 
 스크립트 내부에 `_rules/해설프로토콜.md`, `[키포인트]`, `solution` 검사 문자열이 하드코딩되어 있는지 확인한다.
 
@@ -927,13 +914,13 @@ solution 검증을 answer 일치, 풀이 충분성, 교육과정, 시각자료 �
 [JS아카이브 신규 해설 v2.1 문서 동기화 결과]
 
 1. 수정한 파일
-- docs/rules/문제해설추출.md
-- docs/rules/해설프로토콜.md
-- docs/rules/JS아카이브룰북_v2.5.md
-- docs/rules/수정프로토콜.md
-- docs/rules/무결성검수.md
-- docs/rules/JS_문항품질_업그레이드.md
-- docs/rules/수학_문항오류_검증_프로토콜_v2.1.md
+- docs/rules/02_PIPELINES/문제해설추출.md
+- docs/rules/02_PIPELINES/해설프로토콜.md
+- docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md
+- docs/rules/02_PIPELINES/수정프로토콜.md
+- docs/rules/03_REVIEW/무결성검수.md
+- docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md
+- docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md
 
 2. 수정하지 않은 성역
 - archive/exams/**/*.js 수정 없음
@@ -953,8 +940,7 @@ solution 검증을 answer 일치, 풀이 충분성, 교육과정, 시각자료 �
 - 해설용 SVG 검수 기준 추가
 
 4. 2차 확인 대상 결과
-- docs/rules/헬모드최종.md:
-- alive/숫자변형생성용.md:
+- alive/90_ARCHIVE/LEGACY_PROMPTS/숫자변형생성용.md:
 - tools/create_probstat_solution_agent_packs_16x5_20260602.js:
 - tools/archive_audit.js:
 

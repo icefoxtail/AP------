@@ -17,7 +17,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "복수정답",
       "그래프"
     ],
@@ -32,10 +31,10 @@ window.questionBank = [
     ],
     "answer": "②, ③, ⑤",
     "solution": "[키포인트] 수직선 판정법으로 각 그림에 하나의 $x$값이 하나의 $y$값에 대응하는지 확인한다.\n조건 정리: 다섯 그래프 중 함수의 그래프가 아닌 것을 모두 찾는다.\n풀이 방향: 각 그래프에 수직선을 그어 두 점 이상에서 만나는 그래프를 함수가 아닌 것으로 분류한다.\n정석 풀이:\n1. 첫 번째와 네 번째 그래프는 모든 수직선이 그래프와 많아야 한 점에서 만나므로 함수의 그래프이다.\n2. 두 번째, 세 번째, 다섯 번째 그래프는 적절한 수직선이 그래프와 두 점 이상에서 만나므로 함수의 그래프가 아니다.\n3. 따라서 함수의 그래프가 아닌 것은 ②, ③, ⑤이다.\n핵심 확인: 수직선 판정 결과 함수가 아닌 그래프와 함수인 그래프를 각각 모두 확인했다.\n따라서 정답은 ②, ③, ⑤이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q01.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q01.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
@@ -68,42 +67,41 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "합성함수",
       "대응도",
       "도형"
     ],
     "wide": false,
-    "content": "아래 대응도에서 g(2)=3, f(3)=4일 때 (f∘g)(2)+1의 값은?",
+    "content": "아래 두 대응도와 같은 함수 $f$, $g$에 대하여 $(g\\circ f)(2)$의 값은?",
     "choices": [
+      "1",
       "2",
       "3",
       "4",
-      "5",
-      "6"
+      "5"
     ],
-    "answer": "④",
-    "solution": "[키포인트] 합성함수는 안쪽 대응부터 따라간다.\n조건 정리: 대응도에서 $g(2)=3$, $f(3)=4$이고 $(f\\circ g)(2)+1$을 구한다.\n풀이 방향: 먼저 $g(2)$를 구한 뒤 그 결과를 $f$에 넣는다.\n정석 풀이:\n1. $(f\\circ g)(2)=f(g(2))=f(3)=4$이다.\n2. 따라서 $(f\\circ g)(2)+1=4+1=5$이다.\n핵심 확인: 대응도에서 $2\\mapsto3\\mapsto4$의 경로가 합성함수의 계산 순서와 일치한다.\n따라서 정답은 ④이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "answer": "③",
+    "solution": "[키포인트] 합성함수는 안쪽 함수부터 적용하므로 대응도를 $f$ 다음 $g$의 순서로 읽는다.\n조건 정리: 대응도에서 $f(2)=4$, $g(4)=3$이다.\n풀이 방향: $(g\\circ f)(2)=g(f(2))$의 순서로 두 대응을 연결한다.\n정석 풀이:\n1. 첫 번째 대응도에서 $f(2)=4$이다.\n2. 두 번째 대응도에서 $g(4)=3$이다.\n3. 따라서 $(g\\circ f)(2)=g(4)=3$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q02.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q02.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
-      "type": "mapping_diagram",
+      "type": "dual_mapping_diagram",
       "renderer": "deterministic-svg",
       "semanticRoles": [
         "f",
         "g",
         "composition"
       ],
-      "essentialVisualFacts": "g(2)=3 and f(3)=4; composition path",
-      "assetRef": "plan-locked"
+      "essentialVisualFacts": "f(2)=4, g(4)=3; evaluate g after f",
+      "assetRef": "reviewed-pass"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
-    "sourceGrounding": "plan-2026-08-26"
+    "sourceGrounding": "repair-2026-08-29"
   },
   {
     "id": 3,
@@ -121,43 +119,42 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "역함수",
       "함수값",
       "대응도",
       "도형"
     ],
     "wide": false,
-    "content": "아래 대응도에서 f(2)=4, g(4)=5일 때 f⁻¹(4)+g(4)+1의 값은?",
+    "content": "아래 두 대응도와 같은 함수 $f$, $g$에 대하여 $f^{-1}(g(3))$의 값은?",
     "choices": [
-      "5",
-      "6",
-      "7",
-      "8",
-      "9"
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
     ],
-    "answer": "④",
-    "solution": "[키포인트] 역함수의 값을 원래 함수의 대응을 거꾸로 읽어 구한다.\n조건 정리: 대응도에서 $f(2)=4$, $g(4)=5$이고 $f^{-1}(4)+g(4)+1$을 계산한다.\n풀이 방향: $f^{-1}(4)$를 $f(x)=4$를 만족하는 입력으로 바꾸어 계산한다.\n정석 풀이:\n1. $f(2)=4$이므로 $f^{-1}(4)=2$이다.\n2. 따라서 $f^{-1}(4)+g(4)+1=2+5+1=8$이다.\n핵심 확인: 함수의 대응 $2\\mapsto4$를 역방향으로 읽으면 $4\\mapsto2$가 되어 역함수 값이 $2$이다.\n따라서 정답은 ④이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "answer": "②",
+    "solution": "[키포인트] 합성된 형태에서는 안쪽의 $g$를 먼저 읽고, 그 결과를 $f$의 대응에서 거꾸로 추적한다.\n조건 정리: 대응도에서 $g(3)=5$이고 $f(2)=5$이다.\n풀이 방향: $g(3)$을 먼저 구한 뒤 그 값을 만드는 $f$의 입력을 찾는다.\n정석 풀이:\n1. 두 번째 대응도에서 $g(3)=5$이다.\n2. 따라서 $f^{-1}(g(3))=f^{-1}(5)$이다.\n3. 첫 번째 대응도에서 $f(2)=5$이므로 $f^{-1}(5)=2$이다.\n따라서 정답은 ②이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q03.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q03.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
-      "type": "mapping_diagram",
+      "type": "dual_mapping_diagram",
       "renderer": "deterministic-svg",
       "semanticRoles": [
+        "f",
         "inverse",
-        "g",
-        "composition"
+        "g"
       ],
-      "essentialVisualFacts": "f(2)=4 and g(4)=5; inverse arrow",
-      "assetRef": "plan-locked"
+      "essentialVisualFacts": "g(3)=5 and f(2)=5; apply g first, then read f backward",
+      "assetRef": "reviewed-pass"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
-    "sourceGrounding": "plan-2026-08-26"
+    "sourceGrounding": "repair-2026-08-29"
   },
   {
     "id": 4,
@@ -175,7 +172,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "유리함수",
       "그래프",
       "사분면"
@@ -184,9 +180,9 @@ window.questionBank = [
     "content": "유리함수 $y=\\dfrac{3}{x-2}+1$의 그래프가 지나는 사분면의 개수는?",
     "choices": ["1","2","3","4","5"],
     "answer": "④",
-    "solution": "[키포인트] $x$와 $y$의 부호를 구간별로 확인하여 그래프가 실제로 지나는 사분면을 센다.\n정석 풀이:\n1. $x>2$이면 $y>1$이므로 제1사분면을 지난다.\n2. $0<x<2$이면 $y<0$이므로 제4사분면을 지난다.\n3. $x<0$에서는 $y$가 양수인 구간과 음수인 구간이 모두 존재한다. 따라서 제2사분면과 제3사분면도 지난다.\n4. 그러므로 제1, 제2, 제3, 제4사분면을 모두 지나며 그 개수는 $4$이다.\n따라서 정답은 ④이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] $x$와 $y$의 부호를 구간별로 확인하여 그래프가 실제로 지나는 사분면을 센다.\n정석 풀이:\n1. $x\\gt2$이면 $y\\gt1$이므로 제1사분면을 지난다.\n2. $0\\lt x\\lt 2$이면 $y\\lt0$이므로 제4사분면을 지난다.\n3. $x\\lt0$에서는 $y$가 양수인 구간과 음수인 구간이 모두 존재한다. 따라서 제2사분면과 제3사분면도 지난다.\n4. 그러므로 제1, 제2, 제3, 제4사분면을 모두 지나며 그 개수는 $4$이다.\n따라서 정답은 ④이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -205,41 +201,41 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "무리함수",
       "그래프",
-      "평행이동"
+      "끝점"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\sqrt{4-x}+2$에 대하여 $f(0)+1$의 값은?",
+    "content": "함수 $f(x)=\\sqrt{a+bx}+c$의 그래프가 아래 그림과 같을 때, $f(0)$의 값은?",
     "choices": [
+      "2",
+      "3",
+      "4",
       "5",
-      "6",
-      "7",
-      "8",
-      "9"
+      "6"
     ],
-    "answer": "①",
-    "solution": "[키포인트] 먼저 진수 조건을 확인한 뒤 주어진 입력을 대입한다.\n조건 정리: $f(x)=\\sqrt{4-x}+2$이고 $f(0)+1$을 구한다.\n풀이 방향: $x=0$이 정의역에 들어가는지 확인하고 함수식에 대입한다.\n정석 풀이:\n1. $4-0=4\\ge0$이므로 $x=0$은 정의역에 속한다.\n2. $f(0)=\\sqrt4+2=4$이다.\n3. 따라서 $f(0)+1=4+1=5$이다.\n핵심 확인: 진수 조건과 대입 결과가 모두 성립하므로 계산값은 $5$이다.\n따라서 정답은 ①이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "answer": "③",
+    "solution": "[키포인트] 무리함수 그래프의 끝점과 그래프 위의 한 점을 이용해 $a,b,c$를 복원한다.\n조건 정리: 그림에서 끝점은 $E(9,1)$이고 그래프는 점 $P(5,3)$을 지난다.\n풀이 방향: 끝점에서 루트 안의 값과 $c$를 정한 뒤, 점 $P$를 대입하여 $a,b$를 구한다.\n정석 풀이:\n1. 끝점 $E(9,1)$에서 $a+9b=0$이고 $c=1$이다.\n2. 점 $P(5,3)$이 그래프 위에 있으므로 $\\sqrt{a+5b}+1=3$이다. 따라서 $a+5b=4$이다.\n3. $(a+5b)-(a+9b)=4$이므로 $-4b=4$, 즉 $b=-1$이고 $a=9$이다.\n4. 따라서 $f(0)=\\sqrt9+1=4$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q05.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q05.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
-      "type": "radical_graph",
+      "type": "radical_graph_parameter_recovery",
       "renderer": "deterministic-svg",
       "semanticRoles": [
         "radical",
-        "endpoint"
+        "endpoint",
+        "given_point"
       ],
-      "essentialVisualFacts": "f(x)=sqrt(4-x)+2, endpoint (4,2), f(0)=4",
-      "assetRef": "plan-locked"
+      "essentialVisualFacts": "endpoint E(9,1), point P(5,3), graph y=sqrt(9-x)+1",
+      "assetRef": "reviewed-pass"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
-    "sourceGrounding": "plan-2026-08-26"
+    "sourceGrounding": "repair-2026-08-29"
   },
   {
     "id": 6,
@@ -250,31 +246,36 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-08",
     "standardUnit": "유리함수",
     "standardUnitOrder": 8,
-    "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-08-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "유리함수",
       "점근선",
       "역함수"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\dfrac{2x+1}{x-1}$의 그래프의 점근선이 두 직선 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
-    "choices": ["2","3","4","5","6"],
+    "content": "유리함수 $y=f(x)$의 그래프 위의 모든 점 $(x,y)$가 $(x-1)(y-2)=3$을 만족한다. 이 그래프의 점근선이 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은?",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 점근선으로 $a,b$를 정하고, $y=f(x)$에서 $x$를 풀어 역함수를 구한다.\n정석 풀이:\n1. $f(x)=\\dfrac{2x+1}{x-1}$의 수직점근선은 $x=1$, 수평점근선은 $y=2$이므로 $a=1,b=2$이다.\n2. $y=\\dfrac{2x+1}{x-1}$에서 $y(x-1)=2x+1$이므로 $x(y-2)=y+1$이다.\n3. 따라서 $f^{-1}(y)=\\dfrac{y+1}{y-2}$이고, $a+b=3$이다.\n4. $f^{-1}(3)=\\dfrac{3+1}{3-2}=4$이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 곱의 형태로 주어진 그래프 조건을 유리함수 식으로 복원한 뒤 점근선과 역함숫값을 구한다.\n조건 정리: $(x-1)(y-2)=3$이므로 먼저 $y$를 $x$에 대한 식으로 나타낼 수 있다.\n풀이 방향: 그래프 식 복원 → 점근선 확인 → $f(x)=a+b$를 풀어 역함숫값을 구한다.\n정석 풀이:\n1. $(x-1)(y-2)=3$에서 $y=2+\\dfrac{3}{x-1}$이다. 따라서 수직점근선은 $x=1$, 수평점근선은 $y=2$이므로 $a=1$, $b=2$이다.\n2. 그러므로 $a+b=3$이다.\n3. $f^{-1}(3)$은 $f(x)=3$을 만족시키는 $x$이므로 $3=2+\\dfrac{3}{x-1}$이다.\n4. $1=\\dfrac{3}{x-1}$에서 $x-1=3$, 따라서 $x=4$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 7,
     "level": "중",
-    "category": "유리함수의 최댓값",
+    "category": "유리함수의 최솟값",
     "originalCategory": "유리함수",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-08",
@@ -287,23 +288,28 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "유리함수",
-      "최댓값",
+      "최솟값",
       "정의역"
     ],
     "wide": false,
-    "content": "정의역이 $\\{x\\mid0\\le x\\le4\\}$인 함수 $y=\\dfrac{5x+k}{x+1}$의 최댓값이 $3$일 때, 실수 $k$의 값은?",
-    "choices": ["-9","-7","-5","-3","-1"],
-    "answer": "③",
-    "solution": "[키포인트] 도함수의 부호로 증가·감소를 확인한 뒤 끝점에서 최댓값을 계산한다.\n정석 풀이:\n1. $F(x)=\\dfrac{5x+k}{x+1}$이라 하면\n$F'(x)=\\dfrac{5-k}{(x+1)^2}$이다.\n2. 최댓값이 오른쪽 끝점에서 생기도록 $k<5$이면 $F$는 증가한다.\n3. 따라서 최댓값은 $F(4)=\\dfrac{20+k}{5}=3$이다.\n4. 이 식에서 $k=-5$이고 실제로 $-5<5$이므로 증가 조건도 만족한다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "content": "정의역이 $\\{x\\mid 0\\le x\\le 4\\}$인 함수 $y=\\dfrac{3x+k}{x+1}$의 최솟값이 $4$일 때, 실수 $k$의 값은?",
+    "choices": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 식을 상수와 역수항의 합으로 바꾸어 구간에서의 감소 방향을 판단한다.\n조건 정리: $y=3+\\dfrac{k-3}{x+1}$이고 정의역은 $0\\le x\\le4$이다.\n풀이 방향: 최솟값이 $4\\gt3$이라는 사실로 $k$의 부호 조건을 정한 뒤 끝점에서 최솟값 조건을 적용한다.\n정석 풀이:\n1. 최솟값이 $4$이므로 $k-3$은 양수여야 한다. 즉 $k\\gt3$이다.\n2. $k-3\\gt0$일 때 $x$가 증가하면 $x+1$이 커지므로 $\\dfrac{k-3}{x+1}$은 감소한다. 따라서 함수는 구간에서 감소한다.\n3. 최솟값은 $x=4$에서이므로 $\\dfrac{12+k}{5}=4$이다. 따라서 $k=8$이다.\n4. $8\\gt3$이므로 앞의 감소 조건도 만족한다.\n따라서 정답은 ④이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 8,
-    "level": "하",
+    "level": "중",
     "category": "합성함수의 반복",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
@@ -317,17 +323,22 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "합성함수",
       "반복합성"
     ],
     "wide": false,
-    "content": "함수 $f(x)=2x-1$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$으로 정의할 때, $f^3(2)$의 값은? (단, $n$은 자연수이다.)",
-    "choices": ["5","7","9","11","13"],
+    "content": "함수 $f(x)=x+3$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$으로 정의한다. 실수 $a$가 $f^2(a)=8$을 만족할 때, $f^5(a)$의 값은? (단, $n$은 자연수이다.)",
+    "choices": [
+      "13",
+      "15",
+      "17",
+      "19",
+      "21"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 합성 횟수에 따라 함숫값을 차례로 계산한다.\n정석 풀이:\n1. $f(2)=2\\cdot2-1=3$이다.\n2. $f^2(2)=f(3)=5$이다.\n3. $f^3(2)=f(5)=9$이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 반복합성의 규칙을 찾은 뒤 주어진 $f^2(a)$에서 시작값 $a$를 먼저 복원한다.\n조건 정리: $f(x)=x+3$이므로 한 번 합성할 때마다 값에 $3$이 더해진다.\n풀이 방향: $f^2(a)=8$에서 $a$를 구한 뒤 같은 규칙으로 $f^5(a)$를 계산한다.\n정석 풀이:\n1. $f^2(a)=a+6=8$이므로 $a=2$이다.\n2. 일반적으로 $f^n(x)=x+3n$이므로 $f^5(a)=a+15$이다.\n3. $a=2$를 대입하면 $f^5(a)=17$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -346,17 +357,22 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "함수",
       "함수방정식"
     ],
     "wide": false,
-    "content": "임의의 실수 $x,y$에 대하여 함수 $f$가 $f(x+y)=f(x)+f(y)$를 만족시키고 $f(3)=6$일 때, $f(12)$의 값은?",
-    "choices": ["10","12","14","16","18"],
+    "content": "임의의 실수 $x,y$에 대하여 함수 $f$가 $f(x+y)=f(x)+f(y)$를 만족시키고 $f(2)+f(3)=10$일 때, $f(15)$의 값은?",
+    "choices": [
+      "20",
+      "25",
+      "30",
+      "35",
+      "40"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 가법성으로 정수배를 분리하면 선형성에 대한 추가 가정 없이도 필요한 값을 구할 수 있다.\n정석 풀이:\n1. $12=3+3+3+3$이므로\n$f(12)=f(3+3+3+3)=4f(3)$이다.\n2. $f(3)=6$이므로 $f(12)=4\\cdot6=24$이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 주어진 두 함수값의 합을 가법성으로 하나의 함수값으로 바꾸어 원문 핵심 계산에 들어간다.\n조건 정리: $f(2)+f(3)=f(5)$이고 그 값이 $10$이다.\n풀이 방향: 먼저 $f(5)$를 복원한 뒤 $15=5+5+5$를 이용한다.\n정석 풀이:\n1. 가법성에 의해 $f(5)=f(2+3)=f(2)+f(3)=10$이다.\n2. $15=5+5+5$이므로 $f(15)=3f(5)$이다.\n3. 따라서 $f(15)=3\\cdot10=30$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -375,7 +391,6 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "합성함수",
       "항등식"
     ],
@@ -390,9 +405,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 합성함수를 전개하여 양의 정수 조건을 적용한다.\n조건 정리: $f(x)=x+k$, $g(x)=kx+3$, $k$는 양의 정수이고 $g\\circ f=f\\circ g$이다.\n풀이 방향: 두 합성함수의 상수항을 비교하여 $k$에 대한 방정식을 만든다.\n정석 풀이:\n1. $g(f(x))=g(x+k)=k(x+k)+3=kx+k^2+3$이다.\n2. $f(g(x))=f(kx+3)=kx+3+k$이다.\n3. 두 식이 모든 $x$에서 같으려면 $k^2+3=k+3$이어야 하므로\n$k^2-k=k(k-1)=0$이다.\n4. $k$는 양의 정수이므로 $k=1$만 가능하다.\n핵심 확인: $k=1$이면 $g(f(x))=x+4=f(g(x))$가 되어 합성함수 조건을 만족한다.\n따라서 정답은 ①이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
-    "imageStatus": "new_asset_pending_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
+    "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
   },
@@ -405,26 +420,31 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
     "standardUnitOrder": 7,
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "역함수",
       "그래프",
       "접점",
       "이차방정식"
     ],
     "wide": false,
-    "content": "함수 $f(x)=x^2-6x+a\\;(x\\ge3)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 접하도록 하는 실수 $a$의 값은?",
-    "choices": ["\\dfrac{25}{4}","\\dfrac{36}{4}","\\dfrac{49}{4}","\\dfrac{64}{4}","\\dfrac{81}{4}"],
+    "content": "함수 $f(x)=(x-4)^2+c\\;(x\\ge4)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 접하도록 하는 실수 $c$의 값은?",
+    "choices": [
+      "$\\dfrac94$",
+      "$\\dfrac{13}{4}$",
+      "$\\dfrac{17}{4}$",
+      "$\\dfrac{21}{4}$",
+      "$\\dfrac{25}{4}$"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 함수와 역함수의 접점은 $y=x$ 위에 있고, 접선 기울기도 비교해야 한다.\n조건 정리: $f(x)=x^2-6x+a$의 정의역 $x\\ge3$에서 접점의 위치와 기울기를 정한다.\n풀이 방향: 역함수의 접선 기울기는 원래 함수 접선 기울기의 역수라는 사실을 사용한다.\n정석 풀이:\n1. $x\\ge3$에서 $f'(x)=2x-6\\ge0$이므로 $f$는 일대일이고 역함수가 존재한다.\n2. 접점의 좌표를 $(t,t)$라 하면 $f(t)=t$이다. 두 그래프가 접하려면 $f'(t)=1/f'(t)$이므로 $f'(t)=1$이다.\n3. $2t-6=1$에서 $t=\\dfrac72$이다.\n4. $f(\\dfrac72)=\\dfrac72$를 대입하면 $\\dfrac{49}{4}-21+a=\\dfrac72$, 따라서 $a=\\dfrac{49}{4}$이다.\n핵심 확인: $t=\\dfrac72\\ge3$이고 두 그래프의 접선 기울기가 모두 $1$이므로 조건을 만족한다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] $x\\ge4$에서 함수가 증가하므로 함수와 역함수의 접점은 $y=x$ 위에서 찾고 중근 조건을 적용한다.\n조건 정리: $f(x)=(x-4)^2+c$는 $x\\ge4$에서 증가하여 역함수가 존재한다.\n풀이 방향: $f(x)=x$를 이차방정식으로 만들고 두 그래프가 접하는 중근 조건을 사용한다.\n정석 풀이:\n1. 접점에서는 $f(x)=x$이므로 $(x-4)^2+c=x$이다.\n2. 이를 정리하면 $x^2-9x+16+c=0$이다.\n3. 접하려면 이 방정식이 중근을 가져야 하므로 판별식이 $81-4(16+c)=0$이다.\n4. 따라서 $17-4c=0$이고 $c=\\dfrac{17}{4}$이다. 중근은 $x=\\dfrac92\\ge4$이므로 정의역 조건도 만족한다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -443,14 +463,13 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "명제",
       "부등식",
       "증명",
       "무리식"
     ],
     "wide": false,
-    "content": "$a>b>0$일 때 $\\sqrt{a-b}>\\sqrt a-\\sqrt b$를 보이자. 다음 전개에서 $\\sqrt a-\\sqrt b=\\dfrac{a-b}{(가)}$, $(\\sqrt a+\\sqrt b)^2=a+b+(나)$이다. (가),(나)에 들어갈 식은?",
+    "content": "$a\\gt b\\gt 0$일 때 $\\sqrt{a-b}\\gt\\sqrt a-\\sqrt b$를 보이자. 다음 전개에서 $\\sqrt a-\\sqrt b=\\dfrac{a-b}{(가)}$, $(\\sqrt a+\\sqrt b)^2=a+b+(나)$이다. (가),(나)에 들어갈 식은?",
     "choices": [
       "$\\sqrt a+\\sqrt b, 2\\sqrt{ab}$",
       "$\\sqrt a+\\sqrt b, a+b$",
@@ -459,10 +478,10 @@ window.questionBank = [
       "$\\sqrt a, \\sqrt b$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 켤레식을 곱해 무리식을 유리화하고 제곱 전개로 빈칸을 정한다.\n조건 정리: $a>b>0$이고 $\\sqrt a-\\sqrt b=\\dfrac{a-b}{(가)}$, $(\\sqrt a+\\sqrt b)^2=a+b+(나)$이다.\n풀이 방향: 분자와 분모에 켤레식을 곱해 (가)를 구한 뒤, 제곱식을 전개하여 (나)를 구한다.\n정석 풀이:\n1. $\\sqrt a-\\sqrt b$에 켤레식 $\\sqrt a+\\sqrt b$를 곱하면\n$\\sqrt a-\\sqrt b=\\dfrac{(\\sqrt a-\\sqrt b)(\\sqrt a+\\sqrt b)}{\\sqrt a+\\sqrt b}=\\dfrac{a-b}{\\sqrt a+\\sqrt b}$이다. 따라서 (가)는 $\\sqrt a+\\sqrt b$이다.\n2. $(\\sqrt a+\\sqrt b)^2=a+b+2\\sqrt{ab}$이므로 (나)는 $2\\sqrt{ab}$이다.\n3. $a>b>0$에서 양변은 음이 아니고,\n$(a-b)-(\\sqrt a-\\sqrt b)^2=2\\sqrt b(\\sqrt a-\\sqrt b)>0$이므로 $\\sqrt{a-b}>\\sqrt a-\\sqrt b$도 성립한다.\n4. 따라서 빈칸의 조합은 $(\\sqrt a+\\sqrt b,2\\sqrt{ab})$이고 첫 번째 선택지이다.\n핵심 확인: $a>b>0$이면 $\\sqrt a-\\sqrt b>0$이므로 제곱하여 비교한 결과를 원래 부등식에 적용할 수 있다.\n따라서 정답은 ①이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
-    "imageStatus": "new_asset_pending_review",
+    "solution": "[키포인트] 켤레식을 곱해 무리식을 유리화하고 제곱 전개로 빈칸을 정한다.\n조건 정리: $a\\gt b\\gt 0$이고 $\\sqrt a-\\sqrt b=\\dfrac{a-b}{(가)}$, $(\\sqrt a+\\sqrt b)^2=a+b+(나)$이다.\n풀이 방향: 분자와 분모에 켤레식을 곱해 (가)를 구한 뒤, 제곱식을 전개하여 (나)를 구한다.\n정석 풀이:\n1. $\\sqrt a-\\sqrt b$에 켤레식 $\\sqrt a+\\sqrt b$를 곱하면\n$\\sqrt a-\\sqrt b=\\dfrac{(\\sqrt a-\\sqrt b)(\\sqrt a+\\sqrt b)}{\\sqrt a+\\sqrt b}=\\dfrac{a-b}{\\sqrt a+\\sqrt b}$이다. 따라서 (가)는 $\\sqrt a+\\sqrt b$이다.\n2. $(\\sqrt a+\\sqrt b)^2=a+b+2\\sqrt{ab}$이므로 (나)는 $2\\sqrt{ab}$이다.\n3. $a\\gt b\\gt 0$에서 양변은 음이 아니고,\n$(a-b)-(\\sqrt a-\\sqrt b)^2=2\\sqrt b(\\sqrt a-\\sqrt b)\\gt0$이므로 $\\sqrt{a-b}\\gt\\sqrt a-\\sqrt b$도 성립한다.\n4. 따라서 빈칸의 조합은 $(\\sqrt a+\\sqrt b,2\\sqrt{ab})$이고 첫 번째 선택지이다.\n핵심 확인: $a\\gt b\\gt 0$이면 $\\sqrt a-\\sqrt b\\gt0$이므로 제곱하여 비교한 결과를 원래 부등식에 적용할 수 있다.\n따라서 정답은 ①이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
+    "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
   },
@@ -482,19 +501,24 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "부등식",
       "산술평균",
       "기하평균",
       "최솟값"
     ],
     "wide": false,
-    "content": "$x>0$, $y>0$일 때, $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 최솟값을 구하시오.",
-    "choices": ["21","23","25","27","29"],
+    "content": "$x\\gt0$, $y\\gt0$일 때, $E=(2x+y)\\left(\\dfrac8x+\\dfrac9y\\right)$라 하자. $E$의 최솟값을 $m$이라 하고, 그 최솟값을 갖게 하는 비 $x:y$를 서로소 자연수 $p:q$로 나타낼 때, $m+p+q$의 값은?",
+    "choices": [
+      "50",
+      "52",
+      "54",
+      "56",
+      "58"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 코시·슈바르츠 부등식을 적용하고 등호 조건이 양수 조건을 만족하는지 확인한다.\n정석 풀이:\n1. 코시·슈바르츠 부등식에 의해\n$(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)\\ge(2+3)^2=25$이다.\n2. 등호 조건은 $\\dfrac{x}{2}=\\dfrac{y}{3}$, 즉 $x:y=2:3$일 때 성립한다.\n3. 이 조건은 양수 조건과 양립하므로 실제 최솟값은 $25$이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 식을 전개하여 양수인 두 항에 산술평균과 기하평균의 관계를 적용하고 등호 조건에서 비를 구한다.\n조건 정리: $E=25+\\dfrac{18x}{y}+\\dfrac{8y}{x}$이다.\n풀이 방향: 두 분수항의 합의 최솟값과 등호 조건을 함께 구한다.\n정석 풀이:\n1. $x,y\\gt0$이므로 $\\dfrac{18x}{y}+\\dfrac{8y}{x}\\ge2\\sqrt{144}=24$이다. 따라서 $m=25+24=49$이다.\n2. 등호는 $\\dfrac{18x}{y}=\\dfrac{8y}{x}$일 때 성립한다. 따라서 $18x^2=8y^2$이고 $3x=2y$이다.\n3. 그러므로 $x:y=2:3$이어서 $p=2$, $q=3$이다.\n4. 따라서 $m+p+q=49+2+3=54$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -506,14 +530,13 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
     "standardUnitOrder": 7,
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "역함수",
       "그래프",
       "보기"
@@ -528,9 +551,9 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 유리함수의 역함수, 사분면, 고정점을 각각 직접 확인한다.\n조건 정리: $f(x)=\\dfrac1{x-1}+2$의 정의역·치역과 세 설명의 참·거짓을 판정한다.\n풀이 방향: 역함수는 대수적으로 구하고, 그래프의 부호와 $f(x)=x$의 해를 따로 확인한다.\n정석 풀이:\n1. $f$는 $x≠1$에서 일대일이고 치역이 $y≠2$이므로 역함수가 존재한다. 따라서 ㄱ은 참이다.\n2. $x>1$에서는 제1사분면, $x<0$에서는 제2사분면, $0<x<1$의 일부에서는 제4사분면을 지난다. 제3사분면은 지나지 않으므로 ㄴ은 거짓이다.\n3. 역함수 그래프와 원래 그래프의 교점은 $y=x$ 위에 있다. $f(x)=x$는 $\\dfrac1{x-1}+2=x$, 즉 $x^2-3x+1=0$이고 두 근이 모두 허용된다. 따라서 ㄷ은 참이다.\n4. 참인 것은 ㄱ, ㄷ이다.\n핵심 확인: 세 설명 중 ㄱ과 ㄷ만 참이므로 선택지는 ③이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 역함수를 직접 구한 뒤 세 설명을 각각 확인한다.\n조건 정리: $f(x)=\\dfrac1{x-1}+2$의 정의역은 $x\\ne1$, 공역은 $y\\ne2$이다.\n풀이 방향: ㄱ은 역함수 존재 여부, ㄴ은 사분면, ㄷ은 두 그래프의 교점 방정식을 직접 비교한다.\n정석 풀이:\n1. $y=\\dfrac1{x-1}+2$에서 $y-2=\\dfrac1{x-1}$이므로 $x=1+\\dfrac1{y-2}$이다. 따라서 $f^{-1}(x)=1+\\dfrac1{x-2}$이고 역함수가 존재한다. ㄱ은 참이다.\n2. $x\\gt1$이면 $y\\gt2$이므로 제1사분면을 지난다. $x\\lt0$이면 $y$는 $1$과 $2$ 사이의 양수이므로 제2사분면을 지난다. 또한 $0\\lt x\\lt1$의 일부에서는 $y\\lt0$이어서 제4사분면을 지나지만 제3사분면은 지나지 않는다. 따라서 ㄴ은 거짓이다.\n3. 두 그래프의 교점은 $f(x)=f^{-1}(x)$를 만족한다. 즉 $\\dfrac1{x-1}+2=1+\\dfrac1{x-2}$이고, 이를 정리하면 $(x-1)(x-2)=1$, 곧 $x^2-3x+1=0$이다. 한편 $f(x)=x$도 같은 식 $x^2-3x+1=0$으로 정리된다. 따라서 두 개수는 같고 ㄷ은 참이다.\n4. 참인 것은 ㄱ, ㄷ이므로 정답은 ③이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -549,50 +572,61 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "역함수",
       "합성함수",
       "항등함수",
       "유리함수"
     ],
     "wide": false,
-    "content": "함수 $f(x)=\\dfrac{2x+3}{x-2}\\;(x\\ne2)$에 대하여 $3f^{-1}(5)$의 값을 구하시오.",
-    "choices": ["9","11","13","15","17"],
+    "content": "함수 $f(x)=\\dfrac{2x+3}{x+a}$가 자기 자신의 역함수일 때, $3f^{-1}(5)$의 값은?",
+    "choices": [
+      "9",
+      "11",
+      "13",
+      "15",
+      "17"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 역함숫값은 원래 함수의 방정식 $f(x)=5$를 풀어 구한다.\n조건 정리: $f(x)=\\dfrac{2x+3}{x-2}$에서 $f^{-1}(5)$를 먼저 계산한다.\n풀이 방향: 역함수식을 직접 만들지 않고도 역함수의 정의로 필요한 값을 구한다.\n정석 풀이:\n1. $f^{-1}(5)=t$라 하면 $\\dfrac{2t+3}{t-2}=5$이다.\n2. $2t+3=5t-10$에서 $t=\\dfrac{13}{3}$이다.\n3. 따라서 $3f^{-1}(5)=13$이다.\n핵심 확인: $t=\\dfrac{13}{3}$을 원래 식에 대입하면 $f(t)=5$가 된다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 자기 자신의 역함수라는 조건을 $(f\\circ f)(x)=x$로 바꾸어 매개변수 $a$를 먼저 결정한다.\n조건 정리: $f^{-1}=f$이므로 정의되는 모든 $x$에 대하여 $f(f(x))=x$이다.\n풀이 방향: 합성함수를 계산하여 항등식의 계수를 비교한 뒤 $f^{-1}=f$를 이용해 필요한 값을 구한다.\n정석 풀이:\n1. $f(f(x))=\\dfrac{7x+3a+6}{(a+2)x+a^2+3}$이다.\n2. 이것이 모든 $x$에서 $x$와 같으므로 $7x+3a+6=(a+2)x^2+(a^2+3)x$이다.\n3. $x^2$의 계수를 비교하면 $a+2=0$이므로 $a=-2$이다. 이때 $a^2+3=7$, $3a+6=0$도 만족한다.\n4. 따라서 $f^{-1}=f$이고 $f^{-1}(5)=f(5)=\\dfrac{13}{3}$이다.\n5. 그러므로 $3f^{-1}(5)=13$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
     "id": 16,
-    "level": "상",
+    "level": "중",
     "category": "일대일대응의 개수",
     "originalCategory": "함수",
     "standardCourse": "공통수학2",
     "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
     "standardUnitOrder": 7,
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "함수",
+      "역함수",
       "일대일대응",
       "경우의수",
       "조건"
     ],
     "wide": false,
-    "content": "집합 $X=\\{1,2,3,4,5\\}$에서 $X$로의 함수 $f$가 역함수를 가질 때, $f(1)<f(2)<f(3)$을 만족시키는 함수 $f$의 개수는?",
-    "choices": ["10","15","20","25","30"],
+    "content": "집합 $X=\\{1,2,3,4,5\\}$에서 $X$로의 함수 $f$가 역함수를 가지며 $f^{-1}(1)\\lt f^{-1}(2)\\lt f^{-1}(3)$을 만족시킬 때, 함수 $f$의 개수는?",
+    "choices": [
+      "10",
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 유한 집합의 함수가 역함수를 가지면 일대일 대응이므로 함숫값은 서로 달라야 한다.\n조건 정리: $f(1),f(2),f(3)$의 증가 순서를 먼저 정하고 나머지 함숫값을 배치한다.\n풀이 방향: 선택과 순열의 곱으로 모든 일대일 대응을 빠짐없이 센다.\n정석 풀이:\n1. $f(1),f(2),f(3)$은 서로 다른 세 원소이고 증가하는 순서로 정해진다.\n2. $X$에서 세 원소를 고르는 방법은 $\\binom53=10$가지이다.\n3. 남은 두 원소를 $f(4),f(5)$에 배치하는 방법은 $2!=2$가지이다.\n4. 따라서 함수의 개수는 $\\binom53\\cdot2!=20$이다.\n핵심 확인: 첫 세 함숫값의 순서는 오름차순으로 하나뿐이고, 남은 두 값만 순열로 배치하므로 중복 계산이 없다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 역함숫값을 원래 순열에서 각 값이 놓인 위치로 해석하면 순서 조건을 경우의 수 조건으로 바꿀 수 있다.\n조건 정리: 역함수가 존재하므로 $f$는 $X$의 순열이고, $f^{-1}(1),f^{-1}(2),f^{-1}(3)$은 값 $1,2,3$이 나타나는 입력 위치이다.\n풀이 방향: 세 값 $1,2,3$의 상대적 순서만 고정된 순열의 개수를 센다.\n정석 풀이:\n1. $X$의 다섯 값을 일렬로 배치하는 순열은 모두 $5!$가지이다.\n2. 그중 값 $1,2,3$의 상대적 순서는 $3!$가지가 똑같이 나타난다.\n3. 조건은 이 세 값이 $1,2,3$의 순서로 나타나는 한 경우만 허용하므로 함수의 개수는 $\\dfrac{5!}{3!}=20$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -604,26 +638,31 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
     "standardUnitOrder": 7,
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "조각함수",
       "역함수",
       "일대일대응",
       "최솟값"
     ],
     "wide": false,
-    "content": "실수 전체의 집합에서 실수 전체의 집합으로의 함수 $f(x)=\\begin{cases}x+2&(x<0)\\\\2x+a&(x\\ge0)\\end{cases}$가 역함수를 갖도록 하는 실수 $a$의 값은?",
-    "choices": ["0","1","2","3","4"],
+    "content": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt b)\\\\ a(x-3)^2-6a-4&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 하자. $b=t$일 때, $6a+c+t$의 값은? (단, $a,b,c,t$는 모두 실수이다.)",
+    "choices": [
+      "-6",
+      "-5",
+      "-4",
+      "-3",
+      "-2"
+    ],
     "answer": "③",
-    "solution": "[키포인트] 두 조각의 치역이 겹치지 않으면서 실수 전체를 덮어야 역함수가 존재한다.\n조건 정리: $x<0$과 $x\\ge0$에서 각 조각의 치역을 구한다.\n풀이 방향: 치역의 경계가 이어지는 조건으로 $a$를 결정한다.\n정석 풀이:\n1. $x<0$에서 $x+2$의 치역은 $(-\\infty,2)$이다.\n2. $x\\ge0$에서 $2x+a$의 치역은 $[a,\\infty)$이다.\n3. 두 치역이 겹치지 않고 실수 전체를 이루려면 $a=2$이어야 한다.\n4. $a=2$이면 두 조각은 각각 일대일이고 치역은 $(-\\infty,2)$와 $[2,\\infty)$로 나뉘므로 역함수가 존재한다.\n핵심 확인: 경계값 $2$가 첫째 치역에는 포함되지 않고 둘째 치역에는 포함되어 빈틈과 중복이 없다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 꼭짓점형으로 주어진 이차함수 조각의 증가 시작점을 읽고, 두 조각의 치역 경계를 정확히 맞춘다.\n조건 정리: 둘째 조각은 꼭짓점의 $x$좌표가 $3$인 $a(x-3)^2-6a-4$이다. 전체 함수가 일대일대응이 되려면 이 조각이 $[b,\\infty)$에서 증가하며 두 치역이 빈틈없이 이어져야 한다.\n풀이 방향: 증가 조건으로 $t$를 정한 뒤 $b=t$에서 두 치역의 경계값을 맞추고 최종식을 계산한다.\n정석 풀이:\n1. 둘째 조각이 $[b,\\infty)$에서 증가하면서 위로 무한히 커지려면 $a\\gt0$이고 $b\\ge3$이어야 한다. 따라서 가능한 $b$의 최솟값은 $t=3$이다.\n2. $b=3$일 때 첫째 조각의 치역은 $(-\\infty,3+c)$이다.\n3. 둘째 조각의 시작값은 $f(3)=-6a-4$이므로 치역은 $[-6a-4,\\infty)$이다.\n4. 두 치역이 겹치거나 비지 않고 실수 전체를 이루려면 $-6a-4=3+c$이어야 한다. 따라서 $6a+c=-7$이다.\n5. $t=3$이므로 $6a+c+t=-7+3=-4$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -642,43 +681,44 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "무리함수",
       "그래프",
       "도형",
-      "넓이"
+      "넓이",
+      "평행이동"
     ],
     "wide": false,
-    "content": "두 함수 $f(x)=2\\sqrt x$, $g(x)=\\sqrt x$의 그래프를 $1\\le x\\le4$에서 그리고, 직선 $y=2$도 함께 표시한다. 두 그래프 사이의 음영 넓이를 $S$라 할 때 $3S+1$의 값은?",
+    "content": "두 무리함수 $f(x)=\\sqrt x+1$, $g(x)=\\sqrt{x-4}$의 그래프와 직선 $x+4y-25=0$이 각각 점 $A(9,4)$와 $B(13,3)$에서 만난다. 그림과 같이 함수 $f(x)$, $g(x)$의 그래프와 직선 $x+4y-25=0$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
     "choices": [
-      "13",
-      "14",
-      "15",
-      "16",
-      "17"
+      "21",
+      "22",
+      "23",
+      "24",
+      "25"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 곡선의 위아래 관계를 확인하고 곡선 사이의 넓이를 함수의 차로 계산한다.\n조건 정리: $1\\le x\\le4$에서 $f(x)=2\\sqrt x$, $g(x)=\\sqrt x$이고, 직선 $y=2$가 두 곡선의 기준선으로 표시되어 있다.\n풀이 방향: $\\sqrt x\\ge0$이므로 $f(x)\\ge g(x)$임을 확인한 뒤, 위 함수에서 아래 함수를 뺀 넓이를 계산한다.\n정석 풀이:\n1. 두 함수의 차는 $f(x)-g(x)=\\sqrt x$이다. $x=1$에서 $f(1)=2$, $x=4$에서 $g(4)=2$이므로 직선 $y=2$는 두 곡선 사이 영역을 가로지르는 기준선이고, 전체 음영은 두 곡선 사이의 영역이다.\n2. 따라서\n$S=\\int_1^4\\bigl(2\\sqrt x-\\sqrt x\\bigr)\\,dx=\\int_1^4\\sqrt x\\,dx$\n이다.\n3. $S=\\left[\\dfrac23x^{3/2}\\right]_1^4=\\dfrac23(8-1)=\\dfrac{14}{3}$이다.\n4. 그러므로 $3S+1=3\\times\\dfrac{14}{3}+1=15$이다.\n핵심 확인: 구간 전체에서 $2\\sqrt x$가 위에 있고 $\\sqrt x$가 아래에 있으므로 넓이에서 함수의 순서를 바꾸지 않았다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "solution": "[키포인트] $g$의 그래프는 $f$의 그래프를 오른쪽으로 $4$, 아래로 $1$만큼 평행이동한 그래프이므로 곡선 사이 부분을 평행사변형과 삼각형으로 바꾸어 계산한다.\n조건 정리: $P=(0,1)$은 $Q=(4,0)$으로, $A=(9,4)$는 $B=(13,3)$으로 이동한다. 선분 $AB$와 $PQ$는 평행하다.\n풀이 방향: 평행한 두 직선 $AB$, $PQ$ 사이의 거리와 $AB$의 길이로 평행사변형 $PABQ$의 넓이를 구한 뒤, 좌표축 때문에 추가되는 삼각형 $POQ$의 넓이를 더한다.\n정석 풀이:\n1. 직선 $AB$는 $x+4y=25$이고, 점 $P(0,1)$과 $Q(4,0)$을 지나는 직선은 $x+4y=4$이다. 두 직선 사이의 거리는 $\\dfrac{21}{\\sqrt{17}}$이다.\n2. $AB=\\sqrt{(13-9)^2+(3-4)^2}=\\sqrt{17}$이므로 평행사변형 $PABQ$의 넓이는 $\\sqrt{17}\\cdot\\dfrac{21}{\\sqrt{17}}=21$이다.\n3. 실제 아래쪽 경계는 선분 $PQ$가 아니라 $P\\to O\\to Q$이므로 직각삼각형 $POQ$의 넓이 $\\dfrac12\\cdot4\\cdot1=2$를 더한다.\n4. 따라서 구하는 넓이는 $21+2=23$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q18.png",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q18.png",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
-      "type": "composite_area_graph_png",
+      "type": "radical_graph_translation_area_png",
       "renderer": "deterministic-png",
       "semanticRoles": [
         "curves",
         "line",
+        "axes",
         "area"
       ],
-      "essentialVisualFacts": "f=2sqrt(x), g=sqrt(x), x in [1,4], auxiliary line y=2, shaded between curves",
-      "assetRef": "plan-locked"
+      "essentialVisualFacts": "f=sqrt(x)+1, g=sqrt(x-4), translation (4,-1), P(0,1), Q(4,0), A(9,4), B(13,3), line x+4y=25, shaded target region",
+      "assetRef": "reviewed-pass"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
-    "sourceGrounding": "plan-2026-08-26"
+    "sourceGrounding": "repair-2026-08-29"
   },
   {
     "id": 19,
@@ -689,20 +729,19 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-07",
     "standardUnit": "함수",
     "standardUnitOrder": 7,
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+    "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식",
       "합성함수",
       "이차함수",
       "그래프"
     ],
     "wide": false,
-    "content": "이차함수 $f(x)=x^2-2x-3$의 그래프에서 방정식 $(f\\circ f)(x)=0$의 서로 다른 모든 실근의 합에 $1$을 더한 값은?",
+    "content": "아래 그림과 같은 이차함수 $y=f(x)$에 대하여 방정식 $(f\\circ f)(x)=0$의 서로 다른 모든 실근의 합에 $1$을 더한 값은?",
     "choices": [
       "3",
       "4",
@@ -711,27 +750,27 @@ window.questionBank = [
       "7"
     ],
     "answer": "③",
-    "solution": "[키포인트] 합성함수의 값이 $0$이 되도록 안쪽 함수의 값을 먼저 정한다.\n조건 정리: $f(x)=x^2-2x-3$에 대하여 $(f\\circ f)(x)=0$의 서로 다른 실근의 합을 구한 뒤 $1$을 더한다.\n풀이 방향: 먼저 $f(t)=0$의 두 값을 구하고, $f(x)$가 그 두 값 중 하나가 되는 경우를 나누어 푼다.\n정석 풀이:\n1. $f(t)=t^2-2t-3=(t-3)(t+1)$이므로 $f(t)=0$의 해는 $t=-1,3$이다.\n2. 따라서 $(f\\circ f)(x)=0$은 $f(x)=-1$ 또는 $f(x)=3$과 같다.\n3. $f(x)=-1$이면 $x^2-2x-2=0$이고 두 근의 합은 $2$이다. 판별식은 $8\\gt0$이므로 서로 다른 두 실근이다.\n4. $f(x)=3$이면 $x^2-2x-6=0$이고 두 근의 합은 $2$이다. 판별식은 $28\\gt0$이므로 서로 다른 두 실근이다.\n5. 두 방정식의 우변이 다르므로 네 근은 서로 겹치지 않는다. 전체 합은 $2+2=4$이고, 여기에 $1$을 더하면 $5$이다.\n핵심 확인: 두 경우 모두 서로 다른 실근 두 개를 만들고 두 경우의 근이 겹치지 않으므로 합산한 네 근이 정확히 전체 해이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "solution": "[키포인트] 그래프에서 이차함수의 두 근과 꼭짓점을 읽어 $f$를 복원한 뒤 합성방정식을 두 경우로 나눈다.\n조건 정리: 그래프의 근은 $-1$, $3$이고 꼭짓점은 $(1,-4)$이다.\n풀이 방향: 그래프 정보로 $f(x)$를 정한 뒤 $f(f(x))=0$에서 $f(x)$가 두 근 중 하나가 되는 경우를 푼다.\n정석 풀이:\n1. 근이 $-1$, $3$이므로 $f(x)=a(x+1)(x-3)$라 둘 수 있다. 꼭짓점 $V(1,-4)$를 대입하면 $-4a=-4$이므로 $a=1$이다. 따라서 $f(x)=x^2-2x-3$이다.\n2. $f(t)=0$의 해가 $t=-1,3$이므로 $(f\\circ f)(x)=0$은 $f(x)=-1$ 또는 $f(x)=3$이다.\n3. $f(x)=-1$이면 $x^2-2x-2=0$이고 두 근의 합은 $2$이다. $f(x)=3$이면 $x^2-2x-6=0$이고 두 근의 합도 $2$이다. 두 방정식의 우변이 달라 근은 서로 겹치지 않는다.\n4. 네 실근의 합은 $4$이고 여기에 $1$을 더하면 $5$이다.\n따라서 정답은 ③이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "image": "assets/images/25_팔마고_2학기_기말_고1_유사/q19.svg",
-    "imageStatus": "new_asset_pending_review",
+    "imageStatus": "reviewed_pass",
     "visualAsset": "assets/images/25_팔마고_2학기_기말_고1_유사/q19.svg",
     "visualSpec": {
       "visualSpecVersion": "0.1",
       "visualDependency": "ESSENTIAL",
-      "type": "quadratic_graph",
+      "type": "quadratic_graph_parameter_recovery",
       "renderer": "deterministic-svg",
       "semanticRoles": [
         "parabola",
         "roots",
         "vertex"
       ],
-      "essentialVisualFacts": "f(x)=x^2-2x-3, roots -1,3, vertex (1,-4), y-intercept -3",
-      "assetRef": "plan-locked"
+      "essentialVisualFacts": "roots (-1,0),(3,0), vertex V(1,-4); function formula is not printed",
+      "assetRef": "reviewed-pass"
     },
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
-    "sourceGrounding": "plan-2026-08-26"
+    "sourceGrounding": "repair-2026-08-29"
   },
   {
     "id": 20,
@@ -758,9 +797,9 @@ window.questionBank = [
     "content": "집합 $X=\\{x\\mid x\\ge k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=(x-2)^2$가 일대일대응이 되도록 하는 실수 $k$의 값을 구하시오. 그 값에 $1$을 더하여 쓰시오.",
     "choices": [],
     "answer": "5",
-    "solution": "[키포인트] 정의역에서 함수가 증가하여 일대일이어야 하고, 치역의 시작점이 공역의 시작점과 같아야 한다.\n정석 풀이:\n1. $f(x)=(x-2)^2$는 $x\\ge k\\ge2$에서 증가한다. 따라서 일대일대응이 되려면 $k\\ge2$이어야 한다.\n2. $X=[k,\\infty)$에서의 치역은 $[f(k),\\infty)$이므로 $f(k)=k$이어야 한다.\n3. $(k-2)^2=k$에서 $k^2-5k+4=0$, 즉 $k=1$ 또는 $4$이다.\n4. $k\\ge2$를 적용하면 $k=4$만 남는다. 따라서 문제의 지시에 따라 $k+1=5$이다.\n따라서 구하는 값은 5이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "solution": "[키포인트] 정의역에서 함수가 증가하여 일대일이어야 하고, 치역의 시작점이 공역의 시작점과 같아야 한다.\n정석 풀이:\n1. $f(x)=(x-2)^2$는 $x\\ge k\\ge2$에서 증가한다. 따라서 일대일대응이 되려면 $k\\ge2$이어야 한다.\n2. $X=[k,\\infty)$에서의 치역은 $[f(k),\\infty)$이므로 $f(k)=k$이어야 한다.\n3. $(k-2)^2=k$에서 $k^2-5k+4=0$, 즉 $k=1$ 또는 $4$이다.\n4. $k\\ge2$를 적용하면 $k=4$만 남는다. 따라서 문제의 지시에 따라 $k+1=5$이다.\n따라서 구하는 값은 $5$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -786,12 +825,12 @@ window.questionBank = [
       "최솟값"
     ],
     "wide": false,
-    "content": "자동차가 $A$에서 $B$까지 평균 $80\\text{ km/h}$의 속력으로 $15$분 동안 달리고, $B$에서 $C$까지 $x$시간 동안 평균 $50\\text{ km/h}$의 속력으로 달렸다고 하자. $A$에서 $C$까지의 평균 속력을 $y\\text{ km/h}$라 할 때, 다음을 구하시오. (1) $x$와 $y$ 사이의 관계식 (2) $0.5\\le x\\le3.5$일 때 $y$의 최댓값과 최솟값.",
+    "content": "자동차가 $A$에서 $B$까지 $24\\text{ km}$를 평균 $96\\text{ km/h}$의 속력으로 달리고, $B$에서 $C$까지 $x$시간 동안 평균 $60\\text{ km/h}$의 속력으로 달렸다고 하자. $A$에서 $C$까지의 평균 속력을 $y\\text{ km/h}$라 할 때, 다음을 구하시오. (1) $x$와 $y$ 사이의 관계식 (2) $\\dfrac34\\le x\\le\\dfrac{11}{4}$일 때 $y$의 최댓값과 최솟값.",
     "choices": [],
-    "answer": "(1) $y=\\dfrac{50x+20}{x+\\dfrac14}$ (2) 최댓값 $60$, 최솟값 $52$",
-    "solution": "[키포인트] 총거리를 총시간으로 나누어 평균속력 함수를 세우고, 함수의 변형으로 구간에서의 증가·감소를 판단한다.\n조건 정리: $AB$는 $80$ km/h로 $15$분, $BC$는 $50$ km/h로 $x$시간 이동하며 $0.5\\le x\\le3.5$이다. 전체 평균속력을 $y$라 한다.\n풀이 방향: 각 구간의 거리와 전체 시간을 구해 $y$를 식으로 나타낸 뒤, 역수 부분의 변화를 이용해 최댓값과 최솟값을 구한다.\n정석 풀이:\n1. $15$분은 $\\dfrac14$시간이므로 $AB$의 거리는 $80\\times\\dfrac14=20$ km이다. $BC$의 거리는 $50x$ km이고 전체 시간은 $x+\\dfrac14$시간이다.\n2. 따라서\n$y=\\dfrac{50x+20}{x+\\dfrac14}\n=50+\\dfrac{\\dfrac{15}{2}}{x+\\dfrac14}$이다.\n3. 구간 $0.5\\le x\\le3.5$에서는 $x+\\dfrac14$가 양수이고 $x$가 커질수록 커진다. 그러므로 $\\dfrac{\\dfrac{15}{2}}{x+\\dfrac14}$는 작아져 $y$는 감소한다.\n4. 최댓값은 $x=0.5$에서\n$y=\\dfrac{50\\times0.5+20}{0.5+\\dfrac14}=60$이다.\n최솟값은 $x=3.5$에서\n$y=\\dfrac{50\\times3.5+20}{3.5+\\dfrac14}=52$이다.\n핵심 확인: 구간의 양 끝값이 포함되고 $y$가 그 구간에서 감소하므로 최댓값과 최솟값을 각각 $x=0.5$, $x=3.5$에서 선택했다.\n따라서 구하는 값은 (1) $y=\\dfrac{50x+20}{x+\\dfrac14}$, (2) 최댓값 $60$, 최솟값 $52$이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "(1) $y=\\dfrac{60x+24}{x+\\dfrac14}$ (2) 최댓값 $69$, 최솟값 $63$",
+    "solution": "[키포인트] 첫 구간은 거리와 속력에서 시간을 먼저 복원한 뒤 전체 거리와 전체 시간으로 평균속력 함수를 세운다.\n조건 정리: $AB$의 거리는 $24$ km, 속력은 $96$ km/h이고, $BC$에서는 $x$시간 동안 $60$ km/h로 이동한다.\n풀이 방향: $AB$의 시간을 구한 뒤 평균속력 관계식을 만들고 역수항의 변화를 이용해 구간의 최댓값과 최솟값을 구한다.\n정석 풀이:\n1. $AB$의 이동 시간은 $24\\div96=\\dfrac14$시간이다. $BC$의 거리는 $60x$ km이다.\n2. 따라서 전체 거리는 $60x+24$, 전체 시간은 $x+\\dfrac14$이므로 $y=\\dfrac{60x+24}{x+\\dfrac14}=60+\\dfrac{9}{x+\\dfrac14}$이다.\n3. $x$가 증가하면 양수인 $x+\\dfrac14$가 증가하므로 $y$는 감소한다.\n4. $x=\\dfrac34$일 때 $y=60+9=69$로 최댓값이고, $x=\\dfrac{11}{4}$일 때 $x+\\dfrac14=3$이므로 $y=60+3=63$으로 최솟값이다.\n따라서 구하는 값은 (1) $y=\\dfrac{60x+24}{x+\\dfrac14}$, (2) 최댓값 $69$, 최솟값 $63$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -816,12 +855,12 @@ window.questionBank = [
       "일차함수"
     ],
     "wide": false,
-    "content": "두 함수 $f(x)=3x-4$, $g(x)=2x+1$에 대하여 (1) $f^{-1}(x)$를 구하고 (2) $f^{-1}\\circ h=g$를 만족하는 일차함수 $h(x)$를 구하시오.",
+    "content": "일차함수 $f$가 $f(1)=-1$, $f(3)=3$을 만족하고 $g(x)=3x+2$일 때, 다음을 구하시오. (1) $f^{-1}(x)$ (2) $f^{-1}\\circ h=g$를 만족하는 일차함수 $h(x)$.",
     "choices": [],
-    "answer": "(1) $f^{-1}(x)=\\dfrac{x+4}{3}$ (2) $h(x)=6x-1$",
-    "solution": "[키포인트] 역함수를 구한 뒤 합성식에 대입하여 $h$를 역으로 결정한다.\n정석 풀이:\n1. $y=3x-4$에서 $x=\\dfrac{y+4}{3}$이므로 $f^{-1}(x)=\\dfrac{x+4}{3}$이다.\n2. $f^{-1}(h(x))=g(x)$이므로 $\\dfrac{h(x)+4}{3}=2x+1$이다.\n3. 따라서 $h(x)=6x-1$이다.\n따라서 구하는 값은 (1) $f^{-1}(x)=(x+4)/3$, (2) $h(x)=6x-1$이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "(1) $f^{-1}(x)=\\dfrac{x+3}{2}$ (2) $h(x)=6x+1$",
+    "solution": "[키포인트] 두 함수값으로 일차함수 $f$를 먼저 복원한 뒤 역함수와 합성식을 차례로 처리한다.\n조건 정리: $f$는 두 점 $(1,-1)$, $(3,3)$을 지나는 일차함수이다.\n풀이 방향: $f$의 식 복원 → $f^{-1}$ 계산 → 합성식에서 $h$ 결정 순서로 진행한다.\n정석 풀이:\n1. $f$의 기울기는 $\\dfrac{3-(-1)}{3-1}=2$이므로 $f(x)=2x-3$이다.\n2. $y=2x-3$에서 $x=\\dfrac{y+3}{2}$이므로 $f^{-1}(x)=\\dfrac{x+3}{2}$이다.\n3. $f^{-1}(h(x))=g(x)$이므로 $\\dfrac{h(x)+3}{2}=3x+2$이다.\n4. 따라서 $h(x)=6x+1$이다.\n따라서 구하는 값은 (1) $f^{-1}(x)=\\dfrac{x+3}{2}$, (2) $h(x)=6x+1$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -847,12 +886,12 @@ window.questionBank = [
       "범위"
     ],
     "wide": false,
-    "content": "함수 $y=\\sqrt{5-x}$의 그래프와 직선 $y=-2x+k$가 서로 다른 두 점에서 만나도록 하는 모든 실수 $k$의 값의 범위를 구하시오.",
+    "content": "함수 $y=\\sqrt{a-x}$의 그래프가 점 $(2,2)$를 지난다. 이 그래프와 직선 $y=-2x+k$가 서로 다른 두 점에서 만나도록 하는 모든 실수 $k$의 값의 범위를 구하시오.",
     "choices": [],
-    "answer": "$10\\le k<\\dfrac{81}{8}$",
-    "solution": "[키포인트] 제곱근을 음이 아닌 변수로 치환하여 두 교점이 생기는 조건을 판별한다.\n조건 정리: $t=\\sqrt{5-x}\\ge0$로 두면 $x=5-t^2$이고 직선과의 교점은 $t=-2x+k$를 만족한다.\n풀이 방향: 교점 조건을 $t$에 대한 이차방정식으로 바꾸고, 두 개의 서로 다른 음이 아닌 근이 생기는 범위를 구한다.\n정석 풀이:\n1. $t=\\sqrt{5-x}\\ge0$이면 $x=5-t^2$이다. 교점에서\n$t=-2(5-t^2)+k=2t^2+k-10$\n이므로\n$2t^2-t+(k-10)=0$이다.\n2. 서로 다른 두 실근을 가지려면 판별식이\n$\\Delta=(-1)^2-4\\times2\\times(k-10)=81-8k\\gt0$\n이어야 하므로 $k<\\dfrac{81}{8}$이다.\n3. 두 근이 모두 음이 아니려면 근의 합이 $\\dfrac12\\gt0$이고 근의 곱이 $\\dfrac{k-10}{2}\\ge0$이어야 한다. 따라서 $k\\ge10$이다. $k=10$일 때 근은 $0,\\dfrac12$로 서로 다르다.\n4. $t\\ge0$인 두 근은 각각 서로 다른 $x=5-t^2$에 대응하므로 두 근은 실제로 두 교점을 만든다.\n5. 따라서 구하는 범위는 $10\\le k<\\dfrac{81}{8}$이다.\n핵심 확인: 판별식 조건은 $k<\\dfrac{81}{8}$, 근의 비음수 조건은 $k\\ge10$이고 두 조건의 교집합이 정확히 답의 범위이다.\n따라서 구하는 값은 $10\\le k<\\dfrac{81}{8}$이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "answer": "$12\\le k\\lt\\dfrac{97}{8}$",
+    "solution": "[키포인트] 주어진 점으로 무리함수의 매개변수 $a$를 먼저 복원한 뒤, 제곱근을 음이 아닌 변수로 치환하여 두 교점 조건을 판별한다.\n조건 정리: 점 $(2,2)$가 그래프 위에 있으므로 $2=\\sqrt{a-2}$이다.\n풀이 방향: $a$ 복원 → $t=\\sqrt{6-x}$ 치환 → 두 개의 서로 다른 음이 아닌 근 조건을 구한다.\n정석 풀이:\n1. $4=a-2$이므로 $a=6$이다. 따라서 무리함수는 $y=\\sqrt{6-x}$이다.\n2. $t=\\sqrt{6-x}\\ge0$로 두면 $x=6-t^2$이다. 교점에서 $t=-2(6-t^2)+k$이므로 $2t^2-t+(k-12)=0$이다.\n3. 서로 다른 두 실근을 가지려면 판별식 $1-8(k-12)=97-8k$가 양수여야 하므로 $k\\lt\\dfrac{97}{8}$이다.\n4. 두 근이 모두 음이 아니려면 근의 합 $\\dfrac12$은 이미 양수이고 근의 곱 $\\dfrac{k-12}{2}$가 음이 아니어야 하므로 $k\\ge12$이다. $k=12$일 때 두 근은 $0$, $\\dfrac12$로 서로 다르다.\n5. 따라서 구하는 범위는 $12\\le k\\lt\\dfrac{97}{8}$이다.\n따라서 구하는 값은 $12\\le k\\lt\\dfrac{97}{8}$이다.",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   }
 ];

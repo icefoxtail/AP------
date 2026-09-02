@@ -311,6 +311,10 @@ window.questionBank = [
   },
   {
     "id": 10,
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "A와 B의 구간을 수직선에 표시한 집합 해설",
+    "solutionImageCaption": "A∩B=(−1,3]가 되도록 B=(−∞,−5)∪(−1,∞)",
+    "solutionImageSize": "full",
     "level": "중",
     "category": "집합과 이차부등식",
     "originalCategory": "집합",
@@ -440,9 +444,13 @@ window.questionBank = [
       "$\\dfrac52$"
     ],
     "answer": "④",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "원점 중심 반지름 √5인 원과 직선 y=m(x+3)-1의 두 교점 조건을 나타낸 좌표평면",
+    "solutionImageCaption": "직선과 원의 중심 사이 거리를 반지름과 비교하여 두 교점이 되는 기울기 범위를 구한다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 원과 직선이 서로 다른 두 점에서 만나려면 원의 중심에서 직선까지의 거리가 반지름보다 작아야 한다.\n조건 정리: 직선은 $y=m(x+3)-1$, 원은 $x^2+y^2=5$이다.\n풀이 방향: 직선을 일반형으로 바꾸고 원점과 직선 사이의 거리를 이용한다.\n정석 풀이: 직선을 일반형으로 나타내면\n$mx-y+3m-1=0$이다.\n원점에서 이 직선까지의 거리는\n$\\dfrac{|3m-1|}{\\sqrt{m^2+1}}$이고, 원의 반지름은 $\\sqrt5$이다.\n서로 다른 두 점에서 만나려면\n$\\dfrac{|3m-1|}{\\sqrt{m^2+1}}<\\sqrt5$이다.\n양변이 음수가 아니므로 제곱하여\n$(3m-1)^2<5(m^2+1)$,\n$4m^2-6m-4<0$,\n$(2m+1)(m-2)<0$을 얻는다.\n따라서 $-\\dfrac12<m<2$이므로 $a=-\\dfrac12$, $b=2$이고\n$a+b=\\dfrac32$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H15-SA-11-INTERSECTION",
+    "subUnit": "원과 직선·원의 교점",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -576,6 +584,10 @@ window.questionBank = [
       "$\\dfrac{11}2\\pi$"
     ],
     "answer": "④",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "점 P, Q, R을 이은 직각삼각형과 그 외접원의 지름 PR",
+    "solutionImageCaption": "내분점 P·Q·R의 위치와 Q에서의 직각을 확인한 뒤, 빗변 PR을 외접원의 지름으로 사용한다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 세 점이 이루는 삼각형이 직각삼각형이면 외접원의 지름은 빗변이다.\n조건 정리: $P,Q,R$는 각각 $OA,AB,BC$를 $3:1$로 내분한다.\n풀이 방향: 세 점의 좌표를 구하고 두 직선의 기울기로 직각 여부를 확인한다.\n정석 풀이: 내분점 공식을 적용하면\n$P=(0,3)$, $Q=(3,4)$, $R=(4,1)$이다.\n직선 $PQ$의 기울기는\n$\\dfrac{4-3}{3-0}=\\dfrac13$이고, 직선 $QR$의 기울기는\n$\\dfrac{1-4}{4-3}=-3$이다.\n두 기울기의 곱이 $-1$이므로 $PQ\\perp QR$이고, 삼각형 $PQR$은 $Q$에서 직각이다.\n따라서 외접원의 지름은 빗변 $PR$이다.\n$PR=\\sqrt{(4-0)^2+(1-3)^2}=\\sqrt{20}=2\\sqrt5$이므로 반지름은 $\\sqrt5$이다.\n원의 넓이는 $\\pi(\\sqrt5)^2=5\\pi$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
@@ -688,6 +700,10 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "수학 동아리와 과학 동아리 교집합의 최댓값과 최솟값을 비교한 Venn diagram",
+    "solutionImageCaption": "교집합 최댓값 17, 최솟값 17+22−30=9",
+    "solutionImageSize": "full",
     "level": "중",
     "category": "집합의 원소의 개수",
     "originalCategory": "집합",

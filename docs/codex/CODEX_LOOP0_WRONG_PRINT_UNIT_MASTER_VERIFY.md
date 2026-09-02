@@ -60,7 +60,7 @@ window.getConceptCluster(unitKey)      → { unitKey, conceptClusterKey, label, 
 | 개념묶음 (`concept_cluster_key`/`cluster`) | ✅ (맵 value) | ✅ | ✅(확장 태그) |
 | 정렬 순서 (`order`/`standardUnitOrder`) | ❌ (없음) | ❌ (컬럼 없음) | ✅ (Order 열) |
 
-> **중요:** `concept_map.js`에는 **단원명·과목·순서가 없다.** 단원명/과목은 `exam_blueprints`(스키마: `standard_unit`, `standard_course`)에 이미 저장되어 오답 item으로 들어온다. **순서(order)** 만 어디에도 런타임 데이터로 없고, 오직 마스터 문서 [JS아카이브_표준단원키_마스터테이블.md](docs/rules/JS아카이브_표준단원키_마스터테이블.md)의 표에만 존재한다.
+> **중요:** `concept_map.js`에는 **단원명·과목·순서가 없다.** 단원명/과목은 `exam_blueprints`(스키마: `standard_unit`, `standard_course`)에 이미 저장되어 오답 item으로 들어온다. **순서(order)** 만 어디에도 런타임 데이터로 없고, 오직 마스터 문서 [JS아카이브_표준단원키_마스터테이블.md](docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md)의 표에만 존재한다.
 
 `exam_blueprints` 스키마 근거 — [stage6a_exam_blueprints.sql](apmath/worker-backup/worker/migrations/stage6a_exam_blueprints.sql):
 
@@ -246,7 +246,7 @@ wrapLatex / autoCompress / fitQuestionBox / renderSol / renderAns
    - 단원 1차 키: `wrongItem.unitKey` (= `exam_blueprints.standard_unit_key`)
    - 단원 표시명/과목: `wrongItem.unit` / `wrongItem.course` (= `standard_unit` / `standard_course`)
    - 개념묶음/라벨: `archive/concept_map.js`의 `CONCEPT_MAP` + `CONCEPT_CLUSTER_LABEL` (`getConceptCluster`)
-   - 정렬 순서: 마스터 문서 [JS아카이브_표준단원키_마스터테이블.md](docs/rules/JS아카이브_표준단원키_마스터테이블.md)의 Order 표 → **단원키→order 정적 맵 1개**로 보강
+   - 정렬 순서: 마스터 문서 [JS아카이브_표준단원키_마스터테이블.md](docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md)의 Order 표 → **단원키→order 정적 맵 1개**로 보강
 3. **새 `standard_units` 테이블 필요 여부** → **이번 라운드 불필요.** 단원명/과목/묶음이 이미 `exam_blueprints`에 저장되고 로더가 존재. (장기 저장형 오답 세트 단계에서 DB snapshot 별도 검토)
 4. **드래그 UI 전 필요한 최소 adapter** →
    - (재사용) `concept_map.js` 로더: `core.js`의 `loadConceptMapForRecommend` 패턴 그대로.

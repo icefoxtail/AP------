@@ -244,6 +244,9 @@ claude_*_files_*/
 # Generated pipeline workspaces stay out of git until explicitly promoted
 archive/_generated/
 archive/_generated/**
+# ALIVE staged operation inputs are local test fixtures; never register or publish them.
+archive/exams/_generated/
+archive/exams/_generated/**
 reports/high*_exam_inventory_*/
 reports/high*_exam_inventory_*/**
 
@@ -308,3 +311,13 @@ backup_before_*.sql
 /codex_tmp_py/
 /.superpowers/
 **/.wrangler/
+
+# ALIVE 실행 런타임은 작업 중간물·렌더 캐시·검수 증거·결과 ZIP을 생성한다.
+# 결과 ZIP도 세션 전달용 파생물이지 저장소 소스가 아니므로 runtime 전체를 Git에서 제외한다.
+# 승인된 최종 JS와 참조 이미지의 저장소 승격 위치는 archive/이며, runtime을 예외로 다시
+# include하지 않는다. ZIP을 검사할 때 만든 압축 해제 폴더도 runtime 아래에서 추적하지 않는다.
+/alive/runtime/
+
+# ALIVE 외부검수 렌더/압축 검사 임시 폴더
+/.alive-review*/
+/.tmp/

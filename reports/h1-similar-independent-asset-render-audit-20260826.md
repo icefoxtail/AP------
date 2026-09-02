@@ -22,7 +22,7 @@
    - `content + image + choices` 최종 표시 합계로 원문 구조 판단
    - 시각자료가 필요한 문항은 실제 이미지/SVG를 사용하고 `full_page_reference`를 완료 상태로 사용하지 않음
    - SVG는 좌표 그래프, PNG는 주석/원본 크롭에 사용하는 레이아웃 규칙
-3. `C:\Users\USER\Desktop\AP------\archive\코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+3. `C:\Users\USER\Desktop\AP------\docs\rules\02_PIPELINES\코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
    - 6-1/6-3/6-4: 문항·박스·라벨·작은 인쇄요소의 원본 대조와 증거 파일
    - 12-0/12-1/12-1-3: ORIGINAL PIXEL FIRST, 생성형 이미지 금지, SAFE CROP MARGIN
    - 12-2/12-2-1: PNG/SVG 개별 4면·라벨·구조타입·박스 외곽 대조

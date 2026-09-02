@@ -364,6 +364,10 @@ window.questionBank = [
     "wide": false,
     "content": "다음 벤다이어그램의 색칠한 부분을 나타내는 집합과 항상 같은 집합은? [3.9점]",
     "image": "assets/images/25_순천고_2학기_중간_고1_기출/q11.png",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "A에서 B와 C의 공통 부분을 제외한 영역을 표시한 Venn diagram",
+    "solutionImageCaption": "A−(B∩C) = (A−B)∪(A−C)",
+    "solutionImageSize": "full",
     "imageSize": "large",
     "choices": [
       "$A\\cap(B\\cup C)$",
@@ -465,7 +469,7 @@ window.questionBank = [
       "자연수"
     ],
     "wide": false,
-    "content": "자연수 $n$의 양의 배수를 원소로 하는 집합을 $A_n$이라 하자. $A_n\\subset(A_2\\cap A_5)$, $(A_{20}\\cup A_{40})\\subset A_n$을 만족시키는 모든 자연수 $n$의 값의 합은? [4.2점]",
+    "content": "자연수 $n$의 양의 배수를 원소로 하는 집합을 $A_n$이라 하자. $A_n\\subseteq(A_2\\cap A_5)$, $(A_{20}\\cup A_{40})\\subseteq A_n$을 만족시키는 모든 자연수 $n$의 값의 합은? [4.2점]",
     "choices": [
       "$20$",
       "$30$",

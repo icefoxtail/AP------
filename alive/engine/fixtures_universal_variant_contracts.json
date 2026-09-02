@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "0.1.0",
+  "artifactType": "ALIVE_UNIVERSAL_VARIANT_CONTRACT_FIXTURES",
+  "fixtures": [
+    {
+      "fixtureId": "linear-equation-numeric-positive",
+      "familyId": "LINEAR_EQUATION",
+      "transform": "numeric",
+      "variantClass": "A",
+      "polarity": "positive",
+      "fixtureClass": "ordinary",
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "linear-equation-numeric-boundary",
+      "familyId": "LINEAR_EQUATION",
+      "transform": "numeric",
+      "variantClass": "A",
+      "polarity": "negative",
+      "fixtureClass": "boundary",
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "linear-equation-representation-positive",
+      "familyId": "LINEAR_EQUATION",
+      "transform": "representation",
+      "variantClass": "B",
+      "polarity": "positive",
+      "fixtureClass": "ordinary",
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "linear-equation-representation-negative",
+      "familyId": "LINEAR_EQUATION",
+      "transform": "representation",
+      "variantClass": "B",
+      "polarity": "negative",
+      "fixtureClass": "boundary",
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "linear-equation-parameter-recovery-positive",
+      "familyId": "LINEAR_EQUATION",
+      "transform": "PARAMETER_RECOVERY",
+      "variantClass": "C",
+      "polarity": "positive",
+      "fixtureClass": "ordinary",
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "linear-equation-parameter-recovery-negative",
+      "familyId": "LINEAR_EQUATION",
+      "transform": "PARAMETER_RECOVERY",
+      "variantClass": "C",
+      "polarity": "negative",
+      "fixtureClass": "boundary",
+      "status": "PASS"
+    },
+    {
+      "fixtureId": "coordinate-representation-hold",
+      "familyId": "COORDINATE_GEOMETRY",
+      "transform": "REPRESENTATION_DECODE",
+      "variantClass": "C",
+      "polarity": "positive",
+      "fixtureClass": "unsupported",
+      "status": "HOLD"
+    },
+    {
+      "fixtureId": "mixed-generic-fallback-blocked",
+      "familyId": "MIXED",
+      "transform": "numeric",
+      "variantClass": "A",
+      "polarity": "negative",
+      "fixtureClass": "unsupported",
+      "status": "HOLD"
+    }
+  ]
+}

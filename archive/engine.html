@@ -259,7 +259,8 @@
         .ans-cell-empty { visibility: hidden; }
         .ans-cell.group-end { border-bottom: 2px solid #6b7280; } /* 4문제(한 장)마다 채점 구분선 */
         .ans-n { width: 40px; flex: 0 0 40px; font-weight: bold; color: #1d4ed8; font-size: 10pt; }
-        .ans-v { flex: 1; min-width: 0; font-weight: bold; font-size: 10.5pt; line-height: 1.5; overflow-wrap: anywhere; }
+        .ans-v { flex: 1; min-width: 0; font-weight: bold; font-size: 10.5pt; line-height: 1.5; overflow-wrap: anywhere; word-break: keep-all; }
+        .ans-atomic { white-space: nowrap; }
 
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
         .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
@@ -420,7 +421,7 @@
 <script>
 // GitHub Pages/Fastly may keep an unchanged image URL for up to 10 minutes.
 // Bump this value when replacing an archive image so clients receive the new bytes.
-const ARCHIVE_ASSET_CACHE_VERSION = '20260828.1';
+const ARCHIVE_ASSET_CACHE_VERSION = '20260901.3';
 
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
@@ -458,9 +459,13 @@ function getIdentityTitle() {
     return AppState.identityTitle || AppState.title || window.examTitle || '수학 시험지';
 }
 
+function getDisplayTitle() {
+    return window.examDisplayTitle || getIdentityTitle();
+}
+
 function getDefaultPrintHeaderOptions() {
     return {
-        title: getIdentityTitle(),
+        title: getDisplayTitle(),
         metaRight: '',
         subtitle: '',
         showNameLine: true,
@@ -544,6 +549,17 @@ function getRenderHeaderMetaRight(type, fallbackMetaRight) {
 function getRenderHeaderSubtitle(type) {
     const opts = getPrintHeaderOptions();
     return shouldApplyPrintHeader(type) ? opts.subtitle : '';
+}
+
+function shouldShowInclusiveSubsetNotice() {
+    const title = String(window.examTitle || getIdentityTitle() || '');
+    return /^21_(강남여고|금당고|팔마고)_2학기_중간_고1_기출$/.test(title);
+}
+
+function appendInclusiveSubsetNotice(parent) {
+    if (shouldShowInclusiveSubsetNotice()) {
+        appendTextElement(parent, 'div', 'page-header-subtitle', '※ 이 회차 일부 문항의 ⊂는 등호를 허용하는 부분집합(⊆)으로 해석합니다.');
+    }
 }
 
 function appendTextElement(parent, tagName, className, text) {
@@ -1005,7 +1021,12 @@ function wrapLatex(text) {
 }
 
 function normalizeSolutionLineBreaks(text) {
-    return String(text || '').replace(/\\n(?![a-zA-Z])/g, '\n');
+    // A student-supplement paragraph may legitimately begin with an ASCII variable
+    // (for example, "A,B,C"). Protect only the known section marker so that its
+    // escaped line break is not mistaken for a LaTeX command such as \\neq.
+    return String(text || '')
+        .replace(/(\[학생용 보강\])\\n/g, '$1\n')
+        .replace(/\\n(?![a-zA-Z])/g, '\n');
 }
 
 function decorateSolutionSections(html) {
@@ -1117,7 +1138,7 @@ function normalizeExamTypeLabel(value) {
 }
 
 function getExamTitleFull() {
-    if (window.examTitle) return window.examTitle;
+    if (window.examDisplayTitle || window.examTitle) return getDisplayTitle();
     if (getIdentityTitle() && getIdentityTitle() !== '수학 시험지') return getIdentityTitle();
     try {
         const p = new URLSearchParams(window.location.search);
@@ -1150,6 +1171,7 @@ function makePage(area, type, pNum) {
             appendTextElement(textWrap, 'div', 'page-header-title', getRenderHeaderTitle(type, getExamTitleFull()));
             const subtitle = getRenderHeaderSubtitle(type);
             if (subtitle) appendTextElement(textWrap, 'div', 'page-header-subtitle', subtitle);
+            appendInclusiveSubsetNotice(textWrap);
             header.appendChild(textWrap);
 
             const meta = document.createElement('div');
@@ -1174,6 +1196,7 @@ function makePage(area, type, pNum) {
             appendTextElement(left, 'div', '', getRenderHeaderTitle(type, leftText));
             const subtitle = getRenderHeaderSubtitle(type);
             if (subtitle) appendTextElement(left, 'div', 'page-header-subtitle', subtitle);
+            appendInclusiveSubsetNotice(left);
             row.appendChild(left);
             appendTextElement(row, 'div', '', getRenderHeaderMetaRight(type, rightText));
             header.appendChild(row);
@@ -1299,7 +1322,7 @@ async function init() {
             AppState.title = window.examTitle || p.get('title') || recentLaunch?.title || '수학 시험지';
             AppState.identityTitle = AppState.title;
             AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
-            document.getElementById('ctrl-title').innerText = AppState.title;
+            document.getElementById('ctrl-title').innerText = getDisplayTitle();
             renderPrintHeaderControls();
             await render();
         } catch (error) {
@@ -1979,7 +2002,15 @@ async function renderSol(area, data) {
 }
 
 function formatGridAnswer(answer) {
-    const value = String(answer ?? '–').replace(/\s+\/\s+(?=\(\d+\))/g, '<br>');
+    const raw = String(answer ?? '–').replace(/\s+\/\s+(?=\(\d+\))/g, '<br>');
+    // Fraction highlighting is only for plain-text answer atoms.  Injecting
+    // HTML spans inside an existing $...$ segment prevents MathJax from
+    // recognizing the segment and leaks literal dollar signs into the answer
+    // table (notably for fractional coordinates and slope/intercept answers).
+    const value = raw.split(/(\$[^$]*\$)/g).map(part => {
+        if (part.startsWith('$') && part.endsWith('$')) return part;
+        return part.replace(/\b\d+\/\d+\b/g, match => `<span class="ans-atomic">${match}</span>`);
+    }).join('');
     return wrapLatex(value);
 }
 

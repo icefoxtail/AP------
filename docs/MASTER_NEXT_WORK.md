@@ -18,11 +18,11 @@
 | P0 | 문서 구조 정리 검수 | 문서 | docs 루트, `_index`, archive 이동 이력, review pack 확인 | 3대 기준 문서, `README`, `_index` |
 | P0 | review pack final gate 유지 | Codex workflow | 새 zip 경로와 entries 확인 | `CODEX_RESULT.md`, review SOP |
 | P1 | 하위 문서 stale 경로 감사 | 문서 | 이동된 경로 참조 중 현재 문서에 필요한 것 보정 | 관련 하위 문서 |
-| P0 | JS 아카이브 master·룰북 계약 동기화 | archive/docs | **완료(2026-08-24)** — canonical Markdown·compiled JSON·운영 부록·schema가 같은 필드/예외/경로를 선언하고 manifest 22개 항목의 실제 해시가 일치함 | `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`, `docs/rules/MANIFEST.md`, `archive/_generated/intelligence/phase1/master-audit/master-key-integrity-report.json` |
+| P0 | JS 아카이브 master·룰북 계약 동기화 | archive/docs | **완료(2026-08-24)** — canonical Markdown·compiled JSON·운영 부록·schema가 같은 필드/예외/경로를 선언하고 manifest 22개 항목의 실제 해시가 일치함 | `docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`, `docs/rules/MANIFEST.md`, `archive/_generated/intelligence/phase1/master-audit/master-key-integrity-report.json` |
 | P1 | 표준단원 라벨 변형 문항별 adjudication | archive/data | **완료(현재 inventory 0행·0문항)** — 검색 alias 4종은 유지하고, 교차 단원 465건·수동 라벨 34건은 문항 근거로 승격했다. 추가 source JS 수정은 없음 | `archive/_generated/intelligence/phase1/master-audit/label-variants/master-label-variant-inventory-v1.json`, `archive/_generated/intelligence/phase1/master-audit/cross-unit-adjudication/cross-unit-candidate-promotion-v1.json` |
 | P1 | 세부단원 legacy·invalid·DB 예외 해소 | archive/data | 필수 schema 누락 53문항·167필드, parent evidence 48문항·144필드, subunit parent mismatch 306문항·624필드, canonical label/order 636필드, legacy enum 52필드를 정리했다. 현재 schema warning·parent mismatch·unknown/raw는 0건이며 source-dependent DB 예외만 보류다 | `archive/_generated/intelligence/phase4/archive-standard-master-label-order-application-v1.json`, `archive/_generated/intelligence/phase4/archive-legacy-enum-normalization-v1.json`, `archive/_generated/intelligence/phase4/archive-legacy-schema-inventory-v1.json` |
 | P1 | `docs/implemented` 실제 코드 대조 감사 | 문서/구현 | 주요 path·route import/dispatch·schema 참조 대조 완료. 동작/브라우저 QA는 별도 범위 | implemented maps, 2026-08-24 result pack |
-| P2 | source-dependent DB 메타데이터 evidence intake | archive/data | **영구 종결** — 직접 출처 0건인 28/60 queue를 활성 작업에서 제거했다. 빈 DB 필드와 감사 기록은 보존하고 재개·추정·물리 삭제는 하지 않는다 | `docs/rules/JS아카이브룰북_v2.5.md` 4-4, `archive/_generated/intelligence/phase3/archive-db-source-permanent-closure-v1.json`, `docs/review-packs/archive-db-metadata-source-unavailable-20260824/CODEX_RESULT.md` |
+| P2 | source-dependent DB 메타데이터 evidence intake | archive/data | **영구 종결** — 직접 출처 0건인 28/60 queue를 활성 작업에서 제거했다. 빈 DB 필드와 감사 기록은 보존하고 재개·추정·물리 삭제는 하지 않는다 | `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md` 4-4, `archive/_generated/intelligence/phase3/archive-db-source-permanent-closure-v1.json`, `docs/review-packs/archive-db-metadata-source-unavailable-20260824/CODEX_RESULT.md` |
 | P1 | report cohort / 평가리포트 검증 | Report AI / archive | archive_file + examYear + 학년 cohort 확인 | REPORT_AI, ARCHIVE_OMR, implemented maps |
 | P2 | hidden foundation 노출 감사 | foundation | hidden/approved 목록 정리 | hidden foundation map |
 | P2 | 시간표 staging/apply 보강 | timetable | staging/live 분리 확인 | TIMETABLE docs |
@@ -212,6 +212,20 @@
 - 표준단원 마스터를 compiled JSON으로 재생성했으며 기존 compiled master 바이트는 이미 동일해 변경되지 않았다. 현재 master는 표준키 142, 세부키 459, 개념군 461, 문제유형 13, 템플릿 18개다.
 - schema validator는 0 issues, master-key integrity는 `gateReady=true`, 사용 공식키 106개를 확인했다. review-only 라벨 변형은 0건이며 검색 alias 4종만 별도 유지한다.
 - 이번 단계는 문서 manifest와 검증 산출물만 갱신했고 문항 JS·DB·question-index·identity runtime·commit/push/deploy는 변경하지 않았다.
+
+## 2-25. 2026-08-28 rules 문서 통합 재배치
+
+- `docs/rules/00_RULES_INDEX.md`를 기준 진입점으로 추가하고 기존 규칙을 canonical·pipeline·review·visual·design·archive 영역으로 재배치했다.
+- 운영 문서 21개의 현재 경로·바이트·SHA-256은 `docs/rules/MANIFEST.md`에 기록했다. `05_DESIGN/`과 `90_ARCHIVE/`는 현재 운영 pack에서 제외한다.
+- `archive/코드검사실_…통합운영프로토콜…`은 현재형 시험지 작업 통합 규칙으로 확인되어 `docs/rules/02_PIPELINES/`로 승격했다. 도구 README와 historical rulebook은 각 구현·보관 위치에 유지한다.
+- 코드검사실과 최종 무결성 검수에 `REAL RENDER GATE`를 반영했다. 기준본 잠금 후 exam·solution·answer 중간 렌더, 수정 후 최종 ZIP 추출본의 세 화면 재렌더, 후반 문항·MathJax·이미지 decode 확인을 필수화했다. `internal-review-live.html`은 존재 시 별도 확인하고, 실렌더 `NOT_TESTED`는 최종 PASS로 승격하지 않는다.
+- 본문 통합 후속 과제는 중복 규칙을 실제로 하나의 protocol chapter로 압축하는 일이다. 이 작업은 먼저 canonical 기준과 충돌 여부를 검토한 뒤 별도 변경으로 진행한다.
+
+## 2-25-1. 2026-08-28 alive 문서 통합 재배치
+
+- `alive/00_ALIVE_INDEX.md`를 기준 진입점으로 추가하고, 기존 ALIVE `protocol` 문서를 canonical·pipeline·schema·visual 영역으로 재배치했다.
+- 기존 루트 프롬프트 12개는 `alive/90_ARCHIVE/LEGACY_PROMPTS/`로 이동해 회귀·참고 자료로 보존했다. 원문 삭제나 내용 통합은 수행하지 않았다.
+- 향후 ALIVE 운영 문서만 별도 압축할 경우 `alive/MANIFEST.md`에 등록된 현재 파일만 사용하고, ZIP 내부는 평탄 구조로 만든다.
 
 ## 2-23. 2026-08-24 source-dependent 메타데이터 영구 종결
 
