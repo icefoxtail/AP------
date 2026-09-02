@@ -478,7 +478,7 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "②",
-    "solution": "$A_2\\cap A_5=A_{10}$이므로 $A_n\\subset A_{10}$에서 $n$은 $10$의 배수이다. 또 $A_{20}\\cup A_{40}=A_{20}$이므로 $A_{20}\\subset A_n$에서 $n$은 $20$의 약수이다.\n두 조건을 모두 만족하는 $n$은 $10$, $20$이고 그 합은 $30$이다.\n결론: 정답은 ②이다.",
+    "solution": "[키포인트] 양의 배수 집합의 포함관계를 배수의 나눗셈 관계로 바꾸고, 두 조건이 각각 어느 방향의 나눗셈을 뜻하는지 확인한다.\n\n$A_m\\subseteq A_n\\Longleftrightarrow n\\mid m$이다. 왜냐하면 $n\\mid m$이면 $m=nk$인 자연수 $k$가 존재하므로, $m$의 모든 양의 배수 $mt=n(kt)$는 $n$의 양의 배수여서 $A_m\\subseteq A_n$이기 때문이다. 반대로 $A_m\\subseteq A_n$이면 $m$은 $A_m$의 원소이므로 $A_n$의 원소이기도 하다. 따라서 $m$이 $n$의 배수, 즉 $n\\mid m$이다.\n\n$A_2\\cap A_5=A_{10}$이다. 2와 5의 배수인 수는 10의 배수이므로, 첫째 조건은\n$A_n\\subseteq(A_2\\cap A_5)=A_{10}\\Longleftrightarrow 10\\mid n$\n을 뜻한다.\n또 $A_{40}\\subseteq A_{20}$이므로 $A_{20}\\cup A_{40}=A_{20}$이다. 따라서 둘째 조건은\n$(A_{20}\\cup A_{40})=A_{20}\\subseteq A_n\\Longleftrightarrow n\\mid20$\n을 뜻한다.\n\n이제 $10\\mid n$은 $n$이 10의 배수라는 뜻이고, $n\\mid20$은 $n$이 20의 약수라는 뜻이다. 두 조건을 동시에 만족하는 자연수는 $n=10,20$이므로 그 합은 $30$이다.\n결론: 정답은 ②이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
