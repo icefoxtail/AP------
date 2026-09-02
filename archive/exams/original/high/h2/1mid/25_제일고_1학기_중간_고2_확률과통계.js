@@ -51,7 +51,7 @@ window.questionBank = [
     "solution": "성공 횟수 / 전체 시도 횟수 = $\\frac{140}{200} = \\frac{7}{10}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_02_01",
+    "standardUnitKey": "H22-PS-03",
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
@@ -63,8 +63,8 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_02_01-PROBABILITY_APPLICATION",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
     "subUnit": "확률의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
@@ -307,7 +307,7 @@ window.questionBank = [
     "solution": "전체 사탕 11개 중 2개를 택하는 경우의 수: $_{11}C_{2} = 55$\\n사과 맛 사탕 6개 중 2개를 택하는 경우의 수: $_{6}C_{2} = 15$\\n$\\therefore P = \\frac{15}{55} = \\frac{3}{11}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_02_01",
+    "standardUnitKey": "H22-PS-03",
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
@@ -320,8 +320,8 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_02_01-PROBABILITY_APPLICATION",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
     "subUnit": "확률의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
@@ -600,7 +600,7 @@ window.questionBank = [
     "solution": "전체 경우의 수: $15 \\times 14 = 210$\\n$B$의 원소 개수 $k$에 따른 $A$의 개수 (단, $A \\ne B, A \\ne \\emptyset$)\\n- $k=2: _{4}C_{2} \\times (2^2-2) = 6 \\times 2 = 12$\\n- $k=3: _{4}C_{3} \\times (2^3-2) = 4 \\times 6 = 24$\\n- $k=4: _{4}C_{4} \\times (2^4-2) = 1 \\times 14 = 14$\\n순서쌍의 총 개수: $12 + 24 + 14 = 50$\\n$\\therefore P = \\frac{50}{210} = \\frac{5}{21}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_02_01",
+    "standardUnitKey": "H22-PS-03",
     "standardUnit": "확률의 뜻과 활용",
     "questionType": "",
     "layoutTag": "grid",
@@ -615,8 +615,8 @@ window.questionBank = [
       "오류판별"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_02_01-PROBABILITY_BASIC",
+    "standardUnitOrder": 3,
+    "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
@@ -661,7 +661,7 @@ window.questionBank = [
     "id": 19,
     "level": "상",
     "category": "중복조합",
-    "content": "볼펜 4개와 연필 3개를 4명의 학생 $A, B, C, D$에게 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하면? (4.5점)\\n(단, 볼펜과 연필은 각각 구별되지 않고, 볼펜과 연필을 받지 못하는 학생이 있을 수 있다.)\\n(가) 두 학생 $A, B$가 받은 볼펜과 연필 개수의 합은 홀수이다.\\n(나) 학생 $C$가 받은 볼펜과 연필 개수는 학생 $D$가 받는 볼펜과 연필 개수의 3배이다.",
+    "content": "볼펜 4개와 연필 3개를 4명의 학생 $A, B, C, D$에게 다음 규칙에 따라 남김없이 나누어 주는 경우의 수를 구하면? (4.5점)\n(단, 볼펜과 연필은 각각 구별되지 않고, 볼펜과 연필을 받지 못하는 학생이 있을 수 있다.)\n(가) 두 학생 $A, B$가 받은 볼펜과 연필 개수의 합은 홀수이다.\n(나) 학생 $C$가 받은 볼펜과 연필 개수는 학생 $D$가 받는 볼펜과 연필 개수의 3배이다.\n(다) 학생 $D$는 볼펜 또는 연필을 적어도 1개 받는다.",
     "choices": [
       "32",
       "36",
@@ -670,7 +670,7 @@ window.questionBank = [
       "48"
     ],
     "answer": "②",
-    "solution": "조건 (나)에 의해 가능한 $D$와 $C$의 총 개수 합은 $4D$이다. 전체가 7개이므로 $D=1, C=3$인 경우만 가능하다. (이때 $A+B=3$으로 홀수 조건 자동 만족)\\n$D$가 볼펜 1개인 경우 ($D=0$ 연필 1개인 경우도 동일 구조)\\n$C$의 구성 $\\times$ ($A, B$ 분배)\\n- $C(3,0) \\implies (A,B)$는 남은 (0,3) 분배: $2H0 \\times 2H3 = 4$\\n- $C(2,1) \\implies (A,B)$는 남은 (1,2) 분배: $2H1 \\times 2H2 = 6$\\n- $C(1,2) \\implies (A,B)$는 남은 (2,1) 분배: $2H2 \\times 2H1 = 6$\\n- $C(0,3) \\implies (A,B)$는 남은 (3,0) 분배: $2H3 \\times 2H0 = 4$\\n소계 20가지. $D$가 연필 1개인 경우 계산 시 16가지(제한 조건 발생).\\n$\\therefore 20 + 16 = 36$가지",
+    "solution": "[키포인트] 학생 $C,D$가 받는 전체 물건 수를 먼저 정한 뒤, 볼펜과 연필의 종류별 분배를 나누어 센다.\n조건 정리: 학생 $D$가 받는 물건 수를 $d$, 학생 $C$가 받는 물건 수를 $c$라 하자. (나)에서 $c=3d$이고 (다)에서 $d\\ge1$이다.\n풀이 방향: 전체 물건이 7개이므로 $c+d=4d\\le7$에서 $d=1$, $c=3$을 얻은 뒤, $D$가 받는 물건의 종류를 두 경우로 나눈다.\n정석 풀이: $d=1$, $c=3$이면 학생 $A,B$가 받는 물건 수의 합은 $7-1-3=3$으로 홀수이므로 (가)는 자동으로 만족한다.\n\n1) $D$가 볼펜 1개를 받는 경우\n$C$가 받는 볼펜 수를 $p$라 하면 $p=0,1,2,3$이고, $C$는 볼펜 $p$개와 연필 $3-p$개를 받는다. $A,B$에게는 볼펜 $3-p$개와 연필 $p$개가 남는다. 두 종류를 각각 $A,B$에게 나누는 방법은 $(3-p+1)(p+1)$가지이므로, 합은 $4+6+6+4=20$가지이다.\n\n2) $D$가 연필 1개를 받는 경우\n$C$가 받는 볼펜 수를 $p$라 하면 남은 연필 수가 음수가 되지 않도록 $p=1,2,3$이다. 이때 $A,B$에게는 볼펜 $4-p$개와 연필 $p-1$개가 남으므로, 분배 방법은 $(4-p+1)(p-1+1)=(5-p)p$가지이다. 따라서 합은 $4+6+6=16$가지이다.\n\n따라서 전체 경우의 수는 $20+16=36$이다.\n따라서 정답은 ②이다.",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
     "standardUnitKey": "H_ST_01_02",
