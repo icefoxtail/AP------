@@ -1213,3 +1213,4 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category"
   }
 ];
+window.questionBank = window.questionBank.filter((question) => question.id !== 21);

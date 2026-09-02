@@ -7,7 +7,7 @@ const { spawnSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
 const protocol = fs.readFileSync(
-  path.join(root, 'archive', '코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md'),
+  path.join(root, 'docs', 'rules', '02_PIPELINES', '코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md'),
   'utf8'
 );
 
