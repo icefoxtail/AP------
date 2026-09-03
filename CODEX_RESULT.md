@@ -1,239 +1,164 @@
 # CODEX_RESULT
 
-## 1. 생성/수정 파일
+## 최종 판정
 
-기존 CODEX_RESULT.md 내용을 삭제하고 현재까지의 archive 품질 수정 결과로 새로 작성했다.
+**FINAL FAIL / HIGH1 FIRST SEMESTER NOT SEALED**
 
-### 1학기 다항식 production
+이번 라운드에서 production의 메타데이터·LaTeX·해설 포맷·question schema·index parity를 정리했지만, 원본 증거 없이 채울 수 없는 placeholder 2건과 전체 `sol/ans` 브라우저 매트릭스 미완료가 남아 최종 봉인 조건을 만족하지 못했다. 따라서 `FINAL PASS / HIGH1 FIRST SEMESTER SEALED`를 선언하지 않는다.
 
-- archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js
-- archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js
-- archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js
-- archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js
-- archive/exams/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js
-- archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js
-- archive/exams/original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js
-- archive/exams/original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js
+## 1. 기준과 범위
 
-수정 문항은 34개다. 2026 placeholder 25개와 추가 P0/HOLD 및 P1 9개를 포함한다.
+- 사용자 지정 기준 SHA: `d809f9f0f4da752fb421fc7d4bf74c2430a7c05`
+- 작업 시작 시 공유 workspace HEAD: `894736d0c960ccdcc031bd44c08d8635d8e27a89`
+- 현재 main HEAD: `11653efc07de31491ef2686b491d0cbc4e785349`
+- 대상 디렉터리: `archive/exams/original/high/h1/1mid/`, `archive/exams/original/high/h1/1final/`
+- 시험지: 56개 (`1mid` 22개, `1final` 34개)
+- 문항: 1,230개 (`1mid` 483개, `1final` 747개)
 
-### 2학기 기하·집합 production 및 SVG
+현재 main이 사용자 지정 기준 SHA의 후손인 상태에서 공유 workspace의 다른 진행 커밋과 fast-forward 되었으므로, 기존 변경을 되돌리지 않고 최종 HEAD를 재감사했다.
 
-- archive/exams/original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js
-- archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js
-- archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js
-- archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js
-- archive/assets/images/25_매산고_2학기_중간_고1_기출/q20-solution.svg
-- archive/assets/images/25_순천여고_2학기_중간_고1_공통수학2/q21-solution.svg
-- archive/assets/images/21_복성고_2학기_중간_고1_기출/q13-solution.svg
+## 2. 수정 파일 목록
 
-수정 문항은 5개다. 매산고 q14/q20, 순천여고 q21, 순천고 q14, 복성고 q13을 포함한다.
+### Production JS
 
-### 생성 후보 및 결과 리포트
+- `archive/exams/original/high/h1/1mid/*.js` — 22개
+- `archive/exams/original/high/h1/1final/*.js` — 34개
 
-- archive/_generated/past-exams/2025-2mid-import/25_순천고_2학기_중간_고1_기출/candidate/25_순천고_2학기_중간_고1_기출.js
-- archive/_generated/past-exams/2021-2024-2mid-import/21_복성고_2학기_중간_고1_기출/candidate/21_복성고_2학기_중간_고1_기출.js
-- CODEX_RESULT.md
+위 56개 파일에서 canonical label/course, questionType/choices 표현, 깨진 LaTeX 및 지정 문항 해설을 핀포인트 정리했다. 정상인 `content`, `choices`, `answer`, `image`는 원본 근거 없이 재작성하지 않았다.
 
-두 후보 JS는 이전 기하·집합 작업에서 production과 바이트 단위 일치하도록 동기화했으나 archive/_generated/가 .gitignore 대상이므로 이번 커밋에는 포함하지 않는다.
+### Index·도구·보고서
 
-## 2. 구현 완료 또는 확인 완료
+- `archive/question-index.js`
+- `archive/question-index-report.md`
+- `archive/question-index-audit.md`
+- `archive/data/question_metadata.json`
+- `archive/tools/finalize-h1-first-semester-quality.mjs`
+- `CODEX_RESULT.md`
 
-### 1학기 다항식
+2026 기말의 ignored candidate 8개는 audit에서 production과의 stale hash가 검출되어 현재 production과 동기화했다. ignored 산출물이므로 커밋 대상에는 포함하지 않는다.
 
-- 2026년 지정 25개 placeholder solution을 실제 독립 풀이로 교체했다.
-- 다항식 연산, 계수비교, 인수정리, 나머지정리, 조립제법, 치환, 완전제곱식 풀이를 문항별로 작성했다.
-- 단순히 answer를 반복하는 placeholder 문구를 제거했다.
-- (x-1)^2 인수 조건은 인수정리와 다항식 나눗셈으로만 처리했다.
-- 효천고 q17은 Q(1)^2+Q(3)^2=0에서 Q(1)=Q(3)=0이 되는 이유부터 Q(x), P(x), R(1), R(3), R(x), R(2)까지 순서대로 보강했다.
-- 효천고 q18은 (x-1)(x^4+x^3+x^2+x+1)=x^5-1에서 x^5≡1이 되는 근거와 x^46, x^45, x^44, x^43, x^42, x^41의 축소를 모두 적었다.
-- 미분, 도함수, P'(1)=0, 벡터, 내적, 행렬은 사용하지 않았다.
+## 3. 수정 문항 목록
 
-### P0/HOLD
+- `23_부영여고` 중간 q11: `H15-SA-03-FACTORIZATION / 인수분해`로 재분류
+- `23_충무고` 중간 q9: `H15-SA-03-FACTORIZATION / 인수분해`로 재분류
+- `24_여수고` 중간 q16: `H15-SA-03-FACTORIZATION / 인수분해`로 재분류
+- `23_여천고` 중간 q13, q14, q15, q16, q17, q20, q22, q23: H15 수학(상) 이차함수 chain으로 재분류
+- `23_충무고` 중간 q19: 주관식 schema를 `questionType: 서술형`, `choices: []`, `answer: 4`로 정규화
+- `24_제일고` 중간 q20: 벡터·행렬식 없는 좌표평면/삼각형 넓이 풀이로 교체하고 정답 `$2\\sqrt{21}$` 유지
+- `22_팔마고` 기말 q5: 법선벡터 없는 기울기·계수비 풀이로 교체
+- `23_매산고` 중간 전체 해설: 20개 legacy `[Logical Anchor]` 문구와 기계적 메모체를 학생용 표현으로 정리
+- `23_부영여고` 중간 전체 해설: 22개 legacy `[Logical Anchor]` 문구와 기계적 메모체를 학생용 표현으로 정리
+- `23_한영고` 중간 q13, `25_제일고` 기말 q8, `25_효천고` 기말 q19, `26_광양제철고` 기말 q4: 불필요한 수열/등차수열 전면 용어를 자연스러운 고1 표현으로 교체
+- 위 대상 외 56개 전체: master label/course와 questionType/choices schema를 문항별 현재 값 기준으로 정규화
 
-- P0 문항의 현재 production content, choices, answer를 직접 확인했다.
-- 저장소와 C:/Users/USER/Desktop/시험지들에서 해당 시험의 원본 스캔 또는 별도 source asset을 찾지 못했다.
-- 원본 증거가 없는 문항은 answer에 맞춰 solution을 조작하지 않았다.
-- 저장된 발문의 독립 계산 결과와 answer 불일치, 복수해, 핵심 조건 누락을 solution 안에 [원문 대조 주의]로 기록했다.
-- P0 content와 answer는 15개 모두 변경하지 않았다.
+최신 커밋 기준으로 `23_충무고` q17의 내접원 접선 길이·피타고라스·닮음 풀이, 정답 ②/69, 고1 과정 제한은 재수정하지 않았다.
 
-### 2학기 기하·집합
+## 4. 정규화 수치
 
-- 매산고 q20은 수선의 발 좌표 공식과 좌표 다각형 넓이 공식을 제거하고 보조점 N, 직각삼각형, 사다리꼴 넓이로 재작성했다.
-- 순천여고 q21은 접촉현 방정식 공식을 제거하고 OAP/OMP 닮음과 피타고라스로 OM, PM, PQ, AM을 도출했다.
-- 매산고 q14는 반지름 기울기 3 → 접선 기울기 -1/3 → 접선식 순서로 수정했다.
-- 순천고 q14는 A_m subseteq A_n iff n divides m의 양방향 이유와 A20 union A40=A20의 이유를 명시했다.
-- 복성고 q13은 5 곱하기 (2^4-2) 하나의 경우분류로 통일하고 두 공집합 예외를 SVG에도 반영했다.
+- canonical `subUnit` label field update: 247건
+  - label-only normalization: 236건
+  - 실제 key 재분류 및 여천고 H15 chain 반영: 11건
+- `standardCourse` update: 186건
+  - 전체 H15 parent course normalization: 178건
+  - 여천고 지정 8문항: 8건
+- 지정 분류 문항의 `standardUnitKey/subUnitKey/subUnit/confidence/depth` update: 11건
+- questionType update: 390건
+- 공백 선택지 배열 `[' ', ...] → []`: 16건
+- 객관식 answer index 표기 `1..5 → ①..⑤`: 여천고 18건
+- 충무고 q19 schema answer `④ → 4`: 1건
+- 깨진 LaTeX source repair: 현재 source scan hit 0건
+- `[Logical Anchor]` 제거: 38건 (매산고 19건, 부영여고 19건)
+- 지정 수열 용어 제거/교체: 4문항
 
-## 3. 실행 결과
+## 5. q19 source evidence
 
-### JavaScript 구문 및 정적 검사
+별도 PDF/PNG/HWP 원본은 다음 경로들에서 발견하지 못했다.
 
-- 현재 다항식 production JS 8개: node --check PASS
-- 이전 기하·집합 production JS 4개: node --check PASS
-- 총 12개 production JS: PASS
-- placeholder scan: PASS
-- LaTeX escape scan: PASS
-- 고1 교육과정 잠금 scan: PASS
-- git diff --check: PASS
+- `archive/` 전체 재귀 검색: 충무고 별도 source asset 0건
+- `C:\Users\USER\Desktop\시험지들` 재귀 검색: 충무고 원본 scan 0건
 
-### 공식 archive audit
+대신 다음 historical production transcription을 source evidence로 사용했다.
 
-| 시험 | question 수 | question-index 수 | candidates | errors |
-|---|---:|---:|---:|---:|
-| 26 금당고 | 20 | 20 | 0 | 0 |
-| 26 팔마고 | 22 | 22 | 0 | 0 |
-| 26 매산여고 | 23 | 23 | 0 | 0 |
-| 23 부영여고 | 22 | 22 | 0 | 0 |
-| 23 매산고 | 20 | 20 | 0 | 0 |
-| 24 여수고 | 23 | 23 | 0 | 0 |
-| 24 제일고 | 22 | 22 | 0 | 0 |
-| 24 효천고 | 23 | 23 | 0 | 0 |
+- Git object: `ab9d9d2901a399fefa57a8fb54653ece8a354a5a`
+- 경로: `archive/exams/original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js`
+- evidence: q19 content가 `서술형 1.`로 시작하고 `choices: []`이며, 현재 해설이 복소수 실수부·허수부 비교로 `x+y=4`를 독립 계산한다.
 
-다항식 대상 8개 시험 모두 공식 audit 결과 ok: true다.
+따라서 객관식 선택지로 임의 복원하지 않고, historical transcription이 명시하는 서술형 schema와 계산값 `4`만 반영했다. 별도 원본 scan 부재는 미해결 source limitation으로 남긴다.
 
-이전 기하·집합 대상도 다음과 같이 통과했다.
+## 6. 정적 Gate 결과
 
-| 시험 | question 수 | question-index 수 | candidates | errors |
-|---|---:|---:|---:|---:|
-| 25 매산고 | 20 | 20 | 0 | 0 |
-| 25 순천여고 | 21 | 21 | 0 | 0 |
-| 25 순천고 | 23 | 23 | 1 | 0 |
-| 21 복성고 | 22 | 22 | 1 | 0 |
+- 56개 production JS `node --check`: **PASS**
+- load: 56/56, 1,230/1,230: **PASS**
+- solution 공란: 0: **PASS**
+- canonical subUnit key/label/parent audit: 0 issue: **PASS**
+- standardCourse chain audit: 0 issue: **PASS**
+- questionType/choices/answer structural audit: 0 issue: **PASS**
+- duplicate qKey: 0: **PASS**
+- undefined/non-object skip: 0: **PASS**
+- source malformed `\\n eq`, `\\n e`, `\\ tf`: 0: **PASS**
+- runtime malformed LaTeX / dollar-pair audit: 0: **PASS**
+- `[Logical Anchor]`: 0: **PASS**
+- 고1 금지 풀이 표현(벡터/행렬식/법선벡터): 0: **PASS**
+- 수열 용어 지정 문항: 0: **PASS**
+- `git diff --check`: **PASS**
+- placeholder scan: **FAIL**, 아래 2건
 
-### 독립 수학 검산
+남은 placeholder:
 
-- 다항식 정상 계산 및 현재 answer 일치: 19개
-- source defect 계산 및 HOLD 기록: 15개
-- 최종 결과: INDEPENDENT_RECHECK_FINAL_OK normal=19 sourceDefectChecks=15
+1. `archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js` q11 content의 `[그래프필요]` — 발문이 실제 그림의 절편 정보를 참조하고 별도 원본 image가 없어 추정 복원하지 않았다.
+2. `archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js` q12 choice 1의 `[판독불가]` — 원본 evidence 없이 선택지 값을 발명하지 않았다.
 
-## 4. 결과 요약
+## 7. Index parity 결과
 
-| 작업 묶음 | 수정 문항 | 결과 |
-|---|---:|---|
-| 1학기 다항식 placeholder/P1 | 34 | PARTIAL PASS / HOLD |
-| 2학기 기하·집합 핀포인트 | 5 | PASS |
-| 전체 production 수정 문항 | 39 | P0 source evidence 일부 대기 |
+공식 도구 `node archive/tools/build-question-index.mjs` 실행 결과:
 
-다항식 15개 HOLD는 다음과 같다.
+- DB exam records in scope: 56
+- DB qCount sum: 1,230
+- index records in scope: 1,230
+- source JS qCount sum: 1,230
+- per-exam DB/JS/index qCount mismatch: 0
+- final index duplicate qKey: 0
+- undefined/non-object skip: 0
+- index builder load failures: 0
 
-- 26 금당고 q18, q19
-- 26 팔마고 q11, q17, q19, q20
-- 26 매산여고 q10, q15
-- 23 부영여고 q17, q20
-- 23 매산고 q18
-- 24 여수고 q16, q19, q22
-- 24 제일고 q22
+공식 archive audit `audit_archive_batch.mjs` 56개 실행 결과는 `ok: true`, 56개 모두 `errors: []`다. 전체 저장소 index report의 비공식 key 152건은 이번 H1 first-semester 범위 밖의 기존 records이며, H1 범위 canonical audit는 0 issue다.
 
-## 5. 다음 조치
+## 8. 실제 render 결과
 
-1. HOLD 15개 문항의 원본 스캔 또는 신뢰 가능한 원문을 확보한다.
-2. 원본의 content, choices, answer, image 조건을 현재 production과 대조한다.
-3. 원본과 독립 계산이 일치할 때만 content 또는 answer를 수정한다.
-4. 필요한 문항만 solution을 다시 확정한다.
-5. node --check, archive audit, answer-solution 검산, 실제 sol 렌더를 재실행한다.
+로컬 `python -m http.server 4173`에서 `archive/engine.html`을 실제 로드했다.
 
-## 6. 실제로 읽은 기준 문서
+- exam mode: 56/56 시험지, 1,230문항
+  - q-box count match: PASS
+  - MathJax generated: PASS
+  - broken image: 0
+  - horizontal overflow: 0
+  - load-error text: 0
+  - console error: 0
+- solution mode 직접 확인:
+  - `23_매산고` 전체 20/20: PASS
+  - `23_부영여고` 전체 22/22: PASS
+  - `24_한영고` 전체 21/21: PASS
+  - `24_제일고` q20 hard fix: PASS
+  - `22_팔마고` q5 hard fix: PASS
+  - 위 화면에서 `neq`, `dfrac`, `sqrt`, solution image, overflow, literal command 노출 없음 확인
+- answer mode: 전체 56개 페이지 매트릭스는 브라우저 자동화 제한 시간으로 완료하지 못함: **INCOMPLETE**
 
-- C:/Users/USER/Desktop/AP------/.codex/skills/apmath-archive-exams/SKILL.md
-- C:/Users/USER/Desktop/AP------/.codex/skills/apmath-archive-exams/references/archive-layout.md
-- C:/Users/USER/.codex/plugins/cache/openai-bundled/browser/26.831.21537/skills/control-in-app-browser/SKILL.md
-- C:/Users/USER/Desktop/AP------/docs/codex/CODEX_RESULT_RULE.md
-- C:/Users/USER/.codex/attachments/657b4981-1948-475d-99e3-490d8fbe8e6f/pasted-text.txt
+따라서 actual render gate는 exam/주요 solution PASS이지만 전체 `sol/ans` matrix 기준으로는 **FAIL**이다.
 
-## 7. 실제로 확인한 코드/스키마 범위
+## 9. 커밋/배포 상태
 
-- archive/engine.html
-- archive/db.js
-- archive/question-index.js
-- archive/tools/build-question-index.mjs
-- 지정된 1학기 다항식 production JS 8개
-- 지정된 2학기 기하·집합 production JS 4개
-- 이전 작업의 q20, q21, q13 solution SVG
-- 지정 문항의 content, choices, answer, solution, image, solutionImage, standardUnitKey, subUnitKey
-- archive audit의 JS evaluation, unique ID, required solution, DB/index count 검사
-- 실제 local engine의 exam, sol, ans DOM 렌더
+공유 workspace에서 다음 기존 커밋이 자동으로 main에 반영되었다.
 
-DB와 question-index 자체는 수정하지 않았다. 기존 문항 수와 메타데이터가 유지되고 모든 공식 audit count가 일치했기 때문이다.
+- `a93cd5c2` — `fix(archive): reopen and reseal high1 geometry review`
+- `185a440f` — `chore(archive): persist H1 quality tooling and temp safeguards`
+- `11653efc` — `docs(archive): refresh geometry evidence after main merge`
 
-## 8. 확인하지 못한 파일 또는 미검증 파일
+현재 `main`과 `origin/main`은 `11653efc`에서 일치하고 working tree도 clean이다. 이번 결과는 위 상태를 재감사해 기록한 것이며, placeholder 및 전체 answer-mode 미완료 상태에서 별도의 `fix(archive): seal high1 first-semester quality gates` 커밋을 새로 만들거나 `FINAL PASS`로 push하지 않았다.
 
-- 다음 P0 문항의 원본 시험지 스캔: 현재 workspace 및 C:/Users/USER/Desktop/시험지들에서 미발견
-  - 26 금당고 q18, q19
-  - 26 팔마고 q11, q17, q19, q20
-  - 26 매산여고 q10, q15
-  - 23 부영여고 q17, q20
-  - 23 매산고 q18
-  - 24 여수고 q16, q19, q22
-  - 24 제일고 q22
-- 위 문항의 원본 조건과 answer 표가 실제로 일치하는지는 미확정이다.
-- archive/_generated/ 아래 후보 JS는 audit용으로 동기화했으나 .gitignore 때문에 커밋하지 않는다.
+## 10. 미해결 항목 및 다음 조치
 
-## 9. 추후 보강 필요 문서
-
-- 원본 스캔 확보 후 P0 문항별 source evidence ledger 작성
-- 파일명, q번호, 현재 content, 현재 answer, 원본 경로, 실제 조건, 독립 계산, source defect, content 변경 여부, answer 변경 여부, 최종 solution 변경 여부 기록
-- HOLD 해소 후 다항식 전용 최종 검수 리포트 작성
-
-## 10. 3대 기준 문서 업데이트 판정
-
-다음 3개 master document는 업데이트하지 않았다.
-
-- docs/MASTER_RULEBOOK.md
-- docs/MASTER_CURRENT_PROGRESS.md
-- docs/MASTER_NEXT_WORK.md
-
-이번 작업은 archive production JS의 지정 solution과 source defect 검수 결과를 수정하는 핀포인트 작업이었다. 전역 규칙, 공통 구현 규칙, 제품 진행률을 변경하지 않았고, 원본 근거가 없는 P0 확정 결론도 master document에 기록하지 않았다.
-
-## 11. 업데이트한 기준 문서
-
-없음.
-
-이번 커밋에서 갱신하는 CODEX_RESULT.md는 master document가 아니라 현재 작업 결과 리포트다.
-
-## 12. 업데이트하지 않은 기준 문서와 사유
-
-- docs/MASTER_RULEBOOK.md: 전역 규칙 변경이 아니므로 미갱신
-- docs/MASTER_CURRENT_PROGRESS.md: 저장소 전체 진행률 변경이 아니며 P0 15개가 HOLD이므로 미갱신
-- docs/MASTER_NEXT_WORK.md: 다음 조치가 원본 스캔 확보라는 외부 근거 대기 상태이므로 미갱신
-
-## 13. 자체 검수 결과
-
-- node --check: 12개 production JS PASS
-- 독립 수학 검산: 정상 19개, source defect 15개
-- 지정 문항 diff ID: 사용자 지정 34개와 정확히 일치
-- 잠금 필드: 170개 불변
-- 다항식 archive audit: 8개 모두 ok: true
-- 이전 기하·집합 archive audit: 4개 모두 errors 0
-- 다항식 실제 render: 24개 모드 PASS, 마지막 변경분 6개 모드 재확인 PASS
-- 이전 기하·집합 실제 render: 12개 모드 PASS
-- MathJax literal 오염: 0건
-- broken image, overflow, render error, console error: 0건
-- staging, publish, push: 수행하지 않음
-
-## 14. 리뷰팩 경로
-
-이번 작업에서 별도 리뷰팩은 생성하지 않았다.
-
-- 새 리뷰팩: 없음
-- 기존 리뷰팩을 P0 정답 근거로 사용하지 않음
-- 기존 report와 solution의 결론을 P0 정답 근거로 사용하지 않음
-
-## 15. 커밋 대상
-
-사용자 요청에 따라 다음 변경을 하나의 커밋으로 묶는다.
-
-- CODEX_RESULT.md 교체
-- 이번 다항식 작업의 production JS 8개
-- 이전 기하·집합 작업의 production JS 4개
-- 이전 기하·집합 작업의 solution SVG 3개
-
-다음 기존 무관 변경은 커밋에 포함하지 않는다.
-
-- .agent/BOOT.md
-- .gitignore
-- archive/_tmp_* 삭제 상태
-- reports/geometry_equation_20260902 아래 산출물
-- 기타 untracked 파일
-
-최종 판정은 다항식 scope 기준 PARTIAL PASS / HOLD다. 원본 source evidence가 필요한 P0 15개가 남아 있기 때문이다.
+- 충무고 q19 별도 원본 PDF/이미지 확보 후 historical transcription과 대조
+- 24 한영고 q11 원본 그래프 image 확보 후 content/image evidence 확정
+- 25 효천고 중간 q12 choice 1 원본 scan 확보 후 선택지 복원 여부 판정
+- 위 source-dependent 항목 해결 후 56개 exam/sol/ans 전체 브라우저 matrix를 다시 실행
+- 모든 Gate가 PASS일 때에만 단일 seal commit과 최종 `FINAL PASS / HIGH1 FIRST SEMESTER SEALED` 판정을 수행
