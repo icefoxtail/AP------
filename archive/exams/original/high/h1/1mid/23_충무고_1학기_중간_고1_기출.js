@@ -571,7 +571,7 @@ window.questionBank = [
   {
     "id": 17,
     "level": "상",
-    "content": "[도형필요] 그림과 같이 삼각형 $ABC$의 내심 $I$를 지나고 선분 $BC$에 평행한 직선이 두 선분 $AB, AC$와 만나는 점을 각각 $D, E$라 하자. $\\overline{AI} = 3$이고 삼각형 $ABC$의 내접원의 반지름의 길이가 1이다. 삼각형 $ABC$의 넓이가 $5\\sqrt{2}$일 때, $\\triangle ADE$의 넓이는 $\\frac{b}{a}\\sqrt{2}$이다. $a+b$의 값을 구하면? (단, $a$와 $b$는 서로소이다.)",
+    "content": "삼각형 $ABC$의 내심 $I$를 지나고 선분 $BC$에 평행한 직선이 두 선분 $AB, AC$와 만나는 점을 각각 $D, E$라 하자. $\\overline{AI} = 3$이고 삼각형 $ABC$의 내접원의 반지름의 길이가 1이다. 변 $BC$, $CA$, $AB$의 길이를 각각 $a$, $b$, $c$라 하자. 삼각형 $ABC$의 넓이가 $5\\sqrt{2}$일 때, $\\triangle ADE$의 넓이는 $\\frac{b}{a}\\sqrt{2}$이다. $a+b$의 값을 구하면? (단, $a$와 $b$는 서로소이다.)",
     "choices": [
       "68",
       "69",
@@ -599,7 +599,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "solution": "[도형 검토 후 보완 필요]\n내접원 반지름 $r=1, AI=3$이므로 $\\sin(A/2) = 1/3 \\rightarrow \\sin A = 4\\sqrt{2}/9$\n$\\triangle ABC$ 넓이 = $\\frac{1}{2}r(a+b+c) = 5\\sqrt{2} \\rightarrow$ 둘레 $a+b+c = 10\\sqrt{2}$\n$\\frac{1}{2}bc\\sin A = 5\\sqrt{2} \\rightarrow bc = 45/2$\n코사인법칙 $a^2 = (b+c)^2 - 2bc(1+\\cos A)$를 풀면 $a = 3\\sqrt{2}$\n$A$에서 $BC$에 내린 수선의 길이 $h_A = 10/3$\n$DE$가 내심 $I$를 지나며 $BC$와 평행하므로 $\\triangle ADE$의 높이는 $h_A - 1 = 7/3$\n닮음비가 $7/3 : 10/3 = 7:10$이므로 넓이비는 $49:100$\n$\\triangle ADE$ 넓이 = $\\frac{49}{100} \\times 5\\sqrt{2} = \\frac{49}{20}\\sqrt{2}$\n$\\therefore a=20, b=49 \\rightarrow a+b = 69$",
+    "solution": "[키포인트]\n내심과 밑변에 평행한 선분으로 만들어지는 닮음 관계를 이용한다.\n변 $BC$, $CA$, $AB$의 길이를 각각 $a$, $b$, $c$라 하자.\n내접원 반지름이 $r=1$이고 $AI=3$이므로, 꼭짓점 $A$에서 내심까지의 선분과 내접원의 반지름이 이루는 직각삼각형에서\n$\\sin(A/2)=\\dfrac{r}{AI}=\\dfrac{1}{3}$이다.\n따라서 $\\sin A=2\\sin(A/2)\\cos(A/2)=\\dfrac{4\\sqrt{2}}{9}$이고, $\\cos A=1-2\\sin^2(A/2)=\\dfrac{7}{9}$이다.\n삼각형의 넓이는 $K=rs$이므로 $5\\sqrt{2}=1\\cdot s$, 즉 반둘레 $s=5\\sqrt{2}$이다. 따라서\n$a+b+c=10\\sqrt{2}$이다.\n또한 $K=\\dfrac12bc\\sin A$이므로\n$\\dfrac12bc\\cdot\\dfrac{4\\sqrt{2}}{9}=5\\sqrt{2}$, 따라서 $bc=\\dfrac{45}{2}$이다.\n코사인법칙과 $b+c=10\\sqrt{2}-a$를 이용하면\n$a^2=b^2+c^2-2bc\\cos A=(b+c)^2-2bc(1+\\cos A)$\n$=(10\\sqrt{2}-a)^2-2\\cdot\\dfrac{45}{2}\\cdot\\dfrac{16}{9}=(10\\sqrt{2}-a)^2-80$이다.\n이를 정리하면 $20\\sqrt{2}a=120$이므로 $a=3\\sqrt{2}$이다.\n꼭짓점 $A$에서 $BC$에 내린 높이를 $h_A$라 하면\n$h_A=\\dfrac{2K}{a}=\\dfrac{10\\sqrt{2}}{3\\sqrt{2}}=\\dfrac{10}{3}$이다.\n내심 $I$에서 변 $BC$까지의 거리는 내접원의 반지름인 1이고, $DE\\parallel BC$이므로 $\\triangle ADE$의 높이는\n$\\dfrac{10}{3}-1=\\dfrac{7}{3}$이다.\n따라서 $\\triangle ADE\\sim\\triangle ABC$이고 닮음비는 $\\dfrac{7/3}{10/3}=\\dfrac{7}{10}$이다. 넓이비는 닮음비의 제곱이므로\n$[ADE]=\\left(\\dfrac{7}{10}\\right)^2[ABC]=\\dfrac{49}{100}\\cdot5\\sqrt{2}=\\dfrac{49}{20}\\sqrt{2}$이다.\n따라서 $a=20$, $b=49$이고 $a+b=69$이다.",
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",

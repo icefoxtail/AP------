@@ -710,6 +710,4 @@ window.questionBank = [
     "$x\\lt3-\\sqrt{11}$ 또는 $x\\gt3+\\sqrt{11}$"
   );
   question(14).solution += "\\n[원본 문항 주의] (나)는 $k$의 범위를 묻지만 인쇄된 식에는 $x$가 쓰였고 경계의 등호도 빠져 있다. 원문을 그대로 판정하면 (나)는 거짓이며 정답 ④는 유지된다. 올바른 존재 조건은 $k\\le3-\\sqrt{11}$ 또는 $k\\ge3+\\sqrt{11}$이다.";
-  question(21).content = "&lt;서논술형 1&gt;<br>" + question(21).content;
-  question(22).content = "&lt;서논술형 2&gt;<br>" + question(22).content;
 }
