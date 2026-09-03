@@ -374,6 +374,159 @@ BATCH2_CASES = [
 ]
 
 
+BATCH3_CASES = [
+    {
+        "caseId": "h1-24-geumdang-2final-q10-radical-two-intersections",
+        "sourceJsPath": "original/high/h1/2final/24_금당고_2학기_기말_고1_기출.js",
+        "id": 10,
+        "assetRef": "assets/images/24_금당고_2학기_기말_고1_기출/q10-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=-sqrt(2-2x) and y=x+k, -3/2<k<=-1 gives two intersections",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-6, 2], "yRange": [-5, 3],
+            "curves": [
+                {"points": [{"x": -6, "y": -3.741657}, {"x": -4, "y": -3.162278}, {"x": -2, "y": -2.44949}, {"x": 0, "y": -1.414214}, {"x": 0.5, "y": -1}, {"x": 1, "y": 0}]},
+                {"points": [{"x": -3, "y": -4.4}, {"x": -2, "y": -3.4}, {"x": -1, "y": -2.4}, {"x": 0, "y": -1.4}, {"x": 1, "y": -0.4}, {"x": 2, "y": 0.6}]},
+            ],
+            "points": [{"x": -0.047214, "y": -1.447214, "label": "P₁"}, {"x": 0.847214, "y": -0.552786, "label": "P₂"}],
+            "annotations": [{"x": -5.2, "y": 2.3, "text": "y=−√(2−2x)"}, {"x": -5.2, "y": 1.5, "text": "k=−1.4"}, {"x": -5.2, "y": -4.4, "text": "−3/2<k≤−1"}],
+        },
+    },
+    {
+        "caseId": "h1-25-geumdang-2final-q22-radical-two-intersections",
+        "sourceJsPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+        "id": 22,
+        "assetRef": "assets/images/25_금당고_2학기_기말_고1_기출/q22-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=sqrt(x-2) and y=x+k, -2<=k<-7/4 gives two nonnegative t roots",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-1, 6], "yRange": [-3, 5],
+            "curves": [
+                {"points": [{"x": 2, "y": 0}, {"x": 2.012702, "y": 0.112702}, {"x": 2.25, "y": 0.5}, {"x": 3, "y": 1}, {"x": 4, "y": 1.414214}, {"x": 6, "y": 2}]},
+                {"points": [{"x": -1, "y": -2.9}, {"x": 0, "y": -1.9}, {"x": 2, "y": 0.1}, {"x": 2.787298, "y": 0.887298}, {"x": 4, "y": 2.1}, {"x": 6, "y": 4.1}]},
+            ],
+            "points": [{"x": 2.012702, "y": 0.112702, "label": "P₁"}, {"x": 2.787298, "y": 0.887298, "label": "P₂"}],
+            "annotations": [{"x": -0.5, "y": 4.6, "text": "y=√(x−2)"}, {"x": -0.5, "y": 3.8, "text": "k=−1.9"}, {"x": -0.5, "y": -2.5, "text": "−2≤k<−7/4"}],
+        },
+    },
+    {
+        "caseId": "h1-25-palmas-2final-q23-radical-line-range",
+        "sourceJsPath": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+        "id": 23,
+        "assetRef": "assets/images/25_팔마고_2학기_기말_고1_기출/q23-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=sqrt(2-3x) and y=-x/2+k, 1/3<=k<11/6; k=1 shows two intersections",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-10, 3], "yRange": [-2, 11],
+            "curves": [
+                {"points": [{"x": -10, "y": 5.656854}, {"x": -8, "y": 5.09902}, {"x": -4, "y": 3.741657}, {"x": 0, "y": 1.414214}, {"x": 0.5, "y": 0.707107}, {"x": 0.666666, "y": 0.001414}]},
+                {"points": [{"x": -10, "y": 6}, {"x": -8.47178, "y": 5.23589}, {"x": -4, "y": 3}, {"x": 0, "y": 1}, {"x": 0.47178, "y": 0.76411}, {"x": 3, "y": -0.5}]},
+            ],
+            "points": [{"x": -8.47178, "y": 5.23589, "label": "P₁"}, {"x": 0.47178, "y": 0.76411, "label": "P₂"}],
+            "annotations": [{"x": -9.4, "y": 9.7, "text": "y=√(2−3x)"}, {"x": -9.4, "y": 8.8, "text": "k=1"}, {"x": -9.4, "y": -1.2, "text": "1/3≤k<11/6"}],
+        },
+    },
+    {
+        "caseId": "h1-25-jeil-2final-q20-inverse-intersection",
+        "sourceJsPath": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+        "id": 20,
+        "assetRef": "assets/images/25_제일고_2학기_기말_고1_기출/q20-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f(x)=sqrt(x+2), inverse y=x²-2 for x>=0, intersection A=(2,2)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-2, 6], "yRange": [-2, 6],
+            "curves": [
+                {"points": [{"x": -2, "y": 0}, {"x": -1, "y": 1}, {"x": 0, "y": 1.414214}, {"x": 1, "y": 1.732051}, {"x": 2, "y": 2}, {"x": 6, "y": 2.828427}]},
+                {"points": [{"x": 0, "y": -2}, {"x": 1, "y": -1}, {"x": 1.414214, "y": 0}, {"x": 2, "y": 2}, {"x": 2.828427, "y": 6}]},
+            ],
+            "lines": [{"from": {"x": -2, "y": -2}, "to": {"x": 6, "y": 6}, "label": "y=x", "kind": "guide", "dashed": True}],
+            "points": [{"x": 2, "y": 2, "label": "A"}],
+            "annotations": [{"x": -1.5, "y": 5.5, "text": "y=f(x)"}, {"x": 3.2, "y": 5.5, "text": "y=f⁻¹(x)"}, {"x": 2.2, "y": 1.2, "text": "A=(2,2)"}],
+        },
+    },
+    {
+        "caseId": "h1-24-geumdang-2final-q11-radical-chord-slope",
+        "sourceJsPath": "original/high/h1/2final/24_금당고_2학기_기말_고1_기출.js",
+        "id": 11,
+        "assetRef": "assets/images/24_금당고_2학기_기말_고1_기출/q11-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=3sqrt(x), choose sqrt(a)=1/4 and sqrt(c)=3/4 so b+d=3 and chord slope 3",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 460,
+            "xRange": [-0.2, 1.4], "yRange": [-0.5, 4.5],
+            "curves": [{"points": [{"x": 0, "y": 0}, {"x": 0.0625, "y": 0.75}, {"x": 0.25, "y": 1.5}, {"x": 0.5625, "y": 2.25}, {"x": 1, "y": 3}, {"x": 1.4, "y": 3.549648}]}],
+            "segments": [{"from": {"x": 0.0625, "y": 0.75}, "to": {"x": 0.5625, "y": 2.25}, "label": "PQ", "kind": "segment"}],
+            "points": [{"x": 0.0625, "y": 0.75, "label": "P"}, {"x": 0.5625, "y": 2.25, "label": "Q"}],
+            "annotations": [{"x": 0.05, "y": 4.1, "text": "y=3√x"}, {"x": 0.75, "y": 1.2, "text": "slope=3"}],
+        },
+    },
+    {
+        "caseId": "h1-24-geumdang-2final-q16-rational-area-minimum",
+        "sourceJsPath": "original/high/h1/2final/24_금당고_2학기_기말_고1_기출.js",
+        "id": 16,
+        "assetRef": "assets/images/24_금당고_2학기_기말_고1_기출/q16-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "A=(sqrt2,sqrt2) on y=2/x minimizes distance to BC: x+y+3=0 through B=(-1,-2),C=(3,-6)",
+        "spec": {
+            "version": "0.1", "type": "coordinate_plane", "width": 620, "height": 460,
+            "xRange": [-3, 5], "yRange": [-8, 5],
+            "curves": [
+                {"points": [{"x": -3, "y": -0.666667}, {"x": -2, "y": -1}, {"x": -1, "y": -2}, {"x": -0.5, "y": -4}, {"x": 0.5, "y": 4}, {"x": 1, "y": 2}, {"x": 1.414214, "y": 1.414214}, {"x": 2, "y": 1}, {"x": 5, "y": 0.4}]},
+            ],
+            "segments": [{"from": {"x": -1, "y": -2}, "to": {"x": 3, "y": -6}, "label": "BC", "kind": "segment"}, {"from": {"x": 1.414214, "y": 1.414214}, "to": {"x": 1.414214, "y": -4.414214}, "label": "height", "kind": "perpendicular", "dashed": True}],
+            "points": [{"x": -1, "y": -2, "label": "B"}, {"x": 3, "y": -6, "label": "C"}, {"x": 1.414214, "y": 1.414214, "label": "A"}],
+            "annotations": [{"x": -2.5, "y": 4.2, "text": "y=2/x"}, {"x": -2.5, "y": -7.3, "text": "BC: x+y+3=0"}, {"x": 1.7, "y": 2.3, "text": "A=(√2,√2)"}],
+        },
+    },
+    {
+        "caseId": "h1-23-gangnam-2final-q24-radical-line-slope-range",
+        "sourceJsPath": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js",
+        "id": 24,
+        "assetRef": "assets/images/23_강남여고_2학기_기말_고1_기출/q24-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=sqrt(3x-3), y=ax+1, endpoint slopes a=-1 and a=1/2 bound -1<=a<=1/2",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [0, 6], "yRange": [-5, 5],
+            "curves": [{"points": [{"x": 1, "y": 0}, {"x": 1.333333, "y": 1}, {"x": 2, "y": 1.732051}, {"x": 3, "y": 2.44949}, {"x": 4, "y": 3}, {"x": 6, "y": 3.872983}]}],
+            "lines": [
+                {"from": {"x": 0, "y": 1}, "to": {"x": 6, "y": -5}, "label": "a=−1", "kind": "guide", "dashed": True},
+                {"from": {"x": 0, "y": 1}, "to": {"x": 6, "y": 4}, "label": "a=1/2", "kind": "guide", "dashed": True},
+            ],
+            "points": [{"x": 1, "y": 0, "label": "T₁"}, {"x": 4, "y": 3, "label": "T₂"}],
+            "annotations": [{"x": 1.2, "y": 4.7, "text": "y=√(3x−3)"}, {"x": 0.2, "y": -1.4, "text": "−1≤a≤1/2"}],
+        },
+    },
+    {
+        "caseId": "h1-24-maesan-2final-q23-inverse-area",
+        "sourceJsPath": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+        "id": 23,
+        "assetRef": "assets/images/24_매산여고_2학기_기말_고1_기출/q23-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f=sqrt(3x+4), inverse=(x²-4)/3 for x>=0, A=(4,4), B=(5/3,3), C=(3,5/3), l:y=-x+14/3",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-2, 5], "yRange": [-3, 6],
+            "curves": [
+                {"points": [{"x": -1.333333, "y": 0.001}, {"x": 0, "y": 2}, {"x": 1.666667, "y": 3.000001}, {"x": 3, "y": 3.605551}, {"x": 4, "y": 4}, {"x": 4.5, "y": 4.1833}]},
+                {"points": [{"x": 0, "y": -1.333333}, {"x": 1, "y": -1}, {"x": 1.666667, "y": -0.407407}, {"x": 3, "y": 1.666667}, {"x": 4, "y": 4}, {"x": 4.5, "y": 5.416667}]},
+            ],
+            "lines": [
+                {"from": {"x": -1.3, "y": 5.933333}, "to": {"x": 4.5, "y": 0.166667}, "label": "l", "kind": "guide", "dashed": True},
+                {"from": {"x": -2, "y": -2}, "to": {"x": 4.5, "y": 4.5}, "label": "y=x", "kind": "guide", "dashed": True},
+            ],
+            "segments": [{"from": {"x": 1.666667, "y": 3}, "to": {"x": 3, "y": 1.666667}, "label": "BC", "kind": "segment"}, {"from": {"x": 4, "y": 4}, "to": {"x": 1.666667, "y": 3}, "label": "AB", "kind": "segment"}, {"from": {"x": 4, "y": 4}, "to": {"x": 3, "y": 1.666667}, "label": "AC", "kind": "segment"}],
+            "points": [{"x": 4, "y": 4, "label": "A"}, {"x": 1.666667, "y": 3, "label": "B"}, {"x": 3, "y": 1.666667, "label": "C"}],
+            "annotations": [{"x": -1.5, "y": 5.1, "text": "y=f(x)"}, {"x": 3.3, "y": 5.4, "text": "y=f⁻¹(x)"}],
+        },
+    },
+]
+
+
 def fact_hash(case: dict) -> str:
     payload = json.dumps({"caseId": case["caseId"], "factSummary": case["factSummary"], "spec": case["spec"]}, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
@@ -446,6 +599,27 @@ def validate_math(case: dict) -> None:
         for point in case["spec"]["points"]:
             _close((point["x"] - 1) * (point["y"] - 2), 1, f"q18.hyperbola.{point['label']}", 5e-5)
             _close((point["x"] - 1) ** 2 + (point["y"] - 2) ** 2, 9, f"q18.circle.{point['label']}", 5e-5)
+    elif case_id == "h1-24-geumdang-2final-q10-radical-two-intersections":
+        _check_curve(curves[0], lambda x: -(2 - 2 * x) ** 0.5, "q10.radical")
+        _check_curve(curves[1], lambda x: x - 1.4, "q10.line")
+    elif case_id == "h1-25-geumdang-2final-q22-radical-two-intersections":
+        _check_curve(curves[0], lambda x: (x - 2) ** 0.5, "q22.radical")
+        _check_curve(curves[1], lambda x: x - 1.9, "q22.line")
+    elif case_id == "h1-25-palmas-2final-q23-radical-line-range":
+        _check_curve(curves[0], lambda x: (2 - 3 * x) ** 0.5, "palma23.radical")
+        _check_curve(curves[1], lambda x: -0.5 * x + 1, "palma23.line")
+    elif case_id == "h1-25-jeil-2final-q20-inverse-intersection":
+        _check_curve(curves[0], lambda x: (x + 2) ** 0.5, "jeil20.f")
+        _check_curve(curves[1], lambda x: x ** 2 - 2, "jeil20.finverse")
+    elif case_id == "h1-24-geumdang-2final-q11-radical-chord-slope":
+        _check_curve(curves[0], lambda x: 3 * x ** 0.5, "geumdang11.radical")
+    elif case_id == "h1-24-geumdang-2final-q16-rational-area-minimum":
+        _check_curve(curves[0], lambda x: 2 / x, "geumdang16.rational")
+    elif case_id == "h1-23-gangnam-2final-q24-radical-line-slope-range":
+        _check_curve(curves[0], lambda x: (3 * x - 3) ** 0.5, "gangnam24.radical")
+    elif case_id == "h1-24-maesan-2final-q23-inverse-area":
+        _check_curve(curves[0], lambda x: (3 * x + 4) ** 0.5, "maesan23.f")
+        _check_curve(curves[1], lambda x: (x ** 2 - 4) / 3, "maesan23.finverse")
 
     x_low, x_high = case["spec"]["xRange"]
     y_low, y_high = case["spec"]["yRange"]
@@ -464,7 +638,7 @@ def validate_math(case: dict) -> None:
 
 def main() -> None:
     summary = {"status": "PASS", "renderer": "alive.engine.visual_renderer", "cases": []}
-    for case in PILOT_CASES + BATCH2_CASES:
+    for case in PILOT_CASES + BATCH2_CASES + BATCH3_CASES:
         validate_math(case)
         svg = render_visual_spec(case["spec"])
         graph_hash = fact_hash(case)
