@@ -260,6 +260,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $a$의 부호에 따라 정의역과 그래프가 놓이는 사분면을 확인한다.\n조건 정리: 근호 안의 조건은 $ax\\ge0$이고, 앞에 음의 부호가 있으므로 함수값은 항상 $0$ 이하이다.\n풀이 방향: ㄱ~ㄹ을 각각 정의역, 치역, 사분면, 원점대칭으로 판정한다.\n정석 풀이: ㄱ은 $a\\lt0$이면 정의역이 $x\\le0$이므로 거짓이다. ㄴ은 $-\\sqrt{ax}\\le0$이므로 참이다. ㄷ은 $a\\lt0$이면 $x\\le0$, $y\\le0$이므로 그래프는 원점과 제3사분면에 있어 거짓이다. ㄹ에서 $y=-\\sqrt{ax}$를 원점 대칭하면 $(x,y)$가 $(-x,-y)$로 바뀌어 $y=\\sqrt{-ax}$가 되므로 참이다. 따라서 옳은 것은 ㄴ, ㄹ이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q09-solution.svg",
+
+    "solutionImageAlt": "계수의 부호에 따른 무리함수 그래프",
+
+    "solutionImageCaption": "a=1과 a=−1의 대표 그래프로 정의역·치역과 사분면 차이를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
