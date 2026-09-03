@@ -990,16 +990,24 @@ function wrapLatex(text) {
     const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
     const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
     const htmlTags = [];
-    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
-        const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
-    });
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
-        if (idx % 2 === 1) return seg;
+    // Split math before protecting HTML tags.  Otherwise an inequality such as
+    // `$5a<b<7a$` is mistaken for a malformed `<b...>` tag and leaks raw
+    // delimiters into the rendered solution.
+    // Valid display/inline math can contain a source line break. Treat the
+    // complete dollar-delimited segment as math and normalize only its line
+    // breaks to spaces before the final HTML <br> pass.
+    const mathSegmentRe = /(\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$)/g;
+    const protectedSegmentRe = new RegExp(`${mathSegmentRe.source}|__HTMLTAG_\\d+__`, 'g');
+    s = s.split(mathSegmentRe).map((seg, idx) => {
+        if (idx % 2 === 1) return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r\n|\r|\n/g, ' ');
         let t = seg;
+        t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+            const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
+        });
         t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));
         return t.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }).join('');
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$|__HTMLTAG_\d+__)/g).map((seg, idx) => {
+    s = s.split(protectedSegmentRe).map((seg, idx) => {
         if (idx % 2 === 1) return seg;
         const trimmed = seg.trim(); if (!trimmed) return seg;
         const hasKorean = /[가-힣]/.test(seg); const hasLatex = /\\[a-zA-Z]/.test(seg);
@@ -1008,11 +1016,11 @@ function wrapLatex(text) {
         if (hasKorean && hasLatex) return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_\{?[^}\s]+\}?)?(?:\^\{?[^}\s]+\}?)?)/g, '$$$1$$');
         return seg;
     }).join('');
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
+    s = s.split(mathSegmentRe).map((seg, idx) => {
         if (idx % 2 === 1) return seg;
         return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
     }).join('');
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
+    s = s.split(mathSegmentRe).map((seg, idx) => {
         if (idx % 2 === 0) return seg;
         return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }).join('');
