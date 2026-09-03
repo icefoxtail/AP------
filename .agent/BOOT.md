@@ -49,6 +49,14 @@ For `archive/textbook` work, read the upper AP rulebook first, then follow `arch
 - No UI exposure of hidden foundation features without explicit approval.
 - No root `CODEX_RESULT.md` overwrite when the task requests a separate report.
 
+## Temporary Artifact Rule
+
+- `tmp/` is the canonical local workspace for temporary artifacts.
+- Create temporary screenshots, renders, crops, OCR outputs, logs, patch material, browser profiles, test outputs, and similar files under `tmp/<task-name>-<YYYYMMDD>/`.
+- Do not create temporary files or folders at the AP root using names such as `_tmp`, `.tmp-*`, `temp_*`, `*_patch*`, `codex_tmp_*`, or `adaptive-staged-runs`.
+- If an external tool cannot be configured to use `tmp/`, move its output there immediately after the tool finishes. Promote only intentional final assets and documents to repository-owned paths.
+- OS-, Codex-, or Drive-managed hidden staging folders such as `.tmp.driveupload` and `.tmp.drivedownload` are exceptions; do not move them while they may be active.
+
 ## Finish Procedure
 
 1. Run verification commands required by the task.
