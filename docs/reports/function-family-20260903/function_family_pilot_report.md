@@ -257,6 +257,8 @@ Batch 12의 8개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 10�
 
 Batch 13의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개가 모두 `complete=true`, natural size 양수로 로드되었으며 broken image 0, render error 없음, data load error 없음으로 확인했다. 상세 결과는 [Batch 13 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch13_render_matrix.md>)에 고정했다.
 
+누적 시각 계약 검사도 실행했다. 원본 target 522문항·50개 source JS의 런타임 로드 522/522, 생성 SVG 120/120의 case ID·fact hash·provenance·viewBox·금지 토큰·중복 자산 검사, source attachment parity 120/120이 모두 PASS였다. 121번째 해설 이미지는 기존 선행 자산 1개로 별도 집계했다. [시각 계약 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)과 [시각 계약 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)에 고정했다.
+
 | 시험지 | exam | solution | answer | broken image | render error | last question |
 |---|---|---|---|---:|---|---|
 | 21 강남여고 2학기 기말 | PASS, 8 pages | PASS, 8 pages, 새 SVG 2개 로드 | PASS, 1 page | 0 | 없음 | q29 |
@@ -308,6 +310,8 @@ Batch 13의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개
 - [Batch 13 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch13_attachment_ledger.json>)
 - [Batch 13 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch13_render_matrix.md>)
 - [Batch 13 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v18/function_family_summary.md>)
+- [누적 시각 계약 검증 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)
+- [누적 시각 계약 검증 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)
 
 ## SOURCE_REVIEW 보류
 
