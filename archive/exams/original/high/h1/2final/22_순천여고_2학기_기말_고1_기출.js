@@ -613,6 +613,14 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] $P,Q,R$의 좌표를 구하면 $PQ$와 $PR$의 길이가 같아져 넓이 문제가 한 변수의 최솟값 문제로 바뀐다.\n조건 정리: $a\\gt1$이므로 $a-1\\gt0$이다.\n풀이 방향: 세 점의 좌표를 구해 두 직각변의 길이를 나타내고 $t=a-1$로 치환한다.\n정석 풀이: $P=(a,\\dfrac1{a-1})$, $Q=(a,-a)$이다. $P$에서 그은 수평선 $y=\\dfrac1{a-1}$과 $y=-x$의 교점은 $R=(-\\dfrac1{a-1},\\dfrac1{a-1})$이다. 따라서 $PQ=PR=a+\\dfrac1{a-1}$. $t=a-1\\gt0$이라 두면 이 길이는 $t+1+\\dfrac1t\\ge3$이고 등호는 $t=1$일 때 성립한다. 따라서 삼각형의 최소 넓이는 $\\dfrac12\\times3\\times3=\\dfrac92$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q20-solution.svg",
+
+    "solutionImageAlt": "유리함수·직선과 삼각형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=2에서 P=(2,1), Q=(2,−2), R=(−1,1)과 최소 넓이 9/2를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

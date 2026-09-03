@@ -484,6 +484,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 합성식에서 공통으로 나타나는 $(g\\circ h)(x)$를 하나의 입력값으로 본다.\n조건 정리: $(g\\circ h)(x)=2x-3$이고 $f((g\\circ h)(x))=4x+1$이다.\n풀이 방향: $t=2x-3$으로 놓아 $f(t)$를 구한 뒤 역함수를 계산한다.\n정석 풀이: $t=2x-3$이면 $x=\\dfrac{t+3}{2}$이다. 따라서 $f(t)=4\\cdot\\dfrac{t+3}{2}+1=2t+7$이다. 즉 $f(x)=2x+7$이다. $f^{-1}(6)$을 $u$라 하면 $f(u)=6$이므로 $2u+7=6$이다. 따라서 $u=-\\dfrac12$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "평행이동된 무리함수의 점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=√(−2x−2)−1이 점 (k,3), k=−9를 지남을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
@@ -517,6 +525,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 바깥 절댓값부터 풀어 안쪽 절댓값의 값을 두 가지로 나눈다.\n조건 정리: $f(f(x))=||x-2|-2|=1$이다.\n풀이 방향: $|x-2|-2=1$ 또는 $|x-2|-2=-1$로 나누어 푼다.\n정석 풀이: 첫째 경우 $|x-2|=3$이므로 $x=-1,5$이다. 둘째 경우 $|x-2|=1$이므로 $x=1,3$이다. 서로 다른 네 실근의 곱은 $(-1)\\times1\\times3\\times5=-15$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q16-solution.svg",
+
+    "solutionImageAlt": "평행이동된 유리함수의 점근선을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=−2−3/(x−3)의 점근선과 −3/x 평행이동 구조를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
@@ -550,6 +566,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 양수 구간에서는 제곱함수, 음수 구간에서는 항등함수라는 점을 이용한다.\n조건 정리: $x\\ge0$이면 $f(x)=x^2$, $x<0$이면 $f(x)=x$이다.\n풀이 방향: 각 명제를 직접 계산하거나 그래프의 성질로 판단한다.\n정석 풀이: ㄱ에서 $f(16)=256$, $f(f(4))=f(16)=256$, $f(f(f(2)))=f(f(4))=f(16)=256$이므로 참이다. ㄴ에서 음수 구간에서는 $f(x)=x$이고 역함수도 같은 대응을 하므로 $f^{-1}(-7)=-7=f(-7)$이다. ㄷ에서 $(f\\circ f)(x)=9$의 해는 양수이고, 양수에서 $(f\\circ f)(x)=x^4$이므로 $x^4=9$에서 $x=\\sqrt3$이다. ㄹ에서 모든 $x<0$에 대하여 $f(x)=x$이므로 원함수와 역함수의 그래프는 음수 구간에서 서로 겹친다. 따라서 교점은 3개 이상이다.\n따라서 ㄱ, ㄴ, ㄷ, ㄹ이 모두 옳고 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q17-solution.svg",
+
+    "solutionImageAlt": "유리함수와 양의 기울기 대칭축을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "중심 (1,3), 대칭축 y=x+2와 두 교점, AB=8을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
