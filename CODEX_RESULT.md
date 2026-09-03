@@ -48,7 +48,7 @@
 - `23_충무고` 중간 q19: 주관식 schema를 `questionType: 서술형`, `choices: []`, `answer: 4`로 정규화
 - `24_제일고` 중간 q20: 벡터·행렬식 없는 좌표평면/삼각형 넓이 풀이로 교체하고 정답 `$2\\sqrt{21}$` 유지
 - `22_팔마고` 기말 q5: 법선벡터 없는 기울기·계수비 풀이로 교체
-- `24_한영고` 중간 q11: `[그래프필요]` 제거, 해설 facts 기반 q11 그래프 SVG 연결
+- `24_한영고` 중간 q11: `[그래프필요]` 제거, 해설 facts 기반 q11 그래프 SVG 연결, 학생 화면의 완성 함수식·reconstruction 문구 제거
 - `25_효천고` 중간 q12: `[판독불가]` choice 1을 사용자 승인에 따라 `$0$`으로 복원
 - `23_매산고` 중간 전체 해설: 20개 legacy `[Logical Anchor]` 문구와 기계적 메모체를 학생용 표현으로 정리
 - `23_부영여고` 중간 전체 해설: 22개 legacy `[Logical Anchor]` 문구와 기계적 메모체를 학생용 표현으로 정리
@@ -75,6 +75,7 @@
 - 지정 수열 용어 제거/교체: 4문항
 - 사용자 승인 placeholder repair: 2건
 - 신규 reconstructed graph asset: 1건
+- q11 student-visible SVG leak repair: 완성 함수식·reconstruction 문구·시험 식별 문구 제거, `y=f(x)`, `y=g(x)`만 유지
 
 ## 5. q19 source evidence
 
@@ -110,6 +111,10 @@
 - placeholder scan: **PASS**, H1 first-semester production 0건
 - q11 graph reconstruction provenance: **PASS_WITH_USER_AUTHORIZATION**
 - q12 choice reconstruction provenance: **PASS_WITH_USER_AUTHORIZATION**
+- q11 `VISUAL_ANSWER_LEAK`: **PASS**
+- q11 `STUDENT_VISIBLE_PROVENANCE_TEXT`: **PASS**
+- q11 `VISUAL_LABEL_SEMANTIC_REVIEW`: **PASS**
+- archive asset cache-buster `20260903.1`: **PASS**
 
 ## 7. Index parity 결과
 
@@ -144,7 +149,7 @@
   - `24_제일고` q20 hard fix: PASS
 - `22_팔마고` q5 hard fix: PASS
 - 승인 placeholder repair:
-  - `24_한영고` q11 exam/sol: graph asset decode and MathJax PASS
+  - `24_한영고` q11 exam/sol/ans: graph asset decode, leak-free student-visible SVG, and MathJax PASS
   - `25_효천고` q12 exam/sol/ans: restored choice and MathJax PASS
 - 위 화면에서 `neq`, `dfrac`, `sqrt`, solution image, overflow, literal command 노출 없음 확인
 - answer mode: q11/q12 개별 페이지 PASS; 전체 56개 페이지 matrix는 브라우저 자동화 제한 시간으로 완료하지 못함: **INCOMPLETE**
@@ -159,12 +164,13 @@
 - `185a440f` — `chore(archive): persist H1 quality tooling and temp safeguards`
 - `11653efc` — `docs(archive): refresh geometry evidence after main merge`
 - `0d9a4589` — `fix(archive): repair approved h1 placeholders`
+- 이번 후속 q11 visual leak repair: q11 SVG/해설/cache-buster/evidence/index/report 갱신
 
-`main`과 `origin/main`에는 production 수정 커밋 `0d9a4589`가 포함되어 있다. 공유 workspace에는 별도 geometry 작업의 미커밋 변경이 있으므로 이를 건드리거나 함께 커밋하지 않았다. q11/q12 승인 reconstruction과 evidence는 `0d9a4589`에 포함되었으며, 이 결과 보고서 갱신은 후속 문서 커밋으로 반영한다. 전체 answer-mode 미완료 상태에서 `FINAL PASS`를 선언하지 않는다.
+`main`과 `origin/main`에는 production 수정 커밋 `0d9a4589`가 포함되어 있다. 이번 후속 q11 visual leak repair는 별도 핀포인트 커밋으로 반영한다. 공유 workspace에는 별도 geometry 작업의 미커밋 변경이 있으므로 이를 건드리거나 함께 커밋하지 않았다. q11/q12 승인 reconstruction과 evidence는 `0d9a4589`에 포함되었고, q11 학생용 SVG leak 판정은 이번 후속 커밋에서 갱신한다. 전체 answer-mode 미완료 상태에서 `FINAL PASS`를 선언하지 않는다.
 
 ## 10. 미해결 항목 및 다음 조치
 
 - 충무고 q19 별도 원본 PDF/이미지 확보 후 historical transcription과 대조
-- q11/q12는 사용자 승인 reconstruction으로 현재 placeholder gate를 해소했으나, 향후 원본 scan 확보 시 source fidelity를 재대조
+- q11 visual leak fix와 q12 사용자 승인 reconstruction은 반영했으나, 향후 원본 scan 확보 시 source fidelity를 재대조
 - 56개 exam/sol/ans 전체 브라우저 matrix를 다시 실행
 - 모든 Gate가 PASS일 때에만 단일 seal commit과 최종 `FINAL PASS / HIGH1 FIRST SEMESTER SEALED` 판정을 수행
