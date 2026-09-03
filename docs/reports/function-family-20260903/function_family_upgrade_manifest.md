@@ -3,9 +3,9 @@
 - 상태: **PROVISIONAL_REVIEW_REQUIRED**
 - final seal eligible: **NO**
 - target: 522
-- generated graph cases: 120
-- source solution images: 121
-- unresolved/provisional review rows: 189
+- generated graph cases: 127
+- source solution images: 128
+- unresolved/provisional review rows: 182
 
 ## qualityDisposition
 
@@ -19,8 +19,8 @@
 - KEEP_CANDIDATE: 212
 - OPTIONAL_VISUAL_REVIEW_PENDING: 63
 - SOURCE_REVIEW_UNRESOLVED: 1
-- VISUAL_ADD_COMPLETE: 120
-- VISUAL_ADD_PENDING_INDEPENDENT_ADJUDICATION: 125
+- VISUAL_ADD_COMPLETE: 127
+- VISUAL_ADD_PENDING_INDEPENDENT_ADJUDICATION: 118
 
 ## visualRequirement
 
@@ -28,7 +28,7 @@
 - SOURCE_REVIEW: 1
 - VISUAL_EXEMPT_CANDIDATE: 212
 - VISUAL_OPTIONAL_CANDIDATE: 63
-- VISUAL_REQUIRED_CANDIDATE: 125
-- VISUAL_REQUIRED_SATISFIED: 120
+- VISUAL_REQUIRED_CANDIDATE: 118
+- VISUAL_REQUIRED_SATISFIED: 127
 
 This manifest records current execution evidence and candidate dispositions. VISUAL_REQUIRED_CANDIDATE and VISUAL_OPTIONAL_CANDIDATE are not final adjudications; final seal requires independent mathematical/pedagogical review and source-review resolution.
