@@ -132,6 +132,14 @@ window.questionBank = [
     ],
     "answer": "③, ④, ⑤",
     "solution": "[키포인트] 유리함수를 $y=\\dfrac{a}{x-p}+q$ 꼴로 바꾸면 점근선과 대칭축을 확인하기 쉽다.\n조건 정리: $f(x)=2-\\dfrac5{x+3}$이므로 중심은 $(-3,2)$이다.\n풀이 방향: 각 보기를 그래프의 절편, 점근선, 사분면, 대칭축, 평행이동 관점에서 확인한다.\n정석 풀이: ① $x$절편은 $2x+1=0$에서 $x=-\\dfrac12$이므로 거짓이다. ② 점근선은 $x=-3$, $y=2$이므로 거짓이다. ③ $x\\gt0$이면 분자와 분모가 모두 양수여서 $f(x)\\gt0$이므로 제4사분면을 지나지 않아 참이다. ④ 중심 $(-3,2)$을 지나는 기울기 $-1$인 직선은 $y-2=-(x+3)$, 즉 $y=-x-1$이므로 대칭축이 되어 참이다. ⑤ $y=\\dfrac{x-6}{x-1}=1-\\dfrac5{x-1}$도 계수가 $-\\dfrac5{x-p}$인 같은 모양의 그래프이므로 평행이동하여 겹칠 수 있어 참이다.\n따라서 정답은 ③, ④, ⑤이다.",
+
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q04-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=2−5/(x+3)에서 점근선 x=−3, y=2와 중심을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -165,6 +173,14 @@ window.questionBank = [
     ],
     "answer": "②, ④, ⑤",
     "solution": "[키포인트] 정의역·치역, 특정 점, 역함수, 구간 최댓값을 각각 직접 확인한다.\n조건 정리: $y=-2\\sqrt{1-x}+3$이므로 $x\\le1$이고 $y\\le3$이다.\n풀이 방향: 각 보기를 원래 함수의 식에 대입하거나 역함수를 직접 구해 판정한다.\n정석 풀이: ① 정의역은 $x\\le1$이므로 거짓이다. ② $x=-\\dfrac54$이면 $4-4x=9$이므로 $y=-3+3=0$이라서 참이다. ③ $y\\lt0$이 되려면 $x\\lt-\\dfrac54$이므로 이때 $x\\lt0$이고 제3사분면만 해당하여 거짓이다. ④ $y=-2\\sqrt{1-x}+3$에서 $x=1-\\dfrac14(y-3)^2$이고 원래 치역이 $y\\le3$이므로 역함수는 $y=-\\dfrac14(x-3)^2+1\\ (x\\le3)$이어서 참이다. ⑤ 이 함수는 정의역에서 증가하므로 $-6\\le x\\le0$에서 최댓값은 $f(0)=-2+3=1$로 참이다.\n따라서 정답은 ②, ④, ⑤이다.",
+
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q05-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점과 x절편을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (1,3)과 x절편 (−5/4,0)을 이용해 정의역·치역·구간 최댓값을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

@@ -92,6 +92,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 식을 $y=-3+\\dfrac5{x+1}$로 고쳐 중심과 점근선을 읽고 각 보기를 확인한다.\n조건 정리: 그래프의 중심은 $(-1,-3)$이고 점근선은 $x=-1$, $y=-3$이다.\n풀이 방향: 점 대입, 대칭축, 평행이동, 사분면 통과 여부를 차례로 판정한다.\n정석 풀이: $x=-2$이면 $y=-8$이므로 ①은 옳다. 중심을 지나는 기울기 $1$인 대칭축은 $y+3=x+1$, 즉 $y=x-2$이므로 ③도 옳다. 또 $y=\\dfrac{3x+8}{x+1}=3+\\dfrac5{x+1}$은 주어진 그래프를 위로 $6$만큼 평행이동한 그래프이므로 ④도 옳다. 한편 $-1\\lt x\\lt0$이면 분자와 분모가 모두 양수이므로 $x\\lt0$, $y\\gt0$인 제2사분면 위의 점이 존재한다. 따라서 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q03-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=−3+5/(x+1)에서 점근선 x=−1, y=−3과 중심을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -125,6 +133,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 정의역, 그래프의 방향, 사분면, 역함수의 정의역을 각각 확인한다.\n조건 정리: $-2x+1\\ge0$이므로 정의역은 $x\\le\\dfrac12$이고, 함수값은 항상 $2$ 이하이다.\n풀이 방향: ㄱ~ㄹ을 하나씩 판정한다.\n정석 풀이: ㄱ은 정의역 조건에서 참이다. ㄴ의 $y=-\\sqrt{2x}$는 오른쪽으로 뻗는 그래프인데 주어진 함수는 왼쪽으로 뻗으므로 평행이동만으로 서로 겹칠 수 없어 거짓이다. $0\\lt x\\le\\dfrac12$에서는 함수값이 양수이므로 제4사분면을 지나지 않아 ㄷ은 참이다. 역함수는 $y=-\\dfrac12(x-2)^2+\\dfrac12$이지만 그 정의역은 원래 함수의 치역인 $x\\le2$이므로 ㄹ은 거짓이다. 따라서 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q04-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점·절편·정의역을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (1/2,2), x절편 (−3/2,0), 역함수 정의역을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

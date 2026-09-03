@@ -351,6 +351,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 점근선 $x=a$, $y=2$와 $x$절편 $a-\\dfrac32$의 위치로 지나는 사분면을 판정한다.\n조건 정리: 그래프는 $y=\\dfrac3{x-a}+2$이고 두 가지는 중심 $(a,2)$을 기준으로 제1·제3 방향으로 놓인다.\n풀이 방향: $a\\le0$, $a=1$, $a\\ge2$로 나누어 사분면의 개수를 센다.\n정석 풀이: $a\\le0$이면 오른쪽 가지는 제1사분면을 지나고, 왼쪽 가지는 제2·제3사분면을 지나므로 $f(a)=3$이다. $a=1$이면 $x$절편이 $-\\dfrac12$이고 수직점근선이 양의 $x$축 쪽에 있어 네 사분면을 모두 지나므로 $f(1)=4$이다. $a\\ge2$이면 제1·제2·제4사분면을 지나므로 다시 $f(a)=3$이다. $-5$부터 $5$까지 $11$개의 정수 중 $a=1$만 값이 $4$이고 나머지 $10$개는 $3$이므로 합은 $10\\cdot3+4=34$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q11-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 사분면 통과를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "점근선 x=1, y=2와 x절편을 기준으로 매개변수 a에 따른 사분면 개수를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
