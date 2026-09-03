@@ -517,6 +517,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 유리함수를 평행이동된 $y=\\dfrac1x$의 꼴로 바꾸면 점근선과 대칭축을 바로 읽을 수 있다.\n조건 정리: $y=\\dfrac{x-1}{x-2}=1+\\dfrac1{x-2}$이므로 중심은 $(2,1)$이다.\n풀이 방향: ㄱ은 실제 사분면을 확인하고, ㄴ·ㄷ은 중심과 대칭축으로 판단한다.\n정석 풀이: $x\\lt0$이면 분자와 분모가 모두 음수이므로 $y\\gt0$이어서 제2사분면을 지난다. 또 $1\\lt x\\lt2$이면 분자는 양수, 분모는 음수이므로 $y\\lt0$이어서 제4사분면도 지난다. 따라서 ㄱ은 거짓이다. 점근선은 $x=2$, $y=1$이므로 ㄴ은 참이다. $y-1=\\dfrac1{x-2}$의 두 대칭축은 $y-1=\\pm(x-2)$, 즉 $y=x-1$, $y=-x+3$이므로 ㄷ도 참이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "유리함수의 중심과 대칭축을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "중심 (2,1)과 대칭축 y=x−1, y=−x+3을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -735,6 +743,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=16$, $f^{-1}(x)=\\dfrac{x^2}{2}+4x$, 정의역 $\\{x\\mid x\\ge-4\\}$",
     "solution": "[키포인트] 원점을 지난다는 조건으로 $a$를 먼저 정하고, 원래 함수의 치역을 역함수의 정의역으로 사용한다.\n조건 정리: $f(0)=0$이고 무리함수의 값은 $-4$ 이상이다.\n풀이 방향: $a$를 구한 뒤 $y=\\sqrt{2x+16}-4$에서 $x$를 $y$로 나타내고 두 문자를 바꾼다.\n정석 풀이: $f(0)=\\sqrt a-4=0$이므로 $a=16$이다. $y=\\sqrt{2x+16}-4$에서 $y+4=\\sqrt{2x+16}$이므로 $y\\ge-4$이다. 양변을 제곱하면 $(y+4)^2=2x+16$이고, 정리하면 $x=\\dfrac{y^2}{2}+4y$이다. 따라서 $f^{-1}(x)=\\dfrac{x^2}{2}+4x$이고 역함수의 정의역은 $\\{x\\mid x\\ge-4\\}$이다.\n따라서 $a=16$, $f^{-1}(x)=\\dfrac{x^2}{2}+4x$, 정의역은 $\\{x\\mid x\\ge-4\\}$이다.",
+
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "무리함수와 역함수의 그래프를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=16일 때 f=√(2x+16)−4, 역함수의 정의역 x≥−4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

@@ -234,6 +234,14 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     ],
     "answer": "③",
     "solution": "[키포인트] 두 교점은 같은 기울기 1의 직선 위에 있으므로 두 점의 $x$좌표 차를 알면 거리를 구할 수 있다.\n조건 정리: 교점에서는 $\\dfrac{x+1}{x-1}=x+k$가 성립하고, 이 방정식의 두 근이 두 교점의 $x$좌표이다.\n풀이 방향: 교점 방정식을 이차방정식으로 만들고 두 근의 차를 구한 뒤 거리식을 $k$에 대한 식으로 나타낸다.\n정석 풀이: $x+1=(x+k)(x-1)$이므로 $x^2+(k-2)x-(k+1)=0$이다.\n이 이차방정식의 판별식은 $(k-2)^2+4(k+1)=k^2+8$이므로 두 근 $\\alpha,\\beta$의 차의 절댓값은 $|\\alpha-\\beta|=\\sqrt{k^2+8}$이다.\n두 교점은 $y=x+k$ 위에 있으므로 $y$좌표의 차도 $|\\alpha-\\beta|$이다. 따라서 두 점 사이의 거리는 $\\sqrt{(\\alpha-\\beta)^2+(\\alpha-\\beta)^2}=\\sqrt2\\sqrt{k^2+8}=\\sqrt{2k^2+16}$이다.\n$k^2\\ge0$이므로 이 거리는 $k=0$일 때 최소이고, 최솟값은 $4$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고1_기출/q08-solution.svg",
+
+    "solutionImageAlt": "유리함수와 직선의 최단거리를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=0인 y=x에서 두 교점 사이 최솟거리 4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

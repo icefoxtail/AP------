@@ -111,6 +111,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 근호 안이 0 이상인 조건과 그래프 위의 점을 이용한다.\n조건 정리: $2x-a\\ge0$의 해가 $x\\ge3$이므로 $a=6$이다.\n풀이 방향: 점 $(5,1)$을 대입해 $b$를 구한 뒤 최댓값을 찾는다.\n정석 풀이: $1=-\\sqrt{10-6}+b=-2+b$에서 $b=3$이다. $-\\sqrt{2x-6}\\le0$이므로 함수의 최댓값은 3이고 아래로 제한이 없다. 따라서 치역은 $\\{y\\mid y\\le3\\}$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q03-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점·정의역·치역을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (3,3), 정의역 x≥3, 치역 y≤3을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
