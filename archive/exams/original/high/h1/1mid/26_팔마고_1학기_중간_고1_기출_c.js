@@ -715,34 +715,12 @@ window.questionBank = [
 const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
 
 question(17).content = "계수가 각각 실수인 삼차다항식 $P(x)$, 일차다항식 $Q(x)$가 아래의 조건을 만족할 때, $\\dfrac{P(0) \\times Q(1)}{a}$의 값은?\n\n(가) $P(x) \\times Q(x)$는 $(x^2-6x+10)(x-2)$로 나누어 떨어진다.\n\n(나) 모든 $x$에 대하여 $x^3-4x^2+ax-a-1=P(x)+\\{Q(x)\\}^2$\n\n(다) $Q(0)>0,\\ Q(1)>0,\\ P(0)<0,\\ P(2)=0$";
-delete question(17).studentVisible;
-delete question(17).internalStatus;
 question(17).solution = "[키포인트] 나머지정리와 계수비교로 $Q(x)$의 계수를 정한 뒤, 구하는 값을 계산한다.\n\n$F(x)=x^3-4x^2+ax-a-1$, $Q(x)=mx+n$이라 하자. 조건 (나)에서\n$P(x)=F(x)-Q(x)^2$\n이다.\n\n$x^2-6x+10$은 실수 범위에서 인수분해되지 않는 이차식이고 $Q(x)$는 일차식이므로, 조건 (가)에 의해 이 이차식은 $P(x)$의 인수이다. $x^2\\equiv6x-10$, $x^3\\equiv26x-60$을 이용해 $P(x)$를 이 이차식으로 나눈 나머지를 계산하면\n$a+2=6m^2+2mn,\\qquad -a-21=n^2-10m^2$\n이다. 따라서\n$4m^2-2mn-n^2=19$\n을 얻는다.\n\n또 조건 (다)의 $P(2)=0$을 사용한다. $F(2)=a-9$이므로\n$(2m+n)^2=a-9$\n이다. 이 식과 $4m^2-2mn-n^2=19$를 함께 정리하면\n$2m^2+11=19$,\n즉 $m^2=4$\n이다.\n\n$m=2$이면 $n^2+4n+3=0$에서 $n=-1,-3$인데 $n>0$을 만족하지 않는다. $m=-2$이면\n$n^2-4n+3=0$에서 $n=1,3$이고, $m+n>0$을 만족하는 것은 $n=3$이다. 따라서\n$m=-2,\\quad n=3$\n이다.\n\n$a+2=6m^2+2mn$에 대입하면 $a=10$이다. 이제\n$P(0)=F(0)-Q(0)^2=-11-9=-20$,\n$Q(1)=m+n=1$\n이므로\n$\\dfrac{P(0)Q(1)}a=\\dfrac{-20\\cdot1}{10}=-2$\n이다. 따라서 정답은 ①이다.";
 delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
-delete question(17).studentVisible;
 delete question(17).internalStatus;
-
-question(17).content = "계수가 각각 실수인 삼차다항식 $P(x)$, 일차다항식 $Q(x)$가 아래의 조건을 만족할 때, $\\dfrac{P(0) \\times Q(1)}{a}$의 값은?\n\n(가) $P(x) \\times Q(x)$는 $(x^2-6x+10)(x-2)$로 나누어 떨어진다.\n\n(나) 모든 $x$에 대하여 $x^3-4x^2+ax-a-1=P(x)+\\{Q(x)\\}^2$\n\n(다) $Q(0)>0,\\ Q(1)>0,\\ P(0)<0,\\ P(2)=0$";
-delete question(17).studentVisible;
-delete question(17).internalStatus;
-question(17).solution = "[키포인트] 나머지정리와 계수비교로 $Q(x)$의 계수를 정한 뒤, 구하는 값을 계산한다.\n\n$F(x)=x^3-4x^2+ax-a-1$, $Q(x)=mx+n$이라 하자. 조건 (나)에서\n$P(x)=F(x)-Q(x)^2$\n이다.\n\n$x^2-6x+10$은 실수 범위에서 인수분해되지 않는 이차식이고 $Q(x)$는 일차식이므로, 조건 (가)에 의해 이 이차식은 $P(x)$의 인수이다. $x^2\\equiv6x-10$, $x^3\\equiv26x-60$을 이용해 $P(x)$를 이 이차식으로 나눈 나머지를 계산하면\n$a+2=6m^2+2mn,\\qquad -a-21=n^2-10m^2$\n이다. 따라서\n$4m^2-2mn-n^2=19$\n을 얻는다.\n\n또 조건 (다)의 $P(2)=0$을 사용한다. $F(2)=a-9$이므로\n$(2m+n)^2=a-9$\n이다. 이 식과 $4m^2-2mn-n^2=19$를 함께 정리하면\n$2m^2+11=19$,\n즉 $m^2=4$\n이다.\n\n$m=2$이면 $n^2+4n+3=0$에서 $n=-1,-3$인데 $n>0$을 만족하지 않는다. $m=-2$이면\n$n^2-4n+3=0$에서 $n=1,3$이고, $m+n>0$을 만족하는 것은 $n=3$이다. 따라서\n$m=-2,\\quad n=3$\n이다.\n\n$a+2=6m^2+2mn$에 대입하면 $a=10$이다. 이제\n$P(0)=F(0)-Q(0)^2=-11-9=-20$,\n$Q(1)=m+n=1$\n이므로\n$\\dfrac{P(0)Q(1)}a=\\dfrac{-20\\cdot1}{10}=-2$\n이다. 따라서 정답은 ①이다.";
-
 question(11).answer = "②";
 question(11).solution = "[키포인트] 두 나눗셈의 관계식을 세우고, 다항식 나눗셈으로 나머지를 결정한 뒤 $x=1$을 대입한다.\n\n첫 번째 나눗셈의 나눗셈식에서\n$D(x)=x^4+x^3+4x+2,\\quad R(x)=x^3+2x^2-5x+4$\n라 두면\n$f(x)=D(x)L(x)+R(x)$\n이다. 두 번째 나눗셈의 몫을\n$Q(x)=x^3+3x^2-2x+7$\n이라 하고, 나머지를 $ux+v$라 두면\n$f(x)=(x^2+2x+1)Q(x)+ux+v$\n이다.\n\n먼저 곱을 계산하면\n$(x^2+2x+1)Q(x)\n=x^5+5x^4+5x^3+6x^2+12x+7$\n이다. 따라서 이 식에서 첫 번째 나머지를 빼면\n$(x^2+2x+1)Q(x)-R(x)\n=x^5+5x^4+4x^3+4x^2+17x+3$\n이다.\n\n한편\n$D(x)(x+4)\n=(x^4+x^3+4x+2)(x+4)\n=x^5+5x^4+4x^3+4x^2+18x+8$\n이므로\n$(x^2+2x+1)Q(x)-R(x)\n=D(x)(x+4)-x-5$\n이다. 두 표현이 같은 $f(x)$를 나타내려면\n$D(x)L(x)=D(x)(x+4)+(u-1)x+(v-5)$\n가 되어야 한다. 왼쪽은 $D(x)$의 배수이므로 오른쪽의 나머지인 $(u-1)x+(v-5)$가 0이어야 한다. 따라서\n$u=1,\\quad v=5$\n이다.\n\n이제 두 번째 나눗셈식에 $x=1$을 대입하면\n$f(1)=(1+2+1)(1+3-2+7)+1+5\n=4\\cdot9+6=42$\n이다. 따라서 정답은 ②이다.";
-delete question(17).studentVisible;
-delete question(17).internalStatus;
-question(17).solution = "[키포인트] 두 조건을 동시에 만족시키는 $P,Q$의 가능성을 나누어 조사한다.\n\n$F(x)=x^3-4x^2+ax-a-1$이라 하고 $Q(x)=mx+n$이라 하자. 조건 (나)에서\n$P(x)=F(x)-Q(x)^2$\n이다. $x^2-6x+10$은 실수 범위에서 인수분해되지 않는 이차식이고 $Q$는 일차식이므로, 조건 (가)를 만족하려면 이 이차식은 $P(x)$의 인수이어야 한다.\n\n$x^2\\equiv6x-10$, $x^3\\equiv26x-60$을 사용해 $P(x)$를 이 이차식으로 나눈 나머지를 계산하면\n$a+2=6m^2+2mn,\\qquad -a-21=n^2-10m^2$\n이다. 두 식을 정리하면\n$4m^2-2mn-n^2=19$\n이다. 또 $(x-2)$가 $P(x)Q(x)$의 인수이므로 $P(2)=0$ 또는 $Q(2)=0$이다.\n\n첫째, $P(2)=0$인 경우를 보자. $F(2)=a-9$이므로\n$(2m+n)^2=a-9$\n이다. 이 식과 위의 식을 함께 풀면 $m^2=4$이고, 부호 조건 $n=Q(0)>0$, $m+n=Q(1)>0$을 적용할 때\n$m=-2,\\quad n=3,\\quad a=10$\n만 남는다. 이때\n$P(0)=-20,\\quad Q(1)=1$\n이므로\n$\\dfrac{P(0)Q(1)}a=-2$\n이다.\n\n둘째, $Q(2)=0$인 경우에는 $n=-2m$이다. 이를\n$4m^2-2mn-n^2=19$\n에 대입하면 $4m^2=19$이다. 부호 조건을 적용하면\n$m=-\\dfrac{\\sqrt{19}}2,\\quad n=\\sqrt{19},\\quad a=\\dfrac{15}{2}$\n이고,\n$P(0)=-\\dfrac{55}{2},\\quad Q(1)=\\dfrac{\\sqrt{19}}2$\n이다. 따라서 이 경우에는\n$\\dfrac{P(0)Q(1)}a=-\\dfrac{11\\sqrt{19}}6$\n이다.\n\n두 경우 모두 주어진 조건을 만족하지만 구하는 값이 각각 $-2$와 $-\\dfrac{11\\sqrt{19}}6$으로 다르다. 따라서 이 조건들만으로는 구하는 값이 하나로 정해지지 않는다.";
 question(19).answer = "직각삼각형($a$가 빗변)";
 question(19).solution = "[키포인트] 식을 인수분해하여 피타고라스 정리의 형태를 만든다.\n\n$a^3+a^2b-ab^2-b^3$\n$=a^2(a+b)-b^2(a+b)$\n$=(a+b)(a^2-b^2)$\n이다. 마지막 두 항까지 묶으면 전체 식은\n$(a+b)(a^2-b^2)-c^2(a+b)\n=(a+b)(a^2-b^2-c^2)$\n이다.\n\n삼각형의 변의 길이인 $a,b,c$는 양수이므로 $a+b>0$이다. 따라서 주어진 식이 0이 되려면\n$a^2-b^2-c^2=0$,\n즉\n$a^2=b^2+c^2$\n이어야 한다.\n\n이는 변 $a$가 빗변인 직각삼각형의 피타고라스 정리이다. 따라서 삼각형 $ABC$는 $a$를 빗변으로 하는 직각삼각형이다.";
 question(20).answer = "(1) $\\sqrt{5}$ (2) $8\\sqrt{5}$ (3) $-144\\sqrt{5}$";
 question(20).solution = "[키포인트] 합과 곱으로 $x-y$, 세제곱의 차, 세제곱의 합을 차례로 계산한다.\n\n$(x-y)^2=(x+y)^2-4xy=(-3)^2-4=5$\n이다. $x>y$이므로\n$x-y=\\sqrt5$\n이다.\n\n또\n$x^2+y^2=(x+y)^2-2xy=9-2=7$\n이므로\n$x^2+xy+y^2=7+1=8$\n이다. 따라서\n$x^3-y^3=(x-y)(x^2+xy+y^2)=8\\sqrt5$\n이다.\n\n한편\n$x^3+y^3=(x+y)^3-3xy(x+y)\n=(-3)^3-3\\cdot1\\cdot(-3)=-18$\n이다. 그러므로\n$x^6-y^6=(x^3-y^3)(x^3+y^3)\n=8\\sqrt5\\cdot(-18)=-144\\sqrt5$\n이다.\n\n따라서 (1)은 $\\sqrt5$, (2)는 $8\\sqrt5$, (3)은 $-144\\sqrt5$이다.";
-delete question(17).studentVisible;
-delete question(17).internalStatus;
-question(17).solution = "[키포인트] 나머지정리와 계수비교로 $Q(x)$의 계수를 정한 뒤, 구하는 값을 계산한다.\n\n$F(x)=x^3-4x^2+ax-a-1$, $Q(x)=mx+n$이라 하자. 조건 (나)에서\n$P(x)=F(x)-Q(x)^2$\n이다.\n\n$x^2-6x+10$은 실수 범위에서 인수분해되지 않는 이차식이고 $Q(x)$는 일차식이므로, 조건 (가)에 의해 이 이차식은 $P(x)$의 인수이다. $x^2\\equiv6x-10$, $x^3\\equiv26x-60$을 이용해 $P(x)$를 이 이차식으로 나눈 나머지를 계산하면\n$a+2=6m^2+2mn,\\qquad -a-21=n^2-10m^2$\n이다. 따라서\n$4m^2-2mn-n^2=19$\n을 얻는다.\n\n또 조건 (다)의 $P(2)=0$을 사용한다. $F(2)=a-9$이므로\n$(2m+n)^2=a-9$\n이다. 이 식과 $4m^2-2mn-n^2=19$를 함께 정리하면\n$2m^2+11=19$,\n즉 $m^2=4$\n이다.\n\n$m=2$이면 $n^2+4n+3=0$에서 $n=-1,-3$인데 $n>0$을 만족하지 않는다. $m=-2$이면\n$n^2-4n+3=0$에서 $n=1,3$이고, $m+n>0$을 만족하는 것은 $n=3$이다. 따라서\n$m=-2,\\quad n=3$\n이다.\n\n$a+2=6m^2+2mn$에 대입하면 $a=10$이다. 이제\n$P(0)=F(0)-Q(0)^2=-11-9=-20$,\n$Q(1)=m+n=1$\n이므로\n$\\dfrac{P(0)Q(1)}a=\\dfrac{-20\\cdot1}{10}=-2$\n이다. 따라서 정답은 ①이다.";
