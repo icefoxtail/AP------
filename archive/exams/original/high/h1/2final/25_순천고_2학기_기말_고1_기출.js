@@ -511,6 +511,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\sqrt{14}$",
     "solution": "[키포인트] 원의 중심을 기준으로 좌표를 치환하면 교점 조건이 대칭적으로 정리된다.\n조건 정리: $u=x-1\\gt0$로 놓으면 $y-2=\\dfrac{1}{u}$이고 원의 식은 $u^2+\\dfrac{1}{u^2}=9$이다.\n풀이 방향: 두 교점에 대응하는 양수 $u_1,u_2$의 곱과 제곱합을 이용하여 거리의 제곱을 구한다.\n정석 풀이: $v=u^2$로 놓으면 $v^2-9v+1=0$이므로 두 근 $v_1,v_2$에 대하여 $v_1+v_2=9$, $v_1v_2=1$이다. 따라서 양수 $u_1,u_2$는 $u_1u_2=1$을 만족한다. 두 점은 $(1+u_1,2+\\dfrac{1}{u_1})$, $(1+u_2,2+\\dfrac{1}{u_2})$이고 $\\dfrac{1}{u_1}=u_2$, $\\dfrac{1}{u_2}=u_1$이다. 거리의 제곱은 $2(u_1-u_2)^2=2(u_1^2+u_2^2-2u_1u_2)=2(9-2)=14$이다.\n따라서 두 점 사이의 거리는 $\\sqrt{14}$이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q18-solution.svg",
+
+    "solutionImageAlt": "유리함수와 원의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "중심 (1,2), 반지름 3인 원과 유리함수의 두 교점 사이 거리 √14를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

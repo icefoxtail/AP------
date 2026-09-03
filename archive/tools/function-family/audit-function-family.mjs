@@ -70,6 +70,14 @@ function assetInfo(ref) {
   return { status: 'PRESENT', sha256: sha(fs.readFileSync(filePath)), bytes };
 }
 
+function contentVisualType(content) {
+  const types = [];
+  if (/<img\b/i.test(content)) types.push('IMG');
+  if (/<svg\b/i.test(content)) types.push('SVG');
+  if (/<table\b/i.test(content)) types.push('TABLE');
+  return types.join('|');
+}
+
 function csvEscape(value) {
   const text = value === null || value === undefined ? '' : String(value);
   return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
@@ -115,9 +123,11 @@ function main() {
     const solution = String(question.solution || '');
     const tags = Array.isArray(question.tags) ? question.tags.join('|') : String(question.tags || '');
     const problem = assetInfo(question.image);
+    const embeddedVisualType = contentVisualType(content);
+    const hasProblemVisual = problem.status === 'PRESENT' || embeddedVisualType !== '';
     const solutionAsset = assetInfo(question.solutionImage);
     const allText = `${content} ${choices} ${solution} ${tags}`;
-    const gap = disposition({ question, content: allText, tags, subUnitKey: row.subUnitKey });
+    const gap = disposition({ question: { ...question, image: hasProblemVisual ? (question.image || embeddedVisualType) : null }, content: allText, tags, subUnitKey: row.subUnitKey });
     const canonical = {
       qKey: row.qKey,
       sourceJsPath: row.sourceFile,
@@ -144,6 +154,8 @@ function main() {
       subUnit: row.subUnit || '',
       problemImageRef: question.image || '',
       problemImageStatus: problem.status,
+      problemVisualType: embeddedVisualType,
+      problemVisualStatus: hasProblemVisual ? 'PRESENT' : 'ABSENT',
       solutionImageRef: question.solutionImage || '',
       solutionImageStatus: solutionAsset.status,
       graphRequirement: 'UNADJUDICATED',
@@ -170,6 +182,7 @@ function main() {
     targetCount: rows.length,
     targetExamCount: new Set(rows.map((row) => row.examId)).size,
     problemImageCount: rows.filter((row) => row.problemImageStatus === 'PRESENT').length,
+    problemVisualCount: rows.filter((row) => row.problemVisualStatus === 'PRESENT').length,
     solutionImageCount: rows.filter((row) => row.solutionImageStatus === 'PRESENT').length,
     brokenProblemImageCount: rows.filter((row) => row.problemImageStatus === 'BROKEN').length,
     brokenSolutionImageCount: rows.filter((row) => row.solutionImageStatus === 'BROKEN').length,
@@ -201,7 +214,8 @@ function main() {
     `- 생성 시각: ${summary.generatedAt}`,
     `- 원본 target: ${summary.targetCount}문항` ,
     `- target 시험지: ${summary.targetExamCount}개`,
-    `- 문제 이미지: ${summary.problemImageCount}개`,
+    `- 문제 이미지 참조: ${summary.problemImageCount}개`,
+    `- 문제 시각요소(index 기준): ${summary.problemVisualCount}개`,
     `- 해설 이미지: ${summary.solutionImageCount}개`,
     '',
     '## 그래프 누락 후보',
@@ -224,6 +238,8 @@ function main() {
     standardUnitKey: row.standardUnitKey,
     subUnitKey: row.subUnitKey,
     problemImageStatus: row.problemImageStatus,
+    problemVisualType: row.problemVisualType,
+    problemVisualStatus: row.problemVisualStatus,
     solutionImageStatus: row.solutionImageStatus,
     graphGapDisposition: row.graphGapDisposition,
     graphCandidateScore: row.graphCandidateScore,
@@ -244,6 +260,8 @@ function main() {
     problemImageRef: row.problemImageRef,
     solutionImageRef: row.solutionImageRef,
     problemImageStatus: row.problemImageStatus,
+    problemVisualType: row.problemVisualType,
+    problemVisualStatus: row.problemVisualStatus,
     solutionImageStatus: row.solutionImageStatus,
     baselineProblemImageHash: row.baselineProblemImageHash,
     baselineSolutionImageHash: row.baselineSolutionImageHash,
