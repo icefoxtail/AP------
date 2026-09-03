@@ -16,8 +16,8 @@ window.questionBank = [
     "solution": "사지선다형 5문제이므로 각 문제마다 4가지 선택지가 있다.\\n$\\therefore 4^5 = 1024$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -29,9 +29,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -85,8 +85,8 @@ window.questionBank = [
     "solution": "A를 고정한 후 B를 맞은편에 앉히는 경우의 수는 $1$가지이다.\\n나머지 4명의 가족을 일렬로 배열하는 경우의 수는 $4!$이다.\\n$\\therefore 1 \\times 4! = 24$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -100,9 +100,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -122,8 +122,8 @@ window.questionBank = [
     "solution": "$a, b, c$ 3개의 문자 중에서 중복을 허용하여 4개를 선택하는 조합의 수와 같다.\\n$\\therefore _{3}H_{4} = _{6}C_{4} = _{6}C_{2} = 15$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-02",
+    "standardUnit": "이항정리",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -137,9 +137,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-PS-02-CORE",
+    "subUnit": "이항정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -159,8 +159,8 @@ window.questionBank = [
     "solution": "$(2x+1)^4$ 전개식의 일반항은 $_{4}C_{r} (2x)^{4-r} (1)^r$ 이다.\\n$x^3$ 항은 $4-r=3 \\implies r=1$ 일 때이므로,\\n계수는 $_{4}C_{1} \\times 2^3 = 4 \\times 8 = 32$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-02",
+    "standardUnit": "이항정리",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -174,9 +174,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-PS-02-CORE",
+    "subUnit": "이항정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -196,8 +196,8 @@ window.questionBank = [
     "solution": "전체 경우의 수는 $(6-1)! = 5! = 120$가지이다.\\n합이 11인 두 카드의 쌍은 $\\{5, 6\\}$이다.\\n5와 6이 이웃하는 경우의 수는 이들을 하나로 묶어 배열하므로 $(5-1)! \\times 2! = 48$가지이다.\\n$\\therefore 120 - 48 = 72$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -211,9 +211,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -233,8 +233,8 @@ window.questionBank = [
     "solution": "숫자 1의 개수를 $x$, 2의 개수를 $y$라 하면 $x + 2y = 10$ ($x, y$는 음이 아닌 정수)\\n(i) $y=5, x=0: \\frac{5!}{5!} = 1$\\n(ii) $y=4, x=2: \\frac{6!}{4!2!} = 15$\\n(iii) $y=3, x=4: \\frac{7!}{3!4!} = 35$\\n(iv) $y=2, x=6: \\frac{8!}{2!6!} = 28$\\n(v) $y=1, x=8: \\frac{9!}{1!8!} = 9$\\n(vi) $y=0, x=10: \\frac{10!}{10!} = 1$\\n$\\therefore 1+15+35+28+9+1 = 89$개",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -248,9 +248,9 @@ window.questionBank = [
       "오류판별"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -270,8 +270,8 @@ window.questionBank = [
     "solution": "이항정리 $(a+b)^n = \\sum_{r=0}^{n} {_{n}C_{r} a^{n-r} b^r}$에 의해\\n주어진 식은 $(3+1)^{11} = 4^{11}$이다.\\n$\\therefore 4^{11} = (2^2)^{11} = 2^{22}$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-02",
+    "standardUnit": "이항정리",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -285,9 +285,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-PS-02-CORE",
+    "subUnit": "이항정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -342,8 +342,8 @@ window.questionBank = [
     "solution": "음영 칠해진 가운데 들어갈 소수 $\\{2, 3, 5, 7\\}$를 고르는 경우의 수는 4가지이다.\\n나머지 8칸에 숫자를 정사각형 모양으로 배열할 때, 원순열을 적용하면 $90^\\circ$ 회전 시 4가지 경우가 중복되므로 배열하는 경우의 수는 $\\frac{8!}{4}$이다.\\n$\\therefore 4 \\times \\frac{8!}{4} = 8! = 7! \\times 8$\\n따라서 $n=8$이다.",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -357,9 +357,9 @@ window.questionBank = [
       "원"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -379,8 +379,8 @@ window.questionBank = [
     "solution": "전체 네 자리 수의 개수: $5 \\times 6^3 = 1080$\\n조건 $A$: 2를 포함하지 않는 네 자리 수 $\\implies 4 \\times 5^3 = 500$\\n조건 $B$: 4를 포함하지 않는 네 자리 수 $\\implies 4 \\times 5^3 = 500$\\n$A \\cap B$: 2와 4를 모두 포함하지 않는 네 자리 수 $\\implies 3 \\times 4^3 = 192$\\n2 또는 4를 포함하지 않는 수의 개수: $500 + 500 - 192 = 808$\\n$\\therefore 1080 - 808 = 272$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -394,9 +394,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -416,8 +416,8 @@ window.questionBank = [
     "solution": "$x^3y^2$ 항이 존재하려면 차수의 합인 $n$은 $3+2=5$여야 한다.\\n일반항은 $\\frac{1}{2} \\times {_{5}C_{r} x^{5-r} (2y)^r}$이다.\\n$y^2$ 항을 구하기 위해 $r=2$를 대입하면 계수 $m = \\frac{1}{2} \\times _{5}C_{2} \\times 2^2 = \\frac{1}{2} \\times 10 \\times 4 = 20$\\n$\\therefore m+n = 20 + 5 = 25$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-02",
+    "standardUnit": "이항정리",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -431,9 +431,9 @@ window.questionBank = [
       "이항정리"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-PS-02-CORE",
+    "subUnit": "이항정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -453,8 +453,8 @@ window.questionBank = [
     "solution": "$a' = a-2, b' = b+2, c' = c-1$이라 하면 $a', b', c' \\ge 0$이다.\\n주어진 방정식에 대입하면 $(a'+2) + (b'-2) + (c'+1) + 4d = 9 \\implies a'+b'+c'+4d = 8$\\n(i) $d=0: a'+b'+c'=8 \\implies _{3}H_{8} = _{10}C_{2} = 45$\\n(ii) $d=1: a'+b'+c'=4 \\implies _{3}H_{4} = _{6}C_{2} = 15$\\n(iii) $d=2: a'+b'+c'=0 \\implies _{3}H_{0} = 1$\\n$\\therefore 45 + 15 + 1 = 61$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -468,9 +468,9 @@ window.questionBank = [
       "대입"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -490,8 +490,8 @@ window.questionBank = [
     "solution": "이동 횟수를 $k$($1 \\le k \\le 5$)라 하면, 도달하는 점 $(x, y)$는 $x+y=k$ ($x, y$는 자연수)를 만족한다.\\n(i) $k=2: (1,1) \\implies 1$개\\n(ii) $k=3: (1,2), (2,1) \\implies 2$개\\n(iii) $k=4: (1,3), (2,2), (3,1) \\implies 3$개\\n(iv) $k=5: (1,4), (2,3), (3,2), (4,1) \\implies 4$개\\n$\\therefore 1+2+3+4 = 10$개",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -505,9 +505,9 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -527,8 +527,8 @@ window.questionBank = [
     "solution": "이웃한 두 수의 곱이 짝수가 되려면 홀수끼리 이웃하지 않아야 한다.\\n8장의 카드 중 짝수 $\\{32, 34, 36, 38\\}$ 4개와 홀수 $\\{31, 33, 35, 37\\}$ 4개를 교대로 배열해야 한다.\\n짝수 4개를 먼저 원형으로 배열: $(4-1)! = 6$가지\\n그 사이의 4개 빈자리에 홀수 4개를 배열: $4! = 24$가지\\n$\\therefore 6 \\times 24 = 144$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -542,9 +542,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -564,8 +564,8 @@ window.questionBank = [
     "solution": "1자리 수: 5개 / 2자리 수: $5 \\times 6 = 30$개 / 3자리 수: $5 \\times 6^2 = 180$개 (누적 215개)\\n4자리 수:\\n- 1, 2, 3으로 시작: $3 \\times 6^3 = 648$개\\n- 40, 41로 시작: $2 \\times 6^2 = 72$개\\n- 420으로 시작: $6^1 = 6$개\\n- 4210, 4211, 4212: 3개\\n그다음 수가 4213이다.\\n$\\therefore 215 + 648 + 72 + 6 + 3 + 1 = 945$번째",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -578,9 +578,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -637,8 +637,8 @@ window.questionBank = [
     "solution": "각 인형 A, B, C에 대해 수행해야 할 작업(왼발, 오른발, 모자)은 순서가 정해져 있다.\\n전체 9개의 작업을 나열하는 경우의 수에서 각 인형별 3개 작업의 순서를 고정한다.\\n이는 같은 것이 있는 순열의 수와 같다.\\n$\\therefore \\frac{9!}{3!3!3!} = \\frac{362880}{6 \\times 6 \\times 6} = 1680$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -651,9 +651,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -673,8 +673,8 @@ window.questionBank = [
     "solution": "[키포인트] 학생 $C,D$가 받는 전체 물건 수를 먼저 정한 뒤, 볼펜과 연필의 종류별 분배를 나누어 센다.\n조건 정리: 학생 $D$가 받는 물건 수를 $d$, 학생 $C$가 받는 물건 수를 $c$라 하자. (나)에서 $c=3d$이고 (다)에서 $d\\ge1$이다.\n풀이 방향: 전체 물건이 7개이므로 $c+d=4d\\le7$에서 $d=1$, $c=3$을 얻은 뒤, $D$가 받는 물건의 종류를 두 경우로 나눈다.\n정석 풀이: $d=1$, $c=3$이면 학생 $A,B$가 받는 물건 수의 합은 $7-1-3=3$으로 홀수이므로 (가)는 자동으로 만족한다.\n\n1) $D$가 볼펜 1개를 받는 경우\n$C$가 받는 볼펜 수를 $p$라 하면 $p=0,1,2,3$이고, $C$는 볼펜 $p$개와 연필 $3-p$개를 받는다. $A,B$에게는 볼펜 $3-p$개와 연필 $p$개가 남는다. 두 종류를 각각 $A,B$에게 나누는 방법은 $(3-p+1)(p+1)$가지이므로, 합은 $4+6+6+4=20$가지이다.\n\n2) $D$가 연필 1개를 받는 경우\n$C$가 받는 볼펜 수를 $p$라 하면 남은 연필 수가 음수가 되지 않도록 $p=1,2,3$이다. 이때 $A,B$에게는 볼펜 $4-p$개와 연필 $p-1$개가 남으므로, 분배 방법은 $(4-p+1)(p-1+1)=(5-p)p$가지이다. 따라서 합은 $4+6+6=16$가지이다.\n\n따라서 전체 경우의 수는 $20+16=36$이다.\n따라서 정답은 ②이다.",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -688,9 +688,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -710,8 +710,8 @@ window.questionBank = [
     "solution": "자연수이므로 최솟값은 1이다. 합이 8이 되는 자연수 조합 중 곱이 4의 배수인 경우:\\n(i) $\\{4, 1, 1, 1, 1\\}$: 나열 수 $\\frac{5!}{4!} = 5$가지\\n(ii) $\\{2, 2, 2, 1, 1\\}$: 나열 수 $\\frac{5!}{3!2!} = 10$가지\\n$\\therefore 5 + 10 = 15$가지",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -725,9 +725,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -741,8 +741,8 @@ window.questionBank = [
     "solution": "주어진 식은 첫째항이 $(1+2x)$, 공비가 $(1+2x)$인 등비수열의 합이다.\\n$S = \\frac{(1+2x)\\{(1+2x)^{10}-1\\}}{(1+2x)-1} = \\frac{(1+2x)^{11}-(1+2x)}{2x}$\\n$x^3$의 계수는 분자의 $x^4$ 계수를 2로 나눈 값이다.\\n분자의 $x^4$ 계수는 $_{11}C_{4} \\times 2^4 = 330 \\times 16 = 5280$\\n$\\therefore \\frac{5280}{2} = 2640$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-02",
+    "standardUnit": "이항정리",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -756,9 +756,9 @@ window.questionBank = [
       "중복조합"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 2,
+    "subUnitKey": "H22-PS-02-CORE",
+    "subUnit": "이항정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -772,8 +772,8 @@ window.questionBank = [
     "solution": "점수가 0점인 경우는 $\\{4, 5\\}$ (2가지), 1~3점은 각각 $\\{1\\}, \\{2\\}, \\{3\\}$ (각 1가지)이다.\\n네 점수의 합이 4가 되는 경우:\\n- (3, 1, 0, 0): $\\frac{4!}{2!} \\times (1 \\times 1 \\times 2^2) = 12 \\times 4 = 48$\\n- (2, 2, 0, 0): $\\frac{4!}{2!2!} \\times (1 \\times 1 \\times 2^2) = 6 \\times 4 = 24$\\n- (2, 1, 1, 0): $\\frac{4!}{2!} \\times (1 \\times 1 \\times 1 \\times 2^1) = 12 \\times 2 = 24$\\n- (1, 1, 1, 1): $\\frac{4!}{4!} \\times 1^4 = 1$\\n$\\therefore 48 + 24 + 24 + 1 = 97$개",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_01",
-    "standardUnit": "여러 가지 순열",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -787,9 +787,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "standardUnitOrder": "1",
-    "subUnitKey": "H_ST_01_01-CORE",
-    "subUnit": "여러 가지 순열 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -803,8 +803,8 @@ window.questionBank = [
     "solution": "$f(1) \\times f(6) \\in \\{1, 2, 4\\}$이고 조건 (나)를 만족해야 한다.\\n- $f(1)=1, f(6)=1 \\implies 2 \\le \\dots \\le 2: _{1}H_{4} = 1$\\n- $f(1)=1, f(6)=2 \\implies 2 \\le \\dots \\le 4: _{3}H_{4} = 15$\\n- $f(1)=1, f(6)=4 \\implies 2 \\le \\dots \\le 8$: 공역이 6이므로 $2..6$에서 중복조합 $\\implies _{5}H_{4} = 70$\\n- $f(1)=2, f(6)=2 \\implies 4 \\le \\dots \\le 4: _{1}H_{4} = 1$\\n나머지 조합은 조건 (나)에서 모순이 발생한다.\\n$\\therefore 1 + 15 + 70 + 1 = 87$개",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H_ST_01_02",
-    "standardUnit": "중복조합과 이항정리",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -818,9 +818,9 @@ window.questionBank = [
       "개수세기"
     ],
     "wide": false,
-    "standardUnitOrder": "2",
-    "subUnitKey": "H_ST_01_02-CORE",
-    "subUnit": "중복조합과 이항정리 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
