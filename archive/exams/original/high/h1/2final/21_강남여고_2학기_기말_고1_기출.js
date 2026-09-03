@@ -671,6 +671,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 함수와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이므로 대응하는 두 점을 이용한다.\n$B(-1,7)$가 $y=f(x)$ 위에 있으므로 $B$를 $y=x$에 대하여 대칭이동한 점 $(7,-1)$은 $y=f^{-1}(x)$ 위에 있다. $A$는 두 그래프의 교점이므로 $y=x$ 위에 있고, $AB=AC$이며 $C$의 $x$좌표가 $A$보다 작다는 그림의 조건에 따라 $C=(7,-1)$이다.\n$A=(t,t)$라 하자. $BC$의 중점은 $(3,3)$이고 $BC$는 직선 $y=x$에 수직이다. $BC=8\\sqrt2$이고, $A$에서 $BC$까지의 높이는 $\\sqrt2(t-3)$이다.\n삼각형의 넓이가 $64$이므로 $\\dfrac12\\times8\\sqrt2\\times\\sqrt2(t-3)=64$에서 $8(t-3)=64$, 따라서 $t=11$이다.\n그러므로 $A=(11,11)$이고 $f(11)=11$이다. 또한 $B(-1,7)$이 그래프 위에 있으므로 $2a+b=7$, $f(11)=4a+b=11$이다.\n두 식을 빼면 $2a=4$이므로 $a=2$, $b=3$이다. 따라서 $a+b=5$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q23-solution.svg",
+
+    "solutionImageAlt": "함수와 역함수의 그래프, y=x, 대응점 B와 C, 교점 A를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "함수와 역함수의 그래프는 y=x에 대하여 대칭이고, A·B·C의 위치와 삼각형의 넓이를 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q23.png",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
@@ -830,6 +838,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$0\\lt k\\lt\\dfrac12$",
     "solution": "[키포인트] 절댓값 때문에 $x\\lt0$과 $x\\ge0$으로 나누어 교점의 개수를 센다.\n$x\\lt0$이면 $x+|x|=0$이므로 그래프는 $y=0$이다. 직선 $y=x+k$와의 교점은 $x=-k$이고, 이 점이 $x\\lt0$에 있으려면 $k\\gt0$이어야 한다.\n$x\\ge0$이면 $y=\\sqrt{2x}$이므로 $\\sqrt{2x}=x+k$를 푼다. $t=\\sqrt{2x}\\ge0$이라 두면 $x=\\dfrac{t^2}{2}$이므로\n$t=\\dfrac{t^2}{2}+k$, 즉 $(t-1)^2=1-2k$이다.\n양의 서로 다른 두 해를 가지려면 $1-2k\\gt0$이고 작은 해 $1-\\sqrt{1-2k}$도 양수여야 한다. 이는 각각 $k\\lt\\dfrac12$, $k\\gt0$과 같다.\n따라서 $0\\lt k\\lt\\dfrac12$일 때 $x\\lt0$에서 한 점, $x\\gt0$에서 두 점을 만나 모두 서로 다른 세 교점이 생긴다.\n따라서 구하는 범위는 $0\\lt k\\lt\\dfrac12$이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q29-solution.svg",
+
+    "solutionImageAlt": "절댓값 무리함수의 두 가지 가지와 직선, 세 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "x<0에서의 수평 가지와 x≥0에서의 무리함수 가지를 직선과 함께 그려 세 교점 조건을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
