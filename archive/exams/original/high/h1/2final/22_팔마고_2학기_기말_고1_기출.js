@@ -174,6 +174,14 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     ],
     "answer": "①",
     "solution": "[키포인트] 일차분수함수의 두 점근선의 교점이 그래프의 대칭 중심이다.\n조건 정리: $f(x)=\\dfrac{ax+b}{x+c}=a+\\dfrac{b-ac}{x+c}$이므로 점근선은 $x=-c$, $y=a$이다.\n풀이 방향: 대칭 중심 $(-c,a)=(-1,1)$에서 $a,c$를 구한 뒤 $f(2)=\\dfrac13$을 이용해 $b$를 구한다.\n정석 풀이: $(-c,a)=(-1,1)$이므로 $c=1$, $a=1$이다.\n따라서 $f(2)=\\dfrac{2+b}{3}=\\dfrac13$이고, $2+b=1$이므로 $b=-1$이다.\n그러므로 $a^2+b^2+c^2=1^2+(-1)^2+1^2=3$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고1_기출/q06-solution.svg",
+
+    "solutionImageAlt": "유리함수의 중심과 주어진 점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f=(x−1)/(x+1), 중심 (−1,1), f(2)=1/3을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
