@@ -98,13 +98,17 @@ function withdrawalDate(student = {}, historyDate = '') {
   );
   if (direct) return direct;
   if (historyDate) return normalizeDate(historyDate);
-  // 퇴원 전환 이력이 없을 때만 updated_at 근사치 사용
-  return normalizeDate(student.updated_at || student.updatedAt || '');
+  // 실제 퇴원일이 없으면 updated_at을 퇴원일로 추정하지 않는다.
+  return '';
 }
 
 function withdrawalCutoff(date = new Date()) {
   const parts = kstDateParts(date);
-  return `${parts.year}-06-01`;
+  const target = new Date(Date.UTC(parts.year, parts.month - 1, 1));
+  target.setUTCMonth(target.getUTCMonth() - 2);
+  const lastDay = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
+  target.setUTCDate(Math.min(parts.day, lastDay));
+  return `${target.getUTCFullYear()}-${String(target.getUTCMonth() + 1).padStart(2, '0')}-${String(target.getUTCDate()).padStart(2, '0')}`;
 }
 
 function shouldIncludeSnapshotStudent(student = {}, date = new Date(), historyDate = '') {
@@ -112,7 +116,7 @@ function shouldIncludeSnapshotStudent(student = {}, date = new Date(), historyDa
   if (isActiveStatus(status) || isLeaveStatus(status)) return true;
   if (!isWithdrawnStatus(status)) return false;
   const dateText = withdrawalDate(student, historyDate);
-  return Boolean(dateText && dateText >= withdrawalCutoff(date));
+  return Boolean(dateText && dateText > withdrawalCutoff(date));
 }
 
 export function normalizeNameKey(row) {

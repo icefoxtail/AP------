@@ -30,7 +30,9 @@ const rows = [{
     { student_id: 's_recent', name: '박최근', status: 'inactive', student_status: 'inactive', withdrawn_at: '2026-06-02T08:00:00+09:00', match_status: 'confirmed' },
     { student_id: 's_leave_then_withdrawn', name: 'LeaveThenWithdrawn', status: 'inactive', student_status: 'inactive', student_type: 'leave', memo: '#leave', withdrawn_at: '2026-06-03T08:00:00+09:00', match_status: 'confirmed' },
     { student_id: 's_boundary', name: '오경계', status: 'archived', student_status: 'archived', withdrawn_at: '2026-06-01', match_status: 'confirmed' },
-    { student_id: 's_old', name: '이오래', status: 'withdrawn', student_status: 'withdrawn', withdrawn_at: '2026-05-31', match_status: 'confirmed' },
+    { student_id: 's_before_june_recent', name: '6월 전 최근퇴원', status: 'inactive', student_status: 'inactive', withdrawn_at: '2026-05-15', match_status: 'confirmed' },
+    { student_id: 's_exact_boundary', name: '정확히두달', status: 'inactive', student_status: 'inactive', withdrawn_at: '2026-04-30', match_status: 'confirmed' },
+    { student_id: 's_old', name: '이오래', status: 'withdrawn', student_status: 'withdrawn', withdrawn_at: '2026-04-29', match_status: 'confirmed' },
     { student_id: 's_missing', name: '최미상', status: 'inactive', student_status: 'inactive', match_status: 'confirmed' },
     { student_id: 's_bug', name: '버그재현', withdrawn_at: '2026-05-03T08:00:00+09:00', match_status: 'confirmed' },
     { student_id: 's_new', name: '신규', status: 'active', enrollment_date: '2026-06-25', match_status: 'confirmed' }
@@ -104,6 +106,7 @@ function assertLateStatusCss(status, label) {
 }
 
 const state = { timetableCells: [], db: { timetable_cells: [], students: [] } };
+let testRole = 'admin';
 const context = {
   console,
   Date,
@@ -115,7 +118,7 @@ const context = {
   Map,
   Set,
   Promise,
-  localStorage: { getItem() { return ''; } },
+  localStorage: { getItem(key) { return key === 'WANGJI_EIE_ROLE' ? testRole : ''; } },
   document: {
     addEventListener() {},
     getElementById() { return null; },
@@ -166,10 +169,18 @@ vm.runInContext(source, context, { filename: 'eie/js/views/eie-timetable.js' });
   assert(html.includes('박최근'), 'recent withdrawn student should be visible');
   assert(html.includes('LeaveThenWithdrawn'), 'student changed from leave to withdrawn should remain visible as a recent withdrawn student');
   assert(html.includes('오경계'), 'withdrawal boundary date should be included');
+  assert(html.includes('6월 전 최근퇴원'), 'withdrawn student within the rolling two-month window should be visible even before June 1');
+  assert(!html.includes('정확히두달'), 'withdrawn student exactly two months ago should be hidden');
   assert(!html.includes('이오래'), 'withdrawn student older than two months should be hidden');
   assert(!html.includes('최미상'), 'withdrawn student without a withdrawal date should be hidden');
   assert(html.includes('버그재현'), 'confirmed-only legacy payload should remain visible as a non-withdrawn student');
   assert(!html.includes('퇴원 / 2026-05-03'), 'confirmed-only legacy payload should not be treated as withdrawn');
+
+  testRole = 'teacher';
+  const teacherHtml = await context.EieTimetableView.render();
+  assert(!teacherHtml.includes('박최근'), 'teacher timetable should hide a recent withdrawn student');
+  assert(!teacherHtml.includes('LeaveThenWithdrawn'), 'teacher timetable should hide a withdrawn student with a stale leave memo');
+  testRole = 'admin';
   const withdrawnChip = findChip(chips, '박최근');
   assert(withdrawnChip, 'recent withdrawn EIE chip should render as a student status chip');
   assert(withdrawnChip.classes.includes('is-withdrawn'), 'recent withdrawn EIE chip should use withdrawn class');

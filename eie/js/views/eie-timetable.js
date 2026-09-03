@@ -640,15 +640,22 @@
     }
 
     function timetableTodayDate() {
-        return normalizeTimetableDate(window.TIMETABLE_WITHDRAWN_TODAY || new Date().toISOString());
+        return normalizeTimetableDate(
+            window.TIMETABLE_WITHDRAWN_TODAY ||
+            new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' })
+        );
     }
 
     function timetableTwoMonthsAgo(today) {
         const base = normalizeTimetableDate(today || timetableTodayDate());
         if (!base) return '';
         const [year, month, day] = base.split('-').map(Number);
-        const date = new Date(year, month - 1, day);
+        // 월말에서 setMonth()를 바로 호출하면 8/31 - 2개월이 7/1로 넘어간다.
+        // 오늘 날짜의 일을 보존하되, 대상 월의 마지막 날을 넘지 않도록 보정한다.
+        const date = new Date(year, month - 1, 1);
         date.setMonth(date.getMonth() - 2);
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+        date.setDate(Math.min(day, lastDay));
         return [
             String(date.getFullYear()).padStart(4, '0'),
             String(date.getMonth() + 1).padStart(2, '0'),
@@ -657,9 +664,8 @@
     }
 
     function timetableWithdrawalCutoff(today) {
-        const base = normalizeTimetableDate(today || timetableTodayDate());
-        const year = base ? base.slice(0, 4) : String(new Date().getFullYear());
-        return `${year}-06-01`;
+        // 퇴원생은 퇴원일로부터 2개월 동안만 시간표에 표시한다.
+        return timetableTwoMonthsAgo(today);
     }
 
     function isWithdrawnStudent(row) {
@@ -696,7 +702,8 @@
         if (!isWithdrawnStudent(row)) return false;
         const withdrawalDate = getStudentWithdrawalDate(row);
         const cutoff = timetableWithdrawalCutoff(today);
-        return Boolean(withdrawalDate && cutoff && withdrawalDate >= cutoff);
+        // 두 달 전 날짜와 같은 날에는 이미 2개월이 지난 상태이므로 숨긴다.
+        return Boolean(withdrawalDate && cutoff && withdrawalDate > cutoff);
     }
 
     function isRecentNewStudent(row, today) {
@@ -711,7 +718,7 @@
 
     function shouldShowTimetableStudent(row) {
         if (!isWithdrawnStudent(row)) return true;
-        return isRecentWithdrawnStudent(row);
+        return isEieOwnerSession() && isRecentWithdrawnStudent(row);
     }
 
     function studentChipStatusClass(row) {
