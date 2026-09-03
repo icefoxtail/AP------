@@ -231,6 +231,10 @@ Batch 9의 9개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 10개
 - [Batch 9 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch9_render_matrix.md>)
 - [Batch 9 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v14/function_family_summary.md>)
 
+## SOURCE_REVIEW 보류
+
+- `25_제일고 2학기 기말 q18`: 원문 해설의 독립 계산은 도형 넓이 `11/4`를 가리키지만 answer 필드는 `①`로 기록되어 있다. 문제 본문·보기·정답·해설 및 그래프를 임의로 수정하지 않았고, 해설 그래프도 추가하지 않았다. 원문 정답/보기 대조 후 별도 확정이 필요하다.
+
 ## 독립 재검수 대기 항목
 
 이번 결과는 Batch 9 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
