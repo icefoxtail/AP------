@@ -487,9 +487,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q15-solution.svg",
 
-    "solutionImageAlt": "평행이동된 무리함수의 점을 나타낸 해설 그래프",
+    "solutionImageAlt": "합성함수로 얻은 선형함수와 역함숫값을 나타낸 해설 그래프",
 
-    "solutionImageCaption": "y=√(−2x−2)−1이 점 (k,3), k=−9를 지남을 확인한다.",
+    "solutionImageCaption": "f(t)=2t+7 및 f⁻¹(6)=−1/2를 확인한다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
@@ -528,9 +528,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q16-solution.svg",
 
-    "solutionImageAlt": "평행이동된 유리함수의 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "절댓값 합성함수의 네 해를 나타낸 해설 그래프",
 
-    "solutionImageCaption": "y=−2−3/(x−3)의 점근선과 −3/x 평행이동 구조를 확인한다.",
+    "solutionImageCaption": "F(x)=||x−2|−2|=1의 네 해 −1, 1, 3, 5를 확인한다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
@@ -569,9 +569,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/24_제일고_2학기_중간_고1_기출/q17-solution.svg",
 
-    "solutionImageAlt": "유리함수와 양의 기울기 대칭축을 나타낸 해설 그래프",
+    "solutionImageAlt": "조각함수와 역함수의 겹침·대칭을 나타낸 해설 그래프",
 
-    "solutionImageCaption": "중심 (1,3), 대칭축 y=x+2와 두 교점, AB=8을 확인한다.",
+    "solutionImageCaption": "x<0에서 y=x가 겹치고, x≥0에서 x²와 √x가 y=x에 대해 대칭임을 확인한다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
