@@ -4,7 +4,7 @@
 
 **FINAL FAIL / HIGH1 FIRST SEMESTER NOT SEALED**
 
-이번 라운드에서 production의 메타데이터·LaTeX·해설 포맷·question schema·index parity를 정리했지만, 원본 증거 없이 채울 수 없는 placeholder 2건과 전체 `sol/ans` 브라우저 매트릭스 미완료가 남아 최종 봉인 조건을 만족하지 못했다. 따라서 `FINAL PASS / HIGH1 FIRST SEMESTER SEALED`를 선언하지 않는다.
+이번 라운드에서 사용자가 명시적으로 허락한 두 source-dependent placeholder를 승인된 reconstruction으로 보완하고 production의 메타데이터·LaTeX·해설 포맷·question schema·index parity를 다시 확인했다. 다만 전체 `sol/ans` 브라우저 매트릭스가 아직 완주되지 않아 최종 봉인 조건을 만족하지 못했다. 따라서 `FINAL PASS / HIGH1 FIRST SEMESTER SEALED`를 선언하지 않는다.
 
 ## 1. 기준과 범위
 
@@ -33,6 +33,8 @@
 - `archive/question-index-audit.md`
 - `archive/data/question_metadata.json`
 - `archive/tools/finalize-h1-first-semester-quality.mjs`
+- `archive/assets/images/24_한영고_1학기_중간_고1_기출/q11.svg`
+- `docs/evidence/high1-placeholder-repair-20260903.md`
 - `CODEX_RESULT.md`
 
 2026 기말의 ignored candidate 8개는 audit에서 production과의 stale hash가 검출되어 현재 production과 동기화했다. ignored 산출물이므로 커밋 대상에는 포함하지 않는다.
@@ -46,6 +48,8 @@
 - `23_충무고` 중간 q19: 주관식 schema를 `questionType: 서술형`, `choices: []`, `answer: 4`로 정규화
 - `24_제일고` 중간 q20: 벡터·행렬식 없는 좌표평면/삼각형 넓이 풀이로 교체하고 정답 `$2\\sqrt{21}$` 유지
 - `22_팔마고` 기말 q5: 법선벡터 없는 기울기·계수비 풀이로 교체
+- `24_한영고` 중간 q11: `[그래프필요]` 제거, 해설 facts 기반 q11 그래프 SVG 연결
+- `25_효천고` 중간 q12: `[판독불가]` choice 1을 사용자 승인에 따라 `$0$`으로 복원
 - `23_매산고` 중간 전체 해설: 20개 legacy `[Logical Anchor]` 문구와 기계적 메모체를 학생용 표현으로 정리
 - `23_부영여고` 중간 전체 해설: 22개 legacy `[Logical Anchor]` 문구와 기계적 메모체를 학생용 표현으로 정리
 - `23_한영고` 중간 q13, `25_제일고` 기말 q8, `25_효천고` 기말 q19, `26_광양제철고` 기말 q4: 불필요한 수열/등차수열 전면 용어를 자연스러운 고1 표현으로 교체
@@ -69,6 +73,8 @@
 - 깨진 LaTeX source repair: 현재 source scan hit 0건
 - `[Logical Anchor]` 제거: 38건 (매산고 19건, 부영여고 19건)
 - 지정 수열 용어 제거/교체: 4문항
+- 사용자 승인 placeholder repair: 2건
+- 신규 reconstructed graph asset: 1건
 
 ## 5. q19 source evidence
 
@@ -101,12 +107,9 @@
 - 고1 금지 풀이 표현(벡터/행렬식/법선벡터): 0: **PASS**
 - 수열 용어 지정 문항: 0: **PASS**
 - `git diff --check`: **PASS**
-- placeholder scan: **FAIL**, 아래 2건
-
-남은 placeholder:
-
-1. `archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js` q11 content의 `[그래프필요]` — 발문이 실제 그림의 절편 정보를 참조하고 별도 원본 image가 없어 추정 복원하지 않았다.
-2. `archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js` q12 choice 1의 `[판독불가]` — 원본 evidence 없이 선택지 값을 발명하지 않았다.
+- placeholder scan: **PASS**, H1 first-semester production 0건
+- q11 graph reconstruction provenance: **PASS_WITH_USER_AUTHORIZATION**
+- q12 choice reconstruction provenance: **PASS_WITH_USER_AUTHORIZATION**
 
 ## 7. Index parity 결과
 
@@ -139,9 +142,12 @@
   - `23_부영여고` 전체 22/22: PASS
   - `24_한영고` 전체 21/21: PASS
   - `24_제일고` q20 hard fix: PASS
-  - `22_팔마고` q5 hard fix: PASS
-  - 위 화면에서 `neq`, `dfrac`, `sqrt`, solution image, overflow, literal command 노출 없음 확인
-- answer mode: 전체 56개 페이지 매트릭스는 브라우저 자동화 제한 시간으로 완료하지 못함: **INCOMPLETE**
+- `22_팔마고` q5 hard fix: PASS
+- 승인 placeholder repair:
+  - `24_한영고` q11 exam/sol: graph asset decode and MathJax PASS
+  - `25_효천고` q12 exam/sol/ans: restored choice and MathJax PASS
+- 위 화면에서 `neq`, `dfrac`, `sqrt`, solution image, overflow, literal command 노출 없음 확인
+- answer mode: q11/q12 개별 페이지 PASS; 전체 56개 페이지 matrix는 브라우저 자동화 제한 시간으로 완료하지 못함: **INCOMPLETE**
 
 따라서 actual render gate는 exam/주요 solution PASS이지만 전체 `sol/ans` matrix 기준으로는 **FAIL**이다.
 
@@ -153,12 +159,11 @@
 - `185a440f` — `chore(archive): persist H1 quality tooling and temp safeguards`
 - `11653efc` — `docs(archive): refresh geometry evidence after main merge`
 
-현재 `main`과 `origin/main`은 `11653efc`에서 일치하고 working tree도 clean이다. 이번 결과는 위 상태를 재감사해 기록한 것이며, placeholder 및 전체 answer-mode 미완료 상태에서 별도의 `fix(archive): seal high1 first-semester quality gates` 커밋을 새로 만들거나 `FINAL PASS`로 push하지 않았다.
+현재 `main`과 `origin/main`은 `14335763`에서 일치한다. 공유 workspace에는 별도 geometry 작업의 미커밋 변경이 있으므로 이를 건드리거나 함께 커밋하지 않았다. 이번 결과 보고서와 q11/q12 수정은 별도 검토 후 커밋해야 하며, 전체 answer-mode 미완료 상태에서 `FINAL PASS`를 선언하지 않는다.
 
 ## 10. 미해결 항목 및 다음 조치
 
 - 충무고 q19 별도 원본 PDF/이미지 확보 후 historical transcription과 대조
-- 24 한영고 q11 원본 그래프 image 확보 후 content/image evidence 확정
-- 25 효천고 중간 q12 choice 1 원본 scan 확보 후 선택지 복원 여부 판정
-- 위 source-dependent 항목 해결 후 56개 exam/sol/ans 전체 브라우저 matrix를 다시 실행
+- q11/q12는 사용자 승인 reconstruction으로 현재 placeholder gate를 해소했으나, 향후 원본 scan 확보 시 source fidelity를 재대조
+- 56개 exam/sol/ans 전체 브라우저 matrix를 다시 실행
 - 모든 Gate가 PASS일 때에만 단일 seal commit과 최종 `FINAL PASS / HIGH1 FIRST SEMESTER SEALED` 판정을 수행
