@@ -647,6 +647,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $g$의 그래프는 $f$의 그래프를 오른쪽으로 $2$만큼 평행이동한 것이므로 같은 높이에서 두 그래프 사이의 가로 거리는 항상 $2$이다.\n조건 정리: $A=(6/t,t)$, $B=(2+6/t,t)$이다. B와 같은 $x$좌표를 갖는 C의 $y$좌표를 구한다.\n풀이 방향: C의 높이를 구한 뒤, 두 곡선 사이의 일정한 가로폭 $2$와 두 수평선 사이 높이를 이용해 넓이를 계산한다.\n정석 풀이: $x_B=2+\\dfrac6t$이므로 $y_C=f(x_B)=\\dfrac{6}{2+6/t}=\\dfrac{3t}{t+3}$이다. $g$는 $f$를 오른쪽으로 $2$만큼 옮긴 그래프이므로 $y_C$에서 점 D는 C보다 오른쪽으로 정확히 $2$만큼 떨어져 있다. 따라서 AB와 CD 사이에서 두 곡선의 수평 간격은 항상 $2$이고, 둘러싸인 부분의 넓이는 $2\\left(t-\\dfrac{3t}{t+3}\\right)=8$이다. 즉 $\\dfrac{2t^2}{t+3}=8$이므로 $t^2-4t-12=0$, $(t-6)(t+2)=0$이다. $t\\gt0$이므로 $t=6$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q20-solution.svg",
+
+    "solutionImageAlt": "평행이동한 두 유리함수와 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "t=6에서 A,B,C,D와 둘러싸인 넓이 8을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -700,6 +708,14 @@ window.questionBank = [
     "choices": [],
     "answer": "최솟값 $1$, 최댓값 $7$",
     "solution": "[키포인트] 유리함수 그래프의 점근선과 원점 통과 조건으로 $a,b,c$를 먼저 결정한다.\n조건 정리: 그림의 수직 점근선은 $x=2$, 수평 점근선은 $y=3$이고 그래프는 원점을 지난다.\n풀이 방향: 유리함수의 계수를 구한 뒤 무리함수의 단조성을 이용해 구간 양 끝에서 최솟값과 최댓값을 구한다.\n정석 풀이: $y=\\dfrac{ax+b}{x+c}$의 수직 점근선이 $x=2$이므로 $-c=2$, 즉 $c=-2$이다. 수평 점근선이 $y=3$이므로 $a=3$이다. 원점을 지나므로 $b=0$이다. 따라서 무리함수는 $y=\\sqrt{3x}-2$이다. 이 함수는 $x$가 커질수록 증가하므로 $3\\le x\\le27$에서 최솟값은 $x=3$일 때 $\\sqrt9-2=1$, 최댓값은 $x=27$일 때 $\\sqrt{81}-2=7$이다.\n따라서 최솟값은 $1$, 최댓값은 $7$이다.",
+
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "유리함수에서 유도한 무리함수의 범위를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "g=√(3x)−2의 구간 [3,27]에서 최솟값 1, 최댓값 7을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

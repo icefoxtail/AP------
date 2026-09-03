@@ -362,6 +362,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 식을 $f(x)=-\\sqrt{2(x+2)}+1$로 고쳐 그래프의 이동과 정의역을 확인한다.\n정의역은 $x\\ge-2$, 치역은 $y\\le1$이다. $y=-\\sqrt{2x}$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $1$만큼 이동한 그래프이므로 ③의 설명이 틀렸다.\n또한 $x\\gt0$이면 $f(x)\\lt0$이므로 제1사분면을 지나지 않는다. $y=-\\sqrt{2x+4}+1$을 $x$에 대하여 풀면 $x=\\dfrac12(y-1)^2-2$이고 역함수의 정의역은 $x\\le1$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점·절편·정의역을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (−2,1), x절편 (−3/2,0), 정의역과 치역을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -392,6 +400,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 제4사분면에서는 $x\\gt0$, $y\\lt0$이므로 $x\\gt0$에서 함수값이 음수가 되지 않을 조건을 구한다.\n$x\\gt0$이면 $x+3\\gt0$이므로 함수값의 부호는 분자 $4x-2k+15$의 부호와 같다.\n$x\\gt0$에서 항상 $4x-2k+15\\ge0$이려면 $x$가 $0$에 가까워질 때도 음수가 아니어야 하므로 $15-2k\\ge0$이어야 한다. 따라서 자연수 $k$는 $1,2,\\ldots,7$이다.\n그 개수는 $7$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/24_제일고_2학기_기말_고1_기출/q13-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 사분면 조건을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=4 대표 그래프와 자연수 k=1,…,7 조건을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
