@@ -10,7 +10,7 @@
 
 - 사용자 지정 기준 SHA: `d809f9f0f4da752fb421fc7d4bf74c2430a7c05`
 - 작업 시작 시 공유 workspace HEAD: `894736d0c960ccdcc031bd44c08d8635d8e27a89`
-- 현재 main HEAD: `11653efc07de31491ef2686b491d0cbc4e785349`
+- placeholder repair production commit: `0d9a4589` (`fix(archive): repair approved h1 placeholders`)
 - 대상 디렉터리: `archive/exams/original/high/h1/1mid/`, `archive/exams/original/high/h1/1final/`
 - 시험지: 56개 (`1mid` 22개, `1final` 34개)
 - 문항: 1,230개 (`1mid` 483개, `1final` 747개)
@@ -158,8 +158,9 @@
 - `a93cd5c2` — `fix(archive): reopen and reseal high1 geometry review`
 - `185a440f` — `chore(archive): persist H1 quality tooling and temp safeguards`
 - `11653efc` — `docs(archive): refresh geometry evidence after main merge`
+- `0d9a4589` — `fix(archive): repair approved h1 placeholders`
 
-현재 `main`과 `origin/main`은 `14335763`에서 일치한다. 공유 workspace에는 별도 geometry 작업의 미커밋 변경이 있으므로 이를 건드리거나 함께 커밋하지 않았다. 이번 결과 보고서와 q11/q12 수정은 별도 검토 후 커밋해야 하며, 전체 answer-mode 미완료 상태에서 `FINAL PASS`를 선언하지 않는다.
+`main`과 `origin/main`에는 production 수정 커밋 `0d9a4589`가 포함되어 있다. 공유 workspace에는 별도 geometry 작업의 미커밋 변경이 있으므로 이를 건드리거나 함께 커밋하지 않았다. q11/q12 승인 reconstruction과 evidence는 `0d9a4589`에 포함되었으며, 이 결과 보고서 갱신은 후속 문서 커밋으로 반영한다. 전체 answer-mode 미완료 상태에서 `FINAL PASS`를 선언하지 않는다.
 
 ## 10. 미해결 항목 및 다음 조치
 
