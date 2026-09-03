@@ -4,14 +4,19 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const REPORT_DIR = path.join(ROOT, 'docs', 'reports', 'function-family-20260903');
-const INVENTORY_PATH = path.join(REPORT_DIR, 'post_upgrade_audit_v18', 'function_family_inventory.json');
 const GRAPH_LEDGER_PATH = path.join(REPORT_DIR, 'function_family_pilot_graphs.json');
 const OUTPUT_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.json');
 const SUMMARY_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.md');
 const SOURCE_REVIEW_QKEY = 'original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js_18';
 
 function main() {
-  const inventory = JSON.parse(fs.readFileSync(INVENTORY_PATH, 'utf8'));
+  const latestAuditDir = fs.readdirSync(REPORT_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && /^post_upgrade_audit_v\d+$/.test(entry.name))
+    .map((entry) => entry.name)
+    .sort((a, b) => Number(b.slice('post_upgrade_audit_v'.length)) - Number(a.slice('post_upgrade_audit_v'.length)))[0];
+  if (!latestAuditDir) throw new Error('no post-upgrade audit directory found');
+  const inventoryPath = path.join(REPORT_DIR, latestAuditDir, 'function_family_inventory.json');
+  const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
   const graphLedger = JSON.parse(fs.readFileSync(GRAPH_LEDGER_PATH, 'utf8'));
   const generatedKeys = new Set(graphLedger.cases.map((row) => `${row.sourceJsPath}_${row.id}`));
   const rows = inventory.rows.map((row) => {
@@ -75,7 +80,7 @@ function main() {
     status: summary.unresolvedCount === 0 ? 'PROVISIONAL_COMPLETE' : 'PROVISIONAL_REVIEW_REQUIRED',
     finalSealEligible: false,
     scope: 'original only; similar excluded',
-    source: 'post_upgrade_audit_v18/function_family_inventory.json',
+    source: `${latestAuditDir}/function_family_inventory.json`,
     summary,
     rows,
     note: 'This manifest records current execution evidence and candidate dispositions. VISUAL_REQUIRED_CANDIDATE and VISUAL_OPTIONAL_CANDIDATE are not final adjudications; final seal requires independent mathematical/pedagogical review and source-review resolution.',

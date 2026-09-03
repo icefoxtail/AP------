@@ -610,6 +610,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 교점의 $y$좌표와 $w=\\sqrt{x-2t}$를 이용해 근호의 정의 조건을 보존한 채, 두 번째 교점이 생기는 $t$의 범위를 정확히 구한다.\n조건 정리: 유리함수에서 $x=\\dfrac{y}{y-2}$이고, 무리함수에서 $w=y+t\\ge0$, $x=w^2+2t$이다. 따라서 $t=w-y$이다.\n풀이 방향: $R(y)=\\dfrac{2(y^2-y-1)}{y-2}$로 놓아 $(w+1)^2=R(y)$를 얻고, $w\\ge0$에서 허용되는 $y$의 구간과 그때의 $t$값을 조사한다.\n정석 풀이: 대입하면 $(w+1)^2=R(y)$이다. $w\\ge0$이므로 $R(y)\\ge1$이어야 하고, $R(y)-1=\\dfrac{y(2y-3)}{y-2}$이므로 허용되는 $y$는 $0\\le y\\le\\dfrac32$ 또는 $y\\gt2$이다. 이때 $T(y)=\\sqrt{R(y)}-1-y=t$이다. 각 허용 구간에서 $y_2\\gt y_1$이면 $R(y_2)-R(y_1)\\lt2(y_2-y_1)$이고 $\\sqrt{R(y_2)}+\\sqrt{R(y_1)}\\ge2$이므로 $T(y_2)\\lt T(y_1)$, 즉 $T$는 감소한다. $y\\gt2$에서는 $y$가 $2$의 오른쪽에 가까워질 때 $T(y)$가 한없이 커지고 $y$가 커질수록 한없이 작아지므로 모든 실수 $t$에 대해 교점이 정확히 하나 생긴다. 따라서 서로 다른 두 교점이 되려면 $0\\le y\\le\\dfrac32$에서 교점이 하나 더 생겨야 한다. 이 구간에서는 $(y+1)^2-R(y)=\\dfrac{y(y^2-2y-1)}{y-2}\\ge0$이므로 $0\\le w\\le y$, 따라서 $-\\dfrac32\\le t=w-y\\le0$이다. $y=0$에서 $t=0$, $y=\\dfrac32$에서 $t=-\\dfrac32$이고 $T$가 감소하므로 이 구간의 $t$값은 정확히 $[-\\dfrac32,0]$이다. 따라서 $M=0$, $m=-\\dfrac32$이고 $M-2m=3$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q17-solution.svg",
+
+    "solutionImageAlt": "유리함수와 무리함수의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "대표값 t=0에서 두 교점과 −3/2≤t≤0 범위를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
