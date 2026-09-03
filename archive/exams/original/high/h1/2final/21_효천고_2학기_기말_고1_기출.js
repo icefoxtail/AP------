@@ -392,6 +392,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 함수가 $|x|$에 대하여 대칭임을 이용해 $|f(x)|=n$의 해의 개수를 센다.\n조건 정리: $f(x)=\\sqrt{|x|+4}-4$이고 $\\sqrt{|x|+4}\\ge2$이다.\n풀이 방향: $|\\sqrt{|x|+4}-4|=n$에서 두 경우를 나누고 각 경우의 $x$의 개수를 센다.\n정석 풀이: $\\sqrt{|x|+4}=4+n$인 경우에는 모든 자연수 $n$에 대해 $|x|=(4+n)^2-4\\gt0$이므로 해가 $2$개이다. 또 $\\sqrt{|x|+4}=4-n$인 경우에는 $4-n\\ge2$, 즉 $n\\le2$일 때만 가능하다. $n=1$이면 $|x|=5$이므로 해가 $2$개 더 생겨 $g(1)=4$이다. $n=2$이면 $|x|=0$이므로 해가 $1$개 더 생겨 $g(2)=3$이다. $n\\ge3$이면 해가 $2$개뿐이다. 따라서 조건을 만족하는 자연수는 $n=2$뿐이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "절댓값 무리함수와 수평선의 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "n=2에서 x=−32,0,32의 세 교점을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -425,6 +433,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 곡선 부분은 원점을 중심으로 $90^\\circ$ 회전하면 서로 대응하므로, 곡선과 현 사이의 두 넓이가 서로 상쇄된다.\n조건 정리: 직선과 $x\\lt0$인 가지의 교점은 $A=(-4,-8)$, $x\\ge0$인 가지의 교점은 $B=(8,-4)$이고 두 가지는 원점 $O$에서 만난다.\n풀이 방향: 호 $AO$와 선분 $AO$ 사이의 넓이와 호 $OB$와 선분 $OB$ 사이의 넓이가 같음을 이용하여 전체 넓이를 $\\triangle AOB$의 넓이로 바꾼다.\n정석 풀이: $y=-\\dfrac12x^2$에 직선 $y=\\dfrac{x-20}{3}$을 대입하면 $x=-4$에서 만나므로 $A=(-4,-8)$이다. 또 $y=-\\sqrt{2x}$와 직선의 교점은 $x=8$이므로 $B=(8,-4)$이다. 곡선 $y=-\\dfrac12x^2$의 $A$에서 $O$까지의 부분을 원점을 중심으로 반시계방향 $90^\\circ$ 회전하면 곡선 $y=-\\sqrt{2x}$의 $O$에서 $B$까지의 부분이 되고, 선분 $AO$도 선분 $OB$로 옮겨진다. 따라서 두 곡선과 각각의 현 사이의 넓이는 같아 서로 더하고 빼는 양이 상쇄되므로, 구하는 넓이는 $\\triangle AOB$의 넓이와 같다. $OA$의 기울기는 $2$, $OB$의 기울기는 $-\\dfrac12$이므로 두 선분은 수직이고, $OA=OB=\\sqrt{80}=4\\sqrt5$이다. 따라서 넓이는 $\\dfrac12\\cdot4\\sqrt5\\cdot4\\sqrt5=40$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_효천고_2학기_기말_고1_기출/q13-solution.svg",
+
+    "solutionImageAlt": "조각 무리함수와 직선으로 둘러싸인 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "A=(−4,−8), O=(0,0), B=(8,−4)와 넓이 40을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",

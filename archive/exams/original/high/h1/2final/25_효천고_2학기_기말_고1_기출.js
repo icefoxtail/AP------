@@ -688,6 +688,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$5$",
     "solution": "[키포인트] 두 수선의 길이는 점 $P$의 좌표의 절댓값이며, 양수 치환 후 산술평균과 기하평균을 적용한다.\n조건 정리: $x\\lt-2$이므로 $x\\lt0$, $y=\\dfrac1{x+2}-1\\lt0$이다.\n풀이 방향: $t=-(x+2)\\gt0$으로 놓아 길이의 합을 $t+\\dfrac1t$ 꼴로 만든다.\n정석 풀이: $\\overline{PQ}=|y|=-y$, $\\overline{PR}=|x|=-x$이다. $t=-(x+2)$로 놓으면 $x=-t-2$, $y=-\\dfrac1t-1$이다. 따라서 $\\overline{PQ}+\\overline{PR}=t+\\dfrac1t+3$이다. $t\\gt0$에서 $t+\\dfrac1t\\ge2$이므로 최솟값은 $2+3=5$이고, 등호는 $t=1$, 즉 $x=-3$일 때 성립한다.\n따라서 구하는 값은 $5$이다.",
+
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "유리함수와 수선 길이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "P=(−3,−2)에서 두 수선 길이의 합이 5가 됨을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
