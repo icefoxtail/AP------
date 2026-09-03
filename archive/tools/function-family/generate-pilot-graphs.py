@@ -2283,6 +2283,25 @@ BATCH14_CASES = [
 ]
 
 
+BATCH15_CASES = [
+    {
+        "caseId": "h1-25-jeil-2final-q18-piecewise-composite-area",
+        "sourceJsPath": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+        "id": 18,
+        "assetRef": "assets/images/25_제일고_2학기_기말_고1_기출/q18-solution.svg",
+        "visualKind": "FUNCTION_GRAPH",
+        "factSummary": "g∘f is 2-x on [0,1), 2x-1 on [1,3/2), -4x+8 on [3/2,2], area with axes 11/4",
+        "spec": {
+            "version": "0.1", "type": "coordinate_plane", "width": 620, "height": 500,
+            "xRange": [0, 2], "yRange": [0, 3],
+            "segments": [{"from": {"x": 0, "y": 2}, "to": {"x": 1, "y": 1}, "label": "2−x", "kind": "segment"}, {"from": {"x": 1, "y": 1}, "to": {"x": 1.5, "y": 2}, "label": "2x−1", "kind": "segment"}, {"from": {"x": 1.5, "y": 2}, "to": {"x": 2, "y": 0}, "label": "−4x+8", "kind": "segment"}],
+            "points": [{"x": 0, "y": 2, "label": "A"}, {"x": 1, "y": 1, "label": "B"}, {"x": 1.5, "y": 2, "label": "C"}, {"x": 2, "y": 0, "label": "D"}],
+            "annotations": [{"x": 0.1, "y": 2.8, "text": "y=(g∘f)(x)"}, {"x": 0.1, "y": 0.25, "text": "area=3/2+3/4+1/2=11/4"}],
+        },
+    },
+]
+
+
 def fact_hash(case: dict) -> str:
     payload = json.dumps({"caseId": case["caseId"], "factSummary": case["factSummary"], "spec": case["spec"]}, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
@@ -2719,6 +2738,10 @@ def validate_math(case: dict) -> None:
         _check_curve(curves[0], lambda x: 3 * x / (x - 2), "gangnam23q22.rational.left")
         _check_curve(curves[1], lambda x: 3 * x / (x - 2), "gangnam23q22.rational.right")
         _check_curve(curves[2], lambda x: (3 * x) ** 0.5 - 2, "gangnam23q22.radical")
+    elif case_id == "h1-25-jeil-2final-q18-piecewise-composite-area":
+        piece_functions = [lambda x: 2 - x, lambda x: 2 * x - 1, lambda x: -4 * x + 8]
+        for item, fn, label in zip(case["spec"]["segments"], piece_functions, ("piece1", "piece2", "piece3")):
+            _check_curve({"points": [item["from"], item["to"]]}, fn, f"jeil25q18.{label}")
 
     x_low, x_high = case["spec"]["xRange"]
     y_low, y_high = case["spec"]["yRange"]
@@ -2737,7 +2760,7 @@ def validate_math(case: dict) -> None:
 
 def main() -> None:
     summary = {"status": "PASS", "renderer": "alive.engine.visual_renderer", "cases": []}
-    for case in PILOT_CASES + BATCH2_CASES + BATCH3_CASES + BATCH4_CASES + BATCH5_CASES + BATCH6_CASES + BATCH7_CASES + BATCH8_CASES + BATCH9_CASES + BATCH10_CASES + BATCH11_CASES + BATCH12_CASES + BATCH13_CASES + BATCH14_CASES:
+    for case in PILOT_CASES + BATCH2_CASES + BATCH3_CASES + BATCH4_CASES + BATCH5_CASES + BATCH6_CASES + BATCH7_CASES + BATCH8_CASES + BATCH9_CASES + BATCH10_CASES + BATCH11_CASES + BATCH12_CASES + BATCH13_CASES + BATCH14_CASES + BATCH15_CASES:
         validate_math(case)
         svg = render_visual_spec(case["spec"])
         graph_hash = fact_hash(case)
