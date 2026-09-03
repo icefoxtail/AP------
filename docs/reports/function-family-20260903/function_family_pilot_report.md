@@ -1,10 +1,10 @@
-# 고1 함수·유리함수·무리함수 1차 업그레이드 보고
+# 고1 함수·유리함수·무리함수 전수 업그레이드 보고
 
 ## 상태
 
-`BATCH16_UPGRADE_READY_FOR_USER_REVIEW`
+`FULL_SCOPE_STATIC_REVIEW_COMPLETE_FOR_USER_REVIEW`
 
-전체 단원 봉인 완료가 아니라, 기준 문서에 따른 전수 진단과 그래프 누락 우선순위 1·2·3·4·5·6·7·8·9·10·11·12·13·14·15·16차 파일럿 135문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
+기준 문서에 따른 원본 522문항·50개 시험지 전수 진단을 완료했고, 그래프 이해가 실제로 필요한 135문항에 결정적 해설 SVG를 연결했다. 전수 static review에서 모든 문항의 품질·시각자료·answer·solution 상태를 확정했으며, 사용자의 최종 교육적 재검수와 release seal은 별도 단계다.
 
 ## 기준
 
@@ -40,6 +40,29 @@
 | `SOLUTION_VISUAL_PRESENT` | 136 |
 
 `similar`를 포함하면 602건으로 보이지만, 그중 80건은 이번 범위 밖이다. 최종 scope는 문서 규정대로 `original` 522건만 사용한다.
+
+## 전체 원본 전수 static review 확정
+
+독립 static review ledger 기준으로 522개 원본 행의 provisional triage를 해소했다.
+
+| 최종 시각자료 판정 | 수량 |
+|---|---:|
+| `VISUAL_REQUIRED_SATISFIED` — 검증된 해설 SVG | 135 |
+| `VISUAL_REQUIRED_SATISFIED_BY_PROBLEM_IMAGE` — 원문 그래프가 solution 모드에 이미 표시됨 | 79 |
+| `VISUAL_REQUIRED_SATISFIED_EXISTING` — 기존 선행 해설 자산 | 1 |
+| `VISUAL_OPTIONAL` — 텍스트 유도만으로 재현 가능 | 95 |
+| `VISUAL_EXEMPT` — 그래프 신호 없음 | 212 |
+
+- 최종 target: 522문항 / 50개 시험지
+- solution blank/conclusion failure: 0
+- answer mismatch: 0
+- curriculum forbidden method: 0
+- logic-jump unresolved signal: 0
+- source-review unresolved: 0
+- `VISUAL_REQUIRED` missing: 0
+- 보호 필드(`content`, `choices`, `answer`, `image`, `id`) 임의 변경: 0
+
+`22_강남여고 2학기 중간 q17`은 독립 계산값 48이 원문 보기에는 없지만 원문 answer가 이미 `해당 없음 (48)`로 기록된 보호 데이터 이슈라서 수정하지 않고 해소 상태로 기록했다. [전수 independent static review JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.json>)과 [요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.md>)에 근거를 고정했다.
 
 ## 이번 파일럿에서 수정한 문항
 
@@ -369,6 +392,8 @@ Batch 15의 1개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 1개
 - [Batch 16 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch16_attachment_ledger.json>)
 - [Batch 16 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch16_render_matrix.md>)
 - [Batch 16 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v21/function_family_summary.md>)
+- [전수 independent static review JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.json>)
+- [전수 independent static review 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.md>)
 - [누적 시각 계약 검증 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)
 - [누적 시각 계약 검증 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)
 - [전수 업그레이드 manifest JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_upgrade_manifest.json>)
@@ -376,11 +401,12 @@ Batch 15의 1개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 1개
 
 ## SOURCE_REVIEW 해소
 
+- `22_강남여고 2학기 중간 q17`: 독립 계산은 48이지만 원문 choices에 48이 없어 answer가 `해당 없음 (48)`로 기록되어 있다. 원문 보호 원칙에 따라 content/choices/answer는 수정하지 않고 `RESOLVED_PROTECTED_SOURCE_DATA_ISSUE`로 판정했다.
 - `25_제일고 2학기 기말 q18`: 원문 해설의 독립 계산은 도형 넓이 `11/4`이고, choices의 ①도 `11/4`로 확인되어 answer `①`과 일치한다. 조각별 합성함수 그래프를 Batch 15에서 추가했고 source-review 의심을 해소했다.
 
-## 독립 재검수 대기 항목
+## 사용자 최종 교육적 재검수 대기 항목
 
-이번 결과는 Batch 16 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
+전수 static review와 선택적 업그레이드는 완료됐지만, 계획서의 마지막 사용자 교육적 검수와 release seal은 아직 남아 있다. 다음 항목을 확인하면 된다.
 
 1. 각 그래프의 수학적 위치·교점·축·범위가 원문과 정확히 대응하는지
 2. 그래프가 답을 불필요하게 노출하지 않는지
@@ -389,4 +415,4 @@ Batch 15의 1개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 1개
 5. 유리함수의 점근선·중심·원의 교점이 정확한지
 6. 해설 SVG를 실제로 추가해야 하는 후보와 `KEEP`/`OPTIONAL` 후보의 분류가 적절한지
 
-독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3·4·5·6·7·8·9·10·11·12·13·14·15·16만으로 전체 단원을 `SEALED`로 선언하지 않는다.
+독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. 현재 매니페스트의 `finalSealEligible`은 release SHA·전수 최종 렌더·사용자 검수 전이므로 `false`다.
