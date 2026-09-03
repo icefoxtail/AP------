@@ -621,9 +621,9 @@ window.questionBank = [
     "answer": "4",
     "solution": "[키포인트]\n각 보기의 조건을 두 그래프의 접점과 교점에 대한 대수 조건으로 바꾼다.\nㄱ. $f(x)=x^2-ax+b$의 그래프가 $x$축에 접하므로 이차방정식 $x^2-ax+b=0$은 중근을 갖는다. 따라서 판별식은\n$a^2-4b=0$ 이다. 그러므로 ㄱ은 참이다.\nㄴ. 두 그래프가 제1사분면과 제2사분면에서 만나므로 교점의 $x$좌표를 $r_1<0<r_2$라 할 수 있다.\n$g(x)-f(x)=-2x^2+(a+c)x-(b+d)$는 아래로 열린 이차식이고, $r_1$과 $r_2$를 두 근으로 갖는다. 따라서 두 근 사이에서 양수이므로 $g(0)-f(0)>0$이다.\n즉 $-(b+d)>0$이다. ㄱ에서 $b=a^2/4\\ge0$이므로 $-d>b\\ge0$, 따라서 $d<0$이다.\n그러므로 $a^2-4d=a^2+(-4d)>0$이므로 $a^2-4d<0$은 거짓이다.\nㄷ. 두 그래프의 교점의 $x$좌표는\n$x^2-ax+b=-x^2+cx-d$, 즉 $2x^2-(a+c)x+(b+d)=0$의 근이다.\n제1사분면과 제2사분면에서 서로 다른 두 점에서 만나므로 이 이차방정식은 서로 다른 두 실근을 갖는다. 따라서 판별식은\n$(a+c)^2-8(b+d)>0$이다. 그러므로 ㄷ은 참이다.\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ④이다.",
     "originalCategory": "이차함수",
-    "standardCourse": "수학(하)",
-    "standardUnitKey": "H15-SB-03",
-    "standardUnit": "함수",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-13",
+    "standardUnit": "이차함수",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -637,9 +637,9 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "standardUnitOrder": 3,
-    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
-    "subUnit": "함수의 뜻과 대응",
+    "standardUnitOrder": 13,
+    "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

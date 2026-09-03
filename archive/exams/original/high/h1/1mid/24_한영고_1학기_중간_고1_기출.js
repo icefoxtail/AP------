@@ -699,7 +699,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -713,13 +713,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "[서술형 2] $\\overline{BC}=10$이고 넓이가 30인 삼각형 $\\mathrm{ABC}$에 대하여 두 점 $\\mathrm{P}, \\mathrm{S}$는 변 $\\mathrm{BC}$ 위에 있고, 두 점 $\\mathrm{R}, \\mathrm{Q}$가 각각 두 변 $\\mathrm{AB}, \\mathrm{AC}$ 위에 있다. 이 네 점을 꼭짓점으로 하는 직사각형 $\\mathrm{PQRS}$의 넓이가 최대가 되는 $\\mathrm{RQ}$의 길이와 직사각형 $\\mathrm{PQRS}$의 넓이를 풀이과정과 함께 구하시오. [6.0점]",
-    "choices": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ],
+    "choices": [],
     "answer": "RQ=5, 넓이=15",
     "solution": "<b>[키포인트]</b> 삼각형의 닮음을 이용하여 직사각형의 높이를 밑변에 대한 식으로 나타내고 이차함수의 최댓값을 구함.\\n삼각형의 넓이가 $30$이고 밑변이 $10$이므로 높이 $h=6$임.\\n직사각형의 가로 길이를 $RQ=x$라 하면, 삼각형의 닮음에 의해 직사각형의 높이 $y$는 다음과 같음.\\n\\implies y = 6(1 - \\frac{x}{10}) = 6 - 0.6x\\n직사각형의 넓이 식을 이차함수 형태로 작성함.\\n\\implies S(x) = x(6 - 0.6x) = -0.6(x^2 - 10x)\\n완전제곱식으로 변형하여 최댓값을 구함.\\n\\implies S(x) = -0.6(x-5)^2 + 15\\n\\implies x=5일 때, 최댓값  15를 가짐.\\n\\therefore RQ=5, 넓이=15",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
