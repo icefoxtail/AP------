@@ -592,6 +592,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$(2,2)$",
     "solution": "[키포인트] 서로 역함수인 증가함수의 그래프는 직선 $y=x$에 대하여 대칭이고 교점은 직선 $y=x$ 위에 있다.\n조건 정리: 교점에서는 $y=x$이므로 $x=f(x)=\\sqrt{x+2}$를 만족한다.\n풀이 방향: 정의역 조건 $x\\ge0$을 확인하며 방정식을 푼다.\n정석 풀이: $x=\\sqrt{x+2}$에서 $x\\ge0$이고, 양변을 제곱하면 $x^2=x+2$이다. $(x-2)(x+1)=0$이므로 $x=2$ 또는 $x=-1$인데 $x\\ge0$이므로 $x=2$이다. 따라서 $y=2$이다.\n따라서 교점의 좌표는 $(2,2)$이다.",
+
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q20-solution.svg",
+
+    "solutionImageAlt": "함수와 역함수의 그래프 및 교점 A를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "함수와 역함수는 y=x에 대하여 대칭이고 교점은 A=(2,2)임을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
