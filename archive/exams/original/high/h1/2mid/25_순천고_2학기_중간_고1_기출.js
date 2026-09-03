@@ -27,7 +27,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "$15$의 양의 약수는 $1,3,5,15$의 네 개이다.\n결론: 정답은 ③이다.",
+    "solution": "[키포인트] 약수는 나누어떨어지게 하는 양의 자연수이다.\n$15=3\\times5$의 양의 약수는 $1,3,5,15$이므로 네 개이고, $n(A)=4$이다. 따라서 정답은 ③이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -60,7 +60,7 @@ window.questionBank = [
       "$\\{a,b,c\\}$"
     ],
     "answer": "②",
-    "solution": "$\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $\\{a,b,c\\}$는 모두 $\\{a,b,c\\}$의 부분집합이다. 그러나 $\\varnothing$은 주어진 집합의 원소가 아니므로 $\\{\\varnothing\\}$은 부분집합이 아니다.\n결론: 정답은 ②이다.",
+    "solution": "[키포인트] $\\in$은 원소, $\\subseteq$는 집합 사이의 포함관계를 나타낸다.\n$\\varnothing$, $\\{a\\}$, $\\{b,c\\}$, $\\{a,b,c\\}$는 $\\{a,b,c\\}$의 부분집합이다. 그러나 $\\{\\varnothing\\}$은 공집합을 원소로 가진 집합이고, $\\varnothing\\notin\\{a,b,c\\}$이므로 부분집합이 아니다.\n즉 $\\varnothing\\subseteq A$와 $\\varnothing\\in A$는 다르며, 정답은 ②이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -134,7 +134,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "⑤",
-    "solution": "$4$가 $A$의 원소가 되려면 $a-3=4$이므로 $a=7$이다. 이때 $A=\\{2,4,6\\}$, $B=\\{1,4,8\\}$이고 실제로 $A\\cap B=\\{4\\}$이다.\n따라서 $B-A=\\{1,8\\}$이고 모든 원소의 합은 $9$이다.\n결론: 정답은 ⑤이다.",
+    "solution": "$A\\cap B=\\{4\\}$는 4가 두 집합에만 공통이고 다른 원소는 공통이 아님을 뜻한다. $a-3=4$에서 $a=7$이고 $A=\\{2,4,6\\}$, $B=\\{1,4,8\\}$이다. 따라서 $B-A=\\{1,8\\}$의 합은 9이고 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -168,7 +168,7 @@ window.questionBank = [
       "$31$"
     ],
     "answer": "④",
-    "solution": "$A=\\{1,2,4,8\\}$이므로 원소의 개수는 $4$이다. 부분집합은 $2^4=16$개이고, 이 중 자기 자신을 제외한 진부분집합은 $15$개이다.\n결론: 정답은 ④이다.",
+    "solution": "[키포인트] 진부분집합은 자기 자신과 같지 않은 부분집합이다.\n$A=\\{1,2,4,8\\}$은 원소가 4개이므로 부분집합은 $2^4=16$개이다. 이 중 A 하나를 제외한 $16-1=15$개가 진부분집합이다. 따라서 정답은 ④이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -460,7 +460,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "ㄱ은 차집합의 정의이므로 참이다.\nㄴ의 좌변은 $A\\cap B^c\\cap C^c=A-(B\\cup C)$이므로 거짓이다.\nㄷ의 좌변은 $A\\cap B\\cap(A\\cap C)^c=A\\cap B\\cap C^c$이므로 참이다.\n따라서 항상 옳은 것은 ㄱ, ㄷ이다.\n결론: 정답은 ③이다.",
+   "solution": "[키포인트] 차집합은 첫 집합에서 둘째 집합 영역을 지우는 연산이다.\nㄱ은 정의로 참이다. ㄴ의 좌변은 $A\\cap B^c\\cap C^c=A-(B\\cup C)$이고 우변은 $A-(B\\cap C)=A\\cap(B^c\\cup C^c)$이므로 일반적으로 다르다. 예를 들어 $A=B=C=\\{1\\}$이면 좌변은 공집합, 우변은 $\\{1\\}$이다. ㄷ은 $A\\cap B$에서 C 영역을 지운 식이므로 참이다.\n따라서 ㄱ, ㄷ이고 정답은 ③이다.",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "세 집합의 차집합과 교집합을 영역으로 비교한 해설 도식",
+    "solutionImageCaption": "A−B와 교집합의 여집합을 영역으로 읽어 등식의 성립 여부를 확인",
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
