@@ -293,7 +293,7 @@ window.questionBank = [
       "이차부등식"
     ],
     "wide": false,
-    "content": "두 집합 $A=\\{x\\in R\\mid x^2-8x+15=0\\}$, $B=\\{x\\in R\\mid x^2-a<0\\}$에 대하여 $A,B$가 서로소일 때 자연수 $a$의 최댓값을 $m$, $A\\subset B$일 때 자연수 $a$의 최솟값을 $n$이라 하자. $m+n$의 값은? [4.5점]",
+    "content": "실수 전체의 집합을 $\\mathbb R$이라 하자.<br>두 집합 $A=\\{x\\in\\mathbb R\\mid x^2-8x+15=0\\}$, $B=\\{x\\in\\mathbb R\\mid x^2-a<0\\}$에 대하여 $A,B$가 서로소일 때 자연수 $a$의 최댓값을 $m$, $A\\subset B$일 때 자연수 $a$의 최솟값을 $n$이라 하자. $m+n$의 값은? [4.5점]",
     "choices": [
       "$27$",
       "$29$",
