@@ -324,6 +324,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 정의역과 $y$의 부호가 바뀌는 지점을 함께 확인한다.\n조건 정리: $-x-1\\ge0$이므로 $x\\le-1$이고, $y\\ge-1$이다.\n풀이 방향: $y=0$이 되는 $x$를 기준으로 부호를 나눈다.\n정석 풀이: $\\sqrt{-x-1}-1=0$이면 $x=-2$이다. $x\\lt -2$에서는 $x\\lt 0$, $y\\gt 0$이므로 제2사분면을 지나고, $-2\\lt x\\le-1$에서는 $x\\lt 0$, $y\\lt 0$이므로 제3사분면을 지난다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q11-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점과 x절편, 사분면을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "정의역 x≤−1, x절편 (−2,0), 끝점 (−1,−1)을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -384,6 +392,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수를 평행이동형으로 바꾸면 점근선과 그래프의 위치를 확인할 수 있다.\n조건 정리: $y=\\dfrac{-x}{x-1}=-1-\\dfrac1{x-1}$이다.\n풀이 방향: 점근선, 대칭의 중심, 실제 사분면 통과 여부를 차례로 확인한다.\n정석 풀이: 점근선은 $x=1$, $y=-1$이고 중심은 $(1,-1)$이다. 또한 $y=-\\dfrac1x$를 오른쪽으로 $1$, 아래로 $1$만큼 평행이동한 그래프이다. $x\\lt 0$이면 분자 $-x\\gt 0$, 분모 $x-1\\lt 0$이므로 $y\\lt 0$이다. 따라서 그래프는 제3사분면을 지난다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q13-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=−1−1/(x−1)에서 점근선 x=1, y=−1과 중심 (1,−1)을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
