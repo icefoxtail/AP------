@@ -20,7 +20,10 @@ PILOT_PATH = REPORTS / "pilot_sample_manifest.json"
 
 NUMBER = r"[-+−]?\d+(?:[.,]\d+)?(?:\s*/\s*[-+−]?\d+(?:[.,]\d+)?)?"
 COORD_RE = re.compile(rf"(?P<label>[A-Za-z](?:[A-Za-z0-9_′']*)?)\s*(?:=|:)??\s*\(\s*(?P<x>{NUMBER})\s*,\s*(?P<y>{NUMBER})\s*\)")
-UNLABELLED_COORD_RE = re.compile(rf"\(\s*(?P<x>{NUMBER})\s*,\s*(?P<y>{NUMBER})\s*\)")
+# A bare coordinate pair may be a displacement, interval, coefficient pair,
+# area, or answer.  Accept it only when nearby prose explicitly identifies a
+# point-like role.
+POINT_CONTEXT_RE = re.compile(rf"(?P<context>점|중심|교점|접점|꼭짓점|정점)\s*(?:[A-Za-z가-힣0-9_′']+\s*)?\(\s*(?P<x>{NUMBER})\s*,\s*(?P<y>{NUMBER})\s*\)")
 RADIUS_RE = re.compile(rf"(?:\br\b|반지름(?:은|=|:)?|r\s*=)\s*[=:]?\s*(?P<value>{NUMBER}|√\s*\d+)", re.IGNORECASE)
 
 
@@ -56,7 +59,9 @@ def flatten(value: Any) -> str:
 
 
 def extract_points(fact: dict[str, Any]) -> list[dict[str, Any]]:
-    text = f"{flatten(fact.get('independentFacts'))} {flatten(fact.get('expectedAnswer'))}"
+    # expectedAnswer is never geometry provenance.  It commonly contains
+    # answer pairs or values that the old fallback promoted to fake points.
+    text = flatten(fact.get("independentFacts"))
     points: list[dict[str, Any]] = []
     seen: set[tuple[float, float]] = set()
     for match in COORD_RE.finditer(text):
@@ -67,17 +72,16 @@ def extract_points(fact: dict[str, Any]) -> list[dict[str, Any]]:
         if not all(math.isfinite(item) for item in (x, y)) or (x, y) in seen:
             continue
         seen.add((x, y))
-        points.append({"x": x, "y": y, "label": match.group("label")})
-    if len(points) < 2:
-        for match in UNLABELLED_COORD_RE.finditer(text):
-            try:
-                x, y = parse_number(match.group("x")), parse_number(match.group("y"))
-            except ValueError:
-                continue
-            if not all(math.isfinite(item) for item in (x, y)) or (x, y) in seen:
-                continue
-            seen.add((x, y))
-            points.append({"x": x, "y": y, "label": f"P{len(points) + 1}"})
+        points.append({"x": x, "y": y, "label": match.group("label"), "provenance": "explicit-labelled-coordinate"})
+    for match in POINT_CONTEXT_RE.finditer(text):
+        try:
+            x, y = parse_number(match.group("x")), parse_number(match.group("y"))
+        except ValueError:
+            continue
+        if not all(math.isfinite(item) for item in (x, y)) or (x, y) in seen:
+            continue
+        seen.add((x, y))
+        points.append({"x": x, "y": y, "label": None, "provenance": "explicit-point-context"})
     return points[:20]
 
 
@@ -159,8 +163,8 @@ def _custom_path(fn: Any, sx: Any, sy: Any, start: float, end: float, samples: i
 def _custom_svg_document(row: dict[str, Any], fact: dict[str, Any], body: list[str], method: str, policy: str) -> tuple[str, dict[str, Any]]:
     fact_hash = fact["independentFactHash"]
     title = f"{row['mappedUnit']} 해설 도형 · 문항 {row['id']}"
-    alt = f"{row['mappedUnit']} 문항 {row['id']}의 독립 풀이 사실 기반 해설 도형"
-    caption = "독립 풀이에서 확정한 도형·변환·좌표 관계를 해설 순서대로 표시한 자료"
+    alt = f"{row['mappedUnit']} 문항 {row['id']}의 핵심 관계를 표시한 해설 도형"
+    caption = "풀이에 필요한 도형·변환·좌표 관계를 해설 순서대로 표시한 자료"
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" data-fact-hash="{fact_hash}" data-scale-policy="{policy}">',
         f'<title>{esc(title)}</title><desc>{esc(alt)}</desc>',
@@ -169,7 +173,7 @@ def _custom_svg_document(row: dict[str, Any], fact: dict[str, Any], body: list[s
         f'<text x="32" y="38" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">{esc(title)}</text>',
         f'<text x="32" y="64" font-family="Arial,sans-serif" font-size="12" fill="#475569">{esc(caption)}</text>',
         *body,
-        f'<text x="32" y="344" font-family="Arial,sans-serif" font-size="11" fill="#64748b">독립 풀이 방식: {esc(method[:78])}</text>',
+        f'<text x="32" y="344" font-family="Arial,sans-serif" font-size="11" fill="#64748b">풀이 관찰: {esc(method[:78])}</text>',
         '</svg>',
     ]
     return "".join(svg) + "\n", {"status": "PASS", "pointCount": 0, "finitePoints": True, "scalePolicy": policy, "scaleX": 224.0 / 20.0, "scaleY": 224.0 / 20.0, "scaleError": 0.0, "factHash": fact_hash, "radius": None}
@@ -351,14 +355,15 @@ def build_svg(row: dict[str, Any], fact: dict[str, Any]) -> tuple[str, dict[str,
             '<path d="M300 185h112" stroke="#64748b" stroke-width="3"/><path d="m400 176 14 9-14 9" fill="#64748b"/>',
             '<text x="189" y="178" text-anchor="middle" font-size="17" font-weight="700" fill="#1e40af">문제 조건</text>',
             '<text x="189" y="204" text-anchor="middle" font-size="12" fill="#334155">핵심 관계</text>',
-            '<text x="531" y="178" text-anchor="middle" font-size="17" font-weight="700" fill="#166534">독립 풀이 사실</text>',
+            '<text x="531" y="178" text-anchor="middle" font-size="17" font-weight="700" fill="#166534">풀이 핵심 관계</text>',
             f'<text x="531" y="204" text-anchor="middle" font-size="12" fill="#334155">{esc(method[:26])}</text>',
         ]
 
     for index, point in enumerate(points[:20]):
         px, py = sx(point["x"]), sy(point["y"])
         label = point.get("label") or f"P{index + 1}"
-        body.append(f'<g data-point-label="{esc(label)}" data-point-x="{number(point["x"])}" data-point-y="{number(point["y"])}">')
+        provenance = point.get("provenance", "missing")
+        body.append(f'<g data-point-label="{esc(label)}" data-point-x="{number(point["x"])}" data-point-y="{number(point["y"])}" data-point-provenance="{esc(provenance)}">')
         body.append(f'<circle cx="{px:.2f}" cy="{py:.2f}" r="5.5" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>')
         body.append(f'<text x="{px + 9:.2f}" y="{py - 8:.2f}" font-size="12" font-weight="700" fill="#b91c1c">{esc(label)}</text>')
         body.append(f'<text x="{px + 9:.2f}" y="{py + 16:.2f}" font-size="10" fill="#475569">({number(point["x"])}, {number(point["y"])})</text></g>')
@@ -366,8 +371,8 @@ def build_svg(row: dict[str, Any], fact: dict[str, Any]) -> tuple[str, dict[str,
     scale_x = width / (x_max - x_min)
     scale_y = height / (y_max - y_min)
     scale_error = abs(scale_x - scale_y) / max(abs(scale_x), abs(scale_y))
-    alt = f"{row['mappedUnit']} 문항 {row['id']}의 독립 풀이 사실 기반 해설 도형"
-    caption = "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료"
+    alt = f"{row['mappedUnit']} 문항 {row['id']}의 핵심 관계를 표시한 해설 도형"
+    caption = "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료"
     svg = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" data-fact-hash="{fact_hash}" data-scale-policy="{policy}">',
         f'<title>{esc(title)}</title><desc>{esc(alt)}</desc>',
@@ -376,7 +381,7 @@ def build_svg(row: dict[str, Any], fact: dict[str, Any]) -> tuple[str, dict[str,
         f'<text x="32" y="38" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">{esc(title)}</text>',
         f'<text x="32" y="64" font-family="Arial,sans-serif" font-size="12" fill="#475569">{esc(caption)}</text>',
         *body,
-        f'<text x="32" y="344" font-family="Arial,sans-serif" font-size="11" fill="#64748b">독립 풀이 방식: {esc(method[:78])}</text>',
+        f'<text x="32" y="344" font-family="Arial,sans-serif" font-size="11" fill="#64748b">풀이 관찰: {esc(method[:78])}</text>',
         '</svg>',
     ]
     validation = {"status": "PASS", "pointCount": len(points), "finitePoints": True, "scalePolicy": policy, "scaleX": scale_x, "scaleY": scale_y, "scaleError": scale_error, "factHash": fact_hash, "radius": radius}
@@ -430,16 +435,22 @@ for row in manifest["rows"]:
             if not allow_rewrite:
                 raise RuntimeError(f"Existing staging asset differs from independent-facts output: {asset_ref}")
             asset_path.write_text(svg, encoding="utf-8")
-            generated.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "sourceJsPath": row["sourceJsPath"], "id": row["id"], "mappedUnitKey": row["mappedUnitKey"], "subUnitKey": row.get("subUnitKey", ""), "assetRef": asset_ref, "assetPath": str(asset_path.relative_to(ROOT)).replace("\\", "/"), "visualKind": "independent_fact_semantic_repair", "scalePolicy": validation["scalePolicy"], "independentFactHash": validation["factHash"], "status": "REGENERATED_FROM_B_REVIEW", "alt": f"{row['mappedUnit']} 문항 {row['id']}의 독립 풀이 사실 기반 해설 도형", "caption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료"})
+            generated.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "sourceJsPath": row["sourceJsPath"], "id": row["id"], "mappedUnitKey": row["mappedUnitKey"], "subUnitKey": row.get("subUnitKey", ""), "assetRef": asset_ref, "assetPath": str(asset_path.relative_to(ROOT)).replace("\\", "/"), "visualKind": "independent_fact_semantic_repair", "scalePolicy": validation["scalePolicy"], "independentFactHash": validation["factHash"], "status": "REGENERATED_FROM_B_REVIEW", "alt": f"{row['mappedUnit']} 문항 {row['id']}의 핵심 관계를 표시한 해설 도형", "caption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료"})
             verification.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "assetRef": asset_ref, **validation})
             continue
-        generated.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "sourceJsPath": row["sourceJsPath"], "id": row["id"], "mappedUnitKey": row["mappedUnitKey"], "subUnitKey": row.get("subUnitKey", ""), "assetRef": asset_ref, "assetPath": str(asset_path.relative_to(ROOT)).replace("\\", "/"), "visualKind": "independent_fact_plane", "scalePolicy": validation["scalePolicy"], "independentFactHash": validation["factHash"], "status": "ALREADY_GENERATED_BY_PILOT", "alt": f"{row['mappedUnit']} 문항 {row['id']}의 독립 풀이 사실 기반 해설 도형", "caption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료"})
+        generated.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "sourceJsPath": row["sourceJsPath"], "id": row["id"], "mappedUnitKey": row["mappedUnitKey"], "subUnitKey": row.get("subUnitKey", ""), "assetRef": asset_ref, "assetPath": str(asset_path.relative_to(ROOT)).replace("\\", "/"), "visualKind": "independent_fact_plane", "scalePolicy": validation["scalePolicy"], "independentFactHash": validation["factHash"], "status": "ALREADY_GENERATED_BY_PILOT", "alt": f"{row['mappedUnit']} 문항 {row['id']}의 핵심 관계를 표시한 해설 도형", "caption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료"})
         verification.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "assetRef": asset_ref, **validation})
         continue
     asset_path.parent.mkdir(parents=True, exist_ok=True)
     asset_path.write_text(svg, encoding="utf-8")
-    generated.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "sourceJsPath": row["sourceJsPath"], "id": row["id"], "mappedUnitKey": row["mappedUnitKey"], "subUnitKey": row.get("subUnitKey", ""), "assetRef": asset_ref, "assetPath": str(asset_path.relative_to(ROOT)).replace("\\", "/"), "visualKind": "independent_fact_plane", "scalePolicy": validation["scalePolicy"], "independentFactHash": validation["factHash"], "alt": f"{row['mappedUnit']} 문항 {row['id']}의 독립 풀이 사실 기반 해설 도형", "caption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료"})
+    generated.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "sourceJsPath": row["sourceJsPath"], "id": row["id"], "mappedUnitKey": row["mappedUnitKey"], "subUnitKey": row.get("subUnitKey", ""), "assetRef": asset_ref, "assetPath": str(asset_path.relative_to(ROOT)).replace("\\", "/"), "visualKind": "independent_fact_plane", "scalePolicy": validation["scalePolicy"], "independentFactHash": validation["factHash"], "alt": f"{row['mappedUnit']} 문항 {row['id']}의 핵심 관계를 표시한 해설 도형", "caption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료"})
     verification.append({"questionUid": row["questionUid"], "qKey": row["qKey"], "assetRef": asset_ref, **validation})
+
+# Keep generated report metadata student-facing and free of audit/provenance
+# jargon even when an older branch reaches one of the legacy append paths.
+for generated_row in generated:
+    generated_row["alt"] = f"{generated_row.get('mappedUnit', '도형')} 문항 {generated_row['id']}의 핵심 관계를 표시한 해설 도형"
+    generated_row["caption"] = "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료"
 
 summary = {"status": "PILOT_SVG_GENERATED_FROM_INDEPENDENT_FACTS" if pilot_only else "SVG_GENERATED_FROM_INDEPENDENT_FACTS", "source": FACTS_PATH.name, "pilotOnly": pilot_only, "allowRewrite": allow_rewrite, "manifestSha256": sha(MANIFEST_PATH.read_text(encoding="utf-8")), "independentFactsSha256": sha(FACTS_PATH.read_text(encoding="utf-8")), "generatedCount": len(generated), "blockedCount": len(blocked), "pythonVerificationPassCount": sum(row["status"] == "PASS" for row in verification), "pythonVerificationFailCount": sum(row["status"] != "PASS" for row in verification), "generatedAssets": generated, "blocked": blocked}
 summary_name = "svg_pilot_build_summary.json" if pilot_only else "svg_build_summary_v22.json"

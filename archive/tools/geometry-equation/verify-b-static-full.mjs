@@ -38,6 +38,9 @@ for (const row of manifest.rows) {
   if (assetText && (!/\bviewBox\s*=\s*"[^"]+"/i.test(assetText) || !/\bwidth\s*=\s*"[^"]+"/i.test(assetText) || !/\bheight\s*=\s*"[^"]+"/i.test(assetText))) issues.push('SVG_DIMENSION_MISSING');
   if (assetText && /<br\b|\\frac|\\dfrac|\\sqrt|\$[^$]+\$|MathJax|mathjax/i.test(assetText)) issues.push('SVG_FORBIDDEN_TOKEN');
   if (assetText && /(?:href|xlink:href)\s*=\s*"(?:https?:|data:|\/\/)/i.test(assetText)) issues.push('SVG_EXTERNAL_RESOURCE');
+  const pointCoordinateCount = assetText ? (assetText.match(/data-point-x="/g) || []).length : 0;
+  const pointProvenanceCount = assetText ? (assetText.match(/data-point-provenance="/g) || []).length : 0;
+  if (pointCoordinateCount !== pointProvenanceCount) issues.push('SEMANTIC_POINT_PROVENANCE_FAIL');
   const generatedAsset = generated.get(row.questionUid);
   const geom = geometry.get(row.questionUid);
   if (generatedAsset) {

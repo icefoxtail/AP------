@@ -18,7 +18,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -53,7 +53,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -90,7 +90,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -126,7 +126,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -160,7 +160,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -194,7 +194,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -228,7 +228,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -263,7 +263,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -298,7 +298,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -309,10 +309,10 @@ window.questionBank = [
     ],
     "wide": false,
     "solution": "$a^2 + b^2 + 3c^2 - 2ab - 4bc + 4ca$\n$= (a^2 + b^2 + 4c^2 - 2ab - 4bc + 4ca) - c^2$\n$= (a - b + 2c)^2 - c^2$\n합차 공식을 이용하면\n$= (a - b + 2c + c)(a - b + 2c - c)$\n$= (a - b + 3c)(a - b + c)$\n따라서 인수는 $a - b + 3c$ 이다.",
-    "subUnitKey": "H15-SA-03-COMPLEX_OPERATION",
-    "subUnit": "복소수의 계산",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "subUnit": "인수분해",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule",
   },
   {
     "id": 10,
@@ -332,7 +332,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -366,7 +366,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -440,7 +440,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -477,7 +477,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -512,7 +512,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -525,7 +525,7 @@ window.questionBank = [
       "삼각형"
     ],
     "wide": false,
-    "solution": "$x$축에 수직인 직선을 $x=t$라 하면 $A(t, t^2), B(t, -\\frac{1}{2}t^2+2t)$\n선분 $AB$는 $y$축에 평행하므로 정삼각형을 이루려면 $C(k,0)$에서 $AB$에 내린 수선이 $AB$를 수직이등분해야 한다.\n수선의 방정식은 $y=0$ ($x$축)이므로 선분 $AB$의 중점의 $y$좌표는 0이다.\n$\\frac{t^2 - \\frac{1}{2}t^2 + 2t}{2} = 0 \\rightarrow \\frac{1}{4}t^2 + t = 0 \\rightarrow t=-4$ ($t \\n eq 0$)\n$t=-4$일 때 $A(-4, 16), B(-4, -16)$이므로 한 변의 길이는 32이다.\n정삼각형의 높이는 $\\frac{\\sqrt{3}}{2} \\times 32 = 16\\sqrt{3}$\n$k = t + 16\\sqrt{3} = -4 + 16\\sqrt{3}$ ($k>0$)\n따라서 $a = -4, b = 16 \\rightarrow a+b = 12$",
+    "solution": "$x$축에 수직인 직선을 $x=t$라 하면 $A(t, t^2), B(t, -\\frac{1}{2}t^2+2t)$\n선분 $AB$는 $y$축에 평행하므로 정삼각형을 이루려면 $C(k,0)$에서 $AB$에 내린 수선이 $AB$를 수직이등분해야 한다.\n수선의 방정식은 $y=0$ ($x$축)이므로 선분 $AB$의 중점의 $y$좌표는 0이다.\n$\\frac{t^2 - \\frac{1}{2}t^2 + 2t}{2} = 0 \\rightarrow \\frac{1}{4}t^2 + t = 0 \\rightarrow t=-4$ ($t \\neq 0$)\n$t=-4$일 때 $A(-4, 16), B(-4, -16)$이므로 한 변의 길이는 32이다.\n정삼각형의 높이는 $\\frac{\\sqrt{3}}{2} \\times 32 = 16\\sqrt{3}$\n$k = t + 16\\sqrt{3} = -4 + 16\\sqrt{3}$ ($k>0$)\n따라서 $a = -4, b = 16 \\rightarrow a+b = 12$",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -549,7 +549,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -586,7 +586,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-09",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 9,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -622,7 +622,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-02",
     "standardUnit": "항등식과 나머지정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -645,14 +645,14 @@ window.questionBank = [
     "level": "중",
     "content": "서술형 1. 등식 $(3x - y) - (x - 2y)i = 4 + 2i$를 만족시키는 두 실수 $x, y$의 합 $x+y$의 값은?",
     "choices": [],
-    "answer": "④",
+    "answer": "4",
     "category": "복소수",
     "originalCategory": "복소수",
     "standardCourse": "수학(상)",
     "standardUnitKey": "H15-SA-04",
     "standardUnit": "복소수",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -680,7 +680,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -710,7 +710,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-13",
     "standardUnit": "이차함수",
     "standardUnitOrder": 13,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",

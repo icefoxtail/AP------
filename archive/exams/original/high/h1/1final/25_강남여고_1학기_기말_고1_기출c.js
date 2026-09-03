@@ -68,7 +68,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n서로 다른 5명 중 3명을 뽑아 순서를 정하므로 순열을 이용한다.\n조건 정리\n$5$명 중에서 $3$명을 뽑아 일렬로 세운다.\n풀이 과정\n경우의 수는 ${}_{5}P_{3}=5\\times4\\times3=60$이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -102,7 +102,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n조합과 순열의 값을 각각 구한 뒤 더하면 된다.\n조건 정리\n${}_{3}C_{2}$와 ${}_{5}P_{2}$를 계산한다.\n풀이 과정\n${}_{3}C_{2}=3$, ${}_{5}P_{2}=5\\times4=20$이다.\n따라서 ${}_{3}C_{2}+{}_{5}P_{2}=3+20=23$이다.\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -136,7 +136,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n연립부등식으로 나누어 각각 풀고 공통범위를 구한다.\n조건 정리\n$3x\\lt x+4$와 $x+4\\lt 4x+7$을 동시에 만족해야 한다.\n풀이 과정\n$3x\\lt x+4 \\implies 2x\\lt4 \\implies x\\lt2$\n$x+4\\lt4x+7 \\implies -3\\lt3x \\implies -1\\lt x$\n따라서 해는 $-1\\lt x\\lt2$이므로 $a=-1$, $b=2$이다.\n그러므로 $b-a=2-(-1)=3$이다.\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -173,7 +173,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n완전제곱식으로 고치면 최솟값을 바로 알 수 있다.\n조건 정리\n$y=x^2-2x+10$이다.\n풀이 과정\n$y=x^2-2x+10=(x-1)^2+9$\n$(x-1)^2\\ge0$이므로 최솟값은 $(x-1)^2=0$일 때의 값인 $9$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -316,7 +316,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n한 근이 $1$이고, 근의 평균이 꼭짓점의 $x$좌표와 같다는 성질을 이용한다.\n조건 정리\n그래프가 $(1,0)$을 지나므로 $x=1$은 방정식의 한 근이다.\n또한 꼭짓점의 $x$좌표는 $\\dfrac{\\alpha+\\beta}{2}=-2$이다.\n풀이 과정\n$\\alpha+\\beta=-4$\n한 근이 $1$이므로 다른 한 근은 $-5$이다.\n따라서 $|\\alpha-\\beta|=|1-(-5)|=6$이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -353,7 +353,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n연립방정식이 오직 한 쌍의 중근을 가지려면, $x,y$를 두 근으로 하는 이차방정식의 판별식이 $0$이 되어야 한다.\n조건 정리\n$x+y=a$, $x^2+y^2=8$이다.\n풀이 과정\n$x^2+y^2=(x+y)^2-2xy$이므로\n$8=a^2-2xy$\n따라서\n$xy=\\dfrac{a^2-8}{2}$이다.\n이제 $x,y$를 두 근으로 하는 이차방정식은\n$t^2-at+\\dfrac{a^2-8}{2}=0$이다.\n연립방정식이 오직 한 쌍의 중근을 가지려면 이 이차방정식이 중근을 가져야 하므로 판별식이 $0$이어야 한다.\n$D=(-a)^2-4\\cdot1\\cdot\\dfrac{a^2-8}{2}=0$\n$a^2-2(a^2-8)=0$\n$a^2-2a^2+16=0$\n$-a^2+16=0$\n$a^2=16$\n따라서 $a=-4$ 또는 $a=4$이다.\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -454,7 +454,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n구간 끝점과 꼭짓점에서의 함숫값을 비교하면 최댓값과 최솟값을 구할 수 있다.\n조건 정리\n$y=x^2-4x+k=(x-2)^2+k-4$이고 정의역은 $-2\\le x\\le3$이다.\n풀이 과정\n꼭짓점은 $x=2$이므로 최솟값은 $y(2)=k-4$이다.\n구간의 끝점에서\n$y(-2)=4+8+k=k+12$\n$y(3)=9-12+k=k-3$\n따라서 최댓값은 $k+12$이다.\n최댓값과 최솟값의 합이 $0$이므로\n$(k+12)+(k-4)=0$\n$2k+8=0 \\implies k=-4$\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -488,7 +488,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n먼저 $xy=4$를 이용해 둘째 식을 단순하게 만들고, $x+y$를 구한다.\n조건 정리\n$xy=4$이고 $2x^2y+2xy^2+x+y=45$이다.\n풀이 과정\n$2x^2y+2xy^2=2xy(x+y)=8(x+y)$\n따라서 둘째 식은\n$8(x+y)+(x+y)=45$\n$9(x+y)=45 \\implies x+y=5$\n그러므로 $x,y$는 방정식 $t^2-5t+4=0$의 두 근이므로 $x,y=1,4$이다.\n따라서\n$\\alpha^4+\\beta^4=1^4+4^4=1+256=257$\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -525,7 +525,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n세 수의 합이 짝수가 되려면 홀수의 개수가 짝수 개여야 한다.\n조건 정리\n홀수는 $\\{1,3,5,7\\}$의 $4$개, 짝수는 $\\{2,4,6,8\\}$의 $4$개이다.\n풀이 과정\n세 자리수의 각 자리수의 합이 짝수가 되려면\n(1) 짝수 3개를 택해 나열하는 경우\n${}_{4}C_{3}\\times3!=4\\times6=24$\n(2) 홀수 2개, 짝수 1개를 택해 나열하는 경우\n${}_{4}C_{2}\\times{}_{4}C_{1}\\times3!=6\\times4\\times6=144$\n따라서 전체 개수는 $24+144=168$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -596,7 +596,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n절댓값부등식의 해를 먼저 정확히 구하고, 같은 해를 갖는 이차부등식을 만든다.\n조건 정리\n$|x+1|+|x-2|\\le5$의 해와 $ax^2+bx+c\\le0$의 해가 같다.\n풀이 과정\n절댓값의 기준점은 $x=-1$, $x=2$이다.\n$|x+1|+|x-2|$는 수직선 위의 점 $x$에서 $-1$까지의 거리와 $2$까지의 거리의 합이다.\n두 점 $-1$과 $2$ 사이에서는 거리의 합이 항상 $3$이고, 양쪽 바깥으로 나가면 거리의 합이 커진다.\n이제 양 끝을 구하면 된다.\n$x\\le-1$일 때\n$|x+1|+|x-2|=-(x+1)-(x-2)=-2x+1$\n$-2x+1\\le5 \\implies -2x\\le4 \\implies x\\ge-2$\n따라서 이 구간에서는 $-2\\le x\\le-1$이다.\n$-1\\le x\\le2$일 때는 거리의 합이 $3$이므로 모두 만족한다.\n$x\\ge2$일 때\n$|x+1|+|x-2|=(x+1)+(x-2)=2x-1$\n$2x-1\\le5 \\implies 2x\\le6 \\implies x\\le3$\n따라서 이 구간에서는 $2\\le x\\le3$이다.\n전체 해는 $-2\\le x\\le3$이다.\n이 구간을 해로 갖는 이차부등식은 위로 열린 포물선에서 두 근 사이가 $0$ 이하가 되어야 하므로\n$(x+2)(x-3)\\le0$로 둘 수 있다.\n전개하면\n$x^2-x-6\\le0$이다.\n따라서 $a=1$, $b=-1$, $c=-6$이므로\n$\\dfrac{bc}{a}=\\dfrac{(-1)(-6)}{1}=6$이다.\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -626,7 +626,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 이차함수와 직선의 교점을 구하고 평행선을 이용해 다른 교점을 찾아 넓이를 계산한다.\n조건 정리: 점 $A$, $B$는 이차함수와 직선의 교점이며, $x$축과 평행한 선을 그어 교점 $C$, $D$를 잡는다.\n풀이 과정:\n1. 이차함수 $f(x)=x^2-4x$와 직선 $y=-2x+3$의 교점 $A, B$의 $x$좌표를 구한다.\n$x^2-4x = -2x+3 \\implies x^2-2x-3=0 \\implies (x-3)(x+1)=0$\n$x=-1$ 또는 $x=3$이고 $x_A < x_B$이므로 $x_A = -1, x_B = 3$이다.\n교점의 좌표는 $A(-1, f(-1)) = A(-1, 5)$, $B(3, f(3)) = B(3, -3)$이다.\n2. 점 $C$와 점 $D$의 좌표를 구한다.\n점 $C$는 점 $A$를 지나고 $x$축에 평행한 직선($y=5$)과 이차함수의 교점이므로 $x^2-4x=5 \\implies x^2-4x-5=0 \\implies (x-5)(x+1)=0$. $A$가 아닌 점이므로 $x_C=5$이며, 점 $C$의 좌표는 $(5, 5)$이다.\n점 $D$는 점 $B$를 지나고 $x$축에 평행한 직선($y=-3$)과 이차함수의 교점이므로 $x^2-4x=-3 \\implies x^2-4x+3=0 \\implies (x-3)(x-1)=0$. $B$가 아닌 점이므로 $x_D=1$이며, 점 $D$의 좌표는 $(1, -3)$이다.\n3. 삼각형의 넓이 $S$와 $T$를 구한다.\n삼각형 $ABD$의 밑변 $BD$의 길이는 $|3-1|=2$이고 높이는 $5 - (-3) = 8$이므로\n$S = \\frac{1}{2} \\times 2 \\times 8 = 8$\n삼각형 $ABC$의 밑변 $AC$의 길이는 $|5 - (-1)| = 6$이고 높이는 $5 - (-3) = 8$이므로\n$T = \\frac{1}{2} \\times 6 \\times 8 = 24$\n4. $S:T = 8:24 = 1:3$이므로 $a=1, b=3$이다. $a, b$는 서로소이므로 $a+b = 4$이다.\n결론: 최종 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -663,7 +663,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n연립부등식의 정수해가 어떤 연속된 정수 집합이 되는지 확인한 뒤, 그 합이 $-3$이 되도록 경계를 잡는다.\n조건 정리\n$3x+6\\gt5x$, $x-2\\gt-2x+a$를 동시에 만족한다.\n풀이 과정\n첫째 부등식에서\n$3x+6\\gt5x \\implies 6\\gt2x \\implies x\\lt3$\n둘째 부등식에서\n$x-2\\gt-2x+a \\implies 3x\\gt a+2 \\implies x\\gt\\dfrac{a+2}{3}$\n따라서 정수해는\n$\\dfrac{a+2}{3}\\lt x\\lt3$을 만족하는 정수들이다.\n오른쪽 경계가 $x\\lt3$으로 고정되어 있으므로 가능한 정수해는 항상 $2$ 이하의 연속된 정수들이다.\n정수해의 합이 $-3$이 되려면, $2$ 이하의 연속된 정수 중 끝이 $2$인 집합을 생각하면 된다.\n$-2,-1,0,1,2$의 합은 $0$이고,\n$-3,-2,-1,0,1,2$의 합은 $-3$이다.\n여기에 $-4$까지 포함되면 합은 $-7$이 되어 조건에 맞지 않는다.\n따라서 정수해는 정확히\n$-3,-2,-1,0,1,2$이어야 한다.\n즉 $-3$은 포함되고 $-4$는 포함되지 않아야 한다.\n$-3$이 포함되려면\n$\\dfrac{a+2}{3}\\lt-3$\n$-4$가 포함되지 않으려면\n$\\dfrac{a+2}{3}\\ge-4$\n따라서\n$-4\\le\\dfrac{a+2}{3}\\lt-3$\n양변에 $3$을 곱하면\n$-12\\le a+2\\lt-9$\n따라서\n$-14\\le a\\lt-11$\n정수 $a$는 $-14,-13,-12$이므로\n$M=-12$, $m=-14$이다.\n그러므로\n$M-m=(-12)-(-14)=2$이다.\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -693,7 +693,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 그래프의 교점을 구하여 범위를 정하고, 길이에 대한 식을 세워 최댓값을 구한다.\n조건 정리: 점 $P$는 포물선 위, 점 $Q$는 직선 위의 점이며, $t$의 범위 내에서 $\\overline{PQ}$의 길이를 이차식으로 나타낸다.\n풀이 과정:\n1. 이차함수 $f(x) = -x^2 + 4x$와 직선 $y = x$의 교점 $A$를 구한다.\n$-x^2 + 4x = x \\implies x^2 - 3x = 0 \\implies x(x - 3) = 0$\n원점이 아닌 점이 $A$이므로 $x_A = 3$이다. 따라서 $a = 3$이다.\n2. 선분 $PQ$의 길이를 $t$에 관한 식으로 나타낸다.\n점 $P$의 $y$좌표는 $f(t) = -t^2 + 4t$이고, 점 $Q$의 $y$좌표는 $t$이다.\n$0 < t < 3$ 범위에서 포물선이 직선보다 위쪽에 있으므로\n$\\overline{PQ} = (-t^2 + 4t) - t = -t^2 + 3t$\n3. $\\overline{PQ}$의 최댓값을 구한다.\n$L(t) = -t^2 + 3t = -(t^2 - 3t) = -\\left(t - \\frac{3}{2}\\right)^2 + \\frac{9}{4}$\n따라서 $t = \\frac{3}{2}$일 때 최댓값 $\\frac{9}{4}$를 가진다.\n4. $m, n, p, q$ 값을 정한다.\n$t = \\frac{n}{m} = \\frac{3}{2} \\implies n = 3, m = 2$\n최댓값 $\\frac{q}{p} = \\frac{9}{4} \\implies q = 9, p = 4$\n$m + n + p + q = 2 + 3 + 4 + 9 = 18$이다.\n결론: 최종 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -755,7 +755,7 @@ window.questionBank = [
     "answer": "8",
     "solution": "[키포인트]\n두 부등식의 해집합을 각각 구한 뒤, 교집합이 정확히 $4\\lt x\\le6$이 되도록 $a$의 범위를 정한다.\n조건 정리\n첫째 부등식은 $x^2-x\\gt12$, 둘째 부등식은 $x^2-(a+5)x+6a\\le6$이다.\n풀이 방향 설정\n첫째 부등식의 해를 구하고, 둘째 부등식의 해구간이 어디까지 포함되어야 교집합이 $4\\lt x\\le6$이 되는지 본다.\n풀이 과정\n첫째 부등식은\n$x^2-x-12\\gt0 \\implies (x-4)(x+3)\\gt0$\n따라서 해는 $x\\lt-3$ 또는 $x\\gt4$이다.\n둘째 부등식은\n$x^2-(a+5)x+6a-6\\le0$\n$x=6$을 대입하면 항상 $0$이므로\n$(x-6)(x-(a-1))\\le0$\n즉 해는 두 근 사이의 구간이다.\n이 부등식의 해를 $[\\min(a-1,6),\\max(a-1,6)]$라 하면, 첫째 부등식의 해 $x\\gt4$와의 교집합이 정확히 $4\\lt x\\le6$이 되어야 한다.\n그러려면 둘째 부등식의 해구간이 오른쪽 끝 $6$을 포함하면서 왼쪽 끝이 $-3$ 이상 $4$ 이하이어야 하므로\n$-3\\le a-1\\le4$\n따라서\n$-2\\le a\\le5$\n이 범위의 정수는 $-2,-1,0,1,2,3,4,5$로 모두 $8$개이다.\n결론\n따라서 구하는 값은 $8$이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -786,7 +786,7 @@ window.questionBank = [
     "answer": "16",
     "solution": "[키포인트]\n$a$는 조합으로 바로 구하고, $b$는 반드시 포함되는 종류를 먼저 정한 뒤 남은 종류에서 고른다.\n조건 정리\n운동화는 $3$종류, 장화는 $4$종류, 구두는 $4$종류이다.\n풀이 방향 설정\n$a$는 장화와 구두의 선택 수를 곱하고, $b$는 이미 정해진 $5$종류를 포함한 상태에서 나머지 $3$켤레를 고르는 경우의 수를 구한다.\n풀이 과정\n$a={}_{4}C_{2}\\times{}_{4}C_{2}=6\\times6=36$\n$b$에서는 특정한 운동화 $1$종류, 장화 $2$종류, 구두 $2$종류의 총 $5$종류가 이미 포함된다.\n전체 종류 수는 $3+4+4=11$이므로, 이 $5$종류를 제외한 나머지 종류는 $6$개이다.\n8켤레를 사기 위해서는 이 $6$개 중에서 $3$종류를 더 고르면 되므로\n$b={}_{6}C_{3}=20$\n따라서\n$a-b=36-20=16$\n결론\n따라서 구하는 값은 $16$이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

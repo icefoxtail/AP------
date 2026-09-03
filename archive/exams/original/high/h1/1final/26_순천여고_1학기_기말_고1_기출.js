@@ -53,7 +53,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 조합의 계산식을 이용하여 약분한다.\n조건 정리: 서로 다른 7개 중 3개를 순서와 관계없이 고르는 수를 구한다.\n풀이 방향: ${}_{7}C_{3}=\\dfrac{7!}{4!3!}$에서 공통으로 포함된 $4!$을 약분한다.\n정석 풀이: ${}_{7}C_{3}=\\dfrac{7\\times6\\times5\\times4!}{4!\\times3\\times2\\times1}=\\dfrac{7\\times6\\times5}{3\\times2\\times1}=35$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -165,7 +165,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] $x$축과 만나는 두 점의 $x$좌표는 이차방정식의 두 근이다.\n조건 정리: 방정식 $x^2+ax-15=0$의 두 근은 $3,b$이다.\n풀이 방향: 두 근의 곱으로 $b$를 구한 뒤 두 근의 합으로 $a$를 구한다.\n정석 풀이: 두 근의 곱은 $3b=-15$이므로 $b=-5$이다. 두 근의 합은 $3+b=-a$이므로 $-2=-a$, 따라서 $a=2$이다. 그러므로 $a+b=2+(-5)=-3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -221,7 +221,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 부등식의 해를 각각 구한 뒤 공통 범위에 있는 정수만 더한다.\n조건 정리: 절댓값의 기준점은 $-1,2$이고, 이차부등식은 인수분해할 수 있다.\n풀이 방향: 첫째 부등식과 둘째 부등식을 따로 풀어 교집합을 구한다.\n정석 풀이: $|x+1|+|x-2|\\le5$를 구간별로 풀면 $-2\\le x\\le3$이다. 또 $-2x^2+7x-6\\le0$은 $(2x-3)(x-2)\\ge0$과 같으므로 $x\\le\\dfrac{3}{2}$ 또는 $x\\ge2$이다. 두 해의 공통 범위에 있는 정수는 $-2,-1,0,1,2,3$이고, 그 합은 $3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -333,7 +333,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $|x|$를 새로운 문자로 두면 절댓값이 포함된 식을 한 개의 이차함수로 볼 수 있다.\n조건 정리: $-4\\le x\\le3$이므로 $t=|x|$의 범위는 $0\\le t\\le4$이다.\n풀이 방향: $y$를 $t$에 대한 완전제곱식으로 바꾼다.\n정석 풀이: $y=2t^2-4t-3=2(t-1)^2-5$이다. 최솟값은 $t=1$일 때 $m=-5$이다. 위로 열린 포물선이므로 최댓값은 구간의 양 끝을 비교해 구한다. $t=0$일 때 $y=-3$, $t=4$일 때 $y=13$이므로 $M=13$이다. 따라서 $M+m=13+(-5)=8$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -361,7 +361,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 자음의 상대적인 순서는 고정하고, 자음이 들어갈 자리와 모음의 순서를 따로 센다.\n조건 정리: 자음은 $b,c,d,f$의 4개이고 반드시 이 순서로 놓인다. 모음은 $a,e$의 2개이다.\n풀이 방향: 여섯 자리 중 자음의 네 자리를 고른 뒤 모음의 순서를 정한다.\n정석 풀이: 자음이 들어갈 네 자리를 고르는 방법은 ${}_{6}C_{4}=15$가지이다. 선택된 자리에는 $b,c,d,f$가 알파벳 순서로 하나의 방법으로 놓인다. 남은 두 자리에 모음 $a,e$를 놓는 방법은 $2!=2$가지이다. 따라서 전체 경우의 수는 $15\\times2=30$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -445,7 +445,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 첫째 자리와 둘째 자리를 차례로 고정하여 83번째 수가 속한 묶음을 찾는다.\n조건 정리: 첫째 자리에는 0이 올 수 없고, 나머지 네 자리는 각각 $4!=24$가지로 배열된다.\n풀이 방향: 첫째 자리별 24개씩 건너뛴 뒤, 남은 순서를 다시 작은 묶음으로 나눈다.\n정석 풀이: 첫째 자리가 1, 2, 3인 수는 각각 24개이므로 처음 72개를 차지한다. 따라서 83번째 수는 첫째 자리가 4인 수 중 11번째이다. 남은 숫자는 $0,1,2,3$이다. 둘째 자리가 0인 수가 $3!=6$개이므로 이를 지나면, 둘째 자리가 1인 수 중 5번째를 찾으면 된다. 남은 $0,2,3$의 배열을 작은 순서로 쓰면 $023,032,203,230,302,320$이므로 5번째는 $302$이다. 따라서 83번째 수는 $41302$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -473,7 +473,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 그래프가 $x$축과 만나지 않는 조건은 대응하는 이차방정식의 판별식이 0보다 작은 것이다.\n조건 정리: $a,b$는 각각 1부터 6까지의 정수이다.\n풀이 방향: 판별식 조건을 $|a-b|$에 대한 조건으로 바꾼 뒤 전체 경우에서 제외되는 경우를 뺀다.\n정석 풀이: 판별식은 $(a+b)^2-4(ab+4)=(a-b)^2-16$이다. 실근이 없으려면 $(a-b)^2-16\\lt0$, 즉 $|a-b|\\lt4$이어야 한다. 전체 순서쌍은 $6\\times6=36$가지이다. 조건을 만족하지 않는 것은 $|a-b|=4$인 4가지와 $|a-b|=5$인 2가지로 모두 6가지이다. 따라서 구하는 경우의 수는 $36-6=30$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -605,7 +605,7 @@ window.questionBank = [
     "answer": "$n=4,5,6,7$",
     "solution": "[키포인트] 첫째 부등식이 허용하는 네 정수 중 둘째 부등식이 정확히 하나만 제외하도록 하는 $n$을 찾는다.\n조건 정리: 첫째 부등식은 $(x-3)(x-6)\\le0$이고, 둘째 식은 $(x-n)(x-n+2)\\ge0$으로 인수분해된다.\n풀이 방향: 첫째 부등식의 정수해를 먼저 구한 뒤, 둘째 부등식이 제외하는 정수를 확인한다.\n정석 풀이: 첫째 부등식의 해는 $3\\le x\\le6$이므로 가능한 정수는 $3,4,5,6$의 4개이다. 둘째 부등식의 해는 $x\\le n-2$ 또는 $x\\ge n$이므로 정수 중에서는 $x=n-1$만 만족하지 않는다. 따라서 네 정수 중 정확히 하나가 제외되어 정수해가 3개가 되려면 $n-1$이 $3,4,5,6$ 중 하나여야 한다. 그러므로 $n=4,5,6,7$이다.\n따라서 구하는 모든 자연수는 $n=4,5,6,7$이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -634,7 +634,7 @@ window.questionBank = [
     "imageSize": "tall",
     "visualAssetStatus": "cropped_for_manual_cleanup",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

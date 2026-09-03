@@ -61,7 +61,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 일차부등식의 해의 공통부분을 구한다.\n$2x-3>7$에서 $x>5$, $3x-8<16$에서 $x<8$이다. 따라서 $5<x<8$이다.\n결론: 정답은 ④이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -158,7 +158,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 순열, 조합, 계승을 각각 계산한다.\n${}_5P_2=20$, ${}_5C_2=10$, $4!=24$이므로 합은 $20+10+24=54$이다.\n결론: 정답은 ④이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -254,7 +254,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $(x-y)^2$과 $(x+y)^2$을 이용한다.\n$(x-y)^2=x^2+y^2-2xy$이므로 $36=20-2xy$, $xy=-8$이다. 따라서 $(x+y)^2=20+2(-8)=4$이므로 $|x+y|=2$이다.\n결론: 정답은 ②이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -318,7 +318,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 가장 작은 수를 $n$으로 둔다.\n합은 $n+(n+1)+(n+2)+(n+3)=4n+6$이다. $62<4n+6<70$에서 $14<n<16$이므로 $n=15$이다. 가장 큰 수는 $18$이다.\n결론: 정답은 ⑤이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -351,7 +351,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 서로 다른 공은 순열, 같은 공은 조합으로 센다.\n서로 다른 공은 ${}_4P_3=24$가지, 같은 공은 상자 3개를 고르는 ${}_4C_3=4$가지이다. 따라서 $a+b=28$이다.\n결론: 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -417,7 +417,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 조건별로 조합과 여사건을 사용한다.\n$a={}_5C_2{}_6C_2=150$이다. $b={}_{11}C_4-{}_5C_4-{}_6C_4=330-5-15=310$이다. 특정 남학생 2명을 포함한 뒤 나머지 9명 중 2명을 고르므로 $c={}_9C_2=36$이다. 따라서 $a+b+c=496$이다.\n결론: 정답은 ④이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -603,7 +603,7 @@ window.questionBank = [
     "answer": "$60$",
     "solution": "[키포인트] 어른을 먼저 배치한 뒤, 어른이 있는 텐트의 남은 자리에 어린이를 배치한다.\n텐트 $(A,B,C)$에 들어가는 어른 수를 순서쌍으로 나타내자. 어린이 2명을 수용할 수 있는 경우만 세면 된다.\n어른 수가 $(0,1,2)$ 또는 $(1,0,2)$이면 어른 배치는 각각 $3$가지이고 어린이 배치는 각각 $2$가지이므로 $3\\cdot2\\cdot2=12$가지이다.\n$(0,2,1)$ 또는 $(2,0,1)$이면 어른 배치는 각각 $3$가지이고 어린이 두 명은 모두 $C$에 들어가야 하므로 $3\\cdot1\\cdot2=6$가지이다.\n$(1,1,1)$이면 어른 배치는 $3!=6$가지이다. 어린이의 텐트 선택은 $3^2=9$가지이지만 두 어린이가 모두 $A$ 또는 모두 $B$에 들어가는 2가지는 정원을 넘으므로 $7$가지이다. 따라서 $6\\cdot7=42$가지이다.\n나머지 어른 배치는 어린이 2명을 조건에 맞게 수용할 수 없다. 그러므로 전체는 $12+6+42=60$가지이다.\n따라서 구하는 방법의 수는 $60$이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

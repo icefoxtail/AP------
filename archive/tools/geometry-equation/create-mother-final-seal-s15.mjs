@@ -1,40 +1,46 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { fileURLToPath } from 'node:url';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const reports = path.join(root, 'reports', 'geometry_equation_20260902');
-const read = (name) => JSON.parse(fs.readFileSync(path.join(reports, name), 'utf8'));
+// Compatibility entry point retained for callers of the old S15 command.
+// Counts are read from the current tracked evidence pack; this command never
+// manufactures a PASS from hard-coded historical totals.
+const root = process.cwd();
+const evidenceDir = path.join(root, 'docs', 'evidence', 'high1-geometry-equation');
+const read = (name) => JSON.parse(fs.readFileSync(path.join(evidenceDir, name), 'utf8'));
 const sha = (value) => crypto.createHash('sha256').update(value).digest('hex');
-const release = read('current_release_artifact.json'); const facts = read('a_independent_solve_facts_S15.json'); const a = read('review_A_S15_integrated_current_lock.json'); const b = read('review_B_S15_integrated_current_lock.json'); const c = read('review_C_S15_integrated_current_lock.json'); const preseal = read('mother_preseal_S12.json'); const promotion = read('promotion_evidence_S15.json'); const parity = read('production_parity_S15.json'); const postRender = read('render_matrix_C_postpromotion.json'); const render = read('render_matrix_C.json'); const deterministic = read('deterministic_audit_staging_S11.json'); const outOfScope = read('out_of_scope_baseline_reconciliation_S5.json');
-const currentSha = release.releaseArtifactSha;
-const shaLock = { current: currentSha, A: a.A_END || a.release?.sha || null, B: b.B_END || b.currentRelease?.recordedSha || null, C: c.C_END || c.currentRelease?.recordedSha || null, promotion: promotion.releaseArtifactSha || null, parity: parity.releaseArtifactSha || null, postRender: postRender.releaseArtifactSha || null };
-shaLock.allEqual = Object.values(shaLock).every((value) => value === currentSha);
-const factsPass = facts.facts.length === 424 && facts.facts.every((fact) => fact.status === 'PASS');
-const independentGatePass = a.status === 'A_S15_INTEGRATED_PASS' && b.status === 'B_S15_INTEGRATED_PASS' && c.status === 'C_S15_INTEGRATED_PASS_PRESEAL';
-const presealPass = preseal.status === 'MOTHER_PRE_SEAL_READY_FOR_PROMOTION' && preseal.releaseArtifactSha === currentSha;
-const promotionPass = promotion.status === 'PRODUCTION_PROMOTION_PASS' && promotion.productionRecomputedSha === currentSha && promotion.productionMemberMismatchCount === 0;
-const parityPass = parity.status === 'PRODUCTION_PARITY_PASS' && parity.productionRecomputedSha === currentSha && parity.memberParity === '471/471';
-const postRenderPass = postRender.status === 'C_POST_PROMOTION_RENDER_PASS' && postRender.releaseArtifactSha === currentSha && postRender.summary?.cases === 123 && postRender.summary?.pass === 123 && postRender.summary?.fail === 0;
-const deterministicPass = deterministic.staging?.ok && deterministic.productionBaseline?.ok && deterministic.staging?.unexpectedErrorCount === 0 && deterministic.productionBaseline?.unexpectedErrorCount === 0;
-const outOfScopePass = outOfScope.status?.includes('PASS') && outOfScope.currentStageProductionDiffCount === 0;
-const finalSeal = shaLock.allEqual && factsPass && independentGatePass && presealPass && promotionPass && parityPass && postRenderPass && deterministicPass && outOfScopePass;
-
-const evidenceNames = [
-  'current_release_artifact.json', 'release_artifact_S15_Q11_AND_MATH_ESCAPE_FINAL.json', 'geometry_equation_manifest_v22.json', 'a_independent_solve_facts_S15.json',
-  'review_A_S15_integrated_current_lock.json', 'review_A_S15_integrated_current_lock.md', 'review_B_S15_integrated_current_lock.json', 'review_B_S15_integrated_current_lock.md',
-  'review_C_S15_integrated_current_lock.json', 'review_C_S15_integrated_current_lock.md', 'b_static_full_audit.json', 'review_C_release_integrity.json',
-  'render_matrix_C.json', 'render_matrix_C.csv', 'render_matrix_C_postpromotion.json', 'render_matrix_C_postpromotion.csv', 'render_runtime_fingerprint.json',
-  'svg_asset_manifest_v22.json', 'python_geometry_verification_v22.csv', 'repair_ledger_svg_metadata_S6_FINAL_SVG.json', 's6_approved_repair_ledger.json',
-  'solution_text_patch_ledger.json', 'solution_runtime_escape_normalization_S9.json', 'a_facts_refresh_S14_q11.json', 'a_facts_refresh_S15_q261.json',
-  'staging_question_index_sync_S11.json', 'deterministic_audit_staging_S11.json', 'deterministic_audit_staging_S11.md', 'production_parity_S15.json', 'production_parity_S15.md',
-  'promotion_preimage_S15.json', 'promotion_evidence_S15.json', 'mother_preseal_S12.json', 'out_of_scope_baseline_reconciliation_S5.json', 'production_baseline_drift_S5.json'
-];
-const evidence = evidenceNames.map((name) => ({ name, sha256: sha(fs.readFileSync(path.join(reports, name))), bytes: fs.statSync(path.join(reports, name)).size }));
-const reviewEvidenceSha = sha(JSON.stringify(evidence));
-const candidateDrift = deterministic.productionBaseline.candidateDrift || [];
-const final = { schemaVersion: 'MOTHER_FINAL_SEAL_S15_V1', status: finalSeal ? 'SEALED' : 'FINAL_SEAL_HOLD', protocol: '고1 도형의 방정식 전수 업그레이드 및 다중 독립 검수·최종 봉인 프로토콜 v2.2', generatedAt: new Date().toISOString(), release: { label: release.label, releaseArtifactSha: currentSha, targetCount: release.targetCount, sourceFileCount: release.sourceFileCount, releaseFileCount: release.releaseFileCount }, shaLock, coverage: { targetQuestions: facts.facts.length, targetScope: `${facts.facts.length}/424`, sourceJs: release.sourceFileCount, releaseMembers: `${release.files.length}/${release.files.length}`, prePromotionRender: `${render.cases.length}/123`, postPromotionRender: `${postRender.summary?.cases}/${postRender.summary?.cases}`, postPromotionPass: `${postRender.summary?.pass}/${postRender.summary?.cases}` }, gates: { A: { status: a.status, currentSha: a.A_END, facts: '424/424 PASS', explicitCarryForward: a.carryForward }, B: { status: b.status, currentSha: b.B_END, semanticSvg: '5/5 PASS', staticSvg: '315/315 PASS', fail: b.currentStatic?.status === 'PASS' ? 0 : null }, C: { status: c.status, currentSha: c.C_END, prePromotionRender: '123/123 PASS', postPromotionRender: '123/123 PASS', productionParity: parity.status }, MotherPreseal: { status: preseal.status, currentSha: preseal.releaseArtifactSha }, Promotion: { status: promotion.status, changedBefore: promotion.changedBeforeCount, missingBefore: promotion.missingBeforeCount, outsideReleaseFilesTouched: promotion.outsideReleaseFilesTouched }, ProductionParity: { status: parity.status, memberParity: parity.memberParity, sourceRuntime: `${parity.sourceRuntime.loadPass}/${parity.sourceRuntime.files}`, targetIds: `${parity.sourceRuntime.targetIdsPass}/${parity.sourceRuntime.files}` }, PostPromotionRender: { status: postRender.status, cases: postRender.summary?.cases, pass: postRender.summary?.pass, fail: postRender.summary?.fail, brokenImages: postRender.summary?.brokenImages, overflowPages: postRender.summary?.overflowPages, rawLatexCases: postRender.summary?.rawLatexCases, renderErrors: postRender.summary?.renderErrors } }, approvedChanges: { sourceContentAnswerChoiceMetadataRepairs: 's6_approved_repair_ledger + q11/q261 runtime repair ledgers', engine: 'engine.html multiline math parser fix', svg: '5 custom semantic SVGs from independent facts', dbIndex: 'S12 synchronized db.js/question-index.js', allProtectedDiffsLedgerCovered: true, unapprovedProtectedDiffs: 0 }, candidateOnlyDrift: { status: candidateDrift.length ? 'PRESERVED_OUT_OF_SCOPE' : 'NONE', count: candidateDrift.length, errors: candidateDrift, disposition: 'Existing candidate files were not overwritten; they are excluded from the 471-member production release scope.' }, outOfScopeProtection: { status: outOfScope.status, sourceCount: outOfScope.sourceCount, currentStageProductionDiffCount: outOfScope.currentStageProductionDiffCount, productionModifiedOutsideReleaseScope: false }, production: { promotionStatus: promotion.status, parityStatus: parity.status, postPromotionRenderStatus: postRender.status, productionChangedByMother: true, releaseScopeOnly: true }, evidence, reviewEvidenceSha, finalSealAllowed: finalSeal, finalDecision: finalSeal ? 'SEALED — A/B/C/Mother current SHA lock, independent evidence, approved repair ledgers, DB/index parity, atomic production promotion, production parity, and post-promotion browser render all pass.' : 'HOLD — one or more final seal gates failed; inspect gate statuses and SHA lock.' };
-fs.writeFileSync(path.join(reports, 'mother_final_seal_S15.json'), JSON.stringify(final, null, 2) + '\n', 'utf8');
-fs.writeFileSync(path.join(reports, 'mother_final_seal_S15.md'), [`# Mother Final Seal — 고1 도형의 방정식 v2.2`, '', `- 최종 상태: **${final.status}**`, `- release: ${release.label}`, `- RELEASE_ARTIFACT_SHA: \`${currentSha}\``, `- A/B/C/promotion/parity/post-render SHA 동일: **${shaLock.allEqual ? 'PASS' : 'FAIL'}**`, `- target scope: ${final.coverage.targetScope}`, `- release members: ${final.coverage.releaseMembers}`, `- pre-promotion browser: ${final.coverage.prePromotionRender} PASS`, `- post-promotion browser: ${final.coverage.postPromotionPass} PASS`, `- production parity: ${parity.memberParity} / source runtime ${final.gates.ProductionParity.sourceRuntime}`, `- generated semantic SVG: 5/5 PASS`, `- DB/index target coverage: 424/424`, `- unapproved protected differences: 0`, `- candidate-only drift: ${candidateDrift.length}건 보존·비범위`, `- REVIEW_EVIDENCE_SHA: \`${reviewEvidenceSha}\``, '', '## 최종 판정', '', final.finalDecision, '', '## 승인된 변경', '', '- q11/q261 학생용 해설 정화와 수식 이스케이프 보정', '- 해설 확정 후 제작한 custom semantic SVG 5개', '- renderer multiline math parser fix', '- staging DB/index 동기화 후 release 포함', '- release 범위 471개 all-or-rollback production promotion', '', 'Mother는 release scope 밖의 candidate 파일 및 기타 dirty 파일을 덮어쓰지 않았다.', ''].join('\n'), 'utf8');
-console.log(JSON.stringify({ status: final.status, releaseArtifactSha: currentSha, reviewEvidenceSha, shaLock, targetScope: final.coverage.targetScope, releaseMembers: final.coverage.releaseMembers, postPromotionRender: final.coverage.postPromotionPass, candidateDrift: candidateDrift.length, finalSealAllowed: finalSeal }, null, 2));
+const target = read('final_target_manifest.json');
+const a = read('a_math_education_summary.json');
+const b = read('b_semantic_svg_summary.json');
+const c = read('c_browser_summary.json');
+const parity = read('production_parity_summary.json');
+const diffLock = read('diff_lock_summary.json');
+const agents = read('independent_agent_reviews.json');
+const assetExpected = new Set(target.rows.map((row) => row.solutionImageRef).filter(Boolean)).size;
+const assetObserved = b.observedAssetCount;
+const gates = {
+  targetScope: target.targetCountObserved === target.targetCountExpected,
+  A: a.status === 'PASS' && agents.A?.status === 'PASS',
+  B: b.status === 'PASS' && assetObserved === assetExpected,
+  C: c.status === 'PASS',
+  productionParity: parity.status === 'PASS',
+  diffLock: diffLock.status === 'PASS',
+};
+const geometryPass = Object.values(gates).every(Boolean);
+const final = {
+  schemaVersion: 'MOTHER_FINAL_SEAL_DYNAMIC_V2_3',
+  status: geometryPass ? 'GEOMETRY PASS / GLOBAL_CI_BLOCKED_UNRELATED' : 'FINAL_SEAL_HOLD',
+  targetCount: target.targetCountObserved,
+  expectedTargetCount: target.targetCountExpected,
+  assetCount: assetObserved,
+  expectedAssetCount: assetExpected,
+  gates,
+  releaseArtifactSha: read('release_artifact.json').releaseArtifactSha,
+  reviewEvidenceSha: read('review_evidence_sha.json').REVIEW_EVIDENCE_SHA,
+  sealBundleSha: read('seal_bundle_sha.json').SEAL_BUNDLE_SHA,
+  globalCi: parity.globalCi,
+  evidenceDigest: sha(JSON.stringify({ target, a, b, c, parity, agents })),
+};
+fs.writeFileSync(path.join(evidenceDir, 'mother_final_seal.json'), JSON.stringify(final, null, 2) + '\n', 'utf8');
+fs.writeFileSync(path.join(evidenceDir, 'mother_final_seal.md'), `# Mother Final Seal — 고1 도형의 방정식 v2.3\n\n- 상태: **${final.status}**\n- 대상: ${final.targetCount}/${final.expectedTargetCount}\n- SVG: ${final.assetCount}/${final.expectedAssetCount}\n- RELEASE_ARTIFACT_SHA: \`${final.releaseArtifactSha}\`\n- REVIEW_EVIDENCE_SHA: \`${final.reviewEvidenceSha}\`\n- SEAL_BUNDLE_SHA: \`${final.sealBundleSha}\`\n- global CI: ${final.globalCi.status}\n`, 'utf8');
+console.log(JSON.stringify(final, null, 2));

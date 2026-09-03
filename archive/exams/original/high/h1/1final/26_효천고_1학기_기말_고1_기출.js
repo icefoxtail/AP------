@@ -53,7 +53,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 순열과 조합의 정의를 각 보기마다 확인한다.\n조건 정리: $n$개 중 0개를 순서 있게 고르는 방법은 아무것도 고르지 않는 한 가지 방법이다.\n풀이 방향: 보기의 식을 하나씩 정의와 비교한다.\n정석 풀이: ①은 $5!$의 정의이므로 옳다. ②는 ${}_{5}P_{3}=5\\times4\\times3$이므로 옳다. ${}_{5}P_{0}$은 아무것도 고르지 않는 한 가지 방법이므로 $1$이다. 따라서 ③의 ${}_{5}P_{0}=0$은 옳지 않다. ④는 조합 공식이고, ⑤는 ${}_{n}C_{r}={}_{n}C_{n-r}$에 의해 옳다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -109,7 +109,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] $x$축과의 교점의 $x$좌표는 이차방정식의 두 근이다.\n조건 정리: $x^2-3x-10=0$의 두 근이 $a,b$이다.\n풀이 방향: 식을 인수분해하거나 두 근의 합을 이용한다.\n정석 풀이: $x^2-3x-10=(x-5)(x+2)$이므로 두 근은 $5,-2$이다. 따라서 $a+b=5+(-2)=3$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -224,7 +224,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 꼭짓점 $x=a$가 주어진 구간 안에 있는지에 따라 최솟값의 위치를 나눈다.\n조건 정리: $f(x)=(x-a)^2-2a-4$이고 $a>0$이다.\n풀이 방향: $0<a\\le2$와 $a>2$를 나누어 최솟값이 $0$이 되는지 확인한다.\n정석 풀이: $0<a\\le2$이면 꼭짓점 $x=a$가 구간 안에 있으므로 최솟값은 $-2a-4<0$이다. 따라서 이 경우는 불가능하다. $a>2$이면 구간 $0\\le x\\le2$에서 $x=a$보다 왼쪽에 있으므로 함수는 감소하고, 최솟값은 $x=2$에서 갖는다. $f(2)=4-4a+a^2-2a-4=a^2-6a=a(a-6)$이다. 이것이 $0$이고 $a>2$이므로 $a=6$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -311,7 +311,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 이차부등식의 해가 되는 열린구간이 겹치지 않는 최소의 $a$를 찾는다.\n조건 정리: 첫 식은 $(x+1)(x-a)<0$, 둘째 식은 $(x+a)(x+5)<0$이다.\n풀이 방향: 양수 $a$의 크기에 따라 각 부등식의 해 구간을 비교한다.\n정석 풀이: 첫 부등식의 해는 항상 $-1<x<a$이다. $0<a<5$일 때 둘째 부등식의 해는 $-5<x<-a$이다. 두 구간이 겹치려면 $-1<-a$, 즉 $a<1$이어야 한다. 따라서 $a\\ge1$이면 공통해가 없다. $a\\ge5$인 경우에도 둘째 구간은 $-a<x<-5$이므로 첫 구간과 겹치지 않는다. 그러므로 가능한 양수 $a$의 최솟값은 $1$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -339,7 +339,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 밴드와 두 댄스 팀의 상대적인 순서만 먼저 본다.\n조건 정리: 5개 팀은 모두 서로 다르고, 밴드가 두 댄스 팀보다 앞에 있어야 한다.\n풀이 방향: 전체 배열 중 밴드가 세 팀 가운데 가장 먼저 오는 비율을 이용한다.\n정석 풀이: 서로 다른 5개 팀을 나열하는 전체 경우는 $5!=120$가지이다. 밴드와 두 댄스 팀만의 상대적인 순서는 $3!=6$가지이고, 밴드가 가장 앞에 오는 순서는 뒤의 두 댄스 팀을 바꾸는 $2!=2$가지이다. 따라서 조건을 만족하는 비율은 $\\dfrac{2}{6}=\\dfrac13$이고, 경우의 수는 $120\\times\\dfrac13=40$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -517,7 +517,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 두 함수의 꼭짓점 위치를 조건 (나)로 찾고, 접선 조건은 판별식으로 처리한다.\n조건 정리: $f(x)\\le0$이므로 $f$는 아래로 열린 이차함수이고 최댓값은 0이다. $g(x)\\ge0$이므로 $g$는 위로 열린 이차함수이고 최솟값은 0이다.\n풀이 방향: $f$와 $g$의 꼭짓점을 각각 $p,q$라 하고, 구간 $[k-3,k+3]$이 두 꼭짓점을 모두 포함하는 $k$의 범위를 이용한다.\n정석 풀이: 두 극값이 같으려면 둘 다 0이어야 하므로 구간이 $p,q$를 모두 포함해야 한다. $p<q$라 하면 가능한 $k$의 범위는 $[q-3,p+3]$이다. 이것이 $[-1,2]$이므로 $q=2$, $p=-1$이다. 따라서 $f(x)=-u(x+1)^2$, $g(x)=v(x-2)^2$ $(u,v>0)$로 둘 수 있다. 직선 $y=-2x$와 $f$가 접하므로 $u(x+1)^2=2x$의 판별식이 0이다. 즉 $(2u-2)^2-4u^2=0$에서 $u=\\dfrac12$이다. 또한 $v(x-2)^2=-2x$의 판별식이 0이므로 $(-4v+2)^2-16v^2=0$에서 $v=\\dfrac14$이다. 따라서 $f(2)=-\\dfrac12(3)^2=-\\dfrac92$, $g(2)=0$이므로 합은 $-\\dfrac92$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -655,7 +655,7 @@ window.questionBank = [
     "solution": "[키포인트] 두 그래프의 교점은 $h(x)=0$의 두 근이고, 그림에서 $h$의 최고차항 계수가 양수임을 읽는다.\n조건 정리: $h(1)=h(5)=0$이고, 그림에서 $f$가 이차함수, $g$가 직선이며 $h=f-g$는 위로 열린 이차함수이다.\n풀이 방향: $h(x)=c(x-1)(x-5)$로 두고 최솟값으로 $c$를 정한다.\n정석 풀이: $h(x)=c(x-1)(x-5)$ $(c>0)$이고, 두 근의 중점인 $x=3$에서 최솟값을 갖는다. $h(3)=c(2)(-2)=-4c=-8$이므로 $c=2$이다. 따라서 $h(x)=2(x-1)(x-5)$이다. 구간 $0\\le x\\le4$에서 꼭짓점의 값은 $-8$이고 양 끝값은 $h(0)=2(-1)(-5)=10$, $h(4)=2(3)(-1)=-6$이다. 그러므로 최댓값은 $10$이고 그때 $x=0$이다.\n따라서 구하는 최댓값은 $10$이고, 그때의 $x$값은 $0$이다.",
     "image": "assets/images/26_효천고_1학기_기말_고1_기출/q24.png",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -703,7 +703,7 @@ window.questionBank = [
     "answer": "$490$",
     "solution": "[키포인트] 어른을 먼저 세 놀이기구에 배치하고, 어른이 있는 놀이기구의 남은 자리에 어린이를 배치한다.\n조건 정리: 어린이가 탄 놀이기구에는 적어도 한 명의 어른이 있어야 하며, 정원은 각각 $2,3,4$명이다.\n풀이 방향: 놀이기구 $(A,B,C)$에 탄 어른 수의 가능한 분배를 나눈 뒤, 각 분배에서 어린이 3명의 배치 수를 곱한다.\n정석 풀이: 조건을 만족하며 어린이 3명을 수용할 수 있는 어른 수 분배와 경우의 수는 다음과 같다. $(0,1,3)$은 어른 배치가 $4$가지이고 어린이는 $B$에 2명, $C$에 1명 타므로 $3$가지여서 $12$가지이다. $(0,2,2)$는 어른 배치가 $6$가지이고 어린이는 $B$에 1명, $C$에 2명 타므로 $3$가지여서 $18$가지이다. $(0,3,1)$은 어른 배치가 $4$가지이고 어린이 모두 $C$에 타므로 $4$가지이다. $(1,1,2)$는 어른 배치가 $\\dfrac{4!}{1!1!2!}=12$가지이다. 남은 정원이 $(1,2,2)$이므로 어린이 배치는 $3^3-(6+1)-1-1=18$가지이고, $12\\times18=216$가지이다. $(1,2,1)$은 어른 배치가 $12$가지이고 남은 정원이 $(1,1,3)$이다. 어린이 배치는 $3^3-(6+1)-(6+1)=13$가지이므로 $156$가지이다. $(2,1,1)$은 어른 배치가 $12$가지이고 어린이는 $B,C$에 배치하되 세 명 모두 $B$에 탈 수 없으므로 $2^3-1=7$가지여서 $84$가지이다. 따라서 전체는 $12+18+4+216+156+84=490$가지이다.\n따라서 구하는 방법의 수는 $490$가지이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

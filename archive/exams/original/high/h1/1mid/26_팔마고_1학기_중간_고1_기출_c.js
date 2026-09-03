@@ -55,7 +55,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$(\\sqrt{-7} \\times \\sqrt{7}) - \\left(\\dfrac{\\sqrt{128}}{\\sqrt{-8}}\\right) + (\\sqrt{-3} \\times \\sqrt{-3}) \\times i$의 값은?\\n(단, $i=\\sqrt{-1}$)",
+    "content": "$(\\sqrt{-7} \\times \\sqrt{7}) - \\left(\\dfrac{\\sqrt{128}}{\\sqrt{-8}}\\right) + (\\sqrt{-3} \\times \\sqrt{-3}) \\times i$의 값은?\n(단, $i=\\sqrt{-1}$)",
     "choices": [
       "$-12i$",
       "$-6i$",
@@ -137,7 +137,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -196,7 +196,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "다항식 $3x^4+5x^3-x^2-5x-2$를 인수분해 하면\\n$3 \\times (x+a)(x+b)(x+c)(x+d)$이다.\\n이때, $a+b+c+d$의 값은? (단, $a, b, c, d$는 실수이다.)",
+    "content": "다항식 $3x^4+5x^3-x^2-5x-2$를 인수분해 하면\n$3 \\times (x+a)(x+b)(x+c)(x+d)$이다.\n이때, $a+b+c+d$의 값은? (단, $a, b, c, d$는 실수이다.)",
     "choices": [
       "$-\\dfrac{5}{3}$",
       "$-\\dfrac{4}{3}$",
@@ -230,7 +230,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "이차방정식 $x^2+5x+1=0$의 두 근을 $\\alpha, \\beta$라 할 때,\\n$x^2$의 계수가 1이고 두 수 $\\dfrac{\\beta+1}{\\alpha}, \\dfrac{\\alpha+1}{\\beta}$를 두 근으로 하는 이차방정식을 $x^2+px+q=0$이라 할 때, $p+q$의 값은?\\n(단, $p, q$는 실수이다.)",
+    "content": "이차방정식 $x^2+5x+1=0$의 두 근을 $\\alpha, \\beta$라 할 때,\n$x^2$의 계수가 1이고 두 수 $\\dfrac{\\beta+1}{\\alpha}, \\dfrac{\\alpha+1}{\\beta}$를 두 근으로 하는 이차방정식을 $x^2+px+q=0$이라 할 때, $p+q$의 값은?\n(단, $p, q$는 실수이다.)",
     "choices": [
       "$-25$",
       "$-24$",
@@ -266,7 +266,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여\\n$9\\{P(x)\\}^2=12P(x)+4x^4-12x^3+9x^2-4$를 만족할 때, $P(1)$의 값은?",
+    "content": "최고차항의 계수가 양수인 다항식 $P(x)$가 모든 실수 $x$에 대하여\n$9\\{P(x)\\}^2=12P(x)+4x^4-12x^3+9x^2-4$를 만족할 때, $P(1)$의 값은?",
     "choices": [
       "$\\dfrac{1}{2}$",
       "$\\dfrac{1}{3}$",
@@ -297,7 +297,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 직사각형 $ABCD$의 두 꼭짓점 $A, B$는 이차함수 $y=-\\dfrac{1}{3}x^2+3$의 그래프 위에 있고, 두 꼭짓점 $C, D$는 이차함수 $y=x^2-9$의 그래프 위에 있다. 이때 직사각형 $ABCD$의 둘레의 길이에 대한 최댓값은?\\n(단, 점 $A$는 제1사분면, 점 $D$는 제4사분면 위의 점이다.)",
+    "content": "다음 그림과 같이 직사각형 $ABCD$의 두 꼭짓점 $A, B$는 이차함수 $y=-\\dfrac{1}{3}x^2+3$의 그래프 위에 있고, 두 꼭짓점 $C, D$는 이차함수 $y=x^2-9$의 그래프 위에 있다. 이때 직사각형 $ABCD$의 둘레의 길이에 대한 최댓값은?\n(단, 점 $A$는 제1사분면, 점 $D$는 제4사분면 위의 점이다.)",
     "image": "assets/images/26_팔마고_1학기_중간_고1_기출/q9.png",
     "imageSize": "tall",
     "choices": [
@@ -310,7 +310,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -397,7 +397,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "두 다항식 $f(x), g(x)$가 다음 조건을 만족시킨다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tr><td>(가) 모든 실수 $x$에 대하여 $f(x)=xg(x)$이다.</td></tr>\\n<tr><td>(나) 다항식 $f(x)g(x)$를 $3x+2$로 나눈 나머지는 $-\\dfrac{2}{3}$이다.</td></tr>\\n</table>\\n</div>\\n다항식 $(9x^2+\\dfrac{3}{4}) \\times f(2x-3)$을 $6x-7$로 나눈 나머지의 최솟값은?",
+    "content": "두 다항식 $f(x), g(x)$가 다음 조건을 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td>(가) 모든 실수 $x$에 대하여 $f(x)=xg(x)$이다.</td></tr>\n<tr><td>(나) 다항식 $f(x)g(x)$를 $3x+2$로 나눈 나머지는 $-\\dfrac{2}{3}$이다.</td></tr>\n</table>\n</div>\n다항식 $(9x^2+\\dfrac{3}{4}) \\times f(2x-3)$을 $6x-7$로 나눈 나머지의 최솟값은?",
     "choices": [
       "$-\\dfrac{26}{3}$",
       "$-\\dfrac{13}{3}$",
@@ -433,7 +433,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "길이가 $80\\text{cm}$인 철사를 잘라서 한 변의 길이가 각각 $a\\text{cm}, b\\text{cm}$ ($a>b$)인 두 개의 정사각형을 만들었다. 이 두 정사각형의 넓이의 합이 $218\\text{cm}^2$일 때, $a$의 값은?\\n(단, 철사는 모두 사용하고 굵기는 무시한다.)",
+    "content": "길이가 $80\\text{cm}$인 철사를 잘라서 한 변의 길이가 각각 $a\\text{cm}, b\\text{cm}$ ($a>b$)인 두 개의 정사각형을 만들었다. 이 두 정사각형의 넓이의 합이 $218\\text{cm}^2$일 때, $a$의 값은?\n(단, 철사는 모두 사용하고 굵기는 무시한다.)",
     "choices": [
       "11",
       "12",
@@ -467,7 +467,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "삼차방정식 $x^3=-1$의 한 허근을 $\\omega$라 할 때,\\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+5\\omega^5+6\\omega^6+7\\omega^7+8\\omega^8+9\\omega^9=a+b\\omega$\\n를 만족시키는 두 실수 $a, b$에 대하여 $b-a$의 값은?",
+    "content": "삼차방정식 $x^3=-1$의 한 허근을 $\\omega$라 할 때,\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+5\\omega^5+6\\omega^6+7\\omega^7+8\\omega^8+9\\omega^9=a+b\\omega$\n를 만족시키는 두 실수 $a, b$에 대하여 $b-a$의 값은?",
     "choices": [
       "0",
       "5",
@@ -497,7 +497,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "최고차항의 계수가 양수인 이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(3)$의 값은?\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tr><td>(가) 함수 $y=f(x)$의 그래프와 직선 $y=7$이 만나는 두 점의 $x$좌표는 각각 $-3, 1$이다.</td></tr>\\n<tr><td>(나) $-2 \\le x \\le 2$에서 이차함수 $f(x)$의 최댓값은 22이다.</td></tr>\\n</table>\\n</div>",
+    "content": "최고차항의 계수가 양수인 이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f(3)$의 값은?\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td>(가) 함수 $y=f(x)$의 그래프와 직선 $y=7$이 만나는 두 점의 $x$좌표는 각각 $-3, 1$이다.</td></tr>\n<tr><td>(나) $-2 \\le x \\le 2$에서 이차함수 $f(x)$의 최댓값은 22이다.</td></tr>\n</table>\n</div>",
     "choices": [
       "41",
       "42",
@@ -564,7 +564,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "계수가 각각 실수인 삼차다항식 $P(x)$, 일차다항식 $Q(x)$가 아래의 조건을 만족할 때, $\\dfrac{P(0) \\times Q(1)}{a}$의 값은?\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tr><td>(가) $P(x) \\times Q(x)$는 $(x^2-6x+10)(x-2)$로 나누어 떨어진다.</td></tr>\\n<tr><td>(나) 모든 $x$에 대하여 $x^3-4x^2+ax-a-1 = P(x) + \\{Q(x)\\}^2$</td></tr>\\n<tr><td>(다) $Q(0)>0, Q(1)>0, P(0)<0$</td></tr>\\n</table>\\n</div>",
+    "content": "계수가 각각 실수인 삼차다항식 $P(x)$, 일차다항식 $Q(x)$가 아래의 조건을 만족할 때, $\\dfrac{P(0) \\times Q(1)}{a}$의 값은?\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td>(가) $P(x) \\times Q(x)$는 $(x^2-6x+10)(x-2)$로 나누어 떨어진다.</td></tr>\n<tr><td>(나) 모든 $x$에 대하여 $x^3-4x^2+ax-a-1 = P(x) + \\{Q(x)\\}^2$</td></tr>\n<tr><td>(다) $Q(0)>0, Q(1)>0, P(0)<0$</td></tr>\n</table>\n</div>",
     "choices": [
       "$-2$",
       "$-1$",
@@ -628,7 +628,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형(서술형) 1]\\n실수 $a, b, c$에 대해서 삼각형 $ABC$가 다음을 만족할 때,\\n$a^3+a^2b-ab^2-b^3-ac^2-bc^2=0$ 삼각형 $ABC$가 무슨 삼각형인지 정확하게 풀이과정과 함께 쓰시오.",
+    "content": "[서답형(서술형) 1]\n실수 $a, b, c$에 대해서 삼각형 $ABC$가 다음을 만족할 때,\n$a^3+a^2b-ab^2-b^3-ac^2-bc^2=0$ 삼각형 $ABC$가 무슨 삼각형인지 정확하게 풀이과정과 함께 쓰시오.",
     "choices": [],
     "answer": "이등변삼각형($a=b$)",
     "solution":"[키포인트] 식을 인수분해하여 피타고라스 정리의 형태를 만든다.\n\n$a^3+a^2b-ab^2-b^3$\n$=a^2(a+b)-b^2(a+b)$\n$=(a+b)(a^2-b^2)$\n이다. 마지막 두 항까지 묶으면 전체 식은\n$(a+b)(a^2-b^2)-c^2(a+b)\n=(a+b)(a^2-b^2-c^2)$\n이다.\n\n삼각형의 변의 길이인 $a,b,c$는 양수이므로 $a+b>0$이다. 따라서 주어진 식이 0이 되려면\n$a^2-b^2-c^2=0$,\n즉\n$a^2=b^2+c^2$\n이어야 한다.\n\n이는 변 $a$가 빗변인 직각삼각형의 피타고라스 정리이다. 따라서 삼각형 $ABC$는 $a$를 빗변으로 하는 직각삼각형이다.",
@@ -652,7 +652,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형(서술형) 2]\\n실수 $x, y$에 대하여 $x>y$이고 다음을 만족한다.\\n$x+y=-3$이고 $xy=1$이다.\\n(1) $x-y$의 값을 구하시오.\\n(2) $x^3-y^3$의 값을 구하시오.\\n(3) $x^6-y^6$의 값을 구하시오.",
+    "content": "[서답형(서술형) 2]\n실수 $x, y$에 대하여 $x>y$이고 다음을 만족한다.\n$x+y=-3$이고 $xy=1$이다.\n(1) $x-y$의 값을 구하시오.\n(2) $x^3-y^3$의 값을 구하시오.\n(3) $x^6-y^6$의 값을 구하시오.",
     "choices": [],
     "answer": "(1) $\\sqrt{5}$ (2) $8\\sqrt{5}$ (3) $112\\sqrt{5}$",
     "solution":"[키포인트] 합과 곱으로 $x-y$, 세제곱의 차, 세제곱의 합을 차례로 계산한다.\n\n$(x-y)^2=(x+y)^2-4xy=(-3)^2-4=5$\n이다. $x>y$이므로\n$x-y=\\sqrt5$\n이다.\n\n또\n$x^2+y^2=(x+y)^2-2xy=9-2=7$\n이므로\n$x^2+xy+y^2=7+1=8$\n이다. 따라서\n$x^3-y^3=(x-y)(x^2+xy+y^2)=8\\sqrt5$\n이다.\n\n한편\n$x^3+y^3=(x+y)^3-3xy(x+y)\n=(-3)^3-3\\cdot1\\cdot(-3)=-18$\n이다. 그러므로\n$x^6-y^6=(x^3-y^3)(x^3+y^3)\n=8\\sqrt5\\cdot(-18)=-144\\sqrt5$\n이다.\n\n따라서 (1)은 $\\sqrt5$, (2)는 $8\\sqrt5$, (3)은 $-144\\sqrt5$이다.",
@@ -676,7 +676,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형(서술형) 3]\\n연립방정식 $\\begin{cases} x-y=3 \\\\ x^2+y^2=17 \\end{cases}$의 해를 $x=\\alpha, y=\\beta$라 할 때, 다음의 물음에 답하시오.\\n(1) $\\alpha, \\beta$의 값을 모두 구하시오. (단, 한 쌍씩 정확하게 쓰시오.)\\n(2) $\\alpha+\\beta$의 최댓값을 구하시오.",
+    "content": "[서답형(서술형) 3]\n연립방정식 $\\begin{cases} x-y=3 \\\\ x^2+y^2=17 \\end{cases}$의 해를 $x=\\alpha, y=\\beta$라 할 때, 다음의 물음에 답하시오.\n(1) $\\alpha, \\beta$의 값을 모두 구하시오. (단, 한 쌍씩 정확하게 쓰시오.)\n(2) $\\alpha+\\beta$의 최댓값을 구하시오.",
     "choices": [],
     "answer": "(1) ($4, 1$), ($-1, -4$) (2) 5",
     "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 (1) ($4, 1$), ($-1, -4$) (2) 5이다.",
@@ -701,7 +701,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "[서답형(서술형) 4]\\n두 이차함수 $f(x)=x^2+4x+4, g(x)=-(x+1)^2+5$\\n$h(x) = \\begin{cases} f(x) (x \\le -3 \\text{ 또는 } x \\ge 0) \\\\ g(x) (-3 < x < 0) \\end{cases}$\\n이라 하자. 직선 $y=mx+7$과 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 실수 $m$의 값의 합을 $S$라 할 때, $10S^2$의 값을 구하시오.",
+    "content": "[서답형(서술형) 4]\n두 이차함수 $f(x)=x^2+4x+4, g(x)=-(x+1)^2+5$\n$h(x) = \\begin{cases} f(x) (x \\le -3 \\text{ 또는 } x \\ge 0) \\\\ g(x) (-3 < x < 0) \\end{cases}$\n이라 하자. 직선 $y=mx+7$과 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 실수 $m$의 값의 합을 $S$라 할 때, $10S^2$의 값을 구하시오.",
     "choices": [],
     "answer": "25",
     "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 25이다.",

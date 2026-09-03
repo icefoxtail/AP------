@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "high1-geometry-equation-independent-agents-final-v2.2",
+  "status": "PASS_WITH_FULL_SCOPE_CARRY_FORWARD_AND_FRESH_PINPOINT",
+  "readOnly": true,
+  "A": {
+    "status": "PASS",
+    "mode": "fresh_pinpoint_plus_unchanged_scope_cross_check",
+    "freshPinpoints": {
+      "passed": 8,
+      "expected": 8,
+      "answerParity": "PASS",
+      "curriculum": "PASS",
+      "studentLogic": "PASS",
+      "blockers": []
+    },
+    "checks": [
+      {
+        "q": "22_팔마고 1final q5",
+        "m0": "explicitly handled",
+        "status": "PASS"
+      },
+      {
+        "q": "24_제일고 1mid q20",
+        "secondCaseAST": "derivation explicitly included",
+        "status": "PASS"
+      },
+      {
+        "q": "21_제일고 2mid q18",
+        "status": "PASS"
+      },
+      {
+        "q": "22_강남여고 2mid q22",
+        "a0": "explicitly handled",
+        "status": "PASS"
+      },
+      {
+        "q": "25_매산고 2mid q14",
+        "problemIdentity": "two-circle k=15 problem confirmed",
+        "status": "PASS"
+      },
+      {
+        "q": "25_제일고 2final q2",
+        "status": "PASS"
+      },
+      {
+        "q": "25_순천여고 2mid q15",
+        "status": "PASS"
+      },
+      {
+        "q": "25_효천고 2mid q7",
+        "status": "PASS"
+      }
+    ],
+    "unchangedCanonicalScopeCrossCheck": {
+      "expected": 424,
+      "observed": 424,
+      "answerMismatch": 0,
+      "sourceChecks": 41,
+      "manualSolveClaim": false,
+      "basis": "previous independent facts rehashed against current source/answer payload"
+    }
+  },
+  "B": {
+    "status": "PASS",
+    "canonicalLinkedAssets": {
+      "expected": 315,
+      "observed": 315,
+      "xmlParse": 315,
+      "finiteCoords": 315,
+      "rootWidthHeight": 315,
+      "pointProvenance": 315,
+      "dataScalePolicy": 315,
+      "forbiddenWords": 0,
+      "studentFacingAuditTokens": 0
+    },
+    "semanticAssertions": {
+      "q20": "PASS",
+      "q15": "PASS",
+      "q22": "PASS",
+      "q18FactualOriginalConditionText": "allowed math content"
+    },
+    "blockers": []
+  },
+  "C": {
+    "status": "PASS",
+    "canonicalScope": {
+      "uids": 424,
+      "sourceFiles": 41,
+      "sourceSidecarIndexMetadataMismatches": 0
+    },
+    "sourceJs": {
+      "nodeChecks": 41,
+      "vmLoads": 41
+    },
+    "dbIndexCounts": "PASS",
+    "q13": {
+      "excludedFromGeometry": true,
+      "unitKey": "H22-C-09",
+      "unit": "행렬과 그 연산",
+      "order": 9,
+      "sidecarIndexSynced": true
+    },
+    "assets": {
+      "expected": 315,
+      "observed": 315,
+      "loaded": 315,
+      "failed": 0
+    },
+    "globalCi": "BLOCKED_UNRELATED_H2_PROBABILITY_QCOUNT",
+    "blockers": []
+  },
+  "freshCurrentShaRequired": true,
+  "reviewerNote": "A full 424-question manual re-solve is not claimed; unchanged-scope answer evidence is rehashed and the eight changed solution pinpoints received a fresh blind independent solve.",
+  "releaseArtifactSha": "37356992b8b207710ac5ef5e427687372187ebc03c33e953dbb3af14b1d6ecec",
+  "currentShaBound": true
+}

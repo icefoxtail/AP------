@@ -608,7 +608,7 @@ window.questionBank = [
     "content": "<서답형 2><br>좌표평면에서 점 $A$와 점 $B$는 각각 함수 $y=\\dfrac{20}{x}$와 함수 $y=-\\dfrac{45}{x}$의 그래프의 점이다. 점 $A$와 점 $B$의 $x$좌표가 모두 양수일 때, 원점 $O$에 대하여 삼각형 $OAB$의 넓이의 최솟값의 제곱의 값을 구하고 서술하시오. [10점]<br>(풀이 과정에 부분 점수 있으며, 답만 적으면 풀이 과정 배점하지 않음.)",
     "choices": [],
     "answer": "$900$",
-    "solution": "[키포인트] 두 점의 $x$좌표 비만 남도록 삼각형 넓이를 정리한 뒤 산술·기하평균을 사용한다.\n조건 정리: $A=(a,\\dfrac{20}{a})$, $B=(b,-\\dfrac{45}{b})$로 둘 수 있고 $a,b>0$이다.\n풀이 방향: 원점과 두 점으로 이루어진 삼각형의 넓이를 행렬식으로 계산한다.\n정석 풀이: 넓이 $S$는 $S=\\dfrac12\\left|a\\left(-\\dfrac{45}{b}\\right)-b\\left(\\dfrac{20}{a}\\right)\\right|=\\dfrac12\\left(\\dfrac{45a}{b}+\\dfrac{20b}{a}\\right)$이다. $t=\\dfrac{a}{b}>0$라 두면 $S=\\dfrac12\\left(45t+\\dfrac{20}{t}\\right)$. 산술·기하평균에 의해 $45t+\\dfrac{20}{t}\\ge2\\sqrt{900}=60$이므로 $S\\ge30$이다. 등호는 $45t=\\dfrac{20}{t}$일 때 성립하므로 실제 최솟값은 $30$이다. 따라서 최솟값의 제곱은 $30^2=900$이다.\n따라서 구하는 값은 $900$이다.",
+    "solution": "[키포인트] 두 점의 $x$좌표 비만 남도록 삼각형 넓이를 정리한 뒤 산술·기하평균을 사용한다.\n조건 정리: $A=(a,\\dfrac{20}{a})$, $B=(b,-\\dfrac{45}{b})$로 둘 수 있고 $a,b>0$이다.\n풀이 방향: 원점과 두 점으로 이루어진 삼각형의 넓이를 넓이 계산으로 계산한다.\n정석 풀이: 넓이 $S$는 $S=\\dfrac12\\left|a\\left(-\\dfrac{45}{b}\\right)-b\\left(\\dfrac{20}{a}\\right)\\right|=\\dfrac12\\left(\\dfrac{45a}{b}+\\dfrac{20b}{a}\\right)$이다. $t=\\dfrac{a}{b}>0$라 두면 $S=\\dfrac12\\left(45t+\\dfrac{20}{t}\\right)$. 산술·기하평균에 의해 $45t+\\dfrac{20}{t}\\ge2\\sqrt{900}=60$이므로 $S\\ge30$이다. 등호는 $45t=\\dfrac{20}{t}$일 때 성립하므로 실제 최솟값은 $30$이다. 따라서 최솟값의 제곱은 $30^2=900$이다.\n따라서 구하는 값은 $900$이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

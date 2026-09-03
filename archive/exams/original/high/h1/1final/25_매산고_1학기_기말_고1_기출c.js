@@ -31,7 +31,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n순열의 수 ${}_{n}P_{r}=n(n-1)\\cdots(n-r+1)$과 계승 $n!=n(n-1)\\cdots1$을 계산한다.\n조건 정리\n${}_{5}P_{2}$는 5개에서 2개를 택하여 일렬로 나열하는 수이고, $4!$는 4개 전체를 일렬로 나열하는 수이다.\n풀이 과정\n${}_{5}P_{2}=5\\times4=20$이다.\n$4!=4\\times3\\times2\\times1=24$이다.\n따라서\n${}_{5}P_{2}+4!=20+24=44$이다.\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -136,7 +136,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n남학생을 뽑는 경우와 여학생을 뽑는 경우를 각각 구한 뒤 곱의 법칙을 적용한다.\n조건 정리\n남학생 5명 중 3명, 여학생 4명 중 2명을 뽑는다.\n풀이 과정\n남학생을 뽑는 경우의 수는\n${}_{5}C_{3}={}_{5}C_{2}=\\dfrac{5\\times4}{2\\times1}=10$이다.\n여학생을 뽑는 경우의 수는\n${}_{4}C_{2}=\\dfrac{4\\times3}{2\\times1}=6$이다.\n남학생 선택과 여학생 선택은 동시에 이루어지므로 전체 경우의 수는\n$10\\times6=60$이다.\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -173,7 +173,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n각 일차부등식의 해를 구한 뒤 공통 범위를 찾는다.\n조건 정리\n$2x+2>-x-4$와 $2-2x\\ge x-1$을 동시에 만족해야 한다.\n풀이 과정\n첫 번째 부등식에서\n$2x+2>-x-4$\n$3x>-6$\n$x>-2$이다.\n두 번째 부등식에서\n$2-2x\\ge x-1$\n$3\\ge3x$\n$x\\le1$이다.\n따라서 공통 범위는\n$-2<x\\le1$이다.\n이 범위를 만족하는 정수 $x$는 $-1,0,1$이므로 모두 3개이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -210,7 +210,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n$x+y$와 $xy$를 구한 뒤, $x,y$를 두 근으로 하는 이차방정식이 중근을 갖도록 한다.\n조건 정리\n연립방정식이 오직 한 쌍의 해를 가져야 한다.\n풀이 과정\n두 식을 더하면\n$(x+y+xy)+(3x+3y-xy)=7k+9k$이므로\n$4x+4y=16k$\n따라서 $x+y=4k$이다.\n이를 첫 번째 식에 대입하면\n$4k+xy=7k$이므로\n$xy=3k$이다.\n$x,y$를 두 근으로 하는 이차방정식은\n$t^2-4kt+3k=0$이다.\n연립방정식이 오직 한 쌍의 해를 가지려면 이 이차방정식이 중근을 가져야 하므로 판별식이 0이어야 한다.\n$D=(-4k)^2-4\\cdot1\\cdot3k=16k^2-12k=4k(4k-3)$이다.\n$D=0$이고 $k$는 양수이므로\n$4k-3=0$, 즉 $k=\\dfrac34$이다.\n따라서 $p=4$, $q=3$이므로\n$p+q=7$이다.\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -244,7 +244,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n각 부등식의 해를 구한 뒤, 가능한 정수들의 합이 $-6$이 되도록 오른쪽 경계를 정한다.\n조건 정리\n$\\dfrac{x+10}{5}\\ge\\dfrac43$, $2x<2a-3-x$를 동시에 만족해야 한다.\n풀이 과정\n첫 번째 부등식에서\n$\\dfrac{x+10}{5}\\ge\\dfrac43$\n$3(x+10)\\ge20$\n$3x+30\\ge20$\n$3x\\ge-10$\n$x\\ge-\\dfrac{10}{3}$이다.\n따라서 정수해는 $-3$부터 시작한다.\n두 번째 부등식에서\n$2x<2a-3-x$\n$3x<2a-3$\n$x<\\dfrac{2a-3}{3}$이다.\n정수해의 합이 $-6$이 되려면\n$-3+(-2)+(-1)+0=-6$이므로 정수해는 정확히 $-3,-2,-1,0$이어야 한다.\n즉 $0$은 포함되고 $1$은 포함되지 않아야 한다.\n따라서\n$0<\\dfrac{2a-3}{3}\\le1$이다.\n양변에 3을 곱하면\n$0<2a-3\\le3$이고,\n$3<2a\\le6$이다.\n따라서\n$\\dfrac32<a\\le3$이다.\n자연수 $a$는 $2,3$이므로 모든 자연수 $a$의 곱은\n$2\\times3=6$이다.\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -316,7 +316,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n최고차항의 계수가 문자인 이차부등식은 이차식이 되는 경우와 일차 이하가 되는 경우를 나누어 확인한다.\n조건 정리\n$(k-3)x^2+(2k-6)x-k+9>0$이 모든 실수 $x$에 대하여 성립해야 한다.\n풀이 과정\n먼저 $k=3$이면 주어진 식은\n$0x^2+0x+6=6$이므로 모든 실수 $x$에 대하여 $6>0$이다.\n따라서 $k=3$은 성립한다.\n이제 $k\\ne3$인 경우를 보자.\n이차식이 모든 실수에서 항상 양수이려면 최고차항의 계수가 양수이고 판별식이 음수이어야 한다.\n따라서\n$k-3>0$, 즉 $k>3$이어야 한다.\n판별식을 계산하면\n$D=(2k-6)^2-4(k-3)(-k+9)$이다.\n$D<0$이어야 하므로 양변을 4로 나누어\n$(k-3)^2-(k-3)(-k+9)<0$이다.\n$(k-3)\\{(k-3)-(-k+9)\\}<0$\n$(k-3)(2k-12)<0$\n$2(k-3)(k-6)<0$이다.\n따라서\n$3<k<6$이다.\n앞에서 확인한 $k=3$까지 포함하면 전체 범위는\n$3\\le k<6$이다.\n가능한 정수 $k$는 $3,4,5$이다.\n최댓값은 $5$, 최솟값은 $3$이므로 곱은\n$5\\times3=15$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -523,7 +523,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n절댓값을 기준으로 함수를 나누어 보고, 직선 $y=x+k$와의 교점 개수가 4개가 되는 $k$의 범위를 찾는다.\n조건 정리\n$y=x^2-2|x|+1$은 $x\\ge0$에서 $(x-1)^2$, $x<0$에서 $(x+1)^2$이다.\n풀이 과정\n$x<0$에서 교점을 보면\n$(x+1)^2=x+k$이므로\n$x^2+2x+1=x+k$\n$x^2+x+1-k=0$이다.\n이쪽에서 접할 때 판별식이 0이므로\n$D=1-4(1-k)=4k-3=0$이고,\n$k=\\dfrac34$이다.\n또한 그래프는 $x=0$에서 $y=1$을 지나므로 직선 $y=x+k$가 이 점을 지날 때\n$1=0+k$에서 $k=1$이다.\n서로 다른 교점이 4개가 되려면, 직선이 왼쪽 부분에 접하기 시작한 뒤부터 $x=0$의 뾰족점에 도달하기 전까지여야 한다.\n따라서\n$\\dfrac34<k<1$이다.\n그러므로\n$\\alpha=\\dfrac34$, $\\beta=1$이고,\n$\\alpha+\\beta=\\dfrac34+1=\\dfrac74$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -554,7 +554,7 @@ window.questionBank = [
     "answer": "28",
     "solution": "[키포인트]\n전체 8개 팀 중에서 순서에 상관없이 6개 팀을 선택하는 조합의 수를 구한다.\n조건 정리\n8개 팀 중 6개 팀을 뽑는다.\n풀이 과정\n구하는 경우의 수는 ${}_{8}C_{6}$이다.\n조합의 성질 ${}_{n}C_{r}={}_{n}C_{n-r}$에 의해\n${}_{8}C_{6}={}_{8}C_{2}$이다.\n따라서\n${}_{8}C_{2}=\\dfrac{8\\times7}{2\\times1}=28$이다.\n결론\n따라서 구하는 경우의 수는 28이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -668,7 +668,7 @@ window.questionBank = [
     "answer": "317",
     "solution": "[키포인트]\n먼저 60과 서로소인 수들을 고른 뒤, 그 안에서 두 수끼리 서로소가 아닌 경우를 제외한다.\n조건 정리\n$60=2^2\\times3\\times5$이다.\n따라서 60과 서로소인 수는 2, 3, 5의 배수가 아닌 수이다.\n풀이 과정\n1부터 100까지의 자연수 중 2, 3, 5의 배수가 아닌 수의 개수를 구한다.\n포함배제 원리를 이용하면\n2의 배수는 50개, 3의 배수는 33개, 5의 배수는 20개이다.\n2와 3의 공배수는 6의 배수이므로 16개,\n2와 5의 공배수는 10의 배수이므로 10개,\n3과 5의 공배수는 15의 배수이므로 6개,\n2,3,5의 공배수는 30의 배수이므로 3개이다.\n따라서 2,3,5 중 적어도 하나의 배수인 수는\n$50+33+20-16-10-6+3=74$개이다.\n그러므로 60과 서로소인 수는\n$100-74=26$개이다.\n이 26개 중에서 두 수를 고르는 경우는\n${}_{26}C_{2}=325$가지이다.\n이제 두 수끼리 서로소가 아닌 경우를 제외한다.\n60과 서로소인 수들 사이에서 100 이하에서 공통인 소인수를 가질 수 있는 경우를 확인하면 다음 8쌍이 제외된다.\n$(7,49)$, $(7,77)$, $(7,91)$, $(11,77)$, $(13,91)$, $(49,77)$, $(49,91)$, $(77,91)$이다.\n따라서 조건을 만족하는 경우의 수는\n$325-8=317$이다.\n결론\n따라서 구하는 경우의 수는 317이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

@@ -58,7 +58,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 이웃해야 하는 두 여학생을 한 묶음으로 생각한다.\n조건 정리: 여학생 2명을 한 묶음으로 보면 남학생 3명과 여학생 묶음 1개, 모두 4개를 배열하게 된다. 묶음 안에서 여학생의 순서는 서로 바뀔 수 있다.\n풀이 방향: 네 대상을 배열하는 경우와 묶음 안의 순서를 곱한다.\n정석 풀이: 네 대상을 일렬로 세우는 방법은 $4!$가지이고, 여학생 2명이 묶음 안에서 서는 순서는 $2!$가지이다. 따라서 경우의 수는 $4!\\times2!=24\\times2=48$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -275,7 +275,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 경우의 수 $a,b$를 각각 조건에 맞게 나누어 센다.\n조건 정리: 1부터 7까지의 소수는 $2,3,5,7$의 4개이고, 소수가 아닌 수는 $1,4,6$의 3개이다. 홀수는 4개, 짝수는 3개이다.\n풀이 방향: $a$는 소수와 소수가 아닌 수의 선택을 곱하고, $b$는 합이 홀수가 되는 홀수의 개수에 따라 나눈다.\n정석 풀이: $a={}_4C_2\\times{}_3C_1=6\\times3=18$이다. 세 수의 합이 홀수이려면 홀수를 1개 또는 3개 골라야 한다. 따라서 $b={}_4C_1{}_3C_2+{}_4C_3=4\\times3+4=16$이다. 그러므로 $a+b=18+16=34$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -461,7 +461,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 4의 배수 여부는 마지막 두 자리로 결정된다.\n조건 정리: 각 자리 숫자는 주사위 눈이므로 1부터 6까지이다. 백의 자리와 관계없이 십의 자리와 일의 자리로 만든 두 자리 수가 4의 배수여야 한다.\n풀이 방향: 가능한 마지막 두 자리를 모두 찾고 백의 자리 6가지를 곱한다.\n정석 풀이: 조건을 만족하는 마지막 두 자리는 $12,16,24,32,36,44,52,56,64$의 9개이다. 각 경우마다 백의 자리는 1부터 6까지 6가지이므로 전체 개수는 $9\\times6=54$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -589,7 +589,7 @@ window.questionBank = [
     "solution": "[키포인트] 영역의 인접 관계를 따라 색을 차례로 정한다.\n조건 정리: 그림에서 $A$와 $C$는 인접하고, $B$와 $D$는 서로 경계선을 공유하지 않아 같은 색을 사용할 수 있다. $B$와 $D$는 각각 $A,C$와 인접한다.\n풀이 방향: $A$, $C$의 색을 먼저 정한 뒤 $B$, $D$의 색을 독립적으로 정한다.\n정석 풀이: $A$의 색은 $k$가지이다. $C$는 $A$와 다른 색이어야 하므로 $k-1$가지이다. $B$는 $A,C$와 모두 다른 색이어야 하므로 $k-2$가지이고, $D$도 같은 이유로 $k-2$가지이다. $B,D$는 서로 인접하지 않으므로 같은 색을 써도 된다. 따라서 경우의 수는 $k(k-1)(k-2)^2$이다. 보기의 값을 대입하면 $k=6$일 때 $6\\times5\\times4^2=480$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/26_복성고_1학기_기말_고1_기출/q19.png",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -633,7 +633,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-08",
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 8,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -645,7 +645,7 @@ window.questionBank = [
     "answer": "$13$",
     "solution": "[키포인트] 세 번째 수가 6이 되려면 6보다 작은 수 2개와 큰 수 2개를 골라야 한다.\n조건 정리: 6보다 작은 자연수는 $1,2,3,4,5$의 5개이고, 6보다 큰 자연수는 $7$부터 $n$까지 $n-6$개이다.\n풀이 방향: 경우의 수를 조합으로 나타낸 뒤 200 이상이 되는 가장 작은 $n$을 찾는다.\n정석 풀이: 6보다 작은 수 2개를 고르는 방법은 ${}_5C_2=10$가지이고, 6보다 큰 수 2개를 고르는 방법은 ${}_{n-6}C_2$가지이다. 따라서 경우의 수는 $10{}_{n-6}C_2$이다. 이 값이 200 이상이므로 ${}_{n-6}C_2\\ge20$이다. $n-6=6$이면 ${}_6C_2=15$로 부족하고, $n-6=7$이면 ${}_7C_2=21$로 조건을 만족한다. 따라서 가장 작은 값은 $n-6=7$, 즉 $n=13$이다.\n따라서 구하는 값은 $13$이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -658,7 +658,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -683,7 +683,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",

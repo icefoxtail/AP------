@@ -10,7 +10,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -46,7 +46,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -69,7 +69,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n이차방정식의 근과 계수의 관계를 이용하여 주어진 식의 값을 계산한다.\n\n조건 정리\n- 이차방정식: $x^2-4x+2=0$\n- 두 근: $\\alpha, \\beta$\n- 구하는 값: $\\frac{1}{\\alpha} + \\frac{1}{\\beta}$\n\n풀이 과정\n이차방정식의 근과 계수의 관계에 의하여 두 근의 합과 곱은 다음과 같다.\n$\\alpha + \\beta = -\\frac{-4}{1} = 4$\n$\\alpha\\beta = \\frac{2}{1} = 2$\n구하고자 하는 식을 통분하여 정리한다.\n$\\frac{1}{\\alpha} + \\frac{1}{\\beta} = \\frac{\\alpha + \\beta}{\\alpha\\beta}$\n위에서 구한 합과 곱의 값을 대입한다.\n$\\frac{\\alpha + \\beta}{\\alpha\\beta} = \\frac{4}{2} = 2$\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -82,7 +82,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -119,7 +119,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -143,7 +143,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n이차함수의 그래프가 $x$축과 한 점에서 접할 조건은 이차방정식의 판별식이 $0$임을 이용한다.\n\n조건 정리\n- 이차함수: $y=x^2+2ax+4a+6$\n- $x$축과 한 점에서 만남 (접함)\n\n풀이 과정\n이차함수 그래프가 $x$축과 한 점에서 만나려면 이차방정식 $x^2+2ax+4a+6=0$이 중근을 가져야 하므로 판별식 $D=0$이어야 한다.\n$x$의 계수가 짝수이므로 짝수 판별식 $\\frac{D}{4}$를 사용한다.\n$\\frac{D}{4} = a^2 - 1 \\cdot (4a+6) = 0$\n$a^2 - 4a - 6 = 0$\n위 식은 실수 $a$에 대한 이차방정식이다. 판별식이 $(-2)^2 - 1(-6) = 10 > 0$이므로 서로 다른 두 실근을 갖는다.\n따라서 근과 계수의 관계에 의하여 실수 $a$의 값들의 곱은 상수항과 같은 $-6$이다.\n\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -156,7 +156,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -193,7 +193,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -230,7 +230,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -266,7 +266,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -290,7 +290,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n제한된 범위에서 이차함수의 대칭축의 위치에 따라 최댓값이 달라짐을 파악하여 구간별로 함수 $g(a)$를 구한다.\n\n조건 정리\n- $f(x) = -2x^2 + 4ax - 10$ ($0 \\le x \\le 5$)\n- $f(x)$의 최댓값: $g(a)$\n- 구하는 값: $g(1)+g(3)+g(5)$\n\n풀이 과정\n이차함수 $f(x)$를 완전제곱식으로 변형하여 대칭축을 찾는다.\n$f(x) = -2(x^2 - 2ax) - 10 = -2(x-a)^2 + 2a^2 - 10$\n이 함수는 위로 볼록한 포물선이며, 대칭축은 $x=a$이다.\n$a$의 값에 따라 정의역 $0 \\le x \\le 5$ 내에서 최댓값이 발생하는 위치가 다르다.\n\n경우 1: $0 \\le a \\le 5$일 때\n대칭축이 정의역 내에 존재하므로, 꼭짓점에서 최댓값을 갖는다.\n$g(a) = f(a) = 2a^2 - 10$\n\n경우 2: $a > 5$일 때\n대칭축이 정의역의 오른쪽에 있으므로, 주어진 범위에서 함수는 계속 증가한다. 따라서 $x=5$에서 최댓값을 갖는다.\n$g(a) = f(5) = -2(5)^2 + 4a(5) - 10 = 20a - 60$\n\n이제 구하고자 하는 각 $a$의 값을 대입하여 $g(a)$를 구한다.\n- $a=1$: 범위 $0 \\le a \\le 5$에 속하므로 $g(1) = 2(1)^2 - 10 = -8$\n- $a=3$: 범위 $0 \\le a \\le 5$에 속하므로 $g(3) = 2(3)^2 - 10 = 18 - 10 = 8$\n- $a=5$: 범위 $0 \\le a \\le 5$의 경계값이므로 어느 식에 대입해도 같다. $g(5) = 2(5)^2 - 10 = 50 - 10 = 40$\n\n최종 합을 계산한다.\n$g(1) + g(3) + g(5) = -8 + 8 + 40 = 40$\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -303,7 +303,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -340,7 +340,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -364,7 +364,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n함수와 직선의 교점을 구하는 이차방정식의 근과 계수의 관계를 이용하여 주어진 함수식을 구성한다.\n\n조건 정리\n- $y=x^2-4x$와 $y=-2x+k$의 교점의 $x$좌표 차의 제곱: $f(k)$\n- 두 교점의 $x$좌표의 곱: $g(k)$\n- $\\{g(k)\\}^2=f(0)\\times f(15)$\n- $k$는 양의 실수\n\n풀이 과정\n두 식을 연립하여 교점의 $x$좌표를 구하는 이차방정식을 세운다.\n$x^2 - 4x = -2x + k \\implies x^2 - 2x - k = 0$\n이 방정식의 두 근을 $\\alpha, \\beta$라 하면 근과 계수의 관계에 의해\n$\\alpha + \\beta = 2$, $\\alpha\\beta = -k$이다.\n교점의 $x$좌표의 곱 $g(k)$는 $\\alpha\\beta$이므로 $g(k) = -k$이다.\n두 교점의 $x$좌표 차의 제곱 $f(k)$는 곱셈 공식의 변형으로 구한다.\n$f(k) = (\\alpha - \\beta)^2 = (\\alpha + \\beta)^2 - 4\\alpha\\beta = 2^2 - 4(-k) = 4 + 4k$\n이제 주어진 조건식 $\\{g(k)\\}^2=f(0)\\times f(15)$에 대입한다.\n$(-k)^2 = (4 + 4 \\cdot 0) \\times (4 + 4 \\cdot 15)$\n$k^2 = 4 \\times (4 + 60) = 4 \\times 64 = 256$\n조건에서 $k$는 양의 실수이므로 $k = \\sqrt{256} = 16$이다.\n(이때 판별식 $D/4 = 1 + k > 0$ 조건도 만족한다.)\n\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -377,7 +377,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -401,7 +401,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n주어진 관계식에 상수를 대입하여 이차함수의 형태로 만든 후 완전제곱식을 이용하여 최댓값을 구한다.\n\n조건 정리\n- 관계식: $b^2=4a(h-a)$ ($0<a<h$)\n- $h=8$\n- 구하는 값: $b^2$의 최댓값\n\n풀이 과정\n관계식에 $h=8$을 대입하면 $b^2$을 $a$에 대한 함수로 표현할 수 있다.\n$b^2 = 4a(8-a) = -4a^2 + 32a$\n이 함수를 $f(a)$라 하면 위로 볼록한 이차함수이다.\n완전제곱식으로 변형하여 꼭짓점을 찾는다.\n$f(a) = -4(a^2 - 8a) = -4(a^2 - 8a + 16) + 64 = -4(a-4)^2 + 64$\n$a$의 범위는 $0 < a < 8$이고, 이 범위 안에 꼭짓점의 $x$좌표인 $a=4$가 포함된다.\n따라서 $a=4$일 때 이차함수 $f(a)$는 최댓값 $64$를 갖는다.\n\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -414,7 +414,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -438,7 +438,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n이차함수의 대칭성을 이용하여 축의 방정식을 찾고, 꼭짓점의 $y$좌표를 통해 미정계수를 구한다.\n\n조건 정리\n- $f(x)=-2x^2+ax+b$\n- (가) $f(-2)=f(4)$\n- (나) $f(x)$의 최댓값은 $8$\n- 구하는 값: 구간 $[a,b]$에서 $f(x)$의 (최댓값 - 최솟값)\n\n풀이 과정\n조건 (가)에서 $f(-2)=f(4)$이므로, 이차함수의 대칭축은 두 $x$값의 중점이다.\n대칭축 $x = \\frac{-2+4}{2} = 1$이다.\n$f(x) = -2x^2+ax+b$에서 대칭축은 $x = -\\frac{a}{2(-2)} = \\frac{a}{4}$이므로 $\\frac{a}{4} = 1$에서 $a=4$이다.\n따라서 $f(x) = -2x^2+4x+b$이다.\n조건 (나)에서 최고차항 계수가 음수이므로 대칭축 $x=1$에서 최댓값을 갖는다.\n$f(1) = -2(1)^2 + 4(1) + b = 2 + b$\n최댓값이 $8$이므로 $2+b = 8$에서 $b=6$이다.\n이제 구간 $[a,b]$는 $[4,6]$이 되고, 함수는 $f(x) = -2x^2+4x+6$이다.\n대칭축 $x=1$은 구간 $[4,6]$의 왼쪽에 있으므로, 이 구간에서 함수는 계속 감소한다.\n따라서 최댓값은 $x=4$일 때, 최솟값은 $x=6$일 때 갖는다.\n최댓값: $f(4) = -2(16) + 4(4) + 6 = -32 + 16 + 6 = -10$\n최솟값: $f(6) = -2(36) + 4(6) + 6 = -72 + 24 + 6 = -42$\n최댓값과 최솟값의 차는 $(-10) - (-42) = 32$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -451,7 +451,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -488,7 +488,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -525,7 +525,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -549,7 +549,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n방정식의 실근의 개수는 두 그래프의 교점의 개수와 같음을 이용하여 접선 또는 극값 조건을 파악하는 것이 핵심이다.\n\n조건 정리\n- 함수 $f(x)$는 $x=0$을 기준으로 두 이차함수로 나뉜다.\n- $b>0$\n- $f(x)=x+t$의 교점이 $3$개가 되는 $t$의 값은 오직 하나 존재한다.\n- 그 $3$개의 교점의 $x$좌표 합은 $-4$이다.\n\n풀이 방향 설정\n방정식 $f(x)=x+t$를 $f(x)-x=t$로 변형하여 새로운 함수 $g(x)=f(x)-x$의 그래프와 상수 함수 $y=t$의 교점을 분석한다. 교점이 $3$개가 되는 순간이 단 한 번이려면 두 포물선의 꼭짓점의 $y$좌표 또는 $x=0$에서 그래프가 끊어진 두 값이 서로 일치하는 특수한 상황이어야 한다.\n\n풀이 과정\n1. 함수 $g(x) = f(x)-x$를 정의한다.\n$g(x) = \\begin{cases} x^2+(a-1)x+b & (x \\le 0) \\\\ -x^2+(a-1)x-b & (x > 0) \\end{cases}$\n$b>0$이므로 $x=0$에서 $g(0)=b$이고, $x>0$인 쪽에서 $x$가 $0$에 가까워질 때 $g(x)$는 $-b$에 가까워지므로 $g(x)$의 그래프는 $x=0$에서 $b$와 $-b$로 끊어져 있다.\n\n2. 각 구간에서 $g(x)$의 최댓값/최솟값을 찾는다.\n$x \\le 0$인 구간에서 $g(x)$는 아래로 볼록하며, 대칭축은 $x = -\\frac{a-1}{2}$이다.\n$x > 0$인 구간에서 $g(x)$는 위로 볼록하며, 대칭축은 $x = \\frac{a-1}{2}$이다.\n교점이 $3$개가 되는 $t$가 오직 하나 존재하려면, 두 포물선의 꼭짓점의 $y$좌표 중 하나가 $x=0$에서 끊어진 값인 $b$ 또는 $-b$와 일치해야 한다.\n각 포물선의 꼭짓점의 $y$좌표를 구하면, $x \\le 0$에서의 최솟값 $m = b - \\frac{(a-1)^2}{4}$이고, $x > 0$에서의 최댓값 $M = -b + \\frac{(a-1)^2}{4}$이다.\n교점이 $3$개인 선이 유일하려면 $M=b$ 이거나 $m=-b$가 성립해야 한다. 이 두 조건은 모두 $\\frac{(a-1)^2}{4} = 2b$, 즉 $(a-1)^2 = 8b$로 귀결된다.\n\n3. 조건 (나)를 이용해 식을 푼다.\n유일한 $t$값은 $t=b$ (또는 $-b$)일 때 성립한다. $t=b$라고 가정하고 방정식을 푼다.\n- $x \\le 0$ 범위:\n$x^2+(a-1)x+b = b \\implies x^2+(a-1)x=0 \\implies x(x+a-1)=0$\n따라서 실근은 $x=0$ 또는 $x=-(a-1)$이다.\n- $x > 0$ 범위:\n$-x^2+(a-1)x-b = b \\implies x^2-(a-1)x+2b=0$\n앞서 구한 $(a-1)^2=8b$를 대입하면 $2b = \\frac{(a-1)^2}{4}$이다.\n방정식은 $x^2-(a-1)x+\\frac{(a-1)^2}{4}=0 \\implies (x-\\frac{a-1}{2})^2=0$이 되어 $x = \\frac{a-1}{2}$ 중근을 갖는다.\n\n세 실근은 $0, -(a-1), \\frac{a-1}{2}$이다. 조건 (나)에 의해 이 합이 $-4$이다.\n$0 - (a-1) + \\frac{a-1}{2} = -\\frac{a-1}{2} = -4$\n$a-1=8$이므로 $a=9$이다.\n이를 $(a-1)^2=8b$에 대입하면 $8^2 = 8b$이므로 $b=8$이다.\n$b>0$ 조건도 만족한다.\n\n4. 최종 값 계산\n구하고자 하는 값은 $a+b$이다.\n$a+b = 9+8 = 17$\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -562,7 +562,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -593,7 +593,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -611,7 +611,7 @@ window.questionBank = [
     "answer": "17",
     "solution": "[키포인트]\n이차방정식의 근의 개수와 판별식의 관계를 이용하여 부등식을 세우고 자연수 조건에 맞는 해를 찾는다.\n\n조건 정리\n- $x^2+2ax+b=0$은 중근 가짐\n- $x^2+8x+b=0$은 서로 다른 두 실근 가짐\n- $a, b$는 자연수\n- 순서쌍 개수: $m$, $b$값 총합: $n$\n\n풀이 과정\n첫 번째 방정식이 중근을 가지므로 판별식 $D_1=0$이다.\n$D_1/4 = a^2 - b = 0 \\implies b = a^2$\n두 번째 방정식이 서로 다른 두 실근을 가지므로 판별식 $D_2>0$이다.\n$D_2/4 = 4^2 - b > 0 \\implies b < 16$\n두 조건을 종합하면 자연수 $a, b$에 대하여 $a^2 = b < 16$을 만족해야 한다.\n$a$가 자연수이므로 차례대로 대입해본다.\n- $a=1$일 때, $b=1^2=1 < 16$ (만족). 순서쌍 $(1, 1)$\n- $a=2$일 때, $b=2^2=4 < 16$ (만족). 순서쌍 $(2, 4)$\n- $a=3$일 때, $b=3^2=9 < 16$ (만족). 순서쌍 $(3, 9)$\n- $a=4$일 때, $b=4^2=16$ (조건 $b<16$ 불만족)\n따라서 가능한 순서쌍 $(a,b)$의 개수 $m = 3$이다.\n가능한 $b$의 값은 $1, 4, 9$이므로 그 총합 $n = 1 + 4 + 9 = 14$이다.\n구하고자 하는 $m+n$의 값을 계산한다.\n$m+n = 3 + 14 = 17$\n\n결론\n따라서 구하는 값은 $17$이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -624,7 +624,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -642,7 +642,7 @@ window.questionBank = [
     "answer": "12",
     "solution": "[키포인트]\n교점의 좌표를 근으로 하는 이차방정식의 근과 계수의 관계를 이용하여 넓이의 식을 변형한다.\n\n조건 정리\n- $y = -2x^2+m$ 과 $y=4x$ 의 교점: $A, B$\n- 수선의 발: $C, D$\n- $\\triangle AOC + \\triangle BOD$ 넓이 합: $32$\n- $m$은 양수\n\n풀이 과정\n두 식을 연립하여 교점의 $x$좌표를 구하는 방정식을 세운다.\n$-2x^2+m = 4x \\implies 2x^2+4x-m = 0$\n이 이차방정식의 두 근을 $\\alpha, \\beta$라 하면 점 $A$는 $(\\alpha, 4\\alpha)$, 점 $B$는 $(\\beta, 4\\beta)$이다.\n근과 계수의 관계에 의하여 $\\alpha+\\beta = -2$, $\\alpha\\beta = -\\frac{m}{2}$이다.\n삼각형의 넓이는 $\\frac{1}{2} \\times \\text{(밑변)} \\times \\text{(높이)}$이다.\n$\\triangle AOC$의 밑변은 $|\\alpha|$, 높이는 $|4\\alpha|$이므로 넓이는 $\\frac{1}{2}|\\alpha||4\\alpha| = 2\\alpha^2$이다.\n$\\triangle BOD$의 밑변은 $|\\beta|$, 높이는 $|4\\beta|$이므로 넓이는 $\\frac{1}{2}|\\beta||4\\beta| = 2\\beta^2$이다.\n두 넓이의 합이 $32$이므로 $2\\alpha^2 + 2\\beta^2 = 32 \\implies \\alpha^2 + \\beta^2 = 16$이다.\n곱셈 공식의 변형을 이용하여 식을 전개한다.\n$\\alpha^2 + \\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = (-2)^2 - 2(-\\frac{m}{2}) = 4 + m$\n이 값이 $16$과 같으므로 $4 + m = 16$에서 $m = 12$이다.\n$m=12$는 양수 조건도 만족한다.\n\n결론\n따라서 구하는 값은 $12$이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -655,7 +655,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -686,7 +686,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -704,7 +704,7 @@ window.questionBank = [
     "answer": "$ a = -2, b = -1, c = -\\frac{1}{8} $",
     "solution": "[키포인트]\n이차함수와 직선이 접할 조건인 판별식 $D=0$을 적용한 후, $m$에 대한 항등식 성질을 이용해 계수를 구한다.\n\n조건 정리\n- 함수 $y = ax^2+bx+c$ 와 직선 $y = 4mx+2m^2+m$ 이 접함\n- 실수 $m$의 값에 관계없이 항상 성립\n\n풀이 과정\n두 식을 연립하여 이차방정식을 만든다.\n$ax^2+bx+c = 4mx+2m^2+m \\implies ax^2 + (b-4m)x + (c-2m^2-m) = 0$\n이차함수와 직선이 접하므로 판별식 $D=0$이어야 한다.\n$D = (b-4m)^2 - 4a(c-2m^2-m) = 0$\n전개하여 식을 정리한다.\n$b^2 - 8bm + 16m^2 - 4ac + 8am^2 + 4am = 0$\n이 식이 $m$에 대한 항등식이므로 $m$에 대하여 내림차순 정리한다.\n$(16+8a)m^2 + (4a-8b)m + (b^2-4ac) = 0$\n$m$의 값에 관계없이 성립하려면 각 계수가 모두 $0$이어야 한다.\n1) $16+8a = 0 \\implies a = -2$\n2) $4a-8b = 0 \\implies 4(-2) - 8b = 0 \\implies -8b = 8 \\implies b = -1$\n3) $b^2-4ac = 0 \\implies (-1)^2 - 4(-2)c = 0 \\implies 1 + 8c = 0 \\implies c = -\\frac{1}{8}$\n\n결론\n따라서 구하는 값은 $ a = -2, b = -1, c = -\\frac{1}{8} $이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   }

@@ -31,7 +31,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n이차부등식을 인수분해하여 해의 범위를 구한다.\n\n풀이 과정\n$x^2-6x+8 \\le 0$\n$(x-2)(x-4) \\le 0$\n따라서 $2 \\le x \\le 4$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -140,7 +140,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n순열과 조합의 계산 기호를 바르게 이해하고 값을 구한다.\n\n풀이 과정\n${}_{5}P_{2} = 5 \\times 4 = 20$\n${}_{7}C_{4} = {}_{7}C_{3} = \\dfrac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35$\n따라서 ${}_{5}P_{2} + {}_{7}C_{4} = 20 + 35 = 55$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -286,7 +286,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n각 부등식의 해를 수직선에 나타내어 공통부분에 포함되는 자연수 $x$의 개수가 $2$개가 되는 조건을 찾는다.\n\n풀이 방향 설정\n먼저 두 부등식을 각각 풀고, 수직선 상에서 해의 교집합에 자연수 $x$가 정확히 2개 포함되도록 하는 경계값을 분석한다.\n\n풀이 과정\n첫 번째 부등식을 풀면\n$x^2-6x+5>0$\n$(x-1)(x-5)>0$\n$x<1$ 또는 $x>5 \\quad \\cdots (1)$\n\n두 번째 부등식을 풀면\n$2x-a<2$\n$2x < a+2 \\implies x < \\dfrac{a+2}{2} \\quad \\cdots (2)$\n\n연립부등식의 해는 $(1)$과 $(2)$의 공통 범위이다.\n부등식 $(1)$을 만족하는 자연수는 $x>5$인 범위에 존재하는 $6, 7, 8, \\dots$ 이다. ($x<1$인 자연수는 존재하지 않음)\n\n따라서 연립부등식을 만족시키는 자연수 $x$가 $2$개가 되려면 그 자연수는 반드시 $6$과 $7$이어야 한다.\n즉, 공통 범위가 $6, 7$은 포함하고 $8$은 포함하지 않아야 한다.\n수직선에서 해 $x < \\dfrac{a+2}{2}$가 이 조건을 만족시키려면 경계값 $\\dfrac{a+2}{2}$의 위치가 $7$보다는 크고 $8$보다는 작거나 같아야 한다.\n\n$7 < \\dfrac{a+2}{2} \\le 8$\n\n각 변에 $2$를 곱하면\n$14 < a+2 \\le 16$\n\n각 변에서 $2$를 빼면\n$12 < a \\le 14$\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -396,7 +396,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n이웃하는 경우는 한 묶음으로 생각하여 배열하고, 이웃하지 않는 경우는 나머지 대상을 먼저 배열한 후 그 사이의 자리에 배치한다.\n\n풀이 과정\n(i) $a$ 구하기 (여자 3명이 이웃하는 경우)\n여자 3명을 1명으로 생각하면 전체는 3명(남자 2명 + 여자 묶음)을 나열하는 것과 같으므로 $3!$가지이다.\n이때 묶음 안에서 여자 3명이 자리를 바꾸는 경우의 수는 $3!$가지이다.\n따라서 $a = 3! \\times 3! = 6 \\times 6 = 36$\n\n(ii) $b$ 구하기 (남자 2명이 이웃하지 않는 경우)\n먼저 여자 3명을 일렬로 나열하는 경우의 수는 $3!$가지이다.\n여자 3명이 나열된 후, 그 사이사이와 양 끝의 $4$개의 빈 자리 중 $2$자리를 택하여 남자 2명을 배열하는 경우의 수는 ${}_{4}P_{2}$가지이다.\n따라서 $b = 3! \\times {}_{4}P_{2} = 6 \\times 12 = 72$\n\n그러므로 $b-a = 72 - 36 = 36$이다.\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -433,7 +433,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n천의 자리 숫자부터 차례대로 고정하여 가능한 수의 개수를 구하고 목표 순서에 도달하는 수를 찾는다.\n\n풀이 과정\n작은 수부터 차례대로 나열하므로 천의 자리가 가장 작은 숫자부터 시작한다.\n\n(i) 천의 자리가 $1$인 경우\n남은 $0, 2, 3$을 배열하는 경우의 수이므로 $3! = 6$(개)\n\n(ii) 천의 자리가 $2$인 경우\n남은 $0, 1, 3$을 배열하는 경우의 수이므로 $3! = 6$(개)\n여기까지 총 $12$개의 자연수가 나열되었다.\n\n(iii) 천의 자리가 $3$인 경우\n앞에서부터 남은 순서를 하나씩 구한다.\n13번째 수: 3012\n14번째 수: 3021\n15번째 수: 3102\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -469,7 +469,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n여사건의 경우의 수를 이용하여 전체 경우의 수에서 조건을 만족하지 않는 경우를 뺀다.\n\n풀이 과정\n전체 11종류의 바지 중에서 5벌을 선택하는 경우의 수는\n${}_{11}C_{5} = \\dfrac{11 \\times 10 \\times 9 \\times 8 \\times 7}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 462$\n\n청바지와 정장바지를 적어도 1종류씩 포함하지 않는 경우는 청바지만 5벌 구매하거나 정장바지만 5벌 구매하는 경우이다.\n(i) 청바지만 5벌 구매하는 경우의 수: ${}_{5}C_{5} = 1$\n(ii) 정장바지만 5벌 구매하는 경우의 수: ${}_{6}C_{5} = 6$\n\n따라서 구하는 경우의 수는\n$462 - (1+6) = 455$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -577,7 +577,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n두 부등식의 해를 각각 구한 뒤, 정수해의 개수가 정확히 1개가 되는 실수 $a$의 범위를 찾는다.\n\n풀이 과정\n첫 번째 부등식을 풀면\n$x^2-x-2>0$\n$(x-2)(x+1)>0$\n따라서\n$x<-1$ 또는 $x>2$이다.\n\n두 번째 부등식을 인수분해하면\n$3x^2-2(2a-2)x+a^2-4<0$\n$3x^2-(4a-4)x+a^2-4<0$\n$(3x-(a+2))(x-(a-2))<0$이다.\n\n두 근은 $x=a-2$, $x=\\dfrac{a+2}{3}$이다.\n따라서 두 번째 부등식의 해는 두 근 사이의 열린구간이다.\n\n이 열린구간 안에 있으면서 첫 번째 부등식 $x<-1$ 또는 $x>2$를 만족하는 정수 $x$가 정확히 1개가 되어야 한다.\n정수해의 개수를 따져 정리하면 가능한 $a$의 범위는\n$[-1,0) \\cup (5,6] \\cup \\{7\\}$이다.\n\n따라서 가능한 실수 $a$의 최솟값은\n$m=-1$이고, 최댓값은\n$M=7$이다.\n\n그러므로\n$M+m=7+(-1)=6$이다.\n\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -613,7 +613,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n이웃해도 무방한 서로 다른 대상을 먼저 배열한 뒤, 빈 공간에 분리되어야 하는 묶음들을 끼워 넣는다.\n\n풀이 과정\n검은 구슬 3개를 '이웃하는 2개 묶음'과 '단독 1개'로 나눈다. 검은 구슬은 모두 같은 종류이므로 묶음을 구성하는 경우의 수는 $1$가지이다.\n이제 이 두 묶음은 서로 이웃하지 않아야 하므로, 먼저 서로 다른 흰 구슬 3개를 일렬로 나열한다.\n흰 구슬 3개를 나열하는 경우의 수는 $3! = 6$가지이다.\n\n흰 구슬 사이사이와 양 끝에 총 4개의 빈 자리가 생긴다.\n이 4개의 자리 중에서 서로 다른 2자리를 선택하여 '검은 구슬 2개 묶음'과 '검은 구슬 1개'를 각각 하나씩 배치한다.\n배치하는 경우의 수는 ${}_{4}P_{2} = 12$가지이다.\n\n따라서 구하는 총 경우의 수는 $6 \\times 12 = 72$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -650,7 +650,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n각 학생이 조건을 만족하도록 체험을 선택하는 경우의 수를 구하고, 두 학생의 체험이 완전히 겹치는 예외 상황을 전체 경우에서 제외한다.\n\n풀이 방향 설정\n먼저 조건 (가)를 만족하는 한 학생의 체험 선택 경우의 수를 구하고, 전체 순서쌍을 만든 후 조건 (나)의 여사건을 빼서 계산한다.\n\n풀이 과정\n조건 (가)에 의해 한 학생이 선택하는 3개의 체험은 수학과 과학이 적어도 하나씩 포함되어야 하므로 가능한 구성은 다음과 같다.\n(i) 수학 체험 2개, 과학 체험 1개: ${}_{4}C_{2} \\times {}_{2}C_{1} = 6 \\times 2 = 12$\n(ii) 수학 체험 1개, 과학 체험 2개: ${}_{4}C_{1} \\times {}_{2}C_{2} = 4 \\times 1 = 4$\n따라서 학생 한 명이 조건 (가)를 만족하며 3개의 체험을 선택하는 경우의 수는 $12 + 4 = 16$가지이다.\n학생 A와 B가 각각 자유롭게 선택하는 전체 경우의 수는 $16 \\times 16 = 256$가지이다.\n\n조건 (나)에서 'A는 선택하고 B는 선택하지 않은 체험이 적어도 1개이다'의 의미는 A의 체험 집합이 B의 체험 집합의 부분집합이 아님을 뜻한다.\n그런데 두 학생 모두 동일하게 3개의 체험을 선택하므로, A가 B의 부분집합이 되는 유일한 경우는 두 학생이 정확히 똑같은 3개의 체험을 선택했을 때뿐이다.\n두 학생이 완전히 동일한 체험 구성을 선택하는 경우의 수는 $16$가지이다.\n\n따라서 조건을 만족하는 경우의 수는 $256 - 16 = 240$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -731,7 +731,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형"
@@ -755,7 +755,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-09",
     "standardUnit": "행렬과 그 연산",
     "standardUnitOrder": 9,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형"
@@ -779,7 +779,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-08",
     "standardUnit": "순열과 조합",
     "standardUnitOrder": 8,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -792,7 +792,7 @@ window.questionBank = [
     "answer": "$184$",
     "solution": "[키포인트]\n조건에 맞게 앞줄의 좌석 배치를 기준으로 경우를 세분화하여 각 줄의 사람 배치를 구한다.\n\n풀이 방향 설정\n운전석 조건에 의해 앞줄에는 최소 1명이 앉아야 하므로, 앞줄에 앉는 성별 구성에 따라 경우를 나누어 세어본다. 남녀의 역할은 대칭이므로 한쪽 경우를 구한 후 2배를 할 수 있다.\n\n풀이 과정\n앞줄에 남자가 앉는 경우를 구해보자.\n\n(i) 앞줄에 남자 2명이 모두 앉는 경우\n앞줄 2자리에 남자 2명을 배치하는 경우의 수는 $2! = 2$가지이다.\n남은 여자 2명은 나머지 5자리 중 2자리에 배치하면 되고, 여자는 서로 이웃해도 조건에 어긋나지 않는다.\n따라서 이 경우의 수는\n$2! \\times {}_{5}P_{2}=2\\times20=40$가지이다.\n\n(ii) 앞줄에 남자 1명만 앉는 경우\n운전석에는 반드시 사람이 앉아야 하므로, 이 경우 남자 1명은 운전석에 앉아야 한다.\n남자 2명 중 운전석에 앉을 시람을 정하는 경우는 $2$가지이다.\n앞줄의 나머지 한 자리는 비어 있어야 한다. 여자가 앉으면 같은 줄에서 남자와 여자가 서로 이웃하게 되기 때문이다.\n\n이제 남은 사람은 남자 1명, 여자 2명이고, 가운데 줄 2자리와 뒷줄 3자리에 배치한다.\n- 가운데 줄에 여자 2명이 앉는 경우: 여자 2명 배치 $2!$가지, 남자 1명을 뒷줄 3자리 중 한 곳에 배치 $3$가지이므로 $2\\times3=6$가지\n- 가운데 줄에 남자 1명만 앉는 경우: 남자 1명을 가운데 줄 2자리 중 한 곳에 배치 $2$가지, 여자 2명을 뒷줄 3자리 중 2곳에 배치 ${}_{3}P_{2}=6$가지이므로 $2\\times6=12$가지\n- 가운데 줄에 여자 1명만 앉는 경우: 여자 선택 $2$가지, 가운데 줄 자리 선택 $2$가지이다. 남은 남자 1명과 여자 1명은 뒷줄에 앉아야 하는데, 같은 줄에서 서로 이웃하지 않으려면 뒷줄의 양 끝자리에 앉아야 한다. 이때 배치가 $2!$가지이므로 $2\\times2\\times2=8$가지\n- 가운데 줄이 비는 경우: 남자 1명과 여자 2명이 모두 뒷줄 3자리에 앉으면 반드시 남녀가 이웃하는 자리가 생기므로 불가능하다.\n\n따라서 앞줄에 남자 1명만 앉는 경우의 수는\n$2\\times(6+12+8)=52$가지이다.\n\n앞줄에 남자가 앉는 경우의 수는\n$40+52=92$가지이다.\n남녀의 역할을 바꾸어 앞줄에 여자가 앉는 경우도 대칭적으로 $92$가지이다.\n\n따라서 전체 경우의 수는\n$92\\times2=184$가지이다.\n\n결론\n따라서 구하는 값은 $184$이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
