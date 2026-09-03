@@ -113,20 +113,82 @@ const answerComparable = (row, actual) => {
 const answerMismatches = (crosscheckRows || []).flatMap((row) => answerComparable(row, currentByUid.get(row.questionUid)) ? [] : [{ questionUid: row.questionUid, expected: independentAnswerValue(row), actual: currentByUid.get(row.questionUid) }]);
 const answerCrosscheck = { status: crosscheckRows && crosscheckRows.length === targetRows.length && answerMismatches.length === 0 ? "PASS" : "FAIL", expected: targetRows.length, observed: crosscheckRows?.length ?? 0, mismatchCount: answerMismatches.length, mismatches: answerMismatches.slice(0, 20), basis: "independent expected-answer facts are rehashed against current source answers; this does not claim a fresh manual solve of every row" };
 
-function rawLatexOutsideMath(value) {
-  const text = String(value ?? "");
-  if ((text.match(/\$/g) || []).length % 2 !== 0) return ["UNBALANCED_MATH_DELIMITER"];
-  const outside = text.split("$").filter((_, index) => index % 2 === 0).join(" ");
-  return [...outside.matchAll(/\\(?:dfrac|frac|sqrt|left|right|cdot|times|le|ge|lt|gt|ne|begin|end|pi|alpha|beta|gamma)\b/g)].map((match) => match[0]);
+function scanSolutionTeX(value) {
+  // A few legacy JS records contain a literal backslash-n after VM loading because
+  // they were serialized with an extra escape. Treat that compatibility form as a
+  // line break before scanning; this is not a TeX command and mirrors engine output.
+  const text = String(value ?? "").replaceAll("\\n", "\n");
+  const hits = [];
+  const mathBlocks = [];
+  let delimiter = null;
+  let blockStart = -1;
+  for (let index = 0; index < text.length; index += 1) {
+    if (text[index] === "\\") {
+      const command = text.slice(index).match(/^\\[A-Za-z]+/);
+      if (command && delimiter === null) hits.push({ command: command[0], index });
+      if (command) index += command[0].length - 1;
+      else if (text[index + 1] === "$") index += 1;
+      continue;
+    }
+    if (delimiter === null) {
+      if (text.startsWith("$$", index)) {
+        delimiter = "$$";
+        blockStart = index;
+        index += 1;
+      } else if (text[index] === "$") {
+        delimiter = "$";
+        blockStart = index;
+      }
+      continue;
+    }
+    if (delimiter === "$$" && text.startsWith("$$", index)) {
+      mathBlocks.push({ delimiter, start: blockStart, end: index + 2 });
+      delimiter = null;
+      blockStart = -1;
+      index += 1;
+    } else if (delimiter === "$" && text[index] === "$") {
+      mathBlocks.push({ delimiter, start: blockStart, end: index + 1 });
+      delimiter = null;
+      blockStart = -1;
+    }
+  }
+  return {
+    status: hits.length === 0 && delimiter === null ? "PASS" : "FAIL",
+    hits,
+    unbalancedMathDelimiter: delimiter === null ? 0 : 1,
+    openDelimiter: delimiter,
+    mathBlockCount: mathBlocks.length,
+    mathBlocks,
+  };
 }
 
+const rawScannerSelfTestCases = [
+  { name: "inline-command-inside", value: "$x=1,\\quad y=2$", expected: "PASS" },
+  { name: "display-command-inside", value: "$$x\\to\\infty$$", expected: "PASS" },
+  { name: "sqrt-inside", value: "$y=\\sqrt{x}$", expected: "PASS" },
+  { name: "inequality-inside", value: "일 때 $a\\le b$이다.", expected: "PASS" },
+  { name: "legacy-js-newline-escape", value: "첫 줄\\n둘째 줄", expected: "PASS" },
+  { name: "quad-outside", value: "$x=1$,\\quad $y=2$", expected: "FAIL" },
+  { name: "sqrt-outside", value: "값은 \\sqrt{3}이다.", expected: "FAIL" },
+  { name: "frac-outside", value: "$x=1$일 때 \\dfrac12이다.", expected: "FAIL" },
+  { name: "to-outside", value: "$x=1$ \\to $x=2$", expected: "FAIL" },
+  { name: "unbalanced", value: "$x=1", expected: "FAIL" },
+];
+const rawScannerSelfTestResults = rawScannerSelfTestCases.map((testCase) => {
+  const actual = scanSolutionTeX(testCase.value);
+  return { name: testCase.name, expected: testCase.expected, actual: actual.status, pass: actual.status === testCase.expected, hits: actual.hits, unbalancedMathDelimiter: actual.unbalancedMathDelimiter };
+});
+const rawScannerSelfTest = { status: rawScannerSelfTestResults.every((result) => result.pass) ? "PASS" : "FAIL", cases: rawScannerSelfTestResults };
+
 const rawLatexHits = [];
+let rawLatexUnbalancedCount = 0;
 for (const row of targetRows) {
   const source = loadBank(row.sourceJsPath).find((item) => Number(item.id) === row.id);
-  const hits = rawLatexOutsideMath(source?.solution);
-  if (hits.length) rawLatexHits.push({ qKey: row.qKey, hits });
+  const scan = scanSolutionTeX(source?.solution);
+  rawLatexUnbalancedCount += scan.unbalancedMathDelimiter;
+  if (scan.status !== "PASS") rawLatexHits.push({ qKey: row.qKey, hits: scan.hits, unbalancedMathDelimiter: scan.unbalancedMathDelimiter, openDelimiter: scan.openDelimiter });
 }
-const rawLatexSummary = { status: rawLatexHits.length === 0 ? "PASS" : "FAIL", checked: targetRows.length, hitCount: rawLatexHits.length, hits: rawLatexHits.slice(0, 50) };
+const rawLatexSummary = { status: rawLatexHits.length === 0 && rawLatexUnbalancedCount === 0 && rawScannerSelfTest.status === "PASS" ? "PASS" : "FAIL", checked: targetRows.length, hitCount: rawLatexHits.length, unbalancedMathDelimiter: rawLatexUnbalancedCount, hits: rawLatexHits.slice(0, 50), scannerSelfTest: rawScannerSelfTest };
 writeJson(path.join(EVIDENCE, "raw_latex_gate.json"), rawLatexSummary);
 
 function parseAttr(tag, name) {
@@ -456,7 +518,8 @@ const evidenceFiles = ["final_target_manifest.json", "a_math_education_summary.j
 const sealBundleSha = sha(JSON.stringify(evidenceFiles.sort().map((name) => ({ name, sha256: shaFile(path.join(EVIDENCE, name)) }))));
 const localGeometryPass = targetManifest.targetCountObserved === targetManifest.targetCountExpected && targetManifest.uniqueUidObserved === targetManifest.targetCountExpected && sourceErrors.length === 0 && rawLatexSummary.status === "PASS" && bSummary.status === "PASS" && aSummary.status === "PASS" && paritySummary.status === "PASS" && diffLockSummary.status === "PASS";
 const agentsPass = agentReviews.status === "PASS" || agentReviews.status === "PASS_WITH_FULL_SCOPE_CARRY_FORWARD_AND_FRESH_PINPOINT" || agentReviews.status === "PASS_WITH_CARRY_FORWARD_AND_FRESH_PINPOINT" || (agentReviews.agents?.length === 3 && agentReviews.agents.every((agent) => agent.status === "PASS"));
-const browserPass = browserSummary.status === "PASS" && browserSummary.captureRuntime === "codex-in-app-browser" && browserSummary.sourceCases?.expected === new Set(targetRows.map((row) => row.sourceJsPath)).size * 3 && browserSummary.sourceCases?.fail === 0;
+const browserReleaseBindingPass = browserSummary.releaseArtifactSha === releaseArtifactSha && browserSummary.currentReleaseArtifactSha === releaseArtifactSha && browserSummary.releaseArtifactShaMatch === true;
+const browserPass = browserSummary.status === "PASS" && browserSummary.captureRuntime === "codex-in-app-browser" && browserSummary.sourceCases?.expected === new Set(targetRows.map((row) => row.sourceJsPath)).size * 3 && browserSummary.sourceCases?.fail === 0 && browserReleaseBindingPass;
 const finalStatus = localGeometryPass && agentsPass && browserPass ? "GEOMETRY PASS / GLOBAL_CI_BLOCKED_UNRELATED" : "REOPEN_SEAL";
 const mother = {
   reportType: "mother_final_seal_v2_2",
@@ -466,7 +529,7 @@ const mother = {
   releaseArtifactSha,
   reviewEvidenceSha,
   sealBundleSha,
-  gates: { targetManifest: targetManifest.targetCountObserved === targetManifest.targetCountExpected ? "PASS" : "FAIL", A: aSummary.status, B: bSummary.status, C: browserSummary.status, productionParity: paritySummary.status, diffLock: diffLockSummary.status, independentAgents: agentsPass ? "PASS" : agentReviews.status, globalCi: paritySummary.globalCi.status },
+  gates: { targetManifest: targetManifest.targetCountObserved === targetManifest.targetCountExpected ? "PASS" : "FAIL", A: aSummary.status, B: bSummary.status, C: browserPass ? "PASS" : "FAIL", productionParity: paritySummary.status, diffLock: diffLockSummary.status, independentAgents: agentsPass ? "PASS" : agentReviews.status, globalCi: paritySummary.globalCi.status },
   evidenceFiles,
 };
 writeJson(path.join(EVIDENCE, "mother_final_seal.json"), mother);

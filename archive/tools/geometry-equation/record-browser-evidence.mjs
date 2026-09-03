@@ -18,6 +18,15 @@ if (capture.runtime !== "codex-in-app-browser" || capture.synthetic === true) {
 const expectedBySource = new Map();
 const errors = [];
 const shaFile = (file) => crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex");
+const releaseArtifactPath = path.join(evidence, "release_artifact.json");
+const releaseArtifact = fs.existsSync(releaseArtifactPath) ? JSON.parse(fs.readFileSync(releaseArtifactPath, "utf8")) : null;
+const currentReleaseArtifactSha = releaseArtifact?.releaseArtifactSha || null;
+const capturedReleaseArtifactSha = Object.prototype.hasOwnProperty.call(capture, "releaseArtifactSha") ? capture.releaseArtifactSha : null;
+if (!capturedReleaseArtifactSha) {
+  errors.push({ mode: "release-binding", code: "BROWSER_RELEASE_ARTIFACT_SHA_MISSING" });
+} else if (!currentReleaseArtifactSha || capturedReleaseArtifactSha !== currentReleaseArtifactSha) {
+  errors.push({ mode: "release-binding", code: "BROWSER_RELEASE_ARTIFACT_SHA_MISMATCH", captured: capturedReleaseArtifactSha, current: currentReleaseArtifactSha });
+}
 const recheckPath = path.join(evidence, "browser_harness_recheck.json");
 if (!fs.existsSync(recheckPath)) {
   errors.push({ mode: "recheck", code: "CURRENT_SHA_RECHECK_MISSING" });
@@ -92,10 +101,13 @@ const observedImages = sourceCases.filter((item) => item.mode === "sol").reduce(
 const expectedImages = [...expectedBySource.values()].reduce((sum, item) => sum + item.solutionImages, 0);
 const report = {
   reportType: "independent_C_browser_final",
-  status: errors.length === 0 && observedImages === expectedImages ? "PASS" : "FAIL",
+  status: errors.length === 0 && observedImages === expectedImages && Boolean(capturedReleaseArtifactSha) && capturedReleaseArtifactSha === currentReleaseArtifactSha ? "PASS" : "FAIL",
   basis: "validated capture produced by an actual Codex in-app browser session; no counts or PASS fields are synthesized",
   capturePath: path.relative(root, capturePath).replaceAll("\\", "/"),
   captureRuntime: capture.runtime,
+  releaseArtifactSha: capturedReleaseArtifactSha,
+  currentReleaseArtifactSha,
+  releaseArtifactShaMatch: Boolean(capturedReleaseArtifactSha) && capturedReleaseArtifactSha === currentReleaseArtifactSha,
   executedAt: capture.executedAt || null,
   targetSourceCount: expectedBySource.size,
   productionAssetLoad: { expected: expectedImages, observed: observedImages, loaded: observedImages, fail: expectedImages - observedImages, status: observedImages === expectedImages ? "PASS" : "FAIL" },
