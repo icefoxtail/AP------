@@ -113,6 +113,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 근호 안은 $0$ 이상이어야 하고, $\\sqrt{4-2x}\\ge0$이다.\\n정석 풀이: $4-2x\\ge0$에서 $x\\le2$이므로 정의역은 $\\{x\\mid x\\le2\\}$이다. 또한 $-\\sqrt{4-2x}\\le0$이므로 $y=-\\sqrt{4-2x}+4\\le4$이고, $x$가 작아질수록 $y$는 아래로 제한 없이 작아진다. 따라서 치역은 $\\{y\\mid y\\le4\\}$이다.\\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q04-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점·정의역·치역을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (2,4)와 정의역 x≤2, 치역 y≤4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -344,6 +352,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $f$는 증가함수이므로, $f$의 그래프와 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있어야 한다.\\n조건 정리: 평행이동한 함수는 $f(x)=2\\sqrt{x-a}+3$이다. 두 그래프의 공통점을 $(p,q)$라 하면 $q=f(p)$이고 $p=f(q)$이다. $f$는 증가함수이므로 $p\\lt q$이면 $f(p)\\lt f(q)$, 즉 $q\\lt p$가 되어 모순이고, $p\\gt q$인 경우도 같은 방법으로 모순이다. 따라서 $p=q$이다.\\n정석 풀이: 접점은 $y=x$ 위에 있으므로 $f(x)=x$를 만족한다. $2\\sqrt{x-a}+3=x$에서 $x\\ge3$이고 $2\\sqrt{x-a}=x-3$이다. 양변을 제곱하면 $4(x-a)=(x-3)^2$이므로 $x^2-10x+(9+4a)=0$이다. 두 그래프가 서로 접할 때에는 두 교점이 하나로 합쳐지므로 이 이차방정식이 중근을 가져야 한다. 따라서 판별식이 $0$이어서 $(-10)^2-4(9+4a)=0$이다. 즉 $100-36-16a=0$에서 $a=4$이다. 이때 중근은 $x=5$이고 원래 식도 만족한다.\\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "무리함수와 역함수의 접점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=4일 때 두 그래프의 접점 T=(5,5)를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",

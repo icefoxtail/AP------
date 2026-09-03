@@ -511,6 +511,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 교점의 $x^2$을 미지수로 두면 두 교점 조건을 이차방정식의 두 근으로 바꿀 수 있다.\n조건 정리: 교점에서 $y=\\dfrac{k}{x}$이므로 $x^2+\\dfrac{k^2}{x^2}=5$이다.\n풀이 방향: $t=x^2$로 두고 두 근의 비와 근의 합·곱을 이용한다.\n정석 풀이: $t=x^2$라 두면 $t^2-5t+k^2=0$이다. 두 점의 $x$좌표 비가 $1:3$이므로 두 양의 근의 비는 $1:9$이다. 근의 합이 $5$이므로 두 근은 $\\dfrac12$, $\\dfrac92$이고, 근의 곱은 $\\dfrac12\\cdot\\dfrac92=\\dfrac94=k^2$이다. $k\\gt0$이므로 $k=\\dfrac32$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q18-solution.svg",
+
+    "solutionImageAlt": "원과 반비례 함수의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "x²=1/2, 9/2인 두 교점과 x좌표의 비 1:3을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
