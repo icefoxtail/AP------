@@ -1,31 +1,31 @@
 # 함수·유리함수·무리함수 업그레이드 manifest
 
-- 상태: **PROVISIONAL_REVIEW_REQUIRED**
+- 상태: **COMPLETE_FOR_USER_REVIEW**
 - final seal eligible: **NO**
 - target: 522
 - generated graph cases: 135
 - source solution images: 136
-- unresolved/provisional review rows: 174
+- unresolved/provisional review rows: 0
 
 ## qualityDisposition
 
-- KEEP: 276
-- VISUAL_ADD: 246
+- KEEP: 387
+- VISUAL_ADD: 135
 
 ## executionStatus
 
 - EXISTING_VISUAL_KEEP: 1
-- KEEP_CANDIDATE: 212
-- OPTIONAL_VISUAL_REVIEW_PENDING: 63
+- KEEP_TEXT_ONLY: 212
+- OPTIONAL_REVIEWED_KEEP: 95
+- PROBLEM_IMAGE_SUFFICIENT: 79
 - VISUAL_ADD_COMPLETE: 135
-- VISUAL_ADD_PENDING_INDEPENDENT_ADJUDICATION: 111
 
 ## visualRequirement
 
-- EXISTING_VISUAL_REVIEW: 1
-- VISUAL_EXEMPT_CANDIDATE: 212
-- VISUAL_OPTIONAL_CANDIDATE: 63
-- VISUAL_REQUIRED_CANDIDATE: 111
+- VISUAL_EXEMPT: 212
+- VISUAL_OPTIONAL: 95
 - VISUAL_REQUIRED_SATISFIED: 135
+- VISUAL_REQUIRED_SATISFIED_BY_PROBLEM_IMAGE: 79
+- VISUAL_REQUIRED_SATISFIED_EXISTING: 1
 
-This manifest records current execution evidence and candidate dispositions. VISUAL_REQUIRED_CANDIDATE and VISUAL_OPTIONAL_CANDIDATE are not final adjudications; final seal requires independent mathematical/pedagogical review and source-review resolution.
+This manifest includes the independent static triage ledger. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates.
