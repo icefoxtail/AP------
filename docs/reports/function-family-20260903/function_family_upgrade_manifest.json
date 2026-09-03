@@ -1,6 +1,6 @@
 {
   "reportType": "FUNCTION_FAMILY_UPGRADE_MANIFEST",
-  "generatedAt": "2026-09-03T18:31:09.859Z",
+  "generatedAt": "2026-09-03T18:55:13.539Z",
   "status": "COMPLETE_FOR_USER_REVIEW",
   "finalSealEligible": false,
   "scope": "original only; similar excluded",
@@ -28,6 +28,15 @@
       "VISUAL_REQUIRED_SATISFIED_EXISTING": 1
     },
     "unresolvedCount": 0
+  },
+  "renderGate": {
+    "status": "FULL_BROWSER_RENDER_PASS",
+    "sourceCount": 50,
+    "expectedCases": 150,
+    "observedCases": 150,
+    "passCases": 150,
+    "failCases": 0,
+    "source": "function_family_full_render_matrix_v1.json"
   },
   "rows": [
     {
@@ -12559,5 +12568,5 @@
       "evidence": "function_family_quality_triage.csv + independent static review"
     }
   ],
-  "note": "This manifest includes the independent static triage ledger. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates."
+  "note": "This manifest includes the independent static triage ledger and full browser render matrix. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates."
 }

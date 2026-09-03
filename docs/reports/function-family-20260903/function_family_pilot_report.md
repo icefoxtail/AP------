@@ -2,7 +2,7 @@
 
 ## 상태
 
-`FULL_SCOPE_STATIC_REVIEW_COMPLETE_FOR_USER_REVIEW`
+`FULL_SCOPE_RENDER_PASS_AWAITING_USER_SEAL`
 
 기준 문서에 따른 원본 522문항·50개 시험지 전수 진단을 완료했고, 그래프 이해가 실제로 필요한 135문항에 결정적 해설 SVG를 연결했다. 전수 static review에서 모든 문항의 품질·시각자료·answer·solution 상태를 확정했으며, 사용자의 최종 교육적 재검수와 release seal은 별도 단계다.
 
@@ -61,8 +61,11 @@
 - source-review unresolved: 0
 - `VISUAL_REQUIRED` missing: 0
 - 보호 필드(`content`, `choices`, `answer`, `image`, `id`) 임의 변경: 0
+- 전체 브라우저 렌더: 150/150 PASS (`exam` 50/50, `solution` 50/50, `answer` 50/50)
 
 `22_강남여고 2학기 중간 q17`은 독립 계산값 48이 원문 보기에는 없지만 원문 answer가 이미 `해당 없음 (48)`로 기록된 보호 데이터 이슈라서 수정하지 않고 해소 상태로 기록했다. [전수 independent static review JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.json>)과 [요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.md>)에 근거를 고정했다.
+
+전체 브라우저 렌더는 same-origin harness에서 각 target source JS를 `exam`, `sol`, `ans`로 로드하고 `.page` 생성·내용·이미지 완료·렌더 오류·데이터 오류를 검사했다. [전체 브라우저 렌더 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_full_render_matrix_v1.json>)과 [매트릭스 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_full_render_matrix_v1.md>)에 결과를 고정했다.
 
 ## 이번 파일럿에서 수정한 문항
 
@@ -394,6 +397,8 @@ Batch 15의 1개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 1개
 - [Batch 16 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v21/function_family_summary.md>)
 - [전수 independent static review JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.json>)
 - [전수 independent static review 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_independent_review_v1.md>)
+- [전체 브라우저 렌더 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_full_render_matrix_v1.json>)
+- [전체 브라우저 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_full_render_matrix_v1.md>)
 - [누적 시각 계약 검증 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)
 - [누적 시각 계약 검증 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)
 - [전수 업그레이드 manifest JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_upgrade_manifest.json>)
@@ -415,4 +420,4 @@ Batch 15의 1개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 1개
 5. 유리함수의 점근선·중심·원의 교점이 정확한지
 6. 해설 SVG를 실제로 추가해야 하는 후보와 `KEEP`/`OPTIONAL` 후보의 분류가 적절한지
 
-독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. 현재 매니페스트의 `finalSealEligible`은 release SHA·전수 최종 렌더·사용자 검수 전이므로 `false`다.
+독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. 전체 브라우저 렌더는 150/150 PASS지만, 현재 매니페스트의 `finalSealEligible`은 release SHA와 사용자의 최종 교육적 검수 전이므로 `false`다.
