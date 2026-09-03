@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const REPORT_DIR = path.join(ROOT, 'docs', 'reports', 'function-family-20260903');
 const GRAPH_LEDGER_PATH = path.join(REPORT_DIR, 'function_family_pilot_graphs.json');
+const ADJUDICATION_PATH = path.join(REPORT_DIR, 'function_family_independent_review_v1.json');
 const OUTPUT_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.json');
 const SUMMARY_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.md');
 
@@ -17,9 +18,40 @@ function main() {
   const inventoryPath = path.join(REPORT_DIR, latestAuditDir, 'function_family_inventory.json');
   const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
   const graphLedger = JSON.parse(fs.readFileSync(GRAPH_LEDGER_PATH, 'utf8'));
+  const adjudication = fs.existsSync(ADJUDICATION_PATH) ? JSON.parse(fs.readFileSync(ADJUDICATION_PATH, 'utf8')) : null;
+  const adjudicationByKey = new Map((adjudication?.rows || []).map((row) => [row.qKey, row]));
   const generatedKeys = new Set(graphLedger.cases.map((row) => `${row.sourceJsPath}_${row.id}`));
   const rows = inventory.rows.map((row) => {
     const key = `${row.sourceJsPath}_${row.id}`;
+    const reviewed = adjudicationByKey.get(row.qKey);
+    if (reviewed) {
+      return {
+        qKey: row.qKey,
+        sourceJsPath: row.sourceJsPath,
+        id: row.id,
+        standardUnitKey: row.standardUnitKey,
+        subUnitKey: row.subUnitKey,
+        qualityDisposition: reviewed.qualityDisposition,
+        executionStatus: reviewed.executionStatus,
+        visualRequirement: reviewed.visualRequirement,
+        reviewStatus: reviewed.chatgptReviewStatus,
+        logicJumpStatus: reviewed.logicJumpStatus,
+        curriculumStatus: reviewed.curriculumStatus,
+        builderStatus: reviewed.builderStatus,
+        renderStatus: reviewed.renderStatus,
+        graphGapDisposition: row.graphGapDisposition,
+        solutionImageStatus: row.solutionImageStatus,
+        sourceReviewStatus: reviewed.sourceReviewStatus,
+        sourceReviewCode: reviewed.sourceReviewCode,
+        answerGate: reviewed.answerGate,
+        solutionGate: reviewed.solutionGate,
+        protectedPayloadHash: reviewed.protectedPayloadHash,
+        generatedGraphCase: reviewed.generatedGraphCase,
+        evidence: generatedKeys.has(key)
+          ? 'function_family_pilot_graphs.json + batch attachment ledger + browser render matrix + independent review'
+          : 'function_family_quality_triage.csv + independent static review',
+      };
+    }
     // The previously suspected q18 answer discrepancy was resolved by matching
     // the computed 11/4 result to choice ①; no unresolved source-review override remains.
     const sourceReview = false;
@@ -78,13 +110,17 @@ function main() {
   const output = {
     reportType: 'FUNCTION_FAMILY_UPGRADE_MANIFEST',
     generatedAt: new Date().toISOString(),
-    status: summary.unresolvedCount === 0 ? 'PROVISIONAL_COMPLETE' : 'PROVISIONAL_REVIEW_REQUIRED',
+    status: adjudication?.status === 'COMPLETE_FOR_USER_REVIEW'
+      ? 'COMPLETE_FOR_USER_REVIEW'
+      : summary.unresolvedCount === 0 ? 'PROVISIONAL_COMPLETE' : 'PROVISIONAL_REVIEW_REQUIRED',
     finalSealEligible: false,
     scope: 'original only; similar excluded',
     source: `${latestAuditDir}/function_family_inventory.json`,
     summary,
     rows,
-    note: 'This manifest records current execution evidence and candidate dispositions. VISUAL_REQUIRED_CANDIDATE and VISUAL_OPTIONAL_CANDIDATE are not final adjudications; final seal requires independent mathematical/pedagogical review and source-review resolution.',
+    note: adjudication
+      ? 'This manifest includes the independent static triage ledger. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates.'
+      : 'This manifest records current execution evidence and candidate dispositions. VISUAL_REQUIRED_CANDIDATE and VISUAL_OPTIONAL_CANDIDATE are not final adjudications; final seal requires independent mathematical/pedagogical review and source-review resolution.',
   };
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n', 'utf8');
   fs.writeFileSync(SUMMARY_PATH, [
