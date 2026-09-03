@@ -197,6 +197,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 함수의 교점 조건을 $k$에 관한 함수로 바꾸고 정의역에서의 단조성을 이용한다.\n조건 정리: 교점의 $x$좌표는 $5\\le x\\le8$이고 $k=\\dfrac{-2x+7}{x-2}-\\sqrt{2x}$이다.\n풀이 방향: 오른쪽 식이 구간 $[5,8]$에서 연속이고 감소함을 확인하여 가능한 $k$의 최솟값을 끝점에서 구한다.\n정석 풀이: $h(x)=\\dfrac{-2x+7}{x-2}-\\sqrt{2x}=-2+\\dfrac{3}{x-2}-\\sqrt{2x}$라 두면 $x$가 증가할수록 $\\dfrac{3}{x-2}$와 $-\\sqrt{2x}$가 모두 감소하므로 $h(x)$는 $[5,8]$에서 엄격히 감소한다. 따라서 $k=h(x)$일 때 각 가능한 $k$마다 교점은 하나이고, $k$의 최솟값은 $x=8$에서 얻는다. $h(8)=\\dfrac{-16+7}{6}-4=-\\dfrac32-4=-\\dfrac{11}{2}$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q06-solution.svg",
+
+    "solutionImageAlt": "유리함수와 무리함수의 끝점 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "구간 [5,8]에서 한 교점과 k의 최솟값 −11/2를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -679,6 +687,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$k=5,6,7,8,9$",
     "solution": "[키포인트] 각 유리함수의 사분면 통과 조건을 $k$의 부등식으로 바꾸어 공통 범위를 찾는다.\n조건 정리: 첫 그래프는 모든 사분면을 지나야 하고, 둘째 그래프는 제3사분면을 지나지 않아야 한다.\n풀이 방향: 첫 그래프의 제1사분면 통과 조건과 둘째 그래프의 제3사분면 통과 여부가 경계를 결정한다.\n정석 풀이: $y=\\dfrac{k}{x+2}-2$가 제1사분면을 지나려면 $x\\gt 0$에서 $\\dfrac{k}{x+2}\\gt 2$인 점이 있어야 한다. $x+2\\gt 2$이므로 이는 $k\\gt 4$일 때 가능하다. 이때 $x=-2$의 양쪽과 충분히 큰 양의 $x$를 택하면 나머지 제2, 제3, 제4사분면도 모두 지난다. 한편 $y=\\dfrac{k}{x-3}+3$에서 $x\\lt 0$이면 $x-3\\lt -3$이다. $k\\gt 0$일 때 제3사분면의 점이 생기려면 $3+\\dfrac{k}{x-3}\\lt 0$인 $x\\lt 0$이 존재해야 하며, 이는 $k\\gt 9$일 때이다. 따라서 제3사분면을 지나지 않으려면 $k\\le9$이다. 두 조건을 합치면 $4\\lt k\\le9$이고, 정수 $k$는 $5,6,7,8,9$이다.\n따라서 구하는 값은 $k=5,6,7,8,9$이다.",
+
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "두 유리함수의 사분면 조건을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=7 대표 그래프와 허용 정수 5,6,7,8,9를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

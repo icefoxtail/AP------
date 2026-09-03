@@ -657,6 +657,14 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "choices": [],
     "answer": "$3$",
     "solution": "[키포인트] $f(f(x))=x$는 $f$가 자기 자신의 역함수라는 뜻이고, $y=f(x)$와 $y=x$의 교점은 $f(x)=x$의 두 근으로 결정된다.\n조건 정리: $f(x)=\\dfrac{ax+b}{x-2}$이고 모든 허용되는 $x$에 대해 $f(f(x))=x$이다. 두 고정점 사이의 거리는 $2\\sqrt6$이다.\n풀이 방향: 먼저 합성함수 조건으로 $a$를 구하고, 고정점 방정식의 두 근의 차로 $b$를 정한 뒤 $f(5)$를 계산한다.\n정석 풀이: 합성하면 $f(f(x))=\\dfrac{(a^2+b)x+b(a-2)}{(a-2)x+b+4}$이다. 이것이 항등적으로 $x$와 같으려면 $((a^2+b)x+b(a-2))=x((a-2)x+b+4)$가 성립해야 한다. 오른쪽의 $x^2$항 계수는 $a-2$이므로 $a=2$이다. 따라서 $f(x)=\\dfrac{2x+b}{x-2}$이다. 이제 $f(x)=x$에서 $2x+b=x(x-2)$이므로 $x^2-4x-b=0$이다. 두 근을 $\\alpha,\\beta$라 하면 교점은 $(\\alpha,\\alpha)$, $(\\beta,\\beta)$이고 두 점 사이의 거리는 $\\sqrt{(\\alpha-\\beta)^2+(\\alpha-\\beta)^2}=\\sqrt2|\\alpha-\\beta|$이다. 이것이 $2\\sqrt6$이므로 $|\\alpha-\\beta|=2\\sqrt3$이다. 이차방정식의 두 근의 차의 제곱은 판별식과 같아 $(\\alpha-\\beta)^2=16+4b=12$이므로 $b=-1$이다. 따라서 $f(5)=\\dfrac{10-1}{5-2}=3$이다.\n따라서 구하는 값은 $3$이다.",
+
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "유리함수 자기역함수의 고정점과 대칭축을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f=2+3/(x−2)의 중심·대칭축과 두 고정점을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
