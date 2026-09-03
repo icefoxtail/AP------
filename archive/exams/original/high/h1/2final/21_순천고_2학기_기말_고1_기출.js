@@ -52,6 +52,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 분모가 0이 되는 값과 분자·분모의 최고차항 계수비로 점근선을 구한다.\n조건 정리: 수직점근선은 $x=a$, 수평점근선은 $y=3$이다.\n풀이 방향: 주어진 점근선과 비교하여 $a,b$를 정한다.\n정석 풀이: $x=a=2$이므로 $a=2$이고, 최고차항 계수비가 $3$이므로 수평점근선은 $y=3$, 따라서 $b=3$이다. 그러므로 $ab=2\\cdot3=6$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q02-solution.svg",
+
+    "solutionImageAlt": "유리함수의 두 점근선을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=3+8/(x−2)에서 점근선 x=2, y=3과 절편을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

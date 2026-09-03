@@ -632,6 +632,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$k\\lt-2$ 또는 $k=-1$",
     "solution": "[키포인트] 근호의 값을 새로운 변수로 놓으면 교점 문제를 음이 아닌 근을 갖는 이차방정식 문제로 바꿀 수 있다.\n조건 정리: $t=\\sqrt{4x-8}$라 하면 $t\\ge0$이고 $x=\\dfrac{t^2+8}{4}$이다.\n풀이 방향: 직선의 식에 대입하여 $t$에 대한 이차방정식을 만든 뒤 음이 아닌 근의 개수가 정확히 $1$개가 되는 $k$를 찾는다.\n정석 풀이: 교점에서는 $t=x+k=\\dfrac{t^2+8}{4}+k$이므로 $t^2-4t+8+4k=0$이다. 즉 $(t-2)^2=-4(k+1)$이다. $k=-1$이면 $t=2$ 하나만 얻어 교점이 한 개이다. $k\\lt-1$이면 두 실근은 $t=2\\pm2\\sqrt{-k-1}$이다. 이 중 작은 근이 음수가 되어 하나만 유효하려면 $2-2\\sqrt{-k-1}\\lt0$, 즉 $k\\lt-2$여야 한다. $k=-2$에서는 작은 근이 $0$이므로 두 근이 모두 유효하여 교점이 두 개이다. 따라서 한 점에서 만나는 경우는 $k\\lt-2$ 또는 $k=-1$이다.\n따라서 구하는 범위는 $k\\lt-2$ 또는 $k=-1$이다.",
+
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q20-solution.svg",
+
+    "solutionImageAlt": "무리함수와 직선의 접점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=√(4x−8)과 y=x−1이 T=(3,2)에서 한 점으로 만남을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
