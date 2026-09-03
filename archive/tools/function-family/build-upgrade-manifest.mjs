@@ -6,6 +6,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '.
 const REPORT_DIR = path.join(ROOT, 'docs', 'reports', 'function-family-20260903');
 const GRAPH_LEDGER_PATH = path.join(REPORT_DIR, 'function_family_pilot_graphs.json');
 const ADJUDICATION_PATH = path.join(REPORT_DIR, 'function_family_independent_review_v1.json');
+const FULL_RENDER_PATH = path.join(REPORT_DIR, 'function_family_full_render_matrix_v1.json');
 const OUTPUT_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.json');
 const SUMMARY_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.md');
 
@@ -19,6 +20,7 @@ function main() {
   const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
   const graphLedger = JSON.parse(fs.readFileSync(GRAPH_LEDGER_PATH, 'utf8'));
   const adjudication = fs.existsSync(ADJUDICATION_PATH) ? JSON.parse(fs.readFileSync(ADJUDICATION_PATH, 'utf8')) : null;
+  const fullRender = fs.existsSync(FULL_RENDER_PATH) ? JSON.parse(fs.readFileSync(FULL_RENDER_PATH, 'utf8')) : null;
   const adjudicationByKey = new Map((adjudication?.rows || []).map((row) => [row.qKey, row]));
   const generatedKeys = new Set(graphLedger.cases.map((row) => `${row.sourceJsPath}_${row.id}`));
   const rows = inventory.rows.map((row) => {
@@ -117,9 +119,18 @@ function main() {
     scope: 'original only; similar excluded',
     source: `${latestAuditDir}/function_family_inventory.json`,
     summary,
+    renderGate: fullRender ? {
+      status: fullRender.status,
+      sourceCount: fullRender.sourceCount,
+      expectedCases: fullRender.expectedCases,
+      observedCases: fullRender.observedCases,
+      passCases: fullRender.passCases,
+      failCases: fullRender.failCases,
+      source: 'function_family_full_render_matrix_v1.json',
+    } : { status: 'PENDING', source: null },
     rows,
     note: adjudication
-      ? 'This manifest includes the independent static triage ledger. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates.'
+      ? 'This manifest includes the independent static triage ledger and full browser render matrix. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates.'
       : 'This manifest records current execution evidence and candidate dispositions. VISUAL_REQUIRED_CANDIDATE and VISUAL_OPTIONAL_CANDIDATE are not final adjudications; final seal requires independent mathematical/pedagogical review and source-review resolution.',
   };
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2) + '\n', 'utf8');
