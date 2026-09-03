@@ -625,8 +625,4 @@ window.questionBank = [
 {
   const question = (id) => window.questionBank.find((q) => q.id === id);
   question(9).solution = question(9).solution.replaceAll("$2\\\\le x\\\\le4$", "$-2\\\\le x\\\\le4$");
-  question(17).content = "&lt;단답형2&gt;<br>" + question(17).content;
-  question(18).content = "&lt;단답형3&gt;<br>" + question(18).content;
-  question(19).content = "&lt;서술형1&gt;<br>" + question(19).content;
-  question(20).content = "&lt;서술형2&gt;<br>" + question(20).content;
 }

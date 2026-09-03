@@ -680,11 +680,5 @@ window.questionBank = [
 // 2026-07 source-defect and source-fidelity corrections
 {
   const question = (id) => window.questionBank.find((q) => q.id === id);
-  question(17).content = "서답형 1.(단답형)<br>" + question(17).content;
-  question(18).content = "서답형 2.(단답형)<br>" + question(18).content;
-  question(19).content = "서답형 3.(단답형)<br>" + question(19).content;
-  question(20).content = "서답형 4.(단답형)<br>" + question(20).content;
-  question(21).content = "서답형 5.(서술형)<br>" + question(21).content.replace("의 양의 해를", "의 해 중 $(a>0,\\ b>0)$인 해를");
-  question(22).content = "서답형 6.(서술형)<br>" + question(22).content;
-  question(23).content = "서답형 7.(서술형)<br>" + question(23).content;
+  question(21).content = question(21).content.replace("의 양의 해를", "의 해 중 $(a>0,\\ b>0)$인 해를");
 }

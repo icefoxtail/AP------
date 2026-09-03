@@ -712,7 +712,7 @@ window.questionBank = [
       "사각형"
     ],
     "wide": false,
-    "content": "[서술형 2] [도형필요] 그림과 같이 $\\overline{BC}=10$이고 넓이가 30인 삼각형 $\\mathrm{ABC}$에 대하여 두 점 $\\mathrm{P}, \\mathrm{S}$는 변 $\\mathrm{BC}$ 위에 있고, 두 점 $\\mathrm{R}, \\mathrm{Q}$가 각각 두 변 $\\mathrm{AB}, \\mathrm{AC}$ 위에 있다. 이 네 점을 꼭짓점으로 하는 직사각형 $\\mathrm{PQRS}$의 넓이가 최대가 되는 $\\mathrm{RQ}$의 길이와 직사각형 $\\mathrm{PQRS}$의 넓이를 풀이과정과 함께 구하시오. [6.0점]",
+    "content": "[서술형 2] $\\overline{BC}=10$이고 넓이가 30인 삼각형 $\\mathrm{ABC}$에 대하여 두 점 $\\mathrm{P}, \\mathrm{S}$는 변 $\\mathrm{BC}$ 위에 있고, 두 점 $\\mathrm{R}, \\mathrm{Q}$가 각각 두 변 $\\mathrm{AB}, \\mathrm{AC}$ 위에 있다. 이 네 점을 꼭짓점으로 하는 직사각형 $\\mathrm{PQRS}$의 넓이가 최대가 되는 $\\mathrm{RQ}$의 길이와 직사각형 $\\mathrm{PQRS}$의 넓이를 풀이과정과 함께 구하시오. [6.0점]",
     "choices": [
       " ",
       " ",
