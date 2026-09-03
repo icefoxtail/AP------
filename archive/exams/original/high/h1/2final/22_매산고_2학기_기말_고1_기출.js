@@ -617,6 +617,14 @@ window.questionBank = [
     "image": "assets/images/22_매산고_2학기_기말_고1_기출/q19.png",
     "answer": "$-5$",
     "solution": "[키포인트] 두 교점의 $x$좌표를 이차방정식의 두 근으로 놓는다.\n조건 정리: 교점의 $x$좌표 $x_1,x_2$는 $x^2+6x-k=0$의 두 근이므로 $x_1+x_2=-6$, $x_1x_2=-k$이다.\n풀이 방향: 세 점의 좌표로 삼각형 넓이를 근의 차와 연결한다.\n정석 풀이: $P=(x_1,x_1+6)$, $Q=(x_2,x_2+6)$이므로 삼각형 $OPQ$의 넓이는 $\\dfrac12|x_1(x_2+6)-x_2(x_1+6)|=3|x_1-x_2|$이다. 넓이가 12이므로 $|x_1-x_2|=4$이다. 따라서 $(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=36+4k=16$이고 $k=-5$이다.\n따라서 구하는 값은 $-5$이다.",
+
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q19-solution.svg",
+
+    "solutionImageAlt": "유리함수와 직선 및 삼각형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=−5일 때 P=(−5,1), Q=(−1,5), 삼각형 넓이 12를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

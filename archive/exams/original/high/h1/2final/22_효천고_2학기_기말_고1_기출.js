@@ -114,6 +114,14 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     ],
     "answer": "①",
     "solution": "[키포인트] $y=\\dfrac{a}{x-p}+q$ 꼴의 쌍곡선은 중심 $(p,q)$을 지나고 기울기가 $\\pm1$인 두 직선에 대하여 대칭이다.\n조건 정리: $y=\\dfrac{2-5x}{x-1}=-5-\\dfrac{3}{x-1}$이다. 따라서 그래프의 중심은 $(1,-5)$이다.\n풀이 방향: 중심을 지나며 기울기가 $1,-1$인 두 대칭축을 구해 주어진 두 직선과 비교한다.\n정석 풀이: 기울기가 $1$인 대칭축은 $y+5=x-1$, 즉 $y=x-6$이다. 기울기가 $-1$인 대칭축은 $y+5=-(x-1)$, 즉 $y=-x-4$이다. 주어진 직선 $y=-x+a$, $y=x+b$와 비교하면 $a=-4$, $b=-6$이다. 따라서 $a+b=-10$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q04-solution.svg",
+
+    "solutionImageAlt": "유리함수의 중심과 대칭축을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "중심 (1,−5)과 대칭축 y=x−6, y=−x−4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -144,6 +152,14 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     ],
     "answer": "⑤",
     "solution": "[키포인트] 역함수의 그래프 위 점 $(u,v)$는 원래 함수의 그래프 위 점 $(v,u)$와 서로 대응한다.\n조건 정리: 역함수의 그래프가 $(5,3)$을 지나므로 원래 함수 $y=\\sqrt{a+x}$는 $(3,5)$를 지난다.\n풀이 방향: 원래 함수에 $x=3$, $y=5$를 대입하여 $a$를 구한다.\n정석 풀이: $5=\\sqrt{a+3}$이다. 양변을 제곱하면 $25=a+3$이므로 $a=22$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q05-solution.svg",
+
+    "solutionImageAlt": "무리함수와 역함수 대응점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "역함수의 점 (5,3)은 원래 함수의 점 (3,5)에 대응하고 a=22이다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -447,6 +463,14 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     ],
     "answer": "①",
     "solution": "[키포인트] 두 그래프의 제4사분면 통과 여부는 $x\\gt0$에서 함수값의 부호를 직접 조사하면 정확히 판정할 수 있다.\n조건 정리: 첫 함수는 $y=\\dfrac{x+3k-2}{3(x+4)}$, 둘째 함수는 $y=\\dfrac{2x+k}{x+1}$로 쓸 수 있다.\n풀이 방향: 첫 그래프가 네 사분면을 모두 지나는 조건과 둘째 그래프가 제4사분면을 지나지 않는 조건을 각각 구한 뒤 교집합을 취한다.\n정석 풀이: 첫 함수에서 $x>0$이면 분모 $3(x+4)$는 양수이다. 제4사분면의 점이 있으려면 $x+3k-2<0$인 양수 $x$가 있어야 하므로 $k<\\dfrac23$이다. 이 조건이면 $x>2-3k$에서 분자와 분모가 모두 양수이므로 제1사분면의 점이 있고, $0<x<2-3k$에서 분자는 음수이므로 제4사분면의 점도 있다. 또한 $k<\\dfrac23$이므로 $3k-2<0$이다. $x<-4$에서는 분자와 분모가 모두 음수이므로 제2사분면의 점이 있고, $-4<x<0$에서는 분자는 음수이고 분모는 양수이므로 제3사분면의 점이 있다. 따라서 첫 그래프가 모든 사분면을 지나는 조건은 $k<\\dfrac23$이다. 둘째 함수에서 $x>0$이면 분모 $x+1$은 양수이다. 제4사분면을 지나지 않으려면 모든 $x>0$에서 $2x+k\\ge0$이어야 하므로 $k\\ge0$이다. 두 조건의 교집합은 $0\\le k<\\dfrac23$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "두 유리함수의 사분면 조건을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "대표값 k=1/3에서 첫 그래프는 네 사분면, 둘째 그래프는 제4사분면을 지나지 않는다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

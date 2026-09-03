@@ -254,6 +254,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 증가함수와 그 역함수의 공통점은 직선 $y=x$ 위에서 찾을 수 있다.\n조건 정리: $f(x)=(x-\\dfrac12)^2+\\dfrac12$이고 정의역에서 증가한다.\n풀이 방향: $f$가 증가함수이므로 $f$와 $f^{-1}$의 교점은 $f(x)=x$를 만족하는 점으로 구한다.\n정석 풀이: 두 그래프의 공통점 $(x,y)$에서는 $y=f(x)$이고 동시에 $y=f^{-1}(x)$이므로 $f(y)=x$이다. $f$가 증가함수이므로 $x\\ne y$이면 $x<y$ 또는 $x>y$에서 $f(x)$와 $f(y)$의 대소가 뒤바뀌어 모순이 생긴다. 따라서 $x=y$이다. $f(x)=x$에서 $x^2-2x+\\dfrac34=0$, 즉 $(x-\\dfrac12)(x-\\dfrac32)=0$이므로 교점은 $P(\\dfrac12,\\dfrac12)$, $Q(\\dfrac32,\\dfrac32)$이다. 따라서 $PQ=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q08-solution.svg",
+
+    "solutionImageAlt": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "교점 P=(1/2,1/2), Q=(3/2,3/2)와 PQ=√2를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",

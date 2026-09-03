@@ -624,6 +624,14 @@ window.questionBank = [
     "image": "assets/images/22_강남여고_2학기_기말_고1_기출/q18.png",
     "answer": "②",
     "solution": "[키포인트] 같은 $x=k$에서 두 그래프의 세로 방향 거리는 두 함수값의 차이다.\n조건 정리: $P_k=(k,\\sqrt{k+1})$, $Q_k=(k,\\sqrt{k})$이므로 $\\overline{P_kQ_k}=\\sqrt{k+1}-\\sqrt{k}$이다.\n풀이 방향: $k=1$부터 31까지 더해 연속해서 소거되는 항을 정리한다.\n정석 풀이: 구하는 합은 $(\\sqrt2-1)+(\\sqrt3-\\sqrt2)+\\cdots+(\\sqrt{32}-\\sqrt{31})$이다. 중간의 근호항이 모두 소거되어 $\\sqrt{32}-1=4\\sqrt2-1$이 남는다. 따라서 $a=-1$, $b=4$이므로 $ab=-4$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q18-solution.svg",
+
+    "solutionImageAlt": "두 무리함수의 세로 차를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "Pₖ=(k,√(k+1)), Qₖ=(k,√k)로 두고 망원합을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
