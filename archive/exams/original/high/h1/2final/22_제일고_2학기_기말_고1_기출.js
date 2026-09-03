@@ -60,6 +60,14 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 유리함수를 $y=q+\\dfrac{r}{x-p}$ 꼴로 바꾸면 점근선과 대칭의 중심을 바로 확인할 수 있다.\n조건 정리: $\\dfrac{3x-1}{x-2}=3+\\dfrac5{x-2}$이다.\n풀이 방향: 각 보기의 정의역, 중심, 절편, 사분면 통과 여부를 차례로 확인한다.\n정석 풀이: 점근선은 $x=2$, $y=3$이므로 정의역은 $x\\ne2$이고 대칭의 중심은 $(2,3)$이다. $x$절편은 $3x-1=0$에서 $x=\\dfrac13$이므로 그래프는 $(\\dfrac13,0)$에서 $x$축과 만난다. 또한 $x=1$이면 $y=-2$이므로 제4사분면도 지난다. 따라서 옳은 것은 ④뿐이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q02-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 절편을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=3+5/(x−2)에서 점근선 x=2, y=3과 x절편을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -673,6 +681,14 @@ window.questionBank=[
     "choices": [],
     "answer": "$9$",
     "solution": "[키포인트] 같은 $x=k$에서 두 곡선의 세로 거리는 두 제곱근의 차이고, 이를 모두 더하면 중간 항이 소거된다.\n조건 정리: $P_k=(k,-\\sqrt{k})$, $Q_k=(k,-\\sqrt{k+2})$이다.\n풀이 방향: $\\overline{P_kQ_k}$를 구한 뒤 $k=1$부터 $47$까지 망원합을 만든다.\n정석 풀이: $Q_k$가 $P_k$보다 아래에 있으므로 $\\overline{P_kQ_k}=\\sqrt{k+2}-\\sqrt{k}$이다. 따라서 합은 $(\\sqrt3-1)+(\\sqrt4-\\sqrt2)+(\\sqrt5-\\sqrt3)+\\cdots+(\\sqrt{49}-\\sqrt{47})$이고 중간 항이 소거되어 $\\sqrt{48}+\\sqrt{49}-1-\\sqrt2$만 남는다. 이는 $4\\sqrt3+7-1-\\sqrt2=6-\\sqrt2+4\\sqrt3$이다. 따라서 $a=6$, $b=-1$, $c=4$이므로 $a+b+c=9$이다.\n따라서 구하는 값은 $9$이다.",
+
+    "solutionImage": "assets/images/22_제일고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "두 무리함수의 세로 차를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "Pₖ=(k,−√k), Qₖ=(k,−√(k+2))의 망원합 구조를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

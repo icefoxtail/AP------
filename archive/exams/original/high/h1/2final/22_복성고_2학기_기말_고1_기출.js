@@ -469,6 +469,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수의 두 가지가 네 사분면을 모두 지나려면 왼쪽 가지가 제2·3·4사분면을 연결하고 오른쪽 가지가 제1사분면에 있어야 한다.\n조건 정리: $y=\\dfrac{2x+k-3}{x-2}=2+\\dfrac{k+1}{x-2}$이고 점근선은 $x=2$, $y=2$이다.\n풀이 방향: 제3사분면이 생기기 위한 $x$절편의 위치를 기준으로 $k$의 범위를 정한다.\n정석 풀이: $x$절편은 $2x+k-3=0$에서 $x=\\dfrac{3-k}{2}$이다. 제2사분면에서 내려온 왼쪽 가지가 $x\\lt0$인 곳에서 $x$축을 지나 제3사분면으로 들어가려면 이 절편이 음수여야 한다. 따라서 $\\dfrac{3-k}{2}\\lt0$, 즉 $k\\gt3$이다. 이때 $k+1\\gt0$이므로 $x\\gt2$인 오른쪽 가지는 $y\\gt2$여서 제1사분면을 지나고, 왼쪽 가지는 제2사분면에서 음의 $x$절편을 지나 제3사분면으로 들어간 뒤 $x=0$에서 $y=\\dfrac{3-k}{2}\\lt0$이므로 $0\\lt x\\lt2$ 구간에서 제4사분면도 지난다. 따라서 네 사분면을 모두 지난다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "유리함수가 네 사분면을 지나는 모습을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=4 대표 그래프와 일반 조건 k>3을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

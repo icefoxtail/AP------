@@ -329,6 +329,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 유리함수를 상수항과 분수항으로 나누면 대칭 조건이 간단해진다.\n조건 정리: $f(x)=b+\\dfrac{c-ab}{x+a}$이고, 다항함수가 아니므로 $c-ab\\ne0$이다.\n풀이 방향: $f(2-x)+f(2+x)$의 분수항이 모든 $x$에서 사라지도록 $a$를 정하고, 상수값과 지나는 점으로 $b,c$를 구한다.\n정석 풀이: $d=c-ab$라 하면 $f(2-x)+f(2+x)=2b+\\dfrac{2d(a+2)}{(a+2)^2-x^2}$이다. 이 값이 항상 6이고 $d\\ne0$이므로 $a=-2$이고 $2b=6$에서 $b=3$이다. 또 $f(3)=\\dfrac{9+c}{1}=5$이므로 $c=-4$이다. 따라서 $|a|+|b|+|c|=2+3+4=9$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q09-solution.svg",
+
+    "solutionImageAlt": "유리함수의 대칭 중심을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f=3+2/(x−2)와 점 (3,5), 대칭 조건을 이용해 중심 (2,3)을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
