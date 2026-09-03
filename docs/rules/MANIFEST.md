@@ -11,7 +11,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 00_RULES_INDEX.md | 6614 bytes | sha256 820e47c2c84af7e7b3f03c97c8d82e7fc70d7fe5309f5f8eca2da10713ef2927
 - 01_CANONICAL/프로젝트_컨텍스트.md | 19292 bytes | sha256 5e497527c28835b23005a18f1a687ba7eb9096d3661778f3252abc7f0d2cb549
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 13480 bytes | sha256 d6ff59e5da311b1532b2bb693244456f79557175c1cc6eadbfdb520f7cef2a3a
-- 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 69089 bytes | sha256 eb9f90d198d2701ceaacc680090ff21ee990186e3340469bfdda0f8c59485449
+- 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 69135 bytes | sha256 ae4124ed9b64386eefbe154e8ea6c609d2ddf9669d1a6874b7c17ceb9bdcffc7
 - 01_CANONICAL/JS아카이브룰북_v2.5.md | 90768 bytes | sha256 f3cfb40b91d64ebbba704403c169b3916c71c38930e3711b2df1a407feb4267a
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 18140 bytes | sha256 4e3d0961239cfc72a2f5b0b1d7fbc1e570d2d7bf557314b9657a6b299f40dc6c
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 113542 bytes | sha256 b2ba39234e1ad08fe581202de15265567126243be68d4e05ee587c45b26f0ba0

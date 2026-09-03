@@ -14,10 +14,10 @@ const reportPath = path.join(archiveDir, 'question-index-report.md');
 const auditPath = path.join(archiveDir, 'question-index-audit.md');
 
 /*
- * 공식 표준단원키 마스터 테이블 (142개)
+ * 공식 표준단원키 마스터 테이블 (143개)
  * 출처(사람이 읽는 원본): docs/rules/JS아카이브_표준단원키_마스터테이블.md
  * 세부단원 master: archive/data/master_tables/js_archive_tag_master.json
- *   - 중등 23 + H22 56 + H15 63 = 142
+ *   - 중등 23 + H22 56 + H15 64 = 143
  * mixer.html 의 MASTER_TABLE 과 동일 내용을 유지한다(mixer.html 은 이 단계에서 수정 금지).
  * 생성기는 이 테이블을 "공식 키 검증" 기준으로만 사용하며, 인덱스 레코드의 원문 값은 보존한다.
  */
@@ -113,6 +113,7 @@ const MASTER_TABLE = {
     "H15-SA-10": { course: "수학(상)", unit: "직선의 방정식", order: 10 },
     "H15-SA-11": { course: "수학(상)", unit: "원의 방정식", order: 11 },
     "H15-SA-12": { course: "수학(상)", unit: "도형의 이동", order: 12 },
+    "H15-SA-13": { course: "수학(상)", unit: "이차함수", order: 13 },
     "H15-SB-01": { course: "수학(하)", unit: "집합", order: 1 },
     "H15-SB-02": { course: "수학(하)", unit: "명제", order: 2 },
     "H15-SB-03": { course: "수학(하)", unit: "함수", order: 3 },
@@ -613,7 +614,7 @@ const reportMd = `# question-index 생성 리포트
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(${index.length})" 기준이다.
 
-## 표준단원키 분류 (공식 마스터 142개 기준)
+## 표준단원키 분류 (공식 마스터 143개 기준)
 
 - 공식(official): ${keyClassTotals.official}
 - RAW-(임시 규약, 허용): ${keyClassTotals.raw} (distinct ${rawKeyCounts.size})
@@ -713,7 +714,7 @@ const auditMd = `# question-index 데이터 정합성 감사 (PHASE 4.5)
 - 인덱싱 범위(SCOPE): ${report.scope}
   - git 버전관리에 등재된 시험지 JS만 인덱싱(${report.examFileCount}파일).
   - .gitignore \`*textbook*\` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
-- 공식 마스터 키 수: ${OFFICIAL_KEYS.size} (중등 23 + H22 56 + H15 63)
+- 공식 마스터 키 수: ${OFFICIAL_KEYS.size} (중등 23 + H22 56 + H15 64)
 - 원본 문항 수: ${report.sourceQuestionCount}
 - 최종 인덱스 문항 수: ${index.length}
 - 중복 qKey 그룹: ${duplicateGroups.length} / 제외 레코드(duplicate_skipped): ${skippedTotal}

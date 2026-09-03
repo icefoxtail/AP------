@@ -1,11 +1,11 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-09-03T10:10:40.954Z
+- 생성 시각: 2026-09-03T10:01:59.872Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
   - git 버전관리에 등재된 시험지 JS만 인덱싱(451파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
-- 공식 마스터 키 수: 142 (중등 23 + H22 56 + H15 63)
+- 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
 - 원본 문항 수: 10980
 - 최종 인덱스 문항 수: 10980
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
@@ -38,9 +38,8 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 22종 / 152건
+> distinct 21종 / 94건
 
-- `H15-SA-13` — 58건 (예: original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#10, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#11, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#12, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#16, original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#20)
 - `H22-A-03-03` — 14건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#4, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#8, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#9, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#10, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#11)
 - `HH15-SA-02` — 11건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#3, types/high/h1/항등식과나머지정리_고1_유형.js#10, types/high/h1/항등식과나머지정리_고1_유형.js#12, types/high/h1/항등식과나머지정리_고1_유형.js#13, types/high/h1/항등식과나머지정리_고1_유형.js#17)
 - `H22-C-11` — 10건 (예: original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#16, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#18, original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js#16, original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js#19, original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js#9)

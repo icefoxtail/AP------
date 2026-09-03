@@ -1,116 +1,122 @@
 {
-  "schemaVersion": "high1-geometry-equation-independent-agents-final-v2.2",
-  "status": "PASS_WITH_FULL_SCOPE_CARRY_FORWARD_AND_FRESH_PINPOINT",
+  "schemaVersion": "high1-geometry-equation-independent-agents-final-v2.3",
+  "status": "PASS_WITH_CARRY_FORWARD_AND_FRESH_PINPOINT",
   "readOnly": true,
   "A": {
     "status": "PASS",
-    "mode": "fresh_pinpoint_plus_unchanged_scope_cross_check",
+    "reviewer": "Noether",
+    "agentId": "01a066d4-e33e-7fc1-a636-7b2b21990284",
+    "mode": "fresh_blind_q20_recheck_plus_prior_fresh_seven_pinpoints",
     "freshPinpoints": {
-      "passed": 8,
-      "expected": 8,
-      "answerParity": "PASS",
-      "curriculum": "PASS",
-      "studentLogic": "PASS",
-      "blockers": []
-    },
-    "checks": [
-      {
-        "q": "22_팔마고 1final q5",
-        "m0": "explicitly handled",
-        "status": "PASS"
-      },
-      {
-        "q": "24_제일고 1mid q20",
-        "secondCaseAST": "derivation explicitly included",
-        "status": "PASS"
-      },
-      {
-        "q": "21_제일고 2mid q18",
-        "status": "PASS"
-      },
-      {
-        "q": "22_강남여고 2mid q22",
-        "a0": "explicitly handled",
-        "status": "PASS"
-      },
-      {
-        "q": "25_매산고 2mid q14",
-        "problemIdentity": "two-circle k=15 problem confirmed",
-        "status": "PASS"
-      },
-      {
-        "q": "25_제일고 2final q2",
-        "status": "PASS"
-      },
-      {
-        "q": "25_순천여고 2mid q15",
-        "status": "PASS"
-      },
-      {
-        "q": "25_효천고 2mid q7",
-        "status": "PASS"
+      "passed": 1,
+      "expected": 1,
+      "q20": {
+        "answer": "2√21",
+        "secondCase": "S=(5k/14,2k/7), T=(12-k/2,2k-24), AS/AO=(14-k)/14, AT/AB=(14-k)/2, [AST]=3(14-k)^2/7≤12/7<6",
+        "studentLogic": "PASS",
+        "blockers": []
       }
-    ],
-    "unchangedCanonicalScopeCrossCheck": {
+    },
+    "carryForwardSeven": {
+      "passed": 7,
+      "expected": 7,
+      "source": "prior independent blind review at the unchanged seven solution contents",
+      "manualSolveClaim": false
+    },
+    "scopeAnswerCrossCheck": {
       "expected": 424,
       "observed": 424,
       "answerMismatch": 0,
       "sourceChecks": 41,
-      "manualSolveClaim": false,
-      "basis": "previous independent facts rehashed against current source/answer payload"
+      "basis": "prior independent facts rehashed against current source/answer payload"
     }
   },
   "B": {
     "status": "PASS",
+    "reviewer": "Peirce",
+    "agentId": "01a066d6-5430-7bb3-b589-a80cf84a72d0",
+    "mode": "fresh_read_only_current_tree",
+    "q15": {
+      "coordinateFrame": {
+        "xMin": -4,
+        "xMax": 5,
+        "yMin": -3,
+        "yMax": 6,
+        "plotLeft": 248,
+        "plotTop": 92,
+        "plotWidth": 224,
+        "plotHeight": 224
+      },
+      "originalLineMaxResidual": 0.00022321428570926116,
+      "movedLineMaxResidual": 0.0004910714285735196,
+      "originalSlopeError": 0.00013392259273903306,
+      "movedSlopeError": 0.00017220595832689867,
+      "parallelSlopeDifference": 0.0003061285510662013,
+      "status": "PASS"
+    },
+    "equalScale": {
+      "status": "PASS",
+      "derivation": "DERIVED_FROM_GRID",
+      "relativeError": 5.709463525593413e-16,
+      "notUnconditional": true
+    },
     "canonicalLinkedAssets": {
       "expected": 315,
       "observed": 315,
-      "xmlParse": 315,
-      "finiteCoords": 315,
-      "rootWidthHeight": 315,
-      "pointProvenance": 315,
-      "dataScalePolicy": 315,
-      "forbiddenWords": 0,
-      "studentFacingAuditTokens": 0
+      "pass": 315,
+      "fail": 0
     },
     "semanticAssertions": {
       "q20": "PASS",
       "q15": "PASS",
-      "q22": "PASS",
-      "q18FactualOriginalConditionText": "allowed math content"
+      "q22": "PASS"
     },
-    "blockers": []
+    "fileWrites": false
   },
   "C": {
-    "status": "PASS",
+    "status": "PASS_WITH_LOCAL_FAIL_CLOSED_CAPTURE",
+    "independentAgentStatus": "previous independent C carry-forward; new C agent timed out before completion and was not counted as fresh PASS",
+    "mode": "record-browser-evidence.mjs actual capture and current SHA checks",
     "canonicalScope": {
       "uids": 424,
       "sourceFiles": 41,
       "sourceSidecarIndexMetadataMismatches": 0
     },
-    "sourceJs": {
-      "nodeChecks": 41,
-      "vmLoads": 41
-    },
-    "dbIndexCounts": "PASS",
-    "q13": {
-      "excludedFromGeometry": true,
-      "unitKey": "H22-C-09",
-      "unit": "행렬과 그 연산",
-      "order": 9,
-      "sidecarIndexSynced": true
-    },
-    "assets": {
-      "expected": 315,
-      "observed": 315,
+    "browserCapture": {
+      "runtime": "codex-in-app-browser",
+      "synthetic": false,
+      "sourceCases": 123,
+      "exam": 41,
+      "sol": 41,
+      "ans": 41,
+      "targetSolutionImages": 315,
       "loaded": 315,
-      "failed": 0
+      "errors": 0
     },
-    "globalCi": "BLOCKED_UNRELATED_H2_PROBABILITY_QCOUNT",
-    "blockers": []
+    "q20CurrentShaRecheck": {
+      "sourceSha256": "62b98d4204244b8789a8c85436ebd0dfd456a2cfcc260f7f8aae2aa560596641",
+      "solutionImageSha256": "f310977c711d42bcd836029b87c8ddbd70f9c8438ca3b96bdccdfa8586c39aab",
+      "updatedProofVisible": true,
+      "status": "PASS"
+    },
+    "h15Sa13": {
+      "standardUnitRegistered": true,
+      "subunitsParentLinked": true,
+      "invalidKeyCauseRemoved": true
+    },
+    "diffLock": {
+      "baseline": "11653efc07de31491ef2686b491d0cbc4e785349",
+      "baseToWorkingTreeChecked": true,
+      "unapprovedFiles": []
+    },
+    "globalCi": {
+      "status": "BLOCKED_UNRELATED_H2_PROBABILITY_QCOUNT",
+      "note": "local test only: DB/JS qCount 24 vs question-index qCount 23; H2 source unchanged; not a GitHub Actions result"
+    },
+    "fileWrites": false
   },
   "freshCurrentShaRequired": true,
-  "reviewerNote": "A full 424-question manual re-solve is not claimed; unchanged-scope answer evidence is rehashed and the eight changed solution pinpoints received a fresh blind independent solve.",
-  "releaseArtifactSha": "154450cf56d99f1de32c10fdbed7e3ca7ba63958b2ff3f65b317c2a7016a08e5",
-  "currentShaBound": true
+  "reviewerNote": "A full 424-question manual re-solve is not claimed. Seven unchanged pinpoints carry forward from the prior blind review, q20 received a fresh blind independent recheck, B received a fresh current-tree review, and C is fail-closed through the actual browser recorder plus current-SHA local checks.",
+  "currentShaBound": true,
+  "releaseArtifactSha": "9d6ab8e71763f4d1259c92537d1ea9d726e811a06c05ee7304aa9e59eedd311f"
 }

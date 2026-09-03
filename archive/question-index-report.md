@@ -1,6 +1,6 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-09-03T10:10:40.954Z
+- 생성 시각: 2026-09-03T10:01:59.872Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
 - 시험지 수(db.js): 438
 - 시험지 파일 수: 451
@@ -10,17 +10,17 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 446992 bytes
-- 시험지 JS 총 크기: 18154573 bytes
+- 시험지 JS 총 크기: 17919011 bytes
 - 인덱스 크기: 11574093 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(10980)" 기준이다.
 
-## 표준단원키 분류 (공식 마스터 142개 기준)
+## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 10828
+- 공식(official): 10886
 - RAW-(임시 규약, 허용): 0 (distinct 0)
-- 비공식(invalid): 152 (distinct 22)
+- 비공식(invalid): 94 (distinct 21)
 - 빈 키(empty): 0
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
