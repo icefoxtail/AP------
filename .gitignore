@@ -279,6 +279,16 @@ tmp_*/
 **/.wrangler/cache/
 **/.wrangler/cache/**
 
+# Root-level guardrails: temporary artifacts belong under /tmp/.
+# These patterns prevent accidental tracking if a tool ignores the path rule.
+/.tmp-*
+/temp_*
+/codex_tmp_*
+/adaptive-staged-runs/
+/*.tmp
+/*.bak
+/archive/_tmp*
+
 # Codex transient result notes
 CODEX_RESULT*.md
 
