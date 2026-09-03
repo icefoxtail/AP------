@@ -644,6 +644,14 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $B=(t,\\sqrt{t})$, $C=(9t,3\\sqrt{t})$ / (2) $8$",
     "solution": "[키포인트] $A$를 지나는 수직선과 수평선의 좌표를 각각 고정하여 $B,C$를 구한다.\\n조건 정리: $A=(t,3\\sqrt t)$이고 $B,C$는 모두 $y=\\sqrt x$ 위의 점이다.\\n정석 풀이: (1) $x$축에 수직인 직선은 $x=t$이므로 $B=(t,\\sqrt t)$이다. $y$축에 수직인 직선은 $y=3\\sqrt t$이므로 $3\\sqrt t=\\sqrt x$에서 $x=9t$, 따라서 $C=(9t,3\\sqrt t)$이다. (2) $\\overline{AB}=2\\sqrt t$, $\\overline{AC}=8t$이다. $\\overline{AB}:\\overline{AC}=1:4$이므로 $\\dfrac{2\\sqrt t}{8t}=\\dfrac14$에서 $\\sqrt t=1$, 즉 $t=1$이다. 따라서 넓이는 $\\dfrac12\\cdot2\\cdot8=8$이다.\\n따라서 구하는 값은 (1) $B=(t,\\sqrt t)$, $C=(9t,3\\sqrt t)$, (2) $8$이다.",
+
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "두 무리함수와 직각삼각형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "t=1일 때 A=(1,3), B=(1,1), C=(9,3)이고 넓이는 8이다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
