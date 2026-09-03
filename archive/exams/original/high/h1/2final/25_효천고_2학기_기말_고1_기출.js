@@ -244,6 +244,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 무리함수의 시작점, 정의역, 치역과 사분면을 확인한다.\n조건 정리: $y=-\\sqrt{-x+2}+4$의 시작점은 $(2,4)$이고 정의역은 $x\\le2$이다.\n풀이 방향: 각 설명을 그래프의 성질과 대조한다.\n정석 풀이: 시작점 $(2,4)$에서 최댓값 $4$를 가지므로 ①은 옳다. 정의역은 $x\\le2$, 치역은 $y\\le4$이므로 ②, ③도 옳다. $y=-\\sqrt{x+2}+4$의 그래프를 $y$축에 대하여 대칭이동하면 주어진 그래프가 되므로 ④도 옳다. 주어진 그래프는 제1, 제2, 제3사분면은 지나지만 제4사분면은 지나지 않으므로 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q08-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점·정의역·치역·사분면을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (2,4)와 x절편 (−14,0)을 기준으로 제4사분면을 지나지 않음을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -337,6 +345,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 무리함수의 최솟값으로 수직이동량을 정하고, 역함수와의 교점은 $y=x$ 위에서 찾는다.\n조건 정리: $f(x)=\\sqrt{2x+a}+b$의 최솟값은 $b$이므로 $b=2$이다.\n풀이 방향: 교점의 $x$좌표가 $3$이라는 조건에서 $f(3)=3$을 이용한다.\n정석 풀이: 함수 $f$는 증가함수이므로 그 그래프와 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있다. 따라서 $f(3)=3$이고 $\\sqrt{6+a}+2=3$이다. 그러므로 $a=-5$이다. 따라서 $f\\left(\\dfrac92\\right)=\\sqrt{9-5}+2=4$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q11-solution.svg",
+
+    "solutionImageAlt": "무리함수와 역함수의 그래프 및 교점 A를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "최솟값으로 b=2, 교점 A=(3,3)으로부터 a=−5를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

@@ -87,6 +87,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 유리함수를 $\\dfrac{a}{x-b}+c$ 꼴로 고쳐 평행이동량을 읽는다.\n조건 정리: $y=\\dfrac{2x+5}{x-1}$을 $y=\\dfrac{a}{x-b}+c$ 꼴로 나타낸다.\n풀이 방향: 분자를 분모에 맞추어 나눈다.\n정석 풀이: $2x+5=2(x-1)+7$이므로 $y=2+\\dfrac{7}{x-1}$이다. 따라서 $y=\\dfrac{7}{x}$의 그래프를 $x$축 방향으로 $1$, $y$축 방향으로 $2$만큼 평행이동한 그래프이다. 그러므로 $a=7$, $b=1$, $c=2$이고 $a+b+c=10$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q03-solution.svg",
+
+    "solutionImageAlt": "평행이동된 유리함수의 점근선과 그래프를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=2+7/(x−1)로 고쳐 y=7/x에서 (1,2)만큼 이동했음을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -150,6 +158,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수를 평행이동형으로 고친 뒤 각 설명을 하나씩 확인한다.\n조건 정리: $y=\\dfrac{2-3x}{x+1}=-3+\\dfrac{5}{x+1}$이다.\n풀이 방향: 점의 대입, 점근선, 대칭축, 평행이동, 사분면 통과 여부를 차례로 판정한다.\n정석 풀이: $x=1$일 때 $y=-\\dfrac12$이므로 ①은 옳다. 점근선은 $x=-1$, $y=-3$이므로 ②도 옳다. 중심이 $(-1,-3)$이고 대칭축 중 하나가 $y+3=x+1$, 즉 $y=x-2$이므로 ③도 옳다. 또 $\\dfrac{2x+3}{x-1}=2+\\dfrac{5}{x-1}$이므로 두 그래프는 평행이동으로 겹칠 수 있어 ④도 옳다. 그러나 $0\\lt x\\lt \\dfrac23$이면 분자와 분모가 모두 양수이므로 $x\\gt 0$, $y\\gt 0$인 점이 존재한다. 따라서 그래프는 제1사분면을 지나므로 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q05-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=−3+5/(x+1)에서 점근선 x=−1, y=−3과 중심을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -212,6 +228,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 절댓값 방정식을 두 개의 유리방정식으로 나누어 교점 수를 센다.\n조건 정리: $\\left|\\dfrac{2x+1}{3-x}\\right|=k$이고 $x\\ne3$이다.\n풀이 방향: $\\dfrac{2x+1}{3-x}=k$와 $\\dfrac{2x+1}{3-x}=-k$를 각각 푼다.\n정석 풀이: 첫째 식에서는 $x=\\dfrac{3k-1}{k+2}$로 항상 한 해가 나온다. 둘째 식에서는 $(2-k)x=-3k-1$이므로 $k\\ne2$일 때 한 해가 더 나오고, $k=2$일 때는 $2x+1=-6+2x$가 되어 해가 없다. 따라서 $N(1)=2$, $N(2)=1$, $N(3)=2$이고 합은 $5$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q07-solution.svg",
+
+    "solutionImageAlt": "절댓값 유리함수와 수평선의 교점 개수를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=1,2,3 수평선과의 교점 수를 비교하여 N(1),N(2),N(3)을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

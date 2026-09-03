@@ -295,6 +295,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $y=\\dfrac{k}{x-p}+q$의 점근선은 $x=p$, $y=q$이다.\n조건 정리: 점근선으로부터 $p=1$, $q=-4$이다.\n풀이 방향: 그래프가 지나는 점 $(0,4)$를 식에 대입하여 $k$를 구한다.\n정석 풀이: $4=\\dfrac{k}{0-1}-4$이므로 $8=-k$, 따라서 $k=-8$이다. 그러므로 $k-p+q=-8-1-4=-13$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q09-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 주어진 점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "점근선 x=1, y=−4와 점 (0,4)를 확인하여 k=−8을 구한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -496,6 +504,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 정의역 $x\\ge6$에서 $f$는 증가함수이므로 $f$와 $f^{-1}$의 그래프의 교점은 직선 $y=x$ 위에 있다.\n조건 정리: $f(x)=(x-6)^2+6$이고 $x\\ge6$이므로 $f$는 일대일 증가함수이며 역함수가 존재한다.\n풀이 방향: 증가함수와 역함수의 공통점에서 두 좌표가 같음을 확인한 뒤 $f(x)=x$를 푼다.\n정석 풀이: 공통점을 $(u,v)$라 하면 $v=f(u)$이고 $u=f(v)$이다. 만약 $u<v$이면 $f(u)<f(v)$이므로 $v<u$가 되어 모순이다. $u>v$인 경우도 같은 방식으로 모순이므로 $u=v$이다. 따라서 공통점은 직선 $y=x$ 위에 있다. 이제 $x^2-12x+42=x$에서 $x^2-13x+42=0$, 즉 $(x-6)(x-7)=0$이다. 두 해 $x=6,7$은 모두 정의역을 만족하므로 교점은 $P=(6,6)$, $Q=(7,7)$이다. 따라서 $PQ=\\sqrt{(7-6)^2+(7-6)^2}=\\sqrt2$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "함수와 역함수의 그래프, y=x, 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "증가함수와 역함수의 공통점 P=(6,6), Q=(7,7)을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
