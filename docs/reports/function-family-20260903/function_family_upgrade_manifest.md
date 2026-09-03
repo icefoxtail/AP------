@@ -28,4 +28,4 @@
 - VISUAL_REQUIRED_SATISFIED_BY_PROBLEM_IMAGE: 79
 - VISUAL_REQUIRED_SATISFIED_EXISTING: 1
 
-This manifest includes the independent static triage ledger. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates.
+This manifest includes the independent static triage ledger and full browser render matrix. All 522 rows have a resolved quality/visual disposition and source-review status; human pedagogical review and release SHA seal remain separate gates.

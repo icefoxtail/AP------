@@ -1,0 +1,143 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Function-family full render QA harness</title>
+<style>
+  body { margin: 24px; font: 14px/1.5 system-ui, sans-serif; color: #172033; }
+  h1 { font-size: 20px; }
+  #status { white-space: pre-wrap; background: #f4f6f8; padding: 16px; border-radius: 8px; }
+  iframe.qa-frame { position: fixed; left: -10000px; top: 0; width: 1280px; height: 1100px; border: 0; opacity: .01; }
+</style>
+<h1>고1 함수·유리함수·무리함수 전수 렌더 QA</h1>
+<div id="status">초기화 중…</div>
+<script>
+  const TARGET_KEYS = new Set(['H15-SB-03', 'H15-SB-04', 'H15-SB-05', 'H22-C2-07', 'H22-C2-08', 'H22-C2-09']);
+  const MODES = ['exam', 'sol', 'ans'];
+  const statusEl = document.getElementById('status');
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  function parseQuestionIndex(text) {
+    const marker = 'window.questionIndex=';
+    const start = text.indexOf(marker);
+    if (start < 0) throw new Error('question-index marker not found');
+    return JSON.parse(text.slice(start + marker.length, text.lastIndexOf(']') + 1));
+  }
+
+  function readState(doc) {
+    const area = doc?.getElementById('print-area');
+    const images = [...(area?.querySelectorAll('img') || [])];
+    const bodyText = doc?.body?.innerText || '';
+    return {
+      pages: area?.querySelectorAll('.page').length || 0,
+      contentLength: area?.innerText?.length || 0,
+      imageCount: images.length,
+      brokenImages: images.filter(img => !img.complete || img.naturalWidth === 0).length,
+      renderError: doc?.documentElement?.dataset?.apRenderError || null,
+      dataLoadError: /시험지 데이터를 불러올 수 없습니다|시험지 데이터가 전달되지 않았습니다|데이터를 불러올 수 없습니다|전달되지 않았습니다/.test(bodyText),
+      activeMode: doc?.querySelector('.mode-tab.active')?.id || null,
+    };
+  }
+
+  function updateStatus() {
+    const result = window.__FULL_RENDER_RESULT__;
+    statusEl.textContent = JSON.stringify({
+      status: result.status,
+      sourceCount: result.sourceCount,
+      completed: result.completed,
+      total: result.total,
+      passes: result.passes,
+      fails: result.fails,
+      activeModes: result.activeModes,
+      lastFailure: result.results.filter(row => !row.pass).slice(-1)[0] || null,
+    }, null, 2);
+  }
+
+  async function loadAndWait(frame, mode, source) {
+    const url = new URL('/engine.html', location.origin);
+    url.searchParams.set('mode', mode);
+    url.searchParams.set('qpp', '4');
+    url.searchParams.set('data', `exams/${source}`);
+    url.searchParams.set('title', 'Function-family full render QA');
+    url.searchParams.set('preview', '1');
+    const loadPromise = new Promise(resolve => {
+      let settled = false;
+      const settle = value => { if (settled) return; settled = true; resolve(value); };
+      frame.onload = () => settle('load');
+      setTimeout(() => settle('load-timeout'), 20000);
+    });
+    frame.src = url.href;
+    await loadPromise;
+    let state = readState(frame.contentDocument);
+    for (let attempt = 0; attempt < 240; attempt += 1) {
+      state = readState(frame.contentDocument);
+      if (state.pages > 0 && state.contentLength > 0 && state.brokenImages === 0 && !state.renderError && !state.dataLoadError) {
+        return { pass: true, state, waitMs: attempt * 250 };
+      }
+      await sleep(250);
+    }
+    return { pass: false, state, waitMs: 60000, failure: 'RENDER_TIMEOUT_OR_INCOMPLETE_DOM' };
+  }
+
+  async function runMode(mode, sources, result, frame) {
+    result.activeModes.push(mode);
+    updateStatus();
+    for (const source of sources) {
+      let row;
+      try {
+        const checked = await loadAndWait(frame, mode, source);
+        row = { source, mode, pass: checked.pass, ...checked };
+      } catch (error) {
+        row = { source, mode, pass: false, failure: String(error?.message || error), state: null };
+      }
+      delete row.state?.failure;
+      result.results.push(row);
+      result.completed += 1;
+      if (row.pass) result.passes += 1; else result.fails += 1;
+      updateStatus();
+    }
+    result.activeModes = result.activeModes.filter(item => item !== mode);
+    updateStatus();
+  }
+
+  async function main() {
+    const result = window.__FULL_RENDER_RESULT__ = {
+      reportType: 'FUNCTION_FAMILY_FULL_BROWSER_RENDER_QA',
+      status: 'INITIALIZING',
+      generatedAt: new Date().toISOString(),
+      sourceCount: 0,
+      total: 0,
+      completed: 0,
+      passes: 0,
+      fails: 0,
+      activeModes: [],
+      results: [],
+      runtime: 'same-origin browser iframe harness',
+    };
+    try {
+      const index = parseQuestionIndex(await fetch('/question-index.js').then(response => response.text()));
+      const sources = [...new Set(index.filter(row => TARGET_KEYS.has(row.standardUnitKey) && String(row.sourceFile || '').startsWith('original/')).map(row => row.sourceFile))].sort();
+      result.sourceCount = sources.length;
+      result.total = sources.length * MODES.length;
+      result.status = 'RUNNING';
+      updateStatus();
+      const frames = MODES.map(mode => {
+        const frame = document.createElement('iframe');
+        frame.className = 'qa-frame';
+        frame.title = `QA ${mode}`;
+        document.body.appendChild(frame);
+        return frame;
+      });
+      await Promise.all(MODES.map((mode, index) => runMode(mode, sources, result, frames[index])));
+      result.status = result.fails === 0 && result.completed === result.total ? 'FULL_BROWSER_RENDER_PASS' : 'FULL_BROWSER_RENDER_FAIL';
+      result.finishedAt = new Date().toISOString();
+      result.activeModes = [];
+      updateStatus();
+    } catch (error) {
+      result.status = 'HARNESS_ERROR';
+      result.failure = String(error?.stack || error?.message || error);
+      result.finishedAt = new Date().toISOString();
+      updateStatus();
+    }
+  }
+
+  main();
+</script>
