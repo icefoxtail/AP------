@@ -493,6 +493,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 점의 $x$좌표가 같으므로 세로 길이를 식으로 나타낸 뒤 완전제곱을 이용한다.\n$a\\gt1$이므로 $P$의 $y$좌표는 $\\dfrac1{a-1}\\gt0$, $Q$의 $y$좌표는 $-4a\\lt0$이다. 따라서\n$PQ=\\dfrac1{a-1}+4a$이다.\n$t=a-1\\gt0$이라 두면 $PQ=\\dfrac1t+4t+4$이다.\n$4t+\\dfrac1t-4=\\dfrac{(2t-1)^2}{t}\\ge0$이므로 $4t+\\dfrac1t\\ge4$이다.\n등호는 $2t-1=0$, 즉 $t=\\dfrac12$일 때 성립한다.\n따라서 $PQ$의 최솟값은 $4+4=8$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q17-solution.svg",
+
+    "solutionImageAlt": "유리함수와 직선 사이의 최단 선분을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=3/2일 때 P=(3/2,2), Q=(3/2,−6)로 PQ=8임을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
