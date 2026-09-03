@@ -249,6 +249,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 교점의 $x$좌표를 이용하여 직선의 절편 $k$를 나타낸다.\n조건 정리: 제1사분면의 곡선 위에서는 $0\\lt x\\le4$이고, 교점에서 $k=2x+3-\\sqrt{4-x}$이다.\n풀이 방향: $0\\lt x\\le4$에서 이 식이 가질 수 있는 값을 살펴본다.\n정석 풀이: $0\\lt x\\le4$이면 $2x\\gt0$이고 $\\sqrt{4-x}\\lt2$이므로 $k=2x+3-\\sqrt{4-x}\\gt1$이다. 따라서 $k=1$은 불가능하다. 한편 $x$가 $0$에서 $4$까지 커질 때 $2x$는 커지고 $-\\sqrt{4-x}$도 커지므로 $k$의 값은 $1$보다 큰 값에서 $11$까지 차례로 증가한다. 따라서 보기의 $2,3,4,5$는 모두 가능하다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q07-solution.svg",
+
+    "solutionImageAlt": "무리함수와 직선의 제1사분면 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "1<k≤11 범위에서 제1사분면 교점이 생김을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -280,6 +288,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 점 $A$의 좌표를 $A=(t,\\dfrac2t)$로 놓고, 원문에서 정한 $B,C$의 위치를 그대로 사용한다.\n조건 정리: $x$축에 평행한 직선과 $y=\\dfrac{k}{x}$의 교점이 $B$이므로 $B=(\\dfrac{kt}{2},\\dfrac2t)$이고, $y$축에 평행한 직선과의 교점이 $C$이므로 $C=(t,\\dfrac{k}{t})$이다.\n풀이 방향: $AB$와 $AC$가 서로 수직이므로 두 변의 길이로 삼각형의 넓이를 구한다.\n정석 풀이: $AB=\\dfrac{t(k-2)}2$, $AC=\\dfrac{k-2}{t}$이다. 따라서 삼각형 $ABC$의 넓이는 $\\dfrac12\\cdot\\dfrac{t(k-2)}2\\cdot\\dfrac{k-2}{t}=\\dfrac{(k-2)^2}{4}$이다. 이것이 $4$이므로 $(k-2)^2=16$이고, $k\\gt2$이므로 $k=6$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q08-solution.svg",
+
+    "solutionImageAlt": "반비례 함수와 직각삼각형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=6에서 A=(1,2), B=(3,2), C=(1,6)과 넓이 4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
