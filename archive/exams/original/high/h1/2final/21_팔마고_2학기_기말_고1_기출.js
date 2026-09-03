@@ -575,7 +575,7 @@ window.questionBank = [
     "content": "서술형1. 집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 다음 조건을 만족시키는 $X$의 두 부분집합 $A,B$의 순서쌍 $(A,B)$의 개수를 채점기준에 알맞게 구하시오. [6점]<div class=\"question-note-box\">ㄱ. $A\\ne\\varnothing$, $B\\ne\\varnothing$<br>ㄴ. $A\\cap B=\\varnothing$, $A\\cup B=X$<br>ㄷ. $n(A)\\ge2$</div><table class=\"question-table\"><thead><tr><th>단계</th><th>채점기준</th><th>부분점수</th></tr></thead><tbody><tr><td>i</td><td>조합을 이용하여 식을 세우면</td><td>3</td></tr><tr><td>ii</td><td>식을 계산하는 과정을 보이면</td><td>2</td></tr><tr><td>iii</td><td>답을 적으면</td><td>1</td></tr></tbody></table>",
     "choices": [],
     "answer": "$56$",
-    "solution": "[키포인트] $A$와 $B$가 서로소이고 합집합이 $X$이므로 $B$는 $A$의 여집합으로 하나로 정해진다.\n조건 정리: $A$는 공집합이 아니고 $n(A)\\ge2$이며, $B$도 공집합이 아니므로 $A=X$는 제외한다. 따라서 $2\\le n(A)\\le5$이다.\n풀이 방향: 가능한 크기별로 $A$를 고르면 $B=X\\setminus A$가 자동으로 결정된다.\n정석 풀이: 순서쌍 $(A,B)$의 개수는 $n(A)=2,3,4,5$인 $A$의 개수의 합과 같다. 따라서 ${}_6C_2+{}_6C_3+{}_6C_4+{}_6C_5=15+20+15+6=56$이다. 각 $A$에 대해 $B$는 정확히 하나로 정해지므로 추가로 곱할 경우의 수는 없다.\n따라서 구하는 값은 $56$이다.",
+    "solution": "[키포인트] $A\\cap B=\\varnothing$, $A\\cup B=X$이면 A를 고를 때 B는 남은 원소로 자동 결정된다.\nA는 공집합이 아니고 $n(A)\\ge2$, B도 공집합이 아니므로 $n(A)=2,3,4,5$이다. 각 크기의 A를 고르는 방법은 $C_6^2,C_6^3,C_6^4,C_6^5$이고, 각 A마다 B는 하나뿐이다.\n따라서 $15+20+15+6=56$이고 정답은 56이다.\n[시각자료 읽기] X를 A와 B 두 칸으로 나누는 분할 트리에서 A의 크기 2~5만 남는다.",
     "subUnitKey": "H15-SB-01-SET_BASIC",
     "subUnit": "집합의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
