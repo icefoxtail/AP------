@@ -114,10 +114,9 @@ const answerMismatches = (crosscheckRows || []).flatMap((row) => answerComparabl
 const answerCrosscheck = { status: crosscheckRows && crosscheckRows.length === targetRows.length && answerMismatches.length === 0 ? "PASS" : "FAIL", expected: targetRows.length, observed: crosscheckRows?.length ?? 0, mismatchCount: answerMismatches.length, mismatches: answerMismatches.slice(0, 20), basis: "independent expected-answer facts are rehashed against current source answers; this does not claim a fresh manual solve of every row" };
 
 function scanSolutionTeX(value) {
-  // A few legacy JS records contain a literal backslash-n after VM loading because
-  // they were serialized with an extra escape. Treat that compatibility form as a
-  // line break before scanning; this is not a TeX command and mirrors engine output.
-  const text = String(value ?? "").replaceAll("\\n", "\n");
+  // Scan the VM-loaded solution value as-is. Do not rewrite a literal backslash-n:
+  // doing so can hide a real TeX command outside a math delimiter.
+  const text = String(value ?? "");
   const hits = [];
   const mathBlocks = [];
   let delimiter = null;
@@ -167,11 +166,15 @@ const rawScannerSelfTestCases = [
   { name: "display-command-inside", value: "$$x\\to\\infty$$", expected: "PASS" },
   { name: "sqrt-inside", value: "$y=\\sqrt{x}$", expected: "PASS" },
   { name: "inequality-inside", value: "일 때 $a\\le b$이다.", expected: "PASS" },
-  { name: "legacy-js-newline-escape", value: "첫 줄\\n둘째 줄", expected: "PASS" },
+  { name: "newline-command-outside", value: "첫 줄\\n둘째 줄", expected: "FAIL" },
   { name: "quad-outside", value: "$x=1$,\\quad $y=2$", expected: "FAIL" },
   { name: "sqrt-outside", value: "값은 \\sqrt{3}이다.", expected: "FAIL" },
   { name: "frac-outside", value: "$x=1$일 때 \\dfrac12이다.", expected: "FAIL" },
   { name: "to-outside", value: "$x=1$ \\to $x=2$", expected: "FAIL" },
+  { name: "neq-outside", value: "$x=1$ \\neq $y=2$", expected: "FAIL" },
+  { name: "not-outside", value: "$x=1$ \\not $y=2$", expected: "FAIL" },
+  { name: "neq-inside", value: "$x\\neq y$", expected: "PASS" },
+  { name: "not-inside-display", value: "$$x\\not= y$$", expected: "PASS" },
   { name: "unbalanced", value: "$x=1", expected: "FAIL" },
 ];
 const rawScannerSelfTestResults = rawScannerSelfTestCases.map((testCase) => {
