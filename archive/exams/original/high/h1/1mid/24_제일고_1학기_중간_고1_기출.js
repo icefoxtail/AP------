@@ -428,6 +428,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트]\\n내분점과 외분점의 정의를 선분의 칸 수 비율로 확인한다.\\n\\n조건 정리\\n- $A$에서 $B$까지 6칸으로 나뉘어 있다.\\n- 각 칸의 길이를 1로 간주한다.\\n\\n풀이 과정\\n④번 보기를 확인하면, $FG$의 길이는 1이다. $C$에서 $F$까지 거리는 3이고, $C$에서 $G$까지 거리는 4이다. 따라서 $C$는 선분 $FG$를 $3:4$로 외분하는 점이 맞다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 12의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
     "image": "assets/images/24_제일고_1학기_중간_고1_기출/q12.png",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -477,9 +481,9 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -503,10 +507,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트]\\n직선의 방정식에 $k$를 대입하거나 항등식 성질을 이용한다.\\n\\n조건 정리\\n- ㄱ: $k=-1 \\implies 3y-3=0 \\implies y=1$. 기울기 0이다. (참)\\n- ㄴ: $k=0 \\implies x+2y-3=0$. 기울기는 $-1/2$이다. $4x-2y-3=0$의 기울기는 2이므로 수직이다. (참)\\n- ㄷ: $x+y-3 + k(x-y) = 0$ 꼴로 정리하면 $x=1, y=1$일 때 성립한다. (참)\\n\\n풀이 과정\\nㄱ, ㄴ, ㄷ이 모두 참이므로 정답은 ④이다.\\n\\n결론\\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 14의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 15,
@@ -514,9 +522,9 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -537,10 +545,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트]\\n수직 조건($A_1A_2+B_1B_2=0$)과 평행 조건(기울기 일치)을 활용하여 연립한다.\\n\\n조건 정리\\n- 수직: $a \\cdot b + (-1) \\cdot 3 = 0 \\implies ab = 3$\\n- 평행: $a = -(b-4) \\implies a+b = 4$\\n\\n풀이 과정\\n$ab=3$, $a+b=4$이므로 $a, b$는 $t^2-4t+3=0$의 두 근인 $1$과 $3$이다.\\n$a^3+b^3 = (a+b)^3 - 3ab(a+b) = 4^3 - 3(3)(4) = 64 - 36 = 28$이다.\\n\\n결론\\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 15의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -548,9 +560,9 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -572,10 +584,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트]\\n한 정점을 지나는 직선과 외부의 한 점 사이의 거리가 최대일 조건은 두 점을 잇는 선분이 직선과 수직일 때이다.\\n\\n조건 정리\\n- 정점 $A$는 두 직선의 교점이다.\\n- 외부의 점 $P(2, 1)$이다.\\n\\n풀이 방향 설정\\n교점 $A$를 먼저 구한 뒤, 선분 $AP$에 수직이면서 점 $A$를 지나는 직선을 유도한다.\\n\\n풀이 과정\\n1) 교점 구하기: $3x+4y-1=0$과 $2x+y-4=0$을 연립하면 $x=3, y=-2$이다. 즉 $A(3, -2)$이다.\\n2) 선분 $AP$의 기울기: $\\frac{1 - (-2)}{2-3} = -3$이다.\\n3) 수직인 직선의 기울기: 곱이 $-1$이어야 하므로 $1/3$이다.\\n4) 식 완성: $y - (-2) = 1/3 (x-3) \\implies x-3y-9=0$이다.\\n\\n결론\\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 16의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -583,9 +599,9 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -606,10 +622,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트]\\n직선이 항상 지나는 정점을 찾고, 그 정점을 중심으로 직선을 회전시키며 선분 $AB$와 닿는 범위를 구한다.\\n\\n조건 정리\\n- 직선을 $m$에 대해 정리: $m(2x+y+5) + x-y+1 = 0 \\implies$ 정점 $(-2, -1)$을 지난다.\\n\\n풀이 과정\\n정점 $P(-2, -1)$과 $A(2, 5)$를 지날 때의 $m$은 $1/7$이다.\\n정점 $P(-2, -1)$과 $B(4, 1)$을 지날 때의 $m$은 $-2/7$이다.\\n따라서 범위는 $-2/7 \\le m \\le 1/7$이므로 $a+b = -1/7$이다.\\n\\n결론\\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 17의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
@@ -643,6 +663,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트]\\n삼각형의 세 꼭짓점으로부터의 거리의 제곱의 합이 최소가 되는 점은 삼각형의 무게중심이다.\\n\\n조건 정리\\n- $A(0, 0), B(9, 0), C(0, 6)$으로 좌표를 잡는다.\\n\\n풀이 방향 설정\\n무게중심 $G$의 좌표를 구하고 각 꼭짓점까지의 거리 제곱의 합을 계산한다.\\n\\n풀이 과정\\n1) 무게중심 $G$: $( (0+9+0)/3, (0+0+6)/3 ) = (3, 2)$이다.\\n2) 거리 제곱 합: $AG^2 + BG^2 + CG^2 = (3^2+2^2) + (6^2+2^2) + (3^2+4^2) = 13 + 40 + 25 = 78$이다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 18의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
     "image": "assets/images/24_제일고_1학기_중간_고1_기출/q18.png",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -684,9 +708,9 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -703,11 +727,15 @@ window.questionBank = [
     "content": "서술형 2. 세 점 $A(5, 4), B(6, 0), O(0, 0)$을 꼭짓점으로 하는 삼각형 $AOB$의 넓이가 직선 $y=-2x+k$에 의해서 이등분될 때, 상수 $k$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$2\\sqrt{21}$",
-    "solution": "[키포인트]\\n직선 $y=-2x+k$의 기울기가 $-2$이므로 원점 $O$를 지나는 두 변 $OA$, $OB$를 자른다. 이 직선이 잘라내는 원점 쪽 삼각형의 넓이가 전체의 절반이 되게 한다.\\n\\n조건 정리\\n- 세 점 $O(0,0)$, $A(5,4)$, $B(6,0)$. 삼각형 $AOB$의 넓이는 $\\frac12\\cdot6\\cdot4=12$이므로 이등분 넓이는 $6$이다.\\n- 직선 $OA$: $y=\\frac45x$, 직선 $OB$: $y=0$.\\n\\n풀이 과정\\n1) 직선 $y=-2x+k$와 $OA$($y=\\frac45x$)의 교점: $\\frac45x=-2x+k \\Rightarrow \\frac{14}{5}x=k \\Rightarrow x=\\frac{5k}{14}$, $y=\\frac{4k}{14}=\\frac{2k}{7}$.\\n2) 직선 $y=-2x+k$와 $OB$($y=0$)의 교점: $x=\\frac k2$.\\n3) 원점 쪽 삼각형 $O$-(OA교점)-(OB교점)의 넓이는\\n$\\frac12\\left|\\frac{5k}{14}\\cdot0-\\frac k2\\cdot\\frac{2k}{7}\\right|=\\frac12\\cdot\\frac{k^2}{7}=\\frac{k^2}{14}$이다.\\n4) 이 값이 $6$이어야 하므로 $\\frac{k^2}{14}=6 \\Rightarrow k^2=84 \\Rightarrow k=2\\sqrt{21}$ (양수).\\n\\n결론\\n따라서 구하는 $k$의 값은 $2\\sqrt{21}$이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "삼각형 $AOB$의 넓이는 $\\dfrac12\\cdot6\\cdot4=12$이므로 이등분되어야 하는 넓이는 $6$이다.\n\n직선 $y=-2x+k$와 변 $OB$($y=0$)의 교점을 $R$, 변 $OA$($y=\\dfrac45x$)의 교점을 $S$라 하자.\n$R=(\\dfrac{k}{2},0)$이고, $S=\\left(\\dfrac{5k}{14},\\dfrac{2k}{7}\\right)$이다.\n\n첫째, $0<k<12$이면 $R$, $S$가 각각 선분 $OB$, $OA$ 위에 있다. 이때 원점 쪽 삼각형의 넓이는\n$[ORS]=\\dfrac12\\cdot\\dfrac{k}{2}\\cdot\\dfrac{2k}{7}=\\dfrac{k^2}{14}$이다.\n따라서 $\\dfrac{k^2}{14}=6$에서 $k=2\\sqrt{21}$이고, 실제로 $0<2\\sqrt{21}<12$이다.\n\n둘째, $12\\le k<14$이면 직선은 $OA$와 $AB$를 자른다. $S$는 그대로 $OA$와의 교점이고, $T$를 $AB$와의 교점이라 하자. 변 $AB$의 방정식은 $y=-4x+24$이므로\n$T=\\left(\\dfrac{24-k}{2},2k-24\\right)$이다.\n$A=(5,4)$에서 $S$, $T$로 향하는 두 벡터는\n$\\overrightarrow{AS}=(14-k)\\left(-\\dfrac5{14},-\\dfrac27\\right)$,\\quad $\\overrightarrow{AT}=(14-k)\\left(\\dfrac12,-2\\right)$이다.\n두 벡터의 행렬식의 절댓값은 $\\dfrac67(14-k)^2$이므로, $A$ 쪽 삼각형의 넓이는\n$[AST]=\\dfrac12\\cdot\\dfrac67(14-k)^2=\\dfrac37(14-k)^2$이다.\n$12\\le k<14$에서 이 값은 $\\dfrac{12}{7}$ 이하이므로 원점 쪽 넓이는 $12-[AST]>6$이다.\n\n셋째, $k\\le0$이면 직선은 삼각형 내부를 가르지 못하고, $k\\ge14$이면 원점 쪽 넓이가 삼각형 전체 넓이 $12$가 되어 이등분 조건을 만족하지 않는다.\n\n따라서 조건을 만족하는 값은 $k=2\\sqrt{21}$이다.",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 20의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 21,
@@ -715,9 +743,9 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "standardCourse": "공통수학2",
-    "standardUnitKey": "H22-C2-01",
-    "standardUnit": "평면좌표",
-    "standardUnitOrder": 1,
+    "standardUnitKey": "H22-C2-02",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 2,
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -734,11 +762,15 @@ window.questionBank = [
     "content": "서술형 3. 점 $(-1, 1)$에서 직선 $3ax + 4ay + a^2 + 1 = 0$에 이르는 거리가 1일 때, 모든 $a$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$2 \\pm \\sqrt{3}, -3 \\pm 2\\sqrt{2}$",
-    "solution": "[키포인트]\\n점과 직선 사이의 거리 공식을 적용한다.\\n\\n조건 정리\\n- $\\frac{|-3a + 4a + a^2 + 1|}{\\sqrt{9a^2 + 16a^2}} = 1$이다.\\n\\n풀이 과정\\n$\\frac{|a^2 + a + 1|}{5|a|} = 1 \\implies |a^2 + a + 1| = 5|a|$이다. $a^2+a+1$은 항상 양수이므로 $a^2+a+1 = 5|a|$이다. $a>0$일 때와 $a<0$일 때로 나누어 풀면 정답이 도출된다.\\n\\n결론\\n따라서 정답은 $2 \\pm \\sqrt{3}, -3 \\pm 2\\sqrt{2}$이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "solution": "점 $(-1,1)$에서 직선 $3ax+4ay+a^2+1=0$까지의 거리는\n$\\dfrac{|3a(-1)+4a(1)+a^2+1|}{\\sqrt{(3a)^2+(4a)^2}}=\\dfrac{|a^2+a+1|}{5|a|}$이다. 거리가 $1$이므로 $a\\ne0$이고\n$|a^2+a+1|=5|a|$이다.\n\n$ a^2+a+1=(a+\\dfrac12)^2+\\dfrac34>0$이므로\n$a^2+a+1=5|a|$로 바꿀 수 있다.\n\n$a>0$일 때\n$a^2+a+1=5a$에서 $a^2-4a+1=0$이므로\n$a=2\\pm\\sqrt3$이다. 두 값 모두 양수이다.\n\n$a<0$일 때\n$a^2+a+1=-5a$에서 $a^2+6a+1=0$이므로\n$a=-3\\pm2\\sqrt2$이다. 두 값 모두 음수이다.\n\n따라서 모든 $a$의 값은 $2\\pm\\sqrt3$, $-3\\pm2\\sqrt2$이다.",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 21의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "approved_source_repair",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
@@ -762,38 +794,13 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "서술형 4. 다항식 $A(x) = x^4 + ax^3 + bx^2 + bx + a$는 일차식의 인수를 갖지 않는다. 계수와 상수항이 모두 정수인 두 다항식 $B(x), C(x)$를 인수로 갖고, $B(x)$를 $C(x)$로 나눈 나머지가 1일 때, $a+b$의 값을 구하는 과정을 서술하시오.",
+    "content": "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
-    "answer": "2",
-    "solution":"[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.",
+    "answer": "5",
+    "solution": "[키포인트]\\n상반다항식의 인수분해 성질과 정수 계수 조건을 결합한다.\\n\\n조건 정리\\n- $x^2 + 1/x^2 + a(x + 1/x) + b = 0$ 형태에서 $x+1/x = t$로 치환한다.\\n\\n풀이 방향 설정\\n$t^2 + at + b-2 = 0$의 해를 정수 계수 이차식 조건에 맞춘다.\\n\\n풀이 과정\\n1) 치환: $t^2+at+b-2 = (t-k_1)(t-k_2)$라 하면 $x^2-k_1x+1$과 $x^2-k_2x+1$이 인수가 된다.\\n2) 나머지 조건: $x^2-k_1x+1 = (x^2-k_2x+1) \\cdot 1 + 1$에서 $(k_2-k_1)x = 1$은 성립 불가하므로, 상수항과 차수를 고려하여 $k_1, k_2$의 정수해를 분석한다. 최종적으로 $a=0, b=2$가 도출된다.\\n\\n결론\\n따라서 $a+b=2$이다.",
     "subUnitKey": "H22-C-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-
-const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
-
-question(22).content = "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.";
-question(22).answer = "5";
-delete question(22).studentVisible;
-delete question(22).internalStatus;
-question(22).solution = "[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.";
-delete question(22).studentVisible;
-delete question(22).internalStatus;
-
-question(22).content = "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.";
-question(22).answer = "5";
-delete question(22).studentVisible;
-delete question(22).internalStatus;
-question(22).solution = "[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.";
-
-delete question(22).studentVisible;
-delete question(22).internalStatus;
-question(22).solution = "$A(x)=x^4+ax^3+bx^2+bx+a$의 계수 구조만으로는 $a,b$를 하나로 정할 수 없다.\n\n또한 $B(x),C(x)$가 $A(x)$의 인수라는 사실만으로는 두 다항식의 차수, 최고차항 계수, $A(x)$와의 곱셈 관계가 정해지지 않는다. $B(x)$를 $C(x)$로 나눈 나머지가 1이라는 조건은 두 다항식 사이의 나눗셈 조건이지만, $A(x)$의 계수와 연결할 추가 관계가 필요하다.\n\n따라서 이 조건들만으로는 $a+b$를 하나의 값으로 결정할 수 없다.";
-question(22).content = "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.";
-question(22).answer = "5";
-delete question(22).studentVisible;
-delete question(22).internalStatus;
-question(22).solution = "[키포인트] 몫과 나머지 조건으로 두 이차식의 차를 정한 뒤, 계수와 인수 조건을 차례로 사용한다.\n\n$B(x),C(x)$의 최고차항 계수가 모두 1이므로 $B(x)$를 $C(x)$로 나눈 몫은 1이다. 나머지가 1이므로\n$B(x)-C(x)=1$\n이다. 따라서\n$B(x)=x^2+px+q,\\qquad C(x)=x^2+px+(q-1)$\n로 둘 수 있다.\n\n$A(x)=B(x)C(x)$인데 $A(x)$에는 $x^3$항이 없으므로\n$2p=0,\\quad p=0$\n이다. 따라서\n$B(x)=x^2+q,\\qquad C(x)=x^2+q-1$\n이다.\n\n$A(2)=30$을 대입하면\n$(4+q)(3+q)=30$\n이다. 즉\n$q^2+7q-18=0$\n이므로\n$q=2\\quad\\text{또는}\\quad q=-9$\n이다.\n\n$q=-9$이면 $B(x)=x^2-9$가 되어 실수 범위에서 일차식의 인수를 갖는다. 이는 조건에 맞지 않는다. 따라서 $q=2$이고\n$B(x)=x^2+2,\\qquad C(x)=x^2+1$\n이다.\n\n그러므로\n$A(x)=(x^2+2)(x^2+1)=x^4+3x^2+2$\n이므로 $a=3,\\ b=2$이다. 따라서\n$a+b=3+2=5$\n이다.";
