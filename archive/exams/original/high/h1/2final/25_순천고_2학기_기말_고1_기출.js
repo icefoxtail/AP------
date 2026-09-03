@@ -443,6 +443,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 주어진 함수는 $x\\ge4$에서 증가하므로 원함수와 역함수의 교점은 직선 $y=x$ 위에 있다.\n조건 정리: 교점의 $x$좌표는 $f(x)=x$를 만족하고 정의역 조건 $x\\ge4$를 만족해야 한다.\n풀이 방향: 이차방정식의 두 근이 서로 다르고 모두 $4$ 이상이 되도록 한다.\n정석 풀이: $\\dfrac{1}{2}x^2-4x+a=x$에서 $x^2-10x+2a=0$이다. 두 근은 $5\\pm\\sqrt{25-2a}$이다. 서로 다른 두 근을 가지려면 $25-2a\\gt0$이고, 작은 근이 $4$ 이상이어야 하므로 $5-\\sqrt{25-2a}\\ge4$이다. 따라서 $0\\lt25-2a\\le1$, 즉 $12\\le a\\lt\\dfrac{25}{2}$이다. 자연수 $a$는 $12$ 하나뿐이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=12에서 (4,4), (6,6)의 두 고정점을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
