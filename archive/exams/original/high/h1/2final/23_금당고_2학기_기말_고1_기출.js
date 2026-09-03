@@ -362,6 +362,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 점근선의 교점을 이용해 유리함수를 $f(x)=\\dfrac{a}{x-2}+3$의 꼴로 나타낸다.\n조건 정리: 수직점근선은 $x=2$, 수평점근선은 $y=3$이다.\n풀이 방향: 구간 $0\\le x\\le1$에서의 최댓값 조건으로 $a$를 정한 뒤 $f(4)$를 계산한다.\n정석 풀이: $f(x)=\\dfrac{a}{x-2}+3$으로 둘 수 있다. 만약 $a<0$이면 $0\\le x\\le1$에서 $x-2<0$이므로 $\\dfrac{a}{x-2}>0$이 되어 $f(x)>3$이므로 최댓값이 $2$일 수 없다. 따라서 $a>0$이다. 이 구간에서 $\\dfrac1{x-2}$는 $-\\dfrac12$에서 $-1$로 작아지므로 $f(x)$의 최댓값은 $x=0$에서이다. $f(0)=3-\\dfrac a2=2$이므로 $a=2$이다. 따라서 $f(4)=\\dfrac2{4-2}+3=4$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q11-solution.svg",
+
+    "solutionImageAlt": "유리함수의 중심과 구간 최댓값을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "점근선 교점 (2,3), [0,1]의 최댓값 2, f(4)=4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -427,6 +435,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 주어진 함수식을 $f(x)$의 식으로 바꾸고 역함수의 조건을 원래 함수의 값으로 해석한다.\n조건 정리: $f^{-1}(-3)=2$는 $f(2)=-3$과 같다.\n풀이 방향: 먼저 $f(x)$와 $a$를 구한 뒤 역함수의 두 절편으로 삼각형의 넓이를 구한다.\n정석 풀이: $t=1-x$로 두면 $x=1-t$이므로 $f(t)=3(1-t)+a=-3t+a+3$이다. 따라서 $f(x)=-3x+a+3$이다. $f(2)=-3$이므로 $-6+a+3=-3$에서 $a=0$이다. 따라서 $f(x)=-3x+3$이고 역함수는 $f^{-1}(x)=1-\\dfrac x3$이다. 이 직선의 $x$절편은 $3$, $y$절편은 $1$이므로 좌표축과 둘러싸인 삼각형의 넓이는 $\\dfrac12\\times3\\times1=\\dfrac32$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q13-solution.svg",
+
+    "solutionImageAlt": "역함수 직선과 좌표축 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f⁻¹=1−x/3의 절편과 좌표축 삼각형 넓이를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
