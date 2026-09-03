@@ -69,6 +69,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 유리함수의 표준형에서 수직·수평 점근선을 바로 읽는다.\n조건 정리: $y=\\dfrac{2}{x-2}-1$은 $y=\\dfrac{a}{x-p}+q$ 꼴이다.\n풀이 방향: 분모를 0으로 만드는 $x$값과 상수항을 각각 점근선으로 본다.\n정석 풀이: 수직점근선은 $x=2$이므로 $p=2$이고, 수평점근선은 $y=-1$이므로 $q=-1$이다. 따라서 $p+q=2+(-1)=1$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q01-solution.svg",
+
+    "solutionImageAlt": "유리함수의 두 점근선을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=2/(x−2)−1에서 수직점근선 x=2와 수평점근선 y=−1을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

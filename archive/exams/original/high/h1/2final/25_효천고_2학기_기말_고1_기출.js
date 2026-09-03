@@ -384,6 +384,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수를 평행이동형으로 나타내면 그래프의 중심과 두 대칭축을 알 수 있다.\n조건 정리: $y=\\dfrac{3x+5}{x-a}=3+\\dfrac{3a+5}{x-a}$이므로 그래프의 중심은 $(a,3)$이다.\n풀이 방향: 중심을 지나는 기울기 $1$, $-1$인 대칭축을 주어진 두 직선과 비교한다.\n정석 풀이: 두 대칭축은 $y-3=x-a$, $y-3=-(x-a)$이다. 첫째 식은 $y=x+(3-a)$이므로 $3-a=5$에서 $a=-2$이다. 둘째 식은 $y=-x+(a+3)$이므로 $a+3=1$이고, 주어진 식 $y=-x+\\dfrac12b$와 비교하면 $\\dfrac12b=1$, 즉 $b=2$이다. 따라서 $ab=-2\\cdot2=-4$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "유리함수의 중심과 두 대칭축을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=−2, b=2일 때 중심 C=(−2,3)과 대칭축 y=x+5, y=−x+1을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
