@@ -727,6 +727,14 @@ window.questionBank=[
     "choices": [],
     "answer": "$2\\le k\\lt\\dfrac{9}{4}$",
     "solution": "[키포인트] 이 함수가 증가함수임을 이용하면 함수와 역함수의 교점은 $y=x$ 위에 있어야 한다.\n조건 정리: $x\\ge1$에서 $f(x)=(x-1)^2+k-1$은 증가하고, 고정점은 $x^2-3x+k=0$의 근이다.\n풀이 방향: 교점이 고정점임을 확인한 뒤 서로 다른 두 근이 모두 $1$ 이상일 조건을 구한다.\n정석 풀이: 교점을 $(u,v)$라 하면 $v=f(u)$이고 $u=f(v)$이다. 만약 $u\\ltv$이면 증가성에 의해 $f(u)\\ltf(v)$, 즉 $v\\ltu$가 되어 모순이고, $u\\gtv$도 같은 이유로 모순이다. 따라서 $u=v$이며 교점은 $f(x)=x$, 즉 $x^2-3x+k=0$의 해에서 생긴다. 서로 다른 두 실근을 가지려면 $9-4k\\gt0$이므로 $k\\lt\\dfrac{9}{4}$이다. 작은 근 $\\dfrac{3-\\sqrt{9-4k}}{2}$가 $1$ 이상이어야 하므로 $\\sqrt{9-4k}\\le1$, 즉 $k\\ge2$이다. $k=2$일 때 두 근은 $1,2$로 서로 다르므로 포함된다.\n따라서 $2\\le k\\lt\\dfrac{9}{4}$이다.",
+
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=2 대표 그래프에서 (1,1), (2,2) 교점을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",

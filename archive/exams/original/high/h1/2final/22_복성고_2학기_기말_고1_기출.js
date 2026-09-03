@@ -378,6 +378,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수의 두 점근선의 교점은 그래프의 중심이며, 평행이동하면 그 중심도 같은 만큼 이동한다.\n조건 정리: $f(x)=\\dfrac{2x+k}{x+3}=2+\\dfrac{k-6}{x+3}$이므로 점근선은 $x=-3$, $y=2$이다.\n풀이 방향: $f$의 중심을 평행이동하여 $g$의 중심을 구하고, 그 점이 $f$ 위에 있다는 조건을 사용한다.\n정석 풀이: $f$의 두 점근선의 교점은 $(-3,2)$이다. 이를 $x$축 방향으로 1, $y$축 방향으로 $-1$만큼 옮기면 $g$의 점근선 교점은 $(-2,1)$이다. 이 점이 $f$ 위에 있으므로 $1=f(-2)=\\dfrac{-4+k}{1}=k-4$이다. 따라서 $k=5$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "유리함수와 평행이동된 그래프의 중심을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=5에서 g의 중심 (−2,1)이 f 위에 있음을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -651,6 +659,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$9$",
     "solution": "[키포인트] $P$의 $x$좌표의 부호에 따라 함수의 두 식이 서로 바뀌지만, 두 직각변 길이의 곱은 같은 식으로 정리된다.\n조건 정리: $Q$는 $P$와 같은 $x$좌표를 가지며 직선 $y=-x$ 위에 있고, $R$은 $Q$와 같은 $y$좌표를 가진다.\n풀이 방향: $P$의 $x$좌표를 $t\\ne0$이라 두고 $t\\gt0$, $t\\lt0$을 확인한 뒤 넓이의 공통식을 최소화한다.\n정석 풀이: 먼저 $t\\gt0$이면 $P=(t,\\dfrac8t)$, $Q=(t,-t)$이다. $R$은 $y=-t\\lt0$인 $f$의 그래프 위에 있으므로 $\\dfrac2x=-t$에서 $R=(-\\dfrac2t,-t)$이다. 따라서 $PQ=t+\\dfrac8t$, $QR=t+\\dfrac2t$이다. 반대로 $t\\lt0$에서 $u=-t\\gt0$이라 두면 $P=(-u,-\\dfrac2u)$, $Q=(-u,u)$이고 $R=(\\dfrac8u,u)$이므로 두 직각변의 길이는 $u+\\dfrac2u$, $u+\\dfrac8u$로 순서만 바뀐다. 따라서 두 경우 모두 양수 $u$에 대해 넓이는 $S=\\dfrac12(u+\\dfrac8u)(u+\\dfrac2u)=\\dfrac{u^2}{2}+5+\\dfrac8{u^2}$이다. 여기서 $S-9=\\dfrac{u^4-8u^2+16}{2u^2}=\\dfrac{(u^2-4)^2}{2u^2}\\ge0$이므로 $S\\ge9$이다. $u=2$일 때 등호가 성립한다.\n따라서 구하는 넓이의 최솟값은 $9$이다.",
+
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q21-solution.svg",
+
+    "solutionImageAlt": "조각 유리함수와 직각삼각형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "u=2에서 P,Q,R과 최소 넓이 9를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
