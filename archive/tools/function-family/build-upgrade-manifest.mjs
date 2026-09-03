@@ -7,7 +7,6 @@ const REPORT_DIR = path.join(ROOT, 'docs', 'reports', 'function-family-20260903'
 const GRAPH_LEDGER_PATH = path.join(REPORT_DIR, 'function_family_pilot_graphs.json');
 const OUTPUT_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.json');
 const SUMMARY_PATH = path.join(REPORT_DIR, 'function_family_upgrade_manifest.md');
-const SOURCE_REVIEW_QKEY = 'original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js_18';
 
 function main() {
   const latestAuditDir = fs.readdirSync(REPORT_DIR, { withFileTypes: true })
@@ -21,7 +20,9 @@ function main() {
   const generatedKeys = new Set(graphLedger.cases.map((row) => `${row.sourceJsPath}_${row.id}`));
   const rows = inventory.rows.map((row) => {
     const key = `${row.sourceJsPath}_${row.id}`;
-    const sourceReview = row.qKey === SOURCE_REVIEW_QKEY;
+    // The previously suspected q18 answer discrepancy was resolved by matching
+    // the computed 11/4 result to choice ①; no unresolved source-review override remains.
+    const sourceReview = false;
     const visualPresent = row.solutionImageStatus === 'PRESENT';
     let qualityDisposition = 'KEEP';
     let executionStatus = 'KEEP_CANDIDATE';
