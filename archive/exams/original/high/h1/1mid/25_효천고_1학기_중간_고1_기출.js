@@ -413,7 +413,7 @@ window.questionBank = [
     "wide": false,
     "content": "$(\\frac{1+i}{\\sqrt{2}})^5 + (\\frac{\\sqrt{2}}{1+i})^5$의 값은? (단, $i=\\sqrt{-1}$이다.)",
     "choices": [
-      "① [판독불가]",
+      "① $0$",
       "② $-\\sqrt{2}$",
       "③ $-\\sqrt{3}$",
       "④ $-1$",

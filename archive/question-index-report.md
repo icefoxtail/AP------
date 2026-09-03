@@ -1,6 +1,6 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-09-03T08:56:41.485Z
+- 생성 시각: 2026-09-03T10:10:40.954Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
 - 시험지 수(db.js): 438
 - 시험지 파일 수: 451
@@ -10,8 +10,8 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 446992 bytes
-- 시험지 JS 총 크기: 17919096 bytes
-- 인덱스 크기: 11574123 bytes
+- 시험지 JS 총 크기: 18154573 bytes
+- 인덱스 크기: 11574093 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(10980)" 기준이다.
@@ -38,11 +38,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 2210
+- q.image 보유: 2211
 - content 내부 <img>: 24
 - content 내부 <svg>: 79
 - content 내부 <table>: 165
-- 시각요소 보유(hasImage=true, OR 합산): 2472
+- 시각요소 보유(hasImage=true, OR 합산): 2473
 
 ## 누락 예시
 

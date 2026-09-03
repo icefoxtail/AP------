@@ -381,7 +381,8 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[그래프필요] 두 함수 $f(x)=x^2+ax+b, g(x)=-x^2+cx+d$의 그래프가 그림과 같다. 방정식 $f(x)=2g(x)$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha-\\beta$의 값은? (단, $\\alpha>\\beta$ 이고 $a, b, c, d$는 실수이다.) [4.5점]",
+    "content": "두 함수 $f(x)=x^2+ax+b, g(x)=-x^2+cx+d$의 그래프가 그림과 같다. 방정식 $f(x)=2g(x)$의 두 근을 $\\alpha, \\beta$라 할 때, $\\alpha-\\beta$의 값은? (단, $\\alpha>\\beta$ 이고 $a, b, c, d$는 실수이다.) [4.5점]",
+    "image": "assets/images/24_한영고_1학기_중간_고1_기출/q11.svg",
     "choices": [
       "$5$",
       "$6$",
@@ -390,7 +391,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "①",
-    "solution": "<b>[키포인트]</b> 그래프가 $x$축과 만나는 절편을 이용하여 각 이차함수의 식을 구한 후 연립함.\n$f(x)$는 $(-1, 0), (2, 0)$을 지나고 최고차항 계수가 $1$임.\n$\\implies f(x) = (x+1)(x-2) = x^2-x-2$\n$g(x)$는 $(-4, 0), (2, 0)$을 지나고 최고차항 계수가 $-1$임.\n$\\implies g(x) = -(x+4)(x-2) = -x^2-2x+8$\n방정식 $f(x)=2g(x)$를 세우고 정리함.\n$\\implies x^2-x-2 = 2(-x^2-2x+8)$\n$\\implies x^2-x-2 = -2x^2-4x+16$\n$\\implies 3x^2+3x-18 = 0 \\implies x^2+x-6 = 0$\n인수분해하여 두 근을 구함.\n$\\implies (x+3)(x-2)=0 \\implies x=2, -3$\n$\\alpha > \\beta$ 이므로 $\\alpha=2, \\beta=-3$임.\n$\\implies \\alpha-\\beta = 2 - (-3) = 5$\n$\\therefore 5$",
+    "solution": "[키포인트] 그래프에서 각 포물선의 방향과 $x$절편을 읽어 식을 세운 뒤, 두 그래프의 교점 조건을 이용한다.\n\n그래프에서 $f(x)$는 위로 열린 포물선이고 $x$절편은 $-1$, $2$이며 최고차항의 계수는 $1$이다. 따라서\n$f(x)=(x+1)(x-2)=x^2-x-2$이다.\n\n$g(x)$는 아래로 열린 포물선이고 $x$절편은 $-4$, $2$이며 최고차항의 계수는 $-1$이다. 따라서\n$g(x)=-(x+4)(x-2)=-x^2-2x+8$이다.\n\n$f(x)=2g(x)$를 만족하는 $x$를 구하면\n$x^2-x-2=2(-x^2-2x+8)$,\n$3x^2+3x-18=0$,\n$(x+3)(x-2)=0$이다. 따라서 두 근은 $2$, $-3$이다.\n\n$\\alpha>\\beta$이므로 $\\alpha=2$, $\\beta=-3$이고,\n$\\alpha-\\beta=2-(-3)=5$이다. 따라서 정답은 ①이다.",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
