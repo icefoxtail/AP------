@@ -428,6 +428,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 그래프의 수직·수평 점근선 네 개가 만드는 직사각형의 넓이를 이용한다.\n조건 정리: 첫 그래프의 점근선은 $x=k$, $y=0$이다. 두 번째 함수는 $y=k+\\dfrac{k-1}{x-1}$이므로 점근선은 $x=1$, $y=k$이다.\n풀이 방향: 네 점근선으로 만들어지는 직사각형의 가로와 세로 길이를 구한다.\n정석 풀이: 넓이는 $|k-1|\\cdot k=12$이다. $0\\lt k\\lt 1$이면 $k(1-k)\\le\\dfrac14$이므로 불가능하다. 따라서 $k\\gt 1$이고 $k(k-1)=12$이다. $k^2-k-12=0$에서 $(k-4)(k+3)=0$이므로 양수 $k=4$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q14-solution.svg",
+
+    "solutionImageAlt": "두 유리함수의 점근선과 직사각형 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=4일 때 점근선 x=1,4와 y=0,4가 만드는 넓이 12를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

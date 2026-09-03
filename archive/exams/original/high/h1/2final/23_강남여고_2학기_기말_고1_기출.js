@@ -186,6 +186,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 무리함수의 시작점, 정의역·치역과 평행이동을 함께 확인한다.\n조건 정리: $f(x)=-\\sqrt{2(x-2)}+3$의 시작점은 $(2,3)$이다.\n풀이 방향: ㄱ~ㄷ을 각각 그래프의 성질로 판정한다.\n정석 풀이: 루트 안이 $0$ 이상이어야 하므로 $x\\ge2$이고, $-\\sqrt{2x-4}\\le0$이므로 $y\\le3$이다. 따라서 ㄱ은 참이다. $y=-\\sqrt{2x}$의 그래프를 오른쪽으로 $2$, 위로 $3$만큼 옮기면 주어진 그래프가 되므로 ㄴ도 참이다. 또한 $2\\le x\\lt\\dfrac{13}{2}$에서는 $y\\gt0$이므로 제1사분면을 지나고, $x\\gt\\dfrac{13}{2}$에서는 $y\\lt0$이므로 제4사분면도 지난다. 따라서 ㄷ도 참이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q06-solution.svg",
+
+    "solutionImageAlt": "평행이동한 무리함수의 끝점·절편·사분면을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (2,3), x절편 (13/2,0), 정의역과 치역을 함께 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

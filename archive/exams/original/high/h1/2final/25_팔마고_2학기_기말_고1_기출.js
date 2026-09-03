@@ -364,6 +364,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 함수와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이므로 접점은 $y=x$ 위에 있다.\n조건 정리: 접점의 $x$좌표는 방정식 $f(x)=x$의 중근이다.\n풀이 방향: $f(x)=x$를 이차방정식으로 만들고 판별식을 $0$으로 둔다.\n정석 풀이: $x^2-6x+a=x$이므로 $x^2-7x+a=0$이다. 두 그래프가 접하려면 이 방정식이 중근을 가져야 하므로 판별식이 $49-4a=0$이다. 따라서 $a=\\dfrac{49}{4}$이다. 중근은 $x=\\dfrac72\\ge3$이므로 정의역 조건도 만족한다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution.svg",
+
+    "solutionImageAlt": "함수와 역함수의 접점 및 y=x를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f(x)=x의 중근 (7/2,7/2)을 표시하여 두 그래프의 접점을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -465,6 +473,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $f(x)=\\dfrac1x$는 자기 자신이 역함수이지만, 두 그래프가 일치한다는 점을 주의한다.\n조건 정리: $f(f(x))=x$이고 그래프는 제1사분면과 제3사분면을 지난다.\n풀이 방향: ㄱ~ㄷ을 각각 판단한다.\n정석 풀이: $f$는 일대일대응이고 $f^{-1}(x)=\\dfrac1x$이므로 ㄱ은 참이다. 그래프는 제1사분면과 제3사분면을 지나므로 ㄴ은 거짓이다. $f=f^{-1}$이므로 두 그래프는 완전히 일치하여 교점이 무수히 많지만, $f(x)=x$는 $\\dfrac1x=x$, 즉 $x=\\pm1$의 두 실근만 가지므로 ㄷ은 거짓이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q14-solution.svg",
+
+    "solutionImageAlt": "함수 y=1/x의 두 가지 그래프와 좌표축을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=1/x는 자기 자신이 역함수이고 제1·3사분면을 지나며 좌표축은 점근선이다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

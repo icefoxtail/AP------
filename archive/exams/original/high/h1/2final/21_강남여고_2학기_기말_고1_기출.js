@@ -81,6 +81,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 유리함수를 상수항과 분수항으로 나누면 점근선을 바로 읽을 수 있다.\n$\\dfrac{2x-3}{x-1}=2-\\dfrac1{x-1}$이므로 점근선은 $x=1$, $y=2$이다.\n따라서 $(a,b)=(1,2)$이고 $b-a=2-1=1$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q03-solution.svg",
+
+    "solutionImageAlt": "유리함수의 중심과 두 점근선을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "점근선 x=1, y=2의 교점 (1,2)를 표시한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
