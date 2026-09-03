@@ -464,6 +464,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 주어진 식을 $y$에 대하여 정리하여 유리함수의 점근선을 찾는다.\n$\\dfrac1x+\\dfrac1y=\\dfrac14$에서 $4x+4y=xy$이므로\n$y=\\dfrac{4x}{x-4}=4+\\dfrac{16}{x-4}$이다.\n따라서 점근선은 $x=4$, $y=4$이므로 $a=b=4$이다.\n따라서 $a+b=8$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q16-solution.svg",
+
+    "solutionImageAlt": "렌즈 방정식을 유리함수로 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=4+16/(x−4)로 정리해 점근선 x=4, y=4를 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q16.png",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
@@ -830,6 +838,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$16$",
     "solution": "[키포인트] 먼저 $k$를 구한 뒤 주어진 구간에서 분모의 범위를 이용해 함수값의 범위를 찾는다.\n점 $(-2,-4)$를 지나므로 $-4=\\dfrac{k}{2}-3$에서 $k=-2$이다. 따라서\n$f(x)=-\\dfrac2{x+4}-3$이다.\n$-3\\le x\\le6$에서 $1\\le x+4\\le10$이다. 양수 $x+4$가 커질수록 $\\dfrac2{x+4}$는 작아지므로 $-\\dfrac2{x+4}-3$은 커진다.\n따라서 최솟값은 $x=-3$일 때 $m=-2-3=-5$이고, 최댓값은 $x=6$일 때 $M=-\\dfrac15-3=-\\dfrac{16}{5}$이다.\n그러므로 $M\\times m=\\left(-\\dfrac{16}{5}\\right)(-5)=16$이다.\n따라서 구하는 값은 $16$이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q28-solution.svg",
+
+    "solutionImageAlt": "유리함수의 구간 최댓값과 최솟값을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f=−2/(x+4)−3을 −3≤x≤6에서 확인해 m=−5, M=−16/5를 읽는다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",

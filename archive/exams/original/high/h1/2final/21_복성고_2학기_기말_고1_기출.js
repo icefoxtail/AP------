@@ -324,6 +324,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 근호를 새로운 변수로 치환하면 교점 조건을 이차방정식의 서로 다른 두 해 조건으로 바꿀 수 있다.\\n조건 정리: $t=\\sqrt{4-2x}$라 두면 $t\\ge0$이고 $x=2-\\dfrac{t^2}{2}$이다. 직선 $y=-x+k$와의 교점에서는 $t=-x+k$이므로 $t=-\\left(2-\\dfrac{t^2}{2}\\right)+k$이다.\\n정석 풀이: 식을 정리하면 $t^2-2t+2k-4=0$, 즉 $(t-1)^2=5-2k$이다. 서로 다른 두 교점이 되려면 서로 다른 두 개의 $t\\ge0$이 필요하다. 두 해는 $t=1\\pm\\sqrt{5-2k}$이므로, 서로 달라야 하여 $5-2k\\gt0$, 즉 $k\\lt\\dfrac52$이다. 또 작은 해도 $0$ 이상이어야 하므로 $1-\\sqrt{5-2k}\\ge0$에서 $k\\ge2$이다. 따라서 $2\\le k\\lt\\dfrac52$이므로 $\\alpha=2$, $\\beta=\\dfrac52$이다. 그러므로 $\\alpha\\beta=5$이다.\\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q11-solution.svg",
+
+    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "2≤k<5/2에서 두 교점이 생기며 대표값 k=9/4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
