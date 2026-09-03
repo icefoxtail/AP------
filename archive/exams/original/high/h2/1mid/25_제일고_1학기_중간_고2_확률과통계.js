@@ -122,8 +122,8 @@ window.questionBank = [
     "solution": "$a, b, c$ 3개의 문자 중에서 중복을 허용하여 4개를 선택하는 조합의 수와 같다.\\n$\\therefore _{3}H_{4} = _{6}C_{4} = _{6}C_{2} = 15$",
     "originalCategory": "25_제일고_1학기_중간_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H22-PS-02",
-    "standardUnit": "이항정리",
+    "standardUnitKey": "H22-PS-01",
+    "standardUnit": "순열과 조합",
     "questionType": "",
     "layoutTag": "grid",
     "tags": [
@@ -137,9 +137,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "standardUnitOrder": 2,
-    "subUnitKey": "H22-PS-02-CORE",
-    "subUnit": "이항정리 핵심 개념",
+    "standardUnitOrder": 1,
+    "subUnitKey": "H22-PS-01-CORE",
+    "subUnit": "순열과 조합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
