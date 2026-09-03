@@ -157,6 +157,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 먼저 역함수를 구한 뒤 두 유리함수의 점근선 위치를 비교한다.\n조건 정리: $f(x)=3+\\dfrac7{x-2}$이다.\n풀이 방향: $x,y$를 바꾸어 $f^{-1}$을 구하고 평행이동량을 읽는다.\n정석 풀이: $x=\\dfrac{3y+1}{y-2}$에서 $xy-2x=3y+1$이므로 $y=\\dfrac{2x+1}{x-3}=2+\\dfrac7{x-3}$이다. 따라서 $f$의 그래프를 오른쪽으로 $1$만큼 옮기면 수직점근선이 $x=3$이 되고, 아래로 $1$만큼 옮기면 수평점근선이 $y=2$가 되어 역함수의 그래프와 일치한다. 그러므로 $a=1$, $b=-1$이고 $ab=-1$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q05-solution.svg",
+
+    "solutionImageAlt": "유리함수와 역함수의 점근선 이동을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f와 f⁻¹의 점근선을 비교하여 오른쪽 1, 아래 1 이동을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

@@ -527,6 +527,334 @@ BATCH3_CASES = [
 ]
 
 
+BATCH4_CASES = [
+    {
+        "caseId": "h1-25-geumdang-2final-q09-rational-asymptotes-point",
+        "sourceJsPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+        "id": 9,
+        "assetRef": "assets/images/25_금당고_2학기_기말_고1_기출/q09-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=-8/(x-1)-4, asymptotes x=1,y=-4, through (0,4)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-10, 15], "yRange": [-21, 4],
+            "asymptotes": [{"x": 1, "label": "x=1"}, {"y": -4, "label": "y=−4"}],
+            "curves": [
+                {"points": [{"x": -10, "y": -3.272727}, {"x": -6, "y": -2.857143}, {"x": -2, "y": -1.333333}, {"x": 0, "y": 4}]},
+                {"points": [{"x": 1.5, "y": -20}, {"x": 2, "y": -12}, {"x": 3, "y": -8}, {"x": 8, "y": -5.142857}, {"x": 15, "y": -4.571429}]},
+            ],
+            "points": [{"x": 0, "y": 4, "label": "P"}],
+            "annotations": [{"x": -8, "y": 1.8, "text": "y=−8/(x−1)−4"}, {"x": -8, "y": -18.5, "text": "P=(0,4)"}],
+        },
+    },
+    {
+        "caseId": "h1-25-palmas-2final-q14-reciprocal-domain-range",
+        "sourceJsPath": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+        "id": 14,
+        "assetRef": "assets/images/25_팔마고_2학기_기말_고1_기출/q14-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=1/x, self-inverse, quadrants I and III, axes excluded from domain/range",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-6, 6], "yRange": [-6, 6],
+            "asymptotes": [{"x": 0, "label": "x=0"}, {"y": 0, "label": "y=0"}],
+            "curves": [{"points": [{"x": -6, "y": -0.166667}, {"x": -3, "y": -0.333333}, {"x": -1, "y": -1}, {"x": -0.5, "y": -2}, {"x": -0.166667, "y": -6}]}, {"points": [{"x": 0.166667, "y": 6}, {"x": 0.5, "y": 2}, {"x": 1, "y": 1}, {"x": 3, "y": 0.333333}, {"x": 6, "y": 0.166667}]}],
+            "points": [{"x": 1, "y": 1, "label": "P"}, {"x": -1, "y": -1, "label": "Q"}],
+            "annotations": [{"x": 1.4, "y": 5.2, "text": "f=f⁻¹"}, {"x": -5.5, "y": -5.2, "text": "D=R\\{0}, R=R\\{0}"}],
+        },
+    },
+    {
+        "caseId": "h1-24-maesan-2final-q03-rational-translation",
+        "sourceJsPath": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+        "id": 3,
+        "assetRef": "assets/images/24_매산여고_2학기_기말_고1_기출/q03-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=2+7/(x-1), translated y=7/x by (1,2)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-7, 9], "yRange": [-7, 9],
+            "asymptotes": [{"x": 1, "label": "x=1"}, {"y": 2, "label": "y=2"}],
+            "curves": [{"points": [{"x": -7, "y": 1.125}, {"x": -3, "y": 0.25}, {"x": 0, "y": -5}]}, {"points": [{"x": 2, "y": 9}, {"x": 3, "y": 5.5}, {"x": 5, "y": 3.75}, {"x": 9, "y": 2.875}]}],
+            "points": [{"x": 2, "y": 9, "label": "P"}],
+            "annotations": [{"x": -6, "y": 7.5, "text": "y=2+7/(x−1)"}, {"x": -6, "y": -5.8, "text": "shift: (1,2)"}],
+        },
+    },
+    {
+        "caseId": "h1-24-maesan-2final-q05-rational-properties",
+        "sourceJsPath": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+        "id": 5,
+        "assetRef": "assets/images/24_매산여고_2학기_기말_고1_기출/q05-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=-3+5/(x+1), asymptotes x=-1,y=-3, center (-1,-3)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-8, 8], "yRange": [-8, 8],
+            "asymptotes": [{"x": -1, "label": "x=−1"}, {"y": -3, "label": "y=−3"}],
+            "curves": [{"points": [{"x": -8, "y": -3.714286}, {"x": -3, "y": -5.5}, {"x": -2, "y": -8}]}, {"points": [{"x": 0, "y": 2}, {"x": 1, "y": -0.5}, {"x": 2, "y": -1.333333}, {"x": 8, "y": -2.444444}]}],
+            "points": [{"x": 0, "y": 2, "label": "P"}],
+            "annotations": [{"x": -7, "y": 6.2, "text": "y=−3+5/(x+1)"}, {"x": -7, "y": -6.5, "text": "center (−1,−3)"}],
+        },
+    },
+    {
+        "caseId": "h1-24-maesan-2final-q07-absolute-rational-levels",
+        "sourceJsPath": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+        "id": 7,
+        "assetRef": "assets/images/24_매산여고_2학기_기말_고1_기출/q07-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=|(2x+1)/(3-x)|, vertical asymptote x=3, horizontal levels y=1,2,3 count intersections",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-6, 6], "yRange": [-1, 10],
+            "asymptotes": [{"x": 3, "label": "x=3"}],
+            "lines": [{"from": {"x": -6, "y": 1}, "to": {"x": 6, "y": 1}, "kind": "guide", "dashed": True, "label": "k=1"}, {"from": {"x": -6, "y": 2}, "to": {"x": 6, "y": 2}, "kind": "guide", "dashed": True, "label": "k=2"}, {"from": {"x": -6, "y": 3}, "to": {"x": 6, "y": 3}, "kind": "guide", "dashed": True, "label": "k=3"}],
+            "curves": [{"points": [{"x": -6, "y": 1.222222}, {"x": -2, "y": 0.6}, {"x": -0.5, "y": 0}, {"x": 0, "y": 0.333333}, {"x": 1, "y": 1.5}, {"x": 2, "y": 5}, {"x": 2.2, "y": 6.75}]}, {"points": [{"x": 4, "y": 9}, {"x": 5, "y": 5.5}, {"x": 6, "y": 4.333333}]}],
+            "points": [{"x": -0.5, "y": 0, "label": "x-int"}],
+            "annotations": [{"x": -5.5, "y": 8.6, "text": "y=|(2x+1)/(3−x)|"}],
+        },
+    },
+    {
+        "caseId": "h1-23-gangnam-2final-q06-translated-radical-quadrants",
+        "sourceJsPath": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js",
+        "id": 6,
+        "assetRef": "assets/images/23_강남여고_2학기_기말_고1_기출/q06-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=-sqrt(2x-4)+3, endpoint (2,3), x-intercept (13/2,0), quadrants I and IV",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [0, 10], "yRange": [-5, 5],
+            "curves": [{"points": [{"x": 2, "y": 3}, {"x": 3, "y": 2}, {"x": 4, "y": 1.585786}, {"x": 5, "y": 1}, {"x": 6.5, "y": 0}, {"x": 8, "y": -0.464102}, {"x": 10, "y": -1}]}],
+            "points": [{"x": 2, "y": 3, "label": "V"}, {"x": 6.5, "y": 0, "label": "x-int"}],
+            "annotations": [{"x": 2.2, "y": 4.5, "text": "y=−√(2x−4)+3"}, {"x": 0.3, "y": -4.2, "text": "x≥2, y≤3"}],
+        },
+    },
+    {
+        "caseId": "h1-23-geumdang-2final-q20-radical-line-counts",
+        "sourceJsPath": "original/high/h1/2final/23_금당고_2학기_기말_고1_기출.js",
+        "id": 20,
+        "assetRef": "assets/images/23_금당고_2학기_기말_고1_기출/q20-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=sqrt(x+3), lines y=x+2,y=x+3,y=x+4 give counts 1,2,0",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-3, 6], "yRange": [-2, 10],
+            "curves": [{"points": [{"x": -3, "y": 0}, {"x": -2, "y": 1}, {"x": -1, "y": 1.414214}, {"x": 0, "y": 1.732051}, {"x": 1, "y": 2}, {"x": 3, "y": 2.44949}, {"x": 6, "y": 3}]}],
+            "lines": [{"from": {"x": -3, "y": -1}, "to": {"x": 6, "y": 8}, "label": "k=2", "kind": "guide", "dashed": True}, {"from": {"x": -3, "y": 0}, "to": {"x": 6, "y": 9}, "label": "k=3", "kind": "guide", "dashed": True}, {"from": {"x": -3, "y": 1}, "to": {"x": 6, "y": 10}, "label": "k=4", "kind": "guide", "dashed": True}],
+            "points": [{"x": -1, "y": 1.414214, "label": "f(2)"}],
+            "annotations": [{"x": -2.7, "y": 6.8, "text": "y=√(x+3)"}, {"x": 2.5, "y": -1.2, "text": "counts: 1,2,0"}],
+        },
+    },
+    {
+        "caseId": "h1-24-geumdang-2final-q18-rational-radical-one-intersection",
+        "sourceJsPath": "original/high/h1/2final/24_금당고_2학기_기말_고1_기출.js",
+        "id": 18,
+        "assetRef": "assets/images/24_금당고_2학기_기말_고1_기출/q18-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=(x+1)/(x-1)=1+2/(x-1) and y=sqrt(x-k), one intersection iff k>-1",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-4, 8], "yRange": [-6, 6],
+            "asymptotes": [{"x": 1, "label": "x=1"}, {"y": 1, "label": "y=1"}],
+            "curves": [{"points": [{"x": -4, "y": 0.6}, {"x": -2, "y": 0.333333}, {"x": 0, "y": -1}, {"x": 0.5, "y": -5}]}, {"points": [{"x": 1.5, "y": 5}, {"x": 2, "y": 3}, {"x": 3, "y": 2}, {"x": 5, "y": 1.5}, {"x": 8, "y": 1.285714}]}, {"points": [{"x": 0, "y": 0}, {"x": 1, "y": 1}, {"x": 2, "y": 1.414214}, {"x": 4, "y": 2}, {"x": 8, "y": 2.828427}]}],
+            "points": [{"x": 4, "y": 2, "label": "P"}],
+            "annotations": [{"x": -3.5, "y": 5.2, "text": "y=(x+1)/(x−1)"}, {"x": 4.7, "y": 3.4, "text": "y=√x (k=0)"}],
+        },
+    },
+    {
+        "caseId": "h1-25-geumdang-2final-q15-inverse-intersections",
+        "sourceJsPath": "original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+        "id": 15,
+        "assetRef": "assets/images/25_금당고_2학기_기말_고1_기출/q15-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f=(x-6)^2+6 for x>=6, inverse 6+sqrt(x-6), intersections P=(6,6),Q=(7,7)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [5, 12], "yRange": [5, 22],
+            "curves": [{"points": [{"x": 6, "y": 6}, {"x": 6.5, "y": 6.25}, {"x": 7, "y": 7}, {"x": 8, "y": 10}, {"x": 9, "y": 15}, {"x": 10, "y": 22}]}, {"points": [{"x": 6, "y": 6}, {"x": 7, "y": 7}, {"x": 8, "y": 7.414214}, {"x": 9, "y": 7.732051}, {"x": 12, "y": 8.44949}]}],
+            "lines": [{"from": {"x": 5, "y": 5}, "to": {"x": 12, "y": 12}, "label": "y=x", "kind": "guide", "dashed": True}],
+            "points": [{"x": 6, "y": 6, "label": "P"}, {"x": 7, "y": 7, "label": "Q"}],
+            "annotations": [{"x": 6.2, "y": 17, "text": "y=f(x)"}, {"x": 9, "y": 10, "text": "y=f⁻¹(x)"}],
+        },
+    },
+    {
+        "caseId": "h1-25-jeil-2final-q14-two-rational-asymptote-rectangle",
+        "sourceJsPath": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+        "id": 14,
+        "assetRef": "assets/images/25_제일고_2학기_기말_고1_기출/q14-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "k=4: y=2/(x-4) asymptotes x=4,y=0; second y=4+3/(x-1) asymptotes x=1,y=4; rectangle area 12",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-4, 8], "yRange": [-9, 16],
+            "asymptotes": [{"x": 4, "label": "x=4"}, {"y": 0, "label": "y=0"}, {"x": 1, "label": "x=1"}, {"y": 4, "label": "y=4"}],
+            "curves": [{"points": [{"x": -4, "y": -0.25}, {"x": 0, "y": -0.5}, {"x": 2, "y": -1}, {"x": 3, "y": -2}, {"x": 3.5, "y": -4}]}, {"points": [{"x": 4.5, "y": 4}, {"x": 5, "y": 2}, {"x": 6, "y": 1}, {"x": 8, "y": 0.5}]}, {"points": [{"x": -4, "y": 3.4}, {"x": -2, "y": 3.5}, {"x": 0, "y": 3}, {"x": 0.5, "y": -2}, {"x": 0.75, "y": -8}]}, {"points": [{"x": 1.25, "y": 16}, {"x": 2, "y": 7}, {"x": 3, "y": 5.5}, {"x": 5, "y": 4.75}, {"x": 8, "y": 4.428571}]}],
+            "segments": [{"from": {"x": 1, "y": 0}, "to": {"x": 4, "y": 0}, "label": "3", "kind": "segment"}, {"from": {"x": 4, "y": 0}, "to": {"x": 4, "y": 4}, "label": "4", "kind": "segment"}],
+            "annotations": [{"x": -3.5, "y": 8.5, "text": "area=|4−1|×|4−0|=12"}],
+        },
+    },
+]
+
+
+BATCH5_CASES = [
+    {
+        "caseId": "h1-25-hyocheon-2final-q08-radical-quadrants",
+        "sourceJsPath": "original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",
+        "id": 8,
+        "assetRef": "assets/images/25_효천고_2학기_기말_고1_기출/q08-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=-sqrt(2-x)+4, endpoint (2,4), x-intercept (-14,0), no quadrant IV",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-15, 5], "yRange": [-2, 6],
+            "curves": [{"points": [{"x": -15, "y": -0.123106}, {"x": -14, "y": 0}, {"x": -10, "y": 0.535898}, {"x": -6, "y": 1.171573}, {"x": 0, "y": 2.585786}, {"x": 2, "y": 4}]}],
+            "points": [{"x": -14, "y": 0, "label": "x-int"}, {"x": 2, "y": 4, "label": "V"}],
+            "annotations": [{"x": -13.5, "y": 5.5, "text": "y=−√(2−x)+4"}, {"x": -13.5, "y": -1.2, "text": "x≤2, y≤4; no IV"}],
+        },
+    },
+    {
+        "caseId": "h1-25-hyocheon-2final-q11-radical-inverse-point",
+        "sourceJsPath": "original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",
+        "id": 11,
+        "assetRef": "assets/images/25_효천고_2학기_기말_고1_기출/q11-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f=sqrt(2x-5)+2, b=2,a=-5, inverse=(x-2)^2/2+5/2, intersection A=(3,3), f(9/2)=4",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [2, 6], "yRange": [1, 9],
+            "curves": [{"points": [{"x": 2.5, "y": 2}, {"x": 3, "y": 3}, {"x": 3.5, "y": 3.414214}, {"x": 4.5, "y": 4}, {"x": 6, "y": 4.645751}]}, {"points": [{"x": 2, "y": 2.5}, {"x": 3, "y": 3}, {"x": 4, "y": 4.5}, {"x": 4.5, "y": 5.625}, {"x": 5.5, "y": 8.625}]}],
+            "lines": [{"from": {"x": 2, "y": 2}, "to": {"x": 6, "y": 6}, "label": "y=x", "kind": "guide", "dashed": True}],
+            "points": [{"x": 3, "y": 3, "label": "A"}, {"x": 4.5, "y": 4, "label": "f(9/2)"}],
+            "annotations": [{"x": 2.2, "y": 8.3, "text": "y=f(x)"}, {"x": 4.2, "y": 7.5, "text": "y=f⁻¹(x)"}],
+        },
+    },
+    {
+        "caseId": "h1-25-palmas-2final-q11-inverse-tangent",
+        "sourceJsPath": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+        "id": 11,
+        "assetRef": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f=x²-6x+49/4 for x>=3, f=x has double root x=7/2, inverse is 3+sqrt(x-13/4)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [2, 7], "yRange": [2, 20],
+            "curves": [{"points": [{"x": 3, "y": 3.25}, {"x": 3.5, "y": 3.5}, {"x": 4, "y": 4.25}, {"x": 5, "y": 7.25}, {"x": 7, "y": 19.25}]}, {"points": [{"x": 3.25, "y": 3}, {"x": 3.5, "y": 3.5}, {"x": 4.25, "y": 4}, {"x": 6, "y": 4.658312}, {"x": 7, "y": 4.936492}]}],
+            "lines": [{"from": {"x": 2, "y": 2}, "to": {"x": 7, "y": 7}, "label": "y=x", "kind": "guide", "dashed": True}],
+            "points": [{"x": 3.5, "y": 3.5, "label": "T"}],
+            "annotations": [{"x": 3.1, "y": 10.5, "text": "tangent at (7/2,7/2)"}],
+        },
+    },
+    {
+        "caseId": "h1-21-bokseong-2final-q03-rational-asymptotes",
+        "sourceJsPath": "original/high/h1/2final/21_복성고_2학기_기말_고1_기출.js",
+        "id": 3,
+        "assetRef": "assets/images/21_복성고_2학기_기말_고1_기출/q03-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=(-4x+8)/(2x-3)=-2+1/(x-3/2), asymptotes x=3/2,y=-2",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-6, 9], "yRange": [-9, 6],
+            "asymptotes": [{"x": 1.5, "label": "x=3/2"}, {"y": -2, "label": "y=−2"}],
+            "curves": [{"points": [{"x": -6, "y": -2.133333}, {"x": -2, "y": -2.285714}, {"x": 0, "y": -2.666667}, {"x": 1, "y": -4}, {"x": 1.3, "y": -7}]}, {"points": [{"x": 1.7, "y": 3}, {"x": 2, "y": 0}, {"x": 3, "y": -1.333333}, {"x": 5, "y": -1.714286}, {"x": 9, "y": -1.866667}]}],
+            "points": [{"x": 2, "y": 0, "label": "P"}],
+            "annotations": [{"x": -5.5, "y": 4.8, "text": "y=−2+1/(x−3/2)"}],
+        },
+    },
+    {
+        "caseId": "h1-21-gangnam-2final-q03-rational-center",
+        "sourceJsPath": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js",
+        "id": 3,
+        "assetRef": "assets/images/21_강남여고_2학기_기말_고1_기출/q03-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "y=(2x-3)/(x-1)=2-1/(x-1), asymptotes x=1,y=2, center (1,2)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-7, 9], "yRange": [-6, 10],
+            "asymptotes": [{"x": 1, "label": "x=1"}, {"y": 2, "label": "y=2"}],
+            "curves": [{"points": [{"x": -7, "y": 2.125}, {"x": -3, "y": 2.25}, {"x": 0, "y": 3}, {"x": 0.5, "y": 4}, {"x": 0.8, "y": 7}]}, {"points": [{"x": 1.2, "y": -3}, {"x": 1.5, "y": 0}, {"x": 2, "y": 1}, {"x": 4, "y": 1.666667}, {"x": 9, "y": 1.875}]}],
+            "points": [{"x": 0, "y": 3, "label": "P"}],
+            "annotations": [{"x": -6, "y": 8.5, "text": "center (1,2)"}, {"x": -6, "y": -4.5, "text": "b−a=1"}],
+        },
+    },
+    {
+        "caseId": "h1-21-suncheon-2final-q08-radical-line-range",
+        "sourceJsPath": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
+        "id": 8,
+        "assetRef": "assets/images/21_순천고_2학기_기말_고1_기출/q08-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=sqrt(2x+4), y=x+k, 2<=k<5/2, k=2.2 has two intersections",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 460,
+            "xRange": [-5, 5], "yRange": [-3, 5],
+            "curves": [{"points": [{"x": -2, "y": 0}, {"x": -1.9746, "y": 0.2254}, {"x": -1, "y": 1.414214}, {"x": 0, "y": 2}, {"x": 1, "y": 2.44949}, {"x": 3, "y": 3.162278}, {"x": 5, "y": 3.741657}]}, {"points": [{"x": -5, "y": -2.8}, {"x": -2, "y": 0.2}, {"x": 0, "y": 2.2}, {"x": 2, "y": 4.2}]}],
+            "points": [{"x": -1.9746, "y": 0.2254, "label": "P₁"}, {"x": -0.4254, "y": 1.7746, "label": "P₂"}],
+            "annotations": [{"x": -4.5, "y": 4.6, "text": "y=√(2x+4)"}, {"x": -4.5, "y": -1.7, "text": "k=2.2; 2≤k<5/2"}],
+        },
+    },
+    {
+        "caseId": "h1-21-suncheon-2final-q11-radical-inverse-distance",
+        "sourceJsPath": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
+        "id": 11,
+        "assetRef": "assets/images/21_순천고_2학기_기말_고1_기출/q11-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f=sqrt(x-3)+3, inverse=(x-3)^2+3 for x>=3, fixed points (3,3),(4,4), distance sqrt2",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [2, 7], "yRange": [2, 7],
+            "curves": [{"points": [{"x": 3, "y": 3}, {"x": 3.25, "y": 3.5}, {"x": 4, "y": 4}, {"x": 5, "y": 4.414214}, {"x": 7, "y": 5}]}, {"points": [{"x": 3, "y": 3}, {"x": 3.5, "y": 3.25}, {"x": 4, "y": 4}, {"x": 5, "y": 7}] }],
+            "lines": [{"from": {"x": 2, "y": 2}, "to": {"x": 7, "y": 7}, "label": "y=x", "kind": "guide", "dashed": True}],
+            "points": [{"x": 3, "y": 3, "label": "P"}, {"x": 4, "y": 4, "label": "Q"}],
+            "annotations": [{"x": 2.3, "y": 6.5, "text": "PQ=√2"}],
+        },
+    },
+    {
+        "caseId": "h1-21-geumdang-2final-q08-inverse-point",
+        "sourceJsPath": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js",
+        "id": 8,
+        "assetRef": "assets/images/21_금당고_2학기_기말_고1_기출/q08-solution.svg",
+        "visualKind": "INVERSE_GRAPH",
+        "factSummary": "f=(x-3)^2+1 for x>=3, inverse=3+sqrt(x-1), fixed point P=(5,5), OP=5sqrt2",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [2, 7], "yRange": [0, 10],
+            "curves": [{"points": [{"x": 3, "y": 1}, {"x": 4, "y": 2}, {"x": 5, "y": 5}, {"x": 6, "y": 10}]}, {"points": [{"x": 3, "y": 4.414214}, {"x": 4, "y": 4.732051}, {"x": 5, "y": 5}, {"x": 7, "y": 5.44949}]}],
+            "lines": [{"from": {"x": 2, "y": 2}, "to": {"x": 7, "y": 7}, "label": "y=x", "kind": "guide", "dashed": True}],
+            "points": [{"x": 5, "y": 5, "label": "P"}],
+            "annotations": [{"x": 3.1, "y": 9.3, "text": "P=(5,5), OP=5√2"}],
+        },
+    },
+    {
+        "caseId": "h1-21-geumdang-2final-q04-radical-translation",
+        "sourceJsPath": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js",
+        "id": 4,
+        "assetRef": "assets/images/21_금당고_2학기_기말_고1_기출/q04-solution.svg",
+        "visualKind": "RADICAL_GRAPH",
+        "factSummary": "y=sqrt(2-2x)+4=sqrt(-2(x-1))+4, endpoint (1,4), translated y=sqrt(-2x)",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-5, 5], "yRange": [-2, 8],
+            "curves": [{"points": [{"x": -5, "y": 7.464102}, {"x": -3, "y": 6.828427}, {"x": -1, "y": 6}, {"x": 0, "y": 5.414214}, {"x": 1, "y": 4}]}],
+            "points": [{"x": 1, "y": 4, "label": "V"}],
+            "annotations": [{"x": -4.5, "y": 1.2, "text": "right 1, up 4"}, {"x": -4.5, "y": -0.8, "text": "a=−2,m=1,n=4"}],
+        },
+    },
+    {
+        "caseId": "h1-21-palmas-2final-q05-rational-inverse-translation",
+        "sourceJsPath": "original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js",
+        "id": 5,
+        "assetRef": "assets/images/21_팔마고_2학기_기말_고1_기출/q05-solution.svg",
+        "visualKind": "RATIONAL_GRAPH",
+        "factSummary": "f=3+7/(x-2), inverse=2+7/(x-3), shift right 1 and down 1, ab=-1",
+        "spec": {
+            "version": "0.1", "type": "simple_function_graph", "width": 540, "height": 540,
+            "xRange": [-6, 8], "yRange": [-6, 18],
+            "asymptotes": [{"x": 2, "label": "f: x=2"}, {"y": 3, "label": "f: y=3"}, {"x": 3, "label": "f⁻¹: x=3"}, {"y": 2, "label": "f⁻¹: y=2"}],
+            "curves": [{"points": [{"x": -6, "y": 2.125}, {"x": -2, "y": 1.25}, {"x": 0, "y": -0.5}, {"x": 1, "y": -4}]}, {"points": [{"x": 2.5, "y": 17}, {"x": 4, "y": 6.5}, {"x": 5, "y": 5.333333}, {"x": 8, "y": 4.166667}]}, {"points": [{"x": -6, "y": 1.222222}, {"x": -2, "y": 0.6}, {"x": 0, "y": -0.333333}, {"x": 2, "y": -5}]}, {"points": [{"x": 3.5, "y": 16}, {"x": 4, "y": 9}, {"x": 5, "y": 5.5}, {"x": 8, "y": 3.4}]}],
+            "points": [{"x": 0, "y": -0.5, "label": "f(0)"}],
+            "annotations": [{"x": -5.5, "y": 6.8, "text": "f: 3+7/(x−2)"}, {"x": -5.5, "y": -4.5, "text": "f⁻¹: 2+7/(x−3)"}],
+        },
+    },
+]
+
+
 def fact_hash(case: dict) -> str:
     payload = json.dumps({"caseId": case["caseId"], "factSummary": case["factSummary"], "spec": case["spec"]}, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
@@ -620,6 +948,36 @@ def validate_math(case: dict) -> None:
     elif case_id == "h1-24-maesan-2final-q23-inverse-area":
         _check_curve(curves[0], lambda x: (3 * x + 4) ** 0.5, "maesan23.f")
         _check_curve(curves[1], lambda x: (x ** 2 - 4) / 3, "maesan23.finverse")
+    elif case_id == "h1-25-hyocheon-2final-q08-radical-quadrants":
+        _check_curve(curves[0], lambda x: -(2 - x) ** 0.5 + 4, "hyocheon08.radical")
+    elif case_id == "h1-25-hyocheon-2final-q11-radical-inverse-point":
+        _check_curve(curves[0], lambda x: (2 * x - 5) ** 0.5 + 2, "hyocheon11.f")
+        _check_curve(curves[1], lambda x: (x - 2) ** 2 / 2 + 2.5, "hyocheon11.finverse")
+    elif case_id == "h1-25-palmas-2final-q11-inverse-tangent":
+        _check_curve(curves[0], lambda x: x ** 2 - 6 * x + 49 / 4, "palma11.f")
+        _check_curve(curves[1], lambda x: 3 + (x - 13 / 4) ** 0.5, "palma11.finverse")
+    elif case_id == "h1-21-bokseong-2final-q03-rational-asymptotes":
+        _check_curve(curves[0], lambda x: (-4 * x + 8) / (2 * x - 3), "bokseong03.left")
+        _check_curve(curves[1], lambda x: (-4 * x + 8) / (2 * x - 3), "bokseong03.right")
+    elif case_id == "h1-21-gangnam-2final-q03-rational-center":
+        _check_curve(curves[0], lambda x: (2 * x - 3) / (x - 1), "gangnam03.left")
+        _check_curve(curves[1], lambda x: (2 * x - 3) / (x - 1), "gangnam03.right")
+    elif case_id == "h1-21-suncheon-2final-q08-radical-line-range":
+        _check_curve(curves[0], lambda x: (2 * x + 4) ** 0.5, "suncheon08.radical")
+        _check_curve(curves[1], lambda x: x + 2.2, "suncheon08.line")
+    elif case_id == "h1-21-suncheon-2final-q11-radical-inverse-distance":
+        _check_curve(curves[0], lambda x: (x - 3) ** 0.5 + 3, "suncheon11.f")
+        _check_curve(curves[1], lambda x: (x - 3) ** 2 + 3, "suncheon11.finverse")
+    elif case_id == "h1-21-geumdang-2final-q08-inverse-point":
+        _check_curve(curves[0], lambda x: (x - 3) ** 2 + 1, "geumdang08.f")
+        _check_curve(curves[1], lambda x: 3 + (x - 1) ** 0.5, "geumdang08.finverse")
+    elif case_id == "h1-21-geumdang-2final-q04-radical-translation":
+        _check_curve(curves[0], lambda x: (2 - 2 * x) ** 0.5 + 4, "geumdang04.radical")
+    elif case_id == "h1-21-palmas-2final-q05-rational-inverse-translation":
+        _check_curve(curves[0], lambda x: 3 + 7 / (x - 2), "palma05.f")
+        _check_curve(curves[1], lambda x: 3 + 7 / (x - 2), "palma05.f.right")
+        _check_curve(curves[2], lambda x: 2 + 7 / (x - 3), "palma05.finverse.left")
+        _check_curve(curves[3], lambda x: 2 + 7 / (x - 3), "palma05.finverse.right")
 
     x_low, x_high = case["spec"]["xRange"]
     y_low, y_high = case["spec"]["yRange"]
@@ -638,7 +996,7 @@ def validate_math(case: dict) -> None:
 
 def main() -> None:
     summary = {"status": "PASS", "renderer": "alive.engine.visual_renderer", "cases": []}
-    for case in PILOT_CASES + BATCH2_CASES + BATCH3_CASES:
+    for case in PILOT_CASES + BATCH2_CASES + BATCH3_CASES + BATCH4_CASES + BATCH5_CASES:
         validate_math(case)
         svg = render_visual_spec(case["spec"])
         graph_hash = fact_hash(case)

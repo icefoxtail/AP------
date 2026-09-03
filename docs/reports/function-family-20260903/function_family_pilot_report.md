@@ -2,9 +2,9 @@
 
 ## 상태
 
-`BATCH3_UPGRADE_READY_FOR_USER_REVIEW`
+`BATCH5_UPGRADE_READY_FOR_USER_REVIEW`
 
-전체 단원 봉인 완료가 아니라, 기준 문서에 따른 초기 전수 진단과 그래프 누락 우선순위 1·2·3차 파일럿 23문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
+전체 단원 봉인 완료가 아니라, 기준 문서에 따른 초기 전수 진단과 그래프 누락 우선순위 1·2·3·4·5차 파일럿 43문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
 
 ## 기준
 
@@ -84,6 +84,36 @@ Batch 3에서 다음 8문항에 해설 SVG를 추가했다.
 - 23 강남여고 2학기 기말 q24 — 무리함수와 직선의 기울기 범위
 - 24 매산여고 2학기 기말 q23 — 함수·역함수와 삼각형 넓이
 
+## Batch 4 추가 문항
+
+Batch 4에서 다음 10문항에 해설 SVG를 추가했다.
+
+- 25 금당고 2학기 기말 q9 — 유리함수 점근선·주어진 점
+- 25 팔마고 2학기 기말 q14 — 반비례 함수의 정의역·치역
+- 24 매산여고 2학기 기말 q3 — 유리함수 평행이동
+- 24 매산여고 2학기 기말 q5 — 유리함수 점근선·중심
+- 24 매산여고 2학기 기말 q7 — 절댓값 유리함수의 교점 개수
+- 23 강남여고 2학기 기말 q6 — 평행이동한 무리함수의 사분면
+- 23 금당고 2학기 기말 q20 — 무리함수와 평행 직선의 교점 개수
+- 24 금당고 2학기 기말 q18 — 유리함수와 무리함수의 교점
+- 25 금당고 2학기 기말 q15 — 함수·역함수의 두 교점
+- 25 제일고 2학기 기말 q14 — 두 유리함수 점근선 직사각형
+
+## Batch 5 추가 문항
+
+Batch 5에서 다음 10문항에 해설 SVG를 추가했다.
+
+- 25 효천고 2학기 기말 q8 — 무리함수 사분면
+- 25 효천고 2학기 기말 q11 — 무리함수·역함수 교점
+- 25 팔마고 2학기 기말 q11 — 함수·역함수 접점
+- 21 복성고 2학기 기말 q3 — 유리함수 점근선
+- 21 강남여고 2학기 기말 q3 — 유리함수 중심
+- 21 순천고 2학기 기말 q8 — 무리함수·직선 교점
+- 21 순천고 2학기 기말 q11 — 무리함수·역함수 교점
+- 21 금당고 2학기 기말 q8 — 함수·역함수 교점
+- 21 금당고 2학기 기말 q4 — 무리함수 평행이동
+- 21 팔마고 2학기 기말 q5 — 유리함수·역함수 평행이동
+
 ## 검증 결과
 
 - Python deterministic renderer 생성: 5/5 PASS
@@ -116,10 +146,16 @@ Batch 3에서 다음 8문항에 해설 SVG를 추가했다.
 - [Batch 2 수치 검증·생성 ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_pilot_graphs.json>)
 - [Batch 3 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch3_attachment_ledger.json>)
 - [Batch 3 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch3_render_matrix.md>)
+- [Batch 4 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch4_attachment_ledger.json>)
+- [Batch 4 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch4_render_matrix.md>)
+- [Batch 4 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v8/function_family_summary.md>)
+- [Batch 5 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch5_attachment_ledger.json>)
+- [Batch 5 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch5_render_matrix.md>)
+- [Batch 5 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v9/function_family_summary.md>)
 
 ## 독립 재검수 대기 항목
 
-이번 결과는 Batch 3 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
+이번 결과는 Batch 5 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
 
 1. 각 그래프의 수학적 위치·교점·축·범위가 원문과 정확히 대응하는지
 2. 그래프가 답을 불필요하게 노출하지 않는지
@@ -128,4 +164,4 @@ Batch 3에서 다음 8문항에 해설 SVG를 추가했다.
 5. 유리함수의 점근선·중심·원의 교점이 정확한지
 6. 해설 SVG를 실제로 추가해야 하는 후보와 `KEEP`/`OPTIONAL` 후보의 분류가 적절한지
 
-독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3만으로 전체 단원을 `SEALED`로 선언하지 않는다.
+독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3·4·5만으로 전체 단원을 `SEALED`로 선언하지 않는다.
