@@ -2,9 +2,9 @@
 
 ## 상태
 
-`BATCH11_UPGRADE_READY_FOR_USER_REVIEW`
+`BATCH12_UPGRADE_READY_FOR_USER_REVIEW`
 
-전체 단원 봉인 완료가 아니라, 기준 문서에 따른 전수 진단과 그래프 누락 우선순위 1·2·3·4·5·6·7·8·9·10·11차 파일럿 101문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
+전체 단원 봉인 완료가 아니라, 기준 문서에 따른 전수 진단과 그래프 누락 우선순위 1·2·3·4·5·6·7·8·9·10·11·12차 파일럿 111문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
 
 ## 기준
 
@@ -14,9 +14,9 @@
 - 유사문항: 제외
 - 수정 허용 범위: `solutionImage`와 해설용 SVG metadata만
 
-## Batch 11 후 최신 전수 재진단
+## Batch 12 후 최신 전수 재진단
 
-`original` 원본 522문항만 대상으로 Batch 11 적용 후 재계산한 현황은 다음과 같다.
+`original` 원본 522문항만 대상으로 Batch 12 적용 후 재계산한 현황은 다음과 같다.
 
 | 항목 | 수량 |
 |---|---:|
@@ -24,7 +24,7 @@
 | target 시험지 | 50 |
 | 문제 이미지 | 96 |
 | 문제 시각요소(index 기준) | 98 |
-| 해설 이미지 | 102 |
+| 해설 이미지 | 112 |
 | 깨진 문제 이미지 참조 | 0 |
 | 깨진 해설 이미지 참조 | 0 |
 
@@ -33,11 +33,11 @@
 | 자동 분류 | 수량 |
 |---|---:|
 | `PRIORITY_1_GRAPH_GAP_CANDIDATE` | 88 |
-| `PRIORITY_1_EXPLICIT_GRAPH_CANDIDATE` | 52 |
-| `PRIORITY_2_GRAPH_RELATION_CANDIDATE` | 12 |
-| `PRIORITY_2_GRAPH_SUBUNIT_CANDIDATE` | 55 |
-| `TRIAGE_NO_GRAPH_SIGNAL` | 213 |
-| `SOLUTION_VISUAL_PRESENT` | 102 |
+| `PRIORITY_1_EXPLICIT_GRAPH_CANDIDATE` | 47 |
+| `PRIORITY_2_GRAPH_RELATION_CANDIDATE` | 10 |
+| `PRIORITY_2_GRAPH_SUBUNIT_CANDIDATE` | 53 |
+| `TRIAGE_NO_GRAPH_SIGNAL` | 212 |
+| `SOLUTION_VISUAL_PRESENT` | 112 |
 
 `similar`를 포함하면 602건으로 보이지만, 그중 80건은 이번 범위 밖이다. 최종 scope는 문서 규정대로 `original` 522건만 사용한다.
 
@@ -55,7 +55,7 @@
 
 그래프는 자유형 SVG가 아니라 기존 결정적 renderer를 사용했다. 각 자산에는 `data-fact-hash`와 `data-visual-provenance`를 기록했다.
 
-Batch 1·2·3·4·5·6·7·8·9·10·11 적용 후 원본 target의 `solutionImage` 연결은 102개다. 이 수량은 자동 후보의 최종 `VISUAL_REQUIRED` 수량이 아니라 현재까지 실제로 추가·검증한 해설 자산 수량이다.
+Batch 1·2·3·4·5·6·7·8·9·10·11·12 적용 후 원본 target의 `solutionImage` 연결은 112개다. 이 수량은 자동 후보의 최종 `VISUAL_REQUIRED` 수량이 아니라 현재까지 실제로 추가·검증한 해설 자산 수량이다.
 
 ## Batch 2 추가 문항
 
@@ -203,9 +203,24 @@ Batch 11에서 다음 9문항에 해설 SVG를 추가했다.
 - 22 복성고 2학기 기말 q21 — 조각 유리함수·삼각형 넓이
 - 22 팔마고 2학기 중간 q22 — 이차함수·역함수 두 교점
 
+## Batch 12 추가 문항
+
+Batch 12에서 다음 10문항에 해설 SVG를 추가했다.
+
+- 25 팔마고 2학기 기말 q20 — 정의역 제한 이차함수
+- 25 순천고 2학기 기말 q15 — 이차함수·역함수 두 교점
+- 25 효천고 2학기 기말 q22 — 유리함수·수선 길이 최솟값
+- 22 팔마고 2학기 중간 q12 — 함수·역함수 둘레 넓이
+- 22 효천고 2학기 중간 q22 — 절댓값함수·직선 교점 개수
+- 22 순천여고 2학기 중간 q16 — 조각함수·역함수
+- 22 순천여고 2학기 중간 q17 — 합성함수 구간 최솟값
+- 22 금당고 2학기 중간 q11 — 절댓값 합성식의 세 근
+- 21 효천고 2학기 기말 q12 — 절댓값 무리함수 교점 개수
+- 21 효천고 2학기 기말 q13 — 조각 무리함수·직선 넓이
+
 ## 검증 결과
 
-- Python deterministic renderer 생성: 101/101 PASS
+- Python deterministic renderer 생성: 111/111 PASS
 - source JS syntax: 3/3 PASS
 - SVG XML/viewBox/fact-hash/금지 토큰 검사: 5/5 PASS
 - 보호 payload parity: 5/5 PASS
@@ -223,6 +238,8 @@ Batch 9의 9개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 10개
 Batch 10의 8개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 10개가 모두 `complete=true`, natural size 양수로 로드되었으며 broken image 0, render error 없음, data load error 없음으로 확인했다. 상세 결과는 [Batch 10 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch10_render_matrix.md>)에 고정했다.
 
 Batch 11의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개가 모두 `complete=true`, natural size 양수로 로드되었으며 broken image 0, render error 없음, data load error 없음으로 확인했다. 상세 결과는 [Batch 11 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch11_render_matrix.md>)에 고정했다.
+
+Batch 12의 8개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 10개가 모두 `complete=true`, natural size 양수로 로드되었으며 broken image 0, render error 없음, data load error 없음으로 확인했다. 상세 결과는 [Batch 12 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch12_render_matrix.md>)에 고정했다.
 
 | 시험지 | exam | solution | answer | broken image | render error | last question |
 |---|---|---|---|---:|---|---|
@@ -269,6 +286,9 @@ Batch 11의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개
 - [Batch 11 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch11_attachment_ledger.json>)
 - [Batch 11 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch11_render_matrix.md>)
 - [Batch 11 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v16/function_family_summary.md>)
+- [Batch 12 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch12_attachment_ledger.json>)
+- [Batch 12 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch12_render_matrix.md>)
+- [Batch 12 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v17/function_family_summary.md>)
 
 ## SOURCE_REVIEW 보류
 
@@ -276,7 +296,7 @@ Batch 11의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개
 
 ## 독립 재검수 대기 항목
 
-이번 결과는 Batch 11 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
+이번 결과는 Batch 12 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
 
 1. 각 그래프의 수학적 위치·교점·축·범위가 원문과 정확히 대응하는지
 2. 그래프가 답을 불필요하게 노출하지 않는지
@@ -285,4 +305,4 @@ Batch 11의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개
 5. 유리함수의 점근선·중심·원의 교점이 정확한지
 6. 해설 SVG를 실제로 추가해야 하는 후보와 `KEEP`/`OPTIONAL` 후보의 분류가 적절한지
 
-독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3·4·5·6·7·8·9·10·11만으로 전체 단원을 `SEALED`로 선언하지 않는다.
+독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3·4·5·6·7·8·9·10·11·12만으로 전체 단원을 `SEALED`로 선언하지 않는다.

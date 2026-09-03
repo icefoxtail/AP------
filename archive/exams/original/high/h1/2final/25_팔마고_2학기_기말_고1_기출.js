@@ -681,6 +681,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$0$",
     "solution":"[키포인트] 이차함수를 꼭짓점의 위치와 기울기 변화로 분석해 정의역과 치역을 비교한다.\n\n$f(x)=-(x-2)^2+4$의 그래프는 꼭짓점이 $(2,4)$이고 $x\\le2$에서 증가한다. 정의역이 $(-\\infty,k]$일 때 $k>2$이면 꼭짓점의 양쪽을 모두 포함하므로 같은 함수값을 만드는 두 $x$가 생겨 일대일이 아니다. 따라서 일대일이 되려면\n$k\\le2$\n이어야 한다.\n\n$k\\le2$이면 정의역 전체가 꼭짓점의 왼쪽에 있으므로 $x$가 커질수록 $f(x)$가 커진다. 또 $x$를 충분히 작게 하면 $(x-2)^2$가 제한 없이 커져 $f(x)$는 제한 없이 작아진다. 따라서 이 정의역에서의 치역은\n$(-\\infty,f(k)]$\n이다.\n\n공역 $X=(-\\infty,k]$와 치역이 같아야 하므로 가장 큰 함수값이 같아야 한다. 따라서\n$f(k)=k$\n이고,\n$-(k-2)^2+4=k$\n이다. 정리하면\n$-k^2+4k=k,\\quad k(k-3)=0$\n이므로 $k=0$ 또는 $k=3$이다. 이 중 일대일 조건 $k\\le2$를 만족하는 것은 $k=0$뿐이다.\n\n따라서 구하는 값은 $0$이다.",
+
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q20-solution.svg",
+
+    "solutionImageAlt": "정의역 제한 이차함수의 그래프를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=0에서 f=−(x−2)²+4가 x≤0에서 일대일대응임을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

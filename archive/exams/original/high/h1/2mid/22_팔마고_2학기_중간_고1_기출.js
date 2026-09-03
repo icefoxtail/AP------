@@ -406,6 +406,14 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 함수와 역함수의 그래프는 $y=x$에 대칭이므로 한쪽 부분의 넓이를 구해 두 배 한다.\n조건 정리: $f$의 그래프와 $y=x$의 교점은 $(-2,-2)$와 $(3,3)$이고, 조각이 바뀌는 점은 $(0,1)$이다.\n풀이 방향: 세 점 $(-2,-2),(0,1),(3,3)$이 만드는 삼각형의 넓이를 구한다.\n정석 풀이: $f$의 그래프와 $y=x$ 사이의 한쪽 부분은 세 점 $(-2,-2),(0,1),(3,3)$을 꼭짓점으로 하는 삼각형이다. $y=x$ 위의 두 점 $(-2,-2)$, $(3,3)$ 사이의 거리는 $5\\sqrt{2}$이고, 점 $(0,1)$과 직선 $y=x$사이의 거리는 $\\dfrac{1}{\\sqrt{2}}$이다. 따라서 이 삼각형의 넓이는 $\\dfrac{1}{2}\\cdot5\\sqrt{2}\\cdot\\dfrac{1}{\\sqrt{2}}=\\dfrac{5}{2}$이다. 역함수의 그래프로 생기는 부분은 $y=x$에 대하여 대칭인 합동인 삼각형이므로 전체 넓이는 $2\\cdot\\dfrac{5}{2}=5$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "함수와 역함수로 둘러싸인 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "두 그래프의 교점과 분기점 (−2,−2), (0,1), (3,3)을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",

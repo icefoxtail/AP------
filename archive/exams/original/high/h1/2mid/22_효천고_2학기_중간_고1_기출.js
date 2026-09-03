@@ -732,6 +732,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$a=5$",
     "solution": "[키포인트] 절댓값함수의 네 선분과 직선의 교점 수를 구한 뒤 $f(a)=g(a)$를 만족하는 값을 찾는다.\n조건 정리: $0\\le x\\le6$에서 $f(x)=\\left||-2x+6|-4\\right|$이고 직선은 $y=\\frac{1}{3}x+k$이다.\n풀이 방향: 각 선분에서 $f(x)-\\frac{1}{3}x$의 값의 범위를 구하여 $g(k)$를 정하고, $a$의 구간별로 $f(a)$와 $g(a)$를 비교한다.\n정석 풀이: $f(x)$는 차례로 $2-2x$ $(0\\le x\\le1)$, $2x-2$ $(1\\le x\\le3)$, $10-2x$ $(3\\le x\\le5)$, $2x-10$ $(5\\le x\\le6)$이다. 각 선분의 교점 존재 범위는 각각 $-\\frac{1}{3}\\le k\\le2$, $-\\frac{1}{3}\\le k\\le3$, $-\\frac{5}{3}\\le k\\le3$, $-\\frac{5}{3}\\le k\\le0$이다. 끝점 중복을 한 번만 세면 $g(0)=4$, $0<k\\le2$에서 $g(k)=3$, $2<k<3$에서 $g(k)=2$, $g(3)=1$, $k>3$에서 $g(k)=0$이다. 이제 $a=0$이면 $f(a)=2\\ne4=g(a)$이다. $0<a\\le2$에서는 $f(a)\\le2<3=g(a)$이고, $2<a<3$에서는 $f(a)=2a-2>2=g(a)$이다. $a=3$에서도 $f(3)=4\\ne1=g(3)$이다. $a>3$에서는 $g(a)=0$이므로 $f(a)=0$이어야 한다. $f$의 영점은 $1,5$이지만 이 구간에 속하는 값은 $5$뿐이다.\n따라서 조건을 만족하는 값은 $a=5$이다.",
+
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "절댓값함수와 직선의 교점 개수를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "k=5인 직선과 네 선분이 만나지 않아 g(5)=0임을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
