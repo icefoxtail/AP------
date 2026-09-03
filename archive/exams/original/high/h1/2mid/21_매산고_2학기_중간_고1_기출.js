@@ -57,7 +57,7 @@ window.questionBank = [
       "포함관계"
     ],
     "wide": false,
-    "content": "서로 다른 두 집합 $A,B$에 대하여 $A-B^c=A$일 때, 다음 중 옳지 않은 것은? [3.9점]",
+    "content": "전체집합 $U$의 서로 다른 두 부분집합 $A,B$에 대하여 $A-B^c=A$일 때, 다음 중 옳지 않은 것은? [3.9점]",
     "choices": [
       "$A\\cap B=A$",
       "$A\\cup B=B$",

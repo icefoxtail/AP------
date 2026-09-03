@@ -16,7 +16,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "두 집합 $A,B$에 대하여 다음이 성립할 때, $A,B$ 사이의 포함관계를 벤 다이어그램으로 옳게 나타낸 것은? [2.1점]<br>$\\{(A^C\\cup B^C)\\cap(A\\cup B^C)\\}\\cap A=\\varnothing$",
+    "content": "전체집합 $U$의 두 부분집합 $A,B$에 대하여 다음이 성립할 때, $A,B$ 사이의 포함관계를 벤 다이어그램으로 옳게 나타낸 것은? [2.1점]<br>$\\{(A^C\\cup B^C)\\cap(A\\cup B^C)\\}\\cap A=\\varnothing$",
     "choices": [],
     "answer": "①",
     "solution": "[키포인트] 주어진 식을 $A$와의 교집합부터 정리하여 포함관계로 바꾼다.\n주어진 식은 $A\\cap(A^C\\cup B^C)\\cap(A\\cup B^C)=(A\\cap B^C)\\cap(A\\cup B^C)=A\\cap B^C$이다.\n따라서 주어진 조건은 $A\\cap B^C=\\varnothing$과 같다.\n즉 $A$의 원소 중 $B$에 속하지 않는 원소가 없으므로 $A\\subseteq B$이다.\n따라서 이를 나타낸 벤 다이어그램은 ①이다.\n따라서 정답은 ①이다.",
