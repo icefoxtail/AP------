@@ -240,7 +240,7 @@ window.questionBank = [
       "$-36$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 2x-y+1=0, 2x-y+k=0은 평행하므로 거리는\n\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k-1|}{\\sqrt5}이다.\n이 값이 \\sqrt5이므로 |k-1|=5이다. 따라서 k=6 또는 k=-4이고, 두 값의 곱은 -24이다.\n\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 $2x-y+1=0$, $2x-y+k=0$은 평행하므로 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k-1|}{\\sqrt5}$이다.\n이 값이 $\\sqrt5$이므로 $|k-1|=5$이다. 따라서 $k=6$ 또는 $k=-4$이고, 두 값의 곱은 $-24$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",

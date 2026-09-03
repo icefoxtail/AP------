@@ -476,6 +476,7 @@ templateKey: COMBINATION_AT_LEAST_ONE
 | H15-SA-10 | 직선의 방정식 | 10 |
 | H15-SA-11 | 원의 방정식 | 11 |
 | H15-SA-12 | 도형의 이동 | 12 |
+| H15-SA-13 | 이차함수 | 13 |
 
 ### 수학(하) (H15-SB)
 

@@ -11,6 +11,7 @@ const read = (name) => JSON.parse(fs.readFileSync(path.join(evidenceDir, name), 
 const sha = (value) => crypto.createHash('sha256').update(value).digest('hex');
 const target = read('final_target_manifest.json');
 const a = read('a_math_education_summary.json');
+const rawLatex = read('raw_latex_gate.json');
 const b = read('b_semantic_svg_summary.json');
 const c = read('c_browser_summary.json');
 const parity = read('production_parity_summary.json');
@@ -20,11 +21,13 @@ const assetExpected = new Set(target.rows.map((row) => row.solutionImageRef).fil
 const assetObserved = b.observedAssetCount;
 const gates = {
   targetScope: target.targetCountObserved === target.targetCountExpected,
+  rawLatex: rawLatex.status === 'PASS',
   A: a.status === 'PASS' && agents.A?.status === 'PASS',
   B: b.status === 'PASS' && assetObserved === assetExpected,
   C: c.status === 'PASS',
   productionParity: parity.status === 'PASS',
   diffLock: diffLock.status === 'PASS',
+  independentAgents: agents.status === 'PASS' || agents.status === 'PASS_WITH_FULL_SCOPE_CARRY_FORWARD_AND_FRESH_PINPOINT' || agents.status === 'PASS_WITH_CARRY_FORWARD_AND_FRESH_PINPOINT',
 };
 const geometryPass = Object.values(gates).every(Boolean);
 const final = {
@@ -41,6 +44,11 @@ const final = {
   globalCi: parity.globalCi,
   evidenceDigest: sha(JSON.stringify({ target, a, b, c, parity, agents })),
 };
-fs.writeFileSync(path.join(evidenceDir, 'mother_final_seal.json'), JSON.stringify(final, null, 2) + '\n', 'utf8');
-fs.writeFileSync(path.join(evidenceDir, 'mother_final_seal.md'), `# Mother Final Seal — 고1 도형의 방정식 v2.3\n\n- 상태: **${final.status}**\n- 대상: ${final.targetCount}/${final.expectedTargetCount}\n- SVG: ${final.assetCount}/${final.expectedAssetCount}\n- RELEASE_ARTIFACT_SHA: \`${final.releaseArtifactSha}\`\n- REVIEW_EVIDENCE_SHA: \`${final.reviewEvidenceSha}\`\n- SEAL_BUNDLE_SHA: \`${final.sealBundleSha}\`\n- global CI: ${final.globalCi.status}\n`, 'utf8');
+const atomicWrite = (file, contents) => {
+  const temp = `${file}.external-review.tmp`;
+  fs.writeFileSync(temp, contents, 'utf8');
+  fs.renameSync(temp, file);
+};
+atomicWrite(path.join(evidenceDir, 'mother_final_seal.json'), JSON.stringify(final, null, 2) + '\n');
+atomicWrite(path.join(evidenceDir, 'mother_final_seal.md'), `# Mother Final Seal — 고1 도형의 방정식 v2.3\n\n- 상태: **${final.status}**\n- 대상: ${final.targetCount}/${final.expectedTargetCount}\n- SVG: ${final.assetCount}/${final.expectedAssetCount}\n- RELEASE_ARTIFACT_SHA: \`${final.releaseArtifactSha}\`\n- REVIEW_EVIDENCE_SHA: \`${final.reviewEvidenceSha}\`\n- SEAL_BUNDLE_SHA: \`${final.sealBundleSha}\`\n- global CI: ${final.globalCi.status}\n`);
 console.log(JSON.stringify(final, null, 2));

@@ -16,7 +16,11 @@ const shaFile = (file) => sha(fs.readFileSync(file));
 const rel = (file) => path.relative(ROOT, file).replaceAll("\\", "/");
 const archiveRel = (file) => path.relative(ARCHIVE, file).replaceAll("\\", "/");
 const readJson = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
-const writeJson = (file, value) => fs.writeFileSync(file, JSON.stringify(value, null, 2) + "\n", "utf8");
+const writeJson = (file, value) => {
+  const temp = `${file}.external-review.tmp`;
+  fs.writeFileSync(temp, JSON.stringify(value, null, 2) + "\n", "utf8");
+  fs.renameSync(temp, file);
+};
 const exists = (file) => fs.existsSync(file) && fs.statSync(file).isFile();
 
 fs.mkdirSync(EVIDENCE, { recursive: true });
@@ -109,6 +113,93 @@ const answerComparable = (row, actual) => {
 const answerMismatches = (crosscheckRows || []).flatMap((row) => answerComparable(row, currentByUid.get(row.questionUid)) ? [] : [{ questionUid: row.questionUid, expected: independentAnswerValue(row), actual: currentByUid.get(row.questionUid) }]);
 const answerCrosscheck = { status: crosscheckRows && crosscheckRows.length === targetRows.length && answerMismatches.length === 0 ? "PASS" : "FAIL", expected: targetRows.length, observed: crosscheckRows?.length ?? 0, mismatchCount: answerMismatches.length, mismatches: answerMismatches.slice(0, 20), basis: "independent expected-answer facts are rehashed against current source answers; this does not claim a fresh manual solve of every row" };
 
+function rawLatexOutsideMath(value) {
+  const text = String(value ?? "");
+  if ((text.match(/\$/g) || []).length % 2 !== 0) return ["UNBALANCED_MATH_DELIMITER"];
+  const outside = text.split("$").filter((_, index) => index % 2 === 0).join(" ");
+  return [...outside.matchAll(/\\(?:dfrac|frac|sqrt|left|right|cdot|times|le|ge|lt|gt|ne|begin|end|pi|alpha|beta|gamma)\b/g)].map((match) => match[0]);
+}
+
+const rawLatexHits = [];
+for (const row of targetRows) {
+  const source = loadBank(row.sourceJsPath).find((item) => Number(item.id) === row.id);
+  const hits = rawLatexOutsideMath(source?.solution);
+  if (hits.length) rawLatexHits.push({ qKey: row.qKey, hits });
+}
+const rawLatexSummary = { status: rawLatexHits.length === 0 ? "PASS" : "FAIL", checked: targetRows.length, hitCount: rawLatexHits.length, hits: rawLatexHits.slice(0, 50) };
+writeJson(path.join(EVIDENCE, "raw_latex_gate.json"), rawLatexSummary);
+
+function parseAttr(tag, name) {
+  const match = tag.match(new RegExp("\\b" + name + "=\"([^\"]+)\""));
+  return match ? Number(match[1]) : null;
+}
+
+function median(values) {
+  if (!values.length) return null;
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
+function deriveScale(text) {
+  const lineTags = [...text.matchAll(/<line\b[^>]*>/g)].map((match) => match[0]);
+  const vertical = [];
+  const horizontal = [];
+  for (const tag of lineTags) {
+    const x1 = parseAttr(tag, "x1");
+    const x2 = parseAttr(tag, "x2");
+    const y1 = parseAttr(tag, "y1");
+    const y2 = parseAttr(tag, "y2");
+    if (![x1, x2, y1, y2].every((value) => Number.isFinite(value))) continue;
+    if (Math.abs(x1 - x2) < 1e-6 && y1 <= 92.01 && y2 >= 315.99) vertical.push(x1);
+    if (Math.abs(y1 - y2) < 1e-6 && x1 <= 248.01 && x2 >= 471.99) horizontal.push(y1);
+  }
+  const distinctSteps = (values) => {
+    const sorted = [...new Set(values.map((value) => Number(value.toFixed(4))))].sort((a, b) => a - b);
+    return sorted.slice(1).map((value, index) => value - sorted[index]);
+  };
+  const scaleX = median(distinctSteps(vertical).filter((value) => value > 0));
+  const scaleY = median(distinctSteps(horizontal).filter((value) => value > 0));
+  if (scaleX !== null && scaleY !== null) {
+    const relativeError = Math.abs(scaleX - scaleY) / Math.max(scaleX, scaleY);
+    return { status: "DERIVED_FROM_GRID", scaleX, scaleY, relativeError };
+  }
+  const root = text.match(/<svg\b[^>]*>/)?.[0] || "";
+  const attrX = parseAttr(root, "data-scale-x");
+  const attrY = parseAttr(root, "data-scale-y");
+  if (Number.isFinite(attrX) && Number.isFinite(attrY) && attrX > 0 && attrY > 0) {
+    const relativeError = Math.abs(attrX - attrY) / Math.max(attrX, attrY);
+    return { status: "DERIVED_FROM_EXPLICIT_SCALE", scaleX: attrX, scaleY: attrY, relativeError };
+  }
+  return { status: "NO_SCALE_EVIDENCE", scaleX: null, scaleY: null, relativeError: null };
+}
+
+function stringAttr(tag, name) {
+  const match = tag.match(new RegExp("\\b" + name + "=\"([^\"]+)\""));
+  return match ? match[1] : null;
+}
+
+function lineResidual(text, equation, coefficients) {
+  const tag = [...text.matchAll(/<line\b[^>]*>/g)].map((match) => match[0]).find((line) => stringAttr(line, "data-equation") === equation);
+  const root = text.match(/<svg\b[^>]*>/)?.[0] || "";
+  const frameValues = ["data-coordinate-x-min", "data-coordinate-x-max", "data-coordinate-y-min", "data-coordinate-y-max", "data-plot-left", "data-plot-top", "data-plot-width", "data-plot-height"].map((name) => parseAttr(root, name));
+  if (!tag || frameValues.some((value) => !Number.isFinite(value))) return { status: "NO_GEOMETRY_PROVENANCE", equation, maxResidual: null, slope: null };
+  const [xMin, xMax, yMin, yMax, left, top, width, height] = frameValues;
+  const px1 = parseAttr(tag, "x1");
+  const py1 = parseAttr(tag, "y1");
+  const px2 = parseAttr(tag, "x2");
+  const py2 = parseAttr(tag, "y2");
+  if (![px1, py1, px2, py2].every((value) => Number.isFinite(value))) return { status: "NONFINITE_ENDPOINT", equation, maxResidual: null, slope: null };
+  const point = (px, py) => ({ x: xMin + ((px - left) / width) * (xMax - xMin), y: yMax - ((py - top) / height) * (yMax - yMin) });
+  const first = point(px1, py1);
+  const second = point(px2, py2);
+  const residual = (p) => coefficients.a * p.x + coefficients.b * p.y + coefficients.c;
+  const maxResidual = Math.max(Math.abs(residual(first)), Math.abs(residual(second)));
+  const slope = Math.abs(second.x - first.x) < 1e-9 ? null : (second.y - first.y) / (second.x - first.x);
+  const expectedSlope = -coefficients.a / coefficients.b;
+  const slopeError = slope === null ? Infinity : Math.abs(slope - expectedSlope);
+  return { status: maxResidual <= 0.01 && slopeError <= 0.01 ? "PASS" : "FAIL", equation, endpoints: [first, second], maxResidual, slope, expectedSlope, slopeError };
+}
+
 const assetRefs = [...new Set(targetRows.map((row) => row.solutionImageRef).filter(Boolean))].sort();
 const svgChecks = [];
 for (const assetRef of assetRefs) {
@@ -119,9 +210,11 @@ for (const assetRef of assetRefs) {
   const finite = !/NaN|Infinity|-Infinity/.test(text);
   const xmlShape = /^<svg\b/.test(text) && text.includes("</svg>") && (text.match(/<svg\b/g) || []).length === 1;
   const forbidden = [...FORBIDDEN_SOLUTION, ...FORBIDDEN_INTERNAL].filter((term) => text.includes(term));
-  const equalScale = text.includes('data-scale-policy="EQUAL_SCALE_REQUIRED"') ? true : true;
+  const policy = (text.match(/data-scale-policy="([^"]+)"/) || [])[1] || null;
+  const scale = deriveScale(text);
+  const equalScale = policy === "EQUAL_SCALE_REQUIRED" ? scale.status !== "NO_SCALE_EVIDENCE" && scale.relativeError <= 0.005 : true;
   const pointProvenance = pointPairs.length === provenanceCount;
-  const check = { assetRef, exists: exists(file), bytes: exists(file) ? fs.statSync(file).size : 0, sha256: exists(file) ? shaFile(file) : null, xmlShape, finite, pointCount: pointPairs.length, provenanceCount, pointProvenance, equalScale, forbidden, status: exists(file) && xmlShape && finite && pointProvenance && equalScale && forbidden.length === 0 ? "PASS" : "FAIL" };
+  const check = { assetRef, exists: exists(file), bytes: exists(file) ? fs.statSync(file).size : 0, sha256: exists(file) ? shaFile(file) : null, xmlShape, finite, policy, pointCount: pointPairs.length, provenanceCount, pointProvenance, scale, equalScale, forbidden, status: exists(file) && xmlShape && finite && pointProvenance && equalScale && forbidden.length === 0 ? "PASS" : "FAIL" };
   svgChecks.push(check);
 }
 
@@ -135,6 +228,9 @@ const q15Key = "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통
 const q22Key = "original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js_22";
 const q20Svg = svgFor(q20Key);
 const q15Svg = svgFor(q15Key);
+const q20LineGeometry = lineResidual(q20Svg, "2x+y=2√21", { a: 2, b: 1, c: -2 * Math.sqrt(21) });
+const q15OriginalLineGeometry = lineResidual(q15Svg, "3x-y+4=0", { a: 3, b: -1, c: 4 });
+const q15MovedLineGeometry = lineResidual(q15Svg, "3x-y+11=0", { a: 3, b: -1, c: 11 });
 const semanticAssertions = {
   q20: {
     hasTriangle: /data-geometry="triangle"[^>]*data-name="triangle-AOB"/.test(q20Svg),
@@ -143,6 +239,7 @@ const semanticAssertions = {
     hasIntersections: ["R", "S"].every((label) => q20Svg.includes(`data-point-label="${label}"`) && q20Svg.includes('data-point-role="intersection"')),
     hasAreaLabels: q20Svg.includes("[AOB]=12") && q20Svg.includes("[ORS]=6"),
     equalScale: q20Svg.includes('data-scale-policy="EQUAL_SCALE_REQUIRED"'),
+    lineGeometry: q20LineGeometry.status === "PASS",
   },
   q15: {
     hasOriginalCenter: q15Svg.includes('data-center-x="2" data-center-y="-1"'),
@@ -152,6 +249,9 @@ const semanticAssertions = {
     hasMovedLine: q15Svg.includes('data-equation="3x-y+11=0"'),
     hasDistance: q15Svg.includes('data-distance="7/√10"'),
     equalScale: q15Svg.includes('data-scale-policy="EQUAL_SCALE_REQUIRED"'),
+    originalLineResidual: q15OriginalLineGeometry.status === "PASS",
+    movedLineResidual: q15MovedLineGeometry.status === "PASS",
+    parallelLineSlopes: q15OriginalLineGeometry.status === "PASS" && q15MovedLineGeometry.status === "PASS" && Math.abs(q15OriginalLineGeometry.slope - q15MovedLineGeometry.slope) <= 0.01,
   },
   q22: {
     noOutOfScopeVisibleTerms: !["법선벡터", "내적", "행렬식", "벡터"].some((term) => svgFor(q22Key).includes(term)),
@@ -171,6 +271,9 @@ const bSummary = {
   q20: semanticAssertions.q20,
   q15: semanticAssertions.q15,
   q22: semanticAssertions.q22,
+  q20LineGeometry,
+  q15OriginalLineGeometry,
+  q15MovedLineGeometry,
   checks: svgChecks,
 };
 writeJson(path.join(EVIDENCE, "b_semantic_svg_summary.json"), bSummary);
@@ -199,13 +302,14 @@ for (const row of targetRows) {
 }
 const aSummary = {
   reportType: "independent_A_math_education_final",
-  status: sourceErrors.length === 0 && solutionCopyHits.length === 0 ? "PASS" : "FAIL",
+  status: sourceErrors.length === 0 && solutionCopyHits.length === 0 && rawLatexSummary.status === "PASS" ? "PASS" : "FAIL",
   targetCountExpected: scopeRows.length,
   targetCountObserved: targetRows.length,
   answerParity: { status: answerCrosscheck.status, expected: answerCrosscheck.expected, observed: answerCrosscheck.observed, mismatchCount: answerCrosscheck.mismatchCount, mismatches: answerMismatches.slice(0, 30), basis: answerCrosscheck.basis },
   sourceErrors,
   sourceChecks,
   forbiddenSolutionCopyHits: solutionCopyHits,
+  rawLatexOutsideMath: rawLatexSummary,
   pinpointMathChecks: {
     q20Answer: "2√21",
     q15Answer: "③",
@@ -253,32 +357,50 @@ const paritySummary = {
   excludedQ352: { excludedFromGeometryScope: !targetRows.some((row) => row.sourceJsPath.includes("25_매산고") && row.id === 13), productionMetadataExpected: expectedQ13Metadata, mismatches: metadataMismatches },
   targetMetadataParity: { status: currentMetadataMismatches.length === 0 ? "PASS" : "FAIL", mismatchCount: currentMetadataMismatches.length, mismatches: currentMetadataMismatches.slice(0, 100) },
   dbJsIndex: { dbPresent: exists(path.join(ARCHIVE, "db.js")), questionIndexPresent: exists(path.join(ARCHIVE, "question-index.js")), metadataSidecarPresent: exists(path.join(ARCHIVE, "data", "question_metadata.json")), q13IndexAndSidecarSynced: metadataMismatches.length === 0 },
-  globalCi: { status: "BLOCKED_UNRELATED_H2_PROBABILITY_QCOUNT", note: "archive-unit-past-exams-collection.test.js reports h2/1mid/26_효천고_1학기_중간_고2_확률과통계 qCount 24 !== 23; no H2 file changed." },
+  globalCi: { status: "BLOCKED_UNRELATED_H2_PROBABILITY_QCOUNT", note: "local archive-unit-past-exams-collection.test.js reports h2/1mid/26_효천고_1학기_중간_고2_확률과통계: DB/JS qCount 24 vs question-index qCount 23; H2 source was not changed and this is not a GitHub Actions result." },
 };
 writeJson(path.join(EVIDENCE, "production_parity_summary.json"), paritySummary);
 
-const changedFiles = (() => {
-  try { return execFileSync("git", ["-c", "core.quotePath=false", "diff", "--name-only"], { encoding: "utf8" }).split(/\r?\n/).filter(Boolean); } catch { return []; }
+const baselineCommit = process.env.GEOMETRY_BASE_COMMIT || "11653efc07de31491ef2686b491d0cbc4e785349";
+const gitNames = (args) => {
+  try { return execFileSync("git", ["-c", "core.quotePath=false", ...args], { encoding: "utf8" }).split(/\r?\n/).filter(Boolean); } catch { return []; }
+};
+const baselineExists = (() => {
+  try { execFileSync("git", ["rev-parse", "--verify", `${baselineCommit}^{commit}`], { stdio: "ignore" }); return true; } catch { return false; }
 })();
+const workingTreeChangedFiles = baselineExists ? gitNames(["diff", "--name-only", baselineCommit]) : gitNames(["diff", "--name-only"]);
 const untrackedFiles = (() => {
   try { return execFileSync("git", ["-c", "core.quotePath=false", "ls-files", "--others", "--exclude-standard"], { encoding: "utf8" }).split(/\r?\n/).filter(Boolean); } catch { return []; }
 })();
 const preservedDirtyFiles = new Set([
   ".agent/BOOT.md", ".gitignore", "archive/question-index-audit.md", "archive/question-index-report.md",
   "apmath/js/timetable.js", "eie/js/views/eie-timetable.js", "tests/apmath-timetable-withdrawn-students.test.js", "tests/eie-timetable-withdrawn-students.test.js",
-  "archive/tools/finalize-h1-first-semester-quality.mjs",
+  "archive/tools/finalize-h1-first-semester-quality.mjs", "CODEX_RESULT.md",
+  "archive/assets/images/24_한영고_1학기_중간_고1_기출/q11.svg", "docs/evidence/high1-placeholder-repair-20260903.md",
 ]);
 const approvedDiff = (file) => file.startsWith("archive/assets/images/") && file.endsWith("-solution.svg")
   || file.startsWith("archive/exams/original/high/h1/")
   || file === "archive/data/question_metadata.json"
+  || file === "archive/data/master_tables/js_archive_tag_master.json"
+  || file === "archive/tools/build-question-index.mjs"
+  || file === "archive/engine.html"
   || file === "archive/question-index.js"
+  || file === "archive/question-index-report.md"
+  || file === "archive/question-index-audit.md"
   || file.startsWith("archive/tools/geometry-equation/")
-  || file.startsWith("docs/evidence/high1-geometry-equation/");
-const allChangedFiles = [...new Set([...changedFiles, ...untrackedFiles])].sort();
+  || file.startsWith("docs/evidence/high1-geometry-equation/")
+  || file === "docs/rules/MANIFEST.md"
+  || file.startsWith("docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md")
+  || file.startsWith("docs/rules/90_ARCHIVE/# JS아카이브 표준단원키 마스터 테이블.md");
+const allChangedFiles = [...new Set([...workingTreeChangedFiles, ...untrackedFiles])].sort();
 const unapprovedDiffFiles = allChangedFiles.filter((file) => !approvedDiff(file) && !preservedDirtyFiles.has(file));
 const diffLockSummary = {
   reportType: "external_review_diff_lock_final",
-  status: unapprovedDiffFiles.length === 0 ? "PASS" : "FAIL",
+  status: baselineExists && unapprovedDiffFiles.length === 0 ? "PASS" : "FAIL",
+  baselineCommit,
+  baselineCommitExists: baselineExists,
+  workingTreeChangedFiles,
+  untrackedFiles,
   approvedChangeClasses: ["canonical h1 source student-facing copy and eight pinpoint solutions", "current solution SVG semantic/copy/provenance/size metadata", "q13 metadata and source-sidecar-index parity", "geometry evidence and dynamic Mother seal"],
   changedFileCount: allChangedFiles.length,
   approvedChangedFileCount: allChangedFiles.filter(approvedDiff).length,
@@ -292,7 +414,10 @@ writeJson(path.join(EVIDENCE, "diff_lock_summary.json"), diffLockSummary);
 const agentReviewsPath = path.join(EVIDENCE, "independent_agent_reviews.json");
 const agentReviews = exists(agentReviewsPath) ? readJson(agentReviewsPath) : { status: "PENDING_INDEPENDENT_AGENTS", agents: [] };
 if (!exists(agentReviewsPath)) writeJson(agentReviewsPath, agentReviews);
-const browserSummary = exists(path.join(EVIDENCE, "c_browser_summary.json")) ? readJson(path.join(EVIDENCE, "c_browser_summary.json")) : { reportType: "independent_C_browser_final", status: "PENDING_BROWSER_RENDER", productionRender: { expected: assetRefs.length, observed: 0, pass: 0, fail: 0 } };
+const existingBrowserSummary = exists(path.join(EVIDENCE, "c_browser_summary.json")) ? readJson(path.join(EVIDENCE, "c_browser_summary.json")) : null;
+const browserSummary = existingBrowserSummary?.captureRuntime === "codex-in-app-browser" && existingBrowserSummary?.sourceCases?.expected === new Set(targetRows.map((row) => row.sourceJsPath)).size * 3
+  ? existingBrowserSummary
+  : { reportType: "independent_C_browser_final", status: "PENDING_REAL_BROWSER_CAPTURE", basis: "record-browser-evidence.mjs must consume browser_harness_capture.json from an actual Codex in-app browser session", captureRuntime: null, sourceCases: { expected: new Set(targetRows.map((row) => row.sourceJsPath)).size * 3, observed: 0, pass: 0, fail: 0 } };
 writeJson(path.join(EVIDENCE, "c_browser_summary.json"), browserSummary);
 
 const releaseFiles = new Set();
@@ -327,11 +452,11 @@ writeJson(path.join(EVIDENCE, "environment_render_fingerprint.json"), environmen
 
 const reviewEvidencePayload = { targetManifest, aSummary, bSummary, browserSummary, paritySummary, diffLockSummary, agentReviews, releaseArtifactSha };
 const reviewEvidenceSha = sha(JSON.stringify(reviewEvidencePayload));
-const evidenceFiles = ["final_target_manifest.json", "a_math_education_summary.json", "b_semantic_svg_summary.json", "c_browser_summary.json", "production_parity_summary.json", "diff_lock_summary.json", "independent_agent_reviews.json", "release_artifact.json", "environment_render_fingerprint.json"];
+const evidenceFiles = ["final_target_manifest.json", "a_math_education_summary.json", "raw_latex_gate.json", "b_semantic_svg_summary.json", "c_browser_summary.json", "browser_harness_capture.json", "browser_harness_recheck.json", "production_parity_summary.json", "diff_lock_summary.json", "independent_agent_reviews.json", "release_artifact.json", "environment_render_fingerprint.json"];
 const sealBundleSha = sha(JSON.stringify(evidenceFiles.sort().map((name) => ({ name, sha256: shaFile(path.join(EVIDENCE, name)) }))));
-const localGeometryPass = targetManifest.targetCountObserved === targetManifest.targetCountExpected && targetManifest.uniqueUidObserved === targetManifest.targetCountExpected && sourceErrors.length === 0 && bSummary.status === "PASS" && aSummary.status === "PASS" && paritySummary.status === "PASS" && diffLockSummary.status === "PASS";
-const agentsPass = agentReviews.status === "PASS" || agentReviews.status === "PASS_WITH_FULL_SCOPE_CARRY_FORWARD_AND_FRESH_PINPOINT" || (agentReviews.agents?.length === 3 && agentReviews.agents.every((agent) => agent.status === "PASS"));
-const browserPass = browserSummary.status === "PASS";
+const localGeometryPass = targetManifest.targetCountObserved === targetManifest.targetCountExpected && targetManifest.uniqueUidObserved === targetManifest.targetCountExpected && sourceErrors.length === 0 && rawLatexSummary.status === "PASS" && bSummary.status === "PASS" && aSummary.status === "PASS" && paritySummary.status === "PASS" && diffLockSummary.status === "PASS";
+const agentsPass = agentReviews.status === "PASS" || agentReviews.status === "PASS_WITH_FULL_SCOPE_CARRY_FORWARD_AND_FRESH_PINPOINT" || agentReviews.status === "PASS_WITH_CARRY_FORWARD_AND_FRESH_PINPOINT" || (agentReviews.agents?.length === 3 && agentReviews.agents.every((agent) => agent.status === "PASS"));
+const browserPass = browserSummary.status === "PASS" && browserSummary.captureRuntime === "codex-in-app-browser" && browserSummary.sourceCases?.expected === new Set(targetRows.map((row) => row.sourceJsPath)).size * 3 && browserSummary.sourceCases?.fail === 0;
 const finalStatus = localGeometryPass && agentsPass && browserPass ? "GEOMETRY PASS / GLOBAL_CI_BLOCKED_UNRELATED" : "REOPEN_SEAL";
 const mother = {
   reportType: "mother_final_seal_v2_2",
@@ -345,7 +470,10 @@ const mother = {
   evidenceFiles,
 };
 writeJson(path.join(EVIDENCE, "mother_final_seal.json"), mother);
-writeJson(path.join(EVIDENCE, "review_evidence_sha.json"), { REVIEW_EVIDENCE_SHA: reviewEvidenceSha, inputs: ["final_target_manifest.json", "a_math_education_summary.json", "b_semantic_svg_summary.json", "c_browser_summary.json", "production_parity_summary.json", "diff_lock_summary.json", "independent_agent_reviews.json", "release_artifact.json"] });
+writeJson(path.join(EVIDENCE, "review_evidence_sha.json"), { REVIEW_EVIDENCE_SHA: reviewEvidenceSha, inputs: ["final_target_manifest.json", "a_math_education_summary.json", "raw_latex_gate.json", "b_semantic_svg_summary.json", "c_browser_summary.json", "browser_harness_capture.json", "browser_harness_recheck.json", "production_parity_summary.json", "diff_lock_summary.json", "independent_agent_reviews.json", "release_artifact.json"] });
 writeJson(path.join(EVIDENCE, "seal_bundle_sha.json"), { SEAL_BUNDLE_SHA: sealBundleSha, files: evidenceFiles.map((name) => ({ name, sha256: shaFile(path.join(EVIDENCE, name)) })) });
-fs.writeFileSync(path.join(EVIDENCE, "mother_final_seal.md"), `# Mother Final Seal — 고1 도형의 방정식 v2.2\n\n- 상태: **${mother.status}**\n- 대상: ${mother.targetCount} UID\n- RELEASE_ARTIFACT_SHA: \`${releaseArtifactSha}\`\n- REVIEW_EVIDENCE_SHA: \`${reviewEvidenceSha}\`\n- SEAL_BUNDLE_SHA: \`${sealBundleSha}\`\n- A: ${aSummary.status}\n- B semantic SVG: ${bSummary.status} (${bSummary.passCount}/${bSummary.expectedAssetCount})\n- C browser: ${browserSummary.status}\n- production parity: ${paritySummary.status}\n- global CI: ${paritySummary.globalCi.status}\n`, "utf8");
+const motherMarkdownPath = path.join(EVIDENCE, "mother_final_seal.md");
+const motherMarkdownTemp = `${motherMarkdownPath}.external-review.tmp`;
+fs.writeFileSync(motherMarkdownTemp, `# Mother Final Seal — 고1 도형의 방정식 v2.2\n\n- 상태: **${mother.status}**\n- 대상: ${mother.targetCount} UID\n- RELEASE_ARTIFACT_SHA: \`${releaseArtifactSha}\`\n- REVIEW_EVIDENCE_SHA: \`${reviewEvidenceSha}\`\n- SEAL_BUNDLE_SHA: \`${sealBundleSha}\`\n- A: ${aSummary.status}\n- B semantic SVG: ${bSummary.status} (${bSummary.passCount}/${bSummary.expectedAssetCount})\n- C browser: ${browserSummary.status}\n- production parity: ${paritySummary.status}\n- global CI: ${paritySummary.globalCi.status}\n`, "utf8");
+fs.renameSync(motherMarkdownTemp, motherMarkdownPath);
 console.log(JSON.stringify({ status: mother.status, targetCount: targetRows.length, assetCount: assetRefs.length, releaseArtifactSha, reviewEvidenceSha, sealBundleSha, b: bSummary.status, parity: paritySummary.status, globalCi: paritySummary.globalCi.status }, null, 2));

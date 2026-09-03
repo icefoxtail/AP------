@@ -12,7 +12,8 @@
     "hasVertices": true,
     "hasIntersections": true,
     "hasAreaLabels": true,
-    "equalScale": true
+    "equalScale": true,
+    "lineGeometry": true
   },
   "q15": {
     "hasOriginalCenter": true,
@@ -21,12 +22,69 @@
     "hasOriginalLine": true,
     "hasMovedLine": true,
     "hasDistance": true,
-    "equalScale": true
+    "equalScale": true,
+    "originalLineResidual": true,
+    "movedLineResidual": true,
+    "parallelLineSlopes": true
   },
   "q22": {
     "noOutOfScopeVisibleTerms": true,
     "hasCoefficientRatio": true,
     "hasSlopeProduct": true
+  },
+  "q20LineGeometry": {
+    "status": "PASS",
+    "equation": "2x+y=2√21",
+    "endpoints": [
+      {
+        "x": 2.0825,
+        "y": 5
+      },
+      {
+        "x": 5.0825000000000005,
+        "y": -1
+      }
+    ],
+    "maxResidual": 0.00015138991168051064,
+    "slope": -1.9999999999999998,
+    "expectedSlope": -2,
+    "slopeError": 2.220446049250313e-16
+  },
+  "q15OriginalLineGeometry": {
+    "status": "PASS",
+    "equation": "3x-y+4=0",
+    "endpoints": [
+      {
+        "x": -2.3333928571428566,
+        "y": -3
+      },
+      {
+        "x": 0.6667410714285698,
+        "y": 6
+      }
+    ],
+    "maxResidual": 0.00022321428570926116,
+    "slope": 2.999866077407261,
+    "expectedSlope": 3,
+    "slopeError": 0.00013392259273903306
+  },
+  "q15MovedLineGeometry": {
+    "status": "PASS",
+    "equation": "3x-y+11=0",
+    "endpoints": [
+      {
+        "x": -4,
+        "y": -0.9999107142857149
+      },
+      {
+        "x": -1.6668303571428575,
+        "y": 6
+      }
+    ],
+    "maxResidual": 0.0004910714285735196,
+    "slope": 3.000172205958327,
+    "expectedSlope": 3,
+    "slopeError": 0.00017220595832689867
   },
   "checks": [
     {
@@ -36,9 +94,16 @@
       "sha256": "19fc916fa1aef4364551a22802861d038f3b123bb6be694d9611eb5533ce75f6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -50,9 +115,16 @@
       "sha256": "fd5c52380f608d530b426562733fa5323a56d06adc6e9c43868dd47a11c6bf9c",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -64,9 +136,16 @@
       "sha256": "3453d943306900e036786cefa0560e5386d0b2b4b2d3e760e33a41aee3b89b03",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.44999999999999,
+        "scaleY": 25.45999999999998,
+        "relativeError": 0.00039277297721881043
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -78,9 +157,16 @@
       "sha256": "73dc0fae0b4fb52c9ea325903e91ed51985801ee93300528418b9c1d15429808",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -92,9 +178,16 @@
       "sha256": "317fd715a94bd5314837d74bae279cebe5574676ba708dd757d65c8c1a3e12c0",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 6,
       "provenanceCount": 6,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 19.439999999999998,
+        "scaleY": 19.440000000000026,
+        "relativeError": 1.4620220900413565e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -106,9 +199,16 @@
       "sha256": "ad1bb06b51c8e1edc0a73bcf8e98d7a6b7c22ca6502537ff4e6631dad3292f14",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -120,9 +220,16 @@
       "sha256": "b02c3e03652ab1afbfc1ff961f59d3963187edfc13291536ba854f8accfcebce",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -134,9 +241,16 @@
       "sha256": "01f3b2f7d2d536eae6d1b9e627e946e2140affc51cc6bda47b8ce4b549935c7e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -148,9 +262,16 @@
       "sha256": "df619c8eb7fbce6f3244cff816767e9750f02f588aeba1592200e54f25e40887",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 17.389999999999986,
+        "scaleY": 17.390000000000015,
+        "relativeError": 1.6343708700634838e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -162,9 +283,16 @@
       "sha256": "ce0d934fe0a504a1ebe09c3bd6e8f24af36d3c8b686e083bf8af2f5469442e6b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -176,9 +304,16 @@
       "sha256": "e6c34cc8db538ec5009eacf3321ba0bae2034a59db0ddb5e106ca215ff43dd1b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -190,9 +325,16 @@
       "sha256": "032de7d758977786341289e3dcee0f5f7b5d3792c92e553950d3a778360ca42b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -204,9 +346,16 @@
       "sha256": "8417f32463296670ee5289ceb896956e3fe68736226de2690fa63c7f21f63092",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -218,9 +367,16 @@
       "sha256": "57190a6e02f960e7eb935726f224b8a3b4064092621ec80a8653fd88f09d31cd",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -232,9 +388,16 @@
       "sha256": "3a4a099de60e56e6801b3992ab6a2c32bda5b7adbae3aea8bf80f730da8927bb",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -246,9 +409,16 @@
       "sha256": "c0d1da5d86c413eea88cd11e2997e97c92bbdbe3f6642a8633194f3164607431",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -260,9 +430,16 @@
       "sha256": "92aa46c65c6d57aaac1d988abb61a20f86736a1f06c5e9275a70d57f3a81551d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -274,9 +451,16 @@
       "sha256": "e14e45cb8b81b3e05b3e564aae73863fa5a8d3c6317e86fb518856a4d178c08b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -288,9 +472,16 @@
       "sha256": "04f347ed976b8af0d7a435e863752bd8403e2990eb296e7ad3a3ecd43a00e5b7",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -302,9 +493,16 @@
       "sha256": "502b8b8e2d5e2bfe0da3ef31dd1dee70e7ed9e59adcfb8528187c70c30fa908c",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.44999999999999,
+        "scaleY": 25.450000000000017,
+        "relativeError": 1.116766578797799e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -316,9 +514,16 @@
       "sha256": "9c6a62300b390e93e1689a40995f78afebdf67484f374fea1d53a005d0ae3ac8",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -330,9 +535,16 @@
       "sha256": "c533c04d5cc98812510a936d89cdbdfabefe2a8c8e95319e04274e1876dfa2ed",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -344,9 +556,16 @@
       "sha256": "d5eeb726cfc5706c32b483641cbea9d890b57441741385c3e755e1e0edf45291",
       "xmlShape": true,
       "finite": true,
+      "policy": "PROPORTIONAL_REQUIRED",
       "pointCount": 6,
       "provenanceCount": 6,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 17.230000000000018,
+        "scaleY": 17.22999999999999,
+        "relativeError": 1.6495478485434695e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -358,9 +577,16 @@
       "sha256": "293fb0c45bfd7621668552aa61c463faa2fe3c19e4d317c610822f4aba64b0a3",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -372,9 +598,16 @@
       "sha256": "af258c0c3e383424bd44f47f8890e1370bf61b2051bbe4f40366f75d1d598866",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -386,9 +619,16 @@
       "sha256": "87cdd3faef8bcd2e00f00c1046fc4f6ab45513e26d1598ef81730151502fa04b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -400,9 +640,16 @@
       "sha256": "f91a6e00d7bd65ed1a56623b47f21224803ee42144012fe6986ede43e5d73b3e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -414,9 +661,16 @@
       "sha256": "876683113a74b1cc738d5b0fedaa93583806542d4c11508cfdbf624287dc134f",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -428,9 +682,16 @@
       "sha256": "9753bc898af3b9f4c39b3eab44ce92c817a605d428663400ece263b803e5ca93",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -438,13 +699,20 @@
     {
       "assetRef": "assets/images/22_강남여고_2학기_중간_고1_기출/q22-solution.svg",
       "exists": true,
-      "bytes": 2192,
-      "sha256": "6592820cee6207d03a25fdf745f04335948a11607afb3653b20341b776effe99",
+      "bytes": 2226,
+      "sha256": "dd5f744e5dfa8fae3365022fc01de0e725f9d9aaeca88eba1719c889d5b440db",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_EXPLICIT_SCALE",
+        "scaleX": 1,
+        "scaleY": 1,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -456,9 +724,16 @@
       "sha256": "e16d49cdc7add07b1707f59e2e05d88e8ce71d106a40c0172d87e9ac9be85e08",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -470,9 +745,16 @@
       "sha256": "13ddd7999b84769216d84d405462c6aaeb8251b57148fff0fca74123e0c7cc4f",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -484,9 +766,16 @@
       "sha256": "5596ada73bbcc5b88dd5c4d01faa23766552118d3868e246caed4a271e57861b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -498,9 +787,16 @@
       "sha256": "6afa3b9327b6f047ddf38f4301b691e61471a5135305e503c43b44fc6980b8f3",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -512,9 +808,16 @@
       "sha256": "024daddd840a23e9215aee23d651daf373c03be63ee6e4a8c4477e18ca9ca5f9",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -526,9 +829,16 @@
       "sha256": "a8025473abbcbc23ee68d06c5d97332a596531986c409f3b799e83b0a6830dc2",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -540,9 +850,16 @@
       "sha256": "6dc7a1eb1bcf4a005a3359f74ea1a56f4b75d31ea68ecbc994b628770c1fe539",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -554,9 +871,16 @@
       "sha256": "008a97feb6c7285d248462d7f9562960df330faa224e734da8cb771530c5222d",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -568,9 +892,16 @@
       "sha256": "8d989b42ebfb08392f228f0f075c378782e67b894bc8c45bb029f3ed4d5f9967",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 4,
       "provenanceCount": 4,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -582,9 +913,16 @@
       "sha256": "8324bc5a033bab87b277a30be70eced54b9c36b828e06378964db70cd9159e3b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -596,9 +934,16 @@
       "sha256": "bac06d1a56080aeea72d333cb1816e2c826cc1aa809fd1baa41934a0e0ef3c75",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -610,9 +955,16 @@
       "sha256": "cf91be701d9fa061a62c8d28833c5cdfe1aac97f976af243d5f58be785908746",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -624,9 +976,16 @@
       "sha256": "e1fe07aad88a6cf7eb496a4e1e1e7e96786b26467acde89a9b7b274ac7a62fc4",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -638,9 +997,16 @@
       "sha256": "b941369f009981252bf54f5714a662bccda9bb696a6a1a1995d9102c4ce8c68d",
       "xmlShape": true,
       "finite": true,
+      "policy": "PROPORTIONAL_REQUIRED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 20.360000000000014,
+        "scaleY": 20.360000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -652,9 +1018,16 @@
       "sha256": "5d369d2888b68a57c4d2db6ae747d34624f11370a0579491547dab459a3dec04",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -666,9 +1039,16 @@
       "sha256": "7c86b4927446e79be734f0b3dfc08835b4da1c79a7653ddca28ea9652548dacc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -680,9 +1060,16 @@
       "sha256": "94a0855d46ebd53234863419c1def3e3571fdc4fc15fd2ef52e73469799e0ec1",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -694,9 +1081,16 @@
       "sha256": "1a8e5d7901182adcc399db44324f8ca5edabb1f04e38cf6a3ed597042cf047a8",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 18.669999999999987,
+        "relativeError": 1.5223197338191743e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -708,9 +1102,16 @@
       "sha256": "b679e647fcf4054f3e3a7dd979b740233f65618eda061e9667e025b1b4e17e6b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -722,9 +1123,16 @@
       "sha256": "d837800ecdd19ca3e00d2f9a9c4a933e4fe5d5f955846070b2bd5d961ce869e6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -736,9 +1144,16 @@
       "sha256": "2fcc846419689275c8bdaa187dd4a521e38dbc9352cb62fff14f52d9eec117ab",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -750,9 +1165,16 @@
       "sha256": "c2af82e214898a2a6101af7ef754097ef3376256a7ff197cf7060ee6904e8f7e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 4,
       "provenanceCount": 4,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -764,9 +1186,16 @@
       "sha256": "22f10365b138dba9dd9cecb9c1aae36816a8cc6682823e3a5f2826b176108c90",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -778,9 +1207,16 @@
       "sha256": "33ed13dae6c8bccfe5fdce29ee849cb3513229cc417fc08927ea5b3bd6855751",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -792,9 +1228,16 @@
       "sha256": "dd244d12cb8f626d4904e31ba926bf6f423c45ebd7d74877372f69ac2b4a9ed5",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -806,9 +1249,16 @@
       "sha256": "6aea08b4be17e7395d9261ccb08ad02a0386b0bdb6f5c8ba6f22045790a45223",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -820,9 +1270,16 @@
       "sha256": "3fea83fe0dc22d2781b222076cec09fba9897da0b8037dc73209d67d3f03a41d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -834,9 +1291,16 @@
       "sha256": "bed80bcccb6e533a7e79ad6f79092ea5c0bc92d443f78c9c2d8116ccc6d284dc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -848,9 +1312,16 @@
       "sha256": "5160d53a4523e29b12338788bc129fae7ab8e1cce22ad14464d108d0df54da55",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -862,9 +1333,16 @@
       "sha256": "fc921e1da3ce8cd588f8b6cd096774fc0f3404326bac60d6333d321bb987ff7e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -876,9 +1354,16 @@
       "sha256": "a518ceb3a63f27ccc0f0445399f31cf17ae24e5e5ff5e954eceeb7643ee21fa9",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -890,9 +1375,16 @@
       "sha256": "26b565a96d8f73afa88a83211421eee495705b92536cbbe11e6d2df1f4611366",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -904,9 +1396,16 @@
       "sha256": "54d29816fcbd572638943175ea473959819b2787c7b2903f6ff39c6d216d5097",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -918,9 +1417,16 @@
       "sha256": "9f0e2712aaf4a5f4b3f19560717fedfe9fd588ee699c191400acb9fc1220d635",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -932,9 +1438,16 @@
       "sha256": "6fa9881ca1eb69b2f33f892149c8965474dd4a9c4ad2714ef3cfbf7eb7f1e922",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -946,9 +1459,16 @@
       "sha256": "d1455f2e3863da442d793c4cf98d47bc77b0c991e3b92dccb1884eabfabeadda",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -960,9 +1480,16 @@
       "sha256": "ff704b42f55d0c75c91e8607f24756af2e60d3a006f25d9015312feda0348cbb",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 22.05000000000001,
+        "scaleY": 22.05000000000001,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -974,9 +1501,16 @@
       "sha256": "c0d5722f4838b23649dfd6a06f42d482418ccf6090423dec4b5beb2afd8f6ef8",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -988,9 +1522,16 @@
       "sha256": "ffb975bde7922db4e4d9560a1b897b17347905b5986f464b0df67c83ed080dc3",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1002,9 +1543,16 @@
       "sha256": "9b1f1e7423be4764489baea4723ef2e2955d277fc87ef695693fc3da1e72302e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1016,9 +1564,16 @@
       "sha256": "dfdbbc45b15bfe348e3d55af1cd69dcdefc22bba864761b4abe807c7463dc3c8",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1030,9 +1585,16 @@
       "sha256": "d70807965489bf9c653295074ee0b5e0d9f7f772867729aa8a0cf2b48de42b74",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1044,9 +1606,16 @@
       "sha256": "3a0343be04ea02ac98b31313f26227d79a427e1e879db37ed6943be0d0e43d1c",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1058,9 +1627,16 @@
       "sha256": "543a4f2ff940afde55da7f788e59705d6fd1ef9ae82a715de9a0352ed7220d44",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1072,9 +1648,16 @@
       "sha256": "a34b5f4cfaada25a26cbf91d7d2bdde3282ed7ca9317c03e4864b23b7607dc62",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 17.390000000000015,
+        "scaleY": 17.390000000000015,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1086,9 +1669,16 @@
       "sha256": "0130fbd22b918dd0d841a207d9479142a2df63817ff963bbedb4031d41bcefa2",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1100,9 +1690,16 @@
       "sha256": "cad8bdc0ab9cee50e33c3eb15bd64e62fdc5e9eb6631c10c26d187285852d43a",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1114,9 +1711,16 @@
       "sha256": "84622e38e812a9c7f544436d21c4cc51c8429a9e4c366fbaabb83c4cb0d69b56",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1128,9 +1732,16 @@
       "sha256": "17f28678b887b090c862a60a4ad5db315b3c79e7f2ba6d513f12baa6ac9264d8",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1142,9 +1753,16 @@
       "sha256": "954ea696a08ba7b29f036bb7cafb2b9f885e7464795adf8a181384fb2d9065e4",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1156,9 +1774,16 @@
       "sha256": "627f0b3d3563947e36f207df3d4b8cdb9413a1c88e940727dbb9c4024d77d034",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1170,9 +1795,16 @@
       "sha256": "1bd9004017b6bce667084f545fb435b5f22552a8cc9d6e7e00e4297aa2770f70",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1184,9 +1816,16 @@
       "sha256": "a9bf25b2647659b373cc0051015c3777f39f1da9b02badb6a75b32bf711d693e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1198,9 +1837,16 @@
       "sha256": "d6f318846b0b52d439bb08c8e1a0d01556995f92360c5541bc915f6455ad167d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1212,9 +1858,16 @@
       "sha256": "558dfd450f6bdc59e47832f757f5d4ed07bdafe7e35120f29cffbd009ba7da7a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1226,9 +1879,16 @@
       "sha256": "94fdaa18c20a640db85d1c15a815ee1e8ccc746cca64bdfa01e030f36870b9c7",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1240,9 +1900,16 @@
       "sha256": "6989c41df17a7395925b17cf82d708cf94f86f97b0288fc8ff0bfa6209dcfe69",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1254,9 +1921,16 @@
       "sha256": "4b1ffe6657a8f82e244befcab574dfbb9661e75744caf4ad683c1f2abb9aec07",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1268,9 +1942,16 @@
       "sha256": "317fe98bdf704de36bdd76aa57a86b15bc6c659c9a9e7a1f69fe164919463e74",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 12.229999999999961,
+        "scaleY": 12.22999999999999,
+        "relativeError": 2.3239337228457917e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1282,9 +1963,16 @@
       "sha256": "c8258e6dcde7ccfe36f8b6cac5fd99d3ae00aef932e6b28bf4aa789768f5e2fc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1296,9 +1984,16 @@
       "sha256": "610241864af66575d2036be81ef18730c727653e251e599638718a5fe8dbed38",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1310,9 +2005,16 @@
       "sha256": "9a6ab5994d5f1bfbc58a691f48d2a8e7923007841c03c1e7d51e4f7c57c7d127",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1324,9 +2026,16 @@
       "sha256": "5feebf7f42f48332bbc0c58689d087755206c39fd6b44b80706a26cda0b961cb",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1338,9 +2047,16 @@
       "sha256": "280c26fe8ac09816a3d0d1ab17d5c4c35b77af1000031d8f645e15e41e9ae118",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1352,9 +2068,16 @@
       "sha256": "0911eeeca163c0b287e8a370ca2c83d575b3dd7e3c450c419070123d54f42f43",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1366,9 +2089,16 @@
       "sha256": "6967a1156376bafeec7af748c40eaf1b3f8045d8bde47ed0b5e907f8ba163cc6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1380,9 +2110,16 @@
       "sha256": "93625b931a7deb7c418f9623629d333da432678b2084de94b3307662ed76cc12",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1394,9 +2131,16 @@
       "sha256": "b0652d23fa6b96fcf005cbcca24ccb0f5fc21ddda15f7bb90bf46fd88ad24db5",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1408,9 +2152,16 @@
       "sha256": "236a2587e77c679305a668c4f12565cf2f0a4f0d37180d82a31e46972658f879",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1422,9 +2173,16 @@
       "sha256": "bfa0a47c0e8693f271f2eec412500c53a8229ce070f9cac38536a147b75a3ed8",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1436,9 +2194,16 @@
       "sha256": "1dc3b2cc98fd33e5877f2e432171af83b4460184518a98b98e4ca795735bd4c3",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1450,9 +2215,16 @@
       "sha256": "ea895e3c23b66568f3bfd853e45990936d1a61fb00e45d87b8a7b36c8a514dda",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1464,9 +2236,16 @@
       "sha256": "523243c88ec4b23670095f177583bd322617c67564fd30ac1dde3c89a7f544ec",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1478,9 +2257,16 @@
       "sha256": "c081a40eb62a727254d6c1edcd234a41f188b1030591572e462f8befe2167b05",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1492,9 +2278,16 @@
       "sha256": "b4bc3d4b27b2830594d3b15bb7ae36bba68305d60d7093e7a9c4a7033a51d369",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1506,9 +2299,16 @@
       "sha256": "1a20098266fb220f4d61f99c2fe4778464c375e443f7e824b9b66872db6b8356",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1520,9 +2320,16 @@
       "sha256": "a492d84393d4cfdc62d366054862cac2c0624db1296d5da483af72289357c96c",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 19.439999999999998,
+        "scaleY": 19.440000000000026,
+        "relativeError": 1.4620220900413565e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1534,9 +2341,16 @@
       "sha256": "8bcd73e1f9c879265fd0130f35d469c835fce446fcc303a5ab922778b3dea983",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1548,9 +2362,16 @@
       "sha256": "101bc5debbfe722dac921b3472474dd82796fc38fcb258196e619ff860387163",
       "xmlShape": true,
       "finite": true,
+      "policy": "PROPORTIONAL_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 37.329999999999984,
+        "scaleY": 37.33000000000001,
+        "relativeError": 7.613637672221805e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1562,9 +2383,16 @@
       "sha256": "1ddd8a6a4b014df68e9b7024de29f48115bc2e5cbbc50eb0e2bb623b2f511516",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1576,9 +2404,16 @@
       "sha256": "502abfaf8155a204fbd20e177bcdf24763602797aeab97d59b22a8e6a640c4b5",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1590,9 +2425,16 @@
       "sha256": "8d01c6538b8e51931a909bb36ba0196235b54edcfc7ffbfe3c58c0727d371094",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1604,9 +2446,16 @@
       "sha256": "828bfc7f702d80291c9ca8e25b46314277c20e0d4374b2ffbe9f520429613c25",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1618,9 +2467,16 @@
       "sha256": "59537a1b3795488adfb7ae4b1266ae80c9d8dc57693277925950aa2d96c87689",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1632,9 +2488,16 @@
       "sha256": "b06dbcc4b71cf30bb2877650033d27cb6630f14bd03c883fa868b5cbbcc4be7c",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1646,9 +2509,16 @@
       "sha256": "4cd56f64dc12f9dd22e0768cdb774feea851c746316b17a69e31768cfd1de441",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 12.229999999999961,
+        "scaleY": 12.22999999999999,
+        "relativeError": 2.3239337228457917e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1660,9 +2530,16 @@
       "sha256": "cb8c9e80713f8a7e8c3d74571d5c0e5357d61b319396973d231a80086df01420",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1674,9 +2551,16 @@
       "sha256": "6dc316f603801422670e92187a93b3c13040c4b1d742cf881fab5bbadd6b6fba",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1688,9 +2572,16 @@
       "sha256": "63f2831b404e4776884638efb8480d87140cf72c0d55885180e1adc67abf4921",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.44999999999999,
+        "scaleY": 25.450000000000017,
+        "relativeError": 1.116766578797799e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1702,9 +2593,16 @@
       "sha256": "dee19a65e6544dbca0f1050b1092e8d195d4ddba4d49f435145671666911da34",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 4,
       "provenanceCount": 4,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1716,9 +2614,16 @@
       "sha256": "96363e856072ddca808060c279b8b0b0976cdfea301b1d9ba4f9526022924219",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1730,9 +2635,16 @@
       "sha256": "8312214e4d7c193a9d42cbfe813b8732d90731085ddaedcdbdfd0d8cec322102",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1744,9 +2656,16 @@
       "sha256": "78523879bf8d90bbef0992da9c9d3e9809d2105f06ee0bfe91a1bd40b5341e08",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1758,9 +2677,16 @@
       "sha256": "1f4fccdcfbaf4aacfd260e752b179e46c29f86a6296d1b5ee70501c2a0bece78",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1772,9 +2698,16 @@
       "sha256": "c497f24a92c83cbdc1b965d34a01132033094008573989fecb5c4d1caa0543ec",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1786,9 +2719,16 @@
       "sha256": "f18e24b55f3327964ba058939b380d844f95904da96b7bad0665c012bb29487d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1800,9 +2740,16 @@
       "sha256": "337dbdb89ff14cc429da936acb64ee30aaa3d9dcfe2dbfc45ac0c110e2d92ccc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1814,9 +2761,16 @@
       "sha256": "5dc0857f200536dc1ce02010e5094e4ae99b1117e76150d4536df6340ba96a2e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1828,9 +2782,16 @@
       "sha256": "f130322619cabc6cc2ce2e0bb368f4047f4c1414be0222563730186722d0b005",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1842,9 +2803,16 @@
       "sha256": "9111aaf07b2398ba6c7953c4b7c837e52ada64504714bb24efa3b47fa2f4974e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1856,9 +2824,16 @@
       "sha256": "3b0c1b9403331d064e2da7a222748e8e440358b89ae646f8b21e6f234c22ea24",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1870,9 +2845,16 @@
       "sha256": "cde7941cc0daa43b979ea00f97dbeea919177039bd20c3cffcd1444ad15bffeb",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1884,9 +2866,16 @@
       "sha256": "14bd2434007777e7feea1282d62602069f40141c92c0c44beb89738ae34fa302",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.44999999999999,
+        "scaleY": 25.450000000000017,
+        "relativeError": 1.116766578797799e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1898,9 +2887,16 @@
       "sha256": "d1123657756ab05a894add68078b5026dadd90e6306e7d5b34df91d3a578898d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1912,9 +2908,16 @@
       "sha256": "8abd9033a97694b30efc5e422ec70469f83e6d8648dbdc2b6e78508e9f85048d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1926,9 +2929,16 @@
       "sha256": "a32b94afb21f025845c5e383b54175bdc7ffb15be60a4567813694aa0c3f22a2",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1940,9 +2950,16 @@
       "sha256": "c342a8dee2de9d827d619627fdc0ddbe5372d98f9f0785d0f108a6af88dce188",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1954,9 +2971,16 @@
       "sha256": "e7c834851539af186b64e93a95359f22b1eb6ae3a0ede350f71c1624029d4c66",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1968,9 +2992,16 @@
       "sha256": "3c336f399c5299be1a83a05b6d4cd45027fe7b2f214d51ac901321dcc216c077",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1982,9 +3013,16 @@
       "sha256": "94bb1d7f25f2d3d848a872352f328d0c48cf7f6e8fb58fb2637bab42ab06a242",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -1996,9 +3034,16 @@
       "sha256": "e1bc5edc809e1e0d7822b89f78edae0fbb016659b917f7827bbedaeb6e1db864",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2010,9 +3055,16 @@
       "sha256": "d524d006b0dc0e4cd2cf99a140dd2783e66b35f44c9ae2cb6df6ae0428878553",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2024,9 +3076,16 @@
       "sha256": "2e918d0895daa99ef8996466d007830e51a972778ea14652c04fce40440422a3",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 6,
       "provenanceCount": 6,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2038,9 +3097,16 @@
       "sha256": "d7f0cf43f9220d7d6cb8d61e56bd8e54fcf7624c7cdbc75a6bbd6718128f976d",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 4,
       "provenanceCount": 4,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 20.24000000000001,
+        "scaleY": 20.24000000000001,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2052,9 +3118,16 @@
       "sha256": "246f152dc56d548251da5b3ae293a4c0049ee2de400d0f42bd70d0c8dd2f7ffd",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.45999999999998,
+        "scaleY": 25.450000000000017,
+        "relativeError": 0.0003927729772176941
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2066,9 +3139,16 @@
       "sha256": "798c8cda86a51595d7f7b9a10e80eaaa79535292238a7463540d17f36b9eaaf3",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 10,
+        "scaleY": 10,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2080,9 +3160,16 @@
       "sha256": "eaaf809650fc4b819ef10e913fd35f4eb7dfc592957e6c3ae47da8f170292f80",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 12.229999999999961,
+        "scaleY": 12.22999999999999,
+        "relativeError": 2.3239337228457917e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2094,9 +3181,16 @@
       "sha256": "c8bf8fe942e881bf5ff115ff8851160f4d7a1f7587781654deb5f8db40e8a56c",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2108,9 +3202,16 @@
       "sha256": "4d3a49e54c250fdc7f1aaab74b1627b96f2a6a3f3273c09b7e1bf5c8cef57842",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2122,9 +3223,16 @@
       "sha256": "a12c847f51f050a8640b3503cce9dcfdeda719d2c4c974713ea045b72b0265ed",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2136,9 +3244,16 @@
       "sha256": "7032eabbeccbeeabc425c24b137913023737e245118869253c75e4209f81e5c3",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2150,9 +3265,16 @@
       "sha256": "bbfa6a4a95e774167668b7541103cd360ae7e55d5d893a9691d922b87ce09e2e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2164,9 +3286,16 @@
       "sha256": "bf98fb9c1a4ba53b05c7809eb6dfe2781b7477ec6594532e8fd4c733aa346b17",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2178,9 +3307,16 @@
       "sha256": "a12fb27e17f0d00524c4feb976da78c7d4944a2c6c661fd918fb4a9ed94ae357",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 6,
       "provenanceCount": 6,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 24.20999999999998,
+        "scaleY": 24.20999999999998,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2192,9 +3328,16 @@
       "sha256": "b1e12604c153081180f3aa66806075e1932452c9c42772b6de39c0a892e40692",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2206,9 +3349,16 @@
       "sha256": "cec6abc5475172c83be2125379ee0db773492f03de9cc091ba1cb16ddf795bd6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2220,9 +3370,16 @@
       "sha256": "5d42f2f548810eea0f117b6fc9212e2b4ec1c7aa6c3f44778175ca04600746dc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2234,9 +3391,16 @@
       "sha256": "2e4f2823b19083570be7d73de049a768c840d3c7c249234d411b25140cf947c9",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2248,9 +3412,16 @@
       "sha256": "b4f00ee8ebe53e4e2c483d60ac006339d2c6f038669bb01f213c0c28d730d8ce",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2262,9 +3433,16 @@
       "sha256": "222e783e383be2cfa756651fcff62653ba3548029dc3c8ba906199b065c038dc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2276,9 +3454,16 @@
       "sha256": "5dbcc86c6a1a9ed354f0e3d0135e6707297b7a09ab782d628d468ef8a03deaef",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2290,9 +3475,16 @@
       "sha256": "30353aeed2c8447095982d3c7f81750e4bc1db72501dfad5289aa421bfa405ad",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2304,9 +3496,16 @@
       "sha256": "b13e69dccdf4d42f2c3eea7c549d59a50b15322a0e2504766afb3d8d4fef4af0",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2318,9 +3517,16 @@
       "sha256": "75baed5041c9f9a804939f5dd69b1c1e501b9013f98ec957c63ae1c5e01a63ab",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2332,9 +3538,16 @@
       "sha256": "9781f07f1f243888f4ae2400d2449f44ac1dd95a199b8b40a60b587db3818412",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2346,9 +3559,16 @@
       "sha256": "795ec84324d3805b18e22a6b12b6168ac67cf62dd0a4a98e220b2bc389da12af",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2360,9 +3580,16 @@
       "sha256": "f1519ccf3faee756a99e3cef58f623b4950ca2e63dcc4c7815a70f726a33cf4d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2374,9 +3601,16 @@
       "sha256": "36acac035b747a9ebcc421186abf257fd0c15bda7fc1ac46e9026cbec235bd3b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2388,9 +3622,16 @@
       "sha256": "de9621323f44a238b96d92c48745d0fef9292cabbf53e597db90996ef7cdd6e1",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2402,9 +3643,16 @@
       "sha256": "76c8c146c2da7fcf64648b6e5b57929caba1acbbc53a0c66546a3be49bc451af",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.11,
+        "relativeError": 4.719646202325473e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2416,9 +3664,16 @@
       "sha256": "1a4de07cc0a8f52008dbe9e95ad5638ec46b42342b436774664771403907f32c",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2430,9 +3685,16 @@
       "sha256": "98288502b77ad7b4d970b58d9a3533b7ca8e73750da7134607d92ed8be73ac01",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 5,
       "provenanceCount": 5,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2444,9 +3706,16 @@
       "sha256": "87e92e30593bf76d5590d9df6f8bc993bbaf818bac52802b06196ccd60afca7e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2458,9 +3727,16 @@
       "sha256": "959f6a976aca979df0c1070c7ab68866c895e5e9534c9b33c06d87279d368bc6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2472,9 +3748,16 @@
       "sha256": "1701661571bc5a3b83d8a910da1b89ca12738e098947a2d64eef3570fe13a32b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2486,9 +3769,16 @@
       "sha256": "bdcada63c04726e3154600364ebb513e82c9bc1dcf92eef47c50eba8e51e8bd8",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2500,9 +3790,16 @@
       "sha256": "c68745ac56d48ddb700bc1d3ce9fdf25bc91271ac755c1a0dc9e7ff03d549039",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2514,9 +3811,16 @@
       "sha256": "e63da1de6634d94d6be16181a35be017bab6618479845e0b3ead7670cc5b04b4",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2528,9 +3832,16 @@
       "sha256": "71abd0eb72f01bedb13e7b39f9e463b7cb18f71440cb7413a296a6dbae0752af",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2542,9 +3853,16 @@
       "sha256": "cae6b0bc3c8784db281d94a3fa8c9564f11eeb7032d58628703431081fa1c7cb",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2556,9 +3874,16 @@
       "sha256": "9791ee83828926a2230f3c3e2201d3c9b3f130cbc1452db192d83f6124b551fe",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2570,9 +3895,16 @@
       "sha256": "af1d61ad5b6593e431485bc4c497caac467ddda6d1204406b424ff66b290f74f",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2584,9 +3916,16 @@
       "sha256": "84b00e8e9d5351221aedd85628034bb618fae049c167b26825352a3261620839",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2598,9 +3937,16 @@
       "sha256": "e9a7617982f1b8234f28b2f14a9d7ec914d5dc347d67f67bf1a96992c36cb92d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2612,9 +3958,16 @@
       "sha256": "7a0a316dcf567e6511bd076a74f39948ffad2d36fd85aab5bcd2e05f9ca17f41",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2626,9 +3979,16 @@
       "sha256": "4fe4ef659d36199fde484d62b1e7c1cacae2b5384d516abd732735f6af280699",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2640,9 +4000,16 @@
       "sha256": "29f6046e6ac07af15f80afce9e479879e377e147c7b52631abeff1c628111fd0",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2654,9 +4021,16 @@
       "sha256": "faa792e15f54088e2b48efd5d5e298c69102c029bf8a504a988e8fd357daa404",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2668,9 +4042,16 @@
       "sha256": "5a6b56f41c69e1504c4595f18214157397917431e93014211e8b94f187edd5de",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2682,9 +4063,16 @@
       "sha256": "3e07cd34b9e8051d4d7b79b9b46ca596306d67a53b37171e201292caba54977b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2696,9 +4084,16 @@
       "sha256": "eb5f9e731160eeb017160568703a7fc30379afe40e1fe6a7d6d2778bb1972ed3",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2710,9 +4105,16 @@
       "sha256": "722dfd04081873def3a5053bf96f4f01a86109ba9683bfb953f2c04d6a0ad8bb",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 19.439999999999998,
+        "scaleY": 19.440000000000026,
+        "relativeError": 1.4620220900413565e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2724,9 +4126,16 @@
       "sha256": "8e1e19838d4abe8b79fa491a97a42841dfc09fd19112fb16834adfce2e3f508b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.44999999999999,
+        "scaleY": 25.450000000000017,
+        "relativeError": 1.116766578797799e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2738,9 +4147,16 @@
       "sha256": "483d5314dd4255855dc248dee487ba3184aa91e279f93f54073adaf9dab41447",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2752,9 +4168,16 @@
       "sha256": "87de491598b3ff301fd082c15e01308c1c517e84420b44ebae42e7557e182c73",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2766,9 +4189,16 @@
       "sha256": "8fb6c17842d2264d5f9d92f8747e89c9669eb2cda78909769b48bca924804645",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2780,9 +4210,16 @@
       "sha256": "d3f376768e2a9f61eeebbab0edd9a1a17a6b0146972b219bd26247dc41666fda",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2794,9 +4231,16 @@
       "sha256": "333d18b3ed407306a2356161ff375a7817e97b3176941216946967045df94b44",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2808,9 +4252,16 @@
       "sha256": "9b4c7bf5b2fb187b95bd0667bb1ea399ea25ef1037064c0590e53bde8832a24f",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2822,9 +4273,16 @@
       "sha256": "3070f307922ac38dc5596e2bab69b064669279cc87c99bd11ef48c1b2c2cfaca",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2836,9 +4294,16 @@
       "sha256": "e9f2880d3fd91379a1363cbb3874bb823f7ba393aa792d173f2b9c41ec3da040",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2850,9 +4315,16 @@
       "sha256": "0e6ddf133c64c164719741ceadd880df584f6c36412e584a9152bcb16b1c6ce2",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 22.05000000000001,
+        "scaleY": 22.05000000000001,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2864,9 +4336,16 @@
       "sha256": "981c495282318f10e13ff060cb215be19a1b7891452450b20acc8a085df5686d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2878,9 +4357,16 @@
       "sha256": "0a632e4615e47f26ad7b042d4cff082994a995d0aafa0360cb07db874bfc3ef5",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2892,9 +4378,16 @@
       "sha256": "9cb64be5be9eacd4a4c7f5a353c0e10211b491a725e3e7375a4cbcc82eaa045f",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2906,9 +4399,16 @@
       "sha256": "06724ec8286aa6ecd5a6eba32e45c5095ad201e6fe72473a265d12e75411ec51",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2920,9 +4420,16 @@
       "sha256": "5b8817c68b1303808478a7252079f903c2310356b55284b34eb491b5d27ac432",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2934,9 +4441,16 @@
       "sha256": "ee4581c8b71380c1396e5520a9b22980cac9c10e885a6863ae91169f3ec03bd6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2948,9 +4462,16 @@
       "sha256": "2afdfc6ef31dc261c64a6aba5b672ad2bef1ffb53566215d810fb51e23fac27d",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2962,9 +4483,16 @@
       "sha256": "14f30052593b16c96ff4981eba8499c1e9a68cf961343cd2d45802a7aead220d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2976,9 +4504,16 @@
       "sha256": "130f388c9e699a82ad1ffc8eca30b0cc46a97fdaa276ae45dca126deb4b0b893",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 6,
       "provenanceCount": 6,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 19.439999999999998,
+        "scaleY": 19.440000000000055,
+        "relativeError": 2.9240441800827086e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -2990,9 +4525,16 @@
       "sha256": "ea58de639c8a93ae83ef9be937aea2e815abe32d811f40a6944c59a8d68d9c0a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3004,9 +4546,16 @@
       "sha256": "ea5ed227cd1057f0ec25fb43f33c430f0e53f323872d18f2fc89ac1497e16f32",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 5,
       "provenanceCount": 5,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 12.229999999999961,
+        "scaleY": 12.22999999999999,
+        "relativeError": 2.3239337228457917e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3018,9 +4567,16 @@
       "sha256": "929c5ae9793355c1c58fd28053e9d8bfaa07a3be79e00f8443d50c953bb3b6a1",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3032,9 +4588,16 @@
       "sha256": "b6c1e6975f062795e89ff35705a75ec267178922647392e6a0e5a3adbba3af94",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3046,9 +4609,16 @@
       "sha256": "27e6e83d1f4672e44aeb40450b343bea582524043f9d3203c18590f337426220",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3060,9 +4630,16 @@
       "sha256": "8c76203e5d18c7b47f2808e0ed4e1ddf0b05d0c929d3dd52905f64f96d04721d",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3074,9 +4651,16 @@
       "sha256": "08ff074aab56c3adc84ec0cd050aa3087e423f5b5095ee7a5be013d4d27b0efa",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3088,9 +4672,16 @@
       "sha256": "48913de76c09bbac727c8d980154e13ccca415ed2de9ff6c7189b76585a74d3b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3102,9 +4693,16 @@
       "sha256": "93f08ec027b5156d8cdb97d6742ffac18b58f9947bb2b593c64f59eda823ecaf",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3116,9 +4714,16 @@
       "sha256": "38087dd4368d13a3f5896890ec9a7f46689002525d7a4c49b57ea2c018822bf5",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3130,9 +4735,16 @@
       "sha256": "ad5d14e68acf432470c9b2af6f4dfd503d5311ef318522f8df93fc2a9f080c7b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3144,9 +4756,16 @@
       "sha256": "d07f9b8ded41e463723cc4889e68c5eb10b40e9de111c2db3a1849368695a1d6",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3158,9 +4777,16 @@
       "sha256": "5415a46f1109bf76cfc333f94a31b3bb7d0cd9d72a2d7e89820264d55a89dce2",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3172,9 +4798,16 @@
       "sha256": "690bd348d64af0cd646b27ebf55243249192ca5066bc774f2e45668c429864d7",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3186,9 +4819,16 @@
       "sha256": "401541f40f45a7419da547d9ff29c4eae9c0f42cb5c77a03aca5abdd56caa3fe",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3200,9 +4840,16 @@
       "sha256": "733eaec05fba44d3a5a59d8760b14727597a66b3dc98ca0303b5aa9732ff9917",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3214,9 +4861,16 @@
       "sha256": "107f715175c3a27890ff7c9702b736adb9cf1a47641ad21f10c1f7f24face0b2",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3228,9 +4882,16 @@
       "sha256": "cd0e9017f1b165bfaee70adb3c38fb77d207501a4b0aed45b4f4abb86b4be0f2",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3242,9 +4903,16 @@
       "sha256": "bb268f208510aaf0a8ad65b1d6c72336f60aebdfa3e2b466ffceb51415a4b90b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3256,9 +4924,16 @@
       "sha256": "48e2b235e91710d796b5d5b25cb933240eb8bb5714ed8668c0db76b1970460e7",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3270,9 +4945,16 @@
       "sha256": "4e5456fe25c35278a6f9ad67eee78a9c72b64e3f613968592f72b5687d667060",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 15.730000000000018,
+        "scaleY": 15.730000000000004,
+        "relativeError": 9.03423694545581e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3284,9 +4966,16 @@
       "sha256": "34409ea2bc31c336de35351209c85c49282b0d2fe20c5036ddbd3c9d7d28234a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3298,9 +4987,16 @@
       "sha256": "e31c8e4e11331581638eee9be0198f60a836c73f4d315a3913974111fe58468d",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 12.229999999999961,
+        "scaleY": 12.22999999999999,
+        "relativeError": 2.3239337228457917e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3312,9 +5008,16 @@
       "sha256": "b9df06b5a512c928d286a8c5f5dd89af3b7d1f28db22321106759598416adf4a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3326,9 +5029,16 @@
       "sha256": "0021d1a6931e71246de96e1499991fe395102218a3b5dcf2ac165083229339c1",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3340,9 +5050,16 @@
       "sha256": "f041bf529b22576d32d7b3d702ec118809ce563e42a488e3c6c0eda6a0cc6eba",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3354,9 +5071,16 @@
       "sha256": "912a19c08beeb31948b56db8f0464ac074f438ae7f4d784efe902452a8441a7e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3368,9 +5092,16 @@
       "sha256": "b0ef571a06aeac2fb7238111aea452cf0b8f208f08af916f94fff1351e792dfa",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3382,9 +5113,16 @@
       "sha256": "8375e08d1831f73019a24ba3ab33eeb80870293e06bfd1dad729f93f590eb7a2",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3396,9 +5134,16 @@
       "sha256": "17ab54fe6e56e648a359cda7ecd4d7af81d9ba63edd31c060f2511acf8230cb6",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3410,9 +5155,16 @@
       "sha256": "d69eba08c6f5c1b603977b4654e6301dddfdab828d01f92f4590df9d3454dd6e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 15.730000000000018,
+        "scaleY": 15.730000000000004,
+        "relativeError": 9.03423694545581e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3420,13 +5172,20 @@
     {
       "assetRef": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
       "exists": true,
-      "bytes": 5786,
-      "sha256": "3bd10b77aaf4da66b00db3c7a4fea29fcd8b0770ca52ca5615b8846757ff80b6",
+      "bytes": 6011,
+      "sha256": "f310977c711d42bcd836029b87c8ddbd70f9c8438ca3b96bdccdfa8586c39aab",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 5,
       "provenanceCount": 5,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 28,
+        "scaleY": 28,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3438,9 +5197,16 @@
       "sha256": "37b7dffeb9293d3713eab45d2649583fcfd1aef220688c3bc2791dc5f2e647f3",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3452,9 +5218,16 @@
       "sha256": "8316930e2a03e90cedfc9b6e4d441986b4a06cfef13dd71fd71296fbfe43df23",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3466,9 +5239,16 @@
       "sha256": "99bdc61f3accf6d34dc1517fbf755c8e2afe935e5bbae24e1d48cd97ce03444b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3480,9 +5260,16 @@
       "sha256": "c599d336c4b98132d9e2f34f77ddbc375f7396a340e4c4104bab6395325558be",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3494,9 +5281,16 @@
       "sha256": "e2e511595506c8048c1275b7d20e96b8c599a64969edeca8444f5fc792902192",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 17.390000000000015,
+        "scaleY": 17.39,
+        "relativeError": 8.171854350317419e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3508,9 +5302,16 @@
       "sha256": "e5cf30767784cd217751c23ef9a9ec2481e2acd9578ebc5790dcf77d81522592",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3522,9 +5323,16 @@
       "sha256": "0f735089904401f14d34688c608a018c60ecec94b10a0b648ee04f0c2740a0cb",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 13.20999999999998,
+        "scaleY": 13.20999999999998,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3536,9 +5344,16 @@
       "sha256": "78011347c66e20371c7bf45f3db35146f75b98442b81207c976888a0cccbaa81",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3550,9 +5365,16 @@
       "sha256": "d90f6b9c8bfb7cb51b93e69cefe62112ab62c9ec60daf42d64cc4c47eba35f30",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3564,9 +5386,16 @@
       "sha256": "919bbd64531453fa741214284f6f5257ec91496c95e36f50f94c9a7542446959",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3578,9 +5407,16 @@
       "sha256": "af4b1545c45ecdb6311205301347894b106f84b7b230f99ee07f836deb7e1df5",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3592,9 +5428,16 @@
       "sha256": "3880f0f9d20947e168672cd13beaa47c442c1379bf1335601a11c4e6a817521e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3606,9 +5449,16 @@
       "sha256": "5c5705ed8033b521a0fa5345b8d70bcc60a4545deb7fd76961ed49e5e578abf9",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3620,9 +5470,16 @@
       "sha256": "85f9fb02a320f6c1625e13d3f6563247886e56d4ee94bfc1d2d5c1554ab8c19f",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3634,9 +5491,16 @@
       "sha256": "738c3955ef8c1e423f3de5068ffd2b87c9172e6730cdf5ff594b65cabc210839",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3648,9 +5512,16 @@
       "sha256": "3eb85397717ef709ec37397ee6f7c706ddd97684568c1133b13d924319b23d25",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3662,9 +5533,16 @@
       "sha256": "b9ff3745d3c50b678b95a7e1334735a629a8e82926b933efe3d2e86660c9e546",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3676,9 +5554,16 @@
       "sha256": "7686d65b88c158ec9008ceabf7ddb3b32c48908b80d01aa2961e3e919c30194f",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3690,9 +5575,16 @@
       "sha256": "20bfb89a06d20928514421e5316332b85b3d44bd894b12bbee3c39916fb27f85",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3704,9 +5596,16 @@
       "sha256": "6121c6249620e4aa36630012f6e0e13676241be89180b9dffaf4cc7b857443c2",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3718,9 +5617,16 @@
       "sha256": "c823eba3f5abaf5c574707db80e9d3b04b4c8a85eef70dbcd29ff52c70205377",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3732,9 +5638,16 @@
       "sha256": "24c6f21ae84e9202a35b03e58464da7ab2b380dd3d910f9e1de2cc6e4756ac46",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3746,9 +5659,16 @@
       "sha256": "22767da46e9b51d12eab436afd22d36f17500e650f97657c39caef2905dd7029",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3760,9 +5680,16 @@
       "sha256": "2f1583c3605954270cdb554f3a3f3afa23382b84321380765a1656f6b374d6b9",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 17.390000000000015,
+        "scaleY": 17.390000000000015,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3774,9 +5701,16 @@
       "sha256": "53d84462aab2c1b6a6c6e820689bd564c2de1cf76b389b94e76a3240fe63becf",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3788,9 +5722,16 @@
       "sha256": "5baf7f2e75e6f80cd83351492f3954281c92a8ffe4143050ad7a924502b516e2",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3802,9 +5743,16 @@
       "sha256": "8d28d1be0e8368e5c74684465023967cc0561a221d70d9a3ccb3713fd81db12e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3816,9 +5764,16 @@
       "sha256": "187cd6ef6767a7f5ec5e699527964980662c88b970026b8deccb8f712654a468",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3830,9 +5785,16 @@
       "sha256": "c20d65df87eff1a455474e90aefb1657f25b7c259cf1e8a6d001ba70cc132f0e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3844,9 +5806,16 @@
       "sha256": "e36ac5f630daba05d848b50c98f3e513ecb8bdbaea07193ee4be17be01293880",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3858,9 +5827,16 @@
       "sha256": "8ee2709fcf224da37ba97707c62013838dd9a37d10a125845b96874e7f2318df",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3872,9 +5848,16 @@
       "sha256": "b1ff6997654cc3fbe379f56c2304b63daa3be5f175b25f1eadd2faf79a38e194",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3886,9 +5869,16 @@
       "sha256": "022ef2034e9ff7e9281385264818011e1bf3bf59b223d95d22670fef937489ee",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3900,9 +5890,16 @@
       "sha256": "6f4b7c293ce06f2f44d0ea3bc488442a5e2e6ecddf1158de0cf3b569f9bb3889",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3914,9 +5911,16 @@
       "sha256": "2b6d4217309aac39b0166ce13c5448b669b526b67cf25c7b5634a571f84b2d7a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3928,9 +5932,16 @@
       "sha256": "8b29919e667406e27111b2a56e05dece18ef5ce0321266a7dca4ca77b5e63aee",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3942,9 +5953,16 @@
       "sha256": "de06afe1eec4159c1eebd5e677038a1bd86fae58217b9ac3e4e97d0da57a492b",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3956,9 +5974,16 @@
       "sha256": "02d5ea6b197d28ffac81c754285906f43699381a8490a76235e5962cb8b29130",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3970,9 +5995,16 @@
       "sha256": "9ff06890da080634ab319318e959d74f020b17ec0ed44b2b47bfd71e35f52b6c",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3984,9 +6016,16 @@
       "sha256": "5e82023dc26582ce1831374a0720373ceb3f469f336d509a8248708368ae26be",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 25.44999999999999,
+        "scaleY": 25.450000000000017,
+        "relativeError": 1.116766578797799e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -3998,9 +6037,16 @@
       "sha256": "318150db02c9f74a4d47e048f251cb35c448adf908d85bdbfa6b421be3e75186",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 11.199999999999989,
+        "scaleY": 11.199999999999989,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4012,9 +6058,16 @@
       "sha256": "2f28d2f6e33689fbfd1acb7749a68b659c8f864abaa9bba54a556d6333250e91",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 3,
       "provenanceCount": 3,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 17.390000000000015,
+        "scaleY": 17.390000000000015,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4026,9 +6079,16 @@
       "sha256": "f3e93b94e2f7bb47388b74181168bfb999b41fcc44f1be049cd82a9ff5d32cd2",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4040,9 +6100,16 @@
       "sha256": "d0c75d85d3171b927fdc7aca7a1c9a7f2a5f4469d0ddf5fda9d9ccb1fd48e838",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4050,13 +6117,20 @@
     {
       "assetRef": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q15-solution.svg",
       "exists": true,
-      "bytes": 5635,
-      "sha256": "a4b6d2b193fc0770b8e226b064812d743d9467368991357c1d2fcb17d790272a",
+      "bytes": 5890,
+      "sha256": "bef45dee58c75f5da24b3bcf02b6e66a9f98e948e693384e2bde30270e53d623",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 24.889999999999986,
+        "scaleY": 24.89,
+        "relativeError": 5.709463525593413e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4068,9 +6142,16 @@
       "sha256": "3dd65bcf615f5e29799272e5173485365efd4ef651059e30aee74997f671bbcc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4082,9 +6163,16 @@
       "sha256": "ce9a74054e4f10a43b84a1a1f31b848a45e172ac39fdb779126276df88bf41dc",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4096,9 +6184,16 @@
       "sha256": "11bd4394b024c0ca212a533d593fcc7f4c4f4d50f41ba7af71287e1ffa314eff",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4110,9 +6205,16 @@
       "sha256": "f8e167bfc5661ef6d9aa55d5c69e2d6b7e5264a33268f0bb85d847aec729f8fb",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4124,9 +6226,16 @@
       "sha256": "30537dc6b7d43fd2b806aca69d505d169c1dfe1de4a39620122fdac97dd572e7",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4138,9 +6247,16 @@
       "sha256": "4236ffb7cd3c9bf3c944d660666dea61bc62fd66e7cd2d9dbe6b53a1d75ae481",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4152,9 +6268,16 @@
       "sha256": "a5f97826b6401b5352855a4fe35b1fe007d6df103f2e9298733df18ac2fe9a45",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4166,9 +6289,16 @@
       "sha256": "bf8e41a9b1ab9938e6d789afc45cd30499e41ba613ae69b15bf7e31f8f0513ea",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4180,9 +6310,16 @@
       "sha256": "b477a0163e6317b96524daa5f6ac5e28c8898fc6f99a0b1837ca11451f64fb3a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4194,9 +6331,16 @@
       "sha256": "ed5854ecf92181efbf4eef567e27d8de4d68e84cd896a03f397722a83ff2fe28",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4208,9 +6352,16 @@
       "sha256": "74f4309c2c9abdc14429bca3f737629b5d2bcd67c38c1efca4eb607f7b38a062",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.109999999999957,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650953e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4222,9 +6373,16 @@
       "sha256": "225105cf1aa0638db8308528cbe8dbc7d4c48b542d0b4a90d41e4c8282ff1e35",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4236,9 +6394,16 @@
       "sha256": "69cb4376f486aeb490bbfb8d837cca91621074704883c0845325c0550395c2d0",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4250,9 +6415,16 @@
       "sha256": "c0f763fbd19840e60a3dd81bc9cc18100dfbe748cc1a76d191fba32e18d0df47",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 9.430000000000007,
+        "scaleY": 9.430000000000007,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4264,9 +6436,16 @@
       "sha256": "48b7eaf6353b98c1c0433013d5acf20aef62e6480540b610ae904412af5ba988",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4278,9 +6457,16 @@
       "sha256": "3208ec847fd87a1907669b72f0b0fb2b795407361335c0ce34bc2fa4fda9cce8",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4292,9 +6478,16 @@
       "sha256": "e8cffa56d1c16824f73bafa4a4cb5828735f070b6689e033f773682a7b0c791a",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4306,9 +6499,16 @@
       "sha256": "90b44ec322bdde5c740457ab8e3731a9a72b230c41d3b7e2d92feb3a894bed3e",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4320,9 +6520,16 @@
       "sha256": "d05851bb0476a3a3863bf45b3e29e7a0fe2d699be1fc6b5b66d6aaebac535ed0",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4334,9 +6541,16 @@
       "sha256": "36620e2fe22d1706ca9e67323c2915818c4c205889ce3572834374d5f6613b6b",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 18.670000000000016,
+        "scaleY": 22.400000000000006,
+        "relativeError": 0.16651785714285663
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4348,9 +6562,16 @@
       "sha256": "692875fbe67e438157ddb6392da88c85bfd9b176351489b608c84981cd7b3cb1",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 4,
       "provenanceCount": 4,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 12.229999999999961,
+        "scaleY": 12.22999999999999,
+        "relativeError": 2.3239337228457917e-15
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4362,9 +6583,16 @@
       "sha256": "a87f8697f4741d0f823df48ceb7714234ba57ae144b4a1d2415a7e8d31c7b2fe",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.109999999999985,
+        "relativeError": 9.439292404650945e-16
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4376,9 +6604,16 @@
       "sha256": "740bc083ed70be6f53f78bae0a2139d79ef7dcdc28c59aa133476e0c8afc765e",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 1,
       "provenanceCount": 1,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 30.110000000000014,
+        "scaleY": 30.110000000000014,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4390,9 +6625,16 @@
       "sha256": "9b41fe2078d8aaec5b252c87c31e531995aaa0c9982bd8b8bea102aafe1bcc33",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 10,
+        "scaleY": 10,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4404,9 +6646,16 @@
       "sha256": "cea32df3162b71601a615158a5ff66da4a8819fa7fcd8c27e23ccde02672f759",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 2,
       "provenanceCount": 2,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 4.399999999999977,
+        "scaleY": 4.399999999999977,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4418,9 +6667,16 @@
       "sha256": "393fb9ca8aaa69aba39d565f3ace74aa70011125e2ce9bafb194c0507e265a27",
       "xmlShape": true,
       "finite": true,
+      "policy": "SCHEMATIC_ALLOWED",
       "pointCount": 0,
       "provenanceCount": 0,
       "pointProvenance": true,
+      "scale": {
+        "status": "NO_SCALE_EVIDENCE",
+        "scaleX": null,
+        "scaleY": null,
+        "relativeError": null
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"
@@ -4432,9 +6688,16 @@
       "sha256": "b137ec9584a27fd9027098fed35be3c71968ddbf74a4c5eacad7d93de7a001bb",
       "xmlShape": true,
       "finite": true,
+      "policy": "EQUAL_SCALE_REQUIRED",
       "pointCount": 12,
       "provenanceCount": 12,
       "pointProvenance": true,
+      "scale": {
+        "status": "DERIVED_FROM_GRID",
+        "scaleX": 13.20999999999998,
+        "scaleY": 13.20999999999998,
+        "relativeError": 0
+      },
       "equalScale": true,
       "forbidden": [],
       "status": "PASS"

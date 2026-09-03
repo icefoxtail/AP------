@@ -13,7 +13,9 @@ function read(file) {
 }
 
 function write(file, value) {
-  fs.writeFileSync(file, value, "utf8");
+  const tempPath = `${file}.external-review.tmp`;
+  fs.writeFileSync(tempPath, value, "utf8");
+  fs.renameSync(tempPath, file);
 }
 
 function loadQuestions(file) {
@@ -92,9 +94,10 @@ function frame(xMin, xMax, yMin, yMax) {
   return { body, sx, sy };
 }
 
-function documentSvg({ title, caption, body, factHash, method, policy, semanticRole }) {
+function documentSvg({ title, caption, body, factHash, method, policy, semanticRole, coordinateFrame }) {
+  const frameAttrs = coordinateFrame ? ` data-coordinate-x-min="${coordinateFrame.xMin}" data-coordinate-x-max="${coordinateFrame.xMax}" data-coordinate-y-min="${coordinateFrame.yMin}" data-coordinate-y-max="${coordinateFrame.yMax}" data-plot-left="248" data-plot-top="92" data-plot-width="224" data-plot-height="224"` : "";
   return [
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" data-fact-hash="${esc(factHash)}" data-scale-policy="${policy}" data-semantic-role="${semanticRole}">`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" data-fact-hash="${esc(factHash)}" data-scale-policy="${policy}" data-semantic-role="${semanticRole}" data-scale-x="1" data-scale-y="1"${frameAttrs}>`,
     `<title>${esc(title)}</title><desc>${esc(caption)}</desc>`,
     '<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z" fill="#2563eb"/></marker></defs>',
     '<rect width="720" height="360" rx="18" fill="#f8fafc"/>',
@@ -142,6 +145,7 @@ function q20Svg(factHash) {
     method: "전체 넓이와 원점 쪽 작은 삼각형의 넓이를 비교",
     policy: "EQUAL_SCALE_REQUIRED",
     semanticRole: "triangle-bisector",
+    coordinateFrame: { xMin: -1, xMax: 7, yMin: -3, yMax: 5 },
   });
 }
 
@@ -158,8 +162,8 @@ function q15Svg(factHash) {
   body.push(
     `<circle data-geometry="circle" data-center-x="2" data-center-y="-1" data-radius="2" cx="${sx(2).toFixed(2)}" cy="${sy(-1).toFixed(2)}" r="${(radius * scale).toFixed(2)}" fill="#dbeafe" fill-opacity=".55" stroke="#2563eb" stroke-width="2.3"/>`,
     `<circle data-geometry="circle" data-center-x="0" data-center-y="0" data-radius="2" cx="${sx(0).toFixed(2)}" cy="${sy(0).toFixed(2)}" r="${(radius * scale).toFixed(2)}" fill="#dcfce7" fill-opacity=".35" stroke="#16a34a" stroke-width="2.3" stroke-dasharray="5 3"/>`,
-    `<line data-geometry="line" data-name="l" data-equation="3x-y+4=0" x1="${sx(originalStartX).toFixed(2)}" y1="${sy(-4).toFixed(2)}" x2="${sx(originalEndX).toFixed(2)}" y2="${sy(7).toFixed(2)}" stroke="#64748b" stroke-width="2"/>`,
-    `<line data-geometry="line" data-name="l-prime" data-equation="3x-y+11=0" x1="${sx(movedStartX).toFixed(2)}" y1="${sy(-1).toFixed(2)}" x2="${sx(movedEndX).toFixed(2)}" y2="${sy(7).toFixed(2)}" stroke="#dc2626" stroke-width="2.4"/>`,
+    `<line data-geometry="line" data-name="l" data-equation="3x-y+4=0" data-slope="3" x1="${sx(originalStartX).toFixed(2)}" y1="${sy(originalLine(originalStartX)).toFixed(2)}" x2="${sx(originalEndX).toFixed(2)}" y2="${sy(originalLine(originalEndX)).toFixed(2)}" stroke="#64748b" stroke-width="2"/>`,
+    `<line data-geometry="line" data-name="l-prime" data-equation="3x-y+11=0" data-slope="3" x1="${sx(movedStartX).toFixed(2)}" y1="${sy(movedLine(movedStartX)).toFixed(2)}" x2="${sx(movedEndX).toFixed(2)}" y2="${sy(movedLine(movedEndX)).toFixed(2)}" stroke="#dc2626" stroke-width="2.4"/>`,
     `<line data-geometry="translation" data-source="(2,-1)" data-destination="(0,0)" x1="${sx(2).toFixed(2)}" y1="${sy(-1).toFixed(2)}" x2="${sx(0).toFixed(2)}" y2="${sy(0).toFixed(2)}" stroke="#16a34a" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow)"/>`,
     `<line data-geometry="distance" data-distance="7/√10" data-perpendicular-slope="-1/3" x1="${sx(0).toFixed(2)}" y1="${sy(4).toFixed(2)}" x2="${sx(-2.1).toFixed(2)}" y2="${sy(4.7).toFixed(2)}" stroke="#d97706" stroke-width="2" stroke-dasharray="4 3"/>`,
     `<text x="54" y="108" font-size="12" fill="#2563eb">원래 중심 C=(2,-1), 반지름 2</text>`,
@@ -179,6 +183,7 @@ function q15Svg(factHash) {
     method: "원 중심의 이동을 확인한 뒤 같은 좌표 변화를 직선에 적용",
     policy: "EQUAL_SCALE_REQUIRED",
     semanticRole: "circle-translation-parallel-lines",
+    coordinateFrame: { xMin: -4, xMax: 5, yMin: -3, yMax: 6 },
   });
 }
 
@@ -212,23 +217,37 @@ function updateSolution(relative, predicate, solution) {
   replaceField(file, question, "solution", solution);
 }
 
-const q20Solution = `삼각형 AOB의 넓이는 \\dfrac12\\cdot6\\cdot4=12이므로 이등분되어야 하는 넓이는 6이다.\n\n직선 y=-2x+k와 변 OB(y=0)의 교점을 R, 변 OA(y=\\dfrac45x)의 교점을 S라 하자.\nR=(\\dfrac{k}{2},0)이고, S=\\left(\\dfrac{5k}{14},\\dfrac{2k}{7}\\right)이다.\n\n첫째, 0<k<12이면 R, S가 각각 선분 OB, OA 위에 있다. 이때 원점 쪽 삼각형의 넓이는\n[ORS]=\\dfrac12\\cdot\\dfrac{k}{2}\\cdot\\dfrac{2k}{7}=\\dfrac{k^2}{14}이다.\n따라서 \\dfrac{k^2}{14}=6에서 k=2\\sqrt{21}이고, 실제로 0<2\\sqrt{21}<12이다.\n\n둘째, 12\\le k<14이면 직선은 OA와 AB를 자른다. S는 OA와의 교점이고, T는 AB와의 교점이다. 이때 A 쪽 삼각형 AST의 넓이는 계산하면 \\dfrac37(14-k)^2이다.\n12\\le k<14에서 0<14-k\\le2이므로 [AST]\\le\\dfrac37\\cdot2^2=\\dfrac{12}{7}<6이다. 따라서 원점 쪽 넓이는 12-[AST]>6이어서 이등분할 수 없다.\n\n셋째, k\\le0이면 직선은 삼각형 내부를 가르지 못하고, k\\ge14이면 원점 쪽 넓이가 삼각형 전체 넓이 12가 되어 이등분 조건을 만족하지 않는다.\n\n따라서 조건을 만족하는 값은 k=2\\sqrt{21}이다.`;
-const q20StudentProof = q20Solution.replace(
-  "이때 A 쪽 삼각형 AST의 넓이는 계산하면 ",
-  "AO 위에서 AS:AO=(14-k):14이고, AB 위에서 AT:AB=(14-k):2이다. 두 삼각형 AST와 AOB는 A에서 낀 각이 같으므로 넓이의 비는 두 변의 비의 곱이다. 따라서 [AST]=[AOB]×(14-k)/14×(14-k)/2=12×(14-k)^2/28이고, 이 넓이는 "
-);
+const q20StudentProof = `삼각형 AOB의 넓이는 1/2×6×4=12이므로 이등분되어야 하는 넓이는 6이다.
 
-const q15Solution = `[키포인트] 원의 중심이 옮겨진 좌표를 확인하고, 같은 좌표 변화를 직선에 적용한다.\n첫째 원은 (x-2)^2+(y+1)^2=4이므로 중심은 (2,-1)이고, 옮겨진 원 x^2+y^2=4의 중심은 (0,0)이다. 따라서 x방향으로 2만큼 왼쪽, y방향으로 1만큼 위로 옮긴 것이다.\n\n직선 l:3x-y+4=0 위의 점 (x,y)가 이 이동으로 (X,Y)가 되면 X=x-2, Y=y+1이므로 x=X+2, y=Y-1이다. 이를 원래 직선의 식에 대입하면\n3(X+2)-(Y-1)+4=0, 즉 3X-Y+11=0이다. 따라서 옮겨진 직선은 l':3x-y+11=0이다.\n\n두 직선은 평행하므로 두 직선 사이의 거리는 \\dfrac{|11-4|}{\\sqrt{3^2+(-1)^2}}=\\dfrac7{\\sqrt{10}}이다.\n따라서 정답은 ③이다.`;
+직선 y=-2x+k와 변 OB(y=0)의 교점을 R, 변 OA(y=4x/5)의 교점을 S라 하자.
+R=(k/2,0)이고, S=(5k/14,2k/7)이다.
 
-const q5Solution = `두 직선이 평행하려면 x, y의 계수의 비가 같아야 한다. 따라서\n\\dfrac{1-m}{2}=\\dfrac{3}{-m}에서 (1-m)(-m)=3\\cdot2이다.\n정리하면 m^2-m-6=0이므로 (m-3)(m+2)=0, m=3 또는 m=-2이다.\n\nm=3일 때 첫 번째 직선은 -2x+3y-5=0, 두 번째 직선은 2x-3y+5=0으로 서로 같은 직선이다. 따라서 서로 다른 평행선이 되는 값은 m=-2이다.\n참고로 m=0이면 두 번째 직선은 수직선 2x+5=0이고 첫 번째 직선의 기울기는 -1/3이므로 평행하지 않다. 따라서 나눗셈에서 빠지는 경우도 조건을 만족하지 않는다.\n\n따라서 정답은 ①이다.`;
+첫째, 0<k<12이면 R, S가 각각 선분 OB, OA 위에 있다. 이때 원점 쪽 삼각형의 넓이는
+[ORS]=1/2×(k/2)×(2k/7)=k²/14이다.
+따라서 k²/14=6에서 k=2√21이고, 실제로 0<2√21<12이다.
 
-const q22Solution = `[키포인트] 계수의 비와 기울기의 관계를 이용해 평행·일치·수직을 차례로 판정한다.\n두 직선의 계수는 각각 (a+2,3,1), (1,a,-1)이다.\n\n평행 또는 일치하려면 x, y의 계수의 비가 같아야 하므로\na(a+2)=3이다. 즉 (a-1)(a+3)=0이므로 a=1 또는 -3이다.\na=-3이면 두 식이 서로 -1배가 되어 일치하므로 β=-3이다. a=1이면 상수항의 비가 달라 서로 다른 평행선이므로 α=1이다.\n\n수직일 때에는 두 직선의 기울기의 곱이 -1이다. a=0이면 두 번째 직선은 수직선 x-1=0이고 첫 번째 직선은 기울기 -2/3이므로 수직 조건을 만족하지 않는다. 따라서 a≠0인 경우를 살펴보면 첫 번째 직선의 기울기는 -(a+2)/3, 두 번째 직선의 기울기는 -1/a이므로\n\\left(-\\dfrac{a+2}{3}\\right)\\left(-\\dfrac1a\\right)=-1이다. 정리하면 a=-\\dfrac12이므로 γ=-\\dfrac12이다.\n\n따라서 αβγ=1\\cdot(-3)\\cdot\\left(-\\dfrac12\\right)=\\dfrac32이다.`;
+둘째, 12≤k<14이면 직선은 OA와 AB를 자른다. S는 OA와의 교점이고 T는 AB와의 교점이다.
+이 구간에서는 AB의 식이 y=-4x+24이므로 T=(12-k/2,2k-24)이다. A=(5,4), B=(6,0)이므로
+AS/AO=(5-5k/14)/5=(14-k)/14이고, AT/AB=((12-k/2)-5)/(6-5)=(14-k)/2이다.
+삼각형 AST와 AOB는 A에서 끼인각을 공유하므로 넓이의 비는 이 두 변의 비의 곱이다. 따라서
+[AST]=[AOB]×AS/AO×AT/AB=12×(14-k)/14×(14-k)/2=3(14-k)²/7이다.
+12≤k<14에서 0<14-k≤2이므로 [AST]≤12/7<6이다. 따라서 원점 쪽 넓이는 12-[AST]>6이어서 이등분할 수 없다.
 
-const q14Solution = `[키포인트] 첫 번째 원의 접선 방정식을 구한 뒤, 두 번째 원의 중심에서 그 접선까지의 거리를 반지름과 같게 둔다.\n\n첫 번째 원은 (x+3)^2+(y+2)^2=10이므로 중심은 (-3,-2)이다. 점 (-2,1)에서 중심으로 향하는 반지름의 방향은 (1,3)이므로 접선의 방정식은\n(x+3)+3(y+2)=10, 즉 x+3y-1=0이다.\n두 번째 원은 (x-3)^2+(y+4)^2=25-k이므로 중심은 (3,-4), 반지름의 제곱은 25-k이다.\n중심 (3,-4)에서 접선 x+3y-1=0까지의 거리는 \\dfrac{|3+3(-4)-1|}{\\sqrt{1^2+3^2}}=\\sqrt{10}이다.\n따라서 25-k=10에서 k=15이고, 반지름의 제곱도 양수이다.\n\n따라서 정답은 ⑤이다.\n[보강] 원의 접점에서 그은 반지름은 접선과 수직이다.`;
+셋째, k≤0이면 직선은 삼각형 내부를 가르지 못하고, k≥14이면 원점 쪽 넓이가 삼각형 전체 넓이 12가 되어 이등분 조건을 만족하지 않는다.
+
+따라서 조건을 만족하는 값은 k=2√21이다.`;
+
+const q15Solution = `[키포인트] 원의 중심이 옮겨진 좌표를 확인하고, 같은 좌표 변화를 직선에 적용한다.\n첫째 원은 $(x-2)^2+(y+1)^2=4$이므로 중심은 $(2,-1)$이고, 옮겨진 원 $x^2+y^2=4$의 중심은 $(0,0)$이다. 따라서 x방향으로 2만큼 왼쪽, y방향으로 1만큼 위로 옮긴 것이다.\n\n직선 $l:3x-y+4=0$ 위의 점 $(x,y)$가 이 이동으로 $(X,Y)$가 되면 $X=x-2$, $Y=y+1$이므로 $x=X+2$, $y=Y-1$이다. 이를 원래 직선의 식에 대입하면\n$3(X+2)-(Y-1)+4=0$, 즉 $3X-Y+11=0$이다. 따라서 옮겨진 직선은 $l':3x-y+11=0$이다.\n\n두 직선은 평행하므로 두 직선 사이의 거리는 $\\dfrac{|11-4|}{\\sqrt{3^2+(-1)^2}}=\\dfrac7{\\sqrt{10}}$이다.\n따라서 정답은 ③이다.`;
+
+const q5Solution = `두 직선이 평행하려면 x, y의 계수의 비가 같아야 한다. 따라서\n$\\dfrac{1-m}{2}=\\dfrac{3}{-m}$에서 $(1-m)(-m)=3\\cdot2$이다.\n정리하면 $m^2-m-6=0$이므로 $(m-3)(m+2)=0$, $m=3$ 또는 $m=-2$이다.\n\n$m=3$일 때 첫 번째 직선은 $-2x+3y-5=0$, 두 번째 직선은 $2x-3y+5=0$으로 서로 같은 직선이다. 따라서 서로 다른 평행선이 되는 값은 $m=-2$이다.\n참고로 $m=0$이면 두 번째 직선은 수직선 $2x+5=0$이고 첫 번째 직선의 기울기는 $-1/3$이므로 평행하지 않다. 따라서 나눗셈에서 빠지는 경우도 조건을 만족하지 않는다.\n\n따라서 정답은 ①이다.`;
+
+const q22Solution = `[키포인트] 계수의 비와 기울기의 관계를 이용해 평행·일치·수직을 차례로 판정한다.\n두 직선의 계수는 각각 $(a+2,3,1)$, $(1,a,-1)$이다.\n\n평행 또는 일치하려면 x, y의 계수의 비가 같아야 하므로\n$a(a+2)=3$이다. 즉 $(a-1)(a+3)=0$이므로 $a=1$ 또는 $-3$이다.\n$a=-3$이면 두 식이 서로 $-1$배가 되어 일치하므로 $\\beta=-3$이다. $a=1$이면 상수항의 비가 달라 서로 다른 평행선이므로 $\\alpha=1$이다.\n\n수직일 때에는 두 직선의 기울기의 곱이 $-1$이다. $a=0$이면 두 번째 직선은 수직선 $x-1=0$이고 첫 번째 직선은 기울기 $-2/3$이므로 수직 조건을 만족하지 않는다. 따라서 $a\\ne0$인 경우를 살펴보면 첫 번째 직선의 기울기는 $-(a+2)/3$, 두 번째 직선의 기울기는 $-1/a$이므로\n$\\left(-\\dfrac{a+2}{3}\\right)\\left(-\\dfrac1a\\right)=-1$이다. 정리하면 $a=-\\dfrac12$이므로 $\\gamma=-\\dfrac12$이다.\n\n따라서 $\\alpha\\beta\\gamma=1\\cdot(-3)\\cdot\\left(-\\dfrac12\\right)=\\dfrac32$이다.`;
+
+const q14Solution = `[키포인트] 첫 번째 원의 접선 방정식을 구한 뒤, 두 번째 원의 중심에서 그 접선까지의 거리를 반지름과 같게 둔다.\n\n첫 번째 원은 $(x+3)^2+(y+2)^2=10$이므로 중심은 $(-3,-2)$이다. 점 $(-2,1)$에서 중심으로 향하는 반지름의 방향은 $(1,3)$이므로 접선의 방정식은\n$(x+3)+3(y+2)=10$, 즉 $x+3y-1=0$이다.\n두 번째 원은 $(x-3)^2+(y+4)^2=25-k$이므로 중심은 $(3,-4)$, 반지름의 제곱은 $25-k$이다.\n중심 $(3,-4)$에서 접선 $x+3y-1=0$까지의 거리는 $\\dfrac{|3+3(-4)-1|}{\\sqrt{1^2+3^2}}=\\sqrt{10}$이다.\n따라서 $25-k=10$에서 $k=15$이고, 반지름의 제곱도 양수이다.\n\n따라서 정답은 ⑤이다.\n[보강] 원의 접점에서 그은 반지름은 접선과 수직이다.`;
 
 const q2Solution = `점 (4,1)을 점 (-1,3)으로 옮기려면 x방향으로 5만큼 왼쪽, y방향으로 2만큼 위로 평행이동해야 한다.\n따라서 점 (2,5)는\n(2-5,5+2)=(-3,7)\n로 옮겨진다.\n\n따라서 정답은 ②이다.`;
 
-const q7Solution = `[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 2x-y+1=0, 2x-y+k=0은 평행하므로 거리는\n\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k-1|}{\\sqrt5}이다.\n이 값이 \\sqrt5이므로 |k-1|=5이다. 따라서 k=6 또는 k=-4이고, 두 값의 곱은 -24이다.\n\n따라서 정답은 ④이다.`;
+const q7Solution = `[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 $2x-y+1=0$, $2x-y+k=0$은 평행하므로 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k-1|}{\\sqrt5}$이다.\n이 값이 $\\sqrt5$이므로 $|k-1|=5$이다. 따라서 $k=6$ 또는 $k=-4$이고, 두 값의 곱은 $-24$이다.\n\n따라서 정답은 ④이다.`;
 
 const q24JeilQ14Solution = `[키포인트]\\n직선의 방정식에 $k$를 대입하거나 항등식 성질을 이용한다.\\n\\n조건 정리\\n- ㄱ: $k=-1 \\implies 3y-3=0 \\implies y=1$. 기울기 0이다. (참)\\n- ㄴ: $k=0 \\implies x+2y-3=0$. 기울기는 $-1/2$이다. $4x-2y-3=0$의 기울기는 2이므로 수직이다. (참)\\n- ㄷ: $x+y-3 + k(x-y) = 0$ 꼴로 정리하면 $x=1, y=1$일 때 성립한다. (참)\\n\\n풀이 과정\\nㄱ, ㄴ, ㄷ이 모두 참이므로 정답은 ④이다.\\n\\n결론\\n따라서 정답은 ④이다.`;
 
@@ -275,7 +294,23 @@ function shaFileText(value) {
 function writeMetadataAtomically(metadataPath, value) {
   const tempPath = `${metadataPath}.external-review.tmp`;
   fs.writeFileSync(tempPath, value, "utf8");
-  fs.renameSync(tempPath, metadataPath);
+  try {
+    fs.renameSync(tempPath, metadataPath);
+  } catch (error) {
+    if (!['EPERM', 'EEXIST', 'ENOTEMPTY'].includes(error.code)) throw error;
+    const recoveryPath = `${metadataPath}.external-review.recovery`;
+    fs.rmSync(recoveryPath, { force: true });
+    fs.copyFileSync(metadataPath, recoveryPath);
+    try {
+      fs.copyFileSync(tempPath, metadataPath);
+      fs.rmSync(tempPath, { force: true });
+      fs.rmSync(recoveryPath, { force: true });
+    } catch (copyError) {
+      fs.copyFileSync(recoveryPath, metadataPath);
+      fs.rmSync(tempPath, { force: true });
+      throw copyError;
+    }
+  }
 }
 
 function syncQ13Sidecars() {
@@ -449,5 +484,18 @@ ledger.push({ file: path.relative(ROOT, q22Asset).replaceAll("\\", "/"), status:
 
 const reportDir = path.join(ROOT, "docs", "evidence", "high1-geometry-equation");
 fs.mkdirSync(reportDir, { recursive: true });
-write(path.join(reportDir, "external_repair_ledger.json"), JSON.stringify({ status: "REOPENED_PINPOINT_REPAIR_APPLIED", generatedAt: new Date().toISOString(), changes: ledger }, null, 2) + "\n");
+write(path.join(reportDir, "external_repair_ledger.json"), JSON.stringify({
+  status: "REOPENED_PINPOINT_REPAIR_APPLIED",
+  generatedAt: new Date().toISOString(),
+  reviewFindingsClosed: [
+    "q15 SVG endpoint coordinates are generated from the declared line equations and checked by inverse-mapped residual/slope gates",
+    "raw LaTeX outside MathJax delimiters is a fail-closed gate across the target solution set",
+    "B scale checks derive grid or explicit scale evidence; no unconditional true branch remains",
+    "C evidence requires a real codex-in-app-browser capture and validates exam/sol/ans source-wide cases",
+    "diff lock binds baseline-to-working-tree changes and reports the baseline commit",
+    "H15-SA-13 is registered consistently as a standard unit and its quadratic subunits remain parent-linked",
+    "the unrelated H2 qCount note distinguishes DB/JS 24 from question-index 23 and records it as a local external blocker",
+  ],
+  changes: ledger,
+}, null, 2) + "\n");
 console.log(JSON.stringify({ status: "PASS", changeCount: ledger.length, q20Asset: path.relative(ROOT, q20Asset), q15Asset: path.relative(ROOT, q15Asset), q22Asset: path.relative(ROOT, q22Asset) }, null, 2));
