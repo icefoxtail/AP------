@@ -10,7 +10,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -33,7 +33,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n이차방정식의 근과 계수의 관계를 이용하여 두 근의 합과 곱을 구하고, 곱셈 공식의 변형을 통해 식의 값을 계산한다.\n\n조건 정리\n이차방정식 $x^2-2x+2=0$의 두 근은 $\\alpha, \\beta$이다.\n\n풀이 방향 설정\n근과 계수의 관계에서 $\\alpha+\\beta$와 $\\alpha\\beta$를 구한 후, $\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta$에 대입한다.\n\n풀이 과정\n1단계: 근과 계수의 관계에 의하여\n$\\alpha+\\beta = -\\frac{-2}{1} = 2$\n$\\alpha\\beta = \\frac{2}{1} = 2$\n2단계: 곱셈 공식의 변형을 이용하면\n$\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 2^2 - 2(2) = 4-4 = 0$\n\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -46,7 +46,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -82,7 +82,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -116,7 +116,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -138,7 +138,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n이차방정식이 중근을 가질 조건 $D=0$을 이용한다.\n\n조건 정리\n$x^2-(k+3)x+4=0$, $k < 0$\n\n풀이 과정\n$D = (k+3)^2 - 16 = 0$\n$(k+3)^2 = 16 \\implies k+3 = \\pm 4$\n$k = 1$ 또는 $k = -7$\n음의 정수이므로 $k = -7$\n\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -151,7 +151,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -186,7 +186,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -223,7 +223,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -260,7 +260,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -284,7 +284,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n한 문자를 소거하여 제한된 범위 내의 이차함수 문제로 변환한다.\n\n조건 정리\n$y = 2x-4$, $-1 \\le x \\le 4$\n\n풀이 과정\n1단계: $f(x) = x(2x-4) = 2x^2-4x = 2(x-1)^2-2$이다.\n2단계: $x=1$에서 최소 $n = -2$, $x=4$에서 최대 $M = 16$이다.\n3단계: $M-n = 16 - (-2) = 18$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -297,7 +297,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -334,7 +334,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -358,7 +358,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n항등식의 성질로 정점을 찾고, 꼭짓점 조건을 이용하여 미지수를 확정한다.\n\n조건 정리\n$y = x^2 + a(x-2) \\implies P(2, 4)$\n\n풀이 과정\n꼭짓점의 $x$좌표가 $2$이므로 $-a/2 = 2 \\implies a = -4$이다.\n$y = x^2-4x+8$의 $y$절편은 $8$이다.\n\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -372,7 +372,7 @@ window.questionBank = [
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
     "layoutTag": "grid",
-    "questionType": "",
+    "questionType": "객관식",
     "tags": [
       "객관식",
       "이차함수",
@@ -395,7 +395,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n직사각형의 존재 조건 $(\\text{둘레}/4)^2 \\ge \\text{넓이}$를 활용한다.\n\n조건 정리\n현재 상태: $25^2 = 625 < 800$ (성립 불가)\n\n풀이 과정\n④ 넓이가 $300$, 둘레가 $60$이면 $(60/4)^2 = 225$이다.\n$225 < 300$이므로 여전히 지을 수 없다.\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -408,7 +408,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -445,7 +445,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -469,7 +469,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n치환을 이용하고 치환한 문자의 범위를 제한하여 이차함수의 최대최소를 구한다.\n\n조건 정리\n$t = x^2-4x$, $y = (t+1)^2-6t = t^2-4t+1$\n\n풀이 방향 설정\n$x \\in [0, 3]$에서 $t$의 범위를 구한 후 $y$의 최대최소를 구한다.\n\n풀이 과정\n1단계: $t = (x-2)^2-4$이고 $x \\in [0, 3]$이므로 $t \\in [-4, 0]$이다.\n2단계: $y = (t-2)^2-3$에서 $t=0 \\implies m=1$, $t=-4 \\implies M=33$이다.\n3단계: $M+m = 34$이다.\n\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -482,7 +482,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -506,7 +506,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n근과 계수의 관계 $\\alpha+\\beta=5$를 활용하여 $f(x)$의 형태를 추론한다.\n\n조건 정리\n$f(\\alpha) = -20\\alpha, f(\\beta) = -20\\beta, f(1) = -5$\n\n풀이 방향 설정\n$f(x)+20x = k(x^2-5x+3)$으로 둔다.\n\n풀이 과정\n1단계: $x=1$ 대입, $-5+20 = k(1-5+3) \\implies k = -15$\n2단계: $f(x) = -15x^2 + 55x - 45 = 0$\n3단계: 두 근의 곱은 $-45/-15 = 3$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -519,7 +519,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -556,7 +556,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -577,7 +577,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n정점 $(t, 2t)$가 이차함수의 곡선 위 또는 내부에 있어야 한다.\n\n풀이 과정\n$2t \\ge t^2+8t-7 \\implies t^2+6t-7 \\le 0 \\implies -7 \\le t \\le 1$\n\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -590,7 +590,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -626,7 +626,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -645,7 +645,7 @@ window.questionBank = [
       "⑤ $22$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 나눗셈식에서 $x^5≡1$이 되는 이유를 확인하고, 각 고차항의 차수를 차례로 낮춘다.\n\n$D(x)=x^4+x^3+x^2+x+1$이라 하면\n$(x-1)D(x)=x^5-1$이므로 $D(x)$로 나눈 나머지를 계산할 때 $x^5≡1$이다. 따라서\n$x^{46}=x^{5×9+1}≡x$, $x^{45}=x^{5×9}≡1$, $x^{44}=x^{5×8+4}≡x^4$,\\n$x^{43}=x^{5×8+3}≡x^3$, $x^{42}=x^{5×8+2}≡x^2$, $x^{41}=x^{5×8+1}≡x$이다.\n\n그러므로 주어진 다항식의 나머지는\\n$2x+3+4x^4+4x^3+4x^2+2x+2x+3$\\n$=4x^4+4x^3+4x^2+6x+6$이다. 여기서\\n$4x^4+4x^3+4x^2+6x+6-4D(x)=2x+2$\\n이므로 $R(x)=2x+2$이다. 따라서\\n$R(5)=2×5+2=12$이고, 정답은 ③이다.",
+    "solution": "[키포인트] 나눗셈식에서 $x^5≡1$이 되는 이유를 확인하고, 각 고차항의 차수를 차례로 낮춘다.\n\n$D(x)=x^4+x^3+x^2+x+1$이라 하면\n$(x-1)D(x)=x^5-1$이므로 $D(x)$로 나눈 나머지를 계산할 때 $x^5≡1$이다. 따라서\n$x^{46}=x^{5×9+1}≡x$, $x^{45}=x^{5×9}≡1$, $x^{44}=x^{5×8+4}≡x^4$,\n$x^{43}=x^{5×8+3}≡x^3$, $x^{42}=x^{5×8+2}≡x^2$, $x^{41}=x^{5×8+1}≡x$이다.\n\n그러므로 주어진 다항식의 나머지는\n$2x+3+4x^4+4x^3+4x^2+2x+2x+3$\n$=4x^4+4x^3+4x^2+6x+6$이다. 여기서\n$4x^4+4x^3+4x^2+6x+6-4D(x)=2x+2$\n이므로 $R(x)=2x+2$이다. 따라서\n$R(5)=2×5+2=12$이고, 정답은 ③이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -660,7 +660,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -677,7 +677,7 @@ window.questionBank = [
     "answer": "$8$개",
     "solution": "[키포인트]\n판별식, 축, 함숫값 조건을 모두 사용한다.\n\n풀이 과정\n$D/4=1-a > 0, -1 < 2, f(2)=8+a > 0 \\implies -8 < a < 1$. 정수는 $8$개.\n\n결론\n따라서 구하는 값은 $8$개이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -690,7 +690,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -720,7 +720,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -735,7 +735,7 @@ window.questionBank = [
     "answer": "$-8$",
     "solution": "[키포인트]\n정수근 부정방정식 $(\\alpha-1)(\\beta-1)=3$을 활용한다.\n\n풀이 과정\n$a=0, -8$ 가능. 합은 $-8$.\n\n결론\n따라서 정답은 $-8$이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -748,7 +748,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -766,7 +766,7 @@ window.questionBank = [
     "answer": "$2$",
     "solution": "[키포인트]\n축 $x=a$의 위치별 케이스 분류를 한다.\n\n풀이 과정\n$a=2-\\sqrt{2}, \\sqrt{2}$ 가능. 합은 $2$.\n\n결론\n따라서 구하는 값은 $2$이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
-    "subUnit": "quadratic function application",
+    "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -779,7 +779,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",

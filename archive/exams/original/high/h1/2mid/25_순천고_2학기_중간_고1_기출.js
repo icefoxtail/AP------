@@ -97,9 +97,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q03-solution.svg",
 
-    "solutionImageAlt": "평면좌표 문항 3의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageAlt": "평면좌표 문항 3의 핵심 관계를 표시한 해설 도형",
 
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
 
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
@@ -423,9 +423,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q12-solution.svg",
 
-    "solutionImageAlt": "직선의 방정식 문항 12의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
 
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
 
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
@@ -532,9 +532,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q15-solution.svg",
 
-    "solutionImageAlt": "도형의 이동 문항 15의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
 
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
 
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
@@ -646,9 +646,9 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
 
-    "solutionImageAlt": "직선의 방정식 문항 18의 독립 풀이 사실 기반 해설 도형",
+    "solutionImageAlt": "직선의 방정식 문항 18의 핵심 관계를 표시한 해설 도형",
 
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
 
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",

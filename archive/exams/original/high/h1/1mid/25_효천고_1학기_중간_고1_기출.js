@@ -10,7 +10,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -45,7 +45,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -80,7 +80,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -114,7 +114,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -149,7 +149,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -183,7 +183,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -219,7 +219,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -256,7 +256,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -293,7 +293,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -330,7 +330,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -364,7 +364,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -400,7 +400,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -435,7 +435,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -457,7 +457,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 근과 계수의 관계를 이용하여 새로운 방정식의 계수를 구한다.\n$3x^2+2x+5=0$의 두 근이 $\\alpha, \\beta$이므로 근과 계수의 관계에 의해\n$\\alpha+\\beta = -\\frac{2}{3}, \\alpha\\beta = \\frac{5}{3}$ 이다.\n새로운 이차방정식의 두 근은 $\\frac{1}{\\alpha^2}$과 $\\frac{1}{\\beta^2}$이다.\n두 근의 합: $-a = \\frac{1}{\\alpha^2} + \\frac{1}{\\beta^2} = \\frac{\\alpha^2+\\beta^2}{(\\alpha\\beta)^2}$\n$\\alpha^2+\\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = (-\\frac{2}{3})^2 - 2(\\frac{5}{3}) = \\frac{4}{9} - \\frac{30}{9} = -\\frac{26}{9}$\n$(\\alpha\\beta)^2 = (\\frac{5}{3})^2 = \\frac{25}{9}$\n$-a = \\frac{-\\frac{26}{9}}{\\frac{25}{9}} = -\\frac{26}{25} \\implies a = \\frac{26}{25}$\n두 근의 곱: $b = \\frac{1}{\\alpha^2} \\times \\frac{1}{\\beta^2} = \\frac{1}{(\\alpha\\beta)^2} = \\frac{1}{\\frac{25}{9}} = \\frac{9}{25}$\n구하고자 하는 값은 $\\frac{13}{a} + \\frac{3}{b}$ 이다.\n$\\frac{13}{\\frac{26}{25}} + \\frac{3}{\\frac{9}{25}} = 13 \\times \\frac{25}{26} + 3 \\times \\frac{25}{9} = \\frac{25}{2} + \\frac{25}{3} = \\frac{75+50}{6} = \\frac{125}{6}$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -470,7 +470,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -494,7 +494,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 근의 비가 주어지면 두 근을 $\\alpha, 3\\alpha$로 놓고 근과 계수의 관계를 이용한다.\n두 근을 $\\alpha, 3\\alpha$라 하면 근과 계수의 관계에 의해\n두 근의 합: $\\alpha + 3\\alpha = 4\\alpha = k \\implies \\alpha = \\frac{k}{4}$\n두 근의 곱: $\\alpha \\times 3\\alpha = 3\\alpha^2 = k-1$\n$\n\\alpha$를 두 번째 식에 대입하면\n$3(\\frac{k}{4})^2 = k-1 \\implies \\frac{3k^2}{16} = k-1 \\implies 3k^2 = 16k - 16$\n$3k^2 - 16k + 16 = 0$ 을 인수분해하면 $(3k-4)(k-4) = 0$ 이다.\n따라서 $k = \\frac{4}{3}$ 또는 $k = 4$ 이다.\n최댓값 $M = 4$, 최솟값 $m = \\frac{4}{3}$ 이므로\n$M-m = 4 - \\frac{4}{3} = \\frac{8}{3}$ 이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -507,7 +507,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -544,7 +544,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -568,7 +568,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 계수가 실수인 이차방정식의 한 허수 근이 주어지면 켤레복소수도 근이다.\n$2x^2+ax+b=0$ 의 계수가 모두 실수이므로 한 근이 $-2+2i$ 이면 켤레복소수인 $-2-2i$ 도 근이다.\n근과 계수의 관계에 의해\n두 근의 합: $(-2+2i) + (-2-2i) = -4 = -\\frac{a}{2} \\implies a = 8$\n두 근의 곱: $(-2+2i)(-2-2i) = (-2)^2 - (2i)^2 = 4 + 4 = 8 = \\frac{b}{2} \\implies b = 16$\n두 번째 이차방정식 $x^2-2ax+b+k=0$ 에 대입하면\n$x^2-16x+16+k=0$ 이다.\n이 방정식이 서로 다른 두 실근을 가지므로 판별식 $D > 0$ 이어야 한다.\n$\\frac{D}{4} = (-8)^2 - (16+k) > 0$\n$64 - 16 - k > 0 \\implies 48 - k > 0 \\implies k < 48$\n$k$는 홀수인 자연수이므로 $1, 3, 5, \\dots, 47$ 이다.\n홀수 $2n-1 = 47$ 에서 $2n = 48 \\implies n = 24$ 이므로 총 $24$개이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -581,7 +581,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -618,7 +618,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -655,7 +655,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -690,7 +690,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -708,7 +708,7 @@ window.questionBank = [
     "answer": "$2$",
     "solution": "[키포인트] 이차방정식일 조건과 서로 다른 두 실근을 가질 조건(판별식 $D>0$)을 모두 만족해야 한다.\n$x$에 대한 이차방정식이므로 최고차항의 계수는 $0$이 될 수 없다.\n따라서 $k-1 \\neq 0 \\implies k \\neq 1$ 이다.\n주어진 이차방정식이 서로 다른 두 실근을 가지려면 판별식 $D > 0$ 이어야 한다.\n$\\frac{D}{4} = 1^2 - (k-1)(-3) > 0$\n$1 + 3(k-1) > 0$\n$1 + 3k - 3 > 0 \\implies 3k > 2 \\implies k > \\frac{2}{3}$\n두 조건을 모두 만족하는 $k$의 범위는 $k > \\frac{2}{3}$ 이고 $k \\neq 1$ 이다.\n이 범위를 만족하는 정수 $k$는 $2, 3, 4, \\dots$ 이다.\n따라서 정수 $k$의 최솟값은 $2$이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -721,7 +721,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",
     "standardUnitOrder": 5,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -739,7 +739,7 @@ window.questionBank = [
     "answer": "$2$",
     "solution": "[키포인트] 인수정리를 이용하여 주어진 조건을 만족하는 이차식을 세운다.\n조건 $f(\\alpha)=2\\alpha$ 와 $f(\\beta)=2\\beta$ 에 의하여 $f(\\alpha)-2\\alpha=0$, $f(\\beta)-2\\beta=0$ 이 성립한다.\n이는 이차방정식 $f(x)-2x=0$ 의 두 근이 $\\alpha, \\beta$ 임을 의미한다.\n$\\alpha, \\beta$를 두 근으로 하는 이차식은 $x^2+ax+b$ 이고, $f(x)$의 이차항 계수가 $3$이므로\n$f(x) - 2x = 3(x^2+ax+b)$ 로 식을 세울 수 있다.\n따라서 $f(x) = 3(x^2+ax+b) + 2x$ 이다.\n$f(1) = 11$ 이므로 위 식에 $x=1$ 을 대입하면\n$f(1) = 3(1+a+b) + 2 = 11$\n$3(1+a+b) = 9$\n$1+a+b = 3 \\implies a+b = 2$ 이다.\n따라서 $a+b=2$ 이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -752,7 +752,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -783,7 +783,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",

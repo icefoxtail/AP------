@@ -103,7 +103,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n두 번째 식을 인수분해하여 첫 번째 식을 대입한다.\n조건 정리\n$x+y=1$, $x^2+xy=7$이다.\n풀이 과정\n두 번째 식을 인수분해하면\n$x^2+xy=x(x+y)=7$이다.\n첫 번째 식에서 $x+y=1$이므로 이를 대입하면\n$x\\cdot1=7$\n따라서 $x=7$이다.\n$x=7$을 $x+y=1$에 대입하면\n$7+y=1$에서 $y=-6$이다.\n따라서 $\\alpha=7$, $\\beta=-6$이므로\n$\\alpha-\\beta=7-(-6)=13$이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -140,7 +140,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n절댓값 부등식의 성질을 이용하여 해의 범위를 구한다.\n조건 정리\n$|x-1|\\le5$이다.\n풀이 과정\n$|x-1|\\le5 \\iff -5\\le x-1\\le5$\n양변에 $1$을 더하면\n$-4\\le x\\le6$이다.\n이를 만족하는 정수 $x$는\n$-4,-3,-2,-1,0,1,2,3,4,5,6$으로 총 $11$개이다.\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -175,7 +175,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n순열의 계산 공식을 이용한다.\n조건 정리\n${}_8P_2$를 계산한다.\n풀이 과정\n${}_nP_r=n(n-1)\\cdots(n-r+1)$이므로\n${}_8P_2=8\\times7=56$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -283,7 +283,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n$n$개의 팀이 서로 한 번씩 경기하는 횟수는 조합을 이용해 구한다.\n조건 정리\n전체 경기 수는 ${}_nC_2=66$이다.\n풀이 과정\n${}_nC_2=\\dfrac{n(n-1)}{2}=66$\n$n(n-1)=132$\n연속된 두 자연수의 곱이 $132$가 되는 경우는\n$12\\times11=132$이므로 $n=12$이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -319,7 +319,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n절댓값 기호 안의 식의 값이 $0$이 되는 $x=3$, $x=5$를 기준으로 범위를 나누어 푼다.\n조건 정리\n$|x-3|+2|x-5|\\le4$이다.\n풀이 과정\n(i) $x<3$일 때\n$|x-3|+2|x-5|=-(x-3)-2(x-5)$이므로\n$-x+3-2x+10\\le4$\n$-3x+13\\le4$\n$3x\\ge9$\n$x\\ge3$\n가정 $x<3$과 맞지 않으므로 해가 없다.\n(ii) $3\\le x<5$일 때\n$|x-3|+2|x-5|=(x-3)-2(x-5)$이므로\n$x-3-2x+10\\le4$\n$-x+7\\le4$\n$x\\ge3$\n따라서 이 구간에서는 $3\\le x<5$이다.\n(iii) $x\\ge5$일 때\n$|x-3|+2|x-5|=(x-3)+2(x-5)$이므로\n$x-3+2x-10\\le4$\n$3x-13\\le4$\n$x\\le\\dfrac{17}{3}$\n따라서 이 구간에서는 $5\\le x\\le\\dfrac{17}{3}$이다.\n전체 해는 $3\\le x\\le\\dfrac{17}{3}$이다.\n이를 만족하는 정수 $x$는 $3,4,5$이므로 그 합은\n$3+4+5=12$이다.\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -390,7 +390,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n두 근의 부호 조건은 근의 곱으로, 절댓값 크기 조건은 근의 합으로 판단한다.\n조건 정리\n두 근은 $\\alpha>0>\\beta$이고 $|\\alpha|-|\\beta|>0$이다.\n즉 $\\alpha$는 양수, $\\beta$는 음수이고 $|\\alpha|>|\\beta|$이다.\n풀이 과정\n두 근의 부호가 서로 다르려면 근의 곱이 음수이어야 한다.\n근과 계수의 관계에 의해\n$\\alpha\\beta=p^2-6p-7$이므로\n$p^2-6p-7<0$\n$(p-7)(p+1)<0$\n따라서\n$-1<p<7$이다.\n또한 $\\alpha>0>\\beta$이고 $|\\alpha|>|\\beta|$이면, 양수인 근의 크기가 음수인 근의 절댓값보다 크다는 뜻이다.\n그러므로\n$\\alpha+\\beta>0$이다.\n근과 계수의 관계에 의해\n$\\alpha+\\beta=-(p^2-3p-4)$이므로\n$-(p^2-3p-4)>0$\n$p^2-3p-4<0$\n$(p-4)(p+1)<0$\n따라서\n$-1<p<4$이다.\n두 조건의 공통 범위는\n$-1<p<4$이다.\n이를 만족하는 정수 $p$는 $0,1,2,3$이고, 그 합은\n$0+1+2+3=6$이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -463,7 +463,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n이차함수와 직선이 만날 조건은 연립하여 얻은 이차방정식이 실근을 갖는 것이다.\n조건 정리\n$y=x^2+a$와 $y=bx-3$이 만나는 점이 존재해야 한다.\n풀이 과정\n두 식을 연립하면\n$x^2+a=bx-3$\n$x^2-bx+a+3=0$이다.\n이 이차방정식이 실근을 가져야 하므로 판별식이 $0$ 이상이어야 한다.\n$D=b^2-4(a+3)\\ge0$\n따라서\n$b^2\\ge4a+12$이다.\n주사위의 눈이므로 $a,b\\in\\{1,2,3,4,5,6\\}$이다.\n$a$의 값에 따라 가능한 $b$를 세면\n$a=1$일 때 $b^2\\ge16$이므로 $b=4,5,6$의 $3$개,\n$a=2$일 때 $b^2\\ge20$이므로 $b=5,6$의 $2$개,\n$a=3$일 때 $b^2\\ge24$이므로 $b=5,6$의 $2$개,\n$a=4$일 때 $b^2\\ge28$이므로 $b=6$의 $1$개,\n$a=5$일 때 $b^2\\ge32$이므로 $b=6$의 $1$개,\n$a=6$일 때 $b^2\\ge36$이므로 $b=6$의 $1$개이다.\n따라서 가능한 순서쌍의 총 개수는\n$3+2+2+1+1+1=10$개이다.\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -500,7 +500,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n'적어도 2명'은 특정한 3명 중 2명을 뽑는 경우와 3명 모두 뽑는 경우로 나누어 계산한다.\n조건 정리\n전체 10명 중 특정한 3명은 회장, 부회장, 대의원이고 나머지 학생은 7명이다.\n축제 준비 위원은 5명을 뽑는다.\n풀이 과정\n(i) 회장, 부회장, 대의원 중 정확히 2명을 뽑는 경우\n특정한 3명 중 2명을 뽑고, 나머지 7명 중 3명을 뽑으면 된다.\n${}_3C_2\\times{}_7C_3=3\\times35=105$\n(ii) 회장, 부회장, 대의원 3명을 모두 뽑는 경우\n특정한 3명을 모두 뽑고, 나머지 7명 중 2명을 뽑으면 된다.\n${}_3C_3\\times{}_7C_2=1\\times21=21$\n따라서 구하는 경우의 수는\n$105+21=126$이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -537,7 +537,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n이차부등식의 해가 두 근 사이의 구간으로 주어졌으므로 이차식을 인수분해 꼴로 두고 계산한다.\n조건 정리\n$f(x)<0$의 해가 $1<x<4$이다.\n풀이 과정\n$f(x)<0$의 해가 두 근 $1$, $4$ 사이에서만 성립하므로 $f(x)$는 위로 열린 이차식이어야 한다.\n따라서\n$f(x)=a(x-1)(x-4)$, $a>0$으로 둘 수 있다.\n이제\n$f(3x)=a(3x-1)(3x-4)$,\n$f(2x)=a(2x-1)(2x-4)$이다.\n직접 전개해 빼면\n$f(3x)-f(2x)=a\\{(9x^2-15x+4)-(4x^2-10x+4)\\}$\n$=a(5x^2-5x)$\n$=5ax(x-1)$이다.\n$a>0$이므로\n$f(3x)-f(2x)<0 \\iff 5ax(x-1)<0 \\iff x(x-1)<0$이다.\n따라서 해는\n$0<x<1$이다.\n이 범위를 만족하는 정수 $x$는 없다.\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -605,7 +605,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n전체 삼각형의 개수에서 정팔각형의 변을 적어도 하나 공유하는 삼각형을 빼서 구한다.\n조건 정리\n정팔각형의 꼭짓점은 모두 $8$개이다.\n정팔각형의 어떠한 변과도 공유하지 않는 삼각형을 만들어야 한다.\n풀이 과정\n먼저 $8$개의 꼭짓점 중 $3$개를 고르는 전체 경우의 수는\n${}_8C_3=56$이다.\n이 중 정팔각형의 변을 공유하는 삼각형을 뺀다.\n정팔각형의 변을 2개 공유하는 경우는 연속된 세 꼭짓점을 고르는 경우이다.\n정팔각형에서는 이런 경우가 꼭짓점의 개수만큼 있으므로 $8$개이다.\n정팔각형의 변을 정확히 1개 공유하는 경우를 세자.\n먼저 공유할 변을 하나 고르면 $8$가지이다.\n그 변의 양 끝점을 이미 고른 상태에서 세 번째 꼭짓점은 그 변과 이웃하여 또 다른 변을 만들면 안 된다.\n따라서 양 끝점과 각각 이웃한 두 점을 제외하고 고를 수 있는 점은 $4$개이다.\n그러므로 변을 정확히 1개 공유하는 삼각형은\n$8\\times4=32$개이다.\n따라서 정팔각형의 어떠한 변과도 공유하지 않는 삼각형의 개수는\n$56-8-32=16$개이다.\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -642,7 +642,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n고정된 자리, 순서를 정해야 하는 자리, 크기 순서가 자동으로 정해지는 자리를 나누어 계산한다.\n조건 정리\n$a_3=5$로 고정되어 있다.\n$a_1,a_2$는 $5$보다 작고, $a_4,a_5,a_6$는 $5$보다 크면서 오름차순이어야 한다.\n풀이 과정\n$a_1,a_2$는 $5$보다 작은 수 $1,2,3,4$ 중에서 서로 다른 $2$개를 뽑아 순서 있게 나열한다.\n따라서 경우의 수는\n${}_4P_2=4\\times3=12$가지이다.\n$a_4,a_5,a_6$은 $5$보다 큰 수 $6,7,8,9$ 중에서 $3$개를 고른다.\n이때 $a_4<a_5<a_6$으로 순서가 정해져 있으므로, 고르기만 하면 배열은 하나로 결정된다.\n따라서 경우의 수는\n${}_4C_3=4$가지이다.\n두 선택은 독립적으로 이루어지므로 전체 경우의 수는\n$12\\times4=48$가지이다.\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -670,7 +670,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 네 근을 두 쌍으로 묶고, 각 쌍의 합과 곱을 문자로 두어 비에타 정리와 연결한다.\n조건 정리: 네 근을 $\\alpha, \\beta, \\gamma, \\delta$라 하고 $\\alpha+\\beta=s$, $\\gamma+\\delta=t$로 둔다. 조건 $(\\alpha+\\beta)^2=3\\alpha\\beta$, $(\\gamma+\\delta)^2=3\\gamma\\delta$에서 $\\alpha\\beta=\\dfrac{s^2}{3}$, $\\gamma\\delta=\\dfrac{t^2}{3}$이다.\n풀이 방향: 사차방정식의 근을 두 쌍씩 묶어 두 이차식의 곱으로 나타낸 뒤, 계수를 비교하여 $s+t$, $st$를 구한다.\n정석 풀이: 두 근 $\\alpha, \\beta$를 갖는 이차식은 $x^2-(\\alpha+\\beta)x+\\alpha\\beta$이므로 $x^2-sx+\\dfrac{s^2}{3}$이다. 마찬가지로 두 근 $\\gamma, \\delta$를 갖는 이차식은 $x^2-tx+\\dfrac{t^2}{3}$이다.\n따라서 주어진 사차식은 $(x^2-sx+\\dfrac{s^2}{3})(x^2-tx+\\dfrac{t^2}{3})$로 나타낼 수 있다.\n이때 $x^3$의 계수는 $-(s+t)$이므로 $-(s+t)=-9$, 즉 $s+t=9$이다.\n또 $x^2$의 계수는 $st+\\dfrac{s^2}{3}+\\dfrac{t^2}{3}$이므로 $st+\\dfrac{s^2+t^2}{3}=30$이다.\n$s^2+t^2=(s+t)^2-2st=81-2st$이므로 $st+\\dfrac{81-2st}{3}=30$이다.\n이를 정리하면 $st+27-\\dfrac{2}{3}st=30$이므로 $27+\\dfrac{1}{3}st=30$, 따라서 $st=9$이다.\n이제 $x$의 계수를 구하면 $-\\left(s\\cdot\\dfrac{t^2}{3}+t\\cdot\\dfrac{s^2}{3}\\right)=-\\dfrac{st(s+t)}{3}$이다. 따라서 $p=-\\dfrac{9\\cdot9}{3}=-27$이다.\n상수항은 $\\dfrac{s^2}{3}\\cdot\\dfrac{t^2}{3}=\\dfrac{(st)^2}{9}=\\dfrac{81}{9}=9$이므로 $q=9$이다.\n따라서 $p+q=-27+9=-18$이므로 정답은 ①이다.",
     "subUnitKey": "H22-C-06-HIGHER_EQUATION",
-    "subUnit": "higher equation",
+    "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -738,7 +738,7 @@ window.questionBank = [
     "answer": "18",
     "solution": "[키포인트]\n3의 배수 판정법을 이용하여 뽑을 4개의 숫자를 결정하고, 3000보다 큰 조건을 적용한다.\n조건 정리\n$0,1,2,3,4$ 중 서로 다른 4장의 카드를 뽑아 네 자리 자연수를 만든다.\n이 수는 $3000$보다 크고, $3$의 배수이어야 한다.\n풀이 과정\n$3$의 배수이려면 각 자리 숫자의 합이 $3$의 배수이어야 한다.\n전체 숫자 $0,1,2,3,4$의 합은\n$0+1+2+3+4=10$이다.\n한 숫자를 제외하고 4개의 숫자를 사용하므로, 제외되는 숫자를 $x$라 하면 사용되는 네 숫자의 합은 $10-x$이다.\n$10-x$가 $3$의 배수이어야 하므로 가능한 $x$는 $1$ 또는 $4$이다.\n(i) $1$이 제외된 경우\n사용하는 숫자는 $0,2,3,4$이다.\n$3000$보다 크려면 천의 자리가 $3$ 또는 $4$이어야 한다.\n천의 자리가 $3$일 때 나머지 세 자리 배열은 $3!=6$가지,\n천의 자리가 $4$일 때 나머지 세 자리 배열도 $3!=6$가지이다.\n따라서 이 경우는 $12$가지이다.\n(ii) $4$가 제외된 경우\n사용하는 숫자는 $0,1,2,3$이다.\n$3000$보다 크려면 천의 자리는 $3$이어야 한다.\n나머지 세 자리 배열은 $3!=6$가지이다.\n따라서 전체 개수는\n$12+6=18$개이다.\n결론\n구하는 값은 $18$이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

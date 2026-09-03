@@ -29,9 +29,9 @@ window.questionBank = [
       "해 가 없다."
     ],
     "answer": "①",
-    "solution": "[키포인트] 연립부등식의 각 부등식을 풀어 공통 범위를 구한다.\\n1단계: $2<x^2-x$에서 $(x-2)(x+1)>0$이므로 $x<-1$ 또는 $x>2$이다.\\n2단계: $x^2-x\\le6$에서 $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\\n3단계: 두 해의 공통 범위는 $-2\\le x<-1$ 또는 $2<x\\le3$이다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 연립부등식의 각 부등식을 풀어 공통 범위를 구한다.\n1단계: $2<x^2-x$에서 $(x-2)(x+1)>0$이므로 $x<-1$ 또는 $x>2$이다.\n2단계: $x^2-x\\le6$에서 $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\n3단계: 두 해의 공통 범위는 $-2\\le x<-1$ 또는 $2<x\\le3$이다.\n∴ 정답: ①",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -62,7 +62,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소인수분해한 뒤 지수에 $1$을 더하여 약수의 개수를 구한다.\\n1단계: $50=2^1\\times5^2$이다.\\n2단계: 약수의 개수는 $(1+1)(2+1)=6$이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 소인수분해한 뒤 지수에 $1$을 더하여 약수의 개수를 구한다.\n1단계: $50=2^1\\times5^2$이다.\n2단계: 약수의 개수는 $(1+1)(2+1)=6$이다.\n∴ 정답: ③",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -96,9 +96,9 @@ window.questionBank = [
       "$720$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 공연 순서는 고려하지 않으므로 조합을 이용한다.\\n1단계: $10$개의 팀 중 $3$개의 팀을 고르는 경우의 수는 ${}_{10}C_{3}$이다.\\n2단계: ${}_{10}C_{3}=\\dfrac{10\\times9\\times8}{3\\times2\\times1}=120$이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] 공연 순서는 고려하지 않으므로 조합을 이용한다.\n1단계: $10$개의 팀 중 $3$개의 팀을 고르는 경우의 수는 ${}_{10}C_{3}$이다.\n2단계: ${}_{10}C_{3}=\\dfrac{10\\times9\\times8}{3\\times2\\times1}=120$이다.\n∴ 정답: ④",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -129,7 +129,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 행렬이 같으면 대응하는 성분이 각각 같다.\\n1단계: $(1,1)$성분을 비교하면 $a-1=b+1$이므로 $a-b=2$이다.\\n2단계: $(2,2)$성분을 비교하면 $b=4-a$이므로 $a+b=4$이다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 두 행렬이 같으면 대응하는 성분이 각각 같다.\n1단계: $(1,1)$성분을 비교하면 $a-1=b+1$이므로 $a-b=2$이다.\n2단계: $(2,2)$성분을 비교하면 $b=4-a$이므로 $a+b=4$이다.\n∴ 정답: ①",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -164,7 +164,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 주어진 근을 대입하고 삼차방정식의 근과 계수의 관계를 이용한다.\\n1단계: $x=-1$을 대입하면 $-1-3-a+5=0$이므로 $a=1$이다.\\n2단계: 나머지 두 근을 $\\alpha$, $\\beta$라 하면 세 근의 합은 $3$이므로 $-1+\\alpha+\\beta=3$이다.\\n3단계: 따라서 $\\alpha+\\beta=4$이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] 주어진 근을 대입하고 삼차방정식의 근과 계수의 관계를 이용한다.\n1단계: $x=-1$을 대입하면 $-1-3-a+5=0$이므로 $a=1$이다.\n2단계: 나머지 두 근을 $\\alpha$, $\\beta$라 하면 세 근의 합은 $3$이므로 $-1+\\alpha+\\beta=3$이다.\n3단계: 따라서 $\\alpha+\\beta=4$이다.\n∴ 정답: ④",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -199,9 +199,9 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 한 식을 대입하여 얻은 이차방정식의 판별식을 이용한다.\\n1단계: $x=y+k$를 두 번째 식에 대입하면 $3y^2+3ky+k^2-4=0$이다.\\n2단계: 오직 한 쌍의 해를 가지려면 판별식이 $0$이어야 하므로 $(3k)^2-12(k^2-4)=0$이다.\\n3단계: $k^2=16$이고 $k$는 음수이므로 $k=-4$이다.\\n∴ 정답: ②",
+    "solution": "[키포인트] 한 식을 대입하여 얻은 이차방정식의 판별식을 이용한다.\n1단계: $x=y+k$를 두 번째 식에 대입하면 $3y^2+3ky+k^2-4=0$이다.\n2단계: 오직 한 쌍의 해를 가지려면 판별식이 $0$이어야 하므로 $(3k)^2-12(k^2-4)=0$이다.\n3단계: $k^2=16$이고 $k$는 음수이므로 $k=-4$이다.\n∴ 정답: ②",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -235,9 +235,9 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 조합과 순열의 관계를 이용하여 양변을 비교한다.\\n1단계: ${}_{7}C_{4}\\times3!={}_{7}C_{3}\\times3!={}_{7}P_{3}=7\\times6\\times5=210$이다.\\n2단계: ${}_{n}P_{3}=n(n-1)(n-2)=210=7\\times6\\times5$이므로 $n=7$이다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] 조합과 순열의 관계를 이용하여 양변을 비교한다.\n1단계: ${}_{7}C_{4}\\times3!={}_{7}C_{3}\\times3!={}_{7}P_{3}=7\\times6\\times5=210$이다.\n2단계: ${}_{n}P_{3}=n(n-1)(n-2)=210=7\\times6\\times5$이므로 $n=7$이다.\n∴ 정답: ⑤",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -268,7 +268,7 @@ window.questionBank = [
       "$\\begin{pmatrix} 1 & 2 & 4 \\\\ 2 & 1 & 2 \\end{pmatrix}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 행렬 방정식을 $X$에 대하여 정리한다.\\n1단계: $2X=2A-B$이다.\\n2단계: $2A-B=\\begin{pmatrix}2&4&-6\\\\-4&2&6\\end{pmatrix}$이다.\\n3단계: 양변을 $2$로 나누면 $X=\\begin{pmatrix}1&2&-3\\\\-2&1&3\\end{pmatrix}$이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 행렬 방정식을 $X$에 대하여 정리한다.\n1단계: $2X=2A-B$이다.\n2단계: $2A-B=\\begin{pmatrix}2&4&-6\\\\-4&2&6\\end{pmatrix}$이다.\n3단계: 양변을 $2$로 나누면 $X=\\begin{pmatrix}1&2&-3\\\\-2&1&3\\end{pmatrix}$이다.\n∴ 정답: ③",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -304,9 +304,9 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 이중 절댓값 부등식을 두 조건으로 나누어 정수해를 구한다.\\n1단계: $\\left||x-1|-2\\right|\\le1$에서 $1\\le|x-1|\\le3$이다.\\n2단계: $|x-1|\\le3$과 $|x-1|\\ge1$의 공통 범위는 $-2\\le x\\le0$ 또는 $2\\le x\\le4$이다.\\n3단계: 정수해는 $-2,-1,0,2,3,4$이므로 $n=6$, $m=6$이다. 따라서 $m+n=12$이다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] 이중 절댓값 부등식을 두 조건으로 나누어 정수해를 구한다.\n1단계: $\\left||x-1|-2\\right|\\le1$에서 $1\\le|x-1|\\le3$이다.\n2단계: $|x-1|\\le3$과 $|x-1|\\ge1$의 공통 범위는 $-2\\le x\\le0$ 또는 $2\\le x\\le4$이다.\n3단계: 정수해는 $-2,-1,0,2,3,4$이므로 $n=6$, $m=6$이다. 따라서 $m+n=12$이다.\n∴ 정답: ⑤",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -337,7 +337,7 @@ window.questionBank = [
       "$43$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $100$원 동전을 $50$원 단위로 환산하여 중복 없이 금액을 센다.\\n1단계: $100$원 동전 $2$개는 $50$원 동전 $4$개와 같으므로 $50$원 단위는 모두 $7$개까지 사용할 수 있다.\\n2단계: $10$원 동전은 $0$개부터 $4$개까지, $50$원 단위는 $0$개부터 $7$개까지 사용할 수 있다.\\n3단계: $0$원을 제외하면 $(4+1)(7+1)-1=39$가지이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] $100$원 동전을 $50$원 단위로 환산하여 중복 없이 금액을 센다.\n1단계: $100$원 동전 $2$개는 $50$원 동전 $4$개와 같으므로 $50$원 단위는 모두 $7$개까지 사용할 수 있다.\n2단계: $10$원 동전은 $0$개부터 $4$개까지, $50$원 단위는 $0$개부터 $7$개까지 사용할 수 있다.\n3단계: $0$원을 제외하면 $(4+1)(7+1)-1=39$가지이다.\n∴ 정답: ④",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -362,7 +362,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$2 \\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\\n$a_{ij} = \\begin{cases} ij & (i < j) \\\\ 1 & (i = j) \\\\ 2-ij & (i > j) \\end{cases}$일 때, 행렬 $A^7$의 모든 성분의 합은? [3.9점]",
+    "content": "$2 \\times 2$ 행렬 $A$의 $(i, j)$ 성분 $a_{ij}$가\n$a_{ij} = \\begin{cases} ij & (i < j) \\\\ 1 & (i = j) \\\\ 2-ij & (i > j) \\end{cases}$일 때, 행렬 $A^7$의 모든 성분의 합은? [3.9점]",
     "choices": [
       "$16$",
       "$44$",
@@ -371,7 +371,7 @@ window.questionBank = [
       "$130$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 행렬 $A$를 구한 뒤 거듭제곱의 규칙성을 이용한다.\\n1단계: 성분의 정의에서 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$이다.\\n2단계: $A^n=\\begin{pmatrix}1&2n\\\\0&1\\end{pmatrix}$이므로 $A^7=\\begin{pmatrix}1&14\\\\0&1\\end{pmatrix}$이다.\\n3단계: 모든 성분의 합은 $1+14+0+1=16$이다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 행렬 $A$를 구한 뒤 거듭제곱의 규칙성을 이용한다.\n1단계: 성분의 정의에서 $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$이다.\n2단계: $A^n=\\begin{pmatrix}1&2n\\\\0&1\\end{pmatrix}$이므로 $A^7=\\begin{pmatrix}1&14\\\\0&1\\end{pmatrix}$이다.\n3단계: 모든 성분의 합은 $1+14+0+1=16$이다.\n∴ 정답: ①",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -405,9 +405,9 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "[키포인트] 그래프의 위치와 이차함수의 대칭성을 이용하여 각 보기를 판단한다.\\n1단계: $f(x)\\ge2$인 구간은 $x\\le p$ 또는 $x\\ge s$이므로 ㄱ은 거짓이다.\\n2단계: $f(p)=f(s)=2$, $f(q)=f(r)=0$이고 대칭축이 같으므로 $p+s=q+r$이다. 따라서 $q-p=s-r$이므로 ㄴ은 참이다.\\n3단계: $f(-2x)<0$에서 $q<-2x<r$이므로 $-\\dfrac{r}{2}<x<-\\dfrac{q}{2}$이다. 따라서 ㄷ은 거짓이다.\\n∴ 정답: ②",
+    "solution": "[키포인트] 그래프의 위치와 이차함수의 대칭성을 이용하여 각 보기를 판단한다.\n1단계: $f(x)\\ge2$인 구간은 $x\\le p$ 또는 $x\\ge s$이므로 ㄱ은 거짓이다.\n2단계: $f(p)=f(s)=2$, $f(q)=f(r)=0$이고 대칭축이 같으므로 $p+s=q+r$이다. 따라서 $q-p=s-r$이므로 ㄴ은 참이다.\n3단계: $f(-2x)<0$에서 $q<-2x<r$이므로 $-\\dfrac{r}{2}<x<-\\dfrac{q}{2}$이다. 따라서 ㄷ은 거짓이다.\n∴ 정답: ②",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -475,9 +475,9 @@ window.questionBank = [
       "모든 실수"
     ],
     "answer": "④",
-    "solution": "[키포인트] 부등식을 $a$에 대하여 정리하고 주어진 구간에서 식의 최댓값을 구한다.\\n1단계: $x>0$이므로 $ax>x^2+2x+5$에서 $a>x+2+\\dfrac{5}{x}$이다.\\n2단계: $1\\le x\\le3$에서 $(x-1)(x-5)\\le0$이므로 $x^2-6x+5\\le0$이다. 양변을 $x$로 나누면 $x+\\dfrac5x\\le6$이다.\\n3단계: 따라서 $x+2+\\dfrac5x\\le8$이고 $x=1$일 때 등호가 성립하므로, 모든 $x$에서 주어진 부등식이 성립하려면 $a>8$이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] 부등식을 $a$에 대하여 정리하고 주어진 구간에서 식의 최댓값을 구한다.\n1단계: $x>0$이므로 $ax>x^2+2x+5$에서 $a>x+2+\\dfrac{5}{x}$이다.\n2단계: $1\\le x\\le3$에서 $(x-1)(x-5)\\le0$이므로 $x^2-6x+5\\le0$이다. 양변을 $x$로 나누면 $x+\\dfrac5x\\le6$이다.\n3단계: 따라서 $x+2+\\dfrac5x\\le8$이고 $x=1$일 때 등호가 성립하므로, 모든 $x$에서 주어진 부등식이 성립하려면 $a>8$이다.\n∴ 정답: ④",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -508,11 +508,11 @@ window.questionBank = [
       "해 가 없다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 수직선에 나타난 각 부등식의 해에서 계수의 관계를 찾는다.\\n1단계: $ax-b\\le0$의 해가 $x\\le2$이므로 $a>0$, $b=2a$이다.\\n2단계: $cx+d>0$의 해가 $x<-1$이므로 $c<0$, $d=c$이다.\\n3단계: $ax+b\\le0$의 해는 $x\\le-2$이고, $-cx+d>0$의 해는 $x>1$이다. 두 조건을 동시에 만족하는 $x$는 없다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] 수직선에 나타난 각 부등식의 해에서 계수의 관계를 찾는다.\n1단계: $ax-b\\le0$의 해가 $x\\le2$이므로 $a>0$, $b=2a$이다.\n2단계: $cx+d>0$의 해가 $x<-1$이므로 $c<0$, $d=c$이다.\n3단계: $ax+b\\le0$의 해는 $x\\le-2$이고, $-cx+d>0$의 해는 $x>1$이다. 두 조건을 동시에 만족하는 $x$는 없다.\n∴ 정답: ⑤",
     "image": "assets/images/25_순천고_1학기_기말_고1_기출/q15.png",
     "imageSize": "medium",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -544,11 +544,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 그래프의 상하 관계와 $x$축과의 교점을 이용한다.\\n1단계: 두 그래프의 교점의 $x$좌표는 $b$, $d$이고, 바깥 구간에서 $f(x)>g(x)$이므로 ㄱ은 참이다.\\n2단계: $g(x)=0$의 해는 $a$, $d$이고 $f(x)=0$의 해는 $c$, $d$이므로 $f(x)g(x)=0$의 해는 $a$, $c$, $d$이다. 따라서 ㄴ은 참이다.\\n3단계: $x=d$는 $f(x)=0$이자 $g(x)=0$인 공통근이므로 $f(x)g(x)=0$이다. 즉 $x>c$ 구간 안의 $x=d$에서는 $f(x)g(x)<0$이 성립하지 않으므로, ㄷ의 해집합 '$x<a$ 또는 $x>c$'는 옳지 않다. 실제 $f(x)g(x)<0$의 해는 $x<a$ 또는 ($x>c$, 단 $x\\neq d$)이므로 ㄷ은 거짓이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 두 그래프의 상하 관계와 $x$축과의 교점을 이용한다.\n1단계: 두 그래프의 교점의 $x$좌표는 $b$, $d$이고, 바깥 구간에서 $f(x)>g(x)$이므로 ㄱ은 참이다.\n2단계: $g(x)=0$의 해는 $a$, $d$이고 $f(x)=0$의 해는 $c$, $d$이므로 $f(x)g(x)=0$의 해는 $a$, $c$, $d$이다. 따라서 ㄴ은 참이다.\n3단계: $x=d$는 $f(x)=0$이자 $g(x)=0$인 공통근이므로 $f(x)g(x)=0$이다. 즉 $x>c$ 구간 안의 $x=d$에서는 $f(x)g(x)<0$이 성립하지 않으므로, ㄷ의 해집합 '$x<a$ 또는 $x>c$'는 옳지 않다. 실제 $f(x)g(x)<0$의 해는 $x<a$ 또는 ($x>c$, 단 $x\\neq d$)이므로 ㄷ은 거짓이다.\n∴ 정답: ③",
     "image": "assets/images/25_순천고_1학기_기말_고1_기출/q16.png",
     "imageSize": "medium",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -579,7 +579,7 @@ window.questionBank = [
       "$\\begin{pmatrix} 420 & 300 \\\\ 500 & 390 \\end{pmatrix}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 판매 가격이 같으면 생산 비용의 증가액만큼 이익금이 감소한다.\\n1단계: $P$지역의 사과와 배의 이익금은 각각 $700-2800\\times0.1=420$, $900-4000\\times0.1=500$이다.\\n2단계: $Q$지역의 사과와 배의 이익금은 각각 $600-3000\\times0.1=300$, $800-4100\\times0.1=390$이다.\\n3단계: 행을 사과와 배, 열을 $P$지역과 $Q$지역의 순서로 나타내면 $\\begin{pmatrix}420&300\\\\500&390\\end{pmatrix}$이다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] 판매 가격이 같으면 생산 비용의 증가액만큼 이익금이 감소한다.\n1단계: $P$지역의 사과와 배의 이익금은 각각 $700-2800\\times0.1=420$, $900-4000\\times0.1=500$이다.\n2단계: $Q$지역의 사과와 배의 이익금은 각각 $600-3000\\times0.1=300$, $800-4100\\times0.1=390$이다.\n3단계: 행을 사과와 배, 열을 $P$지역과 $Q$지역의 순서로 나타내면 $\\begin{pmatrix}420&300\\\\500&390\\end{pmatrix}$이다.\n∴ 정답: ⑤",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -610,9 +610,9 @@ window.questionBank = [
     "content": "$x, y$에 대한 연립방정식 $\\begin{cases} x+y = 2a \\\\ x^2+y^2 = -2a+12 \\end{cases}$의 해 중에서 $x$와 $y$의 값이 모두 실수인 해가 존재할 때, $p \\le a^2 + 2a - 1 \\le q$이다. $q-p$의 최솟값을 구하시오. (단, $a$는 실수) [부분 점수 없음, 5점]",
     "choices": [],
     "answer": "$9$",
-    "solution": "[키포인트] 연립방정식의 실수해 존재 조건과 이차함수의 최댓값·최솟값을 이용한다.\\n1단계: $y=2a-x$를 대입하면 $x^2-2ax+2a^2+a-6=0$이다. 실수해가 존재하려면 판별식이 $0$ 이상이므로 $-3\\le a\\le2$이다.\\n2단계: $a^2+2a-1=(a+1)^2-2$이므로 최솟값은 $-2$이다.\\n3단계: 구간의 양 끝값을 비교하면 최댓값은 $a=2$일 때 $7$이므로 $q-p=7-(-2)=9$이다.\\n∴ 정답: $9$",
+    "solution": "[키포인트] 연립방정식의 실수해 존재 조건과 이차함수의 최댓값·최솟값을 이용한다.\n1단계: $y=2a-x$를 대입하면 $x^2-2ax+2a^2+a-6=0$이다. 실수해가 존재하려면 판별식이 $0$ 이상이므로 $-3\\le a\\le2$이다.\n2단계: $a^2+2a-1=(a+1)^2-2$이므로 최솟값은 $-2$이다.\n3단계: 구간의 양 끝값을 비교하면 최댓값은 $a=2$일 때 $7$이므로 $q-p=7-(-2)=9$이다.\n∴ 정답: $9$",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -640,9 +640,9 @@ window.questionBank = [
     "content": "$0$부터 $9$까지의 정수가 각각 하나씩 적힌 $10$장의 카드 중에서 $3$장의 카드를 택하여 다음 조건을 만족시키도록 세 자리 자연수를 만들려고 한다.\n<div class=\"note-box\" style=\"margin:0; text-align:left;\">각 자리의 수의 합이 $9$의 배수이다.</div>\n조건을 만족시키는 세 자리 자연수의 개수를 구하시오. [부분 점수 없음, 5점]",
     "choices": [],
     "answer": "$76$",
-    "solution": "[키포인트] 세 숫자의 합이 $9$ 또는 $18$인 경우를 나누어 센다.\\n1단계: 합이 $9$인 조합은 $\\{0,1,8\\}$, $\\{0,2,7\\}$, $\\{0,3,6\\}$, $\\{0,4,5\\}$, $\\{1,2,6\\}$, $\\{1,3,5\\}$, $\\{2,3,4\\}$이다. $0$이 있는 네 조합은 각각 $4$개, 나머지 세 조합은 각각 $6$개를 만들므로 $34$개이다.\\n2단계: 합이 $18$인 조합은 $\\{1,8,9\\}$, $\\{2,7,9\\}$, $\\{3,6,9\\}$, $\\{3,7,8\\}$, $\\{4,5,9\\}$, $\\{4,6,8\\}$, $\\{5,6,7\\}$이다. 각각 $6$개를 만들므로 $42$개이다.\\n3단계: 전체 개수는 $34+42=76$이다.\\n∴ 정답: $76$",
+    "solution": "[키포인트] 세 숫자의 합이 $9$ 또는 $18$인 경우를 나누어 센다.\n1단계: 합이 $9$인 조합은 $\\{0,1,8\\}$, $\\{0,2,7\\}$, $\\{0,3,6\\}$, $\\{0,4,5\\}$, $\\{1,2,6\\}$, $\\{1,3,5\\}$, $\\{2,3,4\\}$이다. $0$이 있는 네 조합은 각각 $4$개, 나머지 세 조합은 각각 $6$개를 만들므로 $34$개이다.\n2단계: 합이 $18$인 조합은 $\\{1,8,9\\}$, $\\{2,7,9\\}$, $\\{3,6,9\\}$, $\\{3,7,8\\}$, $\\{4,5,9\\}$, $\\{4,6,8\\}$, $\\{5,6,7\\}$이다. 각각 $6$개를 만들므로 $42$개이다.\n3단계: 전체 개수는 $34+42=76$이다.\n∴ 정답: $76$",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -669,7 +669,7 @@ window.questionBank = [
     "content": "$2 \\times 2$ 행렬 $A = \\begin{pmatrix} x & -1 \\\\ 0 & -1 \\end{pmatrix}$에 대하여 $A^3$의 모든 성분의 합이 $4$가 되게 하는 실수 $x$의 값을 $a$, 등식 $A^3 = \\dfrac{3}{4}A - \\dfrac{1}{4}I$가 성립하게 하는 실수 $x$의 값을 $b$라 할 때, $a+b$의 값을 구하시오. (단, $I=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$이다.) [부분 점수 없음, 5점]",
     "choices": [],
     "answer": "$\\dfrac{5}{2}$",
-    "solution": "[키포인트] $A^3$을 직접 구하여 두 조건을 각각 적용한다.\\n1단계: $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이다. 모든 성분의 합이 $4$이면 $(x-2)(x^2+x+3)=0$이고 실수해는 $x=2$뿐이므로 $a=2$이다.\\n2단계: $A^3=\\dfrac34A-\\dfrac14I$의 $(1,2)$성분을 비교하면 $-x^2+x-1=-\\dfrac34$이다. 따라서 $\\left(x-\\dfrac12\\right)^2=0$이고 $b=\\dfrac12$이다.\\n3단계: $a+b=2+\\dfrac12=\\dfrac52$이다.\\n∴ 정답: $\\dfrac{5}{2}$",
+    "solution": "[키포인트] $A^3$을 직접 구하여 두 조건을 각각 적용한다.\n1단계: $A^3=\\begin{pmatrix}x^3&-x^2+x-1\\\\0&-1\\end{pmatrix}$이다. 모든 성분의 합이 $4$이면 $(x-2)(x^2+x+3)=0$이고 실수해는 $x=2$뿐이므로 $a=2$이다.\n2단계: $A^3=\\dfrac34A-\\dfrac14I$의 $(1,2)$성분을 비교하면 $-x^2+x-1=-\\dfrac34$이다. 따라서 $\\left(x-\\dfrac12\\right)^2=0$이고 $b=\\dfrac12$이다.\n3단계: $a+b=2+\\dfrac12=\\dfrac52$이다.\n∴ 정답: $\\dfrac{5}{2}$",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -684,7 +684,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -692,10 +692,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "허수 $x$가 방정식 $x + \\dfrac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오. [부분 점수 있음, 6점]\\n\n(1) $x^3$의 값이 되는 실수를 구하는 풀이과정과 답을 서술하시오.\\n\n(2) $\\dfrac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하는 풀이과정과 답을 서술하시오.",
+    "content": "허수 $x$가 방정식 $x + \\dfrac{1}{x} = 1$을 만족할 때, 다음 물음에 답하시오. [부분 점수 있음, 6점]\n\n(1) $x^3$의 값이 되는 실수를 구하는 풀이과정과 답을 서술하시오.\n\n(2) $\\dfrac{x^2}{x-1} + \\bar{x}(1-x) + x$의 값을 구하는 풀이과정과 답을 서술하시오.",
     "choices": [],
     "answer": "(1) $-1$, (2) $1$",
-    "solution": "[키포인트] $x^2-x+1=0$과 켤레복소수의 성질을 이용한다.\\n(1) $x+\\dfrac1x=1$의 양변에 $x$를 곱하면 $x^2-x+1=0$이다. $(x+1)(x^2-x+1)=x^3+1=0$이므로 $x^3=-1$이다.\\n(2) $x^2=x-1$이므로 $\\dfrac{x^2}{x-1}=1$이다. 또한 $x+\\bar{x}=1$이고 $\\bar{x}^2=\\bar{x}-1$이므로 $\\bar{x}(1-x)+x=\\bar{x}^2+x=0$이다.\\n따라서 주어진 식의 값은 $1+0=1$이다.\\n∴ 정답: (1) $-1$, (2) $1$",
+    "solution": "[키포인트] $x^2-x+1=0$과 켤레복소수의 성질을 이용한다.\n(1) $x+\\dfrac1x=1$의 양변에 $x$를 곱하면 $x^2-x+1=0$이다. $(x+1)(x^2-x+1)=x^3+1=0$이므로 $x^3=-1$이다.\n(2) $x^2=x-1$이므로 $\\dfrac{x^2}{x-1}=1$이다. 또한 $x+\\bar{x}=1$이고 $\\bar{x}^2=\\bar{x}-1$이므로 $\\bar{x}(1-x)+x=\\bar{x}^2+x=0$이다.\n따라서 주어진 식의 값은 $1+0=1$이다.\n∴ 정답: (1) $-1$, (2) $1$",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -710,7 +710,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-06",
     "standardUnit": "여러 가지 방정식과 부등식",
     "standardUnitOrder": 6,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -719,12 +719,12 @@ window.questionBank = [
       "정수조건"
     ],
     "wide": false,
-    "content": "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 & \\cdots\\cdots\\cdots\\ (a) \\\\ |x-2| \\lt k & \\cdots\\cdots\\cdots\\ (b) \\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 7점]\\n\n(1) 부등식 $(a)$의 해를 구하는 풀이과정과 답을 서술하시오.\\n\n(2) 부등식 $(b)$의 해를 구하는 풀이과정과 답을 서술하시오.\\n\n(3) 연립부등식을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 $k$의 범위를 구하는 풀이과정과 답을 서술하시오.",
+    "content": "연립부등식 $\\begin{cases} x^2-x-6 \\le 0 & \\cdots\\cdots\\cdots\\ (a) \\\\ |x-2| \\lt k & \\cdots\\cdots\\cdots\\ (b) \\end{cases}$에 대하여 다음 물음에 답하시오. [부분 점수 있음, 7점]\n\n(1) 부등식 $(a)$의 해를 구하는 풀이과정과 답을 서술하시오.\n\n(2) 부등식 $(b)$의 해를 구하는 풀이과정과 답을 서술하시오.\n\n(3) 연립부등식을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 $k$의 범위를 구하는 풀이과정과 답을 서술하시오.",
     "choices": [],
     "answer": "(1) $-2 \\le x \\le 3$, (2) $k>0$일 때 $2-k<x<2+k$이고 $k\\le0$일 때 해가 없다, (3) $1<k\\le2$",
-    "solution": "[키포인트] 두 부등식의 해를 구한 뒤 공통 정수해의 개수를 센다.\\n(1) $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\\n(2) $k>0$이면 $|x-2|<k$에서 $2-k<x<2+k$이고, $k\\le0$이면 해가 없다.\\n(3) 정수 $1,2,3$은 포함되고 $0$은 포함되지 않아야 하므로 $1<k\\le2$이다.\\n∴ 정답: (1) $-2\\le x\\le3$, (2) $k>0$일 때 $2-k<x<2+k$, $k\\le0$일 때 해가 없다, (3) $1<k\\le2$",
+    "solution": "[키포인트] 두 부등식의 해를 구한 뒤 공통 정수해의 개수를 센다.\n(1) $(x-3)(x+2)\\le0$이므로 $-2\\le x\\le3$이다.\n(2) $k>0$이면 $|x-2|<k$에서 $2-k<x<2+k$이고, $k\\le0$이면 해가 없다.\n(3) 정수 $1,2,3$은 포함되고 $0$은 포함되지 않아야 하므로 $1<k\\le2$이다.\n∴ 정답: (1) $-2\\le x\\le3$, (2) $k>0$일 때 $2-k<x<2+k$, $k\\le0$일 때 해가 없다, (3) $1<k\\le2$",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -737,7 +737,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-07",
     "standardUnit": "합의 법칙과 곱의 법칙",
     "standardUnitOrder": 7,
-    "questionType": "서술형",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -749,7 +749,7 @@ window.questionBank = [
     "content": "다음 그림의 $6$개의 영역을 서로 다른 $5$가지 색으로 칠하려고 한다. 같은 색을 중복하여 사용할 수 있으나 이웃하는 영역은 서로 다른 색을 칠할 때, 칠하는 방법의 수를 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점]",
     "choices": [],
     "answer": "$1020$",
-    "solution": "[키포인트] 영역 $A$와 $F$의 색이 같은 경우와 다른 경우로 나눈다.\\n1단계: $A$와 $F$의 색이 같으면 그 색은 $5$가지이고, $B,C,D,E$는 $4\\times3^3$가지로 칠할 수 있으므로 $540$가지이다.\\n2단계: $A$와 $F$의 색이 다르면 두 색은 $5\\times4$가지이고, $B,C,D,E$는 $3\\times2^3$가지로 칠할 수 있으므로 $480$가지이다.\\n3단계: 전체 방법의 수는 $540+480=1020$이다.\\n∴ 정답: $1020$",
+    "solution": "[키포인트] 영역 $A$와 $F$의 색이 같은 경우와 다른 경우로 나눈다.\n1단계: $A$와 $F$의 색이 같으면 그 색은 $5$가지이고, $B,C,D,E$는 $4\\times3^3$가지로 칠할 수 있으므로 $540$가지이다.\n2단계: $A$와 $F$의 색이 다르면 두 색은 $5\\times4$가지이고, $B,C,D,E$는 $3\\times2^3$가지로 칠할 수 있으므로 $480$가지이다.\n3단계: 전체 방법의 수는 $540+480=1020$이다.\n∴ 정답: $1020$",
     "image": "assets/images/25_순천고_1학기_기말_고1_기출/q23.png",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",

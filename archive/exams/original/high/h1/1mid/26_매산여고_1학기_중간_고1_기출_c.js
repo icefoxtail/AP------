@@ -20,7 +20,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "두 다항식\\n$A=a^3-2a-1$\\n$B=2a^3-3a^2+2a+4$\\n에 대하여 $A+2B$의 $a$항의 계수와 $a^3$항의 계수의 합을 구하면?",
+    "content": "두 다항식\n$A=a^3-2a-1$\n$B=2a^3-3a^2+2a+4$\n에 대하여 $A+2B$의 $a$항의 계수와 $a^3$항의 계수의 합을 구하면?",
     "choices": [
       "7",
       "5",
@@ -205,7 +205,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -669,7 +669,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "실수 $a$에 대하여 이차함수 $f(x)=(x-a)^2$이 다음 조건 (가), (나)를 만족시킨다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tr><td style=\"text-align:left;\">(가) $1 \\le x \\le 9$에서 함수 $f(x)$의 최솟값은 0이다.</td></tr>\\n<tr><td style=\"text-align:left;\">(나) $1 \\le x \\le 5$에서 함수 $f(x)$의 최댓값과 $5 \\le x \\le 9$에서 함수 $f(x)$의 최솟값은 같다.</td></tr>\\n</table>\\n</div>\\n$f(0)$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하면?",
+    "content": "실수 $a$에 대하여 이차함수 $f(x)=(x-a)^2$이 다음 조건 (가), (나)를 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td style=\"text-align:left;\">(가) $1 \\le x \\le 9$에서 함수 $f(x)$의 최솟값은 0이다.</td></tr>\n<tr><td style=\"text-align:left;\">(나) $1 \\le x \\le 5$에서 함수 $f(x)$의 최댓값과 $5 \\le x \\le 9$에서 함수 $f(x)$의 최솟값은 같다.</td></tr>\n</table>\n</div>\n$f(0)$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하면?",
     "choices": [
       "4",
       "7",
@@ -699,7 +699,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[주관식 1 (서술형)]\\n이차방정식 $x^2-5x+3=0$의 두 근을 $\\alpha, \\beta$라 할 때, 다음을 구하는 풀이 과정과 답을 자세히 서술하시오.\\n1) 두 근의 합 $\\alpha+\\beta$와 두 근의 곱 $\\alpha\\beta$를 각각 구하시오.\\n2) 두 수 $\\dfrac{1}{\\alpha^2-3\\alpha-1}, \\dfrac{1}{\\beta^2-3\\beta-1}$을 근으로 하고, $x^2$의 계수가 24인 이차방정식을 구하는 과정을 서술하시오.",
+    "content": "[주관식 1 (서술형)]\n이차방정식 $x^2-5x+3=0$의 두 근을 $\\alpha, \\beta$라 할 때, 다음을 구하는 풀이 과정과 답을 자세히 서술하시오.\n1) 두 근의 합 $\\alpha+\\beta$와 두 근의 곱 $\\alpha\\beta$를 각각 구하시오.\n2) 두 수 $\\dfrac{1}{\\alpha^2-3\\alpha-1}, \\dfrac{1}{\\beta^2-3\\beta-1}$을 근으로 하고, $x^2$의 계수가 24인 이차방정식을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "1) 합: 5, 곱: 3  2) $24x^2-64x+8=0$",
     "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 1) 합: 5, 곱: 3  2) $24x^2-64x+8=0$이다.",
@@ -724,13 +724,13 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "[주관식 2 (서술형)]\\n아래의 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{AB}=6$인 직각이등변삼각형 $ABC$가 있다. $\\overline{AB}$ 위의 한 점 $P$에서 $\\overline{BC}$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 $\\overline{BC}$와 평행한 직선이 $\\overline{AC}$와 만나는 점을 $R$이라 할 때, 사각형 $PQCR$의 넓이의 최댓값을 구하는 풀이 과정과 답을 자세히 서술하시오. (단, 점 $P$는 꼭짓점 $A$와 꼭짓점 $B$가 아니다.)",
+    "content": "[주관식 2 (서술형)]\n아래의 그림과 같이 $\\angle A=90^\\circ$이고 $\\overline{AB}=6$인 직각이등변삼각형 $ABC$가 있다. $\\overline{AB}$ 위의 한 점 $P$에서 $\\overline{BC}$에 내린 수선의 발을 $Q$라 하고, 점 $P$를 지나고 $\\overline{BC}$와 평행한 직선이 $\\overline{AC}$와 만나는 점을 $R$이라 할 때, 사각형 $PQCR$의 넓이의 최댓값을 구하는 풀이 과정과 답을 자세히 서술하시오. (단, 점 $P$는 꼭짓점 $A$와 꼭짓점 $B$가 아니다.)",
     "image": "assets/images/26_매산여고_1학기_중간_고1_기출/q22.png",
     "choices": [],
     "answer": "9",
     "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 9이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -750,7 +750,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "[주관식 3 (서술형)]\\n최고차항의 계수가 1인 삼차 다항식 $f(x)$와 모든 항의 계수가 실수인 두 다항식 $P(x), Q(x)$가 다음 조건을 만족시킨다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\">\\n<tr><td style=\"text-align:left;\">(가) $f(x)$를 $P(x)$로 나누었을 때의 몫은 $Q(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\\n<tr><td style=\"text-align:left;\">(나) $f(x)$를 $Q(x)$로 나누었을 때의 몫은 $P(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\\n</table>\\n</div>\\n$P(0)=-1, Q(0)=2$일 때, $f(2)$의 값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
+    "content": "[주관식 3 (서술형)]\n최고차항의 계수가 1인 삼차 다항식 $f(x)$와 모든 항의 계수가 실수인 두 다항식 $P(x), Q(x)$가 다음 조건을 만족시킨다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<tr><td style=\"text-align:left;\">(가) $f(x)$를 $P(x)$로 나누었을 때의 몫은 $Q(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\n<tr><td style=\"text-align:left;\">(나) $f(x)$를 $Q(x)$로 나누었을 때의 몫은 $P(x)$이고 나머지는 $P(x)+\\{Q(x)\\}^2$이다.</td></tr>\n</table>\n</div>\n$P(0)=-1, Q(0)=2$일 때, $f(2)$의 값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
     "choices": [],
     "answer": "3",
     "solution": "[키포인트] 두 나눗셈 조건의 공통 나머지와 다항식의 차수를 이용해 $P,Q$의 모양을 정한다.\n\n$f$를 $P$로 나눈 몫이 $Q$, $f$를 $Q$로 나눈 몫이 $P$이므로\n$f(x)=P(x)Q(x)+P(x)+Q(x)^2$이다. $f$가 삼차이고 두 몫의 차수 합이 3이어야 하며, 나머지는 두 제수보다 차수가 낮아야 한다. $P$는 이차식, $Q$는 일차식이어야 한다.\n\n$P(0)=-1$, $Q(0)=2$이고 나머지 $P+Q^2$는 상수이다. 그 상수는\n$P(0)+Q(0)^2=-1+4=3$\n이다. $Q(x)=ux+2$라 하면 $P(x)=3-Q(x)^2$이고, $f=PQ+3$의 최고차항 계수가 1이므로 $-u^3=1$, 따라서 $u=-1$이다.\n그러므로 $Q(x)=-x+2$, $P(x)=-x^2+4x-1$이고\n$f(x)=P(x)Q(x)+3=x^3-6x^2+9x+1$이다.\n따라서 $f(2)=8-24+18+1=3$이다.",

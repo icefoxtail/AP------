@@ -151,7 +151,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 빵을 고르는 경우와 소스를 고르는 경우를 각각 센 뒤 곱한다.\n조건 정리: 빵은 4가지 중 1가지를 고르고, 소스는 3가지 중 서로 다른 2가지를 순서 없이 고른다.\n풀이 방향: 빵 선택 수에 소스 조합의 수를 곱한다.\n정석 풀이: 빵을 고르는 방법은 4가지이다. 소스를 고르는 방법은 ${}_3C_2=3$가지이다. 따라서 샌드위치를 만드는 경우의 수는 $4\\times3=12$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -182,7 +182,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 부등식의 해를 각각 구한 뒤 공통되는 정수만 센다.\n조건 정리: 첫째 부등식은 $x\\le7$, 둘째 부등식은 $x\\gt2$이다.\n풀이 방향: 공통해 $2\\lt x\\le7$에 포함되는 정수를 나열한다.\n정석 풀이: $x+2\\le9$에서 $x\\le7$이고, $2x-1\\gt3$에서 $2x\\gt4$, 즉 $x\\gt2$이다. 따라서 연립부등식의 해는 $2\\lt x\\le7$이다. 이 범위의 정수는 $3,4,5,6,7$의 5개이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -213,7 +213,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 과일과 야채가 번갈아 놓이려면 시작하는 종류에 따라 두 경우로 나눈다.\n조건 정리: 배열 형태는 과일-야채-과일-야채-과일-야채 또는 야채-과일-야채-과일-야채-과일이다.\n풀이 방향: 각 형태에서 과일 3개와 야채 3개를 각각 배열한다.\n정석 풀이: 과일이 먼저 오는 형태와 야채가 먼저 오는 형태가 2가지이다. 한 형태가 정해지면 과일 3개를 놓는 방법은 $3!$가지이고, 야채 3개를 놓는 방법도 $3!$가지이다. 따라서 전체 경우의 수는 $2\\times3!\\times3!=2\\times6\\times6=72$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -244,7 +244,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 전체 아몬드 수를 두 먹는 방법으로 나타내고, 마지막 날에는 1개 이상 10개 이하를 먹는다는 조건을 부등식으로 세운다.\n조건 정리: 전체 아몬드 수는 $9x+8$개이다. 10개씩 먹을 때 $(x-3)$일째에 다 먹으므로 $(x-4)$일까지 먹은 양보다 많고 $(x-3)$일 동안 먹을 수 있는 양 이하이다.\n풀이 방향: $10(x-4)\\lt9x+8\\le10(x-3)$을 풀어 정수 $x$의 범위를 구한다.\n정석 풀이: 왼쪽 부등식에서 $10x-40\\lt9x+8$이므로 $x\\lt48$이다. 오른쪽 부등식에서 $9x+8\\le10x-30$이므로 $x\\ge38$이다. 따라서 정수 $x$는 $38\\le x\\le47$이고, 최솟값은 38, 최댓값은 47이다. 두 값의 합은 $38+47=85$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -337,7 +337,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 전체 두 수의 선택에서 곱이 6의 배수가 되지 않는 경우를 여사건으로 뺀다.\n조건 정리: 곱이 6의 배수가 아니려면 두 수가 모두 홀수이거나, 두 수가 모두 3의 배수가 아니어야 한다. 두 조건에 동시에 해당하는 경우는 한 번만 빼야 하므로 겹치는 경우를 다시 더한다.\n풀이 방향: 포함과 배제의 원리로 곱이 6의 배수가 아닌 경우를 센다.\n정석 풀이: 전체 경우의 수는 ${}_{50}C_2=1225$이다. 홀수는 25개이므로 두 수가 모두 홀수인 경우는 ${}_{25}C_2=300$가지이다. 3의 배수가 아닌 수는 $50-16=34$개이므로 두 수가 모두 3의 배수가 아닌 경우는 ${}_{34}C_2=561$가지이다. 홀수이면서 3의 배수가 아닌 수는 17개이므로 두 조건에 모두 해당하는 경우는 ${}_{17}C_2=136$가지이다. 따라서 곱이 6의 배수가 아닌 경우는 $300+561-136=725$가지이고, 구하는 경우의 수는 $1225-725=500$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -538,7 +538,7 @@ window.questionBank = [
     "solution": "[키포인트] 짝수 학생이 앉는 네 자리는 서로 이웃하지 않으면서 나머지 모든 자리를 이웃으로 덮어야 한다.\n조건 정리: 짝수 번호 학생은 2, 4, 6, 8의 4명이고, 홀수 번호 학생은 1, 3, 5, 7, 9의 5명이다. 이웃은 가로 또는 세로로 맞닿은 자리이다.\n풀이 방향: 먼저 짝수 학생이 앉을 수 있는 자리 모양을 정한 뒤 학생들을 배치한다.\n정석 풀이: 가운데 자리에 짝수 학생이 앉으면 나머지 세 짝수 학생은 서로 이웃하지 않도록 모서리 세 자리에 앉아야 한다. 그러면 비어 있는 한 모서리의 홀수 학생은 짝수 학생과 이웃하지 못하므로 불가능하다. 가운데 자리에 홀수 학생이 앉는 경우, 테두리의 여덟 자리에서 서로 이웃하지 않는 네 자리를 고르는 방법은 네 모서리를 고르거나 네 변의 가운데를 고르는 두 가지뿐이다. 네 모서리를 고르면 가운데의 홀수 학생이 짝수 학생과 이웃하지 못하므로 불가능하다. 따라서 짝수 학생은 위, 아래, 왼쪽, 오른쪽 변의 가운데 네 자리에 앉아야 하며, 이 자리 모양은 유일하다. 네 짝수 학생을 이 네 자리에 배치하는 방법은 $4!$가지이고, 다섯 홀수 학생을 남은 다섯 자리에 배치하는 방법은 $5!$가지이다. 따라서 전체 경우의 수는 $4!\\times5!=24\\times120=2880$이다.\n따라서 구하는 값은 $2880$이다.",
     "image": "assets/images/26_매산고_1학기_기말_고1_기출/q18.png",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -565,7 +565,7 @@ window.questionBank = [
     "solution": "[키포인트] 그래프에서 $f(t)\\gt0$이 되는 $t$의 범위를 읽고, $t=\\dfrac{x-a}{3}$를 대입한다.\n조건 정리: 그래프는 아래쪽으로 열린 포물선이고 $x$축과 $-1$, $3$에서 만나므로 $f(t)\\gt0$의 해는 $-1\\lt t\\lt3$이다.\n풀이 방향: $-1\\lt\\dfrac{x-a}{3}\\lt3$을 $x$의 범위로 바꾸고 주어진 해의 양 끝과 비교한다.\n정석 풀이: $-1\\lt\\dfrac{x-a}{3}\\lt3$의 각 부분에 3을 곱하면 $-3\\lt x-a\\lt9$이다. 여기에 $a$를 더하면 $a-3\\lt x\\lt a+9$이다. 이 구간이 $-\\dfrac{7}{2}\\lt x\\lt\\dfrac{17}{2}$와 같으므로 $a-3=-\\dfrac{7}{2}$이고 $a+9=\\dfrac{17}{2}$이다. 첫째 식에서 $a=-\\dfrac{1}{2}$이고, 둘째 식에서도 같은 값을 얻는다.\n따라서 구하는 값은 $-\\dfrac{1}{2}$이다.",
     "image": "assets/images/26_매산고_1학기_기말_고1_기출/q19.png",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

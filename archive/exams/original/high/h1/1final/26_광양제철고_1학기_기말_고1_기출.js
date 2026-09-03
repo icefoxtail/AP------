@@ -33,7 +33,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 부등식의 공통 범위를 구한다.\n첫째 식에서 $x>-3$, 둘째 식에서 $x\\le-1$이다. 따라서 정수해는 $-2,-1$의 2개이다.\n결론: 정답은 ②이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -117,9 +117,9 @@ window.questionBank = [
       "58"
     ],
     "answer": "③",
-    "solution": "[키포인트] 서로 다른 세 숫자 중 하나가 다른 두 수의 평균이 되는 경우를 센다.\n$1$부터 $7$까지의 서로 다른 세 수가 등차수열을 이루는 집합은 공차 1일 때 5개, 공차 2일 때 3개, 공차 3일 때 1개로 모두 9개이다. 각 집합은 $3!=6$가지로 배열되므로 $9\\cdot6=54$이다.\n결론: 정답은 ③이다.",
+    "solution": "[키포인트] 서로 다른 세 숫자 중 하나가 다른 두 수의 평균이 되는 경우를 센다.\n$1$부터 $7$까지의 가운데 수가 양 끝 두 수의 평균이 되는 세 수의 집합은 양 끝 수의 차가 2일 때 5개, 4일 때 3개, 6일 때 1개로 모두 9개이다. 각 집합은 $3!=6$가지로 배열되므로 $9\\cdot6=54$이다.\n결론: 정답은 ③이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -147,7 +147,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 백의 자리와 일의 자리의 중복 여부를 나누어 센다.\n백의 자리는 $1$부터 $5$까지이다. 일의 자리 홀수 $1,3,5,7,9$ 중 백의 자리와 겹치지 않게 고른 뒤, 십의 자리는 앞의 두 숫자와 다른 8개 중 고른다. 백의 자리가 홀수인 3가지에는 일의 자리 4가지, 짝수인 2가지에는 5가지이므로 $(3\\cdot4+2\\cdot5)\\cdot8=176$이다.\n결론: 정답은 ②이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -203,7 +203,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 텐트 수를 $t$, 학생 수를 $N$이라 한다.\n7명씩 배정하고 9명이 남으므로 $N=7t+9$이다. 9명씩 배정할 때 텐트가 3개 남는다는 것은 사용한 마지막 텐트에는 학생이 적어도 1명 있으므로 $9(t-4)<N\\le9(t-3)$이다. 대입하면 $18\\le t\\le22$이고, $N$의 최솟값과 최댓값은 각각 135, 163이다. 합은 298이다.\n결론: 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
-    "subUnit": "higher inequality",
+    "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -259,7 +259,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 구하려는 값이 $x+y$이므로 합과 차를 새로운 문자로 두어 연립방정식을 정리한다.\n조건 정리: $s=x+y$, $d=x-y$라 하면 첫째 식은 $(x-y)^2=8$이므로 $d^2=8$, 즉 $d=\\pm2\\sqrt2$이다.\n풀이 방향: 둘째 식을 $s,d$로 나타낸 뒤 $d$의 두 값에 대하여 가능한 $s$를 모두 구한다.\n정석 풀이: $x^2-y^2=(x+y)(x-y)=sd$이고 $xy=\\dfrac{s^2-d^2}{4}$이므로 둘째 식은 $sd+3\\cdot\\dfrac{s^2-d^2}{4}=2$이다. $d^2=8$을 대입하고 4를 곱하면 $3s^2+4sd-32=0$이다.\n$d=2\\sqrt2$일 때 $3s^2+8\\sqrt2s-32=0$이므로 $s=\\dfrac{4\\sqrt2}{3}$ 또는 $s=-4\\sqrt2$이다.\n$d=-2\\sqrt2$일 때 $3s^2-8\\sqrt2s-32=0$이므로 $s=4\\sqrt2$ 또는 $s=-\\dfrac{4\\sqrt2}{3}$이다.\n따라서 가능한 $s=x+y$ 중 최댓값은 $4\\sqrt2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
-    "subUnit": "system of equations",
+    "subUnit": "연립방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -287,7 +287,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 양변을 계산한다.\n좌변은 $5\\cdot360+120\\cdot6=2520$이고, ${}_7P_5=7\\cdot6\\cdot5\\cdot4\\cdot3=2520$이다. 따라서 $n=7$이다.\n결론: 정답은 ②이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
-    "subUnit": "combination",
+    "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -429,7 +429,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 남학생을 두 묶음으로 나눈다.\n두 여학생의 순서는 $2!$, 남학생을 순서 있게 배열한 뒤 앞 3명과 뒤 3명을 두 묶음으로 보면 $6!$가지이다. 여학생 묶음이 두 남학생 묶음 사이에 와야 전체 남학생 6명이 붙지 않으므로 남학생 묶음의 좌우 순서를 포함해 전체는 $2\\cdot6!=1440$이다.\n결론: 정답은 ③이다.",
     "subUnitKey": "H22-C-08-PERMUTATION",
-    "subUnit": "permutation",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -457,7 +457,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] $a_1$별로 나누어 센다.\n$a_1=1$이면 $(a_2,a_4)$의 합이 4인 양의 순서쌍은 3개이고, $1<a_3<a_5\\le7$은 ${}_6C_2=15$가지이다. $a_1=2$이면 각각 2개와 ${}_5C_2=10$가지, $a_1=3$이면 각각 1개와 ${}_4C_2=6$가지이다. 합은 $3\\cdot15+2\\cdot10+1\\cdot6=71$이다.\n결론: 정답은 ④이다.",
     "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
-    "subUnit": "counting principle",
+    "subUnit": "경우의 수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

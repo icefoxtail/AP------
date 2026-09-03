@@ -10,7 +10,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -30,7 +30,7 @@ window.questionBank = [
       "⑤ $4$"
     ],
     "answer": "①",
-    "solution": "[키포인트]\\n복소수가 서로 같을 조건을 이용하여 실수부분과 허수부분을 각각 비교한다.\\n\\n조건 정리\\n- 좌변: $-2+3i$\\n- 우변: $x+(y+5)i$\\n\\n풀이 과정\\n복소수 상등의 정리에 의해 실수부분은 실수부분끼리, 허수부분은 허수부분끼리 같아야 한다.\\n$-2 = x \\implies x = -2$\\n$3 = y+5 \\implies y = -2$\\n따라서 $x+y = -2 + (-2) = -4$이다.\\n\\n결론\\n따라서 구하는 값은 $-4$이다.",
+    "solution": "[키포인트]\n복소수가 서로 같을 조건을 이용하여 실수부분과 허수부분을 각각 비교한다.\n\n조건 정리\n- 좌변: $-2+3i$\n- 우변: $x+(y+5)i$\n\n풀이 과정\n복소수 상등의 정리에 의해 실수부분은 실수부분끼리, 허수부분은 허수부분끼리 같아야 한다.\n$-2 = x \\implies x = -2$\n$3 = y+5 \\implies y = -2$\n따라서 $x+y = -2 + (-2) = -4$이다.\n\n결론\n따라서 구하는 값은 $-4$이다.",
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -45,7 +45,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -65,7 +65,7 @@ window.questionBank = [
       "⑤ $5$"
     ],
     "answer": "①",
-    "solution": "[키포인트]\\n나머지 정리를 이용하여 다항식에 일차식을 $0$으로 만드는 값을 대입한다.\\n\\n조건 정리\\n- 다항식 $P(x) = x^3+2x^2+x-3$\\n- 나누는 식: $x-1$\\n\\n풀이 과정\\n나머지 정리에 의해 $P(x)$를 $x-1$로 나눈 나머지는 $P(1)$이다.\\n$P(1) = 1^3 + 2(1)^2 + 1 - 3 = 1+2+1-3 = 1$\\n\\n결론\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트]\n나머지 정리를 이용하여 다항식에 일차식을 $0$으로 만드는 값을 대입한다.\n\n조건 정리\n- 다항식 $P(x) = x^3+2x^2+x-3$\n- 나누는 식: $x-1$\n\n풀이 과정\n나머지 정리에 의해 $P(x)$를 $x-1$로 나눈 나머지는 $P(1)$이다.\n$P(1) = 1^3 + 2(1)^2 + 1 - 3 = 1+2+1-3 = 1$\n\n결론\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -80,7 +80,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-01",
     "standardUnit": "다항식의 연산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -100,7 +100,7 @@ window.questionBank = [
       "⑤ $5$"
     ],
     "answer": "②",
-    "solution": "[키포인트]\\n곱셈 공식의 변형을 이용하여 주어진 값들로부터 $xy$를 추출한다.\\n\\n조건 정리\\n- $x-y = 2$\\n- $x^3-y^3 = 20$\\n\\n풀이 과정\\n$x^3-y^3 = (x-y)^3 + 3xy(x-y)$ 공식을 활용한다.\\n주어진 값을 대입하면 $20 = 2^3 + 3xy(2)$이다.\\n$20 = 8 + 6xy \\implies 12 = 6xy \\implies xy = 2$\\n\\n결론\\n따라서 구하는 값은 $2$이다.",
+    "solution": "[키포인트]\n곱셈 공식의 변형을 이용하여 주어진 값들로부터 $xy$를 추출한다.\n\n조건 정리\n- $x-y = 2$\n- $x^3-y^3 = 20$\n\n풀이 과정\n$x^3-y^3 = (x-y)^3 + 3xy(x-y)$ 공식을 활용한다.\n주어진 값을 대입하면 $20 = 2^3 + 3xy(2)$이다.\n$20 = 8 + 6xy \\implies 12 = 6xy \\implies xy = 2$\n\n결론\n따라서 구하는 값은 $2$이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -115,7 +115,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -136,7 +136,7 @@ window.questionBank = [
       "⑤ $30$"
     ],
     "answer": "③",
-    "solution": "[키포인트]\\n허수단위 $i$의 거듭제곱의 주기성($i^4=1$)과 연속된 4개 항의 합의 특징을 이용한다.\\n\\n조건 정리\\n- 총 20개의 항이 나열되어 있다.\\n- $i, i^2, i^3, i^4, \\dots$ 순서로 거듭제곱이 반복된다.\\n\\n풀이 과정\\n4개 항씩 묶어서 계산하면 다음과 같다.\\n$(20 + 19i + 18i^2 + 17i^3) = 20 + 19i - 18 - 17i = 2 + 2i$\\n그다음 4개 항인 $(16i^4 + 15i^5 + 14i^6 + 13i^7)$ 역시 $16 + 15i - 14 - 13i = 2 + 2i$가 된다.\\n이러한 묶음이 총 5번 반복되므로 $a+bi = 5(2+2i) = 10+10i$이다.\\n따라서 $a=10, b=10$이므로 $a+b=20$이다.\\n\\n결론\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트]\n허수단위 $i$의 거듭제곱의 주기성($i^4=1$)과 연속된 4개 항의 합의 특징을 이용한다.\n\n조건 정리\n- 총 20개의 항이 나열되어 있다.\n- $i, i^2, i^3, i^4, \\dots$ 순서로 거듭제곱이 반복된다.\n\n풀이 과정\n4개 항씩 묶어서 계산하면 다음과 같다.\n$(20 + 19i + 18i^2 + 17i^3) = 20 + 19i - 18 - 17i = 2 + 2i$\n그다음 4개 항인 $(16i^4 + 15i^5 + 14i^6 + 13i^7)$ 역시 $16 + 15i - 14 - 13i = 2 + 2i$가 된다.\n이러한 묶음이 총 5번 반복되므로 $a+bi = 5(2+2i) = 10+10i$이다.\n따라서 $a=10, b=10$이므로 $a+b=20$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -151,7 +151,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -164,7 +164,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "복소수 $z$에 대하여 다음 보기 중 옳은 것의 개수는? (단, $\\bar{z}$는 $z$의 켤레복소수이다.)\\n\n\\n<보기>\\n가) $z = -\\bar{z}$이면 $z$는 순허수이다.\\n\n나) $z + \\bar{z}$는 항상 실수이다.\\n\n다) $z^2$이 허수이면 $z$도 허수이다.\\n\n라) $\\bar{z} = z$이면 $z$는 실수이다.\\n\n마) $z^2 \\ge 0$이면 $z$는 실수이다.",
+    "content": "복소수 $z$에 대하여 다음 보기 중 옳은 것의 개수는? (단, $\\bar{z}$는 $z$의 켤레복소수이다.)\n\n\n<보기>\n가) $z = -\\bar{z}$이면 $z$는 순허수이다.\n\n나) $z + \\bar{z}$는 항상 실수이다.\n\n다) $z^2$이 허수이면 $z$도 허수이다.\n\n라) $\\bar{z} = z$이면 $z$는 실수이다.\n\n마) $z^2 \\ge 0$이면 $z$는 실수이다.",
     "choices": [
       "① 1개",
       "② 2개",
@@ -173,7 +173,7 @@ window.questionBank = [
       "⑤ 5개"
     ],
     "answer": "④",
-    "solution": "[키포인트]\\n복소수 $z=a+bi$의 정의와 성질을 하나씩 대조하여 참과 거짓을 판별한다.\\n\\n조건 정리\\n- $z = a+bi, \\bar{z} = a-bi$ ($a, b$는 실수)\\n\\n풀이 과정\\n가) $a+bi = -a+bi \\implies a=0$. 이때 $b=0$이면 $z=0$으로 실수가 될 수 있으므로 틀렸다.\\n나) $(a+bi) + (a-bi) = 2a$ (실수). 옳다.\\n다) 실수의 제곱은 항상 실수이므로, 제곱이 허수라면 $z$는 반드시 허수여야 한다. 옳다.\\n라) $a+bi = a-bi \\implies 2bi = 0 \\implies b=0$. 실수이다. 옳다.\\n마) 제곱하여 0 이상인 복소수는 실수뿐이다. 옳다.\\n따라서 옳은 것은 나, 다, 라, 마 4개이다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트]\n복소수 $z=a+bi$의 정의와 성질을 하나씩 대조하여 참과 거짓을 판별한다.\n\n조건 정리\n- $z = a+bi, \\bar{z} = a-bi$ ($a, b$는 실수)\n\n풀이 과정\n가) $a+bi = -a+bi \\implies a=0$. 이때 $b=0$이면 $z=0$으로 실수가 될 수 있으므로 틀렸다.\n나) $(a+bi) + (a-bi) = 2a$ (실수). 옳다.\n다) 실수의 제곱은 항상 실수이므로, 제곱이 허수라면 $z$는 반드시 허수여야 한다. 옳다.\n라) $a+bi = a-bi \\implies 2bi = 0 \\implies b=0$. 실수이다. 옳다.\n마) 제곱하여 0 이상인 복소수는 실수뿐이다. 옳다.\n따라서 옳은 것은 나, 다, 라, 마 4개이다.\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -188,7 +188,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-04",
     "standardUnit": "복소수와 이차방정식",
     "standardUnitOrder": 4,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -209,7 +209,7 @@ window.questionBank = [
       "⑤ $5$"
     ],
     "answer": "③",
-    "solution": "[키포인트]\\n주어진 복소수와 그 켤레복소수의 합과 곱을 먼저 계산하여 대입한다.\\n\\n조건 정리\\n- $z = 1+i, \\bar{z} = 1-i$\\n\\n풀이 과정\\n$z\\bar{z} = (1+i)(1-i) = 1 - i^2 = 2$\\n$\\frac{1}{z} + \\frac{1}{\\bar{z}} = \\frac{\\bar{z}+z}{z\\bar{z}} = \\frac{2}{2} = 1$\\n따라서 $2+1=3$이다.\\n\\n결론\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트]\n주어진 복소수와 그 켤레복소수의 합과 곱을 먼저 계산하여 대입한다.\n\n조건 정리\n- $z = 1+i, \\bar{z} = 1-i$\n\n풀이 과정\n$z\\bar{z} = (1+i)(1-i) = 1 - i^2 = 2$\n$\\frac{1}{z} + \\frac{1}{\\bar{z}} = \\frac{\\bar{z}+z}{z\\bar{z}} = \\frac{2}{2} = 1$\n따라서 $2+1=3$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -224,7 +224,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -245,7 +245,7 @@ window.questionBank = [
       "⑤ $5$"
     ],
     "answer": "③",
-    "solution": "[키포인트]\\n복이차식을 $x^2$에 대한 이차식으로 보고 인수분해한다.\\n\\n풀이 과정\\n$x^2 = t$로 놓으면 $t^2 + 3t + 2 = (t+1)(t+2)$이다.\\n다시 $t = x^2$을 대입하면 $x^4+3x^2+2 = (x^2+1)(x^2+2)$이다.\\n따라서 $a=0, b=1, c=0, d=2$ (또는 순서를 바꾼 값)이다.\\n\\n결론\\n$a+b+c+d = 0+1+0+2 = 3$이므로 정답은 ③이다.",
+    "solution": "[키포인트]\n복이차식을 $x^2$에 대한 이차식으로 보고 인수분해한다.\n\n풀이 과정\n$x^2 = t$로 놓으면 $t^2 + 3t + 2 = (t+1)(t+2)$이다.\n다시 $t = x^2$을 대입하면 $x^4+3x^2+2 = (x^2+1)(x^2+2)$이다.\n따라서 $a=0, b=1, c=0, d=2$ (또는 순서를 바꾼 값)이다.\n\n결론\n$a+b+c+d = 0+1+0+2 = 3$이므로 정답은 ③이다.",
     "subUnitKey": "H22-C-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -260,7 +260,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -282,7 +282,7 @@ window.questionBank = [
       "⑤ 5"
     ],
     "answer": "④",
-    "solution": "[키포인트]\\n삼차다항식을 이차식의 완전제곱식으로 나눈 검산식을 세우고, 인수정리를 통해 미지수를 결정한다.\\n\\n조건 정리\\n- $P(x)$는 삼차식이다.\\n- $P(x) = (x+1)^2 Q(x) + x+7$\\n- $P(1) = 0, P(2) = 0$\\n\\n풀이 방향 설정\\n$Q(x)$는 일차식이므로 $ax+b$로 둔다. 나머지 조건인 $P(1)=0, P(2)=0$을 대입하여 연립방정식을 만든 뒤 $a, b$를 구한다.\\n\\n풀이 과정\\n1) $P(x) = (x+1)^2 (ax+b) + x+7$로 설정한다.\\n2) $P(1) = 4(a+b) + 8 = 0 \\implies a+b = -2$\\n3) $P(2) = 9(2a+b) + 9 = 0 \\implies 2a+b = -1$\\n4) 두 식을 연립하면 $a=1, b=-3$이다.\\n5) 완성된 식은 $P(x) = (x+1)^2 (x-3) + x+7$이다.\\n6) $P(0) = (1)^2 (-3) + 7 = 4$이다.\\n\\n결론\\n따라서 구하는 값은 4이다.",
+    "solution": "[키포인트]\n삼차다항식을 이차식의 완전제곱식으로 나눈 검산식을 세우고, 인수정리를 통해 미지수를 결정한다.\n\n조건 정리\n- $P(x)$는 삼차식이다.\n- $P(x) = (x+1)^2 Q(x) + x+7$\n- $P(1) = 0, P(2) = 0$\n\n풀이 방향 설정\n$Q(x)$는 일차식이므로 $ax+b$로 둔다. 나머지 조건인 $P(1)=0, P(2)=0$을 대입하여 연립방정식을 만든 뒤 $a, b$를 구한다.\n\n풀이 과정\n1) $P(x) = (x+1)^2 (ax+b) + x+7$로 설정한다.\n2) $P(1) = 4(a+b) + 8 = 0 \\implies a+b = -2$\n3) $P(2) = 9(2a+b) + 9 = 0 \\implies 2a+b = -1$\n4) 두 식을 연립하면 $a=1, b=-3$이다.\n5) 완성된 식은 $P(x) = (x+1)^2 (x-3) + x+7$이다.\n6) $P(0) = (1)^2 (-3) + 7 = 4$이다.\n\n결론\n따라서 구하는 값은 4이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -297,7 +297,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -318,7 +318,7 @@ window.questionBank = [
       "⑤ $45$"
     ],
     "answer": "③",
-    "solution": "[키포인트]\\n다항식의 나눗셈 관계를 검산식으로 표현하고 특정 값을 대입한다.\\n\\n조건 정리\\n- $P(x) = (x^2+2x+3)(x^2+2x+3) + x+2$\\n\\n풀이 과정\\n$P(1)$을 구하기 위해 $x=1$을 대입한다.\\n$P(1) = (1+2+3)(1+2+3) + 1+2 = 6 \\times 6 + 3 = 39$이다.\\n\\n결론\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트]\n다항식의 나눗셈 관계를 검산식으로 표현하고 특정 값을 대입한다.\n\n조건 정리\n- $P(x) = (x^2+2x+3)(x^2+2x+3) + x+2$\n\n풀이 과정\n$P(1)$을 구하기 위해 $x=1$을 대입한다.\n$P(1) = (1+2+3)(1+2+3) + 1+2 = 6 \\times 6 + 3 = 39$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -333,7 +333,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -355,7 +355,7 @@ window.questionBank = [
       "⑤ $7$"
     ],
     "answer": "②",
-    "solution": "[키포인트]\\n두 점 사이의 거리 공식을 적용하여 계산한다.\\n\\n조건 정리\\n- $A(-3, 2), B(1, -4)$\\n\\n풀이 과정\\n$AB = \\sqrt{(1 - (-3))^2 + (-4-2)^2} = \\sqrt{4^2 + (-6)^2} = \\sqrt{16+36} = \\sqrt{52}$\\n$\\sqrt{52} = 2\\sqrt{13}$이다.\\n\\n결론\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트]\n두 점 사이의 거리 공식을 적용하여 계산한다.\n\n조건 정리\n- $A(-3, 2), B(1, -4)$\n\n풀이 과정\n$AB = \\sqrt{(1 - (-3))^2 + (-4-2)^2} = \\sqrt{4^2 + (-6)^2} = \\sqrt{16+36} = \\sqrt{52}$\n$\\sqrt{52} = 2\\sqrt{13}$이다.\n\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -370,7 +370,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -390,7 +390,7 @@ window.questionBank = [
       "⑤ $(3, -2)$"
     ],
     "answer": "③",
-    "solution": "[키포인트]\\n선분의 4등분점 중 $B$에 가장 가까운 점의 내분 비율을 찾는다.\\n\\n조건 정리\\n- 전체 4등분 중 $B$에 가장 가까운 점은 $A$로부터 3, $B$로부터 1의 비율이다.\\n\\n풀이 과정\\n선분 $AB$를 $3:1$로 내분하는 점을 구한다.\\n$x = \\frac{3(-5) + 1(3)}{3+1} = -3$\\n$y = \\frac{3(-1) + 1(5)}{3+1} = \\frac{2}{4} = \\frac{1}{2}$\\n따라서 점의 좌표는 $(-3, \\frac{1}{2})$이다.\\n\\n결론\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트]\n선분의 4등분점 중 $B$에 가장 가까운 점의 내분 비율을 찾는다.\n\n조건 정리\n- 전체 4등분 중 $B$에 가장 가까운 점은 $A$로부터 3, $B$로부터 1의 비율이다.\n\n풀이 과정\n선분 $AB$를 $3:1$로 내분하는 점을 구한다.\n$x = \\frac{3(-5) + 1(3)}{3+1} = -3$\n$y = \\frac{3(-1) + 1(5)}{3+1} = \\frac{2}{4} = \\frac{1}{2}$\n따라서 점의 좌표는 $(-3, \\frac{1}{2})$이다.\n\n결론\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
     "subUnit": "도형의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -405,7 +405,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -427,10 +427,10 @@ window.questionBank = [
       "⑤ 선분 $FE$를 $2:1$로 외분하는 점은 $G$이다."
     ],
     "answer": "④",
-    "solution": "[키포인트]\\n내분점과 외분점의 정의를 선분의 칸 수 비율로 확인한다.\\n\\n조건 정리\\n- $A$에서 $B$까지 6칸으로 나뉘어 있다.\\n- 각 칸의 길이를 1로 간주한다.\\n\\n풀이 과정\\n④번 보기를 확인하면, $FG$의 길이는 1이다. $C$에서 $F$까지 거리는 3이고, $C$에서 $G$까지 거리는 4이다. 따라서 $C$는 선분 $FG$를 $3:4$로 외분하는 점이 맞다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트]\n내분점과 외분점의 정의를 선분의 칸 수 비율로 확인한다.\n\n조건 정리\n- $A$에서 $B$까지 6칸으로 나뉘어 있다.\n- 각 칸의 길이를 1로 간주한다.\n\n풀이 과정\n④번 보기를 확인하면, $FG$의 길이는 1이다. $C$에서 $F$까지 거리는 3이고, $C$에서 $G$까지 거리는 4이다. 따라서 $C$는 선분 $FG$를 $3:4$로 외분하는 점이 맞다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 12의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 12의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/24_제일고_1학기_중간_고1_기출/q12.png",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
@@ -447,7 +447,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -469,7 +469,7 @@ window.questionBank = [
       "⑤ $57$"
     ],
     "answer": "②",
-    "solution": "[키포인트]\\n두 점 사이의 거리의 합이 최소가 되는 지점은 두 점을 잇는 선분 위이다.\\n\\n조건 정리\\n- 최솟값은 선분 $AB$의 길이와 같다.\\n\\n풀이 과정\\n$AB = \\sqrt{(4 - (-2))^2 + (1 - (-5))^2} = \\sqrt{6^2 + 6^2} = \\sqrt{72} = 6\\sqrt{2}$이다.\\n\\n결론\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트]\n두 점 사이의 거리의 합이 최소가 되는 지점은 두 점을 잇는 선분 위이다.\n\n조건 정리\n- 최솟값은 선분 $AB$의 길이와 같다.\n\n풀이 과정\n$AB = \\sqrt{(4 - (-2))^2 + (1 - (-5))^2} = \\sqrt{6^2 + 6^2} = \\sqrt{72} = 6\\sqrt{2}$이다.\n\n결론\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -484,7 +484,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -497,7 +497,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "직선 $(k+1)x + (2-k)y - 3 = 0$에 대한 설명으로 옳은 것만을 보기에서 고른 것은?\\n\\n<보기>\\nㄱ. $k=-1$이면 기울기가 0이다.\\n\nㄴ. $k=0$이면 직선 $4x-2y-3=0$과 수직이다.\\n\nㄷ. $k$의 값에 관계없이 항상 점 $(1, 1)$을 지난다.\\n\nㄹ. $k=1$이면 직선 $6x-3y-1=0$과 평행이다.",
+    "content": "직선 $(k+1)x + (2-k)y - 3 = 0$에 대한 설명으로 옳은 것만을 보기에서 고른 것은?\n\n<보기>\nㄱ. $k=-1$이면 기울기가 0이다.\n\nㄴ. $k=0$이면 직선 $4x-2y-3=0$과 수직이다.\n\nㄷ. $k$의 값에 관계없이 항상 점 $(1, 1)$을 지난다.\n\nㄹ. $k=1$이면 직선 $6x-3y-1=0$과 평행이다.",
     "choices": [
       "① ㄱ, ㄴ",
       "② ㄱ, ㄷ",
@@ -506,10 +506,10 @@ window.questionBank = [
       "⑤ ㄴ, ㄷ, ㄹ"
     ],
     "answer": "④",
-    "solution": "[키포인트]\\n직선의 방정식에 $k$를 대입하거나 항등식 성질을 이용한다.\\n\\n조건 정리\\n- ㄱ: $k=-1 \\implies 3y-3=0 \\implies y=1$. 기울기 0이다. (참)\\n- ㄴ: $k=0 \\implies x+2y-3=0$. 기울기는 $-1/2$이다. $4x-2y-3=0$의 기울기는 2이므로 수직이다. (참)\\n- ㄷ: $x+y-3 + k(x-y) = 0$ 꼴로 정리하면 $x=1, y=1$일 때 성립한다. (참)\\n\\n풀이 과정\\nㄱ, ㄴ, ㄷ이 모두 참이므로 정답은 ④이다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트]\n직선의 방정식에 $k$를 대입하거나 항등식 성질을 이용한다.\n\n조건 정리\n- ㄱ: $k=-1 \\implies 3y-3=0 \\implies y=1$. 기울기 0이다. (참)\n- ㄴ: $k=0 \\implies x+2y-3=0$. 기울기는 $-1/2$이다. $4x-2y-3=0$의 기울기는 2이므로 수직이다. (참)\n- ㄷ: $x+y-3 + k(x-y) = 0$ 꼴로 정리하면 $x=1, y=1$일 때 성립한다. (참)\n\n풀이 과정\nㄱ, ㄴ, ㄷ이 모두 참이므로 정답은 ④이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 14의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 14의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
@@ -525,7 +525,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -544,10 +544,10 @@ window.questionBank = [
       "⑤ $29$"
     ],
     "answer": "④",
-    "solution": "[키포인트]\\n수직 조건($A_1A_2+B_1B_2=0$)과 평행 조건(기울기 일치)을 활용하여 연립한다.\\n\\n조건 정리\\n- 수직: $a \\cdot b + (-1) \\cdot 3 = 0 \\implies ab = 3$\\n- 평행: $a = -(b-4) \\implies a+b = 4$\\n\\n풀이 과정\\n$ab=3$, $a+b=4$이므로 $a, b$는 $t^2-4t+3=0$의 두 근인 $1$과 $3$이다.\\n$a^3+b^3 = (a+b)^3 - 3ab(a+b) = 4^3 - 3(3)(4) = 64 - 36 = 28$이다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트]\n수직 조건($A_1A_2+B_1B_2=0$)과 평행 조건(기울기 일치)을 활용하여 연립한다.\n\n조건 정리\n- 수직: $a \\cdot b + (-1) \\cdot 3 = 0 \\implies ab = 3$\n- 평행: $a = -(b-4) \\implies a+b = 4$\n\n풀이 과정\n$ab=3$, $a+b=4$이므로 $a, b$는 $t^2-4t+3=0$의 두 근인 $1$과 $3$이다.\n$a^3+b^3 = (a+b)^3 - 3ab(a+b) = 4^3 - 3(3)(4) = 64 - 36 = 28$이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 15의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 15의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
@@ -563,7 +563,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -583,10 +583,10 @@ window.questionBank = [
       "⑤ $2x-y-8=0$"
     ],
     "answer": "①",
-    "solution": "[키포인트]\\n한 정점을 지나는 직선과 외부의 한 점 사이의 거리가 최대일 조건은 두 점을 잇는 선분이 직선과 수직일 때이다.\\n\\n조건 정리\\n- 정점 $A$는 두 직선의 교점이다.\\n- 외부의 점 $P(2, 1)$이다.\\n\\n풀이 방향 설정\\n교점 $A$를 먼저 구한 뒤, 선분 $AP$에 수직이면서 점 $A$를 지나는 직선을 유도한다.\\n\\n풀이 과정\\n1) 교점 구하기: $3x+4y-1=0$과 $2x+y-4=0$을 연립하면 $x=3, y=-2$이다. 즉 $A(3, -2)$이다.\\n2) 선분 $AP$의 기울기: $\\frac{1 - (-2)}{2-3} = -3$이다.\\n3) 수직인 직선의 기울기: 곱이 $-1$이어야 하므로 $1/3$이다.\\n4) 식 완성: $y - (-2) = 1/3 (x-3) \\implies x-3y-9=0$이다.\\n\\n결론\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트]\n한 정점을 지나는 직선과 외부의 한 점 사이의 거리가 최대일 조건은 두 점을 잇는 선분이 직선과 수직일 때이다.\n\n조건 정리\n- 정점 $A$는 두 직선의 교점이다.\n- 외부의 점 $P(2, 1)$이다.\n\n풀이 방향 설정\n교점 $A$를 먼저 구한 뒤, 선분 $AP$에 수직이면서 점 $A$를 지나는 직선을 유도한다.\n\n풀이 과정\n1) 교점 구하기: $3x+4y-1=0$과 $2x+y-4=0$을 연립하면 $x=3, y=-2$이다. 즉 $A(3, -2)$이다.\n2) 선분 $AP$의 기울기: $\\frac{1 - (-2)}{2-3} = -3$이다.\n3) 수직인 직선의 기울기: 곱이 $-1$이어야 하므로 $1/3$이다.\n4) 식 완성: $y - (-2) = 1/3 (x-3) \\implies x-3y-9=0$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 16의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 16의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -602,7 +602,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -621,10 +621,10 @@ window.questionBank = [
       "⑤ $-\\frac{2}{7}$"
     ],
     "answer": "②",
-    "solution": "[키포인트]\\n직선이 항상 지나는 정점을 찾고, 그 정점을 중심으로 직선을 회전시키며 선분 $AB$와 닿는 범위를 구한다.\\n\\n조건 정리\\n- 직선을 $m$에 대해 정리: $m(2x+y+5) + x-y+1 = 0 \\implies$ 정점 $(-2, -1)$을 지난다.\\n\\n풀이 과정\\n정점 $P(-2, -1)$과 $A(2, 5)$를 지날 때의 $m$은 $1/7$이다.\\n정점 $P(-2, -1)$과 $B(4, 1)$을 지날 때의 $m$은 $-2/7$이다.\\n따라서 범위는 $-2/7 \\le m \\le 1/7$이므로 $a+b = -1/7$이다.\\n\\n결론\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트]\n직선이 항상 지나는 정점을 찾고, 그 정점을 중심으로 직선을 회전시키며 선분 $AB$와 닿는 범위를 구한다.\n\n조건 정리\n- 직선을 $m$에 대해 정리: $m(2x+y+5) + x-y+1 = 0 \\implies$ 정점 $(-2, -1)$을 지난다.\n\n풀이 과정\n정점 $P(-2, -1)$과 $A(2, 5)$를 지날 때의 $m$은 $1/7$이다.\n정점 $P(-2, -1)$과 $B(4, 1)$을 지날 때의 $m$은 $-2/7$이다.\n따라서 범위는 $-2/7 \\le m \\le 1/7$이므로 $a+b = -1/7$이다.\n\n결론\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 17의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 17의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -640,7 +640,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-01",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -662,10 +662,10 @@ window.questionBank = [
       "⑤ $80$"
     ],
     "answer": "④",
-    "solution": "[키포인트]\\n삼각형의 세 꼭짓점으로부터의 거리의 제곱의 합이 최소가 되는 점은 삼각형의 무게중심이다.\\n\\n조건 정리\\n- $A(0, 0), B(9, 0), C(0, 6)$으로 좌표를 잡는다.\\n\\n풀이 방향 설정\\n무게중심 $G$의 좌표를 구하고 각 꼭짓점까지의 거리 제곱의 합을 계산한다.\\n\\n풀이 과정\\n1) 무게중심 $G$: $( (0+9+0)/3, (0+0+6)/3 ) = (3, 2)$이다.\\n2) 거리 제곱 합: $AG^2 + BG^2 + CG^2 = (3^2+2^2) + (6^2+2^2) + (3^2+4^2) = 13 + 40 + 25 = 78$이다.\\n\\n결론\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트]\n삼각형의 세 꼭짓점으로부터의 거리의 제곱의 합이 최소가 되는 점은 삼각형의 무게중심이다.\n\n조건 정리\n- $A(0, 0), B(9, 0), C(0, 6)$으로 좌표를 잡는다.\n\n풀이 방향 설정\n무게중심 $G$의 좌표를 구하고 각 꼭짓점까지의 거리 제곱의 합을 계산한다.\n\n풀이 과정\n1) 무게중심 $G$: $( (0+9+0)/3, (0+0+6)/3 ) = (3, 2)$이다.\n2) 거리 제곱 합: $AG^2 + BG^2 + CG^2 = (3^2+2^2) + (6^2+2^2) + (3^2+4^2) = 13 + 40 + 25 = 78$이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 18의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 18의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/24_제일고_1학기_중간_고1_기출/q18.png",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
@@ -682,7 +682,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-02",
     "standardUnit": "항등식과 나머지 정리",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -696,7 +696,7 @@ window.questionBank = [
     "content": "서술형 1. 조립제법을 이용하여 다항식 $2x^3-3x^2-x+2$를 $x-2$로 나눈 몫과 나머지를 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "몫: $2x^2+x+1$, 나머지: 4",
-    "solution": "[키포인트]\\n조립제법의 계수 나열법을 정확히 적용한다.\\n\\n조건 정리\\n- $2, -3, -1, 2$를 $2$로 조립제법한다.\\n\\n풀이 과정\\n조립제법 결과 하단 계수는 $2, 1, 1$이고 끝자리는 4이다. 따라서 몫은 $2x^2+x+1$이고 나머지는 4이다.\\n\\n결론\\n따라서 구하는 몫은 $2x^2+x+1$이고 나머지는 4이다.",
+    "solution": "[키포인트]\n조립제법의 계수 나열법을 정확히 적용한다.\n\n조건 정리\n- $2, -3, -1, 2$를 $2$로 조립제법한다.\n\n풀이 과정\n조립제법 결과 하단 계수는 $2, 1, 1$이고 끝자리는 4이다. 따라서 몫은 $2x^2+x+1$이고 나머지는 4이다.\n\n결론\n따라서 구하는 몫은 $2x^2+x+1$이고 나머지는 4이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -711,7 +711,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -727,10 +727,10 @@ window.questionBank = [
     "content": "서술형 2. 세 점 $A(5, 4), B(6, 0), O(0, 0)$을 꼭짓점으로 하는 삼각형 $AOB$의 넓이가 직선 $y=-2x+k$에 의해서 이등분될 때, 상수 $k$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$2\\sqrt{21}$",
-    "solution": "삼각형 $AOB$의 넓이는 $\\dfrac12\\cdot6\\cdot4=12$이므로 이등분되어야 하는 넓이는 $6$이다.\n\n직선 $y=-2x+k$와 변 $OB$($y=0$)의 교점을 $R$, 변 $OA$($y=\\dfrac45x$)의 교점을 $S$라 하자.\n$R=(\\dfrac{k}{2},0)$이고, $S=\\left(\\dfrac{5k}{14},\\dfrac{2k}{7}\\right)$이다.\n\n첫째, $0<k<12$이면 $R$, $S$가 각각 선분 $OB$, $OA$ 위에 있다. 이때 원점 쪽 삼각형의 넓이는\n$[ORS]=\\dfrac12\\cdot\\dfrac{k}{2}\\cdot\\dfrac{2k}{7}=\\dfrac{k^2}{14}$이다.\n따라서 $\\dfrac{k^2}{14}=6$에서 $k=2\\sqrt{21}$이고, 실제로 $0<2\\sqrt{21}<12$이다.\n\n둘째, $12\\le k<14$이면 직선은 $OA$와 $AB$를 자른다. $S$는 그대로 $OA$와의 교점이고, $T$를 $AB$와의 교점이라 하자. 변 $AB$의 방정식은 $y=-4x+24$이므로\n$T=\\left(\\dfrac{24-k}{2},2k-24\\right)$이다.\n$A=(5,4)$에서 $S$, $T$로 향하는 두 벡터는\n$\\overrightarrow{AS}=(14-k)\\left(-\\dfrac5{14},-\\dfrac27\\right)$,\\quad $\\overrightarrow{AT}=(14-k)\\left(\\dfrac12,-2\\right)$이다.\n두 벡터의 행렬식의 절댓값은 $\\dfrac67(14-k)^2$이므로, $A$ 쪽 삼각형의 넓이는\n$[AST]=\\dfrac12\\cdot\\dfrac67(14-k)^2=\\dfrac37(14-k)^2$이다.\n$12\\le k<14$에서 이 값은 $\\dfrac{12}{7}$ 이하이므로 원점 쪽 넓이는 $12-[AST]>6$이다.\n\n셋째, $k\\le0$이면 직선은 삼각형 내부를 가르지 못하고, $k\\ge14$이면 원점 쪽 넓이가 삼각형 전체 넓이 $12$가 되어 이등분 조건을 만족하지 않는다.\n\n따라서 조건을 만족하는 값은 $k=2\\sqrt{21}$이다.",
+    "solution": "삼각형 $AOB$의 넓이는 $\\dfrac12\\cdot6\\cdot4=12$이므로 이등분되어야 하는 넓이는 $6$이다.\n\n직선 $y=-2x+k$와 변 $OB$($y=0$)의 교점을 $R$, 변 $OA$($y=\\dfrac45x$)의 교점을 $S$라 하자.\n$R=(\\dfrac{k}{2},0)$이고, $S=\\left(\\dfrac{5k}{14},\\dfrac{2k}{7}\\right)$이다.\n\n첫째, $0<k<12$이면 $R$, $S$가 각각 선분 $OB$, $OA$ 위에 있다. 이때 원점 쪽 삼각형의 넓이는\n$[ORS]=\\dfrac12\\cdot\\dfrac{k}{2}\\cdot\\dfrac{2k}{7}=\\dfrac{k^2}{14}$이다.\n따라서 $\\dfrac{k^2}{14}=6$에서 $k=2\\sqrt{21}$이고, 실제로 $0<2\\sqrt{21}<12$이다.\n\n둘째, $12\\le k<14$이면 직선은 $OA$와 $AB$를 자른다. $S$는 $OA$와의 교점이고 $T$는 $AB$와의 교점이다. $AO$ 위에서 $AS:AO=(14-k):14$이고, $AB$ 위에서 $AT:AB=(14-k):2$이다. 두 삼각형 $AST$와 $AOB$는 $A$에서 낀 각이 같으므로 넓이의 비는 두 변의 비의 곱이다. 따라서\n$[AST]=[AOB]\\times\\dfrac{14-k}{14}\\times\\dfrac{14-k}{2}=12\\times\\dfrac{(14-k)^2}{28}=\\dfrac37(14-k)^2$이다.\n$12\\le k<14$에서 $0<14-k\\le2$이므로 $[AST]\\le\\dfrac37\\cdot2^2=\\dfrac{12}{7}<6$이다. 따라서 원점 쪽 넓이는 $12-[AST]>6$이어서 이등분할 수 없다.\n\n셋째, $k\\le0$이면 직선은 삼각형 내부를 가르지 못하고, $k\\ge14$이면 원점 쪽 넓이가 삼각형 전체 넓이 $12$가 되어 이등분 조건을 만족하지 않는다.\n\n따라서 조건을 만족하는 값은 $k=2\\sqrt{21}$이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 20의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 20의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -746,7 +746,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C2-02",
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -764,8 +764,8 @@ window.questionBank = [
     "answer": "$2 \\pm \\sqrt{3}, -3 \\pm 2\\sqrt{2}$",
     "solution": "점 $(-1,1)$에서 직선 $3ax+4ay+a^2+1=0$까지의 거리는\n$\\dfrac{|3a(-1)+4a(1)+a^2+1|}{\\sqrt{(3a)^2+(4a)^2}}=\\dfrac{|a^2+a+1|}{5|a|}$이다. 거리가 $1$이므로 $a\\ne0$이고\n$|a^2+a+1|=5|a|$이다.\n\n$ a^2+a+1=(a+\\dfrac12)^2+\\dfrac34>0$이므로\n$a^2+a+1=5|a|$로 바꿀 수 있다.\n\n$a>0$일 때\n$a^2+a+1=5a$에서 $a^2-4a+1=0$이므로\n$a=2\\pm\\sqrt3$이다. 두 값 모두 양수이다.\n\n$a<0$일 때\n$a^2+a+1=-5a$에서 $a^2+6a+1=0$이므로\n$a=-3\\pm2\\sqrt2$이다. 두 값 모두 음수이다.\n\n따라서 모든 $a$의 값은 $2\\pm\\sqrt3$, $-3\\pm2\\sqrt2$이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 21의 독립 풀이 사실 기반 해설 도형",
-    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "평면좌표 문항 21의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -781,7 +781,7 @@ window.questionBank = [
     "standardUnitKey": "H22-C-03",
     "standardUnit": "인수분해",
     "standardUnitOrder": 3,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -797,7 +797,7 @@ window.questionBank = [
     "content": "[서술형 4] 다항식 $A(x)=x^4+ax^2+b$가\n$A(x)=B(x)C(x)$\n로 인수분해된다고 하자. $B(x),C(x)$는 최고차항의 계수가 1이고 계수가 모두 정수인 이차다항식이며, $B(x)$를 $C(x)$로 나눈 나머지는 1이다. 또한 $A(2)=30$이고 $A(x)$는 실수 범위에서 일차식의 인수를 갖지 않을 때, $a+b$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "5",
-    "solution": "[키포인트]\\n상반다항식의 인수분해 성질과 정수 계수 조건을 결합한다.\\n\\n조건 정리\\n- $x^2 + 1/x^2 + a(x + 1/x) + b = 0$ 형태에서 $x+1/x = t$로 치환한다.\\n\\n풀이 방향 설정\\n$t^2 + at + b-2 = 0$의 해를 정수 계수 이차식 조건에 맞춘다.\\n\\n풀이 과정\\n1) 치환: $t^2+at+b-2 = (t-k_1)(t-k_2)$라 하면 $x^2-k_1x+1$과 $x^2-k_2x+1$이 인수가 된다.\\n2) 나머지 조건: $x^2-k_1x+1 = (x^2-k_2x+1) \\cdot 1 + 1$에서 $(k_2-k_1)x = 1$은 성립 불가하므로, 상수항과 차수를 고려하여 $k_1, k_2$의 정수해를 분석한다. 최종적으로 $a=0, b=2$가 도출된다.\\n\\n결론\\n따라서 $a+b=2$이다.",
+    "solution": "[키포인트]\n상반다항식의 인수분해 성질과 정수 계수 조건을 결합한다.\n\n조건 정리\n- $x^2 + 1/x^2 + a(x + 1/x) + b = 0$ 형태에서 $x+1/x = t$로 치환한다.\n\n풀이 방향 설정\n$t^2 + at + b-2 = 0$의 해를 정수 계수 이차식 조건에 맞춘다.\n\n풀이 과정\n1) 치환: $t^2+at+b-2 = (t-k_1)(t-k_2)$라 하면 $x^2-k_1x+1$과 $x^2-k_2x+1$이 인수가 된다.\n2) 나머지 조건: $x^2-k_1x+1 = (x^2-k_2x+1) \\cdot 1 + 1$에서 $(k_2-k_1)x = 1$은 성립 불가하므로, 상수항과 차수를 고려하여 $k_1, k_2$의 정수해를 분석한다. 최종적으로 $a=0, b=2$가 도출된다.\n\n결론\n따라서 $a+b=2$이다.",
     "subUnitKey": "H22-C-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "rule_inferred",

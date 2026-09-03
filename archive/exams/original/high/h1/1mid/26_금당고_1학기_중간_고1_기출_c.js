@@ -20,7 +20,7 @@ window.questionBank = [
       "하난도"
     ],
     "wide": false,
-    "content": "두 다항식\\n$A=3x^2+4x-2, B=x^2+x+3$\\n에 대하여 $2A+B$를 간단히 하면?",
+    "content": "두 다항식\n$A=3x^2+4x-2, B=x^2+x+3$\n에 대하여 $2A+B$를 간단히 하면?",
     "choices": [
       "$7x^2+9x-1$",
       "$7x^2+9x-3$",
@@ -203,7 +203,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
-    "subUnit": "quadratic equation",
+    "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -226,7 +226,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "등식\\n$(2x+3)(x-2)+8 = ax(x-2)+b(x-2)+cx$\\n가 $x$에 대한 항등식일 때, $a-b+c$의 값을 구하면? (단, $a, b, c$는 상수이다.)",
+    "content": "등식\n$(2x+3)(x-2)+8 = ax(x-2)+b(x-2)+cx$\n가 $x$에 대한 항등식일 때, $a-b+c$의 값을 구하면? (단, $a, b, c$는 상수이다.)",
     "choices": [
       "7",
       "8",
@@ -308,7 +308,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -477,7 +477,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
-    "subUnit": "quadratic function graph",
+    "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -503,7 +503,7 @@ window.questionBank = [
       "자연수조건"
     ],
     "wide": false,
-    "content": "실수 $a$에 대하여 복소수 $z$를 $z=a^2-1+(a-1)i$라 하자. $z^2$이 음의 실수일 때,\\n$(\\dfrac{1-i}{\\sqrt{2}})^n = \\dfrac{(z-\\bar{z})i}{4}$\\n가 되도록 하는 300이하의 자연수 $n$의 개수는? (단, $\\bar{z}$는 $z$의 켤레복소수이고, $i=\\sqrt{-1}$이다.)",
+    "content": "실수 $a$에 대하여 복소수 $z$를 $z=a^2-1+(a-1)i$라 하자. $z^2$이 음의 실수일 때,\n$(\\dfrac{1-i}{\\sqrt{2}})^n = \\dfrac{(z-\\bar{z})i}{4}$\n가 되도록 하는 300이하의 자연수 $n$의 개수는? (단, $\\bar{z}$는 $z$의 켤레복소수이고, $i=\\sqrt{-1}$이다.)",
     "choices": [
       "37",
       "38",
@@ -601,7 +601,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "[서·논술형 1]\\n다음은 삼차다항식 $P(x)=ax^3+bx^2+cx+11$을 $x-3$으로 나누었을 때의 몫과 나머지를 조립제법을 이용하여 구하는 과정의 일부를 나타낸 것이다.\\n<div class=\"question-table-wrap\">\\n<table class=\"question-table\" style=\"width:230px; max-width:230px; margin:8px auto; border-collapse:collapse; table-layout:fixed; font-size:9pt; text-align:center;\">\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; width:34px; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">$a$</td>\\n<td style=\"border:none; padding:3px 5px;\">$b$</td>\\n<td style=\"border:none; padding:3px 5px;\">$c$</td>\\n<td style=\"border:none; padding:3px 5px;\">11</td>\\n</tr>\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; padding:3px 5px;\"></td>\\n<td style=\"border:none; padding:3px 5px;\"></td>\\n<td style=\"border:none; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">3</td>\\n<td style=\"border:none; padding:3px 5px;\">$-6$</td>\\n</tr>\\n<tr>\\n<td style=\"border:none; border-right:1px solid #000; border-top:1px solid #000; padding:3px 5px;\"></td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">$-2$</td>\\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">5</td>\\n</tr>\\n</table>\\n</div>\\n$P(x)$를 $x-5$로 나누었을 때의 나머지를 구하는 과정을 풀이와 함께 상세하게 서술하시오.",
+    "content": "[서·논술형 1]\n다음은 삼차다항식 $P(x)=ax^3+bx^2+cx+11$을 $x-3$으로 나누었을 때의 몫과 나머지를 조립제법을 이용하여 구하는 과정의 일부를 나타낸 것이다.\n<div class=\"question-table-wrap\">\n<table class=\"question-table\" style=\"width:230px; max-width:230px; margin:8px auto; border-collapse:collapse; table-layout:fixed; font-size:9pt; text-align:center;\">\n<tr>\n<td style=\"border:none; border-right:1px solid #000; width:34px; padding:3px 5px;\">3</td>\n<td style=\"border:none; padding:3px 5px;\">$a$</td>\n<td style=\"border:none; padding:3px 5px;\">$b$</td>\n<td style=\"border:none; padding:3px 5px;\">$c$</td>\n<td style=\"border:none; padding:3px 5px;\">11</td>\n</tr>\n<tr>\n<td style=\"border:none; border-right:1px solid #000; padding:3px 5px;\"></td>\n<td style=\"border:none; padding:3px 5px;\"></td>\n<td style=\"border:none; padding:3px 5px;\">3</td>\n<td style=\"border:none; padding:3px 5px;\">3</td>\n<td style=\"border:none; padding:3px 5px;\">$-6$</td>\n</tr>\n<tr>\n<td style=\"border:none; border-right:1px solid #000; border-top:1px solid #000; padding:3px 5px;\"></td>\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">1</td>\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">$-2$</td>\n<td style=\"border:none; border-top:1px solid #000; padding:3px 5px;\">5</td>\n</tr>\n</table>\n</div>\n$P(x)$를 $x-5$로 나누었을 때의 나머지를 구하는 과정을 풀이와 함께 상세하게 서술하시오.",
     "choices": [],
     "answer": "11",
     "solution":"[키포인트] 조립제법의 표에서 몫의 계수와 나머지를 읽어 다항식의 계수를 복원한 뒤, 나머지정리로 값을 구한다.\n\n조립제법에서 첫째 줄은 나눠지는 다항식의 계수이고, 마지막 줄은 몫의 계수와 나머지이다. 따라서\n$a=1,\\quad b+3a=1,\\quad c+3(b+3a)=-2$\n이다. 먼저 $a=1$이고 $b+3=1$이므로 $b=-2$이다. 또 $c+3=-2$이므로 $c=-5$이다. 따라서\n$P(x)=x^3-2x^2-5x+11$\n이다.\n\n$P(x)$를 $x-5$로 나눈 나머지는 나머지정리에 따라 $P(5)$이다. 그러므로\n$P(5)=5^3-2\\cdot5^2-5\\cdot5+11\n=125-50-25+11=61$\n이다.\n\n따라서 구하는 나머지는 $61$이다.",
@@ -626,7 +626,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "[서·논술형 2]\\n다음 그림과 같이 지름의 길이의 합이 8인 두 구가 서로 외접하고 있다. 두 구의 겉넓이의 합이 $40\\pi$일 때, 이 두 구의 부피의 합을 $a\\pi$라 하자. $8a$의 값을 구하는 과정을 풀이와 함께 상세하게 서술하시오.",
+    "content": "[서·논술형 2]\n다음 그림과 같이 지름의 길이의 합이 8인 두 구가 서로 외접하고 있다. 두 구의 겉넓이의 합이 $40\\pi$일 때, 이 두 구의 부피의 합을 $a\\pi$라 하자. $8a$의 값을 구하는 과정을 풀이와 함께 상세하게 서술하시오.",
     "image": "assets/images/26_금당고_1학기_중간_고1_기출/q19.png",
     "choices": [],
     "answer": "125",
@@ -651,7 +651,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서·논술형 3]\\n실수 $t$에 대하여 $t \\le x \\le t+2$에서 이차함수 $f(x)=x^2-4x+10$의 최댓값과 최솟값의 차를 $g(t)$라 하자. $t$에 대한 방정식 $g(t)-\\dfrac{1}{2}=0, g(t)-1=0, g(t)-\\dfrac{3}{2}=0$의 서로 다른 실근의 개수를 각각 $a, b, c$라 할 때, $a+b+c$의 값을 풀이과정과 함께 상세하게 서술하시오.",
+    "content": "[서·논술형 3]\n실수 $t$에 대하여 $t \\le x \\le t+2$에서 이차함수 $f(x)=x^2-4x+10$의 최댓값과 최솟값의 차를 $g(t)$라 하자. $t$에 대한 방정식 $g(t)-\\dfrac{1}{2}=0, g(t)-1=0, g(t)-\\dfrac{3}{2}=0$의 서로 다른 실근의 개수를 각각 $a, b, c$라 할 때, $a+b+c$의 값을 풀이과정과 함께 상세하게 서술하시오.",
     "choices": [],
     "answer": "6",
     "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 6이다.",
