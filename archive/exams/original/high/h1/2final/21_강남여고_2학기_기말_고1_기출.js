@@ -406,6 +406,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 수직점근선에서는 분모가 $0$이 된다.\n점근선이 $x=4$이므로 $2-f(4)=0$, 즉 $f(4)=2$이다.\n일차함수 $f$는 두 점 $(1,5)$, $(4,2)$를 지나므로 기울기는 $\\dfrac{2-5}{4-1}=-1$이다.\n따라서 $f(3)=5-1\\times(3-1)=3$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q14-solution.svg",
+
+    "solutionImageAlt": "변환된 유리함수의 점근선을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f(x)=−x+6에서 y=−1+7/(x−4)로 정리해 점근선을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "category_or_cue_inferred",

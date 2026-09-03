@@ -489,6 +489,14 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 제곱근 그래프가 좌우 대칭 관계를 이루므로 기준 직사각형에서 더해지는 넓이와 빠지는 넓이가 같다.\n조건 정리: $f(x)=5+\\sqrt{x+2}$, $g(x)=-5+\\sqrt{2-x}$이고 두 직선은 $x=-2$, $x=2$이다.\n풀이 방향: $y=5$, $y=-5$와 $x=\\pm2$가 만드는 가로 4, 세로 10의 직사각형을 기준으로 넓이를 비교한다.\n정석 풀이: $f(x)$는 $y=5$보다 $\\sqrt{x+2}$만큼 위에 있고, $g(x)$는 $y=-5$보다 $\\sqrt{2-x}$만큼 위에 있다.\n그런데 $\\sqrt{x+2}$의 그래프와 $\\sqrt{2-x}$의 그래프는 $y$축에 대하여 서로 대칭이므로 $-2\\le x\\le2$에서 두 그래프 아래의 넓이는 서로 같다.\n따라서 기준 직사각형 위로 $f$ 때문에 더해지는 넓이와, 기준 직사각형에서 $g$ 때문에 빠지는 넓이가 정확히 같아 서로 상쇄된다.\n그러므로 구하는 넓이는 기준 직사각형의 넓이와 같아 $4\\times10=40$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고1_기출/q16-solution.svg",
+
+    "solutionImageAlt": "두 무리함수로 둘러싸인 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "y=5, y=−5와 x=±2를 기준으로 대칭 초과분이 상쇄되어 넓이 40이다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
