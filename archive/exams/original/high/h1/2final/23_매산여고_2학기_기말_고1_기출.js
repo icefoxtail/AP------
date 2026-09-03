@@ -278,6 +278,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] $x$좌표가 정수인 각 세로선에서 두 그래프 사이에 들어가는 정수 $y$의 개수를 세어 합한다.\n조건 정리: $0\\le x\\le10$이고 위쪽 경계는 $f(x)=\\sqrt{x+3}$, 아래쪽 경계는 $g(x)=-\\dfrac{2x}{x+3}$이다.\n풀이 방향: 정수 $x=0,1,\\ldots,10$을 구간별로 묶어 가능한 정수 $y$의 개수를 센다.\n정석 풀이: $x=0$에서는 $y=0,1$의 $2$개이다. $x=1,2$에서는 각각 $y=0,1,2$로 $3$개씩이다. $x=3,4,5$에서는 각각 $y=-1,0,1,2$로 $4$개씩이다. $x=6,7,8,9,10$에서는 각각 $y=-1,0,1,2,3$으로 $5$개씩이다. 따라서 전체 점의 개수는 $2+2\\cdot3+3\\cdot4+5\\cdot5=45$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고1_기출/q09-solution.svg",
+
+    "solutionImageAlt": "무리함수·유리함수 사이의 정수 격자 영역을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "두 그래프와 x=0,10 경계 사이의 정수 격자점을 세는 구조를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
