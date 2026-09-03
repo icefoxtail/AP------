@@ -416,6 +416,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 두 곡선 조각은 원점을 중심으로 $90^\\circ$ 반시계 방향으로 회전하면 서로 겹치므로, 삼각형에서 더해지는 넓이와 빠지는 넓이가 같다.\n조건 정리: $O=(0,0)$이라 하고 $0\\le x\\le2$에서 곡선 $y=x^2$ 위의 점을 $P=(x,x^2)$라 하자. 점 $P$를 원점 중심으로 $90^\\circ$ 반시계 회전하면 $P'=(-x^2,x)$가 된다. $x\\ge0$이므로 $x=\\sqrt{x^2}=\\sqrt{-(-x^2)}$이고, 따라서 $P'$는 곡선 $y=\\sqrt{-x}$ 위에 있다. 또한 $A(2,4)$는 $B(-4,2)$로 옮겨진다.\n풀이 방향: 곡선 $OA$와 선분 $OA$ 사이의 영역이 회전에 의해 곡선 $OB$와 선분 $OB$ 사이의 영역으로 정확히 옮겨짐을 이용한다.\n정석 풀이: 구하는 영역을 삼각형 $OAB$와 비교하면, 오른쪽에서는 곡선 $OA$가 선분 $OA$보다 아래에 있어 두 선 사이의 넓이가 삼각형에 더해지고, 왼쪽에서는 곡선 $OB$가 선분 $OB$보다 위에 있어 같은 넓이가 삼각형에서 빠진다. 두 넓이는 회전으로 서로 합동이므로 상쇄된다. 따라서 구하는 넓이는 삼각형 $OAB$의 넓이와 같다. 좌표를 이용하면 $\\dfrac{1}{2}|2\\times2-4\\times(-4)|=\\dfrac{1}{2}\\times20=10$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q14-solution.svg",
+
+    "solutionImageAlt": "조각함수와 직선으로 둘러싸인 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "A=(−4,2), O=(0,0), B=(2,4)와 넓이 10을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
     "subUnit": "함수의 뜻과 대응",
     "subUnitConfidence": "rule_inferred",
