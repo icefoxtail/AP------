@@ -426,6 +426,14 @@ window.questionBank = [
     "image": "assets/images/22_매산고_2학기_기말_고1_기출/q12.png",
     "answer": "④",
     "solution": "[키포인트] 함수와 역함수 위의 대응하는 점은 직선 $y=x$에 대하여 대칭이다.\n조건 정리: $A=(2,3)$이므로 $B=(3,2)$이고 $f(2)=3$이다.\n풀이 방향: 주어진 함숫값 차로 나머지 대칭점 $C,D$를 구한다.\n정석 풀이: $3-f^{-1}(2)=7$에서 $f^{-1}(2)=-4$이다. 따라서 역함수 위의 점 $C=(2,-4)$와 이에 대칭인 함수 위의 점 $D=(-4,2)$를 얻는다. $BD$는 수평이고 길이는 $3-(-4)=7$, 점 $A$에서 $BD$까지의 높이는 $3-2=1$이다. 그러므로 넓이는 $7\\times1/2=7/2$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "함수와 역함수의 대응점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "A↔B, C↔D의 좌표 교환과 y=x 대칭을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",

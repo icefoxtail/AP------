@@ -299,6 +299,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 무리함수 그래프의 끝점과 $y$절편을 이용하여 $a,b,c$를 순서대로 결정한다.\n조건 정리: 그림의 끝점은 $(6,-4)$이고 그래프는 $(0,2)$를 지난다.\n풀이 방향: 끝점에서 근호 안이 0이라는 조건과 $y$절편 조건을 연립한다.\n정석 풀이: 끝점의 $y$좌표가 $-4$이므로 $c=-4$이고, $x=6$에서 근호 안이 0이므로 $6a+b=0$이다. 또 $(0,2)$를 지나므로 $2=\\sqrt b-4$, 따라서 $\\sqrt b=6$, $b=36$이다. 그러므로 $6a+36=0$에서 $a=-6$이다. 따라서 $a+b+c=-6+36-4=26$이다.\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q10-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점과 절편을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "끝점 (6,−4), y절편 (0,2), 범위와 a+b+c를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

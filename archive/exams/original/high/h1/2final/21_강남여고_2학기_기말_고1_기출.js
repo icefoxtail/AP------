@@ -346,6 +346,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 같은 $x=n$에서 두 함수값의 차를 구하면 선분의 길이가 된다.\n$f(n)=\\dfrac4n-\\dfrac4{n+1}=4\\left(\\dfrac1n-\\dfrac1{n+1}\\right)$이다.\n따라서\n$f(1)+\\cdots+f(5)=4\\left(1-\\dfrac16\\right)=\\dfrac{10}{3}$이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "두 반비례 함수와 수직 선분을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "n=1,…,5에서 4/n과 4/(n+1)의 차를 시각적으로 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q12.png",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
@@ -377,6 +385,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 무리함수 그래프의 끝점과 진행 방향으로 $a,b,c$의 부호를 판단한다.\n그림의 끝점은 $(3,-1)$이므로 $c=-1\\lt0$이고 $-\\dfrac{b}{a}=3$이다.\n그래프가 왼쪽으로 뻗으므로 정의역이 $x\\le3$인 형태여서 $a\\lt0$이다.\n$-\\dfrac{b}{a}=3$과 $a\\lt0$에서 $b=-3a\\gt0$이다.\n따라서 $\\dfrac{|a|}{a}=-1$, $\\dfrac{|b|}{b}=1$, $\\dfrac{|c|}{c}=-1$이므로 합은 $-1$이다.\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q13-solution.svg",
+
+    "solutionImageAlt": "무리함수의 끝점과 부호를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "대표식 y=√(−2x+6)−1의 끝점과 x절편으로 계수 부호를 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q13.png",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
@@ -672,6 +688,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 역함수의 그래프는 원래 그래프를 직선 $y=x$에 대하여 대칭이동한 것이므로 점근선의 역할이 서로 바뀐다.\n그림에서 $f$의 점근선은 $x=2$, $y=1$이고 $f(1)=0$이다.\n따라서 역함수 $g$의 점근선은 $x=1$, $y=2$이고 $g(0)=1$이다.\n$g(x)=\\dfrac{ax+b}{x+c}$의 수평점근선은 $y=a$이므로 $a=2$이고, 수직점근선은 $x=-c$이므로 $c=-1$이다.\n또 $g(0)=\\dfrac{b}{c}=1$이므로 $b=-1$이다.\n따라서 $2a+b+c=4-1-1=2$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q22-solution.svg",
+
+    "solutionImageAlt": "유리함수 역함수의 점근선을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "역함수 g=2+1/(x−1)의 점근선과 g(0)=1을 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q22.png",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
@@ -820,6 +844,14 @@ window.questionBank = [
     "choices": [],
     "answer": "제2사분면과 제3사분면",
     "solution": "[키포인트] 유리함수 그래프의 점근선과 절편으로 $a,b,c$를 정한 뒤 무리함수의 위치를 판단한다.\n그림에서 $f(x)$의 수평점근선은 $y=-2$이므로 $a=-2$이고, 수직점근선은 $x=1$이므로 $-c=1$, 즉 $c=-1$이다.\n또 그래프가 원점 $O$를 지나므로 $f(0)=\\dfrac{b}{c}=0$에서 $b=0$이다.\n따라서 $g(x)=\\sqrt{-2x}-1$이다. 정의역은 $x\\le0$이다.\n$-\\dfrac12\\lt x\\lt0$에서는 $x\\lt0$, $-1\\lt g(x)\\lt0$이므로 제3사분면을 지나고, $x\\lt-\\dfrac12$에서는 $x\\lt0$, $g(x)\\gt0$이므로 제2사분면을 지난다.\n따라서 그래프가 지나는 사분면은 제2사분면과 제3사분면이다.",
+
+    "solutionImage": "assets/images/21_강남여고_2학기_기말_고1_기출/q27-solution.svg",
+
+    "solutionImageAlt": "유리함수에서 유도한 무리함수의 사분면을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "g=√(−2x)−1의 제2·제3사분면 통과를 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_강남여고_2학기_기말_고1_기출/q27.png",
     "imageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
