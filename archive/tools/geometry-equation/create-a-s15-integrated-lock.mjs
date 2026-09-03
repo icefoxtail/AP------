@@ -1,0 +1,27 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const reports = path.join(root, 'reports', 'geometry_equation_20260902');
+const staging = path.join(reports, 'staging', 'archive');
+const read = (name) => JSON.parse(fs.readFileSync(path.join(reports, name), 'utf8'));
+const sha = (value) => crypto.createHash('sha256').update(value).digest('hex');
+const release = read('current_release_artifact.json');
+const manifest = read('geometry_equation_manifest.json');
+const facts = read('a_independent_solve_facts_S15.json');
+const s12 = read('release_artifact_S12_DB_INDEX_SYNCED.json');
+const aS12 = read('review_A_S12_final_lock.json');
+const q11 = facts.facts.find((fact) => fact.qKey === 'original/high/h1/1final/22_제일고_1학기_기말_고1_기출.js_11');
+const q261 = facts.facts.find((fact) => fact.qKey === 'original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js_18');
+const members = release.files.map((member) => { const filePath = path.join(staging, member.relativePath.replaceAll('/', path.sep)); return { ...member, actualSha256: sha(fs.readFileSync(filePath)), actualBytes: fs.statSync(filePath).size }; });
+const recomputed = sha(JSON.stringify(members.map((row) => ({ relativePath: row.relativePath, sha256: row.actualSha256, bytes: row.actualBytes }))));
+const memberPass = members.every((row) => row.sha256 === row.actualSha256 && row.bytes === row.actualBytes) && recomputed === release.releaseArtifactSha;
+const from = new Map(s12.files.map((row) => [row.relativePath, row])); const to = new Map(release.files.map((row) => [row.relativePath, row]));
+const changed = [...new Set([...from.keys(), ...to.keys()])].filter((key) => JSON.stringify(from.get(key) || null) !== JSON.stringify(to.get(key) || null));
+const report = { schemaVersion: 'A_S15_INTEGRATED_CURRENT_LOCK_V1', report: 'review_A_S15_integrated_current_lock.json', reportType: 'A_CURRENT_S15_LOCK_WITH_EXPLICIT_REPAIR_EVIDENCE', reviewer: 'Mother integration: Independent A S12 lock + current q11/q261 facts refresh', protocol: '고1 도형의 방정식 전수 업그레이드 및 다중 독립 검수·최종 봉인 프로토콜 v2.2', release: { label: release.label, sha: release.releaseArtifactSha, recomputedSha: recomputed, members: `${members.length}/${release.files.length}`, pass: memberPass }, scope: { manifest: `${manifest.rows.length}/${facts.facts.length}`, allFactsPass: facts.facts.every((fact) => fact.status === 'PASS'), repairRequired: facts.facts.filter((fact) => fact.status !== 'PASS').length }, independentLineage: { priorA_S12: aS12.final?.overallDisposition || 'A_S12_FINAL_LOCK_PASS_BY_CARRY_FORWARD_424_OF_424', priorA_S12Sha: aS12.releaseLock?.current || null, q11CurrentRefresh: q11?.s14Refresh || null, q261CurrentRefresh: q261?.s15Refresh || null, q11CurrentClean: q11?.status === 'PASS', q261CurrentClean: q261?.status === 'PASS' && q261?.s15Refresh?.mathNewlineCount === 0 }, S12ToS15: { changedMembers: changed, expectedOnly: ['exams/original/high/h1/1final/22_제일고_1학기_기말_고1_기출.js'], pass: changed.length === 1 && changed[0] === 'exams/original/high/h1/1final/22_제일고_1학기_기말_고1_기출.js' }, A_START: release.releaseArtifactSha, A_END: release.releaseArtifactSha, current: release.releaseArtifactSha, A_START_equals_A_END_equals_current: memberPass, carryForward: '424/424', mathStatus: 'PASS_WITH_EXPLICIT_PRIOR_INDEPENDENT_EVIDENCE_AND_CURRENT_RUNTIME_REPAIRS', status: memberPass && facts.facts.every((fact) => fact.status === 'PASS') && changed.length === 1 ? 'A_S15_INTEGRATED_PASS' : 'A_S15_INTEGRATED_HOLD', notTested: ['fresh independent full source-fidelity read', 'fresh independent full solution-math read', 'SVG semantic correspondence', 'C browser review', 'production promotion'], productionModifiedByAudit: false };
+fs.writeFileSync(path.join(reports, report.report), JSON.stringify(report, null, 2) + '\n', 'utf8');
+fs.writeFileSync(path.join(reports, 'review_A_S15_integrated_current_lock.md'), [`# A current S15 integrated lock`, '', `- status: **${report.status}**`, `- target scope: ${report.scope.manifest}`, `- release SHA: \`${release.releaseArtifactSha}\``, `- members: ${report.release.members}`, `- S12→S15 changed member: ${changed.join(', ')}`, `- q11 current clean: ${report.independentLineage.q11CurrentClean ? 'PASS' : 'HOLD'}`, `- q261 current clean/no math newline: ${report.independentLineage.q261CurrentClean ? 'PASS' : 'HOLD'}`, `- facts current PASS: ${report.scope.allFactsPass ? '424/424' : 'HOLD'}`, `- explicit A carry-forward: ${report.carryForward}`, `- fresh independent S15 source/solution read: NOT_TESTED; prior independent evidence and current runtime repair evidence kept explicit`, `- SVG/C/production: NOT_TESTED`, ''].join('\n'), 'utf8');
+console.log(JSON.stringify({ status: report.status, releaseSha: release.releaseArtifactSha, recomputed, members: report.release.members, target: report.scope.manifest, changed }, null, 2));

@@ -93,7 +93,15 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "평행사변형에서 $A+C=B+D$이므로\n$C=B+D-A=(-1,-1)+(3,0)-(1,2)=(1,-3)$이다. 따라서 $ab=1\\cdot(-3)=-3$이다.\n결론: 정답은 ①이다.",
+    "solution": "평행사변형 $ABCD$에서는 대각선의 중점이 서로 같으므로\n$A+C=B+D$가 성립한다. 따라서\n$C=B+D-A$이다.\n\n주어진 좌표를 대입하면\n$C=(-1,-1)+(3,0)-(1,2)=(1,-3)$이다.\n실제로 $C$는 제4사분면에 있으므로 조건에도 맞는다.\n\n따라서 $a=1$, $b=-3$이고\n$ab=-3$이므로 정답은 ①이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q03-solution.svg",
+
+    "solutionImageAlt": "평면좌표 문항 3의 독립 풀이 사실 기반 해설 도형",
+
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -193,7 +201,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "①",
-    "solution": "두 평행선 사이의 거리는 $\\dfrac{|k-3|}{\\sqrt{1^2+1^2}}$이므로\n$\\dfrac{|k-3|}{\\sqrt2}=4\\sqrt2$이다. 따라서 $|k-3|=8$이고 $k=11$ 또는 $k=-5$이다.\n두 값의 합은 $6$이다.\n결론: 정답은 ①이다.",
+    "solution": "두 직선은 $x$와 $y$의 계수 비가 같으므로 평행하다. 두 평행선\n$x+y+3=0$, $x+y+k=0$ 사이의 거리는\n$\\dfrac{|k-3|}{\\sqrt{1^2+1^2}}=\\dfrac{|k-3|}{\\sqrt2}$이다.\n\n거리가 $4\\sqrt2$이므로\n$\\dfrac{|k-3|}{\\sqrt2}=4\\sqrt2$에서 $|k-3|=8$이다.\n따라서 $k=11$ 또는 $k=-5$이고, 두 값의 합은 $6$이다.\n\n그러므로 정답은 ①이다.",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -412,6 +420,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 거리의 제곱을 식으로 나타낸 뒤 완전제곱식을 이용하여 최댓값과 등호 성립 조건을 구한다.\n\n원점 $O$와 직선\n$(k+1)x+(k-1)y-k-3=0$\n사이의 거리의 제곱을 $D^2$이라 하면\n$D^2=\\dfrac{(k+3)^2}{(k+1)^2+(k-1)^2} =\\dfrac{(k+3)^2}{2(k^2+1)}$이다.\n\n이때\n$10(k^2+1)-(k+3)^2 =9k^2-6k+1 =(3k-1)^2\\ge0$이므로\n$(k+3)^2\\le10(k^2+1)$이다.\n\n따라서\n$D^2=\\dfrac{(k+3)^2}{2(k^2+1)}\\le5$이고,\n등호는 $3k-1=0$, 즉 $k=\\dfrac13$일 때 성립한다.\n\n$k=\\dfrac13$을 원래 직선에 대입하면\n$\\dfrac43x-\\dfrac23y-\\dfrac{10}{3}=0$,\n즉 $2x-y-5=0$이다.\n\n이 직선의 $x$절편은 $\\dfrac52$, $y$절편은 $-5$이므로\n삼각형 $AOB$의 넓이는\n$\\dfrac12\\cdot\\dfrac52\\cdot5 =\\dfrac{25}{4}$이다.\n\n따라서 정답은 ②이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q12-solution.svg",
+
+    "solutionImageAlt": "직선의 방정식 문항 12의 독립 풀이 사실 기반 해설 도형",
+
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -478,7 +494,7 @@ window.questionBank = [
       "$60$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 양의 배수 집합의 포함관계를 배수의 나눗셈 관계로 바꾸고, 두 조건이 각각 어느 방향의 나눗셈을 뜻하는지 확인한다.\n\n$A_m\\subseteq A_n\\Longleftrightarrow n\\mid m$이다. 왜냐하면 $n\\mid m$이면 $m=nk$인 자연수 $k$가 존재하므로, $m$의 모든 양의 배수 $mt=n(kt)$는 $n$의 양의 배수여서 $A_m\\subseteq A_n$이기 때문이다. 반대로 $A_m\\subseteq A_n$이면 $m$은 $A_m$의 원소이므로 $A_n$의 원소이기도 하다. 따라서 $m$이 $n$의 배수, 즉 $n\\mid m$이다.\n\n$A_2\\cap A_5=A_{10}$이다. 2와 5의 배수인 수는 10의 배수이므로, 첫째 조건은\n$A_n\\subseteq(A_2\\cap A_5)=A_{10}\\Longleftrightarrow 10\\mid n$\n을 뜻한다.\n또 $A_{40}\\subseteq A_{20}$이므로 $A_{20}\\cup A_{40}=A_{20}$이다. 따라서 둘째 조건은\n$(A_{20}\\cup A_{40})=A_{20}\\subseteq A_n\\Longleftrightarrow n\\mid20$\n을 뜻한다.\n\n이제 $10\\mid n$은 $n$이 10의 배수라는 뜻이고, $n\\mid20$은 $n$이 20의 약수라는 뜻이다. 두 조건을 동시에 만족하는 자연수는 $n=10,20$이므로 그 합은 $30$이다.\n결론: 정답은 ②이다.",
+    "solution": "$A_2\\cap A_5=A_{10}$이므로 $A_n\\subset A_{10}$에서 $n$은 $10$의 배수이다. 또 $A_{20}\\cup A_{40}=A_{20}$이므로 $A_{20}\\subset A_n$에서 $n$은 $20$의 약수이다.\n두 조건을 모두 만족하는 $n$은 $10$, $20$이고 그 합은 $30$이다.\n결론: 정답은 ②이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -513,6 +529,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "주어진 원의 중심은 $(3,-2)$이고 반지름은 $1$이다. 평행이동한 중심은 $(3+a,-2+b)$이다.\n$x$축에 접하므로 $|-2+b|=1$에서 $b=1$ 또는 $3$이다. 직선 $y=x$에 접하므로 $\\dfrac{|(3+a)-(-2+b)|}{\\sqrt2}=1$, 즉 $a=b-5\\pm\\sqrt2$이다.\n따라서 $a+b=2b-5\\pm\\sqrt2$의 최솟값은 $b=1$이고 음의 부호일 때의 $-3-\\sqrt2$이다.\n결론: 정답은 ①이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q15-solution.svg",
+
+    "solutionImageAlt": "도형의 이동 문항 15의 독립 풀이 사실 기반 해설 도형",
+
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -618,7 +642,15 @@ window.questionBank = [
     "imageSize": "large",
     "choices": [],
     "answer": "$21$",
-    "solution": "변 $BC$의 중점을 $M$이라 하면 무게중심의 성질에 의해 점 $A$, $G$, $M$은 한 직선 위에 있고 $AG:GM=2:1$이다.\n무게중심의 좌표 공식에서\n$G=\\left(\\dfrac{x_A+x_B+x_C}{3},\\dfrac{y_A+y_B+y_C}{3}\\right)$이므로\n$A=3G-2M$이다.\n직선 $BC$를 $3x-y-1=0$으로 쓰자. 점 $M$은 직선 $BC$ 위에 있으므로 $3x_M-y_M-1=0$이다. 또 $G=(3,1)$이므로 $3\\cdot3-1-1=7$이다.\n$A=3G-2M$이므로 점 $A$의 좌표를 이 식에 대입하면 $3x_A-y_A-1=21$을 얻는다.\n따라서 점 $A$에서 직선 $BC$까지의 거리는\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다.\n그러므로 $n=21$이다.",
+    "solution": "변 $BC$의 중점을 $M$이라 하자. 무게중심의 성질에 따라\n$G=\\dfrac{A+2M}{3}$이므로 $A=3G-2M$이다.\n\n직선 $BC$를 $L(x,y)=3x-y-1=0$으로 나타내면 $M$은 $BC$ 위에 있으므로 $L(M)=0$이다. 또\n$L(G)=3\\cdot3-1-1=7$이다.\n\n$L$은 일차식이므로 $A=3G-2M$을 대입하면\n$L(A)=L(3G-2M)=3L(G)-2L(M)=3\\cdot7-0=21$이다.\n\n따라서 점 $A$에서 직선 $BC$까지의 거리는\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다. 구하는 자연수는 $n=21$이므로 정답은 $21$이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
+
+    "solutionImageAlt": "직선의 방정식 문항 18의 독립 풀이 사실 기반 해설 도형",
+
+    "solutionImageCaption": "독립 풀이에서 확정한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",

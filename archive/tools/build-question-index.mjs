@@ -5,8 +5,8 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
-const archiveDir = path.resolve(scriptDir, '..');
-const repoRoot = path.resolve(archiveDir, '..');
+const archiveDir = path.resolve(process.env.GEOMETRY_ARCHIVE_ROOT || path.resolve(scriptDir, '..'));
+const repoRoot = path.resolve(process.env.GEOMETRY_REPO_ROOT || path.resolve(archiveDir, '..'));
 const examsDir = path.join(archiveDir, 'exams');
 const dbPath = path.join(archiveDir, 'db.js');
 const indexPath = path.join(archiveDir, 'question-index.js');
@@ -236,6 +236,10 @@ function getDbExamFiles() {
 }
 
 function collectExamFiles() {
+    if (process.env.GEOMETRY_ARCHIVE_ROOT) {
+        const walked = walkJsFiles(examsDir).filter(f => !normalizePath(path.relative(examsDir, f)).includes('textbook'));
+        return { files: walked, scope: 'GEOMETRY_ARCHIVE_ROOT fs-walk(textbook 제외)' };
+    }
     try {
         const tracked = getTrackedExamFiles();
         if (tracked.length) {
