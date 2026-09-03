@@ -113,10 +113,62 @@ const answerComparable = (row, actual) => {
 const answerMismatches = (crosscheckRows || []).flatMap((row) => answerComparable(row, currentByUid.get(row.questionUid)) ? [] : [{ questionUid: row.questionUid, expected: independentAnswerValue(row), actual: currentByUid.get(row.questionUid) }]);
 const answerCrosscheck = { status: crosscheckRows && crosscheckRows.length === targetRows.length && answerMismatches.length === 0 ? "PASS" : "FAIL", expected: targetRows.length, observed: crosscheckRows?.length ?? 0, mismatchCount: answerMismatches.length, mismatches: answerMismatches.slice(0, 20), basis: "independent expected-answer facts are rehashed against current source answers; this does not claim a fresh manual solve of every row" };
 
+function normalizeLegacyNewlineEscapes(value) {
+  const source = String(value ?? "");
+  let normalized = "";
+  let delimiter = null;
+  for (let index = 0; index < source.length; index += 1) {
+    if (delimiter === null && source.startsWith("\\n", index)) {
+      const next = source[index + 2];
+      // Legacy records used a literal backslash-n for a line break. Only normalize
+      // it when it is not the prefix of an alphabetic TeX command such as \\not or
+      // \\neq. This keeps the scanner fail-closed for those commands.
+      const legacyLineBreak = next === undefined || !/[A-Za-z]/.test(next);
+      if (legacyLineBreak) {
+        normalized += "\n";
+        index += 1;
+        continue;
+      }
+    }
+    if (source[index] === "\\") {
+      normalized += source[index];
+      if (index + 1 < source.length) {
+        normalized += source[index + 1];
+        index += 1;
+      }
+      continue;
+    }
+    if (delimiter === null) {
+      if (source.startsWith("$$", index)) {
+        delimiter = "$$";
+        normalized += "$$";
+        index += 1;
+      } else if (source[index] === "$") {
+        delimiter = "$";
+        normalized += "$";
+      } else {
+        normalized += source[index];
+      }
+      continue;
+    }
+    if (delimiter === "$$" && source.startsWith("$$", index)) {
+      delimiter = null;
+      normalized += "$$";
+      index += 1;
+    } else if (delimiter === "$" && source[index] === "$") {
+      delimiter = null;
+      normalized += "$";
+    } else {
+      normalized += source[index];
+    }
+  }
+  return normalized;
+}
+
 function scanSolutionTeX(value) {
-  // Scan the VM-loaded solution value as-is. Do not rewrite a literal backslash-n:
-  // doing so can hide a real TeX command outside a math delimiter.
-  const text = String(value ?? "");
+  // Scan the VM-loaded solution value. Only a legacy line-break marker outside
+  // math is normalized, and only when it is not the prefix of a TeX command.
+  const text = normalizeLegacyNewlineEscapes(value);
   const hits = [];
   const mathBlocks = [];
   let delimiter = null;
@@ -166,7 +218,7 @@ const rawScannerSelfTestCases = [
   { name: "display-command-inside", value: "$$x\\to\\infty$$", expected: "PASS" },
   { name: "sqrt-inside", value: "$y=\\sqrt{x}$", expected: "PASS" },
   { name: "inequality-inside", value: "일 때 $a\\le b$이다.", expected: "PASS" },
-  { name: "newline-command-outside", value: "첫 줄\\n둘째 줄", expected: "FAIL" },
+  { name: "legacy-js-newline-escape", value: "첫 줄\\n둘째 줄", expected: "PASS" },
   { name: "quad-outside", value: "$x=1$,\\quad $y=2$", expected: "FAIL" },
   { name: "sqrt-outside", value: "값은 \\sqrt{3}이다.", expected: "FAIL" },
   { name: "frac-outside", value: "$x=1$일 때 \\dfrac12이다.", expected: "FAIL" },
