@@ -312,6 +312,8 @@ Batch 13의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개
 - [Batch 13 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v18/function_family_summary.md>)
 - [누적 시각 계약 검증 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)
 - [누적 시각 계약 검증 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)
+- [전수 업그레이드 manifest JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_upgrade_manifest.json>)
+- [전수 업그레이드 manifest 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_upgrade_manifest.md>)
 
 ## SOURCE_REVIEW 보류
 
