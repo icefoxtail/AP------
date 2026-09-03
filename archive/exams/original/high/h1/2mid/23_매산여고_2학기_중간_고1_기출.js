@@ -149,7 +149,11 @@ window.questionBank = [
       "$22$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 먼저 $A\\cap B$의 원소 수를 구한 뒤 합집합의 원소 수를 이용한다.\n\n$n(A\\cap B)=n(A)-n(A\\cap B^C)=69-38=31$이다.\n\n따라서\n$n(A\\cup B)=69+43-31=81$이다.\n\n$A^C\\cap B^C=(A\\cup B)^C$이므로\n$n(A^C\\cap B^C)=100-81=19$이다.\n\n따라서 정답은 ②이다."
+    "solution": "[키포인트] 먼저 $A\\cap B$의 원소 수를 구한 뒤 합집합의 원소 수를 이용한다.\n\n$n(A\\cap B)=n(A)-n(A\\cap B^C)=69-38=31$이다.\n\n따라서\n$n(A\\cup B)=69+43-31=81$이다.\n\n$A^C\\cap B^C=(A\\cup B)^C$이므로\n$n(A^C\\cap B^C)=100-81=19$이다.\n\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q05-solution.svg",
+    "solutionImageAlt": "A만 영역 38과 A의 전체 69를 표시한 수치 Venn diagram",
+    "solutionImageCaption": "A의 전체를 A만 영역과 겹친 영역으로 분해해 이후 합집합을 계산",
+    "solutionImageSize": "full",
   },
   {
     "id": 6,
