@@ -539,6 +539,14 @@ window.questionBank = [
     "choices": [],
     "answer": "$k>-1$",
     "solution": "[키포인트] 교점의 $y$좌표를 매개변수로 두고, 두 구간에서 같은 $k$를 만드는 해의 개수를 센다.\n조건 정리: $y=\\sqrt{x-k}\\ge0$이고 $y\\ne1$이다. $y=\\dfrac{x+1}{x-1}$에서 $x=\\dfrac{y+1}{y-1}$이므로 $k=\\dfrac{y+1}{y-1}-y^2=1+\\dfrac{2}{y-1}-y^2$이다.\n풀이 방향: $0\\le y<1$과 $y>1$에서 이 식의 값의 범위를 각각 확인한다.\n정석 풀이: 같은 구간의 $u<v$에 대하여 두 값의 차는 $\\dfrac{2(v-u)}{(u-1)(v-1)}+(v-u)(u+v)>0$이므로 $k$의 식은 각 구간에서 감소한다. $0\\le y<1$에서는 $y=0$일 때 $k=-1$이고 $y$가 $1$에 가까워질수록 값이 한없이 작아지므로 범위는 $k\\le-1$이다. $y>1$에서는 $y$가 $1$에 가까울 때 값이 한없이 크고 $y$가 커질수록 한없이 작아지므로 모든 실수 $k$에 대해 해가 하나 있다. 따라서 $k\\le-1$이면 교점이 두 개이고, $k>-1$이면 교점이 한 개이다.\n따라서 구하는 범위는 $k>-1$이다.",
+
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q18-solution.svg",
+
+    "solutionImageAlt": "유리함수와 무리함수의 교점 조건을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "유리함수와 y=√x의 한 교점을 표시하고 k≤−1과 k>−1의 차이를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
