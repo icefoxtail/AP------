@@ -175,7 +175,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $p$가 $q$이기 위한 필요조건이면 $q\\Rightarrow p$, 즉 $Q\\subset P$이다.\n$x^2-2x-8=(x-4)(x+2)$이므로 $P=\\{x\\mid-2\\lt x\\lt4\\}$이다. $a\\ge0$일 때 $Q=\\{x\\mid-\\sqrt a\\le x\\le\\sqrt a\\}$이다.\n$Q\\subset P$가 되려면 특히 왼쪽 끝점이 $-2$보다 커야 하므로 $\\sqrt a\\lt2$, 즉 $a\\lt4$이다. 이를 만족하는 정수 $a$의 최댓값은 $3$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 필요조건은 명제의 방향을 뒤집어 진리집합의 포함관계로 확인한다.\n조건 정리: $p:x^2-2x-8\\lt0$의 진리집합은 $P=(-2,4)$이다. $q:x^2\\le a$의 진리집합을 $Q$라 하자.\n정석 풀이: $p$가 $q$이기 위한 필요조건이므로 $q\\to p$, 즉 $Q\\subset P$여야 한다. 먼저 $a\\lt0$이면 $x^2\\le a$를 만족하는 실수가 없으므로 $Q=\\varnothing$이고, 이 경우에는 포함관계가 공허하게 성립한다. 그러나 음의 정수들은 최댓값을 결정하지 않는다.\n$a\\ge0$이면 $Q=[-\\sqrt a,\\sqrt a]$이다. 이 구간이 $(-2,4)$에 포함되려면 양 끝점이 각각 $-2$보다 크고 $4$보다 작아야 하며, 대칭이므로 $\\sqrt a\\lt2$이면 충분하다. 따라서 $a\\lt4$이고, 정수 $a$의 최댓값은 $3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",

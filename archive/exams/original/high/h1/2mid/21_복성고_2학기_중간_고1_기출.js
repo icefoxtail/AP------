@@ -253,7 +253,7 @@ window.questionBank=[
       "12"
     ],
     "answer": "②",
-    "solution": "부정은 $3<x\\le5$이고 자연수는 4,5이므로 합은 9이다.",
+    "solution": "[키포인트] ‘또는’으로 연결된 조건의 부정은 두 조건을 각각 부정하고 ‘그리고’로 연결한다.\n조건 정리: $x\\le3$ 또는 $x\\gt5$의 부정은 $x\\gt3$이고 $x\\le5$이다.\n정석 풀이: 부등식의 부정에서 경계 $3$은 포함되지 않고 $5$는 포함되므로 부정의 진리집합은 $(3,5]$이다. 이 중 자연수는 $4,5$이므로 그 합은 $4+5=9$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
@@ -510,7 +510,7 @@ window.questionBank=[
       "14"
     ],
     "answer": "①",
-    "solution": "$Q=(a,b)\\subset P=[2,8]$이므로 경계값의 합은 $2+8=10$이다.",
+    "solution": "[키포인트] 필요조건은 명제의 방향을 뒤집어 진리집합 포함관계로 확인한다.\n조건 정리: $p:|x-5|\\le3$의 진리집합은 $P=[2,8]$이다. $q:x^2-(a+b)x+ab<0$은 $(x-a)(x-b)<0$이고 $a<b$이므로 진리집합은 $Q=(a,b)$이다.\n정석 풀이: $p$가 $q$이기 위한 필요조건이므로 $q\\to p$가 참이어야 한다. 따라서 $Q\\subset P$, 즉 $(a,b)\\subset[2,8]$이다. 열린구간의 끝점은 포함되지 않으므로 $a\\ge2$, $b\\le8$이고, 실제로 $a=2$, $b=8$도 가능하다. 따라서 $a$의 최솟값과 $b$의 최댓값의 합은 $2+8=10$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",
