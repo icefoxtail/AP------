@@ -371,6 +371,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 유리함수의 $x$절편, 수직점근선, 수평점근선을 식의 계수와 연결한다.\n조건 정리: 그래프의 $x$절편은 $-5$, 수직점근선은 $x=-3$, 수평점근선은 $y=1$이다.\n풀이 방향: $x$절편은 분자, 수직점근선은 분모, 수평점근선은 최고차항의 계수비를 이용한다.\n정석 풀이: $x$절편이 $-5$이므로 $-5+a=0$에서 $a=5$이다. 수평점근선이 $y=\\dfrac{1}{b}=1$이므로 $b=1$이다. 수직점근선이 $x=-\\dfrac{c}{b}=-3$이므로 $c=3$이다. 따라서 $a+b+c=5+1+3=9$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q13-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 절편을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "x절편 −5, 점근선 x=−3, y=1을 이용해 a=5, b=1, c=3을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -399,6 +407,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 제2사분면과 제3사분면을 모두 지나기 위한 $x\\lt0$에서의 함수값 범위를 조사한다.\n조건 정리: $x\\lt0$이면 $2-x\\gt2$이므로 $0\\lt\\dfrac{1}{2-x}\\lt\\dfrac{1}{2}$이다. 따라서 $x\\lt0$에서 함수값은 $a\\lt y\\lt a+\\dfrac{1}{2}$이다.\n풀이 방향: 이 구간에 양수와 음수가 모두 존재하도록 $a$의 범위를 정하고 각 보기를 판정한다.\n정석 풀이: 제2사분면과 제3사분면을 모두 지나려면 $a\\lt0$이고 $a+\\dfrac{1}{2}\\gt0$이어야 하므로 $-\\dfrac{1}{2}\\lt a\\lt0$이다. 이 조건이 성립하면 $x$가 $2$의 왼쪽에서 가까워질 때 함수값이 큰 양수가 되어 제1사분면을 지나고, $x$가 $2$의 오른쪽에서 가까워질 때 함수값이 큰 음수가 되어 제4사분면을 지난다. 보기의 값 중 $-\\dfrac{1}{2}\\lt a\\lt0$을 만족하는 것은 $-\\dfrac{1}{4}$뿐이다.\n따라서 정답은 ④이다.",
+
+    "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q14-solution.svg",
+
+    "solutionImageAlt": "유리함수가 네 사분면을 지나는 모습을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=−1/4일 때 −1/2<a<0이므로 네 사분면을 모두 지남을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
