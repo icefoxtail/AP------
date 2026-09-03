@@ -398,6 +398,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 세 집합을 정확히 한 과목, 정확히 두 과목, 세 과목의 영역으로 나눈다.\n바깥이 6명이므로 적어도 한 과목은 $110-6=104$명이다. 정확히 한·두·세 과목을 각각 $N_1,N_2,N_3$라 하면 $N_3=9$, $N_1+N_2+9=104$이다.\n과목별 인원을 더하면 $40+56+60=N_1+2N_2+3\\cdot9$이다. 두 식을 빼면 $N_2=34$이고 정답은 ③이다.\n[시각자료 읽기] 세 원의 중심 9와 바깥 6을 고정하면 계수 1,2,3이 각 학생이 좋아하는 과목 수에서 나온다.",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고1_유사/q11-solution.svg",
+    "solutionImageAlt": "수학·과학·국어 세 집합의 교집합과 정확히 한두 과목 영역을 나타낸 Venn diagram",
+    "solutionImageCaption": "세 과목 교집합과 정확히 한 과목·두 과목을 나누어 합을 세는 영역 구조",
+    "solutionImageSize": "full",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
