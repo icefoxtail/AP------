@@ -1,36 +1,33 @@
 {
   "reportType": "FUNCTION_FAMILY_UPGRADE_MANIFEST",
-  "generatedAt": "2026-09-03T17:49:47.619Z",
+  "generatedAt": "2026-09-03T17:58:08.488Z",
   "status": "PROVISIONAL_REVIEW_REQUIRED",
   "finalSealEligible": false,
   "scope": "original only; similar excluded",
-  "source": "post_upgrade_audit_v19/function_family_inventory.json",
+  "source": "post_upgrade_audit_v20/function_family_inventory.json",
   "summary": {
     "targetCount": 522,
-    "generatedGraphCount": 127,
-    "sourceSolutionImageCount": 128,
+    "generatedGraphCount": 128,
+    "sourceSolutionImageCount": 129,
     "qualityDispositionCounts": {
       "KEEP": 276,
-      "SOURCE_REVIEW": 1,
-      "VISUAL_ADD": 245
+      "VISUAL_ADD": 246
     },
     "executionStatusCounts": {
       "EXISTING_VISUAL_KEEP": 1,
       "KEEP_CANDIDATE": 212,
       "OPTIONAL_VISUAL_REVIEW_PENDING": 63,
-      "SOURCE_REVIEW_UNRESOLVED": 1,
-      "VISUAL_ADD_COMPLETE": 127,
+      "VISUAL_ADD_COMPLETE": 128,
       "VISUAL_ADD_PENDING_INDEPENDENT_ADJUDICATION": 118
     },
     "visualRequirementCounts": {
       "EXISTING_VISUAL_REVIEW": 1,
-      "SOURCE_REVIEW": 1,
       "VISUAL_EXEMPT_CANDIDATE": 212,
       "VISUAL_OPTIONAL_CANDIDATE": 63,
       "VISUAL_REQUIRED_CANDIDATE": 118,
-      "VISUAL_REQUIRED_SATISFIED": 127
+      "VISUAL_REQUIRED_SATISFIED": 128
     },
-    "unresolvedCount": 182
+    "unresolvedCount": 181
   },
   "rows": [
     {
@@ -4393,13 +4390,13 @@
       "id": 18,
       "standardUnitKey": "H22-C2-07",
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-      "qualityDisposition": "SOURCE_REVIEW",
-      "executionStatus": "SOURCE_REVIEW_UNRESOLVED",
-      "visualRequirement": "SOURCE_REVIEW",
-      "reviewStatus": "UNRESOLVED",
-      "graphGapDisposition": "PRIORITY_1_EXPLICIT_GRAPH_CANDIDATE",
-      "solutionImageStatus": "ABSENT",
-      "evidence": "function_family_quality_triage.csv candidate signal"
+      "qualityDisposition": "VISUAL_ADD",
+      "executionStatus": "VISUAL_ADD_COMPLETE",
+      "visualRequirement": "VISUAL_REQUIRED_SATISFIED",
+      "reviewStatus": "READY_FOR_INDEPENDENT_REVIEW",
+      "graphGapDisposition": "SOLUTION_VISUAL_PRESENT",
+      "solutionImageStatus": "PRESENT",
+      "evidence": "function_family_pilot_graphs.json + batch attachment ledger + browser render matrix"
     },
     {
       "qKey": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js_20",

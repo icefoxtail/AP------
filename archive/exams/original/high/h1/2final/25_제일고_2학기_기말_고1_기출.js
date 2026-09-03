@@ -552,6 +552,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 먼저 합성함수를 구간별로 정리한 뒤 각 구간의 넓이를 사다리꼴과 삼각형으로 계산한다.\n조건 정리: $0\\le x\\lt 1$에서는 $f(x)=1-x$, $1\\le x\\le2$에서는 $f(x)=2x-2$이다.\n풀이 방향: $f(x)$가 $1$보다 작은지 큰지에 따라 $g$의 식을 선택한다.\n정석 풀이: $0\\le x\\lt 1$에서는 $(g\\circ f)(x)=2-x$이다. $1\\le x\\lt \\dfrac32$에서는 $f(x)\\lt 1$이므로 $(g\\circ f)(x)=2x-1$이다. $\\dfrac32\\le x\\le2$에서는 $(g\\circ f)(x)=-4x+8$이다. 첫 구간의 넓이는 $\\dfrac{2+1}{2}\\cdot1=\\dfrac32$, 두 번째 구간은 $\\dfrac{1+2}{2}\\cdot\\dfrac12=\\dfrac34$, 세 번째 구간은 $\\dfrac12\\cdot\\dfrac12\\cdot2=\\dfrac12$이다. 합은 $\\dfrac32+\\dfrac34+\\dfrac12=\\dfrac{11}{4}$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q18-solution.svg",
+
+    "solutionImageAlt": "합성함수의 조각별 그래프와 좌표축 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "구간별 식 2−x, 2x−1, −4x+8과 넓이 11/4를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

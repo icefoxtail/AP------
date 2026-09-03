@@ -2,9 +2,9 @@
 
 ## 상태
 
-`BATCH14_UPGRADE_READY_FOR_USER_REVIEW`
+`BATCH15_UPGRADE_READY_FOR_USER_REVIEW`
 
-전체 단원 봉인 완료가 아니라, 기준 문서에 따른 전수 진단과 그래프 누락 우선순위 1·2·3·4·5·6·7·8·9·10·11·12·13·14차 파일럿 127문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
+전체 단원 봉인 완료가 아니라, 기준 문서에 따른 전수 진단과 그래프 누락 우선순위 1·2·3·4·5·6·7·8·9·10·11·12·13·14·15차 파일럿 128문항의 업그레이드 결과다. 사용자의 독립 재검수 후 같은 기준으로 다음 배치를 진행한다.
 
 ## 기준
 
@@ -14,9 +14,9 @@
 - 유사문항: 제외
 - 수정 허용 범위: `solutionImage`와 해설용 SVG metadata만
 
-## Batch 14 후 최신 전수 재진단
+## Batch 15 후 최신 전수 재진단
 
-`original` 원본 522문항만 대상으로 Batch 14 적용 후 재계산한 현황은 다음과 같다.
+`original` 원본 522문항만 대상으로 Batch 15 적용 후 재계산한 현황은 다음과 같다.
 
 | 항목 | 수량 |
 |---|---:|
@@ -24,7 +24,7 @@
 | target 시험지 | 50 |
 | 문제 이미지 | 96 |
 | 문제 시각요소(index 기준) | 98 |
-| 해설 이미지 | 128 |
+| 해설 이미지 | 129 |
 | 깨진 문제 이미지 참조 | 0 |
 | 깨진 해설 이미지 참조 | 0 |
 
@@ -33,11 +33,11 @@
 | 자동 분류 | 수량 |
 |---|---:|
 | `PRIORITY_1_GRAPH_GAP_CANDIDATE` | 86 |
-| `PRIORITY_1_EXPLICIT_GRAPH_CANDIDATE` | 33 |
+| `PRIORITY_1_EXPLICIT_GRAPH_CANDIDATE` | 31 |
 | `PRIORITY_2_GRAPH_RELATION_CANDIDATE` | 10 |
 | `PRIORITY_2_GRAPH_SUBUNIT_CANDIDATE` | 53 |
 | `TRIAGE_NO_GRAPH_SIGNAL` | 212 |
-| `SOLUTION_VISUAL_PRESENT` | 128 |
+| `SOLUTION_VISUAL_PRESENT` | 129 |
 
 `similar`를 포함하면 602건으로 보이지만, 그중 80건은 이번 범위 밖이다. 최종 scope는 문서 규정대로 `original` 522건만 사용한다.
 
@@ -55,7 +55,7 @@
 
 그래프는 자유형 SVG가 아니라 기존 결정적 renderer를 사용했다. 각 자산에는 `data-fact-hash`와 `data-visual-provenance`를 기록했다.
 
-Batch 1·2·3·4·5·6·7·8·9·10·11·12·13·14 적용 후 원본 target의 `solutionImage` 연결은 128개다. 이 수량은 자동 후보의 최종 `VISUAL_REQUIRED` 수량이 아니라 현재까지 실제로 추가·검증한 해설 자산 수량이다.
+Batch 1·2·3·4·5·6·7·8·9·10·11·12·13·14·15 적용 후 원본 target의 `solutionImage` 연결은 129개다. 이 수량은 자동 후보의 최종 `VISUAL_REQUIRED` 수량이 아니라 현재까지 실제로 추가·검증한 해설 자산 수량이다.
 
 ## Batch 2 추가 문항
 
@@ -244,9 +244,15 @@ Batch 14에서 다음 7문항에 해설 SVG를 추가했다.
 - 23 강남여고 2학기 기말 q20 — 평행이동한 유리함수·넓이
 - 23 강남여고 2학기 기말 q22 — 유리함수에서 유도한 무리함수 범위
 
+## Batch 15 추가 문항
+
+Batch 15에서 다음 1문항에 해설 SVG를 추가했고, 기존 source-review 의심도 해소했다.
+
+- 25 제일고 2학기 기말 q18 — 합성함수 조각 그래프·좌표축 넓이 `11/4`
+
 ## 검증 결과
 
-- Python deterministic renderer 생성: 127/127 PASS
+- Python deterministic renderer 생성: 128/128 PASS
 - source JS syntax: 3/3 PASS
 - SVG XML/viewBox/fact-hash/금지 토큰 검사: 5/5 PASS
 - 보호 payload parity: 5/5 PASS
@@ -271,7 +277,9 @@ Batch 13의 7개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 9개
 
 Batch 14의 6개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 7개가 모두 `complete=true`, natural size 양수로 로드되었으며 broken image 0, render error 없음, data load error 없음으로 확인했다. 상세 결과는 [Batch 14 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch14_render_matrix.md>)에 고정했다.
 
-누적 시각 계약 검사도 실행했다. 원본 target 522문항·50개 source JS의 런타임 로드 522/522, 생성 SVG 120/120의 case ID·fact hash·provenance·viewBox·금지 토큰·중복 자산 검사, source attachment parity 120/120이 모두 PASS였다. 121번째 해설 이미지는 기존 선행 자산 1개로 별도 집계했다. [시각 계약 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)과 [시각 계약 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)에 고정했다.
+Batch 15의 1개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 1개가 `complete=true`, natural size 양수로 로드되었으며 broken image 0, render error 없음, data load error 없음으로 확인했다. choices의 ①=`11/4`와 해설 계산을 대조해 기존 source-review 의심을 해소했다. 상세 결과는 [Batch 15 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch15_render_matrix.md>)에 고정했다.
+
+누적 시각 계약 검사도 실행했다. 원본 target 522문항·50개 source JS의 런타임 로드 522/522, 생성 SVG 128/128의 case ID·fact hash·provenance·viewBox·금지 토큰·중복 자산 검사, source attachment parity 128/128이 모두 PASS였다. 129번째 해설 이미지는 기존 선행 자산 1개로 별도 집계했다. [시각 계약 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)과 [시각 계약 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)에 고정했다.
 
 | 시험지 | exam | solution | answer | broken image | render error | last question |
 |---|---|---|---|---:|---|---|
@@ -327,18 +335,21 @@ Batch 14의 6개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 7개
 - [Batch 14 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch14_attachment_ledger.json>)
 - [Batch 14 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch14_render_matrix.md>)
 - [Batch 14 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v19/function_family_summary.md>)
+- [Batch 15 자산 연결·보호 parity ledger](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch15_attachment_ledger.json>)
+- [Batch 15 실제 렌더 매트릭스](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_batch15_render_matrix.md>)
+- [Batch 15 적용 후 재진단 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/post_upgrade_audit_v20/function_family_summary.md>)
 - [누적 시각 계약 검증 JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.json>)
 - [누적 시각 계약 검증 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_visual_contract_v1.md>)
 - [전수 업그레이드 manifest JSON](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_upgrade_manifest.json>)
 - [전수 업그레이드 manifest 요약](<C:/Users/USER/Desktop/AP------/docs/reports/function-family-20260903/function_family_upgrade_manifest.md>)
 
-## SOURCE_REVIEW 보류
+## SOURCE_REVIEW 해소
 
-- `25_제일고 2학기 기말 q18`: 원문 해설의 독립 계산은 도형 넓이 `11/4`를 가리키지만 answer 필드는 `①`로 기록되어 있다. 문제 본문·보기·정답·해설 및 그래프를 임의로 수정하지 않았고, 해설 그래프도 추가하지 않았다. 원문 정답/보기 대조 후 별도 확정이 필요하다.
+- `25_제일고 2학기 기말 q18`: 원문 해설의 독립 계산은 도형 넓이 `11/4`이고, choices의 ①도 `11/4`로 확인되어 answer `①`과 일치한다. 조각별 합성함수 그래프를 Batch 15에서 추가했고 source-review 의심을 해소했다.
 
 ## 독립 재검수 대기 항목
 
-이번 결과는 Batch 14 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
+이번 결과는 Batch 15 파일럿 PASS이지 전체 단원 최종 PASS가 아니다. 다음 항목은 사용자의 독립 재검수에서 확인되어야 한다.
 
 1. 각 그래프의 수학적 위치·교점·축·범위가 원문과 정확히 대응하는지
 2. 그래프가 답을 불필요하게 노출하지 않는지
@@ -347,4 +358,4 @@ Batch 14의 6개 시험지를 `mode=sol`로 실제 렌더했고, 신규 SVG 7개
 5. 유리함수의 점근선·중심·원의 교점이 정확한지
 6. 해설 SVG를 실제로 추가해야 하는 후보와 `KEEP`/`OPTIONAL` 후보의 분류가 적절한지
 
-독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3·4·5·6·7·8·9·10·11·12·13·14만으로 전체 단원을 `SEALED`로 선언하지 않는다.
+독립 재검수에서 수정이 나오면 해당 문항의 graph facts, SVG, source 연결을 함께 수정하고 같은 시험지의 `exam / solution / answer` 렌더를 다시 확인한다. Batch 1·2·3·4·5·6·7·8·9·10·11·12·13·14·15만으로 전체 단원을 `SEALED`로 선언하지 않는다.
