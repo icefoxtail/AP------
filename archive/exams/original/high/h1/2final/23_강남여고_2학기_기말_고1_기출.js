@@ -605,6 +605,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 접선 조건은 직선과 무리함수의 교점 방정식이 중근을 갖는다는 뜻으로 처리한다.\n조건 정리: $A=(-a,0)$, $B=(0,2a)$이다. 접점 C에서는 $2\\sqrt{a(x+a)}=2x+b$가 한 해만 갖는다.\n풀이 방향: 양변을 제곱해 얻은 이차방정식의 판별식을 $0$으로 두어 $b$와 접점 좌표를 구한다.\n정석 풀이: 제곱하면 $(2x+b)^2=4a(x+a)$이므로 $x^2+(b-a)x+\\dfrac{b^2-4a^2}{4}=0$이다. 접하므로 판별식이 $0$이고, $(b-a)^2-(b^2-4a^2)=a(5a-2b)=0$이다. $a\\gt0$이므로 $b=\\dfrac52a$이다. 중근은 $x_C=-\\dfrac{b-a}{2}=-\\dfrac{3a}{4}$이고 $y_C=2x_C+b=a$이다. 삼각형 $ABC$의 넓이는 좌표를 이용하면 $\\dfrac{a^2}{4}$이므로 $\\dfrac{a^2}{4}=\\dfrac14$에서 $a=1$이다. 따라서 $b=\\dfrac52$이고 $b-a=\\dfrac32$이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q19-solution.svg",
+
+    "solutionImageAlt": "무리함수와 접선 및 삼각형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=1, b=5/2에서 접점 C=(−3/4,1)과 넓이 1/4을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
