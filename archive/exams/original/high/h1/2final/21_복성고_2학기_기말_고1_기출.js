@@ -295,6 +295,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 그래프에서 수직점근선, 수평점근선, $x$절편을 읽는다.\\n정석 풀이: 수직점근선이 $x=2$이므로 $-c=2$, 즉 $c=-2$이다. 수평점근선이 $y=-3$이므로 $a=-3$이다. 그래프가 $(1,0)$을 지나므로 $-3+b=0$에서 $b=3$이다. 따라서 $f(4)=\\dfrac{-12+3}{4-2}=-\\dfrac92$이고, $cf(4)=(-2)\\left(-\\dfrac92\\right)=9$이다.\\n따라서 정답은 ③이다.",
+
+    "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q10-solution.svg",
+
+    "solutionImageAlt": "유리함수의 점근선과 절편을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "점근선 x=2, y=−3과 x절편, cf(4)=9를 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/21_복성고_2학기_기말_고1_기출/q10.png",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
