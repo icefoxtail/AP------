@@ -435,6 +435,14 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 위쪽과 아래쪽의 같은 높이 띠를 짝지어 가로 길이의 합을 본다.\n조건 정리: 두 그래프는 $(\\dfrac9a,0)$에서 만나고 $y$축에서는 각각 $(0,-3)$, $(0,3)$을 지난다.\n풀이 방향: $0\\le t\\le3$에서 높이 $y=t$인 위쪽 띠와 $y=-t$인 아래쪽 띠의 가로 길이를 더한다.\n정석 풀이: $y=t$에서 $y=\\sqrt{9-ax}$와 만나는 점의 $x$좌표는 $\\dfrac{9-t^2}{a}$이다. $y=-t$에서 $y=\\sqrt{ax}-3$과 만나는 점의 $x$좌표는 $\\dfrac{(3-t)^2}{a}$이다. 두 띠의 가로 길이의 합은 $\\dfrac{9-t^2+(3-t)^2}{a}=\\dfrac{18-6t}{a}$로, $t=0$에서 $\\dfrac{18}{a}$이고 $t=3$에서 0까지 일정하게 줄어든다. 따라서 두 부분을 같은 높이끼리 붙인 넓이는 밑변 3, 높이 $\\dfrac{18}{a}$인 삼각형의 넓이와 같아 $\\dfrac12\\times3\\times\\dfrac{18}{a}=\\dfrac{27}{a}$이다. 이것이 $\\dfrac92$이므로 $a=6$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q14-solution.svg",
+
+    "solutionImageAlt": "두 무리함수와 넓이를 나타낸 해설 그래프",
+
+    "solutionImageCaption": "a=6에서 두 그래프의 교점 (3/2,0)과 y축 절편을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -521,6 +529,14 @@ window.questionBank=[
     "choices": [],
     "answer": "⑤",
     "solution": "[키포인트] $OD=x$를 이용해 직각삼각형 $OPD$, $APD$의 길이를 차례로 구한다.\n조건 정리: $AB=4$이므로 $OA=OP=2$이고 $0\\le x=OD\\le2$이다.\n풀이 방향: 먼저 피타고라스 정리로 $PD$를 구한 뒤 $AD=AO-DO$와 함께 $AP$를 구한다.\n정석 풀이: 직각삼각형 $OPD$에서 $PD^2=OP^2-OD^2=4-x^2$이므로 $PD=\\sqrt{4-x^2}$이다. 또 $AD=AO-DO=2-x$이다. 따라서 직각삼각형 $APD$에서 $AP^2=(2-x)^2+(4-x^2)=8-4x=4(2-x)$이므로 $f(x)=AP=2\\sqrt{2-x}$이다. 이 함수는 $0\\le x\\le2$에서 감소하고 아래로 굽으며 $x=2$에서 0이 된다. 원본 보기 중 이 모양에 해당하는 것은 ⑤이다.\n따라서 정답은 ⑤이다.",
+
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q17-solution.svg",
+
+    "solutionImageAlt": "반원의 거리 함수 개형을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "f(x)=2√(2−x), 0≤x≤2의 감소 개형과 끝점을 확인한다.",
+
+    "solutionImageSize": "full",
     "image": "assets/images/22_순천여고_2학기_기말_고1_기출/q17.png",
     "imageSize": "tall",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -646,6 +662,14 @@ window.questionBank=[
     "choices": [],
     "answer": "$a=2,\\ b=-1,\\ c=-2$",
     "solution": "[키포인트] 평행이동은 $x$를 $x-2$로 바꾸고 함숫값에서 1을 뺀 뒤, $x$축 대칭으로 전체 부호를 바꾼다.\n조건 정리: 원래 함수는 $y=\\sqrt{ax+b}+c$이다.\n풀이 방향: 세 변환을 순서대로 식에 반영한 후 목표 함수와 근호 안, 바깥 상수를 비교한다.\n정석 풀이: 오른쪽으로 2만큼 평행이동하면 $y=\\sqrt{a(x-2)+b}+c$이고, 아래로 1만큼 옮기면 $y=\\sqrt{a(x-2)+b}+c-1$이다. 이를 $x$축에 대하여 대칭이동하면 $y=-\\sqrt{a(x-2)+b}-c+1$이다. 이것이 $-\\sqrt{2x-5}+3$과 같으므로 $a=2$, $-2a+b=-5$, $-c+1=3$이다. 따라서 $b=-1$, $c=-2$이다.\n따라서 구하는 값은 $a=2$, $b=-1$, $c=-2$이다.",
+
+    "solutionImage": "assets/images/22_순천여고_2학기_기말_고1_기출/q21-solution.svg",
+
+    "solutionImageAlt": "평행이동·대칭된 무리함수 그래프",
+
+    "solutionImageCaption": "변환 결과 y=−√(2x−5)+3과 계수 a,b,c를 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

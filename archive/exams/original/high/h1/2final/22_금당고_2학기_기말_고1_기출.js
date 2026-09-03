@@ -297,6 +297,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 함수와 역함수의 공통점은 직선 $y=x$ 위에서 찾을 수 있다.\n조건 정리: 교점에서는 $x=\\sqrt{x-1}+1$이고 $x\\ge1$이다.\n풀이 방향: $t=x-1$로 치환하여 두 교점을 구한 뒤 거리와 기울기를 계산한다.\n정석 풀이: $t=\\sqrt t$이고 $t\\ge0$이므로 $t^2=t$, 즉 $t=0,1$이다. 따라서 교점은 $(1,1)$, $(2,2)$이다. 두 점 사이의 거리는 $d=\\sqrt{1^2+1^2}=\\sqrt2$, 기울기는 $m=1$이다. 그러므로 $d+m=\\sqrt2+1$이다.\n따라서 정답은 ①이다.",
+
+    "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q08-solution.svg",
+
+    "solutionImageAlt": "무리함수와 역함수의 교점을 나타낸 해설 그래프",
+
+    "solutionImageCaption": "교점 P=(1,1), Q=(2,2), 거리 √2와 직선 기울기 1을 확인한다.",
+
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
     "subUnit": "무리함수와 역함수",
     "subUnitConfidence": "category_or_cue_inferred",
