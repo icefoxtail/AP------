@@ -2901,7 +2901,7 @@ function getTimetableTodayDateString(today) {
     return _ttNormalizeDateString(
         today ||
         (typeof window !== 'undefined' && window.TIMETABLE_WITHDRAWN_TODAY) ||
-        new Date().toISOString()
+        new Date().toLocaleDateString('sv-SE', { timeZone: 'Asia/Seoul' })
     );
 }
 
@@ -2909,8 +2909,12 @@ function getTimetableTwoMonthsAgoDateString(today) {
     var base = getTimetableTodayDateString(today);
     if (!base) return '';
     var parts = base.split('-').map(function(part) { return Number(part); });
-    var date = new Date(parts[0], parts[1] - 1, parts[2]);
+    // 월말에서 setMonth()를 바로 호출하면 8/31 - 2개월이 7/1로 넘어간다.
+    // 오늘 날짜의 일을 보존하되, 대상 월의 마지막 날을 넘지 않도록 보정한다.
+    var date = new Date(parts[0], parts[1] - 1, 1);
     date.setMonth(date.getMonth() - 2);
+    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    date.setDate(Math.min(parts[2], lastDay));
     return [
         String(date.getFullYear()).padStart(4, '0'),
         String(date.getMonth() + 1).padStart(2, '0'),
@@ -2919,9 +2923,9 @@ function getTimetableTwoMonthsAgoDateString(today) {
 }
 
 function getTimetableWithdrawalCutoffDateString(today) {
-    var base = getTimetableTodayDateString(today);
-    var year = base ? base.slice(0, 4) : String(new Date().getFullYear());
-    return year + '-06-01';
+    // 퇴원생은 퇴원일로부터 2개월 동안만 원장님 시간표에 표시한다.
+    // 이 래퍼를 유지해 기존 호출부와 외부에서 참조하는 함수명을 보존한다.
+    return getTimetableTwoMonthsAgoDateString(today);
 }
 
 function getTimetableStudentStatusHistoryRows(student) {
@@ -2962,8 +2966,9 @@ function getTimetableStudentWithdrawalDate(student, mapping) {
         : getTimetableStudentStatusHistoryRows(student);
     var historyDate = _ttNormalizeDateString((historyRows[0] && historyRows[0].changed_at) || '');
     if (historyDate) return historyDate;
-    // 퇴원 전환 이력이 없는 학생만 updated_at 근사치 사용 (이후 정보 수정 시 날짜가 밀리므로 최후 수단)
-    return _ttNormalizeDateString(student.updated_at || student.updatedAt || '');
+    // 실제 퇴원일이 없으면 updated_at을 퇴원일로 추정하지 않는다.
+    // 학생 정보 수정일은 퇴원일이 아니므로 2개월 표시 기간을 오염시킬 수 있다.
+    return '';
 }
 
 function isTimetableWithdrawnStudent(student, mapping) {
@@ -2975,7 +2980,8 @@ function isRecentTimetableWithdrawnStudent(student, mapping, today) {
     if (!isTimetableWithdrawnStudent(student, mapping)) return false;
     var withdrawalDate = getTimetableStudentWithdrawalDate(student, mapping);
     var cutoff = getTimetableWithdrawalCutoffDateString(today);
-    return !!(withdrawalDate && cutoff && withdrawalDate >= cutoff);
+    // 두 달 전 날짜와 같은 날에는 이미 2개월이 지난 상태이므로 숨긴다.
+    return !!(withdrawalDate && cutoff && withdrawalDate > cutoff);
 }
 
 function shouldShowTimetableWithdrawnStudent(student, mapping, today) {

@@ -59,14 +59,14 @@ const context = {
       students: [
         { id: 's_active', name: '강재원', status: '재원' },
         { id: 's_paused', name: '김휴원', status: '휴원' },
-        // updated_at은 이후 정보 수정으로 언제든 갱신되므로, 이력이 있으면 이력이 이겨야 한다.
+        // updated_at은 퇴원일이 아니므로 status history가 없으면 표시하지 않는다.
         { id: 's_recent', name: '박최근', status: '퇴원', updated_at: '2026-08-01 10:00:00' },
         { id: 's_boundary', name: '오경계', status: 'inactive', updated_at: '2026-08-01 10:00:00' },
         { id: 's_old', name: '이오래', status: '퇴원', updated_at: '2026-07-01 10:00:00' },
         { id: 's_missing', name: '최미상', status: 'withdrawn' },
-        { id: 's_jejeok_recent', name: '제적최근', status: '제적', updated_at: '2026-06-02 10:00:00' },
+        { id: 's_jejeok_recent', name: '제적최근', status: '제적', updated_at: '2026-07-02 10:00:00' },
         { id: 's_jejeok_old', name: '제적과거', status: '제적', updated_at: '2026-05-31 10:00:00' },
-        { id: 's_leave_then_withdrawn', name: '휴원후퇴원', status: '퇴원', memo: '#휴원', updated_at: '2026-06-03 10:00:00' },
+        { id: 's_leave_then_withdrawn', name: '휴원후퇴원', status: '퇴원', memo: '#휴원', updated_at: '2026-07-03 10:00:00' },
         { id: 's_new', name: '신규', status: '재원', enrollment_date: '2026-06-12' },
         { id: 's_new_expired', name: 'ExpiredNew', status: '재원', enrollment_date: '2026-06-05' },
         { id: 's_new_memo_expired', name: 'ExpiredMemoNew', status: '재원', enrollment_date: '2026-06-05', memo: '#신입' }
@@ -86,9 +86,10 @@ const context = {
         { class_id: 'c1', student_id: 's_new_memo_expired' }
       ],
       student_status_history: [
-        { student_id: 's_recent', new_status: '퇴원', changed_at: '2026-06-02T09:00:00+09:00' },
-        { student_id: 's_boundary', new_status: 'inactive', changed_at: '2026-06-01' },
-        { student_id: 's_old', new_status: '퇴원', changed_at: '2026-05-31' }
+        { student_id: 's_recent', new_status: '퇴원', changed_at: '2026-07-02T09:00:00+09:00' },
+        { student_id: 's_boundary', new_status: 'inactive', changed_at: '2026-06-06' },
+        { student_id: 's_old', new_status: '퇴원', changed_at: '2026-06-05' },
+        { student_id: 's_leave_then_withdrawn', new_status: '퇴원', changed_at: '2026-06-07' }
       ]
     },
     allDb: {}
@@ -154,15 +155,31 @@ vm.runInContext(source, context, { filename: 'apmath/js/timetable.js' });
 const students = context.getTimetableClassStudentsWithInfo('c1');
 const names = students.map(student => student.name);
 
+assert.strictEqual(
+  context.isRecentTimetableWithdrawnStudent({ status: '퇴원', withdrawn_at: '2026-07-01' }, null, '2026-09-01'),
+  false,
+  'a July 1 withdrawal should disappear on September 1'
+);
+assert.strictEqual(
+  context.isRecentTimetableWithdrawnStudent({ status: '퇴원', withdrawn_at: '2026-07-01' }, null, '2026-08-31'),
+  true,
+  'a July 1 withdrawal should remain visible through August 31'
+);
+assert.strictEqual(
+  context.getTimetableTwoMonthsAgoDateString('2026-08-31'),
+  '2026-06-30',
+  'two-month cutoff should clamp to the last day of the target month'
+);
+
 assert(names.includes('강재원'), 'active student should remain visible');
 assert(names.includes('김휴원'), 'paused student should remain visible');
 assert(names.includes('박최근'), 'recent withdrawn student should be visible');
-assert(names.includes('오경계'), 'withdrawal boundary date should be included');
-assert(names.includes('제적최근'), 'recent Jejeok student should be treated as withdrawn and visible');
+assert(!names.includes('오경계'), 'withdrawal exactly two months ago should be hidden');
+assert(!names.includes('제적최근'), 'withdrawn student without an actual withdrawal date should be hidden');
 assert(names.includes('휴원후퇴원'), 'director timetable should show a recent withdrawn student even if a stale leave memo remains');
 assert(!names.includes('이오래'), 'withdrawn student older than two months should be hidden');
 assert(!names.includes('최미상'), 'withdrawn student without a withdrawal date should be hidden');
-assert(!names.includes('제적과거'), 'Jejeok student before June 1 should stay hidden');
+assert(!names.includes('제적과거'), 'Jejeok student without an actual withdrawal date should stay hidden');
 
 context.state.auth = { id: 'teacher1', name: '원장 대행', role: 'teacher' };
 context.state.ui.viewScope = 'admin';
@@ -179,11 +196,10 @@ context.state.ui.viewScope = 'admin';
 
 const recent = students.find(student => student.id === 's_recent');
 assert.strictEqual(recent.isWithdrawn, true, 'recent withdrawn student should be marked');
-assert.strictEqual(recent.withdrawalDate, '2026-06-02', 'recent withdrawn date should come from status history');
+assert.strictEqual(recent.withdrawalDate, '2026-07-02', 'recent withdrawn date should come from status history');
 
 const recentJejeok = students.find(student => student.id === 's_jejeok_recent');
-assert.strictEqual(recentJejeok.isWithdrawn, true, 'recent Jejeok student should be marked as withdrawn');
-assert.strictEqual(recentJejeok.withdrawalDate, '2026-06-02', 'recent Jejeok date should fall back to updated_at');
+assert.strictEqual(recentJejeok, undefined, 'Jejeok student without an actual withdrawal date should not enter timetable results');
 
 const leaveThenWithdrawn = students.find(student => student.id === 's_leave_then_withdrawn');
 assert.strictEqual(leaveThenWithdrawn.isWithdrawn, true, 'withdrawn status should take precedence over a stale leave memo');
@@ -197,9 +213,9 @@ const recentHtml = context.buildTimetableStudentSlot(recent, 'c1');
 const recentChip = elementsByClass(recentHtml, 'tt-status-student-chip')[0];
 assert(recentChip, 'AP withdrawn chip should render as a timetable status chip');
 assert(recentChip.classes.includes('tt-withdrawn'), 'AP withdrawn status chip should include withdrawn class');
-assert(/2026-06-02$/.test(recentChip.attrs.title), 'AP withdrawn status chip title should carry the withdrawal date');
+assert(/2026-07-02$/.test(recentChip.attrs.title), 'AP withdrawn status chip title should carry the withdrawal date');
 assert(recentHtml.includes('tt-withdrawn'), 'AP withdrawn chip should include withdrawn class');
-assert(recentHtml.includes('퇴원 / 2026-06-02'), 'AP withdrawn chip should include withdrawal tooltip');
+assert(recentHtml.includes('퇴원 / 2026-07-02'), 'AP withdrawn chip should include withdrawal tooltip');
 assert(recentHtml.includes('박최근'), 'AP withdrawn chip should keep the student name visible');
 
 const activeHtml = context.buildTimetableStudentSlot(students.find(student => student.id === 's_active'), 'c1');

@@ -2431,7 +2431,7 @@ async function attachAssignedStudents(env, rows) {
       WHERE COALESCE(a.status, 'active') != 'archived'
         AND (
           COALESCE(s.status, 'active') NOT IN ('inactive', 'archived', 'withdrawn', 'left', '퇴원')
-          OR (s.withdrawn_at IS NOT NULL AND DATE(s.withdrawn_at) >= DATE('now', '+9 hours', '-2 months'))
+          OR (s.withdrawn_at IS NOT NULL AND DATE(s.withdrawn_at) > DATE('now', '+9 hours', '-2 months'))
         )
         AND a.timetable_cell_id IN (${placeholders})
       ORDER BY a.created_at ASC, s.display_name ASC, c.created_at ASC
