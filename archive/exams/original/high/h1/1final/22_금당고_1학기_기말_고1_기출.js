@@ -421,14 +421,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "수선의발",
-      "거리",
-      "직선",
-      "도형",
-      "수직"
-    ],
+    "tags": ["객관식","수선의발","거리","직선","도형","수직"],
     "wide": false,
     "content": "좌표평면 위의 점 $P(4,3)$에서 $x$축에 내린 수선의 발을 $H$라 하고, 선분 $OH$ 위의 점 $Q$에서 선분 $OP$에 내린 수선의 발을 $I$라 하자. $QH=QI$일 때, 직선 $PQ$의 방정식이 $y=mx+n$이다. $m-n$의 값은? (단, $O$는 원점이고, $m,n$은 상수이다.) [4.4점]",
     "choices": [

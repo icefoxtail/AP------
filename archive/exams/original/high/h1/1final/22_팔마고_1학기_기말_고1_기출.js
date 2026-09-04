@@ -461,15 +461,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "기말",
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","거리"],
     "wide": false,
     "content": "원점과 직선 $(k+2)x+(k+3)y-2=0$ 사이의 거리를 $f(k)$라 할 때, $f(k)$의 최댓값은? (단, $k$는 실수이다.) [4.6]",
     "choices": [
@@ -715,15 +707,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "직선의 방정식",
-      "고1",
-      "기말",
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["서술형","직선의 방정식","고1","기말","도형","직선","거리","교점"],
     "wide": true,
     "content": "두 직선 $x-y+3=0$, $y=-x+1$에 대해 다음 물음에 답하시오.\n(1) 두 직선의 교점과 점 $(1,0)$을 지나는 직선의 방정식을 구하시오. [3점]\n(2) 두 직선의 교점을 지나고 기울기가 $3$인 직선을 $l$이라 할 때, 원점과 직선 $l$ 사이의 거리를 구하시오. [4점]",
     "choices": [],
@@ -733,8 +717,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 22의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

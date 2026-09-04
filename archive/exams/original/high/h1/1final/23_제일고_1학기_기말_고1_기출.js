@@ -407,13 +407,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선",
-      "교점",
-      "수직",
-      "도형"
-    ],
+    "tags": ["객관식","직선","교점","수직","도형"],
     "wide": false,
     "content": "두 직선 $2x+3y-1=0$, $x-y-3=0$의 교점을 지나고 직선 $3x+y+5=0$에 수직인 직선의 방정식은? [4.4점]",
     "choices": [
@@ -429,8 +423,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

@@ -78,15 +78,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "1학기기말",
-      "도형",
-      "직선",
-      "평행"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","1학기기말","도형","직선","평행"],
     "wide": false,
     "content": "두 점 $(2,a)$, $(4,-3)$을 지나는 직선이 직선 $y=-2x+1$과 평행할 때, $a$의 값을 구하면? [3.6점]",
     "choices": [
@@ -98,8 +90,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트]\n두 직선이 평행하면 기울기가 같다.\n\n풀이 과정\n직선 $y=-2x+1$의 기울기는 $-2$이다.\n두 점 $(2,a)$, $(4,-3)$을 지나는 직선의 기울기는\n$\\dfrac{-3-a}{4-2}=\\dfrac{-3-a}{2}$이다.\n두 직선이 평행하므로\n$\\dfrac{-3-a}{2}=-2$이다.\n양변에 $2$를 곱하면\n$-3-a=-4$이고, 따라서 $a=1$이다.\n\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q03-solution.svg",
@@ -182,15 +174,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "1학기기말",
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","1학기기말","도형","직선","거리"],
     "wide": false,
     "content": "점 $(a,1)$에서 두 직선 $x-2y+3=0$, $2x+y-2=0$까지의 거리가 같을 때, 모든 $a$의 값의 합을 구하면? [3.8점]",
     "choices": [
@@ -593,16 +577,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "1학기기말",
-      "도형",
-      "직선",
-      "수직",
-      "거리"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","1학기기말","도형","직선","수직","거리"],
     "wide": true,
     "content": "아래 그림과 같이 좌표평면 위에 점 $A(0,t)$와 직선 $l:y=\\dfrac12x+4$가 있다. 직선 $l$ 위의 제2사분면 위의 점 $B(a,b)$와 $x$축 위의 점 $C$에 대하여 $AC+BC$의 최솟값이 $2\\sqrt5$일 때, $t+a+b$의 값은? (단, $0<t<4$) [4.3점]",
     "choices": [
@@ -619,8 +594,8 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/22_순천여고_1학기_기말_고1_기출/q18.png",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

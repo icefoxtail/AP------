@@ -365,17 +365,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "기말",
-      "도형",
-      "직선",
-      "수직",
-      "거리",
-      "절편"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","수직","거리","절편","교점"],
     "wide": false,
     "content": "두 직선 $2x-y=0$, $3x+2y+7=0$의 교점을 지나는 직선 중에서 원점 $O$로부터의 거리가 최대가 되는 직선의 방정식을 $y=f(x)$라고 할 때, 이 직선의 $y$절편의 값으로 알맞은 것은? [4.4점]",
     "choices": [
@@ -391,8 +381,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 11의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -407,15 +397,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "기말",
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","거리"],
     "wide": false,
     "content": "점 $(1,a)$와 두 직선 $x+2y=1$, $2x+y=1$ 사이의 거리가 같도록 하는 모든 실수 $a$의 값의 합은? [4.1점]",
     "choices": [
@@ -431,8 +413,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
     "solutionImageCaption": "두 직선까지의 거리가 같은 점 · P₁=(−1/3,1), P₂=(1,1)",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

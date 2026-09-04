@@ -416,16 +416,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의방정식",
-      "점과직선사이거리",
-      "최댓값",
-      "도형",
-      "직선",
-      "수직",
-      "거리"
-    ],
+    "tags": ["객관식","직선의방정식","점과직선사이거리","최댓값","도형","직선","수직","거리"],
     "wide": false,
     "content": "점 $A(3,3)$과 직선 $mx-y+3m+1=0$ 사이 거리의 최댓값 $M$과 이때 $m$의 값의 곱 $mM$은? [4.4점]",
     "choices": [

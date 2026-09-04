@@ -295,16 +295,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "기말",
-      "도형",
-      "직선",
-      "그래프",
-      "평행"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","그래프","평행"],
     "wide": false,
     "content": "$y=|3x|$의 그래프와 $y=m(x+3)-2$가 두 점에서 만날 때, 실수 $m$의 값의 범위는 $a<m<b$이다. $a+b$의 값은? [4.6점]",
     "choices": [
@@ -320,8 +311,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 9의 실제 점과 직선 관계를 표시한 해설 도형",
     "solutionImageCaption": "y=|3x|의 두 가지 · 경계 기울기: 2/3, 3",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -508,15 +499,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "고1",
-      "기말",
-      "도형",
-      "직선",
-      "수직"
-    ],
+    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","수직"],
     "wide": false,
     "content": "그림과 같이 직선 $x+y=3$ 위의 점 $P(a,b)$ $(ab\\ne0)$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q,R$라 하고, 점 $P$를 지나고 직선 $QR$에 수직인 직선을 $l$이라 하자. 직선 $l$이 점 $P$의 위치에 관계없이 항상 일정한 점 $(\\alpha,\\beta)$를 지날 때, $\\alpha^2+\\beta^2$의 값은? [4.9점]",
     "choices": [
@@ -533,8 +516,8 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/22_매산고_1학기_기말_고1_기출/q15.png",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

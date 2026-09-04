@@ -322,11 +322,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "도형",
-      "직선",
-      "수직"
-    ],
+    "tags": ["도형","직선","수직"],
     "wide": false,
     "content": "두 점 $A(-1,3)$, $B(2,-3)$을 이은 선분 $AB$를 $2:1$로 내분하는 점을 $C$라고 하자. 직선 $ax+by-3=0$이 직선 $AB$에 수직이고 점 $C$를 지날 때, 상수 $a$, $b$에 대하여 $a+b$의 값은?",
     "choices": [
@@ -342,8 +338,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 11의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -390,11 +386,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["도형","직선","거리"],
     "wide": false,
     "content": "원점 $O(0,0)$과 직선 $k(x+y)-2x+4y+3=0$ 사이의 거리는 $k=a$일 때 최댓값 $b$를 갖는다. 두 상수 $a$, $b$에 대하여 $\\dfrac{a^2}{b^2}$의 값은? (단, $k$는 실수이다.)",
     "choices": [
@@ -649,12 +641,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["서술형","도형","직선","거리"],
     "wide": false,
     "content": "[서술형1] 원점을 지나고 점 $(4,3)$에서 거리가 $3$인 직선의 방정식을 모두 구하시오.",
     "choices": [],

@@ -557,15 +557,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "조건박스",
-      "외분점",
-      "평행",
-      "직선",
-      "도형",
-      "절편"
-    ],
+    "tags": ["객관식","조건박스","외분점","평행","직선","도형","절편","교점"],
     "wide": false,
     "content": "좌표평면 위의 세 점 $A(5,7)$, $B(3,5)$, $C(10,-3)$에 대하여 선분 $AC$의 한 점 $P$와 점 $Q$가 다음 조건을 만족한다고 하자.<br><div class='note-box' style='display:inline-block; margin:6px 0 4px 0; padding:6px 10px; border:1px solid #333; line-height:1.55;'>(가) 점 $Q$는 선분 $AB$를 $5:3$으로 외분하는 점이다.<br>(나) 선분 $BP$와 선분 $QC$는 평행하다.</div><br>직선 $PQ$의 방정식이 $y=mx+n$일 때, $\\dfrac{n}{m}$의 값은? [4.9점]",
     "choices": [
@@ -581,8 +573,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 17의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -597,15 +589,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "거리",
-      "각의이등분선",
-      "넓이",
-      "도형",
-      "직선",
-      "그래프"
-    ],
+    "tags": ["객관식","거리","각의이등분선","넓이","도형","직선","그래프"],
     "wide": false,
     "content": "직선 $y=-x+5$ 위의 서로 다른 두 점 $P,Q$는 두 직선 $x+2y-1=0$, $2x-y-2=0$으로부터 같은 거리에 있을 때, 삼각형 $OPQ$의 넓이는? (단, $O$는 원점이다.) [5점]",
     "choices": [
@@ -720,15 +704,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "직선",
-      "거리",
-      "넓이",
-      "도형",
-      "수직",
-      "절편"
-    ],
+    "tags": ["서술형","직선","거리","넓이","도형","수직","절편","교점"],
     "wide": false,
     "content": "&lt;서술형 4&gt;<br>두 직선 $2x-y-1=0$, $x-2y+4=0$의 교점을 지나는 직선 중 원점에서의 거리가 $2$인 서로 다른 두 직선을 $l$, $m$이라 하자. 두 직선 $l$, $m$과 $x$축으로 둘러싸인 삼각형의 넓이를 구하는 과정을 서술하시오. [6점]",
     "choices": [],

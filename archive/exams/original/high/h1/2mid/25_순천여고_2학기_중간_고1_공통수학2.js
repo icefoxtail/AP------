@@ -338,11 +338,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "도형",
-      "직선",
-      "수직"
-    ],
+    "tags": ["도형","직선","수직","교점"],
     "wide": false,
     "content": "점 $A(2,3)$에서 두 점 $B(-1,3)$, $C(3,7)$을 이은 선분 $BC$에 내린 수선의 발을 $M(a,b)$라 할 때, $4ab$의 값은?",
     "choices": [
@@ -570,11 +566,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "도형",
-      "직선"
-    ],
+    "tags": ["서술형","도형","직선"],
     "wide": false,
     "content": "직선 $mx+y-3m+2=0$이 제1사분면을 지나지 않도록 하는 실수 $m$의 값의 범위를 구하고, 그 과정을 서술하시오.",
     "choices": [],
