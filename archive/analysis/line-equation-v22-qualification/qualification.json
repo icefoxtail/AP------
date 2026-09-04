@@ -1,7 +1,7 @@
 {
   "protocol": "고1 도형의 방정식 v2.2 actual-facts qualification",
-  "generatedAt": "2026-09-04T21:32:09.698Z",
-  "gitSha": "d50473215653b1ad199edd8de497569dd73ed091",
+  "generatedAt": "2026-09-04T23:16:37.842Z",
+  "gitSha": "cdce4f08e11dc0c284e44f6de58392fccd908774",
   "noWriteGuarantee": {
     "status": "PASS",
     "productionWrites": 0,
@@ -55,7 +55,7 @@
     "productionWrites": 0
   },
   "browserRenderGate": {
-    "status": "FAIL",
+    "status": "PASS",
     "capturedAt": "2026-09-05",
     "environment": "Chrome extension browser, local http://127.0.0.1:4173, archive/engine.html, qpp=4",
     "scope": {
@@ -69,8 +69,8 @@
       "freshRun": true,
       "sourcePaths": "current archive/exams/original/high/h1 production paths"
     },
-    "passModes": 83,
-    "failModes": 1,
+    "passModes": 84,
+    "failModes": 0,
     "checks": {
       "questionCountAndLastQuestion": "PASS for all non-failing modes",
       "answerCountAndLastAnswer": "PASS for all non-failing modes",
@@ -80,20 +80,9 @@
       "pageConsoleErrors": 0,
       "browserExtensionChannelErrors": 7
     },
-    "failures": [
-      {
-        "file": "22_금당고_1학기_기말_고1_기출.js",
-        "term": "1final",
-        "mode": "sol",
-        "questionCount": 21,
-        "expectedQuestionCount": 21,
-        "failure": "q20-solution.svg has naturalWidth=0 in the live solution render",
-        "asset": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q20-solution.svg",
-        "scopeNote": "the asset was already dirty before this verifier; no overwrite was performed"
-      }
-    ],
+    "failures": [],
     "browserExtensionChannelErrorNote": "The seven captured console entries were the Chrome extension asynchronous-response channel message, not archive page load/render errors; they remain recorded rather than silently discarded.",
-    "decision": "FAIL closed until q20 is repaired and the complete exam/sol/ans run is repeated"
+    "decision": "browser gate PASS; geometry qualification remains separately fail-closed on source/SVG and policy holds"
   },
   "gateNames": [
     "SVG_XML_WELL_FORMED",
@@ -112,8 +101,8 @@
   ],
   "gateSummary": {
     "SVG_XML_WELL_FORMED": {
-      "PASS": 93,
-      "FAIL": 1,
+      "PASS": 94,
+      "FAIL": 0,
       "HOLD": 0,
       "N/A": 0
     },
@@ -1313,7 +1302,7 @@
       "actualSvgObservation": {
         "path": "assets/images/22_금당고_1학기_기말_고1_기출/q20-solution.svg",
         "exists": true,
-        "sha256": "767a644a7f29774ebf7304d7a94a6fb565413a454b0ed1206adbbca98e66300b",
+        "sha256": "473e7c3b0b41fb4e68870151e716b5946bc3514ffdd888dfa410fbfa46e5d89e",
         "lineCount": 3,
         "lineData": [
           {
@@ -1449,13 +1438,11 @@
       "gates": [
         {
           "name": "SVG_XML_WELL_FORMED",
-          "status": "FAIL",
-          "issues": [
-            "RAW_LT_IN_TEXT_NODE"
-          ],
+          "status": "PASS",
+          "issues": [],
           "details": {
             "parser": "fail-closed-static-XML-token-check",
-            "sourceLength": 11991
+            "sourceLength": 11994
           }
         },
         {
@@ -1671,7 +1658,7 @@
               "distance"
             ],
             "caption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
-            "visibleSemanticText": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료 직선의 방정식 해설 도형 · 문항 20 두 직선 l, m에 접하고 중심이 각의 이등분선 n 위에 있는 원의 중심과 반지름을 실제 좌표변환으로 표시한 해설 도형 직선의 방정식 해설 도형 · 문항 20 실제 좌표·직선·점 관계를 독립 계산값으로 복원한 해설 도형 -15 -14 -13 -12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 -17 -16 -15 -14 -13 -12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 4 5 6 7 8 y x l m n: y=x−7 C (−11/7,−60/7) 핵심 수치와 관계 l: 3x+4y+4=0 m: 4x+3y−3=0 각의 이등분선 n: y=x−7 중심 C=(−11/7,−60/7) 반지름 r=7 x_C 두 접선까지의 거리가 r=7이고 C가 n 위에 놓이는 실제 원"
+            "visibleSemanticText": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료 직선의 방정식 해설 도형 · 문항 20 두 직선 l, m에 접하고 중심이 각의 이등분선 n 위에 있는 원의 중심과 반지름을 실제 좌표변환으로 표시한 해설 도형 직선의 방정식 해설 도형 · 문항 20 실제 좌표·직선·점 관계를 독립 계산값으로 복원한 해설 도형 -15 -14 -13 -12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 -17 -16 -15 -14 -13 -12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1 1 2 3 4 5 6 7 8 y x l m n: y=x−7 C (−11/7,−60/7) 핵심 수치와 관계 l: 3x+4y+4=0 m: 4x+3y−3=0 각의 이등분선 n: y=x−7 중심 C=(−11/7,−60/7) 반지름 r=7 x_C<0 조건을 만족 두 접선까지의 거리가 r=7이고 C가 n 위에 놓이는 실제 원"
           }
         },
         {

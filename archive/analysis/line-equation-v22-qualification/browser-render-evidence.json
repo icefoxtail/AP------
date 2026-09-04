@@ -1,5 +1,5 @@
 {
-  "status": "FAIL",
+  "status": "PASS",
   "capturedAt": "2026-09-05",
   "environment": "Chrome extension browser, local http://127.0.0.1:4173, archive/engine.html, qpp=4",
   "scope": {
@@ -9,8 +9,8 @@
     "freshRun": true,
     "sourcePaths": "current archive/exams/original/high/h1 production paths"
   },
-  "passModes": 83,
-  "failModes": 1,
+  "passModes": 84,
+  "failModes": 0,
   "checks": {
     "questionCountAndLastQuestion": "PASS for all non-failing modes",
     "answerCountAndLastAnswer": "PASS for all non-failing modes",
@@ -20,18 +20,7 @@
     "pageConsoleErrors": 0,
     "browserExtensionChannelErrors": 7
   },
-  "failures": [
-    {
-      "file": "22_금당고_1학기_기말_고1_기출.js",
-      "term": "1final",
-      "mode": "sol",
-      "questionCount": 21,
-      "expectedQuestionCount": 21,
-      "failure": "q20-solution.svg has naturalWidth=0 in the live solution render",
-      "asset": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q20-solution.svg",
-      "scopeNote": "the asset was already dirty before this verifier; no overwrite was performed"
-    }
-  ],
+  "failures": [],
   "browserExtensionChannelErrorNote": "The seven captured console entries were the Chrome extension asynchronous-response channel message, not archive page load/render errors; they remain recorded rather than silently discarded.",
-  "decision": "FAIL closed until q20 is repaired and the complete exam/sol/ans run is repeated"
+  "decision": "browser gate PASS; geometry qualification remains separately fail-closed on source/SVG and policy holds"
 }
