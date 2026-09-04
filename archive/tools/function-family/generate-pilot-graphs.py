@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -475,8 +476,10 @@ BATCH3_CASES = [
             "version": "0.1", "type": "coordinate_plane", "width": 620, "height": 460,
             "xRange": [-3, 5], "yRange": [-8, 5],
             "curves": [
-                {"points": [{"x": -3, "y": -0.666667}, {"x": -2, "y": -1}, {"x": -1, "y": -2}, {"x": -0.5, "y": -4}, {"x": 0.5, "y": 4}, {"x": 1, "y": 2}, {"x": 1.414214, "y": 1.414214}, {"x": 2, "y": 1}, {"x": 5, "y": 0.4}]},
+                {"points": [{"x": -3, "y": -0.666667}, {"x": -2, "y": -1}, {"x": -1, "y": -2}, {"x": -0.5, "y": -4}]},
+                {"points": [{"x": 0.5, "y": 4}, {"x": 1, "y": 2}, {"x": 1.414214, "y": 1.414214}, {"x": 2, "y": 1}, {"x": 5, "y": 0.4}]},
             ],
+            "asymptotes": [{"x": 0, "label": "x=0"}],
             "segments": [{"from": {"x": -1, "y": -2}, "to": {"x": 3, "y": -6}, "label": "BC", "kind": "segment"}, {"from": {"x": 1.414214, "y": 1.414214}, "to": {"x": 1.414214, "y": -4.414214}, "label": "height", "kind": "perpendicular", "dashed": True}],
             "points": [{"x": -1, "y": -2, "label": "B"}, {"x": 3, "y": -6, "label": "C"}, {"x": 1.414214, "y": 1.414214, "label": "A"}],
             "annotations": [{"x": -2.5, "y": 4.2, "text": "y=2/x"}, {"x": -2.5, "y": -7.3, "text": "BC: x+y+3=0"}, {"x": 1.7, "y": 2.3, "text": "A=(√2,√2)"}],
@@ -655,7 +658,7 @@ BATCH4_CASES = [
             "xRange": [-4, 8], "yRange": [-6, 6],
             "asymptotes": [{"x": 1, "label": "x=1"}, {"y": 1, "label": "y=1"}],
             "curves": [{"points": [{"x": -4, "y": 0.6}, {"x": -2, "y": 0.333333}, {"x": 0, "y": -1}, {"x": 0.5, "y": -5}]}, {"points": [{"x": 1.5, "y": 5}, {"x": 2, "y": 3}, {"x": 3, "y": 2}, {"x": 5, "y": 1.5}, {"x": 8, "y": 1.285714}]}, {"points": [{"x": 0, "y": 0}, {"x": 1, "y": 1}, {"x": 2, "y": 1.414214}, {"x": 4, "y": 2}, {"x": 8, "y": 2.828427}]}],
-            "points": [{"x": 4, "y": 2, "label": "P"}],
+            "points": [],
             "annotations": [{"x": -3.5, "y": 5.2, "text": "y=(x+1)/(x−1)"}, {"x": 4.7, "y": 3.4, "text": "y=√x (k=0)"}],
         },
     },
@@ -1519,7 +1522,8 @@ BATCH9_CASES = [
             "xRange": [-8, 8], "yRange": [-10, 10],
             "asymptotes": [{"x": -4, "label": "f: x=−4"}, {"y": 1 / 3, "label": "f: y=1/3"}, {"x": -1, "label": "g: x=−1"}, {"y": 2, "label": "g: y=2"}],
             "curves": [
-                {"points": [{"x": -8, "y": 0.75}, {"x": -6, "y": 1.166667}, {"x": -5, "y": 2}, {"x": -3, "y": -1.333333}, {"x": -2, "y": -0.5}, {"x": 0, "y": -0.083333}, {"x": 0.5, "y": -0.037037}, {"x": 2, "y": 0.055556}, {"x": 8, "y": 0.194444}]},
+                {"points": [{"x": -8, "y": 0.75}, {"x": -6, "y": 1.166667}, {"x": -5, "y": 2}]},
+                {"points": [{"x": -3, "y": -1.333333}, {"x": -2, "y": -0.5}, {"x": 0, "y": -0.083333}, {"x": 0.5, "y": -0.037037}, {"x": 2, "y": 0.055556}, {"x": 8, "y": 0.194444}]},
                 {"points": [{"x": -8, "y": 2.238095}, {"x": -3, "y": 2.833333}, {"x": -2, "y": 3.666667}, {"x": -1.5, "y": 5.333333}]},
                 {"points": [{"x": -0.5, "y": -1.333333}, {"x": 0, "y": 0.333333}, {"x": 1, "y": 1.166667}, {"x": 3, "y": 1.583333}, {"x": 8, "y": 1.814815}]},
             ],
@@ -1817,7 +1821,7 @@ BATCH11_CASES = [
             "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 520,
             "xRange": [-6, 6], "yRange": [-8, 8],
             "asymptotes": [{"x": -3, "label": "f: x=−3"}, {"y": 2, "label": "f: y=2"}, {"x": -2, "label": "g: x=−2"}, {"y": 1, "label": "g: y=1"}],
-            "curves": [{"points": [{"x": -6, "y": 2.333333}, {"x": -4, "y": 3}, {"x": -3.5, "y": 4}, {"x": -2.5, "y": 0}, {"x": -2, "y": 1}, {"x": 0, "y": 1.666667}, {"x": 3, "y": 1.833333}]}, {"points": [{"x": -6, "y": 1.25}, {"x": -3, "y": 2}, {"x": -2.5, "y": 3}, {"x": -1.5, "y": -1}, {"x": -1, "y": 0}, {"x": 0, "y": 0.5}, {"x": 3, "y": 0.8}, {"x": 6, "y": 0.875}]}],
+            "curves": [{"points": [{"x": -6, "y": 2.333333}, {"x": -4, "y": 3}, {"x": -3.5, "y": 4}]}, {"points": [{"x": -2.5, "y": 0}, {"x": -2, "y": 1}, {"x": 0, "y": 1.666667}, {"x": 3, "y": 1.833333}]}, {"points": [{"x": -6, "y": 1.25}, {"x": -3, "y": 2}, {"x": -2.5, "y": 3}]}, {"points": [{"x": -1.5, "y": -1}, {"x": -1, "y": 0}, {"x": 0, "y": 0.5}, {"x": 3, "y": 0.8}, {"x": 6, "y": 0.875}]}],
             "points": [{"x": -2, "y": 1, "label": "C_g on f"}],
             "annotations": [{"x": -5.5, "y": 7.2, "text": "f=2−1/(x+3)"}, {"x": -5.5, "y": -6.8, "text": "g=1−1/(x+2), k=5"}],
         },
@@ -2112,7 +2116,7 @@ BATCH13_CASES = [
             "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 520,
             "xRange": [-8, 8], "yRange": [-12, 12],
             "asymptotes": [{"x": -2, "label": "f: x=−2"}, {"y": -2, "label": "f: y=−2"}, {"x": 3, "label": "g: x=3"}, {"y": 3, "label": "g: y=3"}],
-            "curves": [{"points": [{"x": -8, "y": -3.166667}, {"x": -4, "y": -5.5}, {"x": -3, "y": -9}, {"x": -1, "y": 5}, {"x": 0, "y": 1.5}, {"x": 1, "y": 0.333333}, {"x": 4, "y": -0.833333}, {"x": 8, "y": -1.3}]}, {"points": [{"x": -8, "y": 2.363636}, {"x": -3, "y": 1.833333}, {"x": 0, "y": 0.666667}, {"x": 2, "y": -4}, {"x": 4, "y": 10}, {"x": 5, "y": 6.5}, {"x": 8, "y": 4.4}]}],
+            "curves": [{"points": [{"x": -8, "y": -3.166667}, {"x": -4, "y": -5.5}, {"x": -3, "y": -9}]}, {"points": [{"x": -1, "y": 5}, {"x": 0, "y": 1.5}, {"x": 1, "y": 0.333333}, {"x": 4, "y": -0.833333}, {"x": 8, "y": -1.3}]}, {"points": [{"x": -8, "y": 2.363636}, {"x": -3, "y": 1.833333}, {"x": 0, "y": 0.666667}, {"x": 2, "y": -4}]}, {"points": [{"x": 4, "y": 10}, {"x": 5, "y": 6.5}, {"x": 8, "y": 4.4}]}],
             "points": [{"x": 0, "y": 1.5, "label": "f"}, {"x": 0, "y": 0.666667, "label": "g"}],
             "annotations": [{"x": -7.5, "y": 10.4, "text": "k=7 representative"}, {"x": -7.5, "y": -10.3, "text": "valid integers 5,6,7,8,9"}],
         },
@@ -2242,7 +2246,7 @@ BATCH14_CASES = [
             "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 500,
             "xRange": [-2, 8], "yRange": [-3, 8],
             "asymptotes": [{"x": 1, "label": "x=1"}, {"y": 2, "label": "y=2"}],
-            "curves": [{"points": [{"x": -2, "y": 1.333333}, {"x": 0, "y": 0}, {"x": 0.5, "y": -2}, {"x": 1.5, "y": 6}, {"x": 2, "y": 4}, {"x": 4, "y": 2.666667}, {"x": 8, "y": 2.285714}]}, {"points": [{"x": 0, "y": 0}, {"x": 1, "y": 1}, {"x": 2, "y": 1.414214}, {"x": 4, "y": 2}, {"x": 8, "y": 2.828427}]}],
+            "curves": [{"points": [{"x": -2, "y": 1.333333}, {"x": 0, "y": 0}, {"x": 0.5, "y": -2}]}, {"points": [{"x": 1.5, "y": 6}, {"x": 2, "y": 4}, {"x": 4, "y": 2.666667}, {"x": 8, "y": 2.285714}]}, {"points": [{"x": 0, "y": 0}, {"x": 1, "y": 1}, {"x": 2, "y": 1.414214}, {"x": 4, "y": 2}, {"x": 8, "y": 2.828427}]}],
             "points": [{"x": 0, "y": 0, "label": "P"}, {"x": 5.828427, "y": 2.414214, "label": "Q"}],
             "annotations": [{"x": -1.7, "y": 7.4, "text": "t=0: y=2x/(x−1), y=√x"}, {"x": -1.7, "y": -2.5, "text": "two intersections, −3/2≤t≤0"}],
         },
@@ -2426,13 +2430,46 @@ def _close(actual: float, expected: float, label: str, tolerance: float = 2e-5) 
         raise AssertionError(f"{label}: {actual} != {expected}")
 
 
-def _check_curve(curve: dict, fn, label: str) -> None:
+_ACTIVE_DENSE_SAMPLE_COUNT = 200
+
+
+def _dense_sample_curve(curve: dict, fn, label: str) -> None:
+    sparse_points = curve.get("points", [])
+    if len(sparse_points) < 2:
+        raise AssertionError(f"{label}: at least two anchor points are required")
+    xs = [float(point["x"]) for point in sparse_points]
+    start, end = min(xs), max(xs)
+    if not math.isfinite(start) or not math.isfinite(end) or start == end:
+        raise AssertionError(f"{label}: invalid sampling interval {start}..{end}")
+    dense_points = []
+    for index in range(_ACTIVE_DENSE_SAMPLE_COUNT):
+        fraction = index / (_ACTIVE_DENSE_SAMPLE_COUNT - 1)
+        x = start + (end - start) * fraction
+        try:
+            y = float(fn(x))
+        except (ValueError, ZeroDivisionError, OverflowError) as error:
+            raise AssertionError(f"{label}: function undefined at sample x={x}") from error
+        if not math.isfinite(x) or not math.isfinite(y):
+            raise AssertionError(f"{label}: non-finite sample ({x}, {y})")
+        dense_points.append({"x": x, "y": y})
+    curve["points"] = dense_points
+    curve["_dense_label"] = label.lower()
+
+
+def _check_curve(curve: dict, fn, label: str, vertical_asymptotes: list[float] | None = None) -> None:
+    _dense_sample_curve(curve, fn, label)
+    if vertical_asymptotes is not None:
+        curve["_dense_vertical_asymptotes"] = [float(value) for value in vertical_asymptotes]
     for index, point in enumerate(curve["points"]):
         x, y = float(point["x"]), float(point["y"])
+        if not math.isfinite(x) or not math.isfinite(y):
+            raise AssertionError(f"{label}[{index}]: non-finite coordinate")
         _close(y, fn(x), f"{label}[{index}]")
 
 
 def validate_math(case: dict) -> None:
+    global _ACTIVE_DENSE_SAMPLE_COUNT
+    _ACTIVE_DENSE_SAMPLE_COUNT = 300 if case["visualKind"] == "RATIONAL_GRAPH" else 200
     curves = case["spec"].get("curves", [])
     case_id = case["caseId"]
     if case_id == "h1-21-gangnam-2final-q23-inverse-area":
@@ -2475,6 +2512,11 @@ def validate_math(case: dict) -> None:
     elif case_id == "h1-25-jeil-2final-q13-rational-properties":
         _check_curve(curves[0], lambda x: -x / (x - 1), "q13.left")
         _check_curve(curves[1], lambda x: -x / (x - 1), "q13.right")
+    elif case_id == "h1-25-jeil-2final-q14-two-rational-asymptote-rectangle":
+        _check_curve(curves[0], lambda x: 2 / (x - 4), "jeil25q14.first.left", [4])
+        _check_curve(curves[1], lambda x: 2 / (x - 4), "jeil25q14.first.right", [4])
+        _check_curve(curves[2], lambda x: 4 + 3 / (x - 1), "jeil25q14.second.left", [1])
+        _check_curve(curves[3], lambda x: 4 + 3 / (x - 1), "jeil25q14.second.right", [1])
     elif case_id == "h1-23-gangnam-2final-q05-positive-reciprocal":
         _check_curve(curves[0], lambda x: 4 / x, "q05.negative")
         _check_curve(curves[1], lambda x: 4 / x, "q05.positive")
@@ -2502,8 +2544,47 @@ def validate_math(case: dict) -> None:
         _check_curve(curves[1], lambda x: x ** 2 - 2, "jeil20.finverse")
     elif case_id == "h1-24-geumdang-2final-q11-radical-chord-slope":
         _check_curve(curves[0], lambda x: 3 * x ** 0.5, "geumdang11.radical")
+    elif case_id == "h1-25-geumdang-2final-q09-rational-asymptotes-point":
+        _check_curve(curves[0], lambda x: -8 / (x - 1) - 4, "geumdang25q09.rational.left", [1])
+        _check_curve(curves[1], lambda x: -8 / (x - 1) - 4, "geumdang25q09.rational.right", [1])
+        _close(case["spec"]["points"][0]["y"], -8 / (case["spec"]["points"][0]["x"] - 1) - 4, "geumdang25q09.point")
+    elif case_id == "h1-25-palmas-2final-q14-reciprocal-domain-range":
+        _check_curve(curves[0], lambda x: 1 / x, "palma25q14.rational.left", [0])
+        _check_curve(curves[1], lambda x: 1 / x, "palma25q14.rational.right", [0])
+        for point in case["spec"]["points"]:
+            _close(point["y"], 1 / point["x"], f"palma25q14.point.{point['label']}")
+    elif case_id == "h1-24-maesan-2final-q03-rational-translation":
+        _check_curve(curves[0], lambda x: 2 + 7 / (x - 1), "maesan24q03.rational.left", [1])
+        _check_curve(curves[1], lambda x: 2 + 7 / (x - 1), "maesan24q03.rational.right", [1])
+        point = case["spec"]["points"][0]
+        _close(point["y"], 2 + 7 / (point["x"] - 1), "maesan24q03.point")
+    elif case_id == "h1-24-maesan-2final-q05-rational-properties":
+        _check_curve(curves[0], lambda x: -3 + 5 / (x + 1), "maesan24q05.rational.left", [-1])
+        _check_curve(curves[1], lambda x: -3 + 5 / (x + 1), "maesan24q05.rational.right", [-1])
+        point = case["spec"]["points"][0]
+        _close(point["y"], -3 + 5 / (point["x"] + 1), "maesan24q05.point")
+    elif case_id == "h1-24-maesan-2final-q07-absolute-rational-levels":
+        _check_curve(curves[0], lambda x: abs((2 * x + 1) / (3 - x)), "maesan24q07.rational.left", [3])
+        _check_curve(curves[1], lambda x: abs((2 * x + 1) / (3 - x)), "maesan24q07.rational.right", [3])
+        point = case["spec"]["points"][0]
+        _close(point["y"], abs((2 * point["x"] + 1) / (3 - point["x"])), "maesan24q07.point")
+    elif case_id == "h1-23-gangnam-2final-q06-translated-radical-quadrants":
+        _check_curve(curves[0], lambda x: -(2 * x - 4) ** 0.5 + 3, "gangnam23q06.radical")
+    elif case_id == "h1-23-geumdang-2final-q20-radical-line-counts":
+        _check_curve(curves[0], lambda x: (x + 3) ** 0.5, "geumdang23q20.radical")
+    elif case_id == "h1-25-geumdang-2final-q15-inverse-intersections":
+        _check_curve(curves[0], lambda x: (x - 6) ** 2 + 6, "geumdang25q15.f")
+        _check_curve(curves[1], lambda x: 6 + (x - 6) ** 0.5, "geumdang25q15.finverse")
+    elif case_id == "h1-24-geumdang-2final-q18-rational-radical-one-intersection":
+        _check_curve(curves[0], lambda x: (x + 1) / (x - 1), "geumdang24q18.hyperbola.left")
+        _check_curve(curves[1], lambda x: (x + 1) / (x - 1), "geumdang24q18.hyperbola.right")
+        _check_curve(curves[2], lambda x: x ** 0.5, "geumdang24q18.radical")
+        for point in case["spec"]["points"]:
+            _close(point["y"], (point["x"] + 1) / (point["x"] - 1), f"geumdang24q18.hyperbola.{point['label']}")
+            _close(point["y"], point["x"] ** 0.5, f"geumdang24q18.radical.{point['label']}")
     elif case_id == "h1-24-geumdang-2final-q16-rational-area-minimum":
         _check_curve(curves[0], lambda x: 2 / x, "geumdang16.rational")
+        _check_curve(curves[1], lambda x: 2 / x, "geumdang16.rational.right")
     elif case_id == "h1-23-gangnam-2final-q24-radical-line-slope-range":
         _check_curve(curves[0], lambda x: (3 * x - 3) ** 0.5, "gangnam24.radical")
     elif case_id == "h1-24-maesan-2final-q23-inverse-area":
@@ -2535,10 +2616,10 @@ def validate_math(case: dict) -> None:
     elif case_id == "h1-21-geumdang-2final-q04-radical-translation":
         _check_curve(curves[0], lambda x: (2 - 2 * x) ** 0.5 + 4, "geumdang04.radical")
     elif case_id == "h1-21-palmas-2final-q05-rational-inverse-translation":
-        _check_curve(curves[0], lambda x: 3 + 7 / (x - 2), "palma05.f")
-        _check_curve(curves[1], lambda x: 3 + 7 / (x - 2), "palma05.f.right")
-        _check_curve(curves[2], lambda x: 2 + 7 / (x - 3), "palma05.finverse.left")
-        _check_curve(curves[3], lambda x: 2 + 7 / (x - 3), "palma05.finverse.right")
+        _check_curve(curves[0], lambda x: 3 + 7 / (x - 2), "palma05.f", [2])
+        _check_curve(curves[1], lambda x: 3 + 7 / (x - 2), "palma05.f.right", [2])
+        _check_curve(curves[2], lambda x: 2 + 7 / (x - 3), "palma05.finverse.left", [3])
+        _check_curve(curves[3], lambda x: 2 + 7 / (x - 3), "palma05.finverse.right", [3])
     elif case_id == "h1-21-hyocheon-2final-q11-rational-quadrants-count":
         _check_curve(curves[0], lambda x: 3 / (x - 1) + 2, "hyocheon11.rational.left")
         _check_curve(curves[1], lambda x: 3 / (x - 1) + 2, "hyocheon11.rational.right")
@@ -2688,9 +2769,10 @@ def validate_math(case: dict) -> None:
         for point in case["spec"]["points"]:
             _close(point["x"], point["y"], f"geumdang23q08.diagonal.{point['label']}")
     elif case_id == "h1-22-hyocheon-2final-q15-rational-quadrants-condition":
-        _check_curve(curves[0], lambda x: (1 / 3 - 2) / (x + 4) + 1 / 3, "hyocheon22q15.f")
-        _check_curve(curves[1], lambda x: 2 + (1 / 3 - 2) / (x + 1), "hyocheon22q15.g.left")
-        _check_curve(curves[2], lambda x: 2 + (1 / 3 - 2) / (x + 1), "hyocheon22q15.g.right")
+        _check_curve(curves[0], lambda x: (1 / 3 - 2) / (x + 4) + 1 / 3, "hyocheon22q15.f.left", [-4])
+        _check_curve(curves[1], lambda x: (1 / 3 - 2) / (x + 4) + 1 / 3, "hyocheon22q15.f.right", [-4])
+        _check_curve(curves[2], lambda x: 2 + (1 / 3 - 2) / (x + 1), "hyocheon22q15.g.left", [-1])
+        _check_curve(curves[3], lambda x: 2 + (1 / 3 - 2) / (x + 1), "hyocheon22q15.g.right", [-1])
     elif case_id == "h1-21-suncheon-2final-q09-radical-sign-cases":
         _check_curve(curves[0], lambda x: -x ** 0.5, "suncheon21q09.a-positive")
         _check_curve(curves[1], lambda x: -(-x) ** 0.5, "suncheon21q09.a-negative")
@@ -2747,8 +2829,10 @@ def validate_math(case: dict) -> None:
     elif case_id == "h1-22-suncheon-girls-2final-q21-radical-transformation":
         _check_curve(curves[0], lambda x: -(2 * x - 5) ** 0.5 + 3, "suncheon22q21.radical")
     elif case_id == "h1-22-bokseong-2final-q12-rational-translation-center":
-        _check_curve(curves[0], lambda x: 2 - 1 / (x + 3), "bokseong22q12.f")
-        _check_curve(curves[1], lambda x: 1 - 1 / (x + 2), "bokseong22q12.g")
+        _check_curve(curves[0], lambda x: 2 - 1 / (x + 3), "bokseong22q12.f.left", [-3])
+        _check_curve(curves[1], lambda x: 2 - 1 / (x + 3), "bokseong22q12.f.right", [-3])
+        _check_curve(curves[2], lambda x: 1 - 1 / (x + 2), "bokseong22q12.g.left", [-2])
+        _check_curve(curves[3], lambda x: 1 - 1 / (x + 2), "bokseong22q12.g.right", [-2])
     elif case_id == "h1-22-bokseong-2final-q21-rational-piecewise-triangle":
         _check_curve(curves[0], lambda x: 2 / x, "bokseong22q21.negative")
         _check_curve(curves[1], lambda x: 8 / x, "bokseong22q21.positive")
@@ -2812,8 +2896,10 @@ def validate_math(case: dict) -> None:
         for item, fn, label in ((case["spec"]["lines"][0], lambda x: x + 1, "jeil24q11.axis.plus"), (case["spec"]["lines"][1], lambda x: -x + 5, "jeil24q11.axis.minus")):
             _check_curve({"points": [item["from"], item["to"]]}, fn, label)
     elif case_id == "h1-24-maesan-2final-q22-rational-quadrant-range":
-        _check_curve(curves[0], lambda x: 7 / (x + 2) - 2, "maesan24q22.first")
-        _check_curve(curves[1], lambda x: 7 / (x - 3) + 3, "maesan24q22.second")
+        _check_curve(curves[0], lambda x: 7 / (x + 2) - 2, "maesan24q22.first.left", [-2])
+        _check_curve(curves[1], lambda x: 7 / (x + 2) - 2, "maesan24q22.first.right", [-2])
+        _check_curve(curves[2], lambda x: 7 / (x - 3) + 3, "maesan24q22.second.left", [3])
+        _check_curve(curves[3], lambda x: 7 / (x - 3) + 3, "maesan24q22.second.right", [3])
     elif case_id == "h1-24-maesan-2final-q06-radical-rational-endpoint":
         _check_curve(curves[0], lambda x: -2 + 3 / (x - 2), "maesan24q06.rational")
         _check_curve(curves[1], lambda x: (2 * x) ** 0.5 - 11 / 2, "maesan24q06.radical")
@@ -2838,14 +2924,15 @@ def validate_math(case: dict) -> None:
         for item, fn, label in ((case["spec"]["lines"][0], lambda x: 11 / 3 - 2 * x / 3, "hyocheon22q16.AB"), (case["spec"]["lines"][1], lambda x: 5 * x - 19, "hyocheon22q16.BC"), (case["spec"]["lines"][2], lambda x: 3 + 3 * (x - 1) / 4, "hyocheon22q16.CA")):
             _check_curve({"points": [item["from"], item["to"]]}, fn, label)
     elif case_id == "h1-22-geumdang-2final-q17-rational-radical-two-intersections":
-        _check_curve(curves[0], lambda x: 2 * x / (x - 1), "geumdang22q17.rational")
-        _check_curve(curves[1], lambda x: x ** 0.5, "geumdang22q17.radical")
+        _check_curve(curves[0], lambda x: 2 * x / (x - 1), "geumdang22q17.rational.left", [1])
+        _check_curve(curves[1], lambda x: 2 * x / (x - 1), "geumdang22q17.rational.right", [1])
+        _check_curve(curves[2], lambda x: x ** 0.5, "geumdang22q17.radical")
         for point in case["spec"]["points"]:
             _close(point["y"], 2 * point["x"] / (point["x"] - 1), f"geumdang22q17.rational.{point['label']}")
             _close(point["y"], point["x"] ** 0.5, f"geumdang22q17.radical.{point['label']}")
     elif case_id == "h1-23-gangnam-2final-q20-translated-reciprocal-area":
-        _check_curve(curves[0], lambda x: 6 / x, "gangnam23q20.f")
-        _check_curve(curves[1], lambda x: 6 / (x - 2), "gangnam23q20.g")
+        _check_curve(curves[0], lambda x: 6 / x, "gangnam23q20.f", [0])
+        _check_curve(curves[1], lambda x: 6 / (x - 2), "gangnam23q20.g", [2])
         for item, fn, label in ((case["spec"]["segments"][0], lambda x: 6, "gangnam23q20.AB"), (case["spec"]["segments"][1], lambda x: 2, "gangnam23q20.CD")):
             _check_curve({"points": [item["from"], item["to"]]}, fn, label)
     elif case_id == "h1-23-gangnam-2final-q22-radical-range-from-rational-graph":
@@ -2857,8 +2944,10 @@ def validate_math(case: dict) -> None:
         for item, fn, label in zip(case["spec"]["segments"], piece_functions, ("piece1", "piece2", "piece3")):
             _check_curve({"points": [item["from"], item["to"]]}, fn, f"jeil25q18.{label}")
     elif case_id == "h1-21-gangnam-2final-q12-reciprocal-segment-sum":
-        for index, fn in enumerate((lambda x: 4 / x, lambda x: 4 / x, lambda x: 4 / (x + 1), lambda x: 4 / (x + 1))):
-            _check_curve(curves[index], fn, f"gangnam21q12.curve{index}")
+        _check_curve(curves[0], lambda x: 4 / x, "gangnam21q12.f.left", [0])
+        _check_curve(curves[1], lambda x: 4 / x, "gangnam21q12.f.right", [0])
+        _check_curve(curves[2], lambda x: 4 / (x + 1), "gangnam21q12.g.left", [-1])
+        _check_curve(curves[3], lambda x: 4 / (x + 1), "gangnam21q12.g.right", [-1])
     elif case_id == "h1-21-gangnam-2final-q13-radical-signs-endpoint":
         _check_curve(curves[0], lambda x: (-2 * x + 6) ** 0.5 - 1, "gangnam21q13.radical")
     elif case_id == "h1-21-gangnam-2final-q22-rational-inverse-asymptotes":
@@ -2880,17 +2969,34 @@ def validate_math(case: dict) -> None:
 
     x_low, x_high = case["spec"]["xRange"]
     y_low, y_high = case["spec"]["yRange"]
+    vertical_asymptotes = [float(item["x"]) for item in case["spec"].get("asymptotes", []) if "x" in item]
     for group_name in ("curves", "lines", "segments"):
         for item in case["spec"].get(group_name, []):
             points = item.get("points", []) if group_name == "curves" else [item.get("from"), item.get("to")]
+            if group_name == "curves" and points:
+                curve_xs = [float(point["x"]) for point in points]
+                dense_label = str(item.get("_dense_label", ""))
+                is_rational_branch = (
+                    "rational" in dense_label
+                    or "hyperbola" in dense_label
+                    or (case["visualKind"] == "RATIONAL_GRAPH" and "radical" not in dense_label and "line" not in dense_label)
+                )
+                if is_rational_branch:
+                    curve_asymptotes = item.get("_dense_vertical_asymptotes", vertical_asymptotes)
+                    for asymptote in curve_asymptotes:
+                        if min(curve_xs) <= asymptote <= max(curve_xs):
+                            raise AssertionError(f"{case_id}: curve branch crosses vertical asymptote x={asymptote}")
             for point in points:
                 if point is None:
                     continue
-                if not x_low <= point["x"] <= x_high or not y_low <= point["y"] <= y_high:
+                if not x_low - 1e-6 <= point["x"] <= x_high + 1e-6 or not y_low - 1e-6 <= point["y"] <= y_high + 1e-6:
                     raise AssertionError(f"{case_id}: {group_name} point outside range: {point}")
     for point in case["spec"].get("points", []):
-        if not x_low <= point["x"] <= x_high or not y_low <= point["y"] <= y_high:
+        if not x_low - 1e-6 <= point["x"] <= x_high + 1e-6 or not y_low - 1e-6 <= point["y"] <= y_high + 1e-6:
             raise AssertionError(f"{case_id}: marked point outside range: {point}")
+    for curve in curves:
+        curve.pop("_dense_label", None)
+        curve.pop("_dense_vertical_asymptotes", None)
 
 
 def main() -> None:
@@ -2916,6 +3022,8 @@ def main() -> None:
             "factHash": graph_hash,
             "assetSha256": hashlib.sha256(svg.encode("utf-8")).hexdigest(),
             "bytes": len(svg.encode("utf-8")),
+            "curveSampleCounts": [len(curve.get("points", [])) for curve in case["spec"].get("curves", [])],
+            "denseSamplePolicy": "rational/asymptote branch >=300; other curve >=200",
             "status": "PASS",
         })
     output = ROOT / "docs" / "reports" / "function-family-20260903" / "function_family_pilot_graphs.json"

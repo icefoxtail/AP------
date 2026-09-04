@@ -23,6 +23,11 @@ function sha256(value) {
   return crypto.createHash('sha256').update(value).digest('hex');
 }
 
+function sampleCountFromPolyline(points) {
+  const numbers = String(points).trim().split(/[\s,]+/).filter(Boolean).map(Number);
+  return numbers.length >= 4 && numbers.length % 2 === 0 ? numbers.length / 2 : 0;
+}
+
 function readIndex() {
   return loadWindow(INDEX_PATH, INDEX_PATH).questionIndex || [];
 }
@@ -49,7 +54,16 @@ function checkSvg(row) {
   if (!provenanceMatch || provenanceMatch[1] !== PROVENANCE) errors.push('provenance-mismatch');
   if (/<\/?(?:script|foreignObject)\b/i.test(raw)) errors.push('unsafe-svg-element');
   if (/(?:정답|answer|choice|보기)/iu.test(raw)) errors.push('answer-leak-token');
-  return { caseId: row.caseId, assetRef: row.assetRef, bytes: Buffer.byteLength(raw), assetSha256: sha256(raw), status: errors.length ? 'FAIL' : 'PASS', errors };
+  if (/<br\b/i.test(raw)) errors.push('br-element');
+  if (/\\(?:frac|sqrt|begin|end|left|right)|\$(?:[^$]|\$)+\$/i.test(raw)) errors.push('latex-token');
+  const polylineSampleCounts = [...raw.matchAll(/<polyline\b[^>]*\bpoints="([^"]+)"/gi)].map((match) => sampleCountFromPolyline(match[1]));
+  const expectedCurveSampleCounts = Array.isArray(row.curveSampleCounts) ? row.curveSampleCounts : [];
+  if (polylineSampleCounts.length !== expectedCurveSampleCounts.length) errors.push('curve-polyline-count-mismatch');
+  if (polylineSampleCounts.some((count, index) => count !== expectedCurveSampleCounts[index])) errors.push('curve-polyline-sample-count-mismatch');
+  const minimum = row.visualKind === 'RATIONAL_GRAPH' ? 300 : 200;
+  const densityFailures = expectedCurveSampleCounts.flatMap((count, index) => count > 0 && count < minimum ? [{ index, count, minimum }] : []);
+  if (densityFailures.length) errors.push('sample-density-below-policy');
+  return { caseId: row.caseId, assetRef: row.assetRef, bytes: Buffer.byteLength(raw), assetSha256: sha256(raw), curveSampleCounts: polylineSampleCounts, expectedCurveSampleCounts, minimumCurveSampleCount: minimum, densityFailures, status: errors.length ? 'FAIL' : 'PASS', errors };
 }
 
 function main() {
@@ -90,27 +104,32 @@ function main() {
 
   const sourceSolutionImageCount = targetRows.filter((row) => sourceByKey.get(`${row.sourceFile}_${row.id}`)?.solutionImage).length;
   const preexistingSolutionImageCount = sourceSolutionImageCount - ledger.cases.length;
+  const densityChecks = ledger.cases.map((row, index) => ({ caseId: row.caseId, visualKind: row.visualKind, expected: row.curveSampleCounts || [], actual: svgChecks[index].curveSampleCounts || [], minimum: row.visualKind === 'RATIONAL_GRAPH' ? 300 : 200, status: svgChecks[index].densityFailures?.length ? 'FAIL' : 'PASS' }));
   const output = {
-    reportType: 'FUNCTION_FAMILY_VISUAL_CONTRACT_VERIFICATION',
+    reportType: 'FUNCTION_FAMILY_VISUAL_CONTRACT_VERIFICATION_V2',
     generatedAt: new Date().toISOString(),
-    status: targetRows.length === 522 && sourceChecks.every((row) => row.status === 'PASS') && ledger.status === 'PASS' && ledger.cases.length > 0 && svgChecks.every((row) => row.status === 'PASS') && ledgerSourceChecks.every((row) => row.status === 'PASS') && duplicateCaseIds.length === 0 && duplicateAssetRefs.length === 0 && preexistingSolutionImageCount >= 0 ? 'VISUAL_CONTRACT_PASS' : 'VISUAL_CONTRACT_FAIL',
+    status: targetRows.length === 522 && sourceChecks.every((row) => row.status === 'PASS') && ledger.status === 'PASS' && ledger.cases.length > 0 && svgChecks.every((row) => row.status === 'PASS') && densityChecks.every((row) => row.status === 'PASS') && ledgerSourceChecks.every((row) => row.status === 'PASS') && duplicateCaseIds.length === 0 && duplicateAssetRefs.length === 0 && preexistingSolutionImageCount >= 0 ? 'VISUAL_CONTRACT_PASS' : 'VISUAL_CONTRACT_FAIL',
     targetCount: targetRows.length,
     targetSourceFileCount: sourceCache.size,
     sourceRuntime: { status: sourceChecks.every((row) => row.status === 'PASS') ? 'PASS' : 'FAIL', pass: sourceChecks.filter((row) => row.status === 'PASS').length, total: sourceChecks.length, failures: sourceChecks.filter((row) => row.status === 'FAIL') },
     graphLedger: { status: ledger.status, cases: ledger.cases.length, pass: ledger.cases.filter((row) => row.status === 'PASS').length, sourceSolutionImageCount, preexistingSolutionImageCount },
     svgContract: { status: svgChecks.every((row) => row.status === 'PASS') ? 'PASS' : 'FAIL', pass: svgChecks.filter((row) => row.status === 'PASS').length, total: svgChecks.length, failures: svgChecks.filter((row) => row.status === 'FAIL'), duplicateCaseIds, duplicateAssetRefs },
+    densityGate: { status: densityChecks.every((row) => row.status === 'PASS') ? 'PASS' : 'FAIL', pass: densityChecks.filter((row) => row.status === 'PASS').length, total: densityChecks.length, failures: densityChecks.filter((row) => row.status === 'FAIL'), policy: 'RATIONAL_GRAPH curves >=300 points per branch; other nonlinear curves >=200 points' },
     sourceAttachmentParity: { status: ledgerSourceChecks.every((row) => row.status === 'PASS') ? 'PASS' : 'FAIL', pass: ledgerSourceChecks.filter((row) => row.status === 'PASS').length, total: ledgerSourceChecks.length, failures: ledgerSourceChecks.filter((row) => row.status === 'FAIL') },
     forbiddenTokenPolicy: 'SVG must not contain script, foreignObject, answer, choice, 보기, or 정답 tokens.',
-    interpretation: 'This verifies generated visual assets and their source/index contracts. It does not by itself adjudicate VISUAL_REQUIRED versus OPTIONAL/EXEMPT for the remaining no-image questions.',
+    interpretation: 'This verifies generated visual assets, actual SVG polyline density, and source/index contracts. It does not by itself adjudicate VISUAL_REQUIRED versus OPTIONAL/EXEMPT for no-image questions.',
   };
   fs.mkdirSync(REPORT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(REPORT_DIR, 'function_family_visual_contract_v1.json'), JSON.stringify(output, null, 2) + '\n', 'utf8');
-  fs.writeFileSync(path.join(REPORT_DIR, 'function_family_visual_contract_v1.md'), [
-    '# Function-family visual contract verification', '',
+  const outputPath = path.resolve(process.argv[2] || path.join(REPORT_DIR, 'function_family_visual_contract_v1.json'));
+  const summaryPath = outputPath.replace(/\.json$/i, '.md');
+  fs.writeFileSync(outputPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(summaryPath, [
+    '# Function-family visual contract verification v2', '',
     `- 상태: **${output.status}**`,
     `- target: ${output.targetCount}문항 / ${output.targetSourceFileCount} source JS`,
     `- graph ledger: ${output.graphLedger.pass}/${output.graphLedger.cases} PASS`,
     `- SVG contract: ${output.svgContract.pass}/${output.svgContract.total} PASS`,
+    `- dense sampling gate: ${output.densityGate.pass}/${output.densityGate.total} PASS`,
     `- source attachment parity: ${output.sourceAttachmentParity.pass}/${output.sourceAttachmentParity.total} PASS`,
     '',
     output.interpretation,
