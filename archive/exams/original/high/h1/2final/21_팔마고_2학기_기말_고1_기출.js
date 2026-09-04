@@ -160,7 +160,8 @@ window.questionBank = [
     "tags": [
       "유리함수",
       "역함수",
-      "평행이동"
+      "평행이동",
+      "그래프"
     ],
     "wide": false,
     "content": "유리함수 $f(x)=\\dfrac{3x+1}{x-2}$에 대하여 $y=f(x)$의 그래프를 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동하면 $y=f^{-1}(x)$의 그래프와 일치한다고 한다. 이때, $a,b$의 곱 $ab$의 값은? [4.9점]",
@@ -625,7 +626,8 @@ window.questionBank = [
       "무리함수",
       "직선",
       "교점의개수",
-      "표"
+      "표",
+      "그래프"
     ],
     "wide": false,
     "content": "서술형2. 무리함수 $y=\\sqrt{4x-8}$의 그래프와 직선 $y=x+k$가 한 점에서 만나기 위한 실수 $k$값의 범위를 채점기준에 알맞게 구하시오. [7점]<table class=\"question-table\"><thead><tr><th>단계</th><th>채점기준</th><th>부분점수</th></tr></thead><tbody><tr><td>i</td><td>무리함수와 직선의 그래프를 한 좌표평면에 그린 경우</td><td>2</td></tr><tr><td>ii</td><td>곡선과 직선이 점 $(a,0)$에서 만날 때의 $k$의 값을 이용하여 곡선과 직선이 한 점에서 만나기 위한 $k$의 값의 범위를 구한 경우</td><td>2</td></tr><tr><td>iii</td><td>곡선과 직선이 접하는 경우 $k$값을 구한 경우</td><td>2</td></tr><tr><td>iv</td><td>$k$의 값의 범위를 구한 경우</td><td>1</td></tr></tbody></table>",

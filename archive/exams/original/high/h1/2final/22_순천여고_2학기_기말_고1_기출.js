@@ -196,7 +196,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{-2x+k-2}{x+1}$의 그래프가 좌표평면 위의 모든 사분면을 지나도록 하는 자연수 $k$의 최솟값은? [3.9점]",
@@ -230,7 +231,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{x}{x-2}$의 그래프가 직선 $y=-2x+k$와 만나지 않도록 하는 정수 $k$의 최댓값은? [3.9점]",
@@ -422,7 +424,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "두 함수 $y=\\sqrt{ax}-3$, $y=\\sqrt{-ax+9}$ $(a\\gt0)$의 그래프와 $y$축으로 둘러싸인 도형의 넓이가 $\\dfrac92$일 때, 상수 $a$의 값은? [4.1점]",
@@ -616,7 +619,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "1보다 큰 실수 $a$에 대하여 직선 $x=a$가 두 함수 $y=\\dfrac1{x-1}$, $y=-x$의 그래프와 만나는 점을 각각 $P,Q$, 점 $P$에서 $x$축에 평행한 직선이 $y=-x$와 만나는 점을 $R$이라고 하자. 삼각형 $PQR$의 넓이의 최솟값은? [4.5점]",
@@ -655,7 +659,8 @@ window.questionBank=[
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "서술형1<br>함수 $y=\\sqrt{ax+b}+c$의 그래프를 $x$축의 방향으로 2만큼, $y$축 방향으로 $-1$만큼 평행이동 한 후, $x$축에 대하여 대칭이동 하였더니 함수 $y=-\\sqrt{2x-5}+3$의 그래프와 일치하였다. 이때, 상수 $a,b,c$의 값을 각각 구하시오. [6점]",
@@ -765,3 +770,12 @@ for (const question of window.questionBank) {
 Object.assign(window.questionBank[4], { image: "assets/images/22_순천여고_2학기_기말_고1_기출/q5.png", tags:["유리함수","그래프"] });
 Object.assign(window.questionBank[11], { image: "assets/images/22_순천여고_2학기_기말_고1_기출/q12.png", tags:["무리함수","그래프"] });
 Object.assign(window.questionBank[16], { image: "assets/images/22_순천여고_2학기_기말_고1_기출/q17.png", tags:["무리함수","도형","그래프"] });
+
+for (const question of window.questionBank) {
+  if (["H15-SB-03", "H15-SB-04", "H15-SB-05", "H22-C2-07", "H22-C2-08", "H22-C2-09"].includes(question.standardUnitKey)
+    && typeof question.solutionImage === "string"
+    && question.solutionImage.endsWith(".svg")
+    && !question.tags.includes("그래프")) {
+    question.tags = [...question.tags, "그래프"];
+  }
+}

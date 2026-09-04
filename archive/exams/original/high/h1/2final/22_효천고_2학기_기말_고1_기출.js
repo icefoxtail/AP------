@@ -101,7 +101,8 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "유리함수 $y=\\dfrac{2-5x}{x-1}$의 그래프가 두 직선 $y=-x+a$, $y=x+b$에 대하여 대칭일 때, 상수 $a+b$의 값은? [3.6점]",
@@ -139,7 +140,8 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\sqrt{a+x}$의 역함수의 그래프가 점 $(5,3)$을 지날 때, 상수 $a$의 값은? [3.7점]",
@@ -450,7 +452,8 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{k-2}{x+4}+\\dfrac13$의 그래프는 모든 사분면을 지나고, 함수 $y=\\dfrac{2x+k}{x+1}$의 그래프는 제4사분면을 지나지 않도록 하는 실수 $k$의 값의 범위는? (단, $k\\ne2$) [4.7점]",
@@ -488,7 +491,8 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "무리함수 $f(x)=\\sqrt{-x+k}$에 대하여 좌표평면에 곡선 $y=f(x)$와 세 점 $A(1,3)$, $B(4,1)$, $C(5,6)$을 꼭짓점으로 하는 삼각형 $ABC$가 있다. 곡선 $y=f(x)$와 함수 $f(x)$의 역함수의 그래프가 삼각형 $ABC$와 만나도록 하는 실수 $k$의 최댓값은? [4.8점]",
@@ -558,7 +562,8 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\sqrt{6-2x}-1$의 그래프의 정의역과 치역을 각각 구하고 그 과정을 서술하시오. [4점]",
@@ -658,7 +663,8 @@ window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{ax+b}{x-2}$가 다음 조건을 만족시킨다.<div class=\"note-box\">(가) $x\\ne2$인 모든 실수 $x$에 대하여 $f(f(x))=x$이다.<br>(나) 함수 $y=f(x)$의 그래프와 직선 $y=x$가 만나는 두 점 사이의 거리는 $2\\sqrt6$이다.</div>$f(5)$의 값을 구하고 그 과정을 자세히 서술하시오. (단, $a,b$는 상수이다.) [8점]",
