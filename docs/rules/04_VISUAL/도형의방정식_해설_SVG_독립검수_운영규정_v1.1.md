@@ -12,6 +12,16 @@
 typography, sampling, label 배치, axis scale, preset 및 인쇄 출판 gate의 세부 기준은
 최신 `도형추출.md` v3.0을 canonical source로 참조하며, 이 문서에서 별도 수치로 재정의하지 않는다.
 
+도형·기하·입체도형 SVG도 같은 VISUAL v3.0의 공통 인쇄 원칙을 상속한다. 즉 safe area와
+margin, physical print target 운영 원칙, normal stroke scaling, SVG root contract,
+typography·math italic·U+2212, grayscale invariant, style metadata, style lint와 golden-set
+운영 구조를 공유한다. z-order는 geometry layer에 맞게 재배치할 수 있지만 공통 원칙을
+override하지 않는다.
+
+geometry-specific stroke·label·indicator·hatching·circle·auxiliary line·scale honesty·
+3D·hybrid 규칙과 `GEOMETRY_STYLE_LINT_PASS`, `GEOMETRY_PRINT_PUBLICATION_GATE`의 상세
+contract는 최신 `도형추출.md` v3.0에만 둔다.
+
 이 규정의 최우선 목표는 다음 두 가지다.
 
 1. 해설의 중간 논리 생략을 제거한다.
@@ -283,6 +293,10 @@ assets/images/<exam-title>/q02-solution.svg
 - 안전여백 확보
 - viewBox 명확히 지정
 
+위 항목은 이 단원 규정의 요약 원칙이다. geometry-specific stroke hierarchy, label 배치,
+indicator, auxiliary line, hatching·shading, circle·arc, scale honesty, 3D 및 hybrid의
+세부 token과 수치는 `도형추출.md` v3.0만 따른다.
+
 ### 5-3. 금지 요소
 - 외부 폰트 의존
 - 외부 이미지 참조
@@ -453,6 +467,19 @@ SVG를 기존 solution과만 비교하지 않는다.
 
 문제와 해설이 동시에 잘못된 경우에도 `문제 ↔ SVG` 직접 검수에서 잡히도록 한다.
 
+### V2-1. Geometry / hybrid / 3D SVG 검수
+
+도형 SVG는 graph 규칙만으로 검수하지 않는다. geometry 사실과 시각 문법을 독립적으로
+확인하고, 최신 `도형추출.md` v3.0의 geometry style lint 및 publication gate 결과를
+기록한다.
+
+- 평면도형: main/secondary/auxiliary/indicator 의미, vertex·edge·angle·region label을 확인한다.
+- 지시기호: 직각·각·합동·평행 표기가 문제의 조건과 일치하고 서로 혼동되지 않는지 확인한다.
+- 음영·빗금: 흑백 렌더에서 영역 구분을 보존하고 핵심 선·라벨을 가리지 않는지 확인한다.
+- 3D: visible/hidden line, clipping·occlusion 및 label 겹침을 확인한다.
+- hybrid: 좌표축·tick·축척은 graph 규칙, 선·원·점·라벨·indicator는 geometry 규칙을
+  적용하며 두 규칙의 composite 결과를 기록한다.
+
 ### V3. 엔진·파일·렌더 검수
 검사:
 - node --check
@@ -481,6 +508,13 @@ AND
 V2 PASS
 AND
 V3 PASS
+AND
+geometry가 있으면
+GEOMETRY_MATH_PASS
+AND GEOMETRY_SEMANTIC_PASS
+AND GEOMETRY_STYLE_LINT_PASS
+AND GEOMETRY_PRINT_PUBLICATION_PASS
+AND GEOMETRY_RENDER_PASS
 = EXAM PASS
 ```
 

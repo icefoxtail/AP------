@@ -7,7 +7,7 @@
 
 ---
 
-> **현재 운영 부록:** 이 룰북의 기존 기본 스키마·기출·렌더링 원칙은 유지하되, 신규 아카이브 JS의 세부단원 계약은 [`JS아카이브_세부단원_운영규칙_v1.md`](JS아카이브_세부단원_운영규칙_v1.md)를 함께 적용한다. 기존 JS의 누락 필드는 legacy 예외로만 허용하며 신규 파일의 기본값으로 복사하지 않는다. `types`·`similar` DB 카드의 source-dependent 필드 보류 기준은 아래 4-4를 따른다. 함수·좌표 그래프의 세부 style token과 sampling 정책은 [`04_VISUAL/도형추출.md`](../04_VISUAL/도형추출.md) v3.0을 따른다.
+> **현재 운영 부록:** 이 룰북의 기존 기본 스키마·기출·렌더링 원칙은 유지하되, 신규 아카이브 JS의 세부단원 계약은 [`JS아카이브_세부단원_운영규칙_v1.md`](JS아카이브_세부단원_운영규칙_v1.md)를 함께 적용한다. 기존 JS의 누락 필드는 legacy 예외로만 허용하며 신규 파일의 기본값으로 복사하지 않는다. `types`·`similar` DB 카드의 source-dependent 필드 보류 기준은 아래 4-4를 따른다. 함수·좌표 그래프와 도형 SVG의 세부 style token·sampling·indicator·hatching·3D 정책은 [`04_VISUAL/도형추출.md`](../04_VISUAL/도형추출.md) v3.0을 따른다.
 
 ## 0. 한 줄 원칙
 
@@ -69,7 +69,7 @@
 - **기존 `content` 내부 SVG/img/table이 있다고 해서 자동으로 `image` 필드로 분리하지 않는다.**
 - **`image` 필드와 `content` 내부 `<img>`를 동시에 사용하는 것은 원칙적으로 지양한다.**
 
-## 0-2-2. 그래프 출판품질 상위 원칙
+## 0-2-2. 그래프·도형 출판품질 상위 원칙
 
 - 함수·좌표 그래프 신규 생성 또는 수정은 최신 [`04_VISUAL/도형추출.md`](../04_VISUAL/도형추출.md)
   표·도형·그래프 생성 프로토콜을 따른다.
@@ -80,6 +80,11 @@
   않고 해당 문서를 참조한다.
 - `GRAPH_STYLE_LINT_PASS`의 검사 대상·`PASS`/`FAIL`/`NOT_TESTED` contract는
   `04_VISUAL/도형추출.md` v3.0에만 정의한다.
+- 도형·기하·입체도형 SVG는 `GEOMETRY_PRINT_PUBLICATION_GATE`와
+  `GEOMETRY_STYLE_LINT_PASS`를 추가로 통과해야 한다.
+- 좌표평면 위 도형은 `COORDINATE_GEOMETRY_HYBRID_RULE`에 따라 그래프와 geometry
+  규칙을 함께 적용한다. 좌표축·tick·축척은 graph, 선·원·점·라벨·indicator는 geometry
+  규칙을 우선한다.
 - 그래프가 있는 최종 visual PASS는 다음 composite 조건을 모두 만족해야 한다.
 
 ```text
@@ -91,7 +96,7 @@ AND GRAPH_RENDER_PASS
 ```
 
 - 이번 규칙 업그레이드는 기존 production JS/SVG/PNG의 일괄 migration을 의미하지 않는다.
-  규칙 확정 → 외부 독립검수 → 30개 대표 그래프 Pilot → style token freeze → production
+  규칙 확정 → 외부 독립검수 → 대표 그래프·도형 Pilot → style token freeze → production
   migration 순서를 지킨다.
 
 ---
@@ -1410,8 +1415,8 @@ Gemini에게 작업 지시 시 아래 원칙을 명시해야 한다.
 
 #### SVG 내부 규칙
 
-그래프의 root·canvas·stroke·typography·sampling·label·arrow·z-order·축척 및 출판 gate는
-`04_VISUAL/도형추출.md` v3.0을 canonical source로 삼는다. 룰북은 아래 구조 원칙만
+그래프·도형 SVG의 root·canvas·stroke·typography·sampling·label·indicator·hatching·
+3D·z-order·축척 및 출판 gate는 `04_VISUAL/도형추출.md` v3.0을 canonical source로 삼는다. 룰북은 아래 구조 원칙만
 상위 규칙으로 유지하고 세부 수치를 복제하지 않는다.
 
 **[SVG-0] SVG root**
