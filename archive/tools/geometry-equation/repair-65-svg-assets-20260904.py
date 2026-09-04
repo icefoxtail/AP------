@@ -285,7 +285,7 @@ def build(folder: str, qid: int) -> tuple[str, dict]:
         fact = {"O1": op, "O2": [om, om2], "radius": 13, "chordLength": 24}
         return svg_doc(folder, qid, "두 원의 공통현", fact, plot, body, ["r=13, AB=24", "중심거리 d=10", "a=−2±4√6", "각 공통현의 반길이=12"])
     if key == ("21_순천고_2학기_중간_고1_기출", 20):
-        return circle_line(folder, qid, "원둘레를 이등분하는 대칭 직선", (-2, 5), math.sqrt(129), (1, 1, -3), [(-2, 5, "C(−2,5)")], ["x+y+3=0의 원점 대칭", "대칭 후 직선: x+y−3=0", "C=(−2,5)가 직선 위"], (-15, 12), (-8, 16), [((-2, 5), foot(1, 1, -3, -2, 5), "#dc2626")])
+        return circle_line(folder, qid, "원둘레를 이등분하는 대칭 직선", (-2, 5), math.sqrt(129), (1, 1, -3), [(-2, 5, "C(−2,5)")], ["x+y+3=0의 원점 대칭", "대칭 후 직선: x+y−3=0", "C=(−2,5)가 직선 위"], (-16, 13), (-9, 18), [((-2, 5), foot(1, 1, -3, -2, 5), "#dc2626")])
     # 2021: 제일고
     if key == ("21_제일고_2학기_중간_고1_기출", 18):
         H = (1, 5)
@@ -393,7 +393,7 @@ def build(folder: str, qid: int) -> tuple[str, dict]:
         fact = {"center": O, "radius": r, "externalPoint": P, "contactChord": line, "contactPoints": [Q1, Q2]}
         return svg_doc(folder, qid, "접점 현 PQ와 두 접선", fact, plot, body, ["접촉현: 4x+3y−5=0", "Q₁=(−2/5,11/5)", "Q₂=(2,−1)", "a+b+c=−4"])
     if key == ("24_금당고_1학기_기말_고1_기출", 16):
-        centers = [(3, 15), (-3, -3), (-1, 3)]; plot = Plot((-8, 7), (-7, 18)); body = [plot.line(3, -1, 6, "#dc2626", 2.1)]
+        centers = [(3, 15), (-3, -3), (-1, 3)]; plot = Plot((-8, 7), (-7, 20)); body = [plot.line(3, -1, 6, "#dc2626", 2.1)]
         for i, (x, y) in enumerate(centers, 1):
             body += [plot.circle(x, y, 3, "#2563eb", "#dbeafe", "5 4"), plot.point(x, y, f"C{i}")]
         fact = {"locus": "y=3x+6", "radius": 3, "centers": centers, "axisTangency": True}
@@ -412,11 +412,11 @@ def build(folder: str, qid: int) -> tuple[str, dict]:
         fact = {"center": O, "radius": r, "externalPoint": P, "contactChord": line, "contactPoints": [Q1, Q2], "slopeProduct": 1 / 7}
         return svg_doc(folder, qid, "점 P에서 그은 두 접선의 접촉현", fact, plot, body, ["원: x²+y²=1/2", "접촉현: 2x+y−1/2=0", "두 접점은 원주 위", "m₁m₂=1/7"])
     if key == ("24_매산고_1학기_기말_고1_기출", 15):
-        L = (4, 1, -17); C = (-9, 2); plot = Plot((-14, 7), (-8, 9)); body = [plot.line(*L, "#111827", 1.7), plot.circle(*C, 11, "#2563eb", "#dbeafe"), plot.point(4, 1, "H(4,1)", "#dc2626"), plot.point(*C, "C(−9,2)", "#2563eb")]
+        L = (4, 1, -17); C = (-9, 2); plot = Plot((-22, 10), (-12, 16)); body = [plot.line(*L, "#111827", 1.7), plot.circle(*C, 11, "#2563eb", "#dbeafe"), plot.point(4, 1, "H(4,1)", "#dc2626"), plot.point(*C, "C(−9,2)", "#2563eb")]
         fact = {"fixedPoint": (4, 1), "maxDistanceLine": L, "circleCenter": C, "circleRadius": 11, "d": 3 * math.sqrt(17)}
         return svg_doc(folder, qid, "점 (4,1)을 지나는 최대거리 직선", fact, plot, body, ["l: 4x+y−17=0", "C=(−9,2), r=11", "d(C,l)=3√17>11", "mM=32"])
     if key == ("24_매산고_1학기_기말_고1_기출", 17):
-        plot = Plot((-4, 5), (-7, 5)); body = [plot.line(0, 1, 0, "#111827", 1.5), plot.line(1, -1, 0, "#dc2626", 2.1), plot.line(1, 1, 0, "#7c3aed", 1.7, "5 4")]
+        plot = Plot((-5, 8), (-12, 5)); body = [plot.line(0, 1, 0, "#111827", 1.5), plot.line(1, -1, 0, "#dc2626", 2.1), plot.line(1, 1, 0, "#7c3aed", 1.7, "5 4")]
         c1, c2 = (2, 2 * (math.sqrt(2) - 1)), (2, 2 * (-math.sqrt(2) - 1)); body += [plot.circle(*c1, abs(c1[1]), "#2563eb", "#dbeafe"), plot.circle(*c2, abs(c2[1]), "#16a34a", "#dcfce7"), plot.point(*c1, "C₁"), plot.point(*c2, "C₂")]
         fact = {"axes": ["x=0", "y=x"], "centers": [c1, c2], "ratios": [math.sqrt(2) - 1, -math.sqrt(2) - 1]}
         return svg_doc(folder, qid, "x축과 y=x에 동시에 접하는 중심 방향", fact, plot, body, ["|b|=|a−b|/√2", "b/a=√2−1", "b/a=−√2−1", "두 각의 이등분선 방향"])
@@ -573,7 +573,11 @@ def main() -> None:
             out = ASSETS / folder / f"q{qid:02d}-solution.svg"
             if not out.exists():
                 raise FileNotFoundError(out)
-            out.write_text(svg, encoding="utf-8")
+            # Preserve the generated LF bytes on Windows.  The hash below is
+            # an artifact hash, so implicit text-mode CRLF conversion would
+            # make the recorded hash differ from the bytes a browser reads.
+            with out.open("w", encoding="utf-8", newline="") as handle:
+                handle.write(svg)
             meta["bytes"] = len(svg.encode("utf-8"))
             meta["sha256"] = hashlib.sha256(svg.encode("utf-8")).hexdigest()
             rows.append(meta)

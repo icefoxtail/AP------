@@ -22,7 +22,9 @@ const modes = ['exam','sol','ans']; const rowsEl=document.getElementById('rows')
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function addRow(rel, expected, mode){ const tr=document.createElement('tr'); tr.innerHTML=`<td>${rel}</td><td>${mode}</td><td>${expected}</td><td>…</td><td>…</td><td>…</td><td>…</td><td class="RUNNING">RUNNING</td>`; rowsEl.appendChild(tr); return tr; }
 function inspect(doc, mode, expected){
-  doc.defaultView.scrollTo(0, doc.documentElement.scrollHeight);
+  // Keep the inspected page at its native viewport.  Scrolling a hidden
+  // iframe to its document bottom can trigger a renderer crash on long
+  // MathJax pages; the DOM/layout checks below do not require scrolling.
   const nums = mode === 'ans' ? [...doc.querySelectorAll('.ans-n')] : [...doc.querySelectorAll('.q-num')];
   const imgs = [...doc.querySelectorAll('img')];
   const broken = imgs.filter(img => !img.complete || img.naturalWidth <= 0).length;
