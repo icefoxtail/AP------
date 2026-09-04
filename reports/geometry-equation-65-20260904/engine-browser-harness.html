@@ -32,23 +32,21 @@ function inspect(doc, mode, expected){
   const count = nums.length;
   return { count, pages, images: imgs.length, broken, overflow, error, pass: count === expected && broken === 0 && overflow === 0 && !error };
 }
+const frame=document.createElement('iframe'); frame.width=1280; frame.height=900; frame.style.cssText='position:fixed;left:-12000px;top:0;border:0'; framesEl.appendChild(frame);
 async function runMode(rel, expected, mode){
-  const tr=addRow(rel,expected,mode); const frame=document.createElement('iframe'); frame.width=1280; frame.height=900; frame.style.cssText='position:fixed;left:-12000px;top:0;border:0'; framesEl.appendChild(frame);
+  const tr=addRow(rel,expected,mode);
   frame.src='../..' + '/archive/engine.html?mode='+mode+'&qpp=4&data='+encodeURIComponent('exams/original/high/h1/'+rel);
-  await sleep(11000); let result=null;
+  let result=null;
   for(let attempt=0;attempt<4;attempt++){
+    await sleep(2500);
     try{ const doc=frame.contentDocument; if(doc){ result=inspect(doc,mode,expected); if(result.count===expected || attempt===3) break; } }catch(e){ result={count:0,pages:0,images:0,broken:0,overflow:0,error:true,pass:false}; }
-    await sleep(4000);
   }
   result ||= {count:0,pages:0,images:0,broken:0,overflow:0,error:true,pass:false};
   const c=tr.children; c[3].textContent=result.count; c[4].textContent=result.pages; c[5].textContent=`${result.images} (broken ${result.broken})`; c[6].textContent=result.overflow; c[7].textContent=result.pass?'PASS':'FAIL'; c[7].className=result.pass?'PASS':'FAIL';
   results.push({rel,mode,expected,...result}); document.getElementById('summary').textContent=`${results.length}/${cases.length*modes.length} complete · pass ${results.filter(x=>x.pass).length}`;
-  frame.remove();
 }
 async function run(){
-  for(let i=0;i<cases.length;i+=3){
-    const group=cases.slice(i,i+3); await Promise.all(group.flatMap(([rel,expected])=>modes.map(mode=>runMode(rel,expected,mode))));
-  }
+  for(const [rel,expected] of cases) for(const mode of modes) await runMode(rel,expected,mode);
   window.renderResults=results; document.getElementById('summary').textContent=`DONE · ${results.length} modes · pass ${results.filter(x=>x.pass).length} · fail ${results.filter(x=>!x.pass).length}`;
 }
 run();
