@@ -96,10 +96,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "평행이동 $(x,y)\\mapsto(x+a,y+2)$에 의해 점 $(3,5)$가 $(2,b)$로 옮겨진다.\n\n$x$좌표를 비교하면 $3+a=2$이므로 $a=-1$이다.\n$y$좌표를 비교하면 $5+2=b$이므로 $b=7$이다.\n\n따라서\n$a+b=-1+7=6$이므로 정답은 ②이다.\n평행이동 식의 두 좌표를 각각 비교하면 이동량과 도착 좌표가 빠짐없이 결정된다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_2학기_중간_고1_기출/q03-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 3의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -235,8 +239,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -452,8 +456,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 13의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -698,8 +702,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 20의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

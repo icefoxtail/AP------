@@ -28,10 +28,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 평행이동에서는 각 좌표에 이동한 방향과 크기를 그대로 더한다.\n조건 정리: $x$축의 양의 방향으로 $2$, $y$축의 양의 방향으로 $3$만큼 이동한다.\n풀이 방향: 점 $(1,2)$의 $x$좌표와 $y$좌표에 각각 이동량을 더한다.\n정석 풀이: 이동한 점의 좌표는 $(1+2,\\,2+3)=(3,5)$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -287,10 +291,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 그래프를 오른쪽으로 $1$, 아래로 $2$만큼 옮기면 식의 $x$에는 $x-1$을 넣고 전체에서 $2$를 뺀다.\n조건 정리: 원래 직선은 $y=2x+k$이다.\n풀이 방향: 평행이동한 직선의 방정식을 만든 뒤 점 $(3,1)$을 대입한다.\n정석 풀이: 평행이동한 직선은 $y=2(x-1)+k-2=2x+k-4$이다. 이 직선이 $(3,1)$을 지나므로 $1=2\\cdot3+k-4$이다. 따라서 $1=2+k$이고 $k=-1$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 9의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
