@@ -620,11 +620,29 @@ function generatorParity() {
 
 function sourcePackStatus() {
   const manifest = path.join(ROOT, 'docs', 'rules', 'MANIFEST.md');
+  if (!fs.existsSync(manifest)) return { status: 'SOURCE_PACK_DRIFT', reason: 'MANIFEST.md is missing' };
+  const manifestText = read(manifest);
+  const failures = [];
+  const entries = [...manifestText.matchAll(/^- (.+?) \| (\d+) bytes \| sha256 ([0-9a-f]{64})$/gm)]
+    .map((match) => ({ relativePath: match[1], expectedBytes: Number(match[2]), expectedSha256: match[3] }));
+  for (const entry of entries) {
+    const file = path.join(ROOT, 'docs', 'rules', entry.relativePath);
+    if (!fs.existsSync(file)) {
+      failures.push({ path: entry.relativePath, reason: 'MISSING' });
+      continue;
+    }
+    const actualBytes = fs.statSync(file).size;
+    const actualSha256 = sha256(read(file));
+    if (actualBytes !== entry.expectedBytes || actualSha256 !== entry.expectedSha256) failures.push({ path: entry.relativePath, reason: 'DRIFT', actualBytes, actualSha256, expectedBytes: entry.expectedBytes, expectedSha256: entry.expectedSha256 });
+  }
+  const commonProtocol = entries.some((entry) => entry.relativePath === '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md');
   return {
-    status: 'SOURCE_PACK_DRIFT',
-    evidence: 'repository visual/archive audit records current manifest hash drift for the canonical rules/master files; this verifier does not silently convert it to PASS',
-    manifestExists: fs.existsSync(manifest),
-    manifestSha256: fs.existsSync(manifest) ? sha256(read(manifest)) : null,
+    status: failures.length || !commonProtocol ? 'SOURCE_PACK_DRIFT' : 'PASS',
+    manifestExists: true,
+    manifestSha256: sha256(manifestText),
+    entryCount: entries.length,
+    commonProtocolListed: commonProtocol,
+    failures,
   };
 }
 
