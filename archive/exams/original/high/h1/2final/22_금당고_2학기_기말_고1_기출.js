@@ -630,8 +630,8 @@ window.questionBank = [
   {
     "id": 18,
     "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "원문 조건의 문제점을 점검하고 양의 정수 조건을 추가한 경우 n=9에서 두 그래프가 접하는 좌표 그래프",
-    "solutionImageCaption": "원문 ‘정수 n’은 값이 하나로 정해지지 않으며, 출제 의도대로 양의 정수 조건을 추가하면 n=9",
+    "solutionImageAlt": "양의 정수 n=9에서 두 그래프가 (3,3)에서 접하는 좌표 그래프",
+    "solutionImageCaption": "양의 정수 n=9일 때 두 그래프는 (3,3)에서 접하여 교점이 하나이다.",
     "solutionImageSize": "full",
     "level": "상",
     "category": "두 그래프의 교점",
