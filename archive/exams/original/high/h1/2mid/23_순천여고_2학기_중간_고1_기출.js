@@ -20,7 +20,7 @@ window.questionBank = [
       "복수정답"
     ],
     "wide": false,
-    "content": "$A=\\{1,a,b+1\\}$, $B=\\{2,5,b\\}$이고 두 집합에 대하여 $A-B=\\varnothing$일 때, $a+b$의 값은? [3.6점]",
+    "content": "$A=\\{1,a,b+1\\}$, $B=\\{2,5,b\\}$이고 두 집합에 대하여 $A-B=\\varnothing$일 때, $a+b$의 값으로 가능한 것을 모두 고르면? [3.6점]",
     "choices": [
       "$2$",
       "$3$",
@@ -483,8 +483,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $B_4\\cup X=B_4$는 $X\\subset B_4$라는 뜻이고, $B_3\\cap X\\ne\\varnothing$은 $X$가 $3$의 배수를 적어도 하나 포함한다는 뜻이다.\n조건 정리: $U=\\{1,2,\\ldots,24\\}$이고 $X\\subset B_4$이다.\n풀이 방향: $B_4$의 원소 중 $B_3$에도 속하는 원소를 찾고, 전체 부분집합에서 조건을 만족하지 않는 경우를 뺀다.\n정석 풀이:\n$B_4=\\{4,8,12,16,20,24\\}$이므로 원소는 $6$개이다. 이 가운데 $3$의 배수인 원소는 $12,24$이다.\n$X$는 $B_4$의 부분집합이면서 $12,24$ 중 적어도 하나를 포함해야 한다.\n$B_4$의 부분집합은 $2^6=64$개이고, $12,24$를 모두 포함하지 않는 부분집합은 나머지 $4$개 원소만으로 이루어지므로 $2^4=16$개이다.\n따라서 조건을 만족하는 $X$는 $64-16=48$개이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SB-01-SET_BASIC",
-    "subUnit": "집합의 뜻과 표현",
+    "subUnitKey": "H15-SB-01-SET_COUNT",
+    "subUnit": "집합의 원소의 개수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
