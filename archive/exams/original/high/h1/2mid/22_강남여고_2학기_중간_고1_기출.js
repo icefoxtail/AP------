@@ -261,8 +261,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 합이 일정한 두 양수의 곱은 두 수가 같을 때 최대가 된다.\n조건 정리: $2a>0$, $5b>0$이고 두 수의 합은 $100$이다.\n풀이 방향: 산술평균과 기하평균의 관계를 $2a$, $5b$에 적용한다.\n정석 풀이: $2a+5b\\ge2\\sqrt{(2a)(5b)}=2\\sqrt{10ab}$이므로 $100\\ge2\\sqrt{10ab}$, 따라서 $ab\\le250$이다. 등호는 $2a=5b=50$일 때 성립하므로 $a=25$, $b=10$이다. 즉 $M=250$, $m=25$, $n=10$이어서 $M+m+n=285$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
-    "subUnit": "명제와 진리집합",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

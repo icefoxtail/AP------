@@ -31,8 +31,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 조건은 변수를 포함하고, 변수의 값에 따라 참과 거짓이 달라지는 문장이다.\n조건 정리: 다섯 문장 가운데 변수값에 따라 진릿값이 바뀌는 문장을 찾는다.\n정석 풀이:\n1. ①은 방정식의 해의 성질을 말하는 고정된 문장이므로 명제이다.\n2. ②와 ④는 변수 없이 참인 명제이고, ⑤는 변수 없이 거짓인 명제이다.\n3. ③ $x+1=0$은 $x$의 값에 따라 참일 수도 있고 거짓일 수도 있으므로 조건이다.\n핵심 확인: 변수의 값에 따라 진릿값이 달라지는 문장은 ③뿐이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -65,8 +65,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 명제의 역은 결론과 조건의 위치를 바꾼 $q\\to p$이므로, $q$의 해가 모두 $p$를 만족하는지 확인한다.\n조건 정리: $p:x\\le a$, $q:x^2-2x-8=0$이고 역명제 $q\\to p$가 참이 되도록 하는 정수 $a$의 최솟값을 구한다.\n정석 풀이:\n1. $q$를 인수분해하면 $(x+2)(x-4)=0$이므로 $q$의 해는 $x=-2,4$이다.\n2. 역명제 $q\\to p$가 참이려면 $q$의 두 해가 모두 $x\\le a$를 만족해야 한다.\n3. 특히 큰 해 $4$가 조건을 만족해야 하므로 $a\\ge4$이다.\n4. 따라서 정수 $a$의 최솟값은 $4$이다.\n핵심 확인: $a=4$이면 $-2\\le4$, $4\\le4$가 모두 참이고, $a\\lt4$이면 $x=4$가 반례가 된다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -183,8 +183,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] ‘모든 $x$에 대하여 $P(x)$’의 부정은 ‘어떤 $x$에 대하여 $P(x)$가 아니다’이다.\n정석 풀이:\n1. 주어진 명제의 조건은 모든 실수 $x$에 대하여 $x^2-5x+4\\ge0$이라는 것이다.\n2. 부등식 $\\ge0$의 부정은 $\\lt0$이고, ‘모든’의 부정은 ‘어떤’이다.\n3. 따라서 부정은 ‘어떤 실수 $x$에 대하여 $x^2-5x+4\\lt0$이다.’이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -219,8 +219,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $p$가 $q$이기 위한 충분조건이라는 말은 $p\\to q$가 참이라는 뜻이므로 진리집합으로는 $P\\subseteq Q$이다.\n정석 풀이:\n1. $P\\subseteq Q$이므로 $P$에 속하는 원소는 모두 $Q$에도 속한다.\n2. 따라서 $P$에 속하지만 $Q$에는 속하지 않는 원소는 없으므로 $P-Q=\\varnothing$이다.\n3. ① $Q\\subseteq P$는 항상 성립하지 않고, ③ $P\\cap Q=\\varnothing$도 일반적으로 성립하지 않는다.\n4. ④는 $Q^c\\subseteq P^c$가 되어야 하므로 방향이 반대이고, ⑤ $P\\cup Q=P$는 $Q\\subseteq P$일 때의 식이다.\n따라서 정답은 ②이다.",
-    "reviewStatus": "generated_pending",
-    "solutionStatus": "generated_pending",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none"
   },
   {
@@ -405,8 +405,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 공집합 조건을 각각 해석하면 포함관계가 나오고, 포함관계를 명제로 바꾸면 된다.\n정석 풀이:\n1. $(P\\cap R^c)\\cup(Q\\cap R)=\\varnothing$이면 $P\\cap R^c=\\varnothing$, $Q\\cap R=\\varnothing$가 각각 성립한다.\n2. $P\\cap R^c=\\varnothing$은 $P\\subseteq R$와 같으므로 ㄱ $p\\to r$는 항상 참이다.\n3. $Q\\cap R=\\varnothing$은 $Q\\subseteq R^c$와 같으므로 ㄴ $q\\to\\neg r$도 항상 참이다.\n4. ㄷ $r\\to p$, ㄹ $p\\to q$, ㅁ $q\\to r$는 일반적으로 성립하지 않는다.\n따라서 항상 참인 것은 ㄱ, ㄴ이고 정답은 ②이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -589,8 +589,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 짝수 제곱수의 차를 인수분해하고 $p+q$, $p-q$의 홀짝성을 이용한다.\n정석 풀이:\n1. $m-n=(29a+b)-(5a+b)=24a$이므로 (가)는 $24a$이다.\n2. $m=4p^2$, $n=4q^2$이므로 $m-n=4(p+q)(p-q)$이다. 따라서 $4(p+q)(p-q)=24a$에서 $(p+q)(p-q)=6a$이므로 (나)는 $6a$이다.\n3. $p+q$와 $p-q$는 같은 홀짝성을 가지므로 둘 다 홀수이거나 둘 다 짝수이다. 따라서 그 곱은 홀수이거나 $4$의 배수이므로 (다)는 $4$이다.\n4. 그런데 $a$가 홀수이면 $6a$를 $4$로 나눈 나머지는 $2$이므로 위 결과와 모순이다. 따라서 $m,n$ 중 적어도 하나는 제곱수가 아니다.\n5. $f(a)=24a$, $g(a)=6a$, $k=4$이므로 $f(k)-g(k)=96-24=72$이다.\n따라서 정답은 ③이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
@@ -702,8 +702,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$34$",
     "solution": "[키포인트] 각 조건을 카드의 뒤집힘 여부에 대한 논리관계로 바꾸고 가능한 경우를 나누어 본다.\n정석 풀이:\n1. (라)와 (바)를 함께 보면, $3$번 카드를 뒤집어도 $7$번 카드는 뒤집지 않고, $3$번 카드를 뒤집지 않아도 $7$번 카드는 뒤집지 않는다. 따라서 어떤 경우에도 $7$번 카드는 뒤집지 않는다.\n2. $1$번 카드를 뒤집는다면 (가)에 의해 총 세 장을 뒤집어야 하고, 반대로 총 세 장을 뒤집었다면 (다)에 의해 반드시 $1$번 카드를 뒤집는다.\n3. $7$번 카드는 뒤집지 않으므로, $1$번 카드를 뒤집는 경우 가능한 세 장의 집합은 $\\{1,3,5\\}$뿐이다. 이 경우 보이는 수의 합은 $9+9+9+7=34$이다.\n4. 이제 $1$번 카드를 뒤집지 않는 경우를 보자. 그러면 (다)에 의해 세 장을 뒤집을 수 없다. 또 (나)에 의해 $5$번을 뒤집으면 $3$번도 함께 뒤집어야 한다. 따라서 가능한 경우는 뒤집지 않음, $\\{3\\}$만 뒤집음, $\\{3,5\\}$만 뒤집음이다. 각 경우의 합은 각각 $16$, $22$, $26$이다.\n5. 따라서 가능한 경우 가운데 최댓값은 $34$이다.\n따라서 정답은 34이다.",
-    "reviewStatus": "candidate_pending",
-    "solutionStatus": "plan_locked_pending_independent_review",
+    "reviewStatus": "reviewed_pass",
+    "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
     "generationMode": "EXAM_FOLLOWUP_SIMILAR_ONLY",
     "sourceGrounding": "plan-2026-08-26"
