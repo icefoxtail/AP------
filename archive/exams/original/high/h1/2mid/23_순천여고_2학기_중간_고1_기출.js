@@ -426,14 +426,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의방정식",
-      "직선",
-      "교점",
-      "거리",
-      "매개변수"
-    ],
+    "tags": ["객관식","원의 방정식","교점","직선과 원","위치 관계","중심","반지름","거리","도형"],
     "wide": false,
     "content": "집합 $A=\\{(x,y)\\mid y=m(x+3)-1\\}$ ($m$은 실수)이고, 집합 $B=\\{(x,y)\\mid x^2+y^2=5\\}$일 때, $n(A\\cap B)=2$를 만족하는 $m$의 범위가 $a<m<b$이다. 이때 $a+b$의 값은? (단, $(x,y)$에서 $x,y$는 실수이고, $n(A)$는 집합 $A$의 원소의 개수이다.) [4.1점]",
     "choices": [
@@ -567,13 +560,7 @@ window.questionBank = [
     "standardUnitOrder": 11,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의방정식",
-      "내분점",
-      "외접원",
-      "넓이"
-    ],
+    "tags": ["객관식","원의 방정식","반지름","넓이","도형"],
     "wide": false,
     "content": "좌표평면 위에 세 점 $A(0,4)$, $B(4,4)$, $C(4,0)$이 있다. 세 선분 $OA,AB,BC$를 $3:1$로 내분하는 점을 각각 $P,Q,R$라 하고 세 점 $P,Q,R$를 지나는 원을 $C$라 할 때, 원 $C$의 넓이는? (단, $O$는 원점이다.) [4.2점]",
     "choices": [
