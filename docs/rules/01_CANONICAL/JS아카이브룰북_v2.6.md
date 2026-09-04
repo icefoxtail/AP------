@@ -78,6 +78,8 @@
 - 세부 그래프 style token, typography, sampling·adaptive refinement 정책의 canonical source는
   최신 VISUAL 프로토콜 하나로 통일한다. 룰북·pipeline·review 문서에는 세부 수치를 복제하지
   않고 해당 문서를 참조한다.
+- `GRAPH_STYLE_LINT_PASS`의 검사 대상·`PASS`/`FAIL`/`NOT_TESTED` contract는
+  `04_VISUAL/도형추출.md` v3.0에만 정의한다.
 - 그래프가 있는 최종 visual PASS는 다음 composite 조건을 모두 만족해야 한다.
 
 ```text
