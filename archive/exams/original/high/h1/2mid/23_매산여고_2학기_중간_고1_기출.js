@@ -361,7 +361,15 @@ window.questionBank = [
       "$(-8,7)$"
     ],
     "answer": "②",
-    "solution": "평행이동 $(5,-3)$은 $x$좌표에 $5$, $y$좌표에 $-3$을 각각 더하는 변환이다.\n\n따라서\n$(-3,4)\\mapsto(-3+5,4-3)=(2,1)$이다.\n\n그러므로 정답은 ②이다.\n이동량이 음수이면 해당 좌표를 그만큼 빼는 것이므로 $y$좌표에서는 $4+(-3)=1$이 된다. 따라서 두 좌표를 각각 계산해야 한다."
+    "solution": "평행이동 $(5,-3)$은 $x$좌표에 $5$, $y$좌표에 $-3$을 각각 더하는 변환이다.\n\n따라서\n$(-3,4)\\mapsto(-3+5,4-3)=(2,1)$이다.\n\n그러므로 정답은 ②이다.\n이동량이 음수이면 해당 좌표를 그만큼 빼는 것이므로 $y$좌표에서는 $4+(-3)=1$이 된다. 따라서 두 좌표를 각각 계산해야 한다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 11의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -396,6 +404,10 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 12의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 13,
@@ -490,6 +502,10 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 16,
@@ -525,6 +541,10 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 16의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -671,6 +691,10 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 21의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
+    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+    "subUnit": "합성 변환",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 22,
