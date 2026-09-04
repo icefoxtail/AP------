@@ -138,7 +138,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리함수의 그래프"
+      "유리함수의 그래프",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{k}{x}$ $(k\\gt0)$에 대한 다음 설명 중 옳지 않은 것은? [3.8점]",
@@ -173,7 +174,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "무리함수의 그래프"
+      "무리함수의 그래프",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=-\\sqrt{2x-4}+3$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은?<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. 정의역은 $\\{x\\mid x\\ge2\\}$이고, 치역은 $\\{y\\mid y\\le3\\}$이다.<br>ㄴ. 함수 $y=f(x)$의 그래프는 함수 $y=-\\sqrt{2x}$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 것이다.<br>ㄷ. 함수 $y=f(x)$의 그래프는 제1사분면과 제4사분면을 지난다.</div>",
@@ -592,7 +594,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "무리함수와 접선"
+      "무리함수와 접선",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=2\\sqrt{a(x+a)}$의 그래프가 $x$축, $y$축과 만나는 점을 각각 A, B라 하고, 함수 $y=f(x)$의 그래프와 직선 $y=2x+b$가 접하는 점을 C라 하자. 삼각형 ABC의 넓이가 $\\dfrac14$일 때, $b-a$의 값은? (단, $a,b$는 상수이고, $a\\gt0$이다.) [4.2점]",
@@ -760,7 +763,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "무리함수와 직선의 교점"
+      "무리함수와 직선의 교점",
+      "그래프"
     ],
     "wide": false,
     "content": "[서술형4]<br>함수 $y=\\sqrt{3x-3}$의 그래프와 직선 $y=ax+1$이 만나도록 하는 실수 $a$의 값의 범위를 구하는 풀이 과정과 답을 쓰시오. [5점]",

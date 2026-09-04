@@ -1,0 +1,88 @@
+{
+  "reportType": "FUNCTION_FAMILY_PINPOINT_EXCEPTION_FIXES_V1",
+  "generatedAt": "2026-09-04T00:33:42.435Z",
+  "status": "PINPOINT_EXCEPTION_FIX_PASS",
+  "plannedExceptionRows": 8,
+  "appliedFieldChanges": 2,
+  "changes": [
+    {
+      "qKey": "original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js_12",
+      "disposition": "APPROVED_REPLACEMENT_A",
+      "reason": "필수 조건 블록이 source content와 도식에서 손상되어 기존 그래프 구조를 유지한 완전 문항으로 복원.",
+      "fields": [
+        "content"
+      ],
+      "changed": false
+    },
+    {
+      "qKey": "original/high/h1/2final/22_제일고_2학기_기말_고1_기출.js_16",
+      "disposition": "APPROVED_REPLACEMENT_A",
+      "reason": "역함수 존재의 domain/codomain 누락을 실수 전체→실수 전체로 최소 정상화.",
+      "fields": [
+        "content"
+      ],
+      "changed": false
+    },
+    {
+      "qKey": "original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js_17",
+      "disposition": "SOURCE_RESTORED_FROM_SOURCE_IMAGE",
+      "reason": "q17 source image의 세 조건을 content에 충실하게 복원.",
+      "fields": [
+        "content"
+      ],
+      "changed": false
+    },
+    {
+      "qKey": "original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js_17",
+      "disposition": "APPROVED_REPLACEMENT_A",
+      "reason": "저장 계산값 48을 포함하도록 선택지만 최소 교체하여 객관식 계약을 복구.",
+      "fields": [
+        "choices",
+        "answer",
+        "solution"
+      ],
+      "changed": true
+    },
+    {
+      "qKey": "original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js_1",
+      "disposition": "SOURCE_RESTORED_FROM_SOURCE_IMAGE",
+      "reason": "q01 대응도식의 다섯 선택지를 text reconstruction으로 보존.",
+      "fields": [
+        "choices"
+      ],
+      "changed": true
+    },
+    {
+      "qKey": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js_4",
+      "disposition": "SOURCE_RESTORED_FROM_SOURCE_IMAGE",
+      "reason": "q04 그래프도식의 다섯 선택지를 faithful text reconstruction으로 보존.",
+      "fields": [
+        "choices"
+      ],
+      "changed": false
+    },
+    {
+      "qKey": "original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js_18",
+      "disposition": "APPROVED_REPLACEMENT_A",
+      "reason": "공집합 정의역 허용 여부를 최소 조건으로 명시하여 저장 해설의 69를 유효화.",
+      "fields": [
+        "content"
+      ],
+      "changed": false
+    },
+    {
+      "qKey": "original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js_18",
+      "disposition": "APPROVED_REPLACEMENT_A",
+      "reason": "모든 실수 a에서 단일 r을 요구하던 결함을 a=1의 동일 solutionGraph 구조로 최소 정상화.",
+      "fields": [
+        "content",
+        "solution"
+      ],
+      "changed": false
+    }
+  ],
+  "approvedReplacementA": 5,
+  "sourceRestored": 3,
+  "outOfScopeMutation": 0,
+  "note": "Only the listed exception fields were changed. Existing unit, subunit, problem type, format, solutionGraph, decision count, and difficulty metadata were retained."
+}

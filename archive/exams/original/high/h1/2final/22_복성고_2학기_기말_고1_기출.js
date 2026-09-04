@@ -211,7 +211,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=-\\sqrt{2x+3}+2$에 대한 설명으로 옳은 것은? [4.1점]",
@@ -365,7 +366,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{2x+k}{x+3}$의 그래프를 $x$축의 방향으로 1만큼, $y$축의 방향으로 $-1$만큼 평행이동한 곡선을 $y=g(x)$라 하자. 곡선 $y=g(x)$의 두 점근선의 교점이 곡선 $y=f(x)$ 위의 점일 때, 상수 $k$의 값은? [4.3점]",
@@ -464,7 +466,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{2x+k-3}{x-2}$의 그래프가 모든 사분면을 지나도록 하는 실수 $k$의 값의 범위는? [4.4점]",
@@ -652,7 +655,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "[서술형 2] 좌표평면 위에 함수 $f(x)=\\begin{cases}\\dfrac8x&(x\\gt0)\\\\\\dfrac2x&(x\\lt0)\\end{cases}$의 그래프와 직선 $y=-x$가 있다. 함수 $y=f(x)$의 그래프 위의 점 $P$를 지나고 $x$축에 수직인 직선이 직선 $y=-x$와 만나는 점을 $Q$, 점 $Q$를 지나고 $y$축에 수직인 직선이 $y=f(x)$와 만나는 점을 $R$이라 할 때, $\\triangle PQR$의 넓이의 최솟값을 구하는 과정을 서술하시오. [7점]",

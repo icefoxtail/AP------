@@ -531,7 +531,8 @@ window.questionBank = [
       "함수",
       "역함수",
       "조각함수",
-      "합성함수"
+      "합성함수",
+      "그래프"
     ],
     "wide": false,
     "content": "두 함수 $f,g$가 $f(x)=\\begin{cases}(x-1)^2+4&(x\\ge1)\\\\x+3&(x<1)\\end{cases}$, $(f\\circ g)(x)=x$를 만족시킬 때, $g(8)+g(2)$의 값은? [4.2점]",
@@ -569,7 +570,8 @@ window.questionBank = [
       "함수",
       "합성함수",
       "최솟값",
-      "이차함수"
+      "이차함수",
+      "그래프"
     ],
     "wide": false,
     "content": "두 함수 $f(x)=-x^2+8x+a$, $g(x)=x^2-2x+2$에 대하여 정의역이 $0\\le x\\le3$인 함수 $(f\\circ g)(x)$의 최솟값이 5일 때, 상수 $a$의 값은? [4.3점]",

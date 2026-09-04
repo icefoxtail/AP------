@@ -395,7 +395,9 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "다음 중 유리함수 $y=\\dfrac{1}{2-x}+a$의 그래프가 모든 사분면을 지나도록 하는 $a$의 값으로 옳은 것은? [4.2점]",
     "choices": [
@@ -431,7 +433,9 @@ window.questionBank = [
     "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{1}{2}x^2-4x+a\\;(x\\ge4)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 $2$개의 점에서 만나도록 하는 자연수 $a$의 개수는? [4.5점]",
     "choices": [
@@ -497,7 +501,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=\\left|\\sqrt{2x+2}-2\\right|$의 그래프와 직선 $y=k(x-1)+1$이 서로 다른 두 점에서 만나도록 하는 실수 $k$의 최솟값은? (단, $a$, $b$는 상수이다.) [4.5점]",
     "choices": [
@@ -529,7 +535,9 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{1}{x-1}+2\\;(x\\gt1)$의 그래프와 원 $(x-1)^2+(y-2)^2=9$가 만나는 두 점 사이의 거리를 구하시오. [부분 점수 없음, 5점]",
     "choices": [],
