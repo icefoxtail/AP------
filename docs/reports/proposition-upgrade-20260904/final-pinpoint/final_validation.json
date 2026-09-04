@@ -1,36 +1,87 @@
 {
-  "candidateShaBeforeCommit": "e2354149a34812cd3c40f0350567a62a5d95d216",
-  "scope": {
-    "unexpectedChangedFiles": 7,
-    "unauthorizedChangedFiles": [
-      "archive/tools/function-family/build-final-graph-review-manifest.mjs",
-      "docs/plans/JS아카이브_전수품질업그레이드_다중독립검수_최종봉인_공통프로토콜_v1.2.10_정본.md",
-      "docs/reports/function-family-20260904/final-seal/function_family_exception_closure_v1.json",
-      "docs/reports/function-family-20260904/final-seal/function_family_exception_closure_v1.md",
-      "docs/reports/function-family-20260904/final-seal/function_family_graph_review_manifest_v1.json",
-      "docs/reports/function-family-20260904/final-seal/function_family_graph_review_manifest_v1.md",
-      "docs/reports/function-family-20260904/final-seal/graph-review-harness.html"
-    ],
-    "lockedTrackedDiffFiles": [
-      "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
-      "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+  "FINAL_ORIGIN_MAIN_SHA": "c802aad832eede07099ee9c608d2441f7437a094",
+  "PROPOSITION_COMMIT_SHA": "11b7087a17fd946b780fa456aafd7784ea968628",
+  "PROPOSITION_COMMIT_INCLUDED_IN_MAIN": true,
+  "PROPOSITION_COMMIT_ANCESTOR_CHECK": "PASS",
+  "FINAL_VALIDATION_STALE": false,
+  "q11": {
+    "status": "PASS",
+    "productionRecordFound": true,
+    "sourceSearchFound": false,
+    "actualCorrectAnswer": "④",
+    "correctAnswerCount": 1,
+    "answerMatch": true,
+    "solutionMatch": true,
+    "indexParity": "PASS",
+    "indexContentReflectsLatestStem": true,
+    "indexChoicesReflectLatestChoices": true,
+    "indexQKey": "original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js_11",
+    "indexQKeyRecordCount": 1
+  },
+  "hyochonQ09": {
+    "status": "PASS",
+    "extraConditionRemoved": true,
+    "answer": "⑤",
+    "independentRecheck": "PASS",
+    "indexParity": "PASS",
+    "indexContentReflectsQNotEmptyRemoval": true,
+    "indexChoicesReflectLatestChoices": true,
+    "indexQKey": "original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js_9",
+    "indexQKeyRecordCount": 1
+  },
+  "FINAL_TARGET_COUNT": 192,
+  "TRIAGE_ROW_COUNT": 192,
+  "PRIMARY_STATUS_SUM": 192,
+  "NO_ANSWER_COUNT": 0,
+  "UNDECLARED_MULTI_ANSWER_COUNT": 0,
+  "QUESTION_ANSWER_SOLUTION_MISMATCH": 0,
+  "UNRESOLVED_INVALID": 0,
+  "TARGET_RENDER_EXAM_COUNT": 38,
+  "EXPECTED_RENDER_ROWS": 114,
+  "ACTUAL_RENDER_ROWS": 114,
+  "FAILED_RENDER_ROWS": 0,
+  "INDEX_TOTAL_COUNT": 10980,
+  "INDEX_DUPLICATE_QKEY": 0,
+  "INDEX_LOAD_FAILURE": 0,
+  "INDEX_TARGET_PARITY": "PASS",
+  "INDEX_REGENERATED_AT_FINAL_CANDIDATE": true,
+  "indexGeneration": {
+    "command": "node archive/tools/build-question-index.mjs",
+    "worktree": "clean detached worktree at origin/main",
+    "generatedAt": "2026-09-04T02:05:13.774Z",
+    "scope": "git-tracked + db-listed",
+    "examFileCount": 451,
+    "sourceQuestionCount": 10980,
+    "finalIndexCount": 10980,
+    "duplicateQKey": 0,
+    "loadFailure": 0,
+    "outputs": [
       "archive/question-index.js",
       "archive/question-index-report.md",
       "archive/question-index-audit.md"
     ]
   },
-  "q11": {
-    "questionValid": true,
-    "correctAnswerCount": 1,
-    "actualCorrectAnswer": "④",
-    "answerMatch": true,
-    "solutionMatch": true,
-    "sourceFound": false
-  },
-  "hyochonQ09": {
-    "extraConditionRemoved": true,
-    "answer": "⑤",
-    "independentRecheck": "PASS"
+  "indexTargetParityEvidence": {
+    "productionTargetCount": 192,
+    "indexTargetCount": 192,
+    "missingCount": 0,
+    "extraCount": 0,
+    "contentOrChoiceMismatchCount": 0,
+    "loadFailureCount": 0,
+    "duplicateQKey": 0,
+    "q11": {
+      "qKey": "original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js_11",
+      "latestStemPresent": true,
+      "latestChoiceSetPresent": true,
+      "qKeyRecordCount": 1
+    },
+    "hyochonQ9": {
+      "qKey": "original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js_9",
+      "qNotEmptyConditionAbsent": true,
+      "latestChoiceSetPresent": true,
+      "qKeyRecordCount": 1
+    },
+    "status": "PASS"
   },
   "triage": {
     "targetCount": 192,
@@ -55,9 +106,6 @@
     "expectedRows": 114,
     "actualRows": 114,
     "failedRows": 0,
-    "distinctTargetExamIds": 38,
-    "distinctMatrixExamIds": 38,
-    "eachExamHasExactlyExamSolutionAnswerRows": true,
     "allStatuses": [
       "PASS"
     ],
@@ -66,24 +114,24 @@
     "overflowRows": 0,
     "imageDecodeMismatches": 0,
     "solutionImageDecodeMismatches": 0,
-    "executionSource": "Chrome browser; archive/engine.html; eight visible harness batches; each batch opened exam, solution, and answer modes"
+    "executionSource": "existing final proposition render matrix generated from archive/engine.html in exam, solution, and answer modes"
   },
-  "index": {
-    "totalIndexCount": 10980,
-    "duplicateQKey": 0,
-    "loadFailure": 0
+  "commit": {
+    "message": "chore(archive): reseal proposition index parity",
+    "stagedFiles": [
+      "archive/question-index.js",
+      "archive/question-index-report.md",
+      "archive/question-index-audit.md",
+      "docs/reports/proposition-upgrade-20260904/final-pinpoint/final_validation.json"
+    ],
+    "outOfScopeStagedFiles": [],
+    "forcePush": false
   },
   "worktree": {
-    "head": "e2354149a34812cd3c40f0350567a62a5d95d216",
-    "main": "e2354149a34812cd3c40f0350567a62a5d95d216",
-    "originMain": "64ad6d9e6bbe787bb6c18742277f31bc299d9cb3",
-    "headEqualsMainEqualsOriginMain": false,
-    "clean": false
+    "validationBasis": "latest origin/main clean candidate",
+    "unrelatedDirtyChangesPreserved": true,
+    "unrelatedDirtyChangesAreNotPartOfSeal": true
   },
-  "commitAllowed": false,
-  "commitBlockers": [
-    "UNAUTHORIZED_SCOPE_CHANGE: 7 unrelated files are present in the worktree",
-    "worktree is not clean",
-    "HEAD/main and origin/main diverged after the initial SHA lock; no merge/rebase/push was attempted"
-  ]
+  "commitAllowed": true,
+  "commitBlockers": []
 }
