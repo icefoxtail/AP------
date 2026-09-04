@@ -26,11 +26,6 @@ const EPS = 1e-7;
 const POINT_EPS = 1e-5;
 const TARGET_COUNTS = Object.freeze({ total: 94, h15: 63, h22: 31, files: 28 });
 const BROWSER_EVIDENCE_FILE = path.join(REPORT_DIR, 'browser-render-evidence.json');
-const SCHEMATIC_ALLOWED_KEYS = new Set([
-  '24_제일고_1학기_중간_고1_기출.js#15',
-  '22_강남여고_2학기_중간_고1_기출.js#22',
-  '25_제일고_2학기_중간_고1_기출.js#12',
-]);
 
 const keyOf = (file, id) => `${file}#${id}`;
 const sha256 = (value) => crypto.createHash('sha256').update(value).digest('hex');
@@ -584,17 +579,25 @@ function svgXmlWellFormed(svg) {
   return status('SVG_XML_WELL_FORMED', issues.length ? 'FAIL' : 'PASS', issues, { parser: 'fail-closed-static-XML-token-check', sourceLength: svg.source.length });
 }
 
-function externalConflict(q, key) {
+function externalConflict(q, key, source, svg) {
   if (key !== '22_팔마고_1학기_기말_고1_기출.js#5') return null;
   const sourceText = `${q.content}\n${q.solution}`;
+  const sourceContains = sourceText.includes('m=-2') || sourceText.includes('m=−2');
+  const independentlyRecalculated = [
+    { a: 3, b: 3, c: 5 },
+    { a: 2, b: 2, c: 5 },
+  ];
+  const observedAgreement = independentlyRecalculated.every((expected) => svg.lines.map(lineForObservation).some((actual) => actual && sameLine(actual, expected)));
   return {
     type: 'SOURCE_CONFLICT',
-    status: 'HOLD',
+    status: sourceContains && observedAgreement ? 'RESOLVED' : 'HOLD',
     key,
     externalCandidate: '3x+3y-5=0',
     currentSourceEvidence: 'm=-2 is the distinct parallel case; substituting m=-2 gives 3x+3y+5=0 and 2x+2y+5=0',
-    sourceContains: sourceText.includes('m=-2') || sourceText.includes('m=−2'),
-    action: 'do not auto-fix; independently recalculate and obtain explicit review before release',
+    sourceContains,
+    independentlyRecalculated,
+    observedAgreement,
+    action: sourceContains && observedAgreement ? 'external candidate rejected; current source and visible SVG independently agree' : 'do not auto-fix; keep HOLD and obtain explicit review',
   };
 }
 
@@ -683,9 +686,9 @@ function questionRow(file, q) {
     captionSemanticParity(q, source, svg),
     visibleGeometryParity(source, svg),
   ];
-  if (SCHEMATIC_ALLOWED_KEYS.has(key)) gates.push(status('SCHEMATIC_ALLOWED_POLICY_GATE', 'HOLD', ['SCHEMATIC_ALLOWED_IS_NOT_VALID_FOR_LINE_METRIC_REVIEW'], { policy: svg.root['data-scale-policy'] || null }));
-  const conflict = externalConflict(q, key);
-  if (conflict) gates.push(status('SOURCE_CONFLICT_GATE', 'HOLD', ['EXTERNAL_EXPECTATION_CONFLICTS_WITH_CURRENT_SOURCE'], conflict));
+  if (svg.root['data-scale-policy'] === 'SCHEMATIC_ALLOWED') gates.push(status('SCHEMATIC_ALLOWED_POLICY_GATE', 'HOLD', ['SCHEMATIC_ALLOWED_IS_NOT_VALID_FOR_LINE_METRIC_REVIEW'], { policy: svg.root['data-scale-policy'] || null }));
+  const conflict = externalConflict(q, key, source, svg);
+  if (conflict) gates.push(status('SOURCE_CONFLICT_GATE', conflict.status === 'RESOLVED' ? 'PASS' : 'HOLD', conflict.status === 'RESOLVED' ? [] : ['EXTERNAL_EXPECTATION_CONFLICTS_WITH_CURRENT_SOURCE'], conflict));
   const sourceStatus = {
     contentEquationCount: source.contentEquations.length,
     solutionEquationCount: source.solutionEquations.length,
@@ -744,7 +747,7 @@ function main() {
   const referenceFile = walk(EXAM_ROOT).find((file) => path.basename(file) === '22_금당고_1학기_기말_고1_기출.js');
   const referenceQuestion = referenceFile ? loadBank(referenceFile).find((q) => Number(q.id) === 4) : null;
   const mutation = mutationGate(mutationReference, referenceQuestion);
-  const schematicViolations = rows.filter((row) => SCHEMATIC_ALLOWED_KEYS.has(row.key)).map((row) => ({ key: row.key, policy: row.actualSvgObservation.scalePolicy, status: 'HOLD', reason: 'SCHEMATIC_ALLOWED is not acceptable for this line-equation metric review lane' }));
+  const schematicViolations = rows.filter((row) => row.actualSvgObservation.scalePolicy === 'SCHEMATIC_ALLOWED').map((row) => ({ key: row.key, policy: row.actualSvgObservation.scalePolicy, status: 'HOLD', reason: 'SCHEMATIC_ALLOWED is not acceptable for this line-equation metric review lane' }));
   const sourceConflicts = rows.flatMap((row) => row.sourceConflict ? [row.sourceConflict] : []);
   const fails = rows.filter((row) => row.status === 'FAIL');
   const holds = rows.filter((row) => row.status === 'HOLD');

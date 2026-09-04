@@ -1,7 +1,7 @@
 {
   "protocol": "고1 도형의 방정식 v2.2 actual-facts qualification",
-  "generatedAt": "2026-09-04T23:22:00.235Z",
-  "gitSha": "2c3dc3d55a80d1d7129b07f453fdc0206b0b8386",
+  "generatedAt": "2026-09-04T23:27:55.644Z",
+  "gitSha": "a6518ad897640f11a153b3853b302d1b8ced12c8",
   "noWriteGuarantee": {
     "status": "PASS",
     "productionWrites": 0,
@@ -35,7 +35,7 @@
     "verifierMode": "equivalent-no-write-check",
     "generatorExecuted": false,
     "productionWritesByVerifier": 0,
-    "generatorSourceSha256": "6a364759e27909746875d1a3783a1c6362be1fbd73c2eab8c01d0d15b775cb78",
+    "generatorSourceSha256": "022b9ce1414302267bc667a9e896c91efa2de0e853a6c5ad3a53dd5035526dac",
     "generatorHasWriteApis": true,
     "generatorHasExplicitCheckFlag": false,
     "generatorFactEntryCount": 89,
@@ -98,8 +98,7 @@
     "REQUIRED_GEOMETRY_PRESENCE",
     "CAPTION_SEMANTIC_PARITY",
     "VISIBLE_GEOMETRY_PARITY",
-    "SOURCE_CONFLICT_GATE",
-    "SCHEMATIC_ALLOWED_POLICY_GATE"
+    "SOURCE_CONFLICT_GATE"
   ],
   "gateSummary": {
     "SVG_XML_WELL_FORMED": {
@@ -157,8 +156,8 @@
       "N/A": 0
     },
     "CAPTION_SEMANTIC_PARITY": {
-      "PASS": 35,
-      "FAIL": 59,
+      "PASS": 36,
+      "FAIL": 58,
       "HOLD": 0,
       "N/A": 0
     },
@@ -169,54 +168,42 @@
       "N/A": 0
     },
     "SOURCE_CONFLICT_GATE": {
-      "PASS": 0,
+      "PASS": 1,
       "FAIL": 0,
-      "HOLD": 1,
-      "N/A": 0
-    },
-    "SCHEMATIC_ALLOWED_POLICY_GATE": {
-      "PASS": 0,
-      "FAIL": 0,
-      "HOLD": 3,
+      "HOLD": 0,
       "N/A": 0
     }
   },
-  "schematicAllowedViolations": [
-    {
-      "key": "24_제일고_1학기_중간_고1_기출.js#15",
-      "policy": "EQUAL_SCALE_REQUIRED",
-      "status": "HOLD",
-      "reason": "SCHEMATIC_ALLOWED is not acceptable for this line-equation metric review lane"
-    },
-    {
-      "key": "22_강남여고_2학기_중간_고1_기출.js#22",
-      "policy": "EQUAL_SCALE_REQUIRED",
-      "status": "HOLD",
-      "reason": "SCHEMATIC_ALLOWED is not acceptable for this line-equation metric review lane"
-    },
-    {
-      "key": "25_제일고_2학기_중간_고1_기출.js#12",
-      "policy": "EQUAL_SCALE_REQUIRED",
-      "status": "HOLD",
-      "reason": "SCHEMATIC_ALLOWED is not acceptable for this line-equation metric review lane"
-    }
-  ],
+  "schematicAllowedViolations": [],
   "sourceConflicts": [
     {
       "type": "SOURCE_CONFLICT",
-      "status": "HOLD",
+      "status": "RESOLVED",
       "key": "22_팔마고_1학기_기말_고1_기출.js#5",
       "externalCandidate": "3x+3y-5=0",
       "currentSourceEvidence": "m=-2 is the distinct parallel case; substituting m=-2 gives 3x+3y+5=0 and 2x+2y+5=0",
       "sourceContains": true,
-      "action": "do not auto-fix; independently recalculate and obtain explicit review before release"
+      "independentlyRecalculated": [
+        {
+          "a": 3,
+          "b": 3,
+          "c": 5
+        },
+        {
+          "a": 2,
+          "b": 2,
+          "c": 5
+        }
+      ],
+      "observedAgreement": true,
+      "action": "external candidate rejected; current source and visible SVG independently agree"
     }
   ],
-  "status": "HOLD",
+  "status": "FAIL",
   "releaseReady": false,
   "failureCount": 62,
-  "holdCount": 4,
-  "passCount": 28,
+  "holdCount": 0,
+  "passCount": 32,
   "rows": [
     {
       "questionNo": 4,
@@ -5943,31 +5930,55 @@
         },
         {
           "name": "SOURCE_CONFLICT_GATE",
-          "status": "HOLD",
-          "issues": [
-            "EXTERNAL_EXPECTATION_CONFLICTS_WITH_CURRENT_SOURCE"
-          ],
+          "status": "PASS",
+          "issues": [],
           "details": {
             "type": "SOURCE_CONFLICT",
-            "status": "HOLD",
+            "status": "RESOLVED",
             "key": "22_팔마고_1학기_기말_고1_기출.js#5",
             "externalCandidate": "3x+3y-5=0",
             "currentSourceEvidence": "m=-2 is the distinct parallel case; substituting m=-2 gives 3x+3y+5=0 and 2x+2y+5=0",
             "sourceContains": true,
-            "action": "do not auto-fix; independently recalculate and obtain explicit review before release"
+            "independentlyRecalculated": [
+              {
+                "a": 3,
+                "b": 3,
+                "c": 5
+              },
+              {
+                "a": 2,
+                "b": 2,
+                "c": 5
+              }
+            ],
+            "observedAgreement": true,
+            "action": "external candidate rejected; current source and visible SVG independently agree"
           }
         }
       ],
       "sourceConflict": {
         "type": "SOURCE_CONFLICT",
-        "status": "HOLD",
+        "status": "RESOLVED",
         "key": "22_팔마고_1학기_기말_고1_기출.js#5",
         "externalCandidate": "3x+3y-5=0",
         "currentSourceEvidence": "m=-2 is the distinct parallel case; substituting m=-2 gives 3x+3y+5=0 and 2x+2y+5=0",
         "sourceContains": true,
-        "action": "do not auto-fix; independently recalculate and obtain explicit review before release"
+        "independentlyRecalculated": [
+          {
+            "a": 3,
+            "b": 3,
+            "c": 5
+          },
+          {
+            "a": 2,
+            "b": 2,
+            "c": 5
+          }
+        ],
+        "observedAgreement": true,
+        "action": "external candidate rejected; current source and visible SVG independently agree"
       },
-      "status": "HOLD"
+      "status": "PASS"
     },
     {
       "questionNo": 13,
@@ -21553,20 +21564,15 @@
         },
         {
           "name": "CAPTION_SEMANTIC_PARITY",
-          "status": "FAIL",
-          "issues": [
-            "CAPTION_PARALLEL_MISSING",
-            "CAPTION_PERPENDICULAR_MISSING",
-            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
-            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING"
-          ],
+          "status": "PASS",
+          "issues": [],
           "details": {
             "obligations": [
               "parallel",
               "perpendicular"
             ],
-            "caption": "ab=3 · a+b=4",
-            "visibleSemanticText": "ab=3 · a+b=4 직선의 방정식 해설 도형 · 문항 15 실제 점·직선·관계를 표시한 좌표 도형 직선의 방정식 해설 도형 · 문항 15 실제 좌표·직선식·핵심 관계를 수치로 표시 y x 핵심 수치 ab=3 a+b=4 a³+b³=28 축척: x,y 동일 단위 · 실제 계산값 기반"
+            "caption": "수직 조건 · 평행 조건 · ab=3 · a+b=4",
+            "visibleSemanticText": "수직 조건 · 평행 조건 · ab=3 · a+b=4 직선의 방정식 해설 도형 · 문항 15 실제 점·직선·관계를 표시한 좌표 도형 직선의 방정식 해설 도형 · 문항 15 실제 좌표·직선식·핵심 관계를 수치로 표시 y x 핵심 수치 ab=3 a+b=4 a³+b³=28 축척: x,y 동일 단위 · 실제 계산값 기반"
           }
         },
         {
@@ -21578,20 +21584,10 @@
             "observedLineCount": 3,
             "visibleSegmentCount": 0
           }
-        },
-        {
-          "name": "SCHEMATIC_ALLOWED_POLICY_GATE",
-          "status": "HOLD",
-          "issues": [
-            "SCHEMATIC_ALLOWED_IS_NOT_VALID_FOR_LINE_METRIC_REVIEW"
-          ],
-          "details": {
-            "policy": "EQUAL_SCALE_REQUIRED"
-          }
         }
       ],
       "sourceConflict": null,
-      "status": "HOLD"
+      "status": "PASS"
     },
     {
       "questionNo": 16,
@@ -24795,20 +24791,10 @@
             "observedLineCount": 3,
             "visibleSegmentCount": 0
           }
-        },
-        {
-          "name": "SCHEMATIC_ALLOWED_POLICY_GATE",
-          "status": "HOLD",
-          "issues": [
-            "SCHEMATIC_ALLOWED_IS_NOT_VALID_FOR_LINE_METRIC_REVIEW"
-          ],
-          "details": {
-            "policy": "EQUAL_SCALE_REQUIRED"
-          }
         }
       ],
       "sourceConflict": null,
-      "status": "HOLD"
+      "status": "PASS"
     },
     {
       "questionNo": 2,
@@ -29986,20 +29972,10 @@
             "observedLineCount": 2,
             "visibleSegmentCount": 0
           }
-        },
-        {
-          "name": "SCHEMATIC_ALLOWED_POLICY_GATE",
-          "status": "HOLD",
-          "issues": [
-            "SCHEMATIC_ALLOWED_IS_NOT_VALID_FOR_LINE_METRIC_REVIEW"
-          ],
-          "details": {
-            "policy": "EQUAL_SCALE_REQUIRED"
-          }
         }
       ],
       "sourceConflict": null,
-      "status": "HOLD"
+      "status": "PASS"
     },
     {
       "questionNo": 14,

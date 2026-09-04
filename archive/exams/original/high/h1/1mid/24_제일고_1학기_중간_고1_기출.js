@@ -541,7 +541,7 @@ window.questionBank = [
     "solution": "[키포인트]\n수직 조건($A_1A_2+B_1B_2=0$)과 평행 조건(기울기 일치)을 활용하여 연립한다.\n\n조건 정리\n- 수직: $a \\cdot b + (-1) \\cdot 3 = 0 \\implies ab = 3$\n- 평행: $a = -(b-4) \\implies a+b = 4$\n\n풀이 과정\n$ab=3$, $a+b=4$이므로 $a, b$는 $t^2-4t+3=0$의 두 근인 $1$과 $3$이다.\n$a^3+b^3 = (a+b)^3 - 3ab(a+b) = 4^3 - 3(3)(4) = 64 - 36 = 28$이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "ab=3 · a+b=4",
+    "solutionImageCaption": "수직 조건 · 평행 조건 · ab=3 · a+b=4",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
