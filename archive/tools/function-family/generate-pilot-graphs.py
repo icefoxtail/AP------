@@ -1805,7 +1805,7 @@ BATCH11_CASES = [
             "version": "0.1", "type": "simple_function_graph", "width": 620, "height": 500,
             "xRange": [0, 8], "yRange": [-4, 5],
             "curves": [{"points": [{"x": 2.5, "y": 3}, {"x": 3, "y": 2}, {"x": 4, "y": 1.267949}, {"x": 5, "y": 0.763932}, {"x": 7, "y": 0}, {"x": 8, "y": -0.316625}]}],
-            "points": [{"x": 2.5, "y": 3, "label": "V"}, {"x": 5, "y": 0, "label": "x-int"}],
+            "points": [{"x": 2.5, "y": 3, "label": "V"}, {"x": 7, "y": 0, "label": "x-int"}],
             "annotations": [{"x": 0.3, "y": 4.3, "text": "y=−√(2x−5)+3"}, {"x": 0.3, "y": -3.3, "text": "a=2, b=−1, c=−2"}],
         },
     },

@@ -421,7 +421,7 @@ window.questionBank = [
 
     "solutionImageAlt": "조각함수와 직선으로 둘러싸인 넓이를 나타낸 해설 그래프",
 
-    "solutionImageCaption": "A=(−4,2), O=(0,0), B=(2,4)와 넓이 10을 확인한다.",
+    "solutionImageCaption": "A=(2,4), O=(0,0), B=(−4,2)와 넓이 10을 확인한다.",
 
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
