@@ -152,7 +152,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의 이동","대칭이동","점","최단거리"],
     "wide": false,
     "content": "좌표평면 위의 두 점 $A(5,3)$, $B(8,2)$와 직선 $y=x$ 위를 움직이는 점 $P$에 대하여 $\\overline{PA}+\\overline{PB}$의 최솟값은?",
     "choices": [
@@ -184,7 +184,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의 이동","대칭이동","직선","원","접선"],
     "wide": false,
     "content": "직선 $x-2y=9$를 직선 $y=x$에 대하여 대칭이동한 도형이 원 $(x-3)^2+(y+5)^2=k^2$에 접할 때, 실수 $k$의 값은?",
     "choices": ["$\\sqrt3$","$\\sqrt5$","$2\\sqrt3$","$3\\sqrt5$","$\\pm4\\sqrt5$"],
@@ -262,7 +262,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 10,
     "level": "중",
     "category": "직선의 방정식",
@@ -273,7 +273,12 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "평행",
+      "수직"
+    ],
     "wide": false,
     "content": "직선 $3x+ay-4=0$이 직선 $x+2y-5=0$과 평행하고 직선 $3x+by+2=0$과 수직일 때, 상수 $a$, $b$에 대하여 $a+b$의 값은?",
     "choices": [
@@ -285,10 +290,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 평행한 두 직선의 기울기는 같고, 수직인 두 직선의 기울기의 곱은 $-1$이다.\\n첫째 직선의 기울기는 $-\\dfrac3a$, 기준 직선의 기울기는 $-\\dfrac12$이므로 $a=6$이다.\\n셋째 직선의 기울기는 $-\\dfrac3b$이고 $(-\\dfrac3b)(-\\dfrac12)=-1$이므로 $b=-\\dfrac32$이다.\\n따라서 $a+b=6-\\dfrac32=\\dfrac92$이다.\\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q10-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 10의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "a=6은 평행 조건 · b=−3/2는 수직 조건, 합=9/2",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -318,7 +327,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -329,7 +338,11 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "점 $A(2,3)$에서 두 점 $B(-1,3)$, $C(3,7)$을 이은 선분 $BC$에 내린 수선의 발을 $M(a,b)$라 할 때, $4ab$의 값은?",
     "choices": [
@@ -345,12 +358,12 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -362,7 +375,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "fullwidth",
     "tags": [
-      "도형"
+      "도형",
+      "직선",
+      "평행",
+      "수직",
+      "거리"
     ],
     "wide": false,
     "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q13.png",
@@ -377,10 +394,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 수직인 두 직선의 기울기 관계와 두 점 사이의 거리 공식을 확인한다.\\n직선 $l:ax+by+c=0$의 기울기는 $-\\dfrac{a}{b}$이다. 이에 수직인 $PH$의 기울기는 $\\dfrac{b}{a}$이므로 $(가)=\\dfrac{b}{a}(x-x_1)$이다.\\n또한 두 점 $P$, $H$ 사이의 거리는 $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$이므로 이것이 $(나)$이다.\\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q13-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "l의 기울기=−a/b · PH의 기울기=b/a",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -425,7 +446,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의 이동","평행이동","직선","거리"],
     "wide": false,
     "content": "원 $x^2+y^2-4x+2y+1=0$을 원 $x^2+y^2=4$로 옮기는 평행이동에 의하여 직선 $l:3x-y+4=0$이 옮겨지는 직선을 $l'$이라 하자. 이때, 두 직선 $l$, $l'$ 사이의 거리는?",
     "choices": [
@@ -517,7 +538,7 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의 이동","대칭이동","점","대칭축"],
     "wide": false,
     "content": "점 $(-2,1)$을 직선 $y=3x+2$에 대하여 대칭이동한 점의 좌표를 $(a,b)$라 할 때, $a+b$의 값은?",
     "choices": [
@@ -532,9 +553,13 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q18-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 19,
     "level": "중",
     "category": "직선의 방정식",
@@ -546,7 +571,9 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "도형",
+      "직선"
     ],
     "wide": false,
     "content": "직선 $mx+y-3m+2=0$이 제1사분면을 지나지 않도록 하는 실수 $m$의 값의 범위를 구하고, 그 과정을 서술하시오.",
@@ -554,15 +581,15 @@ window.questionBank = [
     "answer": "$0\\le m\\le \\dfrac23$",
     "solution": "[키포인트] 직선을 $y=-mx+3m-2$로 나타내고 $x\\gt0$에서 $y\\gt0$인 점이 존재하지 않을 조건을 구한다.\\n$m\\lt0$이면 기울기 $-m$이 양수이므로 $x$가 충분히 커질 때 $y$도 양수가 되어 제1사분면을 지난다. 따라서 $m\\ge0$이어야 한다.\\n$m\\ge0$일 때 $x\\gt0$에서 $y=-mx+3m-2$의 최댓값은 $x$가 $0$에 가까울 때의 값 $3m-2$에 가깝다. 제1사분면을 지나지 않으려면 $3m-2\\le0$이어야 한다.\\n따라서 $m\\ge0$이고 $m\\le\\dfrac23$이므로 구하는 범위는 $0\\le m\\le\\dfrac23$이다.\\n따라서 구하는 값은 $0\\le m\\le \\dfrac23$이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q19-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 19의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 19의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "제1사분면에 들어가지 않는 범위 · 0≤m≤2/3",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",
@@ -575,7 +602,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "도형"
+      "도형",
+      "직선",
+      "넓이"
     ],
     "wide": false,
     "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20.png",
@@ -584,11 +613,11 @@ window.questionBank = [
     "answer": "$3x+5y-15=0$",
     "solution": "[키포인트] 도형을 두 직사각형으로 나누어 전체 넓이를 구하고, 점 $A$를 지나는 분할선의 $y$축과의 교점을 정한다.\\n도형은 $0\\le x\\le5$, $0\\le y\\le4$인 직사각형과 $-5\\le x\\le0$, $0\\le y\\le1$인 직사각형의 합이다. 전체 넓이는 $5\\cdot4+5\\cdot1=25$이다.\\n넓이의 절반은 $\\dfrac{25}{2}$이다. 점 $A(5,0)$를 지나고 $y$축과 $(0,t)$에서 만나는 직선을 생각하자. 이 직선 아래쪽에는 왼쪽 직사각형의 넓이 $5$와 오른쪽의 삼각형 넓이 $\\dfrac12\\cdot5\\cdot t$가 포함된다.\\n$5+\\dfrac{5t}{2}=\\dfrac{25}{2}$에서 $t=3$이다. 따라서 직선은 $(5,0)$과 $(0,3)$을 지나므로 $y=-\\dfrac35x+3$이다.\\n정리하면 $3x+5y-15=0$이다.\\n따라서 구하는 값은 $3x+5y-15=0$이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 20의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 20의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "전체 넓이=25 · 절반 넓이=25/2",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
+    "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+    "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

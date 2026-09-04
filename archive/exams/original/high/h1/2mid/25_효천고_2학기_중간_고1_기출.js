@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 2,
     "level": "하",
     "category": "두 직선의 수직 조건",
@@ -48,7 +48,8 @@ window.questionBank = [
       "객관식",
       "직선",
       "기울기",
-      "수직"
+      "수직",
+      "도형"
     ],
     "wide": false,
     "content": "두 직선 $x+3y+2=0$, $kx-2y-1=0$이 서로 수직일 때, 실수 $k$의 값은? [3.1점]",
@@ -61,10 +62,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 직선이 수직이면 두 기울기의 곱이 $-1$이다.\n조건 정리: 첫째 직선의 기울기는 $-\\dfrac13$, 둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n풀이 방향: 수직 조건을 식으로 세워 $k$를 구한다.\n정석 풀이: $-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이므로 $-k=-6$, 따라서 $k=6$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "첫째 기울기=−1/3 · 둘째 기울기=3, 수직 조건 k=6",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -213,7 +218,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 7,
     "level": "중",
     "category": "평행한 두 직선 사이의 거리",
@@ -228,7 +233,11 @@ window.questionBank = [
       "객관식",
       "평행선",
       "두직선사이거리",
-      "매개변수"
+      "매개변수",
+      "도형",
+      "직선",
+      "평행",
+      "거리"
     ],
     "wide": false,
     "content": "평행한 두 직선 $2x-y+1=0$, $2x-y+k=0$ 사이의 거리가 $\\sqrt5$가 되도록 하는 모든 실수 $k$의 값의 곱은? [3.7점]",
@@ -244,9 +253,13 @@ window.questionBank = [
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 7의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 직선은 평행 · 상수항 차이=5, 거리=√5",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 8,
     "level": "중",
     "category": "점과 직선 사이의 거리",
@@ -263,7 +276,9 @@ window.questionBank = [
       "점과직선사이거리",
       "수선의발",
       "빈칸추론",
-      "도형"
+      "도형",
+      "수직",
+      "거리"
     ],
     "wide": false,
     "content": "다음 보기는 좌표평면 위의 점 $P(x_1,y_1)$과 점 $P$를 지나지 않는 직선 $l:ax+by+c=0$ ($a\\ne0$ 또는 $b\\ne0$) 사이의 거리를 구하는 과정 중 일부이다. 빈칸 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ에 들어갈 내용으로 알맞은 것을 순서대로 쓴 것은? [3.8점]<br><br>$a\\ne0$, $b\\ne0$일 때, 점 $P$에서 직선 $l$에 내린 수선의 발 $H$의 좌표를 $(x_2,y_2)$라고 하면 직선 $PH$와 직선 $l$의 기울기는 각각 $\\dfrac{y_2-y_1}{x_2-x_1}$, $-\\dfrac ab$이고, 두 직선은 서로 수직이므로 기울기의 곱은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄱ</span>이다.<br>$\\dfrac{x_2-x_1}{a}=\\dfrac{y_2-y_1}{b}$이고, 이것을 $k$ ($k\\ne0$)로 놓으면 $x_2-x_1=ak$, $y_2-y_1=bk$이므로 $\\overline{PH}=\\sqrt{k^2(a^2+b^2)}$에서 $\\sqrt{k^2}$에 해당하는 값은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄴ</span>이다.<br>한편 점 $H(x_2,y_2)$는 직선 $l$ 위의 점이므로 $ax_2+by_2+c=0$이고, 이 식에 대입할 $x_2$, $y_2$는 각각 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄷ</span>, <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄹ</span>이다. 이로부터 $k=-\\dfrac{ax_1+by_1+c}{a^2+b^2}$이고, 거리 공식의 분자에 들어갈 식은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㅁ</span>이다.",
@@ -277,10 +292,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 수직인 두 직선의 기울기 관계와 수선의 발 좌표 표현을 차례로 연결한다.\n조건 정리: $PH$와 $l$은 수직이고, $x_2-x_1=ak$, $y_2-y_1=bk$로 둘 수 있다.\n풀이 방향: 빈칸마다 바로 앞 식에서 결정되는 값을 순서대로 확인한다.\n정석 풀이: 수직이므로 기울기의 곱은 $-1$이어서 ㄱ은 $-1$이다. $\\sqrt{k^2(a^2+b^2)}=|k|\\sqrt{a^2+b^2}$이므로 ㄴ은 $|k|$이다. 또 $x_2=x_1+ak$, $y_2=y_1+bk$이므로 ㄷ, ㄹ은 각각 $x_1+ak$, $y_1+bk$이다. 마지막으로 거리의 분자는 음수가 될 수 없으므로 ㅁ은 $|ax_1+by_1+c|$이다. 따라서 순서는 $(-1,|k|,x_1+ak,y_1+bk,|ax_1+by_1+c|)$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 8의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "PH⊥l · x₂−x₁=ak, y₂−y₁=bk",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -691,7 +710,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 19의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -814,7 +837,7 @@ window.questionBank = [
     "content": "[서술형 5] $|a|\\le9$, $|b|\\le4$인 두 정수 $a$, $b$에 대하여 함수 $y=|x|$의 그래프를 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 함수의 그래프가 $x^2+y^2-8x-4y+18=0$의 중심을 지나고 원의 넓이를 이등분할 때, 두 수 $a$, $b$의 모든 순서쌍 $(a,b)$를 구하고 그 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$(3,1)$, $(2,0)$, $(1,-1)$, $(0,-2)$, $(-1,-3)$, $(-2,-4)$, $(5,1)$, $(6,0)$, $(7,-1)$, $(8,-2)$, $(9,-3)$",
-    "solution": "[키포인트] 원 안에서 절댓값 그래프가 한 직선 조각으로 나타나야 그 직선이 중심을 지나 원의 넓이를 이등분한다.\n조건 정리: 원의 방정식을 완전제곱식으로 고치면 $(x-4)^2+(y-2)^2=2$이므로 중심은 $(4,2)$, 반지름은 $\\sqrt2$이다.\n이동한 그래프는 $y=|x-a|+b$이고, 꼭짓점은 $(a,b)$이다.\n풀이 방향: 그래프가 원의 넓이를 이등분하려면 원 안에서는 꼭짓점이 나타나지 않아야 한다. 먼저 중심을 지나는 조건으로 $b$를 정한 다음, 꼭짓점과 중심 사이의 거리 및 정수 범위를 적용한다.\n정석 풀이: 그래프가 중심 $(4,2)$를 지나므로\n$2=|4-a|+b$,\n따라서 $b=2-|4-a|$이다.\n꼭짓점 $(a,b)$와 중심 $(4,2)$ 사이의 거리는\n$\\sqrt{(a-4)^2+(b-2)^2}=\\sqrt2|a-4|$이다.\n꼭짓점이 원의 내부에 있으면 원 안에서 그래프가 두 직선 조각으로 갈라져 넓이를 이등분할 수 없다. 따라서 꼭짓점은 원 위 또는 원 밖에 있어야 하므로\n$\\sqrt2|a-4|\\ge\\sqrt2$,\n즉 $|a-4|\\ge1$이다. 따라서 $a=4$는 제외된다.\n또 $|b|\\le4$와 $b=2-|4-a|$를 함께 적용하면 $|4-a|\\le6$이다. 그러므로\n$1\\le|4-a|\\le6$,\n$|a|\\le9$를 만족하는 정수는 $a=-2,-1,0,1,2,3,5,6,7,8,9$이다.\n각 $a$에 대해 $b=2-|4-a|$를 계산하면\n$(-2,-4),\\quad(-1,-3),\\quad(0,-2),\\quad(1,-1),\\quad(2,0),\\quad(3,1)$,\n$(5,1),\\quad(6,0),\\quad(7,-1),\\quad(8,-2),\\quad(9,-3)$이다.\n따라서 구하는 순서쌍은\n$(3,1),\\quad(2,0),\\quad(1,-1),\\quad(0,-2),\\quad(-1,-3),\\quad(-2,-4)$,\n$(5,1),\\quad(6,0),\\quad(7,-1),\\quad(8,-2),\\quad(9,-3)$이다.",
+    "solution": "[키포인트] 원의 중심을 지나는 직선이 만드는 지름과 절댓값 그래프의 다른 branch가 원 내부를 추가로 가르는지까지 확인하여 필요조건과 충분조건을 함께 검증한다.\\n조건 정리: 원은 $(x−4)^2+(y−2)^2=2$이므로 중심 $O=(4,2)$, 반지름은 $\\sqrt2$이다. 이동한 그래프는 $y=|x−a|+b$이고 꼭짓점은 $V=(a,b)$이다.\\n풀이 방향: 먼저 그래프가 중심을 지나는 조건으로 $b$를 정하고, 꼭짓점의 위치로 원 안에서 실제로 중심을 지나는 branch만 남는지 확인한다.\\n\\n그래프가 중심 $O=(4,2)$를 지나므로 $2=|4−a|+b$, $b=2−|4−a|$이다.\\n\\n꼭짓점 $V$와 중심 $O$ 사이의 거리는 $\\sqrt{(a−4)^2+(b−2)^2}=\\sqrt2|a−4|$이다. 원 안에서 꼭짓점이 나타나면 두 branch가 원 내부에서 꺾여 서로 다른 두 선분을 만들므로, 중심을 지나는 branch 하나가 만드는 지름만으로 원의 넓이를 양분할 수 없다. 따라서 필요조건은 $\\sqrt2|a−4|\\ge\\sqrt2$, 즉 $|a−4|\\ge1$이다.\\n\\n이제 이 조건이 충분한지도 확인한다. 중심 $O$를 지나는 branch는 원과 만나는 현이 중심을 지나므로 지름이고, 따라서 원의 넓이를 정확히 이등분한다. 다른 branch와 중심 $O$ 사이의 거리는 $\\sqrt2|a−4|$이다. $|a−4|\\ge1$이면 이 거리는 원의 반지름 이상이므로 다른 branch는 원의 내부를 다시 가르지 않는다. 등호일 때에는 꼭짓점에서 원에 접하고, 부등호일 때에는 원 밖에 있다. 따라서 원 내부에는 중심을 지나는 branch만 실제 절단선으로 남으며, 위 필요조건은 이 문제에서 충분조건이기도 하다.\\n\\n또 $|b|\\le4$와 $b=2−|4−a|$를 함께 적용하면 $|4−a|\\le6$이다. 그러므로 $1\\le|4−a|\\le6$, $|a|\\le9$를 만족하는 정수는 $a=−2,−1,0,1,2,3,5,6,7,8,9$이다.\\n각 $a$에 대해 $b=2−|4−a|$를 계산하면 $(−2,−4),(−1,−3),(0,−2),(1,−1),(2,0),(3,1),(5,1),(6,0),(7,−1),(8,−2),(9,−3)$이다.\\n따라서 구하는 순서쌍은 $(3,1),(2,0),(1,−1),(0,−2),(−1,−3),(−2,−4),(5,1),(6,0),(7,−1),(8,−2),(9,−3)$이다.",
     "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q23-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 23의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",

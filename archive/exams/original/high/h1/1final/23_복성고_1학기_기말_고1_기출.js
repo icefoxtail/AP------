@@ -102,7 +102,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 4,
     "level": "하",
     "category": "직선의 방정식",
@@ -117,7 +117,8 @@ window.questionBank = [
       "객관식",
       "기울기",
       "직선",
-      "계산"
+      "계산",
+      "도형"
     ],
     "wide": false,
     "content": "점 $(2,1)$을 지나고, $x$축의 양의 방향과 $45^\\circ$의 각을 이루는 직선이 점 $(5,a)$를 지날 때, $a$의 값으로 옳은 것은? [3점]",
@@ -133,9 +134,13 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "45°의 기울기=1 · B=(5,4), a=4",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -150,7 +155,9 @@ window.questionBank = [
       "객관식",
       "수직",
       "기울기",
-      "직선"
+      "직선",
+      "도형",
+      "절편"
     ],
     "wide": false,
     "content": "직선 $y=-\\dfrac{1}{2}x$와 수직이고 점 $(1,5)$를 지나는 직선의 방정식으로 옳은 것은? [3점]",
@@ -166,7 +173,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q05-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "주어진 기울기=−1/2 · 수직 기울기=2, y=2x+3",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -200,8 +211,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 6의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -343,7 +354,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 11,
     "level": "중",
     "category": "직선의 방정식",
@@ -360,7 +371,8 @@ window.questionBank = [
       "삼각형",
       "평행",
       "공점",
-      "조건해석"
+      "조건해석",
+      "도형"
     ],
     "wide": false,
     "content": "세 직선 $x+y-6=0$, $ax+y+4=0$, $x-y-6=0$이 삼각형을 이루지 않도록 하는 모든 $a$값의 합으로 옳은 것은? [4점]",
@@ -374,11 +386,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 세 직선이 삼각형을 이루지 못하는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\n조건 정리: 세 직선은 $x+y-6=0$, $ax+y+4=0$, $x-y-6=0$이다.\n풀이 방향: 두 직선이 평행한 경우와 세 직선이 한 점에서 만나는 경우를 각각 구한다.\n정석 풀이:\n첫 번째 직선 $x+y-6=0$은 $y=-x+6$이므로 기울기가 $-1$이다.\n세 번째 직선 $x-y-6=0$은 $y=x-6$이므로 기울기가 $1$이다.\n두 번째 직선 $ax+y+4=0$은 $y=-ax-4$이므로 기울기가 $-a$이다.\n두 번째 직선이 첫 번째 직선과 평행하려면\n$-a=-1$이므로 $a=1$이다.\n두 번째 직선이 세 번째 직선과 평행하려면\n$-a=1$이므로 $a=-1$이다.\n이제 세 직선이 한 점에서 만나는 경우를 구한다.\n첫 번째 직선과 세 번째 직선의 교점을 구하면\n$\\begin{cases}x+y=6\\\\x-y=6\\end{cases}$이다.\n두 식을 더하면 $2x=12$이므로 $x=6$, 그리고 $y=0$이다.\n따라서 두 직선의 교점은 $(6,0)$이다.\n이 점이 두 번째 직선 $ax+y+4=0$ 위에 있으려면\n$6a+0+4=0$이어야 한다.\n따라서 $a=-\\dfrac{2}{3}$이다.\n조건을 만족하는 $a$의 값은 $1,-1,-\\dfrac{2}{3}$이고, 그 합은\n$1+(-1)-\\dfrac{2}{3}=-\\dfrac{2}{3}$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 11의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 11의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "평행: a=1, −1 · 공점: a=−2/3",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -531,8 +543,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -642,8 +654,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

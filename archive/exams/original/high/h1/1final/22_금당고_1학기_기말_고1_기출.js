@@ -28,10 +28,14 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트]\n직선 $y=x$에 대하여 대칭이동하면 두 좌표의 자리가 서로 바뀐다.\n조건 정리\n점 $P$의 좌표는 $(2,-5)$이다.\n풀이 과정\n직선 $y=x$ 위의 점은 $x$좌표와 $y$좌표가 같은 점들이다. 이 직선을 기준으로 대칭이동하면 $(x,y)$는 $(y,x)$로 옮겨진다.\n따라서 $(2,-5)$는 $(-5,2)$로 옮겨진다.\n결론\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -98,7 +102,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 4,
     "level": "하",
     "category": "직선의 방정식",
@@ -112,7 +116,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "점과직선사이거리",
-      "직선"
+      "직선",
+      "도형",
+      "거리"
     ],
     "wide": false,
     "content": "원점에서 직선 $3x-4y+3=0$ 사이의 거리를 구하면? [3.8점]",
@@ -128,7 +134,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "O에서 직선까지의 수선 · 거리=3/5",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -227,10 +237,14 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트]\n원의 방정식을 완전제곱식으로 고쳐 중심을 찾고, 원점대칭은 $(x,y)$를 $(-x,-y)$로 옮긴다.\n조건 정리\n주어진 원의 중심을 먼저 구한 뒤, 그 중심을 원점에 대하여 대칭이동한다.\n풀이 과정\n$x^2+y^2-2x+4y+4=0$에서\n$x^2-2x+y^2+4y+4=0$이다.\n완전제곱식으로 고치면\n$(x-1)^2-1+(y+2)^2-4+4=0$이므로\n$(x-1)^2+(y+2)^2=1$이다.\n따라서 원의 중심은 $(1,-2)$이다.\n이 점을 원점에 대하여 대칭이동하면 $(-1,2)$가 된다.\n문제에서 대칭이동한 원의 중심이 $(a,2)$라 했으므로 $a=-1$이다.\n결론\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -411,7 +425,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 13,
     "level": "상",
     "category": "직선의 방정식",
@@ -426,7 +440,9 @@ window.questionBank = [
       "객관식",
       "수선의발",
       "거리",
-      "직선"
+      "직선",
+      "도형",
+      "수직"
     ],
     "wide": false,
     "content": "좌표평면 위의 점 $P(4,3)$에서 $x$축에 내린 수선의 발을 $H$라 하고, 선분 $OH$ 위의 점 $Q$에서 선분 $OP$에 내린 수선의 발을 $I$라 하자. $QH=QI$일 때, 직선 $PQ$의 방정식이 $y=mx+n$이다. $m-n$의 값은? (단, $O$는 원점이고, $m,n$은 상수이다.) [4.4점]",
@@ -443,8 +459,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -480,8 +496,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 14의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -619,7 +635,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 19,
     "level": "중",
     "category": "직선의 방정식",
@@ -634,7 +650,8 @@ window.questionBank = [
       "단답형",
       "삼각형",
       "내심",
-      "직선"
+      "직선",
+      "도형"
     ],
     "wide": false,
     "content": "<단답형 2><br>세 직선 $y-2=0$, $4x-3y+2=0$, $3x+4y-15=0$으로 둘러싸인 삼각형의 내심의 좌표를 구하시오. [5.0점]",
@@ -645,12 +662,12 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 19의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",
@@ -666,7 +683,11 @@ window.questionBank = [
       "각의이등분선",
       "직선",
       "원",
-      "접선"
+      "접선",
+      "도형",
+      "그래프",
+      "거리",
+      "절편"
     ],
     "wide": true,
     "content": "<서술형 1><br>두 직선 $l:3x+4y+4=0$, $m:4x+3y-3=0$이 있다.<br>(1) 두 직선 $l,m$이 이루는 각을 이등분하고, $x$절편이 양수인 직선 $n$의 방정식을 구하라. [4점]<br>(2) 직선 $n$ 위에 있고, $x$좌표가 음수인 점을 중심으로 하는, 직선 $l$ 및 직선 $m$에 접하고 반지름이 $7$인 원의 방정식을 구하라. [6점]",
@@ -677,8 +698,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 20의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

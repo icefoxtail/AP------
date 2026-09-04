@@ -356,7 +356,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -370,7 +370,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "직선의방정식",
-      "그래프"
+      "그래프",
+      "도형",
+      "직선",
+      "절편"
     ],
     "wide": false,
     "content": "세 실수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 다음 그림과 같을 때, 직선 $cx+by+a=0$의 개형으로 알맞은 것은? [4.3점]",
@@ -378,8 +381,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 주어진 직선의 기울기와 $y$절편의 부호로 $a/b$, $c/b$의 부호를 판단한다.\n조건 정리: 주어진 직선은 기울기가 양수이고 $y$절편이 음수이다.\n풀이 방향: 새 직선의 기울기 $-c/b$와 $y$절편 $-a/b$의 부호를 구한다.\n정석 풀이: $-a/b\\gt0$이므로 $a/b\\lt0$이고, $-c/b\\lt0$이므로 $c/b\\gt0$이다. 새 직선 $cx+by+a=0$의 기울기는 $-c/b\\lt0$이고 $y$절편은 $-a/b\\gt0$이다. 따라서 기울기가 음수이고 $y$절편이 양수인 직선이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "원래 y절편은 음수 · 변환 직선의 기울기는 음수",
     "solutionImageSize": "full",
     "image": "assets/images/25_제일고_2학기_중간_고1_기출/q12.png",
     "imageSize": "tall",
@@ -424,7 +427,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -438,7 +441,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "직선의방정식",
-      "수직"
+      "수직",
+      "도형",
+      "직선"
     ],
     "wide": false,
     "content": "두 직선 $(a-2)x-(a-3)y+7=0$, $(a^2-3a)x-y+5=0$이 서로 수직이 되도록 하는 모든 실수 $a$값의 곱은? [4.5점]",
@@ -451,12 +456,16 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 두 직선 $A_1x+B_1y+C_1=0$, $A_2x+B_2y+C_2=0$이 수직이면 $A_1A_2+B_1B_2=0$이다.\n조건 정리: 첫째 직선의 계수는 $A_1=a-2$, $B_1=3-a$이고 둘째 직선은 $A_2=a(a-3)$, $B_2=-1$이다.\n풀이 방향: 수직 조건을 계수에 적용하고 인수분해한다.\n정석 풀이: $(a-2)a(a-3)+(3-a)(-1)=0$이다. 이를 정리하면 $(a-3)\\{a(a-2)+1\\}=0$, 즉 $(a-3)(a-1)^2=0$이다. 따라서 $a=1$ 또는 $a=3$이고, 모든 값의 곱은 $1\\times3=3$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "a=1: 기울기 1/2와 −2 · a=3: 수직선과 수평선",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 15,
     "level": "상",
     "category": "직선의 방정식",
@@ -471,7 +480,10 @@ window.questionBank = [
       "객관식",
       "직선의방정식",
       "닮음",
-      "도형"
+      "도형",
+      "직선",
+      "평행",
+      "넓이"
     ],
     "wide": false,
     "content": "다음 그림과 같이 세 점 $A(2,5)$, $B(-1,-1)$, $C(6,-8)$을 꼭짓점으로 하는 삼각형 $ABC$가 있다. 선분 $AB$ 위의 한 점 $D$와 선분 $AC$ 위의 한 점 $E$에 대하여 선분 $DE$가 선분 $BC$와 평행하고 삼각형 $ADE$와 삼각형 $ABC$의 넓이의 비가 $1:9$일 때, 직선 $DE$의 방정식이 $y=ax+b$이다. 이때 $a+b$의 값은? [4.6점]",
@@ -485,12 +497,12 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 넓이비로 닮음비를 구한 뒤 내분점 공식으로 $D$, $E$의 좌표를 구한다.\n조건 정리: $DE\\parallel BC$이므로 삼각형 $ADE$와 삼각형 $ABC$는 닮음이고, 넓이비가 $1:9$이므로 닮음비는 $1:3$이다.\n풀이 방향: $AD:DB=AE:EC=1:2$를 이용하여 두 내분점의 좌표를 구한다.\n정석 풀이:\n$D$는 선분 $AB$를 $1:2$로 내분하므로\n$D\\left(\\dfrac{2\\cdot2+1\\cdot(-1)}{3},\\dfrac{2\\cdot5+1\\cdot(-1)}{3}\\right)=(1,3)$이다.\n$E$는 선분 $AC$를 $1:2$로 내분하므로\n$E\\left(\\dfrac{2\\cdot2+1\\cdot6}{3},\\dfrac{2\\cdot5+1\\cdot(-8)}{3}\\right)=\\left(\\dfrac{10}{3},\\dfrac{2}{3}\\right)$이다.\n직선 $DE$의 기울기는\n$\\dfrac{\\frac23-3}{\\frac{10}{3}-1}=-1$이다.\n점 $(1,3)$을 지나므로 직선의 방정식은 $y=-x+4$이다.\n따라서 $a=-1$, $b=4$이므로 $a+b=3$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 15의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "세 직선으로 만든 삼각형 · 내심 I=(−4,20−10√3)",
     "solutionImageSize": "full",
     "image": "assets/images/25_제일고_2학기_중간_고1_기출/q15.png",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

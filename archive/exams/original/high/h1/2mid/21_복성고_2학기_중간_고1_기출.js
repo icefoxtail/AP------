@@ -111,8 +111,8 @@ window.questionBank=[
     "solutionImageAlt": "도형의 이동 문항 3의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -145,10 +145,14 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "원점에 대한 대칭이동은 각 점의 두 좌표의 부호를 모두 바꾸는 변환이다.\n\n따라서\n$(-3,-1)\\mapsto(3,1)$이다.\n\n그러므로 정답은 ⑤이다.\n원점에서 같은 거리에 있는 두 점은 좌표의 부호만 서로 반대가 되므로 이 변환 규칙을 적용한다. 실제로 두 점은 원점에서 같은 거리에 있다. 따라서 원점 대칭의 결과는 보기 ⑤와 일치한다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_복성고_2학기_중간_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 4의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -362,10 +366,14 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "직선 $(k+3)x-2y+8=0$을 $x$축 방향으로 $2$만큼 평행이동하면, 새 점 $(x,y)$에 대응하는 원래 점의 좌표는 $(x-2,y)$이다. 따라서\n$(k+3)(x-2)-2y+8=0$이고, 정리하면\n$k(x-2)+3x-2y+2=0$이다.\n\n이 식이 $k$의 값과 관계없이 성립하려면 $k$의 계수인 $x-2$가 $0$이어야 하므로 $x=2$이다. 이를 대입하면\n$3\\cdot2-2y+2=0$에서 $y=4$를 얻는다.\n\n따라서 구하는 점은 $(2,4)$이고 정답은 ②이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_복성고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 10의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -589,7 +597,7 @@ window.questionBank=[
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+            {
     "id": 17,
     "level": "중",
     "category": "점과 직선의 거리",
@@ -605,7 +613,10 @@ window.questionBank=[
       "평면좌표",
       "점과직선거리",
       "최솟값",
-      "분수"
+      "분수",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "두 실수 $x,y$가 등식 $(x-2y+8)(2x+y-4)=0$을 만족할 때, $x^2+y^2$의 최솟값이 $\\dfrac{a}{b}$이다. $a-b$의 값은? [4.5점]",
@@ -619,8 +630,8 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 주어진 곱이 $0$이므로 점 $(x,y)$는 두 직선 중 하나 위에 있고, $x^2+y^2$는 원점까지의 거리의 제곱이다.\n조건 정리: 두 직선은 $x-2y+8=0$과 $2x+y-4=0$이다.\n풀이 방향: 원점에서 각 직선까지의 거리의 제곱을 구해 더 작은 값을 선택한다.\n정석 풀이: 원점과 직선 $x-2y+8=0$ 사이의 거리의 제곱은 $\\dfrac{8^2}{1^2+(-2)^2}=\\dfrac{64}{5}$이다. 원점과 직선 $2x+y-4=0$ 사이의 거리의 제곱은 $\\dfrac{(-4)^2}{2^2+1^2}=\\dfrac{16}{5}$이다. 따라서 $x^2+y^2$의 최솟값은 $\\dfrac{16}{5}$이고 $a=16,b=5$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/21_복성고_2학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 17의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 17의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "곱=0: 두 직선의 합집합 · 원점까지 거리의 제곱",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -660,8 +671,8 @@ window.questionBank=[
     "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -794,8 +805,8 @@ window.questionBank=[
     "solutionImageAlt": "도형의 이동 문항 22의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

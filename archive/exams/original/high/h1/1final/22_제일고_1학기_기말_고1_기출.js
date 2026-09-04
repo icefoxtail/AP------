@@ -314,7 +314,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 10,
     "level": "하",
     "category": "직선의 방정식",
@@ -329,7 +329,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "절편"
     ],
     "wide": false,
     "content": "$(-2,1)$, $(4,4)$를 지나는 직선의 방정식이 $y=mx+n$이라고 할 때, $mn$의 값으로 알맞은 것은? [4점]",
@@ -345,9 +348,13 @@ window.questionBank = [
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 10의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 점을 지나는 직선 · m=1/2, n=2, mn=1",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 11,
     "level": "상",
     "category": "직선의 방정식",
@@ -362,7 +369,12 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "수직",
+      "거리",
+      "절편"
     ],
     "wide": false,
     "content": "두 직선 $2x-y=0$, $3x+2y+7=0$의 교점을 지나는 직선 중에서 원점 $O$로부터의 거리가 최대가 되는 직선의 방정식을 $y=f(x)$라고 할 때, 이 직선의 $y$절편의 값으로 알맞은 것은? [4.4점]",
@@ -384,7 +396,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -399,7 +411,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "점 $(1,a)$와 두 직선 $x+2y=1$, $2x+y=1$ 사이의 거리가 같도록 하는 모든 실수 $a$의 값의 합은? [4.1점]",
@@ -413,8 +428,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 점과 직선 사이의 거리 공식을 이용해 두 거리를 같게 둔다.\n\n점 $(1,a)$에서 직선 $x+2y=1$까지의 거리는\n$\\dfrac{|1+2a-1|}{\\sqrt{1^2+2^2}}=\\dfrac{|2a|}{\\sqrt5}$이다.\n점 $(1,a)$에서 직선 $2x+y=1$까지의 거리는\n$\\dfrac{|2+a-1|}{\\sqrt{2^2+1^2}}=\\dfrac{|a+1|}{\\sqrt5}$이다.\n두 거리가 같으므로\n$|2a|=|a+1|$이다.\n양변을 제곱하면\n$4a^2=(a+1)^2$\n$4a^2=a^2+2a+1$\n$3a^2-2a-1=0$\n$(3a+1)(a-1)=0$이다.\n따라서 $a=-\\dfrac13$ 또는 $a=1$이다.\n모든 값의 합은\n$-\\dfrac13+1=\\dfrac23$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_제일고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 직선까지의 거리가 같은 점 · P₁=(−1/3,1), P₂=(1,1)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",

@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -49,7 +49,10 @@ window.questionBank = [
       "객관식",
       "직선",
       "거리공식",
-      "계산"
+      "계산",
+      "도형",
+      "그래프",
+      "거리"
     ],
     "wide": false,
     "content": "점 $(-1,4)$와 직선 $2x-y+1=0$ 사이의 거리는? [3.5점]",
@@ -65,7 +68,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "P=(−1,4) · H=(1,3), 거리=√5",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -502,7 +509,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 16,
     "level": "상",
     "category": "직선의 방정식",
@@ -517,7 +524,9 @@ window.questionBank = [
       "객관식",
       "직선",
       "보기",
-      "거리공식"
+      "거리공식",
+      "도형",
+      "거리"
     ],
     "wide": false,
     "content": "방정식 $(k-2)x+(2k-3)y+4k-3=0$이 나타내는 직선 $l$에 대한 설명 중 옳은 것만 있는 대로 고른 것은? [4.8점]<br><div class='question-note-box'>ㄱ. 직선 $l$은 제4사분면을 반드시 지난다.<br>ㄴ. 직선 $l$은 직선 $2x+3y+3=0$과 겹쳐질 수 없다.<br>ㄷ. 원점과 직선 $l$ 사이의 거리가 $1$인 실수 $k$는 $1$개 존재한다.</div>",

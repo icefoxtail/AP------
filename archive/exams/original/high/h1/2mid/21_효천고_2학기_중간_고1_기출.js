@@ -104,8 +104,8 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] $x$축 방향으로 $a$만큼 평행이동하면 식의 $x$를 $x-a$로 바꾼다.\n조건 정리: 원래 직선은 $y=2x+1$이고, 옮긴 직선이 점 $(4,1)$을 지난다.\n풀이 방향: 평행이동한 직선의 식을 만든 뒤 주어진 점의 좌표를 대입한다.\n정석 풀이: 옮긴 직선은 $y=2(x-a)+1$이다. 점 $(4,1)$을 대입하면 $1=2(4-a)+1$이므로 $2(4-a)=0$이고 $a=4$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -176,8 +176,8 @@ window.questionBank=[
     "solutionImageAlt": "도형의 이동 문항 5의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -431,7 +431,7 @@ window.questionBank=[
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+            {
     "id": 13,
     "level": "상",
     "category": "직선과 삼각형 넓이",
@@ -448,7 +448,11 @@ window.questionBank=[
       "도형",
       "그래프",
       "삼각형넓이",
-      "최솟값"
+      "최솟값",
+      "직선",
+      "수직",
+      "절편",
+      "넓이"
     ],
     "wide": false,
     "content": "그림과 같이 점 $A(-2,3)$을 지나고 기울기가 $m$ ($m\\gt0$)인 직선이 $x$축, $y$축과 만나는 점을 각각 $P,Q$라 하고, 점 $A$에서 $x$축, $y$축에 내린 수선의 발을 각각 $R,S$라 하자. 삼각형 $APR$과 삼각형 $ASQ$의 넓이를 각각 $S_1,S_2$라 할 때, $S_1+S_2$의 최솟값은? [4.1점]",
@@ -463,8 +467,8 @@ window.questionBank=[
     "answer": "③",
     "solution": "[키포인트] 기울기 $m$으로 두 삼각형의 밑변과 높이를 나타내어 합의 최솟값을 구한다.\n조건 정리: 직선은 점 $A(-2,3)$을 지나고 기울기는 $m>0$이다.\n풀이 방향: 직선의 $x$절편과 $y$절편을 구하여 $S_1,S_2$를 $m$의 식으로 나타낸다.\n정석 풀이: 직선의 식은 $y-3=m(x+2)$이다. $x$절편은 $-2-\\dfrac3m$이므로 $PR=\\dfrac3m$, $AR=3$이고 $S_1=\\dfrac12\\cdot\\dfrac3m\\cdot3=\\dfrac9{2m}$이다. $y$절편은 $3+2m$이므로 $SQ=2m$, $AS=2$이고 $S_2=\\dfrac12\\cdot2\\cdot2m=2m$이다. 따라서 $S_1+S_2=\\dfrac9{2m}+2m\\ge2\\sqrt{\\dfrac9{2m}\\cdot2m}=6$이다. 등호는 $m=\\dfrac32$일 때 성립한다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/21_효천고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "A=(−2,3), R=(−2,0), S=(0,3) · 직선 y=3x/2+6",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -670,8 +674,8 @@ window.questionBank=[
     "wide": false,
     "content": "[서술형 1] $l:y=ax+2$를 $(5,1)$만큼 옮긴 후 $y=x$에 대칭한 $l'$과 $l$의 교점이 $y$축 위일 때 $a$를 구하시오. [4점]",
     "choices": [],
-    "answer": "1",
-    "solution": "$a=0$인 경우와 $a\\ne0$인 경우를 나누어 확인한다.\n\n먼저 $a\\ne0$이면 $(5,1)$만큼 평행이동한 직선은\n$y-1=a(x-5)+2$, 즉 $y=ax-5a+3$이다. 이를 $y=x$에 대칭이동하면\n$x=ay-5a+3$이다. 따라서\n$y=\\dfrac1a x+5-\\dfrac3a$이다. 원래 직선 $l:y=ax+2$와 $l_1$의 교점이 $y$축 위에 있으므로 $x=0$에서 두 직선의 $y$값이 같아야 한다.\n$2=5-\\dfrac3a$에서 $a=1$이다.\n\n다음으로 $a=0$이면 $l$은 $y=2$이고, 평행이동 후 대칭한 직선은 $x=3$이다. 두 직선의 교점 $(3,2)$는 $y$축 위가 아니므로 이 경우는 조건을 만족하지 않는다.\n\n따라서 구하는 값은 $1$이다.",
+    "answer": "[정답불가]",
+    "solution": "[키포인트] $a=0$과 $a\\ne0$을 나누어 확인하고, 형식적으로 얻은 값도 원래 두 직선에 다시 대입하여 교점 조건을 검증한다.\\n\\n먼저 $a=0$이면 원래 직선은 $l:y=2$이다. 이를 $(5,1)$만큼 평행이동하면 $y=3$이고, 다시 $y=x$에 대하여 대칭이동하면 $l′:x=3$이다. 두 직선의 교점은 $(3,2)$이므로 y축 위에 있지 않다.\\n\\n이제 $a\\ne0$이라 하자. $l:y=ax+2$를 $(5,1)$만큼 평행이동하면 $y−1=a(x−5)+2$, 즉 $y=ax−5a+3$이다. 이를 $y=x$에 대하여 대칭이동하면 $x=ay−5a+3$이고, 따라서 $l′:y=(1/a)x+5−3/a$이다.\\n\\n교점이 y축 위에 있으려면 $x=0$에서 두 직선의 y값이 같아야 하므로 $2=5−3/a$, $a=1$이다.\\n\\n그러나 $a=1$을 실제 원식에 대입하면 $l:y=x+2$이고, 평행이동 후 직선은 $y=x−2$이다. 이를 $y=x$에 대칭이동하면 $l′:y=x+2$가 되어 $l=l′$이다. 따라서 한 점으로서의 교점이 존재하지 않고 직선 전체가 겹친다.\\n\\n그러므로 $a=0$은 y축 위 조건을 만족하지 않고, $a\\ne0$에서 형식적으로 얻은 $a=1$도 고유한 교점 조건을 만족하지 않는다. 발문을 그대로 유지하면 조건을 만족하는 정상적인 $a$는 존재하지 않는다.",
     "solutionImage": "assets/images/21_효천고_2학기_중간_고1_기출/q19-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 19의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",

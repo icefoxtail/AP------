@@ -112,7 +112,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 5,
     "level": "하",
     "category": "수학(상)",
@@ -123,7 +123,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "평행"
+    ],
     "wide": false,
     "content": "점 $(5,1)$을 지나고 직선 $2x+y-3=0$에 평행한 직선의 방정식을 구하면?",
     "choices": [
@@ -138,7 +142,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q05-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "주어진 직선과 평행 · P=(5,1), y=−2x+11",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -183,7 +191,7 @@ window.questionBank = [
     "standardUnitOrder": 12,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의 이동","평행이동","직선","점","조건해석"],
     "wide": false,
     "content": "직선 $5x-2y+3=0$을 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $a$만큼 평행이동한 도형이 점 $(3,2)$를 지날 때, 상수 $a$의 값을 구하면?",
     "choices": [
@@ -195,10 +203,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 도형을 오른쪽으로 $2$, 위쪽으로 $a$만큼 옮겼다면 식에서는 $x$ 대신 $x-2$, $y$ 대신 $y-a$를 대입한다.\n원래 직선 $5x-2y+3=0$을 평행이동한 직선은\n$5(x-2)-2(y-a)+3=0$이다.\n정리하면 $5x-2y+2a-7=0$이다.\n이 직선이 점 $(3,2)$를 지나므로\n$5\\cdot3-2\\cdot2+2a-7=0$이다.\n$15-4+2a-7=0$에서 $2a+4=0$, 따라서 $a=-2$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -312,7 +324,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 12,
     "level": "상",
     "category": "수학(상)",
@@ -323,7 +335,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "세 직선 $x+2y=3$, $4x-3y=6$, $ax+y=3$의 세 교점을 꼭짓점으로 하는 삼각형이 직각삼각형일 때, 모든 상수 $a$값의 곱은?",
     "choices": [
@@ -336,15 +352,15 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 세 직선으로 생기는 삼각형이 직각삼각형이 되려면 세 직선 중 두 직선이 서로 수직이어야 한다.\n직선 $x+2y=3$의 기울기는 $-\\dfrac12$이다.\n직선 $4x-3y=6$의 기울기는 $\\dfrac43$이다.\n직선 $ax+y=3$의 기울기는 $-a$이다.\n첫 번째 직선과 세 번째 직선이 서로 수직이면\n$\\left(-\\dfrac12\\right)(-a)=-1$이므로 $a=-2$이다.\n두 번째 직선과 세 번째 직선이 서로 수직이면\n$\\dfrac43(-a)=-1$이므로 $a=\\dfrac34$이다.\n첫 번째 직선과 두 번째 직선은 기울기의 곱이 $-\\dfrac23$이므로 서로 수직이 아니다.\n따라서 가능한 $a$값은 $-2$, $\\dfrac34$이고, 그 곱은 $-2\\times\\dfrac34=-\\dfrac32$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "L₁ 기울기 −1/2 · L₂ 기울기 4/3",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 13,
     "level": "중",
     "category": "수학(상)",
@@ -355,7 +371,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "직선 $2x+y+3+k(x+2y)=0$이 실수 $k$에 관계없이 항상 점 $P$를 지날 때, 점 $P$와 직선 $2x-y+10=0$ 사이의 거리는?",
     "choices": [
@@ -371,8 +391,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -451,7 +471,7 @@ window.questionBank = [
     "standardUnitOrder": 12,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의 이동","합성변환","점","좌표변환"],
     "wide": false,
     "content": "방정식 $f(x,y)=0$이 나타내는 도형 $F$를 방정식 $f(-y,x+2)=0$이 나타내는 도형 $F'$으로 옮기는 이동에 의하여 도형 $F$ 위의 점 $P(1,2)$는 도형 $F'$ 위의 점 $(a,b)$로 옮겨진다. $(a,b)$를 구하면?",
     "choices": [
@@ -626,7 +646,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 22,
     "level": "상",
     "category": "수학(상)",
@@ -637,7 +657,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "점 $(-4,3)$을 지나고 직선 $3x-9y+4=0$에 수직인 직선의 방정식을 구하는 풀이 과정을 쓰시오.",
     "choices": [],
@@ -646,7 +670,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 22의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "주어진 기울기=1/3 · 수직 기울기=−3, y=−3x−9",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -670,7 +698,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 24,
     "level": "상",
     "category": "수학(상)",
@@ -681,7 +709,12 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "평행",
+      "수직"
+    ],
     "wide": false,
     "content": "세 직선 $l:x-ay+2=0$, $m:4x+by+2=0$, $n:x-(b-3)y-2=0$에 대하여 두 직선 $l$, $m$은 수직이고 두 직선 $l$, $n$은 평행할 때, $a^2+b^2$의 값을 구하는 풀이 과정을 쓰시오. (단, $a$, $b$는 상수이다.)",
     "choices": [],

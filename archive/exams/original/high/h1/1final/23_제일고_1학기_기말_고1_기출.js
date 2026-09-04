@@ -411,7 +411,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -426,7 +426,8 @@ window.questionBank = [
       "객관식",
       "직선",
       "교점",
-      "수직"
+      "수직",
+      "도형"
     ],
     "wide": false,
     "content": "두 직선 $2x+3y-1=0$, $x-y-3=0$의 교점을 지나고 직선 $3x+y+5=0$에 수직인 직선의 방정식은? [4.4점]",

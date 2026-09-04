@@ -475,7 +475,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -494,7 +494,10 @@ window.questionBank = [
       "대입",
       "조건해석",
       "계산",
-      "개념"
+      "개념",
+      "직선",
+      "평행",
+      "수직"
     ],
     "wide": false,
     "content": "직선 $(k+1)x + (2-k)y - 3 = 0$에 대한 설명으로 옳은 것만을 보기에서 고른 것은?\n\n<보기>\nㄱ. $k=-1$이면 기울기가 0이다.\n\nㄴ. $k=0$이면 직선 $4x-2y-3=0$과 수직이다.\n\nㄷ. $k$의 값에 관계없이 항상 점 $(1, 1)$을 지난다.\n\nㄹ. $k=1$이면 직선 $6x-3y-1=0$과 평행이다.",
@@ -513,10 +516,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
-    "subUnitConfidence": "approved_source_repair",
+    "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 15,
     "level": "중",
     "category": "직선의 방정식",
@@ -532,7 +535,10 @@ window.questionBank = [
       "도형",
       "조건해석",
       "계산",
-      "응용"
+      "응용",
+      "직선",
+      "평행",
+      "수직"
     ],
     "wide": false,
     "content": "직선 $ax-y+4=0$이 직선 $bx+3y-5=0$에 수직이고, 직선 $(b-4)x+y-1=0$에는 평행할 때, 상수 $a, b$에 대하여 $a^3+b^3$의 값은?",
@@ -546,15 +552,15 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n수직 조건($A_1A_2+B_1B_2=0$)과 평행 조건(기울기 일치)을 활용하여 연립한다.\n\n조건 정리\n- 수직: $a \\cdot b + (-1) \\cdot 3 = 0 \\implies ab = 3$\n- 평행: $a = -(b-4) \\implies a+b = 4$\n\n풀이 과정\n$ab=3$, $a+b=4$이므로 $a, b$는 $t^2-4t+3=0$의 두 근인 $1$과 $3$이다.\n$a^3+b^3 = (a+b)^3 - 3ab(a+b) = 4^3 - 3(3)(4) = 64 - 36 = 28$이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 15의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "ab=3 · a+b=4",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
-    "subUnitConfidence": "approved_source_repair",
+    "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 16,
     "level": "상",
     "category": "직선의 방정식",
@@ -571,7 +577,10 @@ window.questionBank = [
       "도형",
       "실생활",
       "조건해석",
-      "계산"
+      "계산",
+      "직선",
+      "수직",
+      "거리"
     ],
     "wide": false,
     "content": "두 직선 $3x+4y-1=0, 2x+y-4=0$의 교점을 지나는 직선 중 점 $(2, 1)$에서 거리가 최대인 직선의 방정식은?",
@@ -590,10 +599,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
-    "subUnitConfidence": "approved_source_repair",
+    "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 17,
     "level": "중",
     "category": "직선의 방정식",
@@ -609,7 +618,8 @@ window.questionBank = [
       "도형",
       "범위",
       "조건해석",
-      "계산"
+      "계산",
+      "직선"
     ],
     "wide": false,
     "content": "두 점 $A(2, 5), B(4, 1)$을 이은 선분 $AB$와 직선 $(2m+1)x + (m-1)y + 5m+1 = 0$이 만나도록 하는 실수 $m$의 값의 범위가 $a \\le m \\le b$일 때, $a+b$의 값은?",
@@ -628,7 +638,7 @@ window.questionBank = [
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
-    "subUnitConfidence": "approved_source_repair",
+    "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
@@ -702,7 +712,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",
@@ -721,7 +731,8 @@ window.questionBank = [
       "삼각형",
       "넓이",
       "참거짓",
-      "조건해석"
+      "조건해석",
+      "직선"
     ],
     "wide": false,
     "content": "서술형 2. 세 점 $A(5, 4), B(6, 0), O(0, 0)$을 꼭짓점으로 하는 삼각형 $AOB$의 넓이가 직선 $y=-2x+k$에 의해서 이등분될 때, 상수 $k$의 값을 구하는 과정을 서술하시오.",
@@ -734,10 +745,10 @@ window.questionBank = [
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
-    "subUnitConfidence": "approved_source_repair",
+    "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 21,
     "level": "중",
     "category": "직선의 방정식",
@@ -756,7 +767,9 @@ window.questionBank = [
       "도형",
       "실생활",
       "조건해석",
-      "계산"
+      "계산",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "서술형 3. 점 $(-1, 1)$에서 직선 $3ax + 4ay + a^2 + 1 = 0$에 이르는 거리가 1일 때, 모든 $a$의 값을 구하는 과정을 서술하시오.",
@@ -764,12 +777,12 @@ window.questionBank = [
     "answer": "$2 \\pm \\sqrt{3}, -3 \\pm 2\\sqrt{2}$",
     "solution": "점 $(-1,1)$에서 직선 $3ax+4ay+a^2+1=0$까지의 거리는\n$\\dfrac{|3a(-1)+4a(1)+a^2+1|}{\\sqrt{(3a)^2+(4a)^2}}=\\dfrac{|a^2+a+1|}{5|a|}$이다. 거리가 $1$이므로 $a\\ne0$이고\n$|a^2+a+1|=5|a|$이다.\n\n$ a^2+a+1=(a+\\dfrac12)^2+\\dfrac34>0$이므로\n$a^2+a+1=5|a|$로 바꿀 수 있다.\n\n$a>0$일 때\n$a^2+a+1=5a$에서 $a^2-4a+1=0$이므로\n$a=2\\pm\\sqrt3$이다. 두 값 모두 양수이다.\n\n$a<0$일 때\n$a^2+a+1=-5a$에서 $a^2+6a+1=0$이므로\n$a=-3\\pm2\\sqrt2$이다. 두 값 모두 음수이다.\n\n따라서 모든 $a$의 값은 $2\\pm\\sqrt3$, $-3\\pm2\\sqrt2$이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 21의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 21의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "P에서 직선까지의 거리=1 · a>0, a<0 경우를 모두 확인",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
-    "subUnitConfidence": "approved_source_repair",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
+    "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
   {
