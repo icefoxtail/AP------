@@ -148,6 +148,15 @@ export function parseExamPdfMetadata(file, sourceRoot = "") {
 
 export function buildManifestFromInventoryItem(item, cfg, duplicateIndex = 0) {
   const safeExamId = duplicateIndex > 0 ? `${item.examId}_${duplicateIndex + 1}` : item.examId;
+  const gradeMatch = String(item.grade || "").match(/^(고|중)([1-3])$/);
+  const level = gradeMatch ? (gradeMatch[1] === "고" ? "high" : "middle") : "";
+  const gradeCode = gradeMatch ? `${gradeMatch[1] === "고" ? "h" : "m"}${gradeMatch[2]}` : "";
+  const term = item.semester && (item.examType === "mid" || item.examType === "final")
+    ? `${item.semester}${item.examType}`
+    : "";
+  const archiveRelativePath = level && gradeCode && term
+    ? `original/${level}/${gradeCode}/${term}/${safeExamId}.js`
+    : "";
   return {
     examId: safeExamId,
     canonicalExamId: item.examId,
@@ -157,6 +166,9 @@ export function buildManifestFromInventoryItem(item, cfg, duplicateIndex = 0) {
     semester: item.semester,
     examType: item.examType,
     course: item.course,
+    subject: item.course || "수학",
+    contentType: "기출",
+    archiveRelativePath,
     sourceType: "past_exam",
     pdfPath: item.pdfPath,
     answerPdfPath: item.answerPdfPath || "",

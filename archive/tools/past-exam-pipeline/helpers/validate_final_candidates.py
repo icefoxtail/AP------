@@ -11,6 +11,24 @@ DEFAULT_BATCH_DIR = Path("archive/_generated/past-exams/_batch")
 V2_EXTERNAL_STATUS = "external_agent_required"
 V2_ALLOWED_BLANK_ANSWER_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
 V2_ALLOWED_BLANK_SOLUTION_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
+SUBUNIT_REQUIRED_FIELDS = (
+    "subUnitKey",
+    "subUnit",
+    "subUnitConfidence",
+    "subUnitClassificationDepth",
+)
+SUBUNIT_CONFIDENCE_VALUES = {
+    "existing_preserved",
+    "candidate_evidence",
+    "category_or_cue_inferred",
+    "rule_inferred",
+}
+SUBUNIT_DEPTH_VALUES = {
+    "complete_candidate",
+    "complete_category",
+    "complete_documented",
+    "complete_rule",
+}
 
 FORBIDDEN_IMAGE_FRAGMENTS = [
     "pages/",
@@ -141,6 +159,8 @@ def validate_exam(row):
     content_source_required = []
     missing_answers = []
     missing_solutions = []
+    missing_subunit_metadata = []
+    invalid_subunit_metadata = []
     objective_choice_mismatches = []
     display_numbers = [str(q.get("displayNo")) for q in questions]
     expected_display_numbers = [str(i) for i in range(1, expected + 1)]
@@ -154,6 +174,14 @@ def validate_exam(row):
 
     for q in questions:
         display_no = q.get("displayNo")
+
+        missing_fields = [key for key in SUBUNIT_REQUIRED_FIELDS if not str(q.get(key) or "").strip()]
+        if missing_fields:
+            missing_subunit_metadata.append({"displayNo": display_no, "fields": missing_fields})
+        if str(q.get("subUnitConfidence") or "") not in SUBUNIT_CONFIDENCE_VALUES:
+            invalid_subunit_metadata.append({"displayNo": display_no, "field": "subUnitConfidence", "value": q.get("subUnitConfidence")})
+        if str(q.get("subUnitClassificationDepth") or "") not in SUBUNIT_DEPTH_VALUES:
+            invalid_subunit_metadata.append({"displayNo": display_no, "field": "subUnitClassificationDepth", "value": q.get("subUnitClassificationDepth")})
 
         image = str(q.get("image") or "")
         gate_statuses = image_path_gate(q)
@@ -203,6 +231,10 @@ def validate_exam(row):
         issues.append("missing_answers")
     if missing_solutions:
         issues.append("missing_required_solutions")
+    if missing_subunit_metadata:
+        issues.append("missing_subunit_metadata")
+    if invalid_subunit_metadata:
+        issues.append("invalid_subunit_metadata")
     if objective_choice_mismatches:
         issues.append("objective_choice_count_mismatch")
 
@@ -227,6 +259,8 @@ def validate_exam(row):
         "visionRequiredContentOrChoices": content_source_required,
         "missingAnswer": missing_answers,
         "missingRequiredSolution": missing_solutions,
+        "missingSubunitMetadata": missing_subunit_metadata,
+        "invalidSubunitMetadata": invalid_subunit_metadata,
         "objectiveChoiceCountMismatches": objective_choice_mismatches,
         "issues": issues,
         "notFailures": ["blank_image_when_no_visual_asset", "blank_answer_external_agent_required", "blank_solution_external_agent_required"],
@@ -265,6 +299,8 @@ def main():
         "visionRequiredContentOrChoicesCount": sum(len(r["visionRequiredContentOrChoices"]) for r in reports),
         "missingAnswerCount": sum(len(r["missingAnswer"]) for r in reports),
         "missingRequiredSolutionCount": sum(len(r["missingRequiredSolution"]) for r in reports),
+        "missingSubunitMetadataCount": sum(len(r["missingSubunitMetadata"]) for r in reports),
+        "invalidSubunitMetadataCount": sum(len(r["invalidSubunitMetadata"]) for r in reports),
         "missingImageCount": sum(len(r["missingVisualAssetImageFiles"]) for r in reports),
         "forbiddenCandidateImagePathCount": sum(len(r["forbiddenCandidateImagePaths"]) for r in reports),
         "objectiveChoiceMismatchCount": sum(len(r["objectiveChoiceCountMismatches"]) for r in reports),

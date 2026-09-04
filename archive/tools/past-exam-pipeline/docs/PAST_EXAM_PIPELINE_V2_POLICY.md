@@ -47,6 +47,7 @@ In short: full-page content review first, crop assistance second.
 9. Blank `answer` and blank `solution` are not validation failures in this pipeline.
 10. Uncertain text, choices, formula, or visual bbox goes to manual review instead of being guessed.
 11. `contentSource == "vision_required"` or `choicesSource == "vision_required"` is never PASS and must not be filled with dummy text by a downstream agent.
+12. A final candidate must carry non-empty `subUnitKey`, `subUnit`, `subUnitConfidence`, and `subUnitClassificationDepth`; the promotion gate also checks the canonical/compiled master relationship.
 
 ## Normal flow
 
@@ -97,5 +98,10 @@ The next agent may fill only:
 - `solution`
 - `answerStatus`
 - `solutionStatus`
+
+The next agent must also preserve or complete the four required subunit
+metadata fields before a candidate can receive `reviewed_pass`. Those fields
+are metadata, not a license to rewrite `content`, `choices`, `answer`,
+`solution`, or source images without the relevant evidence.
 
 If it finds a content/choice/image extraction error, it must verify the mismatch against full-page evidence and write an extraction correction report instead of silently changing extraction fields. It must not use a crop failure as the basis for rewriting content or choices.

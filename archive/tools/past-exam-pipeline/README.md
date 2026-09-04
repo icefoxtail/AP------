@@ -39,15 +39,15 @@ Vision JSON이 없으면 파이프라인은 full page 이미지, Vision 요청�
 ## 실행 예시
 
 ```powershell
-cd C:\Users\USER\Desktop\past-exam-pipeline
-node run-one-exam.mjs --manifest .\manifests\sample.json
+cd <repo-root>
+node archive\tools\past-exam-pipeline\run-one-exam.mjs --manifest <path-to-manifest.json>
 ```
 
 Vision JSON이 있는 경우:
 
 ```powershell
-cd C:\Users\USER\Desktop\past-exam-pipeline
-node run-one-exam.mjs --manifest .\manifests\sample.json
+cd <repo-root>
+node archive\tools\past-exam-pipeline\run-one-exam.mjs --manifest <path-to-manifest.json>
 ```
 
 manifest에 아래 필드를 넣습니다.
@@ -86,6 +86,8 @@ python .\helpers\scanned_exam_pipeline.py `
 - `helpers/scanned_exam_pipeline.py`: full page render, Vision JSON 반영, candidate JS 생성, visual asset crop gate
 - `helpers/crop_visual_assets_from_full_pages.py`: 이미 만들어진 candidate JS에서 full page bbox 기반 visual asset crop 재실행
 - `helpers/audit_generated_visual_asset_links.py`: candidate `image`가 page/question crop을 가리키는지 감사
+- `helpers/validate_final_candidates.py`: V2 후보의 최종 필드·상태·이미지 경로 검증
+- `promote-reviewed-exam.mjs`: `reviewed_pass` 후보를 canonical Archive로 승격
 - `docs/PAST_EXAM_PIPELINE_V2_POLICY.md`: 정책 문서
 - `docs/VISION_PAGE_EXTRACT_REQUEST_TEMPLATE.md`: Vision 호출 프롬프트 템플릿
 - `examples/vision_page_extract.example.json`: Vision JSON 예시
@@ -105,6 +107,10 @@ python -m py_compile .\helpers\scanned_exam_pipeline.py .\helpers\crop_visual_as
 - `image`가 `pages/` 또는 `crops/questions/`를 가리키는 구조
 - visual asset crop 실패 시 question crop fallback
 - answer/solution을 추출 파이프라인에서 채우는 구조
+
+최종 candidate에는 `subUnitKey`, `subUnit`, `subUnitConfidence`,
+`subUnitClassificationDepth`가 필요하며, 세부단원 master와의 parent·label
+정합성은 promotion 전에 확인합니다.
 
 
 ## V2 full-page-first review rule
