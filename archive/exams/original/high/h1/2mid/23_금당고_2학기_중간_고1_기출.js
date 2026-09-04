@@ -29,10 +29,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] $x$축에 대하여 대칭이동하면 $x$좌표는 그대로이고 $y$좌표의 부호만 바뀐다.\n조건 정리: 주어진 점은 $(3,4)$이다.\n풀이 방향: $x$축 대칭이동의 좌표 변환을 적용한다.\n정석 풀이: $x$축에 대한 대칭이동은 $(x,y)\\mapsto(x,-y)$이다. 따라서 $(3,4)$의 대칭점은 $(3,-4)$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -62,10 +66,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 도형을 $(3,1)$만큼 평행이동한 식은 원래 식의 $x$에 $x-3$, $y$에 $y-1$을 대입하여 구한다.\n조건 정리: 원래 직선은 $y=ax+2$이고 이동한 직선은 $y=-2x+9$이다.\n풀이 방향: 평행이동한 직선의 식을 만든 뒤 $x$의 계수를 비교한다.\n정석 풀이: $y-1=a(x-3)+2$이므로 $y=ax-3a+3$이다. 이 식이 $y=-2x+9$와 같으므로 $x$의 계수를 비교하면 $a=-2$이다. 실제로 상수항도 $-3(-2)+3=9$로 일치한다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 2의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -229,10 +237,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 포물선의 꼭짓점을 먼저 구한 뒤 평행이동된 꼭짓점이 직선 $y=x$ 위에 있다는 조건을 사용한다.\n조건 정리: $y=2x^2+4x+5$를 $(2,k)$만큼 평행이동한다.\n풀이 방향: 완전제곱식으로 원래 꼭짓점을 구하고 이동 후 좌표의 두 성분을 같게 둔다.\n정석 풀이: $y=2(x+1)^2+3$이므로 원래 꼭짓점은 $(-1,3)$이다. 이를 $x$축 방향으로 $2$, $y$축 방향으로 $k$만큼 이동하면 꼭짓점은 $(1,3+k)$이다. 이 점이 $y=x$ 위에 있으므로 $3+k=1$이고 $k=-2$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -403,8 +415,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 12의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -548,8 +560,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 16의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -616,8 +628,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
