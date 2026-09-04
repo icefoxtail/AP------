@@ -83,11 +83,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "중심"
-    ],
+    "tags": ["객관식","원의 방정식","중심","도형"],
     "wide": false,
     "content": "원 $x^2+y^2-4x-2=0$의 중심의 좌표는? [3.5점]",
     "choices": [
@@ -98,7 +94,7 @@ window.questionBank = [
       "$(3,0)$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $x$에 관한 식을 완전제곱식으로 고쳐 원의 중심을 찾는다.\n$x^2-4x+y^2-2=0$에서\n$(x-2)^2+y^2=6$이다.\n따라서 원의 중심은 $(2,0)$이므로 정답은 ①이다.\n[보강] 원의 표준형 (x−a)²+(y−b)²=r²와 비교하면 중심은 (2,0)이다. 우변 6이 양수이므로 실제 원이라는 것도 확인된다.",
+    "solution": "[키포인트] $x$에 관한 식을 완전제곱식으로 고쳐 원의 중심을 찾는다.\n$x^2-4x+y^2-2=0$에서\n$(x-2)^2+y^2=6$이다.\n\n계산/도식 확인: 원의 표준형 (x−a)²+(y−b)²=r²와 비교하면 중심은 (2,0)이다. 우변 6이 양수이므로 실제 원이라는 것도 확인된다.\n따라서 원의 중심은 $(2,0)$이므로 정답은 ①이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q03-solution.svg",
     "solutionImageAlt": "원 x²+y²=6의 중심 (2,0)를 좌표평면에 나타낸 그림",
     "solutionImageCaption": "완전제곱식으로 표준형을 만들면 중심 (2,0)과 반지름 √6이 보인다.",
@@ -119,11 +115,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "접선"
-    ],
+    "tags": ["객관식","원의 방정식","중심","반지름","거리","도형"],
     "wide": false,
     "content": "원 $x^2+y^2=10$과 직선 $y=3x+k$가 접하도록 하는 실수 $k$값들의 합은? [3.5점]",
     "choices": [
@@ -134,7 +126,7 @@ window.questionBank = [
       "20"
     ],
     "answer": "③",
-    "solution": "[키포인트] 원의 중심에서 접선까지의 거리는 원의 반지름과 같다.\n직선을 $3x-y+k=0$으로 나타내면 원점에서 이 직선까지의 거리는 $\\dfrac{|k|}{\\sqrt{10}}$이다.\n원의 반지름은 $\\sqrt{10}$이므로\n$\\dfrac{|k|}{\\sqrt{10}}=\\sqrt{10}$에서 $|k|=10$이다.\n따라서 $k=-10,10$이고 그 합은 $0$이므로 정답은 ③이다.\n[보강] 그래프에서 k가 바뀌면 기울기 3인 평행선이 위아래로 이동한다. 원점에서의 거리가 반지름과 같은 두 위치가 k=−10, 10이므로 두 값을 모두 세어 합을 구한다.",
+    "solution": "[키포인트] 원의 중심에서 접선까지의 거리는 원의 반지름과 같다.\n직선을 $3x-y+k=0$으로 나타내면 원점에서 이 직선까지의 거리는 $\\dfrac{|k|}{\\sqrt{10}}$이다.\n원의 반지름은 $\\sqrt{10}$이므로\n$\\dfrac{|k|}{\\sqrt{10}}=\\sqrt{10}$에서 $|k|=10$이다.\n\n계산/도식 확인: 그래프에서 k가 바뀌면 기울기 3인 평행선이 위아래로 이동한다. 원점에서의 거리가 반지름과 같은 두 위치가 k=−10, 10이므로 두 값을 모두 세어 합을 구한다.\n따라서 $k=-10,10$이고 그 합은 $0$이므로 정답은 ③이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q04-solution.svg",
     "solutionImageAlt": "원 x²+y²=10과 평행한 두 접선 y=3x±10을 나타낸 그림",
     "solutionImageCaption": "원점에서 접선까지의 거리가 반지름 √10인 두 평행 접선을 비교한다.",
@@ -260,11 +252,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "반지름"
-    ],
+    "tags": ["객관식","원의 방정식","중심","반지름","도형"],
     "wide": false,
     "content": "방정식 $x^2+y^2-4kx-6y+k^2+5=0$이 나타내는 도형이 원이 되며, 그 반지름의 길이가 $5$ 이하일 때, 자연수 $k$의 개수는? [3.8점]",
     "choices": [
@@ -275,7 +263,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원의 방정식을 표준형으로 고쳐 반지름을 $k$에 대한 식으로 나타낸다.\n주어진 식을 정리하면\n$(x-2k)^2+(y-3)^2=3k^2+4$이다.\n반지름의 길이가 $5$ 이하이므로 $3k^2+4\\le25$이다.\n따라서 $k^2\\le7$이고 자연수 $k$는 $1,2$의 두 개이다.\n그러므로 정답은 ⑤이다.\n[보강] 표준형에서 중심은 (2k,3), 반지름의 제곱은 3k²+4이다. 이 값은 모든 실수 k에서 양수이므로 원의 조건은 자동으로 만족하고, 자연수 조건 k≥1을 함께 적용해야 한다.",
+    "solution": "[키포인트] 원의 방정식을 표준형으로 고쳐 반지름을 $k$에 대한 식으로 나타낸다.\n주어진 식을 정리하면\n$(x-2k)^2+(y-3)^2=3k^2+4$이다.\n반지름의 길이가 $5$ 이하이므로 $3k^2+4\\le25$이다.\n따라서 $k^2\\le7$이고 자연수 $k$는 $1,2$의 두 개이다.\n\n계산/도식 확인: 표준형에서 중심은 (2k,3), 반지름의 제곱은 3k²+4이다. 이 값은 모든 실수 k에서 양수이므로 원의 조건은 자동으로 만족하고, 자연수 조건 k≥1을 함께 적용해야 한다.\n그러므로 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q08-solution.svg",
     "solutionImageAlt": "매개변수 k에 따른 원의 중심과 반지름 제곱, 자연수 k의 범위를 나타낸 그림",
     "solutionImageCaption": "표준형에서 중심 (2k,3), r²=3k²+4를 읽고 r≤5 조건을 적용한다.",
@@ -366,11 +354,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "직선과 원"
-    ],
+    "tags": ["객관식","원의 방정식","교점","직선과 원","위치 관계","중심","반지름","거리","도형"],
     "wide": false,
     "content": "중심이 $(2,-1)$이고 반지름의 길이가 $\\sqrt{10}$인 원과 직선 $y=3x+k$가 만나지 않을 때, 자연수 $k$의 최소값은? [4점]",
     "choices": [
@@ -381,13 +365,13 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "[키포인트] 원과 직선이 만나지 않으려면 중심에서 직선까지의 거리가 반지름보다 커야 한다.\n직선을 $3x-y+k=0$으로 나타내면 중심 $(2,-1)$에서 직선까지의 거리는\n$\\dfrac{|3\\cdot2-(-1)+k|}{\\sqrt{10}}=\\dfrac{|k+7|}{\\sqrt{10}}$이다.\n따라서 $\\dfrac{|k+7|}{\\sqrt{10}}>\\sqrt{10}$, 즉 $|k+7|>10$이다.\n자연수 $k$에 대하여 $k>3$이므로 최소값은 $4$이다.\n따라서 정답은 ④이다.\n[보강] 자연수 k에서는 k+7>0이므로 절댓값을 k+7로 바꿀 수 있다. 직선이 원에 접하는 경계는 k=3이고, ‘만나지 않는다’는 조건은 그 바깥쪽인 k>3이므로 최소 자연수는 4이다.",
+    "solution": "[키포인트] 원과 직선이 만나지 않으려면 중심에서 직선까지의 거리가 반지름보다 커야 한다.\n직선을 $3x-y+k=0$으로 나타내면 중심 $(2,-1)$에서 직선까지의 거리는\n$\\dfrac{|3\\cdot2-(-1)+k|}{\\sqrt{10}}=\\dfrac{|k+7|}{\\sqrt{10}}$이다.\n따라서 $\\dfrac{|k+7|}{\\sqrt{10}}>\\sqrt{10}$, 즉 $|k+7|>10$이다.\n자연수 $k$에 대하여 $k>3$이므로 최소값은 $4$이다.\n\n계산/도식 확인: 자연수 k에서는 k+7>0이므로 절댓값을 k+7로 바꿀 수 있다. 직선이 원에 접하는 경계는 k=3이고, ‘만나지 않는다’는 조건은 그 바깥쪽인 k>3이므로 최소 자연수는 4이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q11-solution.svg",
     "solutionImageAlt": "중심 (2,−1), 반지름 √10인 원과 경계 직선 y=3x+3, y=3x+4를 비교한 그림",
     "solutionImageCaption": "k=3에서는 접하고 k=4부터 직선이 원을 지나지 않는다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -402,12 +386,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "접선",
-      "무게중심"
-    ],
+    "tags": ["객관식","원의 방정식","접선","접점","중심","반지름","도형"],
     "wide": false,
     "content": "원 $x^2+y^2=13$ 위의 두 점 $A(2,-3)$, $B(3,2)$에서 그은 접선을 각각 $l$, $m$이라 한다. 두 접선 $l$, $m$의 교점을 $P$라 할 때, 삼각형 $ABP$의 무게중심의 좌표는? [4점]",
     "choices": [
@@ -418,13 +397,13 @@ window.questionBank = [
       "$(4,1)$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.\n점 $A(2,-3)$에서의 접선은 $2x-3y=13$이고, 점 $B(3,2)$에서의 접선은 $3x+2y=13$이다.\n두 식을 연립하면 $P=(5,-1)$이다.\n따라서 삼각형 $ABP$의 무게중심은\n$\\left(\\dfrac{2+3+5}{3},\\dfrac{-3+2-1}{3}\\right)=\\left(\\dfrac{10}{3},-\\dfrac23\\right)$이다.\n그러므로 정답은 ③이다.\n[보강] 접선 공식은 접점의 반지름이 접선에 수직이라는 조건을 식으로 나타낸 것이다. 마지막에는 세 꼭짓점 좌표의 x좌표끼리, y좌표끼리 각각 평균을 내어 무게중심을 구한다.",
+    "solution": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.\n점 $A(2,-3)$에서의 접선은 $2x-3y=13$이고, 점 $B(3,2)$에서의 접선은 $3x+2y=13$이다.\n두 식을 연립하면 $P=(5,-1)$이다.\n따라서 삼각형 $ABP$의 무게중심은\n$\\left(\\dfrac{2+3+5}{3},\\dfrac{-3+2-1}{3}\\right)=\\left(\\dfrac{10}{3},-\\dfrac23\\right)$이다.\n\n계산/도식 확인: 접선 공식은 접점의 반지름이 접선에 수직이라는 조건을 식으로 나타낸 것이다. 마지막에는 세 꼭짓점 좌표의 x좌표끼리, y좌표끼리 각각 평균을 내어 무게중심을 구한다.\n그러므로 정답은 ③이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q12-solution.svg",
     "solutionImageAlt": "원 x²+y²=13 위의 두 접점 A, B와 접선의 교점 P, 무게중심 G를 나타낸 그림",
     "solutionImageCaption": "두 접선의 교점 P를 구한 뒤 세 꼭짓점 좌표의 평균으로 무게중심을 구한다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -556,12 +535,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "접선",
-      "넓이"
-    ],
+    "tags": ["객관식","원의 방정식","접선","접점","중심","반지름","넓이","도형"],
     "wide": false,
     "content": "점 $P(2,5)$에서 원 $x^2+y^2-4x+6y-12=0$에 그은 두 접선의 접점을 각각 $A$, $B$라 한다. 원의 중심을 $C$라 할 때, 네 점 $P$, $C$, $A$, $B$를 꼭짓점으로 하는 사각형의 넓이는? [4.3점]",
     "choices": [
@@ -572,13 +546,13 @@ window.questionBank = [
       "40"
     ],
     "answer": "④",
-    "solution": "[키포인트] 접점들을 이은 현 $AB$는 중심과 외부의 점을 잇는 선분 $PC$에 수직이다.\n원의 방정식은 $(x-2)^2+(y+3)^2=25$이므로 $C=(2,-3)$, 반지름은 $5$이다.\n$PC=8$이고 접선의 길이는 $PA=\\sqrt{PC^2-CA^2}=\\sqrt{39}$이다.\n$M$을 $AB$와 $PC$의 교점이라 하면 직각삼각형 $PCA$에서\n$CM=\\dfrac{CA^2}{CP}=\\dfrac{25}{8}$, $PM=8-\\dfrac{25}{8}=\\dfrac{39}{8}$이다.\n또 $AM^2=CM\\cdot PM$이므로 $AM=\\dfrac{5\\sqrt{39}}{8}$이고 $AB=\\dfrac{5\\sqrt{39}}{4}$이다.\n사각형의 두 대각선 $PC$, $AB$는 서로 수직이므로 넓이는\n$\\dfrac12\\cdot8\\cdot\\dfrac{5\\sqrt{39}}{4}=5\\sqrt{39}$이다.\n따라서 정답은 ④이다.\n[보강] PA=PB, CA=CB이므로 PC는 접점 현 AB의 수직이등분선이다. 따라서 사각형의 대각선이 PC, AB로 잡히며, 두 대각선이 수직일 때 넓이는 두 대각선 길이의 곱의 절반이라는 점을 적용한다.",
+    "solution": "[키포인트] 접점들을 이은 현 $AB$는 중심과 외부의 점을 잇는 선분 $PC$에 수직이다.\n원의 방정식은 $(x-2)^2+(y+3)^2=25$이므로 $C=(2,-3)$, 반지름은 $5$이다.\n$PC=8$이고 접선의 길이는 $PA=\\sqrt{PC^2-CA^2}=\\sqrt{39}$이다.\n$M$을 $AB$와 $PC$의 교점이라 하면 직각삼각형 $PCA$에서\n$CM=\\dfrac{CA^2}{CP}=\\dfrac{25}{8}$, $PM=8-\\dfrac{25}{8}=\\dfrac{39}{8}$이다.\n또 $AM^2=CM\\cdot PM$이므로 $AM=\\dfrac{5\\sqrt{39}}{8}$이고 $AB=\\dfrac{5\\sqrt{39}}{4}$이다.\n사각형의 두 대각선 $PC$, $AB$는 서로 수직이므로 넓이는\n$\\dfrac12\\cdot8\\cdot\\dfrac{5\\sqrt{39}}{4}=5\\sqrt{39}$이다.\n\n계산/도식 확인: PA=PB, CA=CB이므로 PC는 접점 현 AB의 수직이등분선이다. 따라서 사각형의 대각선이 PC, AB로 잡히며, 두 대각선이 수직일 때 넓이는 두 대각선 길이의 곱의 절반이라는 점을 적용한다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q16-solution.svg",
     "solutionImageAlt": "외부점 P에서 원에 그은 두 접선, 접점 현 AB와 중심 C를 나타낸 그림",
     "solutionImageCaption": "PC와 AB가 수직인 접점 현 구조를 이용해 사각형의 두 대각선 넓이를 구한다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -631,23 +605,18 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": [
-      "단답형",
-      "원의 방정식",
-      "두 원",
-      "넓이"
-    ],
+    "tags": ["단답형","원의 방정식","교점","두 원","공통현","직선과 원","중심","넓이","거리","도형"],
     "wide": false,
     "content": "두 원 $C_1:(x+1)^2+(y-2)^2=10$, $C_2:(x-2)^2+(y+1)^2=k$ $(k>0)$가 두 점 $A$, $B$에서 만날 때, 점 $A$, $B$와 원 $C_1$의 중심 $C(-1,2)$로 이루어진 삼각형 $CAB$의 넓이가 $4$가 되도록 하는 모든 $k$값의 합을 구하시오. [4.5점]",
     "choices": [],
     "answer": "$112$",
-    "solution": "[키포인트] 공통현 $AB$와 원 $C_1$의 중심 사이의 거리를 이용한다.\n$M$을 공통현 $AB$의 중점, $CM=d$라 하면 $AM=\\sqrt{10-d^2}$이다.\n삼각형 $CAB$의 넓이가 $4$이므로 $d\\sqrt{10-d^2}=4$이다.\n$t=d^2$로 놓고 제곱하면 $t(10-t)=16$이므로 $t=2$ 또는 $t=8$이다.\n따라서 $d=\\sqrt2$ 또는 $d=2\\sqrt2$이다.\n두 원의 방정식을 전개하여 빼면 공통현의 직선은 $-6x+6y+10-k=0$이다.\n중심 $C(-1,2)$에서 이 직선까지의 거리는 $\\dfrac{|28-k|}{6\\sqrt2}$이므로\n$\\dfrac{|28-k|}{6\\sqrt2}=\\sqrt2$에서 $k=16,40$,\n$\\dfrac{|28-k|}{6\\sqrt2}=2\\sqrt2$에서 $k=4,52$이다.\n따라서 모든 $k$의 합은 $16+40+4+52=112$이다.\n따라서 답은 $112$이다.\n[보강] d<√10이므로 두 원의 공통현이 실제로 존재하고, 구한 네 값은 모두 k>0을 만족한다. 넓이 조건은 공통현의 길이와 중심에서 현까지의 거리를 함께 반영하므로 d=√2, 2√2 두 경우를 모두 세어야 한다.",
+    "solution": "[키포인트] 공통현 $AB$와 원 $C_1$의 중심 사이의 거리를 이용한다.\n$M$을 공통현 $AB$의 중점, $CM=d$라 하면 $AM=\\sqrt{10-d^2}$이다.\n삼각형 $CAB$의 넓이가 $4$이므로 $d\\sqrt{10-d^2}=4$이다.\n$t=d^2$로 놓고 제곱하면 $t(10-t)=16$이므로 $t=2$ 또는 $t=8$이다.\n따라서 $d=\\sqrt2$ 또는 $d=2\\sqrt2$이다.\n두 원의 방정식을 전개하여 빼면 공통현의 직선은 $-6x+6y+10-k=0$이다.\n중심 $C(-1,2)$에서 이 직선까지의 거리는 $\\dfrac{|28-k|}{6\\sqrt2}$이므로\n$\\dfrac{|28-k|}{6\\sqrt2}=\\sqrt2$에서 $k=16,40$,\n$\\dfrac{|28-k|}{6\\sqrt2}=2\\sqrt2$에서 $k=4,52$이다.\n따라서 모든 $k$의 합은 $16+40+4+52=112$이다.\n\n계산/도식 확인: d<√10이므로 두 원의 공통현이 실제로 존재하고, 구한 네 값은 모두 k>0을 만족한다. 넓이 조건은 공통현의 길이와 중심에서 현까지의 거리를 함께 반영하므로 d=√2, 2√2 두 경우를 모두 세어야 한다.\n따라서 답은 $112$이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q18-solution.svg",
     "solutionImageAlt": "두 원의 공통현 AB와 중심 C에서 공통현까지의 거리 d를 나타낸 그림",
     "solutionImageCaption": "삼각형 넓이에서 공통현까지의 거리 d를 구하고 두 원의 공통현 직선을 이용한다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -662,12 +631,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원의 방정식",
-      "직각삼각형",
-      "최대최소"
-    ],
+    "tags": ["객관식","원의 방정식","넓이","도형"],
     "wide": false,
     "content": "두 점 $O(0,0)$, $A(6,0)$과 원 $x^2+y^2-14x+8y=0$ 위의 점 $P(a,b)$에 대하여 삼각형 $OAP$가 직각삼각형일 때, 그 넓이의 최댓값과 최솟값을 각각 $M$, $m$이라 하자. $M+m$의 값은? [4.5점]",
     "choices": [
@@ -678,7 +642,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "[키포인트] 직각이 되는 꼭짓점이 $O$, $A$, $P$인 경우를 각각 조사한다.\n직각이 $O$에 있으면 $a=0$이고, 원의 방정식에서 $b=0,-8$이다. $P=O$는 제외하므로 넓이는 $24$이다.\n직각이 $A$에 있으면 $a=6$이고, 원의 방정식에서 $b=4,-12$이다. 넓이는 각각 $12$, $36$이다.\n직각이 $P$에 있으면 점 $P$는 선분 $OA$를 지름으로 하는 원 $x^2+y^2=6x$ 위에 있다.\n이를 주어진 원과 연립하면 $a=b$이고, $2a^2=6a$에서 $a=0$ 또는 $a=3$이다. $a=0$이면 $P=O$가 되어 삼각형이 성립하지 않으므로 제외한다. 따라서 $P=(3,3)$이고, 이때 넓이는 $9$이다.\n가능한 넓이는 $9,12,24,36$이므로 $M=36$, $m=9$이다.\n따라서 $M+m=45$이므로 정답은 ②이다.\n[보강] 세 꼭짓점 중 어디가 직각인지에 따라 조건식이 달라지므로 세 경우가 빠짐없이 필요하다. 각 경우의 넓이는 밑변 OA=6과 높이의 절댓값을 이용해 계산하며, P=O처럼 삼각형을 만들지 못하는 점은 제외한다.",
+    "solution": "[키포인트] 직각이 되는 꼭짓점이 $O$, $A$, $P$인 경우를 각각 조사한다.\n직각이 $O$에 있으면 $a=0$이고, 원의 방정식에서 $b=0,-8$이다. $P=O$는 제외하므로 넓이는 $24$이다.\n직각이 $A$에 있으면 $a=6$이고, 원의 방정식에서 $b=4,-12$이다. 넓이는 각각 $12$, $36$이다.\n직각이 $P$에 있으면 점 $P$는 선분 $OA$를 지름으로 하는 원 $x^2+y^2=6x$ 위에 있다.\n이를 주어진 원과 연립하면 $a=b$이고, $2a^2=6a$에서 $a=0$ 또는 $a=3$이다. $a=0$이면 $P=O$가 되어 삼각형이 성립하지 않으므로 제외한다. 따라서 $P=(3,3)$이고, 이때 넓이는 $9$이다.\n가능한 넓이는 $9,12,24,36$이므로 $M=36$, $m=9$이다.\n\n계산/도식 확인: 세 꼭짓점 중 어디가 직각인지에 따라 조건식이 달라지므로 세 경우가 빠짐없이 필요하다. 각 경우의 넓이는 밑변 OA=6과 높이의 절댓값을 이용해 계산하며, P=O처럼 삼각형을 만들지 못하는 점은 제외한다.\n따라서 $M+m=45$이므로 정답은 ②이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q19-solution.svg",
     "solutionImageAlt": "원 위의 점 P와 고정된 선분 OA에서 직각이 되는 세 경우를 비교한 그림",
     "solutionImageCaption": "직각이 O, A, P 중 어디에 있는지 나누어 가능한 넓이를 빠짐없이 조사한다.",
@@ -736,23 +700,18 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "원의 방정식",
-      "접선",
-      "넓이"
-    ],
+    "tags": ["서술형","원의 방정식","접선","접점","중심","반지름","넓이","거리","도형"],
     "wide": false,
     "content": "〈서·논술형 1〉<br>점 $P(-4,2)$에서 원 $(x-2)^2+(y+1)^2=9$에 그은 두 접선의 접점을 각각 $A$, $B$라 할 때, 삼각형 $PAB$의 넓이를 풀이과정과 함께 구하시오. [8점]",
     "choices": [],
     "answer": "$\\dfrac{72}{5}$",
-    "solution": "[키포인트] 중심과 외부의 점을 이은 직선은 두 접점을 이은 현의 수직이등분선이다.\n원의 중심을 $C(2,-1)$이라 하면 $CP=\\sqrt{6^2+(-3)^2}=3\\sqrt5$이고 반지름은 $3$이다.\n접선의 길이는 $PA=\\sqrt{CP^2-CA^2}=\\sqrt{45-9}=6$이다.\n$M$을 $CP$와 $AB$의 교점이라 하자. $PA=PB$, $CA=CB$이므로 $CP$는 선분 $AB$의 수직이등분선이다.\n$CM=x$라 하면 $AM^2=9-x^2$, $PM=3\\sqrt5-x$이다.\n직각삼각형 $PMA$에서\n$36=(3\\sqrt5-x)^2+(9-x^2)=54-6\\sqrt5x$이므로 $x=\\dfrac3{\\sqrt5}$이다.\n따라서 $AM=\\sqrt{9-\\dfrac95}=\\dfrac6{\\sqrt5}$, $PM=3\\sqrt5-\\dfrac3{\\sqrt5}=\\dfrac{12}{\\sqrt5}$이다.\n삼각형 $PAB$의 넓이는 $\\dfrac12\\cdot2AM\\cdot PM=AM\\cdot PM=\\dfrac{72}{5}$이다.\n따라서 답은 $\\dfrac{72}{5}$이다.\n[보강] AB를 밑변으로 보면 높이는 점 P에서 현 AB까지의 거리인 PM이다. 또 AB=2AM이므로 넓이는 1/2·AB·PM=AM·PM으로 계산된다.",
+    "solution": "[키포인트] 중심과 외부의 점을 이은 직선은 두 접점을 이은 현의 수직이등분선이다.\n원의 중심을 $C(2,-1)$이라 하면 $CP=\\sqrt{6^2+(-3)^2}=3\\sqrt5$이고 반지름은 $3$이다.\n접선의 길이는 $PA=\\sqrt{CP^2-CA^2}=\\sqrt{45-9}=6$이다.\n$M$을 $CP$와 $AB$의 교점이라 하자. $PA=PB$, $CA=CB$이므로 $CP$는 선분 $AB$의 수직이등분선이다.\n$CM=x$라 하면 $AM^2=9-x^2$, $PM=3\\sqrt5-x$이다.\n직각삼각형 $PMA$에서\n$36=(3\\sqrt5-x)^2+(9-x^2)=54-6\\sqrt5x$이므로 $x=\\dfrac3{\\sqrt5}$이다.\n따라서 $AM=\\sqrt{9-\\dfrac95}=\\dfrac6{\\sqrt5}$, $PM=3\\sqrt5-\\dfrac3{\\sqrt5}=\\dfrac{12}{\\sqrt5}$이다.\n삼각형 $PAB$의 넓이는 $\\dfrac12\\cdot2AM\\cdot PM=AM\\cdot PM=\\dfrac{72}{5}$이다.\n\n계산/도식 확인: AB를 밑변으로 보면 높이는 점 P에서 현 AB까지의 거리인 PM이다. 또 AB=2AM이므로 넓이는 1/2·AB·PM=AM·PM으로 계산된다.\n따라서 답은 $\\dfrac{72}{5}$이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q21-solution.svg",
     "solutionImageAlt": "점 P에서 원에 그은 두 접선과 접점 현 AB, 중심 C를 나타낸 그림",
     "solutionImageCaption": "접점 현 AB와 PC의 수직 구조에서 밑변과 높이를 읽어 삼각형 넓이를 계산한다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
