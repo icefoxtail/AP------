@@ -100,7 +100,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 4,
     "level": "중",
     "category": "직선의 방정식",
@@ -133,14 +133,14 @@ window.questionBank = [
     "solution": "두 점 $(2,1)$, $(-4,a)$를 지나는 직선의 기울기는\n$\\dfrac{a-1}{-4-2}=\\dfrac{1-a}{6}$이다.\n\n$a\\ne0$이면 직선 $3x+ay=1$의 기울기는 $-\\dfrac3a$이므로 수직 조건에서\n$\\dfrac{1-a}{6}\\cdot\\left(-\\dfrac3a\\right)=-1$이다. 양변을 정리하면\n$\\dfrac{1-a}{2a}=1$이므로 $1-a=2a$, 즉 $3a=1$이다. 따라서 $a=\\dfrac13$이다.\n\n분모 때문에 빠진 $a=0$도 확인한다. 이때 두 점을 지나는 직선은 기울기 $\\dfrac16$이고, $3x=1$은 수직선이므로 두 직선은 수직이 아니다. 따라서 $a=0$은 해가 아니다.\n\n그러므로 정답은 ②이다.",
     "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q04-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "a=1/3 · 기울기 1/9과 −9",
+    "solutionImageCaption": "수직 관계 · a=1/3 · 기울기 1/9과 −9",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 5,
     "level": "중",
     "category": "직선의 방정식",
@@ -174,7 +174,7 @@ window.questionBank = [
     "solution": "두 직선이 평행하려면 x, y의 계수의 비가 같아야 한다. 따라서\n$\\dfrac{1-m}{2}=\\dfrac{3}{-m}$에서 $(1-m)(-m)=3\\cdot2$이다.\n정리하면 $m^2-m-6=0$이므로 $(m-3)(m+2)=0$, $m=3$ 또는 $m=-2$이다.\n\n$m=3$일 때 첫 번째 직선은 $-2x+3y-5=0$, 두 번째 직선은 $2x-3y+5=0$으로 서로 같은 직선이다. 따라서 서로 다른 평행선이 되는 값은 $m=-2$이다.\n참고로 $m=0$이면 두 번째 직선은 수직선 $2x+5=0$이고 첫 번째 직선의 기울기는 $-1/3$이므로 평행하지 않다. 따라서 나눗셈에서 빠지는 경우도 조건을 만족하지 않는다.\n\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "m=−2에서 평행 · m=3은 같은 직선이므로 제외",
+    "solutionImageCaption": "평행 관계 · m=−2에서 평행 · m=3은 같은 직선이므로 제외",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -410,7 +410,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -443,14 +443,14 @@ window.questionBank = [
     "solution": "[키포인트]\n직각삼각형이 되려면 세 직선 중 두 직선이 서로 수직이어야 한다.\n\n풀이 과정\n직선 $x-2y+5=0$은 $y=\\dfrac12x+\\dfrac52$이므로 기울기는 $\\dfrac12$이다.\n직선 $2x+3y-6=0$은 $y=-\\dfrac23x+2$이므로 기울기는 $-\\dfrac23$이다.\n두 기울기의 곱은 $\\dfrac12\\cdot\\left(-\\dfrac23\\right)=-\\dfrac13$이므로 두 직선은 서로 수직이 아니다.\n따라서 세 번째 직선 $ax+y-3=0$, 즉 $y=-ax+3$이 둘 중 하나와 수직이어야 한다.\n\n첫 번째 직선과 수직이면\n$\\dfrac12\\cdot(-a)=-1$이므로 $a=2$이다.\n두 번째 직선과 수직이면\n$-\\dfrac23\\cdot(-a)=-1$이므로 $a=-\\dfrac32$이다.\n따라서 모든 $a$값의 곱은\n$2\\cdot\\left(-\\dfrac32\\right)=-3$이다.\n\n결론\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q13-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "L₁의 기울기 1/2 · L₂의 기울기 −2/3",
+    "solutionImageCaption": "수직 관계 · L₁의 기울기 1/2 · L₂의 기울기 −2/3",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -461,7 +461,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","거리"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "원점과 직선 $(k+2)x+(k+3)y-2=0$ 사이의 거리를 $f(k)$라 할 때, $f(k)$의 최댓값은? (단, $k$는 실수이다.) [4.6]",
     "choices": [
@@ -475,7 +483,7 @@ window.questionBank = [
     "solution": "[키포인트]\n점과 직선 사이 거리 공식을 이용하고, 분모가 가장 작을 때 거리가 가장 커진다는 점을 이용한다.\n\n풀이 과정\n원점 $(0,0)$과 직선 $(k+2)x+(k+3)y-2=0$ 사이의 거리는\n$f(k)=\\dfrac{| -2 |}{\\sqrt{(k+2)^2+(k+3)^2}}=\\dfrac{2}{\\sqrt{(k+2)^2+(k+3)^2}}$이다.\n따라서 $f(k)$가 최대가 되려면 분모 $(k+2)^2+(k+3)^2$이 최소가 되어야 한다.\n이 식을 정리하면\n$(k+2)^2+(k+3)^2=2\\left(k+\\dfrac52\\right)^2+\\dfrac12$이다.\n최솟값은 $\\dfrac12$이므로\n$f(k)$의 최댓값은\n$\\dfrac{2}{\\sqrt{\\frac12}}=2\\sqrt2$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q14-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "분모가 최소일 때 최대 · 최대거리=2√2",
+    "solutionImageCaption": "거리 · 분모가 최소일 때 최대 · 구하는 직선 y=x+4",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -547,7 +555,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",
@@ -582,7 +590,7 @@ window.questionBank = [
     "solution": "[키포인트]\n밑변 $AB$를 고정하고, 점 $P$에서 직선 $AB$까지의 거리를 이용해 넓이를 식으로 나타낸다.\n\n풀이 과정\n두 점 $A(6,2)$, $B(10,6)$를 지나는 직선의 기울기는\n$\\dfrac{6-2}{10-6}=1$이다.\n따라서 직선 $AB$의 방정식은\n$y-2=x-6$, 즉 $y=x-4$이다.\n정리하면 $x-y-4=0$이다.\n또 $AB$의 길이는\n$\\sqrt{(10-6)^2+(6-2)^2}=4\\sqrt2$이다.\n\n점 $P$를 $P(t,t^2+8)$이라 하자. $-2\\le t\\le6$이다.\n점 $P$에서 직선 $AB$까지의 거리는\n$\\dfrac{|t-(t^2+8)-4|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{| -t^2+t-12 |}{\\sqrt2}$이다.\n$t^2-t+12$는 항상 양수이므로 이 거리는\n$\\dfrac{t^2-t+12}{\\sqrt2}$이다.\n따라서 삼각형 $PAB$의 넓이는\n$\\dfrac12\\cdot4\\sqrt2\\cdot\\dfrac{t^2-t+12}{\\sqrt2}=2t^2-2t+24$이다.\n\n이 식은 $t=\\dfrac12$에서 최솟값을 가진다.\n$m=2\\left(\\dfrac12\\right)^2-2\\left(\\dfrac12\\right)+24=\\dfrac{47}{2}$이다.\n구간의 양 끝에서 값을 비교하면\n$t=-2$일 때 $36$, $t=6$일 때 $84$이므로 최댓값은 $M=84$이다.\n따라서\n$M-2m=84-2\\cdot\\dfrac{47}{2}=84-47=37$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q17-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 17의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "AB 고정 · Pmin=(1/2,33/4)",
+    "solutionImageCaption": "거리 · AB 고정 · Pmin=(1/2,33/4)",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -696,7 +704,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 22,
     "level": "중",
     "category": "직선의 방정식",
@@ -707,15 +715,24 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["서술형","직선의 방정식","고1","기말","도형","직선","거리","교점"],
+    "tags": [
+      "서술형",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "거리",
+      "교점"
+    ],
     "wide": true,
     "content": "두 직선 $x-y+3=0$, $y=-x+1$에 대해 다음 물음에 답하시오.\n(1) 두 직선의 교점과 점 $(1,0)$을 지나는 직선의 방정식을 구하시오. [3점]\n(2) 두 직선의 교점을 지나고 기울기가 $3$인 직선을 $l$이라 할 때, 원점과 직선 $l$ 사이의 거리를 구하시오. [4점]",
     "choices": [],
     "answer": "(1) $y=-x+1$  (2) $\\dfrac{\\sqrt{10}}{2}$",
     "solution": "[키포인트]\n먼저 두 직선의 교점을 구하고, 그 교점을 이용하여 각각의 직선 방정식과 거리를 구한다.\n\n풀이 과정\n(1) $x-y+3=0$에서 $y=x+3$이다.\n두 직선의 교점을 구하기 위해 $x+3=-x+1$을 풀면\n$2x=-2$이므로 $x=-1$이다.\n이때 $y=2$이므로 두 직선의 교점은 $(-1,2)$이다.\n점 $(-1,2)$와 점 $(1,0)$을 지나는 직선의 기울기는\n$\\dfrac{0-2}{1-(-1)}=-1$이다.\n따라서 직선의 방정식은\n$y-0=-(x-1)$, 즉 $y=-x+1$이다.\n\n(2) 기울기가 $3$이고 점 $(-1,2)$를 지나는 직선 $l$은\n$y-2=3(x+1)$이다.\n정리하면\n$y=3x+5$, 즉 $3x-y+5=0$이다.\n원점 $(0,0)$과 직선 $3x-y+5=0$ 사이의 거리는\n$\\dfrac{|5|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{5}{\\sqrt{10}}=\\dfrac{\\sqrt{10}}{2}$이다.\n\n결론\n따라서 (1)의 답은 $y=-x+1$, (2)의 답은 $\\dfrac{\\sqrt{10}}{2}$이다.",
     "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 22의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 22의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "거리 · 교점 V=(−1,2) · 첫 답 직선 y=−x+1",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",

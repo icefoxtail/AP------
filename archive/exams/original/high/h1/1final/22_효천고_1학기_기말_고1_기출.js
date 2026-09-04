@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -504,7 +504,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 16,
     "level": "상",
     "category": "직선의 방정식",
@@ -515,7 +515,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선","보기","거리공식","도형","거리","교점"],
+    "tags": [
+      "객관식",
+      "직선",
+      "보기",
+      "거리공식",
+      "도형",
+      "거리",
+      "교점"
+    ],
     "wide": false,
     "content": "방정식 $(k-2)x+(2k-3)y+4k-3=0$이 나타내는 직선 $l$에 대한 설명 중 옳은 것만 있는 대로 고른 것은? [4.8점]<br><div class='question-note-box'>ㄱ. 직선 $l$은 제4사분면을 반드시 지난다.<br>ㄴ. 직선 $l$은 직선 $2x+3y+3=0$과 겹쳐질 수 없다.<br>ㄷ. 원점과 직선 $l$ 사이의 거리가 $1$인 실수 $k$는 $1$개 존재한다.</div>",
     "choices": [
@@ -530,7 +538,7 @@ window.questionBank = [
     "solution": "[키포인트]\n주어진 직선식을 $k$가 붙은 부분과 붙지 않은 부분으로 나누면 모든 직선이 지나는 공통점을 찾을 수 있다.\n조건 정리\n직선 $l$의 방정식은 $(k-2)x+(2k-3)y+4k-3=0$이다.\n풀이 과정\n식을 $k$에 대하여 정리하면\n$k(x+2y+4)+(-2x-3y-3)=0$이다.\n따라서 모든 직선 $l$은 두 직선\n$x+2y+4=0$, $-2x-3y-3=0$의 교점을 지난다.\n두 식을 풀면\n$x+2y=-4$, $2x+3y=-3$이다.\n첫 번째 식을 $2$배하면 $2x+4y=-8$이고, 여기서 $2x+3y=-3$을 빼면 $y=-5$이다.\n$x+2(-5)=-4$이므로 $x=6$이다.\n즉 모든 직선 $l$은 $(6,-5)$를 지난다. 이 점은 제4사분면에 있으므로 ㄱ은 참이다.\nㄴ을 보자. $k=0$이면 직선 $l$은\n$-2x-3y-3=0$이고, 이는 $2x+3y+3=0$과 같은 직선이다.\n따라서 ㄴ은 거짓이다.\nㄷ을 보자. 원점과 직선 $l$ 사이의 거리가 $1$이려면\n$\\dfrac{|4k-3|}{\\sqrt{(k-2)^2+(2k-3)^2}}=1$이다.\n양변을 제곱하면\n$(4k-3)^2=(k-2)^2+(2k-3)^2$\n$16k^2-24k+9=5k^2-16k+13$\n$11k^2-8k-4=0$이다.\n이 이차방정식은 판별식이 $(-8)^2-4\\cdot11\\cdot(-4)=240>0$이므로 서로 다른 두 실근을 갖는다.\n따라서 그런 실수 $k$는 2개이고, ㄷ은 거짓이다.\n결론\n옳은 것은 ㄱ뿐이므로 정답은 ①이다.",
     "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q16-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 16의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "교점 · 거리 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",

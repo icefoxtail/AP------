@@ -9,6 +9,19 @@
     "freshRun": true,
     "sourcePaths": "current archive/exams/original/high/h1 production paths"
   },
+  "finalRunAfterGeneratorAndCaptionRepair": {
+    "batches": 4,
+    "filesPerBatch": 7,
+    "modesPerBatch": 21,
+    "passModes": 84,
+    "failModes": 0,
+    "questionCountAndLastQuestion": "PASS",
+    "answerCountAndLastAnswer": "PASS",
+    "images": "PASS",
+    "rawLatex": "PASS",
+    "loadErrorText": "PASS",
+    "horizontalOverflow": "PASS"
+  },
   "passModes": 84,
   "failModes": 0,
   "checks": {
@@ -18,9 +31,9 @@
     "loadErrorText": "PASS",
     "horizontalOverflow": "PASS",
     "pageConsoleErrors": 0,
-    "browserExtensionChannelErrors": 7
+    "browserExtensionChannelErrors": 2
   },
   "failures": [],
-  "browserExtensionChannelErrorNote": "The seven captured console entries were the Chrome extension asynchronous-response channel message, not archive page load/render errors; they remain recorded rather than silently discarded.",
+  "browserExtensionChannelErrorNote": "The two captured console entries were the Chrome extension asynchronous-response channel message, not archive page load/render errors; they remain recorded rather than silently discarded.",
   "decision": "browser gate PASS; geometry qualification remains separately fail-closed on source/SVG and policy holds"
 }

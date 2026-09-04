@@ -314,7 +314,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 10,
     "level": "하",
     "category": "직선의 방정식",
@@ -351,10 +351,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/22_제일고_1학기_기말_고1_기출/q10-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 10의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 점을 지나는 직선 · m=1/2, n=2, mn=1",
+    "solutionImageCaption": "절편 · 두 점을 지나는 직선 · m=1/2, n=2, mn=1",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 11,
     "level": "상",
     "category": "직선의 방정식",
@@ -365,7 +365,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","수직","거리","절편","교점"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "수직",
+      "거리",
+      "절편",
+      "교점"
+    ],
     "wide": false,
     "content": "두 직선 $2x-y=0$, $3x+2y+7=0$의 교점을 지나는 직선 중에서 원점 $O$로부터의 거리가 최대가 되는 직선의 방정식을 $y=f(x)$라고 할 때, 이 직선의 $y$절편의 값으로 알맞은 것은? [4.4점]",
     "choices": [
@@ -378,15 +389,15 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 한 점을 지나는 여러 직선 중 원점까지의 거리가 가장 크게 되려면, 원점에서 그 직선에 내린 수선의 발이 바로 그 점이 되어야 한다.\n\n먼저 두 직선의 교점을 구한다.\n$2x-y=0$에서 $y=2x$이다. 이를 $3x+2y+7=0$에 대입하면\n$3x+4x+7=0$\n$7x=-7$\n$x=-1$이다.\n따라서 $y=2(-1)=-2$이므로 교점은 $P(-1,-2)$이다.\n\n교점 $P$를 지나는 직선과 원점 사이의 거리는 항상 $OP$보다 클 수 없다. 가장 클 때는 $OP$가 그 직선과 수직일 때이다.\n직선 $OP$의 기울기는\n$\\dfrac{-2-0}{-1-0}=2$이다.\n따라서 구하는 직선의 기울기는 $-\\dfrac12$이다.\n\n점 $P(-1,-2)$를 지나고 기울기가 $-\\dfrac12$인 직선은\n$y+2=-\\dfrac12(x+1)$이다.\n정리하면\n$y=-\\dfrac12x-\\dfrac52$이다.\n따라서 $y$절편은 $-\\dfrac52$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_제일고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 11의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 11의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "수직 관계 · 절편 · 교점 P=(−1,−2) · OP⊥최대거리 직선",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -397,7 +408,15 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","거리"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "점 $(1,a)$와 두 직선 $x+2y=1$, $2x+y=1$ 사이의 거리가 같도록 하는 모든 실수 $a$의 값의 합은? [4.1점]",
     "choices": [
@@ -411,7 +430,7 @@ window.questionBank = [
     "solution": "[키포인트] 점과 직선 사이의 거리 공식을 이용해 두 거리를 같게 둔다.\n\n점 $(1,a)$에서 직선 $x+2y=1$까지의 거리는\n$\\dfrac{|1+2a-1|}{\\sqrt{1^2+2^2}}=\\dfrac{|2a|}{\\sqrt5}$이다.\n점 $(1,a)$에서 직선 $2x+y=1$까지의 거리는\n$\\dfrac{|2+a-1|}{\\sqrt{2^2+1^2}}=\\dfrac{|a+1|}{\\sqrt5}$이다.\n두 거리가 같으므로\n$|2a|=|a+1|$이다.\n양변을 제곱하면\n$4a^2=(a+1)^2$\n$4a^2=a^2+2a+1$\n$3a^2-2a-1=0$\n$(3a+1)(a-1)=0$이다.\n따라서 $a=-\\dfrac13$ 또는 $a=1$이다.\n모든 값의 합은\n$-\\dfrac13+1=\\dfrac23$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_제일고_1학기_기말_고1_기출/q12-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 직선까지의 거리가 같은 점 · P₁=(−1/3,1), P₂=(1,1)",
+    "solutionImageCaption": "두 직선까지의 거리가 같은 점 · P₁=(1,−1/3), P₂=(1,1)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",

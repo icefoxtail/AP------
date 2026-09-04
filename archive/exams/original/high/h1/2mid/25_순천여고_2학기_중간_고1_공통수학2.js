@@ -262,7 +262,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 10,
     "level": "중",
     "category": "직선의 방정식",
@@ -296,7 +296,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q10-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 10의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "a=6은 평행 조건 · b=−3/2는 수직 조건, 합=9/2",
+    "solutionImageCaption": "평행 관계 · 수직 관계 · a=6은 평행 조건 · b=−3/2는 수직 조건, 합=9/2",
     "solutionImageSize": "full"
   },
   {
@@ -327,7 +327,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -338,7 +338,12 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","수직","교점"],
+    "tags": [
+      "도형",
+      "직선",
+      "수직",
+      "교점"
+    ],
     "wide": false,
     "content": "점 $A(2,3)$에서 두 점 $B(-1,3)$, $C(3,7)$을 이은 선분 $BC$에 내린 수선의 발을 $M(a,b)$라 할 때, $4ab$의 값은?",
     "choices": [
@@ -351,15 +356,15 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 직선 $BC$와 점 $A$를 지나는 수선의 방정식을 구해 교점을 찾는다.\\n직선 $BC$의 기울기는 $1$이므로 방정식은 $y=x+4$이다.\\n수선의 기울기는 $-1$이고 $A(2,3)$을 지나므로 $y=-x+5$이다.\\n두 직선의 교점은 $x+4=-x+5$에서 $x=\\dfrac12$, $y=\\dfrac92$이다.\\n따라서 $4ab=4\\cdot\\dfrac12\\cdot\\dfrac92=9$이다.\\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q12-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "교점 · BC 기울기=1 · 수선 기울기=−1",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -396,7 +401,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q13-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "l의 기울기=−a/b · PH의 기울기=b/a",
+    "solutionImageCaption": "평행 관계 · 수직 관계 · 거리 · l의 기울기=−a/b · PH의 기울기=b/a",
     "solutionImageSize": "full"
   },
   {
@@ -555,7 +560,7 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 19,
     "level": "중",
     "category": "직선의 방정식",
@@ -566,7 +571,11 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형","도형","직선"],
+    "tags": [
+      "서술형",
+      "도형",
+      "직선"
+    ],
     "wide": false,
     "content": "직선 $mx+y-3m+2=0$이 제1사분면을 지나지 않도록 하는 실수 $m$의 값의 범위를 구하고, 그 과정을 서술하시오.",
     "choices": [],
@@ -581,7 +590,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",
@@ -606,7 +615,7 @@ window.questionBank = [
     "solution": "[키포인트] 도형을 두 직사각형으로 나누어 전체 넓이를 구하고, 점 $A$를 지나는 분할선의 $y$축과의 교점을 정한다.\\n도형은 $0\\le x\\le5$, $0\\le y\\le4$인 직사각형과 $-5\\le x\\le0$, $0\\le y\\le1$인 직사각형의 합이다. 전체 넓이는 $5\\cdot4+5\\cdot1=25$이다.\\n넓이의 절반은 $\\dfrac{25}{2}$이다. 점 $A(5,0)$를 지나고 $y$축과 $(0,t)$에서 만나는 직선을 생각하자. 이 직선 아래쪽에는 왼쪽 직사각형의 넓이 $5$와 오른쪽의 삼각형 넓이 $\\dfrac12\\cdot5\\cdot t$가 포함된다.\\n$5+\\dfrac{5t}{2}=\\dfrac{25}{2}$에서 $t=3$이다. 따라서 직선은 $(5,0)$과 $(0,3)$을 지나므로 $y=-\\dfrac35x+3$이다.\\n정리하면 $3x+5y-15=0$이다.\\n따라서 구하는 값은 $3x+5y-15=0$이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 20의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "전체 넓이=25 · 절반 넓이=25/2",
+    "solutionImageCaption": "교점 · 전체 넓이=25 · 절반 넓이=25/2",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",

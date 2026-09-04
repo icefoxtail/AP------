@@ -84,7 +84,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 4,
     "level": "중",
     "category": "수학(상)",
@@ -119,7 +119,7 @@ window.questionBank = [
     "solutionImageCaption": "기울기=4 · P=(3,2), k=−10",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 5,
     "level": "중",
     "category": "수학(상)",
@@ -130,7 +130,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","거리"],
+    "tags": [
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "점 $(2,3)$과 직선 $3x-4y+1=0$ 사이의 거리를 구하면?",
     "choices": [
@@ -148,10 +152,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "P=(2,3) · 수선의 발 H=(1/5,33/20)",
+    "solutionImageCaption": "거리 · P=(2,3) · 수선의 발 H=(13/5,11/5)",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 6,
     "level": "중",
     "category": "수학(상)",
@@ -162,7 +166,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","수직"],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "직선 $y=3x+5$에 수직인 직선의 기울기는?",
     "choices": [
@@ -180,7 +188,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q06-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "주어진 기울기=3 · 수직 기울기=−1/3",
+    "solutionImageCaption": "수직 관계 · 주어진 기울기=3 · 수직 기울기=−1/3",
     "solutionImageSize": "full"
   },
   {
@@ -303,7 +311,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 11,
     "level": "중",
     "category": "수학(상)",
@@ -314,7 +322,12 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","절편","넓이"],
+    "tags": [
+      "도형",
+      "직선",
+      "절편",
+      "넓이"
+    ],
     "wide": false,
     "content": "직선 $(2k+1)x+(-5k+5)y+20k-5=0$이 실수 $k$의 값에 관계없이 항상 점 $P$를 지날 때, 두 점 $P$와 $(-3,6)$을 지나는 직선과 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
     "choices": [
@@ -327,8 +340,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 직선이 $k$의 값에 관계없이 항상 한 점을 지나려면, $k$가 붙은 부분과 붙지 않은 부분이 그 점에서 각각 $0$이 되어야 한다.\n주어진 식을 $k$에 대한 식으로 정리하면\n$k(2x-5y+20)+(x+5y-5)=0$이다.\n모든 $k$에 대하여 성립해야 하므로 점 $P$의 좌표는\n$2x-5y+20=0$, $x+5y-5=0$\n을 동시에 만족한다.\n두 식을 풀면 $x=-5$, $y=2$이므로 $P=(-5,2)$이다.\n이제 $P(-5,2)$와 $(-3,6)$을 지나는 직선의 기울기는\n$\\dfrac{6-2}{-3-(-5)}=\\dfrac42=2$이다.\n따라서 직선은 $y-2=2(x+5)$, 즉 $y=2x+12$이다.\n이 직선의 $x$절편은 $-6$, $y$절편은 $12$이므로 좌표축과 둘러싸인 삼각형의 넓이는\n$\\dfrac12\\times6\\times12=36$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 11의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 11의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "절편 · 항등식 공통점 P=(−5,2) · 직선 y=2x+12",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -394,7 +407,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 14,
     "level": "중",
     "category": "수학(상)",
@@ -424,7 +437,7 @@ window.questionBank = [
     "solution": "[키포인트] 두 직선이 이루는 각의 이등분선은 두 직선까지의 거리가 같은 점들의 집합이다. 따라서 두 직선식을 표준화하여 부호가 같은 경우와 반대인 경우를 나누어 구한다.\n두 직선은 $3x+y+7=0$, $x-3y-3=0$이다.\n두 직선의 계수 제곱의 합은 각각 $3^2+1^2=10$, $1^2+(-3)^2=10$으로 같다.\n그러므로 각의 이등분선은\n$3x+y+7=x-3y-3$ 또는 $3x+y+7=-(x-3y-3)$\n에서 얻는다.\n첫 번째 식을 정리하면\n$2x+4y+10=0$, 즉 $x+2y+5=0$이다. 이 직선의 기울기는 $-\\dfrac12$이다.\n두 번째 식을 정리하면\n$4x-2y+4=0$, 즉 $2x-y+2=0$이다. 이 직선의 기울기는 $2$이다.\n문제에서 기울기가 양수인 직선을 물었으므로 $2x-y+2=0$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q14-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 계수의 크기가 같음 · 양의 기울기 이등분선",
+    "solutionImageCaption": "거리 · 두 계수의 크기가 같음 · 양의 기울기 이등분선",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_1학기_기말_고1_기출/q14.png",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",

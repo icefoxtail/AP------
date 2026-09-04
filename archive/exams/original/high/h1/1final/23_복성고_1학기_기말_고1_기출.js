@@ -102,7 +102,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 4,
     "level": "하",
     "category": "직선의 방정식",
@@ -137,10 +137,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q04-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "45°의 기울기=1 · B=(5,4), a=4",
+    "solutionImageCaption": "45°의 기울기=1 · A=(2,1), B=(5,4)",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -151,7 +151,14 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","수직","기울기","직선","도형","절편"],
+    "tags": [
+      "객관식",
+      "수직",
+      "기울기",
+      "직선",
+      "도형",
+      "절편"
+    ],
     "wide": false,
     "content": "직선 $y=-\\dfrac{1}{2}x$와 수직이고 점 $(1,5)$를 지나는 직선의 방정식으로 옳은 것은? [3점]",
     "choices": [
@@ -169,7 +176,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "주어진 기울기=−1/2 · 수직 기울기=2, y=2x+3",
+    "solutionImageCaption": "수직 관계 · 절편 · 주어진 기울기=−1/2 · 수직 기울기=2",
     "solutionImageSize": "full"
   },
   {
@@ -347,7 +354,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 11,
     "level": "중",
     "category": "직선의 방정식",
@@ -380,7 +387,7 @@ window.questionBank = [
     "solution": "[키포인트] 세 직선이 삼각형을 이루지 못하는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\n조건 정리: 세 직선은 $x+y-6=0$, $ax+y+4=0$, $x-y-6=0$이다.\n풀이 방향: 두 직선이 평행한 경우와 세 직선이 한 점에서 만나는 경우를 각각 구한다.\n정석 풀이:\n첫 번째 직선 $x+y-6=0$은 $y=-x+6$이므로 기울기가 $-1$이다.\n세 번째 직선 $x-y-6=0$은 $y=x-6$이므로 기울기가 $1$이다.\n두 번째 직선 $ax+y+4=0$은 $y=-ax-4$이므로 기울기가 $-a$이다.\n두 번째 직선이 첫 번째 직선과 평행하려면\n$-a=-1$이므로 $a=1$이다.\n두 번째 직선이 세 번째 직선과 평행하려면\n$-a=1$이므로 $a=-1$이다.\n이제 세 직선이 한 점에서 만나는 경우를 구한다.\n첫 번째 직선과 세 번째 직선의 교점을 구하면\n$\\begin{cases}x+y=6\\\\x-y=6\\end{cases}$이다.\n두 식을 더하면 $2x=12$이므로 $x=6$, 그리고 $y=0$이다.\n따라서 두 직선의 교점은 $(6,0)$이다.\n이 점이 두 번째 직선 $ax+y+4=0$ 위에 있으려면\n$6a+0+4=0$이어야 한다.\n따라서 $a=-\\dfrac{2}{3}$이다.\n조건을 만족하는 $a$의 값은 $1,-1,-\\dfrac{2}{3}$이고, 그 합은\n$1+(-1)-\\dfrac{2}{3}=-\\dfrac{2}{3}$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q11-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 11의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "평행: a=1, −1 · 공점: a=−2/3",
+    "solutionImageCaption": "평행 관계 · 교점 · 평행: a=1, −1 · 공점: a=−2/3",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",

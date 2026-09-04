@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -203,7 +203,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 7,
     "level": "중",
     "category": "직선의 방정식",
@@ -214,7 +214,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","수직이등분선","기울기","평행","도형","직선","수직"],
+    "tags": [
+      "객관식",
+      "수직이등분선",
+      "기울기",
+      "평행",
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "직선의 방정식 $l$는 두 점 $A(1,4)$, $B(-3,2)$를 이은 선분 $AB$의 수직이등분선이고, 직선의 방정식 $ax+5y-3=0$와 평행하다. 이때, 상수 $a$의 값은? [4.6점]",
     "choices": [
@@ -228,7 +236,7 @@ window.questionBank = [
     "solution": "[키포인트] 수직이등분선의 기울기는 원래 선분의 기울기에 수직인 기울기이다.\n조건 정리: $A(1,4)$, $B(-3,2)$이고, $l$은 선분 $AB$의 수직이등분선이다.\n풀이 방향: 먼저 선분 $AB$의 기울기를 구한 뒤, 수직인 직선의 기울기를 구한다. 그 다음 $ax+5y-3=0$의 기울기와 비교한다.\n정석 풀이:\n선분 $AB$의 기울기는\n$\\dfrac{2-4}{-3-1}=\\dfrac{-2}{-4}=\\dfrac{1}{2}$이다.\n따라서 $AB$에 수직인 직선 $l$의 기울기는 $-2$이다.\n직선 $ax+5y-3=0$을 $y$에 대하여 정리하면\n$5y=-ax+3$\n$y=-\\dfrac{a}{5}x+\\dfrac{3}{5}$이다.\n이 직선의 기울기는 $-\\dfrac{a}{5}$이다.\n두 직선이 평행하므로 기울기가 같아야 한다.\n따라서\n$-\\dfrac{a}{5}=-2$이고,\n$a=10$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_매산고_1학기_기말_고1_기출/q07-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 7의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "M=(−1,3) · AB 기울기=1/2",
+    "solutionImageCaption": "평행 관계 · 수직 관계 · M=(−1,3) · AB 기울기=1/2",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",

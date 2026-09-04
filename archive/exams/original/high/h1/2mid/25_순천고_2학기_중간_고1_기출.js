@@ -175,7 +175,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 6,
     "level": "하",
     "category": "직선의 방정식",
@@ -212,7 +212,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q06-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 평행선 사이 거리=4√2 · k=11 또는 −5, 합=6",
+    "solutionImageCaption": "평행 관계 · 두 평행선 사이 거리=4√2 · k=11 또는 −5, 합=6",
     "solutionImageSize": "full"
   },
   {
@@ -388,7 +388,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 12,
     "level": "상",
     "category": "직선의 방정식",
@@ -423,7 +423,7 @@ window.questionBank = [
     "solution": "[키포인트] 거리의 제곱을 식으로 나타낸 뒤 완전제곱식을 이용하여 최댓값과 등호 성립 조건을 구한다.\n\n원점 $O$와 직선\n$(k+1)x+(k-1)y-k-3=0$\n사이의 거리의 제곱을 $D^2$이라 하면\n$D^2=\\dfrac{(k+3)^2}{(k+1)^2+(k-1)^2} =\\dfrac{(k+3)^2}{2(k^2+1)}$이다.\n\n이때\n$10(k^2+1)-(k+3)^2 =9k^2-6k+1 =(3k-1)^2\\ge0$이므로\n$(k+3)^2\\le10(k^2+1)$이다.\n\n따라서\n$D^2=\\dfrac{(k+3)^2}{2(k^2+1)}\\le5$이고,\n등호는 $3k-1=0$, 즉 $k=\\dfrac13$일 때 성립한다.\n\n$k=\\dfrac13$을 원래 직선에 대입하면\n$\\dfrac43x-\\dfrac23y-\\dfrac{10}{3}=0$,\n즉 $2x-y-5=0$이다.\n\n이 직선의 $x$절편은 $\\dfrac52$, $y$절편은 $-5$이므로\n삼각형 $AOB$의 넓이는\n$\\dfrac12\\cdot\\dfrac52\\cdot5 =\\dfrac{25}{4}$이다.\n\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q12-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "최대 조건 k=1/3 · A=(5/2,0), B=(0,−5)",
+    "solutionImageCaption": "교점 · 절편 · 거리 · 최대 조건 k=1/3 · A=(5/2,0), B=(0,−5)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
@@ -607,7 +607,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 18,
     "level": "중",
     "category": "직선의 방정식",
@@ -618,7 +618,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["단답형","직선의 방정식","무게중심","점과 직선 사이의 거리","도형","직선","수직","거리"],
+    "tags": [
+      "단답형",
+      "직선의 방정식",
+      "무게중심",
+      "점과 직선 사이의 거리",
+      "도형",
+      "직선",
+      "수직",
+      "거리"
+    ],
     "wide": false,
     "content": "서답형 1. (단답형)<br>삼각형 $ABC$의 무게중심 $G$의 좌표는 $(3,1)$이고, 직선 $BC$의 방정식은 $y=3x-1$이다. 점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 할 때, 선분 $AH$의 길이는 $\\dfrac{n}{\\sqrt{10}}$이다. 자연수 $n$의 값을 구하시오. [부분 점수 없음, 5점]",
     "image": "assets/images/25_순천고_2학기_중간_고1_기출/q18.png",
@@ -628,7 +637,7 @@ window.questionBank = [
     "solution": "변 $BC$의 중점을 $M$이라 하자. 무게중심의 성질에 따라\n$G=\\dfrac{A+2M}{3}$이므로 $A=3G-2M$이다.\n\n직선 $BC$를 $L(x,y)=3x-y-1=0$으로 나타내면 $M$은 $BC$ 위에 있으므로 $L(M)=0$이다. 또\n$L(G)=3\\cdot3-1-1=7$이다.\n\n$L$은 일차식이므로 $A=3G-2M$을 대입하면\n$L(A)=L(3G-2M)=3L(G)-2L(M)=3\\cdot7-0=21$이다.\n\n따라서 점 $A$에서 직선 $BC$까지의 거리는\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다. 구하는 자연수는 $n=21$이므로 정답은 $21$이다.",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 18의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "거리 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
@@ -689,7 +698,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 21,
     "level": "중",
     "category": "직선의 방정식",
@@ -721,7 +730,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q21-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 21의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "A=(2,−3) · H=(−3/2,1/2), 거리=7/√2",
+    "solutionImageCaption": "수직 관계 · 교점 · A=(2,−3) · H=(−3/2,1/2), 거리=7/√2",
     "solutionImageSize": "full"
   },
   {

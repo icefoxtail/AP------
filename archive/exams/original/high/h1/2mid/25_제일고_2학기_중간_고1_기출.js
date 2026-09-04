@@ -356,7 +356,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -423,7 +423,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -458,10 +458,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q14-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "a=1: 기울기 1/2와 −2 · a=3: 수직선과 수평선",
+    "solutionImageCaption": "수직 관계 · a=1: 기울기 1/2와 −2 · a=3: 수직선과 수평선",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 15,
     "level": "상",
     "category": "직선의 방정식",
@@ -472,7 +472,15 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의방정식","닮음","도형","직선","평행","넓이"],
+    "tags": [
+      "객관식",
+      "직선의방정식",
+      "닮음",
+      "도형",
+      "직선",
+      "평행",
+      "넓이"
+    ],
     "wide": false,
     "content": "다음 그림과 같이 세 점 $A(2,5)$, $B(-1,-1)$, $C(6,-8)$을 꼭짓점으로 하는 삼각형 $ABC$가 있다. 선분 $AB$ 위의 한 점 $D$와 선분 $AC$ 위의 한 점 $E$에 대하여 선분 $DE$가 선분 $BC$와 평행하고 삼각형 $ADE$와 삼각형 $ABC$의 넓이의 비가 $1:9$일 때, 직선 $DE$의 방정식이 $y=ax+b$이다. 이때 $a+b$의 값은? [4.6점]",
     "choices": [
@@ -486,7 +494,7 @@ window.questionBank = [
     "solution": "[키포인트] 넓이비로 닮음비를 구한 뒤 내분점 공식으로 $D$, $E$의 좌표를 구한다.\n조건 정리: $DE\\parallel BC$이므로 삼각형 $ADE$와 삼각형 $ABC$는 닮음이고, 넓이비가 $1:9$이므로 닮음비는 $1:3$이다.\n풀이 방향: $AD:DB=AE:EC=1:2$를 이용하여 두 내분점의 좌표를 구한다.\n정석 풀이:\n$D$는 선분 $AB$를 $1:2$로 내분하므로\n$D\\left(\\dfrac{2\\cdot2+1\\cdot(-1)}{3},\\dfrac{2\\cdot5+1\\cdot(-1)}{3}\\right)=(1,3)$이다.\n$E$는 선분 $AC$를 $1:2$로 내분하므로\n$E\\left(\\dfrac{2\\cdot2+1\\cdot6}{3},\\dfrac{2\\cdot5+1\\cdot(-8)}{3}\\right)=\\left(\\dfrac{10}{3},\\dfrac{2}{3}\\right)$이다.\n직선 $DE$의 기울기는\n$\\dfrac{\\frac23-3}{\\frac{10}{3}-1}=-1$이다.\n점 $(1,3)$을 지나므로 직선의 방정식은 $y=-x+4$이다.\n따라서 $a=-1$, $b=4$이므로 $a+b=3$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "세 직선으로 만든 삼각형 · 내심 I=(−4,20−10√3)",
+    "solutionImageCaption": "평행 관계 · 세 직선으로 만든 삼각형 · 내심 I=(−4,20−10√3)",
     "solutionImageSize": "full",
     "image": "assets/images/25_제일고_2학기_중간_고1_기출/q15.png",
     "subUnitKey": "H22-C2-02-RELATION",

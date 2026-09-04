@@ -475,7 +475,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -486,7 +486,19 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","항등식","도형","참거짓","대입","조건해석","계산","개념","직선","평행","수직"],
+    "tags": [
+      "객관식",
+      "항등식",
+      "도형",
+      "참거짓",
+      "대입",
+      "조건해석",
+      "계산",
+      "개념",
+      "직선",
+      "평행",
+      "수직"
+    ],
     "wide": false,
     "content": "직선 $(k+1)x + (2-k)y - 3 = 0$에 대한 설명으로 옳은 것만을 보기에서 고른 것은?\n\n<보기>\nㄱ. $k=-1$이면 기울기가 0이다.\n\nㄴ. $k=0$이면 직선 $4x-2y-3=0$과 수직이다.\n\nㄷ. $k$의 값에 관계없이 항상 점 $(1, 1)$을 지난다.\n\nㄹ. $k=1$이면 직선 $6x-3y-1=0$과 평행이다.",
     "choices": [
@@ -499,15 +511,15 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\\n직선의 방정식에 $k$를 대입하거나 항등식 성질을 이용한다.\\n\\n조건 정리\\n- ㄱ: $k=-1 \\implies 3y-3=0 \\implies y=1$. 기울기 0이다. (참)\\n- ㄴ: $k=0 \\implies x+2y-3=0$. 기울기는 $-1/2$이다. $4x-2y-3=0$의 기울기는 2이므로 수직이다. (참)\\n- ㄷ: $x+y-3 + k(x-y) = 0$ 꼴로 정리하면 $x=1, y=1$일 때 성립한다. (참)\\n\\n풀이 과정\\nㄱ, ㄴ, ㄷ이 모두 참이므로 정답은 ④이다.\\n\\n결론\\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 14의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "평행 관계 · k=−1: 기울기 0 · k=0: 주어진 직선과 수직",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 15,
     "level": "중",
     "category": "직선의 방정식",
@@ -541,14 +553,14 @@ window.questionBank = [
     "solution": "[키포인트]\n수직 조건($A_1A_2+B_1B_2=0$)과 평행 조건(기울기 일치)을 활용하여 연립한다.\n\n조건 정리\n- 수직: $a \\cdot b + (-1) \\cdot 3 = 0 \\implies ab = 3$\n- 평행: $a = -(b-4) \\implies a+b = 4$\n\n풀이 과정\n$ab=3$, $a+b=4$이므로 $a, b$는 $t^2-4t+3=0$의 두 근인 $1$과 $3$이다.\n$a^3+b^3 = (a+b)^3 - 3ab(a+b) = 4^3 - 3(3)(4) = 64 - 36 = 28$이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "수직 조건 · 평행 조건 · ab=3 · a+b=4",
+    "solutionImageCaption": "평행 관계 · 수직 관계 · ab=3 · a+b=4",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 16,
     "level": "상",
     "category": "직선의 방정식",
@@ -559,7 +571,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","최대최소","도형","실생활","조건해석","계산","직선","수직","거리","교점"],
+    "tags": [
+      "객관식",
+      "최대최소",
+      "도형",
+      "실생활",
+      "조건해석",
+      "계산",
+      "직선",
+      "수직",
+      "거리",
+      "교점"
+    ],
     "wide": false,
     "content": "두 직선 $3x+4y-1=0, 2x+y-4=0$의 교점을 지나는 직선 중 점 $(2, 1)$에서 거리가 최대인 직선의 방정식은?",
     "choices": [
@@ -572,15 +595,15 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n한 정점을 지나는 직선과 외부의 한 점 사이의 거리가 최대일 조건은 두 점을 잇는 선분이 직선과 수직일 때이다.\n\n조건 정리\n- 정점 $A$는 두 직선의 교점이다.\n- 외부의 점 $P(2, 1)$이다.\n\n풀이 방향 설정\n교점 $A$를 먼저 구한 뒤, 선분 $AP$에 수직이면서 점 $A$를 지나는 직선을 유도한다.\n\n풀이 과정\n1) 교점 구하기: $3x+4y-1=0$과 $2x+y-4=0$을 연립하면 $x=3, y=-2$이다. 즉 $A(3, -2)$이다.\n2) 선분 $AP$의 기울기: $\\frac{1 - (-2)}{2-3} = -3$이다.\n3) 수직인 직선의 기울기: 곱이 $-1$이어야 하므로 $1/3$이다.\n4) 식 완성: $y - (-2) = 1/3 (x-3) \\implies x-3y-9=0$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 16의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 16의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "수직 관계 · 교점 · 거리 · A=(3,−2), P=(2,1) · AP 기울기=−3",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 17,
     "level": "중",
     "category": "직선의 방정식",
@@ -591,7 +614,14 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","도형","범위","조건해석","계산","직선"],
+    "tags": [
+      "객관식",
+      "도형",
+      "범위",
+      "조건해석",
+      "계산",
+      "직선"
+    ],
     "wide": false,
     "content": "두 점 $A(2, 5), B(4, 1)$을 이은 선분 $AB$와 직선 $(2m+1)x + (m-1)y + 5m+1 = 0$이 만나도록 하는 실수 $m$의 값의 범위가 $a \\le m \\le b$일 때, $a+b$의 값은?",
     "choices": [
@@ -604,8 +634,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트]\n직선이 항상 지나는 정점을 찾고, 그 정점을 중심으로 직선을 회전시키며 선분 $AB$와 닿는 범위를 구한다.\n\n조건 정리\n- 직선을 $m$에 대해 정리: $m(2x+y+5) + x-y+1 = 0 \\implies$ 정점 $(-2, -1)$을 지난다.\n\n풀이 과정\n정점 $P(-2, -1)$과 $A(2, 5)$를 지날 때의 $m$은 $1/7$이다.\n정점 $P(-2, -1)$과 $B(4, 1)$을 지날 때의 $m$은 $-2/7$이다.\n따라서 범위는 $-2/7 \\le m \\le 1/7$이므로 $a+b = -1/7$이다.\n\n결론\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 17의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 17의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "공통 정점 P=(−2,−1) · P-A에서 기울기=3/2",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
@@ -683,7 +713,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",
@@ -694,22 +724,33 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형","제곱근","근호","도형","삼각형","넓이","참거짓","조건해석","직선","교점"],
+    "tags": [
+      "서술형",
+      "제곱근",
+      "근호",
+      "도형",
+      "삼각형",
+      "넓이",
+      "참거짓",
+      "조건해석",
+      "직선",
+      "교점"
+    ],
     "wide": false,
     "content": "서술형 2. 세 점 $A(5, 4), B(6, 0), O(0, 0)$을 꼭짓점으로 하는 삼각형 $AOB$의 넓이가 직선 $y=-2x+k$에 의해서 이등분될 때, 상수 $k$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$2\\sqrt{21}$",
     "solution": "삼각형 AOB의 넓이는 1/2×6×4=12이므로 이등분되어야 하는 넓이는 6이다.\n\n직선 y=-2x+k와 변 OB(y=0)의 교점을 R, 변 OA(y=4x/5)의 교점을 S라 하자.\nR=(k/2,0)이고, S=(5k/14,2k/7)이다.\n\n첫째, 0<k<12이면 R, S가 각각 선분 OB, OA 위에 있다. 이때 원점 쪽 삼각형의 넓이는\n[ORS]=1/2×(k/2)×(2k/7)=k²/14이다.\n따라서 k²/14=6에서 k=2√21이고, 실제로 0<2√21<12이다.\n\n둘째, 12≤k<14이면 직선은 OA와 AB를 자른다. S는 OA와의 교점이고 T는 AB와의 교점이다.\n이 구간에서는 AB의 식이 y=-4x+24이므로 T=(12-k/2,2k-24)이다. A=(5,4), B=(6,0)이므로\nAS/AO=(5-5k/14)/5=(14-k)/14이고, AT/AB=((12-k/2)-5)/(6-5)=(14-k)/2이다.\n삼각형 AST와 AOB는 A에서 끼인각을 공유하므로 넓이의 비는 이 두 변의 비의 곱이다. 따라서\n[AST]=[AOB]×AS/AO×AT/AB=12×(14-k)/14×(14-k)/2=3(14-k)²/7이다.\n12≤k<14에서 0<14-k≤2이므로 [AST]≤12/7<6이다. 따라서 원점 쪽 넓이는 12-[AST]>6이어서 이등분할 수 없다.\n\n셋째, k≤0이면 직선은 삼각형 내부를 가르지 못하고, k≥14이면 원점 쪽 넓이가 삼각형 전체 넓이 12가 되어 이등분 조건을 만족하지 않는다.\n\n따라서 조건을 만족하는 값은 k=2√21이다.",
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 20의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 20의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "[AOB]=12 · 분할선과 OB의 교점 R=(√21,0)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 21,
     "level": "중",
     "category": "직선의 방정식",
@@ -720,7 +761,18 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형","제곱근","근호","절댓값","도형","실생활","조건해석","계산","직선","거리"],
+    "tags": [
+      "서술형",
+      "제곱근",
+      "근호",
+      "절댓값",
+      "도형",
+      "실생활",
+      "조건해석",
+      "계산",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "서술형 3. 점 $(-1, 1)$에서 직선 $3ax + 4ay + a^2 + 1 = 0$에 이르는 거리가 1일 때, 모든 $a$의 값을 구하는 과정을 서술하시오.",
     "choices": [],

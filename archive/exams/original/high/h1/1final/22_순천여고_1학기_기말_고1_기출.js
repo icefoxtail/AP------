@@ -67,7 +67,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 3,
     "level": "하",
     "category": "직선의 방정식",
@@ -78,7 +78,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","1학기기말","도형","직선","평행"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "1학기기말",
+      "도형",
+      "직선",
+      "평행"
+    ],
     "wide": false,
     "content": "두 점 $(2,a)$, $(4,-3)$을 지나는 직선이 직선 $y=-2x+1$과 평행할 때, $a$의 값을 구하면? [3.6점]",
     "choices": [
@@ -96,7 +104,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q03-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 3의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 점을 지나는 선분의 기울기 −2 · 평행이면 기울기가 같다",
+    "solutionImageCaption": "평행 관계 · A=(2,1), B=(4,−3) · 기울기=−2",
     "solutionImageSize": "full"
   },
   {
@@ -163,7 +171,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -174,7 +182,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","1학기기말","도형","직선","거리"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "1학기기말",
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "점 $(a,1)$에서 두 직선 $x-2y+3=0$, $2x+y-2=0$까지의 거리가 같을 때, 모든 $a$의 값의 합을 구하면? [3.8점]",
     "choices": [
@@ -566,7 +582,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 18,
     "level": "상",
     "category": "직선의 방정식",
@@ -577,7 +593,16 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","1학기기말","도형","직선","수직","거리"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "1학기기말",
+      "도형",
+      "직선",
+      "수직",
+      "거리"
+    ],
     "wide": true,
     "content": "아래 그림과 같이 좌표평면 위에 점 $A(0,t)$와 직선 $l:y=\\dfrac12x+4$가 있다. 직선 $l$ 위의 제2사분면 위의 점 $B(a,b)$와 $x$축 위의 점 $C$에 대하여 $AC+BC$의 최솟값이 $2\\sqrt5$일 때, $t+a+b$의 값은? (단, $0<t<4$) [4.3점]",
     "choices": [
@@ -591,7 +616,7 @@ window.questionBank = [
     "solution": "[키포인트]\n$x$축 위의 점을 거쳐 가는 거리의 최솟값은 한 점을 $x$축에 대하여 대칭이동하여 생각한다.\n\n풀이 과정\n점 $A(0,t)$를 $x$축에 대하여 대칭이동한 점을 $A'(0,-t)$라 하자.\n점 $C$가 $x$축 위에 있을 때 $AC=A'C$이므로, $AC+BC$의 최솟값은 점 $A'$에서 직선 $l$까지의 거리와 같다.\n직선 $l:y=\\dfrac12x+4$를 정리하면\n$x-2y+8=0$이다.\n점 $A'(0,-t)$에서 이 직선까지의 거리는\n$\\dfrac{|0-2(-t)+8|}{\\sqrt{1^2+(-2)^2}}=\\dfrac{2t+8}{\\sqrt5}$이다.\n이 값이 $2\\sqrt5$이므로\n$\\dfrac{2t+8}{\\sqrt5}=2\\sqrt5$이다.\n따라서 $2t+8=10$, $t=1$이다.\n\n이때 최단거리를 주는 점 $B$는 $A'(0,-1)$에서 직선 $l$에 내린 수선의 발이다.\n직선 $l$의 기울기는 $\\dfrac12$이므로 수선의 기울기는 $-2$이다.\n$A'(0,-1)$을 지나고 기울기가 $-2$인 직선은 $y=-2x-1$이다.\n이를 $y=\\dfrac12x+4$와 연립하면\n$-2x-1=\\dfrac12x+4$이므로 $x=-2$이고, $y=3$이다.\n따라서 $B=(-2,3)$, 즉 $a=-2$, $b=3$이다.\n그러므로\n$t+a+b=1-2+3=2$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q18-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 18의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "거리 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/22_순천여고_1학기_기말_고1_기출/q18.png",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
@@ -599,7 +624,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 19,
     "level": "상",
     "category": "직선의 방정식",
@@ -632,7 +657,7 @@ window.questionBank = [
     "solution": "[키포인트]\n점과 직선 사이의 거리 공식을 이용해 거리의 제곱을 만들고, 최댓값이 되는 $k$를 찾는다.\n\n풀이 과정\n점 $(2,1)$과 직선 $(2k+1)x+(k-2)y-2k-1=0$ 사이의 거리를 $d$라 하자.\n거리 공식에 대입하면\n$d=\\dfrac{|(2k+1)\\cdot2+(k-2)\\cdot1-2k-1|}{\\sqrt{(2k+1)^2+(k-2)^2}}$이다.\n분자를 정리하면\n$4k+2+k-2-2k-1=3k-1$이고, 분모를 정리하면\n$(2k+1)^2+(k-2)^2=5k^2+5=5(k^2+1)$이다.\n따라서\n$d^2=\\dfrac{(3k-1)^2}{5(k^2+1)}$이다.\n이제\n$2-d^2=\\dfrac{10(k^2+1)-(3k-1)^2}{5(k^2+1)}$이다.\n분자를 계산하면\n$10k^2+10-(9k^2-6k+1)=k^2+6k+9=(k+3)^2$이다.\n따라서\n$2-d^2=\\dfrac{(k+3)^2}{5(k^2+1)}\\ge0$이다.\n즉 $d^2\\le2$이고, 등호는 $k=-3$일 때 성립한다.\n따라서 거리가 최대가 될 때 $k=-3$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q19-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 19의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "최대가 되는 k=−3 · PH⊥직선",
+    "solutionImageCaption": "거리 · 최대가 되는 k=−3 · PH⊥직선",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",

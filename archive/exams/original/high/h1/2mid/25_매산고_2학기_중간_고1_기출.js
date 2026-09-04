@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -69,7 +69,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q02-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 직선은 평행 · A=(6,4), K=(−9,−1), k=−9",
+    "solutionImageCaption": "평행 관계 · 주어진 직선 x−3y+3=0 · 두 직선은 평행",
     "solutionImageSize": "full"
   },
   {
@@ -174,7 +174,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -490,7 +490,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 15,
     "level": "상",
     "category": "직선의 방정식",
@@ -523,7 +523,7 @@ window.questionBank = [
     "solution": "[키포인트]\n내심에서 삼각형의 세 변까지의 거리는 모두 같다.\n\n내심을 $I(a,b)$라 하자. 삼각형의 내부에서 $b>2$이므로 직선 $y=2$까지의 거리는 $b-2$이다.\n또 두 사선까지의 거리는 각각\n$\\dfrac{2-a-\\sqrt3b}{2}$, $\\dfrac{a-\\sqrt3b+10}{2}$이다.\n따라서\n$\\dfrac{2-a-\\sqrt3b}{2}=b-2$,\n$\\dfrac{a-\\sqrt3b+10}{2}=b-2$이다.\n첫째 식에서 $a=6-(2+\\sqrt3)b$, 둘째 식에서 $a=(2+\\sqrt3)b-14$이다.\n두 식을 같게 놓으면 $20=2(2+\\sqrt3)b$이므로\n$b=\\dfrac{10}{2+\\sqrt3}=20-10\\sqrt3$이다.\n이를 대입하면 $a=-4$이다.\n따라서 $a+b=16-10\\sqrt3$이다.\n\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "세 직선으로 만든 삼각형 · 내심 I=(−4,20−10√3)",
+    "solutionImageCaption": "거리 · 세 직선으로 만든 삼각형 · y=2와 두 사선의 교점",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",

@@ -431,7 +431,7 @@ window.questionBank=[
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-            {
+                    {
     "id": 13,
     "level": "상",
     "category": "직선과 삼각형 넓이",
@@ -442,7 +442,18 @@ window.questionBank=[
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의방정식","도형","그래프","삼각형넓이","최솟값","직선","수직","절편","넓이"],
+    "tags": [
+      "객관식",
+      "직선의방정식",
+      "도형",
+      "그래프",
+      "삼각형넓이",
+      "최솟값",
+      "직선",
+      "수직",
+      "절편",
+      "넓이"
+    ],
     "wide": false,
     "content": "그림과 같이 점 $A(-2,3)$을 지나고 기울기가 $m$ ($m\\gt0$)인 직선이 $x$축, $y$축과 만나는 점을 각각 $P,Q$라 하고, 점 $A$에서 $x$축, $y$축에 내린 수선의 발을 각각 $R,S$라 하자. 삼각형 $APR$과 삼각형 $ASQ$의 넓이를 각각 $S_1,S_2$라 할 때, $S_1+S_2$의 최솟값은? [4.1점]",
     "image": "assets/images/21_효천고_2학기_중간_고1_기출/q13.png",
@@ -457,7 +468,7 @@ window.questionBank=[
     "solution": "[키포인트] 기울기 $m$으로 두 삼각형의 밑변과 높이를 나타내어 합의 최솟값을 구한다.\n조건 정리: 직선은 점 $A(-2,3)$을 지나고 기울기는 $m>0$이다.\n풀이 방향: 직선의 $x$절편과 $y$절편을 구하여 $S_1,S_2$를 $m$의 식으로 나타낸다.\n정석 풀이: 직선의 식은 $y-3=m(x+2)$이다. $x$절편은 $-2-\\dfrac3m$이므로 $PR=\\dfrac3m$, $AR=3$이고 $S_1=\\dfrac12\\cdot\\dfrac3m\\cdot3=\\dfrac9{2m}$이다. $y$절편은 $3+2m$이므로 $SQ=2m$, $AS=2$이고 $S_2=\\dfrac12\\cdot2\\cdot2m=2m$이다. 따라서 $S_1+S_2=\\dfrac9{2m}+2m\\ge2\\sqrt{\\dfrac9{2m}\\cdot2m}=6$이다. 등호는 $m=\\dfrac32$일 때 성립한다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/21_효천고_2학기_중간_고1_기출/q13-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "A=(−2,3), R=(−2,0), S=(0,3) · 직선 y=3x/2+6",
+    "solutionImageCaption": "교점 · 절편 · A=(−2,3), R=(−2,0), S=(0,3) · 직선 y=3x/2+6",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
