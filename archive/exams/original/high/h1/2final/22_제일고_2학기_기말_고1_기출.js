@@ -47,7 +47,8 @@ window.questionBank=[
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{3x-1}{x-2}$의 그래프에 대한 다음 설명 중 옳은 것은? [3.7점]",
@@ -278,7 +279,8 @@ window.questionBank=[
     "tags": [
       "객관식",
       "무리함수",
-      "복수정답"
+      "복수정답",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\sqrt{-x+2}$의 그래프와 직선 $y=-x+k$가 서로 다른 두 점에서 만날 때, 실수 $k$의 값으로 알맞은 것을 모두 고른 것은? [4.4점]",
@@ -505,7 +507,7 @@ window.questionBank=[
       "함수"
     ],
     "wide": false,
-    "content": "두 실수 $a,b$와 두 함수 $f(x)=-x^2-2x+1$, $g(x)=x^2-2x-1$에 대하여 함수 $h(x)$를 $h(x)=\\begin{cases}f(x)&(x\\lt a)\\\\g(x+b)&(x\\ge a)\\end{cases}$라 하자. 함수 $h(x)$가 역함수가 존재하도록 하는 $a,b$의 모든 순서쌍 $(a,b)$만을 원소로 하는 집합을 $A$라고 할 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? [5.2점]<br>ㄱ. $n\\gt1$일 때, $(n,k)\\in A$를 만족시키는 실수 $k$는 존재하지 않는다.<br>ㄴ. $(-3,-4)\\in A$<br>ㄷ. 집합 $\\{m+l\\mid(m,l)\\in A$이고 $m,l$은 정수$\\}$의 모든 원소의 합은 4이다.",
+    "content": "두 실수 $a,b$와 두 함수 $f(x)=-x^2-2x+1$, $g(x)=x^2-2x-1$에 대하여 실수 전체에서 실수 전체로 정의된 함수 $h(x)$를 $h(x)=\\begin{cases}f(x)&(x\\lt a)\\\\g(x+b)&(x\\ge a)\\end{cases}$라 하자. 함수 $h$가 역함수를 갖도록 하는 $a,b$의 모든 순서쌍 $(a,b)$만을 원소로 하는 집합을 $A$라고 할 때, 다음 보기에서 옳은 것만을 있는 대로 고른 것은? [5.2점]<br>ㄱ. $n\\gt1$일 때, $(n,k)\\in A$를 만족시키는 실수 $k$는 존재하지 않는다.<br>ㄴ. $(-3,-4)\\in A$<br>ㄷ. 집합 $\\{m+l\\mid(m,l)\\in A$이고 $m,l$은 정수$\\}$의 모든 원소의 합은 4이다.",
     "choices": [
       "ㄱ",
       "ㄷ",
@@ -674,7 +676,8 @@ window.questionBank=[
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "서술형 4<br>다음 그림과 같이 좌표평면 위의 두 곡선 $y=-\\sqrt{x}$과 $y=-\\sqrt{x+2}$이 $y$축에 평행한 직선 $x=k$ $(k=1,2,3,4,\\cdots)$와 만나는 점을 각각 $P_k,Q_k$라 할 때, $\\overline{P_1Q_1}+\\overline{P_2Q_2}+\\cdots+\\overline{P_{47}Q_{47}}=a+b\\sqrt2+c\\sqrt3$을 만족하는 $a+b+c$의 값을 구하시오. (단, $a,b,c$는 유리수) [5점]",
@@ -728,4 +731,13 @@ for (const question of window.questionBank) {
   question.layoutTag = "grid";
   question.wide = false;
   question.tags = [question.questionType, question.standardUnit, ...(EXTRA_TAGS[question.id] || [])];
+}
+
+for (const question of window.questionBank) {
+  if (["H15-SB-03", "H15-SB-04", "H15-SB-05", "H22-C2-07", "H22-C2-08", "H22-C2-09"].includes(question.standardUnitKey)
+    && typeof question.solutionImage === "string"
+    && question.solutionImage.endsWith(".svg")
+    && !question.tags.includes("그래프")) {
+    question.tags = [...question.tags, "그래프"];
+  }
 }

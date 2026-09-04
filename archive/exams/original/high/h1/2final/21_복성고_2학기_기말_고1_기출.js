@@ -69,7 +69,9 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "다음 유리함수 $y=\\dfrac{-4x+8}{2x-3}$의 그래프의 점근선을 $x=a$, $y=b$라고 할 때, $ab$의 값을 구하시오. [3.3점]",
     "choices": [
@@ -101,7 +103,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "다음 무리함수 $y=-\\sqrt{4-2x}+4$의 정의역과 치역을 구하시오. [3.3점]",
     "choices": [
@@ -320,7 +324,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "무리함수 $y=\\sqrt{4-2x}$의 그래프와 직선 $y=-x+k$가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위는 $\\alpha\\le k\\lt\\beta$이다. $\\alpha\\beta$의 값을 구하시오. [3.8점]",
     "choices": [
@@ -356,7 +362,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프는 무리함수 $y=2\\sqrt{x}$의 그래프를 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $3$만큼 평행이동 한 것이다. 함수 $y=f(x)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 서로 접할 때, 상수 $a$의 값은? [3.8점]",
     "choices": [
@@ -645,7 +653,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "서술형 1번.<br>함수 $y=3\\sqrt{x}$의 그래프 위의 점 $A$를 지나고 $x$축, $y$축에 각각 수직인 직선이 함수 $y=\\sqrt{x}$의 그래프와 만나는 점을 각각 $B,C$라 하자. [총 10점]<br>1) 점 $A$의 좌표를 $(t,3\\sqrt{t})$라 할 때 점 $B,C$를 $t$에 대해 좌표로 나타내시오. [3점]<br>2) $\\overline{AB}:\\overline{AC}=1:4$가 되는 직각삼각형 $ABC$의 넓이를 구하시오. [7점]",

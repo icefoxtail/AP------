@@ -40,7 +40,9 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "유리함수 $y=\\dfrac{3x+2}{x-a}$의 그래프의 점근선의 방정식이 $x=2$, $y=b$일 때, $ab$의 값은? (단, $a,b$는 상수이다.) (3.7점)",
     "choices": [
@@ -216,7 +218,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "무리함수 $y=\\sqrt{2x+4}$의 그래프와 직선 $y=x+k$가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 범위가 $a\\le k\\lt b$일 때, $a+2b$의 값은? (4.7점)",
     "choices": [
@@ -248,7 +252,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=-\\sqrt{ax}$ ($a\\ne0$)의 설명으로 보기에서 있는 대로 고른 것은? (단, $a$는 상수이다.) (4.2점)<div class=\"question-note-box\">&lt;보기&gt;<br>ㄱ. 정의역은 $\\{x\\mid x\\ge0\\}$이다.<br>ㄴ. 치역은 $\\{y\\mid y\\le0\\}$이다.<br>ㄷ. $a\\lt0$일 때, 그래프는 원점을 지나고 제$2$사분면에 있다.<br>ㄹ. 함수 $y=-\\sqrt{ax}$의 그래프는 함수 $y=\\sqrt{-ax}$의 그래프와 원점에 대하여 대칭이다.</div>",
     "choices": [
@@ -323,7 +329,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=\\sqrt{x-3}+3$의 그래프와 그 역함수의 그래프가 서로 다른 두 점에서 만날 때, 이 두 점 사이는? (4.5점)",
     "choices": [
@@ -523,7 +531,9 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "원 $x^2+y^2=5$와 함수 $y=\\dfrac{k}{x}$ ($k\\gt0$)의 그래프가 제$1$사분면의 두 점에서 만난다. 두 점의 $x$좌표의 비가 $1:3$일 때, $k$의 값은? (5.1점)",
     "choices": [

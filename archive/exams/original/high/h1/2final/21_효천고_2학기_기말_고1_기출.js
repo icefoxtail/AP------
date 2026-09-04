@@ -338,7 +338,8 @@ window.questionBank = [
       "객관식",
       "유리함수",
       "사분면",
-      "점근선"
+      "점근선",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac3{x-a}+2$의 그래프가 지나는 사분면의 개수를 $f(a)$라 할 때, $f(-5)+f(-4)+f(-3)+\\cdots+f(5)$의 값은? [5.7점]",
@@ -379,7 +380,8 @@ window.questionBank = [
       "객관식",
       "무리함수",
       "절댓값",
-      "교점"
+      "교점",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)$를 $f(x)=\\begin{cases}\\sqrt{x+4}-4&(x\\ge0)\\\\\\sqrt{-x+4}-4&(x\\lt0)\\end{cases}$라 하자. 자연수 $n$에 대하여 직선 $y=n$과 $y=|f(x)|$가 만나는 점의 개수를 $g(n)$이라 할 때, $g(n)=3$을 만족하는 $n$의 값의 합은? [4.3점]",
@@ -420,7 +422,8 @@ window.questionBank = [
       "객관식",
       "함수의 그래프",
       "대칭이동",
-      "넓이"
+      "넓이",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases}-\\sqrt{2x}&(x\\ge0)\\\\-\\dfrac12x^2&(x\\lt0)\\end{cases}$의 그래프와 직선 $x-3y-20=0$으로 둘러싸인 도형의 넓이는? [5.5점]",
