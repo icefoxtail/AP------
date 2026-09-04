@@ -1,0 +1,55 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>APMath 평면좌표 27시험지 실렌더 harness</title>
+<style>
+  body { margin: 20px; font-family: "Noto Sans KR", "Malgun Gothic", sans-serif; color: #111827; }
+  table { border-collapse: collapse; width: 100%; font-size: 12px; }
+  th, td { border: 1px solid #d1d5db; padding: 5px; text-align: left; }
+  th { background: #f3f4f6; }
+  .PASS { color: #166534; font-weight: 700; }
+  .RUNNING { color: #92400e; }
+  .FAIL { color: #b91c1c; font-weight: 700; }
+  #frame { position: fixed; left: -12000px; top: 0; width: 1280px; height: 900px; border: 0; }
+</style>
+<h1>고1 평면좌표 27개 시험지 × exam/sol/ans 실제 브라우저 렌더</h1>
+<p id="summary">RUNNING</p>
+<table><thead><tr><th>시험지</th><th>mode</th><th>기대 문항</th><th>표시 수</th><th>페이지</th><th>이미지</th><th>MathJax/visual</th><th>overflow</th><th>판정</th></tr></thead><tbody id="rows"></tbody></table>
+<iframe id="frame" width="1280" height="900"></iframe>
+<script>
+const cases = [
+  ['1final/22_금당고_1학기_기말_고1_기출.js',21], ['1final/22_매산고_1학기_기말_고1_기출.js',20], ['1final/22_복성고_1학기_기말_고1_기출.js',22], ['1final/22_순천여고_1학기_기말_고1_기출.js',23], ['1final/22_제일고_1학기_기말_고1_기출.js',22], ['1final/22_팔마고_1학기_기말_고1_기출.js',22], ['1final/22_효천고_1학기_기말_고1_기출.js',22],
+  ['1final/23_강남여고_1학기_기말_고1_기출.js',25], ['1final/23_금당고_1학기_기말_고1_기출.js',21], ['1final/23_매산고_1학기_기말_고1_기출.js',20], ['1final/23_복성고_1학기_기말_고1_기출.js',22], ['1final/23_순천여고_1학기_기말_고1_기출.js',23], ['1final/23_팔마고_1학기_기말_고1_기출.js',22],
+  ['1final/24_금당고_1학기_기말_고1_기출.js',20], ['1final/24_매산고_1학기_기말_고1_기출.js',20], ['1mid/23_충무고_1학기_중간_고1_기출.js',21], ['1mid/24_제일고_1학기_중간_고1_기출.js',22], ['2final/21_제일고_2학기_기말_고1_기출.js',22],
+  ['2mid/22_강남여고_2학기_중간_고1_기출.js',24], ['2mid/23_순천여고_2학기_중간_고1_기출.js',23], ['2mid/24_금당고_2학기_중간_고1_기출.js',21], ['2mid/25_금당고_2학기_중간_고1_기출.js',22], ['2mid/25_매산고_2학기_중간_고1_기출.js',20], ['2mid/25_순천고_2학기_중간_고1_기출.js',23], ['2mid/25_순천여고_2학기_중간_고1_공통수학2.js',21], ['2mid/25_제일고_2학기_중간_고1_기출.js',22], ['2mid/25_효천고_2학기_중간_고1_기출.js',23]
+];
+const modes=['exam','sol','ans'], rowsEl=document.getElementById('rows'), frame=document.getElementById('frame'), results=[];
+const targetIdsByRel={
+  '1final/22_금당고_1학기_기말_고1_기출.js':[3,8,9,10], '1final/22_매산고_1학기_기말_고1_기출.js':[4,8,17,20], '1final/22_복성고_1학기_기말_고1_기출.js':[11,16], '1final/22_순천여고_1학기_기말_고1_기출.js':[1,9,10,16,20], '1final/22_제일고_1학기_기말_고1_기출.js':[5,6,7,8,9], '1final/22_팔마고_1학기_기말_고1_기출.js':[2,3,18], '1final/22_효천고_1학기_기말_고1_기출.js':[1,3,7,8,18,22],
+  '1final/23_강남여고_1학기_기말_고1_기출.js':[2,3,4,17,20,25], '1final/23_금당고_1학기_기말_고1_기출.js':[1,8,13], '1final/23_매산고_1학기_기말_고1_기출.js':[1,4,5,15,16,18,20], '1final/23_복성고_1학기_기말_고1_기출.js':[3,10,17], '1final/23_순천여고_1학기_기말_고1_기출.js':[1,8,14,17,22], '1final/23_팔마고_1학기_기말_고1_기출.js':[1,21],
+  '1final/24_금당고_1학기_기말_고1_기출.js':[2,3,5,15,17,19], '1final/24_매산고_1학기_기말_고1_기출.js':[3,4,8,12,20], '1mid/23_충무고_1학기_중간_고1_기출.js':[17], '1mid/24_제일고_1학기_중간_고1_기출.js':[10,11,12,13,18], '2final/21_제일고_2학기_기말_고1_기출.js':[3],
+  '2mid/22_강남여고_2학기_중간_고1_기출.js':[1,5,6], '2mid/23_순천여고_2학기_중간_고1_기출.js':[16], '2mid/24_금당고_2학기_중간_고1_기출.js':[16,20], '2mid/25_금당고_2학기_중간_고1_기출.js':[1,7,9,10], '2mid/25_매산고_2학기_중간_고1_기출.js':[9,16], '2mid/25_순천고_2학기_중간_고1_기출.js':[3], '2mid/25_순천여고_2학기_중간_고1_공통수학2.js':[2,3,8,9], '2mid/25_제일고_2학기_중간_고1_기출.js':[10,11,20], '2mid/25_효천고_2학기_중간_고1_기출.js':[1,14,21]
+};
+const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function inspect(doc,mode,expected,targetIds){
+  const nums=mode==='ans'?[...doc.querySelectorAll('.ans-n')]:[...doc.querySelectorAll('#staging .q-box')];
+  const imgs=[...doc.querySelectorAll('img')];
+  const errors=[...doc.querySelectorAll('.error,.load-error')].map(x=>x.textContent).filter(Boolean);
+  const count=nums.length, broken=imgs.filter(x=>!x.complete||x.naturalWidth<=0).length;
+  const scope=doc.querySelector('#staging')||doc;
+  const targetBoxes=mode==='ans'?[]:[...doc.querySelectorAll('#staging .q-box')].filter(x=>targetIds.includes(Number((x.querySelector('.q-num')?.textContent||'').replace(/\D/g,''))));
+  const overflow=targetBoxes.filter(x=>x.scrollWidth>x.clientWidth+2).length;
+  const visual=doc.querySelectorAll('.mjx-container,.MathJax,svg[role="img"],img[alt]').length;
+  const pass=count===expected&&broken===0&&overflow===0&&!errors.length&&(mode==='ans'||visual>0);
+  return {count,pages:doc.querySelectorAll('.page').length,images:imgs.length,broken,visual,overflow,errors,pass};
+}
+function addRow(rel,mode,expected){const tr=document.createElement('tr');tr.innerHTML=`<td>${rel}</td><td>${mode}</td><td>${expected}</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td class="RUNNING">RUNNING</td>`;rowsEl.appendChild(tr);return tr;}
+async function runMode(rel,expected,mode){
+  const tr=addRow(rel,mode,expected); frame.src='../..'+'/archive/engine.html?mode='+mode+'&qpp=4&data='+encodeURIComponent('exams/original/high/h1/'+rel);
+  let result=null;
+  for(let attempt=0;attempt<6;attempt++){await sleep(1200);try{const doc=frame.contentDocument;if(doc){result=inspect(doc,mode,expected,targetIdsByRel[rel]||[]);if(result.pass||attempt===5)break;}}catch(e){result={count:0,pages:0,images:0,broken:0,visual:0,overflow:0,errors:[String(e)],pass:false};}}
+  result ||= {count:0,pages:0,images:0,broken:0,visual:0,overflow:0,errors:['frame unavailable'],pass:false};
+  const cells=tr.children;cells[3].textContent=result.count;cells[4].textContent=result.pages;cells[5].textContent=`${result.images} (broken ${result.broken})`;cells[6].textContent=result.visual;cells[7].textContent=result.overflow;cells[8].textContent=result.pass?'PASS':'FAIL';cells[8].className=result.pass?'PASS':'FAIL';results.push({rel,mode,expected,...result});document.getElementById('summary').textContent=`${results.length}/${cases.length*modes.length} complete · pass ${results.filter(x=>x.pass).length}`;
+}
+async function run(){for(const [rel,n] of cases)for(const mode of modes)await runMode(rel,n,mode);window.renderResults=results;document.getElementById('summary').textContent=`DONE · ${results.length} modes · pass ${results.filter(x=>x.pass).length} · fail ${results.filter(x=>!x.pass).length}`;}
+run();
+</script>

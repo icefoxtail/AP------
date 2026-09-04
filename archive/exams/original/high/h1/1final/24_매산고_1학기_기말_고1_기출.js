@@ -112,7 +112,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "내분점",
-      "외분점"
+      "외분점",
+      "도형"
     ],
     "wide": false,
     "content": "수직선 위의 두 점 $A(-2)$, $B(7)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점을 $P(a)$, $2:1$로 외분하는 점을 $Q(b)$라 할 때, 상수 $a, b$에 대하여 $a+b$의 값은? [3.9점]",
@@ -395,7 +396,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "평면좌표",
-      "삼각형넓이"
+      "삼각형넓이",
+      "도형"
     ],
     "wide": false,
     "content": "좌표평면 위의 세 점 $A(6,3)$, $B(2,1)$, $C(3,0)$을 꼭짓점으로 하는 삼각형이 있다. $x$축 위의 서로 다른 두 점 $D_1$, $D_2$에 대하여 세 삼각형 $ABC$, $AD_1C$, $AD_2C$의 넓이가 모두 같을 때, 선분 $D_1D_2$의 길이는? [4.8점]",
@@ -660,7 +662,8 @@ window.questionBank = [
       "서술형",
       "평면좌표",
       "거리",
-      "자취"
+      "자취",
+      "도형"
     ],
     "wide": false,
     "content": "두 정점 $A, B$와 선분 $AB$ 밖의 움직이는 점 $P$가 있다. 아래 물음에 답하시오.\n\n(1) 선분 $AB$의 중점을 $M$이라 할 때, $\\overline{AP}^2+\\overline{BP}^2=2(\\overline{PM}^2+\\overline{AM}^2)$임을 보이시오. [6.0점]\n\n(2) $\\overline{AB}=8$, $\\overline{PA}^2+\\overline{PB}^2=82$를 만족할 때, 점 $P$가 그리는 도형의 넓이를 구하는 과정을 서술하시오. [4.0점]",
@@ -671,8 +674,8 @@ window.questionBank = [
     "solutionImageAlt": "평면좌표 문항 20의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
-    "subUnit": "좌표와 거리",
+    "subUnitKey": "H15-SA-09-LOCUS_RATIO",
+    "subUnit": "거리 조건과 자취",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

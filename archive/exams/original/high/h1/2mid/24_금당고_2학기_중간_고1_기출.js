@@ -525,8 +525,8 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q16.png",
-    "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
+    "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
+    "subUnit": "도형의 방정식 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

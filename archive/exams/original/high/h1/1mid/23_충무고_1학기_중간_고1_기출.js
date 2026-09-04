@@ -599,8 +599,8 @@ window.questionBank = [
     ],
     "wide": false,
     "solution": "[키포인트]\n내접원의 반지름과 접선의 길이를 이용하여 삼각형의 밑변을 구한 뒤, 평행선으로 생기는 닮음 관계를 이용한다.\n변 $BC$, $CA$, $AB$의 길이를 각각 $x$, $y$, $z$라 하자.\n내접원이 변 $AB$에 접하는 점을 $F$, 변 $AC$에 접하는 점을 $G$, 변 $BC$에 접하는 점을 $H$라 하자.\n$IF\\perp AB$이고 $IF$는 내접원의 반지름이므로 $IF=1$이다. 또한 $AI=3$이다.\n따라서 직각삼각형 $AIF$에서 피타고라스 정리에 의해\n$AF=\\sqrt{AI^2-IF^2}=\\sqrt{3^2-1^2}=2\\sqrt{2}$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로 $AF=AG=2\\sqrt{2}$이다.\n$BF=BH$, $CG=CH$이므로 세 변의 길이를 더해 반둘레를 구하면\n$s=\\dfrac{AB+BC+CA}{2}=AF+BH+CH=AF+BC=2\\sqrt{2}+x$이다.\n삼각형의 넓이는 세 내접 접점으로 나뉘는 세 직각삼각형의 넓이의 합이므로 $K=rs$이다. $r=1$, $K=5\\sqrt{2}$이므로\n$s=5\\sqrt{2}$이다. 따라서 $2\\sqrt{2}+x=5\\sqrt{2}$에서 $x=3\\sqrt{2}$를 얻는다.\n꼭짓점 $A$에서 변 $BC$에 내린 높이를 $h$라 하면\n$K=\\dfrac12\\cdot x\\cdot h$이므로 $h=\\dfrac{2K}{x}=\\dfrac{10\\sqrt{2}}{3\\sqrt{2}}=\\dfrac{10}{3}$이다.\n내심 $I$에서 변 $BC$까지의 거리는 내접원의 반지름인 1이다. $DE\\parallel BC$이므로 $\\triangle ADE$의 높이는\n$h-1=\\dfrac{10}{3}-1=\\dfrac{7}{3}$이다.\n따라서 $\\triangle ADE\\sim\\triangle ABC$이고 닮음비는\n$\\dfrac{7/3}{10/3}=\\dfrac{7}{10}$이다. 넓이비는 닮음비의 제곱이므로\n$[ADE]=\\left(\\dfrac{7}{10}\\right)^2[ABC]=\\dfrac{49}{100}\\cdot5\\sqrt{2}=\\dfrac{49}{20}\\sqrt{2}$이다.\n그러므로 $\\triangle ADE$의 넓이를 $\\dfrac{b}{a}\\sqrt{2}$로 나타내면 $a=20$, $b=49$이고\n$a+b=69$이다.",
-    "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
+    "subUnitKey": "H15-SA-09-GEOMETRY_RELATION",
+    "subUnit": "도형의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
