@@ -70,14 +70,14 @@
 - `01_CANONICAL/JS아카이브룰북_v2.6.md`
 - `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 - `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-- `04_VISUAL/도형추출.md` v3.0 (그래프 세부 수치의 canonical source)
+- `04_VISUAL/도형추출.md` v3.0 (그래프·도형·hybrid 세부 수치와 출판 gate의 canonical source)
 - `archive/data/master_tables/js_archive_tag_master.json`
 
 마스터 테이블은 데이터 계약이고, 룰북·운영규칙은 그 데이터를 사용하는 정책 계약이므로 하나의 거대 문서로 합치지 않는다.
 
 ## 4. 중복 규칙을 읽는 방법
 
-추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 작업 유형을 먼저 고른 뒤 해당 프로토콜을 주 기준으로 삼고, 다른 문서는 참조 문서로만 읽는다. 규칙 우선순위는 `룰북 → 최신 VISUAL 생성 프로토콜 → 작업별 pipeline → review protocol`이다. 그래프 style token·sampling·출판 수치는 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
+추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 작업 유형을 먼저 고른 뒤 해당 프로토콜을 주 기준으로 삼고, 다른 문서는 참조 문서로만 읽는다. 규칙 우선순위는 `룰북 → 최신 VISUAL 생성 프로토콜 → 작업별 pipeline → review protocol`이다. 그래프 style token·sampling·출판 수치와 geometry stroke·indicator·hatching·3D·hybrid 규칙은 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
 
 ### 4-1. 충돌 방지 고정 규칙
 
