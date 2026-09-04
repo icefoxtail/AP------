@@ -112,7 +112,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 5,
     "level": "하",
     "category": "수학(상)",
@@ -123,7 +123,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","평행"],
+    "tags": [
+      "도형",
+      "직선",
+      "평행"
+    ],
     "wide": false,
     "content": "점 $(5,1)$을 지나고 직선 $2x+y-3=0$에 평행한 직선의 방정식을 구하면?",
     "choices": [
@@ -141,7 +145,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "주어진 직선과 평행 · P=(5,1), y=−2x+11",
+    "solutionImageCaption": "평행 관계 · 주어진 직선과 평행 · P=(5,1), y=−2x+11",
     "solutionImageSize": "full"
   },
   {
@@ -320,7 +324,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 12,
     "level": "상",
     "category": "수학(상)",
@@ -349,14 +353,14 @@ window.questionBank = [
     "solution": "[키포인트] 세 직선으로 생기는 삼각형이 직각삼각형이 되려면 세 직선 중 두 직선이 서로 수직이어야 한다.\n직선 $x+2y=3$의 기울기는 $-\\dfrac12$이다.\n직선 $4x-3y=6$의 기울기는 $\\dfrac43$이다.\n직선 $ax+y=3$의 기울기는 $-a$이다.\n첫 번째 직선과 세 번째 직선이 서로 수직이면\n$\\left(-\\dfrac12\\right)(-a)=-1$이므로 $a=-2$이다.\n두 번째 직선과 세 번째 직선이 서로 수직이면\n$\\dfrac43(-a)=-1$이므로 $a=\\dfrac34$이다.\n첫 번째 직선과 두 번째 직선은 기울기의 곱이 $-\\dfrac23$이므로 서로 수직이 아니다.\n따라서 가능한 $a$값은 $-2$, $\\dfrac34$이고, 그 곱은 $-2\\times\\dfrac34=-\\dfrac32$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q12-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "L₁ 기울기 −1/2 · L₂ 기울기 4/3",
+    "solutionImageCaption": "수직 관계 · 교점 · L₁ 기울기 −1/2 · L₂ 기울기 4/3",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 13,
     "level": "중",
     "category": "수학(상)",
@@ -384,8 +388,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] $k$의 값에 관계없이 항상 지나는 점은 $k$가 붙지 않은 부분과 붙은 부분을 동시에 $0$으로 만드는 점이다.\n직선 $2x+y+3+k(x+2y)=0$이 모든 $k$에 대하여 한 점 $P$를 지나려면\n$2x+y+3=0$, $x+2y=0$을 동시에 만족해야 한다.\n$x+2y=0$에서 $x=-2y$이다.\n이를 $2x+y+3=0$에 대입하면 $2(-2y)+y+3=0$, 즉 $-3y+3=0$이므로 $y=1$이다.\n따라서 $x=-2$이고 $P=(-2,1)$이다.\n점 $P$와 직선 $2x-y+10=0$ 사이의 거리는\n$\\dfrac{|2(-2)-1+10|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{5}{\\sqrt5}=\\sqrt5$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "거리 · P=(−2,1) · H=(−4,2)",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -642,7 +646,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 22,
     "level": "상",
     "category": "수학(상)",
@@ -653,7 +657,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["도형","직선","수직"],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "점 $(-4,3)$을 지나고 직선 $3x-9y+4=0$에 수직인 직선의 방정식을 구하는 풀이 과정을 쓰시오.",
     "choices": [],
@@ -665,7 +673,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q22-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 22의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "주어진 기울기=1/3 · 수직 기울기=−3, y=−3x−9",
+    "solutionImageCaption": "수직 관계 · 주어진 기울기=1/3 · 수직 기울기=−3, y=−3x−9",
     "solutionImageSize": "full"
   },
   {
@@ -690,7 +698,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 24,
     "level": "상",
     "category": "수학(상)",
@@ -701,7 +709,12 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "단답형",
     "layoutTag": "grid",
-    "tags": ["도형","직선","평행","수직"],
+    "tags": [
+      "도형",
+      "직선",
+      "평행",
+      "수직"
+    ],
     "wide": false,
     "content": "세 직선 $l:x-ay+2=0$, $m:4x+by+2=0$, $n:x-(b-3)y-2=0$에 대하여 두 직선 $l$, $m$은 수직이고 두 직선 $l$, $n$은 평행할 때, $a^2+b^2$의 값을 구하는 풀이 과정을 쓰시오. (단, $a$, $b$는 상수이다.)",
     "choices": [],
@@ -709,7 +722,7 @@ window.questionBank = [
     "solution": "[키포인트] 두 직선이 수직이면 기울기의 곱이 $-1$이고, 두 직선이 평행이면 기울기가 같다.\n직선 $l:x-ay+2=0$을 정리하면 $y=\\dfrac1a x+\\dfrac2a$이므로 기울기는 $\\dfrac1a$이다.\n직선 $m:4x+by+2=0$의 기울기는 $-\\dfrac4b$이다.\n$l$과 $m$이 수직이므로\n$\\dfrac1a\\cdot\\left(-\\dfrac4b\\right)=-1$이다.\n따라서 $ab=4$이다.\n직선 $n:x-(b-3)y-2=0$의 기울기는 $\\dfrac1{b-3}$이다.\n$l$과 $n$이 평행하므로\n$\\dfrac1a=\\dfrac1{b-3}$, 따라서 $a=b-3$이다.\n즉 $b=a+3$이다.\n이를 $ab=4$에 대입하면\n$a(a+3)=4$이므로 $a^2+3a-4=0$이다.\n$(a-1)(a+4)=0$이므로 $a=1$ 또는 $a=-4$이다.\n이때 $b=4$ 또는 $b=-1$이고, 두 경우 모두\n$a^2+b^2=1^2+4^2=17$ 또는 $(-4)^2+(-1)^2=17$이다.\n따라서 $a^2+b^2=17$이다.",
     "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q24-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 24의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "평행 관계 · 수직 관계 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",

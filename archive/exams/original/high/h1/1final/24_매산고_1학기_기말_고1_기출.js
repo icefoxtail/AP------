@@ -135,7 +135,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -170,10 +170,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_매산고_1학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 점을 지나는 직선 · y절편 Y=(0,7/3)",
+    "solutionImageCaption": "교점 · 두 점을 지나는 직선 · y절편 Y=(0,7/3)",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -184,7 +184,13 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선","평행","수직","도형"],
+    "tags": [
+      "객관식",
+      "직선",
+      "평행",
+      "수직",
+      "도형"
+    ],
     "wide": false,
     "content": "직선 $(a-1)x+y-1=0$이 직선 $3x-y-2=0$과 수직이고, 직선 $2x+(b+1)y+1=0$과 평행할 때, 상수 $a, b$에 대하여 $ab$의 값은? [4.1점]",
     "choices": [
@@ -198,7 +204,7 @@ window.questionBank = [
     "solution": "[키포인트]\n직선의 기울기를 각각 구하여 수직 조건과 평행 조건을 적용한다.\n\n조건 정리\n직선 $(a-1)x+y-1=0$은 직선 $3x-y-2=0$과 수직이고, 직선 $2x+(b+1)y+1=0$과 평행하다.\n\n풀이 과정\n직선 $(a-1)x+y-1=0$을 $y$에 대하여 정리하면\n$y=-(a-1)x+1=(1-a)x+1$이므로 기울기는 $1-a$이다.\n직선 $3x-y-2=0$은 $y=3x-2$이므로 기울기는 $3$이다.\n두 직선이 수직이므로 기울기의 곱은 $-1$이다.\n따라서\n$3(1-a)=-1$\n$1-a=-\\dfrac{1}{3}$\n$a=\\dfrac{4}{3}$이다.\n\n직선 $2x+(b+1)y+1=0$의 기울기는 $-\\dfrac{2}{b+1}$이다.\n이 직선이 첫 번째 직선과 평행하므로\n$-\\dfrac{2}{b+1}=1-a=-\\dfrac{1}{3}$이다.\n따라서\n$\\dfrac{2}{b+1}=\\dfrac{1}{3}$\n$b+1=6$\n$b=5$이다.\n\n그러므로\n$ab=\\dfrac{4}{3}\\times5=\\dfrac{20}{3}$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_매산고_1학기_기말_고1_기출/q06-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "첫 조건: 수직 · 둘째 조건: 평행",
+    "solutionImageCaption": "평행 관계 · 수직 관계 · 첫 조건: 수직 · 둘째 조건: 평행",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -339,7 +345,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 11,
     "level": "상",
     "category": "직선의 방정식",
@@ -350,7 +356,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선","이차함수","내분점","도형","그래프","교점"],
+    "tags": [
+      "객관식",
+      "직선",
+      "이차함수",
+      "내분점",
+      "도형",
+      "그래프",
+      "교점"
+    ],
     "wide": false,
     "content": "곡선 $y=x^2-2x$와 직선 $y=2x+k\\,(k\\gt0)$이 두 점 $P, Q$에서 만난다. 선분 $PQ$를 $1:5$로 내분하는 점이 $y$축 위에 있을 때, 상수 $k$의 값은? (단, 점 $P$의 $x$좌표는 점 $Q$의 $x$좌표보다 작다.) [4.7점]",
     "choices": [
@@ -440,7 +454,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 14,
     "level": "상",
     "category": "직선의 방정식",
@@ -451,7 +465,17 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선","삼각형넓이","이등분","도형","평행","절편","넓이","교점"],
+    "tags": [
+      "객관식",
+      "직선",
+      "삼각형넓이",
+      "이등분",
+      "도형",
+      "평행",
+      "절편",
+      "넓이",
+      "교점"
+    ],
     "wide": false,
     "content": "좌표평면 위의 세 점 $O(0,0)$, $A(4,0)$, $B(3,4)$를 꼭짓점으로 하는 삼각형 $OAB$의 넓이를 이등분하는 직선이 $y=x$와 평행할 때, 이 직선의 $y$절편은? [4.9점]",
     "choices": [
@@ -465,7 +489,7 @@ window.questionBank = [
     "solution": "[키포인트]\n직선을 $y=x+c$로 두고, 삼각형에서 잘려 나가는 작은 삼각형의 넓이가 전체 넓이의 절반이 되도록 한다.\n\n풀이 방향 설정\n구하는 직선은 $y=x$와 평행하므로 기울기가 $1$이다. 따라서 직선의 식을 $y=x+c$로 둘 수 있고, 여기서 $c$가 바로 $y$절편이다. 직선이 삼각형의 넓이를 이등분하려면 한쪽에 생기는 작은 삼각형의 넓이가 전체 넓이의 절반이어야 한다.\n\n풀이 과정\n삼각형 $OAB$에서 밑변 $OA=4$, 높이는 $B$의 $y$좌표인 $4$이므로 전체 넓이는\n$\\dfrac12\\times4\\times4=8$이다.\n따라서 이등분하려면 한쪽 넓이는 $4$가 되어야 한다.\n\n직선 $y=x+c$가 변 $OA$와 변 $AB$를 자른다고 하자.\n변 $OA$는 $y=0$이므로\n$0=x+c$에서 교점은 $(-c,0)$이다.\n이 교점이 선분 $OA$ 위에 있으려면 $0\\lt -c\\lt4$이어야 하므로\n$-4\\lt c\\lt0$이다.\n\n변 $AB$의 방정식을 구하면, $A(4,0)$, $B(3,4)$를 지나므로 기울기는\n$\\dfrac{4-0}{3-4}=-4$이다.\n따라서 $AB$의 방정식은 $y=-4x+16$이다.\n\n직선 $y=x+c$와 $AB$의 교점은\n$x+c=-4x+16$\n$5x=16-c$\n$x=\\dfrac{16-c}{5}$이다.\n이때 $y=x+c$이므로\n$y=\\dfrac{16-c}{5}+c=\\dfrac{16+4c}{5}$이다.\n\n점 $A(4,0)$, $(-c,0)$, $\\left(\\dfrac{16-c}{5},\\dfrac{16+4c}{5}\\right)$로 이루어진 작은 삼각형의 밑변은\n$4-(-c)=c+4$이고, 높이는 $\\dfrac{16+4c}{5}=\\dfrac{4(c+4)}{5}$이다.\n따라서 작은 삼각형의 넓이는\n$\\dfrac12(c+4)\\cdot\\dfrac{4(c+4)}{5}=\\dfrac{2(c+4)^2}{5}$이다.\n\n이 넓이가 $4$가 되어야 하므로\n$\\dfrac{2(c+4)^2}{5}=4$\n$(c+4)^2=10$이다.\n따라서\n$c+4=\\sqrt{10}$ 또는 $c+4=-\\sqrt{10}$이다.\n그런데 앞에서 $-4\\lt c\\lt0$이므로 $0\\lt c+4\\lt4$이다.\n따라서 $c+4=\\sqrt{10}$을 택해야 한다.\n$c=\\sqrt{10}-4$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_매산고_1학기_기말_고1_기출/q14-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "O=(0,0), A=(4,0), B=(3,4) · D=(4−√10,0), 작은 삼각형 넓이=4",
+    "solutionImageCaption": "평행 관계 · 교점 · 절편 · O=(0,0), A=(4,0), B=(3,4) · 기준선 y=x와 평행",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",

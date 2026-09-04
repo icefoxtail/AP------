@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 2,
     "level": "하",
     "category": "두 직선의 수직 조건",
@@ -68,7 +68,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "첫째 기울기=−1/3 · 둘째 기울기=3, 수직 조건 k=6",
+    "solutionImageCaption": "수직 관계 · 첫째 기울기=−1/3 · 둘째 기울기=3, 수직 조건 k=6",
     "solutionImageSize": "full"
   },
   {
@@ -200,7 +200,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 7,
     "level": "중",
     "category": "평행한 두 직선 사이의 거리",
@@ -238,10 +238,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 7의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 직선은 평행 · 상수항 차이=5, 거리=√5",
+    "solutionImageCaption": "평행 관계 · 두 직선은 평행 · 상수항 차이=5, 거리=√5",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 8,
     "level": "중",
     "category": "점과 직선 사이의 거리",
@@ -280,7 +280,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 8의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "PH⊥l · x₂−x₁=ak, y₂−y₁=bk",
+    "solutionImageCaption": "수직 관계 · 거리 · PH⊥l · x₂−x₁=ak, y₂−y₁=bk",
     "solutionImageSize": "full"
   },
   {

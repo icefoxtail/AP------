@@ -396,7 +396,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -407,7 +407,13 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선","교점","수직","도형"],
+    "tags": [
+      "객관식",
+      "직선",
+      "교점",
+      "수직",
+      "도형"
+    ],
     "wide": false,
     "content": "두 직선 $2x+3y-1=0$, $x-y-3=0$의 교점을 지나고 직선 $3x+y+5=0$에 수직인 직선의 방정식은? [4.4점]",
     "choices": [
@@ -420,8 +426,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n두 직선의 교점을 먼저 구한 뒤, 수직인 직선의 기울기를 이용한다.\n\n풀이 과정\n두 직선의 교점을 구한다.\n$x-y-3=0$에서 $x=y+3$이다.\n이를 $2x+3y-1=0$에 대입하면\n$2(y+3)+3y-1=0$\n$5y+5=0$\n$y=-1$이다.\n따라서 $x=2$이고, 교점은 $(2,-1)$이다.\n\n직선 $3x+y+5=0$은\n$y=-3x-5$이므로 기울기는 $-3$이다.\n이에 수직인 직선의 기울기는 $\\dfrac{1}{3}$이다.\n\n점 $(2,-1)$을 지나고 기울기가 $\\dfrac{1}{3}$인 직선은\n$y+1=\\dfrac{1}{3}(x-2)$이다.\n양변에 $3$을 곱하면\n$3y+3=x-2$\n$x-3y-5=0$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/23_제일고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "수직 관계 · 교점에서 수직 조건 적용 · 주어진 직선 3x+y+5=0",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",

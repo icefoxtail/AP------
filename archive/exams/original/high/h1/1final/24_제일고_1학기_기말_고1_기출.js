@@ -432,7 +432,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -464,7 +464,7 @@ window.questionBank = [
     "solution": "[키포인트] 대칭이동한 직선들을 직접 구하면 두 쌍의 평행선으로 둘러싸인 마름모가 된다.\n조건 정리: 원래 직선은 $3x-2y+6=0$이다. 이를 $x$축, $y$축, 원점에 대하여 각각 대칭이동한다.\n풀이 방향: 네 직선의 교점을 직접 구하고, 두 대각선의 길이를 이용하여 넓이를 구한다.\n정석 풀이:\n원래 직선은 $3x-2y=-6$이다.\n$x$축 대칭을 하면 $3x+2y=-6$이고, $y$축 대칭을 하면 $3x+2y=6$이다. 원점 대칭을 하면 $3x-2y=6$이다.\n따라서 네 직선은\n$3x-2y=6$, $3x-2y=-6$, $3x+2y=6$, $3x+2y=-6$이다.\n두 직선 $3x-2y=6$, $3x+2y=6$의 교점은 $(2,0)$이고, $3x-2y=-6$, $3x+2y=6$의 교점은 $(0,3)$이다. 같은 방법으로 나머지 두 꼭짓점은 $(-2,0)$, $(0,-3)$이다.\n따라서 둘러싸인 도형은 마름모이고, 두 대각선의 길이는 각각 $4$, $6$이다.\n그러므로 넓이는 $\\dfrac12\\times4\\times6=12$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_제일고_1학기_기말_고1_기출/q14-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "네 직선과 네 꼭짓점 · 대각선 길이 4와 6",
+    "solutionImageCaption": "평행 관계 · 교점 · 네 직선과 네 꼭짓점 · 대각선 길이 4와 6",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",

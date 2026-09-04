@@ -28,7 +28,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 2,
     "level": "중",
     "category": "수학(상)",
@@ -95,7 +95,7 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
-        {
+              {
     "id": 4,
     "level": "중",
     "category": "수학(상)",
@@ -124,7 +124,7 @@ window.questionBank = [
     "solution": "[키포인트] 두 직선이 만나지 않으려면 기울기는 같고 $y$절편은 달라야 한다.\n첫 번째 직선의 기울기는 $a-4$, 두 번째 직선의 기울기는 $\\dfrac5a$이다.\n기울기가 같아야 하므로 $a-4=\\dfrac5a$이다. 이때 $a\\ne0$이다.\n양변에 $a$를 곱하면 $a^2-4a=5$, 즉 $a^2-4a-5=0$이다.\n인수분해하면 $(a-5)(a+1)=0$이므로 $a=5$ 또는 $a=-1$이다.\n$a=5$일 때 두 직선은 각각 $y=x+4$, $y=x+10$으로 기울기는 같고 절편은 달라 만나지 않는다.\n$a=-1$일 때 두 직선은 모두 $y=-5x-2$가 되어 같은 직선이므로 만나는 점이 없다고 할 수 없다.\n따라서 가능한 값은 $a=5$뿐이므로 정답은 $\\boxed{\\text{④}}$이다.",
     "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q04-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "기울기가 같고 절편이 다른 경우만 허용 · a=5 유지",
+    "solutionImageCaption": "교점 · 기울기가 같고 절편이 다른 경우만 허용 · a=5: y=x+4, y=x+10",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -311,7 +311,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 11,
     "level": "중",
     "category": "수학(상)",
@@ -322,7 +322,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","수직"],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "두 점 $A(-1,3)$, $B(2,-3)$을 이은 선분 $AB$를 $2:1$로 내분하는 점을 $C$라고 하자. 직선 $ax+by-3=0$이 직선 $AB$에 수직이고 점 $C$를 지날 때, 상수 $a$, $b$에 대하여 $a+b$의 값은?",
     "choices": [
@@ -336,7 +340,7 @@ window.questionBank = [
     "solution": "[키포인트] 먼저 내분점의 좌표를 구하고, 직선 $AB$와 수직인 직선의 기울기를 이용한다.\n점 $C$가 선분 $AB$를 $2:1$로 내분하므로 $C$는 $B$ 쪽에 더 가까운 점이다.\n내분점 공식에 의해 $C\\left(\\dfrac{1\\cdot(-1)+2\\cdot2}{3},\\dfrac{1\\cdot3+2\\cdot(-3)}{3}\\right)=(1,-1)$이다.\n직선 $AB$의 기울기는 $\\dfrac{-3-3}{2-(-1)}=-2$이다.\n직선 $ax+by-3=0$은 직선 $AB$에 수직이므로 그 기울기는 $\\dfrac12$이다.\n점 $C(1,-1)$을 지나고 기울기가 $\\dfrac12$인 직선은 $y+1=\\dfrac12(x-1)$이다.\n양변에 $2$를 곱하면 $2y+2=x-1$, 즉 $x-2y-3=0$이다.\n따라서 $a=1$, $b=-2$이고 $a+b=-1$이다.\n따라서 정답은 $\\boxed{\\text{①}}$이다.",
     "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q11-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 11의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "수직 관계 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -375,7 +379,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 13,
     "level": "중",
     "category": "수학(상)",
@@ -386,7 +390,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["도형","직선","거리"],
+    "tags": [
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "원점 $O(0,0)$과 직선 $k(x+y)-2x+4y+3=0$ 사이의 거리는 $k=a$일 때 최댓값 $b$를 갖는다. 두 상수 $a$, $b$에 대하여 $\\dfrac{a^2}{b^2}$의 값은? (단, $k$는 실수이다.)",
     "choices": [
@@ -400,7 +408,7 @@ window.questionBank = [
     "solution": "[키포인트] 점과 직선 사이의 거리 공식에서 분자는 일정하므로, 거리가 최대가 되려면 분모가 최소가 되어야 한다.\n직선 $k(x+y)-2x+4y+3=0$은 $(k-2)x+(k+4)y+3=0$이다.\n원점과 이 직선 사이의 거리는 $\\dfrac{|3|}{\\sqrt{(k-2)^2+(k+4)^2}}$이다.\n분자 $3$은 일정하므로 거리를 최대로 하려면 분모의 제곱 $(k-2)^2+(k+4)^2$가 최소가 되어야 한다.\n$(k-2)^2+(k+4)^2=k^2-4k+4+k^2+8k+16=2k^2+4k+20$이다.\n완전제곱식으로 고치면 $2(k+1)^2+18$이다.\n따라서 $k=-1$일 때 최소가 되고, 이때 $a=-1$이다.\n최대 거리 $b$는 $\\dfrac3{\\sqrt{18}}=\\dfrac1{\\sqrt2}$이다.\n그러므로 $\\dfrac{a^2}{b^2}=\\dfrac{(-1)^2}{(1/\\sqrt2)^2}=2$이다.\n따라서 정답은 $\\boxed{\\text{③}}$이다.",
     "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q13-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "최대 조건 k=−1 · 분모 최소",
+    "solutionImageCaption": "거리 · 최대 조건 k=−1 · 분모 최소",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -630,7 +638,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 21,
     "level": "중",
     "category": "수학(상)",
@@ -641,7 +649,12 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": ["서술형","도형","직선","거리"],
+    "tags": [
+      "서술형",
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "[서술형1] 원점을 지나고 점 $(4,3)$에서 거리가 $3$인 직선의 방정식을 모두 구하시오.",
     "choices": [],

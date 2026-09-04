@@ -570,7 +570,7 @@ window.questionBank=[
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-            {
+                    {
     "id": 17,
     "level": "중",
     "category": "점과 직선의 거리",
@@ -581,7 +581,16 @@ window.questionBank=[
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","평면좌표","점과직선거리","최솟값","분수","도형","직선","거리"],
+    "tags": [
+      "객관식",
+      "평면좌표",
+      "점과직선거리",
+      "최솟값",
+      "분수",
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "두 실수 $x,y$가 등식 $(x-2y+8)(2x+y-4)=0$을 만족할 때, $x^2+y^2$의 최솟값이 $\\dfrac{a}{b}$이다. $a-b$의 값은? [4.5점]",
     "choices": [

@@ -88,6 +88,7 @@ function normalizeText(value) {
     .replace(/\\left|\\right|\\displaystyle|\\,|\\!/g, '')
     .replace(/\\(?:d)?frac\s*\{([^{}]+)\}\s*\{([^{}]+)\}/g, '($1)/($2)')
     .replace(/\\sqrt\s*\{([^{}]+)\}/g, 'sqrt($1)')
+    .replace(/\\sqrt\s*([0-9]+)/g, 'sqrt($1)')
     .replace(/√\s*([0-9]+)/g, 'sqrt($1)')
     .replace(/\^\{([^{}]+)\}/g, '^($1)')
     .replace(/\s+/g, '');
@@ -97,7 +98,7 @@ function numericExpression(raw) {
   let expression = normalizeText(raw)
     .replace(/\{([^{}]+)\}/g, '($1)')
     .replaceAll('sqrt', 'S');
-  if (!expression || /[A-Za-z_]/.test(expression) || !/^[0-9+\-*/().^S]+$/.test(expression)) return null;
+  if (!expression || /[A-RT-Z_a-rt-z]/.test(expression) || !/^[0-9+\-*/().^S]+$/.test(expression)) return null;
   expression = expression.replace(/S\(([^()]+)\)/g, 'Math.sqrt($1)').replaceAll('^', '**');
   if (/[^0-9+\-*/().*\sA-Za-z]/.test(expression) || /Math\.sqrt\([^()]*[A-Za-z]/.test(expression)) return null;
   try {
@@ -278,7 +279,7 @@ function parseEquationWindows(text) {
   }
 
   for (const match of normalized.matchAll(/(?<![A-Za-z0-9+*\-/])y=([^,.;\n$]+)/g)) {
-    const right = match[1].replace(/[)」』].*$/, (value) => value.startsWith(')') ? ')' : '');
+    const right = match[1];
     const equation = parseEquation('y', right);
     if (equation) add(equation, 'y-form', `y=${right}`);
   }
@@ -318,6 +319,9 @@ function sourceFacts(q) {
     : symbolicDerivation
       ? symbolicDerivation.lines.map((line) => ({ line, source: 'symbolic-substitution', raw: symbolicDerivation.parameter }))
       : [];
+  const geometricEquations = [...allEquations];
+  if (/x축/.test(text) && !geometricEquations.some((item) => sameLine(item.line, { a: 0, b: 1, c: 0 }))) geometricEquations.push({ line: { a: 0, b: 1, c: 0 }, source: 'axis-derived', raw: 'x-axis' });
+  if (/y축/.test(text) && !geometricEquations.some((item) => sameLine(item.line, { a: 1, b: 0, c: 0 }))) geometricEquations.push({ line: { a: 1, b: 0, c: 0 }, source: 'axis-derived', raw: 'y-axis' });
   return {
     text,
     contentEquations,
@@ -332,6 +336,7 @@ function sourceFacts(q) {
     hasLineSemantics: /직선|선분|기울기|평행|수직|수선|절편/.test(text),
     independentCanonical,
     symbolicDerivation,
+    geometricEquations,
   };
 }
 
@@ -362,7 +367,7 @@ function parseObservedLine(item) {
     ? { a: data[0], b: data[1], c: data[2] } : null;
   const endpointLine = modelPoints ? lineFromPoints(modelPoints[0], modelPoints[1]) : null;
   const label = item['data-equation'] || item['aria-label'] || '';
-  const labelLine = parseEquationWindows(label)[0]?.line || null;
+  const labelLine = parseLabelEquation(label);
   return {
     attrs: item,
     dataLine,
@@ -373,6 +378,16 @@ function parseObservedLine(item) {
     pixelPoints,
     visible: item.stroke !== 'none' && item.visibility !== 'hidden' && item.display !== 'none',
   };
+}
+
+function parseLabelEquation(label) {
+  const direct = parseEquationWindows(label)[0]?.line;
+  if (direct) return direct;
+  for (const match of String(label || '').matchAll(/(?:^|[\s:])((?:[+-]?(?:\d+(?:\.\d+)?)?x|[+-]?(?:\d+(?:\.\d+)?)?y)[^=,;]*=[^,;]+)/g)) {
+    const parsed = parseEquationWindows(match[1])[0]?.line;
+    if (parsed) return parsed;
+  }
+  return null;
 }
 
 function parseObservedSegment(item) {
@@ -443,7 +458,7 @@ function perpendicularFootParity(source, svg) {
   if (!source.hasFoot) return status('PERPENDICULAR_FOOT_PARITY', 'N/A', [], { reason: 'source has no perpendicular-foot obligation' });
   const footLabels = new Set(['H', 'M']);
   const candidates = [];
-  for (const equation of source.equations) {
+  for (const equation of source.geometricEquations) {
     for (const sourcePoint of source.points) {
       if (pointOnLine(sourcePoint, equation.line)) continue;
       const expectedFoot = projection(sourcePoint, equation.line);
@@ -453,7 +468,9 @@ function perpendicularFootParity(source, svg) {
       candidates.push({ sourceLine: equation.line, sourcePoint, expectedFoot, namedFoot });
     }
   }
-  const selected = candidates.find((candidate) => candidate.namedFoot) || candidates[0];
+  const selected = candidates.find((candidate) => candidate.namedFoot && !['H', 'M'].includes(candidate.sourcePoint.label))
+    || candidates.find((candidate) => candidate.namedFoot);
+  if (!selected) return status('PERPENDICULAR_FOOT_PARITY', 'N/A', [], { reason: 'foot obligation exists but no named source foot point was independently derivable' });
   const sourceLine = selected?.sourceLine;
   const sourcePoint = selected?.sourcePoint;
   if (!sourceLine || !sourcePoint) return status('PERPENDICULAR_FOOT_PARITY', 'N/A', [], { reason: 'foot obligation exists but no numeric source line/point pair was independently derivable' });

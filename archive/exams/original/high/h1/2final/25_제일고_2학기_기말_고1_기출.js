@@ -241,7 +241,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-        {
+              {
     "id": 9,
     "level": "상",
     "category": "직선의 방정식",
@@ -270,7 +270,7 @@ window.questionBank = [
     "solution": "[키포인트] 절편의 합을 한 양수 변수로 나타낸 뒤 완전제곱 형태로 최솟값을 구한다.\n조건 정리: $\\dfrac3a+\\dfrac{12}{b}=1$이고 $a\\gt 3$이다. 따라서 $b=\\dfrac{12a}{a-3}$이다.\n풀이 방향: $t=a-3\\gt 0$으로 치환하여 $a+b$를 정리한다.\n정석 풀이: $a=t+3$이므로 $b=\\dfrac{12(t+3)}t=12+\\dfrac{36}t$이다. 따라서 $a+b=t+15+\\dfrac{36}t=27+\\dfrac{(t-6)^2}{t}\\ge27$이다. 등호는 $t=6$, 즉 $a=9$, $b=18$일 때 성립한다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q09-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 9의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "a=9, b=18 · 절편 A=(9,0), B=(0,18)",
+    "solutionImageCaption": "교점 · a=9, b=18 · 절편 A=(9,0), B=(0,18)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",

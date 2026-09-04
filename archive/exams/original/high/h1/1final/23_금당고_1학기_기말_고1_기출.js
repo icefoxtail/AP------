@@ -67,7 +67,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 3,
     "level": "하",
     "category": "직선의 방정식",
@@ -139,7 +139,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -150,7 +150,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","평행"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "평행"
+    ],
     "wide": false,
     "content": "직선 $y=2x+4$에 평행하고 점 $(1,1)$을 지나는 직선의 방정식은? [4.0점]",
     "choices": [
@@ -168,7 +176,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 직선의 기울기=2 · P=(1,1), y=2x−1",
+    "solutionImageCaption": "평행 관계 · 두 직선의 기울기=2 · P=(1,1), y=2x−1",
     "solutionImageSize": "full"
   },
   {
@@ -203,7 +211,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 7,
     "level": "하",
     "category": "직선의 방정식",
@@ -214,7 +222,16 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","수직","절편"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "수직",
+      "절편"
+    ],
     "wide": false,
     "content": "두 점 $A(-1,0)$, $B(1,4)$를 잇는 선분 $AB$의 수직이등분선의 $x$절편은? [4.0점]",
     "choices": [
@@ -228,7 +245,7 @@ window.questionBank = [
     "solution": "[키포인트]\n수직이등분선은 선분의 중점을 지나고, 원래 선분과 수직이다.\n\n풀이 과정\n$A(-1,0)$, $B(1,4)$의 중점은\n$\\left(\\dfrac{-1+1}{2},\\dfrac{0+4}{2}\\right)=(0,2)$이다.\n선분 $AB$의 기울기는\n$\\dfrac{4-0}{1-(-1)}=\\dfrac42=2$이다.\n수직인 직선의 기울기는 두 기울기의 곱이 $-1$이 되어야 하므로 $-\\dfrac12$이다.\n따라서 수직이등분선은\n$y-2=-\\dfrac12(x-0)$이다.\n$x$절편을 구하기 위해 $y=0$을 대입하면\n$-2=-\\dfrac12x$이므로 $x=4$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q07-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 7의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "수직 관계 · 절편 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -372,7 +389,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -383,7 +400,17 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","평행","거리","넓이"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "평행",
+      "거리",
+      "넓이"
+    ],
     "wide": false,
     "content": "아래 그림과 같이 평행한 두 직선 $x+(a-3)y+2=0$, $ax-2y+a^2=0$ 위에 사각형 $ABCD$가 정사각형이 되도록 네 점 $A,B,C,D$를 잡을 때, 이 정사각형의 넓이는? (단, $a$는 상수이다.) [4.4점]",
     "image": "assets/images/23_금당고_1학기_기말_고1_기출/q12.png",
@@ -398,7 +425,7 @@ window.questionBank = [
     "solution": "[키포인트]\n두 직선이 평행하다는 조건으로 $a$를 먼저 구하고, 두 평행한 직선 사이의 거리를 정사각형의 한 변의 길이로 사용한다.\n\n풀이 과정\n첫 번째 직선 $x+(a-3)y+2=0$의 기울기는 $-\\dfrac1{a-3}$이고,\n두 번째 직선 $ax-2y+a^2=0$의 기울기는 $\\dfrac a2$이다.\n두 직선이 평행하려면 기울기가 같아야 하므로\n$-\\dfrac1{a-3}=\\dfrac a2$이다.\n양변을 정리하면\n$-2=a(a-3)$, 즉\n$a^2-3a+2=0$이다.\n따라서\n$(a-1)(a-2)=0$이므로 $a=1$ 또는 $a=2$이다.\n\n$a=2$이면 두 직선이 같은 직선이 되어 정사각형의 두 변을 만들 수 없다.\n따라서 $a=1$이다.\n이때 두 직선은\n$x-2y+2=0$, $x-2y+1=0$이다.\n두 평행한 직선 사이의 거리는\n$\\dfrac{|2-1|}{\\sqrt{1^2+(-2)^2}}=\\dfrac1{\\sqrt5}$이다.\n정사각형의 한 변의 길이가 $\\dfrac1{\\sqrt5}$이므로 넓이는\n$\\left(\\dfrac1{\\sqrt5}\\right)^2=\\dfrac15$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q12-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "a=1에서 서로 다른 평행선 · 두 선 사이 거리=1/√5",
+    "solutionImageCaption": "평행 관계 · a=1에서 서로 다른 평행선 · 두 선 사이 거리=1/√5",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -542,7 +569,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",

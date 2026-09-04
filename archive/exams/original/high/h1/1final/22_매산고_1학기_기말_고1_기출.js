@@ -169,7 +169,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -202,7 +202,7 @@ window.questionBank = [
     "solution": "[키포인트]\n두 직선 $a_1x+b_1y+c_1=0$, $a_2x+b_2y+c_2=0$이 수직이면 $a_1a_2+b_1b_2=0$이다.\n\n풀이 과정\n첫 번째 직선의 $x$, $y$의 계수는 각각 $k$, $1$이다.\n두 번째 직선의 $x$, $y$의 계수는 각각 $k+2$, $k$이다.\n두 직선이 수직이므로\n$k(k+2)+1\\cdot k=0$이다.\n정리하면\n$k^2+3k=0$\n$k(k+3)=0$이다.\n따라서 $k=0$ 또는 $k=-3$이다.\n두 값의 합은\n$0+(-3)=-3$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/22_매산고_1학기_기말_고1_기출/q06-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "k=0: 수평선과 수직선 · k=−3: 기울기 3과 −1/3",
+    "solutionImageCaption": "수직 관계 · k=0: 수평선과 수직선 · k=−3: 기울기 3과 −1/3",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -284,7 +284,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 9,
     "level": "중",
     "category": "직선의 방정식",
@@ -295,7 +295,16 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","그래프","평행"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "그래프",
+      "평행"
+    ],
     "wide": false,
     "content": "$y=|3x|$의 그래프와 $y=m(x+3)-2$가 두 점에서 만날 때, 실수 $m$의 값의 범위는 $a<m<b$이다. $a+b$의 값은? [4.6점]",
     "choices": [
@@ -309,7 +318,7 @@ window.questionBank = [
     "solution": "[키포인트]\n직선 $y=m(x+3)-2$는 항상 점 $(-3,-2)$를 지난다. 이 점에서 $y=|3x|$의 두 직선 부분에 각각 닿는 경계 기울기를 찾는다.\n\n풀이 과정\n그래프 $y=|3x|$는 $x\\ge0$에서 $y=3x$, $x<0$에서 $y=-3x$이다.\n직선 $y=m(x+3)-2$는 점 $(-3,-2)$를 지나는 기울기 $m$인 직선이다.\n\n이 직선이 $y=3x$와 만나는 경계는 원점 $(0,0)$을 지날 때이다.\n점 $(-3,-2)$와 원점 $(0,0)$을 잇는 직선의 기울기는\n$\\dfrac{0-(-2)}{0-(-3)}=\\dfrac23$이다.\n또 왼쪽 가지 $y=-3x$의 기울기는 $-3$이고, 두 점에서 만나려면 오른쪽 가지와 왼쪽 가지를 모두 지나도록 기울기가 충분히 커야 하므로 $m$은 $\\dfrac23$보다 커야 한다.\n\n직선의 기울기가 $3$이 되면 오른쪽 가지 $y=3x$와 평행이 되어 두 점에서 만나지 못한다.\n따라서\n$\\dfrac23<m<3$이다.\n즉 $a=\\dfrac23$, $b=3$이므로\n$a+b=\\dfrac23+3=\\dfrac{11}{3}$이다.\n\n결론\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/22_매산고_1학기_기말_고1_기출/q09-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 9의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "y=|3x|의 두 가지 · 경계 기울기: 2/3, 3",
+    "solutionImageCaption": "평행 관계 · 교점 · y=|3x|의 두 가지 · 경계 기울기: 2/3, 3",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -488,7 +497,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 15,
     "level": "상",
     "category": "직선의 방정식",
@@ -499,7 +508,15 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","고1","기말","도형","직선","수직"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "고1",
+      "기말",
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "그림과 같이 직선 $x+y=3$ 위의 점 $P(a,b)$ $(ab\\ne0)$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q,R$라 하고, 점 $P$를 지나고 직선 $QR$에 수직인 직선을 $l$이라 하자. 직선 $l$이 점 $P$의 위치에 관계없이 항상 일정한 점 $(\\alpha,\\beta)$를 지날 때, $\\alpha^2+\\beta^2$의 값은? [4.9점]",
     "choices": [
@@ -513,7 +530,7 @@ window.questionBank = [
     "solution": "[키포인트]\n점 $P$의 좌표를 $a$ 하나로 나타내고, 직선 $QR$의 기울기를 이용하여 직선 $l$의 방정식을 세운다.\n\n풀이 과정\n$P(a,b)$가 직선 $x+y=3$ 위에 있으므로 $b=3-a$이다.\n따라서 $P=(a,3-a)$이다.\n$x$축에 내린 수선의 발은 $Q=(a,0)$이고, $y$축에 내린 수선의 발은 $R=(0,3-a)$이다.\n직선 $QR$의 기울기는\n$\\dfrac{0-(3-a)}{a-0}=\\dfrac{a-3}{a}$이다.\n직선 $l$은 $QR$에 수직이므로 기울기는\n$\\dfrac{a}{3-a}$이다.\n따라서 점 $P(a,3-a)$를 지나는 직선 $l$의 방정식은\n$y-(3-a)=\\dfrac{a}{3-a}(x-a)$이다.\n양변에 $3-a$를 곱하면\n$(3-a)(y-3+a)=a(x-a)$이다.\n정리하면\n$a(x+y-6)-3y+9=0$이다.\n이 식이 $a$의 값에 관계없이 항상 성립하는 점을 지나려면\n$x+y-6=0$이고 $-3y+9=0$이어야 한다.\n따라서 $y=3$, $x=3$이다.\n즉 항상 지나는 점은 $(3,3)$이므로\n$\\alpha^2+\\beta^2=3^2+3^2=18$이다.\n\n결론\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/22_매산고_1학기_기말_고1_기출/q15-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 15의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageCaption": "수직 관계 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/22_매산고_1학기_기말_고1_기출/q15.png",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",

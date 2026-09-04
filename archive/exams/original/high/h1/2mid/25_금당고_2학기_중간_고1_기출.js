@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-          {
+                {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -44,7 +44,14 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","평행","도형","직선","절편"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "평행",
+      "도형",
+      "직선",
+      "절편"
+    ],
     "wide": false,
     "content": "직선 $y=2x-3$과 평행하고 점 $(1,7)$을 지나는 직선의 방정식을 $y=ax+b$라 할 때, $a+b$의 값은? [3.5점]",
     "choices": [
@@ -62,7 +69,7 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q02-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "기울기=2 · P=(1,7), 평행한 새 직선 y=2x+5",
+    "solutionImageCaption": "평행 관계 · 절편 · 기울기=2 · P=(1,7)",
     "solutionImageSize": "full"
   },
   {
@@ -438,7 +445,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-          {
+                {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -449,7 +456,16 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","직선의 방정식","수선","넓이","도형","직선","수직","교점"],
+    "tags": [
+      "객관식",
+      "직선의 방정식",
+      "수선",
+      "넓이",
+      "도형",
+      "직선",
+      "수직",
+      "교점"
+    ],
     "wide": false,
     "content": "다음 그림과 같이 세 점 $A(1,2)$, $B(7,5)$, $C(4,8)$을 꼭짓점으로 하는 삼각형 $ABC$에 대하여 두 점 $A$, $C$에서 각각 변 $BC$, 변 $AB$에 내린 수선의 교점을 $H$라 하자. 이때 삼각형 $HBC$의 넓이는? [4.2점]",
     "image": "assets/images/25_금당고_2학기_중간_고1_기출/q14.png",
@@ -464,8 +480,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 수선의 방정식을 구하여 교점 $H$의 좌표를 찾는다.\n직선 $BC$의 기울기는 $-1$이므로 점 $A$를 지나는 수선은 $y=x+1$이다.\n직선 $AB$의 기울기는 $\\dfrac12$이므로 점 $C$를 지나는 수선은 $y=-2x+16$이다.\n두 직선의 교점은 $H=(5,6)$이다.\n따라서 삼각형 $HBC$의 넓이는\n$\\dfrac12\\left|7(8-6)+4(6-5)+5(5-8)\\right|=\\dfrac32$이다.\n그러므로 정답은 ②이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 14의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "교점 · A=(1,2), B=(7,5), C=(4,8) · H=(5,6)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
@@ -541,7 +557,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-          {
+                {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",
@@ -572,7 +588,7 @@ window.questionBank = [
     "solution": "[키포인트] 두 직선의 교점 좌표를 $a$, $b$로 나타내고 평행 조건을 이용한다.\n두 직선의 교점을 $Q$라 하면\n$Q\\left(-\\dfrac{a+b}{2},\\dfrac{b-a}{2}\\right)$이다.\n직선 $x-2y+5=0$과 평행하고 점 $(5,1)$을 지나는 직선은 $x-2y-3=0$이다.\n점 $Q$가 이 직선 위에 있으므로\n$-\\dfrac{a+b}{2}-2\\cdot\\dfrac{b-a}{2}=3$에서 $a-3b=6$이다.\n따라서 $a=3b+6$이고, 이를 $a^2+b^2=82$에 대입하면\n$5b^2+18b-23=0$, 즉 $(5b+23)(b-1)=0$이다.\n$b$는 양수이므로 $b=1$, $a=9$이다.\n따라서 $a+b=10$이므로 정답은 ④이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q17-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 17의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "두 직선의 교점 Q · 평행선 조건으로 a=9,b=1",
+    "solutionImageCaption": "평행 관계 · 두 직선의 교점 Q · x−2y+5=0과 평행",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",

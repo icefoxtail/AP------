@@ -102,7 +102,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 4,
     "level": "하",
     "category": "직선의 방정식",
@@ -410,7 +410,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 13,
     "level": "상",
     "category": "직선의 방정식",
@@ -421,7 +421,14 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": ["객관식","수선의발","거리","직선","도형","수직"],
+    "tags": [
+      "객관식",
+      "수선의발",
+      "거리",
+      "직선",
+      "도형",
+      "수직"
+    ],
     "wide": false,
     "content": "좌표평면 위의 점 $P(4,3)$에서 $x$축에 내린 수선의 발을 $H$라 하고, 선분 $OH$ 위의 점 $Q$에서 선분 $OP$에 내린 수선의 발을 $I$라 하자. $QH=QI$일 때, 직선 $PQ$의 방정식이 $y=mx+n$이다. $m-n$의 값은? (단, $O$는 원점이고, $m,n$은 상수이다.) [4.4점]",
     "choices": [
@@ -434,8 +441,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n점 $Q$를 $x$축 위의 점으로 두고, 점과 직선 사이의 거리로 $QI$를 나타낸다.\n조건 정리\n$P(4,3)$에서 $x$축에 내린 수선의 발은 $H(4,0)$이다. 선분 $OH$ 위의 점 $Q$를 $(a,0)$이라 두면 $0\\le a\\le4$이다.\n풀이 과정\n직선 $OP$는 원점과 $P(4,3)$을 지나므로 기울기가 $\\dfrac34$이다.\n따라서 직선 $OP$의 방정식은 $y=\\dfrac34x$, 즉 $3x-4y=0$이다.\n점 $Q(a,0)$에서 직선 $OP$까지의 거리가 $QI$이므로\n$QI=\\dfrac{|3a-4\\cdot0|}{\\sqrt{3^2+(-4)^2}}=\\dfrac{3a}{5}$이다.\n또한 $QH=4-a$이다.\n조건 $QH=QI$에서\n$4-a=\\dfrac{3a}{5}$이다.\n양변에 $5$를 곱하면 $20-5a=3a$이므로 $a=\\dfrac52$이다.\n따라서 $Q\\left(\\dfrac52,0\\right)$이다.\n직선 $PQ$의 기울기는\n$\\dfrac{3-0}{4-\\frac52}=\\dfrac{3}{\\frac32}=2$이다.\n점 $Q\\left(\\dfrac52,0\\right)$을 지나므로\n$y=2\\left(x-\\dfrac52\\right)=2x-5$이다.\n따라서 $m=2$, $n=-5$이므로\n$m-n=2-(-5)=7$이다.\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "거리 · P=(4,3), H=(4,0) · Q=(5/2,0), I=(8/5,6/5)",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -613,7 +620,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 19,
     "level": "중",
     "category": "직선의 방정식",
@@ -637,15 +644,15 @@ window.questionBank = [
     "answer": "$\\left(\\dfrac{23}{15},\\dfrac{34}{15}\\right)$",
     "solution": "[키포인트]\n세 직선의 교점을 구해 삼각형의 꼭짓점을 찾고, 세 변의 길이를 이용하여 내심의 좌표를 구한다.\n조건 정리\n세 직선은 $y=2$, $4x-3y+2=0$, $3x+4y-15=0$이다.\n풀이 과정\n먼저 꼭짓점을 구한다.\n$y=2$와 $4x-3y+2=0$의 교점은\n$4x-6+2=0$에서 $4x=4$이므로 $A=(1,2)$이다.\n$y=2$와 $3x+4y-15=0$의 교점은\n$3x+8-15=0$에서 $3x=7$이므로 $B=\\left(\\dfrac73,2\\right)$이다.\n$4x-3y+2=0$과 $3x+4y-15=0$을 연립하면\n$4x-3y=-2$, $3x+4y=15$이다.\n이를 풀면 $x=\\dfrac{37}{25}$, $y=\\dfrac{66}{25}$이므로\n$C=\\left(\\dfrac{37}{25},\\dfrac{66}{25}\\right)$이다.\n세 변의 길이를 구하면\n$AB=\\dfrac43$,\n$BC=\\dfrac{16}{15}$,\n$CA=\\dfrac45$이다.\n내심의 좌표는 각 꼭짓점에 그 꼭짓점의 맞은편 변의 길이를 곱하여 평균 내는 방식으로 구할 수 있다.\n즉 $A$에는 $BC$, $B$에는 $CA$, $C$에는 $AB$의 길이를 곱한다.\n분모는\n$\\dfrac{16}{15}+\\dfrac45+\\dfrac43=\\dfrac{48}{15}=\\dfrac{16}{5}$이다.\n따라서 내심의 $x$좌표는\n$\\dfrac{\\dfrac{16}{15}\\cdot1+\\dfrac45\\cdot\\dfrac73+\\dfrac43\\cdot\\dfrac{37}{25}}{\\dfrac{16}{5}}=\\dfrac{23}{15}$이다.\n내심의 $y$좌표는\n$\\dfrac{\\dfrac{16}{15}\\cdot2+\\dfrac45\\cdot2+\\dfrac43\\cdot\\dfrac{66}{25}}{\\dfrac{16}{5}}=\\dfrac{34}{15}$이다.\n결론\n따라서 내심의 좌표는 $\\left(\\dfrac{23}{15},\\dfrac{34}{15}\\right)$이다.",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 19의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 19의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "교점 · A=(1,2), B=(7/3,2) · C=(37/25,66/25)",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-        {
+              {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",
@@ -673,8 +680,8 @@ window.questionBank = [
     "answer": "(1) $x-y-7=0$ 또는 $y=x-7$ / (2) $\\left(x+\\dfrac{11}{7}\\right)^2+\\left(y+\\dfrac{60}{7}\\right)^2=49$",
     "solution": "[키포인트]\n두 직선의 계수에서 $\\sqrt{3^2+4^2}=\\sqrt{4^2+3^2}=5$로 같으므로, 각의 이등분선은 두 직선식의 값의 절댓값이 같다는 조건으로 구할 수 있다.\n조건 정리\n두 직선은 $l:3x+4y+4=0$, $m:4x+3y-3=0$이다.\n풀이 과정\n(1) 두 직선까지의 거리가 같은 점들의 자취가 각의 이등분선이다. 두 직선의 분모가 모두 $5$이므로\n$3x+4y+4=\\pm(4x+3y-3)$으로 둔다.\n먼저 $3x+4y+4=4x+3y-3$에서\n$-x+y+7=0$, 즉 $y=x-7$이다. 이 직선의 $x$절편은 $7$이므로 양수이다.\n다음 $3x+4y+4=-(4x+3y-3)$에서\n$7x+7y+1=0$이고, 이 직선의 $x$절편은 $-\\dfrac17$이므로 양수가 아니다.\n따라서 $n$의 방정식은 $y=x-7$, 즉 $x-y-7=0$이다.\n(2) 원의 중심을 $(t,t-7)$이라 두자. 중심의 $x$좌표가 음수이므로 나중에 $t<0$인 값을 선택한다.\n이 원이 직선 $l$에 접하고 반지름이 $7$이므로 중심과 직선 $l$ 사이의 거리가 $7$이어야 한다.\n$\\dfrac{|3t+4(t-7)+4|}{\\sqrt{3^2+4^2}}=7$\n$\\dfrac{|7t-24|}{5}=7$\n$|7t-24|=35$이다.\n따라서 $7t-24=35$ 또는 $7t-24=-35$이다.\n$t=\\dfrac{59}{7}$ 또는 $t=-\\dfrac{11}{7}$이다.\n중심의 $x$좌표가 음수이어야 하므로 $t=-\\dfrac{11}{7}$이다.\n따라서 중심은\n$\\left(-\\dfrac{11}{7},-\\dfrac{11}{7}-7\\right)=\\left(-\\dfrac{11}{7},-\\dfrac{60}{7}\\right)$이다.\n반지름은 $7$이므로 원의 방정식은\n$\\left(x+\\dfrac{11}{7}\\right)^2+\\left(y+\\dfrac{60}{7}\\right)^2=49$이다.\n결론\n(1) $x-y-7=0$, (2) $\\left(x+\\dfrac{11}{7}\\right)^2+\\left(y+\\dfrac{60}{7}\\right)^2=49$이다.",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 20의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 20의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "절편 · 거리 · n: y=x−7 · C=(−11/7,−60/7), x_C<0",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
