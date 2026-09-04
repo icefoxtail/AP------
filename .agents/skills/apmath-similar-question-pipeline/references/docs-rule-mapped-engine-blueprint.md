@@ -25,7 +25,7 @@
 
 1. docs/rules/00_RULES_INDEX.md
 2. docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md
-3. docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md
+3. docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md
 4. docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md
 5. docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md
 6. 작업 유형별 02_PIPELINES/ 문서
@@ -46,7 +46,7 @@ manifest에는 그 상태·해시·경로를 요약한다.
     "indexPath": "docs/rules/00_RULES_INDEX.md",
     "files": [
       {
-        "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md",
+        "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
         "sha256": "..."
       }
     ],

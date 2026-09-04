@@ -1,13 +1,13 @@
-# JS아카이브 프로젝트 룰북 (v2.5)
+# JS아카이브 프로젝트 룰북 (v2.6)
 
 > **운영자**: 박준성 (마스터)  
 > **저장소**: icefoxtail.github.io/AP------  
-> **최종 갱신**: 2026-08-24 (v2.5 base + `JS아카이브_세부단원_운영규칙_v1` 적용 — 신규 JS 세부단원 필수 계약, candidate/production parity, source-dependent DB 메타데이터 보류 규칙, sidecar 근거 보존)
+> **최종 갱신**: 2026-09-04 (v2.6 — graph generation protocol v3.0 및 print publication gate 통합)
 > **역할**: GPT(계획·총괄) / Claude(검수) / Gemini(구현·데이터 변환) / 마스터(최종결정)
 
 ---
 
-> **현재 운영 부록:** 이 룰북의 기존 기본 스키마·기출·렌더링 원칙은 유지하되, 신규 아카이브 JS의 세부단원 계약은 [`JS아카이브_세부단원_운영규칙_v1.md`](JS아카이브_세부단원_운영규칙_v1.md)를 함께 적용한다. 기존 JS의 누락 필드는 legacy 예외로만 허용하며 신규 파일의 기본값으로 복사하지 않는다. `types`·`similar` DB 카드의 source-dependent 필드 보류 기준은 아래 4-4를 따른다.
+> **현재 운영 부록:** 이 룰북의 기존 기본 스키마·기출·렌더링 원칙은 유지하되, 신규 아카이브 JS의 세부단원 계약은 [`JS아카이브_세부단원_운영규칙_v1.md`](JS아카이브_세부단원_운영규칙_v1.md)를 함께 적용한다. 기존 JS의 누락 필드는 legacy 예외로만 허용하며 신규 파일의 기본값으로 복사하지 않는다. `types`·`similar` DB 카드의 source-dependent 필드 보류 기준은 아래 4-4를 따른다. 함수·좌표 그래프의 세부 style token과 sampling 정책은 [`04_VISUAL/도형추출.md`](../04_VISUAL/도형추출.md) v3.0을 따른다.
 
 ## 0. 한 줄 원칙
 
@@ -68,6 +68,29 @@
 - **기존 자료 호환 또는 이미 `content` 내부 SVG/img/table/`<img>`로 안정화된 구형 데이터는 그대로 유지할 수 있다.**
 - **기존 `content` 내부 SVG/img/table이 있다고 해서 자동으로 `image` 필드로 분리하지 않는다.**
 - **`image` 필드와 `content` 내부 `<img>`를 동시에 사용하는 것은 원칙적으로 지양한다.**
+
+## 0-2-2. 그래프 출판품질 상위 원칙
+
+- 함수·좌표 그래프 신규 생성 또는 수정은 최신 [`04_VISUAL/도형추출.md`](../04_VISUAL/도형추출.md)
+  표·도형·그래프 생성 프로토콜을 따른다.
+- 신규 또는 수정된 그래프는 수학적 무결성뿐 아니라 `GRAPH_PRINT_PUBLICATION_GATE`를
+  통과해야 한다.
+- 세부 그래프 style token, typography, sampling·adaptive refinement 정책의 canonical source는
+  최신 VISUAL 프로토콜 하나로 통일한다. 룰북·pipeline·review 문서에는 세부 수치를 복제하지
+  않고 해당 문서를 참조한다.
+- 그래프가 있는 최종 visual PASS는 다음 composite 조건을 모두 만족해야 한다.
+
+```text
+GRAPH_MATH_PASS
+AND GRAPH_SEMANTIC_PASS
+AND GRAPH_STYLE_LINT_PASS
+AND GRAPH_PRINT_PUBLICATION_PASS
+AND GRAPH_RENDER_PASS
+```
+
+- 이번 규칙 업그레이드는 기존 production JS/SVG/PNG의 일괄 migration을 의미하지 않는다.
+  규칙 확정 → 외부 독립검수 → 30개 대표 그래프 Pilot → style token freeze → production
+  migration 순서를 지킨다.
 
 ---
 
@@ -904,6 +927,22 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
 * 정답에 맞춘 억지 해설 덮어쓰기 금지
 * 원문보다 더 예쁘게 다듬는 수정 금지
 
+#### STYLE_ONLY_GRAPH_UPGRADE
+
+사용자 승인된 품질 업그레이드에서 다음 조건을 모두 만족하면
+`STYLE_ONLY_GRAPH_UPGRADE`로 기록할 수 있다.
+
+* content 의미 불변
+* answer 불변
+* solution meaning 불변
+* graph mathematical facts 불변
+* `MATH_SEMANTIC_PARITY == PASS`
+
+이 경우에만 최신 VISUAL 프로토콜의 표준 style normalization(stroke/font/label/canvas/
+sampling)을 허용한다. 이는 임의 미화가 아니라 수학적·출제적 의미를 변경하지 않는 승인된
+표준화 예외다. 이번 규칙 업그레이드에서 기존 production 그래프를 일괄 변경하는 권한은
+부여하지 않으며, production migration은 Pilot과 별도 승인을 거친 후 수행한다.
+
 #### 구조 무결성 원칙
 
 * 수정 후에도 `window.examTitle`, `window.questionBank` 구조는 완전히 유지해야 한다.
@@ -1336,7 +1375,7 @@ Gemini에게 작업 지시 시 아래 원칙을 명시해야 한다.
 * [ ] SVG 내부 `<br>` 0개 확인
 * [ ] `<table>/<tr>/<td>` 사이 `<br>` 0개 확인
 * [ ] SVG 내부 LaTeX(`$...$`) 0개 확인
-* [ ] SVG `<text>` font-size가 `8px` / `9px` / `10px` 중 하나인가
+* [ ] SVG 세부 typography·stroke·sampling이 `04_VISUAL/도형추출.md` v3.0을 따르는가
 * [ ] `<table>` 인라인 font-size 별도 지정 안 했는가
 * [ ] `wide: true`는 마스터 명시 지시인지 확인
 * [ ] `layoutTag` 없는 문항은 기본 격자(Group A)로 유지하는가
@@ -1368,6 +1407,14 @@ Gemini에게 작업 지시 시 아래 원칙을 명시해야 한다.
 ### 10-4. SVG · table HTML 무결성 규칙
 
 #### SVG 내부 규칙
+
+그래프의 root·canvas·stroke·typography·sampling·label·arrow·z-order·축척 및 출판 gate는
+`04_VISUAL/도형추출.md` v3.0을 canonical source로 삼는다. 룰북은 아래 구조 원칙만
+상위 규칙으로 유지하고 세부 수치를 복제하지 않는다.
+
+**[SVG-0] SVG root**
+신규 또는 수정 그래프의 root에는 `viewBox`와 `preserveAspectRatio`가 모두 있어야 한다.
+인쇄용 canonical SVG에 `vector-effect="non-scaling-stroke"`를 전역 강제하지 않는다.
 
 **[SVG-1] SVG 내부 `<br>` 절대 금지**
 `<svg>...</svg>` 내부에는 `<br>` 태그를 단 한 개도 넣지 않는다.
@@ -1549,12 +1596,9 @@ content/choices/answer가 비어 있어도 무결성 FAIL로 보지 않는다.
 
 #### SVG 텍스트 폰트
 
-| 용도                              | 고정값         |
-| ------------------------------- | ----------- |
-| 일반 라벨                           | **`10px`**  |
-| 작은 라벨                           | **`8px`**   |
-| 분수 `<g class="fraction">` 내부 숫자 | **`9px`**   |
-| `font-family`                   | **`serif`** |
+세부 텍스트 hierarchy와 font fallback은 `04_VISUAL/도형추출.md` v3.0의
+`Typography`, `Math Italic`, `Label 배치 및 clearance`를 참조한다. 이 룰북에는 그래프
+font-size 또는 font-family 숫자·스택을 별도로 정의하지 않는다.
 
 ### 10-8. 표(table) 폭 및 정렬 고정 규칙
 
@@ -1660,7 +1704,7 @@ content/choices/answer가 비어 있어도 무결성 FAIL로 보지 않는다.
 - width와 height를 명시한다.
 - SVG 내부에는 `<br>`, `$...$`, `\frac`, `\dfrac`, `\sqrt`, `\text{}` 같은 LaTeX 또는 MathJax 표현을 넣지 않는다.
 - SVG 내부 라벨은 일반 텍스트만 사용한다.
-- font-size는 8px, 9px, 10px 중심으로 사용한다.
+- 그래프의 세부 typography·stroke·sampling은 `04_VISUAL/도형추출.md` v3.0을 따른다.
 - SVG의 점, 선, 그래프, 원, 수직선은 solution의 계산 결과와 일치해야 한다.
 
 [유형별 그림 원칙]

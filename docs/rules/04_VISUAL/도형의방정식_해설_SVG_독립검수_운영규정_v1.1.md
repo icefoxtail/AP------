@@ -8,6 +8,10 @@
 
 고등학교 좌표·직선·원·도형의 이동·이차방정식·이차함수·이차부등식 영역의 해설 품질을 학생이 실제로 따라갈 수 있는 수준으로 끌어올리고, 식과 그래프의 관계를 보여 주는 해설 전용 SVG를 안정적으로 제공한다.
 
+이 문서는 단원별 해설·독립검수의 보조 운영규정이다. 그래프 SVG root, canvas, stroke,
+typography, sampling, label 배치, axis scale, preset 및 인쇄 출판 gate의 세부 기준은
+최신 `도형추출.md` v3.0을 canonical source로 참조하며, 이 문서에서 별도 수치로 재정의하지 않는다.
+
 이 규정의 최우선 목표는 다음 두 가지다.
 
 1. 해설의 중간 논리 생략을 제거한다.
@@ -801,7 +805,7 @@ SOURCE_BLOCKED로 처리하지 않는다.
 
 1. `docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
 2. `docs/rules/MANIFEST.md`
-3. `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md`
+3. `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md`
 4. `docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md`
 5. `docs/rules/02_PIPELINES/해설프로토콜.md`
 6. `docs/rules/02_PIPELINES/문제해설추출.md`

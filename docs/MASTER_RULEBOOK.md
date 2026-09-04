@@ -72,7 +72,7 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 확인하는 고정 룰�
 
 ### AP Math JS archive canonical contract
 
-- 현재 JS 아카이브 기준 문서는 `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md`,
+- 현재 JS 아카이브 기준 문서는 `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md`,
   `docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`,
   `docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md` 순서로 읽는다.
 - compiled master는 `archive/data/master_tables/js_archive_tag_master.json`,
@@ -82,7 +82,7 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 확인하는 고정 룰�
 - 전체 규칙 문서의 작업별 읽기 순서는 `docs/rules/00_RULES_INDEX.md`를 따른다.
 - 최종 JS 아카이브 PASS·ZIP 봉인은 `docs/rules/02_PIPELINES/`의 REAL RENDER GATE와 `docs/rules/03_REVIEW/무결성검수.md`의 실렌더 기준을 함께 충족해야 한다. `exam / solution / answer` 실제 렌더 중 하나라도 `WARN` 또는 `NOT_TESTED`이면 최종 PASS로 승격하지 않는다.
 - 세부단원 메타데이터 보강은 content·choices·answer·solution·image·layoutTag·wide를 바꾸지 않는다.
-- `types`·`similar`의 DB `school/year/semester/examType`는 자체 파일·`examTitle`·명시 source metadata에 직접 근거가 있을 때만 승격하며, 나머지는 `sourceDependentOnly` report 예외로 관리한다. 2026-08-24 현재 직접 원본이 없는 28개 `emptySchool`·60개 필수 메타 gap은 `CLOSED_SOURCE_UNAVAILABLE` closure ledger로 현재 범위에서 종결했으며, 새 직접 출처가 있을 때만 재개한다. 세부 기준은 `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md` 4-4를 따른다.
+- `types`·`similar`의 DB `school/year/semester/examType`는 자체 파일·`examTitle`·명시 source metadata에 직접 근거가 있을 때만 승격하며, 나머지는 `sourceDependentOnly` report 예외로 관리한다. 2026-08-24 현재 직접 원본이 없는 28개 `emptySchool`·60개 필수 메타 gap은 `CLOSED_SOURCE_UNAVAILABLE` closure ledger로 현재 범위에서 종결했으며, 새 직접 출처가 있을 때만 재개한다. 세부 기준은 `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md` 4-4를 따른다.
 - rules source pack의 현재 운영 파일 목록과 바이트/hash는 `docs/rules/MANIFEST.md`와 일치해야 한다. `05_DESIGN/`과 `90_ARCHIVE/`는 manifest 범위에서 제외되며, 제외 사실을 manifest에 명시한다.
 
 ## 6. UI 문구와 운영 용어 보존
