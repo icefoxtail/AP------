@@ -163,7 +163,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "무리함수 $y=\\sqrt{-3x}$를 $x$축으로 $2$만큼, $y$축으로 $1$만큼 평행이동한 함수는? [3.5점]",

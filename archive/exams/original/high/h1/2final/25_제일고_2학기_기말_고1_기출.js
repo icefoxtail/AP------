@@ -312,7 +312,9 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=\\sqrt{-x-1}-1$의 그래프가 지나는 사분면은?",
     "choices": [
@@ -380,7 +382,9 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "다음 중 $y=\\dfrac{-x}{x-1}$의 그래프에 대하여 옳지 않은 것은?",
     "choices": [
@@ -416,7 +420,9 @@ window.questionBank = [
     "standardUnitOrder": 8,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "두 유리함수 $y=\\dfrac{2}{x-k}$, $y=\\dfrac{kx-1}{x-1}$의 그래프의 점근선으로 둘러싸인 부분의 넓이가 $12$일 때, 양수 $k$의 값은?",
     "choices": [
@@ -540,7 +546,9 @@ window.questionBank = [
     "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "$0\\le x\\le2$에서 정의된 두 함수<br>$f(x)=\\begin{cases}-x+1&(0\\le x\\lt 1)\\\\2x-2&(1\\le x\\le2)\\end{cases}$, $g(x)=\\begin{cases}x+1&(0\\le x\\lt 1)\\\\-2x+4&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y=(g\\circ f)(x)$의 그래프와 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
     "choices": [
@@ -601,7 +609,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\sqrt{x+2}$의 역함수를 $g(x)$라 할 때, 두 함수 $y=f(x)$, $y=g(x)$의 그래프의 교점의 좌표를 구하는 과정을 서술하시오.",

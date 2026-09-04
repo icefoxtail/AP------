@@ -315,7 +315,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{bx+c}{x+a}$의 그래프가 두 직선 $y=x+1$과 $y=-x+5$에 대하여 각각 대칭이고, 그 역함수의 그래프는 점 $(10,3)$을 지난다. 이때, 상수 $a,b,c$의 곱 $abc$의 값은? [4.2점]",
@@ -349,7 +350,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=-\\sqrt{2x+4}+1$의 그래프에 대한 설명으로 옳지 않은 것은? [4.3점]",
@@ -387,7 +389,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $y=\\dfrac{4x-2k+15}{x+3}$의 그래프가 제4사분면을 지나지 않도록 하는 모든 자연수 $k$의 개수는? [4.4점]",

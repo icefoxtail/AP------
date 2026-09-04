@@ -96,7 +96,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=\\sqrt{ax}$의 그래프를 $x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동 하였더니 함수 $y=\\sqrt{2-2x}+4$의 그래프와 일치하였다. 세 상수 $a,m,n$에 대하여 $a+m+n$의 값을 구하시오. [3.6점]",
     "choices": [
@@ -212,7 +214,9 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $f(x)=x^2-6x+10\\ (x\\ge3)$에서 함수 $y=f(x)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프의 교점을 $P$라고 할 때, 선분 $OP$의 길이를 구하시오. (단, $O$는 원점) [3.8점]",
     "choices": [
@@ -610,7 +614,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "<서답형 2><br>좌표평면에서 점 $A$와 점 $B$는 각각 함수 $y=\\dfrac{20}{x}$와 함수 $y=-\\dfrac{45}{x}$의 그래프의 점이다. 점 $A$와 점 $B$의 $x$좌표가 모두 양수일 때, 원점 $O$에 대하여 삼각형 $OAB$의 넓이의 최솟값의 제곱의 값을 구하고 서술하시오. [10점]<br>(풀이 과정에 부분 점수 있으며, 답만 적으면 풀이 과정 배점하지 않음.)",

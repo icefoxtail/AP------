@@ -161,7 +161,8 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\dfrac{ax+b}{x+c}$에 대하여 $f(2)=\\dfrac13$이고 점 $(-1,1)$에 대하여 대칭일 때, $a^2+b^2+c^2$의 값은? [4.2점]",
@@ -229,7 +230,8 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "유리함수"
+      "유리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "유리함수 $y=\\dfrac{x+1}{x-1}$의 그래프와 직선 $y=x+k$ $(k$는 실수)가 만나는 두 점 사이의 거리의 최솟값을 구하면? [4.6점]",
@@ -357,7 +359,8 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "무리함수 $y=-\\sqrt{x-5}$의 그래프와 $y=-x+k$가 한 점에서 만나도록 하는 실수 $k$의 최솟값은? [4.2점]",
@@ -484,7 +487,8 @@ window.examTitle="22_팔마고_2학기_기말_고1_기출";const U={"집합":["H
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "무리함수"
+      "무리함수",
+      "그래프"
     ],
     "wide": false,
     "content": "두 무리함수 $f(x)=\\sqrt{x+2}+5$, $g(x)=\\sqrt{-x+2}-5$의 그래프와 두 직선 $x=-2$, $x=2$로 둘러싸인 도형의 넓이를 구하면? [4.6점]",
@@ -714,4 +718,13 @@ for (const question of window.questionBank) {
   if (question.id === 14) question.tags.push("도형");
   if (question.id === 21) question.tags.push("그래프");
   if (LEVEL_OVERRIDES[question.id]) question.level = LEVEL_OVERRIDES[question.id];
+}
+
+for (const question of window.questionBank) {
+  if (["H15-SB-03", "H15-SB-04", "H15-SB-05", "H22-C2-07", "H22-C2-08", "H22-C2-09"].includes(question.standardUnitKey)
+    && typeof question.solutionImage === "string"
+    && question.solutionImage.endsWith(".svg")
+    && !question.tags.includes("그래프")) {
+    question.tags = [...question.tags, "그래프"];
+  }
 }

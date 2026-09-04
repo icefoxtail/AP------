@@ -69,7 +69,9 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "함수 $y=\\dfrac{2x-3}{x-1}$의 그래프의 두 점근선의 교점의 좌표가 $(a,b)$일 때, $b-a$의 값은? [2.5점]",
     "choices": [
@@ -410,7 +412,9 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "일차함수 $f(x)$에 대하여 함수 $y=\\dfrac{f(x)+5}{2-f(x)}$의 그래프의 점근선은 두 직선 $x=4$, $y=-1$이다. $f(1)=5$일 때, $f(3)$의 값은? [3.3점]",
     "choices": [
@@ -475,7 +479,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "도형"
+      "도형",
+      "그래프"
     ],
     "wide": false,
     "content": "초점거리가 4로 일정한 렌즈가 있다. 렌즈에서 상이 생긴 지점까지 거리를 $x$라 하고, 렌즈에서 물체까지의 거리를 $y$라 할 때, $\\dfrac1x+\\dfrac1y=\\dfrac14$의 식이 성립한다. 점 $(x,y)$를 좌표평면 위에 나타내면 점근선이 직선 $x=a$, $y=b$인 유리함수의 그래프의 일부라고 할 때, 두 상수 $a,b$의 합 $a+b$의 값은? [3.4점]",
@@ -513,7 +518,9 @@ window.questionBank = [
     "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "1보다 큰 실수 $a$에 대하여 직선 $x=a$가 두 함수 $y=\\dfrac1{x-1}$, $y=-4x$의 그래프와 만나는 점을 각각 $P,Q$라 하자. 선분 $PQ$ 길이의 최솟값은? [3.4점]",
     "choices": [
@@ -871,7 +878,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "서술형3]<br>$-3\\le x\\le6$에서 정의된 함수 $f(x)=\\dfrac{k}{x+4}-3$의 그래프가 점 $(-2,-4)$를 지난다. 함수 $f(x)$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, 최댓값과 최솟값의 곱 $M\\times m$을 구하여라. [5점]<br>(단, 풀이과정을 자세히 쓰시오.)",
@@ -903,7 +911,8 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "그래프"
     ],
     "wide": false,
     "content": "서술형4]<br>함수 $y=\\sqrt{x+|x|}$의 그래프와 직선 $y=x+k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하여라. (단, 풀이과정을 자세히 쓰시오.) [5점]",
