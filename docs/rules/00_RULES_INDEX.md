@@ -6,6 +6,9 @@
 
 ### 신규 JS 추출·변환
 
+모든 신규·변환 작업의 독립검수·봉인·실렌더 공통 기준은
+`02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`를 함께 적용한다.
+
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 3. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
@@ -18,6 +21,9 @@
 10. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 
 ### 기존 JS 해설 업그레이드
+
+기존 production 업그레이드도 `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`의
+독립검수·source conflict·실렌더·봉인 조건을 공통으로 적용한다.
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0

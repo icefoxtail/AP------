@@ -30,6 +30,7 @@ RULE_READ_ORDER = (
     "docs/rules/00_RULES_INDEX.md",
     "docs/rules/01_CANONICAL/프로젝트_컨텍스트.md",
     "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+    "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
     "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
     "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
     "docs/rules/04_VISUAL/도형추출.md",
