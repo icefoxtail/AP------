@@ -30,10 +30,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 점대칭에서는 대칭의 중심이 원래 점과 옮겨진 점의 중점이다.\n조건 정리: 옮겨진 직선 위의 점을 $(x,y)$라 하면 점 $(-2,4)$에 대한 대칭 전의 점은 $(-4-x,8-y)$이다.\n풀이 방향: 대칭 전의 좌표를 원래 직선의 방정식에 대입해 옮겨진 직선의 식을 구한다.\n정석 풀이: $3(-4-x)+(8-y)-4=0$을 정리하면 $-3x-y-8=0$이다. 따라서 대칭이동한 직선의 방정식은 $3x+y+8=0$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_제일고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -96,8 +100,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 3의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -168,8 +172,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 5의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -28,10 +28,14 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트]\n점 $(x,y)$를 $x$축의 방향으로 $a$, $y$축의 방향으로 $b$만큼 평행이동하면 좌표는 $(x+a, y+b)$가 된다.\n조건 정리\n처음 점은 $(-1,5)$이고, $x$좌표에는 $2$를 더하고 $y$좌표에는 $-1$을 더한다.\n풀이 과정\n$x$좌표는 $-1+2=1$이다.\n$y$좌표는 $5+(-1)=4$이다.\n따라서 평행이동한 점의 좌표는 $(1,4)$이다.\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -294,7 +298,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
     "subUnit": "합성 변환",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 9의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

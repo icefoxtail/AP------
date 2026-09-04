@@ -28,10 +28,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 평행이동한 점의 좌표는 원래 좌표에 각 축 방향의 이동량을 더하여 구한다.\n조건 정리: 점 $(2,1)$을 $x$축 방향으로 $-1$, $y$축 방향으로 $3$만큼 옮긴다.\n풀이 방향: $x$좌표와 $y$좌표에 각각 해당 이동량을 더한다.\n정석 풀이: 이동한 점의 $x$좌표는 $2+(-1)=1$이고, $y$좌표는 $1+3=4$이다. 따라서 이동한 점의 좌표는 $(1,4)$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -442,8 +446,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 13의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -588,8 +592,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 17의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
