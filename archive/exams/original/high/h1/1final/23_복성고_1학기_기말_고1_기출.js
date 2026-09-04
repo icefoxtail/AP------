@@ -151,14 +151,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "수직",
-      "기울기",
-      "직선",
-      "도형",
-      "절편"
-    ],
+    "tags": ["객관식","수직","기울기","직선","도형","절편"],
     "wide": false,
     "content": "직선 $y=-\\dfrac{1}{2}x$와 수직이고 점 $(1,5)$를 지나는 직선의 방정식으로 옳은 것은? [3점]",
     "choices": [
@@ -170,8 +163,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 서로 수직인 두 직선의 기울기의 곱은 $-1$이다.\n조건 정리: 주어진 직선의 기울기는 $-\\dfrac{1}{2}$이고, 구하는 직선은 점 $(1,5)$를 지난다.\n풀이 방향: 수직인 직선의 기울기를 먼저 구한 뒤 점을 대입하여 절편을 구한다.\n정석 풀이:\n주어진 직선 $y=-\\dfrac{1}{2}x$의 기울기는 $-\\dfrac{1}{2}$이다.\n이 직선과 수직인 직선의 기울기를 $m$이라 하면\n$-\\dfrac{1}{2}\\cdot m=-1$이므로\n$m=2$이다.\n따라서 구하는 직선의 방정식을 $y=2x+b$라 하자.\n이 직선이 점 $(1,5)$를 지나므로\n$5=2\\cdot1+b$\n$b=3$이다.\n따라서 구하는 직선의 방정식은 $y=2x+3$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/23_복성고_1학기_기말_고1_기출/q05-solution.svg",

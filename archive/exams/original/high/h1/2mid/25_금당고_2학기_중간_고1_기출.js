@@ -44,14 +44,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "평행",
-      "도형",
-      "직선",
-      "절편"
-    ],
+    "tags": ["객관식","직선의 방정식","평행","도형","직선","절편"],
     "wide": false,
     "content": "직선 $y=2x-3$과 평행하고 점 $(1,7)$을 지나는 직선의 방정식을 $y=ax+b$라 할 때, $a+b$의 값은? [3.5점]",
     "choices": [
@@ -63,8 +56,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "직선 $y=2x-3$의 기울기는 $2$이다. 평행한 두 직선의 기울기는 같으므로 구하는 직선 $y=ax+b$에서 $a=2$이다.\n\n이 직선이 점 $(1,7)$을 지나므로\n$7=2\\cdot1+b$이고, $b=5$이다.\n\n따라서\n$a+b=2+5=7$이므로 정답은 ③이다.\n평행한 직선의 기울기를 먼저 고정한 뒤 주어진 점을 대입하면 절편이 하나로 정해진다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q02-solution.svg",
@@ -456,15 +449,7 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선의 방정식",
-      "수선",
-      "넓이",
-      "도형",
-      "직선",
-      "수직"
-    ],
+    "tags": ["객관식","직선의 방정식","수선","넓이","도형","직선","수직","교점"],
     "wide": false,
     "content": "다음 그림과 같이 세 점 $A(1,2)$, $B(7,5)$, $C(4,8)$을 꼭짓점으로 하는 삼각형 $ABC$에 대하여 두 점 $A$, $C$에서 각각 변 $BC$, 변 $AB$에 내린 수선의 교점을 $H$라 하자. 이때 삼각형 $HBC$의 넓이는? [4.2점]",
     "image": "assets/images/25_금당고_2학기_중간_고1_기출/q14.png",

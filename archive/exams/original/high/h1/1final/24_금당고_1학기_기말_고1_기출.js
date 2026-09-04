@@ -130,11 +130,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "도형",
-      "직선",
-      "거리"
-    ],
+    "tags": ["도형","직선","거리"],
     "wide": false,
     "content": "점 $(2,3)$과 직선 $3x-4y+1=0$ 사이의 거리를 구하면?",
     "choices": [
@@ -166,11 +162,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "도형",
-      "직선",
-      "수직"
-    ],
+    "tags": ["도형","직선","수직"],
     "wide": false,
     "content": "직선 $y=3x+5$에 수직인 직선의 기울기는?",
     "choices": [
@@ -182,8 +174,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "직선 $y=3x+5$의 기울기는 $3$이다. 이 직선에 수직인 직선의 기울기를 $m$이라 하면, 두 기울기의 곱이 $-1$이므로\n$3m=-1$이다.\n\n따라서 $m=-\\dfrac{1}{3}$이고, 정답은 ③이다.\n수직인 직선의 기울기는 주어진 기울기의 음의 역수이므로 부호와 분모를 함께 바꾸어 계산한다. 따라서 기울기의 값은 하나로 결정된다.",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q06-solution.svg",
@@ -322,12 +314,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "도형",
-      "직선",
-      "절편",
-      "넓이"
-    ],
+    "tags": ["도형","직선","절편","넓이"],
     "wide": false,
     "content": "직선 $(2k+1)x+(-5k+5)y+20k-5=0$이 실수 $k$의 값에 관계없이 항상 점 $P$를 지날 때, 두 점 $P$와 $(-3,6)$을 지나는 직선과 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
     "choices": [

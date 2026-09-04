@@ -184,13 +184,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선",
-      "평행",
-      "수직",
-      "도형"
-    ],
+    "tags": ["객관식","직선","평행","수직","도형"],
     "wide": false,
     "content": "직선 $(a-1)x+y-1=0$이 직선 $3x-y-2=0$과 수직이고, 직선 $2x+(b+1)y+1=0$과 평행할 때, 상수 $a, b$에 대하여 $ab$의 값은? [4.1점]",
     "choices": [
@@ -356,14 +350,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선",
-      "이차함수",
-      "내분점",
-      "도형",
-      "그래프"
-    ],
+    "tags": ["객관식","직선","이차함수","내분점","도형","그래프","교점"],
     "wide": false,
     "content": "곡선 $y=x^2-2x$와 직선 $y=2x+k\\,(k\\gt0)$이 두 점 $P, Q$에서 만난다. 선분 $PQ$를 $1:5$로 내분하는 점이 $y$축 위에 있을 때, 상수 $k$의 값은? (단, 점 $P$의 $x$좌표는 점 $Q$의 $x$좌표보다 작다.) [4.7점]",
     "choices": [
@@ -464,16 +451,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선",
-      "삼각형넓이",
-      "이등분",
-      "도형",
-      "평행",
-      "절편",
-      "넓이"
-    ],
+    "tags": ["객관식","직선","삼각형넓이","이등분","도형","평행","절편","넓이","교점"],
     "wide": false,
     "content": "좌표평면 위의 세 점 $O(0,0)$, $A(4,0)$, $B(3,4)$를 꼭짓점으로 하는 삼각형 $OAB$의 넓이를 이등분하는 직선이 $y=x$와 평행할 때, 이 직선의 $y$절편은? [4.9점]",
     "choices": [
@@ -489,8 +467,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
     "solutionImageCaption": "O=(0,0), A=(4,0), B=(3,4) · D=(4−√10,0), 작은 삼각형 넓이=4",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

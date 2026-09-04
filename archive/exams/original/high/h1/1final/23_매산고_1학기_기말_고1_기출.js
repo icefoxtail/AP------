@@ -214,15 +214,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "수직이등분선",
-      "기울기",
-      "평행",
-      "도형",
-      "직선",
-      "수직"
-    ],
+    "tags": ["객관식","수직이등분선","기울기","평행","도형","직선","수직"],
     "wide": false,
     "content": "직선의 방정식 $l$는 두 점 $A(1,4)$, $B(-3,2)$를 이은 선분 $AB$의 수직이등분선이고, 직선의 방정식 $ax+5y-3=0$와 평행하다. 이때, 상수 $a$의 값은? [4.6점]",
     "choices": [
@@ -238,8 +230,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 7의 실제 점과 직선 관계를 표시한 해설 도형",
     "solutionImageCaption": "M=(−1,3) · AB 기울기=1/2",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

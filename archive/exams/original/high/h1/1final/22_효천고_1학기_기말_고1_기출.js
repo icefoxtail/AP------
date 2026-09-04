@@ -515,14 +515,7 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "직선",
-      "보기",
-      "거리공식",
-      "도형",
-      "거리"
-    ],
+    "tags": ["객관식","직선","보기","거리공식","도형","거리","교점"],
     "wide": false,
     "content": "방정식 $(k-2)x+(2k-3)y+4k-3=0$이 나타내는 직선 $l$에 대한 설명 중 옳은 것만 있는 대로 고른 것은? [4.8점]<br><div class='question-note-box'>ㄱ. 직선 $l$은 제4사분면을 반드시 지난다.<br>ㄴ. 직선 $l$은 직선 $2x+3y+3=0$과 겹쳐질 수 없다.<br>ㄷ. 원점과 직선 $l$ 사이의 거리가 $1$인 실수 $k$는 $1$개 존재한다.</div>",
     "choices": [
