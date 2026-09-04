@@ -1,0 +1,89 @@
+{
+  "candidateShaBeforeCommit": "e2354149a34812cd3c40f0350567a62a5d95d216",
+  "scope": {
+    "unexpectedChangedFiles": 7,
+    "unauthorizedChangedFiles": [
+      "archive/tools/function-family/build-final-graph-review-manifest.mjs",
+      "docs/plans/JS아카이브_전수품질업그레이드_다중독립검수_최종봉인_공통프로토콜_v1.2.10_정본.md",
+      "docs/reports/function-family-20260904/final-seal/function_family_exception_closure_v1.json",
+      "docs/reports/function-family-20260904/final-seal/function_family_exception_closure_v1.md",
+      "docs/reports/function-family-20260904/final-seal/function_family_graph_review_manifest_v1.json",
+      "docs/reports/function-family-20260904/final-seal/function_family_graph_review_manifest_v1.md",
+      "docs/reports/function-family-20260904/final-seal/graph-review-harness.html"
+    ],
+    "lockedTrackedDiffFiles": [
+      "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+      "archive/question-index.js",
+      "archive/question-index-report.md",
+      "archive/question-index-audit.md"
+    ]
+  },
+  "q11": {
+    "questionValid": true,
+    "correctAnswerCount": 1,
+    "actualCorrectAnswer": "④",
+    "answerMatch": true,
+    "solutionMatch": true,
+    "sourceFound": false
+  },
+  "hyochonQ09": {
+    "extraConditionRemoved": true,
+    "answer": "⑤",
+    "independentRecheck": "PASS"
+  },
+  "triage": {
+    "targetCount": 192,
+    "rowCount": 192,
+    "primaryStatusSum": 192,
+    "statusCounts": {
+      "VALID": 190,
+      "SOLUTION_ONLY_FIX": 0,
+      "STEM_MINIMAL_FIX": 1,
+      "STEM_AND_CHOICE_MINIMAL_FIX": 1,
+      "STEM_AND_ANSWER_MINIMAL_FIX": 0,
+      "SOURCE_REVIEW": 0,
+      "HARD_INVALID": 0
+    },
+    "noAnswerCount": 0,
+    "undeclaredMultiAnswerCount": 0,
+    "mismatchCount": 0,
+    "unresolvedInvalid": 0
+  },
+  "render": {
+    "targetExamCount": 38,
+    "expectedRows": 114,
+    "actualRows": 114,
+    "failedRows": 0,
+    "distinctTargetExamIds": 38,
+    "distinctMatrixExamIds": 38,
+    "eachExamHasExactlyExamSolutionAnswerRows": true,
+    "allStatuses": [
+      "PASS"
+    ],
+    "pageLevelConsoleErrorRows": 0,
+    "pageErrorRows": 0,
+    "overflowRows": 0,
+    "imageDecodeMismatches": 0,
+    "solutionImageDecodeMismatches": 0,
+    "executionSource": "Chrome browser; archive/engine.html; eight visible harness batches; each batch opened exam, solution, and answer modes"
+  },
+  "index": {
+    "totalIndexCount": 10980,
+    "duplicateQKey": 0,
+    "loadFailure": 0
+  },
+  "worktree": {
+    "head": "e2354149a34812cd3c40f0350567a62a5d95d216",
+    "main": "e2354149a34812cd3c40f0350567a62a5d95d216",
+    "originMain": "64ad6d9e6bbe787bb6c18742277f31bc299d9cb3",
+    "headEqualsMainEqualsOriginMain": false,
+    "clean": false
+  },
+  "commitAllowed": false,
+  "commitBlockers": [
+    "UNAUTHORIZED_SCOPE_CHANGE: 7 unrelated files are present in the worktree",
+    "worktree is not clean",
+    "HEAD/main and origin/main diverged after the initial SHA lock; no merge/rebase/push was attempted"
+  ]
+}
