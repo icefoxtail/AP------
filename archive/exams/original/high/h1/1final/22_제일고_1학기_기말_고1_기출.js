@@ -524,8 +524,8 @@ window.questionBank = [
     "solutionImageAlt": "원 x²+y²=10에 접하는 기울기 2의 두 평행 접선과 x절편을 표시한 그림",
     "solutionImageCaption": "수직 조건으로 접선의 기울기를 정하고 두 x절편의 차를 구한다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -561,8 +561,8 @@ window.questionBank = [
     "solutionImageAlt": "두 원과의 위치 관계 조건의 교집합에서 가능한 정수 k를 표시한 그림",
     "solutionImageCaption": "두 조건의 구간 교집합에서 k≠0인 정수의 개수를 센다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -598,8 +598,8 @@ window.questionBank = [
     "solutionImageAlt": "외부점 P(4,5)에서 원에 그은 접선과 반지름 OQ가 수직인 그림",
     "solutionImageCaption": "접점의 반지름과 접선이 만드는 직각삼각형으로 접선 길이를 구한다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -637,8 +637,8 @@ window.questionBank = [
     "solutionImageCaption": "접선 조건을 대입해 f(−4)f(4)의 값을 정리한다.",
     "solutionImageSize": "full",
     "image": "assets/images/22_제일고_1학기_기말_고1_기출/q18.png",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

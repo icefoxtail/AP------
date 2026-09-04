@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "inventory": "node run-batch.mjs --inventory",
-    "check": "node --check run-batch.mjs && node --check run-one-exam.mjs",
+    "check": "node --check run-batch.mjs && node --check run-one-exam.mjs && node --check lib/exam-id.mjs && node --check lib/js-candidate.mjs && node --check promote-reviewed-exam.mjs",
     "audit:visual": "python helpers/audit_generated_visual_asset_links.py --root . --out reports/visual_asset_link_audit.json"
   }
 }

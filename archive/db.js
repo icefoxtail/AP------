@@ -175,7 +175,7 @@ window.mainDB = {
       "examType": "mid",
       "subject": "확률과통계",
       "contentType": "기출",
-      "qCount": 24,
+      "qCount": 23,
       "rangeStartUnitKey": "H15-PS-01",
       "rangeStartUnit": "순열과 조합",
       "rangeStartUnitOrder": 1,

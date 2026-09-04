@@ -368,8 +368,8 @@ window.questionBank = [
     "solutionImageAlt": "중심 C에서 현 AB에 내린 수선 CH와 반지름, 삼각형 ABC의 높이를 표시한 그림",
     "solutionImageCaption": "CH가 현의 수직이등분선이므로 AH=BH이고, CH는 삼각형 ABC의 높이다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H15-SA-11-INTERSECTION",
+    "subUnit": "원과 직선·원의 교점",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -707,8 +707,8 @@ window.questionBank = [
     "solutionImageAlt": "두 축과 직선 l에 접하는 원의 중심 조건 및 네 개의 후보 중심을 표시한 좌표평면",
     "solutionImageCaption": "C₂ 중심은 y=±2와 l에서 거리 2인 평행선의 교점 네 곳이며, 그 x좌표의 최댓값과 최솟값을 고른다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H15-SA-11-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
