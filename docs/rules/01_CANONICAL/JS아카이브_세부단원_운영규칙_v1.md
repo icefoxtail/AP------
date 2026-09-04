@@ -13,7 +13,7 @@
 1. `docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 2. `archive/data/master_tables/js_archive_tag_master.json`
 3. 이 문서
-4. `docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md` 및 관련 검수 프로토콜
+4. `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md` 및 관련 검수 프로토콜
 
 마스터 Markdown은 사람이 검토하는 원본이고, production JSON은 도구가 읽는 컴파일 산출물이다. 두 파일의 키·부모·라벨이 다르면 자동 적용을 중단하고 마스터를 먼저 재생성한다.
 

@@ -6,25 +6,27 @@
 
 ### 신규 JS 추출·변환
 
-1. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-2. `01_CANONICAL/JS아카이브룰북_v2.5.md`
+1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
+2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 3. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-5. `02_PIPELINES/문제해설추출.md`
-6. 필요 시 `02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md` 또는 `02_PIPELINES/JS_변환_프롬프트.md`
-7. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
-8. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
-9. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
+5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+6. `02_PIPELINES/문제해설추출.md`
+7. 필요 시 `02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md` 또는 `02_PIPELINES/JS_변환_프롬프트.md`
+8. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
+9. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
+10. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 
 ### 기존 JS 해설 업그레이드
 
-1. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-2. `01_CANONICAL/JS아카이브룰북_v2.5.md`
+1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
+2. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0
 3. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-4. `02_PIPELINES/해설프로토콜.md`
-5. `02_PIPELINES/JS_문항품질_업그레이드.md`
-6. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
-7. `03_REVIEW/무결성검수.md`
+4. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+5. `02_PIPELINES/해설프로토콜.md`
+6. `02_PIPELINES/JS_문항품질_업그레이드.md`
+7. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
+8. `03_REVIEW/무결성검수.md`
 
 ### 수정·최종 출시
 
@@ -35,7 +37,8 @@
 5. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
 6. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 7. `03_REVIEW/무결성검수.md`
-8. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
+8. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
+9. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
 
 ## 2. 디렉터리별 역할
 
@@ -64,16 +67,17 @@
 
 현재 신규 작업의 기준은 다음 세 문서와 compiled master의 조합이다.
 
-- `01_CANONICAL/JS아카이브룰북_v2.5.md`
+- `01_CANONICAL/JS아카이브룰북_v2.6.md`
 - `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 - `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+- `04_VISUAL/도형추출.md` v3.0 (그래프 세부 수치의 canonical source)
 - `archive/data/master_tables/js_archive_tag_master.json`
 
 마스터 테이블은 데이터 계약이고, 룰북·운영규칙은 그 데이터를 사용하는 정책 계약이므로 하나의 거대 문서로 합치지 않는다.
 
 ## 4. 중복 규칙을 읽는 방법
 
-추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 작업 유형을 먼저 고른 뒤 해당 프로토콜을 주 기준으로 삼고, 다른 문서는 참조 문서로만 읽는다. 서로 다른 버전의 같은 규칙이 충돌하면 `01_CANONICAL/`의 현재 기준과 명시된 최신 버전을 우선한다.
+추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 작업 유형을 먼저 고른 뒤 해당 프로토콜을 주 기준으로 삼고, 다른 문서는 참조 문서로만 읽는다. 규칙 우선순위는 `룰북 → 최신 VISUAL 생성 프로토콜 → 작업별 pipeline → review protocol`이다. 그래프 style token·sampling·출판 수치는 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
 
 ### 4-1. 충돌 방지 고정 규칙
 

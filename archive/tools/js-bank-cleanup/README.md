@@ -16,7 +16,7 @@ This toolset creates a read-only inventory for the current JS archive bank.
 - `archive/db.js`
 - `archive/assets/images/**`
 - `assets/images/**`
-- `docs/rules/JS아카이브룰북_v2.5.md`
+- `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md`
 - `docs/rules/JS아카이브_세부단원_운영규칙_v1.md`
 - `docs/rules/JS아카이브_표준단원키_마스터테이블.md`
 

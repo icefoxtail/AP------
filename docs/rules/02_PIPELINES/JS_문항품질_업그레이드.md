@@ -21,7 +21,7 @@
 2. 해당 시험지의 crop / page / fullpage / 정답표 이미지 에셋
 3. `_rules/해설프로토콜.md`
 4. `_rules/문제해설추출.md`
-5. `_rules/JS아카이브룰북_v2.5.md` 및 `_rules/JS아카이브_세부단원_운영규칙_v1.md`
+5. `_rules/JS아카이브룰북_v2.6.md` 및 `_rules/JS아카이브_세부단원_운영규칙_v1.md`
 6. `_rules/무결성검수.md`
 7. 작업 지시서와 체크리스트
 
@@ -33,7 +33,7 @@
 
 1. `_rules/문제해설추출.md`
 2. `_rules/해설프로토콜.md`
-3. `_rules/JS아카이브룰북_v2.5.md` 및 `_rules/JS아카이브_세부단원_운영규칙_v1.md`
+3. `_rules/JS아카이브룰북_v2.6.md` 및 `_rules/JS아카이브_세부단원_운영규칙_v1.md`
 4. `_rules/무결성검수.md`
 
 특히 이번 작업의 기본 프로토콜은 `_rules/문제해설추출.md`이다.
@@ -669,7 +669,7 @@ probstat_solution_agent_pack_<팩번호>_result_20260602.zip
 - width와 height를 명시한다.
 - SVG 내부에는 `<br>`, `$...$`, `\frac`, `\dfrac`, `\sqrt`, `\text{}` 같은 LaTeX 또는 MathJax 표현을 넣지 않는다.
 - SVG 내부 라벨은 일반 텍스트만 사용한다.
-- font-size는 8px, 9px, 10px 중심으로 사용한다.
+- 그래프의 세부 typography·stroke·sampling은 `docs/rules/04_VISUAL/도형추출.md` v3.0을 따른다.
 - SVG의 점, 선, 그래프, 원, 수직선은 solution의 계산 결과와 일치해야 한다.
 
 [유형별 그림 원칙]

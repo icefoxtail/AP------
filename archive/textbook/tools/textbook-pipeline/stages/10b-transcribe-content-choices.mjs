@@ -276,7 +276,7 @@ async function makeReviewContactSheet(cfg, reviewIndexPath, contactSheetPath) {
 
 const rulebookFormulaPolicy = {
   requiredForAllFormulas: true,
-  source: "docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md section 3-3",
+  source: "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md section 3-3",
   mathWrapper: "$...$",
   lineBreakPolicy: "$...$ must close before each \\n and reopen on the next formula line",
   combination: "${}_{n}C_{r}",
