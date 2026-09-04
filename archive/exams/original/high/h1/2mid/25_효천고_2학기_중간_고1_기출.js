@@ -82,13 +82,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원",
-      "중심",
-      "반지름",
-      "완전제곱식"
-    ],
+    "tags": ["객관식","원의 방정식","중심","반지름","거리","도형"],
     "wide": false,
     "content": "원의 방정식 $x^2+y^2+2x-6y+6=0$의 중심 좌표와 반지름의 길이를 순서대로 올바르게 쓴 것은? [3.2점]",
     "choices": [
@@ -120,13 +114,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원",
-      "접선",
-      "직선",
-      "점과직선사이거리"
-    ],
+    "tags": ["객관식","원의 방정식","접선","중심","반지름","거리","도형"],
     "wide": false,
     "content": "원 $x^2+y^2=5$에 접하고 기울기가 $1$인 두 직선이 $y$축과 만나는 점을 각각 $A$, $B$라 할 때, $\\overline{AB}$의 길이는? [3.4점]",
     "choices": [
@@ -142,8 +130,8 @@ window.questionBank = [
     "solutionImageAlt": "반지름이 루트 5인 원에 기울기 1인 두 접선과 y절편 A, B를 나타낸 그림",
     "solutionImageCaption": "두 접선은 서로 평행하고, y절편 A와 B는 y축 위에서 원점에 대칭이다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -191,13 +179,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원",
-      "반지름",
-      "매개변수",
-      "범위"
-    ],
+    "tags": ["객관식","원의 방정식","중심","반지름","도형"],
     "wide": false,
     "content": "방정식 $x^2+y^2-kx+2y+2k+1=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$의 값의 범위는? [3.5점]",
     "choices": [
@@ -387,14 +369,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [
-      "객관식",
-      "원",
-      "직선",
-      "교점",
-      "점과직선사이거리",
-      "매개변수"
-    ],
+    "tags": ["객관식","원의 방정식","교점","직선과 원","위치 관계","중심","반지름","거리","도형"],
     "wide": false,
     "content": "중심이 점 $(a,a)$이고 반지름의 길이가 $\\dfrac13$인 원이 직선 $y=-x+3$과 만나도록 하는 $a$의 최댓값과 최솟값을 각각 $M$, $m$이라 할 때, $M+m$의 값은? (단, $a$는 상수) [4점]",
     "choices": [
@@ -410,8 +385,8 @@ window.questionBank = [
     "solutionImageAlt": "중심 C(a, a)가 y=x 위를 움직일 때 원이 직선 x+y=3에 접하는 두 경계 위치의 그림",
     "solutionImageCaption": "두 경계에서는 접하고, 그 사이의 a에서는 원과 직선이 두 점에서 만난다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-INTERSECTION",
+    "subUnit": "원과 직선·원의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -793,13 +768,7 @@ window.questionBank = [
     "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "원",
-      "좌표축",
-      "접선",
-      "중심사이거리"
-    ],
+    "tags": ["서술형","원의 방정식","접선","좌표축 접원","중심","반지름","거리","도형"],
     "wide": false,
     "content": "[서술형 4] 점 $(-2,3)$을 지나고 $x$축과 $y$축에 동시에 접하는 두 원의 중심 사이의 거리를 구하고 그 과정을 서술하시오. [6점]",
     "choices": [],
@@ -809,8 +778,8 @@ window.questionBank = [
     "solutionImageAlt": "점 (-2, 3)을 지나고 두 좌표축에 접하는 두 원과 중심 C1, C2를 나타낸 그림",
     "solutionImageCaption": "양의 반지름이 가능한 두 중심은 모두 직선 $y=-x$ 위에 있고, 중심 사이 거리는 $4\\sqrt6$이다.",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
-    "subUnit": "원의 방정식",
+    "subUnitKey": "H22-C2-03-TANGENT",
+    "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
