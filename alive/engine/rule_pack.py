@@ -29,9 +29,12 @@ COMPILED_MASTER_RELATIVE = Path("archive/data/master_tables/js_archive_tag_maste
 RULE_READ_ORDER = (
     "docs/rules/00_RULES_INDEX.md",
     "docs/rules/01_CANONICAL/프로젝트_컨텍스트.md",
-    "docs/rules/01_CANONICAL/JS아카이브룰북_v2.5.md",
+    "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+    "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
     "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
     "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+    "docs/rules/04_VISUAL/도형추출.md",
+    "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
     "docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md",
     "docs/rules/02_PIPELINES/문제해설추출.md",
     "docs/rules/02_PIPELINES/수정프로토콜.md",
@@ -46,8 +49,6 @@ RULE_READ_ORDER = (
     "docs/rules/03_REVIEW/JS아카이브_1차검수_프로토콜.md",
     "docs/rules/03_REVIEW/JS아카이브_2차검수_프로토콜.md",
     "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md",
-    "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
-    "docs/rules/04_VISUAL/도형추출.md",
 )
 
 _MANIFEST_LINE = re.compile(r"^- (.+?) \| (\d+) bytes \| sha256 ([0-9a-f]{64})$")
@@ -246,4 +247,3 @@ def load_rule_pack(root: Path, *, required: bool | None = None) -> dict[str, Any
 
 def rule_pack_is_ready(snapshot: dict[str, Any]) -> bool:
     return snapshot.get("status") == "READY" and isinstance(snapshot.get("snapshotSha256"), str)
-

@@ -7,7 +7,7 @@
 ### 신규 JS 추출·변환
 
 1. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-2. `01_CANONICAL/JS아카이브룰북_v2.5.md`
+2. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 3. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
 5. `02_PIPELINES/문제해설추출.md`
@@ -16,15 +16,38 @@
 8. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
 9. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 
-### 기존 JS 해설 업그레이드
+### 기존 JS 품질·SVG 업그레이드 (필수 읽기 순서)
 
-1. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-2. `01_CANONICAL/JS아카이브룰북_v2.5.md`
-3. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-4. `02_PIPELINES/해설프로토콜.md`
-5. `02_PIPELINES/JS_문항품질_업그레이드.md`
-6. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
-7. `03_REVIEW/무결성검수.md`
+기존 production JS의 품질 업그레이드나 SVG·그래프·`solutionImage` 생성·수정·검수는
+아래 공통 선행 규칙을 먼저 읽는다. 버전·경로와 `MANIFEST.md`의 바이트·SHA-256이
+현재 작업 트리와 일치하지 않으면 작업을 시작하지 않는다.
+
+1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
+2. `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`
+3. `04_VISUAL/도형추출.md` v3.0
+4. 도형의 방정식·좌표·직선·원 등 해당 작업이면 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
+5. 해당 단원에 적용되는 `UNIT_OVERLAY`가 존재하면 그 문서
+6. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
+7. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+8. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+9. `02_PIPELINES/해설프로토콜.md`
+10. `02_PIPELINES/JS_문항품질_업그레이드.md`
+11. `03_REVIEW/무결성검수.md`
+12. 필요 시 `03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md` 및 1·2·3차 검수 프로토콜
+
+`UNIT_OVERLAY`는 현재 작업의 학년·과목·단원에 해당하는 문서만 적용한다. 존재 여부와
+적용 대상을 확인할 수 없거나 읽을 수 없으면 임의 추정하지 않고 `PREFLIGHT_READ` 또는
+`RULE_ROUTING_BLOCKED`로 보류한다. 적용 가능한 overlay가 없으면 “해당 overlay 없음”을
+작업 기록에 남긴다.
+
+### SVG·그래프·solutionImage 공통 시작 게이트
+
+모든 시각 작업은 위의 1~5번을 필수로 확인한 뒤, 실제 작업에 필요한 pipeline·review
+문서를 6번 이후 순서로 읽는다. `JS아카이브룰북_v2.6.md`는 archive schema·보호 원칙,
+`COMMON_PROTOCOL_v1.2.10.md`는 전수 업그레이드·독립검수·봉인, `도형추출.md` v3.0은
+SVG/그래프 sampling·좌표·style·print, `UNIT_OVERLAY`는 단원별 특수 규칙의 권위 문서다.
+필수 문서가 누락·불가독·버전 불일치·manifest hash drift이면 SVG나 그래프를 생성·수정·
+검수하지 않는다.
 
 ### 수정·최종 출시
 
@@ -64,7 +87,7 @@
 
 현재 신규 작업의 기준은 다음 세 문서와 compiled master의 조합이다.
 
-- `01_CANONICAL/JS아카이브룰북_v2.5.md`
+- `01_CANONICAL/JS아카이브룰북_v2.6.md`
 - `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 - `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
 - `archive/data/master_tables/js_archive_tag_master.json`
