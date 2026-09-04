@@ -164,6 +164,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+    "subUnit": "명제와 진리집합",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -193,6 +195,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+    "subUnit": "필요조건과 충분조건",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -223,6 +227,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+    "subUnit": "명제와 진리집합",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -253,6 +259,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+    "subUnit": "필요조건과 충분조건",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -283,6 +291,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -505,6 +515,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+    "subUnit": "필요조건과 충분조건",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -566,6 +578,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -643,6 +657,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+    "subUnit": "명제와 진리집합",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -668,6 +684,8 @@ window.questionBank = [
     "standardUnitKey": "H15-SB-02",
     "standardUnit": "명제",
     "standardUnitOrder": 2,
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [

@@ -268,8 +268,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 코시-슈바르츠 부등식으로 주어진 합과 구하려는 식을 연결한다.\n$\\dfrac1x+\\dfrac2y=\\dfrac{1^2}{x}+\\dfrac{2^2}{2y}$이므로\n$\\left(\\dfrac1x+\\dfrac2y\\right)(x+2y)\\ge(1+2)^2=9$이다.\n$x+2y=3$이므로 $\\dfrac1x+\\dfrac2y\\ge3$이고, 등호는 $x=y=1$일 때 성립한다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
-    "subUnit": "명제와 진리집합",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -587,8 +587,8 @@ window.questionBank = [
     "choices": [],
     "answer": "최댓값 $5$는 $(x,y)=(1,2)$일 때, 최솟값 $-5$는 $(x,y)=(-1,-2)$일 때",
     "solution": "[키포인트] 코시-슈바르츠 부등식의 등호 조건까지 확인한다.\n$(x+2y)^2\\le(x^2+y^2)(1^2+2^2)=5\\times5=25$이므로 $-5\\le x+2y\\le5$이다.\n최댓값의 등호는 $(x,y)$가 $(1,2)$와 같은 방향이고 $x^2+y^2=5$를 만족할 때 성립하므로 $(x,y)=(1,2)$이다. 최솟값의 등호는 반대 방향일 때 성립하므로 $(x,y)=(-1,-2)$이다.\n따라서 최댓값은 $5$이고 $(x,y)=(1,2)$일 때, 최솟값은 $-5$이고 $(x,y)=(-1,-2)$일 때이다.",
-    "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
-    "subUnit": "명제와 진리집합",
+    "subUnitKey": "H15-SB-02-PROOF",
+    "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
