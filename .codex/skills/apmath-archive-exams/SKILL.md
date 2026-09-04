@@ -1,68 +1,189 @@
 ---
 name: apmath-archive-exams
-description: Archive classified Korean math exam scans into the APMath JavaScript archive with question transcription, independent answer and solution verification, cropped image assets, database and question-index registration, and exam/solution/answer render QA. Use when importing one or more school exam papers from 분류완료 folders, continuing a grade-by-grade exam archive batch, reviewing a generated candidate, or auditing whether an APMath exam import is genuinely complete.
+description: Archive classified Korean math exam scans into the APMath JavaScript archive with full-page-first extraction, staged candidate/production validation, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA. Use for original exam imports, generated-candidate review, promotion, or archive integrity audits; use the similar-question skill for generating variants.
 ---
 
 # APMath exam archiving
 
-Convert scanned exams into the repository's native archive format and do not declare completion until every gate below passes.
+Import original Korean math exam scans into the repository archive and do not
+declare a final pass until source fidelity, metadata, assets, DB/index parity,
+and real browser rendering are evidenced.
+
+## Scope and routing
+
+- This skill owns original exam extraction, answer/solution completion, review,
+  production promotion, and archive audits.
+- For PDF/JPG/scan extraction, use the V2 full-page-first pipeline under
+  `archive/tools/past-exam-pipeline/`. Its extraction candidate may have blank
+  `answer` and `solution` with `external_agent_required` status.
+- For answer/solution completion, consume the pipeline handoff manifest and
+  edit only the fields allowed by that handoff. A suspected extraction error
+  must be checked against the full page and recorded as a correction report;
+  do not silently rewrite `content` or `choices`.
+- For similar questions or similar exams, use
+  `$apmath-similar-question-pipeline`. The `-4batch` skill is only a deprecated
+  compatibility alias, and the adaptive skill is comparison-experiment only.
+  Neither is an original-archive import route.
 
 ## Start
 
-1. Locate the repository root and read `references/archive-layout.md`.
-2. Inspect one nearby production exam JS, its DB record, and its image directory before generating anything.
-3. Inventory source schools, source pages, expected question counts, and visual questions. Work in the user's requested school or grade order.
-4. Preserve unrelated dirty-worktree changes.
+1. Locate the repository root and read [archive-layout.md](references/archive-layout.md)
+   and [rules-routing.md](references/rules-routing.md).
+2. Start from `docs/rules/00_RULES_INDEX.md`; read only the current operational
+   rule documents required by the route. Do not treat `docs/rules/90_ARCHIVE/`
+   or generated reports as current authority.
+3. Check the rules manifest/source-pack state. If a required rule file is
+   missing or its manifest hash differs, stop the final release and record
+   `SOURCE_PACK_DRIFT`.
+4. Inspect one nearby production exam JS, its DB record, its question-index
+   rows, and its image directory before generating anything.
+5. Inventory source schools, source pages, expected question counts, answer or
+   solution sources, and visual questions. Preserve unrelated dirty-worktree
+   changes and keep one school or a deliberately bounded sample isolated until
+   its complete route passes.
 
-## Process one school completely
+## Route A — extraction candidate
 
-1. Render or inspect every source page at readable resolution.
-2. Transcribe every question, choice, condition, score, answer, and diagram-dependent fact verbatim from the printed source. Do not summarize, paraphrase, normalize away instructions, or replace a displayed proof/condition block with a description of it. Preserve question labels, subparts, domains, qualifiers, and scores.
-3. Independently solve each question. Do not trust handwriting, OCR answers, or an existing candidate. Record source defects explicitly instead of inventing an answer.
-4. Create the candidate JS in the generated import directory and the production JS in `archive/exams/original/...` using the established local schema.
-5. Supply every indispensable graph, table, seating layout, photo, or geometry diagram. Save canonical images below `archive/assets/images/<exam-title>/` and set each question's `image` path. Crop generously enough that no printed line, label, axis, arrow, or boundary is clipped. When the user will clean contaminated source images manually, preserve the handwriting/marks and label the asset `cropped_for_manual_cleanup`; do not reconstruct it. Otherwise the final asset must contain only the necessary visual. A `hasVisualAsset` marker without a usable image, SVG, table, or faithful textual reconstruction is incomplete. When a graph or diagram is needed to understand the worked solution, create a separate instructional asset and register it with `solutionImage`; do not draw solution annotations onto the source problem image.
-6. Add or update the `archive/db.js` record. Require correct file, school, grade, year, semester, exam type, subject, content type, and question count.
-7. Rebuild `archive/question-index.js` with the repository tool.
-8. Run the bundled audit script, then perform browser QA for `exam`, `sol`, and `ans` modes.
-
-Finish one sample school end-to-end before processing a large batch unless the user has already approved the format.
-
-## Browser QA
-
-Serve the repository locally and open `archive/engine.html` with the production JS path.
-
-- In `exam` mode, confirm `.q-box` count equals the source count and every image has positive `naturalWidth`.
-- In `ans` mode, confirm `.ans-n` count equals the source count.
-- In `sol` mode, confirm the solution view loads and every question has a non-empty solution in the JS audit.
-- In `sol` mode, confirm every declared `solutionImage` loads, fits inside its solution column, and keeps labels legible in print layout.
-- In all modes, reject load-error text, broken images, console errors, and horizontal overflow.
-- Visually inspect all newly cropped assets in context.
-
-Use the browser-control skill when available and finalize browser tabs after the audit.
-
-## Deterministic audit
-
-Run:
+Use the repository pipeline for a new scan import:
 
 ```powershell
-node <skill-dir>/scripts/audit_archive_batch.mjs --repo <repo-root> --exam original/high/h1/1final/<exam>.js --exam original/high/h1/1final/<exam2>.js
+npm --prefix archive/tools/past-exam-pipeline run check
+node archive/tools/past-exam-pipeline/run-batch.mjs --inventory
+node archive/tools/past-exam-pipeline/run-batch.mjs --create-selected --grade <고1|고2|고3|중1|중2|중3> --semester <1|2> --exam-type <mid|final>
+node archive/tools/past-exam-pipeline/run-batch.mjs --run-selected --selected-manifest archive/_generated/past-exams/_batch/selected_manifest.json
 ```
 
-The script verifies JS evaluation, unique IDs, required content/answers/solutions, image existence, DB metadata and counts, question-index counts, and candidate/production hash equality when a candidate exists.
+For one explicitly prepared manifest, run
+`node archive/tools/past-exam-pipeline/run-one-exam.mjs --manifest <manifest.json>`
+from the repository root. The V2 contract is:
+
+- full-page PNG is the source of truth for display number, `content`, and
+  `choices`; crops are auxiliary zoom evidence only;
+- question-wide crops are disabled by default and never become candidate
+  `image` fallbacks;
+- candidate `image` is blank or points only to a visual-asset crop made from a
+  validated `visualAssetBBoxOnPage`;
+- `fullPageImagePath` is evidence, not a production problem image;
+- uncertain text, choices, formula, or visual bbox becomes manual review;
+- blank `answer` and `solution` are normal only while their external-agent
+  status says they are pending.
+
+Do not fill dummy text to clear `vision_required`, and do not solve inside the
+extraction pipeline.
+
+## Route B — answer/solution completion
+
+Give the answer/solution reviewer the candidate JS, `pages/`, visual assets,
+`reports/answer_solution_required.csv`,
+`reports/extraction_manual_review.csv`, and
+`reports/gpt_gemini_handoff_manifest.json`.
+
+The extraction handoff permits only `answer`, `solution`, `answerStatus`, and
+`solutionStatus`. Independently solve every question, compare the result with
+the source and choices, preserve source defects explicitly, and leave an
+uncertain solution unresolved rather than reverse-engineering an answer.
+
+Before promotion, every new candidate/production question must include the
+four current subunit fields:
+
+```text
+subUnitKey
+subUnit
+subUnitConfidence
+subUnitClassificationDepth
+```
+
+The key must be present in the canonical/compiled master, its parent must
+match `standardUnitKey`, and its label and confidence/depth values must follow
+the current rule documents. Existing legacy files may be reported as
+`legacy_exception`; do not bulk-remodel them merely to satisfy the new rule.
+
+## Route C — validation and promotion
+
+Validate the generated candidate with the pipeline's V2 validator before any
+production write:
+
+```powershell
+python -X utf8 archive/tools/past-exam-pipeline/helpers/validate_final_candidates.py `
+  --summary <candidate_generation_summary.json> `
+  --out <final_validation_summary.json>
+```
+
+Require a `reviewed_pass` review envelope, then use the repository promotion
+tool with the manifest, candidate, review, and generated asset directory. The
+promotion tool must reject missing/blank subunit fields, invalid subunit
+confidence/depth values, missing answer/solution, wrong question identity,
+and assets outside the candidate's canonical asset prefix.
+
+After promotion, update `archive/db.js`, rebuild the index with
+`archive/tools/build-question-index.mjs`, and run the production audit with
+`--strict-new` for each newly imported production JS:
+
+```powershell
+node <skill-dir>/scripts/audit_archive_batch.mjs `
+  --repo <repo-root> `
+  --strict-new `
+  --exam original/high/h1/1final/<exam>.js
+```
+
+Use the non-strict audit for deliberately unchanged legacy production files;
+legacy exceptions must remain visible in the report.
+
+## Visual assets and solution visuals
+
+- Preserve every indispensable source graph, table, seating layout, photo,
+  or geometry diagram with a clean, generously padded asset. Never use a full
+  page or question-wide crop as a production problem image.
+- Keep source-problem `image` separate from instructional `solutionImage` or
+  solution-inline SVG. Do not draw solution annotations onto the source crop.
+- For new or modified graph/geometry assets, apply the current
+  `docs/rules/04_VISUAL/도형추출.md` math, semantic, style, print-publication,
+  and render gates. A file existing or having positive `naturalWidth` is not a
+  complete visual pass.
+- `cropped_for_manual_cleanup` is an intermediate handoff state. A
+  `full_page_reference` marker is never a completion state.
+- Preserve the repository distinction between `imageSize` and `layoutTag`.
+  `subjective-2up` and `fullwidth` are layout candidates requiring approval;
+  `full` is an image-size value and does not imply `fullwidth`.
+
+## Browser QA and evidence
+
+Serve the repository and open `archive/engine.html` with the production JS
+path. Record a durable `reports/browser_render_check.md` or equivalent
+capture/log with `PASS`, `WARN`, `FAIL`, or `NOT_TESTED` for each mode.
+
+- `exam`: `.q-box` count equals the source count, last page is present, and
+  every referenced image decodes with positive `naturalWidth`;
+- `ans`: `.ans-n` count equals the source count and the last answer is present;
+- `sol`: every production question has a non-empty solution, every declared
+  solution visual loads, and labels fit the solution column and print layout;
+- all modes: no load-error text, broken images, console errors, unrendered
+  MathJax, or horizontal overflow;
+- `NOT_TESTED` is evidence of an incomplete gate, never a final PASS.
+
+Visually inspect all newly cropped assets in context. Re-check all three modes
+after any correction, not only the mode that appeared to change.
 
 ## Completion gate
 
 Report completion only when all are true:
 
-- Source-page inventory and JS question counts agree.
-- Every question has been source-checked and independently verified.
-- Every `content` and `choices` value has been compared against the actual source image; any paraphrase, missing score, omitted qualifier, changed symbol, or summarized condition/proof block is FAIL.
-- Every source prompt containing an indispensable printed graph, diagram, table, or layout has a corresponding clean asset. Assets containing prompt text, choices, handwriting, answer marks, or unrelated page content are FAIL.
-- Required visual assets render; no `full_page_reference` placeholders remain.
-- Production and candidate JS files match byte-for-byte when both exist.
-- Every DB record has a non-empty subject and accurate `qCount`.
-- Question-index counts match every DB record.
-- All three modes load, and exam/answer DOM counts match.
-- Any source defect is documented in the answer or solution and in the final report.
+- source-page inventory and JS question counts agree;
+- every question is source-checked and independently solved or explicitly
+  documented as a source defect/uncertain item;
+- every `content` and `choices` value matches the full-page source, including
+  labels, subparts, scores, qualifiers, symbols, and proof/condition blocks;
+- new candidate/production questions have valid subunit metadata and all DB
+  fields are accurate;
+- every indispensable source visual has a clean asset, and every
+  `solutionImage` is present and used only for solution explanation;
+- production and candidate JS match byte-for-byte when parity is required;
+- question-index counts match the JS and DB record for every target;
+- all three browser modes have recorded PASS evidence;
+- source defects and corrections appear in the relevant answer/solution and
+  final report.
 
-Give a school-by-school count table, list corrections and source defects, list added assets, and state the exact validation evidence. Do not stage, commit, or publish unless asked.
+Give a school-by-school count table, corrections, source defects, added
+assets, candidate/production status, DB/index evidence, browser evidence, and
+the exact audit command/result. Do not stage, commit, publish, or modify
+unrelated production files unless asked.
