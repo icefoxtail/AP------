@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>65개 SVG 독립 시각검수</title>
+<style>
+  body { margin: 20px; font-family: "Noto Sans KR", "Malgun Gothic", sans-serif; background: #f3f4f6; color: #111827; overflow-x: hidden; }
+  h1 { font-size: 22px; } .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  figure { margin: 0; padding: 12px; background: white; border: 1px solid #d1d5db; border-radius: 10px; }
+  img { display: block; width: 100%; height: auto; } figcaption { margin-bottom: 8px; font-weight: 700; }
+</style>
+<h1>승인된 65개 SVG 독립 시각검수</h1>
+<p>각 도형은 Python 독립 좌표 계산으로 생성된 현재 production SVG를 실제 브라우저에서 표시한다.</p>
+<div class="grid" id="grid"></div>
+<script>
+fetch('python_geometry_verification.json').then(r => r.json()).then(({rows}) => {
+  const grid = document.getElementById('grid');
+  for (const row of rows) {
+    const figure = document.createElement('figure');
+    const caption = document.createElement('figcaption');
+    caption.textContent = row.folder + ' q' + row.id + ' · ' + row.factHash.slice(0, 12);
+    const img = document.createElement('img');
+    img.src = '../../archive/' + row.path + '?visual-review=20260904';
+    img.alt = caption.textContent;
+    figure.append(caption, img); grid.appendChild(figure);
+  }
+});
+</script>
