@@ -48,7 +48,8 @@ class RulePackTests(unittest.TestCase):
         first = load_rule_pack(self.root, required=True)
         second = load_rule_pack(self.root, required=True)
         self.assertEqual("READY", first["status"])
-        self.assertEqual(21, len(first["files"]))
+        self.assertEqual(22, len(first["files"]))
+        self.assertIn("docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md", first["readOrder"])
         self.assertEqual("PASS", first["compiledMaster"]["status"])
         self.assertEqual(first["snapshotSha256"], second["snapshotSha256"])
 
@@ -58,6 +59,14 @@ class RulePackTests(unittest.TestCase):
         target.write_text("changed\n", encoding="utf-8")
         snapshot = load_rule_pack(self.root, required=True)
         self.assertEqual("SOURCE_PACK_DRIFT", snapshot["status"])
+        self.assertIn("SOURCE_PACK_DRIFT", snapshot["codes"])
+
+    def test_missing_common_protocol_is_fail_closed(self) -> None:
+        self.write_complete_rule_pack()
+        (self.root / "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md").unlink()
+        snapshot = load_rule_pack(self.root, required=True)
+        self.assertEqual("SOURCE_PACK_DRIFT", snapshot["status"])
+        self.assertIn("RULE_PACK_REQUIRED_FILE_MISSING", snapshot["codes"])
         self.assertIn("SOURCE_PACK_DRIFT", snapshot["codes"])
 
 
@@ -128,4 +137,3 @@ class ReferenceSelectorTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
