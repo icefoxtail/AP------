@@ -67,7 +67,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 3,
     "level": "하",
     "category": "직선의 방정식",
@@ -82,7 +82,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "1학기기말"
+      "1학기기말",
+      "도형",
+      "직선",
+      "평행"
     ],
     "wide": false,
     "content": "두 점 $(2,a)$, $(4,-3)$을 지나는 직선이 직선 $y=-2x+1$과 평행할 때, $a$의 값을 구하면? [3.6점]",
@@ -98,7 +101,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q03-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 3의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 점을 지나는 선분의 기울기 −2 · 평행이면 기울기가 같다",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -174,7 +181,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -189,7 +196,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "1학기기말"
+      "1학기기말",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "점 $(a,1)$에서 두 직선 $x-2y+3=0$, $2x+y-2=0$까지의 거리가 같을 때, 모든 $a$의 값의 합을 구하면? [3.8점]",
@@ -203,8 +213,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트]\n점과 직선 사이의 거리 공식을 이용하여 두 거리가 같다는 식을 세운다.\n\n풀이 과정\n점 $(a,1)$에서 직선 $x-2y+3=0$까지의 거리는\n$\\dfrac{|a-2+3|}{\\sqrt{1^2+(-2)^2}}=\\dfrac{|a+1|}{\\sqrt5}$이다.\n점 $(a,1)$에서 직선 $2x+y-2=0$까지의 거리는\n$\\dfrac{|2a+1-2|}{\\sqrt{2^2+1^2}}=\\dfrac{|2a-1|}{\\sqrt5}$이다.\n두 거리가 같으므로\n$|a+1|=|2a-1|$이다.\n양변을 제곱하면\n$(a+1)^2=(2a-1)^2$\n$a^2+2a+1=4a^2-4a+1$\n$3a^2-6a=0$\n$3a(a-2)=0$이다.\n따라서 $a=0$ 또는 $a=2$이고, 모든 $a$의 값의 합은 $2$이다.\n\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 6의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "P₁=(0,1), P₂=(2,1) · 두 직선까지의 거리가 같은 점",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -602,7 +612,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 18,
     "level": "상",
     "category": "직선의 방정식",
@@ -617,7 +627,11 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "1학기기말"
+      "1학기기말",
+      "도형",
+      "직선",
+      "수직",
+      "거리"
     ],
     "wide": true,
     "content": "아래 그림과 같이 좌표평면 위에 점 $A(0,t)$와 직선 $l:y=\\dfrac12x+4$가 있다. 직선 $l$ 위의 제2사분면 위의 점 $B(a,b)$와 $x$축 위의 점 $C$에 대하여 $AC+BC$의 최솟값이 $2\\sqrt5$일 때, $t+a+b$의 값은? (단, $0<t<4$) [4.3점]",
@@ -640,7 +654,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 19,
     "level": "상",
     "category": "직선의 방정식",
@@ -655,7 +669,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "1학기기말"
+      "1학기기말",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "점 $(2,1)$과 직선 $(2k+1)x+(k-2)y-2k-1=0$ 사이의 거리가 최대가 될 때, 실수 $k$값을 구하면? [4.4점]",
@@ -669,8 +686,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n점과 직선 사이의 거리 공식을 이용해 거리의 제곱을 만들고, 최댓값이 되는 $k$를 찾는다.\n\n풀이 과정\n점 $(2,1)$과 직선 $(2k+1)x+(k-2)y-2k-1=0$ 사이의 거리를 $d$라 하자.\n거리 공식에 대입하면\n$d=\\dfrac{|(2k+1)\\cdot2+(k-2)\\cdot1-2k-1|}{\\sqrt{(2k+1)^2+(k-2)^2}}$이다.\n분자를 정리하면\n$4k+2+k-2-2k-1=3k-1$이고, 분모를 정리하면\n$(2k+1)^2+(k-2)^2=5k^2+5=5(k^2+1)$이다.\n따라서\n$d^2=\\dfrac{(3k-1)^2}{5(k^2+1)}$이다.\n이제\n$2-d^2=\\dfrac{10(k^2+1)-(3k-1)^2}{5(k^2+1)}$이다.\n분자를 계산하면\n$10k^2+10-(9k^2-6k+1)=k^2+6k+9=(k+3)^2$이다.\n따라서\n$2-d^2=\\dfrac{(k+3)^2}{5(k^2+1)}\\ge0$이다.\n즉 $d^2\\le2$이고, 등호는 $k=-3$일 때 성립한다.\n따라서 거리가 최대가 될 때 $k=-3$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 19의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 19의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "최대가 되는 k=−3 · PH⊥직선",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",

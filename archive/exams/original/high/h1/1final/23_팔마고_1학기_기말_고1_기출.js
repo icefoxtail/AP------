@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -48,7 +48,9 @@ window.questionBank = [
       "객관식",
       "직선",
       "기울기",
-      "y절편"
+      "y절편",
+      "도형",
+      "절편"
     ],
     "wide": false,
     "content": "점 $(-2,1)$을 지나고 기울기가 $2$인 직선의 $y$절편의 값은? [4점]",
@@ -64,9 +66,13 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "기울기=2 · P=(−2,1), y절편=5",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 3,
     "level": "하",
     "category": "직선의 방정식",
@@ -80,7 +86,9 @@ window.questionBank = [
     "tags": [
       "객관식",
       "직선",
-      "점과직선사이거리"
+      "점과직선사이거리",
+      "도형",
+      "거리"
     ],
     "wide": false,
     "content": "점 $(3,-1)$과 직선 $3x-4y+2=0$ 사이의 거리는? [4점]",
@@ -96,9 +104,13 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q03-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 3의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "P=(3,−1) · H=(1.2,1.4), 거리=3",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 4,
     "level": "중",
     "category": "직선의 방정식",
@@ -113,7 +125,8 @@ window.questionBank = [
       "객관식",
       "직선",
       "연립방정식",
-      "평행"
+      "평행",
+      "도형"
     ],
     "wide": false,
     "content": "다음 연립방정식 $\\begin{cases} y=-2x-a \\\\ 4x+2y+1=0 \\end{cases}$의 해가 존재하지 않을 때, $a$의 값으로 알맞지 않은 것은? [4.2점]",
@@ -129,9 +142,13 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 직선의 기울기=−2 · a=1/2이면 일치하므로 제외",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 5,
     "level": "중",
     "category": "직선의 방정식",
@@ -146,7 +163,8 @@ window.questionBank = [
       "객관식",
       "직선",
       "평행",
-      "수직"
+      "수직",
+      "도형"
     ],
     "wide": false,
     "content": "두 직선 $x+2y-3=0$, $ax-4y+1=0$은 평행하고, 두 직선 $x+3y+1=0$, $3x+by+2=0$은 수직일 때, $a+b$의 값은? [4.2점]",
@@ -160,8 +178,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 두 직선이 평행하면 기울기가 같고, 수직이면 두 기울기의 곱이 $-1$이다.\n조건 정리: $x+2y-3=0$과 $ax-4y+1=0$은 평행, $x+3y+1=0$과 $3x+by+2=0$은 수직이다.\n풀이 방향: 각 직선을 $y=mx+n$ 꼴로 바꾸어 기울기를 비교한다.\n정석 풀이:\n$x+2y-3=0$에서\n$2y=-x+3$\n$y=-\\dfrac{1}{2}x+\\dfrac{3}{2}$이므로 기울기는 $-\\dfrac{1}{2}$이다.\n$ax-4y+1=0$에서\n$-4y=-ax-1$\n$y=\\dfrac{a}{4}x+\\dfrac{1}{4}$이므로 기울기는 $\\dfrac{a}{4}$이다.\n두 직선이 평행하므로\n$\\dfrac{a}{4}=-\\dfrac{1}{2}$\n$a=-2$이다.\n또 $x+3y+1=0$에서\n$y=-\\dfrac{1}{3}x-\\dfrac{1}{3}$이므로 기울기는 $-\\dfrac{1}{3}$이다.\n$3x+by+2=0$에서\n$y=-\\dfrac{3}{b}x-\\dfrac{2}{b}$이므로 기울기는 $-\\dfrac{3}{b}$이다.\n두 직선이 수직이므로 두 기울기의 곱은 $-1$이다.\n$\\left(-\\dfrac{1}{3}\\right)\\left(-\\dfrac{3}{b}\\right)=-1$\n$\\dfrac{1}{b}=-1$\n$b=-1$이다.\n따라서 $a+b=-2+(-1)=-3$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q05-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 5의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "a=−2 · b=−1",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -237,7 +255,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 8,
     "level": "중",
     "category": "직선의 방정식",
@@ -251,7 +269,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "평행선사이거리",
-      "직선"
+      "직선",
+      "도형",
+      "평행",
+      "거리"
     ],
     "wide": false,
     "content": "평행한 두 직선 $y=-3x+1$, $y=-3x+k$ 사이의 거리가 $\\sqrt{10}$일 때, 모든 상수 $k$의 값의 곱은? [4.3점]",
@@ -265,11 +286,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 평행한 두 직선 사이의 거리는 두 직선을 같은 일반형으로 놓고 구한다.\n조건 정리: 두 직선은 $y=-3x+1$과 $y=-3x+k$이고, 두 직선 사이의 거리는 $\\sqrt{10}$이다.\n풀이 방향: 두 직선을 $3x+y+c=0$ 꼴로 정리하여 상수항의 차이를 이용한다.\n정석 풀이:\n첫 번째 직선 $y=-3x+1$은\n$3x+y-1=0$이다.\n두 번째 직선 $y=-3x+k$는\n$3x+y-k=0$이다.\n두 평행선 $3x+y-1=0$, $3x+y-k=0$ 사이의 거리는\n$\\dfrac{|(-k)-(-1)|}{\\sqrt{3^2+1^2}}=\\dfrac{|1-k|}{\\sqrt{10}}$이다.\n이 거리가 $\\sqrt{10}$이므로\n$\\dfrac{|1-k|}{\\sqrt{10}}=\\sqrt{10}$\n$|1-k|=10$이다.\n따라서 $1-k=10$ 또는 $1-k=-10$이다.\n각각 풀면 $k=-9$ 또는 $k=11$이다.\n모든 $k$의 값의 곱은\n$(-9)\\cdot11=-99$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 8의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 8의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "평행선 사이 거리=√10 · k=−9 또는 11",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -544,7 +565,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",
@@ -560,7 +581,9 @@ window.questionBank = [
       "조건박스",
       "외분점",
       "평행",
-      "직선"
+      "직선",
+      "도형",
+      "절편"
     ],
     "wide": false,
     "content": "좌표평면 위의 세 점 $A(5,7)$, $B(3,5)$, $C(10,-3)$에 대하여 선분 $AC$의 한 점 $P$와 점 $Q$가 다음 조건을 만족한다고 하자.<br><div class='note-box' style='display:inline-block; margin:6px 0 4px 0; padding:6px 10px; border:1px solid #333; line-height:1.55;'>(가) 점 $Q$는 선분 $AB$를 $5:3$으로 외분하는 점이다.<br>(나) 선분 $BP$와 선분 $QC$는 평행하다.</div><br>직선 $PQ$의 방정식이 $y=mx+n$일 때, $\\dfrac{n}{m}$의 값은? [4.9점]",
@@ -582,7 +605,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 18,
     "level": "상",
     "category": "직선의 방정식",
@@ -597,7 +620,10 @@ window.questionBank = [
       "객관식",
       "거리",
       "각의이등분선",
-      "넓이"
+      "넓이",
+      "도형",
+      "직선",
+      "그래프"
     ],
     "wide": false,
     "content": "직선 $y=-x+5$ 위의 서로 다른 두 점 $P,Q$는 두 직선 $x+2y-1=0$, $2x-y-2=0$으로부터 같은 거리에 있을 때, 삼각형 $OPQ$의 넓이는? (단, $O$는 원점이다.) [5점]",
@@ -614,8 +640,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 18의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -707,7 +733,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 22,
     "level": "상",
     "category": "직선의 방정식",
@@ -722,7 +748,10 @@ window.questionBank = [
       "서술형",
       "직선",
       "거리",
-      "넓이"
+      "넓이",
+      "도형",
+      "수직",
+      "절편"
     ],
     "wide": false,
     "content": "&lt;서술형 4&gt;<br>두 직선 $2x-y-1=0$, $x-2y+4=0$의 교점을 지나는 직선 중 원점에서의 거리가 $2$인 서로 다른 두 직선을 $l$, $m$이라 하자. 두 직선 $l$, $m$과 $x$축으로 둘러싸인 삼각형의 넓이를 구하는 과정을 서술하시오. [6점]",
@@ -733,8 +762,8 @@ window.questionBank = [
     "solutionImageAlt": "직선의 방정식 문항 22의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-EQUATION_BASIC",
-    "subUnit": "방정식의 풀이",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

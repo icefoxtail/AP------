@@ -28,7 +28,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 2,
     "level": "중",
     "category": "수학(상)",
@@ -39,7 +39,10 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선"
+    ],
     "wide": false,
     "content": "두 점 $A(6,5)$, $B(-2,1)$을 지나는 직선이 $(a,3)$을 지날 때, $a$의 값은?",
     "choices": [
@@ -54,7 +57,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "AB 기울기=1/2 · C=(2,3), a=2",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -67,7 +74,7 @@ window.questionBank = [
     "standardUnitOrder": 12,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의이동","대칭이동","삼각형","넓이"],
     "wide": false,
     "content": "점 $(3,-2)$을 $x$축, $y$축, 원점에 대하여 대칭이동한 점을 각각 $P$, $Q$, $R$이라고 할 때, 삼각형 $PQR$의 넓이는?",
     "choices": [
@@ -79,12 +86,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $x$축 대칭은 $y$좌표의 부호, $y$축 대칭은 $x$좌표의 부호, 원점 대칭은 두 좌표의 부호가 모두 바뀐다.\n점 $(3,-2)$을 $x$축에 대하여 대칭이동하면 $P(3,2)$이다.\n$y$축에 대하여 대칭이동하면 $Q(-3,-2)$이고, 원점에 대하여 대칭이동하면 $R(-3,2)$이다.\n점 $Q$와 $R$은 $x$좌표가 모두 $-3$이므로 $QR$은 세로 방향 선분이고 길이는 $2-(-2)=4$이다.\n점 $P$에서 직선 $QR$까지의 거리는 $3-(-3)=6$이다.\n따라서 삼각형 $PQR$의 넓이는 $\\dfrac12\\times4\\times6=12$이다.\n따라서 정답은 $\\boxed{\\text{①}}$이다.",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q03-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 3의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
-  {
+        {
     "id": 4,
     "level": "중",
     "category": "수학(상)",
@@ -95,7 +106,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "절편"
+    ],
     "wide": false,
     "content": "두 직선 $y=(a-4)x+a-1$, $y=\\dfrac{5}{a}x+2a$이 만나는 점이 없게 하도록 하는 상수 $a$의 값들의 합은?",
     "choices": [
@@ -108,11 +123,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 직선이 만나지 않으려면 기울기는 같고 $y$절편은 달라야 한다.\n첫 번째 직선의 기울기는 $a-4$, 두 번째 직선의 기울기는 $\\dfrac5a$이다.\n기울기가 같아야 하므로 $a-4=\\dfrac5a$이다. 이때 $a\\ne0$이다.\n양변에 $a$를 곱하면 $a^2-4a=5$, 즉 $a^2-4a-5=0$이다.\n인수분해하면 $(a-5)(a+1)=0$이므로 $a=5$ 또는 $a=-1$이다.\n$a=5$일 때 두 직선은 각각 $y=x+4$, $y=x+10$으로 기울기는 같고 절편은 달라 만나지 않는다.\n$a=-1$일 때 두 직선은 모두 $y=-5x-2$가 되어 같은 직선이므로 만나는 점이 없다고 할 수 없다.\n따라서 가능한 값은 $a=5$뿐이므로 정답은 $\\boxed{\\text{④}}$이다.",
     "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 4의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 4의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "기울기가 같고 절편이 다른 경우만 허용 · a=5 유지",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "subUnit": "두 직선의 평행과 수직",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -296,7 +311,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 11,
     "level": "중",
     "category": "수학(상)",
@@ -307,7 +322,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "수직"
+    ],
     "wide": false,
     "content": "두 점 $A(-1,3)$, $B(2,-3)$을 이은 선분 $AB$를 $2:1$로 내분하는 점을 $C$라고 하자. 직선 $ax+by-3=0$이 직선 $AB$에 수직이고 점 $C$를 지날 때, 상수 $a$, $b$에 대하여 $a+b$의 값은?",
     "choices": [
@@ -360,7 +379,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 13,
     "level": "중",
     "category": "수학(상)",
@@ -371,7 +390,11 @@ window.questionBank = [
     "standardUnitOrder": 10,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "도형",
+      "직선",
+      "거리"
+    ],
     "wide": false,
     "content": "원점 $O(0,0)$과 직선 $k(x+y)-2x+4y+3=0$ 사이의 거리는 $k=a$일 때 최댓값 $b$를 갖는다. 두 상수 $a$, $b$에 대하여 $\\dfrac{a^2}{b^2}$의 값은? (단, $k$는 실수이다.)",
     "choices": [
@@ -384,8 +407,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 점과 직선 사이의 거리 공식에서 분자는 일정하므로, 거리가 최대가 되려면 분모가 최소가 되어야 한다.\n직선 $k(x+y)-2x+4y+3=0$은 $(k-2)x+(k+4)y+3=0$이다.\n원점과 이 직선 사이의 거리는 $\\dfrac{|3|}{\\sqrt{(k-2)^2+(k+4)^2}}$이다.\n분자 $3$은 일정하므로 거리를 최대로 하려면 분모의 제곱 $(k-2)^2+(k+4)^2$가 최소가 되어야 한다.\n$(k-2)^2+(k+4)^2=k^2-4k+4+k^2+8k+16=2k^2+4k+20$이다.\n완전제곱식으로 고치면 $2(k+1)^2+18$이다.\n따라서 $k=-1$일 때 최소가 되고, 이때 $a=-1$이다.\n최대 거리 $b$는 $\\dfrac3{\\sqrt{18}}=\\dfrac1{\\sqrt2}$이다.\n그러므로 $\\dfrac{a^2}{b^2}=\\dfrac{(-1)^2}{(1/\\sqrt2)^2}=2$이다.\n따라서 정답은 $\\boxed{\\text{③}}$이다.",
     "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 13의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 13의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "최대 조건 k=−1 · 분모 최소",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
     "subUnit": "직선 사이의 거리와 각",
@@ -563,7 +586,7 @@ window.questionBank = [
     "standardUnitOrder": 12,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["객관식","도형의이동","평행이동","직선","최솟값","좌표"],
     "wide": false,
     "content": "실수 $a$, $b$에 대하여 직선 $y=2x$를 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동하면 $y=2x+6$과 일치한다. $a^2+b^2$의 최솟값은?",
     "choices": [
@@ -579,8 +602,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 19의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-TRANSLATION",
+    "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -615,7 +638,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 21,
     "level": "중",
     "category": "수학(상)",
@@ -627,7 +650,10 @@ window.questionBank = [
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "[서술형1] 원점을 지나고 점 $(4,3)$에서 거리가 $3$인 직선의 방정식을 모두 구하시오.",
@@ -635,11 +661,11 @@ window.questionBank = [
     "answer": "$y=0$, $y=\\dfrac{24}{7}x$",
     "solution": "[키포인트] 원점을 지나는 직선을 $y=ax$로 두고, 점과 직선 사이의 거리 공식을 사용한다.\n원점을 지나는 직선 중에서 $y$축은 점 $(4,3)$에서 거리가 $4$이므로 조건에 맞지 않는다.\n따라서 직선을 $y=ax$라 둘 수 있다.\n이를 일반형으로 쓰면 $ax-y=0$이다.\n점 $(4,3)$에서 직선 $ax-y=0$까지의 거리가 $3$이므로\n$\\dfrac{|4a-3|}{\\sqrt{a^2+1}}=3$이다.\n양변이 모두 $0$ 이상이므로 제곱하여 풀면 $(4a-3)^2=9(a^2+1)$이다.\n전개하면 $16a^2-24a+9=9a^2+9$이다.\n정리하면 $7a^2-24a=0$, 즉 $a(7a-24)=0$이다.\n따라서 $a=0$ 또는 $a=\\dfrac{24}{7}$이다.\n그러므로 구하는 직선의 방정식은 $\\boxed{y=0}$, $\\boxed{y=\\dfrac{24}{7}x}$이다.",
     "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 21의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 21의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 직선 모두 O를 통과 · P에서 거리 3",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

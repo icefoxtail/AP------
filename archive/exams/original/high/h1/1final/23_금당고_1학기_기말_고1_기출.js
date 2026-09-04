@@ -67,7 +67,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 3,
     "level": "하",
     "category": "직선의 방정식",
@@ -82,7 +82,9 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선"
     ],
     "wide": false,
     "content": "점 $(1,3)$을 지나고 기울기가 $1$인 직선이 $y=mx+n$일 때, $m+n$의 값은? [3.8점]",
@@ -98,7 +100,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q03-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 3의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "기울기=1 · y절편=2, m+n=3",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -133,7 +139,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -148,7 +154,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "평행"
     ],
     "wide": false,
     "content": "직선 $y=2x+4$에 평행하고 점 $(1,1)$을 지나는 직선의 방정식은? [4.0점]",
@@ -164,7 +173,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q05-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 5의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 직선의 기울기=2 · P=(1,1), y=2x−1",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -204,7 +217,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 7,
     "level": "하",
     "category": "직선의 방정식",
@@ -219,7 +232,11 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "수직",
+      "절편"
     ],
     "wide": false,
     "content": "두 점 $A(-1,0)$, $B(1,4)$를 잇는 선분 $AB$의 수직이등분선의 $x$절편은? [4.0점]",
@@ -383,7 +400,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -398,7 +415,12 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "평행",
+      "거리",
+      "넓이"
     ],
     "wide": false,
     "content": "아래 그림과 같이 평행한 두 직선 $x+(a-3)y+2=0$, $ax-2y+a^2=0$ 위에 사각형 $ABCD$가 정사각형이 되도록 네 점 $A,B,C,D$를 잡을 때, 이 정사각형의 넓이는? (단, $a$는 상수이다.) [4.4점]",
@@ -413,11 +435,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n두 직선이 평행하다는 조건으로 $a$를 먼저 구하고, 두 평행한 직선 사이의 거리를 정사각형의 한 변의 길이로 사용한다.\n\n풀이 과정\n첫 번째 직선 $x+(a-3)y+2=0$의 기울기는 $-\\dfrac1{a-3}$이고,\n두 번째 직선 $ax-2y+a^2=0$의 기울기는 $\\dfrac a2$이다.\n두 직선이 평행하려면 기울기가 같아야 하므로\n$-\\dfrac1{a-3}=\\dfrac a2$이다.\n양변을 정리하면\n$-2=a(a-3)$, 즉\n$a^2-3a+2=0$이다.\n따라서\n$(a-1)(a-2)=0$이므로 $a=1$ 또는 $a=2$이다.\n\n$a=2$이면 두 직선이 같은 직선이 되어 정사각형의 두 변을 만들 수 없다.\n따라서 $a=1$이다.\n이때 두 직선은\n$x-2y+2=0$, $x-2y+1=0$이다.\n두 평행한 직선 사이의 거리는\n$\\dfrac{|2-1|}{\\sqrt{1^2+(-2)^2}}=\\dfrac1{\\sqrt5}$이다.\n정사각형의 한 변의 길이가 $\\dfrac1{\\sqrt5}$이므로 넓이는\n$\\left(\\dfrac1{\\sqrt5}\\right)^2=\\dfrac15$이다.\n\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 12의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "a=1에서 서로 다른 평행선 · 두 선 사이 거리=1/√5",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -564,7 +586,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",
@@ -579,7 +601,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "고1",
-      "기말"
+      "기말",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "두 점 $(1,4)$, $(3,3)$과 직선 $(k+1)x-ky-1=0$ $(k>0)$ 사이의 거리의 합을 $f(k)$라 할 때, 함수 $f(k)$는 $k=\\alpha$에서 최댓값 $M$을 가진다. 이때, $\\alpha M^2$의 값은? [4.8점]",
@@ -593,11 +618,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트]\n점과 직선 사이의 거리 공식을 이용하여 $f(k)$를 식으로 나타낸 뒤, 제곱하여 최댓값을 찾는다.\n\n풀이 과정\n직선은 $(k+1)x-ky-1=0$이다.\n점 $(1,4)$에서 이 직선까지의 거리는\n$\\dfrac{|(k+1)\\cdot1-k\\cdot4-1|}{\\sqrt{(k+1)^2+k^2}}=\\dfrac{|-3k|}{\\sqrt{2k^2+2k+1}}=\\dfrac{3k}{\\sqrt{2k^2+2k+1}}$이다.\n점 $(3,3)$에서 이 직선까지의 거리는\n$\\dfrac{|(k+1)\\cdot3-k\\cdot3-1|}{\\sqrt{(k+1)^2+k^2}}=\\dfrac{|2|}{\\sqrt{2k^2+2k+1}}=\\dfrac2{\\sqrt{2k^2+2k+1}}$이다.\n따라서\n$f(k)=\\dfrac{3k+2}{\\sqrt{2k^2+2k+1}}$이다.\n\n$k>0$이므로 $f(k)>0$이고, $f(k)^2$의 최댓값을 구하면 된다.\n$f(k)^2=\\dfrac{(3k+2)^2}{2k^2+2k+1}$이다.\n이때\n$5-f(k)^2=\\dfrac{5(2k^2+2k+1)-(3k+2)^2}{2k^2+2k+1}$이다.\n분자를 계산하면\n$10k^2+10k+5-(9k^2+12k+4)=k^2-2k+1=(k-1)^2$이다.\n따라서\n$5-f(k)^2=\\dfrac{(k-1)^2}{2k^2+2k+1}\\ge0$이다.\n즉 $f(k)^2\\le5$이고, 등호는 $k=1$일 때 성립한다.\n따라서 $\\alpha=1$, $M^2=5$이다.\n그러므로\n$\\alpha M^2=1\\cdot5=5$이다.\n\n결론\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q17-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 17의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 17의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "최대 조건 k=1 · 두 점에서 직선까지의 거리 합",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-10-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+    "subUnit": "직선 사이의 거리와 각",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

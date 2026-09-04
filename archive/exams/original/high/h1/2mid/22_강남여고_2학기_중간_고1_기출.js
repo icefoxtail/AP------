@@ -299,8 +299,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 9의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -405,7 +405,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+            {
     "id": 13,
     "level": "상",
     "category": "점과 직선 사이 거리",
@@ -420,7 +420,11 @@ window.questionBank = [
       "객관식",
       "직선의방정식",
       "점과직선사이거리",
-      "최댓값"
+      "최댓값",
+      "도형",
+      "직선",
+      "수직",
+      "거리"
     ],
     "wide": false,
     "content": "점 $A(3,3)$과 직선 $mx-y+3m+1=0$ 사이 거리의 최댓값 $M$과 이때 $m$의 값의 곱 $mM$은? [4.4점]",
@@ -723,7 +727,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+            {
     "id": 22,
     "level": "상",
     "category": "두 직선의 위치 관계",
@@ -739,7 +743,9 @@ window.questionBank = [
       "직선의방정식",
       "평행",
       "일치",
-      "수직"
+      "수직",
+      "도형",
+      "직선"
     ],
     "wide": false,
     "content": "[서술형 2] 두 직선 $(a+2)x+3y+1=0$과 $x+ay-1=0$이 평행하기 위한 $a$의 값을 $\\alpha$, 일치하기 위한 값을 $\\beta$, 수직이기 위한 값을 $\\gamma$라 할 때, $\\alpha\\beta\\gamma$의 값을 구하시오. [5점]",
@@ -747,8 +753,8 @@ window.questionBank = [
     "answer": "$\\dfrac32$",
     "solution": "[키포인트] 계수의 비와 기울기의 관계를 이용해 평행·일치·수직을 차례로 판정한다.\n두 직선의 계수는 각각 $(a+2,3,1)$, $(1,a,-1)$이다.\n\n평행 또는 일치하려면 x, y의 계수의 비가 같아야 하므로\n$a(a+2)=3$이다. 즉 $(a-1)(a+3)=0$이므로 $a=1$ 또는 $-3$이다.\n$a=-3$이면 두 식이 서로 $-1$배가 되어 일치하므로 $\\beta=-3$이다. $a=1$이면 상수항의 비가 달라 서로 다른 평행선이므로 $\\alpha=1$이다.\n\n수직일 때에는 두 직선의 기울기의 곱이 $-1$이다. $a=0$이면 두 번째 직선은 수직선 $x-1=0$이고 첫 번째 직선은 기울기 $-2/3$이므로 수직 조건을 만족하지 않는다. 따라서 $a\\ne0$인 경우를 살펴보면 첫 번째 직선의 기울기는 $-(a+2)/3$, 두 번째 직선의 기울기는 $-1/a$이므로\n$\\left(-\\dfrac{a+2}{3}\\right)\\left(-\\dfrac1a\\right)=-1$이다. 정리하면 $a=-\\dfrac12$이므로 $\\gamma=-\\dfrac12$이다.\n\n따라서 $\\alpha\\beta\\gamma=1\\cdot(-3)\\cdot\\left(-\\dfrac12\\right)=\\dfrac32$이다.",
     "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 22의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 22의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "계수비로 평행·일치 판정 · 기울기 곱으로 수직 판정",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
     "subUnit": "두 직선의 평행과 수직",
@@ -782,8 +788,8 @@ window.questionBank = [
     "solutionImageAlt": "도형의 이동 문항 23의 핵심 관계를 표시한 해설 도형",
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
-    "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
-    "subUnit": "합성 변환",
+    "subUnitKey": "H15-SA-12-REFLECTION",
+    "subUnit": "대칭이동",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

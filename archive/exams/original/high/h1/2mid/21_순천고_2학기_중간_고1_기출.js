@@ -715,7 +715,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+            {
     "id": 21,
     "level": "중",
     "category": "직각삼각형의 최대넓이",
@@ -732,7 +732,11 @@ window.questionBank = [
       "직선의방정식",
       "직각삼각형",
       "직사각형",
-      "최대넓이"
+      "최대넓이",
+      "직선",
+      "수직",
+      "절편",
+      "넓이"
     ],
     "wide": false,
     "content": "아래 그림과 같이 직각삼각형 $ABC$가 있다. $AB=8$, $BC=6$이고, 빗변 $AC$ 위의 임의의 한 점 $P$에서 $AB$와 $BC$에 내린 수선의 발을 각각 $R,Q$라고 할 때, 직사각형 $BQPR$의 넓이가 최댓값을 가질 때 직사각형 $BQPR$의 둘레의 길이를 구하는 풀이 과정과 답을 서술하시오. (부분 점수 있음. 7점)",
@@ -741,8 +745,8 @@ window.questionBank = [
     "answer": "$14$",
     "solution": "[키포인트] 직각삼각형을 좌표평면에 놓으면 빗변 위의 점 $P$의 좌표가 직사각형의 가로와 세로가 된다.\n조건 정리: $B=(0,0)$, $C=(6,0)$, $A=(0,8)$로 놓고 $P=(x,y)$라 하자. 그러면 직사각형 $BQPR$의 가로와 세로는 각각 $x,y$이다.\n풀이 방향: 빗변 $AC$의 방정식으로 $y$를 $x$에 대한 식으로 나타내고, 직사각형의 넓이를 완전제곱식으로 바꾼다.\n정석 풀이: 직선 $AC$는 두 절편이 $6,8$이므로 $\\dfrac{x}{6}+\\dfrac{y}{8}=1$이다. 따라서 $y=8-\\dfrac{4}{3}x$이다. 직사각형의 넓이는 $S=xy=x\\left(8-\\dfrac{4}{3}x\\right)=-\\dfrac{4}{3}(x-3)^2+12$이다. 이 식은 $x=3$일 때 최댓값을 가지며, 이때 $y=8-\\dfrac{4}{3}\\cdot3=4$이다. 따라서 직사각형의 둘레는 $2(x+y)=2(3+4)=14$이다.\n따라서 구하는 값은 $14$이다.",
     "solutionImage": "assets/images/21_순천고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 21의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 21의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "최대 직사각형 BQPR · BQ=3, QR=4",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-10-LINE_EQUATION",
     "subUnit": "직선의 방정식",

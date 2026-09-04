@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -47,7 +47,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "직선의 방정식",
-      "평행선"
+      "평행선",
+      "도형",
+      "직선",
+      "평행"
     ],
     "wide": false,
     "content": "좌표평면 위의 점 $(6,4)$를 지나고, 직선 $x-3y+3=0$에 평행한 직선이 존재한다. 이 직선이 점 $(k,-1)$을 지날 때, $k$의 값은? (단, $k$는 실수) [3.8점]",
@@ -60,10 +63,14 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트]\n평행한 두 직선은 $x$, $y$의 계수가 각각 같다.\n\n구하는 직선의 방정식을 $x-3y+c=0$이라 하자.\n이 직선이 점 $(6,4)$를 지나므로\n$6-3\\times4+c=0$에서 $c=6$이다.\n따라서 직선의 방정식은 $x-3y+6=0$이다.\n점 $(k,-1)$을 대입하면\n$k-3(-1)+6=0$이므로 $k+9=0$, $k=-9$이다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "두 직선은 평행 · A=(6,4), K=(−9,−1), k=−9",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -128,7 +135,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "도형의 이동 문항 4의 핵심 관계를 표시한 해설 도형",
+    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -163,7 +174,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
+        {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -177,7 +188,10 @@ window.questionBank = [
     "tags": [
       "객관식",
       "직선의 방정식",
-      "점과 직선 사이의 거리"
+      "점과 직선 사이의 거리",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "직선 $y=x$ 위의 점 $P(a,b)$와 직선 $5x+12y-4=0$ 사이의 거리가 $1$일 때, $a+b$의 값은? (단, $a,b$는 정수이다.) [4.2점]",
@@ -190,10 +204,14 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트]\n점 $P(a,b)$가 직선 $y=x$ 위에 있으므로 $b=a$를 이용한다.\n\n점 $(a,a)$와 직선 $5x+12y-4=0$ 사이의 거리는\n$\\dfrac{|5a+12a-4|}{\\sqrt{5^2+12^2}}=\\dfrac{|17a-4|}{13}$이다.\n이 거리가 $1$이므로 $|17a-4|=13$이다.\n따라서 $17a-4=13$ 또는 $17a-4=-13$이다.\n첫째 식에서는 $a=1$, 둘째 식에서는 $a=-\\dfrac9{17}$이다.\n$a$는 정수이므로 $a=b=1$이다.\n따라서 $a+b=2$이다.\n\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q06-solution.svg",
+    "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "P=(1,1) · H=(8/13,1/13), 거리=1",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -487,7 +505,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+        {
     "id": 15,
     "level": "상",
     "category": "직선의 방정식",
@@ -502,7 +520,10 @@ window.questionBank = [
       "객관식",
       "직선의 방정식",
       "삼각형의 내심",
-      "점과 직선 사이의 거리"
+      "점과 직선 사이의 거리",
+      "도형",
+      "직선",
+      "거리"
     ],
     "wide": false,
     "content": "세 직선 $x+\\sqrt3y-2=0$, $x-\\sqrt3y+10=0$, $y=2$로 둘러싸인 삼각형의 내심의 좌표를 $(a,b)$라 할 때, $a+b$의 값은? [4.9점]",
@@ -516,11 +537,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트]\n내심에서 삼각형의 세 변까지의 거리는 모두 같다.\n\n내심을 $I(a,b)$라 하자. 삼각형의 내부에서 $b>2$이므로 직선 $y=2$까지의 거리는 $b-2$이다.\n또 두 사선까지의 거리는 각각\n$\\dfrac{2-a-\\sqrt3b}{2}$, $\\dfrac{a-\\sqrt3b+10}{2}$이다.\n따라서\n$\\dfrac{2-a-\\sqrt3b}{2}=b-2$,\n$\\dfrac{a-\\sqrt3b+10}{2}=b-2$이다.\n첫째 식에서 $a=6-(2+\\sqrt3)b$, 둘째 식에서 $a=(2+\\sqrt3)b-14$이다.\n두 식을 같게 놓으면 $20=2(2+\\sqrt3)b$이므로\n$b=\\dfrac{10}{2+\\sqrt3}=20-10\\sqrt3$이다.\n이를 대입하면 $a=-4$이다.\n따라서 $a+b=16-10\\sqrt3$이다.\n\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 15의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "직선의 방정식 문항 15의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageCaption": "세 직선으로 만든 삼각형 · 내심 I=(−4,20−10√3)",
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-02-LINE_EQUATION",
-    "subUnit": "직선의 방정식",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
