@@ -391,8 +391,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트]\n선분의 4등분점 중 $B$에 가장 가까운 점의 내분 비율을 찾는다.\n\n조건 정리\n- 전체 4등분 중 $B$에 가장 가까운 점은 $A$로부터 3, $B$로부터 1의 비율이다.\n\n풀이 과정\n선분 $AB$를 $3:1$로 내분하는 점을 구한다.\n$x = \\frac{3(-5) + 1(3)}{3+1} = -3$\n$y = \\frac{3(-1) + 1(5)}{3+1} = \\frac{2}{4} = \\frac{1}{2}$\n따라서 점의 좌표는 $(-3, \\frac{1}{2})$이다.\n\n결론\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
+    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+    "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

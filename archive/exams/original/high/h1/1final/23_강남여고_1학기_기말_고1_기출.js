@@ -106,7 +106,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "무게중심의 좌표는 세 꼭짓점의 각 좌표를 더한 뒤 3으로 나눈 값이다.\n\n따라서\n$G=\\left(\\dfrac{5+2+(-1)}{3},\\dfrac{2+4+(-3)}{3}\\right)=(2,1)$이다.\n\n$G=(a,b)$이므로 $a=2$, $b=1$이고,\n$a+b=2+1=3$이다.\n\n따라서 정답은 ③이다.\n무게중심은 세 좌표의 평균이므로 두 좌표를 따로 평균 내어 얻은 값을 각각 $a$, $b$로 읽으면 된다.",
+    "solution": "무게중심의 좌표는 세 꼭짓점의 각 좌표를 더한 뒤 3으로 나눈 값이다. 무게중심은 세 좌표의 평균이므로 두 좌표를 따로 평균 내어 얻은 값을 각각 $a$, $b$로 읽으면 된다.\n\n따라서\n$G=\\left(\\dfrac{5+2+(-1)}{3},\\dfrac{2+4+(-3)}{3}\\right)=(2,1)$이다.\n\n$G=(a,b)$이므로 $a=2$, $b=1$이고,\n$a+b=2+1=3$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
     "subUnit": "삼각형의 좌표와 무게중심",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -483,7 +483,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["도형"],
     "wide": false,
     "content": "오른쪽 그림과 같이 $AB=10$, $AD=6$인 직사각형 $ABCD$에서 변 $AD$의 중점에서 출발하여 변 $AB$, $BC$를 거쳐 변 $CD$를 $1:4$로 내분하는 점에 이르는 최단거리는?",
     "choices": [
@@ -572,7 +572,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["도형"],
     "wide": false,
     "content": "다음 정사각형 $ABCD$에 대하여 $\\overline{AD}$의 중점을 $M$이라고 했을 때, $\\overline{MB}$를 $3:2$로 내분한 점, $\\overline{BC}$를 $2:1$로 내분한 점과 점 $D$를 세 꼭짓점으로 하는 삼각형의 넓이를 $S$, 정사각형 $ABCD$의 넓이를 $T$라고 했을 때, $S=kT$를 만족하는 실수 $k$의 값은?",
     "choices": [
@@ -705,9 +705,9 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-09",
     "standardUnit": "평면좌표",
     "standardUnitOrder": 9,
-    "questionType": "단답형",
+    "questionType": "서술형",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["서술형", "도형"],
     "wide": false,
     "content": "$AB=AC$인 이등변삼각형 $ABC$의 한 꼭짓점 $A$를 삼각형 $ABC$의 무게중심 $G$와 일치하도록 접었을 때, 삼각형 $EDG$의 넓이를 $S$라 하자. 그림과 같이 $B(0,0)$, $C(9,3)$, $G(k+1,k)$일 때, $k-S$의 값을 구하는 풀이 과정을 쓰시오.",
     "choices": [],

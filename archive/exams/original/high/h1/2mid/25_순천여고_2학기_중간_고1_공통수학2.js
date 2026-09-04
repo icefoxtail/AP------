@@ -52,8 +52,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 두 점 사이의 거리 공식을 적용한 뒤 이차방정식의 두 근의 합을 구한다.\\n거리 조건에서 $(a-1)^2+\\{3-(1-a)\\}^2=10$이다.\\n따라서 $(a-1)^2+(a+2)^2=10$, 즉 $2a^2+2a-5=0$이다.\\n이 방정식의 두 근의 합은 $-\\dfrac{2}{2}=-1$이다.\\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_EQUATION",
-    "subUnit": "도형의 방정식",
+    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+    "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

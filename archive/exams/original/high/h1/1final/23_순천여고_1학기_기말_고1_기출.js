@@ -403,7 +403,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["도형"],
     "wide": false,
     "content": "좌표평면 위에 세 점 $A(-1,0)$, $B(5,0)$, $C(2,4)$가 있다. 직선 $AB$ 위의 점 $D$에 대하여 점 $D$를 지나고 직선 $BC$에 평행한 직선이 직선 $AC$와 만나는 점을 $E$라 하자. 삼각형 $ABC$와 삼각형 $ADE$의 넓이의 비가 $9:1$이 되도록 하는 모든 점 $D$의 $x$좌표의 곱은? (단, 점 $D$는 점 $A$도 아니고 점 $B$도 아니다.)",
     "choices": [
@@ -499,7 +499,7 @@ window.questionBank = [
     "standardUnitOrder": 9,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": ["도형"],
     "wide": false,
     "content": "좌표평면 위에 세 점 $A(1,4)$, $B(3,-4)$, $C(7,0)$이 있다. $x$축 위의 점 $P$와 $y$축 위의 점 $Q$에 대하여 $BP\\perp CP$일 때, $AQ+QP$의 최솟값은?",
     "choices": [
