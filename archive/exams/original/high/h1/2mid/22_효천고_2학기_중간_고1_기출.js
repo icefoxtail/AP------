@@ -287,7 +287,7 @@ window.questionBank = [
       "진리집합"
     ],
     "wide": false,
-    "content": "전체집합 $U$에서 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자. $q$가 $\\sim p$이기 위한 충분조건이지만 필요조건은 아닐 때, 다음 중 옳지 않은 것은? [4.1점]",
+    "content": "전체집합 $U$에서 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자. $q$가 $\\sim p$이기 위한 충분조건이지만 필요조건은 아닐 때, 다음 중 옳지 않은 것은? (단, $Q\\ne\\varnothing$) [4.1점]",
     "choices": [
       "$P-Q=P$",
       "$P\\cap Q=\\varnothing$",
@@ -296,7 +296,7 @@ window.questionBank = [
       "$P\\cup Q=P$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 충분조건과 필요조건의 관계를 진리집합의 포함 관계로 바꾼다.\n조건 정리: $q$가 $\\sim p$의 충분조건이지만 필요조건은 아니므로 $Q\\subset P^C$이고 $Q\\ne P^C$이다.\n풀이 방향: $P$와 $Q$가 서로소임을 이용하여 각 보기의 집합식을 판단한다.\n정석 풀이: $Q\\subset P^C$이므로 $P\\cap Q=\\varnothing$이다. 따라서 $P-Q=P$, $Q-P=Q$, $P\\subset Q^C$가 성립한다. 반면 $P\\cup Q=P$는 일반적으로 성립하지 않으므로 의도된 오답은 ⑤이다. 다만 $Q=\\varnothing$인 특수한 경우에는 ⑤도 성립하므로, 원문에는 진리집합이 공집합이 아니라는 조건이 빠져 있다.\n따라서 출제 의도에 따른 정답은 ⑤이다.",
+    "solution": "[키포인트] 충분조건과 필요조건의 관계를 진리집합의 포함 관계로 바꾼다.\n조건 정리: $q$가 $\\sim p$의 충분조건이지만 필요조건은 아니므로 $Q\\subset P^C$이고 $Q\\ne P^C$이다. 또한 $Q\\ne\\varnothing$이다.\n풀이 방향: $P$와 $Q$가 서로소임을 이용하여 각 보기의 집합식을 판단한다.\n정석 풀이: $Q\\subset P^C$이므로 $P\\cap Q=\\varnothing$이다. 따라서 $P-Q=P$, $Q-P=Q$, $P\\subset Q^C$가 성립한다. 한편 $P\\cup Q=P$라면 $Q\\subset P$이어야 하는데, $Q\\subset P^C$와 $Q\\ne\\varnothing$에 모순이다. 따라서 ⑤는 항상 옳지 않다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
     "subUnit": "필요조건과 충분조건",
     "subUnitConfidence": "rule_inferred",

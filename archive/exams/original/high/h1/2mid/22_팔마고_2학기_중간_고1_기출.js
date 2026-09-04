@@ -296,7 +296,7 @@ window.questionBank=[
       "복수정답"
     ],
     "wide": false,
-    "content": "전체집합 $U$의 공집합이 아닌 세 부분집합 $A$, $B$, $C$에 대하여 세 명제 $p$, $q$, $r$이 모두 참일 때, 다음 중 항상 옳은 것은? [4.2점]<div class=\"note-box\">$p$ : $A$의 어떤 원소 $x$에 대하여 $x\\notin C$이다.<br>$q$ : $B$의 모든 원소 $x$에 대하여 $x\\notin A$이다.<br>$r$ : $C$의 모든 원소 $x$에 대하여 $x\\in B$이다.</div>",
+    "content": "전체집합 $U$의 공집합이 아닌 세 부분집합 $A$, $B$, $C$에 대하여 세 명제 $p$, $q$, $r$이 모두 참일 때, 다음 중 항상 옳은 것을 모두 고르시오. [4.2점]<div class=\"note-box\">$p$ : $A$의 어떤 원소 $x$에 대하여 $x\\notin C$이다.<br>$q$ : $B$의 모든 원소 $x$에 대하여 $x\\notin A$이다.<br>$r$ : $C$의 모든 원소 $x$에 대하여 $x\\in B$이다.</div>",
     "choices": [
       "$A\\cup C=A$",
       "$B-C=\\varnothing$",
