@@ -16,7 +16,9 @@ const phases = [
   ['Phase 1H infrastructure regression tests', 'test-logic-visual-audit.mjs'],
   ['Phase 1I unseen holdout qualification', 'run-holdout-qualification.mjs'],
   ['Phase 1J qualification render profile', 'run-qualification-render.mjs'],
-  ['Phase 1K qualification report', 'build-qualification-report.mjs']
+  ['Phase 1K qualification report', 'build-qualification-report.mjs'],
+  ['Phase 2A missing visual contract', 'verify-phase2-missing-visual-contract.mjs'],
+  ['Phase 2B production pilot report', 'build-phase2-pilot-report.mjs']
 ];
 
 const results = [];

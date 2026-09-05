@@ -429,7 +429,11 @@ window.questionBank=[
       "12"
     ],
     "answer": "②",
-    "solution": "[키포인트] 명제가 참이라는 조건을 진리집합의 포함관계로 바꾼다.\n조건 정리: $P=[-2,1]\\cup[3,\\infty)$이므로 $P^c=(-\\infty,-2)\\cup(1,3)$이다. $Q=(-\\infty,a)$이고 $R=[b,\\infty)$이다.\n풀이 방향: $\\sim p\\to q$와 $\\sim r\\to\\sim p$를 각각 집합의 포함관계로 나타낸다.\n정석 풀이: $\\sim p\\to q$가 참이려면 $P^c\\subset Q$이어야 한다. $P^c$의 모든 원소가 $a$보다 작으려면 $a\\ge3$이고 최솟값은 $m=3$이다. 또 $\\sim r$의 진리집합은 $(-\\infty,b)$이므로 $(-\\infty,b)\\subset P^c$이어야 한다. 이 구간이 $[-2,1]$과 만나지 않으려면 $b\\le-2$이고 최댓값은 $M=-2$이다. 따라서 $mM=3\\cdot(-2)=-6$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 명제가 참이라는 조건을 진리집합의 포함관계로 바꾼다.\n조건 정리: $P=[-2,1]\\cup[3,\\infty)$이므로 $P^c=(-\\infty,-2)\\cup(1,3)$이다. $Q=(-\\infty,a)$이고 $R=[b,\\infty)$이다.\n풀이 방향: $\\sim p\\to q$와 $\\sim r\\to\\sim p$를 각각 집합의 포함관계로 나타낸다.\n정석 풀이: $\\sim p\\to q$가 참이려면 $P^c\\subset Q$이어야 한다. $P^c$의 모든 원소가 $a$보다 작으려면 $a\\ge3$이고 최솟값은 $m=3$이다. 또 $\\sim r$의 진리집합은 $(-\\infty,b)$이므로 $(-\\infty,b)\\subset P^c$이어야 한다. 이 구간이 $[-2,1]$과 만나지 않으려면 $b\\le-2$이고 최댓값은 $M=-2$이다. 따라서 $mM=3\\cdot(-2)=-6$이다.\n따라서 정답은 ②이다.\n[시각자료 읽기] P=[−2,1]∪[3,∞) Pᶜ=(−∞,−2)∪(1,3) Pᶜ⊆Q=(-∞,a) (−∞,b)⊆Pᶜ",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "명제와 구간 포함",
+    "solutionImageCaption": "P=[−2,1]∪[3,∞) Pᶜ=(−∞,−2)∪(1,3) Pᶜ⊆Q=(-∞,a) (−∞,b)⊆Pᶜ",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",
