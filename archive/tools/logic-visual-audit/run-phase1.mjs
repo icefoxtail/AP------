@@ -14,7 +14,9 @@ const phases = [
   ['Phase 1F structural duplicate gate', 'audit-visual-structure-duplicates.mjs'],
   ['Phase 1G mutation qualification', 'run-mutation-qualification.mjs'],
   ['Phase 1H infrastructure regression tests', 'test-logic-visual-audit.mjs'],
-  ['Phase 1I qualification report', 'build-qualification-report.mjs']
+  ['Phase 1I unseen holdout qualification', 'run-holdout-qualification.mjs'],
+  ['Phase 1J qualification render profile', 'run-qualification-render.mjs'],
+  ['Phase 1K qualification report', 'build-qualification-report.mjs']
 ];
 
 const results = [];

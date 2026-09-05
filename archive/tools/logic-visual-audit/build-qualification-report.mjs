@@ -11,6 +11,8 @@ const denominator = readJson(path.join(root, 'c-denominator.json'));
 const parity = readJson(path.join(root, 'item-semantic-parity.json'));
 const duplicates = readJson(path.join(root, 'structure-duplicates.json'));
 const mutation = readJson(path.join(root, 'mutation-qualification.json'));
+const holdoutRun = fs.existsSync(path.join(root, 'holdout-qualification.json')) ? readJson(path.join(root, 'holdout-qualification.json')) : null;
+const renderRun = fs.existsSync(path.join(root, 'qualification-render.json')) ? readJson(path.join(root, 'qualification-render.json')) : null;
 const calibrationCorpus = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/corpus/calibration/index.json'));
 const holdoutCorpus = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/corpus/holdout/index.json'));
 const detectorMap = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/specs/mutation-expected-detector-map-v1.json'));
@@ -32,7 +34,7 @@ const report = {
     observedExtractionEngineSha: toolSha('lib/visual.mjs'),
     visualGeneratorSha: toolSha('lib/visual.mjs'),
     staticContractToolSha: toolSha('test-logic-visual-audit.mjs'),
-    rendererSemanticProfileSha: sha256('renderer-semantic-profile-v1:static-svg-qualification'),
+    rendererSemanticProfileSha: fs.existsSync(path.join(repoRoot, 'archive/tools/logic-visual-audit/run-qualification-render.mjs')) ? toolSha('run-qualification-render.mjs') : sha256('renderer-semantic-profile-v1:static-svg-qualification'),
     styleCssBundleSha: sha256('style-css-bundle:none-in-artifact-only-v1'),
     factSchemaSha: specSha('logic-visual-fact-schema-v1.json'),
     logicVisualFactCanonicalizationSpecSha: specSha('fact-canonicalization-spec-v1.json'),
@@ -49,13 +51,13 @@ const report = {
   logicVisualReviewedUidSetSha: sha256(parity.results.filter((item) => item.logicVisualItemStatus === 'PASS').map((item) => item.questionUid).sort()),
   overlayCoreMembershipParity: denominator.parity,
   calibration: { pass: calibrationPass, passCount: parity.results.filter((item) => item.expectedStatus === 'PASS' && item.logicVisualItemStatus === 'PASS').length, expectedFailCount: calibrationExpectedFailCount, detectedExpectedFailCount: parity.results.filter((item) => item.expectedStatus === 'FAIL' && item.logicVisualItemStatus === 'FAIL').length, rawSemanticFailCount: parity.failCount },
-  holdout: { status: 'UNSEEN', pass: false, note: 'Holdout is not revealed during calibration pilot.' },
+  holdout: holdoutRun ? { status: holdoutRun.holdoutStatus, pass: holdoutRun.pass, reportSha: holdoutRun.reportSha, caseCount: holdoutRun.results.length, note: holdoutRun.note } : { status: 'UNSEEN', pass: false, note: 'Holdout is not revealed during calibration pilot.' },
   mutation: { pass: mutation.mutationQualificationCurrent === 'PASS', passCount: mutation.passCount, failCount: mutation.failCount, mutationQualificationCurrent: mutation.mutationQualificationCurrent, mutationExpectedDetectorMapSha: mutation.mutationExpectedDetectorMapSha },
-  qualificationRender: { pass: false, status: 'NOT_TESTED', note: 'Semantic qualification render harness remains separate from Common Core D.' },
+  qualificationRender: renderRun ? { pass: renderRun.pass, status: renderRun.pass ? 'PASS' : 'FAIL', renderMode: renderRun.renderMode, artifactCount: renderRun.artifactCount, reportSha: renderRun.reportSha, note: renderRun.note } : { pass: false, status: 'NOT_TESTED', note: 'Semantic qualification render harness remains separate from Common Core D.' },
   falsePassCount: 0,
   falseFailCount: 0,
   structuralDuplicateFailCount: duplicates.failCount,
-  final判定: calibrationPass && mutation.mutationQualificationCurrent === 'PASS' && duplicates.failCount === 0 ? 'WARN — holdout and qualification render remain pending' : 'FAIL — qualification gate unresolved',
+  final判定: calibrationPass && holdoutRun?.pass && mutation.mutationQualificationCurrent === 'PASS' && duplicates.failCount === 0 && renderRun?.pass ? 'PASS — LOGIC VISUAL QUALIFICATION INFRA READY' : calibrationPass && mutation.mutationQualificationCurrent === 'PASS' && duplicates.failCount === 0 ? 'WARN — holdout and qualification render remain pending' : 'FAIL — qualification gate unresolved',
   generatedAt: new Date().toISOString()
 };
 Object.assign(report, {
