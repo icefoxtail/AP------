@@ -513,7 +513,7 @@ def make_final_gangnam_q5() -> None:
     body += tx(54, 205, "= A∩(Bᶜ∪C)", 20, fill="#166534", weight="700")
     body += tx(335, 205, "= A−(B−C)", 20, fill="#166534", weight="700")
     body += line(54, 242, 704, 242, stroke="#e2e8f0")
-    body += pill(54, 270, 260, "정답 보기: A−(B−C)", fill="#dcfce7", stroke="#16a34a", text_fill="#166534")
+    body += pill(54, 270, 260, "동치식: A−(B−C)", fill="#dcfce7", stroke="#16a34a", text_fill="#166534")
     body += tx(354, 293, "A∩(Bᶜ∪C)와 같은 식", 18, fill="#1d4ed8", weight="700")
     save(exam, 5, "문항 5 해설: 집합 연산식의 동치 변형", "문항의 실제 연산식이 A−(B−C)와 같아지는 두 단계 대수 변형", body,
          {"left": "(A−B)∪(A∩C)", "middle": "A∩(Bᶜ∪C)", "matching_choice": "A−(B−C)"})
