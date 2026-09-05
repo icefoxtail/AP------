@@ -29,8 +29,6 @@ const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repoRoot, encodin
 const report = {
   reviewVersion: 'logic-visual-final-independent-review-v1',
   baseSha,
-  head,
-  remoteMain,
   headRemoteParity: head === remoteMain,
   worktreeClean: statusLines.length === 0,
   ruleRoutingPass: preflight.routingStatus === 'PASS',
@@ -73,4 +71,3 @@ function inspectJs(absolutePath) {
   const linkedImagesPass = questions.filter((question) => typeof question.solutionImage === 'string').every((question) => fs.existsSync(path.join(repoRoot, 'archive', question.solutionImage)));
   return { path: path.relative(repoRoot, absolutePath).replaceAll('\\', '/'), pass: solutionPass && linkedImagesPass, questionCount: questions.length, solutionPass, linkedImagesPass };
 }
-
