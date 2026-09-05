@@ -11,7 +11,8 @@
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
-3. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
+3. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+4. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
 5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
 6. `02_PIPELINES/문제해설추출.md`
@@ -44,7 +45,8 @@
 6. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 7. `03_REVIEW/무결성검수.md`
 8. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
-9. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
+9. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+10. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
 
 ## 2. 디렉터리별 역할
 

@@ -8,7 +8,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 7415 bytes | sha256 6352b4f6ad4ca0fa9a45200c35cab63f13c427f04c29461bb27a079e77d8c378
+- 00_RULES_INDEX.md | 7762 bytes | sha256 ab7ed528487fd215df899f48e1af5a41a0ff926963364bc1f25ebba2fd69ece6
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 13480 bytes | sha256 79dea04f6d9a14a0e8757867d0e4fa198bdd5962fc2df0655dfc5d420f0a224d
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 68193 bytes | sha256 e70d5f0a6c9ae2141bcd378c2828c2cd9379e16ba15268dbb44f45686ebaad41
@@ -29,4 +29,5 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 7552 bytes | sha256 03550c7cd9cf076597d0842d0e438bd2badbed6eefd472c7576398a245600cff
 - 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 12188 bytes | sha256 987e848be84fa8fed6b73dc21081f7052cc0bc33efb7d36d37e68fab12b71dc4
 - 04_VISUAL/도형추출.md | 51732 bytes | sha256 46104e98928b54b78b04c4e0c9848067e796aa070e15517653608c97cd75e6e2
+- 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 85952 bytes | sha256 1b75144cff732ecb7333f1487286a2161c8d0016e90a0b0f991899d6c99e6811
