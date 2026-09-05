@@ -570,7 +570,7 @@ window.questionBank=[
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-                    {
+                          {
     "id": 17,
     "level": "중",
     "category": "점과 직선의 거리",

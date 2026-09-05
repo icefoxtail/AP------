@@ -241,7 +241,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-              {
+                    {
     "id": 9,
     "level": "상",
     "category": "직선의 방정식",

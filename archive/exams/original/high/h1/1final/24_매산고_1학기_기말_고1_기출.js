@@ -135,7 +135,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -173,7 +173,7 @@ window.questionBank = [
     "solutionImageCaption": "교점 · 두 점을 지나는 직선 · y절편 Y=(0,7/3)",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 6,
     "level": "중",
     "category": "직선의 방정식",
@@ -345,7 +345,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-              {
+                    {
     "id": 11,
     "level": "상",
     "category": "직선의 방정식",
@@ -454,7 +454,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 14,
     "level": "상",
     "category": "직선의 방정식",

@@ -356,7 +356,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -382,7 +382,7 @@ window.questionBank = [
     "solution": "[키포인트] 주어진 직선의 기울기와 $y$절편의 부호로 $a/b$, $c/b$의 부호를 판단한다.\n조건 정리: 주어진 직선은 기울기가 양수이고 $y$절편이 음수이다.\n풀이 방향: 새 직선의 기울기 $-c/b$와 $y$절편 $-a/b$의 부호를 구한다.\n정석 풀이: $-a/b\\gt0$이므로 $a/b\\lt0$이고, $-c/b\\lt0$이므로 $c/b\\gt0$이다. 새 직선 $cx+by+a=0$의 기울기는 $-c/b\\lt0$이고 $y$절편은 $-a/b\\gt0$이다. 따라서 기울기가 음수이고 $y$절편이 양수인 직선이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q12-solution.svg",
     "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
-    "solutionImageCaption": "원래 y절편은 음수 · 변환 직선의 기울기는 음수",
+    "solutionImageCaption": "원래 직선: 기울기=1, y절편=−2 · 변환 직선: 기울기=−1, y절편=2",
     "solutionImageSize": "full",
     "image": "assets/images/25_제일고_2학기_중간_고1_기출/q12.png",
     "imageSize": "tall",
@@ -423,7 +423,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -461,7 +461,7 @@ window.questionBank = [
     "solutionImageCaption": "수직 관계 · a=1: 기울기 1/2와 −2 · a=3: 수직선과 수평선",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 15,
     "level": "상",
     "category": "직선의 방정식",

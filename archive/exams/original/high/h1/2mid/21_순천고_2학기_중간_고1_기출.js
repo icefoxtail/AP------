@@ -701,7 +701,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-                    {
+                          {
     "id": 21,
     "level": "중",
     "category": "직각삼각형의 최대넓이",

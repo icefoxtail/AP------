@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -72,7 +72,7 @@ window.questionBank = [
     "solutionImageCaption": "기울기=2 · P=(−2,1), y절편=5",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 3,
     "level": "하",
     "category": "직선의 방정식",
@@ -110,7 +110,7 @@ window.questionBank = [
     "solutionImageCaption": "P=(3,−1) · H=(1.2,1.4), 거리=3",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 4,
     "level": "중",
     "category": "직선의 방정식",
@@ -148,7 +148,7 @@ window.questionBank = [
     "solutionImageCaption": "평행 관계 · 두 직선의 기울기=−2 · a=1/2이면 일치하므로 제외",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 5,
     "level": "중",
     "category": "직선의 방정식",
@@ -251,7 +251,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 8,
     "level": "중",
     "category": "직선의 방정식",
@@ -546,7 +546,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",
@@ -587,7 +587,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 18,
     "level": "상",
     "category": "직선의 방정식",
@@ -710,7 +710,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 22,
     "level": "상",
     "category": "직선의 방정식",

@@ -262,7 +262,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 10,
     "level": "중",
     "category": "직선의 방정식",
@@ -327,7 +327,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-              {
+                    {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",
@@ -364,7 +364,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -560,7 +560,7 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 19,
     "level": "중",
     "category": "직선의 방정식",
@@ -590,7 +590,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 20,
     "level": "상",
     "category": "직선의 방정식",

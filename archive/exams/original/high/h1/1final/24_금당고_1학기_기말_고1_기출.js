@@ -84,7 +84,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 4,
     "level": "중",
     "category": "수학(상)",
@@ -119,7 +119,7 @@ window.questionBank = [
     "solutionImageCaption": "기울기=4 · P=(3,2), k=−10",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 5,
     "level": "중",
     "category": "수학(상)",
@@ -155,7 +155,7 @@ window.questionBank = [
     "solutionImageCaption": "거리 · P=(2,3) · 수선의 발 H=(13/5,11/5)",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 6,
     "level": "중",
     "category": "수학(상)",
@@ -311,7 +311,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 11,
     "level": "중",
     "category": "수학(상)",
@@ -407,7 +407,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 14,
     "level": "중",
     "category": "수학(상)",

@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-              {
+                    {
     "id": 2,
     "level": "하",
     "category": "직선의 방정식",
@@ -203,7 +203,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 7,
     "level": "중",
     "category": "직선의 방정식",

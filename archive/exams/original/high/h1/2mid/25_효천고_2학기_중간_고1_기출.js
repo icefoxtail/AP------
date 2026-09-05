@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 2,
     "level": "하",
     "category": "두 직선의 수직 조건",
@@ -200,7 +200,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 7,
     "level": "중",
     "category": "평행한 두 직선 사이의 거리",
@@ -241,7 +241,7 @@ window.questionBank = [
     "solutionImageCaption": "평행 관계 · 두 직선은 평행 · 상수항 차이=5, 거리=√5",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 8,
     "level": "중",
     "category": "점과 직선 사이의 거리",
