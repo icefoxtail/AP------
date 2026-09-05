@@ -20,6 +20,8 @@ This skill is a router only. Do not copy, summarize, merge, or rewrite the rule 
    4. `docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` when the task concerns equations of figures, coordinates, lines, circles, conics, or related geometry explanations
    5. The applicable `UNIT_OVERLAY` under `docs/rules/`, if one exists for the target grade/course/unit. Exclude `docs/rules/90_ARCHIVE/` and do not treat unrelated overlays as applicable.
 
+For H15-SB-01/H15-SB-02 집합·명제 Logic Visual qualification, the applicable candidate overlay is `docs/rules/04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md`. It is qualification-only until its lifecycle evidence promotes it to `ADOPTED`; it has no production canonical or release authority.
+
 3. Apply the task-specific remainder of the read order from `docs/rules/00_RULES_INDEX.md`, including the relevant pipeline and review rules. The engine-level snapshot order is also exposed by `alive/engine/rule_pack.py::RULE_READ_ORDER`.
 4. Before generating or changing an asset, record the effective rule paths and versions in the task evidence/report. A visual task is not started until the manifest entry and working-tree bytes/hash agree for every mandatory file.
 
