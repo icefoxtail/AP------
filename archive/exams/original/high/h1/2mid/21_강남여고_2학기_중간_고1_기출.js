@@ -241,7 +241,11 @@ window.questionBank = [
       "$2ab$, $a=b=0$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 제곱의 차를 직접 전개하고, 곱이 $0$이 되는 조건을 찾는다.\n조건 정리: $a,b\\ge0$이므로 $ab\\ge0$이다.\n풀이 방향: $(a+b)^2$과 $(a-b)^2$을 각각 전개하여 차를 구한다.\n정석 풀이: $(a+b)^2-(a-b)^2=(a^2+2ab+b^2)-(a^2-2ab+b^2)=4ab$이다. $a,b\\ge0$이므로 $4ab\\ge0$이고, 따라서 $(a+b)^2\\ge(a-b)^2$이다. 등호는 $4ab=0$, 즉 $a=0$ 또는 $b=0$일 때 성립한다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 두 제곱의 차를 직접 전개하고, 곱이 $0$이 되는 조건을 찾는다.\n조건 정리: $a,b\\ge0$이므로 $ab\\ge0$이다.\n풀이 방향: $(a+b)^2$과 $(a-b)^2$을 각각 전개하여 차를 구한다.\n정석 풀이: $(a+b)^2-(a-b)^2=(a^2+2ab+b^2)-(a^2-2ab+b^2)=4ab$이다. $a,b\\ge0$이므로 $4ab\\ge0$이고, 따라서 $(a+b)^2\\ge(a-b)^2$이다. 등호는 $4ab=0$, 즉 $a=0$ 또는 $b=0$일 때 성립한다.\n따라서 정답은 ④이다.\n[시각자료 읽기] (a+b)^2-(a-b)^2=4ab 4ab≥0 등호: a=0 또는 b=0",
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "제곱의 차와 등호 조건",
+    "solutionImageCaption": "(a+b)^2-(a-b)^2=4ab 4ab≥0 등호: a=0 또는 b=0",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROOF",
     "subUnit": "증명과 절대부등식",
     "subUnitConfidence": "rule_inferred",

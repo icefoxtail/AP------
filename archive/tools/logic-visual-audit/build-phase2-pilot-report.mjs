@@ -9,6 +9,7 @@ const inventory = readJson(path.join(root, 'reports/target-inventory.json'));
 const denominator = readJson(path.join(root, 'reports/c-denominator.json'));
 const artifacts = Object.values(readJson(path.join(root, 'reports/v2-evidence-freeze.json')).items);
 const qualification = readJson(path.join(root, 'reports/qualification-report.json'));
+const contract = readJson(path.join(root, 'reports/phase2-missing-visual-contract.json'));
 const connector = fs.readFileSync(path.join(repoRoot, 'archive/tools/set-visual-pilot/connect_assets.py'), 'utf8');
 const pilotCases = [...connector.matchAll(/^\s*\(([^\n]+),\s*(\d+)\):/gm)].map((match) => `${match[1]}:q${String(match[2]).padStart(2, '0')}`);
 const targetPaths = new Set();
@@ -31,8 +32,9 @@ const report = {
   requiredVisualMissingCount: missingRequired.length,
   requiredVisualMissingUidSet: missingRequired,
   qualificationInputBundleSha: qualification.qualificationInputBundleSha,
+  missingVisualContract: { pass: contract.pass, passCount: contract.passCount, failCount: contract.failCount, reportSha: contract.reportSha },
   qualification: { calibration: qualification.calibration, holdout: qualification.holdout, mutation: qualification.mutation, render: qualification.qualificationRender },
-  phase2Status: missingRequired.length === 0 && qualification['final判定'].startsWith('PASS') ? 'READY_FOR_FINAL_REVIEW' : 'PILOT_PASS_FULL_SCOPE_PENDING',
+  phase2Status: missingRequired.length === 0 && contract.pass && qualification['final判定'].startsWith('PASS') ? 'READY_FOR_FINAL_REVIEW' : 'PILOT_PASS_FULL_SCOPE_PENDING',
   note: 'This report records the bounded pilot. It does not promote the candidate overlay or claim full-scope production completion while requiredVisualMissingCount is non-zero.'
 };
 report.reportSha = sha256(report);

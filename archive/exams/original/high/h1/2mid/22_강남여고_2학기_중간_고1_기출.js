@@ -383,7 +383,11 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 명제가 참이라는 조건을 진리집합의 포함 관계로 바꾼다.\n조건 정리: $P\\subset Q^c$, $Q^c\\subset R$, $Q\\subset R^c$이다.\n풀이 방향: 세 포함 관계를 결합하여 각 보기의 집합식을 판별한다.\n정석 풀이: $P\\subset Q^c$이므로 $P\\cap Q=\\varnothing$이어서 ㄱ은 참이다. $Q^c\\subset R$이고 $Q\\subset R^c$에서 $R\\subset Q^c$도 얻으므로 $R=Q^c$이다. 따라서 $Q\\cup R=U$이어서 ㄷ은 참이다. 한편 $P\\subset R$이므로 $P\\cap R=P$이며, 이것이 항상 $R$과 같지는 않아 ㄴ은 거짓이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 명제가 참이라는 조건을 진리집합의 포함 관계로 바꾼다.\n조건 정리: $P\\subset Q^c$, $Q^c\\subset R$, $Q\\subset R^c$이다.\n풀이 방향: 세 포함 관계를 결합하여 각 보기의 집합식을 판별한다.\n정석 풀이: $P\\subset Q^c$이므로 $P\\cap Q=\\varnothing$이어서 ㄱ은 참이다. $Q^c\\subset R$이고 $Q\\subset R^c$에서 $R\\subset Q^c$도 얻으므로 $R=Q^c$이다. 따라서 $Q\\cup R=U$이어서 ㄷ은 참이다. 한편 $P\\subset R$이므로 $P\\cap R=P$이며, 이것이 항상 $R$과 같지는 않아 ㄴ은 거짓이다.\n따라서 정답은 ③이다.\n[시각자료 읽기] P⊆Qᶜ Qᶜ⊆R R=Qᶜ Q∪R=U",
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "세 명제의 진리집합",
+    "solutionImageCaption": "P⊆Qᶜ Qᶜ⊆R R=Qᶜ Q∪R=U",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
     "subUnit": "명제와 진리집합",
     "subUnitConfidence": "rule_inferred",
