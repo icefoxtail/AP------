@@ -14,7 +14,8 @@ const artifacts = Object.values(readJson(path.join(root, 'reports/v2-evidence-fr
 const render = readJson(path.join(root, 'reports/qualification-render.json'));
 const phase2Contract = readJson(path.join(root, 'reports/phase2-missing-visual-contract.json'));
 const phase2Report = readJson(path.join(root, 'reports/phase2-pilot-report.json'));
-const statusLines = execFileSync('git', ['-c', 'core.quotepath=false', 'status', '--porcelain=v1', '--untracked-files=all'], { cwd: repoRoot, encoding: 'utf8' }).split(/\r?\n/).filter(Boolean);
+const reviewReportPath = 'archive/tools/logic-visual-audit/reports/final-independent-review.json';
+const statusLines = execFileSync('git', ['-c', 'core.quotepath=false', 'status', '--porcelain=v1', '--untracked-files=all'], { cwd: repoRoot, encoding: 'utf8' }).split(/\r?\n/).filter(Boolean).filter((line) => line.slice(3).replace(/^"|"$/g, '').replaceAll('\\', '/') !== reviewReportPath);
 const changedFiles = execFileSync('git', ['-c', 'core.quotepath=false', 'diff', '--name-only', baseSha, 'HEAD'], { cwd: repoRoot, encoding: 'utf8' }).split(/\r?\n/).filter(Boolean);
 const changedSvgs = changedFiles.filter((file) => file.endsWith('.svg'));
 const changedJs = changedFiles.filter((file) => file.endsWith('.js'));
