@@ -1,0 +1,15 @@
+{
+  "specVersion": "LOGIC_VISUAL_FACT_CANONICALIZATION_v1",
+  "semantics": {
+    "SET": ["expectedRegions", "forcedElements", "forbiddenElements", "freeElements", "requiredLabels"],
+    "SEQUENCE": ["proofSteps", "truthVector", "intervalComponents"],
+    "SORT_BY_KEY": ["proofEdges"],
+    "SORT_BY_KEY_CASE_ID": ["caseRows"]
+  },
+  "invariants": [
+    "set array order does not change canonical hash",
+    "proof step sequence order changes canonical hash",
+    "proof edges are sorted by key",
+    "case rows are sorted by caseId"
+  ]
+}

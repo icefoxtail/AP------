@@ -1,0 +1,487 @@
+{
+  "reportVersion": "logic-visual-item-semantic-parity-v1",
+  "corpusSha": "5a57781c0309ced17b494189006b635abf3413a396bb74a05e9272130d57d61b",
+  "results": [
+    {
+      "caseId": "22-gangnam-q14-good",
+      "questionUid": "22_강남여고_2학기_중간_고1_기출:q14",
+      "label": "KNOWN_GOOD_NUMBER_LINE",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_NUMBER_LINE",
+        "intervalComponents": [
+          {
+            "from": 110,
+            "to": "2",
+            "fromEndpoint": {
+              "kind": "UNMARKED"
+            },
+            "toEndpoint": {
+              "kind": "OPEN"
+            }
+          },
+          {
+            "from": "4",
+            "to": 690,
+            "fromEndpoint": {
+              "kind": "OPEN"
+            },
+            "toEndpoint": {
+              "kind": "UNMARKED"
+            }
+          },
+          {
+            "from": "−1",
+            "to": "4",
+            "fromEndpoint": {
+              "kind": "CLOSED"
+            },
+            "toEndpoint": {
+              "kind": "CLOSED"
+            }
+          }
+        ]
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "d947fd89cd6c5ab82e13aa9fc1068941f78950dbac2171f91bc146c2cc7c0aa3",
+      "observedVisualFactSha": "cdd9c3e3e980a57d00693c898325d563309e939e0e2a9659684005ce15a3f0db",
+      "expectedSemanticSha": "0f67e6970f33e74204dac6ecdc4b01c9746bb4102b1e661f4b63ddf219033590",
+      "observedSemanticSha": "0f67e6970f33e74204dac6ecdc4b01c9746bb4102b1e661f4b63ddf219033590",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "60b912e67cf1f7d7c30214203cab621910f72c3f16fbdca9072ce0095efda4de",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "6d89d415baaf9ad2f443eb74cbf90d4f8168d729906534b6339ee120c604fbb1"
+    },
+    {
+      "caseId": "22-bokseong-q09-good",
+      "questionUid": "22_복성고_2학기_중간_고1_기출:q09",
+      "label": "KNOWN_GOOD_THREE_SET_VENN",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_REGION_VENN_3",
+        "boundaryTopology": [
+          {
+            "cx": 248,
+            "cy": 165,
+            "r": 88
+          },
+          {
+            "cx": 305,
+            "cy": 228,
+            "r": 88
+          },
+          {
+            "cx": 190,
+            "cy": 228,
+            "r": 88
+          }
+        ],
+        "highlightedExpressions": [
+          "B∩C∩Aᶜ"
+        ],
+        "highlightTopology": "clip-mask-highlight"
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "8cbb8da8baef92074a991c449eef8c2a0ac0e551f9fa5afcdc0fff563db171ca",
+      "observedVisualFactSha": "c0ab4ffc76950b890bfbeade219325a74e37985e25b173a86eac59613f4539c6",
+      "expectedSemanticSha": "a4fc475e75537cd1b75d2326f9bea9b77a43597cdd8636f007e36cdc8471a2a2",
+      "observedSemanticSha": "a4fc475e75537cd1b75d2326f9bea9b77a43597cdd8636f007e36cdc8471a2a2",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "c2934ce434d0eff40b48446e4dca3c74f52afd9fb7d8d81b2f39126951edc94e",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "91a806d828256c54111e685bd33319c1e83e57ed50f81bc5057960c8bcca0827"
+    },
+    {
+      "caseId": "22-bokseong-q17-good",
+      "questionUid": "22_복성고_2학기_중간_고1_기출:q17",
+      "label": "KNOWN_GOOD_NUMBER_LINE",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_NUMBER_LINE",
+        "intervalComponents": [
+          {
+            "from": "−3",
+            "to": "5",
+            "fromEndpoint": {
+              "kind": "CLOSED"
+            },
+            "toEndpoint": {
+              "kind": "CLOSED"
+            }
+          },
+          {
+            "from": "−3",
+            "to": "2",
+            "fromEndpoint": {
+              "kind": "CLOSED"
+            },
+            "toEndpoint": {
+              "kind": "CLOSED"
+            }
+          }
+        ]
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "ac847e7dc5b75d392a0041e92c854237326903bbfa81de80c73c3b415284063a",
+      "observedVisualFactSha": "d761a1f0adb61f432f366e3f70b3fd20de948fd18a5bb52ba79f14c60b400438",
+      "expectedSemanticSha": "8c3da4821102d043296c85d3b95ff3d09cbb555a4efe82d97db73312cc71b0b6",
+      "observedSemanticSha": "8c3da4821102d043296c85d3b95ff3d09cbb555a4efe82d97db73312cc71b0b6",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "cf1033a52c8c7e0edff68adce8c9f396132afd83ecc082e095b8d7b75fbf4da9",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "e8903dbf045967c63dc9632b133f26503800297a3fc3d615c0852a8c53946e8f"
+    },
+    {
+      "caseId": "22-hyocheon-q11-good",
+      "questionUid": "22_효천고_2학기_중간_고1_기출:q11",
+      "label": "KNOWN_GOOD_EQUALITY_VENN",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_REGION_VENN_2",
+        "boundaryTopology": [
+          {
+            "cx": 243,
+            "cy": 151,
+            "r": 135
+          },
+          {
+            "cx": 243,
+            "cy": 151,
+            "r": 135
+          }
+        ],
+        "highlightedExpressions": [
+          "A−B=∅ → A⊆B",
+          "B−A=∅ → B⊆A"
+        ],
+        "highlightTopology": "coincident-boundaries"
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "28bafc816d529c5ef651741de05ba6d5e56db72306039af135c839fa25eadaed",
+      "observedVisualFactSha": "c1807ee430fa242460d05f2e0309ab4e9a34fd85c0dea05ffb599d3cc1469df3",
+      "expectedSemanticSha": "3f3b38675f2c36d37ee84253b079ed359d4f507745194e9b1833cdc93b6c101a",
+      "observedSemanticSha": "3f3b38675f2c36d37ee84253b079ed359d4f507745194e9b1833cdc93b6c101a",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "71ed5ade6d4fcb359cb6e9fb9bd52159ead14cfaa5b2d04d9123cd1dd86e065b",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "48e372c9ecbf997368a8fb8e058ef2be36a5f088bc16672c805516ff951e3516"
+    },
+    {
+      "caseId": "22-palma-q18-good",
+      "questionUid": "22_팔마고_2학기_중간_고1_기출:q18",
+      "label": "KNOWN_GOOD_COORDINATE_GRID",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_GRAPH_DEFINED",
+        "pointCount": 8,
+        "axisLabels": [
+          "x",
+          "y"
+        ]
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "4cbd0e9f2ffd6c449a9dadbde611b4c25de06533715f0bbce9a5421ee6765615",
+      "observedVisualFactSha": "4255da929d8e793d9dca6a21fc092d1f8cff49484f7825899cb0c03404ed1dab",
+      "expectedSemanticSha": "01d4559adb3ea9ad50218c92d11dc1dacbce2fd3ec5b3b5e8586859250c1c40a",
+      "observedSemanticSha": "01d4559adb3ea9ad50218c92d11dc1dacbce2fd3ec5b3b5e8586859250c1c40a",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "883b594cf683143d2fe53a422a99849e21c14f186d66cbd7bb0ae04e6a3d779e",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "1ae9ffc6cf2d40e559a36ee43bb9cc209ad7f1d52971e6e85496c87decd28b3b"
+    },
+    {
+      "caseId": "22-palma-q14-bad",
+      "questionUid": "22_팔마고_2학기_중간_고1_기출:q14",
+      "label": "KNOWN_BAD_COMPLEMENT_REGION_INCOMPLETE",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_REGION_VENN_2",
+        "boundaryTopology": [
+          {
+            "cx": 138,
+            "cy": 196,
+            "r": 64
+          },
+          {
+            "cx": 232,
+            "cy": 196,
+            "r": 64
+          }
+        ],
+        "highlightedExpressions": [
+          "U={a,b,c,d,e,f}, A♥B=(A−B)ᶜ∩(B−A)ᶜ",
+          "A∩B"
+        ],
+        "highlightTopology": "same-membership-region-highlight"
+      },
+      "expectedStatus": "FAIL",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "FAIL",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "7863870a0c29272174b17b2fd0981822e973a6aef783af7b846f63753556f994",
+      "observedVisualFactSha": "815a36618045930b6ba24bc33839d60cbef30771f3993cac51d5a89d7807077b",
+      "expectedSemanticSha": "fe32fc3375b72bc6f4351b4b95f9c1add0099ebb538b24768d04c5bc0674035d",
+      "observedSemanticSha": "10736599096c55703d058c208d8b50fd20c2b5e246cf742479b130bb9d5cbe5c",
+      "expectedObservedSemanticParity": "FAIL",
+      "visualStructureFingerprint": "070830302d4dd1c0abf1e718d794e393a3aecaaebe93cbbf330c2e79cfd45268",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "FAIL",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "40823de1cd273bd083f639cf045599850d5c5b335cdfdfcc5a14b4d52d776544"
+    },
+    {
+      "caseId": "22-maesan-q17-bad",
+      "questionUid": "22_매산고_2학기_중간_고1_기출:q17",
+      "label": "KNOWN_BAD_PAIR_INFORMATION_NOT_VISUALIZED",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_CASE_PARTITION",
+        "caseRows": [
+          {
+            "caseId": "a-and-21-minus-a",
+            "complete": true
+          }
+        ]
+      },
+      "expectedStatus": "FAIL",
+      "sourceExists": true,
+      "artifactExists": true,
+      "logicVisualItemStatus": "FAIL",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "a39efc1eebbdfc3ad46350b33d201eba2daace537642c8accd6f7f082532991a",
+      "observedVisualFactSha": "6f57ea5160421bebb1ffbfe81aa14c4e84d238de33279f07056811150f4a34fa",
+      "expectedSemanticSha": "6c2cbf898cb1eda9cbb97da33b6594fabe33ab1e15da60e7c1befc89e6372d74",
+      "observedSemanticSha": "403b19f73299fefa818b3917fa93c97e284c344a344c55f253daf0a68fc69a79",
+      "expectedObservedSemanticParity": "FAIL",
+      "visualStructureFingerprint": "1bb0a10f6dbd6b02c68ce31ba340f3e6ad53df33ee512f8d7e995d83a8865c54",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "FAIL",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "f5080077a843de69dfd0fd1e0ba2db8624b4804f2fb799fbe22199766cf8ba54"
+    },
+    {
+      "caseId": "synthetic-good-force-free",
+      "questionUid": "synthetic:force-free-good",
+      "label": "KNOWN_GOOD_FORCE_FORBID_FREE",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "forcedElements": [
+          "3"
+        ],
+        "forbiddenElements": [
+          "1"
+        ],
+        "freeElements": [
+          "2"
+        ]
+      },
+      "observedFactOverride": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "forcedElements": [
+          "3"
+        ],
+        "forbiddenElements": [
+          "1"
+        ],
+        "freeElements": [
+          "2"
+        ]
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": false,
+      "artifactExists": false,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "f40f964d978a98ee819e051370f797e1c554c9892eadfe78ce1f4093fb15e53a",
+      "observedVisualFactSha": "f40f964d978a98ee819e051370f797e1c554c9892eadfe78ce1f4093fb15e53a",
+      "expectedSemanticSha": "6e649ee6acd028a2e8cb3163840ac2f7f121d54c9ab4e45cdc998e21e4835752",
+      "observedSemanticSha": "6e649ee6acd028a2e8cb3163840ac2f7f121d54c9ab4e45cdc998e21e4835752",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "1bb0a10f6dbd6b02c68ce31ba340f3e6ad53df33ee512f8d7e995d83a8865c54",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "7d8b4a1447f5edade0cfe5265d28107def0a8460b4db91d206beeff7549eeab3"
+    },
+    {
+      "caseId": "synthetic-bad-force-free",
+      "questionUid": "synthetic:force-free-bad",
+      "label": "KNOWN_BAD_FORCE_TO_FREE_SWAP",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "forcedElements": [
+          "3"
+        ],
+        "forbiddenElements": [
+          "1"
+        ],
+        "freeElements": [
+          "2"
+        ]
+      },
+      "observedFactOverride": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "forcedElements": [],
+        "forbiddenElements": [
+          "1"
+        ],
+        "freeElements": [
+          "2",
+          "3"
+        ]
+      },
+      "expectedStatus": "FAIL",
+      "sourceExists": false,
+      "artifactExists": false,
+      "logicVisualItemStatus": "FAIL",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "f40f964d978a98ee819e051370f797e1c554c9892eadfe78ce1f4093fb15e53a",
+      "observedVisualFactSha": "698c138167cbe1fa94bfcac1b93e86c1386082e2f98de039992e40f50180e90c",
+      "expectedSemanticSha": "6e649ee6acd028a2e8cb3163840ac2f7f121d54c9ab4e45cdc998e21e4835752",
+      "observedSemanticSha": "fc9d87a3f3930b586b2f39ae6b829e609ac30c35c702c5a8feb8d06b0a92a504",
+      "expectedObservedSemanticParity": "FAIL",
+      "visualStructureFingerprint": "1bb0a10f6dbd6b02c68ce31ba340f3e6ad53df33ee512f8d7e995d83a8865c54",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "FAIL",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "62398887dfbaf1fe1ef8efa8839ec2f7f8d9683fca00a25da3bc57bcdf6028cb"
+    },
+    {
+      "caseId": "synthetic-good-implication",
+      "questionUid": "synthetic:implication-good",
+      "label": "KNOWN_GOOD_IMPLICATION",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "IMPLICATION_FLOW",
+        "proofEdges": [
+          {
+            "key": "p-to-q",
+            "from": "p",
+            "to": "q",
+            "direction": "FORWARD"
+          }
+        ]
+      },
+      "observedFactOverride": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "IMPLICATION_FLOW",
+        "proofEdges": [
+          {
+            "key": "p-to-q",
+            "from": "p",
+            "to": "q",
+            "direction": "FORWARD"
+          }
+        ]
+      },
+      "expectedStatus": "PASS",
+      "sourceExists": false,
+      "artifactExists": false,
+      "logicVisualItemStatus": "PASS",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "b4a8018a209babefe0f4046c1091b5d5ebe833b4c09c8a2f89a34fe1d1c2dbe2",
+      "observedVisualFactSha": "b4a8018a209babefe0f4046c1091b5d5ebe833b4c09c8a2f89a34fe1d1c2dbe2",
+      "expectedSemanticSha": "9434cd24c819bfc87a6d4b97c93f11c20d9988d06ef2f5cde82ffb7c3aa9db37",
+      "observedSemanticSha": "9434cd24c819bfc87a6d4b97c93f11c20d9988d06ef2f5cde82ffb7c3aa9db37",
+      "expectedObservedSemanticParity": "PASS",
+      "visualStructureFingerprint": "54c8baae2fbd8199662dead4aad0e473775859bfde822f2b4224e67dbc87f8d1",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "PASS",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "3c73b8005bc775f74707a9d854717795b06c0bfec3bac4913cb806b563fc0919"
+    },
+    {
+      "caseId": "synthetic-bad-implication",
+      "questionUid": "synthetic:implication-bad",
+      "label": "KNOWN_BAD_ARROW_REVERSE",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "IMPLICATION_FLOW",
+        "proofEdges": [
+          {
+            "key": "p-to-q",
+            "from": "p",
+            "to": "q",
+            "direction": "FORWARD"
+          }
+        ]
+      },
+      "observedFactOverride": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "visualType": "IMPLICATION_FLOW",
+        "proofEdges": [
+          {
+            "key": "p-to-q",
+            "from": "q",
+            "to": "p",
+            "direction": "REVERSE"
+          }
+        ]
+      },
+      "expectedStatus": "FAIL",
+      "sourceExists": false,
+      "artifactExists": false,
+      "logicVisualItemStatus": "FAIL",
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedLogicalFactSha": "b4a8018a209babefe0f4046c1091b5d5ebe833b4c09c8a2f89a34fe1d1c2dbe2",
+      "observedVisualFactSha": "aada0abffc9a89b268be6fbebc12f93751548bdad1aac10fca21f37a2f72cf79",
+      "expectedSemanticSha": "9434cd24c819bfc87a6d4b97c93f11c20d9988d06ef2f5cde82ffb7c3aa9db37",
+      "observedSemanticSha": "84839f32fcfc9039b809678355aa1922dcb92090c36fb6c1057d31a0621db318",
+      "expectedObservedSemanticParity": "FAIL",
+      "visualStructureFingerprint": "54c8baae2fbd8199662dead4aad0e473775859bfde822f2b4224e67dbc87f8d1",
+      "logicVisualStaticContract": "PASS",
+      "cGate": "FAIL",
+      "dGate": "NOT_TESTED",
+      "evidenceSha": "dedd3f77ec6e32664589249ca12513a08692365329ce2fb2b73210cefde67d16"
+    }
+  ],
+  "passCount": 7,
+  "failCount": 4,
+  "reportSha": "baf69940e8ee2508d7c665ba7b0f94bcc06e5db33329ee9d461d56e39892cdea"
+}

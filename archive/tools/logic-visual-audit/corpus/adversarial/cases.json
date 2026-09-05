@@ -1,0 +1,48 @@
+{
+  "corpusVersion": "logic-visual-adversarial-v1",
+  "cases": [
+    {
+      "mutationId": "venn-intersection-swap",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_3", "boundaryTopology": [ { "cx": 1, "cy": 1, "r": 1 } ], "highlightedExpressions": ["B∩C∩Aᶜ"], "highlightTopology": "clip-mask-highlight" },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_3", "boundaryTopology": [ { "cx": 1, "cy": 1, "r": 1 } ], "highlightedExpressions": ["A∩C∩Bᶜ"], "highlightTopology": "clip-mask-highlight" }
+    },
+    {
+      "mutationId": "venn-complement-region-delete",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_3", "boundaryTopology": [ { "cx": 1, "cy": 1, "r": 1 } ], "highlightedExpressions": ["(A△B)ᶜ"], "highlightTopology": "clip-mask-highlight" },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_REGION_VENN_3", "boundaryTopology": [ { "cx": 1, "cy": 1, "r": 1 } ], "highlightedExpressions": ["A△B"], "highlightTopology": "clip-mask-highlight" }
+    },
+    {
+      "mutationId": "number-line-endpoint-open-close",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_NUMBER_LINE", "intervalComponents": [ { "from": "−1", "to": "2", "fromEndpoint": { "kind": "CLOSED" }, "toEndpoint": { "kind": "OPEN" } } ] },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_NUMBER_LINE", "intervalComponents": [ { "from": "−1", "to": "2", "fromEndpoint": { "kind": "OPEN" }, "toEndpoint": { "kind": "OPEN" } } ] }
+    },
+    {
+      "mutationId": "force-to-free",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_FORCE_FORBID_FREE", "forcedElements": ["2"], "forbiddenElements": ["1"], "freeElements": ["3"] },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_FORCE_FORBID_FREE", "forcedElements": [], "forbiddenElements": ["1"], "freeElements": ["2", "3"] }
+    },
+    {
+      "mutationId": "arrow-direction-reverse",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "IMPLICATION_FLOW", "proofEdges": [ { "key": "p-to-q", "from": "p", "to": "q", "direction": "FORWARD" } ] },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "IMPLICATION_FLOW", "proofEdges": [ { "key": "p-to-q", "from": "q", "to": "p", "direction": "REVERSE" } ] }
+    },
+    {
+      "mutationId": "truth-table-row-delete",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "TRUTH_TABLE", "truthVector": ["T", "F"], "caseRows": [ { "caseId": "pTqT", "complete": true }, { "caseId": "pTqF", "complete": true } ] },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "TRUTH_TABLE", "truthVector": ["T"], "caseRows": [ { "caseId": "pTqT", "complete": true } ] }
+    },
+    {
+      "mutationId": "duplicate-structure-different-fact",
+      "fixturePath": "archive/tools/logic-visual-audit/corpus/adversarial/fixtures/minimal.svg",
+      "sameStructureDifferentSemantic": true,
+      "baseFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_NUMBER_LINE", "intervalComponents": [ { "from": "−1", "to": "2", "fromEndpoint": { "kind": "CLOSED" }, "toEndpoint": { "kind": "OPEN" } } ] },
+      "mutatedFact": { "factSchemaVersion": "LOGIC_VISUAL_FACT_v1", "visualType": "SET_NUMBER_LINE", "intervalComponents": [ { "from": "0", "to": "3", "fromEndpoint": { "kind": "CLOSED" }, "toEndpoint": { "kind": "OPEN" } } ] }
+    }
+  ]
+}
