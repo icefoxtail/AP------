@@ -1158,6 +1158,34 @@ sol 화면 검수는 다음 순서로 수행한다.
 
 정적 검사에서 solution이 비어 있지 않고, DOM에 글자 수가 존재하고, q-num 개수가 맞더라도 학생 화면 판정에서 FAIL이면 최종 FAIL이다. “출력된다”와 “학생이 이해할 수 있다”와 “교육과정 안에서 설명된다”는 별도 조건이다.
 
+### 25.3 학생 노출 좌표 라벨 정밀도 게이트
+
+학생 화면에서 읽는 점·중심·교점·접점 라벨은 Python/JS 계산기의 부동소수점 출력층과
+분리한다. `data-point-x/y`, `cx/cy`, `points`에 정확한 배치용 수치가 남아 있어도,
+그 값의 근삿값을 학생용 `<text>`에 그대로 노출하면 안 된다.
+
+- 계산된 좌표는 검증된 정수·기약분수·근호·기호식으로 표시하거나, 정확한 표현을 확정할 수
+  없으면 점 이름만 표시한다.
+- `0.6667`, `1.3333`, `2.7692`, `4.8284` 같은 계산 근삿값은
+  `STUDENT_DECIMAL_POINT_LABEL_FAIL`로 판정한다. 소수점 자릿수를 늘리거나 줄이는 것은
+  수리로 인정하지 않는다.
+- 원문 자체가 유한소수 좌표를 제시한 경우에만 `SOURCE_DECIMAL_LABEL` 예외를 허용하고,
+  원문 위치와 수학적 의미를 evidence에 기록한다.
+- 정확한 좌표를 본문 또는 핵심 수치 패널에서 확인할 수 있다면 도형의 점 라벨은 이름만
+  표시할 수 있다. 라벨 단순화는 내부 geometry 사실값이나 점 marker를 삭제하는 뜻이 아니다.
+- 정적 검사에서 계산 근삿값 좌표가 하나라도 발견되면 V3와 `GEOMETRY_STYLE_LINT`는 FAIL이며,
+  학생용 `sol` 실제 렌더에서 해당 표기가 사라진 것을 확인하기 전에는 SEAL하지 않는다.
+
+검수 기록에는 다음을 최소한 남긴다.
+
+```text
+STUDENT_DECIMAL_POINT_LABEL_CHECK
+- status: PASS | FAIL | NOT_TESTED
+- failure_count: <integer>
+- source_decimal_exceptions: <empty list or evidence ids>
+- fallback_point_name_count: <integer>
+```
+
 ## 26. 시각 자산과 SVG 판정
 
 시각 자산은 다음 순서로 확인한다.
@@ -1168,7 +1196,9 @@ sol 화면 검수는 다음 순서로 수행한다.
 4. crop이 문항의 도형을 잘라먹거나 다른 문항을 포함하지 않는가.
 5. exam과 sol에서 자산이 의도한 위치에 출력되는가.
 6. SVG의 viewBox, 텍스트, 선, 축, 라벨이 겹치거나 잘리지 않는가.
-7. 해설 전용 SVG라면 solutionImage와 해설 논리가 일치하는가.
+7. 학생용 점·중심·교점·접점 라벨에 계산 근삿값 소수가 없고, 정확한 값 또는 점 이름만
+   표시되는가. 원문 소수 예외는 `SOURCE_DECIMAL_LABEL` evidence와 대조한다.
+8. 해설 전용 SVG라면 solutionImage와 해설 논리가 일치하는가.
 
 위의 교육용 시각화 기본 필수 단원에서는 기준 JS의 단원명과 실제 풀이 구조를 근거로
 해설용 SVG를 기본 생성한다. 단, 실수 범위에서 의미 있는 그래프가 존재하지 않거나 그림이
@@ -1365,6 +1395,10 @@ corrections.json에는 실제 수정한 문항만 넣는다. 수정하지 않은
 archiveFile, archiveSha256, jsQuestionCount, examTitle 중 하나라도 확인되지 않으면 currentStage는 SOURCE_CHECK에 머문다. optionalPdfFile, optionalPdfSha256, optionalPdfPageCount는 PDF가 있을 때만 채운다. PDF가 없다는 이유로 JS의 content·choices·answer·solution 검토를 중단하지 않는다.
 
 ## 34. v1.1 변경 이력
+
+- 학생 화면에 계산기의 부동소수점 근삿값이 점 좌표로 노출되지 않도록
+  `STUDENT_DECIMAL_POINT_LABEL_CHECK`를 추가했다. 정확한 값이 없으면 점 이름만 표시하고,
+  내부 geometry 수치와 학생용 라벨을 분리하며, 원문 유한소수만 evidence 기반 예외로 허용한다.
 
 - 기존 해설이 이전 검수를 통과한 경우를 보존 기준으로 삼고, 증분 보강을 기본값으로 변경했다. `SOLUTION_DELTA_EVIDENCE` 단계와 문항별 전후 비교표를 독립검수 전달 및 최종 SEAL의 필수 근거로 추가했다.
 
