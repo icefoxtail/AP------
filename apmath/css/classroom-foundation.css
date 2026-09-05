@@ -119,6 +119,123 @@
     font-weight: 500;
 }
 
+/* 반별 원내평가 목록: 내부 archive key 대신 사람이 읽는 제목을 안정적으로 담고,
+   좁은 모바일 모달에서는 제목과 관리 영역을 분리한다. */
+.classroom-exam-history-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    padding: 16px;
+    margin-bottom: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.classroom-exam-history-row:hover {
+    background: var(--surface-2);
+}
+
+.classroom-exam-history-row:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.classroom-exam-history-main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.classroom-exam-history-title {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+
+.classroom-exam-history-meta {
+    margin-top: 4px;
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+
+.classroom-exam-history-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 12px;
+}
+
+.classroom-exam-history-average {
+    flex: 0 0 48px;
+    min-width: 48px;
+    text-align: center;
+}
+
+.classroom-exam-history-average-value {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.classroom-exam-history-average-label {
+    margin-top: 4px;
+    color: var(--secondary);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.classroom-exam-history-buttons {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 6px;
+}
+
+.classroom-exam-history-button {
+    min-height: 34px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.classroom-exam-history-button--danger {
+    color: var(--error);
+    background: rgba(var(--error-rgb), 0.08);
+    border: 1px solid rgba(var(--error-rgb), 0.18);
+}
+
+@media (max-width: 600px) {
+    .classroom-exam-history-row {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .classroom-exam-history-actions {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .classroom-exam-history-buttons {
+        margin-left: auto;
+    }
+}
+
 .ap-classroom-row .cls-v4-status {
     font-weight: 500;
 }
