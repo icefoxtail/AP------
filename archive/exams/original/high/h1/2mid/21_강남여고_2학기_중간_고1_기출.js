@@ -660,6 +660,10 @@ window.questionBank = [
     "content": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$가 그림과 같다.\n함수 $g:X\\to X$는 다음 조건을 만족시킨다.\n(가) $g(1)=3$, $g(2)=5$\n(나) $g$의 역함수가 존재한다.\n$(g\\circ f)(4)+(f\\circ g)(4)$의 최댓값은? [4.5점]",
     "image": "assets/images/21_강남여고_2학기_중간_고1_기출/q19.png",
     "imageSize": "large",
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고1_기출/q19.png",
+    "solutionImageAlt": "함수 f의 대응도와 g의 가능한 일대일대응",
+    "solutionImageCaption": "f(1), f(2), f(3), f(4), f(5)의 대응을 원본 대응도에서 읽는다.",
+    "solutionImageSize": "large",
     "choices": [
       "3",
       "5",
@@ -730,6 +734,10 @@ window.questionBank = [
     "content": "그림과 같이 양수 $a$에 대하여 이차함수 $f(x)=x^2-4ax$의 그래프와 직선 $g(x)=\\frac{1}{a}x$가 두 점 $O,A$에서 만난다.\n이차함수 $y=f(x)$의 그래프의 꼭짓점을 $B$라 하고, 선분 $AB$의 중점을 $C$라 하자. 점 $C$에서 $y$축에 내린 수선의 발을 $H$라 할 때, 선분 $CH$의 길이의 최솟값은? (단, $O$는 원점) [5점]",
     "image": "assets/images/21_강남여고_2학기_중간_고1_기출/q21.png",
     "imageSize": "large",
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고1_기출/q21.png",
+    "solutionImageAlt": "이차함수와 직선의 교점 및 꼭짓점 원본 그래프",
+    "solutionImageCaption": "교점 A와 꼭짓점 B의 x좌표로 중점 C의 y축까지 거리를 계산한다.",
+    "solutionImageSize": "large",
     "choices": [
       "$\\sqrt{3}$",
       "2",
@@ -765,6 +773,10 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=4x^2-4x+1$ $(0\\le x\\le1)$에 대하여, $y=f(x)$와 $y=f(f(x))$의 그래프 개형은 각각 다음과 같다.\n이때, 집합 $\\{x\\mid f(f(f(x)))=x,\\ 0\\le x\\le1\\}$의 원소의 개수는? [5점]",
     "image": "assets/images/21_강남여고_2학기_중간_고1_기출/q22.png",
+    "solutionImage": "assets/images/21_강남여고_2학기_중간_고1_기출/q22.png",
+    "solutionImageAlt": "f(x)와 f(f(x))의 원본 그래프 개형",
+    "solutionImageCaption": "합성할 때마다 단조 구간이 두 갈래로 나뉘어 f³(x)=x의 교점을 센다.",
+    "solutionImageSize": "large",
     "choices": [
       "8",
       "10",

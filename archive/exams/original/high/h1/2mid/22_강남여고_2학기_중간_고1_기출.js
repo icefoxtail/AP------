@@ -170,7 +170,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-  {
+    {
     "id": 6,
     "level": "상",
     "category": "마름모",
@@ -188,17 +188,29 @@ window.questionBank = [
       "중점",
       "수직",
       "원문오류",
-      "검토필요"
+      "검토필요",
+      "도형",
+      "좌표"
     ],
     "wide": false,
     "content": "네 점 $A(a,2)$, $B(b,0)$, $C(7,4)$, $D(3,6)$를 꼭짓점으로 하는 사각형 $ABCD$가 마름모가 될 때, $a+b$의 값으로 가능한 것을 모두 고르면? (단, $a>0$) [3.6점]",
-    "choices": ["$3$","$4$","$6$","$11$","$14$"],
+    "choices": [
+      "$3$",
+      "$4$",
+      "$6$",
+      "$11$",
+      "$14$"
+    ],
     "answer": "③, ⑤",
     "solution": "[키포인트] 마름모는 평행사변형이면서 이웃한 두 변의 길이가 같다.\n\n평행사변형의 두 대각선은 서로의 중점을 이등분하므로\n$\\dfrac{a+7}{2}=\\dfrac{b+3}{2}$에서 $b=a+4$이다.\n\n이때\n$AB^2=(b-a)^2+(0-2)^2=4^2+2^2=20$이고,\n$BC^2=(7-b)^2+(4-0)^2=(3-a)^2+16$이다.\n\n마름모이므로 $AB=BC$이고,\n$20=(3-a)^2+16$에서 $(a-3)^2=4$이다.\n따라서 $a=1$ 또는 $a=5$이다.\n\n$b=a+4$이므로 가능한 두 경우는\n$(a,b)=(1,5)$ 또는 $(5,9)$이다. 두 경우 모두 $a>0$을 만족한다.\n따라서 $a+b=6$ 또는 $14$이다.\n\n선지에서 $6$은 ③, $14$는 ⑤이므로 정답은 ③, ⑤이다.",
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q06-solution.svg",
+    "solutionImageAlt": "평면좌표 문항 6의 좌표 관계 해설 도형",
+    "solutionImageCaption": "원문 좌표·거리·내분·무게중심 조건을 좌표평면에 표시한 해설 자료",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -320,7 +332,8 @@ window.questionBank = [
       "집합",
       "합집합",
       "차집합",
-      "부분집합개수"
+      "부분집합개수",
+      "도형"
     ],
     "wide": false,
     "content": "전체집합 $U=\\{x\\mid x$는 $10$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{1,3\\}$, $B=\\{1,4,6,8\\}$에 대하여 $A\\cup X=X$, $(B-A)\\cap X=\\{4,8\\}$을 만족시키는 $U$의 부분집합 $X$의 개수는? [4점]",
@@ -332,7 +345,11 @@ window.questionBank = [
       "$128$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 반드시 포함할 원소, 반드시 제외할 원소, 자유롭게 선택할 원소를 나눈다.\n조건 정리: $U=\\{1,2,\\ldots,10\\}$, $A=\\{1,3\\}$, $B-A=\\{4,6,8\\}$이다.\n풀이 방향: 두 집합 조건으로 $X$의 원소 포함 여부를 정한다.\n정석 풀이: $A\\cup X=X$이므로 $1,3$은 반드시 $X$에 들어간다. $(B-A)\\cap X=\\{4,8\\}$이므로 $4,8$은 들어가고 $6$은 들어가지 않는다. 남은 $2,5,7,9,10$의 다섯 원소는 각각 포함하거나 포함하지 않을 수 있다. 따라서 가능한 $X$는 $2^5=32$개이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 반드시 포함할 원소, 반드시 제외할 원소, 자유롭게 선택할 원소를 나눈다.\n조건 정리: $U=\\{1,2,\\ldots,10\\}$, $A=\\{1,3\\}$, $B-A=\\{4,6,8\\}$이다.\n풀이 방향: 두 집합 조건으로 $X$의 원소 포함 여부를 정한다.\n정석 풀이: $A\\cup X=X$이므로 $1,3$은 반드시 $X$에 들어간다. $(B-A)\\cap X=\\{4,8\\}$이므로 $4,8$은 들어가고 $6$은 들어가지 않는다. 남은 $2,5,7,9,10$의 다섯 원소는 각각 포함하거나 포함하지 않을 수 있다. 따라서 가능한 $X$는 $2^5=32$개이다.\n[시각자료 읽기] 초록 행은 X에 반드시 들어가는 원소, 빨간 행은 반드시 빠지는 6, 파란 행은 자유롭게 선택하는 다섯 원소를 뜻한다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "반드시 포함 {1,3,4,8}, 반드시 제외 {6}, 자유 선택 {2,5,7,9,10}을 구분해 2⁵=32를 세는 상태표",
+    "solutionImageCaption": "U={1,…,10}에서 A∪X=X와 (B−A)∩X={4,8}이 정하는 X의 포함·제외·자유 원소 표",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -466,7 +483,8 @@ window.questionBank = [
       "집합",
       "이차부등식",
       "합집합",
-      "교집합"
+      "교집합",
+      "도형"
     ],
     "wide": false,
     "content": "실수 전체의 집합 $\\mathbb R$의 세 부분집합 $A=\\{x\\mid x^2-6x+8>0\\}$, $B=\\{x\\mid x^2+ax+b\\le0\\}$, $C=\\{x\\mid x^2+2x+4>0\\}$에 대하여 $A\\cup B=C$, $A\\cap B=\\{x\\mid-1\\le x<2\\}$일 때, $ab$의 값은? [4.4점]",
@@ -643,6 +661,10 @@ window.questionBank = [
     "content": "함수 $y=f(x)$의 그래프가 그림과 같을 때, 부등식 $f(f(x))\\le0$을 만족시키는 정수 $x$값의 합은? [5.1점]",
     "image": "assets/images/22_강남여고_2학기_중간_고1_기출/q19.png",
     "imageSize": "large",
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q19.png",
+    "solutionImageAlt": "f(x) 그래프와 f(f(x)) 부등식 판정에 사용하는 원본 그래프",
+    "solutionImageCaption": "f(t)≤0인 입력 구간과 0≤f(x)≤2의 교집합을 그래프에서 읽는다.",
+    "solutionImageSize": "large",
     "choices": [
       "$5$",
       "$6$",
@@ -679,6 +701,10 @@ window.questionBank = [
     "wide": false,
     "content": "양수 $a$에 대하여 이차함수 $f(x)=x^2-2ax$의 그래프와 직선 $g(x)=\\frac1a x$가 두 점 $O,A$에서 만난다. 이차함수의 꼭짓점을 $B$, 선분 $AB$의 중점을 $C$라 하고 $C$에서 $y$축에 내린 수선의 발을 $H$라 할 때, $CH$의 길이의 최솟값은? [5.2점]",
     "image": "assets/images/22_강남여고_2학기_중간_고1_기출/q20.png",
+    "solutionImage": "assets/images/22_강남여고_2학기_중간_고1_기출/q20.png",
+    "solutionImageAlt": "이차함수와 직선의 교점 및 꼭짓점 원본 그래프",
+    "solutionImageCaption": "교점 A와 꼭짓점 B의 x좌표로 중점 C의 y축까지 거리를 계산한다.",
+    "solutionImageSize": "large",
     "choices": [
       "$\\sqrt7$",
       "$\\sqrt6$",

@@ -184,7 +184,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "집합의연산",
-      "차집합"
+      "차집합",
+      "도형"
     ],
     "wide": false,
     "content": "전체집합 $U$의 세 부분집합 $A,B,C$에 대하여 다음 중 집합 $(A-B)\\cup(A\\cap C)$와 같은 집합은? [3.4점]",
@@ -196,7 +197,11 @@ window.questionBank = [
       "$A-(B-C)$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 차집합을 여집합과 교집합으로 바꾸면 식을 한 번에 정리할 수 있다.\n조건 정리: $A-B=A\\cap B^C$이다.\n풀이 방향: 분배법칙으로 $A$를 묶은 뒤 보기의 식과 비교한다.\n정석 풀이: $(A-B)\\cup(A\\cap C)=(A\\cap B^C)\\cup(A\\cap C)=A\\cap(B^C\\cup C)$이다. 한편 $A-(B-C)=A-(B\\cap C^C)=A\\cap(B\\cap C^C)^C=A\\cap(B^C\\cup C)$이다. 따라서 두 집합은 서로 같다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 차집합을 여집합과 교집합으로 바꾸면 식을 한 번에 정리할 수 있다.\n조건 정리: $A-B=A\\cap B^C$이다.\n풀이 방향: 분배법칙으로 $A$를 묶은 뒤 보기의 식과 비교한다.\n정석 풀이: $(A-B)\\cup(A\\cap C)=(A\\cap B^C)\\cup(A\\cap C)=A\\cap(B^C\\cup C)$이다. 한편 $A-(B-C)=A-(B\\cap C^C)=A\\cap(B\\cap C^C)^C=A\\cap(B^C\\cup C)$이다. 따라서 두 집합은 서로 같다.\n[시각자료 읽기] 왼쪽 식을 A∩(Bᶜ∪C)로 정리한 결과가 A−(B−C)의 전개와 같으므로 두 식은 같은 집합이다.\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/22_강남여고_2학기_기말_고1_기출/q05-solution.svg",
+    "solutionImageAlt": "문항의 실제 식 (A−B)∪(A∩C)가 A∩(Bᶜ∪C)를 거쳐 A−(B−C)와 같아지는 변형 흐름",
+    "solutionImageCaption": "세 집합 연산식의 차집합·분배법칙 변형과 다섯 번째 보기 A−(B−C)의 일치를 표시한 도식",
+    "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
     "subUnitConfidence": "category_or_cue_inferred",

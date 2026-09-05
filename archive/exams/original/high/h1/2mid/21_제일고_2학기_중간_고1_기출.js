@@ -597,6 +597,10 @@ window.questionBank=[
     "wide": false,
     "content": "$f(x)=|2x-6|$ $(0\\le x\\le6)$에서 $(f\\circ f)(x)=f(x)$의 모든 실근 합은? [4.9점]",
     "image": "assets/images/21_제일고_2학기_중간_고1_기출/q17.png",
+    "solutionImage": "assets/images/21_제일고_2학기_중간_고1_기출/q17.png",
+    "solutionImageAlt": "절댓값 함수 f와 합성 고정점의 원본 그래프",
+    "solutionImageCaption": "f(x)=|2x−6|의 V자 그래프에서 f의 고정값 2,6을 읽는다.",
+    "solutionImageSize": "large",
     "choices": [
       "5",
       "7",
