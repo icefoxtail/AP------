@@ -1,7 +1,7 @@
 # 고1 직선의 방정식 v2.2 최종 요약
 
 - START_SHA: `92228ab8ed55e1f9e2f1405bd343b392cccc97de`
-- END_SHA: `92228ab8ed55e1f9e2f1405bd343b392cccc97de`
+- END_SHA: `0360c5c8f38cfed12667aaeba49ed07d5b571faa`
 - 검수 기준: 실제 SVG primitive endpoint/circle/grid/axis/text 관측을 authoritative observed fact로 사용하고, PASS 1 source-only → PASS 2 SVG observation-only → PASS 3 parity 순서를 강제
 - 대상: H15-SA-10 63문항 + H22-C2-02 31문항 = 94문항 / 28 JS
 - coverage: 94/94 (1)
