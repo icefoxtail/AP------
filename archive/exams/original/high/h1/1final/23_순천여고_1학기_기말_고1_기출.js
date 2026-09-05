@@ -28,7 +28,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 2,
     "level": "중",
     "category": "수학(상)",
@@ -95,7 +95,7 @@ window.questionBank = [
     "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 4,
     "level": "중",
     "category": "수학(상)",
@@ -311,7 +311,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 11,
     "level": "중",
     "category": "수학(상)",
@@ -379,7 +379,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 13,
     "level": "중",
     "category": "수학(상)",
@@ -638,7 +638,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 21,
     "level": "중",
     "category": "수학(상)",

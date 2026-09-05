@@ -100,7 +100,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 4,
     "level": "중",
     "category": "직선의 방정식",
@@ -140,7 +140,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 5,
     "level": "중",
     "category": "직선의 방정식",
@@ -410,7 +410,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 13,
     "level": "중",
     "category": "직선의 방정식",
@@ -450,7 +450,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",
@@ -555,7 +555,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 17,
     "level": "상",
     "category": "직선의 방정식",
@@ -704,7 +704,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 22,
     "level": "중",
     "category": "직선의 방정식",

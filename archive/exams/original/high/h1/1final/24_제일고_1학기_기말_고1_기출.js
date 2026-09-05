@@ -432,7 +432,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 14,
     "level": "중",
     "category": "직선의 방정식",

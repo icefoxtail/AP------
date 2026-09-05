@@ -314,7 +314,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 10,
     "level": "하",
     "category": "직선의 방정식",
@@ -354,7 +354,7 @@ window.questionBank = [
     "solutionImageCaption": "절편 · 두 점을 지나는 직선 · m=1/2, n=2, mn=1",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 11,
     "level": "상",
     "category": "직선의 방정식",
@@ -397,7 +397,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 12,
     "level": "중",
     "category": "직선의 방정식",

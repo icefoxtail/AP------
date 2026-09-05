@@ -112,7 +112,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 5,
     "level": "하",
     "category": "수학(상)",
@@ -324,7 +324,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 12,
     "level": "상",
     "category": "수학(상)",
@@ -360,7 +360,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 13,
     "level": "중",
     "category": "수학(상)",
@@ -646,7 +646,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 22,
     "level": "상",
     "category": "수학(상)",
@@ -698,7 +698,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
-              {
+                    {
     "id": 24,
     "level": "상",
     "category": "수학(상)",

@@ -1,0 +1,6470 @@
+{
+  "protocol": "고1 직선의 방정식 v2.2 legacy FAIL reclassification",
+  "sourceReport": {
+    "gitRef": "cdce4f08",
+    "status": "HOLD",
+    "failureCount": 62,
+    "holdCount": 4
+  },
+  "currentReport": {
+    "gitSha": "92228ab8ed55e1f9e2f1405bd343b392cccc97de",
+    "status": "PASS",
+    "releaseReady": true,
+    "failureCount": 0,
+    "holdCount": 0
+  },
+  "targetRows": 62,
+  "reclassifiedRows": 62,
+  "classificationCounts": {
+    "A_ACTUAL_SVG_HARD_FAIL_RECHECKED": 19,
+    "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED": 40,
+    "D_OLD_VERIFIER_LIMITATION_OR_GEOMETRY_RECHECKED": 3
+  },
+  "unresolvedFail": 0,
+  "unresolvedHold": 0,
+  "rows": [
+    {
+      "key": "22_금당고_1학기_기말_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "PERPENDICULAR_FOOT_PARITY",
+          "issues": [
+            "EXPECTED_FOOT_POINT_MISSING",
+            "POINT_TO_FOOT_SEGMENT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_금당고_1학기_기말_고1_기출/q13-solution.svg",
+        "sha256": "0fa0ddcfd4e59200cf0b9ac165c3dae6b870e1bb502f99177a79442fdea9c543",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 218.67,
+          "originY": 224.33,
+          "xGridCount": 9,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 218.67,
+              "y": 224.33,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 337.33,
+              "y": 135.33,
+              "valueX": 4,
+              "valueY": 3
+            },
+            {
+              "x": 337.33,
+              "y": 224.33,
+              "valueX": 4,
+              "valueY": 0
+            },
+            {
+              "x": 292.83,
+              "y": 224.33,
+              "valueX": 2.5,
+              "valueY": 0
+            },
+            {
+              "x": 266.13,
+              "y": 188.73,
+              "valueX": 1.6,
+              "valueY": 1.2
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 218.67,
+              "y": 224.33
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": 3.9993259184361323,
+              "y": 2.9996629592180666
+            },
+            "pixel": {
+              "x": 337.33,
+              "y": 135.33
+            },
+            "metadata": {
+              "x": 4,
+              "y": 3
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 3.9993259184361323,
+              "y": 0
+            },
+            "pixel": {
+              "x": 337.33,
+              "y": 224.33
+            },
+            "metadata": {
+              "x": 4,
+              "y": 0
+            }
+          },
+          {
+            "label": "Q",
+            "actual": {
+              "x": 2.499494438827099,
+              "y": 0
+            },
+            "pixel": {
+              "x": 292.83,
+              "y": 224.33
+            },
+            "metadata": {
+              "x": 2.5,
+              "y": 0
+            }
+          },
+          {
+            "label": "I",
+            "actual": {
+              "x": 1.5995955510616795,
+              "y": 1.1998651836872274
+            },
+            "pixel": {
+              "x": 266.13,
+              "y": 188.73
+            },
+            "metadata": {
+              "x": 1.6,
+              "y": 1.2
+            }
+          }
+        ],
+        "segmentCount": 3
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_금당고_1학기_기말_고1_기출.js#19",
+      "questionNo": 19,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 0,
+            "b": 1,
+            "c": -2
+          },
+          "source": "standard-form",
+          "raw": "y-2=0"
+        },
+        {
+          "line": {
+            "a": 4,
+            "b": -3,
+            "c": 2
+          },
+          "source": "standard-form",
+          "raw": "4x-3y+2=0"
+        },
+        {
+          "line": {
+            "a": 3,
+            "b": 4,
+            "c": -15
+          },
+          "source": "standard-form",
+          "raw": "3x+4y-15=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_금당고_1학기_기말_고1_기출/q19-solution.svg",
+        "sha256": "f687713dee471d218568713c271521de4e59186ed11d822d3dd45b2d3d641313",
+        "mapping": {
+          "usable": true,
+          "xScale": 118.66999999999999,
+          "yScale": -118.65543236422297,
+          "originX": 100,
+          "originY": 550.6420848596063,
+          "xGridCount": 4,
+          "yGridCount": 4,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 218.67,
+              "y": 313.33,
+              "valueX": 1,
+              "valueY": 2
+            },
+            {
+              "x": 376.89,
+              "y": 313.33,
+              "valueX": 2.3333,
+              "valueY": 2
+            },
+            {
+              "x": 275.63,
+              "y": 237.39,
+              "valueX": 1.48,
+              "valueY": 2.64
+            },
+            {
+              "x": 281.96,
+              "y": 281.69,
+              "valueX": 1.5333,
+              "valueY": 2.2667
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 1,
+              "y": 2.000010282977661
+            },
+            "pixel": {
+              "x": 218.67,
+              "y": 313.33
+            },
+            "metadata": {
+              "x": 1,
+              "y": 2
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 2.333277155136092,
+              "y": 2.000010282977661
+            },
+            "pixel": {
+              "x": 376.89,
+              "y": 313.33
+            },
+            "metadata": {
+              "x": 2.3333333333333335,
+              "y": 2
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": 1.479986517232662,
+              "y": 2.640014693116218
+            },
+            "pixel": {
+              "x": 275.63,
+              "y": 237.39
+            },
+            "metadata": {
+              "x": 1.48,
+              "y": 2.64
+            }
+          },
+          {
+            "label": "I",
+            "actual": {
+              "x": 1.5333277155136091,
+              "y": 2.266664740928463
+            },
+            "pixel": {
+              "x": 281.96,
+              "y": 281.69
+            },
+            "metadata": {
+              "x": 1.5333333333333334,
+              "y": 2.2666666666666666
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_금당고_1학기_기말_고1_기출.js#20",
+      "questionNo": 20,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "SVG_XML_WELL_FORMED",
+          "issues": [
+            "RAW_LT_IN_TEXT_NODE"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 3,
+            "b": 4,
+            "c": 4
+          },
+          "source": "standard-form",
+          "raw": "3x+4y+4=0"
+        },
+        {
+          "line": {
+            "a": 4,
+            "b": 3,
+            "c": -3
+          },
+          "source": "standard-form",
+          "raw": "4x+3y-3=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_금당고_1학기_기말_고1_기출/q20-solution.svg",
+        "sha256": "996abaa8af9c70c9c64c688a3bd9f2e49b51798d682b26b9b1e7cc99357ab6ef",
+        "mapping": {
+          "usable": true,
+          "xScale": 14.240000000000009,
+          "yScale": -14.240000000000009,
+          "originX": 267.32,
+          "originY": 189.92,
+          "xGridCount": 32,
+          "yGridCount": 26,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 244.94,
+              "y": 311.98,
+              "valueX": -1.5714,
+              "valueY": -8.5714
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "C",
+            "actual": {
+              "x": -1.5716292134831447,
+              "y": -8.571629213483142
+            },
+            "pixel": {
+              "x": 244.94,
+              "y": 311.98
+            },
+            "metadata": {
+              "x": -1.5714285714285714,
+              "y": -8.571428571428571
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_매산고_1학기_기말_고1_기출.js#9",
+      "questionNo": 9,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_매산고_1학기_기말_고1_기출/q09-solution.svg",
+        "sha256": "aa1c19379e083ce899b1da00b49a53ea69e7665c223f1f1865b9d5b61cc63a9b",
+        "mapping": {
+          "usable": true,
+          "xScale": 18.739999999999966,
+          "yScale": -18.739999999999995,
+          "originX": 296.74,
+          "originY": 319.58,
+          "xGridCount": 11,
+          "yGridCount": 20,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 296.74,
+              "y": 319.58,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 240.53,
+              "y": 357.05,
+              "valueX": -3,
+              "valueY": -2
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 296.74,
+              "y": 319.58
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "S",
+            "actual": {
+              "x": -2.9994663820704432,
+              "y": -1.9994663820704395
+            },
+            "pixel": {
+              "x": 240.53,
+              "y": 357.05
+            },
+            "metadata": {
+              "x": -3,
+              "y": -2
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_매산고_1학기_기말_고1_기출.js#15",
+      "questionNo": 15,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": 1,
+            "c": -3
+          },
+          "source": "numeric-constant-form",
+          "raw": "x+y=3"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_매산고_1학기_기말_고1_기출/q15-solution.svg",
+        "sha256": "f104a1ee138507a979ae6f4ab188a009a7108524b931fb56aba48d76ef371d28",
+        "mapping": {
+          "usable": true,
+          "xScale": 44.5,
+          "yScale": -44.5,
+          "originX": 189,
+          "originY": 343,
+          "xGridCount": 9,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 255.75,
+              "y": 276.25,
+              "valueX": 1.5,
+              "valueY": 1.5
+            },
+            {
+              "x": 255.75,
+              "y": 343,
+              "valueX": 1.5,
+              "valueY": 0
+            },
+            {
+              "x": 189,
+              "y": 276.25,
+              "valueX": 0,
+              "valueY": 1.5
+            },
+            {
+              "x": 322.5,
+              "y": 209.5,
+              "valueX": 3,
+              "valueY": 3
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 1.5,
+              "y": 1.5
+            },
+            "pixel": {
+              "x": 255.75,
+              "y": 276.25
+            },
+            "metadata": {
+              "x": 1.5,
+              "y": 1.5
+            }
+          },
+          {
+            "label": "Q",
+            "actual": {
+              "x": 1.5,
+              "y": 0
+            },
+            "pixel": {
+              "x": 255.75,
+              "y": 343
+            },
+            "metadata": {
+              "x": 1.5,
+              "y": 0
+            }
+          },
+          {
+            "label": "R",
+            "actual": {
+              "x": 0,
+              "y": 1.5
+            },
+            "pixel": {
+              "x": 189,
+              "y": 276.25
+            },
+            "metadata": {
+              "x": 0,
+              "y": 1.5
+            }
+          },
+          {
+            "label": "F",
+            "actual": {
+              "x": 3,
+              "y": 3
+            },
+            "pixel": {
+              "x": 322.5,
+              "y": 209.5
+            },
+            "metadata": {
+              "x": 3,
+              "y": 3
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_순천여고_1학기_기말_고1_기출.js#3",
+      "questionNo": 3,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 2,
+            "b": 1,
+            "c": -1
+          },
+          "source": "y-form",
+          "raw": "y=-2x+1"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_순천여고_1학기_기말_고1_기출/q03-solution.svg",
+        "sha256": "e58233a10b7288123ce51db841d3d2197593c4946936e5771e9331b5efd976a6",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 218.67,
+          "originY": 283.67,
+          "xGridCount": 9,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 278,
+              "y": 254,
+              "valueX": 2,
+              "valueY": 1
+            },
+            {
+              "x": 337.33,
+              "y": 372.67,
+              "valueX": 4,
+              "valueY": -3
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 1.9996629592180666,
+              "y": 1.0000000000000009
+            },
+            "pixel": {
+              "x": 278,
+              "y": 254
+            },
+            "metadata": {
+              "x": 2,
+              "y": 1
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 3.9993259184361323,
+              "y": -2.9996629592180666
+            },
+            "pixel": {
+              "x": 337.33,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": 4,
+              "y": -3
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_순천여고_1학기_기말_고1_기출.js#18",
+      "questionNo": 18,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_순천여고_1학기_기말_고1_기출/q18-solution.svg",
+        "sha256": "aa7c22b4109234d20bae2f7a0f2c3bd4038f4ca0a6a31356c1b4d0a4ddc09e79",
+        "mapping": {
+          "usable": true,
+          "xScale": 44.5,
+          "yScale": -44.5,
+          "originX": 300.25,
+          "originY": 343,
+          "xGridCount": 8,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 300.25,
+              "y": 298.5,
+              "valueX": 0,
+              "valueY": 1
+            },
+            {
+              "x": 300.25,
+              "y": 387.5,
+              "valueX": 0,
+              "valueY": -1
+            },
+            {
+              "x": 211.25,
+              "y": 209.5,
+              "valueX": -2,
+              "valueY": 3
+            },
+            {
+              "x": 211.25,
+              "y": 343,
+              "valueX": -2,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 0,
+              "y": 1
+            },
+            "pixel": {
+              "x": 300.25,
+              "y": 298.5
+            },
+            "metadata": {
+              "x": 0,
+              "y": 1
+            }
+          },
+          {
+            "label": "A′",
+            "actual": {
+              "x": 0,
+              "y": -1
+            },
+            "pixel": {
+              "x": 300.25,
+              "y": 387.5
+            },
+            "metadata": {
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": -2,
+              "y": 3
+            },
+            "pixel": {
+              "x": 211.25,
+              "y": 209.5
+            },
+            "metadata": {
+              "x": -2,
+              "y": 3
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": -2,
+              "y": 0
+            },
+            "pixel": {
+              "x": 211.25,
+              "y": 343
+            },
+            "metadata": {
+              "x": -2,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_순천여고_1학기_기말_고1_기출.js#19",
+      "questionNo": 19,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_순천여고_1학기_기말_고1_기출/q19-solution.svg",
+        "sha256": "218212ce02e0afc2b9b3a62af18412e9312745d7d2c5e9cc5d9d211a2d95d64f",
+        "mapping": {
+          "usable": true,
+          "xScale": 71.19999999999999,
+          "yScale": -71.19999999999999,
+          "originX": 206.8,
+          "originY": 289.6,
+          "xGridCount": 7,
+          "yGridCount": 6,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 349.2,
+              "y": 218.4,
+              "valueX": 2,
+              "valueY": 1
+            },
+            {
+              "x": 278,
+              "y": 289.6,
+              "valueX": 1,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 2,
+              "y": 1.0000000000000004
+            },
+            "pixel": {
+              "x": 349.2,
+              "y": 218.4
+            },
+            "metadata": {
+              "x": 2,
+              "y": 1
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 1,
+              "y": 0
+            },
+            "pixel": {
+              "x": 278,
+              "y": 289.6
+            },
+            "metadata": {
+              "x": 1,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_제일고_1학기_기말_고1_기출.js#10",
+      "questionNo": 10,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_제일고_1학기_기말_고1_기출/q10-solution.svg",
+        "sha256": "96506370bfc3e4d56be6285de47e9db07385d898e1cafc7f4cbd3f1d87a2e702",
+        "mapping": {
+          "usable": true,
+          "xScale": 48,
+          "yScale": -48,
+          "originX": 230,
+          "originY": 374,
+          "xGridCount": 11,
+          "yGridCount": 8,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 134,
+              "y": 326,
+              "valueX": -2,
+              "valueY": 1
+            },
+            {
+              "x": 422,
+              "y": 182,
+              "valueX": 4,
+              "valueY": 4
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": -2,
+              "y": 1
+            },
+            "pixel": {
+              "x": 134,
+              "y": 326
+            },
+            "metadata": {
+              "x": -2,
+              "y": 1
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 4,
+              "y": 4
+            },
+            "pixel": {
+              "x": 422,
+              "y": 182
+            },
+            "metadata": {
+              "x": 4,
+              "y": 4
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_제일고_1학기_기말_고1_기출.js#11",
+      "questionNo": 11,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "PERPENDICULAR_FOOT_PARITY",
+          "issues": [
+            "EXPECTED_FOOT_POINT_MISSING",
+            "EXPECTED_FOOT_NOT_ON_TARGET_LINE",
+            "POINT_TO_FOOT_SEGMENT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 2,
+            "b": -1,
+            "c": 0
+          },
+          "source": "standard-form",
+          "raw": "2x-y=0"
+        },
+        {
+          "line": {
+            "a": 3,
+            "b": 2,
+            "c": 7
+          },
+          "source": "standard-form",
+          "raw": "3x+2y+7=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_제일고_1학기_기말_고1_기출/q11-solution.svg",
+        "sha256": "eb811d7a870003e33f656a7448463bb1ddca8693dfb41cabfa0f64f995c164e7",
+        "mapping": {
+          "usable": true,
+          "xScale": 32.360000000000014,
+          "yScale": -32.360000000000014,
+          "originX": 278,
+          "originY": 205.45,
+          "xGridCount": 7,
+          "yGridCount": 12,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 278,
+              "y": 205.45,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 245.64,
+              "y": 270.18,
+              "valueX": -1,
+              "valueY": -2
+            },
+            {
+              "x": 245.64,
+              "y": 270.18,
+              "valueX": -1,
+              "valueY": -2
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 278,
+              "y": 205.45
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": -1,
+              "y": -2.0003090234857845
+            },
+            "pixel": {
+              "x": 245.64,
+              "y": 270.18
+            },
+            "metadata": {
+              "x": -1,
+              "y": -2
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": -1,
+              "y": -2.0003090234857845
+            },
+            "pixel": {
+              "x": 245.64,
+              "y": 270.18
+            },
+            "metadata": {
+              "x": -1,
+              "y": -2
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_팔마고_1학기_기말_고1_기출.js#4",
+      "questionNo": 4,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_팔마고_1학기_기말_고1_기출/q04-solution.svg",
+        "sha256": "e5c24e0a155a697de92f76d6fe0bbfb78aafa5f72659426201357fce024efe0b",
+        "mapping": {
+          "usable": true,
+          "xScale": 27.379999999999995,
+          "yScale": -27.379999999999995,
+          "originX": 305.38,
+          "originY": 212.92,
+          "xGridCount": 11,
+          "yGridCount": 14,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 360.15,
+              "y": 185.54,
+              "valueX": 2,
+              "valueY": 1
+            },
+            {
+              "x": 195.85,
+              "y": 203.79,
+              "valueX": -4,
+              "valueY": 0.3333
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.0003652300949595,
+              "y": 1
+            },
+            "pixel": {
+              "x": 360.15,
+              "y": 185.54
+            },
+            "metadata": {
+              "x": 2,
+              "y": 1
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": -4.00036523009496,
+              "y": 0.3334550766983198
+            },
+            "pixel": {
+              "x": 195.85,
+              "y": 203.79
+            },
+            "metadata": {
+              "x": -4,
+              "y": 0.3333333333333333
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_팔마고_1학기_기말_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": -2,
+            "c": 5
+          },
+          "source": "standard-form",
+          "raw": "x-2y+5=0"
+        },
+        {
+          "line": {
+            "a": 2,
+            "b": 3,
+            "c": -6
+          },
+          "source": "standard-form",
+          "raw": "2x+3y-6=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_팔마고_1학기_기말_고1_기출/q13-solution.svg",
+        "sha256": "ed857999193b0ca6c690f08e64a09ac2b2d9e300946e0262e9102663877e2d8a",
+        "mapping": {
+          "usable": true,
+          "xScale": 50.859999999999985,
+          "yScale": -50.86,
+          "originX": 252.57,
+          "originY": 381.14,
+          "xGridCount": 6,
+          "yGridCount": 8,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 4,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_팔마고_1학기_기말_고1_기출.js#14",
+      "questionNo": 14,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_1_LABEL_DATA_MISMATCH",
+            "LINE_1_LABEL_ENDPOINT_MISMATCH"
+          ]
+        }
+      ],
+      "classification": "D_OLD_VERIFIER_LIMITATION_OR_GEOMETRY_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_팔마고_1학기_기말_고1_기출/q14-solution.svg",
+        "sha256": "1f5a63013cdf97f4dea51756a05c58c9a6bd53d1e27d04d97dc14f9aa7771e9f",
+        "mapping": {
+          "usable": true,
+          "xScale": 39.55000000000004,
+          "yScale": -39.559999999999974,
+          "originX": 297.78,
+          "originY": 352.89,
+          "xGridCount": 8,
+          "yGridCount": 10,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 297.78,
+              "y": 352.89,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 218.67,
+              "y": 273.78,
+              "valueX": -2,
+              "valueY": 2
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 297.78,
+              "y": 352.89
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": -2.0002528445006296,
+              "y": 1.9997472194135506
+            },
+            "pixel": {
+              "x": 218.67,
+              "y": 273.78
+            },
+            "metadata": {
+              "x": -2,
+              "y": 2
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_팔마고_1학기_기말_고1_기출.js#17",
+      "questionNo": 17,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_팔마고_1학기_기말_고1_기출/q17-solution.svg",
+        "sha256": "7e5a378e0f10a01dfc7acd656ca91f9d0b1a1af9b07b5913146c4b3b1f6d4237",
+        "mapping": {
+          "usable": true,
+          "xScale": 6.84999999999998,
+          "yScale": -6.849999999999994,
+          "originX": 250.62,
+          "originY": 404.62,
+          "xGridCount": 17,
+          "yGridCount": 53,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 291.69,
+              "y": 390.92,
+              "valueX": 6,
+              "valueY": 2
+            },
+            {
+              "x": 319.08,
+              "y": 363.54,
+              "valueX": 10,
+              "valueY": 6
+            },
+            {
+              "x": 254.04,
+              "y": 348.13,
+              "valueX": 0.5,
+              "valueY": 8.25
+            },
+            {
+              "x": 291.69,
+              "y": 103.38,
+              "valueX": 6,
+              "valueY": 44
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 5.995620437956221,
+              "y": 2
+            },
+            "pixel": {
+              "x": 291.69,
+              "y": 390.92
+            },
+            "metadata": {
+              "x": 6,
+              "y": 2
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 9.994160583941632,
+              "y": 5.997080291970805
+            },
+            "pixel": {
+              "x": 319.08,
+              "y": 363.54
+            },
+            "metadata": {
+              "x": 10,
+              "y": 6
+            }
+          },
+          {
+            "label": "Pmin",
+            "actual": {
+              "x": 0.4992700729927004,
+              "y": 8.246715328467161
+            },
+            "pixel": {
+              "x": 254.04,
+              "y": 348.13
+            },
+            "metadata": {
+              "x": 0.5,
+              "y": 8.25
+            }
+          },
+          {
+            "label": "Pmax",
+            "actual": {
+              "x": 5.995620437956221,
+              "y": 43.97664233576646
+            },
+            "pixel": {
+              "x": 291.69,
+              "y": 103.38
+            },
+            "metadata": {
+              "x": 6,
+              "y": 44
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_팔마고_1학기_기말_고1_기출.js#22",
+      "questionNo": 22,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_1_LABEL_DATA_MISMATCH",
+            "LINE_1_LABEL_ENDPOINT_MISMATCH",
+            "LINE_2_LABEL_DATA_MISMATCH",
+            "LINE_2_LABEL_ENDPOINT_MISMATCH",
+            "LINE_3_LABEL_DATA_MISMATCH",
+            "LINE_3_LABEL_ENDPOINT_MISMATCH",
+            "SOURCE_EQUATION_MATCH_1/2"
+          ]
+        },
+        {
+          "name": "INTERSECTION_PARITY",
+          "issues": [
+            "INTERSECTION_1_2_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": -1,
+            "c": 3
+          },
+          "source": "standard-form",
+          "raw": "x-y+3=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": 1,
+            "c": -1
+          },
+          "source": "y-form",
+          "raw": "y=-x+1"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_팔마고_1학기_기말_고1_기출/q22-solution.svg",
+        "sha256": "77f1ec335d02ff3b1f705d27d90df552adbef990eef85410649314a1d6117a78",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 292.83,
+          "originY": 372.67,
+          "xGridCount": 8,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 263.17,
+              "y": 313.33,
+              "valueX": -1,
+              "valueY": 2
+            },
+            {
+              "x": 322.5,
+              "y": 372.67,
+              "valueX": 1,
+              "valueY": 0
+            },
+            {
+              "x": 243.39,
+              "y": 372.67,
+              "valueX": -1.6667,
+              "valueY": 0
+            },
+            {
+              "x": 248.33,
+              "y": 357.83,
+              "valueX": -1.5,
+              "valueY": 0.5
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": -0.9996629592180647,
+              "y": 2.0000000000000018
+            },
+            "pixel": {
+              "x": 263.17,
+              "y": 313.33
+            },
+            "metadata": {
+              "x": -1,
+              "y": 2
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 1.0000000000000009,
+              "y": 0
+            },
+            "pixel": {
+              "x": 322.5,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": 1,
+              "y": 0
+            }
+          },
+          {
+            "label": "X",
+            "actual": {
+              "x": -1.6663296258847327,
+              "y": 0
+            },
+            "pixel": {
+              "x": 243.39,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": -1.6666666666666667,
+              "y": 0
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": -1.4998314796090324,
+              "y": 0.5001685203909686
+            },
+            "pixel": {
+              "x": 248.33,
+              "y": 357.83
+            },
+            "metadata": {
+              "x": -1.5,
+              "y": 0.5
+            }
+          }
+        ],
+        "segmentCount": 3
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_효천고_1학기_기말_고1_기출.js#16",
+      "questionNo": 16,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 2,
+            "b": 3,
+            "c": 3
+          },
+          "source": "standard-form",
+          "raw": "2x+3y+3=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/22_효천고_1학기_기말_고1_기출/q16-solution.svg",
+        "sha256": "2a62171f1b81819ab092259a2e723569f6b7a139cdeb6cfb570af95cf2507289",
+        "mapping": {
+          "usable": true,
+          "xScale": 32.360000000000014,
+          "yScale": -32.360000000000014,
+          "originX": 180.91,
+          "originY": 173.09,
+          "xGridCount": 11,
+          "yGridCount": 12,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 375.09,
+              "y": 334.91,
+              "valueX": 6,
+              "valueY": -5
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": 6.000618046971566,
+              "y": -5.000618046971568
+            },
+            "pixel": {
+              "x": 375.09,
+              "y": 334.91
+            },
+            "metadata": {
+              "x": 6,
+              "y": -5
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_강남여고_1학기_기말_고1_기출.js#12",
+      "questionNo": 12,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": 2,
+            "c": -3
+          },
+          "source": "numeric-constant-form",
+          "raw": "x+2y=3"
+        },
+        {
+          "line": {
+            "a": 4,
+            "b": -3,
+            "c": -6
+          },
+          "source": "numeric-constant-form",
+          "raw": "4x-3y=6"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_강남여고_1학기_기말_고1_기출/q12-solution.svg",
+        "sha256": "7301b04df34a4f14c1d4c8b21bdd3b86eb17a1f49ded5bb2801541e668a2c20b",
+        "mapping": {
+          "usable": true,
+          "xScale": 32.360000000000014,
+          "yScale": -32.360000000000014,
+          "originX": 261.82,
+          "originY": 302.55,
+          "xGridCount": 6,
+          "yGridCount": 12,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 4,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_강남여고_1학기_기말_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 2,
+            "b": -1,
+            "c": 10
+          },
+          "source": "standard-form",
+          "raw": "2x-y+10=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_강남여고_1학기_기말_고1_기출/q13-solution.svg",
+        "sha256": "2c9b94bfc9dd115e65ad4faf5f80cd5f204c5fcc85dbdd44f026085274dbf9f6",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 337.33,
+          "originY": 313.33,
+          "xGridCount": 13,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 278,
+              "y": 283.67,
+              "valueX": -2,
+              "valueY": 1
+            },
+            {
+              "x": 218.67,
+              "y": 254,
+              "valueX": -4,
+              "valueY": 2
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": -1.9996629592180657,
+              "y": 0.9996629592180647
+            },
+            "pixel": {
+              "x": 278,
+              "y": 283.67
+            },
+            "metadata": {
+              "x": -2,
+              "y": 1
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": -3.9993259184361323,
+              "y": 1.9996629592180657
+            },
+            "pixel": {
+              "x": 218.67,
+              "y": 254
+            },
+            "metadata": {
+              "x": -4,
+              "y": 2
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_강남여고_1학기_기말_고1_기출.js#24",
+      "questionNo": 24,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_PERPENDICULAR_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_강남여고_1학기_기말_고1_기출/q24-solution.svg",
+        "sha256": "abbf41fc506c70a44491b8924fb796c06bc3dd1d98df5ad979cfad60cc2a912e",
+        "mapping": {
+          "usable": true,
+          "xScale": 25.430000000000007,
+          "yScale": -25.430000000000007,
+          "originX": 303.43,
+          "originY": 228.57,
+          "xGridCount": 13,
+          "yGridCount": 15,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 303.43,
+              "y": 177.71,
+              "valueX": 0,
+              "valueY": 2
+            },
+            {
+              "x": 303.43,
+              "y": 241.29,
+              "valueX": 0,
+              "valueY": -0.5
+            }
+          ]
+        },
+        "lineCount": 6,
+        "points": [
+          {
+            "label": "V₁",
+            "actual": {
+              "x": 0,
+              "y": 1.999999999999999
+            },
+            "pixel": {
+              "x": 303.43,
+              "y": 177.71
+            },
+            "metadata": {
+              "x": 0,
+              "y": 2
+            }
+          },
+          {
+            "label": "V₂",
+            "actual": {
+              "x": 0,
+              "y": -0.5001966181675185
+            },
+            "pixel": {
+              "x": 303.43,
+              "y": 241.29
+            },
+            "metadata": {
+              "x": 0,
+              "y": -0.5
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_금당고_1학기_기말_고1_기출.js#5",
+      "questionNo": 5,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": -2,
+            "b": 1,
+            "c": -4
+          },
+          "source": "y-form",
+          "raw": "y=2x+4"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_금당고_1학기_기말_고1_기출/q05-solution.svg",
+        "sha256": "1e80afbab310f8d220552474f12efff501d08a910d2d07ed1910526588fc8277",
+        "mapping": {
+          "usable": true,
+          "xScale": 32.360000000000014,
+          "yScale": -32.360000000000014,
+          "originX": 261.82,
+          "originY": 334.91,
+          "xGridCount": 6,
+          "yGridCount": 12,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 294.18,
+              "y": 302.55,
+              "valueX": 1,
+              "valueY": 1
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 1,
+              "y": 1
+            },
+            "pixel": {
+              "x": 294.18,
+              "y": 302.55
+            },
+            "metadata": {
+              "x": 1,
+              "y": 1
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_금당고_1학기_기말_고1_기출.js#7",
+      "questionNo": 7,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERCEPT_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_금당고_1학기_기말_고1_기출/q07-solution.svg",
+        "sha256": "d064d508cfbda4159276fef08016f7040acd840a2fd18cf3c3e68ab99cf91834",
+        "mapping": {
+          "usable": true,
+          "xScale": 59.33000000000001,
+          "yScale": -59.33000000000001,
+          "originX": 218.67,
+          "originY": 372.67,
+          "xGridCount": 9,
+          "yGridCount": 7,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 159.33,
+              "y": 372.67,
+              "valueX": -1,
+              "valueY": 0
+            },
+            {
+              "x": 278,
+              "y": 135.33,
+              "valueX": 1,
+              "valueY": 4
+            },
+            {
+              "x": 218.67,
+              "y": 254,
+              "valueX": 0,
+              "valueY": 2
+            },
+            {
+              "x": 456,
+              "y": 372.67,
+              "valueX": 4,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": -1.0001685487948755,
+              "y": 0
+            },
+            "pixel": {
+              "x": 159.33,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": -1,
+              "y": 0
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 1,
+              "y": 4.000337097589751
+            },
+            "pixel": {
+              "x": 278,
+              "y": 135.33
+            },
+            "metadata": {
+              "x": 1,
+              "y": 4
+            }
+          },
+          {
+            "label": "M",
+            "actual": {
+              "x": 0,
+              "y": 2.000168548794876
+            },
+            "pixel": {
+              "x": 218.67,
+              "y": 254
+            },
+            "metadata": {
+              "x": 0,
+              "y": 2
+            }
+          },
+          {
+            "label": "X",
+            "actual": {
+              "x": 4.000168548794876,
+              "y": 0
+            },
+            "pixel": {
+              "x": 456,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": 4,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_매산고_1학기_기말_고1_기출.js#7",
+      "questionNo": 7,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_PERPENDICULAR_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_매산고_1학기_기말_고1_기출/q07-solution.svg",
+        "sha256": "a0dd754cf6a5812b5f462af877fd45f873c9c8d563fab08ae625f7bbab34582e",
+        "mapping": {
+          "usable": true,
+          "xScale": 39.55499999999999,
+          "yScale": -39.559999999999974,
+          "originX": 317.56,
+          "originY": 313.33,
+          "xGridCount": 9,
+          "yGridCount": 10,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 357.11,
+              "y": 155.11,
+              "valueX": 1,
+              "valueY": 4
+            },
+            {
+              "x": 198.89,
+              "y": 234.22,
+              "valueX": -3,
+              "valueY": 2
+            },
+            {
+              "x": 278,
+              "y": 194.67,
+              "valueX": -1,
+              "valueY": 3
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 0.9998735937302495,
+              "y": 3.9994944388271
+            },
+            "pixel": {
+              "x": 357.11,
+              "y": 155.11
+            },
+            "metadata": {
+              "x": 1,
+              "y": 4
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": -3.000126406269752,
+              "y": 1.99974721941355
+            },
+            "pixel": {
+              "x": 198.89,
+              "y": 234.22
+            },
+            "metadata": {
+              "x": -3,
+              "y": 2
+            }
+          },
+          {
+            "label": "M",
+            "actual": {
+              "x": -1.0001264062697512,
+              "y": 2.9994944388271
+            },
+            "pixel": {
+              "x": 278,
+              "y": 194.67
+            },
+            "metadata": {
+              "x": -1,
+              "y": 3
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_복성고_1학기_기말_고1_기출.js#4",
+      "questionNo": 4,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "LINE_1_ZERO_OR_HIDDEN"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_복성고_1학기_기말_고1_기출/q04-solution.svg",
+        "sha256": "fbe28b7ddbf816912042e04db2b0a3aa5fc7a8c41826ca2d0707130a3ab5cd6b",
+        "mapping": {
+          "usable": true,
+          "xScale": 39.559999999999945,
+          "yScale": -39.559999999999974,
+          "originX": 179.11,
+          "originY": 313.33,
+          "xGridCount": 10,
+          "yGridCount": 10,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 258.22,
+              "y": 273.78,
+              "valueX": 2,
+              "valueY": 1
+            },
+            {
+              "x": 376.89,
+              "y": 155.11,
+              "valueX": 5,
+              "valueY": 4
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 1.9997472194135522,
+              "y": 0.9997472194135499
+            },
+            "pixel": {
+              "x": 258.22,
+              "y": 273.78
+            },
+            "metadata": {
+              "x": 2,
+              "y": 1
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 4.999494438827104,
+              "y": 3.9994944388271
+            },
+            "pixel": {
+              "x": 376.89,
+              "y": 155.11
+            },
+            "metadata": {
+              "x": 5,
+              "y": 4
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_복성고_1학기_기말_고1_기출.js#5",
+      "questionNo": 5,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "INTERCEPT_PARITY",
+          "issues": [
+            "SOURCE_LINE_FOR_INTERCEPT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 0.5,
+            "b": 1,
+            "c": 0
+          },
+          "source": "y-form",
+          "raw": "y=-(1)/(2)x"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_복성고_1학기_기말_고1_기출/q05-solution.svg",
+        "sha256": "e2293bbc0c020ba7d9467c2c377a3ac519819105eee5b2695647f7fbfa674664",
+        "mapping": {
+          "usable": true,
+          "xScale": 39.559999999999945,
+          "yScale": -39.559999999999974,
+          "originX": 258.22,
+          "originY": 352.89,
+          "xGridCount": 6,
+          "yGridCount": 10,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 297.78,
+              "y": 155.11,
+              "valueX": 1,
+              "valueY": 5
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 1,
+              "y": 4.9994944388271
+            },
+            "pixel": {
+              "x": 297.78,
+              "y": 155.11
+            },
+            "metadata": {
+              "x": 1,
+              "y": 5
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_복성고_1학기_기말_고1_기출.js#11",
+      "questionNo": 11,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_1/2"
+          ]
+        },
+        {
+          "name": "INTERSECTION_PARITY",
+          "issues": [
+            "INTERSECTION_1_2_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": 1,
+            "c": -6
+          },
+          "source": "standard-form",
+          "raw": "x+y-6=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": -1,
+            "c": -6
+          },
+          "source": "standard-form",
+          "raw": "x-y-6=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_복성고_1학기_기말_고1_기출/q11-solution.svg",
+        "sha256": "9aee627a11f21b5d7184462a129a8a9e5ea56d203902b490ebf207e44497a3ba",
+        "mapping": {
+          "usable": true,
+          "xScale": 19.779999999999987,
+          "yScale": -19.78,
+          "originX": 218.67,
+          "originY": 254,
+          "xGridCount": 13,
+          "yGridCount": 19,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 337.33,
+              "y": 254,
+              "valueX": 6,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 5,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": 5.9989888776542,
+              "y": 0
+            },
+            "pixel": {
+              "x": 337.33,
+              "y": 254
+            },
+            "metadata": {
+              "x": 6,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_순천여고_1학기_기말_고1_기출.js#4",
+      "questionNo": 4,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "INTERCEPT_PARITY",
+          "issues": [
+            "SOURCE_LINE_FOR_INTERCEPT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_순천여고_1학기_기말_고1_기출/q04-solution.svg",
+        "sha256": "bb6e52eb5b5abe21924b7423c5ad0a0240e5a74bc0317d66d7f0d1b3373903d0",
+        "mapping": {
+          "usable": true,
+          "xScale": 13.689999999999998,
+          "yScale": -13.689999999999998,
+          "originX": 271.15,
+          "originY": 281.38,
+          "xGridCount": 10,
+          "yGridCount": 27,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 3,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_순천여고_1학기_기말_고1_기출.js#11",
+      "questionNo": 11,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_순천여고_1학기_기말_고1_기출/q11-solution.svg",
+        "sha256": "93dfc30b5851166872e1cc45e009591694cd01d2a743638f2a553da0547f45b9",
+        "mapping": {
+          "usable": true,
+          "xScale": 35.599999999999994,
+          "yScale": -35.599999999999994,
+          "originX": 278,
+          "originY": 254,
+          "xGridCount": 9,
+          "yGridCount": 11,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 242.4,
+              "y": 147.2,
+              "valueX": -1,
+              "valueY": 3
+            },
+            {
+              "x": 349.2,
+              "y": 360.8,
+              "valueX": 2,
+              "valueY": -3
+            },
+            {
+              "x": 313.6,
+              "y": 289.6,
+              "valueX": 1,
+              "valueY": -1
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": -1,
+              "y": 3.000000000000001
+            },
+            "pixel": {
+              "x": 242.4,
+              "y": 147.2
+            },
+            "metadata": {
+              "x": -1,
+              "y": 3
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 2,
+              "y": -3.000000000000001
+            },
+            "pixel": {
+              "x": 349.2,
+              "y": 360.8
+            },
+            "metadata": {
+              "x": 2,
+              "y": -3
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": 1.0000000000000009,
+              "y": -1.0000000000000009
+            },
+            "pixel": {
+              "x": 313.6,
+              "y": 289.6
+            },
+            "metadata": {
+              "x": 1,
+              "y": -1
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_순천여고_1학기_기말_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_순천여고_1학기_기말_고1_기출/q13-solution.svg",
+        "sha256": "affbdc1d650bbd884b1b0df47097b73acc55853b825135f34a2b9132f4ba7451",
+        "mapping": {
+          "usable": true,
+          "xScale": 71.19999999999999,
+          "yScale": -71.19999999999999,
+          "originX": 242.4,
+          "originY": 218.4,
+          "xGridCount": 6,
+          "yGridCount": 6,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 242.4,
+              "y": 218.4,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 313.6,
+              "y": 218.4,
+              "valueX": 1,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 242.4,
+              "y": 218.4
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 1.0000000000000004,
+              "y": 0
+            },
+            "pixel": {
+              "x": 313.6,
+              "y": 218.4
+            },
+            "metadata": {
+              "x": 1,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_제일고_1학기_기말_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_2/3"
+          ]
+        },
+        {
+          "name": "INTERSECTION_PARITY",
+          "issues": [
+            "INTERSECTION_1_3_MISMATCH",
+            "INTERSECTION_2_3_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 2,
+            "b": 3,
+            "c": -1
+          },
+          "source": "standard-form",
+          "raw": "2x+3y-1=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": -1,
+            "c": -3
+          },
+          "source": "standard-form",
+          "raw": "x-y-3=0"
+        },
+        {
+          "line": {
+            "a": 3,
+            "b": 1,
+            "c": 5
+          },
+          "source": "standard-form",
+          "raw": "3x+y+5=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": -3,
+            "c": -5
+          },
+          "source": "content-perpendicular-through-intersection",
+          "raw": "x-3y-5=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_제일고_1학기_기말_고1_기출/q13-solution.svg",
+        "sha256": "f4fb563c48fe308f7439dd498fc3af4d34d2025e2ee7db0f9805bf9bf5ab3c24",
+        "mapping": {
+          "usable": true,
+          "xScale": 35.599999999999994,
+          "yScale": -35.599999999999994,
+          "originX": 242.4,
+          "originY": 254,
+          "xGridCount": 11,
+          "yGridCount": 11,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 313.6,
+              "y": 289.6,
+              "valueX": 2,
+              "valueY": -1
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.000000000000001,
+              "y": -1.0000000000000009
+            },
+            "pixel": {
+              "x": 313.6,
+              "y": 289.6
+            },
+            "metadata": {
+              "x": 2,
+              "y": -1
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "기준 직선 3x+y+5=0과 결과 직선 x-3y-5=0, A=(2,-1), 기울기 -3/1/3을 visible SVG에 반영",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_팔마고_1학기_기말_고1_기출.js#4",
+      "questionNo": 4,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_팔마고_1학기_기말_고1_기출/q04-solution.svg",
+        "sha256": "5882b766c6f399cba948412fd8b980e4ff0ad86202619096af5d25e823858563",
+        "mapping": {
+          "usable": true,
+          "xScale": 59.33000000000001,
+          "yScale": -59.33000000000001,
+          "originX": 248.33,
+          "originY": 194.67,
+          "xGridCount": 6,
+          "yGridCount": 7,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 2,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_팔마고_1학기_기말_고1_기출.js#5",
+      "questionNo": 5,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_PERPENDICULAR_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": 2,
+            "c": -3
+          },
+          "source": "standard-form",
+          "raw": "x+2y-3=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": 3,
+            "c": 1
+          },
+          "source": "standard-form",
+          "raw": "x+3y+1=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_팔마고_1학기_기말_고1_기출/q05-solution.svg",
+        "sha256": "e6da03b0971a50e635426e78b51452e13f233bf0640455a4da6c1e912f8b0690",
+        "mapping": {
+          "usable": true,
+          "xScale": 35.599999999999994,
+          "yScale": -35.599999999999994,
+          "originX": 260.2,
+          "originY": 325.2,
+          "xGridCount": 6,
+          "yGridCount": 11,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 4,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_팔마고_1학기_기말_고1_기출.js#17",
+      "questionNo": 17,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_2_LABEL_DATA_MISMATCH",
+            "LINE_2_LABEL_ENDPOINT_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/23_팔마고_1학기_기말_고1_기출/q17-solution.svg",
+        "sha256": "152bbb14d24aa30d223a371d516e1f54a24616bb4e1a9fbf5f3096be7a97ec98",
+        "mapping": {
+          "usable": true,
+          "xScale": 12.710000000000008,
+          "yScale": -12.710000000000008,
+          "originX": 214.43,
+          "originY": 343,
+          "xGridCount": 19,
+          "yGridCount": 29,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 278,
+              "y": 254,
+              "valueX": 5,
+              "valueY": 7
+            },
+            {
+              "x": 252.57,
+              "y": 279.43,
+              "valueX": 3,
+              "valueY": 5
+            },
+            {
+              "x": 341.57,
+              "y": 381.14,
+              "valueX": 10,
+              "valueY": -3
+            },
+            {
+              "x": 214.43,
+              "y": 317.57,
+              "valueX": 0,
+              "valueY": 2
+            },
+            {
+              "x": 303.43,
+              "y": 304.86,
+              "valueX": 7,
+              "valueY": 3
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 5.001573564122734,
+              "y": 7.002360346184102
+            },
+            "pixel": {
+              "x": 278,
+              "y": 254
+            },
+            "metadata": {
+              "x": 5,
+              "y": 7
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 3.000786782061366,
+              "y": 5.001573564122734
+            },
+            "pixel": {
+              "x": 252.57,
+              "y": 279.43
+            },
+            "metadata": {
+              "x": 3,
+              "y": 5
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": 10.003147128245468,
+              "y": -3.000786782061366
+            },
+            "pixel": {
+              "x": 341.57,
+              "y": 381.14
+            },
+            "metadata": {
+              "x": 10,
+              "y": -3
+            }
+          },
+          {
+            "label": "Q",
+            "actual": {
+              "x": 0,
+              "y": 2.0007867820613683
+            },
+            "pixel": {
+              "x": 214.43,
+              "y": 317.57
+            },
+            "metadata": {
+              "x": 0,
+              "y": 2
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": 7.002360346184102,
+              "y": 3.000786782061366
+            },
+            "pixel": {
+              "x": 303.43,
+              "y": 304.86
+            },
+            "metadata": {
+              "x": 7,
+              "y": 3
+            }
+          }
+        ],
+        "segmentCount": 3
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_팔마고_1학기_기말_고1_기출.js#18",
+      "questionNo": 18,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_1/3"
+          ]
+        },
+        {
+          "name": "INTERSECTION_PARITY",
+          "issues": [
+            "INTERSECTION_1_2_MISMATCH",
+            "INTERSECTION_1_3_MISMATCH",
+            "INTERSECTION_2_3_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": 2,
+            "c": -1
+          },
+          "source": "standard-form",
+          "raw": "x+2y-1=0"
+        },
+        {
+          "line": {
+            "a": 2,
+            "b": -1,
+            "c": -2
+          },
+          "source": "standard-form",
+          "raw": "2x-y-2=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": 1,
+            "c": -5
+          },
+          "source": "y-form",
+          "raw": "y=-x+5"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_팔마고_1학기_기말_고1_기출/q18-solution.svg",
+        "sha256": "631060629251fa05457170b328e6ecc90d5dbb70f8fd8e0f8f425d15ddb4df28",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 233.5,
+          "originY": 313.33,
+          "xGridCount": 10,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 233.5,
+              "y": 313.33,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 352.17,
+              "y": 283.67,
+              "valueX": 4,
+              "valueY": 1
+            },
+            {
+              "x": 203.83,
+              "y": 135.33,
+              "valueX": -1,
+              "valueY": 6
+            }
+          ]
+        },
+        "lineCount": 5,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 233.5,
+              "y": 313.33
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": 3.9996629592180675,
+              "y": 0.9996629592180647
+            },
+            "pixel": {
+              "x": 352.17,
+              "y": 283.67
+            },
+            "metadata": {
+              "x": 4,
+              "y": 1
+            }
+          },
+          {
+            "label": "Q",
+            "actual": {
+              "x": -1,
+              "y": 5.999325918436132
+            },
+            "pixel": {
+              "x": 203.83,
+              "y": 135.33
+            },
+            "metadata": {
+              "x": -1,
+              "y": 6
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "23_팔마고_1학기_기말_고1_기출.js#22",
+      "questionNo": 22,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 2,
+            "b": -1,
+            "c": -1
+          },
+          "source": "standard-form",
+          "raw": "2x-y-1=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": -2,
+            "c": 4
+          },
+          "source": "standard-form",
+          "raw": "x-2y+4=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/23_팔마고_1학기_기말_고1_기출/q22-solution.svg",
+        "sha256": "2b2fbe3e0ffae41221a27841d21ced1fcefcdb4c09df8e4382ba01337602e295",
+        "mapping": {
+          "usable": true,
+          "xScale": 43.639999999999986,
+          "yScale": -43.639999999999986,
+          "originX": 343.45,
+          "originY": 363.09,
+          "xGridCount": 12,
+          "yGridCount": 8,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 430.73,
+              "y": 232.18,
+              "valueX": 2,
+              "valueY": 3
+            },
+            {
+              "x": 430.73,
+              "y": 363.09,
+              "valueX": 2,
+              "valueY": 0
+            },
+            {
+              "x": 116.55,
+              "y": 363.09,
+              "valueX": -5.2,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": 2.0000000000000013,
+              "y": 2.9997708524289646
+            },
+            "pixel": {
+              "x": 430.73,
+              "y": 232.18
+            },
+            "metadata": {
+              "x": 2,
+              "y": 3
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.0000000000000013,
+              "y": 0
+            },
+            "pixel": {
+              "x": 430.73,
+              "y": 363.09
+            },
+            "metadata": {
+              "x": 2,
+              "y": 0
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": -5.199358386801101,
+              "y": 0
+            },
+            "pixel": {
+              "x": 116.55,
+              "y": 363.09
+            },
+            "metadata": {
+              "x": -5.2,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_금당고_1학기_기말_고1_기출.js#5",
+      "questionNo": 5,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 3,
+            "b": -4,
+            "c": 1
+          },
+          "source": "standard-form",
+          "raw": "3x-4y+1=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/24_금당고_1학기_기말_고1_기출/q05-solution.svg",
+        "sha256": "a9be62c4936f39dddbf3a6711dbe6d7e0bc6af4c6d9999053adb9f8926f4dc47",
+        "mapping": {
+          "usable": true,
+          "xScale": 50.860000000000014,
+          "yScale": -50.86,
+          "originX": 201.71,
+          "originY": 330.29,
+          "xGridCount": 8,
+          "yGridCount": 8,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 303.43,
+              "y": 177.71,
+              "valueX": 2,
+              "valueY": 3
+            },
+            {
+              "x": 333.94,
+              "y": 218.4,
+              "valueX": 2.6,
+              "valueY": 2.2
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 1.9999999999999993,
+              "y": 3.0000000000000004
+            },
+            "pixel": {
+              "x": 303.43,
+              "y": 177.71
+            },
+            "metadata": {
+              "x": 2,
+              "y": 3
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 2.5998820290994877,
+              "y": 2.1999606763664965
+            },
+            "pixel": {
+              "x": 333.94,
+              "y": 218.4
+            },
+            "metadata": {
+              "x": 2.6,
+              "y": 2.2
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_금당고_1학기_기말_고1_기출.js#11",
+      "questionNo": 11,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_3_LABEL_DATA_MISMATCH",
+            "LINE_3_LABEL_ENDPOINT_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/24_금당고_1학기_기말_고1_기출/q11-solution.svg",
+        "sha256": "95b9a101ac6e65a23a680598222368410db4b1705477313e43f7d208f35086d7",
+        "mapping": {
+          "usable": true,
+          "xScale": 17.80000000000001,
+          "yScale": -17.80000000000001,
+          "originX": 322.5,
+          "originY": 378.6,
+          "xGridCount": 14,
+          "yGridCount": 21,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 233.5,
+              "y": 343,
+              "valueX": -5,
+              "valueY": 2
+            },
+            {
+              "x": 269.1,
+              "y": 271.8,
+              "valueX": -3,
+              "valueY": 6
+            },
+            {
+              "x": 215.7,
+              "y": 378.6,
+              "valueX": -6,
+              "valueY": 0
+            },
+            {
+              "x": 322.5,
+              "y": 165,
+              "valueX": 0,
+              "valueY": 12
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": -4.9999999999999964,
+              "y": 2
+            },
+            "pixel": {
+              "x": 233.5,
+              "y": 343
+            },
+            "metadata": {
+              "x": -5,
+              "y": 2
+            }
+          },
+          {
+            "label": "T",
+            "actual": {
+              "x": -2.999999999999997,
+              "y": 5.9999999999999964
+            },
+            "pixel": {
+              "x": 269.1,
+              "y": 271.8
+            },
+            "metadata": {
+              "x": -3,
+              "y": 6
+            }
+          },
+          {
+            "label": "X",
+            "actual": {
+              "x": -5.9999999999999964,
+              "y": 0
+            },
+            "pixel": {
+              "x": 215.7,
+              "y": 378.6
+            },
+            "metadata": {
+              "x": -6,
+              "y": 0
+            }
+          },
+          {
+            "label": "Y",
+            "actual": {
+              "x": 0,
+              "y": 11.999999999999993
+            },
+            "pixel": {
+              "x": 322.5,
+              "y": 165
+            },
+            "metadata": {
+              "x": 0,
+              "y": 12
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_금당고_1학기_기말_고1_기출.js#14",
+      "questionNo": 14,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 3,
+            "b": 1,
+            "c": 7
+          },
+          "source": "standard-form",
+          "raw": "3x+y+7=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": -3,
+            "c": -3
+          },
+          "source": "standard-form",
+          "raw": "x-3y-3=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/24_금당고_1학기_기말_고1_기출/q14-solution.svg",
+        "sha256": "a9f09f74b7292ee4d643518b7c2a88756826f34d6d5251bae886ffff7257e3f1",
+        "mapping": {
+          "usable": true,
+          "xScale": 17.80000000000001,
+          "yScale": -17.80000000000001,
+          "originX": 269.1,
+          "originY": 200.6,
+          "xGridCount": 8,
+          "yGridCount": 21,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 3,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_매산고_1학기_기말_고1_기출.js#5",
+      "questionNo": 5,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/24_매산고_1학기_기말_고1_기출/q05-solution.svg",
+        "sha256": "a3035ab4e40e8cc6c7cdd46ba1b215ed41243521ae6896e16b6c033fbd78e159",
+        "mapping": {
+          "usable": true,
+          "xScale": 59.33000000000001,
+          "yScale": -59.33000000000001,
+          "originX": 248.33,
+          "originY": 372.67,
+          "xGridCount": 8,
+          "yGridCount": 7,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 189,
+              "y": 194.67,
+              "valueX": -1,
+              "valueY": 3
+            },
+            {
+              "x": 367,
+              "y": 313.33,
+              "valueX": 2,
+              "valueY": 1
+            },
+            {
+              "x": 248.33,
+              "y": 234.22,
+              "valueX": 0,
+              "valueY": 2.3333
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": -1,
+              "y": 3.000168548794876
+            },
+            "pixel": {
+              "x": 189,
+              "y": 194.67
+            },
+            "metadata": {
+              "x": -1,
+              "y": 3
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 2.0001685487948753,
+              "y": 1.0001685487948764
+            },
+            "pixel": {
+              "x": 367,
+              "y": 313.33
+            },
+            "metadata": {
+              "x": 2,
+              "y": 1
+            }
+          },
+          {
+            "label": "Y",
+            "actual": {
+              "x": 0,
+              "y": 2.3335580650598344
+            },
+            "pixel": {
+              "x": 248.33,
+              "y": 234.22
+            },
+            "metadata": {
+              "x": 0,
+              "y": 2.3333333333333335
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_매산고_1학기_기말_고1_기출.js#14",
+      "questionNo": 14,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "REQUIRED_POINT_ON_LINE",
+          "issues": [
+            "LINE_FOR_POINT_O_MISSING"
+          ]
+        },
+        {
+          "name": "INTERCEPT_PARITY",
+          "issues": [
+            "SOURCE_LINE_FOR_INTERCEPT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": -1,
+            "b": 1,
+            "c": 0
+          },
+          "source": "y-form",
+          "raw": "y=x"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/24_매산고_1학기_기말_고1_기출/q14-solution.svg",
+        "sha256": "c076fc52eaf1c5b2e6b30f8e4518c6747dcc92866e62b824d09f2bb0734c01dd",
+        "mapping": {
+          "usable": true,
+          "xScale": 44.5,
+          "yScale": -44.5,
+          "originX": 189,
+          "originY": 343,
+          "xGridCount": 9,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 189,
+              "y": 343,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 367,
+              "y": 343,
+              "valueX": 4,
+              "valueY": 0
+            },
+            {
+              "x": 322.5,
+              "y": 165,
+              "valueX": 3,
+              "valueY": 4
+            },
+            {
+              "x": 226.28,
+              "y": 343,
+              "valueX": 0.8377,
+              "valueY": 0
+            },
+            {
+              "x": 338.86,
+              "y": 230.42,
+              "valueX": 3.3675,
+              "valueY": 2.5298
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 189,
+              "y": 343
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 4,
+              "y": 0
+            },
+            "pixel": {
+              "x": 367,
+              "y": 343
+            },
+            "metadata": {
+              "x": 4,
+              "y": 0
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 3,
+              "y": 4
+            },
+            "pixel": {
+              "x": 322.5,
+              "y": 165
+            },
+            "metadata": {
+              "x": 3,
+              "y": 4
+            }
+          },
+          {
+            "label": "D",
+            "actual": {
+              "x": 0.837752808988764,
+              "y": 0
+            },
+            "pixel": {
+              "x": 226.28,
+              "y": 343
+            },
+            "metadata": {
+              "x": 0.8377223398316205,
+              "y": 0
+            }
+          },
+          {
+            "label": "E",
+            "actual": {
+              "x": 3.3676404494382024,
+              "y": 2.5298876404494384
+            },
+            "pixel": {
+              "x": 338.86,
+              "y": 230.42
+            },
+            "metadata": {
+              "x": 3.367544467966324,
+              "y": 2.5298221281347035
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_제일고_1학기_기말_고1_기출.js#14",
+      "questionNo": 14,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 3,
+            "b": -2,
+            "c": 6
+          },
+          "source": "standard-form",
+          "raw": "3x-2y+6=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/24_제일고_1학기_기말_고1_기출/q14-solution.svg",
+        "sha256": "4c2e9a9135f38774da6e260af6d84f6d76bd176859564d5375ea7536c18ba7d0",
+        "mapping": {
+          "usable": true,
+          "xScale": 25.430000000000007,
+          "yScale": -25.430000000000007,
+          "originX": 278,
+          "originY": 254,
+          "xGridCount": 9,
+          "yGridCount": 15,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 328.86,
+              "y": 254,
+              "valueX": 2,
+              "valueY": 0
+            },
+            {
+              "x": 278,
+              "y": 177.71,
+              "valueX": 0,
+              "valueY": 3
+            },
+            {
+              "x": 227.14,
+              "y": 254,
+              "valueX": -2,
+              "valueY": 0
+            },
+            {
+              "x": 278,
+              "y": 330.29,
+              "valueX": 0,
+              "valueY": -3
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2,
+              "y": 0
+            },
+            "pixel": {
+              "x": 328.86,
+              "y": 254
+            },
+            "metadata": {
+              "x": 2,
+              "y": 0
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 0,
+              "y": 2.9999999999999987
+            },
+            "pixel": {
+              "x": 278,
+              "y": 177.71
+            },
+            "metadata": {
+              "x": 0,
+              "y": 3
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": -2,
+              "y": 0
+            },
+            "pixel": {
+              "x": 227.14,
+              "y": 254
+            },
+            "metadata": {
+              "x": -2,
+              "y": 0
+            }
+          },
+          {
+            "label": "D",
+            "actual": {
+              "x": 0,
+              "y": -3
+            },
+            "pixel": {
+              "x": 278,
+              "y": 330.29
+            },
+            "metadata": {
+              "x": 0,
+              "y": -3
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_제일고_1학기_중간_고1_기출.js#14",
+      "questionNo": 14,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_1/2"
+          ]
+        },
+        {
+          "name": "PARALLEL_PERPENDICULAR_PARITY",
+          "issues": [
+            "PARALLEL_RELATION_NOT_OBSERVED"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 4,
+            "b": -2,
+            "c": -3
+          },
+          "source": "standard-form",
+          "raw": "4x-2y-3=0"
+        },
+        {
+          "line": {
+            "a": 6,
+            "b": -3,
+            "c": -1
+          },
+          "source": "standard-form",
+          "raw": "6x-3y-1=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution.svg",
+        "sha256": "0ae7fefdecbdebc2da94a9ade745c1879fd61fa93d9c28f6ec1e3cd0acb90a9a",
+        "mapping": {
+          "usable": true,
+          "xScale": 39.55499999999999,
+          "yScale": -39.559999999999974,
+          "originX": 278,
+          "originY": 273.78,
+          "xGridCount": 9,
+          "yGridCount": 10,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 5,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_제일고_1학기_중간_고1_기출.js#16",
+      "questionNo": 16,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 3,
+            "b": 4,
+            "c": -1
+          },
+          "source": "standard-form",
+          "raw": "3x+4y-1=0"
+        },
+        {
+          "line": {
+            "a": 2,
+            "b": 1,
+            "c": -4
+          },
+          "source": "standard-form",
+          "raw": "2x+y-4=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution.svg",
+        "sha256": "6ea075201f20da57a5f7a6a67006654166b9c3f1b1286767911a0dd21655ed71",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 233.5,
+          "originY": 254,
+          "xGridCount": 14,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 322.5,
+              "y": 313.33,
+              "valueX": 3,
+              "valueY": -2
+            },
+            {
+              "x": 292.83,
+              "y": 224.33,
+              "valueX": 2,
+              "valueY": 1
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.9996629592180666,
+              "y": -1.9996629592180657
+            },
+            "pixel": {
+              "x": 322.5,
+              "y": 313.33
+            },
+            "metadata": {
+              "x": 3,
+              "y": -2
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": 1.9996629592180657,
+              "y": 1
+            },
+            "pixel": {
+              "x": 292.83,
+              "y": 224.33
+            },
+            "metadata": {
+              "x": 2,
+              "y": 1
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_제일고_1학기_중간_고1_기출.js#17",
+      "questionNo": 17,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_1_LABEL_DATA_MISMATCH",
+            "LINE_1_LABEL_ENDPOINT_MISMATCH"
+          ]
+        }
+      ],
+      "classification": "D_OLD_VERIFIER_LIMITATION_OR_GEOMETRY_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/24_제일고_1학기_중간_고1_기출/q17-solution.svg",
+        "sha256": "e6c185dea1fb534af877c26bb0593fc89ddbe8cd004f1d78195c50c9d25a8f84",
+        "mapping": {
+          "usable": true,
+          "xScale": 35.599999999999994,
+          "yScale": -35.599999999999994,
+          "originX": 242.4,
+          "originY": 325.2,
+          "xGridCount": 11,
+          "yGridCount": 11,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 171.2,
+              "y": 360.8,
+              "valueX": -2,
+              "valueY": -1
+            },
+            {
+              "x": 313.6,
+              "y": 147.2,
+              "valueX": 2,
+              "valueY": 5
+            },
+            {
+              "x": 384.8,
+              "y": 289.6,
+              "valueX": 4,
+              "valueY": 1
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": -2.000000000000001,
+              "y": -1.0000000000000009
+            },
+            "pixel": {
+              "x": 171.2,
+              "y": 360.8
+            },
+            "metadata": {
+              "x": -2,
+              "y": -1
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.000000000000001,
+              "y": 5.000000000000001
+            },
+            "pixel": {
+              "x": 313.6,
+              "y": 147.2
+            },
+            "metadata": {
+              "x": 2,
+              "y": 5
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 4.000000000000001,
+              "y": 0.9999999999999992
+            },
+            "pixel": {
+              "x": 384.8,
+              "y": 289.6
+            },
+            "metadata": {
+              "x": 4,
+              "y": 1
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "24_제일고_1학기_중간_고1_기출.js#20",
+      "questionNo": 20,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_2_LABEL_DATA_MISMATCH",
+            "LINE_2_LABEL_ENDPOINT_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
+        "sha256": "b7b14c3923a2de1b988c3e9eee7f3b9d0a25df2086b7ee66376f8ac4627f527e",
+        "mapping": {
+          "usable": true,
+          "xScale": 44.5,
+          "yScale": -44.5,
+          "originX": 144.5,
+          "originY": 343,
+          "xGridCount": 9,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 144.5,
+              "y": 343,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 367,
+              "y": 165,
+              "valueX": 5,
+              "valueY": 4
+            },
+            {
+              "x": 411.5,
+              "y": 343,
+              "valueX": 6,
+              "valueY": 0
+            },
+            {
+              "x": 348.42,
+              "y": 343,
+              "valueX": 4.5826,
+              "valueY": 0
+            },
+            {
+              "x": 290.16,
+              "y": 226.47,
+              "valueX": 3.2733,
+              "valueY": 2.6186
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 144.5,
+              "y": 343
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 5,
+              "y": 4
+            },
+            "pixel": {
+              "x": 367,
+              "y": 165
+            },
+            "metadata": {
+              "x": 5,
+              "y": 4
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 6,
+              "y": 0
+            },
+            "pixel": {
+              "x": 411.5,
+              "y": 343
+            },
+            "metadata": {
+              "x": 6,
+              "y": 0
+            }
+          },
+          {
+            "label": "R",
+            "actual": {
+              "x": 4.58247191011236,
+              "y": 0
+            },
+            "pixel": {
+              "x": 348.42,
+              "y": 343
+            },
+            "metadata": {
+              "x": 4.58257569495584,
+              "y": 0
+            }
+          },
+          {
+            "label": "S",
+            "actual": {
+              "x": 3.2732584269662928,
+              "y": 2.6186516853932584
+            },
+            "pixel": {
+              "x": 290.16,
+              "y": 226.47
+            },
+            "metadata": {
+              "x": 3.2732683535398857,
+              "y": 2.6186146828319083
+            }
+          }
+        ],
+        "segmentCount": 4
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_제일고_2학기_기말_고1_기출.js#9",
+      "questionNo": 9,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_제일고_2학기_기말_고1_기출/q09-solution.svg",
+        "sha256": "f115f23f719ce41c0eed9ca3f6c8c8455c6e0acc390376dcd89d180d0063058a",
+        "mapping": {
+          "usable": true,
+          "xScale": 16.180000000000007,
+          "yScale": -16.180000000000007,
+          "originX": 205.18,
+          "originY": 399.64,
+          "xGridCount": 14,
+          "yGridCount": 23,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 253.73,
+              "y": 205.45,
+              "valueX": 3,
+              "valueY": 12
+            },
+            {
+              "x": 350.82,
+              "y": 399.64,
+              "valueX": 9,
+              "valueY": 0
+            },
+            {
+              "x": 205.18,
+              "y": 108.36,
+              "valueX": 0,
+              "valueY": 18
+            },
+            {
+              "x": 205.18,
+              "y": 399.64,
+              "valueX": 0,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 3.0006180469715673,
+              "y": 12.001854140914704
+            },
+            "pixel": {
+              "x": 253.73,
+              "y": 205.45
+            },
+            "metadata": {
+              "x": 3,
+              "y": 12
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 9.001236093943135,
+              "y": 0
+            },
+            "pixel": {
+              "x": 350.82,
+              "y": 399.64
+            },
+            "metadata": {
+              "x": 9,
+              "y": 0
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 0,
+              "y": 18.00247218788627
+            },
+            "pixel": {
+              "x": 205.18,
+              "y": 108.36
+            },
+            "metadata": {
+              "x": 0,
+              "y": 18
+            }
+          },
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 205.18,
+              "y": 399.64
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "21_순천고_2학기_중간_고1_기출.js#21",
+      "questionNo": 21,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "PERPENDICULAR_FOOT_PARITY",
+          "issues": [
+            "POINT_TO_FOOT_SEGMENT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERCEPT_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/21_순천고_2학기_중간_고1_기출/q21-solution.svg",
+        "sha256": "1db29d2283ebacb2e9bd2beb5c5754d3278cb125fa3c8ebe495a6461ca186273",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 189,
+          "originY": 372.67,
+          "xGridCount": 11,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 189,
+              "y": 372.67,
+              "valueX": 0,
+              "valueY": 0
+            },
+            {
+              "x": 367,
+              "y": 372.67,
+              "valueX": 6,
+              "valueY": 0
+            },
+            {
+              "x": 189,
+              "y": 135.33,
+              "valueX": 0,
+              "valueY": 8
+            },
+            {
+              "x": 278,
+              "y": 254,
+              "valueX": 3,
+              "valueY": 4
+            },
+            {
+              "x": 278,
+              "y": 372.67,
+              "valueX": 3,
+              "valueY": 0
+            },
+            {
+              "x": 189,
+              "y": 254,
+              "valueX": 0,
+              "valueY": 4
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "B",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 189,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": 5.999325918436133,
+              "y": 0
+            },
+            "pixel": {
+              "x": 367,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": 6,
+              "y": 0
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 0,
+              "y": 7.999325918436134
+            },
+            "pixel": {
+              "x": 189,
+              "y": 135.33
+            },
+            "metadata": {
+              "x": 0,
+              "y": 8
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": 2.9996629592180666,
+              "y": 3.9996629592180675
+            },
+            "pixel": {
+              "x": 278,
+              "y": 254
+            },
+            "metadata": {
+              "x": 3,
+              "y": 4
+            }
+          },
+          {
+            "label": "Q",
+            "actual": {
+              "x": 2.9996629592180666,
+              "y": 0
+            },
+            "pixel": {
+              "x": 278,
+              "y": 372.67
+            },
+            "metadata": {
+              "x": 3,
+              "y": 0
+            }
+          },
+          {
+            "label": "R",
+            "actual": {
+              "x": 0,
+              "y": 3.9996629592180675
+            },
+            "pixel": {
+              "x": 189,
+              "y": 254
+            },
+            "metadata": {
+              "x": 0,
+              "y": 4
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "21_효천고_2학기_중간_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/21_효천고_2학기_중간_고1_기출/q13-solution.svg",
+        "sha256": "c00654586178a256b20feda25a38fa2b487462ee634929c78f3bb88d4a563877",
+        "mapping": {
+          "usable": true,
+          "xScale": 35.599999999999994,
+          "yScale": -35.599999999999994,
+          "originX": 367,
+          "originY": 360.8,
+          "xGridCount": 12,
+          "yGridCount": 11,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 295.8,
+              "y": 254,
+              "valueX": -2,
+              "valueY": 3
+            },
+            {
+              "x": 295.8,
+              "y": 360.8,
+              "valueX": -2,
+              "valueY": 0
+            },
+            {
+              "x": 367,
+              "y": 254,
+              "valueX": 0,
+              "valueY": 3
+            },
+            {
+              "x": 153.4,
+              "y": 360.8,
+              "valueX": -6,
+              "valueY": 0
+            },
+            {
+              "x": 367,
+              "y": 147.2,
+              "valueX": 0,
+              "valueY": 6
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": -2,
+              "y": 3.000000000000001
+            },
+            "pixel": {
+              "x": 295.8,
+              "y": 254
+            },
+            "metadata": {
+              "x": -2,
+              "y": 3
+            }
+          },
+          {
+            "label": "R",
+            "actual": {
+              "x": -2,
+              "y": 0
+            },
+            "pixel": {
+              "x": 295.8,
+              "y": 360.8
+            },
+            "metadata": {
+              "x": -2,
+              "y": 0
+            }
+          },
+          {
+            "label": "S",
+            "actual": {
+              "x": 0,
+              "y": 3.000000000000001
+            },
+            "pixel": {
+              "x": 367,
+              "y": 254
+            },
+            "metadata": {
+              "x": 0,
+              "y": 3
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": -6.000000000000001,
+              "y": 0
+            },
+            "pixel": {
+              "x": 153.4,
+              "y": 360.8
+            },
+            "metadata": {
+              "x": -6,
+              "y": 0
+            }
+          },
+          {
+            "label": "Q",
+            "actual": {
+              "x": 0,
+              "y": 6.000000000000002
+            },
+            "pixel": {
+              "x": 367,
+              "y": 147.2
+            },
+            "metadata": {
+              "x": 0,
+              "y": 6
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "22_강남여고_2학기_중간_고1_기출.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_2_LABEL_DATA_MISMATCH",
+            "LINE_2_LABEL_ENDPOINT_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/22_강남여고_2학기_중간_고1_기출/q13-solution.svg",
+        "sha256": "1bd3491a748c49ad6cd208e43f125d3726828fbae8720c63ba9474f05aa08410",
+        "mapping": {
+          "usable": true,
+          "xScale": 17.80000000000001,
+          "yScale": -17.80000000000001,
+          "originX": 251.3,
+          "originY": 182.8,
+          "xGridCount": 10,
+          "yGridCount": 21,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 304.7,
+              "y": 129.4,
+              "valueX": 3,
+              "valueY": 3
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.999999999999997,
+              "y": 2.9999999999999982
+            },
+            "pixel": {
+              "x": 304.7,
+              "y": 129.4
+            },
+            "metadata": {
+              "x": 3,
+              "y": 3
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_금당고_2학기_중간_고1_기출.js#2",
+      "questionNo": 2,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "INTERCEPT_PARITY",
+          "issues": [
+            "SOURCE_LINE_FOR_INTERCEPT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": -2,
+            "b": 1,
+            "c": 3
+          },
+          "source": "y-form",
+          "raw": "y=2x-3"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/25_금당고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "1368d9b2f4a508ac8627fff1cefc3b20520a924573f6d317301c21de180ce14d",
+        "mapping": {
+          "usable": true,
+          "xScale": 19.78,
+          "yScale": -19.78,
+          "originX": 268.11,
+          "originY": 273.78,
+          "xGridCount": 8,
+          "yGridCount": 19,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 287.89,
+              "y": 135.33,
+              "valueX": 1,
+              "valueY": 7
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 0.9999999999999986,
+              "y": 6.999494438827096
+            },
+            "pixel": {
+              "x": 287.89,
+              "y": 135.33
+            },
+            "metadata": {
+              "x": 1,
+              "y": 7
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_금당고_2학기_중간_고1_기출.js#14",
+      "questionNo": 14,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_1_LABEL_DATA_MISMATCH",
+            "LINE_1_LABEL_ENDPOINT_MISMATCH"
+          ]
+        },
+        {
+          "name": "PERPENDICULAR_FOOT_PARITY",
+          "issues": [
+            "EXPECTED_FOOT_POINT_MISSING",
+            "EXPECTED_FOOT_NOT_ON_TARGET_LINE",
+            "POINT_TO_FOOT_SEGMENT_MISSING"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_금당고_2학기_중간_고1_기출/q14-solution.svg",
+        "sha256": "3bd9828a5120509ea68780b1d9a38a8842ebef78693311915d3144ec042d3eee",
+        "mapping": {
+          "usable": true,
+          "xScale": 14.240000000000009,
+          "yScale": -14.240000000000009,
+          "originX": 228.16,
+          "originY": 360.8,
+          "xGridCount": 16,
+          "yGridCount": 26,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 242.4,
+              "y": 332.32,
+              "valueX": 1,
+              "valueY": 2
+            },
+            {
+              "x": 327.84,
+              "y": 289.6,
+              "valueX": 7,
+              "valueY": 5
+            },
+            {
+              "x": 285.12,
+              "y": 246.88,
+              "valueX": 4,
+              "valueY": 8
+            },
+            {
+              "x": 299.36,
+              "y": 275.36,
+              "valueX": 5,
+              "valueY": 6
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 1,
+              "y": 2
+            },
+            "pixel": {
+              "x": 242.4,
+              "y": 332.32
+            },
+            "metadata": {
+              "x": 1,
+              "y": 2
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 6.999999999999994,
+              "y": 4.9999999999999964
+            },
+            "pixel": {
+              "x": 327.84,
+              "y": 289.6
+            },
+            "metadata": {
+              "x": 7,
+              "y": 5
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": 3.9999999999999982,
+              "y": 7.9999999999999964
+            },
+            "pixel": {
+              "x": 285.12,
+              "y": 246.88
+            },
+            "metadata": {
+              "x": 4,
+              "y": 8
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 4.999999999999998,
+              "y": 5.9999999999999964
+            },
+            "pixel": {
+              "x": 299.36,
+              "y": 275.36
+            },
+            "metadata": {
+              "x": 5,
+              "y": 6
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_금당고_2학기_중간_고1_기출.js#17",
+      "questionNo": 17,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": -2,
+            "c": 5
+          },
+          "source": "standard-form",
+          "raw": "x-2y+5=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/25_금당고_2학기_중간_고1_기출/q17-solution.svg",
+        "sha256": "2cb6b3a6d91cbc8fc0d3d253434f4c85bc20d775cc1f6a382b3e9edaaaaf1204",
+        "mapping": {
+          "usable": true,
+          "xScale": 16.94999999999999,
+          "yScale": -16.950000000000003,
+          "originX": 278,
+          "originY": 211.62,
+          "xGridCount": 17,
+          "yGridCount": 22,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 193.24,
+              "y": 279.43,
+              "valueX": -5,
+              "valueY": -4
+            },
+            {
+              "x": 362.76,
+              "y": 194.67,
+              "valueX": 5,
+              "valueY": 1
+            }
+          ]
+        },
+        "lineCount": 4,
+        "points": [
+          {
+            "label": "Q",
+            "actual": {
+              "x": -5.000589970501478,
+              "y": -4.0005899705014745
+            },
+            "pixel": {
+              "x": 193.24,
+              "y": 279.43
+            },
+            "metadata": {
+              "x": -5,
+              "y": -4
+            }
+          },
+          {
+            "label": "P",
+            "actual": {
+              "x": 5.000589970501478,
+              "y": 1.0000000000000009
+            },
+            "pixel": {
+              "x": 362.76,
+              "y": 194.67
+            },
+            "metadata": {
+              "x": 5,
+              "y": 1
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_매산고_2학기_중간_고1_기출.js#2",
+      "questionNo": 2,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_0/1"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": -3,
+            "c": 3
+          },
+          "source": "standard-form",
+          "raw": "x-3y+3=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/25_매산고_2학기_중간_고1_기출/q02-solution.svg",
+        "sha256": "c4e195e26429b6bf6660c07efc9ce75e3a7326c897442ed5c9ef6bb824dae13f",
+        "mapping": {
+          "usable": true,
+          "xScale": 22.860000000000014,
+          "yScale": -22.860000000000014,
+          "originX": 312.29,
+          "originY": 288.29,
+          "xGridCount": 22,
+          "yGridCount": 12,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 449.43,
+              "y": 196.86,
+              "valueX": 6,
+              "valueY": 4
+            },
+            {
+              "x": 106.57,
+              "y": 311.14,
+              "valueX": -9,
+              "valueY": -1
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 5.999125109361326,
+              "y": 3.999562554680663
+            },
+            "pixel": {
+              "x": 449.43,
+              "y": 196.86
+            },
+            "metadata": {
+              "x": 6,
+              "y": 4
+            }
+          },
+          {
+            "label": "K",
+            "actual": {
+              "x": -8.999125109361326,
+              "y": -0.9995625546806628
+            },
+            "pixel": {
+              "x": 106.57,
+              "y": 311.14
+            },
+            "metadata": {
+              "x": -9,
+              "y": -1
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_매산고_2학기_중간_고1_기출.js#15",
+      "questionNo": 15,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_MATCH_1/2"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "VISIBLE_GEOMETRY_PARITY",
+          "issues": [
+            "SOURCE_EQUATION_NOT_VISIBLE_AS_LINE"
+          ]
+        }
+      ],
+      "classification": "A_ACTUAL_SVG_HARD_FAIL_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": 1.7320508075688772,
+            "c": -2
+          },
+          "source": "standard-form",
+          "raw": "x+sqrt(3)y-2=0"
+        },
+        {
+          "line": {
+            "a": 1,
+            "b": -1.7320508075688772,
+            "c": 10
+          },
+          "source": "standard-form",
+          "raw": "x-sqrt(3)y+10=0"
+        },
+        {
+          "line": {
+            "a": 0,
+            "b": 1,
+            "c": -2
+          },
+          "source": "numeric-constant-form",
+          "raw": "y=2"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/25_매산고_2학기_중간_고1_기출/q15-solution.svg",
+        "sha256": "3e23fb9595704966a34b67d81717e4258afa3de64191a8705b4298cb64e40888",
+        "mapping": {
+          "usable": true,
+          "xScale": 20,
+          "yScale": -20,
+          "originX": 198,
+          "originY": 324,
+          "xGridCount": 25,
+          "yGridCount": 8,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 118,
+              "y": 254.72,
+              "valueX": -4,
+              "valueY": 3.4641
+            },
+            {
+              "x": 118,
+              "y": 270.41,
+              "valueX": -4,
+              "valueY": 2.6795
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": -4,
+              "y": 3.464
+            },
+            "pixel": {
+              "x": 118,
+              "y": 254.72
+            },
+            "metadata": {
+              "x": -4,
+              "y": 3.4641016151377544
+            }
+          },
+          {
+            "label": "I",
+            "actual": {
+              "x": -4,
+              "y": 2.6794999999999987
+            },
+            "pixel": {
+              "x": 118,
+              "y": 270.41
+            },
+            "metadata": {
+              "x": -4,
+              "y": 2.679491924311229
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천고_2학기_중간_고1_기출.js#12",
+      "questionNo": 12,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERCEPT_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_INTERCEPT_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_순천고_2학기_중간_고1_기출/q12-solution.svg",
+        "sha256": "29987f7d569905b2b66308316343f6cbcfa4729b90ada6e13aae1e34d9174f31",
+        "mapping": {
+          "usable": true,
+          "xScale": 39.55999999999999,
+          "yScale": -39.559999999999974,
+          "originX": 238.44,
+          "originY": 155.11,
+          "xGridCount": 7,
+          "yGridCount": 10,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 337.33,
+              "y": 155.11,
+              "valueX": 2.5,
+              "valueY": 0
+            },
+            {
+              "x": 238.44,
+              "y": 352.89,
+              "valueX": 0,
+              "valueY": -5
+            },
+            {
+              "x": 238.44,
+              "y": 155.11,
+              "valueX": 0,
+              "valueY": 0
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2.4997472194135493,
+              "y": 0
+            },
+            "pixel": {
+              "x": 337.33,
+              "y": 155.11
+            },
+            "metadata": {
+              "x": 2.5,
+              "y": 0
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": 0,
+              "y": -4.9994944388271
+            },
+            "pixel": {
+              "x": 238.44,
+              "y": 352.89
+            },
+            "metadata": {
+              "x": 0,
+              "y": -5
+            }
+          },
+          {
+            "label": "O",
+            "actual": {
+              "x": 0,
+              "y": 0
+            },
+            "pixel": {
+              "x": 238.44,
+              "y": 155.11
+            },
+            "metadata": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천고_2학기_중간_고1_기출.js#18",
+      "questionNo": 18,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": -3,
+            "b": 1,
+            "c": 1
+          },
+          "source": "y-form",
+          "raw": "y=3x-1"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
+        "sha256": "cac9f8bf9e9b69c1a5eab426f56cd8ba53808ca3605aab791587bb6af4ee66ff",
+        "mapping": {
+          "usable": true,
+          "xScale": 29.669999999999987,
+          "yScale": -29.669999999999987,
+          "originX": 144.5,
+          "originY": 372.67,
+          "xGridCount": 14,
+          "yGridCount": 13,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 144.5,
+              "y": 402.33,
+              "valueX": 0,
+              "valueY": -1
+            },
+            {
+              "x": 233.5,
+              "y": 343,
+              "valueX": 3,
+              "valueY": 1
+            },
+            {
+              "x": 411.5,
+              "y": 224.33,
+              "valueX": 9,
+              "valueY": 5
+            },
+            {
+              "x": 224.6,
+              "y": 162.03,
+              "valueX": 2.7,
+              "valueY": 7.1
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "M",
+            "actual": {
+              "x": 0,
+              "y": -0.9996629592180647
+            },
+            "pixel": {
+              "x": 144.5,
+              "y": 402.33
+            },
+            "metadata": {
+              "x": 0,
+              "y": -1
+            }
+          },
+          {
+            "label": "G",
+            "actual": {
+              "x": 2.9996629592180666,
+              "y": 1.0000000000000009
+            },
+            "pixel": {
+              "x": 233.5,
+              "y": 343
+            },
+            "metadata": {
+              "x": 3,
+              "y": 1
+            }
+          },
+          {
+            "label": "A",
+            "actual": {
+              "x": 8.9989888776542,
+              "y": 4.9996629592180675
+            },
+            "pixel": {
+              "x": 411.5,
+              "y": 224.33
+            },
+            "metadata": {
+              "x": 9,
+              "y": 5
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 2.69969666329626,
+              "y": 7.099427030670714
+            },
+            "pixel": {
+              "x": 224.6,
+              "y": 162.03
+            },
+            "metadata": {
+              "x": 2.7,
+              "y": 7.1
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천고_2학기_중간_고1_기출.js#21",
+      "questionNo": 21,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [
+        {
+          "line": {
+            "a": 1,
+            "b": -1,
+            "c": 2
+          },
+          "source": "standard-form",
+          "raw": "x-y+2=0"
+        }
+      ],
+      "actualObserved": {
+        "path": "assets/images/25_순천고_2학기_중간_고1_기출/q21-solution.svg",
+        "sha256": "3e2f416f3cddc55f0c81c411c85bce2ad91c0437dddc6c14913fd7f9fcaac57b",
+        "mapping": {
+          "usable": true,
+          "xScale": 35.599999999999994,
+          "yScale": -35.599999999999994,
+          "originX": 260.2,
+          "originY": 254,
+          "xGridCount": 8,
+          "yGridCount": 11,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 331.4,
+              "y": 360.8,
+              "valueX": 2,
+              "valueY": -3
+            },
+            {
+              "x": 206.8,
+              "y": 236.2,
+              "valueX": -1.5,
+              "valueY": 0.5
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2,
+              "y": -3.000000000000001
+            },
+            "pixel": {
+              "x": 331.4,
+              "y": 360.8
+            },
+            "metadata": {
+              "x": 2,
+              "y": -3
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": -1.4999999999999996,
+              "y": 0.5000000000000004
+            },
+            "pixel": {
+              "x": 206.8,
+              "y": 236.2
+            },
+            "metadata": {
+              "x": -1.5,
+              "y": 0.5
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천여고_2학기_중간_고1_공통수학2.js#12",
+      "questionNo": 12,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_1_LABEL_DATA_MISMATCH",
+            "LINE_1_LABEL_ENDPOINT_MISMATCH"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q12-solution.svg",
+        "sha256": "434e4e7dca7ae4b0275dabe3f6fc2adacf6eb6d10282f96b8be43791ef7e2b46",
+        "mapping": {
+          "usable": true,
+          "xScale": 44.5,
+          "yScale": -44.5,
+          "originX": 233.5,
+          "originY": 476.5,
+          "xGridCount": 9,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 322.5,
+              "y": 343,
+              "valueX": 2,
+              "valueY": 3
+            },
+            {
+              "x": 189,
+              "y": 343,
+              "valueX": -1,
+              "valueY": 3
+            },
+            {
+              "x": 367,
+              "y": 165,
+              "valueX": 3,
+              "valueY": 7
+            },
+            {
+              "x": 255.75,
+              "y": 276.25,
+              "valueX": 0.5,
+              "valueY": 4.5
+            }
+          ]
+        },
+        "lineCount": 2,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 2,
+              "y": 3
+            },
+            "pixel": {
+              "x": 322.5,
+              "y": 343
+            },
+            "metadata": {
+              "x": 2,
+              "y": 3
+            }
+          },
+          {
+            "label": "B",
+            "actual": {
+              "x": -1,
+              "y": 3
+            },
+            "pixel": {
+              "x": 189,
+              "y": 343
+            },
+            "metadata": {
+              "x": -1,
+              "y": 3
+            }
+          },
+          {
+            "label": "C",
+            "actual": {
+              "x": 3,
+              "y": 7
+            },
+            "pixel": {
+              "x": 367,
+              "y": 165
+            },
+            "metadata": {
+              "x": 3,
+              "y": 7
+            }
+          },
+          {
+            "label": "M",
+            "actual": {
+              "x": 0.5,
+              "y": 4.5
+            },
+            "pixel": {
+              "x": 255.75,
+              "y": 276.25
+            },
+            "metadata": {
+              "x": 0.5,
+              "y": 4.5
+            }
+          }
+        ],
+        "segmentCount": 2
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천여고_2학기_중간_고1_공통수학2.js#13",
+      "questionNo": 13,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q13-solution.svg",
+        "sha256": "0256a6beb587c0cf23842818c92de6db0a7afda62e91d999f467fefea5bc1231",
+        "mapping": {
+          "usable": true,
+          "xScale": 59.33000000000001,
+          "yScale": -59.33000000000001,
+          "originX": 189,
+          "originY": 372.67,
+          "xGridCount": 8,
+          "yGridCount": 7,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 367,
+              "y": 194.67,
+              "valueX": 3,
+              "valueY": 3
+            },
+            {
+              "x": 284.85,
+              "y": 317.9,
+              "valueX": 1.6154,
+              "valueY": 0.9231
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 3.0001685487948753,
+              "y": 3.000168548794876
+            },
+            "pixel": {
+              "x": 367,
+              "y": 194.67
+            },
+            "metadata": {
+              "x": 3,
+              "y": 3
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 1.615540198887578,
+              "y": 0.9231417495364913
+            },
+            "pixel": {
+              "x": 284.85,
+              "y": 317.9
+            },
+            "metadata": {
+              "x": 1.6153846153846154,
+              "y": 0.9230769230769231
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천여고_2학기_중간_고1_공통수학2.js#19",
+      "questionNo": 19,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "LINE_1_LABEL_DATA_MISMATCH",
+            "LINE_1_LABEL_ENDPOINT_MISMATCH"
+          ]
+        }
+      ],
+      "classification": "D_OLD_VERIFIER_LIMITATION_OR_GEOMETRY_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q19-solution.svg",
+        "sha256": "eac095b35ece9352315d5bfb77efa826e199dde69c876151663111e4d6bbe641",
+        "mapping": {
+          "usable": true,
+          "xScale": 44.5,
+          "yScale": -44.5,
+          "originX": 255.75,
+          "originY": 254,
+          "xGridCount": 6,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": []
+        },
+        "lineCount": 2,
+        "points": [],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_순천여고_2학기_중간_고1_공통수학2.js#20",
+      "questionNo": 20,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_INTERSECTION_MISSING",
+            "VISIBLE_INTERSECTION_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20-solution.svg",
+        "sha256": "8fbde923c248ff460b6a79ab09f26db408fb69d0a79f2f829274c476b33109bd",
+        "mapping": {
+          "usable": true,
+          "xScale": 34.29,
+          "yScale": -34.285,
+          "originX": 278,
+          "originY": 322.57,
+          "xGridCount": 15,
+          "yGridCount": 9,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 449.43,
+              "y": 322.57,
+              "valueX": 5,
+              "valueY": 0
+            },
+            {
+              "x": 278,
+              "y": 219.71,
+              "valueX": 0,
+              "valueY": 3
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "A",
+            "actual": {
+              "x": 4.999416739574221,
+              "y": 0
+            },
+            "pixel": {
+              "x": 449.43,
+              "y": 322.57
+            },
+            "metadata": {
+              "x": 5,
+              "y": 0
+            }
+          },
+          {
+            "label": "T",
+            "actual": {
+              "x": 0,
+              "y": 3.000145836371591
+            },
+            "pixel": {
+              "x": 278,
+              "y": 219.71
+            },
+            "metadata": {
+              "x": 0,
+              "y": 3
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_제일고_2학기_중간_고1_기출.js#15",
+      "questionNo": 15,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
+        "sha256": "55c0f7c36ea9ebe83036b38065a147418b6ffa019517da82cc315044c6c17a72",
+        "mapping": {
+          "usable": true,
+          "xScale": 20,
+          "yScale": -20,
+          "originX": 198,
+          "originY": 324,
+          "xGridCount": 25,
+          "yGridCount": 8,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 118,
+              "y": 254.72,
+              "valueX": -4,
+              "valueY": 3.4641
+            },
+            {
+              "x": 118,
+              "y": 270.41,
+              "valueX": -4,
+              "valueY": 2.6795
+            }
+          ]
+        },
+        "lineCount": 3,
+        "points": [
+          {
+            "label": "V",
+            "actual": {
+              "x": -4,
+              "y": 3.464
+            },
+            "pixel": {
+              "x": 118,
+              "y": 254.72
+            },
+            "metadata": {
+              "x": -4,
+              "y": 3.4641016151377544
+            }
+          },
+          {
+            "label": "I",
+            "actual": {
+              "x": -4,
+              "y": 2.6794999999999987
+            },
+            "pixel": {
+              "x": 118,
+              "y": 270.41
+            },
+            "metadata": {
+              "x": -4,
+              "y": 2.679491924311229
+            }
+          }
+        ],
+        "segmentCount": 0
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    },
+    {
+      "key": "25_효천고_2학기_중간_고1_기출.js#8",
+      "questionNo": 8,
+      "oldStatus": "FAIL",
+      "oldFailGates": [
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "classification": "B_SOLUTION_CAPTION_SEMANTIC_RECHECKED",
+      "independentExpected": [],
+      "actualObserved": {
+        "path": "assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg",
+        "sha256": "9a2f9c361725e4bde9f3207cb0d82815f1e9a2fd31dc25aea848cf0f3790b0e3",
+        "mapping": {
+          "usable": true,
+          "xScale": 59.33000000000001,
+          "yScale": -59.33000000000001,
+          "originX": 189,
+          "originY": 372.67,
+          "xGridCount": 8,
+          "yGridCount": 7,
+          "xSamples": [],
+          "ySamples": [],
+          "visibleCoordinateSamples": [
+            {
+              "x": 367,
+              "y": 194.67,
+              "valueX": 3,
+              "valueY": 3
+            },
+            {
+              "x": 284.85,
+              "y": 317.9,
+              "valueX": 1.6154,
+              "valueY": 0.9231
+            }
+          ]
+        },
+        "lineCount": 1,
+        "points": [
+          {
+            "label": "P",
+            "actual": {
+              "x": 3.0001685487948753,
+              "y": 3.000168548794876
+            },
+            "pixel": {
+              "x": 367,
+              "y": 194.67
+            },
+            "metadata": {
+              "x": 3,
+              "y": 3
+            }
+          },
+          {
+            "label": "H",
+            "actual": {
+              "x": 1.615540198887578,
+              "y": 0.9231417495364913
+            },
+            "pixel": {
+              "x": 284.85,
+              "y": 317.9
+            },
+            "metadata": {
+              "x": 1.6153846153846154,
+              "y": 0.9230769230769231
+            }
+          }
+        ],
+        "segmentCount": 1
+      },
+      "repairAction": "actual primitive verifier로 source-only expected와 SVG endpoint/grid/axis 관측을 재검수하고, 필요한 semantic caption을 보강",
+      "postRepairStatus": "PASS",
+      "postRepairFailGates": []
+    }
+  ]
+}

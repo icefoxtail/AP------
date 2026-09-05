@@ -102,7 +102,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-              {
+                    {
     "id": 4,
     "level": "하",
     "category": "직선의 방정식",
@@ -140,7 +140,7 @@ window.questionBank = [
     "solutionImageCaption": "45°의 기울기=1 · A=(2,1), B=(5,4)",
     "solutionImageSize": "full"
   },
-              {
+                    {
     "id": 5,
     "level": "하",
     "category": "직선의 방정식",
@@ -354,7 +354,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-              {
+                    {
     "id": 11,
     "level": "중",
     "category": "직선의 방정식",

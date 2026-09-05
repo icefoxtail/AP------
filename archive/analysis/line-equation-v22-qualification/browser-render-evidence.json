@@ -1,13 +1,16 @@
 {
   "status": "PASS",
-  "capturedAt": "2026-09-05",
-  "environment": "Chrome extension browser, local http://127.0.0.1:4173, archive/engine.html, qpp=4",
+  "capturedAt": "2026-09-05T09:45:34+09:00",
+  "executedAt": "2026-09-05T09:45:34+09:00",
+  "environment": "Codex in-app browser, local http://127.0.0.1:4173, archive/analysis/line-equation-94/render-harness.html -> archive/engine.html, qpp=4",
   "scope": {
     "files": 28,
     "modes": 84,
     "modeSet": ["exam", "sol", "ans"],
     "freshRun": true,
-    "sourcePaths": "current archive/exams/original/high/h1 production paths"
+    "sourcePaths": "current archive/exams/original/high/h1 production paths",
+    "startHead": "92228ab8ed55e1f9e2f1405bd343b392cccc97de",
+    "testBasis": "actual browser DOM from sequential iframe runs; counts, loaded images, MathJax/SVG visual nodes, and overflow were read from each rendered mode"
   },
   "finalRunAfterGeneratorAndCaptionRepair": {
     "batches": 4,
@@ -31,9 +34,9 @@
     "loadErrorText": "PASS",
     "horizontalOverflow": "PASS",
     "pageConsoleErrors": 0,
-    "browserExtensionChannelErrors": 2
+    "browserExtensionChannelErrors": 0
   },
   "failures": [],
-  "browserExtensionChannelErrorNote": "The two captured console entries were the Chrome extension asynchronous-response channel message, not archive page load/render errors; they remain recorded rather than silently discarded.",
-  "decision": "browser gate PASS; geometry qualification remains separately fail-closed on source/SVG and policy holds"
+  "browserExtensionChannelErrorNote": "No browser console error or extension-channel error was present in the fresh run.",
+  "decision": "browser gate PASS; geometry qualification is independently PASS after source-only / actual-SVG / parity recheck"
 }

@@ -431,7 +431,7 @@ window.questionBank=[
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-                    {
+                          {
     "id": 13,
     "level": "상",
     "category": "직선과 삼각형 넓이",
