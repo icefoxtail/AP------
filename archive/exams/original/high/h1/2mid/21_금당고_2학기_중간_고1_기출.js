@@ -480,6 +480,10 @@ window.questionBank = [
     "wide": false,
     "content": "그림의 두 함수 $f,g:X\\to X$, $X=[0,2]$에 대하여 $y=(f\\circ g)(x)$와 $y=x$의 교점 개수는? [4.1점]",
     "image": "assets/images/21_금당고_2학기_중간_고1_기출/q14.png",
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고1_기출/q14.png",
+    "solutionImageAlt": "함수 f와 g의 그래프 및 합성함수 교점 원본 그림",
+    "solutionImageCaption": "g(x)의 구간별 값이 f의 어느 구간에 들어가는지 확인해 합성함수를 나눈다.",
+    "solutionImageSize": "large",
     "choices": [
       "1",
       "2",
@@ -587,6 +591,10 @@ window.questionBank = [
     "wide": false,
     "content": "집합 $A=\\{1,2,3,4\\}$, $B=\\{2,3,4,5\\}$에 대하여 함수 $f:A\\to B$, $g:B\\to A$가 다음 조건을 만족시킨다. (가) $f(3)=5$, $g(2)=3$이다. (나) 어떤 $x\\in B$에 대하여 $g(x)=x$이다. (다) 모든 $x\\in A$에 대하여 $(f\\circ g\\circ f)(x)=x+1$이다. $f(1)g(3)$의 값을 구하시오. [4.3점]",
     "image": "assets/images/21_금당고_2학기_중간_고1_기출/q17.png",
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고1_기출/q17.png",
+    "solutionImageAlt": "함수 합성 조건과 고정점 조건을 담은 원본 문항 그림",
+    "solutionImageCaption": "f(3), g(2), 고정점 조건 및 f∘g∘f의 관계를 원본에서 확인한다.",
+    "solutionImageSize": "large",
     "choices": [
       "4",
       "6",

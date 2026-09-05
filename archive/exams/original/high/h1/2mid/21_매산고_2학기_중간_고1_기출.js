@@ -406,6 +406,10 @@ window.questionBank = [
     "content": "그림의 $y=f(x)$와 $y=x$를 이용할 때 $(g\\circ f)^{-1}(c)+(f^{-1}\\circ g)(b)$의 값은? 단, $g$는 $f$의 역함수이다. [4.6점]",
     "image": "assets/images/21_매산고_2학기_중간_고1_기출/q12.png",
     "imageSize": "large",
+    "solutionImage": "assets/images/21_매산고_2학기_중간_고1_기출/q12.png",
+    "solutionImageAlt": "함수 f의 그래프와 y=x의 원본 그래프",
+    "solutionImageCaption": "f(c)=b, f(d)=c의 점선 대응을 읽어 역함수 합성을 계산한다.",
+    "solutionImageSize": "large",
     "choices": [
       "$a+b$",
       "$a+c$",

@@ -22,6 +22,10 @@ window.questionBank=[
     "wide": false,
     "content": "그림의 함수 $f:X\\to X$에서 $f(2)$의 값은? [5.3점]",
     "image": "assets/images/21_효천고_2학기_중간_고1_기출/q01.png",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고1_기출/q01.png",
+    "solutionImageAlt": "함수 f의 대응도와 f(2)의 화살표 원본 그림",
+    "solutionImageCaption": "정의역의 2에서 출발한 화살표가 공역의 1에 도착하는 것을 확인한다.",
+    "solutionImageSize": "large",
     "choices": [
       "1",
       "2",
