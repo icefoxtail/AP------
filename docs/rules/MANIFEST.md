@@ -28,5 +28,5 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 8405 bytes | sha256 ba8c41a874b029f55c247b1448cceaebbc514a0033e25504e3a82e6981764756
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 7552 bytes | sha256 03550c7cd9cf076597d0842d0e438bd2badbed6eefd472c7576398a245600cff
 - 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 12188 bytes | sha256 987e848be84fa8fed6b73dc21081f7052cc0bc33efb7d36d37e68fab12b71dc4
-- 04_VISUAL/도형추출.md | 49379 bytes | sha256 ba8b4948c8473512272429150743b2f71202f029518e61aa2a33f1756859ffa0
-- 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 83753 bytes | sha256 43093df187df2e2d64e9bd90a3de8061bf1ee72d00687aeb158c84aedc5bcf68
+- 04_VISUAL/도형추출.md | 51732 bytes | sha256 46104e98928b54b78b04c4e0c9848067e796aa070e15517653608c97cd75e6e2
+- 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 85952 bytes | sha256 1b75144cff732ecb7333f1487286a2161c8d0016e90a0b0f991899d6c99e6811
