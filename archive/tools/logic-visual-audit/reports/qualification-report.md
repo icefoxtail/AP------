@@ -5,11 +5,11 @@
 - V1 coverage: 180/180
 - Required C count: 105
 - Calibration: PASS
-- Holdout: UNSEEN
+- Holdout: REVEALED_PASS
 - Mutation: PASS
-- Qualification render: NOT_TESTED
+- Qualification render: PASS
 - False pass: 0
 - False fail: 0
-- Final judgment: WARN — holdout and qualification render remain pending
+- Final judgment: PASS — LOGIC VISUAL QUALIFICATION INFRA READY
 
 This is a candidate qualification report. It does not grant production release or Common Core D authority.

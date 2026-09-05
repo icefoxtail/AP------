@@ -15,6 +15,8 @@ compute-c-denominator.mjs
 verify-item-semantic-parity.mjs
 audit-visual-structure-duplicates.mjs
 run-mutation-qualification.mjs
+run-holdout-qualification.mjs
+run-qualification-render.mjs
 build-qualification-report.mjs
 ```
 
