@@ -1,0 +1,71 @@
+{
+  "qualificationReportVersion": "logic-visual-qualification-phase1-v1",
+  "ruleStatus": "CANDIDATE_QUALIFICATION_ONLY",
+  "overlayRuleSha": "0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b",
+  "effectiveRulesetSha": "d0bad647ffc771e5cb2adc5ca10b2f87ffc71a40018d1d6dd9a380d69cc33b64",
+  "ruleRoutingBundleSha": "a146d76f238a06d65fdbd711315c27c1bba2ca711cf20bc21ae0759e2cc251f0",
+  "qualificationInputBundle": {
+    "effectiveRulesetSha": "d0bad647ffc771e5cb2adc5ca10b2f87ffc71a40018d1d6dd9a380d69cc33b64",
+    "ruleRoutingBundleSha": "a146d76f238a06d65fdbd711315c27c1bba2ca711cf20bc21ae0759e2cc251f0",
+    "overlayRuleSha": "0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b",
+    "verifierSha": "4740deb8313d41cc43d38dcde3f7b11afcba90397725194e567450570911588f",
+    "observedExtractionEngineSha": "c765f8511bbc41bbae46014eb590ac726e8756f34d4aeb5c39a2a3d5b5ddc54a",
+    "visualGeneratorSha": "c765f8511bbc41bbae46014eb590ac726e8756f34d4aeb5c39a2a3d5b5ddc54a",
+    "staticContractToolSha": "694222917a2a9022a17c528c17ccb2996c3a057b64cc6a7ca5ff5ccaf100bee8",
+    "rendererSemanticProfileSha": "6e85bb5dd4161266fdfa77e4e95f2bb3ef506fc7fb4506e38c0e79067835bb93",
+    "styleCssBundleSha": "dc1275a69618e842021b36c255300a221b38cb47fe4e6f492863bd5da3b90178",
+    "factSchemaSha": "3a5739f721104da30a391246ef4bd7a6d9d3807854ed797ef8638af38cc32e9b",
+    "logicVisualFactCanonicalizationSpecSha": "35c787f0bf85359233a83e76ac6635d68fc3d69bac25918c8a3fca492b91c371",
+    "semanticProjectionSpecSha": "32e0d7317524f482afd5089f3625628ac41121c1a0e0cd79ac916620bc4b0b5d",
+    "calibrationCorpusSha": "5a57781c0309ced17b494189006b635abf3413a396bb74a05e9272130d57d61b",
+    "mutationCorpusSha": "4be4afb624db074a4b6e10abb87f6b0cfcb1a70fbbeb00f6bdf8a799407aaf8c",
+    "holdoutCorpusSha": "efee83858e15a801524a811a5019889a6cd4ddbb3a03d331ada177484159126f",
+    "expectedDetectorMapSha": "b79b82cb561947d179ddc38a35552a2bb3484b52d95ccb4485a9ec480bf44c2d"
+  },
+  "finalTargetCount": 180,
+  "v1VisualTriageCoverageCount": 180,
+  "finalLogicVisualRequiredCount": 105,
+  "logicVisualRequiredUidSetSha": "e74b0c148ad816f22b1c4c0fe59559a27a8e497c3115b44f6b69e3d4fee4c2f3",
+  "logicVisualReviewedUidSetSha": "4da8cd8b6169ef7c2c7452cbe3b143ec25294f90ebf5c1d7eef2fda6e3530c91",
+  "overlayCoreMembershipParity": "PASS",
+  "calibration": {
+    "pass": true,
+    "passCount": 7,
+    "expectedFailCount": 4,
+    "detectedExpectedFailCount": 4,
+    "rawSemanticFailCount": 4
+  },
+  "holdout": {
+    "status": "UNSEEN",
+    "pass": false,
+    "note": "Holdout is not revealed during calibration pilot."
+  },
+  "mutation": {
+    "pass": true,
+    "passCount": 7,
+    "failCount": 0,
+    "mutationQualificationCurrent": "PASS",
+    "mutationExpectedDetectorMapSha": "b79b82cb561947d179ddc38a35552a2bb3484b52d95ccb4485a9ec480bf44c2d"
+  },
+  "qualificationRender": {
+    "pass": false,
+    "status": "NOT_TESTED",
+    "note": "Semantic qualification render harness remains separate from Common Core D."
+  },
+  "falsePassCount": 0,
+  "falseFailCount": 0,
+  "structuralDuplicateFailCount": 0,
+  "final判定": "WARN — holdout and qualification render remain pending",
+  "generatedAt": "2026-09-05T05:57:00.685Z",
+  "FINAL_TARGET_COUNT": 180,
+  "V1_VISUAL_TRIAGE_COVERAGE_COUNT": 180,
+  "FINAL_LOGIC_VISUAL_REQUIRED_COUNT": 105,
+  "LOGIC_VISUAL_REQUIRED_UID_SET_SHA": "e74b0c148ad816f22b1c4c0fe59559a27a8e497c3115b44f6b69e3d4fee4c2f3",
+  "LOGIC_VISUAL_REVIEWED_UID_SET_SHA": "4da8cd8b6169ef7c2c7452cbe3b143ec25294f90ebf5c1d7eef2fda6e3530c91",
+  "CORE_FINAL_C_REQUIRED_UID_SET_SHA": "e74b0c148ad816f22b1c4c0fe59559a27a8e497c3115b44f6b69e3d4fee4c2f3",
+  "C_DENOMINATOR_INPUT_SHA": "ba2afabd1e030ff483a3212358ec4f52038fe722869774170d092081c2f74893",
+  "MUTATION_QUALIFICATION_CURRENT": "PASS",
+  "LOGIC_VISUAL_QUALIFICATION_RENDER_PASS": "NOT_TESTED",
+  "FALSE_PASS_COUNT": 0,
+  "qualificationInputBundleSha": "e3939bada2563eddbb1979a0efaf8daf6ec844e19d162188dd5fe20b81711313"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "visualTypes": {
+    "SET_REGION_VENN_2": { "requiredFields": ["boundaryTopology", "highlightedExpressions", "highlightTopology"] },
+    "SET_REGION_VENN_3": { "requiredFields": ["boundaryTopology", "highlightedExpressions", "highlightTopology"] },
+    "SET_INCLUSION_VENN": { "requiredFields": ["boundaryTopology", "inclusionEdges"] },
+    "SET_NUMBER_LINE": { "requiredFields": ["intervalComponents"] },
+    "SET_CARDINALITY_VENN": { "requiredFields": ["boundaryTopology", "cardinalityClaims"] },
+    "SET_FORCE_FORBID_FREE": { "requiredFields": ["forcedElements", "forbiddenElements", "freeElements"] },
+    "SET_CASE_PARTITION": { "requiredFields": ["caseRows"] },
+    "SET_GRAPH_DEFINED": { "requiredFields": ["pointCount", "axisLabels"] },
+    "TRUTH_SET_VENN": { "requiredFields": ["boundaryTopology", "truthSetRegions"] },
+    "TRUTH_SET_NUMBER_LINE": { "requiredFields": ["intervalComponents"] },
+    "IMPLICATION_FLOW": { "requiredFields": ["proofEdges"] },
+    "CONTRAPOSITIVE_MAP": { "requiredFields": ["proofEdges", "mappingKind"] },
+    "QUANTIFIER_NEGATION_MAP": { "requiredFields": ["quantifierDomain", "mappingKind"] },
+    "COUNTEREXAMPLE_CARD": { "requiredFields": ["quantifierDomain", "counterexample"] },
+    "PROOF_FLOW": { "requiredFields": ["proofSteps", "proofEdges"] },
+    "TRUTH_TABLE": { "requiredFields": ["truthVector", "caseRows"] },
+    "CASE_TABLE": { "requiredFields": ["caseRows"] }
+  }
+}

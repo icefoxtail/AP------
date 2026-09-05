@@ -1,0 +1,12 @@
+{
+  "specVersion": "MUTATION_EXPECTED_DETECTOR_MAP_v1",
+  "cases": [
+    { "mutationId": "venn-intersection-swap", "sourceVisualType": "SET_REGION_VENN_3", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
+    { "mutationId": "venn-complement-region-delete", "sourceVisualType": "SET_REGION_VENN_3", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
+    { "mutationId": "number-line-endpoint-open-close", "sourceVisualType": "SET_NUMBER_LINE", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
+    { "mutationId": "force-to-free", "sourceVisualType": "SET_FORCE_FORBID_FREE", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
+    { "mutationId": "arrow-direction-reverse", "sourceVisualType": "IMPLICATION_FLOW", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
+    { "mutationId": "truth-table-row-delete", "sourceVisualType": "TRUTH_TABLE", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
+    { "mutationId": "duplicate-structure-different-fact", "sourceVisualType": "SET_NUMBER_LINE", "gate": "STRUCTURAL_REUSE_REVIEW" }
+  ]
+}
