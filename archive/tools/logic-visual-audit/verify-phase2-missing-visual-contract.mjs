@@ -27,9 +27,10 @@ const results = corpus.cases.map((item) => {
   const sourceLinkPass = sourceObject?.solutionImage === connected?.image;
   const factHashPass = generated?.factHash === sha256(item.fact);
   const svgContractPass = Boolean(svg && /<title\b/.test(svg) && /<desc\b/.test(svg) && !/answer|정답|선택지/.test(svg) && svg.includes(item.title));
+  const semanticVisibilityPass = semanticVisible(item, svg);
   const artifactPass = artifact?.artifactExists === true && artifact.artifactSha === generated?.artifactSha;
-  const pass = Boolean(generated && connected && sourceLinkPass && factHashPass && svgContractPass && artifactPass && renderResult?.pass);
-  return { questionUid: item.questionUid, visualType: item.visualType, sourceLinkPass, factHashPass, svgContractPass, artifactPass, renderPass: renderResult?.pass === true, pass };
+  const pass = Boolean(generated && connected && sourceLinkPass && factHashPass && svgContractPass && semanticVisibilityPass && artifactPass && renderResult?.pass);
+  return { questionUid: item.questionUid, visualType: item.visualType, sourceLinkPass, factHashPass, svgContractPass, semanticVisibilityPass, artifactPass, renderPass: renderResult?.pass === true, pass };
 });
 const report = { verifierVersion: 'logic-visual-phase2-missing-contract-v1', corpusSha: sha256(corpus), results, pass: results.every((item) => item.pass), passCount: results.filter((item) => item.pass).length, failCount: results.filter((item) => !item.pass).length };
 report.reportSha = sha256(report);
@@ -45,4 +46,14 @@ function sourceQuestion(source, qid) {
   } catch {
     return null;
   }
+}
+
+function semanticVisible(item, svg) {
+  const visible = svg.replaceAll('&gt;', '>').replaceAll('&lt;', '<').replaceAll('&amp;', '&').replaceAll('&quot;', '"');
+  const fact = item.fact;
+  if (item.visualType === 'PROOF_FLOW') return (fact.proofSteps ?? []).every((step) => visible.includes(step));
+  if (item.visualType === 'TRUTH_SET_VENN') return (fact.truthSetRegions ?? []).every((region) => visible.includes(region));
+  if (item.visualType === 'TRUTH_SET_NUMBER_LINE') return (fact.intervalComponents ?? []).every((component) => visible.includes(String(component.from)) && visible.includes(String(component.to)));
+  if (item.visualType === 'CASE_TABLE') return (fact.caseRows ?? []).every((row) => visible.includes(row.caseId));
+  return false;
 }

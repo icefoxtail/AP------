@@ -62,7 +62,7 @@ function numberLine(item) {
 function caseTable(item) {
   const rows = item.fact.caseRows ?? [];
   let body = `<text x="28" y="38" font-size="22" font-weight="700">${esc(item.title)}</text><text x="28" y="67" class="muted" font-size="15">${esc(item.note.split('\n')[0])}</text><rect x="42" y="96" width="676" height="${rows.length * 50 + 34}" rx="12" fill="#fff" stroke="#cbd5e1"/>`;
-  rows.forEach((row, index) => { const y = 130 + index * 50; body += `<line x1="42" y1="${y}" x2="718" y2="${y}" stroke="#e2e8f0"/><text x="68" y="${y + 30}" font-size="16" font-weight="700">${esc(row.caseId)}</text><text x="280" y="${y + 30}" class="muted" font-size="15">${esc(item.note.split('\n')[index + 1] ?? '')}</text>`; });
+  rows.forEach((row, index) => { const y = 130 + index * 50; body += `<line x1="42" y1="${y}" x2="718" y2="${y}" stroke="#e2e8f0"/><text x="68" y="${y + 30}" class="case-label" font-size="16" font-weight="700">${esc(row.caseId)}</text><text x="280" y="${y + 30}" class="muted" font-size="15">${esc(item.note.split('\n')[index + 1] ?? '')}</text>`; });
   return body;
 }
 
