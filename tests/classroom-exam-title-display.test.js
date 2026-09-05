@@ -114,6 +114,23 @@ async function renderListWith({ sessions = [], assignments = [] } = {}) {
   });
   assert(html.includes('25_yeonhyang_m3_final'), 'archive mismatch should keep the session archive display title');
 
+  const unitPastAssignment = makeAssignment({
+    exam_title: 'unitpast_h1-through-2final-v2_H22-C2-03_102fc077',
+    archive_file: 'MIXED:unitpast_h1-through-2final-v2_H22-C2-03_102fc077',
+    mixed_payload_json: JSON.stringify({ meta: { title: '원의 방정식', unitName: '원의 방정식' } })
+  });
+  html = await renderListWith({ assignments: [unitPastAssignment] });
+  assert(html.includes('원의 방정식 · 단원별 기출'), 'unit-past assignment should show its human-readable unit title');
+  assert(!html.includes('classroom-exam-history-title">unitpast_h1-through-2final-v2_H22-C2-03_102fc077'), 'unit-past internal snapshot key should not be shown as the card title');
+  assert.strictEqual(
+    context.getClassroomExamDisplayTitle({
+      exam_title: unitPastAssignment.exam_title,
+      archive_file: unitPastAssignment.archive_file
+    }),
+    '원의 방정식 · 단원별 기출',
+    'unit-past title fallback should resolve the H22-C2-03 key without payload metadata'
+  );
+
   html = await renderListWith({
     sessions: [makeSession({ archive_file: '', exam_title: 'fallback-title' })],
     assignments: []

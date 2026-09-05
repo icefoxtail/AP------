@@ -203,10 +203,67 @@ function getClassroomExamArchiveDisplayTitle(raw = '') {
         .trim();
 }
 
+const CLASSROOM_UNIT_PAST_KEY_LABELS = Object.freeze({
+    'H22-C-01': '다항식의 연산',
+    'H22-C-02': '항등식과 나머지 정리',
+    'H22-C-03': '인수분해',
+    'H22-C-04': '복소수와 이차방정식',
+    'H22-C-05': '이차방정식과 이차함수',
+    'H22-C-06': '여러 가지 방정식과 부등식',
+    'H22-C-07': '합의 법칙과 곱의 법칙',
+    'H22-C-08': '순열과 조합',
+    'H22-C-09': '행렬과 그 연산',
+    'H22-C2-01': '평면좌표',
+    'H22-C2-02': '직선의 방정식',
+    'H22-C2-03': '원의 방정식',
+    'H22-C2-04': '도형의 이동',
+    'H22-C2-05': '집합',
+    'H22-C2-06': '명제',
+    'H22-C2-07': '함수',
+    'H22-C2-08': '유리함수',
+    'H22-C2-09': '무리함수'
+});
+
 function getClassroomExamDisplayTitle(row = {}) {
-    return getClassroomExamArchiveDisplayTitle(row.archiveFile || row.archive_file || '') ||
-        String(row.exam_title || row.title || '').trim() ||
-        '원내평가';
+    const archive = String(
+        row.archiveFile || row.archive_file ||
+        row.assignment?.archiveFile || row.assignment?.archive_file || ''
+    ).trim();
+    const rawExamTitle = String(row.exam_title || row.title || '').trim();
+    const unitPastSource = /^MIXED:unitpast_/i.test(archive) || /^unitpast_/i.test(archive)
+        ? archive
+        : (/^MIXED:unitpast_/i.test(rawExamTitle) || /^unitpast_/i.test(rawExamTitle) ? rawExamTitle : '');
+
+    if (unitPastSource) {
+        let meta = {};
+        const candidates = [row, row.assignment].filter(candidate => candidate && typeof candidate === 'object');
+        for (const candidate of candidates) {
+            const raw = candidate.mixed_payload_json || candidate.mixedPayloadJson || '';
+            if (typeof raw !== 'string' || !raw.trim()) continue;
+            try {
+                const payload = JSON.parse(raw);
+                if (payload?.meta && typeof payload.meta === 'object') {
+                    meta = payload.meta;
+                    break;
+                }
+            } catch (e) {
+                // 구형 출제본의 비정상 payload는 단원 키 fallback으로 처리한다.
+            }
+        }
+
+        const candidate = [meta.title, meta.identityTitle, meta.unitName, row.unit_name, row.unitName, rawExamTitle]
+            .map(value => String(value || '').trim())
+            .find(value => value && !/^MIXED:unitpast_/i.test(value) && !/^unitpast_/i.test(value));
+        const compact = unitPastSource.replace(/^MIXED:/i, '');
+        const unitKeyMatch = compact.match(/(?:^|_)((?:H|M)\d{1,2}(?:-[A-Za-z0-9]+)+)_[a-f0-9]{8}$/i);
+        const unitKey = unitKeyMatch ? unitKeyMatch[1] : '';
+        const unitLabel = candidate || CLASSROOM_UNIT_PAST_KEY_LABELS[unitKey] || unitKey;
+        if (!unitLabel) return '단원별 기출';
+        const withoutDuplicateSuffix = unitLabel.replace(/\s*·\s*단원별 기출\s*$/i, '').trim();
+        return `${withoutDuplicateSuffix} · 단원별 기출`;
+    }
+
+    return getClassroomExamArchiveDisplayTitle(archive) || rawExamTitle || '원내평가';
 }
 
 function makeExamListKey(title, date, archiveFile = '') {
@@ -305,7 +362,7 @@ async function openExamGradeView(classId) {
 
     const exams = Object.values(grouped).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.title).localeCompare(String(a.title)));
     const rows = exams.map(exam => {
-        const displayTitle = getClassroomExamDisplayTitle(exam);
+        const displayTitle = exam.displayTitle || getClassroomExamDisplayTitle(exam);
         const cnt = exam.sessions.length;
         const qCount = exam.questionCount || exam.sessions[0]?.question_count || exam.assignment?.question_count || 0;
         const avg = cnt ? Math.round(exam.sessions.reduce((sum, s) => sum + Number(s.score || 0), 0) / cnt) : '-';
@@ -314,18 +371,20 @@ async function openExamGradeView(classId) {
         const pct = targetCount ? Math.round((cnt / targetCount) * 100) : 0;
         const archiveArg = apJsArg(exam.archiveFile || '');
         const assignmentArg = apJsArg(exam.assignment?.id || '');
-        return `<div onclick="openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg})" style="padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.2s;">
-            <div>
-                <div style="font-weight:500; color: var(--text); font-size: 15px; line-height: 1.4;">${apEscapeHtml(displayTitle)}</div>
-                <div style="font-size: 11px; color: var(--secondary); margin-top: 4px; font-weight: 400; line-height: 1.5;">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${targetCount}명 (${pct}%)</div>
+        return `<div class="classroom-exam-history-row" onclick="openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg})">
+            <div class="classroom-exam-history-main">
+                <div class="classroom-exam-history-title">${apEscapeHtml(displayTitle)}</div>
+                <div class="classroom-exam-history-meta">${exam.date} · ${qCount}문항 · 제출 ${cnt}/${targetCount}명 (${pct}%)</div>
             </div>
-            <div style="text-align: right; display: flex; align-items: center; gap: 10px;">
-                <div>
-                    <div style="font-size: 20px; font-weight:500; color: var(--primary); line-height: 1;">${avg}</div>
-                    <div style="font-size: 10px; color: var(--secondary); font-weight:500; margin-top:4px;">평균</div>
+            <div class="classroom-exam-history-actions">
+                <div class="classroom-exam-history-average" aria-label="평균 ${apEscapeHtml(avg)}점">
+                    <div class="classroom-exam-history-average-value">${avg}</div>
+                    <div class="classroom-exam-history-average-label">평균</div>
                 </div>
-               <button class="btn apms-button apms-button--quiet" onclick="event.stopPropagation(); openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg});" style="padding: 7px 10px; font-size: 11px; font-weight:500; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border);">학생별 입력</button>
-               <button class="btn apms-button apms-button--quiet btn-danger" onclick="event.stopPropagation(); deleteExamByClass('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg}, ${assignmentArg});" style="min-height:32px; padding: 4px 10px; font-size: 11px; font-weight:500; border-radius: 8px; color: var(--error); background: rgba(var(--error-rgb),0.08); border: 1px solid rgba(var(--error-rgb),0.18);">삭제</button>
+                <div class="classroom-exam-history-buttons">
+                    <button class="btn apms-button apms-button--quiet classroom-exam-history-button" onclick="event.stopPropagation(); openExamDetail('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg});">학생별 입력</button>
+                    <button class="btn apms-button apms-button--quiet btn-danger classroom-exam-history-button classroom-exam-history-button--danger" onclick="event.stopPropagation(); deleteExamByClass('${classId}', ${apJsArg(exam.title || '')}, '${exam.date}', ${archiveArg}, ${assignmentArg});">삭제</button>
+                </div>
             </div>
         </div>`;
     }).join('');
@@ -479,7 +538,8 @@ async function openExamDetail(classId, examTitle, examDate, archiveFile = '') {
         : '';
     const detailDisplayTitle = getClassroomExamDisplayTitle({
         title: examTitle,
-        archiveFile: examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || archiveFile || ''
+        archiveFile: examArchiveFileObj?.archive_file || matchedAssignment?.archive_file || archiveFile || '',
+        assignment: matchedAssignment
     });
 
     const submittedHTML = submitted.map(s => {
