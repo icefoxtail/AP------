@@ -25,6 +25,17 @@
     "dualRun": "skipped: recipient-composition-legacy-only",
     "promotion": "No shared composition comparator exists. This is legacy render coverage, not a canonical promotion witness."
   },
+  "payloadModeLegacyCoverage": {
+    "kind": "actual-browser-render",
+    "launcher": "tests/fixtures/wrong-print-modes-launcher.html?payloadMode=<class|grade|type>",
+    "runs": [
+      { "payloadMode": "class", "questionCount": 2, "observedHeader": "반 QA 반", "observed": ["source restore", "correct-rate note"] },
+      { "payloadMode": "grade", "questionCount": 2, "observedHeader": "학년 중3", "observed": ["source restore", "correct-rate note"] },
+      { "payloadMode": "type", "questionCount": 2, "observedHeader": "반 QA 반", "observed": ["source restore", "correct-rate note"] }
+    ],
+    "dualRun": "skipped: recipient-composition-legacy-only",
+    "promotion": "These are required Clinic legacy-business-mode renders. They do not imply shared recipient/layout promotion."
+  },
   "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
   "legacyRendererRetained": true
 }

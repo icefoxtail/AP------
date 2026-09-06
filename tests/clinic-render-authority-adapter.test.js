@@ -5,6 +5,7 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engine.html'), 'utf8');
 const launcher = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-layout-launcher.html'), 'utf8');
+const modeLauncher = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-modes-launcher.html'), 'utf8');
 
 test('Clinic adapter restores source identity before opt-in single-student dual-run and retains recipient legacy paths', () => {
   assert.match(engine, /src="\.\.\/archive\/print-contract\.js\?v=20260906\.2"/);
@@ -24,6 +25,11 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
   assert.match(launcher, /wrong-print-duplex-bank\.js/);
   const duplexBank = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-duplex-bank.js'), 'utf8');
   assert.match(duplexBank, /Array\.from\(\{ length: 72 \}/);
+  assert.match(modeLauncher, /\['class', 'grade', 'type'\]/);
+  assert.match(modeLauncher, /classWrongItems/);
+  assert.match(modeLauncher, /gradeWrongItems/);
+  assert.match(modeLauncher, /typeItems/);
+  assert.match(modeLauncher, /renderAuthorityDualRun=1/);
 });
 
 test('Clinic single-student restored-source browser fixture records parity across all three modes', () => {
@@ -36,4 +42,7 @@ test('Clinic single-student restored-source browser fixture records parity acros
   assert.equal(evidence.multiRecipientLegacyCoverage.firstStudentPacketPages, 3);
   assert.equal(evidence.multiRecipientLegacyCoverage.dualRun, 'skipped: recipient-composition-legacy-only');
   assert.match(evidence.multiRecipientLegacyCoverage.blankPageAccessibility, /accessibility tree/);
+  assert.deepEqual(evidence.payloadModeLegacyCoverage.runs.map(run => run.payloadMode), ['class', 'grade', 'type']);
+  assert.ok(evidence.payloadModeLegacyCoverage.runs.every(run => run.questionCount === 2 && run.observed.includes('source restore')));
+  assert.equal(evidence.payloadModeLegacyCoverage.dualRun, 'skipped: recipient-composition-legacy-only');
 });
