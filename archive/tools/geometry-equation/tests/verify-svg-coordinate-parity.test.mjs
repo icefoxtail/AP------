@@ -11,7 +11,7 @@ const verifierPath = fileURLToPath(new URL('../verify-svg-coordinate-parity.mjs'
 
 function fixture(svg, expectedFacts, { renderResult = 'PASS' } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-svg-coordinate-parity-'));
-  const coordinateAnchors = '<circle id="model-origin" cx="300" cy="300" r="1" fill="black"/><circle id="model-x-unit" cx="360" cy="300" r="1" fill="black"/><circle id="model-y-unit" cx="300" cy="240" r="1" fill="black"/>';
+  const coordinateAnchors = '<line id="model-x-axis" x1="180" y1="300" x2="480" y2="300"/><line id="model-y-axis" x1="300" y1="420" x2="300" y2="180"/><circle id="model-x-unit" cx="360" cy="300" r="1" fill="black"/><circle id="model-y-unit" cx="300" cy="240" r="1" fill="black"/>';
   fs.writeFileSync(path.join(root, 'fixture.svg'), svg.replace('</svg>', `${coordinateAnchors}</svg>`), 'utf8');
   return {
     root,
@@ -27,7 +27,7 @@ function fixture(svg, expectedFacts, { renderResult = 'PASS' } = {}) {
         sx: 60,
         sy: 60,
         anchors: {
-          origin: { element: 'model-origin', expected: [0, 0] },
+          origin: { type: 'INTERSECTION', elements: ['model-x-axis', 'model-y-axis'], expected: [0, 0] },
           xAxis: { element: 'model-x-unit', expected: [1, 0] },
           yAxis: { element: 'model-y-unit', expected: [0, 1] }
         }
@@ -61,6 +61,17 @@ test('coordinate model spoof: mismatched anchors block SVG math pass', () => {
   } finally { f.cleanup(); }
 });
 
+test('fake origin helper point cannot replace the actual axis intersection', () => {
+  const f = fixture('<svg><circle id="fake-origin" cx="240" cy="300" r="1" fill="black"/><circle id="point-P" cx="360" cy="180" r="4"/></svg>', [{ factId: 'P', type: 'POINT', element: 'point-P', expected: [1, 2] }]);
+  try {
+    f.input.coordinateModel.originX = 240;
+    const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
+    assert.equal(result.coordinateModelParity, 'FAIL');
+    assert.equal(result.svgMathStatus, 'FAIL');
+    assert.deepEqual(result.coordinateModelAnchors.find(anchor => anchor.role === 'origin').observed, [1, 0]);
+  } finally { f.cleanup(); }
+});
+
 test('oversized global and per-fact tolerances are rejected', () => {
   const f = fixture('<svg><circle id="point-P" cx="360" cy="180" r="4"/></svg>', [{ factId: 'P', type: 'POINT', element: 'point-P', expected: [1, 2], tolerance: 0.06 }]);
   try {
@@ -89,6 +100,16 @@ test('open or closed state without explicit circle fill is not tested', () => {
     const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
     assert.equal(result.facts[0].result, 'NOT_TESTED');
     assert.equal(result.facts[0].reason, 'OPEN_CLOSED_EXPLICIT_FILL_REQUIRED');
+    assert.equal(result.svgMathStatus, 'FAIL');
+  } finally { f.cleanup(); }
+});
+
+test('open or closed state requires a circle element', () => {
+  const f = fixture('<svg><rect id="endpoint" x="356" y="176" width="8" height="8" fill="none"/><line id="branch" x1="300" y1="300" x2="360" y2="180"/></svg>', [{ factId: 'OPEN', type: 'OPEN_CLOSED_POINT', element: 'endpoint', pointIndex: 'center', branchElement: 'branch', expected: { point: [1, 2], branchPoint: [1, 2], closed: false } }]);
+  try {
+    const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
+    assert.equal(result.facts[0].result, 'NOT_TESTED');
+    assert.equal(result.facts[0].reason, 'OPEN_CLOSED_CIRCLE_REQUIRED');
     assert.equal(result.svgMathStatus, 'FAIL');
   } finally { f.cleanup(); }
 });

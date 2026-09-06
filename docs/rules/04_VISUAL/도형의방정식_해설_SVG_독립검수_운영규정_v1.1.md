@@ -497,19 +497,21 @@ selector를 찾는 보조 정보도 아니며, OBSERVED FACT 증거가 아니다
 fill/open 상태뿐 아니라 실제 branch endpoint를 `branchElement`로 지정해 접근값까지 비교한다.
 
 `coordinateModel`의 `originX`, `originY`, `sx`, `sy`는 입력되었다는 이유만으로 신뢰하지 않는다.
-독립검수 input에는 실제 SVG element를 가리키는 `anchors.origin`, `anchors.xAxis`,
-`anchors.yAxis`를 반드시 두고, 각각 `(0,0)`, x축 기준점 `(x,0)`, y축 기준점 `(0,y)`을
-geometry에서 역산해 대조한다. `COORDINATE_MODEL_PARITY == PASS`가 아니면 `SVG_MATH_PASS`를
-선언하지 않는다.
+독립검수 input의 `anchors.origin`은 실제 SVG x-axis `<line>`과 y-axis `<line>` 두 개의
+`INTERSECTION`만 허용하며, helper point나 임의 element로 대체하지 않는다. 선언한
+`(originX, originY)`와 이 실제 축 교점이 `(0,0)`으로 역산되어야 한다. `anchors.xAxis`,
+`anchors.yAxis`의 scale anchor 구조는 유지한다. 실제 축 확인 불가·교점 불일치·`NOT_TESTED`이면
+`COORDINATE_MODEL_PARITY == PASS`가 아니므로 `SVG_MATH_PASS`를 선언하지 않는다.
 
 허용오차는 기본값 또는 fact별 값 모두 `0.05` math unit 이하로 고정한다. 상한보다 큰 값,
 음수, 수치가 아닌 tolerance는 `FAIL`이며 PASS를 만들기 위한 사후 완화는 금지한다.
 
 `LINE_SLOPE`, `INTERCEPT`, `PARALLEL`, `PERPENDICULAR`, `INTERSECTION`은 이번 최소 구현에서
 실제 `<line>` element에만 적용한다. `polyline`/`polygon`의 첫점·끝점으로 직선 의미를 추정하지
-않으며 그런 input은 `NOT_TESTED`로 V2 PASS를 금지한다. `OPEN_CLOSED_POINT`의 circle은 element
-자체에 직접 `fill` attribute가 있어야 한다. 부모 `<g>`·CSS 상속은 이번 구현에서 해석하지 않으므로
-explicit fill이 없거나 직접 판정할 수 없는 fill 값이면 `NOT_TESTED`다.
+않으며 그런 input은 `NOT_TESTED`로 V2 PASS를 금지한다. `OPEN_CLOSED_POINT`의 대상 element는
+반드시 `<circle>`이며 circle 자체에 직접 `fill` attribute가 있어야 한다. 부모 `<g>`·CSS 상속은
+이번 구현에서 해석하지 않으므로 circle이 아니거나 explicit fill이 없거나 직접 판정할 수 없는 fill
+값이면 `NOT_TESTED`다.
 
 #### V2-C. EXPECTED ↔ OBSERVED HARD GATE
 
