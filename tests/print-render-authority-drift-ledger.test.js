@@ -31,7 +31,8 @@ const requiredDrifts = [
   'DRIFT_DUPLEX_BLANK_015',
   'DRIFT_SOURCE_RESTORE_FAILURE_016',
   'DRIFT_VIEW_LABEL_SEMANTICS_017',
-  'DRIFT_SOURCE_IDENTITY_018'
+  'DRIFT_SOURCE_IDENTITY_018',
+  'DRIFT_INDEPENDENT_QR_CHANNELS_019'
 ];
 
 function source(file) {
@@ -66,6 +67,7 @@ test('The ledger records current production differences rather than a desired-bu
   assert.equal(byId.get('DRIFT_MIXER_QPP_002').migrationRequired, false);
   assert.equal(byId.get('DRIFT_PRINT_TRANSPORT_005').disposition, 'PRESERVE_DIFFERENCE');
   assert.equal(byId.get('DRIFT_MIXER_SOURCE_PERSISTENCE_006').migrationRequired, false);
+  assert.equal(byId.get('DRIFT_INDEPENDENT_QR_CHANNELS_019').disposition, 'CANONICALIZE_TO_NEW_CONTRACT');
 
   const archive = source('archive/engine.html');
   const mixed = source('archive/mixed_engine.html');
@@ -79,4 +81,8 @@ test('The ledger records current production differences rather than a desired-bu
   assert.match(clinic, /문항 복원 실패/);
   assert.match(mixed, /return \[4, 6, 8\]\.includes\(parsed\) \? parsed : 4;/);
   assert.match(source('archive/mixer.html'), /<option value="2">2문항\/P<\/option>/);
+  assert.match(archive, /function shouldRenderSolutionQr\(\)/);
+  assert.match(archive, /function shouldRenderSubmitQr\(\)/);
+  assert.match(archive, /injectQrToLastExamPage\(area\);/);
+  assert.match(archive, /injectSubmitQrToLastExamPage\(area\);/);
 });

@@ -212,6 +212,17 @@
       "relatedFixtureIds": ["mixer-multiple-sources", "mixer-same-question-no"],
       "migrationRequired": true,
       "sourceEvidence": ["archive/engine.html:1327", "archive/mixed_engine.html:1035", "apmath/wrong_print_engine.html:637"]
+    },
+    {
+      "driftId": "DRIFT_INDEPENDENT_QR_CHANNELS_019",
+      "archiveBehavior": "Reads submitQr and solQr independently, then calls injectQrToLastExamPage and injectSubmitQrToLastExamPage separately.",
+      "mixerBehavior": "Reads submitQr and solQr independently, then calls the two QR injection paths separately.",
+      "clinicBehavior": "Uses recipient-specific solution QR behavior rather than Archive/Mixer's two independent exam channels.",
+      "disposition": "CANONICALIZE_TO_NEW_CONTRACT",
+      "rationale": "PrintSection preserves qrPolicies[] so submit and solution QR channels coexist without enum information loss; Clinic adapter maps its recipient channel independently.",
+      "fixtureId": "archive-mixer-independent-qr-channels",
+      "migrationRequired": true,
+      "sourceEvidence": ["archive/engine.html:630", "archive/engine.html:744", "archive/engine.html:2185", "archive/mixed_engine.html:625", "archive/mixed_engine.html:2186"]
     }
   ]
 }
