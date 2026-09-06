@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateIdentityRows } from '../../pipeline-core/integration.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "../../../..");
@@ -52,6 +53,7 @@ export function validateTagCandidates() {
   const master = readJson(path.join(TOOL_DIR, "data", "tag-master.seed.json"));
   const report = readJson(candidatesPath);
   const issues = [];
+  for (const message of validateIdentityRows(report.candidates, row => row.sourceFile && Number.isSafeInteger(row.questionId) && row.questionId > 0 ? `${row.sourceFile}|${row.questionId}` : '')) addIssue(issues, 'error', null, message);
   const seen = new Set();
   const knownSubUnits = new Set(master.subUnits.map((item) => item.subUnitKey));
   const knownConcepts = new Set(master.conceptClusters);
@@ -66,7 +68,7 @@ export function validateTagCandidates() {
     if (!ALLOWED_STATUS.has(candidate.tagStatus)) addIssue(issues, "error", candidate, `invalid tagStatus: ${candidate.tagStatus}`);
 
     const identity = `${candidate.sourceFile}#${candidate.questionId ?? candidate.originalIndex}`;
-    if (seen.has(identity)) addIssue(issues, "warning", candidate, `duplicate source/question identity: ${identity}`);
+    if (seen.has(identity)) addIssue(issues, "error", candidate, `duplicate source/question identity: ${identity}`);
     seen.add(identity);
 
     if (candidate.tagStatus === "auto_high" && !candidate.problemTypeKeyCandidate) addIssue(issues, "error", candidate, "auto_high missing problemTypeKeyCandidate");
@@ -103,6 +105,8 @@ export function validateTagCandidates() {
       warnings: warnings.length,
     },
     pass: errors.length === 0,
+    statusScope: 'METADATA_CANDIDATE_SCHEMA_ONLY',
+    productionAuthorized: false,
     issues,
   };
 }

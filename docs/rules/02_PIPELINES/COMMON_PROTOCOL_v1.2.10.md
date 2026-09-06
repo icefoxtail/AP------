@@ -5,7 +5,7 @@
 - 기준 저장소: `icefoxtail/AP------`
 - 적용 범위: JS아카이브 원본 production 문항의 단원별 전수 품질 업그레이드 프로젝트
 - 적용 학년: 중등·고1·고2·고3 전 범위 가능. 실제 교육과정 경계는 `UNIT_OVERLAY`가 정의
-- 기본 제작 단위: 5문항 batch
+- 제작 단위: 적응형 배치 계약 적용, 고위험 calibration 3~5문항
 - 추적 단위: 개별 문항 `questionUid`
 - 렌더 단위: target-bearing 시험지 × required render mode × required viewport/profile
 - 검수 단위: frozen manifest 및 동일 final release artifact
@@ -3010,15 +3010,19 @@ Pilot PASS는 최종 A/B/C/D를 대체하지 않는다.
 
 ---
 
-# 24. 5문항 Batch Production Loop
+# 24. Adaptive Batch Production Loop
 
-기본 제작 단위:
+기존 calibration 제작 기본값:
 
 ```text
 BUILD_BATCH_SIZE = 5
 ```
 
-Overlay가 더 작은 단위를 요구할 수 있으나 임의 대량화는 금지한다.
+현재 batch 크기·축소 조건·revision 계약은 `작업방식_적응형배치루프_v1.md`를 따른다.
+고위험 calibration은 3~5문항을 유지한다. 검증된 같은 visual/fact profile의 확대는
+manifest/risk/독립검수/render/분모 gate가 닫힌 경우에만 허용한다. 위 5문항은 과거의
+고정 상한이 아니며 review session의 묶음 크기와 제작 batch 크기를 혼동하지 않는다.
+공통 실행기 연결은 `공통파이프라인_실행계약_v1.md`를 적용한다.
 
 각 batch:
 

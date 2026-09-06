@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { reviewedMutationPlan, archiveSourceIdentity } from '../pipeline-core/integration.mjs';
 
 /* Promote only the separately adjudicated, content-inferred manual variants. */
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -42,7 +43,7 @@ function replaceQuestionBlock(source, questionId, updates, file) {
     return source.slice(0, start) + block + source.slice(closing);
 }
 
-function applySourceFile(relativeFile, rows, subunitLabels) {
+function applySourceFile(relativeFile, rows, subunitLabels, approvedPlan) {
     const filePath = path.join(archiveDir, 'exams', relativeFile);
     const before = fs.readFileSync(filePath, 'utf8');
     const questions = loadQuestions(filePath);
@@ -62,6 +63,7 @@ function applySourceFile(relativeFile, rows, subunitLabels) {
             subUnitClassificationDepth: 'complete_category'
         }, relativeFile);
     }
+    approvedPlan.assertCandidateBytes(`archive/exams/${relativeFile}`, after);
     fs.writeFileSync(filePath, after, 'utf8');
     const validated = loadQuestions(filePath);
     return { sourceArchiveFile: relativeFile, questionCount: validated.length, updatedQuestions: rows.length, beforeDigest: sha256(before), afterDigest: sha256(after) };
@@ -76,13 +78,16 @@ export function promoteManualInferences() {
     const master = JSON.parse(fs.readFileSync(masterPath, 'utf8'));
     const subunitLabels = new Map(master.filter(row => row.keyType === 'subUnitKey').map(row => [row.key, row.labelKo]));
     const rows = adjudication.groups.flatMap(group => group.questionRefs.filter(ref => ref.adjudication === 'INFERRED_CONFIRMED'));
+    const approvedPlan = reviewedMutationPlan(path.resolve(archiveDir, '..'), 'intelligence', rows.map(row => archiveSourceIdentity(row.sourceArchiveFile, row.questionId)));
+    const classificationKeys = new Set(classification.records.map(record => `${record.sourceArchiveFile}#${record.sourceOrdinal}`));
+    if (rows.some(row => !classificationKeys.has(`${row.sourceArchiveFile}#${row.sourceOrdinal}`))) throw new Error('classification records missing before mutation');
     const byFile = new Map();
     for (const row of rows) {
         if (!byFile.has(row.sourceArchiveFile)) byFile.set(row.sourceArchiveFile, []);
         byFile.get(row.sourceArchiveFile).push(row);
     }
     const files = [];
-    for (const [relativeFile, fileRows] of byFile) files.push(applySourceFile(relativeFile, fileRows, subunitLabels));
+    for (const [relativeFile, fileRows] of byFile) files.push(applySourceFile(relativeFile, fileRows, subunitLabels, approvedPlan));
 
     const classificationByQuestion = new Map(classification.records.map(record => [`${record.sourceArchiveFile}#${record.sourceOrdinal}`, record]));
     for (const row of rows) {

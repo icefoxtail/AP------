@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { requireClosure } from "../pipeline-core/integration.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const archiveRoot = path.resolve(here, "../..");
@@ -51,6 +52,7 @@ function main() {
   const manifest = readJson(manifestFile);
   const review = readJson(reviewFile);
   const candidate = loadCandidate(candidateFile);
+  // A reviewed_pass string cannot authorize copying unbound/stale evidence.
   const masterRows = loadSubunitMaster();
   if (review.status !== "reviewed_pass") throw new Error("review.status must be reviewed_pass");
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
@@ -84,6 +86,7 @@ function main() {
   const liveAssetsDir = path.join(archiveRoot, "assets", "images", manifest.examId);
   const expectedPrefix = `assets/images/${manifest.examId}/`;
   const assetSources = new Map();
+  const reviewedQuestionBytes = JSON.stringify(candidate.questionBank);
   function canonicalizeAsset(question, field) {
     const value = String(question[field] || "");
     if (!value) return;
@@ -104,18 +107,21 @@ function main() {
     canonicalizeAsset(question, "image");
     canonicalizeAsset(question, "solutionImage");
   }
-  if (assetSources.size) fs.mkdirSync(liveAssetsDir, { recursive: true });
-  for (const canonical of assetSources.values()) {
+  if (JSON.stringify(candidate.questionBank) !== reviewedQuestionBytes) throw new Error('candidate asset paths must be canonical BEFORE independent review and closure');
+  // Validate the complete copy plan before the first destination write.
+  const copyPlan = [...assetSources.values()].map(canonical => {
     const name = path.basename(canonical);
     const source = path.join(assetsDir, name);
     if (!fs.existsSync(source)) throw new Error(`missing generated asset: ${source}`);
-    fs.copyFileSync(source, path.join(liveAssetsDir, name));
-  }
+    return { source, destination: path.join(liveAssetsDir, name) };
+  });
+  const commonClosure = requireClosure(path.resolve(archiveRoot, '..'), 'past-exam', process.argv, [candidateFile, ...copyPlan.map(item => item.source)]);
+  if (assetSources.size) fs.mkdirSync(liveAssetsDir, { recursive: true });
+  for (const { source, destination } of copyPlan) fs.copyFileSync(source, destination);
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
-  // Re-serialize once so V2 staging asset paths are canonicalized in both files.
-  writeCandidate(candidateFile, candidate);
+  // Preserve the exact reviewed bytes; never reserialize after SHA-bound review.
   fs.copyFileSync(candidateFile, liveJs);
-  console.log(JSON.stringify({ status: "promoted", examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
+  console.log(JSON.stringify({ status: "promoted", commonClosure, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
 }
 
 main();

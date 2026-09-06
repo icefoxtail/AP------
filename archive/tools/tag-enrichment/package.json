@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "quality": "node ../pipeline-core/cli.mjs audit --pipeline tag-enrichment",
     "scan": "node scripts/scan-exam-bank.mjs",
     "build": "node scripts/build-tag-candidates.mjs",
     "validate": "node scripts/validate-tag-candidates.mjs",
