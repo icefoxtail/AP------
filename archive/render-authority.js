@@ -158,6 +158,7 @@
             recipient: config.recipient === undefined ? null : config.recipient,
             headerPolicy: config.headerPolicy,
             qrPolicy: config.qrPolicy,
+            qrPolicies: config.qrPolicies,
             duplexPolicy: config.duplexPolicy,
             qppPolicy: config.qppPolicy,
             layoutPolicy: config.layoutPolicy,
@@ -239,34 +240,197 @@
         const config = options || {};
         const mode = contract.canonicalRenderMode(config.mode || 'exam');
         const format = typeof config.wrapLatex === 'function' ? config.wrapLatex : value => text(value);
-        const content = format(question.content);
-        const image = renderImageHTML(question, 'image', 'q-image-wrap', config);
+        const content = typeof config.prepareContent === 'function'
+            ? config.prepareContent(question, format)
+            : format(question.content);
+        const image = mode === 'exam' ? renderImageHTML(question, 'image', 'q-image-wrap', config) : '';
         const choices = mode === 'exam' ? renderChoicesHTML(question, format) : '';
         const answer = mode === 'answer' ? `<div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>` : '';
+        const preparedSolution = typeof config.prepareSolution === 'function'
+            ? config.prepareSolution(question, format)
+            : format(question.solution || '해설이 없습니다.');
         const solution = mode === 'solution'
-            ? `<div class="sol-meta"><div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>${renderImageHTML(question, 'solutionImage', 'sol-image-wrap', config)}<div class="sol-exp">${format(question.solution || '해설이 없습니다.')}</div></div>`
+            ? `<div class="sol-meta"><div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>${renderImageHTML(question, 'solutionImage', 'sol-image-wrap', config)}<div class="sol-exp">${preparedSolution}</div></div>`
             : '';
-        return `<article class="q-box" data-source-ref="${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}"><div class="q-num">${question.displayNo}.</div><div class="q-content">${content}</div>${image}${choices}${answer}${solution}</article>`;
+        const contentClass = mode === 'solution' ? ' data-semantic-content="1"' : ' class="q-content"';
+        const boxClass = mode === 'solution' ? 'q-box sol-box' : 'q-box';
+        return `<div class="${boxClass}" data-source-ref="${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}"><div class="q-num">${question.displayNo}.</div><div${contentClass}>${content}</div>${image}${choices}${answer}${solution}</div>`;
+    }
+
+    function renderAnswerEntryHTML(inputQuestion, options) {
+        const question = requireContract().createCanonicalQuestion(inputQuestion);
+        const config = options || {};
+        const format = typeof config.formatAnswer === 'function' ? config.formatAnswer : value => text(value);
+        const answer = question.answer === undefined || question.answer === null ? '-' : question.answer;
+        return `<div class="ans-cell" data-source-ref="${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}"><div class="ans-n">${question.displayNo}.</div><div class="ans-v">${format(answer)}</div></div>`;
+    }
+
+    function normalizeSemanticText(value) {
+        return text(value).replace(/\s+/g, ' ').trim();
+    }
+
+    function fnv1a(value) {
+        let hash = 0x811c9dc5;
+        for (let index = 0; index < value.length; index++) {
+            hash ^= value.charCodeAt(index);
+            hash = Math.imul(hash, 0x01000193) >>> 0;
+        }
+        return hash.toString(16).padStart(8, '0');
+    }
+
+    function semanticClassNames(element) {
+        return Array.from(element.classList || []).filter(name => /^(?:q-|choices|choice-|sol-|answer-box|question-(?:note|table))/.test(name)).sort();
+    }
+
+    function semanticMarkup(element) {
+        if (!element) return '';
+        const clone = element.cloneNode(true);
+        clone.querySelectorAll('mjx-container').forEach(node => node.replaceWith(document.createTextNode(node.textContent || '')));
+        clone.querySelectorAll('*').forEach(node => {
+            Array.from(node.attributes).forEach(attribute => {
+                if (!['class', 'colspan', 'rowspan', 'src', 'alt'].includes(attribute.name.toLowerCase())) node.removeAttribute(attribute.name);
+            });
+        });
+        return normalizeSemanticText(clone.innerHTML);
+    }
+
+    function domFingerprint(html) {
+        const template = document.createElement('template');
+        template.innerHTML = text(html);
+        const root = template.content;
+        const questions = Array.from(root.querySelectorAll('.q-box')).map(question => {
+            const content = question.querySelector('.q-content');
+            const choiceItems = Array.from(question.querySelectorAll('.choice-item'));
+            const questionImages = Array.from(question.querySelectorAll('.q-image-wrap img'));
+            const solutionImages = Array.from(question.querySelectorAll('.sol-image-wrap img'));
+            const tables = Array.from(question.querySelectorAll('table')).map(table => ({
+                classNames: semanticClassNames(table),
+                rows: Array.from(table.rows || []).map(row => Array.from(row.cells || []).map(cell => ({ text: normalizeSemanticText(cell.textContent), colSpan: cell.colSpan, rowSpan: cell.rowSpan })))
+            }));
+            const classes = Array.from(question.querySelectorAll('[class]')).map(element => ({ tag: element.tagName.toLowerCase(), classNames: semanticClassNames(element) })).filter(item => item.classNames.length);
+            return {
+                sourceRef: question.getAttribute('data-source-ref') || '',
+                classes,
+                content: content ? normalizeSemanticText(content.textContent) : '',
+                contentMarkup: semanticMarkup(content),
+                choices: choiceItems.map(item => ({
+                    classNames: semanticClassNames(item),
+                    number: normalizeSemanticText(item.querySelector('.choice-no')?.textContent),
+                    text: normalizeSemanticText(item.querySelector('.choice-text')?.textContent)
+                })),
+                answers: Array.from(question.querySelectorAll('.sol-ans')).map(element => normalizeSemanticText(element.textContent)),
+                solutions: Array.from(question.querySelectorAll('.sol-exp')).map(element => normalizeSemanticText(element.textContent)),
+                questionImages: questionImages.map(image => ({ src: image.getAttribute('src') || '', alt: image.getAttribute('alt') || '' })),
+                solutionImages: solutionImages.map(image => ({ src: image.getAttribute('src') || '', alt: image.getAttribute('alt') || '', caption: normalizeSemanticText(image.closest('.sol-image-wrap')?.querySelector('.sol-image-caption')?.textContent) })),
+                tables,
+                viewBlocks: Array.from(question.querySelectorAll('.question-note-box')).map(element => normalizeSemanticText(element.textContent))
+            };
+        });
+        return questions;
+    }
+
+    function lexicalMatches(source, expression) {
+        return Array.from(text(source).matchAll(expression)).map(match => normalizeSemanticText(match[1] || ''));
+    }
+
+    function lexicalFingerprint(html) {
+        const source = text(html);
+        const attrs = expression => Array.from(source.matchAll(expression)).map(match => match[1] || '');
+        return [{
+            semanticMarkup: normalizeSemanticText(source),
+            sourceRef: attrs(/data-source-ref="([^"]*)"/g).join('|'),
+            classes: attrs(/<([a-z0-9]+)[^>]*class="([^"]*(?:q-|choices|choice-|sol-|answer-box|question-(?:note|table))[^"]*)"[^>]*>/gi).map((_, index) => index),
+            content: lexicalMatches(source, /class="[^"]*q-content[^"]*"[^>]*>([\s\S]*?)<\//gi),
+            contentMarkup: lexicalMatches(source, /class="[^"]*q-content[^"]*"[^>]*>([\s\S]*?)<\//gi),
+            choices: lexicalMatches(source, /class="[^"]*choice-text[^"]*"[^>]*>([\s\S]*?)<\//gi),
+            answers: lexicalMatches(source, /class="[^"]*sol-ans[^"]*"[^>]*>([\s\S]*?)<\//gi),
+            solutions: lexicalMatches(source, /class="[^"]*sol-exp[^"]*"[^>]*>([\s\S]*?)<\//gi),
+            questionImages: attrs(/class="[^"]*q-image-wrap[^"]*"[\s\S]*?<img[^>]*src="([^"]*)"/gi),
+            solutionImages: attrs(/class="[^"]*sol-image-wrap[^"]*"[\s\S]*?<img[^>]*src="([^"]*)"/gi),
+            tables: lexicalMatches(source, /<table[^>]*>([\s\S]*?)<\/table>/gi),
+            viewBlocks: lexicalMatches(source, /class="[^"]*question-note-box[^"]*"[^>]*>([\s\S]*?)<\//gi)
+        }];
+    }
+
+    function semanticFingerprint(html) {
+        const questions = typeof document !== 'undefined' && document.createElement
+            ? domFingerprint(html)
+            : lexicalFingerprint(html);
+        const payload = JSON.stringify(questions);
+        return Object.freeze({ questionCount: questions.length, questions: Object.freeze(questions), hash: fnv1a(payload) });
+    }
+
+    function answerSemanticFingerprint(html) {
+        const source = text(html);
+        if (typeof document !== 'undefined' && document.createElement) {
+            const template = document.createElement('template');
+            template.innerHTML = source;
+            const entries = Array.from(template.content.querySelectorAll('.ans-cell:not(.ans-cell-empty)')).map(cell => ({
+                sourceRef: cell.getAttribute('data-source-ref') || '',
+                number: normalizeSemanticText(cell.querySelector('.ans-n')?.textContent),
+                value: normalizeSemanticText(cell.querySelector('.ans-v')?.textContent),
+                markup: semanticMarkup(cell.querySelector('.ans-v'))
+            })).sort((left, right) => (Number.parseInt(left.number, 10) || 0) - (Number.parseInt(right.number, 10) || 0));
+            const serialized = JSON.stringify(entries);
+            return Object.freeze({ entryCount: entries.length, entries: Object.freeze(entries), hash: fnv1a(serialized) });
+        }
+        const entries = lexicalMatches(source, /class="[^"]*ans-v[^"]*"[^>]*>([\s\S]*?)<\//gi);
+        return Object.freeze({ entryCount: entries.length, entries: Object.freeze(entries), hash: fnv1a(JSON.stringify(entries)) });
+    }
+
+    function compareAnswerSemantics(legacyHtml, authorityHtml) {
+        const legacy = answerSemanticFingerprint(legacyHtml);
+        const authority = answerSemanticFingerprint(authorityHtml);
+        const differences = [];
+        if (legacy.entryCount !== authority.entryCount) differences.push({ key: 'answerEntryCount', legacy: legacy.entryCount, authority: authority.entryCount });
+        if (legacy.hash !== authority.hash) {
+            differences.push({ key: 'answerFingerprint', legacy: legacy.hash, authority: authority.hash });
+            const count = Math.max(legacy.entries.length, authority.entries.length);
+            for (let index = 0; index < count && differences.length < 33; index++) {
+                const left = JSON.stringify(legacy.entries[index] ?? null);
+                const right = JSON.stringify(authority.entries[index] ?? null);
+                if (left !== right) differences.push({ key: 'answer[' + index + ']', legacy: fnv1a(left), authority: fnv1a(right) });
+            }
+        }
+        return Object.freeze({ equal: differences.length === 0, legacy, authority, differences: Object.freeze(differences) });
     }
 
     function semanticSnapshot(html) {
-        const source = text(html);
-        const count = pattern => (source.match(pattern) || []).length;
+        const fingerprint = semanticFingerprint(html);
+        const questions = fingerprint.questions;
         return Object.freeze({
-            questionCount: count(/class="q-box(?:\s|"|$)/g),
-            contentCount: count(/class="q-content"/g),
-            choiceCount: count(/class="choice-item"/g),
-            questionImageCount: count(/class="q-image-wrap(?:\s|"|$)/g),
-            solutionImageCount: count(/class="sol-image-wrap(?:\s|"|$)/g),
-            answerCount: count(/class="sol-ans"/g),
-            solutionCount: count(/class="sol-exp"/g)
+            questionCount: fingerprint.questionCount,
+            contentCount: questions.reduce((count, item) => count + (Array.isArray(item.content) ? item.content.length : 1), 0),
+            choiceCount: questions.reduce((count, item) => count + (item.choices?.length || 0), 0),
+            questionImageCount: questions.reduce((count, item) => count + (item.questionImages?.length || 0), 0),
+            solutionImageCount: questions.reduce((count, item) => count + (item.solutionImages?.length || 0), 0),
+            answerCount: questions.reduce((count, item) => count + (item.answers?.length || 0), 0),
+            solutionCount: questions.reduce((count, item) => count + (item.solutions?.length || 0), 0),
+            fingerprint
         });
     }
 
     function compareQuestionSemantics(legacyHtml, authorityHtml) {
         const legacy = semanticSnapshot(legacyHtml);
         const authority = semanticSnapshot(authorityHtml);
-        const differences = Object.keys(legacy).filter(key => legacy[key] !== authority[key]).map(key => ({ key, legacy: legacy[key], authority: authority[key] }));
+        const differences = [];
+        for (const key of ['questionCount', 'contentCount', 'choiceCount', 'questionImageCount', 'solutionImageCount', 'answerCount', 'solutionCount']) {
+            if (legacy[key] !== authority[key]) differences.push({ key, legacy: legacy[key], authority: authority[key] });
+        }
+        if (legacy.fingerprint.hash !== authority.fingerprint.hash) {
+            differences.push({ key: 'semanticFingerprint', legacy: legacy.fingerprint.hash, authority: authority.fingerprint.hash });
+            const questionCount = Math.max(legacy.fingerprint.questions.length, authority.fingerprint.questions.length);
+            for (let index = 0; index < questionCount && differences.length < 33; index++) {
+                const legacyQuestion = legacy.fingerprint.questions[index] || {};
+                const authorityQuestion = authority.fingerprint.questions[index] || {};
+                for (const field of ['sourceRef', 'classes', 'content', 'contentMarkup', 'choices', 'answers', 'solutions', 'questionImages', 'solutionImages', 'tables', 'viewBlocks', 'semanticMarkup']) {
+                    const left = JSON.stringify(legacyQuestion[field] ?? null);
+                    const right = JSON.stringify(authorityQuestion[field] ?? null);
+                    if (left !== right) differences.push({ key: 'question[' + index + '].' + field, legacy: fnv1a(left), authority: fnv1a(right) });
+                    if (differences.length >= 33) break;
+                }
+            }
+        }
         return Object.freeze({ equal: differences.length === 0, legacy, authority, differences: Object.freeze(differences) });
     }
 
@@ -279,7 +443,11 @@
         createMixedPrintJob,
         createClinicPrintJob,
         renderQuestionHTML,
+        renderAnswerEntryHTML,
         semanticSnapshot,
+        semanticFingerprint,
+        answerSemanticFingerprint,
+        compareAnswerSemantics,
         compareQuestionSemantics
     });
 }));

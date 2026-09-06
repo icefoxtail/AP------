@@ -78,11 +78,11 @@
     },
     {
       "driftId": "DRIFT_HEADER_FIELD_BEHAVIOR_007",
-      "archiveBehavior": "Popup header options control title, subtitle, name, score, and solution/answer application.",
-      "mixerBehavior": "Uses the Archive-style popup header options.",
+      "archiveBehavior": "Popup header options control title, metaRight, subtitle, name, score, and solution/answer application.",
+      "mixerBehavior": "Uses Archive-style title/metaRight/subtitle header options, including unit-past snapshot metadata.",
       "clinicBehavior": "Has inline iframe header editing and recipient/date-oriented header options.",
       "disposition": "CANONICALIZE_TO_NEW_CONTRACT",
-      "rationale": "HeaderPolicy is canonical while each adapter retains its current editing shell and fields beyond the shared policy.",
+      "rationale": "HeaderPolicy is canonical and preserves metaRight; each adapter retains its current editing shell and fields beyond the shared policy.",
       "fixtureId": "header-policy-matrix",
       "migrationRequired": true,
       "sourceEvidence": ["archive/engine.html:618", "archive/mixed_engine.html:548", "apmath/js/clinic-print.js:963"]

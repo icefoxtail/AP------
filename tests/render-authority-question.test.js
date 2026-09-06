@@ -53,5 +53,37 @@ test('Question authority requires adapter-owned asset resolution and compares se
   assert.deepEqual(parity.differences, []);
   const drift = A.compareQuestionSemantics(shared.replace('sol-image-wrap', 'missing-image-wrap'), shared);
   assert.equal(drift.equal, false);
-  assert.deepEqual(drift.differences.map(item => item.key), ['solutionImageCount']);
+  assert.deepEqual(drift.differences.map(item => item.key).slice(0, 2), ['solutionImageCount', 'semanticFingerprint']);
+  assert.ok(drift.differences.some(item => item.key === 'question[0].solutionImages'));
+});
+
+test('Semantic fingerprint rejects equal-count content, answer, choice, image, table, and standalone-view drift', () => {
+  const baseline = '<article class="q-box" data-source-ref="a#1"><div class="q-content"><table><tr><td>표 값</td></tr></table><div class="question-note-box">[보기] ㄱ. 조건</div>본문</div><div class="q-image-wrap"><img src="q-a.png" alt=""></div><div class="choices choices-grid"><div class="choice-item"><span class="choice-no">①</span><span class="choice-text">가</span></div></div><div class="sol-meta"><div class="sol-ans">[정답] ①</div><span class="sol-image-wrap"><img src="s-a.svg" alt="그래프"><span class="sol-image-caption">캡션</span></span><div class="sol-exp">해설 A</div></div></article>';
+  const mutations = [
+    baseline.replace('본문', '다른 본문'),
+    baseline.replace('[정답] ①', '[정답] ②'),
+    baseline.replace('>가</span>', '>나</span>'),
+    baseline.replace('q-a.png', 'q-b.png'),
+    baseline.replace('표 값', '다른 표 값'),
+    baseline.replace('[보기] ㄱ. 조건', '보기에서 조건')
+  ];
+  for (const mutation of mutations) {
+    const parity = A.compareQuestionSemantics(baseline, mutation);
+    assert.equal(parity.equal, false, mutation);
+    assert.ok(parity.differences.some(item => item.key === 'semanticFingerprint'));
+    assert.ok(parity.differences.some(item => /^question\[0\]\.(?:content|contentMarkup|choices|answers|questionImages|tables|viewBlocks|semanticMarkup)/.test(item.key)));
+  }
+  const fingerprint = A.semanticFingerprint(baseline);
+  assert.match(fingerprint.hash, /^[0-9a-f]{8}$/);
+  assert.equal(fingerprint.questionCount, 1);
+});
+
+test('Answer authority fingerprints number, value order, and source identity rather than only answer-cell count', () => {
+  const first = A.renderAnswerEntryHTML(question(), { formatAnswer: value => String(value) });
+  const second = A.renderAnswerEntryHTML(question({ displayNo: 2, sourceRef: { sourceArchiveFile: 'exams/a.js', sourceQuestionUid: 'uid-2', sourceQuestionOrdinal: 2, sourceQuestionNo: 2 }, answer: '②' }), { formatAnswer: value => String(value) });
+  const baseline = first + second;
+  assert.equal(A.compareAnswerSemantics(baseline, baseline).equal, true);
+  const drift = A.compareAnswerSemantics(baseline, baseline.replace('>②</div>', '>③</div>'));
+  assert.equal(drift.equal, false);
+  assert.ok(drift.differences.some(item => item.key === 'answerFingerprint'));
 });

@@ -40,6 +40,9 @@ const EXPECTED_MEMBER_PATHS = [
   'archive/question-index.js',
   'archive/question-meta.js',
   'archive/print-contract.js',
+  'archive/render-authority.css',
+  'archive/render-authority.js',
+  'archive/layout-authority.js',
   'archive/unit-past-exams-core.js',
   'archive/unit-past-exams.html',
   'archive/unit-past-exams.js',
@@ -74,7 +77,10 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/print-preview-channel.test.js',
   'tests/print-render-authority-drift-ledger.test.js',
   'tests/print-render-authority-phase0-baseline.test.js',
+  'tests/render-authority-normalizer.test.js',
+  'tests/render-authority-question.test.js',
   'tests/render-authority-semantic-css.test.js',
+  'tests/layout-authority.test.js',
   'tests/student-portal-mixed-review-payload.test.js',
   'tests/student-portal-omr-review-ui.test.js'
 ].sort();
