@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_1B",
+  "status": "PASS",
+  "startHead": "e58ca9ac82e2d1f1b3c11fc7fb8b486015271a0f",
+  "implementation": "archive/render-authority.js",
+  "test": "tests/render-authority-question.test.js",
+  "authority": ["content", "choices", "choice numbering", "choiceColumns", "problem image semantics", "answer", "solution", "solutionImage", "alt/caption/size", "semantic DOM snapshot"],
+  "excluded": ["source loading", "asset path calculation", "recipient iteration", "QR generation", "duplex blank insertion", "preview channel", "print transport"],
+  "dualRun": "The comparator is added in this phase. Archive adapter wiring and live legacy/shared fixture comparison are deferred to Phase 3; no legacy code is removed."
+}
