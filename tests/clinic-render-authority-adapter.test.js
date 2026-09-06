@@ -29,6 +29,8 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
   assert.match(modeLauncher, /classWrongItems/);
   assert.match(modeLauncher, /gradeWrongItems/);
   assert.match(modeLauncher, /typeItems/);
+  assert.match(modeLauncher, /const withRecipients = params\.get\('recipients'\) === '2';/);
+  assert.match(modeLauncher, /fixture-packet-a/);
   assert.match(modeLauncher, /renderAuthorityDualRun=1/);
 });
 
@@ -45,4 +47,6 @@ test('Clinic single-student restored-source browser fixture records parity acros
   assert.deepEqual(evidence.payloadModeLegacyCoverage.runs.map(run => run.payloadMode), ['class', 'grade', 'type']);
   assert.ok(evidence.payloadModeLegacyCoverage.runs.every(run => run.questionCount === 2 && run.observed.includes('source restore')));
   assert.equal(evidence.payloadModeLegacyCoverage.dualRun, 'skipped: recipient-composition-legacy-only');
+  assert.deepEqual(evidence.recipientQrLegacyCoverage.recipients.map(recipient => recipient.packetKey), ['fixture-packet-a', 'fixture-packet-b']);
+  assert.ok(evidence.recipientQrLegacyCoverage.observed.includes('정답·해설 확인 QR label on each final page'));
 });
