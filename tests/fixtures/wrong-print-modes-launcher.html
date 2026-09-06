@@ -5,6 +5,7 @@
 <script>
   const params = new URLSearchParams(location.search);
   const payloadMode = ['class', 'grade', 'type'].includes(params.get('payloadMode')) ? params.get('payloadMode') : 'class';
+  const withRecipients = params.get('recipients') === '2';
   const archiveFile = `${location.origin}/tests/fixtures/wrong-print-overflow-bank.js?v=${Date.now()}`;
   const items = [2, 3].map(questionNo => ({
     sourceArchiveFile: archiveFile,
@@ -23,6 +24,10 @@
     scope: 'class',
     typeMode: 'mostWrong',
     options: { includeHomeworkCheckBox: true, pageBreakByStudent: false },
+    recipients: withRecipients ? [
+      { studentName: 'QR 수신자 A', packetKey: 'fixture-packet-a' },
+      { studentName: 'QR 수신자 B', packetKey: 'fixture-packet-b' }
+    ] : [],
     classWrongItems: payloadMode === 'class' ? items : [],
     gradeWrongItems: payloadMode === 'grade' ? items : [],
     typeItems: payloadMode === 'type' ? items : []

@@ -45,6 +45,17 @@
     "observed": ["AP_PRINT_READY before parent send", "AP_PRINT_PREVIEW parent source", "parent payload question render", "stale storage absent"],
     "promotion": "Clinic preview source-authority migration PASS. Recipient composition remains legacy-only."
   },
+  "recipientQrLegacyCoverage": {
+    "kind": "actual-browser-render",
+    "launcher": "tests/fixtures/wrong-print-modes-launcher.html?payloadMode=class&recipients=2",
+    "payloadMode": "class",
+    "recipients": [
+      { "studentName": "QR 수신자 A", "packetKey": "fixture-packet-a" },
+      { "studentName": "QR 수신자 B", "packetKey": "fixture-packet-b" }
+    ],
+    "observed": ["two separate recipient headers", "two question copies per recipient", "정답·해설 확인 QR label on each final page"],
+    "promotion": "Per-recipient QR legacy behavior is preserved. It is not a shared recipient-composition/PageMap promotion witness."
+  },
   "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
   "legacyRendererRetained": true
 }
