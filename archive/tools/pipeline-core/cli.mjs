@@ -17,6 +17,7 @@ try {
     case 'rules': output = rulePreflight(root); break;
     case 'prepare': output = prepareDraft(root, { pipeline: value('--pipeline'), runId: value('--run-id'), sourcePath: value('--source'), candidatePath: value('--candidate'), workdir: value('--workdir') }); break;
     case 'render': output = await (await import('./render.mjs')).captureRender(root, read(value('--manifest')), value('--workdir'), { channel: value('--browser-channel') || 'chrome' }); break;
+    case 'render-review': output = (await import('./render.mjs')).createRenderReview(root, read(value('--manifest')), read(value('--capture-ref')), read(value('--decision'))); break;
     case 'audit': {
       const manifest = value('--manifest');
       if (!manifest) throw new Error('--manifest is required');
