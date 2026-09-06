@@ -35,6 +35,7 @@ node archive/tools/pipeline-core/cli.mjs fact --file <typed-fact.json>
 node archive/tools/pipeline-core/cli.mjs parity --expected <expected.json> --observed <observed.json>
 python -X utf8 archive/tools/pipeline-core/generator.py --fact <typed-fact.json> --out <NEW-candidate.svg> --evidence <NEW-generator-witness.json>
 node archive/tools/pipeline-core/cli.mjs render --manifest <run.json> --workdir archive/_generated/pipeline-renders/<new-attempt>
+node archive/tools/pipeline-core/cli.mjs render-review --manifest <run.json> --capture-ref <capture-file-ref.json> --decision <independent-decision.json> --out <NEW-render-review.json>
 node archive/tools/pipeline-core/cli.mjs audit --pipeline logic-visual --manifest <run.json> --out <NEW-closure.json>
 npm --prefix archive/tools/pipeline-core test
 ```
@@ -49,7 +50,9 @@ Use the environment's Playwright or set `APMATH_NODE_MODULES` to its configured
 Node node_modules directory. No browser is installed automatically. It serves
 the unchanged production engine with bound candidate JS/assets. Captures return
 `CAPTURED_REVIEW_REQUIRED`: a separate reviewer must inspect all saved screens
-and close clipping/overflow/readability in a new frozen evidence record.
+and close clipping/overflow/readability in a new frozen evidence record. The
+review command consumes a JSON file containing the immutable capture `fileRef`;
+it does not accept a screenshot path without its capture record.
 Solution-mode captures must never be fed to artifact-only V2.
 
 ## File identity and schemas
@@ -153,10 +156,24 @@ OPTIONAL does not remove an attached visual. EXEMPT requires no dependencies.
 Final map adjudication is bound to V3, or exempt V1 when no visual is used.
 Frozen denominator input/UID set/SHA must match the current recomputation.
 
+`runtime.mjs` discovers and raw-hash binds `engine.html`, its local scripts and
+styles, CSS resources and the selected local MathJax distribution. The render
+server rejects unbound local requests. Each capture also records the SHA and
+size of local runtime and external HTTP responses actually used. A changed
+`native_print.js`, theme CSS, MathJax loader/font or other bound dependency makes
+the run and its prior capture stale even when `engine.html` is unchanged.
+
 Render cases cover candidate file × required mode × desktop/mobile. Each case
 binds selected UIDs, full candidate count/last id, actual asset associations and
 per-item viewport PNGs. Dimensions, CRCs and decompression are checked. Valid PNG
 bytes do not prove readability; a separate reviewer must inspect the screen.
+
+Mechanical evidence uses axis `render-capture` and freezes before review. Final
+axis `render` binds the capture file SHA, runtime bundle SHA, response bundle SHA
+and every reviewed screenshot SHA. Reviewer identity/session must differ from the
+collector and start after capture freeze. Closure reads immutable measurements
+from capture and accepts only clipping/overflow/readability judgments from the
+review. A hand-authored render PASS without capture lineage is blocked.
 
 Exact/structural duplicates trigger adjudication bound to the pair, current bytes
 and semantic hashes. Exact shared reuse additionally requires the same meaning
@@ -165,6 +182,8 @@ prove all possible graph isomorphisms. Relabeling invalidates pair approval.
 
 Any applicable FAIL/BLOCKED/WARN/NOT_TESTED/missing/stale evidence blocks PASS.
 Extraction completion and local build checks never substitute for quality closure.
+Production mutation callers also enforce `productionAuthorized`; a question-
+quality PASS alone cannot copy files into the production Archive.
 
 ## Native migration and tests
 
