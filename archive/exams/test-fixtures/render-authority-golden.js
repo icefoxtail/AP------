@@ -44,7 +44,9 @@ window.questionBank = [
     content: '긴 해설과 해설 그림을 확인하시오.',
     choices: [],
     answer: '$7$',
-    solution: '첫째, 조건을 정리한다. 둘째, 식을 변형한다. 셋째, 결과를 검산한다. 첫째, 조건을 정리한다. 둘째, 식을 변형한다. 셋째, 결과를 검산한다. 첫째, 조건을 정리한다. 둘째, 식을 변형한다. 셋째, 결과를 검산한다. 첫째, 조건을 정리한다. 둘째, 식을 변형한다. 셋째, 결과를 검산한다.',
+    solution: Array.from({ length: 72 }, (_, index) =>
+      `${index + 1}. 조건을 정리하고 식을 변형한 뒤 결과를 검산하는 장문 해설 continuation fixture 문장이다.`
+    ).join('<br><br>'),
     solutionImage: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="180" height="100"%3E%3Cline x1="20" y1="80" x2="160" y2="20" stroke="black"/%3E%3Ctext x="75" y="55" font-size="16"%3Ey=x%3C/text%3E%3C/svg%3E',
     solutionImageAlt: '직선 그래프',
     solutionImageCaption: '해설 그래프',

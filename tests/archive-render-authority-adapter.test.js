@@ -35,8 +35,11 @@ test('Archive semantic golden fixture verifies table, image, and view-block subs
   const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-3-archive-semantic-browser-fixture.json'), 'utf8'));
   assert.equal(evidence.kind, 'actual-browser-dual-run');
   assert.ok(evidence.results.every(result => result.dualRunEqual === true && result.renderError === ''));
-  assert.deepEqual(evidence.renderedFixtureIds, ['question-choice-columns', 'question-fullwidth', 'question-table-math', 'question-problem-png', 'question-solution-svg', 'question-inline-view-word', 'question-standalone-view-label']);
+  assert.deepEqual(evidence.renderedFixtureIds, ['question-choice-columns', 'question-fullwidth', 'question-table-math', 'question-problem-png', 'question-solution-svg', 'question-long-solution-continuation', 'question-inline-view-word', 'question-standalone-view-label']);
   assert.equal(evidence.results[0].tableCount, 1);
   assert.equal(evidence.results[0].problemImageCount, 1);
   assert.equal(evidence.results[1].solutionImageCount, 1);
+  assert.deepEqual(evidence.longSolutionContinuation.renderedPages, [2, 3]);
+  assert.equal(evidence.longSolutionContinuation.continuationTextRange.at(-1), 72);
+  assert.match(evidence.longSolutionContinuation.promotionLimit, /not be read as PageMap promotion/);
 });
