@@ -340,6 +340,10 @@ q10 복구 증거는 [28_source_recovery_q10_23maesan_women_d_drive.json](unit-1
 이번 반복 탐색으로 새로 해소된 hold는 0건이며, 유사문제 production 승격도 0건이다.
 최신 상태는 [32_source_hold_repeat_reaudit_20260906.json](source-audit-20260906/32_source_hold_repeat_reaudit_20260906.json)와
 [32_current_source_hold_status_repeat_reaudit_20260906.json](source-audit-20260906/32_current_source_hold_status_repeat_reaudit_20260906.json)이다.
+여수고 q15/q18 HWP는 모든 OLE stream과 BodyText/control tag를 다시 읽었지만 조건식·조건 block이
+복원되지 않았고, q15 후반 해설 영역에도 `조건 누락`이 명시되어 있다. 상세 근거는
+[35_hwp_all_stream_reaudit_q15_q18_20260906.json](source-audit-20260906/35_hwp_all_stream_reaudit_q15_q18_20260906.json)와
+[36_current_source_hold_status_after_hwp_deep_reaudit_20260906.json](source-audit-20260906/36_current_source_hold_status_after_hwp_deep_reaudit_20260906.json)이다.
 현재 active hold 재감사 subset 원장 합계는 1,512행 중 `SOURCE_ONLY_REVIEWED` 1,506행, `SOURCE_HOLD` 6행,
 pending 0행이며, 외부 독립검수·실제 브라우저 release gate는 여전히 열려 있다.
 
