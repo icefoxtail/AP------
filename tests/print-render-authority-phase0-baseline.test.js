@@ -76,6 +76,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/clinic-render-authority-adapter.test.js',
   'tests/fixtures/mixed-print-layout-launcher.html',
   'tests/fixtures/mixer-render-authority-storage-launcher.html',
+  'tests/fixtures/layout-promotion-harness.html',
   'tests/fixtures/print-render-authority-v2.2-fixtures.json',
   'tests/fixtures/wrong-print-duplex-bank.js',
   'tests/fixtures/wrong-print-layout-launcher.html',
@@ -92,6 +93,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/render-authority-question.test.js',
   'tests/render-authority-semantic-css.test.js',
   'tests/layout-authority.test.js',
+  'tests/layout-promotion-browser-harness.test.js',
   'tests/mixed-render-authority-adapter.test.js',
   'tests/student-portal-mixed-review-payload.test.js',
   'tests/student-portal-omr-review-ui.test.js'

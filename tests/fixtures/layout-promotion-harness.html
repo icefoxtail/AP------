@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Layout promotion gate QA</title></head>
+<body>
+<output id="layout-gate-status" aria-live="polite">LAYOUT_GATE_WAITING</output>
+<iframe id="layout-engine" title="Layout promotion gate engine"></iframe>
+<script>
+  const params = new URLSearchParams(location.search);
+  const target = params.get('target') === 'mixer' ? 'mixer' : 'archive';
+  const status = document.getElementById('layout-gate-status');
+  const frame = document.getElementById('layout-engine');
+  frame.src = target === 'mixer'
+    ? '/tests/fixtures/mixer-render-authority-storage-launcher.html?qpp=4&mode=exam'
+    : '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&fit=screen&renderAuthorityDualRun=1';
+  const deadline = Date.now() + 15000;
+  let bridgeAttempted = false;
+  const poll = () => {
+    const raw = frame.contentDocument?.documentElement?.dataset?.apLayoutAuthorityDualRun || '';
+    if (raw) {
+      try {
+        const result = JSON.parse(raw);
+        const differenceFields = (result.differences || []).map(item => item.field).join(',') || 'none';
+        status.textContent = result.error
+          ? `LAYOUT_GATE_ERROR:${target}:${result.error}`
+          : `LAYOUT_GATE_${result.equal ? 'PASS' : 'HOLD'}:${target}:${result.parity?.omissionCount ?? '?'}:${result.parity?.duplicationCount ?? '?'}:${differenceFields}`;
+      } catch (error) {
+        status.textContent = `LAYOUT_GATE_ERROR:${target}:INVALID_EVIDENCE`;
+      }
+      return;
+    }
+    const child = frame.contentWindow;
+    const area = frame.contentDocument?.getElementById('print-area');
+    const bridge = target === 'mixer' ? child?.recordMixedLayoutPromotionGate : child?.recordArchiveLayoutPromotionGate;
+    if (!bridgeAttempted && area?.querySelector('.page') && typeof bridge === 'function') {
+      bridgeAttempted = true;
+      bridge.call(child, area);
+    }
+    if (Date.now() >= deadline) {
+      status.textContent = `LAYOUT_GATE_ERROR:${target}:TIMEOUT`;
+      return;
+    }
+    setTimeout(poll, 50);
+  };
+  poll();
+</script>
+</body>
+</html>
