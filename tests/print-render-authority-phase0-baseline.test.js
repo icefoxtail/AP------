@@ -83,6 +83,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/print-preview-channel.test.js',
   'tests/print-readiness-adapter.test.js',
   'tests/print-render-authority-drift-ledger.test.js',
+  'tests/print-render-authority-mixer-ecosystem.test.js',
   'tests/print-runtime.test.js',
   'tests/print-render-authority-phase0-baseline.test.js',
   'tests/render-authority-normalizer.test.js',
