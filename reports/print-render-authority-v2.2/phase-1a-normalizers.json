@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_1A",
+  "status": "PASS",
+  "startHead": "c18a601bf1385003921eb3b9955b35a2e7dd40a2",
+  "implementation": "archive/render-authority.js",
+  "test": "tests/render-authority-normalizer.test.js",
+  "scope": [
+    "Archive raw -> CanonicalQuestion[]",
+    "Mixer raw -> CanonicalQuestion[]",
+    "Clinic raw -> CanonicalQuestion[]",
+    "authoritative source -> PrintJob -> one PrintSection"
+  ],
+  "nonGoals": [
+    "No DOM output, source loading, asset URL computation, measurement, pagination, preview protocol, readiness runtime, or transport changed",
+    "No existing engine imports or consumes the normalizer yet",
+    "No legacy renderer was removed"
+  ]
+}
