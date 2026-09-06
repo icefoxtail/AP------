@@ -246,7 +246,8 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "접선의 방정식"
+      "접선의 방정식",
+      "그래프"
     ],
     "wide": false,
     "content": "점 $(1,4)$에서 곡선 $y=-x^2+x+3$에 그은 접선의 방정식을 $y=px+q\\;(p\\lt0)$이라고 할 때, $p\\times q$의 값은? [3.5점]",
@@ -334,16 +335,16 @@ window.questionBank = [
   {
     "id": 11,
     "level": "중",
-    "category": "역함수와 미분계수",
+    "category": "함수의 극한",
     "originalCategory": "역함수와 미분계수",
     "standardCourse": "수학II",
-    "standardUnitKey": "H15-M2-03",
-    "standardUnit": "미분계수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H15-M2-01",
+    "standardUnit": "함수의 극한",
+    "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "미분계수",
+      "함수의 극한",
       "역함수"
     ],
     "wide": false,
@@ -357,8 +358,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 정의역이 $x\\ge-1$이므로 $f(x)=(x+1)^2+1$의 역함수에서 양의 제곱근을 택한다.\n조건 정리: $g(x)=\\sqrt{x-1}-1$이고 $f(x)+x-12=x^2+3x-10=(x-2)(x+5)$이다.\n풀이 방향: 분자 $\\sqrt{x-1}-1$을 유리화해 $x-2$를 약분한다.\n정석 풀이: $g(x)=\\dfrac{x-2}{\\sqrt{x-1}+1}$이므로 $\\dfrac{g(x)}{f(x)+x-12}=\\dfrac{1}{(\\sqrt{x-1}+1)(x+5)}$이다. 따라서 $x\\to2$에서 극한은 $\\dfrac1{(1+1)(2+5)}=\\dfrac1{14}$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
-    "subUnit": "미분계수",
+    "subUnitKey": "H15-M2-01-LIMIT",
+    "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -423,7 +424,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 항등식에서 다항식의 차수와 계수를 비교한다.\n조건 정리: 우변에 $4x^2$이 있으므로 $f$는 이차 이하의 다항식이어야 하며, $f(x)=Ax^2+Bx+C$로 둘 수 있다.\n풀이 방향: $f'(x)=2Ax+B$를 주어진 식에 대입해 동류항의 계수를 비교한다.\n정석 풀이: 우변은 $2x(2Ax+B)+4x^2+x+3=(4A+4)x^2+(2B+1)x+3$이다. 이를 $Ax^2+Bx+C$와 비교하면 $A=4A+4$, $B=2B+1$, $C=3$이다. 따라서 $A=-\\dfrac43$, $B=-1$, $C=3$이다. 그러므로 $f(3)=-\\dfrac43\\cdot9-3+3=-12$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 항등식의 최고차항을 먼저 비교한 뒤 계수를 비교한다.\n조건 정리: $f$를 차수 $n$의 다항식이라 하자. 만약 $n>2$이고 최고차항이 $Ax^n\\;(A\\ne0)$이면 $2xf'(x)$의 최고차항은 $2nAx^n$이다.\n풀이 방향: 주어진 항등식에서 $x^n$의 계수를 비교해 $n>2$가 불가능함을 보인 다음, 이차식의 계수를 비교한다.\n정석 풀이: $f(x)=Ax^n+\\cdots$이고 $n>2$라고 가정하면 $f(x)=2xf'(x)+4x^2+x+3$의 $x^n$ 계수 비교로 $A=2nA$, 즉 $1=2n$을 얻는다. 이는 정수 $n>2$에 모순이다. 따라서 $\\deg f\\le2$이다. 우변에 $4x^2$항이 있으므로 실제로 $f$는 이차식이고 $f(x)=Ax^2+Bx+C$로 둘 수 있다.\n$f'(x)=2Ax+B$를 대입하면 우변은 $2x(2Ax+B)+4x^2+x+3=(4A+4)x^2+(2B+1)x+3$이다. 계수를 비교하여 $A=4A+4$, $B=2B+1$, $C=3$을 얻으므로 $A=-\\dfrac43$, $B=-1$, $C=3$이다.\n따라서 $f(3)=-\\dfrac43\\cdot9-3+3=-12$이고 정답은 ②이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -473,7 +474,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "접선의 방정식",
-      "다항함수"
+      "다항함수",
+      "그래프"
     ],
     "wide": false,
     "content": "다항함수 $f(x)$가 $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{x^3}=\\dfrac14$, $\\displaystyle\\lim_{x\\to-1}\\dfrac{f(x)}{(x+1)^2}=1$을 만족시킨다. 곡선 $y=f(x)$ 위의 점 $(-3,f(-3))$에서의 접선이 $(-11,a)$를 지날 때, 상수 $a$의 값은? [4.3점]",
@@ -509,7 +511,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "미분계수",
-      "미분가능성"
+      "미분가능성",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=x^3-3x^2+2x$ 위의 점 $(t,f(t))\\;(t\\lt2)$에서의 접선의 $y$절편을 $g(t)$라 하자. 함수 $h(t)=\\begin{cases}g(t)&(t\\lt2)\\\\2at+b&(t\\ge2)\\end{cases}$가 실수 전체의 집합에서 미분가능하도록 하는 두 상수 $a,b$에 대하여 $a+b$의 값은? [4.5점]",
@@ -545,7 +548,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "도함수의 활용",
-      "교점의 개수"
+      "교점의 개수",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=\\begin{cases}-(x-1)^2+1&(x\\lt1)\\\\\\dfrac13(x-1)^2+1&(x\\ge1)\\end{cases}$과 직선 $y=tx$의 교점의 개수를 $g(t)$라 하자. 함수 $f(x),g(t)$가 다음 조건을 만족시킬 때, 상수 $a,b$에 대하여 $a\\times b$의 값은? [4.8점]<br><div class=\"note-box\">(가) $\\dfrac{f(4)-f(1)}3=f\\'(k)$를 만족시키는 모든 실수 $k$의 합의 값은 $a$이다.<br>(나) $\\displaystyle\\lim_{t\\to k}g(t)\\ne g(k)$인 서로 다른 $k$의 값의 합은 $b$이다.</div>",
@@ -557,7 +561,7 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "②",
-    "solution": "[키포인트] (가)는 평균변화율과 도함수를, (나)는 직선 $y=tx$와 두 구간의 포물선이 만나는 교점 수의 변화를 각각 조사한다.\n조건 정리: $f(1)=1$, $f(4)=4$이므로 (가)의 왼쪽은 $1$이다. $x<1$에서 $f'(x)=-2(x-1)$, $x>1$에서 $f'(x)=\\dfrac23(x-1)$이다.\n풀이 방향: 먼저 (가)에서 $a$를 구하고, (나)에서는 각 구간의 교점 방정식을 풀어 $g(t)$가 바뀌는 $t$를 찾는다.\n정석 풀이: $f'(k)=1$에서 $k<1$인 해는 $k=\\dfrac12$, $k>1$인 해는 $k=\\dfrac52$이므로 $a=3$이다. 한편 $x<1$에서는 $-x^2+2x=tx$, 즉 $x=0$ 또는 $x=2-t$이고 두 번째 해가 이 구간에 들어오는 경계는 $t=1$, 두 해가 겹치는 값은 $t=2$이다. $x\\ge1$에서는 $\\dfrac13(x-1)^2+1=tx$, 즉 $x^2-(2+3t)x+4=0$이고 유효한 교점 수가 바뀌는 값은 중근 $x=2$가 생기는 $t=\\dfrac23$과 경계근 $x=1$이 생기는 $t=1$이다. 두 부분을 합치면 $g(t)$의 불연속은 $t=\\dfrac23,2$에서 생기므로 $b=\\dfrac23+2=\\dfrac83$이다. 따라서 $ab=3\\times\\dfrac83=8$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] (가)는 평균변화율과 도함수를, (나)는 두 포물선 조각과 직선 $y=tx$의 유효한 교점 수를 구간별로 세어 조사한다.\n조건 정리: $f(1)=1$, $f(4)=4$이므로 (가)의 평균변화율은 $1$이다. 왼쪽 조각에서는 $f'(x)=-2(x-1)$, 오른쪽 조각에서는 $f'(x)=\\dfrac23(x-1)$이다.\n풀이 방향: 먼저 $f'(k)=1$의 해를 구해 $a$를 정한 뒤, 각 조각에서 교점의 개수를 표로 정리한다.\n정석 풀이: $f'(k)=1$에서 $k<1$이면 $k=\\dfrac12$, $k>1$이면 $k=\\dfrac52$이므로 $a=3$이다.\n$x<1$에서는 $-x^2+2x=tx$, 즉 $x=0$ 또는 $x=2-t$이다. 유효한 교점 수는 $t\\le1$에서 $1$, $1<t<2$에서 $2$, $t=2$에서 $1$, $t>2$에서 $2$이다.\n$x\\ge1$에서는 $\\dfrac13(x-1)^2+1=tx$, 즉 $x^2-(2+3t)x+4=0$이다. 유효한 교점 수는 $t<\\dfrac23$에서 $0$, $t=\\dfrac23$에서 $1$, $\\dfrac23<t\\le1$에서 $2$, $t>1$에서 $1$이다.\n따라서 전체 교점 수는 $t<\\dfrac23$이면 $1$, $t=\\dfrac23$이면 $2$, $\\dfrac23<t<2$이면 $3$, $t=2$이면 $2$, $t>2$이면 $3$으로 분류된다. $t=1$에서는 왼쪽·오른쪽 조각의 교점 구성은 바뀌지만 양쪽 합계가 모두 $3$이므로 $g$는 불연속이 아니다. 실제 불연속점은 $t=\\dfrac23,2$뿐이므로 $b=\\dfrac23+2=\\dfrac83$이다. 따라서 $ab=3\\times\\dfrac83=8$이고 정답은 ②이다.",
     "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q17-solution.svg",
     "solutionImageAlt": "해설에서 핵심 수학 관계를 설명하는 보조 도형",
     "solutionImageCaption": "독립 풀이에서 확정한 핵심 그래프·도형 관계",
@@ -583,7 +587,8 @@ window.questionBank = [
       "서술형",
       "미분계수",
       "미분가능성",
-      "표"
+      "표",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=-|x(x-2)|$가 $x=2$에서 연속이지만, 미분 가능하지 않음을 보이시오. [5점]<br><table class=\"question-table\"><tr><th>채점 기준</th><th>배점</th></tr><tr><td>$x=2$에서 연속을 의미하는 필요충분조건 식 표현</td><td>1점</td></tr><tr><td>$x=2$에서 미분 가능하지 않음을 식으로 표현</td><td>4점</td></tr></table><br>※ 증명 및 서술 과정에 따라 부분 점수를 부여함.",
@@ -646,7 +651,12 @@ window.questionBank = [
     "content": "삼차함수 $f(x)=x^3-3x+k$가 극댓값 $1$을 가질 때, $f(x)$는 $x=a$에서 극솟값 $b$를 갖는다. [7점]<br>(1) $a,b,k$값을 구하시오. (단, $k$는 상수이다.)<br>(2) 이를 바탕으로 다음 형식으로 증감표를 작성하시오. (표를 줄을 그어서 그리지 않아도 됨)<br><table class=\"question-table\"><tr><th>$x$</th><td>$\\cdots$</td><td></td><td>$\\cdots$</td><td></td><td>$\\cdots$</td></tr><tr><th>$f'(x)$</th><td></td><td></td><td></td><td></td><td></td></tr><tr><th>$f(x)$</th><td></td><td></td><td></td><td></td><td></td></tr></table><br><table class=\"question-table\"><tr><th>채점 기준</th><th>배점</th></tr><tr><td>$a,b,k$값을 구한 경우</td><td>각2점</td></tr><tr><td>증감표를 완벽하게 작성한 경우</td><td>1점</td></tr></table><br>※ 서술 과정에 따라 부분 점수를 부여함.",
     "choices": [],
     "answer": "$a=1,\\ b=-3,\\ k=-1$",
-    "solution": "[키포인트] 도함수의 부호가 바뀌는 두 점에서 극대와 극소가 생긴다.\n조건 정리: $f'(x)=3x^2-3=3(x+1)(x-1)$이므로 임계점은 $x=-1,1$이다.\n풀이 방향: 도함수의 부호로 어느 점이 극대인지 정한 뒤 극댓값 조건으로 $k$를 구하고 극솟값을 계산한다.\n정석 풀이: $x<-1$에서 $f'(x)>0$, $-1<x<1$에서 $f'(x)<0$, $x>1$에서 $f'(x)>0$이다. 따라서 $x=-1$에서 극대, $x=1$에서 극소이다. 극댓값이 $1$이므로 $f(-1)=-1+3+k=2+k=1$에서 $k=-1$이다. 따라서 $a=1$, $b=f(1)=1-3-1=-3$이다. 증감은 $x:-\\infty\\to-1\\to1\\to\\infty$, $f':+\\to0\\to-\\to0\\to+$, $f:$ 증가 $\\to1$ (극대) $\\to$ 감소 $\\to-3$ (극소) $\\to$ 증가이다.\n따라서 $a=1$, $b=-3$, $k=-1$이다.",
+    "solution": "[키포인트] 도함수의 부호가 바뀌는 두 점에서 극대와 극소가 생긴다.\n조건 정리: $f'(x)=3x^2-3=3(x+1)(x-1)$이므로 임계점은 $x=-1,1$이다.\n풀이 방향: 도함수의 부호로 어느 점이 극대인지 정한 뒤 극댓값 조건으로 $k$를 구하고 극솟값을 계산한다.\n정석 풀이: $x<-1$에서 $f'(x)>0$, $-1<x<1$에서 $f'(x)<0$, $x>1$에서 $f'(x)>0$이다. 따라서 $x=-1$에서 극대, $x=1$에서 극소이다. 극댓값이 $1$이므로 $f(-1)=-1+3+k=2+k=1$에서 $k=-1$이다. 따라서 $a=1$, $b=f(1)=1-3-1=-3$이다.\n요구한 증감표는 아래 해설 그림으로 확인한다.\n따라서 $a=1$, $b=-3$, $k=-1$이다.",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "극대·극소와 도함수의 부호를 정리한 증감표",
+    "solutionImageCaption": "x=-1에서 극대, x=1에서 극소가 되는 완성된 증감표",
+    "solutionImageSize": "medium",
+    "solutionImageStatus": "asset_verified",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -725,7 +735,7 @@ window.questionBank = [
     "content": "두 다항함수 $f(x)$, $g(x)$가 다음 조건을 만족시킬 때, 상수 $k$의 값을 구하시오. [8점]<br><div class=\"note-box\">(가) $f(0)=0$, $g(0)=0$<br>(나) $f\\'(0)=\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)+4kx}{f(x)+2kx}$, $g\\'(0)=\\displaystyle\\lim_{x\\to0}\\dfrac{g(x)+4kx}{g(x)+2kx}$<br>(다) $f\\'(0)g\\'(0)=-1$</div><br><table class=\"question-table\"><tr><th>채점 기준</th><th>배점</th></tr><tr><td>풀이 과정을 논리적 모순 없이 서술하고 정답 작성</td><td>8점</td></tr><tr><td>정답만 작성한 경우</td><td>1점</td></tr></table><br>※ 서술 과정에 따라 부분 점수를 부여함.",
     "choices": [],
     "answer": "$\\dfrac14$",
-    "solution": "[키포인트] $f(0)=g(0)=0$이므로 $x\\to0$에서 $f(x)/x$, $g(x)/x$의 극한이 각각 미분계수와 같다.\n조건 정리: $A=f'(0)$라 두면 $\\displaystyle\\lim_{x\\to0}\\dfrac{f(x)}x=A$이고, (나)에서 $A=\\dfrac{A+4k}{A+2k}$이다. 마찬가지로 $B=g'(0)$도 같은 방정식을 만족한다.\n풀이 방향: $A,B$가 같은 이차방정식의 두 실근임을 이용해 근의 곱을 (다)와 비교한다.\n정석 풀이: $A(A+2k)=A+4k$이므로 $A^2+(2k-1)A-4k=0$이다. $B$도 $B^2+(2k-1)B-4k=0$을 만족한다. (다)에서 $AB=-1$이므로 $A$와 $B$는 서로 다른 두 실근이다. 따라서 근과 계수의 관계에 의해 $AB=-4k$이다. $-4k=-1$이므로 $k=\\dfrac14$이다.\n따라서 구하는 값은 $\\dfrac14$이다.",
+    "solution": "[키포인트] $f(0)=g(0)=0$이므로 $x\\to0$에서 $f(x)/x$, $g(x)/x$의 극한을 미분계수로 바꾸되 분모의 1차항이 사라지는 퇴화 경우를 먼저 확인한다.\n조건 정리: $A=f'(0)$라 두면 $f(x)=Ax+o(x)$이고 $\\displaystyle\\lim_{x\\to0}f(x)/x=A$이다. (나)의 분수는 $\\dfrac{(A+4k)x+o(x)}{(A+2k)x+o(x)}$ 꼴이다.\n풀이 방향: $A+2k=0$인 경우에는 유한한 극한이 $A$가 될 수 없음을 확인한 뒤, 비퇴화 경우에만 식을 정리한다. $B=g'(0)$도 같은 과정을 따른다.\n정석 풀이: 먼저 $A+2k=0$이면 $A=-2k$이다. $k\\ne0$이면 분자의 1차 계수 $A+4k=2k$가 0이 아니어서 분모가 $o(x)$인 분수의 유한한 극한이 될 수 없다. $k=0$이면 $A=0$이고 분수는 정의되는 경우 $f(x)/f(x)=1$로 가므로 극한값 $A=0$과 모순이다(분모가 항등적으로 0이면 극한 자체가 정의되지 않는다). 따라서 $A+2k\\ne0$이다.\n그러므로 $A=\\dfrac{A+4k}{A+2k}$이고, 정리하면 $A^2+(2k-1)A-4k=0$이다. 같은 방식으로 $B=g'(0)$도 $B^2+(2k-1)B-4k=0$을 만족한다. (다)에서 $AB=-1$이므로 $A,B$는 서로 다른 두 실근이고 근과 계수의 관계로 $AB=-4k$이다. 따라서 $-4k=-1$, 즉 $k=\\dfrac14$이다.\n따라서 구하는 값은 $\\dfrac14$이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
