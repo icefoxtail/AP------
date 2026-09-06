@@ -186,6 +186,90 @@
         return createPrintJobFromRaw('clinic', input);
     }
 
+    function extractChoice(choice) {
+        if (choice === undefined || choice === null) return '';
+        if (typeof choice === 'object') return text(choice.text || choice.content || choice.value || choice.answer || Object.values(choice)[0]);
+        return text(choice);
+    }
+
+    function stripChoicePrefix(value) {
+        return text(value).replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d))\s*/, '').trim();
+    }
+
+    function choiceRenderMode(choices, choiceColumns) {
+        if (positiveInteger(choiceColumns)) return 'grid';
+        const texts = choices.map(choice => stripChoicePrefix(extractChoice(choice)));
+        const stripped = texts.map(value => value.replace(/\$\$[\s\S]*?\$\$/g, '~').replace(/\$[^$\n]*?\$/g, '~').trim());
+        const average = stripped.reduce((sum, value) => sum + value.length, 0) / Math.max(stripped.length, 1);
+        const hasMarkers = texts.some(value => (value.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤/g) || []).length >= 2);
+        if (hasMarkers) return 'boxed';
+        if (stripped.some(value => value.length > 36) || texts.some(value => /\n|<br/i.test(value)) || average > 28) return 'block';
+        return stripped.some(value => value.length > 20) ? 'block' : 'compact';
+    }
+
+    function renderChoicesHTML(question, format) {
+        const choices = Array.isArray(question.choices) ? question.choices : [];
+        if (!choices.length || choices[0] === '주관식' || choices.every(choice => !extractChoice(choice).trim())) return '<div class="answer-box"></div>';
+        const circled = ['①', '②', '③', '④', '⑤'];
+        const mode = choiceRenderMode(choices, question.choiceColumns);
+        const style = mode === 'grid' ? ` style="grid-template-columns:repeat(${question.choiceColumns}, minmax(0, 1fr))"` : '';
+        const items = choices.map((choice, index) => `<div class="choice-item"><span class="choice-no">${circled[index] || ''}</span><span class="choice-text">${format(stripChoicePrefix(extractChoice(choice)))}</span></div>`).join('');
+        return `<div class="choices choices-${mode}"${style}>${items}</div>`;
+    }
+
+    function renderImageHTML(question, field, className, options) {
+        const assetRef = question[field];
+        if (!assetRef) return '';
+        const resolve = options.resolveAssetUrl;
+        if (typeof resolve !== 'function') throw new Error('MISSING_ASSET_RESOLVER');
+        const url = requireContract().callAssetResolver(resolve, assetRef, question, question.sourceRef);
+        const sizeField = field === 'solutionImage' ? 'solutionImageSize' : 'imageSize';
+        const size = optionalString(question, sizeField);
+        const sizeClass = size ? ` image-${size}` : '';
+        const alt = field === 'solutionImage' ? optionalString(question, 'solutionImageAlt') || `문항 ${question.displayNo} 해설 그래프` : '';
+        const caption = field === 'solutionImage' && question.solutionImageCaption
+            ? `<span class="sol-image-caption">${question.solutionImageCaption}</span>`
+            : '';
+        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}"><img src="${url}" alt="${alt}">${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
+    }
+
+    function renderQuestionHTML(inputQuestion, options) {
+        const contract = requireContract();
+        const question = contract.createCanonicalQuestion(inputQuestion);
+        const config = options || {};
+        const mode = contract.canonicalRenderMode(config.mode || 'exam');
+        const format = typeof config.wrapLatex === 'function' ? config.wrapLatex : value => text(value);
+        const content = format(question.content);
+        const image = renderImageHTML(question, 'image', 'q-image-wrap', config);
+        const choices = mode === 'exam' ? renderChoicesHTML(question, format) : '';
+        const answer = mode === 'answer' ? `<div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>` : '';
+        const solution = mode === 'solution'
+            ? `<div class="sol-meta"><div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>${renderImageHTML(question, 'solutionImage', 'sol-image-wrap', config)}<div class="sol-exp">${format(question.solution || '해설이 없습니다.')}</div></div>`
+            : '';
+        return `<article class="q-box" data-source-ref="${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}"><div class="q-num">${question.displayNo}.</div><div class="q-content">${content}</div>${image}${choices}${answer}${solution}</article>`;
+    }
+
+    function semanticSnapshot(html) {
+        const source = text(html);
+        const count = pattern => (source.match(pattern) || []).length;
+        return Object.freeze({
+            questionCount: count(/class="q-box(?:\s|"|$)/g),
+            contentCount: count(/class="q-content"/g),
+            choiceCount: count(/class="choice-item"/g),
+            questionImageCount: count(/class="q-image-wrap(?:\s|"|$)/g),
+            solutionImageCount: count(/class="sol-image-wrap(?:\s|"|$)/g),
+            answerCount: count(/class="sol-ans"/g),
+            solutionCount: count(/class="sol-exp"/g)
+        });
+    }
+
+    function compareQuestionSemantics(legacyHtml, authorityHtml) {
+        const legacy = semanticSnapshot(legacyHtml);
+        const authority = semanticSnapshot(authorityHtml);
+        const differences = Object.keys(legacy).filter(key => legacy[key] !== authority[key]).map(key => ({ key, legacy: legacy[key], authority: authority[key] }));
+        return Object.freeze({ equal: differences.length === 0, legacy, authority, differences: Object.freeze(differences) });
+    }
+
     return Object.freeze({
         VERSION,
         normalizeArchiveQuestions,
@@ -193,6 +277,9 @@
         normalizeClinicQuestions,
         createArchivePrintJob,
         createMixedPrintJob,
-        createClinicPrintJob
+        createClinicPrintJob,
+        renderQuestionHTML,
+        semanticSnapshot,
+        compareQuestionSemantics
     });
 }));
