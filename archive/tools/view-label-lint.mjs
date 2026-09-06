@@ -18,7 +18,11 @@ const archiveDir = path.resolve(scriptDir, '..');
 const examsDir = path.join(archiveDir, 'exams');
 const asJson = process.argv.includes('--json');
 
-const INLINE_VIEW_LABEL = /(?:&lt;\s*보기\s*&gt;|<\s*보기\s*>|\[\s*보기\s*\])(?=\s*(?:에서|의|중|를|을|와|과|에|으로|로|처럼|보다|만|도|가|는|은|이))/gi;
+// A standalone heading may be followed by a line-broken option marker such as
+// "가)".  Only multi-character particles may cross whitespace; a single
+// particle must be attached directly to the label so the option marker is not
+// mistaken for the subject particle "가".
+const INLINE_VIEW_LABEL = /(?:&lt;\s*보기\s*&gt;|<\s*보기\s*>|\[\s*보기\s*\])(?:(?=\s*(?:에서|의|중|으로|처럼|보다))|(?=(?:를|을|와|과|에|로|만|도|가|는|은|이)))/gi;
 
 function walk(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
