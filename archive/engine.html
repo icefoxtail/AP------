@@ -1955,10 +1955,14 @@ async function renderSol(area, data) {
                     )
                 )
             );
-            const solutionHtml = formatSolutionHtml(solutionText) + renderSolutionImageHTML(q);
+            // Keep the header/visual area out of the chunkable solution body.  A
+            // continuation shell then contains only .sol-exp, so a solution image
+            // is shown once in the first column rather than once per continuation.
+            const solutionHtml = formatSolutionHtml(solutionText);
+            const solutionImageHtml = renderSolutionImageHTML(q);
             const box = document.createElement('div'); box.className = 'q-box sol-box';
             box.dataset.solutionHtml = solutionHtml;
-            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
+            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             staging.appendChild(box);
             return box;
         });
@@ -1994,7 +1998,7 @@ async function renderSol(area, data) {
             )
         );
         const box = document.createElement('div'); box.className = 'q-box sol-box';
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;"><div style="font-weight:bold;color:red;margin-bottom:4px;">[정답] ${wrapLatex(q.answer ?? '–')}</div><div style="font-size:8.5pt;line-height:1.55;">${formatSolutionHtml(solutionText)}${renderSolutionImageHTML(q)}</div></div>`;
+        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(solutionText)}</div></div>`;
         cols[colIdx].appendChild(box);
         await typesetMath('solution-reminder-box', [box]); await raf();
         if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
