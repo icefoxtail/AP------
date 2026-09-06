@@ -314,7 +314,7 @@ q11 정답표 복원으로 production mutation은 2건(정답 승격이 아닌 s
 [31_current_source_hold_status_after_q11_answer_restore_20260906.json](source-audit-20260906/31_current_source_hold_status_after_q11_answer_restore_20260906.json),
 q10 복구 증거는 [28_source_recovery_q10_23maesan_women_d_drive.json](unit-13-cases/28_source_recovery_q10_23maesan_women_d_drive.json)이다.
 
-현재 단원별 expected-facts 원장 1,512행 중 1,506행은 `SOURCE_ONLY_REVIEWED`, 6행은
+현재 **active SOURCE_HOLD 재감사 subset** 원장 1,512행 중 1,506행은 `SOURCE_ONLY_REVIEWED`, 6행은
 `SOURCE_HOLD`, pending은 0행이다. 이 수치는 현재 작성된 단원 원장들의 source 상태 합계이며,
 문항 전체의 외부 독립 시각 검수·브라우저 release gate와는 별도다.
 
@@ -340,7 +340,7 @@ q10 복구 증거는 [28_source_recovery_q10_23maesan_women_d_drive.json](unit-1
 이번 반복 탐색으로 새로 해소된 hold는 0건이며, 유사문제 production 승격도 0건이다.
 최신 상태는 [32_source_hold_repeat_reaudit_20260906.json](source-audit-20260906/32_source_hold_repeat_reaudit_20260906.json)와
 [32_current_source_hold_status_repeat_reaudit_20260906.json](source-audit-20260906/32_current_source_hold_status_repeat_reaudit_20260906.json)이다.
-현재 원장 합계는 1,512행 중 `SOURCE_ONLY_REVIEWED` 1,506행, `SOURCE_HOLD` 6행,
+현재 active hold 재감사 subset 원장 합계는 1,512행 중 `SOURCE_ONLY_REVIEWED` 1,506행, `SOURCE_HOLD` 6행,
 pending 0행이며, 외부 독립검수·실제 브라우저 release gate는 여전히 열려 있다.
 
 ## 2026-09-06 source ledger coverage reconciliation
