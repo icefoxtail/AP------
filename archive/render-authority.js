@@ -97,14 +97,18 @@
         const contract = requireContract();
         normalizerProfile(kind);
         const raw = rawQuestion && typeof rawQuestion === 'object' ? rawQuestion : {};
-        const archiveFile = sourceFile(raw, options);
-        const ordinal = sourceOrdinal(raw, index);
+        const adapterIdentity = typeof options.resolveSourceRef === 'function'
+            ? (options.resolveSourceRef(raw, index) || {})
+            : {};
+        const identity = { ...raw, ...adapterIdentity };
+        const archiveFile = sourceFile(identity, options);
+        const ordinal = sourceOrdinal(identity, index);
         const question = {
             sourceRef: {
                 sourceArchiveFile: archiveFile,
-                sourceQuestionUid: sourceUid(raw, archiveFile, ordinal),
+                sourceQuestionUid: sourceUid(identity, archiveFile, ordinal),
                 sourceQuestionOrdinal: ordinal,
-                sourceQuestionNo: sourceQuestionNo(raw)
+                sourceQuestionNo: sourceQuestionNo(identity)
             },
             displayNo: positiveInteger(options.displayStart) ? options.displayStart + index : index + 1,
             content: text(firstPresent(raw, ['content', 'question', 'text', 'prompt'])),
@@ -149,7 +153,8 @@
         const config = input || {};
         const questions = normalizeQuestions(kind, config.rawQuestions, {
             sourceArchiveFile: config.sourceArchiveFile,
-            displayStart: config.displayStart
+            displayStart: config.displayStart,
+            resolveSourceRef: config.resolveSourceRef
         });
         const section = {
             sectionId: config.sectionId || `${kind}-section`,

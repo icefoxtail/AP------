@@ -81,6 +81,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/render-authority-question.test.js',
   'tests/render-authority-semantic-css.test.js',
   'tests/layout-authority.test.js',
+  'tests/mixed-render-authority-adapter.test.js',
   'tests/student-portal-mixed-review-payload.test.js',
   'tests/student-portal-omr-review-ui.test.js'
 ].sort();

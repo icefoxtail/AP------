@@ -37,6 +37,8 @@
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
+    <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-authority.js?v=20260906.3" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -1070,6 +1072,13 @@ function getMixedQuestionSourceNo(q, fallbackNo) {
     return Number.isFinite(n) && n > 0 ? n : fallbackNo;
 }
 
+function getMixedQuestionSourceRef(q, index) {
+    const sourceArchiveFile = String(getMixedQuestionSourceFile(q) || '').trim();
+    const sourceOrdinal = Number(getMixedQuestionSourceOrdinal(q) || index + 1) || index + 1;
+    const sourceUid = String(getMixedQuestionIdentity(q) || q?.sourceQuestionUid || q?.source_question_uid || q?.questionUid || q?.question_uid || `legacy:${sourceArchiveFile}#ordinal:${sourceOrdinal}`).trim();
+    return `${sourceArchiveFile}#${sourceUid}`;
+}
+
 async function registerBlueprintToOS() {
     if (!shouldRenderSubmitQr()) return;
     if (!AppState.data.length || !AppState.key) return;
@@ -1148,10 +1157,80 @@ async function registerBlueprintToOS() {
     }
 }
 
-const AppState = { data: [], meta: {}, mode: 'exam', qpp: 4, key: '', printHeaderOptions: {} };
+const AppState = { data: [], canonicalData: [], meta: {}, mode: 'exam', qpp: 4, key: '', printHeaderOptions: {} };
 
 function rendererMode() {
     return window.APRenderLoop?.rendererMode?.() || 'batch';
+}
+
+function buildMixedCanonicalData() {
+    if (typeof window.APRenderAuthority?.normalizeMixedQuestions !== 'function') return [];
+    try {
+        return window.APRenderAuthority.normalizeMixedQuestions(AppState.data, {
+            resolveSourceRef: (question, index) => ({
+                sourceArchiveFile: getMixedQuestionSourceFile(question),
+                sourceQuestionUid: getMixedQuestionIdentity(question) || undefined,
+                sourceQuestionOrdinal: getMixedQuestionSourceOrdinal(question) || index + 1,
+                sourceQuestionNo: getMixedQuestionSourceNo(question, index + 1)
+            })
+        });
+    } catch (error) {
+        console.warn('[mixed-engine] canonical normalization failed; legacy data remains authoritative for this render', error);
+        return [];
+    }
+}
+
+async function recordMixedDualRun(area) {
+    if (new URLSearchParams(window.location.search).get('renderAuthorityDualRun') !== '1') return;
+    if (!AppState.canonicalData.length || typeof window.APRenderAuthority?.compareQuestionSemantics !== 'function') return;
+    try {
+        const shared = AppState.mode === 'ans'
+            ? AppState.canonicalData.map(question => window.APRenderAuthority.renderAnswerEntryHTML(question, { formatAnswer: formatGridAnswer })).join('')
+            : AppState.canonicalData.map(question => window.APRenderAuthority.renderQuestionHTML(question, {
+                mode: AppState.mode,
+                wrapLatex,
+                prepareContent: prepareMixedCanonicalContent,
+                prepareSolution: prepareMixedCanonicalSolution,
+                resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef)
+            })).join('');
+        const witness = document.createElement('div');
+        witness.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:83mm;';
+        witness.innerHTML = shared;
+        document.body.appendChild(witness);
+        try { await typesetMath('mixed-authority-dual-run', [witness]); } catch (error) { console.warn('[mixed-engine] shared dual-run MathJax failed', error); }
+        const result = AppState.mode === 'ans'
+            ? window.APRenderAuthority.compareAnswerSemantics(area.innerHTML, witness.innerHTML)
+            : window.APRenderAuthority.compareQuestionSemantics(area.innerHTML, witness.innerHTML);
+        witness.remove();
+        document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({
+            source: 'mixer',
+            mode: AppState.mode,
+            equal: result.equal,
+            differences: result.differences,
+            canonicalSourceRefs: AppState.canonicalData.slice(0, 10).map(question => `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`),
+            legacySourceRefs: Array.from(area.querySelectorAll('.q-box, .ans-cell:not(.ans-cell-empty)')).slice(0, 10).map(element => element.getAttribute('data-source-ref') || '')
+        });
+    } catch (error) {
+        document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'mixer', error: String(error?.message || error) });
+    }
+}
+
+function prepareMixedCanonicalContent(question) {
+    const raw = question.sourcePayload || {};
+    const rawContent = stripInlineImagesFromContent(raw.content || raw.question || question.content || '', !!question.image);
+    return sanitizeProtectedSegments(
+        normalizeQuestionNotes(
+            normalizeViewBlocks(
+                normalizeQuestionTables(
+                    formatQuestionContent(wrapLatex(rawContent), raw)
+                )
+            )
+        )
+    );
+}
+
+function prepareMixedCanonicalSolution(question) {
+    return formatSolutionHtml(question.solution || '');
 }
 
 async function typesetMath(label, elements) {
@@ -1647,7 +1726,7 @@ async function renderExam(area, data) {
     let pNum = 1;
 
     const items = data.map((q, i) => {
-        const box = document.createElement('div'); box.className = 'q-box';
+        const box = document.createElement('div'); box.className = 'q-box'; box.dataset.sourceRef = getMixedQuestionSourceRef(q, i);
         
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
@@ -1993,9 +2072,9 @@ async function renderSol(area, data) {
             // is shown once in the first column rather than once per continuation.
             const solutionHtml = formatSolutionHtml(solText);
             const solutionImageHtml = renderSolutionImageHTML(q);
-            const box = document.createElement('div'); box.className = 'q-box sol-box';
+            const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getMixedQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
-            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
+            box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             staging.appendChild(box);
             return box;
         });
@@ -2059,7 +2138,7 @@ async function renderSol(area, data) {
 
     for (let i = 0; i < data.length; i++) {
         const q = data[i];
-        const box = document.createElement('div'); box.className = 'q-box sol-box';
+        const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getMixedQuestionSourceRef(q, i);
         const solText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
 
         const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
@@ -2074,7 +2153,7 @@ async function renderSol(area, data) {
         );
 
         box.innerHTML = `<div class="q-num">${i+1}.</div>
-                         <div style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
+                         <div data-semantic-content="1" style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
                          <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(solText)}</div></div>`;
 
         await placeSolutionBox(box);
@@ -2110,6 +2189,7 @@ function renderAns(area, data, perPage = 40) {
                 }
                 const num = start + idx + 1;
                 if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
+                u.dataset.sourceRef = getMixedQuestionSourceRef(chunk[idx], num - 1);
                 u.innerHTML = `<div class=\"ans-n\">${num}.</div><div class=\"ans-v\">${formatGridAnswer(chunk[idx].answer)}</div>`;
                 grid.appendChild(u);
             });
@@ -2187,6 +2267,7 @@ async function renderBody() {
     if (AppState.mode === 'ans') await fitAnswerPages(area, AppState.data);
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
+    await recordMixedDualRun(area);
     updateScreenFitScale();
     registerBlueprintToOS(); // [3B-MIXED] 믹서 원본 문항 매핑 등록 — 비동기
     registerClassExamAssignmentToOS(); // [3H] 출제 이력 등록 — 비동기
@@ -2593,6 +2674,7 @@ async function init() {
                     })
                     : question);
                 AppState.meta = fallback.meta;
+                AppState.canonicalData = buildMixedCanonicalData();
                 AppState.mode = p.get('mode') || 'exam';
                 if (isQrSolutionMode()) AppState.mode = 'sol';
                 applyQrSolutionLockUI();
@@ -2640,6 +2722,8 @@ async function init() {
         alert('출력할 문항 데이터가 없습니다.');
         return;
     }
+
+    AppState.canonicalData = buildMixedCanonicalData();
 
     AppState.mode = p.get('mode') || 'exam';
     if (isQrSolutionMode()) AppState.mode = 'sol';

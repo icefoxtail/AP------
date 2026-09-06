@@ -36,6 +36,18 @@ test('Mixer normalizer retains per-question provenance for same-id/different-sou
   assert.deepEqual(questions.map(question => question.displayNo), [1, 2]);
 });
 
+test('Mixer adapter may resolve canonical source ordinal independently of mixed cart order', () => {
+  const [question] = A.normalizeMixedQuestions([{ id: 2, _sourceFile: 'exams/original.js', content: 'A' }], {
+    resolveSourceRef(raw) {
+      assert.equal(raw.id, 2);
+      return { sourceArchiveFile: 'exams/original.js', sourceQuestionOrdinal: 17, sourceQuestionNo: 2 };
+    }
+  });
+  assert.deepEqual(question.sourceRef, {
+    sourceArchiveFile: 'exams/original.js', sourceQuestionUid: 'legacy:exams/original.js#ordinal:17', sourceQuestionOrdinal: 17, sourceQuestionNo: 2
+  });
+});
+
 test('Clinic normalizer resolves payload aliases only into canonical fields and preserves restored provenance', () => {
   const raw = [{
     _sourceArchiveFile: 'exams/original.js', sourceQuestionUid: 'uid-clinic', sourceQuestionOrdinal: 4,
