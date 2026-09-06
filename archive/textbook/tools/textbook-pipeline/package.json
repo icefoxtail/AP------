@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "quality": "node ../../../tools/pipeline-core/cli.mjs audit --pipeline textbook",
     "start": "node run-oneclick-pipeline.mjs",
     "check": "node --check run-oneclick-pipeline.mjs"
   }

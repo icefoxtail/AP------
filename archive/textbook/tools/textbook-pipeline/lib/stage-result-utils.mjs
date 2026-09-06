@@ -52,6 +52,6 @@ export function summarizeStageResults(results) {
     partialCount: statuses.filter((status) => status === "partial").length,
     blockedCount: statuses.filter((status) => status === "blocked").length,
     failCount: statuses.filter((status) => status === "fail").length,
-    status: hasFail ? "fail" : hasBlocked ? "blocked" : hasPartial ? "partial" : "pass",
+    status: results.length === 0 ? "blocked" : hasFail ? "fail" : hasBlocked ? "blocked" : hasPartial ? "partial" : "pass",
   };
 }

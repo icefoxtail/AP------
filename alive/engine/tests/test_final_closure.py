@@ -104,7 +104,7 @@ class FinalClosureTests(unittest.TestCase):
             self.assertEqual("FAIL", report["questions"][0]["status"])
 
     @unittest.skipUnless(shutil.which("node"), "node is required for the positive VM closure test")
-    def test_final_closure_passes_complete_evidence(self) -> None:
+    def test_legacy_pass_flags_require_shared_hash_bound_closure(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             js = self._write_js(root)
@@ -180,7 +180,9 @@ class FinalClosureTests(unittest.TestCase):
             )
             report = audit_final_closure(root, js, ledger, render, findings, root / "closure.json", None, variant)
 
-            self.assertEqual("PASS", report["status"])
+            self.assertEqual("FAIL", report["status"])
+            self.assertEqual("BLOCKED", report["gates"]["commonClosure"])
+            self.assertIn("COMMON_CLOSURE_MANIFEST_REQUIRED", report["commonClosure"]["errors"])
             self.assertEqual("PASS", report["gates"]["variant"])
             self.assertTrue((root / "closure.json").is_file())
             self.assertTrue(all(row["status"] == "PASS" for row in report["questions"]))

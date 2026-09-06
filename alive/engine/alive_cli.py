@@ -2590,6 +2590,7 @@ def command_final_closure_audit(args: argparse.Namespace) -> int:
         Path(args.output).resolve() if args.output else None,
         args.js_path,
         Path(args.variant_proof_ledger).resolve() if args.variant_proof_ledger else None,
+        Path(args.closure_manifest).resolve() if getattr(args, 'closure_manifest', None) else None,
     )
     emit(result, args.json)
     return 0 if result["status"] == "PASS" else 2
@@ -3440,6 +3441,7 @@ def build_parser() -> argparse.ArgumentParser:
     final_closure.add_argument("--external-findings", help="external review findings JSON")
     final_closure.add_argument("--variant-proof-ledger", help="optional universal A/B/C variant proof ledger JSON")
     final_closure.add_argument("--output", help="write the final closure report JSON")
+    final_closure.add_argument("--closure-manifest", help="shared APMath hash-bound closure manifest; otherwise reads <input>.closure.json")
     add_common_output(final_closure)
     final_closure.set_defaults(func=command_final_closure_audit)
 

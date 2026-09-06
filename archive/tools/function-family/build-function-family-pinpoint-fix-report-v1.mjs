@@ -3,6 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import cp from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { closureFromArgs, archiveSourceIdentity } from '../pipeline-core/integration.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const START_SHA = 'd0943d196a13e483b375db1668d48d224a14fffc';
@@ -64,6 +65,9 @@ function main() {
   const browserReportPath = path.join(REPORT_DIR, 'function_family_pinpoint_browser_render_v1.json');
   const browser = fs.existsSync(browserReportPath) ? readJson(browserReportPath) : { status: 'PENDING' };
   const output = {
+    commonClosure: closureFromArgs(ROOT, 'function-family', process.argv, [], targetRows.map(row => archiveSourceIdentity(row.sourceFile, Number(row.id)))),
+    statusScope: 'LOCAL_BUILD_CHECKS_ONLY',
+    productionAuthorized: false,
     reportType: 'FUNCTION_FAMILY_PINPOINT_FIX_MANIFEST_V1',
     generatedAt: new Date().toISOString(),
     startSha: START_SHA,

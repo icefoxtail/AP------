@@ -1,5 +1,13 @@
 # archive/tools
 
+## Common pipeline quality closure
+
+New archive work uses [pipeline-core](pipeline-core/README.md) for typed facts,
+candidate-only generation, independent evidence, UID/revision, render witnesses
+and final aggregation. Historical batch PASS and successful extraction are not
+release authority. The core covers visual, original, textbook, ALIVE and metadata
+routes while preserving their distinct algorithms and review scopes.
+
 ## exam-lint.mjs
 
 기출 JS 파일의 구조·표기를 자동 검수한다. 룰북 §14의 **1차 게이트**에 해당한다.

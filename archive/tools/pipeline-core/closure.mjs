@@ -1,0 +1,300 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { bytesSha, canonicalJson, objectSha, uidSet, uidSetSha, nonempty, isObject, readBoundFile, HASH_PATTERN } from './canonical.mjs';
+import { compareVisualFacts, auditDuplicates, structureFingerprint, VISUAL_SPEC_SHA } from './visual.mjs';
+import { verifyViewportPng } from './png.mjs';
+import { rulePreflight } from './rulepack.mjs';
+
+export const RUN_VERSION = 'APMATH_PIPELINE_RUN_v1';
+export const EVIDENCE_VERSION = 'APMATH_PIPELINE_EVIDENCE_v1';
+export const profiles = JSON.parse(fs.readFileSync(new URL('./profiles.json', import.meta.url)));
+const CORE_FILES = ['canonical.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json'];
+export const CORE_SHA = objectSha(CORE_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
+const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
+
+export function runInputSha(run) {
+  const questions = [...run.questions].sort((a, b) => a.questionUid < b.questionUid ? -1 : 1).map(({ evidence, renderEvidenceIds, sourceStatus, visual, ...q }) => {
+    const { requirement, adjudicationId, adjudicationStatus, exemptReason, ...visualInputs } = visual || {};
+    return { ...q, visual: visualInputs };
+  });
+  // Decisions are outputs of review, not inputs to the blind source pass.
+  // The final requirement map is bound separately by denominatorInput and V3.
+  return objectSha({ schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA });
+}
+
+export function validateRegistry(records, run) {
+  const errors = [], byId = new Map(), active = new Map();
+  if (!Array.isArray(records) || records.length === 0) return ['REGISTRY_MISSING'];
+  for (const record of records) {
+    if (!nonempty(record.recordId) || byId.has(record.recordId)) errors.push('REGISTRY_RECORD_ID_DUPLICATE_OR_MISSING');
+    byId.set(record.recordId, record);
+    if (!Number.isSafeInteger(record.revision) || record.revision < 1 || typeof record.isCanonical !== 'boolean' || !HASH_PATTERN.test(record.inputSha)) errors.push('REGISTRY_INVALID_RECORD');
+    try { if (!uidSet(record.questionUids).length) errors.push('REGISTRY_EMPTY_SCOPE'); } catch { errors.push('REGISTRY_UID_SET_INVALID'); }
+    if (record.isCanonical) for (const uid of record.questionUids || []) {
+      if (active.has(uid)) errors.push(`ACTIVE_UID_DUPLICATE:${uid}`);
+      active.set(uid, record);
+    }
+  }
+  for (const record of records) {
+    if (record.revision === 1 && record.supersedes !== null) errors.push('INITIAL_REVISION_SUPERSEDES');
+    if (record.revision > 1) {
+      const previous = byId.get(record.supersedes);
+      if (!previous || previous.revision !== record.revision - 1 || previous.batchId !== record.batchId || previous.isCanonical || previous.inputSha === record.inputSha) errors.push('REVISION_LINEAGE_INVALID');
+      if (previous && canonicalJson(uidSet(previous.questionUids)) !== canonicalJson(uidSet(record.questionUids))) errors.push('REVISION_UID_SCOPE_CHANGED');
+    }
+  }
+  const selected = byId.get(run.canonicalRecordId);
+  if (!selected?.isCanonical || selected.revision !== run.revision || selected.batchId !== run.runId || selected.inputSha !== run.inputSha) errors.push('RUN_CANONICAL_RECORD_MISMATCH');
+  if (selected && canonicalJson(uidSet(selected.questionUids)) !== canonicalJson(uidSet(run.questions.map(q => q.questionUid)))) errors.push('RUN_CANONICAL_SCOPE_MISMATCH');
+  return errors;
+}
+
+export function denominatorInput(run) {
+  const rows = run.questions.map(q => ({ questionUid: q.questionUid, requirement: q.visual.requirement, adjudicationId: q.visual.adjudicationId, adjudicationStatus: q.visual.adjudicationStatus, exemptReason: q.visual.exemptReason ?? null, actualSolutionVisualAttached: q.visual.actualSolutionVisualAttached, problemVisualMathDependency: q.visual.problemVisualMathDependency, sharedVisualMathDependency: q.visual.sharedVisualMathDependency })).sort((a, b) => a.questionUid < b.questionUid ? -1 : 1);
+  const requiredUidSet = rows.filter(q => q.requirement === 'VISUAL_REQUIRED' || q.actualSolutionVisualAttached || q.problemVisualMathDependency || q.sharedVisualMathDependency).map(q => q.questionUid);
+  return { inputSha: objectSha({ runInputSha: runInputSha(run), rows }), requiredUidSet, requiredUidSetSha: uidSetSha(requiredUidSet) };
+}
+
+export function validateRender(root, record, profile, mode, run, inputSha, candidatePath) {
+  const errors = [], payload = record?.payload;
+  if (record?.axis !== 'render' || record.status !== 'PASS' || record.inputSha !== inputSha || !isObject(payload)) return ['RENDER_EVIDENCE_NOT_PASS'];
+  if (payload.actualBrowser !== true || payload.productionEngine !== true || payload.mode !== mode || !nonempty(payload.browserVersion)) errors.push('REAL_RENDER_REQUIRED');
+  const viewport = payload.viewport;
+  if (!isObject(viewport) || viewport.profile !== profile.profile || !Number.isSafeInteger(viewport.width) || !Number.isSafeInteger(viewport.height) || viewport.height < 1 || viewport.width < profile.minWidth || (profile.maxWidth && viewport.width > profile.maxWidth)) errors.push('RENDER_VIEWPORT_INVALID');
+  for (const check of profiles.renderChecks) if (payload.checks?.[check] !== 'PASS') errors.push(`RENDER_CHECK:${check}`);
+  const questions = run.questions.filter(q => q.candidatePath === candidatePath);
+  const context = { window: {} }; vm.runInNewContext(readBoundFile(root, run.inputs.find(i => i.path === candidatePath)).toString('utf8'), context, { timeout: 1000 });
+  const bank = context.window.questionBank;
+  if (payload.candidatePath !== candidatePath || payload.expectedQuestionCount !== bank.length || payload.observedQuestionCount !== bank.length || payload.lastQuestionId !== bank.at(-1).id || !Array.isArray(payload.questionUids) || canonicalJson(uidSet(payload.questionUids)) !== canonicalJson(uidSet(questions.map(q => q.questionUid)))) errors.push('RENDER_SCOPE_COUNT_MISMATCH');
+  if (!Array.isArray(payload.assetAssociations)) errors.push('RENDER_ASSET_ASSOCIATIONS_MISSING');
+  else for (const q of questions) for (const assetPath of (mode === 'solution' ? q.solutionAssetPaths : mode === 'exam' ? q.problemAssetPaths : []) || []) {
+    const ref = run.inputs.find(i => i.path === assetPath);
+    if (!ref || !payload.assetAssociations.some(a => a.questionUid === q.questionUid && a.path === assetPath && a.sha256 === ref.sha256 && a.status === 'PASS')) errors.push(`RENDER_ASSET_ASSOCIATION:${q.questionUid}:${assetPath}`);
+  }
+  try {
+    const png = readBoundFile(root, payload.screenshot);
+    if (!verifyViewportPng(png, viewport.width, viewport.height)) errors.push('VIEWPORT_PNG_WITNESS_INVALID');
+  } catch (error) { errors.push(`RENDER_WITNESS:${error.message}`); }
+  if (!Array.isArray(payload.itemWitnesses)) errors.push('PER_ITEM_RENDER_WITNESSES_MISSING');
+  else for (const q of questions) {
+    const witnesses = payload.itemWitnesses.filter(w => w.questionUid === q.questionUid);
+    if (witnesses.length !== 1 || witnesses[0].status !== 'PASS') { errors.push(`ITEM_RENDER_WITNESS:${q.questionUid}`); continue; }
+    try { if (!verifyViewportPng(readBoundFile(root, witnesses[0].screenshot), viewport.width, viewport.height)) errors.push(`ITEM_PNG_INVALID:${q.questionUid}`); } catch (error) { errors.push(`ITEM_PNG:${error.message}`); }
+  }
+  return errors;
+}
+
+function verifyRules(root, run, errors) {
+  const manifestRef = run.inputs.find(i => i.path === 'docs/rules/MANIFEST.md' && i.role === 'rule');
+  if (!manifestRef) { errors.push('RULE_MANIFEST_NOT_BOUND'); return; }
+  let manifest;
+  try { manifest = readBoundFile(root, manifestRef).toString('utf8'); } catch (error) { errors.push(error.message); return; }
+  const required = [...MINIMUM_RULES];
+  if (run.questions.some(q => q.visual?.actualSolutionVisualAttached || q.visual?.problemVisualMathDependency || q.visual?.sharedVisualMathDependency || q.visual?.requirement === 'VISUAL_REQUIRED')) required.push('04_VISUAL/도형추출.md');
+  if (['logic-visual', 'set-visual-pilot'].includes(run.pipeline)) required.push('04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md');
+  if (run.pipeline === 'geometry-equation') required.push('04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md');
+  for (const relative of required) {
+    const ref = run.inputs.find(i => i.path === `docs/rules/${relative}` && i.role === 'rule');
+    const line = manifest.split(/\r?\n/).find(line => line.startsWith(`- ${relative} | `));
+    const match = line?.match(/\| (\d+) bytes \| sha256 ([0-9a-f]{64})$/);
+    if (!ref || !match || ref.bytes !== Number(match[1]) || ref.sha256 !== `sha256:${match[2]}`) errors.push(`RULE_PACK_DRIFT:${relative}`);
+  }
+}
+
+function validateEvidence(root, ref, run, errors) {
+  let e;
+  try { e = JSON.parse(readBoundFile(root, ref)); } catch (error) { errors.push(`EVIDENCE_FILE:${error.message}`); return null; }
+  if (e.schemaVersion !== EVIDENCE_VERSION || !nonempty(e.evidenceId) || !nonempty(e.axis) || e.runId !== run.runId || e.revision !== run.revision || e.inputSha !== run.inputSha || e.reviewStartInputSha !== run.inputSha || e.reviewEndInputSha !== run.inputSha) errors.push(`EVIDENCE_BINDING:${e.evidenceId}`);
+  if (e.status !== 'PASS' || !['VALID', 'FROZEN'].includes(e.validityStatus)) errors.push(`EVIDENCE_NOT_PASS:${e.evidenceId}`);
+  if (!nonempty(e.reviewerId) || !nonempty(e.reviewSessionId) || !nonempty(e.reviewerModelOrAgent)) errors.push(`REVIEWER_IDENTITY_MISSING:${e.evidenceId}`);
+  if (!Array.isArray(e.findings) || e.findings.some(f => f.status !== 'RESOLVED')) errors.push(`UNRESOLVED_FINDINGS:${e.evidenceId}`);
+  if (!Number.isFinite(Date.parse(e.startedAt)) || !Number.isFinite(Date.parse(e.frozenAt)) || Date.parse(e.startedAt) > Date.parse(e.frozenAt)) errors.push(`EVIDENCE_TIME_INVALID:${e.evidenceId}`);
+  return e;
+}
+
+export function auditRun(root, run) {
+  const errors = [], itemResults = [], renderResults = [], candidateQuestions = new Map();
+  const result = () => ({ schemaVersion: 'APMATH_PIPELINE_CLOSURE_v1', pipeline: run?.pipeline || null, runId: run?.runId || null, status: errors.length ? 'BLOCKED' : 'PASS', verifiedScope: profiles.pipelines[run?.pipeline]?.scope || null, productionAuthorized: false, coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA, inputSha: run?.inputSha || null, errors, items: itemResults, renders: renderResults });
+  if (!isObject(run) || run.schemaVersion !== RUN_VERSION || !profiles.pipelines[run.pipeline] || !nonempty(run.runId) || !Number.isSafeInteger(run.revision) || run.revision < 1 || !Array.isArray(run.questions) || !run.questions.length || !Array.isArray(run.inputs) || !run.inputs.length || !Array.isArray(run.evidence) || !run.evidence.length || !nonempty(run.builderSessionId)) {
+    errors.push('RUN_SCHEMA_INVALID'); return result();
+  }
+  const policy = profiles.pipelines[run.pipeline];
+  try { uidSet(run.questions.map(q => q.questionUid)); } catch (error) { errors.push(error.message); }
+  const inputPaths = new Set();
+  const sourceIdentities = new Set();
+  for (const ref of run.inputs) {
+    if (inputPaths.has(ref.path)) errors.push(`DUPLICATE_INPUT:${ref.path}`);
+    inputPaths.add(ref.path);
+    if (!profiles.inputRoles.includes(ref.role)) errors.push(`INVALID_INPUT_ROLE:${ref.path}`);
+    try { readBoundFile(root, ref); } catch (error) { errors.push(error.message); }
+  }
+  for (const role of ['source', 'candidate', 'rule', 'spec', 'verifier']) if (!run.inputs.some(i => i.role === role)) errors.push(`INPUT_ROLE_MISSING:${role}`);
+  if (policy.modes.length && !run.inputs.some(i => i.role === 'engine')) errors.push('ENGINE_INPUT_NOT_BOUND');
+  for (const q of run.questions) {
+    if (!Number.isSafeInteger(q.qid) || q.qid < 1 || !nonempty(q.examId) || q.questionUid !== `${q.sourcePath}|${q.examId}|${q.qid}`) errors.push(`CANONICAL_UID_INVALID:${q.questionUid}`);
+    const identity = `${q.sourcePath}|${q.qid}`;
+    if (sourceIdentities.has(identity)) errors.push(`SOURCE_IDENTITY_ALIAS_DUPLICATE:${identity}`);
+    sourceIdentities.add(identity);
+    if (!isObject(q.visual) || !['VISUAL_REQUIRED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT'].includes(q.visual.requirement) || !['NONE', 'KEEP', 'ADD', 'REBUILD', 'REMOVE'].includes(q.visual.action) || !nonempty(q.visual.adjudicationId) || !['actualSolutionVisualAttached', 'problemVisualMathDependency', 'sharedVisualMathDependency'].every(k => typeof q.visual[k] === 'boolean') || !isObject(q.evidence)) { errors.push(`QUESTION_SCHEMA:${q.questionUid}`); continue; }
+    if (q.sourceStatus !== 'RESOLVED' || q.visual.adjudicationStatus !== 'RESOLVED') errors.push(`SOURCE_OR_REQUIREMENT_UNRESOLVED:${q.questionUid}`);
+    if (q.visual.requirement === 'VISUAL_EXEMPT' && (!nonempty(q.visual.exemptReason) || q.visual.actualSolutionVisualAttached || q.visual.problemVisualMathDependency || q.visual.sharedVisualMathDependency)) errors.push(`INVALID_VISUAL_EXEMPT:${q.questionUid}`);
+    const candidate = run.inputs.find(i => i.path === q.candidatePath && i.role === 'candidate');
+    if (!candidate || !run.inputs.some(i => i.path === q.sourcePath && i.role === 'source')) { errors.push(`QUESTION_INPUT_MISSING:${q.questionUid}`); continue; }
+    try {
+      const context = { window: {} };
+      vm.runInNewContext(readBoundFile(root, candidate).toString('utf8'), context, { timeout: 1000 });
+      const bank = context.window.questionBank;
+      const matches = Array.isArray(bank) ? bank.filter(item => item.id === q.qid) : [];
+      if (matches.length !== 1) throw new Error('QUESTION_IDENTITY');
+      const question = matches[0];
+      const sourceContext = { window: {} };
+      vm.runInNewContext(readBoundFile(root, run.inputs.find(i => i.path === q.sourcePath && i.role === 'source')).toString('utf8'), sourceContext, { timeout: 1000 });
+      const sourceMatches = sourceContext.window.questionBank?.filter(item => item.id === q.qid);
+      if (sourceContext.window.examTitle !== q.examId || !Array.isArray(sourceMatches) || sourceMatches.length !== 1) errors.push(`SOURCE_IDENTITY_MISMATCH:${q.questionUid}`);
+      if (policy.scope === 'QUESTION_QUALITY' && (!nonempty(question.content) || !Array.isArray(question.choices) || !nonempty(String(question.answer ?? '')) || !nonempty(question.solution))) errors.push(`QUESTION_REQUIRED_FIELDS:${q.questionUid}`);
+      for (const text of [question.content, question.solution, ...(question.choices || [])]) {
+        const mergedCommands = String(text).match(/\\(?:lt|gt|leq|geq)[A-Za-z]+/g) || [];
+        if (mergedCommands.some(command => !['\\ltimes', '\\gtimes', '\\leqq', '\\geqq', '\\leqslant', '\\geqslant'].includes(command))) errors.push(`MERGED_TEX_RELATION:${q.questionUid}`);
+      }
+      candidateQuestions.set(q.questionUid, JSON.parse(JSON.stringify(question)));
+      if (policy.scope === 'METADATA_ONLY') {
+        const source = sourceContext.window.questionBank?.find(item => item.id === q.qid);
+        if (!source) throw new Error('METADATA_SOURCE_IDENTITY');
+        for (const key of ['content', 'choices', 'answer', 'solution', 'image', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'layoutTag', 'wide']) if (JSON.stringify(source[key] ?? null) !== JSON.stringify(question[key] ?? null)) errors.push(`METADATA_SCOPE_CONTENT_MUTATION:${q.questionUid}:${key}`);
+      }
+      const attached = Boolean(question.solutionImage || /<(?:svg|table|img)\b/i.test(question.solution || ''));
+      if (attached !== q.visual.actualSolutionVisualAttached) errors.push(`ACTUAL_ATTACHMENT_MISMATCH:${q.questionUid}`);
+      if (!attached && (question.solutionImageAlt || question.solutionImageCaption)) errors.push(`ORPHAN_ALT_CAPTION:${q.questionUid}`);
+      if ((['KEEP', 'ADD', 'REBUILD'].includes(q.visual.action) && !attached) || (['NONE', 'REMOVE'].includes(q.visual.action) && attached)) errors.push(`VISUAL_ACTION_PARITY:${q.questionUid}`);
+      if (['ADD', 'REBUILD'].includes(q.visual.action)) {
+        try {
+          const witness = JSON.parse(readBoundFile(root, q.generationEvidence));
+          const generator = run.inputs.find(i => i.role === 'generator');
+          const artifact = run.inputs.find(i => q.solutionAssetPaths?.includes(i.path));
+          if (!generator || !artifact || witness.schemaVersion !== 'APMATH_GENERATOR_WITNESS_v1' || witness.status !== 'BUILD_SIDE_ONLY' || witness.numericExecution !== 'PYTHON_EXECUTED' || witness.generatorSha !== generator.sha256 || witness.artifactSha !== artifact.sha256 || witness.visualSpecSha !== VISUAL_SPEC_SHA || !HASH_PATTERN.test(witness.semanticSha)) throw new Error('GENERATOR_BINDING_INVALID');
+          if (witness.rulePackSha !== rulePreflight(root).rulePackSha) throw new Error('GENERATOR_RULE_PACK_STALE');
+        } catch (error) { errors.push(`GENERATION_EVIDENCE:${q.questionUid}:${error.message}`); }
+      }
+      for (const [field, pathsKey] of [['solutionImage', 'solutionAssetPaths'], ['image', 'problemAssetPaths']]) {
+        const paths = q[pathsKey];
+        if (!Array.isArray(paths) || paths.some(p => !run.inputs.some(i => i.path === p && ['asset', 'dependency'].includes(i.role)))) errors.push(`ASSET_INPUT_UNBOUND:${q.questionUid}:${pathsKey}`);
+        if (question[field] && !paths?.some(p => p === question[field] || p === `archive/${question[field]}` || p === `${run.assetRoot || 'archive'}/${question[field]}`)) errors.push(`DECLARED_ASSET_OMITTED:${q.questionUid}:${field}`);
+      }
+      if ((question.image || /<(?:svg|table|img)\b/i.test(question.content || '')) && !q.visual.problemVisualMathDependency && !nonempty(q.visual.problemDependencyExemption)) errors.push(`PROBLEM_VISUAL_DEPENDENCY_UNADJUDICATED:${q.questionUid}`);
+    } catch (error) { errors.push(`CANDIDATE_READ:${q.questionUid}:${error.message}`); }
+  }
+  if (errors.length) return result();
+  try { if (run.inputSha !== runInputSha(run)) errors.push('RUN_INPUT_SHA_STALE'); } catch (error) { errors.push(error.message); }
+  verifyRules(root, run, errors);
+  try { errors.push(...validateRegistry(run.registry, run)); } catch { errors.push('REGISTRY_MALFORMED'); }
+  if (errors.length) return result();
+  const evidence = new Map(), evidenceHashes = new Map(), invalidEvidenceIds = new Set();
+  for (const ref of run.evidence) {
+    const beforeValidation = errors.length;
+    const e = validateEvidence(root, ref, run, errors);
+    if (e) {
+      if (evidence.has(e.evidenceId)) errors.push(`DUPLICATE_EVIDENCE_ID:${e.evidenceId}`);
+      if (errors.length !== beforeValidation) invalidEvidenceIds.add(e.evidenceId);
+      evidence.set(e.evidenceId, e);
+      evidenceHashes.set(e.evidenceId, ref.sha256);
+    }
+  }
+  const visualItems = [];
+  for (const q of run.questions) {
+    const findings = [];
+    const get = axis => {
+      const e = evidence.get(q.evidence[axis]);
+      if (!e || e.axis !== axis || e.questionUid !== q.questionUid) { findings.push(`EVIDENCE_MISSING_OR_WRONG_SCOPE:${axis}`); return null; }
+      if (invalidEvidenceIds.has(e.evidenceId)) findings.push(`EVIDENCE_INVALID:${axis}`);
+      return e;
+    };
+    for (const axis of policy.axes) {
+      const e = get(axis);
+      if (['math', 'solution', 'source'].includes(axis) && e && (e.reviewSessionId === run.builderSessionId || e.priorReviewVisibility !== 'NONE')) findings.push(`INDEPENDENT_REVIEW_REQUIRED:${axis}`);
+      if (axis === 'math' && e && (e.payload?.blindSolveFrozen !== true || e.payload?.allChoicesChecked !== true || e.payload?.answerUnique !== true)) findings.push('MATH_COMPLETENESS_NOT_PROVEN');
+    }
+    const needed = q.visual.requirement === 'VISUAL_REQUIRED' || q.visual.actualSolutionVisualAttached || q.visual.problemVisualMathDependency || q.visual.sharedVisualMathDependency;
+    let parity = null;
+    if (policy.visual) {
+      const triage = get('v1');
+      const compatibility = { SHOULD_BE_REQUIRED: ['VISUAL_REQUIRED'], MAY_BE_OPTIONAL: ['VISUAL_OPTIONAL', 'VISUAL_REQUIRED'], SHOULD_BE_EXEMPT: ['VISUAL_EXEMPT', 'VISUAL_OPTIONAL'] };
+      if (!triage || triage.reviewSessionId === run.builderSessionId || triage.inputVisibilityProfile !== 'SOURCE_ONLY' || triage.priorReviewVisibility !== 'NONE' || triage.payload?.freshBlind !== true || !compatibility[triage.payload?.visualRequirementSignal]?.includes(q.visual.requirement)) findings.push('INDEPENDENT_VISUAL_TRIAGE_NOT_CLOSED');
+      if (!needed && triage) {
+        if (q.visual.adjudicationId !== triage.evidenceId) findings.push('EXEMPT_ADJUDICATION_NOT_BOUND');
+        try {
+          const bundle = JSON.parse(readBoundFile(root, triage.payload.inputBundle));
+          const candidate = candidateQuestions.get(q.questionUid);
+          if (bundle.questionUid !== q.questionUid || bundle.content !== candidate.content || canonicalJson(bundle.choices) !== canonicalJson(candidate.choices || []) || Object.keys(bundle).some(k => !['questionUid', 'content', 'choices', 'problemAssets', 'curriculum'].includes(k))) throw new Error('EXEMPT_SOURCE_VISIBILITY');
+        } catch (error) { findings.push(`EXEMPT_BLIND_BUNDLE:${error.message}`); }
+      }
+    }
+    if (needed && policy.visual) {
+      const v1 = get('v1'), v2 = get('v2'), v3 = get('v3');
+      if (v1 && v2 && v3) {
+        if (q.visual.adjudicationId !== v3.evidenceId) findings.push('REQUIREMENT_ADJUDICATION_NOT_BOUND');
+        if (v3.payload?.finalVisualRequirement !== q.visual.requirement || v3.payload?.cDenominatorInputSha !== denominatorInput(run).inputSha) findings.push('V3_REQUIREMENT_MAP_STALE');
+        if (new Set([run.builderSessionId, v1.reviewSessionId, v2.reviewSessionId, v3.reviewSessionId]).size !== 4) findings.push('BLIND_SESSION_COLLISION');
+        if (v1.inputVisibilityProfile !== 'SOURCE_ONLY' || v2.inputVisibilityProfile !== 'ARTIFACT_ONLY' || v3.inputVisibilityProfile !== 'FROZEN_V1_V2' || [v1, v2].some(e => e.priorReviewVisibility !== 'NONE' || e.payload?.freshBlind !== true)) findings.push('BLIND_VISIBILITY_INVALID');
+        if (Date.parse(v3.startedAt) < Math.max(Date.parse(v1.frozenAt), Date.parse(v2.frozenAt))) findings.push('V3_BEFORE_FREEZE');
+        if (v3.payload?.v1EvidenceSha !== evidenceHashes.get(v1.evidenceId) || v3.payload?.v2EvidenceSha !== evidenceHashes.get(v2.evidenceId)) findings.push('V3_FIRST_PASS_BINDING_MISSING');
+        for (const [axis, e, allowed] of [['v1', v1, ['questionUid', 'content', 'choices', 'problemAssets', 'curriculum']], ['v2', v2, ['questionUid', 'artifact', 'renderWitnesses']]]) {
+          try {
+            const bundle = JSON.parse(readBoundFile(root, e.payload.inputBundle));
+            if (!isObject(bundle) || bundle.questionUid !== q.questionUid || Object.keys(bundle).some(k => !allowed.includes(k))) throw new Error('INPUT_VISIBILITY_OR_UID');
+            if (axis === 'v1') {
+              const candidate = candidateQuestions.get(q.questionUid);
+              if (bundle.content !== candidate.content || canonicalJson(bundle.choices) !== canonicalJson(candidate.choices || [])) throw new Error('SOURCE_BUNDLE_NOT_CURRENT_CANDIDATE');
+            } else {
+              const artifact = run.inputs.find(i => i.path === e.payload.artifactPath);
+              if (!artifact || bundle.artifact?.path !== artifact.path || bundle.artifact.sha256 !== artifact.sha256) throw new Error('ARTIFACT_BUNDLE_NOT_CURRENT');
+              readBoundFile(root, bundle.artifact);
+            }
+          } catch (error) { findings.push(`BLIND_BUNDLE:${axis}:${error.message}`); }
+        }
+        if (v1.payload?.specSha !== VISUAL_SPEC_SHA || v2.payload?.specSha !== VISUAL_SPEC_SHA) findings.push('VISUAL_SPEC_STALE');
+        try {
+          parity = compareVisualFacts(v1.payload?.fact, v2.payload?.fact);
+          if (parity.status !== 'PASS' || v1.payload.fact.questionUid !== q.questionUid) findings.push('SEMANTIC_PARITY_FAIL');
+          if (q.generationEvidence && JSON.parse(readBoundFile(root, q.generationEvidence)).semanticSha !== parity.expectedSemanticSha) findings.push('GENERATOR_EXPECTED_FACT_MISMATCH');
+          const artifact = run.inputs.find(i => i.path === v2.payload.artifactPath);
+          if (!artifact || artifact.sha256 !== v2.payload.artifactSha || ![...q.solutionAssetPaths, ...q.problemAssetPaths].includes(artifact.path)) findings.push('OBSERVED_ARTIFACT_UNBOUND');
+          else {
+            const structureSha = structureFingerprint(v2.payload.fact);
+            if (v2.payload.structureSha !== structureSha) findings.push('STRUCTURE_FINGERPRINT_STALE_OR_MISSING');
+            visualItems.push({ artifactSha: artifact.sha256, structureSha, fact: v2.payload.fact, reuseApproval: v3.payload.reuseApproval });
+          }
+        } catch (error) { findings.push(`VISUAL_FACT_INVALID:${error.message}`); }
+        for (const gate of ['necessity', 'decisiveStep', 'completeness', 'mediumFit', 'solutionParity', 'altCaptionParity', 'semanticsLocks', 'staticContract']) if (v3.payload?.checks?.[gate] !== 'PASS') findings.push(`V3_GATE_NOT_PASS:${gate}`);
+      }
+    }
+    itemResults.push({ questionUid: q.questionUid, status: findings.length ? 'BLOCKED' : 'PASS', visualRequired: needed, parity, errors: findings });
+    errors.push(...findings.map(f => `${q.questionUid}:${f}`));
+  }
+  try {
+    const duplicate = auditDuplicates(visualItems);
+    if (duplicate.status !== 'PASS') errors.push(...duplicate.errors);
+  } catch (error) { errors.push(`DUPLICATE_CHECK:${error.message}`); }
+  const denominator = denominatorInput(run);
+  if (!isObject(run.denominator) || run.denominator.status !== 'FROZEN' || run.denominator.stale !== false || run.denominator.inputSha !== denominator.inputSha || run.denominator.requiredUidSetSha !== denominator.requiredUidSetSha || !Array.isArray(run.denominator.requiredUidSet) || canonicalJson(run.denominator.requiredUidSet) !== canonicalJson(denominator.requiredUidSet)) errors.push('C_DENOMINATOR_STALE_OR_INCOMPLETE');
+  for (const candidatePath of new Set(run.questions.map(q => q.candidatePath))) for (const mode of policy.modes) for (const viewport of profiles.viewports) {
+    const matches = [...evidence.values()].filter(e => e.axis === 'render' && e.payload?.mode === mode && e.payload?.viewport?.profile === viewport.profile && e.payload?.candidatePath === candidatePath);
+    let renderErrors;
+    try { renderErrors = matches.length === 1 ? invalidEvidenceIds.has(matches[0].evidenceId) ? ['RENDER_EVIDENCE_INVALID'] : validateRender(root, matches[0], viewport, mode, run, run.inputSha, candidatePath) : ['RENDER_CASE_MISSING_OR_DUPLICATE']; } catch (error) { renderErrors = [`RENDER_SCHEMA_INVALID:${error.message}`]; }
+    renderResults.push({ candidatePath, mode, viewport: viewport.profile, status: renderErrors.length ? 'BLOCKED' : 'PASS', errors: renderErrors });
+    errors.push(...renderErrors.map(e => `${mode}/${viewport.profile}:${e}`));
+  }
+  for (const ref of [...run.inputs, ...run.evidence]) {
+    try { readBoundFile(root, ref); } catch (error) { errors.push(`CHANGED_DURING_AUDIT:${error.message}`); }
+  }
+  if (CORE_SHA !== objectSha(CORE_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })))) errors.push('VERIFIER_CHANGED_DURING_AUDIT');
+  return result();
+}
+
+export function auditManifestFile(root, file, expectedPipeline) {
+  try {
+    const run = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (expectedPipeline && run.pipeline !== expectedPipeline) throw new Error('PIPELINE_ID_MISMATCH');
+    return auditRun(root, run);
+  } catch (error) { return { schemaVersion: 'APMATH_PIPELINE_CLOSURE_v1', status: 'BLOCKED', productionAuthorized: false, errors: [`MANIFEST_READ_OR_SCHEMA:${error.message}`] }; }
+}

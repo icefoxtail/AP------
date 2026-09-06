@@ -2,11 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { scanJsBank, writeJsBankInventory, parseArgs, increment } from "./scan-js-bank.mjs";
+import { validateIdentityRows } from '../../pipeline-core/integration.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "../../../..");
 const REPORT_DIR = path.join(ROOT_DIR, "archive", "_generated", "js-bank-cleanup", "reports");
 const MASTER_PATH_CANDIDATES = [
+  path.join(ROOT_DIR, "docs", "rules", "01_CANONICAL", "JS아카이브_표준단원키_마스터테이블.md"),
   path.join(ROOT_DIR, "docs", "rules", "JS아카이브_표준단원키_마스터테이블.md"),
   path.join(ROOT_DIR, "rules", "JS아카이브_표준단원키_마스터테이블.md"),
 ];
@@ -66,6 +68,8 @@ export function validateJsSchema(options = parseArgs()) {
   const masterParents = parseMasterParents(subunitRecords);
   const subunits = new Map(subunitRecords.filter((record) => record.keyType === "subUnitKey").map((record) => [record.key, record]));
   const issues = [];
+  const identityRows = jsInventory.files.flatMap(file => file.questions.map(question => ({ ...question, sourceFile: file.relativePath })));
+  for (const code of validateIdentityRows(identityRows, row => row.sourceFile && Number.isSafeInteger(row.questionId) && row.questionId > 0 ? `${row.sourceFile}|${row.questionId}` : '')) issues.push({ severity: 'error', sourceFile: '', questionId: null, code, message: code });
   const specialLayout = [];
   const acceptedDocumentedParentKeys = {};
 

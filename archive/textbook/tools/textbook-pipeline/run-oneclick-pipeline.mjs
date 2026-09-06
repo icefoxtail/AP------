@@ -3,6 +3,8 @@ import { parseArgs, loadPipelineConfig } from "./lib/config.mjs";
 import { loadPipelineEnv } from "./lib/env-loader.mjs";
 import { writeCodexResult, writeJson } from "./lib/report-utils.mjs";
 import { normalizeStageStatus, summarizeStageResults } from "./lib/stage-result-utils.mjs";
+import { closureFromArgs } from "../../../tools/pipeline-core/integration.mjs";
+import { fileURLToPath } from "node:url";
 
 const stages = [
   ["00", "rulebook-gate", () => import("./stages/00-rulebook-gate.mjs")],
@@ -176,13 +178,16 @@ async function main() {
   const finalStatus = {
     generatedAt: summary.generatedAt,
     dryRun: false,
-    status: summary.status,
+    executionStatus: summary.status,
+    qualityClosure: closureFromArgs(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..'), 'textbook'),
+    status: 'blocked',
     statusPriority: ["fail", "blocked", "partial", "pass"],
     summary: execution,
     resultReportPolicy: cfg.resultReportPolicy,
     writeRootCodexResult: cfg.writeRootCodexResult,
     writeWorkspaceCodexResult: cfg.writeWorkspaceCodexResult,
   };
+  finalStatus.status = summary.status === 'pass' && finalStatus.qualityClosure.status === 'PASS' ? 'pass' : summary.status === 'fail' ? 'fail' : 'blocked';
   await writeJson(path.join(cfg.reportsDir, "pipeline_final_status_report.json"), finalStatus);
   const codexPolicy = await writeCodexResult(cfg, {
     generatedAt: summary.generatedAt,
