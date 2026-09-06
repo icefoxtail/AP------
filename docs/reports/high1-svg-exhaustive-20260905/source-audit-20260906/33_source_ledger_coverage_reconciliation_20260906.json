@@ -1,0 +1,61 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "auditType": "SOURCE_LEDGER_COVERAGE_RECONCILIATION",
+  "rootLedger": {
+    "path": "05_expected_facts.jsonl",
+    "role": "historical root baseline; not a current PASS authority until covered by current unit ledgers",
+    "rowCount": 2476,
+    "statusCounts": {
+      "SOURCE_ONLY_NOT_STARTED": 2427,
+      "SOURCE_ONLY_REVIEWED": 47,
+      "SOURCE_REVIEW": 2
+    }
+  },
+  "currentUnitLedgers": {
+    "selection": "unit-*/*expected_facts.jsonl, preferring unit-specific 06_expected_facts.jsonl and using unit-01 05_expected_facts.jsonl",
+    "rowCount": 1652,
+    "uniqueQuestionUidCount": 1652,
+    "statusCounts": {
+      "SOURCE_ONLY_REVIEWED": 1506,
+      "SOURCE_HOLD": 6
+    },
+    "pendingCount": 0
+  },
+  "coverage": {
+    "rootRowsCoveredByCurrentUnitLedgers": 1652,
+    "rootRowsPendingCoverage": 824,
+    "coverageInvariant": "rootRowsCoveredByCurrentUnitLedgers + rootRowsPendingCoverage == rootLedger.rowCount",
+    "rootRowsWithoutCurrentUnitLedger": 824,
+    "rootStatusForUncoveredRows": "SOURCE_ONLY_NOT_STARTED",
+    "fullHigh1SourceAuditComplete": false
+  },
+  "pendingCoverageByStandardUnitKey": {
+    "H15-SA-10": 63,
+    "H15-SA-12": 72,
+    "H15-SB-01": 152,
+    "H15-SB-02": 144,
+    "H15-SB-07": 62,
+    "H15-SB-08": 47,
+    "H22-C-08": 82,
+    "H22-C-09": 83,
+    "H22-C2-02": 31,
+    "H22-C2-04": 24,
+    "H22-C2-05": 40,
+    "H22-C2-06": 24
+  },
+  "nextSourceAuditUnit": {
+    "unit": "unit-02-line",
+    "standardUnitKeys": ["H15-SA-10", "H22-C2-02"],
+    "questionCount": 94,
+    "reason": "user-defined order places 직선의 방정식 before 평면좌표 and 도형의 이동; the visual handoff exists but current source-first ledger coverage is absent",
+    "requiredDisposition": "create source-only expected-facts ledger in bounded calibration batches; do not infer PASS from COMPLETE_FOR_HANDOFF visual report"
+  },
+  "followingSourceAuditUnit": {
+    "unit": "unit-04-movement",
+    "standardUnitKeys": ["H15-SA-12", "H22-C2-04"],
+    "questionCount": 96,
+    "requiredDisposition": "run after unit-02 source ledger closure and keep visual handoff status separate"
+  },
+  "currentGate": "SOURCE_AUDIT_IN_PROGRESS; 824 root-scope rows still lack a current unit source ledger; six covered rows remain SOURCE_HOLD",
+  "noFalsePass": true
+}

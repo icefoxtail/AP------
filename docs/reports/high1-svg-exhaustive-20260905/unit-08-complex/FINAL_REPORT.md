@@ -40,3 +40,10 @@ q15 조건식이나 q18 조건 블록은 포함하지 않았다. 따라서 별�
 24 한영고 q19는 원문·해설·수학적 해석 충돌로 각각 hold를 유지한다. 유사문제 후보는
 원문 대체로 승격하지 않았다. 상세 재감사 표는
 [31_current_source_hold_status_after_q11_answer_restore_20260906.json](../source-audit-20260906/31_current_source_hold_status_after_q11_answer_restore_20260906.json)이다.
+
+동일 날짜의 반복 D드라이브 파일명 탐색에서 추가로 확인된 24 한영고 PDF/HWP는
+기존 q19 source PNG 및 HWP와 함께 supplementary provenance로만 기록했다. 여수고 q15·q18은
+여전히 일치하는 HWP 1개뿐이고 조건식/조건 블록이 decoded BodyText에 없어 전사 보류를
+유지한다. 반복 탐색 결과와 최신 current snapshot은
+[32_source_hold_repeat_reaudit_20260906.json](../source-audit-20260906/32_source_hold_repeat_reaudit_20260906.json)와
+[32_current_source_hold_status_repeat_reaudit_20260906.json](../source-audit-20260906/32_current_source_hold_status_repeat_reaudit_20260906.json)에 기록했다.

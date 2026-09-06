@@ -327,3 +327,40 @@ q10 복구 증거는 [28_source_recovery_q10_23maesan_women_d_drive.json](unit-1
 
 따라서 고1 전체 source gate와 외부 독립검수 gate는 계속 `FAIL/IN_PROGRESS`이며, 이 결과를
 근거로 최종 PASS 또는 SEALED를 선언하지 않는다.
+
+## 2026-09-06 D드라이브 source hold 반복 재감사
+
+최신 반복 재감사에서 D드라이브 `D:/` 및 `D:/기출`의 파일명 목록을 다시 열거하고, 각
+일치 원본의 존재·bytes·SHA-256을 재확인했다. 여수고 q15·q18은 일치 HWP 1개 외에
+별도 PDF·문제 이미지·해설 파일이 없었고, HWP의 decoded BodyText에도 핵심 조건식과
+조건 block이 없었다. 한영고 q19의 동일 HWP와 보조 PDF는 supplementary provenance로
+추가 기록했지만 학교 답/독립 계산 충돌은 해소하지 못했다. 제일고 q5, 여수여고 q11,
+금당고 q17도 기존 원본과 SHA가 일치했고 원본 결함 보류를 유지했다.
+
+이번 반복 탐색으로 새로 해소된 hold는 0건이며, 유사문제 production 승격도 0건이다.
+최신 상태는 [32_source_hold_repeat_reaudit_20260906.json](source-audit-20260906/32_source_hold_repeat_reaudit_20260906.json)와
+[32_current_source_hold_status_repeat_reaudit_20260906.json](source-audit-20260906/32_current_source_hold_status_repeat_reaudit_20260906.json)이다.
+현재 원장 합계는 1,512행 중 `SOURCE_ONLY_REVIEWED` 1,506행, `SOURCE_HOLD` 6행,
+pending 0행이며, 외부 독립검수·실제 브라우저 release gate는 여전히 열려 있다.
+
+## 2026-09-06 source ledger coverage reconciliation
+
+이번 실행의 source-audit 범위는 사용자가 체크·선정한 문항으로 한정한다. root baseline
+`05_expected_facts.jsonl`의 2,476행 중 현재 선택된 source ledger는 1,657행이며,
+나머지 819행은 **이번 실행 범위 밖**으로 두고 추가 검수하지 않는다. 기존 단원 보고서의
+`COMPLETE_FOR_HANDOFF`와 현재 선택 ledger를 서로 다른 증거 축으로 유지하며, 범위 밖
+행을 근거로 새 작업을 확장하지 않는다. 범위 밖 행을 포함한 고1 전체 PASS/SEALED도
+선언하지 않는다.
+
+선택 범위 안에서는 기존 6개 `SOURCE_HOLD`와 이번 직선 calibration 5문항만 기록한다.
+자세한 선택 범위와 범위 밖 행의 분리는
+[34_source_ledger_coverage_after_unit02_calibration_20260906.json](source-audit-20260906/34_source_ledger_coverage_after_unit02_calibration_20260906.json)에 고정했다.
+
+따라서 현재 선택 범위의 판정은 `SELECTED_SCOPE_RECORDED`이다. 1,657행의 6개 hold는
+그대로 노출하고, 범위 밖 819행은 이번 실행에서 조치하지 않는다. 이 결과로 고1 전체
+source gate 또는 SEALED를 선언하지 않는다.
+
+직선 단원 calibration 5문항(q5·q12·q13·q22·q24)은 D드라이브 원문 PDF page 1·2·4와
+정답 HWP를 대조하고 독립 계산까지 완료했다. 이 batch는 `SOURCE_ONLY_REVIEWED 5/5`
+이지만 `unit-02-line` 전체 closure가 아니며, 세부 근거는
+[07_source_calibration_batch_01_23gangnam.json](unit-02-line/07_source_calibration_batch_01_23gangnam.json)이다.
