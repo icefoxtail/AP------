@@ -32,6 +32,8 @@
     <script src="mathjax_render_loop.js?v=20260811.2"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
+    <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-authority.js?v=20260906.1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -428,7 +430,7 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
-const AppState = { data: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
+const AppState = { data: [], canonicalData: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
 
 function rendererMode() {
     return window.APRenderLoop?.rendererMode?.() || 'batch';
@@ -1280,6 +1282,32 @@ function showArchiveDataLoadError(message) {
     if (title) title.innerText = '시험지 데이터를 불러올 수 없습니다';
 }
 
+function buildArchiveCanonicalData(sourceArchiveFile) {
+    if (typeof window.APRenderAuthority?.normalizeArchiveQuestions !== 'function') return [];
+    try {
+        return window.APRenderAuthority.normalizeArchiveQuestions(AppState.data, { sourceArchiveFile });
+    } catch (error) {
+        console.warn('[archive-engine] canonical normalization failed; legacy data remains authoritative for this render', error);
+        return [];
+    }
+}
+
+function recordArchiveDualRun(area) {
+    if (new URLSearchParams(window.location.search).get('renderAuthorityDualRun') !== '1') return;
+    if (!AppState.canonicalData.length || typeof window.APRenderAuthority?.compareQuestionSemantics !== 'function') return;
+    try {
+        const shared = AppState.canonicalData.map(question => window.APRenderAuthority.renderQuestionHTML(question, {
+            mode: AppState.mode,
+            wrapLatex,
+            resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef)
+        })).join('');
+        const result = window.APRenderAuthority.compareQuestionSemantics(area.innerHTML, shared);
+        document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', mode: AppState.mode, equal: result.equal, differences: result.differences });
+    } catch (error) {
+        document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', error: String(error?.message || error) });
+    }
+}
+
 const ARCHIVE_ENGINE_LAUNCH_STORAGE_KEY = 'APMATH_ARCHIVE_ENGINE_LAUNCH';
 const ARCHIVE_ENGINE_LAUNCH_MAX_AGE_MS = 2 * 60 * 1000;
 
@@ -1345,6 +1373,7 @@ async function init() {
             AppState.data = loadedQuestions.map((question, index) => window.mergeArchiveQuestionMetadata
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);
+            AppState.canonicalData = buildArchiveCanonicalData(sourceArchiveFile);
             AppState.title = window.examTitle || p.get('title') || recentLaunch?.title || '수학 시험지';
             AppState.identityTitle = AppState.title;
             AppState.printHeaderOptions = normalizePrintHeaderOptions(AppState.printHeaderOptions);
@@ -2150,6 +2179,7 @@ async function renderBody() {
 
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
+    recordArchiveDualRun(area);
     applyQrSolutionLockUI();
     updateScreenFitScale();
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
