@@ -240,7 +240,7 @@
             firstPage,
             continuationPage
         };
-        for (const field of ['subtitle']) {
+        for (const field of ['subtitle', 'metaRight']) {
             const normalized = asOptionalString(value[field], `headerPolicy.${field}`, 'INVALID_HEADER_POLICY');
             if (normalized !== undefined) policy[field] = normalized;
         }
@@ -261,6 +261,20 @@
         if (!enabled && kind !== 'none') fail('INVALID_QR_POLICY', 'disabled qrPolicy must use kind none');
         const targetUrl = asOptionalString(value.targetUrl, 'qrPolicy.targetUrl', 'INVALID_QR_TARGET_URL');
         return Object.freeze({ enabled, kind, placement, ...(targetUrl ? { targetUrl } : {}) });
+    }
+
+    function createQrPolicies(value) {
+        const rawPolicies = Array.isArray(value)
+            ? value
+            : [value || { enabled: false, kind: 'none', placement: 'flow' }];
+        const policies = rawPolicies.map(createQrPolicy);
+        const enabledKinds = new Set();
+        for (const policy of policies) {
+            if (!policy.enabled) continue;
+            if (enabledKinds.has(policy.kind)) fail('DUPLICATE_QR_CHANNEL', 'an enabled QR channel may appear only once', { kind: policy.kind });
+            enabledKinds.add(policy.kind);
+        }
+        return Object.freeze(policies);
     }
 
     function createDuplexPolicy(value) {
@@ -346,7 +360,10 @@
             questions: Object.freeze(questions),
             recipient,
             headerPolicy: createHeaderPolicy(value.headerPolicy),
-            qrPolicy: createQrPolicy(value.qrPolicy),
+            // qrPolicy is retained as a one-channel compatibility view. New
+            // PrintSections preserve every independent submit/solution channel.
+            qrPolicies: createQrPolicies(value.qrPolicies || value.qrPolicy),
+            qrPolicy: createQrPolicy(value.qrPolicy || { enabled: false, kind: 'none', placement: 'flow' }),
             duplexPolicy: createDuplexPolicy(value.duplexPolicy),
             qppPolicy: createQppPolicy(value.qppPolicy),
             layoutPolicy: createLayoutPolicy(value.layoutPolicy),
@@ -492,6 +509,7 @@
         createCanonicalQuestion,
         createHeaderPolicy,
         createQrPolicy,
+        createQrPolicies,
         createDuplexPolicy,
         createQppPolicy,
         createLayoutPolicy,

@@ -27,7 +27,7 @@ function question(overrides = {}) {
 
 function policies(overrides = {}) {
   return {
-    headerPolicy: { title: '계약 시험지', firstPage: 'full', continuationPage: 'running' },
+    headerPolicy: { title: '계약 시험지', metaRight: '고1 수학 단원별 기출', firstPage: 'full', continuationPage: 'running' },
     qrPolicy: { enabled: false, kind: 'none', placement: 'flow' },
     duplexPolicy: { enabled: false, breakBetweenRecipients: false, ensureNextRecipientFrontSide: false, trailingBlankAllowed: false },
     qppPolicy: { allowed: [4, 6], default: 4, editable: false, source: 'production' },
@@ -120,6 +120,17 @@ test('PrintJob freezes pure renderer modes and composes review as answer then so
 });
 
 test('Policies preserve layout authority boundaries and asset resolution stays adapter-owned', () => {
+  const header = C.createHeaderPolicy({ title: '제목', metaRight: '우측 메타', firstPage: 'full', continuationPage: 'running' });
+  assert.equal(header.metaRight, '우측 메타');
+  const qrPolicies = C.createQrPolicies([
+    { enabled: true, kind: 'submit', placement: 'flow' },
+    { enabled: true, kind: 'solution', placement: 'reserved-overlay' }
+  ]);
+  assert.deepEqual(qrPolicies.map(policy => policy.kind), ['submit', 'solution']);
+  assert.throws(() => C.createQrPolicies([
+    { enabled: true, kind: 'submit', placement: 'flow' },
+    { enabled: true, kind: 'submit', placement: 'reserved-overlay' }
+  ]), error => error.code === 'DUPLICATE_QR_CHANNEL');
   const flow = C.createFlowExtension({ id: 'homework', kind: 'homework-checkbox', measuredBeforePagination: true, participatesInFlow: true });
   assert.equal(flow.participatesInFlow, true);
   assert.throws(
