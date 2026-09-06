@@ -39,6 +39,12 @@ export function requireClosure(root, pipeline, argv = process.argv, expectedArti
   return report;
 }
 
+export function requireProductionClosure(root, pipeline, argv = process.argv, expectedArtifacts = [], expectedSourceIdentities = null) {
+  const report = requireClosure(root, pipeline, argv, expectedArtifacts, expectedSourceIdentities);
+  if (report.productionAuthorized !== true) throw new Error('COMMON_PIPELINE_PRODUCTION_AUTHORITY_BLOCKED');
+  return report;
+}
+
 export function archiveSourceIdentity(sourcePath, qid) {
   const normalized = sourcePath.startsWith('archive/exams/') ? sourcePath : `archive/exams/${sourcePath}`;
   if (!Number.isSafeInteger(qid) || qid < 1 || normalized.includes('..') || normalized.includes('\\')) throw new Error('INVALID_LEGACY_SOURCE_IDENTITY');

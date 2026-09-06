@@ -32,4 +32,4 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/도형추출.md | 51732 bytes | sha256 46104e98928b54b78b04c4e0c9848067e796aa070e15517653608c97cd75e6e2
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 85952 bytes | sha256 1b75144cff732ecb7333f1487286a2161c8d0016e90a0b0f991899d6c99e6811
-- 02_PIPELINES/공통파이프라인_실행계약_v1.md | 6105 bytes | sha256 232222d1ffb48bf93172a3d5264908dcbb8c2f3d3469c8529ac51df410030dc2
+- 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2
