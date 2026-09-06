@@ -1,0 +1,86 @@
+import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import test from 'node:test';
+import { verifySvgCoordinateParity } from '../verify-svg-coordinate-parity.mjs';
+
+const verifierPath = fileURLToPath(new URL('../verify-svg-coordinate-parity.mjs', import.meta.url));
+
+function fixture(svg, expectedFacts, { renderResult = 'PASS' } = {}) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-svg-coordinate-parity-'));
+  fs.writeFileSync(path.join(root, 'fixture.svg'), svg, 'utf8');
+  return {
+    root,
+    input: {
+      schemaVersion: 'APMATH_SVG_COORDINATE_PARITY_INPUT_v1',
+      questionId: 11,
+      svg: 'fixture.svg',
+      sourceFactStatus: 'PASS',
+      expectedFactStatus: 'PASS',
+      coordinateModel: { originX: 300, originY: 300, sx: 60, sy: 60 },
+      tolerance: 1e-8,
+      expectedFacts,
+      renderResult,
+    },
+    cleanup: () => fs.rmSync(root, { recursive: true, force: true }),
+  };
+}
+
+test('good point: geometry parity passes', () => {
+  const f = fixture('<svg><circle id="point-P" cx="360" cy="180" r="4"/><text>(1,2)</text></svg>', [{ factId: 'P', type: 'POINT', element: 'point-P', expected: [1, 2] }]);
+  try {
+    const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
+    assert.equal(result.svgMathStatus, 'PASS');
+    assert.equal(result.svgFinalStatus, 'PASS');
+    assert.equal(result.facts[0].observed[0], 1);
+    assert.equal(result.facts[0].observed[1], 2);
+  } finally { f.cleanup(); }
+});
+
+test('CLI writes machine-readable evidence for a passing SVG', () => {
+  const f = fixture('<svg><circle id="point-P" cx="360" cy="180" r="4"/></svg>', [{ factId: 'P', type: 'POINT', element: 'point-P', expected: [1, 2] }]);
+  try {
+    const inputPath = path.join(f.root, 'input.json'); const outPath = path.join(f.root, 'evidence.json');
+    fs.writeFileSync(inputPath, `${JSON.stringify(f.input)}\n`, 'utf8');
+    const run = spawnSync(process.execPath, [verifierPath, '--root', f.root, '--input', inputPath, '--out', outPath], { encoding: 'utf8' });
+    assert.equal(run.status, 0, run.stderr || run.stdout);
+    const evidence = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+    assert.equal(evidence.schemaVersion, 'APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1');
+    assert.equal(evidence.svgMathStatus, 'PASS');
+    assert.match(evidence.svgSha256, /^sha256:[a-f0-9]{64}$/);
+  } finally { f.cleanup(); }
+});
+
+test('wrong point: correct text cannot spoof geometry parity', () => {
+  const f = fixture('<svg><circle id="point-P" cx="300" cy="180" r="4"/><text>(1,2)</text><title>point is 1,2</title></svg>', [{ factId: 'P', type: 'POINT', element: 'point-P', expected: [1, 2] }]);
+  try {
+    const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
+    assert.equal(result.svgMathStatus, 'FAIL');
+    assert.equal(result.facts[0].result, 'FAIL');
+    assert.deepEqual(result.facts[0].observed, [0, 2]);
+  } finally { f.cleanup(); }
+});
+
+test('wrong slope: correct line label cannot spoof geometry parity', () => {
+  const f = fixture('<svg><line id="main-line" x1="240" y1="360" x2="480" y2="420"/><text>y=-x-1</text></svg>', [{ factId: 'LINE', type: 'LINE_SLOPE', element: 'main-line', expected: -1 }]);
+  try {
+    const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
+    assert.equal(result.svgMathStatus, 'FAIL');
+    assert.equal(result.facts[0].result, 'FAIL');
+    assert.equal(result.facts[0].observed, -0.25);
+  } finally { f.cleanup(); }
+});
+
+test('wrong midpoint: point relation is checked from actual coordinates', () => {
+  const f = fixture('<svg><circle id="A" cx="300" cy="300" r="4"/><circle id="B" cx="540" cy="180" r="4"/><circle id="C" cx="480" cy="240" r="4"/></svg>', [{ factId: 'C_MIDPOINT', type: 'MIDPOINT', element: 'C', points: ['A', 'B'], expected: [2, 1] }]);
+  try {
+    const result = verifySvgCoordinateParity({ root: f.root, input: f.input });
+    assert.equal(result.svgMathStatus, 'FAIL');
+    assert.equal(result.facts[0].result, 'FAIL');
+    assert.deepEqual(result.facts[0].observed.point, [3, 1]);
+    assert.deepEqual(result.facts[0].observed.derivedFromElements, [2, 1]);
+  } finally { f.cleanup(); }
+});

@@ -1899,6 +1899,37 @@ solutionImage: "assets/images/{examTitle}/q08-solution.png"
 - sol 모드 표시 확인
 - 크기·캡션·본문 순서 확인
 
+## 14-4-1. 수학 SVG coordinate semantic binding
+
+`solutionImage` 또는 검증 대상 inline SVG가 좌표·점·직선·기울기·중점·절편·열린점/닫힌점·
+교점 등 수학적 사실을 전달하는 경우, visual 검수는 파일 존재·decode·engine capability·browser
+render만으로 닫히지 않는다. 적용 문항은 독립검수 운영규정의 다음 순서로 V2 evidence를 남긴다.
+
+```text
+EXPECTED FACT (independent problem solve)
+→ actual SVG element extraction
+→ inverse-coordinate OBSERVED FACT
+→ EXPECTED ↔ OBSERVED parity
+→ problem ↔ solution ↔ observed-SVG parity
+```
+
+최소 evidence에는 `coordinateModel`, fact별 expected/observed/result, `svgSha256`,
+`expectedFactCount`, `observedFactCount`, `factParityPassCount`, `svgMathStatus`를 남긴다.
+검수 후 SVG bytes가 달라져 evidence의 `svgSha256`가 현재 파일과 다르면 `STALE_SVG_VERIFICATION`이며
+V2 PASS와 FINAL CLOSURE를 금지한다.
+
+`<text>`, `<title>`, `<desc>`, metadata, XML parse, asset/path, decode, browser render는 geometry
+OBSERVED FACT의 대체 근거가 아니다. 따라서 다음은 독립된 조건이다.
+
+```text
+SVG_FINAL_PASS = SVG_MATH_PASS AND SVG_RENDER_PASS
+RENDER_PASS != SVG_MATH_PASS
+```
+
+기존 visual-required triage와 denominator는 그대로 유지한다. SVG가 이미 존재하는 문항만 분모로
+잡아 coverage를 선언해서는 안 되며, `VISUAL_REQUIRED`인데 필요한 solution visual이 없으면
+`SOLUTION_VISUAL_MISSING`으로 처리한다.
+
 ## 14-5. CAPABILITY 판정과 RENDER 판정 분리
 
 ### CASE A — 엔진 지원 확인 + 실제 브라우저 렌더 확인
