@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Clinic composition promotion gate QA</title></head>
+<body>
+<output id="composition-gate-status" aria-live="polite">COMPOSITION_GATE_WAITING</output>
+<pre id="composition-gate-detail"></pre>
+<iframe id="clinic-composition" title="Clinic composition promotion engine"></iframe>
+<script>
+  const status = document.getElementById('composition-gate-status');
+  const detail = document.getElementById('composition-gate-detail');
+  const frame = document.getElementById('clinic-composition');
+  const scenario = new URLSearchParams(location.search).get('scenario') || 'review';
+  frame.src = scenario === 'recipient-qr'
+    ? '/tests/fixtures/wrong-print-modes-launcher.html?payloadMode=class&recipients=2'
+    : '/tests/fixtures/wrong-print-layout-launcher.html?duplex=1&recipients=2&mode=review&renderAuthorityDualRun=1';
+  const deadline = Date.now() + 15000;
+  const poll = () => {
+    const raw = frame.contentDocument?.documentElement?.dataset?.apClinicCompositionDualRun || '';
+    if (raw) {
+      try {
+        const result = JSON.parse(raw);
+        detail.textContent = JSON.stringify(result.differences || result, null, 2);
+        status.textContent = result.error
+          ? `COMPOSITION_GATE_ERROR:${result.error}`
+          : result.skipped
+          ? `COMPOSITION_GATE_HOLD:${result.skipped}`
+          : `COMPOSITION_GATE_${result.equal ? 'PASS' : 'HOLD'}:${result.omissionCount ?? '?'}:${result.duplicationCount ?? '?'}`;
+      } catch (error) {
+        status.textContent = 'COMPOSITION_GATE_ERROR:INVALID_EVIDENCE';
+      }
+      return;
+    }
+    if (Date.now() >= deadline) {
+      status.textContent = 'COMPOSITION_GATE_ERROR:TIMEOUT';
+      return;
+    }
+    setTimeout(poll, 50);
+  };
+  poll();
+</script>
+</body>
+</html>

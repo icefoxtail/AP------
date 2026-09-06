@@ -142,3 +142,37 @@ test('promotion comparator fails closed for a mutated legacy page, column, or co
   assert.equal(orderResult.equal, false);
   assert.ok(orderResult.differences.some(item => item.field === 'column'));
 });
+
+test('Clinic composition planner rejects recipient/source/duplex boundary mutations without collapsing review sections', () => {
+  const plan = L.planClinicComposition({
+    review: true,
+    duplex: true,
+    recipients: [
+      { recipientId: 'student:0:A', sourceRefs: ['a#1', 'a#2'] },
+      { recipientId: 'student:1:B', sourceRefs: ['b#1'] }
+    ]
+  });
+  const observed = { pages: [
+    { recipientId: 'student:0:A', sectionId: 'student:0:A:answer', sourceRefs: ['a#1', 'a#2'], hasQr: false },
+    { recipientId: 'student:0:A', sectionId: 'student:0:A:solution', sourceRefs: ['a#1', 'a#2'], hasQr: false },
+    { recipientId: 'student:0:A', sectionId: 'student:0:A:solution', sourceRefs: ['a#1', 'a#2'], hasQr: false },
+    { recipientId: 'student:0:A', sectionId: '__blank__', sourceRefs: [], hasQr: false, isBlank: true },
+    { recipientId: 'student:1:B', sectionId: 'student:1:B:answer', sourceRefs: ['b#1'], hasQr: false },
+    { recipientId: 'student:1:B', sectionId: 'student:1:B:solution', sourceRefs: ['b#1'], hasQr: false }
+  ] };
+  assert.equal(L.compareClinicComposition(observed, plan).equal, true);
+
+  const recipientMutation = structuredClone(observed);
+  recipientMutation.pages[4].recipientId = 'student:0:A';
+  assert.equal(L.compareClinicComposition(recipientMutation, plan).equal, false);
+
+  const sourceMutation = structuredClone(observed);
+  sourceMutation.pages[5].sourceRefs = ['a#1'];
+  const sourceResult = L.compareClinicComposition(sourceMutation, plan);
+  assert.equal(sourceResult.equal, false);
+  assert.ok(sourceResult.differences.some(item => item.field === 'sourceIdentity' || item.field === 'omission'));
+
+  const duplexMutation = structuredClone(observed);
+  duplexMutation.pages.splice(3, 1);
+  assert.equal(L.compareClinicComposition(duplexMutation, plan).equal, false);
+});

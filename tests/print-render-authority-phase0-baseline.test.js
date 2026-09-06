@@ -77,6 +77,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/fixtures/mixed-print-layout-launcher.html',
   'tests/fixtures/mixer-render-authority-storage-launcher.html',
   'tests/fixtures/layout-promotion-harness.html',
+  'tests/fixtures/clinic-composition-harness.html',
   'tests/fixtures/print-render-authority-v2.2-fixtures.json',
   'tests/fixtures/wrong-print-duplex-bank.js',
   'tests/fixtures/wrong-print-layout-launcher.html',

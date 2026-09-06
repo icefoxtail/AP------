@@ -56,6 +56,13 @@
     "observed": ["two separate recipient headers", "two question copies per recipient", "정답·해설 확인 QR label on each final page"],
     "promotion": "Per-recipient QR legacy behavior is preserved. It is not a shared recipient-composition/PageMap promotion witness."
   },
+  "compositionPromotionGate": {
+    "kind": "actual-browser-composition-pagemap",
+    "harness": "tests/fixtures/clinic-composition-harness.html",
+    "reviewDuplex": { "result": "PASS", "omissionCount": 0, "duplicationCount": 0, "differenceFields": [], "coverage": ["student A answer", "student A long solution continuation", "intentional duplex blank", "student B answer", "student B solution"] },
+    "recipientQr": { "result": "PASS", "omissionCount": 0, "duplicationCount": 0, "differenceFields": [], "coverage": ["class recipient A source set", "class recipient B source set", "per-recipient QR on final page"] },
+    "legacyRendererRetained": true
+  },
   "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
   "legacyRendererRetained": true
 }
