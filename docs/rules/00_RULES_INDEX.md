@@ -9,6 +9,10 @@
 모든 신규·변환 작업의 독립검수·봉인·실렌더 공통 기준은
 `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`를 함께 적용한다.
 
+여러 실행기의 공통 schema·생성 witness·최종 집계 연결은
+`02_PIPELINES/공통파이프라인_실행계약_v1.md`와 `archive/tools/pipeline-core/`를 적용한다.
+추출/초안 완료와 실제 문항 품질 PASS는 서로 다른 상태다.
+
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 3. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
@@ -39,14 +43,15 @@
 
 1. `01_CANONICAL/프로젝트_컨텍스트.md`
 2. `02_PIPELINES/수정프로토콜.md`
-3. `02_PIPELINES/작업방식_5문항배치루프_필수.md`
-4. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
-5. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
-6. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
-7. `03_REVIEW/무결성검수.md`
-8. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
-9. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
-10. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
+3. `02_PIPELINES/작업방식_적응형배치루프_v1.md` (현재 배치 크기·UID 중복·revision·canonical 판정 기준)
+4. `02_PIPELINES/작업방식_5문항배치루프_필수.md` (legacy compatibility reference; 고위험 문항의 3~5문항 축소 루프에만 참조)
+5. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
+6. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
+7. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
+8. `03_REVIEW/무결성검수.md`
+9. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
+10. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+11. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
 
 ## 2. 디렉터리별 역할
 
@@ -85,7 +90,7 @@
 
 ## 4. 중복 규칙을 읽는 방법
 
-추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 작업 유형을 먼저 고른 뒤 해당 프로토콜을 주 기준으로 삼고, 다른 문서는 참조 문서로만 읽는다. 규칙 우선순위는 `룰북 → 최신 VISUAL 생성 프로토콜 → 작업별 pipeline → review protocol`이다. 그래프 style token·sampling·출판 수치와 geometry stroke·indicator·hatching·3D·hybrid 규칙은 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
+추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 범위·보호 필드와 데이터 계약은 canonical 룰북, 독립 검수·동일 SHA·coverage·release/seal HARD gate는 Common Protocol을 기준으로 한다. 작업별 pipeline과 review는 이 두 계약을 약화할 수 없다. 배치 크기와 revision의 현재 세부 기준은 적응형 배치 문서다. 그래프 style token·sampling·출판 수치와 geometry stroke·indicator·hatching·3D·hybrid 규칙은 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
 
 ### 4-1. 충돌 방지 고정 규칙
 

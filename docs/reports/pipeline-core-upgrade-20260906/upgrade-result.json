@@ -1,0 +1,74 @@
+{
+  "completedAt": "2026-09-06T03:07:41.387Z",
+  "status": "IMPLEMENTATION_COMPLETE_SOFTWARE_TESTS_PASS",
+  "deploymentStatus": "LOCAL_WORKTREE_NOT_PUBLISHED",
+  "pipelineCount": 11,
+  "pipelines": [
+    "logic-visual",
+    "geometry-equation",
+    "function-family",
+    "high1-svg",
+    "set-visual-pilot",
+    "past-exam",
+    "textbook",
+    "alive",
+    "tag-enrichment",
+    "intelligence",
+    "js-bank-cleanup"
+  ],
+  "testCount": 119,
+  "testGroups": [
+    {
+      "kind": "shared-core",
+      "count": 84,
+      "status": "PASS"
+    },
+    {
+      "kind": "ALIVE Python",
+      "count": 10,
+      "status": "PASS"
+    },
+    {
+      "kind": "existing original/textbook",
+      "count": 25,
+      "status": "PASS"
+    }
+  ],
+  "testCoreSha": "sha256:7bdf1c2c8076acd4a894871142e47c174247b26439b0225c98b7ef5bb52e3235",
+  "currentCoreSha": "sha256:7bdf1c2c8076acd4a894871142e47c174247b26439b0225c98b7ef5bb52e3235",
+  "codeMatchesLastPassedTests": true,
+  "rulePackStatus": "PASS",
+  "ruleRefCount": 26,
+  "generatorComponentCaptures": 18,
+  "actualEngineCaptureCases": 6,
+  "captureStatus": "CAPTURE_MECHANISM_PASS_VISUAL_REVIEW_STILL_REQUIRED",
+  "productionWritePerformedByThisUpgrade": false,
+  "workspaceBaselineComparison": {
+    "checkedAt": "2026-09-06T03:04:41.875Z",
+    "comparedFiles": 1126,
+    "status": "DRIFT_DETECTED",
+    "changedPaths": [
+      "archive/exams/original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
+      "archive/question-index.js"
+    ],
+    "baseline": "baseline.json"
+  },
+  "remainingSmokeDirectories": [],
+  "limitations": [
+    "Fresh real-question calibration and unseen holdout are separate from synthetic software tests.",
+    "Existing reports and closed runs are preserved; legacy PASS is not migrated into new provenance.",
+    "The workspace has eight source/index paths changed since baseline; no full production unchanged claim is made and those files were not reverted."
+  ],
+  "evidence": [
+    "tests-final-full.json",
+    "generator-render-smoke-v2.json",
+    "engine-render-smoke.json",
+    "production-integrity.json"
+  ]
+}

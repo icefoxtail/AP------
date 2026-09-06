@@ -1,5 +1,12 @@
 # AP Math Past Exam Pipeline
 
+Promotion now requires `--closure-manifest <run.json>` validated by
+[`../pipeline-core/README.md`](../pipeline-core/README.md). Candidate and asset
+bytes must already be canonical and reviewed; promotion no longer reserializes
+the accepted JS. Extraction drafts may remain incomplete, but cannot be promoted
+using only a `reviewed_pass` string. `npm run quality -- --manifest <run.json>`
+checks the shared final evidence contract without production writes.
+
 ## V2 방향
 
 이 파이프라인은 이제 **시험지 추출 전용**입니다.

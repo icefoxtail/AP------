@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_PROFILES_v1",
+  "pipelines": {
+    "logic-visual": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["solution"], "visual": true },
+    "geometry-equation": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
+    "function-family": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
+    "high1-svg": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
+    "set-visual-pilot": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["solution"], "visual": true },
+    "past-exam": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
+    "textbook": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
+    "alive": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
+    "tag-enrichment": { "scope": "METADATA_ONLY", "axes": ["source", "metadata", "static"], "modes": [], "visual": false },
+    "intelligence": { "scope": "METADATA_ONLY", "axes": ["source", "metadata", "static"], "modes": [], "visual": false },
+    "js-bank-cleanup": { "scope": "METADATA_ONLY", "axes": ["source", "metadata", "static"], "modes": [], "visual": false }
+  },
+  "viewports": [{ "profile": "desktop", "minWidth": 1280 }, { "profile": "mobile", "minWidth": 390, "maxWidth": 430 }],
+  "renderChecks": ["runtime", "mathJax", "fonts", "imageDecode", "assetAssociation", "questionCount", "lastQuestion", "clipping", "overflow", "readability"],
+  "inputRoles": ["source", "candidate", "asset", "rule", "spec", "engine", "extractor", "generator", "verifier", "dependency"]
+}
