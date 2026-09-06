@@ -39,6 +39,7 @@
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="print-runtime.js?v=20260906.1" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -429,7 +430,7 @@
                     <label class="qr-output-option"><input type="checkbox" id="chk-sol-qr" onchange="setQrOutputParam('sol', this.checked)"> 해설·정답 확인 QR</label>
                 </div>
             </div>
-            <button id="btn-print" onclick="window.print()" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
+            <button id="btn-print" onclick="safePrint('vector')" style="padding:8px 16px; border-radius:6px; border:none; background:#27272a; color:white; font-weight:bold; cursor:pointer;">일반 인쇄 / PDF 저장</button>
             <button id="btn-print-gdi" onclick="openFastPrintDialog()" style="padding:8px 16px; border-radius:6px; border:none; background:#0f766e; color:white; font-weight:bold; cursor:pointer;">빠른 인쇄</button>
         </div>
     </div>
@@ -1158,6 +1159,25 @@ async function registerBlueprintToOS() {
 }
 
 const AppState = { data: [], canonicalData: [], meta: {}, mode: 'exam', qpp: 4, key: '', printHeaderOptions: {} };
+let mixedReadinessTracker = null;
+
+function beginMixedReadiness() {
+    if (!window.APPrintRuntime?.createReadinessTracker) return null;
+    mixedReadinessTracker = window.APPrintRuntime.createReadinessTracker('MixerAdapter');
+    mixedReadinessTracker.begin({ key: AppState.key || '', packId: new URLSearchParams(window.location.search).get('packId') || '' });
+    markMixedReadiness('DATA_READY', { questions: AppState.data.length, source: AppState.key ? 'storage' : 'pack' });
+    return mixedReadinessTracker;
+}
+
+function markMixedReadiness(state, evidence) {
+    if (!mixedReadinessTracker) return;
+    try {
+        mixedReadinessTracker.mark(state, evidence);
+        document.documentElement.dataset.apPrintReadiness = JSON.stringify(mixedReadinessTracker.snapshot());
+    } catch (error) {
+        console.warn('[mixed-engine] readiness transition failed', error);
+    }
+}
 
 function rendererMode() {
     return window.APRenderLoop?.rendererMode?.() || 'batch';
@@ -2239,6 +2259,7 @@ async function waitForMathJaxOrContinue(timeoutMs = AP_MATHJAX_WAIT_MS) {
 window.__AP_RENDER_READY__ = Promise.resolve();
 
 async function render() {
+    beginMixedReadiness();
     let markRendered;
     window.__AP_RENDER_READY__ = new Promise(resolve => { markRendered = resolve; });
     window.APRenderLoop?.start({ mode: AppState.mode, questions: AppState.data.length });
@@ -2246,12 +2267,14 @@ async function render() {
         await renderBody();
     } finally {
         window.APRenderLoop?.finish(document.getElementById('print-area'));
+        markMixedReadiness('RENDER_READY', { mode: AppState.mode, pages: document.querySelectorAll('#print-area .page').length });
         markRendered();
     }
 }
 
 async function renderBody() {
     await waitForMathJaxOrContinue();
+    markMixedReadiness('MATH_READY', { source: window.__AP_MATHJAX_SOURCE__ || 'unknown' });
     const area = document.getElementById('print-area');
     const staging = document.getElementById('staging');
     if (rendererMode() === 'batch' && window.MathJax?.typesetClear) {
@@ -2265,6 +2288,9 @@ async function renderBody() {
     else await measureRenderPhase('exam-layout', () => renderExam(area, AppState.data));
     if (AppState.mode === 'ans' || rendererMode() === 'legacy') await typesetMath('render-final', [area]);
     if (AppState.mode === 'ans') await fitAnswerPages(area, AppState.data);
+    await waitForPrintImages(area);
+    markMixedReadiness('IMAGE_READY', { images: area.querySelectorAll('img').length });
+    markMixedReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: AppState.mode });
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
     await recordMixedDualRun(area);
@@ -2516,6 +2542,7 @@ async function safePrint(mode = 'vector') {
         } else if (window.APRenderLoop?.unrenderedMathCount(document.getElementById('print-area')) > 0) {
             await Promise.race([typesetMath('print-recovery', [document.getElementById('print-area')]), limit(5000)]);
         }
+        markMixedReadiness('PRINT_READY', { transport: mode, pages: document.querySelectorAll('#print-area .page').length });
         if (mode === 'raster') rasterPrint = await prepareRasterPrint();
         else if (mode === 'native') {
             nativePrint = { summary: await window.APNativePrint.print(document.getElementById('print-area'), {
