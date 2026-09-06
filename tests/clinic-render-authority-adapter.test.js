@@ -33,12 +33,13 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
   assert.match(modeLauncher, /const withRecipients = params\.get\('recipients'\) === '2';/);
   assert.match(modeLauncher, /fixture-packet-a/);
   assert.match(modeLauncher, /renderAuthorityDualRun=1/);
-  assert.match(engine, /layout-authority\.js\?v=20260906\.8/);
+  assert.match(engine, /layout-authority\.js\?v=20260906\.10/);
   assert.match(engine, /function recordClinicCompositionPromotionGate\(area\)/);
   assert.match(compositionHarness, /wrong-print-layout-launcher\.html\?duplex=1&recipients=2&mode=review/);
   assert.match(compositionHarness, /scenario === 'recipient-qr'/);
   assert.match(engine, /planClinicComposition/);
   assert.match(engine, /layoutRecipientId/);
+  assert.match(engine, /wrong_clinic/);
   assert.match(compositionHarness, /apClinicCompositionDualRun/);
 });
 
@@ -61,4 +62,6 @@ test('Clinic single-student restored-source browser fixture records parity acros
   assert.equal(evidence.compositionPromotionGate.recipientQr.result, 'PASS');
   assert.deepEqual(evidence.compositionPromotionGate.reviewDuplex.differenceFields, []);
   assert.deepEqual(evidence.compositionPromotionGate.recipientQr.differenceFields, []);
+  assert.ok(evidence.compositionPromotionGate.recipientQr.coverage.includes('packet:fixture-packet-a ownership'));
+  assert.ok(evidence.compositionPromotionGate.recipientQr.coverage.includes('packet:fixture-packet-b ownership'));
 });

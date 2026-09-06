@@ -738,7 +738,8 @@
                 sectionId: `${recipientId}:${mode}`,
                 mode,
                 sourceRefs: Object.freeze(refs.slice()),
-                requireQr: recipient.requireQr === true
+                requireQr: recipient.requireQr === true,
+                qrTargetKey: String(recipient.qrTargetKey || '')
             })));
         });
         return Object.freeze({ review, duplex: config.duplex === true, sections: Object.freeze(sections) });
@@ -762,19 +763,38 @@
             bucket.push(page);
             observedBySection.set(section.sectionId, bucket);
         });
+        const expectedSequence = expected.sections.map(section => section.sectionId);
+        const observedSequence = [];
+        pages.filter(page => !page.isBlank).forEach(page => {
+            if (observedSequence.at(-1) !== page.sectionId) observedSequence.push(page.sectionId);
+        });
+        if (JSON.stringify(observedSequence) !== JSON.stringify(expectedSequence)) {
+            differences.push(Object.freeze({ field: 'sectionSequence', observed: observedSequence, expected: expectedSequence }));
+        }
+        let omissionCount = 0;
+        let duplicationCount = 0;
         expected.sections.forEach((section, sectionIndex) => {
             const sectionPages = observedBySection.get(section.sectionId) || [];
             if (!sectionPages.length) differences.push(Object.freeze({ field: 'missingSection', observed: '', expected: section.sectionId }));
-            const refs = new Set(sectionPages.flatMap(page => page.sourceRefs || []));
-            const unexpected = Array.from(refs).filter(ref => !section.sourceRefs.includes(ref));
-            const missing = section.sourceRefs.filter(ref => !refs.has(ref));
+            const observedCounts = new Map();
+            const expectedCounts = new Map();
+            sectionPages.flatMap(page => page.sourceRefs || []).forEach(ref => observedCounts.set(ref, (observedCounts.get(ref) || 0) + 1));
+            section.sourceRefs.forEach(ref => expectedCounts.set(ref, (expectedCounts.get(ref) || 0) + 1));
+            const unexpected = Array.from(observedCounts.keys()).filter(ref => !expectedCounts.has(ref));
+            const missing = Array.from(expectedCounts.entries()).flatMap(([ref, expectedCount]) => Array.from({ length: Math.max(0, expectedCount - (observedCounts.get(ref) || 0)) }, () => ref));
+            const duplicates = Array.from(observedCounts.entries()).flatMap(([ref, observedCount]) => Array.from({ length: Math.max(0, observedCount - (expectedCounts.get(ref) || 0)) }, () => ref));
+            omissionCount += missing.length;
+            duplicationCount += duplicates.length;
             if (unexpected.length) differences.push(Object.freeze({ field: 'sourceIdentity', observed: unexpected, expected: section.sourceRefs, sectionId: section.sectionId }));
             if (missing.length) differences.push(Object.freeze({ field: 'omission', observed: [], expected: missing, sectionId: section.sectionId }));
+            if (duplicates.length) differences.push(Object.freeze({ field: 'duplication', observed: duplicates, expected: [], sectionId: section.sectionId }));
             const sectionPageIndexes = sectionPages.map(page => pages.indexOf(page));
             if (sectionPageIndexes.some((pageIndex, index) => index > 0 && pageIndex !== sectionPageIndexes[index - 1] + 1)) differences.push(Object.freeze({ field: 'sectionContiguity', observed: sectionPageIndexes, expected: 'contiguous', sectionId: section.sectionId }));
-            if (section.requireQr && !sectionPages.some(page => page.hasQr === true)) differences.push(Object.freeze({ field: 'recipientQr', observed: false, expected: true, sectionId: section.sectionId }));
-            if (expected.review && sectionIndex % 2 === 0 && expected.sections[sectionIndex + 1]?.recipientId === section.recipientId && expected.sections[sectionIndex + 1]?.mode !== 'solution') {
-                differences.push(Object.freeze({ field: 'reviewOrder', observed: expected.sections[sectionIndex + 1]?.mode, expected: 'solution', sectionId: section.sectionId }));
+            if (section.requireQr) {
+                const finalPage = sectionPages.at(-1);
+                const earlyQr = sectionPages.slice(0, -1).some(page => page.hasQr === true);
+                if (!finalPage?.hasQr || earlyQr) differences.push(Object.freeze({ field: 'recipientQrPlacement', observed: { final: Boolean(finalPage?.hasQr), early: earlyQr }, expected: 'final-page-only', sectionId: section.sectionId }));
+                if (section.qrTargetKey && finalPage?.qrTargetKey !== section.qrTargetKey) differences.push(Object.freeze({ field: 'recipientQrTarget', observed: finalPage?.qrTargetKey || '', expected: section.qrTargetKey, sectionId: section.sectionId }));
             }
         });
         if (expected.duplex) {
@@ -788,7 +808,7 @@
                 if (needsBlank !== Boolean(next?.isBlank)) differences.push(Object.freeze({ field: 'duplexBlank', observed: Boolean(next?.isBlank), expected: needsBlank, recipientId }));
             });
         }
-        return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences), omissionCount: differences.filter(item => item.field === 'omission').length, duplicationCount: 0 });
+        return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences), omissionCount, duplicationCount });
     }
 
     return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });

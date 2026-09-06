@@ -22,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="../archive/render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="../archive/layout-authority.js?v=20260906.8" onerror="console.warn('[layout-authority] composition gate 로드 실패 — legacy composition 유지')"></script>
+    <script src="../archive/layout-authority.js?v=20260906.10" onerror="console.warn('[layout-authority] composition gate 로드 실패 — legacy composition 유지')"></script>
     <script src="../archive/print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -570,6 +570,17 @@ function evaluateQrUrlLength(qrUrl) {
     return { length, level };
 }
 
+function getClinicQrTargetKey(qrUrl) {
+    try {
+        const url = new URL(String(qrUrl || ''), window.location.href);
+        if (url.searchParams.get('packet')) return `packet:${url.searchParams.get('packet')}`;
+        if (url.searchParams.get('wrong_clinic')) return `packet:${url.searchParams.get('wrong_clinic')}`;
+        if (url.searchParams.get('set')) return `set:${url.searchParams.get('set')}`;
+        if (url.searchParams.get('wp')) return `wp:${url.searchParams.get('wp')}`;
+    } catch (error) {}
+    return '';
+}
+
 function isQrSolutionMode() {
     try {
         const params = new URLSearchParams(window.location.search);
@@ -611,6 +622,7 @@ function injectSolutionQrToPage(targetPage, qrPayload) {
 
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-qr';
+    qrWrap.dataset.qrTargetKey = getClinicQrTargetKey(qrUrl);
     qrWrap.innerHTML = `<div class="page-qr-label">${WRONG_QR_PATCH.label}</div><canvas></canvas>`;
     targetPage.appendChild(qrWrap);
 
@@ -1332,7 +1344,8 @@ function recordClinicCompositionPromotionGate(area) {
             sourceRefs: Array.from(page.querySelectorAll('.ans-cell[data-source-ref]:not(.ans-cell-empty), .q-box[data-source-ref]'))
                 .filter(node => node.classList.contains('ans-cell') || node.querySelector('.q-num'))
                 .map(node => node.getAttribute('data-source-ref') || ''),
-            hasQr: Boolean(page.querySelector('.page-qr'))
+            hasQr: Boolean(page.querySelector('.page-qr')),
+            qrTargetKey: page.querySelector('.page-qr')?.dataset.qrTargetKey || ''
         }));
         const result = authority.compareClinicComposition({ pages }, expected);
         document.documentElement.dataset.apClinicCompositionDualRun = JSON.stringify({
@@ -1623,6 +1636,7 @@ async function renderClassPages(area, payload) {
             recipientId: `class-recipient:${index}:${recipient.studentName || ''}`,
             sourceRefs: classItems.map(getClinicQuestionSourceRef),
             requireQr: true,
+            qrTargetKey: `packet:${getStudentPacketKey(recipient)}`,
             renderMode: 'exam'
         }))
     }) || null;
