@@ -1,0 +1,59 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "auditType": "SOURCE_LEDGER_COVERAGE_RECONCILIATION",
+  "supersedes": "33_source_ledger_coverage_reconciliation_20260906.json",
+  "selectionScope": "user_selected_checked_items_only",
+  "outsideSelectedScopeAction": "NO_ACTION_ON_UNCHECKED_ROOT_ROWS",
+  "rootLedger": {
+    "path": "05_expected_facts.jsonl",
+    "rowCount": 2476,
+    "statusCounts": {
+      "SOURCE_ONLY_NOT_STARTED": 2427,
+      "SOURCE_ONLY_REVIEWED": 47,
+      "SOURCE_REVIEW": 2
+    }
+  },
+  "currentUnitLedgers": {
+    "rowCount": 1657,
+    "uniqueQuestionUidCount": 1657,
+    "statusCounts": {
+      "SOURCE_ONLY_REVIEWED": 1511,
+      "SOURCE_HOLD": 6
+    },
+    "pendingCount": 0,
+    "calibrationBatchAdded": 5,
+    "calibrationEvidence": "unit-02-line/07_source_calibration_batch_01_23gangnam.json"
+  },
+  "coverage": {
+    "rootRowsCoveredByCurrentUnitLedgers": 1657,
+    "rootRowsOutsideSelectedScope": 819,
+    "coverageInvariant": "1657 + 819 == 2476",
+    "rootRowsWithoutCurrentUnitLedger": 819,
+    "fullHigh1SourceAuditComplete": "NOT_CLAIMED_OUTSIDE_SELECTED_SCOPE"
+  },
+  "outsideSelectedScopeByStandardUnitKey": {
+    "H15-SA-10": 58,
+    "H15-SA-12": 72,
+    "H15-SB-01": 152,
+    "H15-SB-02": 144,
+    "H15-SB-07": 62,
+    "H15-SB-08": 47,
+    "H22-C-08": 82,
+    "H22-C-09": 83,
+    "H22-C2-02": 31,
+    "H22-C2-04": 24,
+    "H22-C2-05": 40,
+    "H22-C2-06": 24
+  },
+  "unit02Progress": {
+    "unit": "unit-02-line",
+    "standardUnitKeys": ["H15-SA-10", "H22-C2-02"],
+    "total": 94,
+    "sourceReviewed": 5,
+    "remaining": 89,
+    "remainingScope": "OUTSIDE_SELECTED_SCOPE",
+    "status": "CALIBRATION_RECORDED_NO_EXPANSION"
+  },
+  "currentGate": "SELECTED_SCOPE_RECORDED; no expansion to unchecked root rows; six existing SOURCE_HOLD rows remain explicit",
+  "noFalsePass": true
+}
