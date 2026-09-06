@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_INPUT_v1",
+  "questionId": 16,
+  "svg": "archive/assets/images/23_조대부고_2학기_중간_고2_수학II/q16-solution.svg",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 180,
+    "originY": 240,
+    "sx": 110,
+    "sy": 90,
+    "anchors": {
+      "origin": {
+        "element": "anchor-origin-o180",
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "anchor-xaxis-o180",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "anchor-yaxis-o180",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "tolerance": 1E-05,
+  "expectedFacts": [
+    {
+      "factId": "q16-h0",
+      "type": "POINT",
+      "element": "point-o180-x0-y0",
+      "expected": [
+        0,
+        0
+      ]
+    },
+    {
+      "factId": "q16-h1",
+      "type": "POINT",
+      "element": "point-o180-x1-y0",
+      "expected": [
+        1,
+        0
+      ]
+    },
+    {
+      "factId": "q16-right-limit1",
+      "type": "POINT",
+      "element": "point-o180-x1-y1",
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "factId": "q16-left-slope0",
+      "type": "LINE_SLOPE",
+      "element": "line-indicator-o180-x1m0p45-y10-x20p45-y20",
+      "expected": 0
+    },
+    {
+      "factId": "q16-right-slope1",
+      "type": "LINE_SLOPE",
+      "element": "line-indicator-o180-x10p0-y10-x20p45-y20p45",
+      "expected": 1
+    }
+  ],
+  "renderResult": "PASS"
+}

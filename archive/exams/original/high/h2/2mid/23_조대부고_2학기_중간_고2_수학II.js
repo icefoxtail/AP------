@@ -300,7 +300,9 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "그래프"
+    ],
     "wide": false,
     "content": "점 $(-1,-2)$에서 곡선 $y=x^3-x+2$에 그은 접선이 점 $(k,2)$를 지날 때, $k$의 값을 구하면? [3.6점]",
     "choices": [

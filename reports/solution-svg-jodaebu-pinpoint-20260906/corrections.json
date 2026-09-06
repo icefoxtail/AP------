@@ -1,0 +1,28 @@
+{
+  "scope": {
+    "startHead": "ce6c8ade8e020e11d8593f803359e7664ff713b6",
+    "endHead": "ce6c8ade8e020e11d8593f803359e7664ff713b6",
+    "sourceConflict": false,
+    "denominator": {"2023": 23, "2024": 23, "total": 46},
+    "protectedProblemPngsRebuilt": false
+  },
+  "corrections": [
+    {"exam": "2023", "question": 1, "fields": ["solutionImage"], "finding": "source-locked one-sided limits were represented by inconsistent tick geometry", "result": "recreated with one x-scale and open/closed source points"},
+    {"exam": "2023", "question": 11, "fields": ["solutionImage", "tags"], "finding": "point placement and tangent/curve geometry were not mathematically recoverable", "result": "recreated y=x³−x+2, external point (−1,−2), contact (1,2), tangent y=2x; added 그래프 tag"},
+    {"exam": "2023", "question": 16, "fields": ["solutionImage"], "finding": "SVG had f/g-like polylines but no recoverable h=f·g elements", "result": "recreated h branches −x², x(1−x), x² with h(0)=h(1)=0 and one-sided facts"},
+    {"exam": "2023", "question": 23, "fields": ["solutionImage"], "finding": "C was not the A/B midpoint and A was absent", "result": "recreated A/B/C/D in equal-scale coordinate geometry; midpoint, perpendicularity, and length are element-recoverable"},
+    {"exam": "2024", "question": 1, "fields": ["solutionImage"], "finding": "f endpoint was disconnected and g labels contradicted each other", "result": "source-locked f→0 and g left/right −2/2 shown with consistent panel scales"},
+    {"exam": "2024", "question": 5, "fields": ["solutionImage"], "finding": "y=6 and y=−2 used different pixel scales", "result": "single affine y-scale and correct open/closed points"},
+    {"exam": "2024", "question": 7, "fields": ["solutionImage"], "finding": "x=1 boundaries were drawn at x=0 and source branches were incomplete", "result": "recreated f/g branches with actual x=−1 and x=1 endpoint elements"},
+    {"exam": "2024", "question": 8, "fields": ["solutionImage", "tags"], "finding": "parabola orientation, external point, contacts, and negative tangent slope were wrong", "result": "recreated f=−x²+x+3, (1,4), contacts t=0/2, y=x+3 and y=−3x+7; added 그래프 tag"},
+    {"exam": "2024", "question": 11, "fields": ["category", "standardUnitKey", "standardUnit", "standardUnitOrder", "subUnitKey", "subUnit", "tags"], "finding": "inverse-function limit was classified as derivative", "result": "H15-M2-01 / 함수의 극한 metadata; originalCategory preserved; tags 함수의 극한·역함수"},
+    {"exam": "2024", "question": 12, "fields": ["solutionImage"], "finding": "piecewise roots were not on one x-scale", "result": "recreated all three formula branches and exact roots −1, 2−√2, 2+√2, 5"},
+    {"exam": "2024", "question": 13, "fields": ["solution"], "finding": "degree≤2 was asserted without highest-degree comparison", "result": "added n>2 contradiction A=2nA and then coefficient comparison"},
+    {"exam": "2024", "question": 15, "fields": ["solutionImage", "tags"], "finding": "cubic/tangent/point geometry was not recoverable", "result": "recreated f=1/4(x+1)²(x+5), (−3,2), slope −1, y=−x−1, (−11,10); added 그래프 tag"},
+    {"exam": "2024", "question": 16, "fields": ["solutionImage", "tags"], "finding": "g(2)=−4 point was above x-axis and tangent slope was not −12", "result": "recreated cubic/line join at (2,−4), both slopes −12; added 그래프 tag"},
+    {"exam": "2024", "question": 17, "fields": ["solution", "solutionImage", "tags"], "finding": "case-count logic omitted explicit counts and misled at t=1", "result": "added full count classification, t=1 continuity explanation, exact boundary graph; added 그래프 tag"},
+    {"exam": "2024", "question": 18, "fields": ["solutionImage", "tags"], "finding": "graph was above x-axis and point/tangent slopes were reversed", "result": "recreated −|x(x−2)| branches below axis with (2,0), left slope 2/right slope −2; added 그래프 tag"},
+    {"exam": "2024", "question": 20, "fields": ["solution", "solutionImage"], "finding": "prompt-required completed sign table was missing from student explanation", "result": "solution now points to added validated q20 sign-table SVG"},
+    {"exam": "2024", "question": 23, "fields": ["solution"], "finding": "degenerate denominator case A+2k=0 was skipped", "result": "added A+2k=0 contradiction and applied nondegenerate equation before root-product step"}
+  ]
+}
