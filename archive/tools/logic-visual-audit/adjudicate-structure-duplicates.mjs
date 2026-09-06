@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive/tools/logic-visual-audit/reports');
+const audit = JSON.parse(fs.readFileSync(path.join(OUT, 'visual_structure_duplicate_audit.json'), 'utf8'));
+const load = (uid) => { const [relative, , id] = uid.split('|'); const context = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(ROOT, relative.replaceAll('/', path.sep)), 'utf8'), context, { timeout: 5000 }); return context.window.questionBank.find((question) => Number(question.id) === Number(id)); };
+const rows = audit.duplicateGroups.map((group) => { const entries = group.questionUids.map((questionUid) => { const question = load(questionUid); const content = `${question?.content || ''}|${JSON.stringify(question?.choices || [])}`; return { questionUid, sourceContentSha: `sha256:${crypto.createHash('sha256').update(content).digest('hex')}`, subUnitKey: question?.subUnitKey || '' }; }); const distinctContent = new Set(entries.map((entry) => entry.sourceContentSha)).size; return { fingerprint: group.fingerprint, questionUids: group.questionUids, entries, distinctSourceContentCount: distinctContent, status: distinctContent > 1 ? 'STRUCTURAL_TEMPLATE_REUSE_FAIL' : 'SHARED_ARTIFACT_REVIEW_REQUIRED', reason: distinctContent > 1 ? 'identical artifact identity/fingerprint is attached to source questions with different content/choices' : 'semantic equivalence still requires independent fact comparison' }; });
+const result = { generatedAtKst: '2026-09-05', groupCount: rows.length, failedGroups: rows.filter((row) => row.status === 'STRUCTURAL_TEMPLATE_REUSE_FAIL').length, reviewGroups: rows.filter((row) => row.status !== 'STRUCTURAL_TEMPLATE_REUSE_FAIL').length, status: rows.some((row) => row.status === 'STRUCTURAL_TEMPLATE_REUSE_FAIL') ? 'FAIL_KNOWN_BAD_DETECTED' : 'REVIEW_REQUIRED', groups: rows };
+fs.writeFileSync(path.join(OUT, 'visual_structure_duplicate_adjudication.json'), JSON.stringify(result, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: result.status, groupCount: result.groupCount, failedGroups: result.failedGroups, reviewGroups: result.reviewGroups }, null, 2));

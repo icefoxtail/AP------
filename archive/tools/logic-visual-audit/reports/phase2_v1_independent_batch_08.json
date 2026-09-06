@@ -1,0 +1,49 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 5,
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js|22_팔마고_2학기_기말_고1_기출|17",
+      "qid": 17,
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_CASE_PARTITION",
+      "role": "INTERSECTION_CARDINALITY_CASE_SPLIT",
+      "rationale": "The decisive structure is the mutually exclusive and exhaustive split by |A∩B|=1 or 2; a case partition can clarify each counting contribution, but the source is fully solvable textually, so a visual is helpful rather than indispensable."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+      "qid": 14,
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_NUMBER_LINE",
+      "role": "INTERVAL_UNION_INTERSECTION",
+      "rationale": "The question is governed by real intervals from quadratic inequalities, including the open and closed boundary behavior at the roots; a number line directly carries the decisive interval, union, and intersection relations."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|7",
+      "qid": 7,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "DIRECT_MEMBERSHIP_AND_CARDINALITY_CHECK",
+      "rationale": "Each statement is a direct symbolic membership or finite-cardinality truth check; a visual would duplicate the source text and add no stable mathematical information."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|2",
+      "qid": 2,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "DIRECT_SET_EQUALITY_CHECK",
+      "rationale": "Equality of the two explicitly listed two-element sets reduces to matching their elements and solving for a and b; direct symbolic reasoning is clearer than any visual."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|3",
+      "qid": 3,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "DIRECT_SUBSET_ENUMERATION",
+      "rationale": "This is trivial finite enumeration of the subsets of a four-element set, so no visual structure is needed and a visual would only duplicate the text."
+    }
+  ],
+  "reviewedUidSetSha": "sha256:4e107019937665b09c0210f0c3084cf382afdffc735347385f6e008b77aae937"
+}

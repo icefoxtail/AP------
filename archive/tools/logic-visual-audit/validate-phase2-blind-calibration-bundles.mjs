@@ -1,0 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive', 'tools', 'logic-visual-audit', 'reports');
+const read = (relative) => JSON.parse(fs.readFileSync(path.join(OUT, relative), 'utf8'));
+const sha = (value) => `sha256:${crypto.createHash('sha256').update(JSON.stringify(value)).digest('hex')}`;
+const manifest = read('phase2_calibration_01_blind_bundle_manifest.json');
+const v1 = read(manifest.v1Bundle);
+const v2 = read(manifest.v2Bundle);
+const errors = [];
+const v1Uids = v1.items.map((item) => item.questionUid);
+const v2Uids = v2.items.map((item) => item.questionUid);
+const v1Forbidden = ['answer', 'solution', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'expectedFact', 'previousVerdict'];
+const v2Forbidden = ['content', 'choices', 'answer', 'solution', 'expectedFact', 'previousVerdict'];
+for (const item of v1.items) for (const key of v1Forbidden) if (Object.prototype.hasOwnProperty.call(item, key)) errors.push({ code: 'V1_FORBIDDEN_FIELD_VISIBLE', questionUid: item.questionUid, field: key });
+for (const item of v2.items) for (const key of v2Forbidden) if (Object.prototype.hasOwnProperty.call(item, key)) errors.push({ code: 'V2_FORBIDDEN_FIELD_VISIBLE', questionUid: item.questionUid, field: key });
+if (JSON.stringify(v1Uids) !== JSON.stringify(v2Uids)) errors.push({ code: 'V1_V2_UID_ORDER_MISMATCH' });
+if (v1.items.length !== manifest.plannedSize || v2.items.length !== manifest.plannedSize) errors.push({ code: 'BUNDLE_SIZE_MISMATCH' });
+const output = { generatedAtKst: '2026-09-06', phase: 'PHASE2_FRESH_BLIND_CALIBRATION_BUNDLE_VALIDATION', batchId: manifest.batchId, status: errors.length ? 'FAIL_BLIND_BUNDLE_CONTRACT' : 'PASS_BLIND_BUNDLE_CONTRACT', v1BundleSha: sha(v1.items), v2BundleSha: sha(v2.items), v1Count: v1.items.length, v2Count: v2.items.length, errors };
+output.reportSha = sha(output);
+fs.writeFileSync(path.join(OUT, 'phase2_calibration_01_blind_bundle_validation.json'), JSON.stringify(output, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: output.status, v1Count: output.v1Count, v2Count: output.v2Count, errorCount: errors.length, reportSha: output.reportSha }, null, 2));
+if (errors.length) process.exitCode = 1;

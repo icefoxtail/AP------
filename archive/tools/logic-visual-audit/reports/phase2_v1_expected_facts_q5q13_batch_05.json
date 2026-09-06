@@ -1,0 +1,101 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "expectedLogicalFact": {
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "C": "boundary:C"
+        },
+        "decisiveStepIds": [
+          "membership_keep_drop"
+        ],
+        "expectedRegions": [
+          "100",
+          "101",
+          "111"
+        ],
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "finalConclusion": "(A-B)∪(A∩C)",
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+        "regionMembership": [
+          {
+            "bits": "100",
+            "status": "KEEP"
+          },
+          {
+            "bits": "101",
+            "status": "KEEP"
+          },
+          {
+            "bits": "110",
+            "status": "DROP"
+          },
+          {
+            "bits": "111",
+            "status": "KEEP"
+          }
+        ],
+        "requiredLabels": [
+          "A",
+          "B",
+          "C",
+          "U"
+        ],
+        "unit": "집합",
+        "universe": {
+          "boundary": "boundary:U",
+          "label": "U",
+          "required": true
+        },
+        "universeRequired": true,
+        "visualRole": "set_expression_region_membership",
+        "visualType": "SET_REGION_VENN_3"
+      },
+      "expectedLogicalFactSha": "sha256:02cb5904a5da7d13971425b0bf5e1c8818b4a22436d768a44d48722c234cf295"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "expectedLogicalFact": {
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "U": "boundary:U"
+        },
+        "decisiveStepIds": [
+          "canonical_region_coverage",
+          "complement_union_equals_universe"
+        ],
+        "expectedRegions": [
+          "R00",
+          "R01",
+          "R10",
+          "R11"
+        ],
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "finalConclusion": "B∪Bᶜ=U",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+        "requiredLabels": [
+          "A",
+          "B",
+          "U"
+        ],
+        "unit": "집합",
+        "universe": {
+          "boundary": "boundary:U",
+          "label": "U",
+          "required": true
+        },
+        "universeRequired": true,
+        "visualRole": "set_complement_universe_partition",
+        "visualType": "SET_REGION_VENN_2"
+      },
+      "expectedLogicalFactSha": "sha256:3d6ed5ca4ebaa6ef2bb0104f980d93bc62f66ff74f31e30f08e4a03899ef644a"
+    }
+  ],
+  "reviewedUidSetSha": "sha256:a22481c62645cbbe77247f6ee9913ca53e5039265e617b3d808f6a1e2d245809"
+}

@@ -1,0 +1,104 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_2022_SET_PILOT_FINAL_FAIL_CLOSED",
+  "overallStatus": "FAIL — 검수 인프라 또는 evidence 결함 존재",
+  "publicationStatus": "NOT_PUBLISHED",
+  "productionAuthority": false,
+  "closure": {
+    "status": "BLOCKED",
+    "inputSha": null,
+    "errors": [
+      "COMMON_CLOSURE_MANIFEST_REQUIRED"
+    ]
+  },
+  "canonicalRegistry": {
+    "status": "PASS_CANONICAL_REGISTRY_WITH_LEGACY_RECONCILIATION",
+    "validationStatus": "PASS_CANONICAL_REGISTRY_VALIDATION",
+    "registrySha": "sha256:66556d16ef92196126ebc3db5a9b944cd31ce66ab44dfadd3fd9bb799aaf6bc9",
+    "activeCanonicalQuestionCount": 50
+  },
+  "denominatorClosure": {
+    "status": "FROZEN",
+    "stale": false,
+    "requiredCount": 29,
+    "inputSha": "sha256:d871d5c531f1a7f480a32ff2433ba5a060e555a221b8733d88cd6de8cd608a1b",
+    "requiredUidSetSha": "sha256:9e56e2689ebe086855c4519f3dea47939bf05f587e283b4e9d083d378abeb069"
+  },
+  "typedSemanticParity": {
+    "status": "FAIL_TYPED_FACT_SCHEMA",
+    "independentFreshBlindStatus": "NOT_PROVEN_LEGACY_EVIDENCE"
+  },
+  "mathVerification": "FAIL_INDEPENDENT_MATH_VERIFICATION",
+  "calibration": "PASS_BLIND_BUNDLE_CONTRACT",
+  "decisionContract": "PASS_DECISION_REQUIREMENT_ACTION_CONTRACT",
+  "renderEvidence": {
+    "reportCount": 11,
+    "browserStatus": "FAIL"
+  },
+  "failClosedGate": {
+    "status": "FAIL_FAIL_CLOSED_GATE",
+    "failureCount": 19
+  },
+  "evidenceContract": "FAIL_EVIDENCE_CONTRACT",
+  "failureCount": 13,
+  "failures": [
+    {
+      "code": "COMMON_CLOSURE_BLOCKED",
+      "errors": [
+        "COMMON_CLOSURE_MANIFEST_REQUIRED"
+      ]
+    },
+    {
+      "code": "FAIL_CLOSED_GATE_NOT_PASS",
+      "status": "FAIL_FAIL_CLOSED_GATE"
+    },
+    {
+      "code": "EVIDENCE_CONTRACT_NOT_PASS",
+      "status": "FAIL_EVIDENCE_CONTRACT"
+    },
+    {
+      "code": "TYPED_FRESH_BLIND_NOT_PROVEN",
+      "status": "FAIL_TYPED_FACT_SCHEMA"
+    },
+    {
+      "code": "MATH_VERIFICATION_NOT_INDEPENDENT_PASS",
+      "status": "FAIL_INDEPENDENT_MATH_VERIFICATION"
+    },
+    {
+      "code": "RENDER_REPORT_NOT_PASS",
+      "file": null,
+      "status": "PASS_NO_RENDER_REQUIRED"
+    },
+    {
+      "code": "RENDER_REPORT_NOT_PASS",
+      "file": null,
+      "status": "BLOCKED_REAL_RENDER_EVIDENCE_REQUIRED"
+    },
+    {
+      "code": "RENDER_WITNESS_MATRIX_INCOMPLETE",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9"
+    },
+    {
+      "code": "RENDER_WITNESS_MATRIX_INCOMPLETE",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20"
+    },
+    {
+      "code": "RENDER_WITNESS_MATRIX_INCOMPLETE",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18"
+    },
+    {
+      "code": "RENDER_WITNESS_MATRIX_INCOMPLETE",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10"
+    },
+    {
+      "code": "RENDER_WITNESS_MATRIX_INCOMPLETE",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11"
+    },
+    {
+      "code": "RENDER_WITNESS_MATRIX_INCOMPLETE",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12"
+    }
+  ],
+  "nextAction": "Resolve every listed gate, regenerate current evidence, then rerun the full fail-closed gate.",
+  "reportSha": "sha256:675d5e5aad42be0d94898ff5d646d89f153383a7e71f0e9eaeeeeb1efd6909da"
+}

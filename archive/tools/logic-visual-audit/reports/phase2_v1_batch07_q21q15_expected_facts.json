@@ -1,0 +1,112 @@
+{
+  "reportSchemaVersion": "LOGIC_VISUAL_EXPECTED_FACTS_REPORT_v1",
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "examId": "22_강남여고_2학기_기말_고1_기출",
+      "qid": 21,
+      "reviewerRole": "V1_EXPECTED",
+      "priorReviewVisibility": "NONE",
+      "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "Represent U with the two boundaries A and B∪C, highlight (B∪C)-A, and expose its element sum",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_REGION_VENN_2",
+      "visualRole": "Represent U with the two boundaries A and B∪C, highlight (B∪C)-A, and expose its element sum",
+      "requiredLabels": ["U", "A", "B∪C", "1", "24"],
+      "decisiveStepIds": [
+        "RESTORE_UNIVERSE",
+        "RESTORE_A_FROM_COMPLEMENT",
+        "RESTORE_B_UNION_C_FROM_COMPLEMENT",
+        "SELECT_R01_FOR_DIFFERENCE",
+        "SUM_TARGET_ELEMENTS"
+      ],
+      "universeRequired": true,
+      "universe": {
+        "label": "U",
+        "definition": "positive divisors of 24",
+        "elements": [1, 2, 3, 4, 6, 8, 12, 24]
+      },
+      "universeDefinition": "U={1,2,3,4,6,8,12,24}",
+      "universeBoundaryRequired": true,
+      "universeLabelRequired": true,
+      "complementReferenceSet": {
+        "A^c": [1, 8, 24],
+        "(B∪C)^c": [3, 4, 8, 12]
+      },
+      "restoredSets": {
+        "A": [2, 3, 4, 6, 12],
+        "B∪C": [1, 2, 6, 24]
+      },
+      "regionMembership": {
+        "R00": [8],
+        "R10": [3, 4, 12],
+        "R11": [2, 6],
+        "R01": [1, 24]
+      },
+      "expectedRegions": ["R01"],
+      "boundaryIdentity": {
+        "A": "boundary:A",
+        "B∪C": "boundary:B∪C",
+        "U": "boundary:U"
+      },
+      "targetExpression": "(B∪C)-A",
+      "targetElements": [1, 24],
+      "countingResult": 25,
+      "countingOperation": "1+24=25",
+      "expectedLogicalFactCanonicalJson": "{\"boundaryIdentity\":{\"A\":\"boundary:A\",\"B∪C\":\"boundary:B∪C\",\"U\":\"boundary:U\"},\"complementReferenceSet\":{\"(B∪C)^c\":[12,3,4,8],\"A^c\":[1,24,8]},\"countingOperation\":\"1+24=25\",\"countingResult\":25,\"decisiveStepIds\":[\"RESTORE_UNIVERSE\",\"RESTORE_A_FROM_COMPLEMENT\",\"RESTORE_B_UNION_C_FROM_COMPLEMENT\",\"SELECT_R01_FOR_DIFFERENCE\",\"SUM_TARGET_ELEMENTS\"],\"expectedRegions\":[\"R01\"],\"factSchemaVersion\":\"LOGIC_VISUAL_FACT_v1\",\"questionUid\":\"archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21\",\"regionMembership\":{\"R00\":[8],\"R01\":[1,24],\"R10\":[12,3,4],\"R11\":[2,6]},\"requiredLabels\":[\"1\",\"24\",\"A\",\"B∪C\",\"U\"],\"restoredSets\":{\"A\":[2,3,4,6,12],\"B∪C\":[1,2,6,24]},\"targetElements\":[1,24],\"targetExpression\":\"(B∪C)-A\",\"unit\":\"집합\",\"universe\":{\"definition\":\"positive divisors of 24\",\"elements\":[1,12,2,24,3,4,6,8],\"label\":\"U\"},\"universeBoundaryRequired\":true,\"universeDefinition\":\"U={1,2,3,4,6,8,12,24}\",\"universeLabelRequired\":true,\"universeRequired\":true,\"visualRole\":\"Represent U with the two boundaries A and B∪C, highlight (B∪C)-A, and expose its element sum\",\"visualType\":\"SET_REGION_VENN_2\"}",
+      "expectedLogicalFactSha": "sha256:13b1f6b0f39a93cb22c46b1a57d7e00ea5286251829429d23256ce80feb1c8f8"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+      "examId": "22_순천여고_2학기_기말_고1_기출",
+      "qid": 15,
+      "reviewerRole": "V1_EXPECTED",
+      "priorReviewVisibility": "NONE",
+      "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "Partition A into forced, forbidden, and free element buckets, then show the odd-sum selection count",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "Partition A into forced, forbidden, and free element buckets, then show the odd-sum selection count",
+      "requiredLabels": ["A", "forced", "forbidden", "free", "1", "2", "3", "4", "5", "6", "7"],
+      "decisiveStepIds": [
+        "APPLY_FORCED_FORBIDDEN_CONDITION",
+        "PARTITION_FORCED_FORBIDDEN_FREE",
+        "ENFORCE_ODD_SUM",
+        "COUNT_VALID_SELECTIONS"
+      ],
+      "universe": {
+        "label": "A",
+        "definition": "A={1,2,3,4,5,6,7}",
+        "elements": [1, 2, 3, 4, 5, 6, 7]
+      },
+      "elementBuckets": {
+        "forced": [2],
+        "forbidden": [3],
+        "free": [1, 4, 5, 6, 7]
+      },
+      "forcedElements": [2],
+      "forbiddenElements": [3],
+      "freeElements": [1, 4, 5, 6, 7],
+      "freeCount": 5,
+      "oddSumCondition": "S(X) is odd",
+      "freeOddElements": [1, 5, 7],
+      "freeEvenElements": [4, 6],
+      "countingBreakdown": {
+        "oddFreeSubsetCount": 4,
+        "evenFreeSubsetChoices": 4,
+        "oddSumSelectionCount": 16
+      },
+      "countingResult": 16,
+      "expectedLogicalFactCanonicalJson": "{\"countingBreakdown\":{\"evenFreeSubsetChoices\":4,\"oddFreeSubsetCount\":4,\"oddSumSelectionCount\":16},\"countingResult\":16,\"decisiveStepIds\":[\"APPLY_FORCED_FORBIDDEN_CONDITION\",\"PARTITION_FORCED_FORBIDDEN_FREE\",\"ENFORCE_ODD_SUM\",\"COUNT_VALID_SELECTIONS\"],\"elementBuckets\":{\"forbidden\":[3],\"forced\":[2],\"free\":[1,4,5,6,7]},\"factSchemaVersion\":\"LOGIC_VISUAL_FACT_v1\",\"forbiddenElements\":[3],\"forcedElements\":[2],\"freeCount\":5,\"freeElements\":[1,4,5,6,7],\"freeEvenElements\":[4,6],\"freeOddElements\":[1,5,7],\"oddSumCondition\":\"S(X) is odd\",\"questionUid\":\"archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15\",\"requiredLabels\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"A\",\"forbidden\",\"forced\",\"free\"],\"unit\":\"집합\",\"universe\":{\"definition\":\"A={1,2,3,4,5,6,7}\",\"elements\":[1,2,3,4,5,6,7],\"label\":\"A\"},\"visualRole\":\"Partition A into forced, forbidden, and free element buckets, then show the odd-sum selection count\",\"visualType\":\"SET_FORCE_FORBID_FREE\"}",
+      "expectedLogicalFactSha": "sha256:3d457ac30ab5b6fb6e1bcd4ab98fa0d1524e5cc80792c921bcdbf9d43d251ec3"
+    }
+  ],
+  "reviewedUidSetSha": "sha256:385b177f2774c5c909c3da9c2eb12a5e3a0e235c915f20a1f336d72a6b544e2c"
+}

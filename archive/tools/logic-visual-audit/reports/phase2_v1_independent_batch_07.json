@@ -1,0 +1,49 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 5,
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+      "qid": 1,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "visualRole": "NONE",
+      "rationale": "All predicates are resolved directly from prime membership and element-versus-subset definitions; a visual would duplicate a one-step symbolic check."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+      "qid": 19,
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_CARDINALITY_VENN",
+      "visualRole": "optional cardinality aid for A∪B and its overlap",
+      "rationale": "The relevant visual relation is the overlap used by inclusion-exclusion, with |A|=210, |B|=120, and |A∩B|=60; a cardinality Venn could make the region counts explicit, but the exact text equation is fully sufficient."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+      "qid": 2,
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_INCLUSION_VENN",
+      "visualRole": "optional inclusion/equality aid showing mutual inclusion A⊆B and B⊆A",
+      "rationale": "The abstract set relation is mutual inclusion, hence A=B; an inclusion Venn can show that equality, but the decisive root and parameter calculation is algebraic and does not require a visual."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "qid": 21,
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_REGION_VENN_2",
+      "visualRole": "show the finite universe U, A, D=B∪C, their complements, and the target region D−A",
+      "rationale": "Complement is explicitly relative to the finite universe of positive divisors of 24, and the target is a region difference; a U-bounded region diagram is needed to preserve the complement boundary and the exact D−A selection."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+      "qid": 15,
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_CASE_PARTITION",
+      "visualRole": "partition the forced/forbidden subset constraints by parity-compatible cases",
+      "rationale": "Condition (a) forces 2 and forbids 3, while the odd-sum condition requires selecting exactly 1 or 3 of the available odd elements; an exhaustive case partition makes those constraints and count contributions explicit."
+    }
+  ],
+  "reviewedUidSetSha": "sha256:c4eb38493ee428f85b9d374ea370213ab3ec85577e7f5c61ff69fa2f26e8003f"
+}

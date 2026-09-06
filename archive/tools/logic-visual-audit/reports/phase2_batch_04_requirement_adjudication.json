@@ -1,0 +1,61 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_04_REQUIREMENT_ADJUDICATION",
+  "status": "RESOLVED",
+  "reviewerRole": "DESIGNATED_SEMANTIC_ADJUDICATOR",
+  "priorReviewVisibility": "V1_FIRST_PASS_AND_PILOT_RULES",
+  "pendingCount": 0,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|21",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_CASE_PARTITION",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_CASE_PARTITION",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "The divisor-membership condition relative to B and the parity condition are resolved through exhaustive, mutually exclusive cases; a case-partition visual should expose the case conditions, surviving values, and elimination reasons."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|4",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_CARDINALITY_VENN",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_CARDINALITY_VENN",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "The question asks for the union and intersection of two movie-attendance sets while giving the outside count; a two-set cardinality Venn makes the outside, union, overlap, and region counts explicit."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_FORCE_FORBID_FREE",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_FORCE_FORBID_FREE",
+      "visualAction": "KEEP_EXISTING",
+      "status": "RESOLVED",
+      "reason": "X∩A=A forces every element of A into X, while X-B=X forbids every element of B; the remaining universe elements are free, so forced/forbidden/free buckets directly represent the subset count."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_CARDINALITY_VENN",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_CARDINALITY_VENN",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "The maximum and minimum possible overlap of two sets inside a 24-student universe are extreme cardinality configurations; a cardinality Venn should show the maximal containment and minimal-overlap states."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|20",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_FORCE_FORBID_FREE",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_FORCE_FORBID_FREE",
+      "visualAction": "KEEP_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Equality of the two unions forces the elements in both set-difference blocks into X, while the common and outside elements remain free; forced/free buckets make the resulting subset count transparent."
+    }
+  ],
+  "reportSha": "sha256:d2ccb96b38369127b61b2fcfbb79410ed6189c2ed84ec6651fd2bfa357f4ef14"
+}

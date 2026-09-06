@@ -1,0 +1,38 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_02_REQUIREMENT_ADJUDICATION",
+  "status": "RESOLVED",
+  "reviewerRole": "DESIGNATED_SEMANTIC_ADJUDICATOR",
+  "priorReviewVisibility": "V1_FIRST_PASS_AND_PILOT_RULES",
+  "pendingCount": 0,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_REGION_VENN_2",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Source-only visual fact requires U-bound symmetric-difference region membership and the pilot target requires the region visual."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "independentSignal": "SHOULD_BE_EXEMPT",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_FORCE_FORBID_FREE",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Independent first pass marked EXEMPT, but the applicable pilot instruction explicitly lists q16 as ADD_NEW_VISUAL and the source has a decisive forced/free parity-count structure; adjudicator resolves the conflict as required."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_FORCE_FORBID_FREE",
+      "visualAction": "KEEP_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Source-only fact requires the forced/forbidden/free bucket partition and the existing artifact visibly encodes all three buckets and 2²=4."
+    }
+  ],
+  "reportSha": "sha256:fe3efea31f10e75c7016c7e6b80216737415b750a4323396822546b46736f118"
+}

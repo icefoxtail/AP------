@@ -1,64 +1,39 @@
-import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { canonicalizeFact, loadSpecs, projectSemantic, semanticHash, validateFact } from './lib/facts.mjs';
+import { fileURLToPath } from 'node:url';
+import { canonicalJson, semanticSha, sha256, validateFact } from './lib/canonicalize.mjs';
 import { computeDenominator, detectStale } from './lib/denominator.mjs';
-import { compareStructureReuse } from './lib/gate.mjs';
-import { nextHoldoutStatus } from './lib/holdout.mjs';
-import { readJson, sha256 } from './lib/io.mjs';
-
-const root = path.resolve(process.cwd(), 'archive/tools/logic-visual-audit');
-const specs = loadSpecs(path.join(root, 'specs'));
-const numberLine = (from = '0', to = '2') => ({ factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', visualType: 'SET_NUMBER_LINE', intervalComponents: [{ from, to, fromEndpoint: { kind: 'CLOSED' }, toEndpoint: { kind: 'OPEN' } }] });
-
-assert.equal(semanticHash({ ...numberLine(), requiredLabels: ['B', 'A'] }, specs.projection), semanticHash({ ...numberLine(), requiredLabels: ['A', 'B'] }, specs.projection), 'projection must ignore non-semantic labels');
-assert.equal(sha256(canonicalizeFact({ factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', visualType: 'SET_FORCE_FORBID_FREE', forcedElements: ['2', '1'], forbiddenElements: [], freeElements: [] })), sha256(canonicalizeFact({ factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', visualType: 'SET_FORCE_FORBID_FREE', forcedElements: ['1', '2'], forbiddenElements: [], freeElements: [] })), 'SET fields are order-insensitive');
-const proofA = { factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', visualType: 'PROOF_FLOW', proofSteps: ['a', 'b'], proofEdges: [{ key: '2' }, { key: '1' }] };
-const proofB = { ...proofA, proofSteps: ['b', 'a'] };
-assert.notEqual(sha256(canonicalizeFact(proofA)), sha256(canonicalizeFact(proofB)), 'proof step order is semantic');
-assert.throws(() => projectSemantic({ factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', visualType: 'SET_NUMBER_LINE' }, specs.projection), /required semantic field missing/);
-assert(validateFact({ factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', visualType: 'SET_NUMBER_LINE' }, specs.schema).length > 0, 'required field removal must fail schema');
-
-const baseItems = [
-  { questionUid: 'required-attached', actualSolutionVisualAttached: true, problemVisualMathDependency: false, sharedVisualMathDependency: false },
-  { questionUid: 'exempt-no-visual', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false },
-  { questionUid: 'required-no-satisfier', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false }
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive/tools/logic-visual-audit/reports');
+const results = [];
+const setA = { factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', questionUid: 'test:set:1', unit: '집합', visualType: 'SET_FORCE_FORBID_FREE', visualRole: 'bucket', requiredLabels: ['freeElements', 'forcedElements', 'forbiddenElements'], decisiveStepIds: ['bucket'], forcedElements: [3, 1], forbiddenElements: [8, 6], freeElements: [2, 5], freeCount: 2, countingResult: '2^2' };
+const setB = { ...setA, requiredLabels: ['forbiddenElements', 'freeElements', 'forcedElements'], forcedElements: [1, 3], forbiddenElements: [6, 8], freeElements: [5, 2] };
+results.push({ id: 'set-order-is-canonical', pass: semanticSha(setA) === semanticSha(setB), detail: [semanticSha(setA), semanticSha(setB)] });
+const proofA = { factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', questionUid: 'test:proof:1', unit: '명제', visualType: 'PROOF_FLOW', visualRole: 'proof', requiredLabels: [], decisiveStepIds: ['s1', 's2'], proofSteps: [{ id: 's1', text: 'a' }, { id: 's2', text: 'b' }], proofEdges: [{ fromStep: 's1', toStep: 's2', relation: 'uses' }], contradictionTarget: null, finalConclusion: 'b' };
+const proofB = { ...proofA, proofSteps: [{ id: 's2', text: 'b' }, { id: 's1', text: 'a' }] };
+results.push({ id: 'proof-order-is-semantic', pass: semanticSha(proofA) !== semanticSha(proofB), detail: [semanticSha(proofA), semanticSha(proofB)] });
+results.push({ id: 'same-meaning-different-uid-is-semantic-equivalent', pass: semanticSha(setA) === semanticSha({ ...setA, questionUid: 'test:set:another-uid' }), detail: [semanticSha(setA), semanticSha({ ...setA, questionUid: 'test:set:another-uid' })] });
+const caseOrderA = { factSchemaVersion: 'LOGIC_VISUAL_FACT_v1', questionUid: 'test:case:a', unit: '집합', visualType: 'SET_CASE_PARTITION', visualRole: 'table', requiredLabels: ['case'], decisiveStepIds: ['case'], caseRows: [{ caseId: 'B', result: 'reject' }, { caseId: 'A', result: 'keep' }] };
+const caseOrderB = { ...caseOrderA, questionUid: 'test:case:b', caseRows: [...caseOrderA.caseRows].reverse() };
+results.push({ id: 'case-row-order-is-canonical-and-uid-independent', pass: semanticSha(caseOrderA) === semanticSha(caseOrderB), detail: [semanticSha(caseOrderA), semanticSha(caseOrderB)] });
+const missingProjection = { ...setA }; delete missingProjection.freeElements;
+results.push({ id: 'required-projection-field-is-enforced', pass: !validateFact(missingProjection).pass, detail: validateFact(missingProjection) });
+const invalidTypes = [
+  { ...setA, questionUid: 42 },
+  { ...setA, requiredLabels: 'not-an-array' },
+  { ...setA, freeElements: [null] },
+  { ...setA, freeCount: -1 },
+  { ...caseOrderA, caseRows: [{ caseId: 'A' }, { caseId: 'A' }] }
 ];
-const triage = {
-  'required-attached': { finalVisualRequirement: 'VISUAL_OPTIONAL' },
-  'exempt-no-visual': { finalVisualRequirement: 'VISUAL_EXEMPT' },
-  'required-no-satisfier': { finalVisualRequirement: 'VISUAL_REQUIRED' }
-};
-const artifacts = { 'required-attached': { artifactExists: true }, 'exempt-no-visual': { artifactExists: false }, 'required-no-satisfier': { artifactExists: false } };
-const denominator = computeDenominator({ items: baseItems, triage, artifacts, candidateReleaseArtifactSha: 'release-a' });
-assert(denominator.logicVisualRequiredUidSet.includes('required-attached'), 'optional plus actual visual is C-required');
-assert(!denominator.logicVisualRequiredUidSet.includes('exempt-no-visual'), 'exempt without dependency is not required');
-assert(denominator.logicVisualRequiredUidSet.includes('required-no-satisfier'), 'required without satisfier remains in denominator and will fail');
-const changedAttach = computeDenominator({ items: baseItems.map((item) => item.questionUid === 'exempt-no-visual' ? { ...item, actualSolutionVisualAttached: true } : item), triage, artifacts: { ...artifacts, 'exempt-no-visual': { artifactExists: true } }, candidateReleaseArtifactSha: 'release-a' });
-assert.equal(detectStale(denominator, changedAttach).stale, true, 'attach after freeze makes denominator stale');
-const changedDependency = computeDenominator({ items: baseItems, triage, artifacts, candidateReleaseArtifactSha: 'release-a' });
-changedDependency.cInput.problemVisualMathDependencyMapSha = 'changed';
-assert.equal(detectStale(denominator, changedDependency).stale, true, 'dependency flip makes denominator stale');
-assert.notEqual(denominator.logicVisualRequiredUidSetSha, 'invalidated', 'UID set is valid before stale mutation');
-assert.notEqual(denominator.logicVisualRequiredUidSetSha, denominator.coreFinalCRequiredUidSetSha.replace(/^./, 'x'), 'overlay/core parity check is exact');
-
-const cPass = { ...numberLine(), observed: true };
-assert.equal(semanticHash(cPass, specs.projection), semanticHash(cPass, specs.projection), 'C semantic PASS remains independent from D');
-const cStatus = 'PASS';
-const dStatus = 'FAIL';
-assert.equal(cStatus, 'PASS');
-assert.equal(dStatus, 'FAIL');
-assert.notEqual(`${cStatus}:${dStatus}`, 'PASS');
-
-const mutation = readJson(path.join(root, 'reports/mutation-qualification.json'));
-assert.equal(mutation.mutationQualificationCurrent, 'PASS', 'mutation harness must detect all frozen mutations');
-assert.equal(nextHoldoutStatus({ currentStatus: 'UNSEEN', result: 'FAIL' }), 'REVEALED_FAIL');
-assert.equal(nextHoldoutStatus({ currentStatus: 'REVEALED_FAIL', result: 'PASS', toolChanged: true }), 'RETIRED');
-assert.equal(nextHoldoutStatus({ currentStatus: 'REVEALED_PASS', result: 'PASS', toolChanged: true }), 'RETIRED');
-
-const sameStructure = { visualStructureFingerprint: 'same', expectedSemanticSha: 'sha', questionUid: 'a' };
-const sameStructure2 = { visualStructureFingerprint: 'same', expectedSemanticSha: 'sha', questionUid: 'b' };
-const differentStructure = { visualStructureFingerprint: 'same', expectedSemanticSha: 'different', questionUid: 'c' };
-assert.equal(compareStructureReuse([sameStructure, sameStructure2])[0].status, 'ALLOWED_SHARED_SEMANTIC');
-assert.equal(compareStructureReuse([sameStructure, differentStructure])[0].status, 'FAIL_STRUCTURAL_REUSE');
-console.log(JSON.stringify({ test: 'logic-visual-audit', status: 'PASS', assertions: 16 }, null, 2));
+results.push({ id: 'typed-negative-fixtures-are-rejected', pass: invalidTypes.every((fact) => !validateFact(fact).pass), detail: invalidTypes.map((fact) => validateFact(fact)) });
+const denominator = JSON.parse(fs.readFileSync(path.join(OUT, 'c_denominator.json'), 'utf8'));
+const mutate = (mapKey) => { const maps = structuredClone(denominator.maps); const uid = denominator.candidateRequiredUidSet[0]; maps[mapKey] = { ...maps[mapKey], [uid]: !maps[mapKey][uid] }; return sha256({ ...maps, candidateReleaseArtifactSha: sha256(denominator.candidateRequiredUidSet) }); };
+for (const key of ['actualSolutionVisualAttachedMapSha', 'problemVisualMathDependencyMapSha', 'sharedVisualMathDependencyMapSha']) results.push({ id: `denominator-${key}-mutation-changes-input`, pass: mutate(key) !== denominator.cDenominatorInputSha, detail: { before: denominator.cDenominatorInputSha, after: mutate(key) } });
+const denominatorProbe = computeDenominator({ items: [{ questionUid: 'probe:optional-attached', actualSolutionVisualAttached: true, problemVisualMathDependency: false, sharedVisualMathDependency: false }], triage: { 'probe:optional-attached': { finalVisualRequirement: 'VISUAL_OPTIONAL' } }, artifacts: {}, candidateReleaseArtifactSha: 'sha256:' + '0'.repeat(64) });
+results.push({ id: 'missing-attached-artifact-remains-in-c-denominator', pass: denominatorProbe.logicVisualRequiredUidSet.includes('probe:optional-attached'), detail: denominatorProbe.logicVisualRequiredUidSet });
+const staleProbe = detectStale({ cInput: { ...denominatorProbe.cInput } }, { cInput: { ...denominatorProbe.cInput, candidateReleaseArtifactSha: 'sha256:' + '1'.repeat(64) } });
+results.push({ id: 'artifact-input-change-invalidates-c-denominator', pass: staleProbe.stale && staleProbe.reasons.includes('candidateReleaseArtifactSha'), detail: staleProbe });
+const output = { generatedAtKst: '2026-09-05', status: results.every((result) => result.pass) ? 'PASS' : 'FAIL', results };
+fs.writeFileSync(path.join(OUT, 'logic_visual_unit_tests.json'), JSON.stringify(output, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: output.status, testCount: results.length, failed: results.filter((result) => !result.pass).length }, null, 2));
+if (output.status !== 'PASS') process.exitCode = 1;

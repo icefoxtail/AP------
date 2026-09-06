@@ -1,0 +1,146 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_STRUCTURAL_FINGERPRINT_ADJUDICATION",
+  "inputAudit": "phase2_2022_set_pilot_structural_fingerprint_audit.json",
+  "status": "PASS_STRUCTURAL_FINGERPRINT_ADJUDICATED",
+  "candidateCount": 2,
+  "resolvedCount": 2,
+  "unresolvedCount": 0,
+  "groups": [
+    {
+      "geometryFingerprint": "sha256:b3a895a123916a5539c6023e5242d90bee9aecc406daa6bfd9ff468ccd13ce3f",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+        "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8"
+      ],
+      "status": "REVIEW_REQUIRED_STRUCTURAL_CANDIDATE",
+      "adjudication": {
+        "disposition": "APPROVED_STRUCTURAL_FAMILY_WITH_SEMANTIC_DISTINCTION",
+        "visualFamily": "SET_FORCE_FORBID_FREE",
+        "reason": "두 SVG는 강제·금지·자유 bucket의 동일한 교육적 문법을 공유하지만 U의 원소 수, A/B 원소, 자유 원소, countingResult가 모두 문항별로 다르다. exact asset SHA도 다르며 문항 고유 fact가 보인다.",
+        "semanticDistinguishers": [
+          "universe",
+          "forcedElements",
+          "forbiddenElements",
+          "freeElements",
+          "freeCount",
+          "countingResult"
+        ],
+        "approvalInputSha": "sha256:77317b54782fb7b2b72f54a1d6f960c47c26972d2577428930a993263feb9b82"
+      },
+      "adjudicationStatus": "RESOLVED",
+      "bindings": [
+        {
+          "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+          "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q06-solution.svg",
+          "artifactSha": "sha256:7c95cc4fcb61af8ed810dc77960d1f0da7baa766b9ae3fe0928136be740b5219",
+          "artifactExists": true,
+          "questionSpecificEvidenceSha": "sha256:1b22baae7e74174c358276635ba4f2854e8b945a4a2558ffe9a8426179df8854",
+          "questionSpecificCoverage": {
+            "content": true,
+            "choices": true,
+            "answer": true,
+            "solution": true,
+            "alt": true,
+            "caption": true
+          }
+        },
+        {
+          "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8",
+          "artifactPath": "assets/images/22_순천여고_2학기_중간_고1_기출/q08-solution.svg",
+          "artifactSha": "sha256:5b146a56aa46a04f7e2adda873336716e8dcfdee4c92ba4ce881e90f4c636132",
+          "artifactExists": true,
+          "questionSpecificEvidenceSha": "sha256:0708f5b75f38d130a7d5ac66dd705cdb5ad7bff7fb4a9868a627bac1f079887d",
+          "questionSpecificCoverage": {
+            "content": true,
+            "choices": true,
+            "answer": true,
+            "solution": true,
+            "alt": true,
+            "caption": true
+          }
+        }
+      ],
+      "bindingSha": "sha256:3fc48d2773ca94be8aa2b257646f303247796932d7890d51cdc8d74244f9adab",
+      "approvalInputSha": "sha256:77317b54782fb7b2b72f54a1d6f960c47c26972d2577428930a993263feb9b82",
+      "questionSpecificCoverageStatus": "PASS"
+    },
+    {
+      "geometryFingerprint": "sha256:ee08bc51ca250baf9a579841d44d5da407f99178a9140e35eeaf47fe993699b7",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+        "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+        "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10"
+      ],
+      "status": "REVIEW_REQUIRED_STRUCTURAL_CANDIDATE",
+      "adjudication": {
+        "disposition": "APPROVED_STRUCTURAL_FAMILY_WITH_SEMANTIC_DISTINCTION",
+        "visualFamily": "SET_CARDINALITY_VENN",
+        "reason": "세 SVG는 최대·최소 교집합을 두 패널로 보여 주는 동일한 시각 문법을 공유하지만 전체 인원, A/B 크기, 최대·최소 교집합, 영역별 수치와 답이 각각 다르다. exact asset SHA는 다르다.",
+        "semanticDistinguishers": [
+          "totalCardinality",
+          "setA",
+          "setB",
+          "maximumIntersection",
+          "minimumIntersection",
+          "regionCounts",
+          "answer"
+        ],
+        "approvalInputSha": "sha256:4df154379c4434e48d4dcc76e22d3d20d208101b47855495b0c0641ab284eb8a"
+      },
+      "adjudicationStatus": "RESOLVED",
+      "bindings": [
+        {
+          "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+          "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q19-solution.svg",
+          "artifactSha": "sha256:b9270d7415ea0e5f935b9bca933d40368597179e5a33b2360550c1e7abd12dd0",
+          "artifactExists": true,
+          "questionSpecificEvidenceSha": "sha256:1085b81013f055abb16ebbe7cd3e90fc62fadd96cb47b8b35909f1d0f6518aca",
+          "questionSpecificCoverage": {
+            "content": true,
+            "choices": true,
+            "answer": true,
+            "solution": true,
+            "alt": true,
+            "caption": true
+          }
+        },
+        {
+          "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+          "artifactPath": "assets/images/22_팔마고_2학기_중간_고1_기출/q07-solution.svg",
+          "artifactSha": "sha256:7b5529fce0dee85d0f0aba0a5066fdc5473709f33be5f9683ac5b20f631dde6d",
+          "artifactExists": true,
+          "questionSpecificEvidenceSha": "sha256:582aa673370021f9a1c20d601f5ba52cfc79ebc32e386d6b364fd315d60a3a73",
+          "questionSpecificCoverage": {
+            "content": true,
+            "choices": true,
+            "answer": true,
+            "solution": true,
+            "alt": true,
+            "caption": true
+          }
+        },
+        {
+          "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+          "artifactPath": "assets/images/22_효천고_2학기_중간_고1_기출/q10-solution.svg",
+          "artifactSha": "sha256:0563f04b3eaff61c0f2cc5c6163487666ebb2b898c08ca52c3cb55393d7a8f52",
+          "artifactExists": true,
+          "questionSpecificEvidenceSha": "sha256:d835fa5407089ba30e95f72a89052b10cddcdd6be47a7bef7a566160075cb650",
+          "questionSpecificCoverage": {
+            "content": true,
+            "choices": true,
+            "answer": true,
+            "solution": true,
+            "alt": true,
+            "caption": true
+          }
+        }
+      ],
+      "bindingSha": "sha256:ffe32008ab436fc36aa85c632a5b0c9320443429776c4e3e976e2eeac322a58d",
+      "approvalInputSha": "sha256:4df154379c4434e48d4dcc76e22d3d20d208101b47855495b0c0641ab284eb8a",
+      "questionSpecificCoverageStatus": "PASS"
+    }
+  ],
+  "rule": "Same geometry family is permitted only when exact asset SHA differs and question-specific semantic distinguishers are present; otherwise FAIL.",
+  "reportSha": "sha256:d0b3ff353c90ba537b5211635c556d76f9f277ebaf30cb6669976bacf694eb0b"
+}

@@ -1,0 +1,53 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "status": "SOURCE_AUDIT_CURRENT_STATUS_REVISION_2",
+  "supersedes": "29_current_source_hold_status_20260906.json",
+  "resolvedSincePreviousRevision": [],
+  "sourceFidelityRestorationSincePreviousRevision": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_content|17",
+      "evidence": "unit-09-quadratic/18_source_recovery_q17_26geumdang_d_drive.json",
+      "changedFields": ["content", "solution"],
+      "unchangedFields": ["answer", "choices"],
+      "productionSourceSha256AfterChange": "sha256:dc8f30af78fa1c0375b28806f825363aa691d77d04a4ed7e55d5ba52a7f36d84",
+      "reason": "D 원문에 인쇄된 ‘a의 최댓값’ 발문을 복원하고, 최댓값 부재라는 source defect hold를 해설에 명시했다.",
+      "productionMutation": "SOURCE_FIDELITY_RESTORATION_WITHOUT_ANSWER_PROMOTION"
+    }
+  ],
+  "currentSourceHolds": [
+    "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js|23_여수여고_1학기_중간_고1_기출|11",
+    "archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js|24_여수고_1학기_중간_고1_기출|15",
+    "archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js|24_여수고_1학기_중간_고1_기출|18",
+    "archive/exams/original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js|24_제일고_1학기_중간_고1_수학|5",
+    "archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js|24_한영고_1학기_중간_고1_기출|19",
+    "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_content|17"
+  ],
+  "sourceHoldCount": 6,
+  "sourceLedgerAggregate": {
+    "expectedFacts": 1512,
+    "sourceOnlyReviewed": 1506,
+    "sourceHold": 6,
+    "pending": 0
+  },
+  "questionIndex": {
+    "regenerated": true,
+    "questionCount": 11026,
+    "duplicateQKeyCount": 0,
+    "q17WordingAndIndexParity": "PASS"
+  },
+  "additionalDDriveSearch": {
+    "hwpFilesScannedByPreviewText": 769,
+    "oleReadErrors": 0,
+    "alternate24YeosuHighSourceFound": false,
+    "alternate23MaesanWomenSourceFound": false,
+    "alternate24JeilHighSourceFound": false,
+    "note": "파일명 변형과 HWP 내부 PrvText를 함께 검색했으며, 24 여수고 q15/q18을 대체할 추가 원문은 확인되지 않았다."
+  },
+  "similarQuestionPromotionsInThisRevision": 0,
+  "gate": "SOURCE_HOLD_ONLY; external independent review and release gates remain open",
+  "evidence": [
+    "unit-09-quadratic/18_source_recovery_q17_26geumdang_d_drive.json",
+    "unit-13-cases/28_source_recovery_q10_23maesan_women_d_drive.json",
+    "29_current_source_hold_status_20260906.json"
+  ]
+}

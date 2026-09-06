@@ -1,0 +1,51 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 5,
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "sourceBundle": "archive/tools/logic-visual-audit/reports/phase2_v1_source_only_batch_06.json",
+  "sourceBundleSha": "sha256:692616430ac5a57ed44d73f2c488f263186ce24c5b27ca6243e7017b793042e7",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+      "qid": 1,
+      "expectedVisualRequirementSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "visualRole": "DIRECT_MEMBERSHIP_AND_SUBSET_CHECK",
+      "rationale": "The source gives an explicit finite prime set and asks only for direct membership, non-membership, and subset-symbol checks. No region, boundary, interval, cardinality, or graph semantics need to be externalized; a visual would be decorative or redundant."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+      "qid": 19,
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_CARDINALITY_VENN",
+      "visualRole": "CARDINALITY_BY_REGION",
+      "rationale": "The union count is governed by the three quantities for A, B, and their overlap, so a two-set cardinality Venn is a stable explanatory model. However, the finite digit pools and inclusion-exclusion calculation are fully clear in text, making the visual helpful but not indispensable."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+      "qid": 2,
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_INCLUSION_VENN",
+      "visualRole": "MUTUAL_INCLUSION_SET_EQUALITY",
+      "rationale": "The two stated inclusion directions have a stable inclusion-Venn interpretation: they encode equality of A and B. The visual is nevertheless optional because the decisive source structure is the quadratic root calculation and matching those roots with the explicitly listed set; the polynomial dependency remains clearer symbolically."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "qid": 21,
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_REGION_VENN_2",
+      "visualRole": "COMPLEMENT_AND_SET_DIFFERENCE",
+      "rationale": "The explicit universe and complement conditions admit a U-bounded two-region-set model for A versus the derived set B∪C, including the requested set difference. The finite divisor list makes the complements and subtraction equally transparent as text, so the visual is optional rather than required."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "qid": 18,
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_GRAPH_DEFINED",
+      "visualRole": "CURVE_INTERSECTION_COUNT",
+      "rationale": "A and B are explicitly defined as point sets on two curves, so a graph can faithfully show their common-point relation and intersection count. The source nevertheless supplies equations and domain conditions sufficient for an algebraic analysis, and no source visual dependency is present; a graph is useful but optional."
+    }
+  ],
+  "reviewedUidSetSha": "sha256:7c46af7415d31c35a9284ee49ae7dce0e82a113029f4c586948812d9e14e1ed4"
+}

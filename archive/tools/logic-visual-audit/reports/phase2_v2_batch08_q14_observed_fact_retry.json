@@ -1,0 +1,161 @@
+{
+  "reportType": "PHASE2_V2_ARTIFACT_ONLY_OBSERVED_FACT_RETRY",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "artifactShaVerification": {
+    "algorithm": "SHA-256",
+    "expected": "sha256:7a97cb1ce48938bf2b48413fc959a7f1619fadde3fd27a4ea0e25844c8e91bbf",
+    "observed": "sha256:7a97cb1ce48938bf2b48413fc959a7f1619fadde3fd27a4ea0e25844c8e91bbf",
+    "matches": true
+  },
+  "observedUidSetSha": "sha256:f8450f597108e453aa22d7c14f9fda792c03a9f76f5d2a000d9e0b862b228a52",
+  "rulePreflight": {
+    "status": "PASS",
+    "effectiveRules": [
+      {
+        "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+        "declaredVersion": "v2.6",
+        "actualBytes": 93734,
+        "sha256": "sha256:15bac5c693b4bac5a5d1794ec07f641b188bb125d4321c08e0524ebbce5b0514"
+      },
+      {
+        "path": "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
+        "declaredVersion": "v1.2.10",
+        "actualBytes": 195826,
+        "sha256": "sha256:8e5f688c925bce396008722cf271f0136185ac7dc3599a4e408fe1417dff5ca5"
+      },
+      {
+        "path": "docs/rules/04_VISUAL/도형추출.md",
+        "declaredVersion": "v3.0",
+        "actualBytes": 51732,
+        "sha256": "sha256:46104e98928b54b78b04c4e0c9848067e796aa070e15517653608c97cd75e6e2"
+      },
+      {
+        "path": "docs/rules/04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md",
+        "declaredVersion": "v1.4_QUALIFICATION_READY",
+        "actualBytes": 66253,
+        "sha256": "sha256:0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b"
+      }
+    ]
+  },
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+      "artifactPath": "assets/images/22_강남여고_2학기_중간_고1_기출/q14-solution.svg",
+      "artifactSha256": "sha256:7a97cb1ce48938bf2b48413fc959a7f1619fadde3fd27a4ea0e25844c8e91bbf",
+      "artifactShaVerification": {
+        "algorithm": "SHA-256",
+        "expected": "sha256:7a97cb1ce48938bf2b48413fc959a7f1619fadde3fd27a4ea0e25844c8e91bbf",
+        "observed": "sha256:7a97cb1ce48938bf2b48413fc959a7f1619fadde3fd27a4ea0e25844c8e91bbf",
+        "matches": true
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+        "unit": "집합",
+        "visualType": "SET_NUMBER_LINE",
+        "visualRole": "solution_explanation",
+        "requiredLabels": [
+          "A",
+          "B",
+          "C",
+          "R",
+          "A∩B",
+          "A∪B",
+          "A=(-∞,2)∪(4,∞)",
+          "B=[−1,4]",
+          "A∩B=[−1,2)",
+          "C=R, A∪B=R",
+          "−1",
+          "2",
+          "4",
+          "open",
+          "closed"
+        ],
+        "decisiveStepIds": [
+          "observed-number-line-A-two-components",
+          "observed-number-line-B-closed-interval",
+          "observed-number-line-A-intersection-B-closed-open-interval",
+          "observed-bottom-expression"
+        ],
+        "intervalComponents": [
+          {
+            "componentId": "A.1",
+            "lineLabel": "A",
+            "expression": "x<2",
+            "interval": "(-∞,2)",
+            "leftEndpoint": {
+              "value": "-∞",
+              "closed": false,
+              "endpointType": "unbounded"
+            },
+            "rightEndpoint": {
+              "value": 2,
+              "closed": false,
+              "endpointType": "open"
+            }
+          },
+          {
+            "componentId": "A.2",
+            "lineLabel": "A",
+            "expression": "x>4",
+            "interval": "(4,∞)",
+            "leftEndpoint": {
+              "value": 4,
+              "closed": false,
+              "endpointType": "open"
+            },
+            "rightEndpoint": {
+              "value": "∞",
+              "closed": false,
+              "endpointType": "unbounded"
+            }
+          },
+          {
+            "componentId": "B.1",
+            "lineLabel": "B",
+            "expression": "B=[−1,4]",
+            "interval": "[−1,4]",
+            "leftEndpoint": {
+              "value": -1,
+              "closed": true,
+              "endpointType": "closed"
+            },
+            "rightEndpoint": {
+              "value": 4,
+              "closed": true,
+              "endpointType": "closed"
+            }
+          },
+          {
+            "componentId": "A∩B.1",
+            "lineLabel": "A∩B",
+            "expression": "A∩B=[−1,2)",
+            "interval": "[−1,2)",
+            "leftEndpoint": {
+              "value": -1,
+              "closed": true,
+              "endpointType": "closed"
+            },
+            "rightEndpoint": {
+              "value": 2,
+              "closed": false,
+              "endpointType": "open"
+            }
+          }
+        ],
+        "visibleExpressions": [
+          "A=(-∞,2)∪(4,∞), C=R, A∩B=[−1,2), B=[−1,4]",
+          "A: x<2 또는 x>4",
+          "B: [−1,4]",
+          "A∩B=[−1,2)",
+          "C=R, A∪B=R",
+          "B=[−1,4]=(x+1)(x−4)≤0 → a=−3, b=−4, ab=12"
+        ],
+        "visibleUnionSymbol": "∪"
+      }
+    }
+  ]
+}

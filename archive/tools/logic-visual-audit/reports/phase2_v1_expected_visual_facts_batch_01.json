@@ -1,0 +1,401 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "CASE_PARTITION_COUNTING",
+        "requiredLabels": [
+          "U={1,...,10}",
+          "S=(A−B)∪(B−A)",
+          "|S|=2",
+          "|S|=3",
+          "32",
+          "40",
+          "72"
+        ],
+        "decisiveStepIds": [
+          "CASE_S2",
+          "CASE_S3",
+          "CASE_TOTAL"
+        ],
+        "universe": {
+          "definition": "U={1,...,10}",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          "sum": 55
+        },
+        "setDefinition": "S=(A−B)∪(B−A)",
+        "intersectionCardinality": 1,
+        "casePartition": {
+          "partitionParameter": "|S|",
+          "cases": [
+            {
+              "caseId": "S_SIZE_2",
+              "caseCondition": "|S|=2",
+              "parameterValue": 2,
+              "candidateRowCount": 8,
+              "countContribution": 32
+            },
+            {
+              "caseId": "S_SIZE_3",
+              "caseCondition": "|S|=3",
+              "parameterValue": 3,
+              "candidateRowCount": 5,
+              "countContribution": 40
+            }
+          ],
+          "totalCountContribution": 72
+        },
+        "caseRows": [
+          {
+            "caseId": "S2_C05_E01_09",
+            "caseCondition": "|S|=2",
+            "caseElements": [1, 9],
+            "parameterValue": 5,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 5},
+              {"factId": "symmetricDifferenceSum", "value": 10},
+              {"factId": "outsideUnionSum", "value": 40},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C05_E02_08",
+            "caseCondition": "|S|=2",
+            "caseElements": [2, 8],
+            "parameterValue": 5,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 5},
+              {"factId": "symmetricDifferenceSum", "value": 10},
+              {"factId": "outsideUnionSum", "value": 40},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C05_E03_07",
+            "caseCondition": "|S|=2",
+            "caseElements": [3, 7],
+            "parameterValue": 5,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 5},
+              {"factId": "symmetricDifferenceSum", "value": 10},
+              {"factId": "outsideUnionSum", "value": 40},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C05_E04_06",
+            "caseCondition": "|S|=2",
+            "caseElements": [4, 6],
+            "parameterValue": 5,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 5},
+              {"factId": "symmetricDifferenceSum", "value": 10},
+              {"factId": "outsideUnionSum", "value": 40},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C10_E01_08",
+            "caseCondition": "|S|=2",
+            "caseElements": [1, 8],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C10_E02_07",
+            "caseCondition": "|S|=2",
+            "caseElements": [2, 7],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C10_E03_06",
+            "caseCondition": "|S|=2",
+            "caseElements": [3, 6],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S2_C10_E04_05",
+            "caseCondition": "|S|=2",
+            "caseElements": [4, 5],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 4}
+            ],
+            "validity": true,
+            "countContribution": 4
+          },
+          {
+            "caseId": "S3_C05_E01_02_07",
+            "caseCondition": "|S|=3",
+            "caseElements": [1, 2, 7],
+            "parameterValue": 5,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 5},
+              {"factId": "symmetricDifferenceSum", "value": 10},
+              {"factId": "outsideUnionSum", "value": 40},
+              {"factId": "orderedAssignmentCount", "value": 8}
+            ],
+            "validity": true,
+            "countContribution": 8
+          },
+          {
+            "caseId": "S3_C05_E01_03_06",
+            "caseCondition": "|S|=3",
+            "caseElements": [1, 3, 6],
+            "parameterValue": 5,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 5},
+              {"factId": "symmetricDifferenceSum", "value": 10},
+              {"factId": "outsideUnionSum", "value": 40},
+              {"factId": "orderedAssignmentCount", "value": 8}
+            ],
+            "validity": true,
+            "countContribution": 8
+          },
+          {
+            "caseId": "S3_C10_E01_02_06",
+            "caseCondition": "|S|=3",
+            "caseElements": [1, 2, 6],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 8}
+            ],
+            "validity": true,
+            "countContribution": 8
+          },
+          {
+            "caseId": "S3_C10_E01_03_05",
+            "caseCondition": "|S|=3",
+            "caseElements": [1, 3, 5],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 8}
+            ],
+            "validity": true,
+            "countContribution": 8
+          },
+          {
+            "caseId": "S3_C10_E02_03_04",
+            "caseCondition": "|S|=3",
+            "caseElements": [2, 3, 4],
+            "parameterValue": 10,
+            "derivedFacts": [
+              {"factId": "intersectionElement", "value": 10},
+              {"factId": "symmetricDifferenceSum", "value": 9},
+              {"factId": "outsideUnionSum", "value": 36},
+              {"factId": "orderedAssignmentCount", "value": 8}
+            ],
+            "validity": true,
+            "countContribution": 8
+          }
+        ],
+        "totalCountContribution": 72
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "COLLISION_PAIR_ENUMERATION",
+        "requiredLabels": [
+          "n=21",
+          "B_{21}",
+          "|B_{21}|=10",
+          "α=20",
+          "k+α=41"
+        ],
+        "decisiveStepIds": [
+          "COLLISIONS_N21",
+          "CARDINALITY_B21",
+          "ALPHA",
+          "FINAL_SUM"
+        ],
+        "setDefinition": "B_n={a(n−a) | a∈{1,...,20}}",
+        "casePartition": {
+          "partitionParameter": "n",
+          "cases": [
+            {
+              "caseId": "N_21_COLLISIONS",
+              "caseCondition": "n=21",
+              "parameterValue": 21,
+              "candidateRowCount": 10,
+              "countContribution": 10
+            }
+          ],
+          "totalCountContribution": 10
+        },
+        "caseRows": [
+          {
+            "caseId": "N21_PAIR_01_20",
+            "caseCondition": "n=21",
+            "caseElements": [1, 20],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 20}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_02_19",
+            "caseCondition": "n=21",
+            "caseElements": [2, 19],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 38}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_03_18",
+            "caseCondition": "n=21",
+            "caseElements": [3, 18],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 54}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_04_17",
+            "caseCondition": "n=21",
+            "caseElements": [4, 17],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 68}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_05_16",
+            "caseCondition": "n=21",
+            "caseElements": [5, 16],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 80}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_06_15",
+            "caseCondition": "n=21",
+            "caseElements": [6, 15],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 90}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_07_14",
+            "caseCondition": "n=21",
+            "caseElements": [7, 14],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 98}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_08_13",
+            "caseCondition": "n=21",
+            "caseElements": [8, 13],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 104}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_09_12",
+            "caseCondition": "n=21",
+            "caseElements": [9, 12],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 108}
+            ],
+            "validity": true,
+            "countContribution": 1
+          },
+          {
+            "caseId": "N21_PAIR_10_11",
+            "caseCondition": "n=21",
+            "caseElements": [10, 11],
+            "parameterValue": 21,
+            "derivedFacts": [
+              {"factId": "collisionOutput", "value": 110}
+            ],
+            "validity": true,
+            "countContribution": 1
+          }
+        ],
+        "results": {
+          "k": 21,
+          "B21Cardinality": 10,
+          "alpha": 20,
+          "kPlusAlpha": 41
+        }
+      }
+    }
+  ],
+  "reviewedUidSetSha": "sha256:6f1e0923ce77ead2ca2fe5cce4cbf253630dc3659af6d31bce9a5e6ed36b2f72"
+}

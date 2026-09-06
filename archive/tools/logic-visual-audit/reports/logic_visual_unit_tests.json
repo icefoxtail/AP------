@@ -1,0 +1,129 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "status": "PASS",
+  "results": [
+    {
+      "id": "set-order-is-canonical",
+      "pass": true,
+      "detail": [
+        "sha256:44a9cd0a136a9b4b657c3e728d8e12b1c4ec4e83d9895a96885428938d83ab2a",
+        "sha256:44a9cd0a136a9b4b657c3e728d8e12b1c4ec4e83d9895a96885428938d83ab2a"
+      ]
+    },
+    {
+      "id": "proof-order-is-semantic",
+      "pass": true,
+      "detail": [
+        "sha256:5c2536da0e70aaa083f699ccff8b3f3bd2c973657d2c0f81a5be27a9b941ea9a",
+        "sha256:4c47f810fdcdfcc821891cac728bd8071ca5e30628c19c90d8dac909bd580e1b"
+      ]
+    },
+    {
+      "id": "same-meaning-different-uid-is-semantic-equivalent",
+      "pass": true,
+      "detail": [
+        "sha256:44a9cd0a136a9b4b657c3e728d8e12b1c4ec4e83d9895a96885428938d83ab2a",
+        "sha256:44a9cd0a136a9b4b657c3e728d8e12b1c4ec4e83d9895a96885428938d83ab2a"
+      ]
+    },
+    {
+      "id": "case-row-order-is-canonical-and-uid-independent",
+      "pass": true,
+      "detail": [
+        "sha256:5addc615869dcf6a10e3667216bf8c52f77563159e19bd40297ed2bc5edb4e8e",
+        "sha256:5addc615869dcf6a10e3667216bf8c52f77563159e19bd40297ed2bc5edb4e8e"
+      ]
+    },
+    {
+      "id": "required-projection-field-is-enforced",
+      "pass": true,
+      "detail": {
+        "pass": false,
+        "errors": [
+          "missingProjectionField:freeElements",
+          "freeElements:type"
+        ]
+      }
+    },
+    {
+      "id": "typed-negative-fixtures-are-rejected",
+      "pass": true,
+      "detail": [
+        {
+          "pass": false,
+          "errors": [
+            "$.questionUid:type",
+            "questionUid:type"
+          ]
+        },
+        {
+          "pass": false,
+          "errors": [
+            "$.requiredLabels:type",
+            "requiredLabels:type"
+          ]
+        },
+        {
+          "pass": false,
+          "errors": [
+            "$.freeElements[0]:type"
+          ]
+        },
+        {
+          "pass": false,
+          "errors": [
+            "$.freeCount:minimum",
+            "freeCount:type"
+          ]
+        },
+        {
+          "pass": false,
+          "errors": [
+            "caseRows.caseId:duplicate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "denominator-actualSolutionVisualAttachedMapSha-mutation-changes-input",
+      "pass": true,
+      "detail": {
+        "before": "sha256:0ee447a202f119201ebe1910c024adcbfb51a9ea293642d869ed7d8fbf7d844c",
+        "after": "sha256:75fca02f4c1b2496d7c39d5530760268036030651b3a79414314ce532c674bad"
+      }
+    },
+    {
+      "id": "denominator-problemVisualMathDependencyMapSha-mutation-changes-input",
+      "pass": true,
+      "detail": {
+        "before": "sha256:0ee447a202f119201ebe1910c024adcbfb51a9ea293642d869ed7d8fbf7d844c",
+        "after": "sha256:e7de26809bfb4cf222a781ab0cb199843bab8739f3f332b18cb162d71956ed78"
+      }
+    },
+    {
+      "id": "denominator-sharedVisualMathDependencyMapSha-mutation-changes-input",
+      "pass": true,
+      "detail": {
+        "before": "sha256:0ee447a202f119201ebe1910c024adcbfb51a9ea293642d869ed7d8fbf7d844c",
+        "after": "sha256:475c4faa46aef412b6682ad0dec813f6dad143b542aaa72e315fd8a2d191546a"
+      }
+    },
+    {
+      "id": "missing-attached-artifact-remains-in-c-denominator",
+      "pass": true,
+      "detail": [
+        "probe:optional-attached"
+      ]
+    },
+    {
+      "id": "artifact-input-change-invalidates-c-denominator",
+      "pass": true,
+      "detail": {
+        "stale": true,
+        "reasons": [
+          "candidateReleaseArtifactSha"
+        ]
+      }
+    }
+  ]
+}

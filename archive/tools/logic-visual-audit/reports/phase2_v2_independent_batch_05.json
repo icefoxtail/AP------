@@ -1,0 +1,346 @@
+{
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "observedCount": 5,
+  "entries": [
+    {
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "artifactPath": "assets/images/22_강남여고_2학기_기말_고1_기출/q05-solution.svg",
+      "artifactExists": true,
+      "artifactSha256": "sha256:738eecac57aa65929d08a77931ab50ac33d0a1a5f6f98cd804afaabb5f1778ee",
+      "observedArtifactSha256": "sha256:738eecac57aa65929d08a77931ab50ac33d0a1a5f6f98cd804afaabb5f1778ee",
+      "sha256Verified": true,
+      "unit": "집합",
+      "visualType": "PROOF_FLOW",
+      "visualRole": "집합 대수식의 동치 변형을 두 줄의 등식 흐름으로 보여 주는 증명 흐름",
+      "requiredLabels": [
+        "(A−B)∪(A∩C)",
+        "(A∩Bᶜ)∪(A∩C)",
+        "A∩(Bᶜ∪C)",
+        "A−(B−C)",
+        "정답 보기: A−(B−C)",
+        "A∩(Bᶜ∪C)와 같은 식"
+      ],
+      "decisiveStepIds": ["s1", "s2", "s3", "s4", "conclusion"],
+      "observedLabels": [
+        "차집합을 교집합으로 바꾸고 A를 묶는다",
+        "문항의 실제 식 (A−B)∪(A∩C)와 다섯 번째 보기를 비교",
+        "동일한 집합으로 가는 두 경로",
+        "(A−B)∪(A∩C)",
+        "= (A∩Bᶜ)∪(A∩C)",
+        "= A∩(Bᶜ∪C)",
+        "= A−(B−C)",
+        "정답 보기: A−(B−C)",
+        "A∩(Bᶜ∪C)와 같은 식"
+      ],
+      "proofSteps": [
+        {"stepId": "s1", "label": "(A−B)∪(A∩C)", "position": "upper-left"},
+        {"stepId": "s2", "label": "= (A∩Bᶜ)∪(A∩C)", "position": "upper-right"},
+        {"stepId": "s3", "label": "= A∩(Bᶜ∪C)", "position": "lower-left"},
+        {"stepId": "s4", "label": "= A−(B−C)", "position": "lower-right"}
+      ],
+      "proofEdges": [
+        {"fromStep": "s1", "toStep": "s2", "relation": "="},
+        {"fromStep": "s2", "toStep": "s4", "relation": "same-expression-route"},
+        {"fromStep": "s1", "toStep": "s3", "relation": "same-expression-route"},
+        {"fromStep": "s3", "toStep": "s4", "relation": "="}
+      ],
+      "finalConclusion": "A−(B−C)",
+      "observedNodeData": {
+        "canvas": {"width": 760, "height": 430},
+        "nodes": [
+          {"id": "heading", "kind": "text", "text": "차집합을 교집합으로 바꾸고 A를 묶는다", "x": 28, "y": 38},
+          {"id": "subheading", "kind": "text", "text": "문항의 실제 식 (A−B)∪(A∩C)와 다섯 번째 보기를 비교", "x": 28, "y": 67},
+          {"id": "route-label", "kind": "text", "text": "동일한 집합으로 가는 두 경로", "x": 50, "y": 125},
+          {"id": "s1", "kind": "equation", "text": "(A−B)∪(A∩C)", "x": 54, "y": 143},
+          {"id": "s2", "kind": "equation", "text": "= (A∩Bᶜ)∪(A∩C)", "x": 335, "y": 143},
+          {"id": "s3", "kind": "equation", "text": "= A∩(Bᶜ∪C)", "x": 54, "y": 205},
+          {"id": "s4", "kind": "equation", "text": "= A−(B−C)", "x": 335, "y": 205},
+          {"id": "answer", "kind": "badge-text", "text": "정답 보기: A−(B−C)", "x": 184, "y": 290},
+          {"id": "same-expression", "kind": "text", "text": "A∩(Bᶜ∪C)와 같은 식", "x": 354, "y": 293}
+        ],
+        "geometry": [
+          {"kind": "panel", "x": 34, "y": 98, "width": 692, "height": 214, "rx": 12},
+          {"kind": "separator", "x1": 54, "y1": 242, "x2": 704, "y2": 242},
+          {"kind": "answer-badge", "x": 54, "y": 270, "width": 260, "height": 30, "rx": 15}
+        ]
+      }
+    },
+    {
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "artifactPath": "assets/images/22_금당고_2학기_기말_고1_기출/q13-solution.svg",
+      "artifactExists": true,
+      "artifactSha256": "sha256:647779400cbcf1b77135c31d7e48046b56c24afa558fdfcaf7f214f340a18305",
+      "observedArtifactSha256": "sha256:647779400cbcf1b77135c31d7e48046b56c24afa558fdfcaf7f214f340a18305",
+      "sha256Verified": true,
+      "unit": "집합",
+      "visualType": "SET_GRAPH_DEFINED",
+      "visualRole": "파란색 조각별 그래프와 주황색 경계 직선의 접점 및 기울기별 교점 상태를 보여 주는 그래프 도식",
+      "requiredLabels": [
+        "접점 T",
+        "y=m₀x",
+        "A의 그래프",
+        "m<−1",
+        "m≥m₀",
+        "−1≤m<m₀",
+        "허용되는 기울기 영역",
+        "x",
+        "y"
+      ],
+      "decisiveStepIds": ["graph-A", "boundary-line", "tangent-T", "slope-cases"],
+      "observedLabels": [
+        "그래프와 원점을 지나는 직선의 관계",
+        "경계 기울기 m₀=−3+2√2에서 왼쪽 가지에 접한다.",
+        "접점 T",
+        "y=m₀x",
+        "A의 그래프",
+        "−3",
+        "−2",
+        "−1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "x",
+        "y",
+        "파란색: A의 그래프( x<0, 0≤x<1, x>1 ) · 주황 점선: 경계 직선",
+        "기울기별 교점",
+        "m<−1",
+        "교점 있음",
+        "m≥m₀",
+        "−1≤m<m₀",
+        "허용되는 기울기 영역"
+      ],
+      "graphDefinedFacts": [
+        {"nodeId": "graph-A", "label": "A의 그래프", "color": "blue", "visibleBranches": ["x<0", "0≤x<1", "x>1"]},
+        {"nodeId": "boundary-line", "label": "y=m₀x", "color": "orange", "lineStyle": "dashed"},
+        {"nodeId": "tangent-T", "label": "접점 T", "marker": "red filled circle"},
+        {"nodeId": "slope-cases", "label": "기울기별 교점", "rows": ["m<−1: 교점 있음", "m≥m₀: 교점 있음", "−1≤m<m₀: 허용되는 기울기 영역"]}
+      ],
+      "observedNodeData": {
+        "canvas": {"width": 760, "height": 400},
+        "nodes": [
+          {"id": "graph-frame", "kind": "plot-panel", "x": 30, "y": 84, "width": 460, "height": 270},
+          {"id": "x-axis", "kind": "axis", "geometry": "horizontal line y=190 from x=90 to x=470"},
+          {"id": "y-axis", "kind": "axis", "geometry": "vertical line x=280 from y=100 to y=290"},
+          {"id": "graph-A-branch-1", "kind": "polyline", "color": "blue", "points": [[100,165],[130,168],[160,173],[190,181],[220,190],[250,207],[280,240]]},
+          {"id": "graph-A-branch-2", "kind": "polyline", "color": "blue", "points": [[280,240],[310,240],[340,240]]},
+          {"id": "graph-A-branch-3", "kind": "polyline", "color": "blue", "points": [[340,140],[400,140],[460,140]]},
+          {"id": "boundary-line", "kind": "polyline", "color": "orange", "lineStyle": "dashed", "points": [[100,164],[135,169],[160,173],[220,181],[280,190],[340,199],[400,207],[460,216]]},
+          {"id": "tangent-T", "kind": "point", "color": "red", "center": [135,169], "radius": 6},
+          {"id": "included-endpoint", "kind": "point", "color": "blue", "fill": "solid", "center": [280,240], "radius": 7},
+          {"id": "excluded-endpoint-1", "kind": "point", "color": "blue", "fill": "open", "center": [340,240], "radius": 7},
+          {"id": "excluded-endpoint-2", "kind": "point", "color": "blue", "fill": "open", "center": [340,140], "radius": 7},
+          {"id": "slope-panel", "kind": "case-panel", "x": 520, "y": 100, "width": 205, "height": 232, "rows": ["m<−1", "m≥m₀", "−1≤m<m₀"]}
+        ],
+        "geometry": [
+          {"kind": "grid", "verticalX": [100,160,220,280,340,400,460], "horizontalY": [140,190,240,290]},
+          {"kind": "slope-separator", "x1": 542, "y1": 229, "x2": 700, "y2": 229}
+        ]
+      }
+    },
+    {
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|11",
+      "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q11-solution.svg",
+      "artifactExists": true,
+      "artifactSha256": "sha256:8ecc2b6f3bc4bd02d783160bfdf51a79ca4f44c9cf069bd6527dcb0d8e7e18c6",
+      "observedArtifactSha256": "sha256:8ecc2b6f3bc4bd02d783160bfdf51a79ca4f44c9cf069bd6527dcb0d8e7e18c6",
+      "sha256Verified": true,
+      "unit": "집합",
+      "visualType": "CASE_TABLE",
+      "visualRole": "두 원소 조건에서 나온 후보 행을 좌우 표로 비교하고 공통 후보를 강조하는 경우 표",
+      "requiredLabels": [
+        "첫 번째 원소 a",
+        "두 번째 원소 a+2",
+        "후보: {2,3}",
+        "후보: {3,4,5}",
+        "공통 후보 a=3",
+        "a=3이면 A={3,5}, B={3,4,5}이므로 A⊊B가 실제로 성립한다."
+      ],
+      "decisiveStepIds": ["left-candidate-rows", "right-candidate-rows", "candidate-intersection", "subset-check"],
+      "observedLabels": [
+        "A의 두 원소가 B에 들어가는 a 후보의 교집합을 찾는다",
+        "a∈B의 후보와 a+2∈B의 후보를 각각 계산",
+        "첫 번째 원소 a",
+        "a=3a−4 → a=2",
+        "a=2a−2 → a=2",
+        "a=2a−3 → a=3",
+        "후보: {2,3}",
+        "두 번째 원소 a+2",
+        "a+2=3a−4 → a=3",
+        "a+2=2a−2 → a=4",
+        "a+2=2a−3 → a=5",
+        "후보: {3,4,5}",
+        "공통 후보 a=3",
+        "a=3이면 A={3,5}, B={3,4,5}이므로 A⊊B가 실제로 성립한다."
+      ],
+      "caseRows": [
+        {"caseId": "a-in-B", "heading": "첫 번째 원소 a", "rows": ["a=3a−4 → a=2", "a=2a−2 → a=2", "a=2a−3 → a=3"], "candidateSet": "{2,3}"},
+        {"caseId": "a-plus-2-in-B", "heading": "두 번째 원소 a+2", "rows": ["a+2=3a−4 → a=3", "a+2=2a−2 → a=4", "a+2=2a−3 → a=5"], "candidateSet": "{3,4,5}"}
+      ],
+      "observedNodeData": {
+        "canvas": {"width": 760, "height": 430},
+        "nodes": [
+          {"id": "left-table", "kind": "case-panel", "heading": "첫 번째 원소 a", "x": 34, "y": 96, "width": 330, "height": 214},
+          {"id": "right-table", "kind": "case-panel", "heading": "두 번째 원소 a+2", "x": 394, "y": 96, "width": 330, "height": 214},
+          {"id": "left-row-1", "kind": "equation", "text": "a=3a−4 → a=2", "x": 54, "y": 141},
+          {"id": "left-row-2", "kind": "equation", "text": "a=2a−2 → a=2", "x": 54, "y": 176},
+          {"id": "left-row-3", "kind": "equation", "text": "a=2a−3 → a=3", "x": 54, "y": 211},
+          {"id": "left-candidates", "kind": "set-label", "text": "후보: {2,3}", "x": 54, "y": 246},
+          {"id": "right-row-1", "kind": "equation", "text": "a+2=3a−4 → a=3", "x": 414, "y": 141},
+          {"id": "right-row-2", "kind": "equation", "text": "a+2=2a−2 → a=4", "x": 414, "y": 176},
+          {"id": "right-row-3", "kind": "equation", "text": "a+2=2a−3 → a=5", "x": 414, "y": 211},
+          {"id": "right-candidates", "kind": "set-label", "text": "후보: {3,4,5}", "x": 414, "y": 246},
+          {"id": "common-candidate", "kind": "conclusion", "text": "공통 후보 a=3", "x": 380, "y": 326},
+          {"id": "subset-check", "kind": "text", "text": "a=3이면 A={3,5}, B={3,4,5}이므로 A⊊B가 실제로 성립한다.", "x": 38, "y": 374}
+        ],
+        "geometry": [
+          {"kind": "candidate-connector", "x1": 184, "y1": 334, "x2": 576, "y2": 334},
+          {"kind": "panel", "x": 34, "y": 96, "width": 330, "height": 214, "rx": 12},
+          {"kind": "panel", "x": 394, "y": 96, "width": 330, "height": 214, "rx": 12}
+        ]
+      }
+    },
+    {
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q13-solution.svg",
+      "artifactExists": true,
+      "artifactSha256": "sha256:a8a933c5298009b57d74e36d286ee9dc3cc3c5bf8be31c77791bde1398dfd875",
+      "observedArtifactSha256": "sha256:a8a933c5298009b57d74e36d286ee9dc3cc3c5bf8be31c77791bde1398dfd875",
+      "sha256Verified": true,
+      "unit": "집합",
+      "visualType": "PROOF_FLOW",
+      "visualRole": "두 집합식의 분배법칙 변형을 병렬 등식 흐름으로 보이고 마지막에 전체집합을 표시하는 증명 흐름",
+      "requiredLabels": [
+        "(A∪B)∩(Aᶜ∪B)",
+        "(A∩Aᶜ)∪B = B",
+        "(Aᶜ∪Bᶜ)∩(A∪Bᶜ)",
+        "(Aᶜ∩A)∪Bᶜ = Bᶜ",
+        "B∪Bᶜ=U",
+        "최종 결과: U"
+      ],
+      "decisiveStepIds": ["upper-reduction", "lower-reduction", "complement-union", "conclusion"],
+      "observedLabels": [
+        "두 괄호를 먼저 정리하면 B와 Bᶜ가 남는다",
+        "분배법칙: (X∪Z)∩(Y∪Z)=(X∩Y)∪Z",
+        "문항의 실제 식을 두 줄로 변형",
+        "(A∪B)∩(Aᶜ∪B)",
+        "= (A∩Aᶜ)∪B = B",
+        "(Aᶜ∪Bᶜ)∩(A∪Bᶜ)",
+        "= (Aᶜ∩A)∪Bᶜ = Bᶜ",
+        "B∪Bᶜ=U",
+        "최종 결과: U"
+      ],
+      "proofSteps": [
+        {"stepId": "upper-reduction", "label": "(A∪B)∩(Aᶜ∪B) = (A∩Aᶜ)∪B = B", "position": "upper-row"},
+        {"stepId": "lower-reduction", "label": "(Aᶜ∪Bᶜ)∩(A∪Bᶜ) = (Aᶜ∩A)∪Bᶜ = Bᶜ", "position": "lower-row"},
+        {"stepId": "complement-union", "label": "B∪Bᶜ=U", "position": "bottom-left"},
+        {"stepId": "conclusion", "label": "최종 결과: U", "position": "bottom-right"}
+      ],
+      "proofEdges": [
+        {"fromStep": "upper-reduction", "toStep": "complement-union", "relation": "contributes-B"},
+        {"fromStep": "lower-reduction", "toStep": "complement-union", "relation": "contributes-B-complement"},
+        {"fromStep": "complement-union", "toStep": "conclusion", "relation": "="}
+      ],
+      "finalConclusion": "U",
+      "observedNodeData": {
+        "canvas": {"width": 760, "height": 430},
+        "nodes": [
+          {"id": "heading", "kind": "text", "text": "두 괄호를 먼저 정리하면 B와 Bᶜ가 남는다", "x": 28, "y": 38},
+          {"id": "subheading", "kind": "text", "text": "분배법칙: (X∪Z)∩(Y∪Z)=(X∩Y)∪Z", "x": 28, "y": 67},
+          {"id": "route-label", "kind": "text", "text": "문항의 실제 식을 두 줄로 변형", "x": 50, "y": 125},
+          {"id": "upper-input", "kind": "equation", "text": "(A∪B)∩(Aᶜ∪B)", "x": 54, "y": 145},
+          {"id": "upper-output", "kind": "equation", "text": "= (A∩Aᶜ)∪B = B", "x": 350, "y": 145},
+          {"id": "lower-input", "kind": "equation", "text": "(Aᶜ∪Bᶜ)∩(A∪Bᶜ)", "x": 54, "y": 205},
+          {"id": "lower-output", "kind": "equation", "text": "= (Aᶜ∩A)∪Bᶜ = Bᶜ", "x": 350, "y": 205},
+          {"id": "complement-union", "kind": "badge-text", "text": "B∪Bᶜ=U", "x": 184, "y": 290},
+          {"id": "conclusion", "kind": "conclusion", "text": "최종 결과: U", "x": 354, "y": 293}
+        ],
+        "geometry": [
+          {"kind": "panel", "x": 34, "y": 98, "width": 692, "height": 214, "rx": 12},
+          {"kind": "separator", "x1": 54, "y1": 242, "x2": 704, "y2": 242},
+          {"kind": "conclusion-badge", "x": 54, "y": 270, "width": 260, "height": 30, "rx": 15}
+        ]
+      }
+    },
+    {
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q19-solution.svg",
+      "artifactExists": true,
+      "artifactSha256": "sha256:9d2cd7b61cdc4c563b7b17bf19d9b4d1df334b21d74acc8b59d85866120f0913",
+      "observedArtifactSha256": "sha256:9d2cd7b61cdc4c563b7b17bf19d9b4d1df334b21d74acc8b59d85866120f0913",
+      "sha256Verified": true,
+      "unit": "집합",
+      "visualType": "SET_CARDINALITY_VENN",
+      "visualRole": "두 원의 최대·최소 교집합 배치를 영역별 수와 함께 비교하는 기수 Venn 도식",
+      "requiredLabels": [
+        "최대 x=25",
+        "최소 x=7",
+        "A=25",
+        "B=32",
+        "전체 50명",
+        "x≤min(25,32), 25+32−x≤50",
+        "x최대=25",
+        "x최소=25+32−50=7"
+      ],
+      "decisiveStepIds": ["maximum-configuration", "minimum-configuration", "extreme-results"],
+      "observedLabels": [
+        "교집합 x의 상한과 하한을 실제 배치로 달성한다",
+        "x≤min(25,32), 25+32−x≤50",
+        "최대 x=25",
+        "A=25",
+        "B=32",
+        "0",
+        "25",
+        "7",
+        "18",
+        "전체 50명",
+        "최소 x=7",
+        "18",
+        "7",
+        "25",
+        "0",
+        "최소 배치에서는 합집합이 50명이 되도록 x=7",
+        "x최대=25",
+        "x최소=25+32−50=7"
+      ],
+      "cardinalityByRegion": {
+        "maximumConfiguration": {"A-only": 0, "A-intersection-B": 25, "B-only": 7, "outside-both": 18},
+        "minimumConfiguration": {"A-only": 18, "A-intersection-B": 7, "B-only": 25, "outside-both": 0}
+      },
+      "totalCardinality": 50,
+      "extremeConfiguration": {
+        "maximumIntersection": 25,
+        "minimumIntersection": 7
+      },
+      "observedNodeData": {
+        "canvas": {"width": 760, "height": 430},
+        "nodes": [
+          {"id": "maximum-panel", "kind": "venn-panel", "heading": "최대 x=25", "x": 34, "y": 96, "width": 330, "height": 230},
+          {"id": "minimum-panel", "kind": "venn-panel", "heading": "최소 x=7", "x": 388, "y": 96, "width": 330, "height": 230},
+          {"id": "maximum-A", "kind": "circle", "label": "A=25", "center": [146,219], "radius": 67, "color": "blue"},
+          {"id": "maximum-B", "kind": "circle", "label": "B=32", "center": [239,219], "radius": 67, "color": "orange"},
+          {"id": "maximum-regions", "kind": "region-labels", "values": {"A-only": 0, "A-intersection-B": 25, "B-only": 7, "outside-both": 18}},
+          {"id": "minimum-A", "kind": "circle", "label": "A=25", "center": [500,219], "radius": 67, "color": "blue"},
+          {"id": "minimum-B", "kind": "circle", "label": "B=32", "center": [593,219], "radius": 67, "color": "orange"},
+          {"id": "minimum-regions", "kind": "region-labels", "values": {"A-only": 18, "A-intersection-B": 7, "B-only": 25, "outside-both": 0}},
+          {"id": "maximum-conclusion", "kind": "badge-text", "text": "x최대=25", "x": 144, "y": 372},
+          {"id": "minimum-conclusion", "kind": "badge-text", "text": "x최소=25+32−50=7", "x": 382, "y": 372}
+        ],
+        "geometry": [
+          {"kind": "venn-circles", "panel": "maximum-panel", "circles": 2},
+          {"kind": "venn-circles", "panel": "minimum-panel", "circles": 2},
+          {"kind": "conclusion-badge", "x": 34, "y": 352, "width": 220, "height": 30, "rx": 15},
+          {"kind": "conclusion-badge", "x": 272, "y": 352, "width": 220, "height": 30, "rx": 15}
+        ]
+      }
+    }
+  ],
+  "status": "PASS",
+  "observedUidSetSha": "sha256:f81ac139f4d08a78e149142dba6f94a2e5c682bcd57704e7f3f577930feaa0e4"
+}

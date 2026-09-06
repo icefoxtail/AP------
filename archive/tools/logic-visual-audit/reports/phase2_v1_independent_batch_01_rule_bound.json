@@ -1,0 +1,59 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 3,
+  "uniqueUidCount": 3,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "examId": "22_금당고_2학기_기말_고1_기출",
+      "qid": 20,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "visualType": "SET_CASE_PARTITION",
+      "visualRole": "SET_REGION_AND_CASE_COUNTING",
+      "visualMedium": "table",
+      "adjudicationNote": "The source contains a nontrivial two-set region relation involving the universe complement and symmetric difference, an intersection-cardinality constraint, and an exhaustive count split by union size. The decisive visual should expose the two cases for the symmetric-difference size and their item-specific candidate and assignment contributions. SET_CASE_PARTITION is the canonical primary type for that decisive case structure; the typed fact must retain the supporting two-set region and universe semantics.",
+      "sourceOnlyBasis": [
+        "The question is a 10-point constructed-response counting problem, not a direct symbol check.",
+        "The conditions require simultaneous reasoning about A^c∩B^c, (A-B)∪(B-A), n(A∩B), and 3≤n(A∪B)≤4.",
+        "The pilot rule explicitly identifies this UID as a rebuild candidate and requires the final case classification to be visible."
+      ]
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "examId": "22_매산고_2학기_중간_고1_기출",
+      "qid": 17,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "visualType": "SET_CASE_PARTITION",
+      "visualRole": "CANDIDATE_PAIR_ENUMERATION",
+      "visualMedium": "table",
+      "adjudicationNote": "The source asks for a global minimization of the number of distinct values in B_n and then a derived minimum element. The useful visual is an item-specific candidate/pair enumeration at the minimizing parameter, showing the a↔n-a collisions and the resulting distinct-value accounting. SET_CASE_PARTITION is the canonical schema-compatible type because its case rows can carry parameterValue, caseElements, derivedFacts, validity, and count contribution; a generic a and n-a concept card would be insufficient.",
+      "sourceOnlyBasis": [
+        "The problem ranges over all natural n and defines B_n from the finite source set A={1,…,20}.",
+        "The minimum requires explicit comparison of candidate parameter behavior and pair collisions, rather than a one-step set operation.",
+        "The pilot rule explicitly identifies this UID as a rebuild priority and requires the minimizing-parameter pair rows to be shown."
+      ]
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "examId": "22_팔마고_2학기_중간_고1_기출",
+      "qid": 14,
+      "expectedVisualRequirementSignal": "SHOULD_BE_EXEMPT",
+      "visualType": "NONE",
+      "visualRole": "NONE",
+      "visualMedium": "none",
+      "adjudicationNote": "The source is resolved as a direct definition/equivalence check: A♥B is the complement of the symmetric difference, followed by short statement-level evaluation and a simple equal-membership count. A diagram would not materially improve the decisive reasoning; the pilot rule lists direct symbol checks, simple set equality, and short set operations as NO_VISUAL candidates. The exempt rationale is EXEMPT_DIRECT_DEFINITION plus EXEMPT_TEXT_CLEARER_THAN_VISUAL.",
+      "sourceOnlyBasis": [
+        "The operation is defined explicitly in the stem, so the relevant membership relation can be evaluated symbolically.",
+        "The answer choices only select among three statements; no interval, multi-case enumeration, or geometry is present.",
+        "The source contains no problem-image dependency or shared visual material."
+      ],
+      "exemptReasonCodes": [
+        "EXEMPT_DIRECT_DEFINITION",
+        "EXEMPT_TEXT_CLEARER_THAN_VISUAL"
+      ]
+    }
+  ],
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "reviewedUidSetSha": "sha256:35a846c69dd803a5eb5436168f2292344a7e8902cd5922db0b2804c168801eae"
+}

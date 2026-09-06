@@ -1,0 +1,149 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+      "expectedVisualRequirementSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualRole": "SET_INTERVAL_RELATIONS",
+      "visualMedium": "number_line",
+      "expectedLogicalFactSha": "sha256:6f71ead63d95208c53384586f8013b9c19523452eec9d60ae7add20d378b1e19",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+        "unit": "집합",
+        "visualType": "SET_NUMBER_LINE",
+        "visualRole": "SET_INTERVAL_RELATIONS",
+        "requiredLabels": [
+          "A",
+          "B",
+          "C",
+          "A∩B"
+        ],
+        "decisiveStepIds": [
+          "A_INTERVAL",
+          "B_INTERVAL",
+          "C_REAL_LINE",
+          "INTERSECTION_A_B",
+          "UNION_A_B_EQUALS_C",
+          "AB_RESULT"
+        ],
+        "universe": {
+          "label": "R",
+          "setLabel": "C",
+          "definition": "R"
+        },
+        "expectedRegions": [
+          "A=(-∞,2)∪(4,∞)",
+          "B=[-1,4]",
+          "C=R",
+          "A∩B=[-1,2)"
+        ],
+        "boundaryIdentity": {
+          "A": [
+            {
+              "value": 2,
+              "closed": false
+            },
+            {
+              "value": 4,
+              "closed": false
+            }
+          ],
+          "B": [
+            {
+              "value": -1,
+              "closed": true
+            },
+            {
+              "value": 4,
+              "closed": true
+            }
+          ],
+          "A∩B": [
+            {
+              "value": -1,
+              "closed": true
+            },
+            {
+              "value": 2,
+              "closed": false
+            }
+          ]
+        },
+        "intervalComponents": [
+          {
+            "setLabel": "C",
+            "componentId": "C_ALL_REAL",
+            "leftEndpoint": null,
+            "rightEndpoint": null,
+            "leftInfinite": true,
+            "rightInfinite": true,
+            "leftClosed": false,
+            "rightClosed": false
+          },
+          {
+            "setLabel": "A",
+            "componentId": "A_LEFT_RAY",
+            "leftEndpoint": null,
+            "rightEndpoint": 2,
+            "leftInfinite": true,
+            "rightInfinite": false,
+            "leftClosed": false,
+            "rightClosed": false
+          },
+          {
+            "setLabel": "B",
+            "componentId": "B_INTERVAL",
+            "leftEndpoint": -1,
+            "rightEndpoint": 4,
+            "leftInfinite": false,
+            "rightInfinite": false,
+            "leftClosed": true,
+            "rightClosed": true
+          },
+          {
+            "setLabel": "A∩B",
+            "componentId": "A_INTERSECTION_B",
+            "leftEndpoint": -1,
+            "rightEndpoint": 2,
+            "leftInfinite": false,
+            "rightInfinite": false,
+            "leftClosed": true,
+            "rightClosed": false
+          },
+          {
+            "setLabel": "A",
+            "componentId": "A_RIGHT_RAY",
+            "leftEndpoint": 4,
+            "rightEndpoint": null,
+            "leftInfinite": false,
+            "rightInfinite": true,
+            "leftClosed": false,
+            "rightClosed": false
+          }
+        ],
+        "setRelations": {
+          "union": {
+            "left": "A",
+            "right": "B",
+            "equals": "C",
+            "result": "R"
+          },
+          "intersection": {
+            "left": "A",
+            "right": "B",
+            "equals": "[-1,2)"
+          }
+        },
+        "answer": {
+          "expression": "ab",
+          "value": 12
+        },
+        "finalConclusion": "ab=12"
+      }
+    }
+  ],
+  "reviewedUidSetSha": "sha256:f8450f597108e453aa22d7c14f9fda792c03a9f76f5d2a000d9e0b862b228a52"
+}

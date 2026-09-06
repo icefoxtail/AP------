@@ -1,0 +1,46 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_01_REQUIREMENT_ADJUDICATION",
+  "status": "RESOLVED",
+  "reviewerRole": "DESIGNATED_SEMANTIC_ADJUDICATOR",
+  "priorReviewVisibility": "V1_RULE_BOUND_FIRST_PASS_ONLY",
+  "sourceReports": [
+    "reports/phase2_v1_independent_batch_01_rule_bound.json",
+    "phase2 pilot instruction",
+    "Semantic Overlay v1.4"
+  ],
+  "pendingCount": 0,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_CASE_PARTITION",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_CASE_PARTITION",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Source-only fact requires the two displayed admissible cardinality cases and the pilot instruction explicitly requires the case partition visual."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "independentSignal": "SHOULD_BE_REQUIRED",
+      "independentType": "SET_CASE_PARTITION",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_CASE_PARTITION",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Source-only fact requires the collision-pair enumeration that determines the unique minimum; the pilot instruction explicitly requires the question-specific pair visual."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "independentSignal": "SHOULD_BE_EXEMPT",
+      "independentType": "NONE",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "finalVisualType": "SET_REGION_VENN_2",
+      "visualAction": "REBUILD_EXISTING",
+      "status": "RESOLVED",
+      "reason": "Independent source-only first pass marked EXEMPT, but the applicable pilot instruction explicitly names q14 as a REBUILD_EXISTING complement/symmetric-difference target; source content contains U, A♥B, three proposition checks, and the 2^6 count. The designated adjudicator resolves the conflict in favor of the stronger applicable pilot requirement."
+    }
+  ],
+  "reportSha": "sha256:964e4fc3038d6e2392698a7cedefdae054de3912f1a6510783c8fee13af32ee0"
+}

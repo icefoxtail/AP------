@@ -64,9 +64,9 @@ test('adaptive preflight rejects the four previously accepted negative manifests
     const uids = ['u1', 'u2', 'u3']; const inventory = { rows: uids.map(questionUid => ({ questionUid })) }, bytes = Buffer.from(JSON.stringify(inventory));
     const base = { batchId: 'b', batchNo: 1, revision: 1, supersedes: null, isCanonical: true, riskProfile: 'HIGH_RISK', plannedSize: 3, questionUids: uids, visualDecisionPlan: { NO_VISUAL: 0, KEEP_EXISTING: 3, REBUILD_EXISTING: 0, ADD_NEW_VISUAL: 0 }, visualTypes: ['set-cardinality'], factSchemaVersions: ['APMATH_VISUAL_FACT_v2'], appliedRuleRefs: [{ ...fileRef(f.root, 'docs/rules/00_RULES_INDEX.md'), declaredVersion: 'index' }], inventorySha: bytesSha(bytes) };
     base.manifestSha = objectSha(base);
-    const registry = [{ recordId: 'unrelated', batchId: 'old', revision: 1, isCanonical: true, questionUids: ['unrelated'], inputSha: objectSha('old') }];
+    const registry = [{ recordId: 'unrelated', batchId: 'old', revision: 1, supersedes: null, isCanonical: true, questionUids: ['unrelated'], inputSha: objectSha('old') }];
     assert.equal(validateBatchManifest(f.root, base, inventory, bytes, registry).status, 'PASS');
-    assert.equal(validateBatchManifest(f.root, base, inventory, bytes, []).status, 'PASS');
+    assert.equal(validateBatchManifest(f.root, base, inventory, bytes, []).status, 'FAIL');
     assert.equal(validateBatchManifest(f.root, base, inventory, bytes).status, 'FAIL');
     for (const change of [m => { m.inventorySha = `sha256:${'0'.repeat(64)}`; }, m => { m.revision = 2; }, m => { m.manifestSha = null; }, m => { m.questionUids = []; m.plannedSize = 0; m.visualDecisionPlan.KEEP_EXISTING = 0; m.sizeException = { status: 'APPROVED' }; }]) { const m = structuredClone(base); change(m); assert.equal(validateBatchManifest(f.root, m, inventory, bytes, registry).status, 'FAIL'); }
     assert.equal(validateBatchManifest(f.root, base, inventory, bytes, [{ ...registry[0], questionUids: ['u1'] }]).status, 'FAIL');

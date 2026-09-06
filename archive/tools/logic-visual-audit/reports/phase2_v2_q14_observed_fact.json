@@ -1,0 +1,88 @@
+{
+  "reportType": "PHASE2_V2_ARTIFACT_ONLY_OBSERVED_VISUAL_FACT",
+  "reportVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "inputBundle": {
+    "path": "C:\\Users\\USER\\Desktop\\AP------\\archive\\tools\\logic-visual-audit\\reports\\phase2_v2_artifact_only_batch_01.json",
+    "bundleSha": "sha256:dcb27542bcaf8d6f665bb501e8c20b0f2cb7906b24d7169bc7119d361fd6955d"
+  },
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14"
+  ],
+  "observedUidSetCanonicalization": {
+    "encoding": "UTF-8",
+    "unicode": "NFC",
+    "collection": "sorted unique JSON array",
+    "shaAlgorithm": "SHA-256"
+  },
+  "observedUidSetSha": "sha256:f57f2b904efedf046f06cbf3d785ba214932a7278c12dd14cb10ffd3a79f7731",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "artifactPath": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+      "artifactAbsolutePath": "C:\\Users\\USER\\Desktop\\AP------\\archive\\assets\\images\\22_팔마고_2학기_중간_고1_기출\\q14-solution.svg",
+      "artifactShaVerification": {
+        "algorithm": "SHA-256",
+        "expectedSha256": "sha256:6d545c7217bdcad69ebf45dfab63226b4d032eb7d4157f42500ec23064108476",
+        "observedSha256": "sha256:6d545c7217bdcad69ebf45dfab63226b4d032eb7d4157f42500ec23064108476",
+        "verified": true
+      },
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "two-set Venn region diagram inside an explicitly shown universe boundary",
+        "universeRequired": true,
+        "universe": {
+          "label": "U",
+          "boundaryGeometry": "dashed rectangular boundary",
+          "visible": true,
+          "evidence": "Visible label U is placed at the upper-left inside the dashed rectangular universe boundary."
+        },
+        "requiredLabels": [
+          "U",
+          "A만",
+          "A∩B",
+          "B만",
+          "U 내부의 둘 다 아님"
+        ],
+        "decisiveStepIds": [
+          "ㄱ",
+          "ㄴ",
+          "ㄷ"
+        ],
+        "expectedRegions": [
+          "A만",
+          "A∩B",
+          "B만",
+          "U 내부의 둘 다 아님"
+        ],
+        "boundaryIdentity": {
+          "explicit": true,
+          "boundaryLabels": [
+            {
+              "boundary": "A",
+              "visibleLabelEvidence": "A만"
+            },
+            {
+              "boundary": "B",
+              "visibleLabelEvidence": "B만"
+            }
+          ],
+          "intersectionLabel": "A∩B",
+          "evidence": "The visible left-only, right-only, and overlap labels identify the two overlapping circular boundaries as A and B."
+        },
+        "insufficiency": {
+          "status": "NON_BLOCKING",
+          "items": [
+            "No element-level membership assignments are visibly placed inside the four regions; the visible universe listing is not assigned to individual regions.",
+            "Standalone A and B labels adjacent to the circle outlines are not visible; A/B identity is established by the visible compound region labels A만, B만, and A∩B."
+          ]
+        }
+      }
+    }
+  ]
+}

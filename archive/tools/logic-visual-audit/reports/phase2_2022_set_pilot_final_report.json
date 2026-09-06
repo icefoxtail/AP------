@@ -1,0 +1,514 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_2022_SET_PILOT_FINAL",
+  "visualPilotStatus": "PASS — 2022 SET VISUAL PILOT READY",
+  "overallStatus": "FAIL — 검수 인프라 또는 evidence 결함 존재",
+  "productionAuthority": false,
+  "globalPhase1Status": "INFRASTRUCTURE_READY_V3_FAIL_NOT_ADOPTED",
+  "inventory": {
+    "status": "PASS_EXACT_50",
+    "count": 50,
+    "questionUidSetSha": "ade29acc874989a485296179beebf93a818010966fcf3d9648f22ded7c08451e",
+    "countsByStage": {
+      "2final": 10,
+      "2mid": 40
+    }
+  },
+  "canonicalBatchRegistry": {
+    "status": "PASS_CANONICAL_REGISTRY_WITH_LEGACY_RECONCILIATION",
+    "registrySha": "sha256:4c87cf789047508d8e2ecef11ea7874ab10ac465581e577132beabf5093d6526",
+    "canonicalQuestionCount": 50,
+    "rawConflictCount": 2,
+    "legacyCanonicalOverlapCount": 8,
+    "selectionRule": "Within a batch prefer explicit final adjudication; across selected legacy batches prefer the higher batch number. Future manifests must use revision/supersedes instead."
+  },
+  "infrastructureHardening": {
+    "status": "PARTIAL_LEGACY_MIGRATION_REQUIRED_BEFORE_LARGER_BATCH",
+    "nextBatchGate": "BLOCKED_UNTIL_WARNINGS_ADJUDICATED",
+    "reportSha": "sha256:520d182795da0503c1d1dfe6c012ebd754122da2c914cb83cdc34830a0dbce04"
+  },
+  "failClosedPipeline": {
+    "status": "FAIL_FAIL_CLOSED_GATE",
+    "failureCount": 13,
+    "reportSha": "sha256:21f763bb3d6c454cefe2ad59625855209ddfae26f3093287cd7d42bc77b00f5e"
+  },
+  "denominatorClosure": {
+    "status": "FROZEN",
+    "stale": false,
+    "requiredCount": 29,
+    "inputSha": "sha256:558dff6421651bf0414da43d0465df0973dff9bdbcf8920b69143768645be1ea"
+  },
+  "coverage": {
+    "adjudication": "50/50",
+    "sourceShaFresh": "50/50",
+    "requiredVisualStaticGate": "29/29",
+    "noVisualGate": "21/21",
+    "renderRequired": "29/29",
+    "noRenderExempt": "21/21",
+    "pilotDecisionCoverage": "50/50"
+  },
+  "typedSemanticParity": {
+    "status": "PASS_TYPED_SEMANTIC_PARITY_ACROSS_BATCH_FINALS",
+    "requiredCount": 29,
+    "evidence": "Batch-01..10 final reports plus Batch-11 typed semantic parity; global Phase 1 evidence remains preserved."
+  },
+  "visualDecisionCounts": {
+    "NO_VISUAL": 21,
+    "KEEP_EXISTING": 11,
+    "REBUILD_EXISTING": 15,
+    "ADD_NEW_VISUAL": 3
+  },
+  "changedOrAdjudicated": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_01_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_01_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_01_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_02_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_02_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_02_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_03_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_03_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_03_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|21",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_04_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|4",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_04_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_04_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_04_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|20",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_04_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_05_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_05_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|11",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "REMOVE_INVALID_VISUAL",
+      "adjudicationFile": "phase2_batch_05_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_05_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "REBUILD_EXISTING",
+      "visualAction": "REBUILD_EXISTING",
+      "adjudicationFile": "phase2_batch_05_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_07_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_07_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_07_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "ADD_NEW_VISUAL",
+      "visualAction": "ADD",
+      "adjudicationFile": "phase2_batch_07_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_06_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "ADD_NEW_VISUAL",
+      "visualAction": "ADD",
+      "adjudicationFile": "phase2_batch_07_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js|22_팔마고_2학기_기말_고1_기출|17",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_09_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "ADD_NEW_VISUAL",
+      "visualAction": "ADD",
+      "adjudicationFile": "phase2_batch_08_final_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|7",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_09_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|2",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_09_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|3",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_09_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|7",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_09_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|1",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_10_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|1",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_10_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|14",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_10_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|17",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_10_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|5",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_10_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|8",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9",
+      "finalVisualRequirement": "KEEP_EXISTING",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|1",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|3",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|15",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20",
+      "finalVisualRequirement": "KEEP_EXISTING",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|7",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|9",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|1",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18",
+      "finalVisualRequirement": "KEEP_EXISTING",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+      "finalVisualRequirement": "KEEP_EXISTING",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+      "finalVisualRequirement": "KEEP_EXISTING",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+      "finalVisualRequirement": "KEEP_EXISTING",
+      "visualDecision": "KEEP_EXISTING",
+      "visualAction": "KEEP_EXISTING",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|18",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualDecision": "NO_VISUAL",
+      "visualAction": "NONE",
+      "adjudicationFile": "phase2_batch_11_requirement_adjudication.json"
+    }
+  ],
+  "exactAssetDuplicateGroups": [],
+  "renderEvidence": {
+    "uniqueRenderedUidCount": 29,
+    "requiredUidCount": 29,
+    "requiredNotRendered": [],
+    "renderOnlyExempt": [],
+    "browserStatus": "PASS_LOCALHOST_BROWSER_OBSERVED"
+  },
+  "defects": {
+    "P0": 2,
+    "P1": 0,
+    "P2": 0,
+    "details": [
+      {
+        "issue": "evidenceContract",
+        "status": "WARN_LEGACY_EVIDENCE_CONTRACT_REVIEW_REQUIRED",
+        "warnings": [
+          {
+            "code": "LEGACY_PROVENANCE_NOT_FRESH_BLIND",
+            "count": 6
+          },
+          {
+            "code": "RENDER_VIEWPORT_MATRIX_INCOMPLETE",
+            "required": [
+              "desktop",
+              "mobile"
+            ]
+          },
+          {
+            "code": "MATH_VERIFICATION_EXTERNAL_INDEPENDENCE_PENDING",
+            "count": 6,
+            "requiredStatus": "INDEPENDENTLY_VERIFIED"
+          }
+        ]
+      },
+      {
+        "issue": "failClosedGate",
+        "status": "FAIL_FAIL_CLOSED_GATE",
+        "failureCount": 13
+      }
+    ]
+  },
+  "batchReports": [
+    {
+      "batch": "01",
+      "requirementReport": "phase2_batch_01_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "02",
+      "requirementReport": "phase2_batch_02_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "03",
+      "requirementReport": "phase2_batch_03_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "04",
+      "requirementReport": "phase2_batch_04_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "05",
+      "requirementReport": "phase2_batch_05_final_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "06",
+      "requirementReport": "phase2_batch_06_final_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "07",
+      "requirementReport": "phase2_batch_07_final_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "08",
+      "requirementReport": "phase2_batch_08_final_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "09",
+      "requirementReport": "phase2_batch_09_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "10",
+      "requirementReport": "phase2_batch_10_requirement_adjudication.json",
+      "overallStatus": null
+    },
+    {
+      "batch": "11",
+      "requirementReport": "phase2_batch_11_requirement_adjudication.json",
+      "overallStatus": "BATCH_11_C_AND_QUALIFICATION_RENDER_PASS_D_SEPARATE"
+    }
+  ],
+  "note": "파일럿 분모는 최신 JS inventory로 50(2mid 40 + 2final 10)으로 확정했다. visualPilotStatus와 전체 pipeline overallStatus를 분리한다. fail-closed evidence gate가 열리기 전에는 production/next-batch PASS를 선언하지 않는다.",
+  "reportSha": "sha256:840f8a00923f1d3ea6245aa32b3a0343fe282af924465df8d7f42167396911ed"
+}

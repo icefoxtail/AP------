@@ -1,0 +1,939 @@
+{
+  "reviewerRole": "V3_PARITY",
+  "priorReviewVisibility": "V1_V2_FROZEN_ONLY",
+  "comparedCount": 103,
+  "passCount": 18,
+  "blockedCount": 15,
+  "failCount": 70,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js|21_강남여고_2학기_기말_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_INCLUSION_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_INCLUSION_VENN matches observed SET_INCLUSION_VENN; recorded labels=11 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js|21_팔마고_2학기_기말_고1_기출|19",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=12, node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":3}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "PROOF_FLOW",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed PROOF_FLOW; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_GRAPH_DEFINED",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_GRAPH_DEFINED conflicts with observed SET_REGION_VENN_3; recorded labels=22 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":14,\"path\":4,\"polyline\":0,\"polygon\":0,\"text\":22,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_GRAPH_DEFINED",
+      "observedVisualType": "SET_GRAPH_DEFINED",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_GRAPH_DEFINED matches observed SET_GRAPH_DEFINED; recorded labels=21 and node counts={\"svg\":1,\"rect\":3,\"circle\":1,\"ellipse\":0,\"line\":17,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":21,\"g\":1} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE conflicts with observed CASE_TABLE; recorded labels=24 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":2,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":24,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|2",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|5",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|9",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":4,\"ellipse\":0,\"line\":4,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "PROOF_FLOW",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE conflicts with observed PROOF_FLOW; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|14",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|17",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE conflicts with observed SET_REGION_VENN_3; recorded labels=8 and node counts={\"svg\":1,\"rect\":6,\"circle\":6,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|23",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|2",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|3",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_INCLUSION_VENN; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":3,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=14 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|11",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|15",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":6,\"ellipse\":0,\"line\":6,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|2",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|8",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|14",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=14 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|16",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|5",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|6",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|12",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":4,\"ellipse\":0,\"line\":4,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_REGION_VENN_2; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":3,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|21",
+      "expectedSignal": "SOURCE_BLOCKED",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_EXPECTED_FACTS",
+      "parityStatus": "BLOCKED",
+      "rationale": "V1 expected signal is SOURCE_BLOCKED; the typed expected facts are insufficient. V2 is UNKNOWN with no recorded labels or node counts, so parity is blocked without source/solution inference."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|3",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|4",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|11",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=7, node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|19",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=9, node counts={\"svg\":1,\"rect\":6,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|4",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|5",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=8 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|6",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_REGION_VENN_2",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_2 conflicts with observed CASE_TABLE; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|7",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_INCLUSION_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_INCLUSION_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|8",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|10",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "TRUTH_SET_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"RASTER_MANUAL_REQUIRED\", labels=0, node counts={}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|20",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|1",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|2",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|3",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=6, node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=8, node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|15",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":3,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|16",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|19",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=10, node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|2",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|6",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_REGION_VENN_3; recorded labels=8 and node counts={\"svg\":1,\"rect\":6,\"circle\":6,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|11",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=6, node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|16",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE matches observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|17",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=5 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":5,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|20",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE matches observed SET_FORCE_FORBID_FREE; recorded labels=12 and node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_NUMBER_LINE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=14 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":23,\"path\":4,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=13, node counts={\"svg\":1,\"rect\":6,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":13,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE matches observed SET_FORCE_FORBID_FREE; recorded labels=11 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SOURCE_BLOCKED",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_EXPECTED_FACTS",
+      "parityStatus": "BLOCKED",
+      "rationale": "V1 expected signal is SOURCE_BLOCKED; the typed expected facts are insufficient. V2 is UNKNOWN with no recorded labels or node counts, so parity is blocked without source/solution inference."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=12 and node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=37 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":37,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=14 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_REGION_VENN_3",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_3 matches observed SET_REGION_VENN_3; recorded labels=10 and node counts={\"svg\":1,\"rect\":6,\"circle\":6,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":2} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=20 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":20,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|17",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_NUMBER_LINE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":16,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|21",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=28 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":5,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":28,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|4",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=13 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":13,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_FORCE_FORBID_FREE",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE matches observed SET_FORCE_FORBID_FREE; recorded labels=12 and node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|11",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_INCLUSION_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=8, node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_REGION_VENN_2",
+      "observedVisualType": "PROOF_FLOW",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_REGION_VENN_2 conflicts with observed PROOF_FLOW; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=21 and node counts={\"svg\":1,\"rect\":5,\"circle\":4,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":21,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=8, node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|3",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "IMPLICATION_FLOW",
+      "observedVisualType": "TRUTH_SET_NUMBER_LINE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/IMPLICATION_FLOW conflicts with observed TRUTH_SET_NUMBER_LINE; recorded labels=8 and node counts={\"svg\":1,\"rect\":1,\"circle\":3,\"ellipse\":0,\"line\":5,\"path\":0,\"polyline\":0,\"polygon\":1,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=21 and node counts={\"svg\":1,\"rect\":5,\"circle\":4,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":21,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_CARDINALITY_VENN; recorded labels=12 and node counts={\"svg\":1,\"rect\":4,\"circle\":2,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":9,\"ellipse\":0,\"line\":15,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":2} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|20",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_FORCE_FORBID_FREE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=13 and node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":13,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=21 and node counts={\"svg\":1,\"rect\":5,\"circle\":4,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":21,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=8 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "CASE_TABLE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=20 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":20,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|14",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "PROOF_FLOW",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_OBSERVATION",
+      "parityStatus": "BLOCKED",
+      "rationale": "V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"RASTER_MANUAL_REQUIRED\", labels=0, node counts={}); semantic parity cannot be established."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|15",
+      "expectedSignal": "SOURCE_BLOCKED",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "UNKNOWN",
+      "semanticProjectionStatus": "INSUFFICIENT_EXPECTED_FACTS",
+      "parityStatus": "BLOCKED",
+      "rationale": "V1 expected signal is SOURCE_BLOCKED; the typed expected facts are insufficient. V2 is UNKNOWN with no recorded labels or node counts, so parity is blocked without source/solution inference."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_강남여고_2학기_중간_고1_기출.js|23_강남여고_2학기_중간_고1_기출|2",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_강남여고_2학기_중간_고1_기출.js|23_강남여고_2학기_중간_고1_기출|4",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=12 and node counts={\"svg\":1,\"rect\":6,\"circle\":6,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":2} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_금당고_2학기_중간_고1_기출.js|23_금당고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=13 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":13,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js|23_매산여고_2학기_중간_고1_기출|4",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_REGION_VENN_3",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_3 conflicts with observed SET_CARDINALITY_VENN; recorded labels=11 and node counts={\"svg\":1,\"rect\":8,\"circle\":7,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":5} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js|23_매산여고_2학기_중간_고1_기출|5",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js|23_순천여고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_NUMBER_LINE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":17,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js|23_순천여고_2학기_중간_고1_기출|21",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=16 and node counts={\"svg\":1,\"rect\":6,\"circle\":2,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":16,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js|23_팔마고_2학기_중간_고1_기출|9",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_NUMBER_LINE",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=10 and node counts={\"svg\":1,\"rect\":4,\"circle\":4,\"ellipse\":0,\"line\":2,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js|23_팔마고_2학기_중간_고1_기출|11",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js|24_금당고_2학기_중간_고1_기출|3",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_INCLUSION_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_INCLUSION_VENN matches observed SET_INCLUSION_VENN; recorded labels=9 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js|24_금당고_2학기_중간_고1_기출|11",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js|24_제일고_2학기_중간_고1_기출|4",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=10 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":1,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js|24_제일고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_CARDINALITY_VENN; recorded labels=12 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js|25_순천고_2학기_중간_고1_기출|11",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_REGION_VENN_2",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_2 conflicts with observed SET_REGION_VENN_3; recorded labels=11 and node counts={\"svg\":1,\"rect\":4,\"circle\":7,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":3} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js|25_순천고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_3",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":3,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|25_제일고_2학기_중간_고1_기출|6",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "semanticProjectionStatus": "SUFFICIENT",
+      "parityStatus": "PASS",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN matches observed SET_CARDINALITY_VENN; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":0} provide sufficient typed SVG evidence for this projection family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|25_효천고_2학기_중간_고1_기출|10",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_INCLUSION_VENN",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|25_효천고_2학기_중간_고1_기출|20",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "semanticProjectionStatus": "SUFFICIENT_MISMATCH",
+      "parityStatus": "FAIL",
+      "rationale": "Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=12 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution."
+    }
+  ],
+  "expectedObservedUidIntersectionSha": "sha256:588fe0fd377369a242cf96b51e49036dc51849c414241bd53eda205f9b003549",
+  "status": "FAIL"
+}

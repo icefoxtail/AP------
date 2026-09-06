@@ -1,0 +1,207 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "reviewedUidSetSha": "sha256:0d614b689968c69927c691deb76ea185df376c0c56d43b4c9ec1872aa4f270a5",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+      "examId": "22_강남여고_2학기_중간_고1_기출",
+      "qid": 10,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "forced_forbidden_free_partition",
+      "requiredLabels": [
+        "forced",
+        "forbidden",
+        "free",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "2^5=32"
+      ],
+      "decisiveStepIds": [
+        "PARTITION_FORCED_FORBIDDEN_FREE",
+        "COUNT_FREE_ELEMENTS",
+        "COUNT_SUBSETS"
+      ],
+      "universe": {
+        "label": "U",
+        "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      },
+      "expectedRegions": ["forced", "forbidden", "free"],
+      "boundaryIdentity": null,
+      "forcedElements": [1, 3, 4, 8],
+      "forbiddenElements": [6],
+      "freeElements": [2, 5, 7, 9, 10],
+      "freeCount": 5,
+      "countingResult": 32
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+      "examId": "22_매산고_2학기_중간_고1_기출",
+      "qid": 19,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_CARDINALITY_VENN",
+      "visualRole": "cardinality_venn_extreme_configuration",
+      "requiredLabels": [
+        "A-only",
+        "A∩B",
+        "B-only",
+        "outside",
+        "U=200",
+        "A∪B=140",
+        "t=0",
+        "t=110",
+        "A-only max=85",
+        "A-only min=30",
+        "result=115"
+      ],
+      "decisiveStepIds": [
+        "UNION_AND_OUTSIDE_CARDINALITY",
+        "INTERSECTION_EXTREME_RANGE",
+        "A_ONLY_EXTREME_SUM"
+      ],
+      "universe": {
+        "label": "U",
+        "cardinality": 200
+      },
+      "expectedRegions": ["A-only", "A∩B", "B-only", "outside"],
+      "boundaryIdentity": null,
+      "cardinalityByRegion": {
+        "aOnly": {"min": 30, "max": 85},
+        "intersection": {"min": 0, "max": 110},
+        "bOnly": {"min": 0, "max": 55},
+        "outside": 60
+      },
+      "unionCardinality": 140,
+      "intersectionCardinality": {"min": 0, "max": 110},
+      "outsideCardinality": 60,
+      "totalCardinality": 200,
+      "extremeConfiguration": [
+        {
+          "caseId": "A_ONLY_MAX",
+          "aOnly": 85,
+          "intersection": 0,
+          "bOnly": 55,
+          "union": 140,
+          "outside": 60
+        },
+        {
+          "caseId": "A_ONLY_MIN",
+          "aOnly": 30,
+          "intersection": 110,
+          "bOnly": 0,
+          "union": 140,
+          "outside": 60
+        }
+      ],
+      "countingResult": 115
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+      "examId": "22_복성고_2학기_중간_고1_기출",
+      "qid": 15,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_CASE_PARTITION",
+      "visualRole": "candidate_case_partition_and_elimination",
+      "requiredLabels": [
+        "a=-3",
+        "a=3",
+        "a=4",
+        "A△B={-6,-5}",
+        "A△B={0,1}",
+        "A△B={1,9}",
+        "valid",
+        "invalid",
+        "b=5",
+        "a+b=8"
+      ],
+      "decisiveStepIds": [
+        "ENUMERATE_CANDIDATE_A",
+        "COMPUTE_SYMMETRIC_DIFFERENCE",
+        "RETAIN_VALID_CASE",
+        "COMPUTE_B_AND_A_PLUS_B"
+      ],
+      "universe": null,
+      "expectedRegions": [],
+      "boundaryIdentity": null,
+      "caseRows": [
+        {
+          "caseId": "a=-3",
+          "caseCondition": "a=-3",
+          "parameterValue": -3,
+          "caseElements": {
+            "A": [-5, 2, 3],
+            "B": [-6, 2, 3],
+            "symmetricDifference": [-6, -5]
+          },
+          "derivedFacts": [
+            {"factId": "A", "value": [-5, 2, 3]},
+            {"factId": "B", "value": [-6, 2, 3]},
+            {"factId": "A△B", "value": [-6, -5]},
+            {"factId": "targetA△B", "value": [0, 1]}
+          ],
+          "validity": "INVALID",
+          "countContribution": 0,
+          "eliminationReasonId": "SYMMETRIC_DIFFERENCE_NOT_EQUAL_TARGET"
+        },
+        {
+          "caseId": "a=3",
+          "caseCondition": "a=3",
+          "parameterValue": 3,
+          "caseElements": {
+            "A": [1, 2, 3],
+            "B": [0, 2, 3],
+            "symmetricDifference": [0, 1]
+          },
+          "derivedFacts": [
+            {"factId": "A", "value": [1, 2, 3]},
+            {"factId": "B", "value": [0, 2, 3]},
+            {"factId": "A△B", "value": [0, 1]},
+            {"factId": "targetA△B", "value": [0, 1]},
+            {"factId": "b", "value": 5},
+            {"factId": "a+b", "value": 8}
+          ],
+          "validity": "VALID",
+          "countContribution": 1,
+          "eliminationReasonId": null
+        },
+        {
+          "caseId": "a=4",
+          "caseCondition": "a=4",
+          "parameterValue": 4,
+          "caseElements": {
+            "A": [2, 3, 9],
+            "B": [1, 2, 3],
+            "symmetricDifference": [1, 9]
+          },
+          "derivedFacts": [
+            {"factId": "A", "value": [2, 3, 9]},
+            {"factId": "B", "value": [1, 2, 3]},
+            {"factId": "A△B", "value": [1, 9]},
+            {"factId": "targetA△B", "value": [0, 1]}
+          ],
+          "validity": "INVALID",
+          "countContribution": 0,
+          "eliminationReasonId": "SYMMETRIC_DIFFERENCE_NOT_EQUAL_TARGET"
+        }
+      ],
+      "countingResult": 8,
+      "finalConclusion": "a=3, b=5, a+b=8"
+    }
+  ]
+}

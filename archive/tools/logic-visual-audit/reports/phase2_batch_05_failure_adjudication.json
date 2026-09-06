@@ -1,0 +1,54 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_05_FAILURE_ADJUDICATION",
+  "status": "ADJUDICATION_REQUIRED",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_REGION_VENN_3",
+      "observedVisualType": "PROOF_FLOW",
+      "status": "FAIL_ADJUDICATION_REQUIRED",
+      "action": "REBUILD_ARTIFACT_UNDER_CANONICAL_VISUAL_TYPE",
+      "reason": "V1 expected SET_REGION_VENN_3 conflicts with V2 observed PROOF_FLOW."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_GRAPH_DEFINED",
+      "observedVisualType": "SET_GRAPH_DEFINED",
+      "status": "TYPED_PARITY_CANDIDATE",
+      "action": "BUILD_FULL_TYPED_FACTS",
+      "reason": "V1/V2 canonical visual family matches but full typed facts are not frozen."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|11",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "CASE_TABLE",
+      "status": "FAIL_ADJUDICATION_REQUIRED",
+      "action": "REMOVE_INVALID_LINKAGE_OR_RECLASSIFY_REQUIREMENT",
+      "reason": "Source-only visual exemption conflicts with an attached artifact and observed visual family."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_REGION_VENN_2",
+      "observedVisualType": "PROOF_FLOW",
+      "status": "FAIL_ADJUDICATION_REQUIRED",
+      "action": "REBUILD_ARTIFACT_UNDER_CANONICAL_VISUAL_TYPE",
+      "reason": "V1 expected SET_REGION_VENN_2 conflicts with V2 observed PROOF_FLOW."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "observedVisualType": "SET_CARDINALITY_VENN",
+      "status": "TYPED_PARITY_CANDIDATE",
+      "action": "BUILD_FULL_TYPED_FACTS",
+      "reason": "V1/V2 canonical visual family matches but full typed facts are not frozen."
+    }
+  ],
+  "productionMutationAuthorized": false,
+  "reportSha": "sha256:61d9564580a6bcd1d44229babb4d977b9ba1b2bc259f46eccb92708a5494ca9a"
+}

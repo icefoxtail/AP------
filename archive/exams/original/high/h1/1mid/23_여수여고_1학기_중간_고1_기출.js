@@ -380,7 +380,7 @@ window.questionBank = [
       "$4\\sqrt{6}$",
       "$4\\sqrt{6}$"
     ],
-    "answer": "⑤",
+    "answer": "④",
     "tags": [
       "객관식",
       "제곱근",
@@ -390,7 +390,7 @@ window.questionBank = [
       "계산",
       "개념"
     ],
-    "solution": "[키포인트]\n음수의 제곱근 성질($\\sqrt{-a} = \\sqrt{a}i, a \\gt 0$)을 이용하여 복소수의 사칙연산을 정확히 계산한다.\n\n조건 정리\n- $\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$\n\n풀이 과정\n1. 각 항을 허수단위 $i$를 사용하여 정리한다.\n첫 번째 항: $\\sqrt{-2}\\sqrt{-3} = (\\sqrt{2}i)(\\sqrt{3}i) = \\sqrt{6}i^2 = -\\sqrt{6}$\n두 번째 항: $\\frac{\\sqrt{18}}{\\sqrt{-2}} = \\frac{3\\sqrt{2}}{\\sqrt{2}i} = \\frac{3}{i} = -3i$\n세 번째 항: $\\frac{\\sqrt{-8}}{\\sqrt{-12}} = \\frac{2\\sqrt{2}i}{2\\sqrt{3}i} = \\frac{\\sqrt{2}}{\\sqrt{3}} = \\frac{\\sqrt{6}}{3}$\n2. 전체 식을 다시 적어 계산한다.\n$-\\sqrt{6} - 3i - \\frac{\\sqrt{6}}{3} = \\left(-\\sqrt{6} - \\frac{\\sqrt{6}}{3}\\right) - 3i = -\\frac{4\\sqrt{6}}{3} - 3i$\n3. 실수부분 $a = -\\frac{4\\sqrt{6}}{3}$, 허수부분 $b = -3$이다.\n4. $ab = \\left(-\\frac{4\\sqrt{6}}{3}\\right) \\times (-3) = 4\\sqrt{6}$\n\n결론\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트]\n음수의 제곱근 성질($\\sqrt{-a} = \\sqrt{a}i, a \\gt 0$)을 이용하여 복소수의 사칙연산을 정확히 계산한다.\n\n조건 정리\n- $\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$\n\n풀이 과정\n1. 각 항을 허수단위 $i$를 사용하여 정리한다.\n첫 번째 항: $\\sqrt{-2}\\sqrt{-3} = (\\sqrt{2}i)(\\sqrt{3}i) = \\sqrt{6}i^2 = -\\sqrt{6}$\n두 번째 항: $\\frac{\\sqrt{18}}{\\sqrt{-2}} = \\frac{3\\sqrt{2}}{\\sqrt{2}i} = \\frac{3}{i} = -3i$\n세 번째 항: $\\frac{\\sqrt{-8}}{\\sqrt{-12}} = \\frac{2\\sqrt{2}i}{2\\sqrt{3}i} = \\frac{\\sqrt{2}}{\\sqrt{3}} = \\frac{\\sqrt{6}}{3}$\n2. 전체 식을 다시 적어 계산한다.\n$-\\sqrt{6} - 3i - \\frac{\\sqrt{6}}{3} = \\left(-\\sqrt{6} - \\frac{\\sqrt{6}}{3}\\right) - 3i = -\\frac{4\\sqrt{6}}{3} - 3i$\n3. 실수부분 $a = -\\frac{4\\sqrt{6}}{3}$, 허수부분 $b = -3$이다.\n4. $ab = \\left(-\\frac{4\\sqrt{6}}{3}\\right) \\times (-3) = 4\\sqrt{6}$\n\n결론\n정답표는 ④를 가리키지만 ④와 ⑤의 선택지 값이 모두 $4\\sqrt{6}$으로 중복된다. 따라서 계산값은 $4\\sqrt{6}$이고 원문 선택지 결함으로 정답 식별은 여전히 source hold다.",
     "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "candidate_evidence",

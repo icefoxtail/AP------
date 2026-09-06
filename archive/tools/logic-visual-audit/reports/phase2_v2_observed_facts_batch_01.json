@@ -1,0 +1,169 @@
+{
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "Visible two-case partition by |S| with candidate rows and per-case count summaries.",
+        "requiredLabels": [
+          "c+5ΣS=55를 만족하는 S의 크기를 나누어 센다",
+          "c는 공통 원소, S=(A−B)∪(B−A)인 대칭차집합",
+          "|S|=2",
+          "후보 8개",
+          "8×2²=8×4=32",
+          "|S|=3",
+          "후보 5개",
+          "5×2³=5×8=40",
+          "|S|=2: 32",
+          "|S|=3: 40",
+          "32+40=72"
+        ],
+        "decisiveStepIds": [],
+        "universe": null,
+        "expectedRegions": [],
+        "boundaryIdentity": null,
+        "caseRows": [
+          {
+            "visibleCaseLabel": "|S|=2",
+            "visibleCandidateLabel": "후보 8개",
+            "visibleRows": [
+              { "visibleText": "(5,{1,9})" },
+              { "visibleText": "(5,{2,8})" },
+              { "visibleText": "(5,{3,7})" },
+              { "visibleText": "(5,{4,6})" },
+              { "visibleText": "(10,{1,8})" },
+              { "visibleText": "(10,{2,7})" },
+              { "visibleText": "(10,{3,6})" },
+              { "visibleText": "(10,{4,5})" }
+            ],
+            "visibleCountExpression": "8×2²=8×4=32"
+          },
+          {
+            "visibleCaseLabel": "|S|=3",
+            "visibleCandidateLabel": "후보 5개",
+            "visibleRows": [
+              { "visibleText": "(5,{1,2,7})" },
+              { "visibleText": "(5,{1,3,6})" },
+              { "visibleText": "(10,{1,2,6})" },
+              { "visibleText": "(10,{1,3,5})" },
+              { "visibleText": "(10,{2,3,4})" }
+            ],
+            "visibleCountExpression": "5×2³=5×8=40"
+          }
+        ],
+        "countingResult": "32+40=72",
+        "visibleDrawingStructure": [
+          "Two side-by-side rounded rectangular case panels are visible.",
+          "Each panel visibly contains a case heading, a candidate-count label, candidate rows, a horizontal divider, and a count expression.",
+          "Two rounded bottom badges and one final total text are visible."
+        ],
+        "observationInsufficiency": []
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "Visible case rows partition the displayed input pairs and show each arrow-linked output.",
+        "requiredLabels": [
+          "n=21에서 1부터 20까지가 정확히 10쌍으로 묶인다",
+          "a(21−a)는 a와 21−a를 바꾸어도 같은 출력값을 만든다",
+          "A={1,2,…,20}의 실제 중복쌍",
+          "서로 다른 입력값의 충돌 조건: (a−b)(21−a−b)=0",
+          "|B₂₁|=10",
+          "α=20",
+          "41"
+        ],
+        "decisiveStepIds": [],
+        "universe": {
+          "visibleText": "A={1,2,…,20}"
+        },
+        "expectedRegions": [],
+        "boundaryIdentity": null,
+        "caseRows": [
+          {
+            "visibleInputText": "(1,20)",
+            "visibleConnector": "→",
+            "visibleOutputText": "20",
+            "visibleRowText": "(1,20) → 20"
+          },
+          {
+            "visibleInputText": "(2,19)",
+            "visibleConnector": "→",
+            "visibleOutputText": "38",
+            "visibleRowText": "(2,19) → 38"
+          },
+          {
+            "visibleInputText": "(3,18)",
+            "visibleConnector": "→",
+            "visibleOutputText": "54",
+            "visibleRowText": "(3,18) → 54"
+          },
+          {
+            "visibleInputText": "(4,17)",
+            "visibleConnector": "→",
+            "visibleOutputText": "68",
+            "visibleRowText": "(4,17) → 68"
+          },
+          {
+            "visibleInputText": "(5,16)",
+            "visibleConnector": "→",
+            "visibleOutputText": "80",
+            "visibleRowText": "(5,16) → 80"
+          },
+          {
+            "visibleInputText": "(6,15)",
+            "visibleConnector": "→",
+            "visibleOutputText": "90",
+            "visibleRowText": "(6,15) → 90"
+          },
+          {
+            "visibleInputText": "(7,14)",
+            "visibleConnector": "→",
+            "visibleOutputText": "98",
+            "visibleRowText": "(7,14) → 98"
+          },
+          {
+            "visibleInputText": "(8,13)",
+            "visibleConnector": "→",
+            "visibleOutputText": "104",
+            "visibleRowText": "(8,13) → 104"
+          },
+          {
+            "visibleInputText": "(9,12)",
+            "visibleConnector": "→",
+            "visibleOutputText": "108",
+            "visibleRowText": "(9,12) → 108"
+          },
+          {
+            "visibleInputText": "(10,11)",
+            "visibleConnector": "→",
+            "visibleOutputText": "110",
+            "visibleRowText": "(10,11) → 110"
+          }
+        ],
+        "countingResult": "|B₂₁|=10",
+        "visibleDrawingStructure": [
+          "One rounded rectangular panel visibly contains the heading and ten pair-to-output rows.",
+          "Three rounded badges are visible below the panel: |B₂₁|=10, α=20, and 41."
+        ],
+        "observationInsufficiency": [
+          "The standalone visible badge text 41 has no adjacent visible label or connector, so its semantic role is not assigned."
+        ],
+        "unassignedVisibleText": [
+          "41"
+        ]
+      }
+    }
+  ],
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "observedUidSetSha": "sha256:6f1e0923ce77ead2ca2fe5cce4cbf253630dc3659af6d31bce9a5e6ed36b2f72"
+}

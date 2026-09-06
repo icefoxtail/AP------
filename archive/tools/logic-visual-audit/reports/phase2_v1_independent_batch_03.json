@@ -1,0 +1,33 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 3,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+      "qid": 10,
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "ELEMENT_BUCKET_COUNTING",
+      "rationale": "The source defines a finite-universe subset count through membership constraints: A∪X=X forces A into X, while (B−A)∩X={4,8} fixes additional included and excluded elements. A forced/forbidden/free bucket or table would make the classification and free-choice count transparent, but the source is fully specified and the same reasoning can be reproduced clearly in text, so the visual is helpful rather than hard-required."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+      "qid": 19,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_CARDINALITY_VENN",
+      "visualRole": "REGION_CARDINALITY_EXTREMUM",
+      "rationale": "The source asks for the maximum and minimum of the 제주도-only region in a two-activity population, with a fixed total, a difference between the two selected counts, and a condition relating neither-selected students to the union. The decisive reasoning is the four-region decomposition (제주도 only, 서울 only, both, neither) together with the two extreme configurations, so a cardinality Venn visual is the canonical required representation."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+      "qid": 15,
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_CASE_PARTITION",
+      "visualRole": "PARAMETER_CASE_FILTERING",
+      "rationale": "The source is a symbolic symmetric-difference condition on two parameterized finite sets. Its visualizable structure is an exhaustive case partition tracking element collisions, validity, and elimination reasons; that table could support the parameter analysis, but the source does not require a geometric or region visual and the symbolic case work remains self-contained in text, so the visual is optional."
+    }
+  ],
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "reviewedUidSetSha": "sha256:0d614b689968c69927c691deb76ea185df376c0c56d43b4c9ec1872aa4f270a5"
+}

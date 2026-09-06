@@ -306,7 +306,7 @@ window.questionBank = [
       "$\\dfrac{1}{4}$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -474,8 +474,8 @@ window.questionBank = [
       "9",
       "10"
     ],
-    "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "answer": "⑤",
+    "solution": "[키포인트] D 원문 clean PDF와 해설의 좌표 설정을 사용한다. 폭과 높이가 4인 포물선을 y=−x²+4로 두고 직사각형의 반너비를 t (0≤t≤2)로 두면 높이는 4−t², 너비는 2t이다. 따라서 둘레는 P(t)=2(2t+4−t²)=−2(t−1)²+10이고 t=1에서 최댓값 10을 갖는다. 원문 해설 결과와 같이 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -511,8 +511,8 @@ window.questionBank = [
       "40",
       "41"
     ],
-    "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "answer": "①",
+    "solution": "$z=a^{2}-1+(a-1)i$에서 $z^{2}$이 음의 실수가 되려면 허수부분 $2(a^{2}-1)(a-1)$이 0이어야 한다. $a=1$이면 $z=0$이므로 제외되고, $a=-1$이면 $z=-2i$, $z^{2}=-4$가 되어 조건을 만족한다. 이때 $z-\bar z=-4i$이므로 $\dfrac{(z-\bar z)i}{4}=1$이다. $w=\dfrac{1-i}{\sqrt2}$라 하면 $w^{8}=1$이고 $w^{n}=1$인 자연수 $n\le300$은 $8,16,\ldots,296$의 37개이다. 따라서 정답은 ①이다.",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -548,8 +548,8 @@ window.questionBank = [
       "$-\\dfrac{7}{4}$",
       "$\\dfrac{13}{8}$"
     ],
-    "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "answer": "③",
+    "solution": "교점의 $x$좌표를 $\\alpha,\\beta$라 하고 $\\beta=2\\alpha$로 둔다.\n$f(x)=x^2+px+q$라 하면 직선 $y=5x+k$와의 교점 방정식은 $x^2+(p-5)x+(q-k)=0$이다. 따라서 $\\alpha+\\beta=3\\alpha=5-p$이고, $f(1)=3$에서 $1+p+q=3$, 즉 $q=2-p=3\\alpha-3$이다.\n\n그러므로 $k=q-\\alpha\\beta=3\\alpha-3-2\\alpha^2=-2(\\alpha-\\frac34)^2-\\frac{15}{8}$이다. 최댓값은 $\\alpha=\\frac34$일 때 $-\\frac{15}{8}$이며, 선택지 ③이다. 원문 표시 정답 ⑤($13/8$)와는 충돌하므로 source defect로 기록한다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -570,7 +570,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} ax+a & (x < -1) \\\\ 0 & (-1 \\le x < 1) \\\\ ax-a & (x \\ge 1) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 $a$의 값은?",
+    "content": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} ax+a & (x < -1) \\\\ 0 & (-1 \\le x < 1) \\\\ ax-a & (x \\ge 1) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 $a$의 최댓값은?",
     "choices": [
       "1",
       "2",
@@ -579,7 +579,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[SOURCE HOLD] D 원문 발문은 ‘서로 다른 세 점에서 만나도록 하는 a의 최댓값은?’이고 원문 인쇄 답은 ④이다. f(x)={−x² (x<0), x²−x (x≥0)}, g(x)={ax+a (x<−1), 0 (−1≤x<1), ax−a (x≥1)}, a>0로 두면 x=0과 x=1은 항상 교점이다. 1<a<4이면 x>1에서 x=a가 추가되고 x<−1에서는 교점이 없어 정확히 세 교점이지만, a=4에서는 x=−2와 x=4가 추가되어 네 교점이 된다. 따라서 세 교점을 만드는 a의 범위는 1<a<4이고 최댓값은 존재하지 않는다. 원문 정답 ④를 수학적 정답으로 확정할 수 없으므로 source defect hold를 유지한다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -653,8 +653,8 @@ window.questionBank = [
     "wide": false,
     "content": "[서·논술형 3]\n실수 $t$에 대하여 $t \\le x \\le t+2$에서 이차함수 $f(x)=x^2-4x+10$의 최댓값과 최솟값의 차를 $g(t)$라 하자. $t$에 대한 방정식 $g(t)-\\dfrac{1}{2}=0, g(t)-1=0, g(t)-\\dfrac{3}{2}=0$의 서로 다른 실근의 개수를 각각 $a, b, c$라 할 때, $a+b+c$의 값을 풀이과정과 함께 상세하게 서술하시오.",
     "choices": [],
-    "answer": "6",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 6이다.",
+    "answer": "3",
+    "solution": "$f(x)=x^2-4x+10=(x-2)^2+6$이다. 구간 $[t,t+2]$에서 최댓값과 최솟값의 차를 $g(t)$라 하면\n$g(t)=\\begin{cases}4-4t&(t\\le0)\\\\(t-2)^2&(0<t\\le1)\\\\t^2&(1\\le t<2)\\\\4t-4&(t\\ge2)\\end{cases}$이다.\n$g(t)=\\frac12$는 실근이 없고, $g(t)=1$은 $t=1$ 하나, $g(t)=\\frac32$는 $t=2-\\sqrt{\\frac32}$와 $t=\\sqrt{\\frac32}$ 두 개의 실근을 갖는다. 따라서 $a+b+c=0+1+2=3$이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",

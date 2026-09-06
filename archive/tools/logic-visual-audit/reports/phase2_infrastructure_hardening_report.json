@@ -1,0 +1,51 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_INFRASTRUCTURE_HARDENING",
+  "status": "PARTIAL_LEGACY_MIGRATION_REQUIRED_BEFORE_LARGER_BATCH",
+  "completed": {
+    "typedFactSchema": {
+      "status": "FAIL_TYPED_FACT_SCHEMA",
+      "passCount": 5,
+      "totalCount": 6
+    },
+    "structuralFingerprint": {
+      "status": "PASS_STRUCTURAL_FINGERPRINT_ADJUDICATED",
+      "candidateCount": 2,
+      "resolvedCount": 2
+    },
+    "freshBlindCalibration": {
+      "status": "READY_FOR_EXTERNAL_FRESH_BLIND_REVIEW",
+      "bundleValidation": "PASS_BLIND_BUNDLE_CONTRACT",
+      "batchId": "phase2-calibration-01",
+      "plannedSize": 5,
+      "manifestSha": "sha256:e78738aeccc0b3ba50c158ca9a3f754f17285784ffdbe40bd7f2aa1a182d88c3"
+    },
+    "baselinePostMutation": {
+      "status": "PASS_BASELINE_POST_MUTATION_RECORDED",
+      "baselineRef": "HEAD",
+      "recordCount": 41,
+      "changedPathCount": 37
+    },
+    "mutationScope": {
+      "productionMutationAllowed": false,
+      "preExistingDirtyFilesIgnored": true,
+      "manifestSha": "sha256:bb98f8730cf6dcee8c6b12960ecc474ed9cbfc6f48fdd8be0745225c8d08c92a"
+    }
+  },
+  "remainingBeforeNextBatch": {
+    "evidenceContract": "FAIL_EVIDENCE_CONTRACT",
+    "warnings": [],
+    "nextBatchGate": "BLOCKED_UNTIL_WARNINGS_ADJUDICATED",
+    "requiredActions": [
+      "V1/V2 fresh blind session metadata and frozen input SHA",
+      "desktop/mobile render evidence with viewport and screenshot/accessibility SHA",
+      "separate math verification manifest with INDEPENDENTLY_VERIFIED or explicit BLOCKED status"
+    ]
+  },
+  "ruleRefs": [
+    "docs/rules/02_PIPELINES/작업방식_적응형배치루프_v1.md",
+    "archive/tools/logic-visual-audit/phase2_evidence_record.template.json",
+    "archive/tools/logic-visual-audit/validate-phase2-evidence-contract.mjs"
+  ],
+  "reportSha": "sha256:0526382b9d20d07b47f2d55c0954b48439c1e05c2c343c2d7e9c587953050912"
+}

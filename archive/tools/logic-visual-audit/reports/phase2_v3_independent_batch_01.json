@@ -1,0 +1,57 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "LOGIC_VISUAL_PHASE_2_2022_SET_PILOT_V3_BATCH_01",
+  "reviewerRole": "V3_PARITY",
+  "priorReviewVisibility": "V1_V2_FROZEN_ONLY",
+  "comparedCount": 3,
+  "passCount": 1,
+  "failCount": 2,
+  "blockedCount": 0,
+  "status": "FAIL",
+  "v1ReportSha": "sha256:f43eb98ac31eafe452d2ee9b195d37928f609c9f6e55e85c8825fd7bab3e06c0",
+  "v2ReportSha": "sha256:0516ec1eec5232bd2dd6923cf70d54ff0e8c02031e5677ac6e2cde94c55eea4a",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_CASE_PARTITION",
+      "artifactAttached": true,
+      "parityStatus": "PASS",
+      "issues": [],
+      "v2ExtractionStatus": "OBSERVATION_SUFFICIENT",
+      "observedArtifactSha256": null,
+      "action": "CANDIDATE_FOR_ITEM_GATE"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "observedVisualType": "SET_GRAPH_DEFINED",
+      "artifactAttached": true,
+      "parityStatus": "FAIL",
+      "issues": [
+        "canonicalVisualTypeMismatch:SET_CASE_PARTITION->SET_GRAPH_DEFINED"
+      ],
+      "v2ExtractionStatus": "OBSERVATION_SUFFICIENT",
+      "observedArtifactSha256": null,
+      "action": "SEMANTIC_ADJUDICATION_REQUIRED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "observedVisualType": "SET_REGION_VENN_2",
+      "artifactAttached": true,
+      "parityStatus": "FAIL",
+      "issues": [
+        "canonicalVisualTypeMismatch:NONE->SET_REGION_VENN_2"
+      ],
+      "v2ExtractionStatus": "OBSERVATION_SUFFICIENT",
+      "observedArtifactSha256": null,
+      "action": "SEMANTIC_ADJUDICATION_REQUIRED"
+    }
+  ],
+  "note": "V3 parity compares frozen canonical visual families. It does not approve production release or replace C/D gates.",
+  "reportSha": "sha256:9559b4e091aa79d165ec55ff6fbfcf8dee1b6822111e17469c0f2049ddddfdf5"
+}

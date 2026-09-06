@@ -1,0 +1,151 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_11_TYPED_SEMANTIC_PARITY",
+  "status": "PASS_TYPED_SEMANTIC_PARITY",
+  "projectionScope": "Question-specific decisive labels extracted from the artifact-only text layer and compared with source-derived expected fact tokens.",
+  "results": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9",
+      "visualType": "SET_REGION_VENN_3",
+      "expectedFact": {
+        "requiredTokens": [
+          "B와 C에는 들어가고",
+          "A에서는 제외한다",
+          "B∩C∩Aᶜ",
+          "①"
+        ]
+      },
+      "observedFact": {
+        "requiredTokensFound": [
+          "B와 C에는 들어가고",
+          "A에서는 제외한다",
+          "B∩C∩Aᶜ",
+          "①"
+        ]
+      },
+      "missingTokens": [],
+      "semanticParity": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20",
+      "visualType": "SET_CASE_PARTITION",
+      "expectedFact": {
+        "requiredTokens": [
+          "a₁=1",
+          "a₄=9",
+          "T(a₂)+T(a₃)+T(a₅)=150",
+          "a₂=2, a₃=3, a₅=11",
+          "A={1,2,3,9,11}",
+          "B={1,4,9,81,121}"
+        ]
+      },
+      "observedFact": {
+        "requiredTokensFound": [
+          "a₁=1",
+          "a₄=9",
+          "T(a₂)+T(a₃)+T(a₅)=150",
+          "a₂=2, a₃=3, a₅=11",
+          "A={1,2,3,9,11}",
+          "B={1,4,9,81,121}"
+        ]
+      },
+      "missingTokens": [],
+      "semanticParity": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18",
+      "visualType": "SET_LATTICE_POINT_COUNT",
+      "expectedFact": {
+        "requiredTokens": [
+          "정수해 8개",
+          "(±1,±2), (±2,±1)",
+          "n(A)=4+4=8",
+          "B={1,2,...,k}",
+          "n(B)=k",
+          "k=8"
+        ]
+      },
+      "observedFact": {
+        "requiredTokensFound": [
+          "정수해 8개",
+          "(±1,±2), (±2,±1)",
+          "n(A)=4+4=8",
+          "B={1,2,...,k}",
+          "n(B)=k",
+          "k=8"
+        ]
+      },
+      "missingTokens": [],
+      "semanticParity": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+      "visualType": "SET_CARDINALITY_VENN",
+      "expectedFact": {
+        "requiredTokens": [
+          "45명 중 A=28명, B=23명",
+          "최대 x=23",
+          "최소 x=6",
+          "23+6=29"
+        ]
+      },
+      "observedFact": {
+        "requiredTokensFound": [
+          "45명 중 A=28명, B=23명",
+          "최대 x=23",
+          "최소 x=6",
+          "23+6=29"
+        ]
+      },
+      "missingTokens": [],
+      "semanticParity": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+      "visualType": "SET_EQUALITY_REGION",
+      "expectedFact": {
+        "requiredTokens": [
+          "A−B=∅",
+          "B−A=∅",
+          "A = B",
+          "A⊆B",
+          "B⊆A"
+        ]
+      },
+      "observedFact": {
+        "requiredTokensFound": [
+          "A−B=∅",
+          "B−A=∅",
+          "A = B",
+          "A⊆B",
+          "B⊆A"
+        ]
+      },
+      "missingTokens": [],
+      "semanticParity": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+      "visualType": "SET_CASE_PARTITION",
+      "expectedFact": {
+        "requiredTokens": [
+          "a=3,2,−2",
+          "A△B={0,1}",
+          "a=2, b=6",
+          "b−a=6−2=4"
+        ]
+      },
+      "observedFact": {
+        "requiredTokensFound": [
+          "a=3,2,−2",
+          "A△B={0,1}",
+          "a=2, b=6",
+          "b−a=6−2=4"
+        ]
+      },
+      "missingTokens": [],
+      "semanticParity": "PASS"
+    }
+  ],
+  "reportSha": "sha256:a13fe75fc292d08880b83e5fdfcbdc40efdfe176b887a95b9bbfa6236df271ea"
+}

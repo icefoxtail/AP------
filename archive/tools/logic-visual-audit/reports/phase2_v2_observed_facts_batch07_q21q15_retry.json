@@ -1,0 +1,340 @@
+{
+  "bundleType": "V2_ARTIFACT_ONLY_LOGIC_VISUAL_PHASE2_REVIEW",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "reviewScope": {
+    "inputBundlePath": "archive/tools/logic-visual-audit/reports/phase2_v2_artifact_only_batch07_q21q15_retry.json",
+    "artifactOnly": true,
+    "visibleRegionAndBucketStructuresOnly": true,
+    "sourceJsRead": false,
+    "answerRead": false,
+    "solutionRead": false,
+    "expectedFactRead": false,
+    "altCaptionRead": false,
+    "priorReportRead": false,
+    "builderMetadataRead": false
+  },
+  "appliedRuleRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+      "declaredVersion": "v2.6",
+      "actualBytes": 93734,
+      "sha256": "sha256:15bac5c693b4bac5a5d1794ec07f641b188bb125d4321c08e0524ebbce5b0514",
+      "role": "CANONICAL_RULEBOOK",
+      "precedenceOrder": 1
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
+      "declaredVersion": "v1.2.10",
+      "actualBytes": 195826,
+      "sha256": "sha256:8e5f688c925bce396008722cf271f0136185ac7dc3599a4e408fe1417dff5ca5",
+      "role": "COMMON_CORE",
+      "precedenceOrder": 2
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형추출.md",
+      "declaredVersion": "v3.0",
+      "actualBytes": 51732,
+      "sha256": "sha256:46104e98928b54b78b04c4e0c9848067e796aa070e15517653608c97cd75e6e2",
+      "role": "VISUAL_COMMON",
+      "precedenceOrder": 3
+    },
+    {
+      "path": "docs/rules/04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md",
+      "declaredVersion": "v1.4",
+      "actualBytes": 66253,
+      "sha256": "sha256:0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b",
+      "role": "UNIT_OVERLAY_LOGIC_VISUAL_QUALIFICATION",
+      "precedenceOrder": 4
+    }
+  ],
+  "schemaSpecRefs": [
+    {
+      "path": "archive/tools/logic-visual-audit/specs/logic-visual-fact-schema-v1.json",
+      "specVersion": "LOGIC_VISUAL_FACT_v1",
+      "actualBytes": 2467,
+      "sha256": "sha256:c385fe4b020bfc08068ea6302e12d24e83c2f04d0724f18aab1de4308a893b6c"
+    },
+    {
+      "path": "archive/tools/logic-visual-audit/specs/fact-canonicalization-spec-v1.json",
+      "specVersion": "LOGIC_VISUAL_FACT_CANONICALIZATION_v1",
+      "actualBytes": 654,
+      "sha256": "sha256:78c1e45717ebd922b9cae1637e697b792d82d2d987ba224b045c830ebe34073e"
+    },
+    {
+      "path": "archive/tools/logic-visual-audit/specs/semantic-projection-spec-v1.json",
+      "specVersion": "SEMANTIC_PROJECTION_v1",
+      "actualBytes": 1560,
+      "sha256": "sha256:aaafffb1fc31b8166502431fe3563ac752eb4e1e1876ba729d45277292beb273"
+    },
+    {
+      "path": "archive/tools/logic-visual-audit/specs/mutation-expected-detector-map-v1.json",
+      "specVersion": "MUTATION_EXPECTED_DETECTOR_MAP_v1",
+      "actualBytes": 2857,
+      "sha256": "sha256:b611c10dac1fe6c8698bc56354115afe60ae54cbfd2b5f6d2bae09e0d427b073"
+    }
+  ],
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "artifactPath": "assets/images/22_강남여고_2학기_기말_고1_기출/q21-solution.svg",
+      "artifactSha256": "sha256:9b314e0d8733e9f995e66f6b5134c4ff65d4b142f47bb138ac0a9f67334324d3",
+      "reviewerRole": "V2_OBSERVED",
+      "priorReviewVisibility": "NONE",
+      "observedFactExtractionMethod": "manual_independent",
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "visible two-set complement and difference region buckets",
+        "requiredLabels": [
+          "U",
+          "Aᶜ",
+          "A",
+          "(B∪C)ᶜ",
+          "B∪C",
+          "(B∪C)−A"
+        ],
+        "decisiveStepIds": [
+          "universe-bucket",
+          "A-complement-bucket",
+          "B-union-C-complement-bucket",
+          "difference-result-bucket"
+        ],
+        "universe": {
+          "label": "U",
+          "elements": [1, 2, 3, 4, 6, 8, 12, 24],
+          "boundaryVisible": true
+        },
+        "universeRequired": true,
+        "expectedRegions": ["R01"],
+        "boundaryIdentity": {
+          "A": "A",
+          "B": "B∪C",
+          "U": "U"
+        },
+        "visibleRegionBuckets": [
+          {
+            "label": "Aᶜ",
+            "elements": [1, 8, 24],
+            "relation": "complement"
+          },
+          {
+            "label": "A",
+            "elements": [2, 3, 4, 6, 12],
+            "relation": "complement-restoration"
+          },
+          {
+            "label": "(B∪C)ᶜ",
+            "elements": [3, 4, 8, 12],
+            "relation": "complement"
+          },
+          {
+            "label": "B∪C",
+            "elements": [1, 2, 6, 24],
+            "relation": "complement-restoration"
+          },
+          {
+            "label": "(B∪C)−A",
+            "elements": [1, 24],
+            "relation": "target-difference"
+          }
+        ],
+        "finalConclusion": "{1,24}",
+        "countingResult": 25
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "visible two-set complement and difference region buckets",
+        "requiredLabels": [
+          "U",
+          "Aᶜ",
+          "A",
+          "(B∪C)ᶜ",
+          "B∪C",
+          "(B∪C)−A"
+        ],
+        "decisiveStepIds": [
+          "universe-bucket",
+          "A-complement-bucket",
+          "B-union-C-complement-bucket",
+          "difference-result-bucket"
+        ],
+        "universe": {
+          "label": "U",
+          "elements": [1, 2, 3, 4, 6, 8, 12, 24],
+          "boundaryVisible": true
+        },
+        "universeRequired": true,
+        "expectedRegions": ["R01"],
+        "boundaryIdentity": {
+          "A": "A",
+          "B": "B∪C",
+          "U": "U"
+        },
+        "visibleRegionBuckets": [
+          {
+            "label": "Aᶜ",
+            "elements": [1, 8, 24],
+            "relation": "complement"
+          },
+          {
+            "label": "A",
+            "elements": [2, 3, 4, 6, 12],
+            "relation": "complement-restoration"
+          },
+          {
+            "label": "(B∪C)ᶜ",
+            "elements": [3, 4, 8, 12],
+            "relation": "complement"
+          },
+          {
+            "label": "B∪C",
+            "elements": [1, 2, 6, 24],
+            "relation": "complement-restoration"
+          },
+          {
+            "label": "(B∪C)−A",
+            "elements": [1, 24],
+            "relation": "target-difference"
+          }
+        ],
+        "finalConclusion": "{1,24}",
+        "countingResult": 25
+      },
+      "observedVisualFactSha": "sha256:a822d8d44166240ac4f8025005bfce8042a1c9264e4bceb9b7ef7ec9d89ba6d5",
+      "observedSemanticProjection": {
+        "universeRequired": true,
+        "expectedRegions": ["R01"],
+        "boundaryIdentity": {
+          "A": "A",
+          "B": "B∪C",
+          "U": "U"
+        }
+      },
+      "observedSemanticSha": "sha256:ac24b84185e2a8d1379e7bd1c9f753dd85b108b102903de6bc786d8f4c720dd4",
+      "v2FirstPassEvidenceSha": "sha256:b149dd478aabb453944138acece79fef5fe98e1a7c7873719107ad58cb1f1da7",
+      "shaVerification": {
+        "artifactShaExpected": "sha256:9b314e0d8733e9f995e66f6b5134c4ff65d4b142f47bb138ac0a9f67334324d3",
+        "artifactShaActual": "sha256:9b314e0d8733e9f995e66f6b5134c4ff65d4b142f47bb138ac0a9f67334324d3",
+        "artifactShaMatch": true,
+        "observedVisualFactShaMatch": true,
+        "observedSemanticShaMatch": true
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+      "artifactPath": "assets/images/22_순천여고_2학기_기말_고1_기출/q15-solution.svg",
+      "artifactSha256": "sha256:c7fab3c3cc84b07a4d5475fc0aa0cd2ed49c936a9042bd018f96396495100c1c",
+      "reviewerRole": "V2_OBSERVED",
+      "priorReviewVisibility": "NONE",
+      "observedFactExtractionMethod": "manual_independent",
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "visible forced forbidden free element buckets and count",
+        "requiredLabels": [
+          "A",
+          "강제 포함",
+          "금지",
+          "자유",
+          "홀수 합 개수"
+        ],
+        "decisiveStepIds": [
+          "forced-element-bucket",
+          "forbidden-element-bucket",
+          "free-element-bucket",
+          "count-result"
+        ],
+        "forcedElements": [2],
+        "forbiddenElements": [3],
+        "freeElements": [1, 4, 5, 6, 7],
+        "freeCount": 5,
+        "countingResult": 16,
+        "visibleBucketLabels": {
+          "forced": "강제 포함",
+          "forbidden": "금지",
+          "free": "자유"
+        },
+        "visibleUniverse": {
+          "label": "A",
+          "elements": [1, 2, 3, 4, 5, 6, 7]
+        },
+        "finalConclusion": "16개"
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "visible forced forbidden free element buckets and count",
+        "requiredLabels": [
+          "A",
+          "강제 포함",
+          "금지",
+          "자유",
+          "홀수 합 개수"
+        ],
+        "decisiveStepIds": [
+          "forced-element-bucket",
+          "forbidden-element-bucket",
+          "free-element-bucket",
+          "count-result"
+        ],
+        "forcedElements": [2],
+        "forbiddenElements": [3],
+        "freeElements": [1, 4, 5, 6, 7],
+        "freeCount": 5,
+        "countingResult": 16,
+        "visibleBucketLabels": {
+          "forced": "강제 포함",
+          "forbidden": "금지",
+          "free": "자유"
+        },
+        "visibleUniverse": {
+          "label": "A",
+          "elements": [1, 2, 3, 4, 5, 6, 7]
+        },
+        "finalConclusion": "16개"
+      },
+      "observedVisualFactSha": "sha256:7d442e4060778f834f5b8c024675dff7b2a132add7d37054732016b8551f2522",
+      "observedSemanticProjection": {
+        "forcedElements": [2],
+        "forbiddenElements": [3],
+        "freeElements": [1, 4, 5, 6, 7],
+        "freeCount": 5,
+        "countingResult": 16
+      },
+      "observedSemanticSha": "sha256:2b7e5158451d8b1f0bceaab138fad1ccbe93296e0e9889449e88833811c33f00",
+      "v2FirstPassEvidenceSha": "sha256:0378681af45aac67e69735fb4547113542b48049547dfcf52c8ddf38245df74a",
+      "shaVerification": {
+        "artifactShaExpected": "sha256:c7fab3c3cc84b07a4d5475fc0aa0cd2ed49c936a9042bd018f96396495100c1c",
+        "artifactShaActual": "sha256:c7fab3c3cc84b07a4d5475fc0aa0cd2ed49c936a9042bd018f96396495100c1c",
+        "artifactShaMatch": true,
+        "observedVisualFactShaMatch": true,
+        "observedSemanticShaMatch": true
+      }
+    }
+  ],
+  "shaVerification": {
+    "inputBundlePath": "archive/tools/logic-visual-audit/reports/phase2_v2_artifact_only_batch07_q21q15_retry.json",
+    "inputBundleRawSha256": "sha256:ab0560fc4c1e762b625da01583bfb63c2e45589f0688ff5edd4868efa9e412b1",
+    "inputBundleItemsJsonSha256": "sha256:09058fa429af84b4c005ee48e07be5468013032caa32e840df92d5f9ff2e8dbd",
+    "inputBundleDeclaredBundleSha": "sha256:09058fa429af84b4c005ee48e07be5468013032caa32e840df92d5f9ff2e8dbd",
+    "inputBundleShaMatch": true,
+    "artifactShaChecksPassed": true,
+    "observedFactShaChecksPassed": true,
+    "observedSemanticShaChecksPassed": true,
+    "observedUidSetSha": "sha256:385b177f2774c5c909c3da9c2eb12a5e3a0e235c915f20a1f336d72a6b544e2c",
+    "allChecksPassed": true
+  },
+  "observedUidSetSha": "sha256:385b177f2774c5c909c3da9c2eb12a5e3a0e235c915f20a1f336d72a6b544e2c"
+}

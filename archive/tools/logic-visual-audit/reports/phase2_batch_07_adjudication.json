@@ -1,0 +1,59 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_07_ADJUDICATION",
+  "status": "REQUIRED_VISUAL_SATISFIER_MISSING",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "expectedVisualType": "NONE",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualAction": "NONE",
+      "status": "RESOLVED_EXEMPT_NO_ARTIFACT",
+      "reason": "No attached artifact exists and source-only review says text is sufficient; no visual is added.",
+      "nextAction": "NO_VISUAL_C_ITEM_NOT_REQUIRED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_CARDINALITY_VENN",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualAction": "NONE",
+      "status": "RESOLVED_EXEMPT_NO_ARTIFACT",
+      "reason": "No attached artifact exists and source-only review says text is sufficient; no visual is added.",
+      "nextAction": "NO_VISUAL_C_ITEM_NOT_REQUIRED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "expectedVisualType": "SET_INCLUSION_VENN",
+      "finalVisualRequirement": "VISUAL_EXEMPT",
+      "visualAction": "NONE",
+      "status": "RESOLVED_EXEMPT_NO_ARTIFACT",
+      "reason": "No attached artifact exists and source-only review says text is sufficient; no visual is added.",
+      "nextAction": "NO_VISUAL_C_ITEM_NOT_REQUIRED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_REGION_VENN_2",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualAction": "ADD",
+      "status": "BLOCKED_REQUIRED_VISUAL_MISSING",
+      "reason": "V1 requires a decisive visual but V2 bundle has no artifact; build a question-specific SVG before denominator freeze.",
+      "nextAction": "BUILD_ADD_NEW_VISUAL_AND_RERUN_V2"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js|22_순천여고_2학기_기말_고1_기출|15",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualType": "SET_CASE_PARTITION",
+      "finalVisualRequirement": "VISUAL_REQUIRED",
+      "visualAction": "ADD",
+      "status": "BLOCKED_REQUIRED_VISUAL_MISSING",
+      "reason": "V1 requires a decisive visual but V2 bundle has no artifact; build a question-specific SVG before denominator freeze.",
+      "nextAction": "BUILD_ADD_NEW_VISUAL_AND_RERUN_V2"
+    }
+  ],
+  "blockedCount": 2,
+  "reportSha": "sha256:b53967e3ccaa2e5079eb67705af4eea8d0c0427192836c5ca7cf3a4c8b423f14"
+}
