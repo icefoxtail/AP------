@@ -15,7 +15,7 @@
      * The core accepts geometry and renderable-block measurement facts only.
      * Source and recipient identifiers are attached after placement succeeds.
      */
-    function normalizeBlock(raw, index, columns, measurementMode) {
+    function normalizeBlock(raw, index, columns, measurementMode, slotRows) {
         const block = raw || {};
         for (const forbidden of ['sourceArchiveFile', 'sourceQuestionUid', 'studentId', 'recipientId', 'packetKey', 'archiveFile']) {
             if (Object.prototype.hasOwnProperty.call(block, forbidden)) fail('SOURCE_DATA_FORBIDDEN_IN_LAYOUT:' + forbidden);
@@ -26,7 +26,19 @@
         if (columnSpan > columns) fail('COLUMN_SPAN_EXCEEDS_PAGE_COLUMNS');
         const measurements = block.measurements && typeof block.measurements === 'object' ? block.measurements : {};
         const selectedHeight = measurements[measurementMode] ?? block.measuredHeight;
-        const slotOccupancy = positiveInteger(block.slotOccupancy, 'SLOT_OCCUPANCY', block.continuationOf ? 0 : 1);
+        const placementKind = layoutTag === 'subjective-2up'
+            ? 'subjective-2up'
+            : layoutTag === 'subjective-4up'
+            ? 'subjective-4up'
+            : impliedFullWidth
+            ? 'fullwidth'
+            : 'normal';
+        const slotSpanRows = placementKind === 'subjective-2up'
+            ? slotRows
+            : placementKind === 'subjective-4up'
+            ? Math.max(1, Math.ceil(slotRows / 2))
+            : 1;
+        const slotOccupancy = positiveInteger(block.slotOccupancy, 'SLOT_OCCUPANCY', block.continuationOf ? 0 : slotSpanRows);
         return Object.freeze({
             blockId: safeText(block.blockId, 'BLOCK_ID'),
             questionKey: String(block.questionKey || block.blockId).trim(),
@@ -34,6 +46,8 @@
             measurements: Object.freeze({ raw: measurements.raw ?? block.measuredHeight ?? null, tight: measurements.tight ?? null }),
             measurementMode,
             slotOccupancy,
+            slotSpanRows,
+            placementKind,
             columnSpan,
             layoutTag,
             breakBefore: block.breakBefore === true,
@@ -81,7 +95,7 @@
             const baseline = Math.max(...page.columns.map(column => column.usedHeight));
             const gapBefore = page.itemPlacements.length ? blockGap : 0;
             if (page.itemPlacements.length && baseline + gapBefore + block.measuredHeight > capacity) return false;
-            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: 1, columnSpan: block.columnSpan, layoutTag: block.layoutTag, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore };
+            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: 1, columnSpan: block.columnSpan, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore };
             page.itemPlacements.push(item);
             for (let index = 0; index < block.columnSpan; index++) {
                 page.columns[index].usedHeight = baseline + gapBefore + block.measuredHeight;
@@ -96,7 +110,7 @@
         const continuationColumn = continuationPlacement && page.columns.find(column => column.columnNo === continuationPlacement.columnNo);
         const continuationGap = continuationColumn && continuationColumn.items.length ? blockGap : 0;
         if (continuationColumn && continuationColumn.usedHeight + continuationGap + block.measuredHeight <= capacity) {
-            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: continuationColumn.columnNo, columnSpan: 1, layoutTag: block.layoutTag, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore: continuationGap };
+            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: continuationColumn.columnNo, columnSpan: 1, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore: continuationGap };
             page.itemPlacements.push(item);
             continuationColumn.items.push(item);
             continuationColumn.usedHeight += continuationGap + block.measuredHeight;
@@ -108,7 +122,7 @@
         if (!candidates.length && page.itemPlacements.length) return false;
         const column = candidates[0] || page.columns.slice().sort((left, right) => left.usedHeight - right.usedHeight)[0];
         const gapBefore = column.items.length ? blockGap : 0;
-        const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: column.columnNo, columnSpan: 1, layoutTag: block.layoutTag, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore };
+        const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: column.columnNo, columnSpan: 1, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore };
         page.itemPlacements.push(item);
         column.items.push(item);
         column.usedHeight += gapBefore + block.measuredHeight;
@@ -125,8 +139,9 @@
         const qpp = geometry.qpp === undefined || geometry.qpp === null ? null : positiveInteger(geometry.qpp, 'QPP');
         const blockGap = geometry.blockGap === undefined ? 0 : Math.max(0, Number(geometry.blockGap) || 0);
         const measurementMode = geometry.measurementMode === 'tight' ? 'tight' : 'raw';
+        const slotRows = Math.max(1, Math.ceil((qpp || columns * 2) / columns));
         const rawBlocks = Array.isArray(config.blocks) ? config.blocks : fail('BLOCKS_MUST_BE_ARRAY');
-        const blocks = rawBlocks.map((block, index) => normalizeBlock(block, index, columns, measurementMode));
+        const blocks = rawBlocks.map((block, index) => normalizeBlock(block, index, columns, measurementMode, slotRows));
         const pages = [];
         const overflowEvidence = [];
         const continuationMap = [];
@@ -162,6 +177,7 @@
             columns,
             blockGap,
             measurementMode,
+            slotRows,
             usableHeight: capacity
         });
     }

@@ -87,3 +87,9 @@ test('Answer authority fingerprints number, value order, and source identity rat
   assert.equal(drift.equal, false);
   assert.ok(drift.differences.some(item => item.key === 'answerFingerprint'));
 });
+
+test('Question authority escapes data-SVG asset attributes without truncating quotes in the URL', () => {
+  const dataSvg = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg"%3E%3C/svg%3E';
+  const html = A.renderQuestionHTML(question({ image: dataSvg }), { ...renderOptions, mode: 'exam' });
+  assert.match(html, /xmlns=&quot;http:\/\/www\.w3\.org\/2000\/svg&quot;/);
+});

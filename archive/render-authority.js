@@ -202,6 +202,10 @@
         return text(value).replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d))\s*/, '').trim();
     }
 
+    function escapeHtmlAttribute(value) {
+        return text(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     function choiceRenderMode(choices, choiceColumns) {
         if (positiveInteger(choiceColumns)) return 'grid';
         const texts = choices.map(choice => stripChoicePrefix(extractChoice(choice)));
@@ -236,7 +240,7 @@
         const caption = field === 'solutionImage' && question.solutionImageCaption
             ? `<span class="sol-image-caption">${question.solutionImageCaption}</span>`
             : '';
-        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}"><img src="${url}" alt="${alt}">${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
+        return `<${field === 'solutionImage' ? 'span' : 'div'} class="${className}${sizeClass}"><img src="${escapeHtmlAttribute(url)}" alt="${escapeHtmlAttribute(alt)}">${caption}</${field === 'solutionImage' ? 'span' : 'div'}>`;
     }
 
     function renderQuestionHTML(inputQuestion, options) {
@@ -257,7 +261,9 @@
         const solution = mode === 'solution'
             ? `<div class="sol-meta"><div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>${renderImageHTML(question, 'solutionImage', 'sol-image-wrap', config)}<div class="sol-exp">${preparedSolution}</div></div>`
             : '';
-        const contentClass = mode === 'solution' ? ' data-semantic-content="1"' : ' class="q-content"';
+        const contentClass = mode === 'solution' && config.solutionContentClass !== 'q-content'
+            ? ' data-semantic-content="1"'
+            : ' class="q-content"';
         const boxClass = mode === 'solution' ? 'q-box sol-box' : 'q-box';
         return `<div class="${boxClass}" data-source-ref="${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}"><div class="q-num">${question.displayNo}.</div><div${contentClass}>${content}</div>${image}${choices}${answer}${solution}</div>`;
     }
