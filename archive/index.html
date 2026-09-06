@@ -2755,6 +2755,30 @@ function buildAssignTargetPreviewUrl() {
     return url.toString();
 }
 
+function postAssignTargetPreviewWitness(frame) {
+    const item = AssignTarget?.item;
+    if (!frame?.contentWindow || !item || isUnitPastExamItem(item)) return;
+    frame.contentWindow.postMessage({
+        type: 'AP_PRINT_PREVIEW',
+        source: {
+            kind: 'ARCHIVE_PREVIEW',
+            dataUrl: 'exams/' + item.file,
+            title: getIndexExamTitle(item),
+            qpp: Number(AssignTarget.qpp || 4),
+            mode: 'exam'
+        }
+    }, window.location.origin);
+}
+
+if (typeof window !== 'undefined' && !window.__assignTargetPreviewWitnessBound) {
+    window.__assignTargetPreviewWitnessBound = true;
+    window.addEventListener('message', event => {
+        if (event.origin !== window.location.origin || event.data?.type !== 'AP_PRINT_READY' || event.data?.engine !== 'archive') return;
+        const frame = document.getElementById('assignTargetPreviewFrame');
+        if (frame?.contentWindow === event.source) postAssignTargetPreviewWitness(frame);
+    });
+}
+
 function syncAssignTargetPreviewPane() {
     const box = document.getElementById('assignTargetBox');
     const frame = document.getElementById('assignTargetPreviewFrame');
