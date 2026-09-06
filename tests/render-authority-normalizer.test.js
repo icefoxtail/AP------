@@ -66,6 +66,19 @@ test('Normalizers create only pure PrintJobs and preserve source-authority bound
   assert.equal(job.source, 'archive');
   assert.equal(job.sections.length, 1);
   assert.equal(job.sections[0].renderMode, 'exam');
+  const multiQrJob = A.createArchivePrintJob({
+    jobId: 'archive-two-qr-channels',
+    sourceAuthority: { kind: 'ARCHIVE_STANDALONE', winnerId: 'data=exams/a.js', evidence: { data: true }, fallbackUsed: false },
+    rawQuestions: [{ content: '문항' }],
+    sourceArchiveFile: 'exams/a.js',
+    ...base,
+    qrPolicy: { enabled: false, kind: 'none', placement: 'flow' },
+    qrPolicies: [
+      { enabled: true, kind: 'submit', placement: 'flow' },
+      { enabled: true, kind: 'solution', placement: 'reserved-overlay' }
+    ]
+  });
+  assert.deepEqual(multiQrJob.sections[0].qrPolicies.map(policy => policy.kind), ['submit', 'solution']);
   assert.throws(() => A.createMixedPrintJob({
     jobId: 'bad',
     sourceAuthority: { kind: 'ARCHIVE_STANDALONE', winnerId: 'data', evidence: {}, fallbackUsed: false },

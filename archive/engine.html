@@ -430,7 +430,7 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
-const AppState = { data: [], canonicalData: [], mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
+const AppState = { data: [], canonicalData: [], sourceArchiveFile: '', mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {} };
 
 function rendererMode() {
     return window.APRenderLoop?.rendererMode?.() || 'batch';
@@ -1292,16 +1292,53 @@ function buildArchiveCanonicalData(sourceArchiveFile) {
     }
 }
 
-function recordArchiveDualRun(area) {
+function getArchiveQuestionSourceRef(q, index) {
+    const sourceArchiveFile = String(q?.sourceArchiveFile || q?.source_archive_file || AppState.sourceArchiveFile || '').trim();
+    const sourceOrdinal = Number(q?.sourceOrdinal || q?.sourceQuestionOrdinal || q?.source_question_ordinal || index + 1) || index + 1;
+    const sourceUid = String(q?.questionUid || q?.sourceQuestionUid || q?.source_question_uid || `legacy:${sourceArchiveFile}#ordinal:${sourceOrdinal}`).trim();
+    return `${sourceArchiveFile}#${sourceUid}`;
+}
+
+function prepareArchiveCanonicalContent(question) {
+    const raw = question.sourcePayload || {};
+    const rawContent = stripInlineImagesFromContent(raw.content || raw.question || question.content || '', !!question.image);
+    return sanitizeProtectedSegments(
+        normalizeQuestionNotes(
+            normalizeViewBlocks(
+                normalizeQuestionTables(
+                    formatQuestionContent(wrapLatex(rawContent), raw)
+                )
+            )
+        )
+    );
+}
+
+function prepareArchiveCanonicalSolution(question) {
+    return formatSolutionHtml(question.solution || '');
+}
+
+async function recordArchiveDualRun(area) {
     if (new URLSearchParams(window.location.search).get('renderAuthorityDualRun') !== '1') return;
     if (!AppState.canonicalData.length || typeof window.APRenderAuthority?.compareQuestionSemantics !== 'function') return;
     try {
-        const shared = AppState.canonicalData.map(question => window.APRenderAuthority.renderQuestionHTML(question, {
-            mode: AppState.mode,
-            wrapLatex,
-            resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef)
-        })).join('');
-        const result = window.APRenderAuthority.compareQuestionSemantics(area.innerHTML, shared);
+        const shared = AppState.mode === 'ans'
+            ? AppState.canonicalData.map(question => window.APRenderAuthority.renderAnswerEntryHTML(question, { formatAnswer: formatGridAnswer })).join('')
+            : AppState.canonicalData.map(question => window.APRenderAuthority.renderQuestionHTML(question, {
+                mode: AppState.mode,
+                wrapLatex,
+                prepareContent: prepareArchiveCanonicalContent,
+                prepareSolution: prepareArchiveCanonicalSolution,
+                resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef)
+            })).join('');
+        const witness = document.createElement('div');
+        witness.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:83mm;';
+        witness.innerHTML = shared;
+        document.body.appendChild(witness);
+        try { await typesetMath('archive-authority-dual-run', [witness]); } catch (error) { console.warn('[archive-engine] shared dual-run MathJax failed', error); }
+        const result = AppState.mode === 'ans'
+            ? window.APRenderAuthority.compareAnswerSemantics(area.innerHTML, witness.innerHTML)
+            : window.APRenderAuthority.compareQuestionSemantics(area.innerHTML, witness.innerHTML);
+        witness.remove();
         document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', mode: AppState.mode, equal: result.equal, differences: result.differences });
     } catch (error) {
         document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', error: String(error?.message || error) });
@@ -1370,6 +1407,7 @@ async function init() {
                 .replace(/^[^#?]*\/exams\//i, '')
                 .replace(/[?#].*$/, '')
                 .replace(/^\.?\//, '');
+            AppState.sourceArchiveFile = sourceArchiveFile;
             AppState.data = loadedQuestions.map((question, index) => window.mergeArchiveQuestionMetadata
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);
@@ -1688,7 +1726,7 @@ async function renderExam(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
     const items = data.map((q, i) => {
-        const box = document.createElement('div'); box.className = 'q-box';
+        const box = document.createElement('div'); box.className = 'q-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
         const formattedContent = sanitizeProtectedSegments(
@@ -2007,9 +2045,9 @@ async function renderSol(area, data) {
             // is shown once in the first column rather than once per continuation.
             const solutionHtml = formatSolutionHtml(solutionText);
             const solutionImageHtml = renderSolutionImageHTML(q);
-            const box = document.createElement('div'); box.className = 'q-box sol-box';
+            const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
-            box.innerHTML = `<div class="q-num">${i + 1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
+            box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             staging.appendChild(box);
             return box;
         });
@@ -2044,8 +2082,8 @@ async function renderSol(area, data) {
                 )
             )
         );
-        const box = document.createElement('div'); box.className = 'q-box sol-box';
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(solutionText)}</div></div>`;
+        const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
+        box.innerHTML = `<div class="q-num">${i+1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(solutionText)}</div></div>`;
         cols[colIdx].appendChild(box);
         await typesetMath('solution-reminder-box', [box]); await raf();
         if (cols[colIdx].scrollHeight > cols[colIdx].clientHeight + 2) {
@@ -2092,6 +2130,7 @@ function renderAns(area, data, perPage = 40) {
                 }
                 const num = start + idx + 1;
                 if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
+                u.dataset.sourceRef = getArchiveQuestionSourceRef(chunk[idx], num - 1);
                 u.innerHTML = `<div class="ans-n">${num}.</div><div class="ans-v">${formatGridAnswer(chunk[idx].answer)}</div>`;
                 grid.appendChild(u);
             });
@@ -2179,7 +2218,7 @@ async function renderBody() {
 
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
-    recordArchiveDualRun(area);
+    await recordArchiveDualRun(area);
     applyQrSolutionLockUI();
     updateScreenFitScale();
     registerBlueprintToOS(); // [3B] blueprint 등록 (비동기, 출력 차단 없음)
