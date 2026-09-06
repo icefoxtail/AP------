@@ -963,7 +963,7 @@ if (typeof window !== 'undefined' && !window.__clinicPrintHeaderEditBound) {
     window.addEventListener('message', event => {
         if (event.origin !== window.location.origin) return;
         const msg = event.data || {};
-        if (msg.type !== 'AP_CLINIC_HEADER_EDIT' || !clinicPrintActiveClassId) return;
+        if ((msg.type !== 'AP_PRINT_HEADER_EDIT' && msg.type !== 'AP_CLINIC_HEADER_EDIT') || !clinicPrintActiveClassId) return;
         const fieldToId = {
             title: 'clinic-print-header-title',
             subtitle: 'clinic-print-header-subtitle'
@@ -1007,7 +1007,7 @@ function clinicPrintPushPreview(classId) {
     if (!payload) return;
     const engineMode = clinicPrintGetPreviewEngineMode();
     frame.contentWindow.postMessage({
-        type: 'AP_CLINIC_PREVIEW',
+        type: 'AP_PRINT_PREVIEW',
         payload,
         mode: engineMode || undefined
     }, window.location.origin);
