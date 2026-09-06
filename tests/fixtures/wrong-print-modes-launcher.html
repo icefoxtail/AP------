@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Wrong print payload-mode QA launcher</title></head>
+<body>
+<script>
+  const params = new URLSearchParams(location.search);
+  const payloadMode = ['class', 'grade', 'type'].includes(params.get('payloadMode')) ? params.get('payloadMode') : 'class';
+  const archiveFile = `${location.origin}/tests/fixtures/wrong-print-overflow-bank.js?v=${Date.now()}`;
+  const items = [2, 3].map(questionNo => ({
+    sourceArchiveFile: archiveFile,
+    archiveFile,
+    questionNo,
+    sourceQuestionNo: questionNo,
+    examTitle: `${payloadMode} payload 검수`,
+    correctRate: questionNo === 2 ? 40 : 55
+  }));
+  const payload = {
+    mode: payloadMode,
+    printTitle: `${payloadMode} payload 검수`,
+    className: 'QA 반',
+    gradeName: '중3',
+    createdDate: '2026-09-06',
+    scope: 'class',
+    typeMode: 'mostWrong',
+    options: { includeHomeworkCheckBox: true, pageBreakByStudent: false },
+    classWrongItems: payloadMode === 'class' ? items : [],
+    gradeWrongItems: payloadMode === 'grade' ? items : [],
+    typeItems: payloadMode === 'type' ? items : []
+  };
+  sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify(payload));
+  location.replace(`/apmath/wrong_print_engine.html?fit=screen&mode=exam&renderAuthorityDualRun=1&qa=${Date.now()}`);
+</script>
+</body>
+</html>
