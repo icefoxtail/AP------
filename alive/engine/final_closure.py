@@ -22,6 +22,7 @@ from .source_question import extract_source_exam
 from .exact_verifier import verify_question
 from .metadata_finalizer import finalize_similar_metadata
 from .adaptive_method_profile import lint_solution_method, method_profile_for_question
+from .pipeline_closure import shared_closure
 
 
 FINAL_SCHEMA_VERSION = "0.1.0"
@@ -401,6 +402,7 @@ def audit_final_closure(
     output_path: Path | None = None,
     js_path: str | None = None,
     variant_proof_ledger_path: Path | None = None,
+    quality_manifest_path: Path | None = None,
 ) -> dict[str, Any]:
     """Audit a final JS/ZIP and return a per-question fail-closed report."""
 
@@ -496,6 +498,12 @@ def audit_final_closure(
             "browser": browser_gate["status"],
             "externalReview": external_gate["status"],
         }
+        # Legacy PASS flags remain useful diagnostics but cannot alone close a
+        # new run. The sidecar is independently hashed and re-read by one shared
+        # verifier across original/textbook/visual/similar pipelines.
+        manifest = quality_manifest_path or input_path.with_suffix(input_path.suffix + '.closure.json')
+        common = shared_closure(root, manifest, input_path)
+        gate_status['commonClosure'] = common['status']
         if variant_proof_ledger_path:
             gate_status["variant"] = variant_gate["status"]
         overall = "PASS" if all(value == "PASS" for value in gate_status.values()) else "FAIL"
@@ -514,6 +522,7 @@ def audit_final_closure(
             "questions": question_rows,
             "findings": all_static + review_findings + browser_findings + external_findings + variant_findings,
             "node": node,
+            "commonClosure": common,
             "publicationStatus": "NOT_PUBLISHED",
         }
         if output_path:

@@ -1,0 +1,235 @@
+[
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "quantifier-negation",
+    "semantic": {
+      "variable": "x",
+      "domain": "R",
+      "predicate": "p(x)",
+      "originalQuantifier": "FOR_ALL",
+      "negatedQuantifier": "EXISTS",
+      "negatedPredicate": "¬(p(x))"
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "proof-flow",
+    "semantic": {
+      "steps": [
+        {
+          "id": "S1",
+          "statement": "p",
+          "justification": "가정",
+          "premiseIds": []
+        },
+        {
+          "id": "S2",
+          "statement": "q",
+          "justification": "p→q",
+          "premiseIds": [
+            "S1"
+          ]
+        }
+      ],
+      "conclusionStepId": "S2",
+      "contradictionTarget": null
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "set-cardinality",
+    "semantic": {
+      "setIds": [
+        "A",
+        "B"
+      ],
+      "universeId": "U",
+      "universeCount": 45,
+      "aCount": 28,
+      "bCount": 23,
+      "maximumIntersection": 23,
+      "minimumIntersection": 6
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "set-inclusion",
+    "semantic": {
+      "inner": "B",
+      "outer": "A",
+      "universeId": "U",
+      "relation": "SUBSET_OR_EQUAL"
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "set-regions",
+    "semantic": {
+      "setIds": [
+        "A",
+        "B",
+        "C"
+      ],
+      "universeId": "U",
+      "regions": [
+        "011"
+      ],
+      "decisiveSteps": [
+        "B∩C",
+        "A 제외"
+      ]
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "case-table",
+    "semantic": {
+      "columns": [
+        "x",
+        "값"
+      ],
+      "rows": [
+        {
+          "id": "case1",
+          "cells": [
+            "1",
+            "3"
+          ],
+          "disposition": "KEEP",
+          "reason": "조건 만족"
+        },
+        {
+          "id": "case2",
+          "cells": [
+            "2",
+            "4"
+          ],
+          "disposition": "REJECT",
+          "reason": "조건 불만족"
+        }
+      ],
+      "exhaustivenessReason": "x=1 또는 x=2"
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "number-line",
+    "semantic": {
+      "variable": "x",
+      "intervals": [
+        {
+          "left": null,
+          "right": 0,
+          "leftClosed": false,
+          "rightClosed": false
+        },
+        {
+          "left": 2,
+          "right": 5,
+          "leftClosed": true,
+          "rightClosed": false
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "cartesian",
+    "semantic": {
+      "xMin": -3,
+      "xMax": 3,
+      "yMin": -1,
+      "yMax": 5,
+      "branches": [
+        {
+          "id": "f",
+          "formula": "x**2",
+          "points": [
+            {
+              "id": "L",
+              "x": -2,
+              "y": 4
+            },
+            {
+              "id": "O",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "R",
+              "x": 2,
+              "y": 4
+            }
+          ],
+          "leftClosed": true,
+          "rightClosed": true
+        }
+      ],
+      "keyPoints": [
+        {
+          "id": "O",
+          "x": 0,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
+    "visualType": "geometry",
+    "semantic": {
+      "points": [
+        {
+          "id": "A",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "B",
+          "x": 4,
+          "y": 0
+        },
+        {
+          "id": "C",
+          "x": 0,
+          "y": 2
+        },
+        {
+          "id": "D",
+          "x": 4,
+          "y": 2
+        }
+      ],
+      "circles": [],
+      "segments": [
+        {
+          "id": "s1",
+          "start": "A",
+          "end": "B"
+        },
+        {
+          "id": "s2",
+          "start": "C",
+          "end": "D"
+        }
+      ],
+      "relations": [
+        {
+          "from": "s1",
+          "to": "s2",
+          "relation": "parallel"
+        }
+      ],
+      "scalePolicy": "EXACT_EQUAL_UNITS"
+    }
+  }
+]
