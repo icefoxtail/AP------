@@ -216,5 +216,274 @@
         return materializeLayoutMaps(layout, blockMap, options).pageMap;
     }
 
-    return Object.freeze({ paginateRenderableBlocks, materializeLayoutMaps, materializePageMap });
+    // Promotion bridge: adapters provide already-observed legacy placement facts.
+    // The core never reads source/recipient data from DOM; it reattaches those
+    // facts only through the adapter-owned blockMap, exactly as PageMap does.
+    function materializeLegacyLayoutMaps(input, blockMap, options) {
+        if (!C) fail('APPrintContract must load before APLayoutAuthority');
+        const legacy = input || {};
+        const lookup = blockMap || {};
+        const config = options || {};
+        const pages = (legacy.pages || []).map((rawPage, pageIndex) => {
+            const pageNo = positiveInteger(rawPage.pageNo, 'LEGACY_PAGE_NO', pageIndex + 1);
+            const isBlank = rawPage.isBlank === true;
+            const columns = (rawPage.columns || []).map((rawColumn, columnIndex) => ({
+                columnNo: positiveInteger(rawColumn.columnNo, 'LEGACY_COLUMN_NO', columnIndex + 1),
+                items: (rawColumn.items || []).map((rawItem, itemIndex) => {
+                    const blockId = safeText(rawItem.blockId, 'LEGACY_BLOCK_ID');
+                    const record = lookup[blockId] || fail('UNKNOWN_LEGACY_BLOCK:' + blockId);
+                    return Object.freeze({
+                        blockId,
+                        questionKey: String(rawItem.questionKey || blockId),
+                        columnNo: positiveInteger(rawItem.columnNo, 'LEGACY_ITEM_COLUMN_NO', columnIndex + 1),
+                        columnSpan: positiveInteger(rawItem.columnSpan, 'LEGACY_ITEM_COLUMN_SPAN', 1),
+                        layoutTag: String(rawItem.layoutTag || record.layoutTag || ''),
+                        placementKind: String(rawItem.placementKind || 'normal'),
+                        slotSpanRows: positiveInteger(rawItem.slotSpanRows, 'LEGACY_SLOT_SPAN_ROWS', 1),
+                        continuationOf: rawItem.continuationOf ? String(rawItem.continuationOf) : '',
+                        slotOccupancy: rawItem.slotOccupancy === undefined ? 1 : Number(rawItem.slotOccupancy),
+                        measurementMode: rawItem.measurementMode === 'tight' ? 'tight' : 'raw',
+                        order: itemIndex,
+                        sourceRef: record.sourceRef,
+                        displayNo: record.displayNo,
+                        sectionId: record.sectionId || config.sectionId || '',
+                        recipientId: record.recipientId || config.recipientId || null
+                    });
+                })
+            }));
+            const flatItems = columns.flatMap(column => column.items);
+            const first = flatItems[0];
+            const sectionId = String(first?.sectionId || config.sectionId || '').trim();
+            if (!isBlank && !sectionId) fail('MISSING_SECTION_ID_FOR_LEGACY_PAGEMAP');
+            const primary = flatItems.filter(item => !item.continuationOf);
+            return Object.freeze({
+                pageNo,
+                isBlank,
+                columns: Object.freeze(columns.map(column => Object.freeze({
+                    columnNo: column.columnNo,
+                    items: Object.freeze(column.items.map(item => Object.freeze({ ...item })))
+                }))),
+                pageMap: Object.freeze({
+                    pageNo,
+                    sectionId: isBlank ? (config.blankSectionId || '__blank__') : sectionId,
+                    recipientId: first?.recipientId || config.recipientId || null,
+                    questionSourceRefs: primary.map(item => item.sourceRef),
+                    displayNos: primary.map(item => item.displayNo),
+                    continuations: flatItems.filter(item => item.continuationOf).map(item => item.continuationOf),
+                    hasBlankPage: isBlank
+                })
+            });
+        });
+        const columnMap = pages.flatMap(page => page.columns.flatMap(column => column.items.map(item => Object.freeze({
+            pageNo: page.pageNo,
+            blockId: item.blockId,
+            questionKey: item.questionKey,
+            columnNo: item.columnNo,
+            columnSpan: item.columnSpan,
+            layoutTag: item.layoutTag,
+            placementKind: item.placementKind,
+            slotSpanRows: item.slotSpanRows,
+            continuationOf: item.continuationOf,
+            slotOccupancy: item.slotOccupancy,
+            measurementMode: item.measurementMode
+        }))));
+        const continuationMap = columnMap.filter(item => item.continuationOf).map(item => Object.freeze({
+            continuationBlockId: item.blockId,
+            sourceBlockId: item.continuationOf,
+            pageNo: item.pageNo
+        }));
+        return Object.freeze({
+            pageMap: C.createPageMap({ pages: pages.map(page => page.pageMap) }),
+            columnMap: Object.freeze(columnMap),
+            continuationMap: Object.freeze(continuationMap),
+            overflowEvidence: Object.freeze((legacy.overflowEvidence || []).map(item => Object.freeze({ ...item }))),
+            qpp: legacy.qpp === undefined || legacy.qpp === null ? null : positiveInteger(legacy.qpp, 'LEGACY_QPP', null)
+        });
+    }
+
+    function buildExpectedLayoutMaps(input, blockMap, options) {
+        const layout = paginateRenderableBlocks(input);
+        return Object.freeze({ layout, ...materializeLayoutMaps(layout, blockMap, options) });
+    }
+
+    function sourceRefKey(ref) {
+        return C.sourceRefKey(ref);
+    }
+
+    function pageSignature(page) {
+        const entries = page.questionSourceRefs.map((ref, index) => ({ ref: sourceRefKey(ref), displayNo: page.displayNos[index] }))
+            .sort((left, right) => left.displayNo - right.displayNo || left.ref.localeCompare(right.ref));
+        return JSON.stringify({
+            pageNo: page.pageNo,
+            sectionId: page.sectionId,
+            recipientId: page.recipientId || null,
+            refs: entries.map(entry => entry.ref),
+            displayNos: entries.map(entry => entry.displayNo),
+            continuations: page.continuations,
+            hasBlankPage: page.hasBlankPage === true
+        });
+    }
+
+    function columnSignature(item) {
+        return JSON.stringify({
+            pageNo: item.pageNo,
+            blockId: item.blockId,
+            columnNo: item.columnNo,
+            columnSpan: item.columnSpan,
+            layoutTag: item.layoutTag || '',
+            placementKind: item.placementKind || 'normal',
+            slotSpanRows: item.slotSpanRows || 1,
+            continuationOf: item.continuationOf || ''
+        });
+    }
+
+    function countPrimaryRefs(pageMap) {
+        const counts = new Map();
+        for (const page of pageMap.pages) {
+            page.questionSourceRefs.forEach(ref => {
+                const key = `${page.sectionId}\u0000${sourceRefKey(ref)}`;
+                counts.set(key, (counts.get(key) || 0) + 1);
+            });
+        }
+        return counts;
+    }
+
+    function comparePromotionLayouts(observed, expected) {
+        const legacy = observed || fail('MISSING_OBSERVED_LAYOUT');
+        const shared = expected || fail('MISSING_EXPECTED_LAYOUT');
+        const differences = [];
+        const compareList = (field, left, right) => {
+            const a = left || [];
+            const b = right || [];
+            if (JSON.stringify(a) !== JSON.stringify(b)) differences.push(Object.freeze({ field, observed: a, expected: b }));
+        };
+        compareList('page', legacy.pageMap.pages.map(pageSignature), shared.pageMap.pages.map(pageSignature));
+        compareList('column', legacy.columnMap.map(columnSignature).sort(), shared.columnMap.map(columnSignature).sort());
+        compareList('continuation', legacy.continuationMap.map(item => `${item.pageNo}:${item.continuationBlockId}:${item.sourceBlockId}`), shared.continuationMap.map(item => `${item.pageNo}:${item.continuationBlockId}:${item.sourceBlockId}`));
+        compareList('blankPage', legacy.pageMap.pages.filter(page => page.hasBlankPage).map(page => page.pageNo), shared.pageMap.pages.filter(page => page.hasBlankPage).map(page => page.pageNo));
+        compareList('overflow', legacy.overflowEvidence.map(item => `${item.blockId}:${item.code || ''}`), shared.overflowEvidence.map(item => `${item.blockId}:${item.code || ''}`));
+        if (legacy.qpp !== shared.layout.qpp) differences.push(Object.freeze({ field: 'qpp', observed: legacy.qpp, expected: shared.layout.qpp }));
+
+        const observedCounts = countPrimaryRefs(legacy.pageMap);
+        const expectedCounts = countPrimaryRefs(shared.pageMap);
+        const omissions = Array.from(expectedCounts.keys()).filter(key => !observedCounts.has(key));
+        const duplications = Array.from(observedCounts.entries()).filter(([key, count]) => count > (expectedCounts.get(key) || 0)).map(([key]) => key);
+        if (omissions.length) differences.push(Object.freeze({ field: 'omission', observed: omissions, expected: [] }));
+        if (duplications.length) differences.push(Object.freeze({ field: 'duplication', observed: duplications, expected: [] }));
+
+        return Object.freeze({
+            equal: differences.length === 0,
+            differences: Object.freeze(differences),
+            parity: Object.freeze({
+                pages: differences.every(item => item.field !== 'page' && item.field !== 'blankPage'),
+                columns: differences.every(item => item.field !== 'column'),
+                continuations: differences.every(item => item.field !== 'continuation'),
+                overflow: differences.every(item => item.field !== 'overflow'),
+                qpp: differences.every(item => item.field !== 'qpp'),
+                omissionCount: omissions.length,
+                duplicationCount: duplications.length
+            })
+        });
+    }
+
+    // This is deliberately a bridge, not a renderer: it observes the legacy
+    // DOM after it has rendered, asks the adapter to resolve source records,
+    // and gives only source-free block facts to paginateRenderableBlocks().
+    function observeLegacyDomLayout(area, options) {
+        const root = area;
+        if (!root || typeof root.querySelectorAll !== 'function') fail('INVALID_LEGACY_LAYOUT_ROOT');
+        const config = options || {};
+        if (typeof config.resolveRecord !== 'function') fail('MISSING_LEGACY_LAYOUT_RECORD_RESOLVER');
+        const columns = positiveInteger(config.columns, 'LEGACY_LAYOUT_COLUMNS', 2);
+        const qpp = positiveInteger(config.qpp, 'LEGACY_LAYOUT_QPP', columns * 2);
+        const pageNodes = Array.from(root.querySelectorAll('.page'));
+        const blockMap = {};
+        const expectedBlocks = [];
+        const overflowEvidence = [];
+        const primaryBySource = new Map();
+        const occurrenceBySource = new Map();
+        let order = 0;
+        const pages = pageNodes.map((pageNode, pageIndex) => {
+            const pageNo = pageIndex + 1;
+            if (pageNode.classList.contains('page-blank')) return { pageNo, isBlank: true, columns: [] };
+            const columnItems = Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] }));
+            const itemNodes = Array.from(pageNode.querySelectorAll('.q-box[data-source-ref], .ans-cell[data-source-ref]:not(.ans-cell-empty)'));
+            itemNodes.forEach(node => {
+                const sourceKey = String(node.getAttribute('data-source-ref') || '').trim();
+                const record = config.resolveRecord(sourceKey, node);
+                if (!record || !record.sourceRef || !Number.isInteger(Number(record.displayNo)) || Number(record.displayNo) < 1) {
+                    fail('UNKNOWN_LEGACY_SOURCE_RECORD:' + sourceKey);
+                }
+                const occurrence = (occurrenceBySource.get(sourceKey) || 0) + 1;
+                occurrenceBySource.set(sourceKey, occurrence);
+                const hasQuestionNumber = Boolean(node.querySelector('.q-num'));
+                const continuationOf = !hasQuestionNumber && primaryBySource.has(sourceKey) ? primaryBySource.get(sourceKey) : '';
+                const blockId = `legacy:${sourceKey}:${occurrence}`;
+                if (!continuationOf) primaryBySource.set(sourceKey, blockId);
+                const gridColumn = node.closest('.grid-col');
+                const grid = gridColumn?.parentElement;
+                const columnNo = gridColumn && grid ? Math.min(columns, Math.max(1, Array.from(grid.children).indexOf(gridColumn) + 1)) : 1;
+                const layoutTag = String(record.layoutTag || '');
+                const impliedFullWidth = layoutTag === 'fullwidth' || record.wide === true || !gridColumn;
+                const columnSpan = impliedFullWidth ? columns : 1;
+                const slotRows = Math.max(1, Math.ceil(qpp / columns));
+                const slotSpanRows = layoutTag === 'subjective-2up' ? slotRows : layoutTag === 'subjective-4up' ? Math.max(1, Math.ceil(slotRows / 2)) : 1;
+                const placementKind = layoutTag === 'subjective-2up' ? 'subjective-2up' : layoutTag === 'subjective-4up' ? 'subjective-4up' : impliedFullWidth ? 'fullwidth' : 'normal';
+                const measuredHeight = Math.max(1, Number(node.getBoundingClientRect?.().height || node.offsetHeight || node.scrollHeight || 1));
+                const container = gridColumn || pageNode;
+                if (container.clientHeight > 0 && node.scrollHeight > container.clientHeight + 2) {
+                    overflowEvidence.push({ blockId, code: 'LEGACY_BLOCK_OVERFLOW', measuredHeight, usableHeight: container.clientHeight, measurementMode: 'raw' });
+                }
+                blockMap[blockId] = {
+                    sectionId: String(record.sectionId || config.sectionId || '').trim(),
+                    recipientId: record.recipientId || config.recipientId || null,
+                    sourceRef: record.sourceRef,
+                    displayNo: Number(record.displayNo),
+                    layoutTag,
+                    wide: record.wide === true
+                };
+                const item = {
+                    blockId,
+                    questionKey: sourceKey,
+                    columnNo,
+                    columnSpan,
+                    layoutTag,
+                    placementKind,
+                    slotSpanRows,
+                    slotOccupancy: continuationOf ? 0 : slotSpanRows,
+                    continuationOf,
+                    measurementMode: 'raw'
+                };
+                columnItems[columnNo - 1].items.push(item);
+                expectedBlocks.push({
+                    blockId,
+                    questionKey: sourceKey,
+                    measuredHeight,
+                    measurements: { raw: measuredHeight, tight: measuredHeight },
+                    layoutTag,
+                    columnSpan,
+                    slotOccupancy: continuationOf ? 0 : slotSpanRows,
+                    continuationOf
+                });
+                order += 1;
+            });
+            return { pageNo, isBlank: false, columns: columnItems };
+        });
+        const capacities = pageNodes.map(page => Number(page.querySelector('.page-body, .grid-container')?.clientHeight || page.clientHeight || 0)).filter(value => value > 0);
+        const usableHeight = Math.max(1, config.usableHeight || (capacities.length ? Math.max(...capacities) : 1));
+        return Object.freeze({
+            legacyInput: Object.freeze({ pages, overflowEvidence, qpp }),
+            expectedInput: Object.freeze({
+                pageGeometry: { usableHeight, columns, qpp, blockGap: Number(config.blockGap || 0), measurementMode: 'raw' },
+                blocks: expectedBlocks.slice().sort((left, right) => {
+                    const leftRecord = blockMap[left.blockId];
+                    const rightRecord = blockMap[right.blockId];
+                    return leftRecord.displayNo - rightRecord.displayNo || left.blockId.localeCompare(right.blockId);
+                })
+            }),
+            blockMap: Object.freeze(blockMap)
+        });
+    }
+
+    return Object.freeze({ paginateRenderableBlocks, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout });
 }));

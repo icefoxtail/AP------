@@ -65,3 +65,49 @@ test('subjective layout tags automatically reserve legacy-compatible row spans a
   assert.deepEqual({ kind: subj4.placementKind, rows: subj4.slotSpanRows, slots: subj4.slotOccupancy }, { kind: 'subjective-4up', rows: 1, slots: 1 });
   assert.deepEqual(layout.pages.map(page => page.blockIds), [['normal-a', 'normal-b', 'subj2'], ['subj4']]);
 });
+
+test('promotion comparator fails closed for a mutated legacy page, column, or continuation fact', () => {
+  const records = {
+    a: { sectionId: 'exam', sourceRef: ref(1), displayNo: 1 },
+    b: { sectionId: 'exam', sourceRef: ref(2), displayNo: 2 },
+    'b-cont': { sectionId: 'exam', sourceRef: ref(2), displayNo: 2 },
+    wide: { sectionId: 'exam', sourceRef: ref(3), displayNo: 3, layoutTag: 'fullwidth' }
+  };
+  const expected = L.buildExpectedLayoutMaps({ pageGeometry: { usableHeight: 100, columns: 2, qpp: 4 }, blocks: [
+    { blockId: 'a', questionKey: 'q1', measuredHeight: 20 },
+    { blockId: 'b', questionKey: 'q2', measuredHeight: 20 },
+    { blockId: 'b-cont', questionKey: 'q2', measuredHeight: 10, continuationOf: 'b' },
+    { blockId: 'wide', questionKey: 'q3', measuredHeight: 30, layoutTag: 'fullwidth' }
+  ] }, records, { sectionId: 'exam' });
+  const observedInput = {
+    qpp: 4,
+    pages: expected.layout.pages.map(page => {
+      const seenSharedBlocks = new Set();
+      return {
+        pageNo: page.pageNo,
+        isBlank: page.isBlank,
+        columns: page.columns.map(column => ({
+          columnNo: column.columnNo,
+          items: column.items.filter(item => {
+            if (seenSharedBlocks.has(item.blockId)) return false;
+            seenSharedBlocks.add(item.blockId);
+            return true;
+          }).map(item => ({ ...item }))
+        }))
+      };
+    })
+  };
+  const observed = L.materializeLegacyLayoutMaps(observedInput, records, { sectionId: 'exam' });
+  assert.equal(L.comparePromotionLayouts(observed, expected).equal, true);
+
+  const columnMutation = structuredClone(observedInput);
+  columnMutation.pages[0].columns[0].items[0].columnNo = 2;
+  assert.equal(L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(columnMutation, records, { sectionId: 'exam' }), expected).equal, false);
+
+  const continuationMutation = structuredClone(observedInput);
+  const continuation = continuationMutation.pages.flatMap(page => page.columns.flatMap(column => column.items)).find(item => item.blockId === 'b-cont');
+  continuation.continuationOf = '';
+  const continuationResult = L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(continuationMutation, records, { sectionId: 'exam' }), expected);
+  assert.equal(continuationResult.equal, false);
+  assert.ok(continuationResult.differences.some(item => item.field === 'continuation' || item.field === 'duplication'));
+});

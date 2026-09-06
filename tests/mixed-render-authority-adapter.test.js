@@ -18,6 +18,9 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
   assert.match(html, /resolveSourceRef: \(question, index\)/);
   assert.match(html, /getMixedQuestionIdentity\(q\)/);
   assert.match(html, /compareAnswerSemantics/);
+  assert.match(html, /layout-authority\.js\?v=20260906\.3/);
+  assert.match(html, /function recordMixedLayoutPromotionGate\(area\)/);
+  assert.match(html, /recordMixedLayoutPromotionGate\(area\)/);
 });
 
 test('Mixer pack-fallback browser fixture records parity across exam, solution, and answer outputs', () => {

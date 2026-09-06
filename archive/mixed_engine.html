@@ -39,6 +39,7 @@
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="layout-authority.js?v=20260906.3" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -1246,6 +1247,35 @@ async function recordMixedDualRun(area) {
     }
 }
 
+function recordMixedLayoutPromotionGate(area) {
+    if (new URLSearchParams(window.location.search).get('renderAuthorityDualRun') !== '1') return;
+    const authority = window.APLayoutAuthority;
+    if (!authority?.observeLegacyDomLayout || !authority?.buildExpectedLayoutMaps || !authority?.comparePromotionLayouts) return;
+    try {
+        const sectionId = `mixer:${AppState.mode}`;
+        const records = new Map(AppState.canonicalData.map(question => [
+            `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
+            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: question.layoutTag, wide: question.wide }
+        ]));
+        const observation = authority.observeLegacyDomLayout(area, {
+            qpp: AppState.qpp,
+            columns: 2,
+            sectionId,
+            blockGap: SE_BLOCK_GAP,
+            resolveRecord: sourceRef => records.get(sourceRef) || null
+        });
+        const observed = authority.materializeLegacyLayoutMaps(observation.legacyInput, observation.blockMap, { sectionId });
+        const expected = authority.buildExpectedLayoutMaps(observation.expectedInput, observation.blockMap, { sectionId });
+        const comparison = authority.comparePromotionLayouts(observed, expected);
+        document.documentElement.dataset.apLayoutAuthorityDualRun = JSON.stringify({
+            source: 'mixer', mode: AppState.mode, equal: comparison.equal, parity: comparison.parity,
+            differences: comparison.differences.slice(0, 8)
+        });
+    } catch (error) {
+        document.documentElement.dataset.apLayoutAuthorityDualRun = JSON.stringify({ source: 'mixer', mode: AppState.mode, error: String(error?.message || error) });
+    }
+}
+
 function prepareMixedCanonicalContent(question) {
     const raw = question.sourcePayload || {};
     const rawContent = stripInlineImagesFromContent(raw.content || raw.question || question.content || '', !!question.image);
@@ -2310,6 +2340,7 @@ async function renderBody() {
     markMixedReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: AppState.mode });
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
+    recordMixedLayoutPromotionGate(area);
     await recordMixedDualRun(area);
     updateScreenFitScale();
     registerBlueprintToOS(); // [3B-MIXED] 믹서 원본 문항 매핑 등록 — 비동기
