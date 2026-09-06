@@ -17,6 +17,13 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
   assert.match(engine, /maybeInsertStudentDuplexBreak/);
   assert.match(engine, /renderStudentReviewPacket/);
   assert.match(launcher, /renderAuthorityDualRun=1/);
+  assert.match(launcher, /const twoRecipients = params\.get\('recipients'\) === '2';/);
+  assert.match(launcher, /pageBreakByStudent: twoRecipients/);
+  assert.match(launcher, /검수 학생 B/);
+  assert.match(launcher, /const duplex = params\.get\('duplex'\) === '1';/);
+  assert.match(launcher, /wrong-print-duplex-bank\.js/);
+  const duplexBank = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-duplex-bank.js'), 'utf8');
+  assert.match(duplexBank, /Array\.from\(\{ length: 72 \}/);
 });
 
 test('Clinic single-student restored-source browser fixture records parity across all three modes', () => {
@@ -25,4 +32,8 @@ test('Clinic single-student restored-source browser fixture records parity acros
   assert.equal(evidence.source.studentCount, 1);
   assert.deepEqual(evidence.results.map(result => result.mode), ['exam', 'solution', 'answer']);
   assert.ok(evidence.results.every(result => result.dualRunEqual === true && result.renderError === ''));
+  assert.equal(evidence.multiRecipientLegacyCoverage.kind, 'actual-browser-render');
+  assert.equal(evidence.multiRecipientLegacyCoverage.firstStudentPacketPages, 3);
+  assert.equal(evidence.multiRecipientLegacyCoverage.dualRun, 'skipped: recipient-composition-legacy-only');
+  assert.match(evidence.multiRecipientLegacyCoverage.blankPageAccessibility, /accessibility tree/);
 });

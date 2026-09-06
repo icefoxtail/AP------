@@ -3,31 +3,40 @@
 <head><meta charset="utf-8"><title>Wrong print layout QA launcher</title></head>
 <body>
 <script>
-  const overflow = new URLSearchParams(location.search).get('overflow') === '1';
-  const archiveFile = overflow
+  const params = new URLSearchParams(location.search);
+  const overflow = params.get('overflow') === '1';
+  const twoRecipients = params.get('recipients') === '2';
+  const duplex = params.get('duplex') === '1';
+  const archiveFile = duplex
+    ? `${location.origin}/tests/fixtures/wrong-print-duplex-bank.js?v=${Date.now()}`
+    : overflow
     ? `${location.origin}/tests/fixtures/wrong-print-overflow-bank.js?v=${Date.now()}`
     : 'original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js';
-  const order = overflow ? [1, 2, 3] : [22, 21, 20, 21, 20, 22];
+  const order = duplex ? [1] : overflow ? [1, 2, 3] : [22, 21, 20, 21, 20, 22];
+  const makeStudent = (studentName, questionNos) => ({
+    studentName,
+    wrongItems: questionNos.map(questionNo => ({
+      sourceArchiveFile: archiveFile,
+      archiveFile,
+      questionNo,
+      sourceQuestionNo: questionNo,
+      examTitle: '2up 배치 검수'
+    }))
+  });
   const payload = {
     mode: 'student',
-    printTitle: '2up 교차 검수',
+    printTitle: twoRecipients ? '다수 수신자 duplex 검수' : '2up 교차 검수',
     className: 'QA',
     createdDate: '2026-07-17',
-    options: { pageBreakByStudent: false, includeHomeworkCheckBox: false },
-    students: [{
-      studentName: '검수 학생',
-      wrongItems: order.map(questionNo => ({
-        sourceArchiveFile: archiveFile,
-        archiveFile,
-        questionNo,
-        sourceQuestionNo: questionNo,
-        examTitle: '2up 배치 검수'
-      }))
-    }]
+    options: { pageBreakByStudent: twoRecipients, includeHomeworkCheckBox: twoRecipients },
+    students: [
+      makeStudent('검수 학생 A', order),
+      ...(twoRecipients ? [makeStudent('검수 학생 B', duplex ? [2] : overflow ? [3, 2, 1] : [20, 21, 22])] : [])
+    ]
   };
   sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify(payload));
-  const mode = new URLSearchParams(location.search).get('mode') || 'exam';
-  const dualRun = new URLSearchParams(location.search).get('renderAuthorityDualRun') === '1' ? '&renderAuthorityDualRun=1' : '';
+  const mode = params.get('mode') || 'exam';
+  const dualRun = params.get('renderAuthorityDualRun') === '1' ? '&renderAuthorityDualRun=1' : '';
   location.replace('/apmath/wrong_print_engine.html?fit=screen&mode=' + encodeURIComponent(mode) + dualRun + '&qa=' + Date.now());
 </script>
 </body>

@@ -29,3 +29,27 @@ test('Mixer pack-fallback browser fixture records parity across exam, solution, 
   assert.ok(evidence.results.every(result => result.dualRunEqual === true && result.renderError === ''));
   assert.equal(evidence.results[0].qpp, 4);
 });
+
+test('Mixer storage fixture preserves same-id/different-source identity and exercises QPP 4/6/8 with source assets', () => {
+  const launcher = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'mixer-render-authority-storage-launcher.html'), 'utf8');
+  assert.match(launcher, /mixedQuestions_\$\{key\}/);
+  assert.match(launcher, /mixedMeta_\$\{key\}/);
+  assert.match(launcher, /same-id-source-a/);
+  assert.match(launcher, /same-id-source-b/);
+  assert.match(launcher, /problem-image-source/);
+  assert.match(launcher, /solution-image-source/);
+  assert.match(launcher, /\['4', '6', '8'\]/);
+  assert.match(launcher, /requestedMode === 'solution' \? 'sol'/);
+  assert.match(launcher, /renderAuthorityDualRun=1/);
+
+  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-4-mixer-browser-fixture.json'), 'utf8'));
+  const coverage = evidence.storageSourceCoverage;
+  assert.equal(coverage.kind, 'actual-browser-render');
+  assert.deepEqual(coverage.observedRuns.map(run => [run.mode, run.qpp]), [['exam', 4], ['solution', 6], ['answer', 8]]);
+  assert.deepEqual(coverage.observedRuns.map(run => run.questionCount || run.answerEntryCount), [8, 8, 8]);
+  assert.deepEqual(coverage.sourceIdentity, [
+    'tests/fixtures/mixer-source-a.js#same-id-source-a',
+    'tests/fixtures/mixer-source-b.js#same-id-source-b'
+  ]);
+  assert.match(coverage.dualRunLimit, /cannot read/);
+});
