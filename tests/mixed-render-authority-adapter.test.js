@@ -18,7 +18,7 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
   assert.match(html, /resolveSourceRef: \(question, index\)/);
   assert.match(html, /getMixedQuestionIdentity\(q\)/);
   assert.match(html, /compareAnswerSemantics/);
-  assert.match(html, /layout-authority\.js\?v=20260906\.6/);
+  assert.match(html, /layout-authority\.js\?v=20260906\.11/);
   assert.match(html, /function recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /layoutMeasurementLedger/);

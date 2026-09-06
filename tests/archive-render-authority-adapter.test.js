@@ -17,7 +17,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /data-semantic-content="1"/);
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
   assert.match(engine, /recordArchiveDualRun\(area\)/);
-  assert.match(engine, /layout-authority\.js\?v=20260906\.6/);
+  assert.match(engine, /layout-authority\.js\?v=20260906\.11/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /layoutMeasurementLedger/);
