@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_0",
+  "status": "PASS",
+  "capturedAt": "2026-09-06",
+  "baseline": {
+    "gitHead": "664393d92996b4ce234fab33238139f28a28929b",
+    "planBaseHead": "e7ab341d33b0d271e8a985705eb501573065f22d",
+    "workingTree": "clean",
+    "meaning": "This is a source and capability snapshot before RenderAuthority extraction. It is not an implementation or final-integration pass."
+  },
+  "enginePaths": {
+    "archive": "archive/engine.html",
+    "mixer": "archive/mixed_engine.html",
+    "clinic": "apmath/wrong_print_engine.html"
+  },
+  "categories": [
+    "PRODUCER",
+    "TRANSFORMER",
+    "RENDER_CONSUMER",
+    "DOWNSTREAM_CONSUMER"
+  ],
+  "classifications": [
+    "MUTATION_TARGET",
+    "CONTRACT_DEPENDENCY",
+    "REGRESSION_ONLY",
+    "DOCUMENTATION_ONLY"
+  ],
+  "members": [
+    {
+      "path": "archive/engine.html",
+      "role": "RENDER_CONSUMER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "155287f664fe64625e4524dba76eacf0f6b8724bdf3d72938624d1bd64d57416",
+      "evidence": ["normalizeArchiveExamScriptPath", "dataUrl = p.get('data')", "renderExam", "renderSol", "renderAns", "window.__AP_RENDER_READY__"]
+    },
+    {
+      "path": "archive/mixed_engine.html",
+      "role": "RENDER_CONSUMER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "e13bb50b545437f21b6b3825bf8b84446037a63317a153f7d4130184713dca6c",
+      "evidence": ["loadAssessmentPackFallback", "mixedQuestions_", "normalizeMixedQpp", "renderExam", "renderSol", "window.__AP_RENDER_READY__"]
+    },
+    {
+      "path": "apmath/wrong_print_engine.html",
+      "role": "RENDER_CONSUMER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "1d2e90508cccea977f2d62ecf7ee22b1238b84ac6d0d7cb9353598f5944ef4ad",
+      "evidence": ["loadPayloadFromUrlOrStorage", "loadAllQuestionBanks", "renderStudentReviewPacket", "renderMeasuredExamPages", "AP_CLINIC_PREVIEW", "CLINIC_QPP = 4"]
+    },
+    {
+      "path": "archive/index.html",
+      "role": "PRODUCER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "e13b89ddb3edf45c0266268d1c2417ee610f0bb866204f9388205332821a226c",
+      "evidence": ["goEngine", "goUnitPastMixedEngine", "rememberArchiveEngineLaunch", "mixedQuestions_", "qppModal"]
+    },
+    {
+      "path": "archive/mixer.html",
+      "role": "PRODUCER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "a8c9d9b2a8d3dc789a2995e043c6317f4aa3e3a53c085e31ee0febefc8e309b4",
+      "evidence": ["id=\"print-qpp\"", "mixedQuestions_", "mixedMeta_", "mixed_engine.html"]
+    },
+    {
+      "path": "archive/unit-past-exams.js",
+      "role": "PRODUCER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "198a161ab4c13c28c32bfee1a847b827d14daed3853a305cc453d2aaa0c87b81",
+      "evidence": ["mixedQuestions_", "mixedMeta_", "mixed_engine.html", "unit-qpp"]
+    },
+    {
+      "path": "archive/assessment/assessment-mvp.html",
+      "role": "PRODUCER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "91ab5b67706d77e1b45b1b22b3e819ab89e8897a5a78410cb6a6828a468d8f74",
+      "evidence": ["goAssessmentMixedEngine", "mixedQuestions_", "mixedMeta_", "packId"]
+    },
+    {
+      "path": "apmath/student/index.html",
+      "role": "PRODUCER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "9b61f10cdcbfe099a4b4575cca9294647c85b5d44082cbb58c0cb7280fd6150a",
+      "evidence": ["mixedQuestions_", "mixedMeta_", "mixed_engine.html", "wrong_print_engine.html"]
+    },
+    {
+      "path": "apmath/js/core.js",
+      "role": "PRODUCER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "cfde1b946cc60b5ed5496085319aca69bf5a0607ad80d763d2f847b084b0cb72",
+      "evidence": ["mixedQuestions_", "mixedMeta_", "buildMixedEngineClinicUrl"]
+    },
+    {
+      "path": "apmath/js/clinic-print.js",
+      "role": "PRODUCER",
+      "classification": "MUTATION_TARGET",
+      "sha256": "ee3d865284fbbbc7f86fc389841e247c39076e99046ae6fa02fe07e54af557ae",
+      "evidence": ["AP_CLINIC_PRINT_PAYLOAD", "wrong_print_engine.html", "AP_CLINIC_PREVIEW", "AP_CLINIC_HEADER_EDIT"]
+    },
+    {
+      "path": "apmath/js/student.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "8e1897b9149a2047f25eff0afd86c3e277082a1575d3a92f45971b56d893aa26",
+      "evidence": ["wrong-clinics/packets", "wrong_print_engine.html", "engine_url"]
+    },
+    {
+      "path": "apmath/worker-backup/worker/routes/exam-pdf.js",
+      "role": "PRODUCER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "b072906f4ae24a83dd6fd438c6bfe01a6737bc32c263b13c3f205c5b6af0561a",
+      "evidence": ["mixed_engine.html", "engine.html", "mixedQuestions_", "mixedMeta_"]
+    },
+    {
+      "path": "apmath/worker-backup/worker/routes/wrong-clinics.js",
+      "role": "PRODUCER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "e599f67433b14264b898bc875bf279e1e34781bd47b54f118502d5e8fbddee4e",
+      "evidence": ["wrong_print_engine.html?set=", "public_set_key", "engine_url"]
+    },
+    {
+      "path": "archive/mathjax_render_loop.js",
+      "role": "TRANSFORMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "1df3b6ca3e36555883690814c099725a871c31eb2df6a38f4c96f2d7a1273d08",
+      "evidence": ["APRenderLoop", "typeset", "unrenderedMathCount"]
+    },
+    {
+      "path": "archive/native_print.js",
+      "role": "TRANSFORMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "4c64c7b845e2a3ad33a2c5715a7684901f61cc4d9d1d7d7beded29f30f1b7b0a",
+      "evidence": ["APNativePrint", "printGdi"]
+    },
+    {
+      "path": "archive/print_image_optimizer.js",
+      "role": "TRANSFORMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "9c07c4619d27c30e9262714daae34442317ec568a1131aa261c8918536880700",
+      "evidence": ["APPrintImageOptimizer", "prepare"]
+    },
+    {
+      "path": "archive/question-meta.js",
+      "role": "TRANSFORMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "e1d1cb5bd989d0f648d1650b479447c91c7d1ce203e9438325050b8fb54b694f",
+      "evidence": ["mergeArchiveQuestionMetadata"]
+    },
+    {
+      "path": "archive/question-identity.js",
+      "role": "TRANSFORMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "e7bbe9da8a6cc11cb8dcacdb5d069f9e9b8ee92b6387389e246cb53e138d4941",
+      "evidence": ["questionUid", "sourceQuestion"]
+    },
+    {
+      "path": "archive/concept_map.js",
+      "role": "TRANSFORMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "sha256": "4f22f692bf235537086d609ac2898a74db03653ac95965f17e468e94f478d1a7",
+      "evidence": ["conceptClusterKey"]
+    },
+    {
+      "path": "archive/css/js-archive-theme-override.css",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "CONTRACT_DEPENDENCY",
+      "evidence": ["engine.html", "mixed_engine.html"]
+    },
+    {
+      "path": "tests/archive-answer-grid-layout.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["engine.html", "mixed_engine.html", "fitAnswerPages"]
+    },
+    {
+      "path": "tests/archive-solution-image.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["renderSolutionImageHTML", "wrong_print_engine.html"]
+    },
+    {
+      "path": "tests/archive-canonical-identity-propagation.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["mixed_engine.html", "sourceQuestion"]
+    },
+    {
+      "path": "tests/archive-engine-launch-fallback.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["APMATH_ARCHIVE_ENGINE_LAUNCH", "engine.html"]
+    },
+    {
+      "path": "tests/archive-mathjax-render-loop.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["APRenderLoop", "engine.html", "mixed_engine.html"]
+    },
+    {
+      "path": "tests/archive-print-image-optimizer.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["APPrintImageOptimizer", "engine.html", "mixed_engine.html"]
+    },
+    {
+      "path": "tests/apmath-clinic-print-assignment-visibility.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["clinic-print.js", "wrong_print_engine.html", "renderMeasuredExamPages"]
+    },
+    {
+      "path": "tests/apmath-wrong-print-qr-solution-regression.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["wrong_print_engine.html", "findQuestionInBank", "makeSolutionHtmlChunks"]
+    },
+    {
+      "path": "tests/assessment-archive-print-flow.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["assessment-mvp.html", "mixed_engine.html", "packId"]
+    },
+    {
+      "path": "tests/student-portal-mixed-review-payload.test.js",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "REGRESSION_ONLY",
+      "evidence": ["student/index.html", "mixed_engine.html", "packId"]
+    },
+    {
+      "path": "docs/plans/PRINT_ENGINE_UNIFICATION_NEXT_PLAN.md",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "DOCUMENTATION_ONLY",
+      "evidence": ["print-core.js", "wrong_print_engine.html"]
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "DOCUMENTATION_ONLY",
+      "evidence": ["ENGINE CAPABILITY", "REAL RENDER GATE"]
+    },
+    {
+      "path": "reports/agent-memory/ap-workstream-locks.json",
+      "role": "DOWNSTREAM_CONSUMER",
+      "classification": "DOCUMENTATION_ONLY",
+      "evidence": ["archive/wrong_print_engine.html", "defaultLockedPaths"]
+    }
+  ],
+  "sourceContracts": {
+    "archive": {
+      "supportedKinds": ["ARCHIVE_STANDALONE", "ARCHIVE_PREVIEW"],
+      "currentInputs": ["URL data=exams/...js", "short-lived APMATH_ARCHIVE_ENGINE_LAUNCH recovery"],
+      "previewAuthorityToday": "URL-driven baseline",
+      "migrationRule": "Do not convert archive preview to parent-only until URL and parent-channel dual witnesses match."
+    },
+    "mixer": {
+      "supportedKinds": ["MIXED_STORAGE", "MIXED_PACK"],
+      "currentInputs": ["localStorage mixedQuestions_<key> + mixedMeta_<key>", "sessionStorage mixedQuestions + mixedMeta", "packId -> loadAssessmentPackFallback"],
+      "migrationRule": "Preserve source file and asset provenance; do not mix persistence migration into renderer extraction."
+    },
+    "clinic": {
+      "supportedKinds": ["CLINIC_SERVER_PACKET", "CLINIC_SERVER_SET", "CLINIC_WP", "CLINIC_STORAGE", "CLINIC_PARENT_PREVIEW"],
+      "currentInputs": ["packet", "set", "wp", "session/local AP_CLINIC_PRINT_PAYLOAD", "same-origin AP_CLINIC_PREVIEW"],
+      "knownRisk": "Preview currently loads URL/storage before parent payload, so stale first render is possible.",
+      "migrationRule": "Preview must render only its placeholder until authoritative parent payload arrives."
+    }
+  },
+  "capabilitySnapshot": {
+    "rendererModes": {
+      "archive": ["exam", "solution", "answer"],
+      "mixer": ["exam", "solution", "answer", "pdf-viewer"],
+      "clinic": ["exam", "solution", "answer", "review"]
+    },
+    "qpp": {
+      "archiveUpstream": [4, 6],
+      "mixerUpstream": [2, 4, 6, 8],
+      "mixedEngine": [4, 6, 8],
+      "clinic": [4],
+      "unadjudicated": ["MIXER_2QPP"]
+    },
+    "printTransport": {
+      "archive": ["browser", "raster", "native", "gdi"],
+      "mixer": ["browser", "raster", "native", "gdi"],
+      "clinic": ["browser"]
+    },
+    "preview": {
+      "archive": "URL-driven preview=1",
+      "mixer": "new-tab URL/storage/pack output",
+      "clinic": "embedded iframe plus AP_CLINIC_PREVIEW and AP_CLINIC_HEADER_EDIT"
+    }
+  },
+  "closureRules": {
+    "dependencyClosureFrozen": true,
+    "authoritativeSourceInvariant": "A transaction has exactly one authoritative source; 0 or more than 1 blocks rendering.",
+    "testCoMigration": "An authority extraction commit includes the relevant regression migration in the same commit.",
+    "dualRunOrder": ["archive", "mixer", "clinic"],
+    "prohibitedScope": ["new Mixer 2-QPP capability", "server persistence migration", "UI redesign", "worker/API change", "question payload rewrite"]
+  },
+  "knownDocumentationFinding": {
+    "id": "DOC_ENGINE_PATH_001",
+    "severity": "P1",
+    "location": "reports/agent-memory/ap-workstream-locks.json",
+    "observed": "defaultLockedPaths contains archive/wrong_print_engine.html",
+    "productionPath": "apmath/wrong_print_engine.html",
+    "disposition": "Carry to Phase 7 documentation and lock cleanup; do not silently edit unrelated locks during Phase 0."
+  },
+  "verification": {
+    "focusedBaseline": "node --test tests/archive-answer-grid-layout.test.js tests/archive-solution-image.test.js tests/archive-canonical-identity-propagation.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js tests/archive-print-image-optimizer.test.js tests/apmath-clinic-print-assignment-visibility.test.js tests/apmath-wrong-print-qr-solution-regression.test.js tests/assessment-archive-print-flow.test.js tests/student-portal-mixed-review-payload.test.js",
+    "focusedBaselineResult": {"tests": 18, "pass": 18, "fail": 0},
+    "phase0Guard": "node --test tests/print-render-authority-phase0-baseline.test.js"
+  }
+}
