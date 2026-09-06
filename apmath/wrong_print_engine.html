@@ -123,6 +123,13 @@
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
         .sol-exp { font-size: 8.5pt; line-height: 1.55; color: #333; }
         .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
+        .sol-image-wrap { display: block; margin: 10px auto 2px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+        .sol-image-wrap img { display: block; width: auto; max-width: 100%; max-height: 180px; height: auto; margin: 0 auto; object-fit: contain; }
+        .sol-image-wrap.image-small img { max-width: 48%; max-height: 105px; }
+        .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
+        .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
+        .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
         .ans-cell { border-bottom: 1px solid #eee; display: flex; height: 40px; align-items: center; padding: 0 10px; }
         .ans-cell-empty { visibility: hidden; }
@@ -999,6 +1006,18 @@ function renderQuestionImageHTML(q) {
     return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(withArchiveAssetCacheBuster(url))}" alt=""></div>`;
 }
 
+function renderSolutionImageHTML(q) {
+    if (!q || !q.solutionImage) return '';
+    const size = ['small', 'medium', 'large', 'full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
+    const alt = q.solutionImageAlt || `문항 ${q.id ?? ''} 해설 그래프`;
+    const caption = q.solutionImageCaption
+        ? `<span class="sol-image-caption">${escapeHtml(q.solutionImageCaption)}</span>`
+        : '';
+    const url = resolveArchiveAssetUrl(q.solutionImage, getQuestionArchiveFile(q));
+    if (!url) return '';
+    return `<span class="sol-image-wrap image-${size}"><img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}">${caption}</span>`;
+}
+
 function getQuestionAnswer(q) {
     return q?.answer ?? q?.correctAnswer ?? q?.correct ?? q?.ans ?? '';
 }
@@ -1146,8 +1165,10 @@ function buildQuestionBoxHTML(q, displayNo, showWrongNote = true) {
     const imageHTML = renderQuestionImageHTML(q);
     const choicesHTML = state.mode === 'exam' ? renderChoicesHTML(q) : '';
     const wrongNote = showWrongNote && q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : '';
-    const answer = state.mode === 'ans' || state.mode === 'sol' ? `<div style="margin-top:8px;font-weight:bold;color:red;">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div>` : '';
-    const solution = state.mode === 'sol' ? `<div style="background:#fdfdfd;padding:8px;border:1px solid #eee;border-radius:3px;margin-top:8px;font-size:8.5pt;line-height:1.55;">${formatSolutionHtml(getQuestionSolution(q) || '해설이 없습니다.')}</div>` : '';
+    const answer = state.mode === 'ans' ? `<div style="margin-top:8px;font-weight:bold;color:red;">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div>` : '';
+    const solution = state.mode === 'sol'
+        ? `<div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(getQuestionSolution(q) || '해설이 없습니다.')}</div></div>`
+        : '';
     return `<div class="q-box${state.mode === 'sol' ? ' sol-box' : ''}">
         <div class="q-num">${displayNo}.</div>
         ${wrongNote}
@@ -1664,7 +1685,10 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
         const hasImageField = !!getQuestionImageRaw(q);
         const rawContent = stripInlineImagesFromContent(q.content || q.question || q.text || q.prompt || '', hasImageField);
         const formattedContent = rewriteImgSrcInHtml(formatQuestionForRender(rawContent, q), getQuestionArchiveFile(q));
+        // Only solution text is chunkable.  The answer and solution image remain
+        // in the first shell, while continuation shells contain .sol-exp alone.
         const solutionHtml = formatSolutionHtml(getQuestionSolution(q) || '해설이 없습니다.');
+        const solutionImageHtml = renderSolutionImageHTML(q);
         const box = document.createElement('div');
         box.className = 'q-box sol-box';
         box.dataset.solutionHtml = solutionHtml;
@@ -1672,7 +1696,7 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
             ${q._wrongNote ? `<div class="wrong-note">${q._wrongNote}</div>` : ''}
             <div class="q-content">${formattedContent}</div>
             ${renderQuestionImageHTML(q)}
-            <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div><div class="sol-exp">${solutionHtml}</div></div>`;
+            <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(getQuestionAnswer(q) || '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
         return box;
     };
 
