@@ -36,6 +36,15 @@
     "dualRun": "skipped: recipient-composition-legacy-only",
     "promotion": "These are required Clinic legacy-business-mode renders. They do not imply shared recipient/layout promotion."
   },
+  "parentPreviewCoverage": {
+    "kind": "actual-browser-parent-child-render",
+    "fixture": "tests/fixtures/wrong-print-preview-parent.html",
+    "observedStateSequence": ["READY_RECEIVED_PARENT_PAYLOAD_SENT", "PARENT_PREVIEW_RENDERED"],
+    "renderedStudent": "PARENT_AUTHORITY_STUDENT",
+    "forbiddenStaleStudent": "STALE_STORAGE_MUST_NOT_RENDER",
+    "observed": ["AP_PRINT_READY before parent send", "AP_PRINT_PREVIEW parent source", "parent payload question render", "stale storage absent"],
+    "promotion": "Clinic preview source-authority migration PASS. Recipient composition remains legacy-only."
+  },
   "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
   "legacyRendererRetained": true
 }

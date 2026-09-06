@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Clinic parent preview authority QA</title></head>
+<body>
+<output id="preview-status" aria-live="polite">WAITING_FOR_READY</output>
+<iframe id="clinic-preview" title="Clinic preview authority fixture" src="/apmath/wrong_print_engine.html?preview=1&fit=screen&qa=preview-authority"></iframe>
+<script>
+  const status = document.getElementById('preview-status');
+  const frame = document.getElementById('clinic-preview');
+  const archiveFile = `${location.origin}/tests/fixtures/wrong-print-overflow-bank.js`;
+  // A stale same-origin value exists before the child starts. In preview mode,
+  // this may never become a render source; only the parent message may win.
+  sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify({
+    mode: 'student', students: [{ studentName: 'STALE_STORAGE_MUST_NOT_RENDER', wrongItems: [] }]
+  }));
+  const parentPayload = {
+    mode: 'student', printTitle: 'Parent source authority fixture', className: 'QA', createdDate: '2026-09-06',
+    options: { includeHomeworkCheckBox: false, pageBreakByStudent: false },
+    students: [{
+      studentName: 'PARENT_AUTHORITY_STUDENT',
+      wrongItems: [{ sourceArchiveFile: archiveFile, archiveFile, questionNo: 2, sourceQuestionNo: 2, examTitle: 'Parent preview' }]
+    }]
+  };
+  let sent = false;
+  window.addEventListener('message', event => {
+    if (event.origin !== location.origin || event.data?.type !== 'AP_PRINT_READY' || event.data?.engine !== 'clinic' || sent) return;
+    sent = true;
+    status.textContent = 'READY_RECEIVED_PARENT_PAYLOAD_SENT';
+    event.source.postMessage({ type: 'AP_PRINT_PREVIEW', mode: 'exam', payload: parentPayload }, location.origin);
+    const deadline = Date.now() + 6000;
+    const verify = () => {
+      const text = frame.contentDocument?.getElementById('print-area')?.textContent || '';
+      if (text.includes('PARENT_AUTHORITY_STUDENT') && !text.includes('STALE_STORAGE_MUST_NOT_RENDER')) {
+        status.textContent = 'PARENT_PREVIEW_RENDERED';
+        return;
+      }
+      if (Date.now() >= deadline) {
+        status.textContent = 'PARENT_PREVIEW_RENDER_TIMEOUT';
+        return;
+      }
+      setTimeout(verify, 50);
+    };
+    verify();
+  });
+</script>
+</body>
+</html>

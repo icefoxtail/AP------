@@ -5,6 +5,8 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engine.html'), 'utf8');
 const parent = fs.readFileSync(path.join(root, 'apmath', 'js', 'clinic-print.js'), 'utf8');
+const previewFixture = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-preview-parent.html'), 'utf8');
+const clinicBrowserEvidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-5-clinic-browser-fixture.json'), 'utf8'));
 
 test('Clinic preview announces readiness and waits for parent source authority before any URL or storage load', () => {
   assert.match(engine, /type: 'AP_PRINT_READY', engine: 'clinic'/);
@@ -19,6 +21,13 @@ test('Canonical preview and header messages preserve AP_CLINIC aliases during mi
   assert.match(engine, /type: 'AP_PRINT_HEADER_EDIT'/);
   assert.match(parent, /type: 'AP_PRINT_PREVIEW'/);
   assert.match(parent, /msg\.type !== 'AP_PRINT_HEADER_EDIT' && msg\.type !== 'AP_CLINIC_HEADER_EDIT'/);
+  assert.match(previewFixture, /AP_PRINT_READY/);
+  assert.match(previewFixture, /AP_PRINT_PREVIEW/);
+  assert.match(previewFixture, /STALE_STORAGE_MUST_NOT_RENDER/);
+  assert.match(previewFixture, /PARENT_PREVIEW_RENDERED/);
+  assert.deepEqual(clinicBrowserEvidence.parentPreviewCoverage.observedStateSequence, ['READY_RECEIVED_PARENT_PAYLOAD_SENT', 'PARENT_PREVIEW_RENDERED']);
+  assert.equal(clinicBrowserEvidence.parentPreviewCoverage.renderedStudent, 'PARENT_AUTHORITY_STUDENT');
+  assert.equal(clinicBrowserEvidence.parentPreviewCoverage.forbiddenStaleStudent, 'STALE_STORAGE_MUST_NOT_RENDER');
 });
 
 test('Archive preview retains URL rendering while recording a matching parent-source witness', () => {

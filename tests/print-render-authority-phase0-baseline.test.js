@@ -80,6 +80,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/fixtures/wrong-print-duplex-bank.js',
   'tests/fixtures/wrong-print-layout-launcher.html',
   'tests/fixtures/wrong-print-modes-launcher.html',
+  'tests/fixtures/wrong-print-preview-parent.html',
   'tests/print-contract.test.js',
   'tests/print-preview-channel.test.js',
   'tests/print-readiness-adapter.test.js',
