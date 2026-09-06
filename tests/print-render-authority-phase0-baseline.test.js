@@ -67,6 +67,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/assessment-submit-qr-student-page-route.test.js',
   'tests/fixtures/mixed-print-layout-launcher.html',
   'tests/fixtures/wrong-print-layout-launcher.html',
+  'tests/print-render-authority-drift-ledger.test.js',
   'tests/print-render-authority-phase0-baseline.test.js',
   'tests/student-portal-mixed-review-payload.test.js',
   'tests/student-portal-omr-review-ui.test.js'
