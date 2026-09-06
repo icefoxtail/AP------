@@ -19,6 +19,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const EPSILON = 1e-9;
+const MAX_TOLERANCE = 0.05;
 const SUPPORTED_ELEMENTS = new Set(['circle', 'line', 'polyline', 'polygon', 'rect']);
 const PASS = 'PASS';
 const FAIL = 'FAIL';
@@ -128,7 +129,10 @@ function observedPoint(parsed, selector, model, pointIndex = 0) {
 
 function observedLine(parsed, selector, model) {
   const element = getElement(parsed, selector);
-  if (!['line', 'polyline', 'polygon'].includes(element.tag) || element.points.length < 2) throw new Error(`LINE_ENDPOINTS_REQUIRED:${selector}`);
+  // A polyline's end points can accidentally lie on the expected line while
+  // its interior bends away. This minimal verifier therefore reserves all
+  // line-semantic facts for a real SVG <line> primitive.
+  if (element.tag !== 'line' || element.points.length !== 2) throw new Error(`LINE_ELEMENT_REQUIRED:${selector}`);
   const first = inversePoint(element.points[0], model);
   const last = inversePoint(element.points[element.points.length - 1], model);
   const dx = last[0] - first[0];
@@ -177,6 +181,43 @@ function comparePoint(expected, observed, tolerance) {
 
 function normaliseFactType(value) {
   return String(value ?? '').toUpperCase().replaceAll('-', '_').replaceAll(' ', '_');
+}
+
+function compareCoordinateAnchor(anchor, parsed, model, tolerance) {
+  const kind = normaliseFactType(anchor.type ?? 'POINT');
+  let observed;
+  if (kind === 'POINT') observed = observedPoint(parsed, anchor.element, model, anchor.pointIndex ?? 0).math;
+  else if (kind === 'INTERSECTION') {
+    const [leftSelector, rightSelector] = anchor.elements ?? [];
+    observed = intersectLines(observedLine(parsed, leftSelector, model), observedLine(parsed, rightSelector, model));
+  } else throw new Error(`COORDINATE_MODEL_ANCHOR_TYPE_NOT_SUPPORTED:${kind}`);
+  const compared = comparePoint(anchor.expected, observed, tolerance);
+  return { role: anchor.role, type: kind, element: anchor.element ?? anchor.elements ?? null, expected: anchor.expected, observed, delta: compared.delta, tolerance, result: compared.result, reason: compared.reason };
+}
+
+function coordinateModelParity(input, parsed, tolerance) {
+  const anchors = input.coordinateModel?.anchors;
+  if (!anchors || typeof anchors !== 'object') return { status: NOT_TESTED, anchors: [], errors: ['COORDINATE_MODEL_ANCHORS_MISSING'] };
+  const roles = ['origin', 'xAxis', 'yAxis'];
+  const errors = [];
+  const rows = [];
+  for (const role of roles) {
+    const anchor = anchors[role];
+    if (!anchor || typeof anchor !== 'object') {
+      errors.push(`COORDINATE_MODEL_ANCHOR_MISSING:${role}`);
+      continue;
+    }
+    try {
+      const row = compareCoordinateAnchor({ ...anchor, role }, parsed, input.coordinateModel, tolerance);
+      rows.push(row);
+      if (row.result !== PASS) errors.push(`COORDINATE_MODEL_ANCHOR_PARITY_FAIL:${role}`);
+    } catch (error) {
+      rows.push({ role, result: NOT_TESTED, reason: error.message });
+      errors.push(`COORDINATE_MODEL_ANCHOR_NOT_TESTED:${role}:${error.message}`);
+    }
+  }
+  const status = errors.length === 0 && rows.length === roles.length ? PASS : rows.some(row => row.result === FAIL) ? FAIL : NOT_TESTED;
+  return { status, anchors: rows, errors };
 }
 
 function verifyFact(fact, parsed, model, defaultTolerance) {
@@ -238,7 +279,9 @@ function verifyFact(fact, parsed, model, defaultTolerance) {
     if (type === 'OPEN_CLOSED_POINT') {
       const element = getElement(parsed, fact.element);
       const observedPointValue = observedPoint(parsed, fact.element, model, fact.pointIndex ?? 0).math;
+      if (!Object.hasOwn(element.attrs, 'fill')) return { ...base, observed: { point: observedPointValue }, result: NOT_TESTED, reason: 'OPEN_CLOSED_EXPLICIT_FILL_REQUIRED' };
       const fill = String(element.attrs.fill ?? '').trim().toLowerCase();
+      if (!fill || ['inherit', 'initial', 'unset', 'currentcolor'].includes(fill)) return { ...base, observed: { point: observedPointValue }, result: NOT_TESTED, reason: 'OPEN_CLOSED_FILL_NOT_DIRECTLY_DETERMINABLE' };
       const closed = !['none', 'white', '#fff', '#ffffff', 'transparent'].includes(fill);
       const expected = fact.expected ?? {};
       const coordinate = comparePoint(expected.point, observedPointValue, tolerance);
@@ -264,7 +307,24 @@ function validateInput(input) {
   if (!Array.isArray(input?.expectedFacts) || input.expectedFacts.length === 0) errors.push('EXPECTED_FACT_MISSING');
   const model = input?.coordinateModel;
   if (!model || ![model.originX, model.originY, model.sx, model.sy].every(isFiniteNumber) || model.sx <= 0 || model.sy <= 0) errors.push('COORDINATE_MODEL_INVALID');
-  for (const fact of input?.expectedFacts ?? []) if (!fact || typeof fact !== 'object' || !fact.type || !(fact.factId ?? fact.id)) errors.push('EXPECTED_FACT_INVALID');
+  const anchors = model?.anchors;
+  for (const role of ['origin', 'xAxis', 'yAxis']) {
+    const anchor = anchors?.[role];
+    if (!anchor || typeof anchor !== 'object' || !Array.isArray(anchor.expected) || anchor.expected.length !== 2 || anchor.expected.some(value => !isFiniteNumber(value))) errors.push(`COORDINATE_MODEL_ANCHOR_INVALID:${role}`);
+  }
+  if (anchors?.origin && (Math.abs(anchors.origin.expected[0]) > EPSILON || Math.abs(anchors.origin.expected[1]) > EPSILON)) errors.push('COORDINATE_MODEL_ORIGIN_ANCHOR_MUST_BE_ZERO');
+  if (anchors?.xAxis && (Math.abs(anchors.xAxis.expected[1]) > EPSILON || Math.abs(anchors.xAxis.expected[0]) < EPSILON)) errors.push('COORDINATE_MODEL_X_AXIS_ANCHOR_INVALID');
+  if (anchors?.yAxis && (Math.abs(anchors.yAxis.expected[0]) > EPSILON || Math.abs(anchors.yAxis.expected[1]) < EPSILON)) errors.push('COORDINATE_MODEL_Y_AXIS_ANCHOR_INVALID');
+  const checkTolerance = (value, code) => {
+    if (value === undefined) return;
+    if (!isFiniteNumber(value) || value < 0) errors.push(`${code}_INVALID`);
+    else if (value > MAX_TOLERANCE) errors.push(`${code}_EXCEEDS_MAX:${MAX_TOLERANCE}`);
+  };
+  checkTolerance(input?.tolerance, 'TOLERANCE');
+  for (const fact of input?.expectedFacts ?? []) {
+    if (!fact || typeof fact !== 'object' || !fact.type || !(fact.factId ?? fact.id)) errors.push('EXPECTED_FACT_INVALID');
+    checkTolerance(fact?.tolerance, `FACT_TOLERANCE:${fact?.factId ?? fact?.id ?? 'UNKNOWN'}`);
+  }
   return errors;
 }
 
@@ -284,15 +344,19 @@ export function verifySvgCoordinateParity({ root = process.cwd(), input }) {
   } else if (!svgPath) inputErrors.push('SVG_PATH_MISSING');
 
   const defaultTolerance = isFiniteNumber(input?.tolerance) && input.tolerance >= 0 ? input.tolerance : 1e-6;
+  const modelParity = inputErrors.length || parsed.status !== PASS
+    ? { status: NOT_TESTED, anchors: [], errors: ['COORDINATE_MODEL_PARITY_NOT_RUN'] }
+    : coordinateModelParity(input, parsed, defaultTolerance);
   const facts = inputErrors.length || parsed.status !== PASS
     ? []
     : input.expectedFacts.map(fact => verifyFact(fact, parsed, input.coordinateModel, defaultTolerance));
   const factFailures = facts.filter(fact => fact.result !== PASS);
-  const failures = [...inputErrors, ...parsed.errors, ...factFailures.map(fact => `${fact.factId ?? fact.type}:${fact.reason ?? 'EXPECTED_OBSERVED_PARITY_FAIL'}`)];
+  const failures = [...inputErrors, ...parsed.errors, ...modelParity.errors, ...factFailures.map(fact => `${fact.factId ?? fact.type}:${fact.reason ?? 'EXPECTED_OBSERVED_PARITY_FAIL'}`)];
   const elementExtractionStatus = parsed.status === PASS && facts.length === input?.expectedFacts?.length ? PASS : parsed.status;
   const observedFactStatus = facts.length && facts.every(fact => fact.observed !== null && fact.result !== NOT_TESTED) ? PASS : NOT_TESTED;
   const expectedObservedParity = facts.length && facts.every(fact => fact.result === PASS) ? PASS : FAIL;
-  const svgMathStatus = inputErrors.length === 0 && parsed.status === PASS && expectedObservedParity === PASS ? PASS : FAIL;
+  const tolerancePolicyStatus = inputErrors.some(error => error.startsWith('TOLERANCE') || error.startsWith('FACT_TOLERANCE')) ? FAIL : PASS;
+  const svgMathStatus = inputErrors.length === 0 && parsed.status === PASS && modelParity.status === PASS && tolerancePolicyStatus === PASS && expectedObservedParity === PASS ? PASS : FAIL;
   const renderResult = input?.renderResult ?? NOT_TESTED;
   const svgFinalStatus = svgMathStatus === PASS && renderResult === PASS ? PASS : FAIL;
   return {
@@ -306,6 +370,9 @@ export function verifySvgCoordinateParity({ root = process.cwd(), input }) {
     expectedFactCount: input?.expectedFacts?.length ?? 0,
     observedFactCount: facts.filter(fact => fact.observed !== null).length,
     factParityPassCount: facts.filter(fact => fact.result === PASS).length,
+    coordinateModelParity: modelParity.status,
+    coordinateModelAnchors: modelParity.anchors,
+    tolerancePolicy: { maxTolerance: MAX_TOLERANCE, defaultTolerance, status: tolerancePolicyStatus },
     elementExtractionStatus,
     observedFactStatus,
     expectedObservedParity,
