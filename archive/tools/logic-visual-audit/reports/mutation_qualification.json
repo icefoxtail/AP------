@@ -1,0 +1,38 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "mutationExpectedDetectorMapSha": "sha256:758a7019459be1680c8bbb0926313f49a5fafc442d1eb92654c1eb52cb67a192",
+  "corpusCount": 2,
+  "passCount": 2,
+  "failCount": 0,
+  "status": "PASS",
+  "results": [
+    {
+      "mutationId": "SET_MOVE_FORCED_TO_FREE",
+      "targetQuestionUid": "calibration:set-force-free:001",
+      "parserSurvived": true,
+      "artifactRendered": true,
+      "survivedSemanticGate": false,
+      "expectedDetectorGate": "ELEMENT_BUCKET_PARITY",
+      "allowedEquivalentGates": [],
+      "actualFailedGate": "ELEMENT_BUCKET_PARITY",
+      "declaredGateMismatch": false,
+      "detectorMapSha": "sha256:758a7019459be1680c8bbb0926313f49a5fafc442d1eb92654c1eb52cb67a192",
+      "pass": true
+    },
+    {
+      "mutationId": "SET_FLIP_ENDPOINT_CLOSEDNESS",
+      "targetQuestionUid": "holdout:set-number-line:001",
+      "parserSurvived": true,
+      "artifactRendered": true,
+      "survivedSemanticGate": false,
+      "expectedDetectorGate": "OPEN_CLOSED_PARITY",
+      "allowedEquivalentGates": [
+        "LOGIC_VISUAL_EXPECTED_FACT_PARITY"
+      ],
+      "actualFailedGate": "OPEN_CLOSED_PARITY",
+      "declaredGateMismatch": false,
+      "detectorMapSha": "sha256:758a7019459be1680c8bbb0926313f49a5fafc442d1eb92654c1eb52cb67a192",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "bundleType": "V2_OBSERVED_TYPED_FACTS_LOGIC_VISUAL_PHASE2_BATCH_02",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "artifactPath": "assets/images/22_금당고_2학기_중간_고1_기출/q13-solution.svg",
+      "artifactSha256": "sha256:398b8f2716e62fd37227bade9e72fdfd1b08f08afe89146b6062fd20645e2f96",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_REGION_VENN_2",
+      "visualRole": "대칭차집합의 A만·B만·나머지 영역을 구분하는 네 영역 판정",
+      "requiredLabels": [
+        "A−B",
+        "A△B",
+        "B−A",
+        "A∩B와 바깥"
+      ],
+      "decisiveStepIds": [
+        "A_ONLY_REGION",
+        "B_ONLY_REGION",
+        "UNSEPARATED_REMAINDER",
+        "SYMMETRIC_DIFFERENCE_SUM"
+      ],
+      "universe": null,
+      "expectedRegions": [
+        "A−B",
+        "B−A",
+        "A∩B와 바깥"
+      ],
+      "boundaryIdentity": {
+        "A_ONLY": "A−B",
+        "B_ONLY": "B−A",
+        "INTERSECTION": null,
+        "OUTSIDE_UNIVERSE": null,
+        "UNSEPARATED_VISIBLE_BUCKET": "A∩B와 바깥"
+      },
+      "countingResult": 27,
+      "finalConclusion": "A△B={1,3,4,5,6,8}, 합=27",
+      "visibleObservation": {
+        "regionBuckets": [
+          {
+            "label": "A만 = A−B",
+            "elements": [
+              3,
+              4,
+              6
+            ]
+          },
+          {
+            "label": "B만 = B−A",
+            "elements": [
+              1,
+              5,
+              8
+            ]
+          },
+          {
+            "label": "A∩B와 바깥",
+            "elements": [
+              2,
+              7,
+              9
+            ],
+            "distinction": "not visibly separated"
+          }
+        ],
+        "symmetricDifferenceElements": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          8
+        ],
+        "visibleGeometry": "A bordered left panel has three stacked colored buckets; a bordered right panel shows A△B, its elements, the sum expression, and 27."
+      },
+      "insufficiencies": [
+        {
+          "field": "universe",
+          "reason": "No visible U declaration is encoded in the rendered text."
+        },
+        {
+          "field": "boundaryIdentity.INTERSECTION_AND_OUTSIDE",
+          "reason": "The visible artifact combines A∩B and the outside bucket as A∩B와 바깥 and does not visibly separate their identities."
+        }
+      ]
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "artifactPath": "assets/images/22_금당고_2학기_중간_고1_기출/q16-solution.svg",
+      "artifactSha256": "sha256:e426c4a29ce85ec13d8a383d3dc9e545c1e1f726ccb9cb8d2839f6b7219fb783",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "64를 강제 포함하고 나머지 선택의 홀짝과 합 조건으로 X의 경우를 세는 상태도",
+      "requiredLabels": [
+        "64∈X  (강제)",
+        "S(X)>64.5",
+        "짝수 개를 선택하면 n(X)가 홀수",
+        "총 31개"
+      ],
+      "decisiveStepIds": [
+        "FORCE_64_IN_X",
+        "FREE_REMAINDER_PARITY",
+        "EXCLUDE_ZERO_REMAINDER",
+        "COUNT_ADMISSIBLE_SUBSETS"
+      ],
+      "universe": {
+        "elements": [
+          2,
+          3,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "sum": 129
+      },
+      "forcedElements": [
+        64
+      ],
+      "forbiddenElements": [],
+      "freeElements": [
+        2,
+        3,
+        4,
+        8,
+        16,
+        32
+      ],
+      "freeCount": 6,
+      "countingResult": 31,
+      "visibleObservation": {
+        "forcedBucket": {
+          "label": "64 ∈ X  (강제)",
+          "elements": [
+            64
+          ]
+        },
+        "freeBucket": {
+          "label": "나머지 {2,3,4,8,16,32}",
+          "elements": [
+            2,
+            3,
+            4,
+            8,
+            16,
+            32
+          ]
+        },
+        "visibleConstraints": [
+          "S(X)>64.5",
+          "짝수 개를 선택하면 n(X)가 홀수",
+          "0개 선택은 S(X)=64라 제외"
+        ],
+        "countingExpression": "C(6,2)+C(6,4)+C(6,6)=15+15+1=31",
+        "visibleGeometry": "Two bordered panels show the universe/sum and a green forced bucket, a free-remainder explanation, the counting expression, and a total-count pill."
+      },
+      "insufficiencies": [
+        {
+          "field": "forbiddenElements",
+          "reason": "No explicit forbidden-elements bucket for X is visibly encoded; the visible buckets are the forced element 64 and the six-element free remainder."
+        }
+      ]
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q06-solution.svg",
+      "artifactSha256": "sha256:090ec017518dcf1642f9b58982ff65cacfa65dd32d53f2c16a9585d020760dc7",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "집합 등식에서 X의 반드시 포함·반드시 제외·자유 선택 원소를 나누어 경우를 세는 상태표",
+      "requiredLabels": [
+        "U",
+        "반드시 포함",
+        "반드시 제외",
+        "자유 선택",
+        "n(X)=2²=4"
+      ],
+      "decisiveStepIds": [
+        "FORCE_A_IN_X",
+        "FORBID_B_FROM_X",
+        "FREE_REMAINDER",
+        "COUNT_SUBSETS"
+      ],
+      "universe": {
+        "elements": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "forcedElements": [
+        2,
+        4,
+        6
+      ],
+      "forbiddenElements": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "freeElements": [
+        8,
+        10
+      ],
+      "freeCount": 2,
+      "countingResult": 4,
+      "visibleObservation": {
+        "forcedBucket": {
+          "label": "반드시 포함",
+          "elements": [
+            2,
+            4,
+            6
+          ]
+        },
+        "forbiddenBucket": {
+          "label": "반드시 제외",
+          "elements": [
+            1,
+            3,
+            5,
+            7,
+            9
+          ]
+        },
+        "freeBucket": {
+          "label": "자유 선택",
+          "elements": [
+            8,
+            10
+          ]
+        },
+        "visibleConstraints": [
+          "X∪A=X",
+          "X−B=X"
+        ],
+        "countingExpression": "n(X)=2²=4",
+        "visibleGeometry": "A bordered four-row table visibly separates U, 반드시 포함, 반드시 제외, and 자유 선택, followed by a green count pill."
+      },
+      "insufficiencies": []
+    }
+  ],
+  "artifactShaVerification": {
+    "algorithm": "SHA-256",
+    "status": "PASS",
+    "allMatched": true,
+    "artifacts": [
+      {
+        "artifactPath": "assets/images/22_금당고_2학기_중간_고1_기출/q13-solution.svg",
+        "expectedSha256": "sha256:398b8f2716e62fd37227bade9e72fdfd1b08f08afe89146b6062fd20645e2f96",
+        "observedSha256": "sha256:398b8f2716e62fd37227bade9e72fdfd1b08f08afe89146b6062fd20645e2f96",
+        "matches": true
+      },
+      {
+        "artifactPath": "assets/images/22_금당고_2학기_중간_고1_기출/q16-solution.svg",
+        "expectedSha256": "sha256:e426c4a29ce85ec13d8a383d3dc9e545c1e1f726ccb9cb8d2839f6b7219fb783",
+        "observedSha256": "sha256:e426c4a29ce85ec13d8a383d3dc9e545c1e1f726ccb9cb8d2839f6b7219fb783",
+        "matches": true
+      },
+      {
+        "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q06-solution.svg",
+        "expectedSha256": "sha256:090ec017518dcf1642f9b58982ff65cacfa65dd32d53f2c16a9585d020760dc7",
+        "observedSha256": "sha256:090ec017518dcf1642f9b58982ff65cacfa65dd32d53f2c16a9585d020760dc7",
+        "matches": true
+      }
+    ]
+  },
+  "observedUidSetSha": "sha256:81d0d47e043e6b37b83b6041fd206136325a15c224643644bc83ab204451fc96"
+}

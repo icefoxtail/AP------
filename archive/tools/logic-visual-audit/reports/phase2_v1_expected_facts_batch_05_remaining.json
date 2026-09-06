@@ -1,0 +1,275 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "expectedVisualRole": "3-set membership Venn region mask",
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "expectedLogicalFactSha": "sha256:ee1d3e6babb3316a132bf2213df6d9493f8a93256aebf93f93e50f52df3a5af9",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_3",
+        "visualRole": "membership mask for (A-B)∪(A∩C) within U",
+        "requiredLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "decisiveStepIds": [
+          "region_membership_100",
+          "region_membership_101",
+          "region_membership_110",
+          "region_membership_111",
+          "expression_mask"
+        ],
+        "universeRequired": true,
+        "expectedRegions": [
+          "100",
+          "101",
+          "111"
+        ],
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "C": "boundary:C"
+        },
+        "regionMembership": [
+          {
+            "membership": "100",
+            "A": 1,
+            "B": 0,
+            "C": 0,
+            "decision": "KEEP",
+            "keep": true
+          },
+          {
+            "membership": "101",
+            "A": 1,
+            "B": 0,
+            "C": 1,
+            "decision": "KEEP",
+            "keep": true
+          },
+          {
+            "membership": "110",
+            "A": 1,
+            "B": 1,
+            "C": 0,
+            "decision": "DROP",
+            "keep": false
+          },
+          {
+            "membership": "111",
+            "A": 1,
+            "B": 1,
+            "C": 1,
+            "decision": "KEEP",
+            "keep": true
+          }
+        ]
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "expectedVisualRole": "graph of set A and slope-controlled line B with empty intersection",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFactSha": "sha256:b51f7ae93ddcd72c371cc232a6354f548754211ba4b16e7cdf7da2a3b6f22ca3",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+        "unit": "집합",
+        "visualType": "SET_GRAPH_DEFINED",
+        "visualRole": "graph of set A and slope-controlled line B with empty intersection",
+        "requiredLabels": [
+          "A",
+          "B",
+          "m",
+          "x",
+          "y",
+          "x=0",
+          "x=1",
+          "y=-1",
+          "y=1",
+          "-3+2√2"
+        ],
+        "decisiveStepIds": [
+          "A_piecewise_reduction",
+          "x=0_branch_boundary",
+          "x=1_domain_exclusion",
+          "B_slope_m",
+          "negative_branch_secant_slope_min",
+          "no_intersection_range"
+        ],
+        "boundaryIdentity": {
+          "x=0": "branch join; closed at (0,-1)",
+          "x=1": "domain exclusion; open at (1,-1) and (1,1)"
+        },
+        "graphDefinedFacts": {
+          "A": {
+            "originalDefinition": "y=(|x|-1)/|x-1|, x≠1",
+            "domain": "x∈ℝ\\{1}",
+            "piecewise": [
+              {
+                "domain": "x<0",
+                "equation": "y=(x+1)/(x-1)",
+                "slope": "dy/dx=-2/(x-1)^2"
+              },
+              {
+                "domain": "0≤x<1",
+                "equation": "y=-1",
+                "slope": 0
+              },
+              {
+                "domain": "x>1",
+                "equation": "y=1",
+                "slope": 0
+              }
+            ],
+            "boundary": [
+              {
+                "x": 0,
+                "point": [
+                  0,
+                  -1
+                ],
+                "status": "closed",
+                "role": "branch_join"
+              },
+              {
+                "x": 1,
+                "point": [
+                  1,
+                  -1
+                ],
+                "status": "open",
+                "role": "domain_exclusion"
+              },
+              {
+                "x": 1,
+                "point": [
+                  1,
+                  1
+                ],
+                "status": "open",
+                "role": "domain_exclusion"
+              }
+            ]
+          },
+          "B": {
+            "equation": "y=mx",
+            "slope": "m",
+            "yIntercept": 0,
+            "passesThrough": [
+              [
+                0,
+                0
+              ]
+            ]
+          },
+          "negativeBranchSecantSlope": {
+            "domain": "x<0",
+            "expression": "m=(x+1)/(x(x-1))",
+            "minimum": "-3+2√2",
+            "attainedAt": "x=-1-√2"
+          },
+          "noIntersectionCondition": {
+            "relation": "A∩B=∅",
+            "mRange": "-1≤m<-3+2√2",
+            "lower": {
+              "value": -1,
+              "closed": true
+            },
+            "upper": {
+              "value": "-3+2√2",
+              "closed": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "expectedVisualRole": "two-set cardinality extremes for |A∩B|",
+      "expectedVisualRequirementSignal": "MAY_BE_OPTIONAL",
+      "expectedLogicalFactSha": "sha256:ad42c70c82b2181c27ba4463397b3695c7b4b81b75c3f8829be7565b387bfb39",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "two-set cardinality extremes for |A∩B|",
+        "requiredLabels": [
+          "U",
+          "A",
+          "B",
+          "x",
+          "25",
+          "32",
+          "50",
+          "7",
+          "18"
+        ],
+        "decisiveStepIds": [
+          "cardinality_inputs",
+          "intersection_upper_bound",
+          "intersection_lower_bound",
+          "extreme_region_counts"
+        ],
+        "universe": {
+          "label": "U",
+          "cardinality": 50
+        },
+        "inputCardinalities": {
+          "U": 50,
+          "A": 25,
+          "B": 32
+        },
+        "cardinalityByRegion": {
+          "A_only": "25-x",
+          "A_intersection_B": "x",
+          "B_only": "32-x",
+          "outside_U": "x-7",
+          "union": "57-x",
+          "total_U": 50
+        },
+        "unionCardinality": "57-x",
+        "intersectionCardinality": "x",
+        "outsideCardinality": "x-7",
+        "totalCardinality": 50,
+        "intersectionExtremes": {
+          "xMax": 25,
+          "xMin": 7
+        },
+        "extremeConfiguration": {
+          "xMax": {
+            "intersection": 25,
+            "AOnly": 0,
+            "BOnly": 7,
+            "union": 32,
+            "outsideU": 18,
+            "totalU": 50
+          },
+          "xMin": {
+            "intersection": 7,
+            "AOnly": 18,
+            "BOnly": 25,
+            "union": 50,
+            "outsideU": 0,
+            "totalU": 50
+          }
+        },
+        "countingResult": "x_max=25, x_min=7",
+        "sourceResult": "두 뮤지컬 모두 관람한 학생 수의 최댓값 25명, 최솟값 7명",
+        "result18Check": {
+          "value": 18,
+          "meaning": "outside_U when x=25; A_only when x=7"
+        }
+      }
+    }
+  ],
+  "reviewedUidSetSha": "sha256:f9189e837e610411af9be7da42debef96949536bcb702dde1d253cb72ed3b8e3"
+}

@@ -1,0 +1,130 @@
+{
+  "bundleType": "V2_ARTIFACT_ONLY_LOGIC_VISUAL_PHASE2_OBSERVED_FACTS",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+    "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16"
+  ],
+  "observedUidSetSha": "sha256:adfa019ea7ad7d66f3c61563b26c66000194b62358b1830bdeb060190fdb4bbc",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "artifactPath": "archive/assets/images/22_금당고_2학기_중간_고1_기출/q13-solution.svg",
+      "visualType": "SET_REGION_VENN_2",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "artifactShaVerification": {
+        "expectedSha256": "sha256:5b6ce259e080d6469f83bedebaf7581c7be7ad4785a4f9a8c807ff7d7777cd22",
+        "observedSha256": "sha256:5b6ce259e080d6469f83bedebaf7581c7be7ad4785a4f9a8c807ff7d7777cd22",
+        "match": true
+      },
+      "observedFactSha": "sha256:39fd0fa791184d9902b96194da6c6ecaac4f8be40eeebd10699250f1362c5541",
+      "visibleSemanticFields": {
+        "universeRequired": true,
+        "expectedRegions": ["A−B", "B−A"],
+        "boundaryIdentity": {
+          "outerBoundary": "U",
+          "setBoundaries": ["A", "B"],
+          "overlapLabel": "A∩B 또는",
+          "outsideLabel": "둘 다 아님",
+          "selectedRegionFills": {
+            "A−B": "red",
+            "B−A": "orange"
+          }
+        }
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "대칭차집합의 두 차집합 영역을 구분하는 2집합 벤 다이어그램",
+        "requiredLabels": ["U", "A−B", "B−A", "A∩B 또는", "둘 다 아님"],
+        "decisiveStepIds": ["A−B", "B−A"],
+        "universe": {
+          "label": "U",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        },
+        "expectedRegions": ["A−B", "B−A"],
+        "boundaryIdentity": {
+          "outerBoundary": "U",
+          "setBoundaries": ["A", "B"],
+          "overlapRegion": "A∩B",
+          "outsideRegion": "둘 다 아님",
+          "selectedRegionFills": {
+            "A−B": "red",
+            "B−A": "orange"
+          }
+        }
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "artifactPath": "archive/assets/images/22_금당고_2학기_중간_고1_기출/q16-solution.svg",
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "artifactShaVerification": {
+        "expectedSha256": "sha256:f46fd01b270ac53cbc035a14ef8c770ac12d21be42fa8a7ec70bba4ddd300a14",
+        "observedSha256": "sha256:f46fd01b270ac53cbc035a14ef8c770ac12d21be42fa8a7ec70bba4ddd300a14",
+        "match": true
+      },
+      "observedFactSha": "sha256:dc12ad63f328fd1a4d4a834d39a9c22c223a8a6fbca2f83022a4fddfebd3bd88",
+      "visibleSemanticFields": {
+        "forcedElements": [64],
+        "forbiddenElements": ["∅"],
+        "freeElements": [2, 3, 4, 8, 16, 32],
+        "freeCount": 6,
+        "countingResult": 31,
+        "buckets": {
+          "forced": {
+            "elements": [64],
+            "label": "64 ∈ X  (강제)"
+          },
+          "forbidden": {
+            "selectionCounts": [0],
+            "emptySelection": "∅",
+            "reason": "S(X)=64라 제외"
+          },
+          "free": {
+            "elements": [2, 3, 4, 8, 16, 32],
+            "count": 6,
+            "selectionRule": "짝수 개를 선택하면 n(X)가 홀수"
+          }
+        }
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "64 포함과 홀수 원소 수를 선택 버킷으로 세는 집합 상태도",
+        "requiredLabels": [
+          "U",
+          "Y=Xᶜ",
+          "64 ∈ X  (강제)",
+          "나머지 {2,3,4,8,16,32}에서",
+          "짝수 개를 선택하면 n(X)가 홀수",
+          "금지 bucket: 0개 선택(∅) → S(X)=64라 제외",
+          "총 31개"
+        ],
+        "decisiveStepIds": [
+          "64 ∈ X  (강제)",
+          "0개 선택(∅) → S(X)=64라 제외",
+          "짝수 개를 선택하면 n(X)가 홀수",
+          "총 31개"
+        ],
+        "universe": {
+          "label": "U",
+          "elements": [2, 3, 4, 8, 16, 32, 64]
+        },
+        "forcedElements": [64],
+        "forbiddenElements": ["∅"],
+        "freeElements": [2, 3, 4, 8, 16, 32],
+        "freeCount": 6,
+        "countingResult": 31
+      }
+    }
+  ]
+}

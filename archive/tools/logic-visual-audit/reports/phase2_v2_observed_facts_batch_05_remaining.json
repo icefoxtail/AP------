@@ -1,0 +1,243 @@
+{
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "bundleType": "V2_ARTIFACT_ONLY_LOGIC_VISUAL_PHASE2_BATCH_05",
+  "bundleContractVersion": "v1",
+  "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "canonicalizationSpecVersion": "LOGIC_VISUAL_FACT_CANONICALIZATION_v1",
+  "semanticProjectionSpecVersion": "SEMANTIC_PROJECTION_v1",
+  "sourceBundle": {
+    "path": "archive/tools/logic-visual-audit/reports/phase2_v2_artifact_only_batch_05.json",
+    "bundleSha256": "sha256:d3a49d218b040286b499d026df12e2a0e89b7ff8b4635161190e9cee29c3e325",
+    "visibility": {
+      "question": false,
+      "choices": false,
+      "answer": false,
+      "solution": false,
+      "expectedFact": false,
+      "alt": false,
+      "caption": false,
+      "builderMetadata": false,
+      "previousVerdict": false
+    }
+  },
+  "artifactShaVerification": {
+    "status": "PASS",
+    "items": [
+      {
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+        "artifactPath": "assets/images/22_금당고_2학기_기말_고1_기출/q13-solution.svg",
+        "expectedSha256": "sha256:647779400cbcf1b77135c31d7e48046b56c24afa558fdfcaf7f214f340a18305",
+        "observedSha256": "sha256:647779400cbcf1b77135c31d7e48046b56c24afa558fdfcaf7f214f340a18305",
+        "matches": true
+      },
+      {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+        "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q19-solution.svg",
+        "expectedSha256": "sha256:9d2cd7b61cdc4c563b7b17bf19d9b4d1df334b21d74acc8b59d85866120f0913",
+        "observedSha256": "sha256:9d2cd7b61cdc4c563b7b17bf19d9b4d1df334b21d74acc8b59d85866120f0913",
+        "matches": true
+      }
+    ]
+  },
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+    "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19"
+  ],
+  "observedUidSetSha": "sha256:464e05b68779d4f498ffcdfe78e4445fac4ff16ec4fdd8f2071cdefd9179682a",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "artifactPath": "assets/images/22_금당고_2학기_기말_고1_기출/q13-solution.svg",
+      "visualType": "SET_GRAPH_DEFINED",
+      "artifactSha256": "sha256:647779400cbcf1b77135c31d7e48046b56c24afa558fdfcaf7f214f340a18305",
+      "observedFacts": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+        "unit": "집합",
+        "visualType": "SET_GRAPH_DEFINED",
+        "visualRole": "solution-visual",
+        "requiredLabels": [
+          "A의 그래프",
+          "y=m₀x",
+          "접점 T",
+          "x<0",
+          "0≤x<1",
+          "x>1",
+          "m<−1",
+          "m≥m₀",
+          "−1≤m<m₀"
+        ],
+        "decisiveStepIds": [
+          "graph-a-branches-by-domain",
+          "graph-boundary-slope-and-contact",
+          "no-intersection-slope-range"
+        ],
+        "graphDefinedFacts": {
+          "graphLabel": "A의 그래프",
+          "branchDomains": [
+            {
+              "branchId": "A-left",
+              "domain": "x<0",
+              "visibleStyle": "blue solid"
+            },
+            {
+              "branchId": "A-middle",
+              "domain": "0≤x<1",
+              "visibleStyle": "blue solid"
+            },
+            {
+              "branchId": "A-right",
+              "domain": "x>1",
+              "visibleStyle": "blue solid"
+            }
+          ],
+          "domainPartition": [
+            "x<0",
+            "0≤x<1",
+            "x>1"
+          ],
+          "openPoints": [
+            {
+              "x": "1",
+              "branchId": "A-middle",
+              "visiblePosition": "lower graph branch",
+              "marker": "open circle"
+            },
+            {
+              "x": "1",
+              "branchId": "A-right",
+              "visiblePosition": "upper graph branch",
+              "marker": "open circle"
+            }
+          ],
+          "closedPoints": [
+            {
+              "x": "0",
+              "branchId": "A-middle",
+              "visiblePosition": "lower graph branch",
+              "marker": "filled circle"
+            }
+          ],
+          "boundaryLine": {
+            "equation": "y=m₀x",
+            "slope": "m₀",
+            "slopeValue": "m₀=−3+2√2",
+            "visibleStyle": "orange dashed"
+          },
+          "contactPoint": {
+            "label": "접점 T",
+            "marker": "red dot",
+            "visible": true
+          },
+          "slopeRange": {
+            "noIntersection": "−1≤m<m₀",
+            "intersectionCases": [
+              "m<−1",
+              "m≥m₀"
+            ],
+            "intersectionCaseResult": "교점 있음",
+            "noIntersectionResult": "교점 없음"
+          },
+          "axisLabels": [
+            "x",
+            "y"
+          ],
+          "visibleXAxisTicks": [
+            "−3",
+            "−2",
+            "−1",
+            "0",
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q19-solution.svg",
+      "visualType": "SET_CARDINALITY_VENN",
+      "artifactSha256": "sha256:9d2cd7b61cdc4c563b7b17bf19d9b4d1df334b21d74acc8b59d85866120f0913",
+      "observedFacts": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "solution-visual",
+        "requiredLabels": [
+          "전체 50명",
+          "A=25",
+          "B=32",
+          "최대 x=25",
+          "최소 x=7",
+          "x최소=25+32−50=7"
+        ],
+        "decisiveStepIds": [
+          "universe-and-set-cardinalities",
+          "maximum-intersection-configuration",
+          "minimum-intersection-configuration"
+        ],
+        "universe": {
+          "label": "U",
+          "cardinality": 50,
+          "visibleLabel": "전체 50명"
+        },
+        "expectedRegions": [
+          "A\\B",
+          "A∩B",
+          "B\\A",
+          "U\\(A∪B)"
+        ],
+        "cardinalityByRegion": {
+          "setCardinalities": {
+            "A": 25,
+            "B": 32
+          },
+          "regions": [
+            "A\\B",
+            "A∩B",
+            "B\\A",
+            "U\\(A∪B)"
+          ],
+          "maximumXConfiguration": {
+            "label": "최대 x=25",
+            "x": 25,
+            "regions": {
+              "A\\B": 0,
+              "A∩B": 25,
+              "B\\A": 7,
+              "U\\(A∪B)": 18
+            }
+          },
+          "minimumXConfiguration": {
+            "label": "최소 x=7",
+            "x": 7,
+            "regions": {
+              "A\\B": 18,
+              "A∩B": 7,
+              "B\\A": 25,
+              "U\\(A∪B)": 0
+            }
+          }
+        },
+        "totalCardinality": 50,
+        "extremeConfiguration": {
+          "xEndpoints": {
+            "minimum": 7,
+            "maximum": 25
+          },
+          "maximumLabel": "최대 x=25",
+          "minimumLabel": "최소 x=7",
+          "minimumFormula": "x최소=25+32−50=7",
+          "visibleConstraints": [
+            "x≤min(25,32)",
+            "25+32−x≤50"
+          ]
+        }
+      }
+    }
+  ]
+}

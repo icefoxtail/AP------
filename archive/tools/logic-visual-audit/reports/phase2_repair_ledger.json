@@ -1,0 +1,1645 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "LOGIC_VISUAL_QUALIFICATION_PHASE_2_REPAIR_LOOP",
+  "status": "PHASE2_REPAIR_PLAN_READY_NOT_APPLIED",
+  "scope": "Repair planning and qualification evidence routing only; production files intentionally unchanged.",
+  "productionMutationCount": 0,
+  "sourceInputSha": "8febe827975ee3278a4f8ec28aebd64724324937b83250951543e1243cf02f9a",
+  "v3FailureCount": 85,
+  "v3RootCauseCounts": {
+    "OBSERVATION_INSUFFICIENT": 12,
+    "ARTIFACT_SEMANTIC_MISMATCH": 70,
+    "SOURCE_BLOCKED": 3
+  },
+  "structuralDuplicateGroupCount": 5,
+  "blockingWorkOrder": [
+    "1. Resolve observation-insufficient and source-blocked cases without using hidden source/solution data in V2.",
+    "2. Adjudicate structural template reuse before any asset is reused or removed.",
+    "3. Repair artifact semantic mismatches only in Phase 2 and invalidate/re-freeze C denominator after action changes.",
+    "4. Run a new qualification attempt with fresh V1/V2/V3 evidence; do not overwrite Phase 1 evidence.",
+    "5. Use a new unseen holdout if qualification inputs or verifier/extractor change."
+  ],
+  "v3RepairEntries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js|21_팔마고_2학기_기말_고1_기출|19",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=12, node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":3}); semantic parity cannot be established. artifact=archive/assets/images/21_팔마고_2학기_기말_고1_기출/q19-solution.svg source=archive/exams/original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|21",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "SOURCE_BLOCKED",
+      "recommendedAction": "SOURCE_REVIEW",
+      "priority": 1,
+      "repairTrack": "V1_SOURCE_REVIEW",
+      "allowedScope": "source/provenance recovery and independent V1 adjudication",
+      "requiredEvidence": [
+        "resolved source/provenance reference",
+        "replacement V1 expected-fact evidence",
+        "denominator invalidation and re-freeze if classification changes"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V1 expected signal is SOURCE_BLOCKED; the typed expected facts are insufficient. V2 is UNKNOWN with no recorded labels or node counts, so parity is blocked without source/solution inference. artifact=archive/assets/images/21_복성고_2학기_중간_고1_기출/q21.png source=archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=7, node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/21_순천고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|19",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=9, node counts={\"svg\":1,\"rect\":6,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/21_순천고_2학기_중간_고1_기출/q19-solution.svg source=archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"RASTER_MANUAL_REQUIRED\", labels=0, node counts={}); semantic parity cannot be established. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q10.png source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=8, node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q10-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|19",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=10, node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q19-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|3",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=6, node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q03-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=6, node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/21_효천고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=13, node counts={\"svg\":1,\"rect\":6,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":13,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/22_금당고_2학기_중간_고1_기출/q13-solution.svg source=archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|19",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "SOURCE_BLOCKED",
+      "recommendedAction": "SOURCE_REVIEW",
+      "priority": 1,
+      "repairTrack": "V1_SOURCE_REVIEW",
+      "allowedScope": "source/provenance recovery and independent V1 adjudication",
+      "requiredEvidence": [
+        "resolved source/provenance reference",
+        "replacement V1 expected-fact evidence",
+        "denominator invalidation and re-freeze if classification changes"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V1 expected signal is SOURCE_BLOCKED; the typed expected facts are insufficient. V2 is UNKNOWN with no recorded labels or node counts, so parity is blocked without source/solution inference. artifact=archive/assets/images/22_금당고_2학기_중간_고1_기출/q19.png source=archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=8, node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/22_제일고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"SVG_SEMANTIC_OBSERVATION_AVAILABLE\", labels=8, node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0}); semantic parity cannot be established. artifact=archive/assets/images/22_제일고_2학기_중간_고1_기출/q20-solution.svg source=archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|14",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "OBSERVATION_INSUFFICIENT",
+      "recommendedAction": "ADD_OBSERVED_EXTRACTOR_SUPPORT",
+      "priority": 1,
+      "repairTrack": "V2_OBSERVED_EXTRACTOR_OR_INDEPENDENT_OBSERVATION",
+      "allowedScope": "qualification tooling / artifact-only observation evidence",
+      "requiredEvidence": [
+        "typed observed fact or explicit manual-independent observation",
+        "V2 first-pass evidence freeze",
+        "V3 parity rerun under a new qualification attempt"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V2 does not provide a typed, usable observation (observedVisualTypeOrUnknown=\"UNKNOWN\", extraction=\"RASTER_MANUAL_REQUIRED\", labels=0, node counts={}); semantic parity cannot be established. artifact=archive/assets/images/22_효천고_2학기_중간_고1_기출/q14.png source=archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|15",
+      "priorParityStatus": "BLOCKED",
+      "rootCause": "SOURCE_BLOCKED",
+      "recommendedAction": "SOURCE_REVIEW",
+      "priority": 1,
+      "repairTrack": "V1_SOURCE_REVIEW",
+      "allowedScope": "source/provenance recovery and independent V1 adjudication",
+      "requiredEvidence": [
+        "resolved source/provenance reference",
+        "replacement V1 expected-fact evidence",
+        "denominator invalidation and re-freeze if classification changes"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 BLOCKED: V1 expected signal is SOURCE_BLOCKED; the typed expected facts are insufficient. V2 is UNKNOWN with no recorded labels or node counts, so parity is blocked without source/solution inference. artifact=archive/assets/images/22_효천고_2학기_중간_고1_기출/q15.png source=archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed PROOF_FLOW; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_강남여고_2학기_기말_고1_기출/q05-solution.svg source=archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_GRAPH_DEFINED conflicts with observed SET_REGION_VENN_3; recorded labels=22 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":14,\"path\":4,\"polyline\":0,\"polygon\":0,\"text\":22,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_금당고_2학기_기말_고1_기출/q13-solution.svg source=archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE conflicts with observed CASE_TABLE; recorded labels=24 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":2,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":24,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_금당고_2학기_기말_고1_기출/q20-solution.svg source=archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|1",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q01-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q10-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|13",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE conflicts with observed PROOF_FLOW; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q13-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|14",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q14-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|17",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_FORCE_FORBID_FREE conflicts with observed SET_REGION_VENN_3; recorded labels=8 and node counts={\"svg\":1,\"rect\":6,\"circle\":6,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q17-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|2",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q02-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|23",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q23-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|5",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q05-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|9",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":4,\"ellipse\":0,\"line\":4,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_강남여고_2학기_중간_고1_기출/q09-solution.svg source=archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|1",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_금당고_2학기_중간_고1_기출/q01-solution.svg source=archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=14 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_금당고_2학기_중간_고1_기출/q10-solution.svg source=archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_금당고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|15",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":6,\"ellipse\":0,\"line\":6,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_금당고_2학기_중간_고1_기출/q15-solution.svg source=archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|2",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_금당고_2학기_중간_고1_기출/q02-solution.svg source=archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|3",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_INCLUSION_VENN; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":3,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_금당고_2학기_중간_고1_기출/q03-solution.svg source=archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|1",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_매산고_2학기_중간_고1_기출/q01-solution.svg source=archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|14",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=14 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_매산고_2학기_중간_고1_기출/q14-solution.svg source=archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|16",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_매산고_2학기_중간_고1_기출/q16-solution.svg source=archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|2",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_매산고_2학기_중간_고1_기출/q02-solution.svg source=archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|8",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_매산고_2학기_중간_고1_기출/q08-solution.svg source=archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|12",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":4,\"ellipse\":0,\"line\":4,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_복성고_2학기_중간_고1_기출/q12-solution.svg source=archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|13",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_REGION_VENN_2; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_복성고_2학기_중간_고1_기출/q13-solution.svg source=archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|19",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":3,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_복성고_2학기_중간_고1_기출/q19-solution.svg source=archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|5",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_복성고_2학기_중간_고1_기출/q05-solution.svg source=archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|6",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_복성고_2학기_중간_고1_기출/q06-solution.svg source=archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_순천고_2학기_중간_고1_기출/q10-solution.svg source=archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|3",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_순천고_2학기_중간_고1_기출/q03-solution.svg source=archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js|21_순천고_2학기_중간_고1_기출|4",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_순천고_2학기_중간_고1_기출/q04-solution.svg source=archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|20",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q20-solution.svg source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|4",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q04-solution.svg source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|5",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=8 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q05-solution.svg source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|6",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_2 conflicts with observed CASE_TABLE; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q06-solution.svg source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|7",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_INCLUSION_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q07-solution.svg source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|8",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_제일고_2학기_중간_고1_기출/q08-solution.svg source=archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|1",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=7 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q01-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|15",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=6 and node counts={\"svg\":1,\"rect\":2,\"circle\":3,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q15-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|16",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q16-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js|21_팔마고_2학기_중간_고1_기출|2",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=7 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":7,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_팔마고_2학기_중간_고1_기출/q02-solution.svg source=archive/exams/original/high/h1/2mid/21_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|17",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=5 and node counts={\"svg\":1,\"rect\":4,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":5,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_효천고_2학기_중간_고1_기출/q17-solution.svg source=archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|2",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=6 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":6,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_효천고_2학기_중간_고1_기출/q02-solution.svg source=archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|20",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=8 and node counts={\"svg\":1,\"rect\":2,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_효천고_2학기_중간_고1_기출/q20-solution.svg source=archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|6",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_REGION_VENN_3; recorded labels=8 and node counts={\"svg\":1,\"rect\":6,\"circle\":6,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/21_효천고_2학기_중간_고1_기출/q06-solution.svg source=archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|14",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=14 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":23,\"path\":4,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_강남여고_2학기_중간_고1_기출/q14-solution.svg source=archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=37 and node counts={\"svg\":1,\"rect\":5,\"circle\":0,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":37,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_매산고_2학기_중간_고1_기출/q17-solution.svg source=archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=14 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":14,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_매산고_2학기_중간_고1_기출/q19-solution.svg source=archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=12 and node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_매산고_2학기_중간_고1_기출/q06-solution.svg source=archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=20 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":20,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_복성고_2학기_중간_고1_기출/q15-solution.svg source=archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|17",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":16,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_복성고_2학기_중간_고1_기출/q17-solution.svg source=archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|21",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=28 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":5,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":28,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_복성고_2학기_중간_고1_기출/q21-solution.svg source=archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_REGION_VENN_2 conflicts with observed PROOF_FLOW; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_제일고_2학기_중간_고1_기출/q13-solution.svg source=archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_CARDINALITY_VENN; recorded labels=12 and node counts={\"svg\":1,\"rect\":4,\"circle\":2,\"ellipse\":0,\"line\":1,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg source=archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|20",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CASE_PARTITION conflicts with observed SET_FORCE_FORBID_FREE; recorded labels=13 and node counts={\"svg\":1,\"rect\":7,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":13,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_팔마고_2학기_중간_고1_기출/q20-solution.svg source=archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|3",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/IMPLICATION_FLOW conflicts with observed TRUTH_SET_NUMBER_LINE; recorded labels=8 and node counts={\"svg\":1,\"rect\":1,\"circle\":3,\"ellipse\":0,\"line\":5,\"path\":0,\"polyline\":0,\"polygon\":1,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_팔마고_2학기_중간_고1_기출/q03-solution.svg source=archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=8 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":8,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_효천고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed CASE_TABLE; recorded labels=20 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":0,\"line\":3,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":20,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/22_효천고_2학기_중간_고1_기출/q12-solution.svg source=archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js|23_매산여고_2학기_중간_고1_기출|4",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_3 conflicts with observed SET_CARDINALITY_VENN; recorded labels=11 and node counts={\"svg\":1,\"rect\":8,\"circle\":7,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":5} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/23_매산여고_2학기_중간_고1_기출/q04-solution.svg source=archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js|23_매산여고_2학기_중간_고1_기출|5",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/23_매산여고_2학기_중간_고1_기출/q05-solution.svg source=archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js|23_순천여고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=11 and node counts={\"svg\":1,\"rect\":3,\"circle\":4,\"ellipse\":0,\"line\":17,\"path\":2,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":2} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/23_순천여고_2학기_중간_고1_기출/q10-solution.svg source=archive/exams/original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js|23_팔마고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/23_팔마고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js|23_팔마고_2학기_중간_고1_기출|9",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_NUMBER_LINE; recorded labels=10 and node counts={\"svg\":1,\"rect\":4,\"circle\":4,\"ellipse\":0,\"line\":2,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/23_팔마고_2학기_중간_고1_기출/q09-solution.svg source=archive/exams/original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js|24_금당고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/24_금당고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js|24_제일고_2학기_중간_고1_기출|19",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REMOVE_INVALID_LINKAGE",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_EXEMPT/NONE conflicts with observed SET_CARDINALITY_VENN; recorded labels=12 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/24_제일고_2학기_중간_고1_기출/q19-solution.svg source=archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js|24_제일고_2학기_중간_고1_기출|4",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=10 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":1,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":10,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/24_제일고_2학기_중간_고1_기출/q04-solution.svg source=archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js|25_순천고_2학기_중간_고1_기출|11",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected SHOULD_BE_REQUIRED/SET_REGION_VENN_2 conflicts with observed SET_REGION_VENN_3; recorded labels=11 and node counts={\"svg\":1,\"rect\":4,\"circle\":7,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":11,\"g\":3} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/25_순천고_2학기_중간_고1_기출/q11-solution.svg source=archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js|25_순천고_2학기_중간_고1_기출|13",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_3; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":3,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/25_순천고_2학기_중간_고1_기출/q13-solution.svg source=archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|25_효천고_2학기_중간_고1_기출|10",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_INCLUSION_VENN; recorded labels=9 and node counts={\"svg\":1,\"rect\":3,\"circle\":0,\"ellipse\":2,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":9,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/25_효천고_2학기_중간_고1_기출/q10-solution.svg source=archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|25_효천고_2학기_중간_고1_기출|20",
+      "priorParityStatus": "FAIL",
+      "rootCause": "ARTIFACT_SEMANTIC_MISMATCH",
+      "recommendedAction": "REBUILD_ARTIFACT",
+      "priority": 2,
+      "repairTrack": "PRODUCTION_ARTIFACT_ADJUDICATION",
+      "allowedScope": "Phase 2 only; rebuild or remove invalid linkage after approval",
+      "requiredEvidence": [
+        "question-specific expected/observed semantic adjudication",
+        "visualAction parity evidence",
+        "C denominator stale → re-freeze after any attachment/action change",
+        "new V1/V2/V3 evidence for the changed UID"
+      ],
+      "productionMutationAllowed": false,
+      "evidenceSummary": "V3 FAIL: Expected MAY_BE_OPTIONAL/SET_CARDINALITY_VENN conflicts with observed SET_REGION_VENN_2; recorded labels=12 and node counts={\"svg\":1,\"rect\":3,\"circle\":2,\"ellipse\":0,\"line\":0,\"path\":0,\"polyline\":0,\"polygon\":0,\"text\":12,\"g\":0} are sufficient to establish a typed visual-family mismatch, without inferring from source/solution. artifact=archive/assets/images/25_효천고_2학기_중간_고1_기출/q20-solution.svg source=archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceReport": "reports/v3_failure_adjudication.json"
+    }
+  ],
+  "structuralDuplicateEntries": [
+    {
+      "repairTrack": "STRUCTURAL_DUPLICATE_ADJUDICATION",
+      "priority": 1,
+      "fingerprint": "sha256:66ceb3a26054037fc46e6c010dfe7abc0ce7b9229fa1cf4b630dc53465a3b9fe",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|20",
+        "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|20"
+      ],
+      "status": "STRUCTURAL_TEMPLATE_REUSE_FAIL",
+      "reason": "identical artifact identity/fingerprint is attached to source questions with different content/choices",
+      "allowedScope": "Phase 2 artifact provenance review; no blanket asset replacement",
+      "requiredEvidence": [
+        "question-specific expected semantic projection for every UID",
+        "explicit shared provenance only if semantic projection is identical",
+        "otherwise rebuild/remove invalid linkage per UID"
+      ],
+      "productionMutationAllowed": false,
+      "sourceReport": "reports/visual_structure_duplicate_adjudication.json"
+    },
+    {
+      "repairTrack": "STRUCTURAL_DUPLICATE_ADJUDICATION",
+      "priority": 1,
+      "fingerprint": "sha256:6b4f7d99203fce5a42a7c7d165368e498555a5b27c1642c172248334c44d8523",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|16",
+        "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js|21_효천고_2학기_중간_고1_기출|16"
+      ],
+      "status": "STRUCTURAL_TEMPLATE_REUSE_FAIL",
+      "reason": "identical artifact identity/fingerprint is attached to source questions with different content/choices",
+      "allowedScope": "Phase 2 artifact provenance review; no blanket asset replacement",
+      "requiredEvidence": [
+        "question-specific expected semantic projection for every UID",
+        "explicit shared provenance only if semantic projection is identical",
+        "otherwise rebuild/remove invalid linkage per UID"
+      ],
+      "productionMutationAllowed": false,
+      "sourceReport": "reports/visual_structure_duplicate_adjudication.json"
+    },
+    {
+      "repairTrack": "STRUCTURAL_DUPLICATE_ADJUDICATION",
+      "priority": 1,
+      "fingerprint": "sha256:6f7134c5d921fbb78feca90e260d7cdda5d9c6712693b3e30a49ea69ad4bb382",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|1",
+        "archive/exams/original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js|21_금당고_2학기_중간_고1_기출|1",
+        "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|1"
+      ],
+      "status": "STRUCTURAL_TEMPLATE_REUSE_FAIL",
+      "reason": "identical artifact identity/fingerprint is attached to source questions with different content/choices",
+      "allowedScope": "Phase 2 artifact provenance review; no blanket asset replacement",
+      "requiredEvidence": [
+        "question-specific expected semantic projection for every UID",
+        "explicit shared provenance only if semantic projection is identical",
+        "otherwise rebuild/remove invalid linkage per UID"
+      ],
+      "productionMutationAllowed": false,
+      "sourceReport": "reports/visual_structure_duplicate_adjudication.json"
+    },
+    {
+      "repairTrack": "STRUCTURAL_DUPLICATE_ADJUDICATION",
+      "priority": 1,
+      "fingerprint": "sha256:97903b3b7ac4f982504bb8256afe0091b85ba8291f32f3dcc71e51b572eda29d",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/21_매산고_2학기_중간_고1_기출.js|21_매산고_2학기_중간_고1_기출|8",
+        "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js|21_제일고_2학기_중간_고1_기출|8"
+      ],
+      "status": "STRUCTURAL_TEMPLATE_REUSE_FAIL",
+      "reason": "identical artifact identity/fingerprint is attached to source questions with different content/choices",
+      "allowedScope": "Phase 2 artifact provenance review; no blanket asset replacement",
+      "requiredEvidence": [
+        "question-specific expected semantic projection for every UID",
+        "explicit shared provenance only if semantic projection is identical",
+        "otherwise rebuild/remove invalid linkage per UID"
+      ],
+      "productionMutationAllowed": false,
+      "sourceReport": "reports/visual_structure_duplicate_adjudication.json"
+    },
+    {
+      "repairTrack": "STRUCTURAL_DUPLICATE_ADJUDICATION",
+      "priority": 1,
+      "fingerprint": "sha256:bc51f4f1f4a1668d79f854c82ea09e3721404b473018772ff38f52e4cca83dc4",
+      "questionUids": [
+        "archive/exams/original/high/h1/2mid/21_강남여고_2학기_중간_고1_기출.js|21_강남여고_2학기_중간_고1_기출|5",
+        "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js|21_복성고_2학기_중간_고1_기출|5"
+      ],
+      "status": "STRUCTURAL_TEMPLATE_REUSE_FAIL",
+      "reason": "identical artifact identity/fingerprint is attached to source questions with different content/choices",
+      "allowedScope": "Phase 2 artifact provenance review; no blanket asset replacement",
+      "requiredEvidence": [
+        "question-specific expected semantic projection for every UID",
+        "explicit shared provenance only if semantic projection is identical",
+        "otherwise rebuild/remove invalid linkage per UID"
+      ],
+      "productionMutationAllowed": false,
+      "sourceReport": "reports/visual_structure_duplicate_adjudication.json"
+    }
+  ],
+  "invariants": {
+    "phase1EvidencePreserved": true,
+    "v2BlindContractPreserved": true,
+    "productionMassEditAllowed": false,
+    "overlayAdoptionAllowed": false,
+    "denominatorMayBeReusedAfterRepair": false
+  },
+  "note": "This ledger is a bounded Phase 2 handoff. It does not convert V3 BLOCKED/FAIL into PASS and it does not authorize production edits."
+}

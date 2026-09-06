@@ -1,15 +1,21 @@
 {
   "specVersion": "LOGIC_VISUAL_FACT_CANONICALIZATION_v1",
-  "semantics": {
-    "SET": ["expectedRegions", "forcedElements", "forbiddenElements", "freeElements", "requiredLabels"],
-    "SEQUENCE": ["proofSteps", "truthVector", "intervalComponents"],
-    "SORT_BY_KEY": ["proofEdges"],
-    "SORT_BY_KEY_CASE_ID": ["caseRows"]
+  "objectKeys": "lexicographic",
+  "unicode": "NFC",
+  "numbers": "JSON number form; no floating approximation",
+  "collections": {
+    "requiredLabels": "SET",
+    "expectedRegions": "SET",
+    "forcedElements": "SET",
+    "forbiddenElements": "SET",
+    "freeElements": "SET",
+    "proofSteps": "SEQUENCE",
+    "proofEdges": "SORT_BY_KEY:fromStep,toStep,relation",
+    "intervalComponents": "SEQUENCE_BY_NUMBER_LINE_POSITION",
+    "caseRows": "SORT_BY_KEY:caseId",
+    "truthVector": "SEQUENCE"
   },
-  "invariants": [
-    "set array order does not change canonical hash",
-    "proof step sequence order changes canonical hash",
-    "proof edges are sorted by key",
-    "case rows are sorted by caseId"
-  ]
+  "setDuplicatePolicy": "FAIL",
+  "nullVsAbsent": "DISTINCT",
+  "shaAlgorithm": "SHA-256"
 }

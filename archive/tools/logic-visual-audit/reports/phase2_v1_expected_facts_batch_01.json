@@ -1,0 +1,443 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "case table partitioning the symmetric-difference cardinality and sum conditions, listing every admissible element set and its ordered-pair contribution",
+        "requiredLabels": [
+          "U={1,2,3,4,5,6,7,8,9,10}",
+          "I=A∩B and |I|=1",
+          "S=(A−B)∪(B−A)=A△B",
+          "t=|S|∈{2,3}",
+          "s=ΣS",
+          "i=the unique element of I",
+          "Σ(U−(I∪S))=4s",
+          "each S element has two A-only/B-only orientations"
+        ],
+        "decisiveStepIds": [
+          "q20_union_cardinality_case_split",
+          "q20_sum_equation",
+          "q20_common_element_restriction",
+          "q20_admissible_symmetric_difference_sets",
+          "q20_ordered_orientation_count",
+          "q20_final_total"
+        ],
+        "universe": {
+          "symbol": "U",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        "expectedRegions": [
+          "A∩B",
+          "A−B",
+          "B−A",
+          "A^c∩B^c"
+        ],
+        "caseRows": [
+          {
+            "caseId": "q20_t02_other_invalid",
+            "caseCondition": "t=2 and s∉{9,10}",
+            "parameterValue": {
+              "t": 2,
+              "s": "any feasible sum other than 9 or 10",
+              "i": "55−5s"
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": "all S⊂U with |S|=2 and ΣS∉{9,10}",
+              "commonIntersectionElement": "i=55−5s"
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i+5s=55"
+              },
+              {
+                "factId": "eliminating_violation",
+                "value": "i∉U because i=55−5s is outside {1,…,10}"
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 3
+              }
+            ],
+            "validity": "INVALID",
+            "countContribution": 0,
+            "eliminationReasonId": "q20_i_outside_universe"
+          },
+          {
+            "caseId": "q20_t02_s09",
+            "caseCondition": "t=2 and s=9",
+            "parameterValue": {
+              "t": 2,
+              "s": 9,
+              "i": 10
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": [[1, 8], [2, 7], [3, 6], [4, 5]],
+              "commonIntersectionElement": [10]
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i=55−5·9=10"
+              },
+              {
+                "factId": "outside_sum",
+                "value": 36
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 3
+              },
+              {
+                "factId": "admissible_symmetric_difference_set_count",
+                "value": 4
+              },
+              {
+                "factId": "orientations_per_set",
+                "value": 4
+              }
+            ],
+            "validity": "VALID",
+            "countContribution": 16,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": "q20_t02_s10",
+            "caseCondition": "t=2 and s=10",
+            "parameterValue": {
+              "t": 2,
+              "s": 10,
+              "i": 5
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": [[1, 9], [2, 8], [3, 7], [4, 6]],
+              "commonIntersectionElement": [5]
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i=55−5·10=5"
+              },
+              {
+                "factId": "outside_sum",
+                "value": 40
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 3
+              },
+              {
+                "factId": "admissible_symmetric_difference_set_count",
+                "value": 4
+              },
+              {
+                "factId": "orientations_per_set",
+                "value": 4
+              }
+            ],
+            "validity": "VALID",
+            "countContribution": 16,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": "q20_t03_other_invalid",
+            "caseCondition": "t=3 and s∉{9,10}",
+            "parameterValue": {
+              "t": 3,
+              "s": "any feasible sum other than 9 or 10",
+              "i": "55−5s"
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": "all S⊂U with |S|=3 and ΣS∉{9,10}",
+              "commonIntersectionElement": "i=55−5s"
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i+5s=55"
+              },
+              {
+                "factId": "eliminating_violation",
+                "value": "i∉U because i=55−5s is outside {1,…,10}"
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 4
+              }
+            ],
+            "validity": "INVALID",
+            "countContribution": 0,
+            "eliminationReasonId": "q20_i_outside_universe"
+          },
+          {
+            "caseId": "q20_t03_s09",
+            "caseCondition": "t=3 and s=9",
+            "parameterValue": {
+              "t": 3,
+              "s": 9,
+              "i": 10
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": [[1, 2, 6], [1, 3, 5], [2, 3, 4]],
+              "commonIntersectionElement": [10]
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i=55−5·9=10"
+              },
+              {
+                "factId": "outside_sum",
+                "value": 36
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 4
+              },
+              {
+                "factId": "admissible_symmetric_difference_set_count",
+                "value": 3
+              },
+              {
+                "factId": "orientations_per_set",
+                "value": 8
+              }
+            ],
+            "validity": "VALID",
+            "countContribution": 24,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": "q20_t03_s10_overlap_invalid",
+            "caseCondition": "t=3, s=10, and 5∈S",
+            "parameterValue": {
+              "t": 3,
+              "s": 10,
+              "i": 5
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": [[1, 4, 5], [2, 3, 5]],
+              "commonIntersectionElement": [5]
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i=55−5·10=5"
+              },
+              {
+                "factId": "eliminating_violation",
+                "value": "I∩S must be empty, but i=5 belongs to S"
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 4
+              }
+            ],
+            "validity": "INVALID",
+            "countContribution": 0,
+            "eliminationReasonId": "q20_common_element_in_symmetric_difference"
+          },
+          {
+            "caseId": "q20_t03_s10_valid",
+            "caseCondition": "t=3 and s=10 and 5∉S",
+            "parameterValue": {
+              "t": 3,
+              "s": 10,
+              "i": 5
+            },
+            "caseElements": {
+              "symmetricDifferenceSets": [[1, 2, 7], [1, 3, 6]],
+              "commonIntersectionElement": [5]
+            },
+            "derivedFacts": [
+              {
+                "factId": "sum_equation",
+                "value": "i=55−5·10=5"
+              },
+              {
+                "factId": "outside_sum",
+                "value": 40
+              },
+              {
+                "factId": "union_cardinality",
+                "value": 4
+              },
+              {
+                "factId": "admissible_symmetric_difference_set_count",
+                "value": 2
+              },
+              {
+                "factId": "orientations_per_set",
+                "value": 8
+              }
+            ],
+            "validity": "VALID",
+            "countContribution": 16,
+            "eliminationReasonId": null
+          }
+        ],
+        "countingResult": 72,
+        "finalConclusion": "The number of ordered pairs (A,B) is 16+16+24+16=72."
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "case table partitioning n by the number of collisions in a↦a(n−a), then exposing the unique minimum case and its smallest B_k element",
+        "requiredLabels": [
+          "A={1,2,…,20}",
+          "f_n(a)=a(n−a)",
+          "f_n(a)=f_n(b) iff a=b or a+b=n",
+          "collision-pair count p(n)",
+          "|B_n|=20−p(n)",
+          "k=21",
+          "α=min B₂₁",
+          "k+α"
+        ],
+        "decisiveStepIds": [
+          "q17_product_collision_condition",
+          "q17_collision_pair_count",
+          "q17_n_case_partition",
+          "q17_unique_minimizer",
+          "q17_minimum_element_of_B21",
+          "q17_final_value"
+        ],
+        "universe": {
+          "symbol": "A",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+        },
+        "caseRows": [
+          {
+            "caseId": "q17_n_0001_0020",
+            "caseCondition": "1≤n≤20, n∈ℕ",
+            "parameterValue": {
+              "nRange": [1, 20]
+            },
+            "caseElements": {
+              "collisionPairs": "(a,n−a) with 1≤a<n/2 and both entries in A"
+            },
+            "derivedFacts": [
+              {
+                "factId": "collision_pair_count",
+                "value": "p(n)=⌊(n−1)/2⌋≤9"
+              },
+              {
+                "factId": "distinct_value_count",
+                "value": "|B_n|=20−⌊(n−1)/2⌋≥11"
+              },
+              {
+                "factId": "minimizer_status",
+                "value": "not minimizing"
+              }
+            ],
+            "validity": "VALID_CASE_NON_MINIMIZER",
+            "countContribution": 0,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": "q17_n_0021",
+            "caseCondition": "n=21",
+            "parameterValue": {
+              "n": 21
+            },
+            "caseElements": {
+              "collisionPairs": [[1, 20], [2, 19], [3, 18], [4, 17], [5, 16], [6, 15], [7, 14], [8, 13], [9, 12], [10, 11]],
+              "B_n": [20, 38, 54, 68, 80, 90, 98, 104, 108, 110]
+            },
+            "derivedFacts": [
+              {
+                "factId": "collision_pair_count",
+                "value": 10
+              },
+              {
+                "factId": "distinct_value_count",
+                "value": 10
+              },
+              {
+                "factId": "minimum_element",
+                "value": 20
+              },
+              {
+                "factId": "minimizer_status",
+                "value": "unique minimizer k=21"
+              }
+            ],
+            "validity": "VALID_CASE_MINIMIZER",
+            "countContribution": 1,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": "q17_n_0022_0040",
+            "caseCondition": "22≤n≤40, n∈ℕ",
+            "parameterValue": {
+              "nRange": [22, 40]
+            },
+            "caseElements": {
+              "collisionPairs": "(a,n−a) with max(1,n−20)≤a<n/2 and both entries in A"
+            },
+            "derivedFacts": [
+              {
+                "factId": "collision_pair_count",
+                "value": "p(n)=⌊(41−n)/2⌋≤9"
+              },
+              {
+                "factId": "distinct_value_count",
+                "value": "|B_n|=20−⌊(41−n)/2⌋≥11"
+              },
+              {
+                "factId": "minimizer_status",
+                "value": "not minimizing"
+              }
+            ],
+            "validity": "VALID_CASE_NON_MINIMIZER",
+            "countContribution": 0,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": "q17_n_0041_plus",
+            "caseCondition": "n≥41, n∈ℕ",
+            "parameterValue": {
+              "nRange": [41, "∞"]
+            },
+            "caseElements": {
+              "collisionPairs": []
+            },
+            "derivedFacts": [
+              {
+                "factId": "collision_pair_count",
+                "value": 0
+              },
+              {
+                "factId": "distinct_value_count",
+                "value": 20
+              },
+              {
+                "factId": "minimizer_status",
+                "value": "not minimizing"
+              }
+            ],
+            "validity": "VALID_CASE_NON_MINIMIZER",
+            "countContribution": 0,
+            "eliminationReasonId": null
+          }
+        ],
+        "countingResult": "min |B_n|=10 at the unique k=21; α=20; k+α=41",
+        "finalConclusion": "k+α=41"
+      }
+    }
+  ],
+  "status": "PASS_SOURCE_ONLY_TYPED_FACTS",
+  "reviewedUidSetSha": "sha256:6f1e0923ce77ead2ca2fe5cce4cbf253630dc3659af6d31bce9a5e6ed36b2f72"
+}

@@ -1,0 +1,49 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 5,
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js|22_팔마고_2학기_기말_고1_기출|17",
+      "qid": 17,
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_CASE_PARTITION",
+      "role": "COUNTING_CASE_PARTITION",
+      "rationale": "The source asks for a numerical count of ordered pairs of subsets subject to a nonempty-intersection condition. A case partition by the possible intersection size could clarify the counting structure, but the decisive work is combinatorial and a visual is not necessary; any visual must not imply cardinality through schematic area."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|7",
+      "qid": 7,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "NONE",
+      "rationale": "Each statement is a direct check of element membership, membership in the empty set, a less-than condition, or the cardinality of a two-element set under a≠b. No spatial or region fact is needed, and a visual would only duplicate the definitions."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|2",
+      "qid": 2,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "NONE",
+      "rationale": "Equality of the two explicitly listed two-element sets is resolved by matching the distinct elements −1 and 2, after which a+b is immediate. A Venn or other diagram adds no decisive mathematical fact."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|3",
+      "qid": 3,
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "NONE",
+      "rationale": "The source gives a four-element set and asks only for its number of subsets, which is the direct 2^4 enumeration. A visual would duplicate a trivial counting rule rather than clarify a logical or spatial relation."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|7",
+      "qid": 7,
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_INCLUSION_VENN",
+      "role": "DISJOINTNESS_AND_COMPLEMENT_INCLUSION",
+      "rationale": "The cardinality identity reduces to A∩B=∅ and therefore A⊆B^c; the option that A∪B=B is not forced. A two-set Venn can make the disjointness and complement-inclusion relation explicit, but the same conclusion is fully recoverable from set algebra, so the visual is optional rather than required."
+    }
+  ],
+  "reviewedUidSetSha": "sha256:92c3ce0fb62d6a2c7e12e32d932306b1c483e05d761a7cee41570806e045a3eb"
+}

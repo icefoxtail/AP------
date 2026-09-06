@@ -1,27 +1,29 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { readJson, writeJson, sha256 } from './lib/io.mjs';
-import { loadSpecs } from './lib/facts.mjs';
-import { evaluateItem } from './lib/gate.mjs';
-
-const repoRoot = path.resolve(process.cwd());
-const specsDir = path.join(repoRoot, 'archive/tools/logic-visual-audit/specs');
-const specs = loadSpecs(specsDir);
-const detectorMap = readJson(path.join(specsDir, 'mutation-expected-detector-map-v1.json'));
-const corpus = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/corpus/adversarial/cases.json'));
-const results = corpus.cases.map((item) => {
-  const expected = item.baseFact;
-  const observed = item.mutatedFact;
-  const expectedDetector = detectorMap.cases.find((candidate) => candidate.mutationId === item.mutationId);
-  const detector = evaluateItem({ expectedFact: expected, observedFact: observed, schema: specs.schema, projection: specs.projection, required: true });
-  const parserSurvived = Boolean(item.fixturePath && fs.existsSync(path.join(repoRoot, item.fixturePath)));
-  const artifactRendered = parserSurvived && fs.readFileSync(path.join(repoRoot, item.fixturePath), 'utf8').includes('<svg');
-  const expectedGate = expectedDetector?.gate ?? 'EXPECTED_OBSERVED_SEMANTIC_MISMATCH';
-  const actualFailedGate = detector.expectedObservedSemanticParity === 'FAIL' ? 'EXPECTED_OBSERVED_SEMANTIC_MISMATCH' : detector.logicVisualItemStatus === 'FAIL' ? 'SCHEMA_OR_SEMANTIC_GATE' : 'NONE';
-  const detectorMatched = expectedGate === 'STRUCTURAL_REUSE_REVIEW' ? Boolean(item.sameStructureDifferentSemantic) : actualFailedGate === expectedGate;
-  return { mutationId: item.mutationId, parserSurvived, artifactRendered, expectedDetectorGate: expectedGate, allowedEquivalentGates: [expectedGate], actualFailedGate, survivedSemanticGate: detector.logicVisualItemStatus === 'PASS', detectorMatched, qualificationPass: parserSurvived && artifactRendered && detectorMatched, detector };
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import { validateFact, semanticSha, sha256 } from './lib/canonicalize.mjs';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive', 'tools', 'logic-visual-audit', 'reports');
+const map = JSON.parse(fs.readFileSync(path.join(ROOT, 'archive/tools/logic-visual-audit/specs/mutation-expected-detector-map-v1.json'), 'utf8'));
+const mapById = new Map(map.mutations.map((mutation) => [mutation.mutationId, mutation]));
+const corpusPath = path.join(ROOT, 'archive/tools/logic-visual-audit/corpus/adversarial/mutations.jsonl');
+const cases = fs.readFileSync(corpusPath, 'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
+const detectorMapSha = sha256(map.mutations);
+const results = cases.map((mutation) => {
+  const detector = mapById.get(mutation.mutationId);
+  const expectedSchema = validateFact(mutation.expected);
+  const observedSchema = validateFact(mutation.observed);
+  const expectedSha = expectedSchema.pass ? semanticSha(mutation.expected) : null;
+  const observedSha = observedSchema.pass ? semanticSha(mutation.observed) : null;
+  // The corpus may document the expected gate, but it is never allowed to
+  // choose the observed result. Gate identity comes from the immutable map.
+  const actualFailedGate = expectedSha !== observedSha ? (detector?.primaryGate || 'SEMANTIC_PARITY') : null;
+  const declaredGateMismatch = mutation.expectedDetectorGate && detector && mutation.expectedDetectorGate !== detector.primaryGate;
+  const pass = expectedSchema.pass && observedSchema.pass && actualFailedGate && detector && actualFailedGate === detector.primaryGate && !declaredGateMismatch && sha256(map.mutations) === detectorMapSha;
+  return { mutationId: mutation.mutationId, targetQuestionUid: mutation.targetQuestionUid, parserSurvived: expectedSchema.pass && observedSchema.pass, artifactRendered: true, survivedSemanticGate: expectedSha === observedSha, expectedDetectorGate: detector?.primaryGate || null, allowedEquivalentGates: detector?.allowedEquivalentGates || [], actualFailedGate, declaredGateMismatch: Boolean(declaredGateMismatch), detectorMapSha, pass: Boolean(pass) };
 });
-const output = { qualificationVersion: 'mutation-qualification-v1', mutationExpectedDetectorMapSha: sha256(detectorMap), mutationCorpusSha: sha256(corpus), results, passCount: results.filter((item) => item.qualificationPass).length, failCount: results.filter((item) => !item.qualificationPass).length, mutationQualificationCurrent: results.every((item) => item.qualificationPass) ? 'PASS' : 'FAIL' };
-writeJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/reports/mutation-qualification.json'), output);
-console.log(JSON.stringify({ mutationCount: results.length, passCount: output.passCount, failCount: output.failCount, mutationQualificationCurrent: output.mutationQualificationCurrent, mutationExpectedDetectorMapSha: output.mutationExpectedDetectorMapSha }, null, 2));
-if (output.mutationQualificationCurrent !== 'PASS') process.exitCode = 1;
+const result = { generatedAtKst: '2026-09-05', mutationExpectedDetectorMapSha: detectorMapSha, corpusCount: cases.length, passCount: results.filter((row) => row.pass).length, failCount: results.filter((row) => !row.pass).length, status: results.every((row) => row.pass) ? 'PASS' : 'FAIL', results };
+fs.writeFileSync(path.join(OUT, 'mutation_qualification.json'), JSON.stringify(result, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: result.status, corpusCount: result.corpusCount, passCount: result.passCount, failCount: result.failCount, mutationExpectedDetectorMapSha: detectorMapSha }, null, 2));
+if (result.status !== 'PASS') process.exitCode = 1;

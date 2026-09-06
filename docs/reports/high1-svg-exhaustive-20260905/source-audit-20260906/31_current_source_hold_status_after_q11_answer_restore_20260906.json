@@ -1,0 +1,44 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "status": "SOURCE_AUDIT_CURRENT_STATUS_REVISION_3",
+  "supersedes": "30_current_source_hold_status_after_q17_restore_20260906.json",
+  "sourceFidelityRestorationSincePreviousRevision": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js|23_여수여고_1학기_중간_고1_기출|11",
+      "evidence": "unit-08-complex/19_source_recovery_q11_answer_key_d_drive.json",
+      "changedFields": ["answer", "solution"],
+      "unchangedFields": ["content", "choices"],
+      "answerBefore": "⑤",
+      "answerAfter": "④",
+      "reason": "D 정답 HWP의 q11=④를 production에 복원했지만 ④·⑤ 중복 보기 source defect hold는 유지한다.",
+      "productionMutation": "SOURCE_ANSWER_KEY_RESTORATION_WITHOUT_DEFECT_CLEARANCE"
+    }
+  ],
+  "currentSourceHolds": [
+    "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js|23_여수여고_1학기_중간_고1_기출|11",
+    "archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js|24_여수고_1학기_중간_고1_기출|15",
+    "archive/exams/original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js|24_여수고_1학기_중간_고1_기출|18",
+    "archive/exams/original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js|24_제일고_1학기_중간_고1_수학|5",
+    "archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js|24_한영고_1학기_중간_고1_기출|19",
+    "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_content|17"
+  ],
+  "sourceLedgerAggregate": {
+    "expectedFacts": 1512,
+    "sourceOnlyReviewed": 1506,
+    "sourceHold": 6,
+    "pending": 0
+  },
+  "questionIndex": {
+    "regeneratedAfterMutation": true,
+    "questionCount": 11026,
+    "duplicateQKeyCount": 0,
+    "q11AnswerAndIndexParity": "PASS",
+    "q1UnchangedParity": "PASS"
+  },
+  "similarQuestionPromotionsInThisRevision": 0,
+  "gate": "SOURCE_HOLD_ONLY; external independent review and release gates remain open",
+  "evidence": [
+    "unit-08-complex/19_source_recovery_q11_answer_key_d_drive.json",
+    "30_current_source_hold_status_after_q17_restore_20260906.json"
+  ]
+}

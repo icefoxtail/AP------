@@ -1,0 +1,220 @@
+{
+  "bundleType": "V2_ARTIFACT_ONLY_LOGIC_VISUAL_PHASE2_INDEPENDENT_REVIEW",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "visibility": {
+    "question": false,
+    "choices": false,
+    "answer": false,
+    "solution": false,
+    "expectedFact": false,
+    "solutionImageAlt": false,
+    "solutionImageCaption": false,
+    "builderMetadata": false,
+    "previousVerdict": false
+  },
+  "evidenceBoundary": "VISIBLE_SVG_TEXT_AND_DRAWING_STRUCTURE_ONLY",
+  "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "semanticProjectionSpecVersion": "SEMANTIC_PROJECTION_v1",
+  "observedCount": 3,
+  "artifactShaVerification": {
+    "algorithm": "SHA-256",
+    "sourceBatchReport": "archive/tools/logic-visual-audit/reports/phase2_v2_artifact_only_batch_01.json",
+    "verifiedCount": 3,
+    "matchedCount": 3,
+    "allMatch": true,
+    "items": [
+      {
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+        "artifactPath": "assets/images/22_금당고_2학기_기말_고1_기출/q20-solution.svg",
+        "expectedSha256": "sha256:80f08f72c5a1e099b0705baf8a0fa49373e0b766f80aabe32d005a5f921ecc04",
+        "observedSha256": "sha256:80f08f72c5a1e099b0705baf8a0fa49373e0b766f80aabe32d005a5f921ecc04",
+        "match": true
+      },
+      {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+        "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q17-solution.svg",
+        "expectedSha256": "sha256:b52569e739549bbf845a5a48900e2b092c61cfe1710791a2e9a88f6cb5e714db",
+        "observedSha256": "sha256:b52569e739549bbf845a5a48900e2b092c61cfe1710791a2e9a88f6cb5e714db",
+        "match": true
+      },
+      {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+        "artifactPath": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+        "expectedSha256": "sha256:6d545c7217bdcad69ebf45dfab63226b4d032eb7d4157f42500ec23064108476",
+        "observedSha256": "sha256:6d545c7217bdcad69ebf45dfab63226b4d032eb7d4157f42500ec23064108476",
+        "match": true
+      }
+    ]
+  },
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+      "artifactPath": "assets/images/22_금당고_2학기_기말_고1_기출/q20-solution.svg",
+      "mimeType": "image/svg+xml",
+      "artifactSha256Expected": "sha256:80f08f72c5a1e099b0705baf8a0fa49373e0b766f80aabe32d005a5f921ecc04",
+      "artifactSha256Observed": "sha256:80f08f72c5a1e099b0705baf8a0fa49373e0b766f80aabe32d005a5f921ecc04",
+      "artifactShaMatch": true,
+      "observedVisualTypeOrUnknown": "SET_CASE_PARTITION",
+      "semanticExtractionStatus": "OBSERVATION_SUFFICIENT",
+      "usable": true,
+      "observedVisualRole": "case partition and counting table",
+      "observedLabels": [
+        "|S|=2",
+        "후보 8개",
+        "|S|=3",
+        "후보 5개",
+        "8×2²=8×4=32",
+        "5×2³=5×8=40",
+        "32+40=72"
+      ],
+      "observedDrawingStructure": "Two side-by-side bordered panels partitioned by |S|=2 and |S|=3, each with visible candidate rows and a subtotal; bottom summary chips combine the two subtotals.",
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|20",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "case partition and counting table",
+        "requiredLabels": ["|S|=2", "|S|=3", "후보 8개", "후보 5개"],
+        "decisiveStepIds": [],
+        "caseRows": [
+          {
+            "visibleCase": "|S|=2",
+            "visibleCandidateCount": "8",
+            "visibleSubtotal": "8×2²=8×4=32"
+          },
+          {
+            "visibleCase": "|S|=3",
+            "visibleCandidateCount": "5",
+            "visibleSubtotal": "5×2³=5×8=40"
+          }
+        ],
+        "finalConclusion": "32+40=72"
+      },
+      "semanticProjection": {
+        "caseRows": [
+          {
+            "visibleCase": "|S|=2",
+            "visibleCandidateCount": "8",
+            "visibleSubtotal": "8×2²=8×4=32"
+          },
+          {
+            "visibleCase": "|S|=3",
+            "visibleCandidateCount": "5",
+            "visibleSubtotal": "5×2³=5×8=40"
+          }
+        ]
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+      "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q17-solution.svg",
+      "mimeType": "image/svg+xml",
+      "artifactSha256Expected": "sha256:b52569e739549bbf845a5a48900e2b092c61cfe1710791a2e9a88f6cb5e714db",
+      "artifactSha256Observed": "sha256:b52569e739549bbf845a5a48900e2b092c61cfe1710791a2e9a88f6cb5e714db",
+      "artifactShaMatch": true,
+      "observedVisualTypeOrUnknown": "SET_GRAPH_DEFINED",
+      "semanticExtractionStatus": "OBSERVATION_SUFFICIENT",
+      "usable": true,
+      "observedVisualRole": "input-pair to output mapping table",
+      "observedLabels": [
+        "A={1,2,…,20}의 실제 중복쌍",
+        "(1,20) → 20",
+        "(2,19) → 38",
+        "(3,18) → 54",
+        "(4,17) → 68",
+        "(5,16) → 80",
+        "(6,15) → 90",
+        "(7,14) → 98",
+        "(8,13) → 104",
+        "(9,12) → 108",
+        "(10,11) → 110",
+        "|B₂₁|=10"
+      ],
+      "observedDrawingStructure": "A single bordered panel shows ten visible pair-to-output rows in two columns, with a visible collision-condition line beneath and summary chips at the bottom.",
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|17",
+        "unit": "집합",
+        "visualType": "SET_GRAPH_DEFINED",
+        "visualRole": "input-pair to output mapping table",
+        "requiredLabels": ["A={1,2,…,20}의 실제 중복쌍", "|B₂₁|=10"],
+        "decisiveStepIds": [],
+        "graphDefinedFacts": [
+          { "visibleInputPair": "(1,20)", "visibleOutput": "20" },
+          { "visibleInputPair": "(2,19)", "visibleOutput": "38" },
+          { "visibleInputPair": "(3,18)", "visibleOutput": "54" },
+          { "visibleInputPair": "(4,17)", "visibleOutput": "68" },
+          { "visibleInputPair": "(5,16)", "visibleOutput": "80" },
+          { "visibleInputPair": "(6,15)", "visibleOutput": "90" },
+          { "visibleInputPair": "(7,14)", "visibleOutput": "98" },
+          { "visibleInputPair": "(8,13)", "visibleOutput": "104" },
+          { "visibleInputPair": "(9,12)", "visibleOutput": "108" },
+          { "visibleInputPair": "(10,11)", "visibleOutput": "110" }
+        ]
+      },
+      "semanticProjection": {
+        "graphDefinedFacts": [
+          { "visibleInputPair": "(1,20)", "visibleOutput": "20" },
+          { "visibleInputPair": "(2,19)", "visibleOutput": "38" },
+          { "visibleInputPair": "(3,18)", "visibleOutput": "54" },
+          { "visibleInputPair": "(4,17)", "visibleOutput": "68" },
+          { "visibleInputPair": "(5,16)", "visibleOutput": "80" },
+          { "visibleInputPair": "(6,15)", "visibleOutput": "90" },
+          { "visibleInputPair": "(7,14)", "visibleOutput": "98" },
+          { "visibleInputPair": "(8,13)", "visibleOutput": "104" },
+          { "visibleInputPair": "(9,12)", "visibleOutput": "108" },
+          { "visibleInputPair": "(10,11)", "visibleOutput": "110" }
+        ]
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "artifactPath": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+      "mimeType": "image/svg+xml",
+      "artifactSha256Expected": "sha256:6d545c7217bdcad69ebf45dfab63226b4d032eb7d4157f42500ec23064108476",
+      "artifactSha256Observed": "sha256:6d545c7217bdcad69ebf45dfab63226b4d032eb7d4157f42500ec23064108476",
+      "artifactShaMatch": true,
+      "observedVisualTypeOrUnknown": "SET_REGION_VENN_2",
+      "semanticExtractionStatus": "OBSERVATION_SUFFICIENT",
+      "usable": true,
+      "observedVisualRole": "two-set Venn region diagram",
+      "observedLabels": [
+        "U",
+        "A만",
+        "A∩B",
+        "B만",
+        "U 내부의 둘 다 아님",
+        "A♥B"
+      ],
+      "observedDrawingStructure": "A dashed outer rectangle labeled U contains two overlapping circles; the four visible membership regions are labeled A만, A∩B, B만, and U 내부의 둘 다 아님, with a highlighted operation summary below.",
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "two-set Venn region diagram",
+        "requiredLabels": ["U", "A만", "A∩B", "B만", "U 내부의 둘 다 아님"],
+        "decisiveStepIds": [],
+        "universe": { "visibleLabel": "U", "visibleBoundary": "dashed outer rectangle" },
+        "expectedRegions": ["A만", "A∩B", "B만", "U 내부의 둘 다 아님"],
+        "boundaryIdentity": {
+          "outerBoundary": "U",
+          "outerBoundaryShape": "dashed rectangle",
+          "innerBoundaries": "two overlapping circles"
+        }
+      },
+      "semanticProjection": {
+        "universeRequired": true,
+        "expectedRegions": ["A만", "A∩B", "B만", "U 내부의 둘 다 아님"],
+        "boundaryIdentity": {
+          "outerBoundary": "U",
+          "outerBoundaryShape": "dashed rectangle",
+          "innerBoundaries": "two overlapping circles"
+        }
+      }
+    }
+  ],
+  "status": "PASS_ARTIFACT_OBSERVATION_READY"
+}

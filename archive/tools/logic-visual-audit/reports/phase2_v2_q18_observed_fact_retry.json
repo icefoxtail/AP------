@@ -1,0 +1,144 @@
+{
+  "reportType": "LOGIC_VISUAL_PHASE2_V2_OBSERVED_FACT",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "inputBundleSha": "sha256:ba4298166e9288768cca5db66b6855b4c7d22bb61a1fad0cb623cb24ab174938",
+  "inputVisibilityProfile": {
+    "question": false,
+    "answer": false,
+    "solution": false,
+    "expectedFact": false,
+    "alt": false,
+    "caption": false,
+    "builderMetadata": false,
+    "previousVerdict": false
+  },
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18"
+  ],
+  "observedUidSetSha": "sha256:d71e2cb83c08b08cebab24e71bd06726adc403825cc05cf849d0b19e8d8bede5",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "artifactPath": "assets/images/22_금당고_2학기_기말_고1_기출/q18-solution.svg",
+      "mimeType": "image/svg+xml",
+      "artifactSha256Expected": "sha256:66bd27012e58352b49e8f40e26ef39f5df5933ed499e72500bb82a3ebdc5752e",
+      "artifactSha256Observed": "sha256:66bd27012e58352b49e8f40e26ef39f5df5933ed499e72500bb82a3ebdc5752e",
+      "artifactSha256Verified": true,
+      "artifactShaVerified": true,
+      "status": "PASS_ARTIFACT_TYPED_FACTS",
+      "observedFactExtractionMethod": "SVG artifact-only observation from visible geometry, computed styling, and rendered-visible text nodes; title and desc metadata were not used as semantic evidence; no question, answer, solution, expected fact, alt, caption, builder metadata, or prior verdict was read.",
+      "observedFactSha256": "sha256:5b47aacc744c8642d83d4bf3fc4ac1c93c9080ee2b2e473408a20fbc9afc54b2",
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+        "unit": "집합",
+        "visualType": "SET_GRAPH_DEFINED",
+        "visualRole": "두 함수 그래프의 접점과 정의역 경계 및 n=9 조건을 보여 주는 해설용 좌표 그래프",
+        "requiredLabels": [
+          "(3,3)",
+          "0",
+          "3",
+          "6",
+          "A: y=(x²+9)/6",
+          "B: y=√(6x−9)",
+          "x",
+          "y",
+          "교점 한 개 조건: 양의 정수 n=9",
+          "정의역 경계: x=0 포함 · x=1 제외",
+          "한 점: n=9",
+          "양의 정수 조건 ⇒ n=9"
+        ],
+        "decisiveStepIds": [
+          "graph-branch-A",
+          "graph-branch-B",
+          "domain-boundary-x0-included",
+          "domain-boundary-x1-excluded",
+          "contact-point-(3,3)",
+          "single-intersection-n9-text"
+        ],
+        "universe": null,
+        "expectedRegions": [],
+        "boundaryIdentity": null,
+        "graphDefinedFacts": {
+          "branchCount": 2,
+          "branches": [
+            {
+              "id": "A",
+              "label": "A: y=(x²+9)/6",
+              "stroke": "#2563eb",
+              "visibleContinuousBranch": true,
+              "branchDescription": "blue curve"
+            },
+            {
+              "id": "B",
+              "label": "B: y=√(6x−9)",
+              "stroke": "#f97316",
+              "visibleContinuousBranch": true,
+              "branchDescription": "orange curve"
+            }
+          ],
+          "contactPoint": {
+            "label": "(3,3)",
+            "graphCoordinates": {
+              "x": 3,
+              "y": 3
+            },
+            "markerVisible": true,
+            "markerPrimitive": {
+              "type": "circle",
+              "cx": 250,
+              "cy": 225,
+              "r": 7,
+              "fill": "#dc2626"
+            },
+            "projectionGuidesVisible": true
+          },
+          "tangentWitness": {
+            "visible": true,
+            "stroke": "#dc2626",
+            "dashPattern": "7 5",
+            "passesThroughContact": true
+          },
+          "domainBoundaryMarkers": [
+            {
+              "boundary": "x=0",
+              "status": "included",
+              "visibleText": "정의역 경계: x=0 포함 · x=1 제외",
+              "originAxisLabelVisible": true,
+              "independentAxisMarkerVisible": false
+            },
+            {
+              "boundary": "x=1",
+              "status": "excluded",
+              "visibleText": "정의역 경계: x=0 포함 · x=1 제외",
+              "independentAxisTickLabelVisible": false,
+              "independentPointMarkerVisible": false
+            }
+          ],
+          "intersectionWitness": {
+            "contactLabelVisible": true,
+            "singleIntersectionTextVisible": true,
+            "noOtherIntersectionMeaningVisible": true,
+            "explicitNoIntersectionPhraseVisible": false,
+            "visibleText": [
+              "양의 정수 n에서는 n=9일 때 (3,3)에서 접하여 한 번만 만난다.",
+              "(3,3)에서 한 점에서 만남",
+              "한 점: n=9",
+              "양의 정수 조건 ⇒ n=9",
+              "교점 한 개 조건: 양의 정수 n=9"
+            ],
+            "n9VisibleOccurrenceCount": 4,
+            "positiveIntegerConditionVisible": true
+          },
+          "visibleAlgebraText": [
+            "x=y",
+            "x²−6x+n=0"
+          ]
+        }
+      }
+    }
+  ]
+}

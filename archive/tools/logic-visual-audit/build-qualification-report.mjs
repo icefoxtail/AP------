@@ -1,83 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { readJson, writeJson, sha256, fileSha256 } from './lib/io.mjs';
-
-const repoRoot = path.resolve(process.cwd());
-const root = path.join(repoRoot, 'archive/tools/logic-visual-audit/reports');
-const preflight = readJson(path.join(root, 'rule-preflight.json'));
-const inventory = readJson(path.join(root, 'target-inventory.json'));
-const v1 = readJson(path.join(root, 'v1-evidence-freeze.json'));
-const denominator = readJson(path.join(root, 'c-denominator.json'));
-const parity = readJson(path.join(root, 'item-semantic-parity.json'));
-const duplicates = readJson(path.join(root, 'structure-duplicates.json'));
-const mutation = readJson(path.join(root, 'mutation-qualification.json'));
-const holdoutRun = fs.existsSync(path.join(root, 'holdout-qualification.json')) ? readJson(path.join(root, 'holdout-qualification.json')) : null;
-const renderRun = fs.existsSync(path.join(root, 'qualification-render.json')) ? readJson(path.join(root, 'qualification-render.json')) : null;
-const calibrationCorpus = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/corpus/calibration/index.json'));
-const holdoutCorpus = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/corpus/holdout/index.json'));
-const detectorMap = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/specs/mutation-expected-detector-map-v1.json'));
-const specSha = (name) => fileSha256(path.join(repoRoot, 'archive/tools/logic-visual-audit/specs', name));
-const toolSha = (name) => fileSha256(path.join(repoRoot, 'archive/tools/logic-visual-audit', name));
-const calibrationPass = parity.results.every((item) => item.logicVisualItemStatus === item.expectedStatus);
-const calibrationExpectedFailCount = parity.results.filter((item) => item.expectedStatus === 'FAIL').length;
-const report = {
-  qualificationReportVersion: 'logic-visual-qualification-phase1-v1',
-  ruleStatus: preflight.ruleStatus,
-  overlayRuleSha: preflight.appliedRuleRefs.find((item) => item.role === 'LOGIC_VISUAL_OVERLAY')?.sha256 ?? null,
-  effectiveRulesetSha: preflight.effectiveRulesetSha,
-  ruleRoutingBundleSha: preflight.ruleRoutingBundleSha,
-  qualificationInputBundle: {
-    effectiveRulesetSha: preflight.effectiveRulesetSha,
-    ruleRoutingBundleSha: preflight.ruleRoutingBundleSha,
-    overlayRuleSha: preflight.appliedRuleRefs.find((item) => item.role === 'LOGIC_VISUAL_OVERLAY')?.sha256 ?? null,
-    verifierSha: toolSha('lib/gate.mjs'),
-    observedExtractionEngineSha: toolSha('lib/visual.mjs'),
-    visualGeneratorSha: toolSha('lib/visual.mjs'),
-    staticContractToolSha: toolSha('test-logic-visual-audit.mjs'),
-    rendererSemanticProfileSha: fs.existsSync(path.join(repoRoot, 'archive/tools/logic-visual-audit/run-qualification-render.mjs')) ? toolSha('run-qualification-render.mjs') : sha256('renderer-semantic-profile-v1:static-svg-qualification'),
-    styleCssBundleSha: sha256('style-css-bundle:none-in-artifact-only-v1'),
-    factSchemaSha: specSha('logic-visual-fact-schema-v1.json'),
-    logicVisualFactCanonicalizationSpecSha: specSha('fact-canonicalization-spec-v1.json'),
-    semanticProjectionSpecSha: specSha('semantic-projection-spec-v1.json'),
-    calibrationCorpusSha: sha256(calibrationCorpus),
-    mutationCorpusSha: mutation.mutationCorpusSha,
-    holdoutCorpusSha: sha256(holdoutCorpus),
-    expectedDetectorMapSha: sha256(detectorMap)
-  },
-  finalTargetCount: inventory.finalTargetCount,
-  v1VisualTriageCoverageCount: v1.coverageCount,
-  finalLogicVisualRequiredCount: denominator.logicVisualRequiredUidSet.length,
-  logicVisualRequiredUidSetSha: denominator.logicVisualRequiredUidSetSha,
-  logicVisualReviewedUidSetSha: sha256(parity.results.filter((item) => item.logicVisualItemStatus === 'PASS').map((item) => item.questionUid).sort()),
-  overlayCoreMembershipParity: denominator.parity,
-  calibration: { pass: calibrationPass, passCount: parity.results.filter((item) => item.expectedStatus === 'PASS' && item.logicVisualItemStatus === 'PASS').length, expectedFailCount: calibrationExpectedFailCount, detectedExpectedFailCount: parity.results.filter((item) => item.expectedStatus === 'FAIL' && item.logicVisualItemStatus === 'FAIL').length, rawSemanticFailCount: parity.failCount },
-  holdout: holdoutRun ? { status: holdoutRun.holdoutStatus, pass: holdoutRun.pass, reportSha: holdoutRun.reportSha, caseCount: holdoutRun.results.length, note: holdoutRun.note } : { status: 'UNSEEN', pass: false, note: 'Holdout is not revealed during calibration pilot.' },
-  mutation: { pass: mutation.mutationQualificationCurrent === 'PASS', passCount: mutation.passCount, failCount: mutation.failCount, mutationQualificationCurrent: mutation.mutationQualificationCurrent, mutationExpectedDetectorMapSha: mutation.mutationExpectedDetectorMapSha },
-  qualificationRender: renderRun ? { pass: renderRun.pass, status: renderRun.pass ? 'PASS' : 'FAIL', renderMode: renderRun.renderMode, artifactCount: renderRun.artifactCount, reportSha: renderRun.reportSha, note: renderRun.note } : { pass: false, status: 'NOT_TESTED', note: 'Semantic qualification render harness remains separate from Common Core D.' },
-  falsePassCount: 0,
-  falseFailCount: 0,
-  structuralDuplicateFailCount: duplicates.failCount,
-  final判定: calibrationPass && holdoutRun?.pass && mutation.mutationQualificationCurrent === 'PASS' && duplicates.failCount === 0 && renderRun?.pass ? 'PASS — LOGIC VISUAL QUALIFICATION INFRA READY' : calibrationPass && mutation.mutationQualificationCurrent === 'PASS' && duplicates.failCount === 0 ? 'WARN — holdout and qualification render remain pending' : 'FAIL — qualification gate unresolved',
-  generatedAt: new Date().toISOString()
-};
-Object.assign(report, {
-  FINAL_TARGET_COUNT: report.finalTargetCount,
-  V1_VISUAL_TRIAGE_COVERAGE_COUNT: report.v1VisualTriageCoverageCount,
-  FINAL_LOGIC_VISUAL_REQUIRED_COUNT: report.finalLogicVisualRequiredCount,
-  LOGIC_VISUAL_REQUIRED_UID_SET_SHA: report.logicVisualRequiredUidSetSha,
-  LOGIC_VISUAL_REVIEWED_UID_SET_SHA: report.logicVisualReviewedUidSetSha,
-  CORE_FINAL_C_REQUIRED_UID_SET_SHA: denominator.coreFinalCRequiredUidSetSha,
-  C_DENOMINATOR_INPUT_SHA: denominator.cDenominatorInputSha,
-  MUTATION_QUALIFICATION_CURRENT: report.mutation.mutationQualificationCurrent,
-  LOGIC_VISUAL_QUALIFICATION_RENDER_PASS: report.qualificationRender.status === 'PASS' ? 'PASS' : 'NOT_TESTED',
-  FALSE_PASS_COUNT: report.falsePassCount,
-  FALSE_FAIL_COUNT: report.falseFailCoun
-});
-report.qualificationInputBundleSha = sha256(report.qualificationInputBundle);
-writeJson(path.join(root, 'qualification-report.json'), report);
-fs.writeFileSync(path.join(root, 'qualification-report.md'), renderMarkdown(report), 'utf8');
-console.log(JSON.stringify({ finalTargetCount: report.finalTargetCount, v1Coverage: `${report.v1VisualTriageCoverageCount}/${report.finalTargetCount}`, requiredCount: report.finalLogicVisualRequiredCount, calibration: report.calibration, mutation: report.mutation, final判定: report.final判定, qualificationInputBundleSha: report.qualificationInputBundleSha }, null, 2));
-
-function renderMarkdown(value) {
-  return `# Logic Visual Qualification Phase 1\n\n- Rule status: ${value.ruleStatus}\n- Final target count: ${value.finalTargetCount}\n- V1 coverage: ${value.v1VisualTriageCoverageCount}/${value.finalTargetCount}\n- Required C count: ${value.finalLogicVisualRequiredCount}\n- Calibration: ${value.calibration.pass ? 'PASS' : 'FAIL'}\n- Holdout: ${value.holdout.status}\n- Mutation: ${value.mutation.mutationQualificationCurrent}\n- Qualification render: ${value.qualificationRender.status}\n- False pass: ${value.falsePassCount}\n- False fail: ${value.falseFailCount}\n- Final judgment: ${value.final判定}\n\nThis is a candidate qualification report. It does not grant production release or Common Core D authority.\n`;
-}
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import { sha256 } from './lib/canonicalize.mjs';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive/tools/logic-visual-audit/reports');
+const read = (name) => JSON.parse(fs.readFileSync(path.join(OUT, name), 'utf8'));
+const preflight = read('rule_preflight.json'); const target = read('target_inventory_summary.json'); const v1 = read('v1_evidence_freeze.json'); const v2 = read('v2_evidence_freeze.json'); const extraction = read('v2_observed_extraction.json'); const denominator = fs.existsSync(path.join(OUT, 'c_denominator_frozen.json')) ? read('c_denominator_frozen.json') : read('c_denominator.json'); const mutation = read('mutation_qualification.json'); const item = read('item_semantic_gate.json'); const duplicate = read('visual_structure_duplicate_audit.json'); const duplicateAdjudication = read('visual_structure_duplicate_adjudication.json'); const v3FailureAdjudication = read('v3_failure_adjudication.json'); const falsePassAudit = read('false_pass_fail_audit.json'); const unitTests = read('logic_visual_unit_tests.json'); const corpus = read('corpus_pilot.json'); const bundle = read('qualification_input_bundle.json'); const finalRequirementMap = read('final_visual_requirement_map.json'); const v1Independent = read('v1_independent_triage.json'); const v2Independent = read('v2_independent_observed.json'); const v3Independent = read('v3_independent_parity.json'); const holdoutReview = read('holdout_independent_review.json');
+const output = { generatedAtKst: '2026-09-05', phase: 'LOGIC_VISUAL_QUALIFICATION_PHASE_1', ruleStatus: preflight.ruleStatus, ruleRoutingBundleSha: preflight.ruleRoutingBundleSha, effectiveRulesetSha: bundle.effectiveRulesetSha, qualificationInputBundleSha: bundle.qualificationInputBundleSha, targetCount: target.finalTargetCount, v1TriageCoverageCount: target.v1TriageCoverageCount, v1Coverage: target.v1TriageCoverage, v1IndependentStatus: v1Independent.status, v1IndependentReviewedCount: v1Independent.reviewedCount, v1IndependentUidSetSha: v1Independent.reviewedUidSetSha, v2IndependentStatus: v2Independent.status, v2IndependentObservedCount: v2Independent.observedCount, v2IndependentUidSetSha: v2Independent.observedUidSetSha, v3IndependentStatus: v3Independent.status, v3ComparedCount: v3Independent.comparedCount, v3PassCount: v3Independent.passCount, v3BlockedCount: v3Independent.blockedCount, v3FailCount: v3Independent.failCount, v3IntersectionUidSetSha: v3Independent.expectedObservedUidIntersectionSha, v3FailureAdjudicationStatus: v3FailureAdjudication.status, v3FailureAdjudicatedCount: v3FailureAdjudication.entries.length, v3FailureRootCauseCounts: v3FailureAdjudication.rootCauseCounts, falsePassCount: falsePassAudit.falsePassCount, falseFailCount: falsePassAudit.falseFailCount, knownBadDetectedCount: falsePassAudit.knownBadDetectedCount, v1AdjudicatedResolvedCount: Object.values(finalRequirementMap.adjudications).filter((item) => item.status === 'RESOLVED').length, v1AdjudicatedSourceBlockedCount: Object.values(finalRequirementMap.adjudications).filter((item) => item.status === 'UNRESOLVED').length, finalVisualRequirementMapStatus: finalRequirementMap.status, v2ArtifactBundleCount: v2.artifactBundleCount, observedArtifactCount: extraction.observedCount, cDenominatorStatus: denominator.status, candidateRequiredCount: (denominator.logicVisualRequiredUidSet || denominator.candidateRequiredUidSet).length, mutationStatus: mutation.status, mutationQualificationCurrent: mutation.status === 'PASS' ? 'PASS' : 'FAIL', itemSemanticGateStatus: item.status, structuralDuplicateStatus: duplicate.status, structuralDuplicateAdjudicationStatus: duplicateAdjudication.status, structuralDuplicateFailedGroups: duplicateAdjudication.failedGroups, unitTestsStatus: unitTests.status, corpusPilotStatus: corpus.status, calibrationCount: corpus.calibrationCount, holdoutCount: corpus.holdoutCount, holdoutStatus: holdoutReview.holdoutStatus, holdoutReviewStatus: holdoutReview.status, calibrationStatus: corpus.calibrationStatus, overallStatus: 'INFRASTRUCTURE_READY_V3_FAIL_NOT_ADOPTED', overlayGate: 'FAIL', productionAuthority: false, blockingReasons: ['V3_SEMANTIC_PARITY_FAIL_70', 'V3_SEMANTIC_PARITY_BLOCKED_15', 'OVERLAY_CANDIDATE_ONLY', ...(duplicateAdjudication.status === 'FAIL_KNOWN_BAD_DETECTED' ? ['STRUCTURAL_TEMPLATE_REUSE_FAIL_KNOWN_BAD_DETECTED'] : [])] };
+fs.writeFileSync(path.join(OUT, 'qualification_report_phase1.json'), JSON.stringify(output, null, 2) + '\n', 'utf8');
+fs.writeFileSync(path.join(OUT, 'qualification_report_phase1.md'), `# Logic Visual Qualification Phase 1\n\n- 상태: **${output.overallStatus}**\n- production authority: **${output.productionAuthority}**\n- final target count: **${output.targetCount}**\n- V1 source-only coverage: **${output.v1TriageCoverageCount}/${output.targetCount}**\n- V1 independent triage: **${output.v1IndependentStatus} (${output.v1IndependentReviewedCount}/${output.targetCount})**\n- V1 source-blocked adjudication: **${output.v1AdjudicatedSourceBlockedCount}**\n- V2 independent artifact observation: **${output.v2IndependentStatus} (${output.v2IndependentObservedCount} artifact bundles)**\n- V3 semantic parity: **${output.v3IndependentStatus}** — PASS ${output.v3PassCount}, BLOCKED ${output.v3BlockedCount}, FAIL ${output.v3FailCount}\n- V3 failure adjudication: **${output.v3FailureAdjudicationStatus}** — ${JSON.stringify(output.v3FailureRootCauseCounts)}\n- C denominator: **${output.candidateRequiredCount}** (status: ${output.cDenominatorStatus})\n- mutation qualification: **${output.mutationStatus}**\n- item semantic fixture gate: **${output.itemSemanticGateStatus}**\n- structural duplicate adjudication: **${output.structuralDuplicateAdjudicationStatus}** — failed groups ${output.structuralDuplicateFailedGroups}\n- holdout: **${output.holdoutStatus}**\n\n이번 Phase 1은 production 집합·명제 문항을 대량 수정하지 않고, rule preflight, typed fact schema, canonicalization, semantic projection, V1/V2 blind bundle, 독립 V1 source-only triage, 독립 V2 artifact-only observation, 독립 V3 parity, C denominator freeze, item semantic gate, structural fingerprint, mutation harness와 qualification report를 구현했다. V1 360/360, V2 artifact 103/103은 동결됐지만 V3는 PASS ${output.v3PassCount}, BLOCKED ${output.v3BlockedCount}, FAIL ${output.v3FailCount}이며, 실패 70개와 blocked 15개는 별도 원인 adjudication을 완료했다. known-bad 구조 재사용도 검출되었다. 따라서 Overlay adoption과 production release/seal 권한은 부여하지 않는다.\n`, 'utf8');
+console.log(JSON.stringify({ overallStatus: output.overallStatus, targetCount: output.targetCount, v1Coverage: output.v1TriageCoverage, mutationStatus: output.mutationStatus, cDenominatorStatus: output.cDenominatorStatus }, null, 2));

@@ -1,0 +1,366 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|21",
+      "examId": "22_복성고_2학기_중간_고1_기출",
+      "qid": 21,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "candidate_case_partition_with_parity_elimination_and_selected_sum",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|21",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "candidate_case_partition_with_parity_elimination_and_selected_sum",
+        "requiredLabels": [
+          "1≤k≤20",
+          "n(A∩B)=2",
+          "A=positive_divisors_of_k",
+          "A-B",
+          "A-B sum parity",
+          "validity",
+          "selected k sum=48"
+        ],
+        "decisiveStepIds": [
+          "enumerate-candidate-k",
+          "compute-A-minus-B-parity",
+          "select-valid-k-and-sum"
+        ],
+        "universe": {
+          "parameterDomain": "k∈N, 1≤k≤20",
+          "lower": 1,
+          "upper": 20
+        },
+        "caseRows": [
+          {
+            "caseId": 6,
+            "caseCondition": "2 and 6 divide k; 5 does not divide k",
+            "parameterValue": 6,
+            "caseElements": {
+              "A": [1, 2, 3, 6],
+              "A∩B": [2, 6],
+              "A-B": [1, 3]
+            },
+            "derivedFacts": [
+              {"factId": "divisorsOfK", "value": [1, 2, 3, 6]},
+              {"factId": "intersectionCardinality", "value": 2},
+              {"factId": "aMinusBSum", "value": 4},
+              {"factId": "aMinusBSumParity", "value": "EVEN"}
+            ],
+            "validity": "INVALID",
+            "selected": false,
+            "countContribution": 0,
+            "eliminationReasonId": "A_MINUS_B_SUM_NOT_ODD"
+          },
+          {
+            "caseId": 10,
+            "caseCondition": "2 and 5 divide k; 6 does not divide k",
+            "parameterValue": 10,
+            "caseElements": {
+              "A": [1, 2, 5, 10],
+              "A∩B": [2, 5],
+              "A-B": [1, 10]
+            },
+            "derivedFacts": [
+              {"factId": "divisorsOfK", "value": [1, 2, 5, 10]},
+              {"factId": "intersectionCardinality", "value": 2},
+              {"factId": "aMinusBSum", "value": 11},
+              {"factId": "aMinusBSumParity", "value": "ODD"}
+            ],
+            "validity": "VALID",
+            "selected": true,
+            "countContribution": 10,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": 12,
+            "caseCondition": "2 and 6 divide k; 5 does not divide k",
+            "parameterValue": 12,
+            "caseElements": {
+              "A": [1, 2, 3, 4, 6, 12],
+              "A∩B": [2, 6],
+              "A-B": [1, 3, 4, 12]
+            },
+            "derivedFacts": [
+              {"factId": "divisorsOfK", "value": [1, 2, 3, 4, 6, 12]},
+              {"factId": "intersectionCardinality", "value": 2},
+              {"factId": "aMinusBSum", "value": 20},
+              {"factId": "aMinusBSumParity", "value": "EVEN"}
+            ],
+            "validity": "INVALID",
+            "selected": false,
+            "countContribution": 0,
+            "eliminationReasonId": "A_MINUS_B_SUM_NOT_ODD"
+          },
+          {
+            "caseId": 18,
+            "caseCondition": "2 and 6 divide k; 5 does not divide k",
+            "parameterValue": 18,
+            "caseElements": {
+              "A": [1, 2, 3, 6, 9, 18],
+              "A∩B": [2, 6],
+              "A-B": [1, 3, 9, 18]
+            },
+            "derivedFacts": [
+              {"factId": "divisorsOfK", "value": [1, 2, 3, 6, 9, 18]},
+              {"factId": "intersectionCardinality", "value": 2},
+              {"factId": "aMinusBSum", "value": 31},
+              {"factId": "aMinusBSumParity", "value": "ODD"}
+            ],
+            "validity": "VALID",
+            "selected": true,
+            "countContribution": 18,
+            "eliminationReasonId": null
+          },
+          {
+            "caseId": 20,
+            "caseCondition": "2 and 5 divide k; 6 does not divide k",
+            "parameterValue": 20,
+            "caseElements": {
+              "A": [1, 2, 4, 5, 10, 20],
+              "A∩B": [2, 5],
+              "A-B": [1, 4, 10, 20]
+            },
+            "derivedFacts": [
+              {"factId": "divisorsOfK", "value": [1, 2, 4, 5, 10, 20]},
+              {"factId": "intersectionCardinality", "value": 2},
+              {"factId": "aMinusBSum", "value": 35},
+              {"factId": "aMinusBSumParity", "value": "ODD"}
+            ],
+            "validity": "VALID",
+            "selected": true,
+            "countContribution": 20,
+            "eliminationReasonId": null
+          }
+        ],
+        "candidateKValues": [6, 10, 12, 18, 20],
+        "selectedKValues": [10, 18, 20],
+        "selectedKSum": 48
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|4",
+      "examId": "22_순천여고_2학기_중간_고1_기출",
+      "qid": 4,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "two_set_cardinality_venn_with_union_intersection_and_difference",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|4",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "two_set_cardinality_venn_with_union_intersection_and_difference",
+        "requiredLabels": [
+          "U=50",
+          "A=31",
+          "B=23",
+          "outside=8",
+          "A-only=19",
+          "A∩B=12",
+          "B-only=11",
+          "A∪B=42",
+          "A-B=30"
+        ],
+        "decisiveStepIds": [
+          "partition-U-into-four-regions",
+          "compute-union-and-intersection",
+          "compute-A-minus-B"
+        ],
+        "universe": {
+          "definition": "U",
+          "totalCardinality": 50
+        },
+        "setCardinalities": {
+          "A": 31,
+          "B": 23
+        },
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "U": "boundary:U"
+        },
+        "cardinalityByRegion": {
+          "A-only": 19,
+          "intersection": 12,
+          "B-only": 11,
+          "outside": 8
+        },
+        "unionCardinality": 42,
+        "intersectionCardinality": 12,
+        "outsideCardinality": 8,
+        "totalCardinality": 50,
+        "differenceCardinality": 30,
+        "union": 42,
+        "difference": 30,
+        "extremeConfiguration": null
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8",
+      "examId": "22_순천여고_2학기_중간_고1_기출",
+      "qid": 8,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "forced_forbidden_free_element_buckets_with_subset_count",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js|22_순천여고_2학기_중간_고1_기출|8",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "forced_forbidden_free_element_buckets_with_subset_count",
+        "requiredLabels": [
+          "U={1,2,3,4,5,6,7}",
+          "A={1,2}",
+          "B={5,7}",
+          "forced={1,2}",
+          "forbidden={5,7}",
+          "free={3,4,6}",
+          "count=8"
+        ],
+        "decisiveStepIds": [
+          "intersection-condition-forces-A",
+          "difference-condition-forbids-B",
+          "count-subsets-of-free-elements"
+        ],
+        "universe": {
+          "definition": "U={1,2,3,4,5,6,7}",
+          "elements": [1, 2, 3, 4, 5, 6, 7],
+          "totalCardinality": 7
+        },
+        "forcedElements": [1, 2],
+        "forbiddenElements": [5, 7],
+        "freeElements": [3, 4, 6],
+        "freeCount": 3,
+        "countingResult": 8,
+        "count": 8
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+      "examId": "22_팔마고_2학기_중간_고1_기출",
+      "qid": 7,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "maximum_minimum_intersection_cardinality_panels",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|7",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "maximum_minimum_intersection_cardinality_panels",
+        "requiredLabels": [
+          "total=24",
+          "A=14",
+          "B=12",
+          "maximum intersection M=12",
+          "minimum intersection m=2",
+          "M+m=14"
+        ],
+        "decisiveStepIds": [
+          "maximum-intersection-panel",
+          "minimum-intersection-panel",
+          "compute-M-plus-m"
+        ],
+        "universe": {
+          "definition": "U",
+          "totalCardinality": 24
+        },
+        "setCardinalities": {
+          "A": 14,
+          "B": 12
+        },
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "U": "boundary:U"
+        },
+        "cardinalityByRegion": {
+          "maximumIntersection": {
+            "A-only": 2,
+            "intersection": 12,
+            "B-only": 0,
+            "outside": 10
+          },
+          "minimumIntersection": {
+            "A-only": 12,
+            "intersection": 2,
+            "B-only": 10,
+            "outside": 0
+          }
+        },
+        "totalCardinality": 24,
+        "maximumIntersection": 12,
+        "minimumIntersection": 2,
+        "extremeConfiguration": {
+          "total": 24,
+          "A": 14,
+          "B": 12,
+          "maximumIntersectionPanel": {
+            "M": 12,
+            "intersection": 12,
+            "A-only": 2,
+            "B-only": 0,
+            "outside": 10
+          },
+          "minimumIntersectionPanel": {
+            "m": 2,
+            "intersection": 2,
+            "A-only": 12,
+            "B-only": 10,
+            "outside": 0
+          },
+          "MPlusm": 14
+        },
+        "MPlusm": 14,
+        "sum": 14
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|20",
+      "examId": "22_팔마고_2학기_중간_고1_기출",
+      "qid": 20,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "forced_forbidden_free_element_buckets_for_set_equation",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|20",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "forced_forbidden_free_element_buckets_for_set_equation",
+        "requiredLabels": [
+          "U={1,2,4,8,11,13,15}",
+          "A={1,4,11}",
+          "B={1,2,13}",
+          "A-B={4,11}",
+          "B-A={2,13}",
+          "forced={2,4,11,13}",
+          "forbidden=∅",
+          "free={1,8,15}",
+          "count=8"
+        ],
+        "decisiveStepIds": [
+          "derive-A-minus-B-and-B-minus-A",
+          "force-elements-for-union-equality",
+          "count-subsets-of-free-elements"
+        ],
+        "universe": {
+          "definition": "U={1,2,4,8,11,13,15}",
+          "elements": [1, 2, 4, 8, 11, 13, 15],
+          "totalCardinality": 7
+        },
+        "derivedSets": {
+          "A-B": [4, 11],
+          "B-A": [2, 13]
+        },
+        "forcedElements": [2, 4, 11, 13],
+        "forbiddenElements": [],
+        "freeElements": [1, 8, 15],
+        "freeCount": 3,
+        "countingResult": 8,
+        "count": 8
+      }
+    }
+  ],
+  "reviewedUidSetSha": "sha256:948684864ff51616038093ea12dcd196794f7dddd2820ed523b88b77f61f4e93"
+}

@@ -1,0 +1,26 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "unit-01-circle",
+  "preRepairFullBatch": {
+    "attempted": 99,
+    "pass": 99,
+    "failed": [],
+    "modes": [
+      "exam",
+      "solution",
+      "answer"
+    ],
+    "basis": "CUA browser load batch completed before the scale metadata-only repairs; no engine load error was observed."
+  },
+  "postRepairRepresentative": {
+    "sourceJsPath": "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+    "modes": {
+      "exam": "LOAD_PASS",
+      "solution": "LOAD_PASS",
+      "answer": "LOAD_PASS"
+    },
+    "basis": "A fresh browser tab rendered the exam, waited for asynchronous content, switched to 해설지 and 정답표, and produced populated DOM/screenshot output after the SVG metadata repairs."
+  },
+  "interpretation": "The production changes are SVG-root metadata and preserveAspectRatio repairs only; source JS and engine data are unchanged. The full pre-repair batch is retained as regression evidence and the representative post-repair 3-mode run verifies the changed artifact path through the engine.",
+  "infrastructureNote": "A second rapid 99-navigation attempt crashed the local in-app browser tab; this is recorded as browser infrastructure noise, not an exam data failure, and is excluded from the pass counts above."
+}

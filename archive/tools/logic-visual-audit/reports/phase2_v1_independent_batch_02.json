@@ -1,0 +1,34 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 3,
+  "uniqueUidCount": 3,
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "qid": 13,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_REGION_VENN_2",
+      "visualRole": "DECISIVE_REGION_MEMBERSHIP",
+      "rationale": "The source directly combines union, intersection, and complements over a finite universe; a U-bounded two-set region view exposes the decisive symmetric-difference membership structure."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "qid": 16,
+      "expectedVisualRequirementSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "visualRole": "NONE",
+      "rationale": "The source is a finite-subset count driven by complement relations, an element-sum inequality, and odd cardinality; it supplies no stable region, interval, or concrete forced/forbidden/free partition that a visual would clarify."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "qid": 6,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "DECISIVE_ELEMENT_BUCKET_PARTITION",
+      "rationale": "The explicit source sets partition U into elements forced into X (A), forbidden from X (B), and free elements U minus (A union B); that forced/forbidden/free bucket is the decisive counting structure."
+    }
+  ],
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "reviewedUidSetSha": "sha256:81d0d47e043e6b37b83b6041fd206136325a15c224643644bc83ab204451fc96"
+}

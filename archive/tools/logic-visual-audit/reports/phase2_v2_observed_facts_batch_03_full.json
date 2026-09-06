@@ -1,0 +1,196 @@
+{
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "canonicalizationSpecVersion": "LOGIC_VISUAL_FACT_CANONICALIZATION_v1",
+  "semanticProjectionSpecVersion": "SEMANTIC_PROJECTION_v1",
+  "artifactShaVerification": [
+    {
+      "artifactPath": "assets/images/22_강남여고_2학기_중간_고1_기출/q10-solution.svg",
+      "expectedSha256": "sha256:740fb8508ec2653d78b63416064dd87c5657d869a3a3ea3362470d92d86b031f",
+      "observedSha256": "sha256:740fb8508ec2653d78b63416064dd87c5657d869a3a3ea3362470d92d86b031f",
+      "verified": true
+    },
+    {
+      "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q19-solution.svg",
+      "expectedSha256": "sha256:0fe1ed55ab6426f35a51eef0f80753d4095cdfed12b0d6de53c258e23d98536c",
+      "observedSha256": "sha256:0fe1ed55ab6426f35a51eef0f80753d4095cdfed12b0d6de53c258e23d98536c",
+      "verified": true
+    },
+    {
+      "artifactPath": "assets/images/22_복성고_2학기_중간_고1_기출/q15-solution.svg",
+      "expectedSha256": "sha256:b3626f0db47f8e242828baaca36d9ea2cc16ec9c9eb98855515d3c12afa860a8",
+      "observedSha256": "sha256:b3626f0db47f8e242828baaca36d9ea2cc16ec9c9eb98855515d3c12afa860a8",
+      "verified": true
+    }
+  ],
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+      "artifactPath": "assets/images/22_강남여고_2학기_중간_고1_기출/q10-solution.svg",
+      "artifactSha256": "sha256:740fb8508ec2653d78b63416064dd87c5657d869a3a3ea3362470d92d86b031f",
+      "fact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "visible classification of forced, forbidden, and free elements of X",
+        "requiredLabels": [
+          "전체집합 U",
+          "반드시 포함",
+          "반드시 제외",
+          "자유 선택",
+          "n(X)=2^5=32"
+        ],
+        "decisiveStepIds": [
+          "forcedElements",
+          "forbiddenElements",
+          "freeElements",
+          "freeCount",
+          "countingResult"
+        ],
+        "universe": {
+          "label": "U",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          "cardinality": 10
+        },
+        "forcedElements": [1, 3, 4, 8],
+        "forbiddenElements": [6],
+        "freeElements": [2, 5, 7, 9, 10],
+        "freeCount": 5,
+        "countingExpression": "n(X)=2^5=32",
+        "countingResult": 32
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+      "artifactPath": "assets/images/22_매산고_2학기_중간_고1_기출/q19-solution.svg",
+      "artifactSha256": "sha256:0fe1ed55ab6426f35a51eef0f80753d4095cdfed12b0d6de53c258e23d98536c",
+      "fact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "visible two-set cardinality Venn with fixed union and endpoint configurations",
+        "requiredLabels": [
+          "A=제주도",
+          "B=서울",
+          "합집합 140명",
+          "200명 중 바깥 60명",
+          "두 끝값",
+          "t는 짝수: 0≤t≤110",
+          "85+30=115"
+        ],
+        "decisiveStepIds": [
+          "cardinalityByRegion",
+          "totalCardinality",
+          "extremeConfiguration"
+        ],
+        "universe": {
+          "label": "200명 학급",
+          "cardinality": 200
+        },
+        "boundaryIdentity": {
+          "A": "제주도",
+          "B": "서울",
+          "intersection": "t=n(A∩B)",
+          "outsideUnionCardinality": 60,
+          "union": "A∪B",
+          "unionCardinality": 140
+        },
+        "cardinalityByRegion": {
+          "A_only": {
+            "label": "제주도만",
+            "value": "85-t/2"
+          },
+          "B_only": {
+            "label": "서울만",
+            "value": "55-t/2"
+          },
+          "intersection": {
+            "label": "교집합",
+            "value": "t"
+          },
+          "outside_union": {
+            "label": "바깥",
+            "value": 60
+          }
+        },
+        "totalCardinality": 200,
+        "extremeConfiguration": {
+          "maximum": {
+            "A_only": "제주도만 30명",
+            "t": 110
+          },
+          "minimum": {
+            "A_only": "제주도만 85명",
+            "t": 0
+          },
+          "parameter": "t",
+          "parameterDefinition": "t=n(A∩B)",
+          "parity": "t는 짝수",
+          "range": "0≤t≤110",
+          "displayedResult": "85+30=115"
+        },
+        "countingResult": "85+30=115"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+      "artifactPath": "assets/images/22_복성고_2학기_중간_고1_기출/q15-solution.svg",
+      "artifactSha256": "sha256:b3626f0db47f8e242828baaca36d9ea2cc16ec9c9eb98855515d3c12afa860a8",
+      "fact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "visible candidate-case table comparing A, B, and symmetric difference",
+        "requiredLabels": ["a", "A", "B", "A△B"],
+        "decisiveStepIds": ["caseRows"],
+        "visibleRowOrder": [4, 3, -3],
+        "caseRows": [
+          {
+            "caseId": -3,
+            "A": [-5, 2, 3],
+            "B": [-6, 2, 3],
+            "symmetricDifference": [-6, -5],
+            "valid": false,
+            "validMarkerVisible": false
+          },
+          {
+            "caseId": 3,
+            "A": [1, 2, 3],
+            "B": [0, 2, 3],
+            "symmetricDifference": [0, 1],
+            "valid": true,
+            "validMarkerVisible": true
+          },
+          {
+            "caseId": 4,
+            "A": [2, 3, 9],
+            "B": [1, 2, 3],
+            "symmetricDifference": [1, 9],
+            "valid": false,
+            "validMarkerVisible": false
+          }
+        ],
+        "validCase": {
+          "a": 3,
+          "B": [0, 2, 3],
+          "b": 5,
+          "marker": "✓"
+        },
+        "countingExpression": "a+b=3+5=8",
+        "countingResult": 8
+      }
+    }
+  ],
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|10",
+    "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|19",
+    "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|15"
+  ],
+  "observedUidSetCanonicalForm": "sorted JSON array, UTF-8, no BOM",
+  "observedUidSetSha": "sha256:0d614b689968c69927c691deb76ea185df376c0c56d43b4c9ec1872aa4f270a5"
+}

@@ -1,9 +1,11 @@
+import fs from 'node:fs';
 import path from 'node:path';
-import { readJson, writeJson, sha256 } from './lib/io.mjs';
-
-const repoRoot = path.resolve(process.cwd());
-const bundle = readJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/reports/v2-artifact-only-bundle.json'));
-const items = Object.fromEntries(bundle.items.map((item) => [item.questionUid, { ...item, firstPassEvidenceFrozen: true }]));
-const output = { evidenceVersion: 'V2_ARTIFACT_ONLY_EVIDENCE_v1', coverageCount: Object.keys(items).length, observedArtifactCount: Object.values(items).filter((item) => item.artifactExists).length, items, evidenceSha: sha256(items) };
-writeJson(path.join(repoRoot, 'archive/tools/logic-visual-audit/reports/v2-evidence-freeze.json'), output);
-console.log(JSON.stringify({ coverageCount: output.coverageCount, observedArtifactCount: output.observedArtifactCount, evidenceSha: output.evidenceSha }, null, 2));
+import { fileURLToPath } from 'node:url';
+import { sha256 } from './lib/canonicalize.mjs';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const OUT = path.join(ROOT, 'archive/tools/logic-visual-audit/reports');
+const manifest = JSON.parse(fs.readFileSync(path.join(OUT, 'v2_artifact_only_manifest.json'), 'utf8'));
+const preflight = JSON.parse(fs.readFileSync(path.join(OUT, 'rule_preflight.json'), 'utf8'));
+const evidence = { freezeVersion: 'V2_FIRST_PASS_EVIDENCE_v1', createdAtKst: '2026-09-05', reviewerRole: 'V2_OBSERVED', reviewerId: 'QUALIFICATION_INFRASTRUCTURE_SEED', priorReviewVisibility: 'ARTIFACT_ONLY_NO_SOURCE_NO_EXPECTED_FACT', inputBundleSha: manifest.manifestSha, appliedRuleRefs: preflight.rules, targetCount: manifest.targetCount, artifactBundleCount: manifest.artifactBundleCount, status: 'FROZEN_ARTIFACT_ONLY_BUNDLE_READY_FOR_INDEPENDENT_EXTRACTION', firstPassEvidenceSha: sha256({ manifestSha: manifest.manifestSha, ruleRoutingBundleSha: preflight.ruleRoutingBundleSha, reviewerRole: 'V2_OBSERVED', artifactBundleCount: manifest.artifactBundleCount }) };
+fs.writeFileSync(path.join(OUT, 'v2_evidence_freeze.json'), JSON.stringify(evidence, null, 2) + '\n', 'utf8');
+console.log(JSON.stringify({ status: evidence.status, artifactBundleCount: evidence.artifactBundleCount, firstPassEvidenceSha: evidence.firstPassEvidenceSha }, null, 2));

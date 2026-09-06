@@ -1,0 +1,124 @@
+{
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+        "unit": "집합",
+        "visualType": "SET_GRAPH_DEFINED",
+        "visualRole": "solution-explanation graph showing the intersection and tangency condition",
+        "requiredLabels": [
+          "(3,3)",
+          "(3,3)에서 한 점에서 만남",
+          "0",
+          "2",
+          "3",
+          "4",
+          "6",
+          "8",
+          "A: y=(x²+9)/6",
+          "B: y=√(6x−9)",
+          "대수적 확인",
+          "교점 조건과 양의 정수 조건",
+          "x",
+          "x=y",
+          "x²−6x+n=0",
+          "y",
+          "양의 정수 조건 ⇒ n=9",
+          "한 점: n=9"
+        ],
+        "decisiveStepIds": [
+          "graph-branches-A-and-B",
+          "contact-at-(3,3)",
+          "single-intersection-condition-n=9"
+        ],
+        "graphDefinedFacts": {
+          "axes": {
+            "x": {
+              "visible": true,
+              "displayedLabels": ["0", "3", "6"],
+              "displayedRange": "[0,6]"
+            },
+            "y": {
+              "visible": true,
+              "displayedLabels": ["0", "2", "4", "6", "8"]
+            }
+          },
+          "branches": [
+            {
+              "branchId": "A",
+              "label": "A",
+              "equation": "y=(x²+9)/6",
+              "branchType": "parabola",
+              "displayedDomain": "[0,6]",
+              "slope": {
+                "overallTrend": "increasing on the displayed branch",
+                "constant": false,
+                "atContact": 1
+              }
+            },
+            {
+              "branchId": "B",
+              "label": "B",
+              "equation": "y=√(6x−9)",
+              "branchType": "square-root branch",
+              "displayedDomain": "[3/2,6]",
+              "formulaDomain": "x≥3/2",
+              "slope": {
+                "overallTrend": "increasing on the displayed branch",
+                "constant": false,
+                "atContact": 1
+              }
+            }
+          ],
+          "pointMarkers": {
+            "x=0": {
+              "pointMarkerVisible": false,
+              "axisLabelVisible": true,
+              "marker": null
+            },
+            "x=1": {
+              "pointMarkerVisible": false,
+              "axisLabelVisible": false,
+              "marker": null
+            }
+          },
+          "contact": {
+            "visible": true,
+            "point": "(3,3)",
+            "relation": "tangent/contact",
+            "commonSlope": 1,
+            "encoding": [
+              "red contact point",
+              "red dashed common tangent"
+            ]
+          },
+          "intersection": {
+            "visibleIntersectionCount": 1,
+            "conditionText": "한 점: n=9",
+            "graphText": "(3,3)에서 한 점에서 만남",
+            "additionalIntersectionVisible": false
+          },
+          "noIntersectionCondition": {
+            "visible": false,
+            "text": null
+          }
+        }
+      },
+      "artifactVerification": {
+        "artifactPath": "archive/assets/images/22_금당고_2학기_기말_고1_기출/q18-solution.svg",
+        "declaredArtifactSha256": "sha256:215950ec15fa8805539af3d2d0d3e36a8c2a35fbb394c49fbceca120be628274",
+        "observedArtifactSha256": "sha256:215950ec15fa8805539af3d2d0d3e36a8c2a35fbb394c49fbceca120be628274",
+        "declaredByteCount": 3942,
+        "observedByteCount": 3942,
+        "sha256Match": true,
+        "byteCountMatch": true
+      }
+    }
+  ],
+  "observedUidSetSha": "sha256:d71e2cb83c08b08cebab24e71bd06726adc403825cc05cf849d0b19e8d8bede5"
+}

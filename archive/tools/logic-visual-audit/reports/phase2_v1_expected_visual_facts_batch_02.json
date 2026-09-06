@@ -1,0 +1,154 @@
+{
+  "reportType": "PHASE2_V1_EXPECTED_VISUAL_FACTS_BATCH_02",
+  "contractVersion": "v1",
+  "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "factCanonicalizationSpec": "LOGIC_VISUAL_FACT_CANONICALIZATION_v1",
+  "semanticProjectionSpec": "SEMANTIC_PROJECTION_v1",
+  "sourceBundleType": "V1_SOURCE_ONLY_LOGIC_VISUAL_PHASE2_BATCH_02",
+  "sourceBundleSha": "sha256:f2830d045ee5f29d9f708aa995b8d7dc8777e3d40d58e8ec1cae09fe8100a6d9",
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_VISUAL_FACTS",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+      "examId": "22_금당고_2학기_중간_고1_기출",
+      "qid": 13,
+      "visualType": "SET_REGION_VENN_2",
+      "visualRole": "Show the symmetric-difference target inside U using the two exclusive A/B regions and preserve the non-target remainder.",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|13",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "Show the symmetric-difference target inside U using the two exclusive A/B regions and preserve the non-target remainder.",
+        "requiredLabels": [
+          "U",
+          "A",
+          "B",
+          "A△B",
+          "A−B={3,4,6}",
+          "B−A={1,5,8}",
+          "(A△B)^c={2,7,9}"
+        ],
+        "decisiveStepIds": [
+          "region:R10=A−B={3,4,6}",
+          "region:R01=B−A={1,5,8}",
+          "target:A△B=R10∪R01"
+        ],
+        "universeRequired": true,
+        "universe": {
+          "symbol": "U",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        },
+        "expectedRegions": ["R01", "R10"],
+        "complementRegions": ["R00", "R11"],
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "U": "boundary:U"
+        },
+        "regionElementGroups": {
+          "R01": [1, 5, 8],
+          "R10": [3, 4, 6],
+          "remaining": [2, 7, 9]
+        },
+        "namedRegionElementGroups": {
+          "A−B": [3, 4, 6],
+          "B−A": [1, 5, 8]
+        },
+        "remainingElements": [2, 7, 9]
+      },
+      "expectedLogicalFactSha": "sha256:c551848733974bae9a3647a639d2efbbe7a41b0a15c733e4b90b5403ce5f85a0",
+      "expectedSemanticSha": "sha256:2aee120086fb62d1a44c4be4f57ace37cc7b1fc79f5db54fd541ddba2c886d23",
+      "rationale": "Source-only equations determine A−B={3,4,6} and B−A={1,5,8}. Therefore A△B occupies canonical Venn regions R10 and R01 inside U, while the non-target remainder is {2,7,9}; a compliant artifact must preserve the U boundary and the A/B boundary identities."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+      "examId": "22_금당고_2학기_중간_고1_기출",
+      "qid": 16,
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "Show the forced-in, forbidden, and free element buckets together with the parity rule and the resulting count.",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "pilotVisualAction": "ADD_NEW_VISUAL",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|16",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "Show the forced-in, forbidden, and free element buckets together with the parity rule and the resulting count.",
+        "requiredLabels": [
+          "U={2,3,4,8,16,32,64}",
+          "forced:64∈X",
+          "forbidden:∅",
+          "free={2,3,4,8,16,32}",
+          "|X∩free| is even",
+          "free selection is nonempty",
+          "2^5−1=31"
+        ],
+        "decisiveStepIds": [
+          "forced:64∈X",
+          "parity:|X∩free| even",
+          "count:2^5−1=31"
+        ],
+        "universe": {
+          "symbol": "U",
+          "elements": [2, 3, 4, 8, 16, 32, 64]
+        },
+        "forcedElements": [64],
+        "forbiddenElements": [],
+        "freeElements": [2, 3, 4, 8, 16, 32],
+        "freeCount": 6,
+        "countingResult": 31,
+        "parityRule": "64∈X and n(X) odd imply an even-cardinality selection from the six free elements.",
+        "countingRule": "S(X)>S(Y) excludes the empty free selection, so the even-cardinality free selections contribute 2^5−1=31."
+      },
+      "expectedLogicalFactSha": "sha256:6bbcad6816236e106d29f3fd2ba6614d1ddac5522f5aa34ea13a5e28da61b912",
+      "expectedSemanticSha": "sha256:b1dad9437c26ede23bbc785832fc9cef4c735006ca364dc85b94d93de1c1a93f",
+      "rationale": "Source-only fact: U={2,3,4,8,16,32,64}, 64 is forced into X, the forbidden bucket is empty, and the six remaining elements are free. With 64∈X, the odd-cardinality condition makes the free selection even-cardinality; S(X)>S(Y) excludes the empty free selection, leaving 2^5−1=31. The Phase 2 pilot instruction explicitly lists this item as ADD_NEW_VISUAL, so SHOULD_BE_REQUIRED is recorded here; the pilot-action versus source-only requirement classification is an adjudication conflict to be resolved downstream, not an artifact observation."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+      "examId": "22_매산고_2학기_중간_고1_기출",
+      "qid": 6,
+      "visualType": "SET_FORCE_FORBID_FREE",
+      "visualRole": "Show the forced, forbidden, and free elements induced by X∪A=X−B and the resulting free-choice count.",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|6",
+        "unit": "집합",
+        "visualType": "SET_FORCE_FORBID_FREE",
+        "visualRole": "Show the forced, forbidden, and free elements induced by X∪A=X−B and the resulting free-choice count.",
+        "requiredLabels": [
+          "U={1,...,10}",
+          "forced={2,4,6}",
+          "forbidden={1,3,5,7,9}",
+          "free={8,10}",
+          "2^2=4"
+        ],
+        "decisiveStepIds": [
+          "forced:A={2,4,6}⊆X",
+          "forbidden:B={1,3,5,7,9}∩X=∅",
+          "free:{8,10}",
+          "count:2^2=4"
+        ],
+        "universe": {
+          "symbol": "U",
+          "elements": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        },
+        "forcedElements": [2, 4, 6],
+        "forbiddenElements": [1, 3, 5, 7, 9],
+        "freeElements": [8, 10],
+        "freeCount": 2,
+        "countingResult": 4,
+        "countingRule": "Each of the two free elements is independently chosen, so 2^2=4."
+      },
+      "expectedLogicalFactSha": "sha256:2a477b6140b550f5f7fd26ca2108a0d6c357719831fec421a39a95a1bc4ee94d",
+      "expectedSemanticSha": "sha256:e2130518470c4080776bb459f04a4cc72c4de6445f92ac0879f846e54594e617",
+      "rationale": "Source-only equality forces A={2,4,6} into X and excludes B={1,3,5,7,9}; only 8 and 10 remain free. A compliant force/forbid/free artifact must show those three buckets and the resulting 2^2=4 count."
+    }
+  ],
+  "reviewedUidSetSha": "sha256:81d0d47e043e6b37b83b6041fd206136325a15c224643644bc83ab204451fc96"
+}

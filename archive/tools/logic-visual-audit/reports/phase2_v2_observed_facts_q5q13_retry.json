@@ -1,0 +1,256 @@
+{
+  "bundleType": "V2_ARTIFACT_ONLY_LOGIC_VISUAL_PHASE2_RETRY_OBSERVED_FACTS",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "artifactShaVerification": "PASS",
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+    "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13"
+  ],
+  "observedUidSetSha": "sha256:a22481c62645cbbe77247f6ee9913ca53e5039265e617b3d808f6a1e2d245809",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "artifactPath": "assets/images/22_강남여고_2학기_기말_고1_기출/q05-solution.svg",
+      "artifactExists": true,
+      "mimeType": "image/svg+xml",
+      "artifactBytes": 3300,
+      "artifactSha256Expected": "sha256:04d0743a1cb2667eb200c267853417d96f0aa7a18237b0681633d4ff25a2eb0c",
+      "artifactSha256Observed": "sha256:04d0743a1cb2667eb200c267853417d96f0aa7a18237b0681633d4ff25a2eb0c",
+      "artifactSha256": "sha256:04d0743a1cb2667eb200c267853417d96f0aa7a18237b0681633d4ff25a2eb0c",
+      "artifactShaVerified": true,
+      "artifactShaVerification": "PASS",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_REGION_VENN_3",
+      "visualRole": "세 집합 경계와 membership cell truth table 비교",
+      "requiredLabels": [
+        "(A,B,C)",
+        "100",
+        "101",
+        "110",
+        "111",
+        "A",
+        "A−B",
+        "A−(B−C)",
+        "A∩Bᶜ 또는 A∩C만 유지",
+        "A∩C",
+        "B",
+        "C",
+        "DROP: B 포함",
+        "KEEP: A−B",
+        "KEEP: A∩C",
+        "membership cell truth table",
+        "판정"
+      ],
+      "decisiveStepIds": [],
+      "universe": null,
+      "expectedRegions": ["100", "101", "111"],
+      "boundaryIdentity": {
+        "A": "boundary:A",
+        "B": "boundary:B",
+        "C": "boundary:C"
+      },
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_3",
+        "visualRole": "세 집합 경계와 membership cell truth table 비교",
+        "requiredLabels": [
+          "(A,B,C)",
+          "100",
+          "101",
+          "110",
+          "111",
+          "A",
+          "A−B",
+          "A−(B−C)",
+          "A∩Bᶜ 또는 A∩C만 유지",
+          "A∩C",
+          "B",
+          "C",
+          "DROP: B 포함",
+          "KEEP: A−B",
+          "KEEP: A∩C",
+          "membership cell truth table",
+          "판정"
+        ],
+        "decisiveStepIds": [],
+        "universe": null,
+        "expectedRegions": ["100", "101", "111"],
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "C": "boundary:C"
+        }
+      },
+      "observedSemanticProjection": {
+        "universeRequired": false,
+        "expectedRegions": ["100", "101", "111"],
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "C": "boundary:C"
+        }
+      },
+      "visibleLabels": [
+        "A−B와 A∩C가 남기는 세 집합 영역을 비교한다",
+        "(A−B)∪(A∩C)=A∩(Bᶜ∪C)=A−(B−C)",
+        "세 집합 경계와 target",
+        "A",
+        "B",
+        "C",
+        "A∩Bᶜ 또는 A∩C만 유지",
+        "membership cell truth table",
+        "(A,B,C)",
+        "판정",
+        "100",
+        "KEEP: A−B",
+        "101",
+        "KEEP: A∩C",
+        "110",
+        "DROP: B 포함",
+        "111",
+        "KEEP: A∩C",
+        "A를 묶으면 A∩(Bᶜ∪C)",
+        "= A−(B−C)  (정답 ⑤)",
+        "A 안에서 B 밖이거나 C에 속하는 membership cell만 남긴다."
+      ],
+      "semanticFields": {
+        "setBoundaryLabels": ["A", "B", "C"],
+        "membershipTupleOrder": ["A", "B", "C"],
+        "membershipRows": [
+          {"tuple": "100", "classification": "KEEP", "visibleLabel": "KEEP: A−B"},
+          {"tuple": "101", "classification": "KEEP", "visibleLabel": "KEEP: A∩C"},
+          {"tuple": "110", "classification": "DROP", "visibleLabel": "DROP: B 포함"},
+          {"tuple": "111", "classification": "KEEP", "visibleLabel": "KEEP: A∩C"}
+        ],
+        "visibleExpressions": [
+          "(A−B)∪(A∩C)=A∩(Bᶜ∪C)=A−(B−C)",
+          "A를 묶으면 A∩(Bᶜ∪C)",
+          "= A−(B−C)  (정답 ⑤)"
+        ],
+        "visibleTargetLabel": "A∩Bᶜ 또는 A∩C만 유지",
+        "visibleRegionDecision": "A 안에서 B 밖이거나 C에 속하는 membership cell만 남긴다."
+      },
+      "observedFactExtractionMethod": "manual_independent",
+      "observedVisualFactSha": "sha256:8f88f06e8f5d8c2b31ff742c943fc5d1bccbcb5ecf84bec70ae047d5cb1e0373",
+      "observedSemanticSha": "sha256:eb8d41887385f992cb2bd15d817b1ca67c0bdabcb87d85e26ed2186fa1e76239"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "artifactPath": "assets/images/22_제일고_2학기_중간_고1_기출/q13-solution.svg",
+      "artifactExists": true,
+      "mimeType": "image/svg+xml",
+      "artifactBytes": 3431,
+      "artifactSha256Expected": "sha256:0a4222525eb910cdf186c1393a71ab497b28d22c1e3cc3bf8fc9bc10a6a4068e",
+      "artifactSha256Observed": "sha256:0a4222525eb910cdf186c1393a71ab497b28d22c1e3cc3bf8fc9bc10a6a4068e",
+      "artifactSha256": "sha256:0a4222525eb910cdf186c1393a71ab497b28d22c1e3cc3bf8fc9bc10a6a4068e",
+      "artifactShaVerified": true,
+      "artifactShaVerification": "PASS",
+      "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+      "unit": "집합",
+      "visualType": "SET_REGION_VENN_2",
+      "visualRole": "U 내부에서 B와 Bᶜ의 합집합이 전체 U를 덮는 2집합 영역 도식",
+      "requiredLabels": [
+        "B",
+        "B∪Bᶜ=U",
+        "Bᶜ",
+        "U",
+        "U 안의 두 영역",
+        "겹침 포함 전체 U",
+        "둘째 괄호 = Bᶜ",
+        "첫 괄호 = B",
+        "정리 흐름"
+      ],
+      "decisiveStepIds": [],
+      "universe": {
+        "label": "U",
+        "boundary": "rect(x=50,y=132,width=306,height=154,rx=8)"
+      },
+      "expectedRegions": ["R00", "R01", "R10", "R11"],
+      "boundaryIdentity": {
+        "B": "boundary:B",
+        "Bᶜ": "boundary:Bᶜ",
+        "U": "boundary:U"
+      },
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "U 내부에서 B와 Bᶜ의 합집합이 전체 U를 덮는 2집합 영역 도식",
+        "requiredLabels": [
+          "B",
+          "B∪Bᶜ=U",
+          "Bᶜ",
+          "U",
+          "U 안의 두 영역",
+          "겹침 포함 전체 U",
+          "둘째 괄호 = Bᶜ",
+          "첫 괄호 = B",
+          "정리 흐름"
+        ],
+        "decisiveStepIds": [],
+        "universe": {
+          "label": "U",
+          "boundary": "rect(x=50,y=132,width=306,height=154,rx=8)"
+        },
+        "expectedRegions": ["R00", "R01", "R10", "R11"],
+        "boundaryIdentity": {
+          "B": "boundary:B",
+          "Bᶜ": "boundary:Bᶜ",
+          "U": "boundary:U"
+        }
+      },
+      "observedSemanticProjection": {
+        "universeRequired": true,
+        "expectedRegions": ["R00", "R01", "R10", "R11"],
+        "boundaryIdentity": {
+          "B": "boundary:B",
+          "Bᶜ": "boundary:Bᶜ",
+          "U": "boundary:U"
+        }
+      },
+      "visibleLabels": [
+        "두 괄호를 각각 B와 Bᶜ로 줄이면 U를 덮는다",
+        "B∪Bᶜ=U, 따라서 주어진 식의 값은 전체집합 U이다",
+        "U 안의 두 영역",
+        "U",
+        "B",
+        "Bᶜ",
+        "겹침 포함 전체 U",
+        "첫 괄호 = B",
+        "둘째 = Bᶜ",
+        "정리 흐름",
+        "첫째 괄호",
+        "= B",
+        "둘째 괄호",
+        "= Bᶜ",
+        "B∪Bᶜ=U  (정답 ⑤)",
+        "두 영역을 합치면 U 안의 모든 원소가 한 번씩 덮인다."
+      ],
+      "semanticFields": {
+        "setBoundaryLabels": ["B", "Bᶜ", "U"],
+        "visibleExpressions": [
+          "B∪Bᶜ=U, 따라서 주어진 식의 값은 전체집합 U이다",
+          "B∪Bᶜ=U  (정답 ⑤)"
+        ],
+        "visibleReduction": [
+          {"visibleLabel": "첫째 괄호", "value": "B"},
+          {"visibleLabel": "둘째 괄호", "value": "Bᶜ"}
+        ],
+        "visibleCoverage": "겹침 포함 전체 U",
+        "visibleConclusion": "B∪Bᶜ=U",
+        "universeBoundaryVisible": true,
+        "complementLabelVisible": true
+      },
+      "observedFactExtractionMethod": "manual_independent",
+      "observedVisualFactSha": "sha256:d5197986f8e5f75bdf9936f6a8f7a42c49e3d6fdbc8a82f53e2d7e8989ac37f4",
+      "observedSemanticSha": "sha256:7f0818cbe307f1e656958b9c803060a2bb9df69ae8e894de4802a6ad489e4da6"
+    }
+  ]
+}

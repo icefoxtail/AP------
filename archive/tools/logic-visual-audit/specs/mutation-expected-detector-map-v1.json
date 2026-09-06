@@ -1,12 +1,24 @@
 {
   "specVersion": "MUTATION_EXPECTED_DETECTOR_MAP_v1",
-  "cases": [
-    { "mutationId": "venn-intersection-swap", "sourceVisualType": "SET_REGION_VENN_3", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
-    { "mutationId": "venn-complement-region-delete", "sourceVisualType": "SET_REGION_VENN_3", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
-    { "mutationId": "number-line-endpoint-open-close", "sourceVisualType": "SET_NUMBER_LINE", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
-    { "mutationId": "force-to-free", "sourceVisualType": "SET_FORCE_FORBID_FREE", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
-    { "mutationId": "arrow-direction-reverse", "sourceVisualType": "IMPLICATION_FLOW", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
-    { "mutationId": "truth-table-row-delete", "sourceVisualType": "TRUTH_TABLE", "gate": "EXPECTED_OBSERVED_SEMANTIC_MISMATCH" },
-    { "mutationId": "duplicate-structure-different-fact", "sourceVisualType": "SET_NUMBER_LINE", "gate": "STRUCTURAL_REUSE_REVIEW" }
+  "mutations": [
+    { "mutationId": "SET_A_ONLY_TO_INTERSECTION", "primaryGate": "LOGIC_VISUAL_EXPECTED_FACT_PARITY", "allowedEquivalentGates": ["SET_BOUNDARY_IDENTITY_PARITY"] },
+    { "mutationId": "SET_COMPLEMENT_REMOVE_R00", "primaryGate": "UNIVERSE_CONTRACT", "allowedEquivalentGates": ["LOGIC_VISUAL_COMPLETENESS_PARITY"] },
+    { "mutationId": "SET_SWAP_BOUNDARY_LABELS", "primaryGate": "SET_BOUNDARY_IDENTITY_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "SET_REVERSE_INCLUSION", "primaryGate": "INCLUSION_DIRECTION_PARITY", "allowedEquivalentGates": ["LOGIC_VISUAL_EXPECTED_FACT_PARITY"] },
+    { "mutationId": "SET_FLIP_ENDPOINT_CLOSEDNESS", "primaryGate": "OPEN_CLOSED_PARITY", "allowedEquivalentGates": ["LOGIC_VISUAL_EXPECTED_FACT_PARITY"] },
+    { "mutationId": "SET_DELETE_INTERVAL_COMPONENT", "primaryGate": "INTERVAL_COMPONENT_COUNT_PARITY", "allowedEquivalentGates": ["LOGIC_VISUAL_COMPLETENESS_PARITY"] },
+    { "mutationId": "SET_MOVE_FORCED_TO_FREE", "primaryGate": "ELEMENT_BUCKET_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "SET_MOVE_CARDINALITY_LABEL", "primaryGate": "CARDINALITY_BY_REGION_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "SET_DELETE_CASE_ROW", "primaryGate": "CASE_EXHAUSTIVENESS_PASS", "allowedEquivalentGates": ["CASE_ROW_COMPLETENESS"] },
+    { "mutationId": "SET_SWAP_OTHER_DOCUMENT_ARTIFACT", "primaryGate": "LOGIC_VISUAL_QUESTION_SPECIFICITY_PARITY", "allowedEquivalentGates": ["LOGIC_VISUAL_DUPLICATE_PARITY"] },
+    { "mutationId": "PROP_REVERSE_IMPLICATION_ARROW", "primaryGate": "IMPLICATION_DIRECTION_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "PROP_REVERSE_TRUTH_INCLUSION", "primaryGate": "TRUTH_SET_INCLUSION_PARITY", "allowedEquivalentGates": ["IMPLICATION_DIRECTION_PARITY"] },
+    { "mutationId": "PROP_CONTRAPOSITIVE_TO_INVERSE", "primaryGate": "CONTRAPOSITIVE_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "PROP_QUANTIFIER_FLIP_ONLY", "primaryGate": "PREDICATE_NEGATION_PARITY", "allowedEquivalentGates": ["QUANTIFIER_NEGATION_MAP"] },
+    { "mutationId": "PROP_DROP_QUANTIFIER_DOMAIN", "primaryGate": "QUANTIFIER_DOMAIN_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "PROP_INVALID_COUNTEREXAMPLE_DOMAIN", "primaryGate": "COUNTEREXAMPLE_DOMAIN_PASS", "allowedEquivalentGates": [] },
+    { "mutationId": "PROP_INSERT_INVALID_PROOF_EDGE", "primaryGate": "PROOF_EDGE_VALIDITY_PARITY", "allowedEquivalentGates": [] },
+    { "mutationId": "PROP_DELETE_TRUTH_TABLE_ROW", "primaryGate": "CASE_ROW_COMPLETENESS", "allowedEquivalentGates": ["CASE_EXHAUSTIVENESS_PASS"] },
+    { "mutationId": "PROP_SWAP_OTHER_DOCUMENT_ARTIFACT", "primaryGate": "LOGIC_VISUAL_QUESTION_SPECIFICITY_PARITY", "allowedEquivalentGates": ["LOGIC_VISUAL_DUPLICATE_PARITY"] }
   ]
 }

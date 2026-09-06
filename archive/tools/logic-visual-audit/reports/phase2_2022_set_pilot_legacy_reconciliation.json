@@ -1,0 +1,379 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "status": "PASS_CANONICAL_REGISTRY_WITH_LEGACY_RECONCILIATION",
+  "registrySha": "sha256:66556d16ef92196126ebc3db5a9b944cd31ce66ab44dfadd3fd9bb799aaf6bc9",
+  "rawReportFiles": [
+    "phase2_batch_01_requirement_adjudication.json",
+    "phase2_batch_02_requirement_adjudication.json",
+    "phase2_batch_03_requirement_adjudication.json",
+    "phase2_batch_04_requirement_adjudication.json",
+    "phase2_batch_05_final_requirement_adjudication.json",
+    "phase2_batch_06_final_requirement_adjudication.json",
+    "phase2_batch_06_requirement_adjudication.json",
+    "phase2_batch_07_final_requirement_adjudication.json",
+    "phase2_batch_08_final_requirement_adjudication.json",
+    "phase2_batch_09_requirement_adjudication.json",
+    "phase2_batch_10_requirement_adjudication.json",
+    "phase2_batch_11_requirement_adjudication.json"
+  ],
+  "selectedCanonicalReports": [
+    {
+      "batchNo": 1,
+      "canonicalName": "phase2_batch_01_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_01_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 2,
+      "canonicalName": "phase2_batch_02_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_02_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 3,
+      "canonicalName": "phase2_batch_03_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_03_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 4,
+      "canonicalName": "phase2_batch_04_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_04_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 5,
+      "canonicalName": "phase2_batch_05_final_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_05_final_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 6,
+      "canonicalName": "phase2_batch_06_final_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_06_final_requirement_adjudication.json",
+        "phase2_batch_06_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 7,
+      "canonicalName": "phase2_batch_07_final_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_07_final_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 8,
+      "canonicalName": "phase2_batch_08_final_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_08_final_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 9,
+      "canonicalName": "phase2_batch_09_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_09_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 10,
+      "canonicalName": "phase2_batch_10_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_10_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    },
+    {
+      "batchNo": 11,
+      "canonicalName": "phase2_batch_11_requirement_adjudication.json",
+      "allNames": [
+        "phase2_batch_11_requirement_adjudication.json"
+      ],
+      "selectionMethod": "EXPLICIT_RECONCILIATION_MANIFEST"
+    }
+  ],
+  "rawConflictCount": 2,
+  "conflictAdjudications": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "status": "ADJUDICATED_TO_ACTIVE_UID_RECORD",
+      "selectedSourceFile": "phase2_batch_07_final_requirement_adjudication.json",
+      "selectedDecision": "ADD_NEW_VISUAL",
+      "selectedSourceReportSha": "sha256:325d9acd251bedaf4a2f27c4238d8d0cc728ec743a969701cd107c3caad7bf5f",
+      "basis": "Explicit per-batch reconciliation manifest plus consolidated active UID record; no filename ordering is used at validation time.",
+      "occurrenceCount": 3
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "status": "ADJUDICATED_TO_ACTIVE_UID_RECORD",
+      "selectedSourceFile": "phase2_batch_06_final_requirement_adjudication.json",
+      "selectedDecision": "KEEP_EXISTING",
+      "selectedSourceReportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128",
+      "basis": "Explicit per-batch reconciliation manifest plus consolidated active UID record; no filename ordering is used at validation time.",
+      "occurrenceCount": 2
+    }
+  ],
+  "rawConflicts": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "occurrences": [
+        {
+          "file": "phase2_batch_06_final_requirement_adjudication.json",
+          "reportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128",
+          "finalVisualRequirement": "VISUAL_EXEMPT",
+          "visualAction": "NONE",
+          "status": "RESOLVED"
+        },
+        {
+          "file": "phase2_batch_06_requirement_adjudication.json",
+          "reportSha": "sha256:52ba160d0b1476637e7c4376897355b9cb68818678e17d456ae643fb8bf91840",
+          "finalVisualRequirement": "VISUAL_EXEMPT",
+          "visualAction": "NONE",
+          "status": "RESOLVED"
+        },
+        {
+          "file": "phase2_batch_07_final_requirement_adjudication.json",
+          "reportSha": "sha256:325d9acd251bedaf4a2f27c4238d8d0cc728ec743a969701cd107c3caad7bf5f",
+          "finalVisualRequirement": "VISUAL_REQUIRED",
+          "visualAction": "ADD",
+          "status": "RESOLVED"
+        }
+      ],
+      "conflictType": "LEGACY_DECISION_CONFLICT"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "occurrences": [
+        {
+          "file": "phase2_batch_06_final_requirement_adjudication.json",
+          "reportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128",
+          "finalVisualRequirement": "VISUAL_REQUIRED",
+          "visualAction": "KEEP_EXISTING",
+          "status": "RESOLVED"
+        },
+        {
+          "file": "phase2_batch_06_requirement_adjudication.json",
+          "reportSha": "sha256:52ba160d0b1476637e7c4376897355b9cb68818678e17d456ae643fb8bf91840",
+          "finalVisualRequirement": "VISUAL_EXEMPT",
+          "visualAction": "NONE",
+          "status": "RESOLVED"
+        }
+      ],
+      "conflictType": "LEGACY_DECISION_CONFLICT"
+    }
+  ],
+  "legacyCanonicalOverlapCount": 8,
+  "legacyCanonicalOverlaps": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_06_final_requirement_adjudication.json",
+        "legacyBatchNo": 6,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|1",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_07_final_requirement_adjudication.json",
+        "legacyBatchNo": 7,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:325d9acd251bedaf4a2f27c4238d8d0cc728ec743a969701cd107c3caad7bf5f"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_06_final_requirement_adjudication.json",
+        "legacyBatchNo": 6,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|19",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_07_final_requirement_adjudication.json",
+        "legacyBatchNo": 7,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:325d9acd251bedaf4a2f27c4238d8d0cc728ec743a969701cd107c3caad7bf5f"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_06_final_requirement_adjudication.json",
+        "legacyBatchNo": 6,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|2",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_07_final_requirement_adjudication.json",
+        "legacyBatchNo": 7,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:325d9acd251bedaf4a2f27c4238d8d0cc728ec743a969701cd107c3caad7bf5f"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_06_final_requirement_adjudication.json",
+        "legacyBatchNo": 6,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:9b205cba6e2ebffb9af9d70c92a55c994be5f38bea7b14703bfc796786e49128"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|21",
+        "finalVisualDecision": "ADD_NEW_VISUAL",
+        "legacySourceFile": "phase2_batch_07_final_requirement_adjudication.json",
+        "legacyBatchNo": 7,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:325d9acd251bedaf4a2f27c4238d8d0cc728ec743a969701cd107c3caad7bf5f"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js|22_팔마고_2학기_기말_고1_기출|17",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js|22_팔마고_2학기_기말_고1_기출|17",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_08_final_requirement_adjudication.json",
+        "legacyBatchNo": 8,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:26500974be83c28f6b70c87f202a13268aded1289ed33b6d083fec8dd5c246db"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2final/22_팔마고_2학기_기말_고1_기출.js|22_팔마고_2학기_기말_고1_기출|17",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_09_requirement_adjudication.json",
+        "legacyBatchNo": 9,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:6bd1b03f91b07524c66b8ce6ad43b7877aec428da7ccee4fb8fcf3b9ecf610fd"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|7",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|7",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_08_final_requirement_adjudication.json",
+        "legacyBatchNo": 8,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:26500974be83c28f6b70c87f202a13268aded1289ed33b6d083fec8dd5c246db"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js|22_강남여고_2학기_중간_고1_기출|7",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_09_requirement_adjudication.json",
+        "legacyBatchNo": 9,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:6bd1b03f91b07524c66b8ce6ad43b7877aec428da7ccee4fb8fcf3b9ecf610fd"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|2",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|2",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_08_final_requirement_adjudication.json",
+        "legacyBatchNo": 8,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:26500974be83c28f6b70c87f202a13268aded1289ed33b6d083fec8dd5c246db"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|2",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_09_requirement_adjudication.json",
+        "legacyBatchNo": 9,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:6bd1b03f91b07524c66b8ce6ad43b7877aec428da7ccee4fb8fcf3b9ecf610fd"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|3",
+      "previous": {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|3",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_08_final_requirement_adjudication.json",
+        "legacyBatchNo": 8,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:26500974be83c28f6b70c87f202a13268aded1289ed33b6d083fec8dd5c246db"
+      },
+      "replacement": {
+        "questionUid": "archive/exams/original/high/h1/2mid/22_금당고_2학기_중간_고1_기출.js|22_금당고_2학기_중간_고1_기출|3",
+        "finalVisualDecision": "NO_VISUAL",
+        "legacySourceFile": "phase2_batch_09_requirement_adjudication.json",
+        "legacyBatchNo": 9,
+        "revision": 1,
+        "supersedes": null,
+        "isCanonical": false,
+        "sourceReportSha": "sha256:6bd1b03f91b07524c66b8ce6ad43b7877aec428da7ccee4fb8fcf3b9ecf610fd"
+      },
+      "resolution": "CONSOLIDATED_IN_ACTIVE_UID_REGISTRY"
+    }
+  ],
+  "unknownCanonicalUids": [],
+  "missingCanonicalUids": [],
+  "unmapped": [],
+  "note": "Legacy reports are selected by an explicit reconciliation manifest and consolidated into one active UID record. Future revisions must use recordId, revision, supersedes, inputSha, and actual evidence hashes."
+}

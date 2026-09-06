@@ -1,0 +1,42 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_EVIDENCE_CONTRACT_VALIDATION",
+  "contractVersion": "PHASE2_EVIDENCE_CONTRACT_v1",
+  "status": "FAIL_EVIDENCE_CONTRACT",
+  "typedFactSchema": {
+    "passCount": 5,
+    "totalCount": 6
+  },
+  "structuralFingerprint": "PASS_STRUCTURAL_FINGERPRINT_ADJUDICATED",
+  "mutationScope": "PASS_NO_PRODUCTION_MUTATION",
+  "renderViewportEvidence": "NOT_TESTED_MOBILE_MATRIX",
+  "mathVerification": "FAIL_INDEPENDENT_MATH_VERIFICATION",
+  "errors": [
+    {
+      "code": "TYPED_FACT_PARITY_FAIL",
+      "pass": 5,
+      "total": 6
+    },
+    {
+      "code": "FRESH_BLIND_PROVENANCE_REQUIRED",
+      "count": 6
+    },
+    {
+      "code": "RENDER_VIEWPORT_MATRIX_OR_WITNESS_INCOMPLETE",
+      "required": [
+        "desktop",
+        "mobile",
+        "screenshotSha",
+        "accessibilitySnapshotSha"
+      ]
+    },
+    {
+      "code": "MATH_VERIFICATION_EXTERNAL_INDEPENDENCE_PENDING",
+      "manifestStatus": "RECORDED_SEPARATE_MATH_RECHECK_EXTERNAL_INDEPENDENCE_PENDING",
+      "validationStatus": "FAIL_INDEPENDENT_MATH_VERIFICATION",
+      "requiredStatus": "INDEPENDENTLY_VERIFIED"
+    }
+  ],
+  "warnings": [],
+  "nextBatchGate": "BLOCKED_UNTIL_ERRORS_RESOLVED"
+}

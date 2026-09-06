@@ -1,0 +1,53 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_10_V1_UID_RECONCILIATION",
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 5,
+  "status": "PASS_SOURCE_ONLY_TRIAGE_UID_RECONCILED",
+  "sourceReportSha": "sha256:be29256c1570f1c8058ae7af1e40b4136f17faaddfc7b4fcf37ccd87b0357725",
+  "sourceBundleSha": "sha256:cce034277f9f96d2f11d3951705522162bdc7dc6b627fa834263e4bbb359a5a3",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js|22_매산고_2학기_중간_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "visualType": "NONE",
+      "role": "NO_VISUAL_ROLE",
+      "rationale": "This is a direct symbolic membership/subset check on a finite set, including nested set elements. It has no spatial, interval, region, case, or graph dependency, so a visual adds no decisive reasoning value.",
+      "reconciledFrom": "22_매산고_2학기_중간_고1_기출:q01"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|1",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "visualType": "NONE",
+      "role": "NO_VISUAL_ROLE",
+      "rationale": "The item tests whether membership is objectively determined for three verbal collections. The definition-of-a-set judgment is textual and categorical; no visual medium is needed to represent the decisive step.",
+      "reconciledFrom": "22_복성고_2학기_중간_고1_기출:q01"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|14",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "visualType": "SET_REGION_VENN_3",
+      "role": "FINITE_SET_OPERATION_REGION_MAP",
+      "rationale": "A three-set Venn can organize the union/intersection of the divisor sets A6, A9, and A4, but every membership is finite and directly enumerable. The visual is a helpful organizational aid, not a required carrier of the reasoning.",
+      "reconciledFrom": "22_복성고_2학기_중간_고1_기출:q14"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|17",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "visualType": "SET_NUMBER_LINE",
+      "role": "INTERVAL_AND_SET_DIFFERENCE_BOUNDARY_MAP",
+      "rationale": "The item is controlled by the interval A, the two infinite rays in B, open/closed endpoint behavior, A union B, and the exact A minus B interval. A number line is the faithful medium for the decisive boundary and interval relationships.",
+      "reconciledFrom": "22_복성고_2학기_중간_고1_기출:q17"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|5",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "visualType": "NONE",
+      "role": "NO_VISUAL_ROLE",
+      "rationale": "The answer follows directly from the finite-set cardinality formula: four elements give 2^4 subsets, and excluding the full set leaves 15 proper subsets. No region, interval, case, or graph representation is needed.",
+      "reconciledFrom": "22_복성고_2학기_중간_고1_기출:q05"
+    }
+  ],
+  "reviewedUidSetSha": "sha256:2bde9b852e2e0720468b2cca323a6b5e22f992984c920e740f1fcf686a0da1ca"
+}

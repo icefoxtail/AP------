@@ -1,0 +1,119 @@
+{
+  "reportType": "LOGIC_VISUAL_AUDIT_V2_OBSERVED_FACT_REPORT",
+  "contractVersion": "v1",
+  "reviewerRole": "V2_OBSERVED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_ARTIFACT_TYPED_FACTS",
+  "entryCount": 1,
+  "artifactShaVerification": {
+    "algorithm": "SHA-256",
+    "artifactPath": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+    "expectedSha256": "sha256:6e68f96f103516c16ba1241ce3fa15c9bcc2acbbc3306b5d2f5ccefc03d3da42",
+    "observedSha256": "sha256:6e68f96f103516c16ba1241ce3fa15c9bcc2acbbc3306b5d2f5ccefc03d3da42",
+    "match": true
+  },
+  "observedUidSet": [
+    "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14"
+  ],
+  "observedUidSetSha": "sha256:f57f2b904efedf046f06cbf3d785ba214932a7278c12dd14cb10ffd3a79f7731",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "artifactPath": "assets/images/22_팔마고_2학기_중간_고1_기출/q14-solution.svg",
+      "artifactShaVerification": {
+        "algorithm": "SHA-256",
+        "expectedSha256": "sha256:6e68f96f103516c16ba1241ce3fa15c9bcc2acbbc3306b5d2f5ccefc03d3da42",
+        "observedSha256": "sha256:6e68f96f103516c16ba1241ce3fa15c9bcc2acbbc3306b5d2f5ccefc03d3da42",
+        "match": true
+      },
+      "observedVisualFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "two-set-membership-region-partition",
+        "requiredLabels": [
+          "U",
+          "A만",
+          "A∩B",
+          "B만",
+          "둘 다 아님"
+        ],
+        "decisiveStepIds": [],
+        "universeRequired": true,
+        "universe": {
+          "required": true,
+          "visible": true,
+          "boundaryType": "RECTANGLE",
+          "boundaryLabel": "U"
+        },
+        "expectedRegions": [
+          "R00",
+          "R11"
+        ],
+        "boundaryIdentity": {
+          "identity": "U",
+          "visible": true,
+          "shape": "RECTANGLE",
+          "evidence": "A visible U label is placed inside the dashed rectangular boundary that encloses the two overlapping circles and the outside-both region."
+        },
+        "expectedRegionsEvidence": [
+          {
+            "region": "R00",
+            "visible": true,
+            "membership": "inside U and outside both circle boundaries",
+            "label": "둘 다 아님",
+            "fill": "#dcfce7",
+            "fillOpacity": 0.34
+          },
+          {
+            "region": "R11",
+            "visible": true,
+            "membership": "inside the overlap of the two circle boundaries",
+            "label": "A∩B",
+            "fill": "#86efac",
+            "fillOpacity": 0.8
+          }
+        ],
+        "observedGeometry": {
+          "universeBoundary": {
+            "shape": "RECTANGLE",
+            "x": 50,
+            "y": 130,
+            "width": 286,
+            "height": 142,
+            "cornerRadius": 8,
+            "stroke": "#64748b",
+            "strokeDasharray": "6 4"
+          },
+          "setBoundaries": [
+            {
+              "shape": "CIRCLE",
+              "center": [138, 196],
+              "radius": 64,
+              "fill": "#ef4444",
+              "fillOpacity": 0.42,
+              "stroke": "#b91c1c"
+            },
+            {
+              "shape": "CIRCLE",
+              "center": [232, 196],
+              "radius": 64,
+              "fill": "#ef4444",
+              "fillOpacity": 0.42,
+              "stroke": "#b91c1c"
+            }
+          ],
+          "overlapFill": {
+            "fill": "#86efac",
+            "fillOpacity": 0.8
+          }
+        }
+      },
+      "nonBlockingInsufficiency": {
+        "blocking": false,
+        "note": "The two circle outlines do not carry standalone A and B labels; the visible A만, A∩B, and B만 labels make the membership identities explicit enough for the typed two-set region fact."
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_TYPED_FACTS",
+  "reviewedUidSetSha": "sha256:39affb0b6856feb954438af26798368d875e5a0686998f51032349ae16725870",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|17",
+      "examId": "22_복성고_2학기_중간_고1_기출",
+      "qid": 17,
+      "expectedLogicalFactSha": "sha256:cacbb312ca8e7e4a72810fc64d365ea1d7274c70eac345d6b202ef62bf1b74f2",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|17",
+        "unit": "집합",
+        "visualType": "SET_NUMBER_LINE",
+        "visualRole": "solution_set_boundary_intersection",
+        "requiredLabels": [
+          "A",
+          "A∩Bᶜ",
+          "Bᶜ"
+        ],
+        "decisiveStepIds": [
+          "A-root-interval",
+          "B-complement-boundary",
+          "intersection-identity",
+          "endpoint-difference"
+        ],
+        "intervalComponents": [
+          {
+            "label": "A",
+            "leftEndpoint": -3,
+            "rightEndpoint": 5,
+            "leftInfinite": false,
+            "rightInfinite": false,
+            "leftClosed": true,
+            "rightClosed": true
+          },
+          {
+            "label": "Bᶜ",
+            "leftEndpoint": -3,
+            "rightEndpoint": 2,
+            "leftInfinite": false,
+            "rightInfinite": false,
+            "leftClosed": true,
+            "rightClosed": true
+          },
+          {
+            "label": "A∩Bᶜ",
+            "leftEndpoint": -3,
+            "rightEndpoint": 2,
+            "leftInfinite": false,
+            "rightInfinite": false,
+            "leftClosed": true,
+            "rightClosed": true
+          }
+        ],
+        "boundaryIdentity": {
+          "A": "[-3,5]",
+          "Bᶜ": "[-3,2]",
+          "A∩Bᶜ": "[-3,2]",
+          "a": -3,
+          "b": 2,
+          "bMinusA": 5,
+          "endpointClosure": "closed"
+        },
+        "result": "b−a=5"
+      }
+    }
+  ]
+}

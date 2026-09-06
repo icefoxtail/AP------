@@ -1,0 +1,59 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_TYPED_FACTS",
+  "reviewedUidSetSha": "sha256:f57f2b904efedf046f06cbf3d785ba214932a7278c12dd14cb10ffd3a79f7731",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+      "examId": "22_팔마고_2학기_중간_고1_기출",
+      "qid": 14,
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "pilotVisualAction": "REBUILD_EXISTING",
+      "pilotTargetClass": "COMPLEX_COMPLEMENT_SYMMETRIC_DIFFERENCE",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|14",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_2",
+        "visualRole": "COMPLEMENT_OF_SYMMETRIC_DIFFERENCE_REGION_MAP",
+        "requiredLabels": [
+          "U",
+          "A",
+          "B",
+          "A♥B"
+        ],
+        "decisiveStepIds": [
+          "HEART_OPERATOR_EQ_COMPLEMENT_OF_SYMMETRIC_DIFFERENCE",
+          "COMPLEMENT_SELECTS_R00_AND_R11_WITHIN_U",
+          "UNIVERSE_BOUNDARY_AND_A_B_BOUNDARIES_REQUIRED"
+        ],
+        "universeRequired": true,
+        "universe": {
+          "label": "U",
+          "definition": "U={a,b,c,d,e,f}",
+          "elements": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f"
+          ],
+          "boundaryRequired": true
+        },
+        "complementReferenceSet": "U",
+        "operationIdentity": "A♥B=(A△B)^c",
+        "expectedRegions": [
+          "R00",
+          "R11"
+        ],
+        "boundaryIdentity": {
+          "A": "boundary:A",
+          "B": "boundary:B",
+          "U": "boundary:U"
+        }
+      }
+    }
+  ]
+}

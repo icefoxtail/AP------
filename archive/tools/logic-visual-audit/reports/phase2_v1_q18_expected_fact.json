@@ -1,0 +1,195 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "status": "PASS_SOURCE_ONLY_TYPED_FACTS",
+  "reviewInputBundleSha": "sha256:692616430ac5a57ed44d73f2c488f263186ce24c5b27ca6243e7017b793042e7",
+  "reviewedUidSetSha": "sha256:d71e2cb83c08b08cebab24e71bd06726adc403825cc05cf849d0b19e8d8bede5",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+      "expectedVisualRequirementSignal": "SHOULD_BE_REQUIRED",
+      "expectedVisualRole": "SOLUTION_GRAPH",
+      "expectedLogicalFactCanonicalJson": "{\"decisiveStepIds\":[\"A_RIGHT_BRANCH_X_NONNEGATIVE\",\"B_UPPER_BRANCH_RADICAND_NONNEGATIVE\",\"INTERSECTION_SYMMETRIC_SYSTEM\",\"ONE_INTERSECTION_FORCES_DIAGONAL\",\"REPEATED_DIAGONAL_ROOT_N_EQUALS_9\"],\"factSchemaVersion\":\"LOGIC_VISUAL_FACT_v1\",\"graphDefinedFacts\":{\"curves\":[{\"boundaryPoint\":\"(0,n/6)\",\"decisiveBranch\":\"x≥0\",\"equation\":\"y=(x^2+n)/6\",\"graphFamily\":\"upward_parabola\",\"id\":\"A\",\"nEquals9BoundaryPoint\":\"(0,3)\",\"nEquals9Domain\":{\"x\":\"[0,∞)\",\"y\":\"[3,∞)\"},\"visibleBranch\":\"right_branch\",\"xDomain\":\"[0,∞)\",\"yDomain\":\"[n/6,∞)\"},{\"boundaryPoint\":\"(n/6,0)\",\"decisiveBranch\":\"6x−n≥0 and y≥0\",\"equation\":\"y=√(6x−n)\",\"graphFamily\":\"right_opening_parabola\",\"id\":\"B\",\"nEquals9BoundaryPoint\":\"(3/2,0)\",\"nEquals9Domain\":{\"x\":\"[3/2,∞)\",\"y\":\"[0,∞)\"},\"visibleBranch\":\"upper_branch\",\"xDomain\":\"[n/6,∞)\",\"yDomain\":\"[0,∞)\"}],\"domains\":{\"A\":{\"x\":\"[0,∞)\",\"y\":\"[n/6,∞)\"},\"B\":{\"x\":\"[n/6,∞)\",\"y\":\"[0,∞)\"}},\"intersection\":{\"curves\":[\"A\",\"B\"],\"derivation\":[\"A∩B uses x≥0, x≥n/6, and y≥0; squaring B is valid because A gives y>0.\",\"The two curve equations become the symmetric system x^2+n=6y and y^2+n=6x.\",\"Subtracting gives (x−y)(x+y+6)=0; nonnegative x,y make x+y+6 positive, so x=y.\",\"On the diagonal, x^2−6x+n=0; exactly one diagonal solution requires the repeated-root condition 36−4n=0.\",\"Therefore n=9, and the sole intersection is (3,3).\"],\"diagonalEquation\":\"x^2−6x+n=0\",\"diagonalFactorization\":\"(x−y)(x+y+6)=0\",\"intersectionCount\":1,\"intersectionPoint\":{\"x\":3,\"y\":3},\"nonnegativeBranchConclusion\":\"x=y\",\"oneIntersectionCondition\":\"n=9\",\"parameter\":{\"condition\":\"n=9\",\"domain\":\"positive integers\",\"symbol\":\"n\"},\"symmetricIntersectionSystem\":[\"x^2+n=6y\",\"y^2+n=6x\"],\"uniqueIntersectionRootCondition\":\"36−4n=0\"}},\"graphDefinedSetFacts\":{\"curves\":[{\"boundaryPoint\":\"(0,n/6)\",\"decisiveBranch\":\"x≥0\",\"equation\":\"y=(x^2+n)/6\",\"graphFamily\":\"upward_parabola\",\"id\":\"A\",\"nEquals9BoundaryPoint\":\"(0,3)\",\"nEquals9Domain\":{\"x\":\"[0,∞)\",\"y\":\"[3,∞)\"},\"visibleBranch\":\"right_branch\",\"xDomain\":\"[0,∞)\",\"yDomain\":\"[n/6,∞)\"},{\"boundaryPoint\":\"(n/6,0)\",\"decisiveBranch\":\"6x−n≥0 and y≥0\",\"equation\":\"y=√(6x−n)\",\"graphFamily\":\"right_opening_parabola\",\"id\":\"B\",\"nEquals9BoundaryPoint\":\"(3/2,0)\",\"nEquals9Domain\":{\"x\":\"[3/2,∞)\",\"y\":\"[0,∞)\"},\"visibleBranch\":\"upper_branch\",\"xDomain\":\"[n/6,∞)\",\"yDomain\":\"[0,∞)\"}],\"domains\":{\"A\":{\"x\":\"[0,∞)\",\"y\":\"[n/6,∞)\"},\"B\":{\"x\":\"[n/6,∞)\",\"y\":\"[0,∞)\"}},\"intersection\":{\"curves\":[\"A\",\"B\"],\"derivation\":[\"A∩B uses x≥0, x≥n/6, and y≥0; squaring B is valid because A gives y>0.\",\"The two curve equations become the symmetric system x^2+n=6y and y^2+n=6x.\",\"Subtracting gives (x−y)(x+y+6)=0; nonnegative x,y make x+y+6 positive, so x=y.\",\"On the diagonal, x^2−6x+n=0; exactly one diagonal solution requires the repeated-root condition 36−4n=0.\",\"Therefore n=9, and the sole intersection is (3,3).\"],\"diagonalEquation\":\"x^2−6x+n=0\",\"diagonalFactorization\":\"(x−y)(x+y+6)=0\",\"intersectionCount\":1,\"intersectionPoint\":{\"x\":3,\"y\":3},\"nonnegativeBranchConclusion\":\"x=y\",\"oneIntersectionCondition\":\"n=9\",\"parameter\":{\"condition\":\"n=9\",\"domain\":\"positive integers\",\"symbol\":\"n\"},\"symmetricIntersectionSystem\":[\"x^2+n=6y\",\"y^2+n=6x\"],\"uniqueIntersectionRootCondition\":\"36−4n=0\"}},\"questionUid\":\"archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18\",\"requiredLabels\":[\"(3,3)\",\"A\",\"B\",\"n(A∩B)=1\",\"n=9\",\"x≥0\",\"x≥n/6\",\"y=(x^2+n)/6\",\"y=√(6x−n)\",\"y≥0\"],\"unit\":\"집합\",\"visualMedium\":\"graph\",\"visualRole\":\"SOLUTION_GRAPH\",\"visualType\":\"SET_GRAPH_DEFINED\"}",
+      "expectedLogicalFactSha": "sha256:340757a9d3630cb52213eac74e083aae82075ab7a6b5e5c547c9713cda1277ff",
+      "expectedLogicalFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|18",
+        "unit": "집합",
+        "visualType": "SET_GRAPH_DEFINED",
+        "visualRole": "SOLUTION_GRAPH",
+        "visualMedium": "graph",
+        "requiredLabels": [
+          "A",
+          "B",
+          "y=(x^2+n)/6",
+          "y=√(6x−n)",
+          "x≥0",
+          "x≥n/6",
+          "y≥0",
+          "n(A∩B)=1",
+          "n=9",
+          "(3,3)"
+        ],
+        "decisiveStepIds": [
+          "A_RIGHT_BRANCH_X_NONNEGATIVE",
+          "B_UPPER_BRANCH_RADICAND_NONNEGATIVE",
+          "INTERSECTION_SYMMETRIC_SYSTEM",
+          "ONE_INTERSECTION_FORCES_DIAGONAL",
+          "REPEATED_DIAGONAL_ROOT_N_EQUALS_9"
+        ],
+        "graphDefinedFacts": {
+          "curves": [
+            {
+              "id": "A",
+              "equation": "y=(x^2+n)/6",
+              "graphFamily": "upward_parabola",
+              "visibleBranch": "right_branch",
+              "decisiveBranch": "x≥0",
+              "xDomain": "[0,∞)",
+              "yDomain": "[n/6,∞)",
+              "nEquals9Domain": {
+                "x": "[0,∞)",
+                "y": "[3,∞)"
+              },
+              "boundaryPoint": "(0,n/6)",
+              "nEquals9BoundaryPoint": "(0,3)"
+            },
+            {
+              "id": "B",
+              "equation": "y=√(6x−n)",
+              "graphFamily": "right_opening_parabola",
+              "visibleBranch": "upper_branch",
+              "decisiveBranch": "6x−n≥0 and y≥0",
+              "xDomain": "[n/6,∞)",
+              "yDomain": "[0,∞)",
+              "nEquals9Domain": {
+                "x": "[3/2,∞)",
+                "y": "[0,∞)"
+              },
+              "boundaryPoint": "(n/6,0)",
+              "nEquals9BoundaryPoint": "(3/2,0)"
+            }
+          ],
+          "domains": {
+            "A": {
+              "x": "[0,∞)",
+              "y": "[n/6,∞)"
+            },
+            "B": {
+              "x": "[n/6,∞)",
+              "y": "[0,∞)"
+            }
+          },
+          "intersection": {
+            "curves": [
+              "A",
+              "B"
+            ],
+            "intersectionCount": 1,
+            "intersectionPoint": {
+              "x": 3,
+              "y": 3
+            },
+            "oneIntersectionCondition": "n=9",
+            "parameter": {
+              "symbol": "n",
+              "domain": "positive integers",
+              "condition": "n=9"
+            },
+            "symmetricIntersectionSystem": [
+              "x^2+n=6y",
+              "y^2+n=6x"
+            ],
+            "diagonalFactorization": "(x−y)(x+y+6)=0",
+            "nonnegativeBranchConclusion": "x=y",
+            "diagonalEquation": "x^2−6x+n=0",
+            "uniqueIntersectionRootCondition": "36−4n=0",
+            "derivation": [
+              "A∩B uses x≥0, x≥n/6, and y≥0; squaring B is valid because A gives y>0.",
+              "The two curve equations become the symmetric system x^2+n=6y and y^2+n=6x.",
+              "Subtracting gives (x−y)(x+y+6)=0; nonnegative x,y make x+y+6 positive, so x=y.",
+              "On the diagonal, x^2−6x+n=0; exactly one diagonal solution requires the repeated-root condition 36−4n=0.",
+              "Therefore n=9, and the sole intersection is (3,3)."
+            ]
+          }
+        },
+        "graphDefinedSetFacts": {
+          "curves": [
+            {
+              "id": "A",
+              "equation": "y=(x^2+n)/6",
+              "graphFamily": "upward_parabola",
+              "visibleBranch": "right_branch",
+              "decisiveBranch": "x≥0",
+              "xDomain": "[0,∞)",
+              "yDomain": "[n/6,∞)",
+              "nEquals9Domain": {
+                "x": "[0,∞)",
+                "y": "[3,∞)"
+              },
+              "boundaryPoint": "(0,n/6)",
+              "nEquals9BoundaryPoint": "(0,3)"
+            },
+            {
+              "id": "B",
+              "equation": "y=√(6x−n)",
+              "graphFamily": "right_opening_parabola",
+              "visibleBranch": "upper_branch",
+              "decisiveBranch": "6x−n≥0 and y≥0",
+              "xDomain": "[n/6,∞)",
+              "yDomain": "[0,∞)",
+              "nEquals9Domain": {
+                "x": "[3/2,∞)",
+                "y": "[0,∞)"
+              },
+              "boundaryPoint": "(n/6,0)",
+              "nEquals9BoundaryPoint": "(3/2,0)"
+            }
+          ],
+          "domains": {
+            "A": {
+              "x": "[0,∞)",
+              "y": "[n/6,∞)"
+            },
+            "B": {
+              "x": "[n/6,∞)",
+              "y": "[0,∞)"
+            }
+          },
+          "intersection": {
+            "curves": [
+              "A",
+              "B"
+            ],
+            "intersectionCount": 1,
+            "intersectionPoint": {
+              "x": 3,
+              "y": 3
+            },
+            "oneIntersectionCondition": "n=9",
+            "parameter": {
+              "symbol": "n",
+              "domain": "positive integers",
+              "condition": "n=9"
+            },
+            "symmetricIntersectionSystem": [
+              "x^2+n=6y",
+              "y^2+n=6x"
+            ],
+            "diagonalFactorization": "(x−y)(x+y+6)=0",
+            "nonnegativeBranchConclusion": "x=y",
+            "diagonalEquation": "x^2−6x+n=0",
+            "uniqueIntersectionRootCondition": "36−4n=0",
+            "derivation": [
+              "A∩B uses x≥0, x≥n/6, and y≥0; squaring B is valid because A gives y>0.",
+              "The two curve equations become the symmetric system x^2+n=6y and y^2+n=6x.",
+              "Subtracting gives (x−y)(x+y+6)=0; nonnegative x,y make x+y+6 positive, so x=y.",
+              "On the diagonal, x^2−6x+n=0; exactly one diagonal solution requires the repeated-root condition 36−4n=0.",
+              "Therefore n=9, and the sole intersection is (3,3)."
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

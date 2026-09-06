@@ -1,0 +1,516 @@
+{
+  "generatedAtKst": "2026-09-06",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_11_FULL_TYPED_SEMANTIC_PARITY",
+  "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+  "status": "FAIL_TYPED_FACT_SCHEMA",
+  "independentFreshBlindStatus": "NOT_PROVEN_LEGACY_EVIDENCE",
+  "missingObservedCount": 1,
+  "observationContract": {
+    "required": [
+      "reviewerId",
+      "reviewSessionId",
+      "inputBundleSha",
+      "firstPassEvidenceSha",
+      "observationSource"
+    ],
+    "sameSessionOrBuilderFixtureForbidden": true,
+    "builderGeneratedExpectedToObservedCopyForbidden": true
+  },
+  "projectionSpec": "archive/tools/logic-visual-audit/specs/semantic-projection-spec-v1.json",
+  "results": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_3",
+        "visualRole": "three_set_region_equivalence",
+        "requiredLabels": [
+          "A",
+          "B",
+          "C",
+          "B∩C∩Aᶜ",
+          "①"
+        ],
+        "decisiveStepIds": [
+          "INTERSECT_B_C",
+          "EXCLUDE_A",
+          "MATCH_OPTION_1"
+        ],
+        "universeRequired": "U",
+        "expectedRegions": [
+          "B∩C∩Aᶜ"
+        ],
+        "boundaryIdentity": {
+          "targetRegion": "B∩C∩Aᶜ",
+          "matchedChoice": "①"
+        }
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js|22_복성고_2학기_중간_고1_기출|9",
+        "unit": "집합",
+        "visualType": "SET_REGION_VENN_3",
+        "visualRole": "three_set_region_equivalence",
+        "requiredLabels": [
+          "A",
+          "B",
+          "C",
+          "B∩C∩Aᶜ",
+          "①"
+        ],
+        "decisiveStepIds": [
+          "INTERSECT_B_C",
+          "EXCLUDE_A",
+          "MATCH_OPTION_1"
+        ],
+        "universeRequired": "U",
+        "expectedRegions": [
+          "B∩C∩Aᶜ"
+        ],
+        "boundaryIdentity": {
+          "targetRegion": "B∩C∩Aᶜ",
+          "matchedChoice": "①"
+        }
+      },
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedSemanticSha": "sha256:f0e042c4e81d9905ad9089b853ad4d7722141f1e0cd98c0c0fad75d16cc83e07",
+      "observedSemanticSha": "sha256:f0e042c4e81d9905ad9089b853ad4d7722141f1e0cd98c0c0fad75d16cc83e07",
+      "expectedSemanticContentSha": "sha256:f0e042c4e81d9905ad9089b853ad4d7722141f1e0cd98c0c0fad75d16cc83e07",
+      "observedSemanticContentSha": "sha256:f0e042c4e81d9905ad9089b853ad4d7722141f1e0cd98c0c0fad75d16cc83e07",
+      "expectedStructureFingerprint": "sha256:4ddfba1612f51a2cf29c1a53d07c4873fa2872160a5eb3316352233f2df4315b",
+      "observedStructureFingerprint": "sha256:4ddfba1612f51a2cf29c1a53d07c4873fa2872160a5eb3316352233f2df4315b",
+      "semanticParity": "PASS",
+      "observedFactExtractionMethod": "manual_independent_legacy_reconciliation",
+      "provenanceStatus": "LEGACY_RECONCILIATION_NOT_FRESH_BLIND",
+      "observationSource": "same-file-legacy-fixture"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|20",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "parameter_reconstruction_flow",
+        "requiredLabels": [
+          "a₁=1",
+          "a₄=9",
+          "T(a₂)+T(a₃)+T(a₅)=150",
+          "A={1,2,3,9,11}",
+          "B={1,4,9,81,121}"
+        ],
+        "decisiveStepIds": [
+          "FIX_A1_A4",
+          "DERIVE_A3",
+          "SOLVE_REMAINING_VALUES",
+          "FINAL_SET_CHECK"
+        ],
+        "caseRows": [
+          {
+            "caseId": "BOUNDARY",
+            "condition": "a₁+a₄=10 and a₁∈B",
+            "result": "a₁=1,a₄=9"
+          },
+          {
+            "caseId": "SQUARE_LINK",
+            "condition": "9∈B",
+            "result": "3∈A"
+          },
+          {
+            "caseId": "SUM",
+            "condition": "T(t)=t²+t",
+            "result": "T(a₂)+T(a₃)+T(a₅)=150"
+          },
+          {
+            "caseId": "FINAL",
+            "condition": "ordered natural values and A∩B={1,9}",
+            "result": "A={1,2,3,9,11}; B={1,4,9,81,121}"
+          }
+        ]
+      },
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [
+        "$:type",
+        "FACT_SCHEMA_VERSION",
+        "missing:factSchemaVersion",
+        "missing:questionUid",
+        "missing:unit",
+        "missing:visualType",
+        "missing:visualRole",
+        "missing:requiredLabels",
+        "missing:decisiveStepIds",
+        "questionUid:type",
+        "visualRole:type",
+        "requiredLabels:type",
+        "decisiveStepIds:type",
+        "unknownVisualType:undefined"
+      ],
+      "expectedSemanticSha": "sha256:968db128567bd633226ee115522edb94cf10f5f0f544181f59fa9af91daaed1f",
+      "observedSemanticSha": null,
+      "expectedSemanticContentSha": "sha256:968db128567bd633226ee115522edb94cf10f5f0f544181f59fa9af91daaed1f",
+      "observedSemanticContentSha": null,
+      "expectedStructureFingerprint": "sha256:6a03a57602c84f0f665308b90e1c88556064cc5a036fcbd1ad90ed22a202ac5c",
+      "observedStructureFingerprint": null,
+      "semanticParity": "FAIL",
+      "observedFactExtractionMethod": "MISSING_OBSERVATION",
+      "provenanceStatus": "LEGACY_RECONCILIATION_NOT_FRESH_BLIND",
+      "observationSource": null
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18",
+        "unit": "집합",
+        "visualType": "SET_LATTICE_POINT_COUNT",
+        "visualRole": "integer_lattice_point_count",
+        "requiredLabels": [
+          "x²+y²=5",
+          "(±1,±2)",
+          "(±2,±1)",
+          "n(A)=8",
+          "n(B)=k",
+          "k=8"
+        ],
+        "decisiveStepIds": [
+          "ENUMERATE_SIGN_PERMUTATION",
+          "COUNT_A",
+          "COUNT_B",
+          "EQUATE_COUNTS"
+        ],
+        "latticePointFamilies": [
+          {
+            "familyId": "F1",
+            "pattern": "(±1,±2)",
+            "count": 4
+          },
+          {
+            "familyId": "F2",
+            "pattern": "(±2,±1)",
+            "count": 4
+          }
+        ],
+        "domainDescription": "B={x∈N | 1≤x<k+1}={1,2,...,k}",
+        "countingResult": "n(A)=4+4=8=n(B)=k→k=8"
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_팔마고_2학기_중간_고1_기출.js|22_팔마고_2학기_중간_고1_기출|18",
+        "unit": "집합",
+        "visualType": "SET_LATTICE_POINT_COUNT",
+        "visualRole": "integer_lattice_point_count",
+        "requiredLabels": [
+          "x²+y²=5",
+          "(±1,±2)",
+          "(±2,±1)",
+          "n(A)=8",
+          "n(B)=k",
+          "k=8"
+        ],
+        "decisiveStepIds": [
+          "ENUMERATE_SIGN_PERMUTATION",
+          "COUNT_A",
+          "COUNT_B",
+          "EQUATE_COUNTS"
+        ],
+        "latticePointFamilies": [
+          {
+            "familyId": "F1",
+            "pattern": "(±1,±2)",
+            "count": 4
+          },
+          {
+            "familyId": "F2",
+            "pattern": "(±2,±1)",
+            "count": 4
+          }
+        ],
+        "domainDescription": "B={x∈N | 1≤x<k+1}={1,2,...,k}",
+        "countingResult": "n(A)=4+4=8=n(B)=k→k=8"
+      },
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedSemanticSha": "sha256:352f0d7abb3ed3c48d44daeae72997d0f0b5b59029245e0e83082606983bb9ff",
+      "observedSemanticSha": "sha256:352f0d7abb3ed3c48d44daeae72997d0f0b5b59029245e0e83082606983bb9ff",
+      "expectedSemanticContentSha": "sha256:352f0d7abb3ed3c48d44daeae72997d0f0b5b59029245e0e83082606983bb9ff",
+      "observedSemanticContentSha": "sha256:352f0d7abb3ed3c48d44daeae72997d0f0b5b59029245e0e83082606983bb9ff",
+      "expectedStructureFingerprint": "sha256:5793128ace9714c180a614c9fd8a2af2333d8f8fb97950ad0dbf9b4d5aca9654",
+      "observedStructureFingerprint": "sha256:5793128ace9714c180a614c9fd8a2af2333d8f8fb97950ad0dbf9b4d5aca9654",
+      "semanticParity": "PASS",
+      "observedFactExtractionMethod": "manual_independent_legacy_reconciliation",
+      "provenanceStatus": "LEGACY_RECONCILIATION_NOT_FRESH_BLIND",
+      "observationSource": "same-file-legacy-fixture"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "intersection_extrema",
+        "requiredLabels": [
+          "45명",
+          "A=28",
+          "B=23",
+          "최대 x=23",
+          "최소 x=6",
+          "23+6=29"
+        ],
+        "decisiveStepIds": [
+          "MAX_CONTAINMENT",
+          "MIN_UNION_FILL",
+          "SUM_EXTREMA"
+        ],
+        "cardinalityByRegion": {
+          "maximum": {
+            "aOnly": 5,
+            "intersection": 23,
+            "bOnly": 0,
+            "outside": 17
+          },
+          "minimum": {
+            "aOnly": 22,
+            "intersection": 6,
+            "bOnly": 17,
+            "outside": 0
+          }
+        },
+        "totalCardinality": 45,
+        "extremeConfiguration": {
+          "maximumIntersection": 23,
+          "minimumIntersection": 6,
+          "requestedSum": 29
+        }
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|10",
+        "unit": "집합",
+        "visualType": "SET_CARDINALITY_VENN",
+        "visualRole": "intersection_extrema",
+        "requiredLabels": [
+          "45명",
+          "A=28",
+          "B=23",
+          "최대 x=23",
+          "최소 x=6",
+          "23+6=29"
+        ],
+        "decisiveStepIds": [
+          "MAX_CONTAINMENT",
+          "MIN_UNION_FILL",
+          "SUM_EXTREMA"
+        ],
+        "cardinalityByRegion": {
+          "maximum": {
+            "aOnly": 5,
+            "intersection": 23,
+            "bOnly": 0,
+            "outside": 17
+          },
+          "minimum": {
+            "aOnly": 22,
+            "intersection": 6,
+            "bOnly": 17,
+            "outside": 0
+          }
+        },
+        "totalCardinality": 45,
+        "extremeConfiguration": {
+          "maximumIntersection": 23,
+          "minimumIntersection": 6,
+          "requestedSum": 29
+        }
+      },
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedSemanticSha": "sha256:509eb25dae045bad0d86daf10ae7d9d971bb8f752f66592eba7ef4e41ed23bfe",
+      "observedSemanticSha": "sha256:509eb25dae045bad0d86daf10ae7d9d971bb8f752f66592eba7ef4e41ed23bfe",
+      "expectedSemanticContentSha": "sha256:509eb25dae045bad0d86daf10ae7d9d971bb8f752f66592eba7ef4e41ed23bfe",
+      "observedSemanticContentSha": "sha256:509eb25dae045bad0d86daf10ae7d9d971bb8f752f66592eba7ef4e41ed23bfe",
+      "expectedStructureFingerprint": "sha256:904312011983421ca855995765cfab12db8298e203b1d2d18f93f25b3bcb8ddf",
+      "observedStructureFingerprint": "sha256:904312011983421ca855995765cfab12db8298e203b1d2d18f93f25b3bcb8ddf",
+      "semanticParity": "PASS",
+      "observedFactExtractionMethod": "manual_independent_legacy_reconciliation",
+      "provenanceStatus": "LEGACY_RECONCILIATION_NOT_FRESH_BLIND",
+      "observationSource": "same-file-legacy-fixture"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+        "unit": "집합",
+        "visualType": "SET_INCLUSION_VENN",
+        "visualRole": "mutual_inclusion_equality",
+        "requiredLabels": [
+          "A−B=∅",
+          "B−A=∅",
+          "A⊆B",
+          "B⊆A",
+          "A=B"
+        ],
+        "decisiveStepIds": [
+          "EMPTY_A_ONLY",
+          "EMPTY_B_ONLY",
+          "MUTUAL_INCLUSION"
+        ],
+        "inclusionDirection": [
+          "A⊆B",
+          "B⊆A"
+        ],
+        "strictness": "non-strict",
+        "equality": "A=B",
+        "disjointness": "A−B=∅ and B−A=∅",
+        "boundaryIdentity": {
+          "sourceIdentity": "Aᶜ∩B=B−A"
+        }
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|11",
+        "unit": "집합",
+        "visualType": "SET_INCLUSION_VENN",
+        "visualRole": "mutual_inclusion_equality",
+        "requiredLabels": [
+          "A−B=∅",
+          "B−A=∅",
+          "A⊆B",
+          "B⊆A",
+          "A=B"
+        ],
+        "decisiveStepIds": [
+          "EMPTY_A_ONLY",
+          "EMPTY_B_ONLY",
+          "MUTUAL_INCLUSION"
+        ],
+        "inclusionDirection": [
+          "A⊆B",
+          "B⊆A"
+        ],
+        "strictness": "non-strict",
+        "equality": "A=B",
+        "disjointness": "A−B=∅ and B−A=∅",
+        "boundaryIdentity": {
+          "sourceIdentity": "Aᶜ∩B=B−A"
+        }
+      },
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedSemanticSha": "sha256:368a1a6aee00874e44bad770cf3e06c3fb61e113270c6181dd734ef0ada3c59f",
+      "observedSemanticSha": "sha256:368a1a6aee00874e44bad770cf3e06c3fb61e113270c6181dd734ef0ada3c59f",
+      "expectedSemanticContentSha": "sha256:368a1a6aee00874e44bad770cf3e06c3fb61e113270c6181dd734ef0ada3c59f",
+      "observedSemanticContentSha": "sha256:368a1a6aee00874e44bad770cf3e06c3fb61e113270c6181dd734ef0ada3c59f",
+      "expectedStructureFingerprint": "sha256:6c4218328045d8b7e21be2674119915a96c1b4380a1418c3ed8c1ffba9c8e02f",
+      "observedStructureFingerprint": "sha256:6c4218328045d8b7e21be2674119915a96c1b4380a1418c3ed8c1ffba9c8e02f",
+      "semanticParity": "PASS",
+      "observedFactExtractionMethod": "manual_independent_legacy_reconciliation",
+      "provenanceStatus": "LEGACY_RECONCILIATION_NOT_FRESH_BLIND",
+      "observationSource": "same-file-legacy-fixture"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+      "expectedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "symmetric_difference_candidate_table",
+        "requiredLabels": [
+          "a=3,2,−2",
+          "A△B={0,1}",
+          "a=2",
+          "b=6",
+          "b−a=4"
+        ],
+        "decisiveStepIds": [
+          "ENUMERATE_CANDIDATES",
+          "COMPARE_SYMMETRIC_DIFFERENCE",
+          "SELECT_A2",
+          "COMPUTE_B_MINUS_A"
+        ],
+        "caseRows": [
+          {
+            "caseId": "A3",
+            "parameter": 3,
+            "symmetricDifference": "{1,7}",
+            "status": "REJECT"
+          },
+          {
+            "caseId": "A2",
+            "parameter": 2,
+            "symmetricDifference": "{0,1}",
+            "status": "KEEP",
+            "b": 6,
+            "result": "b−a=4"
+          },
+          {
+            "caseId": "A-2",
+            "parameter": -2,
+            "symmetricDifference": "{−4,−3}",
+            "status": "REJECT"
+          }
+        ]
+      },
+      "observedFact": {
+        "factSchemaVersion": "LOGIC_VISUAL_FACT_v1",
+        "questionUid": "archive/exams/original/high/h1/2mid/22_효천고_2학기_중간_고1_기출.js|22_효천고_2학기_중간_고1_기출|12",
+        "unit": "집합",
+        "visualType": "SET_CASE_PARTITION",
+        "visualRole": "symmetric_difference_candidate_table",
+        "requiredLabels": [
+          "a=3,2,−2",
+          "A△B={0,1}",
+          "a=2",
+          "b=6",
+          "b−a=4"
+        ],
+        "decisiveStepIds": [
+          "ENUMERATE_CANDIDATES",
+          "COMPARE_SYMMETRIC_DIFFERENCE",
+          "SELECT_A2",
+          "COMPUTE_B_MINUS_A"
+        ],
+        "caseRows": [
+          {
+            "caseId": "A3",
+            "parameter": 3,
+            "symmetricDifference": "{1,7}",
+            "status": "REJECT"
+          },
+          {
+            "caseId": "A2",
+            "parameter": 2,
+            "symmetricDifference": "{0,1}",
+            "status": "KEEP",
+            "b": 6,
+            "result": "b−a=4"
+          },
+          {
+            "caseId": "A-2",
+            "parameter": -2,
+            "symmetricDifference": "{−4,−3}",
+            "status": "REJECT"
+          }
+        ]
+      },
+      "expectedSchemaErrors": [],
+      "observedSchemaErrors": [],
+      "expectedSemanticSha": "sha256:df63b8d13d83a8db67a24a23f17886839b9e540274dea02475d38e409ea50328",
+      "observedSemanticSha": "sha256:df63b8d13d83a8db67a24a23f17886839b9e540274dea02475d38e409ea50328",
+      "expectedSemanticContentSha": "sha256:df63b8d13d83a8db67a24a23f17886839b9e540274dea02475d38e409ea50328",
+      "observedSemanticContentSha": "sha256:df63b8d13d83a8db67a24a23f17886839b9e540274dea02475d38e409ea50328",
+      "expectedStructureFingerprint": "sha256:4726b67385c10173b02285a4f39e759159e5b9a5d2fea778916f0844f4933ac3",
+      "observedStructureFingerprint": "sha256:4726b67385c10173b02285a4f39e759159e5b9a5d2fea778916f0844f4933ac3",
+      "semanticParity": "PASS",
+      "observedFactExtractionMethod": "manual_independent_legacy_reconciliation",
+      "provenanceStatus": "LEGACY_RECONCILIATION_NOT_FRESH_BLIND",
+      "observationSource": "same-file-legacy-fixture"
+    }
+  ],
+  "reportSha": "sha256:ffe385a31e81313fe7d4a58e126aa04cfde1aa6d2add2fdaf990b679eeeb86f5"
+}

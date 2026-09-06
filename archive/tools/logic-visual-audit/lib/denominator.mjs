@@ -12,7 +12,10 @@ export function computeDenominator({ items, triage, artifacts, candidateReleaseA
   for (const item of items) {
     const triageItem = triage[item.questionUid];
     finalRequirement[item.questionUid] = triageItem?.finalVisualRequirement ?? signalToRequirement(triageItem?.expectedVisualRequirementSignal);
-    attached[item.questionUid] = Boolean(item.actualSolutionVisualAttached && artifacts[item.questionUid]?.artifactExists);
+    // Attachment is a denominator dependency even when its artifact is
+    // missing or stale. Missing bytes must fail the item/render gate; they
+    // must never make the UID disappear from C by changing the denominator.
+    attached[item.questionUid] = Boolean(item.actualSolutionVisualAttached);
     problemDependency[item.questionUid] = Boolean(item.problemVisualMathDependency);
     sharedDependency[item.questionUid] = Boolean(item.sharedVisualMathDependency);
   }

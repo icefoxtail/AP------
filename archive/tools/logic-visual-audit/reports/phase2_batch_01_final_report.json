@@ -1,0 +1,41 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "phase": "LOGIC_VISUAL_PHASE_2_BATCH_01_FINAL",
+  "overallStatus": "BATCH_01_C_AND_QUALIFICATION_RENDER_PASS_D_SEPARATE",
+  "productionAuthority": false,
+  "batchScope": "Pilot-scoped denominator for the three adjudicated batch-01 UIDs only; not the global 360-target denominator.",
+  "requirementAdjudication": "RESOLVED",
+  "cDenominator": {
+    "status": "FROZEN",
+    "requiredCount": 3,
+    "inputSha": "sha256:50bd9a624521d416adc1bf790a82b77a6137c6458aaef37797fff0027b6a6c3b",
+    "uidSetSha": "sha256:35a846c69dd803a5eb5436168f2292344a7e8902cd5922db0b2804c168801eae",
+    "parity": true
+  },
+  "itemSemanticGate": {
+    "status": "PASS_TYPED_ITEM_SEMANTIC_GATE",
+    "passCount": 3,
+    "failCount": 0
+  },
+  "typedSemanticParity": {
+    "q20Q17": "PASS_TYPED_SEMANTIC_PARITY",
+    "q14": "PASS_TYPED_SEMANTIC_PARITY"
+  },
+  "qualificationRender": {
+    "status": "PASS_QUALIFICATION_RENDER_OBSERVED",
+    "resultCount": 3
+  },
+  "commonCoreDStatus": "SEPARATE_AUTHORITY_NOT_FULL_ENGINE_SEAL",
+  "globalPhase1Status": "INFRASTRUCTURE_READY_V3_FAIL_NOT_ADOPTED",
+  "remainingPilotItemsAfterBatch": 47,
+  "nextAction": "Proceed to Phase 2 batch 02; do not promote Overlay or release authority from this pilot-scoped pass.",
+  "evidence": {
+    "requirementAdjudication": "reports/phase2_batch_01_requirement_adjudication.json",
+    "denominator": "reports/phase2_batch_01_c_denominator_frozen.json",
+    "itemGate": "reports/phase2_batch_01_item_gate.json",
+    "qualificationRender": "reports/phase2_batch_01_qualification_render.json",
+    "q20Q17Semantic": "reports/phase2_typed_semantic_parity.json",
+    "q14Semantic": "reports/phase2_q14_typed_semantic_parity.json"
+  },
+  "reportSha": "sha256:610a09a03342073c5c0c7a37212d5d51e1a457e541ac9183dfee51f526e8bd1c"
+}

@@ -1,0 +1,44 @@
+{
+  "reviewerRole": "V1_EXPECTED",
+  "priorReviewVisibility": "NONE",
+  "reviewedCount": 5,
+  "status": "PASS_SOURCE_ONLY_TRIAGE",
+  "entries": [
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js|22_강남여고_2학기_기말_고1_기출|5",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_REGION_VENN_3",
+      "role": "three-set region-equivalence explanation",
+      "rationale": "The target expression combines A-B with A∩C, so the decisive content is the exact three-set region mask inside A. A U-bounded three-set Venn can show which A/B/C membership cells are retained and why the equivalent form is A-(B-C); this is question-specific and materially clarifies the set identity."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js|22_금당고_2학기_기말_고1_기출|13",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_GRAPH_DEFINED",
+      "role": "graph-defined intersection avoidance and slope-range explanation",
+      "rationale": "A is defined as a graph and B as the origin-centered line y=mx; A∩B=∅ is therefore a graph-intersection condition over a line family. A question-specific graph of the branches, excluded point/asymptotic behavior, and admissible versus intersecting slopes is the direct visual witness for the requested range of m."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|11",
+      "expectedSignal": "SHOULD_BE_EXEMPT",
+      "canonicalVisualType": "NONE",
+      "role": "no visual role; finite-set membership check is clearer textually",
+      "rationale": "The task is to match the two parameterized elements of A against the three explicit expressions in B and enforce strictness. A generic inclusion Venn would not encode the parameter-dependent element identities or the case check, so it would duplicate rather than clarify the algebraic membership reasoning; the source is clear without a visual."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|13",
+      "expectedSignal": "MAY_BE_OPTIONAL",
+      "canonicalVisualType": "SET_REGION_VENN_2",
+      "role": "two-set complement-region coverage",
+      "rationale": "The two compound terms reduce to B and B^c, whose union is U. A U-bounded two-set Venn can make the complement coverage transparent, but the same result follows cleanly from distributive and complement laws, so the visual has pedagogical value without being indispensable."
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js|22_제일고_2학기_중간_고1_기출|19",
+      "expectedSignal": "SHOULD_BE_REQUIRED",
+      "canonicalVisualType": "SET_CARDINALITY_VENN",
+      "role": "cardinality-extrema configuration explanation",
+      "rationale": "The maximum and minimum of |A∩B| are determined by the feasible overlap and outside regions under |U|=50, |A|=25, and |B|=32. A labeled cardinality Venn, ideally with separate maximum and minimum configurations, directly exposes the extreme arrangements and the lower-bound total-cardinality constraint."
+    }
+  ],
+  "reviewedUidSetSha": "sha256:f81ac139f4d08a78e149142dba6f94a2e5c682bcd57704e7f3f577930feaa0e4"
+}

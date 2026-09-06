@@ -1,0 +1,37 @@
+{
+  "generatedAtKst": "2026-09-05",
+  "reportType": "FUNCTION_FAMILY_FULL_BROWSER_RENDER_QA_V3",
+  "harness": "archive/tools/function-family/full-render-harness.html?scope=all&v=3",
+  "scope": "original only; similar excluded",
+  "sourceCount": 50,
+  "modes": ["exam", "solution", "answer"],
+  "expectedCases": 150,
+  "observedCases": 150,
+  "passCases": 150,
+  "failCases": 0,
+  "perMode": {
+    "exam": { "expected": 50, "observed": 50, "pass": 50, "fail": 0 },
+    "solution": { "expected": 50, "observed": 50, "pass": 50, "fail": 0 },
+    "answer": { "expected": 50, "observed": 50, "pass": 50, "fail": 0 }
+  },
+  "checks": [
+    "non-empty pages",
+    "complete images with naturalWidth > 0",
+    "no render error attribute",
+    "no data-load error",
+    "no document/page/question overflow",
+    "no clipped visuals",
+    "no overlapping question boxes"
+  ],
+  "layoutGate": {
+    "status": "PASS",
+    "layoutIssues": 0,
+    "horizontalOverflow": 0,
+    "pageOverflow": 0,
+    "questionOverflow": 0,
+    "clippedVisuals": 0,
+    "overlappingQuestionBoxes": 0
+  },
+  "lastFailure": null,
+  "note": "Fresh local browser run after the engine fit-class precedence fix for tall source images."
+}
