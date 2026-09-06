@@ -608,6 +608,23 @@ function isPreviewMode() {
     }
 }
 
+function installArchivePreviewWitness() {
+    if (!isPreviewMode() || window.parent === window) return;
+    window.addEventListener('message', event => {
+        if (event.origin !== window.location.origin) return;
+        const message = event.data || {};
+        if (message.type !== 'AP_PRINT_PREVIEW' || message.source?.kind !== 'ARCHIVE_PREVIEW') return;
+        const expected = new URLSearchParams(window.location.search).get('data') || '';
+        if (message.source?.dataUrl !== expected) {
+            console.warn('[archive-engine] preview source witness mismatch', { expected, received: message.source?.dataUrl || '' });
+            document.documentElement.dataset.apPreviewWitness = 'mismatch';
+            return;
+        }
+        document.documentElement.dataset.apPreviewWitness = 'matched';
+    });
+    window.parent.postMessage({ type: 'AP_PRINT_READY', engine: 'archive' }, window.location.origin);
+}
+
 function shouldRenderSolutionQr() {
     if (AppState.mode !== 'exam') return false;
     if (isPreviewMode()) return false;
@@ -1284,6 +1301,7 @@ function readRecentArchiveEngineLaunch() {
 }
 
 async function init() {
+    installArchivePreviewWitness();
     const p = new URLSearchParams(window.location.search);
     let dataUrl = p.get('data');
     const recentLaunch = dataUrl ? null : readRecentArchiveEngineLaunch();

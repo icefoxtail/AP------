@@ -20,3 +20,14 @@ test('Canonical preview and header messages preserve AP_CLINIC aliases during mi
   assert.match(parent, /type: 'AP_PRINT_PREVIEW'/);
   assert.match(parent, /msg\.type !== 'AP_PRINT_HEADER_EDIT' && msg\.type !== 'AP_CLINIC_HEADER_EDIT'/);
 });
+
+test('Archive preview retains URL rendering while recording a matching parent-source witness', () => {
+  const archiveEngine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
+  const archiveIndex = fs.readFileSync(path.join(root, 'archive', 'index.html'), 'utf8');
+  assert.match(archiveEngine, /function installArchivePreviewWitness\(\)/);
+  assert.match(archiveEngine, /message\.source\?\.kind !== 'ARCHIVE_PREVIEW'/);
+  assert.match(archiveEngine, /apPreviewWitness = 'matched'/);
+  assert.match(archiveIndex, /function postAssignTargetPreviewWitness\(frame\)/);
+  assert.match(archiveIndex, /kind: 'ARCHIVE_PREVIEW'/);
+  assert.match(archiveIndex, /event\.data\?\.engine !== 'archive'/);
+});
