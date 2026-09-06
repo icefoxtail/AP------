@@ -154,7 +154,7 @@ test('Clinic composition planner rejects recipient/source/duplex boundary mutati
   });
   const observed = { pages: [
     { recipientId: 'student:0:A', sectionId: 'student:0:A:answer', sourceRefs: ['a#1', 'a#2'], hasQr: false },
-    { recipientId: 'student:0:A', sectionId: 'student:0:A:solution', sourceRefs: ['a#1', 'a#2'], hasQr: false },
+    { recipientId: 'student:0:A', sectionId: 'student:0:A:solution', sourceRefs: [], hasQr: false },
     { recipientId: 'student:0:A', sectionId: 'student:0:A:solution', sourceRefs: ['a#1', 'a#2'], hasQr: false },
     { recipientId: 'student:0:A', sectionId: '__blank__', sourceRefs: [], hasQr: false, isBlank: true },
     { recipientId: 'student:1:B', sectionId: 'student:1:B:answer', sourceRefs: ['b#1'], hasQr: false },
@@ -166,6 +166,12 @@ test('Clinic composition planner rejects recipient/source/duplex boundary mutati
   recipientMutation.pages[4].recipientId = 'student:0:A';
   assert.equal(L.compareClinicComposition(recipientMutation, plan).equal, false);
 
+  const sequenceMutation = structuredClone(observed);
+  [sequenceMutation.pages[0], sequenceMutation.pages[1]] = [sequenceMutation.pages[1], sequenceMutation.pages[0]];
+  const sequenceResult = L.compareClinicComposition(sequenceMutation, plan);
+  assert.equal(sequenceResult.equal, false);
+  assert.ok(sequenceResult.differences.some(item => item.field === 'sectionSequence'));
+
   const sourceMutation = structuredClone(observed);
   sourceMutation.pages[5].sourceRefs = ['a#1'];
   const sourceResult = L.compareClinicComposition(sourceMutation, plan);
@@ -175,4 +181,23 @@ test('Clinic composition planner rejects recipient/source/duplex boundary mutati
   const duplexMutation = structuredClone(observed);
   duplexMutation.pages.splice(3, 1);
   assert.equal(L.compareClinicComposition(duplexMutation, plan).equal, false);
+
+  const duplicateMutation = structuredClone(observed);
+  duplicateMutation.pages[0].sourceRefs.push('a#1');
+  const duplicateResult = L.compareClinicComposition(duplicateMutation, plan);
+  assert.equal(duplicateResult.equal, false);
+  assert.equal(duplicateResult.duplicationCount, 1);
+
+  const qrPlan = L.planClinicComposition({ review: false, duplex: false, recipients: [{
+    recipientId: 'class-recipient:0:A', sourceRefs: ['q#1'], requireQr: true, qrTargetKey: 'packet:packet-a', renderMode: 'exam'
+  }] });
+  const qrObserved = { pages: [{ recipientId: 'class-recipient:0:A', sectionId: 'class-recipient:0:A:exam', sourceRefs: ['q#1'], hasQr: true, qrTargetKey: 'packet:packet-a' }] };
+  assert.equal(L.compareClinicComposition(qrObserved, qrPlan).equal, true);
+  const qrTargetMutation = structuredClone(qrObserved);
+  qrTargetMutation.pages[0].qrTargetKey = 'packet:packet-b';
+  assert.equal(L.compareClinicComposition(qrTargetMutation, qrPlan).equal, false);
+  const qrPlacementMutation = structuredClone(qrObserved);
+  qrPlacementMutation.pages.unshift({ recipientId: 'class-recipient:0:A', sectionId: 'class-recipient:0:A:exam', sourceRefs: [], hasQr: true, qrTargetKey: 'packet:packet-a' });
+  qrPlacementMutation.pages[1].hasQr = false;
+  assert.equal(L.compareClinicComposition(qrPlacementMutation, qrPlan).equal, false);
 });
