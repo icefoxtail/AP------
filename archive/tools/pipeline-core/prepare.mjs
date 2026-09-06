@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import { fileRef, safePath, writeNewJson, objectSha } from './canonical.mjs';
 import { profiles, RUN_VERSION, runInputSha } from './closure.mjs';
 import { rulePreflight } from './rulepack.mjs';
+import { addRuntimeInputs, runtimeDependencyBundle } from './runtime.mjs';
 
 export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir }) {
   if (!profiles.pipelines[pipeline] || !/^[A-Za-z0-9_-]+$/.test(runId || '')) throw new Error('PIPELINE_AND_RUN_ID_REQUIRED');
@@ -38,7 +39,8 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
     if (visual) pendingBundles.push({ path: `${workdir}/bundles/q${q.id}-v2.json`, value: { questionUid: uid, artifact: visual, renderWitnesses: [] } });
     run.questions.push({ questionUid: uid, sourcePath, candidatePath, examId: source.examTitle, qid: q.id, sourceStatus: 'PENDING', visual: { requirement: visual || problem ? 'VISUAL_OPTIONAL' : 'VISUAL_EXEMPT', action: visual ? 'KEEP' : 'NONE', actualSolutionVisualAttached: !!visual, problemVisualMathDependency: !!problem, sharedVisualMathDependency: false, adjudicationId: `q${q.id}:v3`, adjudicationStatus: 'PENDING', exemptReason: null }, problemAssetPaths: problem ? [problem.path] : [], solutionAssetPaths: visual ? [visual.path] : [], evidence: {} });
   }
-  for (const [relative, role] of [['archive/engine.html', 'engine'], ['archive/tools/pipeline-core/visual-contract.json', 'spec'], ['archive/tools/pipeline-core/closure.mjs', 'verifier'], ['archive/tools/pipeline-core/generator.py', 'generator']]) run.inputs.push({ ...fileRef(root, relative), role });
+  for (const [relative, role] of [['archive/tools/pipeline-core/visual-contract.json', 'spec'], ['archive/tools/pipeline-core/closure.mjs', 'verifier'], ['archive/tools/pipeline-core/generator.py', 'generator']]) run.inputs.push({ ...fileRef(root, relative), role });
+  addRuntimeInputs(run, runtimeDependencyBundle(root));
   run.inputSha = runInputSha(run);
   const bundleManifest = [];
   for (const bundle of pendingBundles) {
