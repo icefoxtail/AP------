@@ -278,6 +278,7 @@ function verifyFact(fact, parsed, model, defaultTolerance) {
     }
     if (type === 'OPEN_CLOSED_POINT') {
       const element = getElement(parsed, fact.element);
+      if (element.tag !== 'circle') return { ...base, result: NOT_TESTED, reason: 'OPEN_CLOSED_CIRCLE_REQUIRED' };
       const observedPointValue = observedPoint(parsed, fact.element, model, fact.pointIndex ?? 0).math;
       if (!Object.hasOwn(element.attrs, 'fill')) return { ...base, observed: { point: observedPointValue }, result: NOT_TESTED, reason: 'OPEN_CLOSED_EXPLICIT_FILL_REQUIRED' };
       const fill = String(element.attrs.fill ?? '').trim().toLowerCase();
@@ -311,6 +312,10 @@ function validateInput(input) {
   for (const role of ['origin', 'xAxis', 'yAxis']) {
     const anchor = anchors?.[role];
     if (!anchor || typeof anchor !== 'object' || !Array.isArray(anchor.expected) || anchor.expected.length !== 2 || anchor.expected.some(value => !isFiniteNumber(value))) errors.push(`COORDINATE_MODEL_ANCHOR_INVALID:${role}`);
+  }
+  const origin = anchors?.origin;
+  if (origin && (normaliseFactType(origin.type) !== 'INTERSECTION' || !Array.isArray(origin.elements) || origin.elements.length !== 2)) {
+    errors.push('COORDINATE_MODEL_ORIGIN_MUST_BE_AXIS_LINE_INTERSECTION');
   }
   if (anchors?.origin && (Math.abs(anchors.origin.expected[0]) > EPSILON || Math.abs(anchors.origin.expected[1]) > EPSILON)) errors.push('COORDINATE_MODEL_ORIGIN_ANCHOR_MUST_BE_ZERO');
   if (anchors?.xAxis && (Math.abs(anchors.xAxis.expected[1]) > EPSILON || Math.abs(anchors.xAxis.expected[0]) < EPSILON)) errors.push('COORDINATE_MODEL_X_AXIS_ANCHOR_INVALID');

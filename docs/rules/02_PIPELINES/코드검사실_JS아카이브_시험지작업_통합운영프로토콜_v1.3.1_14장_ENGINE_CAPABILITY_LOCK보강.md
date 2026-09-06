@@ -1918,8 +1918,8 @@ EXPECTED FACT (independent problem solve)
 검수 후 SVG bytes가 달라져 evidence의 `svgSha256`가 현재 파일과 다르면 `STALE_SVG_VERIFICATION`이며
 V2 PASS와 FINAL CLOSURE를 금지한다.
 
-`coordinateModel`은 origin·x축 기준점·y축 기준점의 actual SVG anchor parity가 PASS일 때만
-신뢰한다. 고정 tolerance 상한을 초과한 input, `<line>`이 아닌 polyline/polygon으로 한
+`coordinateModel`은 실제 SVG x-axis `<line>`과 y-axis `<line>`의 교점이 선언 origin과 일치하고,
+x축·y축 기준점 anchor parity도 PASS일 때만 신뢰한다. 고정 tolerance 상한을 초과한 input, `<line>`이 아닌 polyline/polygon으로 한
 직선 사실을 검증하려는 input, circle 자체의 explicit `fill` 없이 open/closed를 판정하려는 input은
 `FAIL` 또는 `NOT_TESTED`이며 SVG_MATH_PASS를 만들 수 없다.
 
