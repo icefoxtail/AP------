@@ -683,9 +683,16 @@
         const host = root.createElement('div');
         host.dataset.layoutAuthorityWitness = '1';
         host.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:210mm;pointer-events:none;';
+        const templatePage = area.querySelector('.page');
         layout.pages.forEach(pageLayout => {
             const page = root.createElement('section');
             page.className = pageLayout.isBlank ? 'page page-blank' : 'page';
+            if (templatePage && !pageLayout.isBlank) {
+                const frame = templatePage.querySelector('.page-exam-frame');
+                const header = templatePage.querySelector('.page-header');
+                if (frame) page.appendChild(frame.cloneNode(true));
+                if (header) page.appendChild(header.cloneNode(true));
+            }
             const body = root.createElement('div');
             body.className = 'page-body';
             body.style.cssText = 'flex:1;display:flex;flex-direction:column;min-height:0;';
@@ -711,7 +718,11 @@
                         column.className = 'grid-col';
                         items.slice().sort((left, right) => left.columnOrder - right.columnOrder).forEach(item => {
                             const node = options.resolveElement(item.blockId);
-                            if (node) column.appendChild(node.cloneNode(true));
+                            if (node) {
+                                const clone = node.cloneNode(true);
+                                if (item.slotSpanRows > 1) clone.style.flex = `${item.slotSpanRows} 1 0`;
+                                column.appendChild(clone);
+                            }
                         });
                         grid.appendChild(column);
                     });

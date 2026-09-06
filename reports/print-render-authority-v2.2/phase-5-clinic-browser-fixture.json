@@ -23,7 +23,7 @@
     "firstStudentPacketPages": 3,
     "blankPageAccessibility": "The physical blank page intentionally has no text, header, frame, QR, or page number and is therefore absent from the accessibility tree; appendBlankPage() is reached by the three-page first packet before student B begins.",
     "dualRun": "skipped: recipient-composition-legacy-only",
-    "promotion": "No shared composition comparator exists. This is legacy render coverage, not a canonical promotion witness."
+    "promotion": "Legacy rendering remains active, while compositionPromotionGate compares this recipient/page boundary. This evidence does not by itself promote the production renderer."
   },
   "payloadModeLegacyCoverage": {
     "kind": "actual-browser-render",
@@ -43,7 +43,7 @@
     "renderedStudent": "PARENT_AUTHORITY_STUDENT",
     "forbiddenStaleStudent": "STALE_STORAGE_MUST_NOT_RENDER",
     "observed": ["AP_PRINT_READY before parent send", "AP_PRINT_PREVIEW parent source", "parent payload question render", "stale storage absent"],
-    "promotion": "Clinic preview source-authority migration PASS. Recipient composition remains legacy-only."
+    "promotion": "Clinic preview source-authority migration PASS. Legacy renderer remains active behind the composition gate."
   },
   "recipientQrLegacyCoverage": {
     "kind": "actual-browser-render",
@@ -54,7 +54,7 @@
       { "studentName": "QR 수신자 B", "packetKey": "fixture-packet-b" }
     ],
     "observed": ["two separate recipient headers", "two question copies per recipient", "정답·해설 확인 QR label on each final page"],
-    "promotion": "Per-recipient QR legacy behavior is preserved. It is not a shared recipient-composition/PageMap promotion witness."
+    "promotion": "Per-recipient QR legacy behavior is preserved and included in compositionPromotionGate target/placement checks. Production renderer promotion remains separately gated."
   },
   "compositionPromotionGate": {
     "kind": "actual-browser-composition-pagemap",
@@ -63,6 +63,6 @@
     "recipientQr": { "result": "PASS", "omissionCount": 0, "duplicationCount": 0, "differenceFields": [], "coverage": ["class recipient A source set", "class recipient B source set", "per-recipient QR final-page-only", "packet:fixture-packet-a ownership", "packet:fixture-packet-b ownership"] },
     "legacyRendererRetained": true
   },
-  "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
+  "recipientComposition": "Multi-recipient class/grade/type/review/duplex remains legacy-rendered while compositionPromotionGate supplies PageMap parity evidence; legacy removal is still prohibited until full promotion coverage passes.",
   "legacyRendererRetained": true
 }
