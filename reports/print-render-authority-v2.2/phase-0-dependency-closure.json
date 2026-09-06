@@ -18,7 +18,7 @@
   "categories": ["PRODUCER", "TRANSFORMER", "RENDER_CONSUMER", "DOWNSTREAM_CONSUMER"],
   "classifications": ["MUTATION_TARGET", "CONTRACT_DEPENDENCY", "REGRESSION_ONLY", "DOCUMENTATION_ONLY"],
   "denominator": {
-    "memberCount": 61,
+    "memberCount": 62,
     "minimumEdgeCount": 37,
     "engineReferenceTests": [
       "tests/apmath-clinic-print-assignment-visibility.test.js",
@@ -41,6 +41,7 @@
       "tests/assessment-submit-qr-student-page-route.test.js",
       "tests/print-render-authority-drift-ledger.test.js",
       "tests/print-render-authority-phase0-baseline.test.js",
+      "tests/render-authority-semantic-css.test.js",
       "tests/student-portal-mixed-review-payload.test.js",
       "tests/student-portal-omr-review-ui.test.js"
     ]
@@ -104,7 +105,8 @@
     {"path":"tests/fixtures/mixed-print-layout-launcher.html","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["mixed_engine.html","mixedMeta"],"sha256":"fd1772749970ccd5137e904ccf60aefda4fb7e7319844cdec0bb8ec3c431b31e"},
     {"path":"tests/fixtures/wrong-print-layout-launcher.html","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["wrong_print_engine.html","AP_CLINIC_PRINT_PAYLOAD"],"sha256":"b9beeca55d87cb816fccc24d6ca1a09889ccb738a153a96f08e077dc17cd6ce8"},
     {"path":"tests/print-render-authority-drift-ledger.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["phase-0.6 ledger","engine behavior evidence"],"sha256":"efcabd60b0ab0459da2007d57b45d8987177aea3d398f390905a56638b199910"},
-    {"path":"tests/print-render-authority-phase0-baseline.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["exact denominator","SHA-256 drift"],"sha256":"58ae1d57569b46ab460dcf141e4dffa07b7edfc43c03015ee458500c5d645a2a"},
+    {"path":"tests/print-render-authority-phase0-baseline.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["exact denominator","SHA-256 drift"],"sha256":"e34e25325f59db49dbc5ebe9fa37073f038dcd8ff42d3ece7c07c716e211bc90"},
+    {"path":"tests/render-authority-semantic-css.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["semantic CSS","engine class contract"],"sha256":"2b59c3fb80546cf5b3a34f42b79bc9dcc0039a007a43342a7d18803b0a62d49d"},
     {"path":"tests/student-portal-mixed-review-payload.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["mixed_engine.html","mixed payload"],"sha256":"cfa2e78ac0f423cc719a72219d764cfa777b42e2b44699a45a68c112886221f8"},
     {"path":"tests/student-portal-omr-review-ui.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["mixed_engine.html","loadAssessmentPackFallback"],"sha256":"1e95ed0cc387d772166bc4e2b95745bbbe9d2ac86ae1abe827008aecb0e4d93d"}
   ],

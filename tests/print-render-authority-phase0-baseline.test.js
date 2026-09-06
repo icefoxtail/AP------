@@ -69,6 +69,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/fixtures/wrong-print-layout-launcher.html',
   'tests/print-render-authority-drift-ledger.test.js',
   'tests/print-render-authority-phase0-baseline.test.js',
+  'tests/render-authority-semantic-css.test.js',
   'tests/student-portal-mixed-review-payload.test.js',
   'tests/student-portal-omr-review-ui.test.js'
 ].sort();

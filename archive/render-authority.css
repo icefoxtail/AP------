@@ -1,0 +1,17 @@
+/* Phase 1C semantic CSS contract. Adapter shells and print geometry stay local. */
+.q-content { min-width: 0; overflow-wrap: anywhere; }
+.q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.q-image-wrap { margin: 6px 0; text-align: center; }
+.choices { display: grid; gap: 5px 12px; margin-top: 7px; }
+.choices-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.choices-block, .choices-boxed { grid-template-columns: 1fr; }
+.choice-item { display: flex; min-width: 0; gap: 5px; }
+.choice-no { flex: 0 0 auto; }
+.choice-text { min-width: 0; overflow-wrap: anywhere; }
+.sol-meta { margin-top: 8px; }
+.sol-ans { font-weight: 700; }
+.sol-exp { overflow-wrap: anywhere; }
+.sol-image-wrap { display: inline-block; margin: 6px 0; text-align: center; }
+.sol-image-wrap img { display: block; max-width: 100%; height: auto; }
+.sol-image-caption { display: block; margin-top: 4px; }
+.q-content table, .sol-exp table { max-width: 100%; border-collapse: collapse; }
