@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { requireClosure } from "../pipeline-core/integration.mjs";
+import { requireProductionClosure } from "../pipeline-core/integration.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const archiveRoot = path.resolve(here, "../..");
@@ -115,7 +115,7 @@ function main() {
     if (!fs.existsSync(source)) throw new Error(`missing generated asset: ${source}`);
     return { source, destination: path.join(liveAssetsDir, name) };
   });
-  const commonClosure = requireClosure(path.resolve(archiveRoot, '..'), 'past-exam', process.argv, [candidateFile, ...copyPlan.map(item => item.source)]);
+  const commonClosure = requireProductionClosure(path.resolve(archiveRoot, '..'), 'past-exam', process.argv, [candidateFile, ...copyPlan.map(item => item.source)]);
   if (assetSources.size) fs.mkdirSync(liveAssetsDir, { recursive: true });
   for (const { source, destination } of copyPlan) fs.copyFileSync(source, destination);
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
