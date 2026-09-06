@@ -1,4 +1,5 @@
 # 도형의 방정식 해설 품질 + SVG 제작/독립검수 통합 운영규정 v1.1
+# v1.2 최소 SVG 좌표 parity 보강 부록 적용
 
 > 작업 순서 정정(2026-08-28): 이미 production JS가 있는 단원별 해설 업그레이드에서는
 > 대상 문항을 확정하기 전에 시험지 전체를 렌더하지 않는다. 규정 확인과 JS 기반 대상 선별,
@@ -467,6 +468,87 @@ SVG를 기존 solution과만 비교하지 않는다.
 
 문제와 해설이 동시에 잘못된 경우에도 `문제 ↔ SVG` 직접 검수에서 잡히도록 한다.
 
+#### V2-A. EXPECTED FACT FREEZE
+
+독립검수자는 SVG를 읽기 전에 기준 문제와, 문제의 핵심 조건이 이미지라면 그 원본 이미지에서
+critical EXPECTED FACT를 독립 계산한다. 기존 solution, 기존 SVG, SVG 안의 text/title/desc/metadata를
+expected의 근거로 쓰지 않는다. 문항당 정답·풀이에 영향을 주는 2~8개 fact면 충분하다.
+
+원본 PNG/PDF 그래프에만 핵심 조건이 있는데 이를 직접 확인할 수 없으면 `SOURCE_BLOCKED`다.
+이 상태에서는 `SVG_MATH_PASS`, `V2 PASS`, `EXAM PASS`를 선언하지 않는다.
+
+#### V2-B. SVG ELEMENT EXTRACTION → OBSERVED FACT
+
+검수자는 완성 SVG의 실제 geometry 좌표를 코드로 읽고 좌표 모델을 역적용한다.
+
+```text
+mathX = (screenX - originX) / sx
+mathY = (originY - screenY) / sy
+```
+
+최소 지원 대상은 `circle`, `line`, `polyline`, `polygon`, `rect`다. 이번 최소 보강은 범용 `path`
+parser나 모든 transform chain을 구현하지 않는다. 검수 대상 fact가 지원하지 않는 path/transform에
+의존하면 `NOT_TESTED`로 남기고 V2 PASS를 금지한다. 함수 path는 기존 제작 코드가 노출한 명확한
+endpoint·교점·영점 또는 주요 sample point를 검증할 수 있는 경우에만 사용한다.
+
+`POINT`, `LINE_SLOPE`, `INTERCEPT`, `MIDPOINT`, `PARALLEL`, `PERPENDICULAR`,
+`OPEN_CLOSED_POINT`, `ROOT`, `INTERSECTION` 중 문항에 필요한 유형만 검사한다. 라벨 문자열은
+selector를 찾는 보조 정보도 아니며, OBSERVED FACT 증거가 아니다. `OPEN_CLOSED_POINT`는 점의
+fill/open 상태뿐 아니라 실제 branch endpoint를 `branchElement`로 지정해 접근값까지 비교한다.
+
+#### V2-C. EXPECTED ↔ OBSERVED HARD GATE
+
+각 required fact는 최소 `factId`, `type`, `expected`, `observed`, `delta`, `tolerance`, `result`를
+기록한다. `expectedFactStatus`, element extraction, observed calculation, parity 중 하나라도
+`FAIL` 또는 `NOT_TESTED`이면 `SVG_MATH_PASS`와 `V2 PASS`를 금지한다.
+
+SVG의 `<text>`, `<title>`, `<desc>`, `data-*`, `aria-*`, `id`, `class`, 주석에 올바른 수학값이
+있어도 실제 geometry가 다르면 `FAIL_SVG_MATH`다. 예를 들어 text가 `(1,2)`여도 `circle`의 역산
+좌표가 `(0,2)`면 FAIL이며, `y=-x-1` 라벨이 있어도 실제 line 기울기가 `-0.25`면 FAIL이다.
+
+기본 실행 도구는 다음이며, `svgSha256`를 evidence에 기록해 SVG가 바뀐 뒤 과거 PASS가
+재사용되는 것을 막는다.
+
+```text
+node archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs \
+  --input <independent-expected-facts.json> \
+  --out <svg-coordinate-verification.json>
+```
+
+최소 evidence 형식:
+
+```json
+{
+  "questionId": 11,
+  "svg": "assets/images/<exam>/q11-solution.svg",
+  "coordinateModel": { "originX": 300, "originY": 300, "sx": 60, "sy": 60 },
+  "expectedFactCount": 3,
+  "observedFactCount": 3,
+  "factParityPassCount": 3,
+  "svgSha256": "sha256:<64 hex>",
+  "svgMathStatus": "PASS"
+}
+```
+
+#### V2-D. 3-way parity 및 render 분리
+
+기존 문제 ↔ 해설 ↔ SVG 3-way parity는 유지한다. 다만 SVG 쪽 수학값은 반드시 V2-B에서 실제
+geometry로 역산한 OBSERVED FACT를 사용한다.
+
+```text
+V2 PASS = EXPECTED_FACT_PASS
+       AND ELEMENT_EXTRACTION_PASS
+       AND OBSERVED_FACT_PASS
+       AND EXPECTED_OBSERVED_PARITY_PASS
+       AND PROBLEM_SOLUTION_SVG_3WAY_PARITY_PASS
+
+SVG_FINAL_PASS = SVG_MATH_PASS AND SVG_RENDER_PASS
+RENDER_PASS != SVG_MATH_PASS
+```
+
+XML parse, asset/path, decode, browser render, clipping/overflow 없음은 모두 필요하지만 geometry
+수학 검증을 대체하지 않는다. 반대로 V3 render PASS도 V2 FAIL/NOT_TESTED를 보상하지 못한다.
+
 ### V2-1. Geometry / hybrid / 3D SVG 검수
 
 도형 SVG는 graph 규칙만으로 검수하지 않는다. geometry 사실과 시각 문법을 독립적으로
@@ -542,6 +624,8 @@ NEXT_EXAM_LOCKED
 
 ### FAIL_SVG_MATH
 - 중심·반지름·교점·직선·이동관계 등 수학적 불일치
+- EXPECTED FACT 누락, 좌표 모델 미확정, element extraction/OBSERVED FACT/EXPECTED↔OBSERVED parity의
+  FAIL 또는 NOT_TESTED, SVG SHA 불일치
 
 ### FAIL_SVG_LABEL
 - 라벨 누락·오표기·겹침

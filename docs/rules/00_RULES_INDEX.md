@@ -36,7 +36,7 @@
 4. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
 5. `02_PIPELINES/해설프로토콜.md`
 6. `02_PIPELINES/JS_문항품질_업그레이드.md`
-7. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
+7. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함)
 8. `03_REVIEW/무결성검수.md`
 
 ### 수정·최종 출시
@@ -51,7 +51,7 @@
 8. `03_REVIEW/무결성검수.md`
 9. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 10. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
-11. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (해당 시)
+11. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
 
 ## 2. 디렉터리별 역할
 
@@ -65,6 +65,10 @@
 | `90_ARCHIVE/` | 레거시·DRAFT·대체된 이전 버전 | 현재 기준 아님 |
 
 `02_PIPELINES/코드검사실_…통합운영프로토콜…`은 시험지 작업 전체를 조율하는 상위 운영 기준이다. 개별 추출·해설·수정 문서는 이 통합 기준의 세부 실행 모듈로 본다.
+
+좌표·점·직선·교점 등 수학적 SVG의 제작자는 `04_VISUAL/도형추출.md`의 EXPECTED FACT·좌표 모델
+준비를, 독립검수자는 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`의 v1.2 최소
+coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geometry 수학 PASS를 대체하지 않는다.
 
 ## 3-1. 실렌더 게이트
 
