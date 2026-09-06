@@ -21,13 +21,16 @@
         let transaction = 0;
         let cursor = -1;
         let events = [];
+        let failure = null;
         function begin(evidence) {
             transaction += 1;
             cursor = -1;
             events = [];
+            failure = null;
             return Object.freeze({ transaction, adapter: adapterName, evidence: evidence || null });
         }
         function mark(state, evidence) {
+            if (failure) throw new PrintReadinessViolation('READINESS_TRANSACTION_FAILED', { adapter: adapterName, transaction, failure, received: state });
             const expected = STATES[cursor + 1];
             if (state !== expected) throw new PrintReadinessViolation('INVALID_READINESS_TRANSITION', { adapter: adapterName, expected, received: state, transaction });
             if (evidence === undefined || evidence === null) throw new PrintReadinessViolation('MISSING_READINESS_EVIDENCE', { adapter: adapterName, state, transaction });
@@ -36,17 +39,49 @@
             events.push(event);
             return event;
         }
+        function fail(code, evidence) {
+            const failureCode = String(code || '').trim();
+            if (!failureCode) throw new PrintReadinessViolation('MISSING_READINESS_FAILURE_CODE', { adapter: adapterName, transaction });
+            if (evidence === undefined || evidence === null) throw new PrintReadinessViolation('MISSING_READINESS_FAILURE_EVIDENCE', { adapter: adapterName, transaction, code: failureCode });
+            failure = Object.freeze({ code: failureCode, evidence: Object.freeze({ ...evidence }) });
+            return failure;
+        }
         function snapshot() {
             return Object.freeze({
                 adapter: adapterName,
                 transaction,
                 state: cursor < 0 ? null : STATES[cursor],
-                ready: cursor === STATES.length - 1,
+                ready: !failure && cursor === STATES.length - 1,
+                failed: Boolean(failure),
+                failure,
                 events: Object.freeze(events.slice())
             });
         }
-        return Object.freeze({ begin, mark, snapshot });
+        return Object.freeze({ begin, mark, fail, snapshot });
     }
 
-    return Object.freeze({ STATES, PrintReadinessViolation, createReadinessTracker });
+    function assertSuccessfulRender(outcome) {
+        if (!outcome || outcome.ok !== true) {
+            throw new PrintReadinessViolation('RENDER_TRANSACTION_INCOMPLETE', {
+                outcome: outcome || null
+            });
+        }
+        return outcome;
+    }
+
+    function summarizeImageReadiness(results) {
+        const list = Array.isArray(results) ? results : [];
+        const summary = {
+            images: list.length,
+            loaded: list.filter(result => result?.status === 'loaded').length,
+            errors: list.filter(result => result?.status === 'error').length,
+            timeouts: list.filter(result => result?.status === 'timeout').length
+        };
+        if (summary.errors || summary.timeouts || summary.loaded !== summary.images) {
+            throw new PrintReadinessViolation('IMAGE_READINESS_INCOMPLETE', { summary, results: list });
+        }
+        return Object.freeze(summary);
+    }
+
+    return Object.freeze({ STATES, PrintReadinessViolation, createReadinessTracker, assertSuccessfulRender, summarizeImageReadiness });
 }));
