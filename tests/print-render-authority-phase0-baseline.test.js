@@ -58,6 +58,7 @@ const EXPECTED_MEMBER_PATHS = [
   'tests/archive-inline-view-label.test.js',
   'tests/archive-mathjax-render-loop.test.js',
   'tests/archive-print-image-optimizer.test.js',
+  'tests/archive-render-authority-adapter.test.js',
   'tests/archive-solution-image.test.js',
   'tests/archive-unit-past-exams-ui.test.js',
   'tests/assessment-archive-print-flow.test.js',

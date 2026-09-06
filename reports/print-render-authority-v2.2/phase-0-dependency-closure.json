@@ -18,7 +18,7 @@
   "categories": ["PRODUCER", "TRANSFORMER", "RENDER_CONSUMER", "DOWNSTREAM_CONSUMER"],
   "classifications": ["MUTATION_TARGET", "CONTRACT_DEPENDENCY", "REGRESSION_ONLY", "DOCUMENTATION_ONLY"],
   "denominator": {
-    "memberCount": 66,
+    "memberCount": 67,
     "minimumEdgeCount": 37,
     "engineReferenceTests": [
       "tests/apmath-clinic-print-assignment-visibility.test.js",
@@ -31,6 +31,7 @@
       "tests/archive-inline-view-label.test.js",
       "tests/archive-mathjax-render-loop.test.js",
       "tests/archive-print-image-optimizer.test.js",
+      "tests/archive-render-authority-adapter.test.js",
       "tests/archive-solution-image.test.js",
       "tests/archive-unit-past-exams-ui.test.js",
       "tests/assessment-archive-print-flow.test.js",
@@ -62,7 +63,7 @@
     {"path":"archive/concept_map.js","roles":["TRANSFORMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["conceptClusterKey"],"sha256":"4f22f692bf235537086d609ac2898a74db03653ac95965f17e468e94f478d1a7"},
     {"path":"archive/css/js-archive-theme-override.css","roles":["TRANSFORMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["engine.html / mixed_engine.html"],"sha256":"4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2"},
     {"path":"archive/db.js","roles":["TRANSFORMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["archive examination metadata"],"sha256":"db54b975b272277176793880fdca15b73c42ff13fb4e80387701b2cc44f9679c"},
-    {"path":"archive/engine.html","roles":["RENDER_CONSUMER"],"classification":"MUTATION_TARGET","evidence":["dataUrl = p.get('data')","installArchivePreviewWitness","renderExam","renderSol","window.__AP_RENDER_READY__"],"sha256":"bd6dfef83db70b9899857b12a7a45453431d7a30db03ad45978bd67da0803bd4"},
+    {"path":"archive/engine.html","roles":["RENDER_CONSUMER"],"classification":"MUTATION_TARGET","evidence":["dataUrl = p.get('data')","installArchivePreviewWitness","buildArchiveCanonicalData","renderExam","renderSol","window.__AP_RENDER_READY__"],"sha256":"7ec4a800631976444124b38888149ff6badef42c93ad5d941d7464a2234cbfdd"},
     {"path":"archive/index.html","roles":["PRODUCER","DOWNSTREAM_CONSUMER"],"classification":"MUTATION_TARGET","evidence":["goEngine","postAssignTargetPreviewWitness","goUnitPastMixedEngine","mixedQuestions_","mixedMeta_"],"sha256":"cc70945683f182c8604d83ee60d693305231b2bbe27e30ad504d2da6a743add1"},
     {"path":"archive/internal-review-engine.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["archive engine review harness"],"sha256":"92e941a10fee31d5b15d12ecab83268b19c0e494a0a495f933ef7babe3234d49"},
     {"path":"archive/internal-review-live.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["live archive render review"],"sha256":"672c921fd3a7c0f9c724ddfcdcf87372c05c0ebf228ca24d35f4766c65e60c97"},
@@ -96,6 +97,7 @@
     {"path":"tests/archive-inline-view-label.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["engine.html","inline view label"],"sha256":"64e204283ba3fc253806a4de4be2c59c13f9fb630fba156440f479d2e374a6d6"},
     {"path":"tests/archive-mathjax-render-loop.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["APRenderLoop","engine.html","mixed_engine.html"],"sha256":"0749f7fa0691e3a0ac9031f9f25e6169ae4a48114396f919674655be2bfcffcf"},
     {"path":"tests/archive-print-image-optimizer.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["APPrintImageOptimizer","engine.html","mixed_engine.html"],"sha256":"a0c37ee2fb63c61ef13ba238f7641572211237bf20f2191fb411f2f12a7a349d"},
+    {"path":"tests/archive-render-authority-adapter.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["ArchiveAdapter dual-run","legacy renderer retained"],"sha256":"26f76e291998a91060eccf7c3c516e77a3f629a86cbe626a5a3c0ecf9fa16c92"},
     {"path":"tests/archive-solution-image.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["renderSolutionImageHTML","wrong_print_engine.html"],"sha256":"52d7bb213560710e08e28a23400dec2a2b9357e50e7c503e9fde9772cfdaf4ac"},
     {"path":"tests/archive-unit-past-exams-ui.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["unit-past-exams","mixed_engine.html"],"sha256":"4a940211e720a4c35ae8577e81c8d8111ff46d7bf3b7b807b7b4ce123218b4a0"},
     {"path":"tests/assessment-archive-print-flow.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["assessment-mvp.html","mixed_engine.html","packId"],"sha256":"24fce3f8145792102dd40e860e6b8f6b08d5fa545b31c2a021e434c37e358251"},
@@ -110,7 +112,7 @@
     {"path":"tests/print-contract.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["HeaderPolicy metaRight","qrPolicies"],"sha256":"deb57f808ff4d9b63528dbabf144a6fcd2c281c23493fc7499316fcc2763ba62"},
     {"path":"tests/print-render-authority-drift-ledger.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["phase-0.6 ledger","engine behavior evidence"],"sha256":"deed31a8be58a923dc995b172bacc79816dbee87137768025023d5481e5daa0e"},
     {"path":"tests/print-preview-channel.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["AP_PRINT_READY","stale preview first render","archive dual-source witness"],"sha256":"7aca51bd4ca091663da8ebcfde26b0185fb1d503c550a8824e347004b2f88801"},
-    {"path":"tests/print-render-authority-phase0-baseline.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["exact denominator","SHA-256 drift"],"sha256":"d6b07017d6944db7835cbbee6ac48f39a796f45603c86b4ce0ff6cfde4dd65d8"},
+    {"path":"tests/print-render-authority-phase0-baseline.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["exact denominator","SHA-256 drift"],"sha256":"240f581f0bc9cad6ef06c47cd1bf8d586b2a3c70aba82c1daa867a4ef0c3139c"},
     {"path":"tests/render-authority-semantic-css.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["semantic CSS","engine class contract"],"sha256":"2b59c3fb80546cf5b3a34f42b79bc9dcc0039a007a43342a7d18803b0a62d49d"},
     {"path":"tests/student-portal-mixed-review-payload.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["mixed_engine.html","mixed payload"],"sha256":"cfa2e78ac0f423cc719a72219d764cfa777b42e2b44699a45a68c112886221f8"},
     {"path":"tests/student-portal-omr-review-ui.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["mixed_engine.html","loadAssessmentPackFallback"],"sha256":"1e95ed0cc387d772166bc4e2b95745bbbe9d2ac86ae1abe827008aecb0e4d93d"}
