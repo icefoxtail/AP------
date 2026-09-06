@@ -11,5 +11,39 @@
     { "mode": "solution", "dualRunEqual": true, "pages": 2, "questionCount": 6, "solutionCount": 6, "qpp": 4, "renderError": "" },
     { "mode": "answer", "dualRunEqual": true, "pages": 1, "answerEntryCount": 6, "qpp": 4, "renderError": "" }
   ],
+  "storageSourceCoverage": {
+    "kind": "actual-browser-render",
+    "launcher": "tests/fixtures/mixer-render-authority-storage-launcher.html",
+    "queryShape": "key=render-authority-mixer-storage&qpp=<4|6|8>&mode=<exam|sol|ans>&renderAuthorityDualRun=1",
+    "observedRuns": [
+      {
+        "mode": "exam",
+        "qpp": 4,
+        "pages": 3,
+        "questionCount": 8,
+        "observed": ["same-id/different-source question text", "problem source image", "table", "standalone view block", "subjective-2up", "subjective-4up"]
+      },
+      {
+        "mode": "solution",
+        "qpp": 6,
+        "pages": 1,
+        "questionCount": 8,
+        "solutionCount": 8,
+        "observed": ["same-id/different-source reminder content", "source solution image alt/caption", "table", "view block"]
+      },
+      {
+        "mode": "answer",
+        "qpp": 8,
+        "pages": 1,
+        "answerEntryCount": 8,
+        "observed": ["eight ordered answer entries"]
+      }
+    ],
+    "sourceIdentity": [
+      "tests/fixtures/mixer-source-a.js#same-id-source-a",
+      "tests/fixtures/mixer-source-b.js#same-id-source-b"
+    ],
+    "dualRunLimit": "The fixture requests the opt-in sidecar. The in-app browser accessibility capture confirms the rendered legacy output but cannot read the intentionally non-visible data-ap-render-authority-dual-run attribute; only the existing pack fixture remains a semantic-equality promotion witness."
+  },
   "legacyRendererRetained": true
 }

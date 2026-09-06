@@ -11,6 +11,20 @@
     { "mode": "solution", "dualRunEqual": true, "pages": 1, "questionCount": 3, "solutionCount": 3, "renderError": "" },
     { "mode": "answer", "dualRunEqual": true, "pages": 1, "answerEntryCount": 3, "renderError": "" }
   ],
+  "multiRecipientLegacyCoverage": {
+    "kind": "actual-browser-render",
+    "launcher": "tests/fixtures/wrong-print-layout-launcher.html?duplex=1&recipients=2&mode=review&renderAuthorityDualRun=1",
+    "observed": [
+      "student A answer page",
+      "student A long solution continuation over two solution pages",
+      "intentionally empty duplex page between an odd first packet and student B",
+      "student B answer and solution packet"
+    ],
+    "firstStudentPacketPages": 3,
+    "blankPageAccessibility": "The physical blank page intentionally has no text, header, frame, QR, or page number and is therefore absent from the accessibility tree; appendBlankPage() is reached by the three-page first packet before student B begins.",
+    "dualRun": "skipped: recipient-composition-legacy-only",
+    "promotion": "No shared composition comparator exists. This is legacy render coverage, not a canonical promotion witness."
+  },
   "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
   "legacyRendererRetained": true
 }
