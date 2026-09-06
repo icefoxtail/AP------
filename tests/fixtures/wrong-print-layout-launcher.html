@@ -27,7 +27,8 @@
   };
   sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', JSON.stringify(payload));
   const mode = new URLSearchParams(location.search).get('mode') || 'exam';
-  location.replace('/apmath/wrong_print_engine.html?fit=screen&mode=' + encodeURIComponent(mode) + '&qa=' + Date.now());
+  const dualRun = new URLSearchParams(location.search).get('renderAuthorityDualRun') === '1' ? '&renderAuthorityDualRun=1' : '';
+  location.replace('/apmath/wrong_print_engine.html?fit=screen&mode=' + encodeURIComponent(mode) + dualRun + '&qa=' + Date.now());
 </script>
 </body>
 </html>

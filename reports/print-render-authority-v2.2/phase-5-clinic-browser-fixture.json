@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "phase": "PHASE_5",
+  "kind": "actual-browser-dual-run",
+  "server": "http://127.0.0.1:4173",
+  "fixture": "tests/fixtures/wrong-print-layout-launcher.html?overflow=1",
+  "source": { "kind": "CLINIC_STORAGE", "mode": "student", "studentCount": 1, "questionCount": 3 },
+  "capturedAt": "2026-09-06",
+  "results": [
+    { "mode": "exam", "dualRunEqual": true, "pages": 1, "questionCount": 3, "renderError": "" },
+    { "mode": "solution", "dualRunEqual": true, "pages": 1, "questionCount": 3, "solutionCount": 3, "renderError": "" },
+    { "mode": "answer", "dualRunEqual": true, "pages": 1, "answerEntryCount": 3, "renderError": "" }
+  ],
+  "recipientComposition": "Single-student sidecar parity only. Multi-recipient class/grade/type/review/duplex keeps the legacy renderer until a composition-level PageMap comparator exists.",
+  "legacyRendererRetained": true
+}

@@ -50,3 +50,18 @@ test('Layout respects selected raw/tight measurements, block gap, and explicit s
   assert.equal(layout.columnMap.find(item => item.blockId === 'b').gapBefore, 5);
   assert.equal(layout.columnMap.find(item => item.blockId === 'a').measurementMode, 'tight');
 });
+
+test('subjective layout tags automatically reserve legacy-compatible row spans and qpp slots', () => {
+  const layout = L.paginateRenderableBlocks({ pageGeometry: { usableHeight: 200, columns: 2, qpp: 4 }, blocks: [
+    { blockId: 'normal-a', questionKey: 'a', measuredHeight: 20 },
+    { blockId: 'normal-b', questionKey: 'b', measuredHeight: 20 },
+    { blockId: 'subj2', questionKey: 'c', measuredHeight: 20, layoutTag: 'subjective-2up' },
+    { blockId: 'subj4', questionKey: 'd', measuredHeight: 20, layoutTag: 'subjective-4up' }
+  ] });
+  const subj2 = layout.columnMap.find(item => item.blockId === 'subj2');
+  const subj4 = layout.columnMap.find(item => item.blockId === 'subj4');
+  assert.equal(layout.slotRows, 2);
+  assert.deepEqual({ kind: subj2.placementKind, rows: subj2.slotSpanRows, slots: subj2.slotOccupancy }, { kind: 'subjective-2up', rows: 2, slots: 2 });
+  assert.deepEqual({ kind: subj4.placementKind, rows: subj4.slotSpanRows, slots: subj4.slotOccupancy }, { kind: 'subjective-4up', rows: 1, slots: 1 });
+  assert.deepEqual(layout.pages.map(page => page.blockIds), [['normal-a', 'normal-b', 'subj2'], ['subj4']]);
+});

@@ -48,6 +48,9 @@ test('Phase 0.6 has zero unadjudicated known drifts and every decision has the r
 
   const fixtureIds = new Set([...fixtures.fixtures, ...fixtures.supplementalFixtureIds]);
   assert.equal(fixtures.fixtures.length, 44, 'Golden Fixture v2.2 must specify all 44 required fixture IDs');
+  assert.equal(fixtures.status, 'PARTIALLY_RENDERED');
+  assert.ok(Array.isArray(fixtures.renderedFixtureIds) && fixtures.renderedFixtureIds.length > 0);
+  assert.ok(fixtures.renderedFixtureIds.every(id => fixtureIds.has(id)));
   for (const drift of ledger.drifts) {
     for (const field of ['driftId', 'archiveBehavior', 'mixerBehavior', 'clinicBehavior', 'disposition', 'rationale', 'fixtureId']) {
       assert.match(String(drift[field] || ''), /\S/, `${drift.driftId} is missing ${field}`);

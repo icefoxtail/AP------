@@ -33,7 +33,7 @@
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
-    <script src="render-authority.js?v=20260906.3" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -1004,6 +1004,18 @@ async function registerClassExamAssignmentToOS() {
 function wrapLatex(text) {
     if (text == null) return '';
     let s = String(text);
+    // Table and structured question blocks must survive text/LaTex rewriting as
+    // complete HTML units. Protecting only individual tag boundaries loses the
+    // table tree when the intervening content is split around math segments.
+    const structuralBlocks = [];
+    const saveStructuralBlock = match => {
+        const token = `__WRAP_STRUCTURAL_BLOCK_${structuralBlocks.length}__`;
+        structuralBlocks.push(match);
+        return token;
+    };
+    s = s
+        .replace(/<div[^>]*class=["'][^"']*question-table-wrap[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, saveStructuralBlock)
+        .replace(/<table[\s\S]*?<\/table>/gi, saveStructuralBlock);
     s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
     s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
     const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
@@ -1044,7 +1056,9 @@ function wrapLatex(text) {
         return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }).join('');
     s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
-    return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
+    return s
+        .replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '')
+        .replace(/__WRAP_STRUCTURAL_BLOCK_(\d+)__/g, (_, i) => structuralBlocks[i] || '');
 }
 
 function normalizeSolutionLineBreaks(text) {
@@ -1339,7 +1353,11 @@ async function recordArchiveDualRun(area) {
             ? window.APRenderAuthority.compareAnswerSemantics(area.innerHTML, witness.innerHTML)
             : window.APRenderAuthority.compareQuestionSemantics(area.innerHTML, witness.innerHTML);
         witness.remove();
-        document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', mode: AppState.mode, equal: result.equal, differences: result.differences });
+        const mismatchDiagnostics = result.equal ? null : {
+            legacySolutionImages: Array.from(area.querySelectorAll('.sol-image-wrap img')).slice(0, 4).map(image => ({ src: image.getAttribute('src') || '', alt: image.getAttribute('alt') || '', caption: image.closest('.sol-image-wrap')?.querySelector('.sol-image-caption')?.textContent || '' })),
+            authoritySolutionImages: Array.from(witness.querySelectorAll('.sol-image-wrap img')).slice(0, 4).map(image => ({ src: image.getAttribute('src') || '', alt: image.getAttribute('alt') || '', caption: image.closest('.sol-image-wrap')?.querySelector('.sol-image-caption')?.textContent || '' }))
+        };
+        document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', mode: AppState.mode, equal: result.equal, differences: result.differences, mismatchDiagnostics });
     } catch (error) {
         document.documentElement.dataset.apRenderAuthorityDualRun = JSON.stringify({ source: 'archive', error: String(error?.message || error) });
     }

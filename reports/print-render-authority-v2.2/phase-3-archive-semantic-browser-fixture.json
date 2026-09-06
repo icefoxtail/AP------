@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "phase": "PHASE_3",
+  "kind": "actual-browser-dual-run",
+  "server": "http://127.0.0.1:4173",
+  "fixture": "archive/exams/test-fixtures/render-authority-golden.js",
+  "query": "qpp=4&fit=screen&renderAuthorityDualRun=1",
+  "capturedAt": "2026-09-06",
+  "renderedFixtureIds": [
+    "question-choice-columns",
+    "question-fullwidth",
+    "question-table-math",
+    "question-problem-png",
+    "question-solution-svg",
+    "question-inline-view-word",
+    "question-standalone-view-label"
+  ],
+  "results": [
+    { "mode": "exam", "dualRunEqual": true, "pages": 4, "questionCount": 8, "tableCount": 1, "problemImageCount": 1, "viewBlockCount": 3, "renderError": "" },
+    { "mode": "solution", "dualRunEqual": true, "pages": 1, "questionCount": 8, "solutionCount": 8, "solutionImageCount": 1, "renderError": "" },
+    { "mode": "answer", "dualRunEqual": true, "pages": 1, "answerEntryCount": 8, "renderError": "" }
+  ],
+  "legacyRendererRetained": true
+}

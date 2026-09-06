@@ -7,7 +7,7 @@ const html = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'u
 
 test('Mixer adapter dual-runs canonical normalization without changing storage, pack, QPP, or legacy renderer behavior', () => {
   assert.match(html, /src="print-contract\.js\?v=20260906\.2"/);
-  assert.match(html, /src="render-authority\.js\?v=20260906\.3"/);
+  assert.match(html, /src="render-authority\.js\?v=20260906\.5"/);
   assert.match(html, /function buildMixedCanonicalData\(\)/);
   assert.match(html, /AppState\.canonicalData = buildMixedCanonicalData\(\)/);
   assert.match(html, /async function recordMixedDualRun\(area\)/);
