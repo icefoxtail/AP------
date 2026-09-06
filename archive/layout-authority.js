@@ -724,5 +724,72 @@
         return host;
     }
 
-    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, renderSharedLayoutWitness });
+    function planClinicComposition(input) {
+        const config = input || {};
+        const recipients = Array.isArray(config.recipients) ? config.recipients : fail('CLINIC_RECIPIENTS_MUST_BE_ARRAY');
+        const review = config.review === true;
+        const sections = [];
+        recipients.forEach((recipient, recipientIndex) => {
+            const recipientId = safeText(recipient.recipientId, 'CLINIC_RECIPIENT_ID');
+            const refs = (recipient.sourceRefs || []).map(ref => typeof ref === 'string' ? ref : sourceRefKey(ref));
+            const modes = review ? ['answer', 'solution'] : [safeText(recipient.renderMode || 'exam', 'CLINIC_RENDER_MODE')];
+            modes.forEach(mode => sections.push(Object.freeze({
+                recipientId,
+                sectionId: `${recipientId}:${mode}`,
+                mode,
+                sourceRefs: Object.freeze(refs.slice()),
+                requireQr: recipient.requireQr === true
+            })));
+        });
+        return Object.freeze({ review, duplex: config.duplex === true, sections: Object.freeze(sections) });
+    }
+
+    function compareClinicComposition(observedInput, expected) {
+        const observed = observedInput || {};
+        const pages = Array.isArray(observed.pages) ? observed.pages : [];
+        const differences = [];
+        const sectionsById = new Map(expected.sections.map(section => [section.sectionId, section]));
+        const observedBySection = new Map();
+        pages.forEach((page, index) => {
+            if (page.isBlank) return;
+            const section = sectionsById.get(page.sectionId);
+            if (!section) {
+                differences.push(Object.freeze({ field: 'section', observed: page.sectionId || '', expected: 'known section', pageNo: index + 1 }));
+                return;
+            }
+            if (page.recipientId !== section.recipientId) differences.push(Object.freeze({ field: 'recipientId', observed: page.recipientId || '', expected: section.recipientId, pageNo: index + 1 }));
+            const bucket = observedBySection.get(section.sectionId) || [];
+            bucket.push(page);
+            observedBySection.set(section.sectionId, bucket);
+        });
+        expected.sections.forEach((section, sectionIndex) => {
+            const sectionPages = observedBySection.get(section.sectionId) || [];
+            if (!sectionPages.length) differences.push(Object.freeze({ field: 'missingSection', observed: '', expected: section.sectionId }));
+            const refs = new Set(sectionPages.flatMap(page => page.sourceRefs || []));
+            const unexpected = Array.from(refs).filter(ref => !section.sourceRefs.includes(ref));
+            const missing = section.sourceRefs.filter(ref => !refs.has(ref));
+            if (unexpected.length) differences.push(Object.freeze({ field: 'sourceIdentity', observed: unexpected, expected: section.sourceRefs, sectionId: section.sectionId }));
+            if (missing.length) differences.push(Object.freeze({ field: 'omission', observed: [], expected: missing, sectionId: section.sectionId }));
+            const sectionPageIndexes = sectionPages.map(page => pages.indexOf(page));
+            if (sectionPageIndexes.some((pageIndex, index) => index > 0 && pageIndex !== sectionPageIndexes[index - 1] + 1)) differences.push(Object.freeze({ field: 'sectionContiguity', observed: sectionPageIndexes, expected: 'contiguous', sectionId: section.sectionId }));
+            if (section.requireQr && !sectionPages.some(page => page.hasQr === true)) differences.push(Object.freeze({ field: 'recipientQr', observed: false, expected: true, sectionId: section.sectionId }));
+            if (expected.review && sectionIndex % 2 === 0 && expected.sections[sectionIndex + 1]?.recipientId === section.recipientId && expected.sections[sectionIndex + 1]?.mode !== 'solution') {
+                differences.push(Object.freeze({ field: 'reviewOrder', observed: expected.sections[sectionIndex + 1]?.mode, expected: 'solution', sectionId: section.sectionId }));
+            }
+        });
+        if (expected.duplex) {
+            const recipientOrder = Array.from(new Set(expected.sections.map(section => section.recipientId)));
+            recipientOrder.slice(0, -1).forEach(recipientId => {
+                const lastIndex = pages.map((page, index) => ({ page, index })).filter(entry => entry.page.recipientId === recipientId && !entry.page.isBlank).at(-1)?.index;
+                if (lastIndex === undefined) return;
+                const recipientPages = pages.filter(page => page.recipientId === recipientId && !page.isBlank).length;
+                const next = pages[lastIndex + 1];
+                const needsBlank = recipientPages % 2 === 1;
+                if (needsBlank !== Boolean(next?.isBlank)) differences.push(Object.freeze({ field: 'duplexBlank', observed: Boolean(next?.isBlank), expected: needsBlank, recipientId }));
+            });
+        }
+        return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences), omissionCount: differences.filter(item => item.field === 'omission').length, duplicationCount: 0 });
+    }
+
+    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
 }));

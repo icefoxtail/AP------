@@ -22,6 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="../archive/render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="../archive/layout-authority.js?v=20260906.8" onerror="console.warn('[layout-authority] composition gate 로드 실패 — legacy composition 유지')"></script>
     <script src="../archive/print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -177,7 +178,7 @@ const WRONG_PRINT_PUBLIC_URL = 'https://icefoxtail.github.io/AP------/apmath/wro
 const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 // QR URL 길이별 스캔 안정성 기준(LOOP 4).
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
-const state = { payload: null, banks: {}, mode: 'exam', previewParentPayloadReceived: false, dualRunQuestions: [] };
+const state = { payload: null, banks: {}, mode: 'exam', previewParentPayloadReceived: false, dualRunQuestions: [], compositionPlan: null };
 let clinicReadinessTracker = null;
 if (typeof window !== 'undefined') window.__AP_RENDER_READY__ = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
 
@@ -1142,11 +1143,13 @@ function getClinicQuestionSourceRef(q) {
     return `${sourceArchiveFile}#${sourceUid}`;
 }
 
-function appendBlankPage(area) {
+function appendBlankPage(area, metadata = {}) {
     // A physical, intentionally empty A4 page (no header, frame, QR, or page number)
     // so the next student's output starts on a fresh sheet front when duplex printing.
     const page = document.createElement('section');
     page.className = 'page page-blank';
+    if (metadata.recipientId) page.dataset.layoutRecipientId = metadata.recipientId;
+    if (metadata.sectionId) page.dataset.layoutSectionId = metadata.sectionId;
     area.appendChild(page);
     return page;
 }
@@ -1163,6 +1166,8 @@ function renderHeaderNameFill(label, value) {
 function makePage(area, type, title, metaLeft, metaRight, pageNumber, extra = {}) {
     const page = document.createElement('section');
     page.className = 'page';
+    if (extra.recipientId) page.dataset.layoutRecipientId = extra.recipientId;
+    if (extra.sectionId) page.dataset.layoutSectionId = extra.sectionId;
     const frame = document.createElement('div');
     frame.className = 'page-exam-frame';
     const header = document.createElement('div');
@@ -1311,6 +1316,34 @@ async function recordClinicDualRun(area) {
     }
 }
 
+function recordClinicCompositionPromotionGate(area) {
+    if (new URLSearchParams(window.location.search).get('renderAuthorityDualRun') !== '1') return;
+    const authority = window.APLayoutAuthority;
+    const expected = state.compositionPlan;
+    if (!authority?.compareClinicComposition || !expected) {
+        document.documentElement.dataset.apClinicCompositionDualRun = JSON.stringify({ source: 'clinic', skipped: 'COMPOSITION_PLAN_UNAVAILABLE' });
+        return;
+    }
+    try {
+        const pages = Array.from(area.querySelectorAll('.page')).map(page => ({
+            isBlank: page.classList.contains('page-blank'),
+            recipientId: page.dataset.layoutRecipientId || '',
+            sectionId: page.dataset.layoutSectionId || (page.classList.contains('page-blank') ? '__blank__' : ''),
+            sourceRefs: Array.from(page.querySelectorAll('.ans-cell[data-source-ref]:not(.ans-cell-empty), .q-box[data-source-ref]'))
+                .filter(node => node.classList.contains('ans-cell') || node.querySelector('.q-num'))
+                .map(node => node.getAttribute('data-source-ref') || ''),
+            hasQr: Boolean(page.querySelector('.page-qr'))
+        }));
+        const result = authority.compareClinicComposition({ pages }, expected);
+        document.documentElement.dataset.apClinicCompositionDualRun = JSON.stringify({
+            source: 'clinic', equal: result.equal, omissionCount: result.omissionCount, duplicationCount: result.duplicationCount,
+            differences: result.differences.slice(0, 8)
+        });
+    } catch (error) {
+        document.documentElement.dataset.apClinicCompositionDualRun = JSON.stringify({ source: 'clinic', error: String(error?.message || error) });
+    }
+}
+
 async function loadAllQuestionBanks(payload) {
     // 복원은 sourceArchiveFile(원본)을 우선 사용하므로, 원본 파일도 함께 적재한다.
     const itemFile = item => item.sourceArchiveFile || item.archiveFile;
@@ -1376,7 +1409,9 @@ async function renderMeasuredExamPages(area, items, pageMeta = {}) {
         nameLabel: pageMeta.nameLabel || '이름',
         nameValue: pageMeta.nameValue || '',
         dateText: pageMeta.dateText || '',
-        subtitleFallback: pageMeta.subtitleFallback || ''
+        subtitleFallback: pageMeta.subtitleFallback || '',
+        recipientId: pageMeta.recipientId || '',
+        sectionId: pageMeta.sectionId || ''
     };
     // 첫 페이지 기준(전체 헤더)으로 본문 높이를 측정한다.
     const tempPage = makePage(area, 'exam', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', 0, { ...headerExtra, headerMode: 'full' });
@@ -1555,14 +1590,23 @@ function buildClassRenderItems(payload) {
 async function renderClassPages(area, payload) {
     const title = `${payload.className || '반'} 반별 공통 오답지`;
     const recipients = getPrintRecipients(payload);
+    const classItems = buildClassRenderItems(payload);
 
     if (!recipients.length) {
-        await renderMeasuredExamPages(area, buildClassRenderItems(payload), {
+        const recipientId = `class:${payload.className || '반'}`;
+        state.compositionPlan = window.APLayoutAuthority?.planClinicComposition?.({
+            review: false,
+            duplex: false,
+            recipients: [{ recipientId, sourceRefs: classItems.map(getClinicQuestionSourceRef), requireQr: true, renderMode: 'exam' }]
+        }) || null;
+        await renderMeasuredExamPages(area, classItems, {
             title,
             metaLeft: '',
             nameLabel: '반',
             nameValue: payload.className || '',
             dateText: payload.createdDate || '',
+            recipientId,
+            sectionId: `${recipientId}:exam`,
             solutionQrPayload: {
                 payload: buildClassQrPayload(payload),
                 url: buildQrTargetUrlForPayload(buildClassQrPayload(payload), payload)
@@ -1572,15 +1616,28 @@ async function renderClassPages(area, payload) {
     }
 
     // 학생마다 packet_key가 있으면 개인 QR(→ 학생페이지)을 붙인 개인별 사본을 인쇄한다.
+    state.compositionPlan = window.APLayoutAuthority?.planClinicComposition?.({
+        review: false,
+        duplex: payload.options?.pageBreakByStudent !== false,
+        recipients: recipients.map((recipient, index) => ({
+            recipientId: `class-recipient:${index}:${recipient.studentName || ''}`,
+            sourceRefs: classItems.map(getClinicQuestionSourceRef),
+            requireQr: true,
+            renderMode: 'exam'
+        }))
+    }) || null;
     for (let rIdx = 0; rIdx < recipients.length; rIdx++) {
         const recipient = recipients[rIdx];
+        const recipientId = `class-recipient:${rIdx}:${recipient.studentName || ''}`;
         const pagesBefore = area.querySelectorAll('.page').length;
-        await renderMeasuredExamPages(area, buildClassRenderItems(payload), {
+        await renderMeasuredExamPages(area, classItems, {
             title,
             metaLeft: '',
             nameLabel: '이름',
             nameValue: recipient.studentName || '',
             dateText: payload.createdDate || '',
+            recipientId,
+            sectionId: `${recipientId}:exam`,
             solutionQrPayload: {
                 payload: null,
                 url: buildStoredQrTargetUrl('packet', getStudentPacketKey(recipient))
@@ -1790,7 +1847,9 @@ async function placeSolutionItems(area, items, pageMeta = {}) {
     let colIdx = 0;
 
     const makeGridPage = () => {
-        const page = makePage(area, 'sol', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageNo++);
+        const page = makePage(area, 'sol', getGroupTitle(pageMeta.title), pageMeta.metaLeft || '', pageMeta.metaRight || '', pageNo++, {
+            recipientId: pageMeta.recipientId || '', sectionId: pageMeta.sectionId || ''
+        });
         const grid = document.createElement('div');
         grid.className = 'grid-container';
         grid.style.flex = '1 1 0';
@@ -1988,7 +2047,9 @@ function renderAnswerRows(area, rows, pageMeta = {}) {
     let pageNo = 1;
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
-        const page = makePage(area, 'ans', pageMeta.title || '정답표', pageMeta.metaLeft || '', pageMeta.metaRight || `p.${pageNo}`, pageNo);
+        const page = makePage(area, 'ans', pageMeta.title || '정답표', pageMeta.metaLeft || '', pageMeta.metaRight || `p.${pageNo}`, pageNo, {
+            recipientId: pageMeta.recipientId || '', sectionId: pageMeta.sectionId || ''
+        });
         pageNo += 1;
         const grid = document.createElement('div');
         grid.className = 'ans-grid';
@@ -2059,7 +2120,9 @@ function renderAnswerPagesForStudent(area, student, items, pageMeta = {}) {
     renderAnswerRows(area, rows, {
         title: pageMeta.title || getStudentWrongClinicHeaderTitle(student),
         metaLeft: pageMeta.metaLeft || '',
-        metaRight: pageMeta.metaRight || ''
+        metaRight: pageMeta.metaRight || '',
+        recipientId: pageMeta.recipientId || '',
+        sectionId: pageMeta.sectionId || ''
     });
 }
 
@@ -2071,17 +2134,19 @@ async function renderSolutionPagesForStudent(area, student, items, pageMeta = {}
     await placeSolutionItems(area, items || [], {
         title: pageMeta.title || getStudentWrongClinicHeaderTitle(student),
         metaLeft: pageMeta.metaLeft || '',
-        metaRight: pageMeta.metaRight || ''
+        metaRight: pageMeta.metaRight || '',
+        recipientId: pageMeta.recipientId || '',
+        sectionId: pageMeta.sectionId || ''
     });
 }
 
-function maybeInsertReviewPacketDuplexBreak(area, payload, studentIdx, studentCount, pagesBefore) {
+function maybeInsertReviewPacketDuplexBreak(area, payload, studentIdx, studentCount, pagesBefore, recipientId = '') {
     if (payload.options?.pageBreakByStudent === false) return;
     // No trailing blank after the final packet (single QR student, class/grade, or last student).
     const hasNextStudent = studentIdx < studentCount - 1;
     if (!hasNextStudent) return;
     const pagesAdded = area.querySelectorAll('.page').length - pagesBefore;
-    if (pagesAdded > 0 && pagesAdded % 2 === 1) appendBlankPage(area);
+    if (pagesAdded > 0 && pagesAdded % 2 === 1) appendBlankPage(area, { recipientId, sectionId: '__blank__' });
 }
 
 async function renderStudentReviewPacket(area, payload) {
@@ -2096,15 +2161,22 @@ async function renderStudentReviewPacket(area, payload) {
         });
         const metaLeft = payload.printTitle || '';
         const metaRight = payload.createdDate || '';
+        const recipientId = `type:${label}`;
+        const sourceRefs = items.map(getClinicQuestionSourceRef);
+        state.compositionPlan = window.APLayoutAuthority?.planClinicComposition?.({ review: true, duplex: false, recipients: [{ recipientId, sourceRefs }] }) || null;
         renderAnswerPagesForStudent(area, { studentName: label }, items, {
             title: `${label} 정답표`,
             metaLeft,
-            metaRight
+            metaRight,
+            recipientId,
+            sectionId: `${recipientId}:answer`
         });
         await renderSolutionPagesForStudent(area, { studentName: label }, items, {
             title: `${label} 해설지`,
             metaLeft,
-            metaRight
+            metaRight,
+            recipientId,
+            sectionId: `${recipientId}:solution`
         });
         return;
     }
@@ -2121,21 +2193,29 @@ async function renderStudentReviewPacket(area, payload) {
         });
         const metaLeft = payload.printTitle || '';
         const metaRight = payload.createdDate || '';
+        const recipientId = `${payload.mode}:${label}`;
+        const sourceRefs = items.map(getClinicQuestionSourceRef);
+        state.compositionPlan = window.APLayoutAuthority?.planClinicComposition?.({ review: true, duplex: false, recipients: [{ recipientId, sourceRefs }] }) || null;
         renderAnswerPagesForStudent(area, { studentName: label }, items, {
             title: `${label} 공통 오답 정답표`,
             metaLeft,
-            metaRight
+            metaRight,
+            recipientId,
+            sectionId: `${recipientId}:answer`
         });
         await renderSolutionPagesForStudent(area, { studentName: label }, items, {
             title: `${label} 공통 오답 해설지`,
             metaLeft,
-            metaRight
+            metaRight,
+            recipientId,
+            sectionId: `${recipientId}:solution`
         });
         // Single common-wrong packet — no trailing blank.
         return;
     }
 
     const students = payload.students || [];
+    const compositionRecipients = [];
     for (let sIdx = 0; sIdx < students.length; sIdx++) {
         const student = students[sIdx];
         const pagesBefore = area.querySelectorAll('.page').length;
@@ -2145,18 +2225,25 @@ async function renderStudentReviewPacket(area, payload) {
         }));
         const metaLeft = `${payload.className || ''} · ${getStudentExamLabel(payload, student)}`.replace(/^ · | · $/g, '');
         const metaRight = payload.createdDate || '';
+        const recipientId = `student:${sIdx}:${student.studentName || ''}`;
+        compositionRecipients.push({ recipientId, sourceRefs: items.map(getClinicQuestionSourceRef) });
         renderAnswerPagesForStudent(area, student, items, {
             title: getStudentWrongClinicHeaderTitle(student),
             metaLeft,
-            metaRight
+            metaRight,
+            recipientId,
+            sectionId: `${recipientId}:answer`
         });
         await renderSolutionPagesForStudent(area, student, items, {
             title: getStudentWrongClinicHeaderTitle(student),
             metaLeft,
-            metaRight
+            metaRight,
+            recipientId,
+            sectionId: `${recipientId}:solution`
         });
-        maybeInsertReviewPacketDuplexBreak(area, payload, sIdx, students.length, pagesBefore);
+        maybeInsertReviewPacketDuplexBreak(area, payload, sIdx, students.length, pagesBefore, recipientId);
     }
+    state.compositionPlan = window.APLayoutAuthority?.planClinicComposition?.({ review: true, duplex: payload.options?.pageBreakByStudent !== false, recipients: compositionRecipients }) || null;
 }
 
 // MathJax 로딩을 기다리되, 실패하거나 지연돼도 렌더를 막지 않는다.
@@ -2223,6 +2310,7 @@ async function render() {
         const imageReadiness = await waitForClinicPrintImages(area);
         markClinicReadiness('IMAGE_READY', imageReadiness);
         await recordClinicDualRun(area);
+        recordClinicCompositionPromotionGate(area);
         markClinicReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: state.mode });
         markClinicReadiness('RENDER_READY', { mode: state.mode, pages: area.querySelectorAll('.page').length });
         settleRender({ ok: true, mode: state.mode, pages: area.querySelectorAll('.page').length });
