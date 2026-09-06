@@ -25,6 +25,20 @@ const tests = includeQuarantined
   ? files
   : files.filter(name => !quarantined.has(name));
 
+// Keep the SVG semantic regression outside the legacy CommonJS-only glob.
+// CI invokes this runner, so both the verifier syntax gate and its ESM test
+// become blocking checks on every normal test run.
+const requiredCommands = [
+  {
+    label: 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs syntax',
+    args: ['--check', 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs']
+  },
+  {
+    label: 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs',
+    args: ['--test', 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs']
+  }
+];
+
 let passed = 0;
 const failed = [];
 const knownFailed = [];
@@ -52,11 +66,25 @@ for (const file of tests) {
   }
 }
 
+for (const command of requiredCommands) {
+  const result = spawnSync(process.execPath, command.args, {
+    cwd: root,
+    stdio: 'inherit',
+    timeout: 60000
+  });
+  if (result.status === 0) {
+    passed += 1;
+    continue;
+  }
+  failed.push(command.label);
+  console.error(`Test failed: ${command.label}`);
+}
+
 if (!includeQuarantined && quarantined.size > 0) {
   console.log(`${quarantined.size} quarantined test file(s) skipped; set APMATH_RUN_QUARANTINE=1 to include them`);
 }
 
-console.log(`PASS ${passed} / FAIL ${failed.length} / KNOWN-FAIL ${knownFailed.length} (total ${tests.length})`);
+console.log(`PASS ${passed} / FAIL ${failed.length} / KNOWN-FAIL ${knownFailed.length} (total ${tests.length + requiredCommands.length})`);
 
 if (failed.length > 0) {
   console.error('\nBlocking failures:');
