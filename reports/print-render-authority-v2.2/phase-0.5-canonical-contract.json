@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_0_5",
+  "status": "PASS",
+  "startHead": "3e23a32f1c9b0715c1172d8c6612b1f992c5a1ae",
+  "contractVersion": "ap-print-contract-v2.2",
+  "implementation": "archive/print-contract.js",
+  "test": "tests/print-contract.test.js",
+  "frozenContracts": [
+    "SourceAuthorityResult: exactly one candidate winner, evidence retained, engine/kind compatible",
+    "SourceRef: sourceArchiveFile + sourceQuestionUid + sourceQuestionOrdinal + sourceQuestionNo; no bare id authority",
+    "CanonicalQuestion: sourceRef, displayNo, content/choices/answer/solution, asset fields, sourcePayload",
+    "PrintJob and PrintSection: only exam/solution/answer renderer modes",
+    "ReviewComposition: answer section followed by solution section, never a fourth renderer mode",
+    "HeaderPolicy, QrPolicy, DuplexPolicy, QppPolicy, LayoutPolicy",
+    "FlowExtension measures before pagination; OverlayExtension reserves a non-reflow rectangle",
+    "Adapter-owned resolveAssetUrl(assetRef, question, sourceRef)",
+    "PageMap identity, cardinality, omission, and duplication checks",
+    "Readiness evidence sequence DATA_READY through PRINT_READY",
+    "Dual-run comparison fields and Archive -> Mixer -> Clinic promotion order"
+  ],
+  "nonGoals": [
+    "No engine consumes this module in Phase 0.5",
+    "No source precedence or legacy compatibility path changed",
+    "No pagination, transport, QPP, payload persistence, UI, worker, or question-data behaviour changed"
+  ],
+  "nextGate": "PHASE_0_6_KNOWN_DRIFT_LEDGER",
+  "unadjudicatedDriftCount": "Not evaluated until Phase 0.6"
+}
