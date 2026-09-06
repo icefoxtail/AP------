@@ -3,11 +3,13 @@
 <head><meta charset="utf-8"><title>Layout promotion gate QA</title></head>
 <body>
 <output id="layout-gate-status" aria-live="polite">LAYOUT_GATE_WAITING</output>
+<pre id="layout-gate-detail"></pre>
 <iframe id="layout-engine" title="Layout promotion gate engine"></iframe>
 <script>
   const params = new URLSearchParams(location.search);
   const target = params.get('target') === 'mixer' ? 'mixer' : 'archive';
   const status = document.getElementById('layout-gate-status');
+  const detail = document.getElementById('layout-gate-detail');
   const frame = document.getElementById('layout-engine');
   frame.src = target === 'mixer'
     ? '/tests/fixtures/mixer-render-authority-storage-launcher.html?qpp=4&mode=exam'
@@ -20,6 +22,8 @@
       try {
         const result = JSON.parse(raw);
         const differenceFields = (result.differences || []).map(item => item.field).join(',') || 'none';
+        const columnDifference = (result.differences || []).find(item => item.field === 'column');
+        if (columnDifference) detail.textContent = `COLUMN_OBSERVED=${JSON.stringify(columnDifference.observed)}\nCOLUMN_EXPECTED=${JSON.stringify(columnDifference.expected)}`;
         status.textContent = result.error
           ? `LAYOUT_GATE_ERROR:${target}:${result.error}`
           : `LAYOUT_GATE_${result.equal ? 'PASS' : 'HOLD'}:${target}:${result.parity?.omissionCount ?? '?'}:${result.parity?.duplicationCount ?? '?'}:${differenceFields}`;

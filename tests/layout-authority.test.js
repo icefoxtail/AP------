@@ -66,6 +66,28 @@ test('subjective layout tags automatically reserve legacy-compatible row spans a
   assert.deepEqual(layout.pages.map(page => page.blockIds), [['normal-a', 'normal-b', 'subj2'], ['subj4']]);
 });
 
+test('pure legacy SLOT_POLICY and CHUNK_POLICY preserve deterministic left/right and 2up repack placement facts', () => {
+  const chunk = L.planLegacyProductionLayout({ pageGeometry: { usableHeight: 200, columns: 2, qpp: 4, blockGap: 7 }, blocks: [
+    { blockId: 'a', questionKey: 'a', measuredHeight: 20 }, { blockId: 'b', questionKey: 'b', measuredHeight: 20 },
+    { blockId: 'c', questionKey: 'c', measuredHeight: 20 }, { blockId: 'd', questionKey: 'd', measuredHeight: 20 }
+  ] });
+  assert.equal(chunk.planner, 'LEGACY_SLOT_CHUNK_POLICY');
+  assert.deepEqual(chunk.pages[0].columns.map(column => column.items.map(item => item.blockId)), [['a', 'b'], ['c', 'd']]);
+  assert.deepEqual(chunk.pages[0].columns[0].items.map(item => item.columnOrder), [0, 1]);
+
+  const slot = L.planLegacyProductionLayout({ pageGeometry: { usableHeight: 200, columns: 2, qpp: 4 }, blocks: [
+    { blockId: 'normal-a', questionKey: 'a', measuredHeight: 20 },
+    { blockId: 'normal-b', questionKey: 'b', measuredHeight: 20 },
+    { blockId: 'subj2', questionKey: 'c', measuredHeight: 20, layoutTag: 'subjective-2up' },
+    { blockId: 'wide', questionKey: 'd', measuredHeight: 20, layoutTag: 'fullwidth' }
+  ] });
+  assert.deepEqual(slot.pages[0].columns.map(column => column.items.map(item => item.blockId)), [['normal-a', 'normal-b'], ['subj2']]);
+  const subj2 = slot.columnMap.find(item => item.blockId === 'subj2');
+  assert.deepEqual({ columnNo: subj2.columnNo, rows: subj2.slotSpanRows, kind: subj2.placementKind }, { columnNo: 2, rows: 2, kind: 'subjective-2up' });
+  assert.equal(slot.pages[1].columns[0].items[0].blockId, 'wide');
+  assert.equal(slot.pages[1].columns[0].items[0].columnSpan, 2);
+});
+
 test('promotion comparator fails closed for a mutated legacy page, column, or continuation fact', () => {
   const records = {
     a: { sectionId: 'exam', sourceRef: ref(1), displayNo: 1 },
@@ -110,4 +132,13 @@ test('promotion comparator fails closed for a mutated legacy page, column, or co
   const continuationResult = L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(continuationMutation, records, { sectionId: 'exam' }), expected);
   assert.equal(continuationResult.equal, false);
   assert.ok(continuationResult.differences.some(item => item.field === 'continuation' || item.field === 'duplication'));
+
+  const orderMutation = structuredClone(observedInput);
+  const orderedColumn = orderMutation.pages.flatMap(page => page.columns).find(column => column.items.length >= 2);
+  const firstOrder = orderedColumn.items[0].columnOrder;
+  orderedColumn.items[0].columnOrder = orderedColumn.items[1].columnOrder;
+  orderedColumn.items[1].columnOrder = firstOrder;
+  const orderResult = L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(orderMutation, records, { sectionId: 'exam' }), expected);
+  assert.equal(orderResult.equal, false);
+  assert.ok(orderResult.differences.some(item => item.field === 'column'));
 });

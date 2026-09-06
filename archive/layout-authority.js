@@ -95,7 +95,7 @@
             const baseline = Math.max(...page.columns.map(column => column.usedHeight));
             const gapBefore = page.itemPlacements.length ? blockGap : 0;
             if (page.itemPlacements.length && baseline + gapBefore + block.measuredHeight > capacity) return false;
-            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: 1, columnSpan: block.columnSpan, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore };
+            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: 1, columnSpan: block.columnSpan, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore, columnOrder: page.columns[0].items.length, placementOrder: page.itemPlacements.length };
             page.itemPlacements.push(item);
             for (let index = 0; index < block.columnSpan; index++) {
                 page.columns[index].usedHeight = baseline + gapBefore + block.measuredHeight;
@@ -110,7 +110,7 @@
         const continuationColumn = continuationPlacement && page.columns.find(column => column.columnNo === continuationPlacement.columnNo);
         const continuationGap = continuationColumn && continuationColumn.items.length ? blockGap : 0;
         if (continuationColumn && continuationColumn.usedHeight + continuationGap + block.measuredHeight <= capacity) {
-            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: continuationColumn.columnNo, columnSpan: 1, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore: continuationGap };
+            const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: continuationColumn.columnNo, columnSpan: 1, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore: continuationGap, columnOrder: continuationColumn.items.length, placementOrder: page.itemPlacements.length };
             page.itemPlacements.push(item);
             continuationColumn.items.push(item);
             continuationColumn.usedHeight += continuationGap + block.measuredHeight;
@@ -122,7 +122,7 @@
         if (!candidates.length && page.itemPlacements.length) return false;
         const column = candidates[0] || page.columns.slice().sort((left, right) => left.usedHeight - right.usedHeight)[0];
         const gapBefore = column.items.length ? blockGap : 0;
-        const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: column.columnNo, columnSpan: 1, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore };
+        const item = { blockId: block.blockId, questionKey: block.questionKey, columnNo: column.columnNo, columnSpan: 1, layoutTag: block.layoutTag, placementKind: block.placementKind, slotSpanRows: block.slotSpanRows, continuationOf: block.continuationOf, slotOccupancy: block.slotOccupancy, measurementMode: block.measurementMode, gapBefore, columnOrder: column.items.length, placementOrder: page.itemPlacements.length };
         page.itemPlacements.push(item);
         column.items.push(item);
         column.usedHeight += gapBefore + block.measuredHeight;
@@ -182,6 +182,157 @@
         });
     }
 
+    // Pure extraction of the production two-column planner. It intentionally
+    // does not replace paginateRenderableBlocks(): the generic shortest-column
+    // planner stays available, while promotion compares this deterministic
+    // SLOT_POLICY / CHUNK_POLICY output against legacy DOM observation.
+    function planLegacyProductionLayout(input) {
+        const config = input || {};
+        const geometry = config.pageGeometry || {};
+        const usableHeight = positive(geometry.usableHeight, 'LEGACY_PLANNER_PAGE_GEOMETRY');
+        const columns = positiveInteger(geometry.columns, 'LEGACY_PLANNER_COLUMNS', 2);
+        const qpp = positiveInteger(geometry.qpp, 'LEGACY_PLANNER_QPP', columns * 2);
+        const blockGap = geometry.blockGap === undefined ? 0 : Math.max(0, Number(geometry.blockGap) || 0);
+        const measurementMode = geometry.measurementMode === 'tight' ? 'tight' : 'raw';
+        const slotRows = Math.max(1, Math.ceil(qpp / columns));
+        const blocks = (config.blocks || []).map((block, index) => normalizeBlock(block, index, columns, measurementMode, slotRows));
+        const overflowEvidence = blocks.filter(block => block.measuredHeight > usableHeight).map(block => Object.freeze({
+            blockId: block.blockId, measuredHeight: block.measuredHeight, usableHeight, measurementMode, code: 'BLOCK_EXCEEDS_PAGE'
+        }));
+        const rawPages = [];
+        const createPlannerPage = () => ({ columns: Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] })), itemPlacements: [] });
+        const makeItem = (page, block, columnNo, columnSpan, extra = {}) => ({
+            blockId: block.blockId,
+            questionKey: block.questionKey,
+            columnNo,
+            columnSpan,
+            layoutTag: block.layoutTag,
+            placementKind: extra.placementKind || block.placementKind,
+            slotSpanRows: extra.slotSpanRows || block.slotSpanRows,
+            continuationOf: block.continuationOf,
+            slotOccupancy: block.slotOccupancy,
+            measurementMode: block.measurementMode,
+            gapBefore: extra.gapBefore || 0,
+            columnOrder: page.columns[columnNo - 1].items.length,
+            placementOrder: page.itemPlacements.length
+        });
+        const addItem = (page, block, columnNo, columnSpan, extra) => {
+            const item = makeItem(page, block, columnNo, columnSpan, extra);
+            page.columns[columnNo - 1].items.push(item);
+            page.itemPlacements.push(item);
+            return item;
+        };
+        const flush = page => { if (page.itemPlacements.length) rawPages.push(page); };
+
+        const slotPolicy = blocks.some(block => block.placementKind === 'subjective-2up' || block.placementKind === 'subjective-4up');
+        if (slotPolicy) {
+            let slotPage = { page: createPlannerPage(), occupied: Array.from({ length: slotRows }, () => Array(columns).fill(false)), placements: [] };
+            const materializeSlotPage = () => {
+                if (!slotPage.placements.length) return;
+                const hasSpecialPlacement = slotPage.placements.some(placement => placement.span > 1);
+                if (!hasSpecialPlacement) {
+                    const ordered = slotPage.placements.slice().sort((left, right) => left.block.order - right.block.order);
+                    const split = Math.ceil(ordered.length / columns);
+                    ordered.slice(0, split).forEach(placement => addItem(slotPage.page, placement.block, 1, 1, { placementKind: placement.block.placementKind, slotSpanRows: placement.span }));
+                    ordered.slice(split).forEach(placement => addItem(slotPage.page, placement.block, 2, 1, { placementKind: placement.block.placementKind, slotSpanRows: placement.span }));
+                } else {
+                    slotPage.placements.slice().sort((left, right) => left.column - right.column || left.row - right.row || left.block.order - right.block.order)
+                        .forEach(placement => addItem(slotPage.page, placement.block, placement.column + 1, 1, {
+                            placementKind: placement.block.placementKind,
+                            slotSpanRows: placement.span
+                        }));
+                }
+                flush(slotPage.page);
+            };
+            const flushSlot = () => { materializeSlotPage(); slotPage = { page: createPlannerPage(), occupied: Array.from({ length: slotRows }, () => Array(columns).fill(false)), placements: [] }; };
+            const findSlot = span => {
+                for (let row = 0; row <= slotRows - span; row += 1) {
+                    for (let column = 0; column < columns; column += 1) {
+                        if (Array.from({ length: span }, (_, offset) => !slotPage.occupied[row + offset][column]).every(Boolean)) return { row, column, span };
+                    }
+                }
+                return null;
+            };
+            const repackForFullHeight = () => {
+                const usedSpan = slotPage.placements.reduce((sum, placement) => sum + placement.span, 0);
+                if (usedSpan > slotRows) return false;
+                slotPage.occupied = Array.from({ length: slotRows }, () => Array(columns).fill(false));
+                let row = 0;
+                slotPage.placements.forEach(placement => {
+                    placement.row = row; placement.column = 0;
+                    for (let offset = 0; offset < placement.span; offset += 1) slotPage.occupied[row + offset][0] = true;
+                    row += placement.span;
+                });
+                return true;
+            };
+            for (const block of blocks) {
+                if (block.columnSpan > 1) {
+                    flushSlot();
+                    const wide = createPlannerPage();
+                    addItem(wide, block, 1, columns, { placementKind: 'fullwidth', slotSpanRows: 1 });
+                    flush(wide);
+                    continue;
+                }
+                const span = Math.min(slotRows, block.slotSpanRows);
+                let placement = findSlot(span);
+                if (!placement && span === slotRows && repackForFullHeight()) placement = findSlot(span);
+                if (!placement) { flushSlot(); placement = findSlot(span); }
+                for (let offset = 0; offset < span; offset += 1) slotPage.occupied[placement.row + offset][placement.column] = true;
+                slotPage.placements.push({ block, ...placement });
+            }
+            materializeSlotPage();
+        } else {
+            let chunk = [];
+            const flushChunk = () => {
+                if (!chunk.length) return;
+                const page = createPlannerPage();
+                const split = Math.ceil(chunk.length / columns);
+                chunk.slice(0, split).forEach(block => addItem(page, block, 1, 1, { gapBefore: page.itemPlacements.length ? blockGap : 0 }));
+                chunk.slice(split).forEach(block => addItem(page, block, 2, 1, { gapBefore: page.columns[1].items.length ? blockGap : 0 }));
+                flush(page);
+                chunk = [];
+            };
+            for (const block of blocks) {
+                if (block.columnSpan > 1) {
+                    flushChunk();
+                    const page = createPlannerPage();
+                    addItem(page, block, 1, columns, { placementKind: 'fullwidth', slotSpanRows: 1 });
+                    flush(page);
+                    continue;
+                }
+                chunk.push(block);
+                if (chunk.length >= qpp) flushChunk();
+            }
+            flushChunk();
+        }
+        const pages = rawPages.map((page, index) => Object.freeze({
+            pageNo: index + 1,
+            isBlank: false,
+            columns: Object.freeze(page.columns.map(column => Object.freeze({ columnNo: column.columnNo, usedHeight: 0, items: Object.freeze(column.items.map(item => Object.freeze({ ...item }))) }))),
+            blockIds: Object.freeze(page.itemPlacements.map(item => item.blockId)),
+            questionKeys: Object.freeze(Array.from(new Set(page.itemPlacements.map(item => item.questionKey)))),
+            slotOccupancy: page.itemPlacements.reduce((sum, item) => sum + (item.continuationOf ? 0 : item.slotOccupancy), 0),
+            itemPlacements: Object.freeze(page.itemPlacements.map(item => Object.freeze({ ...item })))
+        }));
+        const columnMap = pages.flatMap(page => page.columns.flatMap(column => column.items
+            .filter(item => item.columnSpan === 1 || column.columnNo === 1)
+            .map(item => Object.freeze({ pageNo: page.pageNo, ...item }))));
+        const continuationMap = columnMap.filter(item => item.continuationOf).map(item => Object.freeze({ continuationBlockId: item.blockId, sourceBlockId: item.continuationOf, pageNo: item.pageNo }));
+        return Object.freeze({ pages: Object.freeze(pages), columnMap: Object.freeze(columnMap), continuationMap: Object.freeze(continuationMap), overflowEvidence: Object.freeze(overflowEvidence), qpp, columns, blockGap, measurementMode, slotRows, usableHeight, planner: 'LEGACY_SLOT_CHUNK_POLICY' });
+    }
+
+    function coordinateColumnMap(pages) {
+        return Object.freeze(pages.flatMap(page => {
+            const seenWide = new Set();
+            return page.columns.flatMap(column => column.items.filter(item => {
+                if (item.columnSpan <= 1) return true;
+                if (seenWide.has(item.blockId)) return false;
+                seenWide.add(item.blockId);
+                return true;
+            }).map(item => Object.freeze({ pageNo: page.pageNo, ...item })));
+        }));
+    }
+
     function materializeLayoutMaps(layout, blockMap, options) {
         if (!C) fail('APPrintContract must load before APLayoutAuthority');
         const lookup = blockMap || {};
@@ -209,7 +360,7 @@
             };
         });
         const pageMap = C.createPageMap({ pages });
-        return Object.freeze({ pageMap, columnMap: layout.columnMap, continuationMap: layout.continuationMap, overflowEvidence: layout.overflowEvidence });
+        return Object.freeze({ pageMap, columnMap: coordinateColumnMap(layout.pages), continuationMap: layout.continuationMap, overflowEvidence: layout.overflowEvidence });
     }
 
     function materializePageMap(layout, blockMap, options) {
@@ -243,7 +394,8 @@
                         continuationOf: rawItem.continuationOf ? String(rawItem.continuationOf) : '',
                         slotOccupancy: rawItem.slotOccupancy === undefined ? 1 : Number(rawItem.slotOccupancy),
                         measurementMode: rawItem.measurementMode === 'tight' ? 'tight' : 'raw',
-                        order: itemIndex,
+                        columnOrder: rawItem.columnOrder === undefined ? itemIndex : Number(rawItem.columnOrder),
+                        placementOrder: rawItem.placementOrder === undefined ? itemIndex : Number(rawItem.placementOrder),
                         sourceRef: record.sourceRef,
                         displayNo: record.displayNo,
                         sectionId: record.sectionId || config.sectionId || '',
@@ -285,7 +437,9 @@
             slotSpanRows: item.slotSpanRows,
             continuationOf: item.continuationOf,
             slotOccupancy: item.slotOccupancy,
-            measurementMode: item.measurementMode
+            measurementMode: item.measurementMode,
+            columnOrder: item.columnOrder,
+            placementOrder: item.placementOrder
         }))));
         const continuationMap = columnMap.filter(item => item.continuationOf).map(item => Object.freeze({
             continuationBlockId: item.blockId,
@@ -302,7 +456,9 @@
     }
 
     function buildExpectedLayoutMaps(input, blockMap, options) {
-        const layout = paginateRenderableBlocks(input);
+        const layout = (input?.planner === 'LEGACY_SLOT_CHUNK_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SLOT_CHUNK_POLICY')
+            ? planLegacyProductionLayout(input)
+            : paginateRenderableBlocks(input);
         return Object.freeze({ layout, ...materializeLayoutMaps(layout, blockMap, options) });
     }
 
@@ -333,7 +489,9 @@
             layoutTag: item.layoutTag || '',
             placementKind: item.placementKind || 'normal',
             slotSpanRows: item.slotSpanRows || 1,
-            continuationOf: item.continuationOf || ''
+            continuationOf: item.continuationOf || '',
+            columnOrder: item.columnOrder || 0,
+            placementOrder: item.placementOrder || 0
         });
     }
 
@@ -361,7 +519,9 @@
         compareList('column', legacy.columnMap.map(columnSignature).sort(), shared.columnMap.map(columnSignature).sort());
         compareList('continuation', legacy.continuationMap.map(item => `${item.pageNo}:${item.continuationBlockId}:${item.sourceBlockId}`), shared.continuationMap.map(item => `${item.pageNo}:${item.continuationBlockId}:${item.sourceBlockId}`));
         compareList('blankPage', legacy.pageMap.pages.filter(page => page.hasBlankPage).map(page => page.pageNo), shared.pageMap.pages.filter(page => page.hasBlankPage).map(page => page.pageNo));
-        compareList('overflow', legacy.overflowEvidence.map(item => `${item.blockId}:${item.code || ''}`), shared.overflowEvidence.map(item => `${item.blockId}:${item.code || ''}`));
+        const observedOverflow = legacy.renderedOverflow || [];
+        const expectedOverflow = shared.renderedOverflow || [];
+        compareList('overflow', observedOverflow.map(item => `${item.pageNo}:${item.code}:${item.sourceRef || ''}`), expectedOverflow.map(item => `${item.pageNo}:${item.code}:${item.sourceRef || ''}`));
         if (legacy.qpp !== shared.layout.qpp) differences.push(Object.freeze({ field: 'qpp', observed: legacy.qpp, expected: shared.layout.qpp }));
 
         const observedCounts = countPrimaryRefs(legacy.pageMap);
@@ -398,6 +558,7 @@
         const qpp = positiveInteger(config.qpp, 'LEGACY_LAYOUT_QPP', columns * 2);
         const pageNodes = Array.from(root.querySelectorAll('.page'));
         const blockMap = {};
+        const elementsByBlockId = {};
         const expectedBlocks = [];
         const overflowEvidence = [];
         const primaryBySource = new Map();
@@ -408,6 +569,7 @@
             if (pageNode.classList.contains('page-blank')) return { pageNo, isBlank: true, columns: [] };
             const columnItems = Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] }));
             const itemNodes = Array.from(pageNode.querySelectorAll('.q-box[data-source-ref], .ans-cell[data-source-ref]:not(.ans-cell-empty)'));
+            let pagePlacementOrder = 0;
             itemNodes.forEach(node => {
                 const sourceKey = String(node.getAttribute('data-source-ref') || '').trim();
                 const record = config.resolveRecord(sourceKey, node);
@@ -429,7 +591,12 @@
                 const slotRows = Math.max(1, Math.ceil(qpp / columns));
                 const slotSpanRows = layoutTag === 'subjective-2up' ? slotRows : layoutTag === 'subjective-4up' ? Math.max(1, Math.ceil(slotRows / 2)) : 1;
                 const placementKind = layoutTag === 'subjective-2up' ? 'subjective-2up' : layoutTag === 'subjective-4up' ? 'subjective-4up' : impliedFullWidth ? 'fullwidth' : 'normal';
-                const measuredHeight = Math.max(1, Number(node.getBoundingClientRect?.().height || node.offsetHeight || node.scrollHeight || 1));
+                const measurements = record.measurements || {};
+                const measuredHeight = Number(measurements.raw);
+                const tightHeight = Number(measurements.tight);
+                if (!Number.isFinite(measuredHeight) || measuredHeight <= 0 || !Number.isFinite(tightHeight) || tightHeight <= 0) {
+                    fail('MISSING_STAGING_MEASUREMENT_LEDGER:' + sourceKey);
+                }
                 const container = gridColumn || pageNode;
                 if (container.clientHeight > 0 && node.scrollHeight > container.clientHeight + 2) {
                     overflowEvidence.push({ blockId, code: 'LEGACY_BLOCK_OVERFLOW', measuredHeight, usableHeight: container.clientHeight, measurementMode: 'raw' });
@@ -442,6 +609,7 @@
                     layoutTag,
                     wide: record.wide === true
                 };
+                elementsByBlockId[blockId] = node;
                 const item = {
                     blockId,
                     questionKey: sourceKey,
@@ -452,14 +620,16 @@
                     slotSpanRows,
                     slotOccupancy: continuationOf ? 0 : slotSpanRows,
                     continuationOf,
-                    measurementMode: 'raw'
+                    measurementMode: 'raw',
+                    columnOrder: columnItems[columnNo - 1].items.length,
+                    placementOrder: pagePlacementOrder++
                 };
                 columnItems[columnNo - 1].items.push(item);
                 expectedBlocks.push({
                     blockId,
                     questionKey: sourceKey,
                     measuredHeight,
-                    measurements: { raw: measuredHeight, tight: measuredHeight },
+                    measurements: { raw: measuredHeight, tight: tightHeight },
                     layoutTag,
                     columnSpan,
                     slotOccupancy: continuationOf ? 0 : slotSpanRows,
@@ -469,21 +639,90 @@
             });
             return { pageNo, isBlank: false, columns: columnItems };
         });
-        const capacities = pageNodes.map(page => Number(page.querySelector('.page-body, .grid-container')?.clientHeight || page.clientHeight || 0)).filter(value => value > 0);
-        const usableHeight = Math.max(1, config.usableHeight || (capacities.length ? Math.max(...capacities) : 1));
+        const usableHeight = positive(config.usableHeight, 'STAGING_USABLE_HEIGHT');
         return Object.freeze({
             legacyInput: Object.freeze({ pages, overflowEvidence, qpp }),
             expectedInput: Object.freeze({
-                pageGeometry: { usableHeight, columns, qpp, blockGap: Number(config.blockGap || 0), measurementMode: 'raw' },
+                pageGeometry: { usableHeight, columns, qpp, blockGap: Number(config.blockGap || 0), measurementMode: 'raw', planner: 'LEGACY_SLOT_CHUNK_POLICY' },
                 blocks: expectedBlocks.slice().sort((left, right) => {
                     const leftRecord = blockMap[left.blockId];
                     const rightRecord = blockMap[right.blockId];
                     return leftRecord.displayNo - rightRecord.displayNo || left.blockId.localeCompare(right.blockId);
                 })
             }),
-            blockMap: Object.freeze(blockMap)
+            blockMap: Object.freeze(blockMap),
+            elementsByBlockId: Object.freeze(elementsByBlockId)
         });
     }
 
-    return Object.freeze({ paginateRenderableBlocks, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout });
+    function inspectRenderedOverflow(root, options) {
+        const config = options || {};
+        const tolerance = Math.max(0, Number(config.tolerance ?? 2) || 0);
+        const pages = Array.from(root?.querySelectorAll?.('.page') || []);
+        const evidence = [];
+        pages.forEach((page, pageIndex) => {
+            if (page.classList.contains('page-blank')) return;
+            const pageNo = pageIndex + 1;
+            const body = page.querySelector('.page-body') || page;
+            if (body.clientHeight > 0 && body.scrollHeight > body.clientHeight + tolerance) {
+                evidence.push(Object.freeze({ pageNo, code: 'PAGE_BODY_CLIPPING', sourceRef: '' }));
+            }
+            Array.from(page.querySelectorAll('.q-box[data-source-ref], .ans-cell[data-source-ref]:not(.ans-cell-empty)')).forEach(node => {
+                const container = node.closest('.grid-col') || body;
+                if (container.clientHeight > 0 && node.scrollHeight > container.clientHeight + tolerance) {
+                    evidence.push(Object.freeze({ pageNo, code: 'BLOCK_CLIPPING', sourceRef: String(node.getAttribute('data-source-ref') || '') }));
+                }
+            });
+        });
+        return Object.freeze(evidence);
+    }
+
+    function renderSharedLayoutWitness(area, layout, options) {
+        const root = area?.ownerDocument;
+        if (!root || !layout || typeof options?.resolveElement !== 'function') fail('INVALID_LAYOUT_WITNESS_INPUT');
+        const host = root.createElement('div');
+        host.dataset.layoutAuthorityWitness = '1';
+        host.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:210mm;pointer-events:none;';
+        layout.pages.forEach(pageLayout => {
+            const page = root.createElement('section');
+            page.className = pageLayout.isBlank ? 'page page-blank' : 'page';
+            const body = root.createElement('div');
+            body.className = 'page-body';
+            body.style.cssText = 'flex:1;display:flex;flex-direction:column;min-height:0;';
+            page.appendChild(body);
+            if (!pageLayout.isBlank) {
+                const perColumn = Array.from({ length: layout.columns }, () => []);
+                pageLayout.itemPlacements.forEach(item => {
+                    if (item.columnSpan > 1) perColumn[0].push(item);
+                    else perColumn[item.columnNo - 1].push(item);
+                });
+                const hasWide = pageLayout.itemPlacements.some(item => item.columnSpan > 1);
+                if (hasWide) {
+                    perColumn[0].forEach(item => {
+                        const node = options.resolveElement(item.blockId);
+                        if (node) body.appendChild(node.cloneNode(true));
+                    });
+                } else {
+                    const grid = root.createElement('div');
+                    grid.className = 'grid-container';
+                    grid.style.cssText = 'flex:1 1 0;min-height:0;';
+                    perColumn.forEach((items, index) => {
+                        const column = root.createElement('div');
+                        column.className = 'grid-col';
+                        items.slice().sort((left, right) => left.columnOrder - right.columnOrder).forEach(item => {
+                            const node = options.resolveElement(item.blockId);
+                            if (node) column.appendChild(node.cloneNode(true));
+                        });
+                        grid.appendChild(column);
+                    });
+                    body.appendChild(grid);
+                }
+            }
+            host.appendChild(page);
+        });
+        root.body.appendChild(host);
+        return host;
+    }
+
+    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, renderSharedLayoutWitness });
 }));
