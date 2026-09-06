@@ -22,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="../archive/render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="../archive/print-runtime.js?v=20260906.1" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
+    <script src="../archive/print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
@@ -179,7 +179,7 @@ const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam', previewParentPayloadReceived: false, dualRunQuestions: [] };
 let clinicReadinessTracker = null;
-if (typeof window !== 'undefined') window.__AP_RENDER_READY__ = Promise.resolve();
+if (typeof window !== 'undefined') window.__AP_RENDER_READY__ = Promise.resolve({ ok: true, initial: true });
 
 function beginClinicReadiness() {
     if (!window.APPrintRuntime?.createReadinessTracker) return null;
@@ -199,8 +199,27 @@ function markClinicReadiness(stateName, evidence) {
     }
 }
 
+function failClinicReadiness(code, evidence) {
+    const failure = { code: String(code || 'RENDER_FAILED'), ...(evidence || {}) };
+    try {
+        clinicReadinessTracker?.fail(failure.code, failure);
+        document.documentElement.dataset.apPrintReadiness = JSON.stringify(clinicReadinessTracker?.snapshot() || { adapter: 'ClinicAdapter', failed: true, failure });
+    } catch (error) {
+        console.warn('[wrong_print_engine] readiness failure evidence write failed', error);
+    }
+    return failure;
+}
+
 async function clinicSafePrint() {
-    await window.__AP_RENDER_READY__;
+    const renderOutcome = await window.__AP_RENDER_READY__;
+    try {
+        if (window.APPrintRuntime?.assertSuccessfulRender) window.APPrintRuntime.assertSuccessfulRender(renderOutcome);
+        else if (!renderOutcome || renderOutcome.ok !== true) throw Object.assign(new Error('RENDER_TRANSACTION_INCOMPLETE'), { code: 'RENDER_TRANSACTION_INCOMPLETE' });
+    } catch (error) {
+        console.warn('[wrong_print_engine] print blocked by incomplete render transaction', error);
+        window.alert('출력 렌더 또는 이미지 준비가 완료되지 않아 인쇄를 시작하지 않았습니다. 화면의 오류를 확인한 뒤 다시 시도해 주세요.');
+        return;
+    }
     markClinicReadiness('PRINT_READY', { transport: 'browser', pages: document.querySelectorAll('#print-area .page').length });
     window.print();
 }
@@ -815,19 +834,24 @@ function autoImageSizeClassFor(img) {
     return 'image-medium';
 }
 
-function waitForQuestionImage(img) {
-    if (!img || img.complete) return Promise.resolve();
-    return new Promise(resolve => {
-        let done = false;
-        const finish = () => {
-            if (done) return;
-            done = true;
-            resolve();
-        };
-        img.addEventListener('load', finish, { once: true });
-        img.addEventListener('error', finish, { once: true });
-        setTimeout(finish, 1200);
-    });
+function waitForQuestionImage(img, timeoutMs = 1200) {
+    if (!img) return Promise.resolve({ status: 'error', reason: 'MISSING_IMAGE' });
+    if (img.complete) return Promise.resolve(img.naturalWidth > 0 ? { status: 'loaded' } : { status: 'error', reason: 'COMPLETE_WITHOUT_DIMENSIONS' });
+    return Promise.race([
+        new Promise(resolve => {
+            img.addEventListener('load', () => resolve(img.naturalWidth > 0 ? { status: 'loaded' } : { status: 'error', reason: 'LOADED_WITHOUT_DIMENSIONS' }), { once: true });
+            img.addEventListener('error', () => resolve({ status: 'error', reason: 'LOAD_ERROR' }), { once: true });
+        }),
+        new Promise(resolve => setTimeout(() => resolve({ status: 'timeout', reason: 'LOAD_TIMEOUT' }), timeoutMs))
+    ]);
+}
+
+async function waitForClinicPrintImages(root, timeoutMs = 5000) {
+    const results = await Promise.all(Array.from(root?.querySelectorAll('img') || []).map(img => waitForQuestionImage(img, timeoutMs)));
+    if (window.APPrintRuntime?.summarizeImageReadiness) return window.APPrintRuntime.summarizeImageReadiness(results);
+    const bad = results.find(result => result.status !== 'loaded');
+    if (bad) { const error = new Error('IMAGE_READINESS_INCOMPLETE'); error.code = 'IMAGE_READINESS_INCOMPLETE'; throw error; }
+    return { images: results.length, loaded: results.length, errors: 0, timeouts: 0 };
 }
 
 async function applyAutoImageSizeClasses(root) {
@@ -2155,53 +2179,61 @@ async function waitForMathJaxOrContinue(timeoutMs = AP_MATHJAX_WAIT_MS) {
 }
 
 async function render() {
-    let markRendered;
-    window.__AP_RENDER_READY__ = new Promise(resolve => { markRendered = resolve; });
+    let settleRender;
+    window.__AP_RENDER_READY__ = new Promise(resolve => { settleRender = resolve; });
     beginClinicReadiness();
-    await waitForMathJaxOrContinue();
-    markClinicReadiness('MATH_READY', { source: window.__AP_MATHJAX_SOURCE__ || 'unknown' });
-    const area = document.getElementById('print-area');
-    state.dualRunQuestions = [];
-    area.innerHTML = '<div class="notice">오답 문항을 불러오는 중입니다.</div>';
-    await loadAllQuestionBanks(state.payload);
-    area.innerHTML = '';
+    try {
+        await waitForMathJaxOrContinue();
+        markClinicReadiness('MATH_READY', { source: window.__AP_MATHJAX_SOURCE__ || 'unknown' });
+        const area = document.getElementById('print-area');
+        state.dualRunQuestions = [];
+        area.innerHTML = '<div class="notice">오답 문항을 불러오는 중입니다.</div>';
+        await loadAllQuestionBanks(state.payload);
+        area.innerHTML = '';
 
-    if (state.mode === 'ans') {
-        renderAns(area, state.payload);
-    } else if (state.mode === 'review') {
-        await renderStudentReviewPacket(area, state.payload);
-    } else if (state.mode === 'sol') {
-        await renderSol(area, state.payload);
-    } else if (state.payload.mode === 'type') {
-        await renderTypePages(area, state.payload);
-    } else if (state.payload.mode === 'grade') {
-        await renderGradePages(area, state.payload);
-    } else if (state.payload.mode === 'class') {
-        await renderClassPages(area, state.payload);
-    } else {
-        await renderStudentPages(area, state.payload);
-    }
+        if (state.mode === 'ans') {
+            renderAns(area, state.payload);
+        } else if (state.mode === 'review') {
+            await renderStudentReviewPacket(area, state.payload);
+        } else if (state.mode === 'sol') {
+            await renderSol(area, state.payload);
+        } else if (state.payload.mode === 'type') {
+            await renderTypePages(area, state.payload);
+        } else if (state.payload.mode === 'grade') {
+            await renderGradePages(area, state.payload);
+        } else if (state.payload.mode === 'class') {
+            await renderClassPages(area, state.payload);
+        } else {
+            await renderStudentPages(area, state.payload);
+        }
 
-    if (!area.textContent.trim()) {
-        area.innerHTML = '<div class="notice">출력할 오답 문항이 없습니다.</div>';
-        markClinicReadiness('IMAGE_READY', { images: 0 });
-        markClinicReadiness('LAYOUT_READY', { pages: 0, mode: state.mode });
-        markClinicReadiness('RENDER_READY', { mode: state.mode, pages: 0 });
-        markRendered();
-        return;
-    }
+        if (!area.textContent.trim()) {
+            area.innerHTML = '<div class="notice">출력할 오답 문항이 없습니다.</div>';
+            markClinicReadiness('IMAGE_READY', { images: 0, loaded: 0, errors: 0, timeouts: 0 });
+            markClinicReadiness('LAYOUT_READY', { pages: 0, mode: state.mode });
+            markClinicReadiness('RENDER_READY', { mode: state.mode, pages: 0 });
+            settleRender({ ok: true, mode: state.mode, pages: 0 });
+            return;
+        }
 
-    if (window.MathJax?.typesetPromise) {
-        try { await MathJax.typesetPromise([area]); } catch (e) { console.warn(e); }
+        if (window.MathJax?.typesetPromise) {
+            try { await MathJax.typesetPromise([area]); } catch (e) { console.warn(e); }
+        }
+        await raf();
+        const imageReadiness = await waitForClinicPrintImages(area);
+        markClinicReadiness('IMAGE_READY', imageReadiness);
+        await recordClinicDualRun(area);
+        markClinicReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: state.mode });
+        markClinicReadiness('RENDER_READY', { mode: state.mode, pages: area.querySelectorAll('.page').length });
+        settleRender({ ok: true, mode: state.mode, pages: area.querySelectorAll('.page').length });
+        enableHeaderInlineEdit();
+        updateScreenFitScale();
+    } catch (error) {
+        const outcome = { ok: false, code: error?.code === 'IMAGE_READINESS_INCOMPLETE' ? 'IMAGE_READINESS_INCOMPLETE' : 'RENDER_FAILED', message: String(error?.message || error), mode: state.mode };
+        failClinicReadiness(outcome.code, outcome);
+        settleRender(outcome);
+        console.error('[wrong_print_engine] render transaction failed; PRINT_READY is blocked', error);
     }
-    await raf();
-    await recordClinicDualRun(area);
-    markClinicReadiness('IMAGE_READY', { images: area.querySelectorAll('img').length });
-    markClinicReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: state.mode });
-    markClinicReadiness('RENDER_READY', { mode: state.mode, pages: area.querySelectorAll('.page').length });
-    markRendered();
-    enableHeaderInlineEdit();
-    updateScreenFitScale();
 }
 
 function shouldUseScreenFit(params) {
