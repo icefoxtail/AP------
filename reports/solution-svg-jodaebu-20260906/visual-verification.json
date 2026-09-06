@@ -1,0 +1,35 @@
+{
+  "scope": "조대부고 2023·2024 수학II 시험지 해설 SVG 일괄 업그레이드",
+  "rulePack": {
+    "canonical": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+    "commonProtocol": "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
+    "visual": "docs/rules/04_VISUAL/도형추출.md",
+    "geometrySolutionSvg": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+    "manifestHashCheck": "PASS"
+  },
+  "targets": {
+    "23_조대부고_2학기_중간_고2_수학II": [1, 11, 16, 23],
+    "24_조대부고_2학기_중간_고2_수학II": [1, 5, 7, 8, 12, 15, 16, 17, 18]
+  },
+  "structuralChecks": {
+    "svgCount": 13,
+    "xmlParse": "PASS",
+    "viewBoxWidthHeight": "PASS",
+    "preserveAspectRatio": "PASS",
+    "latexOrMathJaxInsideSvg": "PASS",
+    "brInsideSvg": "PASS",
+    "solutionImageStatus": "asset_verified"
+  },
+  "mathChecks": {
+    "2023-Q23-CD-and-limit": "PASS: CD=t/√3; limit=6√3",
+    "2024-Q8-tangent-selection": "PASS: t=0,2; negative slope t=2; pq=-21",
+    "2024-Q12-continuity-roots": "PASS: k=-1, 2−√2, 2+√2, 5; sum=8",
+    "2024-Q15-tangent-at-minus3": "PASS: f(-3)=2; slope=-1; a=10",
+    "2024-Q16-y-intercept-function": "PASS: g(t)=-2t³+3t²; a=-6; b=20; a+b=14",
+    "2024-Q17-intersection-boundaries": "PASS: a=3; b=8/3; ab=8",
+    "2024-Q18-one-sided-derivatives": "PASS: f(2)=0; left=2; right=-2",
+    "allChecks": "PASS"
+  },
+  "dbAndIndex": "DB_UNCHANGED; question-index regenerated for hasSolutionImage parity",
+  "browserRender": "PASS: see browser-render-check.md"
+}
