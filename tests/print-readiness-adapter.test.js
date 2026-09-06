@@ -16,6 +16,8 @@ test('all three adapters load the shared readiness tracker without collapsing tr
     assert.match(source, /LAYOUT_READY/);
     assert.match(source, /RENDER_READY/);
     assert.match(source, /PRINT_READY/);
+    assert.match(source, /Promise\.resolve\(\{ ok: false, code: 'RENDER_NOT_STARTED' \}\)/, `${name} starts fail-closed before first render`);
+    assert.doesNotMatch(source, /Promise\.resolve\(\{ ok: true, initial: true \}\)/, `${name} cannot claim initial render success`);
   }
   assert.match(archive, /safePrint\('vector'\)/);
   assert.match(mixer, /safePrint\('vector'\)/);
@@ -51,9 +53,11 @@ test('readiness phase evidence distinguishes rendered readiness from an intentio
   assert.deepEqual(evidence.states, ['DATA_READY', 'MATH_READY', 'IMAGE_READY', 'LAYOUT_READY', 'RENDER_READY', 'PRINT_READY']);
   assert.ok(evidence.browserRenderEvidence.every(item => item.state === 'RENDER_READY' && item.events === 5 && item.renderError === ''));
   assert.equal(evidence.runtimeVersion, '20260906.2');
+  assert.match(evidence.hardening.initialSentinel, /RENDER_NOT_STARTED/);
   assert.match(evidence.hardening.renderReady, /only after renderBody succeeds/);
   assert.match(evidence.hardening.imageReady, /reject load error/);
   assert.deepEqual(evidence.hardening.negativeTests, [
+    'initial sentinel blocks all transports',
     'intentional render failure blocks RENDER_READY and PRINT_READY',
     'intentional image error blocks IMAGE_READY',
     'intentional image timeout blocks IMAGE_READY'

@@ -179,7 +179,7 @@ const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
 const QR_URL_LENGTH = { safe: 1200, warn: 1800 };
 const state = { payload: null, banks: {}, mode: 'exam', previewParentPayloadReceived: false, dualRunQuestions: [] };
 let clinicReadinessTracker = null;
-if (typeof window !== 'undefined') window.__AP_RENDER_READY__ = Promise.resolve({ ok: true, initial: true });
+if (typeof window !== 'undefined') window.__AP_RENDER_READY__ = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
 
 function beginClinicReadiness() {
     if (!window.APPrintRuntime?.createReadinessTracker) return null;

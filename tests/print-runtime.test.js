@@ -34,6 +34,13 @@ test('a failed transaction cannot reach RENDER_READY or PRINT_READY', () => {
   assert.throws(() => R.assertSuccessfulRender({ ok: false, code: 'RENDER_FAILED' }), error => error.code === 'RENDER_TRANSACTION_INCOMPLETE');
 });
 
+test('the pre-render sentinel is fail-closed for every selected print transport', () => {
+  assert.throws(
+    () => R.assertSuccessfulRender({ ok: false, code: 'RENDER_NOT_STARTED' }),
+    error => error.code === 'RENDER_TRANSACTION_INCOMPLETE' && error.details.outcome.code === 'RENDER_NOT_STARTED'
+  );
+});
+
 test('image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence', () => {
   assert.deepEqual(R.summarizeImageReadiness([{ status: 'loaded' }, { status: 'loaded' }]), {
     images: 2, loaded: 2, errors: 0, timeouts: 0
