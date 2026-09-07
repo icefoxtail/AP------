@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_INPUT_v1",
+  "questionId": 13,
+  "svg": "archive/assets/images/25_매산고_2학기_중간_고2_수학II/q13-solution.svg",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 90,
+    "originY": 380,
+    "sx": 120,
+    "sy": 120,
+    "anchors": {
+      "origin": { "type": "INTERSECTION", "elements": ["x-axis", "y-axis"], "expected": [0, 0] },
+      "xAxis": { "element": "anchor-x-unit", "expected": [1, 0] },
+      "yAxis": { "element": "anchor-y-unit", "expected": [0, 1] }
+    }
+  },
+  "tolerance": 0.00001,
+  "expectedFacts": [
+    { "factId": "q13-point-o", "type": "POINT", "element": "point-o", "expected": [0, 0] },
+    { "factId": "q13-point-p", "type": "POINT", "element": "point-p", "expected": [1, 1] },
+    { "factId": "q13-point-q", "type": "POINT", "element": "point-q", "expected": [1.4142135623730951, 0] },
+    { "factId": "q13-circumcenter", "type": "POINT", "element": "point-c", "expected": [0.7071067811865476, 0.2928932188134524] },
+    { "factId": "q13-opposite-point", "type": "POINT", "element": "point-r", "expected": [1.4142135623730951, 0.5857864376269049] },
+    { "factId": "q13-center-midpoint", "type": "MIDPOINT", "element": "point-c", "points": ["point-o", "point-r"], "expected": [0.7071067811865476, 0.2928932188134524] },
+    { "factId": "q13-op-slope", "type": "LINE_SLOPE", "element": "side-op", "expected": 1 },
+    { "factId": "q13-diameter-slope", "type": "LINE_SLOPE", "element": "diameter-or", "expected": 0.4142135623730951 }
+  ],
+  "renderResult": "PASS"
+}
