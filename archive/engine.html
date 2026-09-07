@@ -36,6 +36,7 @@
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20260906.25" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="solution-render-executor.js?v=20260907.1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="answer-render-executor.js?v=20260907.1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -2426,7 +2427,7 @@ async function renderSol(area, data) {
     const authority = requestedAuthority || 'shared';
     if (authority === 'legacy') return renderSolLegacy(area, data);
     if (authority !== 'shared') throw new Error(`UNKNOWN_SOLUTION_AUTHORITY:${authority}`);
-    if (!window.APSolutionRenderExecutor?.render) throw new Error('SOLUTION_EXECUTOR_UNAVAILABLE');
+    if (!window.APSolutionRenderExecutor?.render) return renderSolLegacy(area, data);
     return window.APSolutionRenderExecutor.render({ area, data, deps: archiveSolutionDeps });
 }
 
@@ -2443,7 +2444,7 @@ function formatGridAnswer(answer) {
     return wrapLatex(value);
 }
 
-function renderAns(area, data, perPage = 40) {
+function renderAnsLegacy(area, data, perPage = 40) {
     const PER_PAGE = perPage; let pCount = 1; // 기본 열당 20개, 실제 높이가 넘치면 renderBody에서 자동 축소한다
     for (let start = 0; start < data.length; start += PER_PAGE) {
         const chunk = data.slice(start, start + PER_PAGE);
@@ -2528,6 +2529,22 @@ async function render() {
         window.APRenderLoop?.finish(document.getElementById('print-area'));
         settleRender(outcome || { ok: false, code: 'RENDER_FAILED', message: 'missing render outcome' });
     }
+}
+
+const archiveAnswerDeps = Object.freeze({
+    get document() { return document; },
+    makePage,
+    getArchiveQuestionSourceRef,
+    formatGridAnswer
+});
+
+function renderAns(area, data, perPage = 40) {
+    const requestedAuthority = new URLSearchParams(window.location.search).get('answerAuthority');
+    const authority = requestedAuthority || 'shared';
+    if (authority === 'legacy') return renderAnsLegacy(area, data, perPage);
+    if (authority !== 'shared') throw new Error(`UNKNOWN_ANSWER_AUTHORITY:${authority}`);
+    if (!window.APAnswerRenderExecutor?.render) return renderAnsLegacy(area, data, perPage);
+    return window.APAnswerRenderExecutor.render({ area, data, perPage, deps: archiveAnswerDeps });
 }
 
 async function renderBody() {
