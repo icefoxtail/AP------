@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+  "questionId": 20,
+  "svg": "archive/assets/images/25_제일고_2학기_중간_고2_수학II/q20-solution.svg",
+  "svgSha256": "sha256:342fb89fe408faac3d75ae4924e060d703e17abae1b7be19cf0e2922f76427c1",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 100,
+    "originY": 405,
+    "sx": 85,
+    "sy": 85,
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "anchor-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "anchor-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFactCount": 8,
+  "observedFactCount": 8,
+  "factParityPassCount": 8,
+  "coordinateModelParity": "PASS",
+  "coordinateModelAnchors": [
+    {
+      "role": "origin",
+      "type": "INTERSECTION",
+      "element": [
+        "x-axis",
+        "y-axis"
+      ],
+      "expected": [
+        0,
+        0
+      ],
+      "observed": [
+        0,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "xAxis",
+      "type": "POINT",
+      "element": "anchor-x-unit",
+      "expected": [
+        1,
+        0
+      ],
+      "observed": [
+        1,
+        0
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "role": "yAxis",
+      "type": "POINT",
+      "element": "anchor-y-unit",
+      "expected": [
+        0,
+        1
+      ],
+      "observed": [
+        0,
+        1
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "tolerancePolicy": {
+    "maxTolerance": 0.05,
+    "defaultTolerance": 0.00001,
+    "status": "PASS"
+  },
+  "elementExtractionStatus": "PASS",
+  "observedFactStatus": "PASS",
+  "expectedObservedParity": "PASS",
+  "facts": [
+    {
+      "factId": "q20-center",
+      "type": "POINT",
+      "element": "point-c",
+      "expected": [
+        2,
+        1.5
+      ],
+      "observed": [
+        2,
+        1.5
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-contact",
+      "type": "POINT",
+      "element": "point-t",
+      "expected": [
+        1.75,
+        1.75
+      ],
+      "observed": [
+        1.75,
+        1.75
+      ],
+      "delta": [
+        0,
+        0
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-tangent-slope",
+      "type": "LINE_SLOPE",
+      "element": "tangent-y-equals-x",
+      "expected": 1,
+      "observed": 1,
+      "delta": 0,
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-radius-slope",
+      "type": "LINE_SLOPE",
+      "element": "radius-ct",
+      "expected": -1,
+      "observed": -1,
+      "delta": 0,
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-perpendicular",
+      "type": "PERPENDICULAR",
+      "element": [
+        "tangent-y-equals-x",
+        "radius-ct"
+      ],
+      "expected": true,
+      "observed": {
+        "residual": 0,
+        "leftDirection": [
+          4.705882352941177,
+          4.705882352941177
+        ],
+        "rightDirection": [
+          -0.25,
+          0.25
+        ]
+      },
+      "delta": 0,
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-contact-intersection",
+      "type": "INTERSECTION",
+      "element": [
+        "tangent-y-equals-x",
+        "radius-ct"
+      ],
+      "expected": [
+        1.75,
+        1.75
+      ],
+      "observed": [
+        1.7500000000000002,
+        1.7500000000000002
+      ],
+      "delta": [
+        2.220446049250313e-16,
+        2.220446049250313e-16
+      ],
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-center-ray-slope",
+      "type": "LINE_SLOPE",
+      "element": "center-distance-oc",
+      "expected": 0.75,
+      "observed": 0.75,
+      "delta": 0,
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    },
+    {
+      "factId": "q20-outer-ray-slope",
+      "type": "LINE_SLOPE",
+      "element": "max-radius-cp",
+      "expected": 0.75,
+      "observed": 0.7500000000000008,
+      "delta": 7.771561172376096e-16,
+      "tolerance": 0.00001,
+      "result": "PASS",
+      "reason": null
+    }
+  ],
+  "svgMathStatus": "PASS",
+  "renderResult": "PASS",
+  "svgFinalStatus": "PASS",
+  "failures": []
+}
