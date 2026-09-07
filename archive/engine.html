@@ -37,6 +37,7 @@
     <script src="layout-authority.js?v=20260906.25" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="solution-render-executor.js?v=20260907.1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20260907.1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="exam-render-executor.js?v=20260907.1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -1830,7 +1831,7 @@ function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${withArchiveAssetCacheBuster(q.image)}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image))}"></div>`;
 }
 
 function withArchiveAssetCacheBuster(src) {
@@ -1906,7 +1907,7 @@ async function applyAutoImageSizeClasses(root) {
 }
 
 
-async function renderExam(area, data) {
+async function renderExamLegacy(area, data) {
     const staging = document.getElementById('staging'); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
     const items = data.map((q, i) => {
@@ -2134,6 +2135,41 @@ async function renderExam(area, data) {
             if (rendererMode() === 'legacy') await typesetMath('exam-page-overflow', [page]);
         }
     }
+}
+
+const archiveExamDeps = Object.freeze({
+    get document() { return document; },
+    appState: AppState,
+    makePage,
+    applyAutoImageSizeClasses,
+    typesetMath,
+    raf,
+    getArchiveQuestionSourceRef,
+    stripInlineImagesFromContent,
+    sanitizeProtectedSegments,
+    normalizeQuestionNotes,
+    normalizeViewBlocks,
+    normalizeQuestionTables,
+    formatQuestionContent,
+    wrapLatex,
+    renderQuestionImageHTML,
+    renderChoicesHTML,
+    fitQuestionBox,
+    autoCompress,
+    rendererMode,
+    SE_OVERHEAD_COL,
+    SE_OVERHEAD_GRID,
+    SE_PAGE_TOLERANCE,
+    SE_BLOCK_GAP
+});
+
+async function renderExam(area, data) {
+    const requestedAuthority = new URLSearchParams(window.location.search).get('examAuthority');
+    const authority = requestedAuthority || 'shared';
+    if (authority === 'legacy') return renderExamLegacy(area, data);
+    if (authority !== 'shared') throw new Error(`UNKNOWN_EXAM_AUTHORITY:${authority}`);
+    if (!window.APExamRenderExecutor?.render) return renderExamLegacy(area, data);
+    return window.APExamRenderExecutor.render({ area, data, deps: archiveExamDeps });
 }
 
 async function renderSolLegacy(area, data) {

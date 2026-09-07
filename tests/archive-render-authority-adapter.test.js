@@ -7,6 +7,7 @@ const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8'
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
 const solutionExecutor = fs.readFileSync(path.join(root, 'archive', 'solution-render-executor.js'), 'utf8');
 const answerExecutor = fs.readFileSync(path.join(root, 'archive', 'answer-render-executor.js'), 'utf8');
+const examExecutor = fs.readFileSync(path.join(root, 'archive', 'exam-render-executor.js'), 'utf8');
 
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
   assert.match(engine, /src="print-contract\.js\?v=20260906\.2"/);
@@ -23,6 +24,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /layout-authority\.js\?v=20260906\.25/);
   assert.match(engine, /solution-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
+  assert.match(engine, /exam-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area\)/);
@@ -45,6 +47,9 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /async function renderExam\(area, data\)/);
   assert.match(engine, /async function renderSol\(area, data\)/);
   assert.match(engine, /async function renderSolLegacy\(area, data\)/);
+  assert.match(engine, /async function renderExamLegacy\(area, data\)/);
+  assert.match(engine, /APExamRenderExecutor\.render\(\{ area, data, deps: archiveExamDeps \}\)/);
+  assert.match(engine, /examAuthority/);
   assert.match(engine, /function renderAnsLegacy\(area, data, perPage = 40\)/);
   assert.match(engine, /APAnswerRenderExecutor\.render\(\{ area, data, perPage, deps: archiveAnswerDeps \}\)/);
   assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
@@ -85,6 +90,18 @@ test('Archive answer executor is a mechanical DOM extraction with explicit legac
   assert.match(answerExecutor, /splitIndex/);
   assert.match(answerExecutor, /group-end/);
   const api = require('../archive/answer-render-executor.js');
+  assert.equal(typeof api.render, 'function');
+});
+
+test('Archive exam executor is a mechanical DOM extraction with explicit legacy rollback', () => {
+  assert.match(examExecutor, /APExamRenderExecutor/);
+  assert.match(examExecutor, /async function render\(\{ area, data, deps \}\)/);
+  assert.match(examExecutor, /subjective-2up/);
+  assert.match(examExecutor, /subjective-4up/);
+  assert.match(examExecutor, /fitQuestionBox/);
+  assert.match(examExecutor, /renderQuestionImageHTML/);
+  assert.match(examExecutor, /renderChoicesHTML/);
+  const api = require('../archive/exam-render-executor.js');
   assert.equal(typeof api.render, 'function');
 });
 

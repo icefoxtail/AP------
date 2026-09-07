@@ -1643,7 +1643,7 @@ function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${withArchiveAssetCacheBuster(q.image)}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image))}"></div>`;
 }
 
 function withArchiveAssetCacheBuster(src) {

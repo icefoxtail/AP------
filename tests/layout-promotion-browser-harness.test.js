@@ -58,3 +58,17 @@ test('answer executor A/B harness compares answer cells, MathJax, padding, and r
   assert.match(harness, /duplicationCount/);
   assert.match(harness, /RENDER_READY/);
 });
+
+test('exam executor A/B harness compares source semantics, layout, assets, and readiness', () => {
+  const harness = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'exam-executor-ab-harness.html'), 'utf8');
+  assert.match(harness, /examAuthority=\$\{authority\}/);
+  assert.match(harness, /render-authority-golden\.js/);
+  assert.match(harness, /EXAM_EXECUTOR_AB_PASS/);
+  assert.match(harness, /sourceRef/);
+  assert.match(harness, /choicesText/);
+  assert.match(harness, /imageBrokenCount/);
+  assert.match(harness, /mathCount/);
+  assert.match(harness, /omissionCount/);
+  assert.match(harness, /duplicationCount/);
+  assert.match(harness, /RENDER_READY/);
+});
