@@ -63,6 +63,7 @@ for (const [name, source] of [['engine', engine], ['mixed engine', mixedEngine]]
   const renderer = executeFunctions(source, [
     'withArchiveAssetCacheBuster',
     'escapeArchiveHtmlAttribute',
+    'renderQuestionImageHTML',
     'renderSolutionImageHTML',
     'makeLongSolutionShell'
   ], { ARCHIVE_ASSET_CACHE_VERSION: 'test' });
@@ -75,6 +76,14 @@ for (const [name, source] of [['engine', engine], ['mixed engine', mixedEngine]]
     ['invalid', 'image-medium'],
     [undefined, 'image-medium']
   ]);
+
+  const dataSvgImage = renderer.renderQuestionImageHTML({
+    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3C/svg%3E',
+    imageSize: 'medium'
+  });
+  assert.match(dataSvgImage, /q-image-wrap image-medium/);
+  assert.match(dataSvgImage, /src="data:image\/svg\+xml,%3Csvg xmlns=&quot;http:\/\/www\.w3\.org\/2000\/svg&quot;/,
+    `${name} should escape quotes inside data-SVG problem-image URLs`);
 
   for (const [size, expectedClass] of expectedSizeClass) {
     const rendered = renderer.renderSolutionImageHTML({
