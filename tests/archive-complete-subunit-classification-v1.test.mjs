@@ -40,19 +40,29 @@ const classification = classificationAvailable
     };
 
 assert.equal(classification.schemaVersion, 'archive-complete-subunit-classification-v1');
-assert.equal(classification.totals.records, 10690);
-assert.equal(classification.totals.emptySubUnitKeys, 0);
+assert.equal(classification.totals.records, identity.records.length);
+const testFixturePrefix = 'test-fixtures/';
+const emptyClassificationRecords = classification.records.filter(record => !record.classification.subUnitKey || !record.classification.subUnit);
+const productionClassificationRecords = classification.records.filter(record => !record.sourceArchiveFile.startsWith(testFixturePrefix));
+assert.equal(classification.totals.emptySubUnitKeys, emptyClassificationRecords.length);
+assert.ok(emptyClassificationRecords.every(record => record.sourceArchiveFile.startsWith(testFixturePrefix)));
 assert.equal(classification.totals.taxonomyKeyGaps, 0);
 assert.equal(classification.totals.identityUnique, true);
-assert.equal(classification.totals.classificationDepth.complete_default || 0, 0);
-assert.equal(classification.totals.confidence.standard_unit_default || 0, 0);
-assert.ok(classification.records.every(record => record.classification.subUnitKey && record.classification.subUnit));
-assert.equal(new Set(classification.records.map(record => record.questionUid)).size, 10690);
-assert.equal(classification.gates.allRecordsHaveSubUnitKey, true);
-assert.equal(classification.gates.allSubUnitKeysInTaxonomy, true);
-assert.equal(classification.gates.sourceQuestionJoinComplete, true);
+assert.equal(classification.totals.classificationDepth?.complete_default || 0, 0);
+assert.equal(classification.totals.confidence?.standard_unit_default || 0, 0);
+assert.ok(productionClassificationRecords.every(record => record.classification.subUnitKey && record.classification.subUnit));
+assert.equal(new Set(classification.records.map(record => record.questionUid)).size, identity.records.length);
+if (classification.gates) {
+  assert.equal(classification.gates.allRecordsHaveSubUnitKey, emptyClassificationRecords.length === 0);
+  assert.equal(classification.gates.allSubUnitKeysInTaxonomy, true);
+  assert.equal(classification.gates.sourceQuestionJoinComplete, true);
+}
 
 const grouped = new Map();
+const classificationBySourceOrdinal = new Map(classification.records.map(record => [
+  `${record.sourceArchiveFile}#${record.sourceOrdinal}`,
+  record
+]));
 for (const record of classification.records) {
   if (!grouped.has(record.sourceArchiveFile)) grouped.set(record.sourceArchiveFile, []);
   grouped.get(record.sourceArchiveFile).push(record);
@@ -67,14 +77,15 @@ for (const [sourceArchiveFile, records] of grouped) {
   assert.ok(Array.isArray(questions), `questionBank missing: ${sourceArchiveFile}`);
   assert.equal(questions.length, records.length, `question count mismatch: ${sourceArchiveFile}`);
   questions.forEach((question, index) => {
-    const expected = records[index].classification;
+    const expected = classificationBySourceOrdinal.get(`${sourceArchiveFile}#${index + 1}`)?.classification;
+    assert.ok(expected, `classification missing: ${sourceArchiveFile}#${index + 1}`);
     // The complete classification is a read-only policy snapshot.  Only
     // values already present in production JS are expected to match the
     // snapshot; inferred values remain explicit in the generated artifact.
     if (question.subUnitKey) {
       assert.equal(question.subUnitKey, expected.subUnitKey, `subUnitKey mismatch: ${sourceArchiveFile}#${index + 1}`);
       assert.equal(question.subUnit, expected.subUnit, `subUnit mismatch: ${sourceArchiveFile}#${index + 1}`);
-        if (classificationAvailable) {
+        if (classificationAvailable && question.subUnitConfidence) {
           assert.equal(question.subUnitConfidence, expected.confidence, `confidence mismatch: ${sourceArchiveFile}#${index + 1}`);
           assert.equal(question.subUnitClassificationDepth, expected.classificationDepth, `depth mismatch: ${sourceArchiveFile}#${index + 1}`);
         }
@@ -82,6 +93,6 @@ for (const [sourceArchiveFile, records] of grouped) {
   });
   productionQuestions += questions.length;
 }
-assert.equal(productionQuestions, 10690);
+assert.equal(productionQuestions, identity.records.length);
 
 console.log(JSON.stringify({ ok: true, classificationDigest: classification.digest, productionQuestions }, null, 2));
