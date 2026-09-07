@@ -37,7 +37,11 @@ test('25 제일고 수학II 원본은 22개 해설을 닫고 q01 source correcti
   assert.ok([16, 17, 20].every(id => fs.existsSync(path.join(assetDir, `q${id}-solution.svg`))));
   assert.equal(questions.find(question => question.id === 12).subUnit, '미분');
   assert.equal(questions.find(question => question.id === 13).subUnit, '미분');
-  assert.equal(q17.subUnit, '미분·적분의 활용');
+  assert.equal(q17.standardUnitKey, 'H15-M2-03');
+  assert.equal(q17.standardUnit, '미분계수');
+  assert.equal(q17.standardUnitOrder, 3);
+  assert.equal(q17.subUnitKey, 'H15-M2-03-DERIVATIVE');
+  assert.equal(q17.subUnit, '미분');
   const q22 = questions.find(question => question.id === 22);
   assert.equal(q22.subUnitKey, 'H15-M2-06-DERIVATIVE_APPLICATION');
   assert.equal(q22.subUnit, '도함수의 활용');

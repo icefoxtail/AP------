@@ -256,8 +256,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 절댓값 함수의 최솟값은 꼭짓점에서, 최댓값은 끝점에서 나타난다.\n조건 정리: $f(x)=|x+1|+2$의 꼭짓점은 $x=-1$이고 구간은 $[-3,2]$이다.\n풀이 방향: 꼭짓점과 두 끝점에서의 함숫값을 비교한다.\n정석 풀이: 최솟값은 $x=-1$에서 $f(-1)=0+2=2$이므로 $m=2$이다. 끝점에서 $f(-3)=|-2|+2=4$, $f(2)=|3|+2=5$이므로 최댓값은 $M=5$이다. 따라서 $M+m=5+2=7$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-M2-02-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

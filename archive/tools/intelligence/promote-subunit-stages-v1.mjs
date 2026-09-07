@@ -23,7 +23,7 @@ const highPilot = [
     { curriculumVersion: 'high-2022', standardUnitKey: 'H22-A-01~04', standardUnit: '지수·로그·삼각함수', candidates: ['EXPONENT_LOG', 'EXPONENTIAL_FUNCTION', 'LOGARITHMIC_FUNCTION', 'TRIGONOMETRIC_FUNCTION'] },
     { curriculumVersion: 'high-2015', standardUnitKey: 'H15-SB-03', standardUnit: '함수', candidates: ['FUNCTION_RELATION', 'COMPOSITE_FUNCTION', 'INVERSE_FUNCTION'] },
     { curriculumVersion: 'high-2015', standardUnitKey: 'H15-PS-03~06', standardUnit: '확률·통계', candidates: ['CONDITIONAL_PROBABILITY', 'RANDOM_VARIABLE', 'PROBABILITY_DISTRIBUTION', 'STATISTICAL_ESTIMATION'] },
-    { curriculumVersion: 'high-2015', standardUnitKey: 'H15-M2-01~09', standardUnit: '미적분', candidates: ['LIMIT', 'CONTINUITY', 'DERIVATIVE', 'INTEGRAL', 'APPLICATION_OF_CALCULUS'] }
+    { curriculumVersion: 'high-2015', standardUnitKey: 'H15-M2-01~09', standardUnit: '미적분', candidates: ['LIMIT', 'CONTINUITY', 'DERIVATIVE', 'INTEGRAL'] }
 ];
 
 function countBy(records, key) {

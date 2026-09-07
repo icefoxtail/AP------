@@ -535,9 +535,9 @@ window.questionBank = [
     "category": "연속함수의 선택",
     "originalCategory": "연속함수의 선택",
     "standardCourse": "수학II",
-    "standardUnitKey": "H15-M2-02",
-    "standardUnit": "함수의 연속",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H15-M2-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -563,8 +563,8 @@ window.questionBank = [
     "solutionImageSize": "large",
     "solutionImageStatus": "asset_verified",
     "solution": "[키포인트] 곱이 $0$이므로 각 $x$에서 두 식 중 하나를 택하며, 연속이려면 두 함숫값이 같은 점에서만 바꿀 수 있다.\n조건 정리: $p(x)=x+1$, $q(x)=x^2-3x+4$라 하면 $f$는 각 점에서 $p$ 또는 $q$의 값을 갖는다.\n풀이 방향: 두 그래프의 교점을 찾아 식을 바꿀 수 있는 점을 정하고, 미분 불가능한 점이 하나뿐이라는 조건으로 경우를 나눈다.\n정석 풀이: $p(x)=q(x)$에서 $x+1=x^2-3x+4$, 즉 $(x-1)(x-3)=0$이므로 교점의 $x$좌표는 $1$과 $3$이다. 연속함수가 두 식 사이를 오가려면 함숫값이 같아야 하므로 식이 바뀔 수 있는 점은 $x=1$과 $x=3$뿐이다.\n$p'(x)=1$, $q'(x)=2x-3$이므로 $x=1$에서 두 기울기는 $1$과 $-1$, $x=3$에서는 $1$과 $3$으로 각각 다르다. 따라서 어느 점에서 식을 바꾸더라도 그 점에서 미분 불가능하고, 미분 불가능한 점이 단 하나이므로 두 점 중 정확히 한 곳에서만 식을 바꾸어야 한다.\n$p(0)=1$, $p(2)=3$, $p(4)=5$이고 $q(0)=4$, $q(2)=2$, $q(4)=8$이므로 가능한 경우는 다음과 같다.\n$x=1$에서 $p$에서 $q$로 바꾸면 $f(0)+f(2)+f(4)=1+2+8=11$이다.\n$x=1$에서 $q$에서 $p$로 바꾸면 $4+3+5=12$이다.\n$x=3$에서 $p$에서 $q$로 바꾸면 $1+3+8=12$이다.\n$x=3$에서 $q$에서 $p$로 바꾸면 $4+2+5=11$이다.\n그러므로 최솟값은 $11$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-02-APPLICATION_OF_CALCULUS",
-    "subUnit": "미분·적분의 활용",
+    "subUnitKey": "H15-M2-03-DERIVATIVE",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

@@ -91,6 +91,16 @@ for (const file of files) {
     ids.add(q.id);
     if (q.standardCourse) courses.add(q.standardCourse);
 
+    // H15 수학II의 범용 application-of-calculus 태그는 legacy 호환용으로만
+    // 남기고 신규 production 문항에서는 허용하지 않는다.
+    const isMathIIProduction = rel.startsWith('exams/original/high/h2/') && q.standardCourse === '수학II';
+    const hasLegacyApplicationTag = /^H15-M2-\d{2}-APPLICATION_OF_CALCULUS$/.test(String(q.subUnitKey || ''))
+      || String(q.subUnit || '').trim() === '미분·적분의 활용'
+      || String(q.subUnit || '').trim().toLowerCase() === 'application of calculus';
+    if (isMathIIProduction && hasLegacyApplicationTag) {
+      entry.fail.push(`${tag}: H15 수학II production에 legacy APPLICATION_OF_CALCULUS 세부단원 태그가 남아 있음`);
+    }
+
     if (!q.content || !q.content.trim()) entry.fail.push(`${tag}: content 비어있음`);
     if (!q.answer || !String(q.answer).trim()) entry.fail.push(`${tag}: answer 비어있음`);
     if (!q.solution || !q.solution.trim()) entry.fail.push(`${tag}: solution 비어있음`);

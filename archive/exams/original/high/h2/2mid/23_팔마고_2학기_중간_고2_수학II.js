@@ -525,8 +525,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 역함수가 존재하려면 일대일대응이어야 하므로, 연속인 $g$는 실수 전체에서 증가하거나 감소해야 한다.\n조건 정리: $x\\lt 1$에서 $g(x)=4x+2$는 증가하므로 $g$는 전체에서 증가해야 하고, 연속 조건에서 $f(1)=\\displaystyle\\lim_{x\\to1-}(4x+2)=6$이다.\n풀이 방향: $f(x)=x^2+px+q$로 놓고 $f(1)=6$과 '$[1,\\infty)$에서 증가' 조건에서 $p$의 범위를 구한 뒤 $f(3)$을 최소화한다.\n정석 풀이: $f(1)=1+p+q=6$이므로 $q=5-p$이고 $f(3)=9+3p+q=9+3p+5-p=14+2p$이다. $f$의 그래프는 아래로 볼록한 포물선이고 축은 $x=-\\dfrac p2$이므로, $[1,\\infty)$에서 증가하려면 $-\\dfrac p2\\le1$, 즉 $p\\ge-2$이어야 한다. 따라서 $f(3)=14+2p\\ge14-4=10$이고, $p=-2$일 때 $f(x)=x^2-2x+7=(x-1)^2+6$으로 조건을 모두 만족하므로 최솟값은 $10$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
