@@ -579,9 +579,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "수학II",
-    "standardUnitKey": "H15-M2-03",
-    "standardUnit": "미분계수",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H15-M2-02",
+    "standardUnit": "함수의 연속",
+    "standardUnitOrder": 2,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -595,8 +595,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$-2+2\\sqrt2$",
     "solution": "[키포인트] 각 $x$에서 가능한 값은 $x^2$, $-x^2$, $x$뿐이며, 연속성 때문에 세 곡선의 교점에서만 가지를 바꿀 수 있다.\n조건 정리: $\\{f(x)-x^2\\}\\{f(x)+x^2\\}\\{f(x)-x\\}=0$이다. $y=x$와 $y=-x^2$은 $x=-1,0$에서, $y=x$와 $y=x^2$은 $x=0,1$에서 만난다.\n풀이 방향: 네 지점에서 절댓값의 합을 최소로 만드는 연속함수 $g$를 정한 뒤, 직선과 $g$의 각 구간별 교점 수를 $k$의 범위에 따라 빠짐없이 센다.\n정석 풀이: $x=\\pm\\dfrac43$에서는 $|x|=\\dfrac43\\lt\\dfrac{16}9=x^2$이므로 $g(x)=x$를 선택해야 한다. $x=\\pm\\dfrac13$에서는 $x^2=\\dfrac19\\lt\\dfrac13=|x|$이므로 절댓값이 $x^2$인 가지를 선택해야 한다. 연속성을 고려하면\n$g(x)=\\begin{cases}x&(x\\le-1)\\\\-x^2&(-1\\lt x\\lt0)\\\\x^2&(0\\le x\\lt1)\\\\x&(x\\ge1)\\end{cases}$이다.\n직선 $y=k(x+1)-1$은 항상 점 $(-1,-1)$을 지나므로 이 점은 언제나 교점이다. $k=1$이면 직선이 $y=x$와 일치하여 $x\\le-1$과 $x\\ge1$에서 교점이 무수히 많다. 이제 $k\\ne1$이라 하면 바깥 구간 $x\\le-1$ 또는 $x\\ge1$에서 방정식 $x=k(x+1)-1$의 해는 $x=-1$뿐이다.\n구간 $-1\\lt x\\lt0$에서는 $-x^2=k(x+1)-1$이므로 $(x+1)(x+k-1)=0$이다. 경계점 $x=-1$ 이외의 근은 $x=1-k$이고, 이 값이 $(-1,0)$에 들어가는 조건은 $1\\lt k\\lt2$이다.\n구간 $0\\le x\\lt1$에서는 $x^2-kx-k+1=0$이다. 이를 $p(x)=x^2-kx-k+1$이라 하자. $k\\le0$이면 $p'(x)=2x-k\\ge0$이고 $p(0)=1-k\\gt0$이므로 이 구간에 근이 없다. $0\\lt k\\lt1$이면 꼭짓점 $x=\\dfrac k2$가 구간 안에 있고 판별식은 $k^2+4k-4$이다. $k_0=-2+2\\sqrt2$라 하면 $0\\lt k\\lt k_0$에서는 근이 없고, $k=k_0$에서는 중근 하나, $k_0\\lt k\\lt1$에서는 서로 다른 두 근이 모두 $(0,1)$에 있다. $k=1$은 앞에서 제외하였다. $k\\gt1$이면 $p(0)=1-k\\lt0$, $p(1)=2(1-k)\\lt0$이고 양의 근은 $1$보다 크므로 $[0,1)$에는 근이 없다.\n따라서 전체 교점 수는 $k\\lt k_0$일 때 $1$개, $k=k_0$일 때 $2$개, $k_0\\lt k\\lt1$일 때 $3$개, $k=1$일 때 무수히 많고, $1\\lt k\\lt2$일 때 $2$개, $k\\ge2$일 때 $1$개이다. 교점이 $2$개가 되는 값 중 가장 작은 것은 $k_0=-2+2\\sqrt2$이다.\n따라서 구하는 값은 $-2+2\\sqrt2$이다.",
-    "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "미분",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
