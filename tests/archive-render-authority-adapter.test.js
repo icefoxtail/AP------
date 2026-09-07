@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
+const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
 
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
   assert.match(engine, /src="print-contract\.js\?v=20260906\.2"/);
@@ -17,14 +18,24 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /data-semantic-content="1"/);
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
   assert.match(engine, /recordArchiveDualRun\(area\)/);
-  assert.match(engine, /layout-authority\.js\?v=20260906\.11/);
+  assert.match(engine, /layout-authority\.js\?v=20260906\.15/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /layoutMeasurementLedger/);
+  assert.match(engine, /RENDER_INCOMPLETE/);
+  assert.match(engine, /expectedQuestionCount/);
+  assert.match(engine, /observedQuestionCount/);
   assert.match(engine, /proxyHeight_raw/);
   assert.match(engine, /proxyHeight_tight/);
   assert.match(engine, /renderSharedLayoutWitness/);
   assert.match(engine, /inspectRenderedOverflow/);
+  assert.match(engine, /inspectRenderedLayoutGeometry/);
+  assert.match(engine, /renderGeometry: comparison\.parity\.renderGeometry/);
+  assert.match(engine, /legacyGeometry: observed\.renderedGeometry/);
+  assert.match(layout, /const legacyPages = Array\.from\(area\.querySelectorAll\('\.page'\)\)/);
+  assert.match(layout, /legacyPages\[pageLayout\.pageNo - 1\]/);
+  assert.match(layout, /pageHasSlotRows/);
+  assert.match(layout, /spacer\.dataset\.layoutSpacer/);
   assert.match(engine, /async function renderExam\(area, data\)/);
   assert.match(engine, /async function renderSol\(area, data\)/);
   assert.match(engine, /injectQrToLastExamPage\(area\);[\s\S]{0,80}injectSubmitQrToLastExamPage\(area\);/);

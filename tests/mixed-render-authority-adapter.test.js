@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
+const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
 
 test('Mixer adapter dual-runs canonical normalization without changing storage, pack, QPP, or legacy renderer behavior', () => {
   assert.match(html, /src="print-contract\.js\?v=20260906\.2"/);
@@ -18,14 +19,24 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
   assert.match(html, /resolveSourceRef: \(question, index\)/);
   assert.match(html, /getMixedQuestionIdentity\(q\)/);
   assert.match(html, /compareAnswerSemantics/);
-  assert.match(html, /layout-authority\.js\?v=20260906\.11/);
+  assert.match(html, /layout-authority\.js\?v=20260906\.15/);
   assert.match(html, /function recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /layoutMeasurementLedger/);
+  assert.match(html, /RENDER_INCOMPLETE/);
+  assert.match(html, /expectedQuestionCount/);
+  assert.match(html, /observedQuestionCount/);
   assert.match(html, /proxyHeight_raw/);
   assert.match(html, /proxyHeight_tight/);
   assert.match(html, /renderSharedLayoutWitness/);
   assert.match(html, /inspectRenderedOverflow/);
+  assert.match(html, /inspectRenderedLayoutGeometry/);
+  assert.match(html, /renderGeometry: comparison\.parity\.renderGeometry/);
+  assert.match(html, /sharedGeometry: expected\.renderedGeometry/);
+  assert.match(layout, /const legacyPages = Array\.from\(area\.querySelectorAll\('\.page'\)\)/);
+  assert.match(layout, /legacyPages\[pageLayout\.pageNo - 1\]/);
+  assert.match(layout, /pageHasSlotRows/);
+  assert.match(layout, /spacer\.dataset\.layoutSpacer/);
 });
 
 test('Mixer pack-fallback browser fixture records parity across exam, solution, and answer outputs', () => {

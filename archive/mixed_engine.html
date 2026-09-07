@@ -39,7 +39,7 @@
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="layout-authority.js?v=20260906.11" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
+    <script src="layout-authority.js?v=20260906.15" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -1258,6 +1258,19 @@ async function recordMixedLayoutPromotionGate(area) {
             document.documentElement.dataset.apLayoutAuthorityDualRun = JSON.stringify({ source: 'mixer', mode: AppState.mode, skipped: 'STAGING_MEASUREMENT_LEDGER_UNAVAILABLE' });
             return;
         }
+        // A page can exist while renderExam is still appending later pages.
+        // Promotion evidence must fail closed instead of snapshotting that
+        // partial DOM and treating it as the legacy production layout.
+        const expectedQuestionCount = AppState.canonicalData.length;
+        const observedQuestionCount = area.querySelectorAll('.q-box[data-source-ref]').length;
+        if (observedQuestionCount !== expectedQuestionCount) {
+            document.documentElement.dataset.apLayoutAuthorityDualRun = JSON.stringify({
+                source: 'mixer', mode: AppState.mode, equal: false, error: 'RENDER_INCOMPLETE',
+                expectedQuestionCount, observedQuestionCount,
+                differences: [{ field: 'renderCompleteness', observed: observedQuestionCount, expected: expectedQuestionCount }]
+            });
+            return;
+        }
         const ledgerBySource = new Map(ledger.entries.map(entry => [entry.sourceRef, entry]));
         const records = new Map(AppState.canonicalData.map(question => [
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
@@ -1276,13 +1289,24 @@ async function recordMixedLayoutPromotionGate(area) {
         const expectedBase = authority.buildExpectedLayoutMaps(observation.expectedInput, observation.blockMap, { sectionId });
         const witness = authority.renderSharedLayoutWitness(area, expectedBase.layout, { resolveElement: blockId => observation.elementsByBlockId[blockId] || null });
         await new Promise(resolve => setTimeout(resolve, 0));
-        const observed = { ...observedBase, renderedOverflow: authority.inspectRenderedOverflow(area, { tolerance: SE_PAGE_TOLERANCE }) };
-        const expected = { ...expectedBase, renderedOverflow: authority.inspectRenderedOverflow(witness, { tolerance: SE_PAGE_TOLERANCE }) };
+        const observed = {
+            ...observedBase,
+            renderedGeometry: authority.inspectRenderedLayoutGeometry(area),
+            renderedOverflow: authority.inspectRenderedOverflow(area, { tolerance: SE_PAGE_TOLERANCE })
+        };
+        const expected = {
+            ...expectedBase,
+            renderedGeometry: authority.inspectRenderedLayoutGeometry(witness),
+            renderedOverflow: authority.inspectRenderedOverflow(witness, { tolerance: SE_PAGE_TOLERANCE })
+        };
         const comparison = authority.comparePromotionLayouts(observed, expected);
         witness.remove();
         document.documentElement.dataset.apLayoutAuthorityDualRun = JSON.stringify({
             source: 'mixer', mode: AppState.mode, equal: comparison.equal, parity: comparison.parity,
-            differences: comparison.differences.slice(0, 8)
+            expectedQuestionCount, observedQuestionCount,
+            legacyGeometry: observed.renderedGeometry, sharedGeometry: expected.renderedGeometry,
+            renderGeometry: comparison.parity.renderGeometry,
+            overflowParity: comparison.parity.overflow, differences: comparison.differences.slice(0, 8)
         });
     } catch (error) {
         document.documentElement.dataset.apLayoutAuthorityDualRun = JSON.stringify({ source: 'mixer', mode: AppState.mode, error: String(error?.message || error) });
