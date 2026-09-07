@@ -201,8 +201,8 @@ test('Phase 0 models multi-role source paths and the independently found product
   assert.match(text('archive/unit-past-exams.js'), /core\.selectByBlueprint/);
   assert.match(text('check/check.js'), /archiveFile\.startsWith\('MIXED:'\)/);
   assert.match(text('check/check.js'), /\.\.\/archive\/mixed_engine\.html/);
-  assert.match(text('.agent/DOMAIN_LOCK_POLICY.md'), /archive\/wrong_print_engine\.html/);
-  assert.match(text('docs/agent-skills/archive-core-sop.md'), /archive\/wrong_print_engine\.html/);
+  assert.match(text('.agent/DOMAIN_LOCK_POLICY.md'), /apmath\/wrong_print_engine\.html/);
+  assert.match(text('docs/agent-skills/archive-core-sop.md'), /apmath\/wrong_print_engine\.html/);
 });
 
 test('Phase 0 registers every direct engine-reference regression test and preserves observed source/capability facts', () => {
