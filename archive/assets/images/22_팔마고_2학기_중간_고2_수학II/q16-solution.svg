@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="460" viewBox="0 0 640 460" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">22 팔마고 16번 수평선과 삼차함수의 매끄러운 연결 해설</title>
+  <desc id="desc">A=(0,1), B=(1,0)에서 수평선과 삼차함수가 미분가능하게 연결되는 네 조건과 f(2)=5를 설명하는 그림</desc>
+  <style>
+    .background{fill:#fff}
+    .axis{stroke:#171717;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .curve{stroke:#111;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .guide{stroke:#777;stroke-width:.95;stroke-dasharray:4 4;fill:none}
+    .point{stroke:#111;stroke-width:1;fill:#111}
+    .panel{fill:#f7f8fa;stroke:#c7cbd1;stroke-width:1}
+    .title{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:15px;font-weight:700;fill:#111}
+    .label{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:12px;fill:#222}
+    .small{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:11px;fill:#333}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:13px;fill:#111}
+  </style>
+  <defs>
+    <marker id="axis-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#171717"/>
+    </marker>
+  </defs>
+  <rect class="background" x="0" y="0" width="640" height="460"/>
+  <text class="title" x="32" y="28">q16  수평선과 삼차함수의 매끄러운 연결</text>
+  <text class="small" x="32" y="47">연결된 전체 함수와, 구간 사이를 잇는 삼차다항식 f를 구분한다.</text>
+
+  <g aria-label="joined graph">
+    <rect class="panel" x="32" y="65" width="270" height="245" rx="8"/>
+    <line class="axis" x1="48" y1="220" x2="284" y2="220" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="150" y1="275" x2="150" y2="82" marker-end="url(#axis-arrow)"/>
+    <line class="curve" x1="50" y1="140" x2="150" y2="140"/>
+    <path class="curve" d="M150 140 C173.33333333333334 140 196.66666666666666 220 220 220"/>
+    <line class="curve" x1="220" y1="220" x2="282" y2="220"/>
+    <circle class="point" cx="150" cy="140" r="3.5" fill="#111"/>
+    <circle class="point" cx="220" cy="220" r="3.5" fill="#111"/>
+    <line class="guide" x1="150" y1="140" x2="150" y2="220"/>
+    <line class="guide" x1="220" y1="140" x2="220" y2="220"/>
+    <text class="math" x="60" y="132">y=1</text>
+    <text class="math" x="254" y="212">y=0</text>
+    <text class="label" x="108" y="128">A=(0,1)</text>
+    <text class="label" x="222" y="239">B=(1,0)</text>
+    <text class="small" x="112" y="267">f′(0)=0</text>
+    <text class="small" x="220" y="267">f′(1)=0</text>
+    <text class="small" x="92" y="305">양 끝 수평선의 기울기는 0</text>
+  </g>
+
+  <g aria-label="coefficient derivation">
+    <rect class="panel" x="320" y="65" width="288" height="245" rx="8"/>
+    <text class="title" x="338" y="92">네 조건 → 유일한 cubic</text>
+    <text class="math" x="338" y="124">f(x)=ax³+bx²+cx+d</text>
+    <text class="math" x="338" y="151">d=1,  c=0</text>
+    <text class="math" x="338" y="178">a+b=−1</text>
+    <text class="math" x="438" y="178">3a+2b=0</text>
+    <line class="guide" x1="338" y1="192" x2="590" y2="192"/>
+    <text class="math" x="338" y="220">a=2,  b=−3</text>
+    <text class="math" x="338" y="247">f(x)=2x³−3x²+1</text>
+    <text class="label" x="338" y="274">f(2)=16−12+1=5</text>
+  </g>
+
+  <g aria-label="meaning panel">
+    <rect class="panel" x="32" y="320" width="576" height="88" rx="8"/>
+    <text class="title" x="50" y="348">함수의 의미 구분</text>
+    <text class="small" x="50" y="372">전체 연결 그래프 H는 바깥에서 y=1, y=0으로 이어지지만, 문제의 f는 연결에 사용한 삼차다항식이다.</text>
+    <text class="small" x="50" y="394">따라서 x=2에서 묻는 값은 H(2)가 아니라 다항식의 연장값 f(2)=5이다.</text>
+  </g>
+</svg>

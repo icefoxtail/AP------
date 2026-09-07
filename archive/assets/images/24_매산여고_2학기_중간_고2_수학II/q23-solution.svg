@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="430" viewBox="0 0 640 430" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">24 매산여고 23번 평행 접선과 넓이 해설</title>
+  <desc id="desc">두 접점의 x좌표 0과 4k/3, 기울기 3k²인 평행 접선과 세로선이 만드는 평행사변형 넓이를 설명하는 개략도</desc>
+  <style>
+    .background{fill:#fff}.axis{stroke:#171717;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}.curve{stroke:#111;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}.tangent{stroke:#3f4a5a;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#777;stroke-width:.95;stroke-dasharray:4 4;fill:none}.point{stroke:#111;stroke-width:1;fill:#111}.shape{fill:#e7eef5;fill-opacity:.7;stroke:#55718a;stroke-width:1.1}.panel{fill:#f7f8fa;stroke:#c7cbd1;stroke-width:1}.title{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:15px;font-weight:700;fill:#111}.label{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:12px;fill:#222}.small{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:11px;fill:#333}.math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:13px;fill:#111}
+  </style>
+  <defs><marker id="axis-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#171717"/></marker></defs>
+  <rect class="background" x="0" y="0" width="640" height="430"/>
+  <text class="title" x="32" y="28">q23  평행한 두 접선이 만드는 평행사변형</text>
+  <text class="small" x="32" y="47">k&gt;0인 개략도: 접선의 기울기와 세로 간격을 식으로 계산한다.</text>
+  <g aria-label="parallel tangent diagram">
+    <rect class="panel" x="32" y="65" width="325" height="290" rx="8"/>
+    <line class="axis" x1="52" y1="300" x2="335" y2="300" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="75" y1="330" x2="75" y2="82" marker-end="url(#axis-arrow)"/>
+    <path class="curve" d="M77 300 C105 278 126 235 150 196 C174 157 199 125 227 111 C252 100 280 102 330 112"/>
+    <path class="shape" d="M92 286 L276 168 L276 252 L92 370 Z"/>
+    <line class="tangent" x1="92" y1="286" x2="316" y2="143"/>
+    <line class="tangent" x1="92" y1="370" x2="316" y2="227"/>
+    <line class="guide" x1="92" y1="286" x2="92" y2="370"/>
+    <line class="guide" x1="276" y1="168" x2="276" y2="252"/>
+    <circle class="point" cx="92" cy="286" r="3.7"/><circle class="point" cx="276" cy="168" r="3.7"/>
+    <text class="label" x="82" y="276">A</text><text class="label" x="282" y="160">B</text>
+    <text class="small" x="89" y="322">x=0</text><text class="small" x="255" y="322">x=4k/3</text>
+    <text class="math" x="175" y="137">기울기 3k²</text>
+    <text class="small" x="114" y="352">세로 간격 32k³/27</text>
+  </g>
+  <g aria-label="area calculation panel">
+    <rect class="panel" x="375" y="65" width="233" height="290" rx="8"/>
+    <text class="title" x="393" y="92">넓이 계산</text>
+    <text class="math" x="393" y="123">f′(x)=3x²−4kx+3k²</text>
+    <text class="math" x="393" y="150">f′(x)=3k² ⇒ x=0, 4k/3</text>
+    <text class="small" x="393" y="178">두 접선은 평행하고</text>
+    <text class="math" x="393" y="205">밑변=4k/3</text>
+    <text class="math" x="393" y="232">높이=32k³/27</text>
+    <line class="guide" x1="393" y1="246" x2="590" y2="246"/>
+    <text class="math" x="393" y="274">넓이=128k⁴/81=2048</text>
+    <text class="math" x="393" y="301">k⁴=1296, k&gt;0 ⇒ k=6</text>
+    <text class="label" x="393" y="333">정답: k=6</text>
+  </g>
+</svg>
