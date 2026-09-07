@@ -472,6 +472,11 @@ window.questionBank = [
   },
   {
     "id": 15,
+    "solutionImage": "assets/images/25_매산여고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "유리함수의 빠진 치역값과 교점 개수 함수의 불연속을 보여 주는 해설 도식",
+    "solutionImageCaption": "t=3에서 f가 0이 되고 g(3)=0이 되도록 a=6을 정한다.",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "level": "중",
     "category": "불연속점 제거",
     "originalCategory": "불연속점 제거",
@@ -505,6 +510,11 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "solutionImage": "assets/images/25_매산여고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "구간별 함수와 y=mx의 교점 개수, m=2·4에서의 불연속을 보여 주는 해설 도식",
+    "solutionImageCaption": "g의 불연속점 2,4를 이차함수 h의 두 영점으로 만든다.",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "level": "상",
     "category": "교점 개수와 연속",
     "originalCategory": "교점 개수와 연속",
