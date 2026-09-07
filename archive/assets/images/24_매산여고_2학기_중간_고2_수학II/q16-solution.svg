@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="500" viewBox="0 0 640 500" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">24 매산여고 16번 도함수 그래프 해설</title>
+  <desc id="desc">f′와 g′의 교점 x=0,4 및 h′=f′−g′의 부호 변화를 설명하는 해설 그림</desc>
+  <style>
+    .background{fill:#fff}
+    .axis{stroke:#171717;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .guide{stroke:#777;stroke-width:.95;stroke-dasharray:4 4;fill:none}
+    .main-curve{stroke:#111;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .secondary-curve{stroke:#3f4a5a;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .point{stroke:#111;stroke-width:1;fill:#111}
+    .panel{fill:#f7f8fa;stroke:#c7cbd1;stroke-width:1}
+    .title{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:15px;font-weight:700;fill:#111}
+    .label{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:12px;fill:#222}
+    .small{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:11px;fill:#333}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:13px;fill:#111}
+    .tick{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:11.5px;fill:#222}
+  </style>
+  <defs>
+    <marker id="axis-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#171717"/>
+    </marker>
+  </defs>
+  <rect class="background" x="0" y="0" width="640" height="500"/>
+  <text class="title" x="32" y="28">q16  f′와 g′의 위아래 관계 → h′의 부호</text>
+  <text class="small" x="32" y="47">a&gt;0인 비율 개략도: 세로 크기는 미정이며 교점·부호 구조만 사용한다.</text>
+
+  <g aria-label="도함수 비교 그래프">
+    <line class="axis" x1="42" y1="330" x2="365" y2="330" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="100" y1="430" x2="100" y2="72" marker-end="url(#axis-arrow)"/>
+    <text class="math" x="368" y="335">x</text>
+    <text class="math" x="106" y="78">y</text>
+    <line class="guide" x1="100" y1="330" x2="100" y2="430"/>
+    <line class="guide" x1="250" y1="330" x2="250" y2="430"/>
+    <line class="guide" x1="300" y1="250" x2="300" y2="430"/>
+    <polyline class="main-curve" points="50,250 75,295 100,330 125,355 150,370 175,375 200,370 225,355 250,330 275,295 300,250 325,190 350,130"/>
+    <line class="secondary-curve" x1="50" y1="350" x2="350" y2="230"/>
+    <circle class="point" cx="100" cy="330" r="3.5" fill="#111"/>
+    <circle class="point" cx="250" cy="330" r="3.5" fill="#111"/>
+    <circle class="point" cx="300" cy="250" r="3.5" fill="#111"/>
+    <text class="label" x="307" y="124">f′</text>
+    <text class="label" x="327" y="263">g′</text>
+    <text class="tick" x="96" y="350">0</text>
+    <text class="tick" x="246" y="350">3</text>
+    <text class="tick" x="296" y="350">4</text>
+    <text class="small" x="84" y="414">교점 x=0</text>
+    <text class="small" x="282" y="414">교점 x=4</text>
+  </g>
+
+  <g aria-label="부호 판정 패널">
+    <rect class="panel" x="390" y="72" width="220" height="350" rx="8"/>
+    <text class="title" x="408" y="101">h′=f′−g′</text>
+    <text class="label" x="408" y="132">x&lt;0</text>
+    <text class="small" x="468" y="132">f′&gt;g′ → h′&gt;0</text>
+    <text class="label" x="408" y="162">0&lt;x&lt;4</text>
+    <text class="small" x="468" y="162">f′&lt;g′ → h′&lt;0</text>
+    <text class="label" x="408" y="192">x&gt;4</text>
+    <text class="small" x="468" y="192">f′&gt;g′ → h′&gt;0</text>
+    <line class="guide" x1="408" y1="210" x2="592" y2="210"/>
+    <text class="label" x="408" y="240">x=0</text>
+    <text class="small" x="408" y="258">+ → − : h는 극대</text>
+    <text class="label" x="408" y="290">x=4</text>
+    <text class="small" x="408" y="308">− → + : h는 극소</text>
+    <line class="guide" x1="408" y1="326" x2="592" y2="326"/>
+    <text class="small" x="408" y="351">0&lt;x&lt;3: f′&lt;0</text>
+    <text class="small" x="408" y="369">→ f(0)&gt;f(3)</text>
+    <text class="small" x="408" y="393">3&lt;x&lt;4: f′&gt;0이어도</text>
+    <text class="small" x="408" y="409">h′&lt;0 → h(3)&gt;h(4)</text>
+    <text class="label" x="408" y="441">판정: ㄱ 참, ㄴ·ㄷ 거짓</text>
+  </g>
+</svg>
