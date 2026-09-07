@@ -1,13 +1,13 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-09-06T10:10:00.368Z
+- 생성 시각: 2026-09-07T02:11:29.934Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(453파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(454파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 11026
-- 최종 인덱스 문항 수: 11026
+- 원본 문항 수: 11034
+- 최종 인덱스 문항 수: 11034
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -73,28 +73,28 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 11026건 기준)
+## 5. 필드 누락 (최종 인덱스 11034건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
 | id | 0 |
 | content | 0 |
 | choices(배열) | 0 |
-| level | 344 |
-| standardUnit | 0 |
-| standardUnitKey | 0 |
-| standardCourse | 12 |
-| tags | 0 |
+| level | 352 |
+| standardUnit | 8 |
+| standardUnitKey | 8 |
+| standardCourse | 20 |
+| tags | 8 |
 | undefined/비객체(skip) | 0 |
 
 ## 6. 시각요소 집계 (최종 인덱스 기준)
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 2218 |
+| q.image 보유 | 2219 |
 | content <img> | 24 |
 | content <svg> | 79 |
-| content <table> | 171 |
-| 시각요소 보유(hasImage=true) | 2486 |
+| content <table> | 172 |
+| 시각요소 보유(hasImage=true) | 2488 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).

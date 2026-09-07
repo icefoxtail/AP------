@@ -18,7 +18,7 @@ window.questionBank = [
       "샌드위치 정리"
     ],
     "wide": false,
-    "content": "양의 실수 전체의 집합에서 정의된 함수 $f(x)$가 $2x^2-x\\lt f(x)\\lt2x^2+3x+4$를 만족시킬 때, $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{3x^2}$의 값은? [4점]",
+    "content": "양의 실수 전체의 집합에서 정의된 함수 $f(x)$가 $2x^2-x\\lt f(x)\\lt2x^2+3x+1$를 만족시킬 때, $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{3x^2}$의 값은? [4점]",
     "choices": [
       "$\\dfrac13$",
       "$\\dfrac12$",
@@ -27,7 +27,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 부등식의 각 변을 같은 양수로 나눈 뒤 조임정리를 적용한다.\n조건 정리: $x$가 양의 실수이므로 $3x^2>0$이고, 부등식의 양 끝은 모두 이차식이다.\n풀이 방향: 각 변을 $3x^2$으로 나누어 양 끝의 극한이 같음을 보인다.\n정석 풀이: 주어진 부등식의 각 변을 $3x^2$으로 나누면 $\\dfrac{2x^2-x}{3x^2}<\\dfrac{f(x)}{3x^2}<\\dfrac{2x^2+3x+4}{3x^2}$이다. 양 끝의 극한은 각각\n$\\displaystyle\\lim_{x\\to\\infty}\\left(\\dfrac23-\\dfrac1{3x}\\right)=\\dfrac23$, $\\displaystyle\\lim_{x\\to\\infty}\\left(\\dfrac23+\\dfrac1x+\\dfrac4{3x^2}\\right)=\\dfrac23$이다.\n두 극한이 모두 $\\dfrac23$이므로 $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{3x^2}=\\dfrac23$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 부등식의 각 변을 같은 양수로 나눈 뒤 조임정리를 적용한다.\n조건 정리: $x$가 양의 실수이므로 $3x^2>0$이고, 부등식의 양 끝은 모두 이차식이다.\n풀이 방향: 각 변을 $3x^2$으로 나누어 양 끝의 극한이 같음을 보인다.\n정석 풀이: 주어진 부등식의 각 변을 $3x^2$으로 나누면 $\\dfrac{2x^2-x}{3x^2}<\\dfrac{f(x)}{3x^2}<\\dfrac{2x^2+3x+1}{3x^2}$이다. 양 끝의 극한은 각각\n$\\displaystyle\\lim_{x\\to\\infty}\\left(\\dfrac23-\\dfrac1{3x}\\right)=\\dfrac23$, $\\displaystyle\\lim_{x\\to\\infty}\\left(\\dfrac23+\\dfrac1x+\\dfrac1{3x^2}\\right)=\\dfrac23$이다.\n두 극한이 모두 $\\dfrac23$이므로 $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f(x)}{3x^2}=\\dfrac23$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -640,7 +640,12 @@ window.questionBank = [
     "wide": false,
     "content": "서술형 2<br>아래 그림과 같이 직선 $y=x$에 접하고 중심의 좌표가 $\\left(a,a-\\dfrac1a\\right)$인 원 $C$가 있다. 원점 $O$와 원 $C$ 사이의 거리의 최댓값을 $d$라 할 때, $\\displaystyle\\lim_{a\\to\\infty}\\dfrac{d}{a}$의 값을 구하는 과정을 서술하시오. (단, $a\\gt1$) [5점]",
       "image": "assets/images/25_제일고_2학기_중간_고2_수학II/q20.png",
-      "imageSize": "large",
+    "imageSize": "large",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "직선 y=x에 접하는 원에서 중심 C와 접점 T를 잇는 반지름이 접선에 수직이고 원점에서 원까지의 최댓거리가 OC+r임을 나타낸 해설 도형",
+    "solutionImageCaption": "CT는 접선 y=x에 수직인 반지름이고, 원점에서 원까지의 최댓거리는 OC+r이다.",
+    "solutionImageSize": "large",
+    "solutionImageStatus": "asset_verified",
       "choices": [],
     "answer": "$\\sqrt2$",
     "solution": "[키포인트] 원 위의 점까지의 거리의 최댓값은 중심까지의 거리에 반지름을 더한 값이다.\n조건 정리: 원 $C$는 직선 $y=x$에 접하므로 반지름은 중심과 그 직선 사이의 거리와 같다.\n풀이 방향: 반지름과 $\\overline{OC}$를 $a$의 식으로 나타낸 뒤 $\\dfrac da$의 극한을 구한다.\n정석 풀이: 중심을 $C\\left(a,\\ a-\\dfrac1a\\right)$라 하자. 원이 직선 $x-y=0$에 접하므로 반지름은\n$r=\\dfrac{\\left|a-\\left(a-\\dfrac1a\\right)\\right|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{1}{a\\sqrt2}$이다.\n또 $\\overline{OC}=\\sqrt{a^2+\\left(a-\\dfrac1a\\right)^2}$이고, 원점에서 원 위의 점까지의 거리의 최댓값은 $d=\\overline{OC}+r$이다. $a>1$이므로\n$\\dfrac da=\\sqrt{1+\\left(1-\\dfrac1{a^2}\\right)^2}+\\dfrac1{a^2\\sqrt2}$이다.\n$a\\to\\infty$일 때 $\\dfrac1{a^2}\\to0$이므로 $\\displaystyle\\lim_{a\\to\\infty}\\dfrac da=\\sqrt{1+1}=\\sqrt2$이다.\n따라서 구하는 값은 $\\sqrt2$이다.",
