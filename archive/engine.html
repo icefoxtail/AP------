@@ -35,6 +35,7 @@
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20260906.25" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
+    <script src="solution-render-executor.js?v=20260907.1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -2134,7 +2135,7 @@ async function renderExam(area, data) {
     }
 }
 
-async function renderSol(area, data) {
+async function renderSolLegacy(area, data) {
     {
         AppState.solutionDecisionLedger = null;
         AppState.solutionObservedPlacementLedger = null;
@@ -2391,6 +2392,42 @@ async function renderSol(area, data) {
             }
         }
     }
+}
+
+const archiveSolutionDeps = Object.freeze({
+    get document() { return document; },
+    get Node() { return Node; },
+    appState: AppState,
+    makePage,
+    typesetMath,
+    raf,
+    autoCompress,
+    makeSolutionHtmlChunks,
+    makeLongSolutionShell,
+    renderSolutionImageHTML,
+    formatSolutionHtml,
+    formatQuestionContent,
+    getArchiveQuestionSourceRef,
+    waitForQuestionImage,
+    rendererMode,
+    wrapLatex,
+    stripInlineImagesFromContent,
+    sanitizeProtectedSegments,
+    normalizeQuestionNotes,
+    normalizeViewBlocks,
+    normalizeQuestionTables,
+    measureSolutionOuterFootprint
+});
+
+async function renderSol(area, data) {
+    const requestedAuthority = new URLSearchParams(window.location.search).get('solutionAuthority');
+    // The shared executor is the production authority after the bounded browser
+    // A/B gate.  The legacy implementation remains an explicit rollback path.
+    const authority = requestedAuthority || 'shared';
+    if (authority === 'legacy') return renderSolLegacy(area, data);
+    if (authority !== 'shared') throw new Error(`UNKNOWN_SOLUTION_AUTHORITY:${authority}`);
+    if (!window.APSolutionRenderExecutor?.render) throw new Error('SOLUTION_EXECUTOR_UNAVAILABLE');
+    return window.APSolutionRenderExecutor.render({ area, data, deps: archiveSolutionDeps });
 }
 
 function formatGridAnswer(answer) {

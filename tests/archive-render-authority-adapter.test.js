@@ -5,6 +5,7 @@ const path = require('node:path');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
+const solutionExecutor = fs.readFileSync(path.join(root, 'archive', 'solution-render-executor.js'), 'utf8');
 
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
   assert.match(engine, /src="print-contract\.js\?v=20260906\.2"/);
@@ -19,6 +20,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
   assert.match(engine, /recordArchiveDualRun\(area\)/);
   assert.match(engine, /layout-authority\.js\?v=20260906\.25/);
+  assert.match(engine, /solution-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area\)/);
@@ -40,7 +42,35 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(layout, /spacer\.dataset\.layoutSpacer/);
   assert.match(engine, /async function renderExam\(area, data\)/);
   assert.match(engine, /async function renderSol\(area, data\)/);
+  assert.match(engine, /async function renderSolLegacy\(area, data\)/);
+  assert.match(engine, /APSolutionRenderExecutor\.render\(\{ area, data, deps: archiveSolutionDeps \}\)/);
+  assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
+  assert.match(engine, /solutionAuthority/);
   assert.match(engine, /injectQrToLastExamPage\(area\);[\s\S]{0,80}injectSubmitQrToLastExamPage\(area\);/);
+});
+
+test('Archive solution executor is a DOM transaction module with injected engine dependencies', () => {
+  assert.match(solutionExecutor, /APSolutionRenderExecutor/);
+  assert.match(solutionExecutor, /async function render\(\{ area, data, deps \}\)/);
+  assert.match(solutionExecutor, /solution-split-staging/);
+  assert.match(solutionExecutor, /solution-split-chunk/);
+  assert.match(solutionExecutor, /autoCompress\(box\)/);
+  assert.match(solutionExecutor, /makeLongSolutionShell\(sourceBox, qNo, true\)/);
+  assert.match(solutionExecutor, /solutionImageHtml/);
+  assert.doesNotMatch(solutionExecutor, /planLegacySolutionLayout|buildExpectedLayoutMaps/,
+    'shared executor must execute the extracted DOM algorithm, not consume planner output');
+  const api = require('../archive/solution-render-executor.js');
+  assert.equal(typeof api.render, 'function');
+});
+
+test('Phase A report uses legacy/shared executor A/B as the authority gate', () => {
+  const report = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-a-solution-layout-bridge.json'), 'utf8'));
+  assert.equal(report.status, 'PASS');
+  assert.equal(report.implementation, 'archive/solution-render-executor.js');
+  assert.equal(report.browserEvidence.kind, 'actual-browser-legacy-vs-shared-executor-ab');
+  assert.equal(report.productionAuthority, 'shared Solution Executor by default; legacy renderSolLegacy retained as explicit rollback/debug path');
+  assert.equal(report.extraction.numericPlanner, 'diagnostic/historical sidecar only; not an authority or promotion gate');
+  assert.deepEqual(report.browserEvidence.differenceFields, []);
 });
 
 test('Archive golden browser fixture records semantic parity across all three output modes', () => {

@@ -1,59 +1,48 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "planVersion": "v2.2",
   "phase": "PHASE_A_SOLUTION_LAYOUT_BRIDGE",
   "status": "PASS",
-  "promotionStartSha": "824193a2d935131d1c1c6295dece4b96d5e75889",
-  "implementation": "archive/layout-authority.js",
+  "promotionStartSha": "25c448f17eff73ceeb40801dba75a6f9db4b2aa7",
+  "implementation": "archive/solution-render-executor.js",
   "adapter": "archive/engine.html",
-  "planner": "LEGACY_SOLUTION_DECISION_POLICY",
-  "measurementInput": "solution staging rawOuterHeight/compressedOuterHeight, production column capacity, shell overhead, and rendered chunk-range measurements; final DOM placement results are not planner inputs",
-  "decisionInputExcludesLegacyPlacementResults": ["pageNo", "columnNo", "columnOrder", "placementOrder", "continuationOf"],
-  "observedPlacementLedger": ["pageNo", "columnNo", "columnOrder", "placementOrder", "continuationOf"],
-  "rangeMeasurementTables": ["primary chunk ranges", "continuation chunk ranges"],
-  "productionAuthority": "legacy renderSol remains the production authority; pagination decision semantics are retained with decision-input and observation instrumentation added; solution bridge is sidecar-only until Phase C production promotion",
+  "extraction": {
+    "source": "archive/engine.html::renderSolLegacy",
+    "api": "APSolutionRenderExecutor.render({ area, data, deps })",
+    "algorithm": "mechanical DOM executor extraction; staging, typeset, image wait, left/right advance, scrollHeight/clientHeight fit, autoCompress, long-solution split, continuation shell, and page/header/page-number materialization retain production order",
+    "numericPlanner": "diagnostic/historical sidecar only; not an authority or promotion gate",
+    "legacyRollback": "renderSolLegacy retained and selectable with solutionAuthority=legacy"
+  },
+  "productionAuthority": "shared Solution Executor by default; legacy renderSolLegacy retained as explicit rollback/debug path",
   "browserEvidence": {
+    "kind": "actual-browser-legacy-vs-shared-executor-ab",
     "fixture": "archive/exams/test-fixtures/render-authority-golden.js",
     "mode": "solution",
     "qpp": 4,
-    "pageCount": 3,
-    "columnCapacity": 958,
-    "q5Boundary": {
-      "legacy": "page1 col2",
-      "shared": "page1 col2",
-      "rawOuterHeight": 183.27295,
-      "compressedOuterHeight": 185.208925
+    "legacyAuthority": "solutionAuthority=legacy",
+    "sharedAuthority": "solutionAuthority=shared",
+    "legacyPageCount": 3,
+    "sharedPageCount": 3,
+    "headerSignature": { "legacy": [true, true, true], "shared": [true, true, true] },
+    "pageNumberSignature": { "legacy": [true, true, true], "shared": [true, true, true] },
+    "bodyClientHeight": { "legacy": [958, 958, 958], "shared": [958, 958, 958], "tolerancePx": 1 },
+    "q5Placement": { "legacy": "page1/column2", "shared": "page1/column2" },
+    "q6Placement": {
+      "legacy": ["page2/column1/primary", "page2/column2/continuation", "page3/column1/continuation"],
+      "shared": ["page2/column1/primary", "page2/column2/continuation", "page3/column1/continuation"]
     },
-    "q6RangeAllocation": {
-      "primary": "page2 col1",
-      "continuation1": "page2 col2",
-      "continuation2": "page3 col1",
-      "chunkRangeMeasurementTable": "decision ledger blocks[5].chunks"
-    },
-    "headerSignature": [true, true, true],
-    "frameSignature": [false, false, false],
-    "bodyClientHeight": [958, 958, 958],
-    "columnSignature": [
-      ["ordinal:1", "ordinal:2", "ordinal:3", "ordinal:4", "ordinal:5"],
-      ["ordinal:6:primary", "ordinal:6:continuation"],
-      ["ordinal:6:continuation", "ordinal:7", "ordinal:8"]
-    ],
-    "continuation": {
-      "sourceRef": "exams/test-fixtures/render-authority-golden.js#legacy:exams/test-fixtures/render-authority-golden.js#ordinal:6",
-      "blocks": ["solution:...ordinal:6:1", "solution:...ordinal:6:2", "solution:...ordinal:6:3"]
-    },
-    "solutionImage": true,
-    "solutionImageParity": true,
-    "semanticParity": true,
-    "pageMap": true,
-    "columnMap": true,
-    "columnOrder": true,
-    "placementOrder": true,
+    "columnChildSignatureParity": true,
+    "sourceIdentityParity": true,
+    "displayNoParity": true,
     "continuationParity": true,
-    "renderGeometry": true,
+    "solutionImagePrimaryOnlyParity": true,
+    "pageMapParity": true,
+    "columnMapParity": true,
+    "geometryParity": true,
     "overflowParity": true,
     "omissionCount": 0,
     "duplicationCount": 0,
+    "fatalRenderError": false,
     "differenceFields": []
   },
   "mutationTests": {
@@ -65,13 +54,10 @@
     "solutionDuplication": true,
     "headerGeometryMutation": true,
     "bodyHeightBoundaryMutation": true,
+    "solutionImagePrimaryRemoval": true,
+    "continuationSolutionImageDuplication": true,
     "geometryEvidenceMissing": true
   },
-  "independenceTests": {
-    "observedPlacementMutationDoesNotMoveExpected": true,
-    "decisionMeasurementMutationMovesExpected": true
-  },
-  "readiness": "existing fail-closed readiness suite PASS; no production promotion performed",
-  "rollback": "legacy renderSol retained and untouched",
-  "nonGoals": ["No Archive production promotion", "No Answer bridge", "No Mixer or Clinic work", "No Phase 7 cleanup"]
+  "readiness": "legacy and shared transactions reached RENDER_READY; existing fail-closed readiness and image-completion suites remain PASS",
+  "nonGoals": ["No Answer bridge", "No Mixer or Clinic work", "No Phase 7 cleanup", "No legacy deletion"]
 }

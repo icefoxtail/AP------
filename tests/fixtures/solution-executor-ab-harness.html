@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Archive solution executor A/B</title>
+  <style>
+    body { font: 12px/1.45 system-ui, sans-serif; margin: 24px; }
+    #status { font-weight: 800; }
+    pre { white-space: pre-wrap; word-break: break-word; }
+    iframe { position: absolute; width: 1px; height: 1px; border: 0; left: -10000px; top: -10000px; }
+  </style>
+</head>
+<body>
+<div id="status">SOLUTION_EXECUTOR_AB_WAITING</div>
+<pre id="detail"></pre>
+<script>
+  const status = document.getElementById('status');
+  const detail = document.getElementById('detail');
+  const base = '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=sol&qpp=4&renderAuthorityDualRun=1';
+  const sources = ['legacy', 'shared'];
+  const frames = Object.fromEntries(sources.map(authority => {
+    const frame = document.createElement('iframe');
+    frame.title = `solution-${authority}`;
+    frame.src = `${base}&solutionAuthority=${authority}`;
+    document.body.appendChild(frame);
+    return [authority, frame];
+  }));
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const numberFrom = value => Number.parseInt(String(value || '').replace(/\D+/g, ''), 10) || 0;
+  const summarize = frame => {
+    const doc = frame.contentDocument;
+    const root = doc?.documentElement;
+    const pages = Array.from(doc?.querySelectorAll('#print-area .page') || []).map((page, index) => ({
+      pageNo: index + 1,
+      hasHeader: Boolean(page.querySelector('.page-header')),
+      hasPageNumber: Boolean(Array.from(page.children).find(node => /^-\s*\d+\s*-$/u.test((node.textContent || '').trim()))),
+      bodyClientHeight: Number(page.querySelector('.page-body')?.clientHeight || 0),
+      overflow: Number(page.querySelector('.page-body')?.scrollHeight || 0) > Number(page.querySelector('.page-body')?.clientHeight || 0) + 2,
+      columns: Array.from(page.querySelectorAll('.grid-container > .grid-col')).map((column, columnIndex) => ({
+        columnNo: columnIndex + 1,
+        children: Array.from(column.children).map((node, placementOrder) => ({
+          placementOrder,
+          sourceRef: node.getAttribute('data-source-ref') || '',
+          blockId: node.dataset.solutionLayoutBlockId || '',
+          displayNo: numberFrom(node.querySelector('.q-num')?.textContent),
+          continuation: Boolean(node.classList.contains('sol-box-long') && !node.querySelector('.q-num')),
+          solutionImage: Boolean(node.querySelector('.sol-image-wrap img')),
+          flex: node.style.flex || ''
+        }))
+      }))
+    }));
+    const boxes = pages.flatMap(page => page.columns.flatMap(column => column.children));
+    const counts = new Map();
+    boxes.forEach(box => counts.set(box.sourceRef, (counts.get(box.sourceRef) || 0) + 1));
+    const readiness = root?.dataset?.apPrintReadiness ? JSON.parse(root.dataset.apPrintReadiness) : null;
+    return {
+      pages,
+      pageCount: pages.length,
+      boxes,
+      sourceCounts: Object.fromEntries(counts),
+      overflow: pages.some(page => page.overflow),
+      readiness,
+      gate: root?.dataset?.apSolutionLayoutPromotion ? JSON.parse(root.dataset.apSolutionLayoutPromotion) : null
+    };
+  };
+  const comparable = result => ({
+    pageCount: result.pageCount,
+    pages: result.pages.map(page => ({
+      pageNo: page.pageNo,
+      hasHeader: page.hasHeader,
+      hasPageNumber: page.hasPageNumber,
+      bodyClientHeight: page.bodyClientHeight,
+      overflow: page.overflow,
+      columns: page.columns.map(column => ({
+        columnNo: column.columnNo,
+        children: column.children.map(child => ({
+          sourceRef: child.sourceRef,
+          blockId: child.blockId,
+          displayNo: child.displayNo,
+          continuation: child.continuation,
+          solutionImage: child.solutionImage,
+          flex: child.flex
+        }))
+      }))
+    }))
+  });
+  const bodyHeightsEqual = (left, right) => left.pages.length === right.pages.length && left.pages.every((page, index) => Math.abs(page.bodyClientHeight - right.pages[index].bodyClientHeight) <= 1);
+  const withoutBodyHeight = result => ({
+    ...comparable(result),
+    pages: comparable(result).pages.map(page => ({ ...page, bodyClientHeight: 0 }))
+  });
+  const same = (left, right) => JSON.stringify(withoutBodyHeight(left)) === JSON.stringify(withoutBodyHeight(right));
+  const poll = async () => {
+    const deadline = Date.now() + 20000;
+    let outcomes = [];
+    while (Date.now() < deadline) {
+      const promises = sources.map(authority => frames[authority].contentWindow?.__AP_RENDER_READY__);
+      if (promises.every(Boolean)) {
+        outcomes = await Promise.all(promises.map(promise => Promise.resolve(promise)));
+        if (outcomes.every(outcome => outcome?.ok === true)) break;
+      }
+      await wait(100);
+    }
+    const result = Object.fromEntries(sources.map(authority => [authority, summarize(frames[authority])]));
+    const legacy = result.legacy;
+    const shared = result.shared;
+    const q5 = page => page?.columns?.find(column => column.children.some(child => child.displayNo === 5));
+    const q6 = page => page?.columns?.find(column => column.children.some(child => child.displayNo === 6));
+    const q5Parity = q5(legacy.pages[0])?.columnNo === q5(shared.pages[0])?.columnNo && q5(legacy.pages[0])?.columnNo === 2;
+    const q6Parity = JSON.stringify(legacy.pages.map(page => page.columns.map(column => column.children.filter(child => child.displayNo === 6).map(child => ({ continuation: child.continuation, sourceRef: child.sourceRef }))))) === JSON.stringify(shared.pages.map(page => page.columns.map(column => column.children.filter(child => child.displayNo === 6).map(child => ({ continuation: child.continuation, sourceRef: child.sourceRef })))));
+    const sourceCountsEqual = JSON.stringify(legacy.sourceCounts) === JSON.stringify(shared.sourceCounts);
+    const pageMapEqual = same(legacy, shared) && bodyHeightsEqual(legacy, shared);
+    const primaryCounts = result => Object.fromEntries(result.boxes.filter(box => !box.continuation).reduce((counts, box) => counts.set(box.sourceRef, (counts.get(box.sourceRef) || 0) + 1), new Map()));
+    const primarySourceCounts = primaryCounts(shared);
+    const omissions = Object.values(primarySourceCounts).filter(count => count < 1).length;
+    const duplication = Object.values(primarySourceCounts).filter(count => count > 1).length;
+    const pass = outcomes.length === 2 && outcomes.every(outcome => outcome?.ok === true) && legacy.readiness?.state === 'RENDER_READY' && shared.readiness?.state === 'RENDER_READY' && pageMapEqual && q5Parity && q6Parity && sourceCountsEqual && omissions === 0 && duplication === 0;
+    status.textContent = pass ? 'SOLUTION_EXECUTOR_AB_PASS' : 'SOLUTION_EXECUTOR_AB_HOLD';
+    detail.textContent = JSON.stringify({ legacy, shared, checks: { pageMapEqual, bodyHeightsEqual: bodyHeightsEqual(legacy, shared), q5Parity, q6Parity, sourceCountsEqual, omissionCount: omissions, duplicationCount: duplication } }, null, 2);
+  };
+  poll().catch(error => { status.textContent = `SOLUTION_EXECUTOR_AB_ERROR:${error.message}`; detail.textContent = String(error.stack || error); });
+</script>
+</body>
+</html>
