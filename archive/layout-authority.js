@@ -473,8 +473,86 @@
     function buildExpectedLayoutMaps(input, blockMap, options) {
         const layout = (input?.planner === 'LEGACY_SLOT_CHUNK_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SLOT_CHUNK_POLICY')
             ? planLegacyProductionLayout(input)
+            : (input?.planner === 'LEGACY_SOLUTION_LEDGER_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SOLUTION_LEDGER_POLICY')
+            ? planLegacySolutionLayout(input)
             : paginateRenderableBlocks(input);
         return Object.freeze({ layout, ...materializeLayoutMaps(layout, blockMap, options) });
+    }
+
+    // Solution pagination has a different production contract from exam SLOT/
+    // CHUNK placement: a solution box is placed in the current column, then
+    // compressed, moved to the next column, or split into continuation shells.
+    // The adapter records those staging/placement facts without source data;
+    // this pure planner re-materializes them deterministically for comparison.
+    function planLegacySolutionLayout(input) {
+        const config = input || {};
+        const geometry = config.pageGeometry || {};
+        const usableHeight = positive(geometry.usableHeight, 'SOLUTION_PAGE_GEOMETRY');
+        const columns = positiveInteger(geometry.columns, 'SOLUTION_COLUMNS', 2);
+        const placements = Array.isArray(config.placements) ? config.placements.slice() : fail('SOLUTION_PLACEMENTS_MUST_BE_ARRAY');
+        const pagesByNo = new Map();
+        const createSolutionPage = pageNo => ({
+            pageNo,
+            isBlank: false,
+            columns: Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] })),
+            itemPlacements: []
+        });
+        const getPage = pageNo => {
+            if (!pagesByNo.has(pageNo)) pagesByNo.set(pageNo, createSolutionPage(pageNo));
+            return pagesByNo.get(pageNo);
+        };
+        placements.slice().sort((left, right) => Number(left.placementOrder) - Number(right.placementOrder)).forEach((raw, index) => {
+            const placement = raw || {};
+            const blockId = safeText(placement.blockId, 'SOLUTION_BLOCK_ID');
+            const pageNo = positiveInteger(placement.pageNo, 'SOLUTION_PAGE_NO', index + 1);
+            const columnNo = positiveInteger(placement.columnNo, 'SOLUTION_COLUMN_NO', 1);
+            if (columnNo > columns) fail('SOLUTION_COLUMN_EXCEEDS_PAGE_COLUMNS');
+            const page = getPage(pageNo);
+            const item = Object.freeze({
+                blockId,
+                questionKey: String(placement.questionKey || blockId),
+                columnNo,
+                columnSpan: 1,
+                layoutTag: 'solution',
+                placementKind: 'solution',
+                slotSpanRows: 1,
+                slotRowStart: null,
+                continuationOf: placement.continuationOf ? String(placement.continuationOf) : '',
+                slotOccupancy: placement.continuationOf ? 0 : 1,
+                measurementMode: placement.measurementMode === 'tight' ? 'tight' : 'raw',
+                gapBefore: Number(placement.gapBefore || 0),
+                columnOrder: Number.isInteger(Number(placement.columnOrder)) ? Number(placement.columnOrder) : page.columns[columnNo - 1].items.length,
+                placementOrder: Number.isInteger(Number(placement.placementOrder)) ? Number(placement.placementOrder) : index
+            });
+            page.columns[columnNo - 1].items.push(item);
+            page.itemPlacements.push(item);
+        });
+        let normalizedPlacementOrder = 0;
+        const pages = Array.from(pagesByNo.values()).sort((left, right) => left.pageNo - right.pageNo).map(page => {
+            const normalizedByBlockId = new Map();
+            const columns = page.columns.map(column => {
+                const items = column.items.slice().sort((left, right) => left.columnOrder - right.columnOrder).map(item => {
+                    const normalized = Object.freeze({ ...item, placementOrder: normalizedPlacementOrder++ });
+                    normalizedByBlockId.set(item.blockId, normalized);
+                    return normalized;
+                });
+                return Object.freeze({ columnNo: column.columnNo, usedHeight: 0, items: Object.freeze(items) });
+            });
+            const itemPlacements = page.itemPlacements.slice().sort((left, right) => left.placementOrder - right.placementOrder).map(item => normalizedByBlockId.get(item.blockId) || item);
+            return Object.freeze({
+                pageNo: page.pageNo,
+                isBlank: false,
+                columns: Object.freeze(columns),
+                blockIds: Object.freeze(itemPlacements.map(item => item.blockId)),
+                questionKeys: Object.freeze(Array.from(new Set(itemPlacements.map(item => item.questionKey)))),
+                slotOccupancy: itemPlacements.reduce((sum, item) => sum + item.slotOccupancy, 0),
+                itemPlacements: Object.freeze(itemPlacements)
+            });
+        });
+        const columnMap = Object.freeze(pages.flatMap(page => page.columns.flatMap(column => column.items.map(item => Object.freeze({ pageNo: page.pageNo, ...item })))));
+        const continuationMap = Object.freeze(columnMap.filter(item => item.continuationOf).map(item => Object.freeze({ continuationBlockId: item.blockId, sourceBlockId: item.continuationOf, pageNo: item.pageNo })));
+        const overflowEvidence = Object.freeze((config.overflowEvidence || []).map(item => Object.freeze({ ...item })));
+        return Object.freeze({ pages: Object.freeze(pages), columnMap, continuationMap, overflowEvidence, qpp: null, columns, blockGap: Number(geometry.blockGap || 0), measurementMode: 'raw', slotRows: 1, usableHeight, planner: 'LEGACY_SOLUTION_LEDGER_POLICY' });
     }
 
     function sourceRefKey(ref) {
@@ -705,6 +783,86 @@
         });
     }
 
+    function observeLegacySolutionDomLayout(area, options) {
+        const root = area;
+        if (!root || typeof root.querySelectorAll !== 'function') fail('INVALID_LEGACY_SOLUTION_LAYOUT_ROOT');
+        const config = options || {};
+        if (typeof config.resolveRecord !== 'function') fail('MISSING_LEGACY_SOLUTION_RECORD_RESOLVER');
+        const columns = positiveInteger(config.columns, 'SOLUTION_LAYOUT_COLUMNS', 2);
+        const pageNodes = Array.from(root.querySelectorAll('.page'));
+        const blockMap = {};
+        const elementsByBlockId = {};
+        const pages = [];
+        const expectedPlacements = [];
+        const occurrenceBySource = new Map();
+        let placementOrder = 0;
+        pageNodes.forEach((pageNode, pageIndex) => {
+            const pageNo = pageIndex + 1;
+            if (pageNode.classList.contains('page-blank')) {
+                pages.push({ pageNo, isBlank: true, columns: [] });
+                return;
+            }
+            const columnItems = Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] }));
+            const itemNodes = Array.from(pageNode.querySelectorAll('.sol-box[data-source-ref]'));
+            itemNodes.forEach(node => {
+                const sourceKey = String(node.getAttribute('data-source-ref') || '').trim();
+                const record = config.resolveRecord(sourceKey, node);
+                if (!record || !record.sourceRef || !Number.isInteger(Number(record.displayNo)) || Number(record.displayNo) < 1) fail('UNKNOWN_LEGACY_SOLUTION_SOURCE_RECORD:' + sourceKey);
+                const occurrence = (occurrenceBySource.get(sourceKey) || 0) + 1;
+                occurrenceBySource.set(sourceKey, occurrence);
+                const blockId = `solution:${sourceKey}:${occurrence}`;
+                const previousBlockId = occurrence > 1 ? `solution:${sourceKey}:1` : '';
+                const continuationOf = node.querySelector('.q-num') ? '' : previousBlockId;
+                const gridColumn = node.closest('.grid-col');
+                const grid = gridColumn?.parentElement;
+                const columnNo = gridColumn && grid ? Math.min(columns, Math.max(1, Array.from(grid.children).indexOf(gridColumn) + 1)) : 1;
+                const columnOrder = columnItems[columnNo - 1].items.length;
+                const ledgerEntry = config.measurementsByBlockId?.[blockId] || {};
+                const measuredHeight = Number(ledgerEntry.raw ?? ledgerEntry.measuredHeight);
+                const tightHeight = Number(ledgerEntry.tight ?? measuredHeight);
+                if (!Number.isFinite(measuredHeight) || measuredHeight <= 0) fail('MISSING_SOLUTION_STAGING_MEASUREMENT:' + blockId);
+                const item = {
+                    blockId,
+                    questionKey: sourceKey,
+                    columnNo,
+                    columnSpan: 1,
+                    layoutTag: 'solution',
+                    placementKind: 'solution',
+                    slotSpanRows: 1,
+                    slotOccupancy: continuationOf ? 0 : 1,
+                    continuationOf,
+                    measurementMode: 'raw',
+                    columnOrder,
+                    placementOrder: placementOrder++,
+                    slotRowStart: null
+                };
+                columnItems[columnNo - 1].items.push(item);
+                blockMap[blockId] = {
+                    sectionId: String(record.sectionId || config.sectionId || '').trim(),
+                    recipientId: record.recipientId || config.recipientId || null,
+                    sourceRef: record.sourceRef,
+                    displayNo: Number(record.displayNo),
+                    layoutTag: 'solution',
+                    wide: false
+                };
+                elementsByBlockId[blockId] = node;
+                expectedPlacements.push({ ...item, measuredHeight, measurements: { raw: measuredHeight, tight: tightHeight } });
+            });
+            pages.push({ pageNo, isBlank: false, columns: columnItems });
+        });
+        const ledgerPlacements = Array.isArray(config.placements) ? config.placements : expectedPlacements;
+        return Object.freeze({
+            legacyInput: Object.freeze({ pages, overflowEvidence: config.overflowEvidence || [], qpp: null }),
+            expectedInput: Object.freeze({
+                pageGeometry: { usableHeight: positive(config.usableHeight, 'SOLUTION_STAGING_USABLE_HEIGHT'), columns, blockGap: Number(config.blockGap || 0), measurementMode: 'raw', planner: 'LEGACY_SOLUTION_LEDGER_POLICY' },
+                placements: ledgerPlacements
+            }),
+            blockMap: Object.freeze(blockMap),
+            elementsByBlockId: Object.freeze(elementsByBlockId),
+            expectedPlacements: Object.freeze(expectedPlacements)
+        });
+    }
+
     function inspectRenderedOverflow(root, options) {
         const config = options || {};
         const tolerance = Math.max(0, Number(config.tolerance ?? 2) || 0);
@@ -752,6 +910,7 @@
                     isBlank: page.classList.contains('page-blank'),
                     hasExamFrame: Boolean(page.querySelector('.page-exam-frame')),
                     hasHeader: Boolean(page.querySelector('.page-header')),
+                    hasPageNumber: Array.from(page.children || []).some(child => /^-\s*\d+\s*-$/.test(String(child.textContent || '').trim())),
                     bodyClientHeight: Number(body.clientHeight || 0),
                     columns: Object.freeze(columns)
                 });
@@ -770,7 +929,7 @@
             const right = expected.pages[index];
             if (!left || !right) continue;
             if (left.pageNo !== right.pageNo) differences.push({ field: 'renderGeometry.pageNo', pageNo: index + 1, observed: left.pageNo, expected: right.pageNo });
-            for (const field of ['isBlank', 'hasExamFrame', 'hasHeader']) {
+            for (const field of ['isBlank', 'hasExamFrame', 'hasHeader', 'hasPageNumber']) {
                 if (left[field] !== right[field]) differences.push({ field: `renderGeometry.${field}`, pageNo: index + 1, observed: left[field], expected: right[field] });
             }
             if (Math.abs(left.bodyClientHeight - right.bodyClientHeight) > tolerance) differences.push({ field: 'renderGeometry.bodyClientHeight', pageNo: index + 1, observed: left.bodyClientHeight, expected: right.bodyClientHeight });
@@ -801,9 +960,11 @@
             const page = root.createElement('section');
             page.className = pageLayout.isBlank ? 'page page-blank' : 'page';
             const legacyPage = legacyPages[pageLayout.pageNo - 1] || null;
+            let pageNumber = null;
             if (legacyPage) {
                 const frame = legacyPage.querySelector('.page-exam-frame');
                 const header = legacyPage.querySelector('.page-header');
+                pageNumber = Array.from(legacyPage.children || []).find(child => /^-\s*\d+\s*-$/.test(String(child.textContent || '').trim())) || null;
                 if (frame) page.appendChild(frame.cloneNode(true));
                 if (header) page.appendChild(header.cloneNode(true));
             }
@@ -872,6 +1033,7 @@
                     body.appendChild(grid);
                 }
             }
+            if (pageNumber) page.appendChild(pageNumber.cloneNode(true));
             host.appendChild(page);
         });
         root.body.appendChild(host);
@@ -965,5 +1127,5 @@
         return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences), omissionCount, duplicationCount });
     }
 
-    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, inspectRenderedLayoutGeometry, compareRenderedLayoutGeometry, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
+    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, planLegacySolutionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, observeLegacySolutionDomLayout, inspectRenderedOverflow, inspectRenderedLayoutGeometry, compareRenderedLayoutGeometry, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
 }));

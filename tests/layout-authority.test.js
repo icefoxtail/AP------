@@ -272,3 +272,58 @@ test('rendered geometry comparator rejects header, spacer, slot-flex, and body-h
 
   assert.equal(L.compareRenderedLayoutGeometry(undefined, undefined, 1).equal, false);
 });
+
+test('solution layout bridge preserves continuation identity and rejects solution placement mutations', () => {
+  const ref = n => ({ sourceArchiveFile: 'exams/solution.js', sourceQuestionUid: `solution-${n}`, sourceQuestionOrdinal: n, sourceQuestionNo: n });
+  const records = {
+    s1: { sectionId: 'archive:solution', sourceRef: ref(1), displayNo: 1 },
+    s1c: { sectionId: 'archive:solution', sourceRef: ref(1), displayNo: 1 },
+    s2: { sectionId: 'archive:solution', sourceRef: ref(2), displayNo: 2 }
+  };
+  const placements = [
+    { blockId: 's1', questionKey: 'q1', pageNo: 1, columnNo: 1, columnOrder: 0, placementOrder: 0, measurements: { raw: 40, tight: 36 }, measuredHeight: 40 },
+    { blockId: 's1c', questionKey: 'q1', pageNo: 2, columnNo: 1, columnOrder: 0, placementOrder: 1, continuationOf: 's1', measurements: { raw: 80, tight: 72 }, measuredHeight: 80 },
+    { blockId: 's2', questionKey: 'q2', pageNo: 1, columnNo: 2, columnOrder: 0, placementOrder: 2, measurements: { raw: 42, tight: 38 }, measuredHeight: 42 }
+  ];
+  const expected = L.buildExpectedLayoutMaps({
+    planner: 'LEGACY_SOLUTION_LEDGER_POLICY',
+    pageGeometry: { usableHeight: 100, columns: 2, planner: 'LEGACY_SOLUTION_LEDGER_POLICY' },
+    placements
+  }, records, { sectionId: 'archive:solution' });
+  assert.deepEqual(expected.layout.pages.map(page => page.pageNo), [1, 2]);
+  assert.deepEqual(expected.layout.continuationMap.map(item => [item.continuationBlockId, item.sourceBlockId]), [['s1c', 's1']]);
+
+  const observedInput = {
+    qpp: null,
+    pages: expected.layout.pages.map(page => ({
+      pageNo: page.pageNo,
+      isBlank: false,
+      columns: page.columns.map(column => ({ columnNo: column.columnNo, items: column.items.map(item => ({ ...item })) }))
+    }))
+  };
+  const geometry = { pages: [1, 2].map(pageNo => ({ pageNo, isBlank: false, hasExamFrame: false, hasHeader: true, hasPageNumber: true, bodyClientHeight: 900, columns: [{ columnNo: 1, childFlexSignature: [] }, { columnNo: 2, childFlexSignature: [] }] })) };
+  const observed = { ...L.materializeLegacyLayoutMaps(observedInput, records, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) };
+  const expectedWithGeometry = { ...expected, renderedGeometry: structuredClone(geometry) };
+  assert.equal(L.comparePromotionLayouts(observed, expectedWithGeometry).equal, true);
+
+  const continuationMutation = structuredClone(observedInput);
+  continuationMutation.pages[1].columns[0].items[0].continuationOf = '';
+  assert.equal(L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(continuationMutation, records, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) }, expectedWithGeometry).equal, false);
+
+  const columnMutation = structuredClone(observedInput);
+  columnMutation.pages[0].columns[1].items[0].columnNo = 1;
+  assert.equal(L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(columnMutation, records, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) }, expectedWithGeometry).equal, false);
+
+  const omissionMutation = structuredClone(observedInput);
+  omissionMutation.pages[0].columns[0].items = [];
+  const omissionResult = L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(omissionMutation, records, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) }, expectedWithGeometry);
+  assert.equal(omissionResult.equal, false);
+  assert.ok(omissionResult.parity.omissionCount > 0);
+
+  const duplicateMutation = structuredClone(observedInput);
+  duplicateMutation.pages[0].columns[0].items.push({ ...duplicateMutation.pages[0].columns[0].items[0], blockId: 's1-duplicate', questionKey: 'q1', placementOrder: 99 });
+  const duplicateResult = L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(duplicateMutation, { ...records, 's1-duplicate': records.s1 }, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) }, expectedWithGeometry);
+  assert.equal(duplicateResult.equal, false);
+
+  assert.equal(L.comparePromotionLayouts({ ...observed, renderedGeometry: undefined }, expectedWithGeometry).equal, false);
+});
