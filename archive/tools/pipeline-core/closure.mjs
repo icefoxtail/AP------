@@ -53,7 +53,7 @@ export function validateRegistry(records, run) {
 
 export function denominatorInput(run) {
   const rows = run.questions.map(q => ({ questionUid: q.questionUid, requirement: q.visual.requirement, adjudicationId: q.visual.adjudicationId, adjudicationStatus: q.visual.adjudicationStatus, exemptReason: q.visual.exemptReason ?? null, actualSolutionVisualAttached: q.visual.actualSolutionVisualAttached, problemVisualMathDependency: q.visual.problemVisualMathDependency, sharedVisualMathDependency: q.visual.sharedVisualMathDependency })).sort((a, b) => a.questionUid < b.questionUid ? -1 : 1);
-  const requiredUidSet = rows.filter(q => q.requirement === 'VISUAL_REQUIRED' || q.actualSolutionVisualAttached || q.problemVisualMathDependency || q.sharedVisualMathDependency).map(q => q.questionUid);
+  const requiredUidSet = rows.filter(q => q.requirement === 'VISUAL_REQUIRED' || q.requirement === 'VISUAL_RECOMMENDED' || q.actualSolutionVisualAttached || q.problemVisualMathDependency || q.sharedVisualMathDependency).map(q => q.questionUid);
   return { inputSha: objectSha({ runInputSha: runInputSha(run), rows }), requiredUidSet, requiredUidSetSha: uidSetSha(requiredUidSet) };
 }
 
@@ -160,7 +160,7 @@ export function auditRun(root, run) {
     const identity = `${q.sourcePath}|${q.qid}`;
     if (sourceIdentities.has(identity)) errors.push(`SOURCE_IDENTITY_ALIAS_DUPLICATE:${identity}`);
     sourceIdentities.add(identity);
-    if (!isObject(q.visual) || !['VISUAL_REQUIRED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT'].includes(q.visual.requirement) || !['NONE', 'KEEP', 'ADD', 'REBUILD', 'REMOVE'].includes(q.visual.action) || !nonempty(q.visual.adjudicationId) || !['actualSolutionVisualAttached', 'problemVisualMathDependency', 'sharedVisualMathDependency'].every(k => typeof q.visual[k] === 'boolean') || !isObject(q.evidence)) { errors.push(`QUESTION_SCHEMA:${q.questionUid}`); continue; }
+    if (!isObject(q.visual) || !['VISUAL_REQUIRED', 'VISUAL_RECOMMENDED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT'].includes(q.visual.requirement) || !['NONE', 'KEEP', 'ADD', 'REBUILD', 'REMOVE'].includes(q.visual.action) || !nonempty(q.visual.adjudicationId) || !['actualSolutionVisualAttached', 'problemVisualMathDependency', 'sharedVisualMathDependency'].every(k => typeof q.visual[k] === 'boolean') || !isObject(q.evidence)) { errors.push(`QUESTION_SCHEMA:${q.questionUid}`); continue; }
     if (q.sourceStatus !== 'RESOLVED' || q.visual.adjudicationStatus !== 'RESOLVED') errors.push(`SOURCE_OR_REQUIREMENT_UNRESOLVED:${q.questionUid}`);
     if (q.visual.requirement === 'VISUAL_EXEMPT' && (!nonempty(q.visual.exemptReason) || q.visual.actualSolutionVisualAttached || q.visual.problemVisualMathDependency || q.visual.sharedVisualMathDependency)) errors.push(`INVALID_VISUAL_EXEMPT:${q.questionUid}`);
     const candidate = run.inputs.find(i => i.path === q.candidatePath && i.role === 'candidate');
@@ -238,11 +238,11 @@ export function auditRun(root, run) {
       if (['math', 'solution', 'source'].includes(axis) && e && (e.reviewSessionId === run.builderSessionId || e.priorReviewVisibility !== 'NONE')) findings.push(`INDEPENDENT_REVIEW_REQUIRED:${axis}`);
       if (axis === 'math' && e && (e.payload?.blindSolveFrozen !== true || e.payload?.allChoicesChecked !== true || e.payload?.answerUnique !== true)) findings.push('MATH_COMPLETENESS_NOT_PROVEN');
     }
-    const needed = q.visual.requirement === 'VISUAL_REQUIRED' || q.visual.actualSolutionVisualAttached || q.visual.problemVisualMathDependency || q.visual.sharedVisualMathDependency;
+    const needed = q.visual.requirement === 'VISUAL_REQUIRED' || q.visual.requirement === 'VISUAL_RECOMMENDED' || q.visual.actualSolutionVisualAttached || q.visual.problemVisualMathDependency || q.visual.sharedVisualMathDependency;
     let parity = null;
     if (policy.visual) {
       const triage = get('v1');
-      const compatibility = { SHOULD_BE_REQUIRED: ['VISUAL_REQUIRED'], MAY_BE_OPTIONAL: ['VISUAL_OPTIONAL', 'VISUAL_REQUIRED'], SHOULD_BE_EXEMPT: ['VISUAL_EXEMPT', 'VISUAL_OPTIONAL'] };
+      const compatibility = { SHOULD_BE_REQUIRED: ['VISUAL_REQUIRED'], SHOULD_BE_RECOMMENDED: ['VISUAL_RECOMMENDED'], MAY_BE_OPTIONAL: ['VISUAL_OPTIONAL', 'VISUAL_RECOMMENDED', 'VISUAL_REQUIRED'], SHOULD_BE_EXEMPT: ['VISUAL_EXEMPT', 'VISUAL_OPTIONAL'] };
       if (!triage || triage.reviewSessionId === run.builderSessionId || triage.inputVisibilityProfile !== 'SOURCE_ONLY' || triage.priorReviewVisibility !== 'NONE' || triage.payload?.freshBlind !== true || !compatibility[triage.payload?.visualRequirementSignal]?.includes(q.visual.requirement)) findings.push('INDEPENDENT_VISUAL_TRIAGE_NOT_CLOSED');
       if (!needed && triage) {
         if (q.visual.adjudicationId !== triage.evidenceId) findings.push('EXEMPT_ADJUDICATION_NOT_BOUND');
