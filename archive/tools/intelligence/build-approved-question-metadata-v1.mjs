@@ -132,6 +132,15 @@ function buildMetadata() {
     const classificationRaw = fs.readFileSync(classificationPath, 'utf8');
     const identity = JSON.parse(identityRaw);
     const classification = JSON.parse(classificationRaw);
+    // Rebuilding the current sidecar must not erase previously approved
+    // semantic fields for unchanged source questions.  The source JS remains
+    // authoritative for production fields; the prior sidecar is only a
+    // carry-forward for fields that are absent from the current source and
+    // whose source fingerprint is unchanged.
+    const previousMetadata = fs.existsSync(outputJsonPath)
+        ? JSON.parse(fs.readFileSync(outputJsonPath, 'utf8'))
+        : null;
+    const previousByUid = new Map((previousMetadata?.records || []).map(record => [record.questionUid, record]));
     if (!Array.isArray(identity.records) || !Array.isArray(classification.records)) throw new Error('identity/classification records missing');
     const sourceQuestions = readSourceQuestionMap(identity);
     const canonicalSubUnitLabels = readCanonicalSubUnitLabels();
@@ -151,6 +160,9 @@ function buildMetadata() {
         const classificationData = classified.classification || {};
         const reviewed = reviewedPass.get(uid);
         const sourceFingerprint = makeSourceFingerprint(question);
+        const previous = previousByUid.get(uid);
+        const previousMatchesSource = Boolean(previous && previous.sourceFingerprint === sourceFingerprint);
+        const carryForward = previousMatchesSource ? previous : null;
         if (identityRecord.sourceFingerprint && identityRecord.sourceFingerprint !== sourceFingerprint) {
             sourceFingerprintFailures.push({
                 questionUid: uid,
@@ -185,12 +197,12 @@ function buildMetadata() {
         // may fill a blank, but may never overwrite production.
         const subUnitKey = pick(sourceSubUnitKey, reviewedSubUnitKey, classifiedSubUnitKey);
         const subUnit = pick(sourceSubUnit, reviewedSubUnit, classifiedSubUnit);
-        const conceptClusterKey = pick(question.conceptClusterKey, reviewed?.conceptClusterKey, classificationData.conceptClusterKey);
-        const problemTypeKey = pick(reviewed?.problemTypeKey, question.problemTypeKey, question.typeKey);
-        const templateKey = pick(reviewed?.templateKey, question.templateKey);
-        const difficultyBucket = pick(question.difficultyBucket, question.difficulty, question.level, reviewed?.difficultyBucket);
+        const conceptClusterKey = pick(question.conceptClusterKey, reviewed?.conceptClusterKey, carryForward?.conceptClusterKey, classificationData.conceptClusterKey);
+        const problemTypeKey = pick(reviewed?.problemTypeKey, question.problemTypeKey, question.typeKey, carryForward?.problemTypeKey);
+        const templateKey = pick(reviewed?.templateKey, question.templateKey, carryForward?.templateKey);
+        const difficultyBucket = pick(question.difficultyBucket, question.difficulty, question.level, reviewed?.difficultyBucket, carryForward?.difficultyBucket);
         const semanticallyReviewed = Boolean(reviewed && (reviewed.problemTypeKey || reviewed.templateKey || reviewed.conceptClusterKey));
-        const fieldStatus = {
+        const derivedFieldStatus = {
             standardUnit: 'approved_source',
             subUnit: sourceSubUnitKey || sourceSubUnit ? 'approved_source' : (reviewedSubUnitKey || reviewedSubUnit ? 'approved_semantic_review' : 'approved_classification'),
             concept: semanticallyReviewed ? 'approved_semantic_review' : 'approved_classification',
@@ -198,6 +210,7 @@ function buildMetadata() {
             template: templateKey ? (semanticallyReviewed ? 'approved_semantic_review' : 'approved_source') : 'manual_review_pending',
             difficulty: difficultyBucket ? 'approved_source' : 'manual_review_pending'
         };
+        const fieldStatus = carryForward?.fieldStatus && !reviewed ? carryForward.fieldStatus : derivedFieldStatus;
         const record = {
             questionUid: uid,
             sourceArchiveFile: normalizeFile(identityRecord.sourceArchiveFile),
@@ -214,12 +227,14 @@ function buildMetadata() {
             problemTypeKey,
             templateKey,
             difficultyBucket,
-            tagConfidence: semanticallyReviewed ? 'high' : String(classificationData.confidence || 'rule_inferred'),
-            tagStatus: semanticallyReviewed ? 'approved_semantic_review' : 'approved_subunit_concept_partial',
-            metadataStatus: semanticallyReviewed ? 'approved_semantic_review' : 'approved_partial_with_explicit_holds',
+            tagConfidence: carryForward?.tagConfidence && !reviewed ? carryForward.tagConfidence : (semanticallyReviewed ? 'high' : String(classificationData.confidence || 'rule_inferred')),
+            tagStatus: carryForward?.tagStatus && !reviewed ? carryForward.tagStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_subunit_concept_partial'),
+            metadataStatus: carryForward?.metadataStatus && !reviewed ? carryForward.metadataStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_partial_with_explicit_holds'),
             fieldStatus,
             metadataRevision: revision,
-            approvalEvidence: semanticallyReviewed ? [reviewed.reviewSource] : ['archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json']
+            approvalEvidence: carryForward?.approvalEvidence && !reviewed
+                ? carryForward.approvalEvidence
+                : (semanticallyReviewed ? [reviewed.reviewSource] : ['archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json'])
         };
         records.push(record);
         const sourceKey = `${record.sourceArchiveFile}#${record.sourceOrdinal}`;
