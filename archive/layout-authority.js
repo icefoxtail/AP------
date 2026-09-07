@@ -473,7 +473,7 @@
     function buildExpectedLayoutMaps(input, blockMap, options) {
         const layout = (input?.planner === 'LEGACY_SLOT_CHUNK_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SLOT_CHUNK_POLICY')
             ? planLegacyProductionLayout(input)
-            : (input?.planner === 'LEGACY_SOLUTION_LEDGER_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SOLUTION_LEDGER_POLICY')
+            : (input?.planner === 'LEGACY_SOLUTION_DECISION_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SOLUTION_DECISION_POLICY' || input?.planner === 'LEGACY_SOLUTION_LEDGER_POLICY' || input?.pageGeometry?.planner === 'LEGACY_SOLUTION_LEDGER_POLICY')
             ? planLegacySolutionLayout(input)
             : paginateRenderableBlocks(input);
         return Object.freeze({ layout, ...materializeLayoutMaps(layout, blockMap, options) });
@@ -489,70 +489,131 @@
         const geometry = config.pageGeometry || {};
         const usableHeight = positive(geometry.usableHeight, 'SOLUTION_PAGE_GEOMETRY');
         const columns = positiveInteger(geometry.columns, 'SOLUTION_COLUMNS', 2);
-        const placements = Array.isArray(config.placements) ? config.placements.slice() : fail('SOLUTION_PLACEMENTS_MUST_BE_ARRAY');
-        const pagesByNo = new Map();
-        const createSolutionPage = pageNo => ({
-            pageNo,
-            isBlank: false,
-            columns: Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] })),
-            itemPlacements: []
-        });
-        const getPage = pageNo => {
-            if (!pagesByNo.has(pageNo)) pagesByNo.set(pageNo, createSolutionPage(pageNo));
-            return pagesByNo.get(pageNo);
+        const blockGap = Math.max(0, Number(geometry.blockGap || 0));
+        const blocks = Array.isArray(config.blocks) ? config.blocks : fail('SOLUTION_BLOCKS_MUST_BE_ARRAY');
+        const pages = [];
+        const continuationMap = [];
+        const overflowEvidence = [];
+        let currentPage = { pageNo: 1, columns: Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, usedHeight: 0, items: [] })), itemPlacements: [] };
+        let currentColumn = 1;
+        let placementOrder = 0;
+        const flushPage = () => {
+            pages.push(currentPage);
+            currentPage = { pageNo: pages.length + 1, columns: Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, usedHeight: 0, items: [] })), itemPlacements: [] };
+            currentColumn = 1;
         };
-        placements.slice().sort((left, right) => Number(left.placementOrder) - Number(right.placementOrder)).forEach((raw, index) => {
-            const placement = raw || {};
-            const blockId = safeText(placement.blockId, 'SOLUTION_BLOCK_ID');
-            const pageNo = positiveInteger(placement.pageNo, 'SOLUTION_PAGE_NO', index + 1);
-            const columnNo = positiveInteger(placement.columnNo, 'SOLUTION_COLUMN_NO', 1);
-            if (columnNo > columns) fail('SOLUTION_COLUMN_EXCEEDS_PAGE_COLUMNS');
-            const page = getPage(pageNo);
+        const advanceColumn = () => {
+            if (currentColumn < columns) currentColumn += 1;
+            else flushPage();
+        };
+        const currentUsed = () => currentPage.columns[currentColumn - 1].usedHeight;
+        const canFit = (height, column = currentColumn) => {
+            const state = currentPage.columns[column - 1];
+            const gap = state.items.length ? blockGap : 0;
+            return state.usedHeight + gap + height <= usableHeight;
+        };
+        const addPlacement = (block, height, mode, continuationOf, chunkStart, chunkEnd, compressed = false, continuationNumber = 0) => {
+            const state = currentPage.columns[currentColumn - 1];
+            const gapBefore = state.items.length ? blockGap : 0;
             const item = Object.freeze({
-                blockId,
-                questionKey: String(placement.questionKey || blockId),
-                columnNo,
+                blockId: continuationOf ? `${block.blockId}:continuation:${continuationNumber}` : block.blockId,
+                questionKey: block.questionKey || block.blockId,
+                columnNo: currentColumn,
                 columnSpan: 1,
                 layoutTag: 'solution',
                 placementKind: 'solution',
                 slotSpanRows: 1,
                 slotRowStart: null,
-                continuationOf: placement.continuationOf ? String(placement.continuationOf) : '',
-                slotOccupancy: placement.continuationOf ? 0 : 1,
-                measurementMode: placement.measurementMode === 'tight' ? 'tight' : 'raw',
-                gapBefore: Number(placement.gapBefore || 0),
-                columnOrder: Number.isInteger(Number(placement.columnOrder)) ? Number(placement.columnOrder) : page.columns[columnNo - 1].items.length,
-                placementOrder: Number.isInteger(Number(placement.placementOrder)) ? Number(placement.placementOrder) : index
+                continuationOf: continuationOf || '',
+                slotOccupancy: continuationOf ? 0 : 1,
+                measurementMode: mode === 'tight' ? 'tight' : 'raw',
+                gapBefore,
+                columnOrder: state.items.length,
+                placementOrder,
+                chunkStart: chunkStart === undefined ? 0 : chunkStart,
+                chunkEnd: chunkEnd === undefined ? 0 : chunkEnd,
+                compressed: compressed === true
             });
-            page.columns[columnNo - 1].items.push(item);
-            page.itemPlacements.push(item);
+            placementOrder += 1;
+            state.items.push(item);
+            currentPage.itemPlacements.push(item);
+            state.usedHeight += gapBefore + height;
+            if (continuationOf) continuationMap.push(Object.freeze({ continuationBlockId: item.blockId, sourceBlockId: continuationOf, pageNo: currentPage.pageNo }));
+            return item;
+        };
+        const measure = (block, chunk, continuation) => {
+            const primary = continuation ? Number(block.continuationShellOverhead || block.shellOverhead || 0) : Number(block.shellOverhead || 0);
+            return Math.max(1, primary + Number(chunk?.measuredHeight || chunk?.raw || block.measuredHeight || 1));
+        };
+        blocks.forEach(block => {
+            const chunks = Array.isArray(block.chunks) && block.chunks.length ? block.chunks : [{ chunkId: 'c0', measuredHeight: block.measuredHeight, tight: block.measurements?.tight }];
+            if (chunks.length === 1) {
+                const raw = Number(block.measuredHeight || chunks[0].measuredHeight || 1);
+                const tight = Number(block.measurements?.tight || chunks[0].tight || raw);
+                let mode = 'raw'; let height = raw; let compressed = false;
+                if (!canFit(height) && canFit(tight)) { mode = 'tight'; height = tight; compressed = true; }
+                if (!canFit(height) && currentPage.columns[currentColumn - 1].items.length) advanceColumn();
+                if (!canFit(height)) overflowEvidence.push(Object.freeze({ blockId: block.blockId, measuredHeight: height, usableHeight, measurementMode: mode, code: 'SOLUTION_BLOCK_EXCEEDS_PAGE' }));
+                addPlacement(block, height, mode, '', undefined, undefined, compressed);
+                return;
+            }
+            // Production first attempts the complete long-solution box. Only
+            // when raw and compressed full-box attempts both overflow does it
+            // enter chunk splitting. If the current column already contains a
+            // solution box, renderSol advances before starting the split.
+            const fullRaw = Number(block.measuredHeight || 1);
+            const fullTight = Number(block.measurements?.tight || fullRaw);
+            if (canFit(fullRaw)) {
+                addPlacement(block, fullRaw, 'raw', '', undefined, undefined, false);
+                return;
+            }
+            if (canFit(fullTight)) {
+                addPlacement(block, fullTight, 'tight', '', undefined, undefined, true);
+                return;
+            }
+            if (currentPage.columns[currentColumn - 1].items.length) advanceColumn();
+            let shellChunks = [];
+            let shellIndex = 0;
+            const flushShell = (continuation, chunkStart, chunkEnd, compressed) => {
+                if (!shellChunks.length) return;
+                const shellHeight = shellChunks.reduce((sum, chunk) => sum + Number(chunk.measuredHeight || chunk.raw || 1), Number(continuation ? block.continuationShellOverhead || 0 : block.shellOverhead || 0));
+                const sourceBlock = continuation ? block.blockId : '';
+                addPlacement(block, shellHeight, compressed ? 'tight' : 'raw', sourceBlock, chunkStart, chunkEnd, compressed, shellIndex);
+                shellChunks = [];
+                shellIndex += 1;
+            };
+            chunks.forEach((chunk, chunkIndex) => {
+                const continuation = shellIndex > 0;
+                const candidate = measure(block, chunk, continuation);
+                const used = shellChunks.reduce((sum, item) => sum + Number(item.measuredHeight || item.raw || 1), Number(continuation ? block.continuationShellOverhead || 0 : block.shellOverhead || 0));
+                if (shellChunks.length && !canFit(used + Number(chunk.measuredHeight || chunk.raw || 1) - (continuation ? block.continuationShellOverhead || 0 : block.shellOverhead || 0))) {
+                    flushShell(continuation, chunkIndex - shellChunks.length, chunkIndex - 1, false);
+                    advanceColumn();
+                } else if (!shellChunks.length && !canFit(candidate)) {
+                    if (currentPage.columns[currentColumn - 1].items.length) advanceColumn();
+                    if (!canFit(candidate)) {
+                        const tightCandidate = measure(block, { measuredHeight: chunk.tight || chunk.measuredHeight }, continuation);
+                        if (canFit(tightCandidate)) shellChunks.push({ ...chunk, measuredHeight: tightCandidate });
+                        else { overflowEvidence.push(Object.freeze({ blockId: block.blockId, measuredHeight: candidate, usableHeight, measurementMode: 'raw', code: 'SOLUTION_CHUNK_EXCEEDS_PAGE' })); shellChunks.push(chunk); }
+                        return;
+                    }
+                }
+                shellChunks.push(chunk);
+            });
+            flushShell(shellIndex > 0, chunks.length - shellChunks.length, chunks.length - 1, false);
         });
-        let normalizedPlacementOrder = 0;
-        const pages = Array.from(pagesByNo.values()).sort((left, right) => left.pageNo - right.pageNo).map(page => {
-            const normalizedByBlockId = new Map();
-            const columns = page.columns.map(column => {
-                const items = column.items.slice().sort((left, right) => left.columnOrder - right.columnOrder).map(item => {
-                    const normalized = Object.freeze({ ...item, placementOrder: normalizedPlacementOrder++ });
-                    normalizedByBlockId.set(item.blockId, normalized);
-                    return normalized;
-                });
-                return Object.freeze({ columnNo: column.columnNo, usedHeight: 0, items: Object.freeze(items) });
-            });
-            const itemPlacements = page.itemPlacements.slice().sort((left, right) => left.placementOrder - right.placementOrder).map(item => normalizedByBlockId.get(item.blockId) || item);
-            return Object.freeze({
-                pageNo: page.pageNo,
-                isBlank: false,
-                columns: Object.freeze(columns),
-                blockIds: Object.freeze(itemPlacements.map(item => item.blockId)),
-                questionKeys: Object.freeze(Array.from(new Set(itemPlacements.map(item => item.questionKey)))),
-                slotOccupancy: itemPlacements.reduce((sum, item) => sum + item.slotOccupancy, 0),
-                itemPlacements: Object.freeze(itemPlacements)
-            });
-        });
-        const columnMap = Object.freeze(pages.flatMap(page => page.columns.flatMap(column => column.items.map(item => Object.freeze({ pageNo: page.pageNo, ...item })))));
-        const continuationMap = Object.freeze(columnMap.filter(item => item.continuationOf).map(item => Object.freeze({ continuationBlockId: item.blockId, sourceBlockId: item.continuationOf, pageNo: item.pageNo })));
-        const overflowEvidence = Object.freeze((config.overflowEvidence || []).map(item => Object.freeze({ ...item })));
-        return Object.freeze({ pages: Object.freeze(pages), columnMap, continuationMap, overflowEvidence, qpp: null, columns, blockGap: Number(geometry.blockGap || 0), measurementMode: 'raw', slotRows: 1, usableHeight, planner: 'LEGACY_SOLUTION_LEDGER_POLICY' });
+        if (currentPage.itemPlacements.length) pages.push(currentPage);
+        const publicPages = pages.map(page => Object.freeze({
+            pageNo: page.pageNo,
+            isBlank: false,
+            columns: Object.freeze(page.columns.map(column => Object.freeze({ columnNo: column.columnNo, usedHeight: column.usedHeight, items: Object.freeze(column.items.slice()) }))),
+            blockIds: Object.freeze(page.itemPlacements.map(item => item.blockId)),
+            questionKeys: Object.freeze(Array.from(new Set(page.itemPlacements.map(item => item.questionKey)))),
+            slotOccupancy: page.itemPlacements.reduce((sum, item) => sum + item.slotOccupancy, 0),
+            itemPlacements: Object.freeze(page.itemPlacements.slice())
+        }));
+        const columnMap = Object.freeze(publicPages.flatMap(page => page.columns.flatMap(column => column.items.map(item => Object.freeze({ pageNo: page.pageNo, ...item })))));
+        return Object.freeze({ pages: Object.freeze(publicPages), columnMap, continuationMap: Object.freeze(continuationMap), overflowEvidence: Object.freeze(overflowEvidence), qpp: null, columns, blockGap, measurementMode: 'raw', slotRows: 1, usableHeight, planner: 'LEGACY_SOLUTION_DECISION_POLICY' });
     }
 
     function sourceRefKey(ref) {
@@ -810,17 +871,20 @@
                 if (!record || !record.sourceRef || !Number.isInteger(Number(record.displayNo)) || Number(record.displayNo) < 1) fail('UNKNOWN_LEGACY_SOLUTION_SOURCE_RECORD:' + sourceKey);
                 const occurrence = (occurrenceBySource.get(sourceKey) || 0) + 1;
                 occurrenceBySource.set(sourceKey, occurrence);
-                const blockId = `solution:${sourceKey}:${occurrence}`;
-                const previousBlockId = occurrence > 1 ? `solution:${sourceKey}:1` : '';
+                const blockId = typeof config.resolveBlockId === 'function'
+                    ? config.resolveBlockId(sourceKey, occurrence)
+                    : `solution:${sourceKey}:${occurrence}`;
+                const previousBlockId = occurrence > 1
+                    ? (typeof config.resolveBlockId === 'function' ? config.resolveBlockId(sourceKey, 1) : `solution:${sourceKey}:1`)
+                    : '';
                 const continuationOf = node.querySelector('.q-num') ? '' : previousBlockId;
                 const gridColumn = node.closest('.grid-col');
                 const grid = gridColumn?.parentElement;
                 const columnNo = gridColumn && grid ? Math.min(columns, Math.max(1, Array.from(grid.children).indexOf(gridColumn) + 1)) : 1;
                 const columnOrder = columnItems[columnNo - 1].items.length;
                 const ledgerEntry = config.measurementsByBlockId?.[blockId] || {};
-                const measuredHeight = Number(ledgerEntry.raw ?? ledgerEntry.measuredHeight);
+                const measuredHeight = Number(ledgerEntry.raw ?? ledgerEntry.measuredHeight ?? 1);
                 const tightHeight = Number(ledgerEntry.tight ?? measuredHeight);
-                if (!Number.isFinite(measuredHeight) || measuredHeight <= 0) fail('MISSING_SOLUTION_STAGING_MEASUREMENT:' + blockId);
                 const item = {
                     blockId,
                     questionKey: sourceKey,
@@ -850,12 +914,11 @@
             });
             pages.push({ pageNo, isBlank: false, columns: columnItems });
         });
-        const ledgerPlacements = Array.isArray(config.placements) ? config.placements : expectedPlacements;
         return Object.freeze({
             legacyInput: Object.freeze({ pages, overflowEvidence: config.overflowEvidence || [], qpp: null }),
             expectedInput: Object.freeze({
-                pageGeometry: { usableHeight: positive(config.usableHeight, 'SOLUTION_STAGING_USABLE_HEIGHT'), columns, blockGap: Number(config.blockGap || 0), measurementMode: 'raw', planner: 'LEGACY_SOLUTION_LEDGER_POLICY' },
-                placements: ledgerPlacements
+                pageGeometry: { usableHeight: positive(config.usableHeight, 'SOLUTION_STAGING_USABLE_HEIGHT'), columns, blockGap: Number(config.blockGap || 0), measurementMode: 'raw', planner: 'LEGACY_SOLUTION_DECISION_POLICY' },
+                blocks: config.blocks || []
             }),
             blockMap: Object.freeze(blockMap),
             elementsByBlockId: Object.freeze(elementsByBlockId),
@@ -899,7 +962,10 @@
                 const gridColumns = Array.from(page.querySelectorAll(':scope > .page-body .grid-container > .grid-col'));
                 const describeChild = child => {
                     if (child.dataset?.layoutSpacer === '1' || (child.tagName === 'DIV' && !child.children.length && !String(child.textContent || '').trim() && !child.matches?.('[data-source-ref]'))) return `SPACER:${renderedFlexToken(child)}`;
-                    if (child.matches?.('[data-source-ref]')) return `QUESTION:${child.getAttribute('data-source-ref')}:flex:${renderedFlexToken(child)}`;
+                    if (child.matches?.('[data-source-ref]')) {
+                        const solutionImage = child.matches?.('.sol-box') ? `:solutionImage:${child.querySelector('.sol-image-wrap') ? '1' : '0'}` : '';
+                        return `QUESTION:${child.getAttribute('data-source-ref')}:flex:${renderedFlexToken(child)}${solutionImage}`;
+                    }
                     return `OTHER:${child.tagName}:flex:${renderedFlexToken(child)}`;
                 };
                 const columns = gridColumns.length

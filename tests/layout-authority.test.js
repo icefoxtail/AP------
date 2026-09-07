@@ -277,21 +277,20 @@ test('solution layout bridge preserves continuation identity and rejects solutio
   const ref = n => ({ sourceArchiveFile: 'exams/solution.js', sourceQuestionUid: `solution-${n}`, sourceQuestionOrdinal: n, sourceQuestionNo: n });
   const records = {
     s1: { sectionId: 'archive:solution', sourceRef: ref(1), displayNo: 1 },
-    s1c: { sectionId: 'archive:solution', sourceRef: ref(1), displayNo: 1 },
+    's1:continuation:1': { sectionId: 'archive:solution', sourceRef: ref(1), displayNo: 1 },
     s2: { sectionId: 'archive:solution', sourceRef: ref(2), displayNo: 2 }
   };
-  const placements = [
-    { blockId: 's1', questionKey: 'q1', pageNo: 1, columnNo: 1, columnOrder: 0, placementOrder: 0, measurements: { raw: 40, tight: 36 }, measuredHeight: 40 },
-    { blockId: 's1c', questionKey: 'q1', pageNo: 2, columnNo: 1, columnOrder: 0, placementOrder: 1, continuationOf: 's1', measurements: { raw: 80, tight: 72 }, measuredHeight: 80 },
-    { blockId: 's2', questionKey: 'q2', pageNo: 1, columnNo: 2, columnOrder: 0, placementOrder: 2, measurements: { raw: 42, tight: 38 }, measuredHeight: 42 }
+  const blocks = [
+    { blockId: 's1', questionKey: 'q1', measuredHeight: 190, measurements: { raw: 190, tight: 190 }, shellOverhead: 5, continuationShellOverhead: 2, chunks: [{ chunkId: 'c0', measuredHeight: 30, tight: 30 }, { chunkId: 'c1', measuredHeight: 80, tight: 80 }] },
+    { blockId: 's2', questionKey: 'q2', measuredHeight: 42, measurements: { raw: 42, tight: 38 }, shellOverhead: 0, continuationShellOverhead: 0, chunks: [{ chunkId: 'c0', measuredHeight: 42, tight: 38 }] }
   ];
   const expected = L.buildExpectedLayoutMaps({
-    planner: 'LEGACY_SOLUTION_LEDGER_POLICY',
-    pageGeometry: { usableHeight: 100, columns: 2, planner: 'LEGACY_SOLUTION_LEDGER_POLICY' },
-    placements
+    planner: 'LEGACY_SOLUTION_DECISION_POLICY',
+    pageGeometry: { usableHeight: 100, columns: 2, planner: 'LEGACY_SOLUTION_DECISION_POLICY' },
+    blocks
   }, records, { sectionId: 'archive:solution' });
   assert.deepEqual(expected.layout.pages.map(page => page.pageNo), [1, 2]);
-  assert.deepEqual(expected.layout.continuationMap.map(item => [item.continuationBlockId, item.sourceBlockId]), [['s1c', 's1']]);
+  assert.deepEqual(expected.layout.continuationMap.map(item => [item.continuationBlockId, item.sourceBlockId]), [['s1:continuation:1', 's1']]);
 
   const observedInput = {
     qpp: null,
@@ -306,8 +305,31 @@ test('solution layout bridge preserves continuation identity and rejects solutio
   const expectedWithGeometry = { ...expected, renderedGeometry: structuredClone(geometry) };
   assert.equal(L.comparePromotionLayouts(observed, expectedWithGeometry).equal, true);
 
+  const expectedBeforeObservedMutation = JSON.stringify(expectedWithGeometry.layout);
+  const observedPlacementMutation = structuredClone(observedInput);
+  const observedContinuation = observedPlacementMutation.pages.flatMap(page => page.columns.flatMap(column => column.items)).find(item => item.continuationOf);
+  observedContinuation.columnNo = observedContinuation.columnNo === 1 ? 2 : 1;
+  const observedMutationResult = L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(observedPlacementMutation, records, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) }, expectedWithGeometry);
+  assert.equal(observedMutationResult.equal, false);
+  assert.equal(JSON.stringify(expectedWithGeometry.layout), expectedBeforeObservedMutation);
+
+  const boundaryBlocks = [
+    { blockId: 'b1', questionKey: 'b1', measuredHeight: 60, measurements: { raw: 60, tight: 60 }, chunks: [{ chunkId: 'c0', measuredHeight: 60, tight: 60 }] },
+    { blockId: 'b2', questionKey: 'b2', measuredHeight: 50, measurements: { raw: 50, tight: 50 }, chunks: [{ chunkId: 'c0', measuredHeight: 50, tight: 50 }] }
+  ];
+  const boundaryRecords = { b1: { sectionId: 'archive:solution', sourceRef: ref(1), displayNo: 1 }, b2: { sectionId: 'archive:solution', sourceRef: ref(2), displayNo: 2 } };
+  const boundaryInput = { planner: 'LEGACY_SOLUTION_DECISION_POLICY', pageGeometry: { usableHeight: 100, columns: 1, planner: 'LEGACY_SOLUTION_DECISION_POLICY' }, blocks: boundaryBlocks };
+  const boundaryPlan = L.buildExpectedLayoutMaps(boundaryInput, boundaryRecords, { sectionId: 'archive:solution' });
+  const tightBoundaryBlocks = structuredClone(boundaryBlocks);
+  tightBoundaryBlocks[1].measuredHeight = 40;
+  tightBoundaryBlocks[1].measurements.raw = 40;
+  tightBoundaryBlocks[1].measurements.tight = 40;
+  const tightBoundaryPlan = L.buildExpectedLayoutMaps({ ...boundaryInput, blocks: tightBoundaryBlocks }, boundaryRecords, { sectionId: 'archive:solution' });
+  assert.notDeepEqual(boundaryPlan.layout.pages.map(page => page.pageNo), tightBoundaryPlan.layout.pages.map(page => page.pageNo));
+
   const continuationMutation = structuredClone(observedInput);
-  continuationMutation.pages[1].columns[0].items[0].continuationOf = '';
+  const continuationObserved = continuationMutation.pages.flatMap(page => page.columns.flatMap(column => column.items)).find(item => item.continuationOf);
+  continuationObserved.continuationOf = '';
   assert.equal(L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(continuationMutation, records, { sectionId: 'archive:solution' }), renderedGeometry: structuredClone(geometry) }, expectedWithGeometry).equal, false);
 
   const columnMutation = structuredClone(observedInput);

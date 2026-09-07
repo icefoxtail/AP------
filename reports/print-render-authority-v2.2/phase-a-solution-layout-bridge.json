@@ -6,14 +6,30 @@
   "promotionStartSha": "824193a2d935131d1c1c6295dece4b96d5e75889",
   "implementation": "archive/layout-authority.js",
   "adapter": "archive/engine.html",
-  "planner": "LEGACY_SOLUTION_LEDGER_POLICY",
-  "measurementInput": "solution staging raw/tight measurement ledger and placement facts recorded during renderSol; final DOM heights are not planner inputs",
-  "productionAuthority": "legacy renderSol retained; solution bridge is sidecar-only until Phase C production promotion",
+  "planner": "LEGACY_SOLUTION_DECISION_POLICY",
+  "measurementInput": "solution staging rawOuterHeight/compressedOuterHeight, production column capacity, shell overhead, and rendered chunk-range measurements; final DOM placement results are not planner inputs",
+  "decisionInputExcludesLegacyPlacementResults": ["pageNo", "columnNo", "columnOrder", "placementOrder", "continuationOf"],
+  "observedPlacementLedger": ["pageNo", "columnNo", "columnOrder", "placementOrder", "continuationOf"],
+  "rangeMeasurementTables": ["primary chunk ranges", "continuation chunk ranges"],
+  "productionAuthority": "legacy renderSol remains the production authority; pagination decision semantics are retained with decision-input and observation instrumentation added; solution bridge is sidecar-only until Phase C production promotion",
   "browserEvidence": {
     "fixture": "archive/exams/test-fixtures/render-authority-golden.js",
     "mode": "solution",
     "qpp": 4,
     "pageCount": 3,
+    "columnCapacity": 958,
+    "q5Boundary": {
+      "legacy": "page1 col2",
+      "shared": "page1 col2",
+      "rawOuterHeight": 183.27295,
+      "compressedOuterHeight": 185.208925
+    },
+    "q6RangeAllocation": {
+      "primary": "page2 col1",
+      "continuation1": "page2 col2",
+      "continuation2": "page3 col1",
+      "chunkRangeMeasurementTable": "decision ledger blocks[5].chunks"
+    },
     "headerSignature": [true, true, true],
     "frameSignature": [false, false, false],
     "bodyClientHeight": [958, 958, 958],
@@ -27,6 +43,7 @@
       "blocks": ["solution:...ordinal:6:1", "solution:...ordinal:6:2", "solution:...ordinal:6:3"]
     },
     "solutionImage": true,
+    "solutionImageParity": true,
     "semanticParity": true,
     "pageMap": true,
     "columnMap": true,
@@ -49,6 +66,10 @@
     "headerGeometryMutation": true,
     "bodyHeightBoundaryMutation": true,
     "geometryEvidenceMissing": true
+  },
+  "independenceTests": {
+    "observedPlacementMutationDoesNotMoveExpected": true,
+    "decisionMeasurementMutationMovesExpected": true
   },
   "readiness": "existing fail-closed readiness suite PASS; no production promotion performed",
   "rollback": "legacy renderSol retained and untouched",

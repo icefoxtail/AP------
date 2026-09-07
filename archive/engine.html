@@ -34,7 +34,7 @@
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="layout-authority.js?v=20260906.18" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
+    <script src="layout-authority.js?v=20260906.25" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -432,7 +432,7 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
-const AppState = { data: [], canonicalData: [], sourceArchiveFile: '', mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {}, layoutMeasurementLedger: null, solutionLayoutMeasurementLedger: null };
+const AppState = { data: [], canonicalData: [], sourceArchiveFile: '', mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {}, layoutMeasurementLedger: null, solutionDecisionLedger: null, solutionObservedPlacementLedger: null };
 let archiveReadinessTracker = null;
 
 function beginArchiveReadiness() {
@@ -1328,6 +1328,14 @@ function showArchiveDataLoadError(message) {
     if (title) title.innerText = '시험지 데이터를 불러올 수 없습니다';
 }
 
+function measureSolutionOuterFootprint(node) {
+    const rect = node?.getBoundingClientRect?.();
+    const style = node ? getComputedStyle(node) : null;
+    const marginTop = Number.parseFloat(style?.marginTop || '0') || 0;
+    const marginBottom = Number.parseFloat(style?.marginBottom || '0') || 0;
+    return Math.max(1, Number(rect?.height || node?.scrollHeight || 1) + marginTop + marginBottom);
+}
+
 function buildArchiveCanonicalData(sourceArchiveFile) {
     if (typeof window.APRenderAuthority?.normalizeArchiveQuestions !== 'function') return [];
     try {
@@ -1467,7 +1475,7 @@ async function recordArchiveSolutionLayoutPromotionGate(area) {
     if (!authority?.observeLegacySolutionDomLayout || !authority?.buildExpectedLayoutMaps || !authority?.comparePromotionLayouts) return;
     try {
         const sectionId = 'archive:solution';
-        const ledger = AppState.solutionLayoutMeasurementLedger;
+        const ledger = AppState.solutionDecisionLedger;
         if (AppState.mode !== 'sol' || !ledger || ledger.mode !== 'solution') {
             document.documentElement.dataset.apSolutionLayoutPromotion = JSON.stringify({ source: 'archive', mode: AppState.mode, skipped: 'SOLUTION_STAGING_MEASUREMENT_LEDGER_UNAVAILABLE' });
             return;
@@ -1476,14 +1484,19 @@ async function recordArchiveSolutionLayoutPromotionGate(area) {
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
             { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: 'solution', wide: false }
         ]));
-        const measurementsByBlockId = Object.fromEntries((ledger.placements || []).map(placement => [placement.blockId, placement.measurements || { raw: placement.measuredHeight, tight: placement.measuredHeight }]));
+        const blockBySource = new Map(AppState.canonicalData.map((question, index) => [`${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`, ledger.blocks[index]]));
+        const resolveBlockId = (sourceRef, occurrence) => {
+            const block = blockBySource.get(sourceRef);
+            if (!block) return '';
+            return occurrence === 1 ? block.blockId : `${block.blockId}:continuation:${occurrence - 1}`;
+        };
         const observation = authority.observeLegacySolutionDomLayout(area, {
             columns: ledger.columns || 2,
             sectionId,
             usableHeight: ledger.usableHeight,
             blockGap: ledger.blockGap || 0,
-            placements: ledger.placements,
-            measurementsByBlockId,
+            blocks: ledger.blocks,
+            resolveBlockId,
             resolveRecord: sourceRef => records.get(sourceRef) || null
         });
         const observedBase = authority.materializeLegacyLayoutMaps(observation.legacyInput, observation.blockMap, { sectionId });
@@ -1505,6 +1518,7 @@ async function recordArchiveSolutionLayoutPromotionGate(area) {
         document.documentElement.dataset.apSolutionLayoutPromotion = JSON.stringify({
             source: 'archive', mode: AppState.mode, equal: comparison.equal, parity: comparison.parity,
             legacyGeometry: observed.renderedGeometry, sharedGeometry: expected.renderedGeometry,
+            decisionEvidence: { usableHeight: ledger.usableHeight, columns: ledger.columns, blocks: ledger.blocks, expectedPages: expectedBase.layout.pages.map(page => ({ pageNo: page.pageNo, columns: page.columns.map(column => ({ columnNo: column.columnNo, blockIds: column.items.map(item => item.blockId) })) })) },
             renderGeometry: comparison.parity.renderGeometry,
             overflowParity: comparison.parity.overflow, differences: comparison.differences.slice(0, 12)
         });
@@ -2122,7 +2136,8 @@ async function renderExam(area, data) {
 
 async function renderSol(area, data) {
     {
-        AppState.solutionLayoutMeasurementLedger = null;
+        AppState.solutionDecisionLedger = null;
+        AppState.solutionObservedPlacementLedger = null;
         const staging = document.getElementById('staging');
         staging.style.width = '83mm';
         staging.innerHTML = '';
@@ -2135,6 +2150,7 @@ async function renderSol(area, data) {
         const solutionOccurrences = new Map();
         const solutionPlacementMap = new Map();
         const solutionMeasurementBySource = new Map();
+        const solutionDecisionBlocks = [];
         const markSolutionPlacement = (node, continuation = false) => {
             const sourceRef = String(node?.getAttribute?.('data-source-ref') || '').trim();
             if (!sourceRef || !solutionPageNo) return;
@@ -2274,28 +2290,69 @@ async function renderSol(area, data) {
         });
         await Promise.all(Array.from(staging.querySelectorAll('img')).map(waitForQuestionImage));
         if (rendererMode() === 'batch') await typesetMath('solution-staging', [staging]);
-        for (const box of solutionBoxes) {
+        for (let solutionIndex = 0; solutionIndex < solutionBoxes.length; solutionIndex += 1) {
+            const box = solutionBoxes[solutionIndex];
             const sourceRef = String(box.getAttribute('data-source-ref') || '').trim();
-            const raw = Number(box.scrollHeight || 1);
+            const raw = measureSolutionOuterFootprint(box);
             box.classList.add('fit-tight');
             await raf();
-            const tight = Number(box.scrollHeight || raw);
+            const tight = measureSolutionOuterFootprint(box);
             box.classList.remove('fit-tight');
             solutionMeasurementBySource.set(sourceRef, { raw: Math.max(1, raw), tight: Math.max(1, tight) });
+            const chunkHost = document.createElement('div');
+            chunkHost.style.width = '83mm';
+            const chunkHtmls = makeSolutionHtmlChunks(box.dataset.solutionHtml || '');
+            const chunks = chunkHtmls.map((chunkHtml, chunkIndex) => {
+                const chunk = document.createElement('span');
+                chunk.className = 'sol-chunk';
+                chunk.dataset.chunkId = `c${chunkIndex}`;
+                chunk.innerHTML = chunkHtml;
+                chunkHost.appendChild(chunk);
+                return chunk;
+            });
+            staging.appendChild(chunkHost);
+            await typesetMath('solution-decision-chunks', [chunkHost]);
+            const measuredChunks = [];
+            for (const chunk of chunks) {
+                const chunkRaw = measureSolutionOuterFootprint(chunk);
+                chunk.classList.add('fit-tight');
+                await raf();
+                const chunkTight = measureSolutionOuterFootprint(chunk);
+                chunk.classList.remove('fit-tight');
+                measuredChunks.push({ chunkId: chunk.dataset.chunkId, measuredHeight: chunkRaw, tight: chunkTight });
+            }
+            chunkHost.remove();
+            const chunkTotal = measuredChunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0);
+            const primaryBlockId = `solution-block:${solutionIndex + 1}:primary`;
+            box.dataset.solutionDecisionBlockId = primaryBlockId;
+            const continuationShell = makeLongSolutionShell(box, solutionIndex + 1, true);
+            staging.appendChild(continuationShell);
+            await typesetMath('solution-decision-shell', [continuationShell]);
+            const continuationShellOverhead = Math.max(1, Number(continuationShell.scrollHeight || 1));
+            continuationShell.remove();
+            solutionDecisionBlocks.push({
+                blockId: primaryBlockId,
+                questionKey: `solution-block:${solutionIndex + 1}`,
+                measuredHeight: raw,
+                measurements: { raw: Math.max(1, raw), tight: Math.max(1, tight) },
+                shellOverhead: Math.max(1, raw - chunkTotal),
+                continuationShellOverhead,
+                chunks: measuredChunks
+            });
         }
 
         ({ cols } = makeGridPage());
         for (let i = 0; i < solutionBoxes.length; i++) {
             await placeSolutionBox(solutionBoxes[i], i + 1);
         }
-        AppState.solutionLayoutMeasurementLedger = {
+        AppState.solutionDecisionLedger = {
             mode: 'solution',
             usableHeight: Math.max(1, solutionUsableHeight),
             columns: 2,
             blockGap: 0,
-            entries: Object.freeze(Array.from(solutionMeasurementBySource.entries()).map(([sourceRef, measurements]) => Object.freeze({ sourceRef, ...measurements }))),
-            placements: Object.freeze(Array.from(solutionPlacementMap.values()).sort((left, right) => left.placementOrder - right.placementOrder).map(item => Object.freeze({ ...item })))
+            blocks: Object.freeze(solutionDecisionBlocks.map(block => Object.freeze({ ...block, measurements: Object.freeze({ ...block.measurements }), chunks: Object.freeze(block.chunks.map(chunk => Object.freeze({ ...chunk }))) })))
         };
+        AppState.solutionObservedPlacementLedger = Object.freeze(Array.from(solutionPlacementMap.values()).sort((left, right) => left.placementOrder - right.placementOrder).map(item => Object.freeze({ ...item })));
         return;
     }
     let pNum = 1;
