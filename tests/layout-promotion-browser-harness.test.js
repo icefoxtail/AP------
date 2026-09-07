@@ -26,5 +26,7 @@ test('layout promotion browser harness reuses real Archive/Mixer fixtures and re
   assert.match(harness, /apSolutionLayoutPromotion/);
   assert.match(harness, /modeParam/);
   assert.match(harness, /mode === 'solution'/);
+  assert.match(harness, /solution-image-removal/);
+  assert.match(harness, /continuation-solution-image-duplication/);
   assert.match(harness, /recordMixedLayoutPromotionGate/);
 });

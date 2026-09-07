@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Layout promotion gate QA</title>
   <script src="/archive/print-contract.js?v=20260906.2"></script>
-  <script src="/archive/layout-authority.js?v=20260906.18"></script>
+  <script src="/archive/layout-authority.js?v=20260906.25"></script>
 </head>
 <body>
 <output id="layout-gate-status" aria-live="polite">LAYOUT_GATE_WAITING</output>
@@ -65,6 +65,26 @@
     run('body-height-boundary', geometry => {
       if (geometry.pages[0]) geometry.pages[0].bodyClientHeight += 2;
     }, Boolean(result.legacyGeometry.pages?.length));
+    if (mode === 'solution') {
+      const imagePage = result.legacyGeometry.pages?.find(page => page.columns.some(column => column.childFlexSignature.some(signature => signature.includes(':solutionImage:1'))));
+      run('solution-image-removal', geometry => {
+        const page = geometry.pages.find(candidate => candidate.pageNo === imagePage?.pageNo);
+        const column = page?.columns.find(candidate => candidate.childFlexSignature.some(signature => signature.includes(':solutionImage:1')));
+        if (column) {
+          const index = column.childFlexSignature.findIndex(signature => signature.includes(':solutionImage:1'));
+          column.childFlexSignature[index] = column.childFlexSignature[index].replace(':solutionImage:1', ':solutionImage:0');
+        }
+      }, Boolean(imagePage));
+      const continuationImagePage = result.legacyGeometry.pages?.find(page => page.columns.some(column => column.childFlexSignature.some(signature => signature.includes(':solutionImage:0'))));
+      run('continuation-solution-image-duplication', geometry => {
+        const page = geometry.pages.find(candidate => candidate.pageNo === continuationImagePage?.pageNo);
+        const column = page?.columns.find(candidate => candidate.childFlexSignature.some(signature => signature.includes(':solutionImage:0')));
+        if (column) {
+          const index = column.childFlexSignature.findIndex(signature => signature.includes(':solutionImage:0'));
+          column.childFlexSignature[index] = column.childFlexSignature[index].replace(':solutionImage:0', ':solutionImage:1');
+        }
+      }, Boolean(continuationImagePage));
+    }
     return { available: true, cases };
   };
   const poll = () => {
@@ -84,7 +104,7 @@
         const columnDifference = (result.differences || []).find(item => item.field === 'column');
         const geometryDifference = (result.differences || []).find(item => item.field === 'renderGeometry');
         if (columnDifference) detail.textContent = `COLUMN_OBSERVED=${JSON.stringify(columnDifference.observed)}\nCOLUMN_EXPECTED=${JSON.stringify(columnDifference.expected)}`;
-        if (geometryDifference) detail.textContent = `GEOMETRY_OBSERVED=${JSON.stringify(geometryDifference.observed)}\nGEOMETRY_EXPECTED=${JSON.stringify(geometryDifference.expected)}\nLEGACY_PAGES=${result.legacyGeometry?.pages?.length ?? '?'}\nSHARED_PAGES=${result.sharedGeometry?.pages?.length ?? '?'}`;
+        if (geometryDifference) detail.textContent = `GEOMETRY_OBSERVED=${JSON.stringify(geometryDifference.observed)}\nGEOMETRY_EXPECTED=${JSON.stringify(geometryDifference.expected)}\nDECISION_EVIDENCE=${JSON.stringify(result.decisionEvidence || null)}\nLEGACY_PAGES=${result.legacyGeometry?.pages?.length ?? '?'}\nSHARED_PAGES=${result.sharedGeometry?.pages?.length ?? '?'}`;
         const mutationParity = runGeometryMutations(result);
         const mutationFailures = mutationParity.cases.filter(item => item.applicable && !item.caught);
         const gateDifferenceFields = differenceFields === 'none' && mutationFailures.length ? 'mutation' : differenceFields;
