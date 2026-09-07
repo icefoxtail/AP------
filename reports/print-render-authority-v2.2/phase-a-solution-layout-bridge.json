@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_A_SOLUTION_LAYOUT_BRIDGE",
+  "status": "PASS",
+  "promotionStartSha": "824193a2d935131d1c1c6295dece4b96d5e75889",
+  "implementation": "archive/layout-authority.js",
+  "adapter": "archive/engine.html",
+  "planner": "LEGACY_SOLUTION_LEDGER_POLICY",
+  "measurementInput": "solution staging raw/tight measurement ledger and placement facts recorded during renderSol; final DOM heights are not planner inputs",
+  "productionAuthority": "legacy renderSol retained; solution bridge is sidecar-only until Phase C production promotion",
+  "browserEvidence": {
+    "fixture": "archive/exams/test-fixtures/render-authority-golden.js",
+    "mode": "solution",
+    "qpp": 4,
+    "pageCount": 3,
+    "headerSignature": [true, true, true],
+    "frameSignature": [false, false, false],
+    "bodyClientHeight": [958, 958, 958],
+    "columnSignature": [
+      ["ordinal:1", "ordinal:2", "ordinal:3", "ordinal:4", "ordinal:5"],
+      ["ordinal:6:primary", "ordinal:6:continuation"],
+      ["ordinal:6:continuation", "ordinal:7", "ordinal:8"]
+    ],
+    "continuation": {
+      "sourceRef": "exams/test-fixtures/render-authority-golden.js#legacy:exams/test-fixtures/render-authority-golden.js#ordinal:6",
+      "blocks": ["solution:...ordinal:6:1", "solution:...ordinal:6:2", "solution:...ordinal:6:3"]
+    },
+    "solutionImage": true,
+    "semanticParity": true,
+    "pageMap": true,
+    "columnMap": true,
+    "columnOrder": true,
+    "placementOrder": true,
+    "continuationParity": true,
+    "renderGeometry": true,
+    "overflowParity": true,
+    "omissionCount": 0,
+    "duplicationCount": 0,
+    "differenceFields": []
+  },
+  "mutationTests": {
+    "columnSwap": true,
+    "sameColumnOrderSwap": true,
+    "continuationOfRemoval": true,
+    "continuationSourceMismatch": true,
+    "solutionOmission": true,
+    "solutionDuplication": true,
+    "headerGeometryMutation": true,
+    "bodyHeightBoundaryMutation": true,
+    "geometryEvidenceMissing": true
+  },
+  "readiness": "existing fail-closed readiness suite PASS; no production promotion performed",
+  "rollback": "legacy renderSol retained and untouched",
+  "nonGoals": ["No Archive production promotion", "No Answer bridge", "No Mixer or Clinic work", "No Phase 7 cleanup"]
+}
