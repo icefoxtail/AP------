@@ -15,7 +15,7 @@ Locks are default protections. A current user task must explicitly unlock a path
 |---|---|---|
 | apmath static app | `apmath/js`, `apmath/index.html`, UI text, menus, modes | Explicit task scope and regression check |
 | worker / backend / D1 | `apmath/worker-backup/worker/schema.sql`, migrations, routes, wrangler config | Explicit backend/schema task |
-| archive core | `archive/index.html`, `archive/mixer.html`, `archive/mixed_engine.html`, `archive/wrong_print_engine.html`, `archive/db.js`, engines, QR output | Explicit archive engine task |
+| archive core | `archive/index.html`, `archive/mixer.html`, `archive/mixed_engine.html`, `apmath/wrong_print_engine.html`, `archive/db.js`, engines, QR output | Explicit archive engine task |
 | archive/exams | `archive/exams`, `archive/assets/images` | Explicit exam data task and validation |
 | archive/textbook | generated JS/assets/review packs and subordinate operating files | Textbook-specific task following textbook BOOT |
 | docs rulebook | `docs/MASTER_RULEBOOK.md`, `docs/guides/PROJECT_RULEBOOK_AND_STRUCTURE_MAP.md`, policy/read-first/domain docs | Explicit docs update task |

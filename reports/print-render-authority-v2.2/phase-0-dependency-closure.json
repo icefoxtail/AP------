@@ -54,7 +54,7 @@
     ]
   },
   "members": [
-    {"path":".agent/DOMAIN_LOCK_POLICY.md","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["archive/wrong_print_engine.html"],"sha256":"55be52f1b4c8e500ac2933b6f201c248c38c9009655902961fa421ed5ccf223b"},
+    {"path":".agent/DOMAIN_LOCK_POLICY.md","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["apmath/wrong_print_engine.html"],"sha256":"29aa57abd8968e9295dec06c3c07314afd662244ab3e94f0d67f1250fd345ce8"},
     {"path":"apmath/js/clinic-print.js","roles":["PRODUCER","DOWNSTREAM_CONSUMER"],"classification":"MUTATION_TARGET","evidence":["AP_CLINIC_PRINT_PAYLOAD","AP_PRINT_PREVIEW","AP_PRINT_HEADER_EDIT"],"sha256":"9650eca5d053aac7f244d4bf1644b715de98a220c3874f8e63d69f9945aba03b"},
     {"path":"apmath/js/core.js","roles":["PRODUCER"],"classification":"CONTRACT_DEPENDENCY","evidence":["mixedQuestions_","buildMixedEngineClinicUrl"],"sha256":"cfde1b946cc60b5ed5496085319aca69bf5a0607ad80d763d2f847b084b0cb72"},
     {"path":"apmath/js/student.js","roles":["PRODUCER","DOWNSTREAM_CONSUMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["wrong-clinics/packets","wrong_print_engine.html"],"sha256":"8e1897b9149a2047f25eff0afd86c3e277082a1575d3a92f45971b56d893aa26"},
@@ -96,7 +96,7 @@
     {"path":"archive/unit-past-exams.html","roles":["PRODUCER","DOWNSTREAM_CONSUMER"],"classification":"MUTATION_TARGET","evidence":["unit-past-exams-core.js","UnitPastExams.init"],"sha256":"eb43a927c26743945da1bba133086f40092a0848a6992c5c6cb6507a387d8567"},
     {"path":"archive/unit-past-exams.js","roles":["PRODUCER","DOWNSTREAM_CONSUMER"],"classification":"MUTATION_TARGET","evidence":["core.selectByBlueprint","mixedQuestions_","mixed_engine.html","unit-preview-iframe"],"sha256":"198a161ab4c13c28c32bfee1a847b827d14daed3853a305cc453d2aaa0c87b81"},
     {"path":"check/check.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"CONTRACT_DEPENDENCY","evidence":["archiveFile.startsWith('MIXED:')","mixed_engine.html","engine.html"],"sha256":"a2426a5b51cb34b57c1ec128bca126adcbcaa709b99af190c73cd5b77c455e08"},
-    {"path":"docs/agent-skills/archive-core-sop.md","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["archive/wrong_print_engine.html"],"sha256":"0f96af6d8156275e332f6ec2013ccf0960b4f838334129ca83799c543acbbdb4"},
+    {"path":"docs/agent-skills/archive-core-sop.md","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["apmath/wrong_print_engine.html"],"sha256":"8c7d00ff6a549b9e5f9cb5a6806f76ad5b9cc9a95d2080f796c549934a354a23"},
     {"path":"docs/plans/PRINT_ENGINE_UNIFICATION_NEXT_PLAN.md","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["print-core.js","wrong_print_engine.html"],"sha256":"82f1a2e45718b1837620bf7ec904b248e61155b6d0fc8b37700f003b657a500c"},
     {"path":"docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["ENGINE CAPABILITY","REAL RENDER GATE"],"sha256":"ad53cefa80538a02d3eb9ff91e267032a4affd6b7d7fa95d780275e3818cb97a"},
     {"path":"reports/agent-memory/ap-workstream-locks.json","roles":["DOWNSTREAM_CONSUMER"],"classification":"DOCUMENTATION_ONLY","evidence":["defaultLockedPaths","archive/wrong_print_engine.html"],"sha256":"7acaac6fb2ab2489b4a6dfb6502d30cc085864d41ecff3ab329012b1e15e2bef"},
@@ -141,7 +141,7 @@
     {"path":"tests/mixed-render-authority-adapter.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["MixerAdapter pack fallback","staging-ledger layout promotion gate","actual browser fixture parity","storage QPP/source coverage"],"sha256":"d8b79d39473753f0707e4f469c9ff6de695d7a0cb5020afb5c6b9b8e06d60afe"},
     {"path":"tests/print-render-authority-drift-ledger.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["phase-0.6 ledger","partial fixture status","engine behavior evidence"],"sha256":"8883c6281ac61f6d2ed0407f58d71469b904782946e0337d2acfb8dce026772e"},
     {"path":"tests/print-render-authority-mixer-ecosystem.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["unit-past storage producer","archive/index consumer","mixer PDF viewer contract"],"sha256":"1799eed2b86633208166902f370900aa459388dd8d42b23e97a20b5083738645"},
-    {"path":"tests/print-render-authority-phase0-baseline.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["exact denominator","SHA-256 drift","Solution, Answer, and Exam Executor/A-B harness membership"],"sha256":"d4bf37abd301f11c80aadcba22981bd83ff4605d25b63889c93a8c2e28a625f6"},
+    {"path":"tests/print-render-authority-phase0-baseline.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["exact denominator","SHA-256 drift","Solution, Answer, and Exam Executor/A-B harness membership","Phase 7 production path documentation lock"],"sha256":"c36bbdec220e884dc133a586701b81c58b26f161880953a7c93c77b717eeea20"},
     {"path":"tests/print-runtime.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["readiness state order","pre-render fail-closed sentinel","failed transaction mutation","image error timeout mutation"],"sha256":"90c58ac6cce5cbacd1e7ebf55b46fccedf8ebdc9c75489789d7c535fa2008d2a"},
     {"path":"tests/render-authority-normalizer.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["adapter source identity","qrPolicies propagation","pure normalizers"],"sha256":"210d58bfbdb41c6bf4e0e96b553bc8e28317280681e065f8a5773fdf5232cfdb"},
     {"path":"tests/render-authority-question.test.js","roles":["DOWNSTREAM_CONSUMER"],"classification":"REGRESSION_ONLY","evidence":["semantic fingerprint","answer fingerprint","escaped SVG asset attributes"],"sha256":"eb3e00f17b0e418cc9d27abca842633929f590f07c064800e1c4c74988c6675c"},
@@ -235,8 +235,8 @@
   "knownDocumentationFinding": {
     "id":"DOC_ENGINE_PATH_001",
     "severity":"P1",
-    "observed":"DOMAIN_LOCK_POLICY, archive core SOP, and workstream locks retain archive/wrong_print_engine.html.",
+    "observed":"Historical Phase 0 finding: DOMAIN_LOCK_POLICY and archive core SOP retained archive/wrong_print_engine.html before Phase 7 cleanup.",
     "productionPath":"apmath/wrong_print_engine.html",
-    "disposition":"Record now; correct only in the scheduled Phase 7 documentation and lock cleanup."
+    "disposition":"Resolved in Phase 7 minimal documentation/lock cleanup; current production path is now reflected."
   }
 }

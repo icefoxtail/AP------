@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "planVersion": "v2.2",
+  "phase": "PHASE_7_MINIMAL_INTEGRATION_SEAL",
+  "status": "READY_FOR_PRODUCTION",
+  "sealStartSha": "954287768f2bf33183c63f160d2ca749ee641129",
+  "archive": {
+    "exam": { "browser": "PASS", "pages": 4, "omission": 0, "duplication": 0, "overflow": false, "brokenImages": 0, "mathJax": true, "sharedDefault": true },
+    "solution": { "browser": "PASS", "pages": 3, "q6Continuation": true, "solutionImagePrimaryOnly": true, "omission": 0, "duplication": 0, "overflow": false, "mathJax": true, "sharedDefault": true },
+    "answer": { "browser": "PASS", "pages": 1, "entries": 8, "omission": 0, "duplication": 0, "overflow": false, "mathJax": true, "sharedDefault": true },
+    "renderReady": true,
+    "printArea": true,
+    "browserPrintRasterNativeGdiRoutes": "regression PASS"
+  },
+  "mixer": {
+    "browser": "PASS",
+    "supportedQpp": [4, 6, 8],
+    "storageSourceIdentity": true,
+    "sourceProblemImage": true,
+    "sourceSolutionImage": true,
+    "tableMathView": true,
+    "renderReadyRegression": "PASS"
+  },
+  "clinic": {
+    "browser": "PASS",
+    "reviewComposition": true,
+    "recipientQrComposition": true,
+    "omission": 0,
+    "duplication": 0,
+    "duplexAndLongSolution": true,
+    "renderReadyRegression": "PASS"
+  },
+  "visualAssets": {
+    "problemSvgPng": "PASS",
+    "solutionImageSvgPng": "PASS",
+    "brokenImageCount": 0,
+    "clippingCount": 0,
+    "dataSvgAttributeEscapingFix": "PASS"
+  },
+  "overall": {
+    "omission": 0,
+    "duplication": 0,
+    "overflow": 0,
+    "fatalRenderErrors": 0,
+    "nodeImpactSuite": "71 PASS",
+    "browserSuites": "Archive exam/solution/answer A-B and default; Mixer qpp 4/6/8; Clinic review/recipient-QR PASS",
+    "readiness": "PASS",
+    "printRegression": "PASS"
+  },
+  "legacyFallback": "retained for Archive exam/solution/answer and existing Mixer/Clinic paths",
+  "p2Backlog": ["deeper executor deduplication can be considered separately; no observed student-output defect"],
+  "remainingP0": 0,
+  "remainingP1": 0
+}
