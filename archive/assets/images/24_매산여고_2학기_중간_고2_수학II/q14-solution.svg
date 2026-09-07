@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="500" viewBox="0 0 640 500" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">24 매산여고 14번 함수의 연속과 미분가능성 해설</title>
+  <desc id="desc">열린 점과 닫힌 점, 불연속점, 꺾임, 수평구간의 도함수 0을 구분한 해설 그림</desc>
+  <style>
+    .background{fill:#fff}
+    .axis{stroke:#171717;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .guide{stroke:#777;stroke-width:.95;stroke-dasharray:4 4;fill:none}
+    .curve{stroke:#111;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .point-open{stroke:#111;stroke-width:1.4;fill:#fff}
+    .point-closed{stroke:#111;stroke-width:1;fill:#111}
+    .panel{fill:#f7f8fa;stroke:#c7cbd1;stroke-width:1}
+    .title{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:15px;font-weight:700;fill:#111}
+    .label{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:12px;fill:#222}
+    .small{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:11px;fill:#333}
+    .math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:13px;fill:#111}
+    .tick{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:11.5px;fill:#222}
+  </style>
+  <defs>
+    <marker id="axis-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#171717"/>
+    </marker>
+  </defs>
+  <rect class="background" x="0" y="0" width="640" height="500"/>
+  <text class="title" x="32" y="28">q14  그래프에서 점·기울기 구조 읽기</text>
+  <text class="small" x="32" y="47">세로 높이 c, v는 원문 기호를 유지한 개략도이다. 핵심은 점의 종류와 구간 구조이다.</text>
+
+  <g aria-label="함수 그래프">
+    <line class="axis" x1="55" y1="340" x2="378" y2="340" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="160" y1="425" x2="160" y2="95" marker-end="url(#axis-arrow)"/>
+    <text class="math" x="380" y="345">x</text>
+    <text class="math" x="166" y="100">y</text>
+    <line class="guide" x1="200" y1="220" x2="200" y2="395"/>
+    <line class="guide" x1="320" y1="170" x2="320" y2="395"/>
+    <path class="curve" d="M82 389 C112 405 140 360 158 290 C175 220 185 190 190 200 C194 208 197 216 200 220"/>
+    <path class="curve" d="M202 389 L240 220 L280 220"/>
+    <path class="curve" d="M280 220 C295 225 307 250 320 310"/>
+    <path class="curve" d="M322 310 C336 285 350 220 358 170"/>
+    <circle class="point-open" cx="80" cy="390" r="4.6" fill="#fff"/>
+    <circle class="point-open" cx="200" cy="390" r="4.6" fill="#fff"/>
+    <circle class="point-closed" cx="200" cy="220" r="4" fill="#111"/>
+    <circle class="point-open" cx="320" cy="310" r="4.6" fill="#fff"/>
+    <circle class="point-closed" cx="320" cy="390" r="4" fill="#111"/>
+    <circle class="point-open" cx="360" cy="170" r="4.6" fill="#fff"/>
+    <text class="tick" x="76" y="360">−2</text>
+    <text class="tick" x="196" y="360">1</text>
+    <text class="tick" x="236" y="360">2</text>
+    <text class="tick" x="276" y="360">3</text>
+    <text class="tick" x="316" y="360">4</text>
+    <text class="tick" x="356" y="360">5</text>
+    <text class="tick" x="130" y="394">−1</text>
+    <text class="tick" x="116" y="314">1/2</text>
+    <text class="math" x="207" y="214">c</text>
+    <text class="math" x="328" y="163">v</text>
+    <text class="small" x="190" y="414">x=1</text>
+    <text class="small" x="310" y="414">x=4</text>
+    <text class="label" x="235" y="205">수평: (2,3)</text>
+  </g>
+
+  <g aria-label="판정 패널">
+    <rect class="panel" x="398" y="72" width="210" height="350" rx="8"/>
+    <text class="title" x="416" y="101">검수 포인트</text>
+    <text class="label" x="416" y="133">x=1</text>
+    <text class="small" x="416" y="151">좌우 접근값 c, −1</text>
+    <text class="small" x="416" y="168">→ 불연속</text>
+    <line class="guide" x1="416" y1="181" x2="590" y2="181"/>
+    <text class="label" x="416" y="207">x=2, 3</text>
+    <text class="small" x="416" y="225">선분이 꺾임</text>
+    <text class="small" x="416" y="242">→ 미분 불가</text>
+    <line class="guide" x1="416" y1="255" x2="590" y2="255"/>
+    <text class="label" x="416" y="281">(2,3)</text>
+    <text class="small" x="416" y="299">수평 구간 전체에서</text>
+    <text class="small" x="416" y="316">f′(x)=0 → 무한히 많음</text>
+    <line class="guide" x1="416" y1="329" x2="590" y2="329"/>
+    <text class="label" x="416" y="355">x=4</text>
+    <text class="small" x="416" y="373">lim f(x)=1/2, f(4)=−1</text>
+    <text class="small" x="416" y="390">→ 불연속, f′ undefined</text>
+    <text class="label" x="416" y="411">판정: ①②③⑤ 참, ④ 거짓</text>
+  </g>
+</svg>
