@@ -291,9 +291,9 @@ window.questionBank = [
     "category": "접선의 기울기",
     "originalCategory": "접선의 방정식",
     "standardCourse": "수학II",
-    "standardUnitKey": "H15-M2-05",
-    "standardUnit": "접선의 방정식",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "H15-M2-07",
+    "standardUnit": "부정적분",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -310,8 +310,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 곡선 위 점에서의 접선 기울기가 곧 $f'(x)$이므로, 주어진 기울기식을 적분하여 $f(x)$를 복원한다.\n조건 정리: 모든 점 $(x,f(x))$에서 접선의 기울기가 $6x^2-2x+3$이고 곡선은 점 $(-1,-2)$를 지난다.\n풀이 방향: $f'(x)=6x^2-2x+3$을 적분한 뒤 $f(-1)=-2$로 적분상수를 정하고 $f(2)$를 계산한다.\n정석 풀이: $f'(x)=6x^2-2x+3$이므로 $f(x)=2x^3-x^2+3x+C$이다. $f(-1)=-2$를 대입하면 $-2-1-3+C=-2$이므로 $C=4$이다. 따라서 $f(2)=2\\times2^3-2^2+3\\times2+4=16-4+6+4=22$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-05-TANGENT",
-    "subUnit": "접선의 방정식",
+    "subUnitKey": "H15-M2-07-INDEFINITE_INTEGRAL",
+    "subUnit": "부정적분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_순천고2_수2_2기말.pdf"
