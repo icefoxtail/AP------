@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_EVIDENCE_v1",
+  "evidenceId": "masan-yeo-r7:q2:v1",
+  "runId": "masan-yeo-20260907-visual-r7",
+  "revision": 1,
+  "axis": "v1",
+  "questionUid": "archive/_generated/pipeline-review/20260907-masan-yeo-visual/source.js|25_매산여고_2학기_중간_고2_수학II|2",
+  "status": "PASS",
+  "validityStatus": "FROZEN",
+  "reviewerId": "v1-source-only-masan-yeo",
+  "reviewSessionId": "01a07a18-b2c1-79a2-97d5-2fd7131fff94",
+  "reviewerModelOrAgent": "v1-source-only-masan-yeo",
+  "priorReviewVisibility": "NONE",
+  "inputSha": "sha256:02a8249ab0d7b3b9c4a6ce1b0042fc388f3f76a08eb83e79b3465851f71fb1fa",
+  "reviewStartInputSha": "sha256:02a8249ab0d7b3b9c4a6ce1b0042fc388f3f76a08eb83e79b3465851f71fb1fa",
+  "reviewEndInputSha": "sha256:02a8249ab0d7b3b9c4a6ce1b0042fc388f3f76a08eb83e79b3465851f71fb1fa",
+  "startedAt": "2026-09-07T04:58:42.528Z",
+  "frozenAt": "2026-09-07T04:58:43.529Z",
+  "findings": [],
+  "payload": {
+    "freshBlind": true,
+    "inputBundle": {
+      "path": "archive/_generated/pipeline-review/20260907-masan-yeo-visual-core-r7/bundles/q2-v1.json",
+      "bytes": 612,
+      "sha256": "sha256:dab678016feb34145b4a0a430649e5c1d36f434aaab340d9b6fff07cfc05eced"
+    },
+    "specSha": "sha256:f548eedef00cb845ac4a3f605370cd3d59cd6170a1ccc19dea142e44b85954bd",
+    "fact": {
+      "schemaVersion": "APMATH_VISUAL_FACT_v2",
+      "questionUid": "archive/_generated/pipeline-review/20260907-masan-yeo-visual/source.js|25_매산여고_2학기_중간_고2_수학II|2",
+      "visualType": "geometry",
+      "semantic": {
+        "points": [
+          {
+            "id": "limit_zero_left",
+            "x": 0,
+            "y": -1
+          },
+          {
+            "id": "limit_one_right",
+            "x": 1,
+            "y": -1
+          },
+          {
+            "id": "value_zero",
+            "x": 0,
+            "y": 1
+          },
+          {
+            "id": "value_one",
+            "x": 1,
+            "y": 2
+          },
+          {
+            "id": "value_minus_one",
+            "x": -1,
+            "y": 0
+          }
+        ],
+        "circles": [],
+        "segments": [
+          {
+            "id": "one_sided_limit_markers",
+            "start": "limit_zero_left",
+            "end": "limit_one_right"
+          }
+        ],
+        "relations": [
+          {
+            "from": "limit_zero_left",
+            "to": "limit_one_right",
+            "relation": "segment"
+          }
+        ],
+        "scalePolicy": "SCHEMATIC_DECLARED"
+      }
+    },
+    "visualRequirementSignal": "SHOULD_BE_REQUIRED",
+    "reviewerThreadId": "01a07a18-b2c1-79a2-97d5-2fd7131fff94"
+  },
+  "inputVisibilityProfile": "SOURCE_ONLY"
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_EVIDENCE_v1",
+  "evidenceId": "masan-yeo-r7:q2:v2",
+  "runId": "masan-yeo-20260907-visual-r7",
+  "revision": 1,
+  "axis": "v2",
+  "questionUid": "archive/_generated/pipeline-review/20260907-masan-yeo-visual/source.js|25_매산여고_2학기_중간_고2_수학II|2",
+  "status": "PASS",
+  "validityStatus": "FROZEN",
+  "reviewerId": "v2-artifact-only-masan-yeo",
+  "reviewSessionId": "01a07a1d-ce0e-7c23-94f2-8a6522ebf5c8",
+  "reviewerModelOrAgent": "v2-artifact-only-masan-yeo",
+  "priorReviewVisibility": "NONE",
+  "inputSha": "sha256:02a8249ab0d7b3b9c4a6ce1b0042fc388f3f76a08eb83e79b3465851f71fb1fa",
+  "reviewStartInputSha": "sha256:02a8249ab0d7b3b9c4a6ce1b0042fc388f3f76a08eb83e79b3465851f71fb1fa",
+  "reviewEndInputSha": "sha256:02a8249ab0d7b3b9c4a6ce1b0042fc388f3f76a08eb83e79b3465851f71fb1fa",
+  "startedAt": "2026-09-07T04:58:42.528Z",
+  "frozenAt": "2026-09-07T04:58:43.529Z",
+  "findings": [],
+  "payload": {
+    "freshBlind": true,
+    "inputBundle": {
+      "path": "archive/_generated/pipeline-review/20260907-masan-yeo-visual-core-r7/bundles/q2-v2.json",
+      "bytes": 392,
+      "sha256": "sha256:4aa39f1d9b7275afb6cfa8a295610b9fc76c491c8ac1aad993dd3a550f077117"
+    },
+    "specSha": "sha256:f548eedef00cb845ac4a3f605370cd3d59cd6170a1ccc19dea142e44b85954bd",
+    "fact": {
+      "schemaVersion": "APMATH_VISUAL_FACT_v2",
+      "questionUid": "archive/_generated/pipeline-review/20260907-masan-yeo-visual/source.js|25_매산여고_2학기_중간_고2_수학II|2",
+      "visualType": "geometry",
+      "semantic": {
+        "points": [
+          {
+            "id": "limit_zero_left",
+            "x": 0,
+            "y": -1
+          },
+          {
+            "id": "limit_one_right",
+            "x": 1,
+            "y": -1
+          },
+          {
+            "id": "value_zero",
+            "x": 0,
+            "y": 1
+          },
+          {
+            "id": "value_one",
+            "x": 1,
+            "y": 2
+          },
+          {
+            "id": "value_minus_one",
+            "x": -1,
+            "y": 0
+          }
+        ],
+        "circles": [],
+        "segments": [
+          {
+            "id": "one_sided_limit_markers",
+            "start": "limit_zero_left",
+            "end": "limit_one_right"
+          }
+        ],
+        "relations": [
+          {
+            "from": "limit_zero_left",
+            "to": "limit_one_right",
+            "relation": "segment"
+          }
+        ],
+        "scalePolicy": "SCHEMATIC_DECLARED"
+      }
+    },
+    "artifactPath": "archive/assets/images/25_매산여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "artifactSha": "sha256:10abb28289029bfdbe65fb38ee00acd40ff211a6c62bdb0986bac0fe2afe8043",
+    "structureSha": "sha256:7eab631464ad475303aed2bbde78c7a629d780a4ff5d57949063b42c2c283ec5",
+    "reviewerThreadId": "01a07a1d-ce0e-7c23-94f2-8a6522ebf5c8"
+  },
+  "inputVisibilityProfile": "ARTIFACT_ONLY"
+}
