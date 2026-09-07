@@ -124,8 +124,8 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 곡선 위의 점에서의 접선의 기울기는 그 점에서의 미분계수이다.\n조건 정리: $f(x)=x^3+x^2-4x-1$이고 $f(-2)=-8+4+8-1=3$이므로 점 $(-2,3)$은 곡선 위의 점이다.\n풀이 방향: 도함수를 구해 $x=-2$를 대입한다.\n정석 풀이: $f'(x)=3x^2+2x-4$이므로 $f'(-2)=3\\times(-2)^2+2\\times(-2)-4=12-4-4=4$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -157,7 +157,7 @@ window.questionBank=[
     "answer": "②",
     "solution": "[키포인트] 미분계수는 증분의 비의 극한, 즉 $f'(2)=\\displaystyle\\lim_{h\\to0}\\dfrac{\\Delta y}{h}$이다.\n조건 정리: $x$가 $2$에서 $2+h$까지 변할 때의 증분이 $\\Delta y=h^3-2h^2-2h$이다.\n풀이 방향: $\\dfrac{\\Delta y}{h}$를 약분해 정리한 뒤 $h\\to0$의 극한을 구한다.\n정석 풀이: $\\dfrac{\\Delta y}{h}=\\dfrac{h^3-2h^2-2h}{h}=h^2-2h-2$이므로 $f'(2)=\\displaystyle\\lim_{h\\to0}(h^2-2h-2)=-2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -189,7 +189,7 @@ window.questionBank=[
     "answer": "③",
     "solution": "[키포인트] $\\displaystyle\\lim_{h\\to0}\\dfrac{f(1+kh)-f(1)}{h}=k\\,f'(1)$이다.\n조건 정리: 주어진 극한은 $k=-2$인 경우이므로 그 값은 $-2f'(1)$이다.\n풀이 방향: 곱의 미분법으로 $f'(x)$를 구해 $f'(1)$을 계산한다.\n정석 풀이: $f(x)=(3x^2+1)(x-3)$이므로 $f'(x)=6x(x-3)+(3x^2+1)=9x^2-18x+1$이고 $f'(1)=9-18+1=-8$이다. 한편\n$\\displaystyle\\lim_{h\\to0}\\dfrac{f(1-2h)-f(1)}{h}=-2\\lim_{h\\to0}\\dfrac{f(1-2h)-f(1)}{-2h}=-2f'(1)$\n이므로 그 값은 $-2\\times(-8)=16$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -253,7 +253,7 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] $t=x-2$로 치환하면 주어진 극한은 $x=1$에서의 미분계수 조건으로 바뀐다.\n조건 정리: $t=x-2$로 놓으면 $x\\to3$일 때 $t\\to1$이고 $x-3=t-1$이다.\n풀이 방향: 극한이 유한하게 존재하는 조건에서 $f(1)=6$을 얻고, 극한값을 $f'(1)$로 해석한다.\n정석 풀이: 주어진 식은 $\\displaystyle\\lim_{t\\to1}\\dfrac{f(t)-6}{t-1}=5$이다. 이 극한이 유한하게 존재하려면 $f(1)=6$이어야 하므로 $1+a+b+2=6$, 즉 $a+b=3$이다. 또한 이때 극한은 $f'(1)$이므로 $f'(1)=5$이다. $f'(x)=3x^2+2ax+b$이므로 $3+2a+b=5$, 즉 $2a+b=2$이다. 두 식 $a+b=3$, $2a+b=2$를 빼면 $a=-1$이고, $b=4$이다. 따라서 $ab=(-1)\\times4=-4$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -415,7 +415,7 @@ window.questionBank=[
     "answer": "④",
     "solution": "[키포인트] 분자가 $0$으로 가므로 $F(x)=\\{f(x)\\}^2-x^2$의 $x=3$에서의 미분계수로 해석한다.\n조건 정리: $f(3)=3$, $f'(3)=2$이므로 $F(3)=\\{f(3)\\}^2-3^2=9-9=0$이다.\n풀이 방향: 극한을 $F'(3)$으로 바꾸고 곱의 미분법을 적용한다.\n정석 풀이: $F(3)=0$이므로 주어진 극한은 $\\displaystyle\\lim_{x\\to3}\\dfrac{F(x)-F(3)}{x-3}=F'(3)$이다. $F'(x)=2f(x)f'(x)-2x$이므로\n$F'(3)=2\\times3\\times2-2\\times3=12-6=6$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -511,8 +511,8 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] $f(x)+f(-x)=0$이면 $f$는 기함수이므로 짝수 차수의 항이 없다.\n조건 정리: $f$가 삼차함수이므로 $f(x)=px^3+qx$로 놓을 수 있고, $f(1)=3$, $f'(1)=1$이다.\n풀이 방향: $p$, $q$를 정한 뒤 점 $(2,f(2))$에서의 접선의 방정식을 구한다.\n정석 풀이: $f(1)=p+q=3$이고 $f'(x)=3px^2+q$에서 $f'(1)=3p+q=1$이다. 두 식을 빼면 $2p=-2$이므로 $p=-1$, $q=4$이고 $f(x)=-x^3+4x$이다. 이때 $f(2)=-8+8=0$이고 $f'(2)=3\\times(-1)\\times4+4=-8$이므로 점 $(2,0)$에서의 접선은 $y=-8(x-2)=-8x+16$이다. 즉 $m=-8$, $n=16$이므로 $n-m=16-(-8)=24$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -578,8 +578,8 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] $\\dfrac ba$는 원점과 점 $(a,b)$를 잇는 직선의 기울기이므로, 그 값이 최소가 되는 것은 직선이 곡선에 접할 때이다.\n조건 정리: 점 $(a,b)$는 곡선 $y=x^3-3x^2+27$ 위의 제1사분면의 점이므로 $a\\gt 0$이고 $b=a^3-3a^2+27$이다.\n풀이 방향: $k(a)=\\dfrac ba$를 $a$의 식으로 나타내고 미분하여 최소가 되는 $a$를 구한다.\n정석 풀이: $k(a)=\\dfrac{a^3-3a^2+27}{a}=a^2-3a+\\dfrac{27}a$ $(a\\gt 0)$이므로 $k'(a)=2a-3-\\dfrac{27}{a^2}=\\dfrac{2a^3-3a^2-27}{a^2}$이다. $2a^3-3a^2-27=0$에서 $a=3$일 때 $54-27-27=0$이므로 $(a-3)(2a^2+3a+9)=0$이고, 이차식의 판별식은 $3^2-4\\times2\\times9\\lt 0$이므로 양수인 해는 $a=3$뿐이다. $0\\lt a\\lt 3$에서 $k'(a)\\lt 0$, $a\\gt 3$에서 $k'(a)\\gt 0$이므로 $a=3$에서 최소가 된다. 이때 $b=27-27+27=27$이므로 $b-a=27-3=24$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -611,8 +611,8 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] $|x(x-2)|$는 $x=0$과 $x=2$에서 꺾이므로, 그 점에서 곱해지는 나머지 인수가 $0$이 되면 꺾임이 사라진다.\n조건 정리: $f(x)=|x(x-2)|(x-t)$이므로 미분가능하지 않을 수 있는 점은 $x=0$과 $x=2$뿐이다.\n풀이 방향: 각 점 근처에서 $f$를 정리해 꺾임이 사라지는 $t$를 찾고, 그에 따라 $g(t)$의 값을 정한다.\n정석 풀이: $x=0$의 근처에서 $f(x)=|x|(2-x)(x-t)$이므로, $|x|$에 곱해진 $(2-x)(x-t)$가 $x=0$에서 $0$이 되어야 꺾임이 사라진다. 즉 $2\\times(-t)=0$에서 $t=0$이다. 마찬가지로 $x=2$의 근처에서 $f(x)=|x-2|\\,x(x-t)$이므로 $2(2-t)=0$에서 $t=2$이다. 따라서 $g(0)=1$, $g(2)=1$이고 그 밖의 모든 $t$에서 $g(t)=2$이다.\n이제 ㄱ은 $g(0)=1$이므로 거짓이고, ㄴ은 $t\\to2$일 때 $t\\ne2$인 $t$에서 $g(t)=2$이므로 극한이 $2$가 되어 거짓이며, ㄷ은 $g$가 $t=0$과 $t=2$의 두 점에서만 불연속이므로 참이다. 따라서 옳은 것은 ㄷ뿐이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-M2-03-CONTINUITY",
-    "subUnit": "continuity",
+    "subUnitKey": "H15-M2-03-DERIVATIVE",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -691,7 +691,7 @@ window.questionBank=[
     "answer": "연속이지만 미분가능하지 않다.",
     "solution": "[키포인트] 연속성은 극한과 함숫값의 일치로, 미분가능 여부는 좌미분계수와 우미분계수가 같은지로 판정한다.\n조건 정리: $h(x)=xf(x)=x|x-2|$라 하면 $x\\ge2$에서 $h(x)=x(x-2)$이고 $x\\lt 2$에서 $h(x)=x(2-x)$이다.\n풀이 방향: $x=2$에서 좌우 극한과 함숫값을 비교한 뒤, 미분계수의 정의로 좌우 미분계수를 각각 계산한다.\n정석 풀이: $h(2)=2\\times0=0$이고 $\\displaystyle\\lim_{x\\to2-}x(2-x)=0$, $\\displaystyle\\lim_{x\\to2+}x(x-2)=0$이므로 $\\displaystyle\\lim_{x\\to2}h(x)=0=h(2)$이다. 즉 $h$는 $x=2$에서 연속이다.\n한편 $t\\ne0$에 대하여 $\\dfrac{h(2+t)-h(2)}{t}$를 계산하면, $t\\lt 0$일 때 $h(2+t)=(2+t)\\{2-(2+t)\\}=-(2+t)t$이므로 그 값은 $-(2+t)\\to-2$이고, $t\\gt 0$일 때 $h(2+t)=(2+t)t$이므로 그 값은 $2+t\\to2$이다. 좌미분계수 $-2$와 우미분계수 $2$가 서로 다르므로 $h$는 $x=2$에서 미분가능하지 않다.\n따라서 $xf(x)$는 $x=2$에서 연속이지만 미분가능하지 않다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

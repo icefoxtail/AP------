@@ -422,8 +422,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 첫 곡선의 접선을 구한 뒤 둘째 곡선과의 접점에서 기울기와 함숫값을 모두 맞춘다.\n조건 정리: $y=-x^2-2x+4$의 도함수는 $-2x-2$이다.\n풀이 방향: 점 $(2,-4)$에서의 접선을 구하고, 삼차곡선의 접점 후보별로 $k$를 구한다.\n정석 풀이: 접선의 기울기는 $-6$이고 접선은 $y=-6x+8$이다. 삼차곡선의 도함수는 $-3x^2+3x$이므로 접점에서 $-3x^2+3x=-6$, 즉 $x=2$ 또는 $x=-1$이다. $x=2$에서 $k=-2$, $x=-1$에서 $k=\\dfrac{23}{2}$이다. 두 값의 곱은 $-2\\times\\dfrac{23}{2}=-23$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -622,7 +622,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 극한의 합과 차를 이용하여 $f'(0)$과 $g'(0)$을 구한다.\n조건 정리: 첫 극한이 유한하므로 $f(0)=g(0)$이다.\n풀이 방향: 차의 미분계수와 합의 미분계수를 연립한다.\n정석 풀이: $f'(0)-g'(0)=3$, $f'(0)+g'(0)=5$이므로 $f'(0)=4$, $g'(0)=1$이다. 세 번째 극한이 유한하려면 $a=f(0)$이고 그 극한값은 $f'(0)=4$이다. 따라서 $b\\,g(0)=4$이며 $g(0)=f(0)=a$이므로 $ab=4$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -702,8 +702,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$-3$",
     "solution": "[키포인트] 주어진 부등식을 두 방향으로 적용하여 미분계수의 차분몫을 같은 값으로 조인다.\n조건 정리: $a=b=0$을 대입하면 $f(0)\\le2f(0)+1$이므로 $f(0)\\ge-1$이다. 주어진 $f(0)\\le-1$과 합치면 $f(0)=-1$이다.\n풀이 방향: 임의의 실수 $x$를 고정하고 $h\\gt0$에 대하여 $\\dfrac{f(x+h)-f(x)}h$의 상한과 하한을 구한 뒤 조임정리를 적용한다.\n정석 풀이: 먼저 주어진 부등식에 $a=x$, $b=h$를 대입하면 $f(x+h)\\le f(x)+f(h)+(xh-1)^2$이다. 따라서\n$\\displaystyle\\dfrac{f(x+h)-f(x)}h\\le\\dfrac{f(h)+1}h-2x+x^2h$이다.\n또 $a=x+h$, $b=-h$를 대입하면 $f(x)\\le f(x+h)+f(-h)+\\{(x+h)h+1\\}^2$이므로\n$\\displaystyle-\\dfrac{f(-h)+1}h-2(x+h)-(x+h)^2h\\le\\dfrac{f(x+h)-f(x)}h$이다.\n$f(0)=-1$, $f'(0)=1$이므로 $\\displaystyle\\lim_{h\\to0+}\\dfrac{f(h)+1}h=1$이고, $\\displaystyle\\lim_{h\\to0+}\\left(-\\dfrac{f(-h)+1}h\\right)=1$이다. 따라서 위의 하한과 상한은 모두 $1-2x$로 수렴한다. 조임정리에 의해 오른쪽 미분계수는 $1-2x$이고, $f$는 미분가능하므로 $f'(x)=1-2x$이다. 그러므로 $f'(2)=1-4=-3$이다.\n따라서 구하는 값은 $-3$이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

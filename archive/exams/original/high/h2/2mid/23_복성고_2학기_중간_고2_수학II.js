@@ -321,7 +321,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 미분가능하면 연속이므로 연속 조건과 좌·우 미분계수가 같다는 조건을 함께 쓴다.\n조건 정리: $x\\ge1$에서 $f(x)=x^3+bx^2+1$, $x\\lt1$에서 $f(x)=ax-3$이다.\n풀이 방향: $x=1$에서 연속 조건과 미분계수 조건으로 $a$, $b$를 구한다.\n정석 풀이: 연속이려면 $f(1)=1+b+1=b+2$가 좌극한 $a-3$과 같아야 하므로 $a-3=b+2$, 즉 $a-b=5$이다. 우미분계수는 $(3x^2+2bx)\\big|_{x=1}=3+2b$, 좌미분계수는 $a$이므로 $a=3+2b$이다. 두 식을 연립하면 $3+2b-b=5$에서 $b=2$, $a=7$이다. 따라서 $a+b=9$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -353,7 +353,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 각 항을 미분계수의 정의 꼴로 분리하여 계수를 맞춘다.\n조건 정리: 분자 $f(1-2h)-f(1+h)$는 $x=1$을 기준으로 하는 증분으로 이루어져 있다.\n풀이 방향: 두 항으로 나누어 각각 미분계수로 바꾼다.\n정석 풀이: 주어진 식을 $\\dfrac{f(1-2h)-f(1)}{3h}-\\dfrac{f(1+h)-f(1)}{3h}$로 쓰면\n$\\dfrac{f(1-2h)-f(1)}{3h}=-\\dfrac23\\cdot\\dfrac{f(1-2h)-f(1)}{-2h}\\to-\\dfrac23f'(1)$,\n$\\dfrac{f(1+h)-f(1)}{3h}=\\dfrac13\\cdot\\dfrac{f(1+h)-f(1)}h\\to\\dfrac13f'(1)$이다.\n따라서 주어진 극한은 $-\\dfrac23f'(1)-\\dfrac13f'(1)=-f'(1)=2$이므로 $f'(1)=-2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -385,8 +385,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 분모가 $0$에 수렴하는데 극한이 존재하면 분자도 $0$이 되고, 그 극한값이 미분계수와 연결된다.\n조건 정리: $x\\to2$에서 $x^2-4\\to0$이므로 $f(2)=3$이다.\n풀이 방향: $f(2)$와 $f'(2)$를 구해 접선을 세운 뒤 $y$절편을 구한다.\n정석 풀이: 분모가 $0$에 수렴하므로 분자도 $0$에 수렴해야 하고 $f(2)-3=0$, 즉 $f(2)=3$이다. 이때\n$\\displaystyle\\lim_{x\\to2}\\dfrac{f(x)-3}{x^2-4}=\\lim_{x\\to2}\\dfrac{f(x)-f(2)}{x-2}\\cdot\\dfrac1{x+2}=\\dfrac{f'(2)}4=1$에서 $f'(2)=4$이다. 접선은 $y-3=4(x-2)$, 즉 $y=4x-5$이므로 $y$절편은 $-5$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -700,7 +700,7 @@ window.questionBank = [
     "answer": "$-12$",
     "solution": "[키포인트] 각 극한이 유한하므로 분자가 $0$이 되어야 하고, 그로부터 $f$의 인수를 알 수 있다.\n조건 정리: 세 극한이 모두 유한하므로 $f(1)=0$, $f(2)=0$, $f(3)=0$이다.\n풀이 방향: $f(x)=a(x-1)(x-2)(x-3)$으로 놓고 세 극한의 합을 계산한다.\n정석 풀이: 첫 극한 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)}{x-1}$이 유한하므로 $f(1)=0$이고 그 값은 $f'(1)$이다. 둘째 극한 $\\displaystyle\\lim_{x\\to1}\\dfrac{f(2x)}{x-1}$이 유한하려면 $f(2)=0$이고 그 값은 $2f'(2)$이며, 셋째 극한은 $f(3)=0$일 때 $3f'(3)$이다. 따라서 $f(x)=a(x-1)(x-2)(x-3)$이다.\n$f'(1)=a(1-2)(1-3)=2a$, $f'(2)=a(2-1)(2-3)=-a$, $f'(3)=a(3-1)(3-2)=2a$이므로 세 극한의 합은 $2a+2(-a)+3(2a)=6a=12$에서 $a=2$이다. 그러므로 $f(0)=2(-1)(-2)(-3)=-12$이다.\n따라서 구하는 값은 $-12$이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

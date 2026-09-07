@@ -29,7 +29,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 도함수를 구해 주어진 미분계수 조건에 대입한다.\n조건 정리: $f(x)=x^3-ax-10$이고 $f'(2)=9$이다.\n풀이 방향: $f'(x)$를 구한 뒤 $x=2$를 대입해 $a$에 대한 방정식을 푼다.\n정석 풀이: $f'(x)=3x^2-a$이므로 $f'(2)=3\\times2^2-a=12-a$이다. $12-a=9$에서 $a=3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -95,8 +95,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 롤의 정리는 양 끝의 함숫값이 같을 때 $f'(c)=0$인 $c$가 구간 내부에 존재한다는 정리이다.\n조건 정리: $f(-1)=1-4+5=2$, $f(\\sqrt3)=9-12+5=2$이므로 양 끝의 함숫값이 같아 롤의 정리를 쓸 수 있다.\n풀이 방향: $f'(x)=0$의 근을 모두 구한 뒤 열린구간 $(-1,\\sqrt3)$에 속하는 것만 고른다.\n정석 풀이: $f'(x)=4x^3-8x=4x(x^2-2)$이므로 $f'(x)=0$의 근은 $x=0,\\ \\pm\\sqrt2$이다. 이 중 $-1\\lt x\\lt \\sqrt3$을 만족하는 것은 $x=0$과 $x=\\sqrt2$이다($\\sqrt2\\approx1.41\\lt \\sqrt3\\approx1.73$이고 $-\\sqrt2\\approx-1.41\\lt -1$이다). 따라서 가능한 $c$의 값의 합은 $0+\\sqrt2=\\sqrt2$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -128,7 +128,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] $\\dfrac{f(x)-f(3)}{x^2-9}=\\dfrac{f(x)-f(3)}{x-3}\\cdot\\dfrac1{x+3}$으로 분리하면 미분계수가 드러난다.\n조건 정리: $f$는 미분가능하고 주어진 극한값이 $1$이다.\n풀이 방향: 첫 조건에서 $f'(3)$을 구한 뒤 둘째 극한을 $kf'(3)$ 꼴로 바꾼다.\n정석 풀이: $\\displaystyle\\lim_{x\\to3}\\dfrac{f(x)-f(3)}{x^2-9}=\\lim_{x\\to3}\\dfrac{f(x)-f(3)}{x-3}\\cdot\\dfrac1{x+3}=\\dfrac{f'(3)}6=1$이므로 $f'(3)=6$이다. 한편\n$\\displaystyle\\lim_{h\\to0}\\dfrac{f(3+6h)-f(3)}{h}=6\\lim_{h\\to0}\\dfrac{f(3+6h)-f(3)}{6h}=6f'(3)=6\\times6=36$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -424,8 +424,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 곡선 위의 점과 직선 사이의 거리가 최소가 되는 점에서는 곡선의 접선이 그 직선과 평행하다.\n조건 정리: 곡선은 $y=x^3+3$ $(x\\gt 0)$이고 직선의 기울기는 $3$이다.\n풀이 방향: 접선의 기울기가 $3$이 되는 $x$를 구해 점 $P$의 좌표를 정한다.\n정석 풀이: $y'=3x^2$이므로 $3a^2=3$에서 $a^2=1$이고 $a\\gt 0$이므로 $a=1$이다. 이때 $b=1^3+3=4$이다. (점 $(1,4)$는 직선 $y=3x-5$ 위쪽에 있고 $x\\gt 0$에서 접선의 기울기 $3x^2$이 이 값을 한 번만 가지므로 이 점에서 거리가 최소가 된다.) 따라서 $a+b=1+4=5$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -492,8 +492,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] $f(0)=0$이므로 $[0,t]$에서의 평균변화율은 $g(t)=\\dfrac{f(t)}t$이다.\n조건 정리: $0\\lt t\\le1$에서 $g(t)=\\dfrac{8t}t=8$이고, $t\\gt 1$에서 $g(t)=\\dfrac{t^3+at^2+bt}{t}=t^2+at+b$이다.\n풀이 방향: $t=1$에서 $g$가 미분가능하도록 $a$, $b$를 정한 뒤, 원점을 지나는 직선 $y=mt$와 만나는 $m$의 범위를 구한다.\n정석 풀이: $t=1$에서 연속이므로 $1+a+b=8$, 즉 $a+b=7$이다. 또 $t\\lt 1$에서 $g'(t)=0$이고 $t\\gt 1$에서 $g'(t)=2t+a$이므로 $2+a=0$에서 $a=-2$이고 $b=9$이다. 즉\n$g(t)=8\\ (0\\lt t\\le1)$, $g(t)=t^2-2t+9\\ (t\\gt 1)$이다.\n$0\\lt t\\le1$에서 $mt=8$이 해를 가지려면 $t=\\dfrac8m\\le1$, 즉 $m\\ge8$이어야 한다. $t\\gt 1$에서는 $mt=t^2-2t+9$에서 $m=t+\\dfrac9t-2$이고, 이 함수를 $\\varphi(t)$라 하면 $\\varphi'(t)=1-\\dfrac9{t^2}=0$에서 $t=3$이며 $\\varphi(3)=3+3-2=4$가 최솟값이다. 따라서 $t\\gt 1$에서 교점이 생기는 $m$의 값의 범위는 $m\\ge4$이고, 두 경우를 합치면 $m\\ge4$이다. 그러므로 $m$의 최솟값은 $4$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -558,8 +558,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 점에서의 접선이 평행하다는 것은 두 점의 $x$좌표에서 도함숫값이 같다는 뜻이다.\n조건 정리: 두 점의 $x$좌표를 $\\alpha$, $\\beta$ $(\\alpha\\ne\\beta)$라 하면 $\\alpha+\\beta=-10$, $\\alpha\\beta=2$이고 $y'=3x^2+2ax-1$이다.\n풀이 방향: $y'(\\alpha)=y'(\\beta)$에서 $a$를 구한 뒤, $\\alpha$가 만족하는 이차방정식으로 차수를 낮춰 $m$을 구한다.\n정석 풀이: $3\\alpha^2+2a\\alpha-1=3\\beta^2+2a\\beta-1$에서 $3(\\alpha^2-\\beta^2)+2a(\\alpha-\\beta)=0$이고, $\\alpha\\ne\\beta$이므로 양변을 $\\alpha-\\beta$로 나누면 $3(\\alpha+\\beta)+2a=0$이다. 따라서 $3\\times(-10)+2a=0$에서 $a=15$이다.\n한편 $\\alpha$, $\\beta$는 $x^2+10x+2=0$의 두 근이므로 $\\alpha^2=-10\\alpha-2$이다. 그러므로\n$m=3\\alpha^2+30\\alpha-1=3(-10\\alpha-2)+30\\alpha-1=-30\\alpha-6+30\\alpha-1=-7$이다.\n따라서 $a+m=15+(-7)=8$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -692,7 +692,7 @@ window.questionBank = [
     "answer": "$-10$",
     "solution": "[키포인트] 도함수의 정의를 그대로 적용한다.\n조건 정리: 다항함수는 모든 실수에서 미분가능하고, $\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)-f(1)}{x-1}=-10$이다.\n풀이 방향: $x\\to1$에서의 차분몫을 $f'(1)$의 정의와 대조한다.\n정석 풀이: 도함수의 정의에 따라 $f'(1)=\\displaystyle\\lim_{x\\to1}\\dfrac{f(x)-f(1)}{x-1}$이다. 주어진 극한값이 $-10$이므로 $f'(1)=-10$이다.\n따라서 구하는 값은 $-10$이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
