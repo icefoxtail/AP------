@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="410" viewBox="0 0 640 410" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc">
+  <title id="title">23 팔마고 6번 포물선에 그은 두 접선 해설</title>
+  <desc id="desc">외부점 (0,−1)을 지나는 포물선의 두 접점 t=1,−1과 접선 기울기 3,−5를 표시한 해설 그림</desc>
+  <style>
+    .background{fill:#fff}.axis{stroke:#171717;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}.curve{stroke:#111;stroke-width:2.1;fill:none;stroke-linecap:round;stroke-linejoin:round}.tangent{stroke:#3f4a5a;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.guide{stroke:#777;stroke-width:.95;stroke-dasharray:4 4;fill:none}.point{stroke:#111;stroke-width:1;fill:#111}.panel{fill:#f7f8fa;stroke:#c7cbd1;stroke-width:1}.title{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:15px;font-weight:700;fill:#111}.label{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:12px;fill:#222}.small{font-family:"Noto Sans KR","Pretendard","Malgun Gothic",sans-serif;font-size:11px;fill:#333}.math{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:13px;fill:#111}.tick{font-family:"STIX Two Math","Cambria Math","Times New Roman",serif;font-size:11.5px;fill:#222}
+  </style>
+  <defs><marker id="axis-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L6,3 L0,6 Z" fill="#171717"/></marker></defs>
+  <rect class="background" x="0" y="0" width="640" height="410"/>
+  <text class="title" x="32" y="28">q6  외부점에서 포물선에 그은 두 접선</text>
+  <text class="small" x="32" y="47">접점 t에서의 기울기와 외부점 조건을 동시에 사용한다.</text>
+  <g aria-label="tangent diagram">
+    <rect class="panel" x="32" y="65" width="335" height="285" rx="8"/>
+    <line class="axis" x1="52" y1="265" x2="345" y2="265" marker-end="url(#axis-arrow)"/>
+    <line class="axis" x1="165" y1="330" x2="165" y2="82" marker-end="url(#axis-arrow)"/>
+    <path class="curve" d="M90 66 L115 125 L140 195 L165 230 L190 230 L215 195 L240 125"/>
+    <path class="tangent" d="M115 125 L165 300"/>
+    <path class="tangent" d="M165 300 L255 111"/>
+    <circle class="point" cx="165" cy="300" r="3.8" fill="#111"/>
+    <circle class="point" cx="215" cy="195" r="3.8" fill="#111"/>
+    <circle class="point" cx="115" cy="125" r="3.8" fill="#111"/>
+    <line class="guide" x1="115" y1="195" x2="115" y2="265"/><line class="guide" x1="215" y1="195" x2="215" y2="265"/>
+    <text class="label" x="174" y="314">S=(0,−1)</text>
+    <text class="label" x="219" y="188">T₁=(1,2)</text>
+    <text class="label" x="63" y="118">T₂=(−1,4)</text>
+    <text class="math" x="231" y="102">y=3x−1</text>
+    <text class="math" x="225" y="332">y=−5x−1</text>
+    <text class="math" x="338" y="270">x</text><text class="math" x="171" y="91">y</text>
+  </g>
+  <g aria-label="calculation panel">
+    <rect class="panel" x="385" y="65" width="223" height="285" rx="8"/>
+    <text class="title" x="403" y="92">접점 t 계산</text>
+    <text class="math" x="403" y="124">f′(t)=4t−1</text>
+    <text class="small" x="403" y="151">접선이 S=(0,−1)을 지나면</text>
+    <text class="math" x="403" y="178">−2t²+t−2=−4t²+t</text>
+    <text class="math" x="403" y="205">2t²=2 ⇒ t=±1</text>
+    <line class="guide" x1="403" y1="219" x2="590" y2="219"/>
+    <text class="math" x="403" y="249">t=1:  m=3</text>
+    <text class="math" x="403" y="276">t=−1: m=−5</text>
+    <text class="label" x="403" y="313">기울기 곱 = −15</text>
+    <text class="small" x="403" y="335">정답: ①</text>
+  </g>
+</svg>

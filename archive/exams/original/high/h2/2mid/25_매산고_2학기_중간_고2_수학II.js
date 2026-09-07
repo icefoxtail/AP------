@@ -220,6 +220,11 @@ window.questionBank=[
   },
   {
     "id": 8,
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "f와 y=x/2의 교점, A·B의 위치, P에서의 접선 기울기를 비교한 해설 그래프",
+    "solutionImageCaption": "롤의 정리로 f′(α)=1/2를 보이고 ㄱ·ㄷ을 판정한다.",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "level": "중",
     "category": "도함수의 기하적 의미",
     "originalCategory": "도함수의 기하적 의미",
@@ -251,6 +256,11 @@ window.questionBank=[
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "포물선 위 P와 y축의 발 H, 중점 Q의 거리 차를 나타낸 해설 도형",
+    "solutionImageCaption": "PQ−HQ를 유리화해 극한 1/9을 계산한다.",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "level": "중",
     "category": "무한대에서의 극한",
     "originalCategory": "무한대에서의 극한",
