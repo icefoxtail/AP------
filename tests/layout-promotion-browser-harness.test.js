@@ -30,3 +30,18 @@ test('layout promotion browser harness reuses real Archive/Mixer fixtures and re
   assert.match(harness, /continuation-solution-image-duplication/);
   assert.match(harness, /recordMixedLayoutPromotionGate/);
 });
+
+test('solution executor A/B harness compares clean legacy and shared DOM transactions', () => {
+  const harness = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'solution-executor-ab-harness.html'), 'utf8');
+  assert.match(harness, /solutionAuthority=\$\{authority\}/);
+  assert.match(harness, /render-authority-golden\.js/);
+  assert.match(harness, /SOLUTION_EXECUTOR_AB_PASS/);
+  assert.match(harness, /bodyClientHeight/);
+  assert.match(harness, /sourceRef/);
+  assert.match(harness, /solutionImage/);
+  assert.match(harness, /q5Parity/);
+  assert.match(harness, /q6Parity/);
+  assert.match(harness, /omissionCount/);
+  assert.match(harness, /duplicationCount/);
+  assert.match(harness, /RENDER_READY/);
+});
