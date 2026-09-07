@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="ko">
-<head><meta charset="utf-8"><title>Layout promotion gate QA</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>Layout promotion gate QA</title>
+  <script src="/archive/print-contract.js?v=20260906.2"></script>
+  <script src="/archive/layout-authority.js?v=20260906.15"></script>
+</head>
 <body>
 <output id="layout-gate-status" aria-live="polite">LAYOUT_GATE_WAITING</output>
 <pre id="layout-gate-detail"></pre>
@@ -8,25 +13,82 @@
 <script>
   const params = new URLSearchParams(location.search);
   const target = params.get('target') === 'mixer' ? 'mixer' : 'archive';
+  const qpp = ['4', '6', '8'].includes(params.get('qpp')) ? params.get('qpp') : '4';
   const status = document.getElementById('layout-gate-status');
   const detail = document.getElementById('layout-gate-detail');
   const frame = document.getElementById('layout-engine');
   frame.src = target === 'mixer'
-    ? '/tests/fixtures/mixer-render-authority-storage-launcher.html?qpp=4&mode=exam'
-    : '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&fit=screen&renderAuthorityDualRun=1';
+    ? `/tests/fixtures/mixer-render-authority-storage-launcher.html?qpp=${qpp}&mode=exam`
+    : `/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=${qpp}&fit=screen&renderAuthorityDualRun=1`;
   const deadline = Date.now() + 15000;
   let bridgeAttempted = false;
+  let bridgePromiseAttached = false;
+  const cloneGeometry = value => JSON.parse(JSON.stringify(value));
+  const runGeometryMutations = result => {
+    const authority = window.APLayoutAuthority;
+    if (!authority?.compareRenderedLayoutGeometry || !result?.legacyGeometry || !result?.sharedGeometry) return { available: false, cases: [] };
+    const cases = [];
+    const run = (name, mutate, applicable = true) => {
+      if (!applicable) {
+        cases.push({ name, applicable: false, caught: null });
+        return;
+      }
+      const observed = cloneGeometry(result.legacyGeometry);
+      mutate(observed);
+      const comparison = authority.compareRenderedLayoutGeometry(observed, result.sharedGeometry, 1);
+      cases.push({ name, applicable: true, caught: comparison.equal === false, differenceFields: comparison.differences.map(item => item.field) });
+    };
+    run('page2-header-injection', geometry => {
+      if (geometry.pages[1]) geometry.pages[1].hasHeader = true;
+    }, (result.legacyGeometry.pages || []).length > 1 && result.legacyGeometry.pages[1].hasHeader === false);
+    run('page1-header-removal', geometry => {
+      if (geometry.pages[0]) geometry.pages[0].hasHeader = false;
+    }, Boolean(result.legacyGeometry.pages?.[0]?.hasHeader));
+    const spacerPage = result.legacyGeometry.pages?.find(page => page.columns.some(column => column.childFlexSignature.some(signature => signature.startsWith('SPACER:'))));
+    run('empty-spacer-removal', geometry => {
+      const page = geometry.pages.find(candidate => candidate.pageNo === spacerPage?.pageNo);
+      const column = page?.columns.find(candidate => candidate.childFlexSignature.some(signature => signature.startsWith('SPACER:')));
+      if (column) column.childFlexSignature.splice(column.childFlexSignature.findIndex(signature => signature.startsWith('SPACER:')), 1);
+    }, Boolean(spacerPage));
+    const flexPage = result.legacyGeometry.pages?.find(page => page.columns.some(column => column.childFlexSignature.some(signature => /QUESTION:.*:flex:2$/.test(signature))));
+    run('slot-flex-span-mutation', geometry => {
+      const page = geometry.pages.find(candidate => candidate.pageNo === flexPage?.pageNo);
+      const column = page?.columns.find(candidate => candidate.childFlexSignature.some(signature => /QUESTION:.*:flex:2$/.test(signature)));
+      if (column) {
+        const index = column.childFlexSignature.findIndex(signature => /QUESTION:.*:flex:2$/.test(signature));
+        column.childFlexSignature[index] = column.childFlexSignature[index].replace(':flex:2', ':flex:1');
+      }
+    }, Boolean(flexPage));
+    run('body-height-boundary', geometry => {
+      if (geometry.pages[0]) geometry.pages[0].bodyClientHeight += 2;
+    }, Boolean(result.legacyGeometry.pages?.length));
+    return { available: true, cases };
+  };
   const poll = () => {
     const raw = frame.contentDocument?.documentElement?.dataset?.apLayoutAuthorityDualRun || '';
     if (raw) {
       try {
         const result = JSON.parse(raw);
         const differenceFields = (result.differences || []).map(item => item.field).join(',') || 'none';
+        const summarize = geometry => geometry?.pages?.map(page => ({
+          pageNo: page.pageNo,
+          isBlank: page.isBlank,
+          hasExamFrame: page.hasExamFrame,
+          hasHeader: page.hasHeader,
+          bodyClientHeight: page.bodyClientHeight,
+          columns: page.columns.map(column => ({ columnNo: column.columnNo, childFlexSignature: column.childFlexSignature }))
+        })) || [];
         const columnDifference = (result.differences || []).find(item => item.field === 'column');
+        const geometryDifference = (result.differences || []).find(item => item.field === 'renderGeometry');
         if (columnDifference) detail.textContent = `COLUMN_OBSERVED=${JSON.stringify(columnDifference.observed)}\nCOLUMN_EXPECTED=${JSON.stringify(columnDifference.expected)}`;
+        if (geometryDifference) detail.textContent = `GEOMETRY_OBSERVED=${JSON.stringify(geometryDifference.observed)}\nGEOMETRY_EXPECTED=${JSON.stringify(geometryDifference.expected)}\nLEGACY_PAGES=${result.legacyGeometry?.pages?.length ?? '?'}\nSHARED_PAGES=${result.sharedGeometry?.pages?.length ?? '?'}`;
+        const mutationParity = runGeometryMutations(result);
+        const mutationFailures = mutationParity.cases.filter(item => item.applicable && !item.caught);
+        const gateDifferenceFields = differenceFields === 'none' && mutationFailures.length ? 'mutation' : differenceFields;
+        if (!differenceFields || differenceFields === 'none') detail.textContent = JSON.stringify({ parity: result.parity, differenceFields: result.differences || [], legacy: summarize(result.legacyGeometry), shared: summarize(result.sharedGeometry), actualFramePages: frame.contentDocument?.querySelectorAll('.page').length ?? '?', renderGeometry: result.renderGeometry, overflowParity: result.overflowParity, mutationParity }, null, 2);
         status.textContent = result.error
           ? `LAYOUT_GATE_ERROR:${target}:${result.error}`
-          : `LAYOUT_GATE_${result.equal ? 'PASS' : 'HOLD'}:${target}:${result.parity?.omissionCount ?? '?'}:${result.parity?.duplicationCount ?? '?'}:${differenceFields}`;
+          : `LAYOUT_GATE_${result.equal && mutationFailures.length === 0 ? 'PASS' : 'HOLD'}:${target}:${result.parity?.omissionCount ?? '?'}:${result.parity?.duplicationCount ?? '?'}:${gateDifferenceFields || 'mutation'}`;
       } catch (error) {
         status.textContent = `LAYOUT_GATE_ERROR:${target}:INVALID_EVIDENCE`;
       }
@@ -35,7 +97,21 @@
     const child = frame.contentWindow;
     const area = frame.contentDocument?.getElementById('print-area');
     const bridge = target === 'mixer' ? child?.recordMixedLayoutPromotionGate : child?.recordArchiveLayoutPromotionGate;
-    if (!bridgeAttempted && area?.querySelector('.page') && typeof bridge === 'function') {
+    // The adapter records its gate at the end of renderBody(). Never invoke it
+    // merely because page 1 exists: later pages may still be mounting. The
+    // fallback is attached to the fail-closed render transaction promise so a
+    // bridge retry can only run after the legacy render has completed.
+    const renderReady = child?.__AP_RENDER_READY__;
+    const renderComplete = frame.contentDocument?.documentElement?.dataset?.apRenderReady === 'true';
+    if (!bridgePromiseAttached && area?.querySelector('.page') && typeof bridge === 'function' && renderReady && typeof renderReady.then === 'function') {
+      bridgePromiseAttached = true;
+      Promise.resolve(renderReady).then(result => {
+        if (bridgeAttempted || !result || frame.contentDocument?.documentElement?.dataset?.apLayoutAuthorityDualRun) return;
+        bridgeAttempted = true;
+        bridge.call(child, area);
+      });
+    }
+    if (!bridgePromiseAttached && !bridgeAttempted && renderComplete && area?.querySelector('.page') && typeof bridge === 'function') {
       bridgeAttempted = true;
       bridge.call(child, area);
     }

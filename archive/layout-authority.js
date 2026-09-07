@@ -213,6 +213,7 @@
             slotOccupancy: block.slotOccupancy,
             measurementMode: block.measurementMode,
             gapBefore: extra.gapBefore || 0,
+            slotRowStart: extra.slotRowStart === undefined ? null : extra.slotRowStart,
             columnOrder: page.columns[columnNo - 1].items.length,
             placementOrder: page.itemPlacements.length
         });
@@ -239,7 +240,8 @@
                     slotPage.placements.slice().sort((left, right) => left.column - right.column || left.row - right.row || left.block.order - right.block.order)
                         .forEach(placement => addItem(slotPage.page, placement.block, placement.column + 1, 1, {
                             placementKind: placement.block.placementKind,
-                            slotSpanRows: placement.span
+                            slotSpanRows: placement.span,
+                            slotRowStart: placement.row
                         }));
                 }
                 flush(slotPage.page);
@@ -344,7 +346,18 @@
                 recipientId: config.recipientId || null,
                 questionSourceRefs: [], displayNos: [], continuations: [], hasBlankPage: true
             };
-            const records = page.itemPlacements.map(item => ({ item, record: lookup[item.blockId] || fail('UNKNOWN_BLOCK:' + item.blockId) }));
+            const seenBlockIds = new Set();
+            const visualItems = page.columns.flatMap(column => column.items).filter(item => {
+                if (seenBlockIds.has(item.blockId)) return false;
+                seenBlockIds.add(item.blockId);
+                return true;
+            });
+            page.itemPlacements.forEach(item => {
+                if (seenBlockIds.has(item.blockId)) return;
+                seenBlockIds.add(item.blockId);
+                visualItems.push(item);
+            });
+            const records = visualItems.map(item => ({ item, record: lookup[item.blockId] || fail('UNKNOWN_BLOCK:' + item.blockId) }));
             const first = records[0] && records[0].record;
             const sectionId = String((first && first.sectionId) || config.sectionId || '').trim();
             if (!sectionId) fail('MISSING_SECTION_ID_FOR_PAGEMAP');
@@ -396,6 +409,7 @@
                         measurementMode: rawItem.measurementMode === 'tight' ? 'tight' : 'raw',
                         columnOrder: rawItem.columnOrder === undefined ? itemIndex : Number(rawItem.columnOrder),
                         placementOrder: rawItem.placementOrder === undefined ? itemIndex : Number(rawItem.placementOrder),
+                        slotRowStart: rawItem.slotRowStart === undefined || rawItem.slotRowStart === null ? null : Number(rawItem.slotRowStart),
                         sourceRef: record.sourceRef,
                         displayNo: record.displayNo,
                         sectionId: record.sectionId || config.sectionId || '',
@@ -435,6 +449,7 @@
             layoutTag: item.layoutTag,
             placementKind: item.placementKind,
             slotSpanRows: item.slotSpanRows,
+            slotRowStart: item.slotRowStart,
             continuationOf: item.continuationOf,
             slotOccupancy: item.slotOccupancy,
             measurementMode: item.measurementMode,
@@ -467,8 +482,7 @@
     }
 
     function pageSignature(page) {
-        const entries = page.questionSourceRefs.map((ref, index) => ({ ref: sourceRefKey(ref), displayNo: page.displayNos[index] }))
-            .sort((left, right) => left.displayNo - right.displayNo || left.ref.localeCompare(right.ref));
+        const entries = page.questionSourceRefs.map((ref, index) => ({ ref: sourceRefKey(ref), displayNo: page.displayNos[index] }));
         return JSON.stringify({
             pageNo: page.pageNo,
             sectionId: page.sectionId,
@@ -491,7 +505,8 @@
             slotSpanRows: item.slotSpanRows || 1,
             continuationOf: item.continuationOf || '',
             columnOrder: item.columnOrder || 0,
-            placementOrder: item.placementOrder || 0
+            placementOrder: item.placementOrder || 0,
+            slotRowStart: item.slotRowStart === undefined ? null : item.slotRowStart
         });
     }
 
@@ -516,12 +531,14 @@
             if (JSON.stringify(a) !== JSON.stringify(b)) differences.push(Object.freeze({ field, observed: a, expected: b }));
         };
         compareList('page', legacy.pageMap.pages.map(pageSignature), shared.pageMap.pages.map(pageSignature));
-        compareList('column', legacy.columnMap.map(columnSignature).sort(), shared.columnMap.map(columnSignature).sort());
+        compareList('column', legacy.columnMap.map(columnSignature), shared.columnMap.map(columnSignature));
         compareList('continuation', legacy.continuationMap.map(item => `${item.pageNo}:${item.continuationBlockId}:${item.sourceBlockId}`), shared.continuationMap.map(item => `${item.pageNo}:${item.continuationBlockId}:${item.sourceBlockId}`));
         compareList('blankPage', legacy.pageMap.pages.filter(page => page.hasBlankPage).map(page => page.pageNo), shared.pageMap.pages.filter(page => page.hasBlankPage).map(page => page.pageNo));
         const observedOverflow = legacy.renderedOverflow || [];
         const expectedOverflow = shared.renderedOverflow || [];
         compareList('overflow', observedOverflow.map(item => `${item.pageNo}:${item.code}:${item.sourceRef || ''}`), expectedOverflow.map(item => `${item.pageNo}:${item.code}:${item.sourceRef || ''}`));
+        const geometry = compareRenderedLayoutGeometry(legacy.renderedGeometry, shared.renderedGeometry, 1);
+        if (!geometry.equal) differences.push(Object.freeze({ field: 'renderGeometry', observed: geometry.differences, expected: [] }));
         if (legacy.qpp !== shared.layout.qpp) differences.push(Object.freeze({ field: 'qpp', observed: legacy.qpp, expected: shared.layout.qpp }));
 
         const observedCounts = countPrimaryRefs(legacy.pageMap);
@@ -536,9 +553,21 @@
             differences: Object.freeze(differences),
             parity: Object.freeze({
                 pages: differences.every(item => item.field !== 'page' && item.field !== 'blankPage'),
+                page: differences.every(item => item.field !== 'page'),
                 columns: differences.every(item => item.field !== 'column'),
+                column: differences.every(item => item.field !== 'column'),
+                columnOrder: differences.every(item => item.field !== 'column'),
+                placementOrder: differences.every(item => item.field !== 'column'),
+                sourceIdentity: differences.every(item => item.field !== 'page' && item.field !== 'column'),
+                displayNo: differences.every(item => item.field !== 'page'),
+                fullwidth: differences.every(item => item.field !== 'column'),
+                subjective2up: differences.every(item => item.field !== 'column'),
+                subjective4up: differences.every(item => item.field !== 'column'),
                 continuations: differences.every(item => item.field !== 'continuation'),
+                continuation: differences.every(item => item.field !== 'continuation'),
+                blankPage: differences.every(item => item.field !== 'blankPage'),
                 overflow: differences.every(item => item.field !== 'overflow'),
+                renderGeometry: geometry.equal,
                 qpp: differences.every(item => item.field !== 'qpp'),
                 omissionCount: omissions.length,
                 duplicationCount: duplications.length
@@ -569,6 +598,25 @@
             if (pageNode.classList.contains('page-blank')) return { pageNo, isBlank: true, columns: [] };
             const columnItems = Array.from({ length: columns }, (_, index) => ({ columnNo: index + 1, items: [] }));
             const itemNodes = Array.from(pageNode.querySelectorAll('.q-box[data-source-ref], .ans-cell[data-source-ref]:not(.ans-cell-empty)'));
+            const slotRowByNode = new Map();
+            const slotPage = Array.from(pageNode.querySelectorAll('.grid-col')).some(column => Array.from(column.children).some(child => {
+                if (child.matches?.('.q-box[data-source-ref]')) return Number.parseFloat(String(child.style.flex || '').split(' ')[0]) > 1;
+                return !child.matches?.('.q-box[data-source-ref], .ans-cell[data-source-ref]:not(.ans-cell-empty)');
+            }));
+            if (slotPage) {
+                pageNode.querySelectorAll('.grid-col').forEach(column => {
+                    let row = 0;
+                    Array.from(column.children).forEach(child => {
+                        if (child.matches?.('.q-box[data-source-ref], .ans-cell[data-source-ref]:not(.ans-cell-empty)')) {
+                            slotRowByNode.set(child, row);
+                            const rawFlex = Number.parseFloat(String(child.style.flex || '').split(' ')[0]);
+                            row += Number.isFinite(rawFlex) && rawFlex > 1 ? Math.max(1, Math.round(rawFlex)) : 1;
+                        } else {
+                            row += 1;
+                        }
+                    });
+                });
+            }
             let pagePlacementOrder = 0;
             itemNodes.forEach(node => {
                 const sourceKey = String(node.getAttribute('data-source-ref') || '').trim();
@@ -622,7 +670,8 @@
                     continuationOf,
                     measurementMode: 'raw',
                     columnOrder: columnItems[columnNo - 1].items.length,
-                    placementOrder: pagePlacementOrder++
+                    placementOrder: pagePlacementOrder++,
+                    slotRowStart: slotPage && slotRowByNode.has(node) ? slotRowByNode.get(node) : null
                 };
                 columnItems[columnNo - 1].items.push(item);
                 expectedBlocks.push({
@@ -633,7 +682,8 @@
                     layoutTag,
                     columnSpan,
                     slotOccupancy: continuationOf ? 0 : slotSpanRows,
-                    continuationOf
+                    continuationOf,
+                    slotRowStart: slotPage && slotRowByNode.has(node) ? slotRowByNode.get(node) : null
                 });
                 order += 1;
             });
@@ -677,19 +727,83 @@
         return Object.freeze(evidence);
     }
 
+    function renderedFlexToken(node) {
+        const explicit = String(node?.style?.flex || '').trim();
+        if (explicit) return explicit.split(/\s+/)[0];
+        return 'default';
+    }
+
+    function inspectRenderedLayoutGeometry(root) {
+        const pages = Array.from(root?.querySelectorAll?.('.page') || []);
+        return Object.freeze({
+            pages: Object.freeze(pages.map((page, pageIndex) => {
+                const body = page.querySelector('.page-body') || page;
+                const gridColumns = Array.from(page.querySelectorAll(':scope > .page-body .grid-container > .grid-col'));
+                const describeChild = child => {
+                    if (child.dataset?.layoutSpacer === '1' || (child.tagName === 'DIV' && !child.children.length && !String(child.textContent || '').trim() && !child.matches?.('[data-source-ref]'))) return `SPACER:${renderedFlexToken(child)}`;
+                    if (child.matches?.('[data-source-ref]')) return `QUESTION:${child.getAttribute('data-source-ref')}:flex:${renderedFlexToken(child)}`;
+                    return `OTHER:${child.tagName}:flex:${renderedFlexToken(child)}`;
+                };
+                const columns = gridColumns.length
+                    ? gridColumns.map((column, columnIndex) => Object.freeze({ columnNo: columnIndex + 1, childFlexSignature: Object.freeze(Array.from(column.children).map(describeChild)) }))
+                    : [Object.freeze({ columnNo: 1, childFlexSignature: Object.freeze(Array.from(body.children).map(describeChild)) })];
+                return Object.freeze({
+                    pageNo: pageIndex + 1,
+                    isBlank: page.classList.contains('page-blank'),
+                    hasExamFrame: Boolean(page.querySelector('.page-exam-frame')),
+                    hasHeader: Boolean(page.querySelector('.page-header')),
+                    bodyClientHeight: Number(body.clientHeight || 0),
+                    columns: Object.freeze(columns)
+                });
+            }))
+        });
+    }
+
+    function compareRenderedLayoutGeometry(observed, expected, tolerance = 1) {
+        if (!observed && !expected) return Object.freeze({ equal: false, differences: Object.freeze([{ field: 'renderGeometry', observed: null, expected: null, code: 'MISSING_RENDER_GEOMETRY' }]) });
+        if (!observed || !expected) return Object.freeze({ equal: false, differences: Object.freeze([{ field: 'renderGeometry', observed: observed || null, expected: expected || null }]) });
+        const differences = [];
+        if (observed.pages.length !== expected.pages.length) differences.push({ field: 'pageCount', observed: observed.pages.length, expected: expected.pages.length });
+        const pageCount = Math.max(observed.pages.length, expected.pages.length);
+        for (let index = 0; index < pageCount; index += 1) {
+            const left = observed.pages[index];
+            const right = expected.pages[index];
+            if (!left || !right) continue;
+            if (left.pageNo !== right.pageNo) differences.push({ field: 'renderGeometry.pageNo', pageNo: index + 1, observed: left.pageNo, expected: right.pageNo });
+            for (const field of ['isBlank', 'hasExamFrame', 'hasHeader']) {
+                if (left[field] !== right[field]) differences.push({ field: `renderGeometry.${field}`, pageNo: index + 1, observed: left[field], expected: right[field] });
+            }
+            if (Math.abs(left.bodyClientHeight - right.bodyClientHeight) > tolerance) differences.push({ field: 'renderGeometry.bodyClientHeight', pageNo: index + 1, observed: left.bodyClientHeight, expected: right.bodyClientHeight });
+            if (left.columns.length !== right.columns.length) {
+                differences.push({ field: 'renderGeometry.columnCount', pageNo: index + 1, observed: left.columns.length, expected: right.columns.length });
+                continue;
+            }
+            left.columns.forEach((column, columnIndex) => {
+                const expectedColumn = right.columns[columnIndex];
+                if (column.columnNo !== expectedColumn.columnNo) differences.push({ field: 'renderGeometry.columnNo', pageNo: index + 1, columnNo: column.columnNo, observed: column.columnNo, expected: expectedColumn.columnNo });
+                if (JSON.stringify(column.childFlexSignature) !== JSON.stringify(expectedColumn.childFlexSignature)) differences.push({ field: 'renderGeometry.childFlexSignature', pageNo: index + 1, columnNo: column.columnNo, observed: column.childFlexSignature, expected: expectedColumn.childFlexSignature });
+            });
+        }
+        return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences) });
+    }
+
     function renderSharedLayoutWitness(area, layout, options) {
         const root = area?.ownerDocument;
         if (!root || !layout || typeof options?.resolveElement !== 'function') fail('INVALID_LAYOUT_WITNESS_INPUT');
         const host = root.createElement('div');
         host.dataset.layoutAuthorityWitness = '1';
         host.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:210mm;pointer-events:none;';
-        const templatePage = area.querySelector('.page');
+        // Snapshot the production pages before appending the witness host. A
+        // witness page must use the corresponding legacy page index; reusing
+        // page 1 would incorrectly add a header footprint to later pages.
+        const legacyPages = Array.from(area.querySelectorAll('.page'));
         layout.pages.forEach(pageLayout => {
             const page = root.createElement('section');
             page.className = pageLayout.isBlank ? 'page page-blank' : 'page';
-            if (templatePage && !pageLayout.isBlank) {
-                const frame = templatePage.querySelector('.page-exam-frame');
-                const header = templatePage.querySelector('.page-header');
+            const legacyPage = legacyPages[pageLayout.pageNo - 1] || null;
+            if (legacyPage) {
+                const frame = legacyPage.querySelector('.page-exam-frame');
+                const header = legacyPage.querySelector('.page-header');
                 if (frame) page.appendChild(frame.cloneNode(true));
                 if (header) page.appendChild(header.cloneNode(true));
             }
@@ -705,25 +819,54 @@
                 });
                 const hasWide = pageLayout.itemPlacements.some(item => item.columnSpan > 1);
                 if (hasWide) {
+                    const wideColumn = root.createElement('div');
+                    wideColumn.style.cssText = 'flex:1;display:flex;flex-direction:column;padding:0 8px;min-height:0;overflow:hidden;';
                     perColumn[0].forEach(item => {
                         const node = options.resolveElement(item.blockId);
-                        if (node) body.appendChild(node.cloneNode(true));
+                        if (node) wideColumn.appendChild(node.cloneNode(true));
                     });
+                    body.appendChild(wideColumn);
                 } else {
                     const grid = root.createElement('div');
                     grid.className = 'grid-container';
                     grid.style.cssText = 'flex:1 1 0;min-height:0;';
+                    const pageHasSlotRows = pageLayout.itemPlacements.some(item => item.slotSpanRows > 1 && item.slotRowStart !== null && item.slotRowStart !== undefined);
                     perColumn.forEach((items, index) => {
                         const column = root.createElement('div');
                         column.className = 'grid-col';
-                        items.slice().sort((left, right) => left.columnOrder - right.columnOrder).forEach(item => {
-                            const node = options.resolveElement(item.blockId);
-                            if (node) {
-                                const clone = node.cloneNode(true);
-                                if (item.slotSpanRows > 1) clone.style.flex = `${item.slotSpanRows} 1 0`;
-                                column.appendChild(clone);
+                        const orderedItems = items.slice().sort((left, right) => left.columnOrder - right.columnOrder);
+                        // Production only enters row-cursor/spacer mode when a
+                        // placement spans multiple slot rows. A one-row
+                        // subjective tag still follows the deterministic
+                        // left/right chunk split, even though its planner
+                        // record keeps slotRowStart for provenance.
+                        const hasSlotRows = pageHasSlotRows;
+                        if (hasSlotRows) {
+                            let row = 0;
+                            while (row < layout.slotRows) {
+                                const item = orderedItems.find(candidate => candidate.slotRowStart === row);
+                                if (item) {
+                                    const node = options.resolveElement(item.blockId);
+                                    if (node) {
+                                        const clone = node.cloneNode(true);
+                                        clone.style.flex = `${item.slotSpanRows} 1 0`;
+                                        column.appendChild(clone);
+                                    }
+                                    row += item.slotSpanRows;
+                                } else {
+                                    const spacer = root.createElement('div');
+                                    spacer.style.flex = '1 1 0';
+                                    spacer.dataset.layoutSpacer = '1';
+                                    column.appendChild(spacer);
+                                    row += 1;
+                                }
                             }
-                        });
+                        } else {
+                            orderedItems.forEach(item => {
+                                const node = options.resolveElement(item.blockId);
+                                if (node) column.appendChild(node.cloneNode(true));
+                            });
+                        }
                         grid.appendChild(column);
                     });
                     body.appendChild(grid);
@@ -822,5 +965,5 @@
         return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences), omissionCount, duplicationCount });
     }
 
-    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
+    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, inspectRenderedOverflow, inspectRenderedLayoutGeometry, compareRenderedLayoutGeometry, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
 }));

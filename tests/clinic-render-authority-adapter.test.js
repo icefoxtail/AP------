@@ -33,7 +33,7 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
   assert.match(modeLauncher, /const withRecipients = params\.get\('recipients'\) === '2';/);
   assert.match(modeLauncher, /fixture-packet-a/);
   assert.match(modeLauncher, /renderAuthorityDualRun=1/);
-  assert.match(engine, /layout-authority\.js\?v=20260906\.11/);
+  assert.match(engine, /layout-authority\.js\?v=20260906\.15/);
   assert.match(engine, /function recordClinicCompositionPromotionGate\(area\)/);
   assert.match(compositionHarness, /wrong-print-layout-launcher\.html\?duplex=1&recipients=2&mode=review/);
   assert.match(compositionHarness, /scenario === 'recipient-qr'/);

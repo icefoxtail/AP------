@@ -83,7 +83,7 @@ test('pure legacy SLOT_POLICY and CHUNK_POLICY preserve deterministic left/right
   ] });
   assert.deepEqual(slot.pages[0].columns.map(column => column.items.map(item => item.blockId)), [['normal-a', 'normal-b'], ['subj2']]);
   const subj2 = slot.columnMap.find(item => item.blockId === 'subj2');
-  assert.deepEqual({ columnNo: subj2.columnNo, rows: subj2.slotSpanRows, kind: subj2.placementKind }, { columnNo: 2, rows: 2, kind: 'subjective-2up' });
+  assert.deepEqual({ columnNo: subj2.columnNo, rowStart: subj2.slotRowStart, rows: subj2.slotSpanRows, kind: subj2.placementKind }, { columnNo: 2, rowStart: 0, rows: 2, kind: 'subjective-2up' });
   assert.equal(slot.pages[1].columns[0].items[0].blockId, 'wide');
   assert.equal(slot.pages[1].columns[0].items[0].columnSpan, 2);
 });
@@ -95,12 +95,21 @@ test('promotion comparator fails closed for a mutated legacy page, column, or co
     'b-cont': { sectionId: 'exam', sourceRef: ref(2), displayNo: 2 },
     wide: { sectionId: 'exam', sourceRef: ref(3), displayNo: 3, layoutTag: 'fullwidth' }
   };
-  const expected = L.buildExpectedLayoutMaps({ pageGeometry: { usableHeight: 100, columns: 2, qpp: 4 }, blocks: [
+  const expectedBase = L.buildExpectedLayoutMaps({ pageGeometry: { usableHeight: 100, columns: 2, qpp: 4 }, blocks: [
     { blockId: 'a', questionKey: 'q1', measuredHeight: 20 },
     { blockId: 'b', questionKey: 'q2', measuredHeight: 20 },
     { blockId: 'b-cont', questionKey: 'q2', measuredHeight: 10, continuationOf: 'b' },
     { blockId: 'wide', questionKey: 'q3', measuredHeight: 30, layoutTag: 'fullwidth' }
   ] }, records, { sectionId: 'exam' });
+  const geometryEvidence = { pages: expectedBase.layout.pages.map((page, index) => ({
+    pageNo: index + 1,
+    isBlank: page.isBlank,
+    hasExamFrame: true,
+    hasHeader: index === 0,
+    bodyClientHeight: 900,
+    columns: page.columns.map(column => ({ columnNo: column.columnNo, childFlexSignature: [] }))
+  })) };
+  const expected = { ...expectedBase, renderedGeometry: geometryEvidence };
   const observedInput = {
     qpp: 4,
     pages: expected.layout.pages.map(page => {
@@ -119,17 +128,24 @@ test('promotion comparator fails closed for a mutated legacy page, column, or co
       };
     })
   };
-  const observed = L.materializeLegacyLayoutMaps(observedInput, records, { sectionId: 'exam' });
+  const observed = { ...L.materializeLegacyLayoutMaps(observedInput, records, { sectionId: 'exam' }), renderedGeometry: structuredClone(geometryEvidence) };
   assert.equal(L.comparePromotionLayouts(observed, expected).equal, true);
+
+  const geometryMutation = { ...observed, renderedGeometry: structuredClone(geometryEvidence) };
+  geometryMutation.renderedGeometry.pages[0].hasHeader = false;
+  const geometryResult = L.comparePromotionLayouts(geometryMutation, expected);
+  assert.equal(geometryResult.equal, false);
+  assert.equal(geometryResult.parity.renderGeometry, false);
+  assert.equal(geometryResult.parity.overflow, true);
 
   const columnMutation = structuredClone(observedInput);
   columnMutation.pages[0].columns[0].items[0].columnNo = 2;
-  assert.equal(L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(columnMutation, records, { sectionId: 'exam' }), expected).equal, false);
+  assert.equal(L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(columnMutation, records, { sectionId: 'exam' }), renderedGeometry: structuredClone(geometryEvidence) }, expected).equal, false);
 
   const continuationMutation = structuredClone(observedInput);
   const continuation = continuationMutation.pages.flatMap(page => page.columns.flatMap(column => column.items)).find(item => item.blockId === 'b-cont');
   continuation.continuationOf = '';
-  const continuationResult = L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(continuationMutation, records, { sectionId: 'exam' }), expected);
+  const continuationResult = L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(continuationMutation, records, { sectionId: 'exam' }), renderedGeometry: structuredClone(geometryEvidence) }, expected);
   assert.equal(continuationResult.equal, false);
   assert.ok(continuationResult.differences.some(item => item.field === 'continuation' || item.field === 'duplication'));
 
@@ -138,9 +154,16 @@ test('promotion comparator fails closed for a mutated legacy page, column, or co
   const firstOrder = orderedColumn.items[0].columnOrder;
   orderedColumn.items[0].columnOrder = orderedColumn.items[1].columnOrder;
   orderedColumn.items[1].columnOrder = firstOrder;
-  const orderResult = L.comparePromotionLayouts(L.materializeLegacyLayoutMaps(orderMutation, records, { sectionId: 'exam' }), expected);
+  const orderResult = L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(orderMutation, records, { sectionId: 'exam' }), renderedGeometry: structuredClone(geometryEvidence) }, expected);
   assert.equal(orderResult.equal, false);
   assert.ok(orderResult.differences.some(item => item.field === 'column'));
+
+  const sameColumnSwap = structuredClone(observedInput);
+  const swappableColumn = sameColumnSwap.pages.flatMap(page => page.columns).find(column => column.items.length >= 2);
+  [swappableColumn.items[0], swappableColumn.items[1]] = [swappableColumn.items[1], swappableColumn.items[0]];
+  const swapResult = L.comparePromotionLayouts({ ...L.materializeLegacyLayoutMaps(sameColumnSwap, records, { sectionId: 'exam' }), renderedGeometry: structuredClone(geometryEvidence) }, expected);
+  assert.equal(swapResult.equal, false);
+  assert.ok(swapResult.differences.some(item => item.field === 'column'));
 });
 
 test('Clinic composition planner rejects recipient/source/duplex boundary mutations without collapsing review sections', () => {
@@ -200,4 +223,52 @@ test('Clinic composition planner rejects recipient/source/duplex boundary mutati
   qrPlacementMutation.pages.unshift({ recipientId: 'class-recipient:0:A', sectionId: 'class-recipient:0:A:exam', sourceRefs: [], hasQr: true, qrTargetKey: 'packet:packet-a' });
   qrPlacementMutation.pages[1].hasQr = false;
   assert.equal(L.compareClinicComposition(qrPlacementMutation, qrPlan).equal, false);
+});
+
+test('rendered geometry comparator rejects header, spacer, slot-flex, and body-height mutations', () => {
+  const base = {
+    pages: [
+      { pageNo: 1, isBlank: false, hasExamFrame: true, hasHeader: true, bodyClientHeight: 900, columns: [
+        { columnNo: 1, childFlexSignature: ['QUESTION:a#1:flex:1', 'SPACER:1'] },
+        { columnNo: 2, childFlexSignature: ['QUESTION:b#1:flex:2'] }
+      ] },
+      { pageNo: 2, isBlank: false, hasExamFrame: true, hasHeader: false, bodyClientHeight: 936, columns: [
+        { columnNo: 1, childFlexSignature: ['QUESTION:c#1:flex:1'] },
+        { columnNo: 2, childFlexSignature: [] }
+      ] }
+    ]
+  };
+  assert.equal(L.compareRenderedLayoutGeometry(base, structuredClone(base), 1).equal, true);
+
+  const headerMutation = structuredClone(base);
+  headerMutation.pages[1].hasHeader = true;
+  assert.equal(L.compareRenderedLayoutGeometry(headerMutation, base, 1).equal, false);
+
+  const pageNumberMutation = structuredClone(base);
+  pageNumberMutation.pages[1].pageNo = 3;
+  assert.equal(L.compareRenderedLayoutGeometry(pageNumberMutation, base, 1).equal, false);
+
+  const columnNumberMutation = structuredClone(base);
+  columnNumberMutation.pages[0].columns[1].columnNo = 3;
+  assert.equal(L.compareRenderedLayoutGeometry(columnNumberMutation, base, 1).equal, false);
+
+  const firstHeaderMutation = structuredClone(base);
+  firstHeaderMutation.pages[0].hasHeader = false;
+  assert.equal(L.compareRenderedLayoutGeometry(firstHeaderMutation, base, 1).equal, false);
+
+  const spacerMutation = structuredClone(base);
+  spacerMutation.pages[0].columns[0].childFlexSignature.splice(1, 1);
+  const spacerResult = L.compareRenderedLayoutGeometry(spacerMutation, base, 1);
+  assert.equal(spacerResult.equal, false);
+  assert.ok(spacerResult.differences.some(item => item.field === 'renderGeometry.childFlexSignature'));
+
+  const flexMutation = structuredClone(base);
+  flexMutation.pages[0].columns[1].childFlexSignature[0] = 'QUESTION:b#1:flex:1';
+  assert.equal(L.compareRenderedLayoutGeometry(flexMutation, base, 1).equal, false);
+
+  const heightMutation = structuredClone(base);
+  heightMutation.pages[1].bodyClientHeight += 2;
+  assert.equal(L.compareRenderedLayoutGeometry(heightMutation, base, 1).equal, false);
+
+  assert.equal(L.compareRenderedLayoutGeometry(undefined, undefined, 1).equal, false);
 });
