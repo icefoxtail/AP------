@@ -189,8 +189,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 모든 구간에서 감소하려면 도함수가 항상 $0$ 이하이어야 한다.\n조건 정리: $f(x)=-x^3+2ax^2-4ax+5$이므로 $f'(x)=-3x^2+4ax-4a$이다.\n풀이 방향: $f'(x)\\le0$이 모든 실수에서 성립하는 조건을 판별식으로 구한다.\n정석 풀이: $f(x_1)\\gt f(x_2)$가 $x_1\\lt x_2$일 때 항상 성립하므로 $f$는 감소함수이고 $f'(x)\\le0$이 항상 성립해야 한다. $f'(x)=-3x^2+4ax-4a$는 최고차항의 계수가 $-3\\lt0$이므로 모든 실수 $x$에서 $f'(x)\\le0$이 되려면 판별식이 $0$ 이하이어야 한다. $\\dfrac{D}4=(2a)^2-(-3)(-4a)=4a^2-12a\\le0$에서 $4a(a-3)\\le0$, 즉 $0\\le a\\le3$이다. 이 범위의 정수는 $0,1,2,3$이고 그 합은 $6$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -718,8 +718,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$-3$",
     "solution": "[키포인트] 위로 열린 이차함수는 닫힌구간에서 최댓값을 양 끝점 중 하나에서 가지므로, 두 끝점의 함수값이 같아지는 시점에서 $g(t)$의 기울기가 바뀐다.\n조건 정리: $x\\le0$에서 $f(x)=x+6$은 증가하고, $x\\gt0$에서 $q(x)=ax^2+bx+6$은 $a\\gt0$인 이차함수이다.\n풀이 방향: $t=1$에서의 미분 불가능 조건으로 $q$의 초기 감소를 확인하고, $q(t-1)=q(t)$가 되는 시점을 이용한다.\n정석 풀이: $t\\lt0$이면 구간 $[t-1,t]$가 모두 $x\\le0$에 있으므로 $g(t)=t+6$이다. $0\\lt t\\lt 1$이면 구간이 $0$을 포함하므로 $g(t)=\\max\\{6,q(t)\\}$이다.\n만약 $b\\ge0$이면 $q(t)\\gt6$이 모든 $t\\gt0$에서 성립하고, $t=1$의 양쪽에서 모두 오른쪽 끝점 $x=t$가 최댓값을 주므로 $g(t)=q(t)$가 되어 $t=1$에서 미분 가능하다. 이는 조건 (가)에 어긋나므로 $b\\lt0$이다.\n$q(x)=6$의 $0$이 아닌 해를 $r$이라 하면 $ax^2+bx=0$에서 $r=-\\dfrac ba\\gt0$이다. $r\\lt1$이면 $t=1$의 양쪽에서 다시 $g(t)=q(t)$가 되어 미분 가능하므로 불가능하다. $r=1$이면 최댓값을 주는 끝점의 전환 시점도 $t=1$과 겹쳐 $t=3$에서 새로운 미분 불가능점이 생기지 않으므로 불가능하다. 따라서 $r\\gt1$이다.\n이때 $0\\lt t\\lt 1$에서는 $q(t)\\lt6$이므로 $g(t)=6$이고, $t\\gt1$에서는 구간이 양의 구간에 있으며 $q$가 위로 열린 이차함수이므로 최댓값은 $q(t-1)$과 $q(t)$ 중 큰 값이다. 두 값이 같아지는 조건은\n$q(t)-q(t-1)=a(2t-1)+b=0$이고, 그 시점은 $t=\\dfrac{a-b}{2a}=\\dfrac{1+r}{2}$이다. 이 점에서 최댓값을 주는 끝점이 바뀌므로 $g$의 좌·우 미분계수가 다르다. 조건 (가)의 세 미분 불가능점이 $0,1,3$이므로 $\\dfrac{1+r}{2}=3$, 따라서 $r=5$이고 $b=-5a$이다.\n$t=4\\gt3$에서는 오른쪽 끝점이 최댓값을 주므로 $g(4)=q(4)$이다. 조건 (나)에 의해 $16a+4b+6=0$이고 $b=-5a$를 대입하면 $-4a+6=0$이므로 $a=\\dfrac32$, $b=-\\dfrac{15}{2}$이다.\n따라서 $f(2)=4a+2b+6=4\\times\\dfrac32+2\\times\\left(-\\dfrac{15}{2}\\right)+6=-3$이다.\n따라서 구하는 값은 $-3$이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

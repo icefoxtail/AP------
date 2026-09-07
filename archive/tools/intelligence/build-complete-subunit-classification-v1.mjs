@@ -20,6 +20,7 @@ const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 const readJson = filePath => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 const normalize = value => String(value ?? '').toLowerCase().replace(/\s+/g, '').replace(/[·ㆍ,，.。:：()（）[\]{}<>「」『』]/g, '');
 const safeKey = value => String(value || 'UNMAPPED').replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '').toUpperCase() || 'UNMAPPED';
+const isLegacyApplicationSubUnitKey = key => /^H15-M2-\d{2}-APPLICATION_OF_CALCULUS$/.test(String(key || ''));
 
 const MIDDLE_DEFINITIONS = {
   'M1-01': [
@@ -241,6 +242,7 @@ function loadExternalDefinitions() {
     for (const parent of parents) {
       for (const [suffix, cues] of Object.entries(entry.candidates || {})) {
         const key = `${parent}-${suffix}`;
+        if (isLegacyApplicationSubUnitKey(key)) continue;
         definitions.push({ key, label: suffix.replaceAll('_', ' ').toLowerCase(), standardUnitKey: parent, cues, origin: 'high_candidate_cue_master' });
       }
     }
@@ -467,7 +469,9 @@ function classifyRecord(record, question, definitions, candidate) {
   const text = textFor(question);
   const candidateKey = candidate?.disposition === 'PILOT_CANDIDATE' ? candidate.proposedSubUnitKey || '' : '';
   const inferredStandardUnitKey = effectiveStandardUnitKey(record, question);
-  const candidates = definitions.filter(definition => definition.standardUnitKey === inferredStandardUnitKey);
+  // The broad Math II application tag remains readable in legacy production
+  // rows, but it must never compete for a new automatic classification.
+  const candidates = definitions.filter(definition => definition.standardUnitKey === inferredStandardUnitKey && !isLegacyApplicationSubUnitKey(definition.key));
   // Unscoped definitions are reserved for genuinely unmapped standard units;
   // they must not compete with an otherwise valid unit's own taxonomy.
   const available = candidates.length

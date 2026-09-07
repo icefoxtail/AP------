@@ -12,17 +12,18 @@ const saved = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
 assert.equal(report.digest, saved.digest);
 assert.equal(report.productionWriteAllowed, false);
 assert.deepEqual(report.promotionOrder, ['middle-m1', 'middle-m2', 'middle-m3', 'high-first-wave']);
-assert.equal(report.totals.pilotStages, 4);
-assert.equal(report.totals.draftStages, 0);
-assert.equal(report.totals.pilotEntries, 55);
+assert.equal(report.totals.pilotStages, 2);
+assert.equal(report.totals.draftStages, 2);
+assert.equal(report.totals.pilotEntries, 25);
 assert.equal(report.totals.proposedHighEntries, 8);
 for (const stage of report.stages.slice(0, 3)) {
-    assert.equal(stage.status, 'PILOT');
+    assert.equal(stage.status === 'PILOT', stage.stageId === 'middle-m2');
     assert.ok(stage.sampleQuestionCount > 0);
-    assert.ok(stage.entries.every(entry => entry.status === 'PILOT'));
+    assert.ok(stage.entries.every(entry => entry.status === stage.status));
 }
 const high = report.stages[3];
 assert.equal(high.status, 'PILOT');
 assert.ok(high.entries.every(entry => entry.subUnitKeyStatus === 'PROPOSED' && entry.productionUsable === false));
+assert.ok(high.entries.every(entry => entry.candidates?.includes('APPLICATION_OF_CALCULUS') === false));
 
 console.log(JSON.stringify({ ok: true, digest: report.digest, totals: report.totals }, null, 2));

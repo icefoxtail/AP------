@@ -386,8 +386,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 먼저 매개변수 $t$에 대한 극한을 계산해 $f(x)$를 간단한 이차함수로 바꾼다.\n조건 정리: $x$는 고정하고 $t\\to-\\infty$의 극한을 구한다.\n풀이 방향: 분자와 분모를 $t$로 나누고, 얻은 함수의 꼭짓점을 확인한다.\n정석 풀이: $\\displaystyle\\lim_{t\\to-\\infty}\\dfrac{1+xt}{1-t}=\\lim_{t\\to-\\infty}\\dfrac{\\dfrac1t+x}{\\dfrac1t-1}=-x$이다. 따라서 $f(x)=-x(x-4)=-x^2+4x=-(x-2)^2+4$이다. 꼭짓점 $x=2$가 구간 $[1,3]$에 있으므로 최댓값은 $4$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

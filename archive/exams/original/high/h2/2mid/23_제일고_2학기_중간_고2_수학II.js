@@ -316,8 +316,8 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 구간별 함수가 경계에서 연속이려면 좌극한, 우극한, 함숫값이 모두 같아야 한다.\n조건 정리: $x=2$에서 좌극한은 $2^2+k=4+k$이고 함숫값은 $3k-2$이다.\n풀이 방향: $k$를 정한 뒤 두 조각에서 각각 최댓값과 최솟값을 조사한다.\n정석 풀이: $4+k=3k-2$에서 $2k=6$, 즉 $k=3$이므로 $f(x)=x^2+3\\ (x\\lt 2)$, $f(x)=9-x\\ (x\\ge2)$이다. $[0,2)$에서 $f$는 증가하여 $f(0)=3$에서 시작하고, $[2,4]$에서 $f$는 감소하여 $f(2)=7$에서 $f(4)=5$까지 변한다. 따라서 최댓값은 $M=f(2)=7$, 최솟값은 $m=f(0)=3$이므로 $M+m=10$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-M2-02-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

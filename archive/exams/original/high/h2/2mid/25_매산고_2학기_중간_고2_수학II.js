@@ -459,8 +459,8 @@ window.questionBank=[
     "choices": [],
     "answer": "12",
     "solution": "[키포인트] 모든 실수에서 감소하려면 도함수가 모든 실수에서 $0$ 이하가 되어야 한다.\n조건 정리: $f'(x)=-3x^2+2ax-12$가 모든 실수 $x$에 대하여 $f'(x)\\le0$이어야 한다.\n풀이 방향: 아래로 열린 이차식이 항상 $0$ 이하가 되기 위한 판별식 조건을 사용한다.\n정석 풀이: 방정식 $-3x^2+2ax-12=0$이 서로 다른 두 실근을 가지면 그 사이에서 도함수가 양수가 된다. 따라서 판별식은 $0$ 이하여야 한다. 즉 $(2a)^2-4(-3)(-12)=4a^2-144\\le0$이므로 $a^2\\le36$이고 $-6\\le a\\le6$이다. 따라서 $m=-6$, $n=6$이므로 $n-m=6-(-6)=12$이다.\n따라서 구하는 값은 $12$이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

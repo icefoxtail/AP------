@@ -735,8 +735,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac32$",
     "solution": "[키포인트] 연속이고 역함수를 갖는 함수는 일대일인 단조함수이므로, 감소함수인 경우 방정식의 해들이 서로 대응된다.\n조건 정리: $f$는 실수 전체에서 연속이고 역함수를 가지며 $f(x)=f^{-1}(x)$의 해가 $0$, $2$, $3$이다.\n풀이 방향: $f$가 감소함수임을 보이고 세 해의 대응을 정한 뒤 $a$, $b$, $c$를 구한다.\n정석 풀이: $f$가 증가함수라면 $f(x)=f^{-1}(x)$는 $f(x)=x$와 같아지므로 $0$, $2$, $3$이 모두 고정점이어야 한다. 그러나 $x\\ge2$에서 $f(x)=cx^2+3x$가 $f(2)=2$와 $f(3)=3$을 동시에 만족시킬 수 없으므로 증가함수가 아니다. 따라서 $f$는 감소함수이다.\n$f(p)=q$이면 $f^{-1}(q)=p$이므로 방정식의 해 집합은 $f$에 의해 서로 대응된다. $0\\lt 2\\lt 3$이고 $f$가 감소함수이므로 $f(0)\\gt f(2)\\gt f(3)$이어야 하고, 해 집합이 $\\{0,2,3\\}$이므로 이를 만족시키는 대응은 $f(0)=3$, $f(2)=2$, $f(3)=0$뿐이다.\n$f(0)=b=3$이고, $f(3)=9c+9=0$에서 $c=-1$이다. 또 $f(2)=4c+6=2$이고 연속이므로 $2a+b=2$이며, $b=3$을 대입하면 $2a=-1$에서 $a=-\\dfrac12$이다. 따라서 $a+b+c=-\\dfrac12+3-1=\\dfrac32$이다.\n따라서 구하는 값은 $\\dfrac32$이다.",
-    "subUnitKey": "H15-M2-02-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-02-CONTINUITY",
+    "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

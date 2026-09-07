@@ -182,8 +182,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 삼차함수가 모든 실수에서 증가할 조건은 $f'(x)\\ge0$이 항상 성립하는 것이다.\n조건 정리: $f'(x)=3x^2+2ax+2a$이고 최고차항의 계수가 양수이므로 판별식이 $0$ 이하이면 된다.\n풀이 방향: 판별식 조건에서 $a$의 범위를 구하고 자연수의 개수를 센다.\n정석 풀이: $D/4=a^2-3\\times2a=a^2-6a\\le0$에서 $a(a-6)\\le0$, 즉 $0\\le a\\le6$이다. 이 범위의 자연수는 $1,2,3,4,5,6$의 $6$개이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -621,8 +621,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 증가·감소가 바뀌는 $x=1$이 $f'$의 한 근이고, 나머지 근의 위치가 조건을 결정한다.\n조건 정리: $f(x)=x^3+Ax^2+Bx+C$ $(A,B,C$는 정수$)$라 하면 $f'(x)=3x^2+2Ax+B$이고, $(-2,1)$에서 증가하고 $(1,2)$에서 감소하므로 $f'(1)=0$이다.\n풀이 방향: $f'$의 두 근을 $1$과 $r$로 놓고 $r\\ge2$ 조건에서 $A$의 범위를 구한 뒤 $f(5)-f(3)$을 $A$로 나타낸다.\n정석 풀이: $f'(1)=3+2A+B=0$에서 $B=-3-2A$이다. $f'$은 아래로 볼록한 이차함수이고 $(1,2)$에서 $f'\\le0$이어야 하므로 두 근은 $1$과 $r$ $(r\\ge2)$이다. 근과 계수의 관계에서 $1\\times r=\\dfrac B3$이므로\n$r=\\dfrac{-3-2A}3\\ge2$에서 $-3-2A\\ge6$, 즉 $A\\le-\\dfrac92$이고 $A$가 정수이므로 $A\\le-5$이다.\n한편 $f(5)-f(3)=(125+25A+5B)-(27+9A+3B)=98+16A+2B$이고 $B=-3-2A$를 대입하면\n$f(5)-f(3)=98+16A+2(-3-2A)=92+12A$이다.\n이 값은 $A$에 대하여 증가하므로 $A=-5$일 때 최대이고, 그 값은 $92-60=32$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-06-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
