@@ -45,3 +45,16 @@ test('solution executor A/B harness compares clean legacy and shared DOM transac
   assert.match(harness, /duplicationCount/);
   assert.match(harness, /RENDER_READY/);
 });
+
+test('answer executor A/B harness compares answer cells, MathJax, padding, and readiness', () => {
+  const harness = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'answer-executor-ab-harness.html'), 'utf8');
+  assert.match(harness, /answerAuthority=\$\{authority\}/);
+  assert.match(harness, /render-authority-golden\.js/);
+  assert.match(harness, /ANSWER_EXECUTOR_AB_PASS/);
+  assert.match(harness, /ans-cell-empty/);
+  assert.match(harness, /answerText/);
+  assert.match(harness, /mathCount/);
+  assert.match(harness, /omissionCount/);
+  assert.match(harness, /duplicationCount/);
+  assert.match(harness, /RENDER_READY/);
+});

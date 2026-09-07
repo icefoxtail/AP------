@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Archive answer executor A/B</title>
+  <style>
+    body { font: 12px/1.45 system-ui, sans-serif; margin: 24px; }
+    #status { font-weight: 800; }
+    pre { white-space: pre-wrap; word-break: break-word; }
+    iframe { position: absolute; width: 1px; height: 1px; border: 0; left: -10000px; top: -10000px; }
+  </style>
+</head>
+<body>
+<div id="status">ANSWER_EXECUTOR_AB_WAITING</div>
+<pre id="detail"></pre>
+<script>
+  const status = document.getElementById('status');
+  const detail = document.getElementById('detail');
+  const base = '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=ans&qpp=4&renderAuthorityDualRun=1';
+  const authorities = ['legacy', 'shared'];
+  const frames = Object.fromEntries(authorities.map(authority => {
+    const frame = document.createElement('iframe');
+    frame.title = `answer-${authority}`;
+    frame.src = `${base}&answerAuthority=${authority}`;
+    document.body.appendChild(frame);
+    return [authority, frame];
+  }));
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+  const normalizeText = value => String(value || '').replace(/\s+/g, ' ').trim();
+  const summarize = frame => {
+    const doc = frame.contentDocument;
+    const root = doc?.documentElement;
+    const pages = Array.from(doc?.querySelectorAll('#print-area .page') || []).map((page, pageIndex) => ({
+      pageNo: pageIndex + 1,
+      hasHeader: Boolean(page.querySelector('.page-header')),
+      hasPageNumber: Boolean(Array.from(page.children).find(node => /^-\s*\d+\s*-$/u.test((node.textContent || '').trim()))),
+      bodyClientHeight: Number(page.querySelector('.page-body')?.clientHeight || 0),
+      overflow: Number(page.querySelector('.page-body')?.scrollHeight || 0) > Number(page.querySelector('.page-body')?.clientHeight || 0) + 2,
+      cells: Array.from(page.querySelectorAll('.ans-grid > .ans-cell')).map((cell, cellOrder) => ({
+        cellOrder,
+        empty: cell.classList.contains('ans-cell-empty'),
+        sourceRef: cell.dataset.sourceRef || '',
+        number: normalizeText(cell.querySelector('.ans-n')?.textContent),
+        answerText: normalizeText(cell.querySelector('.ans-v')?.textContent),
+        mathCount: cell.querySelectorAll('.mjx-container, .MathJax').length
+      }))
+    }));
+    const cells = pages.flatMap(page => page.cells);
+    const counts = new Map();
+    cells.filter(cell => !cell.empty).forEach(cell => counts.set(cell.sourceRef, (counts.get(cell.sourceRef) || 0) + 1));
+    const readiness = root?.dataset?.apPrintReadiness ? JSON.parse(root.dataset.apPrintReadiness) : null;
+    return { pages, pageCount: pages.length, cells, sourceCounts: Object.fromEntries(counts), overflow: pages.some(page => page.overflow), readiness };
+  };
+  const comparable = result => ({
+    pageCount: result.pageCount,
+    pages: result.pages.map(page => ({
+      pageNo: page.pageNo,
+      hasHeader: page.hasHeader,
+      hasPageNumber: page.hasPageNumber,
+      bodyClientHeight: 0,
+      overflow: page.overflow,
+      cells: page.cells.map(cell => ({ ...cell, cellOrder: cell.cellOrder }))
+    }))
+  });
+  const bodyHeightsEqual = (left, right) => left.pages.length === right.pages.length && left.pages.every((page, index) => Math.abs(page.bodyClientHeight - right.pages[index].bodyClientHeight) <= 1);
+  const same = (left, right) => JSON.stringify(comparable(left)) === JSON.stringify(comparable(right));
+  const poll = async () => {
+    const deadline = Date.now() + 20000;
+    let outcomes = [];
+    while (Date.now() < deadline) {
+      const promises = authorities.map(authority => frames[authority].contentWindow?.__AP_RENDER_READY__);
+      if (promises.every(Boolean)) {
+        outcomes = await Promise.all(promises.map(promise => Promise.resolve(promise)));
+        if (outcomes.every(outcome => outcome?.ok === true)) break;
+      }
+      await wait(100);
+    }
+    const result = Object.fromEntries(authorities.map(authority => [authority, summarize(frames[authority])]));
+    const legacy = result.legacy;
+    const shared = result.shared;
+    const sequence = value => value.cells.filter(cell => !cell.empty).map(cell => cell.number);
+    const orderParity = JSON.stringify(sequence(legacy)) === JSON.stringify(sequence(shared));
+    const semanticParity = JSON.stringify(legacy.cells) === JSON.stringify(shared.cells);
+    const sourceCountsEqual = JSON.stringify(legacy.sourceCounts) === JSON.stringify(shared.sourceCounts);
+    const expectedAnswerCount = 8;
+    const sharedRealCells = shared.cells.filter(cell => !cell.empty);
+    const omissionCount = Math.max(0, expectedAnswerCount - sharedRealCells.length);
+    const duplicationCount = Object.values(shared.sourceCounts).filter(count => count > 1).length;
+    const pass = outcomes.length === 2 && outcomes.every(outcome => outcome?.ok === true)
+      && legacy.readiness?.state === 'RENDER_READY' && shared.readiness?.state === 'RENDER_READY'
+      && same(legacy, shared) && bodyHeightsEqual(legacy, shared) && orderParity && semanticParity
+      && sourceCountsEqual && sharedRealCells.length === expectedAnswerCount && omissionCount === 0 && duplicationCount === 0
+      && legacy.overflow === false && shared.overflow === false;
+    status.textContent = pass ? 'ANSWER_EXECUTOR_AB_PASS' : 'ANSWER_EXECUTOR_AB_HOLD';
+    detail.textContent = JSON.stringify({ legacy, shared, checks: { orderParity, semanticParity, sourceCountsEqual, bodyHeightsEqual: bodyHeightsEqual(legacy, shared), omissionCount, duplicationCount } }, null, 2);
+  };
+  poll().catch(error => { status.textContent = `ANSWER_EXECUTOR_AB_ERROR:${error.message}`; detail.textContent = String(error.stack || error); });
+</script>
+</body>
+</html>

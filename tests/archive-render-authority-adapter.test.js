@@ -6,6 +6,7 @@ const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
 const solutionExecutor = fs.readFileSync(path.join(root, 'archive', 'solution-render-executor.js'), 'utf8');
+const answerExecutor = fs.readFileSync(path.join(root, 'archive', 'answer-render-executor.js'), 'utf8');
 
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
   assert.match(engine, /src="print-contract\.js\?v=20260906\.2"/);
@@ -21,6 +22,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /recordArchiveDualRun\(area\)/);
   assert.match(engine, /layout-authority\.js\?v=20260906\.25/);
   assert.match(engine, /solution-render-executor\.js\?v=20260907\.1/);
+  assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area\)/);
@@ -43,6 +45,9 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /async function renderExam\(area, data\)/);
   assert.match(engine, /async function renderSol\(area, data\)/);
   assert.match(engine, /async function renderSolLegacy\(area, data\)/);
+  assert.match(engine, /function renderAnsLegacy\(area, data, perPage = 40\)/);
+  assert.match(engine, /APAnswerRenderExecutor\.render\(\{ area, data, perPage, deps: archiveAnswerDeps \}\)/);
+  assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
   assert.match(engine, /APSolutionRenderExecutor\.render\(\{ area, data, deps: archiveSolutionDeps \}\)/);
   assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
   assert.match(engine, /solutionAuthority/);
@@ -71,6 +76,16 @@ test('Phase A report uses legacy/shared executor A/B as the authority gate', () 
   assert.equal(report.productionAuthority, 'shared Solution Executor by default; legacy renderSolLegacy retained as explicit rollback/debug path');
   assert.equal(report.extraction.numericPlanner, 'diagnostic/historical sidecar only; not an authority or promotion gate');
   assert.deepEqual(report.browserEvidence.differenceFields, []);
+});
+
+test('Archive answer executor is a mechanical DOM extraction with explicit legacy rollback', () => {
+  assert.match(answerExecutor, /APAnswerRenderExecutor/);
+  assert.match(answerExecutor, /function render\(\{ area, data, perPage = 40, deps \}\)/);
+  assert.match(answerExecutor, /ans-cell-empty/);
+  assert.match(answerExecutor, /splitIndex/);
+  assert.match(answerExecutor, /group-end/);
+  const api = require('../archive/answer-render-executor.js');
+  assert.equal(typeof api.render, 'function');
 });
 
 test('Archive golden browser fixture records semantic parity across all three output modes', () => {
