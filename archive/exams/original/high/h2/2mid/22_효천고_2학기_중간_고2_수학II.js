@@ -256,8 +256,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 접점의 좌표와 미분계수로 접선의 식을 구한다.\n조건 정리: $f(x)=x^3-2x^2+1$이고 접점의 $x$좌표는 $1$이다.\n풀이 방향: $a=f(1)$, $m=f'(1)$을 구한 뒤 접선의 절편 $n$을 정한다.\n정석 풀이: $a=f(1)=1-2+1=0$이다. $f'(x)=3x^2-4x$이므로 $m=f'(1)=3-4=-1$이다. 접선은 점 $(1,0)$을 지나므로 $y=-(x-1)=-x+1$이고 $n=1$이다. 따라서 $a+m+n=0-1+1=0$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -421,7 +421,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 미분계수의 정의에서 분자는 반드시 $f(1+\\Delta x)-f(1)$이어야 한다.\n조건 정리: $f(x)=x^2+x$이므로 $f(1)=2$이다.\n풀이 방향: 표시된 각 등식에서 대입과 전개가 정확한지 확인한다.\n정석 풀이: 첫 번째 등식은 미분계수의 정의이므로 맞다. 두 번째 등식에서는 $f(1)=2$를 빼야 하므로 분자는 $\\{(1+\\Delta x)^2+(1+\\Delta x)\\}-2$가 되어야 한다. 그림에는 $-1$로 적혀 있으므로 두 번째 등식이 틀렸다. 올바르게 전개하면 $3\\Delta x+(\\Delta x)^2$가 되어 이후 세 번째, 네 번째, 다섯 번째 등식은 모두 맞다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -453,7 +453,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 증분을 각각 미분계수의 정의 꼴로 나누면 전체 극한은 $5f'(1)$이 된다.\n조건 정리: $f(1+2h)-f(1-3h)=\\{f(1+2h)-f(1)\\}+\\{f(1)-f(1-3h)\\}$이다.\n풀이 방향: 두 부분을 $2h$, $-3h$에 맞추어 미분계수로 바꾼다.\n정석 풀이: 첫 부분을 $h$로 나누면 $2\\dfrac{f(1+2h)-f(1)}{2h}\\to2f'(1)$이다. 둘째 부분은 $3\\dfrac{f(1)-f(1-3h)}{3h}=3\\dfrac{f(1-3h)-f(1)}{-3h}\\to3f'(1)$이다. 따라서 전체 극한은 $5f'(1)=10$이므로 $f'(1)=2$이다. $f'(x)=3x^2+4x-a$이므로 $7-a=2$, 따라서 $a=5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -519,8 +519,8 @@ window.questionBank = [
     ],
     "answer": "①, ④",
     "solution": "[키포인트] $f'(x)$의 부호 변화로 극소의 존재를 확인하고, 다항함수의 양끝 거동으로 최솟값의 존재를 확인한다.\n조건 정리: 극솟값과 최솟값이 같으려면 극소점이 전 구간의 최솟점이어야 한다.\n풀이 방향: 각 도함수 그래프의 부호 변화와 최고차항의 부호를 판정한다.\n정석 풀이: ①은 $f'(x)$가 음수에서 양수로 한 번 바뀌므로 $f$는 한 점까지 감소한 뒤 계속 증가한다. 따라서 그 극솟값이 곧 최솟값이다. ②와 ③은 $f'$가 이차함수이므로 $f$는 삼차함수이며 한쪽에서 $-\\infty$로 발산하여 최솟값이 존재하지 않는다. ④는 왼쪽의 단순근에서 $f'$가 음수에서 양수로 바뀌고 오른쪽의 중근에서는 부호가 바뀌지 않는다. 또한 $f'$의 최고차항 계수가 양수인 삼차식이므로 $f$는 양의 최고차항을 갖는 사차함수이고, 왼쪽의 극소가 전 구간의 최솟값이다. ⑤는 $f'$의 최고차항 계수가 음수인 삼차식이므로 $f$가 양끝에서 $-\\infty$로 내려가 최솟값이 없다.\n따라서 정답은 ①, ④이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -554,8 +554,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $f'(x)$의 부호가 함수의 증가·감소를 결정하고, 부호가 바뀌는 영점에서만 극값이 생긴다.\n조건 정리: 그래프에서 $f'$는 $x=-4$에서 $+\\to-$, $x=0$에서 $-\\to+$로 바뀌고, $x=4$에서는 $0$이지만 양쪽에서 모두 양수이다.\n풀이 방향: 각 명제를 도함수의 부호와 $f'$ 그래프의 부호 있는 넓이로 판정한다.\n정석 풀이: ㄱ. $-4\\lt x\\lt0$에서 $f'(x)\\lt0$이므로 $f$는 $[-4,0]$에서 감소하여 참이다. ㄴ. $x=-4$에서 $f'$가 양수에서 음수로 바뀌므로 $f$는 극대가 되어 참이다. ㄷ. $x=4$에서는 $f'$가 $0$이지만 부호가 양수에서 양수로 유지되므로 극소가 아니어서 거짓이다. ㄹ. 극값은 $x=-4,0$에서만 생기므로 $2$개이며 거짓이다. ㅁ. 그림에서 $[-4,4]$의 $f'$ 그래프는 원점 대칭이므로 $\\displaystyle\\int_{-4}^{4}f'(x)\\,dx=0$, 즉 $f(4)=f(-4)$이다. 또한 $4\\lt x\\le5$에서 $f'(x)\\gt0$이므로 $f(5)\\gt f(4)=f(-4)$이다. 따라서 $x=-4$에서 최댓값을 갖는다는 명제는 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -654,8 +654,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 접선의 $y$절편은 $g(t)=f(t)-tf'(t)$이고, 조각함수의 미분가능성은 연속 조건과 도함수 일치 조건을 함께 사용한다.\n조건 정리: $f'(t)=3t^2-2t-2$이다.\n풀이 방향: $g(t)$를 계산하고 $t=1$에서 $a+b=g(1)$, $a=g'(1)$을 적용한다.\n정석 풀이: 접선은 $y-f(t)=f'(t)(x-t)$이므로 $y$절편은 $g(t)=f(t)-tf'(t)$이다. 따라서 $g(t)=t^3-t^2-2t-t(3t^2-2t-2)=-2t^3+t^2$이다. $g(1)=-1$, $g'(t)=-6t^2+2t$이므로 $g'(1)=-4$이다. $h$가 $t=1$에서 미분가능하려면 $a=g'(1)=-4$이고 연속이어야 하므로 $a+b=g(1)=-1$이다. 따라서 $b=3$이고 $ab=-12$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -800,8 +800,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$1690$",
     "solution": "[키포인트] 원점에서의 접선은 $g(x)=cx$이고 $h(x)=|f(x)|+cx$이다. 수평 접선을 갖는 영점 $k$와 가장 큰 영점 $12$는 서로 다른 조건이므로, $h(x)=0$의 모든 비영점을 함께 찾아야 한다.\n조건 정리: $f(x)=ax^3+bx^2+cx=x(ax^2+bx+c)$이고 그림에서 원점 접선의 기울기 $c$는 음수이다.\n풀이 방향: $f(x)\\ge0$인 구간과 $f(x)\\lt0$인 구간에서 $h(x)$의 식을 각각 구하고, 조건 (가)로 중근 $k$를 정한 뒤 조건 (나), (다)를 적용한다.\n정석 풀이: $f(x)\\ge0$이면 $h(x)=f(x)+cx=x(ax^2+bx+2c)$이다. 한편 $f(x)\\lt0$이면 $h(x)=-f(x)+cx=-x^2(ax+b)$이다. $f(k)\\lt0$인 비영점에서 $h(k)=h'(k)=0$이라면 $ak+b=0$과 $3ak+2b=0$이 동시에 성립하여 $a=b=0$이 되므로 삼차함수라는 조건에 모순이다. 따라서 조건 (가)의 점 $k$에서는 $f(k)\\ge0$이고, 이차식 $ax^2+bx+2c$가 $k$를 중근으로 갖는다. 그러므로\n$ax^2+bx+2c=a(x-k)^2$,\n즉 $b=-2ak$, $c=\\dfrac{ak^2}{2}$이다.\n이때 $x=2k$에서는 $a(2k)+b=0$이고 $f(2k)=2kc\\lt0$이므로 $h(2k)=0$이다. 따라서 $h(x)=0$의 양의 비영점은 $k$와 $2k$이고, 가장 큰 근이 $12$이므로 $2k=12$, $k=6$이다. 이에 따라 $b=-12a$, $c=18a$이다.\n$f(3)=27a+9b+3c=-27a$이고 $a\\lt0$이므로 $f(3)\\gt0$이다. 따라서 $h(3)=f(3)+3c=-27a+54a=27a=-270$에서 $a=-10$이다. 그러므로 $b=120$, $c=-180$이다.\n$x=13$에서는 $f(13)=403a=-4030\\lt0$이므로\n$h(13)=-f(13)+g(13)=4030-2340=1690$이다.\n따라서 구하는 값은 $1690$이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

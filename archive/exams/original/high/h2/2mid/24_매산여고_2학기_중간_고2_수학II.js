@@ -506,8 +506,8 @@ window.questionBank = [
     "solutionImageCaption": "교점 x=0·4와 f′−g′의 부호를 비교해 h의 극대·극소를 판정한다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "미분",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

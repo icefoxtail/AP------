@@ -94,7 +94,7 @@ window.questionBank=[
     "answer": "④",
     "solution": "[키포인트] 한 점에서 미분가능하려면 먼저 연속이어야 하고, 그 점에서의 좌미분계수와 우미분계수가 같아야 한다.\n조건 정리: $x=-2$에서 함수값이 이어져야 하며, 왼쪽 식 $ax+b$의 기울기와 오른쪽 식 $x^3$의 기울기가 같아야 한다.\n풀이 방향: 미분계수의 일치로 $a$를 먼저 구한 뒤 연속 조건으로 $b$를 구한다.\n정석 풀이: 왼쪽에서의 미분계수는 $a$이고, 오른쪽에서의 미분계수는 $3(-2)^2=12$이므로 $a=12$이다. 또한 연속 조건에서 $-2a+b=(-2)^3=-8$이므로 $-24+b=-8$, 따라서 $b=16$이다. 두 상수의 차는 $|12-16|=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -154,7 +154,7 @@ window.questionBank=[
     "answer": "④",
     "solution": "[키포인트] 첫 번째 극한을 $x=1$에서의 두 미분계수로 나누어 해석하고, 두 번째 극한에서는 $x-1$을 약분한다.\n조건 정리: $x-1$이 $f(x)$의 인수이므로 $f(1)=0$이다.\n풀이 방향: 첫 극한에서 $f'(1)$을 구한 뒤 $x^3-1=(x-1)(x^2+x+1)$을 이용한다.\n정석 풀이: $\\dfrac{f(1+h)-f(1-h)}h=\\dfrac{f(1+h)-f(1)}h+\\dfrac{f(1)-f(1-h)}h$이므로 $h\\to0$일 때 두 항은 각각 $f'(1)$로 수렴한다. 따라서 $2f'(1)=6$이고 $f'(1)=3$이다. $f(x)=(x-1)q(x)$라 두면 $q(1)=f'(1)=3$이다. 그러므로 $\\lim_{x\\to1}\\dfrac{x^3-1}{f(x)}=\\lim_{x\\to1}\\dfrac{(x-1)(x^2+x+1)}{(x-1)q(x)}=\\dfrac{3}{3}=1$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -244,8 +244,8 @@ window.questionBank=[
     ],
     "answer": "④",
     "solution": "[키포인트] 직선과 함수의 위치 관계를 부등식으로 바꾸고, 두 교점 사이에서는 롤의 정리를 적용한다.\n조건 정리: 그림에서 점 $A$는 직선 $y=\\dfrac12x$보다 아래에 있고, 점 $B$는 그 직선보다 위에 있으며, 함수의 그래프와 직선은 원점과 점 $P$에서 만난다.\n풀이 방향: ㄱ은 점 $P$에서의 접선 기울기, ㄴ은 $A,B$의 직선에 대한 위치, ㄷ은 $h(x)=f(x)-\\dfrac12x$에 대한 롤의 정리로 판단한다.\n정석 풀이: 점 $P$에서 함수의 그래프는 직선보다 더 가파르게 지나가므로 $f'(p)\\gt \\dfrac12$이고 ㄱ은 참이다. 또 $f(a)\\lt \\dfrac12a$, $f(b)\\gt \\dfrac12b$이므로 $f(a)-f(b)\\lt \\dfrac12(a-b)$이다. 따라서 ㄴ은 거짓이다. $h(x)=f(x)-\\dfrac12x$라 두면 그림에서 $h(0)=h(p)=0$이다. $h$는 닫힌구간 $[0,p]$에서 연속이고 열린구간 $(0,p)$에서 미분가능하므로 롤의 정리에 따라 어떤 $\\alpha\\in(0,p)$에 대하여 $h'(\\alpha)=0$이다. 즉 $f'(\\alpha)=\\dfrac12$이므로 ㄷ은 참이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -484,7 +484,7 @@ window.questionBank=[
     "answer": "$-6$",
     "solution": "[키포인트] $x=1$ 이외의 점에서는 좌우 미분계수가 같아 $g(x)=0$이고, $x=1$에서 두 극한이 유한하게 존재하려면 먼저 $f$가 연속이어야 한다.\n조건 정리: $g$는 실수 전체에서 정의되어 있으므로 $x=1$에서 왼쪽 함수값의 극한과 $f(1)$이 같아야 한다.\n풀이 방향: 연속 조건으로 $a,b$의 관계를 구하고, $g(1)$과 치역의 합 조건을 이용한다.\n정석 풀이: 왼쪽에서 $x\\to1$일 때 함수값은 $1-4=-3$이고 $f(1)=1+2a+b$이므로 $1+2a+b=-3$, 즉 $2a+b=-4$이다. $x\\ne1$에서는 같은 다항식의 좌우 미분계수를 빼므로 $g(x)=0$이다. $x=1$에서 오른쪽 미분계수는 $2+2a$, 왼쪽 미분계수는 $2(1)-4=-2$이므로 $g(1)=(2+2a)-(-2)=4+2a$이다. 치역은 $\\{0,4+2a\\}$이고 모든 원소의 합이 $6$이므로 $4+2a=6$, 따라서 $a=1$이다. $2a+b=-4$에서 $b=-6$이므로 $ab=-6$이다.\n따라서 구하는 값은 $-6$이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -556,7 +556,7 @@ window.questionBank=[
     "answer": "90",
     "solution": "[키포인트] 주어진 극한은 $|x-a|^n$의 $x=4$에서의 미분계수이며, $b$가 양의 자연수라는 조건으로 $a$의 범위를 먼저 줄인다.\n조건 정리: $a=4$이면 극한은 $n=1$에서 존재하지 않고 $n\\ge2$에서 $0$이므로 자연수 $b$가 될 수 없다. 따라서 $a\\ne4$이다.\n풀이 방향: 미분계수 공식을 이용해 $b$를 $a,n$으로 나타내고 $a=1,2,3$을 각각 조사한다.\n정석 풀이: $a\\ne4$일 때 $b=n(4-a)|4-a|^{n-2}$이다. $b\\gt 0$이므로 $a\\lt 4$이고, $a$는 자연수이므로 $a=1,2,3$이다. $a=3$이면 $b=n$이므로 $n=9$에서 $b=9$가 가능하고 $a^2+b^2=3^2+9^2=90$이다. $a=2$이면 $b=n2^{n-1}$인데 $b\\lt 10$을 만족하는 최대는 $n=2$, $b=4$이므로 $a^2+b^2=20$이다. $a=1$이면 $b=n3^{n-1}$이고 가능한 최대는 $n=2$, $b=6$이므로 $a^2+b^2=37$이다. 따라서 최댓값은 $90$이다.\n따라서 구하는 값은 $90$이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

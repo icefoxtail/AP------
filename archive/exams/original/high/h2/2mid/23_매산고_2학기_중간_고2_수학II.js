@@ -188,7 +188,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 증분이 $-h$이므로 미분계수의 정의와 분모의 부호를 함께 맞춘다.\n조건 정리: $f(x)=3x^2+2$이고 $f'(x)=6x$이다.\n풀이 방향: 분모의 $6h$를 증분 $-h$에 맞추어 상수배로 바꾼다.\n정석 풀이: $\\displaystyle\\lim_{h\\to0}\\dfrac{f(3-h)-f(3)}{6h}=-\\dfrac16\\lim_{h\\to0}\\dfrac{f(3-h)-f(3)}{-h}=-\\dfrac16f'(3)$이다. $f'(3)=18$이므로 구하는 값은 $-\\dfrac{18}{6}=-3$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -387,7 +387,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 경계점에서 미분가능하려면 먼저 연속이어야 하고 좌미분계수와 우미분계수도 같아야 한다.\n조건 정리: 함수의 식이 바뀌는 점은 $x=3$이다.\n풀이 방향: 미분계수 일치 조건으로 $a$를 구하고 연속 조건으로 $b$를 구한다.\n정석 풀이: $x=3$에서 좌미분계수는 $-f'(3)$, 우미분계수는 $f'(3)$이므로 $-f'(3)=f'(3)$에서 $f'(3)=0$이다. $f'(x)=3x^2-12x+a$이므로 $f'(3)=a-9=0$에서 $a=9$이다. 이때 $f(3)=27-54+27+10=10$이다. 연속 조건은 $b-f(3)=f(3)$이므로 $b=20$이다. 따라서 $2a+3b=2\\times9+3\\times20=78$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -454,8 +454,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 극한은 $t\\to\\dfrac12-$이므로 $0\\lt t\\lt\\dfrac12$인 범위에서 직선과 포물선이 만나지 않으며, 거리의 최솟값은 평행한 접선의 접점에서 얻어진다.\n조건 정리: 직선 $y=4tx-1$의 기울기는 $4t$이고 포물선 $y=x^2$의 접선 기울기는 $2x$이다.\n풀이 방향: 점 $P$와 점 $Q$의 좌표를 $t$로 나타내고 두 점 사이의 거리를 계산한다.\n정석 풀이: $P$에서의 접선이 주어진 직선과 평행하므로 $2x_P=4t$에서 $P=(2t,4t^2)$이다. 직선 $OP$의 기울기는 $2t$이므로 방정식은 $y=2tx$이다. 이를 $y=4tx-1$과 연립하면 $Q=\\left(\\dfrac1{2t},1\\right)$이다. $0\\lt t\\lt\\dfrac12$에서 $1-4t^2\\gt0$이므로\n$\\overline{PQ}=\\sqrt{\\left(\\dfrac1{2t}-2t\\right)^2+(1-4t^2)^2}=\\dfrac{(1-4t^2)\\sqrt{1+4t^2}}{2t}$이다. 또한 $1-4t^2=2\\left(\\dfrac12-t\\right)(1+2t)$이므로\n$\\dfrac{\\overline{PQ}}{\\dfrac12-t}=\\dfrac{(1+2t)\\sqrt{1+4t^2}}t$이다. 따라서 $t\\to\\dfrac12-$일 때 극한값은 $\\dfrac{2\\sqrt2}{\\dfrac12}=4\\sqrt2$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -579,9 +579,9 @@ window.questionBank = [
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "수학II",
-    "standardUnitKey": "H15-M2-02",
-    "standardUnit": "함수의 연속",
-    "standardUnitOrder": 2,
+    "standardUnitKey": "H15-M2-03",
+    "standardUnit": "미분계수",
+    "standardUnitOrder": 3,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -595,8 +595,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$-2+2\\sqrt2$",
     "solution": "[키포인트] 각 $x$에서 가능한 값은 $x^2$, $-x^2$, $x$뿐이며, 연속성 때문에 세 곡선의 교점에서만 가지를 바꿀 수 있다.\n조건 정리: $\\{f(x)-x^2\\}\\{f(x)+x^2\\}\\{f(x)-x\\}=0$이다. $y=x$와 $y=-x^2$은 $x=-1,0$에서, $y=x$와 $y=x^2$은 $x=0,1$에서 만난다.\n풀이 방향: 네 지점에서 절댓값의 합을 최소로 만드는 연속함수 $g$를 정한 뒤, 직선과 $g$의 각 구간별 교점 수를 $k$의 범위에 따라 빠짐없이 센다.\n정석 풀이: $x=\\pm\\dfrac43$에서는 $|x|=\\dfrac43\\lt\\dfrac{16}9=x^2$이므로 $g(x)=x$를 선택해야 한다. $x=\\pm\\dfrac13$에서는 $x^2=\\dfrac19\\lt\\dfrac13=|x|$이므로 절댓값이 $x^2$인 가지를 선택해야 한다. 연속성을 고려하면\n$g(x)=\\begin{cases}x&(x\\le-1)\\\\-x^2&(-1\\lt x\\lt0)\\\\x^2&(0\\le x\\lt1)\\\\x&(x\\ge1)\\end{cases}$이다.\n직선 $y=k(x+1)-1$은 항상 점 $(-1,-1)$을 지나므로 이 점은 언제나 교점이다. $k=1$이면 직선이 $y=x$와 일치하여 $x\\le-1$과 $x\\ge1$에서 교점이 무수히 많다. 이제 $k\\ne1$이라 하면 바깥 구간 $x\\le-1$ 또는 $x\\ge1$에서 방정식 $x=k(x+1)-1$의 해는 $x=-1$뿐이다.\n구간 $-1\\lt x\\lt0$에서는 $-x^2=k(x+1)-1$이므로 $(x+1)(x+k-1)=0$이다. 경계점 $x=-1$ 이외의 근은 $x=1-k$이고, 이 값이 $(-1,0)$에 들어가는 조건은 $1\\lt k\\lt2$이다.\n구간 $0\\le x\\lt1$에서는 $x^2-kx-k+1=0$이다. 이를 $p(x)=x^2-kx-k+1$이라 하자. $k\\le0$이면 $p'(x)=2x-k\\ge0$이고 $p(0)=1-k\\gt0$이므로 이 구간에 근이 없다. $0\\lt k\\lt1$이면 꼭짓점 $x=\\dfrac k2$가 구간 안에 있고 판별식은 $k^2+4k-4$이다. $k_0=-2+2\\sqrt2$라 하면 $0\\lt k\\lt k_0$에서는 근이 없고, $k=k_0$에서는 중근 하나, $k_0\\lt k\\lt1$에서는 서로 다른 두 근이 모두 $(0,1)$에 있다. $k=1$은 앞에서 제외하였다. $k\\gt1$이면 $p(0)=1-k\\lt0$, $p(1)=2(1-k)\\lt0$이고 양의 근은 $1$보다 크므로 $[0,1)$에는 근이 없다.\n따라서 전체 교점 수는 $k\\lt k_0$일 때 $1$개, $k=k_0$일 때 $2$개, $k_0\\lt k\\lt1$일 때 $3$개, $k=1$일 때 무수히 많고, $1\\lt k\\lt2$일 때 $2$개, $k\\ge2$일 때 $1$개이다. 교점이 $2$개가 되는 값 중 가장 작은 것은 $k_0=-2+2\\sqrt2$이다.\n따라서 구하는 값은 $-2+2\\sqrt2$이다.",
-    "subUnitKey": "H15-M2-02-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-03-DERIVATIVE",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -622,8 +622,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$k\\lt0$ 또는 $0\\lt k\\lt\\dfrac94$",
     "solution": "[키포인트] 조건 (가)는 $g$의 뾰족하게 교차하는 영점의 개수를, 조건 (나)는 좌우미분계수가 다른 점의 개수를 센다.\n조건 정리: $f(x)=\\begin{cases}(x+3)(x-2)&(x\\lt-3)\\\\x(x+3)&(x\\ge-3)\\end{cases}$이다. $x=-3$에서 좌우미분계수가 다르고, 오른쪽 포물선의 최솟값은 $x=-\\dfrac32$에서 $-\\dfrac94$이다.\n풀이 방향: 수평선 $y=-k$와 $y=f(x)$의 교점 수와 접점 여부를 $k$의 범위별로 나누어 $A(k)$와 $B(k)$를 구한다.\n정석 풀이: $g(a)\\ne0$이면 (가)의 분자가 양의 상수로 가므로 극한은 발산한다. 따라서 $g(a)=0$, 즉 $f(a)=-k$이어야 한다. 이 교점이 단순한 교점이면 양쪽의 $g$가 각각 $h$에 비례하여 (가)의 극한이 양수가 되고, $x=-\\dfrac32$에서 접하면 $h^2$에 비례하여 극한이 $0$이 된다. 따라서 $A(k)$는 접점을 제외한 $f(x)=-k$의 교점 수이다.\n조건 (나)의 두 극한의 합은 $g'_+(b)-g'_-(b)$이므로 $B(k)$는 $g$의 좌우미분계수가 다른 점의 개수이다. $x=-3$은 모든 $k$에서 이러한 점이고, 그 밖에는 $f(x)+k$의 단순한 영점에서 절댓값 때문에 꺾인다.\n$k\\lt0$이면 $-k\\gt0$이므로 $f(x)=-k$의 단순한 해가 두 개이다. 따라서 $A=2$, $B=3$이고 $AB=6$이다. $k=0$이면 해는 $-3$, $0$이며 $A=2$, $B=2$이므로 $AB=4$이다. $0\\lt k\\lt\\dfrac94$이면 $-\\dfrac94\\lt-k\\lt0$이므로 오른쪽 포물선과의 단순한 교점이 두 개이다. 따라서 $A=2$, $B=3$이고 $AB=6$이다. $k=\\dfrac94$에서는 접점 하나만 생겨 (가)를 만족하지 않으므로 $A=0$이고, $k\\gt\\dfrac94$에서는 교점이 없어 $A=0$이다. 그러므로 최댓값은 $m=6$이며 그때의 범위는 $k\\lt0$ 또는 $0\\lt k\\lt\\dfrac94$이다.\n따라서 구하는 값은 $k\\lt0$ 또는 $0\\lt k\\lt\\dfrac94$이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }

@@ -62,7 +62,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 다항함수는 항별로 미분한 뒤 주어진 값을 대입한다.\n조건 정리: $f(x)=x^2-3x$이다.\n풀이 방향: 도함수 $f'(x)$를 구하고 $x=1$을 대입한다.\n정석 풀이: $f'(x)=2x-3$이므로 $f'(1)=2\\cdot1-3=-1$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -194,7 +194,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 유한한 극한이 존재하려면 분자가 $0$으로 수렴해야 하며, 그 뒤 식은 미분계수의 정의가 된다.\n조건 정리: $\\displaystyle\\lim_{h\\to0}\\dfrac{g(1+h)-4}{h}=\\dfrac34$이다.\n풀이 방향: 먼저 $g(1)$을 정하고, 주어진 극한에서 $g'(1)$을 읽는다.\n정석 풀이: $h\\to0$일 때 분모가 $0$으로 가므로 분자도 $0$으로 가야 한다. 따라서 $g(1)-4=0$에서 $g(1)=4$이다. 그러면 주어진 극한은 $\\displaystyle\\lim_{h\\to0}\\dfrac{g(1+h)-g(1)}h=g'(1)=\\dfrac34$이다. 따라서 $g(1)g'(1)=4\\cdot\\dfrac34=3$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -259,8 +259,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 롤의 정리를 만족시키는 수는 열린구간에서 $f'(x)=0$이 되는 값이다.\n조건 정리: $f(-1)=f(3)=0$이고 다항함수이므로 $[-1,3]$에서 연속, $(-1,3)$에서 미분가능하다.\n풀이 방향: $f'(x)=0$의 해 중 열린구간에 속하는 값을 모두 더한다.\n정석 풀이: $f'(x)=4x^3-12x^2+8x=4x(x-1)(x-2)$이다. 따라서 $f'(x)=0$의 해는 $x=0,1,2$이고 모두 $(-1,3)$에 속한다. 그 합은 $0+1+2=3$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -325,8 +325,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 구간의 평균변화율을 먼저 계산하고 이를 $f'(a)$와 같게 둔다.\n조건 정리: 구간은 $[0,2]$이고 $f(x)=-x^3+2x^2+3x-4$이다.\n풀이 방향: 평균변화율을 구한 뒤 도함수 방정식을 푼다.\n정석 풀이: $f(0)=-4$, $f(2)=-8+8+6-4=2$이므로 평균변화율은 $\\dfrac{f(2)-f(0)}{2-0}=\\dfrac{6}{2}=3$이다. $f'(x)=-3x^2+4x+3$이므로 $f'(a)=3$에서 $-3a^2+4a=0$, 즉 $a(3a-4)=0$이다. 양수인 해는 $a=\\dfrac43$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -359,7 +359,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 미분가능하려면 이음점에서 연속이고 좌미분계수와 우미분계수가 같아야 한다.\n조건 정리: 이음점은 $x=-1$이다.\n풀이 방향: 미분계수 조건으로 $a$를 구하고 연속 조건으로 $b$를 구한다.\n정석 풀이: 왼쪽 식의 미분계수는 $-4$이고 오른쪽 식의 도함수는 $2x+a$이다. $x=-1$에서 $-2+a=-4$이므로 $a=-2$이다. 연속 조건에서 왼쪽 극한은 $-4(-1)=4$이고 함숫값은 $1-a+b$이다. 따라서 $1-(-2)+b=4$에서 $b=1$이다. 그러므로 $a^2-b^2=(-2)^2-1^2=3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -458,7 +458,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 분자가 $x=1$에서 $0$이므로 극한은 분자 함수의 $x=1$에서의 미분계수이다.\n조건 정리: $F(x)=x^n+3x^2-2x-2$라 하면 $F(1)=0$이다.\n풀이 방향: $F'(1)=15$를 이용한다.\n정석 풀이: $F'(x)=nx^{n-1}+6x-2$이므로 $F'(1)=n+4$이다. 주어진 극한값이 $15$이므로 $n+4=15$에서 $n=11$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -490,8 +490,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 함숫값의 차를 평균값 정리로 구간 안의 미분계수와 연결한다.\n조건 정리: 구간 $[x-5,x+3]$의 길이는 $8$이다.\n풀이 방향: 평균값 정리로 $f(x-5)-f(x+3)$을 나타내고 $x\\to\\infty$를 취한다.\n정석 풀이: 평균값 정리에 의해 $x-5<c_x<x+3$인 $c_x$가 존재하여 $f(x+3)-f(x-5)=8f'(c_x)$이다. 따라서 $f(x-5)-f(x+3)=-8f'(c_x)$이다. $x\\to\\infty$이면 $c_x\\to\\infty$이므로 $f'(c_x)\\to-2$이다. 따라서 구하는 극한값은 $-8\\cdot(-2)=16$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -557,7 +557,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 우함수의 도함수는 기함수이며, 마지막 극한은 미분계수의 정의로 정확히 분리한다.\n조건 정리: $f(-x)=f(x)$이고 주어진 극한에서 $f'(2)$를 구할 수 있다.\n풀이 방향: 먼저 $f'(2)$를 구한 뒤 우함수 관계로 두 함숫값을 모두 $x=2$ 부근으로 바꾼다.\n정석 풀이: $f(-2)=f(2)$, $f(-x)=f(x)$이므로 주어진 극한은 $\\displaystyle\\lim_{x\\to2}\\dfrac{f(2)-f(x)}{(x-2)(x^2+2x+4)}=-\\dfrac{f'(2)}{12}=3$이다. 따라서 $f'(2)=-36$이다. 또한 $f$가 우함수이므로 $f\\left(-2+\\dfrac5n\\right)=f\\left(2-\\dfrac5n\\right)$이다. 목표 극한을 $f(2)$를 이용해 나누면 첫 항은 $-5f'(2)$로, 둘째 항은 $2f'(2)$로 수렴한다. 따라서 전체 극한은 $-5f'(2)-2f'(2)=-7(-36)=252$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -589,8 +589,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 함수방정식을 미분하여 $f$를 결정하고, $x=2$에서 분수형 함수의 연속 조건을 적용한다.\n조건 정리: $f(x+y)=f(x)+f(y)+xy$, $f'(0)=-1$이다.\n풀이 방향: $f'(x)$와 $f(x)$를 구한 뒤 $g$의 분자와 함숫값을 $x=2$에서 맞춘다.\n정석 풀이: 양변을 $y$에 대하여 미분하고 $y=0$을 대입하면 $f'(x)=f'(0)+x=x-1$이다. 또 $x=y=0$을 대입하면 $f(0)=0$이므로 $f(x)=\\dfrac{x^2}{2}-x$이다. $g$의 $x=2$에서 극한이 유한하려면 $f(2)-6k=0$이어야 한다. $f(2)=0$이므로 $k=0$이다. 이때 극한값은 $f'(2)=1$이고 $g(2)=-k+1=1$이므로 실제로 연속이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-M2-04-CONTINUITY",
-    "subUnit": "continuity",
+    "subUnitKey": "H15-M2-04-DERIVATIVE",
+    "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -622,8 +622,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 먼저 $f$의 미분가능 조건으로 이음점을 확정한 뒤, $f-g$의 최솟값을 구간에 따라 조사한다.\n조건 정리: $f$가 $x=a$에서 미분가능하고 모든 실수에서 $f(x)\\ge g(x)$이다.\n풀이 방향: $a$를 구하고, 가능한 $k$의 범위를 $x\\le k$와 $x>k$로 나눈다.\n정석 풀이: $x=a$에서 연속이려면 $(a-2)^2=0$이고 좌우 미분계수도 같아야 하므로 $a=2$이다. 만약 $k<2$이면 $k<x\\le2$에서 $f(x)=0$인데 $g(x)=6(x-k)>0$이므로 조건을 만족하지 못한다. 따라서 $k\\ge2$이다. $x>k$에서는 $(x-2)^2\\ge6(x-k)$, 즉 $(x-5)^2+6k-21\\ge0$이어야 한다. $2\\le k<5$이면 $x=5$가 범위에 포함되므로 $6k-21\\ge0$, 즉 $k\\ge\\dfrac72$이다. $k\\ge5$이면 이 부등식도 성립한다. 따라서 $k$의 최솟값은 $\\dfrac72$이다. 이를 $\\dfrac qp$와 비교하면 $q=7$, $p=2$이므로 $p+q=9$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -683,8 +683,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$y=7x-11$, $y=-5x+1$",
     "solution": "[키포인트] 접점을 변수로 두고 그 접선이 주어진 점을 지난다는 조건을 세운다.\n조건 정리: 곡선 $y=x^2-x+5$의 접점을 $(u,u^2-u+5)$라 둔다.\n풀이 방향: 접점에서의 기울기로 접선 방정식을 만든 뒤 점 $(1,-4)$를 대입한다.\n정석 풀이: 도함수는 $y'=2x-1$이므로 접점에서의 접선은 $y-(u^2-u+5)=(2u-1)(x-u)$, 즉 $y=(2u-1)x-u^2+5$이다. 점 $(1,-4)$를 지나므로 $-4=2u-1-u^2+5$이고, 이를 정리하면 $u^2-2u-8=0$이다. 따라서 $u=4$ 또는 $u=-2$이다. $u=4$일 때 $y=7x-11$, $u=-2$일 때 $y=-5x+1$이다.\n따라서 구하는 접선의 방정식은 $y=7x-11$, $y=-5x+1$이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -711,7 +711,7 @@ window.questionBank = [
     "answer": "$-2$",
     "solution": "[키포인트] 유한한 차분 극한에서 먼저 함숫값 관계를 얻고, 두 식을 미분하여 도함수 관계를 만든다.\n조건 정리: $g(x)=(x^2-2x)f(x)+7$이고 $\\displaystyle\\lim_{x\\to-2}\\dfrac{f(x)-g(x)}{x+2}=1$이다.\n풀이 방향: $f(-2)=g(-2)$로 함숫값을 구하고, 미분계수 차와 곱의 미분법을 연립한다.\n정석 풀이: 극한이 유한하므로 $f(-2)-g(-2)=0$이다. 첫 식에서 $g(-2)=8f(-2)+7$이므로 $f(-2)=8f(-2)+7$, 따라서 $f(-2)=g(-2)=-1$이다. 주어진 극한은 $f'(-2)-g'(-2)=1$을 뜻한다. 한편 $g'(x)=(2x-2)f(x)+(x^2-2x)f'(x)$이므로 $g'(-2)=(-6)(-1)+8f'(-2)=6+8f'(-2)$이다. 따라서 $f'(-2)-\\{6+8f'(-2)\\}=1$에서 $f'(-2)=-1$이고, $g'(-2)=6-8=-2$이다.\n따라서 구하는 값은 $-2$이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },

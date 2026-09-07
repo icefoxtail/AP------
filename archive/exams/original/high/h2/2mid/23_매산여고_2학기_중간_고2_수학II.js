@@ -156,8 +156,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 접선의 기울기는 접점에서의 미분계수이다.\n조건 정리: 곡선은 $y=2x^3-x-6$이고 접점은 $(1,-5)$이다.\n풀이 방향: $y'$을 구해 접선을 세운 뒤 $x$절편을 구한다.\n정석 풀이: $y'=6x^2-1$이므로 접점에서의 기울기는 $6-1=5$이다. 접선은 $y-(-5)=5(x-1)$, 즉 $y=5x-10$이다. $y=0$을 대입하면 $x=2$이므로 $x$절편은 $2$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -255,7 +255,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 미분가능하면 우선 연속이므로, 연속 조건과 좌·우 미분계수가 같다는 조건을 함께 쓴다.\n조건 정리: $x\\ge1$에서 $f(x)=ax^2-6x$, $x\\lt1$에서 $f(x)=2x^2-b$이다.\n풀이 방향: $x=1$에서 좌·우 미분계수를 같게 하여 $a$를, 연속 조건에서 $b$를 구한다.\n정석 풀이: 우미분계수는 $(2ax-6)\\big|_{x=1}=2a-6$, 좌미분계수는 $(4x)\\big|_{x=1}=4$이므로 $2a-6=4$에서 $a=5$이다. 연속이려면 $f(1)$이 좌극한과 같아야 하므로 $a-6=2-b$이고, $a=5$를 대입하면 $-1=2-b$에서 $b=3$이다. 따라서 $ab=5\\times3=15$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -319,7 +319,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] $\\displaystyle\\lim_{x\\to a}\\dfrac{f(g(x))-f(g(a))}{x-a}$ 꼴은 합성함수의 미분계수로 계산한다.\n조건 정리: $f(x)=x^2-5x-7$이고 $x=3$일 때 $x^2=9$이다.\n풀이 방향: 주어진 식을 $f(x^2)$의 $x=3$에서의 미분계수로 본다.\n정석 풀이: $\\displaystyle\\lim_{x\\to3}\\dfrac{f(x^2)-f(9)}{x-3}$은 함수 $F(x)=f(x^2)$의 $x=3$에서의 미분계수이다. $F'(x)=f'(x^2)\\times2x$이고 $f'(x)=2x-5$이므로 $f'(9)=13$이다. 따라서 $F'(3)=f'(9)\\times2\\times3=13\\times6=78$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -553,8 +553,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 접점을 미지수로 두면 접선의 개수는 그 이차방정식의 서로 다른 실근의 개수와 같다.\n조건 정리: 곡선은 $y=x^3-2x^2$이고 점 $(n,0)$에서 접선을 긋는다.\n풀이 방향: 접점 $(t,\\,t^3-2t^2)$에서의 접선이 $(n,0)$을 지나는 조건을 세워 $t$의 방정식을 만들고, $n$에 따라 서로 다른 실근의 개수를 센다.\n정석 풀이: $f'(x)=3x^2-4x$이므로 접점 $(t,\\,t^3-2t^2)$에서의 접선은 $y-(t^3-2t^2)=(3t^2-4t)(x-t)$이다. 점 $(n,0)$을 대입하면 $-(t^3-2t^2)=(3t^2-4t)(n-t)$이고, 정리하면 $2t^3-(2+3n)t^2+4nt=0$, 즉 $t\\{2t^2-(2+3n)t+4n\\}=0$이다.\n$t=0$은 항상 하나의 해이다. 이차식 $2t^2-(2+3n)t+4n=0$의 판별식은 $D=(2+3n)^2-32n=9n^2-20n+4$이다.\n$n=1$이면 $D=-7\\lt0$이므로 이차식은 실근이 없어 $a_1=1$이다. $n=2$이면 $D=0$이므로 중근 하나가 생겨 $a_2=2$이다. $n=3,4,\\dots,8$이면 $D\\gt0$이고 두 근의 곱이 $2n\\gt0$, 합이 양수이므로 $0$이 아닌 서로 다른 두 근이 생겨 $a_n=3$이다. 서로 다른 접점은 서로 다른 접선을 주므로\n$\\displaystyle\\sum_{n=1}^{8}a_n=1+2+3\\times6=21$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-M2-05-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-05-TANGENT",
+    "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -638,8 +638,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$-\\sqrt3$",
     "solution": "[키포인트] 평균값 정리는 평균변화율과 같은 미분계수를 갖는 점 $c$가 열린구간 안에 존재함을 보장한다.\n조건 정리: $f(x)=x^3+2x+2$이고 구간은 $[-3,0]$이다.\n풀이 방향: 평균변화율을 구한 뒤 $f'(c)$와 같다고 놓아 $c$를 구하고 구간 조건으로 값을 정한다.\n정석 풀이: $f(0)=2$, $f(-3)=-27-6+2=-31$이므로 평균변화율은 $\\dfrac{f(0)-f(-3)}{0-(-3)}=\\dfrac{2-(-31)}3=11$이다. $f'(x)=3x^2+2$이므로 $3c^2+2=11$에서 $c^2=3$, 즉 $c=\\pm\\sqrt3$이다. $c$는 열린구간 $(-3,0)$에 있어야 하므로 $c=-\\sqrt3$이다.\n따라서 구하는 값은 $-\\sqrt3$이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
