@@ -502,9 +502,9 @@ window.questionBank = [
     "category": "접선의 방정식",
     "originalCategory": "접선의 방정식",
     "standardCourse": "수학II",
-    "standardUnitKey": "H15-M2-05",
-    "standardUnit": "접선의 방정식",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "H15-M2-04",
+    "standardUnit": "도함수",
+    "standardUnitOrder": 4,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -515,8 +515,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$-6$",
     "solution": "[키포인트] $(x-3)^2$로 나눈 나머지는 일차식이며, $x=3$에서 함수값과 미분계수가 원래 함수와 같다.\n$f(x)=(x-3)^2Q(x)+R(x)$이고 $R(x)=mx+n$이라 하자. $x=3$을 대입하면 $R(3)=f(3)=2$이다. 양변을 미분한 뒤 $x=3$을 대입하면 $(x-3)$을 인수로 갖는 항들은 모두 $0$이 되어 $R'(3)=f'(3)=4$이다.\n따라서 $R'(x)=4$이고 $R(x)=4(x-3)+2=4x-10$이다. 그러므로 $R(1)=4-10=-6$이다.\n따라서 구하는 값은 $-6$이다.",
-    "subUnitKey": "H15-M2-05-TANGENT",
-    "subUnit": "접선의 방정식",
+    "subUnitKey": "H15-M2-04-DERIVATIVE",
+    "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
