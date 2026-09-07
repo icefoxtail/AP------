@@ -213,6 +213,11 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x)$, $g(x)$의 그래프가 각각 그림과 같을 때, $\\displaystyle\\lim_{x\\to1+}[f(x+1)]+\\lim_{x\\to1-}g(x)$의 값은? (단, $[x]$는 $x$보다 크지 않은 최대의 정수이다.) [4.1점]",
     "image": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8.png",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "f와 g의 열린 점·닫힌 점, 좌우극한, 최대정수함수의 접근을 설명하는 해설 그래프",
+    "solutionImageCaption": "x→1+이면 f의 입력은 2+이고, 1보다 조금 큰 값의 최대정수는 1이다.",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "choices": [
       "$0$",
       "$1$",
@@ -440,6 +445,11 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림은 함수 $y=1$과 $y=0$의 그래프의 일부이다. 두 점 $A$, $B$사이를 삼차함수 $y=f(x)$의 그래프를 이용하여 연결하였다. 이와 같이 연결한 그래프 전체를 나타내는 함수가 모든 실수에서 미분가능 할 때, $f(2)$의 값은? [4.7점]",
     "image": "assets/images/22_팔마고_2학기_중간_고2_수학II/q16.png",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "수평선과 삼차함수의 접합점 A·B에서 함수값과 도함수값을 맞추는 해설 그림",
+    "solutionImageCaption": "A=(0,1), B=(1,0)에서 네 접합 조건을 세워 f(2)=5를 구한다.",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "choices": [
       "$4$",
       "$5$",
