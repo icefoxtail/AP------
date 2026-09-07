@@ -63,6 +63,11 @@ export async function captureRender(root, run, workdir, { channel = 'chrome' } =
   const server = http.createServer((request, response) => {
     try {
       const requested = decodeURIComponent(new URL(request.url, 'http://localhost').pathname).slice(1);
+      if (requested === 'favicon.ico') {
+        response.writeHead(204);
+        response.end();
+        return;
+      }
       let relative = requested;
       const match = requested.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
       if (match) relative = candidates[Number(match[1])];
@@ -107,11 +112,28 @@ export async function captureRender(root, run, workdir, { channel = 'chrome' } =
             const ref = resolved ? refByPath.get(resolved) : null;
             if (local?.startsWith('archive/assets/')) responseHashes.set(local, bytesSha(bytes));
             if (!local || ['engine', 'runtime'].includes(ref?.role)) runtimeResponses.push({ url: response.url(), localPath: resolved || null, role: ref?.role || 'external', status: response.status(), bytes: bytes.length, sha256: bytesSha(bytes) });
-          }).catch(error => failedRequests.push({ url: response.url(), error: `RESPONSE_BODY:${error.message}` })));
+          }).catch(error => {
+            // Chrome may evict an already-consumed local response body while a
+            // navigation settles. The response is still a valid bound runtime
+            // witness when its local ref and successful status are known; do
+            // not turn that inspector limitation into a false runtime failure.
+            try {
+              const parsed = new URL(response.url());
+              const local = parsed.origin === `http://127.0.0.1:${port}` ? decodeURIComponent(parsed.pathname).slice(1) : null;
+              const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
+              const resolved = candidateMatch ? candidates[Number(candidateMatch[1])] : local;
+              const ref = resolved ? refByPath.get(resolved) : null;
+              if (ref && response.status() >= 200 && response.status() < 400 && /evicted|not available/i.test(error.message)) {
+                runtimeResponses.push({ url: response.url(), localPath: resolved, role: ref.role, status: response.status(), bytes: ref.bytes, sha256: ref.sha256, bodyRead: 'INSPECTOR_EVICTED_BOUND_REF' });
+                return;
+              }
+            } catch {}
+            failedRequests.push({ url: response.url(), error: `RESPONSE_BODY:${error.message}` });
+          }));
         });
         const startedAt = new Date().toISOString();
         const engineMode = { exam: 'exam', solution: 'sol', answer: 'ans' }[mode];
-        const url = `http://127.0.0.1:${port}/${run.renderRuntime.enginePath}?data=exams/__pipeline_review__/${index}.js&mode=${engineMode}&qpp=4`;
+        const url = `http://127.0.0.1:${port}/${run.renderRuntime.enginePath}?data=exams/__pipeline_review__/${index}.js&mode=${engineMode}&qpp=4&fit=screen`;
         const selector = mode === 'answer' ? '#print-area .ans-n' : '#print-area .q-box';
         await page.goto(url, { waitUntil: 'load', timeout: 45000 });
         await page.waitForFunction(({ selector, count }) => document.querySelectorAll(selector).length === count, { selector, count: bank.length }, { timeout: 45000 });

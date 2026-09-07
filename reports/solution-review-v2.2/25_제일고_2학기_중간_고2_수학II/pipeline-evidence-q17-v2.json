@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_EVIDENCE_v1",
+  "evidenceId": "jeil-r5:q17:v2",
+  "runId": "jeil-20260907-visual-r5",
+  "revision": 1,
+  "axis": "v2",
+  "questionUid": "archive/_generated/pipeline-review/20260907-jeil-visual/source.js|25_제일고_2학기_중간_고2_수학II|17",
+  "status": "PASS",
+  "validityStatus": "FROZEN",
+  "reviewerId": "codex-independent-v2-artifact-only",
+  "reviewSessionId": "01a079cd-b592-7803-8053-8b88ab214681",
+  "reviewerModelOrAgent": "codex-independent-v2-artifact-only",
+  "priorReviewVisibility": "NONE",
+  "inputSha": "sha256:b0cc8928f661851d7896c374d8edb52a31dd937186b353fbda4bf06b0b158554",
+  "reviewStartInputSha": "sha256:b0cc8928f661851d7896c374d8edb52a31dd937186b353fbda4bf06b0b158554",
+  "reviewEndInputSha": "sha256:b0cc8928f661851d7896c374d8edb52a31dd937186b353fbda4bf06b0b158554",
+  "startedAt": "2026-09-07T03:43:37.473Z",
+  "frozenAt": "2026-09-07T03:43:38.474Z",
+  "findings": [],
+  "payload": {
+    "freshBlind": true,
+    "inputBundle": {
+      "path": "archive/_generated/pipeline-review/20260907-jeil-visual-core-r5/bundles/q17-v2.json",
+      "bytes": 383,
+      "sha256": "sha256:73bed0e87d31a7af5f3c7e9411bb9cb41c9030b98da593784bc9c6ba63c49dbe"
+    },
+    "specSha": "sha256:f548eedef00cb845ac4a3f605370cd3d59cd6170a1ccc19dea142e44b85954bd",
+    "artifactPath": "archive/assets/images/25_제일고_2학기_중간_고2_수학II/q17-solution.svg",
+    "artifactSha": "sha256:7961e4c496ee34fdc6d915a9de83df58d86b6f79c625ebc732c8956ba41f5b39",
+    "fact": {
+      "schemaVersion": "APMATH_VISUAL_FACT_v2",
+      "questionUid": "archive/_generated/pipeline-review/20260907-jeil-visual/source.js|25_제일고_2학기_중간_고2_수학II|17",
+      "visualType": "cartesian",
+      "semantic": {
+        "xMin": -0.4,
+        "xMax": 4.7,
+        "yMin": 0,
+        "yMax": 9.1,
+        "branches": [
+          {
+            "id": "branch_p",
+            "formula": "x+1",
+            "points": [
+              {
+                "id": "p0",
+                "x": -0.4,
+                "y": 0.6
+              },
+              {
+                "id": "p1",
+                "x": 4.7,
+                "y": 5.7
+              }
+            ],
+            "leftClosed": true,
+            "rightClosed": true
+          },
+          {
+            "id": "branch_q",
+            "formula": "x^2-3*x+4",
+            "points": [
+              {
+                "id": "q0",
+                "x": -0.4,
+                "y": 5.36
+              },
+              {
+                "id": "q1",
+                "x": 1,
+                "y": 2
+              },
+              {
+                "id": "q2",
+                "x": 3,
+                "y": 4
+              },
+              {
+                "id": "q3",
+                "x": 4.2,
+                "y": 9.04
+              }
+            ],
+            "leftClosed": true,
+            "rightClosed": true
+          }
+        ],
+        "keyPoints": [
+          {
+            "id": "intersection_x1",
+            "x": 1,
+            "y": 2
+          },
+          {
+            "id": "intersection_x3",
+            "x": 3,
+            "y": 4
+          }
+        ]
+      }
+    },
+    "structureSha": "sha256:479ed7fba8066f31d1da13079eec2d34dfd811eb47cb59d7a90e9ec7416cd8c6",
+    "artifactReviewThreadId": "01a079cd-b592-7803-8053-8b88ab214681"
+  },
+  "inputVisibilityProfile": "ARTIFACT_ONLY"
+}

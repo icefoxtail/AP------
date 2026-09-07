@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_EVIDENCE_v1",
+  "evidenceId": "jeil-r5:q16:v1",
+  "runId": "jeil-20260907-visual-r5",
+  "revision": 1,
+  "axis": "v1",
+  "questionUid": "archive/_generated/pipeline-review/20260907-jeil-visual/source.js|25_제일고_2학기_중간_고2_수학II|16",
+  "status": "PASS",
+  "validityStatus": "FROZEN",
+  "reviewerId": "codex-independent-v1-source-only",
+  "reviewSessionId": "01a079c1-7108-71f1-8b4f-41c44566b909",
+  "reviewerModelOrAgent": "codex-independent-v1-source-only",
+  "priorReviewVisibility": "NONE",
+  "inputSha": "sha256:b0cc8928f661851d7896c374d8edb52a31dd937186b353fbda4bf06b0b158554",
+  "reviewStartInputSha": "sha256:b0cc8928f661851d7896c374d8edb52a31dd937186b353fbda4bf06b0b158554",
+  "reviewEndInputSha": "sha256:b0cc8928f661851d7896c374d8edb52a31dd937186b353fbda4bf06b0b158554",
+  "startedAt": "2026-09-07T03:43:37.473Z",
+  "frozenAt": "2026-09-07T03:43:38.474Z",
+  "findings": [],
+  "payload": {
+    "freshBlind": true,
+    "inputBundle": {
+      "path": "archive/_generated/pipeline-review/20260907-jeil-visual-core-r5/bundles/q16-v1.json",
+      "bytes": 502,
+      "sha256": "sha256:7faa6f79004117441fa4b43c09ee5230e63847567bc91ed7190487e330171806"
+    },
+    "specSha": "sha256:f548eedef00cb845ac4a3f605370cd3d59cd6170a1ccc19dea142e44b85954bd",
+    "fact": {
+      "schemaVersion": "APMATH_VISUAL_FACT_v2",
+      "questionUid": "archive/_generated/pipeline-review/20260907-jeil-visual/source.js|25_제일고_2학기_중간_고2_수학II|16",
+      "visualType": "cartesian",
+      "semantic": {
+        "xMin": -0.5,
+        "xMax": 4,
+        "yMin": -0.5,
+        "yMax": 2.5,
+        "branches": [
+          {
+            "id": "h_zero_left",
+            "formula": "0",
+            "points": [
+              {
+                "id": "l0",
+                "x": -0.5,
+                "y": 0
+              },
+              {
+                "id": "l1",
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "leftClosed": true,
+            "rightClosed": false
+          },
+          {
+            "id": "h_two_middle",
+            "formula": "2",
+            "points": [
+              {
+                "id": "m0",
+                "x": 0,
+                "y": 2
+              },
+              {
+                "id": "m1",
+                "x": 2,
+                "y": 2
+              }
+            ],
+            "leftClosed": false,
+            "rightClosed": false
+          },
+          {
+            "id": "h_zero_right",
+            "formula": "0",
+            "points": [
+              {
+                "id": "r0",
+                "x": 2,
+                "y": 0
+              },
+              {
+                "id": "r1",
+                "x": 4,
+                "y": 0
+              }
+            ],
+            "leftClosed": false,
+            "rightClosed": true
+          }
+        ],
+        "keyPoints": [
+          {
+            "id": "h_one_at_t0",
+            "x": 0,
+            "y": 1
+          },
+          {
+            "id": "h_one_at_t2",
+            "x": 2,
+            "y": 1
+          }
+        ]
+      }
+    },
+    "visualRequirementSignal": "SHOULD_BE_RECOMMENDED",
+    "sourceReviewThreadId": "01a079c1-7108-71f1-8b4f-41c44566b909"
+  },
+  "inputVisibilityProfile": "SOURCE_ONLY"
+}

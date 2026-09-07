@@ -388,7 +388,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 기함수인 다항함수의 도함수는 우함수이므로 $f'(-1)=f'(1)$이다.\n조건 정리: $f(-1)=2$이고 $f$가 기함수이므로 $f(1)=-2$이다.\n풀이 방향: 치환으로 첫 극한에서 $f'(1)$을 구하고, 구하는 식을 인수분해하여 미분계수로 바꾼다.\n정석 풀이: $f$는 기함수이고 $f(-1)=2$이므로 $f(1)=-2$이다. $t=-x$로 놓으면 $x\\to-1$일 때 $t\\to1$이고 $x^2-1=t^2-1=(t-1)(t+1)$이므로\n$\\displaystyle\\lim_{x\\to-1}\\dfrac{f(1)-f(-x)}{x^2-1}=\\lim_{t\\to1}\\dfrac{f(1)-f(t)}{(t-1)(t+1)}=-\\dfrac{f'(1)}2=3$에서 $f'(1)=-6$이다.\n기함수인 다항함수는 홀수차항만으로 이루어지므로 그 도함수는 짝수차항만으로 이루어진 우함수이다. 따라서 $f'(-1)=f'(1)=-6$이다.\n$f(-1)=2$이므로 구하는 극한은\n$\\displaystyle\\lim_{x\\to-1}\\dfrac{\\{f(x)\\}^2-4}{x+1}=\\lim_{x\\to-1}\\dfrac{f(x)-f(-1)}{x-(-1)}\\times\\{f(x)+2\\}=f'(-1)\\times4=-24$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -421,7 +421,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 미분가능하면 우선 연속이므로 좌·우 미분계수가 같다는 조건과 연속 조건을 함께 쓴다.\n조건 정리: 식이 갈라지는 점은 $x=a$이고, 왼쪽은 $2x-3$, 오른쪽은 $x^2-2x+b$이다.\n풀이 방향: 미분계수 조건으로 $a$를, 연속 조건으로 $b$를 구한 뒤 $f(a+b)$를 계산한다.\n정석 풀이: 왼쪽 식의 미분계수는 $2$이고 오른쪽 식의 미분계수는 $2x-2$이다. $x=a$에서 두 값이 같아야 하므로 $2=2a-2$에서 $a=2$이다.\n연속 조건에서 $2a-3=a^2-2a+b$이고, $a=2$를 대입하면 $1=4-4+b$이므로 $b=1$이다.\n$a+b=3$이고 $3\\ge a=2$이므로 오른쪽 식을 쓰면 $f(3)=9-6+1=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-03-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -518,6 +518,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "②",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "교점 개수 함수 h(t)가 t=0과 t=2에서 0, 1, 2, 1, 0으로 변하는 계단 그래프",
+    "solutionImageCaption": "t=0, 2에서 h(t)의 값이 달라지므로 곱을 연속으로 만들려면 q(0)=q(2)=0이어야 한다.",
+    "solutionImageSize": "large",
+    "solutionImageStatus": "asset_verified",
     "solution": "[키포인트] 제곱근의 정의역과 부호를 먼저 확인한 뒤 교점의 개수가 바뀌는 지점을 찾는다.\n조건 정리: $\\sqrt{4x-1}$이 정의되려면 $x\\ge\\dfrac14$이고, 우변은 항상 $0$ 이상이다.\n풀이 방향: $t$의 부호에 따라 교점의 개수 $h(t)$를 구한 뒤, $h(t)$가 불연속인 지점에서 곱이 연속이 되도록 이차식의 값을 정한다.\n정석 풀이: 교점은 $tx=\\sqrt{4x-1}$을 만족한다. 정의역에서 $x\\ge\\dfrac14>0$이므로 $t<0$이면 좌변이 음수이고 우변이 $0$ 이상이어서 교점이 없다. $t=0$이면 $\\sqrt{4x-1}=0$에서 $x=\\dfrac14$이므로 교점은 한 개이다.\n$t>0$이면 양변이 모두 $0$ 이상이므로 제곱하여 $t^2x^2-4x+1=0$을 얻는다. 판별식은 $16-4t^2$이므로 $0<t<2$일 때 서로 다른 두 실근, $t=2$일 때 중근 한 개, $t>2$일 때 실근이 없다. $0<t<2$일 때 작은 근은 $x=\\dfrac{2-\\sqrt{4-t^2}}{t^2}=\\dfrac1{2+\\sqrt{4-t^2}}>\\dfrac14$이고 큰 근은 이보다 크므로 두 근 모두 원래 정의역을 만족한다. 따라서 $h(t)=0$ $(t<0)$, $h(0)=1$, $h(t)=2$ $(0<t<2)$, $h(2)=1$, $h(t)=0$ $(t>2)$이다.\n$q(t)=t^2+at+b$라 하자. $t=0$에서 $h(t)q(t)$의 좌극한은 $0$, 함숫값은 $q(0)$, 우극한은 $2q(0)$이므로 연속이려면 $q(0)=0$이어야 한다. 또한 $t=2$에서 좌극한은 $2q(2)$, 함숫값은 $q(2)$, 우극한은 $0$이므로 $q(2)=0$이어야 한다. 따라서 $q(t)=t(t-2)=t^2-2t$이고 $a=-2$, $b=0$이다.\n그러므로 $a+b=-2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
@@ -552,9 +557,14 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "③",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "p(x)=x+1과 q(x)=x²−3x+4의 두 교점 x=1, 3과 branch 전환 가능 지점을 나타낸 그래프",
+    "solutionImageCaption": "두 branch가 만나는 x=1, 3에서만 연속성을 유지하며 식을 바꿀 수 있다.",
+    "solutionImageSize": "large",
+    "solutionImageStatus": "asset_verified",
     "solution": "[키포인트] 곱이 $0$이므로 각 $x$에서 두 식 중 하나를 택하며, 연속이려면 두 함숫값이 같은 점에서만 바꿀 수 있다.\n조건 정리: $p(x)=x+1$, $q(x)=x^2-3x+4$라 하면 $f$는 각 점에서 $p$ 또는 $q$의 값을 갖는다.\n풀이 방향: 두 그래프의 교점을 찾아 식을 바꿀 수 있는 점을 정하고, 미분 불가능한 점이 하나뿐이라는 조건으로 경우를 나눈다.\n정석 풀이: $p(x)=q(x)$에서 $x+1=x^2-3x+4$, 즉 $(x-1)(x-3)=0$이므로 교점의 $x$좌표는 $1$과 $3$이다. 연속함수가 두 식 사이를 오가려면 함숫값이 같아야 하므로 식이 바뀔 수 있는 점은 $x=1$과 $x=3$뿐이다.\n$p'(x)=1$, $q'(x)=2x-3$이므로 $x=1$에서 두 기울기는 $1$과 $-1$, $x=3$에서는 $1$과 $3$으로 각각 다르다. 따라서 어느 점에서 식을 바꾸더라도 그 점에서 미분 불가능하고, 미분 불가능한 점이 단 하나이므로 두 점 중 정확히 한 곳에서만 식을 바꾸어야 한다.\n$p(0)=1$, $p(2)=3$, $p(4)=5$이고 $q(0)=4$, $q(2)=2$, $q(4)=8$이므로 가능한 경우는 다음과 같다.\n$x=1$에서 $p$에서 $q$로 바꾸면 $f(0)+f(2)+f(4)=1+2+8=11$이다.\n$x=1$에서 $q$에서 $p$로 바꾸면 $4+3+5=12$이다.\n$x=3$에서 $p$에서 $q$로 바꾸면 $1+3+8=12$이다.\n$x=3$에서 $q$에서 $p$로 바꾸면 $4+2+5=11$이다.\n그러므로 최솟값은 $11$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-02-APPLICATION_OF_CALCULUS",
-    "subUnit": "application of calculus",
+    "subUnit": "미분·적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -703,8 +713,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$y=-3x+3$",
     "solution": "[키포인트] 접선의 기울기는 도함숫값이므로 도함수의 최솟값을 구하면 된다.\n조건 정리: $f(x)=x^3-3x^2+2$이므로 $f'(x)$는 아래로 볼록한 이차함수이다.\n풀이 방향: $f'$을 완전제곱꼴로 고쳐 최솟값과 그때의 $x$를 구한 뒤 접선을 세운다.\n정석 풀이: $f'(x)=3x^2-6x=3(x-1)^2-3$이므로 접선의 기울기의 최솟값은 $-3$이고, 이때 접점의 $x$좌표는 $1$이다.\n$f(1)=1-3+2=0$이므로 접점은 $(1,0)$이다. 기울기가 $-3$이고 점 $(1,0)$을 지나는 직선은 $y-0=-3(x-1)$이므로 $y=-3x+3$이다.\n따라서 구하는 접선의 방정식은 $y=-3x+3$이다.",
-    "subUnitKey": "H15-M2-06-DERIVATIVE",
-    "subUnit": "derivative",
+    "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+    "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
