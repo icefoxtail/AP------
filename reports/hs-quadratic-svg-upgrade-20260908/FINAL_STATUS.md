@@ -294,3 +294,12 @@ r27 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 r27 current v2 preparation은 새 `hs-quadratic-r27c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r27 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 120개 candidate visual, 176개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+## r28 mixed coordinate/quadratic continuation update (2026-09-09)
+
+r28은 8개 문항을 adaptive batch로 처리했다. 22 팔마고 q2/q6/q14/q15/q17/q18·23 금당고 q17·23 제일고 q8을 대상으로 source-only expected fact → 독립 검산 → candidate SVG → artifact-only V2 → V3 parity → solution freeze → desktop/mobile local render 순서를 적용했다. 수직선 7건과 포물선 그래프 1건에 대해 V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local render 8/8 및 overflow 0이다.
+
+r28 candidate bank validation은 59 source bank·1295 row·unique candidate visual 267건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 267건이 현재 candidate이고 112건이 남아 있다. source solution static issueRows는 0으로 유지되며 fresh expected fact 누적은 현재 counting 기준 262건, 잔여 168건이다. 최신 상태는 [r28 V3 closure snapshot](394_current_closure_snapshot_r28_v3_closed.json)이다.
+
+r28 current v2 preparation은 새 `hs-quadratic-r28c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r28 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 112개 candidate visual, 168개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
