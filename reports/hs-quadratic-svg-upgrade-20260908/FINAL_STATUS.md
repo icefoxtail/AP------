@@ -110,3 +110,19 @@ q13·q19·q9·q15는 source answer/조건 결함으로 보류했다.
 - [full candidate bank manifest r7](32_full_candidate_bank_manifest_r7.json)
 - [full candidate bank validation r7](33_full_candidate_bank_validation_r7.json)
 - [current closure snapshot r7](34_current_closure_snapshot_r7.json)
+
+## r8/r9 source correctness repair update (2026-09-08)
+
+사용자 승인(`source correctness hold 5건을 수정해`, q13에 `k≠0` 조건 추가)에 따라 다음 5건을 candidate-only로 최소 수정했다.
+
+- 26 금당고 q13: content에 `k≠0`을 추가하고, `k=0`이면 두 그래프가 일치한다는 예외를 solution에 명시. 정답 ② 유지.
+- 26 금당고 q17: 정확히 세 교점의 범위 `1<a<4`에는 최댓값이 없으므로 보기 ⑤를 `없다`로 보강하고 answer를 ⑤로 수정.
+- 26 매산여고 q19: `t=0,1,4,5`, 합 10에 맞춰 answer를 ④로 수정.
+- 26 팔마고 q9: 둘레 최댓값 `51/2`에 맞춰 answer를 ①로 수정.
+- 26 팔마고 q15: `f(3)=43`에 맞춰 answer를 ③으로 수정.
+
+독립 재검산은 5/5, candidate-r9 V1 source-only 5/5, V2 artifact-only 5/5, V3 parity 5/5(FAIL 0), SVG static 5/5, candidate bank validation 430 target / 59 banks / 1295 bank rows / errors 0, 신규 SVG local desktop/mobile overflow 0으로 기록했다. 함수 문항은 q13·q19·q15 그래프, q17은 열린 매개변수 수직선, q9는 두 포물선과 직사각형 도식으로 구성했다.
+
+새 evidence는 [승인 수리계획](36_approved_source_repair_plan_r8.json), [독립 재검산](38_candidate_source_repair_independent_recheck_r8.json), [V1](39_approved_source_only_v1_expected_facts_r9.json), [candidate SVG manifest](40_approved_candidate_visual_manifest_r9.json), [candidate bank r9](41_approved_candidate_bank_manifest_r9.json), [static check](42_approved_candidate_visual_static_check_r9.json), [V2](43_approved_v2_artifact_only_r9.json), [V3](44_approved_v3_parity_r9.json), [local render](45_local_svg_render_review_r9.json), [manual render review](49_local_render_manual_review_r9.json), [bank validation](46_approved_candidate_bank_validation_r9.json), [solution freeze](47_candidate_solution_freeze_source_resolved_r9.json), [closure snapshot](48_current_closure_snapshot_r9.json)이다.
+
+production JS/SVG/DB/index에는 쓰지 않았다. 로컬 browser `file://` capture가 정책으로 차단되어 provider-attested render capture/FINAL_AUDIT은 여전히 미완료이며, 전체 430문항 current V1/V2/V3와 source registry authority도 남은 gate다. 따라서 이 revision도 `CANDIDATE_ONLY / FINAL_PASS_FORBIDDEN`이다.
