@@ -1,0 +1,24 @@
+import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto'; import { fileURLToPath } from 'node:url';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..','..');const REPORT=path.join(ROOT,'reports','hs-quadratic-svg-upgrade-20260908');const FACTS=JSON.parse(fs.readFileSync(path.join(REPORT,'118_specialist_v1_expected_facts_r14.json'),'utf8'));const OUTPUT=path.join(REPORT,'128_independent_recheck_specialist_r14.json');
+const key=(row)=>`${row.sourceJsPath}|${row.id}`;const expectedByKey=new Map(FACTS.rows.map(row=>[key(row),row.expectedFacts]));
+const checks=[
+ ['archive/exams/original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js',1,{solutionInterval:[3,5],leftClosed:true,rightClosed:false,integerSolutions:[3,4],count:2,result:2}],
+ ['archive/exams/original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js',13,{solutionInterval:[3,4],leftClosed:false,rightClosed:false,result:12}],
+ ['archive/exams/original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js',2,{solutionInterval:[-2,3],leftClosed:false,rightClosed:false,result:-7}],
+ ['archive/exams/original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js',1,{function:{a:1,b:4,c:4},vertex:[-2,0],minimum:0,result:4}],
+ ['archive/exams/original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js',19,{solutionInterval:[1,2],leftClosed:false,rightClosed:false}],
+ ['archive/exams/original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js',2,{function:{a:1,b:-1,c:4},vertex:[0.5,3.75],line:{slope:1,intercept:3},tangentPoint:[1,4],result:3}],
+ ['archive/exams/original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js',20,{function:{a:-2,b:4,c:3,domain:[-1,3]},vertex:[1,5],maximum:5,result:6}],
+ ['archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js',13,{function:{a:1,b:-4,c:-4,domain:[-2,3]},vertex:[2,-8],maximum:8,minimum:-8,result:-4}],
+ ['archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js',19,{solutionInterval:[-14,-11],leftClosed:true,rightClosed:false,integerSolutions:[-14,-13,-12],result:2}],
+ ['archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js',20,{function:{a:-1,b:4,c:0,domain:[0,3]},vertex:[2,4],line:{slope:1,intercept:0},result:18}],
+ ['archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js',6,{solutionInterval:[4/3,6],leftClosed:false,rightClosed:false,integerSolutions:[2,3,4,5],count:4,result:4}],
+ ['archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js',3,{solutionInterval:[null,2],leftClosed:false,rightClosed:false,result:1}],
+ ['archive/exams/original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js',15,{solutionInterval:[0,1],leftClosed:false,rightClosed:false,count:0,result:0}],
+ ['archive/exams/original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js',4,{solutionInterval:[-4,6],leftClosed:true,rightClosed:true,integerSolutions:[-4,-3,-2,-1,0,1,2,3,4,5,6],count:11,result:11}],
+ ['archive/exams/original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js',9,{solutionInterval:[3,17/3],leftClosed:true,rightClosed:true,integerSolutions:[3,4,5],sum:12,result:12}],
+ ['archive/exams/original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js',5,{solutionInterval:[-2,1],leftClosed:false,rightClosed:true,integerSolutions:[-1,0,1],count:3,result:3}],
+ ['archive/exams/original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js',9,{solutionInterval:[3,6],leftClosed:true,rightClosed:false,integerSolutions:[3,4,5],maximum:5,result:15}],
+ ['archive/exams/original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js',21,{solutionInterval:[-1,3],leftClosed:false,rightClosed:false}],
+];
+const rows=[];for(const [sourceJsPath,id,independentlyComputedFacts] of checks){const rowKey=`${sourceJsPath}|${id}`;const expected=expectedByKey.get(rowKey);if(!expected)throw new Error(`V1 fact missing for ${rowKey}`);const parity=Object.entries(independentlyComputedFacts).every(([field,value])=>JSON.stringify(expected[field])===JSON.stringify(value));rows.push({questionUid:FACTS.rows.find(row=>key(row)===rowKey).questionUid,sourceJsPath,id,independentlyComputedFacts,expectedFactParity:parity,independentCalculationStatus:parity?'MATCH':'MISMATCH'});}const mismatchCount=rows.filter(row=>!row.expectedFactParity).length;const output={schemaVersion:'HS_QUADRATIC_INDEPENDENT_RECHECK_SPECIALIST_R14',status:mismatchCount?'INDEPENDENT_RECHECK_FAIL':'INDEPENDENT_RECHECK_PASS_NO_FINAL_PASS',productionAuthorized:false,inputVisibilityProfile:'SOURCE_ONLY_INDEPENDENT_CALCULATOR',priorReviewVisibility:'NONE',rows,checkedRows:rows.length,mismatchCount,calculatorDigest:crypto.createHash('sha256').update(JSON.stringify(checks,null,2)).digest('hex'),note:'Independent second-pass arithmetic for the 18 r14 rows; candidate-only row evidence, not full-scope final PASS.'};fs.writeFileSync(OUTPUT,`${JSON.stringify(output,null,2)}\n`,'utf8');console.log(JSON.stringify({status:output.status,checkedRows:output.checkedRows,mismatchCount:output.mismatchCount},null,2));
