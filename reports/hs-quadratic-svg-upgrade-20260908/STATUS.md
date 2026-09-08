@@ -69,3 +69,11 @@
 상세: `36_approved_source_repair_plan_r8.json` → `38_candidate_source_repair_independent_recheck_r8.json` → `39_approved_source_only_v1_expected_facts_r9.json` → `40_approved_candidate_visual_manifest_r9.json` → `41_approved_candidate_bank_manifest_r9.json` → `42_approved_candidate_visual_static_check_r9.json` → `43_approved_v2_artifact_only_r9.json` → `44_approved_v3_parity_r9.json` → `45_local_svg_render_review_r9.json` → `49_local_render_manual_review_r9.json` → `46_approved_candidate_bank_validation_r9.json` → `47_candidate_solution_freeze_source_resolved_r9.json`.
 
 최종 봉인은 아니다. provider-attested FINAL_AUDIT, source registry authority, 전체 430문항 current V1/V2/V3, current render capture 및 독립 render-review가 남아 있으므로 상태는 `CANDIDATE_ONLY / FINAL_PASS_FORBIDDEN`이다.
+
+## r10 current source application update
+
+승인된 5건을 별도 브랜치 source JS에 실제 반영했다. 변경 범위는 3개 파일·5개 문항·승인 필드로 제한되었고, source repair apply validation 오류는 0건이다. source holds는 5→0으로 해소되었다.
+
+수정 후 V1 source-only packet은 430/430, unique 430, leak 0으로 재생성·검증했다. repaired solution freeze 5/5 및 source↔candidate parity 5/5이며, 기존 5건 SVG의 V2/V3는 5/5·FAIL 0, local desktop/mobile overflow 0이다.
+
+현재 요약은 `57_current_closure_snapshot_r10.json`이다. 별도 브랜치이므로 검토 가능한 실제 source diff는 존재하지만, source registry·DB/index 갱신, provider-attested FINAL_AUDIT, 전체 430문항 independent freeze/V1/V2/V3 및 final render review가 남아 최종 PASS는 보류한다.
