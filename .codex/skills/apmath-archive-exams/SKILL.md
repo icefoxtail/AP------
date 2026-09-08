@@ -11,6 +11,17 @@ and real browser rendering are evidenced.
 
 ## Scope and routing
 
+The current common execution topology is defined by
+archive/tools/pipeline-core/AGENT_BUDGET.md and applies to original archive
+imports as well as similar-question work. This skill owns source fidelity,
+answer/solution completion, archive metadata, and promotion quality; its
+domain stages do not authorize extra provider or agent launches. Verify the
+active Git worktree skill set before starting a pipeline-dependent task.
+
+~~~powershell
+node tools/skills/verify-skills.mjs
+~~~
+
 - This skill owns original exam extraction, answer/solution completion, review,
   production promotion, and archive audits.
 - For PDF/JPG/scan extraction, use the V2 full-page-first pipeline under
@@ -147,6 +158,12 @@ legacy exceptions must remain visible in the report.
   `full` is an image-size value and does not imply `fullwidth`.
 
 ## Browser QA and evidence
+
+For pipeline-core v2 work, record MACHINE_CURRENT collection separately from
+the independent RENDER_REVIEW. Capture every required mode and viewport,
+including the last question and every continuation block; a machine capture
+cannot be promoted to semantic render PASS by itself. Unchanged blocks require
+current validated reuse evidence.
 
 Serve the repository and open `archive/engine.html` with the production JS
 path. Record a durable `reports/browser_render_check.md` or equivalent
