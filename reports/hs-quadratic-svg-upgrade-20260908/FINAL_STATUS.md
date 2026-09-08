@@ -240,3 +240,12 @@ clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 
 r11 deterministic batch 25건은 endpoint·접선식·기울기 label을 보강한 뒤 V1 25/25, artifact-only V2 25/25, V3 parity 25/25(FAIL 0), static 25/25, local desktop/mobile overflow 0으로 닫았다. 최신 단일 상태는 [r11 V3 closed snapshot](80_current_closure_snapshot_r11_v3_closed.json)이다.
 
 이 결과는 전체 430문항 분모의 25건 부분 closure이며, 나머지 405건의 fresh expected fact와 335건의 미생성 candidate visual, full solution freeze, provider-attested FINAL_AUDIT, 실제 provider render capture/review, registry authority는 여전히 남아 있다. 따라서 r11 batch의 row-level PASS를 전체 최종 PASS로 승격하지 않는다.
+## r21 specialist function/inequality continuation update (2026-09-08)
+
+r21은 최신 `origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22`을 병합한 `codex/hs-quadratic-svg-upgrade`에서 진행했다. 남은 신규 대상 18건을 source-only expected fact → 독립 검산 → candidate SVG → artifact-only V2 → V3 parity → solution freeze → desktop/mobile local render 순서로 처리했다. 수직선 15건과 함수 그래프 3건에 대해 V1 18/18, 독립 검산 18/18 mismatch 0, candidate static 18/18, V2 18/18, V3 18/18(FAIL 0), candidate solution freeze 18/18, local render 18/18 및 overflow 0을 기록했다. V3 비교기의 한국어 수량 표현 false negative 1건은 문항·해설·SVG를 바꾸지 않고 비교기만 보정한 뒤 V2→V3 재검하여 18/18로 닫았다.
+
+r21 candidate bank validation은 59 source bank·1295 row·unique candidate visual 217건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 217건이 현재 candidate이고 162건이 남아 있다. fresh expected fact 누적은 현재 counting 기준 201건이며 229건이 남아 있다. 최신 상태는 [r21 V3 closure snapshot](253_current_closure_snapshot_r21_v3_closed.json)이다.
+
+r21 current v2 preparation retry는 충돌한 r21b partial 결과와 분리한 `hs-quadratic-r21c` work-batch에서 59 run·430/430·오류 0으로 완료했다. machine STATIC/METADATA evidence는 860개·validation 오류 0이다. 원격 continuation을 위해 r21 candidate bank가 참조하는 SVG 217개와 r21 full/scoped bank·pipeline evidence·render evidence를 packaging해 push할 예정이다. production source/assets 및 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r21 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current source solution static audit의 별도 잔여 11건, 전체 430 solution freeze, remaining fresh V1/V2/V3, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
