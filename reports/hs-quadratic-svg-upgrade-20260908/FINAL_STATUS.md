@@ -193,6 +193,14 @@ r16 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는�
 
 재개 명령은 [remote handoff manifest](167_remote_branch_handoff_r16.json)에 보존했다. 이후 작업은 `git fetch origin` 후 `git switch codex/hs-quadratic-svg-upgrade`로 이어갈 수 있다.
 
+## r17 specialist continuation update (2026-09-08)
+
+r17은 r16 수정 snapshot의 누적값을 기준으로 남은 specialist 18건을 새로 처리했다. 수직선 16건과 함수 그래프 2건에 대해 V1 18/18, 독립 검산 18/18 mismatch 0, candidate solution freeze 18/18, static 18/18, V2 18/18, V3 18/18(FAIL 0), local desktop/mobile render 18/18 및 overflow 0을 기록했다. r17 대상 중 r16과의 중복은 제거했으며 superseded prior candidate는 0건이다.
+
+r17 candidate bank validation은 59 source bank·1295 row·unique candidate visual 149건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 149건이 현재 candidate이고 230건이 남아 있다. 최신 상태는 [r17 V3 closure snapshot](183_current_closure_snapshot_r17_v3_closed.json)이다.
+
+r17 current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이다. 다만 실제 browser capture 부재로 whole-job freeze와 provider-attested FINAL_AUDIT은 아직 시도하지 않았으므로 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.

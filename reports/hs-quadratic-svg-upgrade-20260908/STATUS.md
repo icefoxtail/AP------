@@ -104,11 +104,17 @@ r15 18건(수직선 16, 함수 그래프 2)은 source-only V1 18/18, 독립 검�
 
 r16 18건(수직선 15, 함수 그래프 3)은 source-only V1 18/18, 독립 검산 18/18, candidate solution freeze 18/18, static 18/18, artifact-only V2 18/18, V3 18/18·FAIL 0, local desktop/mobile overflow 0으로 닫혔다.
 
-현재 unique candidate visual은 149/379, 남은 candidate visual은 230건이다. 최신 원장은 `166_current_closure_snapshot_r16_v3_closed.json`이며, 전체 430 solution freeze·남은 fresh facts·provider FINAL_AUDIT·browser render/review·registry authority가 남아 최종 PASS는 보류한다.
+현재 unique candidate visual은 131/379, 남은 candidate visual은 248건이다. 최신 원장은 `166_current_closure_snapshot_r16_v3_closed.json`이며, 전체 430 solution freeze·남은 fresh facts·provider FINAL_AUDIT·browser render/review·registry authority가 남아 최종 PASS는 보류한다.
 
 ## remote branch handoff
 
 `codex/hs-quadratic-svg-upgrade`를 `origin`에 생성하고 r16 portability commit `6f205b1b`까지 push했다. local/remote HEAD parity는 확인되었고, SVG 149개·full/scoped bank·pipeline evidence·render evidence가 포함되어 다른 환경에서 이어갈 수 있다. h2 사용자 미추적 작업물은 제외했다. 상세는 `167_remote_branch_handoff_r16.json`이다.
+
+## r17 specialist continuation
+
+r17 18건(수직선 16, 함수 그래프 2)은 source-only V1 18/18, 독립 검산 18/18, candidate solution freeze 18/18, static 18/18, artifact-only V2 18/18, V3 18/18·FAIL 0, local desktop/mobile overflow 0으로 닫혔다. r16 중복은 제거했고 신규 candidate 18건이다.
+
+현재 unique candidate visual은 149/379, 남은 candidate visual은 230건이다. 최신 원장은 `183_current_closure_snapshot_r17_v3_closed.json`이며, 전체 430 solution freeze·남은 fresh facts·provider FINAL_AUDIT·browser render/review·registry authority가 남아 최종 PASS는 보류한다.
 
 ## r10 current source application update
 
