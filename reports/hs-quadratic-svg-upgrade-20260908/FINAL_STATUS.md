@@ -187,6 +187,12 @@ r16 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 
 r16 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이지만 실제 browser capture 부재로 whole-job freeze는 시도하지 않았다. 전체 430 solution freeze·남은 fresh V1/V2/V3·provider-attested FINAL_AUDIT·실제 render review·registry authority·production promotion은 계속 열린 gate다.
 
+## remote branch handoff (2026-09-08)
+
+사용자 요청에 따라 `origin/main` 최신 commit `809faf7442bb4366f98728e4dea246f8082f6307`에서 분기한 `codex/hs-quadratic-svg-upgrade`를 원격에 생성하고 push했다. r16 portability commit `6f205b1b`에서 local HEAD와 remote branch HEAD가 일치한다. 현재 candidate bank가 참조하는 SVG 149개, full/scoped candidate bank 59개씩, r16 pipeline run/evidence와 render evidence를 함께 추적해 다른 환경에서 바로 검증·재개할 수 있게 했다. 사용자 미추적 h2 source/image는 제외했다.
+
+재개 명령은 [remote handoff manifest](167_remote_branch_handoff_r16.json)에 보존했다. 이후 작업은 `git fetch origin` 후 `git switch codex/hs-quadratic-svg-upgrade`로 이어갈 수 있다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.
