@@ -82,6 +82,12 @@ r12 18건은 V1 18/18, V2 18/18, V3 18/18·FAIL 0, static 18/18, local desktop/m
 
 current source에는 승인 범위 밖의 기존 해설 정적 잔여 11건이 남아 있으며 별도 승인 전에는 source를 추가 변경하지 않는다. candidate-r12 전체 해설 정적 감사는 59 source banks·1295 rows·issue 0이다. 최신 원장은 `100_current_closure_snapshot_r12_source_solution_audit.json`이며, 이는 candidate 진행 증거일 뿐 final PASS/SEALED가 아니다.
 
+## r13 specialist number-line batch
+
+r13 18건(수직선 17, 함수 그래프 1)은 source-only V1 18/18, 독립 검산 18/18, candidate solution freeze 18/18, static 18/18, artifact-only V2 18/18, V3 18/18·FAIL 0, local desktop/mobile overflow 0으로 닫혔다. large-range number line 눈금 간격을 조정해 라벨 겹침도 제거했다.
+
+현재 unique candidate visual은 77/379, 남은 candidate visual은 302건이다. 최신 원장은 `116_current_closure_snapshot_r13_v3_closed.json`이며, 전체 430 solution freeze·남은 fresh facts·provider FINAL_AUDIT·browser render/review·registry authority가 남아 최종 PASS는 보류한다.
+
 ## r10 current source application update
 
 승인된 5건을 별도 브랜치 source JS에 실제 반영했다. 변경 범위는 3개 파일·5개 문항·승인 필드로 제한되었고, source repair apply validation 오류는 0건이다. source holds는 5→0으로 해소되었다.

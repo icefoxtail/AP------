@@ -125,8 +125,16 @@ def number_line(case_id: str, fact: dict, title: str) -> str:
     low = min(numeric + [-5]); high = max(numeric + [5]); low = math.floor(low - 1); high = math.ceil(high + 1)
     def px(value: float) -> float: return left + (value-low) * (right-left) / (high-low)
     body = [f'<rect width="{width}" height="{height}" fill="#fff"/>', f'<line x1="{left}" y1="{y}" x2="{right}" y2="{y}" class="axis"/><path d="M {right} {y} l -8 -4 l 0 8 z" class="arrow"/>']
-    for x in range(math.ceil(low), math.floor(high)+1):
-        body.append(f'<line x1="{fmt(px(x))}" y1="{y-7}" x2="{fmt(px(x))}" y2="{y+7}" class="axis"/><text x="{fmt(px(x))}" y="{y+29}" text-anchor="middle" class="label">{fmt(x)}</text>')
+    span = max(high - low, 1)
+    raw_step = span / 10
+    power = 10 ** math.floor(math.log10(raw_step))
+    normalized_step = raw_step / power
+    multiplier = 1 if normalized_step <= 1 else 2 if normalized_step <= 2 else 5 if normalized_step <= 5 else 10
+    tick_step = multiplier * power
+    tick = math.ceil((low - 1e-9) / tick_step) * tick_step
+    while tick <= high + 1e-9:
+        body.append(f'<line x1="{fmt(px(tick))}" y1="{y-7}" x2="{fmt(px(tick))}" y2="{y+7}" class="axis"/><text x="{fmt(px(tick))}" y="{y+29}" text-anchor="middle" class="label">{fmt(tick)}</text>')
+        tick += tick_step
     intervals = []
     if "solutionIntervals" in fact: intervals = [dict(interval) for interval in fact["solutionIntervals"]]
     elif "realIntervals" in fact: intervals = [{"left": a, "right": b, "leftClosed": lc, "rightClosed": rc, "_leftLabel": fmt(a), "_rightLabel": fmt(b)} for a,b,lc,rc in fact["realIntervals"]]
