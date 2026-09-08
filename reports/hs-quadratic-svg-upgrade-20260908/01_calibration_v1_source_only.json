@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "HS_QUADRATIC_V1_SOURCE_ONLY_CALIBRATION",
+  "status": "FROZEN_SOURCE_ONLY_NO_PASS",
+  "inputVisibilityProfile": "SOURCE_ONLY",
+  "priorReviewVisibility": "NONE",
+  "questions": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|20",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "id": 20,
+      "content": "$k>0$을 만족하는 실수 $k$에 대하여 이차함수 $f(x)=-x^2+6x+k-3$의 그래프와 직선 $y=x+3$이 서로 다른 두 점 $(\\alpha, f(\\alpha)), (\\beta, f(\\beta))$에서 만난다. $\\alpha < x < \\beta$에서 함수 $f(x)$의 최댓값이 8일 때, $\\alpha \\le x \\le \\beta$에서 함수 $f(x)$의 최솟값은? (단, $\\alpha < \\beta$)",
+      "choices": ["① 2", "② 4", "③ 6", "④ 8", "⑤ 10"],
+      "problemImageRef": null,
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "model": "f(x)=-x^2+6x-1 after the maximum condition gives k=2",
+        "intersectionXs": [1, 4],
+        "intersectionPoints": [[1, 4], [4, 7]],
+        "vertex": [3, 8],
+        "closedInterval": [1, 4],
+        "minimumOnInterval": {"x": 1, "y": 4},
+        "axis": "x=3"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|22",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "id": 22,
+      "content": "<서·논술형 2> $1 \\le x \\le 3$에서 정의된 이차함수 $f(x)=x^2-2ax+2a^2-3$의 최솟값이 14일 때, 함수 $f(x)$의 최댓값을 풀이과정과 함께 서술하시오.(단, $a$는 양수이며, $a$의 값이 가질 수 있는 다양한 경우에 대해서 풀이하는 과정을 포함하여 작성할 것.)",
+      "choices": [],
+      "problemImageRef": null,
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "model": "f(x)=(x-4)^2+13 after the valid case analysis",
+        "domain": [1, 3],
+        "axis": "x=4",
+        "endpointValues": {"x=1": 22, "x=3": 14},
+        "minimumOnDomain": {"x": 3, "y": 14},
+        "maximumOnDomain": {"x": 1, "y": 22},
+        "validParameter": 4
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js|25_강남여고_1학기_기말_고1_기출c|5",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+      "id": 5,
+      "content": "이차함수 $y=x^2-2x+10$의 최솟값은?",
+      "choices": ["6", "7", "8", "9", "10"],
+      "problemImageRef": null,
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "model": "y=(x-1)^2+9",
+        "vertex": [1, 9],
+        "opening": "up",
+        "xAxisIntersections": [],
+        "minimum": 9
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js|22_금당고_1학기_기말_고1_기출|2",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+      "id": 2,
+      "content": "부등식 $|x-2|<2$를 만족시키는 자연수 $x$의 개수는?",
+      "choices": ["0", "1", "2", "3", "4"],
+      "problemImageRef": null,
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "inequalityInterval": {"left": 0, "right": 4, "leftClosed": false, "rightClosed": false},
+        "naturalNumberSolutions": [1, 2, 3],
+        "count": 3
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js|25_강남여고_1학기_기말_고1_기출c|4",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+      "id": 4,
+      "content": "부등식 $3x\\lt x+4\\lt 4x+7$의 해가 $a\\lt x\\lt b$일 때, $b-a$의 값은?",
+      "choices": ["3", "5", "7", "9", "11"],
+      "problemImageRef": null,
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "inequalityInterval": {"left": -1, "right": 2, "leftClosed": false, "rightClosed": false},
+        "derivation": ["3x<x+4 gives x<2", "x+4<4x+7 gives -1<x"],
+        "length": 3
+      }
+    }
+  ]
+}

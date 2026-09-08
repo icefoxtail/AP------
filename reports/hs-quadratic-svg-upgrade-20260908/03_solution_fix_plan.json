@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "HS_QUADRATIC_SOLUTION_FIX_PLAN_V1",
+  "status": "CANDIDATE_FIX_PLAN_NO_PRODUCTION_WRITE",
+  "fixes": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|20",
+      "field": "solution",
+      "find": "이차항의 계수가 음수이므로 위로 볼록한 포물선",
+      "replace": "이차항의 계수가 음수이므로 아래로 볼록한 포물선",
+      "reason": "음의 이차항은 아래로 열린 포물선이며, 이 문항의 최대값/최소값 설명과도 일치시켜야 한다.",
+      "impact": "solution pedagogy wording; no protected source-field mutation"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|22",
+      "field": "solution",
+      "find": "이차항의 계수가 양수이므로 아래로 볼록한 포물선",
+      "replace": "이차항의 계수가 양수이므로 위로 볼록한 포물선",
+      "reason": "양의 이차항은 위로 열린 포물선이며, 구간 최솟값을 꼭짓점/경계와 비교하는 case analysis의 방향을 정확히 적어야 한다.",
+      "impact": "solution pedagogy wording; no protected source-field mutation"
+    }
+  ]
+}

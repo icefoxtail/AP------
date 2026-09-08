@@ -21,6 +21,7 @@ import { detectRenderImpact } from '../render-impact.mjs';
 import { validateBatchManifest } from '../batch.mjs';
 import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { auditV2Run, computeV2AxisInputShas, requiresSolutionVisualBenefitGate } from '../v2-audit.mjs';
+import { prepareProviderReview } from '../provider-bridge.mjs';
 
 const hash = value => objectSha(value);
 const lifecycle = { withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE' };
@@ -190,12 +191,20 @@ test('validated reuse requires immutable prior evidence and exact receipt parity
 
 test('audit-v2 closes metadata-only revision one and reuses an unchanged SOURCE axis in revision two', t => {
   const f = metadataAuditFixture(t);
-  const request = { purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session', parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, contexts: { U1: { sessionId: 'auditor-u1', contextId: 'context-u1' }, U2: { sessionId: 'auditor-u2', contextId: 'context-u2' }, U3: { sessionId: 'auditor-u3', contextId: 'context-u3' } } };
+  let request = { purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session', parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, contexts: { U1: { sessionId: 'auditor-u1', contextId: 'context-u1' }, U2: { sessionId: 'auditor-u2', contextId: 'context-u2' }, U3: { sessionId: 'auditor-u3', contextId: 'context-u3' } } };
   const r1 = f.makeRun(1);
   const r1Machine = f.attachMachines(r1);
   const r1FreezeRef = f.write('runs/r1-freeze.json', r1);
   initWorkBatch(f.root, { workBatchId: 'job', runIds: [f.runId], builderId: r1.builderId, builderSessionId: r1.builderSessionId });
   freezeWorkBatch(f.root, 'job', [r1FreezeRef]);
+  const providerRuntime = path.join(f.root, 'provider-runtime.mjs');
+  fs.writeFileSync(providerRuntime, [
+    "import fs from 'node:fs';",
+    "const request = JSON.parse(fs.readFileSync(0, 'utf8'));",
+    "process.stdout.write(JSON.stringify({ schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'PREPARE_STATELESS_FINAL_AUDIT', status: 'READY', requestSha: request.requestSha, provider: 'synthetic-metadata-runtime', model: 'synthetic-model', externalTaskId: 'provider-r1', auditorId: 'provider-auditor', auditorSessionId: 'provider-control-session', contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, runtimeAttestation: 'synthetic-runtime-attestation', contexts: { U1: { sessionId: 'provider-u1-session', contextId: 'provider-u1-context' }, U2: { sessionId: 'provider-u2-session', contextId: 'provider-u2-context' }, U3: { sessionId: 'provider-u3-session', contextId: 'provider-u3-context' } } }));",
+  ].join('\n'));
+  const prepared = prepareProviderReview(f.root, { workBatchId: 'job', purpose: 'FINAL_AUDIT', transport: { command: process.execPath, args: [providerRuntime] }, planPath: 'alive/runtime/provider-bridge/job/preflight.json' });
+  request = prepared.reservationRequest;
   reserveWorkBatchReview(f.root, 'job', request);
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-r1', status: 'DISPATCHED' });
   const packet = buildAuditorPacket({ phase: 'U1', questionUid: f.questionUid, payload: { questionUid: f.questionUid, content: f.sourceQuestion.content, choices: f.sourceQuestion.choices }, affectedUidSet: [f.questionUid], auditorId: request.auditorId, auditorSessionId: request.contexts.U1.sessionId, builderId: r1.builderId, builderSessionId: r1.builderSessionId, auditorPrincipalType: 'STATELESS_MODEL', contextId: request.contexts.U1.contextId, inputVisibilityProfile: 'SOURCE_ONLY', priorReviewVisibility: 'NONE', sealed: true, launchId: 'job:1', externalTaskId: 'provider-r1' });
@@ -212,7 +221,7 @@ test('audit-v2 closes metadata-only revision one and reuses an unchanged SOURCE 
   r1.buildWorkLedgerRefs = [f.write('ledger/r1.json', ledger)];
   const r1Closure = f.close(r1, r1Rows);
   const r1Ref = f.write('runs/r1.json', r1);
-  const terminalRef = f.write('receipts/r1.json', { launchId: 'job:1', externalId: 'provider-r1', status: 'COMPLETED', usedTokens: null, independentAgentLaunchCount: 1, expensiveAgentLaunchCount: 1, concurrentExpensiveAgentPeak: 1, recursiveSubagentLaunchCount: 0, evidenceRefs: r1.evidence, defects: [] });
+  const terminalRef = f.write('receipts/r1.json', { launchId: 'job:1', externalId: 'provider-r1', providerPlanRef: prepared.planRef, status: 'COMPLETED', usedTokens: null, independentAgentLaunchCount: 1, expensiveAgentLaunchCount: 1, concurrentExpensiveAgentPeak: 1, recursiveSubagentLaunchCount: 0, evidenceRefs: r1.evidence, defects: [] });
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-r1', status: 'COMPLETED', providerReceiptRef: terminalRef });
   const r1Audit = auditV2Run(f.root, r1);
   assert.equal(r1Closure.status, 'PASS');
