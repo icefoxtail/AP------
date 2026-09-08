@@ -24,17 +24,17 @@
     "candidateVisualTarget": 379
   },
   "r35Batch": {
-    "rows": 8,
-    "numberLineRows": 4,
+    "rows": 7,
+    "numberLineRows": 3,
     "cartesianRows": 4,
-    "v1ExpectedFacts": "8/8",
-    "independentRecheck": "8/8",
-    "solutionFreeze": "8/8 candidate rows",
-    "candidateStatic": "8/8",
-    "v2ArtifactOnly": "8/8",
-    "v3Pass": "8/8",
+    "v1ExpectedFacts": "7/7",
+    "independentRecheck": "7/7",
+    "solutionFreeze": "7/7 candidate rows",
+    "candidateStatic": "7/7",
+    "v2ArtifactOnly": "7/7",
+    "v3Pass": "7/7",
     "v3Fail": 0,
-    "localRender": "8/8",
+    "localRender": "7/7",
     "localRenderOverflow": 0,
     "evidence": {
       "v1": "reports/hs-quadratic-svg-upgrade-20260908/489_specialist_v1_expected_facts_r35.json",
@@ -50,13 +50,13 @@
     }
   },
   "candidateVisualProgress": {
-    "priorUniqueCandidateVisuals": 315,
-    "r35BatchRows": 8,
+    "priorUniqueCandidateVisuals": 263,
+    "r35BatchRows": 7,
     "r35SupersededPriorCandidateRows": 0,
-    "currentUniqueCandidateVisuals": 323,
-    "remainingCandidateVisuals": 56,
-    "freshExpectedFactRowsThroughR35": 318,
-    "remainingFreshExpectedFactsUnderCurrentCounting": 112
+    "currentUniqueCandidateVisuals": 270,
+    "remainingCandidateVisuals": 109,
+    "freshExpectedFactRowsThroughR35": 317,
+    "remainingFreshExpectedFactsUnderCurrentCounting": 113
   },
   "currentV2Preparation": {
     "workBatchId": "hs-quadratic-r35d",
@@ -78,12 +78,12 @@
   },
   "remainingGates": [
     "fresh independent math A1/A2 and solution freeze for full 430 rows",
-    "fresh V1 expected facts for remaining 112 rows under current counting",
-    "artifact-only V2 and semantic V3 for remaining 56 candidate visual rows",
+    "fresh V1 expected facts for remaining 113 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 109 candidate visual rows",
     "provider-attested FINAL_AUDIT",
     "actual current desktop/mobile capture and independent render-review for the full required scope",
     "source registry identity authority for 15 mismatched exam titles",
     "DB/question-index/production promotion authority"
   ],
-  "note": "R35 closes 2 function/cartesian rows and 6 discrete/parameter number-line rows. Its candidate batch is closed at row level, but full-scope PASS, SEALED, provider-attested FINAL_AUDIT, and production promotion remain forbidden until every gate is current and independently evidenced."
+  "note": "R35 closes 4 function/cartesian rows and 3 discrete/parameter number-line rows inside the target inventory. An earlier out-of-scope q21 candidate row was removed from this corrected batch. Full-scope PASS, SEALED, provider-attested FINAL_AUDIT, and production promotion remain forbidden until every gate is current and independently evidenced."
 }

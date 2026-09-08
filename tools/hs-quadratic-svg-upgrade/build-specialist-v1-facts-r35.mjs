@@ -11,7 +11,6 @@ const TARGETS = [
   ['1mid', '23_부영여고_1학기_중간_고1_기출.js', 22, 'cartesian', { function: { a: -1, b: 5, c: 0, domain: [0, 4] }, vertex: [2, 5], maximum: 5, result: 5, exact: '구간별 최소값 조건의 해 k=2,3, 합5' }],
   ['1mid', '25_팔마고_1학기_중간_고1_기출.js', 16, 'number-line', { solutionInterval: [-8, 8], leftClosed: true, rightClosed: true, integerSolutions: [-8, -6, -4, -2, 6, 8], count: 6, result: 6, exact: 'm=−8,−6,−4,−2,6,8, 순서쌍 6개' }],
   ['1mid', '23_매산고_1학기_중간_고1_기출.js', 10, 'cartesian', { function: { a: -1.5, b: 120, c: 0, domain: [0, 80] }, vertex: [40, 2400], maximum: 2400, result: 40, exact: 'S=−3x²/2+120x, 꼭짓점 x=40' }],
-  ['1mid', '25_제일고_1학기_중간_고1_기출.js', 21, 'number-line', { solutionInterval: [5, 5], leftClosed: true, rightClosed: true, result: 5, exact: '허수부 x²−25=0 및 z≠0 조건에서 x=5' }],
 ];
 function load(relative) { const context = { window: {} }; vm.createContext(context); vm.runInContext(fs.readFileSync(path.join(ROOT, relative), 'utf8'), context, { filename: relative, timeout: 10000 }); return JSON.parse(JSON.stringify(context.window)); }
 const baseBySource = new Map(BASE.candidateFiles.map((file) => [file.sourcePath, file])); const rows = [];

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R36_V3_CLOSED",
+  "status": "R36_SPECIALIST_BATCH_V3_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "mainBaseline": "origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22",
+  "scope": {
+    "targetQuestionCount": 430,
+    "sourceFileCount": 59,
+    "examFileCount": 59
+  },
+  "sourceSolutionStatus": {
+    "sourceStaticIssueRows": 0,
+    "candidateStaticIssueRows": 0,
+    "sourceSolutionIndependentRecheckRows": 11,
+    "sourceCandidateParityErrors": 0,
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/457_current_source_solution_static_audit_post_r32.json"
+  },
+  "visualDecisionDenominator": {
+    "NO_VISUAL": 51,
+    "KEEP_EXISTING": 0,
+    "REBUILD_EXISTING": 2,
+    "ADD_NEW_VISUAL": 377,
+    "candidateVisualTarget": 379
+  },
+  "r36Batch": {
+    "rows": 8,
+    "numberLineRows": 5,
+    "cartesianRows": 3,
+    "v1ExpectedFacts": "8/8",
+    "independentRecheck": "8/8",
+    "solutionFreeze": "8/8 candidate rows",
+    "candidateStatic": "8/8",
+    "v2ArtifactOnly": "8/8",
+    "v3Pass": "8/8",
+    "v3Fail": 0,
+    "localRender": "8/8",
+    "localRenderOverflow": 0,
+    "evidence": {
+      "v1": "reports/hs-quadratic-svg-upgrade-20260908/506_specialist_v1_expected_facts_r36.json",
+      "independentRecheck": "reports/hs-quadratic-svg-upgrade-20260908/512_independent_recheck_specialist_r36.json",
+      "visualManifest": "reports/hs-quadratic-svg-upgrade-20260908/507_specialist_candidate_visual_manifest_r36.json",
+      "static": "reports/hs-quadratic-svg-upgrade-20260908/509_specialist_candidate_visual_static_check_r36.json",
+      "candidateBank": "reports/hs-quadratic-svg-upgrade-20260908/508_specialist_candidate_bank_manifest_r36.json",
+      "bankValidation": "reports/hs-quadratic-svg-upgrade-20260908/511_specialist_candidate_bank_validation_r36.json",
+      "v2": "reports/hs-quadratic-svg-upgrade-20260908/510_specialist_v2_artifact_only_r36.json",
+      "v3": "reports/hs-quadratic-svg-upgrade-20260908/513_specialist_v3_parity_r36.json",
+      "solutionFreeze": "reports/hs-quadratic-svg-upgrade-20260908/514_specialist_solution_freeze_ledger_r36.json",
+      "render": "reports/hs-quadratic-svg-upgrade-20260908/519_specialist_local_render_review_r36.json"
+    }
+  },
+  "targetScopedVisualCoverage": {
+    "currentTargetVisuals": 278,
+    "remainingCandidateVisuals": 101,
+    "source": "computed from 430 scoped rows and 03_visual_triage path/id keys; full candidate row visual count remains separate"
+  },
+  "candidateVisualProgress": {
+    "priorTargetScopedVisuals": 270,
+    "r36BatchTargetRows": 8,
+    "r36BatchOutOfScopeRows": 0,
+    "currentTargetScopedVisuals": 278,
+    "remainingTargetScopedVisuals": 101,
+    "freshExpectedFactRowsThroughR36": 325,
+    "remainingFreshExpectedFactsUnderCurrentCounting": 105
+  },
+  "currentV2Preparation": {
+    "workBatchId": "hs-quadratic-r36d",
+    "runCount": 59,
+    "preparedQuestionCount": 430,
+    "errors": 0,
+    "machineEvidenceCount": 860,
+    "machineEvidenceValidationErrors": 0,
+    "preparation": "reports/hs-quadratic-svg-upgrade-20260908/518_current_v2_preparation_r36d.json",
+    "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/516_machine_evidence_r36d.json",
+    "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/517_machine_evidence_validation_r36d.json",
+    "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_PROVIDER_RENDER_CAPTURE"
+  },
+  "registry": {
+    "candidateEntries": 430,
+    "identityMismatchCount": 15,
+    "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY",
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json"
+  },
+  "remainingGates": [
+    "fresh independent math A1/A2 and solution freeze for full 430 rows",
+    "fresh V1 expected facts for remaining 105 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 101 target-scoped candidate visual rows",
+    "provider-attested FINAL_AUDIT",
+    "actual current desktop/mobile capture and independent render-review for the full required scope",
+    "source registry identity authority for 15 mismatched exam titles",
+    "DB/question-index/production promotion authority"
+  ],
+  "note": "R36 closes 3 function/cartesian rows and 5 inequality/parameter number-line rows. Target-scoped coverage, not full 1295-row candidate visual count, is the authoritative visual progress."
+}
