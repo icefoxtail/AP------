@@ -312,3 +312,13 @@ r29 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 r29 current v2 preparation은 새 `hs-quadratic-r29c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r29 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 96개 candidate visual, 160개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r30 function/inequality continuation update (2026-09-09)
+
+r30은 8개 문항을 adaptive batch로 처리했다. 25 매산고 q11·25 제일고 q16·26 순천고 q11/q16·26 순천여고 q10은 함수/포물선 관계를 개방형 cartesian SVG로 구성했고, 26 금당고 q9·26 순천고 q17·25 금당고 q14는 해집합과 정수해를 수직선 SVG로 구성했다. 함수 그래프 5건과 수직선 3건에 대해 source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r30 candidate bank validation은 59 source bank·1295 row·current candidate visual 283건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 현재 candidate 283건, 잔여 96건이다. source solution static issueRows는 0으로 유지되며 fresh expected fact 누적은 현재 counting 기준 278건, 잔여 152건이다. 최신 상태는 [r30 V3 closure snapshot](425_current_closure_snapshot_r30_v3_closed.json)이다.
+
+r30 current V2 preparation은 최초 r30c run-directory 충돌 결과를 폐기하고 새 `hs-quadratic-r30d` work-batch/run root로 재실행했다. 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. r30c의 `NEW_RUN_DIRECTORY_REQUIRED`는 pipeline 디렉터리 충돌 진단으로 보존하되 성공 근거로 사용하지 않는다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r30 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 96개 candidate visual, 152개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
