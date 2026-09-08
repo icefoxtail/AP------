@@ -285,3 +285,12 @@ source solution 변경으로 stale 될 수 있었던 affected visual 11건은 �
 r26 current candidate bank는 59 source bank·1295 row·visual binding 248건이며 content/choices/answer/image/solution parity drift 0, asset 오류 0이다. 최신 상태는 [r26 source-solution repaired snapshot](365_current_closure_snapshot_r26_source_solution_repaired.json)이다. current v2 preparation은 `hs-quadratic-r26c`에서 59 run·430/430·오류 0, machine evidence 860개·validation 오류 0이다.
 
 r26은 source/solution residual과 affected visual stale를 해소한 것이며 전체 final PASS는 아니다. 남은 131개 candidate visual, 187개 fresh expected fact, full 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 full-scope browser desktop/mobile capture 및 independent render review, registry 15건 authority, DB/question-index/production promotion이 아직 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+## r27 number-line inequality continuation update (2026-09-09)
+
+r27은 11개 문항을 adaptive batch로 처리했다. 22 팔마고 q19·23 팔마고 q12·25 팔마고 q20/q21·25 효천고 q2/q5·25 순천고 q5/q18/q22·25 제일고 q20·22 팔마고 q20을 대상으로 source-only expected fact → 독립 검산 → candidate SVG → artifact-only V2 → V3 parity → solution freeze → desktop/mobile local render 순서를 적용했다. 모두 수직선 시각자료로 구성했으며 V1 11/11, 독립 검산 11/11 mismatch 0, candidate static 11/11, V2 11/11, V3 11/11(FAIL 0), candidate solution freeze 11/11, local render 11/11 및 overflow 0이다.
+
+r27 candidate bank validation은 59 source bank·1295 row·unique candidate visual 259건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 259건이 현재 candidate이고 120건이 남아 있다. source solution static issueRows는 0으로 유지되며 fresh expected fact 누적은 현재 counting 기준 254건, 잔여 176건이다. 최신 상태는 [r27 V3 closure snapshot](379_current_closure_snapshot_r27_v3_closed.json)이다.
+
+r27 current v2 preparation은 새 `hs-quadratic-r27c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r27 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 120개 candidate visual, 176개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
