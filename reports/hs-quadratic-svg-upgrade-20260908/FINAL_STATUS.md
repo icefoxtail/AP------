@@ -458,3 +458,15 @@ r42 current V2 preparation은 새 `hs-quadratic-r42f` work-batch/run root에서 
 target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 326건, 잔여 53건이다. fresh expected fact 누적은 현재 counting 기준 373건, 잔여 57건이다. 최신 상태는 [r42 V3 closure snapshot](628_current_closure_snapshot_r42_v3_closed.json)이다.
 
 r42 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 53개 target-scoped candidate visual, 57개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r43 function/solution-topology continuation and path correction update (2026-09-09)
+
+r43은 target inventory 안의 미처리 8개 문항을 처리했다. 25 매산고 1final q15의 절댓값 문항과 혼동하지 않고, 의도한 함수차 문항인 26 매산고 1mid q15를 path/id로 교체해 cartesian SVG로 구성했다. 26 팔마고 1final q22의 최적화 함수, 26 효천고 1final q18의 두 포물선·접선 구조도 cartesian SVG로 구성했다. 22 복성고 1final q22, 23 매산고 1final q8, 26 광양제철고 1final q12, 26 복성고 1final q18, 26 팔마고 1final q17는 piecewise·빈/외부·정수·구간 topology를 수직선 SVG로 구성했다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r43 최초 실행에서 25 매산고 1final q15를 잘못 지정한 path/id 오류가 V3에서 검출되었고, 이를 26 매산고 1mid q15로 교체해 V1부터 재실행했다. 잘못된 문항의 SVG·V3·freeze는 성공 근거로 사용하지 않는다. 최종 r43 candidate bank는 59 source bank·1295 row·full candidate visual 386건·candidate solution drift 0·asset 오류 0이다.
+
+r43 current V2 preparation은 새 `hs-quadratic-r43e` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다.
+
+target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 334건, 잔여 45건이다. fresh expected fact 누적은 현재 counting 기준 381건, 잔여 49건이다. 최신 상태는 [r43 V3 closure snapshot](C:/Users/USER/Desktop/AP------/reports/hs-quadratic-svg-upgrade-20260908/644_current_closure_snapshot_r43_v3_closed.json)이다.
+
+r43 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 45개 target-scoped candidate visual, 49개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
