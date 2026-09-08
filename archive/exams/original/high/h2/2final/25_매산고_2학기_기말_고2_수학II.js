@@ -174,6 +174,10 @@ window.questionBank=[
       "$5$"
     ],
     "answer": "②",
+    "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "포물선 y=-2x²+6x와 직선 y=-4x 사이의 넓이, 교점 x=0과 x=5를 나타낸 해설 그래프",
+    "solutionImageCaption": "교점의 오른쪽 좌표가 m+3=5이므로 적분 넓이는 125/3이고 m=2이다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 두 그래프의 교점을 구한 뒤 위의 함수에서 아래의 함수를 빼서 넓이를 적분한다.\n$-2x^2+6x=-2mx$에서 $2x(m+3-x)=0$이므로 교점의 $x$좌표는 $0$, $m+3$이다. $m\\gt 0$이므로 $0\\lt x\\lt m+3$에서 포물선이 직선보다 위에 있다.\n따라서 넓이는 $\\displaystyle\\int_0^{m+3}2x(m+3-x)dx=\\dfrac{(m+3)^3}{3}$이다. 이것이 $\\dfrac{125}{3}$이므로 $(m+3)^3=125$, $m+3=5$이고 $m=2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
