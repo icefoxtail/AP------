@@ -19,11 +19,14 @@ export function validateBatchManifest(root, manifest, inventory, inventoryBytes,
   const range = ranges[manifest.riskProfile];
   if (!range) errors.push('UNKNOWN_RISK_PROFILE');
   else if (uids.length < range[0] || uids.length > range[1]) {
+    if (manifest.riskProfile === 'HIGH_RISK' && uids.length > 5) errors.push('HIGH_RISK_HARD_MAX');
+    else {
     try {
       if (manifest.sizeException?.status !== 'APPROVED' || !nonempty(manifest.sizeException.reviewerId)) throw new Error();
       const approval = JSON.parse(readBoundFile(root, manifest.sizeException.evidence));
       if (approval.status !== 'APPROVED' || approval.batchId !== manifest.batchId || approval.plannedSize !== uids.length || objectSha(uidSet(approval.questionUids)) !== objectSha(uidSet(uids))) throw new Error();
     } catch { errors.push('SIZE_EXCEPTION_NOT_PROVEN'); }
+    }
   }
   if (!Array.isArray(manifest.visualTypes) || !Array.isArray(manifest.factSchemaVersions) || !manifest.factSchemaVersions.length) errors.push('VISUAL_PROFILE_MISSING');
   if (plan && plan.NO_VISUAL !== uids.length && !manifest.visualTypes?.length) errors.push('VISUAL_TYPES_EMPTY');

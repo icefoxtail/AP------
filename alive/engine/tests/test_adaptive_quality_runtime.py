@@ -8,6 +8,7 @@ from pathlib import Path
 
 from alive.engine import adaptive_quality_runtime as runtime
 from alive.engine.run_store import atomic_write_json
+from alive.engine.tests.legacy_dispatch_fixture import persist_legacy_dispatch
 from alive.engine.staged_exam import (
     StagedExamError,
     StagedRunStore,
@@ -119,7 +120,7 @@ class AdaptiveQualityRuntimeTests(unittest.TestCase):
             6,
         )
 
-    def test_dispatch_requires_browser_readiness_then_allows_ready_evidence(self) -> None:
+    def test_browser_readiness_does_not_authorize_legacy_dispatch(self) -> None:
         manifest = self.start(4)
         task_id = "b01-round1"
         with self.assertRaises(StagedExamError):
@@ -128,54 +129,46 @@ class AdaptiveQualityRuntimeTests(unittest.TestCase):
             )
         self.assertEqual("BLOCKED", self.store.load(manifest["runId"])["status"])
         self.mark_browser_ready(manifest)
-        task, idempotent = runtime.start_adaptive_staged_dispatch(
-            self.store, manifest["runId"], task_id, "after-readiness"
-        )
-        self.assertFalse(idempotent)
-        self.assertEqual("DISPATCHED", task["status"])
+        before = self.store.load(manifest["runId"])
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            runtime.start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "after-readiness")
+        self.assertEqual(before, self.store.load(manifest["runId"]))
 
-    def test_stale_watchdog_requeues_then_exhausts_dispatch_budget(self) -> None:
+    def test_stale_watchdog_preserves_provider_receipt_and_requires_reconciliation(self) -> None:
         manifest = self.start(4)
         self.mark_browser_ready(manifest)
         task_id = "b01-round1"
-        runtime.start_adaptive_staged_dispatch(
-            self.store, manifest["runId"], task_id, "stale-1"
-        )
+        persist_legacy_dispatch(self.store, manifest["runId"], task_id, "stale-1")
         old = (datetime.now(timezone.utc) - timedelta(seconds=120)).isoformat().replace("+00:00", "Z")
         manifest = self.store.load(manifest["runId"])
         manifest["tasks"][task_id]["dispatch"]["attempts"][-1]["startedAt"] = old
         self.store.save(manifest["runId"], manifest)
+        before_dispatch = manifest["tasks"][task_id]["dispatch"]
 
         reaped = runtime.reap_stale_adaptive_dispatches(
             self.store, manifest["runId"], timeout_seconds=10
         )
-        self.assertEqual([task_id], reaped)
+        self.assertEqual([], reaped)
         manifest = self.store.load(manifest["runId"])
         task = manifest["tasks"][task_id]
-        self.assertEqual("PENDING", task["status"])
-        self.assertEqual(1, task["retryCounters"]["dispatch"])
-        self.assertEqual("dispatch", task["dispatch"]["attempts"][-1]["failureClass"])
-
-        runtime.start_adaptive_staged_dispatch(
-            self.store, manifest["runId"], task_id, "stale-2"
-        )
-        manifest = self.store.load(manifest["runId"])
-        manifest["tasks"][task_id]["dispatch"]["attempts"][-1]["startedAt"] = old
-        self.store.save(manifest["runId"], manifest)
+        self.assertEqual("DISPATCHED", task["status"])
+        self.assertEqual("STALE_PROVIDER_STATUS_UNKNOWN", task["reconciliationRequired"])
+        self.assertEqual(before_dispatch, task["dispatch"])
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            runtime.start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "stale-2")
         runtime.reap_stale_adaptive_dispatches(
             self.store, manifest["runId"], timeout_seconds=10
         )
         manifest = self.store.load(manifest["runId"])
-        self.assertEqual("FAILED", manifest["tasks"][task_id]["status"])
-        self.assertIn("ADAPTIVE_DISPATCH_RETRY_EXHAUSTED", manifest["codes"])
+        self.assertEqual("DISPATCHED", manifest["tasks"][task_id]["status"])
+        self.assertEqual(before_dispatch, manifest["tasks"][task_id]["dispatch"])
+        self.assertNotIn("ADAPTIVE_DISPATCH_RETRY_EXHAUSTED", manifest["codes"])
 
     def test_fresh_agent_heartbeat_prevents_false_stale_reap(self) -> None:
         manifest = self.start(4)
         self.mark_browser_ready(manifest)
         task_id = "b01-round1"
-        runtime.start_adaptive_staged_dispatch(
-            self.store, manifest["runId"], task_id, "heartbeat-test"
-        )
+        persist_legacy_dispatch(self.store, manifest["runId"], task_id, "heartbeat-test")
         manifest = self.store.load(manifest["runId"])
         old = (datetime.now(timezone.utc) - timedelta(seconds=120)).isoformat().replace("+00:00", "Z")
         manifest["tasks"][task_id]["dispatch"]["attempts"][-1]["startedAt"] = old
@@ -197,47 +190,46 @@ class AdaptiveQualityRuntimeTests(unittest.TestCase):
             self.store.load(manifest["runId"])["tasks"][task_id]["status"],
         )
 
-    def test_retry_records_previous_heartbeat_baseline(self) -> None:
+    def test_transient_failure_does_not_create_a_new_heartbeat_attempt(self) -> None:
         manifest = self.start(4)
         self.mark_browser_ready(manifest)
         task_id = "b01-round1"
-        runtime.start_adaptive_staged_dispatch(
-            self.store, manifest["runId"], task_id, "first-attempt"
-        )
+        persist_legacy_dispatch(self.store, manifest["runId"], task_id, "first-attempt")
         record_staged_task_heartbeat(
             self.store, manifest["runId"], task_id, "S02_ROUND1_GENERATION", progress=10
         )
-        runtime.fail_adaptive_dispatch(
-            self.store, manifest["runId"], task_id, "AGENT_TRANSIENT_FAILURE"
-        )
-        runtime.start_adaptive_staged_dispatch(
-            self.store, manifest["runId"], task_id, "retry-attempt"
-        )
-        manifest = self.store.load(manifest["runId"])
-        retry = manifest["tasks"][task_id]["dispatch"]["attempts"][-1]
-        self.assertIsInstance(retry.get("heartbeatBaselineMtimeNs"), int)
+        before = self.store.load(manifest["runId"])
+        with self.assertRaisesRegex(ValueError, "HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY"):
+            runtime.fail_adaptive_dispatch(self.store, manifest["runId"], task_id, "AGENT_TRANSIENT_FAILURE")
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            runtime.start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "retry-attempt")
+        self.assertEqual(before, self.store.load(manifest["runId"]))
         self.assertEqual([], runtime.reap_stale_adaptive_dispatches(
             self.store, manifest["runId"], timeout_seconds=10
         ))
 
-    def test_artifact_budget_is_counted_separately_from_dispatch_budget(self) -> None:
+    def test_legacy_artifact_history_is_counted_without_new_dispatch(self) -> None:
         manifest = self.start(4)
         self.mark_browser_ready(manifest)
         task_id = "b01-round1"
-        for attempt in range(2):
-            runtime.start_adaptive_staged_dispatch(
-                self.store, manifest["runId"], task_id, f"artifact-{attempt}"
-            )
-            manifest = self.store.load(manifest["runId"])
-            atomic_write_json(
-                self.store.run_dir(manifest["runId"]) / manifest["tasks"][task_id]["outputPath"],
-                {"artifactType": "INVALID_ADAPTIVE_ARTIFACT"},
-            )
-            mark_staged_task_complete(self.store, manifest["runId"], task_id)
-            runtime.reconcile_adaptive_staged_run(self.store, manifest["runId"])
-            manifest = self.store.load(manifest["runId"])
-            if attempt == 0:
-                self.assertEqual("PENDING", manifest["tasks"][task_id]["status"])
+        # Both receipts predate the budget migration; the test creates no new launch.
+        manifest = persist_legacy_dispatch(self.store, manifest["runId"], task_id, "legacy-active")
+        attempts = manifest["tasks"][task_id]["dispatch"]["attempts"]
+        attempts[0]["attempt"] = 2
+        attempts.insert(0, {"attempt": 1, "externalId": "legacy-rejected", "status": "ARTIFACT_REJECTED", "failureClass": "artifact"})
+        self.store.save(manifest["runId"], manifest)
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            runtime.start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "new-retry")
+        self.assertEqual(manifest, self.store.load(manifest["runId"]))
+        atomic_write_json(
+            self.store.run_dir(manifest["runId"]) / manifest["tasks"][task_id]["outputPath"],
+            {"artifactType": "INVALID_ADAPTIVE_ARTIFACT"},
+        )
+        mark_staged_task_complete(self.store, manifest["runId"], task_id)
+        runtime.reconcile_adaptive_staged_run(self.store, manifest["runId"])
+        manifest = self.store.load(manifest["runId"])
         self.assertEqual("FAILED", manifest["tasks"][task_id]["status"])
         self.assertEqual(2, manifest["tasks"][task_id]["retryCounters"]["artifact"])
+        self.assertEqual(0, manifest["tasks"][task_id]["retryCounters"]["dispatch"])
+        self.assertEqual(["legacy-rejected", "legacy-active"], [row["externalId"] for row in manifest["tasks"][task_id]["dispatch"]["attempts"]])
         self.assertIn("ADAPTIVE_ARTIFACT_RETRY_EXHAUSTED", manifest["codes"])

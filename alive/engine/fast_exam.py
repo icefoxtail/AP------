@@ -1896,6 +1896,8 @@ def start_fast_dispatch(
 ) -> tuple[dict[str, Any], bool]:
     manifest = store.load(run_id)
     task = _resolve_task(manifest, task_id)
+    from .agent_budget import hold_legacy_launch
+    hold_legacy_launch(task, external_id)
     if task.get("status") == "DISPATCHED":
         attempts = task.get("dispatch", {}).get("attempts", [])
         if attempts and attempts[-1].get("externalId") == external_id:
@@ -1928,6 +1930,7 @@ def start_fast_dispatch(
 
 
 def fail_fast_dispatch(store: FastRunStore, run_id: str, task_id: str, code: str) -> dict[str, Any]:
+    raise ValueError("HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY")
     manifest = store.load(run_id)
     task = _resolve_task(manifest, task_id)
     if task.get("status") != "DISPATCHED":

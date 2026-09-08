@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from alive.engine.tests.legacy_dispatch_fixture import persist_legacy_dispatch
+
 import json
 import tempfile
 import unittest
@@ -373,7 +375,13 @@ class StagedExamTests(unittest.TestCase):
     def test_dispatched_task_waits_for_completion_marker_and_accepts_legacy_answer_alias(self) -> None:
         manifest = self.start()
         task = manifest["tasks"]["b01-round1"]
-        start_staged_dispatch(self.store, manifest["runId"], task["taskId"], "external-b01")
+        before_dispatch = self.store.load(manifest["runId"])
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_staged_dispatch(self.store, manifest["runId"], task["taskId"], "external-b01")
+        self.assertEqual(before_dispatch, self.store.load(manifest["runId"]))
+        manifest = persist_legacy_dispatch(self.store, manifest["runId"], task["taskId"], "external-b01")
+        _, idempotent = start_staged_dispatch(self.store, manifest["runId"], task["taskId"], "external-b01")
+        self.assertTrue(idempotent)
         payload = self.draft(manifest, task)
         for item in payload["questions"]:
             item["answerContract"] = {

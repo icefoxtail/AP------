@@ -1,0 +1,578 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_PIPELINE_EVIDENCE_v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "evidenceId",
+    "runId",
+    "revision",
+    "axis",
+    "inputSha",
+    "mode",
+    "status",
+    "validityStatus",
+    "reviewerId",
+    "reviewSessionId",
+    "reviewerModelOrAgent",
+    "auditorPrincipalType",
+    "startedAt",
+    "frozenAt",
+    "priorReviewVisibility",
+    "inputVisibilityProfile",
+    "findings",
+    "reviewIsolationProvenanceSha",
+    "reviewStartInputSha",
+    "reviewEndInputSha",
+    "payload"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "APMATH_PIPELINE_EVIDENCE_v2"
+    },
+    "evidenceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "axis": {
+      "enum": [
+        "SOURCE",
+        "MATH_A1",
+        "MATH_A2",
+        "SOLUTION",
+        "METADATA",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW"
+      ]
+    },
+    "inputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "mode": {
+      "enum": [
+        "FRESH",
+        "MACHINE_CURRENT"
+      ]
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "validityStatus": {
+      "enum": [
+        "VALID",
+        "FROZEN"
+      ]
+    },
+    "reviewerId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewSessionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewerModelOrAgent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "auditorPrincipalType": {
+      "enum": [
+        "STATELESS_MODEL",
+        "HUMAN",
+        "MACHINE_COLLECTOR"
+      ]
+    },
+    "startedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frozenAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "priorReviewVisibility": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputVisibilityProfile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "OPEN",
+              "RESOLVED"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "reviewIsolationProvenanceSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "reviewStartInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "reviewEndInputSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "withdrawalStatus": {
+      "enum": ["ACTIVE"]
+    },
+    "revocationStatus": {
+      "enum": ["NOT_REVOKED"]
+    },
+    "supersessionStatus": {
+      "enum": ["VALID"]
+    },
+    "sourceAuthorityStatus": {
+      "enum": ["VALID"]
+    },
+    "eligibilityStatus": {
+      "enum": ["ELIGIBLE"]
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "oneOf": [
+    {
+      "required": [
+        "questionUid",
+        "axisInputSha"
+      ],
+      "properties": {
+        "questionUid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "axisInputSha": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "axis": {
+          "enum": [
+            "SOURCE",
+            "MATH_A1",
+            "MATH_A2",
+            "SOLUTION",
+            "METADATA",
+            "STATIC",
+            "V1",
+            "V2",
+            "V3"
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "required": ["withdrawalStatus", "revocationStatus", "supersessionStatus", "sourceAuthorityStatus", "eligibilityStatus"],
+          "properties": {
+            "axis": {
+              "const": "SOURCE"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "sourceTruthBundleSha",
+                "fidelityRationale",
+                "sourceFidelityVerified"
+              ],
+              "properties": {
+                "sourceTruthBundleSha": {
+                  "type": "string",
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "fidelityRationale": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sourceFidelityVerified": {
+                  "const": true
+                }
+              }
+            },
+            "mode": {
+              "const": "FRESH"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "HUMAN",
+                "STATELESS_MODEL"
+              ]
+            }
+          }
+        },
+        {
+          "required": ["withdrawalStatus", "revocationStatus", "supersessionStatus", "sourceAuthorityStatus", "eligibilityStatus"],
+          "properties": {
+            "axis": {
+              "const": "MATH_A1"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "independentAnswer",
+                "independentDerivation",
+                "blindSolveFrozen",
+                "allChoicesChecked",
+                "answerUnique"
+              ],
+              "properties": {
+                "independentAnswer": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "independentDerivation": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "blindSolveFrozen": {
+                  "const": true
+                },
+                "allChoicesChecked": {
+                  "const": true
+                },
+                "answerUnique": {
+                  "const": true
+                }
+              }
+            },
+            "mode": {
+              "const": "FRESH"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "HUMAN",
+                "STATELESS_MODEL"
+              ]
+            }
+          }
+        },
+        {
+          "required": ["withdrawalStatus", "revocationStatus", "supersessionStatus", "sourceAuthorityStatus", "eligibilityStatus"],
+          "properties": {
+            "axis": {
+              "const": "MATH_A2"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "a1EvidenceSha",
+                "answerComparison",
+                "allChoicesChecked",
+                "answerUnique"
+              ],
+              "properties": {
+                "a1EvidenceSha": {
+                  "type": "string",
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "answerComparison": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "allChoicesChecked": {
+                  "const": true
+                },
+                "answerUnique": {
+                  "const": true
+                }
+              }
+            },
+            "mode": {
+              "const": "FRESH"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "HUMAN",
+                "STATELESS_MODEL"
+              ]
+            }
+          }
+        },
+        {
+          "required": ["withdrawalStatus", "revocationStatus", "supersessionStatus", "sourceAuthorityStatus", "eligibilityStatus"],
+          "properties": {
+            "axis": {
+              "const": "SOLUTION"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "solutionRationale",
+                "checks"
+              ],
+              "properties": {
+                "solutionRationale": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "checks": {
+                  "type": "object",
+                  "required": [
+                    "mathematicalCorrectness",
+                    "logicalCompleteness",
+                    "studentUnderstandability"
+                  ],
+                  "properties": {
+                    "mathematicalCorrectness": {
+                      "const": "PASS"
+                    },
+                    "logicalCompleteness": {
+                      "const": "PASS"
+                    },
+                    "studentUnderstandability": {
+                      "const": "PASS"
+                    }
+                  }
+                }
+              }
+            },
+            "mode": {
+              "const": "FRESH"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "HUMAN",
+                "STATELESS_MODEL"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "axis": {
+              "const": "METADATA"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "metadataInputSha",
+                "checks"
+              ],
+              "properties": {
+                "metadataInputSha": {
+                  "type": "string",
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "checks": {
+                  "type": "object",
+                  "required": [
+                    "schema",
+                    "uidBinding",
+                    "curriculumBinding"
+                  ],
+                  "properties": {
+                    "schema": {
+                      "const": "PASS"
+                    },
+                    "uidBinding": {
+                      "const": "PASS"
+                    },
+                    "curriculumBinding": {
+                      "const": "PASS"
+                    }
+                  }
+                }
+              }
+            },
+            "mode": {
+              "const": "MACHINE_CURRENT"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "MACHINE_COLLECTOR"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "axis": {
+              "const": "STATIC"
+            },
+            "payload": {
+              "type": "object",
+              "required": [
+                "checkedInputSha",
+                "checks"
+              ],
+              "properties": {
+                "checkedInputSha": {
+                  "type": "string",
+                  "pattern": "^sha256:[0-9a-f]{64}$"
+                },
+                "checks": {
+                  "type": "object",
+                  "required": [
+                    "schema",
+                    "jsLoad",
+                    "hashes",
+                    "assetBinding",
+                    "fileParity"
+                  ],
+                  "properties": {
+                    "schema": {
+                      "const": "PASS"
+                    },
+                    "jsLoad": {
+                      "const": "PASS"
+                    },
+                    "hashes": {
+                      "const": "PASS"
+                    },
+                    "assetBinding": {
+                      "const": "PASS"
+                    },
+                    "fileParity": {
+                      "const": "PASS"
+                    }
+                  }
+                }
+              }
+            },
+            "mode": {
+              "const": "MACHINE_CURRENT"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "MACHINE_COLLECTOR"
+              ]
+            }
+          }
+        },
+        {
+          "required": ["withdrawalStatus", "revocationStatus", "supersessionStatus", "sourceAuthorityStatus", "eligibilityStatus"],
+          "properties": {
+            "axis": {
+              "enum": [
+                "V1",
+                "V2",
+                "V3"
+              ]
+            },
+            "mode": {
+              "const": "FRESH"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "HUMAN",
+                "STATELESS_MODEL"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "required": [
+        "axisInputShas"
+      ],
+      "properties": {
+        "axis": {
+          "enum": [
+            "RENDER_CAPTURE",
+            "RENDER_REVIEW"
+          ]
+        },
+        "axisInputShas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          }
+        },
+        "payload": {
+          "type": "object",
+          "required": [
+            "questionUids",
+            "runtimeBundleSha",
+            "runtimeResponseBundleSha"
+          ],
+          "properties": {
+            "questionUids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "runtimeBundleSha": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
+            "runtimeResponseBundleSha": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "axis": {
+              "const": "RENDER_CAPTURE"
+            },
+            "mode": {
+              "const": "MACHINE_CURRENT"
+            },
+            "auditorPrincipalType": {
+              "const": "MACHINE_COLLECTOR"
+            }
+          }
+        },
+        {
+          "properties": {
+            "axis": {
+              "const": "RENDER_REVIEW"
+            },
+            "mode": {
+              "const": "FRESH"
+            },
+            "auditorPrincipalType": {
+              "enum": [
+                "HUMAN",
+                "STATELESS_MODEL"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

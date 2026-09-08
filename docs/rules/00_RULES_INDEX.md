@@ -13,6 +13,24 @@
 `02_PIPELINES/공통파이프라인_실행계약_v1.md`와 `archive/tools/pipeline-core/`를 적용한다.
 추출/초안 완료와 실제 문항 품질 PASS는 서로 다른 상태다.
 
+### JS아카이브 공통 권위 구조
+
+JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
+
+- 품질·독립검수·동일 final artifact SHA·실렌더·release/seal은
+  `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`가 정본이다.
+- pipeline schema·evidence·closure 연결은
+  `02_PIPELINES/공통파이프라인_실행계약_v1.md`와 `archive/tools/pipeline-core/`가 담당한다.
+- agent/provider 실행 수·동시성·phase isolation·freeze·launch/recheck·retry/fallback 및
+  provider 실행은 [`AGENT_BUDGET.md`](../../archive/tools/pipeline-core/AGENT_BUDGET.md)가
+  유일한 실행 정본이다.
+
+이 실행 권위는 신규 기출 JS 추출·변환, 기존 JS 정리·업그레이드, 해설 생성·업그레이드,
+visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출시·봉인에 공통 적용한다.
+유사문항은 별도 manifest와 별도 seal 프로젝트라는 Common Protocol의 경계를 유지한다.
+각 작업 문서는 domain-specific 품질 규칙을 계속 담당하지만, 품질 단계나 batch 이름만으로
+agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
+
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 3. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
@@ -94,7 +112,7 @@ coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geomet
 
 ## 4. 중복 규칙을 읽는 방법
 
-추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 범위·보호 필드와 데이터 계약은 canonical 룰북, 독립 검수·동일 SHA·coverage·release/seal HARD gate는 Common Protocol을 기준으로 한다. 작업별 pipeline과 review는 이 두 계약을 약화할 수 없다. 배치 크기와 revision의 현재 세부 기준은 적응형 배치 문서다. 그래프 style token·sampling·출판 수치와 geometry stroke·indicator·hatching·3D·hybrid 규칙은 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
+추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 범위·보호 필드와 데이터 계약은 canonical 룰북, 독립 검수·동일 SHA·coverage·release/seal HARD gate는 Common Protocol, pipeline schema·evidence·closure 연결은 `공통파이프라인_실행계약_v1.md`와 pipeline-core, agent/provider 실행 토폴로지는 [`AGENT_BUDGET.md`](../../archive/tools/pipeline-core/AGENT_BUDGET.md)를 기준으로 한다. 작업별 pipeline과 review는 이 권위 관계를 약화할 수 없다. 배치 크기와 revision의 현재 세부 기준은 적응형 배치 문서다. 그래프 style token·sampling·출판 수치와 geometry stroke·indicator·hatching·3D·hybrid 규칙은 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
 
 ### 4-1. 충돌 방지 고정 규칙
 

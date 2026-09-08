@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from alive.engine.tests.legacy_dispatch_fixture import persist_legacy_dispatch
+
 import json
 import tempfile
 import unittest
@@ -410,7 +412,7 @@ class AdaptiveStagedExamTests(unittest.TestCase):
         self.assertIn("source/visual-inspection.json", builder_packet["allowedInputPaths"])
         self.assertEqual("PASS", builder_packet["sourceVisualInspection"]["status"])
 
-    def test_status_exposes_only_a_bounded_dispatch_window(self) -> None:
+    def test_status_exposes_no_legacy_dispatch_window(self) -> None:
         manifest = self.start()
         current_stage = manifest["currentStage"]
         for index in range(3, 9):
@@ -428,44 +430,35 @@ class AdaptiveStagedExamTests(unittest.TestCase):
         self.store.save(manifest["runId"], manifest)
         status = build_adaptive_status(self.store, manifest["runId"])
         task_items = [item for item in status["queue"] if item["kind"] == "AGENT_TASK"]
-        self.assertEqual(4, len(task_items))
-        self.assertEqual(4, status["dispatchWindow"]["maxConcurrentTasks"])
+        self.assertEqual(0, len(task_items))
+        self.assertEqual(0, status["dispatchWindow"]["maxConcurrentTasks"])
         self.assertGreater(status["dispatchWindow"]["hiddenPendingCurrentStage"], 0)
 
-    def test_adaptive_dispatch_failure_keeps_four_attempt_budget(self) -> None:
+    def test_adaptive_dispatch_failure_preserves_receipt_without_retry(self) -> None:
         manifest = self.start()
         task_id = "b01-round1"
-        for attempt in range(1, 4):
-            start_adaptive_staged_dispatch(
-                self.store,
-                manifest["runId"],
-                task_id,
-                f"adaptive-failure-test-{attempt}",
-                "gpt-5.6-luna/xhigh",
-            )
-            task = fail_adaptive_staged_dispatch(
-                self.store,
-                manifest["runId"],
-                task_id,
-                "TEST_RETRYABLE_FAILURE",
-            )
-            self.assertEqual("PENDING", task["status"])
-        manifest = self.store.load(manifest["runId"])
-        self.assertEqual("ROUND1_GENERATING", manifest["status"])
-        self.assertEqual(3, len(manifest["tasks"][task_id]["dispatch"]["attempts"]))
+        before = self.store.load(manifest["runId"])
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "new-agent")
+        self.assertEqual(before, self.store.load(manifest["runId"]))
+        before = persist_legacy_dispatch(self.store, manifest["runId"], task_id, "existing-agent")
+        _, idempotent = start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "existing-agent")
+        self.assertTrue(idempotent)
+        with self.assertRaisesRegex(ValueError, "HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY"):
+            fail_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "TEST_RETRYABLE_FAILURE")
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "retry-agent")
+        self.assertEqual(before, self.store.load(manifest["runId"]))
 
-    def test_adaptive_artifact_rejection_does_not_fall_back_to_two_attempts(self) -> None:
+    def test_adaptive_local_artifact_rejection_does_not_authorize_dispatch(self) -> None:
         manifest = self.start()
         task_id = "b01-round1"
         for attempt in range(1, 3):
             if attempt > 1:
-                start_adaptive_staged_dispatch(
-                    self.store,
-                    manifest["runId"],
-                    task_id,
-                    f"adaptive-artifact-test-{attempt}",
-                    "gpt-5.6-luna/xhigh",
-                )
+                before = self.store.load(manifest["runId"])
+                with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+                    start_adaptive_staged_dispatch(self.store, manifest["runId"], task_id, "retry-agent")
+                self.assertEqual(before, self.store.load(manifest["runId"]))
             task = self.store.load(manifest["runId"])["tasks"][task_id]
             self.put(manifest, task, {"artifactType": "INVALID_ADAPTIVE_ARTIFACT"})
             from alive.engine.staged_exam import mark_staged_task_complete

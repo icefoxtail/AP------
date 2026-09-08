@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from alive.engine.tests.legacy_dispatch_fixture import persist_legacy_dispatch
+
 import json
 import tempfile
 import unittest
@@ -309,17 +311,21 @@ class FastExamTests(unittest.TestCase):
     def test_dispatch_backpressure_and_reconcile_are_idempotent(self) -> None:
         manifest = self.start([source_question(1)])
         task = next(iter(manifest["tasks"].values()))
-        started, idempotent = start_fast_dispatch(
-            self.store, manifest["runId"], task["taskId"], "agent-fast-1"
-        )
-        self.assertFalse(idempotent)
-        self.assertEqual("DISPATCHED", started["status"])
+        before = self.store.load(manifest["runId"])
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_fast_dispatch(self.store, manifest["runId"], task["taskId"], "agent-fast-1")
+        self.assertEqual(before, self.store.load(manifest["runId"]))
+        persist_legacy_dispatch(self.store, manifest["runId"], task["taskId"], "agent-fast-1")
         _, idempotent = start_fast_dispatch(
             self.store, manifest["runId"], task["taskId"], "agent-fast-1"
         )
         self.assertTrue(idempotent)
-        failed = fail_fast_dispatch(self.store, manifest["runId"], task["taskId"], "THREAD_LIMIT")
-        self.assertEqual("PENDING", failed["status"])
+        before = self.store.load(manifest["runId"])
+        with self.assertRaisesRegex(ValueError, "HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY"):
+            fail_fast_dispatch(self.store, manifest["runId"], task["taskId"], "THREAD_LIMIT")
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_fast_dispatch(self.store, manifest["runId"], task["taskId"], "agent-fast-2")
+        self.assertEqual(before, self.store.load(manifest["runId"]))
 
         persisted = self.store.load(manifest["runId"])
         draft_path = self.put_inbox(persisted, task, self.draft(persisted, task))

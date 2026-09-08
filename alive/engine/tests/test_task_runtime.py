@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 import tempfile
 import unittest
 from pathlib import Path
+from alive.engine.tests.legacy_dispatch_fixture import legacy_dispatched_task
 
 from alive.engine.task_runtime import (
     all_current_tasks_submitted,
@@ -86,47 +88,34 @@ class TaskRuntimeTests(unittest.TestCase):
     def test_dispatch_receipt_is_idempotent_and_rejects_other_active_agent(self) -> None:
         task = prepare_stage_tasks(self.run_dir, self.manifest)[0]
 
-        dispatched, idempotent = start_task_dispatch(
-            self.manifest, task["taskId"], "agent-123", "gpt-5.6-luna"
-        )
-        self.assertFalse(idempotent)
-        self.assertEqual("DISPATCHED", dispatched["status"])
-        self.assertEqual(
-            {
-                "attempt": 1,
-                "externalId": "agent-123",
-                "route": "gpt-5.6-luna",
-                "status": "DISPATCHED",
-            },
-            {
-                key: dispatched["dispatch"]["attempts"][0][key]
-                for key in ("attempt", "externalId", "route", "status")
-            },
-        )
+        before = deepcopy(self.manifest)
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_task_dispatch(self.manifest, task["taskId"], "agent-123")
+        self.assertEqual(before, self.manifest)
+        dispatched = legacy_dispatched_task(task, "agent-123")
 
         repeated, idempotent = start_task_dispatch(self.manifest, task["taskId"], "agent-123")
         self.assertTrue(idempotent)
         self.assertIs(dispatched, repeated)
         self.assertEqual(1, len(dispatched["dispatch"]["attempts"]))
-        with self.assertRaisesRegex(ValueError, "different external id"):
+        before = deepcopy(self.manifest)
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
             start_task_dispatch(self.manifest, task["taskId"], "agent-456")
+        self.assertEqual(before, self.manifest)
 
-    def test_dispatch_failure_retains_receipt_and_returns_task_to_pending(self) -> None:
+    def test_dispatch_failure_preserves_active_receipt_without_retry(self) -> None:
         task = prepare_stage_tasks(self.run_dir, self.manifest)[0]
-        start_task_dispatch(self.manifest, task["taskId"], "agent-123", "gpt-5.6-luna")
-
-        failed = fail_task_dispatch(self.manifest, task["taskId"], "AGENT_THREAD_LIMIT")
-
-        self.assertEqual("PENDING", failed["status"])
-        self.assertEqual("DISPATCH_FAILED", failed["dispatch"]["attempts"][0]["status"])
-        self.assertEqual("AGENT_THREAD_LIMIT", failed["dispatch"]["lastFailure"]["code"])
-        retried, idempotent = start_task_dispatch(self.manifest, task["taskId"], "agent-456")
-        self.assertFalse(idempotent)
-        self.assertEqual(2, retried["dispatch"]["attempts"][-1]["attempt"])
+        legacy_dispatched_task(task, "agent-123")
+        before = deepcopy(self.manifest)
+        with self.assertRaisesRegex(ValueError, "HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY"):
+            fail_task_dispatch(self.manifest, task["taskId"], "AGENT_THREAD_LIMIT")
+        with self.assertRaisesRegex(ValueError, "HOLD:LEGACY_AGENT_DISPATCH_DISABLED"):
+            start_task_dispatch(self.manifest, task["taskId"], "agent-456")
+        self.assertEqual(before, self.manifest)
 
     def test_submit_accepts_dispatched_task_and_closes_its_receipt(self) -> None:
         task = prepare_stage_tasks(self.run_dir, self.manifest)[0]
-        start_task_dispatch(self.manifest, task["taskId"], "agent-123")
+        legacy_dispatched_task(task, "agent-123")
         input_path = self.run_dir / "agent-output.json"
         input_path.write_text(
             json.dumps({

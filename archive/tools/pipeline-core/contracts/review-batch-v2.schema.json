@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_REVIEW_BATCH_v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "batchId",
+    "questionUids",
+    "axisSet",
+    "executionType",
+    "workBatchId",
+    "launchId"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "APMATH_REVIEW_BATCH_v2"
+    },
+    "batchId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "questionUids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "axisSet": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "executionType": {
+      "enum": [
+        "UNIFIED_AUDITOR",
+        "TARGETED_RECHECK",
+        "CONDITIONAL_SECOND_AUDITOR"
+      ]
+    },
+    "workBatchId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "launchId": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": true
+}

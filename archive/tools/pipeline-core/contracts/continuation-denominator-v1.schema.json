@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_CONTINUATION_DENOMINATOR_v1",
+  "type": "object",
+  "required": ["schemaVersion", "questionUid", "expectedCaseSet", "expectedBlockSet", "expectedContinuationCaseSetSha", "expectedContinuationBlockSetSha", "status"],
+  "properties": {
+    "schemaVersion": { "const": "APMATH_CONTINUATION_DENOMINATOR_v1" },
+    "questionUid": { "type": "string", "minLength": 1 },
+    "expectedCaseSet": { "type": "array", "minItems": 1, "uniqueItems": true },
+    "expectedBlockSet": { "type": "array" },
+    "status": { "const": "PASS" }
+  },
+  "additionalProperties": true
+}

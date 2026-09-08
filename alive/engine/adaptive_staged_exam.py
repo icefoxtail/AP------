@@ -39,7 +39,7 @@ ADAPTIVE_RUNTIME_DIRECTORY = "adaptive-staged-runs"
 # a model returned an unchanged or contract-invalid artifact.  This does not
 # alter the production controller's retry budget.
 ADAPTIVE_MAX_ATTEMPTS = 4
-ADAPTIVE_MAX_CONCURRENT_TASKS = 4
+ADAPTIVE_MAX_CONCURRENT_TASKS = 0  # legacy wave dispatch retired; work-batch owns the sole slot
 ADAPTIVE_MAX_CORRECTION_CYCLES = 3
 ADAPTIVE_CORRECTION_STAGE = "S04R_CORRECTION_LOOP"
 ADAPTIVE_CORRECTION_REVIEW_STAGE = "S05R_CORRECTION_REVIEW"
@@ -608,6 +608,8 @@ def start_adaptive_staged_dispatch(
 
     manifest = store.load(run_id)
     task = base._task(manifest, task_id)
+    from .agent_budget import hold_legacy_launch
+    hold_legacy_launch(task, external_id)
     if task.get("status") == "DISPATCHED":
         attempts = task.get("dispatch", {}).get("attempts", [])
         if attempts and attempts[-1].get("externalId") == external_id:
@@ -659,6 +661,7 @@ def fail_adaptive_staged_dispatch(
 ) -> dict[str, Any]:
     """Fail one adaptive attempt without falling back to the baseline limit."""
 
+    raise ValueError("HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY")
     manifest = store.load(run_id)
     task = base._task(manifest, task_id)
     if task.get("status") != "DISPATCHED":
