@@ -374,3 +374,19 @@ r35 candidate bank validation은 59 source bank·1295 row·current candidate vis
 r35 current V2 preparation은 새 `hs-quadratic-r35d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r35 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 56개 candidate visual, 112개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r35 target-scoped coverage correction (2026-09-09)
+
+r35의 최초 snapshot은 전체 1295 candidate row의 visual count를 430개 target coverage로 잘못 사용했고, 430개 target inventory 밖의 25 제일고 q21을 batch에 포함했다. 해당 out-of-scope candidate row를 제거하고 r35를 target 문항 7건으로 재생성·재검증했다. 수정된 r35 batch는 V1 7/7, 독립 검산 7/7, V2 7/7, V3 7/7(FAIL 0), solution freeze 7/7, local render 7/7·overflow 0이다.
+
+target-scoped visual coverage audit 기준으로 전체 target row 430건 중 visual-decision target 379건에서 current visual은 270건, 잔여는 109건이다. 전체 1295 candidate row의 visual count 322건은 별도 보조 통계로만 보존하며 target coverage로 사용하지 않는다. fresh expected fact는 317건, 잔여 113건이다. 최신 정정 근거는 [target-scoped coverage audit](505_target_scoped_visual_coverage_current.json)와 [r35 corrected snapshot](503_current_closure_snapshot_r35_v3_closed.json)이다.
+
+## r36 target-scoped continuation update (2026-09-09)
+
+r36은 8개 target 문항을 처리했다. 25 한영고 q3/q5/q20은 함수 그래프를 cartesian SVG로 구성했고, 25 강남고 q17·25 금당고 q13·25 순천여고 q5·23 한영고 q11/q17은 절댓값·판별식·정수해를 수직선 SVG로 구성했다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r36 candidate bank validation은 59 source bank·1295 row·full candidate visual 330건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 278건, 잔여 101건이다. fresh expected fact 누적은 현재 counting 기준 325건, 잔여 105건이다. 최신 상태는 [r36 V3 closure snapshot](520_current_closure_snapshot_r36_v3_closed.json)이다.
+
+r36 current V2 preparation은 새 `hs-quadratic-r36d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. r36 snapshot은 전체 1295-row candidate visual count와 430-row target-scoped visual coverage를 분리해 기록한다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r36 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 101개 target-scoped candidate visual, 105개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
