@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R28_V3_CLOSED",
+  "status": "R28_SPECIALIST_BATCH_V3_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "mainBaseline": "origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22",
+  "scope": { "targetQuestionCount": 430, "sourceFileCount": 59, "examFileCount": 59 },
+  "sourceSolutionStatus": { "sourceStaticIssueRows": 0, "candidateStaticIssueRows": 0, "sourceSolutionIndependentRecheckRows": 11, "sourceCandidateParityErrors": 0, "evidence": "reports/hs-quadratic-svg-upgrade-20260908/365_current_closure_snapshot_r26_source_solution_repaired.json" },
+  "visualDecisionDenominator": { "NO_VISUAL": 51, "KEEP_EXISTING": 0, "REBUILD_EXISTING": 2, "ADD_NEW_VISUAL": 377, "candidateVisualTarget": 379 },
+  "r28Batch": {
+    "rows": 8,
+    "numberLineRows": 7,
+    "cartesianRows": 1,
+    "v1ExpectedFacts": "8/8",
+    "independentRecheck": "8/8",
+    "solutionFreeze": "8/8 candidate rows",
+    "candidateStatic": "8/8",
+    "v2ArtifactOnly": "8/8",
+    "v3Pass": "8/8",
+    "v3Fail": 0,
+    "localRender": "desktop/mobile 8/8",
+    "localRenderOverflow": 0,
+    "evidence": {
+      "v1": "reports/hs-quadratic-svg-upgrade-20260908/380_specialist_v1_expected_facts_r28.json",
+      "independentRecheck": "reports/hs-quadratic-svg-upgrade-20260908/388_independent_recheck_specialist_r28.json",
+      "visualManifest": "reports/hs-quadratic-svg-upgrade-20260908/381_specialist_candidate_visual_manifest_r28.json",
+      "static": "reports/hs-quadratic-svg-upgrade-20260908/383_specialist_candidate_visual_static_check_r28.json",
+      "candidateBank": "reports/hs-quadratic-svg-upgrade-20260908/382_specialist_candidate_bank_manifest_r28.json",
+      "bankValidation": "reports/hs-quadratic-svg-upgrade-20260908/385_specialist_candidate_bank_validation_r28.json",
+      "v2": "reports/hs-quadratic-svg-upgrade-20260908/384_specialist_v2_artifact_only_r28.json",
+      "v3": "reports/hs-quadratic-svg-upgrade-20260908/386_specialist_v3_parity_r28.json",
+      "solutionFreeze": "reports/hs-quadratic-svg-upgrade-20260908/389_specialist_solution_freeze_ledger_r28.json",
+      "render": "reports/hs-quadratic-svg-upgrade-20260908/393_specialist_local_render_review_r28.json"
+    }
+  },
+  "candidateVisualProgress": { "priorUniqueCandidateVisuals": 259, "r28BatchRows": 8, "r28SupersededPriorCandidateRows": 0, "currentUniqueCandidateVisuals": 267, "remainingCandidateVisuals": 112, "freshExpectedFactRowsThroughR28": 262, "remainingFreshExpectedFactsUnderCurrentCounting": 168 },
+  "currentV2Preparation": { "workBatchId": "hs-quadratic-r28c", "runCount": 59, "preparedQuestionCount": 430, "errors": 0, "machineEvidenceCount": 860, "machineEvidenceValidationErrors": 0, "preparation": "reports/hs-quadratic-svg-upgrade-20260908/390_current_v2_preparation_r28c.json", "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/391_machine_evidence_r28c.json", "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/392_machine_evidence_validation_r28c.json", "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_PROVIDER_RENDER_CAPTURE" },
+  "registry": { "candidateEntries": 430, "identityMismatchCount": 15, "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json" },
+  "remainingGates": [
+    "fresh independent math A1/A2 and solution freeze for full 430 rows",
+    "fresh V1 expected facts for remaining 168 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 112 candidate visual rows",
+    "provider-attested FINAL_AUDIT",
+    "actual current desktop/mobile render capture and independent render-review for the full required scope",
+    "source registry identity authority for 15 mismatched exam titles",
+    "DB/question-index/production promotion authority"
+  ],
+  "note": "R28 closes an additional 8-row mixed candidate batch. Full-scope PASS, SEALED, and production promotion remain forbidden until every remaining gate is current and independently evidenced."
+}
