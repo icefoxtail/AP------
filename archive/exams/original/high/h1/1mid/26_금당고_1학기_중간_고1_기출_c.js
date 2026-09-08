@@ -201,7 +201,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트]\n이차함수의 꼭짓점과 정의역의 위치를 비교하여 구간의 최댓값을 구한다.\n\n풀이 과정\n$y=x^2-6x+4=(x-3)^2-5$이므로 위로 열린 포물선이고 축은 $x=3$이다. 정의역 $-1\\le x\\le2$는 축의 왼쪽에 있으므로 함수는 이 구간에서 감소한다. 따라서 최댓값은 왼쪽 끝점 $x=-1$에서 얻는다.\n$y(-1)=(-1)^2-6(-1)+4=1+6+4=11$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -306,7 +306,7 @@ window.questionBank = [
       "$\\dfrac{1}{4}$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트]\n이차방정식이 $x$축과 한 점에서 만나는 조건은 판별식이 $0$이라는 뜻이다.\n\n풀이 과정\n$y=2x^2-x+k$의 그래프가 $x$축과 한 점에서 만나려면 $2x^2-x+k=0$이 중근을 가져야 한다. 판별식은 $D=(-1)^2-4\\cdot2\\cdot k=1-8k$이다.\n$D=0$이므로 $1-8k=0$, 따라서 $k=\\dfrac18$이다. 보기에서 $\\dfrac18$은 ④이다.\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -549,7 +549,7 @@ window.questionBank = [
       "$\\dfrac{13}{8}$"
     ],
     "answer": "③",
-    "solution": "교점의 $x$좌표를 $\\alpha,\\beta$라 하고 $\\beta=2\\alpha$로 둔다.\n$f(x)=x^2+px+q$라 하면 직선 $y=5x+k$와의 교점 방정식은 $x^2+(p-5)x+(q-k)=0$이다. 따라서 $\\alpha+\\beta=3\\alpha=5-p$이고, $f(1)=3$에서 $1+p+q=3$, 즉 $q=2-p=3\\alpha-3$이다.\n\n그러므로 $k=q-\\alpha\\beta=3\\alpha-3-2\\alpha^2=-2(\\alpha-\\frac34)^2-\\frac{15}{8}$이다. 최댓값은 $\\alpha=\\frac34$일 때 $-\\frac{15}{8}$이며, 선택지 ③이다. 원문 표시 정답 ⑤($13/8$)와는 충돌하므로 source defect로 기록한다.",
+    "solution": "교점의 $x$좌표를 $\\alpha,\\beta$라 하고 $\\beta=2\\alpha$로 둔다.\n$f(x)=x^2+px+q$라 하면 직선 $y=5x+k$와의 교점 방정식은 $x^2+(p-5)x+(q-k)=0$이다. 따라서 $\\alpha+\\beta=3\\alpha=5-p$이고, $f(1)=3$에서 $1+p+q=3$, 즉 $q=2-p=3\\alpha-3$이다.\n\n그러므로 $k=q-\\alpha\\beta=3\\alpha-3-2\\alpha^2=-2(\\alpha-\\frac34)^2-\\frac{15}{8}$이다. 최댓값은 $\\alpha=\\frac34$일 때 $-\\frac{15}{8}$이며, 선택지 ③이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
