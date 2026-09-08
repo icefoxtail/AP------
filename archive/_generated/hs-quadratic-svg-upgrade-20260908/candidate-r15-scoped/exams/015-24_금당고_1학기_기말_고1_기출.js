@@ -1,0 +1,53 @@
+window.examTitle = "24_금당고_1학기_기말_고1_기출";
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "중",
+    "category": "수학(상)",
+    "originalCategory": "수학(상)",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "$x$에 대한 이차부등식 $x^2-4x+3<0$의 해가 $a<x<b$일 때, $ab$의 값은? (단, $a$, $b$는 상수이다.)",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 이차부등식의 해는 먼저 경계가 되는 이차방정식의 두 근을 구한 뒤, 부호를 조사하여 정한다.\n$x^2-4x+3$을 인수분해하면\n$x^2-4x+3=(x-1)(x-3)$이다.\n따라서 이차방정식 $x^2-4x+3=0$의 두 근은 $1$, $3$이다.\n이차식의 최고차항의 계수가 양수이므로 그래프는 위로 열린다. 그러므로 이차식의 값이 $0$보다 작은 구간은 두 근 사이이다.\n따라서 부등식의 해는 $1<x<3$이다.\n문제에서 해가 $a<x<b$이므로 $a=1$, $b=3$이다.\n따라서 $ab=1\\times3=3$이므로 정답은 ③이다.",
+    "subUnitKey": "H15-SA-08-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 18,
+    "level": "상",
+    "category": "수학(상)",
+    "originalCategory": "수학(상)",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [],
+    "wide": false,
+    "content": "[서술형1] 연립부등식 $\\begin{cases}(x+a)(x-4)<0\\\\ (x-a)(x-3)>0\\end{cases}$의 해가 $3<x<4$일 때, 실수 $a$의 값의 최댓값과 최솟값의 합을 풀이 과정과 함께 상세하게 서술하시오.",
+    "choices": [],
+    "answer": "$-3$",
+    "solution": "[키포인트] 두 부등식의 해를 각각 구한 뒤, 두 해의 공통부분이 정확히 $3<x<4$가 되도록 $a$의 범위를 정한다.\n먼저 $(x+a)(x-4)<0$을 보자.\n이 부등식의 경계는 $x=-a$, $x=4$이다. 곱이 음수가 되려면 $x$는 두 경계 사이에 있어야 한다.\n최종 해가 $3<x<4$이므로 첫 번째 부등식의 해는 적어도 $3<x<4$를 포함하고, 오른쪽 끝은 $4$가 되어야 한다. 따라서 $-a\\le3$, 즉 $a\\ge -3$이어야 한다. 이때 첫 번째 부등식의 해는 $-a<x<4$로 볼 수 있다.\n다음으로 $(x-a)(x-3)>0$을 보자.\n이 부등식은 두 인수의 부호가 같을 때 성립한다.\n만약 $a<3$이면 해는 $x<a$ 또는 $x>3$이다.\n만약 $a>3$이면 해는 $x<3$ 또는 $x>a$가 되어 $3<x<4$ 전체를 만들 수 없다. 그러므로 $a<3$인 경우를 보아야 한다.\n이제 두 해의 공통부분을 생각한다.\n첫 번째 해는 $-a<x<4$이고, 두 번째 해는 $x<a$ 또는 $x>3$이다.\n여기서 원하는 공통부분은 $3<x<4$뿐이어야 하므로, $x<a$ 쪽에서 불필요한 해가 생기면 안 된다.\n불필요한 공통부분 $-a<x<a$가 생기지 않으려면 $a\\le0$이어야 한다.\n앞에서 얻은 조건 $a\\ge -3$과 합치면\n$-3\\le a\\le0$이다.\n따라서 $a$의 최솟값은 $-3$, 최댓값은 $0$이다.\n그러므로 최댓값과 최솟값의 합은 $0+(-3)=-3$이다.",
+    "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+    "subUnit": "연립부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  }
+];

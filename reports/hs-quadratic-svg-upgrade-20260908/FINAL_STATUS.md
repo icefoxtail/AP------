@@ -167,6 +167,16 @@ r14 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 
 r14 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이지만 실제 browser capture 부재로 whole-job freeze는 시도하지 않았다. 전체 430 solution freeze·남은 fresh V1/V2/V3·provider-attested FINAL_AUDIT·실제 render review·registry authority·production promotion은 계속 열린 gate다.
 
+## r15 specialist number-line/function batch update (2026-09-08)
+
+r15는 남은 specialist 대상 18건을 source-only expected fact → 독립 재검산 → candidate SVG → artifact-only V2 → V3 parity → desktop/mobile local render 순서로 처리했다. 수직선 16건과 함수 그래프 2건으로 구성했으며, V1 18/18, 독립 검산 18/18 mismatch 0, candidate solution freeze 18/18, static 18/18, V2 18/18, V3 18/18(FAIL 0), local desktop/mobile render 18/18 및 overflow 0이다. 자연수·실수 조건의 열린/닫힌 끝점과 `7<a≤8` 같은 정수 개수 조건을 수직선에 반영했다.
+
+r15 candidate bank validation은 59 source bank·1295 row·unique candidate visual 113건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 113건이 현재 candidate이고 266건이 남아 있다. 최신 상태는 [r15 V3 closure snapshot](150_current_closure_snapshot_r15_v3_closed.json)이다.
+
+원격 branch continuation을 위해 candidate bank가 참조하는 candidate SVG asset 113개를 별도 추적 대상으로 packaging할 예정이다. production source/asset과 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r15 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이지만 실제 browser capture 부재로 whole-job freeze는 시도하지 않았다. 전체 430 solution freeze·남은 fresh V1/V2/V3·provider-attested FINAL_AUDIT·실제 render review·registry authority·production promotion은 계속 열린 gate다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.
