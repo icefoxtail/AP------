@@ -190,9 +190,15 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
               for (const child of [node, ...node.querySelectorAll('*')]) {
                 const box = child.getBoundingClientRect();
                 if (!box.width || !box.height) continue;
+                // MathJax uses layout-only spacer nodes for overlines and
+                // accents. Their measured box can overhang a clipped q-box by
+                // a few CSS pixels without any visible content being clipped.
+                // Keep the normal 1px guard for all real content and use a
+                // narrow tolerance only for this non-semantic spacer node.
+                const clipTolerance = child.tagName === 'MJX-SPACER' ? 8 : 1;
                 for (let ancestor = child.parentElement; ancestor && ancestor !== document.body; ancestor = ancestor.parentElement) {
                   const style = getComputedStyle(ancestor), boundary = ancestor.getBoundingClientRect();
-                  if (['hidden','clip'].includes(style.overflowX) && (box.left < boundary.left - 1 || box.right > boundary.right + 1) || ['hidden','clip'].includes(style.overflowY) && (box.top < boundary.top - 1 || box.bottom > boundary.bottom + 1)) clipped = true;
+                  if (['hidden','clip'].includes(style.overflowX) && (box.left < boundary.left - clipTolerance || box.right > boundary.right + clipTolerance) || ['hidden','clip'].includes(style.overflowY) && (box.top < boundary.top - clipTolerance || box.bottom > boundary.bottom + clipTolerance)) clipped = true;
                 }
               }
               return { clipped, page: page ? [...document.querySelectorAll('.page')].indexOf(page) + 1 : 1, column: column ? [...column.parentElement.children].indexOf(column) + 1 : 1, flowPosition: [...node.parentElement.children].indexOf(node), boundingBox: { x: rect.x + scrollX, y: rect.y + scrollY, width: rect.width, height: rect.height }, blockId: node.dataset.solutionLayoutBlockId || null };

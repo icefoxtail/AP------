@@ -65,6 +65,18 @@ export function runtimeDependencyBundle(root, enginePath = 'archive/engine.html'
       const distribution = relative.split('/').slice(0, 3).join('/');
       for (const file of filesBelow(root, distribution)) pending.push(file);
     }
+    // MathJax's accessibility/SRE and TeX extension loaders request files
+    // dynamically (for example sre/speech-worker.js and mathmaps/*.json), so
+    // static HTML/script discovery alone cannot bind the complete local
+    // renderer runtime. Include the complete local MathJax loader tree.
+    if ((relative === enginePath || /^archive\/vendor\/mathjax\//.test(relative)) && fs.existsSync(path.resolve(root, 'archive/vendor/mathjax'))) {
+      for (const file of filesBelow(root, 'archive/vendor/mathjax')) pending.push(file);
+    }
+    // question-meta.js resolves its approved sidecar relative to engine.html
+    // at runtime instead of declaring it as a static script reference.
+    if ((relative === enginePath || relative === 'archive/question-meta.js') && fs.existsSync(path.resolve(root, 'archive/data/question_metadata.json'))) {
+      pending.push('archive/data/question_metadata.json');
+    }
   }
   const localFiles = [...visited].sort().map(relative => fileRef(root, relative));
   const payload = { schemaVersion: 'APMATH_RENDER_RUNTIME_BUNDLE_v1', enginePath, localFiles, externalUrls: [...externalUrls].sort() };

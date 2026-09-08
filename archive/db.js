@@ -32,6 +32,37 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "기하",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "original/high/h2/1final/26_순천고_1학기_기말_고2_대수.js",
       "school": "순천고",
       "topic": "",
