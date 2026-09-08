@@ -55,3 +55,17 @@
 - current pipeline-core provider-attested FINAL_AUDIT has not been executed
 - candidate SVG generation and V1/V2/V3 evidence are not yet created
 - production source/assets remain unchanged by policy
+
+## r8/r9 source correctness repair update
+
+사용자 승인에 따라 5개 source correctness hold를 candidate-r8/r9에서 최소 수정했다. 금당고 q13에는 `k≠0` 조건을 추가했고, 금당고 q17은 보기 ⑤를 `없다`로 보강해 answer ⑤로 정정했다. 매산여고 q19는 ④(합 10), 팔마고 q9는 ①(`51/2`), 팔마고 q15는 ③(43)으로 정정했다.
+
+- independent source recheck: 5/5, candidate source holds: 0
+- V1/V2/V3 for repaired rows: 5/5 / 5/5 / 5/5, V3 FAIL 0
+- new SVG: 5건, static errors 0, local desktop/mobile overflow 0
+- candidate bank: 59 files, 1295 bank rows, approved content/choices/answer drift exactly 5, errors 0
+- production mutation: false
+
+상세: `36_approved_source_repair_plan_r8.json` → `38_candidate_source_repair_independent_recheck_r8.json` → `39_approved_source_only_v1_expected_facts_r9.json` → `40_approved_candidate_visual_manifest_r9.json` → `41_approved_candidate_bank_manifest_r9.json` → `42_approved_candidate_visual_static_check_r9.json` → `43_approved_v2_artifact_only_r9.json` → `44_approved_v3_parity_r9.json` → `45_local_svg_render_review_r9.json` → `49_local_render_manual_review_r9.json` → `46_approved_candidate_bank_validation_r9.json` → `47_candidate_solution_freeze_source_resolved_r9.json`.
+
+최종 봉인은 아니다. provider-attested FINAL_AUDIT, source registry authority, 전체 430문항 current V1/V2/V3, current render capture 및 독립 render-review가 남아 있으므로 상태는 `CANDIDATE_ONLY / FINAL_PASS_FORBIDDEN`이다.
