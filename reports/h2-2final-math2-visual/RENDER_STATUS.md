@@ -10,4 +10,6 @@
 - q22 solution screenshot was inspected after the final SVG label cleanup (`O/M/Z` labels); the asset is readable and placed without clipping.
 - Work-batch freeze: `FROZEN`, 23 target UIDs, 23 machine-checked UIDs.
 - Readability remains `NOT_TESTED` in machine capture until an independent render reviewer closes it.
-- Provider preflight: `HOLD:PROVIDER_TRANSPORT_UNAVAILABLE`; no provider launch, receipt, or semantic final audit was fabricated.
+- Provider preflight: actual Codex app-server control-plane `READY`; provider-issued externalTaskId and distinct U1/U2/U3 sessions/contexts were returned with `modelInvocationCount=0`, `STATELESS_INPUTS`, and `subagentToolsEnabled=false`.
+- Work-batch reservation: `FINAL_AUDIT` launch `h2-2final-math2-visual-20260908:1` is `RESERVED` and bound to the attested plan.
+- Provider semantic dispatch is intentionally not completed yet because U3 must receive actual frozen U1/U2 verdict outputs; the current sealed packet contains empty frozen-result slots. No receipt or semantic PASS is fabricated.

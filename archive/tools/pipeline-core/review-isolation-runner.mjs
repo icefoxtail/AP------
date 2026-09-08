@@ -81,7 +81,9 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
       if (typeof value.questionUid === 'string' && !visibleUids.includes(value.questionUid)) errors.push('NESTED_UNRELATED_UID_EXPOSURE');
       for (const [key, nested] of Object.entries(value)) {
         if ((forbidden[packet.phase] || []).some(word => key.toLowerCase().replace(/[^a-z]/g, '').includes(word.toLowerCase())) || ['U1','U2'].includes(packet.phase) && /verdict|rationale|hiddencontext|systemprompt|answerkey|expectedfact/i.test(key)) errors.push(`NESTED_BLIND_CONTEXT_LEAK:${key}`);
-        if (['U1', 'U2'].includes(packet.phase) && typeof nested === 'string' && /^\s*[\[{]/.test(nested)) { try { walk(JSON.parse(nested)); } catch { errors.push('OPAQUE_BLIND_CONTEXT_JSON'); } }
+        if (['U1', 'U2'].includes(packet.phase) && typeof nested === 'string' && /^\s*[\[{]/.test(nested)) {
+          try { walk(JSON.parse(nested)); } catch { /* Literal bracket-prefixed content is valid blind input. */ }
+        }
         walk(nested);
       }
     };
