@@ -100,6 +100,12 @@ r15 18건(수직선 16, 함수 그래프 2)은 source-only V1 18/18, 독립 검�
 
 현재 unique candidate visual은 113/379, 남은 candidate visual은 266건이다. 최신 원장은 `150_current_closure_snapshot_r15_v3_closed.json`이며, 원격 continuation을 위해 참조 SVG 113개를 packaging할 예정이다. 전체 430 solution freeze·남은 fresh facts·provider FINAL_AUDIT·browser render/review·registry authority가 남아 최종 PASS는 보류한다.
 
+## r16 mixed specialist batch
+
+r16 18건(수직선 15, 함수 그래프 3)은 source-only V1 18/18, 독립 검산 18/18, candidate solution freeze 18/18, static 18/18, artifact-only V2 18/18, V3 18/18·FAIL 0, local desktop/mobile overflow 0으로 닫혔다.
+
+현재 unique candidate visual은 149/379, 남은 candidate visual은 230건이다. 최신 원장은 `166_current_closure_snapshot_r16_v3_closed.json`이며, 전체 430 solution freeze·남은 fresh facts·provider FINAL_AUDIT·browser render/review·registry authority가 남아 최종 PASS는 보류한다.
+
 ## r10 current source application update
 
 승인된 5건을 별도 브랜치 source JS에 실제 반영했다. 변경 범위는 3개 파일·5개 문항·승인 필드로 제한되었고, source repair apply validation 오류는 0건이다. source holds는 5→0으로 해소되었다.
