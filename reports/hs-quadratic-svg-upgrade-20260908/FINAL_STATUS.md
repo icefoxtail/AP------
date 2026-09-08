@@ -47,6 +47,12 @@ ruleset과 `도형추출.md` v3.0 및 해설 SVG 운영규정을 적용하고 ov
 10. expected ↔ observed ↔ candidate solution V3 parity 5/5, V3 FAIL 0
 11. candidate protected hash parity 5/5
 12. pipeline-core regression 130/130 PASS로 복구·재검
+13. 전체 430문항 V1 source-only 입력 packet 430개 생성·검증; UID 중복·누수 0
+14. 전체 ADD/REBUILD 379개를 동일 visual type/risk 기준 77개 adaptive batch로 계획
+
+전체 V1 packet 입력 coverage는 430/430으로 준비됐지만, 이는 expected fact를 독립적으로
+확정했다는 뜻이 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`이며,
+독립 provider에게 넘길 수 있는 source-only 입력만 준비된 상태다.
 
 calibration candidate는 모두 `candidate-r3` 아래에 있으며, 이전 r1/r2 실패 산출물도
 append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 잘못 선택하던 generator
@@ -57,6 +63,8 @@ append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 �
 - 26 금당고 q17은 source가 정확히 세 교점을 만드는 `1<a<4`를 주지만 `a`의 최댓값을 요구한다. 최댓값은 존재하지 않으므로 correctness-affecting source hold다. source correction 또는 공식 withdrawal 없이 solution freeze/최종 봉인은 금지된다.
 - 377개 `ADD_NEW_VISUAL` 대상 전체에 대한 fact model과 candidate SVG가 아직 생성되지 않았다. calibration 5건의 성공을 전체 분모에 복사하지 않는다.
 - 430문항 전체의 current solution freeze와 독립 A1/A2 검산, V1/V2/V3 closure가 아직 없다.
+- 전체 V1 packet은 입력 준비 상태일 뿐 expected fact를 확정한 독립 검수 결과가 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`으로 남아 있다.
+- 과거 unit inventory/expected-fact와 현재 source를 raw hash·UID로 대조한 결과, 289건만 legacy identity/hash와 정렬되고 141건은 current exam identity 변경으로 legacy UID가 달라졌다. 이 141건을 포함해 전체 current V1/A1을 새로 검수해야 하며, legacy evidence를 자동 승계하지 않았다.
 - 실제 browser desktop/mobile `exam/solution/answer` capture 및 독립 render review는 아직 `NOT_TESTED`다. CUA가 local file URL을 보안정책으로 거부했고, 현재 Node runtime에서는 Playwright/Puppeteer import도 사용할 수 없었다. 우회 접근은 하지 않았다.
 - current pipeline-core provider-preflight/dispatch 기반 provider-attested `FINAL_AUDIT`는 실행되지 않았다. local static/V1/V2/V3 결과를 provider evidence로 가장하지 않았다.
 
@@ -75,3 +83,8 @@ append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 �
 - [current source hold](11_current_source_hold.json)
 - [V3 calibration parity](08_calibration_v3_parity_r3.json)
 - [calibration render status](12_calibration_render_status.json)
+- [full-scope V1 source-only packets](15_full_scope_v1_source_only_packets.jsonl)
+- [full-scope V1 packet validation](18_full_scope_v1_packet_validation.json)
+- [full-scope solution freeze ledger](16_full_scope_solution_freeze_ledger.json)
+- [full-scope adaptive batch plan](17_full_scope_batch_plan.json)
+- [full-scope legacy evidence alignment](19_legacy_evidence_alignment.json)
