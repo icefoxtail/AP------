@@ -114,6 +114,11 @@ window.questionBank = [
   {
     "id": 4,
     "level": "상",
+    "solutionImage": "assets/images/23_중앙여고_1학기_중간_고2_대수/q4-solution.svg",
+    "solutionImageAlt": "23_jungang_q4_quadratic",
+    "solutionImageCaption": "quadratic",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "$x > 0$에서 부등식 $x^{\\log_2 x} \\ge kx^2$이 항상 성립하도록 하는 양수 $k$의 범위는? [4.1점]",
     "choices": [
       "$0 < k \\le \\frac{1}{2}$",
