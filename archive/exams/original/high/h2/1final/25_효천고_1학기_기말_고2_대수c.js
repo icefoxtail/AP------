@@ -757,6 +757,11 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수/q23-solution.svg",
+    "solutionImageAlt": "25_hyochon_final_q23_two_circles",
+    "solutionImageCaption": "two_circles",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "그림과 같이 두 점 $\\text{O}_1$, $\\text{O}_2$를 각각 중심으로 하고 반지름의 길이가 $\\overline{\\text{O}_1\\text{O}_2}$인 두 원 $C_1$, $C_2$가 있다. 원 $C_1$ 위의 서로 다른 세 점 A, B, C와 원 $C_2$ 위의 점 D가 주어져 있고, 세 점 A, $\\text{O}_1$, $\\text{O}_2$와 세 점 C, $\\text{O}_2$, D가 각각 한 직선 위에 있다.\n\n$\\angle \\text{BO}_1\\text{A} = \\theta_1$, $\\angle \\text{O}_2\\text{O}_1\\text{C} = \\theta_2$, $\\angle \\text{O}_1\\text{O}_2\\text{D} = \\theta_3$이라 할 때 $\\theta_3 = \\theta_1 + \\theta_2$를 만족한다.\n\n$\\overline{\\text{AB}} = 2$, $\\overline{\\text{O}_1\\text{D}} = 4\\sqrt{2}$일 때 $\\overline{\\text{CO}_2} \\times \\overline{\\text{O}_2\\text{D}}$의 길이를 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "14",
