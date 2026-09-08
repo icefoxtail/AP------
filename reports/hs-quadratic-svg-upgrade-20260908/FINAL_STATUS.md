@@ -258,3 +258,12 @@ r22 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 r22 current v2 preparation은 충돌 방지를 위해 `hs-quadratic-r22c` 새 work-batch에서 59 run·430/430·오류 0으로 완료했다. machine STATIC/METADATA evidence는 860개·validation 오류 0이다. 원격 continuation을 위해 r22 candidate bank가 참조하는 SVG 235개와 r22 full/scoped bank·pipeline evidence·render evidence를 packaging해 push할 예정이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r22 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current source solution static audit의 별도 잔여 11건, 전체 430 solution freeze, remaining fresh V1/V2/V3, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+## r23 high-risk specialist continuation update (2026-09-09)
+
+r23은 5개 고위험 문항을 adaptive batch로 처리했다. 22 순천여고 q22 함수 그래프, 23 복성고 q21·23 팔마고 q21·25 매산고 q10·25 강남여고 q18 수직선을 대상으로 source-only expected fact → 독립 검산 → candidate SVG → artifact-only V2 → V3 parity → solution freeze → desktop/mobile local render 순서를 적용했다. V1 5/5, 독립 검산 5/5 mismatch 0, candidate static 5/5, V2 5/5, V3 5/5(FAIL 0), candidate solution freeze 5/5, local render 5/5 및 overflow 0이다.
+
+r23에서 최초 attach manifest의 `sourceJsPath` 누락으로 서로 다른 시험지의 q21 두 건이 `undefined|21`로 충돌했으나, 문항·해설·SVG는 수정하지 않고 attach metadata만 source path에 재결박했다. 재생성 후 candidate bank validation 오류 0, independent recheck 5/5, V3 5/5로 residual FAIL 0을 확인했다. 최신 상태는 [r23 V3 closure snapshot](301_current_closure_snapshot_r23_v3_closed.json)이다.
+
+r23 candidate bank validation은 59 source bank·1295 row·unique candidate visual 240건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 240건이 현재 candidate이고 139건이 남아 있다. fresh expected fact 누적은 현재 counting 기준 224건이며 206건이 남아 있다. current v2 preparation은 새 `hs-quadratic-r23c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다.
+
+r23 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current source solution static audit의 별도 잔여 11건, 전체 430 solution freeze, remaining fresh V1/V2/V3, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
