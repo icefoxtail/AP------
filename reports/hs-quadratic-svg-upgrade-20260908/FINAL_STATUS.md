@@ -135,6 +135,14 @@ production JS/SVG/DB/index에는 쓰지 않았다. 로컬 browser `file://` capt
 
 이번 source correction은 별도 브랜치에만 존재하며, DB/question-index/source registry 갱신과 provider-attested FINAL_AUDIT은 아직 수행하지 않았다. 전체 430문항의 독립 freeze 및 current V1/V2/V3가 닫히기 전에는 `PASS`·`SEALED`·production promotion을 선언하지 않는다.
 
+## r12 specialist batch update (2026-09-08)
+
+r12에서 남은 deterministic/specialist-ready 문항 18건을 source-only fact → candidate SVG → artifact-only V2 → V3 순서로 처리했다. 18건 모두 V3 parity PASS, static FAIL 0, local desktop/mobile overflow 0이다. case-table 3건과 parameter number-line 1건을 포함해 함수 그래프와 수직선의 학생 이해 목적을 분리해 구성했다.
+
+r12 candidate bank validation은 59개 source bank, 1295 bank rows, unique candidate visual 59건, source-protected content/choices/answer/image parity, asset association을 검사해 오류 0으로 끝났다. r12 대상 중 기존 candidate와 겹친 3건은 supersede로 기록하고 visual count에 이중 계산하지 않았다.
+
+최신 상태는 [r12 V3 closure snapshot](95_current_closure_snapshot_r12_v3_closed.json)이다. current v2 draft는 59 run·430문항·오류 0, machine evidence는 860개·validation 오류 0이다. 전체 target 379건 중 현재 unique candidate visual은 59건이고 320건이 남아 있다. 남은 full solution freeze·387 fresh expected fact·provider FINAL_AUDIT·실제 render capture/review·registry authority는 아직 최종 gate다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.
