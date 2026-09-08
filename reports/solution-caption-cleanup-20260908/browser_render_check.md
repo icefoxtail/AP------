@@ -7,14 +7,15 @@ Date: 2026-09-08 (Asia/Seoul)
 ## Collection identity
 
 - Worktree: `C:\Users\USER\Desktop\AP-------solution-caption-cleanup`
-- Tested code commit: `9b6a9ff3275329710e46730328209dde659aa7d1`
-- Upstream: `origin/main` at `904db45e90547111b93ee24e2f842b134963c229`
+- Rebased implementation commit: `18d09041` (`fix(solution): remove noninstructional solution image captions`)
+- Render/evidence worktree before this metadata correction: `61ff64cbe97e1e692eb56d75976bfb8bf312435d`
+- Upstream: `origin/main` at `809faf7442bb4366f98728e4dea246f8082f6307`
 - Browser: Codex in-app browser, local HTTP server on `127.0.0.1:8765`
 - Viewport: `1280×720`, device pixel ratio `1`
 - Browser console: no `error` or `warn` entries in any recorded case
 
 The render review was performed after rebasing the solution-caption cleanup
-commit onto the current `origin/main`. The production archive sample includes
+commit onto the current `origin/main=809faf74`. The production archive sample includes
 the first question, the last question, a removed generic caption, and retained
 mathematical captions.
 
@@ -117,7 +118,7 @@ After rebase:
 ```text
 node tools/skills/verify-skills.mjs
 Skill verification: PASS
-Upstream: origin/main @ 904db45e90547111b93ee24e2f842b134963c229 (ahead=1, behind=0)
+Upstream: origin/main @ 809faf7442bb4366f98728e4dea246f8082f6307 (ahead=2, behind=0)
 
 node tools/run-tests.js
 PASS 162 / FAIL 0 / KNOWN-FAIL 0 (total 162)
@@ -136,4 +137,4 @@ Targeted adapter/regression tests also passed with exit code `0`:
 
 All recorded required modes pass on the rebased worktree. No visual, image,
 MathJax, overflow, console, or caption-order defect was observed. The evidence
-file is committed together with the rebased cleanup commit.
+file is committed in the same rebased branch as the cleanup commit.
