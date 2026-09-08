@@ -66,9 +66,17 @@ def cartesian(case_id: str, fact: dict, title: str) -> str:
         y0 = ty(0); body.append(f'<line x1="{margin}" y1="{fmt(y0)}" x2="{width-margin}" y2="{fmt(y0)}" class="axis"/><path d="M {width-margin} {fmt(y0)} l -8 -4 l 0 8 z" class="arrow"/>')
     if x_low <= 0 <= x_high:
         x0 = tx(0); body.append(f'<line x1="{fmt(x0)}" y1="{margin}" x2="{fmt(x0)}" y2="{height-margin}" class="axis"/><path d="M {fmt(x0)} {margin} l -4 8 l 8 0 z" class="arrow"/>')
-    for x in range(math.ceil(x_low), math.floor(x_high) + 1):
-        if x == 0 or not (y_low <= 0 <= y_high): continue
-        y0 = ty(0); body.append(f'<line x1="{fmt(tx(x))}" y1="{fmt(y0-4)}" x2="{fmt(tx(x))}" y2="{fmt(y0+4)}" class="axis"/><text x="{fmt(tx(x))}" y="{fmt(y0+21)}" text-anchor="middle" class="label">{fmt(x)}</text>')
+    x_span = max(x_high - x_low, 1)
+    raw_x_step = x_span / 10
+    x_power = 10 ** math.floor(math.log10(raw_x_step))
+    normalized_x_step = raw_x_step / x_power
+    x_multiplier = 1 if normalized_x_step <= 1 else 2 if normalized_x_step <= 2 else 5 if normalized_x_step <= 5 else 10
+    x_tick_step = x_multiplier * x_power
+    x_tick = math.ceil((x_low - 1e-9) / x_tick_step) * x_tick_step
+    while x_tick <= x_high + 1e-9:
+        if abs(x_tick) > 1e-9 and y_low <= 0 <= y_high:
+            y0 = ty(0); body.append(f'<line x1="{fmt(tx(x_tick))}" y1="{fmt(y0-4)}" x2="{fmt(tx(x_tick))}" y2="{fmt(y0+4)}" class="axis"/><text x="{fmt(tx(x_tick))}" y="{fmt(y0+21)}" text-anchor="middle" class="label">{fmt(x_tick)}</text>')
+        x_tick += x_tick_step
     points = [f"{fmt(tx(x))},{fmt(ty(fn['a']*x*x+fn['b']*x+fn['c']))}" for x in [x_low+(x_high-x_low)*i/400 for i in range(401)]]
     body.append(f'<polyline points="{" ".join(points)}" class="curve"/>')
     if "line" in fact:
