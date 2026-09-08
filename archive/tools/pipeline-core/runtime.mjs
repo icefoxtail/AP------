@@ -18,6 +18,10 @@ function documentReferences(text) {
   const refs = [];
   for (const match of text.matchAll(/<(?:script|link)\b[^>]*?(?:src|href)=["']([^"']+)["']/gi)) refs.push(match[1]);
   for (const match of text.matchAll(/@import\s+(?:url\()?\s*["']?([^"')\s]+)["']?\s*\)?/gi)) refs.push(match[1]);
+  // Runtime code can load same-origin resources through URL constructors
+  // rather than a static script/link tag (for example the approved archive
+  // metadata sidecar). These bytes are part of the render closure too.
+  for (const match of text.matchAll(/new\s+URL\(\s*["']([^"']+)["']\s*,\s*document\.baseURI/gi)) if (!match[1].endsWith('/')) refs.push(match[1]);
   // Dynamic fallback URLs and pinned external scripts are part of the engine contract.
   for (const match of text.matchAll(/https?:\/\/[^\s"'`)<>]+/gi)) refs.push(match[0]);
   return refs;
@@ -47,8 +51,9 @@ export function runtimeDependencyBundle(root, enginePath = 'archive/engine.html'
     if (visited.has(relative)) continue;
     visited.add(relative);
     const bytes = fs.readFileSync(safePath(root, relative));
+    const text = bytes.toString('utf8');
     const extension = path.posix.extname(relative).toLowerCase();
-    const refs = extension === '.css' ? cssReferences(bytes.toString('utf8')) : extension === '.html' ? documentReferences(bytes.toString('utf8')) : [];
+    const refs = extension === '.css' ? cssReferences(text) : extension === '.html' || extension === '.js' ? documentReferences(text) : [];
     for (const reference of refs) {
       if (isExternal(reference)) externalUrls.add(reference);
       else {
@@ -64,6 +69,12 @@ export function runtimeDependencyBundle(root, enginePath = 'archive/engine.html'
     if (/^archive\/vendor\/mathjax-[^/]+\//.test(relative)) {
       const distribution = relative.split('/').slice(0, 3).join('/');
       for (const file of filesBelow(root, distribution)) pending.push(file);
+    }
+    // engine.html configures a second local MathJax loader path dynamically
+    // (`AP_VENDOR_BASE + 'mathjax'`). Bind that complete distribution so
+    // extensions such as [tex]/boldsymbol cannot become unbound requests.
+    if (extension === '.html' && /loader\s*:\s*\{[\s\S]*mathjax\s*:/i.test(text)) {
+      for (const file of filesBelow(root, 'archive/vendor/mathjax')) pending.push(file);
     }
   }
   const localFiles = [...visited].sort().map(relative => fileRef(root, relative));
