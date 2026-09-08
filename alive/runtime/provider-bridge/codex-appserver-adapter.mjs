@@ -154,7 +154,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   const thread = phaseResults[request.phase].thread;
   const turn = await app.request('turn/start', {
     threadId: thread.id,
-    model: control.model,
+    model: 'gpt-5.6-luna',
     input: [{ type: 'text', text: request.prompt }],
     outputSchema: { type: 'object', additionalProperties: false, properties: { evidence: { type: 'array' }, defects: { type: 'array' } }, required: ['evidence', 'defects'] },
     approvalPolicy: 'never',
