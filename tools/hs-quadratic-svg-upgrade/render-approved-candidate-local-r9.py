@@ -4,6 +4,7 @@ import html
 import json
 import math
 import re
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -12,9 +13,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT = ROOT / "reports" / "hs-quadratic-svg-upgrade-20260908"
-MANIFEST = REPORT / "40_approved_candidate_visual_manifest_r9.json"
-OUT_ROOT = ROOT / "reports" / "hs-quadratic-svg-upgrade-20260908" / "render-r9"
-OUTPUT = REPORT / "45_local_svg_render_review_r9.json"
+MANIFEST = REPORT / (sys.argv[1] if len(sys.argv) > 1 else "40_approved_candidate_visual_manifest_r9.json")
+OUT_ROOT = REPORT / (sys.argv[2] if len(sys.argv) > 2 else "render-r9")
+OUTPUT = REPORT / (sys.argv[3] if len(sys.argv) > 3 else "45_local_svg_render_review_r9.json")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
 
@@ -210,7 +211,9 @@ def main() -> None:
         mobile_thumb = mobile.copy(); mobile_thumb.thumbnail((180, 260)); mobile_tiles.append(mobile_thumb)
         rows.append({"questionUid": item["questionUid"], "caseId": item["caseId"], "desktopPath": desktop_path.relative_to(ROOT).as_posix(), "mobilePath": mobile_path.relative_to(ROOT).as_posix(), "desktopViewportWidth": 1280, "mobileViewportWidth": 360, "desktopOverflowLabels": desktop_overflows, "mobileOverflowLabels": mobile_overflows, "status": "LOCAL_RENDER_REVIEWED" if not desktop_overflows and not mobile_overflows else "LOCAL_RENDER_OVERFLOW_REVIEW_REQUIRED"})
     def sheet(tiles: list[Image.Image], tile_width: int, tile_height: int, name: str) -> str:
-        sheet_image = Image.new("RGB", (tile_width * 3, tile_height * 2), "white")
+        columns = 3
+        rows_count = max(1, math.ceil(len(tiles) / columns))
+        sheet_image = Image.new("RGB", (tile_width * columns, tile_height * rows_count), "white")
         for index, tile in enumerate(tiles):
             x = (index % 3) * tile_width; y = (index // 3) * tile_height
             sheet_image.paste(tile, (x, y))

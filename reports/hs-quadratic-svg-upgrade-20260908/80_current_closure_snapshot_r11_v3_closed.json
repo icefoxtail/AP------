@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R11_V3_CLOSED",
+  "status": "R11_DETERMINISTIC_BATCH_V3_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "scope": {"targetQuestionCount": 430, "sourceFileCount": 59, "examFileCount": 59},
+  "sourceRepairs": {"sourceHoldBefore": 5, "sourceHoldAfter": 0, "modifiedSourceFiles": 3, "modifiedQuestions": 5, "independentRecheck": "5/5", "sourceCandidateParity": "5/5", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/50_source_repairs_applied_r9.json"},
+  "visualDecisionDenominator": {"NO_VISUAL": 51, "KEEP_EXISTING": 0, "REBUILD_EXISTING": 2, "ADD_NEW_VISUAL": 377, "candidateVisualTarget": 379},
+  "capabilityTriage": {"targetCount": 430, "candidateTargetCount": 379, "cartesianNumericDeterministic": 20, "numberLineNumericDeterministic": 23, "specialistFactRequired": 336, "evidence": "reports/hs-quadratic-svg-upgrade-20260908/66_visual_fact_capability_triage_r10.json"},
+  "candidateVisualProgress": {"previousDeclaredVisuals": 19, "newDeterministicBatch": 25, "currentDeclaredCandidateVisuals": 44, "remainingCandidateVisuals": 335, "r11V1Rows": 25, "r11V2Rows": 25, "r11V3PassRows": 25, "r11V3FailRows": 0, "r11StaticFailures": 0, "r11LocalRenderOverflow": 0, "r11ProviderAttestedRender": "MISSING", "v1Evidence": "reports/hs-quadratic-svg-upgrade-20260908/68_deterministic_v1_expected_facts_r11.json", "v2Evidence": "reports/hs-quadratic-svg-upgrade-20260908/73_deterministic_v2_artifact_only_r11.json", "v3Evidence": "reports/hs-quadratic-svg-upgrade-20260908/79_deterministic_v3_parity_r11.json"},
+  "candidateBanks": {"cleanCandidateFiles": 59, "cleanBankRows": 1295, "scopedTargetQuestionCount": 430, "scopedCandidateFiles": 59, "latestScopedManifest": "reports/hs-quadratic-svg-upgrade-20260908/74_scoped_candidate_bank_manifest_r11.json", "latestFullCandidateManifest": "reports/hs-quadratic-svg-upgrade-20260908/70_deterministic_candidate_bank_manifest_r11.json"},
+  "currentV2Preparation": {"runCount": 59, "preparedQuestionCount": 430, "errors": 0, "latestPreparation": "reports/hs-quadratic-svg-upgrade-20260908/75_current_v2_preparation_r11.json", "machineEvidenceCount": 860, "machineEvidenceValidationErrors": 0, "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/77_machine_evidence_validation_r11.json", "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_RENDER_CAPTURE"},
+  "sourceRegistry": {"candidateEntries": 430, "sourceFileCount": 59, "identityMismatchCount": 15, "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json"},
+  "remainingGates": ["fresh independent math A1/A2 and solution freeze for full 430 rows", "fresh V1 expected facts for remaining 405 rows", "artifact-only V2 and semantic V3 for remaining candidate visual rows", "provider-attested FINAL_AUDIT", "actual current desktop/mobile render capture and independent render-review", "source registry identity authority for 15 mismatched exam titles", "DB/question-index/production promotion authority"],
+  "note": "R11 deterministic batch has a closed local V1/V2/V3 semantic chain for 25 rows, but this evidence is not provider-attested full-scope closure and does not authorize final PASS or seal."
+}

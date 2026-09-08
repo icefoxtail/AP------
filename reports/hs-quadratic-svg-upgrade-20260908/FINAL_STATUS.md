@@ -134,3 +134,19 @@ production JS/SVG/DB/index에는 쓰지 않았다. 로컬 browser `file://` capt
 반영 후 current source-only V1 packet을 430/430으로 재생성·검증했고, repaired solution freeze는 5/5, source↔candidate parity는 5/5다. 현재 상태의 단일 요약은 [r10 closure snapshot](57_current_closure_snapshot_r10.json)이다. 기존 r8/r9 candidate-only 원장은 변경 이력으로 보존한다.
 
 이번 source correction은 별도 브랜치에만 존재하며, DB/question-index/source registry 갱신과 provider-attested FINAL_AUDIT은 아직 수행하지 않았다. 전체 430문항의 독립 freeze 및 current V1/V2/V3가 닫히기 전에는 `PASS`·`SEALED`·production promotion을 선언하지 않는다.
+
+## r11 full-denominator progress update (2026-09-08)
+
+clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.
+
+신규 25건은 source-only V1 fact freeze, Python SVG 생성, static check, artifact-only V2 구조 기록, local desktop/mobile raster preview까지 수행했다. V1 25건과 V2 25건은 각각 별도 원장에 기록했으며, semantic V3는 독립 adjudication을 확인하기 전까지 PASS로 만들지 않고 pending으로 남겼다. 현재 capability triage는 430문항 중 deterministic candidate 43건, specialist fact required 336건, NO_VISUAL 51건으로 분류되어 있다.
+
+최신 current v2 preparation은 59 run·430문항·오류 0이고, machine STATIC/METADATA evidence는 860개·validator 오류 0이다. candidate source registry는 430 entries로 pipeline-core normalize를 통과했지만, 15개 source의 inventory examId와 current `window.examTitle`이 달라 명시적 authority hold로 남겼다.
+
+최신 상태는 [r11 closure snapshot](78_current_closure_snapshot_r11.json)이다. source hold는 5→0으로 해소되었으나, 남은 335 candidate visual의 fresh V1/V2/V3, full 430 solution freeze, provider-attested FINAL_AUDIT, 실제 render capture/independent review, registry authority 및 production promotion은 아직 미완료다. 따라서 최종 `PASS`·`SEALED`는 계속 금지한다.
+
+## r11 deterministic V3 closure update (2026-09-08)
+
+r11 deterministic batch 25건은 endpoint·접선식·기울기 label을 보강한 뒤 V1 25/25, artifact-only V2 25/25, V3 parity 25/25(FAIL 0), static 25/25, local desktop/mobile overflow 0으로 닫았다. 최신 단일 상태는 [r11 V3 closed snapshot](80_current_closure_snapshot_r11_v3_closed.json)이다.
+
+이 결과는 전체 430문항 분모의 25건 부분 closure이며, 나머지 405건의 fresh expected fact와 335건의 미생성 candidate visual, full solution freeze, provider-attested FINAL_AUDIT, 실제 provider render capture/review, registry authority는 여전히 남아 있다. 따라서 r11 batch의 row-level PASS를 전체 최종 PASS로 승격하지 않는다.
