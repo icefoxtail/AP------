@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R23_V3_CLOSED",
+  "status": "R23_SPECIALIST_BATCH_V3_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "mainBaseline": "origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22",
+  "scope": { "targetQuestionCount": 430, "sourceFileCount": 59, "examFileCount": 59 },
+  "sourceRepairs": { "sourceHoldBefore": 5, "sourceHoldAfter": 0, "modifiedSourceFiles": 3, "modifiedQuestions": 5, "independentRecheck": "5/5", "sourceCandidateParity": "5/5", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/50_source_repairs_applied_r9.json" },
+  "visualDecisionDenominator": { "NO_VISUAL": 51, "KEEP_EXISTING": 0, "REBUILD_EXISTING": 2, "ADD_NEW_VISUAL": 377, "candidateVisualTarget": 379 },
+  "r23Batch": {
+    "rows": 5,
+    "numberLineRows": 4,
+    "cartesianRows": 1,
+    "v1ExpectedFacts": "5/5",
+    "independentRecheck": "5/5",
+    "solutionFreeze": "5/5 candidate rows",
+    "candidateStatic": "5/5",
+    "v2ArtifactOnly": "5/5",
+    "v3Pass": "5/5",
+    "v3Fail": 0,
+    "localRender": "desktop/mobile 5/5",
+    "localRenderOverflow": 0,
+    "evidence": {
+      "v1": "reports/hs-quadratic-svg-upgrade-20260908/277_specialist_v1_expected_facts_r23.json",
+      "independentRecheck": "reports/hs-quadratic-svg-upgrade-20260908/283_independent_recheck_specialist_r23.json",
+      "visualManifest": "reports/hs-quadratic-svg-upgrade-20260908/278_specialist_candidate_visual_manifest_r23.json",
+      "static": "reports/hs-quadratic-svg-upgrade-20260908/280_specialist_candidate_visual_static_check_r23.json",
+      "candidateBank": "reports/hs-quadratic-svg-upgrade-20260908/279_specialist_candidate_bank_manifest_r23.json",
+      "bankValidation": "reports/hs-quadratic-svg-upgrade-20260908/282_specialist_candidate_bank_validation_r23.json",
+      "v2": "reports/hs-quadratic-svg-upgrade-20260908/281_specialist_v2_artifact_only_r23.json",
+      "v3": "reports/hs-quadratic-svg-upgrade-20260908/284_specialist_v3_parity_r23.json",
+      "solutionFreeze": "reports/hs-quadratic-svg-upgrade-20260908/285_specialist_solution_freeze_ledger_r23.json",
+      "render": "reports/hs-quadratic-svg-upgrade-20260908/287_specialist_local_render_review_r23.json"
+    }
+  },
+  "candidateVisualProgress": { "priorUniqueCandidateVisuals": 235, "r23BatchRows": 5, "r23SupersededPriorCandidateRows": 0, "currentUniqueCandidateVisuals": 240, "remainingCandidateVisuals": 139, "freshExpectedFactRowsThroughR23": 224, "remainingFreshExpectedFactsUnderCurrentCounting": 206 },
+  "currentV2Preparation": { "workBatchId": "hs-quadratic-r23c", "runCount": 59, "preparedQuestionCount": 430, "errors": 0, "machineEvidenceCount": 860, "machineEvidenceValidationErrors": 0, "preparation": "reports/hs-quadratic-svg-upgrade-20260908/298_current_v2_preparation_r23c.json", "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/299_machine_evidence_r23c.json", "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/300_machine_evidence_validation_r23c.json", "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_PROVIDER_RENDER_CAPTURE" },
+  "solutionStaticAudit": { "currentSourceIssueRows": 11, "currentSourceEvidence": "reports/hs-quadratic-svg-upgrade-20260908/98_current_source_solution_static_audit_r12.json", "candidateSolutionIssueRows": 0, "candidateSolutionEvidence": "reports/hs-quadratic-svg-upgrade-20260908/99_candidate_solution_static_audit_r12.json", "note": "r23 adds candidate SVGs without changing candidate solutions; source residual 11 rows remain outside approved source repairs." },
+  "sourceRegistry": { "candidateEntries": 430, "sourceFileCount": 59, "identityMismatchCount": 15, "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json" },
+  "portability": { "candidateVisualAssetCountReferencedByBank": 240, "assetPackagingPlan": "TRACK_REFERENCED_CANDIDATE_SVG_ASSETS_AND_CURRENT_BANKS_FOR_REMOTE_CONTINUATION", "productionSourceAssetsIncluded": false },
+  "remainingGates": [
+    "별도 승인·독립 검산이 필요한 current source 해설 잔여 11건",
+    "fresh independent math A1/A2 and solution freeze for full 430 rows",
+    "fresh V1 expected facts for remaining 206 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 139 candidate visual rows",
+    "provider-attested FINAL_AUDIT",
+    "actual current desktop/mobile render capture and independent render-review",
+    "source registry identity authority for 15 mismatched exam titles",
+    "DB/question-index/production promotion authority"
+  ],
+  "note": "R23 closes a high-risk 5-row candidate batch. This snapshot records row-level closure only; full-scope PASS, SEALED, and production promotion remain forbidden."
+}
