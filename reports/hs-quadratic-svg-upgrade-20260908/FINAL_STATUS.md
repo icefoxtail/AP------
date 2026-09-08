@@ -402,3 +402,13 @@ r37 candidate bank validation은 59 source bank·1295 row·full candidate visual
 r37 current V2 preparation은 corrected target-only bank에 대해 새 `hs-quadratic-r37e` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r37 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 93개 target-scoped candidate visual, 97개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r38 function/open-graph and number-line continuation update (2026-09-09)
+
+r38은 target inventory 안의 미처리 8개 문항을 처리했다. 23 매산고 1mid q12, 25 효천고 1final q7/q16, 23 충무고 1mid q1은 치환된 이차함수 또는 함수차 $h(x)$의 구간·꼭짓점·최대/최솟값을 직접 읽는 개방형 cartesian SVG로 구성했고, 26 매산고 1mid q14, 26 효천고 1mid q15, 26 복성고 1final q22, 26 순천고 1final q10은 닫힌/열린 끝점을 구분한 수직선 SVG로 구성했다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r38의 current V2 preparation은 최초 `pipeline-r38` 충돌 산출물을 폐기하고 새 `hs-quadratic-r38b` work-batch/run root에서 재실행했다. 최종 preparation은 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. r38 candidate bank는 59 source bank·1295 row·full candidate visual 346건·candidate solution drift 0·asset 오류 0이다. 최초 충돌의 partial report는 성공 근거로 사용하지 않는다.
+
+target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 294건, 잔여 85건이다. fresh expected fact 누적은 현재 counting 기준 341건, 잔여 89건이다. 최신 상태는 [r38 V3 closure snapshot](555_current_closure_snapshot_r38_v3_closed.json)이다.
+
+r38 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 85개 target-scoped candidate visual, 89개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
