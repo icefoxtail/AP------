@@ -14335,6 +14335,29 @@ window.mainDB = {
         {"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-03","rangeEndUnit":"함수","rangeEndUnitOrder":3}
       ],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h1/2final/19_강남고_2학기_기말_고1_기출.js",
+      "school": "강남고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2019,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학(하)",
+      "contentType": "기출",
+      "qCount": 18,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-01","rangeStartUnit":"다항식의 연산","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},
+        {"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-06","rangeEndUnit":"경우의 수","rangeEndUnitOrder":6}
+      ],
+      "primaryStandardCourse": ""
     }
   ]
 };
