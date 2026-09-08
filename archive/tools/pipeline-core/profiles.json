@@ -1,19 +1,244 @@
 {
   "schemaVersion": "APMATH_PIPELINE_PROFILES_v1",
   "pipelines": {
-    "logic-visual": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["solution"], "visual": true },
-    "geometry-equation": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
-    "function-family": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
-    "high1-svg": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
-    "set-visual-pilot": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["solution"], "visual": true },
-    "past-exam": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
-    "textbook": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
-    "alive": { "scope": "QUESTION_QUALITY", "axes": ["source", "math", "solution", "metadata", "static"], "modes": ["exam", "solution", "answer"], "visual": true },
-    "tag-enrichment": { "scope": "METADATA_ONLY", "axes": ["source", "metadata", "static"], "modes": [], "visual": false },
-    "intelligence": { "scope": "METADATA_ONLY", "axes": ["source", "metadata", "static"], "modes": [], "visual": false },
-    "js-bank-cleanup": { "scope": "METADATA_ONLY", "axes": ["source", "metadata", "static"], "modes": [], "visual": false }
+    "logic-visual": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "solution"
+      ],
+      "visual": true
+    },
+    "geometry-equation": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "visual": true
+    },
+    "function-family": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "visual": true
+    },
+    "high1-svg": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "visual": true
+    },
+    "set-visual-pilot": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "solution"
+      ],
+      "visual": true
+    },
+    "past-exam": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "visual": true
+    },
+    "textbook": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "visual": true
+    },
+    "alive": {
+      "scope": "QUESTION_QUALITY",
+      "axes": [
+        "source",
+        "math",
+        "solution",
+        "metadata",
+        "static"
+      ],
+      "modes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "visual": true
+    },
+    "tag-enrichment": {
+      "scope": "METADATA_ONLY",
+      "axes": [
+        "source",
+        "metadata",
+        "static"
+      ],
+      "modes": [],
+      "visual": false
+    },
+    "intelligence": {
+      "scope": "METADATA_ONLY",
+      "axes": [
+        "source",
+        "metadata",
+        "static"
+      ],
+      "modes": [],
+      "visual": false
+    },
+    "js-bank-cleanup": {
+      "scope": "METADATA_ONLY",
+      "axes": [
+        "source",
+        "metadata",
+        "static"
+      ],
+      "modes": [],
+      "visual": false
+    }
   },
-  "viewports": [{ "profile": "desktop", "minWidth": 1280 }, { "profile": "mobile", "minWidth": 390, "maxWidth": 430 }],
-  "renderChecks": ["runtime", "mathJax", "fonts", "imageDecode", "assetAssociation", "questionCount", "lastQuestion", "clipping", "overflow", "readability"],
-  "inputRoles": ["source", "candidate", "asset", "rule", "spec", "engine", "runtime", "extractor", "generator", "verifier", "dependency"]
+  "viewports": [
+    {
+      "profile": "desktop",
+      "minWidth": 1280
+    },
+    {
+      "profile": "mobile",
+      "minWidth": 390,
+      "maxWidth": 430
+    }
+  ],
+  "renderChecks": [
+    "runtime",
+    "mathJax",
+    "fonts",
+    "imageDecode",
+    "assetAssociation",
+    "questionCount",
+    "lastQuestion",
+    "clipping",
+    "overflow",
+    "readability"
+  ],
+  "questionUidVersion": "QUESTION_UID_v2",
+  "axisAliases": {
+    "source": "SOURCE",
+    "math": "MATH_A1",
+    "a1": "MATH_A1",
+    "a2": "MATH_A2",
+    "solution": "SOLUTION",
+    "metadata": "METADATA",
+    "static": "STATIC",
+    "v1": "V1",
+    "v2": "V2",
+    "v3": "V3",
+    "render-capture": "RENDER_CAPTURE",
+    "render": "RENDER_REVIEW"
+  },
+  "releaseProfiles": {
+    "fullExam": {
+      "requiredModes": [
+        "exam",
+        "solution",
+        "answer"
+      ],
+      "viewports": [
+        "desktop",
+        "mobile"
+      ],
+      "requiredCases": [
+        "exam/desktop",
+        "exam/mobile",
+        "solution/desktop",
+        "solution/mobile",
+        "answer/desktop",
+        "answer/mobile"
+      ]
+    }
+  },
+  "inputRoles": [
+    "source",
+    "candidate",
+    "asset",
+    "rule",
+    "spec",
+    "engine",
+    "runtime",
+    "extractor",
+    "generator",
+    "verifier",
+    "dependency"
+  ],
+  "canonicalAxes": [
+    "SOURCE",
+    "MATH_A1",
+    "MATH_A2",
+    "SOLUTION",
+    "METADATA",
+    "STATIC",
+    "V1",
+    "V2",
+    "V3",
+    "RENDER_CAPTURE",
+    "RENDER_REVIEW"
+  ]
 }

@@ -8,12 +8,12 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 8783 bytes | sha256 19973aaf98ff4c803d7f7b4cf6b9b2bcdc22fe3349421d89ae4b7bd520b07032
+- 00_RULES_INDEX.md | 10178 bytes | sha256 e1be93c421923b86408dd0c18836ee4410e8351fdbc359173c0e28192717c643
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 13480 bytes | sha256 79dea04f6d9a14a0e8757867d0e4fa198bdd5962fc2df0655dfc5d420f0a224d
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 68193 bytes | sha256 e70d5f0a6c9ae2141bcd378c2828c2cd9379e16ba15268dbb44f45686ebaad41
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 93734 bytes | sha256 15bac5c693b4bac5a5d1794ec07f641b188bb125d4321c08e0524ebbce5b0514
-- 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 196313 bytes | sha256 2fd930b6d078d76c29416bf8d21550307769d0316d3b8cc14949f11cf7bb46de
+- 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 197743 bytes | sha256 c0c8c5b798943ce475db3a76b9749d32c1c1090b8965e60063bd699615a11a18
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17457 bytes | sha256 690f97387494b77ec24d1e42662a86df863df58e1ba7863b63fc1a3500158926
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 127232 bytes | sha256 ad53cefa80538a02d3eb9ff91e267032a4affd6b7d7fa95d780275e3818cb97a
 - 02_PIPELINES/문제해설추출.md | 27787 bytes | sha256 48311d92f4ad2cf72749a1b9c940f3bb8afca2a22198a6a33fcef91791a59049

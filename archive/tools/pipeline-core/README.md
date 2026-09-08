@@ -1,3 +1,8 @@
+> Current v2 execution authority: [Agent / Token Budget Architecture](AGENT_BUDGET.md).
+> Produce the entire requested job in the main worker, freeze once, and reserve
+> one final auditor. At most one targeted recheck; no per-axis/per-UID waves.
+> Legacy task dispatch instructions cannot bypass the persisted budget gate.
+
 # APMath common pipeline core
 
 One fail-closed quality contract for archive pipelines. This is a verifier and
@@ -37,6 +42,11 @@ python -X utf8 archive/tools/pipeline-core/generator.py --fact <typed-fact.json>
 node archive/tools/pipeline-core/cli.mjs render --manifest <run.json> --workdir archive/_generated/pipeline-renders/<new-attempt>
 node archive/tools/pipeline-core/cli.mjs render-review --manifest <run.json> --capture-ref <capture-file-ref.json> --decision <independent-decision.json> --out <NEW-render-review.json>
 node archive/tools/pipeline-core/cli.mjs audit --pipeline logic-visual --manifest <run.json> --out <NEW-closure.json>
+node archive/tools/pipeline-core/cli.mjs prepare --v2 --pipeline logic-visual --run-id <new-id> --builder-id <id> --builder-session-id <session> --builder-model <model> --source <source.js> --candidate <candidate.js> --workdir archive/_generated/pipeline-runs/<new-id>
+node archive/tools/pipeline-core/cli.mjs audit-v2 --manifest <run-v2.json>
+node archive/tools/pipeline-core/cli.mjs semantic-diff --previous <old-questions.json> --current <new-questions.json>
+node archive/tools/pipeline-core/cli.mjs change-impact --diff <semantic-diff.json> --current <new-questions.json>
+node archive/tools/pipeline-core/cli.mjs axis-input --question <question.json> --axis A1
 npm --prefix archive/tools/pipeline-core test
 ```
 
@@ -185,7 +195,49 @@ Extraction completion and local build checks never substitute for quality closur
 Production mutation callers also enforce `productionAuthorized`; a question-
 quality PASS alone cannot copy files into the production Archive.
 
+## v2 change-scoped audit
+
+The v2 extensions are additive and keep the v1 audit path available during
+migration. `question-uid.mjs` provides explicit `QUESTION_UID_v2` and source
+exam registry/migration records. `projection.mjs` produces the independent
+`QUESTION_FIELD_HASH_MAP` and `AXIS_INPUT_SHA` values. `semantic-diff.mjs`
+maps changed fields to affected UID×axis pairs; a changed file SHA alone does
+not expand the LLM review denominator.
+
+`review-evidence-v2.mjs` accepts fresh evidence only when both the current run
+and axis SHA match. Prior evidence remains immutable and can be carried to a
+new run only through a PASS `APMATH_EVIDENCE_REUSE_RECEIPT_v1` whose prior
+evidence, dependency, rule, verifier, and current-run hashes all match.
+`question-quality-set.mjs` materializes each UID's fresh/reused axis closure
+and requires exact final coverage while permanently keeping production
+authority outside the quality closure. `exam-release.mjs` adds the separate
+whole-exam six-case aggregate. `review-isolation-runner.mjs` validates sealed
+U1/U2/U3 packet visibility and second-auditor triggers; it does not pretend to
+be an LLM or replace the orchestrator's real isolation boundary.
+
 ## Native migration and tests
+
+The v2 audit invokes the shared `closure.mjs` semantic kernel after computing
+profile-required axes and byte-bound axis inputs. `SOURCE` and `V1` are distinct;
+question-quality profiles also require `MATH_A2` and `STATIC`. Revisions bind a
+canonical predecessor manifest, closure set and frozen candidate refs. The audit
+derives the edit closure and checks declared impact/closure fields against its
+own results.
+
+`prepare-v2` now requires `--source-registry-ref FILE` (a bound ref JSON for an
+existing stable registry); it emits UID migration records without issuing IDs
+from exam titles. Draft source applicability decisions still require bound
+authority evidence before audit. `render` accepts `--collector-identity FILE`
+for v2 capture provenance. Actual captures contain page/column/flow geometry,
+continuation block screenshots and final-block denominators. Independent
+review decisions must cover these blocks. Render review reuse additionally
+requires a bound `RENDER_REVIEW_REUSE_RECEIPT_v1`.
+
+Reuse receipts reference the immutable fresh root, its original run and sealed
+packet, and a current eligibility decision. Withdrawn/revoked or invalid
+correction/supersession lineage cannot close an axis. Build ledger entries bind
+candidate/asset outputs and subsequent review identities. Production callers
+continue to use their existing integration path.
 
 Guarded finalizers/promotions take `--closure-manifest <run.json>` and optional
 `--out <NEW.json>`. They compare the actual caller scope/output with the reviewed

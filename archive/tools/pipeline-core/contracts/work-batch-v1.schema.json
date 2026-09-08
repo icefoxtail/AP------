@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_WORK_BATCH_v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "workBatchId",
+    "runIds",
+    "builderId",
+    "builderSessionId",
+    "policy",
+    "status",
+    "freezes",
+    "launches"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "APMATH_WORK_BATCH_v1"
+    },
+    "workBatchId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "runIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "builderId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "builderSessionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tokenBudget": {},
+    "status": {
+      "enum": [
+        "PRODUCTION",
+        "FROZEN",
+        "HOLD"
+      ]
+    },
+    "policy": {
+      "type": "object"
+    },
+    "freezes": {
+      "type": "array",
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "freezeSha",
+          "frozenAt",
+          "targets",
+          "affected",
+          "bindings",
+          "runRefs"
+        ]
+      }
+    },
+    "launches": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "launchId",
+          "purpose",
+          "freezeSha",
+          "scope",
+          "auditorId",
+          "auditorSessionId",
+          "parentLaunchId",
+          "recursiveSubagentLaunchCount",
+          "status",
+          "reservedAt",
+          "contexts",
+          "contextIsolation",
+          "subagentToolsEnabled"
+        ],
+        "properties": {
+          "purpose": {
+            "enum": [
+              "FINAL_AUDIT",
+              "TARGETED_RECHECK",
+              "SECOND_AUDIT"
+            ]
+          },
+          "parentLaunchId": {
+            "type": "null"
+          },
+          "recursiveSubagentLaunchCount": {
+            "const": 0
+          },
+          "subagentToolsEnabled": {
+            "const": false
+          },
+          "contextIsolation": {
+            "const": "STATELESS_INPUTS"
+          },
+          "maxTokens": {},
+          "status": {
+            "enum": [
+              "RESERVED",
+              "DISPATCHED",
+              "COMPLETED",
+              "FAILED"
+            ]
+          }
+        }
+      }
+    },
+    "lastHold": {
+      "type": "object",
+      "required": [
+        "at",
+        "code"
+      ],
+      "properties": {
+        "at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

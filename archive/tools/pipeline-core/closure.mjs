@@ -6,22 +6,31 @@ import { compareVisualFacts, auditDuplicates, structureFingerprint, VISUAL_SPEC_
 import { verifyViewportPng } from './png.mjs';
 import { rulePreflight } from './rulepack.mjs';
 import { validateRuntimeBundle } from './runtime.mjs';
+import { axisName } from './projection.mjs';
+import { validateRenderReviewReuseReceipt } from './render-impact.mjs';
+import { createContinuationDenominator, validateContinuationDenominator } from './continuation.mjs';
 
 export const RUN_VERSION = 'APMATH_PIPELINE_RUN_v1';
+export const RUN_VERSION_V2 = 'APMATH_PIPELINE_RUN_v2';
 export const EVIDENCE_VERSION = 'APMATH_PIPELINE_EVIDENCE_v1';
+export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const profiles = JSON.parse(fs.readFileSync(new URL('./profiles.json', import.meta.url)));
-const CORE_FILES = ['canonical.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json'];
-export const CORE_SHA = objectSha(CORE_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
+export const CORE_SHA_INPUT_FILES = Object.freeze(['contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
+export const CORE_SHA = objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
 const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
 
 export function runInputSha(run) {
   const questions = [...run.questions].sort((a, b) => a.questionUid < b.questionUid ? -1 : 1).map(({ evidence, renderEvidenceIds, sourceStatus, visual, ...q }) => {
+    if (run.schemaVersion === RUN_VERSION_V2) delete q.axisInputShas;
     const { requirement, adjudicationId, adjudicationStatus, exemptReason, ...visualInputs } = visual || {};
     return { ...q, visual: visualInputs };
   });
   // Decisions are outputs of review, not inputs to the blind source pass.
   // The final requirement map is bound separately by denominatorInput and V3.
-  return objectSha({ schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA });
+  const payload = { schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA };
+  if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { workBatchId: run.workBatchId || null, builderId: run.builderId || null, builderSessionId: run.builderSessionId || null, builderModelOrAgent: run.builderModelOrAgent || null, sourceAuthority: run.sourceAuthority || null, uidAuthority: run.uidAuthority || null, semanticDependencyBindings: run.semanticDependencyBindings || null, releaseRenderPolicy: run.releaseRenderPolicy || run.releasePolicy || null, viewportProfiles: run.viewportProfiles || profiles.viewports, requiredModeCaseSet: run.requiredModeCaseSet || null });
+  if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { predecessor: run.predecessor || null, publicationIntent: run.publicationIntent || null, sharedMaterial: run.sharedMaterial || null, globalLayoutMetadata: run.globalLayoutMetadata || null, contextDependencyRefs: run.contextDependencyRefs || [], declaredContextDependencyUidSet: run.declaredContextDependencyUidSet || [] });
+  return objectSha(payload);
 }
 
 export function validateRegistry(records, run) {
@@ -58,15 +67,28 @@ export function denominatorInput(run) {
 }
 
 export function validateRender(root, record, profile, mode, run, inputSha, candidatePath, evidence, evidenceHashes, invalidEvidenceIds) {
-  const errors = [], review = record?.payload;
-  if (record?.axis !== 'render' || record.status !== 'PASS' || record.inputSha !== inputSha || !isObject(review)) return ['RENDER_REVIEW_EVIDENCE_NOT_PASS'];
+  const errors = [];
+  let review = record?.payload, reused = false;
+  if (run.schemaVersion === RUN_VERSION_V2 && record?.inputSha !== inputSha) {
+    const receipts = (run.renderReviewReuseReceiptRefs || []).map(ref => JSON.parse(readBoundFile(root, ref))).filter(receipt => receipt.rootFreshReviewRef?.sha256 === evidenceHashes.get(record?.evidenceId));
+    if (receipts.length !== 1) return ['RENDER_REVIEW_REUSE_RECEIPT_REQUIRED'];
+    const receipt = receipts[0];
+    const checked = validateRenderReviewReuseReceipt(root, receipt, { currentCaptureRef: receipt.currentCaptureRef, currentRunInputSha: inputSha });
+    if (checked.status !== 'PASS') return checked.errors;
+    const currentCapture = JSON.parse(readBoundFile(root, receipt.currentCaptureRef));
+    review = { ...review, captureEvidenceId: currentCapture.evidenceId, captureEvidenceSha: receipt.currentCaptureRef.sha256 };
+    reused = true;
+  }
+  if (record?.axis !== 'render' || record.status !== 'PASS' || (!reused && record.inputSha !== inputSha) || !isObject(review)) return ['RENDER_REVIEW_EVIDENCE_NOT_PASS'];
   const capture = evidence.get(review.captureEvidenceId);
   const captureSha = evidenceHashes.get(review.captureEvidenceId);
   if (!capture || capture.axis !== 'render-capture' || capture.status !== 'PASS' || capture.validityStatus !== 'FROZEN' || invalidEvidenceIds.has(capture.evidenceId)) return ['RENDER_CAPTURE_EVIDENCE_NOT_PASS'];
   if (review.captureEvidenceSha !== captureSha) errors.push('RENDER_CAPTURE_SHA_MISMATCH');
   if (record.reviewSessionId === capture.reviewSessionId || record.reviewerId === capture.reviewerId) errors.push('RENDER_REVIEW_NOT_INDEPENDENT');
-  if (Date.parse(record.startedAt) < Date.parse(capture.frozenAt)) errors.push('RENDER_REVIEW_BEFORE_CAPTURE_FREEZE');
+  if (!reused && Date.parse(record.startedAt) < Date.parse(capture.frozenAt)) errors.push('RENDER_REVIEW_BEFORE_CAPTURE_FREEZE');
   const payload = capture.payload;
+  if (run.schemaVersion === RUN_VERSION_V2 && (capture.inputSha !== inputSha || capture.runId !== run.runId || capture.revision !== run.revision)) errors.push('CURRENT_RENDER_CAPTURE_REQUIRED');
+  if (run.schemaVersion === RUN_VERSION_V2 && (canonicalJson(payload.candidateRef) !== canonicalJson(run.inputs.find(ref => ref.path === candidatePath && ref.role === 'candidate')) || canonicalJson(payload.assetRefs) !== canonicalJson(run.inputs.filter(ref => payload.assetAssociations?.some(row => row.path === ref.path))))) errors.push('RENDER_CURRENT_OUTPUT_REF_BINDING');
   if (!isObject(payload) || payload.actualBrowser !== true || payload.productionEngine !== true || payload.mode !== mode || !nonempty(payload.browserVersion)) errors.push('REAL_RENDER_CAPTURE_REQUIRED');
   if (review.runtimeBundleSha !== run.renderRuntime?.bundleSha || payload.runtimeBundleSha !== run.renderRuntime?.bundleSha) errors.push('RENDER_RUNTIME_BUNDLE_SHA_MISMATCH');
   if (!Array.isArray(payload.runtimeResponses) || !payload.runtimeResponses.length || payload.runtimeResponseBundleSha !== objectSha(payload.runtimeResponses) || review.runtimeResponseBundleSha !== payload.runtimeResponseBundleSha) errors.push('RENDER_RESPONSE_BUNDLE_SHA_MISMATCH');
@@ -81,7 +103,7 @@ export function validateRender(root, record, profile, mode, run, inputSha, candi
   if (!(payload.runtimeResponses || []).some(response => response.localPath === run.renderRuntime?.enginePath && response.role === 'engine')) errors.push('RENDER_ENGINE_RESPONSE_MISSING');
   const viewport = payload.viewport;
   if (!isObject(viewport) || viewport.profile !== profile.profile || !Number.isSafeInteger(viewport.width) || !Number.isSafeInteger(viewport.height) || viewport.height < 1 || viewport.width < profile.minWidth || (profile.maxWidth && viewport.width > profile.maxWidth)) errors.push('RENDER_VIEWPORT_INVALID');
-  for (const check of ['runtime', 'mathJax', 'fonts', 'imageDecode', 'assetAssociation', 'questionCount', 'lastQuestion']) if (payload.checks?.[check] !== 'PASS') errors.push(`RENDER_CAPTURE_CHECK:${check}`);
+  for (const check of ['runtime', 'mathJax', 'fonts', 'imageDecode', 'assetAssociation', 'questionCount', 'lastQuestion', ...(run.schemaVersion === RUN_VERSION_V2 ? ['clipping', 'overflow'] : [])]) if (payload.checks?.[check] !== 'PASS') errors.push(`RENDER_CAPTURE_CHECK:${check}`);
   for (const check of ['clipping', 'overflow', 'readability']) if (review.checks?.[check] !== 'PASS') errors.push(`RENDER_REVIEW_CHECK:${check}`);
   const questions = run.questions.filter(q => q.candidatePath === candidatePath);
   const context = { window: {} }; vm.runInNewContext(readBoundFile(root, run.inputs.find(i => i.path === candidatePath)).toString('utf8'), context, { timeout: 1000 });
@@ -102,6 +124,19 @@ export function validateRender(root, record, profile, mode, run, inputSha, candi
     const reviews = Array.isArray(review.itemReviews) ? review.itemReviews.filter(item => item.questionUid === q.questionUid) : [];
     if (witnesses.length !== 1 || witnesses[0].status !== 'CAPTURED') { errors.push(`ITEM_RENDER_WITNESS:${q.questionUid}`); continue; }
     if (reviews.length !== 1 || reviews[0].status !== 'PASS' || reviews[0].screenshotSha !== witnesses[0].screenshot.sha256) errors.push(`ITEM_RENDER_REVIEW:${q.questionUid}`);
+    if (run.schemaVersion === RUN_VERSION_V2) {
+      const witness = witnesses[0];
+      const { witnessSha, ...witnessPayload } = witness;
+      if (witnessSha !== objectSha(witnessPayload) || witness.mode !== mode || witness.viewportProfile !== profile.profile || witness.runtimeResponseSha !== payload.runtimeResponseBundleSha || witness.assetSha !== objectSha(payload.assetAssociations.filter(row => row.questionUid === q.questionUid))) errors.push('ITEM_CANONICAL_WITNESS_BINDING');
+      errors.push(...validateContinuationDenominator(witness.continuationDenominator, { questionUid: q.questionUid, cases: [`${mode}/${profile.profile}`], reviewedBlocks: reviews[0]?.blockReviews || [] }).errors);
+      for (const block of witness.blocks || []) {
+        const placement = { page: block.page, column: block.column, flowPosition: block.flowPosition, boundingBox: block.boundingBox, sourceBlockId: block.sourceBlockId, segment: block.segment, segmentOffset: block.segmentOffset };
+        if (block.placementSha !== objectSha(placement) || !Number.isSafeInteger(block.page) || block.page < 1 || !Number.isSafeInteger(block.column) || block.column < 1 || !block.boundingBox || !Object.values(block.boundingBox).every(Number.isFinite)) errors.push('CONTINUATION_PLACEMENT_INVALID');
+        if (!verifyViewportPng(readBoundFile(root, block.screenshot), viewport.width, viewport.height)) errors.push('CONTINUATION_SCREENSHOT_INVALID');
+      }
+      const rebuilt = createContinuationDenominator({ questionUid: q.questionUid, cases: [`${mode}/${profile.profile}`], blocks: witness.blocks });
+      if (canonicalJson(rebuilt.expectedBlockSet) !== canonicalJson(witness.continuationDenominator.expectedBlockSet)) errors.push('CONTINUATION_ACTUAL_BLOCK_PARITY');
+    }
     try { if (!verifyViewportPng(readBoundFile(root, witnesses[0].screenshot), viewport.width, viewport.height)) errors.push(`ITEM_PNG_INVALID:${q.questionUid}`); } catch (error) { errors.push(`ITEM_PNG:${error.message}`); }
   }
   return errors;
@@ -124,10 +159,15 @@ function verifyRules(root, run, errors) {
   }
 }
 
-function validateEvidence(root, ref, run, errors) {
+function validateEvidence(root, ref, run, errors, freshnessRows = null) {
   let e;
   try { e = JSON.parse(readBoundFile(root, ref)); } catch (error) { errors.push(`EVIDENCE_FILE:${error.message}`); return null; }
-  if (e.schemaVersion !== EVIDENCE_VERSION || !nonempty(e.evidenceId) || !nonempty(e.axis) || e.runId !== run.runId || e.revision !== run.revision || e.inputSha !== run.inputSha || e.reviewStartInputSha !== run.inputSha || e.reviewEndInputSha !== run.inputSha) errors.push(`EVIDENCE_BINDING:${e.evidenceId}`);
+  if (run.schemaVersion === RUN_VERSION_V2) {
+    const rows = freshnessRows?.filter(row => row.evidenceId === e.evidenceId && row.evidenceSha === ref.sha256);
+    if (e.schemaVersion !== EVIDENCE_VERSION_V2 || !rows?.length || rows.some(row => row.status !== 'PASS')) errors.push(`EVIDENCE_BINDING:${e.evidenceId}`);
+    const legacy = { SOURCE: 'source', MATH_A1: 'math', MATH_A2: 'math-a2', SOLUTION: 'solution', METADATA: 'metadata', STATIC: 'static', V1: 'v1', V2: 'v2', V3: 'v3', RENDER_CAPTURE: 'render-capture', RENDER_REVIEW: 'render' };
+    e = { ...e, axis: legacy[axisName(e.axis)] };
+  } else if (e.schemaVersion !== EVIDENCE_VERSION || !nonempty(e.evidenceId) || !nonempty(e.axis) || e.runId !== run.runId || e.revision !== run.revision || e.inputSha !== run.inputSha || e.reviewStartInputSha !== run.inputSha || e.reviewEndInputSha !== run.inputSha) errors.push(`EVIDENCE_BINDING:${e.evidenceId}`);
   if (e.status !== 'PASS' || !['VALID', 'FROZEN'].includes(e.validityStatus)) errors.push(`EVIDENCE_NOT_PASS:${e.evidenceId}`);
   if (!nonempty(e.reviewerId) || !nonempty(e.reviewSessionId) || !nonempty(e.reviewerModelOrAgent)) errors.push(`REVIEWER_IDENTITY_MISSING:${e.evidenceId}`);
   if (!Array.isArray(e.findings) || e.findings.some(f => f.status !== 'RESOLVED')) errors.push(`UNRESOLVED_FINDINGS:${e.evidenceId}`);
@@ -136,10 +176,35 @@ function validateEvidence(root, ref, run, errors) {
 }
 
 export function auditRun(root, run) {
+  if (run?.schemaVersion !== RUN_VERSION) return { status: 'BLOCKED', productionAuthorized: false, errors: ['RUN_SCHEMA_INVALID'] };
+  return auditSemanticKernel(root, run);
+}
+
+export function loadBoundQuestionBanks(root, run) {
+  const banks = new Map();
+  for (const ref of run.inputs.filter(ref => ['source', 'candidate'].includes(ref.role))) {
+    const context = { window: {} };
+    vm.runInNewContext(readBoundFile(root, ref).toString('utf8'), context, { timeout: 1000 });
+    const bank = JSON.parse(JSON.stringify(context.window));
+    if (!Array.isArray(bank.questionBank) || new Set(bank.questionBank.map(q => q.id)).size !== bank.questionBank.length) throw new Error(`BANK_IDENTITY_INVALID:${ref.path}`);
+    banks.set(ref.path, bank);
+  }
+  return run.questions.map(q => {
+    const candidate = banks.get(q.candidatePath)?.questionBank.find(item => item.id === q.qid);
+    const source = banks.get(q.sourcePath)?.questionBank.find(item => item.id === q.qid);
+    if (!candidate || !source) throw new Error(`SOURCE_CANDIDATE_IDENTITY:${q.questionUid}`);
+    const { questionBank: ignoredBank, ...examMetadata } = banks.get(q.candidatePath);
+    return { ...candidate, questionUid: q.questionUid, sourceStem: source.content, sourceExamId: q.sourceExamId, sourceRecord: source, examMetadata, problemAssetRefs: (q.problemAssetPaths || []).map(p => run.inputs.find(ref => ref.path === p)), solutionAssetRefs: (q.solutionAssetPaths || []).map(p => run.inputs.find(ref => ref.path === p)) };
+  });
+}
+
+// Both versions execute the same source, candidate, visual and render semantics.
+// V2 supplies verified freshness rows; immutable evidence is never rewritten on disk.
+export function auditSemanticKernel(root, run, freshnessRows = null) {
   const errors = [], itemResults = [], renderResults = [], candidateQuestions = new Map();
   let productionAuthorized = false;
   const result = () => ({ schemaVersion: 'APMATH_PIPELINE_CLOSURE_v1', pipeline: run?.pipeline || null, runId: run?.runId || null, status: errors.length ? 'BLOCKED' : 'PASS', verifiedScope: profiles.pipelines[run?.pipeline]?.scope || null, productionAuthorized, coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA, inputSha: run?.inputSha || null, errors, items: itemResults, renders: renderResults });
-  if (!isObject(run) || run.schemaVersion !== RUN_VERSION || !profiles.pipelines[run.pipeline] || !nonempty(run.runId) || !Number.isSafeInteger(run.revision) || run.revision < 1 || !Array.isArray(run.questions) || !run.questions.length || !Array.isArray(run.inputs) || !run.inputs.length || !Array.isArray(run.evidence) || !run.evidence.length || !nonempty(run.builderSessionId)) {
+  if (!isObject(run) || ![RUN_VERSION, RUN_VERSION_V2].includes(run.schemaVersion) || (run.schemaVersion === RUN_VERSION_V2 && !Array.isArray(freshnessRows)) || !profiles.pipelines[run.pipeline] || !nonempty(run.runId) || !Number.isSafeInteger(run.revision) || run.revision < 1 || !Array.isArray(run.questions) || !run.questions.length || !Array.isArray(run.inputs) || !run.inputs.length || !Array.isArray(run.evidence) || !run.evidence.length || !nonempty(run.builderSessionId)) {
     errors.push('RUN_SCHEMA_INVALID'); return result();
   }
   const policy = profiles.pipelines[run.pipeline];
@@ -156,7 +221,7 @@ export function auditRun(root, run) {
   if (policy.modes.length && !run.inputs.some(i => i.role === 'engine')) errors.push('ENGINE_INPUT_NOT_BOUND');
   if (policy.modes.length) errors.push(...validateRuntimeBundle(root, run).errors);
   for (const q of run.questions) {
-    if (!Number.isSafeInteger(q.qid) || q.qid < 1 || !nonempty(q.examId) || q.questionUid !== `${q.sourcePath}|${q.examId}|${q.qid}`) errors.push(`CANONICAL_UID_INVALID:${q.questionUid}`);
+    if (!Number.isSafeInteger(q.qid) || q.qid < 1 || !nonempty(q.examId) || (run.schemaVersion === RUN_VERSION ? q.questionUid !== `${q.sourcePath}|${q.examId}|${q.qid}` : q.questionUid !== `${q.sourceExamId}|${q.sourceQuestionOrdinal}`)) errors.push(`CANONICAL_UID_INVALID:${q.questionUid}`);
     const identity = `${q.sourcePath}|${q.qid}`;
     if (sourceIdentities.has(identity)) errors.push(`SOURCE_IDENTITY_ALIAS_DUPLICATE:${identity}`);
     sourceIdentities.add(identity);
@@ -169,6 +234,7 @@ export function auditRun(root, run) {
       const context = { window: {} };
       vm.runInNewContext(readBoundFile(root, candidate).toString('utf8'), context, { timeout: 1000 });
       const bank = context.window.questionBank;
+      if (run.schemaVersion === RUN_VERSION_V2 && (!Array.isArray(bank) || canonicalJson(bank.map(item => item.id)) !== canonicalJson(run.questions.filter(item => item.candidatePath === q.candidatePath).map(item => item.qid)) || q.sourcePath === q.candidatePath)) throw new Error('CANDIDATE_OUTPUT_SCOPE_OR_ORDER');
       const matches = Array.isArray(bank) ? bank.filter(item => item.id === q.qid) : [];
       if (matches.length !== 1) throw new Error('QUESTION_IDENTITY');
       const question = matches[0];
@@ -216,7 +282,7 @@ export function auditRun(root, run) {
   const evidence = new Map(), evidenceHashes = new Map(), invalidEvidenceIds = new Set();
   for (const ref of run.evidence) {
     const beforeValidation = errors.length;
-    const e = validateEvidence(root, ref, run, errors);
+    const e = validateEvidence(root, ref, run, errors, freshnessRows);
     if (e) {
       if (evidence.has(e.evidenceId)) errors.push(`DUPLICATE_EVIDENCE_ID:${e.evidenceId}`);
       if (errors.length !== beforeValidation) invalidEvidenceIds.add(e.evidenceId);
@@ -228,24 +294,28 @@ export function auditRun(root, run) {
   for (const q of run.questions) {
     const findings = [];
     const get = axis => {
-      const e = evidence.get(q.evidence[axis]);
+      const e = evidence.get(q.evidence[run.schemaVersion === RUN_VERSION_V2 ? axisName(axis) : axis]);
       if (!e || e.axis !== axis || e.questionUid !== q.questionUid) { findings.push(`EVIDENCE_MISSING_OR_WRONG_SCOPE:${axis}`); return null; }
       if (invalidEvidenceIds.has(e.evidenceId)) findings.push(`EVIDENCE_INVALID:${axis}`);
       return e;
     };
     for (const axis of policy.axes) {
       const e = get(axis);
-      if (['math', 'solution', 'source'].includes(axis) && e && (e.reviewSessionId === run.builderSessionId || e.priorReviewVisibility !== 'NONE')) findings.push(`INDEPENDENT_REVIEW_REQUIRED:${axis}`);
+      if (['math', 'solution', 'source'].includes(axis) && e && (e.reviewSessionId === run.builderSessionId || (run.schemaVersion !== RUN_VERSION_V2 || axis !== 'solution') && e.priorReviewVisibility !== 'NONE')) findings.push(`INDEPENDENT_REVIEW_REQUIRED:${axis}`);
       if (axis === 'math' && e && (e.payload?.blindSolveFrozen !== true || e.payload?.allChoicesChecked !== true || e.payload?.answerUnique !== true)) findings.push('MATH_COMPLETENESS_NOT_PROVEN');
+    }
+    if (run.schemaVersion === RUN_VERSION_V2 && policy.scope === 'QUESTION_QUALITY') {
+      const a2 = evidence.get(q.evidence.MATH_A2), a1 = evidence.get(q.evidence.MATH_A1);
+      if (!a2 || a2.payload?.a1EvidenceSha !== evidenceHashes.get(a1?.evidenceId) || a2.payload?.allChoicesChecked !== true || a2.payload?.answerUnique !== true || Date.parse(a2.startedAt) < Date.parse(a1?.frozenAt)) findings.push('MATH_A2_FROZEN_A1_BINDING_REQUIRED');
     }
     const needed = q.visual.requirement === 'VISUAL_REQUIRED' || q.visual.requirement === 'VISUAL_RECOMMENDED' || q.visual.actualSolutionVisualAttached || q.visual.problemVisualMathDependency || q.visual.sharedVisualMathDependency;
     let parity = null;
     if (policy.visual) {
       const triage = get('v1');
       const compatibility = { SHOULD_BE_REQUIRED: ['VISUAL_REQUIRED'], SHOULD_BE_RECOMMENDED: ['VISUAL_RECOMMENDED'], MAY_BE_OPTIONAL: ['VISUAL_OPTIONAL', 'VISUAL_RECOMMENDED', 'VISUAL_REQUIRED'], SHOULD_BE_EXEMPT: ['VISUAL_EXEMPT', 'VISUAL_OPTIONAL'] };
-      if (!triage || triage.reviewSessionId === run.builderSessionId || triage.inputVisibilityProfile !== 'SOURCE_ONLY' || triage.priorReviewVisibility !== 'NONE' || triage.payload?.freshBlind !== true || !compatibility[triage.payload?.visualRequirementSignal]?.includes(q.visual.requirement)) findings.push('INDEPENDENT_VISUAL_TRIAGE_NOT_CLOSED');
+      if (!triage || triage.reviewSessionId === run.builderSessionId || triage.inputVisibilityProfile !== 'SOURCE_ONLY' || triage.priorReviewVisibility !== 'NONE' || triage.payload?.freshBlind !== true || (run.schemaVersion === RUN_VERSION && !compatibility[triage.payload?.visualRequirementSignal]?.includes(q.visual.requirement))) findings.push('INDEPENDENT_VISUAL_TRIAGE_NOT_CLOSED');
       if (!needed && triage) {
-        if (q.visual.adjudicationId !== triage.evidenceId) findings.push('EXEMPT_ADJUDICATION_NOT_BOUND');
+        if (run.schemaVersion === RUN_VERSION && q.visual.adjudicationId !== triage.evidenceId) findings.push('EXEMPT_ADJUDICATION_NOT_BOUND');
         try {
           const bundle = JSON.parse(readBoundFile(root, triage.payload.inputBundle));
           const candidate = candidateQuestions.get(q.questionUid);
@@ -292,6 +362,10 @@ export function auditRun(root, run) {
         for (const gate of ['necessity', 'decisiveStep', 'completeness', 'mediumFit', 'solutionParity', 'altCaptionParity', 'semanticsLocks', 'staticContract']) if (v3.payload?.checks?.[gate] !== 'PASS') findings.push(`V3_GATE_NOT_PASS:${gate}`);
       }
     }
+    if (run.schemaVersion === RUN_VERSION_V2 && policy.visual) {
+      const v3 = get('v3'), v1 = get('v1');
+      if (!v3 || q.visual.adjudicationId !== v3.evidenceId || v3.payload?.finalVisualRequirement !== q.visual.requirement || v3.payload?.finalVisualAction !== q.visual.action || v3.payload?.v1EvidenceSha !== evidenceHashes.get(v1?.evidenceId) || v3.payload?.cDenominatorInputSha !== denominatorInput(run).inputSha || v3.payload?.checks?.SOLUTION_VISUAL_BENEFIT_GATE !== 'PASS') findings.push('U3_VISUAL_BENEFIT_ADJUDICATION_UNBOUND');
+    }
     itemResults.push({ questionUid: q.questionUid, status: findings.length ? 'BLOCKED' : 'PASS', visualRequired: needed, parity, errors: findings });
     errors.push(...findings.map(f => `${q.questionUid}:${f}`));
   }
@@ -301,10 +375,14 @@ export function auditRun(root, run) {
   } catch (error) { errors.push(`DUPLICATE_CHECK:${error.message}`); }
   const denominator = denominatorInput(run);
   if (!isObject(run.denominator) || run.denominator.status !== 'FROZEN' || run.denominator.stale !== false || run.denominator.inputSha !== denominator.inputSha || run.denominator.requiredUidSetSha !== denominator.requiredUidSetSha || !Array.isArray(run.denominator.requiredUidSet) || canonicalJson(run.denominator.requiredUidSet) !== canonicalJson(denominator.requiredUidSet)) errors.push('C_DENOMINATOR_STALE_OR_INCOMPLETE');
-  for (const candidatePath of new Set(run.questions.map(q => q.candidatePath))) for (const mode of policy.modes) for (const viewport of profiles.viewports) {
+  for (const candidatePath of new Set(run.questions.map(q => q.candidatePath))) for (const mode of (run.schemaVersion === RUN_VERSION_V2 && run.publicationIntent === 'FULL_EXAM' ? ['exam', 'solution', 'answer'] : policy.modes)) for (const viewport of profiles.viewports) {
     const matches = [...evidence.values()].filter(e => {
       if (e.axis !== 'render') return false;
-      const capture = evidence.get(e.payload?.captureEvidenceId);
+      let capture = evidence.get(e.payload?.captureEvidenceId);
+      if (run.schemaVersion === RUN_VERSION_V2 && e.inputSha !== run.inputSha) {
+        const receipt = (run.renderReviewReuseReceiptRefs || []).map(ref => JSON.parse(readBoundFile(root, ref))).find(receipt => receipt.rootFreshReviewRef?.sha256 === evidenceHashes.get(e.evidenceId));
+        if (receipt) capture = evidence.get(JSON.parse(readBoundFile(root, receipt.currentCaptureRef)).evidenceId);
+      }
       return capture?.axis === 'render-capture' && capture.payload?.mode === mode && capture.payload?.viewport?.profile === viewport.profile && capture.payload?.candidatePath === candidatePath;
     });
     let renderErrors;
@@ -315,7 +393,7 @@ export function auditRun(root, run) {
   for (const ref of [...run.inputs, ...run.evidence]) {
     try { readBoundFile(root, ref); } catch (error) { errors.push(`CHANGED_DURING_AUDIT:${error.message}`); }
   }
-  if (!errors.length && policy.scope === 'QUESTION_QUALITY') {
+  if (!errors.length && policy.scope === 'QUESTION_QUALITY' && run.schemaVersion === RUN_VERSION) {
     const authorization = run.productionAuthorization;
     const reviewIds = [...evidence.values()].filter(e => e.axis === 'render').map(e => e.evidenceId).sort();
     const latestRenderFreeze = Math.max(...[...evidence.values()].filter(e => e.axis === 'render').map(e => Date.parse(e.frozenAt)), -Infinity);
@@ -328,7 +406,7 @@ export function auditRun(root, run) {
       && authorization.runtimeBundleSha === run.renderRuntime?.bundleSha
       && canonicalJson(uidSet(authorization.renderReviewEvidenceIds || [])) === canonicalJson(uidSet(reviewIds));
   }
-  if (CORE_SHA !== objectSha(CORE_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })))) errors.push('VERIFIER_CHANGED_DURING_AUDIT');
+  if (CORE_SHA !== objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })))) errors.push('VERIFIER_CHANGED_DURING_AUDIT');
   return result();
 }
 

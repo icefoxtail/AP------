@@ -416,8 +416,9 @@ def reap_stale_adaptive_dispatches(
                         activity = max(activity, heartbeat.stat().st_mtime)
         if now - activity < max(1, int(timeout_seconds)):
             continue
-        fail_adaptive_dispatch(store, run_id, task_id, "AGENT_STALE_TIMEOUT")
-        reaped.append(task_id)
+        # A timeout is not evidence that the provider stopped. Retain DISPATCHED.
+        task["reconciliationRequired"] = "STALE_PROVIDER_STATUS_UNKNOWN"
+        store.save(run_id, manifest)
     if reaped:
         manifest = store.load(run_id)
         base._append_event(

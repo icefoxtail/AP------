@@ -123,6 +123,8 @@ def start_task_dispatch(
         raise ValueError("route must be a non-empty string when supplied")
 
     task = _ensure_current_stage_task(manifest, task_id)
+    from .agent_budget import hold_legacy_launch
+    hold_legacy_launch(task, external_id)
     status = task.get("status")
     if status == "SUBMITTED":
         raise ValueError("task artifact is immutable after submission")
@@ -150,6 +152,7 @@ def start_task_dispatch(
 
 def fail_task_dispatch(manifest: dict[str, Any], task_id: str, code: str) -> dict[str, Any]:
     """Durably retain a failed dispatch attempt, then return the task to PENDING."""
+    raise ValueError("HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY")
     if not isinstance(code, str) or not code.strip():
         raise ValueError("dispatch failure code must be a non-empty string")
 

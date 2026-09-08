@@ -11,6 +11,7 @@ from unittest.mock import patch
 from alive.engine.alive_cli import main
 from alive.engine.contracts import initial_stages
 from alive.engine.run_store import RunStore, sha256_file, utc_now
+from alive.engine.tests.legacy_dispatch_fixture import legacy_dispatched_task
 
 
 class Phase2CliTests(unittest.TestCase):
@@ -51,22 +52,27 @@ class Phase2CliTests(unittest.TestCase):
 
             def invoke(arguments: list[str]) -> tuple[int, dict]:
                 output = StringIO()
+                errors = StringIO()
                 with (
                     patch("alive.engine.alive_cli.repository_root", return_value=root),
                     redirect_stdout(output),
-                    redirect_stderr(StringIO()),
+                    redirect_stderr(errors),
                 ):
                     result = main([*arguments, "--runtime-root", str(runtime), "--json"])
-                return result, json.loads(output.getvalue()) if output.getvalue() else {}
+                return result, json.loads(output.getvalue()) if output.getvalue() else {"error": errors.getvalue()}
 
             self.assertEqual(0, invoke(["prepare", "--run", manifest["runId"]])[0])
             task_id = "R03_SOURCE_ANALYSIS:source_analysis:a"
+            before = store.load(manifest["runId"])
             result, payload = invoke([
                 "dispatch-start", "--run", manifest["runId"], "--task", task_id,
                 "--external-id", "agent-123", "--route", "gpt-5.6-luna",
             ])
-            self.assertEqual(0, result)
-            self.assertFalse(payload["idempotent"])
+            self.assertEqual(1, result)
+            self.assertIn("HOLD:LEGACY_AGENT_DISPATCH_DISABLED", json.dumps(payload))
+            self.assertEqual(before, store.load(manifest["runId"]))
+            legacy_dispatched_task(before["phase2"]["tasks"][task_id], "agent-123")
+            store.save(manifest["runId"], before)
             persisted = store.load(manifest["runId"])
             task = persisted["phase2"]["tasks"][task_id]
             self.assertEqual("DISPATCHED", task["status"])
@@ -91,11 +97,11 @@ class Phase2CliTests(unittest.TestCase):
                 "dispatch-fail", "--run", manifest["runId"], "--task", task_id,
                 "--code", "AGENT_THREAD_LIMIT",
             ])
-            self.assertEqual(0, result)
-            self.assertEqual("PENDING", payload["status"])
-            self.assertEqual("DISPATCH_FAILED", payload["dispatchStatus"])
+            self.assertEqual(1, result)
+            self.assertIn("HOLD:PROVIDER_RECONCILIATION_REQUIRED_NO_AUTOMATIC_RETRY", json.dumps(payload))
             retried = store.load(manifest["runId"])["phase2"]["tasks"][task_id]
-            self.assertEqual("DISPATCH_FAILED", retried["dispatch"]["attempts"][-1]["status"])
+            self.assertEqual("DISPATCHED", retried["status"])
+            self.assertEqual(task["dispatch"], retried["dispatch"])
 
     def test_prepare_submit_reduce_r03_round_trip(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

@@ -29,6 +29,22 @@ UNIT_OVERLAY
 EFFECTIVE_RULESET
 ```
 
+## 0.1 Agent / Provider 실행 권위
+
+본 Common Protocol은 문항 품질·evidence·release/seal의 semantic contract다. agent/provider
+실행 토폴로지의 단일 정본은
+[`AGENT_BUDGET.md`](../../../archive/tools/pipeline-core/AGENT_BUDGET.md)다. JOB denominator,
+main-worker production, whole-job freeze, audit/recheck allowance, 동시성, recursion,
+retry/fallback, provider attestation capability의 상세 실행 제약은 그 문서만 정한다.
+그 제약은 이 Protocol의 품질 기준·FAIL/HOLD·final closure를 대체하거나 약화하지 않는다.
+
+따라서 이 문서의 3~5문항/5문항 batch, independent review, A/B/C/D coverage, Mother
+Final Review, visual review, render review는 문항 partition·semantic 검수·evidence axis·release
+closure의 의미를 설명한다. 이 용어들은 별도 agent/provider launch, batch별·문항별·axis별
+auditor, 자동 second review, Mother Final fan-out, retry/fallback을 허가하지 않는다.
+이 관계는 JS아카이브의 추출·변환·해설·visual/SVG·독립검수·유사문항·출시/봉인 작업에
+공통 적용하며, 유사문항의 별도 manifest/seal 경계는 유지한다.
+
 본 정본은 다음 경험을 통합한다.
 
 1. 고1 도형의 방정식 v2.2의 강한 무결성 구조
@@ -4662,6 +4678,10 @@ COMPLETE
 # 41. Mother Final Review
 
 Mother Verifier는 수정하지 않는다.
+
+여기서 Mother Final Review는 최종 closure verification role이다. 이 이름만으로 별도
+agent/provider 호출, second auditor 또는 model fan-out이 허가되지는 않으며, 실행 토폴로지는
+`AGENT_BUDGET.md`를 따른다.
 
 최종 확인:
 

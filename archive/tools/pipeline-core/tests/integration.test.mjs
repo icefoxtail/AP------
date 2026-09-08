@@ -21,6 +21,12 @@ test('fresh preparation emits blind bundles, never fabricated review PASS', () =
   const f = fixture(); try {
     const repository = process.cwd();
     f.write('archive/assets/visual.svg', fs.readFileSync(path.join(f.root, 'assets/visual.svg')));
+    const sourceVisual = f.write('archive/assets/source.svg', '<svg xmlns="http://www.w3.org/2000/svg"><title>source-only</title></svg>');
+    // Source and candidate assets must not be interchanged in the blind bundle.
+    for (const [file, image] of [['source.js', 'assets/source.svg'], ['candidate.js', 'assets/visual.svg']]) {
+      const original = fs.readFileSync(path.join(f.root, file), 'utf8');
+      f.write(file, `${original}\nwindow.questionBank[0].image=${JSON.stringify(image)};`);
+    }
     for (const ref of runtimeDependencyBundle(repository).localFiles) f.write(ref.path, fs.readFileSync(path.join(repository, ref.path)));
     for (const p of ['archive/tools/pipeline-core/visual-contract.json', 'archive/tools/pipeline-core/closure.mjs', 'archive/tools/pipeline-core/generator.py']) f.write(p, fs.readFileSync(path.join(repository, p)));
     const result = prepareDraft(f.root, { pipeline: 'logic-visual', runId: 'new-run', sourcePath: 'source.js', candidatePath: 'candidate.js', workdir: 'work/new-run' });
@@ -29,6 +35,8 @@ test('fresh preparation emits blind bundles, never fabricated review PASS', () =
     assert.equal(auditRun(f.root, run).status, 'BLOCKED');
     const v1 = JSON.parse(fs.readFileSync(path.join(f.root, 'work/new-run/bundles/q1-v1.json')));
     const v2 = JSON.parse(fs.readFileSync(path.join(f.root, 'work/new-run/bundles/q1-v2.json')));
+    assert.deepEqual(v1.problemAssets, [sourceVisual]);
+    assert.equal(v2.artifact.path, 'archive/assets/visual.svg');
     for (const key of ['answer', 'solution', 'solutionImage', 'expectedFact', 'previousVerdict']) assert.equal(key in v1, false);
     for (const key of ['content', 'choices', 'answer', 'solution', 'expectedFact', 'alt', 'caption']) assert.equal(key in v2, false);
     assert.throws(() => prepareDraft(f.root, { pipeline: 'logic-visual', runId: 'new-run', sourcePath: 'source.js', candidatePath: 'candidate.js', workdir: 'work/new-run' }), /NEW_RUN_DIRECTORY_REQUIRED/);
