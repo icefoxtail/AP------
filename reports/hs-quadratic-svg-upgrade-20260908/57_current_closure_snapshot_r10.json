@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R10",
+  "status": "SOURCE_REPAIRS_APPLIED_FULL_V1_REBUILT_CANDIDATE_ONLY_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "scope": {"targetQuestionCount": 430, "sourceFileCount": 59, "examFileCount": 59},
+  "approvedSourceRepair": {
+    "sourceMutationOnSeparateBranch": true,
+    "modifiedSourceFiles": 3,
+    "modifiedQuestions": 5,
+    "sourceHoldBefore": 5,
+    "sourceHoldAfter": 0,
+    "independentRecheck": "5/5",
+    "sourceCandidateParity": "5/5",
+    "unapprovedSourceFieldDiffs": 0,
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/50_source_repairs_applied_r9.json"
+  },
+  "currentV1": {
+    "packetFile": "reports/hs-quadratic-svg-upgrade-20260908/53_current_v1_source_only_packets_r10.jsonl",
+    "packetCount": 430,
+    "uniquePacketCount": 430,
+    "validation": "V1_PACKET_VALIDATED_INPUT_READY_NO_PASS",
+    "validationEvidence": "reports/hs-quadratic-svg-upgrade-20260908/55_current_v1_packet_validation_r10.json"
+  },
+  "solutionFreeze": {"fullDenominator": 430, "repairedRowsFrozen": 5, "remainingRowsNotFullyFrozen": 425, "status": "PARTIAL_SOLUTION_FREEZE_REPAIRED_ROWS_ONLY_NO_FINAL_PASS", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/56_repaired_solution_freeze_ledger_r10.json"},
+  "visualReviewForRepairedRows": {"newSvgCount": 5, "staticFailures": 0, "v2Rows": 5, "v3Failures": 0, "localDesktopMobileOverflow": 0, "providerAttestedRenderCapture": "MISSING", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/49_local_render_manual_review_r9.json"},
+  "remainingGates": ["full 430-row independent expected-fact/V1/V2/V3 closure", "full 430-row solution freeze", "provider-attested FINAL_AUDIT", "current render capture and independent render-review", "source registry and production promotion authority"],
+  "note": "The five approved correctness holds are repaired in the separate branch source and candidate bank. No withdrawal was used. Final PASS/SEALED is intentionally not declared while the remaining full-scope and provider gates are open."
+}

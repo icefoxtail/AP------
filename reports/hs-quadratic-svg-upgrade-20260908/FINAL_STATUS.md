@@ -126,3 +126,11 @@ q13·q19·q9·q15는 source answer/조건 결함으로 보류했다.
 새 evidence는 [승인 수리계획](36_approved_source_repair_plan_r8.json), [독립 재검산](38_candidate_source_repair_independent_recheck_r8.json), [V1](39_approved_source_only_v1_expected_facts_r9.json), [candidate SVG manifest](40_approved_candidate_visual_manifest_r9.json), [candidate bank r9](41_approved_candidate_bank_manifest_r9.json), [static check](42_approved_candidate_visual_static_check_r9.json), [V2](43_approved_v2_artifact_only_r9.json), [V3](44_approved_v3_parity_r9.json), [local render](45_local_svg_render_review_r9.json), [manual render review](49_local_render_manual_review_r9.json), [bank validation](46_approved_candidate_bank_validation_r9.json), [solution freeze](47_candidate_solution_freeze_source_resolved_r9.json), [closure snapshot](48_current_closure_snapshot_r9.json)이다.
 
 production JS/SVG/DB/index에는 쓰지 않았다. 로컬 browser `file://` capture가 정책으로 차단되어 provider-attested render capture/FINAL_AUDIT은 여전히 미완료이며, 전체 430문항 current V1/V2/V3와 source registry authority도 남은 gate다. 따라서 이 revision도 `CANDIDATE_ONLY / FINAL_PASS_FORBIDDEN`이다.
+
+## r10 current source application update (2026-09-08)
+
+사용자 승인 범위를 별도 브랜치의 실제 source JS에 반영했다. 3개 source 파일에서 5개 문항만 변경되었고, before/after 해시·문항 수·승인 필드 scope 검증 결과 오류 0이다. q13은 `k≠0` 조건이 실제 content에 추가되었으며, q17은 보기 ⑤ `없다`와 answer ⑤가 실제 source에 반영되었다. q19/q9/q15는 각각 ④/①/③과 확정 해설이 반영되었다.
+
+반영 후 current source-only V1 packet을 430/430으로 재생성·검증했고, repaired solution freeze는 5/5, source↔candidate parity는 5/5다. 현재 상태의 단일 요약은 [r10 closure snapshot](57_current_closure_snapshot_r10.json)이다. 기존 r8/r9 candidate-only 원장은 변경 이력으로 보존한다.
+
+이번 source correction은 별도 브랜치에만 존재하며, DB/question-index/source registry 갱신과 provider-attested FINAL_AUDIT은 아직 수행하지 않았다. 전체 430문항의 독립 freeze 및 current V1/V2/V3가 닫히기 전에는 `PASS`·`SEALED`·production promotion을 선언하지 않는다.
