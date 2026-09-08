@@ -11,6 +11,17 @@ This skill is a router only. Do not copy, summarize, merge, or rewrite the rule 
 
 ## CURRENT EXECUTION ROUTE LOCK
 
+For new work, the execution topology is defined by
+archive/tools/pipeline-core/AGENT_BUDGET.md: one whole-job work batch,
+provider-attested FINAL_AUDIT, and at most one TARGETED_RECHECK. Semantic
+visual axes, batch labels, and render-review roles do not authorize extra
+agent/provider launches. Read the repository skill manifest and verify the
+active worktree before starting visual changes.
+
+~~~powershell
+node tools/skills/verify-skills.mjs
+~~~
+
 This skill remains router-only, but the current shared execution contract is the completion authority for every new or modified SVG, graph, geometry, or `solutionImage` task. The mandatory current route is:
 
 1. `docs/rules/02_PIPELINES/공통파이프라인_실행계약_v1.md`
@@ -22,6 +33,14 @@ When current rules require independent visual closure for a question whose visua
 `Builder/Generator → V1 SOURCE_ONLY → V2 ARTIFACT_ONLY → V3 FROZEN_V1_V2 → render-capture → independent render-review → closure`
 
 Past `solution-review-v2.2`, legacy coordinate-parity reports, and past individual review scripts/reports are diagnostic/supporting evidence only. They may not replace current `pipeline-core` closure or justify a PASS declaration. If required current pipeline evidence is missing, `SELF_FAIL` with `MISSING_CURRENT_PIPELINE_EVIDENCE`.
+
+## Current render evidence boundary
+
+For pipeline-core v2 captures, visual closure also requires page, column, flow
+position, and continuation-block geometry. Every required final block needs an
+independent RENDER_REVIEW or a current validated reuse receipt. MACHINE_CURRENT
+capture is not a fresh semantic review, and a capture-only PASS cannot close a
+visual quality axis.
 
 ## STUDENT UNDERSTANDING VISUAL POLICY
 

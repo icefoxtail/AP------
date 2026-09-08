@@ -9,6 +9,12 @@ This is a canary variant of [the baseline skill](../apmath-similar-question-pipe
 Use it only for an explicit comparison run. The baseline skill, its files, and
 its runtime are the control group and must not be changed.
 
+This experimental route is legacy compatibility work. It does not override
+the pipeline-core v2 work-batch, provider-attestation, concurrency, retry, or
+publication boundaries. Read the baseline skill's
+references/pipeline-v2-execution.md before deciding whether a requested
+operation belongs to this route.
+
 Before operating, read the baseline skill and its staged-exam references. Then
 read [adaptive-workflow.md](references/adaptive-workflow.md),
 [method-lock-and-correction-loop.md](references/method-lock-and-correction-loop.md),

@@ -1,15 +1,27 @@
 ---
 name: apmath-archive-exams
-description: Archive classified Korean math exam scans into the APMath JavaScript archive with full-page-first extraction, staged candidate/production validation, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA. Use for original exam imports, generated-candidate review, promotion, or archive integrity audits; use the similar-question skill for generating variants.
+description: Archive classified Korean math exam scans and audit, correct, or upgrade existing APMath JavaScript archive exams with full-page-first extraction, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA; use the similar-question skill for generating variants.
 ---
 
 # APMath exam archiving
 
-Import original Korean math exam scans into the repository archive and do not
-declare a final pass until source fidelity, metadata, assets, DB/index parity,
-and real browser rendering are evidenced.
+Import original Korean math exam scans, or audit, correct, and upgrade existing
+Archive JS answers, solutions, metadata, assets, DB/index records, and render
+evidence. Do not declare a final pass until source fidelity, metadata, assets,
+DB/index parity, and real browser rendering are evidenced.
 
 ## Scope and routing
+
+The current common execution topology is defined by
+archive/tools/pipeline-core/AGENT_BUDGET.md and applies to original archive
+imports as well as similar-question work. This skill owns source fidelity,
+answer/solution completion, archive metadata, and promotion quality; its
+domain stages do not authorize extra provider or agent launches. Verify the
+active Git worktree skill set before starting a pipeline-dependent task.
+
+~~~powershell
+node tools/skills/verify-skills.mjs
+~~~
 
 - This skill owns original exam extraction, answer/solution completion, review,
   production promotion, and archive audits.
@@ -147,6 +159,12 @@ legacy exceptions must remain visible in the report.
   `full` is an image-size value and does not imply `fullwidth`.
 
 ## Browser QA and evidence
+
+For pipeline-core v2 work, record MACHINE_CURRENT collection separately from
+the independent RENDER_REVIEW. Capture every required mode and viewport,
+including the last question and every continuation block; a machine capture
+cannot be promoted to semantic render PASS by itself. Unchanged blocks require
+current validated reuse evidence.
 
 Serve the repository and open `archive/engine.html` with the production JS
 path. Record a durable `reports/browser_render_check.md` or equivalent

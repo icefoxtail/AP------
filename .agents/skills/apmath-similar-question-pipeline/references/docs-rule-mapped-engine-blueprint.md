@@ -2,12 +2,18 @@
 
 ## 0. 문서 상태
 
+현재 실행 토폴로지는 archive/tools/pipeline-core/AGENT_BUDGET.md가
+정본이다. 이 설계도의 staged 배치·역할·모델 설명은 semantic/domain
+계약을 설명하는 참고 자료이며, 새 job의 provider launch나 agent 수를
+허가하지 않는다.
+
 - 상태: IMPLEMENTED_PARTIAL
 - 목적: docs/rules/의 운영 기준을 ALIVE 유사문제·전체 시험지 생성 파이프라인의 실행 계약으로 번역한다.
 - 적용 대상: Archive 기준 시험지에서 유사문제 또는 유사 시험지를 생성하는 STAGED_EXAM 경로
 - 현재 경계: Rule Snapshot, 참고문항 선별, 학생용 상세 해설 계약, 해설 SVG lane,
   배치 해설 walkthrough, 결정적 mother final gate가 staged MVP에 연결되었다.
-  실제 브라우저 자동화와 최종 ZIP 추출본 재렌더는 여전히 수동 evidence 경계다.
+  pipeline-core의 실제 브라우저 capture와 continuation block evidence가
+  활성화되었으며, 독립 render review와 최종 ZIP closure는 별도 hard gate다.
   시각자료 품질 최저선은 `references/visual-quality-floor.md`에 두며,
   현재 자동 시각 capability는 원·기본 좌표/선분/곡선/표 범위다. 함수식
   compiler, 부등식 음영, 타원·포물선·쌍곡선, 미적분 오버레이는 별도
@@ -171,7 +177,10 @@ S00 RULE_AND_SOURCE_LOCK
 22문항 → b01 1~5 / b02 6~10 / b03 11~15 / b04 16~20 / b05 21~22
 ~~~
 
-동시에 실행하는 배치는 최대 4개다. 다섯 번째 배치는 큐에 남겼다가 앞선 배치가 종료되면 실행한다. 배치 내부에서는 5문항 전체의 source·solution·visual·self-check 계약을 완성하지만, 세대 간 독립 검수는 모든 1차 배치 완료 후 시작한다.
+이 5문항 배치는 semantic planning과 legacy Run metadata의 단위다.
+pipeline-core v2에서는 JOB 전체를 한 work batch로 freeze하고 provider
+attestation과 launch/recheck allowance를 job 단위로 관리한다. 배치 수나
+문항 수로 새 agent/provider wave를 만들지 않는다.
 
 현재 staged MVP의 균등 4분할은 호환 상태로 보존하되, docs 기준 활성화 시 위 5문항 논리 배치로 전환한다.
 
@@ -431,7 +440,9 @@ NOT_TESTED는 중간 상태 기록에는 사용할 수 있지만 AUTO_READY와 L
 - source `visualFingerprint` 및 top-level `visualSpec` 계약
 - deterministic SVG renderer와 asset/spec/report hash validator
 - Candidate+Asset 동시 수용 및 final/shadow asset materialization
-- 남은 범위: 실제 브라우저 시각 PASS 자동화와 최종 ZIP 추출본 closure
+- pipeline-core의 actual-browser capture, continuation block, independent
+  render-review, and final ZIP closure를 사용한다. 자동 capture가 semantic
+  review나 release authority를 대신하지 않는다.
 
 ### Phase C — Final ZIP Render and Recovery
 

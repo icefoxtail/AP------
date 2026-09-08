@@ -123,7 +123,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
             else if (local?.startsWith('archive/assets/') && run.assetRoot) resolved = `${run.assetRoot}/${local.slice('archive/'.length)}`;
             const ref = resolved ? refByPath.get(resolved) : null;
             if (local?.startsWith('archive/assets/')) responseHashes.set(local, bytesSha(bytes));
-            if (!local || ['engine', 'runtime'].includes(ref?.role)) runtimeResponses.push({ url: response.url(), localPath: resolved || null, role: ref?.role || 'external', status: response.status(), bytes: bytes.length, sha256: bytesSha(bytes) });
+            if (!local || ['engine', 'runtime'].includes(ref?.role)) runtimeResponses.push({ url: response.url(), localPath: resolved || null, role: ref?.role || 'external', status: response.status(), bytes: ref && response.status() >= 200 && response.status() < 400 ? ref.bytes : bytes.length, sha256: ref && response.status() >= 200 && response.status() < 400 ? ref.sha256 : bytesSha(bytes), bodyBoundRef: ref && response.status() >= 200 && response.status() < 400 ? true : false });
           }).catch(error => {
             // Chrome may evict an already-consumed local response body while a
             // navigation settles. The response is still a valid bound runtime
