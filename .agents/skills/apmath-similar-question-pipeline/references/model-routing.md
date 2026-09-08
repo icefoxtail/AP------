@@ -1,72 +1,70 @@
-# ALIVE model routing
+# ALIVE and pipeline-core model routing
 
-Use this cost-controlled profile for Codex subagents unless the user explicitly chooses another model or the requested model is unavailable.
+## Pipeline-core v2 default
 
-## STAGED_EXAM automatic profile
+New pipeline-core-backed jobs use the main worker for complete-job
+orchestration, deterministic preparation, local generation/repair, and
+machine evidence. They do not create one independent model task per batch,
+question, or evidence axis.
 
-`STAGED_EXAM` is the default whole-exam route. In the unified skill, a normal
-whole exam uses four weighted balanced batches; model work is grouped by batch
-and the CLI never calls a model for deterministic checks.
+The provider bridge is the only new external review launch path:
 
-| Work | Model | Reasoning |
-| --- | --- | --- |
-| Complete first-draft batch | `gpt-5.6-luna` | `xhigh` |
-| Flagged-batch revision | `gpt-5.6-luna` | `xhigh` |
-| Independent whole-batch review 1 | `gpt-5.6-luna` | `xhigh` |
-| Independent whole-batch review 2 | `gpt-5.6-luna` | `xhigh` |
-| Student solution walkthrough inside review 1/2 | `gpt-5.6-luna` | `xhigh` |
-| Mother solution-quality aggregation, state reducer, answer comparison, assembly, serialization, hashing, packaging | deterministic CLI | no extra model call |
+| Work | Execution |
+| --- | --- |
+| Source, candidate, local repair, STATIC, METADATA, RENDER_CAPTURE | Main worker and deterministic local tooling |
+| provider-preflight | Zero-model control-plane attestation |
+| FINAL_AUDIT | One provider launch over the complete frozen job through sealed U1/U2/U3 contexts |
+| TARGETED_RECHECK | At most one provider launch after local repair, restricted to computed impact |
+| Unchanged axes | Direct-root validated reuse receipt |
+| Whole-job audit, v2 audit, release audit, hashing, packaging | Deterministic local tooling |
 
-The normal four-batch upper bound is four generation calls, four first reviews,
-up to four revisions, and four final reviews. The solution walkthrough is a
-second view in those same review calls, not an additional per-question agent.
-A legacy `AUTO` run may use smaller contiguous batches only when explicitly
-requested for compatibility or comparison; it is not the integrated default.
-A batch with no findings is
-copied through revision as `SKIPPED`. Do not split a batch into per-question
-builder/verifier calls unless the user explicitly changes the operating mode.
+The provider plan must attest the model, external identifier, three distinct
+session/context identities, builder separation, stateless input visibility,
+and disabled subagent tools. A stateful conversation that has seen answers
+cannot become blind by changing a label.
 
-## FAST_EXAM automatic profile
+## Allowances and escalation
 
-| Work | Model | Reasoning |
-| --- | --- | --- |
-| One complete question draft | `gpt-5.6-luna` | `xhigh` |
-| One blinded independent solve and quality review | `gpt-5.6-luna` | `xhigh` |
-| Exceptional extra blinded verification | `gpt-5.6-luna` | `xhigh` |
-| Schema, answer comparison, reducers, assembly, serialization, hashing, packaging | deterministic CLI | no model judgment |
+- FINAL_AUDIT is reserved once per work batch.
+- TARGETED_RECHECK is the normal bounded recovery path and may be reserved at
+  most once.
+- SECOND_AUDIT is never automatic. It requires explicit authorization and a
+  reason of CONFLICT or HIGH_RISK, while sharing the same expensive slot.
+- Provider transport failure, invalid attestation, or unknown state remains
+  HOLD or DISPATCHED. It does not authorize a retry or fallback.
+- Token budget, maxTokens, and missing provider usage are telemetry only.
+  Numeric usedTokens may be retained; unavailable usage becomes null and never
+  creates a token HOLD.
 
-The baseline is two model calls per question. An exceptional third verifier is permitted only for the conditions defined in `fast-exam-workflow.md`. A failed question may be regenerated once; the engine must not enter an unbounded repair loop.
+## Legacy ALIVE compatibility
 
-## STRICT_AUDIT automatic profile
+The historical STAGED_EXAM, FAST_EXAM, STRICT_AUDIT, adaptive-staged, and
+task-dispatch routes retain their old model descriptions for reconciliation
+and explicitly requested compatibility runs. Their batch partitions and
+queue metadata do not authorize a new provider launch under pipeline-core v2.
 
-| Work | Model | Reasoning |
-| --- | --- | --- |
-| Source analysis A/B and curriculum fingerprint | `gpt-5.6-luna` | `xhigh` |
-| Plan A/B/C and plan critic | `gpt-5.6-luna` | `xhigh` |
-| Candidate construction and bounded repair | `gpt-5.6-luna` | `xhigh` |
-| Independent math verifiers I2/I3 | `gpt-5.6-luna` | `xhigh` |
-| Fidelity, curriculum, anti-clone, difficulty, and distractor review | `gpt-5.6-luna` | `xhigh` |
-| ESSENTIAL visual review and semantic render review | `gpt-5.6-luna` | `xhigh` |
-| Parent orchestration that dispatches packets and invokes reducers | `gpt-5.6-luna` | `xhigh` |
-| Packet preparation, reducers, adapters, serialization, hashing, packaging | deterministic CLI | no model judgment |
+When a legacy route is explicitly selected, preserve its declared blindness,
+producer identity, and bounded retry rules. Do not silently change route,
+model, or reasoning effort because of capacity pressure. If its configured
+Luna route is unavailable, report the routing blocker unless the user
+explicitly authorizes a different model.
 
-Neither mode escalates to Terra or Sol on its own. A Luna disagreement remains subject to the mode's fail-closed reducer and bounded recovery policy; model cost is not a reason to weaken or bypass a Gate.
+## Explicit manual audit
 
-## Separate manual audit profile
+After automatic production, a user may explicitly request a separate
+higher-cost manual audit. Keep that audit outside the routine generation Run,
+store its evidence separately, and never mutate accepted artifacts or silently
+turn a finding into PASS. Use Terra or Sol only when explicitly requested or
+explicitly authorized for a bounded unresolved mathematical or visual
+contradiction. If the audit finds a defect, preserve the audited Run and create
+a fresh recovery Run linked to it. When the audit consumes the bounded
+SECOND_AUDIT allowance, include the explicit authorization and CONFLICT or
+HIGH_RISK reason required by AGENT_BUDGET.
 
-Run a higher-cost audit only when the user explicitly requests it after automatic production. Keep it outside the routine generation Run.
+## Independence
 
-- Use `gpt-5.6-terra` with `xhigh` for a whole-exam or selected-question manual audit.
-- Use `gpt-5.6-sol` with `xhigh` only when the user explicitly requests Sol or explicitly approves a bounded escalation for an unresolved mathematical or visual contradiction.
-- Audit the frozen student-facing question, solution, answer, validation evidence, and render evidence without exposing one reviewer to another reviewer's reasoning.
-- Save manual-audit evidence separately. Do not mutate accepted artifacts or silently convert an audit finding into PASS.
-- If the manual audit finds a defect, preserve the audited Run and create a fresh recovery Run linked to it before regeneration.
-
-## Invariants
-
-- Different producer identities and blinded inputs establish independence even when I2 and I3 both use Luna. A model-name difference is optional diversity, not proof of independence.
-- Never expose intended answers, source solutions, builder notes, sibling outputs, or prior verifier reasoning to an independent verifier.
-- Do not weaken a Gate because Luna was used instead of Terra or Sol.
-- If Luna is unavailable, stop and report the routing problem unless the user explicitly authorizes another model. Do not silently choose a higher-cost model.
-- Record the route for every dispatched task. Do not add undeclared fields to validated artifacts.
-- A user-specified model or reasoning effort overrides this cost profile, but not the artifact contracts, blinding rules, fail-closed reducer, or publication boundary.
+Independence comes from sealed input visibility, distinct session/context
+identities, producer separation, and immutable evidence bindings. A different
+model name alone is not proof of independent review. Never expose answers,
+source solutions, builder notes, sibling outputs, or prior reviewer reasoning
+to a blinded context.
