@@ -209,6 +209,14 @@ r18 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 
 r18 current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이다. 원격 continuation을 위해 현재 bank가 참조하는 SVG 167개와 r18 full/scoped bank·pipeline evidence·render evidence를 package해 branch에 push한다. 전체 final PASS는 계속 금지한다.
 
+## r19 specialist case-table continuation update (2026-09-08)
+
+r19는 남은 specialist 대상 14건을 source-only expected fact → 독립 재검산 → candidate SVG → artifact-only V2 → V3 parity → desktop/mobile local render 순서로 처리했다. 수직선 7건, 함수 그래프 6건, 판별식 case-table 1건이며, V1 14/14, 독립 검산 14/14 mismatch 0, candidate solution freeze 14/14, static 14/14, V2 14/14, V3 14/14(FAIL 0), local desktop/mobile render 14/14 및 overflow 0이다. case-table은 23 여천고 q10 보기의 판별식 17, 0, −15, 24를 참/거짓 구조로 분리했다.
+
+r19 candidate bank validation은 59 source bank·1295 row·unique candidate visual 181건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 181건이 현재 candidate이고 198건이 남아 있다. 최신 상태는 [r19 V3 closure snapshot](219_current_closure_snapshot_r19_v3_closed.json)이다.
+
+r19 current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이다. 원격 continuation을 위해 현재 bank가 참조하는 SVG 181개와 r19 full/scoped bank·pipeline evidence·render evidence를 package해 push한다. 전체 final PASS는 계속 금지한다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.
