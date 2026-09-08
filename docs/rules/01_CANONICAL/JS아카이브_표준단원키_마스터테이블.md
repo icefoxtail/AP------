@@ -431,9 +431,22 @@ templateKey: COMBINATION_AT_LEAST_ONE
 
 ### 기하 (H22-GE)
 
+#### 2022 개정 교육과정 공식 내용 요소 대조
+
+2022 개정 교육과정의 공식 내용 요소는 다음과 같이 기록한다.
+
+| 공식 범주 | 공식 내용 요소 |
+|---|---|
+| 이차곡선 | 이차곡선 |
+| 공간도형과 공간좌표 | 공간도형, 공간좌표 |
+| 벡터 | 벡터의 연산, 벡터의 성분과 내적, 도형의 방정식 |
+
+이 표의 명칭은 경기도교육청의 `2022 개정 교육과정 고등학교 과목 선택 안내자료`에 제시된 기하 내용 체계에서 그대로 옮긴 것이다. 아래 `H22-GE-01`~`H22-GE-08` 표는 기존 Archive 문항·필터와의 호환을 위한 내부 표준단원키다. 따라서 `H22-GE-02`의 `이차곡선의 접선`, `H22-GE-06`의 `벡터의 성분`, `H22-GE-07`의 `벡터의 내적`은 공식 내용 요소를 추가로 발명한 것이 아니라 기존 내부 세분/호환 키로 취급한다. 특히 공식 내용 요소 `벡터의 성분과 내적`을 두 개의 별도 공식 요소로 해석하지 않는다.
+
+공식 자료: <https://www.goe.go.kr/resource/old/BBSMSTR_000000030136/BBS_202312050603474391.pdf>
+
 #### 1. 이차곡선
 - 이차곡선
-- 이차곡선의 접선
 
 #### 2. 공간도형과 공간좌표
 - 공간도형
@@ -441,8 +454,7 @@ templateKey: COMBINATION_AT_LEAST_ONE
 
 #### 3. 벡터
 - 벡터의 연산
-- 벡터의 성분
-- 벡터의 내적
+- 벡터의 성분과 내적
 - 도형의 방정식
 
 | Key | 단원명 | Order |
@@ -1016,6 +1028,8 @@ PROPOSED-{KEY}
 | H22-C2-09 | H22-C2-09-FUNCTION_INVERSE | 역함수 | H22_C2_09_FUNCTION_INVERSE |
 | H22-GE-01 | H22-GE-01-CORE | 이차곡선 핵심 개념 | H22-GE-01-CORE |
 | H22-GE-02 | H22-GE-02-CORE | 이차곡선의 접선 핵심 개념 | H22-GE-02-CORE |
+| H22-GE-03 | H22-GE-03-CORE | 공간도형 핵심 개념 | H22-GE-03-CORE |
+| H22-GE-04 | H22-GE-04-CORE | 공간좌표 핵심 개념 | H22-GE-04-CORE |
 | H22-GE-05 | H22-GE-05-VECTOR_BASIC | 벡터의 뜻과 연산 | H22-GE-05-VECTOR_BASIC |
 | H22-GE-05 | H22-GE-05-VECTOR_COMPONENT | 벡터의 성분 | H22_GE_05_VECTOR_COMPONENT |
 | H22-GE-05 | H22-GE-05-VECTOR_DOT | 벡터의 내적 | H22_GE_05_VECTOR_DOT |
@@ -1025,6 +1039,7 @@ PROPOSED-{KEY}
 | H22-GE-07 | H22-GE-07-VECTOR_BASIC | 벡터의 뜻과 연산 | H22-GE-07-VECTOR_BASIC |
 | H22-GE-07 | H22-GE-07-VECTOR_COMPONENT | 벡터의 성분 | H22_GE_07_VECTOR_COMPONENT |
 | H22-GE-07 | H22-GE-07-VECTOR_DOT | 벡터의 내적 | H22_GE_07_VECTOR_DOT |
+| H22-GE-08 | H22-GE-08-CORE | 도형의 방정식 핵심 개념 | H22-GE-08-CORE |
 | H22-PS-01 | H22-PS-01-CORE | 순열과 조합 핵심 개념 | H22-PS-01-CORE |
 | H22-PS-02 | H22-PS-02-CORE | 이항정리 핵심 개념 | H22-PS-02-CORE |
 | H22-PS-03 | H22-PS-03-PROBABILITY_APPLICATION | 확률의 활용 | H22-PS-03-PROBABILITY_APPLICATION |
