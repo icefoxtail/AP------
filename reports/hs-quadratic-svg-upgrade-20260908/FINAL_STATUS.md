@@ -49,6 +49,8 @@ ruleset과 `도형추출.md` v3.0 및 해설 SVG 운영규정을 적용하고 ov
 12. pipeline-core regression 130/130 PASS로 복구·재검
 13. 전체 430문항 V1 source-only 입력 packet 430개 생성·검증; UID 중복·누수 0
 14. 전체 ADD/REBUILD 379개를 동일 visual type/risk 기준 77개 adaptive batch로 계획
+15. current 26년 source의 solution residual 15건을 재분류해, candidate solution 11건을 핀포인트 보정하고 correctness-affecting source hold 4건을 분리
+16. additional r6 candidate: 확정 가능한 9건을 추가 생성·정적검사·V2 artifact-only·V3 parity까지 수행; 추가 V3 FAIL 0
 
 전체 V1 packet 입력 coverage는 430/430으로 준비됐지만, 이는 expected fact를 독립적으로
 확정했다는 뜻이 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`이며,
@@ -58,10 +60,15 @@ calibration candidate는 모두 `candidate-r3` 아래에 있으며, 이전 r1/r2
 append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 잘못 선택하던 generator
 분기와 q2 수직선 좌표계 분기를 V2가 잡았고, 새 revision으로 교정한 뒤 V3 5/5가 됐다.
 
+current 26년 시험지에서는 generic solution 12건과 stale answer 문구 1건을 찾았다.
+q9/q16 및 추가로 검산 가능한 7건을 포함해 candidate solution 11건을 보정했으며,
+q13·q19·q9·q15는 source answer/조건 결함으로 보류했다.
+
 ## 아직 PASS가 아닌 이유
 
 - 26 금당고 q17은 source가 정확히 세 교점을 만드는 `1<a<4`를 주지만 `a`의 최댓값을 요구한다. 최댓값은 존재하지 않으므로 correctness-affecting source hold다. source correction 또는 공식 withdrawal 없이 solution freeze/최종 봉인은 금지된다.
 - 377개 `ADD_NEW_VISUAL` 대상 전체에 대한 fact model과 candidate SVG가 아직 생성되지 않았다. calibration 5건의 성공을 전체 분모에 복사하지 않는다.
+- 현재 candidate SVG/V2/V3 lineage가 닫힌 문항은 14/379건이며, 365건은 아직 candidate generation 전이다. r6에서 source hold 5건은 의도적으로 제외했다.
 - 430문항 전체의 current solution freeze와 독립 A1/A2 검산, V1/V2/V3 closure가 아직 없다.
 - 전체 V1 packet은 입력 준비 상태일 뿐 expected fact를 확정한 독립 검수 결과가 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`으로 남아 있다.
 - 과거 unit inventory/expected-fact와 현재 source를 path+qid 및 raw hash로 대조한 결과, 430건 모두 대응 행을 찾았고 425건은 content/choices/answer/solution hash가 일치했다. 5건은 현재 source 값이 달라졌고, 141건은 current exam identity 변경으로 legacy UID가 달라졌다. 이 결과는 diagnostic alignment일 뿐이며, 전체 current V1/A1을 새로 검수해야 하고 legacy evidence를 자동 승계하지 않았다.
@@ -81,6 +88,7 @@ append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 �
 - [independent A1 calibration](02_math_a1_blind.json)
 - [solution fix plan](03_solution_fix_plan.json)
 - [current source solution static audit](10_current_source_solution_static_audit.json)
+- [current source solution static audit v2](10_current_source_solution_static_audit_v2.json)
 - [current source hold](11_current_source_hold.json)
 - [V3 calibration parity](08_calibration_v3_parity_r3.json)
 - [calibration render status](12_calibration_render_status.json)
@@ -90,3 +98,10 @@ append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 �
 - [full-scope adaptive batch plan](17_full_scope_batch_plan.json)
 - [full-scope legacy evidence alignment](19_legacy_evidence_alignment_v2.json)
 - [current pipeline requirements/blockers](20_current_pipeline_requirements.json)
+- [candidate solution repair coverage](23_solution_repair_coverage.json)
+- [additional current source holds](22_additional_current_source_holds.json)
+- [additional r6 candidate V1 facts](25_additional_v1_expected_facts.json)
+- [additional r6 candidate bank](30_additional_candidate_bank_manifest_r6.json)
+- [additional r6 V2 artifact-only](28_additional_v2_artifact_only_r6.json)
+- [additional r6 V3 parity](29_additional_v3_parity_r6.json)
+- [additional r6 closure summary](31_additional_v3_closure_summary_r6.json)
