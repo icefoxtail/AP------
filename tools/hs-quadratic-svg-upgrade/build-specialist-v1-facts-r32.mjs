@@ -1,0 +1,19 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..'); const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908'); const BASE = JSON.parse(fs.readFileSync(path.join(REPORT, '428_specialist_candidate_bank_manifest_r31.json'), 'utf8')); const OUTPUT = path.join(REPORT, '441_specialist_v1_expected_facts_r32.json');
+const TARGETS = [
+  ['1mid', '24_효천고_1학기_중간_고1_기출.js', 13, 'cartesian', { function: { a: 1, b: -4, c: 1, domain: [-4, 0] }, maximum: 33, minimum: 1, result: 34, exact: 't=x²−4x∈[−4,0], y=t²−4t+1, M+m=34' }],
+  ['1mid', '23_충무고_1학기_중간_고1_기출.js', 2, 'cartesian', { function: { a: 1, b: -2, c: -3, domain: [-3, 5] }, vertex: [1, -4], result: -5, exact: '영점 −1,3, a+b=−5' }],
+  ['1mid', '25_강남여고_1학기_중간_고1_기출.js', 7, 'cartesian', { function: { a: 1, b: 2, c: 3, domain: [-4, 2] }, vertex: [-1, 2], result: 1, exact: 'α+β=−2, αβ=3, α²+αβ+β²=1' }],
+  ['1mid', '23_매산고_1학기_중간_고1_기출.js', 16, 'number-line', { solutionInterval: [-16, -16], leftClosed: true, rightClosed: true, result: -16, exact: '모든 x에서 성립하려면 판별식<0, 정수 최솟값 −16' }],
+  ['1mid', '23_충무고_1학기_중간_고1_기출.js', 3, 'number-line', { solutionInterval: [1, 1], leftClosed: true, rightClosed: true, result: 1, exact: '허근 조건 k<2, 자연수 k=1' }],
+  ['1mid', '24_여수고_1학기_중간_고1_기출.js', 2, 'number-line', { solutionInterval: [null, -1], leftClosed: false, rightClosed: false, leftLabel: '−∞', rightLabel: '−1', result: 'k<−1', exact: '최솟값 −1보다 작은 k: k<−1' }],
+  ['1mid', '24_여수고_1학기_중간_고1_기출.js', 9, 'number-line', { solutionInterval: [5, 5], leftClosed: true, rightClosed: true, result: 5, exact: 'x≥2에서 증가, k²−2k+3=18, k=5' }],
+  ['1mid', '24_한영고_1학기_중간_고1_기출.js', 16, 'number-line', { solutionInterval: [-6, -5], leftClosed: true, rightClosed: true, integerSolutions: [-6, -5], count: 2, result: -11, exact: '정수 a=−6,−5, 합=−11' }],
+];
+function load(relative) { const context = { window: {} }; vm.createContext(context); vm.runInContext(fs.readFileSync(path.join(ROOT, relative), 'utf8'), context, { filename: relative, timeout: 10000 }); return JSON.parse(JSON.stringify(context.window)); }
+const baseBySource = new Map(BASE.candidateFiles.map((file) => [file.sourcePath, file])); const rows = [];
+for (const [dir, basename, id, expectedVisualType, expectedFacts] of TARGETS) { const sourceJsPath = `archive/exams/original/high/h1/${dir}/${basename}`; const source = load(sourceJsPath); const question = source.questionBank.find((item) => Number(item.id) === id); if (!question) throw new Error(`missing ${sourceJsPath} q${id}`); const base = load(baseBySource.get(sourceJsPath).candidatePath); const candidateQuestion = base.questionBank.find((item) => Number(item.id) === id); if (candidateQuestion?.solutionImage) throw new Error(`already candidate visualized ${sourceJsPath} q${id}`); rows.push({ questionUid: `${sourceJsPath}|${source.examTitle}|${id}`, sourceJsPath, id, content: question.content, choices: question.choices ?? [], expectedVisualType, expectedFacts }); }
+const output = { schemaVersion: 'HS_QUADRATIC_SPECIALIST_V1_EXPECTED_FACTS_R32', status: 'EXPECTED_FACTS_FROZEN_SOURCE_ONLY_CANDIDATE_NO_PASS', inputVisibilityProfile: 'SOURCE_ONLY', priorReviewVisibility: 'NONE', rows, note: 'Fresh source-only facts for r32; function rows use open cartesian teaching diagrams and inequality/parameter rows use explicit number lines. Existing solution/SVG/V2/V3 evidence were not used for derivation.' }; fs.writeFileSync(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8'); console.log(JSON.stringify({ status: output.status, rows: rows.length, numberLineRows: rows.filter((row) => row.expectedVisualType === 'number-line').length, cartesianRows: rows.filter((row) => row.expectedVisualType === 'cartesian').length }, null, 2));

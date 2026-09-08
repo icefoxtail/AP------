@@ -332,3 +332,15 @@ r31 candidate bank validation은 59 source bank·1295 row·current candidate vis
 r31 current V2 preparation은 새 `hs-quadratic-r31d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r31 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 88개 candidate visual, 144개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r32 source-solution repair and function/inequality continuation update (2026-09-09)
+
+r32 처리 중 24 효천고 q13에서 source solution의 실제 수학 오류를 V3로 검출했다. 치환식 $t=x^2-4x$에 대해 $y=(t+1)^2-6t=t^2-4t+1$인데, 기존 solution이 이를 $(t-2)^2-3$으로 잘못 바꾸고 $M+m=34$를 설명하지 못했다. 문제 content/answer는 유지하고 solution만 $t\in[-4,0]$에서 $m=1$, $M=33$, $M+m=34$가 되도록 수정했다. 이후 current-source static audit 430/430 issueRows 0, source-repaired candidate bank rebuild 1295 row·visual binding 291·오류 0으로 재구성했다.
+
+r32는 8개 문항을 처리했다. 24 효천고 q13·23 충무고 q2·25 강남여고 q7은 함수/포물선 관계를 cartesian SVG로 구성했고, 23 매산고 q16·23 충무고 q3·24 여수고 q2/q9·24 한영고 q16은 부등식·매개변수 해집합을 수직선 SVG로 구성했다. 함수 그래프 3건과 수직선 5건에 대해 source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r32 candidate bank validation은 source-repaired current source 기준 59 source bank·1295 row·current candidate visual 299건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 현재 candidate 299건, 잔여 80건이다. fresh expected fact 누적은 현재 counting 기준 294건, 잔여 136건이다. 최신 상태는 [r32 V3 closure snapshot](456_current_closure_snapshot_r32_v3_closed.json)이다.
+
+r32 current V2 preparation은 source solution repair를 반영한 새 `hs-quadratic-r32d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r32 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 80개 candidate visual, 136개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
