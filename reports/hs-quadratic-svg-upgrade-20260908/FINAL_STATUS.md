@@ -51,6 +51,7 @@ ruleset과 `도형추출.md` v3.0 및 해설 SVG 운영규정을 적용하고 ov
 14. 전체 ADD/REBUILD 379개를 동일 visual type/risk 기준 77개 adaptive batch로 계획
 15. current 26년 source의 solution residual 15건을 재분류해, candidate solution 11건을 핀포인트 보정하고 correctness-affecting source hold 4건을 분리
 16. additional r6 candidate: 확정 가능한 9건을 추가 생성·정적검사·V2 artifact-only·V3 parity까지 수행; 추가 V3 FAIL 0
+17. full candidate bank r7: 59/59 target-bearing source bank, 430 target rows, 14 solution visual bindings, protected parity 0 error
 
 전체 V1 packet 입력 coverage는 430/430으로 준비됐지만, 이는 expected fact를 독립적으로
 확정했다는 뜻이 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`이며,
@@ -69,6 +70,7 @@ q13·q19·q9·q15는 source answer/조건 결함으로 보류했다.
 - 26 금당고 q17은 source가 정확히 세 교점을 만드는 `1<a<4`를 주지만 `a`의 최댓값을 요구한다. 최댓값은 존재하지 않으므로 correctness-affecting source hold다. source correction 또는 공식 withdrawal 없이 solution freeze/최종 봉인은 금지된다.
 - 377개 `ADD_NEW_VISUAL` 대상 전체에 대한 fact model과 candidate SVG가 아직 생성되지 않았다. calibration 5건의 성공을 전체 분모에 복사하지 않는다.
 - 현재 candidate SVG/V2/V3 lineage가 닫힌 문항은 14/379건이며, 365건은 아직 candidate generation 전이다. r6에서 source hold 5건은 의도적으로 제외했다.
+- full candidate bank 파일은 59/59 준비됐지만, 430건의 full expected fact freeze가 끝난 것은 아니다. 현재 current V1 expected fact/ V2/V3 semantic coverage는 14건뿐이다.
 - 430문항 전체의 current solution freeze와 독립 A1/A2 검산, V1/V2/V3 closure가 아직 없다.
 - 전체 V1 packet은 입력 준비 상태일 뿐 expected fact를 확정한 독립 검수 결과가 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`으로 남아 있다.
 - 과거 unit inventory/expected-fact와 현재 source를 path+qid 및 raw hash로 대조한 결과, 430건 모두 대응 행을 찾았고 425건은 content/choices/answer/solution hash가 일치했다. 5건은 현재 source 값이 달라졌고, 141건은 current exam identity 변경으로 legacy UID가 달라졌다. 이 결과는 diagnostic alignment일 뿐이며, 전체 current V1/A1을 새로 검수해야 하고 legacy evidence를 자동 승계하지 않았다.
@@ -105,3 +107,6 @@ q13·q19·q9·q15는 source answer/조건 결함으로 보류했다.
 - [additional r6 V2 artifact-only](28_additional_v2_artifact_only_r6.json)
 - [additional r6 V3 parity](29_additional_v3_parity_r6.json)
 - [additional r6 closure summary](31_additional_v3_closure_summary_r6.json)
+- [full candidate bank manifest r7](32_full_candidate_bank_manifest_r7.json)
+- [full candidate bank validation r7](33_full_candidate_bank_validation_r7.json)
+- [current closure snapshot r7](34_current_closure_snapshot_r7.json)
