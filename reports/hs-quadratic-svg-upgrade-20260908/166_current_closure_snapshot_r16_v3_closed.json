@@ -32,16 +32,16 @@
       "render": "reports/hs-quadratic-svg-upgrade-20260908/163_specialist_local_render_review_r16.json"
     }
   },
-  "candidateVisualProgress": { "priorUniqueCandidateVisuals": 131, "r16BatchRows": 18, "r16SupersededPriorCandidateRows": 0, "currentUniqueCandidateVisuals": 149, "remainingCandidateVisuals": 230, "freshExpectedFactRowsThroughR16": 115, "remainingFreshExpectedFactsUnderCurrentCounting": 315 },
+  "candidateVisualProgress": { "priorUniqueCandidateVisuals": 113, "r16BatchRows": 18, "r16SupersededPriorCandidateRows": 0, "currentUniqueCandidateVisuals": 131, "remainingCandidateVisuals": 248, "freshExpectedFactRowsThroughR16": 115, "remainingFreshExpectedFactsUnderCurrentCounting": 315 },
   "currentV2Preparation": { "runCount": 59, "preparedQuestionCount": 430, "errors": 0, "machineEvidenceCount": 860, "machineEvidenceValidationErrors": 0, "preparation": "reports/hs-quadratic-svg-upgrade-20260908/160_current_v2_preparation_r16.json", "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/164_machine_evidence_r16.json", "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/165_machine_evidence_validation_r16.json", "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_RENDER_CAPTURE" },
   "solutionStaticAudit": { "currentSourceIssueRows": 11, "currentSourceEvidence": "reports/hs-quadratic-svg-upgrade-20260908/98_current_source_solution_static_audit_r12.json", "candidateSolutionIssueRows": 0, "candidateSolutionEvidence": "reports/hs-quadratic-svg-upgrade-20260908/99_candidate_solution_static_audit_r12.json", "note": "r16은 기존 candidate solution을 변경하지 않고 SVG를 추가했으므로 candidate solution 정적 audit 결과를 계승한다. source 잔여 11건은 별도 승인 전 source mutation하지 않았다." },
   "sourceRegistry": { "candidateEntries": 430, "sourceFileCount": 59, "identityMismatchCount": 15, "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json" },
-  "portability": { "candidateVisualAssetCountReferencedByBank": 149, "assetPackagingPlan": "TRACK_REFERENCED_CANDIDATE_SVG_ASSETS_AND_CURRENT_BANKS_FOR_REMOTE_CONTINUATION", "productionSourceAssetsIncluded": false },
+  "portability": { "candidateVisualAssetCountReferencedByBank": 131, "assetPackagingPlan": "TRACK_REFERENCED_CANDIDATE_SVG_ASSETS_AND_CURRENT_BANKS_FOR_REMOTE_CONTINUATION", "productionSourceAssetsIncluded": false },
   "remainingGates": [
     "별도 승인·독립 검산이 필요한 current source 해설 잔여 11건",
     "fresh independent math A1/A2 and solution freeze for full 430 rows",
     "fresh V1 expected facts for remaining 315 rows under current counting",
-    "artifact-only V2 and semantic V3 for remaining 230 candidate visual rows",
+    "artifact-only V2 and semantic V3 for remaining 248 candidate visual rows",
     "provider-attested FINAL_AUDIT",
     "actual current desktop/mobile render capture and independent render-review",
     "source registry identity authority for 15 mismatched exam titles",
