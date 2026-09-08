@@ -572,6 +572,10 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
+    "solutionImage": "assets/images/25_강남여고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "원뿔에 내접한 같은 두 원기둥과 닮음식 z=h(1-r), 부피함수의 최댓값 r=2/3을 나타낸 해설 그림",
+    "solutionImageCaption": "닮음으로 z=h(1-r)을 얻고 V=2πhr²(1-r)의 최댓값은 r=2/3에서 생긴다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 닮음으로 원기둥의 높이를 반지름의 식으로 나타낸 뒤 부피함수의 증가·감소를 조사한다.\\n조건 정리: 원뿔의 밑면 반지름은 $2$, 높이는 $h$이고, 같은 두 원기둥의 밑면 반지름을 $r$, 높이를 $z$라 둔다.\\n풀이 방향: 원기둥 윗면 높이에서의 원뿔 단면을 이용해 $z$와 $r$의 관계를 구하고, 두 원기둥의 부피의 합을 $r$의 함수로 만든다.\\n정석 풀이: 두 원기둥이 나란히 내접하므로 원기둥 윗면 높이에서 원뿔의 단면 반지름은 $2r$이다. 닮음에 의해 $2r=2\\left(1-\\dfrac{z}{h}\\right)$이므로 $z=h(1-r)$이고 $0\\lt r\\lt1$이다. 두 원기둥의 부피의 합은 $V=2\\pi r^2z=2\\pi h r^2(1-r)$이므로 $V'=2\\pi h\\,r(2-3r)$이다. $0\\lt r\\lt\\dfrac23$에서는 $V'\\gt0$, $\\dfrac23\\lt r\\lt1$에서는 $V'\\lt0$이므로 $V$는 $r=\\dfrac23$에서 최댓값을 갖는다. 따라서 $\\dfrac{q}{p}=\\dfrac23$이므로 $p=3$, $q=2$이다.\\n따라서 $p+q=5$이고 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
