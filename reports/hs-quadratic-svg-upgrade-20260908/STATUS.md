@@ -77,3 +77,13 @@
 수정 후 V1 source-only packet은 430/430, unique 430, leak 0으로 재생성·검증했다. repaired solution freeze 5/5 및 source↔candidate parity 5/5이며, 기존 5건 SVG의 V2/V3는 5/5·FAIL 0, local desktop/mobile overflow 0이다.
 
 현재 요약은 `57_current_closure_snapshot_r10.json`이다. 별도 브랜치이므로 검토 가능한 실제 source diff는 존재하지만, source registry·DB/index 갱신, provider-attested FINAL_AUDIT, 전체 430문항 independent freeze/V1/V2/V3 및 final render review가 남아 최종 PASS는 보류한다.
+
+## r11 full-denominator progress
+
+clean candidate bank를 다시 구성해 상속 비검토 SVG를 제거했고, 430 target scoped candidate를 유지했다. 신규 deterministic batch 25건을 생성해 candidate visual 총 44건, static 25/25, local render overflow 0으로 기록했다. V1/V2는 25건씩 기록되었고 semantic V3는 독립 adjudication pending이다.
+
+current v2 draft는 59 run·430문항·오류 0, machine evidence는 860개·validator 0 오류다. source registry candidate는 430 entries지만 exam-title identity mismatch 15건이 있어 authority pending이다. 현재 full-scope 남은 candidate visual은 335건이며, 전체 430 solution freeze·fresh V1/V2/V3·provider FINAL_AUDIT·render capture/review·registry/production authority가 남아 최종 PASS는 보류한다. 최신 요약은 `78_current_closure_snapshot_r11.json`이다.
+
+## r11 deterministic V3 closure
+
+25건 deterministic batch가 V1 25/25, V2 25/25, V3 25/25·FAIL 0, SVG static 25/25, local desktop/mobile overflow 0으로 닫혔다. 최신 상태는 `80_current_closure_snapshot_r11_v3_closed.json`이며, 이는 430 전체가 아닌 row-level candidate evidence다. 나머지 405 expected facts·335 candidate visual·full solution freeze·provider FINAL_AUDIT·browser render/review·registry authority는 계속 열린 상태다.

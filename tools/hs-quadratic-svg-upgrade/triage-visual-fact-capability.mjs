@@ -6,14 +6,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908');
 const INVENTORY = path.join(REPORT, '01_target_inventory.csv');
-const OUTPUT = path.join(REPORT, '35_visual_fact_capability_triage.json');
-const HOLD_UIDS = new Set([
-  'archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_c|13',
-  'archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_c|17',
-  'archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js|26_매산여고_1학기_중간_고1_기출_c|19',
-  'archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js|26_팔마고_1학기_중간_고1_기출_c|9',
-  'archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js|26_팔마고_1학기_중간_고1_기출_c|15',
-]);
+const OUTPUT = path.join(REPORT, '66_visual_fact_capability_triage_r10.json');
 
 function parseCsv(text) {
   const rows = []; let row = []; let cell = ''; let quoted = false;
@@ -25,7 +18,6 @@ function loadBank(relative) { const context = { window: {} }; vm.createContext(c
 function normalizeText(value) { return String(value || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim(); }
 function capability(row, q) {
   if (row.visualDecision === 'NO_VISUAL') return { visualType: 'none', capability: 'NOT_APPLICABLE', reason: 'NO_VISUAL_DECISION_CANDIDATE' };
-  if (HOLD_UIDS.has(row.questionUid)) return { visualType: 'blocked', capability: 'SOURCE_HOLD', reason: 'CORRECTNESS_AFFECTING_SOURCE_HOLD' };
   const text = normalizeText(`${q.content || ''} ${q.choices || ''}`);
   const inequality = row.standardUnitKey === 'H15-SA-08' || row.standardUnitKey === 'H22-C-06';
   if (inequality) {
