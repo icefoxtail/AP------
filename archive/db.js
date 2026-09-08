@@ -14082,6 +14082,29 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학(하)"
+    },
+    {
+      "file": "original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+      "school": "순천여고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학(하)",
+      "contentType": "기출",
+      "qCount": 15,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {"standardCourse":"수학(상)","courseCode":"H15-SA","rangeStartUnitKey":"H15-SA-01","rangeStartUnit":"다항식의 연산","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SA-12","rangeEndUnit":"도형의 이동","rangeEndUnitOrder":12},
+        {"standardCourse":"수학(하)","courseCode":"H15-SB","rangeStartUnitKey":"H15-SB-01","rangeStartUnit":"집합","rangeStartUnitOrder":1,"rangeEndUnitKey":"H15-SB-07","rangeEndUnit":"순열","rangeEndUnitOrder":7}
+      ],
+      "primaryStandardCourse": ""
     }
   ]
 };
