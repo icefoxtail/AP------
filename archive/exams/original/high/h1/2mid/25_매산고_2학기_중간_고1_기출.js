@@ -138,7 +138,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q04-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 4의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -276,7 +275,6 @@ window.questionBank = [
     "solution": "[키포인트]\n각 이동을 차례로 적용한 뒤, 원의 넓이를 이등분하는 직선은 원의 중심을 지난다는 사실을 이용한다.\n\n직선 $(a-2)x-2y-10=0$을 $x$축에 대하여 대칭이동하면\n$(a-2)x+2y-10=0$이다.\n이를 $y$축 방향으로 $3$만큼 평행이동하면\n$(a-2)x+2(y-3)-10=0$, 즉 $(a-2)x+2y-16=0$이다.\n다시 직선 $y=x$에 대하여 대칭이동하면 $x$와 $y$를 서로 바꾸어\n$2x+(a-2)y-16=0$이다.\n이 직선이 원의 넓이를 이등분하므로 원의 중심 $(2,-2)$를 지난다.\n따라서 $2\\times2+(a-2)(-2)-16=0$이다.\n정리하면 $-2a-8=0$이므로 $a=-4$이다.\n\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q08-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 8의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -314,7 +312,6 @@ window.questionBank = [
     "solution": "[키포인트]\n수직인 두 직선의 기울기 관계로 $a$를 구한 뒤 내분점의 좌표를 이용한다.\n\n직선 $y=2x+k$의 기울기가 $2$이므로 선분 $AB$의 기울기는 $-\\dfrac12$이다.\n따라서 $\\dfrac{a-3}{6-(-2)}=-\\dfrac12$이므로 $a-3=-4$, $a=-1$이다.\n선분 $AB$를 $1:3$으로 내분하는 점을 $P$라 하면\n$P=\\left(\\dfrac{3(-2)+1\\cdot6}{4},\\dfrac{3\\cdot3+1\\cdot(-1)}4\\right)=(0,2)$이다.\n점 $(0,2)$가 $y=2x+k$ 위에 있으므로 $k=2$이다.\n따라서 $a+k=-1+2=1$이다.\n\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q09-solution.svg",
     "solutionImageAlt": "평면좌표 문항 9의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -417,7 +414,6 @@ window.questionBank = [
     "solution": "[키포인트]\n점 $B$를 직선 $y=x$에 대하여 대칭이동하여 꺾인 거리의 최솟값을 두 점 사이의 직선거리로 바꾼다.\n\n점 $A(-5,-3)$을 $x$축에 대하여 대칭이동하면 $B(-5,3)$이다.\n점 $B$를 $y$축 방향으로 $-2$만큼 평행이동하면 $C(-5,1)$이다.\n점 $B$를 직선 $y=x$에 대하여 대칭이동한 점을 $B'$라 하면 $B'(3,-5)$이다.\n점 $P$가 직선 $y=x$ 위에 있으므로 $BP=B'P$이다.\n따라서 $BP+CP=B'P+CP$이고, 그 최솟값은 $B'C$이다.\n$B'C=\\sqrt{(-5-3)^2+(1+5)^2}=\\sqrt{64+36}=10$이다.\n\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q12-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 12의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",

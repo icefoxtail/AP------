@@ -359,7 +359,6 @@ window.questionBank = [
     "solution": "[키포인트] 합집합의 원소 합은 두 집합의 원소 합에서 교집합의 원소 합을 한 번 빼서 구한다.\\n조건 정리: $A$의 원소 합은 $21$, $A\\cap B=\\{4,6\\}$의 원소 합은 $10$, $A\\cup B$의 원소 합은 $40$이다.\\n풀이 방향: 원소 합에 대한 포함배제 관계를 사용한다.\\n정석 풀이: $S(A\\cup B)=S(A)+S(B)-S(A\\cap B)$이므로 $40=21+S(B)-10$이다. 따라서 $S(B)=29$이다.\\n따라서 정답은 ③이다.\\n\\n[학생용 보강]\\nB={x+k|x∈A}는 A를 수직선에서 k만큼 옮긴 집합이다. A∩B={4,6}은 겹치는 원소를 직접 대조하게 하고, 합집합의 원소합은 합A+합B-합교집합으로 계산한다.",
     "solutionImage": "assets/images/21_팔마고_2학기_중간_고1_기출/q10-solution.svg",
     "solutionImageAlt": "집합 해설 보강 그림, 문항 10: 식 정리와 결론을 연결",
-    "solutionImageCaption": "식 정리와 결론을 연결",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-01-SET_OPERATION",
     "subUnit": "집합의 연산",
