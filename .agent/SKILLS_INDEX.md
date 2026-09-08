@@ -26,6 +26,7 @@ reviewed and changed in the active Git branch. The inventory is maintained in
 tools/skills/manifest.json; verify the current worktree before starting a
 skill-dependent task:
 
+    git fetch origin main
     node tools/skills/verify-skills.mjs
 
 Do not treat a host-global skill installation as the source of truth for this

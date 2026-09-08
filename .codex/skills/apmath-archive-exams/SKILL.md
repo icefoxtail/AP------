@@ -1,13 +1,14 @@
 ---
 name: apmath-archive-exams
-description: Archive classified Korean math exam scans into the APMath JavaScript archive with full-page-first extraction, staged candidate/production validation, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA. Use for original exam imports, generated-candidate review, promotion, or archive integrity audits; use the similar-question skill for generating variants.
+description: Archive classified Korean math exam scans and audit, correct, or upgrade existing APMath JavaScript archive exams with full-page-first extraction, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA; use the similar-question skill for generating variants.
 ---
 
 # APMath exam archiving
 
-Import original Korean math exam scans into the repository archive and do not
-declare a final pass until source fidelity, metadata, assets, DB/index parity,
-and real browser rendering are evidenced.
+Import original Korean math exam scans, or audit, correct, and upgrade existing
+Archive JS answers, solutions, metadata, assets, DB/index records, and render
+evidence. Do not declare a final pass until source fidelity, metadata, assets,
+DB/index parity, and real browser rendering are evidenced.
 
 ## Scope and routing
 
