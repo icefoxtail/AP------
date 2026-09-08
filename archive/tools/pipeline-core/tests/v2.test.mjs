@@ -195,8 +195,61 @@ test('audit-v2 closes metadata-only revision one and reuses an unchanged SOURCE 
   const r1Machine = f.attachMachines(r1);
   const r1FreezeRef = f.write('runs/r1-freeze.json', r1);
   initWorkBatch(f.root, { workBatchId: 'job', runIds: [f.runId], builderId: r1.builderId, builderSessionId: r1.builderSessionId });
-  freezeWorkBatch(f.root, 'job', [r1FreezeRef]);
-  reserveWorkBatchReview(f.root, 'job', request);
+  const frozen = freezeWorkBatch(f.root, 'job', [r1FreezeRef]);
+  const freeze = frozen.freezes.at(-1);
+  const preflightBody = {
+    schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1',
+    operation: 'PREPARE_STATELESS_FINAL_AUDIT',
+    workBatchId: 'job',
+    purpose: 'FINAL_AUDIT',
+    launchId: 'job:1',
+    freezeSha: freeze.freezeSha,
+    scope: freeze.targets,
+    builderId: r1.builderId,
+    builderSessionId: r1.builderSessionId,
+    requiredCapabilities: { contexts: ['U1', 'U2', 'U3'], contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, automaticRetry: false, recursiveSubagents: false },
+  };
+  const preflightRequest = { ...preflightBody, requestSha: hash(preflightBody) };
+  const preflightResponse = {
+    schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1',
+    operation: 'PREPARE_STATELESS_FINAL_AUDIT',
+    status: 'READY',
+    requestSha: preflightRequest.requestSha,
+    provider: 'synthetic-provider',
+    model: 'synthetic-model',
+    externalTaskId: 'provider-r1',
+    auditorId: request.auditorId,
+    auditorSessionId: request.auditorSessionId,
+    contextIsolation: 'STATELESS_INPUTS',
+    subagentToolsEnabled: false,
+    modelInvocationCount: 0,
+    runtimeAttestation: 'synthetic-runtime-attestation',
+    contexts: request.contexts,
+  };
+  const providerPlan = {
+    schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1',
+    kind: 'PROVIDER_STATELESS_REVIEW_PLAN',
+    workBatchId: 'job',
+    purpose: 'FINAL_AUDIT',
+    launchId: 'job:1',
+    freezeSha: freeze.freezeSha,
+    scope: freeze.targets,
+    builderId: r1.builderId,
+    builderSessionId: r1.builderSessionId,
+    provider: preflightResponse.provider,
+    model: preflightResponse.model,
+    externalId: preflightResponse.externalTaskId,
+    auditorId: preflightResponse.auditorId,
+    auditorSessionId: preflightResponse.auditorSessionId,
+    contexts: request.contexts,
+    contextIsolation: 'STATELESS_INPUTS',
+    subagentToolsEnabled: false,
+    preflightRequest,
+    preflightResponse,
+    preflightResponseSha: hash(preflightResponse),
+  };
+  const providerPlanRef = f.write('alive/runtime/provider-bridge/job/preflight.json', providerPlan);
+  reserveWorkBatchReview(f.root, 'job', { ...request, providerAttestationPlanRef: providerPlanRef });
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-r1', status: 'DISPATCHED' });
   const packet = buildAuditorPacket({ phase: 'U1', questionUid: f.questionUid, payload: { questionUid: f.questionUid, content: f.sourceQuestion.content, choices: f.sourceQuestion.choices }, affectedUidSet: [f.questionUid], auditorId: request.auditorId, auditorSessionId: request.contexts.U1.sessionId, builderId: r1.builderId, builderSessionId: r1.builderSessionId, auditorPrincipalType: 'STATELESS_MODEL', contextId: request.contexts.U1.contextId, inputVisibilityProfile: 'SOURCE_ONLY', priorReviewVisibility: 'NONE', sealed: true, launchId: 'job:1', externalTaskId: 'provider-r1' });
   const packetRef = f.write('packets/source-r1.json', packet);
@@ -212,7 +265,7 @@ test('audit-v2 closes metadata-only revision one and reuses an unchanged SOURCE 
   r1.buildWorkLedgerRefs = [f.write('ledger/r1.json', ledger)];
   const r1Closure = f.close(r1, r1Rows);
   const r1Ref = f.write('runs/r1.json', r1);
-  const terminalRef = f.write('receipts/r1.json', { launchId: 'job:1', externalId: 'provider-r1', status: 'COMPLETED', usedTokens: null, independentAgentLaunchCount: 1, expensiveAgentLaunchCount: 1, concurrentExpensiveAgentPeak: 1, recursiveSubagentLaunchCount: 0, evidenceRefs: r1.evidence, defects: [] });
+  const terminalRef = f.write('receipts/r1.json', { launchId: 'job:1', externalId: 'provider-r1', providerPlanRef, status: 'COMPLETED', usedTokens: null, independentAgentLaunchCount: 1, expensiveAgentLaunchCount: 1, concurrentExpensiveAgentPeak: 1, recursiveSubagentLaunchCount: 0, evidenceRefs: r1.evidence, defects: [] });
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-r1', status: 'COMPLETED', providerReceiptRef: terminalRef });
   const r1Audit = auditV2Run(f.root, r1);
   assert.equal(r1Closure.status, 'PASS');

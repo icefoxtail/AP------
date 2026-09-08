@@ -69,3 +69,12 @@
 6. 사용자 검수 완료 후에만 main merge한다.
 
 현재 main merge 명령은 실행하지 않는다. 기존 candidate·freeze·render 작업은 재실행하지 말고 A/B closure부터 이어간다.
+
+## 2026-09-08 continuation update
+
+- This handoff was resumed from `origin/fix/solution-caption-cleanup` at `b62402ca`.
+- The branch named in the original handoff (`codex/review-h2-s1-algebra-20260908`) is not currently present in the remote refs.
+- B closure is complete: the metadata reuse fixture now binds a synthetic provider attestation plan to the reservation, launch, freeze/context snapshot, and terminal receipt.
+- A closure route is now available in `archive/tools/pipeline-core`: typed `function-family` facts accept bounded polynomial/rational/radical/absolute/exponential/logarithmic/trigonometric branches, with explicit domain/pole rejection and deterministic Python candidate generation.
+- Verification: pipeline-core `130/130` tests PASS with the bundled Python runtime; no production archive asset, main merge, or deploy was performed.
+- The H2 S1 target remains `NOT_SEALED` until the 459-target run has current canonical V1/V2/V3 and render evidence generated through this route.

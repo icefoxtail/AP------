@@ -35,9 +35,28 @@ def _validate(fact: dict) -> dict:
 
 
 def polynomial_value(expression: str, x: float) -> float:
-    tree = ast.parse(expression, mode="eval")
+    """Evaluate the bounded expression grammar shared with expression.mjs.
+
+    The public name is retained for existing callers, but the specialist
+    function-family route also needs the explicitly whitelisted exp/log/trig
+    primitives.  No attributes, subscripts, arbitrary calls or user globals
+    are accepted.
+    """
+    tree = ast.parse(expression.replace("^", "**"), mode="eval")
     if sum(1 for _ in ast.walk(tree)) > 100:
         raise ValueError("FORMULA_TOO_COMPLEX")
+
+    functions = {
+        "sqrt": math.sqrt,
+        "abs": abs,
+        "exp": math.exp,
+        "ln": math.log,
+        "log": math.log10,
+        "log10": math.log10,
+        "sin": math.sin,
+        "cos": math.cos,
+        "tan": math.tan,
+    }
 
     def visit(node):
         if isinstance(node, ast.Expression):
@@ -46,6 +65,11 @@ def polynomial_value(expression: str, x: float) -> float:
             return x
         if isinstance(node, ast.Constant) and type(node.value) in (int, float) and math.isfinite(node.value):
             return node.value
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id in functions and len(node.args) == 1 and not node.keywords:
+            try:
+                return functions[node.func.id](visit(node.args[0]))
+            except (ValueError, OverflowError, ZeroDivisionError) as error:
+                raise ValueError("FUNCTION_DOMAIN_OR_RANGE") from error
         if isinstance(node, ast.UnaryOp) and isinstance(node.op, (ast.UAdd, ast.USub)):
             return visit(node.operand) * (-1 if isinstance(node.op, ast.USub) else 1)
         if isinstance(node, ast.BinOp):
@@ -56,8 +80,13 @@ def polynomial_value(expression: str, x: float) -> float:
                 return left - right
             if isinstance(node.op, ast.Mult):
                 return left * right
-            if isinstance(node.op, ast.Pow) and isinstance(node.right, ast.Constant) and type(node.right.value) is int and 0 <= node.right.value <= 12:
-                return left ** right
+            if isinstance(node.op, ast.Pow):
+                if abs(right) > 64 or (left < 0 and not right.is_integer()) or (left == 0 and right < 0):
+                    raise ValueError("POWER_DOMAIN_UNCERTAIN")
+                try:
+                    return left ** right
+                except (ValueError, OverflowError, ZeroDivisionError) as error:
+                    raise ValueError("POWER_DOMAIN_UNCERTAIN") from error
             if isinstance(node.op, ast.Div) and isinstance(node.right, ast.Constant) and right:
                 return left / right
         raise ValueError("UNSUPPORTED_FORMULA_REQUIRES_REGISTERED_GENERATOR")
@@ -224,7 +253,7 @@ def generate(fact: dict) -> tuple[str, dict]:
                 else:
                     circle(x, y, 4, fill='#111' if closed else '#fff'); text(x, y + 28, value)
         text(335, height - 12, s["variable"])
-    elif kind == "cartesian":
+    elif kind in ("cartesian", "function-family"):
         legend_offset = max(0, len(s['branches'])-1)*44
         height = 390 + legend_offset
         X = lambda x: 38 + (x - s["xMin"]) * 284 / (s["xMax"] - s["xMin"])
@@ -329,7 +358,7 @@ def generate(fact: dict) -> tuple[str, dict]:
     else:
         raise ValueError("UNSUPPORTED_VISUAL_TYPE")
 
-    title = {"set-regions": "집합 영역", "set-inclusion": "집합 포함 관계", "set-cardinality": "교집합의 최대와 최소", "case-table": "경우별 검산", "number-line": "해집합", "cartesian": "좌표 그래프", "geometry": "도형의 관계", "proof-flow": "증명 흐름", "quantifier-negation": "양화 명제의 부정"}[kind]
+    title = {"set-regions": "집합 영역", "set-inclusion": "집합 포함 관계", "set-cardinality": "교집합의 최대와 최소", "case-table": "경우별 검산", "number-line": "해집합", "cartesian": "좌표 그래프", "function-family": "함수 그래프", "geometry": "도형의 관계", "proof-flow": "증명 흐름", "quantifier-negation": "양화 명제의 부정"}[kind]
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc"><title id="title">{title}</title><desc id="desc">{title}의 문항별 수학 사실을 표시한다.</desc><g font-family="Arial, sans-serif">' + ''.join(elements) + '</g></svg>\n'
     evidence = {"schemaVersion": "APMATH_GENERATOR_WITNESS_v1", "status": "BUILD_SIDE_ONLY", "generator": "pipeline-core/generator.py", "generatorSha": digest(Path(__file__).read_bytes()), "rulePackSha": rule_pack['rulePackSha'], "appliedRuleRefs": rule_pack['refs'], "semanticSha": validation["semanticSha"], "visualSpecSha": validation["specSha"], "artifactSha": digest(svg.encode()), "numericExecution": "PYTHON_EXECUTED", "computedPrimitives": computed, "independentReview": "NOT_TESTED", "render": "NOT_TESTED"}
     return svg, evidence

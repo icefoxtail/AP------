@@ -58,6 +58,7 @@ export function validateVisualFact(fact) {
       if (s.rows.some(row => row.cells.length !== s.columns.length)) errors.push('TABLE_COLUMN_COUNT');
       break;
     case 'cartesian':
+    case 'function-family':
       unique(s.keyPoints, 'keyPoints'); unique(s.branches, 'branches');
       if (s.xMin >= s.xMax || s.yMin >= s.yMax) errors.push('INVALID_DOMAIN');
       if (!s.branches.length && !s.keyPoints.length) errors.push('EMPTY_GRAPH');
@@ -98,7 +99,7 @@ export function semanticProjection(fact) {
     for (const row of semantic.rows) delete row.id;
     semantic.rows.sort((a, b) => canonicalJson(a) < canonicalJson(b) ? -1 : 1);
   }
-  if (fact.visualType === 'cartesian') {
+  if (['cartesian', 'function-family'].includes(fact.visualType)) {
     semantic.branches = semantic.branches.map(({ points, formula, ...branch }) => ({ ...branch, formulaAst: parseExpression(formula), windowLeft: points[0].x, windowRight: points.at(-1).x }));
   }
   if (fact.visualType === 'geometry') {
@@ -130,7 +131,8 @@ export function structureFingerprint(fact) {
     case 'set-cardinality': topology = { panels: ['maximum', 'minimum'], relation: 'extrema' }; break;
     case 'number-line': topology = s.intervals.map(i => [i.left === null, i.right === null, i.leftClosed, i.rightClosed]); break;
     case 'case-table': topology = { columns: s.columns.length, rows: s.rows.map(r => ({ cells: r.cells.length, disposition: r.disposition })) }; break;
-    case 'cartesian': topology = { branches: s.branches.map(b => [b.leftClosed, b.rightClosed]), points: s.keyPoints.length }; break;
+    case 'cartesian':
+    case 'function-family': topology = { branches: s.branches.map(b => [b.leftClosed, b.rightClosed]), points: s.keyPoints.length }; break;
     case 'geometry': topology = { points: s.points.length, circles: s.circles.length, segments: s.segments.length, relations: s.relations.map(r => r.relation).sort() }; break;
   }
   return objectSha({ visualType, topology });

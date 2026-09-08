@@ -1,14 +1,17 @@
-// Bounded arithmetic grammar: no eval, property access, arbitrary calls or names.
+// Bounded expression grammar: no eval, property access, arbitrary calls or names.
+const FUNCTION_NAMES = new Set(['sqrt', 'abs', 'exp', 'ln', 'log', 'log10', 'sin', 'cos', 'tan']);
+const PI = Math.PI;
+
 export function parseExpression(text) {
   if (typeof text !== 'string' || text.length > 500) throw new Error('FORMULA_SCHEMA');
-  const tokens = text.match(/(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?|\*\*|[A-Za-z]+|[()+\-*/^]/g) || [];
+  const tokens = text.match(/(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?|\*\*|[A-Za-z][A-Za-z0-9]*|[()+\-*/^]/g) || [];
   if (tokens.join('') !== text.replace(/\s/g, '') || tokens.length > 100) throw new Error('UNSUPPORTED_FORMULA_TOKEN');
   let at = 0;
   const atom = () => {
     const token = tokens[at++];
     if (token === '(') { const value = add(); if (tokens[at++] !== ')') throw new Error('FORMULA_PAREN'); return value; }
     if (token === 'x') return { op: 'x' };
-    if (['sqrt', 'abs'].includes(token)) {
+    if (FUNCTION_NAMES.has(token)) {
       if (tokens[at++] !== '(') throw new Error('FUNCTION_PAREN'); const value = add(); if (tokens[at++] !== ')') throw new Error('FUNCTION_PAREN'); return { op: token, value };
     }
     if (token !== undefined && Number.isFinite(Number(token)) && Math.abs(Number(token)) <= Number.MAX_SAFE_INTEGER) return { op: 'number', value: Number(token) };
@@ -21,6 +24,28 @@ export function parseExpression(text) {
   const tree = add(); if (at !== tokens.length) throw new Error('FORMULA_TRAILING_TOKEN'); return tree;
 }
 
+function periodicCriticalPoints(low, high, offset, period) {
+  const points = [];
+  for (let k = Math.ceil((low - offset) / period); offset + k * period <= high; k++) points.push(offset + k * period);
+  return points;
+}
+
+function trigonometricInterval(op, low, high) {
+  if (high - low >= 2 * PI) return [-1, 1];
+  const values = [Math[op](low), Math[op](high)];
+  const offset = op === 'sin' ? PI / 2 : 0;
+  for (const point of periodicCriticalPoints(low, high, offset, PI)) values.push(Math[op](point));
+  return [Math.min(...values), Math.max(...values)];
+}
+
+function tangentInterval(low, high) {
+  if (high - low >= PI) throw new Error('POLE_UNCERTAIN');
+  if (periodicCriticalPoints(low, high, PI / 2, PI).length) throw new Error('POLE_UNCERTAIN');
+  const values = [Math.tan(low), Math.tan(high)];
+  if (values.some(value => !Number.isFinite(value))) throw new Error('POLE_UNCERTAIN');
+  return [Math.min(...values), Math.max(...values)];
+}
+
 function interval(tree, low, high) {
   if (tree.op === 'number') return [tree.value, tree.value];
   if (tree.op === 'x') return [low, high];
@@ -30,6 +55,15 @@ function interval(tree, low, high) {
     if (tree.op === 'negative') return [-b, -a];
     if (tree.op === 'sqrt') { if (a < 0) throw new Error('DOMAIN_UNCERTAIN'); return [Math.sqrt(a), Math.sqrt(b)]; }
     if (tree.op === 'abs') return [a <= 0 && b >= 0 ? 0 : Math.min(Math.abs(a), Math.abs(b)), Math.max(Math.abs(a), Math.abs(b))];
+    if (tree.op === 'exp') return [Math.exp(a), Math.exp(b)];
+    if (tree.op === 'ln' || tree.op === 'log' || tree.op === 'log10') {
+      if (a <= 0) throw new Error('DOMAIN_UNCERTAIN');
+      const base10 = tree.op === 'log' || tree.op === 'log10';
+      const fn = base10 ? Math.log10 : Math.log;
+      return [fn(a), fn(b)];
+    }
+    if (tree.op === 'sin' || tree.op === 'cos') return trigonometricInterval(tree.op, a, b);
+    if (tree.op === 'tan') return tangentInterval(a, b);
   }
   const [a, b] = interval(tree.left, low, high), [c, d] = interval(tree.right, low, high);
   if (tree.op === '+') return [a + c, b + d];
@@ -40,10 +74,12 @@ function interval(tree, low, high) {
   }
   if (tree.op === '/') { if (c <= 0 && d >= 0) throw new Error('POLE_UNCERTAIN'); const values = [a/c,a/d,b/c,b/d]; return [Math.min(...values), Math.max(...values)]; }
   if (tree.op === '**') {
-    if (c !== d || Math.abs(c) > 12 || (!Number.isInteger(c) && a < 0) || (c < 0 && a <= 0 && b >= 0)) throw new Error('POWER_DOMAIN_UNCERTAIN');
-    if (c === 0) return [1, 1];
-    const values = [a**c,b**c];
-    if (Number.isInteger(c) && c > 0 && c % 2 === 0 && a <= 0 && b >= 0) values.push(0);
+    if (Math.abs(c) > 12 || (!Number.isInteger(c) && a < 0) || (c < 0 && a <= 0 && b >= 0)) throw new Error('POWER_DOMAIN_UNCERTAIN');
+    if (c !== d && a <= 0) throw new Error('POWER_DOMAIN_UNCERTAIN');
+    if (c === 0 && d === 0) return [1, 1];
+    const values = [a**c, a**d, b**c, b**d];
+    if (c <= 0 && d >= 0 && a <= 1 && b >= 1) values.push(1);
+    if (c === d && Number.isInteger(c) && c > 0 && c % 2 === 0 && a <= 0 && b >= 0) values.push(0);
     return [Math.min(...values), Math.max(...values)];
   }
   throw new Error('UNSUPPORTED_EXPRESSION');

@@ -86,6 +86,14 @@ test('cartesian numeric checks reject a flat curve mislabeled as a parabola and 
   assert.equal(verifyBranch({ formula: '1/x', points: [{ x:-1,y:-1 },{ x:1,y:1 }] }, { yMin:-5,yMax:5 }), false);
   assert.equal(verifyBranch({ formula: 'sqrt(x)', points: [{ x:0,y:0 },{ x:4,y:2 }] }, { yMin:0,yMax:3 }), true);
 });
+test('function-family specialist route validates bounded exp/log/trig facts', () => {
+  const exponential = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'exp-q', visualType: 'function-family', semantic: { family: 'EXPONENTIAL', xMin: 0, xMax: 2, yMin: 0, yMax: 5, branches: [{ id: 'f', formula: '2^x', points: [{ id: 'L', x: 0, y: 1 }, { id: 'R', x: 2, y: 4 }], leftClosed: true, rightClosed: true }], keyPoints: [{ id: 'L', x: 0, y: 1 }] } };
+  const logarithmic = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'log-q', visualType: 'function-family', semantic: { family: 'LOGARITHMIC', xMin: 1, xMax: 10, yMin: -1, yMax: 2, branches: [{ id: 'f', formula: 'log10(x)', points: [{ id: 'L', x: 1, y: 0 }, { id: 'R', x: 10, y: 1 }], leftClosed: true, rightClosed: true }], keyPoints: [] } };
+  const trigonometric = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'trig-q', visualType: 'function-family', semantic: { family: 'TRIGONOMETRIC', xMin: -Math.PI, xMax: Math.PI, yMin: -1.1, yMax: 1.1, branches: [{ id: 'f', formula: 'sin(x)', points: [{ id: 'L', x: -Math.PI, y: 0 }, { id: 'M', x: 0, y: 0 }, { id: 'R', x: Math.PI, y: 0 }], leftClosed: true, rightClosed: true }], keyPoints: [{ id: 'M', x: 0, y: 0 }] } };
+  for (const fact of [exponential, logarithmic, trigonometric]) assert.equal(validateVisualFact(fact).status, 'PASS');
+  assert.equal(semanticSha({ ...exponential, questionUid: 'exp-other-q' }), semanticSha(exponential));
+  assert.equal(verifyBranch({ formula: 'tan(x)', points: [{ id: 'L', x: 0, y: 0 }, { id: 'R', x: Math.PI, y: 0 }] }, { yMin: -5, yMax: 5 }), false);
+});
 test('case storage ids do not create false semantic mismatches', () => {
   const a = { schemaVersion:'APMATH_VISUAL_FACT_v2',questionUid:'q',visualType:'case-table',semantic:{columns:['x'],rows:[{id:'a',cells:['1'],disposition:'KEEP',reason:'조건 만족'}],exhaustivenessReason:'후보는 하나'} };
   const b = structuredClone(a); b.semantic.rows[0].id='row1'; b.semantic.rows[0].reason='조건을 충족한다';

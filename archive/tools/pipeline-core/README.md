@@ -138,7 +138,7 @@ orchestrator's responsibility. No model name itself proves independence.
 
 `visual-contract.json` is authoritative for types/values/collection semantics.
 Families: set-regions, set-inclusion, set-cardinality, number-line, case-table,
-cartesian, geometry, proof-flow and quantifier-negation.
+cartesian, function-family, geometry, proof-flow and quantifier-negation.
 
 Semantic hashes exclude UID/provenance/pixel coordinates. Narrative wording is
 schema-required and reviewed by V3 decisive/completeness gates, not equated with
@@ -147,11 +147,13 @@ Proof order, interval order and table columns/cells remain meaningful.
 `LOGIC_VISUAL_FACT_v1` evidence is historical; no implicit field conversion.
 
 Python computes coordinates, supported circle/segment relations, extrema and
-polynomial samples. The polynomial evaluator allows x, numeric constants,
-+/−/×, bounded integer powers and division by a constant. Arbitrary rational,
-radical or symbolic formulas use the specialist route, not an unsafe fallback.
-General geometric claims still require independent verification. Raw-TeX or
-overlong labels fail rather than being silently shrunk or published.
+polynomial samples. The bounded specialist function-family route accepts only
+the typed `function-family` contract and a restricted expression grammar for
+polynomial, rational, radical, exponential, logarithmic and trigonometric
+branches. Domain uncertainty, poles, unsupported functions and out-of-window
+branches fail closed. General geometric claims still require independent
+verification. Raw-TeX or overlong labels fail rather than being silently
+shrunk or published.
 
 Generator witnesses are BUILD_SIDE_ONLY with generator/rule/spec/fact/asset SHA
 and numeric primitives. They never supply independent or render PASS. Legacy

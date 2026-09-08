@@ -17,11 +17,11 @@ for (const input of generatorFacts) test(`Python deterministic numeric generatio
   assert.equal(witness.independentReview, 'NOT_TESTED');
   assert.match(svg, /preserveAspectRatio/); assert.match(svg, /<title/); assert.match(svg, /<desc/);
   if (input.visualType.startsWith('set-')) assert.match(svg, />U<\/text>/);
-  if (input.visualType === 'cartesian') assert.equal(witness.computedPrimitives.find(p => p.branch).sampleCount, 513);
+  if (['cartesian', 'function-family'].includes(input.visualType)) assert.equal(witness.computedPrimitives.find(p => p.branch).sampleCount, 513);
 });
 test('numeric geometry and graph generators reject false model facts', () => {
-  for (const input of [structuredClone(generatorFacts.find(f => f.visualType === 'cartesian')), structuredClone(generatorFacts.find(f => f.visualType === 'geometry'))]) {
-    if (input.visualType === 'cartesian') input.semantic.branches[0].points[1].y = 2;
+  for (const input of [structuredClone(generatorFacts.find(f => f.visualType === 'cartesian')), structuredClone(generatorFacts.find(f => f.visualType === 'function-family')), structuredClone(generatorFacts.find(f => f.visualType === 'geometry'))]) {
+    if (['cartesian', 'function-family'].includes(input.visualType)) input.semantic.branches[0].points[1].y = 2;
     else input.semantic.points[3].y = 3;
     const result = spawnSync(python, ['-X', 'utf8', '-c', script], { input: JSON.stringify(input), encoding: 'utf8', timeout: 45000 });
     assert.notEqual(result.status, 0); assert.match(result.stderr, /FUNCTION_SAMPLE_MISMATCH|GEOMETRY_RELATION_FALSE|BRANCH_NUMERIC_OR_DOMAIN_VERIFICATION_FAIL/);

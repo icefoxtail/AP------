@@ -185,6 +185,31 @@
   {
     "schemaVersion": "APMATH_VISUAL_FACT_v2",
     "questionUid": "numeric-test",
+    "visualType": "function-family",
+    "semantic": {
+      "family": "EXPONENTIAL",
+      "xMin": 0,
+      "xMax": 2,
+      "yMin": 0,
+      "yMax": 5,
+      "branches": [
+        {
+          "id": "f",
+          "formula": "2^x",
+          "points": [
+            {"id": "L", "x": 0, "y": 1},
+            {"id": "R", "x": 2, "y": 4}
+          ],
+          "leftClosed": true,
+          "rightClosed": true
+        }
+      ],
+      "keyPoints": [{"id": "L", "x": 0, "y": 1}]
+    }
+  },
+  {
+    "schemaVersion": "APMATH_VISUAL_FACT_v2",
+    "questionUid": "numeric-test",
     "visualType": "geometry",
     "semantic": {
       "points": [
