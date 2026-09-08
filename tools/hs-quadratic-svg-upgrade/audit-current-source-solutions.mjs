@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908');
 const INVENTORY = path.join(REPORT, '01_target_inventory.csv');
-const OUTPUT = path.join(REPORT, '10_current_source_solution_static_audit_v2.json');
+const OUTPUT = path.join(REPORT, process.argv[2] || '10_current_source_solution_static_audit_v2.json');
 
 function parseCsv(text) {
   const rows = []; let row = []; let cell = ''; let quoted = false;

@@ -143,6 +143,14 @@ r12 candidate bank validation은 59개 source bank, 1295 bank rows, unique candi
 
 최신 상태는 [r12 V3 closure snapshot](95_current_closure_snapshot_r12_v3_closed.json)이다. current v2 draft는 59 run·430문항·오류 0, machine evidence는 860개·validation 오류 0이다. 전체 target 379건 중 현재 unique candidate visual은 59건이고 320건이 남아 있다. 남은 full solution freeze·387 fresh expected fact·provider FINAL_AUDIT·실제 render capture/review·registry authority는 아직 최종 gate다.
 
+## r12 source correction and solution static audit update (2026-09-08)
+
+사용자가 승인한 source correctness hold 5건을 별도 브랜치 `codex/hs-quadratic-svg-upgrade`에 최소 수정으로 반영했다. 금당고 q13은 요청대로 발문에 `k≠0` 조건을 추가했고, 해설에는 `k=0`일 때 두 그래프가 일치하는 예외와 판별식 항등식을 명시했다. 금당고 q17은 보기 ⑤를 `없다`로 보강하고 answer를 ⑤로 확정했다. 매산여고 q19, 팔마고 q9·q15는 독립 계산값에 맞춰 answer와 해설만 보정했다. 독립 재검산 5/5, source↔candidate parity 5/5이며 변경 파일 3개·문항 5개다.
+
+current source 전체 해설 정적 감사에서는 별도의 기존 잔여 11건이 확인되었으나, 이는 이번 승인된 5건과 다른 항목이므로 source에는 추가 mutation을 하지 않았다. candidate-r12 해설 정적 감사는 59개 source bank·1295개 bank row에서 generic placeholder, stale answer conflict, parabola direction wording residual 0건을 확인했다. 이 정적 결과는 독립 A1/A2 검산과 provider final audit를 대체하지 않는다.
+
+상세 최신 상태는 [r12 source-solution audit snapshot](100_current_closure_snapshot_r12_source_solution_audit.json), [current source audit](98_current_source_solution_static_audit_r12.json), [candidate solution audit](99_candidate_solution_static_audit_r12.json)이다. full 430 solution freeze, 남은 320 candidate visual, 전체 fresh V1/V2/V3, 실제 browser desktop/mobile render capture 및 독립 review, provider-attested FINAL_AUDIT, registry authority는 여전히 열린 gate이므로 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.

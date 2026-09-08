@@ -76,6 +76,12 @@ r12 18건은 V1 18/18, V2 18/18, V3 18/18·FAIL 0, static 18/18, local desktop/m
 
 전체 430 분모 중 fresh expected fact는 아직 387건, candidate visual은 320건이 남아 있다. full solution freeze, provider FINAL_AUDIT, 실제 browser render/review, source registry authority와 production promotion은 미완료라 최종 PASS는 보류한다.
 
+## r12 source correction and solution static audit
+
+사용자 승인 source correctness hold 5건을 별도 브랜치에 최소 수정했다. 금당고 q13에는 요청대로 `k≠0` 조건을 추가했고, q17은 보기 ⑤ `없다` 및 answer ⑤로 보정했다. 매산여고 q19는 ④, 팔마고 q9는 ①, q15는 ③으로 독립 계산과 일치시켰다. 독립 재검산 5/5, source↔candidate parity 5/5다.
+
+current source에는 승인 범위 밖의 기존 해설 정적 잔여 11건이 남아 있으며 별도 승인 전에는 source를 추가 변경하지 않는다. candidate-r12 전체 해설 정적 감사는 59 source banks·1295 rows·issue 0이다. 최신 원장은 `100_current_closure_snapshot_r12_source_solution_audit.json`이며, 이는 candidate 진행 증거일 뿐 final PASS/SEALED가 아니다.
+
 ## r10 current source application update
 
 승인된 5건을 별도 브랜치 source JS에 실제 반영했다. 변경 범위는 3개 파일·5개 문항·승인 필드로 제한되었고, source repair apply validation 오류는 0건이다. source holds는 5→0으로 해소되었다.
