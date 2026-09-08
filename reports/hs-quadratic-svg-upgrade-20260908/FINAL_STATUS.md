@@ -201,6 +201,14 @@ r17 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 
 r17 current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이다. 다만 실제 browser capture 부재로 whole-job freeze와 provider-attested FINAL_AUDIT은 아직 시도하지 않았으므로 최종 `PASS`·`SEALED`는 선언하지 않는다.
 
+## r18 specialist function/inequality batch update (2026-09-08)
+
+r18은 남은 specialist 대상 18건을 source-only expected fact → 독립 재검산 → candidate SVG → artifact-only V2 → V3 parity → desktop/mobile local render 순서로 처리했다. 수직선 4건과 함수 그래프 14건으로 구성했으며, V1 18/18, 독립 검산 18/18 mismatch 0, candidate solution freeze 18/18, static 18/18, V2 18/18, V3 18/18(FAIL 0), local desktop/mobile render 18/18 및 overflow 0이다. 26 순천여고 q17은 주사위 조건을 재검산해 순서쌍 30개로 수정했고, q22는 가능한 자연수 `n=4,5,6,7`로 확정했다.
+
+r18 candidate bank validation은 59 source bank·1295 row·unique candidate visual 167건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 167건이 현재 candidate이고 212건이 남아 있다. 최신 상태는 [r18 V3 closure snapshot](203_current_closure_snapshot_r18_v3_closed.json)이다.
+
+r18 current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이다. 원격 continuation을 위해 현재 bank가 참조하는 SVG 167개와 r18 full/scoped bank·pipeline evidence·render evidence를 package해 branch에 push한다. 전체 final PASS는 계속 금지한다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.
