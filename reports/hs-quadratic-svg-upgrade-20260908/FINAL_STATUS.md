@@ -159,6 +159,14 @@ r13 candidate bank는 59 source bank·1295 row·unique candidate visual 77건·s
 
 r13도 local/provider 한계를 넘겨 final PASS로 승격하지 않는다. current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이지만 whole-job freeze는 실제 render capture 부재로 시도하지 않았다. provider-attested FINAL_AUDIT, 전체 430 solution freeze 및 fresh V1/V2/V3, 실제 browser render review, 15개 registry identity authority, production promotion은 계속 열린 gate다.
 
+## r14 specialist mixed function/number-line batch update (2026-09-08)
+
+r14는 남은 specialist 대상 18건을 source-only expected fact → 독립 재검산 → candidate SVG → artifact-only V2 → V3 parity → desktop/mobile local render 순서로 처리했다. 수직선 13건과 함수 그래프 5건으로 구성했으며, V1 18/18, 독립 검산 18/18 mismatch 0, candidate solution freeze 18/18, static 18/18, V2 18/18, V3 18/18(FAIL 0), local desktop/mobile render 18/18 및 overflow 0이다. `4/3`, `17/3` 등 exact endpoint label을 유지하고 큰 범위에는 adaptive tick spacing을 적용했다.
+
+r14 candidate bank validation은 59 source bank·1295 row·unique candidate visual 95건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 95건이 현재 candidate이고 284건이 남아 있다. 최신 상태는 [r14 V3 closure snapshot](133_current_closure_snapshot_r14_v3_closed.json)이다.
+
+r14 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current v2 preparation은 59 run·430/430·오류 0, machine evidence는 860개·validation 오류 0이지만 실제 browser capture 부재로 whole-job freeze는 시도하지 않았다. 전체 430 solution freeze·남은 fresh V1/V2/V3·provider-attested FINAL_AUDIT·실제 render review·registry authority·production promotion은 계속 열린 gate다.
+
 ## r11 full-denominator progress update (2026-09-08)
 
 clean candidate-r10/r11을 재구성해 과거 상속 비검토 `solutionImage` 250건을 제거하고, 명시된 candidate visual만 유지했다. 현재 전체 bank는 59개 파일·1295 bank row이며, target scoped candidate는 정확히 430문항이다. 명시적 candidate visual은 기존 19건에 r11 신규 25건을 더해 44건이다.

@@ -139,9 +139,9 @@ def number_line(case_id: str, fact: dict, title: str) -> str:
     if "solutionIntervals" in fact: intervals = [dict(interval) for interval in fact["solutionIntervals"]]
     elif "realIntervals" in fact: intervals = [{"left": a, "right": b, "leftClosed": lc, "rightClosed": rc, "_leftLabel": fmt(a), "_rightLabel": fmt(b)} for a,b,lc,rc in fact["realIntervals"]]
     elif "realInterval" in fact:
-        a, b = fact["realInterval"]; intervals = [{"left": a, "right": b, "leftClosed": fact.get("leftClosed", False), "rightClosed": fact.get("rightClosed", False), "_leftLabel": fmt(a), "_rightLabel": fmt(b)}]
+        a, b = fact["realInterval"]; intervals = [{"left": a, "right": b, "leftClosed": fact.get("leftClosed", False), "rightClosed": fact.get("rightClosed", False), "_leftLabel": fact.get("leftLabel", fmt(a)), "_rightLabel": fact.get("rightLabel", fmt(b))}]
     elif "solutionInterval" in fact:
-        a,b = fact["solutionInterval"]; intervals = [{"left": a, "right": b, "leftClosed": fact.get("leftClosed", False), "rightClosed": fact.get("rightClosed", False), "_leftLabel": "−∞" if a is None else str(a) if isinstance(a, str) else fmt(a), "_rightLabel": "∞" if b is None else str(b) if isinstance(b, str) else fmt(b)}]
+        a,b = fact["solutionInterval"]; intervals = [{"left": a, "right": b, "leftClosed": fact.get("leftClosed", False), "rightClosed": fact.get("rightClosed", False), "_leftLabel": fact.get("leftLabel", "−∞" if a is None else str(a) if isinstance(a, str) else fmt(a)), "_rightLabel": fact.get("rightLabel", "∞" if b is None else str(b) if isinstance(b, str) else fmt(b))}]
         if fact.get("numericBounds"):
             intervals[0]["left"], intervals[0]["right"] = fact["numericBounds"]
     for interval in intervals:
