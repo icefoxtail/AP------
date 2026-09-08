@@ -43,6 +43,10 @@ def cartesian(case_id: str, fact: dict, title: str) -> str:
     x_low, x_high = domain[0], domain[1]
     if isinstance(x_low, str): x_low = -6
     if isinstance(x_high, str): x_high = 6
+    if fact.get("vertex") and all(isinstance(value, (int, float)) for value in fact["vertex"]):
+        vertex_x = fact["vertex"][0]
+        x_low = min(x_low, vertex_x - 1)
+        x_high = max(x_high, vertex_x + 1)
     if "tangentPoint" in fact and isinstance(fact.get("tangentPoint", [None])[0], str):
         x_low, x_high = -2, 6
     y_values = []
@@ -96,8 +100,8 @@ def cartesian(case_id: str, fact: dict, title: str) -> str:
         body.append(f'<circle cx="{fmt(tx(x))}" cy="{fmt(ty(y))}" r="4" class="point"/><text x="{fmt(tx(x)+8)}" y="{fmt(ty(y)-8)}" class="label">{esc(point_label)}</text>')
     body.append(f'<text x="{margin}" y="28" class="annotation">{esc(title)}</text>')
     summary = []
-    labels = {"maximum": "최댓값", "result": "결과", "slopeSum": "기울기 합", "parameterA": "매개변수 a"}
-    for key in ["maximum", "result", "slopeSum", "parameterA"]:
+    labels = {"maximum": "최댓값", "minimum": "최솟값", "result": "결과", "sum": "합", "slopeSum": "기울기 합", "parameterA": "매개변수 a", "rootProduct": "근의 곱", "discriminant": "판별식"}
+    for key in ["maximum", "minimum", "result", "sum", "slopeSum", "parameterA", "rootProduct", "discriminant"]:
         if key in fact: summary.append(f"{labels[key]}={fact[key]}")
     if summary:
         panel_y = height - 120
@@ -148,6 +152,7 @@ def number_line(case_id: str, fact: dict, title: str) -> str:
     for key in ["alphaMinusBeta", "result", "sum", "count", "width", "negativeIntegerMaximum", "maximum"]:
         if key in fact: labels.append(f"{display_labels[key]}={fact[key]}")
     if fact.get("integerSolutions"): labels.append("정수해=" + ",".join(str(x) for x in fact["integerSolutions"]))
+    if fact.get("exact"): labels.append(str(fact["exact"]))
     body.append(f'<text x="70" y="55" class="annotation">{esc(title)}</text>')
     if labels: body.append(f'<rect x="70" y="215" width="580" height="65" rx="8" class="box"/><text x="88" y="248" class="panel">{esc(" · ".join(labels))}</text>')
     return shell(case_id, fact, title, width, height, body)

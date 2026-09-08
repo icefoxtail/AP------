@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import json
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT = ROOT / "reports" / "hs-quadratic-svg-upgrade-20260908"
-MANIFEST = REPORT / "69_deterministic_candidate_visual_manifest_r11.json"
-OUTPUT = REPORT / "73_deterministic_v2_artifact_only_r11.json"
+MANIFEST = REPORT / (sys.argv[1] if len(sys.argv) > 1 else "69_deterministic_candidate_visual_manifest_r11.json")
+OUTPUT = REPORT / (sys.argv[2] if len(sys.argv) > 2 else "73_deterministic_v2_artifact_only_r11.json")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
 manifest = json.loads(MANIFEST.read_text(encoding="utf-8")); rows = []
@@ -19,7 +20,7 @@ for item in manifest["rows"]:
         "caseId": item["caseId"],
         "assetPath": item["assetPath"],
         "artifactFactHash": root.attrib.get("data-fact-hash"),
-        "artifactVisualType": "number-line" if "부등식 해집합 수직선" in text else "cartesian",
+        "artifactVisualType": "number-line" if "부등식 해집합 수직선" in text or "음수 p 후보" in text else "case-table" if "조건별 판정" in text else "cartesian",
         "observedText": text,
         "observedElements": {
             "svgTitlePresent": root.find(f"{SVG_NS}title") is not None,

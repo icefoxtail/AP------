@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT = ROOT / "reports" / "hs-quadratic-svg-upgrade-20260908"
-MANIFEST = REPORT / "69_deterministic_candidate_visual_manifest_r11.json"
-OUTPUT = REPORT / "71_deterministic_candidate_visual_static_check_r11.json"
+MANIFEST = REPORT / (sys.argv[1] if len(sys.argv) > 1 else "69_deterministic_candidate_visual_manifest_r11.json")
+OUTPUT = REPORT / (sys.argv[2] if len(sys.argv) > 2 else "71_deterministic_candidate_visual_static_check_r11.json")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
 manifest = json.loads(MANIFEST.read_text(encoding="utf-8")); rows = []; errors = []

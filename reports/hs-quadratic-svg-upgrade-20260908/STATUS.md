@@ -70,6 +70,12 @@
 
 최종 봉인은 아니다. provider-attested FINAL_AUDIT, source registry authority, 전체 430문항 current V1/V2/V3, current render capture 및 독립 render-review가 남아 있으므로 상태는 `CANDIDATE_ONLY / FINAL_PASS_FORBIDDEN`이다.
 
+## r12 specialist batch
+
+r12 18건은 V1 18/18, V2 18/18, V3 18/18·FAIL 0, static 18/18, local desktop/mobile overflow 0으로 닫혔다. candidate bank는 unique visual 59건·오류 0이며, 기존 후보와 겹친 3건은 supersede 처리했다. 최신 요약은 `95_current_closure_snapshot_r12_v3_closed.json`이다.
+
+전체 430 분모 중 fresh expected fact는 아직 387건, candidate visual은 320건이 남아 있다. full solution freeze, provider FINAL_AUDIT, 실제 browser render/review, source registry authority와 production promotion은 미완료라 최종 PASS는 보류한다.
+
 ## r10 current source application update
 
 승인된 5건을 별도 브랜치 source JS에 실제 반영했다. 변경 범위는 3개 파일·5개 문항·승인 필드로 제한되었고, source repair apply validation 오류는 0건이다. source holds는 5→0으로 해소되었다.
