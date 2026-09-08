@@ -11,7 +11,7 @@ const DEFAULT_MANIFEST = path.join(DEFAULT_ROOT, 'tools', 'skills', 'manifest.js
 const ALLOWED_STATUSES = new Set(['active', 'deprecated', 'experimental']);
 
 function parseArgs(argv) {
-  const args = { root: DEFAULT_ROOT, manifest: null, json: false, help: false };
+  const args = { root: DEFAULT_ROOT, manifest: null, upstream: null, json: false, help: false };
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === '--json') {
@@ -22,7 +22,7 @@ function parseArgs(argv) {
       args.help = true;
       continue;
     }
-    if (arg === '--root' || arg === '--manifest') {
+    if (arg === '--root' || arg === '--manifest' || arg === '--upstream') {
       const value = argv[index + 1];
       if (!value || value.startsWith('--')) throw new Error(arg + ' requires a value');
       args[arg.slice(2)] = value;
@@ -43,6 +43,7 @@ function printHelp() {
     'Options:',
     "  --root <path>      Repository root; defaults to this script's repository",
     '  --manifest <path>  Manifest path relative to the repository root',
+    '  --upstream <ref>   Upstream ref; defaults to manifest upstream or origin/main',
     '  --json             Emit a machine-readable report',
     '  --help             Show this help'
   ].join('\n'));
@@ -59,6 +60,60 @@ function runGit(root, args) {
     status: result.status,
     stdout: result.stdout || '',
     stderr: result.stderr || ''
+  };
+}
+
+function parseAheadBehind(text) {
+  const values = text.trim().split(/\s+/);
+  if (values.length !== 2 || !values.every(value => /^\d+$/.test(value))) return null;
+  return { ahead: Number(values[0]), behind: Number(values[1]) };
+}
+
+function verifyUpstream(root, branch, commit, upstreamRef, errors) {
+  if (typeof upstreamRef !== 'string' || !upstreamRef.trim()) {
+    errors.push('upstream ref must be a non-empty Git ref');
+    return null;
+  }
+  const ref = upstreamRef.trim();
+  const upstreamResult = runGit(root, ['rev-parse', '--verify', '--quiet', ref + '^{commit}']);
+  if (!upstreamResult.ok) {
+    errors.push('upstream ref is unavailable: ' + ref + ' (run git fetch origin main)');
+    return { ref, commit: null, ahead: null, behind: null, status: 'MISSING' };
+  }
+  const upstreamCommit = upstreamResult.stdout.trim();
+  const comparison = runGit(root, ['rev-list', '--left-right', '--count', commit + '...' + ref]);
+  const aheadBehind = comparison.ok ? parseAheadBehind(comparison.stdout) : null;
+  if (!aheadBehind) {
+    errors.push('could not compare HEAD with upstream ref: ' + ref);
+    return { ref, commit: upstreamCommit, ahead: null, behind: null, status: 'UNKNOWN' };
+  }
+
+  let contains = null;
+  if (branch === 'main') {
+    if (aheadBehind.ahead !== 0 || aheadBehind.behind !== 0) {
+      errors.push(
+        'main is not synchronized with ' + ref +
+        ' (ahead=' + aheadBehind.ahead + ', behind=' + aheadBehind.behind + ')'
+      );
+    }
+  } else {
+    contains = runGit(root, ['merge-base', '--is-ancestor', ref, commit]);
+    if (!contains.ok) {
+      errors.push(
+        'branch does not contain the latest ' + ref +
+        ' (ahead=' + aheadBehind.ahead + ', behind=' + aheadBehind.behind + ')'
+      );
+    }
+  }
+  return {
+    ref,
+    commit: upstreamCommit,
+    ahead: aheadBehind.ahead,
+    behind: aheadBehind.behind,
+    status: (branch === 'main' && (aheadBehind.ahead !== 0 || aheadBehind.behind !== 0)) ||
+      (branch !== 'main' && !contains?.ok)
+      ? 'FAIL'
+      : 'PASS'
   };
 }
 
@@ -180,7 +235,7 @@ function isGeneratedCache(repoPath) {
     normalized.endsWith('.pyc');
 }
 
-function verify(root, manifestPath) {
+function verify(root, manifestPath, requestedUpstream) {
   const errors = [];
   const warnings = [];
   const gitRootResult = runGit(root, ['rev-parse', '--show-toplevel']);
@@ -190,6 +245,7 @@ function verify(root, manifestPath) {
       root,
       branch: null,
       commit: null,
+      upstream: null,
       manifest: manifestPath,
       skillCount: 0,
       skills: [],
@@ -211,11 +267,14 @@ function verify(root, manifestPath) {
     manifest = readJson(manifestPath, 'skill manifest');
   } catch (error) {
     errors.push(error.message);
-    return { status: 'FAIL', root: gitRoot, branch, commit, manifest: manifestPath, skillCount: 0, skills: [], errors, warnings };
+    return { status: 'FAIL', root: gitRoot, branch, commit, upstream: null, manifest: manifestPath, skillCount: 0, skills: [], errors, warnings };
   }
 
   if (manifest.schemaVersion !== 1) errors.push('skill manifest schemaVersion must be 1');
   if (manifest.source !== 'repository') errors.push('skill manifest source must be "repository"');
+  if (manifest.upstream !== undefined && typeof manifest.upstream !== 'string') errors.push('skill manifest upstream must be a Git ref string');
+  const upstreamRef = requestedUpstream || manifest.upstream || 'origin/main';
+  const upstream = verifyUpstream(gitRoot, branch, commit, upstreamRef, errors);
   if (!Array.isArray(manifest.canonicalRoots) || !manifest.canonicalRoots.length) {
     errors.push('skill manifest canonicalRoots must be a non-empty array');
   }
@@ -341,7 +400,7 @@ function verify(root, manifestPath) {
       errors.push('skill contains untracked or ignored files: ' + report.unmanagedFiles.join(', '));
     }
     if (report.modifiedFiles.length) {
-      warnings.push('skill has uncommitted tracked changes: ' + report.modifiedFiles.join(', '));
+      errors.push('skill has uncommitted tracked changes: ' + report.modifiedFiles.join(', '));
     }
   }
 
@@ -376,6 +435,7 @@ function verify(root, manifestPath) {
     root: gitRoot,
     branch,
     commit,
+    upstream,
     manifest: manifestRelative || manifestPath,
     skillCount: skillReports.length,
     skills: skillReports,
@@ -400,7 +460,7 @@ function main() {
 
   const root = path.resolve(args.root);
   const manifestPath = args.manifest ? path.resolve(root, args.manifest) : DEFAULT_MANIFEST;
-  const report = verify(root, manifestPath);
+  const report = verify(root, manifestPath, args.upstream);
   if (args.json) {
     console.log(JSON.stringify(report, null, 2));
   } else {
@@ -408,6 +468,10 @@ function main() {
     console.log('Repository: ' + report.root);
     console.log('Branch: ' + (report.branch || 'UNKNOWN'));
     console.log('Commit: ' + (report.commit || 'UNKNOWN'));
+    if (report.upstream) {
+      console.log('Upstream: ' + report.upstream.ref + ' @ ' + (report.upstream.commit || 'MISSING') +
+        ' (ahead=' + report.upstream.ahead + ', behind=' + report.upstream.behind + ')');
+    }
     console.log('Manifest: ' + report.manifest);
     console.log('Skills: ' + report.skillCount);
     for (const skill of report.skills) {
