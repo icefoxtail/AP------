@@ -44,5 +44,8 @@ jobs:
             'tools/run-tests.js')
           exit $fail
 
+      - name: Verify Git-managed project skills
+        run: node tools/skills/verify-skills.mjs --json
+
       - name: Run tests
         run: node tools/run-tests.js

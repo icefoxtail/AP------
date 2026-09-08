@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "source": "repository",
+  "canonicalRoots": [
+    ".codex/skills",
+    ".agents/skills"
+  ],
+  "skills": [
+    {
+      "name": "apmath-archive-exams",
+      "path": ".codex/skills/apmath-archive-exams",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "original-exam-archive",
+      "status": "active"
+    },
+    {
+      "name": "apmath-visual-upgrade",
+      "path": ".codex/skills/apmath-visual-upgrade",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "visual-archive",
+      "status": "active"
+    },
+    {
+      "name": "apmath-similar-question-pipeline",
+      "path": ".agents/skills/apmath-similar-question-pipeline",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "similar-question-production",
+      "status": "active"
+    },
+    {
+      "name": "apmath-similar-question-pipeline-4batch",
+      "path": ".agents/skills/apmath-similar-question-pipeline-4batch",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "similar-question-compatibility-alias",
+      "status": "deprecated",
+      "canonicalName": "apmath-similar-question-pipeline"
+    },
+    {
+      "name": "apmath-similar-question-pipeline-adaptive",
+      "path": ".agents/skills/apmath-similar-question-pipeline-adaptive",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "agents/openai.yaml"
+      ],
+      "scope": "similar-question-adaptive-comparison",
+      "status": "experimental"
+    }
+  ]
+}
