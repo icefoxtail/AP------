@@ -344,3 +344,13 @@ r32 candidate bank validation은 source-repaired current source 기준 59 source
 r32 current V2 preparation은 source solution repair를 반영한 새 `hs-quadratic-r32d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r32 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 80개 candidate visual, 136개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r33 function/equation continuation update (2026-09-09)
+
+r33은 8개 문항을 처리했다. 23 여천고 q20/q22·25 강남여고 q13·25 팔마고 q21·25 제일고 q13은 함수/포물선 관계를 cartesian SVG로 구성했고, 23 여천고 q16·23 충무고 q10·25 제일고 q14는 판별식·매개변수 조건을 수직선 SVG로 구성했다. 함수 그래프 5건과 수직선 3건에 대해 source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r33 candidate bank validation은 59 source bank·1295 row·current candidate visual 307건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 현재 candidate 307건, 잔여 72건이다. fresh expected fact 누적은 현재 counting 기준 302건, 잔여 128건이다. 최신 상태는 [r33 V3 closure snapshot](473_current_closure_snapshot_r33_v3_closed.json)이다.
+
+r33 current V2 preparation은 새 `hs-quadratic-r33d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r33 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 72개 candidate visual, 128개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
