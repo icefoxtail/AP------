@@ -70,11 +70,42 @@
 
 현재 main merge 명령은 실행하지 않는다. 기존 candidate·freeze·render 작업은 재실행하지 말고 A/B closure부터 이어간다.
 
-## 2026-09-08 continuation update
+## 2026-09-08 원격 재개용 최신 인계
 
-- This handoff was resumed from `origin/fix/solution-caption-cleanup` at `b62402ca`.
-- The branch named in the original handoff (`codex/review-h2-s1-algebra-20260908`) is not currently present in the remote refs.
-- B closure is complete: the metadata reuse fixture now binds a synthetic provider attestation plan to the reservation, launch, freeze/context snapshot, and terminal receipt.
-- A closure route is now available in `archive/tools/pipeline-core`: typed `function-family` facts accept bounded polynomial/rational/radical/absolute/exponential/logarithmic/trigonometric branches, with explicit domain/pole rejection and deterministic Python candidate generation.
-- Verification: pipeline-core `130/130` tests PASS with the bundled Python runtime; no production archive asset, main merge, or deploy was performed.
-- The H2 S1 target remains `NOT_SEALED` until the 459-target run has current canonical V1/V2/V3 and render evidence generated through this route.
+### 현재 기준
+
+- 재개 브랜치: `fix/solution-caption-cleanup`
+- 원격 최신 커밋: `7715ef0b fix(archive): close specialist visual route contract`
+- 원본 핸드오프가 지시한 `codex/review-h2-s1-algebra-20260908` 브랜치는 현재 원격 ref에 없다.
+- 이 작업의 대상은 고2 **S1 대수 시각자료**이며, 확인된 source 경로는 주로 `archive/exams/original/high/h2/1mid/`와 `1final/`이다. 고2 2학기 수학II SVG 브랜치(`review/h2-math2-2mid-svg-full-repair`)와 혼동하지 않는다.
+
+### 확인된 문제
+
+1. 핸드오프 문서에는 `ADD 24/24 + REBUILD 14/14`, 총 39 candidate, production asset binding 39/39, render 72/72 PASS라고 기록되어 있다.
+2. 그러나 현재 접근 가능한 원격 브랜치에는 그 기록을 뒷받침하는 `SOLUTION_FREEZE_STATUS.md`, `candidate_manifest.json`, V1/V2/V3 evidence, render matrix가 없다.
+3. 현재 브랜치의 H2 S1 source 36개·800문항에는 `solutionImage` 참조가 0개이고, H2 S1용 신규 `q*-solution.svg` production asset도 확인되지 않는다. 따라서 39개 이미지 생성 결과는 집 컴퓨터의 미푸시 브랜치/작업 트리에만 있거나, 다른 브랜치에서 생성된 뒤 반영되지 않은 상태로 취급한다.
+4. 초기 pipeline-core 테스트 실패는 최신 provider attestation 계약을 synthetic metadata reuse fixture가 따르지 않아 발생했다. 임의로 production contract를 약화해서는 안 된다.
+
+### 이번 원격 브랜치에서 완료한 작업
+
+- `function-family`를 `APMATH_VISUAL_FACT_v2`의 정식 typed visual family로 추가했다.
+- 제한된 수식 parser와 deterministic generator에 다항·유리·무리·절댓값·지수·로그·삼각 branch를 연결했다.
+- 정의역 불확실성, pole/점근선 통과, 지원하지 않는 수식은 fail-closed로 유지한다.
+- metadata reuse fixture에 provider attestation plan, freeze/launch/context binding, terminal `providerPlanRef`를 연결했다.
+- bundled Python runtime 기준 pipeline-core 전체 테스트 `130/130 PASS`.
+- production asset 생성, 459-target seal, main merge, deploy는 수행하지 않았다.
+
+### 집 컴퓨터 확인 후 진행 순서
+
+1. reset/pull하지 말고 먼저 `git status --short`, `git worktree list`, `git reflog --all --date=iso`를 실행한다.
+2. `codex/review-h2-s1-algebra-20260908` 또는 `SOLUTION_FREEZE_STATUS.md`, `candidate_manifest.json`, `PRODUCTION_ASSET_BINDINGS.json`, `browser_render_capture_matrix.json`, `*.svg`가 있는 작업 트리를 찾는다.
+3. 찾은 로컬 브랜치를 별도 백업 브랜치로 보존하고 원격에 push한다. 미커밋 파일이면 먼저 commit한다.
+4. `fix/solution-caption-cleanup`와 파일·커밋·asset SHA를 비교한 뒤 필요한 경우에만 병합한다. H2 2mid SVG 작업물은 이 작업에 섞지 않는다.
+5. 39 candidate의 실제 SVG를 현재 canonical V1/V2/V3/render evidence contract로 재검증하고, 459 UID denominator와 freeze를 다시 확인한다.
+6. pipeline-core `130/130`, source `node --check`, asset binding, desktop/mobile exam·solution·answer render를 통과시킨 뒤 사용자 검수 후에만 `main`에 merge한다.
+
+### 안전 규칙
+
+- 집 작업물 확인 전 `git reset --hard`, 무조건적인 `git pull`, 파일 삭제를 실행하지 않는다.
+- custom SVG review JSON만으로 pipeline-core PASS를 만들지 않는다.
+- 핸드오프의 39/39·72/72 기록은 현재 branch에서 재현되기 전까지 완료 사실로 승격하지 않는다.
