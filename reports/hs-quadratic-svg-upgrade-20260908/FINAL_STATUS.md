@@ -303,3 +303,12 @@ r28 candidate bank validation은 59 source bank·1295 row·unique candidate visu
 r28 current v2 preparation은 새 `hs-quadratic-r28c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r28 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 112개 candidate visual, 168개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+## r29 coordinate/line/circle continuation update (2026-09-09)
+
+r29는 8개 문항을 adaptive batch로 처리했다. 22 팔마고 q5/q9, 22 매산고 q14, 22 순천여고 q4/q8/q9/q10/q12, 23 금당고 q17을 대상으로 source-only expected fact → 독립 검산 → candidate SVG → artifact-only V2 → V3 parity → solution freeze → desktop/mobile local render 순서를 적용했다. 수직선 8건에 대해 V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local render 8/8 및 overflow 0이다.
+
+r29 candidate bank validation은 59 source bank·1295 row·unique candidate visual 283건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 283건이 현재 candidate이고 96건이 남아 있다. source solution static issueRows는 0으로 유지되며 fresh expected fact 누적은 현재 counting 기준 270건, 잔여 160건이다. 최신 상태는 [r29 V3 closure snapshot](409_current_closure_snapshot_r29_v3_closed.json)이다.
+
+r29 current v2 preparation은 새 `hs-quadratic-r29c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r29 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 96개 candidate visual, 160개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
