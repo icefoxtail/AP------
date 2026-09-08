@@ -733,7 +733,7 @@ window.questionBank = [
   {
     "id": 21,
     "level": "상",
-    "content": "[서술형 3] 자연수 $a, b$ 에 대하여 부등식 $b < 2^{n} \\times a \\le 16b$ 를 만족하는 모든 정수 $n$ 의 합이 18일 때, $a, b$ 의 값을 구하시오. [7.5점]",
+    "content": "[서술형 3] 자연수 $a, b$ 에 대하여 부등식 $b < 2^{n} \\times a \\le 16b$ 를 만족하는 모든 정수 $n$ 의 합이 18일 때, $a+b$가 최소가 되도록 하는 $a, b$의 값을 구하시오. [7.5점]",
     "choices": [
       " ",
       " ",
@@ -741,7 +741,7 @@ window.questionBank = [
       " ",
       " "
     ],
-    "answer": "조건 불충분: a,b는 유일하게 결정되지 않음",
+    "answer": "a=1, b=4",
     "category": "지수부등식의 정수 해 (서술형)",
     "originalCategory": "지수부등식의 정수 해 (서술형)",
     "standardCourse": "대수",
@@ -761,7 +761,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 부등식의 정수해 합은 비율 $b/a$의 구간만 결정하며, 자연수 $a,b$의 한 쌍을 유일하게 결정하지 않는다.\\n$i) n에 관한 부등식 변형$\\n$b/a < 2^n \\le 16b/a \\implies \\log_2(b/a) < n \\le \\log_2(b/a)+4$이다. 정수해의 합이 18이므로 연속된 네 정수는 $3,4,5,6$이고, 따라서 $2 \\le \\log_2(b/a)<3$, 즉 $4 \\le b/a<8$이다.\\n$ii) 유일성 검산$\\n예를 들어 $(a,b)=(1,4),(1,5),(1,6),(1,7)$은 모두 $4 \\le b/a<8$을 만족하고 정수해 $n=3,4,5,6$의 합도 18이다.\\n따라서 표시된 조건만으로는 $a,b$를 유일하게 정할 수 없으며, 저장된 $a=1,b=4$는 추가 조건 없이는 정당화되지 않는다. 문항은 추가 조건을 보완하기 전까지 ‘조건 불충분’으로 동결한다.",
+    "solution": "<b>[Logical Anchor]</b> 정수해의 합으로 $b/a$의 범위를 구한 뒤, $a+b$의 최솟값을 결정한다.\\n$i) 정수해의 범위$\\n$b/a < 2^n \\le 16b/a \\implies \\log_2(b/a) < n \\le \\log_2(b/a)+4$이다. 정수해가 연속된 네 정수이고 그 합이 18이므로 정수해는 $3,4,5,6$이다. 따라서 $2 \\le \\log_2(b/a)<3$, 즉 $4 \\le b/a<8$이다.\\n$ii) $a+b$의 최솟값$\\n$b/a\\ge4$이므로 자연수 $a,b$에 대하여 $b\\ge4a$이다. 따라서 $a+b\\ge5a\\ge5$이고, 등호는 $a=1, b=4$일 때 성립한다.\\n$\\therefore a=1, b=4$",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",

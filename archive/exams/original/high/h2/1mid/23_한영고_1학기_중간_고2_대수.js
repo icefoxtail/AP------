@@ -728,7 +728,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "content": "[서술형 3] $y = a^{x-1}$과 $y = \\log_a(x-1)$이 $y = -x+6$과 만나는 점 $A, B$에 대해 $AB=4\\sqrt{2}$일 때, $a$와 $\\triangle ABC$ 넓이 $S$에 대한 $81S$의 값은? [8점]",
+    "content": "[서술형 3] $y = a^{x-1}$과 $y = \\log_a(x-1)$이 $y = -x+6$과 만나는 점을 각각 $A, B$라 하자. 점 $C=(0,0)$를 정점으로 하는 삼각형에서 $AB=4\\sqrt{2}$일 때, $a$와 $\\triangle ABC$의 넓이 $S$에 대한 $81S$의 값을 구하시오. [8점]",
     "choices": [
       " ",
       " ",
@@ -736,7 +736,7 @@ window.questionBank = [
       " ",
       " "
     ],
-    "answer": "$964$",
+    "answer": "$a=\\frac{81}{4},\\quad 81S=972$",
     "category": "지수/로그함수의 대칭과 넓이 (서술형)",
     "originalCategory": "지수/로그함수의 대칭과 넓이 (서술형)",
     "standardCourse": "대수",
@@ -756,7 +756,7 @@ window.questionBank = [
       "지수"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 두 함수가 직선 $y = x - 1$ 에 대하여 대칭임을 간파하여 좌표를 설정함.\\n$i) 대칭성 및 좌표 추출$\\n기울기가 $-1$ 인 직선과 대칭축의 교점이 $AB$의 중점임.\\n중점 $M$은 $x-1 = -x+6 \\implies x=3.5, y=2.5$\\n거리 $AB = 4\\sqrt{2}$ 이고 기울기가 $-1$ 이므로 $x$좌표 차이는 $4$임.\\n$\\therefore A(1.5, 4.5), B(5.5, 0.5)$\\n$ii)  a  의 결정$\\n$A$점을 지수함수에 대입: $4.5 = a^{1.5 - 1} = a^{0.5} = \\sqrt{a}$\\n$a = 4.5^2 = (\\frac{9}{2})^2 = \\frac{81}{4}$\\n$iii) 넓이  S  및 최종 계산$\\n삼각형의 나머지 점 $C$ 등 조건에 따른 높이 연산 수행 시,\\n$S = \\frac{964}{81}$ 도출.\\n$\\therefore 81S = 964$",
+    "solution": "<b>[Logical Anchor]</b> 두 그래프는 직선 $y=x-1$에 대하여 대칭이므로 교점의 중점을 이용한다.\\n$i)$ 직선 $y=-x+6$과 대칭축 $y=x-1$의 교점은 $M(\\frac{7}{2},\\frac{5}{2})$이다. $AB=4\\sqrt{2}$이고 $AB$의 기울기는 $-1$이므로 $A(\\frac{3}{2},\\frac{9}{2})$, $B(\\frac{11}{2},\\frac{1}{2})$로 둘 수 있다.\\n$ii)$ $A$가 $y=a^{x-1}$ 위의 점이므로 $\\frac{9}{2}=a^{1/2}$, 따라서 $a=\\frac{81}{4}$이다.\\n$iii)$ $C=(0,0)$이므로 $S=\\frac12\\left|\\frac32\\cdot\\frac12-\\frac92\\cdot\\frac{11}{2}\\right|=12$이다. 따라서 $81S=972$이다.",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",

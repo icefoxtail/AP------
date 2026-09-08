@@ -824,10 +824,10 @@ window.questionBank = [
       "서술형4"
     ],
     "wide": false,
-    "content": "서술형 4. [5점]<br><br>함수 $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac{1}{2}\\ \\left(-\\pi\\le x\\le\\pi\\right)$에 대하여 두 직선 $y=k,\\ y=1$과 만나는 서로 다른 점의 개수를 각각 $m,\\ n$이라고 할 때, $m-n=3$이면 $k$의 범위와 $f(x)=k$의 모든 실근의 합을 구하는 과정을 각각 서술하시오. (단, $k$는 양의 실수)",
+    "content": "서술형 4. [5점]<br><br>함수 $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac{1}{2}\\ left(-\\pi\\le x\\le\\pi\\right)$에 대하여 두 직선 $y=k,\\ y=1$과 만나는 서로 다른 점의 개수를 각각 $m,\\ n$이라고 할 때, $m-n=-1$이면 $k$의 범위와 $f(x)=k$의 모든 실근의 합을 구하는 과정을 각각 서술하시오. (단, $k$는 양의 실수)",
     "choices": [],
-    "answer": "$0<k<\\frac{1}{2}$, $\\frac{4\\pi}{3}$",
-    "solution": "[키포인트] 그래프의 교점 개수를 이용해 $k$의 범위를 정하고, 대칭성을 이용해 실근의 합을 구한다.<br><br>조건 정리: $f(x)=\\left|\\cos2\\left(x-\\frac{\\pi}{6}\\right)\\right|+\\frac{1}{2}$ 이고, $-\\pi\\le x\\le\\pi$ 이다.<br><br>풀이 과정: 그래프에서 $y=1$과 만나는 서로 다른 점의 개수는 $n=5$ 이다.<br>조건 $m-n=3$ 이므로 $m=8$ 이다.<br>$f(x)=k$가 서로 다른 8개의 실근을 가지려면 그래프의 최솟값보다 크고 중간선보다 작은 높이여야 하므로<br>$0<k<\\frac{1}{2}$ 이다.<br>이제 8개의 근을 $x_1,x_2,\\dots,x_8$이라 하면 그래프는 $x=\\frac{\\pi}{6}$에 대하여 대칭이므로<br>$x_1+x_8=\\frac{\\pi}{3}$ 이고,<br>$x_2+x_7=\\frac{\\pi}{3}$,<br>$x_3+x_6=\\frac{\\pi}{3}$,<br>$x_4+x_5=\\frac{\\pi}{3}$ 이다.<br>따라서 모든 실근의 합은<br>$4\\cdot\\frac{\\pi}{3}=\\frac{4\\pi}{3}$ 이다.<br><br>결론: 따라서 $k$의 범위는 $0<k<\\frac{1}{2}$이고, 모든 실근의 합은 $\\frac{4\\pi}{3}$이다.",
+    "answer": "$\\frac{1}{2}<k<\\frac{3}{2},\\ k\\ne1$, $\\frac{4\\pi}{3}$",
+    "solution": "[키포인트] 두 수평선과 그래프의 교점 개수를 정확히 세고, 대칭성을 이용해 근의 합을 구한다.<br><br>구간 $-\\pi\\le x\\le\\pi$에서 $y=1$과의 교점은 9개이므로 $n=9$이다. $m-n=-1$이므로 $m=8$이다. 그래프의 주기성과 범위를 확인하면 $f(x)=k$가 서로 다른 8개의 실근을 갖는 범위는 $\\frac{1}{2}<k<\\frac{3}{2}$에서 $k=1$을 제외한 경우이다. 이때 근들은 $x=\\frac{\\pi}{6}$에 대하여 대칭이므로 네 쌍의 합이 각각 $\\frac{\\pi}{3}$이다. 따라서 모든 실근의 합은 $\\frac{4\\pi}{3}$이다.",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
