@@ -422,3 +422,15 @@ r39 current V2 preparation은 새 `hs-quadratic-r39b` work-batch/run root에서 
 target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 302건, 잔여 77건이다. fresh expected fact 누적은 현재 counting 기준 349건, 잔여 81건이다. 최신 상태는 [r39 V3 closure snapshot](579_current_closure_snapshot_r39_v3_closed.json)이다.
 
 r39 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 77개 target-scoped candidate visual, 81개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r40 correction and boundary/function continuation update (2026-09-09)
+
+r40 최초 대상 선정에서 중복·path 오류를 검출했다. 이미 r39에서 처리된 26 순천여고 1final q12와, 의도한 22 금당고 1final q18 대신 잘못 지정된 26 금당고 1final q18은 성공 근거에서 제외했다. 두 문항을 각각 26 순천고 1final q9와 22 금당고 1final q18로 교체해 V1부터 전체 r40을 재실행했다.
+
+정정된 r40은 26 효천고 1final q24, 26 팔마고 1final q13, 26 효천고 1mid q25의 함수·판별식 그래프 3건과, 26 순천고 1final q9, 22 금당고 1final q18, 26 매산고 1final q11, 25 효천고 1final q15, 26 순천고 1final q19의 수직선 5건으로 구성했다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다. 최초 잘못된 path/id 결과와 그 partial bank/V3는 성공 근거로 사용하지 않는다.
+
+r40 current V2 preparation은 새 `hs-quadratic-r40b` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. r40 candidate bank는 59 source bank·1295 row·full candidate visual 362건·candidate solution drift 0·asset 오류 0이다.
+
+target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 310건, 잔여 69건이다. fresh expected fact 누적은 현재 counting 기준 357건, 잔여 73건이다. 최신 상태는 [r40 V3 closure snapshot](594_current_closure_snapshot_r40_v3_closed.json)이다.
+
+r40 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 69개 target-scoped candidate visual, 73개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
