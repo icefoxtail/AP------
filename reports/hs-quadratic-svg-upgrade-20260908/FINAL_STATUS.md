@@ -390,3 +390,15 @@ r36 candidate bank validation은 59 source bank·1295 row·full candidate visual
 r36 current V2 preparation은 새 `hs-quadratic-r36d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. r36 snapshot은 전체 1295-row candidate visual count와 430-row target-scoped visual coverage를 분리해 기록한다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r36 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 101개 target-scoped candidate visual, 105개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r37 target-only continuation update (2026-09-09)
+
+r37은 target inventory 안의 8개 문항으로 정정하여 처리했다. 23 한영고 q15·25 팔마고 q17은 함수/최적화 관계를 cartesian SVG로 구성했고, 24 금당고 q8/q19·23 여수여고 q14·23 한영고 q21·26 효천고 q9·25 순천여고 q8은 부등식·매개변수 조건을 수직선 SVG로 구성했다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다. 무한 오른쪽 해집합 $k\ge-5$는 오른쪽 화살표로 표시했다.
+
+r37 초기에 잘못 선택한 25 강남고 q17·25 금당고 q13·25 순천여고 q5·25 금당고 q20·25 효천고 1mid q15는 각각 이미 시각화되었거나 `NO_VISUAL`/target inventory 밖인 항목으로 확인되어 폐기했다. 최종 r37 V1/V2/V3/freeze/render와 scoped bank는 교체된 8개 target 문항으로만 생성되었다. 이전 r37d collision/잘못된 선택 결과는 성공 근거로 사용하지 않는다.
+
+r37 candidate bank validation은 59 source bank·1295 row·full candidate visual 338건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 286건, 잔여 93건이다. fresh expected fact 누적은 현재 counting 기준 333건, 잔여 97건이다. 최신 상태는 [r37 corrected V3 closure snapshot](540_current_closure_snapshot_r37e_v3_closed.json)이다.
+
+r37 current V2 preparation은 corrected target-only bank에 대해 새 `hs-quadratic-r37e` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r37 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 93개 target-scoped candidate visual, 97개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
