@@ -741,7 +741,7 @@ window.questionBank = [
       " ",
       " "
     ],
-    "answer": "a=1, b=4",
+    "answer": "조건 불충분: a,b는 유일하게 결정되지 않음",
     "category": "지수부등식의 정수 해 (서술형)",
     "originalCategory": "지수부등식의 정수 해 (서술형)",
     "standardCourse": "대수",
@@ -761,7 +761,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 부등식의 구간 길이를 분석하여 정수 해의 범위를 한정함.\\n$i)  n  에 관한 부등식 변형$\\n$b/a < 2^n \\le 16b/a \\implies \\log_2(b/a) < n \\le \\log_2(b/a) + 4$\\n$ii) 정수 해 도출$\\n구간 길이가 $4$ 이므로 해는 연속된 네 정수임.\\n$m+(m+1)+(m+2)+(m+3)=18 \\implies m=3$\\n해는 $3, 4, 5, 6$ 임.\\n$iii) 범위 판정$\\n$2 \\le \\log_2(b/a) < 3 \\implies 4 \\le b/a < 8$\\n자연수 조건 합산 결과 $a=1, b=4$ 가 유일한 해임.\\n$\\therefore a=1, b=4$",
+    "solution": "<b>[Logical Anchor]</b> 부등식의 정수해 합은 비율 $b/a$의 구간만 결정하며, 자연수 $a,b$의 한 쌍을 유일하게 결정하지 않는다.\\n$i) n에 관한 부등식 변형$\\n$b/a < 2^n \\le 16b/a \\implies \\log_2(b/a) < n \\le \\log_2(b/a)+4$이다. 정수해의 합이 18이므로 연속된 네 정수는 $3,4,5,6$이고, 따라서 $2 \\le \\log_2(b/a)<3$, 즉 $4 \\le b/a<8$이다.\\n$ii) 유일성 검산$\\n예를 들어 $(a,b)=(1,4),(1,5),(1,6),(1,7)$은 모두 $4 \\le b/a<8$을 만족하고 정수해 $n=3,4,5,6$의 합도 18이다.\\n따라서 표시된 조건만으로는 $a,b$를 유일하게 정할 수 없으며, 저장된 $a=1,b=4$는 추가 조건 없이는 정당화되지 않는다. 문항은 추가 조건을 보완하기 전까지 ‘조건 불충분’으로 동결한다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",

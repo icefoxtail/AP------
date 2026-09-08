@@ -23,7 +23,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "④",
-    "solution": "[키포인트] 등차수열의 정의를 이용하여 미지수의 값을 구한다.\\n조건 정리: 수열 $1, 3, x, 7, y, 11$이 등차수열을 이룬다.\\n풀이 방향: 인접한 두 항의 차이를 통해 공차를 구하고, 이를 이용해 $x$와 $y$의 값을 구한다.\\n정석 풀이: 첫째항이 1이고 둘째항이 3이므로 공차 $d$는 $3 - 1 = 2$이다.\\n따라서 등차수열의 각 항을 구하면 다음과 같다.\\n$x = 3 + 2 = 5$\\n$y = 7 + 2 = 9$\\n따라서 $y - x = 9 - 5 = 4$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 등차수열의 정의를 이용하여 미지수의 값을 구한다.\n조건 정리: 수열 $1, 3, x, 7, y, 11$이 등차수열을 이룬다.\n풀이 방향: 인접한 두 항의 차이를 통해 공차를 구하고, 이를 이용해 $x$와 $y$의 값을 구한다.\n정석 풀이: 첫째항이 1이고 둘째항이 3이므로 공차 $d$는 $3 - 1 = 2$이다.\n따라서 등차수열의 각 항을 구하면 다음과 같다.\n$x = 3 + 2 = 5$\n$y = 7 + 2 = 9$\n따라서 $y - x = 9 - 5 = 4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
     "subUnit": "등차수열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "29"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 등차수열의 일반항 공식을 이용하여 특정 항의 값을 구한다.\\n조건 정리: 등차수열 $2, 5, 8, 11, \\cdots$의 제10항을 구해야 한다.\\n풀이 방향: 첫째항과 공차를 찾아 일반항 $a_n = a_1 + (n-1)d$에 대입한다.\\n정석 풀이: 주어진 등차수열의 첫째항은 $a_1 = 2$이고, 공차는 $d = 5 - 2 = 3$이다.\\n등차수열의 일반항 $a_n$은 다음과 같다.\\n$a_n = 2 + (n-1) \\times 3 = 3n - 1$\\n따라서 제10항 $a_{10}$의 값은 다음과 같다.\\n$a_{10} = 3 \\times 10 - 1 = 29$\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 등차수열의 일반항 공식을 이용하여 특정 항의 값을 구한다.\n조건 정리: 등차수열 $2, 5, 8, 11, \\cdots$의 제10항을 구해야 한다.\n풀이 방향: 첫째항과 공차를 찾아 일반항 $a_n = a_1 + (n-1)d$에 대입한다.\n정석 풀이: 주어진 등차수열의 첫째항은 $a_1 = 2$이고, 공차는 $d = 5 - 2 = 3$이다.\n등차수열의 일반항 $a_n$은 다음과 같다.\n$a_n = 2 + (n-1) \\times 3 = 3n - 1$\n따라서 제10항 $a_{10}$의 값은 다음과 같다.\n$a_{10} = 3 \\times 10 - 1 = 29$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
     "subUnit": "수열의 일반항",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "244"
     ],
     "answer": "③",
-    "solution": "[키포인트] 등비수열의 합 공식을 이용하여 첫째항부터 제5항까지의 합을 구한다.\\n조건 정리: 첫째항 $a = 2$, 공비 $r = 3$인 등비수열의 첫째항부터 제5항까지의 합 $S_5$를 구한다.\\n풀이 방향: 등비수열의 합 공식 $S_n = \\dfrac{a(r^n - 1)}{r - 1}$에 주어진 값을 대입한다.\\n정석 풀이: 첫째항 $a = 2$, 공비 $r = 3$, 항의 개수 $n = 5$이므로 등비수열의 합 공식에 대입하면 다음과 같다.\\n$S_5 = \\dfrac{2 \\times (3^5 - 1)}{3 - 1} = \\dfrac{2 \\times (243 - 1)}{2} = 242$\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 등비수열의 합 공식을 이용하여 첫째항부터 제5항까지의 합을 구한다.\n조건 정리: 첫째항 $a = 2$, 공비 $r = 3$인 등비수열의 첫째항부터 제5항까지의 합 $S_5$를 구한다.\n풀이 방향: 등비수열의 합 공식 $S_n = \\dfrac{a(r^n - 1)}{r - 1}$에 주어진 값을 대입한다.\n정석 풀이: 첫째항 $a = 2$, 공비 $r = 3$, 항의 개수 $n = 5$이므로 등비수열의 합 공식에 대입하면 다음과 같다.\n$S_5 = \\dfrac{2 \\times (3^5 - 1)}{3 - 1} = \\dfrac{2 \\times (243 - 1)}{2} = 242$\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
     "subUnit": "등비수열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "$b=8, R=2\\sqrt{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 사인법칙을 이용하여 삼각형의 변의 길이와 외접원의 반지름의 길이를 구한다.\\n조건 정리: $\\triangle ABC$에서 $a = \\sqrt{6}$, $A = \\dfrac{\\pi}{3}$, $B = \\dfrac{\\pi}{4}$이다.\\n풀이 방향: 사인법칙 $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = 2R$을 이용하여 $b$와 $R$의 값을 각각 구한다.\\n정석 풀이: 사인법칙에 의해 다음이 성립한다.\\n$\\dfrac{\\sqrt{6}}{\\sin\\dfrac{\\pi}{3}} = 2R \\implies \\dfrac{\\sqrt{6}}{\\dfrac{\\sqrt{3}}{2}} = 2R \\implies 2\\sqrt{2} = 2R \\implies R = \\sqrt{2}$\\n또한, $\\dfrac{b}{\\sin B} = 2R$이므로 다음이 성립한다.\\n$\\dfrac{b}{\\sin\\dfrac{\\pi}{4}} = 2\\sqrt{2} \\implies \\dfrac{b}{\\dfrac{\\sqrt{2}}{2}} = 2\\sqrt{2} \\implies b = 2\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 2$\\n따라서 $b = 2$, $R = \\sqrt{2}$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 사인법칙을 이용하여 삼각형의 변의 길이와 외접원의 반지름의 길이를 구한다.\n조건 정리: $\\triangle ABC$에서 $a = \\sqrt{6}$, $A = \\dfrac{\\pi}{3}$, $B = \\dfrac{\\pi}{4}$이다.\n풀이 방향: 사인법칙 $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = 2R$을 이용하여 $b$와 $R$의 값을 각각 구한다.\n정석 풀이: 사인법칙에 의해 다음이 성립한다.\n$\\dfrac{\\sqrt{6}}{\\sin\\dfrac{\\pi}{3}} = 2R \\implies \\dfrac{\\sqrt{6}}{\\dfrac{\\sqrt{3}}{2}} = 2R \\implies 2\\sqrt{2} = 2R \\implies R = \\sqrt{2}$\n또한, $\\dfrac{b}{\\sin B} = 2R$이므로 다음이 성립한다.\n$\\dfrac{b}{\\sin\\dfrac{\\pi}{4}} = 2\\sqrt{2} \\implies \\dfrac{b}{\\dfrac{\\sqrt{2}}{2}} = 2\\sqrt{2} \\implies b = 2\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 2$\n따라서 $b = 2$, $R = \\sqrt{2}$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "rule_inferred",
@@ -165,7 +165,7 @@ window.questionBank = [
       "24"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 변의 길이와 그 끼인각의 크기가 주어졌을 때 삼각형의 넓이 공식을 이용한다.\\n조건 정리: $\\overline{AC} = 12$, $\\overline{BC} = 8$, $\\angle C = \\dfrac{\\pi}{6}$이다.\\n풀이 방향: 삼각형의 넓이 공식 $S = \\dfrac{1}{2}ab\\sin C$에 주어진 값을 대입한다.\\n정석 풀이: 두 변의 길이와 끼인각의 크기를 공식에 대입하면 다음과 같다.\\n$S = \\dfrac{1}{2} \\times 12 \\times 8 \\times \\sin\\dfrac{\\pi}{6} = 48 \\times \\dfrac{1}{2} = 24$\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 두 변의 길이와 그 끼인각의 크기가 주어졌을 때 삼각형의 넓이 공식을 이용한다.\n조건 정리: $\\overline{AC} = 12$, $\\overline{BC} = 8$, $\\angle C = \\dfrac{\\pi}{6}$이다.\n풀이 방향: 삼각형의 넓이 공식 $S = \\dfrac{1}{2}ab\\sin C$에 주어진 값을 대입한다.\n정석 풀이: 두 변의 길이와 끼인각의 크기를 공식에 대입하면 다음과 같다.\n$S = \\dfrac{1}{2} \\times 12 \\times 8 \\times \\sin\\dfrac{\\pi}{6} = 48 \\times \\dfrac{1}{2} = 24$\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_금당고_1학기_기말_고2_수학I/q6.png",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
@@ -194,7 +194,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "①",
-    "solution": "[키포인트] 시그마의 성질을 이용하여 연립방정식을 세우고 원하는 시그마 값을 구한다.\\n조건 정리: $\\sum_{k=1}^{30}(3a_k - b_k - 1) = 10$, $\\sum_{k=1}^{30}(2a_k + b_k) = 35$이다.\\n풀이 방향: 시그마의 선형성을 이용해 식을 분리한 후, $\\sum_{k=1}^{30} a_k$와 $\\sum_{k=1}^{30} b_k$를 미지수로 하는 연립방정식을 푼다.\\n정석 풀이: $A = \\sum_{k=1}^{30} a_k$, $B = \\sum_{k=1}^{30} b_k$라 하자.\\n첫 번째 식을 정리하면 다음과 같다.\\n$3A - B - \\sum_{k=1}^{30} 1 = 10 \\implies 3A - B - 30 = 10 \\implies 3A - B = 40$  (1)\\n두 번째 식을 정리하면 다음과 같다.\\n$2A + B = 35$  (2)\\n(1)번 식과 (2)번 식을 더하면 다음과 같다.\\n$5A = 75 \\implies A = 15$\\n$A = 15$를 (2)번 식에 대입하면 다음과 같다.\\n$2 \\times 15 + B = 35 \\implies 30 + B = 35 \\implies B = 5$\\n따라서 $\\sum_{k=1}^{30} b_k = 5$이다.\\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 시그마의 성질을 이용하여 연립방정식을 세우고 원하는 시그마 값을 구한다.\n조건 정리: $\\sum_{k=1}^{30}(3a_k - b_k - 1) = 10$, $\\sum_{k=1}^{30}(2a_k + b_k) = 35$이다.\n풀이 방향: 시그마의 선형성을 이용해 식을 분리한 후, $\\sum_{k=1}^{30} a_k$와 $\\sum_{k=1}^{30} b_k$를 미지수로 하는 연립방정식을 푼다.\n정석 풀이: $A = \\sum_{k=1}^{30} a_k$, $B = \\sum_{k=1}^{30} b_k$라 하자.\n첫 번째 식을 정리하면 다음과 같다.\n$3A - B - \\sum_{k=1}^{30} 1 = 10 \\implies 3A - B - 30 = 10 \\implies 3A - B = 40$  (1)\n두 번째 식을 정리하면 다음과 같다.\n$2A + B = 35$  (2)\n(1)번 식과 (2)번 식을 더하면 다음과 같다.\n$5A = 75 \\implies A = 15$\n$A = 15$를 (2)번 식에 대입하면 다음과 같다.\n$2 \\times 15 + B = 35 \\implies 30 + B = 35 \\implies B = 5$\n따라서 $\\sum_{k=1}^{30} b_k = 5$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "rule_inferred",
@@ -312,7 +312,7 @@ window.questionBank = [
       "245"
     ],
     "answer": "②",
-    "solution": "[키포인트] 시그마의 성질을 이용하여 식을 단순화한 후 자연수의 거듭제곱의 합 공식을 적용한다.\\n조건 정리: $\\sum_{k=1}^{10}(k+1)^2 - \\sum_{k=1}^{10}k(k-2)$의 값을 구한다.\\n풀이 방향: 두 시그마의 일반항을 결합하여 일차식 형태로 정리한 후 합을 구한다.\\n정석 풀이: 두 시그마를 합치면 다음과 같이 일반항이 정리된다.\\n$(k+1)^2 - k(k-2) = (k^2 + 2k + 1) - (k^2 - 2k) = 4k + 1$\\n따라서 주어진 식은 다음과 같이 계산된다.\\n$\\sum_{k=1}^{10} (4k + 1) = 4 \\sum_{k=1}^{10} k + \\sum_{k=1}^{10} 1 = 4 \\times \\dfrac{10 \\times 11}{2} + 10 = 220 + 10 = 230$\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 시그마의 성질을 이용하여 식을 단순화한 후 자연수의 거듭제곱의 합 공식을 적용한다.\n조건 정리: $\\sum_{k=1}^{10}(k+1)^2 - \\sum_{k=1}^{10}k(k-2)$의 값을 구한다.\n풀이 방향: 두 시그마의 일반항을 결합하여 일차식 형태로 정리한 후 합을 구한다.\n정석 풀이: 두 시그마를 합치면 다음과 같이 일반항이 정리된다.\n$(k+1)^2 - k(k-2) = (k^2 + 2k + 1) - (k^2 - 2k) = 4k + 1$\n따라서 주어진 식은 다음과 같이 계산된다.\n$\\sum_{k=1}^{10} (4k + 1) = 4 \\sum_{k=1}^{10} k + \\sum_{k=1}^{10} 1 = 4 \\times \\dfrac{10 \\times 11}{2} + 10 = 220 + 10 = 230$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "rule_inferred",
@@ -340,7 +340,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "[키포인트] 등비수열의 일반항 공식을 세우고 주어진 관계식을 연립하여 특정 항의 값을 구한다.\\n조건 정리: 모든 항이 양수인 등비수열 $\\{a_n\\}$에 대하여 $\\dfrac{a_2 a_6}{a_5} = 8$, $a_3 + a_7 = 24$이다.\\n풀이 방향: 첫째항 $a$와 공비 $r$을 이용하여 식을 표현한 후, 공비와 첫째항을 차례로 구한다.\\n정석 풀이: 등비수열의 일반항 $a_n = ar^{n-1}$을 첫 번째 조건식에 대입하면 다음과 같다.\\n$\\dfrac{ar \\times ar^5}{ar^4} = 8 \\implies ar^2 = 8$  (1)\\n두 번째 조건식에 대입하면 다음과 같다.\\n$ar^2 + ar^6 = 24 \\implies ar^2(1 + r^4) = 24$\\n(1)번 식의 $ar^2 = 8$을 대입하면 다음과 같다.\\n$8(1 + r^4) = 24 \\implies 1 + r^4 = 3 \\implies r^4 = 2$\\n구하고자 하는 제11항 $a_{11}$의 값은 다음과 같다.\\n$a_{11} = ar^{10} = ar^2 \\times (r^4)^2 = 8 \\times 2^2 = 8 \\times 4 = 32$\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 등비수열의 일반항 공식을 세우고 주어진 관계식을 연립하여 특정 항의 값을 구한다.\n조건 정리: 모든 항이 양수인 등비수열 $\\{a_n\\}$에 대하여 $\\dfrac{a_2 a_6}{a_5} = 8$, $a_3 + a_7 = 24$이다.\n풀이 방향: 첫째항 $a$와 공비 $r$을 이용하여 식을 표현한 후, 공비와 첫째항을 차례로 구한다.\n정석 풀이: 등비수열의 일반항 $a_n = ar^{n-1}$을 첫 번째 조건식에 대입하면 다음과 같다.\n$\\dfrac{ar \\times ar^5}{ar^4} = 8 \\implies ar^2 = 8$  (1)\n두 번째 조건식에 대입하면 다음과 같다.\n$ar^2 + ar^6 = 24 \\implies ar^2(1 + r^4) = 24$\n(1)번 식의 $ar^2 = 8$을 대입하면 다음과 같다.\n$8(1 + r^4) = 24 \\implies 1 + r^4 = 3 \\implies r^4 = 2$\n구하고자 하는 제11항 $a_{11}$의 값은 다음과 같다.\n$a_{11} = ar^{10} = ar^2 \\times (r^4)^2 = 8 \\times 2^2 = 8 \\times 4 = 32$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M1-09-SEQUENCE_TERM",
     "subUnit": "수열의 일반항",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -370,7 +370,7 @@ window.questionBank = [
       "120"
     ],
     "answer": "④",
-    "solution": "[키포인트] 코사인법칙으로 삼각형의 한 변의 길이를 구한 후, 사인법칙을 통해 외접원의 반지름을 구한다.\\n조건 정리: 원 $O$에 내접하는 삼각형 $ABC$에서 $\\overline{AB} = 5$, $\\overline{AC} = 6$, $\\cos A = \\dfrac{3}{5}$이다.\\n풀이 방향: 코사인법칙으로 변 $BC$의 길이를 구하고, $\\sin A$의 값을 찾아 사인법칙으로 외접원의 반지름 $R$을 계산한다.\\n정석 풀이: 코사인법칙에 의해 변 $BC$의 길이는 다음과 같다.\\n$\\overline{BC}^2 = \\overline{AB}^2 + \\overline{AC}^2 - 2 \\times \\overline{AB} \\times \\overline{AC} \\times \\cos A$\\n$\\overline{BC}^2 = 5^2 + 6^2 - 2 \\times 5 \\times 6 \\times \\dfrac{3}{5} = 25 + 36 - 36 = 25 \\implies \\overline{BC} = 5$\\n모든 각이 양의 사인이므로 $\\sin A = \\sqrt{1 - \\cos^2 A} = \\sqrt{1 - \\left(\\dfrac{3}{5}\\right)^2} = \\dfrac{4}{5}$이다.\\n사인법칙에 의해 다음이 성립한다.\\n$\\dfrac{\\overline{BC}}{\\sin A} = 2R \\implies \\dfrac{5}{4/5} = 2R \\implies 2R = \\dfrac{25}{4} \\implies R = \\dfrac{25}{8}$\\n따라서 구하고자 하는 값 $32R$은 다음과 같다.\\n$32R = 32 \\times \\dfrac{25}{8} = 100$\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 코사인법칙으로 삼각형의 한 변의 길이를 구한 후, 사인법칙을 통해 외접원의 반지름을 구한다.\n조건 정리: 원 $O$에 내접하는 삼각형 $ABC$에서 $\\overline{AB} = 5$, $\\overline{AC} = 6$, $\\cos A = \\dfrac{3}{5}$이다.\n풀이 방향: 코사인법칙으로 변 $BC$의 길이를 구하고, $\\sin A$의 값을 찾아 사인법칙으로 외접원의 반지름 $R$을 계산한다.\n정석 풀이: 코사인법칙에 의해 변 $BC$의 길이는 다음과 같다.\n$\\overline{BC}^2 = \\overline{AB}^2 + \\overline{AC}^2 - 2 \\times \\overline{AB} \\times \\overline{AC} \\times \\cos A$\n$\\overline{BC}^2 = 5^2 + 6^2 - 2 \\times 5 \\times 6 \\times \\dfrac{3}{5} = 25 + 36 - 36 = 25 \\implies \\overline{BC} = 5$\n모든 각이 양의 사인이므로 $\\sin A = \\sqrt{1 - \\cos^2 A} = \\sqrt{1 - \\left(\\dfrac{3}{5}\\right)^2} = \\dfrac{4}{5}$이다.\n사인법칙에 의해 다음이 성립한다.\n$\\dfrac{\\overline{BC}}{\\sin A} = 2R \\implies \\dfrac{5}{4/5} = 2R \\implies 2R = \\dfrac{25}{4} \\implies R = \\dfrac{25}{8}$\n따라서 구하고자 하는 값 $32R$은 다음과 같다.\n$32R = 32 \\times \\dfrac{25}{8} = 100$\n따라서 정답은 ④이다.",
     "image": "assets/images/25_금당고_1학기_기말_고2_수학I/q13.png",
     "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
     "subUnit": "삼각함수의 뜻과 값",
@@ -430,7 +430,7 @@ window.questionBank = [
       "250"
     ],
     "answer": "②",
-    "solution": "[키포인트] 등차수열의 조건식으로부터 첫째항과 공차의 관계를 파악하고 유리화를 통해 시그마를 계산한다.\\n조건 정리: 모든 항이 양수인 등차수열 $\\{a_n\\}$에 대하여 $\\sqrt{3a_1} = \\sqrt{a_9}$이고, $\\sum_{k=1}^{12} \\dfrac{1}{\\sqrt{a_{k+1}} + \\sqrt{a_k}} = \\dfrac{2}{5}$이다.\\n풀이 방향: 첫 번째 식에서 첫째항과 공차의 관계를 구하고, 두 번째 식의 일반항을 분모의 유리화를 통해 정리한 후 대입한다.\\n정석 풀이: 첫 번째 조건식의 양변을 제곱하면 $3a_1 = a_9$이다. 등차수열의 일반항을 대입하면 다음과 같다.\\n$3a_1 = a_1 + 8d \\implies 2a_1 = 8d \\implies a_1 = 4d$\\n두 번째 시그마 식의 일반항을 분모의 유리화를 통해 정리하면 다음과 같다.\\n$\\dfrac{1}{\\sqrt{a_{k+1}} + \\sqrt{a_k}} = \\dfrac{\\sqrt{a_{k+1}} - \\sqrt{a_k}}{a_{k+1} - a_k} = \\dfrac{\\sqrt{a_{k+1}} - \\sqrt{a_k}}{d}$\\n이를 시그마에 대입하여 전개하면 소거 형태가 된다.\\n$\\dfrac{1}{d} \\sum_{k=1}^{12} (\\sqrt{a_{k+1}} - \\sqrt{a_k}) = \\dfrac{1}{d} (\\sqrt{a_{13}} - \\sqrt{a_1}) = \\dfrac{2}{5}$\\n수열의 일반항을 공차 $d$로 표현하면 $a_1 = 4d$, $a_{13} = a_1 + 12d = 4d + 12d = 16d$이므로 대입하면 다음과 같다.\\n$\\dfrac{1}{d} (\\sqrt{16d} - \\sqrt{4d}) = \\dfrac{1}{d} (4\\sqrt{d} - 2\\sqrt{d}) = \\dfrac{2\\sqrt{d}}{d} = \\dfrac{2}{\\sqrt{d}} = \\dfrac{2}{5}$\\n따라서 $\\sqrt{d} = 5 \\implies d = 25$이다.\\n첫째항 $a_1 = 4d = 4 \\times 25 = 100$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 등차수열의 조건식으로부터 첫째항과 공차의 관계를 파악하고 유리화를 통해 시그마를 계산한다.\n조건 정리: 모든 항이 양수인 등차수열 $\\{a_n\\}$에 대하여 $\\sqrt{3a_1} = \\sqrt{a_9}$이고, $\\sum_{k=1}^{12} \\dfrac{1}{\\sqrt{a_{k+1}} + \\sqrt{a_k}} = \\dfrac{2}{5}$이다.\n풀이 방향: 첫 번째 식에서 첫째항과 공차의 관계를 구하고, 두 번째 식의 일반항을 분모의 유리화를 통해 정리한 후 대입한다.\n정석 풀이: 첫 번째 조건식의 양변을 제곱하면 $3a_1 = a_9$이다. 등차수열의 일반항을 대입하면 다음과 같다.\n$3a_1 = a_1 + 8d \\implies 2a_1 = 8d \\implies a_1 = 4d$\n두 번째 시그마 식의 일반항을 분모의 유리화를 통해 정리하면 다음과 같다.\n$\\dfrac{1}{\\sqrt{a_{k+1}} + \\sqrt{a_k}} = \\dfrac{\\sqrt{a_{k+1}} - \\sqrt{a_k}}{a_{k+1} - a_k} = \\dfrac{\\sqrt{a_{k+1}} - \\sqrt{a_k}}{d}$\n이를 시그마에 대입하여 전개하면 소거 형태가 된다.\n$\\dfrac{1}{d} \\sum_{k=1}^{12} (\\sqrt{a_{k+1}} - \\sqrt{a_k}) = \\dfrac{1}{d} (\\sqrt{a_{13}} - \\sqrt{a_1}) = \\dfrac{2}{5}$\n수열의 일반항을 공차 $d$로 표현하면 $a_1 = 4d$, $a_{13} = a_1 + 12d = 4d + 12d = 16d$이므로 대입하면 다음과 같다.\n$\\dfrac{1}{d} (\\sqrt{16d} - \\sqrt{4d}) = \\dfrac{1}{d} (4\\sqrt{d} - 2\\sqrt{d}) = \\dfrac{2\\sqrt{d}}{d} = \\dfrac{2}{\\sqrt{d}} = \\dfrac{2}{5}$\n따라서 $\\sqrt{d} = 5 \\implies d = 25$이다.\n첫째항 $a_1 = 4d = 4 \\times 25 = 100$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "rule_inferred",
@@ -482,7 +482,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "모든 항이 자연수이고 다음 조건을 만족하는 수열 $\\{a_n\\}$에 대하여, 가능한 모든 $a_1$의 값의 합은?\\n(가) 모든 자연수 $n$에 대하여 <div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td rowspan=\"2\">$a_{n+1}=$</td><td>$\\dfrac{a_n}{4}$</td><td>($a_n$이 4의 배수인 경우)</td></tr><tr><td>$a_n+3$</td><td>($a_n$이 4의 배수가 아닌 경우)</td></tr></tbody></table></div>이다.\\n(나) $n \\ge p$인 모든 자연수 $n$에 대하여 $a_{n+3}=a_n$이 성립하는 자연수 $p$의 최솟값은 3이다.",
+    "content": "모든 항이 자연수이고 다음 조건을 만족하는 수열 $\\{a_n\\}$에 대하여, 가능한 모든 $a_1$의 값의 합은?\n(가) 모든 자연수 $n$에 대하여 <div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td rowspan=\"2\">$a_{n+1}=$</td><td>$\\dfrac{a_n}{4}$</td><td>($a_n$이 4의 배수인 경우)</td></tr><tr><td>$a_n+3$</td><td>($a_n$이 4의 배수가 아닌 경우)</td></tr></tbody></table></div>이다.\n(나) $n \\ge p$인 모든 자연수 $n$에 대하여 $a_{n+3}=a_n$이 성립하는 자연수 $p$의 최솟값은 3이다.",
     "choices": [
       "166",
       "188",
@@ -547,7 +547,7 @@ window.questionBank = [
     "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라고 하자. $S_n = n^2 + 2n + 3$일 때, $a_1 + a_3 + a_5$의 값을 풀이과정과 함께 상세하게 서술하시오.",
     "choices": [],
     "answer": "24",
-    "solution": "[키포인트] 수열의 합과 일반항 사이의 관계 $a_n = S_n - S_{n-1}$을 이용하여 일반항을 구한다.\\n조건 정리: 첫째항부터 제$n$항까지의 합 $S_n = n^2 + 2n + 3$이다.\\n풀이 방향: $n=1$일 때와 $n \\ge 2$일 때를 나누어 일반항 $a_n$을 구한 후 각각의 항의 값을 더한다.\\n정석 풀이:\\n$n=1$일 때, $a_1 = S_1 = 1^2 + 2 \\times 1 + 3 = 6$이다.\\n$n \\ge 2$일 때, 일반항 $a_n$은 다음과 같다.\\n$a_n = S_n - S_{n-1} = (n^2 + 2n + 3) - ((n-1)^2 + 2(n-1) + 3)$\\n$a_n = (n^2 + 2n + 3) - (n^2 - 2n + 1 + 2n - 2 + 3) = 2n + 1$\\n따라서 구한 수열의 항의 값은 다음과 같다.\\n$a_1 = 6$\\n$a_3 = 2 \\times 3 + 1 = 7$\\n$a_5 = 2 \\times 5 + 1 = 11$\\n따라서 $a_1 + a_3 + a_5 = 6 + 7 + 11 = 24$이다.\\n따라서 구하는 값은 24이다.",
+    "solution": "[키포인트] 수열의 합과 일반항 사이의 관계 $a_n = S_n - S_{n-1}$을 이용하여 일반항을 구한다.\n조건 정리: 첫째항부터 제$n$항까지의 합 $S_n = n^2 + 2n + 3$이다.\n풀이 방향: $n=1$일 때와 $n \\ge 2$일 때를 나누어 일반항 $a_n$을 구한 후 각각의 항의 값을 더한다.\n정석 풀이:\n$n=1$일 때, $a_1 = S_1 = 1^2 + 2 \\times 1 + 3 = 6$이다.\n$n \\ge 2$일 때, 일반항 $a_n$은 다음과 같다.\n$a_n = S_n - S_{n-1} = (n^2 + 2n + 3) - ((n-1)^2 + 2(n-1) + 3)$\n$a_n = (n^2 + 2n + 3) - (n^2 - 2n + 1 + 2n - 2 + 3) = 2n + 1$\n따라서 구한 수열의 항의 값은 다음과 같다.\n$a_1 = 6$\n$a_3 = 2 \\times 3 + 1 = 7$\n$a_5 = 2 \\times 5 + 1 = 11$\n따라서 $a_1 + a_3 + a_5 = 6 + 7 + 11 = 24$이다.\n따라서 구하는 값은 24이다.",
     "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "rule_inferred",
