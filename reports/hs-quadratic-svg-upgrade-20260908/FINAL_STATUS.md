@@ -267,3 +267,12 @@ r23에서 최초 attach manifest의 `sourceJsPath` 누락으로 서로 다른 �
 r23 candidate bank validation은 59 source bank·1295 row·unique candidate visual 240건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 240건이 현재 candidate이고 139건이 남아 있다. fresh expected fact 누적은 현재 counting 기준 224건이며 206건이 남아 있다. current v2 preparation은 새 `hs-quadratic-r23c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다.
 
 r23 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current source solution static audit의 별도 잔여 11건, 전체 430 solution freeze, remaining fresh V1/V2/V3, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+## r24 mixed function/inequality continuation and render repair update (2026-09-09)
+
+r24는 8개 문항을 adaptive batch로 처리했다. 22 효천고 q13, q5·22 팔마고 q12·23 순천여고 q20·23 제일고 q18·24 매산고 q18/q19·24 제일고 q22를 대상으로 source-only expected fact → 독립 검산 → candidate SVG → artifact-only V2 → V3 parity → solution freeze → desktop/mobile local render 순서를 적용했다. 함수 그래프 3건과 수직선 5건에 대해 V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8을 기록했다.
+
+r24 최초 local render에서 22 효천고 q13의 긴 Cartesian summary label이 desktop/mobile 양쪽에서 overflow되어 2건으로 검출되었다. geometry와 fact hash는 유지하고 summary panel만 두 줄로 나누는 label-only repair를 적용했다. 수정 후 static 8/8, desktop/mobile 8/8 overflow 0, 수정 문항 q13의 targeted V2 1/1 및 targeted V3 1/1을 확인했다. 최초 overflow evidence와 repair lineage는 [r24 closure snapshot](326_current_closure_snapshot_r24_v3_closed.json)에 기록했다.
+
+r24 candidate bank validation은 59 source bank·1295 row·unique candidate visual 248건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 248건이 현재 candidate이고 131건이 남아 있다. fresh expected fact 누적은 현재 counting 기준 232건이며 198건이 남아 있다. current v2 preparation은 새 `hs-quadratic-r24c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다.
+
+r24 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current source solution static audit의 별도 잔여 11건, 전체 430 solution freeze, remaining fresh V1/V2/V3, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
