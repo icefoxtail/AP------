@@ -64,9 +64,10 @@ append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 �
 - 377개 `ADD_NEW_VISUAL` 대상 전체에 대한 fact model과 candidate SVG가 아직 생성되지 않았다. calibration 5건의 성공을 전체 분모에 복사하지 않는다.
 - 430문항 전체의 current solution freeze와 독립 A1/A2 검산, V1/V2/V3 closure가 아직 없다.
 - 전체 V1 packet은 입력 준비 상태일 뿐 expected fact를 확정한 독립 검수 결과가 아니다. 현재 solution freeze ledger는 430건 모두 `NOT_FROZEN`으로 남아 있다.
-- 과거 unit inventory/expected-fact와 현재 source를 raw hash·UID로 대조한 결과, 289건만 legacy identity/hash와 정렬되고 141건은 current exam identity 변경으로 legacy UID가 달라졌다. 이 141건을 포함해 전체 current V1/A1을 새로 검수해야 하며, legacy evidence를 자동 승계하지 않았다.
+- 과거 unit inventory/expected-fact와 현재 source를 path+qid 및 raw hash로 대조한 결과, 430건 모두 대응 행을 찾았고 425건은 content/choices/answer/solution hash가 일치했다. 5건은 현재 source 값이 달라졌고, 141건은 current exam identity 변경으로 legacy UID가 달라졌다. 이 결과는 diagnostic alignment일 뿐이며, 전체 current V1/A1을 새로 검수해야 하고 legacy evidence를 자동 승계하지 않았다.
 - 실제 browser desktop/mobile `exam/solution/answer` capture 및 독립 render review는 아직 `NOT_TESTED`다. CUA가 local file URL을 보안정책으로 거부했고, 현재 Node runtime에서는 Playwright/Puppeteer import도 사용할 수 없었다. 우회 접근은 하지 않았다.
 - current pipeline-core provider-preflight/dispatch 기반 provider-attested `FINAL_AUDIT`는 실행되지 않았다. local static/V1/V2/V3 결과를 provider evidence로 가장하지 않았다.
+- current pipeline-core v2가 요구하는 승인된 `QUESTION_UID_v2` source-exam registry가 저장소에서 발견되지 않았다. source title로 새 ID를 임의 생성하지 않았으므로 registry authority가 없는 상태에서는 prepare-v2/freeze/audit-v2를 final evidence로 만들지 않는다.
 
 따라서 이 보고서의 상태는 `IN_PROGRESS / CANDIDATE_ONLY / FINAL_PASS_FORBIDDEN`이다.
 최종 `PASS`·`SEALED`·production promotion은 선언하지 않는다.
@@ -87,4 +88,5 @@ append-only 진단 lineage로 남아 있다. r3에서 q20/q22의 좌표계를 �
 - [full-scope V1 packet validation](18_full_scope_v1_packet_validation.json)
 - [full-scope solution freeze ledger](16_full_scope_solution_freeze_ledger.json)
 - [full-scope adaptive batch plan](17_full_scope_batch_plan.json)
-- [full-scope legacy evidence alignment](19_legacy_evidence_alignment.json)
+- [full-scope legacy evidence alignment](19_legacy_evidence_alignment_v2.json)
+- [current pipeline requirements/blockers](20_current_pipeline_requirements.json)
