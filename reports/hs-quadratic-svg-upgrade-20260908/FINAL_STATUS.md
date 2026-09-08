@@ -276,3 +276,12 @@ r24 최초 local render에서 22 효천고 q13의 긴 Cartesian summary label이
 r24 candidate bank validation은 59 source bank·1295 row·unique candidate visual 248건·source protected parity 오류 0으로 끝났다. 전체 visual target 379건 중 248건이 현재 candidate이고 131건이 남아 있다. fresh expected fact 누적은 현재 counting 기준 232건이며 198건이 남아 있다. current v2 preparation은 새 `hs-quadratic-r24c` work-batch에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다.
 
 r24 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. current source solution static audit의 별도 잔여 11건, 전체 430 solution freeze, remaining fresh V1/V2/V3, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+## r26 source-solution repair and affected-visual closure update (2026-09-09)
+
+r26은 current source solution static audit에서 발견했던 11건을 source/solution 수정 프로토콜에 따라 보정했다. 8건의 generic solution placeholder를 학생 재현 가능한 풀이로 교체하고, 2건의 포물선 볼록 방향 문장을 수정했으며, 26 금당고 q16의 stale answer-conflict 문구를 제거했다. content와 answer는 수정하지 않았다. post-fix source audit는 430/430, generic 0, stale conflict 0, direction contradiction 0, issueRows 0이고, 독립 solution recheck는 11/11이다.
+
+source solution 변경으로 stale 될 수 있었던 affected visual 11건은 기존 SVG를 그대로 재사용하지 않고 source-only V1 expected facts 11/11 → 새 r26 candidate SVG 11개 → artifact-only V2 11/11 → V3 11/11 → solution freeze 11/11 → desktop/mobile local render 11/11, overflow 0 순서로 다시 닫았다. q16의 꼭짓점 표시에서 exact `−105/64`와 5자리 Python/JS 반올림 표기가 달라졌던 1건은 exact fact를 바꾸지 않고 bounded display-rounding comparison으로 보정했다.
+
+r26 current candidate bank는 59 source bank·1295 row·visual binding 248건이며 content/choices/answer/image/solution parity drift 0, asset 오류 0이다. 최신 상태는 [r26 source-solution repaired snapshot](365_current_closure_snapshot_r26_source_solution_repaired.json)이다. current v2 preparation은 `hs-quadratic-r26c`에서 59 run·430/430·오류 0, machine evidence 860개·validation 오류 0이다.
+
+r26은 source/solution residual과 affected visual stale를 해소한 것이며 전체 final PASS는 아니다. 남은 131개 candidate visual, 187개 fresh expected fact, full 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 full-scope browser desktop/mobile capture 및 independent render review, registry 15건 authority, DB/question-index/production promotion이 아직 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
