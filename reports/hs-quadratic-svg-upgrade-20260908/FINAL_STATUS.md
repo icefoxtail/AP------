@@ -354,3 +354,13 @@ r33 candidate bank validation은 59 source bank·1295 row·current candidate vis
 r33 current V2 preparation은 새 `hs-quadratic-r33d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r33 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 72개 candidate visual, 128개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r34 discrete/function continuation update (2026-09-09)
+
+r34는 8개 문항을 처리했다. 23 충무고 q16·23 여수여고 q18·25 팔마고 q10/q15·25 매산고 q12는 함수·판별식 관계를 cartesian SVG로 구성했고, 23 여천고 q23·25 효천고 q16/q21은 정수·매개변수 조건을 수직선 SVG로 구성했다. 정수 제약이 있는 q23은 연속 최댓값 그래프 대신 가능한 정수 매개변수 $4,5$를 표시해 이산 최댓값 $80$을 보존했다. 함수 그래프 5건과 수직선 3건에 대해 source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+r34 candidate bank validation은 59 source bank·1295 row·current candidate visual 315건·candidate solution drift 0·asset 오류 0으로 끝났다. 전체 visual target 379건 중 현재 candidate 315건, 잔여 64건이다. fresh expected fact 누적은 현재 counting 기준 310건, 잔여 120건이다. 최신 상태는 [r34 V3 closure snapshot](488_current_closure_snapshot_r34_v3_closed.json)이다.
+
+r34 current V2 preparation은 새 `hs-quadratic-r34d` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r34 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 64개 candidate visual, 120개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
