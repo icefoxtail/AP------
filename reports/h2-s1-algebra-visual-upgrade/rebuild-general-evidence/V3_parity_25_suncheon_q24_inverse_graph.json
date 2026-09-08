@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_순천고_1학기_중간_고2_대수::q24",
+  "expectedFacts": {
+    "type": "shifted_inverse_graph",
+    "symmetry": "y=x−2",
+    "line": "y=−x+6",
+    "C": [
+      0,
+      6
+    ],
+    "M": [
+      4,
+      2
+    ],
+    "A": [
+      3,
+      3
+    ],
+    "B": [
+      5,
+      1
+    ],
+    "a": 3
+  },
+  "observedFacts": {
+    "A": [
+      3,
+      3
+    ],
+    "B": [
+      5,
+      1
+    ],
+    "C": [
+      0,
+      6
+    ],
+    "M": [
+      4,
+      2
+    ],
+    "a": 3,
+    "line": "y=−x+6",
+    "symmetry": "y=x−2",
+    "type": "shifted_inverse_graph"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_순천고_1학기_중간_고2_대수::q24",
+    "independentDerivation": "Use inverse symmetry about y=x−2 for the two shifted graphs. Midpoint M of A,B is (4,2); AB:AC=2:3 puts A=(3,3), so a^{3−2}=3 and a=3.",
+    "computedAnswer": "3",
+    "sourceAnswer": "3",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

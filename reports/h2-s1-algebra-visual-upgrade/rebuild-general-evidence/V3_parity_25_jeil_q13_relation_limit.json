@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_제일고_1학기_중간_고2_대수::q13",
+  "expectedFacts": {
+    "type": "graph_fact_limit",
+    "known": "1<b<a",
+    "undetermined": "a versus b²",
+    "examples": [
+      "(3,2): a<b²",
+      "(8,2): a>b²"
+    ],
+    "status": "underdetermined"
+  },
+  "observedFacts": {
+    "examples": [
+      "(3,2): a<b²",
+      "(8,2): a>b²"
+    ],
+    "known": "1<b<a",
+    "status": "underdetermined",
+    "type": "graph_fact_limit",
+    "undetermined": "a versus b²"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_제일고_1학기_중간_고2_대수::q13",
+    "independentDerivation": "The embedded graph establishes only 1<b<a. The sign of (a/b)^x−b^x depends on a versus b², which is not fixed; examples (a,b)=(3,2) and (8,2) give different shapes. The repaired source records the item as underdetermined.",
+    "computedAnswer": "조건 불충분",
+    "sourceAnswer": "조건 불충분 (repaired)",
+    "answerComparison": "MATCH_AFTER_SOURCE_ADJUDICATION",
+    "solutionDisposition": "REWRITE",
+    "visualDisposition": "REBUILD_EXISTING_SOURCE_LIMITATION",
+    "logicStatus": "PASS",
+    "adjudication": "GRAPH_FACT_LIMITATION_RECORDED"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

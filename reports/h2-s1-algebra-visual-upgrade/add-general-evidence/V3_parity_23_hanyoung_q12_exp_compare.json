@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "23_한영고_1학기_중간_고2_대수::q12",
+  "expectedFacts": {
+    "type": "exponential_order",
+    "domain": "x<0",
+    "relation": "a<b",
+    "statements": [
+      "a>1⇒b>1",
+      "0<a<1 does not force b>1",
+      "0<b<1⇒ab<1"
+    ],
+    "correct": "ㄱ,ㄷ"
+  },
+  "observedFacts": {
+    "correct": "ㄱ,ㄷ",
+    "domain": "x<0",
+    "relation": "a<b",
+    "statements": [
+      "a>1⇒b>1",
+      "0<a<1 does not force b>1",
+      "0<b<1⇒ab<1"
+    ],
+    "type": "exponential_order"
+  },
+  "solutionFreeze": {
+    "questionUid": "23_한영고_1학기_중간_고2_대수::q12",
+    "independentDerivation": "For x<0, a^x>b^x means a<b. Thus ㄱ true, ㄴ false, and 0<a<b<1 implies ab<1, so ㄱ,ㄷ.",
+    "computedAnswer": "③",
+    "sourceAnswer": "③",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

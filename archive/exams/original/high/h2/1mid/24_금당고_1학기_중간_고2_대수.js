@@ -704,7 +704,7 @@ window.questionBank = [
     "id": 21,
     "content": "<div class=\"box\">$a>2$인 실수 $a$에 대하여 기울기가 $-1$인 직선이 두 곡선 $y=a^{x-3}$, $y=\\log_a(x-3)$과 만나는 점을 각각 A, B라 하자. 점 C(3, 0)에 대하여 삼각형 ABC의 넓이가 10이고 선분 AB의 중점의 $x$좌표가 $\\frac{11}{2}$일 때, $a$의 값을 구하시오. [10]</div>",
     "choices": [],
-    "answer": "\\left(\\frac{27}{4}\\right)^{\\frac{4}{5}}",
+    "answer": "$\\frac{81}{4}$",
     "category": "로그함수와 지수함수",
     "originalCategory": "로그함수와 지수함수",
     "standardCourse": "대수",
@@ -724,7 +724,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "기울기가 $-1$ 인 직선을 $y=-x+k$ 라 하자. 두 곡선은 서로 역함수이므로 교점 A, B 는 서로 좌표가 뒤바뀌며, 선분 AB 의 중점의 $x$ 좌표가 $\\frac{11}{2}$ 이므로 직선은 $y=-x+11$ 이다. 따라서 $A=(x,11-x)$, $B=(11-x,x)$ 로 둘 수 있다.<br><div style='text-align:center; margin: 10px 0;'><svg viewBox='0 0 320 300' preserveAspectRatio='xMidYMid meet'><line x1='20' y1='260' x2='300' y2='260' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><line x1='40' y1='280' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><defs><marker id='arrow' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='4' markerHeight='4' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><polygon points='125,125 175,175 100,260' fill='rgba(255,200,0,0.2)' stroke='orange' stroke-width='1'/><line x1='40' y1='40' x2='260' y2='260' stroke='blue' stroke-width='1.5'/><line x1='20' y1='280' x2='240' y2='60' stroke='gray' stroke-dasharray='4 4' stroke-width='1'/><path d='M 40,258 Q 80,255 100,240 T 125,125 Q 135,60 145,20' fill='none' stroke='black' stroke-width='1.5'/><path d='M 102,280 Q 105,270 120,260 T 175,175 Q 240,165 280,155' fill='none' stroke='black' stroke-width='1.5'/><circle cx='125' cy='125' r='3' fill='red'/><circle cx='175' cy='175' r='3' fill='red'/><circle cx='100' cy='260' r='3' fill='black'/><text x='110' y='120' font-size='10'>A(17/4, 27/4)</text><text x='185' y='175' font-size='10'>B(27/4, 17/4)</text><text x='95' y='275' font-size='10'>C(3, 0)</text><text x='45' y='35' font-size='10' fill='blue'>y=-x+11</text><text x='130' y='200' font-size='10' fill='orange' font-weight='bold'>Area=10</text><text x='25' y='275' font-size='10'>O</text><text x='305' y='250' font-size='10' font-style='italic'>x</text><text x='25' y='25' font-size='10' font-style='italic'>y</text></svg></div><br>점 $C=(3,0)$ 이므로 삼각형 ABC 의 넓이 조건에서 $\\frac{1}{2}|(x-3)x-(11-x)(8-x)|=10$ 이고, 이를 정리하면 $|4x-22|=5$ 이다. 따라서 $x=\\frac{27}{4}$ 또는 $x=\\frac{17}{4}$ 이다. A 가 $y=a^{x-3}$ 위의 점이어야 하고 $a>2$ 이므로 가능한 값은 $x=\\frac{17}{4}$ 이다. 이때 $a^{\\frac{5}{4}}=\\frac{27}{4}$ 이므로 $a=\\left(\\frac{27}{4}\\right)^{\\frac{4}{5}}$ 이다.",
+    "solution": "좌표를 평행이동하여 u=x-3이라 두면 두 곡선은 y=a^u, y=log_a u이고, 직선은 y=8-u이다. 두 곡선의 교점은 (u,v)와 (v,u)의 형태로 대응하므로 주어진 중점 x좌표 11/2에서 u+v=5, 즉 직선은 y=-x+8이다.\n\n삼각형의 두 교점을 A=(u+3,5-u), B=(8-u,u)라 하고 C=(3,0)이라 하자. 넓이 조건에서 1/2 |det(A-C,B-C)| = 1/2 |u^2-(5-u)^2| = 10이다.\n\n이므로 |10u-25|=20이다. 따라서 u=1/2 또는 9/2이다. a>2이고 A가 y=a^u 위에 있어야 하므로 u=1/2를 선택한다. 이때 A=(7/2,9/2)이고 a^{1/2}=9/2이므로 a=81/4이다.\n\n따라서 구하는 값은 $\\frac{81}{4}$이다.",
     "level": "중",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "exponential function",

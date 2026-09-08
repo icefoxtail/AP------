@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_제일고_1학기_중간_고2_대수::q19",
+  "expectedFacts": {
+    "type": "parabola_log_inequality",
+    "function": "f(x)=(x−2)(x−4)",
+    "domain": "x<2 or x>4",
+    "bound": "0≤x≤6",
+    "integer_solutions": [
+      0,
+      1,
+      5,
+      6
+    ],
+    "count": 4
+  },
+  "observedFacts": {
+    "bound": "0≤x≤6",
+    "count": 4,
+    "domain": "x<2 or x>4",
+    "function": "f(x)=(x−2)(x−4)",
+    "integer_solutions": [
+      0,
+      1,
+      5,
+      6
+    ],
+    "type": "parabola_log_inequality"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_제일고_1학기_중간_고2_대수::q19",
+    "independentDerivation": "Parabola through (2,0),(4,0),(0,8) is f=(x−2)(x−4). Domain f>0 and f≤8 gives x∈[0,2)∪(4,6], integers 0,1,5,6: count 4.",
+    "computedAnswer": "4",
+    "sourceAnswer": "②",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "24_금당고_1학기_중간_고2_대수::q17",
+  "expectedFacts": {
+    "type": "piecewise_cos",
+    "k_values": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "counts": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "sum": 9
+  },
+  "observedFacts": {
+    "counts": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "k_values": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "sum": 9,
+    "type": "piecewise_cos"
+  },
+  "solutionFreeze": {
+    "questionUid": "24_금당고_1학기_중간_고2_대수::q17",
+    "independentDerivation": "Counting intersections for k=1..5 gives 2,2,1,2,2; sum=9.",
+    "computedAnswer": "9",
+    "sourceAnswer": "④",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

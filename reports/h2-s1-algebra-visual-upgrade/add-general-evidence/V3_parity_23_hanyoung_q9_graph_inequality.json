@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "23_한영고_1학기_중간_고2_대수::q9",
+  "expectedFacts": {
+    "type": "graph_inequality",
+    "reduction": "f(x)>g(x)",
+    "intersections": [
+      -3,
+      -1,
+      2
+    ],
+    "solution": "(-3,-1)∪(2,∞)"
+  },
+  "observedFacts": {
+    "intersections": [
+      -3,
+      -1,
+      2
+    ],
+    "reduction": "f(x)>g(x)",
+    "solution": "(-3,-1)∪(2,∞)",
+    "type": "graph_inequality"
+  },
+  "solutionFreeze": {
+    "questionUid": "23_한영고_1학기_중간_고2_대수::q9",
+    "independentDerivation": "The inequality reduces to f(x)>g(x); using the source graph’s intersections −3,−1,2, the upper intervals are (−3,−1)∪(2,∞), option ④.",
+    "computedAnswer": "④",
+    "sourceAnswer": "④",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

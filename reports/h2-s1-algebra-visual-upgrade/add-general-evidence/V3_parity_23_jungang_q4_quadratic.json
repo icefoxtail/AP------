@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "23_중앙여고_1학기_중간_고2_대수::q4",
+  "expectedFacts": {
+    "type": "log_quadratic",
+    "substitution": "t=log₂x",
+    "quadratic": "t²−2t−log₂k≥0",
+    "discriminant": "D≤0",
+    "k_range": "0<k≤1/2"
+  },
+  "observedFacts": {
+    "discriminant": "D≤0",
+    "k_range": "0<k≤1/2",
+    "quadratic": "t²−2t−log₂k≥0",
+    "substitution": "t=log₂x",
+    "type": "log_quadratic"
+  },
+  "solutionFreeze": {
+    "questionUid": "23_중앙여고_1학기_중간_고2_대수::q4",
+    "independentDerivation": "Set t=log2x; requiring t²−2t−log2k≥0 for all real t gives discriminant≤0, k≤1/2; k>0.",
+    "computedAnswer": "0<k≤1/2",
+    "sourceAnswer": "①",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

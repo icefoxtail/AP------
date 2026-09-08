@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_매산고_1학기_중간_고2_대수::q18",
+  "expectedFacts": {
+    "type": "sector_annulus",
+    "perimeter": 48,
+    "variable": "x=r₂−r₁",
+    "area": "−x²+24x",
+    "max_x": 12,
+    "max_area": 144
+  },
+  "observedFacts": {
+    "area": "−x²+24x",
+    "max_area": 144,
+    "max_x": 12,
+    "perimeter": 48,
+    "type": "sector_annulus",
+    "variable": "x=r₂−r₁"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_매산고_1학기_중간_고2_대수::q18",
+    "independentDerivation": "From common-angle sector geometry, area is −x²+24x with perimeter constraint; maximum at x=12.",
+    "computedAnswer": "12",
+    "sourceAnswer": "12",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "SOURCE_REVIEW_REQUIRED",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

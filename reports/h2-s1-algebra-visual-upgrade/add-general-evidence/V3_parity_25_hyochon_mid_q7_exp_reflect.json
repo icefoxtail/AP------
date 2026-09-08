@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_효천고_1학기_중간_고2_대수::q7",
+  "expectedFacts": {
+    "type": "exponential_transform",
+    "expression": "y=2^(−x)−3",
+    "origin": "y=2^x",
+    "reflection": "y-axis",
+    "vertical_shift": -3,
+    "asymptote": "y=−3",
+    "wrong_statement": "x-axis reflection"
+  },
+  "observedFacts": {
+    "asymptote": "y=−3",
+    "expression": "y=2^(−x)−3",
+    "origin": "y=2^x",
+    "reflection": "y-axis",
+    "type": "exponential_transform",
+    "vertical_shift": -3,
+    "wrong_statement": "x-axis reflection"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_효천고_1학기_중간_고2_대수::q7",
+    "independentDerivation": "Only statement ⑤ is false: y=2^(−x) is y-axis reflection, not x-axis reflection, of y=2^x.",
+    "computedAnswer": "⑤",
+    "sourceAnswer": "⑤",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

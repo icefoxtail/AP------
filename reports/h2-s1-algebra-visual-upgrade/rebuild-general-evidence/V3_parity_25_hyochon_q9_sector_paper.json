@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_효천고_1학기_중간_고2_대수::q9",
+  "expectedFacts": {
+    "type": "sector_annulus",
+    "angle": "2π/3",
+    "outer_radius": 12,
+    "inner_radius": 6,
+    "area": "36π"
+  },
+  "observedFacts": {
+    "angle": "2π/3",
+    "area": "36π",
+    "inner_radius": 6,
+    "outer_radius": 12,
+    "type": "sector_annulus"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_효천고_1학기_중간_고2_대수::q9",
+    "independentDerivation": "Annular sector area=(1/2)(2π/3)(12²−6²)=36π.",
+    "computedAnswer": "36π",
+    "sourceAnswer": "②",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

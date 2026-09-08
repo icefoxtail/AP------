@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_효천고_1학기_기말_고2_대수::q23",
+  "expectedFacts": {
+    "type": "equal_radius_geometry",
+    "radius_symbol": "R",
+    "AB": 2,
+    "O1D": "4√2",
+    "target": 14,
+    "collinearities": [
+      "A,O1,O2",
+      "C,O2,D"
+    ],
+    "angle_relation": "θ3=θ1+θ2"
+  },
+  "observedFacts": {
+    "AB": 2,
+    "O1D": "4√2",
+    "angle_relation": "θ3=θ1+θ2",
+    "collinearities": [
+      "A,O1,O2",
+      "C,O2,D"
+    ],
+    "radius_symbol": "R",
+    "target": 14,
+    "type": "equal_radius_geometry"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_효천고_1학기_기말_고2_대수::q23",
+    "independentDerivation": "The angle/collinearity relations give θ3=180°−θ1 and θ1+θ2/2=90°. Cosine-law equations for AB=2 and O1D=4√2 yield R²=9 and 2R²cosθ1=14, which equals CO2·O2D.",
+    "computedAnswer": "14",
+    "sourceAnswer": "14",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

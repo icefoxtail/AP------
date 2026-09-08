@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "24_금당고_1학기_중간_고2_대수::q19",
+  "expectedFacts": {
+    "type": "absolute_sine",
+    "expression": "|6sin2x+3|",
+    "f3": 7,
+    "target_count": 4,
+    "t_range": "3<t<9"
+  },
+  "observedFacts": {
+    "expression": "|6sin2x+3|",
+    "f3": 7,
+    "t_range": "3<t<9",
+    "target_count": 4,
+    "type": "absolute_sine"
+  },
+  "solutionFreeze": {
+    "questionUid": "24_금당고_1학기_중간_고2_대수::q19",
+    "independentDerivation": "f(3)=7 forces y=|6sin2x+3|; horizontal level has four intersections exactly for 3<t<9.",
+    "computedAnswer": "3<t<9",
+    "sourceAnswer": "3<t<9",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

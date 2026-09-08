@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "apmath-add-general-v1-source-only",
+  "status": "PASS",
+  "questionUid": "23_한영고_1학기_중간_고2_대수::q12",
+  "sourceJsPath": "archive/exams/original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+  "id": 12,
+  "anchors": [
+    {
+      "anchor": "x < 0",
+      "found": true
+    },
+    {
+      "anchor": "a^x",
+      "found": true
+    },
+    {
+      "anchor": "b^x",
+      "found": true
+    },
+    {
+      "anchor": "ab < 1",
+      "found": true
+    }
+  ],
+  "expectedFacts": {
+    "type": "exponential_order",
+    "domain": "x<0",
+    "relation": "a<b",
+    "statements": [
+      "a>1⇒b>1",
+      "0<a<1 does not force b>1",
+      "0<b<1⇒ab<1"
+    ],
+    "correct": "ㄱ,ㄷ"
+  },
+  "sourceTextLength": 487
+}

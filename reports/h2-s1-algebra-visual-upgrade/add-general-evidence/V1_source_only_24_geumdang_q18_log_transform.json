@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "apmath-add-general-v1-source-only",
+  "status": "PASS",
+  "questionUid": "24_금당고_1학기_중간_고2_대수::q18",
+  "sourceJsPath": "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js",
+  "id": 18,
+  "anchors": [
+    {
+      "anchor": "log_2 x",
+      "found": true
+    },
+    {
+      "anchor": "-3",
+      "found": true
+    },
+    {
+      "anchor": "1/2",
+      "found": true
+    },
+    {
+      "anchor": "1/8",
+      "found": true
+    }
+  ],
+  "expectedFacts": {
+    "type": "log_transform",
+    "start": "y=log₂x",
+    "vertical_shift": -3,
+    "reflection": "x-axis",
+    "result": "y=log_{1/2}(x/8)",
+    "a": "1/2",
+    "b": "1/8",
+    "sum": "5/8"
+  },
+  "sourceTextLength": 489
+}

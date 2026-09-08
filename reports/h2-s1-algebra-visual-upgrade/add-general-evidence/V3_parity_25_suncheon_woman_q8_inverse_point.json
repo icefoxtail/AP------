@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_순천여고_1학기_중간_고2_대수::q8",
+  "expectedFacts": {
+    "type": "inverse_graph",
+    "function": "f(x)=log₂(x−a)+2",
+    "given_inverse_point": [
+      "a+4",
+      "a+2"
+    ],
+    "mapped_original_point": [
+      "a+2",
+      "a+4"
+    ],
+    "a": -1
+  },
+  "observedFacts": {
+    "a": -1,
+    "function": "f(x)=log₂(x−a)+2",
+    "given_inverse_point": [
+      "a+4",
+      "a+2"
+    ],
+    "mapped_original_point": [
+      "a+2",
+      "a+4"
+    ],
+    "type": "inverse_graph"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_순천여고_1학기_중간_고2_대수::q8",
+    "independentDerivation": "Inverse point (a+4,a+2) maps to original point (a+2,a+4); f(a+2)=3, so a=−1.",
+    "computedAnswer": "−1",
+    "sourceAnswer": "⑤",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

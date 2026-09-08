@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_순천여고_1학기_중간_고2_대수::q18",
+  "expectedFacts": {
+    "type": "periodic_vs_log",
+    "period": 2,
+    "intersection_count": 98,
+    "base": 99,
+    "n": 33,
+    "peak_height": 1
+  },
+  "observedFacts": {
+    "base": 99,
+    "intersection_count": 98,
+    "n": 33,
+    "peak_height": 1,
+    "period": 2,
+    "type": "periodic_vs_log"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_순천여고_1학기_중간_고2_대수::q18",
+    "independentDerivation": "Periodic tent function meets log_{3n}x in 98 points when 3n=99, so n=33.",
+    "computedAnswer": "33",
+    "sourceAnswer": "③",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

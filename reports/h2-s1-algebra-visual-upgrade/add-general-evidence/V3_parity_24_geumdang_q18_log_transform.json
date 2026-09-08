@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "24_금당고_1학기_중간_고2_대수::q18",
+  "expectedFacts": {
+    "type": "log_transform",
+    "start": "y=log₂x",
+    "vertical_shift": -3,
+    "reflection": "x-axis",
+    "result": "y=log_{1/2}(x/8)",
+    "a": "1/2",
+    "b": "1/8",
+    "sum": "5/8"
+  },
+  "observedFacts": {
+    "a": "1/2",
+    "b": "1/8",
+    "reflection": "x-axis",
+    "result": "y=log_{1/2}(x/8)",
+    "start": "y=log₂x",
+    "sum": "5/8",
+    "type": "log_transform",
+    "vertical_shift": -3
+  },
+  "solutionFreeze": {
+    "questionUid": "24_금당고_1학기_중간_고2_대수::q18",
+    "independentDerivation": "Reflection transforms y=log2x−3 to y=log_{1/2}(x/8), so a+b=1/2+1/8=5/8.",
+    "computedAnswer": "5/8",
+    "sourceAnswer": "5/8",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

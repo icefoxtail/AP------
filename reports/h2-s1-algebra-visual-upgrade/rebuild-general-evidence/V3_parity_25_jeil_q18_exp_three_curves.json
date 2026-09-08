@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_제일고_1학기_중간_고2_대수::q18",
+  "expectedFacts": {
+    "type": "three_exponential_curves",
+    "P_x_ratio": "1:2",
+    "t": "1/3",
+    "curves": [
+      "t·2^x",
+      "2^(−x)",
+      "−2^x+4"
+    ]
+  },
+  "observedFacts": {
+    "P_x_ratio": "1:2",
+    "curves": [
+      "t·2^x",
+      "2^(−x)",
+      "−2^x+4"
+    ],
+    "t": "1/3",
+    "type": "three_exponential_curves"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_제일고_1학기_중간_고2_대수::q18",
+    "independentDerivation": "Source graph/coordinate equations give P,Q x-ratio 1:2 and t=1/3.",
+    "computedAnswer": "1/3",
+    "sourceAnswer": "④",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_제일고_1학기_중간_고2_대수::q7",
+  "expectedFacts": {
+    "type": "log_asymptote",
+    "log_expression": "y=log₃(x−1)",
+    "asymptote": "x=1",
+    "line": "y=2^(−x)+t",
+    "intersection_on_x_axis": [
+      1,
+      0
+    ],
+    "t": "−1/2"
+  },
+  "observedFacts": {
+    "asymptote": "x=1",
+    "intersection_on_x_axis": [
+      1,
+      0
+    ],
+    "line": "y=2^(−x)+t",
+    "log_expression": "y=log₃(x−1)",
+    "t": "−1/2",
+    "type": "log_asymptote"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_제일고_1학기_중간_고2_대수::q7",
+    "independentDerivation": "Asymptote x=1; point on x-axis is (1,0), so 1/2+t=0 and t=−1/2.",
+    "computedAnswer": "−1/2",
+    "sourceAnswer": "③",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

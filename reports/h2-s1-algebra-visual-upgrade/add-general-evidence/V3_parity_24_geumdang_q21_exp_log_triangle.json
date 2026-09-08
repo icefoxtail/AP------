@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "24_금당고_1학기_중간_고2_대수::q21",
+  "expectedFacts": {
+    "type": "exp_log_triangle",
+    "translated_line": "y=8−u",
+    "midpoint_x": "11/2",
+    "A": [
+      "7/2",
+      "9/2"
+    ],
+    "C": [
+      3,
+      0
+    ],
+    "a": "81/4",
+    "area": 10
+  },
+  "observedFacts": {
+    "A": [
+      "7/2",
+      "9/2"
+    ],
+    "C": [
+      3,
+      0
+    ],
+    "a": "81/4",
+    "area": 10,
+    "midpoint_x": "11/2",
+    "translated_line": "y=8−u",
+    "type": "exp_log_triangle"
+  },
+  "solutionFreeze": {
+    "questionUid": "24_금당고_1학기_중간_고2_대수::q21",
+    "independentDerivation": "Corrected coordinate derivation: shifted variable u=x−3 makes the line y=8−u. Area gives u=1/2 or 9/2; a>2 selects u=1/2, so √a=9/2 and a=81/4.",
+    "computedAnswer": "81/4",
+    "sourceAnswer": "81/4 (repaired)",
+    "answerComparison": "REPAIRED_MATCH",
+    "solutionDisposition": "REWRITE",
+    "repairApplied": "Replaced invalid inverse-symmetry solution and answer with coordinate proof.",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

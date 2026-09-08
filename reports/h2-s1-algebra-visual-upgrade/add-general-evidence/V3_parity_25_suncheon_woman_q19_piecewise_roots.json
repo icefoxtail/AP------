@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_순천여고_1학기_중간_고2_대수::q19",
+  "expectedFacts": {
+    "type": "piecewise_graph",
+    "right_root": 8,
+    "left_root": 3,
+    "AB": 5,
+    "a": 2,
+    "b": "2^(−1/3)",
+    "value": 4
+  },
+  "observedFacts": {
+    "AB": 5,
+    "a": 2,
+    "b": "2^(−1/3)",
+    "left_root": 3,
+    "right_root": 8,
+    "type": "piecewise_graph",
+    "value": 4
+  },
+  "solutionFreeze": {
+    "questionUid": "25_순천여고_1학기_중간_고2_대수::q19",
+    "independentDerivation": "a=2 from f(12)=a/2; roots are x=8 and x=3, so b^(−3)=2 and (ab)^3=4.",
+    "computedAnswer": "4",
+    "sourceAnswer": "②",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

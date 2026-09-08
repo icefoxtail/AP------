@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_매산고_1학기_중간_고2_대수::q11",
+  "expectedFacts": {
+    "type": "sine_parameters",
+    "expression": "y=2sin(2x+3π/2)+1",
+    "amplitude": 2,
+    "midline": 1,
+    "period": "π",
+    "max_points": [
+      "π/2",
+      "3π/2"
+    ],
+    "value": 3
+  },
+  "observedFacts": {
+    "amplitude": 2,
+    "expression": "y=2sin(2x+3π/2)+1",
+    "max_points": [
+      "π/2",
+      "3π/2"
+    ],
+    "midline": 1,
+    "period": "π",
+    "type": "sine_parameters",
+    "value": 3
+  },
+  "solutionFreeze": {
+    "questionUid": "25_매산고_1학기_중간_고2_대수::q11",
+    "independentDerivation": "Graph facts give a=2,d=1,b=4,c=5π/8; 5ab+8cd=13.",
+    "computedAnswer": "13",
+    "sourceAnswer": "②",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

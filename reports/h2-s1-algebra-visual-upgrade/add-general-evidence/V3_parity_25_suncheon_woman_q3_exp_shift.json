@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_순천여고_1학기_중간_고2_대수::q3",
+  "expectedFacts": {
+    "type": "exp_transform",
+    "original": "(1/2)^x+1",
+    "after_y_reflection": "2^x+1",
+    "target": "2^(x−3)+5",
+    "horizontal_shift": 3,
+    "vertical_shift": 4,
+    "product": 12
+  },
+  "observedFacts": {
+    "after_y_reflection": "2^x+1",
+    "horizontal_shift": 3,
+    "original": "(1/2)^x+1",
+    "product": 12,
+    "target": "2^(x−3)+5",
+    "type": "exp_transform",
+    "vertical_shift": 4
+  },
+  "solutionFreeze": {
+    "questionUid": "25_순천여고_1학기_중간_고2_대수::q3",
+    "independentDerivation": "Reflect gives 2^x+1; shifts produce 2^(x−a)+1+b=2^(x−3)+5, so a=3,b=4, ab=12.",
+    "computedAnswer": "12",
+    "sourceAnswer": "⑤",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

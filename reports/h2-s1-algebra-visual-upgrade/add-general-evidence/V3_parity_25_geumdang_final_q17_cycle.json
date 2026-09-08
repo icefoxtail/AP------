@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_금당고_1학기_기말_고2_수학I::q17",
+  "expectedFacts": {
+    "type": "state_cycle",
+    "cycle": [
+      8,
+      2,
+      5
+    ],
+    "period": 3,
+    "first_period_index": 3,
+    "a1_values": [
+      17,
+      80,
+      29,
+      128
+    ]
+  },
+  "observedFacts": {
+    "a1_values": [
+      17,
+      80,
+      29,
+      128
+    ],
+    "cycle": [
+      8,
+      2,
+      5
+    ],
+    "first_period_index": 3,
+    "period": 3,
+    "type": "state_cycle"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_금당고_1학기_기말_고2_수학I::q17",
+    "independentDerivation": "The 3-cycle is 2→5→8→2. Enforcing first entry at n=3 yields a1=17,80 when a3=5 and 29,128 when a3=8; sum=254.",
+    "computedAnswer": "254",
+    "sourceAnswer": "⑤",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

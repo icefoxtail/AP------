@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "apmath-rebuild-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "25_순천고_1학기_중간_고2_대수::q5",
+  "expectedFacts": {
+    "type": "exponential_graph",
+    "expression": "y=2^(x+2)−2",
+    "asymptote": "y=−2",
+    "point": [
+      0,
+      2
+    ],
+    "a": -2,
+    "b": -2,
+    "product": 4
+  },
+  "observedFacts": {
+    "a": -2,
+    "asymptote": "y=−2",
+    "b": -2,
+    "expression": "y=2^(x+2)−2",
+    "point": [
+      0,
+      2
+    ],
+    "product": 4,
+    "type": "exponential_graph"
+  },
+  "solutionFreeze": {
+    "questionUid": "25_순천고_1학기_중간_고2_대수::q5",
+    "independentDerivation": "Source graph gives asymptote b=−2 and point (0,2), so 2=2^(−a)−2, a=−2; ab=4.",
+    "computedAnswer": "4",
+    "sourceAnswer": "①",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}

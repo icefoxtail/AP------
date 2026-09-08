@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "apmath-add-general-v3-parity",
+  "status": "PASS",
+  "questionUid": "23_한영고_1학기_중간_고2_대수::q13",
+  "expectedFacts": {
+    "type": "cosine_parameters",
+    "expression": "y=2cos((4/5)(x−5π/8))+1",
+    "amplitude": 2,
+    "midline": 1,
+    "period": "5π/2",
+    "phase": "5π/8",
+    "value": 13
+  },
+  "observedFacts": {
+    "amplitude": 2,
+    "expression": "y=2cos((4/5)(x−5π/8))+1",
+    "midline": 1,
+    "period": "5π/2",
+    "phase": "5π/8",
+    "type": "cosine_parameters",
+    "value": 13
+  },
+  "solutionFreeze": {
+    "questionUid": "23_한영고_1학기_중간_고2_대수::q13",
+    "independentDerivation": "From source graph max/min give a=2,d=1, period 5π/2 gives b=4/5, first maximum gives c=5/8; 5ab+8cd=13.",
+    "computedAnswer": "13",
+    "sourceAnswer": "③",
+    "answerComparison": "MATCH",
+    "solutionDisposition": "KEEP",
+    "visualDisposition": "KEEP_EXISTING",
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "expectedEqualsObserved": true,
+    "solutionFrozenPass": true
+  }
+}
