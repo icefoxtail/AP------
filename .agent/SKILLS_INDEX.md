@@ -19,6 +19,19 @@ Use only the SOPs that match the current task. A skill never widens scope or gra
 | validation and review packs | `docs/agent-skills/validation-and-review-pack-sop.md` (review pack zip output must go to Downloads) |
 | parallel workstreams | `docs/agent-skills/parallel-workstream-sop.md` |
 
+## Git-managed project skills
+
+Project-specific Codex skills are canonical repository files and must be
+reviewed and changed in the active Git branch. The inventory is maintained in
+tools/skills/manifest.json; verify the current worktree before starting a
+skill-dependent task:
+
+    node tools/skills/verify-skills.mjs
+
+Do not treat a host-global skill installation as the source of truth for this
+repository. Keep each skill's SKILL.md, references, scripts, and UI metadata
+together in its declared canonical directory.
+
 ## Rules
 
 - Read `.agent/BOOT.md` first.
