@@ -18,7 +18,7 @@ Every PASS declares its scope; `productionAuthorized` remains false.
 | function-family | candidate-only numeric generation, local report/common audit | Question quality |
 | high1-svg | line finalizer/common audit for other unit manifests | Question quality |
 | set-visual-pilot | candidate-only generator and JS attachment | Question quality |
-| past-exam | reviewed promotion binds actual JS/all copied assets | Question quality |
+| past-exam | reviewed promotion binds source inventory, exact source identities, actual JS, all copied assets, and release receipt | Question quality |
 | textbook | extraction execution separate from final quality closure | Question quality |
 | alive | Python final closure invokes this same Node verifier | Question quality |
 | tag-enrichment | strict identity and quality command | Metadata only |
@@ -194,6 +194,12 @@ Any applicable FAIL/BLOCKED/WARN/NOT_TESTED/missing/stale evidence blocks PASS.
 Extraction completion and local build checks never substitute for quality closure.
 Production mutation callers also enforce `productionAuthorized`; a question-
 quality PASS alone cannot copy files into the production Archive.
+
+Past Exam callers additionally pass the complete frozen source identity set as
+`expectedSourceIdentities`. Rich rows use
+`sourceDocumentSha256|sourceQuestionNo`; the legacy `sourcePath|qid` form is
+retained only for older pipeline-core callers. A closure that is valid for a
+different q-id set cannot authorize a Past Exam production write.
 
 ## v2 change-scoped audit
 

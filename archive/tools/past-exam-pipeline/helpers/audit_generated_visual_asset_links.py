@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import json
 import re
 from collections import Counter, defaultdict
@@ -78,6 +79,30 @@ def image_forbidden_statuses(question):
     return statuses
 
 
+def asset_provenance_statuses(question, asset_path):
+    provenance = question.get("visualAssetProvenance") or {}
+    statuses = []
+    if not provenance:
+        return ["WRONG_ASSET_PROVENANCE"]
+    if str(provenance.get("sourceQuestionNo")) != str(question.get("sourceQuestionNo")):
+        statuses.append("QUESTION_ASSET_IDENTITY_MISMATCH")
+    if str(provenance.get("sourceDocumentSha256")) != str(question.get("sourceDocumentSha256")):
+        statuses.append("WRONG_ASSET_PROVENANCE")
+    if str(provenance.get("sourcePageNo")) != str(question.get("sourcePageNo", question.get("pageNo"))):
+        statuses.append("WRONG_ASSET_PROVENANCE")
+    if asset_path and asset_path.exists():
+        actual = "sha256:" + hashlib.sha256(asset_path.read_bytes()).hexdigest()
+        if actual != str(provenance.get("assetSha256")):
+            statuses.append("WRONG_ASSET_PROVENANCE")
+    checks = provenance.get("checks") or {}
+    for key in ["CROP_PURITY", "NO_OTHER_QUESTION_TEXT", "NO_CHOICES_CONTAMINATION", "NO_PAGE_BORDER_CONTAMINATION", "NO_CLIPPING", "REQUIRED_LABELS_PRESENT", "QUESTION_SEMANTIC_MATCH"]:
+        if checks.get(key) is not True:
+            statuses.append(f"CROP_PURITY_FAIL:{key}")
+    if provenance.get("verdict") != "PASS":
+        statuses.append("ASSET_SEMANTIC_FAIL")
+    return statuses
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", required=True)
@@ -109,6 +134,8 @@ def main():
                 statuses.append("visual_asset_file_missing")
             if visual_asset and image and image != visual_asset:
                 statuses.append("image_not_visual_asset")
+            if visual_asset and asset_path and asset_path.exists():
+                statuses.extend(asset_provenance_statuses(question, asset_path))
             if not statuses:
                 continue
             items.append({
