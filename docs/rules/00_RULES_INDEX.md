@@ -98,6 +98,19 @@ coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geomet
 - `internal-review-live.html`: 사용 가능한 경우 별도 확인, 없으면 `NOT_APPLICABLE` 또는 `NOT_TESTED` 사유 기록
 - 실제 증거: `reports/browser_render_check.md` 또는 동등한 캡처·출력물·렌더 로그
 
+## 3-2. Source Defect Auto-Recovery v1.2 design routing
+
+source defect 자동복구의 설계 기준은 저장소의
+`alive/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md`를
+참조한다. 현재 상태는 `DESIGN_CANDIDATE / NOT_YET_OPERATIVE`이며, 이 문서가
+canonical/production 기본값을 자동으로 바꾸지는 않는다.
+
+구현에서 `SOURCE_FIDELITY_RESTORATION`, 기존 명시 승인 경로인
+`APPROVED_SOURCE_REPAIR`, 원본을 보존하는 `DERIVED_SOURCE_RECOVERY`를
+분리한다. derived replacement가 final target을 승계하려면 Common Protocol의
+`DERIVED_REPLACEMENT_VERIFIED` 1:1 lineage, authority/adoption, initial
+denominator parity, quality closure 및 기존 final seal을 모두 통과해야 한다.
+
 ## 3. 기준 원본
 
 현재 신규 작업의 기준은 다음 세 문서와 compiled master의 조합이다.

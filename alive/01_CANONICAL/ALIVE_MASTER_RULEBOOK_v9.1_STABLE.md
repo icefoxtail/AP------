@@ -303,3 +303,29 @@ HTTP endpoint, DB schema, webhook, retry/idempotency 등 백엔드 구현 세부
 ## 23. 최종 우선순위
 
 `수학적 무결성 > 교육과정 적합성 > 유형 충실도 > 학습 가치 > 검증 가능성 > 다양성 > 출력 편의성 > 속도`
+
+## 24. Source Defect Auto-Recovery routing amendment (design candidate)
+
+source defect는 generation mode를 바꾸는 신호가 아니라 별도 recovery lane의
+입력이다. 원본 source와 기존 `APPROVED_SOURCE_REPAIR`의 의미는 유지한다.
+
+```text
+EXTRACTION_DEFECT
+ -> SOURCE_FIDELITY_RESTORATION
+
+ANSWER_KEY_DEFECT
+ -> 독립 answer/solution + source resolution ledger
+
+QUESTION_PAYLOAD_DEFECT
+ -> sourceRecoveryPolicy
+ -> R0~R6 applicable/capability/execution matrix
+ -> candidate freeze + blind independent verification
+ -> recovered derived artifact
+```
+
+`RECOVERED`만으로 final PASS 또는 production authority를 부여하지 않는다.
+`slotUid`(source denominator identity)와 `effectiveArtifactUid`(학생용
+artifact identity)를 분리하고, production slot 승계는
+`DERIVED_REPLACEMENT_VERIFIED` 1:1 lineage/quality/authority/adoption gate와
+기존 Final Closure를 함께 통과한 경우에만 허용한다. 이 절은 v1.2 문서가
+canonical promotion 조건을 충족하기 전까지 design routing으로만 취급한다.

@@ -214,3 +214,61 @@ HTTP endpoint나 DB 저장 위치는 Runtime Spec에서 구현한다.
 - checkpoint/resume
 - internal codes
 - visual provenance
+
+## 12. Source Defect Auto-Recovery (v1.2 design amendment)
+
+`sourceRecovery`는 선택적 내부 sidecar 객체다. 학생용 `questionBank`에는
+복구 정책·candidate·authority·adoption·lineage metadata를 넣지 않는다.
+구조 정의의 기계 검증본은 `ALIVE_SOURCE_RECOVERY_SCHEMA_v1.0.json`이다.
+
+핵심 축은 서로 독립적으로 기록한다.
+
+```text
+sourceRecoveryPolicy = PRESERVE_ONLY | SHADOW_AUTO_RECOVER | AUTO_RECOVER
+recoveryAuthority = SHADOW_ONLY | BOUNDED_PRODUCTION | DEFAULT_PRODUCTION
+productionAdoptionStatus = NOT_AUTHORIZED | AUTHORIZED | ADOPTED
+```
+
+`RECOVERED`는 `ADOPTED`가 아니다. Derived replacement를 final target으로
+사용하려면 다음을 모두 만족해야 한다.
+
+```text
+slotUid = sourceQuestionUid
+effectiveArtifactUid = recoveredQuestionUid
+replacementCardinality = 1:1
+sourceOriginalPreserved = true
+productionOriginalActive = false
+productionRecoveredActive = true
+replacementLineageParity = PASS
+recoveredQualityClosure = PASS
+recoveryAuthority in {BOUNDED_PRODUCTION, DEFAULT_PRODUCTION}
+productionAdoptionStatus = ADOPTED
+```
+
+`INITIAL_INCLUDED_SCOPE_UID_SET`와 그 SHA는 replacement 전후 변경하지 않는다.
+`DERIVED_REPLACEMENT_VERIFIED`는 이 parity를 통과한 경우에만 기록한다.
+
+R0~R6는 하나의 상태 enum으로 축약하지 않는다. 각 tier에
+`applicability`, `capability`, `execution`을 따로 기록한다. capability가
+`CAPABILITY_BLOCKED` 또는 `DEFERRED_CAPABILITY`이면 execution exhaustion으로
+세지 않는다.
+
+필요 source evidence가 없으면 `HUMAN_REQUIRED`가 아니라 다음 resume 계약을
+사용한다.
+
+```json
+{
+  "status": "SOURCE_RECOVERY_EVIDENCE_BLOCKED",
+  "requiredResource": "SOURCE_PAGE",
+  "resumeFromStage": "SOURCE_RECHECK",
+  "finalStatus": "BLOCKED"
+}
+```
+
+`RECOVERY_TARGETED_REPAIR`는 frozen candidate를 수정하지 않는다. 동일
+`recoveryPlanId` 아래 `candidateVersion`, `candidateId`, payload SHA를 새로
+만들고 다시 FREEZE 및 blind independent verification을 수행한다. 기존
+failed candidate는 append-only evidence로 남긴다.
+
+이 amendment가 design 상태인 동안 `sourceRecoveryPolicy`의 production
+기본값을 전역 AUTO_RECOVER로 바꾸지 않는다.
