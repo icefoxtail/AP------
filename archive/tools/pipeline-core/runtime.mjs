@@ -18,6 +18,10 @@ function documentReferences(text) {
   const refs = [];
   for (const match of text.matchAll(/<(?:script|link)\b[^>]*?(?:src|href)=["']([^"']+)["']/gi)) refs.push(match[1]);
   for (const match of text.matchAll(/@import\s+(?:url\()?\s*["']?([^"')\s]+)["']?\s*\)?/gi)) refs.push(match[1]);
+  // question-meta.js resolves this resource dynamically with new URL(), so
+  // it is not discoverable from a script/link tag. Keep it in the bound
+  // runtime packet instead of letting the browser make an unbound request.
+  if (/question_metadata\.json/i.test(text)) refs.push('data/question_metadata.json');
   // Dynamic fallback URLs and pinned external scripts are part of the engine contract.
   for (const match of text.matchAll(/https?:\/\/[^\s"'`)<>]+/gi)) refs.push(match[0]);
   return refs;
@@ -49,6 +53,10 @@ export function runtimeDependencyBundle(root, enginePath = 'archive/engine.html'
     const bytes = fs.readFileSync(safePath(root, relative));
     const extension = path.posix.extname(relative).toLowerCase();
     const refs = extension === '.css' ? cssReferences(bytes.toString('utf8')) : extension === '.html' ? documentReferences(bytes.toString('utf8')) : [];
+    // The archive engine loads question-meta.js dynamically, which in turn
+    // fetches this JSON through new URL() after the static dependency walk.
+    // Bind the current metadata file explicitly for deterministic capture.
+    if (relative === enginePath && enginePath === 'archive/engine.html' && fs.existsSync(path.resolve(root, 'archive/data/question_metadata.json'))) refs.push('data/question_metadata.json');
     for (const reference of refs) {
       if (isExternal(reference)) externalUrls.add(reference);
       else {
@@ -64,6 +72,16 @@ export function runtimeDependencyBundle(root, enginePath = 'archive/engine.html'
     if (/^archive\/vendor\/mathjax-[^/]+\//.test(relative)) {
       const distribution = relative.split('/').slice(0, 3).join('/');
       for (const file of filesBelow(root, distribution)) pending.push(file);
+    }
+    // engine.html asks MathJax to autoload [tex]/boldsymbol. That extension
+    // lives in the base MathJax tree rather than the pinned tex/font bundle,
+    // so bind the exact dynamic extension explicitly.
+    if (relative === enginePath && /boldsymbol/i.test(bytes.toString('utf8'))) pending.push('archive/vendor/mathjax/input/tex/extensions/boldsymbol.js');
+    // The local MathJax bundle starts its accessibility speech worker at
+    // runtime. It is loaded by importScripts(), so the static dependency walk
+    // cannot discover it from HTML/JS tags; bind the repository copy.
+    if (relative === enginePath && fs.existsSync(path.resolve(root, 'archive/vendor/mathjax/sre/speech-worker.js'))) {
+      for (const file of filesBelow(root, 'archive/vendor/mathjax/sre')) pending.push(file);
     }
   }
   const localFiles = [...visited].sort().map(relative => fileRef(root, relative));
