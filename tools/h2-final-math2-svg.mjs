@@ -158,7 +158,6 @@ function latexToPlain(raw) {
       }
       if (command === 'begin' || command === 'end') {
         const env = readToken(input, next);
-        // Environment markers are parser syntax, never user-facing labels.
         out += '';
         i = env.next;
         continue;
@@ -265,10 +264,6 @@ function textLines(lines, x, y, attrs) {
 function sourceCard(row) {
   const question = htmlToPlain(row.q.content);
   const solution = htmlToPlain(row.q.solution);
-  // SVG text is rendered at 15px/14px inside ~318px content columns.
-  // The previous character-width budget (34/35) allowed Korean lines to
-  // cross the panel boundary in real browsers. Keep the budget below the
-  // measured column width so the layout contract is also visually true.
   const qLines = wrapText(question, 21);
   const sLines = wrapText(solution, 22);
   const panelY = 82;
@@ -353,15 +348,19 @@ function specialSvg(row) {
 </svg>`;
   }
   if (key === '25_순천고_2학기_기말_고2_수학II:q16') {
+    const oX = 65;
+    const aX = 450;
+    const pX = (oX + aX) / 2;
+    const pY = 99;
     return `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="430" viewBox="0 0 640 430" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
-  <title id="title">삼각형 POH 넓이의 최댓값</title><desc id="desc">곡선 f(x)=x(a-x)^2 위의 최대점 P(p,f(p)), 수선의 발 H=(p,0), p=a/2를 표시한다.</desc>
+  <title id="title">삼각형 POH 넓이의 최댓값</title><desc id="desc">곡선 f(x)=x(a-x)^2 위에서 삼각형 POH의 넓이가 최대가 되는 p=a/2를 O와 A의 정확한 중점으로 표시한다.</desc>
   <rect width="640" height="430" fill="#fff"/><g font-family="Arial, sans-serif" fill="#111">
     <text x="320" y="27" font-size="20" text-anchor="middle" font-weight="700">S(t)=1/2·t²(a−t)²의 최댓값</text>
-    <g transform="translate(28 48)"><line x1="30" y1="270" x2="470" y2="270" stroke="#111" stroke-width="2"/><line x1="65" y1="25" x2="65" y2="300" stroke="#111" stroke-width="2"/>
-      <polyline points="65,270 120,148 175,90 212,80 285,110 340,165 395,222 450,270" fill="none" stroke="#1d4ed8" stroke-width="3"/>
-      <polygon points="65,270 285,110 285,270" fill="#bfdbfe" opacity="0.9"/><line x1="285" y1="110" x2="285" y2="270" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 5"/><line x1="65" y1="270" x2="285" y2="270" stroke="#dc2626" stroke-width="2"/>
-      <circle cx="65" cy="270" r="5" fill="#111"/><circle cx="285" cy="110" r="5" fill="#111"/><circle cx="285" cy="270" r="5" fill="#111"/><circle cx="450" cy="270" r="5" fill="#111"/>
-      <text x="58" y="292" font-size="16">O</text><text x="292" y="102" font-size="16">P(p,f(p))</text><text x="292" y="292" font-size="16">H=(p,0)</text><text x="450" y="292" font-size="16" text-anchor="middle">A(a,0)</text><text x="285" y="316" font-size="16" text-anchor="middle" fill="#dc2626">p=a/2</text>
+    <g transform="translate(28 48)"><line x1="30" y1="270" x2="470" y2="270" stroke="#111" stroke-width="2"/><line x1="${oX}" y1="25" x2="${oX}" y2="300" stroke="#111" stroke-width="2"/>
+      <polyline points="${oX},270 120,148 175,90 193.33,80 230,84 ${pX},${pY} 340,165 395,222 ${aX},270" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+      <polygon points="${oX},270 ${pX},${pY} ${pX},270" fill="#bfdbfe" opacity="0.9"/><line x1="${pX}" y1="${pY}" x2="${pX}" y2="270" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 5"/><line x1="${oX}" y1="270" x2="${pX}" y2="270" stroke="#dc2626" stroke-width="2"/>
+      <circle data-point="O" cx="${oX}" cy="270" r="5" fill="#111"/><circle data-point="P" cx="${pX}" cy="${pY}" r="5" fill="#111"/><circle data-point="H" cx="${pX}" cy="270" r="5" fill="#111"/><circle data-point="A" cx="${aX}" cy="270" r="5" fill="#111"/>
+      <text x="58" y="292" font-size="16">O</text><text x="${pX + 7}" y="${pY - 8}" font-size="16">P(p,f(p))</text><text x="${pX + 7}" y="292" font-size="16">H=(p,0)</text><text x="${aX}" y="292" font-size="16" text-anchor="middle">A(a,0)</text><text x="${pX}" y="316" font-size="16" text-anchor="middle" fill="#dc2626">p=a/2</text>
       <text x="365" y="42" font-size="15" fill="#1d4ed8">f(x)=x(a−x)²</text><text x="430" y="255" font-size="15">x</text><text x="48" y="36" font-size="15">y</text>
     </g>
     <g transform="translate(500 75)"><text x="0" y="0" font-size="16" font-weight="700">부호표</text><text x="0" y="35" font-size="15" fill="#15803d">0&lt;t&lt;a/2: S′&gt;0</text><text x="0" y="66" font-size="15" fill="#b91c1c">a/2&lt;t&lt;a: S′&lt;0</text><text x="0" y="115" font-size="15">S′=t(a−t)(a−2t)</text><text x="0" y="160" font-size="15" fill="#1d4ed8">M/p = a³/16</text></g>
@@ -393,6 +392,26 @@ function targetSvgText(row) {
 
 function textNodes(svg) {
   return [...svg.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/gi)].map((m) => decodeEntities(m[1]));
+}
+
+function q16MidpointGeometry(svg) {
+  const pointX = (name) => Number(svg.match(new RegExp(`<circle\\s+data-point="${name}"\\s+cx="([\\d.]+)"`))?.[1] ?? NaN);
+  const oX = pointX('O');
+  const pX = pointX('P');
+  const hX = pointX('H');
+  const aX = pointX('A');
+  const expectedMidpointX = (oX + aX) / 2;
+  const finite = [oX, pX, hX, aX, expectedMidpointX].every(Number.isFinite);
+  const pass = finite && pX === expectedMidpointX && hX === pX;
+  return {
+    predicate: 'pX === (oX + aX) / 2 && hX === pX',
+    oX,
+    pX,
+    hX,
+    aX,
+    expectedMidpointX,
+    status: pass ? 'PASS' : 'FAIL',
+  };
 }
 
 function normalizeForParity(value) {
@@ -568,9 +587,25 @@ function runFactParity() {
   for (const entry of special) {
     const row = rows.find((candidate) => candidate.examId === entry.examId && candidate.q.id === entry.qid);
     if (!row) throw new Error(`Missing special visual ${entry.examId} q${entry.qid}`);
-    const svgText = textNodes(fs.readFileSync(row.assetPath, 'utf8')).join(' ');
+    const svg = fs.readFileSync(row.assetPath, 'utf8');
+    const svgText = textNodes(svg).join(' ');
     const missingFacts = entry.facts.filter((fact) => !svgText.includes(fact));
-    results.push({ examId: entry.examId, qid: entry.qid, asset: row.assetRel, expectedFacts: entry.facts, missingFacts, status: missingFacts.length ? 'FAIL' : 'LOCAL_SOURCE_FACT_CHECK_PASS' });
+    const geometryCheck = entry.examId === '25_순천고_2학기_기말_고2_수학II' && entry.qid === 16
+      ? q16MidpointGeometry(svg)
+      : null;
+    const geometryIssues = geometryCheck && geometryCheck.status !== 'PASS'
+      ? ['pX === (oX + aX) / 2 && hX === pX']
+      : [];
+    results.push({
+      examId: entry.examId,
+      qid: entry.qid,
+      asset: row.assetRel,
+      expectedFacts: entry.facts,
+      missingFacts,
+      geometryCheck,
+      geometryIssues,
+      status: missingFacts.length || geometryIssues.length ? 'FAIL' : 'LOCAL_SOURCE_FACT_CHECK_PASS',
+    });
   }
   const retained = targetQuestions(true).find((row) => row.retained);
   const retainedSvg = fs.readFileSync(retained.assetPath, 'utf8');
