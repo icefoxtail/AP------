@@ -4,25 +4,26 @@
   <rect width="760" height="620" fill="#fff"/>
   <g font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" fill="#111">
     <text x="380" y="32" font-size="21" font-weight="700" text-anchor="middle">25_순천고_2학기_기말_고2_수학II · q12 해설 시각화</text>
-    <text x="380" y="59" font-size="15" text-anchor="middle" fill="#475569">적분의 활용 · 곡선과 x축 사이의 넓이</text>
-    <rect x="18" y="82" width="350" height="350" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
-    <rect x="390" y="82" width="352" height="350" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="380" y="59" font-size="15" text-anchor="middle" fill="#475569">문항 원문과 해설의 핵심 흐름</text>
+    <rect x="18" y="82" width="350" height="300" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
+    <rect x="390" y="82" width="352" height="300" rx="12" fill="#f0fdf4" stroke="#86efac"/>
     <text x="34" y="112" font-size="17" font-weight="700" fill="#1d4ed8">문항 핵심</text>
     <text x="398" y="112" font-size="17" font-weight="700" fill="#15803d">해설 흐름</text>
-    <text x="34" y="140" font-size="15">a&lt; 1인 정수 a에 대해 곡선 y=x^2-2x+a와 x축으로 둘러싸인 도형의 넓이가 36</text>
-    <text x="34" y="162" font-size="15">일 때 a의 값은? [4.2점]</text>
-    <text x="398" y="140" font-size="14">[키포인트] 완전제곱식으로 정리하면 두 근이 꼭짓점 x=1을 중심으로 대칭이므로 넓이 적분</text>
-    <text x="398" y="162" font-size="14">을 간단히 계산할 수 있다. 조건 정리: y=x^2-2x+a=(x-1)^2-(1-a)이고 </text>
-    <text x="398" y="184" font-size="14">a&lt;1이므로 d=√1-a&gt;0이라 두면 두 근은 1-d, 1+d이다. 풀이 방향: 두 근 사</text>
-    <text x="398" y="206" font-size="14">이에서 곡선은 x축 아래에 있으므로 x축과 곡선 사이의 넓이를 대칭 적분으로 계산한다. 정</text>
-    <text x="398" y="228" font-size="14">석 풀이: 넓이 S는 S=∫_1-d^1+d\d^2-(x-1)^2\dx이다. u=x-1로 두</text>
-    <text x="398" y="250" font-size="14">면 S=∫_-d^d(d^2-u^2)du=2[d^2u-u^33]_0^d=43d^3이다. S=</text>
-    <text x="398" y="272" font-size="14">36이므로 43d^3=36, 따라서 d^3=27이고 d=3이다. 그러므로 1-a=d^2=9</text>
-    <text x="398" y="294" font-size="14">에서 a=-8이다. 따라서 정답은 ②이다.</text>
-    <path d="M350 374 L410 374" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
-    <rect x="18" y="396" width="724" height="48" rx="10" fill="#fff7ed" stroke="#fdba74"/>
-    <text x="380" y="426" font-size="17" text-anchor="middle" fill="#9a3412">결론: ②</text>
-    <text x="380" y="471" font-size="13" text-anchor="middle" fill="#64748b">source: archive/exams/original/high/h2/2final/25_순천고_2학기_기말_고2_수학II.js · q12 · archive/assets/images/25_순천고_2학기_기말_고2_수학II/q12-solution.svg</text>
+    <text x="34" y="140" font-size="15">a&lt; 1인 정수 a에 대해 곡선 y=x^2-2x+a와 x축으로 둘러싸인 도형의 넓이가</text>
+    <text x="34" y="162" font-size="15">36일 때 a의 값은? [4.2점]</text>
+    <text x="398" y="140" font-size="14">[키포인트] 완전제곱식으로 정리하면 두 근이 꼭짓점 x=1을 중심으로</text>
+    <text x="398" y="162" font-size="14">대칭이므로 넓이 적분을 간단히 계산할 수 있다. 조건 정리:</text>
+    <text x="398" y="184" font-size="14">y=x^2-2x+a=(x-1)^2-(1-a)이고 a&lt;1이므로 d=√(1-a)&gt;0이라 두면 두 근은</text>
+    <text x="398" y="206" font-size="14">1-d, 1+d이다. 풀이 방향: 두 근 사이에서 곡선은 x축 아래에 있으므로 x축과</text>
+    <text x="398" y="228" font-size="14">곡선 사이의 넓이를 대칭 적분으로 계산한다. 정석 풀이: 넓이 S는 S=∫[1-d,</text>
+    <text x="398" y="250" font-size="14">1+d]{d^2-(x-1)^2}dx이다. u=x-1로 두면 S=∫[-d,</text>
+    <text x="398" y="272" font-size="14">d](d^2-u^2)du=2[d^2u-u^3 / 3][0]^d=4 / 3d^3이다. S=36이므로 4 /</text>
+    <text x="398" y="294" font-size="14">3d^3=36, 따라서 d^3=27이고 d=3이다. 그러므로 1-a=d^2=9에서</text>
+    <text x="398" y="316" font-size="14">a=-8이다. 따라서 정답은 ②이다.</text>
+    <path d="M350 314 L410 314" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="18" y="350" width="724" height="48" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+    <text x="380" y="380" font-size="17" text-anchor="middle" fill="#9a3412">결론: ②</text>
+    <text x="380" y="452" font-size="11" text-anchor="middle" fill="#64748b">25_순천고_2학기_기말_고2_수학II · q12 · source-bound solution visual</text>
   </g>
   <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#64748b"/></marker></defs>
 </svg>
