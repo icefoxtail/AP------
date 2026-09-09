@@ -46,5 +46,7 @@ test("promotion contract includes subunit and solution-asset gates", () => {
     assert.match(source, new RegExp(field));
   }
   assert.match(source, /canonicalizeAsset\(question, "solutionImage"\)/);
-  assert.match(source, /review\.status !== "reviewed_pass"/);
+  assert.match(source, /assertPastExamPromotion/);
+  const hardening = fs.readFileSync('archive/tools/past-exam-pipeline/lib/hardening.mjs', 'utf8');
+  assert.match(hardening, /review\.status !== "reviewed_pass"/);
 });

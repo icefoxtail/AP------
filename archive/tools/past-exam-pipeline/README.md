@@ -1,3 +1,78 @@
+# Past Exam V3 COMPLETE — current start and completion route
+
+V2 full-page extraction remains the source transcription engine. The current
+start/completion authority is
+[`Past_Exam_V3_COMPLETE.md`](../../../docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md).
+S0.5 is mandatory before source inventory or builder output. A bare PASS string
+or reading only one existing JS is insufficient.
+
+1. Read current rules. Select 2–3 good complete production JS files in Git main,
+   preferring the same course, grade and term. Save their repository paths as a
+   JSON array in `samples.json`. Read each complete file with
+   `git show origin/main:archive/exams/original/...js`.
+2. Prepare a manifest identifying the target PDF/page images, examId and canonical
+   archiveRelativePath. Existing target JS is the baseline, never a calibration
+   sample. Prepare an empty observation draft:
+
+```powershell
+node archive/tools/past-exam-pipeline/calibration.mjs --prepare --manifest <target-manifest.json> --samples <samples.json> --out <new-calibration-draft.json>
+```
+
+3. Fill the draft with genuine reader/session/time information, all sample
+   question observations and solution excerpts, six sample-axis observations,
+   and an anchored production-quality profile. When baselineStatus is PRESENT,
+   read the whole target JS and record its baselineObservation and every
+   baselineQuestionObservation. Its original bytes are retained in the lock's
+   baselineSnapshotBase64, so a later authorized promotion does not erase the
+   calibration baseline. Keep the target
+   source facts separate. Freeze into a new path:
+
+```powershell
+node archive/tools/past-exam-pipeline/calibration.mjs --freeze --manifest <target-manifest.json> --decision <completed-observations.json> --out <new-reference-sample-lock.json>
+```
+
+Copy the returned `referenceSampleLock` file reference into the target manifest.
+No PASS is issued until the reducer validates actual Git blob hashes, full
+question coverage, anchored observations and the quality profile. Both prepare
+and builder start compare origin/main with the live origin main ref; fetch first
+if stale. Keep locks under repository staging so core can bind relative refs.
+
+4. Use the existing run-one-exam / run-selected V2 extraction commands below.
+   Direct Python extraction enforces the same calibration gate. Freeze an
+   extraction-source JS separately before filling the candidate. New handoffs
+   carry `PAST_EXAM_V3_COMPLETE`, protected source hashes, the entire completion
+   baseline, and the exact allowed fields from `completion-contract.json`.
+   New visual crops already use `assets/images/<examId>/qNNN_visual.png` inside
+   staging; no post-review source-image renaming is needed. Put solution SVGs
+   under the same staged exam asset directory. Pass that directory as `--assets`
+   to promotion. The common preparer infers assetRoot from the staged manifest;
+   use `--asset-root <staged-root>` explicitly if needed, and
+   `--source-asset-root archive` when the frozen source JS refers to existing
+   production images. These options read assets; they do not write production.
+5. Solve all questions locally from source; write new student solutions and
+   classification; triage every question; create required/beneficial solution
+   visuals using frozen facts and numeric generation. Build work is not a blind
+   reviewer PASS. Run common preparation:
+
+```powershell
+node archive/tools/pipeline-core/cli.mjs prepare-v2 --pipeline past-exam --past-exam-manifest <staged-manifest.json> --source <frozen-extraction.js> --candidate <completed-candidate.js> --source-registry-ref <registry-file-ref.json> --run-id <run-id> --work-batch-id <job-id> --builder-id <reader-id> --builder-session-id <reader-session-id> --builder-model <actual-model> --workdir <new-staging-directory>
+```
+
+This is a draft, not a completed audit. It binds calibration, source inventory,
+geometry v1.1 project policy, and FULL_EXAM publication intent. Follow
+pipeline-core/AGENT_BUDGET.md for machine collection, one provider-attested
+FINAL_AUDIT with sealed U1/U2/U3 and at most one targeted recheck. U3 returns
+typed solutionQuality and visualBenefit decisions, then common closure decides.
+Use the canonical promotion helper only after all six render cases, source/math/
+visual/solution/metadata gates, and production authority pass.
+
+`npm --prefix archive/tools/past-exam-pipeline test` covers calibration and
+handoff hardening. `npm --prefix archive/tools/pipeline-core test` covers common
+closure and typed quality gates. These software fixtures do not qualify real
+exam solutions or prove that a person/agent genuinely read the files.
+
+---
+
 # AP Math Past Exam Pipeline
 
 Promotion now requires `--closure-manifest <run.json>` validated by

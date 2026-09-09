@@ -497,13 +497,23 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
   if (!nonEmpty(review.promotionTransactionId)) errors.push("PROMOTION_TRANSACTION_ID_REQUIRED");
   if (review.sourceFidelityRestoration === true || review.sourceRestorationRequested === true) errors.push("SOURCE_FIDELITY_RESTORATION_REQUIRED");
   const allowed = new Set(["answer", "solution", "answerStatus", "solutionStatus", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]);
-  for (const field of review.changedFields || []) if (!allowed.has(field)) errors.push("ANSWER_SOLUTION_SCOPE_VIOLATION");
   const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
   const handoffFile = path.join(candidateRoot, "reports", "gpt_gemini_handoff_manifest.json");
   if (!fs.existsSync(handoffFile)) {
     errors.push("HANDOFF_PROTECTED_PAYLOAD_BINDING_MISSING");
   } else {
     const handoff = JSON.parse(fs.readFileSync(handoffFile, "utf8"));
+    if (handoff.completionContract === 'PAST_EXAM_V3_COMPLETE') {
+      const contract = JSON.parse(fs.readFileSync(new URL('../completion-contract.json', import.meta.url), 'utf8'));
+      for (const field of contract.allowedCompletionFields) allowed.add(field);
+      const baseline = handoff.completionBaseline;
+      if (!Array.isArray(baseline) || baseline.length !== questions.length || new Set(baseline.map(q => q.sourceIdentityKey)).size !== questions.length) errors.push('COMPLETION_BASELINE_REQUIRED');
+      else for (const q of questions) {
+        const before = baseline.find(row => row.sourceIdentityKey === q.sourceIdentityKey);
+        if (!before) { errors.push('COMPLETION_BASELINE_IDENTITY_MISMATCH'); continue; }
+        for (const key of new Set([...Object.keys(before), ...Object.keys(q)])) if (!allowed.has(key) && canonicalJson(before[key] ?? null) !== canonicalJson(structuredClone(q[key] ?? null))) errors.push(`ANSWER_SOLUTION_SCOPE_VIOLATION:q${q.id}:${key}`);
+      }
+    }
     if (review.handoffManifestSha && review.handoffManifestSha !== fileSha(handoffFile)) errors.push("HANDOFF_MANIFEST_SHA_STALE");
     if (!review.handoffManifestSha) errors.push("HANDOFF_MANIFEST_SHA_REQUIRED");
     const baseline = new Map((handoff.protectedPayload || []).map((row) => [String(row.sourceIdentityKey), row.sha256]));
@@ -513,6 +523,7 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
     }
   }
   const protectedRows = new Map((review.protectedPayload || []).map((row) => [String(row.sourceIdentityKey), row]));
+  for (const field of review.changedFields || []) if (!allowed.has(field)) errors.push("ANSWER_SOLUTION_SCOPE_VIOLATION");
   const candidateKeys = candidateIdentitySet(questions).keys;
   const reviewKeys = (review.sourceIdentitySet || review.sourceIdentities || []).map((row) => String(row.sourceIdentityKey || row)).sort();
   if (!reviewKeys.length) errors.push("REVIEW_SOURCE_IDENTITY_SET_REQUIRED");

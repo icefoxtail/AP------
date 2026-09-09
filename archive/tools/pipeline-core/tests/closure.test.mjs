@@ -7,9 +7,15 @@ import { fileRef } from '../canonical.mjs';
 import { closureFromFile, closureFromArgs } from '../integration.mjs';
 import { fixture } from './fixture.mjs';
 
-for (const pipeline of Object.keys(profiles.pipelines)) test(`complete test fixture passes the ${pipeline} adapter with explicit scope`, () => {
+for (const pipeline of Object.keys(profiles.pipelines).filter(p => p !== 'past-exam')) test(`complete test fixture passes the ${pipeline} adapter with explicit scope`, () => {
   const f = fixture(pipeline, { visual: profiles.pipelines[pipeline].visual });
   try { const report = auditRun(f.root, f.run); assert.equal(report.status, 'PASS', JSON.stringify(report.errors)); assert.equal(report.productionAuthorized, false); assert.equal(report.verifiedScope, profiles.pipelines[pipeline].scope); } finally { f.cleanup(); }
+});
+
+test('past-exam cannot downgrade to a legacy closure without V3 calibration', () => {
+  const f = fixture('past-exam');
+  try { const report = auditRun(f.root, f.run); assert.equal(report.status, 'BLOCKED'); assert.ok(report.errors.includes('PAST_EXAM_V3_REQUIRES_CORE_V2')); }
+  finally { f.cleanup(); }
 });
 
 const mutations = {

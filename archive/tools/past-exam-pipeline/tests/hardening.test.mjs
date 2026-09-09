@@ -322,3 +322,27 @@ test("direct production write guard requires a promotion receipt", () => {
   const value = "sha256:" + "a".repeat(64);
   assert.equal(productionWritePreflight({ changedPaths: ["archive/db.js"], receipt: { status: "AUTHORIZED", candidateSha: value, closureManifestSha: value, sourceIdentitySetSha: value, reviewedPassEnvelopeSha: value, promotionTransactionId: "tx" } }).status, "PASS");
 });
+
+test('V3 completion permits classification and solution-visual fields but checks real baseline differences', () => {
+  const f = fixture();
+  try {
+    const handoffFile = path.join(f.reportsDir, 'gpt_gemini_handoff_manifest.json');
+    const handoff = JSON.parse(fs.readFileSync(handoffFile, 'utf8'));
+    handoff.completionContract = 'PAST_EXAM_V3_COMPLETE';
+    handoff.completionBaseline = [structuredClone(f.question)];
+    fs.writeFileSync(handoffFile, JSON.stringify(handoff));
+    f.review.handoffManifestSha = fileSha(handoffFile);
+    f.question.level = '상';
+    f.question.standardCourse = '공통수학1';
+    f.question.solutionImageAlt = '해설용 그림 설명';
+    f.review.changedFields = ['level', 'standardCourse', 'solutionImageAlt'];
+    f.writeCandidate(f.question); f.review.candidateSha = fileSha(f.candidateFile);
+    assert.equal(validatePastExamPromotion(f).status, 'PASS');
+    // No changedFields declaration can hide an actual protected layout mutation.
+    f.question.layoutTag = 'fullwidth';
+    f.writeCandidate(f.question); f.review.candidateSha = fileSha(f.candidateFile);
+    const report = validatePastExamPromotion(f);
+    assert.equal(report.status, 'BLOCKED');
+    assert.ok(report.errors.includes('ANSWER_SOLUTION_SCOPE_VIOLATION:q1:layoutTag'));
+  } finally { f.cleanup(); }
+});

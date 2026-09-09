@@ -74,23 +74,23 @@ test('metadata mutation must equal the reviewed candidate bytes', () => {
   } finally { f.cleanup(); }
 });
 test('a quality PASS cannot authorize production while authority is false', () => {
-  const f = fixture('past-exam', { visual: true }); try {
+  const f = fixture('function-family', { visual: true }); try {
     const file = path.join(f.root, 'run.json'); fs.writeFileSync(file, JSON.stringify(f.run));
-    assert.equal(closureFromFile(f.root, 'past-exam', file).status, 'PASS');
-    assert.throws(() => requireProductionClosure(f.root, 'past-exam', ['node', 'test', '--closure-manifest', file]), /PRODUCTION_AUTHORITY_BLOCKED/);
+    assert.equal(closureFromFile(f.root, 'function-family', file).status, 'PASS');
+    assert.throws(() => requireProductionClosure(f.root, 'function-family', ['node', 'test', '--closure-manifest', file]), /PRODUCTION_AUTHORITY_BLOCKED/);
   } finally { f.cleanup(); }
 });
 test('production authority binds the frozen render reviews and runtime bundle', () => {
-  const f = fixture('past-exam', { visual: true }); try {
+  const f = fixture('function-family', { visual: true }); try {
     const file = path.join(f.root, 'run.json');
     const reviews = f.run.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).filter(e => e.axis === 'render').map(e => e.evidenceId).sort();
     f.run.productionAuthorization = { status: 'APPROVED', authorityId: 'release-manager', approvedAt: '2026-09-06T03:00:00Z', releaseInputSha: f.run.inputSha, runtimeBundleSha: f.run.renderRuntime.bundleSha, renderReviewEvidenceIds: reviews };
     fs.writeFileSync(file, JSON.stringify(f.run));
-    assert.equal(closureFromFile(f.root, 'past-exam', file).productionAuthorized, true);
-    assert.doesNotThrow(() => requireProductionClosure(f.root, 'past-exam', ['node', 'test', '--closure-manifest', file]));
+    assert.equal(closureFromFile(f.root, 'function-family', file).productionAuthorized, true);
+    assert.doesNotThrow(() => requireProductionClosure(f.root, 'function-family', ['node', 'test', '--closure-manifest', file]));
     f.run.productionAuthorization.runtimeBundleSha = `sha256:${'0'.repeat(64)}`;
     fs.writeFileSync(file, JSON.stringify(f.run));
-    assert.equal(closureFromFile(f.root, 'past-exam', file).productionAuthorized, false);
+    assert.equal(closureFromFile(f.root, 'function-family', file).productionAuthorized, false);
   } finally { f.cleanup(); }
 });
 test('render reviewer output is derived from a frozen capture ref', () => {
