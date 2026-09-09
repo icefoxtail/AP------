@@ -12,6 +12,7 @@ const VISUAL_MANIFEST = JSON.parse(fs.readFileSync(path.join(REPORT, '766_full_t
 const RENDER = JSON.parse(fs.readFileSync(path.join(REPORT, '763_full_target_local_render_review_r60.json'), 'utf8'));
 const FREEZE = JSON.parse(fs.readFileSync(path.join(REPORT, '767_full_scope_solution_freeze_r60.json'), 'utf8'));
 const PRIOR_CLOSURE = JSON.parse(fs.readFileSync(path.join(REPORT, '741_current_closure_snapshot_r49_v3_closed.json'), 'utf8'));
+const BROWSER_SPOTCHECK = JSON.parse(fs.readFileSync(path.join(REPORT, '769_browser_spotcheck_r61.json'), 'utf8'));
 const OUTPUT = path.join(REPORT, '768_final_audit_r60.json');
 
 const checks = [
@@ -57,16 +58,19 @@ const output = {
     fullVisualManifest: 'reports/hs-quadratic-svg-upgrade-20260908/766_full_target_visual_manifest_r60_rebased.json',
     solutionFreeze: 'reports/hs-quadratic-svg-upgrade-20260908/767_full_scope_solution_freeze_r60.json',
     localRender: 'reports/hs-quadratic-svg-upgrade-20260908/763_full_target_local_render_review_r60.json',
+    browserSpotcheck: 'reports/hs-quadratic-svg-upgrade-20260908/769_browser_spotcheck_r61.json',
   },
   externalGates: {
     providerAttestedFinalAudit: 'PENDING_PROVIDER_ATTESTATION',
-    actualBrowserDesktopMobileCapture: 'NOT_ATTESTED_LOCAL_RASTERIZER_ONLY',
+    actualBrowserDesktopMobileCapture: 'SPOTCHECK_ONLY_FULL_SCOPE_NOT_ATTESTED',
+    browserSpotcheckRows: BROWSER_SPOTCHECK.rows.length,
     questionUidV2SourceExamRegistry: 'PENDING_EXPLICIT_REGISTRY_AUTHORITY',
     registryIdentityMismatchCount: PRIOR_CLOSURE.registry?.identityMismatchCount ?? null,
     dbQuestionIndexPromotion: 'NOT_AUTHORIZED_IN_CANDIDATE_ONLY_BRANCH',
   },
   openActions: [
     'Run the configured provider-attested FINAL_AUDIT in the approved pipeline-core runtime.',
+    'Run full-scope browser desktop/mobile capture; current browser evidence is a two-row high-risk spot-check only.',
     'Bind the 15 identity-mismatch entries to the approved QUESTION_UID_v2 source-exam registry; do not invent mappings from titles.',
     'After provider audit and authority review, independently decide whether DB/question-index/production promotion is authorized.',
   ],
