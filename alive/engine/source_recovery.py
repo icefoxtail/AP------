@@ -164,6 +164,16 @@ _FALLBACK_TIERS = {
 }
 
 _CORRECTNESS_AFFECTING = set(DEFECT_TYPES) - {"ANSWER_KEY_CONFLICT"}
+_STRUCTURAL_SOURCE_DEFECTS = {
+    "MISSING_CONDITION",
+    "UNDERDETERMINED_STEM",
+    "CONTRADICTORY_CONDITIONS",
+    "INVALID_DOMAIN",
+    "INVALID_RANGE",
+    "QUESTION_TARGET_DEFECT",
+    "OTHER_SOURCE_DEFECT",
+}
+_ANSWER_RESOLUTION_BLOCKERS = {"UNDETERMINED", "NO_UNIQUE_ANSWER", "UNKNOWN"}
 _GATE_NAMES = (
     "MATH_VALID",
     "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
@@ -232,6 +242,15 @@ def primary_tier(defect_types: Iterable[str]) -> str:
     unknown = [defect for defect in defects if defect not in DEFECT_TYPES]
     if unknown:
         raise SourceRecoveryError(f"unknown source defect type: {unknown[0]}")
+    # A stale answer key must not outrank a confirmed payload/source defect.
+    # Likewise, RESPONSE_FORM_DEFECT and answer-cardinality symptoms are not
+    # allowed to outrank the source defect that caused the unresolved result.
+    structural = [defect for defect in defects if defect in _STRUCTURAL_SOURCE_DEFECTS]
+    if structural:
+        defects = structural
+    else:
+        non_answer = [defect for defect in defects if defect != "ANSWER_KEY_CONFLICT"]
+        defects = non_answer or ["ANSWER_KEY_CONFLICT"]
     return min((_PRIMARY_TIER_BY_DEFECT[defect] for defect in defects), key=lambda tier: int(tier[1:]))
 
 
@@ -515,6 +534,26 @@ def canonical_answer_to_choice_index(answer: Any) -> int | None:
     return None
 
 
+def canonical_answer_to_choice_indices(answer: Any) -> list[int]:
+    """Resolve a single- or multi-select archive answer into one-based indices."""
+
+    text = _answer_text(answer)
+    circled = [index + 1 for index, value in enumerate(_CIRCLED_ANSWERS) if value in text]
+    if circled:
+        return circled
+    numeric = [int(value) for value in re.findall(r"(?<!\d)([1-5])(?!\d)", text)]
+    return list(dict.fromkeys(numeric))
+
+
+def choice_indices_to_canonical_answer(indices: Iterable[int]) -> str | None:
+    values = []
+    for index in indices:
+        canonical = choice_index_to_canonical_answer(index)
+        if canonical is not None and canonical not in values:
+            values.append(canonical)
+    return ", ".join(values) if values else None
+
+
 def resolve_independent_answer_against_choices(
     payload: Mapping[str, Any],
     independent_solve: Mapping[str, Any],
@@ -529,6 +568,15 @@ def resolve_independent_answer_against_choices(
             independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")),
         )
     )
+    if independent_solve.get("answerCardinality") == "MULTIPLE":
+        supplied = independent_solve.get("matchingChoiceIndices")
+        if isinstance(supplied, list):
+            matches = sorted({int(index) for index in supplied if isinstance(index, int) and not isinstance(index, bool) and 1 <= index <= len(choices)})
+            return {
+                "independentlyComputedValue": value,
+                "matchingChoiceIndices": matches,
+                "canonicalArchiveAnswer": choice_indices_to_canonical_answer(matches),
+            }
     computed_key_index = canonical_answer_to_choice_index(value)
     if computed_key_index is not None and independent_solve.get("answerType") in {"choice_index", "choiceIndex"}:
         matches = [computed_key_index] if computed_key_index <= len(choices) else []
@@ -879,6 +927,12 @@ def diagnose_source_defects(
     answer = resolution["independentlyComputedValue"]
     matches = resolution["matchingChoiceIndices"]
     defects: list[str] = []
+    multiple_response_contract = (
+        independent_solve.get("answerCardinality") == "MULTIPLE"
+        and independent_solve.get("answerUnique") is False
+        and independent_solve.get("responseContractValid") is True
+        and len(matches) > 1
+    )
     if len(normalized_choices) != len(set(normalized_choices)):
         defects.append("DUPLICATE_CHOICES")
     signal_map = {
@@ -902,19 +956,23 @@ def diagnose_source_defects(
         for signal in signal_source.get("defectSignals", []):
             if signal in DEFECT_TYPES:
                 defects.append(signal)
-    if independent_solve.get("answerUnique") is False:
+    resolution_blocked = answer.upper() in _ANSWER_RESOLUTION_BLOCKERS
+    if independent_solve.get("answerUnique") is False and not multiple_response_contract and not resolution_blocked:
         defects.append("MULTIPLE_CORRECT_ANSWERS" if choices else "RESPONSE_FORM_DEFECT")
     if independent_solve.get("responseContractValid") is False:
         defects.append("RESPONSE_FORM_DEFECT")
-    if choices and len(matches) == 0:
+    if choices and len(matches) == 0 and not resolution_blocked:
         defects.append("NO_CORRECT_ANSWER")
-    if len(matches) > 1:
+    if len(matches) > 1 and not multiple_response_contract:
         defects.append("MULTIPLE_CORRECT_ANSWERS")
     source_answer = _answer_text(source_payload.get("answer"))
-    source_answer_index = canonical_answer_to_choice_index(source_answer) if choices else None
-    if source_answer and choices and len(matches) == 1 and source_answer_index != matches[0]:
+    source_answer_indices = canonical_answer_to_choice_indices(source_answer) if choices else []
+    if source_answer and choices and multiple_response_contract:
+        if sorted(source_answer_indices) != sorted(matches):
+            defects.append("ANSWER_KEY_CONFLICT")
+    elif source_answer and choices and len(matches) == 1 and source_answer_indices != matches:
         defects.append("ANSWER_KEY_CONFLICT")
-    elif source_answer and not choices and answer and not _answer_values_equivalent(source_answer, answer):
+    elif source_answer and not choices and answer and not resolution_blocked and not _answer_values_equivalent(source_answer, answer):
         defects.append("ANSWER_KEY_CONFLICT")
     defects = _ordered_unique(defects)
     if not defects:
@@ -958,6 +1016,13 @@ def _bounded_replacement_choice(choices: list[Any], answer: str, supplied: Any =
         numeric_values = [int(_answer_text(choice)) for choice in choices]
         numeric_answer = int(answer)
     except ValueError:
+        # Symbolic/radical answers are still bounded R1 repairs when the
+        # independent verifier can prove the replacement is a distractor.
+        # Keep the proposal deterministic and let the blind verifier reject
+        # any mathematically unsafe replacement.
+        for candidate in ("0", "1", "-1", "2", "-2", "3", "-3", "4", "-4", "5", "-5"):
+            if candidate != answer and candidate not in normalized:
+                return candidate
         return None
     for delta in range(1, 33):
         for candidate in (numeric_answer + delta, numeric_answer - delta, max(numeric_values) + delta):
