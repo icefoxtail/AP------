@@ -518,3 +518,15 @@ source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact
 r47 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r47a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r47 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 14개 target-scoped candidate visual, 18개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r48 function/graph and discriminant-topology continuation update (2026-09-09)
+
+r48은 r47 직후 target inventory에서 source 해설이 존재하고 실제 시각화 가능한 8개 문항을 처리했다. 25 순천고 1final q12, 23 여천고 1mid q18, 23 여수여고 1mid q21은 포물선의 대칭축·꼭짓점·판별식/복소근 구조를 cartesian SVG로 구성했고, 24 효천고 1mid q11은 직사각형 존재 조건의 넓이 포물선을 cartesian SVG로 구성했다. 22 복성고 1final q13, 25 순천고 1final q16, 23 부영여고 1mid q21, 25 강남여고 1mid q11, 25 금당고 1mid q16은 빈 해집합·교점/영점·근의 위치·판별식 sign·계수로 정해지는 두 근을 수직선 topology로 구성했다.
+
+r48 후보 선정 중 source `solution`이 공란인 24 여수고 1mid q20은 attach 전에 제외하고, 사용자 승인 없는 해설 생성은 수행하지 않았다. 대신 source 해설이 존재하는 25 금당고 1mid q16으로 교체해 전체 r48을 V1부터 재실행했다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+candidate bank validation은 59 source bank·1295 row·full candidate visual 425건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 373건, 잔여 6건, decisionMissing 0이다. fresh expected fact 누적은 현재 counting 기준 420건, 잔여 10건이다. 최신 상태는 [r48 V3 closure snapshot](724_current_closure_snapshot_r48_v3_closed.json)이다.
+
+r48 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r48a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r48 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 6개 target-scoped candidate visual, 10개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
