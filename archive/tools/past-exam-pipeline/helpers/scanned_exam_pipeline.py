@@ -653,7 +653,9 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
         "sourceRecoveryHandoff": {
             "trigger": "independent solve confirms a source payload defect after full-page fidelity is closed",
             "operation": "SOURCE_RECOVERY",
-            "command": "python -m alive.engine.alive_cli source-recovery-run --input <locked-source-plus-independent-solve.json> --json",
+            "orchestrator": "archive/tools/past-exam-pipeline/helpers/source_recovery_handoff.py",
+            "command": "python archive/tools/past-exam-pipeline/helpers/source_recovery_handoff.py --input <locked-source-independent-solve-and-blind-verifier.json> --output <source-recovery-result.json>",
+            "requiresSeparateBlindVerifierSolve": True,
             "routes": {
                 "EXTRACTION_DEFECT": "SOURCE_FIDELITY_RESTORATION",
                 "ANSWER_KEY_DEFECT": "R0_ANSWER_KEY_RECOVERY",

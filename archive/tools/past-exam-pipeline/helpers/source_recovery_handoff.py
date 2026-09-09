@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from alive.engine.run_store import atomic_write_json
-from alive.engine.source_recovery import run_source_recovery
+from alive.engine.source_recovery import build_blind_verifier_adapter, run_source_recovery
 
 
 def _read(path: Path) -> dict[str, Any]:
@@ -40,17 +40,21 @@ def main(argv: list[str] | None = None) -> int:
         "requiredResource": "required_resource",
         "sourcePayload": "source_payload",
         "independentSolve": "independent_solve",
+        "blindVerifierSolve": "blind_verifier_solve",
         "builderSessionId": "builder_session_id",
         "verifierId": "verifier_id",
         "verifierSessionId": "verifier_session_id",
         "authorization": "authorization",
-        "qualityClosure": "quality_closure",
-        "lineageParity": "lineage_parity",
+        "qualityClosureEvidence": "quality_closure_evidence",
+        "lineageParityEvidence": "lineage_parity_evidence",
         "recoveryPlanId": "recovery_plan_id",
     }
     normalized = {aliases.get(key, key): value for key, value in request.items()}
     if "defectTypes" in request:
         normalized["defect_types"] = request["defectTypes"]
+    blind_solve = normalized.pop("blind_verifier_solve", None)
+    if blind_solve is not None:
+        normalized["blind_verifier"] = build_blind_verifier_adapter(blind_solve)
     result = run_source_recovery(**normalized)
     atomic_write_json(Path(args.output).resolve(), result)
     return 0 if result.get("status") in {"NOT_REQUIRED", "RECOVERED", "PRESERVE_ONLY"} else 2

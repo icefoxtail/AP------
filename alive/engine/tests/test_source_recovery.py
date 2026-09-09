@@ -9,10 +9,14 @@ from alive.engine.source_recovery import (
     SourceRecoveryError,
     atomic_adopt_replacement,
     build_recovery_ledger,
+    build_blind_verifier_adapter,
     build_tier_matrix,
+    build_validator_evidence,
     candidate_acceptance,
     capability_registry_report,
+    diagnose_source_defects,
     make_candidate_version,
+    produce_recovery_candidates,
     rank_candidates,
     release_gate,
     RECOVERY_CODES,
@@ -23,6 +27,7 @@ from alive.engine.source_recovery import (
     targeted_repair_candidate,
     validate_ledger,
     validate_replacement,
+    validate_verifier_evidence,
     validate_design_mirror,
 )
 from alive.engine.run_store import RunStore
@@ -30,20 +35,8 @@ from alive.engine.alive_cli import build_parser
 from alive.engine.source_question import json_sha256
 
 
-GATES = {
-    "MATH_VALID": "PASS",
-    "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
-    "CURRICULUM_VALID": "PASS",
-    "QUESTION_WELL_FORMED": "PASS",
-    "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
-    "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
-    "VISUAL_VALID_IF_APPLICABLE": "PASS",
-    "SERIALIZABLE": "PASS",
-}
-
-
 def candidate_payload(**extra: object) -> dict[str, object]:
-    return {"acceptanceGates": dict(GATES), **extra}
+    return {"content": "bounded candidate", "choices": ["1", "2", "3", "4", "5"], **extra}
 
 
 def verified_candidate(payload: dict[str, object], *, builder_session: str = "builder") -> dict[str, object]:
@@ -60,10 +53,13 @@ def verified_candidate(payload: dict[str, object], *, builder_session: str = "bu
         "independentlyComputedAnswer": "1",
         "answerUnique": True,
         "responseContractValid": True,
+        "allChoicesChecked": True,
+        "distractorsWrong": True,
         "mathVerdict": "PASS",
     }
     evidence["evidenceSha256"] = "sha256:" + json_sha256(evidence)
     candidate["verifierEvidence"] = evidence
+    candidate["validatorEvidence"] = build_validator_evidence(candidate)
     return candidate
 
 
@@ -71,11 +67,43 @@ def producer_attempt(tier: str, generated: int) -> dict[str, object]:
     return {
         "producerStatus": "COMPLETED",
         "attemptCount": 1,
+        "candidateBudget": 1,
+        "candidateBudgetConsumed": 1,
+        "retryBudget": 0,
+        "retryBudgetConsumed": True,
         "generatedCandidateCount": generated,
         "attemptEvidenceRef": f"attempt-{tier}",
         "attemptEvidenceSha": "sha256:" + "a" * 64,
         "allProducedCandidatesRejected": generated == 0,
     }
+
+
+def closure_evidence(kind: str) -> dict[str, object]:
+    return {
+        "evidenceId": f"{kind}-closure-1",
+        "evidenceRef": f"evidence/{kind}-closure-1.json",
+        "evidenceSha256": "sha256:" + "c" * 64,
+        "status": "PASS",
+    }
+
+
+def blind_verifier_evidence(view: dict[str, object], answer: str = "12") -> dict[str, object]:
+    evidence = {
+        "candidateId": view["candidateId"],
+        "candidateVersion": view["candidateVersion"],
+        "candidatePayloadSha256": view["candidatePayloadSha256"],
+        "verifierId": "separate-blind-verifier",
+        "verifierSessionId": "separate-blind-session",
+        "inputVisibilityProfile": "ARTIFACT_ONLY",
+        "blindInput": view["payload"],
+        "independentlyComputedAnswer": answer,
+        "answerUnique": True,
+        "responseContractValid": True,
+        "allChoicesChecked": True,
+        "distractorsWrong": True,
+        "mathVerdict": "PASS",
+    }
+    return {**evidence, "evidenceSha256": "sha256:" + json_sha256(evidence)}
 
 
 class SourceRecoveryTests(unittest.TestCase):
@@ -148,6 +176,22 @@ class SourceRecoveryTests(unittest.TestCase):
         self.assertEqual("SOURCE_FIDELITY_RESTORATION", result["route"])
         self.assertNotIn("recoveredQuestionUid", result)
 
+    def test_diagnosis_cannot_turn_invalid_independent_solve_or_structural_defects_into_no_defect(self) -> None:
+        source = {
+            "choices": ["1", "2", "3"],
+            "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+            "missingCondition": True,
+            "targetValid": False,
+        }
+        invalid_math = diagnose_source_defects(source, {"mathVerdict": "FAIL"})
+        self.assertNotEqual("NO_DEFECT", invalid_math["status"])
+        invalid_contract = diagnose_source_defects(source, {"mathVerdict": "PASS", "answerUnique": False, "responseContractValid": False, "answer": "1"})
+        self.assertNotEqual("NO_DEFECT", invalid_contract["status"])
+        self.assertIn("MULTIPLE_CORRECT_ANSWERS", invalid_contract["defectTypes"])
+        self.assertIn("RESPONSE_FORM_DEFECT", invalid_contract["defectTypes"])
+        self.assertIn("MISSING_CONDITION", invalid_contract["defectTypes"])
+        self.assertIn("QUESTION_TARGET_DEFECT", invalid_contract["defectTypes"])
+
     def test_evidence_block_checkpoint_resumes_with_new_source_material(self) -> None:
         blocked = run_source_recovery(
             source_question_uid="Q17",
@@ -163,6 +207,7 @@ class SourceRecoveryTests(unittest.TestCase):
                 "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
             },
             independent_solve={"independentlyComputedAnswer": "12", "answerUnique": True, "responseContractValid": True, "mathVerdict": "PASS"},
+            blind_verifier=lambda view: blind_verifier_evidence(view),
         )
         self.assertEqual("RECOVERED", resumed["status"])
         self.assertEqual("SOURCE_RECOVERY_EVIDENCE_BLOCKED", blocked["status"])
@@ -234,6 +279,8 @@ class SourceRecoveryTests(unittest.TestCase):
         mismatched = candidate_acceptance(forged, recovery_tier="R1")
         self.assertEqual("FAIL", mismatched["status"])
         self.assertIn("VERIFIER_CANDIDATE_SHA_MISMATCH", mismatched["failedGates"])
+        self_claim = make_candidate_version("RP-Q1-R1", {**candidate_payload(), "acceptanceGates": {"MATH_VALID": "PASS"}})
+        self.assertEqual("FAIL", candidate_acceptance(self_claim, recovery_tier="R1")["status"])
 
     def test_automatic_diagnosis_producer_and_blind_verifier_close_r1_shadow_lane(self) -> None:
         result = run_source_recovery(
@@ -255,6 +302,7 @@ class SourceRecoveryTests(unittest.TestCase):
                 "responseContractValid": True,
                 "mathVerdict": "PASS",
             },
+            blind_verifier=lambda view: blind_verifier_evidence(view),
         )
         self.assertEqual("NO_CORRECT_ANSWER", result["diagnosis"]["defectTypes"][0])
         self.assertEqual("RECOVERED", result["status"])
@@ -264,6 +312,67 @@ class SourceRecoveryTests(unittest.TestCase):
         result["finalTarget"] = True
         shadow_gate = release_gate(build_recovery_ledger(["Q17"], [result]))
         self.assertEqual("BLOCKED", shadow_gate["status"])
+
+    def test_r1_producer_has_separate_normalizers_for_each_choice_defect(self) -> None:
+        cases = [
+            (
+                "NO_CORRECT_ANSWER",
+                {"content": "x", "choices": ["3", "6", "9"], "answer": "①"},
+                {"defectTypes": ["NO_CORRECT_ANSWER"], "matchingChoiceIndices": []},
+                "12",
+                ["12", "6", "9"],
+            ),
+            (
+                "MULTIPLE_CORRECT_ANSWERS",
+                {"content": "x", "choices": ["12", "12", "9"], "recoveryReplacementChoice": "10"},
+                {"defectTypes": ["MULTIPLE_CORRECT_ANSWERS"], "matchingChoiceIndices": [1, 2]},
+                "12",
+                ["12", "10", "9"],
+            ),
+            (
+                "DUPLICATE_CHOICES",
+                {"content": "x", "choices": ["4", "4", "6"], "recoveryReplacementChoice": "9"},
+                {"defectTypes": ["DUPLICATE_CHOICES"], "matchingChoiceIndices": [3]},
+                "6",
+                ["4", "9", "6"],
+            ),
+        ]
+        for kind, source, diagnosis, answer, expected_choices in cases:
+            with self.subTest(kind=kind):
+                candidates, _ = produce_recovery_candidates(
+                    source,
+                    {"independentlyComputedAnswer": answer},
+                    diagnosis,
+                    recovery_plan_id=f"RP-Q1-{kind}",
+                )
+                self.assertEqual(1, len(candidates["R1"]))
+                candidate = candidates["R1"][0]
+                self.assertEqual(kind, candidate["producerKind"])
+                self.assertEqual(expected_choices, candidate["payload"]["choices"])
+
+    def test_json_blind_verifier_adapter_is_separate_from_source_solve(self) -> None:
+        adapter = build_blind_verifier_adapter({
+            "verifierId": "separate-verifier",
+            "verifierSessionId": "separate-session",
+            "independentlyComputedAnswer": "12",
+            "answerUnique": True,
+            "responseContractValid": True,
+            "allChoicesChecked": True,
+            "distractorsWrong": True,
+            "mathVerdict": "PASS",
+        })
+        view = {
+            "candidateId": "candidate-1",
+            "candidateVersion": 1,
+            "candidatePayloadSha256": "sha256:" + "a" * 64,
+            "payload": {"content": "x", "choices": ["12", "2"]},
+            "builderSessionId": "builder-session",
+        }
+        evidence = adapter(view)
+        candidate = {"candidateId": "candidate-1", "candidateVersion": 1, "payloadSha256": "sha256:" + "a" * 64, "payload": view["payload"], "builderSessionId": "builder-session", "verifierEvidence": evidence}
+        self.assertEqual("PASS", validate_verifier_evidence(candidate, evidence)["status"])
+        self.assertEqual("separate-verifier", evidence["verifierId"])
+        self.assertNotIn("answer", evidence["blindInput"])
 
     def test_empty_candidate_without_attempt_stays_pending(self) -> None:
         result = run_source_recovery(
@@ -302,6 +411,8 @@ class SourceRecoveryTests(unittest.TestCase):
             recovery_authority="BOUNDED_PRODUCTION",
             initial_scope_uids=["Q1", "Q17", "Q18"],
             authorization={"status": "PASS", "authorizationRef": "auth/rp-q17.json"},
+            quality_closure_evidence=closure_evidence("quality"),
+            lineage_parity_evidence=closure_evidence("lineage"),
             candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))] },
             attempts_by_tier={"R1": producer_attempt("R1", 1)},
         )
@@ -335,6 +446,13 @@ class SourceRecoveryTests(unittest.TestCase):
         self.assertEqual("RECOVERED", recovered["status"])
         self.assertEqual("AUTHORIZED", recovered["productionAdoptionStatus"])
         self.assertEqual(before["sourceQuestionUid"], recovered["sourceQuestionUid"])
+        with self.assertRaises(SourceRecoveryError):
+            atomic_adopt_replacement(
+                recovered,
+                authorization={"status": "PASS", "authorizationRef": "auth/ok"},
+                initial_scope_uids=["Q17"],
+                initial_scope_sha256="sha256:" + "0" * 64,
+            )
 
     def test_replacement_parity_rejects_one_to_many_and_simultaneous_active(self) -> None:
         item = {
