@@ -59,7 +59,7 @@ CORRECTIONS = {
         "q12: fixed-point intermediate corrected from -1+1/a to -2+1/a.",
     ],
     "24_여천고_2학기_중간_고1_기출": ["A형 source-faithful restoration: source q4/q5 restored; q4 choice 28 corrected minimally and q5 logic answer resolved as ④."],
-    "24_여양고_2학기_기말_고1_기출": ["A형 minimal choice restoration: source q15 N(k) sum corrected from unavailable 34 to choice ②=34; q8/q17 source gaps remain excluded."],
+    "24_여양고_2학기_기말_고1_기출": ["A형 source restoration: source q8/q17 recovered from native page evidence; source q15 N(k) sum corrected from unavailable 34 to choice ②=34."],
 }
 
 
@@ -217,6 +217,12 @@ def write_reports(root: Path, base: str, is_v2: bool = False) -> None:
             "# EXCLUDED SOURCE QUESTIONS — 24_여양고_2학기_기말_고1_기출\n\n"
             "- q8: REVIEW_NEEDED — the source ordinal is not represented by the current release bank; A형 source restoration is still required.\n"
             "- q17: REVIEW_NEEDED — the source ordinal is not represented by the current release bank; A형 source restoration is still required.\n",
+            encoding="utf-8",
+        )
+    if base == "24_여양고_2학기_기말_고1_기출":
+        (reports / "EXCLUDED_QUESTIONS.md").write_text(
+            "# EXCLUDED SOURCE QUESTIONS — 24_여양고_2학기_기말_고1_기출\n\n"
+            "- q13: REVIEW_NEEDED — the follow-up function-count condition text remains absent from the recoverable source view.\n",
             encoding="utf-8",
         )
 
