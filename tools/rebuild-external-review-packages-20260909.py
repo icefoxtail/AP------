@@ -60,6 +60,10 @@ CORRECTIONS = {
     ],
     "24_여천고_2학기_중간_고1_기출": ["A형 source-faithful restoration: source q4/q5 restored; q4 choice 28 corrected minimally and q5 logic answer resolved as ④."],
     "24_여양고_2학기_기말_고1_기출": ["A형 source restoration: source q8/q17 recovered from native page evidence; source q15 N(k) sum corrected from unavailable 34 to choice ②=34."],
+    "23_부영여고_2학기_중간_고1_기출": [
+        "A형 source-faithful restoration: q1-q18 and 서술형1-3 were transcribed from the native source pages; q18 received a clean source diagram crop.",
+        "Independent source-page math review corrected q1 to ④, q9 to ①, q10 to ③, q11 to ①, q12 to ④, q15 to ②, q16 to ⑤, and q18 to ②; all 21 source questions are now present.",
+    ],
 }
 
 
@@ -99,8 +103,6 @@ def zip_extract_to_root(zip_path: Path, destination: Path, root_name: str) -> No
 
 
 def find_work_source(base: str, temp_root: Path, is_v2: bool = False) -> Path | None:
-    if base == "23_부영여고_2학기_중간_고1_기출" and not is_v2:
-        return None
     candidates: list[Path] = []
     for work_dir in sorted(WORK_ROOT.iterdir()):
         if not work_dir.is_dir() or work_dir.name.startswith("fresh-check-"):
@@ -217,6 +219,13 @@ def write_reports(root: Path, base: str, is_v2: bool = False) -> None:
             "# EXCLUDED SOURCE QUESTIONS — 24_여양고_2학기_기말_고1_기출\n\n"
             "- q8: REVIEW_NEEDED — the source ordinal is not represented by the current release bank; A형 source restoration is still required.\n"
             "- q17: REVIEW_NEEDED — the source ordinal is not represented by the current release bank; A형 source restoration is still required.\n",
+            encoding="utf-8",
+        )
+    if base == "23_부영여고_2학기_중간_고1_기출":
+        suffix = " v2" if is_v2 else ""
+        (reports / "EXCLUDED_QUESTIONS.md").write_text(
+            f"# EXCLUDED SOURCE QUESTIONS — 23_부영여고_2학기_중간_고1_기출{suffix}\n\n"
+            "- No question was excluded after A형 source restoration; q1-q18 and 서술형1-3 are present with native-page evidence.\n",
             encoding="utf-8",
         )
     if base == "24_여양고_2학기_기말_고1_기출":
