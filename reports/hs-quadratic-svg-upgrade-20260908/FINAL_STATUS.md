@@ -470,3 +470,15 @@ r43 current V2 preparation은 새 `hs-quadratic-r43e` work-batch/run root에서 
 target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 334건, 잔여 45건이다. fresh expected fact 누적은 현재 counting 기준 381건, 잔여 49건이다. 최신 상태는 [r43 V3 closure snapshot](C:/Users/USER/Desktop/AP------/reports/hs-quadratic-svg-upgrade-20260908/644_current_closure_snapshot_r43_v3_closed.json)이다.
 
 r43 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 45개 target-scoped candidate visual, 49개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r44 in-scope function/number-line continuation update (2026-09-09)
+
+r44는 r43 직후 target inventory에서 실제로 미처리인 7개 문항을 처리했다. 23 매산고 1mid q13은 근과 계수 관계에서 얻는 음의 판별식 이차함수와 꼭짓점·최솟값을 개방형 cartesian SVG로 구성했고, 22 효천고 1final q21, 26 매산고 1final q8, 25 매산여고 1final q16, 26 금당고 1final q20, 25 효천고 1final q17, 25 매산고 1final q15는 열린/닫힌 끝점·정수해·분기 topology를 수직선 SVG로 구성했다. 매산고 q8의 38~47 정수 라벨과 q13의 그래프 요약 패널은 실제 desktop/mobile 렌더에서 겹침·가독성 문제가 보여 fact anchor를 바꾸지 않는 label-only 2줄/교차행 layout repair를 적용했다.
+
+source-only V1 7/7, 독립 검산 7/7 mismatch 0, candidate static 7/7, artifact-only V2 7/7, V3 7/7(FAIL 0), candidate solution freeze 7/7, local desktop/mobile render 7/7 및 overflow 0이다. candidate bank validation은 59 source bank·1295 row·full candidate visual 393건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 341건, 잔여 38건, decisionMissing 0이다. fresh expected fact 누적은 현재 counting 기준 388건, 잔여 42건이다.
+
+초기 r44 후보 목록에 포함됐던 26 팔마고 1final q16은 visual triage는 있었지만 target inventory 밖임을 coverage audit에서 확인하여 r44 성공 근거와 target progress에서 제외했다. 그 out-of-scope row를 대상 분모에 합산하지 않았다. 최신 상태는 [r44 V3 closure snapshot](660_current_closure_snapshot_r44_v3_closed.json)이다.
+
+r44 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r44f` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. 이전 r44e preparation은 최종 lineage에 사용하지 않는다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r44 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 38개 target-scoped candidate visual, 42개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
