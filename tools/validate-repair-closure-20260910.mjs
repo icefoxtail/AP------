@@ -27,7 +27,14 @@ for (const dir of fs.readdirSync(root).filter(name => name.endsWith('_EXTERNAL_R
     if (/Source question .*unresolved|retained for full-page review/i.test(text)) issues.push({ package: dir, kind: 'PLACEHOLDER', source: q.sourceQuestionNo });
   }
   for (const q of bQuestions) {
-    if (!q.recoveredQuestionUid || !q.sourceOriginalPreserved || q.productionAdoptionStatus !== 'NOT_AUTHORIZED') issues.push({ package: dir, kind: 'B_LINEAGE_FIELDS', source: q.sourceQuestionNo });
+    const authorizedPromotion = q.productionAdoptionStatus === 'AUTHORIZED_BY_USER_REQUEST'
+      && q.reviewStatus === 'B_DERIVED_EXAM_PROMOTED';
+    const reviewOnly = q.productionAdoptionStatus === 'NOT_AUTHORIZED';
+    const reviewOnlyLegacyLineage = reviewOnly && q.sourceOriginalPreserved
+      && Array.isArray(q.sourceDefectTypes) && q.sourceDefectTypes.length > 0;
+    if ((!q.recoveredQuestionUid && !reviewOnlyLegacyLineage) || !q.sourceOriginalPreserved || (!authorizedPromotion && !reviewOnly)) {
+      issues.push({ package: dir, kind: 'B_LINEAGE_FIELDS', source: q.sourceQuestionNo });
+    }
   }
   packageRows.push({ package: dir, questionCount: bank.length, sourceIdentityCount: sourceIds.length, bReplacementCount: bQuestions.length, idsUnique: duplicateIds.length === 0, sourceUidsUnique: duplicateSourceIds.length === 0 });
 }
