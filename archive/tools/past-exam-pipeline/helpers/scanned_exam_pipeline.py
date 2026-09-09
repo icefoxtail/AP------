@@ -2,6 +2,7 @@ import argparse
 import csv
 import hashlib
 import json
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -29,6 +30,21 @@ def write_csv(path, rows, fieldnames):
         writer.writeheader()
         for row in rows:
             writer.writerow({key: row.get(key, "") for key in fieldnames})
+
+
+def canonical_value(value):
+    if isinstance(value, str):
+        return unicodedata.normalize("NFC", value)
+    if isinstance(value, list):
+        return [canonical_value(item) for item in value]
+    if isinstance(value, dict):
+        return {unicodedata.normalize("NFC", str(key)): canonical_value(value[key]) for key in sorted(value, key=lambda item: unicodedata.normalize("NFC", str(item)))}
+    return value
+
+
+def object_sha(value):
+    encoded = json.dumps(canonical_value(value), ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return "sha256:" + hashlib.sha256(encoded).hexdigest()
 
 
 def safe_rel(path, root):
@@ -115,6 +131,8 @@ def load_frozen_source_inventory(manifest, page_items):
     inventory = json.loads(path.read_text(encoding="utf-8"))
     if inventory.get("schema") != "PAST_EXAM_SOURCE_INVENTORY_v1":
         raise ValueError("SOURCE_INVENTORY_SCHEMA_INVALID")
+    if inventory.get("status") != "SOURCE_INVENTORY_FROZEN":
+        raise ValueError("SOURCE_INVENTORY_NOT_FROZEN")
     if inventory.get("examId") != manifest.get("examId"):
         raise ValueError("SOURCE_INVENTORY_EXAM_ID_MISMATCH")
     if int(inventory.get("pageCount") or 0) != len(page_items):
@@ -125,6 +143,22 @@ def load_frozen_source_inventory(manifest, page_items):
     keys = [item.get("sourceIdentityKey") for item in questions]
     if any(not key for key in keys) or len(set(keys)) != len(keys):
         raise ValueError("SOURCE_IDENTITY_MAP_INVALID")
+    for item in questions:
+        if item.get("sourceIdentityKey") != f"{item.get('sourceDocumentSha256')}|{item.get('sourceQuestionNo')}":
+            raise ValueError("SOURCE_IDENTITY_KEY_MISMATCH")
+        if not isinstance(item.get("sourcePageEvidencePaths"), list) or not item.get("sourcePageEvidencePaths"):
+            raise ValueError("SOURCE_PAGE_EVIDENCE_SET_MISSING")
+    identity_map_path = Path(manifest.get("sourceIdentityMapPath") or path.parent / "source_identity_map.json")
+    if not identity_map_path.exists():
+        raise ValueError("SOURCE_IDENTITY_MAP_REQUIRED")
+    identity_map = json.loads(identity_map_path.read_text(encoding="utf-8"))
+    if identity_map.get("schema") != "PAST_EXAM_SOURCE_IDENTITY_MAP_v1" or identity_map.get("status") != "SOURCE_INVENTORY_FROZEN":
+        raise ValueError("SOURCE_IDENTITY_MAP_INVALID")
+    inventory_sha = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+    if identity_map.get("sourceInventorySha") != inventory_sha:
+        raise ValueError("SOURCE_IDENTITY_MAP_INVENTORY_STALE")
+    if sorted(identity_map.get("includedIdentitySet") or []) != sorted(item.get("sourceIdentityKey") for item in questions if item.get("disposition") != "EXCLUDED_WITH_EVIDENCE"):
+        raise ValueError("SOURCE_IDENTITY_MAP_INCLUDED_SET_FAIL")
     return inventory
 
 
@@ -274,11 +308,12 @@ def protected_payload_sha(question):
         "sourceDocumentSha256": question.get("sourceDocumentSha256"),
         "sourceEvidencePath": question.get("sourceEvidencePath") or question.get("fullPageImageRelPath") or "",
         "sourcePageNo": question.get("sourcePageNo", question.get("pageNo")),
+        "sourcePageEvidencePaths": question.get("sourcePageEvidencePaths") or [],
         "sourceQuestionNo": question.get("sourceQuestionNo"),
         "visualAsset": question.get("visualAsset") or "",
+        "visualAssetProvenance": question.get("visualAssetProvenance"),
     }
-    encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    return "sha256:" + hashlib.sha256(encoded).hexdigest()
+    return object_sha(payload)
 
 
 def bbox_validation(bbox, page_width, page_height):
@@ -309,6 +344,8 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
     sequential_id = 1
     inventory_by_page = {}
     for source_item in source_inventory.get("questions") or []:
+        if source_item.get("disposition") == "EXCLUDED_WITH_EVIDENCE":
+            continue
         inventory_by_page.setdefault(int(source_item["sourcePageNo"]), []).append(source_item)
 
     for page in pages:
@@ -431,7 +468,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
 
 
 def build_skeleton_questions(manifest, page_items, source_inventory):
-    frozen_questions = source_inventory.get("questions") or []
+    frozen_questions = [item for item in (source_inventory.get("questions") or []) if item.get("disposition") != "EXCLUDED_WITH_EVIDENCE"]
     expected = len(frozen_questions)
     questions = []
     for index, source_item in enumerate(frozen_questions):
@@ -548,11 +585,17 @@ def crop_visual_assets(root, questions):
                 q["visualAssetProvenance"] = {
                     "assetPath": asset_rel,
                     "assetSha256": asset_sha,
+                    "assetBindingType": "DIRECT",
                     "sourceDocumentSha256": q.get("sourceDocumentSha256", ""),
                     "sourceQuestionNo": q.get("sourceQuestionNo", ""),
                     "sourcePageNo": q.get("sourcePageNo", q.get("pageNo")),
+                    "sourcePageEvidence": q.get("sourceEvidencePath") or q.get("fullPageImageRelPath") or "",
+                    "sourcePageEvidencePaths": q.get("sourcePageEvidencePaths") or [q.get("sourceEvidencePath") or q.get("fullPageImageRelPath") or ""],
                     "sourceBBox": bbox,
                     "cropGenerator": "scanned_exam_pipeline.py",
+                    "pngDecodePass": True,
+                    "naturalWidth": x2 - x1,
+                    "naturalHeight": y2 - y1,
                     "cropStatus": "CROP_PURITY_REVIEW_REQUIRED",
                     "verdict": "PENDING_REVIEW",
                     "checks": {
@@ -570,13 +613,21 @@ def crop_visual_assets(root, questions):
                 result.update({
                     "status": "asset_crop_success",
                     "assetRel": asset_rel,
-                    "assetPath": str(asset_path),
+                    "sourceIdentityKey": q.get("sourceIdentityKey", ""),
+                    "assetPath": asset_rel,
+                    "assetFilePath": str(asset_path),
                     "assetSha256": asset_sha,
+                    "assetBindingType": "DIRECT",
                     "sourceDocumentSha256": q.get("sourceDocumentSha256", ""),
                     "sourceQuestionNo": q.get("sourceQuestionNo", ""),
                     "sourcePageNo": q.get("sourcePageNo", q.get("pageNo")),
+                    "sourcePageEvidence": q.get("sourceEvidencePath") or q.get("fullPageImageRelPath") or "",
+                    "sourcePageEvidencePaths": q.get("sourcePageEvidencePaths") or [q.get("sourceEvidencePath") or q.get("fullPageImageRelPath") or ""],
                     "sourceBBox": bbox,
                     "cropGenerator": "scanned_exam_pipeline.py",
+                    "pngDecodePass": True,
+                    "naturalWidth": x2 - x1,
+                    "naturalHeight": y2 - y1,
                     "cropStatus": "CROP_PURITY_REVIEW_REQUIRED",
                     "verdict": "PENDING_REVIEW",
                     "width": x2 - x1,
@@ -705,15 +756,25 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
         evidence_sha = ""
         if evidence_path.exists():
             evidence_sha = "sha256:" + hashlib.sha256(evidence_path.read_bytes()).hexdigest()
+        evidence_paths = [str(value) for value in (q.get("sourcePageEvidencePaths") or [q.get("fullPageImageRelPath") or ""]) if str(value)]
+        page_evidence = []
+        for evidence_rel in evidence_paths:
+            evidence_file = root / evidence_rel
+            if evidence_file.exists():
+                page_evidence.append({"path": evidence_rel, "sha256": "sha256:" + hashlib.sha256(evidence_file.read_bytes()).hexdigest()})
+        if not page_evidence and evidence_sha:
+            page_evidence = [{"path": q.get("fullPageImageRelPath") or "", "sha256": evidence_sha}]
         source_fidelity_items.append({
             "sourceIdentityKey": q.get("sourceIdentityKey", ""),
             "sourceDocumentSha256": q.get("sourceDocumentSha256", ""),
             "sourceQuestionNo": q.get("sourceQuestionNo", ""),
             "sourcePageNo": q.get("sourcePageNo", q.get("pageNo")),
             "sourceEvidencePath": q.get("sourceEvidencePath") or q.get("fullPageImageRelPath", ""),
+            "sourcePageEvidencePaths": evidence_paths,
+            "sourcePageEvidence": page_evidence,
             "sourceEvidenceSha256": evidence_sha,
-            "contentSha256": "sha256:" + hashlib.sha256(json.dumps(q.get("content", ""), ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest(),
-            "choicesSha256": "sha256:" + hashlib.sha256(json.dumps(q.get("choices", []), ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest(),
+            "contentSha256": object_sha(q.get("content", "")),
+            "choicesSha256": object_sha(q.get("choices", [])),
             "contentChecked": False,
             "choicesChecked": False,
             "verdict": "PENDING_REVIEW",
@@ -733,7 +794,7 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
         "examId": manifest["examId"],
         "sourceInventorySha": manifest.get("sourceInventorySha", ""),
         "sourceIdentityMapSha": manifest.get("sourceIdentityMapSha", ""),
-        "status": "PENDING_REVIEW" if asset_evidence_items else "PASS",
+        "status": "PENDING_REVIEW" if asset_evidence_items else "NOT_APPLICABLE",
         "items": asset_evidence_items,
     })
     write_json(reports / "math_review_evidence.json", {
@@ -888,6 +949,15 @@ def main():
 
     manifest_path = Path(args.manifest)
     root = Path(args.out)
+    resolved_root = root.resolve()
+    protected_roots = [
+        Path("archive/exams/original").resolve(),
+        Path("archive/assets/images").resolve(),
+        Path("archive/db.js").resolve(),
+        Path("archive/question-index.js").resolve(),
+    ]
+    if any(resolved_root == protected or str(resolved_root).startswith(str(protected) + str(Path("/"))) for protected in protected_roots):
+        raise ValueError("UNAUTHORIZED_PRODUCTION_WRITE: extraction output must remain in generated staging")
     reports = root / "reports"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     root.mkdir(parents=True, exist_ok=True)

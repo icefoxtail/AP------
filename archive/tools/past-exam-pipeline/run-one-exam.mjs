@@ -34,6 +34,13 @@ function parseOneArgs(argv) {
 
 export async function runOneExam(cfg, manifest) {
   const outputDir = path.resolve(manifest.outputDir || path.join(cfg.generatedRoot, manifest.examId));
+  const protectedRoots = [
+    path.resolve(cfg.archiveRoot, "exams", "original"),
+    path.resolve(cfg.archiveRoot, "assets", "images"),
+    path.resolve(cfg.archiveRoot, "db.js"),
+    path.resolve(cfg.archiveRoot, "question-index.js"),
+  ];
+  if (protectedRoots.some((root) => outputDir === root || outputDir.startsWith(`${root}${path.sep}`))) throw new Error("UNAUTHORIZED_PRODUCTION_WRITE: extraction output must remain in generated staging");
   const reportsDir = path.join(outputDir, "reports");
   const candidateDir = path.join(outputDir, "candidate");
   await Promise.all([
