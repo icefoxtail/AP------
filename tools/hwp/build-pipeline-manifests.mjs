@@ -17,7 +17,7 @@ const metadata = {
   "24_yeoyang_2final": { year: 2024, examType: "final", school: "여양고", objective: 18, subjective: 4 },
   "24_yeocheon_2final": { year: 2024, examType: "final", school: "여천고", objective: 18, subjective: 3 },
   "24_jungang_2final": { year: 2024, examType: "final", school: "중앙여고", objective: 20, subjective: 4 },
-  "24_hanyeong_2final": { year: 2024, examType: "final", school: "한영고", objective: 14, subjective: 3 },
+  "24_hanyeong_2final": { year: 2024, examType: "final", school: "한영고", objective: 14, subjective: 7 },
   "23_buyeong_2mid": { year: 2023, examType: "mid", school: "부영여고", objective: 18, subjective: 3 },
   "23_yeoyang_2mid": { year: 2023, examType: "mid", school: "여양고", objective: 18, subjective: 3 },
   "23_yeocheon_2mid": { year: 2023, examType: "mid", school: "여천고", objective: 18, subjective: 3 },
