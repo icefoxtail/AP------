@@ -28,7 +28,8 @@ for lo,hi in [(-math.pi,-math.pi/3),(-math.pi/3,math.pi/3),(math.pi/3,math.pi)]:
     end=hi-epsilon if abs(hi+math.pi/3)<1e-12 or abs(hi-math.pi/3)<1e-12 else hi
     for i in range(301):
         x=start+(end-start)*i/300; y=math.tan(1.5*x)
-        if math.isfinite(y): pts.append(f"{sx(x,x0,x1):.2f},{sy(max(-4,min(4,y)),-4,4):.2f}")
+        if math.isfinite(y) and -4 <= y <= 4:
+            pts.append(f"{sx(x,x0,x1):.2f},{sy(y,-4,4):.2f}")
     branches.append(f'<polyline class="curve" points="{" ".join(pts)}"/>')
 body=f'<line class="axis" x1="70" y1="{sy(0,-4,4):.2f}" x2="690" y2="{sy(0,-4,4):.2f}"/><line class="axis" x1="{sx(0,x0,x1):.2f}" y1="30" x2="{sx(0,x0,x1):.2f}" y2="374"/>'
 for a in [-math.pi/3,math.pi/3]: body+=f'<line class="guide" x1="{sx(a,x0,x1):.2f}" y1="30" x2="{sx(a,x0,x1):.2f}" y2="374"/>'
@@ -47,16 +48,17 @@ if not requested or "25_hyochon_mid_q13_sine" in requested:
     p,h=write("25_hyochon_mid_q13_sine.svg","사인 그래프 candidate · 25 효천고 q13","amplitude and period fact model",body,fact)
     records.append({"questionUid":fact["questionUid"],"candidateRef":p,"factHash":h,"v1":"PASS","v2":"PASS","v3":"PASS","status":"CANDIDATE_PASS"})
 
-# q14 abs exponential
-x0,x1=-1.5,1.5; pts=[]
-for i in range(601):
-    x=x0+(x1-x0)*i/600; y=abs(4**abs(x)-4); pts.append(f"{sx(x,x0,x1):.2f},{sy(y,0,16):.2f}")
-body=f'<line class="axis" x1="70" y1="{sy(0,0,16):.2f}" x2="690" y2="{sy(0,0,16):.2f}"/><line class="axis" x1="{sx(0,x0,x1):.2f}" y1="30" x2="{sx(0,x0,x1):.2f}" y2="374"/><line class="guide" x1="70" y1="{sy(3,0,16):.2f}" x2="690" y2="{sy(3,0,16):.2f}"/><polyline class="curve" points="{" ".join(pts)}"/>'
-for px in [-math.log(7,4),0,math.log(7,4)]: body+=f'<circle cx="{sx(px,x0,x1):.2f}" cy="{sy(3,0,16):.2f}" r="4" fill="#111"/>'
-body+=f'<text class="label" x="80" y="24">f(x)=|4^|x|−4|, y축 대칭, f(0)=3, f(±1)=0</text>'
-fact={"questionUid":"25_순천여고_1학기_중간_고2_대수::q14","expression":"f(x)=|4^{|x|}-4|","symmetry":"y-axis","values":{"f(0)":3,"f(±1)":0},"three_real_roots_at_k":3,"roots_at_k3":["-log₄7",0,"log₄7"]}
-p,h=write("25_suncheon_woman_q14_abs_exp.svg","절댓값 지수함수 candidate · 25 순천여고 q14","minimum fact model",body,fact)
-records.append({"questionUid":fact["questionUid"],"candidateRef":p,"factHash":h,"v1":"PASS","v2":"PASS","v3":"PASS","status":"CANDIDATE_PASS"})
+# q14 abs exponential (kept out of targeted runs unless explicitly requested)
+if not requested or "25_suncheon_woman_q14_abs_exp" in requested:
+    x0,x1=-1.5,1.5; pts=[]
+    for i in range(601):
+        x=x0+(x1-x0)*i/600; y=abs(4**abs(x)-4); pts.append(f"{sx(x,x0,x1):.2f},{sy(y,0,16):.2f}")
+    body=f'<line class="axis" x1="70" y1="{sy(0,0,16):.2f}" x2="690" y2="{sy(0,0,16):.2f}"/><line class="axis" x1="{sx(0,x0,x1):.2f}" y1="30" x2="{sx(0,x0,x1):.2f}" y2="374"/><line class="guide" x1="70" y1="{sy(3,0,16):.2f}" x2="690" y2="{sy(3,0,16):.2f}"/><polyline class="curve" points="{" ".join(pts)}"/>'
+    for px in [-math.log(7,4),0,math.log(7,4)]: body+=f'<circle cx="{sx(px,x0,x1):.2f}" cy="{sy(3,0,16):.2f}" r="4" fill="#111"/>'
+    body+=f'<text class="label" x="80" y="24">f(x)=|4^|x|−4|, y축 대칭, f(0)=3, f(±1)=0</text>'
+    fact={"questionUid":"25_순천여고_1학기_중간_고2_대수::q14","expression":"f(x)=|4^{|x|}-4|","symmetry":"y-axis","values":{"f(0)":3,"f(±1)":0},"three_real_roots_at_k":3,"roots_at_k3":["-log₄7",0,"log₄7"]}
+    p,h=write("25_suncheon_woman_q14_abs_exp.svg","절댓값 지수함수 candidate · 25 순천여고 q14","minimum fact model",body,fact)
+    records.append({"questionUid":fact["questionUid"],"candidateRef":p,"factHash":h,"v1":"PASS","v2":"PASS","v3":"PASS","status":"CANDIDATE_PASS"})
 
 if requested:
     records=[record for record in records if Path(record["candidateRef"]).stem in requested]

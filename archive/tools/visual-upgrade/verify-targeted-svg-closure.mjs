@@ -14,7 +14,7 @@ const targets = [
   { uid: "25_제일고_1학기_기말_고2_수학I::q2", q: 2, source: "archive/exams/original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/add-function/25_jeil_q2_tan.svg", asset: "archive/assets/images/25_제일고_1학기_기말_고2_수학I/q2-solution.svg", rootCause: "generator tangent sampling clamped asymptote endpoints", generatorFix: true, anchors: ["tan", "점근선", "(2n+1)"], facts: { questionUid: "25_제일고_1학기_기말_고2_수학I::q2", expression: "y=tan(3x/2)", period: "2π/3", asymptotes: "x=(2n+1)π/3", branchSeparated: true } },
   { uid: "25_금당고_1학기_기말_고2_수학I::q17", q: 17, source: "archive/exams/original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/add-general/25_geumdang_final_q17_cycle.svg", asset: "archive/assets/images/25_금당고_1학기_기말_고2_수학I/q17-solution.svg", rootCause: "shared SVG template emitted marker-end without marker definition", generatorFix: true, anchors: ["8", "2", "5", "주기"], facts: { type: "state_cycle", cycle: [8, 2, 5], period: 3, first_period_index: 3, a1_values: [17, 80, 29, 128] } },
   { uid: "25_효천고_1학기_기말_고2_대수::q23", q: 23, source: "archive/exams/original/high/h2/1final/25_효천고_1학기_기말_고2_대수c.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/add-general/25_hyochon_final_q23_two_circles.svg", asset: "archive/assets/images/25_효천고_1학기_기말_고2_대수/q23-solution.svg", rootCause: "question-specific two-circle coordinates did not satisfy collinearity/on-circle constraints", generatorFix: true, anchors: ["O_1", "O_2", "AB", "14"], facts: { type: "equal_radius_geometry", radius_symbol: "R", radius: 3, centers: { O1: [0, 0], O2: [3, 0] }, points: { A: [-3, 0], B: ["-7/3", "4√2/3"], C: ["-17/27", "56√2/27"], D: ["16/3", "-4√2/3"] }, AB: 2, O1D: "4√2", target: 14, collinearities: ["A,O1,O2", "C,O2,D"], onCircles: ["B∈C1", "D∈C2"], angle_relation: "θ3=θ1+θ2" } },
-  { uid: "24_금당고_1학기_중간_고2_대수::q16", q: 16, source: "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/rebuild-general/24_geumdang_q16_exp_log_triangle.svg", asset: "archive/assets/images/24_금당고_1학기_중간_고2_대수/q16-solution.svg", rootCause: "question-specific D coordinate was only text; geometry used a small surrogate x", generatorFix: true, anchors: ["A(8, 0)", "B=(2,6)", "D=(216,6)", "428"], facts: { type: "exp_log_triangle", A: [2, 6], B: [6, 2], C: [8, 0], D: [216, 6], ratio: "BC:CA=2:1", area: 428 } },
+  { uid: "24_금당고_1학기_중간_고2_대수::q16", q: 16, source: "archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/rebuild-general/24_geumdang_q16_exp_log_triangle.svg", asset: "archive/assets/images/24_금당고_1학기_중간_고2_대수/q16-solution.svg", rootCause: "question-specific D coordinate was only text; geometry used a small surrogate x", generatorFix: true, anchors: ["A(8, 0)", "B=(2,6)", "D=(216,6)", "428"], facts: { type: "exp_log_triangle", A: [8, 0], B: [2, 6], C: [6, 2], D: [216, 6], ratio: "BC:CA=2:1", area: 428 } },
   { uid: "25_순천고_1학기_중간_고2_대수::q13", q: 13, source: "archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/rebuild-general/25_suncheon_q13_sector_annulus.svg", asset: "archive/assets/images/25_순천고_1학기_중간_고2_대수/q13-solution.svg", rootCause: "question-specific annular sectors used different effective endpoint angles", generatorFix: true, anchors: ["2\\pi", "4/3\\pi", "5\\pi"], facts: { type: "sector_annulus", outer_arc: "2π", inner_arc: "4π/3", area: "5π", angle: "2π/9", answer: "2π/9" } },
   { uid: "25_순천고_1학기_중간_고2_대수::q24", q: 24, source: "archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/rebuild-general/25_suncheon_q24_inverse_graph.svg", asset: "archive/assets/images/25_순천고_1학기_중간_고2_대수/q24-solution.svg", rootCause: "question-specific symmetry guide used y=x+2 instead of y=x−2", generatorFix: true, anchors: ["y=x-2", "M", "A", "B", "a=3"], facts: { type: "shifted_inverse_graph", symmetry: "y=x−2", line: "y=−x+6", C: [0, 6], M: [4, 2], A: [3, 3], B: [5, 1], a: 3 } },
   { uid: "25_효천고_1학기_중간_고2_대수::q9", q: 9, source: "archive/exams/original/high/h2/1mid/25_효천고_1학기_중간_고2_대수.js", candidate: "reports/h2-s1-algebra-visual-upgrade/candidates/rebuild-general/25_hyochon_q9_sector_paper.svg", asset: "archive/assets/images/25_효천고_1학기_중간_고2_대수/q9-solution.svg", rootCause: "question-specific annular sector was drawn near a semicircle", generatorFix: true, anchors: ["2/3\\pi", "12", "36\\pi"], facts: { type: "sector_annulus", angle: "2π/3", outer_radius: 12, inner_radius: 6, area: "36π" } },
@@ -49,12 +49,21 @@ function actualGeometry(target, svg) {
       const xs = points.split(/\s+/).map((p) => -Math.PI + (Number(p.split(",")[0]) - 70) / 620 * 2 * Math.PI);
       return xs.every((x) => asym.every((a) => Math.abs(x - a) > 1e-6));
     });
+    out.noBoundaryClampRun = ps.every((points) => {
+      const ys = points.split(/\s+/).map((p) => Number(p.split(",")[1]));
+      let run = 1;
+      for (let i = 1; i < ys.length; i++) {
+        run = Math.abs(ys[i] - ys[i - 1]) < 1e-6 && (Math.abs(ys[i] - 30) < 1e-6 || Math.abs(ys[i] - 374) < 1e-6) ? run + 1 : 1;
+        if (run >= 3) return false;
+      }
+      return true;
+    });
   } else if (target.uid.endsWith("25_금당고_1학기_기말_고2_수학I::q17")) {
     out.markerDefined = /<marker id="arrow"/.test(svg);
     out.edgeDirectionRefs = (svg.match(/marker-end="url\(#arrow\)"/g) || []).length === 3;
     out.edgeCount = (svg.match(/<path class="mark"/g) || []).length === 3;
   } else if (target.uid.includes("효천고_1학기_기말") && target.q === 23) {
-    const inv = ([x, y]) => [-4 + (x - 70) / 580 * 11, 4 - (y - 62) / 286 * 7];
+    const inv = ([x, y]) => [(x - 150) / 38 - 4, (300 - y) / 38 - 3];
     const p = circles(svg).map((c) => inv([c.x, c.y]));
     const [A, O1, O2, B, C, D] = p;
     out.points = p.length === 6;
@@ -64,6 +73,10 @@ function actualGeometry(target, svg) {
     out.lengthAB = p.length === 6 && near(distance(A, B), 2, .001);
     out.lengthO1D = p.length === 6 && near(distance(O1, D) ** 2, 32, .01);
     out.targetProduct = p.length === 6 && near(distance(C, O2) * distance(O2, D), 14, .01);
+    const marks = [...svg.matchAll(/<circle class="mark" cx="([0-9.-]+)" cy="([0-9.-]+)" r="([0-9.-]+)"/g)].map((m) => ({ x: Number(m[1]), y: Number(m[2]), r: Number(m[3]) }));
+    const screenDistance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const screenPoints = [...svg.matchAll(/<circle class="point" cx="([0-9.-]+)" cy="([0-9.-]+)"/g)].map((m) => ({ x: Number(m[1]), y: Number(m[2]) }));
+    out.screenCirclePointParity = marks.length === 2 && screenPoints.length === 6 && [screenPoints[0], screenPoints[3], screenPoints[4]].every((point) => near(screenDistance(point, marks[0]), marks[0].r, .2)) && near(screenDistance(screenPoints[5], marks[1]), marks[1].r, .2);
   } else if (target.uid.includes("24_금당고") && target.q === 16) {
     const inv = ([x, y]) => [(x - 70) / 650 * 230, 8 - (y - 30) / 344 * 8];
     const p = circles(svg).map((c) => inv([c.x, c.y]));
@@ -86,9 +99,12 @@ function actualGeometry(target, svg) {
     out.centralAngle = /2π\/3/.test(svg);
     out.area = near((2 * Math.PI / 3) / 2 * (12 ** 2 - 6 ** 2), 36 * Math.PI);
   } else if (target.uid.endsWith("25_매산고_1학기_중간_고2_대수::q18")) {
-    out.sharedCenter = (svg.match(/M350,285/g) || []).length === 2;
+    out.sharedCenter = (svg.match(/M360,220/g) || []).length === 2;
     out.sharedRays = (svg.match(/A150 150 0 0 1/g) || []).length === 1 && (svg.match(/A47 47 0 0 1/g) || []).length === 1;
     out.maxVertex = /−x²\+24x/.test(svg) && /x=AC=12/.test(svg);
+    const labels = Object.fromEntries([...svg.matchAll(/<text class="small" x="([0-9.-]+)" y="([0-9.-]+)"[^>]*>([ABCD])<\/text>/g)].map((m) => [m[3], [Number(m[1]), Number(m[2])]]));
+    const expected = { A: [200, 212], B: [293, 98], C: [303, 212], D: [345, 187] };
+    out.labelEndpointBinding = Object.keys(expected).every((key) => labels[key] && near(labels[key][0], expected[key][0], 25) && near(labels[key][1], expected[key][1], 25));
   } else if (target.uid.endsWith("25_순천여고_1학기_중간_고2_대수::q14")) {
     out.symmetricExpression = /f\(x\)=\|4\^\|x\|−4\|/.test(svg);
     out.threeK3Markers = (svg.match(/<circle cx=/g) || []).length === 3;
@@ -99,11 +115,15 @@ function actualGeometry(target, svg) {
     const paths = [...svg.matchAll(/<path class="curve" d="M([0-9.-]+),([0-9.-]+) L([0-9.-]+),([0-9.-]+) L([0-9.-]+),([0-9.-]+)"/g)].map((m) => m.slice(1).map(Number));
     out.sixPeriods = paths.length === 6;
     out.zerosAndPeaks = paths.length === 6 && paths.every((p, i) => near(p[0], 70 + i * 108.333, .02) && near(p[1], 374, .02) && near(p[2], 70 + i * 108.333 + 54.167, .03) && near(p[3], 202, .03) && near(p[4], 70 + (i + 1) * 108.333, .03) && near(p[5], 374, .02));
+    const logMatch = svg.match(/<polyline class="curve2" points="([^"]+)"/);
+    const logPts = logMatch ? logMatch[1].split(/\s+/).map((p) => p.split(",").map(Number)) : [];
+    out.logSharedXTransform = logPts.length >= 2 && near(logPts[0][0], 70 + 650 / 12, .1) && near(logPts[0][1], 374, .1) && logPts.every(([sx, sy]) => { const x = (sx - 70) / 650 * 12; const y = 2 - (sy - 30) / 344 * 2; return x >= 1 - .02 && near(y, Math.log(x) / Math.log(99), .02); });
   } else if (target.uid.endsWith("23_한영고_1학기_중간_고2_대수::q13")) {
     out.graph = (svg.match(/<polyline class="curve"/g) || []).length === 1;
     out.guides = /max=3/.test(svg) && /midline=1/.test(svg) && /min=-1/.test(svg);
     out.periodPhase = /T=5π\/2, phase=5π\/8/.test(svg);
     out.keyPoints = (svg.match(/<circle class="point"/g) || []).length === 3;
+    out.exactKeyLabels = /x=5π\/8/.test(svg) && /x=15π\/8/.test(svg) && /x=25π\/8/.test(svg);
   } else if (target.uid.endsWith("25_매산고_1학기_중간_고2_대수::q11")) {
     out.graph = (svg.match(/<polyline class="curve"/g) || []).length === 1;
     out.guides = /max=3/.test(svg) && /midline=1/.test(svg) && /min=-1/.test(svg);
@@ -113,6 +133,8 @@ function actualGeometry(target, svg) {
     out.panels = (svg.match(/<polyline class="curve"/g) || []).length === 5;
     out.intersectionMarkers = (svg.match(/<circle class="point"/g) || []).length === 9;
     out.countLabels = /aₖ=2/.test(svg) && /aₖ=1/.test(svg) && /2\+2\+1\+2\+2 = 9/.test(svg);
+    const curvePointMatches = [...svg.matchAll(/<polyline class="curve" points="([^"]+)"/g)];
+    out.noCurvePointOutsideViewBox = curvePointMatches.length === 5 && curvePointMatches.every((m) => m[1].split(/\s+/).every((point) => { const [x, y] = point.split(",").map(Number); return x >= 0 && x <= 720 && y >= 0 && y <= 420; }));
   }
   return out;
 }
@@ -138,9 +160,9 @@ function sourceCheck(target) {
 }
 
 const freeze = latestFreeze();
-const renderEvidence = fs.existsSync(path.join(reportDir, "targeted-render-20260909")) && fs.readdirSync(path.join(reportDir, "targeted-render-20260909")).filter((name) => /_exam_(desktop|mobile)\.png$/u.test(name)).length >= 18
-  ? { expectedCases: 18, passCases: 18, failCases: 0, evidenceDir: "reports/h2-s1-algebra-visual-upgrade/targeted-render-20260909", mode: "archive engine exam refresh", note: "mobile overflow evaluated from transformed #print-area bounding box after screen-fit stabilization" }
-  : null;
+const renderEvidencePath = path.join(reportDir, "targeted_render_refresh_20260909.json");
+const renderEvidence = fs.existsSync(renderEvidencePath) ? JSON.parse(fs.readFileSync(renderEvidencePath, "utf8")) : null;
+const renderEvidencePass = renderEvidence?.status === "MACHINE_RENDER_PASS" && renderEvidence.expectedCases > 0 && renderEvidence.failCases === 0 && renderEvidence.captures?.every((capture) => capture.status === "PASS" && capture.screenshotSha256 && fs.existsSync(path.join(root, capture.screenshot))) === true;
 const rows = [];
 for (const target of targets) {
   const candidate = read(target.candidate);
@@ -165,9 +187,9 @@ for (const target of targets) {
   const oldAssetSha = sha(execFileSync("git", ["show", `HEAD:${target.asset}`]));
   const candidateSha = sha(Buffer.from(candidate));
   const assetSha = sha(Buffer.from(asset));
-  rows.push({ questionUid: target.uid, rootCause: target.rootCause, generatorFix: target.generatorFix, candidateRef: target.candidate, productionAsset: target.asset, oldAssetSha, newAssetSha: assetSha, candidateSha, shaParity: candidateSha === assetSha, expectedFacts: target.facts, observedFacts: metadata, mathParity: v2, actualCoordinateParity: actualPass, V1: v1 ? "PASS" : "FAIL", V2: v2 ? "PASS" : "FAIL", V3: v3 ? "PASS" : "FAIL", sourceAnchors: source.anchors, structure, actualGeometry: actual, solutionFreeze: frozen ? { batchNo: frozen.batchNo, logicStatus: frozen.logicStatus } : null, desktopRender: renderEvidence ? "PASS" : "PENDING", mobileRender: renderEvidence ? "PASS" : "PENDING" });
+  rows.push({ questionUid: target.uid, rootCause: target.rootCause, generatorFix: target.generatorFix, candidateRef: target.candidate, productionAsset: target.asset, oldAssetSha, newAssetSha: assetSha, candidateSha, shaParity: candidateSha === assetSha, expectedFacts: target.facts, observedFacts: metadata, mathParity: v2, actualCoordinateParity: actualPass, V1: v1 ? "PASS" : "FAIL", V2: v2 ? "PASS" : "FAIL", V3: v3 ? "PASS" : "FAIL", sourceAnchors: source.anchors, structure, actualGeometry: actual, solutionFreeze: frozen ? { batchNo: frozen.batchNo, logicStatus: frozen.logicStatus } : null, desktopRender: renderEvidencePass ? "PASS" : "PENDING", mobileRender: renderEvidencePass ? "PASS" : "PENDING" });
 }
 
-const output = { schemaVersion: "apmath-targeted-svg-closure-v1", generatedAt: new Date().toISOString(), scope: "independent SVG FAIL 13 only; no main merge, production seal, or full regeneration", targetCount: rows.length, render: renderEvidence, status: rows.length === 13 && rows.every((row) => row.V1 === "PASS" && row.V2 === "PASS" && row.V3 === "PASS" && row.shaParity && row.desktopRender === "PASS" && row.mobileRender === "PASS") && renderEvidence ? "TARGETED_CLOSURE_PASS_SEAL_HOLD" : "HOLD", rows };
+const output = { schemaVersion: "apmath-targeted-svg-closure-v1", generatedAt: new Date().toISOString(), scope: "independent SVG FAIL 13 only; no main merge, production seal, or full regeneration", targetCount: rows.length, render: renderEvidence, status: rows.length === 13 && rows.every((row) => row.V1 === "PASS" && row.V2 === "PASS" && row.V3 === "PASS" && row.shaParity && row.desktopRender === "PASS" && row.mobileRender === "PASS") && renderEvidencePass ? "TARGETED_CLOSURE_PASS_SEAL_HOLD" : "HOLD", rows };
 fs.writeFileSync(path.join(reportDir, "targeted_svg_closure_20260909.json"), JSON.stringify(output, null, 2) + "\n", "utf8");
 console.log(JSON.stringify({ targetCount: rows.length, v1: rows.filter((row) => row.V1 === "PASS").length, v2: rows.filter((row) => row.V2 === "PASS").length, v3: rows.filter((row) => row.V3 === "PASS").length, shaParity: rows.filter((row) => row.shaParity).length }));

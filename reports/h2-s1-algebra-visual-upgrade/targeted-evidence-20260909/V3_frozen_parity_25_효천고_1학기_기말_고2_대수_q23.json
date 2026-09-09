@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "apmath-targeted-v3-frozen-parity-v1",
+  "status": "PASS",
+  "questionUid": "25_효천고_1학기_기말_고2_대수::q23",
+  "V1": "PASS",
+  "V2": "PASS",
+  "expectedFacts": {
+    "type": "equal_radius_geometry",
+    "radius_symbol": "R",
+    "radius": 3,
+    "centers": {
+      "O1": [
+        0,
+        0
+      ],
+      "O2": [
+        3,
+        0
+      ]
+    },
+    "points": {
+      "A": [
+        -3,
+        0
+      ],
+      "B": [
+        "-7/3",
+        "4√2/3"
+      ],
+      "C": [
+        "-17/27",
+        "56√2/27"
+      ],
+      "D": [
+        "16/3",
+        "-4√2/3"
+      ]
+    },
+    "AB": 2,
+    "O1D": "4√2",
+    "target": 14,
+    "collinearities": [
+      "A,O1,O2",
+      "C,O2,D"
+    ],
+    "onCircles": [
+      "B∈C1",
+      "D∈C2"
+    ],
+    "angle_relation": "θ3=θ1+θ2"
+  },
+  "observedFacts": {
+    "AB": 2,
+    "O1D": "4√2",
+    "angle_relation": "θ3=θ1+θ2",
+    "centers": {
+      "O1": [
+        0,
+        0
+      ],
+      "O2": [
+        3,
+        0
+      ]
+    },
+    "collinearities": [
+      "A,O1,O2",
+      "C,O2,D"
+    ],
+    "onCircles": [
+      "B∈C1",
+      "D∈C2"
+    ],
+    "points": {
+      "A": [
+        -3,
+        0
+      ],
+      "B": [
+        "-7/3",
+        "4√2/3"
+      ],
+      "C": [
+        "-17/27",
+        "56√2/27"
+      ],
+      "D": [
+        "16/3",
+        "-4√2/3"
+      ]
+    },
+    "radius": 3,
+    "radius_symbol": "R",
+    "target": 14,
+    "type": "equal_radius_geometry"
+  },
+  "sourceFactFreeze": {
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "metadataParity": true,
+    "actualCoordinateParity": true,
+    "candidateProductionShaParity": true
+  }
+}

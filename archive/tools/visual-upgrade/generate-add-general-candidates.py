@@ -121,9 +121,9 @@ def graph_body(kind, f):
             body += text(sx2,y+28,"3π/4" if abs(b-3*math.pi/4)<.01 else "5π/3","small","middle")
         return body
     if kind == "two_circles":
-        xr, yr = (-4, 7), (-3, 4); R=3
-        def p(x,y): return xy(x,y,box=(70,62,580,286),xr=xr,yr=yr)
-        o1,o2=p(0,0),p(3,0); scale=580/(xr[1]-xr[0])
+        R=3; scale=38.0; x0,y0=150.0,300.0
+        def p(x,y): return x0+(x+4)*scale, y0-(y+3)*scale
+        o1,o2=p(0,0),p(3,0)
         body = line(*p(-3,0),*p(6,0),"guide")+f'<circle class="mark" cx="{o1[0]:.2f}" cy="{o1[1]:.2f}" r="{R*scale:.2f}"/><circle class="mark" cx="{o2[0]:.2f}" cy="{o2[1]:.2f}" r="{R*scale:.2f}"/>'
         body += line(*p(-3,0),*p(3,0),"guide")
         body += line(*p(-17/27,56*math.sqrt(2)/27),*p(16/3,-4*math.sqrt(2)/3),"guide")
@@ -164,9 +164,9 @@ def graph_body(kind, f):
         for val, label in [(3,"max=3"),(1,"midline=1"),(-1,"min=-1")]:
             body += line(70,xy(0,val,xr=(xa,xb),yr=(-2,4))[1],720,xy(0,val,xr=(xa,xb),yr=(-2,4))[1],"guide")
             body += text(650,xy(0,val,xr=(xa,xb),yr=(-2,4))[1]+4,label,"small")
-        key_x = [5*math.pi/8,15*math.pi/8,25*math.pi/8] if kind=="cos_params" else [math.pi/2,3*math.pi/2]
-        for x in key_x:
-            y=fn(x); sx,sy=xy(x,y,xr=(xa,xb),yr=(-2,4)); body += f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>'+text(sx,sy-10,f"x={x/math.pi:.3g}π","small","middle")
+        key_points = [(5*math.pi/8,"x=5π/8"),(15*math.pi/8,"x=15π/8"),(25*math.pi/8,"x=25π/8")] if kind=="cos_params" else [(math.pi/2,"x=π/2"),(3*math.pi/2,"x=3π/2")]
+        for x,label_text in key_points:
+            y=fn(x); sx,sy=xy(x,y,xr=(xa,xb),yr=(-2,4)); body += f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>'+text(sx,sy-10,label_text,"small","middle")
         caption = "T=5π/2, phase=5π/8" if kind=="cos_params" else "T=π, maxima x=π/2, 3π/2"
         return body+text(360,24,expr,"label","middle")+text(360,404,caption, "small","middle")
     if kind == "log_transform":
@@ -182,11 +182,11 @@ def graph_body(kind, f):
         body += f'<circle class="point" cx="{ax:.2f}" cy="{ay:.2f}" r="5"/>{text(ax+8,ay,"A","label")}<circle class="point" cx="{cx:.2f}" cy="{cy:.2f}" r="5"/>{text(cx+8,cy,"C","label")}'
         return body+text(360,40,"A=(7/2,9/2), C=(3,0), a=81/4", "label","middle")
     if kind == "sector_max":
-        cx,cy,a0,a1=350,285,math.pi,math.pi+math.pi/3; R2=150; R1=47
+        cx,cy,a0,a1=360,220,math.pi,math.pi+math.pi/3; R2=150; R1=47
         def p(r,a): return cx+r*math.cos(a),cy+r*math.sin(a)
         os,oe,ins,ine=p(R2,a0),p(R2,a1),p(R1,a0),p(R1,a1)
         body=f'<path class="region" d="M{cx},{cy} L{os[0]:.2f},{os[1]:.2f} A{R2} {R2} 0 0 1 {oe[0]:.2f},{oe[1]:.2f} Z"/><path class="inner" d="M{cx},{cy} L{ins[0]:.2f},{ins[1]:.2f} A{R1} {R1} 0 0 1 {ine[0]:.2f},{ine[1]:.2f} Z"/>'
-        body += line(*os,*ins,"mark")+line(*oe,*ine,"mark")+text(cx-10,cy+18,"O","label","end")+text(195,275,"A", "small")+text(420,370,"B", "small")+text(295,275,"C", "small")+text(373,330,"D", "small")
+        body += line(*os,*ins,"mark")+line(*oe,*ine,"mark")+text(cx-10,cy+18,"O","label","end")+text(os[0]-10,os[1]-8,"A","small","end")+text(oe[0]+8,oe[1]+8,"B", "small")+text(ins[0]-10,ins[1]-8,"C", "small","end")+text(ine[0]+8,ine[1]+8,"D", "small")
         return body+text(360,34,"같은 O, 같은 두 반직선, θ=π/3", "label","middle")+text(360,404,"L=θ(r₁+r₂)+2x=48,  S=½θ(r₂²−r₁²)=−x²+24x,  x=AC=12", "small","middle")
     if kind == "log_inverse":
         body=axes(0.1,8,-3,3)
@@ -212,8 +212,11 @@ def graph_body(kind, f):
             body += f'<path class="curve" d="M{p0[0]:.2f},{p0[1]:.2f} L{p1[0]:.2f},{p1[1]:.2f} L{p2[0]:.2f},{p2[1]:.2f}"/>'
             body += f'<circle class="point" cx="{p0[0]:.2f}" cy="{p0[1]:.2f}" r="3"/>'
         p11=xy(11,1,xr=xr,yr=yr); body += f'<circle class="point" cx="{p11[0]:.2f}" cy="{p11[1]:.2f}" r="3"/>'
-        body += polyline(points(lambda x:math.log(x,99),1,12,0,2),"curve2")
-        body += line(70,xy(1,1,xr=xr,yr=yr)[1],650,xy(1,1,xr=xr,yr=yr)[1],"guide")
+        log_points=[]
+        for i in range(401):
+            x=1+(12-1)*i/400; y=math.log(x,99); sx,sy=xy(x,y,xr=xr,yr=yr); log_points.append(f"{sx:.2f},{sy:.2f}")
+        body += polyline(" ".join(log_points),"curve2")
+        body += line(*xy(0,1,xr=xr,yr=yr),*xy(12,1,xr=xr,yr=yr),"guide")
         return body+text(360,24,"f(x): 0≤x<1은 x, 1≤x<2는 −x+2; period=2", "label","middle")+text(360,404,"모든 x=2k에서 0, x=2k+1에서 1;  y=log₉₉x 와 비교", "small","middle")
     if kind == "piecewise_roots":
         body=axes(0,10,-3,5); body += polyline(points(lambda x:math.log(x-4,2)-2,6.01,10,-3,5),"curve")+polyline(points(lambda x:2**(x-6)-2,0,6,-3,5),"curve2")

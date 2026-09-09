@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "apmath-targeted-v3-frozen-parity-v1",
+  "status": "PASS",
+  "questionUid": "25_매산고_1학기_중간_고2_대수::q18",
+  "V1": "PASS",
+  "V2": "PASS",
+  "expectedFacts": {
+    "type": "sector_annulus",
+    "central_angle": "π/3",
+    "perimeter": 48,
+    "r1": "36/π−6",
+    "r2": "36/π+6",
+    "variable": "x=r₂−r₁",
+    "area": "−x²+24x",
+    "max_x": 12,
+    "max_area": 144,
+    "shared_geometry": [
+      "same center O",
+      "same start ray OA/OC",
+      "same end ray OB/OD"
+    ]
+  },
+  "observedFacts": {
+    "area": "−x²+24x",
+    "central_angle": "π/3",
+    "max_area": 144,
+    "max_x": 12,
+    "perimeter": 48,
+    "r1": "36/π−6",
+    "r2": "36/π+6",
+    "shared_geometry": [
+      "same center O",
+      "same start ray OA/OC",
+      "same end ray OB/OD"
+    ],
+    "type": "sector_annulus",
+    "variable": "x=r₂−r₁"
+  },
+  "sourceFactFreeze": {
+    "logicStatus": "PASS"
+  },
+  "parity": {
+    "metadataParity": true,
+    "actualCoordinateParity": true,
+    "candidateProductionShaParity": true
+  }
+}

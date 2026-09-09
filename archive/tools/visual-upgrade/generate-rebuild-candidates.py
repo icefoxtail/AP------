@@ -18,7 +18,7 @@ OUT = REPORT / "candidates" / "rebuild-general"
 OUT.mkdir(parents=True, exist_ok=True)
 
 SPECS = [
-    {"slug":"24_geumdang_q16_exp_log_triangle","questionUid":"24_금당고_1학기_중간_고2_대수::q16","sourceJsPath":"archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js","id":16,"kind":"triangle_log","facts":{"type":"exp_log_triangle","A":[2,6],"B":[6,2],"C":[8,0],"D":[216,6],"ratio":"BC:CA=2:1","area":428},"anchors":["B=(2,6)","C=(6,2)","428"]},
+    {"slug":"24_geumdang_q16_exp_log_triangle","questionUid":"24_금당고_1학기_중간_고2_대수::q16","sourceJsPath":"archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js","id":16,"kind":"triangle_log","facts":{"type":"exp_log_triangle","A":[8,0],"B":[2,6],"C":[6,2],"D":[216,6],"ratio":"BC:CA=2:1","area":428},"anchors":["B=(2,6)","C=(6,2)","428"]},
     {"slug":"24_geumdang_q17_cos_counts","questionUid":"24_금당고_1학기_중간_고2_대수::q17","sourceJsPath":"archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js","id":17,"kind":"cos_counts","facts":{"type":"piecewise_cos","k_values":[1,2,3,4,5],"counts":[2,2,1,2,2],"sum":9},"anchors":["a_1+a_2","cos x","9"]},
     {"slug":"24_geumdang_q19_abs_sine_range","questionUid":"24_금당고_1학기_중간_고2_대수::q19","sourceJsPath":"archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js","id":19,"kind":"abs_sine","facts":{"type":"absolute_sine","expression":"|6sin2x+3|","f3":7,"target_count":4,"t_range":"3<t<9"},"anchors":["|6\\sin 2x+3|","3<t<9","f(3)"]},
     {"slug":"25_suncheon_q5_exp_shift_graph","questionUid":"25_순천고_1학기_중간_고2_대수::q5","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js","id":5,"kind":"exp_shift_graph","facts":{"type":"exponential_graph","expression":"y=2^(x+2)−2","asymptote":"y=−2","point":[0,2],"a":-2,"b":-2,"product":4},"anchors":["점근선","y=-2","4"]},
@@ -54,7 +54,7 @@ def body(kind, facts):
         for k in range(1,6):
             x0 = left + (k-1)*(w+gap); x1 = x0+w; y0, y1 = top, top+panel_h; c=math.cos(k*math.pi/3)
             def sx(t): return x0 + t/(2*math.pi)*w
-            def sy(v): return y0 + (1.2-v)/2.4*panel_h
+            def sy(v): return y0 + (2.2-v)/4.4*panel_h
             b += line(x0,sy(0),x1,sy(0),"axis")+line(sx(0),y0,sx(0),y1,"axis")+line(x0,sy(c),x1,sy(c),"guide")
             def piece(t): return math.cos(t) if t <= k*math.pi/3 else 2*c-math.cos(t)
             pts=[]
