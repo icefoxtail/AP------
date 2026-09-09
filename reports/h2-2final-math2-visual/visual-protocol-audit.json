@@ -53,14 +53,22 @@
     "freezeSha": "sha256:d8871ccad3ff69364ed31f2e44bdc92acf7c340d57185cc81d70b7e7303b450e"
   },
   "pipelineClosure": {
-    "auditV2": "HOLD",
+    "auditV2": "BLOCKED",
     "workBatchAudit": "BLOCKED",
     "errors": [
       "auditorPacketRefs missing",
       "buildWorkLedgerRefs missing",
       "questionQualityClosureSetRef missing",
-      "examReleaseClosureRef missing"
+      "examReleaseClosureRef missing",
+      "provider FINAL_AUDIT failed before semantic model turn",
+      "finalCoverage=0"
     ]
+  },
+  "providerFinalAuditRecheck": {
+    "status": "FAILED_BEFORE_MODEL_TURN",
+    "evidence": "reports/h2-2final-math2-visual/provider-final-audit-recheck.json",
+    "retryPerformed": false,
+    "semanticEvidence": "NOT_TESTED"
   },
   "finalDecision": "HOLD",
   "holdReasons": [

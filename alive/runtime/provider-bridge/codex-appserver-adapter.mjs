@@ -159,7 +159,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
     outputSchema: { type: 'object', additionalProperties: false, properties: { evidence: { type: 'array' }, defects: { type: 'array' } }, required: ['evidence', 'defects'] },
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
-    collaborationMode: { mode: 'default', settings: { developer_instructions: null } }
+    collaborationMode: { mode: 'default', settings: { model: 'gpt-5.6-luna', developer_instructions: null } }
   });
   const turnId = turn.id;
   let text = '';

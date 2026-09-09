@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "launchId": "h2-2final-math2-visual-20260909-recheck:1",
+  "externalId": "01a0849d-e71c-75a2-b0b6-ee5eb7539edf",
+  "status": "FAILED",
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "providerPlanRef": {
+    "path": "alive/runtime/provider-bridge/h2-2final-math2-visual-20260909-recheck-provider/plan.json",
+    "bytes": 34230,
+    "sha256": "sha256:d0147f40f749faf8525b8da30639d52d8e4736438ae9fafd210fb51fe8737160"
+  },
+  "independentAgentLaunchCount": 1,
+  "expensiveAgentLaunchCount": 1,
+  "concurrentExpensiveAgentPeak": 1,
+  "recursiveSubagentLaunchCount": 0,
+  "retryLaunchCount": 0,
+  "usedTokens": null,
+  "phaseAttestationRefs": [],
+  "evidenceRefs": [],
+  "defects": [],
+  "failure": {
+    "code": "PROVIDER_TRANSPORT_UNAVAILABLE",
+    "message": "Codex app-server turn/start rejected collaborationMode without settings.model before any semantic evidence was returned."
+  }
+}
