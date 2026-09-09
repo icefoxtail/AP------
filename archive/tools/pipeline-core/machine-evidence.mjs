@@ -12,6 +12,26 @@ export const MACHINE_EVIDENCE_BRIDGE_VERSION = 'APMATH_MACHINE_EVIDENCE_BRIDGE_v
 export const MACHINE_EVIDENCE_COLLECTOR = 'pipeline-core-machine-collector';
 const MACHINE_AXES = Object.freeze(['STATIC', 'METADATA']);
 const evidenceContract = JSON.parse(fs.readFileSync(new URL('./contracts/evidence-v2.schema.json', import.meta.url), 'utf8'));
+const OBJECTIVE_TYPES = new Set(['객관식', 'objective', 'multiple_choice', 'choice']);
+const IMAGE_ONLY_OBJECTIVE_TAG = '통이미지보기';
+
+const questionType = question => String(question?.questionType || '').trim().toLowerCase();
+
+export function isImageOnlyObjective(question) {
+  return OBJECTIVE_TYPES.has(questionType(question)) &&
+    nonempty(question?.image) &&
+    Array.isArray(question?.tags) &&
+    question.tags.includes(IMAGE_ONLY_OBJECTIVE_TAG);
+}
+
+export function isChoicesContractValid(question) {
+  if (Object.hasOwn(question || {}, 'choices')) {
+    if (!Array.isArray(question.choices)) return false;
+    if (question.choices.length === 0) return isImageOnlyObjective(question);
+    return true;
+  }
+  return isImageOnlyObjective(question);
+}
 
 const repositoryRelative = (root, value) => {
   if (!nonempty(value)) throw new Error('MACHINE_MANIFEST_REQUIRED');
@@ -38,7 +58,7 @@ const assetMatches = (question, paths, field, run) => {
 
 function staticChecks(root, run, question, declared, sourceBank, candidateBank, axisShas) {
   const checks = {
-    schema: Boolean(run.schemaVersion === RUN_VERSION_V2 && declared?.questionUid && Number.isSafeInteger(declared?.qid) && Array.isArray(declared?.requiredAxes) && Array.isArray(question?.choices) && nonempty(question?.content) && nonempty(String(question?.answer ?? '')) && nonempty(question?.solution)),
+    schema: Boolean(run.schemaVersion === RUN_VERSION_V2 && declared?.questionUid && Number.isSafeInteger(declared?.qid) && Array.isArray(declared?.requiredAxes) && isChoicesContractValid(question) && nonempty(question?.content) && nonempty(String(question?.answer ?? '')) && nonempty(question?.solution)),
     jsLoad: Boolean(Array.isArray(sourceBank?.questionBank) && Array.isArray(candidateBank?.questionBank) && sourceBank.questionBank.some(q => q.id === declared.qid) && candidateBank.questionBank.some(q => q.id === declared.qid)),
     hashes: false,
     assetBinding: false,
@@ -59,7 +79,7 @@ function staticChecks(root, run, question, declared, sourceBank, candidateBank, 
 function metadataChecks(question, declared, source) {
   const metadataKeys = ['standardCourse', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'questionType', 'layoutTag', 'tags', 'wide'];
   const hasMetadata = metadataKeys.some(key => Object.hasOwn(question || {}, key) || Object.hasOwn(source || {}, key));
-  const schema = Boolean(question && Number.isSafeInteger(question.id) && Array.isArray(question.choices) && nonempty(question.content));
+  const schema = Boolean(question && Number.isSafeInteger(question.id) && isChoicesContractValid(question) && nonempty(question.content));
   const uidBinding = Boolean(declared?.questionUid === `${declared?.sourceExamId}|${declared?.sourceQuestionOrdinal}` && question?.id === declared?.qid && source?.id === declared?.qid);
   const curriculumBinding = !hasMetadata || (
     nonempty(question.standardCourse) && nonempty(question.standardUnitKey) && nonempty(question.standardUnit) &&
