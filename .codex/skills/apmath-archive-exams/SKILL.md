@@ -37,6 +37,27 @@ node tools/skills/verify-skills.mjs
   compatibility alias, and the adaptive skill is comparison-experiment only.
   Neither is an original-archive import route.
 
+### Source Defect Recovery handoff (v1.2 design candidate)
+
+After full-page-first extraction and blind independent solve, classify the
+finding before changing anything:
+
+```text
+EXTRACTION_DEFECT -> SOURCE_FIDELITY_RESTORATION
+ANSWER_KEY_DEFECT -> independent answer/solution + source ledger
+QUESTION_PAYLOAD_DEFECT -> DERIVED_SOURCE_RECOVERY lane
+```
+
+`DERIVED_SOURCE_RECOVERY` preserves the original source bytes, choices, visual,
+and hashes while handing a distinct recovery operation to the Similar/recovery
+engine. `APPROVED_SOURCE_REPAIR` keeps its existing explicit-approval meaning.
+The recovered artifact must not be labeled as the original. Any production
+slot substitution requires separate `slotUid`/`effectiveArtifactUid`,
+`DERIVED_REPLACEMENT_VERIFIED` 1:1 parity, and existing final-closure gates.
+Missing source material is `SOURCE_RECOVERY_EVIDENCE_BLOCKED` with a resumable
+`SOURCE_RECHECK`, not an automatic human escalation. This is design routing;
+it does not authorize canonical or production promotion by itself.
+
 ## Start
 
 1. Locate the repository root and read [archive-layout.md](references/archive-layout.md)

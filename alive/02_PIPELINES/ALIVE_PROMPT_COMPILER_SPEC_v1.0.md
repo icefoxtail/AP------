@@ -182,3 +182,33 @@ Master Rulebook 전문을 직접 LLM에 넣는 방식은:
 - Serializer 실행
 
 Compiler는 규칙 선택·조립만 담당한다.
+
+## 9. Source Defect Auto-Recovery (v1.2 design amendment)
+
+다음 중 하나이면 recovery section을 Runtime Prompt에 포함한다.
+
+```text
+sourceDefectDetected == true
+OR sourceRecoveryPolicy in {SHADOW_AUTO_RECOVER, AUTO_RECOVER}
+```
+
+recovery section은 현재 tier, locked core, defect taxonomy, candidate
+acceptance gates, independent verification, original/derived separation,
+authority/adoption contract를 포함한다. `PRESERVE_ONLY`는 원본 보존과
+correctness-affecting release block 규칙을 포함하되 candidate를 생성하지
+않는다.
+
+다음 핵심 규칙은 token budget 초과 시에도 생략하지 않는다.
+
+```text
+SOURCE ORIGINAL IMMUTABILITY
+NO ANSWER REVERSE-ENGINEERING
+CURRENT RECOVERY TIER CONTRACT
+INDEPENDENT VERIFICATION
+ORIGINAL/DERIVED SEPARATION
+HUMAN_REQUIRED LAST
+```
+
+Prompt compiler는 recovery candidate를 생성하거나 수학 검증 결과를
+작성하지 않는다. compiler는 이 계약을 선택·조립하고, 실행은 runtime의
+Source Defect Router와 독립 verifier가 담당한다.
