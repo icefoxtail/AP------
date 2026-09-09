@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "apmath://tex-pilot/gold-visual.schema.v1",
+  "title": "AP Math TeX/TikZ GOLD Pilot visual input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "visualType", "viewport"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$"},
+    "visualType": {
+      "enum": [
+        "coordinate_geometry",
+        "line_circle_geometry",
+        "function_graph",
+        "calculus_graph",
+        "explanation_card"
+      ]
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["xMin", "xMax", "yMin", "yMax"],
+      "properties": {
+        "xMin": {"type": "number"},
+        "xMax": {"type": "number"},
+        "yMin": {"type": "number"},
+        "yMax": {"type": "number"},
+        "width": {"type": "number", "exclusiveMinimum": 0},
+        "height": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "axes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "visible": {"type": "boolean"},
+        "grid": {"type": "boolean"},
+        "xLabel": {"type": "string"},
+        "yLabel": {"type": "string"},
+        "step": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "points": {"type": "array", "items": {"$ref": "#/$defs/point"}},
+    "lines": {"type": "array", "items": {"$ref": "#/$defs/line"}},
+    "segments": {"type": "array", "items": {"$ref": "#/$defs/segment"}},
+    "circles": {"type": "array", "items": {"$ref": "#/$defs/circle"}},
+    "functionGraphs": {"type": "array", "items": {"$ref": "#/$defs/functionGraph"}},
+    "labels": {"type": "array", "items": {"$ref": "#/$defs/label"}},
+    "annotations": {"type": "array", "items": {"$ref": "#/$defs/annotation"}},
+    "auxiliaryLines": {"type": "array", "items": {"$ref": "#/$defs/auxiliaryLine"}},
+    "emphasis": {"type": "array", "items": {"$ref": "#/$defs/emphasis"}},
+    "conditionBox": {"$ref": "#/$defs/conditionBox"},
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": {
+            "enum": [
+              "POINT", "POINT_LABEL", "LINE", "SEGMENT", "CIRCLE",
+              "FUNCTION_GRAPH", "AXIS", "INTERSECTION", "AUXILIARY_LINE",
+              "EQUATION_LABEL", "GRAPH_ANNOTATION", "CONDITION_BOX",
+              "PERPENDICULAR_MARK", "ANGLE_MARK"
+            ]
+          },
+          "ref": {"type": "string"},
+          "refs": {"type": "array", "items": {"type": "string"}},
+          "options": {"type": "object"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "style": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "color": {"type": "string"},
+        "lineStyle": {"enum": ["solid", "dashed", "dotted"]},
+        "lineWidth": {"type": "number", "exclusiveMinimum": 0},
+        "mark": {"type": "string"}
+      }
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "x", "y"],
+      "properties": {
+        "id": {"type": "string"},
+        "x": {"type": "number"},
+        "y": {"type": "number"},
+        "label": {"type": "string"},
+        "role": {"enum": ["point", "intersection", "endpoint", "critical"]},
+        "style": {"$ref": "#/$defs/style"}
+      }
+    },
+    "line": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "slope", "intercept"],
+      "properties": {
+        "id": {"type": "string"},
+        "slope": {"type": "number"},
+        "intercept": {"type": "number"},
+        "domain": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "equation": {"type": "string"},
+        "style": {"$ref": "#/$defs/style"}
+      }
+    },
+    "segment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to"],
+      "properties": {
+        "id": {"type": "string"},
+        "from": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "to": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "style": {"$ref": "#/$defs/style"}
+      }
+    },
+    "circle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "center", "radius"],
+      "properties": {
+        "id": {"type": "string"},
+        "center": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "radius": {"type": "number", "exclusiveMinimum": 0},
+        "style": {"$ref": "#/$defs/style"}
+      }
+    },
+    "functionGraph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "expression", "domain"],
+      "properties": {
+        "id": {"type": "string"},
+        "expression": {"type": "string"},
+        "domain": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "samples": {"type": "integer", "minimum": 2, "maximum": 2001},
+        "label": {"type": "string"},
+        "style": {"$ref": "#/$defs/style"}
+      }
+    },
+    "label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "at"],
+      "properties": {
+        "id": {"type": "string"},
+        "text": {"type": "string"},
+        "at": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "anchor": {"type": "string"},
+        "kind": {"enum": ["point", "equation", "axis", "generic"]}
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "at"],
+      "properties": {
+        "id": {"type": "string"},
+        "text": {"type": "string"},
+        "at": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "anchor": {"type": "string"}
+      }
+    },
+    "auxiliaryLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "orientation", "value"],
+      "properties": {
+        "id": {"type": "string"},
+        "orientation": {"enum": ["vertical", "horizontal"]},
+        "value": {"type": "number"},
+        "style": {"$ref": "#/$defs/style"}
+      }
+    },
+    "emphasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "target"],
+      "properties": {
+        "id": {"type": "string"},
+        "target": {"type": "string"},
+        "color": {"type": "string"},
+        "width": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "conditionBox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "at"],
+      "properties": {
+        "text": {"type": "string"},
+        "at": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
+        "width": {"type": "number", "exclusiveMinimum": 0},
+        "anchor": {"type": "string"}
+      }
+    }
+  }
+}

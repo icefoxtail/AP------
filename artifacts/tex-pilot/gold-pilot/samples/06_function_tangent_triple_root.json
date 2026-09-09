@@ -1,0 +1,11 @@
+{
+  "id": "06_function_tangent_triple_root",
+  "visualType": "function_graph",
+  "viewport": {"xMin": -1, "xMax": 3.2, "yMin": -2, "yMax": 5, "width": 13, "height": 9},
+  "axes": {"visible": true, "grid": true, "xLabel": "x", "yLabel": "y"},
+  "functionGraphs": [{"id": "f", "expression": "x^3-3*x^2+4*x-1", "domain": [-0.5, 3], "samples": 121, "label": "f(x)", "style": {"color": "black", "lineWidth": 1.2}}],
+  "lines": [{"id": "yx", "slope": 1, "intercept": 0, "domain": [-0.5, 3], "equation": "y=x", "style": {"color": "red", "lineStyle": "dashed", "lineWidth": 1}}],
+  "points": [{"id": "A", "x": 1, "y": 1, "label": "A(1,1)", "role": "critical"}, {"id": "B", "x": 2, "y": 3, "label": "B(2,3)", "role": "point"}],
+  "labels": [{"id": "fact", "text": "g=f-x; triple root x=1", "at": [-0.8, 4.2], "kind": "generic"}],
+  "components": [{"kind": "AXIS"}, {"kind": "FUNCTION_GRAPH", "ref": "f"}, {"kind": "LINE", "ref": "yx"}, {"kind": "POINT", "ref": "A"}, {"kind": "POINT", "ref": "B"}, {"kind": "POINT_LABEL", "ref": "A"}, {"kind": "POINT_LABEL", "ref": "B"}, {"kind": "GRAPH_ANNOTATION", "ref": "fact"}, {"kind": "PERPENDICULAR_MARK", "options": {"at": [1, 1], "size": 0.15}}]
+}

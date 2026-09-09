@@ -1,0 +1,12 @@
+{
+  "id": "02_coordinate_parallel",
+  "visualType": "coordinate_geometry",
+  "viewport": {"xMin": -2, "xMax": 3, "yMin": -6, "yMax": 5, "width": 13, "height": 9},
+  "axes": {"visible": true, "grid": true, "xLabel": "x", "yLabel": "y"},
+  "lines": [
+    {"id": "upper", "slope": 2, "intercept": 1, "equation": "2x-y+1=0", "style": {"color": "blue", "lineWidth": 1.1}},
+    {"id": "lower", "slope": 2, "intercept": -4, "equation": "2x-y-4=0", "style": {"color": "green", "lineWidth": 1.1}}
+  ],
+  "conditionBox": {"text": "parallel\nc difference=5\nd=sqrt(5)", "at": [0.2, 4.6], "width": 2.4},
+  "components": [{"kind": "AXIS"}, {"kind": "LINE", "ref": "upper"}, {"kind": "LINE", "ref": "lower"}, {"kind": "CONDITION_BOX"}]
+}

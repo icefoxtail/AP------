@@ -1,0 +1,11 @@
+{
+  "id": "07_calculus_step_count",
+  "visualType": "calculus_graph",
+  "viewport": {"xMin": -2.5, "xMax": 4, "yMin": -0.5, "yMax": 2.8, "width": 11, "height": 9},
+  "axes": {"visible": true, "grid": true, "xLabel": "t", "yLabel": "h(t)"},
+  "segments": [{"id": "s1", "from": [-2, 0], "to": [0, 0], "style": {"color": "blue", "lineWidth": 1.2}}, {"id": "s2", "from": [0, 0], "to": [0, 1], "style": {"color": "blue", "lineWidth": 1.2}}, {"id": "s3", "from": [0, 1], "to": [1, 2], "style": {"color": "blue", "lineWidth": 1.2}}, {"id": "s4", "from": [1, 2], "to": [2, 1], "style": {"color": "blue", "lineWidth": 1.2}}, {"id": "s5", "from": [2, 1], "to": [2, 0], "style": {"color": "blue", "lineWidth": 1.2}}, {"id": "s6", "from": [2, 0], "to": [4, 0], "style": {"color": "blue", "lineWidth": 1.2}}],
+  "points": [{"id": "h0", "x": 0, "y": 0, "label": "0", "role": "critical"}, {"id": "h2", "x": 2, "y": 0, "label": "2", "role": "critical"}],
+  "labels": [{"id": "q", "text": "q(t)=t(t-2)", "at": [2.2, 2.4], "kind": "equation"}, {"id": "pattern", "text": "h(t): 0,1,2,1,0", "at": [-2.2, 2.4], "kind": "generic"}],
+  "auxiliaryLines": [{"id": "t0", "orientation": "vertical", "value": 0, "style": {"color": "gray", "lineStyle": "dashed", "lineWidth": 0.8}}, {"id": "t2", "orientation": "vertical", "value": 2, "style": {"color": "gray", "lineStyle": "dashed", "lineWidth": 0.8}}],
+  "components": [{"kind": "AXIS"}, {"kind": "SEGMENT", "ref": "s1"}, {"kind": "SEGMENT", "ref": "s2"}, {"kind": "SEGMENT", "ref": "s3"}, {"kind": "SEGMENT", "ref": "s4"}, {"kind": "SEGMENT", "ref": "s5"}, {"kind": "SEGMENT", "ref": "s6"}, {"kind": "AUXILIARY_LINE", "ref": "t0"}, {"kind": "AUXILIARY_LINE", "ref": "t2"}, {"kind": "EQUATION_LABEL", "ref": "q"}, {"kind": "GRAPH_ANNOTATION", "ref": "pattern"}]
+}
