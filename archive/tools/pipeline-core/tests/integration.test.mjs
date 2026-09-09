@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fixture } from './fixture.mjs';
-import { closureFromFile, requireProductionClosure, reviewedMutationPlan } from '../integration.mjs';
+import { closureFromFile, requireProductionClosure, reviewedMutationPlan, sourceIdentityKey } from '../integration.mjs';
 import { prepareDraft } from '../prepare.mjs';
 import { auditRun } from '../closure.mjs';
 import { createRenderReview } from '../render.mjs';
@@ -15,6 +15,49 @@ test('a valid closure for a different native scope does not authorize legacy fin
     const manifest = path.join(f.root, 'run.json'); fs.writeFileSync(manifest, JSON.stringify(f.run));
     assert.equal(closureFromFile(f.root, 'logic-visual', manifest, [], [{ sourcePath: 'source.js', qid: 1 }]).status, 'PASS');
     assert.equal(closureFromFile(f.root, 'logic-visual', manifest, [], [{ sourcePath: 'source.js', qid: 2 }]).status, 'BLOCKED');
+  } finally { f.cleanup(); }
+});
+test('past-exam rich source identity is never reduced to archive qid', () => {
+  const rich = { sourceIdentityKey: 'sha256:source|q8', sourceDocumentSha256: 'sha256:source', sourceQuestionNo: 'q8', sourcePath: 'archive/exams/original/fixture.js', qid: 8 };
+  assert.equal(sourceIdentityKey(rich), 'sha256:source|q8');
+  assert.equal(sourceIdentityKey({ sourcePath: 'source.js', qid: 1 }), 'source.js|1');
+});
+test('past-exam prepare preserves rich source identity fields into run.questions', () => {
+  const f = fixture('past-exam', { visual: false }); try {
+    const identity = {
+      sourceDocumentSha256: 'sha256:' + '1'.repeat(64),
+      sourceQuestionNo: '8',
+      sourcePageNo: 2,
+      sourcePageEvidencePaths: ['pages/page_p002.png', 'pages/page_p003.png'],
+      sourceEvidencePath: 'pages/page_p002.png',
+      sourceIdentityKey: `sha256:${'1'.repeat(64)}|8`,
+    };
+    const repositoryRoot = path.resolve(process.cwd());
+    for (const relative of ['archive/tools/pipeline-core/visual-contract.json', 'archive/tools/pipeline-core/closure.mjs', 'archive/tools/pipeline-core/generator.py']) {
+      const target = path.join(f.root, relative);
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.copyFileSync(path.join(repositoryRoot, relative), target);
+    }
+    fs.mkdirSync(path.join(f.root, 'archive'), { recursive: true });
+    fs.copyFileSync(path.join(f.root, 'engine.html'), path.join(f.root, 'archive', 'engine.html'));
+    fs.copyFileSync(path.join(f.root, 'styles.css'), path.join(f.root, 'archive', 'styles.css'));
+    fs.copyFileSync(path.join(f.root, 'native_print.js'), path.join(f.root, 'archive', 'native_print.js'));
+    fs.cpSync(path.join(f.root, 'vendor'), path.join(f.root, 'archive', 'vendor'), { recursive: true });
+    const source = `window.examTitle="fixture";window.questionBank=${JSON.stringify([{ id: 1, content: 'source', choices: [], ...identity }])};`;
+    const candidate = `window.examTitle="fixture";window.questionBank=${JSON.stringify([{ id: 1, content: 'candidate', choices: [], ...identity }])};`;
+    f.write('source.js', source);
+    f.write('candidate.js', candidate);
+    const result = prepareDraft(f.root, { pipeline: 'past-exam', runId: 'rich-identity-run', sourcePath: 'source.js', candidatePath: 'candidate.js', workdir: 'work/rich-identity' });
+    assert.equal(result.status, 'DRAFT_NOT_EXECUTABLE');
+    const run = JSON.parse(fs.readFileSync(path.join(f.root, result.manifestPath), 'utf8'));
+    assert.deepEqual({
+      sourceDocumentSha256: run.questions[0].sourceDocumentSha256,
+      sourceQuestionNo: run.questions[0].sourceQuestionNo,
+      sourcePageNo: run.questions[0].sourcePageNo,
+      sourcePageEvidencePaths: run.questions[0].sourcePageEvidencePaths,
+      sourceEvidencePath: run.questions[0].sourceEvidencePath,
+      sourceIdentityKey: run.questions[0].sourceIdentityKey,
+    }, identity);
   } finally { f.cleanup(); }
 });
 test('fresh preparation emits blind bundles, never fabricated review PASS', () => {

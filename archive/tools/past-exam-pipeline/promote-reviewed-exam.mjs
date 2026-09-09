@@ -3,14 +3,19 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { requireProductionClosure } from "../pipeline-core/integration.mjs";
+import {
+  assertPastExamPromotion,
+  makePromotionReceipt,
+  productionWritePreflight,
+} from "./lib/hardening.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const archiveRoot = path.resolve(here, "../..");
 
-function arg(name) {
-  const index = process.argv.indexOf(name);
-  if (index < 0 || !process.argv[index + 1]) throw new Error(`${name} is required`);
-  return path.resolve(process.argv[index + 1]);
+function arg(name, argv = process.argv) {
+  const index = argv.indexOf(name);
+  if (index < 0 || !argv[index + 1]) throw new Error(`${name} is required`);
+  return path.resolve(argv[index + 1]);
 }
 
 function readJson(file) {
@@ -28,8 +33,8 @@ function isNonEmpty(value) {
   return value !== undefined && value !== null && String(value).trim() !== "";
 }
 
-function loadSubunitMaster() {
-  const file = path.join(archiveRoot, "data", "master_tables", "js_archive_tag_master.json");
+function loadSubunitMaster(root) {
+  const file = path.join(root, "data", "master_tables", "js_archive_tag_master.json");
   const rows = JSON.parse(fs.readFileSync(file, "utf8"));
   return Array.isArray(rows) ? rows.filter((row) => isNonEmpty(row?.subUnitKey)) : [];
 }
@@ -43,18 +48,33 @@ function writeCandidate(file, candidate) {
   fs.writeFileSync(file, source, "utf8");
 }
 
-function main() {
-  const manifestFile = arg("--manifest");
-  const candidateFile = arg("--candidate");
-  const reviewFile = arg("--review");
-  const assetsDir = arg("--assets");
-  const replaceExisting = process.argv.includes("--replace-existing");
+export function promotionSourceIdentityScope(candidate, identities) {
+  return identities.map(identity => ({
+    sourceIdentityKey: identity.sourceIdentityKey,
+    sourceDocumentSha256: identity.sourceDocumentSha256,
+    sourceQuestionNo: identity.sourceQuestionNo,
+    sourcePageNo: identity.sourcePageNo,
+    sourcePageEvidencePaths: identity.sourcePageEvidencePaths,
+    qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
+  }));
+}
+
+export function runPromotion({ argv = process.argv, archiveRootOverride = archiveRoot, quiet = false } = {}) {
+  const manifestFile = arg("--manifest", argv);
+  const candidateFile = arg("--candidate", argv);
+  const reviewFile = arg("--review", argv);
+  const assetsDir = arg("--assets", argv);
+  const closureManifestFile = arg("--closure-manifest", argv);
+  const replaceExisting = argv.includes("--replace-existing");
+  const projectRoot = path.resolve(archiveRootOverride, "..");
   const manifest = readJson(manifestFile);
   const review = readJson(reviewFile);
   const candidate = loadCandidate(candidateFile);
   // A reviewed_pass string cannot authorize copying unbound/stale evidence.
-  const masterRows = loadSubunitMaster();
-  if (review.status !== "reviewed_pass") throw new Error("review.status must be reviewed_pass");
+  // All source, fidelity, math, asset, serialization, and handoff bindings are
+  // checked before any protected destination is created.
+  const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
+  const masterRows = loadSubunitMaster(archiveRootOverride);
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
   if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
   const ids = candidate.questionBank.map((question) => question.id);
@@ -78,12 +98,12 @@ function main() {
     if (!masterMatch) throw new Error(`q${question.id} subunit master mismatch`);
   }
 
-  const liveRoot = path.resolve(archiveRoot, "exams");
+  const liveRoot = path.resolve(archiveRootOverride, "exams");
   const liveJs = path.resolve(liveRoot, manifest.archiveRelativePath);
   if (!liveJs.startsWith(`${liveRoot}${path.sep}`)) throw new Error("manifest.archiveRelativePath escapes archive/exams");
   if (fs.existsSync(liveJs) && !replaceExisting) throw new Error(`live JS already exists: ${liveJs}`);
 
-  const liveAssetsDir = path.join(archiveRoot, "assets", "images", manifest.examId);
+  const liveAssetsDir = path.join(archiveRootOverride, "assets", "images", manifest.examId);
   const expectedPrefix = `assets/images/${manifest.examId}/`;
   const assetSources = new Map();
   const reviewedQuestionBytes = JSON.stringify(candidate.questionBank);
@@ -115,13 +135,43 @@ function main() {
     if (!fs.existsSync(source)) throw new Error(`missing generated asset: ${source}`);
     return { source, destination: path.join(liveAssetsDir, name) };
   });
-  const commonClosure = requireProductionClosure(path.resolve(archiveRoot, '..'), 'past-exam', process.argv, [candidateFile, ...copyPlan.map(item => item.source)]);
+  const expectedSourceIdentities = promotionSourceIdentityScope(candidate, hardening.identities);
+  const commonClosure = requireProductionClosure(
+    projectRoot,
+    'past-exam',
+    argv,
+    [candidateFile, ...copyPlan.map(item => item.source)],
+    expectedSourceIdentities,
+  );
+  const receipt = makePromotionReceipt({
+    manifest,
+    candidateFile,
+    reviewFile,
+    closureManifestFile,
+    hardening,
+    closure: commonClosure,
+  });
+  productionWritePreflight({
+    changedPaths: [`archive/exams/${manifest.archiveRelativePath}`, ...copyPlan.map(item => path.relative(projectRoot, item.destination))],
+    receipt,
+    candidateFile,
+    reviewFile,
+    closureManifestFile,
+    expectedSourceIdentities,
+    closure: commonClosure,
+  });
+  const receiptFile = path.join(path.dirname(candidateFile), "..", "reports", "production_promotion_receipt.json");
+  if (fs.existsSync(receiptFile)) throw new Error(`PROMOTION_RECEIPT_ALREADY_EXISTS:${receiptFile}`);
+  fs.mkdirSync(path.dirname(receiptFile), { recursive: true });
+  fs.writeFileSync(receiptFile, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
   if (assetSources.size) fs.mkdirSync(liveAssetsDir, { recursive: true });
   for (const { source, destination } of copyPlan) fs.copyFileSync(source, destination);
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
   // Preserve the exact reviewed bytes; never reserialize after SHA-bound review.
   fs.copyFileSync(candidateFile, liveJs);
-  console.log(JSON.stringify({ status: "promoted", commonClosure, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
+  const result = { status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size };
+  if (!quiet) console.log(JSON.stringify(result, null, 2));
+  return result;
 }
 
-main();
+if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) runPromotion();

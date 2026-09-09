@@ -26,11 +26,38 @@ export function closureFromFile(root, pipeline, manifestPath, expectedArtifacts 
       }
     }
     if (expectedSourceIdentities) {
-      const key = row => `${row.sourcePath}|${row.qid}`;
+      const key = row => sourceIdentityKey(row);
       if (JSON.stringify(uidSet(expectedSourceIdentities.map(key))) !== JSON.stringify(uidSet(run.questions.map(key)))) throw new Error('CLOSURE_SCOPE_DOES_NOT_MATCH_CALLER');
+      const expectedByKey = new Map(expectedSourceIdentities.map(row => [key(row), row]));
+      const actualByKey = new Map(run.questions.map(row => [key(row), row]));
+      for (const [identity, expected] of expectedByKey) {
+        const actual = actualByKey.get(identity);
+        if (!actual) throw new Error(`CLOSURE_SOURCE_IDENTITY_MISSING:${identity}`);
+        if (expected.sourceDocumentSha256 && actual.sourceDocumentSha256 && expected.sourceDocumentSha256 !== actual.sourceDocumentSha256) throw new Error(`CLOSURE_SOURCE_DOCUMENT_SHA_MISMATCH:${identity}`);
+        if (expected.sourceQuestionNo && actual.sourceQuestionNo && String(expected.sourceQuestionNo) !== String(actual.sourceQuestionNo)) throw new Error(`CLOSURE_SOURCE_QUESTION_MISMATCH:${identity}`);
+        if (expected.sourcePageNo && actual.sourcePageNo && Number(expected.sourcePageNo) !== Number(actual.sourcePageNo)) throw new Error(`CLOSURE_SOURCE_PAGE_MISMATCH:${identity}`);
+        if (expected.qid !== undefined && actual.qid !== undefined && Number(expected.qid) !== Number(actual.qid)) throw new Error(`CLOSURE_ARCHIVE_ID_MISMATCH:${identity}`);
+        const expectedPages = Array.isArray(expected.sourcePageEvidencePaths) ? [...expected.sourcePageEvidencePaths].sort() : [];
+        const actualPages = Array.isArray(actual.sourcePageEvidencePaths) ? [...actual.sourcePageEvidencePaths].sort() : [];
+        if (expectedPages.length && JSON.stringify(expectedPages) !== JSON.stringify(actualPages)) throw new Error(`CLOSURE_SOURCE_EVIDENCE_MISMATCH:${identity}`);
+      }
     }
   } catch (error) { return { ...closure, status: 'BLOCKED', errors: [...closure.errors, error.message] }; }
   return closure;
+}
+
+// Past-exam closure rows carry the frozen source document/question identity.
+// Keep the legacy sourcePath|qid form for existing pipeline-core callers, but
+// never silently reduce a rich source identity to an archive id.
+export function sourceIdentityKey(row) {
+  if (nonempty(row?.sourceDocumentSha256) && nonempty(row?.sourceQuestionNo)) {
+    const derived = `${row.sourceDocumentSha256}|${row.sourceQuestionNo}`;
+    if (nonempty(row?.sourceIdentityKey) && String(row.sourceIdentityKey) !== derived) throw new Error('SOURCE_IDENTITY_KEY_MISMATCH');
+    return derived;
+  }
+  if (nonempty(row?.sourceIdentityKey)) return String(row.sourceIdentityKey);
+  if (nonempty(row?.sourcePath) && Number.isSafeInteger(row?.qid)) return `${row.sourcePath}|${row.qid}`;
+  throw new Error('SOURCE_IDENTITY_ROW_INVALID');
 }
 
 export function requireClosure(root, pipeline, argv = process.argv, expectedArtifacts = [], expectedSourceIdentities = null) {
