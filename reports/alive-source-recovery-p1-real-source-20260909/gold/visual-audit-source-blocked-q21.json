@@ -1,0 +1,70 @@
+{
+  "goldCategory": "NO_DEFECT",
+  "goldDefectTypes": [],
+  "expectedPrimaryTier": "NONE",
+  "caseId": "visual-audit-source-blocked-q21",
+  "sourceQuestionUid": "original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js#21",
+  "immutableSourceRef": "external-source:D:/기출/(3)2중간/수학(하)/2021_복성고1_2중간.pdf",
+  "immutableSourceSha256": "sha256:65d7109970745d943376da92dccd43fc6acf74f65b035ed10656ad0f0d3af2dc",
+  "sourcePageNumber": 6,
+  "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/bokseong21_2mid/page-6.png",
+  "sourcePageEvidenceSha256": "sha256:ea79d396e9c148b200a8110b2a12092ce9917f2b844c871906d2710e2e8fac7f",
+  "sourcePayload": {
+    "id": 21,
+    "level": "상",
+    "category": "절대부등식",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "명제",
+      "절대부등식",
+      "산술기하평균",
+      "최대넓이",
+      "도형"
+    ],
+    "wide": false,
+    "content": "[서술형 1] (1) 다음은 $a\\gt0$, $b\\gt0$일 때 부등식 $\\dfrac{a+b}{2}\\ge\\sqrt{ab}$가 성립함을 증명하는 과정이다. (가), (나), (다), (라)에 알맞은 식을 넣으시오. [4점]\n(가)와 (나)는 모두 양수이므로, (가)의 제곱에서 (나)의 제곱을 뺀 값이 $0$ 이상임을 보이면 된다.\n(가)의 제곱에서 (나)의 제곱을 뺀 값은 (다)이고 $0$ 이상이다.\n따라서 (가)는 (나)보다 크거나 같다. 이때 등호가 성립하는 경우는 (라)일 때이다.\n(2) 위의 절대부등식을 이용하여 다음을 구하시오. 아래 그림과 같이 큰 직사각형을 같은 크기의 네 개의 작은 직사각형으로 나누었다. 모든 선분의 길이의 합이 $40$일 때, 큰 직사각형의 넓이의 최댓값과 그때 작은 직사각형의 가로의 길이와 세로의 길이를 구하시오. [6점]",
+    "image": "assets/images/21_복성고_2학기_중간_고1_기출/q21.png",
+    "choices": [],
+    "solutionImage": "assets/images/21_복성고_2학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "산술·기하평균과 최대값",
+    "solutionImageCaption": "(a−b)²/4≥0 (a+b)/2≥√ab 5a+8b=40 ab≤10 넓이 최대 40",
+    "solutionImageSize": "full",
+    "sourceEvidence": {
+      "sourceEvidenceStatus": "REAL_SOURCE_RESOLVED",
+      "fullPageVerified": true,
+      "questionZoomVerified": true,
+      "choicesVerified": true,
+      "immutableSourceRef": "external-source:D:/기출/(3)2중간/수학(하)/2021_복성고1_2중간.pdf",
+      "immutableSourceSha256": "sha256:65d7109970745d943376da92dccd43fc6acf74f65b035ed10656ad0f0d3af2dc",
+      "sourcePageNumber": 6,
+      "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/bokseong21_2mid/page-6.png",
+      "sourcePageEvidenceSha256": "sha256:ea79d396e9c148b200a8110b2a12092ce9917f2b844c871906d2710e2e8fac7f",
+      "transcriptionMethod": "PDF_PAGE_MANUAL_PARITY_TRANSCRIPTION",
+      "currentArchiveJsRef": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+      "historicalEvidenceRefs": [
+        "archive/tools/logic-visual-audit/reports/phase2_repair_ledger.json#SOURCE_BLOCKED"
+      ],
+      "sourceAnswerEvidenceStatus": "NOT_USED_FOR_GOLD"
+    }
+  },
+  "independentSourceSolve": {
+    "solverId": "real-source-solver-A-20260909",
+    "solverSessionId": "real-source-solver-A-visual-audit-source-blocked-q21",
+    "inputSourceSha256": "sha256:65d7109970745d943376da92dccd43fc6acf74f65b035ed10656ad0f0d3af2dc",
+    "computed": "(1) AM-GM blanks; (2) area 40, width 5/2, height 4",
+    "answerUnique": true,
+    "responseContractValid": true,
+    "matchingChoiceIndices": [],
+    "mathVerdict": "PASS",
+    "defectSignals": [],
+    "reasoningSummary": "The PDF page contains the full AM-GM proof and four-rectangle diagram; 5a+8b=40 gives area 40 at a=4,b=5/2."
+  },
+  "goldArtifactSha256": "sha256:394cfa23b7810fb7edbfb1332e38716e2c24a5ea3a0dc03ba16145f572fac246"
+}

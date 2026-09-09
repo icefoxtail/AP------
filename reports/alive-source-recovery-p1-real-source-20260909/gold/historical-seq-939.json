@@ -1,0 +1,78 @@
+{
+  "goldCategory": "QUESTION_PAYLOAD_DEFECT",
+  "goldDefectTypes": [
+    "INVALID_DOMAIN",
+    "RESPONSE_FORM_DEFECT"
+  ],
+  "expectedPrimaryTier": "R3",
+  "caseId": "historical-seq-939",
+  "sourceQuestionUid": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js#19",
+  "immutableSourceRef": "external-source:D:/기출/1학기중간/고1/24 한영고+/수학 상 (24 한영고).pdf",
+  "immutableSourceSha256": "sha256:e67ed7511dbe3581f12beb6d5d3829a2082f4d6e61d7f6187b039803dca28682",
+  "sourcePageNumber": 5,
+  "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/hanyeong24/page-5.png",
+  "sourcePageEvidenceSha256": "sha256:2cbff1219d09a02ba3de9e02726e772f45e1ffbd275219630e3aaaa4e975b9f6",
+  "sourcePayload": {
+    "id": 19,
+    "level": "중",
+    "category": "음수의 제곱근",
+    "originalCategory": "음수의 제곱근",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "questionType": "단답형",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "계수비교",
+      "복소수",
+      "근과계수",
+      "참거짓",
+      "오류판별"
+    ],
+    "wide": false,
+    "content": "방정식 $x^2+7x+1=0$의 서로 다른 두 근을 $\\alpha, \\beta$라 하자. $k=\\sqrt{\\alpha}-\\sqrt{\\beta}+\\frac{1}{\\sqrt{\\alpha}}-\\frac{1}{\\sqrt{\\beta}}$ 이라 할 때, 다음을 풀이과정과 함께 구하시오. [6.0점]<br>(1) $\\alpha+\\beta$ 와 $\\alpha\\beta$의 값을 각각 구하시오. [2점]<br>(2) $k^2$의 값을 구하시오. [4점]",
+    "choices": [],
+    "sourceEvidence": {
+      "sourceEvidenceStatus": "REAL_SOURCE_RESOLVED",
+      "fullPageVerified": true,
+      "questionZoomVerified": true,
+      "choicesVerified": true,
+      "immutableSourceRef": "external-source:D:/기출/1학기중간/고1/24 한영고+/수학 상 (24 한영고).pdf",
+      "immutableSourceSha256": "sha256:e67ed7511dbe3581f12beb6d5d3829a2082f4d6e61d7f6187b039803dca28682",
+      "sourcePageNumber": 5,
+      "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/hanyeong24/page-5.png",
+      "sourcePageEvidenceSha256": "sha256:2cbff1219d09a02ba3de9e02726e772f45e1ffbd275219630e3aaaa4e975b9f6",
+      "transcriptionMethod": "PDF_PAGE_MANUAL_PARITY_TRANSCRIPTION",
+      "currentArchiveJsRef": "archive/exams/original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+      "historicalEvidenceRefs": [
+        "archive/_generated/intelligence/phase3/sequential-review/archive-sequential-subunit-review-batch-004-v1.json#939"
+      ],
+      "sourceAnswerEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/hanyeong24/page-7.png",
+      "sourceAnswerEvidenceStatus": "REAL_SOURCE_ANSWER_EVIDENCE_PRESENT"
+    }
+  },
+  "independentSourceSolve": {
+    "solverId": "real-source-solver-A-20260909",
+    "solverSessionId": "real-source-solver-A-historical-seq-939",
+    "inputSourceSha256": "sha256:e67ed7511dbe3581f12beb6d5d3829a2082f4d6e61d7f6187b039803dca28682",
+    "computed": "UNDETERMINED",
+    "answerUnique": false,
+    "responseContractValid": false,
+    "matchingChoiceIndices": [],
+    "mathVerdict": "PASS",
+    "defectSignals": [
+      "INVALID_DOMAIN",
+      "RESPONSE_FORM_DEFECT"
+    ],
+    "reasoningSummary": "The PDF asks for square roots of negative real roots without a branch convention; the complex response form is not source-well-defined."
+  },
+  "sourceAnswerEvidence": {
+    "answer": "0",
+    "page": 7
+  },
+  "goldArtifactSha256": "sha256:0d0c16a77aeb68a80f3e1a9d0578461a40e0032f606f9b97ddad0e6aae387a0e"
+}

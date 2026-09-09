@@ -1,0 +1,821 @@
+{
+  "goldRef": "gold/historical-seq-784.json",
+  "engine": {
+    "schemaVersion": "ALIVE_SOURCE_RECOVERY_v1",
+    "sourceQuestionUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17",
+    "sourceLockSha256": "sha256:4dfd98a474481cb20f5844e2a65565b2bd4ca9a4953ee7250fc0fda02e1b291c",
+    "sourceDefectTypes": [
+      "ANSWER_KEY_CONFLICT"
+    ],
+    "sourceRecoveryPolicy": "SHADOW_AUTO_RECOVER",
+    "recoveryAuthority": "SHADOW_ONLY",
+    "productionAdoptionStatus": "NOT_AUTHORIZED",
+    "status": "RECOVERED",
+    "finalStatus": "BLOCKED",
+    "currentRecoveryTier": "R0",
+    "tierMatrix": {
+      "R0": {
+        "applicability": "APPLICABLE_PRIMARY",
+        "capability": "ACTIVE",
+        "execution": "ATTEMPTED_PASS"
+      },
+      "R1": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "ACTIVE",
+        "execution": "NOT_RUN"
+      },
+      "R2": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "NOT_RUN"
+      },
+      "R3": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "NOT_RUN"
+      },
+      "R4": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "NOT_RUN"
+      },
+      "R5": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "CAPABILITY_BLOCKED",
+        "execution": "NOT_RUN"
+      },
+      "R6": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "NOT_RUN"
+      }
+    },
+    "recoveryPlanId": "REAL-P1-historical-seq-784",
+    "candidateIndex": 1,
+    "candidateVersion": 1,
+    "candidatePool": [
+      {
+        "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+        "recoveryPlanId": "REAL-P1-historical-seq-784",
+        "candidateVersion": 1,
+        "parentCandidateId": null,
+        "payload": {
+          "id": 17,
+          "level": "중",
+          "category": "나머지 정리 심화",
+          "originalCategory": "나머지 정리 심화",
+          "standardCourse": "수학(상)",
+          "standardUnitKey": "H15-SA-02",
+          "standardUnit": "항등식과 나머지정리",
+          "standardUnitOrder": 2,
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "객관식",
+            "다항식",
+            "항등식",
+            "나머지정리",
+            "계수비교",
+            "대입",
+            "조건해석",
+            "계산"
+          ],
+          "wide": false,
+          "content": "다항식 f(x)가 다음 조건을 만족시킨다. (가) f(x)를 (x+1)(x-1)로 나눈 몫과 나머지가 같다. (나) f(x)를 x-1로 나눈 나머지는 1이다. f(x)를 (x-1)(x+1)로 나눈 나머지를 R(x)라 하자. R(0)=2일 때, R(x)의 x의 계수는?",
+          "choices": [
+            "-2",
+            "-1",
+            "0",
+            "1",
+            "2"
+          ],
+          "answer": "②"
+        },
+        "payloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+        "freeze": {
+          "status": "FROZEN",
+          "payloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+          "immutable": true
+        },
+        "immutable": true,
+        "builderSessionId": "recovery-builder",
+        "producerKind": "ANSWER_KEY_CONFLICT",
+        "verifierEvidence": {
+          "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+          "candidateVersion": 1,
+          "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+          "verifierId": "real-source-verifier-B-20260909",
+          "verifierSessionId": "real-source-verifier-B-historical-seq-784",
+          "inputVisibilityProfile": "ARTIFACT_ONLY",
+          "blindInput": {
+            "id": 17,
+            "level": "중",
+            "category": "나머지 정리 심화",
+            "originalCategory": "나머지 정리 심화",
+            "standardCourse": "수학(상)",
+            "standardUnitKey": "H15-SA-02",
+            "standardUnit": "항등식과 나머지정리",
+            "standardUnitOrder": 2,
+            "questionType": "객관식",
+            "layoutTag": "grid",
+            "tags": [
+              "객관식",
+              "다항식",
+              "항등식",
+              "나머지정리",
+              "계수비교",
+              "대입",
+              "조건해석",
+              "계산"
+            ],
+            "wide": false,
+            "content": "다항식 f(x)가 다음 조건을 만족시킨다. (가) f(x)를 (x+1)(x-1)로 나눈 몫과 나머지가 같다. (나) f(x)를 x-1로 나눈 나머지는 1이다. f(x)를 (x-1)(x+1)로 나눈 나머지를 R(x)라 하자. R(0)=2일 때, R(x)의 x의 계수는?",
+            "choices": [
+              "-2",
+              "-1",
+              "0",
+              "1",
+              "2"
+            ]
+          },
+          "independentlyComputedValue": "-1",
+          "independentlyComputedAnswer": "-1",
+          "answerUnique": true,
+          "responseContractValid": true,
+          "allChoicesChecked": true,
+          "distractorsWrong": true,
+          "mathVerdict": "PASS",
+          "evidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+        },
+        "validatorEvidence": {
+          "validatorId": "alive-bounded-validator",
+          "gates": {
+            "MATH_VALID": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-MATH_VALID",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
+              "evidenceSha256": "sha256:b39167119ec7363609431e3400a8043f0886cfd2da56798d98fbfd7642989576"
+            },
+            "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
+              "evidenceSha256": "sha256:3c7a7e77818b7ff18906f5ee00dd103e71714ffaeda311030143015c9a822973"
+            },
+            "CURRICULUM_VALID": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-CURRICULUM_VALID",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bound_external_validator",
+              "coverage": "complete",
+              "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-CURRICULUM_VALID",
+              "sourceEvidenceSha256": "sha256:dee480bf5b2cd27be465a44460292782594f3f3212adb4307bb11778a7976eb0",
+              "sourceValidatorId": "real-source-validator-20260909",
+              "evidenceSha256": "sha256:d16eb1e3b56766a5f98b2f009ee8a9308c47fc2d622b5ba0448e49ff97d03e25"
+            },
+            "QUESTION_WELL_FORMED": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-QUESTION_WELL_FORMED",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "structuralChecksExecuted": true,
+              "evidenceSha256": "sha256:3dd826fb9b733eb7bbc3aa48b74d3131585ced0188caf2f6b5e1cb895e21f4dc"
+            },
+            "RECOVERY_FINGERPRINT_GATE_PASS": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-RECOVERY_FINGERPRINT_GATE_PASS",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bound_external_validator",
+              "coverage": "complete",
+              "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-RECOVERY_FINGERPRINT_GATE_PASS",
+              "sourceEvidenceSha256": "sha256:68bf0399485c934f15bfbc9e902626d3cb1d9bc21d98c77dc44c4f4be866e3d8",
+              "sourceValidatorId": "real-source-validator-20260909",
+              "evidenceSha256": "sha256:c7e2659cf8f648f18c19df8ae293648c8fb57b89db24fa7dff4c2ac9f10b44ec"
+            },
+            "DIFFICULTY_ROLE_ACCEPTABLE": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-DIFFICULTY_ROLE_ACCEPTABLE",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bound_external_validator",
+              "coverage": "complete",
+              "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-DIFFICULTY_ROLE_ACCEPTABLE",
+              "sourceEvidenceSha256": "sha256:e21cb343fbf03532cfc595deac127359e0a738792c2e82008313d7a779bc8702",
+              "sourceValidatorId": "real-source-validator-20260909",
+              "evidenceSha256": "sha256:ecaf2dbafa229476a98a3fb9d2d19415fffd371c684b504c26b734248ba24e0d"
+            },
+            "VISUAL_VALID_IF_APPLICABLE": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-VISUAL_VALID_IF_APPLICABLE",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "not_applicable",
+              "applicability": "NOT_APPLICABLE",
+              "checkedFields": [
+                "image",
+                "imagePath",
+                "visual",
+                "visualSpec",
+                "solutionImage"
+              ],
+              "evidenceSha256": "sha256:4186cd8657512f0cb954e442b09eca868f14c83011902075710bafdd2c192f9c"
+            },
+            "SERIALIZABLE": {
+              "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-SERIALIZABLE",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "serializer": "json.dumps(allow_nan=False)+archive-answer-contract",
+              "errors": [],
+              "evidenceSha256": "sha256:ca1a2c7c4326897f6e315374195a771f8e3d60a0a124596ac01f6ff9ab38387a"
+            }
+          }
+        },
+        "acceptance": {
+          "status": "PASS",
+          "recoveryTier": "R0",
+          "gates": {
+            "MATH_VALID": "PASS",
+            "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+            "CURRICULUM_VALID": "PASS",
+            "QUESTION_WELL_FORMED": "PASS",
+            "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+            "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+            "VISUAL_VALID_IF_APPLICABLE": "PASS",
+            "SERIALIZABLE": "PASS"
+          },
+          "independentVerification": "PASS",
+          "verifierEvidence": {
+            "status": "PASS",
+            "errors": []
+          },
+          "validatorEvidence": {
+            "status": "PASS",
+            "errors": [],
+            "gates": {
+              "MATH_VALID": "PASS",
+              "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+              "CURRICULUM_VALID": "PASS",
+              "QUESTION_WELL_FORMED": "PASS",
+              "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+              "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+              "VISUAL_VALID_IF_APPLICABLE": "PASS",
+              "SERIALIZABLE": "PASS"
+            }
+          },
+          "failedGates": []
+        }
+      }
+    ],
+    "producerAttempts": {
+      "R0": {
+        "producerStatus": "COMPLETED",
+        "attemptCount": 1,
+        "candidateBudget": 3,
+        "candidateBudgetConsumed": 1,
+        "retryBudget": 1,
+        "retryBudgetConsumed": false,
+        "generatedCandidateCount": 1,
+        "attemptEvidenceRef": "recovery-attempt-R0",
+        "attemptEvidenceSha": "sha256:ddcb7b9306c49462a4940baedf5fd87b141ff653b9f3a829847a2f46cb9a87b4",
+        "allProducedCandidatesRejected": false
+      }
+    },
+    "acceptedCandidates": [
+      "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b"
+    ],
+    "rejectedCandidates": [],
+    "lastVerifierResult": {
+      "status": "PASS",
+      "recoveryTier": "R0",
+      "gates": {
+        "MATH_VALID": "PASS",
+        "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+        "CURRICULUM_VALID": "PASS",
+        "QUESTION_WELL_FORMED": "PASS",
+        "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+        "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+        "VISUAL_VALID_IF_APPLICABLE": "PASS",
+        "SERIALIZABLE": "PASS"
+      },
+      "independentVerification": "PASS",
+      "verifierEvidence": {
+        "status": "PASS",
+        "errors": []
+      },
+      "validatorEvidence": {
+        "status": "PASS",
+        "errors": [],
+        "gates": {
+          "MATH_VALID": "PASS",
+          "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+          "CURRICULUM_VALID": "PASS",
+          "QUESTION_WELL_FORMED": "PASS",
+          "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+          "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+          "VISUAL_VALID_IF_APPLICABLE": "PASS",
+          "SERIALIZABLE": "PASS"
+        }
+      },
+      "failedGates": []
+    },
+    "requiredResource": null,
+    "resumeFromStage": null,
+    "nextAction": "QUALITY_CLOSURE",
+    "initialIncludedScopeUidSet": [
+      "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17"
+    ],
+    "initialIncludedScopeUidSetSha256": "sha256:9871043ef32a9535da87afa855bda291d3d471f732d36fd15ad5077e160d4513",
+    "correctnessAffecting": false,
+    "diagnosis": {
+      "status": "ANSWER_KEY_DEFECT",
+      "defectTypes": [
+        "ANSWER_KEY_CONFLICT"
+      ],
+      "independentlyComputedValue": "-1",
+      "matchingChoiceIndices": [
+        2
+      ],
+      "canonicalArchiveAnswer": "②"
+    },
+    "recoveryTier": "R0",
+    "recoveryDisposition": "ANSWER_KEY_RECOVERED",
+    "recoveredQuestionUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
+    "effectiveArtifactUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
+    "slotUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17",
+    "selectedCandidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+    "selectedCandidateVersion": 1,
+    "beforePayloadSha256": null,
+    "afterPayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+    "effectivePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+    "mutations": [],
+    "sourceOriginalPreserved": true,
+    "productionOriginalActive": true,
+    "productionRecoveredActive": false,
+    "finalTarget": false,
+    "replacementDisposition": null,
+    "answerKeyResolution": {
+      "sourceAnswerKey": "①",
+      "independentComputedValue": "-1",
+      "canonicalEffectiveAnswer": "②",
+      "effectiveArtifactUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
+      "effectiveArtifactSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+      "lineageStatus": "PASS",
+      "verifierEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+    }
+  },
+  "ledger": {
+    "schemaVersion": "ALIVE_SOURCE_RECOVERY_LEDGER_v1",
+    "initialIncludedScopeUidSet": [
+      "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17"
+    ],
+    "initialIncludedScopeUidSetSha256": "sha256:9871043ef32a9535da87afa855bda291d3d471f732d36fd15ad5077e160d4513",
+    "items": [
+      {
+        "schemaVersion": "ALIVE_SOURCE_RECOVERY_v1",
+        "sourceQuestionUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17",
+        "sourceLockSha256": "sha256:4dfd98a474481cb20f5844e2a65565b2bd4ca9a4953ee7250fc0fda02e1b291c",
+        "sourceDefectTypes": [
+          "ANSWER_KEY_CONFLICT"
+        ],
+        "sourceRecoveryPolicy": "SHADOW_AUTO_RECOVER",
+        "recoveryAuthority": "SHADOW_ONLY",
+        "productionAdoptionStatus": "NOT_AUTHORIZED",
+        "status": "RECOVERED",
+        "finalStatus": "BLOCKED",
+        "currentRecoveryTier": "R0",
+        "tierMatrix": {
+          "R0": {
+            "applicability": "APPLICABLE_PRIMARY",
+            "capability": "ACTIVE",
+            "execution": "ATTEMPTED_PASS"
+          },
+          "R1": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "ACTIVE",
+            "execution": "NOT_RUN"
+          },
+          "R2": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "NOT_RUN"
+          },
+          "R3": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "NOT_RUN"
+          },
+          "R4": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "NOT_RUN"
+          },
+          "R5": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "CAPABILITY_BLOCKED",
+            "execution": "NOT_RUN"
+          },
+          "R6": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "NOT_RUN"
+          }
+        },
+        "recoveryPlanId": "REAL-P1-historical-seq-784",
+        "candidateIndex": 1,
+        "candidateVersion": 1,
+        "candidatePool": [
+          {
+            "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+            "recoveryPlanId": "REAL-P1-historical-seq-784",
+            "candidateVersion": 1,
+            "parentCandidateId": null,
+            "payload": {
+              "id": 17,
+              "level": "중",
+              "category": "나머지 정리 심화",
+              "originalCategory": "나머지 정리 심화",
+              "standardCourse": "수학(상)",
+              "standardUnitKey": "H15-SA-02",
+              "standardUnit": "항등식과 나머지정리",
+              "standardUnitOrder": 2,
+              "questionType": "객관식",
+              "layoutTag": "grid",
+              "tags": [
+                "객관식",
+                "다항식",
+                "항등식",
+                "나머지정리",
+                "계수비교",
+                "대입",
+                "조건해석",
+                "계산"
+              ],
+              "wide": false,
+              "content": "다항식 f(x)가 다음 조건을 만족시킨다. (가) f(x)를 (x+1)(x-1)로 나눈 몫과 나머지가 같다. (나) f(x)를 x-1로 나눈 나머지는 1이다. f(x)를 (x-1)(x+1)로 나눈 나머지를 R(x)라 하자. R(0)=2일 때, R(x)의 x의 계수는?",
+              "choices": [
+                "-2",
+                "-1",
+                "0",
+                "1",
+                "2"
+              ],
+              "answer": "②"
+            },
+            "payloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+            "freeze": {
+              "status": "FROZEN",
+              "payloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "immutable": true
+            },
+            "immutable": true,
+            "builderSessionId": "recovery-builder",
+            "producerKind": "ANSWER_KEY_CONFLICT",
+            "verifierEvidence": {
+              "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+              "verifierId": "real-source-verifier-B-20260909",
+              "verifierSessionId": "real-source-verifier-B-historical-seq-784",
+              "inputVisibilityProfile": "ARTIFACT_ONLY",
+              "blindInput": {
+                "id": 17,
+                "level": "중",
+                "category": "나머지 정리 심화",
+                "originalCategory": "나머지 정리 심화",
+                "standardCourse": "수학(상)",
+                "standardUnitKey": "H15-SA-02",
+                "standardUnit": "항등식과 나머지정리",
+                "standardUnitOrder": 2,
+                "questionType": "객관식",
+                "layoutTag": "grid",
+                "tags": [
+                  "객관식",
+                  "다항식",
+                  "항등식",
+                  "나머지정리",
+                  "계수비교",
+                  "대입",
+                  "조건해석",
+                  "계산"
+                ],
+                "wide": false,
+                "content": "다항식 f(x)가 다음 조건을 만족시킨다. (가) f(x)를 (x+1)(x-1)로 나눈 몫과 나머지가 같다. (나) f(x)를 x-1로 나눈 나머지는 1이다. f(x)를 (x-1)(x+1)로 나눈 나머지를 R(x)라 하자. R(0)=2일 때, R(x)의 x의 계수는?",
+                "choices": [
+                  "-2",
+                  "-1",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              "independentlyComputedValue": "-1",
+              "independentlyComputedAnswer": "-1",
+              "answerUnique": true,
+              "responseContractValid": true,
+              "allChoicesChecked": true,
+              "distractorsWrong": true,
+              "mathVerdict": "PASS",
+              "evidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+            },
+            "validatorEvidence": {
+              "validatorId": "alive-bounded-validator",
+              "gates": {
+                "MATH_VALID": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-MATH_VALID",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
+                  "evidenceSha256": "sha256:b39167119ec7363609431e3400a8043f0886cfd2da56798d98fbfd7642989576"
+                },
+                "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
+                  "evidenceSha256": "sha256:3c7a7e77818b7ff18906f5ee00dd103e71714ffaeda311030143015c9a822973"
+                },
+                "CURRICULUM_VALID": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-CURRICULUM_VALID",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bound_external_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-CURRICULUM_VALID",
+                  "sourceEvidenceSha256": "sha256:dee480bf5b2cd27be465a44460292782594f3f3212adb4307bb11778a7976eb0",
+                  "sourceValidatorId": "real-source-validator-20260909",
+                  "evidenceSha256": "sha256:d16eb1e3b56766a5f98b2f009ee8a9308c47fc2d622b5ba0448e49ff97d03e25"
+                },
+                "QUESTION_WELL_FORMED": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-QUESTION_WELL_FORMED",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "structuralChecksExecuted": true,
+                  "evidenceSha256": "sha256:3dd826fb9b733eb7bbc3aa48b74d3131585ced0188caf2f6b5e1cb895e21f4dc"
+                },
+                "RECOVERY_FINGERPRINT_GATE_PASS": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-RECOVERY_FINGERPRINT_GATE_PASS",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bound_external_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-RECOVERY_FINGERPRINT_GATE_PASS",
+                  "sourceEvidenceSha256": "sha256:68bf0399485c934f15bfbc9e902626d3cb1d9bc21d98c77dc44c4f4be866e3d8",
+                  "sourceValidatorId": "real-source-validator-20260909",
+                  "evidenceSha256": "sha256:c7e2659cf8f648f18c19df8ae293648c8fb57b89db24fa7dff4c2ac9f10b44ec"
+                },
+                "DIFFICULTY_ROLE_ACCEPTABLE": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-DIFFICULTY_ROLE_ACCEPTABLE",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bound_external_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-DIFFICULTY_ROLE_ACCEPTABLE",
+                  "sourceEvidenceSha256": "sha256:e21cb343fbf03532cfc595deac127359e0a738792c2e82008313d7a779bc8702",
+                  "sourceValidatorId": "real-source-validator-20260909",
+                  "evidenceSha256": "sha256:ecaf2dbafa229476a98a3fb9d2d19415fffd371c684b504c26b734248ba24e0d"
+                },
+                "VISUAL_VALID_IF_APPLICABLE": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-VISUAL_VALID_IF_APPLICABLE",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "not_applicable",
+                  "applicability": "NOT_APPLICABLE",
+                  "checkedFields": [
+                    "image",
+                    "imagePath",
+                    "visual",
+                    "visualSpec",
+                    "solutionImage"
+                  ],
+                  "evidenceSha256": "sha256:4186cd8657512f0cb954e442b09eca868f14c83011902075710bafdd2c192f9c"
+                },
+                "SERIALIZABLE": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-SERIALIZABLE",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "serializer": "json.dumps(allow_nan=False)+archive-answer-contract",
+                  "errors": [],
+                  "evidenceSha256": "sha256:ca1a2c7c4326897f6e315374195a771f8e3d60a0a124596ac01f6ff9ab38387a"
+                }
+              }
+            },
+            "acceptance": {
+              "status": "PASS",
+              "recoveryTier": "R0",
+              "gates": {
+                "MATH_VALID": "PASS",
+                "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+                "CURRICULUM_VALID": "PASS",
+                "QUESTION_WELL_FORMED": "PASS",
+                "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+                "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+                "VISUAL_VALID_IF_APPLICABLE": "PASS",
+                "SERIALIZABLE": "PASS"
+              },
+              "independentVerification": "PASS",
+              "verifierEvidence": {
+                "status": "PASS",
+                "errors": []
+              },
+              "validatorEvidence": {
+                "status": "PASS",
+                "errors": [],
+                "gates": {
+                  "MATH_VALID": "PASS",
+                  "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+                  "CURRICULUM_VALID": "PASS",
+                  "QUESTION_WELL_FORMED": "PASS",
+                  "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+                  "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+                  "VISUAL_VALID_IF_APPLICABLE": "PASS",
+                  "SERIALIZABLE": "PASS"
+                }
+              },
+              "failedGates": []
+            }
+          }
+        ],
+        "producerAttempts": {
+          "R0": {
+            "producerStatus": "COMPLETED",
+            "attemptCount": 1,
+            "candidateBudget": 3,
+            "candidateBudgetConsumed": 1,
+            "retryBudget": 1,
+            "retryBudgetConsumed": false,
+            "generatedCandidateCount": 1,
+            "attemptEvidenceRef": "recovery-attempt-R0",
+            "attemptEvidenceSha": "sha256:ddcb7b9306c49462a4940baedf5fd87b141ff653b9f3a829847a2f46cb9a87b4",
+            "allProducedCandidatesRejected": false
+          }
+        },
+        "acceptedCandidates": [
+          "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b"
+        ],
+        "rejectedCandidates": [],
+        "lastVerifierResult": {
+          "status": "PASS",
+          "recoveryTier": "R0",
+          "gates": {
+            "MATH_VALID": "PASS",
+            "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+            "CURRICULUM_VALID": "PASS",
+            "QUESTION_WELL_FORMED": "PASS",
+            "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+            "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+            "VISUAL_VALID_IF_APPLICABLE": "PASS",
+            "SERIALIZABLE": "PASS"
+          },
+          "independentVerification": "PASS",
+          "verifierEvidence": {
+            "status": "PASS",
+            "errors": []
+          },
+          "validatorEvidence": {
+            "status": "PASS",
+            "errors": [],
+            "gates": {
+              "MATH_VALID": "PASS",
+              "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+              "CURRICULUM_VALID": "PASS",
+              "QUESTION_WELL_FORMED": "PASS",
+              "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+              "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+              "VISUAL_VALID_IF_APPLICABLE": "PASS",
+              "SERIALIZABLE": "PASS"
+            }
+          },
+          "failedGates": []
+        },
+        "requiredResource": null,
+        "resumeFromStage": null,
+        "nextAction": "QUALITY_CLOSURE",
+        "initialIncludedScopeUidSet": [
+          "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17"
+        ],
+        "initialIncludedScopeUidSetSha256": "sha256:9871043ef32a9535da87afa855bda291d3d471f732d36fd15ad5077e160d4513",
+        "correctnessAffecting": false,
+        "diagnosis": {
+          "status": "ANSWER_KEY_DEFECT",
+          "defectTypes": [
+            "ANSWER_KEY_CONFLICT"
+          ],
+          "independentlyComputedValue": "-1",
+          "matchingChoiceIndices": [
+            2
+          ],
+          "canonicalArchiveAnswer": "②"
+        },
+        "recoveryTier": "R0",
+        "recoveryDisposition": "ANSWER_KEY_RECOVERED",
+        "recoveredQuestionUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
+        "effectiveArtifactUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
+        "slotUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17",
+        "selectedCandidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+        "selectedCandidateVersion": 1,
+        "beforePayloadSha256": null,
+        "afterPayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+        "effectivePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+        "mutations": [],
+        "sourceOriginalPreserved": true,
+        "productionOriginalActive": true,
+        "productionRecoveredActive": false,
+        "finalTarget": false,
+        "replacementDisposition": null,
+        "answerKeyResolution": {
+          "sourceAnswerKey": "①",
+          "independentComputedValue": "-1",
+          "canonicalEffectiveAnswer": "②",
+          "effectiveArtifactUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
+          "effectiveArtifactSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+          "lineageStatus": "PASS",
+          "verifierEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+        }
+      }
+    ]
+  },
+  "ledgerValidation": {
+    "status": "PASS",
+    "errors": []
+  },
+  "releaseGate": {
+    "status": "PASS",
+    "counts": {
+      "humanRequiredCount": 0,
+      "recoveryEvidenceBlockedCount": 0,
+      "recoveryCapabilityBlockedCount": 0,
+      "correctnessAffectingPreserveOnlyCount": 0,
+      "shadowRecoveredUnapprovedCount": 0,
+      "unauthorizedRecoveryAdoptionCount": 0,
+      "derivedReplacementParityFailCount": 0
+    },
+    "errors": [],
+    "productionSeal": "PASS",
+    "executionContinues": true
+  }
+}
