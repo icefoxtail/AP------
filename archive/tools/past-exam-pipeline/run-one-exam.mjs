@@ -5,6 +5,7 @@ import { promisify } from "node:util";
 import { parseArgs, loadConfig } from "./lib/config.mjs";
 import { ensureDir, readJson, writeJson, writeText } from "./lib/fs-utils.mjs";
 import { makeCandidateJs } from "./lib/js-candidate.mjs";
+import { freezeSourceInventory } from "./lib/hardening.mjs";
 
 const execFileAsync = promisify(execFile);
 const thisDir = path.dirname(fileURLToPath(import.meta.url));
@@ -42,13 +43,34 @@ export async function runOneExam(cfg, manifest) {
     ensureDir(reportsDir),
     ensureDir(candidateDir)
   ]);
-  const normalizedManifest = { ...manifest, outputDir };
+  let sourceFreeze;
+  try {
+    sourceFreeze = freezeSourceInventory({
+      manifest,
+      outputDir,
+      pageCount: Array.isArray(manifest.sourcePageImagePaths) ? manifest.sourcePageImagePaths.length : null,
+    });
+  } catch (error) {
+    sourceFreeze = {
+      status: "BLOCKED",
+      blockedReasons: [String(error.message || error)],
+    };
+  }
+  const normalizedManifest = {
+    ...manifest,
+    outputDir,
+    sourceInventoryStatus: sourceFreeze.status,
+    sourceInventoryPath: sourceFreeze.inventoryPath || manifest.sourceInventoryPath || "",
+    sourceIdentityMapPath: sourceFreeze.sourceIdentityMapPath || "",
+    sourceInventorySha: sourceFreeze.sourceInventorySha || "",
+    sourceIdentityMapSha: sourceFreeze.sourceIdentityMapSha || "",
+  };
   await writeJson(path.join(outputDir, "manifest.json"), normalizedManifest);
   const candidateFile = path.join(candidateDir, manifest.outputFileName || `${manifest.examId}${cfg.candidateFileSuffix}.js`);
   if (cfg.writeCandidateJs !== false) {
     await writeText(candidateFile, makeCandidateJs(normalizedManifest));
   }
-  const questionCount = Number(manifest.expectedQuestionCount || 0);
+  const questionCount = sourceFreeze.inventory?.expectedQuestionCount || Number(manifest.expectedQuestionCount || 0);
   const reportBase = {
     examId: manifest.examId,
     generatedAt: new Date().toISOString(),
@@ -90,6 +112,18 @@ export async function runOneExam(cfg, manifest) {
     ]
   };
   await writeJson(path.join(reportsDir, "validation_summary.json"), validationSummary);
+  if (sourceFreeze.status !== "PASS") {
+    const blocked = {
+      ...validationSummary,
+      status: "blocked",
+      currentStage: "source_inventory_freeze",
+      blockedReasons: sourceFreeze.blockedReasons || ["SOURCE_INVENTORY_REQUIRED"],
+      sourceInventoryStatus: sourceFreeze.status,
+      nextStages: ["provide_independent_source_inventory", "rerun_source_inventory_freeze"],
+    };
+    await writeJson(path.join(reportsDir, "validation_summary.json"), blocked);
+    return blocked;
+  }
   if (manifest.pdfPath || (Array.isArray(manifest.sourcePageImagePaths) && manifest.sourcePageImagePaths.length > 0)) {
     const helperPath = path.join(thisDir, "helpers", "scanned_exam_pipeline.py");
     try {

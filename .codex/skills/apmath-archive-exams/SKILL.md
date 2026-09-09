@@ -104,6 +104,19 @@ from the repository root. The V2 contract is:
 Do not fill dummy text to clear `vision_required`, and do not solve inside the
 extraction pipeline.
 
+### Frozen source identity
+
+The Past Exam V2 route freezes an independent
+`reports/source_inventory.json` and `reports/source_identity_map.json` before
+Vision content is accepted. The inventory binds the source document SHA,
+source question number, source page, evidence path, and disposition. Vision is
+not an authority for q-number identity. Candidate `id`, array order, and
+`qNN` asset names are never substitutes for frozen source identity.
+
+The candidate must cover 100% of the non-excluded inventory set. Every source
+question has exactly one disposition; an unexplained source/candidate count gap
+is `SOURCE_INVENTORY_COVERAGE_FAIL` and cannot proceed downstream.
+
 ## Route B — answer/solution completion
 
 Give the answer/solution reviewer the candidate JS, `pages/`, visual assets,
@@ -131,6 +144,12 @@ match `standardUnitKey`, and its label and confidence/depth values must follow
 the current rule documents. Existing legacy files may be reported as
 `legacy_exception`; do not bulk-remodel them merely to satisfy the new rule.
 
+The handoff runtime freezes a protected-payload SHA over `content`, `choices`,
+source identity/page evidence, `image`, and visual-asset provenance. The
+answer/solution lane may change only `answer`, `solution`, their status fields,
+and explicitly allowed subunit metadata. An extraction finding is routed to
+`SOURCE_FIDELITY_RESTORATION`, never silently rewritten.
+
 ## Route C — validation and promotion
 
 Validate the generated candidate with the pipeline's V2 validator before any
@@ -147,6 +166,13 @@ tool with the manifest, candidate, review, and generated asset directory. The
 promotion tool must reject missing/blank subunit fields, invalid subunit
 confidence/depth values, missing answer/solution, wrong question identity,
 and assets outside the candidate's canonical asset prefix.
+
+Promotion additionally requires source-inventory coverage, content/choices
+source-fidelity evidence, SHA-bound independent blind math evidence, visual
+asset provenance/semantic evidence, serialization integrity, and the exact
+source identity set in the common closure. `reviewed_pass` is an envelope, not
+a sufficient string. Production writes without the canonical helper and a
+promotion receipt are `UNAUTHORIZED_PRODUCTION_WRITE`.
 
 After promotion, update `archive/db.js`, rebuild the index with
 `archive/tools/build-question-index.mjs`, and run the production audit with
@@ -219,6 +245,9 @@ Report completion only when all are true:
 - production and candidate JS match byte-for-byte when parity is required;
 - question-index counts match the JS and DB record for every target;
 - all three browser modes have recorded PASS evidence;
+- the exact deliverable ZIP has passed two independent consumers and fresh
+  extraction;
+- release state is not inferred from BUILT, ZIP_CREATED, or PNG decode;
 - source defects and corrections appear in the relevant answer/solution and
   final report.
 
