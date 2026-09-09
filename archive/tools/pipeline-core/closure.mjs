@@ -395,7 +395,7 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
     try { readBoundFile(root, ref); } catch (error) { errors.push(`CHANGED_DURING_AUDIT:${error.message}`); }
   }
   if (run.sourceRecoveryLedger) {
-    const recovery = validateSourceRecoveryLedger(run.sourceRecoveryLedger, run);
+    const recovery = validateSourceRecoveryLedger(run.sourceRecoveryLedger, run, root);
     if (recovery.status !== 'PASS') errors.push(...recovery.errors.map(error => `SOURCE_RECOVERY:${error}`));
   }
   if (!errors.length && policy.scope === 'QUESTION_QUALITY' && run.schemaVersion === RUN_VERSION) {

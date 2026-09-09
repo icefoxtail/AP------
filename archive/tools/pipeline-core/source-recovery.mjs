@@ -1,8 +1,61 @@
-import { canonicalJson, isObject, nonempty, uidSet, uidSetSha } from './canonical.mjs';
+import fs from 'node:fs';
+import { canonicalJson, isObject, nonempty, uidSet, uidSetSha, bytesSha, safePath } from './canonical.mjs';
 
 export const SOURCE_RECOVERY_LEDGER_VERSION = 'ALIVE_SOURCE_RECOVERY_LEDGER_v1';
 const AUTHORITIES = new Set(['SHADOW_ONLY', 'BOUNDED_PRODUCTION', 'DEFAULT_PRODUCTION']);
 const PRODUCTION_AUTHORITIES = new Set(['BOUNDED_PRODUCTION', 'DEFAULT_PRODUCTION']);
+
+const finalSealErrors = (item, root) => {
+  if (!root) return [];
+  const errors = [];
+  if (!nonempty(item.finalArtifactRef) || !/^sha256:[0-9a-f]{64}$/.test(item.finalArtifactSha256 || '')
+    || !/^sha256:[0-9a-f]{64}$/.test(item.afterPayloadSha256 || '')
+    || !nonempty(item.sourceLockSha256)
+    || !/^sha256:[0-9a-f]{64}$/.test(item.initialIncludedScopeUidSetSha256 || '')) {
+    errors.push('FINAL_ARTIFACT_BINDING_INVALID');
+  } else {
+    try {
+      const finalPath = safePath(root, item.finalArtifactRef);
+      const finalBytes = fs.readFileSync(finalPath);
+      if (bytesSha(finalBytes) !== item.finalArtifactSha256) errors.push('FINAL_ARTIFACT_SHA_MISMATCH');
+    } catch (error) { errors.push(`FINAL_ARTIFACT_FILE_INVALID:${error.message}`); }
+  }
+  if (!nonempty(item.replacementEvidenceRef) || !/^sha256:[0-9a-f]{64}$/.test(item.replacementEvidenceSha || '')) {
+    errors.push('REPLACEMENT_EVIDENCE_BINDING_INVALID');
+  } else {
+    try {
+      const evidencePath = safePath(root, item.replacementEvidenceRef);
+      const evidenceBytes = fs.readFileSync(evidencePath);
+      if (bytesSha(evidenceBytes) !== item.replacementEvidenceSha) errors.push('REPLACEMENT_EVIDENCE_SHA_MISMATCH');
+      const evidence = JSON.parse(evidenceBytes.toString('utf8'));
+      const expected = {
+        sourceQuestionUid: item.sourceQuestionUid,
+        recoveredQuestionUid: item.recoveredQuestionUid,
+        effectiveArtifactUid: item.effectiveArtifactUid,
+        candidatePayloadSha256: item.afterPayloadSha256,
+        sourceLockSha256: item.sourceLockSha256,
+        initialIncludedScopeUidSetSha256: item.initialIncludedScopeUidSetSha256,
+        finalArtifactSha256: item.finalArtifactSha256,
+        finalArtifactRef: item.finalArtifactRef,
+      };
+      for (const [field, value] of Object.entries(expected)) {
+        if (evidence[field] !== value) errors.push(`REPLACEMENT_EVIDENCE_BINDING_MISMATCH:${field}`);
+      }
+    } catch (error) { errors.push(`REPLACEMENT_EVIDENCE_FILE_INVALID:${error.message}`); }
+  }
+  if (!nonempty(item.qualityClosureEvidenceRef) || !/^sha256:[0-9a-f]{64}$/.test(item.qualityClosureEvidenceSha || '')) {
+    errors.push('QUALITY_CLOSURE_EVIDENCE_BINDING_INVALID');
+  } else {
+    try {
+      const qualityPath = safePath(root, item.qualityClosureEvidenceRef);
+      const qualityBytes = fs.readFileSync(qualityPath);
+      if (bytesSha(qualityBytes) !== item.qualityClosureEvidenceSha) errors.push('QUALITY_CLOSURE_EVIDENCE_SHA_MISMATCH');
+      const quality = JSON.parse(qualityBytes.toString('utf8'));
+      if (quality.status !== 'PASS' || !isObject(quality.qualityGateResults) || Object.values(quality.qualityGateResults).some(status => status !== 'PASS')) errors.push('QUALITY_CLOSURE_EVIDENCE_NOT_PASS');
+    } catch (error) { errors.push(`QUALITY_CLOSURE_EVIDENCE_FILE_INVALID:${error.message}`); }
+  }
+  return [...new Set(errors)];
+};
 const validExhaustionAttempt = attempt => isObject(attempt)
   && attempt.producerStatus === 'COMPLETED'
   && Number.isSafeInteger(attempt.attemptCount) && attempt.attemptCount >= 1
@@ -30,10 +83,19 @@ const replacementErrors = (item, initial) => {
   if (replacement.replacementLineageParity !== 'PASS' || replacement.recoveredQualityClosure !== 'PASS') errors.push('DERIVED_REPLACEMENT_PARITY_FAIL');
   if (!nonempty(item.replacementEvidenceRef) || !/^sha256:[0-9a-f]{64}$/.test(item.replacementEvidenceSha || '')) errors.push('DERIVED_REPLACEMENT_LINEAGE_FAIL');
   if (!PRODUCTION_AUTHORITIES.has(item.recoveryAuthority) || item.productionAdoptionStatus !== 'ADOPTED') errors.push('SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION');
+  const scope = item.authorizedScope;
+  const scopeSources = Array.isArray(scope?.allowedSourceQuestionUids) ? scope.allowedSourceQuestionUids : [];
+  const scopeTiers = Array.isArray(scope?.allowedRecoveryTiers) ? scope.allowedRecoveryTiers : [];
+  const scopeDefects = Array.isArray(scope?.defectTypes) ? scope.defectTypes : Array.isArray(scope?.allowedDefectTypes) ? scope.allowedDefectTypes : scope?.defectType ? [scope.defectType] : [];
+  if (item.scopeAuthorizationStatus !== 'PASS' || !isObject(scope)
+    || (scope.sourceQuestionUid !== item.sourceQuestionUid && !scopeSources.includes(item.sourceQuestionUid))
+    || (scope.recoveryTier !== item.recoveryTier && !scopeTiers.includes(item.recoveryTier))
+    || !Array.isArray(item.sourceDefectTypes) || item.sourceDefectTypes.some(defect => !scopeDefects.includes(defect))
+    || (item.authorizationAuthority || item.recoveryAuthority) !== item.recoveryAuthority) errors.push('SOURCE_RECOVERY_AUTHORIZATION_SCOPE_INVALID');
   return [...new Set(errors)];
 };
 
-export function validateSourceRecoveryLedger(ledger, run = null) {
+export function validateSourceRecoveryLedger(ledger, run = null, root = null) {
   const errors = [], counts = {
     humanRequiredCount: 0,
     recoveryEvidenceBlockedCount: 0,
@@ -82,6 +144,7 @@ export function validateSourceRecoveryLedger(ledger, run = null) {
     if (finalTarget && !answerKeyRecovery && item.productionAdoptionStatus && item.productionAdoptionStatus !== 'ADOPTED' && !PRODUCTION_AUTHORITIES.has(item.recoveryAuthority)) counts.unauthorizedRecoveryAdoptionCount++;
     if (item.replacementDisposition === 'DERIVED_REPLACEMENT_VERIFIED' && replacementErrors(item, initial).length) counts.derivedReplacementParityFailCount++;
     if (finalTarget && !answerKeyRecovery && item.replacementDisposition !== 'DERIVED_REPLACEMENT_VERIFIED') counts.derivedReplacementParityFailCount++;
+    if (item.replacementDisposition === 'DERIVED_REPLACEMENT_VERIFIED') errors.push(...finalSealErrors(item, root));
   }
   if (ledger?.events !== undefined || ledger?.latestBySource !== undefined) {
     if (!Array.isArray(ledger.events) || !isObject(ledger.latestBySource)) errors.push('SOURCE_RECOVERY_EVENT_HISTORY_INVALID');

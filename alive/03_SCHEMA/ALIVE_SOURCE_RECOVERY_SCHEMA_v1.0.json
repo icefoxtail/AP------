@@ -24,6 +24,15 @@
     "replacementDisposition": { "const": "DERIVED_REPLACEMENT_VERIFIED" },
     "replacementEvidenceRef": { "type": "string", "minLength": 1 },
     "replacementEvidenceSha": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "authorizationRef": { "type": "string", "minLength": 1 },
+    "authorizationAuthority": { "$ref": "#/$defs/authority" },
+    "scopeAuthorizationStatus": { "const": "PASS" },
+    "authorizedScope": { "type": "object", "minProperties": 1 },
+    "qualityClosureEvidenceRef": { "type": "string", "minLength": 1 },
+    "qualityClosureEvidenceSha": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "finalArtifactRef": { "type": "string", "minLength": 1 },
+    "finalArtifactSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "effectivePayloadSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
     "tierMatrix": {
       "type": "object",
       "required": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"],
@@ -94,6 +103,12 @@
       "additionalProperties": true
     }
   },
+  "allOf": [
+    {
+      "if": { "properties": { "productionAdoptionStatus": { "const": "ADOPTED" } } },
+      "then": { "required": ["authorizationRef", "authorizationAuthority", "scopeAuthorizationStatus", "authorizedScope", "qualityClosureEvidenceRef", "qualityClosureEvidenceSha", "finalArtifactRef", "finalArtifactSha256"] }
+    }
+  ],
   "$defs": {
     "policy": { "enum": ["PRESERVE_ONLY", "SHADOW_AUTO_RECOVER", "AUTO_RECOVER"] },
     "authority": { "enum": ["SHADOW_ONLY", "BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"] },
