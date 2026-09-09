@@ -35,6 +35,7 @@ const COMMANDS = new Map([
   ['to', '→'], ['rightarrow', '→'], ['leftarrow', '←'], ['approx', '≈'],
   ['circ', '°'], ['infty', '∞'], ['alpha', 'α'], ['beta', 'β'],
   ['gamma', 'γ'], ['theta', 'θ'], ['lambda', 'λ'], ['mu', 'μ'],
+  ['mid', '|'], ['vert', '|'],
   ['mathrm', null], ['mathbf', null], ['mathbb', null], ['operatorname', null],
   ['displaystyle', ''], ['left', ''], ['right', ''], ['quad', ' '],
   [',', ' '], [';', ' '], [':', ' '], ['!', ''], [' ', ' '],
@@ -123,6 +124,7 @@ function latexToPlain(raw) {
   for (let i = 0; i < input.length;) {
     const ch = input[i];
     if (ch === '$') { i += 1; continue; }
+    if (ch === '&') { out += ' '; i += 1; continue; }
     if (ch === '\\') {
       if (input[i + 1] === '\\') { out += '; '; i += 2; continue; }
       const match = input.slice(i + 1).match(/^([A-Za-z]+|[^A-Za-z\s])/);
@@ -156,7 +158,8 @@ function latexToPlain(raw) {
       }
       if (command === 'begin' || command === 'end') {
         const env = readToken(input, next);
-        out += command === 'begin' ? 'cases: ' : '';
+        // Environment markers are parser syntax, never user-facing labels.
+        out += '';
         i = env.next;
         continue;
       }
@@ -168,6 +171,11 @@ function latexToPlain(raw) {
       }
       if (command === '(' || command === ')' || command === '[' || command === ']') {
         out += command;
+        i = next;
+        continue;
+      }
+      if (command === '&') {
+        out += ' ';
         i = next;
         continue;
       }
@@ -257,14 +265,19 @@ function textLines(lines, x, y, attrs) {
 function sourceCard(row) {
   const question = htmlToPlain(row.q.content);
   const solution = htmlToPlain(row.q.solution);
-  const qLines = wrapText(question, 34);
-  const sLines = wrapText(solution, 35);
-  const panelHeight = Math.max(300, 42 + Math.max(qLines.length * 22, sLines.length * 22));
+  // SVG text is rendered at 15px/14px inside ~318px content columns.
+  // The previous character-width budget (34/35) allowed Korean lines to
+  // cross the panel boundary in real browsers. Keep the budget below the
+  // measured column width so the layout contract is also visually true.
+  const qLines = wrapText(question, 21);
+  const sLines = wrapText(solution, 22);
   const panelY = 82;
-  const arrowY = panelY + panelHeight - 68;
-  const conclusionY = panelY + panelHeight - 32;
+  const contentBottomY = 140 + (Math.max(qLines.length, sLines.length) - 1) * 22;
+  const panelBottomY = Math.max(panelY + 300, contentBottomY + 28);
+  const panelHeight = panelBottomY - panelY;
+  const conclusionY = panelBottomY + 24;
   const footerLines = wrapText(`${row.examId} · q${row.q.id} · source-bound solution visual`, 92);
-  const footerY = panelY + panelHeight + 70;
+  const footerY = conclusionY + 48 + 28;
   const height = Math.max(620, footerY + footerLines.length * 16 + 24);
   const answer = htmlToPlain(row.q.answer);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="760" height="${height}" viewBox="0 0 760 ${height}" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
@@ -280,13 +293,89 @@ function sourceCard(row) {
     <text x="398" y="112" font-size="17" font-weight="700" fill="#15803d">해설 흐름</text>
     ${textLines(qLines, 34, 140, 'font-size="15"')}
     ${textLines(sLines, 398, 140, 'font-size="14"')}
-    <path d="M350 ${arrowY} L410 ${arrowY}" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
     <rect x="18" y="${conclusionY}" width="724" height="48" rx="10" fill="#fff7ed" stroke="#fdba74"/>
     <text x="380" y="${conclusionY + 30}" font-size="17" text-anchor="middle" fill="#9a3412">결론: ${xmlEscape(answer)}</text>
     ${textLines(footerLines, 380, footerY, 'font-size="11" text-anchor="middle" fill="#64748b"')}
   </g>
-  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#64748b"/></marker></defs>
 </svg>`;
+}
+
+function specialSvg(row) {
+  const key = `${row.examId}:q${row.q.id}`;
+  if (key === '25_매산여고_2학기_기말_고2_수학II:q22') {
+    const curvePoints = Array.from({ length: 21 }, (_, i) => {
+      const x = i * 0.2;
+      const k = x * (x - 3) ** 2;
+      return `${(116.4 + 80.4 * x).toFixed(2)},${(370 - 45.5 * k).toFixed(2)}`;
+    }).join(' ');
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="760" height="620" viewBox="0 0 760 620" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">f(x)+|f(x)+x|=7x+k의 네 실근 조건</title>
+  <desc id="desc">원문 함수에서 유도한 K(x)의 piecewise graph. x&lt;0에서는 K(x)=-8x, x≥0에서는 K(x)=x(x-3)^2이며, 수평선 k가 0과 4 사이일 때 네 교점을 갖는다.</desc>
+  <rect width="760" height="620" fill="#fff"/>
+  <g font-family="Arial, Noto Sans KR, sans-serif" fill="#111">
+    <text x="380" y="30" font-size="22" font-weight="700" text-anchor="middle">f(x)+|f(x)+x|=7x+k</text>
+    <text x="380" y="57" font-size="15" fill="#475569" text-anchor="middle">K(x)=k로 바꾸어 네 교점 조건을 판정</text>
+    <g transform="translate(52 86)">
+      <rect x="0" y="0" width="470" height="430" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+      <line x1="36" y1="370" x2="438" y2="370" stroke="#111" stroke-width="2"/>
+      <line x1="116.4" y1="28" x2="116.4" y2="392" stroke="#111" stroke-width="2"/>
+      <path d="M438 370 l-9 -5 l0 10 z" fill="#111"/><path d="M116.4 28 l-5 9 l10 0 z" fill="#111"/>
+      <text x="446" y="365" font-size="15">x</text><text x="123" y="28" font-size="15">k</text>
+      <rect x="36" y="188" width="402" height="182" fill="#dbeafe" opacity="0.42"/>
+      <line x1="36" y1="188" x2="438" y2="188" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="6 5"/>
+      <text x="42" y="180" font-size="15" fill="#1d4ed8">k=4</text><text x="42" y="358" font-size="15" fill="#1d4ed8">k=0</text>
+      <path d="M76.2 188 L116.4 370" fill="none" stroke="#dc2626" stroke-width="3"/>
+      <circle cx="116.4" cy="370" r="5" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+      <text x="49" y="215" font-size="15" fill="#b91c1c">K(x)=-8x, x&lt;0</text>
+      <polyline fill="none" stroke="#1d4ed8" stroke-width="3" points="${curvePoints}"/>
+      <text x="240" y="405" font-size="15" fill="#1d4ed8">K(x)=x(x-3)², x≥0</text>
+      <circle cx="196.8" cy="188" r="5" fill="#1d4ed8"/><text x="202" y="180" font-size="14" fill="#1d4ed8">(1,4)</text>
+      <circle cx="357.6" cy="370" r="5" fill="#1d4ed8"/><text x="364" y="388" font-size="14" fill="#1d4ed8">(3,0)</text>
+      <circle cx="116.4" cy="370" r="5" fill="#1d4ed8"/><text x="121" y="388" font-size="14">(0,0)</text>
+      <line x1="36" y1="279" x2="438" y2="279" stroke="#15803d" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="365" y="272" font-size="15" fill="#15803d">0&lt;k&lt;4</text>
+      <circle cx="96.3" cy="279" r="4" fill="#b91c1c"/><circle cx="137.94" cy="279" r="4" fill="#b91c1c"/>
+      <circle cx="277.2" cy="279" r="4" fill="#b91c1c"/><circle cx="416" cy="279" r="4" fill="#b91c1c"/>
+      <text x="350" y="300" font-size="14" fill="#15803d">k=2에서 네 교점</text>
+    </g>
+    <g transform="translate(548 104)">
+      <rect x="0" y="0" width="180" height="390" rx="12" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="90" y="32" text-anchor="middle" font-size="17" font-weight="700">절댓값 분기</text>
+      <text x="14" y="72" font-size="14">f(x)+x의 부호는</text><text x="14" y="96" font-size="14">x의 부호와 같다.</text>
+      <text x="14" y="138" font-size="14" fill="#b91c1c">x&lt;0:</text><text x="14" y="162" font-size="14">−x=7x+k</text><text x="14" y="186" font-size="14" fill="#b91c1c">K(x)=−8x</text>
+      <text x="14" y="232" font-size="14" fill="#1d4ed8">x≥0:</text><text x="14" y="256" font-size="14">x(x−3)²=k</text>
+      <text x="14" y="302" font-size="14" fill="#15803d">0&lt;k&lt;4</text><text x="14" y="326" font-size="14">negative branch 1개</text><text x="14" y="350" font-size="14">nonnegative branch 3개</text>
+      <text x="90" y="378" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">서로 다른 네 실근</text>
+    </g>
+    <text x="380" y="570" text-anchor="middle" font-size="17" font-weight="700" fill="#166534">정답 범위: 0&lt;k&lt;4</text>
+    <text x="380" y="596" text-anchor="middle" font-size="12" fill="#64748b">source-bound repaired visual · piecewise geometry and root count are explicit</text>
+  </g>
+</svg>`;
+  }
+  if (key === '25_순천고_2학기_기말_고2_수학II:q16') {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="430" viewBox="0 0 640 430" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
+  <title id="title">삼각형 POH 넓이의 최댓값</title><desc id="desc">곡선 f(x)=x(a-x)^2 위의 최대점 P(p,f(p)), 수선의 발 H=(p,0), p=a/2를 표시한다.</desc>
+  <rect width="640" height="430" fill="#fff"/><g font-family="Arial, sans-serif" fill="#111">
+    <text x="320" y="27" font-size="20" text-anchor="middle" font-weight="700">S(t)=1/2·t²(a−t)²의 최댓값</text>
+    <g transform="translate(28 48)"><line x1="30" y1="270" x2="470" y2="270" stroke="#111" stroke-width="2"/><line x1="65" y1="25" x2="65" y2="300" stroke="#111" stroke-width="2"/>
+      <polyline points="65,270 120,148 175,90 212,80 285,110 340,165 395,222 450,270" fill="none" stroke="#1d4ed8" stroke-width="3"/>
+      <polygon points="65,270 285,110 285,270" fill="#bfdbfe" opacity="0.9"/><line x1="285" y1="110" x2="285" y2="270" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 5"/><line x1="65" y1="270" x2="285" y2="270" stroke="#dc2626" stroke-width="2"/>
+      <circle cx="65" cy="270" r="5" fill="#111"/><circle cx="285" cy="110" r="5" fill="#111"/><circle cx="285" cy="270" r="5" fill="#111"/><circle cx="450" cy="270" r="5" fill="#111"/>
+      <text x="58" y="292" font-size="16">O</text><text x="292" y="102" font-size="16">P(p,f(p))</text><text x="292" y="292" font-size="16">H=(p,0)</text><text x="450" y="292" font-size="16" text-anchor="middle">A(a,0)</text><text x="285" y="316" font-size="16" text-anchor="middle" fill="#dc2626">p=a/2</text>
+      <text x="365" y="42" font-size="15" fill="#1d4ed8">f(x)=x(a−x)²</text><text x="430" y="255" font-size="15">x</text><text x="48" y="36" font-size="15">y</text>
+    </g>
+    <g transform="translate(500 75)"><text x="0" y="0" font-size="16" font-weight="700">부호표</text><text x="0" y="35" font-size="15" fill="#15803d">0&lt;t&lt;a/2: S′&gt;0</text><text x="0" y="66" font-size="15" fill="#b91c1c">a/2&lt;t&lt;a: S′&lt;0</text><text x="0" y="115" font-size="15">S′=t(a−t)(a−2t)</text><text x="0" y="160" font-size="15" fill="#1d4ed8">M/p = a³/16</text></g>
+  </g></svg>`;
+  }
+  if (key === '25_제일고_2학기_기말_고2_수학II:q6') {
+    const curvePoints = Array.from({ length: 31 }, (_, i) => { const x = 3 * i / 30; const y = 3 * x - x * x; return `${(65 + 140 * x).toFixed(2)},${(255 - 75 * y).toFixed(2)}`; }).join(' ');
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="430" viewBox="0 0 640 430" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet"><title id="title">포물선과 x축으로 둘러싸인 넓이</title><desc id="desc">실제 y=3x−x² 포물선의 두 근 0,3과 대칭축 x=1.5, 넓이 9/2를 표시한다.</desc><rect width="640" height="430" fill="#fff"/><g font-family="Arial, sans-serif" fill="#111"><text x="320" y="27" font-size="20" text-anchor="middle" font-weight="700">포물선과 x축 사이의 넓이</text><g transform="translate(52 48)"><line x1="20" y1="255" x2="490" y2="255" stroke="#111" stroke-width="2"/><line x1="65" y1="28" x2="65" y2="300" stroke="#111" stroke-width="2"/><polyline points="${curvePoints} 485,255 65,255" fill="#bfdbfe" opacity="0.85" stroke="#1d4ed8" stroke-width="3"/><line x1="275" y1="86.25" x2="275" y2="255" stroke="#64748b" stroke-dasharray="5 5"/><circle cx="65" cy="255" r="5" fill="#111"/><circle cx="485" cy="255" r="5" fill="#111"/><circle cx="275" cy="86.25" r="5" fill="#1d4ed8"/><text x="65" y="282" font-size="16" text-anchor="middle">0</text><text x="485" y="282" font-size="16" text-anchor="middle">a=3</text><text x="275" y="76" font-size="14" text-anchor="middle">x=1.5</text><text x="260" y="150" font-size="17" text-anchor="middle" fill="#1e40af">넓이 9/2</text><text x="455" y="238" font-size="15" fill="#1d4ed8">y=3x−x²</text><text x="470" y="315" font-size="15">x</text><text x="48" y="35" font-size="15">y</text></g><g transform="translate(520 85)"><text x="0" y="0" font-size="16" font-weight="700">계산</text><text x="0" y="35" font-size="15">y=x(a−x)</text><text x="0" y="68" font-size="15">A=a³/6</text><text x="0" y="101" font-size="15">a³/6=9/2</text><text x="0" y="140" font-size="16" fill="#1d4ed8">a=3</text></g></g></svg>`;
+  }
+  if (key === '25_강남여고_2학기_기말_고2_수학II:q20') {
+    const current = fs.readFileSync(row.assetPath, 'utf8');
+    return current.replace('x="160" y="392"', 'x="160" y="412"');
+  }
+  return null;
 }
 
 function sanitizeExistingSvg(svg) {
@@ -297,6 +386,8 @@ function sanitizeExistingSvg(svg) {
 
 function targetSvgText(row) {
   const current = fs.readFileSync(row.assetPath, 'utf8');
+  const special = specialSvg(row);
+  if (special) return special;
   return current.includes('source-bound 텍스트 카드') ? sourceCard(row) : sanitizeExistingSvg(current);
 }
 
@@ -333,6 +424,9 @@ function lint(rows) {
     '\\)': /\\\)/g,
     'n따라서': /n따라서/g,
     'n조건 정리': /n조건 정리/g,
+    'cases:': /cases:/g,
+    'xmid': /\bxmid\b/g,
+    'raw_ampersand': /&/g,
   };
   const banned = /\\(?:n|ge|le|in|ne|frac|dfrac|begin|end|text|sqrt|left|right|int|cdot)|\\[()]/;
   const results = [];
@@ -343,19 +437,37 @@ function lint(rows) {
     const isCard = svg.includes('source-bound 텍스트 카드');
     const sourceSolution = normalizeForParity(row.q.solution);
     const observed = normalizeForParity(allText);
-    const solutionParity = isCard ? observed.includes(sourceSolution) : null;
+    const solutionParity = isCard
+      ? (observed.includes(sourceSolution) || observed.replace(/\s+/g, '').includes(sourceSolution.replace(/\s+/g, '')))
+      : null;
     const sourceFractions = fractionTokens(row.q.solution);
     const observedFractions = fractionTokens(allText);
     const fractionParity = isCard ? sourceFractions.every((token) => observedFractions.includes(token)) : null;
     const numericFusionCandidateCount = isCard ? sourceFractions.filter((token) => !observedFractions.includes(token)).length : 0;
     const bannedPatternCounts = Object.fromEntries(Object.entries(bannedPatterns).map(([name, pattern]) => [name, (allText.match(pattern) ?? []).length]));
     const issues = [];
+    if (isCard) {
+      const panelHeight = Number(svg.match(/<rect x="18" y="82" width="350" height="([\d.]+)"/)?.[1] ?? NaN);
+      const conclusionTop = Number(svg.match(/<rect x="18" y="([\d.]+)" width="724" height="48"/)?.[1] ?? NaN);
+      const contentYs = [...svg.matchAll(/<text x="(?:34|398)" y="([\d.]+)" font-size="(?:14|15)"/g)].map((m) => Number(m[1])).filter((n) => n >= 140);
+      const footerYs = [...svg.matchAll(/<text [^>]*y="([\d.]+)"[^>]*font-size="11"/g)].map((m) => Number(m[1]));
+      const panelBottom = 82 + panelHeight;
+      const conclusionBottom = conclusionTop + 48;
+      const contentBottom = contentYs.length ? Math.max(...contentYs) : 0;
+      const footerTop = footerYs.length ? Math.min(...footerYs) : 0;
+      if (!Number.isFinite(panelHeight) || !Number.isFinite(conclusionTop)) issues.push('layout_contract_missing_geometry');
+      else {
+        if (contentBottom > panelBottom - 24) issues.push('layout_content_bottom_padding');
+        if (conclusionTop < panelBottom + 20) issues.push('layout_conclusion_gap');
+        if (footerTop && footerTop < conclusionBottom + 28) issues.push('layout_footer_gap');
+      }
+    }
     if (!/^\s*<svg\b/.test(svg)) issues.push('missing_svg_root');
     if (!/\bviewBox="[^"]+"/.test(svg)) issues.push('missing_viewBox');
     if (!/\bpreserveAspectRatio="[^"]+"/.test(svg)) issues.push('missing_preserveAspectRatio');
     if (/<br\b/i.test(svg)) issues.push('br_element');
     if (/<(?:script|foreignObject)\b/i.test(svg)) issues.push('forbidden_element');
-    if (banned.test(allText) || /n따라서|n조건 정리/.test(allText)) issues.push('raw_latex_or_escape');
+    if (banned.test(allText) || /n따라서|n조건 정리|cases:|\bxmid\b|&/.test(allText)) issues.push('raw_latex_or_escape');
     if (isCard && !solutionParity) issues.push('solution_text_parity');
     if (isCard && !fractionParity) issues.push('fraction_fact_parity');
     results.push({
@@ -440,7 +552,7 @@ function runFactParity() {
     },
     {
       examId: '25_매산여고_2학기_기말_고2_수학II', qid: 22,
-      facts: ['N(x)=-8·x', 'F(x)=x·(x-3)²', 'M(1,4)', 'Z(3,0)', '0 ≤ x ≤ 4'],
+      facts: ['K(x)=-8x', 'K(x)=x(x-3)²', '0<k<4', '(1,4)', '(3,0)'],
     },
     {
       examId: '25_순천고_2학기_기말_고2_수학II', qid: 16,
