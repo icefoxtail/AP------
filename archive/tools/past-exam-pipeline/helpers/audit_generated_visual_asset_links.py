@@ -84,8 +84,15 @@ def asset_provenance_statuses(question, asset_path):
     statuses = []
     if not provenance:
         return ["WRONG_ASSET_PROVENANCE"]
-    if str(provenance.get("sourceQuestionNo")) != str(question.get("sourceQuestionNo")):
+    binding_type = str(provenance.get("assetBindingType") or "DIRECT")
+    if binding_type == "DIRECT" and str(provenance.get("sourceQuestionNo")) != str(question.get("sourceQuestionNo")):
         statuses.append("QUESTION_ASSET_IDENTITY_MISMATCH")
+    if binding_type == "SHARED_MATERIAL" and (not provenance.get("sharedMaterialUid") or str(question.get("sourceQuestionNo")) not in {str(value) for value in provenance.get("dependencyQuestionSet") or []}):
+        statuses.append("SHARED_MATERIAL_DEPENDENCY_FAIL")
+    if binding_type not in {"DIRECT", "SHARED_MATERIAL"}:
+        statuses.append("ASSET_BINDING_TYPE_INVALID")
+    if str(provenance.get("assetPath") or "") and str(provenance.get("assetPath")) != str(question.get("visualAsset") or question.get("image") or ""):
+        statuses.append("WRONG_ASSET_PROVENANCE")
     if str(provenance.get("sourceDocumentSha256")) != str(question.get("sourceDocumentSha256")):
         statuses.append("WRONG_ASSET_PROVENANCE")
     if str(provenance.get("sourcePageNo")) != str(question.get("sourcePageNo", question.get("pageNo"))):

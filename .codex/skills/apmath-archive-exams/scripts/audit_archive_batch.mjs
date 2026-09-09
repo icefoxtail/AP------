@@ -155,11 +155,14 @@ function validateSubunit(q, masterRows, errors) {
 }
 
 function sourceIdentityStatus(q, strictNew, errors) {
-  const required = ["sourceDocumentSha256", "sourceQuestionNo", "sourcePageNo", "sourceIdentityKey", "sourceEvidencePath"];
+  const required = ["sourceDocumentSha256", "sourceQuestionNo", "sourcePageNo", "sourceIdentityKey", "sourceEvidencePath", "sourcePageEvidencePaths"];
   const missing = required.filter((key) => key === "sourcePageNo"
     ? !(Number.isSafeInteger(q[key]) && q[key] >= 1)
+    : key === "sourcePageEvidencePaths"
+      ? !Array.isArray(q[key]) || q[key].length === 0 || q[key].some((value) => !nonEmpty(value))
     : !nonEmpty(q[key]));
-  if (!missing.length) return "PASS";
+  if (!missing.length && q.sourceIdentityKey === `${q.sourceDocumentSha256}|${q.sourceQuestionNo}`) return "PASS";
+  if (!missing.length && q.sourceIdentityKey !== `${q.sourceDocumentSha256}|${q.sourceQuestionNo}`) errors.push(`q${q.id}: SOURCE_IDENTITY_KEY_MISMATCH`);
   if (strictNew) errors.push(`q${q.id}: SOURCE_IDENTITY_EVIDENCE_MISSING:${missing.join(",")}`);
   return "LEGACY_SOURCE_EVIDENCE_NOT_AVAILABLE";
 }
@@ -182,10 +185,15 @@ function auditStrictSourceChain(candidates, live, strictNew, errors) {
   ];
   for (const name of required) if (!fs.existsSync(path.join(reports, name))) errors.push(`SOURCE_CHAIN_EVIDENCE_MISSING:${name}`);
   for (const [name, expected] of [["source_fidelity_evidence.json", "PASS"], ["math_review_evidence.json", "PASS"], ["asset_provenance_evidence.json", "PASS"]]) {
-    const report = readJson(path.join(reports, name));
+    const file = path.join(reports, name);
+    if (!fs.existsSync(file)) continue;
+    const report = readJson(file);
+    if (name === "asset_provenance_evidence.json" && report?.status === "NOT_APPLICABLE" && (!report.items || report.items.length === 0)) continue;
     if (report?.status !== expected) errors.push(`SOURCE_CHAIN_EVIDENCE_NOT_PASS:${name}`);
   }
-  const receipt = readJson(path.join(reports, "production_promotion_receipt.json"));
+  const receiptFile = path.join(reports, "production_promotion_receipt.json");
+  if (!fs.existsSync(receiptFile)) return "FAIL";
+  const receipt = readJson(receiptFile);
   if (receipt?.candidateSha && receipt.candidateSha !== `sha256:${sha256(candidates[0])}`) errors.push("PROMOTION_RECEIPT_CANDIDATE_SHA_MISMATCH");
   if (!receipt?.sourceIdentitySetSha || !receipt?.reviewedPassEnvelopeSha || !receipt?.promotionTransactionId) errors.push("PROMOTION_RECEIPT_INCOMPLETE");
   return errors.length ? "FAIL" : "PASS";

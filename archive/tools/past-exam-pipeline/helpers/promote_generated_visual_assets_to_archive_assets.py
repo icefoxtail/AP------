@@ -58,6 +58,9 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
+    if not args.dry_run:
+        raise SystemExit("UNAUTHORIZED_PRODUCTION_WRITE: use promote-reviewed-exam.mjs with a canonical promotion receipt")
+
     root = Path(args.root).resolve()
     archive_root = Path(args.archive_root).resolve()
     archive_images = archive_root / "assets" / "images"

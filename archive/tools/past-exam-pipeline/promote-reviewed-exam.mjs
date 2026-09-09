@@ -53,6 +53,7 @@ function main() {
   const candidateFile = arg("--candidate");
   const reviewFile = arg("--review");
   const assetsDir = arg("--assets");
+  const closureManifestFile = arg("--closure-manifest");
   const replaceExisting = process.argv.includes("--replace-existing");
   const manifest = readJson(manifestFile);
   const review = readJson(reviewFile);
@@ -127,6 +128,7 @@ function main() {
     sourceDocumentSha256: identity.sourceDocumentSha256,
     sourceQuestionNo: identity.sourceQuestionNo,
     sourcePageNo: identity.sourcePageNo,
+    sourcePageEvidencePaths: identity.sourcePageEvidencePaths,
     qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
   }));
   const commonClosure = requireProductionClosure(
@@ -140,13 +142,18 @@ function main() {
     manifest,
     candidateFile,
     reviewFile,
-    closureManifestFile: path.resolve(process.argv[process.argv.indexOf("--closure-manifest") + 1]),
+    closureManifestFile,
     hardening,
     closure: commonClosure,
   });
   productionWritePreflight({
     changedPaths: [`archive/exams/${manifest.archiveRelativePath}`, ...copyPlan.map(item => path.relative(path.resolve(archiveRoot, ".."), item.destination))],
     receipt,
+    candidateFile,
+    reviewFile,
+    closureManifestFile,
+    expectedSourceIdentities,
+    closure: commonClosure,
   });
   const receiptFile = path.join(path.dirname(candidateFile), "..", "reports", "production_promotion_receipt.json");
   if (fs.existsSync(receiptFile)) throw new Error(`PROMOTION_RECEIPT_ALREADY_EXISTS:${receiptFile}`);

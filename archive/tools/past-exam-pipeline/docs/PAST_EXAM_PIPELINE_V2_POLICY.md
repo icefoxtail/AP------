@@ -36,7 +36,8 @@ In short: full-page content review first, crop assistance second.
 
 ## Frozen source identity and evidence
 
-Before Vision extraction, the run must create and freeze
+Before Vision extraction, the run must accept an independently verified
+inventory (`INDEPENDENT_INVENTORY_VERIFIED`) and freeze
 `reports/source_inventory.json` with the source-document SHA, page count,
 expected question count, source question number, source page number, and one
 disposition for every source question. `reports/source_identity_map.json`
@@ -83,13 +84,17 @@ still read `final_validation_passed`; it is true only for
 11. `contentSource == "vision_required"` or `choicesSource == "vision_required"` is never PASS and must not be filled with dummy text by a downstream agent.
 12. A final candidate must carry non-empty `subUnitKey`, `subUnit`, `subUnitConfidence`, and `subUnitClassificationDepth`; the promotion gate also checks the canonical/compiled master relationship.
 13. `PNG_DECODE_PASS` is a byte-level check only; it is not crop purity,
-    semantic, provenance, or render PASS.
+    semantic, provenance, or render PASS. `DIRECT` assets must bind to the
+    same source question. A shared visual is accepted only through an explicit
+    `SHARED_MATERIAL` binding with a UID and dependency question set.
 14. Production paths are writable only after a common closure with the exact
     source identity set and a production promotion receipt. Direct writes are
     `UNAUTHORIZED_PRODUCTION_WRITE`.
 15. `BUILT`, `ZIP_CREATED`, and `EXTRACTION_VALIDATED` are not release states.
-    `DONE` requires an exact deliverable ZIP, fresh extraction, and real
-    `exam`/`sol`/`ans` browser PASS evidence.
+    `DONE` requires real production `exam`/`sol`/`ans` browser PASS evidence.
+    When a ZIP/package deliverable exists, exact-byte ZIP and fresh-extraction
+    checks plus separate extracted-package browser PASS evidence are required;
+    production-only flows must explicitly record package `NOT_APPLICABLE`.
 
 ## Normal flow
 

@@ -239,6 +239,8 @@ def main():
 
     root = Path(args.root).resolve()
     archive_root = Path(args.archive_root).resolve() if args.archive_root else None
+    if archive_root is not None and not args.dry_run:
+        raise SystemExit("UNAUTHORIZED_PRODUCTION_WRITE: use promote-reviewed-exam.mjs with a canonical promotion receipt")
     report_path = Path(args.out).resolve()
     results = []
     touched = []
