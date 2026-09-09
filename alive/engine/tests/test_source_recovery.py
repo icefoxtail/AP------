@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -32,7 +33,8 @@ from alive.engine.source_recovery import (
 )
 from alive.engine.run_store import RunStore
 from alive.engine.alive_cli import build_parser
-from alive.engine.source_question import json_sha256
+from alive.engine.source_question import extract_source_question, json_sha256
+from alive.engine.run_store import sha256_file
 
 
 def candidate_payload(**extra: object) -> dict[str, object]:
@@ -114,9 +116,10 @@ class SourceRecoveryTests(unittest.TestCase):
 
     def test_capability_registry_does_not_claim_unimplemented_tiers_active(self) -> None:
         registry = capability_registry_report()
-        self.assertEqual("BOUNDED_R0_R1_ONLY", registry["status"])
+        self.assertEqual("BOUNDED_R0_R1_R3_ONLY", registry["status"])
         self.assertEqual("ACTIVE", registry["tiers"]["R0"]["status"])
         self.assertEqual("ACTIVE", registry["tiers"]["R1"]["status"])
+        self.assertEqual("ACTIVE", registry["tiers"]["R3"]["status"])
         self.assertNotEqual("ACTIVE", registry["tiers"]["R5"]["status"])
         self.assertNotEqual("ACTIVE", registry["tiers"]["R6"]["status"])
 
@@ -312,6 +315,59 @@ class SourceRecoveryTests(unittest.TestCase):
         result["finalTarget"] = True
         shadow_gate = release_gate(build_recovery_ledger(["Q17"], [result]))
         self.assertEqual("BLOCKED", shadow_gate["status"])
+
+    def test_historical_source_question_runs_through_r3_shadow_e2e(self) -> None:
+        repository = Path(__file__).resolve().parents[3]
+        source_path = repository / "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js"
+        source = extract_source_question(source_path, 18, {"sha256": sha256_file(source_path)})
+        payload = dict(source["question"])
+        payload.update({
+            "sourceEvidence": {
+                "fullPageVerified": True,
+                "questionZoomVerified": True,
+                "choicesVerified": True,
+                "sourceEvidenceRef": "archive/analysis/2026-09-02-issues-only-report.md#L6-L15",
+            },
+            "defectSignals": ["UNDERDETERMINED_STEM", "MISSING_CONDITION"],
+            "recoveryCondition": "n은 양의 정수이다",
+        })
+        result = run_source_recovery(
+            source_question_uid=f"{source['source']['path']}|18",
+            source_lock_sha256=source["source"]["sha256"],
+            source_payload=payload,
+            independent_solve={
+                "independentlyComputedAnswer": "9",
+                "answerUnique": False,
+                "responseContractValid": True,
+                "mathVerdict": "PASS",
+                "solution": "양의 정수 조건을 포함하면 n=9이다.",
+            },
+            blind_verifier=lambda view: blind_verifier_evidence(view, "9"),
+        )
+        self.assertEqual("UNDERDETERMINED_STEM", result["diagnosis"]["defectTypes"][0])
+        self.assertEqual("RECOVERED", result["status"])
+        self.assertEqual("R3", result["recoveryTier"])
+        self.assertEqual("MISSING_CONDITION", result["candidatePool"][0]["producerKind"])
+        self.assertEqual("PASS", result["candidatePool"][0]["acceptance"]["verifierEvidence"]["status"])
+        ledger = build_recovery_ledger([result["sourceQuestionUid"]], [result])
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            js = root / "recovered.js"
+            question = dict(result["candidatePool"][0]["payload"])
+            question["id"] = 1
+            js.write_text(
+                'window.examTitle = "recovered-e2e";\nwindow.questionBank = '
+                + json.dumps([question], ensure_ascii=False)
+                + ";\n",
+                encoding="utf-8",
+            )
+            ledger_path = root / "source-recovery-ledger.json"
+            ledger_path.write_text(json.dumps(ledger, ensure_ascii=False), encoding="utf-8")
+            from alive.engine.final_closure import audit_final_closure
+
+            closure = audit_final_closure(root, js, None, None, None, source_recovery_ledger_path=ledger_path)
+            self.assertEqual("PASS", closure["sourceRecovery"]["status"])
+            self.assertEqual("NOT_PUBLISHED", closure["publicationStatus"])
 
     def test_r1_producer_has_separate_normalizers_for_each_choice_defect(self) -> None:
         cases = [
