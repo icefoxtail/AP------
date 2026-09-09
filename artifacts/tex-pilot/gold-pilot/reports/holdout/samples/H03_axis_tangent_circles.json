@@ -1,0 +1,12 @@
+{
+  "id": "H03_axis_tangent_circles",
+  "visualType": "line_circle_geometry",
+  "sourceFacts": {"point": [-2, 3], "centerLocus": "y=-x", "centerDistance": "4sqrt(6)"},
+  "viewport": {"xMin": -10, "xMax": 2, "yMin": -2, "yMax": 10, "width": 13, "height": 9},
+  "axes": {"visible": true, "grid": true, "xLabel": "x", "yLabel": "y"},
+  "lines": [{"id": "locus", "slope": -1, "intercept": 0, "equation": "y=-x", "domain": [-8, 2], "style": {"color": "gray", "lineStyle": "dashed", "lineWidth": 0.8}}],
+  "circles": [{"id": "c1", "center": [-1.5358983849, 1.5358983849], "radius": 1.5358983849, "style": {"color": "blue", "lineWidth": 1.0}}, {"id": "c2", "center": [-8.4641016151, 8.4641016151], "radius": 8.4641016151, "style": {"color": "red", "lineWidth": 1.0}}],
+  "points": [{"id": "P", "x": -2, "y": 3, "label": "P(-2,3)", "role": "critical"}],
+  "labels": [{"id": "locusLabel", "text": "y=-x", "at": [-6, 5.5], "kind": "equation"}],
+  "components": [{"kind": "AXIS"}, {"kind": "LINE", "ref": "locus"}, {"kind": "CIRCLE", "ref": "c1"}, {"kind": "CIRCLE", "ref": "c2"}, {"kind": "POINT", "ref": "P"}, {"kind": "POINT_LABEL", "ref": "P"}, {"kind": "EQUATION_LABEL", "ref": "locusLabel"}]
+}
