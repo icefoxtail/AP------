@@ -17,6 +17,9 @@ PACKAGES_ROOT = RUN_ROOT / "packages"
 BACKUP_ROOT = RUN_ROOT / "review-rebuild-backup-20260909"
 
 CORRECTIONS = {
+    "19_강남고_2학기_기말_고1_기출": [
+        "A형 source-faithful restoration: q8/q11/q12/q13/q14/q15/q23/q25 were restored from the native source pages; q13 received a clean diagram crop and q14's foreign unused crop was removed.",
+    ],
     "20_효천고_2학기_중간_고1_기출": ["q4: reverse of the proposition corrected to option ① with a reproducible explanation."],
     "20_매산고_2학기_기말_고1_기출": [
         "q16: short-answer count corrected from 120 to 1680; solution and answer now agree.",
@@ -54,6 +57,7 @@ CORRECTIONS = {
         "q8/q13: unmatched math delimiters closed in the affected choices.",
         "q12: fixed-point intermediate corrected from -1+1/a to -2+1/a.",
     ],
+    "24_여양고_2학기_기말_고1_기출": ["A형 minimal choice restoration: source q15 N(k) sum corrected from unavailable 34 to choice ②=34; q8/q17 source gaps remain excluded."],
 }
 
 
@@ -184,6 +188,19 @@ def write_reports(root: Path, base: str, is_v2: bool = False) -> None:
         (reports / "EXCLUDED_QUESTIONS.md").write_text(
             f"# EXCLUDED SOURCE QUESTIONS — {base}\n\n"
             "- q13: REVIEW_NEEDED — direct combinatorial count and printed answer choice conflict; the item was removed from the release question bank rather than guessed.\n",
+            encoding="utf-8",
+        )
+    if base == "19_강남고_2학기_기말_고1_기출":
+        (reports / "EXCLUDED_QUESTIONS.md").write_text(
+            "# EXCLUDED SOURCE QUESTIONS — 19_강남고_2학기_기말_고1_기출\n\n"
+            "- q6/q7/q17/q18/q19/q21/q22: REVIEW_NEEDED — these source ordinals are not represented by the current legacy release question bank; no guessed payload was inserted.\n",
+            encoding="utf-8",
+        )
+    if base == "24_여양고_2학기_기말_고1_기출":
+        (reports / "EXCLUDED_QUESTIONS.md").write_text(
+            "# EXCLUDED SOURCE QUESTIONS — 24_여양고_2학기_기말_고1_기출\n\n"
+            "- q8: REVIEW_NEEDED — the source ordinal is not represented by the current release bank; A형 source restoration is still required.\n"
+            "- q17: REVIEW_NEEDED — the source ordinal is not represented by the current release bank; A형 source restoration is still required.\n",
             encoding="utf-8",
         )
 
