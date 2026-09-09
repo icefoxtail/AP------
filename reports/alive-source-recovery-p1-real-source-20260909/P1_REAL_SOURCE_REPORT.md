@@ -28,8 +28,8 @@
 ## Gold category counts
 
 - `ANSWER_KEY_DEFECT`: 1
-- `QUESTION_PAYLOAD_DEFECT`: 4
 - `NO_DEFECT`: 18
+- `QUESTION_PAYLOAD_DEFECT`: 4
 
 ## Gold freeze and independent review
 

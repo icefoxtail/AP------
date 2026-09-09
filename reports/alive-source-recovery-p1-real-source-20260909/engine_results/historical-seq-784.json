@@ -104,8 +104,8 @@
           "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
           "candidateVersion": 1,
           "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
-          "verifierId": "real-source-verifier-B-20260909",
-          "verifierSessionId": "real-source-verifier-B-historical-seq-784",
+          "verifierId": "multi_agent_v1:alive_math_verifier",
+          "verifierSessionId": "01a0854f-7b48-7fb1-a2f9-e35b721e6748",
           "inputVisibilityProfile": "ARTIFACT_ONLY",
           "blindInput": {
             "id": 17,
@@ -145,7 +145,8 @@
           "allChoicesChecked": true,
           "distractorsWrong": true,
           "mathVerdict": "PASS",
-          "evidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+          "providerReasoningSummary": "Let Q(x) and S(x) be the quotient and remainder when f(x) is divided by (x+1)(x-1). Since Q(x)=S(x) and deg S<2, write S(x)=R(x)=ax+b. Then f(x)=(x^2-1)R(x)+R(x)=x^2R(x). The remainder upon division by x-1 is f(1)=R(1)=1. Given R(0)=2, b=2, so a+2=1 and a=-1. All five choices were checked: only choice index 1 (-1) matches; indices 0, 2, 3, and 4 are wrong.",
+          "evidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812"
         },
         "validatorEvidence": {
           "validatorId": "alive-bounded-validator",
@@ -159,8 +160,8 @@
               "status": "PASS",
               "method": "bounded_executable_validator",
               "coverage": "complete",
-              "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
-              "evidenceSha256": "sha256:b39167119ec7363609431e3400a8043f0886cfd2da56798d98fbfd7642989576"
+              "sourceEvidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812",
+              "evidenceSha256": "sha256:4b6e5c4c37e43d9ae455a33cffc7f9f5b7139eea5fb702c7b38222e2cb6f140a"
             },
             "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
               "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
@@ -171,8 +172,8 @@
               "status": "PASS",
               "method": "bounded_executable_validator",
               "coverage": "complete",
-              "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
-              "evidenceSha256": "sha256:3c7a7e77818b7ff18906f5ee00dd103e71714ffaeda311030143015c9a822973"
+              "sourceEvidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812",
+              "evidenceSha256": "sha256:ed11fbc24345ec1c5c956eaae1c7e7b2aa0e29b9410f3dabbf4132fd184ad907"
             },
             "CURRICULUM_VALID": {
               "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-CURRICULUM_VALID",
@@ -392,7 +393,7 @@
       "effectiveArtifactUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
       "effectiveArtifactSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
       "lineageStatus": "PASS",
-      "verifierEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+      "verifierEvidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812"
     }
   },
   "ledger": {
@@ -506,8 +507,8 @@
               "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
               "candidateVersion": 1,
               "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
-              "verifierId": "real-source-verifier-B-20260909",
-              "verifierSessionId": "real-source-verifier-B-historical-seq-784",
+              "verifierId": "multi_agent_v1:alive_math_verifier",
+              "verifierSessionId": "01a0854f-7b48-7fb1-a2f9-e35b721e6748",
               "inputVisibilityProfile": "ARTIFACT_ONLY",
               "blindInput": {
                 "id": 17,
@@ -547,7 +548,8 @@
               "allChoicesChecked": true,
               "distractorsWrong": true,
               "mathVerdict": "PASS",
-              "evidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+              "providerReasoningSummary": "Let Q(x) and S(x) be the quotient and remainder when f(x) is divided by (x+1)(x-1). Since Q(x)=S(x) and deg S<2, write S(x)=R(x)=ax+b. Then f(x)=(x^2-1)R(x)+R(x)=x^2R(x). The remainder upon division by x-1 is f(1)=R(1)=1. Given R(0)=2, b=2, so a+2=1 and a=-1. All five choices were checked: only choice index 1 (-1) matches; indices 0, 2, 3, and 4 are wrong.",
+              "evidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812"
             },
             "validatorEvidence": {
               "validatorId": "alive-bounded-validator",
@@ -561,8 +563,8 @@
                   "status": "PASS",
                   "method": "bounded_executable_validator",
                   "coverage": "complete",
-                  "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
-                  "evidenceSha256": "sha256:b39167119ec7363609431e3400a8043f0886cfd2da56798d98fbfd7642989576"
+                  "sourceEvidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812",
+                  "evidenceSha256": "sha256:4b6e5c4c37e43d9ae455a33cffc7f9f5b7139eea5fb702c7b38222e2cb6f140a"
                 },
                 "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
                   "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
@@ -573,8 +575,8 @@
                   "status": "PASS",
                   "method": "bounded_executable_validator",
                   "coverage": "complete",
-                  "sourceEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9",
-                  "evidenceSha256": "sha256:3c7a7e77818b7ff18906f5ee00dd103e71714ffaeda311030143015c9a822973"
+                  "sourceEvidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812",
+                  "evidenceSha256": "sha256:ed11fbc24345ec1c5c956eaae1c7e7b2aa0e29b9410f3dabbf4132fd184ad907"
                 },
                 "CURRICULUM_VALID": {
                   "evidenceId": "validator-REAL-P1-historical-seq-784-C01-5ab1b2c69f0b-CURRICULUM_VALID",
@@ -794,7 +796,7 @@
           "effectiveArtifactUid": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#17-R1",
           "effectiveArtifactSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
           "lineageStatus": "PASS",
-          "verifierEvidenceSha256": "sha256:29957c8464583191e87d67235357cf5bea8261eb7107bdda3acac79ce8e22aa9"
+          "verifierEvidenceSha256": "sha256:54673b049f344a2acd387b8b5df20fb9c91c98c38b2fd2a3af494c1d3d5a2812"
         }
       }
     ]

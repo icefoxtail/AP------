@@ -98,8 +98,8 @@
           "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
           "candidateVersion": 1,
           "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
-          "verifierId": "real-source-verifier-B-20260909",
-          "verifierSessionId": "real-source-verifier-B-historical-seq-1136",
+          "verifierId": "multi_agent_v1:alive_math_verifier",
+          "verifierSessionId": "01a0854f-813d-7f40-bab5-812bd567e4c0",
           "inputVisibilityProfile": "ARTIFACT_ONLY",
           "blindInput": {
             "id": 17,
@@ -132,7 +132,8 @@
           "allChoicesChecked": true,
           "distractorsWrong": true,
           "mathVerdict": "PASS",
-          "evidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7"
+          "providerReasoningSummary": "The constant segment g(x)=0 intersects at x=0 and x=1. For x<-1, -x²=a(x+1) gives a=t²/(t-1) with t>1, so extra intersections begin at a=4; for x>1, x=a adds one point when a>1. Exactly three points occur for 1<a<4, which has no maximum. Therefore the correct response is 없다, matching the repaired first choice.",
+          "evidenceSha256": "sha256:afb4e90fc28876ff1bfa2aea01542cdc44d63cd4ee6f2a1d9e1ce49c8d54cc55"
         },
         "validatorEvidence": {
           "validatorId": "alive-bounded-validator",
@@ -146,8 +147,8 @@
               "status": "PASS",
               "method": "bounded_executable_validator",
               "coverage": "complete",
-              "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
-              "evidenceSha256": "sha256:5a3928f96cddfc5e8121c5a7867a1dcb73132500ca5ee20ffd47fc67f8ef3e7f"
+              "sourceEvidenceSha256": "sha256:afb4e90fc28876ff1bfa2aea01542cdc44d63cd4ee6f2a1d9e1ce49c8d54cc55",
+              "evidenceSha256": "sha256:30276cf3e4ef095adeaeb7ce21c8634c46d3d85de5ac49e9d53163be13913e6f"
             },
             "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
               "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
@@ -158,8 +159,8 @@
               "status": "PASS",
               "method": "bounded_executable_validator",
               "coverage": "complete",
-              "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
-              "evidenceSha256": "sha256:e6bd680167dade6df4c24f68eed976382a6a6664ca6b040cc0c25776645d2b71"
+              "sourceEvidenceSha256": "sha256:afb4e90fc28876ff1bfa2aea01542cdc44d63cd4ee6f2a1d9e1ce49c8d54cc55",
+              "evidenceSha256": "sha256:f113c7dca28e419e5d746a87a0334c54acd50fdff1234505c982ba917e91dbf5"
             },
             "CURRICULUM_VALID": {
               "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-CURRICULUM_VALID",
@@ -477,8 +478,8 @@
               "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
               "candidateVersion": 1,
               "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
-              "verifierId": "real-source-verifier-B-20260909",
-              "verifierSessionId": "real-source-verifier-B-historical-seq-1136",
+              "verifierId": "multi_agent_v1:alive_math_verifier",
+              "verifierSessionId": "01a0854f-813d-7f40-bab5-812bd567e4c0",
               "inputVisibilityProfile": "ARTIFACT_ONLY",
               "blindInput": {
                 "id": 17,
@@ -511,7 +512,8 @@
               "allChoicesChecked": true,
               "distractorsWrong": true,
               "mathVerdict": "PASS",
-              "evidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7"
+              "providerReasoningSummary": "The constant segment g(x)=0 intersects at x=0 and x=1. For x<-1, -x²=a(x+1) gives a=t²/(t-1) with t>1, so extra intersections begin at a=4; for x>1, x=a adds one point when a>1. Exactly three points occur for 1<a<4, which has no maximum. Therefore the correct response is 없다, matching the repaired first choice.",
+              "evidenceSha256": "sha256:afb4e90fc28876ff1bfa2aea01542cdc44d63cd4ee6f2a1d9e1ce49c8d54cc55"
             },
             "validatorEvidence": {
               "validatorId": "alive-bounded-validator",
@@ -525,8 +527,8 @@
                   "status": "PASS",
                   "method": "bounded_executable_validator",
                   "coverage": "complete",
-                  "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
-                  "evidenceSha256": "sha256:5a3928f96cddfc5e8121c5a7867a1dcb73132500ca5ee20ffd47fc67f8ef3e7f"
+                  "sourceEvidenceSha256": "sha256:afb4e90fc28876ff1bfa2aea01542cdc44d63cd4ee6f2a1d9e1ce49c8d54cc55",
+                  "evidenceSha256": "sha256:30276cf3e4ef095adeaeb7ce21c8634c46d3d85de5ac49e9d53163be13913e6f"
                 },
                 "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
                   "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
@@ -537,8 +539,8 @@
                   "status": "PASS",
                   "method": "bounded_executable_validator",
                   "coverage": "complete",
-                  "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
-                  "evidenceSha256": "sha256:e6bd680167dade6df4c24f68eed976382a6a6664ca6b040cc0c25776645d2b71"
+                  "sourceEvidenceSha256": "sha256:afb4e90fc28876ff1bfa2aea01542cdc44d63cd4ee6f2a1d9e1ce49c8d54cc55",
+                  "evidenceSha256": "sha256:f113c7dca28e419e5d746a87a0334c54acd50fdff1234505c982ba917e91dbf5"
                 },
                 "CURRICULUM_VALID": {
                   "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-CURRICULUM_VALID",

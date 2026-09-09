@@ -1,0 +1,21 @@
+{
+  "providerName": "multi_agent_v1",
+  "providerAgentType": "alive_math_verifier",
+  "verifierId": "multi_agent_v1:alive_math_verifier",
+  "verifierSessionId": "01a0854f-7b48-7fb1-a2f9-e35b721e6748",
+  "inputVisibilityProfile": "ARTIFACT_ONLY",
+  "candidateId": "REAL-P1-historical-seq-784-C01-5ab1b2c69f0b",
+  "candidateVersion": 1,
+  "candidatePayloadSha256": "sha256:5ab1b2c69f0b1903a23ff484a7b499f758055f233e5fe76f5ede4575bd45f77c",
+  "computedAnswer": "-1",
+  "answerUnique": true,
+  "responseContractValid": true,
+  "matchingChoiceIndices": [2],
+  "matchingChoiceIndexBase": 1,
+  "allChoicesChecked": true,
+  "distractorsWrong": true,
+  "mathVerdict": "PASS",
+  "reasoningSummary": "Let Q(x) and S(x) be the quotient and remainder when f(x) is divided by (x+1)(x-1). Since Q(x)=S(x) and deg S<2, write S(x)=R(x)=ax+b. Then f(x)=(x^2-1)R(x)+R(x)=x^2R(x). The remainder upon division by x-1 is f(1)=R(1)=1. Given R(0)=2, b=2, so a+2=1 and a=-1. All five choices were checked: only choice index 1 (-1) matches; indices 0, 2, 3, and 4 are wrong.",
+  "rawProviderMatchingChoiceIndices": [1],
+  "rawProviderMatchingChoiceIndexBase": 0
+}
