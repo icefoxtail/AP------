@@ -10,13 +10,16 @@ import { axisName } from './projection.mjs';
 import { validateRenderReviewReuseReceipt } from './render-impact.mjs';
 import { createContinuationDenominator, validateContinuationDenominator } from './continuation.mjs';
 import { validateSourceRecoveryLedger } from './source-recovery.mjs';
+import { validateSolutionQuality } from './solution-quality.mjs';
+import { validateVisualBenefitPair } from './solution-visual-benefit.mjs';
+import { validatePastExamCompletion } from './past-exam-contract.mjs';
 
 export const RUN_VERSION = 'APMATH_PIPELINE_RUN_v1';
 export const RUN_VERSION_V2 = 'APMATH_PIPELINE_RUN_v2';
 export const EVIDENCE_VERSION = 'APMATH_PIPELINE_EVIDENCE_v1';
 export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const profiles = JSON.parse(fs.readFileSync(new URL('./profiles.json', import.meta.url)));
-export const CORE_SHA_INPUT_FILES = Object.freeze(['contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
+export const CORE_SHA_INPUT_FILES = Object.freeze(['solution-quality.mjs', 'solution-visual-benefit.mjs', 'past-exam-contract.mjs', '../past-exam-pipeline/completion-contract.json', '../past-exam-pipeline/lib/calibration.mjs', 'contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
 export const CORE_SHA = objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
 const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
 
@@ -28,7 +31,7 @@ export function runInputSha(run) {
   });
   // Decisions are outputs of review, not inputs to the blind source pass.
   // The final requirement map is bound separately by denominatorInput and V3.
-  const payload = { schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, sourceRecoveryLedger: run.sourceRecoveryLedger || null, sourceRecoverySignal: run.sourceRecoverySignal === true, sourceRecoveryStatus: run.sourceRecoveryStatus || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA };
+  const payload = { schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, sourceRecoveryLedger: run.sourceRecoveryLedger || null, sourceRecoverySignal: run.sourceRecoverySignal === true, sourceRecoveryStatus: run.sourceRecoveryStatus || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), pastExamCompletionRef: run.pastExamCompletionRef || null, coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA };
   if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { workBatchId: run.workBatchId || null, builderId: run.builderId || null, builderSessionId: run.builderSessionId || null, builderModelOrAgent: run.builderModelOrAgent || null, sourceAuthority: run.sourceAuthority || null, uidAuthority: run.uidAuthority || null, semanticDependencyBindings: run.semanticDependencyBindings || null, releaseRenderPolicy: run.releaseRenderPolicy || run.releasePolicy || null, viewportProfiles: run.viewportProfiles || profiles.viewports, requiredModeCaseSet: run.requiredModeCaseSet || null });
   if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { predecessor: run.predecessor || null, publicationIntent: run.publicationIntent || null, sharedMaterial: run.sharedMaterial || null, globalLayoutMetadata: run.globalLayoutMetadata || null, contextDependencyRefs: run.contextDependencyRefs || [], declaredContextDependencyUidSet: run.declaredContextDependencyUidSet || [] });
   return objectSha(payload);
@@ -144,11 +147,13 @@ export function validateRender(root, record, profile, mode, run, inputSha, candi
 }
 
 function verifyRules(root, run, errors) {
+  errors.push(...validatePastExamCompletion(root, run));
   const manifestRef = run.inputs.find(i => i.path === 'docs/rules/MANIFEST.md' && i.role === 'rule');
   if (!manifestRef) { errors.push('RULE_MANIFEST_NOT_BOUND'); return; }
   let manifest;
   try { manifest = readBoundFile(root, manifestRef).toString('utf8'); } catch (error) { errors.push(error.message); return; }
   const required = [...MINIMUM_RULES];
+  if (profiles.pipelines[run.pipeline]?.scope === 'QUESTION_QUALITY') required.push('02_PIPELINES/해설프로토콜.md', '02_PIPELINES/JS_문항품질_업그레이드.md');
   if (run.questions.some(q => q.visual?.actualSolutionVisualAttached || q.visual?.problemVisualMathDependency || q.visual?.sharedVisualMathDependency || q.visual?.requirement === 'VISUAL_REQUIRED')) required.push('04_VISUAL/도형추출.md');
   if (['logic-visual', 'set-visual-pilot'].includes(run.pipeline)) required.push('04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md');
   if (run.pipeline === 'geometry-equation') required.push('04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md');
@@ -304,6 +309,7 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
       const e = get(axis);
       if (['math', 'solution', 'source'].includes(axis) && e && (e.reviewSessionId === run.builderSessionId || (run.schemaVersion !== RUN_VERSION_V2 || axis !== 'solution') && e.priorReviewVisibility !== 'NONE')) findings.push(`INDEPENDENT_REVIEW_REQUIRED:${axis}`);
       if (axis === 'math' && e && (e.payload?.blindSolveFrozen !== true || e.payload?.allChoicesChecked !== true || e.payload?.answerUnique !== true)) findings.push('MATH_COMPLETENESS_NOT_PROVEN');
+      if (axis === 'solution') findings.push(...validateSolutionQuality(e?.payload?.solutionQuality, candidateQuestions.get(q.questionUid)).errors);
     }
     if (run.schemaVersion === RUN_VERSION_V2 && policy.scope === 'QUESTION_QUALITY') {
       const a2 = evidence.get(q.evidence.MATH_A2), a1 = evidence.get(q.evidence.MATH_A1);
@@ -313,6 +319,8 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
     let parity = null;
     if (policy.visual) {
       const triage = get('v1');
+      const adjudication = get('v3');
+      findings.push(...validateVisualBenefitPair(triage, adjudication, { question: candidateQuestions.get(q.questionUid), visual: q.visual, ruleRefs: run.inputs.filter(ref => ref.role === 'rule') }).errors);
       const compatibility = { SHOULD_BE_REQUIRED: ['VISUAL_REQUIRED'], SHOULD_BE_RECOMMENDED: ['VISUAL_RECOMMENDED'], MAY_BE_OPTIONAL: ['VISUAL_OPTIONAL', 'VISUAL_RECOMMENDED', 'VISUAL_REQUIRED'], SHOULD_BE_EXEMPT: ['VISUAL_EXEMPT', 'VISUAL_OPTIONAL'] };
       if (!triage || triage.reviewSessionId === run.builderSessionId || triage.inputVisibilityProfile !== 'SOURCE_ONLY' || triage.priorReviewVisibility !== 'NONE' || triage.payload?.freshBlind !== true || (run.schemaVersion === RUN_VERSION && !compatibility[triage.payload?.visualRequirementSignal]?.includes(q.visual.requirement))) findings.push('INDEPENDENT_VISUAL_TRIAGE_NOT_CLOSED');
       if (!needed && triage) {

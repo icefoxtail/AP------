@@ -6,6 +6,8 @@ or handoff; read the authoritative files in the order below.
 ## Current authority
 
 1. Start with `docs/rules/00_RULES_INDEX.md`.
+   For Past Exam work, then read `02_PIPELINES/Past_Exam_V3_COMPLETE.md` and
+   enforce S0.5 production-sample calibration before source inventory/build.
 2. Verify `docs/rules/MANIFEST.md` and the compiled master at
    `archive/data/master_tables/js_archive_tag_master.json` before a
    source-pack-bound final decision.
@@ -17,8 +19,10 @@ or handoff; read the authoritative files in the order below.
    solution-quality protocol, `무결성검수.md`, and
    `수학_문항오류_검증_프로토콜_v2.1.md`.
 5. For corrections and final release, add `수정프로토콜.md`,
-   `작업방식_5문항배치루프_필수.md`, the 1차/2차/3차 review protocols, and
+   `작업방식_적응형배치루프_v1.md`, the 1차/2차/3차 domain review protocols, and
    the real-render requirements in the integrated protocol.
+   Agent execution is exclusively governed by pipeline-core/AGENT_BUDGET.md;
+   these review labels do not authorize per-stage launches.
 6. For a graph, geometry, table, or SVG, read current
    `04_VISUAL/도형추출.md`; read the geometry-equation SVG review protocol
    only when that special lane applies.

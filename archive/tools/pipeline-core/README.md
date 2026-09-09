@@ -5,6 +5,22 @@
 
 # APMath common pipeline core
 
+Current solution quality is enforced by `solution-quality.mjs`: every SOLUTION
+axis needs all fourteen typed decisions, rationale and excerpts anchored in the
+current student solution. Required decisions cannot be N/A; high-level and
+constructed-response requirements derive from the actual question. A render
+PASS never substitutes for this semantic review. Difficulty/type/choices changes
+invalidate SOLUTION evidence. `solution-visual-benefit.mjs` requires V1 and V3
+benefit semantics and first-pass binding for every visual-capable question,
+including OPTIONAL and EXEMPT rows. Templates from prepare are NOT_TESTED.
+
+New Past Exam runs additionally require the V3 completion contract, a full
+production-sample calibration lock, project-pinned geometry policy and core v2
+FULL_EXAM closure. Pass `--past-exam-manifest <staged-manifest.json>` to
+`prepare-v2 --pipeline past-exam`. See the
+[Past Exam guide](../past-exam-pipeline/README.md). Legacy V1 Past Exam evidence
+is preserved but cannot authorize new completion or promotion.
+
 One fail-closed quality contract for archive pipelines. This is a verifier and
 bounded generator library, not a general theorem prover or publication tool.
 Every PASS declares its scope; `productionAuthorized` remains false.

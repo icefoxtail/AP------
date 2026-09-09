@@ -8,9 +8,21 @@ import { requiredAxesForQuestion } from './projection.mjs';
 import { computeV2AxisInputShas } from './v2-audit.mjs';
 import { rulePreflight } from './rulepack.mjs';
 import { addRuntimeInputs, runtimeDependencyBundle } from './runtime.mjs';
+import { assertBuilderStart } from '../past-exam-pipeline/lib/calibration.mjs';
+import { solutionQualityDraft } from './solution-quality.mjs';
+import { visualBenefitDraft } from './solution-visual-benefit.mjs';
 
-export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null }) {
+export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null }) {
   if (!profiles.pipelines[pipeline] || !/^[A-Za-z0-9_-]+$/.test(runId || '')) throw new Error('PIPELINE_AND_RUN_ID_REQUIRED');
+  let pastManifest = null;
+  const pastSourceRefs = [];
+  if (pipeline === 'past-exam') {
+    if (!pastExamManifestPath || schemaVersion !== RUN_VERSION_V2) throw new Error('BUILDER_START_BLOCKED:PAST_EXAM_V3_MANIFEST_AND_CORE_V2_REQUIRED');
+    pastManifest = JSON.parse(fs.readFileSync(path.resolve(root, pastExamManifestPath), 'utf8'));
+    assertBuilderStart(root, pastManifest);
+    const lock = JSON.parse(fs.readFileSync(pastManifest.referenceSampleLock.path, 'utf8'));
+    if (lock.readerId !== builderId || lock.readerSessionId !== builderSessionId) throw new Error('BUILDER_START_BLOCKED:CALIBRATION_READER_BUILDER_MISMATCH');
+  }
   const v2 = schemaVersion === RUN_VERSION_V2;
   const stableRegistry = v2 ? normalizeSourceExamIdRegistry(JSON.parse(readBoundFile(root, sourceExamIdRegistryRef))) : null;
   const sourceEntries = stableRegistry?.entries.filter(entry => entry.sourcePath === sourcePath && entry.status === 'ACTIVE') || [];
@@ -41,8 +53,37 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
     run.workBatchId = workBatchId;
   }
   const pendingBundles = [];
-  const asset = reference => {
-    const relative = reference.startsWith('archive/') ? reference : `archive/${reference}`;
+  run.assetRoot = assetRoot || (pastManifest ? path.relative(root, path.resolve(root, pastManifest.outputDir || path.join(path.dirname(pastManifest.sourceInventoryPath), '..'))).split(path.sep).join('/') : 'archive');
+  if (pastManifest) {
+    const contractPath = 'archive/tools/past-exam-pipeline/completion-contract.json';
+    const contract = JSON.parse(fs.readFileSync(safePath(root, contractPath), 'utf8'));
+    if (!rulePack.refs.some(ref => ref.path === contract.geometryPolicyRef.path && ref.bytes === contract.geometryPolicyRef.bytes && ref.sha256 === contract.geometryPolicyRef.sha256)) throw new Error('BUILDER_START_BLOCKED:GEOMETRY_POLICY_RULE_PACK_DRIFT');
+    const inventoryPath = path.relative(root, path.resolve(root, pastManifest.sourceInventoryPath)).split(path.sep).join('/');
+    const inventoryRef = fileRef(root, inventoryPath);
+    pastSourceRefs.push(inventoryRef);
+    const inventory = JSON.parse(readBoundFile(root, inventoryRef));
+    if (inventory.status !== 'SOURCE_INVENTORY_FROZEN' || inventory.examId !== pastManifest.examId) throw new Error('PAST_EXAM_SOURCE_INVENTORY_NOT_FROZEN');
+    const included = inventory.questions.filter(q => q.disposition !== 'EXCLUDED_WITH_EVIDENCE');
+    if (included.length !== candidate.questionBank.length || new Set(candidate.questionBank.map(q => q.sourceIdentityKey)).size !== included.length || included.some(q => !candidate.questionBank.some(c => c.sourceIdentityKey === q.sourceIdentityKey))) throw new Error('SOURCE_INVENTORY_COVERAGE_FAIL');
+    for (const row of included) for (const page of row.sourcePageEvidencePaths || [row.sourceEvidencePath]) {
+      if (!page) throw new Error('SOURCE_PAGE_EVIDENCE_REQUIRED');
+      const pagePath = path.relative(root, path.resolve(path.dirname(path.resolve(root, inventoryPath)), '..', page)).split(path.sep).join('/');
+      if (!run.inputs.some(r => r.path === pagePath)) {
+        const pageRef = fileRef(root, pagePath);
+        run.inputs.push({ ...pageRef, role: 'dependency' });
+        pastSourceRefs.push(pageRef);
+      }
+    }
+    const lockPath = path.relative(root, pastManifest.referenceSampleLock.path).split(path.sep).join('/');
+    const lockRef = fileRef(root, lockPath);
+    const configPath = `${workdir}/past-exam-project-config.json`;
+    writeNewJson(safePath(root, configPath, { mustExist: false }), { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256 });
+    run.pastExamCompletionRef = fileRef(root, configPath);
+    run.publicationIntent = 'FULL_EXAM';
+    run.inputs.push({ ...run.pastExamCompletionRef, role: 'spec' }, { ...lockRef, role: 'spec' }, { ...inventoryRef, role: 'dependency' }, { ...fileRef(root, contractPath), role: 'spec' });
+  }
+  const asset = (reference, base = run.assetRoot) => {
+    const relative = path.posix.join(base, reference.replace(/^archive\//, ''));
     const ref = fileRef(root, relative);
     if (!run.inputs.some(i => i.path === relative)) run.inputs.push({ ...ref, role: 'asset' });
     return ref;
@@ -55,7 +96,8 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
     if (v2 && !sourceEntries.some(entry => entry.questionUidV2 === uid)) throw new Error('SOURCE_REGISTRY_ORDINAL_MISSING');
     const problem = q.image ? asset(q.image) : null, visual = q.solutionImage ? asset(q.solutionImage) : null;
     const sourceQuestion = source.questionBank.find(item => item.id === q.id);
-    const sourceProblem = sourceQuestion.image ? asset(sourceQuestion.image) : null;
+    if (pastManifest && (sourceQuestion.sourceIdentityKey !== q.sourceIdentityKey || !q.sourceIdentityKey)) throw new Error('PAST_EXAM_SOURCE_IDENTITY_MAPPING_REQUIRED');
+    const sourceProblem = sourceQuestion.image ? asset(sourceQuestion.image, sourceAssetRoot || run.assetRoot) : null;
     const sourceBundle = { questionUid: uid, content: sourceQuestion.content, choices: sourceQuestion.choices || [], problemAssets: sourceProblem ? [sourceProblem] : [] };
     pendingBundles.push({ path: `${workdir}/bundles/q${q.id}-v1.json`, value: sourceBundle });
     if (visual) pendingBundles.push({ path: `${workdir}/bundles/q${q.id}-v2.json`, value: { questionUid: uid, artifact: visual, renderWitnesses: [] } });
@@ -63,6 +105,10 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
   }
   if (v2) {
     const registry = stableRegistry;
+    if (pastManifest) for (const row of run.questions) {
+      const q = candidate.questionBank.find(item => item.id === row.qid);
+      for (const key of ['sourceIdentityKey', 'sourceDocumentSha256', 'sourceQuestionNo', 'sourcePageNo', 'sourcePageEvidencePaths']) row[key] = q[key];
+    }
     const registryRef = sourceExamIdRegistryRef;
     run.inputs.push({ ...registryRef, role: 'dependency' });
     run.sourceExamIdRegistry = registry;
@@ -76,7 +122,7 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
       run.uidAuthority.uidMigrationEvidenceRefs.push(fileRef(root, migrationPath));
     }
     run.uidAuthority.uidMigrationEvidenceSetSha = objectSha(run.uidAuthority.uidMigrationEvidenceRefs);
-    run.sourceAuthority.sourceTruthRefs = [sourceInputRef];
+    run.sourceAuthority.sourceTruthRefs = [sourceInputRef, ...pastSourceRefs];
     run.sourceAuthority.sourceTruthBundleSha = objectSha(run.sourceAuthority.sourceTruthRefs);
     run.sourceAuthority.activeBaselineRef = sourceInputRef;
     run.sourceAuthority.activeBaselineSha = sourceInputRef.sha256;
@@ -89,6 +135,7 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
   }
   run.inputSha = runInputSha(run);
   const bundleManifest = [];
+  if (profiles.pipelines[pipeline].scope === 'QUESTION_QUALITY') for (const q of run.questions) pendingBundles.push({ path: `${workdir}/review-drafts/q${q.qid}-quality.json`, value: { status: 'NOT_TESTED', questionUid: q.questionUid, solutionQuality: solutionQualityDraft(), visualBenefit: visualBenefitDraft() } });
   for (const bundle of pendingBundles) {
     writeNewJson(safePath(root, bundle.path, { mustExist: false }), bundle.value);
     bundleManifest.push(fileRef(root, bundle.path));
