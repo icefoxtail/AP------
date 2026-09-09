@@ -26,11 +26,21 @@ export function closureFromFile(root, pipeline, manifestPath, expectedArtifacts 
       }
     }
     if (expectedSourceIdentities) {
-      const key = row => `${row.sourcePath}|${row.qid}`;
+      const key = row => sourceIdentityKey(row);
       if (JSON.stringify(uidSet(expectedSourceIdentities.map(key))) !== JSON.stringify(uidSet(run.questions.map(key)))) throw new Error('CLOSURE_SCOPE_DOES_NOT_MATCH_CALLER');
     }
   } catch (error) { return { ...closure, status: 'BLOCKED', errors: [...closure.errors, error.message] }; }
   return closure;
+}
+
+// Past-exam closure rows carry the frozen source document/question identity.
+// Keep the legacy sourcePath|qid form for existing pipeline-core callers, but
+// never silently reduce a rich source identity to an archive id.
+export function sourceIdentityKey(row) {
+  if (nonempty(row?.sourceIdentityKey)) return String(row.sourceIdentityKey);
+  if (nonempty(row?.sourceDocumentSha256) && nonempty(row?.sourceQuestionNo)) return `${row.sourceDocumentSha256}|${row.sourceQuestionNo}`;
+  if (nonempty(row?.sourcePath) && Number.isSafeInteger(row?.qid)) return `${row.sourcePath}|${row.qid}`;
+  throw new Error('SOURCE_IDENTITY_ROW_INVALID');
 }
 
 export function requireClosure(root, pipeline, argv = process.argv, expectedArtifacts = [], expectedSourceIdentities = null) {

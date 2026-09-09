@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import json
 import re
 from datetime import datetime, timezone
@@ -51,6 +52,107 @@ def write_json(path, data):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def sha256_file(path):
+    return "sha256:" + hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def candidate_reports_dir(candidate_file):
+    root = candidate_root_for(candidate_file)
+    return root / "reports"
+
+
+def read_report(reports_dir, name):
+    path = reports_dir / name
+    if not path.exists():
+        return None, ""
+    try:
+        return read_json(path), sha256_file(path)
+    except Exception:
+        return None, sha256_file(path)
+
+
+def source_identity(question):
+    document_sha = str(question.get("sourceDocumentSha256") or "").strip()
+    question_no = str(question.get("sourceQuestionNo") or "").strip()
+    page_no = question.get("sourcePageNo", question.get("pageNo"))
+    if not document_sha or not question_no or not isinstance(page_no, int) or page_no < 1:
+        return None
+    if not document_sha.startswith("sha256:"):
+        document_sha = "sha256:" + document_sha
+    return {
+        "sourceIdentityKey": str(question.get("sourceIdentityKey") or f"{document_sha}|{question_no}"),
+        "sourceDocumentSha256": document_sha,
+        "sourceQuestionNo": question_no,
+        "sourcePageNo": page_no,
+    }
+
+
+def validate_source_evidence(candidate_file, questions):
+    reports_dir = candidate_reports_dir(candidate_file)
+    inventory, inventory_sha = read_report(reports_dir, "source_inventory.json")
+    identity_map, identity_map_sha = read_report(reports_dir, "source_identity_map.json")
+    result = {
+        "status": "MISSING",
+        "sourceInventorySha": inventory_sha,
+        "sourceIdentityMapSha": identity_map_sha,
+        "issues": [],
+        "sourceFidelitySha": "",
+        "mathReviewSha": "",
+        "assetProvenanceSha": "",
+    }
+    if not inventory or inventory.get("schema") != "PAST_EXAM_SOURCE_INVENTORY_v1":
+        result["issues"].append("SOURCE_INVENTORY_REQUIRED")
+        return result
+    if not identity_map or identity_map.get("schema") != "PAST_EXAM_SOURCE_IDENTITY_MAP_v1":
+        result["issues"].append("SOURCE_IDENTITY_MAP_REQUIRED")
+        return result
+    expected = sorted(row.get("sourceIdentityKey") for row in inventory.get("questions", []) if row.get("disposition") != "EXCLUDED_WITH_EVIDENCE")
+    actual = []
+    for question in questions:
+        identity = source_identity(question)
+        if not identity:
+            result["issues"].append(f"SOURCE_IDENTITY_MISSING:q{question.get('id')}")
+        else:
+            actual.append(identity["sourceIdentityKey"])
+    actual = sorted(actual)
+    if actual != expected:
+        result["issues"].append("SOURCE_INVENTORY_COVERAGE_FAIL")
+
+    fidelity, fidelity_sha = read_report(reports_dir, "source_fidelity_evidence.json")
+    math_review, math_sha = read_report(reports_dir, "math_review_evidence.json")
+    asset, asset_sha = read_report(reports_dir, "asset_provenance_evidence.json")
+    result["sourceFidelitySha"] = fidelity_sha
+    result["mathReviewSha"] = math_sha
+    result["assetProvenanceSha"] = asset_sha
+    result["sourceFidelityStatus"] = fidelity.get("status") if fidelity else "MISSING"
+    result["mathReviewStatus"] = math_review.get("status") if math_review else "MISSING"
+    result["assetProvenanceStatus"] = asset.get("status") if asset else "MISSING"
+    result["status"] = "PASS" if not result["issues"] else "FAIL"
+    result["finalEvidencePass"] = all([
+        fidelity and fidelity.get("status") == "PASS",
+        math_review and math_review.get("status") == "PASS",
+        asset and asset.get("status") == "PASS",
+    ])
+    return result
+
+
+def serialization_issues(questions):
+    issues = []
+    for question in questions:
+        values = [question.get("content"), question.get("answer"), question.get("solution")]
+        values.extend(question.get("choices") or [])
+        for value in values:
+            if not isinstance(value, str):
+                continue
+            if re.search(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", value):
+                issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:CONTROL_CHARACTER")
+            if value.count("$") % 2:
+                issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:ODD_MATH_DELIMITER")
+            if re.search(r"(?<!\\)\\(?:pi|sqrt|neq|not)\b", value):
+                issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:LATEX_ESCAPE")
+    return sorted(set(issues))
 
 
 def load_candidate(path):
@@ -163,7 +265,7 @@ def validate_exam(row):
     invalid_subunit_metadata = []
     objective_choice_mismatches = []
     display_numbers = [str(q.get("displayNo")) for q in questions]
-    expected_display_numbers = [str(i) for i in range(1, expected + 1)]
+    expected_display_numbers = [str(q.get("sourceQuestionNo")) for q in questions] if all(q.get("sourceQuestionNo") for q in questions) else [str(i) for i in range(1, expected + 1)]
 
     if title != exam_id:
         issues.append("exam_title_mismatch")
@@ -238,7 +340,14 @@ def validate_exam(row):
     if objective_choice_mismatches:
         issues.append("objective_choice_count_mismatch")
 
-    status = "final_validation_passed" if not issues else "needs_work"
+    serialization_errors = serialization_issues(questions)
+    if serialization_errors:
+        issues.append("SERIALIZATION_FAIL")
+    source_evidence = validate_source_evidence(candidate_file, questions)
+
+    extraction_status = "EXTRACTION_VALIDATED" if not issues and source_evidence.get("status") == "PASS" else "NEEDS_WORK"
+    pre_promotion_status = "PRE_PROMOTION_VALIDATED" if extraction_status == "EXTRACTION_VALIDATED" and source_evidence.get("finalEvidencePass") and not missing_answers and not missing_solutions else "BLOCKED"
+    status = pre_promotion_status if pre_promotion_status == "PRE_PROMOTION_VALIDATED" else extraction_status
     report = {
         "examId": exam_id,
         "generatedAt": now_iso(),
@@ -262,6 +371,14 @@ def validate_exam(row):
         "missingSubunitMetadata": missing_subunit_metadata,
         "invalidSubunitMetadata": invalid_subunit_metadata,
         "objectiveChoiceCountMismatches": objective_choice_mismatches,
+        "serializationIssues": serialization_errors,
+        "sourceEvidence": source_evidence,
+        "extractionStatus": extraction_status,
+        "prePromotionStatus": pre_promotion_status,
+        "compatibility": {
+            "final_validation_passed": pre_promotion_status == "PRE_PROMOTION_VALIDATED",
+            "statusMeaning": "legacy boolean is true only for PRE_PROMOTION_VALIDATED; EXTRACTION_VALIDATED is not a production-quality PASS",
+        },
         "issues": issues,
         "notFailures": ["blank_image_when_no_visual_asset", "blank_answer_external_agent_required", "blank_solution_external_agent_required"],
         "protectedArchiveTouched": False,
@@ -293,8 +410,10 @@ def main():
         "generatedAt": now_iso(),
         "batchId": args.batch_id,
         "jobCount": len(reports),
-        "passedCount": sum(1 for r in reports if r["status"] == "final_validation_passed"),
-        "needsWorkCount": sum(1 for r in reports if r["status"] != "final_validation_passed"),
+        "extractionValidatedCount": sum(1 for r in reports if r["status"] in {"EXTRACTION_VALIDATED", "PRE_PROMOTION_VALIDATED"}),
+        "prePromotionValidatedCount": sum(1 for r in reports if r["status"] == "PRE_PROMOTION_VALIDATED"),
+        "passedCount": sum(1 for r in reports if r["status"] == "PRE_PROMOTION_VALIDATED"),
+        "needsWorkCount": sum(1 for r in reports if r["status"] not in {"EXTRACTION_VALIDATED", "PRE_PROMOTION_VALIDATED"}),
         "missingContentCount": sum(len(r["missingContent"]) for r in reports),
         "visionRequiredContentOrChoicesCount": sum(len(r["visionRequiredContentOrChoices"]) for r in reports),
         "missingAnswerCount": sum(len(r["missingAnswer"]) for r in reports),
@@ -306,9 +425,11 @@ def main():
         "objectiveChoiceMismatchCount": sum(len(r["objectiveChoiceCountMismatches"]) for r in reports),
         "protectedArchiveTouched": False,
         "policy": "V2 extraction validation: fullPageImagePath/cropPath are not image fallbacks; external answer/solution blanks are not failures.",
-        "status": "final_validation_passed"
-        if all(r["status"] == "final_validation_passed" for r in reports)
-        else "needs_work",
+        "status": "PRE_PROMOTION_VALIDATED"
+        if reports and all(r["status"] == "PRE_PROMOTION_VALIDATED" for r in reports)
+        else "EXTRACTION_VALIDATED"
+        if reports and all(r["status"] in {"EXTRACTION_VALIDATED", "PRE_PROMOTION_VALIDATED"} for r in reports)
+        else "NEEDS_WORK",
         "items": reports,
     }
     write_json(validation_path, batch)

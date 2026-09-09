@@ -95,6 +95,10 @@ def validate_candidate(job, questions):
 
 
 def main():
+    raise RuntimeError(
+        "LEGACY_FULL_PAGE_FALLBACK_ROUTE_DISABLED: use run-one-exam.mjs with a frozen "
+        "source inventory and page-level Vision evidence"
+    )
     batch = Path("archive/_generated/past-exams/_batch")
     preflight_root = Path("archive/_generated/past-exams/_preflight_1final_middle_m2_2022_2025")
     generated_root = Path("archive/_generated/past-exams/_candidates_1final_middle_m2_2022_2025")

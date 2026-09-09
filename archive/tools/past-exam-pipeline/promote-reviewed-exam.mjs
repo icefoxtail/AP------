@@ -3,6 +3,11 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { requireProductionClosure } from "../pipeline-core/integration.mjs";
+import {
+  assertPastExamPromotion,
+  makePromotionReceipt,
+  productionWritePreflight,
+} from "./lib/hardening.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const archiveRoot = path.resolve(here, "../..");
@@ -53,8 +58,10 @@ function main() {
   const review = readJson(reviewFile);
   const candidate = loadCandidate(candidateFile);
   // A reviewed_pass string cannot authorize copying unbound/stale evidence.
+  // All source, fidelity, math, asset, serialization, and handoff bindings are
+  // checked before any protected destination is created.
+  const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
   const masterRows = loadSubunitMaster();
-  if (review.status !== "reviewed_pass") throw new Error("review.status must be reviewed_pass");
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
   if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
   const ids = candidate.questionBank.map((question) => question.id);
@@ -115,13 +122,42 @@ function main() {
     if (!fs.existsSync(source)) throw new Error(`missing generated asset: ${source}`);
     return { source, destination: path.join(liveAssetsDir, name) };
   });
-  const commonClosure = requireProductionClosure(path.resolve(archiveRoot, '..'), 'past-exam', process.argv, [candidateFile, ...copyPlan.map(item => item.source)]);
+  const expectedSourceIdentities = hardening.identities.map(identity => ({
+    sourceIdentityKey: identity.sourceIdentityKey,
+    sourceDocumentSha256: identity.sourceDocumentSha256,
+    sourceQuestionNo: identity.sourceQuestionNo,
+    sourcePageNo: identity.sourcePageNo,
+    qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
+  }));
+  const commonClosure = requireProductionClosure(
+    path.resolve(archiveRoot, '..'),
+    'past-exam',
+    process.argv,
+    [candidateFile, ...copyPlan.map(item => item.source)],
+    expectedSourceIdentities,
+  );
+  const receipt = makePromotionReceipt({
+    manifest,
+    candidateFile,
+    reviewFile,
+    closureManifestFile: path.resolve(process.argv[process.argv.indexOf("--closure-manifest") + 1]),
+    hardening,
+    closure: commonClosure,
+  });
+  productionWritePreflight({
+    changedPaths: [`archive/exams/${manifest.archiveRelativePath}`, ...copyPlan.map(item => path.relative(path.resolve(archiveRoot, ".."), item.destination))],
+    receipt,
+  });
+  const receiptFile = path.join(path.dirname(candidateFile), "..", "reports", "production_promotion_receipt.json");
+  if (fs.existsSync(receiptFile)) throw new Error(`PROMOTION_RECEIPT_ALREADY_EXISTS:${receiptFile}`);
+  fs.mkdirSync(path.dirname(receiptFile), { recursive: true });
+  fs.writeFileSync(receiptFile, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
   if (assetSources.size) fs.mkdirSync(liveAssetsDir, { recursive: true });
   for (const { source, destination } of copyPlan) fs.copyFileSync(source, destination);
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
   // Preserve the exact reviewed bytes; never reserialize after SHA-bound review.
   fs.copyFileSync(candidateFile, liveJs);
-  console.log(JSON.stringify({ status: "promoted", commonClosure, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
+  console.log(JSON.stringify({ status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
 }
 
 main();
