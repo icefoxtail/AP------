@@ -21,11 +21,17 @@ const cases = [
 
 function fileUrl(p) { return pathToFileURL(path.resolve(process.cwd(), p)).href; }
 async function inspect(page, file, imagePath) {
+  const browserErrors = [];
+  page.on('pageerror', error => browserErrors.push(`pageerror:${error.message}`));
+  page.on('console', message => { if (message.type() === 'error') browserErrors.push(`console:${message.text()}`); });
   await page.goto(fileUrl(file), { waitUntil: 'load', timeout: 15000 });
   const metrics = await page.evaluate(() => {
     const svg = document.querySelector('svg');
-    if (!svg) return { svg: false };
+    if (!svg) return { svg: false, nonEmpty: false };
     const rect = svg.getBoundingClientRect();
+    const images = [...document.images];
+    const missingAssets = images.filter(image => !image.complete || image.naturalWidth === 0).length;
+    const geometryCount = svg.querySelectorAll('path,line,circle,polyline,polygon,rect').length;
     return {
       svg: true,
       width: svg.getAttribute('width'),
@@ -39,9 +45,21 @@ async function inspect(page, file, imagePath) {
       clientHeight: rect.height,
       overflowX: rect.left < 0 || rect.right > window.innerWidth,
       overflowY: rect.top < 0 || rect.bottom > document.documentElement.clientHeight,
+      missingAssets,
+      nonEmpty: geometryCount > 0 && rect.width > 0 && rect.height > 0,
     };
   });
-  await page.screenshot({ path: imagePath, fullPage: false });
+  try {
+    await page.screenshot({ path: imagePath, fullPage: false });
+  } catch (error) {
+    const retryPath = imagePath.replace(/\.png$/, `.retry-${Date.now()}.png`);
+    await page.screenshot({ path: retryPath, fullPage: false });
+    metrics.screenshotRetry = error.code || error.message;
+    imagePath = retryPath;
+  }
+  metrics.capturePath = imagePath;
+  metrics.browserErrors = browserErrors;
+  metrics.renderPass = Boolean(metrics.svg && metrics.nonEmpty && metrics.missingAssets === 0 && metrics.browserErrors.length === 0 && !metrics.overflowX && !metrics.overflowY);
   return metrics;
 }
 
@@ -66,6 +84,9 @@ async function inspect(page, file, imagePath) {
   }
   await browser.close().catch(() => {});
   fs.writeFileSync(path.join(__dirname, 'render-metrics.json'), JSON.stringify({ tool: 'Playwright 1.60.0', chromium: 'chromium-1223', results }, null, 2) + '\n');
-  console.log(`RENDER_QA_PASS ${results.length}/${cases.length}`);
+  const newCases = results.flatMap(result => [result['new-desktop'], result['new-mobile']]);
+  const passCount = newCases.filter(item => item.renderPass).length;
+  console.log(`RENDER_QA_PASS ${passCount}/${newCases.length}`);
+  if (passCount !== newCases.length) process.exitCode = 2;
   process.exit(0);
 })().catch((error) => { console.error(error); process.exit(1); });
