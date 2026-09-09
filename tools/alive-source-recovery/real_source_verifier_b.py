@@ -3,61 +3,104 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
+REPO = Path(__file__).resolve().parents[2]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from alive.engine.source_question import json_sha256
+
+
+FORBIDDEN_PAYLOAD_FIELDS = {
+    "answer",
+    "solution",
+    "printedAnswer",
+    "intendedAnswer",
+    "repairTargetAnswer",
+    "previousVerdict",
+    "builderAnswer",
+    "builderSolution",
+}
+
 
 def normalize(value: Any) -> str:
-    return str(value or "").strip().replace("$", "")
+    text = str(value or "").strip()
+    return text.replace("$", "").replace(r"\(", "").replace(r"\)", "")
 
 
-def solve_candidate(case_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+def read(path: Path) -> dict[str, Any]:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError(f"expected object: {path}")
+    return value
+
+
+def adapt_provider_result(candidate: dict[str, Any], provider: dict[str, Any]) -> dict[str, Any]:
+    payload = candidate.get("payload") or {}
+    leaked = sorted(FORBIDDEN_PAYLOAD_FIELDS.intersection(payload))
+    if leaked:
+        raise ValueError(f"candidate-only payload contains forbidden fields: {','.join(leaked)}")
+    if provider.get("candidateId") != candidate.get("candidateId"):
+        raise ValueError("provider candidateId binding mismatch")
+    if provider.get("candidateVersion") != candidate.get("candidateVersion"):
+        raise ValueError("provider candidateVersion binding mismatch")
+    if provider.get("candidatePayloadSha256") != candidate.get("candidatePayloadSha256"):
+        raise ValueError("provider candidatePayloadSha256 binding mismatch")
+    if provider.get("inputVisibilityProfile") != "ARTIFACT_ONLY":
+        raise ValueError("provider visibility profile must be ARTIFACT_ONLY")
+    if provider.get("mathVerdict") != "PASS":
+        raise ValueError("provider math verdict is not PASS")
+    if provider.get("allChoicesChecked") is not True:
+        raise ValueError("provider did not check all choices")
+
+    raw_answer = provider.get("computedAnswer")
     choices = list(payload.get("choices") or [])
-    text = str(payload.get("content") or "")
-    if case_id == "historical-seq-784":
-        computed = "-1"
-        unique = True
-        contract = True
-    elif case_id == "historical-seq-800":
-        computed = "$4\\sqrt{6}$"
-        unique = True
-        contract = True
-    elif case_id == "historical-seq-1136":
-        computed = "없다"
-        unique = True
-        contract = True
-    else:
-        raise ValueError(f"no real blind verifier solver registered for {case_id}")
-    matching = [index + 1 for index, choice in enumerate(choices) if normalize(choice) == normalize(computed)]
+    matching = [index + 1 for index, choice in enumerate(choices) if normalize(choice) == normalize(raw_answer)]
+    reported_matching = provider.get("matchingChoiceIndices")
+    if not isinstance(reported_matching, list) or [int(value) for value in reported_matching] != matching:
+        raise ValueError("provider choice-index result does not match candidate choices")
+    if provider.get("answerUnique") is not True or len(matching) != 1:
+        raise ValueError("provider answer is not unique in candidate choices")
+    if provider.get("responseContractValid") is not True or provider.get("distractorsWrong") is not True:
+        raise ValueError("provider response contract did not PASS")
+
+    exact_answer = choices[matching[0] - 1] if matching else raw_answer
     body = {
-        "verifierId": "real-source-verifier-B-20260909",
-        "verifierSessionId": f"real-source-verifier-B-{case_id}",
+        "candidateId": candidate.get("candidateId"),
+        "candidateVersion": candidate.get("candidateVersion"),
+        "candidatePayloadSha256": candidate.get("candidatePayloadSha256"),
+        "verifierId": provider["verifierId"],
+        "verifierSessionId": provider["verifierSessionId"],
         "inputVisibilityProfile": "ARTIFACT_ONLY",
-        "priorReviewVisibility": "NONE",
-        "caseId": case_id,
-        "computedAnswer": computed,
-        "answerUnique": unique and len(matching) == 1,
-        "responseContractValid": contract,
-        "matchingChoiceIndices": matching,
+        "blindInput": copy.deepcopy(payload),
+        "independentlyComputedValue": exact_answer,
+        "independentlyComputedAnswer": exact_answer,
+        "answerUnique": True,
+        "responseContractValid": True,
         "allChoicesChecked": True,
-        "distractorsWrong": len(matching) == 1,
-        "mathVerdict": "PASS" if len(matching) == 1 else "FAIL",
-        "reasoningSummary": "Independent candidate-only verifier B solve; source answer, Gold, and solver A output were not provided.",
-        "candidatePayload": copy.deepcopy(payload),
+        "distractorsWrong": True,
+        "mathVerdict": "PASS",
+        "providerReasoningSummary": provider.get("reasoningSummary", ""),
     }
+    body["evidenceSha256"] = "sha256:" + json_sha256(body)
     return body
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True)
+    parser.add_argument("--provider-result", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    request = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    result = solve_candidate(str(request["caseId"]), request["payload"])
-    Path(args.output).write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"caseId": request["caseId"], "status": result["mathVerdict"], "verifierSessionId": result["verifierSessionId"]}, ensure_ascii=False))
-    return 0 if result["mathVerdict"] == "PASS" else 2
+    candidate = read(Path(args.input))
+    provider = read(Path(args.provider_result))
+    evidence = adapt_provider_result(candidate, provider)
+    Path(args.output).write_text(json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"status": "PASS", "verifierId": evidence["verifierId"], "verifierSessionId": evidence["verifierSessionId"]}, ensure_ascii=False))
+    return 0
 
 
 if __name__ == "__main__":
