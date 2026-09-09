@@ -12,6 +12,10 @@ DEFAULT_BATCH_DIR = Path("archive/_generated/past-exams/_batch")
 V2_EXTERNAL_STATUS = "external_agent_required"
 V2_ALLOWED_BLANK_ANSWER_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
 V2_ALLOWED_BLANK_SOLUTION_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
+PLACEHOLDER_RE = re.compile(
+    r"Source\s+question\b.*\bunresolved|\[\s*판독불가\s*\]|dummy\s+question|placeholder|truncated\s+summary|요약문만|조건을\s*생략|추측\s*복원",
+    re.IGNORECASE,
+)
 SUBUNIT_REQUIRED_FIELDS = (
     "subUnitKey",
     "subUnit",
@@ -81,11 +85,22 @@ def source_identity(question):
         return None
     if not document_sha.startswith("sha256:"):
         document_sha = "sha256:" + document_sha
+    key = str(question.get("sourceIdentityKey") or f"{document_sha}|{question_no}")
+    if key != f"{document_sha}|{question_no}":
+        return None
+    evidence_paths = question.get("sourcePageEvidencePaths") or []
+    if not isinstance(evidence_paths, list) or not evidence_paths or not all(str(value).strip() for value in evidence_paths):
+        return None
+    source_evidence_path = str(question.get("sourceEvidencePath") or evidence_paths[0]).strip()
+    if source_evidence_path not in {str(value).strip() for value in evidence_paths}:
+        return None
     return {
-        "sourceIdentityKey": str(question.get("sourceIdentityKey") or f"{document_sha}|{question_no}"),
+        "sourceIdentityKey": key,
         "sourceDocumentSha256": document_sha,
         "sourceQuestionNo": question_no,
         "sourcePageNo": page_no,
+        "sourcePageEvidencePaths": sorted(set(str(value).strip() for value in evidence_paths)),
+        "sourceEvidencePath": source_evidence_path,
     }
 
 
@@ -109,13 +124,29 @@ def validate_source_evidence(candidate_file, questions):
         result["issues"].append("SOURCE_IDENTITY_MAP_REQUIRED")
         return result
     expected = sorted(row.get("sourceIdentityKey") for row in inventory.get("questions", []) if row.get("disposition") != "EXCLUDED_WITH_EVIDENCE")
+    if inventory.get("status") != "SOURCE_INVENTORY_FROZEN":
+        result["issues"].append("SOURCE_INVENTORY_NOT_FROZEN")
+    if identity_map.get("sourceInventorySha") != inventory_sha:
+        result["issues"].append("SOURCE_IDENTITY_MAP_INVENTORY_STALE")
+    inventory_keys = sorted(str(row.get("sourceIdentityKey") or "") for row in inventory.get("questions", []))
+    map_keys = sorted(str(row.get("sourceIdentityKey") or "") for row in identity_map.get("questions", []))
+    if inventory_keys != map_keys:
+        result["issues"].append("SOURCE_IDENTITY_MAP_PARITY_FAIL")
+    if sorted(str(key) for key in identity_map.get("includedIdentitySet", [])) != expected:
+        result["issues"].append("SOURCE_IDENTITY_MAP_INCLUDED_SET_FAIL")
     actual = []
+    inventory_by_key = {str(row.get("sourceIdentityKey")): row for row in inventory.get("questions", [])}
     for question in questions:
         identity = source_identity(question)
         if not identity:
             result["issues"].append(f"SOURCE_IDENTITY_MISSING:q{question.get('id')}")
         else:
             actual.append(identity["sourceIdentityKey"])
+            source_row = inventory_by_key.get(identity["sourceIdentityKey"])
+            if source_row:
+                expected_paths = sorted(set(str(value).strip() for value in source_row.get("sourcePageEvidencePaths") or []))
+                if source_row.get("sourceDocumentSha256") != identity["sourceDocumentSha256"] or str(source_row.get("sourceQuestionNo")) != identity["sourceQuestionNo"] or int(source_row.get("sourcePageNo", 0)) != identity["sourcePageNo"] or str(source_row.get("sourceEvidencePath") or (expected_paths[0] if expected_paths else "")) != identity["sourceEvidencePath"] or expected_paths != identity["sourcePageEvidencePaths"]:
+                    result["issues"].append(f"SOURCE_IDENTITY_BINDING_FAIL:q{question.get('id')}")
     actual = sorted(actual)
     if actual != expected:
         result["issues"].append("SOURCE_INVENTORY_COVERAGE_FAIL")
@@ -130,10 +161,12 @@ def validate_source_evidence(candidate_file, questions):
     result["mathReviewStatus"] = math_review.get("status") if math_review else "MISSING"
     result["assetProvenanceStatus"] = asset.get("status") if asset else "MISSING"
     result["status"] = "PASS" if not result["issues"] else "FAIL"
+    asset_applicable = any(bool(question.get("image") or question.get("visualAsset") or question.get("hasVisualAsset")) for question in questions)
     result["finalEvidencePass"] = all([
         fidelity and fidelity.get("status") == "PASS",
         math_review and math_review.get("status") == "PASS",
-        asset and asset.get("status") == "PASS",
+        asset and asset.get("status") in {"PASS", "NOT_APPLICABLE"},
+        asset_applicable is False or (asset and asset.get("status") == "PASS"),
     ])
     return result
 
@@ -152,6 +185,8 @@ def serialization_issues(questions):
                 issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:ODD_MATH_DELIMITER")
             if re.search(r"(?<!\\)\\(?:pi|sqrt|neq|not)\b", value):
                 issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:LATEX_ESCAPE")
+            if PLACEHOLDER_RE.search(value):
+                issues.append(f"PLACEHOLDER_PAYLOAD:q{question.get('id')}")
     return sorted(set(issues))
 
 
@@ -299,6 +334,8 @@ def validate_exam(row):
 
         if not str(q.get("content") or "").strip():
             missing_content.append(display_no)
+        if PLACEHOLDER_RE.search(str(q.get("content") or "")) or any(PLACEHOLDER_RE.search(str(value)) for value in q.get("choices") or []):
+            issues.append(f"placeholder_payload:q{display_no}")
         if str(q.get("contentSource") or "") == "vision_required" or str(q.get("choicesSource") or "") == "vision_required":
             content_source_required.append(display_no)
 

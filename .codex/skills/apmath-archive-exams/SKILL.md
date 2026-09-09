@@ -170,9 +170,11 @@ and assets outside the candidate's canonical asset prefix.
 Promotion additionally requires source-inventory coverage, content/choices
 source-fidelity evidence, SHA-bound independent blind math evidence, visual
 asset provenance/semantic evidence, serialization integrity, and the exact
-source identity set in the common closure. `reviewed_pass` is an envelope, not
-a sufficient string. Production writes without the canonical helper and a
-promotion receipt are `UNAUTHORIZED_PRODUCTION_WRITE`.
+source identity set in the common closure. Direct assets require source
+question parity; shared visuals require an explicit `SHARED_MATERIAL` UID and
+dependency set. `reviewed_pass` is an envelope, not a sufficient string.
+Production writes without the canonical helper and a promotion receipt are
+`UNAUTHORIZED_PRODUCTION_WRITE`.
 
 After promotion, update `archive/db.js`, rebuild the index with
 `archive/tools/build-question-index.mjs`, and run the production audit with
@@ -245,8 +247,9 @@ Report completion only when all are true:
 - production and candidate JS match byte-for-byte when parity is required;
 - question-index counts match the JS and DB record for every target;
 - all three browser modes have recorded PASS evidence;
-- the exact deliverable ZIP has passed two independent consumers and fresh
-  extraction;
+- when a deliverable ZIP exists, the exact deliverable ZIP has passed two
+  independent consumers and fresh extraction; production-only flows explicitly
+  record package `NOT_APPLICABLE`;
 - release state is not inferred from BUILT, ZIP_CREATED, or PNG decode;
 - source defects and corrections appear in the relevant answer/solution and
   final report.

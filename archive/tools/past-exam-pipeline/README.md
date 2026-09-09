@@ -9,8 +9,10 @@ checks the shared final evidence contract without production writes.
 
 ## Hardening contract
 
-Every run freezes an independent `reports/source_inventory.json` before Vision
-content is accepted. The inventory is keyed by `sourceDocumentSha256` and
+Every run accepts only an independently verified inventory and freezes
+`reports/source_inventory.json` before Vision content is accepted. The input
+inventory must be in `INDEPENDENT_INVENTORY_VERIFIED` (or already frozen)
+state. The inventory is keyed by `sourceDocumentSha256` and
 `sourceQuestionNo`; `id`, candidate array order, and `qNN` filenames are not
 source identity. The paired `source_identity_map.json` must cover every
 non-excluded source question exactly once. A missing disposition or a candidate
@@ -32,7 +34,10 @@ cannot be silently repaired in the answer/solution lane.
 Visual assets require provenance and semantic evidence in addition to PNG
 decode: source document/question/page, bbox, asset SHA, crop generator,
 `CROP_PURITY`, contamination, clipping, required-label, and question-semantic
-checks. `PNG_DECODE_PASS` never implies `ASSET_SEMANTIC_PASS`.
+checks. `PNG_DECODE_PASS` never implies `ASSET_SEMANTIC_PASS`. A direct asset
+must bind to the same source question; a shared visual is valid only as an
+explicit `SHARED_MATERIAL` binding with a `sharedMaterialUid` and complete
+`dependencyQuestionSet`.
 
 The exact ZIP is checked by two independent consumers:
 
@@ -41,10 +46,13 @@ node archive/tools/past-exam-pipeline/portable-package-check.mjs --zip <delivera
 node archive/tools/past-exam-pipeline/release-closure-check.mjs --release <release-closure.json>
 ```
 
-The release closure requires the exact deliverable ZIP and fresh extraction,
-bound candidate/production/runtime/render hashes, and `PASS` for `exam`, `sol`,
-and `ans`. `NOT_TESTED`, `WARN`, `FAIL`, or a staging path correction can never
-be promoted to `DONE`.
+The release closure requires bound candidate/production/runtime/render hashes
+and `PASS` for production `exam`, `sol`, and `ans`. If a deliverable ZIP exists,
+the exact ZIP, fresh extraction, package browser, and package hashes are also
+required; production-browser evidence and package-browser evidence are never
+interchangeable. A production-only flow records `packageApplicable: false` and
+`portablePackageStatus: NOT_APPLICABLE`. `NOT_TESTED`, `WARN`, `FAIL`, or a
+staging path correction can never be promoted to `DONE`.
 
 ## V2 방향
 
