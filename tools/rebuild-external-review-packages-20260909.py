@@ -58,6 +58,7 @@ CORRECTIONS = {
         "q8/q13: unmatched math delimiters closed in the affected choices.",
         "q12: fixed-point intermediate corrected from -1+1/a to -2+1/a.",
     ],
+    "24_여천고_2학기_중간_고1_기출": ["A형 source-faithful restoration: source q4/q5 restored; q4 choice 28 corrected minimally and q5 logic answer resolved as ④."],
     "24_여양고_2학기_기말_고1_기출": ["A형 minimal choice restoration: source q15 N(k) sum corrected from unavailable 34 to choice ②=34; q8/q17 source gaps remain excluded."],
 }
 
@@ -195,6 +196,14 @@ def write_reports(root: Path, base: str, is_v2: bool = False) -> None:
         (reports / "EXCLUDED_QUESTIONS.md").write_text(
             "# EXCLUDED SOURCE QUESTIONS — 24_여천고_2학기_기말_고1_기출\n\n"
             "- q17: REVIEW_NEEDED — the printed piecewise inverse iteration remains source-conflicted after A restoration attempts; no guessed B replacement was promoted.\n",
+            encoding="utf-8",
+        )
+    if base == "24_여천고_2학기_중간_고1_기출":
+        (reports / "EXCLUDED_QUESTIONS.md").write_text(
+            "# EXCLUDED SOURCE QUESTIONS — 24_여천고_2학기_중간_고1_기출\n\n"
+            "- q8: REVIEW_NEEDED — the printed complement-set equation is source-conflicted and remains a B/blocked candidate.\n"
+            "- q9: REVIEW_NEEDED — proposition wording/visual source requires further A restoration.\n"
+            "- q12: REVIEW_NEEDED — graph-choice visual adjudication remains pending.\n",
             encoding="utf-8",
         )
     if base == "19_강남고_2학기_기말_고1_기출":
