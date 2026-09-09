@@ -46,6 +46,11 @@ question type, visual requirement, and bbox for those frozen slots; it may not
 create or renumber source identities. Archive `id`, candidate order, and asset
 filename are separate fields.
 
+The common pipeline run preserves rich Past Exam identity fields through
+`prepare → run.questions → closure → promotion`. The
+`sourceDocumentSha256|sourceQuestionNo` key must never be reduced to
+`sourcePath|qid`.
+
 The candidate identity set must equal the non-excluded frozen inventory set.
 Inventory coverage is 100% or the run stops with
 `SOURCE_INVENTORY_COVERAGE_FAIL`. Every content/choices item then needs a
@@ -65,9 +70,9 @@ EXTRACTION_VALIDATED
   != PRODUCTION_RELEASE_PASS
 ```
 
-The validator retains an explicit compatibility boolean for consumers that
-still read `final_validation_passed`; it is true only for
-`PRE_PROMOTION_VALIDATED`, never for extraction-only output.
+The Python validator owns extraction validation only. The JS hardening validator
+is the single authority for `PRE_PROMOTION_VALIDATED`; Python never declares
+that release-adjacent state from a top-level evidence status alone.
 
 ## Hard rules
 
@@ -86,7 +91,10 @@ still read `final_validation_passed`; it is true only for
 13. `PNG_DECODE_PASS` is a byte-level check only; it is not crop purity,
     semantic, provenance, or render PASS. `DIRECT` assets must bind to the
     same source question. A shared visual is accepted only through an explicit
-    `SHARED_MATERIAL` binding with a UID and dependency question set.
+    `SHARED_MATERIAL` binding with a UID and dependency question set. The
+    independent asset evidence file is semantic authority; candidate
+    provenance is parity-only, and shared material may use a different source
+    page from a dependent question.
 14. Production paths are writable only after a common closure with the exact
     source identity set and a production promotion receipt. Direct writes are
     `UNAUTHORIZED_PRODUCTION_WRITE`.
@@ -95,6 +103,8 @@ still read `final_validation_passed`; it is true only for
     When a ZIP/package deliverable exists, exact-byte ZIP and fresh-extraction
     checks plus separate extracted-package browser PASS evidence are required;
     production-only flows must explicitly record package `NOT_APPLICABLE`.
+    In that case `PROMOTED → REAL_RENDER_PASS → DONE` is valid without a
+    `PORTABLE_PACKAGE_PASS` transition.
 
 ## Normal flow
 

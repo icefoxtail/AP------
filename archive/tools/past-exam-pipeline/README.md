@@ -21,9 +21,9 @@ set that differs from the frozen included set is a hard failure.
 `EXTRACTION_VALIDATED` means only that the full-page extraction package is
 structurally complete. It is not equivalent to `SOURCE_FIDELITY_PASS`,
 `MATH_REVIEW_PASS`, `ASSET_REVIEW_PASS`, `PRE_PROMOTION_VALIDATED`, or
-`PRODUCTION_RELEASE_PASS`. The final candidate validator emits
-`PRE_PROMOTION_VALIDATED` only when all evidence bindings and answer/solution
-fields are complete; the promotion helper enforces the same SHA-bound contract.
+`PRODUCTION_RELEASE_PASS`. The Python candidate validator owns extraction
+validation only; `PRE_PROMOTION_VALIDATED` is emitted exclusively by the JS
+hardening validator after item-level evidence and common closure checks.
 
 The handoff lock protects `content`, `choices`, source identity/page evidence,
 and visual asset bindings. Answer/solution work may change only
@@ -31,13 +31,23 @@ and visual asset bindings. Answer/solution work may change only
 metadata. An extraction mismatch routes to `SOURCE_FIDELITY_RESTORATION`; it
 cannot be silently repaired in the answer/solution lane.
 
+The common pipeline run preserves rich Past Exam identity fields
+(`sourceDocumentSha256`, `sourceQuestionNo`, `sourcePageEvidencePaths`, and
+`sourceIdentityKey`) in `run.questions`. Promotion compares that same rich set
+through the common closure; it is never reduced to `sourcePath|qid`.
+
 Visual assets require provenance and semantic evidence in addition to PNG
 decode: source document/question/page, bbox, asset SHA, crop generator,
 `CROP_PURITY`, contamination, clipping, required-label, and question-semantic
 checks. `PNG_DECODE_PASS` never implies `ASSET_SEMANTIC_PASS`. A direct asset
 must bind to the same source question; a shared visual is valid only as an
 explicit `SHARED_MATERIAL` binding with a `sharedMaterialUid` and complete
-`dependencyQuestionSet`.
+`dependencyQuestionSet`. The independent asset evidence file is the semantic
+authority; candidate provenance is checked for parity only. Shared material
+page evidence may come from a different source page than a dependent question.
+
+Math review evidence carries a current input SHA over content, choices, and
+source-page evidence. A changed payload makes the prior math review stale.
 
 The exact ZIP is checked by two independent consumers:
 
@@ -46,13 +56,19 @@ node archive/tools/past-exam-pipeline/portable-package-check.mjs --zip <delivera
 node archive/tools/past-exam-pipeline/release-closure-check.mjs --release <release-closure.json>
 ```
 
-The release closure requires bound candidate/production/runtime/render hashes
+The release closure requires bound candidate/production/runtime/render file
+references whose current bytes are re-hashed at release time, rather than
+accepting SHA-shaped strings alone. It also requires bound
+candidate/production/runtime/render hashes
 and `PASS` for production `exam`, `sol`, and `ans`. If a deliverable ZIP exists,
 the exact ZIP, fresh extraction, package browser, and package hashes are also
 required; production-browser evidence and package-browser evidence are never
 interchangeable. A production-only flow records `packageApplicable: false` and
 `portablePackageStatus: NOT_APPLICABLE`. `NOT_TESTED`, `WARN`, `FAIL`, or a
 staging path correction can never be promoted to `DONE`.
+
+When package applicability is false, the valid release transition is
+`PROMOTED → REAL_RENDER_PASS → DONE`; `PORTABLE_PACKAGE_PASS` is not required.
 
 ## V2 방향
 
