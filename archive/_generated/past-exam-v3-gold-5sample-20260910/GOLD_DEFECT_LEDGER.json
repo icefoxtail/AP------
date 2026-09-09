@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "PAST_EXAM_V3_GOLD_DEFECT_LEDGER_v1",
+  "experiment": "past-exam-v3-gold-5sample-20260910",
+  "startSha": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "branch": "codex/past-exam-v3-gold-5sample-20260910",
+  "phasePolicy": "No pipeline, rule, taxonomy, validator, or test mutation during the five fresh runs.",
+  "runOutcome": {
+    "passE2E": 0,
+    "failPipeline": 0,
+    "failCandidate": 0,
+    "hold": 5,
+    "productionPromotion": false
+  },
+  "pipelineLevelObservations": [
+    {
+      "id": "PIPE-01",
+      "class": "choices-contract-constructed-response",
+      "severity": "P1",
+      "status": "REPRODUCED_DIAGNOSTICALLY",
+      "runs": ["GOLD-04", "GOLD-05"],
+      "evidence": [
+        "GOLD-04 q16 STATIC schema rejects choices: [] on a constructed-response row.",
+        "GOLD-05 corrected run records candidate-validator wrong-input-shape and constructed-response/choices-boundary diagnostics."
+      ],
+      "impact": "A legitimate choice-less constructed-response payload cannot pass the same choices contract used for objective items.",
+      "repairPolicy": "Repair only after this GOLD freeze by separating normal objective, image-only objective, and constructed-response contracts; no repair was applied here."
+    },
+    {
+      "id": "PIPE-02",
+      "class": "legacy-validator-question-type-inference",
+      "severity": "P1",
+      "status": "REPEATED_DIAGNOSTIC",
+      "runs": ["GOLD-03", "GOLD-04", "GOLD-05"],
+      "evidence": [
+        "Numeric constructed-response rows are inferred as objective by a numeric heuristic and then receive a vision/choices requirement.",
+        "GOLD-03 and GOLD-04 final validation diagnostics explicitly report this behavior; GOLD-05 reports the related wrong-input-shape boundary."
+      ],
+      "impact": "Downstream final validation can block otherwise structurally valid constructed-response candidates.",
+      "repairPolicy": "Review together with PIPE-01 after the frozen experiment; do not relax gates by exemption."
+    },
+    {
+      "id": "PIPE-03",
+      "class": "calibration-lock-orchestration",
+      "severity": "P1",
+      "status": "BLOCKER_OBSERVED_NOT_CODE_FIXED",
+      "runs": ["GOLD-02"],
+      "evidence": [
+        "Official run stopped before candidate write with CALIBRATION_REQUIRES_2_OR_3_DISTINCT_SAMPLES and REFERENCE_SAMPLE_LOCK_REQUIRED."
+      ],
+      "impact": "A source-only fresh run cannot enter candidate generation without a valid reference lock; no fallback or fabricated lock was used.",
+      "repairPolicy": "Audit the calibration runner/agent handoff after GOLD; this record does not by itself prove the rule is wrong."
+    },
+    {
+      "id": "PIPE-04",
+      "class": "source-inventory-evidence-path-binding",
+      "severity": "P1",
+      "status": "REPRODUCED_DIAGNOSTICALLY",
+      "runs": ["GOLD-04"],
+      "evidence": [
+        "Fresh source inventory required rebinding from pre-freeze input to the generated frozen inventory so page evidence resolved under the fresh extraction root."
+      ],
+      "impact": "A valid page-evidence packet can be treated as missing when manifest paths are not canonicalized at the freeze boundary.",
+      "repairPolicy": "Make the generated frozen inventory the single path authority after GOLD; no path workaround was promoted."
+    },
+    {
+      "id": "PIPE-05",
+      "class": "staging-provider-render-bridge",
+      "severity": "P1",
+      "status": "BLOCKER_OBSERVED_ENVIRONMENT_OR_BRIDGE",
+      "runs": ["GOLD-01", "GOLD-02", "GOLD-03", "GOLD-04", "GOLD-05"],
+      "evidence": [
+        "No run produced provider-attested U1/U2/U3 closure.",
+        "The production render normalizer accepts production-style exams/<...>.js paths; staging candidates were not written into production, so full six-case semantic capture was not claimed."
+      ],
+      "impact": "The final audit and independent render gates could not be sealed in this environment without violating the production boundary.",
+      "repairPolicy": "Determine whether the missing provider/staging bridge is an environment setup gap or a pipeline boundary gap; do not convert diagnostic captures into PASS."
+    },
+    {
+      "id": "PIPE-06",
+      "class": "serialization-diagnostic",
+      "severity": "P2",
+      "status": "REPEATED_DIAGNOSTIC",
+      "runs": ["GOLD-03", "GOLD-04"],
+      "evidence": [
+        "Valid source LaTeX escape patterns were reported as serialization diagnostics in final validation."
+      ],
+      "impact": "False-positive diagnostics can obscure candidate defects and keep final validation in NEEDS_WORK.",
+      "repairPolicy": "Add a narrow regression only after confirming the exact parser contract; no gate weakening was done in GOLD."
+    }
+  ],
+  "candidateLevelObservations": [
+    {
+      "run": "GOLD-03",
+      "exam": "20_매산고_2학기_기말_고1_기출",
+      "items": [
+        "q2 direct fresh answer -154 is absent from printed choices.",
+        "q9 direct fresh gcd enumeration gives 41, absent from printed choices.",
+        "q19 source/solution graph visual requires independent semantic review; no PASS was claimed."
+      ]
+    },
+    {
+      "run": "GOLD-04",
+      "exam": "23_한영고_2학기_기말_고1_기출",
+      "items": [
+        "q12 direct condition yields 10 strictly increasing functions, absent from printed choices.",
+        "q16 source answer-key entry conflicts with the direct mathematical result; the conflict was preserved, not silently corrected in source.",
+        "q13 solution SVG was numerically built but coordinate parity, V2 artifact review, and render review remained untested."
+      ]
+    },
+    {
+      "run": "GOLD-05",
+      "exam": "24_부영여고_2학기_중간_고1_기출",
+      "items": [
+        "An initial 23-row diagnostic inventory was corrected to the fresh full-page denominator of 21 before the final source freeze; the initial attempt is diagnostic-only.",
+        "No fresh answer, solution, classification, or visual candidate defect was adjudicated because page-level Vision input was absent."
+      ]
+    }
+  ],
+  "nonDefects": [
+    "GOLD-01 and GOLD-05 missing Vision JSON are recorded upstream blockers, not invented candidate answer/solution failures.",
+    "Old package answers, solutions, assets, and review decisions were not used as fresh seeds.",
+    "No production JS, database, question-index, or production asset was modified."
+  ]
+}

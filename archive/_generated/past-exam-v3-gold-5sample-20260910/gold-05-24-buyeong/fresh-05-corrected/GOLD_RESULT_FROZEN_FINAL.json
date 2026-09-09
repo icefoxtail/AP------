@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "APMATH_GOLD_RESULT_FROZEN_v1",
+  "status": "GOLD_RESULT_FROZEN_FINAL",
+  "GOLD_RUN_ID": "GOLD-05-24-BUYEONG-20260910-05",
+  "EXAM": "24_부영여고_2학기_중간_고1_기출",
+  "START_SHA": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "worktree": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt",
+  "branch": "codex/past-exam-v3-gold-5sample-20260910",
+  "source": {
+    "originalSourceRoot": "C:\\Users\\USER\\Desktop\\AP_independent_review_20260909_125050\\packages\\24_부영여고_2학기_중간_고1_기출_EXTERNAL_REVIEW\\<nested-package>\\source",
+    "pdfPath": "source/original_exam.pdf",
+    "pdfSha256": "sha256:b7f1a36c8771ebad6081ea0cd901647071a909902ddcc3473425ac436fad3055",
+    "pdfBytes": 115591,
+    "hwpPath": "source/original_exam.hwp",
+    "hwpSha256": "sha256:0313eba06068a277537996c612853dcc60a766c6865f3870739882b7afbd9e8a",
+    "hwpBytes": 124416,
+    "pageCount": 7,
+    "sourceTruth": "original HWP/PDF only; full-page PNGs are derived evidence"
+  },
+  "denominator": {
+    "sourceQuestionCount": 21,
+    "included": 21,
+    "excluded": 0,
+    "identitySet": "1..18 plus 서술형1, 서술형2, 서술형3",
+    "pageMap": {
+      "1-4": 1,
+      "5-8": 2,
+      "9-12": 3,
+      "13-16": 4,
+      "17-18": 5,
+      "서술형1-3": 6,
+      "answer-sheet": 7
+    },
+    "note": "An initial 23-row diagnostic inventory was rejected after fresh full-page inspection; corrected 21-row inventory was frozen before downstream validation."
+  },
+  "freshCoverage": {
+    "correctedExtractionRun": "fresh-05-corrected/extraction",
+    "sourceInventory": "PASS 21/21, PAST_EXAM_SOURCE_INVENTORY_v1 and identity map frozen",
+    "fullPageRender": "PASS 7/7 pages rendered at 220 dpi; page 7 answer sheet retained as source evidence",
+    "displayIdentity": "PASS 21/21 source identities bound to pages",
+    "sourceFidelity": "NOT_TESTED for content/choices because vision-page extract JSON was absent",
+    "extractionPayload": "0/21 content complete; 0/21 choices complete; 21/21 remain vision_required",
+    "blindSolve": "0/21 (blocked before protected payload was available)",
+    "freshAnswer": "0/21 (external completion not safely reachable)",
+    "freshSolution": "0/21 (external completion not safely reachable)",
+    "freshClassification": "0/21; subUnit fields blank in extraction skeleton",
+    "visualTriage": "0/21 adjudicated; source-dependent visuals not safely extracted",
+    "expectedFactFreeze": "NOT_REACHED",
+    "solutionVisuals": "0 generated; 0 SVGs",
+    "v2ArtifactInspection": "NOT_REACHED",
+    "staticEvidence": "NEEDS_WORK validator collected; sourceEvidence PASS, candidate quality blocked",
+    "metadataEvidence": "NOT_REACHED in core v2; candidate has 21 missing subunit records",
+    "browserRender": "NOT_TESTED; engine accepts production archive paths only and production write is prohibited"
+  },
+  "V1": {
+    "required": "NOT_TESTED",
+    "optional": "NOT_TESTED",
+    "exempt": "NOT_TESTED",
+    "reason": "V1 requires extracted question semantics; no vision JSON means no honest per-question visualBenefit adjudication."
+  },
+  "blockers": {
+    "canonicalFirstBlocker": "VISION_JSON_MISSING_OR_INCOMPLETE",
+    "canonicalFirstBlockerStage": "S1-S3 full-page extraction/source-fidelity handoff",
+    "canonicalFinalStage": "EXTRACTION_NEEDS_WORK / PRE_PROMOTION_BLOCKED",
+    "diagnosticFindings": [
+      "SOURCE_INVENTORY_INITIAL_COUNT_DEFECT_23_TO_21_CORRECTED",
+      "VISION_REQUIRED_CONTENT_OR_CHOICES_21",
+      "MISSING_SUBUNIT_METADATA_21",
+      "INVALID_SUBUNIT_METADATA_42",
+      "OBJECTIVE_CHOICE_COUNT_MISMATCH_18",
+      "CANDIDATE_VALIDATOR_HELPER_WRONG_INPUT_SHAPE_ON_PIPELINE_SUMMARY",
+      "CORE_AUDIT_BLOCKED_WORK_BATCH_ID_INVALID"
+    ]
+  },
+  "defects": {
+    "builder": "Extraction was not advanced into protected-payload completion; no builder solution or classification was authored.",
+    "solution": "No fresh student-facing solution was authored; blank external-agent fields are valid only at this blocked extraction stage.",
+    "classification": "All 21 subUnitKey/subUnit/subUnitConfidence/subUnitClassificationDepth fields are blank; metadata boundary therefore remains untested.",
+    "svg": "No SVG generation reached; no solution visual claims made.",
+    "render": "Six required cases exam/sol/ans × desktop/mobile all NOT_TESTED because staging candidate cannot be loaded by the production-only engine path policy.",
+    "pipeline": "No page-level Vision JSON was supplied; run-one-exam correctly fail-closed with vision_json_missing_or_incomplete. No provider runtime/attestation was configured, so FINAL_AUDIT is diagnostic-only."
+  },
+  "auditReach": {
+    "FINAL_AUDIT": "NOT_REACHED / DIAGNOSTIC_ONLY",
+    "U1": "NOT_REACHED",
+    "U2": "NOT_REACHED",
+    "U3": "NOT_REACHED",
+    "independentRenderReview": "NOT_REACHED",
+    "workBatchFreeze": "NOT_REACHED; core work-batch state could not be safely isolated under requested generated GOLD area without changing pipeline code"
+  },
+  "renderSixCases": {
+    "exam_desktop": "NOT_TESTED",
+    "exam_mobile": "NOT_TESTED",
+    "sol_desktop": "NOT_TESTED",
+    "sol_mobile": "NOT_TESTED",
+    "ans_desktop": "NOT_TESTED",
+    "ans_mobile": "NOT_TESTED",
+    "reason": "The engine normalizer permits only exams/<...>.js production-style paths; staging candidate render would require an unauthorized production write or pipeline change."
+  },
+  "calibration": {
+    "status": "PASS",
+    "mainCommit": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+    "samples": [
+      "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ],
+    "referenceSampleLock": "fresh-05-corrected/reference-sample-lock.json",
+    "referenceSampleLockSha256": "sha256:9b0120b2f1833f7e20ae8997b4eb9fdefc2aee67bf6aebc087758a26e53ffc8c"
+  },
+  "evidence": {
+    "freshRoot": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-05-24-buyeong/fresh-05-corrected",
+    "correctedManifest": "fresh-05-corrected/manifest-with-lock.json",
+    "extractionManifest": "fresh-05-corrected/extraction/manifest.json",
+    "sourceInventory": "fresh-05-corrected/extraction/reports/source_inventory.json",
+    "sourceIdentityMap": "fresh-05-corrected/extraction/reports/source_identity_map.json",
+    "pipelineSummary": "fresh-05-corrected/extraction/reports/validation_summary.json",
+    "candidate": "fresh-05-corrected/extraction/candidate/24_부영여고_2학기_중간_고1_기출.candidate.js",
+    "candidateGenerationSummary": "fresh-05-corrected/extraction/reports/candidate_generation_summary.json",
+    "finalValidationSummary": "fresh-05-corrected/extraction/reports/final_validation_summary.json",
+    "fullPageEvidence": "fresh-05-corrected/extraction/pages/page_p001.png .. page_p007.png",
+    "initialInventoryDiagnostic": "fresh-05/extraction (23-row attempt; not used for final denominator)"
+  },
+  "oldVsNew": {
+    "status": "COMPLETE_AFTER_FRESH_FREEZE",
+    "previousPackageRoot": "C:\\Users\\USER\\Desktop\\AP_independent_review_20260909_125050\\packages\\24_부영여고_2학기_중간_고1_기출_EXTERNAL_REVIEW\\<nested-package>",
+    "previousJsBytes": 46675,
+    "previousJsSha256": "sha256:2b573cffb391c7561335d6dabf49cf3dc9f6f0af85cd8e2c74b64677f325892a",
+    "sourceHashParity": "PASS: previous package PDF SHA equals fresh source PDF SHA; previous HWP SHA equals fresh source HWP SHA",
+    "previousDenominator": {
+      "sourceQuestionCount": 21,
+      "included": 19,
+      "excluded": 2,
+      "excludedQuestions": [
+        "q10",
+        "q12"
+      ],
+      "exclusions": "q10 REVIEW_NEEDED/source underdetermined; q12 REVIEW_NEEDED/source conflict"
+    },
+    "previousCoverage": {
+      "content": "19/19 included nonempty",
+      "choices": "19/19 included objective choice arrays present",
+      "answers": "19/19 included nonempty",
+      "solutions": "19/19 included nonempty",
+      "classifications": "19/19 included with all four subUnit fields",
+      "problemVisuals": "2 PNGs (q18,q21)",
+      "solutionVisuals": "0 solutionImage; 0 SVG",
+      "hwpConversion": "PASS",
+      "browserRender": "PENDING",
+      "externalIndependentReview": "PENDING"
+    },
+    "delta": {
+      "denominator": "fresh restores all 21 source questions to the denominator, making q10/q12 explicit instead of excluding them",
+      "extraction": "fresh full-page-first source identity and 7-page evidence are PASS, but content/choices remain blocked at missing Vision JSON; old had manually completed payloads for 19 questions",
+      "answersSolutions": "fresh 0/21 because extraction handoff did not safely reach completion; old 19/19 included, with q10/q12 intentionally absent",
+      "taxonomy": "old uses H15-SA-11/H15-SB-01/H15-SB-02 taxonomy; fresh current metadata is not yet classified, so the HWP/current-taxonomy boundary remains an explicit NOT_TESTED gate",
+      "visuals": "old preserves source PNGs q18/q21 but has no instructional SVGs; fresh visual triage and solution visual generation are NOT_REACHED",
+      "blocker": "old's documented source defects are q10 underdetermination and q12 set-count conflict; fresh first blocker is upstream missing page-level Vision JSON, which prevents a fresh independent determination and protects against silently inheriting old decisions"
+    },
+    "oldReportsReadAfterFreeze": [
+      "reports/EXCLUDED_QUESTIONS.md",
+      "reports/BUILD_SANITY.md",
+      "reports/hwp_conversion_manifest.json",
+      "reports/sha256_manifest.txt"
+    ]
+  },
+  "production": {
+    "candidatePromotion": "NOT_AUTHORIZED",
+    "productionJSModified": false,
+    "productionAssetsModified": false,
+    "dbModified": false,
+    "questionIndexModified": false,
+    "commitOrPush": "NOT_DONE"
+  },
+  "finalClosure": {
+    "canonicalStatus": "HOLD",
+    "releaseStatus": "NOT_AUTHORIZED",
+    "reason": "Fresh extraction is blocked upstream; no provider-attested FINAL_AUDIT, U1/U2/U3, work-batch freeze, complete visual closure, or six-case render PASS exists.",
+    "diagnosticOnly": "Provider/review stages unavailable are DIAGNOSTIC_ONLY; no PASS manufactured.",
+    "nextResumableAction": "Supply a page-level Vision JSON for the frozen 7-page source and rerun from extraction while preserving source identity, then perform fresh answer/solution/classification/visual and core-v2 closure."
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "APMATH_GOLD_RESULT_FROZEN_v1",
+  "goldRunId": "gold04_23_hanyeong2",
+  "goldRunLabel": "GOLD #4 of five-run Past Exam V3 GOLD diagnostic",
+  "exam": "23_한영고_2학기_기말_고1_기출",
+  "startSha": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "worktree": "C:/Users/USER/Desktop/AP-------merge-taxonomy-wt",
+  "productionMutation": false,
+  "commitOrPush": false,
+  "softwareRegression": {
+    "pastExamPipeline": "PASS_SOFTWARE_REGRESSION; 36/36 tests",
+    "pipelineCore": "PASS_SOFTWARE_REGRESSION",
+    "qualification": "Software tests are contract regressions only and do not certify this exam's solution or render quality."
+  },
+  "sourceIdentity": {
+    "sourcePdfPath": "C:/Users/USER/Desktop/AP_independent_review_20260909_125050/packages/23_한영고_2학기_기말_고1_기출_EXTERNAL_REVIEW/source/2023_한영고_2기말.hwp.pdf",
+    "sourcePdfSha256": "sha256:e3044573cc43e41c7e026b15270edcabf327a4700b831f15e1fed3fb2271796b",
+    "sourcePdfBytes": 108833,
+    "sourceAnswerHwpPath": "C:/Users/USER/Desktop/AP_independent_review_20260909_125050/packages/23_한영고_2학기_기말_고1_기출_EXTERNAL_REVIEW/source/수학 하 (23 한영고 기말) 답X.hwp",
+    "sourceAnswerHwpSha256": "sha256:c07a1c7a09ca2c7e7f5cf2ca2f242e23fb0fa32b7a81fad5951802f3d68af8bd",
+    "pageCount": 7,
+    "sourceTruthPolicy": "FULL_PAGE_SOURCE_ONLY"
+  },
+  "denominator": {
+    "sourceQuestions": 21,
+    "included": 21,
+    "excluded": 0,
+    "includedQuestionNos": "1-21",
+    "pageMap": {"1": [1,2,3,4], "2": [5,6,7,8], "3": [9,10,11,12], "4": [13,14,15], "5": [16,17,18,19], "6": [20,21], "7": []}
+  },
+  "freshCoverage": {
+    "fullPageExtraction": "EXTRACTION_VALIDATED 21/21, 7/7 pages, manualReview 0, schemaErrors 0",
+    "sourceInventory": "PASS 21/21 source identities; source_inventory and source_identity_map frozen",
+    "sourceFidelity": "PASS 21/21 content/choices checked against fresh full-page renders",
+    "blindIndependentSolve": "21/21 completed; q12 and q16 retained as documented source defects",
+    "answerCoverage": "21/21 non-empty builder answers; q12 explicitly source-defect answer",
+    "solutionCoverage": "21/21 fresh student-facing solutions; q12 explicitly documents the choice mismatch",
+    "classificationCoverage": "21/21 with standard unit and four subunit fields",
+    "protectedPayloadParity": "PASS; completed candidate differs only in allowed completion fields",
+    "visualSourceAssets": "4/4 source crops; q1, q3, q6, q15",
+    "solutionVisuals": "1 SVG built for q13; independent V1/V2/render review not tested"
+  },
+  "visualTriage": {
+    "v1Required": {"count": 4, "questions": [1,3,6,15], "status": "SOURCE_ASSET_CROP_PASS; pipeline V1 NOT_TESTED"},
+    "v1OptionalAdd": {"count": 1, "questions": [13], "status": "BUILT q013-solution.svg; independent V1 NOT_TESTED"},
+    "v1Exempt": {"count": 16, "questions": [2,4,5,7,8,9,10,11,12,14,16,17,18,19,20,21], "status": "BUILDER_TRIAGE_ONLY; independent V1 NOT_TESTED"},
+    "sourceCropPurity": "PASS after bbox repair; q1/q3/q6/q15 visually inspected",
+    "expectedFacts": "q13 frozen: P=(1,2), Q=(2,-4), x/u=1/2, minimum area 4",
+    "geometryPolicy": "PROJECT_REFERENCED_ONLY; pinned by completion-contract.json"
+  },
+  "solutionSvg": {
+    "question": 13,
+    "path": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/fresh-extraction/assets/images/23_한영고_2학기_기말_고1_기출/q013-solution.svg",
+    "expectedFactsPath": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/fresh-extraction/expected-facts-q013.json",
+    "status": "BUILT_NUMERIC_SELF_CHECK; coordinateParity_FAIL_MISSING_CURRENT_PARITY_INPUT; V2_ARTIFACT_ONLY_NOT_TESTED; renderReview_NOT_TESTED"
+  },
+  "stageStatus": {
+    "RULE_PREFLIGHT": "PASS",
+    "CANONICAL_PRODUCTION_SAMPLE_CALIBRATION": "PASS",
+    "PRODUCTION_QUALITY_PROFILE_FREEZE": "PASS",
+    "TARGET_BASELINE_REVIEW": "ABSENT_IN_CLEAN_WORKTREE",
+    "SOURCE_INVENTORY_FREEZE": "PASS",
+    "FULL_PAGE_EXACT_EXTRACTION": "EXTRACTION_VALIDATED",
+    "SOURCE_FIDELITY_FREEZE": "PASS",
+    "BUILDER_INDEPENDENT_SOLVE": "PASS_WITH_DOCUMENTED_SOURCE_DEFECTS",
+    "SOLUTION_AND_CLASSIFICATION_BUILD": "BUILT",
+    "ALL_QUESTION_VISUAL_TRIAGE": "BUILDER_COMPLETE_INDEPENDENT_V1_NOT_TESTED",
+    "EXPECTED_FACT_FREEZE": "q13 BUILT; independent fact review NOT_TESTED",
+    "NUMERIC_VISUAL_BUILD": "q13 BUILT",
+    "STATIC_AND_RENDER_CAPTURE": "BLOCKED_AT_MACHINE_CHECKS",
+    "FINAL_AUDIT_SEALED_U1_U2_U3": "NOT_REACHED",
+    "TARGETED_REPAIR": "NOT_REACHED",
+    "TARGETED_RECHECK_MAX_ONCE": "NOT_REACHED",
+    "PROMOTION": "NOT_APPLICABLE; production mutation forbidden",
+    "FINAL_CLOSURE": "BLOCKED"
+  },
+  "canonicalFirstBlocker": {
+    "code": "MACHINE_CHECK_FAILED:23_한영고_2학기_기말_고1_기출|16:STATIC:schema",
+    "stage": "STATIC_AND_RENDER_CAPTURE",
+    "reason": "The deterministic static choices contract rejects an empty choices array on constructed-response q16; no machine evidence is written and the whole-job freeze cannot proceed.",
+    "canonicalStatus": "BLOCKED"
+  },
+  "canonicalFinalStage": "STATIC_AND_RENDER_CAPTURE",
+  "diagnosticFinalStage": "MACHINE_CHECKS_BLOCKED",
+  "finalAuditReach": {
+    "providerFinalAudit": "NOT_REACHED; work-batch freeze blocked",
+    "U1": "NOT_REACHED",
+    "U2": "NOT_REACHED",
+    "U3": "NOT_REACHED",
+    "independentRenderReview": "NOT_REACHED"
+  },
+  "renderSixCases": {
+    "exam/desktop": "NOT_TESTED",
+    "exam/mobile": "NOT_TESTED",
+    "solution/desktop": "NOT_TESTED",
+    "solution/mobile": "NOT_TESTED",
+    "answer/desktop": "NOT_TESTED",
+    "answer/mobile": "NOT_TESTED",
+    "reason": "Core render capture requires a frozen V2 run and current machine evidence; neither was available after the q16 STATIC blocker."
+  },
+  "defects": {
+    "builder": [
+      "q12 source question is internally inconsistent: f(3)>5 yields 10 strictly increasing functions, absent from printed choices 22,24,26,28,30.",
+      "q16 source answer-key entry states y≥1, while direct mathematics for y=-x²+1 gives y≤1; candidate preserves mathematically correct answer and records the conflict."
+    ],
+    "solution": [
+      "No unresolved solution payloads; q12 solution is intentionally a source-defect explanation rather than forced choice selection."
+    ],
+    "classification": [
+      "Fresh extraction carries only the baseline 기출 tag; required visual tags (도형/그래프) could not be added in completion because tags are protected by the V3 allowed-field contract."
+    ],
+    "svg": [
+      "q13 SVG has numeric builder facts and a self-check, but independent coordinate parity, artifact-only V2, geometry/style lint, and render review are NOT_TESTED."
+    ],
+    "render": [
+      "All six required cases NOT_TESTED due upstream machine/freeze blocker."
+    ],
+    "pipeline": [
+      "machine-evidence.isChoicesContractValid treats empty choices as valid only for image-only objective items, so constructed-response q16 fails STATIC schema.",
+      "validate_final_candidates misclassifies numeric constructed responses as objective by default and flags choicesSource=vision_required for legitimately choice-less constructed responses.",
+      "The serialization checker flags valid source LaTeX escape patterns in q2/q6/q20 as diagnostic serialization issues."
+    ]
+  },
+  "evidencePaths": {
+    "calibrationLock": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/calibration/reference-sample-lock.json",
+    "sourceInventory": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/fresh-extraction/reports/source_inventory.json",
+    "sourceIdentityMap": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/fresh-extraction/reports/source_identity_map.json",
+    "freshCandidate": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/fresh-extraction/candidate/23_한영고_2학기_기말_고1_기출.candidate.js",
+    "completedCandidate": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/staging/23_한영고_2학기_기말_고1_기출.completed.js",
+    "sourceFidelity": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/staging/reports/source_fidelity_evidence.json",
+    "mathReview": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/staging/reports/math_review_evidence.json",
+    "assetProvenance": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/staging/reports/asset_provenance_evidence.json",
+    "finalValidation": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/evidence/final_validation_summary.json",
+    "machineCheck": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/evidence/machine-check-result.json",
+    "preparedRun": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/work-batch/prepare-v2d/run.json",
+    "workBatchState": "alive/runtime/work-batches/gold04_23_hanyeong_batch2/state.json",
+    "q013SvgCoordinateVerification": "archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/evidence/q013-svg-coordinate-verification.json"
+  },
+  "oldVsNew": {
+    "statusAtFreshFreeze": "POPULATED_AFTER_FRESH_FREEZE_DIAGNOSTIC_ONLY",
+    "oldPackageRoot": "C:/Users/USER/Desktop/AP_independent_review_20260909_125050/packages/23_한영고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
+    "oldPackageJsSha256": "sha256:424f05610a4efba54fed8f18c00513a5c4db800309e66a7b9ce1c2b399c614cc",
+    "oldPackageQuestionCount": 20,
+    "oldPackageIncluded": 20,
+    "oldPackageExcluded": ["source q12"],
+    "oldPackageAnswerSolutionFilled": "20/20 included",
+    "oldPackageProblemAssets": [3,6,15],
+    "oldPackageSolutionAssets": [],
+    "oldPackageKnownMapping": "Old ids 1-11 map to source 1-11; old id12 maps source13, old id13 maps source14, old id14 maps source15, old ids15-20 map source constructed-response labels. Source q12 is excluded, so old numeric ids are not source-ordinal complete.",
+    "newQuestionCount": 21,
+    "newIncluded": 21,
+    "newExcluded": 0,
+    "newProblemAssets": [1,3,6,15],
+    "newSolutionAssets": [13],
+    "answerDifferences": ["source q7: old ④ vs fresh blind solve ⑤; fresh calculation uses f(2)=a and onto Y=[5,∞), so a=5"],
+    "sourceFidelityDifferences": ["Fresh q12 is retained and explicitly marked source-conflicted instead of being omitted; fresh q16-q21 use numeric source ordinals 16-21"],
+    "qualityDifferences": ["Fresh solutions include explicit reasoning for all 21 questions; old q12 was excluded and old solutions are short diagnostic baseline only", "Fresh q13 has a numeric-builder solution SVG; old package has no solutionImage fields"],
+    "comparisonStatus": "DIAGNOSTIC_ONLY_NOT_A_PROMOTION_DECISION",
+    "note": "Prior package was inspected only after GOLD_RESULT_FROZEN was written. Its findings do not alter the fresh denominator, frozen source identity, or canonical first blocker."
+  }
+}

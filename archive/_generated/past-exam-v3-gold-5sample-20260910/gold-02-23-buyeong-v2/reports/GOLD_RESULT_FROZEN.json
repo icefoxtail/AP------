@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "APMATH_GOLD_RESULT_FROZEN_v1",
+  "status": "GOLD_RESULT_FROZEN",
+  "releaseState": "HOLD",
+  "examId": "23_부영여고_2학기_중간_고1_기출",
+  "goldNumber": 2,
+  "runId": "gold-02-23-buyeong-v2-20260910-r1",
+  "workBatchId": "gold-02-past-exam-v3-20260910-wb-23-buyeong-v2",
+  "startSha": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "worktree": "C:/Users/USER/Desktop/AP-------merge-taxonomy-wt",
+  "branch": "codex/past-exam-v3-gold-5sample-20260910",
+  "canonicalFirstBlocker": "REFERENCE_SAMPLE_LOCK_REQUIRED",
+  "firstTechnicalBlocker": "CALIBRATION_REQUIRES_2_OR_3_DISTINCT_SAMPLES",
+  "blockerChain": [
+    "CALIBRATION_REQUIRES_2_OR_3_DISTINCT_SAMPLES",
+    "REFERENCE_SAMPLE_LOCK_REQUIRED",
+    "BUILDER_START_BLOCKED",
+    "OFFICIAL_RUN_ONE_EXAM_STOPPED_BEFORE_CANDIDATE_WRITE"
+  ],
+  "sourceOnlyBeforeFreshFreeze": true,
+  "source": {
+    "pdfPath": "source/original_exam.pdf",
+    "pdfSha256": "sha256:bccb3a2ab234ac47c8a2ca178afc1549fc6cb05d86ac21d66f001a5d0277c5dd",
+    "hwpSha256": "sha256:30d76a0394a2c688c9588207828bbe1ea438a9a44c3ca8d09ca597ef784faf16",
+    "pageCount": 7,
+    "questionCount": 21,
+    "dispositions": {"INCLUDED": 21, "REVIEW_NEEDED": 0, "SOURCE_DEFECT": 0, "EXCLUDED_WITH_EVIDENCE": 0},
+    "inventoryPath": "reports/source_inventory.json",
+    "inventorySha256": "sha256:3c3b36c515c921b04a27bb74365cfe1bc688580497452bdb9c91a8eff0848390",
+    "identityMapPath": "reports/source_identity_map.json",
+    "identityMapSha256": "sha256:e6c1a6ed89b7b118455792d1ea9c93b49bc42bb02b6ee23bc727ee89a83e4427",
+    "pageRenderStatus": "PASS",
+    "visualQuestionNumbers": [18, 21]
+  },
+  "calibration": {
+    "prepareCommandStatus": "BLOCKED",
+    "prepareError": "CALIBRATION_REQUIRES_2_OR_3_DISTINCT_SAMPLES",
+    "builderCheckStatus": "BLOCKED",
+    "builderCheckError": "REFERENCE_SAMPLE_LOCK_REQUIRED",
+    "referenceSampleLock": "NOT_CREATED",
+    "oldArtifactsOpenedBeforeFreshFreeze": false
+  },
+  "coverage": {
+    "freshCandidateQuestionCount": 0,
+    "freshCandidateCoverage": "NOT_STARTED",
+    "productionQuestionCount": 0,
+    "productionTargetStatus": "ABSENT"
+  },
+  "v1": "NOT_TESTED",
+  "v2": "NOT_TESTED",
+  "v3": "NOT_TESTED",
+  "visual": {"sourceTriage": "PARTIAL_SOURCE_ONLY", "freshProblemAssets": 0, "freshSolutionImages": 0, "freshSvgs": 0, "semanticStatus": "NOT_TESTED"},
+  "machine": {"static": "NOT_TESTED", "metadata": "NOT_TESTED", "renderCapture": "NOT_TESTED"},
+  "audit": {"u1": "NOT_TESTED", "u2": "NOT_TESTED", "u3": "NOT_TESTED", "providerPreflight": "NOT_STARTED", "providerDispatch": "NOT_STARTED", "finalAudit": "HOLD"},
+  "render": {"freshCandidate": "NOT_TESTED", "targetProductionExamDesktop": "FAIL", "targetProductionSolutionDesktop": "FAIL", "targetProductionAnswerDesktop": "FAIL", "evidence": "reports/browser_render_check.md"},
+  "oldBaseline": {"questionCount": 13, "reviewNeededCount": 8, "sourceIdentityBindingCount": 0, "problemImageCount": 1, "solutionImageCount": 0, "svgCount": 0, "jsSha256": "sha256:6040ee14b0eea1d48ed5ae6bd291c213360779a940279f80b52cdb1f13172200", "q21AssetSha256": "sha256:dd0d9e2c344ca0cbbde9ef0dba2df817c8165003bf17a0076728bfac92968edf"},
+  "defects": [
+    "REFERENCE_SAMPLE_LOCK_REQUIRED",
+    "CALIBRATION_REQUIRES_2_OR_3_DISTINCT_SAMPLES",
+    "TARGET_PRODUCTION_JS_ABSENT",
+    "OLD_BASELINE_PARTIAL_13_OF_21",
+    "OLD_BASELINE_SOURCE_IDENTITY_BINDINGS_ABSENT",
+    "OLD_BASELINE_Q7_SOURCE_PAYLOAD_MISMATCH_DIAGNOSTIC",
+    "OLD_BASELINE_Q18_VISUAL_ASSET_MISSING"
+  ],
+  "productionAuthorized": false,
+  "commit": false,
+  "push": false
+}

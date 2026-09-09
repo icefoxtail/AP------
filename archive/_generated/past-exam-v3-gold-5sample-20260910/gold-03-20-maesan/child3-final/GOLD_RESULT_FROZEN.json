@@ -1,0 +1,25 @@
+{
+  "schema":"APMATH_PAST_EXAM_V3_GOLD_RESULT_FROZEN_v1",
+  "gold":"03",
+  "examId":"20_매산고_2학기_기말_고1_기출",
+  "startSha":"3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "sourceDocument":"C:/Users/USER/Desktop/AP_independent_review_20260909_125050/packages/20_매산고_2학기_기말_고1_기출_EXTERNAL_REVIEW/source/2020_매산고1_2기말.pdf",
+  "sourceDocumentSha256":"sha256:6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd",
+  "sourceInventory":{"status":"SOURCE_INVENTORY_FROZEN","included":20,"pages":6,"coverage":"20/20; q1-4 p1, q5-8 p2, q9-12 p3, q13-15 p4, q16-18 p5, q19-20 p6"},
+  "calibration":{"status":"PASS","sampleCount":3,"mainCommit":"3d6548596a3b38a7b8493ca8aa2b80ca55f099f7","targetBaseline":"ABSENT","lock":"../calibration/REFERENCE_SAMPLE_LOCK.json"},
+  "freshCandidate":{"status":"FROZEN_DIAGNOSTIC","path":"candidate/20_매산고_2학기_기말_고1_기출.completed.js","bytes":66060,"questionCount":20,"answerSolutionCount":"20/20","candidateSha256":"sha256:66f3a34a2a94a55d02480f38ba5c4c936bde2154d7013fe2bdf2d2685b544224"},
+  "answers":{"1":"①","2":"-154; no choice","3":"④","4":"③","5":"②","6":"④","7":"⑤","8":"②","9":"41; no choice","10":"③","11":"⑤","12":"①","13":"⑤","14":"① (M+m=3)","15":"④","16":"1680","17":"2√3","18":"6","19":"all real k for parts 1/2; none for all quadrants","20":"149"},
+  "freshSourceDefects":[
+    {"q":2,"code":"NO_CORRECT_CHOICE","computed":"-154","detail":"direct composition with f(1)=10"},
+    {"q":9,"code":"NO_CORRECT_CHOICE","computed":"41","detail":"direct gcd enumeration"}
+  ],
+  "visualCoverage":{"triaged":"20/20","problemVisuals":[12,19],"solutionVisuals":[8,12,14,17,18,19,20],"sourceCropStatus":"PNG decode PASS; purity/semantic independent review pending","expectedFacts":"q12 adjacency graph; q19 center (-1,-4), QII/QIII/QIV invariant"},
+  "oldVsNew":{"path":"OLD_VS_NEW_COMPARISON.json","performedAfterFreshFreeze":true,"oldIncluded":16,"oldExcluded":[9,14,19,20],"keyCorrections":["old q2 answer conflicts with -154","old q5 answer corrected to ②","old q9 exclusion retained as source defect but denominator restored","old q10 ⑤→③","old q13 ④→⑤","old q14 exclusion rejected; endpoints have two intersections","old q16 120→1680","old q17 √10→2√3","old q18 -3→6","old q20 exclusion rejected; finite count 149"],"agreement":"old q15 answer ④ agrees with fresh enumeration 237"},
+  "machineEvidence":{"finalValidation":"NEEDS_WORK","report":"reports/final_validation_summary.json","reasons":["U1/U2/U3 evidence files absent","legacy validator treats constructed q16-q20 as objective by numeric cutoff","serialization diagnostics on valid MathJax escapes"]},
+  "renderEvidence":{"status":"NOT_TESTED","report":"../browser_render_check.md","isolatedSvgSpotChecks":"q012 and q019 solution SVGs browser-rendered locally; full exam/solution/answer engine capture unavailable without production write"},
+  "providerFinalAudit":"DIAGNOSTIC_ONLY",
+  "closure":"BLOCKED_DIAGNOSTIC_ONLY",
+  "productionAuthorized":false,
+  "mutations":{"productionJs":false,"db":false,"questionIndex":false,"productionAssets":false,"commit":false,"push":false},
+  "frozenAt":"2026-09-10T06:00:00+09:00"
+}
