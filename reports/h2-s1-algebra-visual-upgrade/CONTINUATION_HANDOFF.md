@@ -52,7 +52,7 @@
 
 - runner: `archive/tools/visual-upgrade/build-function-graph-specialist-run.mjs`
 - audit command: `node archive/tools/pipeline-core/cli.mjs audit-function-graph ...`
-- current evidence: `function_graph_specialist_pipeline_closure_v7.json`
+- current evidence: `function_graph_specialist_pipeline_closure_v8.json`
 - result: route `PASS`; candidate 39/39, freeze 459/459, baseline render 72/72, refresh render 18/18
 - authority: `productionAuthorized:false` 유지
 - consolidated audit: `FINAL_AUDIT_EVIDENCE.json` (`MACHINE_AUDIT_PASS_CANONICAL_SEAL_HOLD`)
