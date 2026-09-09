@@ -1,0 +1,68 @@
+{
+  "goldCategory": "NO_DEFECT",
+  "goldDefectTypes": [],
+  "expectedPrimaryTier": "NONE",
+  "caseId": "historical-seq-1199",
+  "sourceQuestionUid": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#17",
+  "immutableSourceRef": "external-source:D:/기출/(1)1중간/(1)1중간/공통수학1/2026_팔마고1_공통수학1_1중간.pdf",
+  "immutableSourceSha256": "sha256:6e4cb249e57d66986d1c7c3c30078b5a051ebd64ccab33db28aed467e5e279d3",
+  "sourcePageNumber": 4,
+  "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/palma26/page-4.png",
+  "sourcePageEvidenceSha256": "sha256:f31e493c471f54d6548a76494b8a760a9b0fbe070159285e4a0db9024bb31e76",
+  "sourcePayload": {
+    "id": 17,
+    "level": "상",
+    "category": "항등식과 나머지 정리",
+    "originalCategory": "항등식과 나머지 정리",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-02",
+    "standardUnit": "항등식과 나머지 정리",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "표"
+    ],
+    "wide": false,
+    "content": "계수가 각각 실수인 삼차다항식 $P(x)$, 일차다항식 $Q(x)$가 아래의 조건을 만족할 때, $\\dfrac{P(0) \\times Q(1)}{a}$의 값은?\n\n(가) $P(x) \\times Q(x)$는 $(x^2-6x+10)(x-2)$로 나누어 떨어진다.\n\n(나) 모든 $x$에 대하여 $x^3-4x^2+ax-a-1=P(x)+\\{Q(x)\\}^2$\n\n(다) $Q(0)>0,\\ Q(1)>0,\\ P(0)<0,\\ P(2)=0$",
+    "choices": [
+      "$-2$",
+      "$-1$",
+      "1",
+      "2",
+      "3"
+    ],
+    "sourceEvidence": {
+      "sourceEvidenceStatus": "REAL_SOURCE_RESOLVED",
+      "fullPageVerified": true,
+      "questionZoomVerified": true,
+      "choicesVerified": true,
+      "immutableSourceRef": "external-source:D:/기출/(1)1중간/(1)1중간/공통수학1/2026_팔마고1_공통수학1_1중간.pdf",
+      "immutableSourceSha256": "sha256:6e4cb249e57d66986d1c7c3c30078b5a051ebd64ccab33db28aed467e5e279d3",
+      "sourcePageNumber": 4,
+      "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/palma26/page-4.png",
+      "sourcePageEvidenceSha256": "sha256:f31e493c471f54d6548a76494b8a760a9b0fbe070159285e4a0db9024bb31e76",
+      "transcriptionMethod": "PDF_PAGE_MANUAL_PARITY_TRANSCRIPTION",
+      "currentArchiveJsRef": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "historicalEvidenceRefs": [
+        "archive/_generated/intelligence/phase3/sequential-review/archive-sequential-subunit-review-batch-004-v1.json#1199"
+      ],
+      "sourceAnswerEvidenceStatus": "NOT_USED_FOR_GOLD"
+    }
+  },
+  "independentSourceSolve": {
+    "solverId": "real-source-solver-A-20260909",
+    "solverSessionId": "real-source-solver-A-historical-seq-1199",
+    "inputSourceSha256": "sha256:6e4cb249e57d66986d1c7c3c30078b5a051ebd64ccab33db28aed467e5e279d3",
+    "computed": "$-2$",
+    "answerUnique": true,
+    "responseContractValid": true,
+    "matchingChoiceIndices": [
+      1
+    ],
+    "mathVerdict": "PASS",
+    "defectSignals": [],
+    "reasoningSummary": "The PDF conditions determine Q(x)=-2x+3, a=10, P(0)=-20, Q(1)=1, giving -2."
+  },
+  "goldArtifactSha256": "sha256:17de366e41a320bd2a44c0fcc86b775a64e5efb1001cd061b8187f488c6f6f94"
+}

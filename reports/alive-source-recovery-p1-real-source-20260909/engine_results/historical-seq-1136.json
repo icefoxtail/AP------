@@ -1,0 +1,775 @@
+{
+  "goldRef": "gold/historical-seq-1136.json",
+  "engine": {
+    "schemaVersion": "ALIVE_SOURCE_RECOVERY_v1",
+    "sourceQuestionUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17",
+    "sourceLockSha256": "sha256:fc29cc0ca39dd34dd5fb39929035cccebd1803975c2520492a4447c68ed35d85",
+    "sourceDefectTypes": [
+      "NO_CORRECT_ANSWER",
+      "RESPONSE_FORM_DEFECT"
+    ],
+    "sourceRecoveryPolicy": "SHADOW_AUTO_RECOVER",
+    "recoveryAuthority": "SHADOW_ONLY",
+    "productionAdoptionStatus": "NOT_AUTHORIZED",
+    "status": "RECOVERED",
+    "finalStatus": "BLOCKED",
+    "currentRecoveryTier": "R1",
+    "tierMatrix": {
+      "R0": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "ACTIVE",
+        "execution": "NOT_RUN"
+      },
+      "R1": {
+        "applicability": "APPLICABLE_PRIMARY",
+        "capability": "ACTIVE",
+        "execution": "ATTEMPTED_PASS"
+      },
+      "R2": {
+        "applicability": "APPLICABLE_FALLBACK",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+      },
+      "R3": {
+        "applicability": "APPLICABLE_FALLBACK",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+      },
+      "R4": {
+        "applicability": "APPLICABLE_FALLBACK",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+      },
+      "R5": {
+        "applicability": "NOT_APPLICABLE",
+        "capability": "CAPABILITY_BLOCKED",
+        "execution": "NOT_RUN"
+      },
+      "R6": {
+        "applicability": "APPLICABLE_FALLBACK",
+        "capability": "DEFERRED_CAPABILITY",
+        "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+      }
+    },
+    "recoveryPlanId": "REAL-P1-historical-seq-1136",
+    "candidateIndex": 1,
+    "candidateVersion": 1,
+    "candidatePool": [
+      {
+        "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+        "recoveryPlanId": "REAL-P1-historical-seq-1136",
+        "candidateVersion": 1,
+        "parentCandidateId": null,
+        "payload": {
+          "id": 17,
+          "level": "상",
+          "category": "이차방정식과 이차함수",
+          "originalCategory": "이차방정식과 이차함수",
+          "standardCourse": "공통수학1",
+          "standardUnitKey": "H22-C-05",
+          "standardUnit": "이차방정식과 이차함수",
+          "standardUnitOrder": 5,
+          "questionType": "객관식",
+          "layoutTag": "grid",
+          "tags": [
+            "그래프"
+          ],
+          "wide": false,
+          "content": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} ax+a & (x < -1) \\\\ 0 & (-1 \\le x < 1) \\\\ ax-a & (x \\ge 1) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 $a$의 최댓값은?",
+          "choices": [
+            "없다",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": "①"
+        },
+        "payloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+        "freeze": {
+          "status": "FROZEN",
+          "payloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+          "immutable": true
+        },
+        "immutable": true,
+        "builderSessionId": "recovery-builder",
+        "producerKind": "NO_CORRECT_ANSWER",
+        "verifierEvidence": {
+          "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+          "candidateVersion": 1,
+          "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+          "verifierId": "real-source-verifier-B-20260909",
+          "verifierSessionId": "real-source-verifier-B-historical-seq-1136",
+          "inputVisibilityProfile": "ARTIFACT_ONLY",
+          "blindInput": {
+            "id": 17,
+            "level": "상",
+            "category": "이차방정식과 이차함수",
+            "originalCategory": "이차방정식과 이차함수",
+            "standardCourse": "공통수학1",
+            "standardUnitKey": "H22-C-05",
+            "standardUnit": "이차방정식과 이차함수",
+            "standardUnitOrder": 5,
+            "questionType": "객관식",
+            "layoutTag": "grid",
+            "tags": [
+              "그래프"
+            ],
+            "wide": false,
+            "content": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} ax+a & (x < -1) \\\\ 0 & (-1 \\le x < 1) \\\\ ax-a & (x \\ge 1) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 $a$의 최댓값은?",
+            "choices": [
+              "없다",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          },
+          "independentlyComputedValue": "없다",
+          "independentlyComputedAnswer": "없다",
+          "answerUnique": true,
+          "responseContractValid": true,
+          "allChoicesChecked": true,
+          "distractorsWrong": true,
+          "mathVerdict": "PASS",
+          "evidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7"
+        },
+        "validatorEvidence": {
+          "validatorId": "alive-bounded-validator",
+          "gates": {
+            "MATH_VALID": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-MATH_VALID",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
+              "evidenceSha256": "sha256:5a3928f96cddfc5e8121c5a7867a1dcb73132500ca5ee20ffd47fc67f8ef3e7f"
+            },
+            "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
+              "evidenceSha256": "sha256:e6bd680167dade6df4c24f68eed976382a6a6664ca6b040cc0c25776645d2b71"
+            },
+            "CURRICULUM_VALID": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-CURRICULUM_VALID",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bound_external_validator",
+              "coverage": "complete",
+              "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-CURRICULUM_VALID",
+              "sourceEvidenceSha256": "sha256:ca37acd7989b3b572bf1f58716954b0a235de9a6f98e4b7342c49d08dbc297e5",
+              "sourceValidatorId": "real-source-validator-20260909",
+              "evidenceSha256": "sha256:0c330bfe1fb577309dc6f46a485530b8612db16bb1e6a10e7d016a6c1f6ed470"
+            },
+            "QUESTION_WELL_FORMED": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-QUESTION_WELL_FORMED",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "structuralChecksExecuted": true,
+              "evidenceSha256": "sha256:cabc17e1a284b0f486501c5d8da560a736be1d8e75c06020896e73d482388f5e"
+            },
+            "RECOVERY_FINGERPRINT_GATE_PASS": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-RECOVERY_FINGERPRINT_GATE_PASS",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bound_external_validator",
+              "coverage": "complete",
+              "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-RECOVERY_FINGERPRINT_GATE_PASS",
+              "sourceEvidenceSha256": "sha256:84650e3072e78c44d74270cd8ddb195eff31af4e7a7fdc1b8e1fe218a932d938",
+              "sourceValidatorId": "real-source-validator-20260909",
+              "evidenceSha256": "sha256:3f4b65fc07b38e29b730ad04e5c8f1eda20f679ae97a55e397039c580344e662"
+            },
+            "DIFFICULTY_ROLE_ACCEPTABLE": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-DIFFICULTY_ROLE_ACCEPTABLE",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bound_external_validator",
+              "coverage": "complete",
+              "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-DIFFICULTY_ROLE_ACCEPTABLE",
+              "sourceEvidenceSha256": "sha256:2b7cbebdb82c141d9cbbf01376295486b709327b0ca346d60caab4fc3b8e4616",
+              "sourceValidatorId": "real-source-validator-20260909",
+              "evidenceSha256": "sha256:ddde6d25fc7e43cceb98fcc2b3bbfae331b5d36c035eb0c86907c39eea999ddd"
+            },
+            "VISUAL_VALID_IF_APPLICABLE": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-VISUAL_VALID_IF_APPLICABLE",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "not_applicable",
+              "applicability": "NOT_APPLICABLE",
+              "checkedFields": [
+                "image",
+                "imagePath",
+                "visual",
+                "visualSpec",
+                "solutionImage"
+              ],
+              "evidenceSha256": "sha256:7aaf725851a96d549df087251d022bbf4f6e2d041ab86fe79bbc8d06ad81ba71"
+            },
+            "SERIALIZABLE": {
+              "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-SERIALIZABLE",
+              "validatorId": "alive-bounded-validator",
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "status": "PASS",
+              "method": "bounded_executable_validator",
+              "coverage": "complete",
+              "serializer": "json.dumps(allow_nan=False)+archive-answer-contract",
+              "errors": [],
+              "evidenceSha256": "sha256:3a6456ae40febd6f515a6701d81245537170cd537db2ad32c61464183bd47266"
+            }
+          }
+        },
+        "acceptance": {
+          "status": "PASS",
+          "recoveryTier": "R1",
+          "gates": {
+            "MATH_VALID": "PASS",
+            "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+            "CURRICULUM_VALID": "PASS",
+            "QUESTION_WELL_FORMED": "PASS",
+            "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+            "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+            "VISUAL_VALID_IF_APPLICABLE": "PASS",
+            "SERIALIZABLE": "PASS"
+          },
+          "independentVerification": "PASS",
+          "verifierEvidence": {
+            "status": "PASS",
+            "errors": []
+          },
+          "validatorEvidence": {
+            "status": "PASS",
+            "errors": [],
+            "gates": {
+              "MATH_VALID": "PASS",
+              "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+              "CURRICULUM_VALID": "PASS",
+              "QUESTION_WELL_FORMED": "PASS",
+              "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+              "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+              "VISUAL_VALID_IF_APPLICABLE": "PASS",
+              "SERIALIZABLE": "PASS"
+            }
+          },
+          "failedGates": []
+        }
+      }
+    ],
+    "producerAttempts": {
+      "R1": {
+        "producerStatus": "COMPLETED",
+        "attemptCount": 1,
+        "candidateBudget": 3,
+        "candidateBudgetConsumed": 1,
+        "retryBudget": 1,
+        "retryBudgetConsumed": false,
+        "generatedCandidateCount": 1,
+        "attemptEvidenceRef": "recovery-attempt-R1",
+        "attemptEvidenceSha": "sha256:7b7d22916dfbf7a16312b59cb60e20e65854b6adaf9792ad6953768d13251478",
+        "allProducedCandidatesRejected": false
+      }
+    },
+    "acceptedCandidates": [
+      "REAL-P1-historical-seq-1136-C01-c45b7742a263"
+    ],
+    "rejectedCandidates": [],
+    "lastVerifierResult": {
+      "status": "PASS",
+      "recoveryTier": "R1",
+      "gates": {
+        "MATH_VALID": "PASS",
+        "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+        "CURRICULUM_VALID": "PASS",
+        "QUESTION_WELL_FORMED": "PASS",
+        "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+        "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+        "VISUAL_VALID_IF_APPLICABLE": "PASS",
+        "SERIALIZABLE": "PASS"
+      },
+      "independentVerification": "PASS",
+      "verifierEvidence": {
+        "status": "PASS",
+        "errors": []
+      },
+      "validatorEvidence": {
+        "status": "PASS",
+        "errors": [],
+        "gates": {
+          "MATH_VALID": "PASS",
+          "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+          "CURRICULUM_VALID": "PASS",
+          "QUESTION_WELL_FORMED": "PASS",
+          "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+          "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+          "VISUAL_VALID_IF_APPLICABLE": "PASS",
+          "SERIALIZABLE": "PASS"
+        }
+      },
+      "failedGates": []
+    },
+    "requiredResource": null,
+    "resumeFromStage": null,
+    "nextAction": "QUALITY_CLOSURE",
+    "initialIncludedScopeUidSet": [
+      "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17"
+    ],
+    "initialIncludedScopeUidSetSha256": "sha256:aa9706e5427f497312a2213d199e89952d58170a7e3cfe410274058a91ae0644",
+    "correctnessAffecting": true,
+    "diagnosis": {
+      "status": "QUESTION_PAYLOAD_DEFECT",
+      "defectTypes": [
+        "NO_CORRECT_ANSWER",
+        "RESPONSE_FORM_DEFECT"
+      ],
+      "independentlyComputedValue": "없다",
+      "matchingChoiceIndices": [],
+      "canonicalArchiveAnswer": null
+    },
+    "recoveryTier": "R1",
+    "recoveryDisposition": "MINIMAL_RECOVERED",
+    "recoveredQuestionUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17-R1",
+    "effectiveArtifactUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17-R1",
+    "slotUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17",
+    "selectedCandidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+    "selectedCandidateVersion": 1,
+    "beforePayloadSha256": null,
+    "afterPayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+    "effectivePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+    "mutations": [],
+    "sourceOriginalPreserved": true,
+    "productionOriginalActive": true,
+    "productionRecoveredActive": false,
+    "finalTarget": false,
+    "replacementDisposition": null
+  },
+  "ledger": {
+    "schemaVersion": "ALIVE_SOURCE_RECOVERY_LEDGER_v1",
+    "initialIncludedScopeUidSet": [
+      "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17"
+    ],
+    "initialIncludedScopeUidSetSha256": "sha256:aa9706e5427f497312a2213d199e89952d58170a7e3cfe410274058a91ae0644",
+    "items": [
+      {
+        "schemaVersion": "ALIVE_SOURCE_RECOVERY_v1",
+        "sourceQuestionUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17",
+        "sourceLockSha256": "sha256:fc29cc0ca39dd34dd5fb39929035cccebd1803975c2520492a4447c68ed35d85",
+        "sourceDefectTypes": [
+          "NO_CORRECT_ANSWER",
+          "RESPONSE_FORM_DEFECT"
+        ],
+        "sourceRecoveryPolicy": "SHADOW_AUTO_RECOVER",
+        "recoveryAuthority": "SHADOW_ONLY",
+        "productionAdoptionStatus": "NOT_AUTHORIZED",
+        "status": "RECOVERED",
+        "finalStatus": "BLOCKED",
+        "currentRecoveryTier": "R1",
+        "tierMatrix": {
+          "R0": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "ACTIVE",
+            "execution": "NOT_RUN"
+          },
+          "R1": {
+            "applicability": "APPLICABLE_PRIMARY",
+            "capability": "ACTIVE",
+            "execution": "ATTEMPTED_PASS"
+          },
+          "R2": {
+            "applicability": "APPLICABLE_FALLBACK",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+          },
+          "R3": {
+            "applicability": "APPLICABLE_FALLBACK",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+          },
+          "R4": {
+            "applicability": "APPLICABLE_FALLBACK",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+          },
+          "R5": {
+            "applicability": "NOT_APPLICABLE",
+            "capability": "CAPABILITY_BLOCKED",
+            "execution": "NOT_RUN"
+          },
+          "R6": {
+            "applicability": "APPLICABLE_FALLBACK",
+            "capability": "DEFERRED_CAPABILITY",
+            "execution": "SKIPPED_AFTER_LOWER_TIER_PASS"
+          }
+        },
+        "recoveryPlanId": "REAL-P1-historical-seq-1136",
+        "candidateIndex": 1,
+        "candidateVersion": 1,
+        "candidatePool": [
+          {
+            "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+            "recoveryPlanId": "REAL-P1-historical-seq-1136",
+            "candidateVersion": 1,
+            "parentCandidateId": null,
+            "payload": {
+              "id": 17,
+              "level": "상",
+              "category": "이차방정식과 이차함수",
+              "originalCategory": "이차방정식과 이차함수",
+              "standardCourse": "공통수학1",
+              "standardUnitKey": "H22-C-05",
+              "standardUnit": "이차방정식과 이차함수",
+              "standardUnitOrder": 5,
+              "questionType": "객관식",
+              "layoutTag": "grid",
+              "tags": [
+                "그래프"
+              ],
+              "wide": false,
+              "content": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} ax+a & (x < -1) \\\\ 0 & (-1 \\le x < 1) \\\\ ax-a & (x \\ge 1) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 $a$의 최댓값은?",
+              "choices": [
+                "없다",
+                "2",
+                "3",
+                "4",
+                "5"
+              ],
+              "answer": "①"
+            },
+            "payloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+            "freeze": {
+              "status": "FROZEN",
+              "payloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "immutable": true
+            },
+            "immutable": true,
+            "builderSessionId": "recovery-builder",
+            "producerKind": "NO_CORRECT_ANSWER",
+            "verifierEvidence": {
+              "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+              "candidateVersion": 1,
+              "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+              "verifierId": "real-source-verifier-B-20260909",
+              "verifierSessionId": "real-source-verifier-B-historical-seq-1136",
+              "inputVisibilityProfile": "ARTIFACT_ONLY",
+              "blindInput": {
+                "id": 17,
+                "level": "상",
+                "category": "이차방정식과 이차함수",
+                "originalCategory": "이차방정식과 이차함수",
+                "standardCourse": "공통수학1",
+                "standardUnitKey": "H22-C-05",
+                "standardUnit": "이차방정식과 이차함수",
+                "standardUnitOrder": 5,
+                "questionType": "객관식",
+                "layoutTag": "grid",
+                "tags": [
+                  "그래프"
+                ],
+                "wide": false,
+                "content": "함수 $f(x)$가 $f(x) = \\begin{cases} -x^2 & (x < 0) \\\\ x^2-x & (x \\ge 0) \\end{cases}$이고, 양수 $a$에 대하여 함수 $g(x)$를 $g(x) = \\begin{cases} ax+a & (x < -1) \\\\ 0 & (-1 \\le x < 1) \\\\ ax-a & (x \\ge 1) \\end{cases}$이라 하자. 함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 $a$의 최댓값은?",
+                "choices": [
+                  "없다",
+                  "2",
+                  "3",
+                  "4",
+                  "5"
+                ]
+              },
+              "independentlyComputedValue": "없다",
+              "independentlyComputedAnswer": "없다",
+              "answerUnique": true,
+              "responseContractValid": true,
+              "allChoicesChecked": true,
+              "distractorsWrong": true,
+              "mathVerdict": "PASS",
+              "evidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7"
+            },
+            "validatorEvidence": {
+              "validatorId": "alive-bounded-validator",
+              "gates": {
+                "MATH_VALID": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-MATH_VALID",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
+                  "evidenceSha256": "sha256:5a3928f96cddfc5e8121c5a7867a1dcb73132500ca5ee20ffd47fc67f8ef3e7f"
+                },
+                "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceSha256": "sha256:7a3f07e0bc8345fff3deb74d15dbe4c894a6deda05c710ff5b25335c70d5e7c7",
+                  "evidenceSha256": "sha256:e6bd680167dade6df4c24f68eed976382a6a6664ca6b040cc0c25776645d2b71"
+                },
+                "CURRICULUM_VALID": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-CURRICULUM_VALID",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bound_external_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-CURRICULUM_VALID",
+                  "sourceEvidenceSha256": "sha256:ca37acd7989b3b572bf1f58716954b0a235de9a6f98e4b7342c49d08dbc297e5",
+                  "sourceValidatorId": "real-source-validator-20260909",
+                  "evidenceSha256": "sha256:0c330bfe1fb577309dc6f46a485530b8612db16bb1e6a10e7d016a6c1f6ed470"
+                },
+                "QUESTION_WELL_FORMED": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-QUESTION_WELL_FORMED",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "structuralChecksExecuted": true,
+                  "evidenceSha256": "sha256:cabc17e1a284b0f486501c5d8da560a736be1d8e75c06020896e73d482388f5e"
+                },
+                "RECOVERY_FINGERPRINT_GATE_PASS": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-RECOVERY_FINGERPRINT_GATE_PASS",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bound_external_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-RECOVERY_FINGERPRINT_GATE_PASS",
+                  "sourceEvidenceSha256": "sha256:84650e3072e78c44d74270cd8ddb195eff31af4e7a7fdc1b8e1fe218a932d938",
+                  "sourceValidatorId": "real-source-validator-20260909",
+                  "evidenceSha256": "sha256:3f4b65fc07b38e29b730ad04e5c8f1eda20f679ae97a55e397039c580344e662"
+                },
+                "DIFFICULTY_ROLE_ACCEPTABLE": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-DIFFICULTY_ROLE_ACCEPTABLE",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bound_external_validator",
+                  "coverage": "complete",
+                  "sourceEvidenceId": "real-source-validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-DIFFICULTY_ROLE_ACCEPTABLE",
+                  "sourceEvidenceSha256": "sha256:2b7cbebdb82c141d9cbbf01376295486b709327b0ca346d60caab4fc3b8e4616",
+                  "sourceValidatorId": "real-source-validator-20260909",
+                  "evidenceSha256": "sha256:ddde6d25fc7e43cceb98fcc2b3bbfae331b5d36c035eb0c86907c39eea999ddd"
+                },
+                "VISUAL_VALID_IF_APPLICABLE": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-VISUAL_VALID_IF_APPLICABLE",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "not_applicable",
+                  "applicability": "NOT_APPLICABLE",
+                  "checkedFields": [
+                    "image",
+                    "imagePath",
+                    "visual",
+                    "visualSpec",
+                    "solutionImage"
+                  ],
+                  "evidenceSha256": "sha256:7aaf725851a96d549df087251d022bbf4f6e2d041ab86fe79bbc8d06ad81ba71"
+                },
+                "SERIALIZABLE": {
+                  "evidenceId": "validator-REAL-P1-historical-seq-1136-C01-c45b7742a263-SERIALIZABLE",
+                  "validatorId": "alive-bounded-validator",
+                  "candidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+                  "candidateVersion": 1,
+                  "candidatePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+                  "status": "PASS",
+                  "method": "bounded_executable_validator",
+                  "coverage": "complete",
+                  "serializer": "json.dumps(allow_nan=False)+archive-answer-contract",
+                  "errors": [],
+                  "evidenceSha256": "sha256:3a6456ae40febd6f515a6701d81245537170cd537db2ad32c61464183bd47266"
+                }
+              }
+            },
+            "acceptance": {
+              "status": "PASS",
+              "recoveryTier": "R1",
+              "gates": {
+                "MATH_VALID": "PASS",
+                "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+                "CURRICULUM_VALID": "PASS",
+                "QUESTION_WELL_FORMED": "PASS",
+                "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+                "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+                "VISUAL_VALID_IF_APPLICABLE": "PASS",
+                "SERIALIZABLE": "PASS"
+              },
+              "independentVerification": "PASS",
+              "verifierEvidence": {
+                "status": "PASS",
+                "errors": []
+              },
+              "validatorEvidence": {
+                "status": "PASS",
+                "errors": [],
+                "gates": {
+                  "MATH_VALID": "PASS",
+                  "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+                  "CURRICULUM_VALID": "PASS",
+                  "QUESTION_WELL_FORMED": "PASS",
+                  "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+                  "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+                  "VISUAL_VALID_IF_APPLICABLE": "PASS",
+                  "SERIALIZABLE": "PASS"
+                }
+              },
+              "failedGates": []
+            }
+          }
+        ],
+        "producerAttempts": {
+          "R1": {
+            "producerStatus": "COMPLETED",
+            "attemptCount": 1,
+            "candidateBudget": 3,
+            "candidateBudgetConsumed": 1,
+            "retryBudget": 1,
+            "retryBudgetConsumed": false,
+            "generatedCandidateCount": 1,
+            "attemptEvidenceRef": "recovery-attempt-R1",
+            "attemptEvidenceSha": "sha256:7b7d22916dfbf7a16312b59cb60e20e65854b6adaf9792ad6953768d13251478",
+            "allProducedCandidatesRejected": false
+          }
+        },
+        "acceptedCandidates": [
+          "REAL-P1-historical-seq-1136-C01-c45b7742a263"
+        ],
+        "rejectedCandidates": [],
+        "lastVerifierResult": {
+          "status": "PASS",
+          "recoveryTier": "R1",
+          "gates": {
+            "MATH_VALID": "PASS",
+            "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+            "CURRICULUM_VALID": "PASS",
+            "QUESTION_WELL_FORMED": "PASS",
+            "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+            "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+            "VISUAL_VALID_IF_APPLICABLE": "PASS",
+            "SERIALIZABLE": "PASS"
+          },
+          "independentVerification": "PASS",
+          "verifierEvidence": {
+            "status": "PASS",
+            "errors": []
+          },
+          "validatorEvidence": {
+            "status": "PASS",
+            "errors": [],
+            "gates": {
+              "MATH_VALID": "PASS",
+              "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS",
+              "CURRICULUM_VALID": "PASS",
+              "QUESTION_WELL_FORMED": "PASS",
+              "RECOVERY_FINGERPRINT_GATE_PASS": "PASS",
+              "DIFFICULTY_ROLE_ACCEPTABLE": "PASS",
+              "VISUAL_VALID_IF_APPLICABLE": "PASS",
+              "SERIALIZABLE": "PASS"
+            }
+          },
+          "failedGates": []
+        },
+        "requiredResource": null,
+        "resumeFromStage": null,
+        "nextAction": "QUALITY_CLOSURE",
+        "initialIncludedScopeUidSet": [
+          "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17"
+        ],
+        "initialIncludedScopeUidSetSha256": "sha256:aa9706e5427f497312a2213d199e89952d58170a7e3cfe410274058a91ae0644",
+        "correctnessAffecting": true,
+        "diagnosis": {
+          "status": "QUESTION_PAYLOAD_DEFECT",
+          "defectTypes": [
+            "NO_CORRECT_ANSWER",
+            "RESPONSE_FORM_DEFECT"
+          ],
+          "independentlyComputedValue": "없다",
+          "matchingChoiceIndices": [],
+          "canonicalArchiveAnswer": null
+        },
+        "recoveryTier": "R1",
+        "recoveryDisposition": "MINIMAL_RECOVERED",
+        "recoveredQuestionUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17-R1",
+        "effectiveArtifactUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17-R1",
+        "slotUid": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#17",
+        "selectedCandidateId": "REAL-P1-historical-seq-1136-C01-c45b7742a263",
+        "selectedCandidateVersion": 1,
+        "beforePayloadSha256": null,
+        "afterPayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+        "effectivePayloadSha256": "sha256:c45b7742a263c7445ef4f38c3b9d98877a8fdb11afd7db683b15330f11959fff",
+        "mutations": [],
+        "sourceOriginalPreserved": true,
+        "productionOriginalActive": true,
+        "productionRecoveredActive": false,
+        "finalTarget": false,
+        "replacementDisposition": null
+      }
+    ]
+  },
+  "ledgerValidation": {
+    "status": "PASS",
+    "errors": []
+  },
+  "releaseGate": {
+    "status": "PASS",
+    "counts": {
+      "humanRequiredCount": 0,
+      "recoveryEvidenceBlockedCount": 0,
+      "recoveryCapabilityBlockedCount": 0,
+      "correctnessAffectingPreserveOnlyCount": 0,
+      "shadowRecoveredUnapprovedCount": 0,
+      "unauthorizedRecoveryAdoptionCount": 0,
+      "derivedReplacementParityFailCount": 0
+    },
+    "errors": [],
+    "productionSeal": "PASS",
+    "executionContinues": true
+  }
+}

@@ -11,6 +11,7 @@ from . import ENGINE_VERSION
 from .contracts import FOLLOWUP_KINDS, GENERATION_MODES, OPERATION_MODES, OUTPUT_PROFILES, STAGES, initial_stages
 from .run_store import RunStore, atomic_write_json, make_run_id, sha256_file, utc_now
 from .source_resolver import resolve_explicit_source, resolve_source
+from .source_recovery import build_blind_verifier_adapter, capability_registry_report, run_source_recovery, validate_design_mirror
 from .task_runtime import (
     all_current_tasks_submitted,
     fail_task_dispatch,
@@ -2591,7 +2592,63 @@ def command_final_closure_audit(args: argparse.Namespace) -> int:
         args.js_path,
         Path(args.variant_proof_ledger).resolve() if args.variant_proof_ledger else None,
         Path(args.closure_manifest).resolve() if getattr(args, 'closure_manifest', None) else None,
+        Path(args.source_recovery_ledger).resolve() if getattr(args, 'source_recovery_ledger', None) else None,
     )
+    emit(result, args.json)
+    return 0 if result["status"] == "PASS" else 2
+
+
+def command_source_recovery_run(args: argparse.Namespace) -> int:
+    """Run the provider-neutral source recovery reducer over a JSON request."""
+
+    request = _read_json_object(args.input)
+    aliases = {
+        "sourceQuestionUid": "source_question_uid",
+        "sourceLockSha256": "source_lock_sha256",
+        "defectTypes": "defect_types",
+        "sourceRecoveryPolicy": "source_recovery_policy",
+        "recoveryAuthority": "recovery_authority",
+        "initialScopeUids": "initial_scope_uids",
+        "sourceEvidenceAvailable": "source_evidence_available",
+        "requiredResource": "required_resource",
+        "candidatesByTier": "candidates_by_tier",
+        "attemptsByTier": "attempts_by_tier",
+        "sourcePayload": "source_payload",
+        "independentSolve": "independent_solve",
+        "blindVerifierSolve": "blind_verifier_solve",
+        "recoveryPlanId": "recovery_plan_id",
+        "builderSessionId": "builder_session_id",
+        "verifierId": "verifier_id",
+        "verifierSessionId": "verifier_session_id",
+        "qualityClosureEvidence": "quality_closure_evidence",
+        "lineageParityEvidence": "lineage_parity_evidence",
+        "evidenceRoot": "evidence_root",
+        "artifactRoot": "artifact_root",
+        "finalArtifactRef": "final_artifact_ref",
+        "finalArtifactSha256": "final_artifact_sha256",
+    }
+    normalized = {aliases.get(key, key): value for key, value in request.items()}
+    blind_solve = normalized.pop("blind_verifier_solve", None)
+    if blind_solve is not None:
+        normalized["blind_verifier"] = build_blind_verifier_adapter(blind_solve)
+    result = run_source_recovery(**normalized)
+    if args.output:
+        atomic_write_json(Path(args.output).resolve(), result)
+    emit(result, args.json)
+    return 0 if result.get("status") in {"NOT_REQUIRED", "RECOVERED", "PRESERVE_ONLY"} else 2
+
+
+def command_source_recovery_capability(args: argparse.Namespace) -> int:
+    result = capability_registry_report()
+    emit(result, args.json)
+    return 0
+
+
+def command_source_recovery_mirror_check(args: argparse.Namespace) -> int:
+    root = repository_root()
+    left = Path(args.alive_path).resolve() if args.alive_path else root / "alive/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md"
+    right = Path(args.docs_path).resolve() if args.docs_path else root / "docs/rules/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md"
+    result = validate_design_mirror(left, right)
     emit(result, args.json)
     return 0 if result["status"] == "PASS" else 2
 
@@ -3442,8 +3499,25 @@ def build_parser() -> argparse.ArgumentParser:
     final_closure.add_argument("--variant-proof-ledger", help="optional universal A/B/C variant proof ledger JSON")
     final_closure.add_argument("--output", help="write the final closure report JSON")
     final_closure.add_argument("--closure-manifest", help="shared APMath hash-bound closure manifest; otherwise reads <input>.closure.json")
+    final_closure.add_argument("--source-recovery-ledger", help="optional run-level source recovery ledger")
     add_common_output(final_closure)
     final_closure.set_defaults(func=command_final_closure_audit)
+
+    source_recovery = commands.add_parser("source-recovery-run")
+    source_recovery.add_argument("--input", required=True, help="JSON recovery request; accepts camelCase or Python field names")
+    source_recovery.add_argument("--output")
+    source_recovery.add_argument("--json", action="store_true")
+    source_recovery.set_defaults(func=command_source_recovery_run)
+
+    source_recovery_capability = commands.add_parser("source-recovery-capability")
+    source_recovery_capability.add_argument("--json", action="store_true")
+    source_recovery_capability.set_defaults(func=command_source_recovery_capability)
+
+    source_recovery_mirror = commands.add_parser("source-recovery-mirror-check")
+    source_recovery_mirror.add_argument("--alive-path")
+    source_recovery_mirror.add_argument("--docs-path")
+    source_recovery_mirror.add_argument("--json", action="store_true")
+    source_recovery_mirror.set_defaults(func=command_source_recovery_mirror_check)
 
     visual_render = commands.add_parser("visual-render")
     visual_render.add_argument("--spec", required=True)

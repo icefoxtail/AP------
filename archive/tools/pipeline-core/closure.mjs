@@ -9,13 +9,14 @@ import { validateRuntimeBundle } from './runtime.mjs';
 import { axisName } from './projection.mjs';
 import { validateRenderReviewReuseReceipt } from './render-impact.mjs';
 import { createContinuationDenominator, validateContinuationDenominator } from './continuation.mjs';
+import { validateSourceRecoveryLedger } from './source-recovery.mjs';
 
 export const RUN_VERSION = 'APMATH_PIPELINE_RUN_v1';
 export const RUN_VERSION_V2 = 'APMATH_PIPELINE_RUN_v2';
 export const EVIDENCE_VERSION = 'APMATH_PIPELINE_EVIDENCE_v1';
 export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const profiles = JSON.parse(fs.readFileSync(new URL('./profiles.json', import.meta.url)));
-export const CORE_SHA_INPUT_FILES = Object.freeze(['contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
+export const CORE_SHA_INPUT_FILES = Object.freeze(['contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
 export const CORE_SHA = objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
 const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
 
@@ -27,7 +28,7 @@ export function runInputSha(run) {
   });
   // Decisions are outputs of review, not inputs to the blind source pass.
   // The final requirement map is bound separately by denominatorInput and V3.
-  const payload = { schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA };
+  const payload = { schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, sourceRecoveryLedger: run.sourceRecoveryLedger || null, sourceRecoverySignal: run.sourceRecoverySignal === true, sourceRecoveryStatus: run.sourceRecoveryStatus || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA };
   if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { workBatchId: run.workBatchId || null, builderId: run.builderId || null, builderSessionId: run.builderSessionId || null, builderModelOrAgent: run.builderModelOrAgent || null, sourceAuthority: run.sourceAuthority || null, uidAuthority: run.uidAuthority || null, semanticDependencyBindings: run.semanticDependencyBindings || null, releaseRenderPolicy: run.releaseRenderPolicy || run.releasePolicy || null, viewportProfiles: run.viewportProfiles || profiles.viewports, requiredModeCaseSet: run.requiredModeCaseSet || null });
   if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { predecessor: run.predecessor || null, publicationIntent: run.publicationIntent || null, sharedMaterial: run.sharedMaterial || null, globalLayoutMetadata: run.globalLayoutMetadata || null, contextDependencyRefs: run.contextDependencyRefs || [], declaredContextDependencyUidSet: run.declaredContextDependencyUidSet || [] });
   return objectSha(payload);
@@ -392,6 +393,10 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
   }
   for (const ref of [...run.inputs, ...run.evidence]) {
     try { readBoundFile(root, ref); } catch (error) { errors.push(`CHANGED_DURING_AUDIT:${error.message}`); }
+  }
+  if (run.sourceRecoveryLedger) {
+    const recovery = validateSourceRecoveryLedger(run.sourceRecoveryLedger, run, root);
+    if (recovery.status !== 'PASS') errors.push(...recovery.errors.map(error => `SOURCE_RECOVERY:${error}`));
   }
   if (!errors.length && policy.scope === 'QUESTION_QUALITY' && run.schemaVersion === RUN_VERSION) {
     const authorization = run.productionAuthorization;

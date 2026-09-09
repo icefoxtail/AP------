@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "ALIVE_SOURCE_RECOVERY_P1_REAL_SOURCE_REPORT_v1",
+  "status": "P1_REAL_SOURCE_HARNESS_COMPLETE_CORE_SET_ONLY",
+  "baselineReference": "e6b8d692e77b45f94c072180e64ae809fdebe7f9",
+  "historicalDefectCandidateTotal": 115,
+  "realSourceResolvedTotal": 23,
+  "realSourceIncompleteTotal": 92,
+  "realSourceNotFoundTotal": 0,
+  "p1ActiveEvaluationTotal": 23,
+  "goldFreezeStatus": "FROZEN_BEFORE_ENGINE",
+  "goldFreezeManifestSha256": "sha256:9f39b3ed85b32465e593bae871f45ef2b694e24f4df24eef3b3ddc6d000b7d6d",
+  "goldFrozenBeforeEngine": true,
+  "realSourceArtifactValidationRef": "reports/alive-source-recovery-p1-real-source-20260909/real_source_validation.json",
+  "goldCounts": {
+    "ANSWER_KEY_DEFECT": 1,
+    "QUESTION_PAYLOAD_DEFECT": 4,
+    "NO_DEFECT": 18
+  },
+  "r0ApplicableCount": 1,
+  "r1ApplicableCount": 2,
+  "r3DeferredCount": 1,
+  "r5BlockedCount": 0,
+  "r6DeferredCount": 1,
+  "engineDiagnosisMismatchCount": 0,
+  "activeRecoveryAttemptCount": 3,
+  "activeRecoveryPassCount": 3,
+  "activeRecoveryFailCount": 0,
+  "safetyCounters": {
+    "BLIND_VERIFIER_INDEPENDENCE_VIOLATION_COUNT": 0,
+    "VALIDATOR_SELF_PASS_COUNT": 0,
+    "UNAUTHORIZED_ADOPTION_COUNT": 0,
+    "SOURCE_ORIGINAL_MUTATION_COUNT": 0,
+    "SHADOW_PUBLICATION_COUNT": 0,
+    "DENOMINATOR_MUTATION_COUNT": 0
+  },
+  "mismatches": [],
+  "readiness": {
+    "IMPLEMENTATION_BASELINE_FREEZE": "PASS",
+    "P1_OFFLINE_REGRESSION": "FAIL",
+    "P2_SHADOW_READY": "NO",
+    "BOUNDED_PRODUCTION_READY": "NO",
+    "DEFAULT_PRODUCTION_READY": "NO",
+    "CANONICAL_READY": "NO"
+  },
+  "note": "This is a real-source core-set run. The full historical resolved set has not yet been completed; existing p1-20260909 artifacts remain non-authoritative and were not used as Gold."
+}

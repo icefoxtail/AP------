@@ -1,0 +1,84 @@
+{
+  "goldCategory": "QUESTION_PAYLOAD_DEFECT",
+  "goldDefectTypes": [
+    "DUPLICATE_CHOICES"
+  ],
+  "expectedPrimaryTier": "R1",
+  "caseId": "historical-seq-800",
+  "sourceQuestionUid": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#11",
+  "immutableSourceRef": "external-source:D:/기출/1학기중간/고1/23 여수여고+/수학 상 (23 여수여고).pdf",
+  "immutableSourceSha256": "sha256:59db72e4cd621f085d952661b7cda3a2d6ca6c278b4a8e2c0502fd3a27f7beae",
+  "sourcePageNumber": 3,
+  "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/yeosu/page-3.png",
+  "sourcePageEvidenceSha256": "sha256:605943043b1d7ef29c6cdfa2ae7649f7546afb03fba0b0346b463ebbb38eda6d",
+  "sourcePayload": {
+    "id": 11,
+    "level": "중",
+    "category": "음수의 제곱근",
+    "originalCategory": "복소수",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "wide": false,
+    "content": "$\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$를 만족시키는 실수 $a, b$에 대하여 $ab$의 값은? [3.6점]",
+    "choices": [
+      "$-4\\sqrt{6}$",
+      "$2\\sqrt{6}$",
+      "$-2\\sqrt{6}$",
+      "$4\\sqrt{6}$",
+      "$4\\sqrt{6}$"
+    ],
+    "tags": [
+      "객관식",
+      "제곱근",
+      "근호",
+      "복소수",
+      "조건해석",
+      "계산",
+      "개념"
+    ],
+    "sourceEvidence": {
+      "sourceEvidenceStatus": "REAL_SOURCE_RESOLVED",
+      "fullPageVerified": true,
+      "questionZoomVerified": true,
+      "choicesVerified": true,
+      "immutableSourceRef": "external-source:D:/기출/1학기중간/고1/23 여수여고+/수학 상 (23 여수여고).pdf",
+      "immutableSourceSha256": "sha256:59db72e4cd621f085d952661b7cda3a2d6ca6c278b4a8e2c0502fd3a27f7beae",
+      "sourcePageNumber": 3,
+      "sourcePageEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/yeosu/page-3.png",
+      "sourcePageEvidenceSha256": "sha256:605943043b1d7ef29c6cdfa2ae7649f7546afb03fba0b0346b463ebbb38eda6d",
+      "transcriptionMethod": "PDF_PAGE_MANUAL_PARITY_TRANSCRIPTION",
+      "currentArchiveJsRef": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+      "historicalEvidenceRefs": [
+        "archive/_generated/intelligence/phase3/sequential-review/archive-sequential-subunit-review-batch-003-v1.json#800"
+      ],
+      "sourceAnswerEvidenceRef": "reports/alive-source-recovery-p1-real-source-20260909/source_pages/yeosu/page-7.png",
+      "sourceAnswerEvidenceStatus": "REAL_SOURCE_ANSWER_EVIDENCE_PRESENT"
+    }
+  },
+  "independentSourceSolve": {
+    "solverId": "real-source-solver-A-20260909",
+    "solverSessionId": "real-source-solver-A-historical-seq-800",
+    "inputSourceSha256": "sha256:59db72e4cd621f085d952661b7cda3a2d6ca6c278b4a8e2c0502fd3a27f7beae",
+    "computed": "$4\\sqrt{6}$",
+    "answerUnique": false,
+    "responseContractValid": false,
+    "matchingChoiceIndices": [
+      4,
+      5
+    ],
+    "mathVerdict": "PASS",
+    "defectSignals": [
+      "DUPLICATE_CHOICES"
+    ],
+    "reasoningSummary": "The PDF choices ④ and ⑤ are both 4√6; the independent computation is 4√6, so the choice contract is non-unique."
+  },
+  "sourceAnswerEvidence": {
+    "answer": "⑤",
+    "page": 7
+  },
+  "goldArtifactSha256": "sha256:4f89bb49c0ea3af54c3c61b9267396338dddfefed49116638382d741854563c5"
+}

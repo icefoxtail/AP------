@@ -130,6 +130,14 @@
             "type": "string",
             "minLength": 1
           },
+          "slotUid": {
+            "type": "string",
+            "minLength": 1
+          },
+          "effectiveArtifactUid": {
+            "type": "string",
+            "minLength": 1
+          },
           "sourceExamId": {
             "type": "string",
             "minLength": 1
@@ -542,6 +550,26 @@
     "workBatchId": {
       "type": "string",
       "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "sourceRecoveryLedger": {
+      "type": "object",
+      "required": ["schemaVersion", "initialIncludedScopeUidSet", "initialIncludedScopeUidSetSha256", "items"],
+      "properties": {
+        "schemaVersion": { "const": "ALIVE_SOURCE_RECOVERY_LEDGER_v1" },
+        "initialIncludedScopeUidSet": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "initialIncludedScopeUidSetSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "items": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "events": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+        "latestBySource": { "type": "object", "additionalProperties": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "sourceRecoverySignal": {
+      "type": "boolean"
+    },
+    "sourceRecoveryStatus": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "additionalProperties": true

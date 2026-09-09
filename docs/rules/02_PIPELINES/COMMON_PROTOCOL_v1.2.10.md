@@ -682,6 +682,7 @@ FINAL_SCOPE_DISPOSITION =
     TARGET_INCLUDED
     OUT_OF_SCOPE_CONFIRMED
     WITHDRAWN_VERIFIED
+    DERIVED_REPLACEMENT_VERIFIED
 ```
 
 이를 canonical map으로 봉인한다.
@@ -693,7 +694,14 @@ FINAL_SCOPE_DISPOSITION_MAP_SHA = SHA256(canonical map {
     scopeEvidenceRef,
     sourceCorrectnessImpactStatus,
     productionStudentFacingActive,
-    withdrawalEvidenceSha [if applicable]
+    withdrawalEvidenceSha [if applicable],
+    recoveredQuestionUid [if DERIVED_REPLACEMENT_VERIFIED],
+    effectiveArtifactUid [if DERIVED_REPLACEMENT_VERIFIED],
+    replacementEvidenceRef [if DERIVED_REPLACEMENT_VERIFIED],
+    replacementEvidenceSha [if DERIVED_REPLACEMENT_VERIFIED],
+    replacementLineageParity [if DERIVED_REPLACEMENT_VERIFIED],
+    productionOriginalActive [if DERIVED_REPLACEMENT_VERIFIED],
+    productionRecoveredActive [if DERIVED_REPLACEMENT_VERIFIED]
   }
 })
 ```
@@ -712,11 +720,11 @@ POST_BASELINE_WITHDRAWAL_REQUEST_COUNT - POST_BASELINE_WITHDRAWAL_REFROZEN_VERIF
 
 FINAL_SCOPE_DISPOSITION_INVALID_COUNT =
 count(uid in INITIAL_INCLUDED_SCOPE_UID_SET where
-      finalScopeDisposition NOT IN {TARGET_INCLUDED, OUT_OF_SCOPE_CONFIRMED, WITHDRAWN_VERIFIED})
+      finalScopeDisposition NOT IN {TARGET_INCLUDED, OUT_OF_SCOPE_CONFIRMED, WITHDRAWN_VERIFIED, DERIVED_REPLACEMENT_VERIFIED})
 
 EXCLUDED_CORRECTNESS_DEFECT_STILL_IN_PRODUCTION_COUNT =
 count(uid in INITIAL_INCLUDED_SCOPE_UID_SET where
-      finalScopeDisposition NOT IN {TARGET_INCLUDED, OUT_OF_SCOPE_CONFIRMED}
+      finalScopeDisposition NOT IN {TARGET_INCLUDED, DERIVED_REPLACEMENT_VERIFIED, OUT_OF_SCOPE_CONFIRMED}
       AND sourceCorrectnessImpactStatus IN {CORRECTNESS_AFFECTING, MIXED}
       AND productionStudentFacingActive == true)
 ```
@@ -726,13 +734,28 @@ count(uid in INITIAL_INCLUDED_SCOPE_UID_SET where
 final target denominator도 disposition map과 직접 대조한다.
 
 ```text
-TARGET_INCLUDED_UID_SET_FROM_SCOPE_MAP =
-{ uid in INITIAL_INCLUDED_SCOPE_UID_SET where finalScopeDisposition == TARGET_INCLUDED }
+FINAL_TARGET_SLOT_UID_SET_FROM_SCOPE_MAP =
+{ slotUid in INITIAL_INCLUDED_SCOPE_UID_SET where
+  finalScopeDisposition IN {TARGET_INCLUDED, DERIVED_REPLACEMENT_VERIFIED} }
+
+EFFECTIVE_FINAL_ARTIFACT_MAP =
+slotUid -> effectiveArtifactUid
+
+For TARGET_INCLUDED, effectiveArtifactUid is the original/current target
+artifact identity. For DERIVED_REPLACEMENT_VERIFIED,
+slotUid == sourceQuestionUid and effectiveArtifactUid == recoveredQuestionUid.
 
 FINAL_TARGET_SCOPE_PARITY = PASS iff
-FINAL_TARGET_UID_SET == TARGET_INCLUDED_UID_SET_FROM_SCOPE_MAP
-AND FINAL_TARGET_COUNT == count(TARGET_INCLUDED_UID_SET_FROM_SCOPE_MAP)
+FINAL_TARGET_SLOT_UID_SET == FINAL_TARGET_SLOT_UID_SET_FROM_SCOPE_MAP
+AND FINAL_TARGET_COUNT == count(FINAL_TARGET_SLOT_UID_SET_FROM_SCOPE_MAP)
+AND EFFECTIVE_FINAL_ARTIFACT_MAP is complete and unique
 ```
+
+`DERIVED_REPLACEMENT_VERIFIED`는 correctness-affecting source defect를
+단순 scope exclusion으로 제거하지 않고, 원본 slot이 정상 derived artifact를
+1:1로 승계하는 별도 final-scope disposition이다. 이 disposition을 사용한
+slot은 `TARGET_INCLUDED`와 동일하게 final target denominator에 포함되며,
+source UID는 initial denominator에서 삭제하지 않는다.
 
 최종 HARD invariant:
 
@@ -743,6 +766,54 @@ EXCLUDED_CORRECTNESS_DEFECT_STILL_IN_PRODUCTION_COUNT == 0
 UNVERIFIED_SCOPE_WITHDRAWAL_COUNT == 0
 UNVERIFIED_POST_BASELINE_WITHDRAWAL_COUNT == 0
 ```
+
+## 4.2.2 Derived Source Recovery Replacement Lock (v1.2 design amendment)
+
+본 절은 `ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2` 구현을 위한
+필수 contract extension이다. 문서가 `DESIGN_CANDIDATE / NOT_YET_OPERATIVE`
+인 동안에는 전역 production default나 canonical promotion을 변경하지
+않지만, recovery evidence가 제공되는 경우 아래 invariant를 검증한다.
+
+source slot identity와 학생용 artifact identity를 분리한다.
+
+```text
+slotUid = sourceQuestionUid
+effectiveArtifactUid = recoveredQuestionUid
+```
+
+`DERIVED_REPLACEMENT_VERIFIED`는 다음을 모두 만족할 때만 유효하다.
+
+```text
+sourceQuestionUid IN INITIAL_INCLUDED_SCOPE_UID_SET
+recoveredQuestionUid is unique and distinct from sourceQuestionUid
+replacementCardinality == 1:1
+sourceOriginalPreserved == true
+productionOriginalActive == false
+productionRecoveredActive == true
+replacementLineageParity == PASS
+recoveredQualityClosure == PASS
+recoveryAuthority IN {BOUNDED_PRODUCTION, DEFAULT_PRODUCTION}
+productionAdoptionStatus == ADOPTED
+INITIAL_INCLUDED_SCOPE_UID_SET unchanged
+INITIAL_INCLUDED_SCOPE_UID_SET_SHA unchanged
+```
+
+`SHADOW_ONLY`, `NOT_AUTHORIZED`, `AUTHORIZED`, 0:1, 1:N, N:1,
+original+recovered 동시 active, lineage가 없는 recovered artifact는 final
+target replacement로 사용할 수 없다. 위반 시 Final Seal은 다음 aggregate를
+통해 fail-closed 한다.
+
+```text
+UNAUTHORIZED_RECOVERY_ADOPTION_COUNT == 0
+SHADOW_RECOVERED_UNAPPROVED_COUNT == 0
+DERIVED_REPLACEMENT_PARITY_FAIL_COUNT == 0
+```
+
+`RECOVERED`에서 `ADOPTED`로 가는 transition은 authority scope, parity,
+quality closure를 확인한 단일 원자 결과로만 기록한다. 중간에 `ADOPTED`만
+기록하는 상태는 허용하지 않는다. 이 amendment는 기존
+`APPROVED_SOURCE_REPAIR`, source truth, freeze, blind independent math,
+final closure를 약화하지 않는다.
 
 ## 4.3 예상 문항 수를 최종값으로 고정하지 않는다
 

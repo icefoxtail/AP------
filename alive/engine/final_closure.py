@@ -23,6 +23,7 @@ from .exact_verifier import verify_question
 from .metadata_finalizer import finalize_similar_metadata
 from .adaptive_method_profile import lint_solution_method, method_profile_for_question
 from .pipeline_closure import shared_closure
+from .source_recovery import release_gate
 
 
 FINAL_SCHEMA_VERSION = "0.1.0"
@@ -393,6 +394,19 @@ def _variant_proof_gate(value: Any, count: int) -> tuple[dict[str, Any], list[di
     return {"status": "PASS" if not findings else "FAIL", "questionCount": len(rows), "variantProofLedgerComplete": value.get("variantProofLedgerComplete")}, findings
 
 
+def _source_recovery_manifest_signal(value: Any) -> bool:
+    """Read only internal run/closure metadata, never student question fields."""
+
+    if not isinstance(value, dict):
+        return False
+    return bool(
+        value.get("sourceRecoveryLedger")
+        or value.get("sourceRecoverySignal") is True
+        or value.get("sourceRecoveryStatus")
+        or value.get("derivedSourceRecovery")
+    )
+
+
 def audit_final_closure(
     root: Path,
     input_path: Path,
@@ -403,6 +417,7 @@ def audit_final_closure(
     js_path: str | None = None,
     variant_proof_ledger_path: Path | None = None,
     quality_manifest_path: Path | None = None,
+    source_recovery_ledger_path: Path | None = None,
 ) -> dict[str, Any]:
     """Audit a final JS/ZIP and return a per-question fail-closed report."""
 
@@ -504,6 +519,49 @@ def audit_final_closure(
         manifest = quality_manifest_path or input_path.with_suffix(input_path.suffix + '.closure.json')
         common = shared_closure(root, manifest, input_path)
         gate_status['commonClosure'] = common['status']
+        detected_recovery_path = source_recovery_ledger_path
+        if detected_recovery_path is None:
+            for candidate_path in (
+                input_path.with_suffix(input_path.suffix + ".source-recovery.json"),
+                input_path.parent / "source-recovery-ledger.json",
+            ):
+                if candidate_path.is_file():
+                    detected_recovery_path = candidate_path
+                    break
+        recovery_value = _read_json(detected_recovery_path, "source recovery ledger") if detected_recovery_path else None
+        # Read the exact manifest selected by shared_closure, including the
+        # default <input>.closure.json path. Recovery signals are internal
+        # run/sidecar metadata and must not depend on student question fields.
+        closure_manifest_value = _read_json(manifest, "closure manifest") if manifest.is_file() else None
+        if recovery_value is None and isinstance(closure_manifest_value, dict) and isinstance(closure_manifest_value.get("sourceRecoveryLedger"), dict):
+            recovery_value = closure_manifest_value["sourceRecoveryLedger"]
+        internal_signal = _source_recovery_manifest_signal(closure_manifest_value)
+        if internal_signal and recovery_value is None:
+            recovery_gate = {
+                "status": "BLOCKED",
+                "counts": {"sourceRecoveryLedgerRequiredCount": 1},
+                "errors": ["SOURCE_RECOVERY_LEDGER_REQUIRED"],
+                "productionSeal": "BLOCKED",
+                "executionContinues": True,
+            }
+        else:
+            recovery_gate = release_gate(recovery_value, evidence_root=root, artifact_root=root) if recovery_value is not None else {
+            "status": "PASS",
+            "counts": {},
+            "errors": [],
+            "productionSeal": "PASS",
+            "executionContinues": True,
+            }
+        gate_status["sourceRecovery"] = recovery_gate["status"]
+        all_static.extend(
+            {
+                "gate": "sourceRecovery",
+                "code": str(error),
+                "severity": "HARD_FAIL",
+                "message": "source recovery release gate did not pass",
+            }
+            for error in recovery_gate.get("errors", [])
+        )
         if variant_proof_ledger_path:
             gate_status["variant"] = variant_gate["status"]
         overall = "PASS" if all(value == "PASS" for value in gate_status.values()) else "FAIL"
@@ -523,6 +581,7 @@ def audit_final_closure(
             "findings": all_static + review_findings + browser_findings + external_findings + variant_findings,
             "node": node,
             "commonClosure": common,
+            "sourceRecovery": recovery_gate,
             "publicationStatus": "NOT_PUBLISHED",
         }
         if output_path:

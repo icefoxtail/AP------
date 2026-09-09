@@ -84,6 +84,11 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 `02_PIPELINES/코드검사실_…통합운영프로토콜…`은 시험지 작업 전체를 조율하는 상위 운영 기준이다. 개별 추출·해설·수정 문서는 이 통합 기준의 세부 실행 모듈로 본다.
 
+`05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md`는 원본 불변
+source-defect recovery의 설계 후보 문서다. 현재는 `DESIGN_CANDIDATE /
+NOT_YET_OPERATIVE`이므로 `MANIFEST.md`의 운영 rule pack에는 포함하지 않으며,
+구현 기준 사본은 `alive/05_DESIGN/`에 보존한다.
+
 좌표·점·직선·교점 등 수학적 SVG의 제작자는 `04_VISUAL/도형추출.md`의 EXPECTED FACT·좌표 모델
 준비를, 독립검수자는 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`의 v1.2 최소
 coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geometry 수학 PASS를 대체하지 않는다.
@@ -97,6 +102,19 @@ coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geomet
 - `NOT_TESTED`: 1차 구조 단계에서는 기록 가능하지만 최종 PASS·봉인 불가
 - `internal-review-live.html`: 사용 가능한 경우 별도 확인, 없으면 `NOT_APPLICABLE` 또는 `NOT_TESTED` 사유 기록
 - 실제 증거: `reports/browser_render_check.md` 또는 동등한 캡처·출력물·렌더 로그
+
+## 3-2. Source Defect Auto-Recovery v1.2 design routing
+
+source defect 자동복구의 설계 기준은 저장소의
+`alive/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md`를
+참조한다. 현재 상태는 `DESIGN_CANDIDATE / NOT_YET_OPERATIVE`이며, 이 문서가
+canonical/production 기본값을 자동으로 바꾸지는 않는다.
+
+구현에서 `SOURCE_FIDELITY_RESTORATION`, 기존 명시 승인 경로인
+`APPROVED_SOURCE_REPAIR`, 원본을 보존하는 `DERIVED_SOURCE_RECOVERY`를
+분리한다. derived replacement가 final target을 승계하려면 Common Protocol의
+`DERIVED_REPLACEMENT_VERIFIED` 1:1 lineage, authority/adoption, initial
+denominator parity, quality closure 및 기존 final seal을 모두 통과해야 한다.
 
 ## 3. 기준 원본
 
