@@ -23,6 +23,7 @@ from .exact_verifier import verify_question
 from .metadata_finalizer import finalize_similar_metadata
 from .adaptive_method_profile import lint_solution_method, method_profile_for_question
 from .pipeline_closure import shared_closure
+from .source_recovery import release_gate
 
 
 FINAL_SCHEMA_VERSION = "0.1.0"
@@ -403,6 +404,7 @@ def audit_final_closure(
     js_path: str | None = None,
     variant_proof_ledger_path: Path | None = None,
     quality_manifest_path: Path | None = None,
+    source_recovery_ledger_path: Path | None = None,
 ) -> dict[str, Any]:
     """Audit a final JS/ZIP and return a per-question fail-closed report."""
 
@@ -504,6 +506,24 @@ def audit_final_closure(
         manifest = quality_manifest_path or input_path.with_suffix(input_path.suffix + '.closure.json')
         common = shared_closure(root, manifest, input_path)
         gate_status['commonClosure'] = common['status']
+        recovery_value = _read_json(source_recovery_ledger_path, "source recovery ledger") if source_recovery_ledger_path else None
+        recovery_gate = release_gate(recovery_value) if recovery_value is not None else {
+            "status": "PASS",
+            "counts": {},
+            "errors": [],
+            "productionSeal": "PASS",
+            "executionContinues": True,
+        }
+        gate_status["sourceRecovery"] = recovery_gate["status"]
+        all_static.extend(
+            {
+                "gate": "sourceRecovery",
+                "code": str(error),
+                "severity": "HARD_FAIL",
+                "message": "source recovery release gate did not pass",
+            }
+            for error in recovery_gate.get("errors", [])
+        )
         if variant_proof_ledger_path:
             gate_status["variant"] = variant_gate["status"]
         overall = "PASS" if all(value == "PASS" for value in gate_status.values()) else "FAIL"
@@ -523,6 +543,7 @@ def audit_final_closure(
             "findings": all_static + review_findings + browser_findings + external_findings + variant_findings,
             "node": node,
             "commonClosure": common,
+            "sourceRecovery": recovery_gate,
             "publicationStatus": "NOT_PUBLISHED",
         }
         if output_path:

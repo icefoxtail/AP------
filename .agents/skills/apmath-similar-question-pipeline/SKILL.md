@@ -140,6 +140,34 @@ Before generating or dispatching any work:
    context. It contains no authoritative answer or solution. Recompute every
    answer independently.
 
+### Source Defect Recovery lane (v1.2 design candidate)
+
+When the locked source itself is defective, use the repository recovery core
+(`alive/engine/source_recovery.py`) through a distinct `SOURCE_RECOVERY`
+operation. Do not treat it as ordinary similar-question generation and do not
+modify the source payload. Keep `slotUid` (initial denominator identity)
+separate from `effectiveArtifactUid` (student-facing artifact identity).
+
+The recovery policy, authority, and adoption axes are independent:
+
+```text
+PRESERVE_ONLY | SHADOW_AUTO_RECOVER | AUTO_RECOVER
+SHADOW_ONLY | BOUNDED_PRODUCTION | DEFAULT_PRODUCTION
+NOT_AUTHORIZED | AUTHORIZED | ADOPTED
+```
+
+R0~R6 must retain independent `applicability`, `capability`, and `execution`
+states. `RECOVERY_TARGETED_REPAIR` creates a new candidate version/id/payload
+SHA under the same recovery plan and reruns FREEZE plus blind verification; it
+never mutates a frozen candidate. A recovered artifact is not a production
+target until `DERIVED_REPLACEMENT_VERIFIED` has passed one-to-one lineage,
+quality, authority/adoption, and initial denominator parity.
+
+If source evidence is missing, record `SOURCE_RECOVERY_EVIDENCE_BLOCKED` with
+`requiredResource` and `resumeFromStage=SOURCE_RECHECK`; do not convert that
+condition into `HUMAN_REQUIRED`. This section is design routing only while the
+v1.2 rulebook remains `DESIGN_CANDIDATE / NOT_YET_OPERATIVE`.
+
 Read these references when operating the indicated route:
 
 - [staged-exam-workflow.md](references/staged-exam-workflow.md): commands,
