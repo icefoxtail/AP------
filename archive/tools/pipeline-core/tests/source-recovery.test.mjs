@@ -64,6 +64,50 @@ test('shadow recovered final target is blocked even when its artifact is otherwi
   assert.ok(result.errors.includes('SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION'));
 });
 
+test('shadow authority cannot be upgraded by forged ADOPTED replacement fields', () => {
+  const result = validateSourceRecoveryLedger({
+    ...base,
+    items: [{
+      ...adopted,
+      recoveryAuthority: 'SHADOW_ONLY',
+      productionAdoptionStatus: 'ADOPTED',
+      replacementDisposition: 'DERIVED_REPLACEMENT_VERIFIED',
+      finalTarget: true,
+    }],
+  });
+  assert.equal(result.status, 'BLOCKED');
+  assert.ok(result.errors.includes('SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION'));
+});
+
+test('partial producer and retry budgets cannot be counted as exhaustion', () => {
+  const result = validateSourceRecoveryLedger({
+    ...base,
+    items: [{
+      sourceQuestionUid: 'Q17',
+      status: 'RECOVERING',
+      tierMatrix: {
+        R1: { applicability: 'APPLICABLE_PRIMARY', capability: 'ACTIVE', execution: 'ATTEMPTED_EXHAUSTED' },
+      },
+      producerAttempts: {
+        R1: {
+          producerStatus: 'COMPLETED',
+          attemptCount: 1,
+          candidateBudget: 3,
+          candidateBudgetConsumed: 1,
+          retryBudget: 1,
+          retryBudgetConsumed: false,
+          generatedCandidateCount: 1,
+          attemptEvidenceRef: 'attempt-r1',
+          attemptEvidenceSha: 'sha256:' + 'a'.repeat(64),
+          allProducedCandidatesRejected: false,
+        },
+      },
+    }],
+  });
+  assert.equal(result.status, 'BLOCKED');
+  assert.ok(result.errors.includes('RECOVERY_PRODUCER_BUDGET_NOT_EXHAUSTED'));
+});
+
 test('pipeline-core closure consumes the recovery ledger as a hard gate', () => {
   const f = fixture();
   try {

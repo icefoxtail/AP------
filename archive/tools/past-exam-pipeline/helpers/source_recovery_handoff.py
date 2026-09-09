@@ -48,6 +48,7 @@ def main(argv: list[str] | None = None) -> int:
         "qualityClosureEvidence": "quality_closure_evidence",
         "lineageParityEvidence": "lineage_parity_evidence",
         "recoveryPlanId": "recovery_plan_id",
+        "evidenceRoot": "evidence_root",
     }
     normalized = {aliases.get(key, key): value for key, value in request.items()}
     if "defectTypes" in request:

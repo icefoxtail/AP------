@@ -79,6 +79,29 @@ class FinalClosureTests(unittest.TestCase):
             self.assertEqual("BLOCKED", report["sourceRecovery"]["status"])
             self.assertIn("SOURCE_RECOVERY_LEDGER_REQUIRED", report["sourceRecovery"]["errors"])
 
+    def test_final_closure_reads_recovery_signal_from_default_manifest(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            js = self._write_js(root)
+            default_manifest = js.with_suffix(js.suffix + ".closure.json")
+            default_manifest.write_text(json.dumps({"sourceRecoverySignal": True}), encoding="utf-8")
+
+            report = audit_final_closure(root, js, None, None, None)
+
+            self.assertEqual("BLOCKED", report["sourceRecovery"]["status"])
+            self.assertIn("SOURCE_RECOVERY_LEDGER_REQUIRED", report["sourceRecovery"]["errors"])
+
+    def test_final_closure_without_recovery_signal_keeps_existing_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            js = self._write_js(root)
+            default_manifest = js.with_suffix(js.suffix + ".closure.json")
+            default_manifest.write_text(json.dumps({"sourceRecoverySignal": False}), encoding="utf-8")
+
+            report = audit_final_closure(root, js, None, None, None)
+
+            self.assertEqual("PASS", report["sourceRecovery"]["status"])
+
     def test_final_closure_catches_half_boundary_arithmetic_contradiction(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

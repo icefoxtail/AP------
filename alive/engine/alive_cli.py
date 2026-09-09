@@ -2622,6 +2622,7 @@ def command_source_recovery_run(args: argparse.Namespace) -> int:
         "verifierSessionId": "verifier_session_id",
         "qualityClosureEvidence": "quality_closure_evidence",
         "lineageParityEvidence": "lineage_parity_evidence",
+        "evidenceRoot": "evidence_root",
     }
     normalized = {aliases.get(key, key): value for key, value in request.items()}
     blind_solve = normalized.pop("blind_verifier_solve", None)
