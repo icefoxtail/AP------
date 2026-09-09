@@ -1,0 +1,97 @@
+{
+  "generatedAt": "2026-09-09T21:00:26.702085+00:00",
+  "batchId": "1final_middle_m2_2022_2025",
+  "jobCount": 1,
+  "extractionValidatedCount": 0,
+  "prePromotionValidatedCount": 0,
+  "passedCount": 0,
+  "needsWorkCount": 1,
+  "missingContentCount": 0,
+  "visionRequiredContentOrChoicesCount": 5,
+  "missingAnswerCount": 0,
+  "missingRequiredSolutionCount": 0,
+  "missingSubunitMetadataCount": 0,
+  "invalidSubunitMetadataCount": 0,
+  "missingImageCount": 0,
+  "forbiddenCandidateImagePathCount": 0,
+  "objectiveChoiceMismatchCount": 5,
+  "protectedArchiveTouched": false,
+  "policy": "V2 extraction validation: fullPageImagePath/cropPath are not image fallbacks; external answer/solution blanks are not failures.",
+  "status": "NEEDS_WORK",
+  "items": [
+    {
+      "examId": "20_매산고_2학기_기말_고1_기출",
+      "generatedAt": "2026-09-09T21:00:26.702085+00:00",
+      "candidateFile": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\child3-final\\candidate\\20_매산고_2학기_기말_고1_기출.completed.js",
+      "questionCount": 20,
+      "expectedQuestionCount": 20,
+      "policy": {
+        "version": "past_exam_pipeline_v2_full_page_first",
+        "image": "blank is valid for no-visual questions; nonblank image must point only to a visual asset crop",
+        "fullPageImagePath": "source evidence only; never used as image fallback",
+        "cropPath": "auxiliary/debug evidence only; never used as image fallback",
+        "answerSolution": "blank answer/solution with external_agent_required is valid at extraction stage",
+        "contentChoices": "contentSource/choicesSource=vision_required remains needs_work; no dummy content allowed"
+      },
+      "missingVisualAssetImageFiles": [],
+      "forbiddenCandidateImagePaths": [],
+      "missingContent": [],
+      "visionRequiredContentOrChoices": [
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "missingAnswer": [],
+      "missingRequiredSolution": [],
+      "missingSubunitMetadata": [],
+      "invalidSubunitMetadata": [],
+      "objectiveChoiceCountMismatches": [
+        "16",
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "serializationIssues": [
+        "SERIALIZATION_FAIL:q14:LATEX_ESCAPE",
+        "SERIALIZATION_FAIL:q18:LATEX_ESCAPE",
+        "SERIALIZATION_FAIL:q20:LATEX_ESCAPE",
+        "SERIALIZATION_FAIL:q20:ODD_MATH_DELIMITER",
+        "SERIALIZATION_FAIL:q4:LATEX_ESCAPE"
+      ],
+      "sourceEvidence": {
+        "status": "PASS",
+        "sourceInventorySha": "sha256:5d7723b95a71d562a8353232a2ea51ab965bc8bdfbba7cccbc6f75fa83eab39b",
+        "sourceIdentityMapSha": "sha256:5590791b23e4fd76097f1ea8a82c29d4264e2cc38092be3c3d2d37273739c88a",
+        "issues": [],
+        "sourceFidelitySha": "",
+        "mathReviewSha": "",
+        "assetProvenanceSha": "",
+        "sourceFidelityStatus": "MISSING",
+        "mathReviewStatus": "MISSING",
+        "assetProvenanceStatus": "MISSING",
+        "finalEvidencePass": false
+      },
+      "extractionStatus": "NEEDS_WORK",
+      "prePromotionStatus": "BLOCKED",
+      "compatibility": {
+        "final_validation_passed": false,
+        "statusMeaning": "legacy boolean is true only for PRE_PROMOTION_VALIDATED; EXTRACTION_VALIDATED is not a production-quality PASS"
+      },
+      "issues": [
+        "vision_required_content_or_choices",
+        "objective_choice_count_mismatch",
+        "SERIALIZATION_FAIL"
+      ],
+      "notFailures": [
+        "blank_image_when_no_visual_asset",
+        "blank_answer_external_agent_required",
+        "blank_solution_external_agent_required"
+      ],
+      "protectedArchiveTouched": false,
+      "status": "NEEDS_WORK"
+    }
+  ]
+}

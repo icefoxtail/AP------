@@ -1,0 +1,636 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "rulePackSha": "sha256:1337e44c4f650ff080b63961a0867009ab1b6e7dd667be7cd82347d12bf61f17",
+  "target": {
+    "examId": "23_한영고_2학기_기말_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP_independent_review_20260909_125050\\packages\\23_한영고_2학기_기말_고1_기출_EXTERNAL_REVIEW\\source\\2023_한영고_2기말.hwp.pdf",
+        "bytes": 108833,
+        "sha256": "sha256:e3044573cc43e41c7e026b15270edcabf327a4700b831f15e1fed3fb2271796b"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "gold-04-child-agent",
+  "readerSessionId": "gold-04-23-hanyeong-calibration-20260910",
+  "startedAt": "2026-09-09T20:02:18.731Z",
+  "frozenAt": "2026-09-09T20:04:18.733Z",
+  "baselineObservation": "No production target JS exists in the clean worktree; external package contents are intentionally deferred until fresh GOLD freeze.",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:cf97ed2c096d7a574836387850336b1a535e6c576b0a9fed7a3bc11205347e60",
+      "bytes": 41553,
+      "examTitle": "23_매산여고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "수학(하)"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Selected as a recent high-school grade-1 second-semester final production file from origin/main; same curriculum route and comparable function/logic/counting scope.",
+      "qualityAcceptanceReason": "Full file was parsed and read question-by-question through the final question; solutions are non-empty and demonstrate reproducible student-facing reasoning, with visual separation where applicable.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Complete question objects use the stable archive schema with id, level, category, course/unit, type, layout, tags, content, choices, answer, and solution; later samples also show typed subunit metadata."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Solutions consistently state a key idea, interpret conditions, show intermediate reasoning, conclude with the answer, and distinguish objective answer labels from subjective responses."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Each sample carries standardCourse, standardUnitKey, standardUnit, standardUnitOrder, questionType, layoutTag, tags, and subunit metadata suitable for taxonomy comparison."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Problem visuals are separated in image fields and use exam-specific assets; image-bearing questions retain the visual role in tags and the text refers to the figure."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Where a visual materially improves understanding, solutionImage is separate from problem image and is paired with alt text, caption, and size metadata."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All observed questions use explicit layoutTag values, preserve choice arrays without duplicated numbering, and keep subjective prompts readable as independent blocks."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:28d1c97da2b4815f9c721b70ac945dd095889a88ccc3fe7215261e99b5dfb872",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q1: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:fd002da29ebf50adf9f7f7d34f3fcdcffee7b508c8556b6a4795f01a6a0c152b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q2: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:d519c1e7932c1d983e1a090ce31cec4d3736370535995002c4cfb32479e6c18d",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q3: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:9831c568e293f9d9b0a0c9ca50da9901205d866886eafc91b9f996d9c8d5753d",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q4: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:fc576bf06d9461837a6f5ef7914487e899de843e36cdb7109b40a084ce4365fb",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q5: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:219f2c2d1195d124af93d1c57b460b0759a31ec50ff5ae35e444fc928a290e0b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q6: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:0ad2fc4d68a8b2c50006978c294b3d2814d6a1b73f5574e8f11b91fcbc30cca5",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q7: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:356e2820173b2f685fc26bf3fe92aec5a77533dbc992a1eb3b1bf9b4c62f4de4",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q8: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:a2ffa20e362fbda01f29837b7b0da0168f7594d1f12027773d3a8bc49cc1da5b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q9: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:bea265b45945e197d5d628dd320c569103e9b7b145790ec61a966ebc4bf530db",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q10: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:2f44c1ad354ba77591e813980f5a3eb00ded3b6837623c657737bc7c1d8772a0",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q11: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:04926347568134b27f912900f81ffe7f660fc15116566a2ab37ed0f3277edc24",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q12: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:eefae9efefc27d3e13d65e31e00ca1a11ffd060104be4c56399e7620eddc4620",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q13: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:8fd18fc2dba3192b639e3ed042dbf3e4db8097df67474de810ef08d96ad7745a",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q14: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:ce24483b9bd399106915a7c4dcd383aa7e8db8f32f0e2e19571054097a314962",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q15: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:0728ecd091e2df00ef7532ee0bc6b24d618bfa3407153fc91ab99470271c7d54",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q16: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:8b60a44e3ef16f63c6a043f4202c05b97bf82d19ecbb0f33a987fb2b9aa363ff",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q17: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:4b846aa7459ff48468c93c6d12157eaba1f1eca4a94fb726000232a141f9408a",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q18: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:9c122dfa5cfb2a769e768291c4e21945b8d884348edad51f446a2841ac5e5c8a",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q19: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:a66c90e0afabf67da6e4ead19f7eda474eb08f4b82d48043d75afba59af0f481",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q20: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:2eb57d3666217c4030f96307711997f246543a33dad2d0f7ac7a1dfd03787ff2",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q21: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:cabec645b69d799b0e1758f49d4e62722d9529d49ad135dc8f00aa54dd0471a4",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q22: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:bc8fd5d1ee52cd4a95c2235b40316bd7916909db782388142cba3eeb73225643",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q23: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/24_제일고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:2a38ec637d08d6375ce21666ae3e3b9de2751095654e73c3744257f34f845bc2",
+      "bytes": 33486,
+      "examTitle": "24_제일고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "수학(하)"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Selected as a recent high-school grade-1 second-semester final production file from origin/main; same curriculum route and comparable function/logic/counting scope.",
+      "qualityAcceptanceReason": "Full file was parsed and read question-by-question through the final question; solutions are non-empty and demonstrate reproducible student-facing reasoning, with visual separation where applicable.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Complete question objects use the stable archive schema with id, level, category, course/unit, type, layout, tags, content, choices, answer, and solution; later samples also show typed subunit metadata."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Solutions consistently state a key idea, interpret conditions, show intermediate reasoning, conclude with the answer, and distinguish objective answer labels from subjective responses."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Each sample carries standardCourse, standardUnitKey, standardUnit, standardUnitOrder, questionType, layoutTag, tags, and subunit metadata suitable for taxonomy comparison."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Problem visuals are separated in image fields and use exam-specific assets; image-bearing questions retain the visual role in tags and the text refers to the figure."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Where a visual materially improves understanding, solutionImage is separate from problem image and is paired with alt text, caption, and size metadata."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All observed questions use explicit layoutTag values, preserve choice arrays without duplicated numbering, and keep subjective prompts readable as independent blocks."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:1711b470d5be51044ce3f01e6989e9c4384964e137e8b924a4fa7be701179864",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q1: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:e0a9d3e701132bc5bca0e9d078d407d97190ed01fb2e4a88b9f0006f167dbd36",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q2: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:ebc9f7f10d224c494c8030ae53983c3f622684628f7a2112404d7dff8ee79790",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q3: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:8f21dc73c42c464537fa55000d88dada11b4229cefe8f07d5c9f4249f84d571c",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q4: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:0bfa164c5aaa7374bf5e9cb1d51c0e962ad2b29952536fb975de681b6e56b31b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q5: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:bb1ef316c2366d0612a874605d42d500393e089dca74105e9ae11d046fe4e8ec",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q6: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:df29f25638d17e5412a69176cd26f80c5b01a1d46a03a99c22a00fe2fed7233e",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q7: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:fbd8881172ab85b2e905ed67de0567690d8d9118ef574826568d1cc63d85b041",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q8: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:ac9e66d35cb00266bbf6e19ac45259662cbc59c3ccc5cb4b5e3a9fd9c8a7b0bd",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q9: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:2f8e4c18f636818f66fddf3f65adfab185dc292a41ba0b6cc33cd9cfa866a129",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q10: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:4cf21fb0f4accc7478d9d8d9b22c1c9444707f417e4c9dc2584e8ab4ac86e6a8",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q11: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:baa72e3fdfd4a0652e3a8505959d07157b316ac781af1728b9b24117907eb5d9",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q12: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:ae43c97ba886692afc6e73cbbc8cfda119d74df3994098981aa42a78398d56c2",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q13: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:111382457bb43c0bf755e804f81b7e5d97f11fb2a0a33d961f890fd405a3d9b6",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q14: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:597fa152b4fc0f246b96aad5beda417f75b3d421551dd428ae3a7a70459a5db9",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q15: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:0b0f29c616c663808b36926e41829cb1577db3ca6f56ee9874ea9b2b16e5b90b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q16: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:99fdc96b64586c090e8be14b98b25d2aa002da9d3fbbe67329ebe5bce3d0182b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q17: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:bf154bfd186df600e6d9ea3e47c069d885830cab07b7af18605444ce8002e0bf",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q18: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:07ff23fa27e0fdb60e805439c1c8d7253c0bbd29384e6ad2940a8dad608f2456",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q19: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:c3e6a8fe329cae520f0df59739144d0ea7c235b4e9fba22b0ff5cb3ec927f202",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q20: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:aa3f04a12681dbc5ce52de93f30e9f5fd0e095f333978d5daf673209ea4e82de",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q21: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:bb82c16e8e2fec77e3e901b5dbdf7c097730e748b186b403cb1f8d098a1b779f",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q22: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:17fd6a333bc587232910dac1c6dccf96173c3744daaad0e4b006fe65e25c7523",
+      "bytes": 40167,
+      "examTitle": "25_효천고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Selected as a recent high-school grade-1 second-semester final production file from origin/main; same curriculum route and comparable function/logic/counting scope.",
+      "qualityAcceptanceReason": "Full file was parsed and read question-by-question through the final question; solutions are non-empty and demonstrate reproducible student-facing reasoning, with visual separation where applicable.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Complete question objects use the stable archive schema with id, level, category, course/unit, type, layout, tags, content, choices, answer, and solution; later samples also show typed subunit metadata."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Solutions consistently state a key idea, interpret conditions, show intermediate reasoning, conclude with the answer, and distinguish objective answer labels from subjective responses."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Each sample carries standardCourse, standardUnitKey, standardUnit, standardUnitOrder, questionType, layoutTag, tags, and subunit metadata suitable for taxonomy comparison."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Problem visuals are separated in image fields and use exam-specific assets; image-bearing questions retain the visual role in tags and the text refers to the figure."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Where a visual materially improves understanding, solutionImage is separate from problem image and is paired with alt text, caption, and size metadata."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All observed questions use explicit layoutTag values, preserve choice arrays without duplicated numbering, and keep subjective prompts readable as independent blocks."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:53e4b7697448189af0a26078b4576d9653973294a67bb62aec7b744ff30832bb",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q1: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:4aaac871014748cf9f3db3fa0ff3161681df353c8c371064e76d6fb862b72968",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q2: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:210b21d7e09c642b0b48fcf393dc95429fdff48f7805d8575a68ced0b640818f",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q3: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:1c44d1b6098b6bb628924e9049bc0f9e39300dead7312380cdd0a480cbbaaeb9",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q4: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:5bfe2d36bd1a5996a5f3ae59101413316ecb0ad99491ec369ee40e7ba8efc913",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q5: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:a5b3897ca80a6ca5cf922e29aeceaebd73e3beda90bad0e82edc84d02f1a29e6",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q6: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:10ee3a22992bf0825068d587eef95dba5017146502602dfbad83dbb074374e86",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q7: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:8d668c327b06fcf761e5ad60fcb53151d938ef2b529cff314047c37ae5cae49f",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q8: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:34237d219269503625ef44019f965010dff3646742fde8a3a37702fe62ef0926",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q9: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:8e79164179d987d767dde6975f2d941f93433f23ba7ee8daa7a2c30a6414fb0b",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q10: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:c25f33180a9862d8763f3532900eedef9cb7e8cd0f9640024475b014d625eb3a",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q11: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:7a881ba8d3f7538c9abd8f7357ddbd9b306730c45810d4d5c3be05db7fba4e6c",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q12: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:de931aa540fcb3b160930ba99af3f835f29a6bea67c84bb2d1fc944aaa643478",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q13: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:d2a72cb697cf2b4769c4c7ccb6ba4555547667aef88343c59c9f8ab631e41f8e",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q14: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:fe8aa23467179f071cfb1a8d4676957550c5cdbd2c5e51ec6cdeeb0ce39fd78d",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q15: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:876f3c93e6bed6b16889049b841bf30dd6fad663a89be5a69e619f367a0b8561",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q16: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:407ddcef6bcff981eb03a59a47f1c87da9d55656af572006e367e38967679d37",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q17: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:a1cade7cd0a519dc357c98a5076ec95ae3b6dc15a48c07dcba8a0e57a0f84c33",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q18: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:ed349901f32ec3e7c6121ba73ba26fb7d71c5f589580fafff6d6d42abedb2fc5",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q19: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:47c506fc9bd8167ad4bbc1461ee3ee49483c2a8295d1e50aa282bcec1834618d",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q20: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:350e4c66a1fbc36a640ca893a835a7ed65a3acb3a414f582f69fc2af2a88ba64",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q21: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:e5dbe213ede48ddbdbe9ec3e45feb8d631903ce92a4ab54e4da454df58da7494",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q22: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:e7aa710a2eb6016e2d920593cbb2d47acb9d476622680da34cbadaaf7e119bfe",
+          "solutionExcerpt": "[키포인트]",
+          "observation": "Read complete q23: checked the displayed prompt, type/level, answer/solution structure, and key-point opening against the production-quality profile."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Every solution contains more than a bare answer: key idea, condition interpretation, and a worked conclusion.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js|23"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "The concept or theorem used is named and connected to the given expression.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Domain, range, sign, ordering, or case conditions are explicitly translated before calculation.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/24_제일고_2학기_기말_고1_기출.js|22"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "The chain from setup to result includes the decisive intermediate equations or counting steps.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Objective solutions end by mapping the computed result to the displayed choice number.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "High-level questions retain the nontrivial case split, boundary, or uniqueness argument.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Subjective responses are reproducible and contain enough process for partial-credit assessment.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js|23"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Problem image and solution visual are separate fields/assets and are not conflated.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "A visual is used when it materially clarifies graph, geometry, or spatial reasoning.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "Solution visuals include meaningful alt text and a student-facing caption.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/24_제일고_2학기_기말_고1_기출.js|22"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Visual labels and geometry agree with the equations and stated solution facts.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|18"
+      ]
+    }
+  }
+}

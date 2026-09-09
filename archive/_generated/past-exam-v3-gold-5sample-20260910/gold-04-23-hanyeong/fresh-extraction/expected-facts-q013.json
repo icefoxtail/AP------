@@ -1,0 +1,46 @@
+{
+  "schema": "APMATH_EXPECTED_FACT_v1",
+  "question": "q013",
+  "status": "FROZEN_BUILDER_FACTS",
+  "coordinateModel": {
+    "originX": 250,
+    "originY": 190,
+    "sx": 48,
+    "sy": 34
+  },
+  "facts": [
+    {
+      "factId": "P_CURVE",
+      "expected": "P=(x,2/x), x>0"
+    },
+    {
+      "factId": "Q_CURVE",
+      "expected": "Q=(u,-8/u), u>0"
+    },
+    {
+      "factId": "AREA_FORMULA",
+      "expected": "area=4(x/u)+u/x"
+    },
+    {
+      "factId": "MINIMIZER",
+      "expected": "x/u=1/2"
+    },
+    {
+      "factId": "MINIMUM_AREA",
+      "expected": "4"
+    }
+  ],
+  "computed": {
+    "x": 1.0,
+    "u": 2.0,
+    "P": [
+      1.0,
+      2.0
+    ],
+    "Q": [
+      2.0,
+      -4.0
+    ],
+    "area": 4.0
+  }
+}

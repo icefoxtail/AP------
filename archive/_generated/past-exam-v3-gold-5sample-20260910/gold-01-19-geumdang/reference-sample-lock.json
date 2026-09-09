@@ -1,0 +1,458 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "rulePackSha": "sha256:1337e44c4f650ff080b63961a0867009ab1b6e7dd667be7cd82347d12bf61f17",
+  "target": {
+    "examId": "19_금당고_2학기_기말_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-01-19-geumdang\\source\\2019_금당고_2기말.pdf",
+        "bytes": 1350766,
+        "sha256": "sha256:546135392a1d56734147a198989e11b66c1736492d26e19c1d837816d131f816"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "codex-past-exam-v3-e2e",
+  "readerSessionId": "2019-gangnamgirls-20260910-calibration-1788984394198",
+  "startedAt": "2026-09-09T20:04:34.198Z",
+  "frozenAt": "2026-09-09T20:06:34.198Z",
+  "baselineObservation": "Target archive JS is absent at the pinned main commit; no baseline answer or solution was used.",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:199480e38c76340a0441f27d2880ec91527af07a5d4f5ed5136c0b30f682dbf6",
+      "bytes": 37294,
+      "examTitle": "25_금당고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Pinned origin/main production sample; same high-school grade/course and second-semester final-exam route; target identity excluded.",
+      "qualityAcceptanceReason": "Complete 22-question read on the exact pinned main commit. All 22/22 solutions are non-empty; 22/22 contain the observed key-point/condition/direction structure; visual references and captions were checked from the full question objects.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Full file evaluated from pinned main: questionBank=22, ids=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22, every question object and required archive fields were read."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "22/22 non-empty solutions; 22/22 include [키포인트], 조건 정리, or 풀이 방향 markers; solution length range=174-776 characters; no answer-only solution was used as a quality anchor."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Full question metadata read: standardCourse=공통수학2, objective/constructed-response types and level labels were observed across all 22 questions."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Problem visual references were inspected across all questions: imageRefs=2; no full-page reference was treated as a problem crop."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Solution visual references were inspected across all questions: solutionVisualRefs=4, visual refs with non-empty alt+caption=4; referenced assets present in pinned tree=6/6."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All 22 question objects were read through their serialized fields; solution text lengths and image/alt/caption fields were checked for the complete file."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:ba1712b4b7d5ee6c9854a3e05123d71f6cbad0a8668d75469c807549564ab56d",
+          "solutionExcerpt": "[키포인트] 집합은 어떤 대상이 그 모임에 속하는지 여부를 객관적으로 분명하게 판정할 수 있어야 한다.\n조건 정리: ‘키가 크다’, ‘외모가 출중하다’, ‘착하다’, ‘축구를 잘한다’는 기준이 사람마다 달라질 수 있다.\n풀이 방향: 각 모임의 소속 여부가 명확하게 결정되는지 확인한다.\n",
+          "observation": "Read complete q1: type=객관식, level=하, choices=5, solutionChars=273, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:5b4141a925fa6e236052a1f52489b36690639879c532bef9ead6aee51da80232",
+          "solutionExcerpt": "[키포인트] 부분집합의 모든 원소는 원래 집합에 포함되어 있어야 한다.\n조건 정리: $A$의 원소는 $2,4,6,8$이다.\n풀이 방향: 각 보기의 원소가 모두 $A$에 속하는지 확인한다.\n정석 풀이: 공집합은 모든 집합의 부분집합이고, ②, ③, ⑤의 모든 원소도 $A$에 속한다. 그러",
+          "observation": "Read complete q2: type=객관식, level=하, choices=5, solutionChars=228, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:9588a791b0454570be0faf0a8925ef58b9dc9634b7e57ddd7fedff19b20dfa3b",
+          "solutionExcerpt": "[키포인트] 두 집합이 같으려면 서로 같은 원소를 가져야 한다.\n조건 정리: 두 집합에 공통으로 $4$가 들어 있으므로 나머지 원소가 같아야 한다.\n풀이 방향: $a-3$을 $A$의 나머지 원소 $3$과 같게 둔다.\n정석 풀이: $A=B$이므로 $a-3=3$이어야 한다. 따라서 $a=6",
+          "observation": "Read complete q3: type=객관식, level=하, choices=5, solutionChars=210, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:7c31ad52ed8d802e53ace8d4bb2954843df0d2ccae3b9bc754a73ba0fe5410bd",
+          "solutionExcerpt": "[키포인트] 조건명제 $p\\to q$가 거짓인 경우는 $p$가 참이고 $q$가 거짓일 때뿐이다.\n조건 정리: $p$는 참, $q$는 거짓이므로 $\\sim p$는 거짓, $\\sim q$는 참이다.\n풀이 방향: 각 보기의 전건과 후건의 참·거짓을 대입한다.\n정석 풀이: ③의 $\\sim q\\",
+          "observation": "Read complete q4: type=객관식, level=하, choices=5, solutionChars=236, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:4a5068333dc78e7ae1089e70d930cb31ea5d06b7901b32a4198e1a0a9b0f3430",
+          "solutionExcerpt": "[키포인트] 두 조건의 진리집합을 비교하면 필요조건과 충분조건을 판정할 수 있다.\n조건 정리: $p$의 진리집합은 $\\{1,3,9\\}$이고, $q$의 진리집합은 $\\{1,3\\}$이다.\n풀이 방향: 어느 진리집합이 다른 진리집합을 포함하는지 확인한다.\n정석 풀이: $q$를 만족하는 모든 ",
+          "observation": "Read complete q5: type=객관식, level=중, choices=5, solutionChars=290, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:bf97dd4b8adec0eb5b340f15c4fd6e6ecd0e14e3b759d6df4cacfa27bcbfe607",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 함수가 정의역과 공역 사이의 일대일 대응이어야 한다.\n조건 정리: 그림에서 정의역은 $\\{-1,0,1,2\\}$, 공역은 $\\{0,1,2,3\\}$이고 실제 함숫값은 $0,1,3$만 나온다.\n풀이 방향: 정의역, 공역, 치역과 일대일 대응 여부를 차례로 확인",
+          "observation": "Read complete q6: type=객관식, level=하, choices=5, solutionChars=321, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:40388bf050200710916501d580fb590e54d2e5aa95941b74ea31b9380526b80e",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수의 값을 먼저 구한 뒤 바깥 함수에 대입한다.\n조건 정리: $(g\\circ f)(1)=g(f(1))$이다.\n풀이 방향: $f(1)$을 먼저 계산한다.\n정석 풀이: $f(1)=3\\cdot1-5=-2$이므로 $g(f(1))=g(-2)=(-2)^2+1=5$이다",
+          "observation": "Read complete q7: type=객관식, level=하, choices=5, solutionChars=174, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:18c970fc8c6e2ad7abd7540a6213abb412635b3e0304c82e004633a8e5bb1895",
+          "solutionExcerpt": "[키포인트] $f^{-1}(5)=2$는 $f(2)=5$와 같은 뜻이다.\n조건 정리: $f(1)=a+b=3$, $f(2)=2a+b=5$이다.\n풀이 방향: 두 일차방정식을 연립하여 $a,b$를 구한다.\n정석 풀이: $(2a+b)-(a+b)=5-3$이므로 $a=2$이다. 따라서 $b=1$이고",
+          "observation": "Read complete q8: type=객관식, level=중, choices=5, solutionChars=189, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:848b440026a5acace41584d8bb63160fbd23a3dcabcaac741cd134f41b378a71",
+          "solutionExcerpt": "[키포인트] $y=\\dfrac{k}{x-p}+q$의 점근선은 $x=p$, $y=q$이다.\n조건 정리: 점근선으로부터 $p=1$, $q=-4$이다.\n풀이 방향: 그래프가 지나는 점 $(0,4)$를 식에 대입하여 $k$를 구한다.\n정석 풀이: $4=\\dfrac{k}{0-1}-4$이므로 $8",
+          "observation": "Read complete q9: type=객관식, level=중, choices=5, solutionChars=219, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:a8ec93e111c65679bc1399901bcde7a6e35880a5c853b76623085afdae9efa5d",
+          "solutionExcerpt": "[키포인트] 제곱근 안의 식은 각각 $0$ 이상이어야 한다.\n조건 정리: $x+3\\ge0$, $9-3x\\ge0$이다.\n풀이 방향: 두 부등식의 공통 범위에서 정수의 개수를 센다.\n정석 풀이: 첫째 부등식에서 $x\\ge-3$, 둘째 부등식에서 $x\\le3$이다. 따라서 가능한 정수는 $-",
+          "observation": "Read complete q10: type=객관식, level=하, choices=5, solutionChars=202, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:ee76918704c860c4c65c915d0a902fa6537b38cf24ed3286ecaae71979633106",
+          "solutionExcerpt": "[키포인트] 약수집합의 포함관계 $A_r\\subseteq A_s$는 자연수 $r$이 $s$의 약수라는 뜻과 연결된다.\n조건 정리: $A_2\\cap A_4=A_2=\\{1,2\\}$이고, $A_{12}\\cup A_{24}=A_{24}$이다.\n풀이 방향: $A_2\\subseteq A_n\\sub",
+          "observation": "Read complete q11: type=객관식, level=중, choices=5, solutionChars=361, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:078d295da84414872a177d608398b67e66e2b9caa4e5fbe1c8a92136542ad3fe",
+          "solutionExcerpt": "[키포인트] 명제가 항상 참이 되려면 결론이 거짓인 경우에 전제가 성립하지 않아야 한다.\n조건 정리: 결론 ‘$x\\ge2$ 또는 $y\\ge3$’이 거짓이면 $x\\lt2$이고 $y\\lt3$이다.\n풀이 방향: 이 범위에서 $3x+2y$가 도달할 수 있는 상한을 구한다.\n정석 풀이: $x\\l",
+          "observation": "Read complete q12: type=객관식, level=중, choices=5, solutionChars=382, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:cf0fddca039adabbe0dbc6cdc62ba801c51342f833bbc7735245ca998140b481",
+          "solutionExcerpt": "[키포인트] 일정한 합 $2x+3y$ 아래에서 곱 $xy$의 최댓값은 산술평균과 기하평균의 관계로 구할 수 있다.\n조건 정리: 양수 $2x$와 $3y$의 합이 $12$이다.\n풀이 방향: $2x$와 $3y$에 산술평균과 기하평균을 적용한다.\n정석 풀이: $\\dfrac{2x+3y}{2}\\g",
+          "observation": "Read complete q13: type=객관식, level=중, choices=5, solutionChars=336, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:3f1dd4e4a8c1a3e969c9bb8b5ec033b46f20b6e6cdab7f883dec86f38704b687",
+          "solutionExcerpt": "[키포인트] 먼저 $f(2)$를 구한 뒤 같은 함숫값을 반복해서 적용한다.\n조건 정리: $2^2=4$를 $3$으로 나눈 나머지는 $1$이고, $1^2$을 $3$으로 나눈 나머지도 $1$이다.\n풀이 방향: $2$에서 시작한 반복합성의 값을 차례로 구한다.\n정석 풀이: $f(2)=1$이고 ",
+          "observation": "Read complete q14: type=객관식, level=중, choices=5, solutionChars=242, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:b8aab16a1faf55160c0d3699289b243bf1e71d50d13d0e8d318d393660fe0770",
+          "solutionExcerpt": "[키포인트] 정의역 $x\\ge6$에서 $f$는 증가함수이므로 $f$와 $f^{-1}$의 그래프의 교점은 직선 $y=x$ 위에 있다.\n조건 정리: $f(x)=(x-6)^2+6$이고 $x\\ge6$이므로 $f$는 일대일 증가함수이며 역함수가 존재한다.\n풀이 방향: 증가함수와 역함수의 공통점에",
+          "observation": "Read complete q15: type=객관식, level=중, choices=5, solutionChars=505, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:8bbbf22103ab9d23b0cf0d86d493ca4284109a050a9f017e77c136667c2ac83e",
+          "solutionExcerpt": "[키포인트] 유리함수의 수평·수직 점근선과 한 점의 좌표로 $a,b,c$를 결정한다.\n조건 정리: 그림의 점근선은 $x=-2$, $y=3$이고 그래프는 $(0,1)$을 지난다.\n풀이 방향: 먼저 $a,b,c$를 구한 뒤 무리함수의 정의역과 함숫값의 부호를 확인한다.\n정석 풀이: 수직 점",
+          "observation": "Read complete q16: type=객관식, level=중, choices=5, solutionChars=384, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:2cdc447968a18aa18703bb4f7367147d50e3a1a1ea246a988a88425e3d7b1be6",
+          "solutionExcerpt": "[키포인트] $A\\cap B$의 원소는 $k$의 소수인 약수이고, $C$의 원소 수는 $\\left\\lfloor\\dfrac{k}{5}\\right\\rfloor$이다.\n조건 정리: $A=\\{2,3,5,7\\}$이다. 합이 $10$인 부분집합은 $\\{3,7\\}$ 또는 $\\{2,3,5\\}$뿐이다.",
+          "observation": "Read complete q17: type=객관식, level=상, choices=5, solutionChars=558, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:90ebd2fa8f899ac1a36370a2e7d6e55485327dfe6eb77e822f7a0dd9ec978c02",
+          "solutionExcerpt": "[키포인트] $\\angle APB=90^\\circ$인 점 $P$의 자취는 선분 $AB$를 지름으로 하는 원이다.\n조건 정리: $A$와 $B$의 중점은 $\\left(\\dfrac{-1+1}{2},\\dfrac{3+(-3)}{2}\\right)=(0,0)$이고, $AB=\\sqrt{(1-(-1))",
+          "observation": "Read complete q18: type=객관식, level=상, choices=5, solutionChars=776, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:b205557adbecc1238867e19e7c40845b49e039fbe27138ee690f4331d2d3fc9a",
+          "solutionExcerpt": "[키포인트] 상수함수가 되려면 방정식 $|x^2-6x+4|=k$가 서로 다른 네 실근을 가져야 한다.\n조건 정리: $x^2-6x+4=(x-3)^2-5$이다.\n풀이 방향: 절댓값 방정식을 두 이차방정식으로 나누고 각각 두 실근을 갖는 조건을 구한다.\n정석 풀이: $|(x-3)^2-5|=k",
+          "observation": "Read complete q19: type=객관식, level=상, choices=5, solutionChars=354, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:d628b48e3ded4b672d6074169852b5c0de309352529b7c764f1b9e3324c65b07",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 함수가 실수 전체에서 일대일 대응이어야 한다.\n조건 정리: 첫째 구간 $x\\lt1$에서 $f(x)=x+4$의 치역은 $(-\\infty,5)$이다.\n풀이 방향: 둘째 구간의 치역이 $[5,\\infty)$가 되면서 증가하도록 경계값과 꼭짓점 조건을 맞춘다.\n",
+          "observation": "Read complete q20: type=객관식, level=상, choices=5, solutionChars=432, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:82482881b1917701adce8e74e407a385e5eeb9f4a680f8078c2dc61d4e5f615e",
+          "solutionExcerpt": "[키포인트] 두 집합이 서로소라는 것은 공통으로 가지는 원소가 하나도 없다는 뜻이다.\n조건 정리: 공통 원소들의 집합은 교집합으로 나타낸다.\n풀이 방향: 서로소의 정의를 교집합 기호로 쓰고, 교집합이 공집합인 예를 제시한다.\n정석 풀이: 두 집합 $A,B$가 서로소라는 것은 $A\\cap",
+          "observation": "Read complete q21: type=서술형, level=하, choices=0, solutionChars=333, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:1551c29323b7ff1e8beb64f12ac28cb817c789934f11868fab413d2789fcc910",
+          "solutionExcerpt": "[키포인트] $t=\\sqrt{x-2}$로 치환하면 교점의 개수는 $t\\ge0$인 이차방정식의 서로 다른 두 근의 개수로 바뀐다.\n조건 정리: $t=\\sqrt{x-2}\\ge0$이면 $x=t^2+2$이다.\n풀이 방향: 교점 조건을 $t$에 대한 이차방정식으로 만들고 두 근이 서로 다르면서 ",
+          "observation": "Read complete q22: type=서술형, level=상, choices=0, solutionChars=467, structuredMarkers=present, solutionVisual=present."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:a8f2afe1e8f55fead5e16e91a4e9370c18e2f6f4f381b3c9bd1e310a814025fa",
+      "bytes": 41286,
+      "examTitle": "25_순천고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Pinned origin/main production sample; same high-school grade/course and second-semester final-exam route; target identity excluded.",
+      "qualityAcceptanceReason": "Complete 23-question read on the exact pinned main commit. All 23/23 solutions are non-empty; 23/23 contain the observed key-point/condition/direction structure; visual references and captions were checked from the full question objects.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Full file evaluated from pinned main: questionBank=23, ids=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23, every question object and required archive fields were read."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "23/23 non-empty solutions; 23/23 include [키포인트], 조건 정리, or 풀이 방향 markers; solution length range=197-814 characters; no answer-only solution was used as a quality anchor."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Full question metadata read: standardCourse=공통수학2, objective/constructed-response types and level labels were observed across all 23 questions."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Problem visual references were inspected across all questions: imageRefs=3; no full-page reference was treated as a problem crop."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Solution visual references were inspected across all questions: solutionVisualRefs=6, visual refs with non-empty alt+caption=6; referenced assets present in pinned tree=9/9."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All 23 question objects were read through their serialized fields; solution text lengths and image/alt/caption fields were checked for the complete file."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:c45adc1c1a90dc49db82006fc2935bcdad35c8958cba96bd3bd665dc91d474ea",
+          "solutionExcerpt": "[키포인트] 조건은 변수의 값에 따라 참과 거짓이 달라지는 문장이다.\n조건 정리: ①, ②, ③, ⑤는 변수가 없는 문장이므로 각각 참·거짓을 판단하는 명제이거나 판단 기준이 불명확한 문장이다.\n풀이 방향: 선택지에 자유변수가 들어 있는지를 확인한다.\n정석 풀이: ④의 $2x+1=3$은",
+          "observation": "Read complete q1: type=객관식, level=하, choices=5, solutionChars=241, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:f39b9d512b0865ccf72cf7a3b6d44ce17ed49bd478b86c8f3d9bfdf398b65f49",
+          "solutionExcerpt": "[키포인트] 명제 $p\\to q$의 역은 $q\\to p$이다.\n조건 정리: $q:x^2+x-2=0$의 해가 모두 $p:x\\ge a$를 만족해야 한다.\n풀이 방향: 먼저 이차방정식의 두 해를 구한 뒤 두 해 중 작은 값과 $a$를 비교한다.\n정석 풀이: $x^2+x-2=(x+2)(x-1)",
+          "observation": "Read complete q2: type=객관식, level=중, choices=5, solutionChars=295, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:53e08029dab4b2893e977352a04899d6a984057f52ba27c469d3b3a68a5ffa20",
+          "solutionExcerpt": "[키포인트] 제곱근 안의 식은 $0$ 이상이어야 한다.\n조건 정리: $x-3\\ge0$이고 $10-2x\\ge0$이어야 한다.\n풀이 방향: 두 부등식의 공통 범위를 구한다.\n정석 풀이: 첫째 조건에서 $x\\ge3$, 둘째 조건에서 $x\\le5$이다. 따라서 $3\\le x\\le5$이고, 이 ",
+          "observation": "Read complete q3: type=객관식, level=하, choices=5, solutionChars=197, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:1f42af91cdf3b2c2fc5bd1ffc8638fbb1801837530de8307a25734de7117bc58",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수부터 차례로 계산한다.\n조건 정리: 그림에서 $f(2)=6$이고 $g(6)=8$이다.\n풀이 방향: $(g\\circ f)(2)=g(f(2))$를 이용한다.\n정석 풀이: 먼저 $2$에서 출발하여 함수 $f$의 화살표를 따라가면 $6$에 도달한다. 이어서 함수",
+          "observation": "Read complete q4: type=객관식, level=하, choices=5, solutionChars=230, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:27c009a75c1d0db2aab6e9cd02aadd6f0bb48f627706a3b68429290c139d18d7",
+          "solutionExcerpt": "[키포인트] ‘어떤’의 부정은 ‘모든’이고, $\\le$의 부정은 $\\gt$이다.\n조건 정리: 주어진 명제는 ‘어떤 실수 $x$가 존재하여 $x^2-1\\le0$’이라는 존재명제이다.\n풀이 방향: 존재기호와 부등호를 동시에 부정한다.\n정석 풀이: ‘어떤 실수 $x$에 대하여’의 부정은 ‘모",
+          "observation": "Read complete q5: type=객관식, level=하, choices=5, solutionChars=271, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:8555746e39d16c3a6448f09192f0a17d63bda65f99d935c40ca7c09736d3a974",
+          "solutionExcerpt": "[키포인트] $p$가 $q$이기 위한 충분조건이면 $p\\to q$가 참이므로 $P\\subset Q$이다.\n조건 정리: $P$의 모든 원소가 $Q$에도 속한다.\n풀이 방향: $P\\subset Q$일 때의 교집합과 합집합 성질을 확인한다.\n정석 풀이: $P\\subset Q$이면 $P$와 $",
+          "observation": "Read complete q6: type=객관식, level=하, choices=5, solutionChars=266, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:0d96d27964352a9892131bccced0e2e3a68d950224a3f1d3b56b7898b9cafd2b",
+          "solutionExcerpt": "[키포인트] 제곱근 함수의 정의역은 근호 안이 $0$ 이상인 범위이고, 제곱근의 값은 항상 $0$ 이상이다.\n조건 정리: $x-5\\ge0$이므로 $x\\ge5$이고, $\\sqrt{x-5}\\ge0$이므로 $y\\ge-3$이다.\n풀이 방향: 정의역과 치역의 경계값을 각각 $a$, $b$와 비교",
+          "observation": "Read complete q7: type=객관식, level=하, choices=5, solutionChars=276, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:19094c6bdabf4b0f081ad27744187d3bcc1dd64193d42201d98b2ae5f9634a0a",
+          "solutionExcerpt": "[키포인트] 증가하는 일차함수가 $A$에서 $A$로 일대일대응이 되려면 치역의 끝값이 $A$의 끝값과 같아야 한다.\n조건 정리: $x\\le4$이고 기울기 $3$이 양수이므로 $f(x)\\le f(4)=12-a$이다.\n풀이 방향: 치역 $\\{y\\mid y\\le12-a\\}$가 공역 $A=\\{",
+          "observation": "Read complete q8: type=객관식, level=중, choices=5, solutionChars=256, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:7c448278514b3f677c019655dfde21e6472165c6c4e5055feae20e573a66c641",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 함수가 실수 전체에서 일대일대응이어야 한다.\n조건 정리: $x\\ge2$인 구간의 함수 $-x+8$의 치역은 $(-\\infty,6]$이다.\n풀이 방향: $x\\lt2$인 구간의 치역이 $(6,\\infty)$가 되도록 하여 두 치역이 겹치지 않으면서 실수 전체",
+          "observation": "Read complete q9: type=객관식, level=상, choices=5, solutionChars=407, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:d9a940c8f500eed6ce281d4b23157d88344b83697d5c41e5483427c46fceb838",
+          "solutionExcerpt": "[키포인트] 그래프의 점선은 함수값이 다음 문자로 어떻게 이어지는지를 보여 준다.\n조건 정리: 그림에서 $f(a)=b$, $f(b)=c$, $f(c)=d$, $f(d)=e$이다.\n풀이 방향: 두 번 함수값을 취했을 때 $e$가 되는 시작값을 찾는다.\n정석 풀이: $k=c$이면 첫 번째 ",
+          "observation": "Read complete q10: type=객관식, level=중, choices=5, solutionChars=238, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:1069bf38dc910ec274154f24dd9a294b03f85fff354335844214cc5cd7cfd992",
+          "solutionExcerpt": "[키포인트] 합집합이 공집합이면 두 집합이 각각 공집합이다.\n조건 정리: $P-R=P\\cap R^c=\\varnothing$이므로 $P\\subset R$이다. 또한 $Q-R^c=Q\\cap R=\\varnothing$이므로 $Q\\subset R^c$이다.\n풀이 방향: 각 명제를 진리집합의 포",
+          "observation": "Read complete q11: type=객관식, level=상, choices=5, solutionChars=396, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:8dfdb737c9484ed9fa8b3ab0e46c6183facc401f5011176fd862b6a12cba585e",
+          "solutionExcerpt": "[키포인트] $f^{-1}(14)$는 $f(x)=14$를 만족하는 $x$이다.\n조건 정리: $t=2x+1$로 놓으면 $x=\\dfrac{t-1}{2}$이다.\n풀이 방향: 주어진 식을 $f(t)$의 꼴로 바꾼 뒤 $f(t)=14$를 푼다.\n정석 풀이: $f(t)=3\\cdot\\dfrac{t-",
+          "observation": "Read complete q12: type=객관식, level=중, choices=5, solutionChars=282, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:aa5a32868bc5716a51c980a13ed502efcc9dbb0f7adc28361ce1427f2e8d3a07",
+          "solutionExcerpt": "[키포인트] 유리함수의 $x$절편, 수직점근선, 수평점근선을 식의 계수와 연결한다.\n조건 정리: 그래프의 $x$절편은 $-5$, 수직점근선은 $x=-3$, 수평점근선은 $y=1$이다.\n풀이 방향: $x$절편은 분자, 수직점근선은 분모, 수평점근선은 최고차항의 계수비를 이용한다.\n정석 풀",
+          "observation": "Read complete q13: type=객관식, level=중, choices=5, solutionChars=311, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:c87aef067df01c36a2e3412297cb9b72d42e9d59f3656c7d2c81b9b31f11992b",
+          "solutionExcerpt": "[키포인트] 제2사분면과 제3사분면을 모두 지나기 위한 $x\\lt0$에서의 함수값 범위를 조사한다.\n조건 정리: $x\\lt0$이면 $2-x\\gt2$이므로 $0\\lt\\dfrac{1}{2-x}\\lt\\dfrac{1}{2}$이다. 따라서 $x\\lt0$에서 함수값은 $a\\lt y\\lt a+\\df",
+          "observation": "Read complete q14: type=객관식, level=중, choices=5, solutionChars=506, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:38b931f48fee7595573c853752282872bc2134ccf975989400e6304c325a65c2",
+          "solutionExcerpt": "[키포인트] 주어진 함수는 $x\\ge4$에서 증가하므로 원함수와 역함수의 교점은 직선 $y=x$ 위에 있다.\n조건 정리: 교점의 $x$좌표는 $f(x)=x$를 만족하고 정의역 조건 $x\\ge4$를 만족해야 한다.\n풀이 방향: 이차방정식의 두 근이 서로 다르고 모두 $4$ 이상이 되도록 ",
+          "observation": "Read complete q15: type=객관식, level=상, choices=5, solutionChars=403, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:7313d9b68f7bf2f25127aee26275ec99caf46d2b23472046a6ee58f7c8f450e0",
+          "solutionExcerpt": "[키포인트] 두 짝수 제곱수의 차를 인수분해하고 홀짝성을 이용한다.\n조건 정리: $m=4p^2$, $n=4q^2$로 놓으면 $m-n=8a=4(p+q)(p-q)$이다.\n풀이 방향: 빈칸의 식과 수를 차례로 결정한 뒤 함수값을 계산한다.\n정석 풀이: $m-n=(11a+b)-(3a+b)=8a",
+          "observation": "Read complete q16: type=객관식, level=상, choices=5, solutionChars=374, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:e0b61ccabed8b39978dfd792d9dea7b314a090ee55b7a25584da4890e51afcb5",
+          "solutionExcerpt": "[키포인트] 절댓값 안의 부호에 따라 두 가지로 나누고, 후보보다 작은 모든 $k$에서 교점이 두 개가 될 수 없음을 확인한다.\n조건 정리: $t=\\sqrt{2x+2}\\ge0$로 놓으면 $x=\\dfrac{t^2}{2}-1$이다. $0\\le t\\le2$에서는 $y=2-t$, $t\\ge2$",
+          "observation": "Read complete q17: type=객관식, level=상, choices=5, solutionChars=814, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:99abd50acae9ac081c1efcad0eff8ee17b7e29e3b49accdda4204ed71605ea38",
+          "solutionExcerpt": "[키포인트] 원의 중심을 기준으로 좌표를 치환하면 교점 조건이 대칭적으로 정리된다.\n조건 정리: $u=x-1\\gt0$로 놓으면 $y-2=\\dfrac{1}{u}$이고 원의 식은 $u^2+\\dfrac{1}{u^2}=9$이다.\n풀이 방향: 두 교점에 대응하는 양수 $u_1,u_2$의 곱과 제",
+          "observation": "Read complete q18: type=단답형, level=상, choices=0, solutionChars=497, structuredMarkers=present, solutionVisual=present."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:321d774a74e2b41e92f97b27810c14afb3718a5def1e0f54ac75d7e2f801be29",
+          "solutionExcerpt": "[키포인트] 분자 $x-3$을 양수 변수로 치환한 뒤 완전제곱을 이용하여 상한과 등호 조건을 함께 찾는다.\n조건 정리: $t=x-3\\gt0$로 놓으면 주어진 식은 $\\dfrac{t}{t^2+3t+4}$이다.\n풀이 방향: 이 값이 $\\dfrac{1}{7}$ 이하임을 차로 비교하고, 등호가",
+          "observation": "Read complete q19: type=단답형, level=중, choices=0, solutionChars=499, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:e386fd71575df65a0f66c292f4bb6c519b1f57849c4030702418fc51f0f6c7d5",
+          "solutionExcerpt": "[키포인트] 각 조건을 카드의 뒤집힘 여부에 대한 논리관계로 바꾸고 가능한 경우를 전수 확인한다.\n조건 정리: (나)와 (라)에 의해 $2$번 카드와 $3$번 카드는 함께 뒤집히거나 함께 뒤집히지 않는다. (가)와 (다)에 의해 $1$번 카드를 뒤집는 것과 정확히 두 장을 뒤집는 것은 ",
+          "observation": "Read complete q20: type=단답형, level=상, choices=0, solutionChars=553, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:3a5a5cc5f6c1040556f0186fa3c0ccb68b34d24e0d7a822714485f52c2945d72",
+          "solutionExcerpt": "[키포인트] 일대일대응에서는 서로 다른 입력의 함수값이 서로 달라야 하며 공역의 모든 값이 한 번씩 나온다.\n조건 정리: $f(1)=2$이고 $g(3)=1$, $g(f(2))=2$이다.\n풀이 방향: 먼저 $g(f(2))=2$에서 가능한 $f(2)$를 결정한 뒤 남은 함수값을 채운다.\n정",
+          "observation": "Read complete q21: type=서술형, level=중, choices=0, solutionChars=469, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:b53bf3b38b7fa42d3f0fe67618679f59c227aff5589961f53b094cf5cebd8ae8",
+          "solutionExcerpt": "[키포인트] 바깥 함수 $f$의 어느 식을 사용할지는 안쪽 함수값 $f(x)$가 $-1$보다 작은지로 결정한다.\n조건 정리: $x\\lt-1$이면 $f(x)=x+2$, $x\\ge-1$이면 $f(x)=2x+3$이다.\n풀이 방향: 먼저 $f(x)\\lt-1$이 되는 $x$의 범위를 찾고, 각 ",
+          "observation": "Read complete q22: type=서술형, level=중, choices=0, solutionChars=525, structuredMarkers=present, solutionVisual=absent."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:d0361095164a0422856f64cf90f368be179e7aa69df07ba25c36a68e55b23a75",
+          "solutionExcerpt": "[키포인트] 두 무리함수의 그래프를 각각 그리고, 직선과의 교점 수는 제곱근을 새 변수로 치환하여 판정한다.\n조건 정리: 첫째 가지는 $x\\le1$에서 끝점 $(1,2)$을 지나며 왼쪽 아래로 뻗고, 둘째 가지는 $x\\ge2$에서 시작점 $(2,3)$을 지나며 오른쪽 위로 뻗는다.\n풀이",
+          "observation": "Read complete q23: type=서술형, level=상, choices=0, solutionChars=685, structuredMarkers=present, solutionVisual=present."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Every fresh solution must explain the reasoning rather than repeat only the answer; use a key point plus condition interpretation and conclusion.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "The solution names the governing concept or theorem and connects it to the given data before calculating.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Every material condition, domain, range, case restriction, or quantified phrase is explicitly interpreted before use.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Key substitutions, equations, case splits, and elimination checks remain visible; no material inference is skipped.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "For choice questions, the final selected choice is stated by number and justified by the preceding work.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "Level-상 solutions preserve the full chain from setup through constraints, case analysis, and uniqueness/conclusion checks.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|17"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Constructed-response solutions show a reproducible, markable sequence of equations and the final requested statement.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|21"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Source-problem visuals and instructional solution visuals remain separate fields and assets.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|9"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "A solution visual is used only when it materially clarifies the geometry/graph/table reasoning; otherwise text remains sufficient.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|9"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "Every solution visual has a meaningful alt text and caption suitable for student-facing rendering.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|9"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Visual labels and geometry/graph relationships agree with the equations and conclusion in the solution text.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|9"
+      ]
+    }
+  }
+}

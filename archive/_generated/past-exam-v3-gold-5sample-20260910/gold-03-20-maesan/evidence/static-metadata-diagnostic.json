@@ -1,0 +1,10 @@
+{
+  "schemaVersion":"PAST_EXAM_STATIC_METADATA_DIAGNOSTIC_v1",
+  "status":"BLOCKED",
+  "candidateQuestionCount":20,
+  "staticMetadataCoverage":"20/20 inspected locally; core machine collector failed closed before evidence materialization",
+  "machineErrorRef":"machine-error.txt",
+  "machineError":"MACHINE_CHECK_FAILED:...|16:STATIC:schema",
+  "reason":"Current machine checker does not accept an empty choices array for constructed-response questions; Q16 is the first affected row. Protected source choices were not mutated to bypass the checker.",
+  "productionAuthorized":false
+}

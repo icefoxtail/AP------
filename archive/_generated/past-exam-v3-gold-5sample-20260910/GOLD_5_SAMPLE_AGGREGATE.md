@@ -26,7 +26,7 @@ Canonical frozen result files:
 - GOLD #2: `gold-02-23-buyeong-v2/reports/GOLD_RESULT_FROZEN.json`
 - GOLD #3: `gold-03-20-maesan/child3-final/GOLD_RESULT_FROZEN.json`
 - GOLD #4: `gold-04-23-hanyeong/GOLD_RESULT_FROZEN.json`
-- GOLD #5: `gold-05-24-buyeong/fresh-05-corrected/GOLD_RESULT_FROZEN.json`
+- GOLD #5: `gold-05-24-buyeong/fresh-05-corrected/GOLD_RESULT_FROZEN_FINAL.json`
 
 The complete pre-run 31-package inventory and the five-sample selection rationale are included in the companion appendix `GOLD_31_INVENTORY_SELECTION.md`. The appendix is a pre-run inventory of existing packages only; none of those old candidate payloads was used to build a fresh result.
 

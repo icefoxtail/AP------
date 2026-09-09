@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"PAST_EXAM_V3_FINAL_AUDIT_DIAGNOSTIC_v1",
+  "status":"DIAGNOSTIC_ONLY",
+  "freshFreezeRef":"../GOLD_RESULT_FROZEN.json",
+  "u1":{"status":"NOT_RUN_PROVIDER_UNAVAILABLE","scope":["SOURCE","MATH_A1","V1"],"localSourceFidelity":"FROZEN","localBlindSolve":"RECORDED"},
+  "u2":{"status":"NOT_RUN_PROVIDER_UNAVAILABLE","scope":["V2"],"localGeneratorWitness":"BUILD_SIDE_ONLY","artifactInspection":"LOCAL_ONLY_NOT_INDEPENDENT"},
+  "u3":{"status":"NOT_RUN_PROVIDER_UNAVAILABLE","scope":["MATH_A2","SOLUTION","V3","RENDER_REVIEW"],"localSolutionBuild":"RECORDED","independentRenderReview":"NOT_TESTED"},
+  "provider":{"status":"DIAGNOSTIC_ONLY","reason":"No configured provider-attested stateless reviewer runtime available; work-batch freeze is blocked by machine evidence before reservation."},
+  "targetedRecheck":{"status":"NOT_APPLICABLE","reason":"First FINAL_AUDIT was not reserved; no automatic retry launched."},
+  "promotion":{"status":"BLOCKED","productionAuthorized":false}
+}

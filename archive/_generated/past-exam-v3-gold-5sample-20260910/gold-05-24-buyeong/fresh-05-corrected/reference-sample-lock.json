@@ -1,0 +1,619 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "rulePackSha": "sha256:1337e44c4f650ff080b63961a0867009ab1b6e7dd667be7cd82347d12bf61f17",
+  "target": {
+    "examId": "24_부영여고_2학기_중간_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-05-24-buyeong\\fresh-05-corrected\\source\\original_exam.pdf",
+        "bytes": 115591,
+        "sha256": "sha256:b7f1a36c8771ebad6081ea0cd901647071a909902ddcc3473425ac436fad3055"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "gold05-builder",
+  "readerSessionId": "gold05-session-20260910-corrected",
+  "startedAt": "2026-09-09T20:07:04.642Z",
+  "frozenAt": "2026-09-09T20:17:04.642Z",
+  "baselineObservation": "",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+      "rawSha256": "sha256:e00785b9a3d9b44e7917a97d51820900cb4f8be7a2f2e1fe7f747aca18e3b568",
+      "bytes": 42821,
+      "examTitle": "25_금당고_2학기_중간_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Selected from origin/main at the frozen main commit because it is a recent complete 고1 공통수학2 2학기 중간고사 production file and is close to the target route.",
+      "qualityAcceptanceReason": "Accepted as a calibration sample after reading the complete file through its final question, verifying non-empty solutions, and observing source/solution visual and metadata patterns.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed window.examTitle plus sequential questionBank records with explicit archive fields and no schema shortcut assumptions."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed student-facing solutions contain method, equations, intermediate reasoning, answer conclusion, and condition checks; the sample floor is content-based."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed course/unit/type/level/tag and subunit fields are populated per question; metadata is calibrated against the current master, not copied to target."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Whole-file read checked separation of source image from solutionImage; visual problem items retain image bindings only where the source depends on a diagram."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Whole-file read checked solutionImage, alt, caption, size, and math-role separation on visual-benefit items; absence is not auto-PASS when benefit is clear."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Whole-file read checked grid/full image sizing and long subjective continuation behavior; labels and solution visuals are kept inside the engine column."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:ff228eb2ec89f28246c169a45c96f41f38383fd2ee3da0058d7a1c07e447fb0b",
+          "solutionExcerpt": "[키포인트] 내분점의 좌표는 두 끝점의 좌표에 내분비의 반대쪽 수를 곱하여 구한다.\n점 $P$",
+          "observation": "Read q1 in the complete production file: 두 점 $A(-2,5)$, $B(4,8)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점 $P$를 $(a,b)$라 할 때,; solution begins with [키포인트] 내분점의 좌표는 두 끝점의 좌표에 내분비의 반대쪽 수를 곱하여 구한다. 점 $P$가 선분 $AB$를 $2:1$로 ."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:8de184e373019b236f94c7b5989c28a913c68b2e5671910a4250e0b73c949f44",
+          "solutionExcerpt": "직선 $y=2x-3$의 기울기는 $2$이다. 평행한 두 직선의 기울기는 같으므로 구하는 직선 ",
+          "observation": "Read q2 in the complete production file: 직선 $y=2x-3$과 평행하고 점 $(1,7)$을 지나는 직선의 방정식을 $y=ax+b$라 할 때, $a+b$의 값은? [3; solution begins with 직선 $y=2x-3$의 기울기는 $2$이다. 평행한 두 직선의 기울기는 같으므로 구하는 직선 $y=ax+b$에서 $a=2$이다."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:dcbc89638b43535d098b97933e731564b2746244400ceedac902202b2aff1eb1",
+          "solutionExcerpt": "[키포인트] $x$에 관한 식을 완전제곱식으로 고쳐 원의 중심을 찾는다.\n$x^2-4x+y^2",
+          "observation": "Read q3 in the complete production file: 원 $x^2+y^2-4x-2=0$의 중심의 좌표는? [3.5점]; solution begins with [키포인트] $x$에 관한 식을 완전제곱식으로 고쳐 원의 중심을 찾는다. $x^2-4x+y^2-2=0$에서 $(x-2)^2+y."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:8233c13fcd3e5258124c92936f72a8edc4f0c9e884e34d9b5d6a188e14235d85",
+          "solutionExcerpt": "[키포인트] 원의 중심에서 접선까지의 거리는 원의 반지름과 같다.\n직선을 $3x-y+k=0$으",
+          "observation": "Read q4 in the complete production file: 원 $x^2+y^2=10$과 직선 $y=3x+k$가 접하도록 하는 실수 $k$값들의 합은? [3.5점]; solution begins with [키포인트] 원의 중심에서 접선까지의 거리는 원의 반지름과 같다. 직선을 $3x-y+k=0$으로 나타내면 원점에서 이 직선까지."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:a2e813cc60752c2746111c6ce79c3cd26833ab16e25bf236c5c6eb0057429b70",
+          "solutionExcerpt": "$(x+5)^2+(y-5)^2=1$의 중심은 $(-5,5)$이고 반지름은 $1$이다.\n평행이동",
+          "observation": "Read q5 in the complete production file: 방정식 $(x+5)^2+(y-5)^2=1$이 나타내는 도형을 $x$축의 방향으로 $3$만큼, $y$축의 방향으로 $-2$만큼 ; solution begins with $(x+5)^2+(y-5)^2=1$의 중심은 $(-5,5)$이고 반지름은 $1$이다. 평행이동은 중심에도 같은 이동량을 더하고."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:75113d734ea77ded7bff80a74136002f2f7eb88e9da3406bddb46e423c9efb74",
+          "solutionExcerpt": "점 $(5,1)$을 $(a,-3)$만큼 평행이동하면\n$(5+a,1-3)=(5+a,-2)$가 된",
+          "observation": "Read q6 in the complete production file: 좌표평면 위의 점 $(5,1)$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $-3$만큼 평행이동한 후 $y=x$에 ; solution begins with 점 $(5,1)$을 $(a,-3)$만큼 평행이동하면 $(5+a,1-3)=(5+a,-2)$가 된다. 이를 직선 $y=x$에 대하."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:f9a33b218f26f59b5dacc7f976472d1d025eb5ec53e29ec41294ddd357ac9d93",
+          "solutionExcerpt": "[키포인트] 두 점까지의 거리가 같다는 조건을 거리의 제곱으로 나타낸다.\n$\\overline{",
+          "observation": "Read q7 in the complete production file: 두 점 $A(-1,2)$, $B(2,0)$과 직선 $y=2x+1$ 위의 점 $P(a,b)$에 대하여 $\\overline{AP}; solution begins with [키포인트] 두 점까지의 거리가 같다는 조건을 거리의 제곱으로 나타낸다. $\\overline{AP}=\\overline{BP}$."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:de75d24875c67ab73b83ccf827a1790da1dcdac85f137c708368286cace2b80d",
+          "solutionExcerpt": "[키포인트] 원의 방정식을 표준형으로 고쳐 반지름을 $k$에 대한 식으로 나타낸다.\n주어진 식",
+          "observation": "Read q8 in the complete production file: 방정식 $x^2+y^2-4kx-6y+k^2+5=0$이 나타내는 도형이 원이 되며, 그 반지름의 길이가 $5$ 이하일 때, 자연; solution begins with [키포인트] 원의 방정식을 표준형으로 고쳐 반지름을 $k$에 대한 식으로 나타낸다. 주어진 식을 정리하면 $(x-2k)^2+(."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:29984d30d68ae14c2d50bacfa02084b2052e43decfa63c615d263538ba811f64",
+          "solutionExcerpt": "[키포인트] 먼저 삼각형 $OAB$의 무게중심과 각의 이등분선이 만드는 내분점을 구한다.\n삼각",
+          "observation": "Read q9 in the complete production file: 세 점 $O(0,0)$, $A(4,0)$, $B(0,3)$을 꼭짓점으로 하는 삼각형 $OAB$의 무게중심을 $G$라 하고, 삼; solution begins with [키포인트] 먼저 삼각형 $OAB$의 무게중심과 각의 이등분선이 만드는 내분점을 구한다. 삼각형 $OAB$의 무게중심은 $G\\."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:2879508e209d2d0a820ec6645bb6a5d71240a7bf5fd511c4ab9907226a81063c",
+          "solutionExcerpt": "[키포인트] 선분 $AB$와 수직이고 길이가 같은 방향으로 두 점을 이동하여 나머지 꼭짓점을 ",
+          "observation": "Read q10 in the complete production file: 두 점 $A(4,0)$, $B(0,3)$과 제1사분면 위의 두 점 $C$, $D$를 꼭짓점으로 하는 사각형 $ABCD$가 정사; solution begins with [키포인트] 선분 $AB$와 수직이고 길이가 같은 방향으로 두 점을 이동하여 나머지 꼭짓점을 구한다. $A(4,0)$에서 $B."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:e5df99eee32040e3d9f933c0e3cc6ae93fbe1760d9815e5bde8bfbeeb7a93404",
+          "solutionExcerpt": "[키포인트] 원과 직선이 만나지 않으려면 중심에서 직선까지의 거리가 반지름보다 커야 한다.\n직",
+          "observation": "Read q11 in the complete production file: 중심이 $(2,-1)$이고 반지름의 길이가 $\\sqrt{10}$인 원과 직선 $y=3x+k$가 만나지 않을 때, 자연수 $k$; solution begins with [키포인트] 원과 직선이 만나지 않으려면 중심에서 직선까지의 거리가 반지름보다 커야 한다. 직선을 $3x-y+k=0$으로 나타."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:7924a81390260d2b1613ba2b77e22bf377501d97fada42840b72f3c7fdfbdb93",
+          "solutionExcerpt": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x",
+          "observation": "Read q12 in the complete production file: 원 $x^2+y^2=13$ 위의 두 점 $A(2,-3)$, $B(3,2)$에서 그은 접선을 각각 $l$, $m$이라 한다. 두; solution begins with [키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다. 점 $A."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:a1c69b8d3b3c616654168d298a697281f45aa05946e6c05af02fbcf6d10b4e70",
+          "solutionExcerpt": "[키포인트] 세 직선이 만드는 삼각형의 밑변과 높이를 $a$에 대한 식으로 나타낸다.\n직선 $",
+          "observation": "Read q13 in the complete production file: 양수 $a$에 대하여 직선 $l:y=x+a$를 $x$축에 대하여 대칭이동한 후 $y$축의 방향으로 $3$만큼 평행이동한 직선을; solution begins with [키포인트] 세 직선이 만드는 삼각형의 밑변과 높이를 $a$에 대한 식으로 나타낸다. 직선 $l$을 $x$축에 대하여 대칭이동."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:2cbd4c544f10cb957f58167a97aa0bf1fd2adae2d18027b953d2737dce07e8c1",
+          "solutionExcerpt": "[키포인트] 두 수선의 방정식을 구하여 교점 $H$의 좌표를 찾는다.\n직선 $BC$의 기울기는",
+          "observation": "Read q14 in the complete production file: 다음 그림과 같이 세 점 $A(1,2)$, $B(7,5)$, $C(4,8)$을 꼭짓점으로 하는 삼각형 $ABC$에 대하여 두 ; solution begins with [키포인트] 두 수선의 방정식을 구하여 교점 $H$의 좌표를 찾는다. 직선 $BC$의 기울기는 $-1$이므로 점 $A$를 지나."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:dd59c5a14d3116e53d43edb591370bd21995db4e19f3105770cc7f98600e4eb5",
+          "solutionExcerpt": "[키포인트] $\\dfrac{b-2}{a}$를 점 $(0,2)$와 원 위의 점 $(a,b)$를 ",
+          "observation": "Read q15 in the complete production file: 원 $x^2+y^2-6x+4y+5=0$을 $x$축에 대하여 대칭이동한 원을 $C$라 하자. 원 $C$ 위의 점 $(a,b)$에; solution begins with [키포인트] $\\dfrac{b-2}{a}$를 점 $(0,2)$와 원 위의 점 $(a,b)$를 잇는 직선의 기울기로 해석한다. ."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:5007923972c972b25f5e39d727184b15817fc1113412add30bea73060a2f2f78",
+          "solutionExcerpt": "[키포인트] 접점들을 이은 현 $AB$는 중심과 외부의 점을 잇는 선분 $PC$에 수직이다.\n",
+          "observation": "Read q16 in the complete production file: 점 $P(2,5)$에서 원 $x^2+y^2-4x+6y-12=0$에 그은 두 접선의 접점을 각각 $A$, $B$라 한다. 원의 ; solution begins with [키포인트] 접점들을 이은 현 $AB$는 중심과 외부의 점을 잇는 선분 $PC$에 수직이다. 원의 방정식은 $(x-2)^2+(."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:307f8ba1f9c4a8b9ef6d514e46f25fc500fa38534ea29c675af8c86460257765",
+          "solutionExcerpt": "[키포인트] 두 직선의 교점 좌표를 $a$, $b$로 나타내고 평행 조건을 이용한다.\n두 직선",
+          "observation": "Read q17 in the complete production file: 두 양수 $a$, $b$에 대하여 두 직선 $x+y+a=0$, $x-y+b=0$의 교점을 지나고 직선 $x-2y+5=0$과 평; solution begins with [키포인트] 두 직선의 교점 좌표를 $a$, $b$로 나타내고 평행 조건을 이용한다. 두 직선의 교점을 $Q$라 하면 $Q\\l."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:3df67dd33d861ce6d49accc34a3d985ae90c1c3a3c86f4b01a4121261c1a3d26",
+          "solutionExcerpt": "[키포인트] 공통현 $AB$와 원 $C_1$의 중심 사이의 거리를 이용한다.\n$M$을 공통현 ",
+          "observation": "Read q18 in the complete production file: 두 원 $C_1:(x+1)^2+(y-2)^2=10$, $C_2:(x-2)^2+(y+1)^2=k$ $(k>0)$가 두 점 $A$; solution begins with [키포인트] 공통현 $AB$와 원 $C_1$의 중심 사이의 거리를 이용한다. $M$을 공통현 $AB$의 중점, $CM=d$라 ."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:d037438fa96bc1658276608ab60ab0a355239f8be8bd5732d509a40f661a41d9",
+          "solutionExcerpt": "[키포인트] 직각이 되는 꼭짓점이 $O$, $A$, $P$인 경우를 각각 조사한다.\n직각이 $",
+          "observation": "Read q19 in the complete production file: 두 점 $O(0,0)$, $A(6,0)$과 원 $x^2+y^2-14x+8y=0$ 위의 점 $P(a,b)$에 대하여 삼각형 $O; solution begins with [키포인트] 직각이 되는 꼭짓점이 $O$, $A$, $P$인 경우를 각각 조사한다. 직각이 $O$에 있으면 $a=0$이고, 원."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:61acf0008b9fc215eddb1630e5a4512f717cbef7182cc2944e5de1e230cff65a",
+          "solutionExcerpt": "[키포인트] 공통접선을 $y=mx+n$으로 놓고 두 중심에서 직선까지의 거리를 각각 $1$로 ",
+          "observation": "Read q20 in the complete production file: 중심이 점 $(-2,-1)$이고 반지름의 길이가 $1$인 원 $C$를 원점에 대하여 대칭이동한 원을 $C'$이라 하자. 두 원; solution begins with [키포인트] 공통접선을 $y=mx+n$으로 놓고 두 중심에서 직선까지의 거리를 각각 $1$로 둔다. 원 $C'$의 중심은 $(."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:3091388f233384f54323acfe9a136bd95e825ee8762dbf5b37d678ba2d0364fd",
+          "solutionExcerpt": "[키포인트] 중심과 외부의 점을 이은 직선은 두 접점을 이은 현의 수직이등분선이다.\n원의 중심",
+          "observation": "Read q21 in the complete production file: 〈서·논술형 1〉<br>점 $P(-4,2)$에서 원 $(x-2)^2+(y+1)^2=9$에 그은 두 접선의 접점을 각각 $A$,; solution begins with [키포인트] 중심과 외부의 점을 이은 직선은 두 접점을 이은 현의 수직이등분선이다. 원의 중심을 $C(2,-1)$이라 하면 $."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:4866051e5c90c50a8aaa5549037948be7881d6cfa6423252a75b6ba32c38a3a0",
+          "solutionExcerpt": "[키포인트] 이동한 포물선의 식을 구한 뒤 두 곡선이 한 점에서만 만난다는 조건을 중근 조건으",
+          "observation": "Read q22 in the complete production file: 〈서·논술형 2〉<br>곡선 $C:y=x^2-2x$를 $x$축에 대하여 대칭이동한 후, $x$축의 방향으로 $a$만큼, $y$; solution begins with [키포인트] 이동한 포물선의 식을 구한 뒤 두 곡선이 한 점에서만 만난다는 조건을 중근 조건으로 이용한다. 곡선 $C$를 $x."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+      "rawSha256": "sha256:29fc6ded96114721610e16b19a4fcceac54b45330075785e0c41715ac713ebb6",
+      "bytes": 40272,
+      "examTitle": "25_매산고_2학기_중간_고1_기출",
+      "standardCourse": [
+        "공통수학1",
+        "공통수학2"
+      ],
+      "questionCount": 20,
+      "selectionReason": "Selected from origin/main at the frozen main commit because it is a recent complete 고1 공통수학2 2학기 중간고사 production file and is close to the target route.",
+      "qualityAcceptanceReason": "Accepted as a calibration sample after reading the complete file through its final question, verifying non-empty solutions, and observing source/solution visual and metadata patterns.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed window.examTitle plus sequential questionBank records with explicit archive fields and no schema shortcut assumptions."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed student-facing solutions contain method, equations, intermediate reasoning, answer conclusion, and condition checks; the sample floor is content-based."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed course/unit/type/level/tag and subunit fields are populated per question; metadata is calibrated against the current master, not copied to target."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Whole-file read checked separation of source image from solutionImage; visual problem items retain image bindings only where the source depends on a diagram."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Whole-file read checked solutionImage, alt, caption, size, and math-role separation on visual-benefit items; absence is not auto-PASS when benefit is clear."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Whole-file read checked grid/full image sizing and long subjective continuation behavior; labels and solution visuals are kept inside the engine column."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:10a79145c77ec990a85d3685867fb6b95ee121030217fc4732dc91aa2c8d0061",
+          "solutionExcerpt": "[키포인트]\n집합은 그 대상이 주어진 모임에 속하는지 여부가 명확하게 정해지는 모임이다.\n\nㄱ",
+          "observation": "Read q1 in the complete production file: 다음 중 집합인 것만을 있는 대로 고른 것은? [3.7점]<div class=\"note-box\"><div style=\"text; solution begins with [키포인트] 집합은 그 대상이 주어진 모임에 속하는지 여부가 명확하게 정해지는 모임이다. ㄱ은 “수학 문제를 잘 푼다”의 기준."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:0d7a51f8d435e08a3f600dd321c0fae6354af9c4b1d7d1bb82e4e29377e941aa",
+          "solutionExcerpt": "[키포인트]\n평행한 두 직선은 $x$, $y$의 계수가 각각 같다.\n\n구하는 직선의 방정식을 ",
+          "observation": "Read q2 in the complete production file: 좌표평면 위의 점 $(6,4)$를 지나고, 직선 $x-3y+3=0$에 평행한 직선이 존재한다. 이 직선이 점 $(k,-1)$을; solution begins with [키포인트] 평행한 두 직선은 $x$, $y$의 계수가 각각 같다. 구하는 직선의 방정식을 $x-3y+c=0$이라 하자. 이 ."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:30e77c0c14c45d32fc5b31d814a8dce93b5c840a973286b65343a4703fb8dd03",
+          "solutionExcerpt": "[키포인트]\n교집합은 두 집합에 공통으로 들어 있는 원소의 집합이다.\n\n$A=\\{2,4\\}$,",
+          "observation": "Read q3 in the complete production file: 전체집합 $U=\\{2,4,6,8,10\\}$의 두 부분집합 $A=\\{2,4\\}$, $B=\\{4,6,8\\}$에 대하여 집합 $A\\; solution begins with [키포인트] 교집합은 두 집합에 공통으로 들어 있는 원소의 집합이다. $A=\\{2,4\\}$, $B=\\{4,6,8\\}$이므로 두."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:dc022466e4e422309f645e2de067f7cf8a1938b3eb8fbd615f4d6843082d5d22",
+          "solutionExcerpt": "[키포인트]\n도형을 $(p,q)$만큼 평행이동한 식은 원래 식에서 $x$를 $x-p$, $y$",
+          "observation": "Read q4 in the complete production file: 점 $(0,0)$을 점 $(2,-3)$으로 이동시키는 평행이동에 의하여 직선 $3x+2y+8=0$이 이동한 도형이 $ax-by; solution begins with [키포인트] 도형을 $(p,q)$만큼 평행이동한 식은 원래 식에서 $x$를 $x-p$, $y$를 $y-q$로 바꾸어 구한다. ."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:8b2d3cca53f15f66397bb4694c281808300d459b1b2a9bf30c7d8d65aa8315ee",
+          "solutionExcerpt": "[키포인트]\n교집합 조건으로 반드시 포함하거나 반드시 제외해야 하는 원소를 먼저 정한다.\n\n$",
+          "observation": "Read q5 in the complete production file: 전체집합 $U$는 $10$ 이하의 자연수 전체의 집합이다. $U$의 부분집합 $X$에 대하여 $X\\cap\\{2,3,5,7\\}=; solution begins with [키포인트] 교집합 조건으로 반드시 포함하거나 반드시 제외해야 하는 원소를 먼저 정한다. $X\\cap\\{2,3,5,7\\}=\\{."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:ea142dda99c8c6a297a12a7a85f246eb6c4a6e49f74be7ed32a9114d97fc02a0",
+          "solutionExcerpt": "[키포인트]\n점 $P(a,b)$가 직선 $y=x$ 위에 있으므로 $b=a$를 이용한다.\n\n점 ",
+          "observation": "Read q6 in the complete production file: 직선 $y=x$ 위의 점 $P(a,b)$와 직선 $5x+12y-4=0$ 사이의 거리가 $1$일 때, $a+b$의 값은? (단,; solution begins with [키포인트] 점 $P(a,b)$가 직선 $y=x$ 위에 있으므로 $b=a$를 이용한다. 점 $(a,a)$와 직선 $5x+12y."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:4e6d90f4f7105355dd8d3b6554967bc2eea66cc46bd2871e588ae838b909e719",
+          "solutionExcerpt": "[키포인트]\n지름의 양 끝점이 주어지면 중심은 두 점의 중점이고 반지름은 지름의 절반이다.\n\n",
+          "observation": "Read q7 in the complete production file: 두 점 $A(5,-1)$, $B(-3,5)$를 지름의 양 끝점으로 하는 원의 방정식을 $x^2+y^2+ax+by+c=0$이라 ; solution begins with [키포인트] 지름의 양 끝점이 주어지면 중심은 두 점의 중점이고 반지름은 지름의 절반이다. 원의 중심은 선분 $AB$의 중점이."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:4d3fc349400aee877636d4e00c8121712bb7f2524b2440753a7073914ede54e9",
+          "solutionExcerpt": "[키포인트]\n각 이동을 차례로 적용한 뒤, 원의 넓이를 이등분하는 직선은 원의 중심을 지난다는",
+          "observation": "Read q8 in the complete production file: 직선 $(a-2)x-2y-10=0$을 $x$축에 대하여 대칭이동하고, $y$축 방향으로 $3$만큼 평행이동한 후, 직선 $y=; solution begins with [키포인트] 각 이동을 차례로 적용한 뒤, 원의 넓이를 이등분하는 직선은 원의 중심을 지난다는 사실을 이용한다. 직선 $(a-."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:3eaae4faec37efc16d72ef5c13c7cfc7bab157be302a25f1ef55d91ed32bb514",
+          "solutionExcerpt": "[키포인트]\n수직인 두 직선의 기울기 관계로 $a$를 구한 뒤 내분점의 좌표를 이용한다.\n\n직",
+          "observation": "Read q9 in the complete production file: 두 점 $A(-2,3)$, $B(6,a)$가 있다. 선분 $AB$를 $1:3$으로 내분하는 점을 지나고, 선분 $AB$에 수직; solution begins with [키포인트] 수직인 두 직선의 기울기 관계로 $a$를 구한 뒤 내분점의 좌표를 이용한다. 직선 $y=2x+k$의 기울기가 $2."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:e0de480d2a5c137772356979cea52fb42a72780e88eb459f0ce3c72d7345531b",
+          "solutionExcerpt": "[키포인트]\n점 $A(15,0)$을 지나는 직선을 기울기 $m$으로 나타내고, 원의 중심에서 ",
+          "observation": "Read q10 in the complete production file: 아래 그림은 좌표평면 위에 지구의 중심을 원점으로 하고, 지구를 원 $x^2+y^2=9$로, 인공위성을 점 $A(15,0)$으; solution begins with [키포인트] 점 $A(15,0)$을 지나는 직선을 기울기 $m$으로 나타내고, 원의 중심에서 그 직선까지의 거리가 반지름과 같."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:173d5bac0a32a5d1ab7bbcea4b085d15e51ac2bdc11dbdceb727f7dba1b86e2a",
+          "solutionExcerpt": "[키포인트]\n영화를 정확히 한 종류, 두 종류, 세 종류 관람한 학생 수를 각각 나누어 전체 ",
+          "observation": "Read q11 in the complete production file: 우리 학교 어느 학년 학생 $90$명을 대상으로 세 영화 $A$, $B$, $C$의 관람 여부를 조사하였더니 영화 $A$, $; solution begins with [키포인트] 영화를 정확히 한 종류, 두 종류, 세 종류 관람한 학생 수를 각각 나누어 전체 인원과 관람 횟수의 합을 비교한다."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:70d1ecdaf56bd1cec69a1b99af0e9cbfb66a11019b73b9e4ab9a0d52183967b8",
+          "solutionExcerpt": "[키포인트]\n점 $B$를 직선 $y=x$에 대하여 대칭이동하여 꺾인 거리의 최솟값을 두 점 사",
+          "observation": "Read q12 in the complete production file: 점 $A(-5,-3)$을 $x$축에 대하여 대칭이동한 점의 좌표를 $B$라 하고, 점 $B$를 $y$축 방향으로 $-2$만큼 ; solution begins with [키포인트] 점 $B$를 직선 $y=x$에 대하여 대칭이동하여 꺾인 거리의 최솟값을 두 점 사이의 직선거리로 바꾼다. 점 $A."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:1f6befbf6d25a73d49c05ba177de1e2b33fe772b43c1fe3bad9a602deb35651f",
+          "solutionExcerpt": "[키포인트]\n행렬에서는 일반적으로 곱셈의 순서를 바꿀 수 없으므로 주어진 등식을 전개하여 $A",
+          "observation": "Read q13 in the complete production file: 두 실수 $x,y$에 대하여 두 행렬 $A=\\begin{pmatrix}2&2\\\\1&|x|\\end{pmatrix}$, $B=\\b; solution begins with [키포인트] 행렬에서는 일반적으로 곱셈의 순서를 바꿀 수 없으므로 주어진 등식을 전개하여 $AB=BA$ 조건으로 바꾼다. $(."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:4812afb3d936a3547b80dea6177b47e9ae511c47e8f53c1b031380d4d60d3b92",
+          "solutionExcerpt": "[키포인트] 첫 번째 원의 접선 방정식을 구한 뒤, 두 번째 원의 중심에서 그 접선까지의 거리",
+          "observation": "Read q14 in the complete production file: 원 $x^2+y^2+6x+4y+3=0$ 위의 점 $(-2,1)$에서의 접선이 원 $x^2+y^2-6x+8y+k=0$과 접할 때; solution begins with [키포인트] 첫 번째 원의 접선 방정식을 구한 뒤, 두 번째 원의 중심에서 그 접선까지의 거리를 반지름과 같게 둔다. 첫 번째."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:d961aaea317de173c86ee379b3859573d590c08e32b30cf155e3b60dfe2ca19b",
+          "solutionExcerpt": "[키포인트]\n내심에서 삼각형의 세 변까지의 거리는 모두 같다.\n\n내심을 $I(a,b)$라 하자",
+          "observation": "Read q15 in the complete production file: 세 직선 $x+\\sqrt3y-2=0$, $x-\\sqrt3y+10=0$, $y=2$로 둘러싸인 삼각형의 내심의 좌표를 $(a,b; solution begins with [키포인트] 내심에서 삼각형의 세 변까지의 거리는 모두 같다. 내심을 $I(a,b)$라 하자. 삼각형의 내부에서 $b>2$이므."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:019b23aae6f305077532f19c98f606b437e2b53f0c684a577ef0e716c02ed9f5",
+          "solutionExcerpt": "두 점 $(4,-2)$, $(-1,3)$ 사이의 거리는 거리 공식에 따라\n$\\sqrt{(-1-",
+          "observation": "Read q16 in the complete production file: 〈단답형1〉<br>좌표평면 위의 두 점 $(4,-2)$, $(-1,3)$ 사이의 거리가 $a\\sqrt b$일 때, 자연수 $a; solution begins with 두 점 $(4,-2)$, $(-1,3)$ 사이의 거리는 거리 공식에 따라 $\\sqrt{(-1-4)^2+{3-(-2)}^2}=\\."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:5f0ceed745b4f47b6abd20483efc327c4aff79f9556115c6b4a54d89b1e4d85c",
+          "solutionExcerpt": "[키포인트]\n$3$을 반드시 포함하면서 합이 $5$보다 큰 소수가 되는 가장 작은 부분집합을 ",
+          "observation": "Read q17 in the complete production file: 〈단답형2〉<br>전체집합 $U$는 $2$ 이상 $20$ 이하의 소수 전체의 집합이다. $U$의 공집합이 아닌 부분집합 $X$; solution begins with [키포인트] $3$을 반드시 포함하면서 합이 $5$보다 큰 소수가 되는 가장 작은 부분집합을 찾는다. 전체집합은 $U=\\{2,."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:3ea72ce57603d59bed86a2da1a719cd7f7612302a6f9ac57902e7b47dd3f8564",
+          "solutionExcerpt": "[키포인트]\n대칭이동 조건으로 점 $A$를 정하고, 교점 $D,E$를 구한 뒤 세 점을 지나는",
+          "observation": "Read q18 in the complete production file: 〈단답형3〉<br>좌표평면 위에 제$1$사분면의 점 $A$와 $y$축 위의 $O$가 아닌 점 $B$에 대하여 $\\overlin; solution begins with [키포인트] 대칭이동 조건으로 점 $A$를 정하고, 교점 $D,E$를 구한 뒤 세 점을 지나는 원의 방정식을 세운다. 점 $A."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:daafca10944539169e8875d94ee72ee5f87da301e5ff80958c72c46c615b387f",
+          "solutionExcerpt": "[키포인트]\n두 집합의 원소는 각각 이차방정식의 실근이므로, 한 개의 원소를 갖는 경우와 두 ",
+          "observation": "Read q19 in the complete production file: 〈서술형1〉<br>이차함수 $f(x)=x^2-7x+20$와 실수 $b,c$에 대하여 두 집합 $A,B$를 $A=\\{x\\mid ; solution begins with [키포인트] 두 집합의 원소는 각각 이차방정식의 실근이므로, 한 개의 원소를 갖는 경우와 두 개의 원소를 갖는 경우를 나누어 ."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:afb2e16292f7fac96e9cf65d45552919f4f515aa2bf496b512ed679bdc57e347",
+          "solutionExcerpt": "[키포인트]\n두 좌표축에 동시에 접하는 원의 중심을 $(r,r)$로 놓고 반지름을 구한 뒤, ",
+          "observation": "Read q20 in the complete production file: 〈서술형2〉<br>좌표평면 위에 서로 다른 원 $C_1,C_2$가 제$1$사분면에서 직선 $l:5x+12y-6=0$과 $x$축; solution begins with [키포인트] 두 좌표축에 동시에 접하는 원의 중심을 $(r,r)$로 놓고 반지름을 구한 뒤, 각 접점의 좌표와 사각형 M₁P₁."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "rawSha256": "sha256:5d02bf4ffa3c7a5de444d86962e7c4e6b68f282aa0e13fdebb06951e337b056a",
+      "bytes": 49101,
+      "examTitle": "25_효천고_2학기_중간_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Selected from origin/main at the frozen main commit because it is a recent complete 고1 공통수학2 2학기 중간고사 production file and is close to the target route.",
+      "qualityAcceptanceReason": "Accepted as a calibration sample after reading the complete file through its final question, verifying non-empty solutions, and observing source/solution visual and metadata patterns.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed window.examTitle plus sequential questionBank records with explicit archive fields and no schema shortcut assumptions."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed student-facing solutions contain method, equations, intermediate reasoning, answer conclusion, and condition checks; the sample floor is content-based."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Whole-file read confirmed course/unit/type/level/tag and subunit fields are populated per question; metadata is calibrated against the current master, not copied to target."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Whole-file read checked separation of source image from solutionImage; visual problem items retain image bindings only where the source depends on a diagram."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Whole-file read checked solutionImage, alt, caption, size, and math-role separation on visual-benefit items; absence is not auto-PASS when benefit is clear."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Whole-file read checked grid/full image sizing and long subjective continuation behavior; labels and solution visuals are kept inside the engine column."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:17a72f576d026f0f8e4b4cc4f3ec670ebea353da1052b3fc4b0fc357a3cf800a",
+          "solutionExcerpt": "[키포인트] 두 점 사이의 거리는 가로 변화량과 세로 변화량으로 만든 직각삼각형의 빗변이다.\n",
+          "observation": "Read q1 in the complete production file: 좌표평면 위의 두 점 $A(-2,5)$, $B(3,0)$이 있다. 두 점 $A$, $B$ 사이의 거리는? [3.1점]; solution begins with [키포인트] 두 점 사이의 거리는 가로 변화량과 세로 변화량으로 만든 직각삼각형의 빗변이다. 조건 정리: $A(-2,5)$, ."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:8d4f932574aca07d57798137f83708182969d5c9b0dc25cde60b5f57f6454819",
+          "solutionExcerpt": "[키포인트] 두 직선이 수직이면 두 기울기의 곱이 $-1$이다.\n조건 정리: 첫째 직선의 기울",
+          "observation": "Read q2 in the complete production file: 두 직선 $x+3y+2=0$, $kx-2y-1=0$이 서로 수직일 때, 실수 $k$의 값은? [3.1점]; solution begins with [키포인트] 두 직선이 수직이면 두 기울기의 곱이 $-1$이다. 조건 정리: 첫째 직선의 기울기는 $-\\dfrac13$, 둘째."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:424ff2adbb73aadfc829a668507623f7779fea7cf71b0f5ca651d914f0f3175b",
+          "solutionExcerpt": "[키포인트] $x$, $y$에 관한 항을 완전제곱식으로 만들면 원의 중심과 반지름을 중심형에서",
+          "observation": "Read q3 in the complete production file: 원의 방정식 $x^2+y^2+2x-6y+6=0$의 중심 좌표와 반지름의 길이를 순서대로 올바르게 쓴 것은? [3.2점]; solution begins with [키포인트] $x$, $y$에 관한 항을 완전제곱식으로 만들면 원의 중심과 반지름을 중심형에서 바로 읽을 수 있다. 조건 정리."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:24cc2ebd18587635ac57406962c09cfeb9e4cc3c153113bfebd4714b26567be4",
+          "solutionExcerpt": "[키포인트] 원에 접하는 직선은 중심에서 그 직선까지의 거리가 반지름과 같다.\n조건 정리: 기",
+          "observation": "Read q4 in the complete production file: 원 $x^2+y^2=5$에 접하고 기울기가 $1$인 두 직선이 $y$축과 만나는 점을 각각 $A$, $B$라 할 때, $\\ov; solution begins with [키포인트] 원에 접하는 직선은 중심에서 그 직선까지의 거리가 반지름과 같다. 조건 정리: 기울기가 $1$인 모든 직선은 $y."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:d11d2bef89501e0791dea0798d4f37d2a7fcd7799d4f5e663a7b9d45db4a87d7",
+          "solutionExcerpt": "[키포인트] 두 집합이 같으려면 중복을 제외한 원소가 정확히 일치해야 한다.\n조건 정리: $A",
+          "observation": "Read q5 in the complete production file: 두 집합 $A=\\{3,\\ 2a,\\ b-4\\}$, $B=\\{3a,\\ 4,\\ 2\\}$에 대하여 $A=B$일 때, $a+b$의 값은; solution begins with [키포인트] 두 집합이 같으려면 중복을 제외한 원소가 정확히 일치해야 한다. 조건 정리: $A=\\{3,2a,b-4\\}$, $B."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:e4d91d0e9497ddaae6e74c662f394d354aef8f3e17b529188c6ab31b923c380a",
+          "solutionExcerpt": "[키포인트] 중심형의 우변은 반지름의 제곱 $r^2$이므로, 실제 원이 되려면 반드시 $r^2",
+          "observation": "Read q6 in the complete production file: 방정식 $x^2+y^2-kx+2y+2k+1=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$의 값의 범위는? [3.5점]; solution begins with [키포인트] 중심형의 우변은 반지름의 제곱 $r^2$이므로, 실제 원이 되려면 반드시 $r^2>0$이어야 한다. 조건 정리: ."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:b59afdd4f6bcec0dc809fd0b3bf15ab32aeacf8f3b5bb4ba9ae25e990fa264f6",
+          "solutionExcerpt": "[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 $2x-y+",
+          "observation": "Read q7 in the complete production file: 평행한 두 직선 $2x-y+1=0$, $2x-y+k=0$ 사이의 거리가 $\\sqrt5$가 되도록 하는 모든 실수 $k$의 값의; solution begins with [키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다. 두 직선 $2x-y+1=0$, $2x-y+k=0$은 ."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:c9141b47a09067a9b3e1b58203c40af1bd6478912e1b96e3fe6dd548ad6a71be",
+          "solutionExcerpt": "[키포인트] 수직인 두 직선의 기울기 관계와 수선의 발 좌표 표현을 차례로 연결한다.\n조건 정",
+          "observation": "Read q8 in the complete production file: 다음 보기는 좌표평면 위의 점 $P(x_1,y_1)$과 점 $P$를 지나지 않는 직선 $l:ax+by+c=0$ ($a\\ne0$; solution begins with [키포인트] 수직인 두 직선의 기울기 관계와 수선의 발 좌표 표현을 차례로 연결한다. 조건 정리: $PH$와 $l$은 수직이고."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:8f4e92b59ea28239e92aef097cb919370e5a9166fc19bead4d79b965d4b5e566",
+          "solutionExcerpt": "[키포인트] 원소와 부분집합은 서로 다른 관계이므로 중괄호의 겹수를 정확히 구분한다.\n조건 정",
+          "observation": "Read q9 in the complete production file: 집합 $A=\\{\\varnothing,3,5,7,\\{7\\}\\}$에 대하여 다음 중 옳지 않은 것은? [3.8점]; solution begins with [키포인트] 원소와 부분집합은 서로 다른 관계이므로 중괄호의 겹수를 정확히 구분한다. 조건 정리: $A$의 원소는 $\\varn."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:245cdca088b0250de8841286be130cd9ee76528bfc37e5a7e7a095c6ed17b5d6",
+          "solutionExcerpt": "[키포인트] $A\\cap B=B$는 바로 $B\\subseteq A$를 뜻한다.\n조건 정리: 포",
+          "observation": "Read q10 in the complete production file: 전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $A\\cap B=B$일 때, 다음 보기 중 항상 옳은 것만을 있는 대로; solution begins with [키포인트] $A\\cap B=B$는 바로 $B\\subseteq A$를 뜻한다. 조건 정리: 포함관계가 정해지면 합집합과 여집합."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:c7c46c9e0b2ac0c56e52631b0024cbf5d31583e7dd520eea8ef5061cc1fabd6f",
+          "solutionExcerpt": "[키포인트] 원과 직선이 만나거나 접하려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 ",
+          "observation": "Read q11 in the complete production file: 중심이 점 $(a,a)$이고 반지름의 길이가 $\\dfrac13$인 원이 직선 $y=-x+3$과 만나도록 하는 $a$의 최댓값과; solution begins with [키포인트] 원과 직선이 만나거나 접하려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다. 조건 정리: 중심은 $C(."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:f3493ccd723f2870ef8100e0d09ca9ed84dd094c58c81649624f83405425ffbc",
+          "solutionExcerpt": "[키포인트] 원점 대칭은 $(x,y)$를 $(-x,-y)$로 바꾸고, 평행이동은 꼭짓점 좌표를",
+          "observation": "Read q12 in the complete production file: 포물선 $y=x^2+6x+13$을 원점에 대하여 대칭이동한 후, $y$축의 방향으로 $a$만큼 평행이동한 포물선이 $x$축과 ; solution begins with [키포인트] 원점 대칭은 $(x,y)$를 $(-x,-y)$로 바꾸고, 평행이동은 꼭짓점 좌표를 옮긴다. 조건 정리: 원래 포물."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:0a711cfe48e4b7394a2065d54e0aef422c078a66065de6b69b1d48529b6bc2e1",
+          "solutionExcerpt": "[키포인트] 방정식의 변수 치환은 실제 도형의 좌표 이동과 반대 방향으로 읽는다.\n조건 정리:",
+          "observation": "Read q13 in the complete production file: 두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 아래 그림과 같을 때, 다음 중 옳은 것은? [4.3점]; solution begins with [키포인트] 방정식의 변수 치환은 실제 도형의 좌표 이동과 반대 방향으로 읽는다. 조건 정리: 그림에서 $f$의 점 $(2,2."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:68793b2b161a899bb2d3c8fac2ec13ab8589fec7396a5ae8eb4d11ee8c9652ed",
+          "solutionExcerpt": "[키포인트] 내심에서 꼭짓점으로 그은 선은 그 꼭짓점의 각을 이등분한다.\n조건 정리: $AB=",
+          "observation": "Read q14 in the complete production file: 그림과 같이 좌표평면 위의 점 $A(-1,2)$, $B(-3,0)$, $C(2,-1)$을 세 꼭짓점으로 하는 삼각형 $ABC$; solution begins with [키포인트] 내심에서 꼭짓점으로 그은 선은 그 꼭짓점의 각을 이등분한다. 조건 정리: $AB=2\\sqrt2$, $AC=3\\sq."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:7d907605f60bd444ce6c8f14b66825cfad5da324005262f06ba169b775da1511",
+          "solutionExcerpt": "[키포인트] 두 집합의 교집합 크기는 작은 집합의 크기보다 클 수 없고, 합집합 크기는 전체 ",
+          "observation": "Read q15 in the complete production file: 성선이네 반 학생 $25$명을 대상으로 두 선택 과목 $A$, $B$에 대한 선호도를 조사한 결과 과목 $A$를 선호하는 학생; solution begins with [키포인트] 두 집합의 교집합 크기는 작은 집합의 크기보다 클 수 없고, 합집합 크기는 전체 인원보다 클 수 없다. 조건 정리."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:0f8185f68db1880e7cff508ace4545341bdf48acc8109820372665a63e0603be",
+          "solutionExcerpt": "[키포인트] 두 차집합의 합집합은 $A$에서 $B$와 $C$에 공통으로 속하는 원소를 제외한 ",
+          "observation": "Read q16 in the complete production file: 전체집합 $U=\\{1,2,3,\\ldots,15\\}$의 세 부분집합 $A$, $B$, $C$에 대해 $A=\\{1,2,4,7,8\\; solution begins with [키포인트] 두 차집합의 합집합은 $A$에서 $B$와 $C$에 공통으로 속하는 원소를 제외한 집합이다. 조건 정리: $B\\ca."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:d96091c06ae0f461b681d455a66146e11b3e4dfd69b1ca48ee23832aeb214846",
+          "solutionExcerpt": "[키포인트] 어떤 기울기에서도 한 점을 지나는 직선들이 원을 항상 이등분하려면 그 공통점이 원",
+          "observation": "Read q17 in the complete production file: 직선 $y=k(x+3)-5$를 $x$축의 방향으로 $5$만큼, $y$축의 방향으로 $8$만큼 평행이동한 직선을 $l$이라 하자; solution begins with [키포인트] 어떤 기울기에서도 한 점을 지나는 직선들이 원을 항상 이등분하려면 그 공통점이 원의 중심이어야 한다. 조건 정리:."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:f0f5afab805bec3aab270ffae77345f24b9ea8c50c0081571ea37f9fa0f4296f",
+          "solutionExcerpt": "[키포인트] 각 변에서의 반사 조건은 점 $P$를 그 변에 대칭이동한 점과 $Q$ 사이의 직선",
+          "observation": "Read q18 in the complete production file: 그림과 같이 네 점 $O(0,0)$, $A(0,17)$, $B(-10,17)$, $C(-10,0)$을 꼭짓점으로 하는 직사각형; solution begins with [키포인트] 각 변에서의 반사 조건은 점 $P$를 그 변에 대칭이동한 점과 $Q$ 사이의 직선거리로 바꿀 수 있다. 조건 정리."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:0a7ae315651c70161fb6e939fba0ff3663f7ac28d181ce59f3b1c207b86fc1b9",
+          "solutionExcerpt": "[키포인트] 축 대칭점 사이의 거리는 원래 점과 대칭점 사이의 좌표 차로 계산한다.\n조건 정리",
+          "observation": "Read q19 in the complete production file: [서술형 1] 좌표평면 위의 점 $A$를 $x$축, $y$축, 원점에 대하여 대칭이동한 점을 각각 $B$, $C$, $D$라 ; solution begins with [키포인트] 축 대칭점 사이의 거리는 원래 점과 대칭점 사이의 좌표 차로 계산한다. 조건 정리: $A=(x,y)$이면 $B=(."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:62dc1bee537353ac86bf8b6a65716ff7377e4b0459314801a5b4d814445ecced",
+          "solutionExcerpt": "[키포인트] 여집합의 교집합은 합집합의 여집합이므로 먼저 합집합의 원소 수를 구한다.\n조건 정",
+          "observation": "Read q20 in the complete production file: [서술형 2] 전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $n(U)=150$, $n(A)=62$, $n(B)=96; solution begins with [키포인트] 여집합의 교집합은 합집합의 여집합이므로 먼저 합집합의 원소 수를 구한다. 조건 정리: $n(U)=150$, $n(."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:e6464883a5b6d685002ac61916d5559ab91eb683c44d08c231eaeb96c3fa89d8",
+          "solutionExcerpt": "[키포인트] 직선 위의 점을 매개변수로 나타내면 선분 내부와 양쪽 연장선을 한 번에 처리할 수",
+          "observation": "Read q21 in the complete production file: [서술형 3] 두 점 $A(-8,-6)$, $B(2,9)$과 직선 $AB$ 위의 점 $C$가 $2\\overline{BC}=3\\; solution begins with [키포인트] 직선 위의 점을 매개변수로 나타내면 선분 내부와 양쪽 연장선을 한 번에 처리할 수 있다. 조건 정리: $C=A+t."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:36b71a8684a6e962a6251ea61eb333e8ea67bcc530f6c08bacae5009a904f7ff",
+          "solutionExcerpt": "[키포인트] 두 좌표축에 동시에 접하는 원은 중심의 각 좌표의 절댓값이 반지름과 같다.\n조건 ",
+          "observation": "Read q22 in the complete production file: [서술형 4] 점 $(-2,3)$을 지나고 $x$축과 $y$축에 동시에 접하는 두 원의 중심 사이의 거리를 구하고 그 과정을 ; solution begins with [키포인트] 두 좌표축에 동시에 접하는 원은 중심의 각 좌표의 절댓값이 반지름과 같다. 조건 정리: 반지름을 $r$ $(r>0."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:b11c7ea4c8d39aea9f4d75e1c8271a848c41ba2f917e095c644dc73dc0fd8353",
+          "solutionExcerpt": "[키포인트] 원의 중심을 지나는 직선이 만드는 지름과 절댓값 그래프의 다른 branch가 원 ",
+          "observation": "Read q23 in the complete production file: [서술형 5] $|a|\\le9$, $|b|\\le4$인 두 정수 $a$, $b$에 대하여 함수 $y=|x|$의 그래프를 $x$축; solution begins with [키포인트] 원의 중심을 지나는 직선이 만드는 지름과 절댓값 그래프의 다른 branch가 원 내부를 추가로 가르는지까지 확인하."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Solution must explain the method and reasoning, not merely state the answer.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|1"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "The solution names and applies the governing concept before calculation.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|1"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "All explicit conditions and domains are converted into constraints and used.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|8"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Key algebraic and geometric intermediate steps remain reproducible.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|12"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Multiple-choice solutions end with the correct choice number and value.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|1"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "상-level solutions expose the nontrivial case split or geometric inference.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|16"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Subjective solutions show enough ordered work for partial-credit reconstruction.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|21"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Problem image and instructional solutionImage are distinct fields and roles.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|2"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "A visual is attached when it materially improves understanding of the decisive relation.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|2"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "Every instructional visual has meaningful alt text and caption.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|2"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Instructional visual labels and geometry match the equations in the solution.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js|2"
+      ]
+    }
+  }
+}

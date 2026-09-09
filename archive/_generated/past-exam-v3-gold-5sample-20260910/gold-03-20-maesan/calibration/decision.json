@@ -1,0 +1,630 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "NOT_TESTED",
+  "mainCommit": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "rulePackSha": "sha256:1337e44c4f650ff080b63961a0867009ab1b6e7dd667be7cd82347d12bf61f17",
+  "target": {
+    "examId": "20_매산고_2학기_기말_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP_independent_review_20260909_125050\\packages\\20_매산고_2학기_기말_고1_기출_EXTERNAL_REVIEW\\source\\2020_매산고1_2기말.pdf",
+        "bytes": 1586200,
+        "sha256": "sha256:6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "gold03-reader-apmath",
+  "readerSessionId": "gold03-session-20260910",
+  "startedAt": "2026-09-10T05:04:00+09:00",
+  "frozenAt": "2026-09-10T05:05:00+09:00",
+  "baselineObservation": "No target production JS was used as a calibration sample. The target source is the external original PDF; any target baseline review is deferred until after fresh source freeze.",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:199480e38c76340a0441f27d2880ec91527af07a5d4f5ed5136c0b30f682dbf6",
+      "bytes": 37294,
+      "examTitle": "25_금당고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Selected from origin/main as a recent high-school H1, second-semester final exam with the same course/grade/term route as the target; the sample is not the target exam.",
+      "qualityAcceptanceReason": "Complete production JS with non-empty answers and student-facing solutions across the first, middle, high-level, visual, and final constructed-response questions; used only to calibrate the quality floor.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read the complete JS file and observed a consistent window.examTitle plus questionBank schema with per-question identity, type, content, choices, answer, solution, and classification fields."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read every solution from the first through last question; accepted profile requires a key idea, interpreted conditions, intermediate reasoning, and an explicit conclusion, with extra scrutiny for upper-level and constructed-response items."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read every question metadata block; observed standardCourse, standardUnitKey, standardUnit, questionType, level, and the current subunit fields throughout the sample."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Read every image-bearing question and kept problem image evidence separate from solution visuals; visual questions are identified by image/imageSize rather than inferred from solution prose."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Read every declared solutionImage, alt, caption, and size field; visual assets are instructional additions and remain distinct from source-problem images."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Read the whole questionBank through its final item and observed layoutTag/wide/imageSize choices used to keep exam, answer, and solution layouts stable."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:ba1712b4b7d5ee6c9854a3e05123d71f6cbad0a8668d75469c807549564ab56d",
+          "solutionExcerpt": "[키포인트] 집합은 어떤 대상이 그 모임에 속하는지 여부를 객관적으로 분명하게 판정할 수 있어야 한다.",
+          "observation": "Read q1 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:5b4141a925fa6e236052a1f52489b36690639879c532bef9ead6aee51da80232",
+          "solutionExcerpt": "[키포인트] 부분집합의 모든 원소는 원래 집합에 포함되어 있어야 한다.",
+          "observation": "Read q2 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:9588a791b0454570be0faf0a8925ef58b9dc9634b7e57ddd7fedff19b20dfa3b",
+          "solutionExcerpt": "[키포인트] 두 집합이 같으려면 서로 같은 원소를 가져야 한다.",
+          "observation": "Read q3 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:7c31ad52ed8d802e53ace8d4bb2954843df0d2ccae3b9bc754a73ba0fe5410bd",
+          "solutionExcerpt": "[키포인트] 조건명제 $p\\to q$가 거짓인 경우는 $p$가 참이고 $q$가 거짓일 때뿐이다.",
+          "observation": "Read q4 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:4a5068333dc78e7ae1089e70d930cb31ea5d06b7901b32a4198e1a0a9b0f3430",
+          "solutionExcerpt": "[키포인트] 두 조건의 진리집합을 비교하면 필요조건과 충분조건을 판정할 수 있다.",
+          "observation": "Read q5 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:bf97dd4b8adec0eb5b340f15c4fd6e6ecd0e14e3b759d6df4cacfa27bcbfe607",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 함수가 정의역과 공역 사이의 일대일 대응이어야 한다.",
+          "observation": "Read q6 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:40388bf050200710916501d580fb590e54d2e5aa95941b74ea31b9380526b80e",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수의 값을 먼저 구한 뒤 바깥 함수에 대입한다.",
+          "observation": "Read q7 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:18c970fc8c6e2ad7abd7540a6213abb412635b3e0304c82e004633a8e5bb1895",
+          "solutionExcerpt": "[키포인트] $f^{-1}(5)=2$는 $f(2)=5$와 같은 뜻이다.",
+          "observation": "Read q8 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:848b440026a5acace41584d8bb63160fbd23a3dcabcaac741cd134f41b378a71",
+          "solutionExcerpt": "[키포인트] $y=\\dfrac{k}{x-p}+q$의 점근선은 $x=p$, $y=q$이다.",
+          "observation": "Read q9 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:a8ec93e111c65679bc1399901bcde7a6e35880a5c853b76623085afdae9efa5d",
+          "solutionExcerpt": "[키포인트] 제곱근 안의 식은 각각 $0$ 이상이어야 한다.",
+          "observation": "Read q10 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:ee76918704c860c4c65c915d0a902fa6537b38cf24ed3286ecaae71979633106",
+          "solutionExcerpt": "[키포인트] 약수집합의 포함관계 $A_r\\subseteq A_s$는 자연수 $r$이 $s$의 약수라는 뜻과 연결된다.",
+          "observation": "Read q11 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:078d295da84414872a177d608398b67e66e2b9caa4e5fbe1c8a92136542ad3fe",
+          "solutionExcerpt": "[키포인트] 명제가 항상 참이 되려면 결론이 거짓인 경우에 전제가 성립하지 않아야 한다.",
+          "observation": "Read q12 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:cf0fddca039adabbe0dbc6cdc62ba801c51342f833bbc7735245ca998140b481",
+          "solutionExcerpt": "[키포인트] 일정한 합 $2x+3y$ 아래에서 곱 $xy$의 최댓값은 산술평균과 기하평균의 관계로 구할 수 있다.",
+          "observation": "Read q13 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:3f1dd4e4a8c1a3e969c9bb8b5ec033b46f20b6e6cdab7f883dec86f38704b687",
+          "solutionExcerpt": "[키포인트] 먼저 $f(2)$를 구한 뒤 같은 함숫값을 반복해서 적용한다.",
+          "observation": "Read q14 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:b8aab16a1faf55160c0d3699289b243bf1e71d50d13d0e8d318d393660fe0770",
+          "solutionExcerpt": "[키포인트] 정의역 $x\\ge6$에서 $f$는 증가함수이므로 $f$와 $f^{-1}$의 그래프의 교점은 직선 $y=x$ 위에 있다.",
+          "observation": "Read q15 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:8bbbf22103ab9d23b0cf0d86d493ca4284109a050a9f017e77c136667c2ac83e",
+          "solutionExcerpt": "[키포인트] 유리함수의 수평·수직 점근선과 한 점의 좌표로 $a,b,c$를 결정한다.",
+          "observation": "Read q16 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:2cdc447968a18aa18703bb4f7367147d50e3a1a1ea246a988a88425e3d7b1be6",
+          "solutionExcerpt": "[키포인트] $A\\cap B$의 원소는 $k$의 소수인 약수이고, $C$의 원소 수는 $\\left\\lfloor\\dfrac{k}{5}\\right\\rfloor$이다.",
+          "observation": "Read q17 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:90ebd2fa8f899ac1a36370a2e7d6e55485327dfe6eb77e822f7a0dd9ec978c02",
+          "solutionExcerpt": "[키포인트] $\\angle APB=90^\\circ$인 점 $P$의 자취는 선분 $AB$를 지름으로 하는 원이다.",
+          "observation": "Read q18 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:b205557adbecc1238867e19e7c40845b49e039fbe27138ee690f4331d2d3fc9a",
+          "solutionExcerpt": "[키포인트] 상수함수가 되려면 방정식 $|x^2-6x+4|=k$가 서로 다른 네 실근을 가져야 한다.",
+          "observation": "Read q19 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:d628b48e3ded4b672d6074169852b5c0de309352529b7c764f1b9e3324c65b07",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 함수가 실수 전체에서 일대일 대응이어야 한다.",
+          "observation": "Read q20 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:82482881b1917701adce8e74e407a385e5eeb9f4a680f8078c2dc61d4e5f615e",
+          "solutionExcerpt": "[키포인트] 두 집합이 서로소라는 것은 공통으로 가지는 원소가 하나도 없다는 뜻이다.",
+          "observation": "Read q21 in full: 하 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:1551c29323b7ff1e8beb64f12ac28cb817c789934f11868fab413d2789fcc910",
+          "solutionExcerpt": "[키포인트] $t=\\sqrt{x-2}$로 치환하면 교점의 개수는 $t\\ge0$인 이차방정식의 서로 다른 두 근의 개수로 바뀐다.",
+          "observation": "Read q22 in full: 상 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:a8f2afe1e8f55fead5e16e91a4e9370c18e2f6f4f381b3c9bd1e310a814025fa",
+      "bytes": 41286,
+      "examTitle": "25_순천고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Selected from origin/main as a recent high-school H1, second-semester final exam with the same course/grade/term route as the target; the sample is not the target exam.",
+      "qualityAcceptanceReason": "Complete production JS with non-empty answers and student-facing solutions across the first, middle, high-level, visual, and final constructed-response questions; used only to calibrate the quality floor.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read the complete JS file and observed a consistent window.examTitle plus questionBank schema with per-question identity, type, content, choices, answer, solution, and classification fields."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read every solution from the first through last question; accepted profile requires a key idea, interpreted conditions, intermediate reasoning, and an explicit conclusion, with extra scrutiny for upper-level and constructed-response items."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read every question metadata block; observed standardCourse, standardUnitKey, standardUnit, questionType, level, and the current subunit fields throughout the sample."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Read every image-bearing question and kept problem image evidence separate from solution visuals; visual questions are identified by image/imageSize rather than inferred from solution prose."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Read every declared solutionImage, alt, caption, and size field; visual assets are instructional additions and remain distinct from source-problem images."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Read the whole questionBank through its final item and observed layoutTag/wide/imageSize choices used to keep exam, answer, and solution layouts stable."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:c45adc1c1a90dc49db82006fc2935bcdad35c8958cba96bd3bd665dc91d474ea",
+          "solutionExcerpt": "[키포인트] 조건은 변수의 값에 따라 참과 거짓이 달라지는 문장이다.",
+          "observation": "Read q1 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:f39b9d512b0865ccf72cf7a3b6d44ce17ed49bd478b86c8f3d9bfdf398b65f49",
+          "solutionExcerpt": "[키포인트] 명제 $p\\to q$의 역은 $q\\to p$이다.",
+          "observation": "Read q2 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:53e08029dab4b2893e977352a04899d6a984057f52ba27c469d3b3a68a5ffa20",
+          "solutionExcerpt": "[키포인트] 제곱근 안의 식은 $0$ 이상이어야 한다.",
+          "observation": "Read q3 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:1f42af91cdf3b2c2fc5bd1ffc8638fbb1801837530de8307a25734de7117bc58",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수부터 차례로 계산한다.",
+          "observation": "Read q4 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:27c009a75c1d0db2aab6e9cd02aadd6f0bb48f627706a3b68429290c139d18d7",
+          "solutionExcerpt": "[키포인트] ‘어떤’의 부정은 ‘모든’이고, $\\le$의 부정은 $\\gt$이다.",
+          "observation": "Read q5 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:8555746e39d16c3a6448f09192f0a17d63bda65f99d935c40ca7c09736d3a974",
+          "solutionExcerpt": "[키포인트] $p$가 $q$이기 위한 충분조건이면 $p\\to q$가 참이므로 $P\\subset Q$이다.",
+          "observation": "Read q6 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:0d96d27964352a9892131bccced0e2e3a68d950224a3f1d3b56b7898b9cafd2b",
+          "solutionExcerpt": "[키포인트] 제곱근 함수의 정의역은 근호 안이 $0$ 이상인 범위이고, 제곱근의 값은 항상 $0$ 이상이다.",
+          "observation": "Read q7 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:19094c6bdabf4b0f081ad27744187d3bcc1dd64193d42201d98b2ae5f9634a0a",
+          "solutionExcerpt": "[키포인트] 증가하는 일차함수가 $A$에서 $A$로 일대일대응이 되려면 치역의 끝값이 $A$의 끝값과 같아야 한다.",
+          "observation": "Read q8 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:7c448278514b3f677c019655dfde21e6472165c6c4e5055feae20e573a66c641",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 함수가 실수 전체에서 일대일대응이어야 한다.",
+          "observation": "Read q9 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:d9a940c8f500eed6ce281d4b23157d88344b83697d5c41e5483427c46fceb838",
+          "solutionExcerpt": "[키포인트] 그래프의 점선은 함수값이 다음 문자로 어떻게 이어지는지를 보여 준다.",
+          "observation": "Read q10 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:1069bf38dc910ec274154f24dd9a294b03f85fff354335844214cc5cd7cfd992",
+          "solutionExcerpt": "[키포인트] 합집합이 공집합이면 두 집합이 각각 공집합이다.",
+          "observation": "Read q11 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:8dfdb737c9484ed9fa8b3ab0e46c6183facc401f5011176fd862b6a12cba585e",
+          "solutionExcerpt": "[키포인트] $f^{-1}(14)$는 $f(x)=14$를 만족하는 $x$이다.",
+          "observation": "Read q12 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:aa5a32868bc5716a51c980a13ed502efcc9dbb0f7adc28361ce1427f2e8d3a07",
+          "solutionExcerpt": "[키포인트] 유리함수의 $x$절편, 수직점근선, 수평점근선을 식의 계수와 연결한다.",
+          "observation": "Read q13 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:c87aef067df01c36a2e3412297cb9b72d42e9d59f3656c7d2c81b9b31f11992b",
+          "solutionExcerpt": "[키포인트] 제2사분면과 제3사분면을 모두 지나기 위한 $x\\lt0$에서의 함수값 범위를 조사한다.",
+          "observation": "Read q14 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:38b931f48fee7595573c853752282872bc2134ccf975989400e6304c325a65c2",
+          "solutionExcerpt": "[키포인트] 주어진 함수는 $x\\ge4$에서 증가하므로 원함수와 역함수의 교점은 직선 $y=x$ 위에 있다.",
+          "observation": "Read q15 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:7313d9b68f7bf2f25127aee26275ec99caf46d2b23472046a6ee58f7c8f450e0",
+          "solutionExcerpt": "[키포인트] 두 짝수 제곱수의 차를 인수분해하고 홀짝성을 이용한다.",
+          "observation": "Read q16 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:e0b61ccabed8b39978dfd792d9dea7b314a090ee55b7a25584da4890e51afcb5",
+          "solutionExcerpt": "[키포인트] 절댓값 안의 부호에 따라 두 가지로 나누고, 후보보다 작은 모든 $k$에서 교점이 두 개가 될 수 없음을 확인한다.",
+          "observation": "Read q17 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:99abd50acae9ac081c1efcad0eff8ee17b7e29e3b49accdda4204ed71605ea38",
+          "solutionExcerpt": "[키포인트] 원의 중심을 기준으로 좌표를 치환하면 교점 조건이 대칭적으로 정리된다.",
+          "observation": "Read q18 in full: 상 단답형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:321d774a74e2b41e92f97b27810c14afb3718a5def1e0f54ac75d7e2f801be29",
+          "solutionExcerpt": "[키포인트] 분자 $x-3$을 양수 변수로 치환한 뒤 완전제곱을 이용하여 상한과 등호 조건을 함께 찾는다.",
+          "observation": "Read q19 in full: 중 단답형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:e386fd71575df65a0f66c292f4bb6c519b1f57849c4030702418fc51f0f6c7d5",
+          "solutionExcerpt": "[키포인트] 각 조건을 카드의 뒤집힘 여부에 대한 논리관계로 바꾸고 가능한 경우를 전수 확인한다.",
+          "observation": "Read q20 in full: 상 단답형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:3a5a5cc5f6c1040556f0186fa3c0ccb68b34d24e0d7a822714485f52c2945d72",
+          "solutionExcerpt": "[키포인트] 일대일대응에서는 서로 다른 입력의 함수값이 서로 달라야 하며 공역의 모든 값이 한 번씩 나온다.",
+          "observation": "Read q21 in full: 중 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:b53bf3b38b7fa42d3f0fe67618679f59c227aff5589961f53b094cf5cebd8ae8",
+          "solutionExcerpt": "[키포인트] 바깥 함수 $f$의 어느 식을 사용할지는 안쪽 함수값 $f(x)$가 $-1$보다 작은지로 결정한다.",
+          "observation": "Read q22 in full: 중 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:d0361095164a0422856f64cf90f368be179e7aa69df07ba25c36a68e55b23a75",
+          "solutionExcerpt": "[키포인트] 두 무리함수의 그래프를 각각 그리고, 직선과의 교점 수는 제곱근을 새 변수로 치환하여 판정한다.",
+          "observation": "Read q23 in full: 상 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:89154292145bb42d5e557583c82fc1bce978932c84b65ab464c56e5fe53665d7",
+      "bytes": 35587,
+      "examTitle": "25_제일고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Selected from origin/main as a recent high-school H1, second-semester final exam with the same course/grade/term route as the target; the sample is not the target exam.",
+      "qualityAcceptanceReason": "Complete production JS with non-empty answers and student-facing solutions across the first, middle, high-level, visual, and final constructed-response questions; used only to calibrate the quality floor.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read the complete JS file and observed a consistent window.examTitle plus questionBank schema with per-question identity, type, content, choices, answer, solution, and classification fields."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read every solution from the first through last question; accepted profile requires a key idea, interpreted conditions, intermediate reasoning, and an explicit conclusion, with extra scrutiny for upper-level and constructed-response items."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read every question metadata block; observed standardCourse, standardUnitKey, standardUnit, questionType, level, and the current subunit fields throughout the sample."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Read every image-bearing question and kept problem image evidence separate from solution visuals; visual questions are identified by image/imageSize rather than inferred from solution prose."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Read every declared solutionImage, alt, caption, and size field; visual assets are instructional additions and remain distinct from source-problem images."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Read the whole questionBank through its final item and observed layoutTag/wide/imageSize choices used to keep exam, answer, and solution layouts stable."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:c9c164b1b2948c250c3bd5be0d52dd3e67ab242dd6a5971915e335939201db0d",
+          "solutionExcerpt": "[키포인트] 참과 거짓을 분명히 판정할 수 있는 문장만 명제이다.",
+          "observation": "Read q1 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:aaddc9afebcaf4325ef095ecacfd49f8caf074097bc1c7ffd9f0e8cb6f929cee",
+          "solutionExcerpt": "점 (4,1)을 점 (-1,3)으로 옮기려면 x방향으로 5만큼 왼쪽, y방향으로 2만큼 위로 평행이동해야 한다.",
+          "observation": "Read q2 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:17417aed57a550d25e4d636e2996b1ad75b0b7c34b6f8e4ad1d35776649f8e71",
+          "solutionExcerpt": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.",
+          "observation": "Read q3 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:2522b2b87c59d121e6c4fa6ddc28a399f4d03a5c8352f6c9414985cd36ba307c",
+          "solutionExcerpt": "[키포인트] 조건명제는 대우를 이용하면 필요한 경계값을 쉽게 찾을 수 있다.",
+          "observation": "Read q4 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:398e9f8ea5cd055afa1ecc8cf59f4d0da5995ec7418c5054aeb5b48bc019a80d",
+          "solutionExcerpt": "[키포인트] 필요조건은 $p\\Rightarrow q$, 충분조건은 $r\\Rightarrow p$로 해석한다.",
+          "observation": "Read q5 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:3051d93ac71679a7f2e83512c706484225f681d51a38634f0148b317036255ac",
+          "solutionExcerpt": "[키포인트] 한 점을 직선에 대하여 대칭이동하면 꺾인 거리의 최솟값을 직선거리로 바꿀 수 있다.",
+          "observation": "Read q6 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:82a8223de6d70e338ebd4ee6a178937fb4cb0ad9451a14636afdb2c78f7391b2",
+          "solutionExcerpt": "[키포인트] 접선의 방정식을 기울기 $m$으로 두고 원의 중심에서 직선까지의 거리를 반지름과 같게 둔다.",
+          "observation": "Read q7 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:dfeff9630be0e56c24b0fe11cc3c0e8299192794338b6dfa2ac3061ccd379b62",
+          "solutionExcerpt": "[키포인트] $A$의 말과 $D$의 말은 서로 반대이므로 둘 중 정확히 한 사람만 거짓말을 한다.",
+          "observation": "Read q8 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:00332e546472dddaf7f11c66ee3499b4fc468a1814fabe791db6d07769ea6b0c",
+          "solutionExcerpt": "[키포인트] 절편의 합을 한 양수 변수로 나타낸 뒤 완전제곱 형태로 최솟값을 구한다.",
+          "observation": "Read q9 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:c7765daae8fc38533d57ec66bae0d23887328c1b54b8cc761ad883e3b71bb1ad",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수부터 차례로 적용한다.",
+          "observation": "Read q10 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:2182a7429ef78406de2949ff254c248276380aada22bc9999a1bc994aa548dd4",
+          "solutionExcerpt": "[키포인트] 정의역과 $y$의 부호가 바뀌는 지점을 함께 확인한다.",
+          "observation": "Read q11 in full: 하 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:6e59f9fc951d852727acecd542d4694fbd1282c6a1b41462108d648a3d10ca96",
+          "solutionExcerpt": "[키포인트] 그래프에서 함수값과 역함수값을 각각 읽는다.",
+          "observation": "Read q12 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:9b2a6db77eb7c56afcf368911a6eaa439cbfe6edf91131858b64d8569c2e2636",
+          "solutionExcerpt": "[키포인트] 유리함수를 평행이동형으로 바꾸면 점근선과 그래프의 위치를 확인할 수 있다.",
+          "observation": "Read q13 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:da36814b845ddc8b7e1a1f9228c0fd21403ce50d9bb48ff794b35201bbeada7d",
+          "solutionExcerpt": "[키포인트] 두 그래프의 수직·수평 점근선 네 개가 만드는 직사각형의 넓이를 이용한다.",
+          "observation": "Read q14 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:ef462c3ab13de9ce9741a1169793e111d08445aaa11cde05751c91355f3301b4",
+          "solutionExcerpt": "[키포인트] $f^{-1}(5)=-1$은 $f(-1)=5$와 같은 뜻이다.",
+          "observation": "Read q15 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:35b1cbd971db136ba949ae50cdb327b1046c85da666d2a85d26db6b945e328f5",
+          "solutionExcerpt": "[키포인트] 가장 안쪽 분수부터 차례로 정리한다.",
+          "observation": "Read q16 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:4b856845bad30e0569e63161beb890f8c44bf4ff96a9385b8f624562fe0d1ebc",
+          "solutionExcerpt": "[키포인트] 같은 높이에 있는 두 점의 $x$좌표 관계와 정사각형의 가로·세로 길이를 이용한다.",
+          "observation": "Read q17 in full: 중 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:d2d3019f5af0b703a7728976cfd076e0302219767c67129d52e41183aed2792d",
+          "solutionExcerpt": "[키포인트] 먼저 합성함수를 구간별로 정리한 뒤 각 구간의 넓이를 사다리꼴과 삼각형으로 계산한다.",
+          "observation": "Read q18 in full: 상 객관식; content and 5 choices are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:02fa393e144525cb03f2359d54087f4aaa0d510dfbce831af9d442158dad47f7",
+          "solutionExcerpt": "[키포인트] 존재명제의 부정은 모든 원소에 대한 명제로 바꾸고 부등호도 함께 부정한다.",
+          "observation": "Read q19 in full: 중 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:ab42c3971f35d444c3d6c4033c50f433291f5c4325193a60ec3daaa043b46fb0",
+          "solutionExcerpt": "[키포인트] 서로 역함수인 증가함수의 그래프는 직선 $y=x$에 대하여 대칭이고 교점은 직선 $y=x$ 위에 있다.",
+          "observation": "Read q20 in full: 중 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion, with visual evidence reviewed where declared."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:9a9f5df75a2b1b9c5639d36a39c7ffa740da91ccb41c0ebc5264fbe3fca87988",
+          "solutionExcerpt": "[키포인트] 각 항을 두 단순분수의 차로 분해하면 중간 항들이 연속해서 소거된다.",
+          "observation": "Read q21 in full: 중 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:1e6564e687f55c0d890da8e79144d34a5b8c0ff41a05ce080e6c67501f245df3",
+          "solutionExcerpt": "[키포인트] 결론의 부정을 가정하고 홀수의 제곱을 $4$로 나눈 나머지를 비교한다.",
+          "observation": "Read q22 in full: 중 서술형; content and constructed-response fields are present; answer is explicit; solution has a key-point lead, condition/strategy text, worked reasoning, and conclusion."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Solutions explain a method and conclusion rather than supplying an answer token alone.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "Each solution names the governing concept before calculation or case analysis.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Solutions restate domain, inequality, set, graph, or case conditions before using them.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|12"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Solutions include the decisive intermediate equations or set/graph transformations.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js|9"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Multiple-choice solutions end with an explicit answer choice number matching the computed result.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|12"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "High-level solutions expose the key case split, boundary, or contradiction instead of skipping the logical bridge.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js|17"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Constructed-response solutions show enough equations and justification to reproduce the requested result.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js|23"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Source problem images and instructional solutionImage assets are separate fields and remain semantically distinct.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "Graph/geometry/function questions with a clear student-understanding benefit use an instructional solution visual.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js|18"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "Declared solution visuals include student-facing alt text and a caption describing the mathematical role.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js|20"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Visual captions and the accompanying solution agree on the plotted points, equations, boundaries, or geometric relationships.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js|3"
+      ]
+    }
+  }
+}

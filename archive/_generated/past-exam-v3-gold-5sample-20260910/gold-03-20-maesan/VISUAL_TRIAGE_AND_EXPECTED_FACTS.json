@@ -1,0 +1,32 @@
+{
+  "schema":"APMATH_PAST_EXAM_V3_VISUAL_TRIAGE_DIAGNOSTIC_v1",
+  "status":"FROZEN_BUILDER_DIAGNOSTIC",
+  "sourceTruth":"FULL_PAGE_SOURCE_ONLY",
+  "questions":[
+    {"q":1,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"inverse-function value is algebraic"},
+    {"q":2,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"linear composition; source choice conflict is non-visual"},
+    {"q":3,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"sign analysis is sufficient"},
+    {"q":4,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"translation and minimum are direct"},
+    {"q":5,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"asymptote algebra and symmetry calculation suffice"},
+    {"q":6,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"combination"},
+    {"q":7,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"function counts"},
+    {"q":8,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"ADD","studentUnderstandingBenefit":true,"reason":"coordinate parametrization can clarify area minimization"},
+    {"q":9,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"enumeration and source choice conflict"},
+    {"q":10,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"piecewise range equations suffice"},
+    {"q":11,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"domain/range exclusions suffice"},
+    {"q":12,"visualRequirement":"VISUAL_REQUIRED","visualAction":"REBUILD","studentUnderstandingBenefit":true,"reason":"region adjacency is the core of the coloring count","sourceAsset":"assets/images/20_매산고_2학기_기말_고1_기출/q012_visual.png","solutionAsset":"assets/images/20_매산고_2학기_기말_고1_기출/q012-solution.svg"},
+    {"q":13,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"labeled grouping count"},
+    {"q":14,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"ADD","studentUnderstandingBenefit":true,"reason":"intersection boundary interpretation benefits from a graph, but no source graph is printed"},
+    {"q":15,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"digit case split"},
+    {"q":16,"visualRequirement":"VISUAL_EXEMPT","visualAction":"KEEP_NONE","studentUnderstandingBenefit":false,"reason":"ordered injection count"},
+    {"q":17,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"ADD","studentUnderstandingBenefit":true,"reason":"translated rectangular hyperbola makes the distance minimum reproducible"},
+    {"q":18,"visualRequirement":"VISUAL_REQUIRED","visualAction":"ADD","studentUnderstandingBenefit":true,"reason":"piecewise graph and horizontal/vertical intersection counts are central"},
+    {"q":19,"visualRequirement":"VISUAL_REQUIRED","visualAction":"REBUILD","studentUnderstandingBenefit":true,"reason":"quadrant classification is the core task; source hand-drawn graph is illustrative only","sourceAsset":"assets/images/20_매산고_2학기_기말_고1_기출/q019_visual.png","solutionAsset":"assets/images/20_매산고_2학기_기말_고1_기출/q019-solution.svg"},
+    {"q":20,"visualRequirement":"VISUAL_OPTIONAL","visualAction":"ADD","studentUnderstandingBenefit":true,"reason":"domain and quadrant constraints can be shown on a translated radical graph"}
+  ],
+  "expectedFacts":{
+    "q12":{"adjacency":["A-B","A-C","B-C","C-D","C-E","D-E"],"colorCount":4,"expectedCount":144},
+    "q19":{"normalForm":"y=-4-((k-1)^2+2)/(x+1)","center":[-1,-4],"xIntercept":"-1-((k-1)^2+2)/4<0","yIntercept":"-((k-1)^2+2)<0","quadrants":["QII","QIII","QIV"],"allQuadrantsImpossible":true}
+  },
+  "independentReview":"NOT_TESTED; provider unavailable; builder facts are not V1/V2/V3 evidence"
+}

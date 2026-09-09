@@ -1,0 +1,666 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "3d6548596a3b38a7b8493ca8aa2b80ca55f099f7",
+  "rulePackSha": "sha256:1337e44c4f650ff080b63961a0867009ab1b6e7dd667be7cd82347d12bf61f17",
+  "target": {
+    "examId": "20_매산고_2학기_기말_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP_independent_review_20260909_125050\\packages\\20_매산고_2학기_기말_고1_기출_EXTERNAL_REVIEW\\source\\2020_매산고1_2기말.pdf",
+        "bytes": 1586200,
+        "sha256": "sha256:6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd"
+      },
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\staging\\pages\\page_p001.png",
+        "bytes": 755259,
+        "sha256": "sha256:088bc650e312ba381ebabbdef9e477b61e1fbb10a153b7af573ef8659d446849"
+      },
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\staging\\pages\\page_p002.png",
+        "bytes": 715135,
+        "sha256": "sha256:e5b0e26e407d02cdd5e54f997b4211aefb425309a80837c115c79205e0269ae3"
+      },
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\staging\\pages\\page_p003.png",
+        "bytes": 782374,
+        "sha256": "sha256:c27524180ae0b6a65adc2c3ff32ceb4a5102bb7a95d939a3631e1a08f3f4d3b8"
+      },
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\staging\\pages\\page_p004.png",
+        "bytes": 615827,
+        "sha256": "sha256:d9ceffa84fe81bfbb9a0405d58894926f749ff9d20c63a54d78c11ee2a96e7a3"
+      },
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\staging\\pages\\page_p005.png",
+        "bytes": 832150,
+        "sha256": "sha256:7809572cbd697e3ddf3a965e8f8db3c1dd991f3436d20e9a764dc396a1d91d86"
+      },
+      {
+        "path": "C:\\Users\\USER\\Desktop\\AP-------merge-taxonomy-wt\\archive\\_generated\\past-exam-v3-gold-5sample-20260910\\gold-03-20-maesan\\staging\\pages\\page_p006.png",
+        "bytes": 668712,
+        "sha256": "sha256:acbbeb6ba7de301f4330d2d65b975e5a65fe8c482acdccff3d65f06b559844b2"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "gold03-builder-source-calibration",
+  "readerSessionId": "gold03-calibration-session-20260910",
+  "startedAt": "2026-09-09T20:03:23.904Z",
+  "frozenAt": "2026-09-09T20:11:23.904Z",
+  "baselineObservation": "",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:17fd6a333bc587232910dac1c6dccf96173c3744daaad0e4b006fe65e25c7523",
+      "bytes": 40167,
+      "examTitle": "25_효천고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Same grade/course/term production sample from frozen origin/main; selected for recent complete JS quality calibration and visual/solution coverage.",
+      "qualityAcceptanceReason": "Full file is a complete production bank with non-empty solutions and visual samples provide concrete graph/solution-image anchors where present.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read examTitle, questionBank, ids, required metadata, choices, and solution fields across the full file."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read each solution for concept, condition interpretation, intermediate reasoning, and answer conclusion."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read standardCourse, standardUnitKey, subunit fields, level, type, tags, wide, and layout across all questions."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Read every problem image/graph dependency and checked whether source visuals remain separate from explanation visuals."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Read every solutionImage, alt, caption, size, and the corresponding explanatory use."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Read layoutTag, wide, imageSize/solutionImageSize and checked the complete-bank layout conventions."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:53e4b7697448189af0a26078b4576d9653973294a67bb62aec7b744ff30832bb",
+          "solutionExcerpt": "[키포인트] 명제는 참과 거짓을 분명하게 판정할 수 있는 문장이다.",
+          "observation": "q1 source content was read in full at the calibration sample file; anchor: 다음 중 명제인 것은? [3.1점]; solution begins: [키포인트] 명제는 참과 거짓을 분명하게 판정할 수 있는 문장이다."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:4aaac871014748cf9f3db3fa0ff3161681df353c8c371064e76d6fb862b72968",
+          "solutionExcerpt": "[키포인트] 두 함수가 같다는 것은 정의역의 모든 원소에서 함수값이 같다는 뜻이다.",
+          "observation": "q2 source content was read in full at the calibration sample file; anchor: 정의역이 $\\{0,2\\}$인 두 함수 $f(x)=ax+b$, $g(x)=x^2+1$에 대하여 $f=g$이다. 두 실수 $a$, $b$에 대하여 $a+b$의 값은? [3.1점]; solution begins: [키포인트] 두 함수가 같다는 것은 정의역의 모든 원소에서 함수값이 같다는 뜻이다."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:210b21d7e09c642b0b48fcf393dc95429fdff48f7805d8575a68ced0b640818f",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수부터 계산한다.",
+          "observation": "q3 source content was read in full at the calibration sample file; anchor: 두 함수 $f(x)=2x-3$, $g(x)=-x+1$에 대하여 $(f\\circ g)(0)+(g\\circ f)(0)$의 값은? [3.2점]; solution begins: [키포인트] 합성함수는 안쪽 함수부터 계산한다."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:1c44d1b6098b6bb628924e9049bc0f9e39300dead7312380cdd0a480cbbaaeb9",
+          "solutionExcerpt": "[키포인트] 먼저 $f(1)$로 $a$를 구하고, 역함수의 뜻을 이용해 $b$를 구한다.",
+          "observation": "q4 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=x-2a$에 대하여 $f(1)=-1$, $f^{-1}(3)=b$일 때, $a+b$의 값은? (단, $a$, $b$는 상수이다.) [3.4점]; solution begins: [키포인트] 먼저 $f(1)$로 $a$를 구하고, 역함수의 뜻을 이용해 $b$를 구한다."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:5bfe2d36bd1a5996a5f3ae59101413316ecb0ad99491ec369ee40e7ba8efc913",
+          "solutionExcerpt": "[키포인트] 각 다항식을 인수분해한 뒤 공통인수를 약분한다.",
+          "observation": "q5 source content was read in full at the calibration sample file; anchor: 다음 식의 분모를 $0$으로 만들지 않는 모든 실수 $x$에 대하여 $\\dfrac{x+1}{x^2+x}\\times\\dfrac{x^2-9}{x-2}\\times\\dfrac{1}{x+3}$을 간단히 한 식은? [3.4점]; solution begins: [키포인트] 각 다항식을 인수분해한 뒤 공통인수를 약분한다."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:a5b3897ca80a6ca5cf922e29aeceaebd73e3beda90bad0e82edc84d02f1a29e6",
+          "solutionExcerpt": "[키포인트] 진리집합의 포함 관계를 명제의 포함 관계로 바꾼다.",
+          "observation": "q6 source content was read in full at the calibration sample file; anchor: 전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자.<br>$P\\cap R=P$, $P\\cup Q^C=Q^C$일 때, 다음 중 항상 참인 명제는? [3.5점]; solution begins: [키포인트] 진리집합의 포함 관계를 명제의 포함 관계로 바꾼다."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:10ee3a22992bf0825068d587eef95dba5017146502602dfbad83dbb074374e86",
+          "solutionExcerpt": "[키포인트] $p$가 $q$의 필요조건이면 $q\\to p$가 참이고, 충분조건이 아니면 $p\\to q$가 거짓인 경우가 있어야 한다.",
+          "observation": "q7 source content was read in full at the calibration sample file; anchor: 두 조건 $p$, $q$에 대하여 보기에서 $p$는 $q$이기 위한 필요조건이지만 충분조건이 아닌 것만을 있는 대로 고른 것은? (단, $a$, $b$, $c$는 실수이다.) [3.7점]<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-hei; solution begins: [키포인트] $p$가 $q$의 필요조건이면 $q\\to p$가 참이고, 충분조건이 아니면 $p\\to q$가 거짓인 경우가 있어야 한다."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:8d668c327b06fcf761e5ad60fcb53151d938ef2b529cff314047c37ae5cae49f",
+          "solutionExcerpt": "[키포인트] 무리함수의 시작점, 정의역, 치역과 사분면을 확인한다.",
+          "observation": "q8 source content was read in full at the calibration sample file; anchor: 다음 중 무리함수 $y=-\\sqrt{-x+2}+4$에 대한 설명으로 옳지 않은 것은? [3.8점]; solution begins: [키포인트] 무리함수의 시작점, 정의역, 치역과 사분면을 확인한다."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:34237d219269503625ef44019f965010dff3646742fde8a3a37702fe62ef0926",
+          "solutionExcerpt": "[키포인트] $a$와 $-a$를 함께 대입하면 함수값의 대칭합을 바로 구할 수 있다.",
+          "observation": "q9 source content was read in full at the calibration sample file; anchor: 임의의 두 정수 $a$, $b$에 대하여 함수 $f$가<br>$f(a+b)=f(a)+f(b)+3ab$를 만족시킬 때, $f(-4)+f(-2)+f(0)+f(2)+f(4)$의 값을 구하시오. [3.8점]; solution begins: [키포인트] $a$와 $-a$를 함께 대입하면 함수값의 대칭합을 바로 구할 수 있다."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:8e79164179d987d767dde6975f2d941f93433f23ba7ee8daa7a2c30a6414fb0b",
+          "solutionExcerpt": "[키포인트] 함수값을 차례로 계산하여 반복되는 순환을 찾는다.",
+          "observation": "q10 source content was read in full at the calibration sample file; anchor: 집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$가 $f(x)=$ ($x^2$을 $7$로 나누었을 때의 나머지)일 때, $f^7(3)$의 값은? [3.9점]<br>(단, $f^1=f$, $f^2=f\\circ f$, $\\cdots$, $f^{n+1}=f\\circ f^n$, $n$은 자연수); solution begins: [키포인트] 함수값을 차례로 계산하여 반복되는 순환을 찾는다."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:c25f33180a9862d8763f3532900eedef9cb7e8cd0f9640024475b014d625eb3a",
+          "solutionExcerpt": "[키포인트] 무리함수의 최솟값으로 수직이동량을 정하고, 역함수와의 교점은 $y=x$ 위에서 찾는다.",
+          "observation": "q11 source content was read in full at the calibration sample file; anchor: 두 상수 $a$, $b$와 무리함수 $f(x)=\\sqrt{2x+a}+b$의 최솟값이 $2$이고, $y=f(x)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프의 교점의 $x$의 좌표가 $3$일 때, $f\\left(\\dfrac{9}{2}\\right)$의 값은? [4점]; solution begins: [키포인트] 무리함수의 최솟값으로 수직이동량을 정하고, 역함수와의 교점은 $y=x$ 위에서 찾는다."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:7a881ba8d3f7538c9abd8f7357ddbd9b306730c45810d4d5c3be05db7fba4e6c",
+          "solutionExcerpt": "[키포인트] 유리함수를 평행이동형으로 나타내면 그래프의 중심과 두 대칭축을 알 수 있다.",
+          "observation": "q12 source content was read in full at the calibration sample file; anchor: 유리함수 $y=\\dfrac{3x+5}{x-a}$의 그래프가 두 직선 $y=x+5$, $y=-x+\\dfrac{1}{2}b$에 대하여 모두 대칭일 때, $ab$의 값을 구하면? (단, $a$, $b$는 상수이다.) [4.1점]; solution begins: [키포인트] 유리함수를 평행이동형으로 나타내면 그래프의 중심과 두 대칭축을 알 수 있다."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:de931aa540fcb3b160930ba99af3f835f29a6bea67c84bb2d1fc944aaa643478",
+          "solutionExcerpt": "[키포인트] 유리함수 그래프의 점근선으로 $b$, $c$를 구하고, 무리함수가 제3사분면에 들어가지 않는 조건을 찾는다.",
+          "observation": "q13 source content was read in full at the calibration sample file; anchor: 유리함수 $y=\\dfrac{a}{x+b}+c$의 그래프가 다음 그림과 같다.<br>무리함수 $y=-\\sqrt{a(x-b)}+c$의 그래프가 제 $3$사분면을 지나지 않도록 하는 실수 $a$, $b$, $c$에 대하여 $a+b+c$의 최댓값은? [4.3점]; solution begins: [키포인트] 유리함수 그래프의 점근선으로 $b$, $c$를 구하고, 무리함수가 제3사분면에 들어가지 않는 조건을 찾는다."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:d2a72cb697cf2b4769c4c7ccb6ba4555547667aef88343c59c9f8ab631e41f8e",
+          "solutionExcerpt": "[키포인트] 곱이 음수라는 조건을 각 $p_i$와 비교하여 충분성·필요성을 판정한다.",
+          "observation": "q14 source content was read in full at the calibration sample file; anchor: 두 조건 $p$, $q$에 대하여 조건 $q$가<br>$q:(a-1)(b-1)(c-1)\\lt0$<br>일 때, $N(p)$를 다음과 같이 정의하자.<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">$p$가 $q$이기 위; solution begins: [키포인트] 곱이 음수라는 조건을 각 $p_i$와 비교하여 충분성·필요성을 판정한다."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:fe8aa23467179f071cfb1a8d4676957550c5cdbd2c5e51ec6cdeeb0ce39fd78d",
+          "solutionExcerpt": "[키포인트] 두 일차함수 조각의 치역이 겹치지 않고 빈틈없이 실수 전체를 이루어야 한다.",
+          "observation": "q15 source content was read in full at the calibration sample file; anchor: 정의역과 공역이 각각 실수 전체의 집합인 함수 $f$가<br>$f(x)=\\begin{cases}(5-a)x+b&(x\\lt 3)\\\\(a+2)x&(x\\ge 3)\\end{cases}$<br>일 때, 함수 $f$가 일대일대응이 되도록 하는 두 정수 $a$, $b$에 대하여 $a+b$의 최솟값은? [4.4점]; solution begins: [키포인트] 두 일차함수 조각의 치역이 겹치지 않고 빈틈없이 실수 전체를 이루어야 한다."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:876f3c93e6bed6b16889049b841bf30dd6fad663a89be5a69e619f367a0b8561",
+          "solutionExcerpt": "[키포인트] 같은 함수값 $k$를 갖는 서로 다른 실수 해가 적어도 세 개 존재할 수 있는 $k$의 최대를 구한다.",
+          "observation": "q16 source content was read in full at the calibration sample file; anchor: 서로 다른 세 실수 $a$, $b$, $c$에 대하여 집합 $X=\\{a,b,c\\}$를 정의역, 정수 전체의 집합을 공역으로 하는 함수 $f(x)=|2x(x-4)|$가 상수함수일 때, 함수 $f(x)$의 치역은 $\\{k\\}$이다. $k$의 최댓값을 구하면? [4.5점]; solution begins: [키포인트] 같은 함수값 $k$를 갖는 서로 다른 실수 해가 적어도 세 개 존재할 수 있는 $k$의 최대를 구한다."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:407ddcef6bcff981eb03a59a47f1c87da9d55656af572006e367e38967679d37",
+          "solutionExcerpt": "[키포인트] 합성함수의 방정식은 목표값에서 시작하여 역으로 원상을 단계별로 찾는다.",
+          "observation": "q17 source content was read in full at the calibration sample file; anchor: 집합 $X=\\{x\\mid 0\\le x\\le 4\\}$에 대하여 $X$에서 $X$로의 함수<br>$f(x)=\\begin{cases}\\dfrac{3}{2}x&(0\\le x\\lt 2)\\\\-\\dfrac{3}{2}x+6&(2\\le x\\le 4)\\end{cases}$<br>의 그래프는 아래 그림과 같다. $(f\\circ f\\circ ; solution begins: [키포인트] 합성함수의 방정식은 목표값에서 시작하여 역으로 원상을 단계별로 찾는다."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:a1cade7cd0a519dc357c98a5076ec95ae3b6dc15a48c07dcba8a0e57a0f84c33",
+          "solutionExcerpt": "[키포인트] 유리함수를 점근선의 교점 기준으로 옮겨 원과의 교점 개수를 판정한다.\\n조건 정리: $f(x)=\\dfrac{3x-5}{x-2}=3+\\dfrac1{x-2}$이고 유리함수의 중심은 $(2,3)$이다.\\n풀이 방향: $X=x-2$, $Y=y-3$으로 좌표를 옮긴다.\\n정석 풀이: 유리함수는 $Y=\\dfrac1X$,",
+          "observation": "q18 source content was read in full at the calibration sample file; anchor: $a=1$일 때 함수<br>$f(x)=\\dfrac{3x-5}{x-2}$<br>의 그래프와 중심이 $(2,3)$이고 반지름의 길이가 $r$인 원이 서로 다른 두 점에서 만날 때, $r$의 값은? [4.8점]; solution begins: [키포인트] 유리함수를 점근선의 교점 기준으로 옮겨 원과의 교점 개수를 판정한다.\\n조건 정리: $f(x)=\\dfrac{3x-5}{x-2}=3+\\dfrac1{x-2}$이고 유리함수의 중심은 $(2,3)$이다.\\n풀이 방향: $X=x-2$, $Y=y-3$으로 좌표를 옮긴다.\\n정석 풀이: 유리함수는 $Y=\\dfrac1X$,"
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:ed349901f32ec3e7c6121ba73ba26fb7d71c5f589580fafff6d6d42abedb2fc5",
+          "solutionExcerpt": "[키포인트] 역함수를 구한 뒤 합성함수의 안쪽 함수부터 계산한다.",
+          "observation": "q19 source content was read in full at the calibration sample file; anchor: [서술형1]<br>두 함수 $f(x)=x+5$, $g(x)=-2x^2+x$에 대하여 $(f^{-1}\\circ g)(2)$의 값을 구하고 그 과정을 서술하시오. [5점]; solution begins: [키포인트] 역함수를 구한 뒤 합성함수의 안쪽 함수부터 계산한다."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:47c506fc9bd8167ad4bbc1461ee3ee49483c2a8295d1e50aa282bcec1834618d",
+          "solutionExcerpt": "[키포인트] 두 합성함수의 상수항을 정리하고, 임의의 $m$, $n$에 대한 항등식의 계수를 비교한다.",
+          "observation": "q20 source content was read in full at the calibration sample file; anchor: [서술형2]<br>두 함수 $f(x)=2ax+m$, $g(x)=\\dfrac{1}{2}bx+n$에 대하여 $0$이 아닌 두 실수 $m$, $n$의 값에 관계 없이 $(f\\circ g)(x)=(g\\circ f)(x)+4n$이 성립할 때, 두 상수 $a$, $b$의 값의 곱을 구하고 그 과정을 서술하시오. [6점]; solution begins: [키포인트] 두 합성함수의 상수항을 정리하고, 임의의 $m$, $n$에 대한 항등식의 계수를 비교한다."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:350e4c66a1fbc36a640ca893a835a7ed65a3acb3a414f582f69fc2af2a88ba64",
+          "solutionExcerpt": "[키포인트] 존재명제의 부정은 모든 실수에 대한 부등식으로 바뀐다.",
+          "observation": "q21 source content was read in full at the calibration sample file; anchor: [서술형3]<br>명제 ‘어떤 실수 $x$에 대하여 $x^2-ax+3\\lt 0$이다.’ 부정이 참이 되도록 하는 정수 $a$의 개수를 구하고 그 과정을 서술하시오. [6점]; solution begins: [키포인트] 존재명제의 부정은 모든 실수에 대한 부등식으로 바뀐다."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:e5dbe213ede48ddbdbe9ec3e45feb8d631903ce92a4ab54e4da454df58da7494",
+          "solutionExcerpt": "[키포인트] 두 수선의 길이는 점 $P$의 좌표의 절댓값이며, 양수 치환 후 산술평균과 기하평균을 적용한다.",
+          "observation": "q22 source content was read in full at the calibration sample file; anchor: [서술형4]<br>유리함수 $y=\\dfrac{1}{x+2}-1$ $(x\\lt -2)$의 그래프 위의 점 $P$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q$, $R$라고 할 때, $\\overline{PQ}+\\overline{PR}$의 최솟값을 구하고 그 과정을 서술하시오. [6점]; solution begins: [키포인트] 두 수선의 길이는 점 $P$의 좌표의 절댓값이며, 양수 치환 후 산술평균과 기하평균을 적용한다."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:e7aa710a2eb6016e2d920593cbb2d47acb9d476622680da34cbadaaf7e119bfe",
+          "solutionExcerpt": "[키포인트] 곱이 $0$인 식으로 바꾸고, 역함수의 구간을 정확히 나누어 푼다.",
+          "observation": "q23 source content was read in full at the calibration sample file; anchor: [서술형5]<br>함수 $f(x)=\\begin{cases}3x-2&(x\\ge 0)\\\\\\dfrac{1}{5}x-2&(x\\lt 0)\\end{cases}$과 그 역함수 $f^{-1}(x)$에 대하여 $\\{f(x)\\}^2=f(x)f^{-1}(x)$를 만족시키는 모든 실수 $x$의 값의 합을 구하고 그 과정을 서술하시오. [7점]; solution begins: [키포인트] 곱이 $0$인 식으로 바꾸고, 역함수의 구간을 정확히 나누어 푼다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:c32a33e256adb8620b3ccb14ceb48f76944834743501b33eadb2f771436f7125",
+      "bytes": 41481,
+      "examTitle": "25_팔마고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Same grade/course/term production sample from frozen origin/main; selected for recent complete JS quality calibration and visual/solution coverage.",
+      "qualityAcceptanceReason": "Full file is a complete production bank with non-empty solutions and visual samples provide concrete graph/solution-image anchors where present.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read examTitle, questionBank, ids, required metadata, choices, and solution fields across the full file."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read each solution for concept, condition interpretation, intermediate reasoning, and answer conclusion."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read standardCourse, standardUnitKey, subunit fields, level, type, tags, wide, and layout across all questions."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Read every problem image/graph dependency and checked whether source visuals remain separate from explanation visuals."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Read every solutionImage, alt, caption, size, and the corresponding explanatory use."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Read layoutTag, wide, imageSize/solutionImageSize and checked the complete-bank layout conventions."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:8206642bcdfaf0a5d68146b25cca84160f10b5e9f02421d74b17ae4f75637333",
+          "solutionExcerpt": "[키포인트] 함수의 그래프는 하나의 $x$값에 두 개 이상의 $y$값이 대응하지 않아야 한다.",
+          "observation": "q1 source content was read in full at the calibration sample file; anchor: 다음 중 함수의 그래프인 것을 모두 고르시오. [3.5점]; solution begins: [키포인트] 함수의 그래프는 하나의 $x$값에 두 개 이상의 $y$값이 대응하지 않아야 한다."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:0eb1a588a1fd58a2f9f35f1d78ee39ef48b6f05e4742cf9c3e136f73f2e42d75",
+          "solutionExcerpt": "[키포인트] 합성함수 $(f\\circ g)(2)$는 먼저 $g$를 적용한 뒤 $f$를 적용한다.",
+          "observation": "q2 source content was read in full at the calibration sample file; anchor: 아래 그림과 같은 함수 $f$, $g$에 대하여 $(f\\circ g)(2)$의 값을 구하시오. [3.5점]; solution begins: [키포인트] 합성함수 $(f\\circ g)(2)$는 먼저 $g$를 적용한 뒤 $f$를 적용한다."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:87514dac4089fe6ac896d1351d18bddd23a8da0ca7987e4cd154f47d89846263",
+          "solutionExcerpt": "[키포인트] $f^{-1}(4)$는 $f$에 의하여 $4$로 대응되는 원소를 찾는 것이다.",
+          "observation": "q3 source content was read in full at the calibration sample file; anchor: 아래 그림과 같은 함수 $f$, $g$에 대하여 $f^{-1}(4)+g(4)$의 값을 구하시오. [3.5점]; solution begins: [키포인트] $f^{-1}(4)$는 $f$에 의하여 $4$로 대응되는 원소를 찾는 것이다."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:1f0fcd0508fc1924e08d8228632ca2b1292fe56783c78317e92522db117802c4",
+          "solutionExcerpt": "[키포인트] 식을 평행이동형으로 바꾸고 $x$의 구간에 따라 $y$의 부호를 판단한다.",
+          "observation": "q4 source content was read in full at the calibration sample file; anchor: 유리함수 $y=\\dfrac{5}{3-x}-2$의 그래프가 지나는 사분면은? [3.7점]; solution begins: [키포인트] 식을 평행이동형으로 바꾸고 $x$의 구간에 따라 $y$의 부호를 판단한다."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:ef998f7d1625687d47dc624a1ecedeca9564a4b20dda5db1fdda87ca54d26014",
+          "solutionExcerpt": "[키포인트] 무리함수 그래프의 끝점과 $y$절편을 이용하면 $a$, $b$, $c$를 결정할 수 있다.",
+          "observation": "q5 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=\\sqrt{a+bx}+c$의 그래프가 다음 그림과 같을 때, $f(-12)$의 값을 구하면? [3.7점]; solution begins: [키포인트] 무리함수 그래프의 끝점과 $y$절편을 이용하면 $a$, $b$, $c$를 결정할 수 있다."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:44b904172a22afd9d7c2de538b59d47edd814cd3a7ecfcf577fe99ceeac57d61",
+          "solutionExcerpt": "[키포인트] 유리함수의 수직점근선과 수평점근선을 먼저 구한 뒤 역함수의 값을 방정식으로 구한다.",
+          "observation": "q6 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=\\dfrac{4x+5}{x+1}$의 그래프의 점근선이 두 직선 $x=a$, $y=b$일 때, $f^{-1}(a+b)$의 값은? [3.7점]; solution begins: [키포인트] 유리함수의 수직점근선과 수평점근선을 먼저 구한 뒤 역함수의 값을 방정식으로 구한다."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:18564884d55e43db92ded790423656ed1bb716a60410b4cb387ab5804cd127e8",
+          "solutionExcerpt": "[키포인트] 식을 $4+\\dfrac{k-4}{x+1}$로 바꾸면 정의역에서의 증감 방향을 쉽게 판단할 수 있다.",
+          "observation": "q7 source content was read in full at the calibration sample file; anchor: 정의역이 $\\{x\\mid 0\\le x\\le4\\}$인 유리함수 $y=\\dfrac{4x+k}{x+1}$의 최댓값이 $3$일 때, 실수 $k$의 값은? [4점]; solution begins: [키포인트] 식을 $4+\\dfrac{k-4}{x+1}$로 바꾸면 정의역에서의 증감 방향을 쉽게 판단할 수 있다."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:682c42838ee2a52b1c5854da755e567417ee75b232e0bea1db33525518783bc7",
+          "solutionExcerpt": "[키포인트] 한 번 합성할 때마다 입력값에 $2$가 더해진다.",
+          "observation": "q8 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=x+2$에 대하여 $f^1=f$, $f^{n+1}=f\\circ f^n$로 정의할 때, $f^{10}(2)$의 값을 구하시오. (단, $n$은 자연수이다.) [4점]; solution begins: [키포인트] 한 번 합성할 때마다 입력값에 $2$가 더해진다."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:0731baf2b26b07e4e89d51169482a45589448bef95f60899ee3b7be54af774e0",
+          "solutionExcerpt": "[키포인트] 주어진 식에서 자연수 입력에 대한 함수값은 덧셈으로 반복해서 구할 수 있다.",
+          "observation": "q9 source content was read in full at the calibration sample file; anchor: 임의의 실수 $x$, $y$에 대하여 함수 $f$가 $f(x+y)=f(x)+f(y)$를 만족시키고 $f(2)=4$일 때, $f(5)$의 값을 구하시오. [4점]; solution begins: [키포인트] 주어진 식에서 자연수 입력에 대한 함수값은 덧셈으로 반복해서 구할 수 있다."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:7cbda59fd61fe35e100cca847f5859084d28dadc15024683be4d068e528a8290",
+          "solutionExcerpt": "[키포인트] 두 합성함수를 각각 계산하여 상수항을 비교한다.",
+          "observation": "q10 source content was read in full at the calibration sample file; anchor: 실수 전체의 집합을 정의역으로 하는 두 함수 $f(x)=x+k$, $g(x)=kx+1$에 대하여 $g\\circ f=f\\circ g$가 성립하도록 하는 상수 $k$의 값을 구하시오. (단, $k\\ne0$) [4.3점]; solution begins: [키포인트] 두 합성함수를 각각 계산하여 상수항을 비교한다."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:e69fcd6e4891055ce7b9f5ac16608946eb67b674ff77164c5201b7f081832a6b",
+          "solutionExcerpt": "[키포인트] 함수와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이므로 접점은 $y=x$ 위에 있다.",
+          "observation": "q11 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=x^2-6x+a\\ (x\\ge3)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 접하도록 하는 실수 $a$의 값을 구하시오. [4.3점]; solution begins: [키포인트] 함수와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이므로 접점은 $y=x$ 위에 있다."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:d375d1c09617a3d7c60086ce4ced1a274717fa2e79be1507d47622470d5789fe",
+          "solutionExcerpt": "[키포인트] 두 양수의 크기는 제곱의 차를 계산하여 비교할 수 있다.",
+          "observation": "q12 source content was read in full at the calibration sample file; anchor: 다음은 $a\\gt b\\gt 0$일 때, 부등식 $\\sqrt{a-b}\\gt \\sqrt a-\\sqrt b$가 성립함을 증명하는 과정이다. [4.3점]<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">$\\sqrt{a-b}\\g; solution begins: [키포인트] 두 양수의 크기는 제곱의 차를 계산하여 비교할 수 있다."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:ea3c1e8005fb6bc0ebc9d6ed86700c8e77afe1d45fa680f874d7a9b334046096",
+          "solutionExcerpt": "[키포인트] 식을 전개한 뒤 양수인 두 항에 산술평균과 기하평균의 관계를 적용한다.",
+          "observation": "q13 source content was read in full at the calibration sample file; anchor: $x\\gt 0$, $y\\gt 0$일 때, $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 최솟값을 구하시오. [4.5점]; solution begins: [키포인트] 식을 전개한 뒤 양수인 두 항에 산술평균과 기하평균의 관계를 적용한다."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:38658313b7fb6691c9459e83256250b135d784a27fbda11f2e41f66c6cab3ce3",
+          "solutionExcerpt": "[키포인트] $f(x)=\\dfrac1x$는 자기 자신이 역함수이지만, 두 그래프가 일치한다는 점을 주의한다.",
+          "observation": "q14 source content was read in full at the calibration sample file; anchor: 정의역이 $\\{x\\mid x\\ne0\\}$인 실수의 집합이고, 공역이 $\\{y\\mid y\\ne0\\}$인 실수의 집합인 함수 $f(x)=\\dfrac1x$에 대한 설명 중 보기에서 옳은 것만을 있는 대로 고른 것은? [4.5점]<div style=\"border:1px solid #222;padding:10px 12px;marg; solution begins: [키포인트] $f(x)=\\dfrac1x$는 자기 자신이 역함수이지만, 두 그래프가 일치한다는 점을 주의한다."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:0927f65f7c46cc5058670527967b6d16eb86f0926becb55bc1117a51f306024a",
+          "solutionExcerpt": "[키포인트] $(f\\circ f)(x)=x$이면 $f$는 자기 자신의 역함수이다.",
+          "observation": "q15 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=\\dfrac{3x+1}{x+a}$가 $(f\\circ f)(x)=x$를 만족시킬 때, $f^{-1}(13)$의 값을 구하면? [4.5점]; solution begins: [키포인트] $(f\\circ f)(x)=x$이면 $f$는 자기 자신의 역함수이다."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:c194a5983fbe35101c4ac0f6de2c5fb95614b1b1c47948aa7a2311e53203c0ec",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 $f$는 집합 $X$에서 자기 자신으로의 일대일대응이어야 한다.",
+          "observation": "q16 source content was read in full at the calibration sample file; anchor: 집합 $X=\\{1,2,3,4,5\\}$에 대하여 다음 <조건>을 만족시키는 함수 $f:X\\to X$의 개수를 구하시오. [4.8점]<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. $x_1\\in X$, $x_2\\in; solution begins: [키포인트] 역함수가 존재하려면 $f$는 집합 $X$에서 자기 자신으로의 일대일대응이어야 한다."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:94fd0a90c1f834a886669c896ca7ed85619dba7057a0a306d46b9194c73fa4a7",
+          "solutionExcerpt": "[키포인트] 전체 함수가 일대일대응이 되려면 두 조각의 치역이 겹치지 않고 실수 전체를 정확히 나누어야 한다.",
+          "observation": "q17 source content was read in full at the calibration sample file; anchor: 실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt b)\\\\ ax^2-2ax-3&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 하자. $b=t$일 때, $a+c$의 값을 구하시오. (단, $a,b,c,t$는 모두 실수이다.) [4; solution begins: [키포인트] 전체 함수가 일대일대응이 되려면 두 조각의 치역이 겹치지 않고 실수 전체를 정확히 나누어야 한다."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:5a7ee5d8129d34b0aa971ae0db077eca1946fd25ac35164483432bca2a778f05",
+          "solutionExcerpt": "[키포인트] 두 그래프의 평행이동 관계를 이용해 곡선 사이의 띠를 평행사변형으로 바꾸어 넓이를 구한다.",
+          "observation": "q18 source content was read in full at the calibration sample file; anchor: 두 무리함수 $f(x)=\\sqrt x+2$, $g(x)=\\sqrt{x-3}$의 그래프와 직선 $2x+3y-20=0$이 각각 점 $A(4,4)$와 $B(7,2)$에서 만난다. 그림과 같이 함수 $f(x)$, $g(x)$의 그래프와 직선 $2x+3y-20=0$, $x$축, $y$축으로 둘러싸인 부분의 넓이는? [5.2점]; solution begins: [키포인트] 두 그래프의 평행이동 관계를 이용해 곡선 사이의 띠를 평행사변형으로 바꾸어 넓이를 구한다."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:eb768bfe1d7e454fce88b5ca10e2c8c47bd3cfddc57bdee83ad0c9c03ca63ab2",
+          "solutionExcerpt": "[키포인트] 그래프에서 이차함수의 두 근과 $y$절편을 읽어 식을 정한 뒤 $f(x)$가 각 근이 되는 경우를 나눈다.",
+          "observation": "q19 source content was read in full at the calibration sample file; anchor: 오른쪽 그림과 같은 이차함수 $y=f(x)$에 대하여 방정식 $(f\\circ f)(x)=0$의 서로 다른 모든 실근의 합을 구하시오. [5.2점]; solution begins: [키포인트] 그래프에서 이차함수의 두 근과 $y$절편을 읽어 식을 정한 뒤 $f(x)$가 각 근이 되는 경우를 나눈다."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:6a80e2f5784fa4817c6a6a9eb2daf8618d9dd5390f8cef522304ad0d3c392796",
+          "solutionExcerpt": "[키포인트] 이차함수를 꼭짓점의 위치와 기울기 변화로 분석해 정의역과 치역을 비교한다.",
+          "observation": "q20 source content was read in full at the calibration sample file; anchor: [서술형 1] 집합 $X=\\{x\\mid x\\le k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=-x^2+4x$가 일대일대응이 되도록 하는 실수 $k$의 값을 풀이 과정과 함께 서술하시오. [4점]; solution begins: [키포인트] 이차함수를 꼭짓점의 위치와 기울기 변화로 분석해 정의역과 치역을 비교한다."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:15a1fb8e2208be4edcea1b7cc1bfea4b703ad6b8940c223afbddb25856962c2f",
+          "solutionExcerpt": "[키포인트] 평균 속력은 전체 이동 거리를 전체 이동 시간으로 나눈 값이다.",
+          "observation": "q21 source content was read in full at the calibration sample file; anchor: [서술형 2] 자동차가 $A$에서 지점 $B$까지 평균 $100\\text{ km/h}$의 속력으로 $12$분 동안 달리고, 지점 $B$에서 $C$까지 $x$시간 동안 평균 $70\\text{ km/h}$의 속력으로 달렸다고 한다. 지점 $A$에서 $C$까지의 평균 속력을 $y\\text{ km/h}$라고 할 때, 다음 물음을; solution begins: [키포인트] 평균 속력은 전체 이동 거리를 전체 이동 시간으로 나눈 값이다."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:bd9ba73eae2e4356f39cba01a29bea95cda34ccbe1511694974a4a09c9e70b3a",
+          "solutionExcerpt": "[키포인트] 역함수를 먼저 구한 뒤 합성식에 미지의 일차함수를 대입한다.",
+          "observation": "q22 source content was read in full at the calibration sample file; anchor: [서술형 3] 두 함수 $f(x)=\\dfrac12x-\\dfrac12$, $g(x)=4x+7$에 대하여 다음 물음에 답하시오. [총 5점]<br><br>(1) $f(x)$의 역함수 $f^{-1}(x)$를 구하시오. [2점]<br>(2) $f^{-1}\\circ h=g$를 만족하는 $x$에 대한 일차함수 $h(x)$를 풀이 과; solution begins: [키포인트] 역함수를 먼저 구한 뒤 합성식에 미지의 일차함수를 대입한다."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:99dec3d9740cdde2a9a0e61e6e27b51d53ba3e928fd29529bc00048020b70dd8",
+          "solutionExcerpt": "[키포인트] 교점의 $y$좌표를 미지수로 두면 제곱 과정에서 생기는 부호 조건을 자연스럽게 처리할 수 있다.",
+          "observation": "q23 source content was read in full at the calibration sample file; anchor: [서술형 4] 함수 $y=\\sqrt{2-3x}$의 그래프와 직선 $y=-\\dfrac12x+k$가 서로 다른 두 점에서 만나도록 하는 모든 실수 $k$의 값의 범위를 풀이 과정과 함께 서술하시오. [6점]; solution begins: [키포인트] 교점의 $y$좌표를 미지수로 두면 제곱 과정에서 생기는 부호 조건을 자연스럽게 처리할 수 있다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:89154292145bb42d5e557583c82fc1bce978932c84b65ab464c56e5fe53665d7",
+      "bytes": 35587,
+      "examTitle": "25_제일고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Same grade/course/term production sample from frozen origin/main; selected for recent complete JS quality calibration and visual/solution coverage.",
+      "qualityAcceptanceReason": "Full file is a complete production bank with non-empty solutions and visual samples provide concrete graph/solution-image anchors where present.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read examTitle, questionBank, ids, required metadata, choices, and solution fields across the full file."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read each solution for concept, condition interpretation, intermediate reasoning, and answer conclusion."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read standardCourse, standardUnitKey, subunit fields, level, type, tags, wide, and layout across all questions."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Read every problem image/graph dependency and checked whether source visuals remain separate from explanation visuals."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Read every solutionImage, alt, caption, size, and the corresponding explanatory use."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Read layoutTag, wide, imageSize/solutionImageSize and checked the complete-bank layout conventions."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:c9c164b1b2948c250c3bd5be0d52dd3e67ab242dd6a5971915e335939201db0d",
+          "solutionExcerpt": "[키포인트] 참과 거짓을 분명히 판정할 수 있는 문장만 명제이다.",
+          "observation": "q1 source content was read in full at the calibration sample file; anchor: 다음 중 명제가 아닌 것은?; solution begins: [키포인트] 참과 거짓을 분명히 판정할 수 있는 문장만 명제이다."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:aaddc9afebcaf4325ef095ecacfd49f8caf074097bc1c7ffd9f0e8cb6f929cee",
+          "solutionExcerpt": "점 (4,1)을 점 (-1,3)으로 옮기려면 x방향으로 5만큼 왼쪽, y방향으로 2만큼 위로 평행이동해야 한다.",
+          "observation": "q2 source content was read in full at the calibration sample file; anchor: 점 $(4,1)$을 점 $(-1,3)$으로 옮기는 평행이동에 의하여 점 $(2,5)$를 평행이동한 점의 좌표는?; solution begins: 점 (4,1)을 점 (-1,3)으로 옮기려면 x방향으로 5만큼 왼쪽, y방향으로 2만큼 위로 평행이동해야 한다."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:17417aed57a550d25e4d636e2996b1ad75b0b7c34b6f8e4ad1d35776649f8e71",
+          "solutionExcerpt": "[키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다.",
+          "observation": "q3 source content was read in full at the calibration sample file; anchor: 원 $x^2+y^2=25$ 위의 점 $(3,4)$에서의 접선의 방정식은?; solution begins: [키포인트] 원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은 $x_1x+y_1y=r^2$이다."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:2522b2b87c59d121e6c4fa6ddc28a399f4d03a5c8352f6c9414985cd36ba307c",
+          "solutionExcerpt": "[키포인트] 조건명제는 대우를 이용하면 필요한 경계값을 쉽게 찾을 수 있다.",
+          "observation": "q4 source content was read in full at the calibration sample file; anchor: 명제 “$x+y\\lt 6$이면 $x\\lt 4$ 또는 $y\\lt k+3$이다.”가 참이 되도록 하는 실수 $k$의 최솟값은?; solution begins: [키포인트] 조건명제는 대우를 이용하면 필요한 경계값을 쉽게 찾을 수 있다."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:398e9f8ea5cd055afa1ecc8cf59f4d0da5995ec7418c5054aeb5b48bc019a80d",
+          "solutionExcerpt": "[키포인트] 필요조건은 $p\\Rightarrow q$, 충분조건은 $r\\Rightarrow p$로 해석한다.",
+          "observation": "q5 source content was read in full at the calibration sample file; anchor: 세 조건 $p,q,r$이 다음과 같을 때, $q$가 $p$이기 위한 필요조건이고 $r$이 $p$이기 위한 충분조건이 되도록 하는 정수 $a$의 최댓값과 정수 $b$의 최솟값의 합은?<br>$p:-2\\le x\\le3$ 또는 $x\\gt 5$, &nbsp; $q:x\\gt a$, &nbsp; $r:x\\ge b$; solution begins: [키포인트] 필요조건은 $p\\Rightarrow q$, 충분조건은 $r\\Rightarrow p$로 해석한다."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:3051d93ac71679a7f2e83512c706484225f681d51a38634f0148b317036255ac",
+          "solutionExcerpt": "[키포인트] 한 점을 직선에 대하여 대칭이동하면 꺾인 거리의 최솟값을 직선거리로 바꿀 수 있다.",
+          "observation": "q6 source content was read in full at the calibration sample file; anchor: 두 점 $A(2,1)$, $B(5,4)$와 직선 $y=x$ 위의 점 $P$에 대하여 $\\overline{AP}+\\overline{BP}$의 최솟값은?; solution begins: [키포인트] 한 점을 직선에 대하여 대칭이동하면 꺾인 거리의 최솟값을 직선거리로 바꿀 수 있다."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:82a8223de6d70e338ebd4ee6a178937fb4cb0ad9451a14636afdb2c78f7391b2",
+          "solutionExcerpt": "[키포인트] 접선의 방정식을 기울기 $m$으로 두고 원의 중심에서 직선까지의 거리를 반지름과 같게 둔다.",
+          "observation": "q7 source content was read in full at the calibration sample file; anchor: 점 $(-1,2)$에서 원 $(x-3)^2+(y+2)^2=4$에 그은 두 접선의 기울기의 곱으로 알맞은 것은?; solution begins: [키포인트] 접선의 방정식을 기울기 $m$으로 두고 원의 중심에서 직선까지의 거리를 반지름과 같게 둔다."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:dfeff9630be0e56c24b0fe11cc3c0e8299192794338b6dfa2ac3061ccd379b62",
+          "solutionExcerpt": "[키포인트] $A$의 말과 $D$의 말은 서로 반대이므로 둘 중 정확히 한 사람만 거짓말을 한다.",
+          "observation": "q8 source content was read in full at the calibration sample file; anchor: $A,B,C,D$ 네 사람 중 한 사람만 복권의 당첨금을 가지고 있다. 그런데 네 사람이 다음과 같이 엇갈린 말을 하고 있다.<br><br>$A$: $B$는 당첨금을 가지고 있다.<br>$B$: $C$는 당첨금을 가지고 있지 않다.<br>$C$: $D$는 당첨금을 가지고 있다.<br>$D$: $A$는 거짓말을 하고 있다.; solution begins: [키포인트] $A$의 말과 $D$의 말은 서로 반대이므로 둘 중 정확히 한 사람만 거짓말을 한다."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:00332e546472dddaf7f11c66ee3499b4fc468a1814fabe791db6d07769ea6b0c",
+          "solutionExcerpt": "[키포인트] 절편의 합을 한 양수 변수로 나타낸 뒤 완전제곱 형태로 최솟값을 구한다.",
+          "observation": "q9 source content was read in full at the calibration sample file; anchor: $a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(3,12)$를 지난다. 이 직선이 $x$축, $y$축과 만나는 점을 각각 $A,B$라 할 때, $\\overline{OA}+\\overline{OB}$의 최솟값은? (단, $O$는 원점); solution begins: [키포인트] 절편의 합을 한 양수 변수로 나타낸 뒤 완전제곱 형태로 최솟값을 구한다."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:c7765daae8fc38533d57ec66bae0d23887328c1b54b8cc761ad883e3b71bb1ad",
+          "solutionExcerpt": "[키포인트] 합성함수는 안쪽 함수부터 차례로 적용한다.",
+          "observation": "q10 source content was read in full at the calibration sample file; anchor: 오른쪽 함수 $f:X\\to X$에서 $(f\\circ f)(2)$의 값은?; solution begins: [키포인트] 합성함수는 안쪽 함수부터 차례로 적용한다."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:2182a7429ef78406de2949ff254c248276380aada22bc9999a1bc994aa548dd4",
+          "solutionExcerpt": "[키포인트] 정의역과 $y$의 부호가 바뀌는 지점을 함께 확인한다.",
+          "observation": "q11 source content was read in full at the calibration sample file; anchor: 함수 $y=\\sqrt{-x-1}-1$의 그래프가 지나는 사분면은?; solution begins: [키포인트] 정의역과 $y$의 부호가 바뀌는 지점을 함께 확인한다."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:6e59f9fc951d852727acecd542d4694fbd1282c6a1b41462108d648a3d10ca96",
+          "solutionExcerpt": "[키포인트] 그래프에서 함수값과 역함수값을 각각 읽는다.",
+          "observation": "q12 source content was read in full at the calibration sample file; anchor: 함수 $y=f(x)$의 그래프와 직선 $y=x$가 그림과 같을 때, $f(5)+f^{-1}(7)$의 값은?; solution begins: [키포인트] 그래프에서 함수값과 역함수값을 각각 읽는다."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:9b2a6db77eb7c56afcf368911a6eaa439cbfe6edf91131858b64d8569c2e2636",
+          "solutionExcerpt": "[키포인트] 유리함수를 평행이동형으로 바꾸면 점근선과 그래프의 위치를 확인할 수 있다.",
+          "observation": "q13 source content was read in full at the calibration sample file; anchor: 다음 중 $y=\\dfrac{-x}{x-1}$의 그래프에 대하여 옳지 않은 것은?; solution begins: [키포인트] 유리함수를 평행이동형으로 바꾸면 점근선과 그래프의 위치를 확인할 수 있다."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:da36814b845ddc8b7e1a1f9228c0fd21403ce50d9bb48ff794b35201bbeada7d",
+          "solutionExcerpt": "[키포인트] 두 그래프의 수직·수평 점근선 네 개가 만드는 직사각형의 넓이를 이용한다.",
+          "observation": "q14 source content was read in full at the calibration sample file; anchor: 두 유리함수 $y=\\dfrac{2}{x-k}$, $y=\\dfrac{kx-1}{x-1}$의 그래프의 점근선으로 둘러싸인 부분의 넓이가 $12$일 때, 양수 $k$의 값은?; solution begins: [키포인트] 두 그래프의 수직·수평 점근선 네 개가 만드는 직사각형의 넓이를 이용한다."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:ef462c3ab13de9ce9741a1169793e111d08445aaa11cde05751c91355f3301b4",
+          "solutionExcerpt": "[키포인트] $f^{-1}(5)=-1$은 $f(-1)=5$와 같은 뜻이다.",
+          "observation": "q15 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=ax+b$가 $f(5)=2$, $f^{-1}(5)=-1$을 만족시킬 때, 실수 $a,b$에 대하여 $a+b$의 값은?; solution begins: [키포인트] $f^{-1}(5)=-1$은 $f(-1)=5$와 같은 뜻이다."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:35b1cbd971db136ba949ae50cdb327b1046c85da666d2a85d26db6b945e328f5",
+          "solutionExcerpt": "[키포인트] 가장 안쪽 분수부터 차례로 정리한다.",
+          "observation": "q16 source content was read in full at the calibration sample file; anchor: 분모를 $0$으로 만들지 않은 모든 실수 $x$에 대하여 $\\dfrac{1}{2-\\dfrac{1}{1-\\dfrac{1}{x+1}}}=\\dfrac{ax+b}{x-1}$일 때, 실수 $a,b$에 대하여 $a+b$의 값은?; solution begins: [키포인트] 가장 안쪽 분수부터 차례로 정리한다."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:4b856845bad30e0569e63161beb890f8c44bf4ff96a9385b8f624562fe0d1ebc",
+          "solutionExcerpt": "[키포인트] 같은 높이에 있는 두 점의 $x$좌표 관계와 정사각형의 가로·세로 길이를 이용한다.",
+          "observation": "q17 source content was read in full at the calibration sample file; anchor: 두 무리함수 $y=\\sqrt{2x}$, $y=\\sqrt{x}$의 그래프가 그림과 같을 때, $y=\\sqrt{2x}$ 위의 점 $A$에서 $x$축에 평행한 직선을 그어 $y=\\sqrt{x}$와 만나는 점을 $D$라 하고, 두 점 $A,D$에서 $x$축에 내린 수선의 발을 각각 $B,C$라 하자. 사각형 $ABCD$가 정사각; solution begins: [키포인트] 같은 높이에 있는 두 점의 $x$좌표 관계와 정사각형의 가로·세로 길이를 이용한다."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:d2d3019f5af0b703a7728976cfd076e0302219767c67129d52e41183aed2792d",
+          "solutionExcerpt": "[키포인트] 먼저 합성함수를 구간별로 정리한 뒤 각 구간의 넓이를 사다리꼴과 삼각형으로 계산한다.",
+          "observation": "q18 source content was read in full at the calibration sample file; anchor: $0\\le x\\le2$에서 정의된 두 함수<br>$f(x)=\\begin{cases}-x+1&(0\\le x\\lt 1)\\\\2x-2&(1\\le x\\le2)\\end{cases}$, $g(x)=\\begin{cases}x+1&(0\\le x\\lt 1)\\\\-2x+4&(1\\le x\\le2)\\end{cases}$<br>에 대하여 함수 $y; solution begins: [키포인트] 먼저 합성함수를 구간별로 정리한 뒤 각 구간의 넓이를 사다리꼴과 삼각형으로 계산한다."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:02fa393e144525cb03f2359d54087f4aaa0d510dfbce831af9d442158dad47f7",
+          "solutionExcerpt": "[키포인트] 존재명제의 부정은 모든 원소에 대한 명제로 바꾸고 부등호도 함께 부정한다.",
+          "observation": "q19 source content was read in full at the calibration sample file; anchor: 실수 전체의 집합에 대하여 명제 “어떤 실수 $x$에 대하여 $x^2-4x+k\\lt 0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 상수 $k$의 최솟값을 구하는 과정을 서술하시오.; solution begins: [키포인트] 존재명제의 부정은 모든 원소에 대한 명제로 바꾸고 부등호도 함께 부정한다."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:ab42c3971f35d444c3d6c4033c50f433291f5c4325193a60ec3daaa043b46fb0",
+          "solutionExcerpt": "[키포인트] 서로 역함수인 증가함수의 그래프는 직선 $y=x$에 대하여 대칭이고 교점은 직선 $y=x$ 위에 있다.",
+          "observation": "q20 source content was read in full at the calibration sample file; anchor: 함수 $f(x)=\\sqrt{x+2}$의 역함수를 $g(x)$라 할 때, 두 함수 $y=f(x)$, $y=g(x)$의 그래프의 교점의 좌표를 구하는 과정을 서술하시오.; solution begins: [키포인트] 서로 역함수인 증가함수의 그래프는 직선 $y=x$에 대하여 대칭이고 교점은 직선 $y=x$ 위에 있다."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:9a9f5df75a2b1b9c5639d36a39c7ffa740da91ccb41c0ebc5264fbe3fca87988",
+          "solutionExcerpt": "[키포인트] 각 항을 두 단순분수의 차로 분해하면 중간 항들이 연속해서 소거된다.",
+          "observation": "q21 source content was read in full at the calibration sample file; anchor: $f(x)=\\dfrac{1}{x(x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(99)$의 값을 구하는 과정을 서술하시오.; solution begins: [키포인트] 각 항을 두 단순분수의 차로 분해하면 중간 항들이 연속해서 소거된다."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:1e6564e687f55c0d890da8e79144d34a5b8c0ff41a05ce080e6c67501f245df3",
+          "solutionExcerpt": "[키포인트] 결론의 부정을 가정하고 홀수의 제곱을 $4$로 나눈 나머지를 비교한다.",
+          "observation": "q22 source content was read in full at the calibration sample file; anchor: $a,b,c$가 자연수일 때, 명제 “$a^2+b^2=c^2$이면 $a,b,c$ 중 적어도 하나는 짝수이다.”가 참임을 귀류법을 사용하여 증명하시오.; solution begins: [키포인트] 결론의 부정을 가정하고 홀수의 제곱을 $4$로 나눈 나머지를 비교한다."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Every production question contains a student-reproducible solution, not only a bare answer.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "Solutions state the governing concept before applying it to the source conditions.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Solutions restate the operative domain, hypotheses, or case conditions before calculation.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Solutions retain the decisive intermediate equations or logical implications.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Objective solutions explicitly conclude with the option number after deriving the result.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "High-level questions include the nontrivial bridge and do not jump from setup to answer.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|12"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Constructed-response solutions contain enough ordered steps to reproduce the requested proof or calculation.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|19"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Problem image assets and instructional solution images are distinct fields and paths.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|8"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "When a graph materially clarifies the explanation, a solution visual is attached and used.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|8"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "Attached solution visuals carry descriptive alt text and a caption.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|8"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Graph/diagram solution visuals preserve the mathematical facts used by the solution.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js|8"
+      ]
+    }
+  }
+}

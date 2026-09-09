@@ -1,0 +1,9 @@
+{
+  "status": "BLOCKED",
+  "command": "node archive/tools/pipeline-core/cli.mjs machine-checks --manifest archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/work-batch/prepare-v2d/run.json --manifest-out archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/work-batch/prepare-v2d/run.machine.json --evidence-dir archive/_generated/past-exam-v3-gold-5sample-20260910/gold-04-23-hanyeong/evidence/machine",
+  "errors": [
+    "MACHINE_CHECK_FAILED:23_한영고_2학기_기말_고1_기출|16:STATIC:schema"
+  ],
+  "interpretation": "The deterministic static schema contract rejects an empty choices array for constructed-response q16; q16 is not an objective item. No machine evidence was written and the work batch cannot freeze.",
+  "productionAuthorized": false
+}
