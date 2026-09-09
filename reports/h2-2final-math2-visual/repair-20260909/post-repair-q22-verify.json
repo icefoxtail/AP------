@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "repair-protocol-q22-20260909",
+  "protocolStatus": "APPLIED_AND_VERIFIED",
+  "questionUid": "25_매산여고_2학기_기말_고2_수학II:q22",
+  "reason": "Independent SVG observed-fact parity failed: prior asset described another function and interval.",
+  "sourceRef": {
+    "path": "archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
+    "bytes": 41515,
+    "sha256": "sha256:121a161e6a3561f4b7046830513e2cf4239a98e8353cd620fd5fd890320a5971"
+  },
+  "preRepairSvgRef": {
+    "path": "archive/assets/images/25_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "bytes": 19803,
+    "sha256": "sha256:80d8b837ae7b9b7928f505cec810af734936d360c82142a6242942bffd7ff2ec"
+  },
+  "postRepairSvgRef": {
+    "path": "archive/assets/images/25_매산여고_2학기_기말_고2_수학II/q22-solution.svg",
+    "bytes": 4572,
+    "sha256": "sha256:450d3ec497f468e14bf41362664cd4e81b32897219ba92bf73558cf7d83ddada"
+  },
+  "changes": [
+    "Replaced unrelated F(x)=x·(x−3)^2 graph with the source-derived piecewise K(x) graph.",
+    "Added explicit branches K(x)=-8x for x<0 and K(x)=x(x−3)^2 for x≥0.",
+    "Added critical points (1,4), (3,0), the 0<k<4 band, and four-intersection witness at k=2."
+  ],
+  "checks": {
+    "sourceExpectedInterval": "(0,4)",
+    "staticContract": "PASS",
+    "labelParity": "PASS",
+    "geometryParity": "PASS"
+  },
+  "findings": [],
+  "status": "PASS"
+}
