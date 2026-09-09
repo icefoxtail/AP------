@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "ALIVE_SOURCE_RECOVERY_REGRESSION_CORPUS_v1",
+  "status": "OFFLINE_REGRESSION_ONLY",
+  "productionAuthority": false,
+  "cases": [
+    {
+      "caseId": "shape-movement-hyocheon-q19",
+      "sourceIdentity": "archive/analysis/shape-movement-20260904/FINAL_RECHECK.md#21-효천고-2중간-q19",
+      "sourceEvidenceRef": "archive/analysis/shape-movement-20260904/FINAL_RECHECK.md",
+      "expectedDiagnosis": ["OTHER_SOURCE_DEFECT"],
+      "expectedTier": "R6",
+      "expectedAuthority": "SHADOW_ONLY",
+      "expectedResult": "SOURCE_RECOVERY_CAPABILITY_BLOCKED"
+    },
+    {
+      "caseId": "set-visual-q18-multiple-answer",
+      "sourceIdentity": "archive/analysis/2026-09-02-set-visual-correction-protocol-final.md#q18",
+      "sourceEvidenceRef": "archive/analysis/2026-09-02-set-visual-correction-protocol-final.md",
+      "expectedDiagnosis": ["MULTIPLE_CORRECT_ANSWERS"],
+      "expectedTier": "R1",
+      "expectedAuthority": "SHADOW_ONLY",
+      "expectedResult": "RECOVERED_OR_BLOCKED_BY_CLOSURE"
+    },
+    {
+      "caseId": "answer-key-conflict-regression",
+      "sourceIdentity": "archive/analysis/2026-09-02-issues-only-report.md#answer-key-conflict",
+      "sourceEvidenceRef": "archive/analysis/2026-09-02-issues-only-report.md",
+      "expectedDiagnosis": ["ANSWER_KEY_DEFECT"],
+      "expectedTier": "R0",
+      "expectedAuthority": "SHADOW_ONLY",
+      "expectedResult": "SOURCE_ANSWER_KEY_RECOVERED"
+    },
+    {
+      "caseId": "visual-audit-source-blocked-q21",
+      "sourceIdentity": "archive/tools/logic-visual-audit/reports/phase2_repair_ledger.json#SOURCE_BLOCKED",
+      "sourceEvidenceRef": "archive/tools/logic-visual-audit/reports/phase2_repair_ledger.json",
+      "expectedDiagnosis": ["VISUAL_STEM_CONFLICT"],
+      "expectedTier": "R5",
+      "expectedAuthority": "SHADOW_ONLY",
+      "expectedResult": "SOURCE_RECOVERY_EVIDENCE_BLOCKED"
+    },
+    {
+      "caseId": "e2e-no-correct-answer-bounded-r1",
+      "sourceIdentity": "synthetic:source-recovery-r1-e2e",
+      "expectedDiagnosis": ["NO_CORRECT_ANSWER"],
+      "expectedTier": "R1",
+      "expectedAuthority": "SHADOW_ONLY",
+      "expectedResult": "SHADOW_RECOVERED"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Run artifact contracts
 
+> This is the legacy ALIVE Run artifact layout. For new pipeline-core v2 jobs,
+> the work-batch state, provider attestation, v2 evidence contracts, and
+> whole-job audit in archive/tools/pipeline-core are authoritative. The
+> legacy agent-task lifecycle below must not be used to create new provider
+> launches.
+
 ## Runtime root
 
 ```text

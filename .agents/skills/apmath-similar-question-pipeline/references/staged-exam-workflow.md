@@ -1,5 +1,12 @@
 # STAGED_EXAM workflow
 
+> Compatibility reference. This file documents the legacy ALIVE staged
+> runtime. It does not authorize new provider or agent launches. New jobs must
+> read references/pipeline-v2-execution.md and
+> archive/tools/pipeline-core/AGENT_BUDGET.md first; the batch and task
+> instructions below are for historical reconciliation or explicit legacy
+> compatibility only.
+
 ## 목적
 
 `STAGED_EXAM`은 한 시험지의 문항 전체를 먼저 만든 뒤, 독립 검수와 수정,

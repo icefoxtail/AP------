@@ -44,6 +44,7 @@ staged whole-exam Run을 만들고, 실제 `archive/engine.html`의 exam·soluti
 11. `05_DESIGN/ALIVE_QUALITY_PROOF_LOOP_ENGINE_세부구현계획서_v0.11.md` (상세 계약 후보·회귀 대조용)
 12. `05_DESIGN/ALIVE_HIGH1_OFFICIAL_PROMOTION_MATRIX_v0.1.md` (고1 18개 canonical 단원 정식 승격 매트릭스)
 13. `05_DESIGN/ALIVE_UNIVERSAL_VARIANT_ENGINE_IMPLEMENTATION_PLAN_v0.1.md` (중1~고등 전 과정 A/B/C 범용 엔진 구현계획)
+14. `05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md` (원본 불변 source-defect recovery 설계 후보)
 
 JS 아카이브의 최신 통합 운영 기준은 `docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`이며, 이 폴더의 v1.2 문서는 ALIVE 생산 체계에서 사용하는 참고 프로토콜이다.
 

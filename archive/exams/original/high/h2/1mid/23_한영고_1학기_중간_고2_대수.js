@@ -64,7 +64,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 로그의 정의($\\log_a N = k \\iff a^k = N$)를 사용하여 미지수를 구함.\\n$i)  a  의 값 구하기$\\n$\\log_a 4 = 2 \\implies a^2 = 4$\\n$\\because a$는 로그의 밑이므로 $a>0$ 이고 $a \\n e 1$ 임.\\n$\\therefore a = 2$\\n$ii)  b  의 값 구하기$\\n$\\log_3 b = -1 \\implies b = 3^{-1} = \\frac{1}{3}$\\n$iii) 최종 비율 계산$\\n$\\frac{a}{b} = \\frac{2}{1/3} = 2 \\times 3 = 6$\\n$\\therefore 6$",
+    "solution": "<b>[Logical Anchor]</b> 로그의 정의($\\log_a N = k \\iff a^k = N$)를 사용하여 미지수를 구함.\\n$i)  a  의 값 구하기$\\n$\\log_a 4 = 2 \\implies a^2 = 4$\\n$\\because a$는 로그의 밑이므로 $a>0$ 이고 $a \\neq 1$ 임.\\n$\\therefore a = 2$\\n$ii)  b  의 값 구하기$\\n$\\log_3 b = -1 \\implies b = 3^{-1} = \\frac{1}{3}$\\n$iii) 최종 비율 계산$\\n$\\frac{a}{b} = \\frac{2}{1/3} = 2 \\times 3 = 6$\\n$\\therefore 6$",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
@@ -748,7 +748,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "content": "[서술형 3] $y = a^{x-1}$과 $y = \\log_a(x-1)$이 $y = -x+6$과 만나는 점 $A, B$에 대해 $AB=4\\sqrt{2}$일 때, $a$의 값을 구하고, 점 C가 정의되지 않은 상태에서 $\\triangle ABC$의 넓이 $S$에 대한 $81S$의 값을 판단하시오. [8점]",
+    "content": "[서술형 3] $y = a^{x-1}$과 $y = \\log_a(x-1)$이 $y = -x+6$과 만나는 점을 각각 $A, B$라 하자. 점 $C=(0,0)$를 정점으로 하는 삼각형에서 $AB=4\\sqrt{2}$일 때, $a$와 $\\triangle ABC$의 넓이 $S$에 대한 $81S$의 값을 구하시오. [8점]",
     "choices": [
       " ",
       " ",
@@ -756,7 +756,7 @@ window.questionBank = [
       " ",
       " "
     ],
-    "answer": "$a=\\frac{81}{4}$; C 미정으로 S 및 81S 결정 불가",
+    "answer": "$a=\\frac{81}{4},\\quad 81S=972$",
     "category": "지수/로그함수의 대칭과 넓이 (서술형)",
     "originalCategory": "지수/로그함수의 대칭과 넓이 (서술형)",
     "standardCourse": "대수",
@@ -776,7 +776,7 @@ window.questionBank = [
       "지수"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> 두 함수는 직선 $y=x-1$에 대하여 서로 역함수 관계이므로 대응점의 중점은 대칭축 위에 있다.\\n$i) 대칭성 및 좌표 추출$\\n주어진 직선 $y=-x+6$과 대칭축 $y=x-1$의 교점은 $M(7/2,5/2)$이다. $AB=4\\sqrt{2}$이고 $AB$가 기울기 $-1$인 직선 위에 있으므로 두 점의 x좌표 차이는 4이다. 따라서 $A(3/2,9/2), B(11/2,1/2)$이다.\\n$ii) a의 결정$\\n$A$가 $y=a^{x-1}$ 위에 있으므로 $9/2=a^{1/2}$, 따라서 $a=81/4$이다.\\n$iii) C와 넓이의 판정$\\n문항 본문에는 점 C의 정의가 없고, 주어진 조건은 A와 B만 결정한다. C를 임의로 바꾸면 삼각형 ABC의 넓이도 달라지므로 $S$와 $81S$는 결정되지 않는다. 따라서 저장된 $81S=964$는 근거가 없으며, 이 문항은 C의 정의를 보완하기 전에는 유일한 답을 갖지 않는다.",
+    "solution": "<b>[Logical Anchor]</b> 두 그래프는 직선 $y=x-1$에 대하여 대칭이므로 교점의 중점을 이용한다.\\n$i)$ 직선 $y=-x+6$과 대칭축 $y=x-1$의 교점은 $M(\\frac{7}{2},\\frac{5}{2})$이다. $AB=4\\sqrt{2}$이고 $AB$의 기울기는 $-1$이므로 $A(\\frac{3}{2},\\frac{9}{2})$, $B(\\frac{11}{2},\\frac{1}{2})$로 둘 수 있다.\\n$ii)$ $A$가 $y=a^{x-1}$ 위의 점이므로 $\\frac{9}{2}=a^{1/2}$, 따라서 $a=\\frac{81}{4}$이다.\\n$iii)$ $C=(0,0)$이므로 $S=\\frac12\\left|\\frac32\\cdot\\frac12-\\frac92\\cdot\\frac{11}{2}\\right|=12$이다. 따라서 $81S=972$이다.",
     "level": "중",
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",

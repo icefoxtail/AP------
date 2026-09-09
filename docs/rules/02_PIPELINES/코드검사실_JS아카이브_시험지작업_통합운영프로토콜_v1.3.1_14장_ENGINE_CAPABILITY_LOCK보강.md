@@ -5,6 +5,7 @@
 ### Revision Addendum 2026-08-26: 14장 ENGINE CAPABILITY LOCK 보강 — solutionImage 엔진 지원 확인과 시험지별 브라우저 렌더 게이트 분리 / 지원 확인된 필드는 렌더 미실시만으로 1차 FAIL 금지
 ### Revision Addendum 2026-08-28: REAL RENDER GATE 고정 — 기준본 잠금 후 exam·solution·answer 실렌더를 수행하고, 수정 후 세 화면을 재렌더한 경우에만 최종 PASS·ZIP 봉인 허용 / internal-review-live는 사용 가능한 경우 별도 기록
 ### Revision Addendum 2026-09-01: EXTERNAL v1.2 FINAL PARITY LOCK — 유사문제 내부 검수는 외부 G0~G8을 하한선으로 사용 / fidelity·identity·metric visual·semantic questionType·score marker·외부 패키지 closure를 fail-closed로 강제
+### Revision Addendum 2026-09-09: ALIVE Source Defect Auto-Recovery v1.2 design amendment — 원본 불변 `DERIVED_SOURCE_RECOVERY`, tier/authority/adoption 분리, 1:1 replacement parity와 evidence-blocked resume contract를 연결하되 v1.2는 DESIGN_CANDIDATE로 유지
 
 ---
 
@@ -3048,3 +3049,39 @@ reports/final_closure_report.json
 # 28. 운영 한 줄 요약
 
 > **원본은 문자·기호·자료 주변 단위·출처까지 잠그고, 정답은 독립적으로 다시 푼다. 에셋은 ORIGINAL PIXEL FIRST를 기본으로 하며 생성형 이미지를 금지하고, 학생 필기가 있어도 `넓은 원본 크롭 → 부분수정 → 원본 픽셀 합성 → 국소 결정론적 복원` 순서를 지킨다. 크롭은 항상 여유 있게 잡아 점 이름·선 끝·표 외곽을 잘라먹지 않는다. 수정 에셋은 구조타입·부분수정 영역·도형 topology·각도/길이 ownership까지 잠그고, 저장 직후와 ZIP 추출 후 다시 연다. 에셋 작업이 1건이라도 있었으면 최종에는 모든 PNG의 EXPECTED LABEL + TOPOLOGY INVENTORY를 전수 대조하며, 핵심 도형에는 파괴적 마스킹을 하지 않는다. SOURCE REPAIR는 후보별 영향도를 비교한 뒤 승인안을 content·image·choices·answer·solution 전 계층에 동기화한다. 난이도 경계 문항은 근거 없는 반복 변경을 막고, 수정 직후 PRE-RECHECK LINT로 기계 오류를 먼저 제거한다. 최종 ZIP은 비ASCII entry의 UTF-8 `0x800` 플래그와 압축 전·중앙디렉터리·재해제 상대경로 3자 round-trip을 강제로 검증한다. 최종 전달은 DELIVERY SCOPE를 먼저 잠그며, 현재상태 보고서는 단일 REVIEW LEDGER와 동기화한다. HARD FAIL과 MINOR WARN을 분리하되 HARD FAIL은 타협하지 않고, 경미사항만 마스터 승인으로 종료하며, 최종 PASS는 새로 푼 ZIP 추출본의 증거로만 선언한다.**
+
+## 28.1 ALIVE Source Defect Auto-Recovery v1.2 design amendment
+
+실제 source가 정상이고 JS/OCR만 다른 경우는 `SOURCE_FIDELITY_RESTORATION`,
+실제 source 자체를 명시 승인으로 수정하는 기존 경로는
+`APPROVED_SOURCE_REPAIR`, 실제 source 자체가 결함이고 원본을 보존하는
+새 문항은 `DERIVED_SOURCE_RECOVERY`로 분리한다. 세 lifecycle을
+`sourceRepairStatus` 하나로 합치지 않는다.
+
+recovery 결과는 다음 축을 별도로 기록한다.
+
+```text
+sourceRecoveryPolicy = PRESERVE_ONLY | SHADOW_AUTO_RECOVER | AUTO_RECOVER
+recoveryAuthority = SHADOW_ONLY | BOUNDED_PRODUCTION | DEFAULT_PRODUCTION
+productionAdoptionStatus = NOT_AUTHORIZED | AUTHORIZED | ADOPTED
+```
+
+R0~R6는 `applicability`, `capability`, `execution` 3축을 사용한다.
+`CAPABILITY_BLOCKED`·`DEFERRED_CAPABILITY`를 execution exhaustion으로
+세지 않으며, 필요한 source 자료가 없으면
+`SOURCE_RECOVERY_EVIDENCE_BLOCKED` + `requiredResource` +
+`resumeFromStage=SOURCE_RECHECK`로 기록한다.
+
+학생용 final target에 derived artifact를 편입할 때는 `slotUid`와
+`effectiveArtifactUid`를 분리하고, `DERIVED_REPLACEMENT_VERIFIED`의
+1:1 replacement parity, source original 보존, recovered quality closure,
+authority/adoption, initial denominator UID/SHA 불변을 모두 검증한다.
+`RECOVERED`만으로 production release를 허용하지 않으며,
+`SHADOW_ONLY`/미승인 adoption/동시 active original+recovered는 final seal에서
+차단한다. `RECOVERY_TARGETED_REPAIR`는 frozen candidate를 수정하지 않고
+동일 plan의 새 candidate version/id/payload SHA와 새 FREEZE·독립 검증을
+생성한다.
+
+이 절은 v1.2 design candidate를 연결하기 위한 amendment이며, 기존 source
+truth, blind independent math, candidate freeze, actual render, final closure,
+기존 `APPROVED_SOURCE_REPAIR`의 명시 승인 의미를 완화하지 않는다.

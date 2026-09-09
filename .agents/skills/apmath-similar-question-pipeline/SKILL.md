@@ -1,6 +1,6 @@
 ---
 name: apmath-similar-question-pipeline
-description: Generate, resume, independently review, render, fail-closed-audit, and locally package APMath archive-based similar Korean math questions or whole exams through the unified four-batch Luna xhigh ALIVE workflow.
+description: Generate, resume, independently review, render, fail-closed-audit, and locally package APMath archive-based similar Korean math questions or whole exams through the unified ALIVE workflow, with pipeline-core v2 work-batch closure for new jobs.
 ---
 
 # APMath ALIVE unified similar-question pipeline
@@ -16,10 +16,36 @@ is the canonical integrated skill. It combines the former staged pipeline and
 four-batch comparison lane; do not choose a separate speed lane for ordinary
 whole-exam requests.
 
+## Current pipeline-core v2 boundary
+
+Read [pipeline-v2-execution.md](references/pipeline-v2-execution.md) before starting a new
+pipeline-core-backed job. The current execution authority is
+archive/tools/pipeline-core/AGENT_BUDGET.md together with the current
+pipeline-core contracts. A job uses one whole-job work batch, one
+provider-attested FINAL_AUDIT, and at most one TARGETED_RECHECK. Semantic
+batch labels, question axes, and review names do not authorize separate
+provider or agent launches.
+
+The old adaptive-staged and staged commands remain useful for legacy Run
+status, reconciliation, and explicitly requested compatibility work. They are
+not new-launch authorization under v2. Verify the repository-managed skill set
+from the active worktree before starting:
+
+~~~powershell
+node tools/skills/verify-skills.mjs
+~~~
+
 ## Default whole-exam route
 
-For a request such as "2025 Geumdang High School Grade 10 semester exam similar questions",
-run the unified staged route from source lock through local packaging. Do not
+For a new pipeline-core-backed job, this semantic stage outline must be
+executed through the v2 whole-job work-batch route, not by launching one task
+per stage, batch, question, or axis. The stage names below describe quality
+coverage and reducer order; references/pipeline-v2-execution.md defines the
+actual freeze, provider, recheck, and audit commands.
+
+For a new request such as "2025 Geumdang High School Grade 10 semester exam similar questions",
+use the pipeline-core v2 route from source lock through work-batch audit,
+release audit, and local package closure. Do not
 stop after generation, assembly, or `READY_FOR_MANUAL_REVIEW` when the browser
 surface is available. Stop only when the Run reaches a terminal result, an
 external blocker is recorded, or the user explicitly asks to pause.
@@ -43,10 +69,14 @@ S00_SOURCE_LOCK
 Never interleave generation and review by question. A stage advances only when
 all of its current batches are `ACCEPTED` or `SKIPPED`.
 
-## Speed profile without quality reduction
+## Legacy staged planning and compatibility route
 
-For a normal 22-question whole exam, create four deterministic weighted
-batches and dispatch at most four Luna tasks concurrently:
+The following four-batch planning material is retained for legacy ALIVE
+compatibility and historical Run reconciliation. It must not override the
+pipeline-core v2 whole-job freeze, provider attestation, or launch limits.
+
+For an explicitly requested legacy compatibility run, preserve the historical
+four-batch plan and its declared route:
 
 ```powershell
 python .agents/skills/apmath-similar-question-pipeline/scripts/alive.py adaptive-staged-exam-start --query "<exam> whole similar" --variation-mode QUICK --batch-strategy FOUR_BALANCED --batch-count 4 --json
@@ -93,7 +123,7 @@ content.
 
 ## Source and rule contract
 
-Before dispatching any builder:
+Before generating or dispatching any work:
 
 1. Lock one canonical Archive exam or qKey, source SHA-256, question order,
    score annotations, total score, and common-material relationships.
@@ -109,6 +139,34 @@ Before dispatching any builder:
 4. Use `source/reference-pack.json` only as optional reviewed style/variation
    context. It contains no authoritative answer or solution. Recompute every
    answer independently.
+
+### Source Defect Recovery lane (v1.2 design candidate)
+
+When the locked source itself is defective, use the repository recovery core
+(`alive/engine/source_recovery.py`) through a distinct `SOURCE_RECOVERY`
+operation. Do not treat it as ordinary similar-question generation and do not
+modify the source payload. Keep `slotUid` (initial denominator identity)
+separate from `effectiveArtifactUid` (student-facing artifact identity).
+
+The recovery policy, authority, and adoption axes are independent:
+
+```text
+PRESERVE_ONLY | SHADOW_AUTO_RECOVER | AUTO_RECOVER
+SHADOW_ONLY | BOUNDED_PRODUCTION | DEFAULT_PRODUCTION
+NOT_AUTHORIZED | AUTHORIZED | ADOPTED
+```
+
+R0~R6 must retain independent `applicability`, `capability`, and `execution`
+states. `RECOVERY_TARGETED_REPAIR` creates a new candidate version/id/payload
+SHA under the same recovery plan and reruns FREEZE plus blind verification; it
+never mutates a frozen candidate. A recovered artifact is not a production
+target until `DERIVED_REPLACEMENT_VERIFIED` has passed one-to-one lineage,
+quality, authority/adoption, and initial denominator parity.
+
+If source evidence is missing, record `SOURCE_RECOVERY_EVIDENCE_BLOCKED` with
+`requiredResource` and `resumeFromStage=SOURCE_RECHECK`; do not convert that
+condition into `HUMAN_REQUIRED`. This section is design routing only while the
+v1.2 rulebook remains `DESIGN_CANDIDATE / NOT_YET_OPERATIVE`.
 
 Read these references when operating the indicated route:
 
@@ -355,7 +413,13 @@ evidence satisfy `visual-quality-floor.md`; otherwise use `MANUAL_REVIEW` or
 
 ## Review and correction loop
 
-### Round 1
+For new v2 jobs, local machine checks happen before the whole-job freeze and a
+single provider audit reviews the frozen scope through sealed U1/U2/U3
+contexts. Repair defects locally, freeze again, and use at most one
+TARGETED_RECHECK. Unchanged axes require direct-root validated reuse receipts.
+The batch reviewer sequence below is a legacy compatibility model only.
+
+### Legacy batch review 1
 
 Dispatch one independent reviewer per completed batch. The reviewer receives
 the student payload for an independent answer calculation and a separate
@@ -371,7 +435,7 @@ The review must check:
   verification, common mistakes, and student reproducibility;
 - problem/solution visual semantic consistency and required SVG evidence.
 
-### Revision and round 2
+### Legacy revision and round 2
 
 Revise only batches with findings. Batches without findings pass through as
 `SKIPPED`. A contract-only failure uses the bounded recovery command and keeps
@@ -417,7 +481,13 @@ an explicit user request to continue permits exactly one
 held.
 Do not create an unbounded regeneration loop.
 
-## Dispatch, resume, and interruption safety
+## Legacy ALIVE dispatch, resume, and interruption safety
+
+This section applies only to historical or explicitly requested legacy ALIVE
+Runs. New provider execution must use the v2 work-batch route in
+references/pipeline-v2-execution.md. In particular, do not create new launches
+with the old per-task dispatch commands merely because a semantic batch is
+pending.
 
 For every task, record the external id and Luna route before launch:
 
@@ -455,6 +525,11 @@ retries have separate bounded budgets. Do not accept a pre-dispatch inbox file
 or abandon a Run merely because a dispatch call returned a capacity error.
 
 ## Render and local package closure
+
+For v2 captures, require MACHINE_CURRENT collection for STATIC, METADATA, and
+RENDER_CAPTURE, an independently sealed RENDER_REVIEW, all required modes and
+viewports, the last question, and every continuation block. Unchanged
+question-axis coverage may use only a current validated reuse receipt.
 
 Before assembly for a similar-exam output, apply the title and asset identity
 reference. Legacy/untyped output uses the source basename plus `_유사`; an
@@ -637,6 +712,10 @@ Never register or mutate the production Archive unless the user separately
 authorizes publication after reviewing the local package.
 
 ## Run quality closure and retention
+
+For v2, retain the work-batch freeze, provider plan, launch/receipt lineage,
+axis coverage, reuse receipts, and whole-job audit. Legacy external-agent
+history is retained only when the Run is using the compatibility route.
 
 Every terminal Run is a quality experiment. Before the next Run:
 
