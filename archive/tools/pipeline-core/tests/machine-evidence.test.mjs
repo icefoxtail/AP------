@@ -10,7 +10,7 @@ import { profiles, runInputSha } from '../closure.mjs';
 import { requiredAxesForQuestion } from '../projection.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { initWorkBatch, freezeWorkBatch, readWorkBatch } from '../work-batch.mjs';
-import { collectMachineEvidence } from '../machine-evidence.mjs';
+import { collectMachineEvidence, isChoicesContractValid } from '../machine-evidence.mjs';
 
 const write = (root, relative, value) => {
   const file = path.join(root, relative);
@@ -19,17 +19,20 @@ const write = (root, relative, value) => {
   return fileRef(root, relative);
 };
 
-function fixture(t) {
+function fixture(t, options = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-machine-evidence-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const uid = 'synthetic|1';
   const bank = q => `window.examTitle="synthetic";window.questionBank=${JSON.stringify([q])};`;
-  const q = { id: 1, content: '2+2를 계산한다.', choices: ['3', '4'], answer: '2', solution: '2+2=4이다.' };
+  const q = options.imageOnly
+    ? { id: 1, content: '그림 속 보기를 보고 정답을 고른다.', answer: '2', solution: '그림 속 ②가 정답이다.', questionType: '객관식', image: 'assets/images/synthetic/q001.png', tags: ['객관식', '통이미지보기'], standardCourse: 'synthetic', standardUnitKey: 'SYN-01', standardUnit: 'Synthetic', standardUnitOrder: 1, subUnitKey: 'SYN-01-CORE', subUnit: 'Synthetic', layoutTag: 'grid', wide: false }
+    : { id: 1, content: '2+2를 계산한다.', choices: ['3', '4'], answer: '2', solution: '2+2=4이다.' };
   const sourceRef = { ...write(root, 'source.js', bank(q)), role: 'source' };
   const candidateRef = { ...write(root, 'candidate.js', bank(q)), role: 'candidate' };
+  const assetRef = options.imageOnly ? { ...write(root, q.image, 'synthetic image bytes'), role: 'asset' } : null;
   initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session' });
-  const question = { questionUid: uid, sourceExamId: 'synthetic', sourceQuestionOrdinal: 1, examId: 'synthetic', sourcePath: sourceRef.path, candidatePath: candidateRef.path, qid: 1, requiredAxes: [], axisInputShas: {}, evidence: {}, visual: { requirement: 'VISUAL_EXEMPT', action: 'NONE', adjudicationId: 'synthetic-r1', adjudicationStatus: 'RESOLVED', exemptReason: 'NO_VISUAL_NEEDED', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false }, problemAssetPaths: [], solutionAssetPaths: [] };
-  const run = { schemaVersion: 'APMATH_PIPELINE_RUN_v2', pipeline: 'tag-enrichment', runId: 'run', revision: 1, workBatchId: 'job', builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', inputSha: null, inputs: [sourceRef, candidateRef], evidence: [], questions: [question] };
+  const question = { questionUid: uid, sourceExamId: 'synthetic', sourceQuestionOrdinal: 1, examId: 'synthetic', sourcePath: sourceRef.path, candidatePath: candidateRef.path, qid: 1, requiredAxes: [], axisInputShas: {}, evidence: {}, visual: { requirement: 'VISUAL_EXEMPT', action: 'NONE', adjudicationId: 'synthetic-r1', adjudicationStatus: 'RESOLVED', exemptReason: 'NO_VISUAL_NEEDED', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false }, problemAssetPaths: assetRef ? [assetRef.path] : [], solutionAssetPaths: [] };
+  const run = { schemaVersion: 'APMATH_PIPELINE_RUN_v2', pipeline: 'tag-enrichment', runId: 'run', revision: 1, workBatchId: 'job', builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', inputSha: null, inputs: [sourceRef, candidateRef, ...(assetRef ? [assetRef] : [])], evidence: [], questions: [question] };
   question.requiredAxes = requiredAxesForQuestion(profiles.pipelines[run.pipeline], question, run);
   run.inputSha = runInputSha(run);
   question.axisInputShas = computeV2AxisInputShas(root, run)[uid];
@@ -45,6 +48,25 @@ function fixture(t) {
   return { root, run, runRef, bridged, writeRun };
 }
 
+test('choices contract keeps normal objective arrays valid', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: ['1', '2', '3', '4', '5'] }), true);
+});
+
+test('choices contract accepts an image-only objective with omitted choices', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식', image: 'assets/images/exam/q001.png', tags: ['객관식', '통이미지보기'] }), true);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', image: 'assets/images/exam/q001.png', tags: ['객관식', '통이미지보기'], choices: [] }), true);
+});
+
+test('choices contract rejects a non-array choices field', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: '1,2,3,4,5' }), false);
+});
+
+test('choices contract rejects unjustified objective choices omission', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식' }), false);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', image: 'assets/images/exam/q001.png', tags: ['객관식'] }), false);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: [] }), false);
+});
+
 test('machine bridge creates current STATIC and METADATA evidence and freeze succeeds', t => {
   const f = fixture(t);
   const out = f.bridged();
@@ -54,6 +76,14 @@ test('machine bridge creates current STATIC and METADATA evidence and freeze suc
   const state = freezeWorkBatch(f.root, 'job', [out.ref]);
   assert.equal(state.status, 'FROZEN');
   assert.equal(readWorkBatch(f.root, 'job').freezes.length, 1);
+});
+
+test('image-only objective machine bridge and freeze succeed without choices', t => {
+  const f = fixture(t, { imageOnly: true });
+  const out = f.bridged();
+  assert.equal(out.result.status, 'MACHINE_EVIDENCE_READY');
+  assert.equal(out.result.machineEvidenceCount, 2);
+  assert.equal(freezeWorkBatch(f.root, 'job', [out.ref]).status, 'FROZEN');
 });
 
 test('machine-checks CLI emits a manifest usable by work-batch-freeze', t => {
