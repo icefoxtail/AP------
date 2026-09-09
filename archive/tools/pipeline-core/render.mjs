@@ -80,11 +80,18 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         response.end();
         return;
       }
-      let relative = requested;
+      // Candidate solutionImage values are repository-relative archive paths,
+      // while engine.html prefixes asset URLs with archive/. Normalize the
+      // resulting double prefix before looking up the bound ref.
+      let relative = requested.startsWith('archive/archive/') ? requested.slice('archive/'.length) : requested;
       const match = requested.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
       if (match) relative = candidates[Number(match[1])];
       else if (requested.startsWith('archive/assets/') && run.assetRoot) relative = `${run.assetRoot}/${requested.slice('archive/'.length)}`;
-      const ref = refByPath.get(relative);
+      // Some engine-relative data URLs are requested below /archive/ even
+      // though the manifest binds them at repository root (for example
+      // data/question_metadata.json). Preserve exact archive paths first,
+      // then resolve the archive-prefixed alias against the bound ref map.
+      const ref = refByPath.get(relative) || (requested.startsWith('archive/') ? refByPath.get(requested.slice('archive/'.length)) : null);
       if (!ref) {
         activeUnboundRequests.push(relative);
         throw new Error(`UNBOUND_RUNTIME_REQUEST:${relative}`);
@@ -121,8 +128,13 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
             const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
             if (candidateMatch) resolved = candidates[Number(candidateMatch[1])];
             else if (local?.startsWith('archive/assets/') && run.assetRoot) resolved = `${run.assetRoot}/${local.slice('archive/'.length)}`;
+            else if (local?.startsWith('archive/archive/')) resolved = local.slice('archive/'.length);
             const ref = resolved ? refByPath.get(resolved) : null;
-            if (local?.startsWith('archive/assets/')) responseHashes.set(local, bytesSha(bytes));
+            if (ref?.role === 'asset') {
+              const sha256 = bytesSha(bytes);
+              responseHashes.set(local, sha256);
+              responseHashes.set(resolved, sha256);
+            }
             if (!local || ['engine', 'runtime'].includes(ref?.role)) runtimeResponses.push({ url: response.url(), localPath: resolved || null, role: ref?.role || 'external', status: response.status(), bytes: ref && response.status() >= 200 && response.status() < 400 ? ref.bytes : bytes.length, sha256: ref && response.status() >= 200 && response.status() < 400 ? ref.sha256 : bytesSha(bytes), bodyBoundRef: ref && response.status() >= 200 && response.status() < 400 ? true : false });
           }).catch(error => {
             // Chrome may evict an already-consumed local response body while a
@@ -133,7 +145,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
               const parsed = new URL(response.url());
               const local = parsed.origin === `http://127.0.0.1:${port}` ? decodeURIComponent(parsed.pathname).slice(1) : null;
               const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
-              const resolved = candidateMatch ? candidates[Number(candidateMatch[1])] : local;
+              const resolved = candidateMatch ? candidates[Number(candidateMatch[1])] : local?.startsWith('archive/archive/') ? local.slice('archive/'.length) : local;
               const ref = resolved ? refByPath.get(resolved) : null;
               if (ref && response.status() >= 200 && response.status() < 400 && /evicted|not available/i.test(error.message)) {
                 runtimeResponses.push({ url: response.url(), localPath: resolved, role: ref.role, status: response.status(), bytes: ref.bytes, sha256: ref.sha256, bodyRead: 'INSPECTOR_EVICTED_BOUND_REF' });
