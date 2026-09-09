@@ -5,22 +5,18 @@
   "expectedFacts": {
     "type": "graph_fact_limit",
     "known": "1<b<a",
-    "undetermined": "a versus b²",
-    "examples": [
-      "(3,2): a<b²",
-      "(8,2): a>b²"
-    ],
-    "status": "underdetermined"
+    "condition": "a<b²",
+    "conclusion": "(a/b)^x−b^x<0 for x>0",
+    "passes_origin": true,
+    "answer": "③"
   },
   "observedFacts": {
-    "examples": [
-      "(3,2): a<b²",
-      "(8,2): a>b²"
-    ],
+    "answer": "③",
+    "conclusion": "(a/b)^x−b^x<0 for x>0",
+    "condition": "a<b²",
     "known": "1<b<a",
-    "status": "underdetermined",
-    "type": "graph_fact_limit",
-    "undetermined": "a versus b²"
+    "passes_origin": true,
+    "type": "graph_fact_limit"
   },
   "solutionFreeze": {
     "questionUid": "25_제일고_1학기_중간_고2_대수::q13",

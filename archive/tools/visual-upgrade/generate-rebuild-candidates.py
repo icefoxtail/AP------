@@ -23,7 +23,7 @@ SPECS = [
     {"slug":"25_suncheon_q5_exp_shift_graph","questionUid":"25_순천고_1학기_중간_고2_대수::q5","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js","id":5,"kind":"exp_shift_graph","facts":{"type":"exponential_graph","expression":"y=2^(x+2)−2","asymptote":"y=−2","point":[0,2],"a":-2,"b":-2,"product":4},"anchors":["점근선","y=-2","4"]},
     {"slug":"25_suncheon_q13_sector_annulus","questionUid":"25_순천고_1학기_중간_고2_대수::q13","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js","id":13,"kind":"sector_annulus","facts":{"type":"sector_annulus","outer_arc":"2π","inner_arc":"4π/3","area":"5π","angle":"2π/9","answer":"2π/9"},"anchors":["부채꼴","5\\pi","2\\pi/9"]},
     {"slug":"25_suncheon_q24_inverse_graph","questionUid":"25_순천고_1학기_중간_고2_대수::q24","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js","id":24,"kind":"inverse_line","facts":{"type":"shifted_inverse_graph","symmetry":"y=x−2","line":"y=−x+6","C":[0,6],"M":[4,2],"A":[3,3],"B":[5,1],"a":3},"anchors":["M(4,2)","A=(3,3)","a=3"]},
-    {"slug":"25_jeil_q13_relation_limit","questionUid":"25_제일고_1학기_중간_고2_대수::q13","sourceJsPath":"archive/exams/original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js","id":13,"kind":"relation_limit","facts":{"type":"graph_fact_limit","known":"1<b<a","undetermined":"a versus b²","examples":["(3,2): a<b²","(8,2): a>b²"],"status":"underdetermined"},"anchors":["1<b<a","b^2","조건 불충분"]},
+    {"slug":"25_jeil_q13_relation_limit","questionUid":"25_제일고_1학기_중간_고2_대수::q13","sourceJsPath":"archive/exams/original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js","id":13,"kind":"relation_limit","facts":{"type":"graph_fact_limit","known":"1<b<a","condition":"a<b²","conclusion":"(a/b)^x−b^x<0 for x>0","passes_origin":True,"answer":"③"},"anchors":["로그 그래프","a\\lt b","원점"]},
     {"slug":"25_jeil_q18_exp_three_curves","questionUid":"25_제일고_1학기_중간_고2_대수::q18","sourceJsPath":"archive/exams/original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js","id":18,"kind":"exp_three_curves","facts":{"type":"three_exponential_curves","P_x_ratio":"1:2","t":"1/3","curves":["t·2^x","2^(−x)","−2^x+4"]},"anchors":["P","Q","1/3"]},
     {"slug":"25_jeil_q19_parabola_log_bound","questionUid":"25_제일고_1학기_중간_고2_대수::q19","sourceJsPath":"archive/exams/original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js","id":19,"kind":"parabola_log_bound","facts":{"type":"parabola_log_inequality","function":"f(x)=(x−2)(x−4)","domain":"x<2 or x>4","bound":"0≤x≤6","integer_solutions":[0,1,5,6],"count":4},"anchors":["(2, 0)","(4, 0)","총 4개"]},
     {"slug":"25_jeil_q20_parallelogram","questionUid":"25_제일고_1학기_중간_고2_대수::q20","sourceJsPath":"archive/exams/original/high/h2/1mid/25_제일고_1학기_중간_고2_대수.js","id":20,"kind":"parallelogram","facts":{"type":"parallelogram","A":[5,5],"B":[2,1.5],"C":[1,-3],"D":[4,0.5],"area":10},"anchors":["평행사변형","넓이","10"]},
@@ -62,10 +62,11 @@ def body(kind, facts):
             sx,sy=xy(x,y,xr=(0,8),yr=(0,8)); b+=f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>{text(sx+8,sy-8,l,"label")}'
         return b+text(360,40,"symmetry axis y=x−2; line y=−x+6","label","middle")+text(360,390,"A=(3,3) ⇒ a=3","small","middle")
     if kind == "relation_limit":
-        b=text(360,65,"log_b x above log_a x  ⇒  1<b<a","label","middle")
-        b+=f'<rect class="region" x="90" y="105" width="540" height="70" rx="10"/><rect class="region" x="90" y="205" width="540" height="70" rx="10"/>'
-        b+=text(360,148,"a<b²  →  (a/b)^x−b^x < 0  (x>0)","small","middle")+text(360,248,"a>b²  →  (a/b)^x−b^x > 0  (x>0)","small","middle")
-        return b+text(360,350,"a vs b² is not supplied: answer graph is underdetermined","label","middle")
+        b=axes(-3,3,-4,3)
+        b+=polyline(points(lambda x:-0.6*(2**x-1),-3,3,-4,3),"curve")
+        b+=text(360,45,"1<b<a and a<b²; f(x)=(a/b)^x−b^x","label","middle")
+        b+=text(360,390,"f(0)=0,  x>0 ⇒ f(x)<0  →  choice ③","small","middle")
+        return b
     if kind == "exp_three_curves":
         b=axes(-3,4,-1,5); b+=polyline(points(lambda x:(1/3)*2**x,-3,4,-1,5),"curve")+polyline(points(lambda x:2**(-x),-3,4,-1,5),"curve2")+polyline(points(lambda x:-2**x+4,-3,4,-1,5),"mark")
         return b+text(360,40,"P: t·2ˣ=2⁻ˣ, Q: t·2ˣ=−2ˣ+4","label","middle")+text(360,390,"x_P:x_Q=1:2 ⇒ t=1/3","small","middle")

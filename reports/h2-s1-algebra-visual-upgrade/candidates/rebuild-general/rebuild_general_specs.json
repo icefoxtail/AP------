@@ -204,20 +204,18 @@
     "facts": {
       "type": "graph_fact_limit",
       "known": "1<b<a",
-      "undetermined": "a versus b²",
-      "examples": [
-        "(3,2): a<b²",
-        "(8,2): a>b²"
-      ],
-      "status": "underdetermined"
+      "condition": "a<b²",
+      "conclusion": "(a/b)^x−b^x<0 for x>0",
+      "passes_origin": true,
+      "answer": "③"
     },
     "anchors": [
-      "1<b<a",
-      "b^2",
-      "조건 불충분"
+      "로그 그래프",
+      "a\\lt b",
+      "원점"
     ],
     "candidateRef": "reports/h2-s1-algebra-visual-upgrade/candidates/rebuild-general/25_jeil_q13_relation_limit.svg",
-    "factHash": "0d5aef1da73ca846c63e67c584809c74fd1a1641f42baa54b3024cac9427938d",
+    "factHash": "b171f8b5d4009a669aab99a38b118bcefe3e7cab45c3508e2ee4cf109a48e15a",
     "v1": "PENDING",
     "v2": "PENDING",
     "v3": "PENDING",
