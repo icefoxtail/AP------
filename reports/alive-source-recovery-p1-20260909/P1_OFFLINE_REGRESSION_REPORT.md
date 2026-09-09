@@ -198,7 +198,7 @@
 
 ## Confirmed REGRESSION_DEFECT
 
-- `alive/engine/source_recovery.py`: confirmed and minimally fixed two routing defects (payload defects were outranked by answer-key conflict/resolution symptoms; symbolic R1 duplicate-choice repairs were incorrectly abandoned).
+- `alive/engine/source_recovery.py`: confirmed and minimally fixed three routing defects (payload defects were outranked by answer-key conflict/resolution symptoms; valid multi-select contracts were misdiagnosed as source defects; symbolic R1 duplicate-choice repairs were incorrectly abandoned).
 - No unresolved supported R0/R1 regression remains after rerun.
 
 ## Readiness
@@ -219,6 +219,6 @@
 ## Test evidence
 
 - focusedSourceRecoveryTests: PASS (44/44; excludes unrelated pre-existing manifest-byte test)
-- fullSourceRecoveryTestFile: WARN (44/45; existing rules manifest records 8043 bytes but file is 8046 bytes)
+- fullSourceRecoveryTestFile: PASS (45/45 in the clean main worktree)
 - p1RunnerSyntax: PASS
 - p1RunnerExecution: PASS
