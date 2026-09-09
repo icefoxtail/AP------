@@ -30,7 +30,7 @@ $previousComparison.baseline = "reports/iterations/$PreviousIteration/comparison
 foreach($row in $previousComparison.rows){$row.previous = 'UNCHANGED'}
 $previousComparison | ConvertTo-Json -Depth 10 | Set-Content (Join-Path $target 'comparison.json') -Encoding utf8
 $review = Get-Content (Join-Path $reports 'visual-review.json') -Raw | ConvertFrom-Json
-$review.iteration = $Iteration
+$review | Add-Member -Force NoteProperty iteration $Iteration
 $review | ConvertTo-Json -Depth 10 | Set-Content (Join-Path $target 'visual-review.json') -Encoding utf8
 $defects = [ordered]@{schema='APMATH_GOLD_DEFECT_LIST_v1'; closed=@(); remaining=@([ordered]@{id='P1-ARCHIVE-RENDER'; type='RENDER_QA_DEFECT'; severity='NOT_RUN'; description='archive engine container render remains reserved for a later iteration.'}); aggregate=[ordered]@{semanticFail=0; factParityFail=0; renderFail=0; collision=0; clipping=0; missingGlyph=0; polishRequired=0; rebuild=0}}
 $defects | ConvertTo-Json -Depth 10 | Set-Content (Join-Path $target 'defects.json') -Encoding utf8
