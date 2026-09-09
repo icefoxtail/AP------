@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "apmath-h2-s1-algebra-final-audit-v1",
+  "generatedAt": "2026-09-09T04:28:49.641Z",
+  "branch": {
+    "name": "codex/h2-s1-algebra-visual-upgrade-20260909",
+    "head": "4c834f1701afaa58391ac681260702aa24108ef4",
+    "originMain": "b574084503e98ba1551781dce682a792aaaa6c3c",
+    "remoteFeature": "4c834f1701afaa58391ac681260702aa24108ef4",
+    "originMainIncluded": true
+  },
+  "scope": {
+    "sourceFileCount": 22,
+    "candidateQuestionCount": 475,
+    "targetQuestionCount": 459,
+    "excludedQuestionCount": 16
+  },
+  "checks": {
+    "inventory": {
+      "sourceFileCount": 22,
+      "candidateQuestionCount": 475,
+      "targetQuestionCount": 459,
+      "excludedQuestionCount": 16,
+      "countsPass": true
+    },
+    "triage": {
+      "targetCount": 459,
+      "dispositionCounts": {
+        "NO_VISUAL": 364,
+        "KEEP_EXISTING": 56,
+        "REBUILD_EXISTING": 15,
+        "ADD_NEW_VISUAL": 24
+      },
+      "duplicateUids": [],
+      "countsPass": true
+    },
+    "visualNeed": {
+      "missingSourceQuestions": [],
+      "noVisualViolations": [],
+      "keepExistingMissing": [],
+      "activeCandidateMissing": [],
+      "pass": true
+    },
+    "candidates": {
+      "manifestRows": 39,
+      "passRows": 39,
+      "missingCandidateRefs": [],
+      "missingAssetRefs": [],
+      "assetShaMismatches": [],
+      "countsPass": true
+    },
+    "solutionFreeze": {
+      "unique": 459,
+      "pass": 459,
+      "blocked": [],
+      "countsPass": true
+    },
+    "render": {
+      "baseline": {
+        "status": "PASS",
+        "expectedCases": 72,
+        "observedCases": 72,
+        "passCases": 72,
+        "failCases": 0
+      },
+      "refresh": {
+        "status": "PASS",
+        "expectedCases": 18,
+        "observedCases": 18,
+        "passCases": 18,
+        "failCases": 0
+      },
+      "reviewStatus": "PASS",
+      "countsPass": true
+    },
+    "nodeCheck": {
+      "sourceFileCount": 77,
+      "failureCount": 0,
+      "failures": [],
+      "status": "PASS"
+    },
+    "specialistRoute": {
+      "status": "PASS",
+      "candidateCount": 39,
+      "candidatePassCount": 39,
+      "solutionFreeze": {
+        "unique": 459,
+        "pass": 459,
+        "blocked": []
+      },
+      "render": {
+        "status": "PASS",
+        "expectedCases": 72,
+        "observedCases": 72,
+        "passCases": 72,
+        "failCases": 0
+      },
+      "renderRefresh": {
+        "status": "PASS",
+        "expectedCases": 18,
+        "observedCases": 18,
+        "passCases": 18,
+        "failCases": 0
+      },
+      "errors": [],
+      "pass": true
+    }
+  },
+  "mechanicalStatus": "PASS",
+  "canonicalProviderFinalAudit": "NOT_RUN",
+  "academyUserVisualReview": "PENDING",
+  "mainMerge": "NOT_AUTHORIZED",
+  "productionAuthorized": false,
+  "status": "MACHINE_AUDIT_PASS_CANONICAL_SEAL_HOLD",
+  "blockingGates": [
+    "PROVIDER_ATTESTED_FINAL_AUDIT_NOT_RUN",
+    "ACADEMY_USER_VISUAL_REVIEW_PENDING",
+    "MAIN_MERGE_NOT_AUTHORIZED"
+  ]
+}

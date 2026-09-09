@@ -25,10 +25,11 @@
   - 3 source files × exam/solution/answer × desktop/mobile
   - zero image decode errors, MathJax errors, or horizontal overflow
 - specialist function-graph route adapter: pipeline-core CLI closure `PASS`, 39/39 candidate rows and 18/18 refresh rows included
+- consolidated machine audit: `FINAL_AUDIT_EVIDENCE.json` = `MACHINE_AUDIT_PASS_CANONICAL_SEAL_HOLD`; inventory/triage/freeze/asset/render/branch checks are all PASS
 
 ## Not sealed yet
 
-The general trig/exponential/logarithmic function graphs are now checked through the explicit specialist route adapter, not coerced into an unrelated typed family. The current CLI closure is recorded at `function_graph_specialist_pipeline_closure_v4.json`: 39/39 candidate records, 459/459 solution freeze, 72/72 baseline render, and 18/18 origin-main refresh render PASS.
+The general trig/exponential/logarithmic function graphs are now checked through the explicit specialist route adapter, not coerced into an unrelated typed family. The current CLI closure is recorded at `function_graph_specialist_pipeline_closure_v7.json`: 39/39 candidate records, 459/459 solution freeze, 72/72 baseline render, and 18/18 origin-main refresh render PASS.
 
 The route still returns `productionAuthorized:false`. This is an evidence closure, not the final production seal: academy/user visual review and the later main merge remain pending.
 

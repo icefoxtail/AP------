@@ -50,9 +50,10 @@
 
 - runner: `archive/tools/visual-upgrade/build-function-graph-specialist-run.mjs`
 - audit command: `node archive/tools/pipeline-core/cli.mjs audit-function-graph ...`
-- current evidence: `function_graph_specialist_pipeline_closure_v4.json`
+- current evidence: `function_graph_specialist_pipeline_closure_v7.json`
 - result: route `PASS`; candidate 39/39, freeze 459/459, baseline render 72/72, refresh render 18/18
 - authority: `productionAuthorized:false` 유지
+- consolidated audit: `FINAL_AUDIT_EVIDENCE.json` (`MACHINE_AUDIT_PASS_CANONICAL_SEAL_HOLD`)
 
 일반 그래프를 cartesian/geometry 사실로 억지 변환하지 않는다. route가 없으면 `MISSING_CURRENT_PIPELINE_EVIDENCE`를 유지한다.
 
