@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "apmath-render-review-adjudication-v1",
+  "reviewerInput": {
+    "path": "reports/h2-s1-algebra-visual-upgrade/independent_render_review.txt",
+    "sha256": "sha256:5cff9441d35017fbdf7ecc16dbb4d380e96100f03d7614e390902bfa7aa61c3a",
+    "decision": "FAIL"
+  },
+  "scope": {
+    "baselineCases": 72,
+    "refreshCases": 18,
+    "priorityOriginalsInspected": [
+      "representative_palma_q9.png",
+      "representative_jeil_q2_fixed.png",
+      "representative_hyochon_q23.png",
+      "refresh_desktop_exam_03.png",
+      "refresh_mobile_sol_03.png"
+    ]
+  },
+  "geometryWitness": {
+    "desktop": {
+      "viewport": [1280, 900],
+      "modeCtrlBottom": 44,
+      "printAreaTop": 44,
+      "firstPageTop": 64,
+      "firstHeaderTop": 116.90625,
+      "bodyPaddingTop": 44,
+      "scrollWidth": 1280,
+      "mathErrors": 0,
+      "headerOverlap": false
+    },
+    "mobile": {
+      "viewport": [393, 844],
+      "modeCtrlBottom": 44,
+      "printAreaTop": 44,
+      "firstPageTop": 53.49622344970703,
+      "firstHeaderTop": 78.61669921875,
+      "bodyPaddingTop": 44,
+      "scrollWidth": 393,
+      "mathErrors": 0,
+      "headerOverlap": false
+    }
+  },
+  "findingAdjudication": [
+    {
+      "finding": "fixed tab bar overlaps/crops content",
+      "decision": "REJECT",
+      "reason": "DOM geometry places the first page and first header below the fixed 44px control bar in both viewports; no overlap is present."
+    },
+    {
+      "finding": "answer/solution page pagination looks unstable",
+      "decision": "NOT_A_RENDER_FAILURE",
+      "reason": "The visible boundaries are intentional A4 page boundaries in the production print engine; scrollWidth and viewport checks pass."
+    },
+    {
+      "finding": "large blank areas",
+      "decision": "NOT_A_RENDER_FAILURE",
+      "reason": "Fixed-format page whitespace is expected; no clipping, overflow, or missing content was observed in the original captures."
+    },
+    {
+      "finding": "contact sheet thumbnails too small",
+      "decision": "LIMITATION_ACCEPTED",
+      "reason": "Contact sheets are overview evidence only; priority original PNGs were opened separately."
+    }
+  ],
+  "geometryDecision": "PASS",
+  "status": "ADJUDICATED_PASS_WITH_LIMITATIONS",
+  "remainingExternalReview": "ACADEMY_USER_VISUAL_REVIEW_PENDING",
+  "productionAuthorized": false
+}

@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "scope", "findings", "limitations", "recommendation"],
+  "properties": {
+    "decision": { "type": "string", "enum": ["PASS", "FAIL", "REVIEW_REQUIRED"] },
+    "scope": { "type": "string" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "item", "detail"],
+        "properties": {
+          "severity": { "type": "string", "enum": ["INFO", "WARN", "FAIL"] },
+          "item": { "type": "string" },
+          "detail": { "type": "string" }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "recommendation": { "type": "string" }
+  }
+}

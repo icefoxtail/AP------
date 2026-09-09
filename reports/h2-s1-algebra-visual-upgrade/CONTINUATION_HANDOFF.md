@@ -33,6 +33,7 @@
 
 주요 근거는 `SOLUTION_FREEZE_STATUS.md`, `candidate_manifest.json`, `visual_triage.json`, `PRODUCTION_ASSET_BINDINGS.json`, `browser_render_capture_matrix.json`, `browser_render_review.json`, `browser_render_check.md`다.
 학원 전수 시각 검수는 `ACADEMY_VISUAL_REVIEW_PACK.md`에서 시작하고, contact sheet와 원본 PNG를 함께 사용한다.
+독립 이미지 reviewer의 overlap 지적은 `render_review_adjudication_20260909.json`에 geometry 근거와 함께 adjudicate되어 있다.
 
 ## 해설 source adjudication 기록
 
