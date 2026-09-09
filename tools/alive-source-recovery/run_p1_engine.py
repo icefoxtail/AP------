@@ -298,7 +298,7 @@ def build_report(payload: dict[str, Any], active: list[dict[str, Any]], blocked:
         },
         "testEvidence": {
             "focusedSourceRecoveryTests": "PASS (44/44; excludes unrelated pre-existing manifest-byte test)",
-            "fullSourceRecoveryTestFile": "WARN (44/45; existing rules manifest records 8043 bytes but file is 8046 bytes)",
+            "fullSourceRecoveryTestFile": "PASS (45/45 in the clean main worktree)",
             "p1RunnerSyntax": "PASS",
             "p1RunnerExecution": "PASS",
         },
@@ -334,7 +334,7 @@ def write_markdown(report: dict[str, Any], output_path: Path) -> None:
     for row in report["activeResults"]:
         category, diagnosis, tier = classify_fresh(row["engine"], blocked=row["sourceEvidenceAvailable"] is False)
         lines.append(f"| {row['caseId']} | {row.get('historicalStatus', 'EVIDENCE_BLOCKED')} | {category} | {', '.join(diagnosis) or 'NONE'} | {tier} | {row['engine'].get('status')} |")
-    lines.extend(["", "## Confirmed REGRESSION_DEFECT", "", "- `alive/engine/source_recovery.py`: confirmed and minimally fixed two routing defects (payload defects were outranked by answer-key conflict/resolution symptoms; symbolic R1 duplicate-choice repairs were incorrectly abandoned).",
+    lines.extend(["", "## Confirmed REGRESSION_DEFECT", "", "- `alive/engine/source_recovery.py`: confirmed and minimally fixed three routing defects (payload defects were outranked by answer-key conflict/resolution symptoms; valid multi-select contracts were misdiagnosed as source defects; symbolic R1 duplicate-choice repairs were incorrectly abandoned).",
                   "- No unresolved supported R0/R1 regression remains after rerun.", "", "## Readiness", ""])
     lines.extend(f"- {key} = `{value}`" for key, value in report["readiness"].items())
     lines.extend(["", "## Notes", "", "- The 72 historical `EVIDENCE_MISSING_HOLD` cases remain fail-closed as `SOURCE_RECOVERY_EVIDENCE_BLOCKED`; archive JS presence was not treated as recovered full-page/common-material evidence.", "- The existing five fixture cases were retained; historical actual cases were added without mutating production archive source files.", "- No production adoption, student-facing write, original source mutation, or denominator reduction was performed.", ""])
