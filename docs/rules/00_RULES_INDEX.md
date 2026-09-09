@@ -84,6 +84,11 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 `02_PIPELINES/코드검사실_…통합운영프로토콜…`은 시험지 작업 전체를 조율하는 상위 운영 기준이다. 개별 추출·해설·수정 문서는 이 통합 기준의 세부 실행 모듈로 본다.
 
+`05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md`는 원본 불변
+source-defect recovery의 설계 후보 문서다. 현재는 `DESIGN_CANDIDATE /
+NOT_YET_OPERATIVE`이므로 `MANIFEST.md`의 운영 rule pack에는 포함하지 않으며,
+구현 기준 사본은 `alive/05_DESIGN/`에 보존한다.
+
 좌표·점·직선·교점 등 수학적 SVG의 제작자는 `04_VISUAL/도형추출.md`의 EXPECTED FACT·좌표 모델
 준비를, 독립검수자는 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`의 v1.2 최소
 coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geometry 수학 PASS를 대체하지 않는다.
