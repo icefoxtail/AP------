@@ -154,6 +154,43 @@ function validateSubunit(q, masterRows, errors) {
   }
 }
 
+function sourceIdentityStatus(q, strictNew, errors) {
+  const required = ["sourceDocumentSha256", "sourceQuestionNo", "sourcePageNo", "sourceIdentityKey", "sourceEvidencePath"];
+  const missing = required.filter((key) => key === "sourcePageNo"
+    ? !(Number.isSafeInteger(q[key]) && q[key] >= 1)
+    : !nonEmpty(q[key]));
+  if (!missing.length) return "PASS";
+  if (strictNew) errors.push(`q${q.id}: SOURCE_IDENTITY_EVIDENCE_MISSING:${missing.join(",")}`);
+  return "LEGACY_SOURCE_EVIDENCE_NOT_AVAILABLE";
+}
+
+function auditStrictSourceChain(candidates, live, strictNew, errors) {
+  if (!strictNew) return "LEGACY_SOURCE_EVIDENCE_NOT_AVAILABLE";
+  if (!candidates.length) {
+    errors.push("SOURCE_CHAIN_CANDIDATE_MISSING");
+    return "FAIL";
+  }
+  const reports = path.join(path.dirname(path.dirname(candidates[0])), "reports");
+  const required = [
+    "source_inventory.json",
+    "source_identity_map.json",
+    "source_fidelity_evidence.json",
+    "math_review_evidence.json",
+    "asset_provenance_evidence.json",
+    "gpt_gemini_handoff_manifest.json",
+    "production_promotion_receipt.json",
+  ];
+  for (const name of required) if (!fs.existsSync(path.join(reports, name))) errors.push(`SOURCE_CHAIN_EVIDENCE_MISSING:${name}`);
+  for (const [name, expected] of [["source_fidelity_evidence.json", "PASS"], ["math_review_evidence.json", "PASS"], ["asset_provenance_evidence.json", "PASS"]]) {
+    const report = readJson(path.join(reports, name));
+    if (report?.status !== expected) errors.push(`SOURCE_CHAIN_EVIDENCE_NOT_PASS:${name}`);
+  }
+  const receipt = readJson(path.join(reports, "production_promotion_receipt.json"));
+  if (receipt?.candidateSha && receipt.candidateSha !== `sha256:${sha256(candidates[0])}`) errors.push("PROMOTION_RECEIPT_CANDIDATE_SHA_MISMATCH");
+  if (!receipt?.sourceIdentitySetSha || !receipt?.reviewedPassEnvelopeSha || !receipt?.promotionTransactionId) errors.push("PROMOTION_RECEIPT_INCOMPLETE");
+  return errors.length ? "FAIL" : "PASS";
+}
+
 function auditDbCoverage(archive, db, index) {
   const originalEntries = db.filter((entry) => normalizeRelative(entry.file).startsWith("original/"));
   const grouped = new Map();
@@ -206,6 +243,7 @@ for (const relativeInput of args.exams) {
   const errors = [];
   let title = path.basename(relative, ".js");
   let questions = [];
+  let sourceFidelityStatus = "PASS";
 
   if (!live || !fs.existsSync(live)) {
     errors.push(`production JS missing: ${relative}`);
@@ -229,6 +267,8 @@ for (const relativeInput of args.exams) {
     if (q.answer === undefined || q.answer === null || String(q.answer).trim() === "") errors.push(`q${q.id}: empty answer`);
     if (!nonEmpty(q.solution)) errors.push(`q${q.id}: empty solution`);
     if (args.strictNew) validateSubunit(q, masterRows, errors);
+    const identityStatus = sourceIdentityStatus(q, args.strictNew, errors);
+    if (identityStatus !== "PASS") sourceFidelityStatus = identityStatus;
     if (q.visualAssetStatus === "full_page_reference") errors.push(`q${q.id}: unresolved full_page_reference`);
     if (q.image) {
       const image = resolveInside(archive, q.image);
@@ -273,6 +313,7 @@ for (const relativeInput of args.exams) {
     }
     if (sha256(candidate) !== sha256(live)) errors.push(`candidate differs: ${path.relative(repo, candidate)}`);
   }
+  const strictSourceChain = auditStrictSourceChain(candidates, live, args.strictNew, errors);
 
   failed ||= errors.length > 0;
   reports.push({
@@ -283,6 +324,9 @@ for (const relativeInput of args.exams) {
     candidates: candidates.length,
     candidatePaths: candidates.map((candidate) => path.relative(repo, candidate).replaceAll("\\", "/")),
     strictNew: args.strictNew,
+    sourceFidelityStatus,
+    strictSourceChain,
+    sourceFidelityPolicy: args.strictNew ? "SOURCE_INVENTORY_IDENTITY_REQUIRED" : "legacy source evidence is reported, not treated as source fidelity PASS",
     errors,
   });
 }

@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fixture } from './fixture.mjs';
-import { closureFromFile, requireProductionClosure, reviewedMutationPlan } from '../integration.mjs';
+import { closureFromFile, requireProductionClosure, reviewedMutationPlan, sourceIdentityKey } from '../integration.mjs';
 import { prepareDraft } from '../prepare.mjs';
 import { auditRun } from '../closure.mjs';
 import { createRenderReview } from '../render.mjs';
@@ -16,6 +16,11 @@ test('a valid closure for a different native scope does not authorize legacy fin
     assert.equal(closureFromFile(f.root, 'logic-visual', manifest, [], [{ sourcePath: 'source.js', qid: 1 }]).status, 'PASS');
     assert.equal(closureFromFile(f.root, 'logic-visual', manifest, [], [{ sourcePath: 'source.js', qid: 2 }]).status, 'BLOCKED');
   } finally { f.cleanup(); }
+});
+test('past-exam rich source identity is never reduced to archive qid', () => {
+  const rich = { sourceIdentityKey: 'sha256:source|q8', sourceDocumentSha256: 'sha256:source', sourceQuestionNo: 'q8', sourcePath: 'archive/exams/original/fixture.js', qid: 8 };
+  assert.equal(sourceIdentityKey(rich), 'sha256:source|q8');
+  assert.equal(sourceIdentityKey({ sourcePath: 'source.js', qid: 1 }), 'source.js|1');
 });
 test('fresh preparation emits blind bundles, never fabricated review PASS', () => {
   const f = fixture(); try {
