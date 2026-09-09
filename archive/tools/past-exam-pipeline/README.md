@@ -7,6 +7,69 @@ the accepted JS. Extraction drafts may remain incomplete, but cannot be promoted
 using only a `reviewed_pass` string. `npm run quality -- --manifest <run.json>`
 checks the shared final evidence contract without production writes.
 
+## Hardening contract
+
+Every run accepts only an independently verified inventory and freezes
+`reports/source_inventory.json` before Vision content is accepted. The input
+inventory must be in `INDEPENDENT_INVENTORY_VERIFIED` (or already frozen)
+state. The inventory is keyed by `sourceDocumentSha256` and
+`sourceQuestionNo`; `id`, candidate array order, and `qNN` filenames are not
+source identity. The paired `source_identity_map.json` must cover every
+non-excluded source question exactly once. A missing disposition or a candidate
+set that differs from the frozen included set is a hard failure.
+
+`EXTRACTION_VALIDATED` means only that the full-page extraction package is
+structurally complete. It is not equivalent to `SOURCE_FIDELITY_PASS`,
+`MATH_REVIEW_PASS`, `ASSET_REVIEW_PASS`, `PRE_PROMOTION_VALIDATED`, or
+`PRODUCTION_RELEASE_PASS`. The Python candidate validator owns extraction
+validation only; `PRE_PROMOTION_VALIDATED` is emitted exclusively by the JS
+hardening validator after item-level evidence and common closure checks.
+
+The handoff lock protects `content`, `choices`, source identity/page evidence,
+and visual asset bindings. Answer/solution work may change only
+`answer`, `solution`, their status fields, and explicitly declared subunit
+metadata. An extraction mismatch routes to `SOURCE_FIDELITY_RESTORATION`; it
+cannot be silently repaired in the answer/solution lane.
+
+The common pipeline run preserves rich Past Exam identity fields
+(`sourceDocumentSha256`, `sourceQuestionNo`, `sourcePageEvidencePaths`, and
+`sourceIdentityKey`) in `run.questions`. Promotion compares that same rich set
+through the common closure; it is never reduced to `sourcePath|qid`.
+
+Visual assets require provenance and semantic evidence in addition to PNG
+decode: source document/question/page, bbox, asset SHA, crop generator,
+`CROP_PURITY`, contamination, clipping, required-label, and question-semantic
+checks. `PNG_DECODE_PASS` never implies `ASSET_SEMANTIC_PASS`. A direct asset
+must bind to the same source question; a shared visual is valid only as an
+explicit `SHARED_MATERIAL` binding with a `sharedMaterialUid` and complete
+`dependencyQuestionSet`. The independent asset evidence file is the semantic
+authority; candidate provenance is checked for parity only. Shared material
+page evidence may come from a different source page than a dependent question.
+
+Math review evidence carries a current input SHA over content, choices, and
+source-page evidence. A changed payload makes the prior math review stale.
+
+The exact ZIP is checked by two independent consumers:
+
+```powershell
+node archive/tools/past-exam-pipeline/portable-package-check.mjs --zip <deliverable.zip> --manifest <manifest.json>
+node archive/tools/past-exam-pipeline/release-closure-check.mjs --release <release-closure.json>
+```
+
+The release closure requires bound candidate/production/runtime/render file
+references whose current bytes are re-hashed at release time, rather than
+accepting SHA-shaped strings alone. It also requires bound
+candidate/production/runtime/render hashes
+and `PASS` for production `exam`, `sol`, and `ans`. If a deliverable ZIP exists,
+the exact ZIP, fresh extraction, package browser, and package hashes are also
+required; production-browser evidence and package-browser evidence are never
+interchangeable. A production-only flow records `packageApplicable: false` and
+`portablePackageStatus: NOT_APPLICABLE`. `NOT_TESTED`, `WARN`, `FAIL`, or a
+staging path correction can never be promoted to `DONE`.
+
+When package applicability is false, the valid release transition is
+`PROMOTED → REAL_RENDER_PASS → DONE`; `PORTABLE_PACKAGE_PASS` is not required.
+
 ## V2 방향
 
 이 파이프라인은 이제 **시험지 추출 전용**입니다.
@@ -94,6 +157,8 @@ python .\helpers\scanned_exam_pipeline.py `
 - `helpers/crop_visual_assets_from_full_pages.py`: 이미 만들어진 candidate JS에서 full page bbox 기반 visual asset crop 재실행
 - `helpers/audit_generated_visual_asset_links.py`: candidate `image`가 page/question crop을 가리키는지 감사
 - `helpers/validate_final_candidates.py`: V2 후보의 최종 필드·상태·이미지 경로 검증
+- `lib/hardening.mjs`: source identity, evidence SHA, mutation, asset, serialization, release, and production-write gates
+- `lib/portable-package.mjs`: independent ZIP consumer/extraction parity gate
 - `promote-reviewed-exam.mjs`: `reviewed_pass` 후보를 canonical Archive로 승격
 - `docs/PAST_EXAM_PIPELINE_V2_POLICY.md`: 정책 문서
 - `docs/VISION_PAGE_EXTRACT_REQUEST_TEMPLATE.md`: Vision 호출 프롬프트 템플릿
@@ -105,6 +170,7 @@ python .\helpers\scanned_exam_pipeline.py `
 ```powershell
 npm run check
 python -m py_compile .\helpers\scanned_exam_pipeline.py .\helpers\crop_visual_assets_from_full_pages.py .\helpers\audit_generated_visual_asset_links.py
+npm test
 ```
 
 ## 금지 회귀
@@ -114,6 +180,8 @@ python -m py_compile .\helpers\scanned_exam_pipeline.py .\helpers\crop_visual_as
 - `image`가 `pages/` 또는 `crops/questions/`를 가리키는 구조
 - visual asset crop 실패 시 question crop fallback
 - answer/solution을 추출 파이프라인에서 채우는 구조
+- `build_candidates_from_verified_maps.py` 같은 legacy full-page fallback
+  shortcut으로 candidate를 직접 구성하는 경로
 
 최종 candidate에는 `subUnitKey`, `subUnit`, `subUnitConfidence`,
 `subUnitClassificationDepth`가 필요하며, 세부단원 master와의 parent·label
