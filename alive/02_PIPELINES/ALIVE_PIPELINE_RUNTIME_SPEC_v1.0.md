@@ -226,3 +226,20 @@ candidate version/id/payload SHA를 생성하고 새 FREEZE·독립 검증을 �
 Derived artifact의 production slot 승계는 `DERIVED_REPLACEMENT_VERIFIED`
 one-to-one parity와 기존 final closure를 모두 통과한 경우에만 가능하다.
 초기 denominator UID set과 SHA는 replacement 전후 불변이다.
+
+현재 capability registry는 R0/R1 bounded producer와 blind-contract verifier만
+`ACTIVE`로 등록한다. R2/R3/R4/R6는 `DEFERRED_CAPABILITY`, R5는 visual
+capability `CAPABILITY_BLOCKED`이며, 미지정 tier를 ACTIVE로 간주하지 않는다.
+
+후보가 없다는 사실만으로 tier를 exhausted로 닫지 않는다. 각 active producer는
+`producerStatus=COMPLETED`, `attemptCount`, `generatedCandidateCount`,
+`attemptEvidenceRef/Sha`, `allProducedCandidatesRejected`를 남겨야 하며,
+그 전에는 `AVAILABLE_PENDING`으로 유지한다. `HUMAN_REQUIRED`는 applicable
+active producer attempt가 모두 실제 종료된 뒤에만 허용한다.
+
+locked source와 independent solve가 함께 제공되면 runtime이 source evidence를
+재확인하고 `diagnose_source_defects`로 `EXTRACTION_DEFECT`,
+`ANSWER_KEY_DEFECT`, `QUESTION_PAYLOAD_DEFECT`를 분기한 뒤 R0/R1 bounded
+candidate producer를 실행할 수 있다. candidate acceptance는 별도
+`verifierEvidence`의 candidate ID/version/SHA, blind visibility, 독립 계산
+answer, uniqueness/response contract, math verdict, evidence SHA를 요구한다.

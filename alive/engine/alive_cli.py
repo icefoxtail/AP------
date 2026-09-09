@@ -11,7 +11,7 @@ from . import ENGINE_VERSION
 from .contracts import FOLLOWUP_KINDS, GENERATION_MODES, OPERATION_MODES, OUTPUT_PROFILES, STAGES, initial_stages
 from .run_store import RunStore, atomic_write_json, make_run_id, sha256_file, utc_now
 from .source_resolver import resolve_explicit_source, resolve_source
-from .source_recovery import run_source_recovery
+from .source_recovery import build_blind_verifier_adapter, capability_registry_report, run_source_recovery, validate_design_mirror
 from .task_runtime import (
     all_current_tasks_submitted,
     fail_task_dispatch,
@@ -2612,14 +2612,45 @@ def command_source_recovery_run(args: argparse.Namespace) -> int:
         "sourceEvidenceAvailable": "source_evidence_available",
         "requiredResource": "required_resource",
         "candidatesByTier": "candidates_by_tier",
+        "attemptsByTier": "attempts_by_tier",
+        "sourcePayload": "source_payload",
+        "independentSolve": "independent_solve",
+        "blindVerifierSolve": "blind_verifier_solve",
         "recoveryPlanId": "recovery_plan_id",
+        "builderSessionId": "builder_session_id",
+        "verifierId": "verifier_id",
+        "verifierSessionId": "verifier_session_id",
+        "qualityClosureEvidence": "quality_closure_evidence",
+        "lineageParityEvidence": "lineage_parity_evidence",
+        "evidenceRoot": "evidence_root",
+        "artifactRoot": "artifact_root",
+        "finalArtifactRef": "final_artifact_ref",
+        "finalArtifactSha256": "final_artifact_sha256",
     }
     normalized = {aliases.get(key, key): value for key, value in request.items()}
+    blind_solve = normalized.pop("blind_verifier_solve", None)
+    if blind_solve is not None:
+        normalized["blind_verifier"] = build_blind_verifier_adapter(blind_solve)
     result = run_source_recovery(**normalized)
     if args.output:
         atomic_write_json(Path(args.output).resolve(), result)
     emit(result, args.json)
     return 0 if result.get("status") in {"NOT_REQUIRED", "RECOVERED", "PRESERVE_ONLY"} else 2
+
+
+def command_source_recovery_capability(args: argparse.Namespace) -> int:
+    result = capability_registry_report()
+    emit(result, args.json)
+    return 0
+
+
+def command_source_recovery_mirror_check(args: argparse.Namespace) -> int:
+    root = repository_root()
+    left = Path(args.alive_path).resolve() if args.alive_path else root / "alive/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md"
+    right = Path(args.docs_path).resolve() if args.docs_path else root / "docs/rules/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md"
+    result = validate_design_mirror(left, right)
+    emit(result, args.json)
+    return 0 if result["status"] == "PASS" else 2
 
 
 def add_common_output(parser: argparse.ArgumentParser) -> None:
@@ -3477,6 +3508,16 @@ def build_parser() -> argparse.ArgumentParser:
     source_recovery.add_argument("--output")
     source_recovery.add_argument("--json", action="store_true")
     source_recovery.set_defaults(func=command_source_recovery_run)
+
+    source_recovery_capability = commands.add_parser("source-recovery-capability")
+    source_recovery_capability.add_argument("--json", action="store_true")
+    source_recovery_capability.set_defaults(func=command_source_recovery_capability)
+
+    source_recovery_mirror = commands.add_parser("source-recovery-mirror-check")
+    source_recovery_mirror.add_argument("--alive-path")
+    source_recovery_mirror.add_argument("--docs-path")
+    source_recovery_mirror.add_argument("--json", action="store_true")
+    source_recovery_mirror.set_defaults(func=command_source_recovery_mirror_check)
 
     visual_render = commands.add_parser("visual-render")
     visual_render.add_argument("--spec", required=True)
