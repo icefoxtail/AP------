@@ -54,6 +54,7 @@ CORRECTIONS = {
     "24_한영고_2학기_기말_고1_기출": ["서술형2: independently verified count corrected from 95 to 163 with complete case split."],
     "20_순천고_2학기_중간_고1_기출": ["q16: student-facing solution rewritten without internal source-comparison language."],
     "24_여천고_2학기_기말_고1_기출": [
+        "A형 source-faithful restoration: source q3/q4/q10/q18 recovered from native page evidence; q4/q18 source graph-choice crops were added.",
         "q8/q13: unmatched math delimiters closed in the affected choices.",
         "q12: fixed-point intermediate corrected from -1+1/a to -2+1/a.",
     ],
@@ -188,6 +189,12 @@ def write_reports(root: Path, base: str, is_v2: bool = False) -> None:
         (reports / "EXCLUDED_QUESTIONS.md").write_text(
             f"# EXCLUDED SOURCE QUESTIONS — {base}\n\n"
             "- q13: REVIEW_NEEDED — direct combinatorial count and printed answer choice conflict; the item was removed from the release question bank rather than guessed.\n",
+            encoding="utf-8",
+        )
+    if base == "24_여천고_2학기_기말_고1_기출":
+        (reports / "EXCLUDED_QUESTIONS.md").write_text(
+            "# EXCLUDED SOURCE QUESTIONS — 24_여천고_2학기_기말_고1_기출\n\n"
+            "- q17: REVIEW_NEEDED — the printed piecewise inverse iteration remains source-conflicted after A restoration attempts; no guessed B replacement was promoted.\n",
             encoding="utf-8",
         )
     if base == "19_강남고_2학기_기말_고1_기출":
