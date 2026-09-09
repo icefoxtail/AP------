@@ -398,12 +398,27 @@ test("frozen inventory, rich closure identity, and canonical promotion pass end 
     fs.writeFileSync(closureManifest, `${JSON.stringify(run, null, 2)}\n`);
     const manifestFile = path.join(core.root, "exam", "manifest.json");
     fs.writeFileSync(manifestFile, `${JSON.stringify({ examId: "fixture", archiveRelativePath: "original/high/h1/1final/fixture-e2e.js" }, null, 2)}\n`);
-    runPromotion({
+    const promoted = runPromotion({
       archiveRootOverride: path.join(core.root, "archive"),
       quiet: true,
       argv: ["node", "promote-reviewed-exam.mjs", "--manifest", manifestFile, "--candidate", candidateFile, "--review", reviewFile, "--assets", path.join(core.root, "exam", "assets"), "--closure-manifest", closureManifest],
     });
     assert.ok(fs.existsSync(path.join(core.root, "archive", "exams", "original", "high", "h1", "1final", "fixture-e2e.js")));
+    const changedPathsFile = path.join(core.root, "preflight-changed.json");
+    const sourceIdentitiesFile = path.join(core.root, "source-identities.json");
+    fs.writeFileSync(changedPathsFile, JSON.stringify(["archive/exams/original/high/h1/1final/fixture-e2e.js"]));
+    fs.writeFileSync(sourceIdentitiesFile, JSON.stringify([{ sourceIdentityKey: q.sourceIdentityKey, sourceDocumentSha256: q.sourceDocumentSha256, sourceQuestionNo: q.sourceQuestionNo, sourcePageNo: q.sourcePageNo, sourcePageEvidencePaths: q.sourcePageEvidencePaths }]));
+    const preflightCli = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../production-write-preflight.mjs");
+    const cliArgs = [preflightCli, "--root", core.root, "--changed-paths", changedPathsFile, "--receipt", promoted.receiptFile, "--candidate", candidateFile, "--review", reviewFile, "--closure-manifest", closureManifest, "--source-identities", sourceIdentitiesFile];
+    const cliPass = spawnSync(process.execPath, cliArgs, { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 });
+    assert.equal(cliPass.status, 0, cliPass.stderr);
+    const fakeReceiptFile = path.join(core.root, "fake-receipt.json");
+    const fakeReceipt = JSON.parse(fs.readFileSync(promoted.receiptFile, "utf8"));
+    fakeReceipt.candidateSha = sha("fake-receipt");
+    fs.writeFileSync(fakeReceiptFile, `${JSON.stringify(fakeReceipt, null, 2)}\n`);
+    const cliFail = spawnSync(process.execPath, [...cliArgs.slice(0, cliArgs.indexOf("--receipt")), "--receipt", fakeReceiptFile, ...cliArgs.slice(cliArgs.indexOf("--receipt") + 2)], { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 });
+    assert.notEqual(cliFail.status, 0);
+    assert.match(`${cliFail.stdout}\n${cliFail.stderr}`, /UNAUTHORIZED_PRODUCTION_WRITE|RECEIPT_CANDIDATE_SHA_MISMATCH/);
   } finally {
     hardeningFixture.cleanup();
     core.cleanup();
@@ -490,6 +505,8 @@ test("release remains blocked until exact ZIP and all three real renders pass", 
     assert.doesNotThrow(() => assertReleaseClosure(base, { root }));
     assert.doesNotThrow(() => validateReleaseTransition("PROMOTED", "REAL_RENDER_PASS", { packageApplicable: false }));
     assert.throws(() => assertReleaseClosure({ ...base, candidateSha: sha("fake") }, { root }), /RELEASE_CANDIDATE_SHA_MISMATCH/);
+    const failingRender = writeRef("reports/render-fail.json", JSON.stringify({ render: { exam: "FAIL", sol: "PASS", ans: "PASS" } }));
+    assert.throws(() => assertReleaseClosure({ ...base, renderEvidenceSha: failingRender.sha256, artifactRefs: { ...base.artifactRefs, renderEvidence: failingRender } }, { root }), /RELEASE_RENDER_VERDICT_MISMATCH:exam/);
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
 });
 

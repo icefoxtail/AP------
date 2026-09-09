@@ -662,6 +662,17 @@ export function assertReleaseClosure(release, { root = process.cwd() } = {}) {
   if (productionRef && release.productionSha && productionRef.sha256 !== release.productionSha) errors.push("RELEASE_PRODUCTION_SHA_MISMATCH");
   if (runtimeRef && release.runtimeBundleSha && runtimeRef.sha256 !== release.runtimeBundleSha) errors.push("RELEASE_RUNTIME_SHA_MISMATCH");
   if (renderEvidenceRef && release.renderEvidenceSha && renderEvidenceRef.sha256 !== release.renderEvidenceSha) errors.push("RELEASE_RENDER_EVIDENCE_SHA_MISMATCH");
+  const releaseRender = release?.productionRender || release?.render || {};
+  if (renderEvidenceRef) {
+    try {
+      const evidence = JSON.parse(fs.readFileSync(path.join(root, refs.renderEvidence.path), "utf8"));
+      const evidenceRender = evidence.productionRender || evidence.render || evidence.verdicts || evidence;
+      for (const mode of ["exam", "sol", "ans"]) {
+        if (evidenceRender?.[mode] === undefined) errors.push(`RELEASE_RENDER_VERDICT_MISSING:${mode}`);
+        else if (evidenceRender[mode] !== releaseRender[mode]) errors.push(`RELEASE_RENDER_VERDICT_MISMATCH:${mode}`);
+      }
+    } catch (error) { errors.push(`RELEASE_RENDER_EVIDENCE_PARSE_FAIL:${error.message}`); }
+  }
   for (const key of ["candidateSha", "productionSha", "runtimeBundleSha", "renderEvidenceSha"]) if (!/^sha256:[0-9a-f]{64}$/.test(String(release?.[key] || ""))) errors.push(`RELEASE_BINDING_MISSING:${key}`);
   if (packageApplicable) {
     const packageRefs = release?.packageRefs || {};
@@ -680,7 +691,7 @@ export function assertReleaseClosure(release, { root = process.cwd() } = {}) {
   } else if (release?.packageApplicable !== false && release?.portablePackageStatus !== "NOT_APPLICABLE") {
     errors.push("PACKAGE_APPLICABILITY_UNDECLARED");
   }
-  const productionRender = release?.productionRender || release?.render || {};
+  const productionRender = releaseRender;
   for (const mode of ["exam", "sol", "ans"]) if (productionRender[mode] !== "PASS") errors.push(`RELEASE_BLOCKED:${mode}`);
   if (packageApplicable) {
     const packageRender = release?.packageRender || {};
