@@ -12,22 +12,33 @@ const context = { window: {} };
 vm.runInNewContext(source, context, { filename: candidatePath });
 const unit = {
   circle: ["도형의 방정식", "H15-SA-11", "원의 방정식", "H15-SA-11-CIRCLE_EQUATION"],
-  plane: ["평면좌표", "H15-SA-09", "평면좌표", "H15-SA-09-POINT_DISTANCE"],
+  distance: ["도형의 방정식", "H15-SA-11", "원과 거리 조건", "H15-SA-11-DISTANCE_RATIO_LOCUS"],
+  tangent: ["도형의 방정식", "H15-SA-11", "원과 접선", "H15-SA-11-TANGENT"],
+  intersection: ["도형의 방정식", "H15-SA-11", "원과 직선·원의 교점", "H15-SA-11-INTERSECTION"],
+  geometryApplication: ["도형의 방정식", "H15-SA-09", "도형의 방정식 활용", "H15-SA-09-GEOMETRY_APPLICATION"],
+  translation: ["도형의 이동", "H15-SA-12", "평행이동", "H15-SA-12-TRANSLATION"],
   set: ["집합", "H15-SB-01", "집합의 연산", "H15-SB-01-SET_OPERATION"],
   proposition: ["명제", "H15-SB-02", "명제와 진리집합", "H15-SB-02-PROPOSITION_BASIC"],
   inequality: ["여러 가지 부등식", "H15-SA-08", "부등식의 풀이", "H15-SA-08-INEQUALITY_BASIC"],
+  necessary: ["명제", "H15-SB-02", "필요조건과 충분조건", "H15-SB-02-NECESSARY_SUFFICIENT"],
   function: ["함수", "H15-SB-03", "함수의 뜻과 대응", "H15-SB-03-FUNCTION_RELATION"],
-  geometry: ["도형의 방정식", "H15-SA-11", "원의 방정식", "H15-SA-11-CIRCLE_EQUATION"],
 };
 const unitFor = (id) => {
-  if ([1, 2, 3, 4, 8, 9, 10, 11, 15, 16, 18, "서술형1", "서술형3"].includes(id)) return unit.circle;
+  if ([1, 4, 11].includes(id)) return unit.circle;
+  if ([2, 8, "서술형1"].includes(id)) return unit.tangent;
+  if ([3].includes(id)) return unit.translation;
+  if ([9, 16].includes(id)) return unit.distance;
+  if ([15].includes(id)) return unit.intersection;
+  if ([18, "서술형3"].includes(id)) return unit.geometryApplication;
   if ([5, 12, 17, "서술형2"].includes(id)) return unit.set;
-  if ([6, 13, 14].includes(id)) return unit.proposition;
-  if ([7].includes(id)) return unit.inequality;
+  if ([6].includes(id)) return unit.proposition;
+  if ([14].includes(id)) return unit.necessary;
+  if ([13, 7].includes(id)) return unit.inequality;
   return unit.function;
 };
 const excluded = new Set(["10", "12"]);
 const questions = context.window.questionBank.filter((question) => !excluded.has(String(question.displayNo)));
+questions.forEach((question, index) => { question.id = index + 1; });
 for (const question of questions) {
   const key = String(question.displayNo);
   const detail = details[key];
