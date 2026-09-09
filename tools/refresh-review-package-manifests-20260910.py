@@ -7,7 +7,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RUN = ROOT / "archive" / "_generated" / "nightly-h1-2sem" / "20260908"
-TARGETS = ["23_한영고_2학기_중간_고1_기출_EXTERNAL_REVIEW"]
+TARGETS = [
+    "19_금당고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
+    "19_금당고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+    "19_복성고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+    "19_팔마고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
+    "19_팔마고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+    "23_여양고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+    "23_한영고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+]
 
 
 def sha256(path: Path) -> str:

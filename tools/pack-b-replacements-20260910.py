@@ -9,12 +9,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 RUN = ROOT / "archive" / "_generated" / "nightly-h1-2sem" / "20260908"
 TARGETS = [
+    "19_금당고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
+    "19_금당고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+    "19_복성고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
+    "19_팔마고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
+    "19_팔마고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
     "20_매산고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
     "20_매산여고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
     "23_여천고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
     "23_여천고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
     "23_중앙여고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
     "23_한영고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
+    "23_여양고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
     "24_부영여고_2학기_중간_고1_기출_EXTERNAL_REVIEW",
     "24_여양고_2학기_기말_고1_기출_EXTERNAL_REVIEW",
     "24_여천고_2학기_기말_고1_기출_EXTERNAL_REVIEW",

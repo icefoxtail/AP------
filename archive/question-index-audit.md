@@ -1,13 +1,13 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-09-08T21:52:29.279Z
+- 생성 시각: 2026-09-09T09:49:16.501Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(471파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(484파일).
   - .gitignore `*textbook*` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 11332
-- 최종 인덱스 문항 수: 11332
+- 원본 문항 수: 11615
+- 최종 인덱스 문항 수: 11615
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -38,12 +38,12 @@
 
 > 공식 마스터(142) 에 없고 RAW- 규약도 아닌 키. 검색/자동출제에서 mixer 의 getStandardizedUnit 이 "미분류"로 처리한다.
 > 원문 standardUnitKey 값은 인덱스에 보존한다(별도 치환/보정 없음).
-> distinct 21종 / 94건
+> distinct 21종 / 100건
 
+- `HH15-SA-01` — 16건 (예: original/high/h1/2final/24_여양고_2학기_기말_고1_기출.js#6, original/high/h1/2final/24_여양고_2학기_기말_고1_기출.js#10, original/high/h1/2final/24_여양고_2학기_기말_고1_기출.js#11, original/high/h1/2final/24_여천고_2학기_기말_고1_기출.js#6, original/high/h1/2final/24_중앙여고_2학기_기말_고1_기출.js#1)
 - `H22-A-03-03` — 14건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#4, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#8, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#9, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#10, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#11)
 - `HH15-SA-02` — 11건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#3, types/high/h1/항등식과나머지정리_고1_유형.js#10, types/high/h1/항등식과나머지정리_고1_유형.js#12, types/high/h1/항등식과나머지정리_고1_유형.js#13, types/high/h1/항등식과나머지정리_고1_유형.js#17)
 - `H22-C-11` — 10건 (예: original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#16, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#18, original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js#16, original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js#19, original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js#9)
-- `HH15-SA-01` — 10건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#1, types/high/h1/항등식과나머지정리_고1_유형.js#2, types/high/h1/항등식과나머지정리_고1_유형.js#4, types/high/h1/항등식과나머지정리_고1_유형.js#6, types/high/h1/항등식과나머지정리_고1_유형.js#8)
 - `H22-A-03-02` — 10건 (예: types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#2, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#3, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#6, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#7, types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js#12)
 - `H22-C-10` — 6건 (예: original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#12, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#13, original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js#19, original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js#14, original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js#9)
 - `HH15-SA-03` — 4건 (예: types/high/h1/항등식과나머지정리_고1_유형.js#11, types/high/h1/항등식과나머지정리_고1_유형.js#16, types/high/h1/항등식과나머지정리_고1_유형.js#21, types/high/h1/항등식과나머지정리_고1_유형.js#31)
@@ -73,14 +73,14 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 11332건 기준)
+## 5. 필드 누락 (최종 인덱스 11615건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
 | id | 0 |
 | content | 0 |
 | choices(배열) | 0 |
-| level | 352 |
+| level | 633 |
 | standardUnit | 8 |
 | standardUnitKey | 8 |
 | standardCourse | 20 |
@@ -91,10 +91,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 2237 |
+| q.image 보유 | 2259 |
 | content <img> | 24 |
 | content <svg> | 79 |
 | content <table> | 172 |
-| 시각요소 보유(hasImage=true) | 2506 |
+| 시각요소 보유(hasImage=true) | 2528 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
