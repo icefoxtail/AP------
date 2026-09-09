@@ -1,8 +1,8 @@
 {
   "schema": "APMATH_GOLD_TEX_WITNESS_v1",
   "generator": "artifacts/tex-pilot/gold-pilot/generator/generate.py",
-  "inputSha256": "1721703d7f6cf6e010fc83abe3e9883c2466f46c47c5deccb58201082f7b5f68",
-  "texSha256": "a2313b0218345a18290d806c9e3de2fb14cba45ccbe51b625a5cf660dc110775",
+  "inputSha256": "1dd22e5e4de11e05573dc4a72cef29684853c8260edcb562cdc76b86d6313b82",
+  "texSha256": "f780bb35c5f1a4135093ad1dd13cb11655542716cfca6d625b417b1e7ef98ff3",
   "objectCount": 6,
   "componentKinds": [
     "AXIS",
@@ -14,5 +14,71 @@
     "GRAPH_ANNOTATION",
     "PERPENDICULAR_MARK"
   ],
-  "numericAuthority": "python-sampled-coordinates"
+  "numericAuthority": "python-sampled-coordinates",
+  "derivedFacts": {
+    "lineCoefficients": {
+      "l1": [
+        -0.316227766017,
+        -0.948683298051,
+        -0.632455532034
+      ],
+      "l2": [
+        0.948683298051,
+        -0.316227766017,
+        -0.158113883008
+      ]
+    },
+    "intersections": {
+      "I": [
+        -0.05,
+        -0.65
+      ]
+    },
+    "viewportSuggestion": {
+      "xMin": -0.25,
+      "xMax": 0.15,
+      "yMin": -0.85,
+      "yMax": -0.45
+    }
+  },
+  "aspectPolicy": "equal-unit",
+  "styleTokens": {
+    "axis": {
+      "color": "black",
+      "lineWidth": 0.8
+    },
+    "mainCurve": {
+      "color": "blue",
+      "lineWidth": 1.0
+    },
+    "secondaryCurve": {
+      "color": "red",
+      "lineWidth": 1.0
+    },
+    "tangent": {
+      "color": "red",
+      "lineWidth": 1.0
+    },
+    "auxiliary": {
+      "color": "gray",
+      "lineWidth": 0.8
+    },
+    "point": {
+      "color": "black",
+      "markSize": 1.8
+    },
+    "criticalPoint": {
+      "color": "black",
+      "markSize": 2.0
+    },
+    "label": {
+      "fontSize": "small"
+    },
+    "mathLabel": {
+      "fontSize": "small"
+    },
+    "conditionBox": {
+      "padding": 4
+    }
+  }
 }

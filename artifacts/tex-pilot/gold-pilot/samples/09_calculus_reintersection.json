@@ -1,11 +1,12 @@
 {
   "id": "09_calculus_reintersection",
   "visualType": "calculus_graph",
+  "sourceFacts": {"curve": "x^3-4*x", "pointA": [1, -3], "tangent": "y=-x-2", "pointB": [-2, 0]},
   "viewport": {"xMin": -3, "xMax": 2.5, "yMin": -5, "yMax": 5, "width": 13, "height": 9},
   "axes": {"visible": true, "grid": true, "xLabel": "x", "yLabel": "y"},
   "functionGraphs": [{"id": "curve", "expression": "x^3-4*x", "domain": [-2.5, 2.2], "samples": 121, "label": "y=x^3-4x", "style": {"color": "black", "lineWidth": 1.2}}],
   "lines": [{"id": "tangent", "slope": -1, "intercept": -2, "domain": [-2.8, 2.2], "equation": "y=-x-2", "style": {"color": "red", "lineWidth": 1.1}}],
   "points": [{"id": "A", "x": 1, "y": -3, "label": "A(1,-3)", "role": "critical"}, {"id": "B", "x": -2, "y": 0, "label": "B(-2,0)", "role": "intersection"}],
-  "labels": [{"id": "fact", "text": "A 접선과 재교점 B", "at": [-2.8, 4.3], "kind": "generic"}],
-  "components": [{"kind": "AXIS"}, {"kind": "FUNCTION_GRAPH", "ref": "curve"}, {"kind": "LINE", "ref": "tangent"}, {"kind": "POINT", "ref": "A"}, {"kind": "INTERSECTION", "ref": "B"}, {"kind": "POINT_LABEL", "ref": "A"}, {"kind": "POINT_LABEL", "ref": "B"}, {"kind": "GRAPH_ANNOTATION", "ref": "fact"}]
+  "labels": [{"id": "lineLabel", "text": "y=-x-2", "at": [-2.8, 0.8], "kind": "equation"}, {"id": "fact", "text": "A tangent and reintersection B", "at": [-2.8, 4.3], "kind": "generic"}],
+  "components": [{"kind": "AXIS"}, {"kind": "FUNCTION_GRAPH", "ref": "curve"}, {"kind": "LINE", "ref": "tangent"}, {"kind": "POINT", "ref": "A"}, {"kind": "INTERSECTION", "ref": "B"}, {"kind": "POINT_LABEL", "ref": "A"}, {"kind": "POINT_LABEL", "ref": "B"}, {"kind": "EQUATION_LABEL", "ref": "lineLabel"}, {"kind": "GRAPH_ANNOTATION", "ref": "fact"}]
 }

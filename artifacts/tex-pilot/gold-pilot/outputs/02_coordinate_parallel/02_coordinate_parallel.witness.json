@@ -1,8 +1,8 @@
 {
   "schema": "APMATH_GOLD_TEX_WITNESS_v1",
   "generator": "artifacts/tex-pilot/gold-pilot/generator/generate.py",
-  "inputSha256": "8f5f2d178180a4dede09724acf0de74b53719863011d256c2ab39da5c080d8cb",
-  "texSha256": "be3403ec80e867c7ea7442722dabd93ff3a9507d7a61f2415b9d2f0487b8db65",
+  "inputSha256": "197828e518b8be37eccdabd0de3ed33a117a533a038d24690956c99269a72ca7",
+  "texSha256": "3006bf0140b5e77cd299259ab4c34bc741d361d749c558e34f21e843165683d1",
   "objectCount": 2,
   "componentKinds": [
     "AXIS",
@@ -10,5 +10,66 @@
     "LINE",
     "CONDITION_BOX"
   ],
-  "numericAuthority": "python-sampled-coordinates"
+  "numericAuthority": "python-sampled-coordinates",
+  "derivedFacts": {
+    "lineCoefficients": {
+      "upper": [
+        0.894427191,
+        -0.4472135955,
+        0.4472135955
+      ],
+      "lower": [
+        0.894427191,
+        -0.4472135955,
+        -1.788854382
+      ]
+    },
+    "intersections": {},
+    "viewportSuggestion": {
+      "xMin": -2.0,
+      "xMax": 3.0,
+      "yMin": -6.0,
+      "yMax": 5.0
+    }
+  },
+  "aspectPolicy": "equal-unit",
+  "styleTokens": {
+    "axis": {
+      "color": "black",
+      "lineWidth": 0.8
+    },
+    "mainCurve": {
+      "color": "blue",
+      "lineWidth": 1.0
+    },
+    "secondaryCurve": {
+      "color": "red",
+      "lineWidth": 1.0
+    },
+    "tangent": {
+      "color": "red",
+      "lineWidth": 1.0
+    },
+    "auxiliary": {
+      "color": "gray",
+      "lineWidth": 0.8
+    },
+    "point": {
+      "color": "black",
+      "markSize": 1.8
+    },
+    "criticalPoint": {
+      "color": "black",
+      "markSize": 2.0
+    },
+    "label": {
+      "fontSize": "small"
+    },
+    "mathLabel": {
+      "fontSize": "small"
+    },
+    "conditionBox": {
+      "padding": 4
+    }
+  }
 }

@@ -29,6 +29,9 @@
         "height": {"type": "number", "exclusiveMinimum": 0}
       }
     },
+    "sourceFacts": {"type": "object"},
+    "derivedFacts": {"type": "object"},
+    "styleTokens": {"type": "object"},
     "axes": {
       "type": "object",
       "additionalProperties": false,
@@ -62,7 +65,8 @@
               "POINT", "POINT_LABEL", "LINE", "SEGMENT", "CIRCLE",
               "FUNCTION_GRAPH", "AXIS", "INTERSECTION", "AUXILIARY_LINE",
               "EQUATION_LABEL", "GRAPH_ANNOTATION", "CONDITION_BOX",
-              "PERPENDICULAR_MARK", "ANGLE_MARK"
+              "PERPENDICULAR_MARK", "ANGLE_MARK", "TANGENT", "PARALLEL",
+              "PERPENDICULAR", "LENGTH_LABEL"
             ]
           },
           "ref": {"type": "string"},
@@ -99,11 +103,15 @@
     "line": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "slope", "intercept"],
+      "required": ["id"],
       "properties": {
         "id": {"type": "string"},
         "slope": {"type": "number"},
         "intercept": {"type": "number"},
+        "a": {"type": "number"},
+        "b": {"type": "number"},
+        "c": {"type": "number"},
+        "through": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}}},
         "domain": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
         "equation": {"type": "string"},
         "style": {"$ref": "#/$defs/style"}
@@ -153,6 +161,8 @@
         "text": {"type": "string"},
         "at": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
         "anchor": {"type": "string"},
+        "position": {"enum": ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "AUTO"]},
+        "math": {"type": "boolean"},
         "kind": {"enum": ["point", "equation", "axis", "generic"]}
       }
     },
@@ -164,7 +174,9 @@
         "id": {"type": "string"},
         "text": {"type": "string"},
         "at": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
-        "anchor": {"type": "string"}
+        "anchor": {"type": "string"},
+        "position": {"enum": ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "AUTO"]},
+        "math": {"type": "boolean"}
       }
     },
     "auxiliaryLine": {
@@ -192,12 +204,18 @@
     "conditionBox": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["text", "at"],
+      "required": ["at"],
       "properties": {
         "text": {"type": "string"},
+        "lines": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["text"], "properties": {"text": {"type": "string"}, "math": {"type": "boolean"}}}},
         "at": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "number"}},
         "width": {"type": "number", "exclusiveMinimum": 0},
-        "anchor": {"type": "string"}
+        "minWidth": {"type": "number", "exclusiveMinimum": 0},
+        "maxWidth": {"type": "number", "exclusiveMinimum": 0},
+        "padding": {"type": "number", "minimum": 0},
+        "lineSpacing": {"type": "number", "minimum": 0},
+        "anchor": {"type": "string"},
+        "position": {"enum": ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "AUTO"]}
       }
     }
   }
