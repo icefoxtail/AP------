@@ -4,6 +4,7 @@ import hashlib
 import html
 import json
 import math
+import os
 from pathlib import Path
 
 ROOT = Path.cwd()
@@ -64,9 +65,10 @@ def base_svg(title, desc, body, facts, uid):
     canonical = json.dumps(facts, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
     metadata = esc(json.dumps(facts, ensure_ascii=False, sort_keys=True, separators=(",", ":")))
+    marker_defs = '<defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3.5 L0,7 Z" fill="#1b4f9c"/></marker></defs>' if 'marker-end="url(#arrow)"' in body else ''
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" width="720" height="420" preserveAspectRatio="xMidYMid meet" data-graph-style-version="AP_GRAPH_PRINT_V1_1_DRAFT" data-visual-provenance="deterministic-python-fact-model-candidate" data-question-uid="{esc(uid)}" data-fact-hash="{digest}">
 <title>{esc(title)}</title><desc>{esc(desc)}</desc><metadata data-visual-facts="{metadata}"/>
-<style>.axis{{stroke:#111;stroke-width:1.4;fill:none}}.guide{{stroke:#777;stroke-width:1;stroke-dasharray:5 4;fill:none}}.curve{{stroke:#111;stroke-width:2.3;fill:none;stroke-linecap:round}}.curve2{{stroke:#555;stroke-width:2;fill:none;stroke-linecap:round}}.mark{{stroke:#1b4f9c;stroke-width:2;fill:none}}.point{{fill:#111}}.region{{fill:#d9e8ff;stroke:#1b4f9c;stroke-width:1}}.label{{font:14px {FONT};fill:#111}}.small{{font:12px {FONT};fill:#333}}</style><rect width="100%" height="100%" fill="white"/>{body}
+<style>.axis{{stroke:#111;stroke-width:1.4;fill:none}}.guide{{stroke:#777;stroke-width:1;stroke-dasharray:5 4;fill:none}}.curve{{stroke:#111;stroke-width:2.3;fill:none;stroke-linecap:round}}.curve2{{stroke:#555;stroke-width:2;fill:none;stroke-linecap:round}}.mark{{stroke:#1b4f9c;stroke-width:2;fill:none}}.point{{fill:#111}}.region{{fill:#d9e8ff;stroke:#1b4f9c;stroke-width:1}}.inner{{fill:#fff;stroke:#1b4f9c;stroke-width:1.5}}.label{{font:14px {FONT};fill:#111}}.small{{font:12px {FONT};fill:#333}}</style><rect width="100%" height="100%" fill="white"/>{marker_defs}{body}
 </svg>
 ''', digest
 
@@ -74,7 +76,7 @@ def base_svg(title, desc, body, facts, uid):
 SPECS = [
     {"slug":"25_geumdang_final_q17_cycle","questionUid":"25_금당고_1학기_기말_고2_수학I::q17","sourceJsPath":"archive/exams/original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js","id":17,"kind":"cycle","facts":{"type":"state_cycle","cycle":[8,2,5],"period":3,"first_period_index":3,"a1_values":[17,80,29,128]},"anchors":["a_{n+3}","8\\to2\\to5","254"]},
     {"slug":"25_jeil_final_q15_trig_interval","questionUid":"25_제일고_1학기_기말_고2_수학I::q15","sourceJsPath":"archive/exams/original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js","id":15,"kind":"trig_interval","facts":{"type":"trig_inequality","sin_interval":"(π/4,3π/4)","cos_interval":"(π/3,5π/3)","intersection":"(π/3,3π/4)","ab":"1/4"},"anchors":["sin x","cos x","ab"]},
-    {"slug":"25_hyochon_final_q23_two_circles","questionUid":"25_효천고_1학기_기말_고2_대수::q23","sourceJsPath":"archive/exams/original/high/h2/1final/25_효천고_1학기_기말_고2_대수c.js","id":23,"kind":"two_circles","facts":{"type":"equal_radius_geometry","radius_symbol":"R","AB":2,"O1D":"4√2","target":14,"collinearities":["A,O1,O2","C,O2,D"],"angle_relation":"θ3=θ1+θ2"},"anchors":["O_1","O_2","AB","14"]},
+    {"slug":"25_hyochon_final_q23_two_circles","questionUid":"25_효천고_1학기_기말_고2_대수::q23","sourceJsPath":"archive/exams/original/high/h2/1final/25_효천고_1학기_기말_고2_대수c.js","id":23,"kind":"two_circles","facts":{"type":"equal_radius_geometry","radius_symbol":"R","radius":3,"centers":{"O1":[0,0],"O2":[3,0]},"points":{"A":[-3,0],"B":["-7/3","4√2/3"],"C":["-17/27","56√2/27"],"D":["16/3","-4√2/3"]},"AB":2,"O1D":"4√2","target":14,"collinearities":["A,O1,O2","C,O2,D"],"onCircles":["B∈C1","D∈C2"],"angle_relation":"θ3=θ1+θ2"},"anchors":["O_1","O_2","AB","14"]},
     {"slug":"23_jungang_q4_quadratic","questionUid":"23_중앙여고_1학기_중간_고2_대수::q4","sourceJsPath":"archive/exams/original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js","id":4,"kind":"quadratic","facts":{"type":"log_quadratic","substitution":"t=log₂x","quadratic":"t²−2t−log₂k≥0","discriminant":"D≤0","k_range":"0<k≤1/2"},"anchors":["log_2","판별식","1/2"]},
     {"slug":"23_hanyoung_q3_log_shift","questionUid":"23_한영고_1학기_중간_고2_대수::q3","sourceJsPath":"archive/exams/original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js","id":3,"kind":"log_shift","facts":{"type":"log_graph","expression":"y=log_{1/3}(x−2)−1","domain":"x>2","asymptote":"x=2","monotonicity":"decreasing","point":[3,-1],"not_translation_from_base3":True},"anchors":["1/3","x=2","(3, -1)"]},
     {"slug":"23_hanyoung_q9_graph_inequality","questionUid":"23_한영고_1학기_중간_고2_대수::q9","sourceJsPath":"archive/exams/original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js","id":9,"kind":"graph_compare","facts":{"type":"graph_inequality","reduction":"f(x)>g(x)","intersections":[-3,-1,2],"solution":"(-3,-1)∪(2,∞)"},"anchors":["2^{-f(x)}","-3","-1","2"]},
@@ -83,7 +85,7 @@ SPECS = [
     {"slug":"24_geumdang_q18_log_transform","questionUid":"24_금당고_1학기_중간_고2_대수::q18","sourceJsPath":"archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js","id":18,"kind":"log_transform","facts":{"type":"log_transform","start":"y=log₂x","vertical_shift":-3,"reflection":"x-axis","result":"y=log_{1/2}(x/8)","a":"1/2","b":"1/8","sum":"5/8"},"anchors":["log_2 x","-3","1/2","1/8"]},
     {"slug":"24_geumdang_q21_exp_log_triangle","questionUid":"24_금당고_1학기_중간_고2_대수::q21","sourceJsPath":"archive/exams/original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js","id":21,"kind":"exp_log_triangle","facts":{"type":"exp_log_triangle","translated_line":"y=8−u","midpoint_x":"11/2","A":["7/2","9/2"],"C":[3,0],"a":"81/4","area":10},"anchors":["81/4","11/2","C(3, 0)"]},
     {"slug":"25_maesan_q11_sine_params","questionUid":"25_매산고_1학기_중간_고2_대수::q11","sourceJsPath":"archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js","id":11,"kind":"sine_params","facts":{"type":"sine_parameters","expression":"y=2sin(2x+3π/2)+1","amplitude":2,"midline":1,"period":"π","max_points":["π/2","3π/2"],"value":3},"anchors":["a\\sin","최댓값","주기"]},
-    {"slug":"25_maesan_q18_sector_max","questionUid":"25_매산고_1학기_중간_고2_대수::q18","sourceJsPath":"archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js","id":18,"kind":"sector_max","facts":{"type":"sector_annulus","perimeter":48,"variable":"x=r₂−r₁","area":"−x²+24x","max_x":12,"max_area":144},"anchors":["부채꼴","48","12"]},
+    {"slug":"25_maesan_q18_sector_max","questionUid":"25_매산고_1학기_중간_고2_대수::q18","sourceJsPath":"archive/exams/original/high/h2/1mid/25_매산고_1학기_중간_고2_대수.js","id":18,"kind":"sector_max","facts":{"type":"sector_annulus","central_angle":"π/3","perimeter":48,"r1":"36/π−6","r2":"36/π+6","variable":"x=r₂−r₁","area":"−x²+24x","max_x":12,"max_area":144,"shared_geometry":["same center O","same start ray OA/OC","same end ray OB/OD"]},"anchors":["부채꼴","48","12"]},
     {"slug":"25_suncheon_q9_log_inverse","questionUid":"25_순천고_1학기_중간_고2_대수::q9","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천고_1학기_중간_고2_대수.js","id":9,"kind":"log_inverse","facts":{"type":"log_graph","expression":"y=log₃(x−1)","domain":"x>1","asymptote":"x=1","inverse":"y=3^x+1","monotonicity":"increasing"},"anchors":["log_3(x-1)","x>1","3^x+1"]},
     {"slug":"25_suncheon_woman_q3_exp_shift","questionUid":"25_순천여고_1학기_중간_고2_대수::q3","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js","id":3,"kind":"exp_shift","facts":{"type":"exp_transform","original":"(1/2)^x+1","after_y_reflection":"2^x+1","target":"2^(x−3)+5","horizontal_shift":3,"vertical_shift":4,"product":12},"anchors":["1/2","2^{x-3}","12"]},
     {"slug":"25_suncheon_woman_q8_inverse_point","questionUid":"25_순천여고_1학기_중간_고2_대수::q8","sourceJsPath":"archive/exams/original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js","id":8,"kind":"inverse_point","facts":{"type":"inverse_graph","function":"f(x)=log₂(x−a)+2","given_inverse_point":["a+4","a+2"],"mapped_original_point":["a+2","a+4"],"a":-1},"anchors":["역함수","a+4","a+2","-1"]},
@@ -119,14 +121,17 @@ def graph_body(kind, f):
             body += text(sx2,y+28,"3π/4" if abs(b-3*math.pi/4)<.01 else "5π/3","small","middle")
         return body
     if kind == "two_circles":
-        body = line(150,220,540,220,"guide")
-        body += '<circle class="mark" cx="240" cy="220" r="150"/><circle class="mark" cx="450" cy="220" r="150"/>'
-        body += line(90,220,240,220,"guide")+line(240,220,450,220,"guide")
-        body += '<line class="guide" x1="240" y1="220" x2="145" y2="125"/><line class="guide" x1="450" y1="220" x2="585" y2="125"/>'
-        for x,y,l in [(240,220,"O₁"),(450,220,"O₂"),(90,220,"A"),(145,125,"B"),(145,315,"C"),(585,125,"D")]:
-            body += f'<circle class="point" cx="{x}" cy="{y}" r="5"/>'+text(x+8,y-8,l,"label")
-        body += text(360,40,"R=O₁O₂=O₁A=O₂D,  C–O₂–D", "label","middle")+text(360,390,"CO₂·O₂D = 14", "label","middle")
-        return body
+        xr, yr = (-4, 7), (-3, 4); R=3
+        def p(x,y): return xy(x,y,box=(70,62,580,286),xr=xr,yr=yr)
+        o1,o2=p(0,0),p(3,0); scale=580/(xr[1]-xr[0])
+        body = line(*p(-3,0),*p(6,0),"guide")+f'<circle class="mark" cx="{o1[0]:.2f}" cy="{o1[1]:.2f}" r="{R*scale:.2f}"/><circle class="mark" cx="{o2[0]:.2f}" cy="{o2[1]:.2f}" r="{R*scale:.2f}"/>'
+        body += line(*p(-3,0),*p(3,0),"guide")
+        body += line(*p(-17/27,56*math.sqrt(2)/27),*p(16/3,-4*math.sqrt(2)/3),"guide")
+        body += line(*o1,*p(-7/3,4*math.sqrt(2)/3),"guide")+line(*o2,*p(16/3,-4*math.sqrt(2)/3),"guide")
+        point_data=[(-3,0,"A"),(0,0,"O₁"),(3,0,"O₂"),(-7/3,4*math.sqrt(2)/3,"B"),(-17/27,56*math.sqrt(2)/27,"C"),(16/3,-4*math.sqrt(2)/3,"D")]
+        for x,y,l in point_data:
+            sx,sy=p(x,y); body += f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>'+text(sx+8,sy-8,l,"label")
+        return body+text(360,30,"R=O₁O₂=O₁A=O₁B=O₁C=O₂D=3", "label","middle")+text(360,405,"A,O₁,O₂ collinear; C,O₂,D collinear; AB=2, O₁D=4√2, CO₂·O₂D=14", "small","middle")
     if kind == "quadratic":
         xa, xb, ya, yb = -1, 3, -3, 5
         body = axes(xa,xb,ya,yb)
@@ -154,9 +159,16 @@ def graph_body(kind, f):
     if kind == "cos_params" or kind == "sine_params":
         expr = "y=2cos((4/5)(x−5π/8))+1" if kind=="cos_params" else "y=2sin(2x+3π/2)+1"
         fn = (lambda x: 2*math.cos((4/5)*(x-5*math.pi/8))+1) if kind=="cos_params" else (lambda x:2*math.sin(2*x+3*math.pi/2)+1)
-        xa,xb=-math.pi,3*math.pi; body=axes(xa,xb,-2,4)
-        body += polyline(points(fn,xa,xb,-2,4),"curve")+line(70,sy if False else 0,0,0,"guide") if False else ""
-        return body+text(360,40,expr,"label","middle")+text(360,390,"최대 3, 최소 −1, 주기/위상으로 계수 확정", "small","middle")
+        xa,xb=(0,25*math.pi/8) if kind=="cos_params" else (0,2*math.pi); body=axes(xa,xb,-2,4)
+        body += polyline(points(fn,xa,xb,-2,4),"curve")
+        for val, label in [(3,"max=3"),(1,"midline=1"),(-1,"min=-1")]:
+            body += line(70,xy(0,val,xr=(xa,xb),yr=(-2,4))[1],720,xy(0,val,xr=(xa,xb),yr=(-2,4))[1],"guide")
+            body += text(650,xy(0,val,xr=(xa,xb),yr=(-2,4))[1]+4,label,"small")
+        key_x = [5*math.pi/8,15*math.pi/8,25*math.pi/8] if kind=="cos_params" else [math.pi/2,3*math.pi/2]
+        for x in key_x:
+            y=fn(x); sx,sy=xy(x,y,xr=(xa,xb),yr=(-2,4)); body += f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>'+text(sx,sy-10,f"x={x/math.pi:.3g}π","small","middle")
+        caption = "T=5π/2, phase=5π/8" if kind=="cos_params" else "T=π, maxima x=π/2, 3π/2"
+        return body+text(360,24,expr,"label","middle")+text(360,404,caption, "small","middle")
     if kind == "log_transform":
         body=axes(0.1,10,-5,3)
         body += polyline(points(lambda x:math.log(x,2),0.1,10,-5,3),"curve2")+polyline(points(lambda x:-math.log(x,2)+3,0.1,10,-5,3),"curve")
@@ -170,9 +182,12 @@ def graph_body(kind, f):
         body += f'<circle class="point" cx="{ax:.2f}" cy="{ay:.2f}" r="5"/>{text(ax+8,ay,"A","label")}<circle class="point" cx="{cx:.2f}" cy="{cy:.2f}" r="5"/>{text(cx+8,cy,"C","label")}'
         return body+text(360,40,"A=(7/2,9/2), C=(3,0), a=81/4", "label","middle")
     if kind == "sector_max":
-        body='<path class="region" d="M170 285 L170 120 A165 165 0 0 1 500 285 Z"/><path class="mark" d="M240 285 L240 165 A120 120 0 0 1 480 285 Z"/>'
-        body += line(170,285,500,285,"guide")+text(335,330,"x=r₂−r₁", "label","middle")
-        return body+text(360,45,"S=−x²+24x=−(x−12)²+144", "label","middle")+text(360,390,"최대일 때 AC=x=12", "label","middle")
+        cx,cy,a0,a1=350,285,math.pi,math.pi+math.pi/3; R2=150; R1=47
+        def p(r,a): return cx+r*math.cos(a),cy+r*math.sin(a)
+        os,oe,ins,ine=p(R2,a0),p(R2,a1),p(R1,a0),p(R1,a1)
+        body=f'<path class="region" d="M{cx},{cy} L{os[0]:.2f},{os[1]:.2f} A{R2} {R2} 0 0 1 {oe[0]:.2f},{oe[1]:.2f} Z"/><path class="inner" d="M{cx},{cy} L{ins[0]:.2f},{ins[1]:.2f} A{R1} {R1} 0 0 1 {ine[0]:.2f},{ine[1]:.2f} Z"/>'
+        body += line(*os,*ins,"mark")+line(*oe,*ine,"mark")+text(cx-10,cy+18,"O","label","end")+text(195,275,"A", "small")+text(420,370,"B", "small")+text(295,275,"C", "small")+text(373,330,"D", "small")
+        return body+text(360,34,"같은 O, 같은 두 반직선, θ=π/3", "label","middle")+text(360,404,"L=θ(r₁+r₂)+2x=48,  S=½θ(r₂²−r₁²)=−x²+24x,  x=AC=12", "small","middle")
     if kind == "log_inverse":
         body=axes(0.1,8,-3,3)
         body += polyline(points(lambda x:math.log(x-1,3),1.01,8,-3,3),"curve")+polyline(points(lambda x:3**x+1,-2,1.8,-3,3),"curve2")
@@ -191,11 +206,15 @@ def graph_body(kind, f):
         body += line(*xy(-1,-5,xr=(-.9,8),yr=(-5,5)),*xy(-1,5,xr=(-.9,8),yr=(-5,5)),"guide")
         return body+text(360,40,"y=2log(x+1)+1; (0,1); asymptote x=−1", "label","middle")+text(360,390,"true: ㄱ, ㄷ", "small","middle")
     if kind == "periodic_log":
-        body=axes(0,12,0,2); pts=[]
+        xr,yr=(0,12),(0,2); body=axes(*xr,*yr)
         for k in range(6):
-            body += f'<path class="curve" d="M{70+k*95:.1f},300 L{70+k*95+47.5:.1f},160 L{70+k*95+95:.1f},300"/>'
+            p0=xy(2*k,0,xr=xr,yr=yr); p1=xy(2*k+1,1,xr=xr,yr=yr); p2=xy(2*k+2,0,xr=xr,yr=yr)
+            body += f'<path class="curve" d="M{p0[0]:.2f},{p0[1]:.2f} L{p1[0]:.2f},{p1[1]:.2f} L{p2[0]:.2f},{p2[1]:.2f}"/>'
+            body += f'<circle class="point" cx="{p0[0]:.2f}" cy="{p0[1]:.2f}" r="3"/>'
+        p11=xy(11,1,xr=xr,yr=yr); body += f'<circle class="point" cx="{p11[0]:.2f}" cy="{p11[1]:.2f}" r="3"/>'
         body += polyline(points(lambda x:math.log(x,99),1,12,0,2),"curve2")
-        return body+text(360,40,"period 2 sawtooth vs log₉₉x", "label","middle")+text(360,390,"98 intersections ⇒ 3n=99 ⇒ n=33", "small","middle")
+        body += line(70,xy(1,1,xr=xr,yr=yr)[1],650,xy(1,1,xr=xr,yr=yr)[1],"guide")
+        return body+text(360,24,"f(x): 0≤x<1은 x, 1≤x<2는 −x+2; period=2", "label","middle")+text(360,404,"모든 x=2k에서 0, x=2k+1에서 1;  y=log₉₉x 와 비교", "small","middle")
     if kind == "piecewise_roots":
         body=axes(0,10,-3,5); body += polyline(points(lambda x:math.log(x-4,2)-2,6.01,10,-3,5),"curve")+polyline(points(lambda x:2**(x-6)-2,0,6,-3,5),"curve2")
         for x in [3,8]:
@@ -220,14 +239,23 @@ def graph_body(kind, f):
 
 def main():
     records = []
-    for spec in SPECS:
+    requested = {value for value in os.environ.get("AP_VISUAL_TARGET_SLUGS", "").split(",") if value}
+    selected = [spec for spec in SPECS if not requested or spec["slug"] in requested]
+    for spec in selected:
         body = graph_body(spec["kind"], spec["facts"])
         svg, digest = base_svg(spec["slug"], spec["kind"], body, spec["facts"], spec["questionUid"])
         ref = (OUT / (spec["slug"] + ".svg")).relative_to(ROOT).as_posix()
         (ROOT / ref).write_text(svg, encoding="utf-8")
         records.append({**spec, "candidateRef": ref, "factHash": digest, "v1":"PENDING", "v2":"PENDING", "v3":"PENDING", "status":"CANDIDATE_GENERATED"})
-    (OUT / "add_general_specs.json").write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"generated": len(records), "out": str(OUT)}, ensure_ascii=False))
+    spec_path = OUT / "add_general_specs.json"
+    if requested and spec_path.exists():
+        merged = json.loads(spec_path.read_text(encoding="utf-8"))
+        replacements = {row["slug"]: row for row in records}
+        merged = [replacements.get(row.get("slug"), row) for row in merged]
+    else:
+        merged = records
+    spec_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"generated": len(records), "out": str(OUT), "targeted": bool(requested)}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ import json
 import math
 import sys
 import importlib.util
+import os
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -36,15 +37,34 @@ SPECS = [
 
 def body(kind, facts):
     if kind == "triangle_log":
-        b = axes(0, 10, 0, 8)+line(70,304,650,72,"guide")+line(70,304,650,304,"axis")
-        pts = [(2,6),(6,2),(8,0),(6,6)]
+        xr, yr = (0, 230), (0, 8)
+        b = axes(*xr, *yr)
+        pts = [(8,0),(2,6),(6,2),(216,6)]
+        tri = [xy(2,6,xr=xr,yr=yr), xy(6,2,xr=xr,yr=yr), xy(216,6,xr=xr,yr=yr)]
+        b += f'<polygon class="region" points="{" ".join(f"{x:.2f},{y:.2f}" for x,y in tri)}"/>'
+        b += line(*xy(8,0,xr=xr,yr=yr), *xy(6,2,xr=xr,yr=yr), "mark")
+        b += line(*xy(2,6,xr=xr,yr=yr), *xy(6,2,xr=xr,yr=yr), "guide")
+        b += line(*xy(2,6,xr=xr,yr=yr), *xy(216,6,xr=xr,yr=yr), "mark")
         for x,y in pts:
-            sx,sy=xy(x,y,xr=(0,10),yr=(0,8)); b+=f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>{text(sx+8,sy-8,f"({x},{y})","small")}'
-        b += line(*xy(2,6,xr=(0,10),yr=(0,8)),*xy(6,6,xr=(0,10),yr=(0,8)),"guide")
-        return b+text(360,40,"B=(2,6), C=(6,2), D=(216,6), area=428","label","middle")
+            sx,sy=xy(x,y,xr=xr,yr=yr); b+=f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>{text(sx+8,sy-8,f"({x},{y})","small")}'
+        return b+text(360,24,"A=(8,0), B=(2,6), C=(6,2), D=(216,6)","label","middle")+text(360,404,"[BCD] = ½·(216−2)·(6−2) = 428","small","middle")
     if kind == "cos_counts":
-        b=axes(0,2*math.pi,-1.2,1.2); b+=polyline(points(math.cos,0,2*math.pi,-1.2,1.2),"curve")
-        return b+text(360,40,"k : 1  2  3  4  5   →   aₖ : 2  2  1  2  2","label","middle")+text(360,390,"합 = 9","label","middle")
+        w, gap, left, top, panel_h = 120, 8, 34, 70, 270
+        b = text(360,28,"각 k에서 f(x)와 y=cos(kπ/3)의 교점","label","middle")
+        for k in range(1,6):
+            x0 = left + (k-1)*(w+gap); x1 = x0+w; y0, y1 = top, top+panel_h; c=math.cos(k*math.pi/3)
+            def sx(t): return x0 + t/(2*math.pi)*w
+            def sy(v): return y0 + (1.2-v)/2.4*panel_h
+            b += line(x0,sy(0),x1,sy(0),"axis")+line(sx(0),y0,sx(0),y1,"axis")+line(x0,sy(c),x1,sy(c),"guide")
+            def piece(t): return math.cos(t) if t <= k*math.pi/3 else 2*c-math.cos(t)
+            pts=[]
+            for i in range(241):
+                t=2*math.pi*i/240; pts.append(f"{sx(t):.2f},{sy(piece(t)):.2f}")
+            b += f'<polyline class="curve" points="{" ".join(pts)}"/>'
+            roots = {1:[math.pi/3,5*math.pi/3],2:[2*math.pi/3,4*math.pi/3],3:[math.pi],4:[2*math.pi/3,4*math.pi/3],5:[2*math.pi/3,4*math.pi/3]}[k]
+            for t in roots: b += f'<circle class="point" cx="{sx(t):.2f}" cy="{sy(c):.2f}" r="4"/>'
+            b += text((x0+x1)/2, y0-18, f"k={k}", "label", "middle")+text((x0+x1)/2, y1+28, f"aₖ={len(roots)}", "small", "middle")
+        return b+text(360,405,"a₁+a₂+a₃+a₄+a₅ = 2+2+1+2+2 = 9","label","middle")
     if kind == "abs_sine":
         b=axes(0,2*math.pi,0,10); b+=polyline(points(lambda x:abs(6*math.sin(2*x)+3),0,2*math.pi,0,10),"curve")
         b+=line(70,xy(3,0,xr=(0,2*math.pi),yr=(0,10))[1],650,xy(3,0,xr=(0,2*math.pi),yr=(0,10))[1],"guide")
@@ -54,10 +74,15 @@ def body(kind, facts):
         sx,sy=xy(0,2,xr=(-4,4),yr=(-3,6)); b+=f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>'
         return b+text(360,40,"y=2^(x+2)−2, asymptote y=−2, (0,2)","label","middle")+text(360,390,"a=b=−2 ⇒ ab=4","small","middle")
     if kind == "sector_annulus":
-        b='<path class="region" d="M360 300 L150 300 A250 250 0 0 1 576 178 Z"/><path class="mark" d="M360 300 L220 300 A166 166 0 0 1 503 217 Z"/>'
-        return b+text(360,45,"호 AB=2π, 호 CD=4π/3, 색칠 넓이=5π","label","middle")+text(360,390,"θ=2π/9","label","middle")
+        cx, cy, a0, a1 = 360, 292, -math.pi/2, -math.pi/2 + 2*math.pi/9
+        def p(r, a): return cx+r*math.cos(a), cy+r*math.sin(a)
+        os, oe, ins, ine = p(190,a0), p(190,a1), p(126.6666667,a0), p(126.6666667,a1)
+        b = f'<path class="region" d="M{cx},{cy} L{os[0]:.2f},{os[1]:.2f} A190 190 0 0 1 {oe[0]:.2f},{oe[1]:.2f} Z"/><path class="inner" d="M{cx},{cy} L{ins[0]:.2f},{ins[1]:.2f} A126.6667 126.6667 0 0 1 {ine[0]:.2f},{ine[1]:.2f} Z"/>'
+        b += f'<line class="guide" x1="{os[0]:.2f}" y1="{os[1]:.2f}" x2="{ins[0]:.2f}" y2="{ins[1]:.2f}"/><line class="guide" x1="{oe[0]:.2f}" y1="{oe[1]:.2f}" x2="{ine[0]:.2f}" y2="{ine[1]:.2f}"/>'
+        b += text(cx+10,cy+20,"O","label")+text(475,130,"R=9","small")+text(404,184,"r=6","small")
+        return b+text(360,34,"공통 중심 O, 공통 시작·끝 반직선","label","middle")+text(360,404,"θ=2π/9,  arc(R)=2π, arc(r)=4π/3, 색칠 넓이=5π","small","middle")
     if kind == "inverse_line":
-        b=axes(0,8,0,8); b+=line(*xy(0,6,xr=(0,8),yr=(0,8)),*xy(6,0,xr=(0,8),yr=(0,8)),"mark")+line(*xy(0,2,xr=(0,8),yr=(0,8)),*xy(8,10,xr=(0,8),yr=(0,8)),"guide")
+        b=axes(0,8,0,8); b+=line(*xy(0,6,xr=(0,8),yr=(0,8)),*xy(6,0,xr=(0,8),yr=(0,8)),"mark")+line(*xy(2,0,xr=(0,8),yr=(0,8)),*xy(8,6,xr=(0,8),yr=(0,8)),"guide")
         for x,y,l in [(0,6,"C"),(4,2,"M"),(3,3,"A"),(5,1,"B")]:
             sx,sy=xy(x,y,xr=(0,8),yr=(0,8)); b+=f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>{text(sx+8,sy-8,l,"label")}'
         return b+text(360,40,"symmetry axis y=x−2; line y=−x+6","label","middle")+text(360,390,"A=(3,3) ⇒ a=3","small","middle")
@@ -87,8 +112,12 @@ def body(kind, facts):
         sx,sy=xy(0,7/3,xr=(-3,4),yr=(0,7)); b+=f'<circle class="point" cx="{sx:.2f}" cy="{sy:.2f}" r="5"/>'
         return b+text(360,40,"asymptote y=2, y-intercept 7/3","label","middle")+text(360,390,"y=3^(x−1)+2  (③)","small","middle")
     if kind == "sector_paper":
-        b='<path class="region" d="M360 300 L155 300 A245 245 0 0 1 565 300 Z"/><path class="mark" d="M360 300 L255 300 A125 125 0 0 1 465 300 Z"/>'
-        return b+text(360,45,"θ=2π/3, R=12, r=6","label","middle")+text(360,390,"종이 넓이 = ½·(2π/3)·(12²−6²)=36π","small","middle")
+        cx, cy, a0, a1 = 360, 220, math.pi, math.pi + 2*math.pi/3
+        def p(r, a): return cx+r*math.cos(a), cy+r*math.sin(a)
+        os, oe, ins, ine = p(150,a0), p(150,a1), p(75,a0), p(75,a1)
+        b = f'<path class="region" d="M{cx},{cy} L{os[0]:.2f},{os[1]:.2f} A150 150 0 0 1 {oe[0]:.2f},{oe[1]:.2f} Z"/><path class="inner" d="M{cx},{cy} L{ins[0]:.2f},{ins[1]:.2f} A75 75 0 0 1 {ine[0]:.2f},{ine[1]:.2f} Z"/>'
+        b += f'<line class="guide" x1="{os[0]:.2f}" y1="{os[1]:.2f}" x2="{ins[0]:.2f}" y2="{ins[1]:.2f}"/><line class="guide" x1="{oe[0]:.2f}" y1="{oe[1]:.2f}" x2="{ine[0]:.2f}" y2="{ine[1]:.2f}"/>'
+        return b+text(360,34,"공통 중심 O, 같은 두 반직선; θ=2π/3, R=12, r=6","label","middle")+text(360,404,"색칠 넓이 = ½·(2π/3)·(12²−6²) = 36π","small","middle")
     if kind == "quarter_circle":
         b='<path class="mark" d="M110 330 A220 220 0 0 1 330 110"/><line class="axis" x1="110" y1="330" x2="350" y2="330"/><line class="axis" x1="110" y1="330" x2="110" y2="90"/>'
         for i in range(1,9):
@@ -102,12 +131,21 @@ def body(kind, facts):
 
 def main():
     records=[]
-    for spec in SPECS:
+    requested = {value for value in os.environ.get("AP_VISUAL_TARGET_SLUGS", "").split(",") if value}
+    selected = [spec for spec in SPECS if not requested or spec["slug"] in requested]
+    for spec in selected:
         svg,digest=base_svg(spec["slug"],spec["kind"],body(spec["kind"],spec["facts"]),spec["facts"],spec["questionUid"])
         ref=(OUT/(spec["slug"]+".svg")).relative_to(ROOT).as_posix(); (ROOT/ref).write_text(svg,encoding="utf-8")
         records.append({**spec,"candidateRef":ref,"factHash":digest,"v1":"PENDING","v2":"PENDING","v3":"PENDING","status":"REBUILD_GENERATED"})
-    (OUT/"rebuild_general_specs.json").write_text(json.dumps(records,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(json.dumps({"generated":len(records),"out":str(OUT)},ensure_ascii=False))
+    spec_path = OUT / "rebuild_general_specs.json"
+    if requested and spec_path.exists():
+        merged = json.loads(spec_path.read_text(encoding="utf-8"))
+        replacements = {row["slug"]: row for row in records}
+        merged = [replacements.get(row.get("slug"), row) for row in merged]
+    else:
+        merged = records
+    spec_path.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print(json.dumps({"generated":len(records),"out":str(OUT),"targeted":bool(requested)},ensure_ascii=False))
 
 
 if __name__ == "__main__": main()

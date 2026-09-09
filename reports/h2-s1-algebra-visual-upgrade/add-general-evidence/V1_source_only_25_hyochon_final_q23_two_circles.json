@@ -25,12 +25,45 @@
   "expectedFacts": {
     "type": "equal_radius_geometry",
     "radius_symbol": "R",
+    "radius": 3,
+    "centers": {
+      "O1": [
+        0,
+        0
+      ],
+      "O2": [
+        3,
+        0
+      ]
+    },
+    "points": {
+      "A": [
+        -3,
+        0
+      ],
+      "B": [
+        "-7/3",
+        "4√2/3"
+      ],
+      "C": [
+        "-17/27",
+        "56√2/27"
+      ],
+      "D": [
+        "16/3",
+        "-4√2/3"
+      ]
+    },
     "AB": 2,
     "O1D": "4√2",
     "target": 14,
     "collinearities": [
       "A,O1,O2",
       "C,O2,D"
+    ],
+    "onCircles": [
+      "B∈C1",
+      "D∈C2"
     ],
     "angle_relation": "θ3=θ1+θ2"
   },

@@ -67,12 +67,45 @@
     "facts": {
       "type": "equal_radius_geometry",
       "radius_symbol": "R",
+      "radius": 3,
+      "centers": {
+        "O1": [
+          0,
+          0
+        ],
+        "O2": [
+          3,
+          0
+        ]
+      },
+      "points": {
+        "A": [
+          -3,
+          0
+        ],
+        "B": [
+          "-7/3",
+          "4√2/3"
+        ],
+        "C": [
+          "-17/27",
+          "56√2/27"
+        ],
+        "D": [
+          "16/3",
+          "-4√2/3"
+        ]
+      },
       "AB": 2,
       "O1D": "4√2",
       "target": 14,
       "collinearities": [
         "A,O1,O2",
         "C,O2,D"
+      ],
+      "onCircles": [
+        "B∈C1",
+        "D∈C2"
       ],
       "angle_relation": "θ3=θ1+θ2"
     },
@@ -83,7 +116,7 @@
       "14"
     ],
     "candidateRef": "reports/h2-s1-algebra-visual-upgrade/candidates/add-general/25_hyochon_final_q23_two_circles.svg",
-    "factHash": "8a77f7b58e7102e9d9af0cd3e9c3db7bf572cfa80153d9f00db2c0a56be0e9b6",
+    "factHash": "74e279dd1d8c9ad455eded629bec34911ccb82e2ca3252baf98d53d9dd141ac8",
     "v1": "PENDING",
     "v2": "PENDING",
     "v3": "PENDING",
@@ -331,11 +364,19 @@
     "kind": "sector_max",
     "facts": {
       "type": "sector_annulus",
+      "central_angle": "π/3",
       "perimeter": 48,
+      "r1": "36/π−6",
+      "r2": "36/π+6",
       "variable": "x=r₂−r₁",
       "area": "−x²+24x",
       "max_x": 12,
-      "max_area": 144
+      "max_area": 144,
+      "shared_geometry": [
+        "same center O",
+        "same start ray OA/OC",
+        "same end ray OB/OD"
+      ]
     },
     "anchors": [
       "부채꼴",
@@ -343,7 +384,7 @@
       "12"
     ],
     "candidateRef": "reports/h2-s1-algebra-visual-upgrade/candidates/add-general/25_maesan_q18_sector_max.svg",
-    "factHash": "820c4a52f79d0489196063f1350b040c46d7d1be08954e636d04e79574a2f6ea",
+    "factHash": "db17aeee2f46a57f6f89e33d967c4508cea0b32ebe84716647c1b390f2ae72fa",
     "v1": "PENDING",
     "v2": "PENDING",
     "v3": "PENDING",

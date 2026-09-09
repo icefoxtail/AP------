@@ -3,13 +3,22 @@
   "status": "PASS",
   "questionUid": "25_순천여고_1학기_중간_고2_대수::q14",
   "candidateRef": "reports/h2-s1-algebra-visual-upgrade/candidates/add-function/25_suncheon_woman_q14_abs_exp.svg",
-  "factHash": "9e342d08fb3a19b550913eef15d0caf3d3ad59f8b73c864710be378adb504c9d",
-  "expectedFactHash": "9e342d08fb3a19b550913eef15d0caf3d3ad59f8b73c864710be378adb504c9d",
+  "factHash": "db306850fca3c6d76444b0c29e871ed64e0663102bc011b10d4555cf65def082",
+  "expectedFactHash": "db306850fca3c6d76444b0c29e871ed64e0663102bc011b10d4555cf65def082",
   "observedFacts": {
     "questionUid": "25_순천여고_1학기_중간_고2_대수::q14",
-    "expression": "y=2^{|x-2|}+3",
-    "minimum": 4,
-    "minimumAt": 2
+    "expression": "f(x)=|4^{|x|}-4|",
+    "symmetry": "y-axis",
+    "values": {
+      "f(0)": 3,
+      "f(±1)": 0
+    },
+    "three_real_roots_at_k": 3,
+    "roots_at_k3": [
+      "-log₄7",
+      0,
+      "log₄7"
+    ]
   },
   "structuralChecks": {
     "xmlRoot": true,

@@ -11,7 +11,7 @@ const evidenceDir = path.join(report, "add-function-evidence");
 fs.mkdirSync(evidenceDir, { recursive: true });
 const specs = {
   "25_제일고_1학기_기말_고2_수학I::q2": { sourceJsPath: "archive/exams/original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js", id: 2, facts: { questionUid: "25_제일고_1학기_기말_고2_수학I::q2", expression: "y=tan(3x/2)", period: "2π/3", asymptotes: "x=(2n+1)π/3", branchSeparated: true }, anchors: ["tan", "점근선", "(2n+1)"] },
-  "25_순천여고_1학기_중간_고2_대수::q14": { sourceJsPath: "archive/exams/original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js", id: 14, facts: { questionUid: "25_순천여고_1학기_중간_고2_대수::q14", expression: "y=2^{|x-2|}+3", minimum: 4, minimumAt: 2 }, anchors: ["f(x)", "세 실근", "4"] },
+  "25_순천여고_1학기_중간_고2_대수::q14": { sourceJsPath: "archive/exams/original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js", id: 14, facts: { questionUid: "25_순천여고_1학기_중간_고2_대수::q14", expression: "f(x)=|4^{|x|}-4|", symmetry: "y-axis", values: { "f(0)": 3, "f(±1)": 0 }, three_real_roots_at_k: 3, roots_at_k3: ["-log₄7", 0, "log₄7"] }, anchors: ["f(x)", "세 실근", "4"] },
 };
 const loose = (v) => String(v ?? "").replace(/<\/?[A-Za-z][^>]*>/g, " ").replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, "$1/$2").replace(/\\/g, "").replace(/\s+/g, "").replace(/[\$\{\}\(\)\[\],.:;<>|=+\-]/g, "").toLowerCase();
 const sortKeys = (value) => Array.isArray(value) ? value.map(sortKeys) : value && typeof value === "object" ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, sortKeys(value[key])])) : value;
