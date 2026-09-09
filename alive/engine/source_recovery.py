@@ -22,7 +22,7 @@ import re
 from pathlib import Path
 from typing import Any, Iterable, Mapping
 
-from .run_store import atomic_write_json
+from .run_store import atomic_write_json, sha256_file
 from .source_question import json_sha256
 
 
@@ -120,9 +120,9 @@ RECOVERY_CODES = (
 # evidence.
 DEFAULT_CAPABILITY_REGISTRY: dict[str, dict[str, Any]] = {
     "R0": {"producerCapability": "answer-key-local", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r0-v1", "version": "1.0"},
-    "R1": {"producerCapability": "choice-local-bounded", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r1-v1", "version": "1.0"},
+    "R1": {"producerCapability": "choice-local-bounded", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r1-v1", "version": "1.1"},
     "R2": {"producerCapability": "token-numeric-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
-    "R3": {"producerCapability": "condition-addition-bounded", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r3-v1", "version": "1.0"},
+    "R3": {"producerCapability": "condition-addition-requires-external-hint", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": "source-recovery-r3-adapter-v1", "version": "1.0"},
     "R4": {"producerCapability": "target-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
     "R5": {"producerCapability": "visual-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_REGISTERED", "status": "CAPABILITY_BLOCKED", "evidenceRef": None, "version": "0.0"},
     "R6": {"producerCapability": "reconstruction-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_REGISTERED", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
@@ -174,6 +174,9 @@ _GATE_NAMES = (
     "VISUAL_VALID_IF_APPLICABLE",
     "SERIALIZABLE",
 )
+
+_CIRCLED_ANSWERS = "①②③④⑤"
+_MCQ_TYPES = {"객관식", "MCQ", "multiple_choice", "choice"}
 
 
 class SourceRecoveryError(ValueError):
@@ -282,7 +285,7 @@ def capability_registry_report() -> dict[str, Any]:
 
     return {
         "schemaVersion": "ALIVE_SOURCE_RECOVERY_CAPABILITY_REGISTRY_v1",
-        "status": "BOUNDED_R0_R1_R3_ONLY",
+        "status": "BOUNDED_R0_R1_ONLY",
         "tiers": copy.deepcopy(DEFAULT_CAPABILITY_REGISTRY),
     }
 
@@ -425,6 +428,14 @@ def validate_verifier_evidence(
         errors.append("VERIFIER_RESPONSE_CONTRACT_NOT_PASS")
     if evidence.get("mathVerdict") != "PASS":
         errors.append("VERIFIER_MATH_NOT_PASS")
+    candidate_payload = candidate.get("payload")
+    if isinstance(candidate_payload, Mapping) and _is_mcq_payload(candidate_payload) and evidence.get("independentlyComputedAnswer") is not None:
+        computed = {"independentlyComputedValue": evidence.get("independentlyComputedValue", evidence.get("independentlyComputedAnswer"))}
+        resolution = resolve_independent_answer_against_choices(candidate_payload, computed)
+        if len(resolution["matchingChoiceIndices"]) != 1:
+            errors.append("VERIFIER_COMPUTED_VALUE_NOT_UNIQUE_IN_CHOICES")
+        elif resolution["canonicalArchiveAnswer"] != candidate_payload.get("answer"):
+            errors.append("VERIFIER_CANONICAL_ANSWER_MISMATCH")
     evidence_sha = evidence.get("evidenceSha256")
     if evidence_sha != _hash_without_self_field(evidence, "evidenceSha256"):
         errors.append("VERIFIER_EVIDENCE_SHA_MISMATCH")
@@ -458,7 +469,7 @@ def validate_validator_evidence(
             statuses[gate] = "NOT_TESTED"
             continue
         statuses[gate] = str(row.get("status", "NOT_TESTED")).upper()
-        for field in ("evidenceId", "candidateId", "candidateVersion", "candidatePayloadSha256", "evidenceSha256"):
+        for field in ("evidenceId", "validatorId", "method", "coverage", "candidateId", "candidateVersion", "candidatePayloadSha256", "evidenceSha256"):
             if field not in row:
                 errors.append(f"VALIDATOR_GATE_FIELD_MISSING:{gate}:{field}")
         if row.get("candidateId") != candidate.get("candidateId"):
@@ -469,44 +480,179 @@ def validate_validator_evidence(
             errors.append(f"VALIDATOR_GATE_CANDIDATE_SHA_MISMATCH:{gate}")
         if row.get("evidenceSha256") != _validator_evidence_sha(row):
             errors.append(f"VALIDATOR_GATE_EVIDENCE_SHA_MISMATCH:{gate}")
+        if row.get("coverage") not in {"complete", "not_applicable"}:
+            errors.append(f"VALIDATOR_GATE_COVERAGE_INCOMPLETE:{gate}")
         if statuses[gate] != "PASS":
             errors.append(f"VALIDATOR_GATE_NOT_PASS:{gate}")
     return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors), "gates": statuses}
+
+
+def _is_mcq_payload(payload: Mapping[str, Any]) -> bool:
+    question_type = str(payload.get("questionType") or "").strip()
+    return question_type in _MCQ_TYPES or isinstance(payload.get("choices"), list) and bool(payload.get("choices"))
+
+
+def choice_index_to_canonical_answer(index: Any) -> str | None:
+    """Convert a one-based archive choice index to its canonical circled key."""
+
+    if isinstance(index, bool):
+        return None
+    try:
+        numeric = int(index)
+    except (TypeError, ValueError):
+        return None
+    return _CIRCLED_ANSWERS[numeric - 1] if 1 <= numeric <= len(_CIRCLED_ANSWERS) else None
+
+
+def canonical_answer_to_choice_index(answer: Any) -> int | None:
+    """Resolve a canonical archive answer key (and legacy numeric key) to an index."""
+
+    text = _answer_text(answer)
+    if text in _CIRCLED_ANSWERS:
+        return _CIRCLED_ANSWERS.index(text) + 1
+    if re.fullmatch(r"[1-5]", text):
+        return int(text)
+    return None
+
+
+def resolve_independent_answer_against_choices(
+    payload: Mapping[str, Any],
+    independent_solve: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Separate a computed value from the archive MCQ key it resolves to."""
+
+    choices = payload.get("choices")
+    choices = choices if isinstance(choices, list) else []
+    value = _answer_text(
+        independent_solve.get(
+            "independentlyComputedValue",
+            independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")),
+        )
+    )
+    computed_key_index = canonical_answer_to_choice_index(value)
+    if computed_key_index is not None and independent_solve.get("answerType") in {"choice_index", "choiceIndex"}:
+        matches = [computed_key_index] if computed_key_index <= len(choices) else []
+    else:
+        matches = [index + 1 for index, choice in enumerate(choices) if _answer_text(choice) == value]
+    matches = list(dict.fromkeys(matches))
+    canonical = choice_index_to_canonical_answer(matches[0]) if len(matches) == 1 else None
+    return {
+        "independentlyComputedValue": value,
+        "matchingChoiceIndices": matches,
+        "canonicalArchiveAnswer": canonical,
+    }
+
+
+def _archive_serialization_errors(payload: Mapping[str, Any]) -> list[str]:
+    errors: list[str] = []
+    try:
+        json.dumps(dict(payload), ensure_ascii=False, sort_keys=True, allow_nan=False)
+    except (TypeError, ValueError):
+        return ["ARCHIVE_JSON_SERIALIZATION_FAILED"]
+    if not isinstance(payload.get("content"), str) or not payload.get("content", "").strip():
+        errors.append("ARCHIVE_CONTENT_INVALID")
+    if _is_mcq_payload(payload):
+        choices = payload.get("choices")
+        if not isinstance(choices, list) or not 1 < len(choices) <= len(_CIRCLED_ANSWERS):
+            errors.append("ARCHIVE_MCQ_CHOICES_INVALID")
+        answer_index = canonical_answer_to_choice_index(payload.get("answer"))
+        if answer_index is None or not isinstance(choices, list) or answer_index > len(choices):
+            errors.append("ARCHIVE_MCQ_ANSWER_KEY_INVALID")
+        normalized = [_answer_text(choice) for choice in choices] if isinstance(choices, list) else []
+        if len(normalized) != len(set(normalized)):
+            errors.append("ARCHIVE_MCQ_DUPLICATE_CHOICES")
+    elif not _answer_text(payload.get("answer")):
+        errors.append("ARCHIVE_RESPONSE_ANSWER_MISSING")
+    return errors
+
+
+def _external_validator_status(
+    candidate: Mapping[str, Any],
+    gate: str,
+    supplied: Mapping[str, Any] | None,
+) -> tuple[str, dict[str, Any]]:
+    if not isinstance(supplied, Mapping):
+        return "NOT_TESTED", {"sourceError": f"{gate}_VALIDATOR_EVIDENCE_REQUIRED"}
+    valid = (
+        supplied.get("status") == "PASS"
+        and isinstance(supplied.get("evidenceId"), str)
+        and bool(supplied.get("evidenceId"))
+        and isinstance(supplied.get("method"), str)
+        and bool(supplied.get("method"))
+        and supplied.get("candidateId") == candidate.get("candidateId")
+        and supplied.get("candidateVersion") == candidate.get("candidateVersion")
+        and supplied.get("candidatePayloadSha256") == candidate.get("payloadSha256")
+        and supplied.get("coverage") in {"complete", "not_applicable"}
+        and supplied.get("evidenceSha256") == _validator_evidence_sha(supplied)
+        and isinstance(supplied.get("validatorId"), str)
+        and bool(supplied.get("validatorId"))
+    )
+    return ("PASS" if valid else "FAIL"), {
+        "sourceEvidenceId": supplied.get("evidenceId"),
+        "sourceEvidenceSha256": supplied.get("evidenceSha256"),
+        "sourceValidatorId": supplied.get("validatorId"),
+    }
 
 
 def build_validator_evidence(
     candidate: Mapping[str, Any],
     *,
     visual_required: bool = False,
+    gate_evidence: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Run the deterministic bounded validator adapter and emit hash-bound gate rows."""
+    """Run executable local checks and bind separately supplied validator evidence."""
 
     payload = candidate.get("payload")
     if not isinstance(payload, Mapping):
         raise SourceRecoveryError("candidate payload is required for validation")
-    structural_pass = bool(payload.get("content")) and isinstance(payload.get("choices", []), list)
-    visual_pass = not visual_required or payload.get("visualValidationStatus") == "PASS"
     verifier = candidate.get("verifierEvidence") if isinstance(candidate.get("verifierEvidence"), Mapping) else {}
+    supplied = gate_evidence or {}
+    curriculum_status, curriculum_detail = _external_validator_status(candidate, "CURRICULUM_VALID", supplied.get("CURRICULUM_VALID"))
+    fingerprint_status, fingerprint_detail = _external_validator_status(candidate, "RECOVERY_FINGERPRINT_GATE_PASS", supplied.get("RECOVERY_FINGERPRINT_GATE_PASS"))
+    difficulty_status, difficulty_detail = _external_validator_status(candidate, "DIFFICULTY_ROLE_ACCEPTABLE", supplied.get("DIFFICULTY_ROLE_ACCEPTABLE"))
+    serial_errors = _archive_serialization_errors(payload)
+    visual_fields = ("image", "imagePath", "visual", "visualSpec", "solutionImage")
+    detected_visual = any(payload.get(field) is not None and payload.get(field) != "" and payload.get(field) is not False for field in visual_fields)
+    if visual_required or detected_visual:
+        visual_status, visual_detail = _external_validator_status(candidate, "VISUAL_VALID_IF_APPLICABLE", supplied.get("VISUAL_VALID_IF_APPLICABLE"))
+        visual_coverage = "complete"
+    else:
+        visual_status, visual_detail, visual_coverage = "PASS", {"applicability": "NOT_APPLICABLE", "checkedFields": list(visual_fields)}, "not_applicable"
+    structural_pass = isinstance(payload.get("content"), str) and bool(payload.get("content", "").strip()) and (
+        not _is_mcq_payload(payload) or isinstance(payload.get("choices"), list) and len(payload.get("choices", [])) > 1
+    )
     statuses = {
         "MATH_VALID": "PASS" if verifier.get("mathVerdict") == "PASS" else "FAIL",
         "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS" if verifier.get("answerUnique") is True and verifier.get("responseContractValid") is True else "FAIL",
-        "CURRICULUM_VALID": "PASS" if payload.get("curriculumValidationStatus", "PASS") == "PASS" else "FAIL",
+        "CURRICULUM_VALID": curriculum_status,
         "QUESTION_WELL_FORMED": "PASS" if structural_pass else "FAIL",
-        "RECOVERY_FINGERPRINT_GATE_PASS": "PASS" if payload.get("fingerprintValidationStatus", "PASS") == "PASS" else "FAIL",
-        "DIFFICULTY_ROLE_ACCEPTABLE": "PASS" if payload.get("difficultyValidationStatus", "PASS") == "PASS" else "FAIL",
-        "VISUAL_VALID_IF_APPLICABLE": "PASS" if visual_pass else "FAIL",
-        "SERIALIZABLE": "PASS",
+        "RECOVERY_FINGERPRINT_GATE_PASS": fingerprint_status,
+        "DIFFICULTY_ROLE_ACCEPTABLE": difficulty_status,
+        "VISUAL_VALID_IF_APPLICABLE": visual_status,
+        "SERIALIZABLE": "PASS" if not serial_errors else "FAIL",
+    }
+    details = {
+        "MATH_VALID": {"sourceEvidenceSha256": verifier.get("evidenceSha256")},
+        "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": {"sourceEvidenceSha256": verifier.get("evidenceSha256")},
+        "CURRICULUM_VALID": curriculum_detail,
+        "QUESTION_WELL_FORMED": {"structuralChecksExecuted": True},
+        "RECOVERY_FINGERPRINT_GATE_PASS": fingerprint_detail,
+        "DIFFICULTY_ROLE_ACCEPTABLE": difficulty_detail,
+        "VISUAL_VALID_IF_APPLICABLE": visual_detail,
+        "SERIALIZABLE": {"serializer": "json.dumps(allow_nan=False)+archive-answer-contract", "errors": serial_errors},
     }
     rows: dict[str, dict[str, Any]] = {}
     for gate, status in statuses.items():
         row = {
             "evidenceId": f"validator-{candidate['candidateId']}-{gate}",
+            "validatorId": "alive-bounded-validator",
             "candidateId": candidate["candidateId"],
             "candidateVersion": candidate["candidateVersion"],
             "candidatePayloadSha256": candidate["payloadSha256"],
             "status": status,
-            "method": "bounded_deterministic_validator",
-            "coverage": "complete",
+            "method": "bound_external_validator" if gate in {"CURRICULUM_VALID", "RECOVERY_FINGERPRINT_GATE_PASS", "DIFFICULTY_ROLE_ACCEPTABLE"} or gate == "VISUAL_VALID_IF_APPLICABLE" and visual_coverage == "complete" else "bounded_executable_validator",
+            "coverage": visual_coverage if gate == "VISUAL_VALID_IF_APPLICABLE" else "complete",
+            **details[gate],
         }
         rows[gate] = {**row, "evidenceSha256": _validator_evidence_sha(row)}
     return {"validatorId": "alive-bounded-validator", "gates": rows}
@@ -541,6 +687,9 @@ def build_blind_verifier_adapter(blind_solve: Mapping[str, Any]) -> Any:
         raise SourceRecoveryError("separate blind verifier solve is required")
 
     def verify(view: Mapping[str, Any]) -> dict[str, Any]:
+        blind_payload = copy.deepcopy(dict(view.get("payload") or {}))
+        for field in ("answer", "solution", "intendedAnswer", "printedAnswer", "repairTargetAnswer", "previousVerdict", "builderAnswer", "builderSolution"):
+            blind_payload.pop(field, None)
         body = {
             "candidateId": view.get("candidateId"),
             "candidateVersion": view.get("candidateVersion"),
@@ -548,8 +697,9 @@ def build_blind_verifier_adapter(blind_solve: Mapping[str, Any]) -> Any:
             "verifierId": blind_solve.get("verifierId"),
             "verifierSessionId": blind_solve.get("verifierSessionId"),
             "inputVisibilityProfile": "ARTIFACT_ONLY",
-            "blindInput": copy.deepcopy(view.get("payload")),
-            "independentlyComputedAnswer": blind_solve.get("independentlyComputedAnswer"),
+            "blindInput": blind_payload,
+            "independentlyComputedValue": blind_solve.get("independentlyComputedValue", blind_solve.get("independentlyComputedAnswer", blind_solve.get("answer"))),
+            "independentlyComputedAnswer": blind_solve.get("independentlyComputedAnswer", blind_solve.get("independentlyComputedValue", blind_solve.get("answer"))),
             "answerUnique": blind_solve.get("answerUnique"),
             "responseContractValid": blind_solve.get("responseContractValid"),
             "allChoicesChecked": blind_solve.get("allChoicesChecked"),
@@ -626,6 +776,26 @@ def _answer_text(value: Any) -> str:
     return str(value).strip() if value is not None else ""
 
 
+def _independent_computed_value(independent_solve: Mapping[str, Any]) -> str:
+    return _answer_text(
+        independent_solve.get(
+            "independentlyComputedValue",
+            independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")),
+        )
+    )
+
+
+def _answer_values_equivalent(left: Any, right: Any) -> bool:
+    def normalize(value: Any) -> str:
+        text = _answer_text(value).strip()
+        for opener, closer in (("$", "$"), (r"\(", r"\)"), (r"\[", r"\]")):
+            if text.startswith(opener) and text.endswith(closer) and len(text) >= len(opener) + len(closer):
+                text = text[len(opener):-len(closer)].strip()
+                break
+        return text
+    return normalize(left) == normalize(right)
+
+
 def diagnose_source_defects(
     source_payload: Mapping[str, Any],
     independent_solve: Mapping[str, Any],
@@ -654,17 +824,12 @@ def diagnose_source_defects(
     choices = source_payload.get("choices")
     choices = choices if isinstance(choices, list) else []
     normalized_choices = [_answer_text(choice) for choice in choices]
-    answer = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
-    matches = independent_solve.get("matchingChoiceIndices")
-    if not isinstance(matches, list):
-        matches = [index + 1 for index, choice in enumerate(normalized_choices) if choice == answer]
+    resolution = resolve_independent_answer_against_choices(source_payload, independent_solve)
+    answer = resolution["independentlyComputedValue"]
+    matches = resolution["matchingChoiceIndices"]
     defects: list[str] = []
     if len(normalized_choices) != len(set(normalized_choices)):
         defects.append("DUPLICATE_CHOICES")
-    if choices and independent_solve.get("answerUnique") is not True:
-        defects.append("MULTIPLE_CORRECT_ANSWERS")
-    if choices and independent_solve.get("responseContractValid") is not True:
-        defects.append("RESPONSE_FORM_DEFECT")
     signal_map = {
         "missingCondition": "MISSING_CONDITION",
         "missing_condition": "MISSING_CONDITION",
@@ -678,28 +843,77 @@ def diagnose_source_defects(
         "targetValid": "QUESTION_TARGET_DEFECT",
         "target_valid": "QUESTION_TARGET_DEFECT",
     }
-    for field, defect in signal_map.items():
-        value = source_payload.get(field)
-        if value is False or value is True and defect in {"MISSING_CONDITION", "UNDERDETERMINED_STEM", "CONTRADICTORY_CONDITIONS"}:
-            defects.append(defect)
-    for signal in source_payload.get("defectSignals", []):
-        if signal in DEFECT_TYPES:
-            defects.append(signal)
+    for signal_source in (source_payload, independent_solve):
+        for field, defect in signal_map.items():
+            value = signal_source.get(field)
+            if value is False or value is True and defect in {"MISSING_CONDITION", "UNDERDETERMINED_STEM", "CONTRADICTORY_CONDITIONS"}:
+                defects.append(defect)
+        for signal in signal_source.get("defectSignals", []):
+            if signal in DEFECT_TYPES:
+                defects.append(signal)
+    if independent_solve.get("answerUnique") is False:
+        defects.append("MULTIPLE_CORRECT_ANSWERS" if choices else "RESPONSE_FORM_DEFECT")
+    if independent_solve.get("responseContractValid") is False:
+        defects.append("RESPONSE_FORM_DEFECT")
     if choices and len(matches) == 0:
         defects.append("NO_CORRECT_ANSWER")
     if len(matches) > 1:
         defects.append("MULTIPLE_CORRECT_ANSWERS")
     source_answer = _answer_text(source_payload.get("answer"))
-    if source_answer and answer and source_answer != answer and not defects:
+    source_answer_index = canonical_answer_to_choice_index(source_answer) if choices else None
+    if source_answer and choices and len(matches) == 1 and source_answer_index != matches[0]:
         defects.append("ANSWER_KEY_CONFLICT")
+    elif source_answer and not choices and answer and not _answer_values_equivalent(source_answer, answer):
+        defects.append("ANSWER_KEY_CONFLICT")
+    defects = _ordered_unique(defects)
     if not defects:
-        return {"status": "NO_DEFECT", "defectTypes": []}
+        return {
+            "status": "NO_DEFECT",
+            "defectTypes": [],
+            "independentlyComputedValue": answer,
+            "matchingChoiceIndices": matches,
+            "canonicalArchiveAnswer": resolution["canonicalArchiveAnswer"],
+        }
     return {
         "status": "ANSWER_KEY_DEFECT" if defects == ["ANSWER_KEY_CONFLICT"] else "QUESTION_PAYLOAD_DEFECT",
         "defectTypes": defects,
-        "independentlyComputedAnswer": answer,
+        "independentlyComputedValue": answer,
         "matchingChoiceIndices": matches,
+        "canonicalArchiveAnswer": resolution["canonicalArchiveAnswer"],
     }
+
+
+def _finalize_mcq_answer(payload: dict[str, Any], computed_value: str) -> dict[str, Any] | None:
+    choices = payload.get("choices")
+    if not isinstance(choices, list):
+        return None
+    normalized = [_answer_text(choice) for choice in choices]
+    matches = [index + 1 for index, choice in enumerate(normalized) if choice == computed_value]
+    if len(matches) != 1 or len(normalized) != len(set(normalized)):
+        return None
+    canonical = choice_index_to_canonical_answer(matches[0])
+    if canonical is None:
+        return None
+    payload["answer"] = canonical
+    payload.pop("recoveryReplacementChoice", None)
+    return payload
+
+
+def _bounded_replacement_choice(choices: list[Any], answer: str, supplied: Any = None) -> Any | None:
+    normalized = {_answer_text(choice) for choice in choices}
+    if supplied is not None and _answer_text(supplied) != answer and _answer_text(supplied) not in normalized:
+        return supplied
+    try:
+        numeric_values = [int(_answer_text(choice)) for choice in choices]
+        numeric_answer = int(answer)
+    except ValueError:
+        return None
+    for delta in range(1, 33):
+        for candidate in (numeric_answer + delta, numeric_answer - delta, max(numeric_values) + delta):
+            text = str(candidate)
+            if text != answer and text not in normalized:
+                return text
+    return None
 
 
 def _r1_no_correct_answer_payload(
@@ -715,8 +929,8 @@ def _r1_no_correct_answer_payload(
     replace_index = next((index for index, choice in enumerate(choices) if _answer_text(choice) != answer), 0)
     choices[replace_index] = answer
     payload["choices"] = choices
-    payload["answer"] = answer
-    return payload, "NO_CORRECT_ANSWER"
+    finalized = _finalize_mcq_answer(payload, answer)
+    return (finalized, "NO_CORRECT_ANSWER") if finalized is not None else None
 
 
 def _r1_multiple_answers_payload(
@@ -727,7 +941,7 @@ def _r1_multiple_answers_payload(
     if len(matches) < 2:
         return None
     choices = list(payload.get("choices") or [])
-    replacement = payload.get("recoveryReplacementChoice")
+    replacement = _bounded_replacement_choice(choices, answer, payload.get("recoveryReplacementChoice"))
     if replacement is None:
         return None
     replace_index = int(matches[-1]) - 1 if isinstance(matches[-1], int) else None
@@ -737,8 +951,8 @@ def _r1_multiple_answers_payload(
         return None
     choices[replace_index] = replacement
     payload["choices"] = choices
-    payload["answer"] = answer
-    return payload, "MULTIPLE_CORRECT_ANSWERS"
+    finalized = _finalize_mcq_answer(payload, answer)
+    return (finalized, "MULTIPLE_CORRECT_ANSWERS") if finalized is not None else None
 
 
 def _r1_duplicate_choices_payload(
@@ -748,15 +962,15 @@ def _r1_duplicate_choices_payload(
     choices = list(payload.get("choices") or [])
     normalized = [_answer_text(choice) for choice in choices]
     duplicate_index = next((index for index, value in enumerate(normalized) if value and value in normalized[:index]), None)
-    replacement = payload.get("recoveryReplacementChoice")
+    replacement = _bounded_replacement_choice(choices, answer, payload.get("recoveryReplacementChoice"))
     if duplicate_index is None or replacement is None:
         return None
     if _answer_text(replacement) == answer or _answer_text(replacement) in set(normalized):
         return None
     choices[duplicate_index] = replacement
     payload["choices"] = choices
-    payload["answer"] = answer
-    return payload, "DUPLICATE_CHOICES"
+    finalized = _finalize_mcq_answer(payload, answer)
+    return (finalized, "DUPLICATE_CHOICES") if finalized is not None else None
 
 
 def _r3_missing_condition_payload(
@@ -772,6 +986,22 @@ def _r3_missing_condition_payload(
     if independent_solve.get("solution") is not None:
         payload["solution"] = independent_solve["solution"]
     return payload, "MISSING_CONDITION"
+
+
+def _completed_empty_attempt(tier: str) -> dict[str, Any]:
+    body = {"tier": tier, "generatedCandidateCount": 0, "candidateBudget": 1, "retryBudget": 0}
+    return {
+        "producerStatus": "COMPLETED",
+        "attemptCount": 1,
+        "candidateBudget": 1,
+        "candidateBudgetConsumed": 1,
+        "retryBudget": 0,
+        "retryBudgetConsumed": True,
+        "generatedCandidateCount": 0,
+        "attemptEvidenceRef": f"recovery-attempt-{tier}",
+        "attemptEvidenceSha": _prefixed_sha(body),
+        "allProducedCandidatesRejected": True,
+    }
 
 
 def produce_recovery_candidates(
@@ -791,12 +1021,19 @@ def produce_recovery_candidates(
     payload.pop("answer", None)
     payload.pop("solution", None)
     if primary == "R0":
-        payload["answer"] = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
+        computed_value = _independent_computed_value(independent_solve)
+        if _is_mcq_payload(payload):
+            finalized = _finalize_mcq_answer(payload, computed_value)
+            if finalized is None:
+                return {"R0": []}, {"R0": _completed_empty_attempt("R0")}
+            payload = finalized
+        else:
+            payload["answer"] = computed_value
         if independent_solve.get("solution") is not None:
             payload["solution"] = independent_solve["solution"]
     elif primary == "R1":
         choices = list(payload.get("choices") or [])
-        answer = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
+        answer = _independent_computed_value(independent_solve)
         matches = diagnosis.get("matchingChoiceIndices") or []
         produced = (
             _r1_duplicate_choices_payload(payload, answer)
@@ -806,16 +1043,16 @@ def produce_recovery_candidates(
             else _r1_no_correct_answer_payload(payload, answer, matches)
         )
         if produced is None:
-            return {"R1": []}, {"R1": {"producerStatus": "COMPLETED", "attemptCount": 1, "candidateBudget": 1, "candidateBudgetConsumed": 1, "retryBudget": 0, "retryBudgetConsumed": True, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R1", "attemptEvidenceSha": _prefixed_sha({"tier": "R1", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
+            return {"R1": []}, {"R1": _completed_empty_attempt("R1")}
         payload, producer_kind = produced
     elif primary == "R3" and "MISSING_CONDITION" in defect_types:
         produced = _r3_missing_condition_payload(
             payload,
-            _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer"))),
+            _independent_computed_value(independent_solve),
             independent_solve,
         )
         if produced is None:
-            return {"R3": []}, {"R3": {"producerStatus": "COMPLETED", "attemptCount": 1, "candidateBudget": 1, "candidateBudgetConsumed": 1, "retryBudget": 0, "retryBudgetConsumed": True, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R3", "attemptEvidenceSha": _prefixed_sha({"tier": "R3", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
+            return {"R3": []}, {"R3": _completed_empty_attempt("R3")}
         payload, producer_kind = produced
     else:
         return {}, {}
@@ -834,7 +1071,6 @@ def produce_recovery_candidates(
         "attemptEvidenceRef": f"recovery-attempt-{primary}",
         "attemptEvidenceSha": _prefixed_sha(attempt_body),
         "allProducedCandidatesRejected": False,
-        "retryBudgetConsumed": True,
     }
     return {primary: [candidate]}, {primary: attempt}
 
@@ -982,8 +1218,10 @@ def validate_closure_evidence(
     evidence: Mapping[str, Any] | None,
     *,
     name: str,
+    evidence_root: Path | None = None,
+    expected_bindings: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Require a PASS closure receipt with an explicit evidence hash/ref."""
+    """Read and hash a closure receipt, then verify every adoption binding."""
 
     errors: list[str] = []
     if not isinstance(evidence, Mapping):
@@ -995,7 +1233,57 @@ def validate_closure_evidence(
         errors.append(f"{name.upper()}_EVIDENCE_NOT_PASS")
     if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(evidence.get("evidenceSha256", ""))):
         errors.append(f"{name.upper()}_EVIDENCE_SHA_INVALID")
-    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
+    artifact: Any = None
+    artifact_path: Path | None = None
+    if evidence_root is None:
+        errors.append(f"{name.upper()}_EVIDENCE_ROOT_REQUIRED")
+    elif isinstance(evidence.get("evidenceRef"), str) and evidence.get("evidenceRef"):
+        root = Path(evidence_root).resolve()
+        candidate_path = Path(str(evidence["evidenceRef"]))
+        artifact_path = (candidate_path if candidate_path.is_absolute() else root / candidate_path).resolve()
+        try:
+            artifact_path.relative_to(root)
+        except ValueError:
+            errors.append(f"{name.upper()}_EVIDENCE_REF_OUTSIDE_ROOT")
+            artifact_path = None
+        if artifact_path is not None and not artifact_path.is_file():
+            errors.append(f"{name.upper()}_EVIDENCE_FILE_MISSING")
+        elif artifact_path is not None:
+            actual_sha = f"sha256:{sha256_file(artifact_path)}"
+            if actual_sha != evidence.get("evidenceSha256"):
+                errors.append(f"{name.upper()}_EVIDENCE_SHA_MISMATCH")
+            try:
+                artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                errors.append(f"{name.upper()}_EVIDENCE_JSON_INVALID")
+    if isinstance(artifact, Mapping):
+        if artifact.get("evidenceId") != evidence.get("evidenceId"):
+            errors.append(f"{name.upper()}_EVIDENCE_ID_MISMATCH")
+        if artifact.get("status") != "PASS" or artifact.get("status") != evidence.get("status"):
+            errors.append(f"{name.upper()}_ARTIFACT_NOT_PASS")
+        for field, expected in (expected_bindings or {}).items():
+            if artifact.get(field) != expected:
+                errors.append(f"{name.upper()}_BINDING_MISMATCH:{field}")
+        if name == "quality_closure":
+            gates = artifact.get("qualityGateResults")
+            if not isinstance(gates, Mapping) or not gates or any(status != "PASS" for status in gates.values()):
+                errors.append("QUALITY_CLOSURE_GATES_NOT_PASS")
+        if name == "lineage_parity":
+            required = {
+                "slotUid": (expected_bindings or {}).get("sourceQuestionUid"),
+                "replacementCardinality": "1:1",
+                "sourceOriginalPreserved": True,
+            }
+            for field, expected in required.items():
+                if artifact.get(field) != expected:
+                    errors.append(f"LINEAGE_PARITY_BINDING_MISMATCH:{field}")
+    elif artifact_path is not None and artifact_path.is_file():
+        errors.append(f"{name.upper()}_EVIDENCE_OBJECT_REQUIRED")
+    return {
+        "status": "PASS" if not errors else "FAIL",
+        "errors": _ordered_unique(errors),
+        "artifact": copy.deepcopy(dict(artifact)) if isinstance(artifact, Mapping) else None,
+    }
 
 
 def atomic_adopt_replacement(
@@ -1006,6 +1294,7 @@ def atomic_adopt_replacement(
     initial_scope_sha256: str,
     quality_closure_evidence: Mapping[str, Any] | None = None,
     lineage_parity_evidence: Mapping[str, Any] | None = None,
+    evidence_root: Path | None = None,
 ) -> dict[str, Any]:
     """Perform AUTHORIZED -> ADOPTED and disposition in one returned snapshot.
 
@@ -1022,8 +1311,29 @@ def atomic_adopt_replacement(
         raise SourceRecoveryError(CODE_SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION)
     if not isinstance(authorization, Mapping) or authorization.get("status") != "PASS" or not authorization.get("authorizationRef"):
         raise SourceRecoveryError("recovery authorization scope is not proven")
-    quality_evidence = validate_closure_evidence(quality_closure_evidence, name="quality_closure")
-    lineage_evidence = validate_closure_evidence(lineage_parity_evidence, name="lineage_parity")
+    expected_bindings = {
+        "sourceQuestionUid": recovered.get("sourceQuestionUid"),
+        "recoveredQuestionUid": recovered.get("recoveredQuestionUid"),
+        "effectiveArtifactUid": recovered.get("effectiveArtifactUid"),
+        "candidateId": recovered.get("selectedCandidateId"),
+        "candidateVersion": recovered.get("selectedCandidateVersion"),
+        "candidatePayloadSha256": recovered.get("afterPayloadSha256"),
+        "sourceLockSha256": recovered.get("sourceLockSha256"),
+        "initialIncludedScopeUidSetSha256": recovered.get("initialIncludedScopeUidSetSha256"),
+        "finalArtifactSha256": recovered.get("finalArtifactSha256", recovered.get("afterPayloadSha256")),
+    }
+    quality_evidence = validate_closure_evidence(
+        quality_closure_evidence,
+        name="quality_closure",
+        evidence_root=evidence_root,
+        expected_bindings=expected_bindings,
+    )
+    lineage_evidence = validate_closure_evidence(
+        lineage_parity_evidence,
+        name="lineage_parity",
+        evidence_root=evidence_root,
+        expected_bindings=expected_bindings,
+    )
     if quality_evidence["status"] != "PASS":
         raise SourceRecoveryError(CODE_DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL)
     if lineage_evidence["status"] != "PASS":
@@ -1080,6 +1390,7 @@ def run_source_recovery(
     quality_closure_evidence: Mapping[str, Any] | None = None,
     lineage_parity_evidence: Mapping[str, Any] | None = None,
     recovery_plan_id: str | None = None,
+    evidence_root: Path | None = None,
 ) -> dict[str, Any]:
     """Route one source question through the bounded recovery contract.
 
@@ -1261,7 +1572,14 @@ def run_source_recovery(
             else:
                 base["rejectedCandidates"].append(candidate["candidateId"])
         if not accepted:
-            row["execution"] = "ATTEMPTED_EXHAUSTED"
+            row["execution"] = "ATTEMPTED_EXHAUSTED" if (
+                isinstance(attempts_by_tier.get(tier), Mapping)
+                and attempts_by_tier[tier].get("allProducedCandidatesRejected") is True
+                and validate_producer_attempt(
+                    attempts_by_tier[tier],
+                    generated_candidate_count=len(raw_candidates),
+                )["status"] == "PASS"
+            ) else "AVAILABLE_PENDING"
             continue
         row["execution"] = "ATTEMPTED_PASS"
         winner = rank_candidates(accepted)
@@ -1283,6 +1601,7 @@ def run_source_recovery(
             "selectedCandidateVersion": winner["candidateVersion"],
             "beforePayloadSha256": payload.get("beforePayloadSha256"),
             "afterPayloadSha256": winner["payloadSha256"],
+            "finalArtifactSha256": winner["payloadSha256"],
             "mutations": copy.deepcopy(payload.get("mutations", [])),
             "sourceOriginalPreserved": True,
             "productionOriginalActive": True,
@@ -1294,7 +1613,8 @@ def run_source_recovery(
         if tier == "R0":
             base["answerKeyResolution"] = {
                 "sourceAnswerKey": source_payload.get("answer") if isinstance(source_payload, Mapping) else None,
-                "independentAnswer": _answer_text(payload.get("answer")),
+                "independentComputedValue": _answer_text((winner.get("verifierEvidence") or {}).get("independentlyComputedValue", (winner.get("verifierEvidence") or {}).get("independentlyComputedAnswer"))),
+                "canonicalEffectiveAnswer": payload.get("answer"),
                 "effectiveArtifactUid": recovered_uid,
                 "effectiveArtifactSha256": winner["payloadSha256"],
                 "lineageStatus": "PASS",
@@ -1312,6 +1632,7 @@ def run_source_recovery(
                         initial_scope_sha256=initial_sha,
                         quality_closure_evidence=quality_closure_evidence,
                         lineage_parity_evidence=lineage_parity_evidence,
+                        evidence_root=evidence_root,
                     )
                 except SourceRecoveryError as error:
                     base["codes"] = [CODE_SOURCE_RECOVERY_VALIDATION_FAIL, CODE_DERIVED_REPLACEMENT_PARITY_FAIL]
@@ -1363,6 +1684,7 @@ def resume_source_recovery(
     independent_solve: Mapping[str, Any] | None = None,
     blind_verifier: Any | None = None,
     validator: Any | None = None,
+    evidence_root: Path | None = None,
 ) -> dict[str, Any]:
     """Resume only the remaining producer work from a saved checkpoint.
 
@@ -1391,6 +1713,7 @@ def resume_source_recovery(
         independent_solve=independent_solve,
         blind_verifier=blind_verifier,
         validator=validator,
+        evidence_root=evidence_root,
         recovery_plan_id=state.get("recoveryPlanId"),
     )
     result["candidatePool"] = [*copy.deepcopy(state.get("candidatePool", [])), *result.get("candidatePool", [])]
@@ -1449,25 +1772,59 @@ def persist_source_recovery(store: Any, run_id: str, record: Mapping[str, Any]) 
         ledger = copy.deepcopy(existing)
         if validate_ledger(ledger)["status"] != "PASS":
             raise SourceRecoveryError("existing source recovery ledger is invalid")
-    if source_uid in {item.get("sourceQuestionUid") for item in ledger["items"]}:
-        previous = next(item for item in ledger["items"] if item.get("sourceQuestionUid") == source_uid)
-        previous_without_ref = {key: value for key, value in previous.items() if key != "evidenceRef"}
-        if _sha(previous_without_ref) != _sha(dict(record)):
-            raise SourceRecoveryError("source recovery ledger is append-only for each source slot")
+    ledger.setdefault("events", [])
+    ledger.setdefault("latestBySource", {})
+    current = next((item for item in ledger["items"] if item.get("sourceQuestionUid") == source_uid), None)
+
+    def record_identity(value: Mapping[str, Any]) -> str:
+        ignored = {"evidenceRef", "evidenceSha256", "eventId", "eventRevision"}
+        return _sha({key: child for key, child in value.items() if key not in ignored})
+
+    if current is not None and record_identity(current) == record_identity(record):
         return manifest
+
+    prior_revisions = [
+        int(event.get("eventRevision", 0))
+        for event in ledger["events"]
+        if isinstance(event, Mapping) and event.get("sourceQuestionUid") == source_uid and isinstance(event.get("eventRevision"), int)
+    ]
+    revision = max(prior_revisions or [0]) + 1
     item = copy.deepcopy(dict(record))
-    evidence_key = item.get("selectedCandidateId") or item.get("recoveryPlanId") or _sha(item)[:20]
-    evidence_name = re.sub(r"[^0-9A-Za-z._-]+", "-", str(evidence_key)).strip("-") or "recovery"
+    item["eventRevision"] = revision
+    event_body = {
+        "eventId": f"source-recovery-{source_uid}-r{revision}-{_sha(item)[:12]}",
+        "eventRevision": revision,
+        "sourceQuestionUid": source_uid,
+        "status": item.get("status"),
+        "record": item,
+    }
+    evidence_key = f"{source_uid}-r{revision}-{_sha(event_body)[:12]}"
+    evidence_name = re.sub(r"[^0-9A-Za-z._-]+", "-", evidence_key).strip("-") or "recovery"
     evidence_path = f"evidence/source-recovery/{evidence_name}.json"
     absolute = store.run_dir(run_id) / evidence_path
+    evidence_bytes = json.dumps(event_body, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
     if absolute.exists():
-        existing_evidence = json.loads(absolute.read_text(encoding="utf-8"))
-        if _sha(existing_evidence) != _sha(item):
+        if absolute.read_text(encoding="utf-8") != evidence_bytes:
             raise SourceRecoveryError("recovery evidence path already contains different evidence")
     else:
-        atomic_write_json(absolute, item)
+        atomic_write_json(absolute, event_body)
+    evidence_sha = f"sha256:{sha256_file(absolute)}"
+    event = {
+        "eventId": event_body["eventId"],
+        "eventRevision": revision,
+        "sourceQuestionUid": source_uid,
+        "status": item.get("status"),
+        "evidenceRef": evidence_path,
+        "evidenceSha256": evidence_sha,
+        "recordSha256": _prefixed_sha(item),
+    }
     item["evidenceRef"] = evidence_path
-    ledger["items"].append(item)
+    item["evidenceSha256"] = evidence_sha
+    item["eventId"] = event["eventId"]
+    ledger["items"] = [row for row in ledger["items"] if row.get("sourceQuestionUid") != source_uid] + [item]
+    ledger["items"].sort(key=lambda row: str(row.get("sourceQuestionUid", "")))
+    ledger["events"].append(event)
+    ledger["latestBySource"][source_uid] = event["eventId"]
     if validate_ledger(ledger)["status"] != "PASS":
         raise SourceRecoveryError("recovery record violates ledger invariants")
     manifest["sourceRecoveryLedger"] = ledger
@@ -1476,6 +1833,8 @@ def persist_source_recovery(store: Any, run_id: str, record: Mapping[str, Any]) 
         "sourceQuestionUid": source_uid,
         "status": item.get("status"),
         "evidenceRef": evidence_path,
+        "eventId": event["eventId"],
+        "eventRevision": revision,
     })
     store.save(run_id, manifest)
     return manifest
@@ -1521,6 +1880,16 @@ def validate_ledger(ledger: Mapping[str, Any]) -> dict[str, Any]:
             resolution = item.get("answerKeyResolution")
             if not isinstance(resolution, Mapping) or not resolution.get("effectiveArtifactUid") or not resolution.get("effectiveArtifactSha256") or resolution.get("lineageStatus") != "PASS" or not resolution.get("verifierEvidenceSha256"):
                 errors.append(CODE_SOURCE_RECOVERY_VALIDATION_FAIL)
+            if isinstance(item.get("candidatePool"), list):
+                selected = next((candidate for candidate in item["candidatePool"] if isinstance(candidate, Mapping) and candidate.get("candidateId") == item.get("selectedCandidateId")), None)
+                selected_payload = selected.get("payload") if isinstance(selected, Mapping) else None
+                if isinstance(selected_payload, Mapping) and _is_mcq_payload(selected_payload) and (
+                    not isinstance(resolution, Mapping)
+                    or not resolution.get("independentComputedValue")
+                    or resolution.get("canonicalEffectiveAnswer") != selected_payload.get("answer")
+                    or canonical_answer_to_choice_index(selected_payload.get("answer")) is None
+                ):
+                    errors.append(CODE_SOURCE_RECOVERY_VALIDATION_FAIL)
         matrix = item.get("tierMatrix")
         attempts = item.get("producerAttempts")
         if isinstance(matrix, Mapping):
@@ -1533,6 +1902,31 @@ def validate_ledger(ledger: Mapping[str, Any]) -> dict[str, Any]:
                 for row in matrix.values():
                     if isinstance(row, Mapping) and row.get("applicability") != "NOT_APPLICABLE" and row.get("capability") == "ACTIVE" and row.get("execution") != "ATTEMPTED_EXHAUSTED":
                         errors.append("RECOVERY_HUMAN_REQUIRED_PATH_NOT_EXHAUSTED")
+    events = ledger.get("events", [])
+    latest = ledger.get("latestBySource", {})
+    if not isinstance(events, list) or not isinstance(latest, Mapping):
+        errors.append("SOURCE_RECOVERY_EVENT_HISTORY_INVALID")
+        events = []
+        latest = {}
+    event_ids: set[str] = set()
+    revisions_by_source: dict[str, list[int]] = {}
+    for event in events:
+        if not isinstance(event, Mapping) or not isinstance(event.get("eventId"), str) or not isinstance(event.get("eventRevision"), int) or not isinstance(event.get("sourceQuestionUid"), str) or not isinstance(event.get("evidenceRef"), str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", str(event.get("evidenceSha256", ""))) or not re.fullmatch(r"sha256:[0-9a-f]{64}", str(event.get("recordSha256", ""))):
+            errors.append("SOURCE_RECOVERY_EVENT_INVALID")
+            continue
+        if event["eventId"] in event_ids:
+            errors.append("SOURCE_RECOVERY_EVENT_ID_DUPLICATE")
+        event_ids.add(event["eventId"])
+        revisions_by_source.setdefault(event["sourceQuestionUid"], []).append(event["eventRevision"])
+    for source_uid, revisions in revisions_by_source.items():
+        if revisions != sorted(set(revisions)) or revisions[0] < 1:
+            errors.append("SOURCE_RECOVERY_EVENT_REVISION_INVALID")
+        if latest.get(source_uid) not in {event.get("eventId") for event in events if isinstance(event, Mapping) and event.get("sourceQuestionUid") == source_uid}:
+            errors.append("SOURCE_RECOVERY_LATEST_POINTER_INVALID")
+    for item in items:
+        source_uid = item.get("sourceQuestionUid") if isinstance(item, Mapping) else None
+        if source_uid in latest and item.get("eventId") != latest.get(source_uid):
+            errors.append("SOURCE_RECOVERY_CURRENT_POINTER_MISMATCH")
     return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
 
 
@@ -1639,9 +2033,12 @@ __all__ = [
     "TIERS",
     "SourceRecoveryError",
     "atomic_adopt_replacement",
+    "build_blind_verifier_adapter",
     "build_recovery_ledger",
     "build_tier_matrix",
+    "build_validator_evidence",
     "candidate_acceptance",
+    "canonical_answer_to_choice_index",
     "capability_registry_report",
     "diagnose_source_defects",
     "defect_is_correctness_affecting",
@@ -1652,6 +2049,7 @@ __all__ = [
     "release_gate",
     "run_source_recovery",
     "source_evidence_blocked",
+    "choice_index_to_canonical_answer",
     "produce_recovery_candidates",
     "targeted_repair_candidate",
     "validate_ledger",
@@ -1659,6 +2057,9 @@ __all__ = [
     "validate_producer_attempt",
     "validate_source_evidence",
     "validate_verifier_evidence",
+    "validate_validator_evidence",
+    "validate_closure_evidence",
+    "resolve_independent_answer_against_choices",
     "validate_replacement",
     "validate_tier_matrix",
 ]

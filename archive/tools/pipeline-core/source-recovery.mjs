@@ -2,6 +2,7 @@ import { canonicalJson, isObject, nonempty, uidSet, uidSetSha } from './canonica
 
 export const SOURCE_RECOVERY_LEDGER_VERSION = 'ALIVE_SOURCE_RECOVERY_LEDGER_v1';
 const AUTHORITIES = new Set(['SHADOW_ONLY', 'BOUNDED_PRODUCTION', 'DEFAULT_PRODUCTION']);
+const PRODUCTION_AUTHORITIES = new Set(['BOUNDED_PRODUCTION', 'DEFAULT_PRODUCTION']);
 const validExhaustionAttempt = attempt => isObject(attempt)
   && attempt.producerStatus === 'COMPLETED'
   && Number.isSafeInteger(attempt.attemptCount) && attempt.attemptCount >= 1
@@ -9,6 +10,7 @@ const validExhaustionAttempt = attempt => isObject(attempt)
   && Number.isSafeInteger(attempt.candidateBudgetConsumed) && attempt.candidateBudgetConsumed === attempt.candidateBudget
   && Number.isSafeInteger(attempt.retryBudget) && attempt.retryBudget >= 0
   && attempt.retryBudgetConsumed === true
+  && Number.isSafeInteger(attempt.generatedCandidateCount) && attempt.generatedCandidateCount >= 0
   && nonempty(attempt.attemptEvidenceRef)
   && /^sha256:[0-9a-f]{64}$/.test(attempt.attemptEvidenceSha || '')
   && attempt.allProducedCandidatesRejected === true;
@@ -27,7 +29,7 @@ const replacementErrors = (item, initial) => {
   if (replacement.productionOriginalActive !== false || replacement.productionRecoveredActive !== true) errors.push('DERIVED_REPLACEMENT_PARITY_FAIL');
   if (replacement.replacementLineageParity !== 'PASS' || replacement.recoveredQualityClosure !== 'PASS') errors.push('DERIVED_REPLACEMENT_PARITY_FAIL');
   if (!nonempty(item.replacementEvidenceRef) || !/^sha256:[0-9a-f]{64}$/.test(item.replacementEvidenceSha || '')) errors.push('DERIVED_REPLACEMENT_LINEAGE_FAIL');
-  if (!AUTHORITIES.has(item.recoveryAuthority) || item.productionAdoptionStatus !== 'ADOPTED') errors.push('SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION');
+  if (!PRODUCTION_AUTHORITIES.has(item.recoveryAuthority) || item.productionAdoptionStatus !== 'ADOPTED') errors.push('SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION');
   return [...new Set(errors)];
 };
 
@@ -77,9 +79,33 @@ export function validateSourceRecoveryLedger(ledger, run = null) {
       if (item.status === 'HUMAN_REQUIRED') for (const row of Object.values(item.tierMatrix)) if (row?.applicability !== 'NOT_APPLICABLE' && row?.capability === 'ACTIVE' && row?.execution !== 'ATTEMPTED_EXHAUSTED') errors.push('RECOVERY_HUMAN_REQUIRED_PATH_NOT_EXHAUSTED');
     }
     if (item.status === 'RECOVERED' && finalTarget && !answerKeyRecovery && (item.recoveryAuthority === 'SHADOW_ONLY' || item.productionAdoptionStatus !== 'ADOPTED')) counts.shadowRecoveredUnapprovedCount++;
-    if (finalTarget && !answerKeyRecovery && item.productionAdoptionStatus && item.productionAdoptionStatus !== 'ADOPTED' && !AUTHORITIES.has(item.recoveryAuthority)) counts.unauthorizedRecoveryAdoptionCount++;
+    if (finalTarget && !answerKeyRecovery && item.productionAdoptionStatus && item.productionAdoptionStatus !== 'ADOPTED' && !PRODUCTION_AUTHORITIES.has(item.recoveryAuthority)) counts.unauthorizedRecoveryAdoptionCount++;
     if (item.replacementDisposition === 'DERIVED_REPLACEMENT_VERIFIED' && replacementErrors(item, initial).length) counts.derivedReplacementParityFailCount++;
     if (finalTarget && !answerKeyRecovery && item.replacementDisposition !== 'DERIVED_REPLACEMENT_VERIFIED') counts.derivedReplacementParityFailCount++;
+  }
+  if (ledger?.events !== undefined || ledger?.latestBySource !== undefined) {
+    if (!Array.isArray(ledger.events) || !isObject(ledger.latestBySource)) errors.push('SOURCE_RECOVERY_EVENT_HISTORY_INVALID');
+    const events = Array.isArray(ledger.events) ? ledger.events : [];
+    const eventIds = new Set(), revisions = new Map();
+    for (const event of events) {
+      if (!isObject(event) || !nonempty(event.eventId) || !nonempty(event.sourceQuestionUid)
+        || !Number.isSafeInteger(event.eventRevision) || event.eventRevision < 1
+        || !nonempty(event.evidenceRef) || !/^sha256:[0-9a-f]{64}$/.test(event.evidenceSha256 || '')
+        || !/^sha256:[0-9a-f]{64}$/.test(event.recordSha256 || '')) {
+        errors.push('SOURCE_RECOVERY_EVENT_INVALID');
+        continue;
+      }
+      if (eventIds.has(event.eventId)) errors.push('SOURCE_RECOVERY_EVENT_ID_DUPLICATE');
+      eventIds.add(event.eventId);
+      const list = revisions.get(event.sourceQuestionUid) || [];
+      list.push(event.eventRevision);
+      revisions.set(event.sourceQuestionUid, list);
+    }
+    for (const [sourceUid, list] of revisions) {
+      if (JSON.stringify(list) !== JSON.stringify([...new Set(list)].sort((a, b) => a - b))) errors.push('SOURCE_RECOVERY_EVENT_REVISION_INVALID');
+      if (!eventIds.has(ledger.latestBySource?.[sourceUid])) errors.push('SOURCE_RECOVERY_LATEST_POINTER_INVALID');
+    }
+    for (const item of items) if (ledger.latestBySource?.[item.sourceQuestionUid] && item.eventId !== ledger.latestBySource[item.sourceQuestionUid]) errors.push('SOURCE_RECOVERY_CURRENT_POINTER_MISMATCH');
   }
   if (run) {
     if (sourceRecoverySignal(run) && !ledger) errors.push('SOURCE_RECOVERY_LEDGER_REQUIRED');

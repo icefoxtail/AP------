@@ -529,7 +529,10 @@ def audit_final_closure(
                     detected_recovery_path = candidate_path
                     break
         recovery_value = _read_json(detected_recovery_path, "source recovery ledger") if detected_recovery_path else None
-        closure_manifest_value = _read_json(quality_manifest_path, "closure manifest") if quality_manifest_path and quality_manifest_path.is_file() else None
+        # Read the exact manifest selected by shared_closure, including the
+        # default <input>.closure.json path. Recovery signals are internal
+        # run/sidecar metadata and must not depend on student question fields.
+        closure_manifest_value = _read_json(manifest, "closure manifest") if manifest.is_file() else None
         if recovery_value is None and isinstance(closure_manifest_value, dict) and isinstance(closure_manifest_value.get("sourceRecoveryLedger"), dict):
             recovery_value = closure_manifest_value["sourceRecoveryLedger"]
         internal_signal = _source_recovery_manifest_signal(closure_manifest_value)

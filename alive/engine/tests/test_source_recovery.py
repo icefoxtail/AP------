@@ -29,6 +29,8 @@ from alive.engine.source_recovery import (
     validate_ledger,
     validate_replacement,
     validate_verifier_evidence,
+    validate_validator_evidence,
+    validate_closure_evidence,
     validate_design_mirror,
 )
 from alive.engine.run_store import RunStore
@@ -38,7 +40,22 @@ from alive.engine.run_store import sha256_file
 
 
 def candidate_payload(**extra: object) -> dict[str, object]:
-    return {"content": "bounded candidate", "choices": ["1", "2", "3", "4", "5"], **extra}
+    return {"content": "bounded candidate", "choices": ["1", "2", "3", "4", "5"], "answer": "①", **extra}
+
+
+def validator_gate(candidate: dict[str, object], gate: str) -> dict[str, object]:
+    row: dict[str, object] = {
+        "evidenceId": f"external-{candidate['candidateId']}-{gate}",
+        "validatorId": f"external-{gate.lower()}",
+        "candidateId": candidate["candidateId"],
+        "candidateVersion": candidate["candidateVersion"],
+        "candidatePayloadSha256": candidate["payloadSha256"],
+        "status": "PASS",
+        "method": "test-independent-validator",
+        "coverage": "complete",
+    }
+    row["evidenceSha256"] = "sha256:" + json_sha256(row)
+    return row
 
 
 def verified_candidate(payload: dict[str, object], *, builder_session: str = "builder") -> dict[str, object]:
@@ -61,8 +78,34 @@ def verified_candidate(payload: dict[str, object], *, builder_session: str = "bu
     }
     evidence["evidenceSha256"] = "sha256:" + json_sha256(evidence)
     candidate["verifierEvidence"] = evidence
-    candidate["validatorEvidence"] = build_validator_evidence(candidate)
+    candidate["validatorEvidence"] = build_validator_evidence(
+        candidate,
+        gate_evidence={
+            gate: validator_gate(candidate, gate)
+            for gate in (
+                "CURRICULUM_VALID",
+                "RECOVERY_FINGERPRINT_GATE_PASS",
+                "DIFFICULTY_ROLE_ACCEPTABLE",
+                "VISUAL_VALID_IF_APPLICABLE",
+            )
+        },
+    )
     return candidate
+
+
+def complete_validator(candidate: dict[str, object]) -> dict[str, object]:
+    return build_validator_evidence(
+        candidate,
+        gate_evidence={
+            gate: validator_gate(candidate, gate)
+            for gate in (
+                "CURRICULUM_VALID",
+                "RECOVERY_FINGERPRINT_GATE_PASS",
+                "DIFFICULTY_ROLE_ACCEPTABLE",
+                "VISUAL_VALID_IF_APPLICABLE",
+            )
+        },
+    )
 
 
 def producer_attempt(tier: str, generated: int) -> dict[str, object]:
@@ -80,11 +123,35 @@ def producer_attempt(tier: str, generated: int) -> dict[str, object]:
     }
 
 
-def closure_evidence(kind: str) -> dict[str, object]:
-    return {
+def closure_evidence(root: Path, recovered: dict[str, object], kind: str) -> dict[str, object]:
+    artifact: dict[str, object] = {
         "evidenceId": f"{kind}-closure-1",
-        "evidenceRef": f"evidence/{kind}-closure-1.json",
-        "evidenceSha256": "sha256:" + "c" * 64,
+        "status": "PASS",
+        "sourceQuestionUid": recovered["sourceQuestionUid"],
+        "recoveredQuestionUid": recovered["recoveredQuestionUid"],
+        "effectiveArtifactUid": recovered["effectiveArtifactUid"],
+        "candidateId": recovered["selectedCandidateId"],
+        "candidateVersion": recovered["selectedCandidateVersion"],
+        "candidatePayloadSha256": recovered["afterPayloadSha256"],
+        "sourceLockSha256": recovered["sourceLockSha256"],
+        "initialIncludedScopeUidSetSha256": recovered["initialIncludedScopeUidSetSha256"],
+        "finalArtifactSha256": recovered["afterPayloadSha256"],
+    }
+    if kind == "quality":
+        artifact["qualityGateResults"] = {"math": "PASS", "answer": "PASS", "structure": "PASS"}
+    else:
+        artifact.update({
+            "slotUid": recovered["sourceQuestionUid"],
+            "replacementCardinality": "1:1",
+            "sourceOriginalPreserved": True,
+        })
+    path = root / "evidence" / f"{kind}-closure-1.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(artifact, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+    return {
+        "evidenceId": artifact["evidenceId"],
+        "evidenceRef": str(path.relative_to(root)),
+        "evidenceSha256": "sha256:" + sha256_file(path),
         "status": "PASS",
     }
 
@@ -116,10 +183,10 @@ class SourceRecoveryTests(unittest.TestCase):
 
     def test_capability_registry_does_not_claim_unimplemented_tiers_active(self) -> None:
         registry = capability_registry_report()
-        self.assertEqual("BOUNDED_R0_R1_R3_ONLY", registry["status"])
+        self.assertEqual("BOUNDED_R0_R1_ONLY", registry["status"])
         self.assertEqual("ACTIVE", registry["tiers"]["R0"]["status"])
         self.assertEqual("ACTIVE", registry["tiers"]["R1"]["status"])
-        self.assertEqual("ACTIVE", registry["tiers"]["R3"]["status"])
+        self.assertNotEqual("ACTIVE", registry["tiers"]["R3"]["status"])
         self.assertNotEqual("ACTIVE", registry["tiers"]["R5"]["status"])
         self.assertNotEqual("ACTIVE", registry["tiers"]["R6"]["status"])
 
@@ -194,6 +261,39 @@ class SourceRecoveryTests(unittest.TestCase):
         self.assertIn("RESPONSE_FORM_DEFECT", invalid_contract["defectTypes"])
         self.assertIn("MISSING_CONDITION", invalid_contract["defectTypes"])
         self.assertIn("QUESTION_TARGET_DEFECT", invalid_contract["defectTypes"])
+        for invalid in (
+            {"answerUnique": False, "responseContractValid": True, "mathVerdict": "PASS", "answer": "1"},
+            {"answerUnique": True, "responseContractValid": False, "mathVerdict": "PASS", "answer": "1"},
+        ):
+            self.assertNotEqual(
+                "NO_DEFECT",
+                diagnose_source_defects({"content": "x", "answer": "1", "sourceEvidence": source["sourceEvidence"]}, invalid)["status"],
+            )
+
+    def test_mcq_value_and_archive_answer_key_are_resolved_separately(self) -> None:
+        source = {
+            "content": "값을 고르시오.",
+            "questionType": "객관식",
+            "choices": ["3", "6", "12", "10", "15"],
+            "answer": "③",
+            "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+        }
+        result = diagnose_source_defects(source, {
+            "independentlyComputedValue": "12",
+            "answerUnique": True,
+            "responseContractValid": True,
+            "mathVerdict": "PASS",
+        })
+        self.assertEqual("NO_DEFECT", result["status"])
+        self.assertNotIn("ANSWER_KEY_CONFLICT", result["defectTypes"])
+        self.assertEqual("③", result["canonicalArchiveAnswer"])
+        conflict = diagnose_source_defects(source, {
+            "independentlyComputedValue": "10",
+            "answerUnique": True,
+            "responseContractValid": True,
+            "mathVerdict": "PASS",
+        })
+        self.assertIn("ANSWER_KEY_CONFLICT", conflict["defectTypes"])
 
     def test_evidence_block_checkpoint_resumes_with_new_source_material(self) -> None:
         blocked = run_source_recovery(
@@ -211,6 +311,7 @@ class SourceRecoveryTests(unittest.TestCase):
             },
             independent_solve={"independentlyComputedAnswer": "12", "answerUnique": True, "responseContractValid": True, "mathVerdict": "PASS"},
             blind_verifier=lambda view: blind_verifier_evidence(view),
+            validator=complete_validator,
         )
         self.assertEqual("RECOVERED", resumed["status"])
         self.assertEqual("SOURCE_RECOVERY_EVIDENCE_BLOCKED", blocked["status"])
@@ -272,6 +373,42 @@ class SourceRecoveryTests(unittest.TestCase):
         self.assertEqual("FAIL", rejected["status"])
         self.assertIn("INDEPENDENT_VERIFICATION_VERDICT_MISMATCH", rejected["failedGates"])
 
+    def test_validator_evidence_has_no_pass_defaults(self) -> None:
+        candidate = make_candidate_version("RP-Q1-R1", candidate_payload(
+            curriculumValidationStatus="PASS",
+            fingerprintValidationStatus="PASS",
+            difficultyValidationStatus="PASS",
+        ))
+        evidence = build_validator_evidence(candidate)
+        self.assertEqual("NOT_TESTED", evidence["gates"]["CURRICULUM_VALID"]["status"])
+        self.assertEqual("NOT_TESTED", evidence["gates"]["RECOVERY_FINGERPRINT_GATE_PASS"]["status"])
+        self.assertEqual("NOT_TESTED", evidence["gates"]["DIFFICULTY_ROLE_ACCEPTABLE"]["status"])
+        self.assertEqual("PASS", evidence["gates"]["SERIALIZABLE"]["status"])
+        self.assertEqual("FAIL", validate_validator_evidence(candidate, evidence)["status"])
+
+    def test_r0_and_r1_mcq_serialization_uses_canonical_key(self) -> None:
+        source = {
+            "content": "값을 고르시오.",
+            "questionType": "객관식",
+            "choices": ["3", "6", "12", "10", "15"],
+            "answer": "②",
+        }
+        r0, _ = produce_recovery_candidates(
+            source,
+            {"independentlyComputedValue": "12"},
+            {"defectTypes": ["ANSWER_KEY_CONFLICT"], "matchingChoiceIndices": [3]},
+            recovery_plan_id="RP-MCQ-R0",
+        )
+        self.assertEqual("③", r0["R0"][0]["payload"]["answer"])
+        r1, _ = produce_recovery_candidates(
+            {**source, "choices": ["3", "6", "9", "10", "15"]},
+            {"independentlyComputedValue": "12"},
+            {"defectTypes": ["NO_CORRECT_ANSWER"], "matchingChoiceIndices": []},
+            recovery_plan_id="RP-MCQ-R1",
+        )
+        self.assertEqual("①", r1["R1"][0]["payload"]["answer"])
+        self.assertNotEqual("12", r1["R1"][0]["payload"]["answer"])
+
     def test_missing_or_mismatched_verifier_evidence_cannot_claim_pass(self) -> None:
         candidate = make_candidate_version("RP-Q1-R1", candidate_payload())
         missing = candidate_acceptance(candidate, recovery_tier="R1")
@@ -306,6 +443,7 @@ class SourceRecoveryTests(unittest.TestCase):
                 "mathVerdict": "PASS",
             },
             blind_verifier=lambda view: blind_verifier_evidence(view),
+            validator=complete_validator,
         )
         self.assertEqual("NO_CORRECT_ANSWER", result["diagnosis"]["defectTypes"][0])
         self.assertEqual("RECOVERED", result["status"])
@@ -316,7 +454,7 @@ class SourceRecoveryTests(unittest.TestCase):
         shadow_gate = release_gate(build_recovery_ledger(["Q17"], [result]))
         self.assertEqual("BLOCKED", shadow_gate["status"])
 
-    def test_historical_source_question_runs_through_r3_shadow_e2e(self) -> None:
+    def test_historical_source_question_runs_through_r3_shadow_assisted_contract(self) -> None:
         repository = Path(__file__).resolve().parents[3]
         source_path = repository / "archive/exams/original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js"
         source = extract_source_question(source_path, 18, {"sha256": sha256_file(source_path)})
@@ -342,7 +480,9 @@ class SourceRecoveryTests(unittest.TestCase):
                 "mathVerdict": "PASS",
                 "solution": "양의 정수 조건을 포함하면 n=9이다.",
             },
+            capabilities={"R3": "ACTIVE"},
             blind_verifier=lambda view: blind_verifier_evidence(view, "9"),
+            validator=complete_validator,
         )
         self.assertEqual("UNDERDETERMINED_STEM", result["diagnosis"]["defectTypes"][0])
         self.assertEqual("RECOVERED", result["status"])
@@ -405,6 +545,11 @@ class SourceRecoveryTests(unittest.TestCase):
                 candidate = candidates["R1"][0]
                 self.assertEqual(kind, candidate["producerKind"])
                 self.assertEqual(expected_choices, candidate["payload"]["choices"])
+                self.assertIn(candidate["payload"]["answer"], "①②③④⑤")
+                answer_index = "①②③④⑤".index(candidate["payload"]["answer"])
+                self.assertEqual(answer, candidate["payload"]["choices"][answer_index])
+                self.assertEqual(1, sum(choice == answer for choice in candidate["payload"]["choices"]))
+                self.assertEqual(len(candidate["payload"]["choices"]), len(set(candidate["payload"]["choices"])))
 
     def test_json_blind_verifier_adapter_is_separate_from_source_solve(self) -> None:
         adapter = build_blind_verifier_adapter({
@@ -421,7 +566,7 @@ class SourceRecoveryTests(unittest.TestCase):
             "candidateId": "candidate-1",
             "candidateVersion": 1,
             "candidatePayloadSha256": "sha256:" + "a" * 64,
-            "payload": {"content": "x", "choices": ["12", "2"]},
+            "payload": {"content": "x", "choices": ["12", "2"], "answer": "①"},
             "builderSessionId": "builder-session",
         }
         evidence = adapter(view)
@@ -438,6 +583,25 @@ class SourceRecoveryTests(unittest.TestCase):
             candidates_by_tier={},
         )
         self.assertNotEqual("HUMAN_REQUIRED", result["status"])
+        self.assertEqual("AVAILABLE_PENDING", result["tierMatrix"]["R1"]["execution"])
+
+    def test_partial_candidate_budget_cannot_be_counted_as_exhaustion(self) -> None:
+        candidate = verified_candidate(candidate_payload())
+        result = run_source_recovery(
+            source_question_uid="Q17",
+            source_lock_sha256="b" * 64,
+            defect_types=["NO_CORRECT_ANSWER"],
+            capabilities={"R1": "ACTIVE"},
+            candidates_by_tier={"R1": [{**candidate, "independentVerification": "FAIL"}]},
+            attempts_by_tier={"R1": {
+                **producer_attempt("R1", 1),
+                "candidateBudget": 3,
+                "candidateBudgetConsumed": 1,
+                "retryBudget": 1,
+                "retryBudgetConsumed": False,
+                "allProducedCandidatesRejected": False,
+            }},
+        )
         self.assertEqual("AVAILABLE_PENDING", result["tierMatrix"]["R1"]["execution"])
 
     def test_targeted_repair_creates_new_immutable_version(self) -> None:
@@ -459,27 +623,62 @@ class SourceRecoveryTests(unittest.TestCase):
             targeted_repair_candidate(not_frozen, candidate_payload())
 
     def test_one_to_one_adoption_is_atomic(self) -> None:
-        recovered = run_source_recovery(
-            source_question_uid="Q17",
-            source_lock_sha256="b" * 64,
-            defect_types=["NO_CORRECT_ANSWER"],
-            source_recovery_policy="AUTO_RECOVER",
-            recovery_authority="BOUNDED_PRODUCTION",
-            initial_scope_uids=["Q1", "Q17", "Q18"],
-            authorization={"status": "PASS", "authorizationRef": "auth/rp-q17.json"},
-            quality_closure_evidence=closure_evidence("quality"),
-            lineage_parity_evidence=closure_evidence("lineage"),
-            candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))] },
-            attempts_by_tier={"R1": producer_attempt("R1", 1)},
-        )
-        self.assertEqual("ADOPTED", recovered["productionAdoptionStatus"])
-        self.assertEqual("DERIVED_REPLACEMENT_VERIFIED", recovered["replacementDisposition"])
-        self.assertFalse(recovered["productionOriginalActive"])
-        self.assertTrue(recovered["productionRecoveredActive"])
-        self.assertEqual(
-            "PASS",
-            release_gate(build_recovery_ledger(["Q1", "Q17", "Q18"], [recovered]))["status"],
-        )
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            recovered = run_source_recovery(
+                source_question_uid="Q17",
+                source_lock_sha256="b" * 64,
+                defect_types=["NO_CORRECT_ANSWER"],
+                source_recovery_policy="SHADOW_AUTO_RECOVER",
+                recovery_authority="BOUNDED_PRODUCTION",
+                initial_scope_uids=["Q1", "Q17", "Q18"],
+                candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))]},
+                attempts_by_tier={"R1": producer_attempt("R1", 1)},
+            )
+            recovered["productionAdoptionStatus"] = "AUTHORIZED"
+            adopted = atomic_adopt_replacement(
+                recovered,
+                authorization={"status": "PASS", "authorizationRef": "auth/rp-q17.json"},
+                initial_scope_uids=["Q1", "Q17", "Q18"],
+                initial_scope_sha256=recovered["initialIncludedScopeUidSetSha256"],
+                quality_closure_evidence=closure_evidence(root, recovered, "quality"),
+                lineage_parity_evidence=closure_evidence(root, recovered, "lineage"),
+                evidence_root=root,
+            )
+            self.assertEqual("ADOPTED", adopted["productionAdoptionStatus"])
+            self.assertEqual("DERIVED_REPLACEMENT_VERIFIED", adopted["replacementDisposition"])
+            self.assertFalse(adopted["productionOriginalActive"])
+            self.assertTrue(adopted["productionRecoveredActive"])
+            self.assertEqual("PASS", release_gate(build_recovery_ledger(["Q1", "Q17", "Q18"], [adopted]))["status"])
+
+    def test_closure_evidence_requires_actual_hash_and_candidate_bindings(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            recovered = run_source_recovery(
+                source_question_uid="Q17",
+                source_lock_sha256="b" * 64,
+                defect_types=["NO_CORRECT_ANSWER"],
+                candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))]},
+                attempts_by_tier={"R1": producer_attempt("R1", 1)},
+            )
+            envelope = closure_evidence(root, recovered, "quality")
+            expected = {
+                "sourceQuestionUid": recovered["sourceQuestionUid"],
+                "recoveredQuestionUid": recovered["recoveredQuestionUid"],
+                "effectiveArtifactUid": recovered["effectiveArtifactUid"],
+                "candidateId": recovered["selectedCandidateId"],
+                "candidateVersion": recovered["selectedCandidateVersion"],
+                "candidatePayloadSha256": recovered["afterPayloadSha256"],
+                "sourceLockSha256": recovered["sourceLockSha256"],
+                "initialIncludedScopeUidSetSha256": recovered["initialIncludedScopeUidSetSha256"],
+                "finalArtifactSha256": recovered["afterPayloadSha256"],
+            }
+            self.assertEqual("PASS", validate_closure_evidence(envelope, name="quality_closure", evidence_root=root, expected_bindings=expected)["status"])
+            self.assertEqual("FAIL", validate_closure_evidence({**envelope, "evidenceSha256": "sha256:" + "c" * 64}, name="quality_closure", evidence_root=root, expected_bindings=expected)["status"])
+            self.assertEqual("FAIL", validate_closure_evidence({**envelope, "evidenceRef": "missing.json"}, name="quality_closure", evidence_root=root, expected_bindings=expected)["status"])
+            forged = dict(expected)
+            forged["candidateId"] = "forged-candidate"
+            self.assertEqual("FAIL", validate_closure_evidence(envelope, name="quality_closure", evidence_root=root, expected_bindings=forged)["status"])
 
     def test_atomic_adoption_does_not_leave_adopted_on_failure(self) -> None:
         recovered = run_source_recovery(
@@ -602,8 +801,44 @@ class SourceRecoveryTests(unittest.TestCase):
             self.assertEqual(first["sourceRecoveryLedger"], second["sourceRecoveryLedger"])
             self.assertEqual(1, len(second["sourceRecoveryLedger"]["items"]))
             self.assertTrue((Path(temporary) / "run-1/evidence/source-recovery").is_dir())
-            with self.assertRaises(SourceRecoveryError):
-                persist_source_recovery(store, "run-1", {**record, "status": "PRESERVE_ONLY"})
+            evolved = persist_source_recovery(store, "run-1", {**record, "status": "PRESERVE_ONLY"})
+            self.assertEqual(2, len(evolved["sourceRecoveryLedger"]["events"]))
+            self.assertEqual("PRESERVE_ONLY", evolved["sourceRecoveryLedger"]["items"][0]["status"])
+            self.assertEqual("RECOVERED", json.loads((Path(temporary) / "run-1/evidence/source-recovery" / first["sourceRecoveryLedger"]["items"][0]["evidenceRef"].split("/")[-1]).read_text(encoding="utf-8"))["record"]["status"])
+
+    def test_blocked_checkpoint_can_resume_to_recovered_without_overwriting_history(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            store = RunStore(root)
+            store.create("run-lifecycle", {"runId": "run-lifecycle", "status": "RECOVERING"})
+            blocked = run_source_recovery(
+                source_question_uid="Q17",
+                source_lock_sha256="b" * 64,
+                source_evidence_available=False,
+            )
+            first = persist_source_recovery(store, "run-lifecycle", blocked)
+            first_event = first["sourceRecoveryLedger"]["events"][0]
+            resumed = resume_source_recovery(
+                blocked,
+                source_payload={
+                    "content": "계산 결과를 고르시오.",
+                    "choices": ["3", "6", "9", "10", "15"],
+                    "answer": "①",
+                    "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+                },
+                independent_solve={"independentlyComputedValue": "12", "answerUnique": True, "responseContractValid": True, "mathVerdict": "PASS"},
+                blind_verifier=lambda view: blind_verifier_evidence(view),
+                validator=complete_validator,
+            )
+            second = persist_source_recovery(store, "run-lifecycle", resumed)
+            ledger = second["sourceRecoveryLedger"]
+            self.assertEqual(2, len(ledger["events"]))
+            self.assertEqual("RECOVERED", ledger["items"][0]["status"])
+            self.assertEqual(ledger["items"][0]["eventId"], ledger["latestBySource"]["Q17"])
+            old_path = root / "run-lifecycle" / first_event["evidenceRef"]
+            self.assertTrue(old_path.is_file())
+            self.assertEqual("SOURCE_RECOVERY_EVIDENCE_BLOCKED", json.loads(old_path.read_text(encoding="utf-8"))["record"]["status"])
+            self.assertEqual("PASS", validate_ledger(ledger)["status"])
 
 
 if __name__ == "__main__":
