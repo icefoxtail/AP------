@@ -22,6 +22,8 @@
     "currentRecoveryTier": { "$ref": "#/$defs/tier" },
     "recoveryDisposition": { "$ref": "#/$defs/disposition" },
     "replacementDisposition": { "const": "DERIVED_REPLACEMENT_VERIFIED" },
+    "replacementEvidenceRef": { "type": "string", "minLength": 1 },
+    "replacementEvidenceSha": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
     "tierMatrix": {
       "type": "object",
       "required": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"],
@@ -41,7 +43,26 @@
     },
     "replacement": { "$ref": "#/$defs/replacement" },
     "resumeFromStage": { "type": ["string", "null"] },
-    "requiredResource": { "type": ["string", "null"], "enum": ["SOURCE_PAGE", "FULL_SCAN", "COMMON_MATERIAL", "SOURCE_VISUAL", "SOURCE_FILE", null] }
+    "requiredResource": { "type": ["string", "null"], "enum": ["SOURCE_PAGE", "FULL_SCAN", "COMMON_MATERIAL", "SOURCE_VISUAL", "SOURCE_FILE", null] },
+    "verifierEvidence": {
+      "type": "object",
+      "required": ["candidateId", "candidateVersion", "candidatePayloadSha256", "verifierId", "verifierSessionId", "inputVisibilityProfile", "blindInput", "independentlyComputedAnswer", "answerUnique", "responseContractValid", "mathVerdict", "evidenceSha256"],
+      "properties": {
+        "candidateId": { "type": "string", "minLength": 1 },
+        "candidateVersion": { "type": "integer", "minimum": 1 },
+        "candidatePayloadSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "verifierId": { "type": "string", "minLength": 1 },
+        "verifierSessionId": { "type": "string", "minLength": 1 },
+        "inputVisibilityProfile": { "enum": ["ARTIFACT_ONLY", "RECOVERED_ONLY"] },
+        "blindInput": { "type": "object" },
+        "independentlyComputedAnswer": {},
+        "answerUnique": { "const": true },
+        "responseContractValid": { "const": true },
+        "mathVerdict": { "const": "PASS" },
+        "evidenceSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+      },
+      "additionalProperties": true
+    }
   },
   "$defs": {
     "policy": { "enum": ["PRESERVE_ONLY", "SHADOW_AUTO_RECOVER", "AUTO_RECOVER"] },

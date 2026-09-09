@@ -22,6 +22,8 @@ const adopted = {
   productionRecoveredActive: true,
   replacementLineageParity: 'PASS',
   recoveredQualityClosure: 'PASS',
+  replacementEvidenceRef: 'evidence/q17-replacement.json',
+  replacementEvidenceSha: 'sha256:' + 'a'.repeat(64),
   replacementCardinality: '1:1',
   recoveryAuthority: 'BOUNDED_PRODUCTION',
   productionAdoptionStatus: 'ADOPTED',

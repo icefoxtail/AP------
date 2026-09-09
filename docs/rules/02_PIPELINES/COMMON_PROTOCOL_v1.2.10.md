@@ -694,7 +694,14 @@ FINAL_SCOPE_DISPOSITION_MAP_SHA = SHA256(canonical map {
     scopeEvidenceRef,
     sourceCorrectnessImpactStatus,
     productionStudentFacingActive,
-    withdrawalEvidenceSha [if applicable]
+    withdrawalEvidenceSha [if applicable],
+    recoveredQuestionUid [if DERIVED_REPLACEMENT_VERIFIED],
+    effectiveArtifactUid [if DERIVED_REPLACEMENT_VERIFIED],
+    replacementEvidenceRef [if DERIVED_REPLACEMENT_VERIFIED],
+    replacementEvidenceSha [if DERIVED_REPLACEMENT_VERIFIED],
+    replacementLineageParity [if DERIVED_REPLACEMENT_VERIFIED],
+    productionOriginalActive [if DERIVED_REPLACEMENT_VERIFIED],
+    productionRecoveredActive [if DERIVED_REPLACEMENT_VERIFIED]
   }
 })
 ```
@@ -717,7 +724,7 @@ count(uid in INITIAL_INCLUDED_SCOPE_UID_SET where
 
 EXCLUDED_CORRECTNESS_DEFECT_STILL_IN_PRODUCTION_COUNT =
 count(uid in INITIAL_INCLUDED_SCOPE_UID_SET where
-      finalScopeDisposition NOT IN {TARGET_INCLUDED, OUT_OF_SCOPE_CONFIRMED}
+      finalScopeDisposition NOT IN {TARGET_INCLUDED, DERIVED_REPLACEMENT_VERIFIED, OUT_OF_SCOPE_CONFIRMED}
       AND sourceCorrectnessImpactStatus IN {CORRECTNESS_AFFECTING, MIXED}
       AND productionStudentFacingActive == true)
 ```
@@ -727,12 +734,21 @@ count(uid in INITIAL_INCLUDED_SCOPE_UID_SET where
 final target denominator도 disposition map과 직접 대조한다.
 
 ```text
-TARGET_INCLUDED_UID_SET_FROM_SCOPE_MAP =
-{ uid in INITIAL_INCLUDED_SCOPE_UID_SET where finalScopeDisposition == TARGET_INCLUDED }
+FINAL_TARGET_SLOT_UID_SET_FROM_SCOPE_MAP =
+{ slotUid in INITIAL_INCLUDED_SCOPE_UID_SET where
+  finalScopeDisposition IN {TARGET_INCLUDED, DERIVED_REPLACEMENT_VERIFIED} }
+
+EFFECTIVE_FINAL_ARTIFACT_MAP =
+slotUid -> effectiveArtifactUid
+
+For TARGET_INCLUDED, effectiveArtifactUid is the original/current target
+artifact identity. For DERIVED_REPLACEMENT_VERIFIED,
+slotUid == sourceQuestionUid and effectiveArtifactUid == recoveredQuestionUid.
 
 FINAL_TARGET_SCOPE_PARITY = PASS iff
-FINAL_TARGET_UID_SET == TARGET_INCLUDED_UID_SET_FROM_SCOPE_MAP
-AND FINAL_TARGET_COUNT == count(TARGET_INCLUDED_UID_SET_FROM_SCOPE_MAP)
+FINAL_TARGET_SLOT_UID_SET == FINAL_TARGET_SLOT_UID_SET_FROM_SCOPE_MAP
+AND FINAL_TARGET_COUNT == count(FINAL_TARGET_SLOT_UID_SET_FROM_SCOPE_MAP)
+AND EFFECTIVE_FINAL_ARTIFACT_MAP is complete and unique
 ```
 
 `DERIVED_REPLACEMENT_VERIFIED`는 correctness-affecting source defect를

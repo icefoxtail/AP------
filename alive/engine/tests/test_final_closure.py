@@ -56,6 +56,27 @@ class FinalClosureTests(unittest.TestCase):
             self.assertEqual("NOT_TESTED", report["questions"][0]["checks"]["math"])
             self.assertEqual("NOT_TESTED", report["questions"][0]["checks"]["solutionArithmetic"])
 
+    def test_final_closure_requires_recovery_ledger_for_recovered_target_signal(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            question = _question()
+            question["slotUid"] = "Q1"
+            question["effectiveArtifactUid"] = "Q1-R"
+            path = root / "archive/exams/similar/high/h1/2mid/test_유사.js"
+            path.parent.mkdir(parents=True)
+            path.write_text(
+                'window.examTitle = "25_테스트_2학기_중간_고1_수학_유사";\n'
+                + "window.questionBank = "
+                + json.dumps([question], ensure_ascii=False)
+                + ";\n",
+                encoding="utf-8",
+            )
+
+            report = audit_final_closure(root, path, None, None, None)
+
+            self.assertEqual("BLOCKED", report["sourceRecovery"]["status"])
+            self.assertIn("SOURCE_RECOVERY_LEDGER_REQUIRED", report["sourceRecovery"]["errors"])
+
     def test_final_closure_catches_half_boundary_arithmetic_contradiction(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
