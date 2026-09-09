@@ -3,7 +3,10 @@ import path from 'node:path';
 import vm from 'node:vm';
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]):/, '$1:')), '..');
-const archive = path.join(root, 'archive', 'exams', 'original', 'high', 'h1');
+const archiveRoots = [
+  path.join(root, 'archive', 'exams', 'original', 'high', 'h1', '2mid'),
+  path.join(root, 'archive', 'exams', 'original', 'high', 'h1', '2final'),
+];
 const validSubUnit = {
   'H15-SA-09': 'H15-SA-09-COORDINATE_METRIC',
   'H15-SA-11': 'H15-SA-11-CIRCLE_EQUATION',
@@ -29,7 +32,7 @@ function load(text){const c={window:{}};vm.runInNewContext(text,c,{timeout:10000
 function save(text,win,bank){const s=span(text);let out=text.slice(0,s.open)+'[\n'+bank.map(q=>JSON.stringify(q)).join(',\n')+'\n]'+text.slice(s.close+1);out=out.replace(/window\.examVariant\s*=\s*[^;]+;\s*\n?/g,'').replace(/window\.sourceOriginalPreserved\s*=\s*[^;]+;\s*\n?/g,'').replace(/window\.productionAdoptionStatus\s*=\s*[^;]+;\s*\n?/g,'').replace(/window\.replacementDisposition\s*=\s*[^;]+;\s*\n?/g,'');return out;}
 function walk(d,a=[]){for(const e of fs.readdirSync(d,{withFileTypes:true})){const f=path.join(d,e.name);if(e.isDirectory())walk(f,a);else if(e.isFile()&&e.name.endsWith('.js'))a.push(f)}return a;}
 let files=0,questions=0,removedFields=0;
-for(const file of walk(archive)){
+for(const file of archiveRoots.flatMap(dir => walk(dir))){
   const text=fs.readFileSync(file,'utf8');let win;try{win=load(text)}catch{continue;}
   const bank=win.questionBank||[];let touched=false;
   for(const q of bank){
