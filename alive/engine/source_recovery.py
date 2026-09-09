@@ -343,7 +343,7 @@ def make_candidate_version(
         "parentCandidateId": parent_candidate_id,
         "payload": candidate_payload,
         "payloadSha256": payload_sha,
-        "freeze": {"status": freeze_status, "payloadSha256": payload_sha},
+        "freeze": {"status": freeze_status, "payloadSha256": payload_sha, "immutable": True},
         "immutable": True,
     }
 
@@ -752,6 +752,39 @@ def validate_producer_attempt(
     return {"status": "PASS" if not errors else "PENDING", "errors": _ordered_unique(errors)}
 
 
+def validate_external_candidate(
+    candidate: Mapping[str, Any] | None,
+    *,
+    recovery_plan_id: str,
+) -> dict[str, Any]:
+    """Recompute external candidate identity before any evidence is trusted."""
+
+    errors: list[str] = []
+    if not isinstance(candidate, Mapping):
+        return {"status": "FAIL", "errors": ["EXTERNAL_CANDIDATE_REQUIRED"]}
+    payload = candidate.get("payload")
+    if not isinstance(payload, Mapping):
+        errors.append("EXTERNAL_CANDIDATE_PAYLOAD_REQUIRED")
+    actual_payload_sha = _candidate_payload_sha(payload) if isinstance(payload, Mapping) else None
+    if candidate.get("payloadSha256") != actual_payload_sha:
+        errors.append("EXTERNAL_CANDIDATE_PAYLOAD_SHA_MISMATCH")
+    version = candidate.get("candidateVersion")
+    if not isinstance(version, int) or isinstance(version, bool) or version < 1:
+        errors.append("EXTERNAL_CANDIDATE_VERSION_INVALID")
+    elif actual_payload_sha is not None and candidate.get("candidateId") != _candidate_id(recovery_plan_id, version, actual_payload_sha):
+        errors.append("EXTERNAL_CANDIDATE_ID_MISMATCH")
+    if candidate.get("recoveryPlanId") != recovery_plan_id:
+        errors.append("EXTERNAL_CANDIDATE_PLAN_ID_MISMATCH")
+    freeze = candidate.get("freeze")
+    if not isinstance(freeze, Mapping) or freeze.get("status") != "FROZEN" or freeze.get("immutable") is not True:
+        errors.append("EXTERNAL_CANDIDATE_FREEZE_REQUIRED")
+    elif freeze.get("payloadSha256") != actual_payload_sha:
+        errors.append("EXTERNAL_CANDIDATE_FREEZE_SHA_MISMATCH")
+    if candidate.get("immutable") is not True:
+        errors.append("EXTERNAL_CANDIDATE_IMMUTABLE_REQUIRED")
+    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
+
+
 def validate_source_evidence(source_payload: Mapping[str, Any] | None) -> dict[str, Any]:
     """Require the source recheck evidence needed before diagnosis."""
 
@@ -820,6 +853,24 @@ def diagnose_source_defects(
             "finalStatus": "BLOCKED",
             "code": CODE_SOURCE_RECOVERY_VALIDATION_FAIL,
             "reason": "INDEPENDENT_MATH_NOT_PASS",
+        }
+    missing_response_evidence = [
+        field for field in ("mathVerdict", "answerUnique", "responseContractValid")
+        if field not in independent_solve
+    ]
+    has_computed_answer = any(
+        field in independent_solve and independent_solve.get(field) is not None
+        for field in ("independentlyComputedValue", "independentlyComputedAnswer", "answer")
+    )
+    if not has_computed_answer:
+        missing_response_evidence.append("independentlyComputedAnswer")
+    if missing_response_evidence:
+        return {
+            "status": "SOURCE_RECOVERY_VALIDATION_FAILED",
+            "finalStatus": "BLOCKED",
+            "code": CODE_SOURCE_RECOVERY_VALIDATION_FAIL,
+            "reason": "INDEPENDENT_RESPONSE_EVIDENCE_INCOMPLETE",
+            "missing": _ordered_unique(missing_response_evidence),
         }
     choices = source_payload.get("choices")
     choices = choices if isinstance(choices, list) else []
@@ -1286,6 +1337,158 @@ def validate_closure_evidence(
     }
 
 
+def _bound_path(root: Path | None, reference: Any, error_prefix: str) -> tuple[Path | None, list[str]]:
+    if root is None:
+        return None, [f"{error_prefix}_ROOT_REQUIRED"]
+    if not isinstance(reference, str) or not reference:
+        return None, [f"{error_prefix}_REF_REQUIRED"]
+    resolved_root = Path(root).resolve()
+    resolved = (Path(reference) if Path(reference).is_absolute() else resolved_root / reference).resolve()
+    try:
+        resolved.relative_to(resolved_root)
+    except ValueError:
+        return None, [f"{error_prefix}_REF_OUTSIDE_ROOT"]
+    if not resolved.is_file():
+        return None, [f"{error_prefix}_FILE_MISSING"]
+    return resolved, []
+
+
+def validate_final_artifact_binding(
+    item: Mapping[str, Any],
+    *,
+    artifact_root: Path | None,
+    evidence_root: Path | None = None,
+) -> dict[str, Any]:
+    """Verify the materialized student artifact and its replacement receipt."""
+
+    errors: list[str] = []
+    final_ref = item.get("finalArtifactRef")
+    final_sha = item.get("finalArtifactSha256")
+    if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(final_sha or "")):
+        errors.append("FINAL_ARTIFACT_SHA_INVALID")
+    for field in ("afterPayloadSha256", "sourceLockSha256", "initialIncludedScopeUidSetSha256"):
+        if not isinstance(item.get(field), str) or not item.get(field):
+            errors.append(f"FINAL_ARTIFACT_{field.upper()}_MISSING")
+    final_path, path_errors = _bound_path(artifact_root, final_ref, "FINAL_ARTIFACT")
+    errors.extend(path_errors)
+    if final_path is not None and re.fullmatch(r"sha256:[0-9a-f]{64}", str(final_sha or "")):
+        if f"sha256:{sha256_file(final_path)}" != final_sha:
+            errors.append("FINAL_ARTIFACT_SHA_MISMATCH")
+    if evidence_root is not None:
+        evidence_path, evidence_path_errors = _bound_path(evidence_root, item.get("replacementEvidenceRef"), "REPLACEMENT_EVIDENCE")
+        errors.extend(evidence_path_errors)
+        if evidence_path is not None:
+            actual_evidence_sha = f"sha256:{sha256_file(evidence_path)}"
+            if actual_evidence_sha != item.get("replacementEvidenceSha"):
+                errors.append("REPLACEMENT_EVIDENCE_SHA_MISMATCH")
+            try:
+                evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                errors.append("REPLACEMENT_EVIDENCE_JSON_INVALID")
+            else:
+                if evidence.get("status") != "PASS":
+                    errors.append("REPLACEMENT_EVIDENCE_ARTIFACT_NOT_PASS")
+                for field in (
+                    "sourceQuestionUid",
+                    "recoveredQuestionUid",
+                    "effectiveArtifactUid",
+                    "candidatePayloadSha256",
+                    "sourceLockSha256",
+                    "initialIncludedScopeUidSetSha256",
+                    "finalArtifactSha256",
+                ):
+                    expected = item.get(field)
+                    if field == "candidatePayloadSha256":
+                        expected = item.get("afterPayloadSha256")
+                    if evidence.get(field) != expected and not (
+                        field == "candidatePayloadSha256" and evidence.get(field) == item.get("afterPayloadSha256")
+                    ):
+                        errors.append(f"REPLACEMENT_EVIDENCE_BINDING_MISMATCH:{field}")
+                if evidence.get("finalArtifactRef") != final_ref:
+                    errors.append("REPLACEMENT_EVIDENCE_BINDING_MISMATCH:finalArtifactRef")
+                if evidence.get("replacementCardinality") not in {None, "1:1"}:
+                    errors.append("REPLACEMENT_EVIDENCE_CARDINALITY_INVALID")
+                if evidence.get("sourceOriginalPreserved") not in {None, True}:
+                    errors.append("REPLACEMENT_EVIDENCE_LINEAGE_INVALID")
+        quality_ref = item.get("qualityClosureEvidenceRef")
+        quality_sha = item.get("qualityClosureEvidenceSha")
+        if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(quality_sha or "")):
+            errors.append("QUALITY_CLOSURE_EVIDENCE_SHA_INVALID")
+        quality_path, quality_path_errors = _bound_path(evidence_root, quality_ref, "QUALITY_CLOSURE_EVIDENCE")
+        errors.extend(quality_path_errors)
+        if quality_path is not None:
+            if f"sha256:{sha256_file(quality_path)}" != quality_sha:
+                errors.append("QUALITY_CLOSURE_EVIDENCE_SHA_MISMATCH")
+            try:
+                quality = json.loads(quality_path.read_text(encoding="utf-8"))
+            except (OSError, UnicodeError, json.JSONDecodeError):
+                errors.append("QUALITY_CLOSURE_EVIDENCE_JSON_INVALID")
+            else:
+                for field in (
+                    "sourceQuestionUid",
+                    "recoveredQuestionUid",
+                    "effectiveArtifactUid",
+                    "candidatePayloadSha256",
+                    "sourceLockSha256",
+                    "initialIncludedScopeUidSetSha256",
+                    "finalArtifactSha256",
+                    "finalArtifactRef",
+                ):
+                    expected = item.get(field) if field != "candidatePayloadSha256" else item.get("afterPayloadSha256")
+                    if quality.get(field) != expected:
+                        errors.append(f"QUALITY_CLOSURE_EVIDENCE_BINDING_MISMATCH:{field}")
+                gates = quality.get("qualityGateResults")
+                if quality.get("status") != "PASS" or not isinstance(gates, Mapping) or not gates or any(status != "PASS" for status in gates.values()):
+                    errors.append("QUALITY_CLOSURE_EVIDENCE_NOT_PASS")
+    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
+
+
+def validate_authorization_scope(
+    recovered: Mapping[str, Any],
+    authorization: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    """Validate the narrow runtime scope permitted to adopt a recovery."""
+
+    errors: list[str] = []
+    if not isinstance(authorization, Mapping):
+        return {"status": "FAIL", "errors": ["RECOVERY_AUTHORIZATION_REQUIRED"]}
+    if authorization.get("scopeAuthorizationStatus") != "PASS":
+        errors.append("RECOVERY_SCOPE_AUTHORIZATION_NOT_PASS")
+    scope = authorization.get("authorizedScope")
+    if not isinstance(scope, Mapping):
+        return {"status": "FAIL", "errors": _ordered_unique([*errors, "RECOVERY_AUTHORIZED_SCOPE_REQUIRED"])}
+    authority = recovered.get("recoveryAuthority")
+    declared_authority = authorization.get("authority", scope.get("authority"))
+    if declared_authority != authority:
+        errors.append("RECOVERY_AUTHORIZATION_AUTHORITY_MISMATCH")
+
+    allowed_sources = scope.get("allowedSourceQuestionUids")
+    if scope.get("sourceQuestionUid") != recovered.get("sourceQuestionUid") and not (
+        isinstance(allowed_sources, list) and recovered.get("sourceQuestionUid") in allowed_sources
+    ):
+        errors.append("RECOVERY_AUTHORIZED_SOURCE_OUT_OF_SCOPE")
+
+    allowed_tiers = scope.get("allowedRecoveryTiers")
+    if scope.get("recoveryTier") != recovered.get("recoveryTier") and not (
+        isinstance(allowed_tiers, list) and recovered.get("recoveryTier") in allowed_tiers
+    ):
+        errors.append("RECOVERY_AUTHORIZED_TIER_OUT_OF_SCOPE")
+
+    authorized_defects = scope.get("defectTypes")
+    if authorized_defects is None:
+        authorized_defects = scope.get("allowedDefectTypes")
+    if authorized_defects is None and scope.get("defectType") is not None:
+        authorized_defects = [scope.get("defectType")]
+    source_defects = recovered.get("sourceDefectTypes") or []
+    if not isinstance(authorized_defects, list) or any(defect not in authorized_defects for defect in source_defects):
+        errors.append("RECOVERY_AUTHORIZED_DEFECT_OUT_OF_SCOPE")
+
+    for field in ("runId", "batchId"):
+        if recovered.get(field) is not None and scope.get(field) != recovered.get(field):
+            errors.append(f"RECOVERY_AUTHORIZED_{field.upper()}_OUT_OF_SCOPE")
+    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
+
+
 def atomic_adopt_replacement(
     recovered: Mapping[str, Any],
     *,
@@ -1295,6 +1498,7 @@ def atomic_adopt_replacement(
     quality_closure_evidence: Mapping[str, Any] | None = None,
     lineage_parity_evidence: Mapping[str, Any] | None = None,
     evidence_root: Path | None = None,
+    artifact_root: Path | None = None,
 ) -> dict[str, Any]:
     """Perform AUTHORIZED -> ADOPTED and disposition in one returned snapshot.
 
@@ -1311,6 +1515,12 @@ def atomic_adopt_replacement(
         raise SourceRecoveryError(CODE_SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION)
     if not isinstance(authorization, Mapping) or authorization.get("status") != "PASS" or not authorization.get("authorizationRef"):
         raise SourceRecoveryError("recovery authorization scope is not proven")
+    authorization_scope = validate_authorization_scope(recovered, authorization)
+    if authorization_scope["status"] != "PASS":
+        raise SourceRecoveryError(";".join(authorization_scope["errors"]))
+    final_artifact_check = validate_final_artifact_binding(recovered, artifact_root=artifact_root)
+    if final_artifact_check["status"] != "PASS":
+        raise SourceRecoveryError(";".join(final_artifact_check["errors"]))
     expected_bindings = {
         "sourceQuestionUid": recovered.get("sourceQuestionUid"),
         "recoveredQuestionUid": recovered.get("recoveredQuestionUid"),
@@ -1320,7 +1530,8 @@ def atomic_adopt_replacement(
         "candidatePayloadSha256": recovered.get("afterPayloadSha256"),
         "sourceLockSha256": recovered.get("sourceLockSha256"),
         "initialIncludedScopeUidSetSha256": recovered.get("initialIncludedScopeUidSetSha256"),
-        "finalArtifactSha256": recovered.get("finalArtifactSha256", recovered.get("afterPayloadSha256")),
+        "finalArtifactRef": recovered.get("finalArtifactRef"),
+        "finalArtifactSha256": recovered.get("finalArtifactSha256"),
     }
     quality_evidence = validate_closure_evidence(
         quality_closure_evidence,
@@ -1360,6 +1571,14 @@ def atomic_adopt_replacement(
         "replacementEvidenceSha": lineage_parity_evidence["evidenceSha256"],
     }
     next_state["authorizationRef"] = authorization["authorizationRef"]
+    next_state["authorizationAuthority"] = authorization.get("authority", recovered.get("recoveryAuthority"))
+    next_state["scopeAuthorizationStatus"] = authorization["scopeAuthorizationStatus"]
+    next_state["authorizedScope"] = copy.deepcopy(dict(authorization["authorizedScope"]))
+    next_state["qualityClosureEvidenceRef"] = quality_closure_evidence["evidenceRef"]
+    next_state["qualityClosureEvidenceSha"] = quality_closure_evidence["evidenceSha256"]
+    final_seal = validate_final_artifact_binding(next_state, artifact_root=artifact_root, evidence_root=evidence_root)
+    if final_seal["status"] != "PASS":
+        raise SourceRecoveryError(";".join(final_seal["errors"]))
     parity = validate_replacement(next_state, initial_scope_uids, initial_scope_sha256)
     if parity["status"] != "PASS":
         raise SourceRecoveryError(";".join(parity["errors"]))
@@ -1391,6 +1610,9 @@ def run_source_recovery(
     lineage_parity_evidence: Mapping[str, Any] | None = None,
     recovery_plan_id: str | None = None,
     evidence_root: Path | None = None,
+    artifact_root: Path | None = None,
+    final_artifact_ref: str | None = None,
+    final_artifact_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Route one source question through the bounded recovery contract.
 
@@ -1506,6 +1728,10 @@ def run_source_recovery(
         "correctnessAffecting": defect_is_correctness_affecting(defects),
         "diagnosis": auto_diagnosis,
     }
+    if final_artifact_ref is not None:
+        base["finalArtifactRef"] = final_artifact_ref
+    if final_artifact_sha256 is not None:
+        base["finalArtifactSha256"] = final_artifact_sha256
     if source_recovery_policy == "PRESERVE_ONLY":
         base.update({
             "status": "PRESERVE_ONLY",
@@ -1540,28 +1766,48 @@ def run_source_recovery(
         accepted: list[dict[str, Any]] = []
         for raw in raw_candidates:
             payload = raw.get("payload") if isinstance(raw, Mapping) else None
+            external_candidate = isinstance(raw, Mapping) and bool(raw.get("candidateId"))
             candidate = (
                 copy.deepcopy(dict(raw))
-                if isinstance(raw, Mapping) and raw.get("candidateId")
+                if external_candidate
                 else make_candidate_version(
                     base["recoveryPlanId"],
                     payload if isinstance(payload, Mapping) else dict(raw),
                     candidate_version=base["candidateVersion"] + 1,
                 )
             )
-            base["candidateVersion"] = max(base["candidateVersion"], int(candidate.get("candidateVersion", 0)))
-            if not candidate.get("verifierEvidence") and blind_verifier is not None:
-                candidate["verifierEvidence"] = copy.deepcopy(blind_verifier(blind_candidate_view(candidate)))
-            if not candidate.get("validatorEvidence"):
-                candidate["validatorEvidence"] = copy.deepcopy(
-                    validator(candidate) if validator is not None else build_validator_evidence(candidate)
-                )
+            candidate_version = candidate.get("candidateVersion")
+            if isinstance(candidate_version, int) and not isinstance(candidate_version, bool):
+                base["candidateVersion"] = max(base["candidateVersion"], candidate_version)
+            trust_errors: list[str] = []
+            if external_candidate:
+                trust_errors.extend(validate_external_candidate(candidate, recovery_plan_id=base["recoveryPlanId"])["errors"])
+                if blind_verifier is None:
+                    candidate.pop("verifierEvidence", None)
+                    trust_errors.append("EXTERNAL_CANDIDATE_VERIFIER_REDISPATCH_REQUIRED")
+                else:
+                    candidate["verifierEvidence"] = copy.deepcopy(blind_verifier(blind_candidate_view(candidate)))
+                if validator is None:
+                    candidate.pop("validatorEvidence", None)
+                    trust_errors.append("EXTERNAL_CANDIDATE_VALIDATOR_REDISPATCH_REQUIRED")
+                else:
+                    candidate["validatorEvidence"] = copy.deepcopy(validator(candidate))
+            else:
+                if blind_verifier is not None:
+                    candidate["verifierEvidence"] = copy.deepcopy(blind_verifier(blind_candidate_view(candidate)))
+                if validator is not None:
+                    candidate["validatorEvidence"] = copy.deepcopy(validator(candidate))
+                elif not candidate.get("validatorEvidence"):
+                    candidate["validatorEvidence"] = copy.deepcopy(build_validator_evidence(candidate))
             acceptance = candidate_acceptance(
                 candidate,
                 recovery_tier=tier,
                 independent_verification=str(raw.get("independentVerification")) if isinstance(raw, Mapping) and raw.get("independentVerification") is not None else None,
-                verifier_evidence=(raw.get("verifierEvidence") if isinstance(raw, Mapping) else None) or candidate.get("verifierEvidence"),
+                verifier_evidence=candidate.get("verifierEvidence"),
             )
+            if trust_errors:
+                acceptance["status"] = "FAIL"
+                acceptance["failedGates"] = _ordered_unique([*acceptance.get("failedGates", []), *trust_errors])
             candidate["acceptance"] = acceptance
             base["candidatePool"].append(copy.deepcopy(candidate))
             base["candidateIndex"] += 1
@@ -1601,7 +1847,7 @@ def run_source_recovery(
             "selectedCandidateVersion": winner["candidateVersion"],
             "beforePayloadSha256": payload.get("beforePayloadSha256"),
             "afterPayloadSha256": winner["payloadSha256"],
-            "finalArtifactSha256": winner["payloadSha256"],
+            "effectivePayloadSha256": winner["payloadSha256"],
             "mutations": copy.deepcopy(payload.get("mutations", [])),
             "sourceOriginalPreserved": True,
             "productionOriginalActive": True,
@@ -1623,23 +1869,28 @@ def run_source_recovery(
         if source_recovery_policy == "AUTO_RECOVER" and recovery_authority != "SHADOW_ONLY":
             auth = authorization or {}
             if auth.get("status") == "PASS" and auth.get("authorizationRef"):
-                base["productionAdoptionStatus"] = "AUTHORIZED"
-                try:
-                    adopted = atomic_adopt_replacement(
-                        base,
-                        authorization=auth,
-                        initial_scope_uids=initial,
-                        initial_scope_sha256=initial_sha,
-                        quality_closure_evidence=quality_closure_evidence,
-                        lineage_parity_evidence=lineage_parity_evidence,
-                        evidence_root=evidence_root,
-                    )
-                except SourceRecoveryError as error:
-                    base["codes"] = [CODE_SOURCE_RECOVERY_VALIDATION_FAIL, CODE_DERIVED_REPLACEMENT_PARITY_FAIL]
+                scope_check = validate_authorization_scope(base, auth)
+                if scope_check["status"] != "PASS":
+                    base["codes"] = [CODE_SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION]
                 else:
-                    adopted["finalTarget"] = True
-                    adopted["nextAction"] = "CONTINUE_EXECUTION"
-                    return adopted
+                    base["productionAdoptionStatus"] = "AUTHORIZED"
+                    try:
+                        adopted = atomic_adopt_replacement(
+                            base,
+                            authorization=auth,
+                            initial_scope_uids=initial,
+                            initial_scope_sha256=initial_sha,
+                            quality_closure_evidence=quality_closure_evidence,
+                            lineage_parity_evidence=lineage_parity_evidence,
+                            evidence_root=evidence_root,
+                            artifact_root=artifact_root,
+                        )
+                    except SourceRecoveryError as error:
+                        base["codes"] = [CODE_SOURCE_RECOVERY_VALIDATION_FAIL, CODE_DERIVED_REPLACEMENT_PARITY_FAIL]
+                    else:
+                        adopted["finalTarget"] = True
+                        adopted["nextAction"] = "CONTINUE_EXECUTION"
+                        return adopted
             else:
                 base["codes"] = [CODE_SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION]
         return base
@@ -1685,6 +1936,9 @@ def resume_source_recovery(
     blind_verifier: Any | None = None,
     validator: Any | None = None,
     evidence_root: Path | None = None,
+    artifact_root: Path | None = None,
+    final_artifact_ref: str | None = None,
+    final_artifact_sha256: str | None = None,
 ) -> dict[str, Any]:
     """Resume only the remaining producer work from a saved checkpoint.
 
@@ -1714,6 +1968,9 @@ def resume_source_recovery(
         blind_verifier=blind_verifier,
         validator=validator,
         evidence_root=evidence_root,
+        artifact_root=artifact_root,
+        final_artifact_ref=final_artifact_ref or state.get("finalArtifactRef"),
+        final_artifact_sha256=final_artifact_sha256 or state.get("finalArtifactSha256"),
         recovery_plan_id=state.get("recoveryPlanId"),
     )
     result["candidatePool"] = [*copy.deepcopy(state.get("candidatePool", [])), *result.get("candidatePool", [])]
@@ -1872,6 +2129,14 @@ def validate_ledger(ledger: Mapping[str, Any]) -> dict[str, Any]:
             recovered_uids.add(recovered_uid)
         if item.get("replacementDisposition") == "DERIVED_REPLACEMENT_VERIFIED":
             errors.extend(validate_replacement(item, initial, ledger.get("initialIncludedScopeUidSetSha256"))["errors"])
+            record_authorization = {
+                "status": "PASS",
+                "authorizationRef": item.get("authorizationRef"),
+                "authority": item.get("authorizationAuthority", item.get("recoveryAuthority")),
+                "scopeAuthorizationStatus": item.get("scopeAuthorizationStatus"),
+                "authorizedScope": item.get("authorizedScope"),
+            }
+            errors.extend(validate_authorization_scope(item, record_authorization)["errors"])
         if item.get("productionOriginalActive") is True and item.get("productionRecoveredActive") is True:
             errors.append(CODE_DERIVED_REPLACEMENT_PARITY_FAIL)
         if (item.get("productionRecoveredActive") is True or item.get("productionAdoptionStatus") == "ADOPTED") and item.get("replacementDisposition") != "DERIVED_REPLACEMENT_VERIFIED":
@@ -1934,6 +2199,8 @@ def release_gate(
     ledger: Mapping[str, Any] | None,
     *,
     existing_final_status: str = "PASS",
+    evidence_root: Path | None = None,
+    artifact_root: Path | None = None,
 ) -> dict[str, Any]:
     """Aggregate recovery hard gates while allowing execution to continue."""
 
@@ -1973,6 +2240,13 @@ def release_gate(
         if final_target and not answer_key_recovery and item.get("productionAdoptionStatus") not in {None, "ADOPTED"} and item.get("recoveryAuthority") not in {"BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"}:
             counts["unauthorizedRecoveryAdoptionCount"] += 1
         replacement = item.get("replacement") if isinstance(item.get("replacement"), Mapping) else item
+        if disposition == "DERIVED_REPLACEMENT_VERIFIED" and (evidence_root is not None or artifact_root is not None):
+            final_seal = validate_final_artifact_binding(
+                item,
+                artifact_root=artifact_root,
+                evidence_root=evidence_root,
+            )
+            errors.extend(final_seal["errors"])
         if disposition == "DERIVED_REPLACEMENT_VERIFIED" and any(
             replacement.get(field) != expected
             for field, expected in (
@@ -2060,6 +2334,9 @@ __all__ = [
     "validate_validator_evidence",
     "validate_closure_evidence",
     "resolve_independent_answer_against_choices",
+    "validate_authorization_scope",
+    "validate_external_candidate",
+    "validate_final_artifact_binding",
     "validate_replacement",
     "validate_tier_matrix",
 ]

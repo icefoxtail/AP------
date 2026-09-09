@@ -545,7 +545,7 @@ def audit_final_closure(
                 "executionContinues": True,
             }
         else:
-            recovery_gate = release_gate(recovery_value) if recovery_value is not None else {
+            recovery_gate = release_gate(recovery_value, evidence_root=root, artifact_root=root) if recovery_value is not None else {
             "status": "PASS",
             "counts": {},
             "errors": [],

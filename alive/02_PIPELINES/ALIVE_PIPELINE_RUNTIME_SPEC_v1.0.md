@@ -227,8 +227,8 @@ Derived artifact의 production slot 승계는 `DERIVED_REPLACEMENT_VERIFIED`
 one-to-one parity와 기존 final closure를 모두 통과한 경우에만 가능하다.
 초기 denominator UID set과 SHA는 replacement 전후 불변이다.
 
-현재 capability registry는 R0/R1/R3 bounded producer와 blind-contract verifier만
-`ACTIVE`로 등록한다. R2/R4/R6는 `DEFERRED_CAPABILITY`, R5는 visual
+현재 capability registry는 R0/R1 bounded producer와 blind-contract verifier만
+`ACTIVE`로 등록한다. R2/R3/R4/R6는 `DEFERRED_CAPABILITY`, R5는 visual
 capability `CAPABILITY_BLOCKED`이며, 미지정 tier를 ACTIVE로 간주하지 않는다.
 
 후보가 없다는 사실만으로 tier를 exhausted로 닫지 않는다. 각 active producer는

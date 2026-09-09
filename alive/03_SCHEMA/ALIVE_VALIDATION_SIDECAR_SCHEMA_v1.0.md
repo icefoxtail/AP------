@@ -296,8 +296,8 @@ R0~R6는 하나의 상태 enum으로 축약하지 않는다. 각 tier에
 세지 않는다.
 
 현재 등록 capability는 `alive/engine/source_recovery.py`의 명시 registry를
-기준으로 R0/R1/R3 bounded producer·blind-contract verifier만 `ACTIVE`다.
-R2/R4/R6는 deferred, R5는 visual capability blocked 상태이며, 등록
+기준으로 R0/R1 bounded producer·blind-contract verifier만 `ACTIVE`다.
+R2/R3/R4/R6는 deferred, R5는 visual capability blocked 상태이며, 등록
 evidence 없이 기본 ACTIVE로 취급하지 않는다.
 
 필요 source evidence가 없으면 `HUMAN_REQUIRED`가 아니라 다음 resume 계약을

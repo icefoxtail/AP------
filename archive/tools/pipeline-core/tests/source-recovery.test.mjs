@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { uidSetSha } from '../canonical.mjs';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { bytesSha, uidSetSha } from '../canonical.mjs';
 import { validateSourceRecoveryLedger } from '../source-recovery.mjs';
 import { fixture } from './fixture.mjs';
 import { auditRun, runInputSha } from '../closure.mjs';
@@ -27,6 +30,11 @@ const adopted = {
   replacementCardinality: '1:1',
   recoveryAuthority: 'BOUNDED_PRODUCTION',
   productionAdoptionStatus: 'ADOPTED',
+  authorizationAuthority: 'BOUNDED_PRODUCTION',
+  scopeAuthorizationStatus: 'PASS',
+  authorizedScope: { sourceQuestionUid: 'Q17', recoveryTier: 'R1', defectTypes: ['NO_CORRECT_ANSWER'] },
+  sourceDefectTypes: ['NO_CORRECT_ANSWER'],
+  recoveryTier: 'R1',
   replacementDisposition: 'DERIVED_REPLACEMENT_VERIFIED',
   status: 'RECOVERED',
   finalTarget: true,
@@ -106,6 +114,56 @@ test('partial producer and retry budgets cannot be counted as exhaustion', () =>
   });
   assert.equal(result.status, 'BLOCKED');
   assert.ok(result.errors.includes('RECOVERY_PRODUCER_BUDGET_NOT_EXHAUSTED'));
+});
+
+test('final seal re-reads replacement evidence and final artifact bytes', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-source-recovery-seal-'));
+  try {
+    const finalArtifactRef = 'final/q17.json';
+    const replacementEvidenceRef = 'evidence/q17-lineage.json';
+    const qualityClosureEvidenceRef = 'evidence/q17-quality.json';
+    const finalBytes = Buffer.from('{"answer":"①"}\n', 'utf8');
+    fs.mkdirSync(path.join(root, 'final'), { recursive: true });
+    fs.mkdirSync(path.join(root, 'evidence'), { recursive: true });
+    fs.writeFileSync(path.join(root, finalArtifactRef), finalBytes);
+    const item = {
+      ...adopted,
+      finalArtifactRef,
+      finalArtifactSha256: bytesSha(finalBytes),
+      afterPayloadSha256: 'sha256:' + 'b'.repeat(64),
+      sourceLockSha256: 'b'.repeat(64),
+      initialIncludedScopeUidSetSha256: uidSetSha(['Q1', 'Q17']),
+      replacementEvidenceRef,
+      qualityClosureEvidenceRef,
+    };
+    const evidence = {
+      evidenceId: 'lineage-q17',
+      status: 'PASS',
+      sourceQuestionUid: item.sourceQuestionUid,
+      recoveredQuestionUid: item.recoveredQuestionUid,
+      effectiveArtifactUid: item.effectiveArtifactUid,
+      candidatePayloadSha256: item.afterPayloadSha256,
+      sourceLockSha256: item.sourceLockSha256,
+      initialIncludedScopeUidSetSha256: item.initialIncludedScopeUidSetSha256,
+      finalArtifactSha256: item.finalArtifactSha256,
+      finalArtifactRef,
+    };
+    const evidenceBytes = Buffer.from(JSON.stringify(evidence), 'utf8');
+    fs.writeFileSync(path.join(root, replacementEvidenceRef), evidenceBytes);
+    item.replacementEvidenceSha = bytesSha(evidenceBytes);
+    const quality = { ...evidence, evidenceId: 'quality-q17', qualityGateResults: { math: 'PASS', structure: 'PASS' } };
+    const qualityBytes = Buffer.from(JSON.stringify(quality), 'utf8');
+    fs.writeFileSync(path.join(root, qualityClosureEvidenceRef), qualityBytes);
+    item.qualityClosureEvidenceSha = bytesSha(qualityBytes);
+    let result = validateSourceRecoveryLedger({ ...base, items: [item] }, null, root);
+    assert.equal(result.status, 'PASS', JSON.stringify(result.errors));
+    fs.writeFileSync(path.join(root, finalArtifactRef), Buffer.from('{"answer":"②"}\n', 'utf8'));
+    result = validateSourceRecoveryLedger({ ...base, items: [item] }, null, root);
+    assert.equal(result.status, 'BLOCKED');
+    assert.ok(result.errors.includes('FINAL_ARTIFACT_SHA_MISMATCH'));
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('pipeline-core closure consumes the recovery ledger as a hard gate', () => {
