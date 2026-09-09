@@ -30,7 +30,7 @@
 
 ## Not sealed yet
 
-The general trig/exponential/logarithmic function graphs are now checked through the explicit specialist route adapter, not coerced into an unrelated typed family. The current CLI closure is recorded at `function_graph_specialist_pipeline_closure_v8.json`: 39/39 candidate records, 459/459 solution freeze, 72/72 baseline render, and 18/18 origin-main refresh render PASS.
+The general trig/exponential/logarithmic function graphs are now checked through the explicit specialist route adapter, not coerced into an unrelated typed family. The current CLI closure is recorded at `function_graph_specialist_pipeline_closure_v9.json`: 39/39 candidate records, 459/459 solution freeze, 72/72 baseline render, and 18/18 origin-main refresh render PASS.
 
 The route still returns `productionAuthorized:false`. This is an evidence closure, not the final production seal: academy/user visual review and the later main merge remain pending.
 

@@ -19,7 +19,7 @@ const bindings = readJson('reports/h2-s1-algebra-visual-upgrade/PRODUCTION_ASSET
 const render = readJson('reports/h2-s1-algebra-visual-upgrade/browser_render_capture_matrix.json');
 const renderRefresh = readJson('reports/h2-s1-algebra-visual-upgrade/browser_render_refresh_20260909.json');
 const renderReview = readJson('reports/h2-s1-algebra-visual-upgrade/browser_render_review.json');
-const specialist = readJson('reports/h2-s1-algebra-visual-upgrade/function_graph_specialist_pipeline_closure_v8.json');
+const specialist = readJson('reports/h2-s1-algebra-visual-upgrade/function_graph_specialist_pipeline_closure_v9.json');
 
 const sourceQuestions = new Map();
 for (const source of inventory.files) {
