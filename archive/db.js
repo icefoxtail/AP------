@@ -1787,16 +1787,16 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "original/high/h1/2final/19_강남고_2학기_기말_고1_기출.js",
-      "school": "강남고",
+      "file": "original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js",
+      "school": "강남여고",
       "topic": "",
       "grade": "고1",
       "year": 2019,
       "semester": "2",
       "examType": "final",
-      "subject": "수학",
+      "subject": "수학(하)",
       "contentType": "기출",
-      "qCount": 18,
+      "qCount": 25,
       "rangeStartUnitKey": "",
       "rangeStartUnit": "",
       "rangeStartUnitOrder": 999,
@@ -1823,6 +1823,16 @@ window.mainDB = {
           "rangeEndUnitKey": "H15-SB-06",
           "rangeEndUnit": "경우의 수",
           "rangeEndUnitOrder": 6
+        },
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-07",
+          "rangeStartUnit": "입체도형의 성질",
+          "rangeStartUnitOrder": 7,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
         }
       ],
       "primaryStandardCourse": "수학"

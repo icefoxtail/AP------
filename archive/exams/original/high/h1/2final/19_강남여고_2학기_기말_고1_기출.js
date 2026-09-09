@@ -1,0 +1,747 @@
+window.examTitle = "19_강남여고_2학기_기말_고1_기출";
+window.questionBank = [
+  {
+    "id": 1,
+    "level": "하",
+    "category": "다항식의 연산",
+    "originalCategory": "다항식의 연산",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-04",
+    "standardUnit": "복소수",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "등식 $(3-i)+(-2+3i)=a+bi$를 만족하는 실수 $a,b$에 대하여 $a+b$의 값은? [2.5점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "③",
+    "solution": "$a=1,b=2$이므로 합은3이다.",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "subUnit": "복소수의 뜻과 표현",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 2,
+    "level": "하",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-11",
+    "standardUnit": "원의 방정식",
+    "standardUnitOrder": 11,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "방정식 $(x-2)^2+(y-1)^2=9$이 나타내는 원의 중심의 좌표를 $(a,b)$, 반지름을 $r$이라고 할 때, 실수 $a,b,r$에 대하여 $a+b+r$의 값은? [2.5점]",
+    "choices": [
+      "$0$",
+      "$1$",
+      "$3$",
+      "$6$",
+      "$12$"
+    ],
+    "answer": "④",
+    "solution": "중심은 (2,1), 반지름은3이므로 합은6이다.",
+    "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+    "subUnit": "원의 방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 3,
+    "level": "하",
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "두 집합 $A=\\{1,2,3,4,5,6\\}$, $B=\\{1,3,5,7,9\\}$에 대하여 집합 $A\\cap B$의 모든 원소의 합은? [2.5점]",
+    "choices": [
+      "$3$",
+      "$6$",
+      "$9$",
+      "$12$",
+      "$15$"
+    ],
+    "answer": "③",
+    "solution": "교집합은 {1,3,5}이고 합은9이다.",
+    "subUnitKey": "H15-SB-01-SET_OPERATION",
+    "subUnit": "집합의 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 4,
+    "level": "하",
+    "category": "유리함수",
+    "originalCategory": "유리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-04",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "그래프"
+    ],
+    "wide": false,
+    "content": "유리함수 $y=-\\dfrac{2}{x}$의 그래프를 x축의 방향으로 -3만큼, y축의 방향으로 2만큼 평행이동한 그래프가 점 $(-1,k)$를 지날 때, $k$의 값은? [2.5점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "①",
+    "solution": "이동 후 $y-2=-\\dfrac{2}{x+3}$이고 $x=-1$에서 $k=1$이다.",
+    "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+    "subUnit": "유리함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 5,
+    "level": "중",
+    "category": "연립방정식",
+    "originalCategory": "연립방정식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-07",
+    "standardUnit": "여러 가지 방정식",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "연립방정식 $y=4x+6$, $x^2+y=2$의 해를 $x=a$, $y=b$라 할 때, $2a-3b$의 값은? [3점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "②",
+    "solution": "$x^2+4x+4=0$에서 x=-2,y=-2이고 $2a-3b=2$이다.",
+    "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+    "subUnit": "치환과 연립방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 6,
+    "level": "하",
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "두 집합 $A=\\{x\\mid x=2n+3,\\ n은 5이하의 자연수\\}$, $B=\\{x\\mid x는 10보다 작은 소수\\}$에 대하여 $n(A)-n(B)$의 값은? [3점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "①",
+    "solution": "$n$은 1,2,3,4,5이므로 $A=\\{5,7,9,11,13\\}$이다. $B=\\{2,3,5,7\\}$이므로 $n(A)-n(B)=5-4=1$이다. 따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SB-01-SET_COUNT",
+    "subUnit": "집합의 원소의 개수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 7,
+    "level": "중",
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대하여 두 조건 $p,q$가 다음과 같다고 하자. $p:2x-10>0,\\ q:x\\ge k$일 때, $p$가 $q$이기 위한 충분조건이 되도록 하는 실수 $k$의 최댓값은? [3점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "⑤",
+    "solution": "$p$는 $x>5$라는 뜻이다. 모든 $x>5$가 $x\\ge k$를 만족하려면 $k\\le5$이어야 한다. 따라서 $k$의 최댓값은 5이고 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+    "subUnit": "필요조건과 충분조건",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 8,
+    "level": "중",
+    "category": "도형의 이동",
+    "originalCategory": "도형의 이동",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-07",
+    "standardUnit": "순열",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "문자 $f,r,i,e,n,d$ 6개를 일렬로 나열할 때, 양 끝에 모음이 오도록 나열하는 모든 경우의 수는? [3점]",
+    "choices": [
+      "12",
+      "24",
+      "36",
+      "48",
+      "60"
+    ],
+    "answer": "④",
+    "solution": "모음은 $i,e$의 2개이다. 양 끝에 모음을 배열하는 방법은 $2!\\times4!$가지이고, 전체는 $48$이다. 따라서 정답은 ④이다.",
+    "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+    "subUnit": "조건이 있는 순열",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 9,
+    "level": "중",
+    "category": "다항식",
+    "originalCategory": "다항식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-02",
+    "standardUnit": "항등식과 나머지정리",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "다항식 $P(x)=x^3+x^2+2$를 $x-a$, $x+a$로 나누었을 때, 나머지를 각각 $R_1$, $R_2$라고 하면 $R_1+R_2=8$이다. $P(x)$를 $x-a^2$로 나누었을 때, 나머지는? (단, $a$는 상수) [3.5점]",
+    "choices": [
+      "$0$",
+      "$2$",
+      "$8$",
+      "$14$",
+      "$16$"
+    ],
+    "answer": "④",
+    "solution": "$P(a)+P(-a)=2a^2+4=8$에서 a²=2. $P(2)=14$이다.",
+    "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+    "subUnit": "나머지정리와 인수정리",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 10,
+    "level": "중",
+    "category": "직선의 방정식",
+    "originalCategory": "직선의 방정식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-10",
+    "standardUnit": "직선의 방정식",
+    "standardUnitOrder": 10,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "직선 $(k+3)x-2y-8=0$을 x축의 방향으로 -3만큼 평행이동한 직선의 실수 $k$의 값에 관계없이 항상 지나는 점의 좌표를 $(a,b)$라 할 때, $a+b$의 값은? [3.5점]",
+    "choices": [
+      "$-7$",
+      "$-3$",
+      "$1$",
+      "$5$",
+      "$9$"
+    ],
+    "answer": "①",
+    "solution": "이동 후 식에서 k항이 사라지려면 x=-3, 이어 y=-4이다. 합은 -7이다.",
+    "subUnitKey": "H15-SA-10-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 11,
+    "level": "상",
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "집합 $A=\\{x\\mid ax+1=2\\sqrt{-x-2}\\}$에 대하여 $A\\ne\\varnothing$이기 위한 실수 $a$의 값의 범위는? [3.5점]",
+    "choices": [
+      "$-2\\le a\\le1$",
+      "$-2\\le a\\le-\\dfrac12$",
+      "$-\\dfrac12\\le a\\le\\dfrac12$",
+      "$-\\dfrac12\\le a\\le2$",
+      "$\\dfrac12\\le a\\le1$"
+    ],
+    "answer": "③",
+    "solution": "$t=\\sqrt{-x-2}\\ge0$라 두면 $a=(1-2t)/(t^2+2)$이다. 이 함수는 $t=2$에서 최솟값 $-1/2$를 갖고, $t=0$에서 최댓값 $1/2$를 가지므로 $-1/2\\le a\\le1/2$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SB-01-SET_BASIC",
+    "subUnit": "집합의 뜻과 표현",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 12,
+    "level": "상",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-07",
+    "standardUnit": "순열",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "A, B, C, D 네 사람이 각각 선물을 하나씩 준비하여 상자에 넣고 임의로 하나씩 집었을 때, 네 사람 모두가 서로 다른 사람이 준비한 선물을 집는 경우의 수는? [3.5점]",
+    "choices": [
+      "6",
+      "9",
+      "12",
+      "15",
+      "24"
+    ],
+    "answer": "②",
+    "solution": "네 사람이 각각 자기 자신이 아닌 사람이 준비한 선물을 받는 경우의 수를 구해야 한다. 포함배제 원리에 따라 $4!-\\binom41 3!+\\binom42 2!-\\binom43 1!+\\binom44=24-24+12-4+1=9$이다. 따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+    "subUnit": "조건이 있는 순열",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 13,
+    "level": "상",
+    "category": "원의 방정식",
+    "originalCategory": "원의 방정식",
+    "standardCourse": "중1 수학",
+    "standardUnitKey": "M1-07",
+    "standardUnit": "입체도형의 성질",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같이 모든 모서리 길이의 합이 20인 직육면체 $ABCD-EFGH$가 있다. $\\overline{AG}=\\sqrt{13}$일 때, 직육면체 $ABCD-EFGH$의 겉넓이는? [4점]",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$"
+    ],
+    "answer": "②",
+    "solution": "직육면체의 세 모서리의 길이를 $a,b,c$라 하면 $4(a+b+c)=20$이므로 $a+b+c=5$이다. 또 공간대각선으로부터 $a^2+b^2+c^2=13$이다. 따라서 $ab+bc+ca=((a+b+c)^2-(a^2+b^2+c^2))/2=6$이고, 겉넓이는 $2(ab+bc+ca)=12$이다. 따라서 정답은 ②이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+    "subUnit": "입체도형의 측정",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_강남여고_2학기_기말_고1_기출/q13.png"
+  },
+  {
+    "id": 14,
+    "level": "중",
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "집합 $A=\\{x\\mid0\\le x\\le10, x는 정수\\}$의 부분집합 중 원소 $0,1$을 포함하는 집합의 개수를 $m$, 원소 $1,2,3$을 포함하지 않는 집합의 개수를 $n$이라 할 때, $m-n$의 값은? [4점]",
+    "choices": [
+      "$64$",
+      "$128$",
+      "$256$",
+      "$512$",
+      "$1024$"
+    ],
+    "answer": "③",
+    "solution": "$A$의 원소는 $0$부터 $10$까지 11개이다. $0,1$을 반드시 포함하는 부분집합은 나머지 9개 원소를 자유롭게 선택하므로 $m=2^9$이다. $1,2,3$을 포함하지 않는 부분집합은 나머지 8개 원소를 자유롭게 선택하므로 $n=2^8$이다. 따라서 $m-n=2^9-2^8=256$이므로 정답은 ③이다.",
+    "subUnitKey": "H15-SB-01-SET_COUNT",
+    "subUnit": "집합의 원소의 개수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 15,
+    "level": "중",
+    "category": "명제",
+    "originalCategory": "명제",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-02",
+    "standardUnit": "명제",
+    "standardUnitOrder": 2,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "두 실수 $a,b$에 대하여 두 조건 $p,q,r$는 $p:|a|+|b|=0$, $q:a^2-2ab+b^2=0$, $r:|a+b|=|a-b|$이다. 옳은 것만을 보기에서 있는 대로 고른 것은? [4점] ㄱ. $p$는 $q$이기 위한 충분조건이다. ㄴ. $\\sim p$는 $\\sim r$이기 위한 필요조건이다. ㄷ. $q$이고 $r$은 $p$이기 위한 필요조건이다.",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄴ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "⑤",
+    "solution": "$p$는 $a=b=0$과 동치이므로 $q$와 $r$을 모두 만족한다. 따라서 ㄱ과 ㄷ은 참이다. 또한 $r$은 $ab=0$과 동치이므로 $\\sim r$이면 $ab\\ne0$이고, 이때 $p$는 성립하지 않는다. 따라서 $\\sim p$는 $\\sim r$의 필요조건이므로 ㄴ도 참이다. 따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+    "subUnit": "필요조건과 충분조건",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 16,
+    "level": "상",
+    "category": "함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "집합 $A=\\{1,2,3,4\\}$에서 집합 $B=\\{3,4,5,6\\}$으로의 일대일대응 $f$ 중 정의역에 속하는 모든 $x$에 대하여 $f(x)\\ne x$인 것의 개수는? [4점]",
+    "choices": [
+      "$14$",
+      "$16$",
+      "$18$",
+      "$20$",
+      "$22$"
+    ],
+    "answer": "①",
+    "solution": "전체 일대일대응은 $4!=24$개이다. $f(3)=3$인 대응은 $3!=6$개, $f(4)=4$인 대응도 $3!=6$개이다. 두 조건을 동시에 만족하는 대응은 $2!=2$개이므로, 포함배제 원리에 따라 $24-6-6+2=14$개이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 17,
+    "level": "중",
+    "category": "함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "함수 $f(x)=\\begin{cases}x+3& (x\\le0)\\\\x+a& (x>0)\\end{cases}$가 집합 $X=\\{-2,-1,0,1,2\\}$에서 집합 $Y=\\{1,2,3,5,6,7,8\\}$로의 함수가 되도록 하는 정수 $a$의 개수는? [4.5점]",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "②",
+    "solution": "$f(-2)=1$, $f(-1)=2$, $f(0)=3$은 항상 $Y$에 속한다. 또 $f(1)=a+1$, $f(2)=a+2$가 모두 $Y$에 속해야 하므로 $a+1,a+2\\in\\{1,2,3,5,6,7,8\\}$이다. 가능한 정수는 $a=0,1,4,5,6$의 5개이므로 정답은 ②이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 18,
+    "level": "상",
+    "category": "함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "그래프",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같은 그래프를 갖는 함수 $y=f(x)$가 있다. 함수 $f$는 일대일 대응이고 방정식 $f(x)=x$를 만족하는 $x$가 $-2,1$이다. 이때 함수 $f$의 역함수를 $g$라 할 때, 방정식 $(3-x)g(3-x)=g(3-x)f(3-x)$를 만족하는 서로 다른 $x$값의 합은? [4.5점]",
+    "choices": [
+      "5",
+      "7",
+      "8",
+      "9",
+      "11"
+    ],
+    "answer": "⑤",
+    "solution": "$t=3-x$라 두면 식은 $g(t)(t-f(t))=0$이다. $g(t)=0$이면 $t=f(0)=-1$이므로 $x=4$이다. 또한 $t=f(t)$인 값은 그래프에서 $t=-2,1$이므로 각각 $x=5,2$이다. 따라서 서로 다른 $x$값의 합은 $5+2+4=11$이고 정답은 ⑤이다.",
+    "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+    "subUnit": "역함수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_강남여고_2학기_기말_고1_기출/q18.png"
+  },
+  {
+    "id": 19,
+    "level": "상",
+    "category": "유리함수",
+    "originalCategory": "유리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-04",
+    "standardUnit": "유리함수",
+    "standardUnitOrder": 4,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "도형"
+    ],
+    "wide": false,
+    "content": "그림과 같이 $x$가 적힌 카드를 $A$상자에 넣었다가 꺼내면 $\\dfrac{x+1}{3x-1}$가 적힌 카드로 변하게 하는 상자가 있다. $\\dfrac12$이 적힌 카드를 $A$상자에 넣은 후 꺼냈다가 다시 변한 카드를 $A$상자에 넣는 과정을 2431번 반복하였다. 마지막으로 꺼낸 카드에 적힌 숫자는? (단, $x\\ne\\dfrac13$인 실수) [4.5점]",
+    "choices": [
+      "$\\dfrac14$",
+      "$1$",
+      "$3$",
+      "$5$",
+      "$9\\dfrac12$"
+    ],
+    "answer": "③",
+    "solution": "변환을 $T(x)=\\dfrac{x+1}{3x-1}$이라 하면 $T(T(x))=x$이다. 따라서 2431은 홀수이므로 마지막 값은 $T(\\frac12)=3$이다. 따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+    "subUnit": "유리함수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/19_강남여고_2학기_기말_고1_기출/q19.png"
+  },
+  {
+    "id": 20,
+    "level": "상",
+    "category": "경우의 수",
+    "originalCategory": "경우의 수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-06",
+    "standardUnit": "경우의 수",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "10원짜리 동전 2개, 50원짜리 동전 3개, 100원짜리 동전 2개, 500원짜리 동전 2개가 있다. 이들을 일부 또는 전부를 사용하여 지불할 수 있는 경우의 수는 $a$이고, 이들을 일부 또는 전부를 사용하여 지불할 수 있는 금액의 수는 $b$이다. $a+b$의 값은? [4.5점] (단, 0원일 때 지불하는 것은 제외한다.)",
+    "choices": [
+      "$105$",
+      "$128$",
+      "$156$",
+      "$178$",
+      "$205$"
+    ],
+    "answer": "④",
+    "solution": "선택 방법은 3·4·3·3-1=107, 서로 다른 금액은 71개이므로 합은178이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
+    "subUnit": "경우의 수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 21,
+    "level": "상",
+    "category": "함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "standardUnit": "함수",
+    "standardUnitOrder": 3,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "정의역이 실수 전체의 집합 $R$인 함수 $f(x)$가 다음 조건을 만족시키도록 하는 네 상수 $a,b,c,d$의 모든 순서쌍 $(a,b,c,d)$의 개수는? (단, $a\\ne0$)\\n$f(x)=\\begin{cases}-\\sqrt{ax+6}+2a & (x\\le-\\dfrac6a)\\\\\\dfrac{cx+d}{x+b} & (x>-\\dfrac6a)\\end{cases}$\\n(가) $a,b,c,d$는 모두 $-14$이상이고 14이하인 정수이다.\\n(나) 함수 $f(x)$는 $R$에서 $R$로의 일대일 대응이다. [5점]",
+    "choices": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+    ],
+    "answer": "④",
+    "solution": "첫째 식이 실수 전체에서 정의되려면 $a<0$이어야 한다. 둘째 식이 첫째 식의 치역인 $(-\\infty,2a]$의 나머지인 $(2a,\\infty)$를 정확히 채우려면 분모의 경계가 $x=-6/a$와 같아야 하므로 $b=6/a$이고 $c=2a$이어야 한다. 가능한 $a$는 $-1,-2,-3,-6$ 네 가지이다. 이때 $d-bc=d-12>0$이어야 하므로 $d=13,14$ 두 가지가 가능하다. 따라서 순서쌍의 개수는 $4\\times2=8$이고 정답은 ④이다.",
+    "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+    "subUnit": "함수의 뜻과 대응",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 22,
+    "level": "상",
+    "category": "경우의 수",
+    "originalCategory": "경우의 수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-07",
+    "standardUnit": "순열",
+    "standardUnitOrder": 7,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "기출"
+    ],
+    "wide": false,
+    "content": "1부터 9까지의 번호로 여는 자물쇠를 설치하여 번호를 정하려고 한다. 특정한 서로 다른 다섯 개의 숫자를 순서대로 누르면 자물쇠가 열리는데 다음과 같은 두 가지 정보를 이용하려면 최대 $n$번 누르면 열린다.\\n(가) 세 번째 번호는 짝수이다.\\n(나) 첫 번째와 다섯 번째 번호는 소수이다. 이때 $n$의 값은? [5점]",
+    "choices": [
+      "1180",
+      "1260",
+      "1320",
+      "1380",
+      "1460"
+    ],
+    "answer": "②",
+    "solution": "세 번째 번호가 2인 경우 첫째와 다섯째 번호는 3,5,7 중에서 순서 있게 고르는 6가지이고, 둘째와 넷째 번호는 남은 6개 중 순서 있게 고르는 30가지이므로 180가지이다. 세 번째 번호가 4,6,8인 경우는 3가지이고 첫째와 다섯째 번호는 소수 4개 중 순서 있게 고르는 12가지, 둘째와 넷째 번호는 남은 6개 중 순서 있게 고르는 30가지이므로 $3\\times12\\times30=1080$가지이다. 따라서 $n=180+1080=1260$이고 정답은 ②이다.",
+    "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+    "subUnit": "조건이 있는 순열",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 23,
+    "level": "중",
+    "category": "무리함수",
+    "originalCategory": "무리함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-05",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 5,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "서술형",
+      "그래프"
+    ],
+    "wide": false,
+    "content": "서술형1) 함수 $y=-\\sqrt{ax}$의 그래프를 $x$축의 방향으로 $b$만큼, $y$축의 방향으로 3만큼 평행이동한 다음 $x$축에 대하여 대칭이동하면 함수 $y=\\sqrt{3x+6}+c$의 그래프와 일치한다. 이때 상수 $a,b,c$에 대하여 $a+b+c$의 값을 구하시오. (단, 풀이과정을 자세히 쓰시오) [5점]",
+    "choices": [],
+    "answer": "$-2$",
+    "solution": "평행이동과 대칭이동을 적용한 식은 $y=\\sqrt{a(x-b)}-3$이다. 이를 $y=\\sqrt{3(x+2)}+c$와 비교하면 $a=3$, $b=-2$, $c=-3$이다. 따라서 $a+b+c=3-2-3=-2$이다.",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+    "subUnit": "무리함수의 그래프",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 24,
+    "level": "중",
+    "category": "집합",
+    "originalCategory": "집합",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-01",
+    "standardUnit": "집합",
+    "standardUnitOrder": 1,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "서술형"
+    ],
+    "wide": false,
+    "content": "서술형2) 전체집합 $U$의 두 부분집합 $A,B$에 대하여 $n(U)=50$, $n(A\\cap B)=12$, $n(A^c\\cap B^c)=5$일 때, $n((A-B)\\cup(B-A))$의 값을 구하시오. (단, 풀이과정을 자세히 쓰시오) [7점]",
+    "choices": [],
+    "answer": "$33$",
+    "solution": "대칭차는 전체집합에서 $A\\cap B$와 $A^c\\cap B^c$를 제외한 부분이다. 따라서 $n((A-B)\\cup(B-A))=50-12-5=33$이므로 정답은 $33$이다.",
+    "subUnitKey": "H15-SB-01-SET_OPERATION",
+    "subUnit": "집합의 연산",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  },
+  {
+    "id": 25,
+    "level": "상",
+    "category": "함수",
+    "originalCategory": "함수",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-06",
+    "standardUnit": "경우의 수",
+    "standardUnitOrder": 6,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "기출",
+      "서술형"
+    ],
+    "wide": false,
+    "content": "서술형3) 건욱이와 재형이를 포함한 8명 중에서 4명을 뽑아 일렬로 줄을 세우려고 할 때, 건욱이와 재형이가 모두 포함되지 않는 경우의 수를 $a$, 두 사람 중 한 명만 포함된 경우의 수를 $b$, 두 사람이 모두 포함되어 있으며 서로 인접하여 있는 경우의 수를 $c$라 할 때, $\\dfrac{bc}{a}$의 값을 구하시오. (단, 풀이과정을 자세히 쓰시오) [8점]",
+    "choices": [],
+    "answer": "$480$",
+    "solution": "두 사람이 모두 포함되지 않는 경우는 $a=\\binom{6}{4}\\times4!=360$이다. 두 사람 중 한 명만 포함되는 경우는 $b=2\\binom{6}{3}\\times4!=960$이다. 두 사람이 모두 포함되고 이웃하는 경우는 $c=\\binom{6}{2}\\times3!\\times2=180$이다. 따라서 $bc/a=960\\times180/360=480$이다.",
+    "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
+    "subUnit": "경우의 수의 활용",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
+  }
+];
