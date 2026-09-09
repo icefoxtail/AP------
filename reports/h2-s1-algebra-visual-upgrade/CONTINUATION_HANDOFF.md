@@ -51,13 +51,15 @@
 
 일반 그래프를 cartesian/geometry 사실로 억지 변환하지 않는다. route가 없으면 `MISSING_CURRENT_PIPELINE_EVIDENCE`를 유지한다.
 
-## 남은 작업 B — pipeline-core test regression
+## 닫힌 작업 B — pipeline-core test regression
 
-현재 `npm --prefix archive/tools/pipeline-core test` 결과는 129/130 PASS다. 실패는 다음 fixture다.
+현재 `npm --prefix archive/tools/pipeline-core test` 결과는 130/130 PASS다. metadata revision fixture에 synthetic provider plan, reservation binding, terminal receipt plan binding을 추가해 최신 contract에 맞췄다.
 
 `archive/tools/pipeline-core/tests/v2.test.mjs`의 metadata revision reuse test → `PROVIDER_ATTESTATION_PLAN_REQUIRED`.
 
-최신 work-batch contract는 STATELESS_MODEL evidence에 `providerAttestationPlanRef`를 요구한다. `metadataAuditFixture()`에 synthetic provider plan을 생성하고 reservation request의 `providerAttestationPlanRef`, terminal receipt의 `providerPlanRef`, freeze/launch/context SHA binding을 연결한 뒤 전체 test를 다시 실행한다. production contract를 약화하지 않는다.
+수정 commit: `65112cd13 test(pipeline-core): bind metadata fixture to provider attestation plan`. production contract는 약화하지 않았다.
+
+근거: `npm --prefix archive/tools/pipeline-core test` → `PASS_SOFTWARE_REGRESSION`, 130/130.
 
 ## 최종 작업 순서
 

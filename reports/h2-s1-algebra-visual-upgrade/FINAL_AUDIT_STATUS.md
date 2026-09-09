@@ -25,6 +25,8 @@
 
 The current pipeline-core canonical visual contract only supports its typed families; it does not provide a current specialist evidence adapter for these general trig/exponential/logarithmic function graphs. Therefore a canonical pipeline-core QUESTION_QUALITY closure was not fabricated from the custom SVG review records. Final seal remains blocked by `MISSING_CURRENT_PIPELINE_EVIDENCE` for the general-function visual route.
 
-Pipeline-core regression test result: 129/130 PASS; one existing v2 test fails on `PROVIDER_ATTESTATION_PLAN_REQUIRED` in the metadata revision fixture.
+Specialist-side closure is now materialized at `function_graph_specialist_closure.json`: 39/39 candidate records and 72/72 render cases PASS, with `productionAuthorized:false`. This is a route-boundary evidence pass, not a canonical pipeline-core PASS.
+
+Pipeline-core regression test result: 130/130 PASS after binding the metadata revision fixture to a synthetic provider-attestation plan (`65112cd13`).
 
 This report is intentionally `NOT_SEALED`; no final PASS or main merge is authorized until the specialist function-graph route and the pipeline-core test regression are closed.
