@@ -316,6 +316,20 @@ def protected_payload_sha(question):
     return object_sha(payload)
 
 
+def math_review_input_sha(question, source_fidelity_item):
+    return object_sha({
+        "content": question.get("content") or "",
+        "choices": question.get("choices") or [],
+        "sourceIdentityKey": question.get("sourceIdentityKey"),
+        "sourceDocumentSha256": question.get("sourceDocumentSha256"),
+        "sourceQuestionNo": question.get("sourceQuestionNo"),
+        "sourcePageEvidencePaths": question.get("sourcePageEvidencePaths") or [],
+        "sourceEvidencePath": question.get("sourceEvidencePath") or question.get("fullPageImageRelPath") or "",
+        "sourceEvidenceSha256": source_fidelity_item.get("sourceEvidenceSha256") if source_fidelity_item else None,
+        "sourcePageEvidence": source_fidelity_item.get("sourcePageEvidence") if source_fidelity_item else [],
+    })
+
+
 def bbox_validation(bbox, page_width, page_height):
     if not bbox:
         return False, ["visual_asset_bbox_missing"]
@@ -797,13 +811,30 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
         "status": "PENDING_REVIEW" if asset_evidence_items else "NOT_APPLICABLE",
         "items": asset_evidence_items,
     })
+    fidelity_by_key = {item.get("sourceIdentityKey"): item for item in source_fidelity_items}
+    fidelity_file = reports / "source_fidelity_evidence.json"
     write_json(reports / "math_review_evidence.json", {
         "schema": "PAST_EXAM_MATH_REVIEW_EVIDENCE_v1",
         "examId": manifest["examId"],
         "sourceInventorySha": manifest.get("sourceInventorySha", ""),
         "sourceIdentityMapSha": manifest.get("sourceIdentityMapSha", ""),
+        "sourceFidelityEvidenceSha": "sha256:" + hashlib.sha256(fidelity_file.read_bytes()).hexdigest(),
         "status": "NOT_STARTED",
-        "items": [],
+        "items": [
+            {
+                "sourceIdentityKey": q.get("sourceIdentityKey", ""),
+                "inputSha": math_review_input_sha(q, fidelity_by_key.get(q.get("sourceIdentityKey"))),
+                "inputVisibilityProfile": "SOURCE_ONLY",
+                "priorAnswerVisible": False,
+                "sourceOnlyBlindSolve": False,
+                "choiceUniqueness": False,
+                "questionValidity": False,
+                "solutionChecked": False,
+                "solutionConclusionMatches": False,
+                "verdict": "PENDING_REVIEW",
+            }
+            for q in questions
+        ],
     })
     answer_solution_rows = [
         {

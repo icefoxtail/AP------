@@ -4,17 +4,24 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 import {
   assertReleaseClosure,
   fileSha,
+  mathReviewInputSha,
   objectFileSha,
+  validateReleaseTransition,
   productionWritePreflight,
   protectedPayloadSha,
   validatePastExamPromotion,
 } from "../lib/hardening.mjs";
 import { validatePortableZip } from "../lib/portable-package.mjs";
+import { fixture as coreFixture } from "../../pipeline-core/tests/fixture.mjs";
+import { denominatorInput, runInputSha } from "../../pipeline-core/closure.mjs";
+import { fileRef } from "../../pipeline-core/canonical.mjs";
+import { runPromotion } from "../promote-reviewed-exam.mjs";
 
 const sha = value => `sha256:${crypto.createHash("sha256").update(value).digest("hex")}`;
 
@@ -105,9 +112,12 @@ function fixture() {
   const fidelity = { schema: "PAST_EXAM_SOURCE_FIDELITY_EVIDENCE_v1", status: "PASS", sourceInventorySha: fileSha(path.join(reportsDir, "source_inventory.json")), sourceIdentityMapSha: fileSha(path.join(reportsDir, "source_identity_map.json")), items: [{ sourceIdentityKey, sourceQuestionNo: "1", sourcePageNo: 1, sourcePageEvidencePaths: ["pages/page_p001.png"], sourcePageEvidence: [{ path: "pages/page_p001.png", sha256: pageSha }], sourceEvidencePath: "pages/page_p001.png", sourceEvidenceSha256: pageSha, contentChecked: true, choicesChecked: true, verdict: "PASS", contentSha256: objectFileSha(question.content), choicesSha256: objectFileSha(question.choices) }] };
   const inventorySha = fileSha(path.join(reportsDir, "source_inventory.json"));
   const identityMapSha = fileSha(path.join(reportsDir, "source_identity_map.json"));
-  const math = { schema: "PAST_EXAM_MATH_REVIEW_EVIDENCE_v1", status: "PASS", sourceInventorySha: inventorySha, sourceIdentityMapSha: identityMapSha, items: [{ sourceIdentityKey, inputVisibilityProfile: "SOURCE_ONLY", priorAnswerVisible: false, sourceOnlyBlindSolve: true, choiceUniqueness: true, questionValidity: true, solutionChecked: true, solutionConclusionMatches: true, independentAnswer: "163", verdict: "PASS" }] };
+  fs.writeFileSync(path.join(reportsDir, "source_fidelity_evidence.json"), `${JSON.stringify(fidelity, null, 2)}\n`);
+  const fidelityItem = fidelity.items[0];
+  const fidelitySha = fileSha(path.join(reportsDir, "source_fidelity_evidence.json"));
+  const math = { schema: "PAST_EXAM_MATH_REVIEW_EVIDENCE_v1", status: "PASS", sourceInventorySha: inventorySha, sourceIdentityMapSha: identityMapSha, sourceFidelityEvidenceSha: fidelitySha, items: [{ sourceIdentityKey, inputSha: mathReviewInputSha(question, fidelityItem), inputVisibilityProfile: "SOURCE_ONLY", priorAnswerVisible: false, sourceOnlyBlindSolve: true, choiceUniqueness: true, questionValidity: true, solutionChecked: true, solutionConclusionMatches: true, independentAnswer: "163", verdict: "PASS" }] };
   const asset = { schema: "PAST_EXAM_ASSET_PROVENANCE_EVIDENCE_v1", status: "PASS", sourceInventorySha: inventorySha, sourceIdentityMapSha: identityMapSha, items: [{ sourceIdentityKey, ...question.visualAssetProvenance }] };
-  for (const [name, value] of [["source_fidelity_evidence.json", fidelity], ["math_review_evidence.json", math], ["asset_provenance_evidence.json", asset]]) fs.writeFileSync(path.join(reportsDir, name), `${JSON.stringify(value, null, 2)}\n`);
+  for (const [name, value] of [["math_review_evidence.json", math], ["asset_provenance_evidence.json", asset]]) fs.writeFileSync(path.join(reportsDir, name), `${JSON.stringify(value, null, 2)}\n`);
   const handoffFile = path.join(reportsDir, "gpt_gemini_handoff_manifest.json");
   fs.writeFileSync(handoffFile, `${JSON.stringify({ protectedPayload: [{ sourceIdentityKey, sha256: protectedPayloadSha(question) }] }, null, 2)}\n`);
   const review = {
@@ -172,7 +182,9 @@ function sharedMaterialFixture() {
   const math = JSON.parse(fs.readFileSync(path.join(f.reportsDir, "math_review_evidence.json"), "utf8"));
   math.sourceInventorySha = fileSha(inventoryFile);
   math.sourceIdentityMapSha = fileSha(mapFile);
-  math.items.push({ ...math.items[0], sourceIdentityKey: q2.sourceIdentityKey });
+  math.sourceFidelityEvidenceSha = fileSha(path.join(f.reportsDir, "source_fidelity_evidence.json"));
+  const q2FidelityItem = fidelity.items[1];
+  math.items.push({ ...math.items[0], sourceIdentityKey: q2.sourceIdentityKey, inputSha: mathReviewInputSha(q2, q2FidelityItem) });
   fs.writeFileSync(path.join(f.reportsDir, "math_review_evidence.json"), `${JSON.stringify(math, null, 2)}\n`);
   const asset = JSON.parse(fs.readFileSync(path.join(f.reportsDir, "asset_provenance_evidence.json"), "utf8"));
   asset.sourceInventorySha = fileSha(inventoryFile);
@@ -242,9 +254,13 @@ test("wrong asset identity and contaminated crop are hard failures", () => {
   try {
     const wrongAsset = structuredClone(f.question);
     wrongAsset.visualAssetProvenance.sourceQuestionNo = "20";
-    wrongAsset.visualAssetProvenance.checks.CROP_PURITY = false;
     f.writeCandidate(wrongAsset);
-    const result = validatePastExamPromotion({ candidateFile: f.candidateFile, manifest: f.manifest, review: f.review });
+    const assetFile = path.join(f.reportsDir, "asset_provenance_evidence.json");
+    const asset = JSON.parse(fs.readFileSync(assetFile, "utf8"));
+    asset.items[0].checks.CROP_PURITY = false;
+    fs.writeFileSync(assetFile, `${JSON.stringify(asset, null, 2)}\n`);
+    const review = { ...f.review, candidateSha: fileSha(f.candidateFile), assetProvenanceEvidenceSha: fileSha(assetFile) };
+    const result = validatePastExamPromotion({ candidateFile: f.candidateFile, manifest: f.manifest, review });
     assert.ok(result.errors.some(error => error.startsWith("QUESTION_ASSET_IDENTITY_MISMATCH")));
     assert.ok(result.errors.some(error => error.startsWith("CROP_PURITY_FAIL")));
   } finally { f.cleanup(); }
@@ -255,6 +271,155 @@ test("shared material provenance permits one visual asset for its declared depen
   try {
     const result = validatePastExamPromotion({ candidateFile: f.candidateFile, manifest: f.manifest, review: f.review });
     assert.equal(result.status, "PASS", JSON.stringify(result.errors));
+  } finally { f.cleanup(); }
+});
+
+test("frozen inventory, rich closure identity, and canonical promotion pass end to end", () => {
+  const hardeningFixture = fixture();
+  const core = coreFixture("past-exam", { visual: false });
+  try {
+    fs.cpSync(hardeningFixture.examRoot, path.join(core.root, "exam"), { recursive: true });
+    const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../../");
+    fs.mkdirSync(path.join(core.root, "archive", "data", "master_tables"), { recursive: true });
+    fs.cpSync(
+      path.join(repositoryRoot, "archive", "data", "master_tables", "js_archive_tag_master.json"),
+      path.join(core.root, "archive", "data", "master_tables", "js_archive_tag_master.json"),
+    );
+    const master = JSON.parse(fs.readFileSync(path.join(core.root, "archive", "data", "master_tables", "js_archive_tag_master.json"), "utf8"))
+      .find((row) => row.status !== "deprecated" && row.subUnitKey);
+    const candidateRel = "exam/candidate/fixture.candidate.js";
+    const candidateFile = path.join(core.root, candidateRel);
+    const reportsDir = path.join(core.root, "exam", "reports");
+    const q = {
+      ...hardeningFixture.question,
+      level: "고1",
+      category: "대수",
+      originalCategory: "대수",
+      standardCourse: "공통수학1",
+      standardUnitKey: master.standardUnitKey,
+      standardUnit: master.labelKo,
+      standardUnitOrder: 1,
+      subUnitKey: master.subUnitKey,
+      subUnit: master.labelKo,
+      subUnitConfidence: "candidate_evidence",
+      subUnitClassificationDepth: "complete_candidate",
+      questionType: "객관식",
+      layoutTag: "grid",
+      tags: ["기출"],
+      wide: false,
+      image: "",
+      visualAsset: "",
+      hasVisualAsset: false,
+    };
+    delete q.visualAssetProvenance;
+    fs.writeFileSync(candidateFile, `window.examTitle = "fixture";\nwindow.questionBank = ${JSON.stringify([q], null, 2)};\n`, "utf8");
+    const assetFile = path.join(reportsDir, "asset_provenance_evidence.json");
+    fs.writeFileSync(assetFile, `${JSON.stringify({ schema: "PAST_EXAM_ASSET_PROVENANCE_EVIDENCE_v1", status: "NOT_APPLICABLE", sourceInventorySha: fileSha(path.join(reportsDir, "source_inventory.json")), sourceIdentityMapSha: fileSha(path.join(reportsDir, "source_identity_map.json")), items: [] }, null, 2)}\n`);
+    const handoffFile = path.join(reportsDir, "gpt_gemini_handoff_manifest.json");
+    fs.writeFileSync(handoffFile, `${JSON.stringify({ protectedPayload: [{ sourceIdentityKey: q.sourceIdentityKey, sha256: protectedPayloadSha(q) }] }, null, 2)}\n`);
+    const review = {
+      ...hardeningFixture.review,
+      examId: "fixture",
+      questionCount: 1,
+      candidateSha: fileSha(candidateFile),
+      handoffManifestSha: fileSha(handoffFile),
+      protectedPayload: [{ sourceIdentityKey: q.sourceIdentityKey, sha256: protectedPayloadSha(q) }],
+      assetProvenanceEvidenceSha: fileSha(assetFile),
+    };
+    const reviewFile = path.join(reportsDir, "review.json");
+    fs.writeFileSync(reviewFile, `${JSON.stringify(review, null, 2)}\n`);
+    const sourceRel = "exam/source.js";
+    fs.writeFileSync(path.join(core.root, sourceRel), fs.readFileSync(candidateFile));
+    const run = core.run;
+    const richQuestionUid = `${sourceRel}|fixture|1`;
+    run.questions[0] = {
+      ...run.questions[0],
+      questionUid: richQuestionUid,
+      sourcePath: sourceRel,
+      candidatePath: candidateRel,
+      sourceDocumentSha256: q.sourceDocumentSha256,
+      sourceQuestionNo: q.sourceQuestionNo,
+      sourcePageNo: q.sourcePageNo,
+      sourcePageEvidencePaths: q.sourcePageEvidencePaths,
+      sourceIdentityKey: q.sourceIdentityKey,
+      qid: q.id,
+    };
+    for (const rel of ["v1-input.json", "v2-input.json"]) {
+      const file = path.join(core.root, rel);
+      if (fs.existsSync(file)) {
+        const bundle = JSON.parse(fs.readFileSync(file, "utf8"));
+        if (bundle.questionUid) bundle.questionUid = richQuestionUid;
+        if (bundle.content !== undefined) bundle.content = q.content;
+        if (bundle.choices !== undefined) bundle.choices = q.choices;
+        fs.writeFileSync(file, `${JSON.stringify(bundle, null, 2)}\n`);
+      }
+    }
+    run.inputs = run.inputs.filter((ref) => !["source.js", "candidate.js"].includes(ref.path));
+    run.inputs.push({ ...fileRef(core.root, sourceRel), role: "source" }, { ...fileRef(core.root, candidateRel), role: "candidate" });
+    run.inputSha = runInputSha(run);
+    run.registry = run.registry.map((row) => ({ ...row, inputSha: run.inputSha, questionUids: [richQuestionUid] }));
+    run.denominator = { status: "FROZEN", stale: false, ...denominatorInput(run) };
+    for (const ref of run.evidence) {
+      const file = path.join(core.root, ref.path);
+      const evidence = JSON.parse(fs.readFileSync(file, "utf8"));
+      evidence.questionUid = richQuestionUid;
+      evidence.inputSha = run.inputSha;
+      evidence.reviewStartInputSha = run.inputSha;
+      evidence.reviewEndInputSha = run.inputSha;
+      if (evidence.payload?.candidatePath) evidence.payload.candidatePath = candidateRel;
+      if (Array.isArray(evidence.payload?.questionUids)) evidence.payload.questionUids = [richQuestionUid];
+      if (Array.isArray(evidence.payload?.itemWitnesses)) for (const witness of evidence.payload.itemWitnesses) witness.questionUid = richQuestionUid;
+      if (Array.isArray(evidence.payload?.itemReviews)) for (const review of evidence.payload.itemReviews) review.questionUid = richQuestionUid;
+      if (Array.isArray(evidence.payload?.assetAssociations)) for (const association of evidence.payload.assetAssociations) association.questionUid = richQuestionUid;
+      if (evidence.payload?.inputBundle?.path) {
+        const bundlePath = path.join(core.root, evidence.payload.inputBundle.path);
+        if (fs.existsSync(bundlePath)) evidence.payload.inputBundle = fileRef(core.root, evidence.payload.inputBundle.path);
+      }
+      fs.writeFileSync(file, `${JSON.stringify(evidence, null, 2)}\n`);
+      Object.assign(ref, fileRef(core.root, ref.path));
+    }
+    const evidenceRefsById = new Map(run.evidence.map((ref) => {
+      const evidence = JSON.parse(fs.readFileSync(path.join(core.root, ref.path), "utf8"));
+      return [evidence.evidenceId, ref];
+    }));
+    for (const ref of run.evidence) {
+      const file = path.join(core.root, ref.path);
+      const evidence = JSON.parse(fs.readFileSync(file, "utf8"));
+      const captureRef = evidence.payload?.captureEvidenceId ? evidenceRefsById.get(evidence.payload.captureEvidenceId) : null;
+      if (captureRef && evidence.payload.captureEvidenceSha !== captureRef.sha256) {
+        evidence.payload.captureEvidenceSha = captureRef.sha256;
+        fs.writeFileSync(file, `${JSON.stringify(evidence, null, 2)}\n`);
+        Object.assign(ref, fileRef(core.root, ref.path));
+      }
+    }
+    const renderIds = run.evidence.map((ref) => JSON.parse(fs.readFileSync(path.join(core.root, ref.path), "utf8"))).filter((e) => e.axis === "render").map((e) => e.evidenceId).sort();
+    run.productionAuthorization = { status: "APPROVED", authorityId: "e2e-test", approvedAt: "2026-09-09T00:00:00Z", releaseInputSha: run.inputSha, runtimeBundleSha: run.renderRuntime.bundleSha, renderReviewEvidenceIds: renderIds };
+    const closureManifest = path.join(core.root, "run.json");
+    fs.writeFileSync(closureManifest, `${JSON.stringify(run, null, 2)}\n`);
+    const manifestFile = path.join(core.root, "exam", "manifest.json");
+    fs.writeFileSync(manifestFile, `${JSON.stringify({ examId: "fixture", archiveRelativePath: "original/high/h1/1final/fixture-e2e.js" }, null, 2)}\n`);
+    runPromotion({
+      archiveRootOverride: path.join(core.root, "archive"),
+      quiet: true,
+      argv: ["node", "promote-reviewed-exam.mjs", "--manifest", manifestFile, "--candidate", candidateFile, "--review", reviewFile, "--assets", path.join(core.root, "exam", "assets"), "--closure-manifest", closureManifest],
+    });
+    assert.ok(fs.existsSync(path.join(core.root, "archive", "exams", "original", "high", "h1", "1final", "fixture-e2e.js")));
+  } finally {
+    hardeningFixture.cleanup();
+    core.cleanup();
+  }
+});
+
+test("candidate self-declared visual PASS cannot override independent asset evidence", () => {
+  const f = fixture();
+  try {
+    const assetFile = path.join(f.reportsDir, "asset_provenance_evidence.json");
+    const asset = JSON.parse(fs.readFileSync(assetFile, "utf8"));
+    asset.items[0].checks.CROP_PURITY = false;
+    fs.writeFileSync(assetFile, `${JSON.stringify(asset, null, 2)}\n`);
+    const review = { ...f.review, candidateSha: fileSha(f.candidateFile), assetProvenanceEvidenceSha: fileSha(assetFile) };
+    const result = validatePastExamPromotion({ candidateFile: f.candidateFile, manifest: f.manifest, review });
+    assert.ok(result.errors.some((error) => error.startsWith("CROP_PURITY_FAIL:q1:CROP_PURITY")));
   } finally { f.cleanup(); }
 });
 
@@ -296,10 +461,107 @@ test("placeholder and incomplete objective payloads cannot reach promotion", () 
 });
 
 test("release remains blocked until exact ZIP and all three real renders pass", () => {
-  const hash = sha("bound");
-  assert.throws(() => assertReleaseClosure({ state: "DONE", previousState: "REAL_RENDER_PASS", render: { exam: "NOT_TESTED", sol: "PASS", ans: "PASS" } }), /RELEASE_BLOCKED:exam/);
-  assert.doesNotThrow(() => assertReleaseClosure({ state: "DONE", previousState: "REAL_RENDER_PASS", packageApplicable: true, exactDeliverableZip: true, freshExtraction: true, browserTested: true, zipSha256: hash, extractedTreeSha256: hash, candidateSha: hash, productionSha: hash, runtimeBundleSha: hash, renderEvidenceSha: hash, render: { exam: "PASS", sol: "PASS", ans: "PASS" }, packageRender: { exam: "PASS", sol: "PASS", ans: "PASS" } }));
-  assert.doesNotThrow(() => assertReleaseClosure({ state: "DONE", previousState: "REAL_RENDER_PASS", packageApplicable: false, portablePackageStatus: "NOT_APPLICABLE", browserTested: true, candidateSha: hash, productionSha: hash, runtimeBundleSha: hash, renderEvidenceSha: hash, render: { exam: "PASS", sol: "PASS", ans: "PASS" } }));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "past-exam-release-"));
+  const writeRef = (relative, value) => {
+    const file = path.join(root, relative);
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, value);
+    return { path: relative, bytes: fs.statSync(file).size, sha256: fileSha(file) };
+  };
+  try {
+    const candidate = writeRef("candidate.js", "candidate");
+    const production = writeRef("production.js", "production");
+    const runtime = writeRef("runtime.js", "runtime");
+    const renderEvidence = writeRef("reports/render.json", JSON.stringify({ render: { exam: "PASS", sol: "PASS", ans: "PASS" } }));
+    const base = {
+      state: "DONE",
+      previousState: "REAL_RENDER_PASS",
+      packageApplicable: false,
+      portablePackageStatus: "NOT_APPLICABLE",
+      browserTested: true,
+      candidateSha: candidate.sha256,
+      productionSha: production.sha256,
+      runtimeBundleSha: runtime.sha256,
+      renderEvidenceSha: renderEvidence.sha256,
+      artifactRefs: { candidate, production, runtime, renderEvidence },
+      render: { exam: "PASS", sol: "PASS", ans: "PASS" },
+    };
+    assert.throws(() => assertReleaseClosure({ ...base, render: { exam: "NOT_TESTED", sol: "PASS", ans: "PASS" } }, { root }), /RELEASE_BLOCKED:exam/);
+    assert.doesNotThrow(() => assertReleaseClosure(base, { root }));
+    assert.doesNotThrow(() => validateReleaseTransition("PROMOTED", "REAL_RENDER_PASS", { packageApplicable: false }));
+    assert.throws(() => assertReleaseClosure({ ...base, candidateSha: sha("fake") }, { root }), /RELEASE_CANDIDATE_SHA_MISMATCH/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test("math review becomes stale when the reviewed content payload changes", () => {
+  const f = fixture();
+  try {
+    const mutated = { ...f.question, content: "현재 candidate의 발문이 변경되었다." };
+    f.writeCandidate(mutated);
+    const fidelityFile = path.join(f.reportsDir, "source_fidelity_evidence.json");
+    const fidelity = JSON.parse(fs.readFileSync(fidelityFile, "utf8"));
+    fidelity.items[0].contentSha256 = objectFileSha(mutated.content);
+    fs.writeFileSync(fidelityFile, `${JSON.stringify(fidelity, null, 2)}\n`);
+    const mathFile = path.join(f.reportsDir, "math_review_evidence.json");
+    const math = JSON.parse(fs.readFileSync(mathFile, "utf8"));
+    math.sourceFidelityEvidenceSha = fileSha(fidelityFile);
+    fs.writeFileSync(mathFile, `${JSON.stringify(math, null, 2)}\n`);
+    const handoffFile = path.join(f.reportsDir, "gpt_gemini_handoff_manifest.json");
+    const handoff = JSON.parse(fs.readFileSync(handoffFile, "utf8"));
+    handoff.protectedPayload[0].sha256 = protectedPayloadSha(mutated);
+    fs.writeFileSync(handoffFile, `${JSON.stringify(handoff, null, 2)}\n`);
+    const review = {
+      ...f.review,
+      candidateSha: fileSha(f.candidateFile),
+      handoffManifestSha: fileSha(handoffFile),
+      protectedPayload: [{ sourceIdentityKey: mutated.sourceIdentityKey, sha256: protectedPayloadSha(mutated) }],
+      sourceFidelityEvidenceSha: fileSha(fidelityFile),
+      mathReviewEvidenceSha: fileSha(mathFile),
+    };
+    const result = validatePastExamPromotion({ candidateFile: f.candidateFile, manifest: f.manifest, review });
+    assert.ok(result.errors.some((error) => error.startsWith("MATH_REVIEW_INPUT_SHA_STALE:q1")), JSON.stringify(result.errors));
+  } finally { f.cleanup(); }
+});
+
+test("partial multi-page source evidence cannot pass exact page-set parity", () => {
+  const f = fixture();
+  try {
+    const q = { ...f.question, sourcePageEvidencePaths: ["pages/page_p001.png", "pages/page_p002.png"] };
+    f.writeCandidate(q);
+    const page2 = path.join(f.examRoot, "pages", "page_p002.png");
+    fs.writeFileSync(page2, Buffer.from("fixture-page-two-bytes"));
+    const inventoryFile = path.join(f.reportsDir, "source_inventory.json");
+    const inventory = JSON.parse(fs.readFileSync(inventoryFile, "utf8"));
+    inventory.questions[0].sourcePageEvidencePaths = [...q.sourcePageEvidencePaths];
+    fs.writeFileSync(inventoryFile, `${JSON.stringify(inventory, null, 2)}\n`);
+    const mapFile = path.join(f.reportsDir, "source_identity_map.json");
+    const identityMap = JSON.parse(fs.readFileSync(mapFile, "utf8"));
+    identityMap.sourceInventorySha = fileSha(inventoryFile);
+    identityMap.questions = inventory.questions;
+    fs.writeFileSync(mapFile, `${JSON.stringify(identityMap, null, 2)}\n`);
+    const fidelityFile = path.join(f.reportsDir, "source_fidelity_evidence.json");
+    const fidelity = JSON.parse(fs.readFileSync(fidelityFile, "utf8"));
+    fidelity.sourceInventorySha = fileSha(inventoryFile);
+    fidelity.sourceIdentityMapSha = fileSha(mapFile);
+    fidelity.items[0].sourcePageEvidencePaths = [...q.sourcePageEvidencePaths];
+    // Deliberately omit page_p002 from sourcePageEvidence[] to exercise the exact-set gate.
+    fs.writeFileSync(fidelityFile, `${JSON.stringify(fidelity, null, 2)}\n`);
+    const handoffFile = path.join(f.reportsDir, "gpt_gemini_handoff_manifest.json");
+    const handoff = JSON.parse(fs.readFileSync(handoffFile, "utf8"));
+    handoff.protectedPayload[0].sha256 = protectedPayloadSha(q);
+    fs.writeFileSync(handoffFile, `${JSON.stringify(handoff, null, 2)}\n`);
+    const review = {
+      ...f.review,
+      candidateSha: fileSha(f.candidateFile),
+      handoffManifestSha: fileSha(handoffFile),
+      protectedPayload: [{ sourceIdentityKey: q.sourceIdentityKey, sha256: protectedPayloadSha(q) }],
+      sourceInventorySha: fileSha(inventoryFile),
+      sourceIdentityMapSha: fileSha(mapFile),
+      sourceFidelityEvidenceSha: fileSha(fidelityFile),
+    };
+    const result = validatePastExamPromotion({ candidateFile: f.candidateFile, manifest: f.manifest, review });
+    assert.ok(result.errors.some((error) => error.startsWith("SOURCE_FIDELITY_FAIL:q1")), JSON.stringify(result.errors));
+  } finally { f.cleanup(); }
 });
 
 test("portable ZIP gate detects a manifest path that differs from the exact entry name", () => {
@@ -318,7 +580,21 @@ test("portable ZIP gate detects a manifest path that differs from the exact entr
 });
 
 test("direct production write guard requires a promotion receipt", () => {
-  assert.throws(() => productionWritePreflight({ changedPaths: ["archive/exams/original/high/h1/1final/x.js"], receipt: {} }), /UNAUTHORIZED_PRODUCTION_WRITE/);
-  const value = "sha256:" + "a".repeat(64);
-  assert.equal(productionWritePreflight({ changedPaths: ["archive/db.js"], receipt: { status: "AUTHORIZED", candidateSha: value, closureManifestSha: value, sourceIdentitySetSha: value, reviewedPassEnvelopeSha: value, promotionTransactionId: "tx" } }).status, "PASS");
+  const f = fixture();
+  try {
+    const reviewFile = path.join(f.root, "review.json");
+    const closureFile = path.join(f.root, "closure.json");
+    fs.writeFileSync(reviewFile, JSON.stringify(f.review));
+    fs.writeFileSync(closureFile, JSON.stringify({ status: "PASS", productionAuthorized: true }));
+    const value = "sha256:" + "a".repeat(64);
+    assert.throws(() => productionWritePreflight({
+      changedPaths: ["archive/exams/original/high/h1/1final/x.js"],
+      receipt: { status: "AUTHORIZED", candidateSha: value, closureManifestSha: value, sourceIdentitySetSha: value, reviewedPassEnvelopeSha: value, promotionTransactionId: "tx", closureInputSha: "sha256:" + "b".repeat(64) },
+      candidateFile: f.candidateFile,
+      reviewFile,
+      closureManifestFile: closureFile,
+      expectedSourceIdentities: [{ sourceIdentityKey: f.question.sourceIdentityKey }],
+      closure: { status: "PASS", productionAuthorized: true, inputSha: "sha256:" + "c".repeat(64) },
+    }), /UNAUTHORIZED_PRODUCTION_WRITE/);
+  } finally { f.cleanup(); }
 });

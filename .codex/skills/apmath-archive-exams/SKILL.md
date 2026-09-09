@@ -176,6 +176,13 @@ dependency set. `reviewed_pass` is an envelope, not a sufficient string.
 Production writes without the canonical helper and a promotion receipt are
 `UNAUTHORIZED_PRODUCTION_WRITE`.
 
+Past Exam rich source identity is preserved in `run.questions` from prepare
+through common closure and promotion. Math review evidence is bound to the
+current content, choices, and source-page evidence input SHA. Candidate visual
+provenance is a parity claim only; the independent asset-provenance evidence
+is the semantic authority. Python validation stops at extraction validation;
+the JS hardening validator alone may emit `PRE_PROMOTION_VALIDATED`.
+
 After promotion, update `archive/db.js`, rebuild the index with
 `archive/tools/build-question-index.mjs`, and run the production audit with
 `--strict-new` for each newly imported production JS:
@@ -250,6 +257,8 @@ Report completion only when all are true:
 - when a deliverable ZIP exists, the exact deliverable ZIP has passed two
   independent consumers and fresh extraction; production-only flows explicitly
   record package `NOT_APPLICABLE`;
+- a production-only flow may transition directly from `PROMOTED` to
+  `REAL_RENDER_PASS` and then `DONE` without `PORTABLE_PACKAGE_PASS`;
 - release state is not inferred from BUILT, ZIP_CREATED, or PNG decode;
 - source defects and corrections appear in the relevant answer/solution and
   final report.
