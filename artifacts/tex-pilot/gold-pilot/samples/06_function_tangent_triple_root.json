@@ -6,7 +6,7 @@
   "functionGraphs": [{"id": "f", "expression": "x^3-3*x^2+4*x-1", "domain": [-0.5, 3], "samples": 121, "label": "f(x)", "style": {"color": "black", "lineWidth": 1.2}}],
   "lines": [{"id": "yx", "slope": 1, "intercept": 0, "domain": [-0.5, 3], "equation": "y=x", "style": {"color": "red", "lineStyle": "dashed", "lineWidth": 1}}],
   "points": [{"id": "A", "x": 1, "y": 1, "label": "A(1,1)", "role": "critical"}, {"id": "B", "x": 2, "y": 3, "label": "B(2,3)", "role": "point"}],
-  "labels": [{"id": "yxLabel", "text": "y=x", "at": [2.3, 2.3], "kind": "equation"}, {"id": "fact", "text": "g=f-x; triple root x=1", "at": [-0.8, 4.2], "kind": "generic"}],
+  "labels": [{"id": "yxLabel", "text": "y=x", "at": [2.3, 2.3], "kind": "equation"}, {"id": "fact", "text": "g=f-x; triple root x=1", "at": [1.3, 4.4], "kind": "generic"}],
   "sourceFacts": {"tangentPoint": [1, 1], "tangentEquation": "y=x", "fAt2": 3},
   "components": [{"kind": "AXIS"}, {"kind": "FUNCTION_GRAPH", "ref": "f"}, {"kind": "LINE", "ref": "yx"}, {"kind": "TANGENT", "options": {"lineRef": "yx", "curveRef": "f", "at": [1, 1]}}, {"kind": "POINT", "ref": "A"}, {"kind": "POINT", "ref": "B"}, {"kind": "POINT_LABEL", "ref": "A"}, {"kind": "POINT_LABEL", "ref": "B"}, {"kind": "EQUATION_LABEL", "ref": "yxLabel"}, {"kind": "GRAPH_ANNOTATION", "ref": "fact"}]
 }
