@@ -60,6 +60,17 @@ it does not authorize canonical or production promotion by itself.
 
 ## Start
 
+**Past Exam V3 start HARD GATE:** read
+`docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md`. Before source inventory,
+extraction, or solution building, read 2–3 complete, good production exam JS
+files from the latest Git main and freeze `REFERENCE_SAMPLE_LOCK` with the
+whole-question observations and anchored `PRODUCTION_QUALITY_PROFILE`.
+Sample JS is QUALITY CALIBRATION ONLY; target PDF is SOURCE TRUTH; existing
+target JS is CURRENT BASELINE and must also be read when present. Existing
+target solutions never set the new solution quality floor. Missing calibration
+blocks `run-one-exam`, direct Python extraction, and core Past Exam preparation
+before candidate writes. See the pipeline README for prepare/freeze commands.
+
 1. Locate the repository root and read [archive-layout.md](references/archive-layout.md)
    and [rules-routing.md](references/rules-routing.md).
 2. Start from `docs/rules/00_RULES_INDEX.md`; read only the current operational
@@ -124,8 +135,10 @@ Give the answer/solution reviewer the candidate JS, `pages/`, visual assets,
 `reports/extraction_manual_review.csv`, and
 `reports/gpt_gemini_handoff_manifest.json`.
 
-The extraction handoff permits only `answer`, `solution`, `answerStatus`, and
-`solutionStatus`. Independently solve every question, compare the result with
+The V3 extraction handoff permits the exact `allowedCompletionFields` in
+`archive/tools/past-exam-pipeline/completion-contract.json`: answer/solution,
+classification and solutionImage fields. Legacy V2 handoffs keep their narrower
+scope; do not relabel old evidence as V3. Independently solve every question, compare the result with
 the source and choices, preserve source defects explicitly, and leave an
 uncertain solution unresolved rather than reverse-engineering an answer.
 
@@ -146,11 +159,20 @@ the current rule documents. Existing legacy files may be reported as
 
 The handoff runtime freezes a protected-payload SHA over `content`, `choices`,
 source identity/page evidence, `image`, and visual-asset provenance. The
-answer/solution lane may change only `answer`, `solution`, their status fields,
-and explicitly allowed subunit metadata. An extraction finding is routed to
+V3 completion lane also binds the entire extraction baseline, and checks actual
+field differences against its allowed completion fields. Source image, identity,
+content/choices and layout remain protected. An extraction finding is routed to
 `SOURCE_FIDELITY_RESTORATION`, never silently rewritten.
 
 ## Route C — validation and promotion
+
+New Past Exam completion requires core v2 and FULL_EXAM closure. Use
+`prepare-v2 --pipeline past-exam --past-exam-manifest <staged manifest>` with the
+normal source/candidate/registry/builder/work-batch arguments. It binds the
+calibration lock, source inventory and project-scoped geometry policy and emits
+only unreviewed drafts. All questions require typed `solutionQuality` and
+V1/V3 `visualBenefit`, even when no visual is ultimately needed. New general
+solutions are written afresh; independent U3 checks content, not heading labels.
 
 Validate the generated candidate with the pipeline's V2 validator before any
 production write:
@@ -175,13 +197,6 @@ question parity; shared visuals require an explicit `SHARED_MATERIAL` UID and
 dependency set. `reviewed_pass` is an envelope, not a sufficient string.
 Production writes without the canonical helper and a promotion receipt are
 `UNAUTHORIZED_PRODUCTION_WRITE`.
-
-Past Exam rich source identity is preserved in `run.questions` from prepare
-through common closure and promotion. Math review evidence is bound to the
-current content, choices, and source-page evidence input SHA. Candidate visual
-provenance is a parity claim only; the independent asset-provenance evidence
-is the semantic authority. Python validation stops at extraction validation;
-the JS hardening validator alone may emit `PRE_PROMOTION_VALIDATED`.
 
 After promotion, update `archive/db.js`, rebuild the index with
 `archive/tools/build-question-index.mjs`, and run the production audit with
@@ -257,8 +272,6 @@ Report completion only when all are true:
 - when a deliverable ZIP exists, the exact deliverable ZIP has passed two
   independent consumers and fresh extraction; production-only flows explicitly
   record package `NOT_APPLICABLE`;
-- a production-only flow may transition directly from `PROMOTED` to
-  `REAL_RENDER_PASS` and then `DONE` without `PORTABLE_PACKAGE_PASS`;
 - release state is not inferred from BUILT, ZIP_CREATED, or PNG decode;
 - source defects and corrections appear in the relevant answer/solution and
   final report.

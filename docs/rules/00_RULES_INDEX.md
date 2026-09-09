@@ -6,6 +6,13 @@
 
 ### 신규 JS 추출·변환
 
+기출 원본 작업은 `02_PIPELINES/Past_Exam_V3_COMPLETE.md`의 시작 HARD GATE를 적용한다.
+RULE PREFLIGHT 후 최신 main의 정상 production JS 2~3개 전체 정독,
+REFERENCE_SAMPLE_LOCK/PRODUCTION_QUALITY_PROFILE 동결, 기존 target JS 확인을
+마친 뒤 source inventory·정확 추출·해설 작성을 시작한다. 샘플은 품질 기준이며
+target PDF의 source truth를 대신하지 않는다. V3 completion은 typed 해설 품질,
+전 문항 visual benefit, core v2 전체 시험 closure까지 연결한다.
+
 모든 신규·변환 작업의 독립검수·봉인·실렌더 공통 기준은
 `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`를 함께 적용한다.
 

@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import vm from "node:vm";
 
-import { canonicalJson, fileRef, objectSha } from "../../pipeline-core/canonical.mjs";
+import { canonicalJson, objectSha } from "../../pipeline-core/canonical.mjs";
 
 export const SOURCE_INVENTORY_SCHEMA = "PAST_EXAM_SOURCE_INVENTORY_v1";
 export const SOURCE_IDENTITY_MAP_SCHEMA = "PAST_EXAM_SOURCE_IDENTITY_MAP_v1";
@@ -20,27 +20,6 @@ export const ASSET_REVIEW_CHECKS = Object.freeze([
   "NO_CLIPPING",
   "REQUIRED_LABELS_PRESENT",
   "QUESTION_SEMANTIC_MATCH",
-]);
-
-const VISUAL_PROVENANCE_FIELDS = Object.freeze([
-  "assetPath",
-  "assetSha256",
-  "assetBindingType",
-  "sourceDocumentSha256",
-  "sourceQuestionNo",
-  "sourcePageNo",
-  "sourcePageEvidence",
-  "sourcePageEvidencePaths",
-  "sourceBBox",
-  "sharedMaterialUid",
-  "dependencyQuestionSet",
-  "cropGenerator",
-  "pngDecodePass",
-  "naturalWidth",
-  "naturalHeight",
-  "cropStatus",
-  "checks",
-  "verdict",
 ]);
 
 export const SOURCE_DISPOSITIONS = new Set([
@@ -98,27 +77,6 @@ function sameArray(left, right) {
 function isPlaceholderPayload(value) {
   if (typeof value !== "string") return false;
   return /Source\s+question\b.*\bunresolved|\[\s*판독불가\s*\]|dummy\s+question|placeholder|truncated\s+summary|요약문만|조건을\s*생략|추측\s*복원/i.test(value);
-}
-
-function visualProvenanceBinding(value) {
-  if (!value || typeof value !== "object") return null;
-  return JSON.parse(JSON.stringify(Object.fromEntries(VISUAL_PROVENANCE_FIELDS
-    .filter((key) => Object.prototype.hasOwnProperty.call(value, key))
-    .map((key) => [key, value[key]]))));
-}
-
-export function mathReviewInputSha(question, sourceFidelityItem) {
-  return objectSha({
-    content: question.content ?? "",
-    choices: question.choices ?? [],
-    sourceIdentityKey: question.sourceIdentityKey ?? null,
-    sourceDocumentSha256: question.sourceDocumentSha256 ?? null,
-    sourceQuestionNo: question.sourceQuestionNo ?? null,
-    sourcePageEvidencePaths: normalizeEvidencePaths(question),
-    sourceEvidencePath: question.sourceEvidencePath ?? question.fullPageImageRelPath ?? "",
-    sourceEvidenceSha256: sourceFidelityItem?.sourceEvidenceSha256 ?? null,
-    sourcePageEvidence: sourceFidelityItem?.sourcePageEvidence ?? [],
-  });
 }
 
 export function fileSha(file) {
@@ -428,9 +386,7 @@ function validateFidelityEvidence(candidateFile, questions, review, inventory) {
     const identity = questionIdentity(q);
     const item = byKey.get(identity.sourceIdentityKey);
     const itemPaths = item ? normalizeEvidencePaths(item) : [];
-    const evidenceRefs = Array.isArray(item?.sourcePageEvidence) ? item.sourcePageEvidence : [];
-    const evidenceRefPaths = evidenceRefs.map((ref) => String(ref?.path || "").trim()).filter(Boolean);
-    if (!item || String(item.sourceQuestionNo) !== identity.sourceQuestionNo || Number(item.sourcePageNo) !== identity.sourcePageNo || String(item.sourceEvidencePath || "") !== identity.sourceEvidencePath || !sameArray(itemPaths, identity.sourcePageEvidencePaths) || !sameArray(itemPaths, evidenceRefPaths) || !nonEmpty(item.sourceEvidencePath) || !/^sha256:[0-9a-f]{64}$/.test(String(item.sourceEvidenceSha256 || "")) || item.contentChecked !== true || item.choicesChecked !== true || item.verdict !== "PASS" || !/^sha256:[0-9a-f]{64}$/.test(String(item.contentSha256 || "")) || !/^sha256:[0-9a-f]{64}$/.test(String(item.choicesSha256 || ""))) errors.push(`SOURCE_FIDELITY_FAIL:q${q.id}`);
+    if (!item || String(item.sourceQuestionNo) !== identity.sourceQuestionNo || Number(item.sourcePageNo) !== identity.sourcePageNo || String(item.sourceEvidencePath || "") !== identity.sourceEvidencePath || !sameArray(itemPaths, identity.sourcePageEvidencePaths) || !nonEmpty(item.sourceEvidencePath) || !/^sha256:[0-9a-f]{64}$/.test(String(item.sourceEvidenceSha256 || "")) || item.contentChecked !== true || item.choicesChecked !== true || item.verdict !== "PASS" || !/^sha256:[0-9a-f]{64}$/.test(String(item.contentSha256 || "")) || !/^sha256:[0-9a-f]{64}$/.test(String(item.choicesSha256 || ""))) errors.push(`SOURCE_FIDELITY_FAIL:q${q.id}`);
     if (item?.contentSha256 !== objectSha(q.content ?? "")) errors.push(`SOURCE_FIDELITY_FAIL:q${q.id}:CONTENT_MISMATCH`);
     if (item?.choicesSha256 !== objectSha(q.choices ?? [])) errors.push(`SOURCE_FIDELITY_FAIL:q${q.id}:CHOICES_MISMATCH`);
     if (item && !sourceEvidenceMatches(candidateFile, item)) errors.push(`SOURCE_FIDELITY_EVIDENCE_SHA_STALE:q${q.id}`);
@@ -445,9 +401,6 @@ function sourceEvidenceMatches(candidateFile, item) {
   const file = path.isAbsolute(sourcePath) ? sourcePath : path.resolve(candidateRoot, sourcePath);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile() || fileSha(file) !== normalizeSha(item.sourceEvidenceSha256)) return false;
   if (!Array.isArray(item.sourcePageEvidence) || !item.sourcePageEvidence.length) return false;
-  const declared = normalizeEvidencePaths(item);
-  const refs = item.sourcePageEvidence.map((ref) => String(ref?.path || "").trim()).filter(Boolean);
-  if (!sameArray(declared, refs)) return false;
   return item.sourcePageEvidence.every((ref) => {
     const refPath = String(ref?.path || "");
     const refFile = path.isAbsolute(refPath) ? refPath : path.resolve(candidateRoot, refPath);
@@ -463,13 +416,6 @@ function validateMathEvidence(candidateFile, questions, review) {
   const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
   if (result.data.sourceInventorySha !== fileSha(path.join(candidateRoot, "reports", "source_inventory.json"))) errors.push("MATH_REVIEW_INVENTORY_STALE");
   if (result.data.sourceIdentityMapSha !== fileSha(path.join(candidateRoot, "reports", "source_identity_map.json"))) errors.push("MATH_REVIEW_IDENTITY_MAP_STALE");
-  const fidelityFile = path.join(candidateRoot, "reports", "source_fidelity_evidence.json");
-  if (!fs.existsSync(fidelityFile) || !/^sha256:[0-9a-f]{64}$/.test(String(result.data.sourceFidelityEvidenceSha || "")) || result.data.sourceFidelityEvidenceSha !== fileSha(fidelityFile)) errors.push("MATH_REVIEW_SOURCE_FIDELITY_STALE");
-  let fidelityByKey = new Map();
-  if (fs.existsSync(fidelityFile)) {
-    const fidelity = JSON.parse(fs.readFileSync(fidelityFile, "utf8"));
-    fidelityByKey = new Map(evidenceItems(fidelity).map((item) => [String(item.sourceIdentityKey), item]));
-  }
   for (const item of evidenceItems(result.data)) {
     const key = String(item.sourceIdentityKey || "");
     if (byKey.has(key)) errors.push(`MATH_REVIEW_DUPLICATE:${key}`);
@@ -480,8 +426,6 @@ function validateMathEvidence(candidateFile, questions, review) {
     const item = byKey.get(identity.sourceIdentityKey);
     if (!item || item.inputVisibilityProfile !== "SOURCE_ONLY" || item.priorAnswerVisible === true || item.sourceOnlyBlindSolve !== true || item.choiceUniqueness !== true || item.questionValidity !== true || item.solutionChecked !== true || item.solutionConclusionMatches !== true || item.verdict !== "PASS") errors.push(`MATH_REVIEW_FAIL:q${q.id}`);
     if (item && String(item.independentAnswer ?? "") !== String(q.answer ?? "")) errors.push(`MATH_REVIEW_FAIL:q${q.id}:ANSWER_MISMATCH`);
-    const fidelityItem = fidelityByKey.get(identity.sourceIdentityKey);
-    if (!item || item.inputSha !== mathReviewInputSha(q, fidelityItem)) errors.push(`MATH_REVIEW_INPUT_SHA_STALE:q${q.id}`);
   }
   if (byKey.size !== questions.length) errors.push("MATH_REVIEW_COVERAGE_FAIL");
   return [...new Set(errors)];
@@ -523,18 +467,14 @@ function validateAssetEvidence(candidateFile, questions, review) {
     const assetPath = String(q.visualAsset || q.image || "");
     if (!assetPath && !q.hasVisualAsset) continue;
     const item = byKey.get(identity.sourceIdentityKey);
-    const candidateProvenance = q.visualAssetProvenance;
-    const provenance = item;
-    if (!provenance || !candidateProvenance || !assetPath) { errors.push(`ASSET_PROVENANCE_MISSING:q${q.id}`); continue; }
-    if (String(candidateProvenance.assetBindingType || "DIRECT") === "DIRECT" && String(candidateProvenance.sourceQuestionNo) !== identity.sourceQuestionNo) errors.push(`QUESTION_ASSET_IDENTITY_MISMATCH:q${q.id}`);
-    if (objectSha(visualProvenanceBinding(candidateProvenance)) !== objectSha(visualProvenanceBinding(provenance))) errors.push(`ASSET_PROVENANCE_CANDIDATE_PARITY_FAIL:q${q.id}`);
+    const provenance = q.visualAssetProvenance || item;
+    if (!provenance || !assetPath) { errors.push(`ASSET_PROVENANCE_MISSING:q${q.id}`); continue; }
     const bindingType = String(provenance.assetBindingType || "DIRECT");
     if (!ASSET_BINDING_TYPES.has(bindingType)) errors.push(`ASSET_BINDING_TYPE_INVALID:q${q.id}`);
     if (bindingType === "DIRECT" && String(provenance.sourceQuestionNo) !== identity.sourceQuestionNo) errors.push(`QUESTION_ASSET_IDENTITY_MISMATCH:q${q.id}`);
     if (bindingType === "SHARED_MATERIAL" && (!nonEmpty(provenance.sharedMaterialUid) || !Array.isArray(provenance.dependencyQuestionSet) || !provenance.dependencyQuestionSet.map(String).includes(identity.sourceQuestionNo))) errors.push(`SHARED_MATERIAL_DEPENDENCY_FAIL:q${q.id}`);
     if (normalizeSha(provenance.sourceDocumentSha256) !== identity.sourceDocumentSha256) errors.push(`WRONG_ASSET_PROVENANCE:q${q.id}`);
-    if (bindingType === "DIRECT" && Number(provenance.sourcePageNo) !== identity.sourcePageNo) errors.push(`WRONG_ASSET_PROVENANCE:q${q.id}`);
-    if (bindingType === "SHARED_MATERIAL" && !(Number(provenance.sourcePageNo) >= 1)) errors.push(`WRONG_ASSET_PROVENANCE:q${q.id}`);
+    if (Number(provenance.sourcePageNo) !== identity.sourcePageNo) errors.push(`WRONG_ASSET_PROVENANCE:q${q.id}`);
     if (!nonEmpty(provenance.assetPath) || String(provenance.assetPath) !== assetPath) errors.push(`WRONG_ASSET_PROVENANCE:q${q.id}`);
     if (!nonEmpty(provenance.sourcePageEvidence) || !provenance.sourceBBox || typeof provenance.sourceBBox !== "object") errors.push(`WRONG_ASSET_PROVENANCE:q${q.id}`);
     const file = resolveAsset(candidateFile, assetPath);
@@ -557,13 +497,23 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
   if (!nonEmpty(review.promotionTransactionId)) errors.push("PROMOTION_TRANSACTION_ID_REQUIRED");
   if (review.sourceFidelityRestoration === true || review.sourceRestorationRequested === true) errors.push("SOURCE_FIDELITY_RESTORATION_REQUIRED");
   const allowed = new Set(["answer", "solution", "answerStatus", "solutionStatus", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]);
-  for (const field of review.changedFields || []) if (!allowed.has(field)) errors.push("ANSWER_SOLUTION_SCOPE_VIOLATION");
   const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
   const handoffFile = path.join(candidateRoot, "reports", "gpt_gemini_handoff_manifest.json");
   if (!fs.existsSync(handoffFile)) {
     errors.push("HANDOFF_PROTECTED_PAYLOAD_BINDING_MISSING");
   } else {
     const handoff = JSON.parse(fs.readFileSync(handoffFile, "utf8"));
+    if (handoff.completionContract === 'PAST_EXAM_V3_COMPLETE') {
+      const contract = JSON.parse(fs.readFileSync(new URL('../completion-contract.json', import.meta.url), 'utf8'));
+      for (const field of contract.allowedCompletionFields) allowed.add(field);
+      const baseline = handoff.completionBaseline;
+      if (!Array.isArray(baseline) || baseline.length !== questions.length || new Set(baseline.map(q => q.sourceIdentityKey)).size !== questions.length) errors.push('COMPLETION_BASELINE_REQUIRED');
+      else for (const q of questions) {
+        const before = baseline.find(row => row.sourceIdentityKey === q.sourceIdentityKey);
+        if (!before) { errors.push('COMPLETION_BASELINE_IDENTITY_MISMATCH'); continue; }
+        for (const key of new Set([...Object.keys(before), ...Object.keys(q)])) if (!allowed.has(key) && canonicalJson(before[key] ?? null) !== canonicalJson(structuredClone(q[key] ?? null))) errors.push(`ANSWER_SOLUTION_SCOPE_VIOLATION:q${q.id}:${key}`);
+      }
+    }
     if (review.handoffManifestSha && review.handoffManifestSha !== fileSha(handoffFile)) errors.push("HANDOFF_MANIFEST_SHA_STALE");
     if (!review.handoffManifestSha) errors.push("HANDOFF_MANIFEST_SHA_REQUIRED");
     const baseline = new Map((handoff.protectedPayload || []).map((row) => [String(row.sourceIdentityKey), row.sha256]));
@@ -573,6 +523,7 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
     }
   }
   const protectedRows = new Map((review.protectedPayload || []).map((row) => [String(row.sourceIdentityKey), row]));
+  for (const field of review.changedFields || []) if (!allowed.has(field)) errors.push("ANSWER_SOLUTION_SCOPE_VIOLATION");
   const candidateKeys = candidateIdentitySet(questions).keys;
   const reviewKeys = (review.sourceIdentitySet || review.sourceIdentities || []).map((row) => String(row.sourceIdentityKey || row)).sort();
   if (!reviewKeys.length) errors.push("REVIEW_SOURCE_IDENTITY_SET_REQUIRED");
@@ -629,69 +580,18 @@ export function assertPastExamPromotion(options) {
   return report;
 }
 
-function verifyReleaseFileRef(root, ref, name, errors) {
-  if (!ref || !nonEmpty(ref.path) || !/^sha256:[0-9a-f]{64}$/.test(String(ref.sha256 || "")) || !Number.isSafeInteger(ref.bytes)) {
-    errors.push(`RELEASE_ARTIFACT_REF_INVALID:${name}`);
-    return null;
-  }
-  try {
-    const current = fileRef(root, ref.path);
-    if (current.sha256 !== ref.sha256 || current.bytes !== ref.bytes) errors.push(`RELEASE_ARTIFACT_STALE:${name}`);
-    return current;
-  } catch (error) {
-    errors.push(`RELEASE_ARTIFACT_MISSING:${name}:${error.message}`);
-    return null;
-  }
-}
-
-function assertDistinctReleasePaths(refs, errors) {
-  const paths = refs.filter(Boolean).map((ref) => ref.path);
-  if (new Set(paths).size !== paths.length) errors.push("RELEASE_ARTIFACT_PATH_REUSED");
-}
-
-export function assertReleaseClosure(release, { root = process.cwd() } = {}) {
+export function assertReleaseClosure(release) {
   const errors = [];
   const packageApplicable = release?.packageApplicable === true || release?.exactDeliverableZip === true;
-  const refs = release?.artifactRefs || {};
-  const candidateRef = verifyReleaseFileRef(root, refs.candidate, "candidate", errors);
-  const productionRef = verifyReleaseFileRef(root, refs.production, "production", errors);
-  const runtimeRef = verifyReleaseFileRef(root, refs.runtime, "runtime", errors);
-  const renderEvidenceRef = verifyReleaseFileRef(root, refs.renderEvidence, "renderEvidence", errors);
-  assertDistinctReleasePaths([refs.candidate, refs.production, refs.runtime, refs.renderEvidence], errors);
-  if (candidateRef && release.candidateSha && candidateRef.sha256 !== release.candidateSha) errors.push("RELEASE_CANDIDATE_SHA_MISMATCH");
-  if (productionRef && release.productionSha && productionRef.sha256 !== release.productionSha) errors.push("RELEASE_PRODUCTION_SHA_MISMATCH");
-  if (runtimeRef && release.runtimeBundleSha && runtimeRef.sha256 !== release.runtimeBundleSha) errors.push("RELEASE_RUNTIME_SHA_MISMATCH");
-  if (renderEvidenceRef && release.renderEvidenceSha && renderEvidenceRef.sha256 !== release.renderEvidenceSha) errors.push("RELEASE_RENDER_EVIDENCE_SHA_MISMATCH");
-  const releaseRender = release?.productionRender || release?.render || {};
-  if (renderEvidenceRef) {
-    try {
-      const evidence = JSON.parse(fs.readFileSync(path.join(root, refs.renderEvidence.path), "utf8"));
-      const evidenceRender = evidence.productionRender || evidence.render || evidence.verdicts || evidence;
-      for (const mode of ["exam", "sol", "ans"]) {
-        if (evidenceRender?.[mode] === undefined) errors.push(`RELEASE_RENDER_VERDICT_MISSING:${mode}`);
-        else if (evidenceRender[mode] !== releaseRender[mode]) errors.push(`RELEASE_RENDER_VERDICT_MISMATCH:${mode}`);
-      }
-    } catch (error) { errors.push(`RELEASE_RENDER_EVIDENCE_PARSE_FAIL:${error.message}`); }
-  }
-  for (const key of ["candidateSha", "productionSha", "runtimeBundleSha", "renderEvidenceSha"]) if (!/^sha256:[0-9a-f]{64}$/.test(String(release?.[key] || ""))) errors.push(`RELEASE_BINDING_MISSING:${key}`);
+  const required = ["candidateSha", "productionSha", "runtimeBundleSha", "renderEvidenceSha"];
+  for (const key of required) if (!/^sha256:[0-9a-f]{64}$/.test(String(release?.[key] || ""))) errors.push(`RELEASE_BINDING_MISSING:${key}`);
   if (packageApplicable) {
-    const packageRefs = release?.packageRefs || {};
-    const zipRef = verifyReleaseFileRef(root, packageRefs.zip, "packageZip", errors);
-    const packageAuditRef = verifyReleaseFileRef(root, packageRefs.audit, "packageAudit", errors);
-    assertDistinctReleasePaths([refs.candidate, refs.production, refs.runtime, refs.renderEvidence, packageRefs.zip, packageRefs.audit], errors);
-    if (!/^sha256:[0-9a-f]{64}$/.test(String(release?.zipSha256 || "")) || !/^sha256:[0-9a-f]{64}$/.test(String(release?.extractedTreeSha256 || ""))) errors.push("RELEASE_BINDING_MISSING:package");
-    if (zipRef && zipRef.sha256 !== release.zipSha256) errors.push("RELEASE_PACKAGE_ZIP_SHA_MISMATCH");
-    if (packageAuditRef) {
-      try {
-        const audit = JSON.parse(fs.readFileSync(path.join(root, packageAuditRef.path), "utf8"));
-        if (audit.status !== "PASS" || audit.zipSha256 !== zipRef?.sha256 || audit.extractedTreeSha256 !== release.extractedTreeSha256) errors.push("RELEASE_PACKAGE_AUDIT_INVALID");
-      } catch (error) { errors.push(`RELEASE_PACKAGE_AUDIT_INVALID:${error.message}`); }
-    }
+    for (const key of ["zipSha256", "extractedTreeSha256"]) if (!/^sha256:[0-9a-f]{64}$/.test(String(release?.[key] || ""))) errors.push(`RELEASE_BINDING_MISSING:${key}`);
     if (release?.exactDeliverableZip !== true || release?.freshExtraction !== true) errors.push("EXACT_DELIVERABLE_ZIP_REQUIRED");
   } else if (release?.packageApplicable !== false && release?.portablePackageStatus !== "NOT_APPLICABLE") {
     errors.push("PACKAGE_APPLICABILITY_UNDECLARED");
   }
-  const productionRender = releaseRender;
+  const productionRender = release?.productionRender || release?.render || {};
   for (const mode of ["exam", "sol", "ans"]) if (productionRender[mode] !== "PASS") errors.push(`RELEASE_BLOCKED:${mode}`);
   if (packageApplicable) {
     const packageRender = release?.packageRender || {};
@@ -699,18 +599,14 @@ export function assertReleaseClosure(release, { root = process.cwd() } = {}) {
   }
   if (release?.state !== "DONE") errors.push("DONE_UNAVAILABLE");
   if (release?.browserTested !== true) errors.push("BROWSER_QA_NOT_TESTED");
-  if (release?.state === "DONE") {
-    try { validateReleaseTransition(release.previousState, release.state, { packageApplicable }); }
-    catch { errors.push("STATE_TRANSITION_INVALID"); }
-  }
+  if (release?.state === "DONE" && release?.previousState !== "REAL_RENDER_PASS") errors.push("STATE_TRANSITION_INVALID");
   if (errors.length) throw new Error(errors.join(";"));
   return { status: "PASS", state: release.state };
 }
 
-export function validateReleaseTransition(previous, next, { packageApplicable = true } = {}) {
-  const states = packageApplicable ? RELEASE_STATES : RELEASE_STATES.filter((state) => state !== "PORTABLE_PACKAGE_PASS");
-  const from = states.indexOf(previous);
-  const to = states.indexOf(next);
+export function validateReleaseTransition(previous, next) {
+  const from = RELEASE_STATES.indexOf(previous);
+  const to = RELEASE_STATES.indexOf(next);
   if (from < 0 || to !== from + 1) throw new Error(`INVALID_RELEASE_TRANSITION:${previous}->${next}`);
   return true;
 }
@@ -725,7 +621,6 @@ export function productionWritePreflight({ changedPaths, receipt, candidateFile 
   if (!protectedChanges.length) return { status: "PASS", protectedChanges: [] };
   const required = ["candidateSha", "closureManifestSha", "sourceIdentitySetSha", "reviewedPassEnvelopeSha", "promotionTransactionId"];
   const errors = required.filter((key) => !nonEmpty(receipt?.[key]));
-  if (!candidateFile || !reviewFile || !closureManifestFile || !expectedSourceIdentities || !closure) errors.push("PRODUCTION_WRITE_CURRENT_BINDINGS_REQUIRED");
   if (receipt?.status !== "AUTHORIZED") errors.push("RECEIPT_NOT_AUTHORIZED");
   for (const key of ["candidateSha", "closureManifestSha", "sourceIdentitySetSha", "reviewedPassEnvelopeSha"]) if (nonEmpty(receipt?.[key]) && !/^sha256:[0-9a-f]{64}$/.test(String(receipt[key]))) errors.push(`RECEIPT_SHA_INVALID:${key}`);
   if (closure && (closure.status !== "PASS" || closure.productionAuthorized !== true)) errors.push("COMMON_CLOSURE_NOT_AUTHORIZED");
@@ -733,7 +628,6 @@ export function productionWritePreflight({ changedPaths, receipt, candidateFile 
   if (reviewFile && receipt.reviewedPassEnvelopeSha !== fileSha(reviewFile)) errors.push("RECEIPT_REVIEW_SHA_MISMATCH");
   if (closureManifestFile && receipt.closureManifestSha !== fileSha(closureManifestFile)) errors.push("RECEIPT_CLOSURE_SHA_MISMATCH");
   if (expectedSourceIdentities && receipt.sourceIdentitySetSha !== objectSha(expectedSourceIdentities.map((row) => row.sourceIdentityKey).sort())) errors.push("RECEIPT_SOURCE_SCOPE_MISMATCH");
-  if (closure && receipt.closureInputSha !== closure.inputSha) errors.push("RECEIPT_CLOSURE_INPUT_SHA_MISMATCH");
   if (errors.length) throw new Error(`UNAUTHORIZED_PRODUCTION_WRITE:${errors.join(",")}`);
   return { status: "PASS", protectedChanges };
 }

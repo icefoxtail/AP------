@@ -699,7 +699,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "\n<b>[키포인트]</b> 축 대칭 $a+b=5$와 기울기 $1, 3$을 좌표로 수식화함.\n밑변 2, 높이 3 도출.\n$\\therefore 3$",
+    "solution": "\n<b>[키포인트]</b> 축 대칭 $a+b=5$와 기울기 $1, 3$을 좌표로 수식화하여 삼각형의 밑변과 높이를 구한다.\n두 점 $A,B$가 이차함수 위에서 축 대칭을 이루므로 주어진 기울기 조건으로부터 밑변 $AB=2$를 얻는다.\n같은 좌표 설정에서 꼭짓점 또는 밑변에 대한 수선의 길이가 높이 $3$이므로 삼각형의 높이는 $3$이다.\n따라서 삼각형의 넓이는 $\\dfrac{1}{2}\\times2\\times3=3$이다.\n$\\therefore 3$",
     "level": "중",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
