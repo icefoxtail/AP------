@@ -570,3 +570,33 @@ r49 source repair 이후 candidate scoped bank에서 solution 1건이 stale한 �
 최종 local audit는 10/10 내부 check, target 430, target visual 379, visualNeedMissing 0, residualFail 0으로 기록됐지만 상태는 `FINAL_AUDIT_PRESEALED_NO_PROVIDER_PASS`이며 `sealed=false`, `finalPass=false`, `productionAuthorized=false`다. provider-attested FINAL_AUDIT, 승인된 `QUESTION_UID_v2` source-exam registry에 남은 identity mismatch 15건, DB/question-index/production promotion 권한은 외부 gate로 남아 있다. 그러므로 이 브랜치는 candidate-only 상태이며 최종 `PASS`·`SEALED`는 선언하지 않는다. [final audit](768_final_audit_r60.json)
 
 r61에서 localhost HTTP를 통해 실제 Codex in-app browser로 고위험 수리 문항 2건을 spot-check했다. 26 금당고 q13은 `k≠0`·교점 label, q17은 열린 끝점 1·4·`1<a<4`·“최댓값이 없다”가 실제 화면에 표시됐고 두 문항 모두 clipping/overlap이 관찰되지 않았다. 다만 IAB viewport는 desktop 1280×720만 사용했고 전체 379건의 browser/mobile attestation은 아니므로 final gate를 닫지 않는다. [browser spot-check](769_browser_spotcheck_r61.json)
+
+## r62/r63 corrected current pipeline-core checkpoint (2026-09-09)
+
+r60 rebased candidate bank 시도는 각 source bank의 전체 1,295개 row를 candidate로 복사해 pipeline registry ordinal을 59건 모두 누락시키는 scope 오류가 있었다. 이 산출물은 `764_rebased_candidate_bank_manifest_r60.json` 및 관련 r61 preparation과 함께 superseded diagnostic으로 보존하며 성공 근거로 사용하지 않는다.
+
+r62에서는 기존 r49 scoped candidate의 target row ID만 보존하는 방식으로 다시 만들었다. corrected scoped candidate bank는 59개 source bank, target question `430/430`, scoped visual binding `387`, source-protected drift `0`, solution drift `0`이다. [r62 scoped candidate manifest](773_rebased_scoped_candidate_bank_manifest_r62.json)와 [validation](774_rebased_scoped_candidate_bank_validation_r62.json)이 현재 candidate source/solution parity의 기준이다. r62 첫 v2 preparation은 동일 namespace를 두 process가 동시에 사용해 28/59 partial report를 남겼으므로 superseded이며, 그 report도 성공 근거로 사용하지 않는다.
+
+r63a는 corrected r62 bank에 대해 단일 process로 pipeline-core v2 preparation을 다시 실행했다. 59/59 run, 430/430 question, error `0`이며 [current v2 preparation](780_current_v2_preparation_r63.json)에 run/input hash와 registry reference를 보존했다. 이어서 machine STATIC/METADATA evidence `860/860`, validation error `0`을 기록했다. [machine evidence](781_machine_evidence_r63.json), [machine validation](782_machine_evidence_validation_r63.json)
+
+r63 current pipeline evidence를 기존 row-level solution freeze와 재바인딩한 결과, solution freeze `430/430`, visual freeze `379/379`, blocked `0`, residual FAIL `0`이다. [r63 solution freeze](783_full_scope_solution_freeze_r63.json)와 [r62 full visual manifest](775_full_target_visual_manifest_r62_rebased.json)를 사용한다.
+
+r63 최종 local audit는 다음 13개 check를 모두 통과했다.
+
+- target denominator `430`
+- source static issue `0`
+- V1 expected fact `430/430`
+- independent math `430/430`
+- visual decision coverage `379/379`
+- full visual manifest `379/379`
+- source/solution candidate parity `0 drift`
+- current v2 preparation `59/59`
+- machine evidence `860/860`
+- machine validation `0 error`
+- solution freeze `430/430`
+- V3 parity `379/379`
+- full local desktop/mobile raster render `379/379`, overflow `0`
+
+최신 audit는 `FINAL_AUDIT_PRESEALED_NO_PROVIDER_PASS`, local checks `13/13`, visual 필요 누락 `0`, residual FAIL `0`, `sealed=false`, `finalPass=false`, `productionAuthorized=false`다. [r63 final audit](784_final_audit_r63.json)
+
+현재 남은 gate는 pipeline-core 전체 `RENDER_CAPTURE/RENDER_REVIEW` witness, provider-attested `FINAL_AUDIT`, 실제 full browser desktop/mobile capture, 승인된 `QUESTION_UID_v2` registry authority 및 identity mismatch 15건, DB/question-index/production promotion이다. 따라서 r63도 candidate-only/pre-seal 상태이며 최종 `PASS`·`SEALED`는 아직 선언하지 않는다.
