@@ -494,3 +494,15 @@ source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact
 r45 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r45a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r45 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 30개 target-scoped candidate visual, 34개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r46 function/open-graph and parameter-topology continuation update (2026-09-09)
+
+r46은 r45 직후 target inventory에서 실제로 미처리인 8개 문항을 처리했다. 25 제일고 1mid q18/q17의 제한구간 넓이·이차식, 24 한영고 1mid q11의 $f=2g$ 관계, 26 금당고 1mid q20의 $g(t)$ 근 개수, 25 강남여고 1mid q20의 두 판별식 경계, 25 순천여고 1mid q21의 치환 변수 조건은 함수 구조와 최적화·판별식 관계를 cartesian 또는 topology 수직선으로 시각화했다. 25 매산고 1final q18의 $-1/3\le x\le3$, 25 팔마고 1final q16의 $x<-\sqrt3$는 열린/닫힌 끝점과 정수·반직선 해집합을 수직선으로 명시했다.
+
+금당고 q20의 동일한 점에 대한 중복 label은 단일 label로 접고 3개의 세로 행으로 분리해 desktop/mobile 겹침을 제거했다. 이 수정은 root/value fact와 source content·answer·solution을 변경하지 않는 visual layout repair다. source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다.
+
+candidate bank validation은 59 source bank·1295 row·full candidate visual 409건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 357건, 잔여 22건, decisionMissing 0이다. fresh expected fact 누적은 현재 counting 기준 404건, 잔여 26건이다. 최신 상태는 [r46 V3 closure snapshot](692_current_closure_snapshot_r46_v3_closed.json)이다.
+
+r46 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r46a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r46 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 22개 target-scoped candidate visual, 26개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
