@@ -8,7 +8,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 11245 bytes | sha256 4bece1c93153e447ab3baa8d94e00e8652d8f6b207a1becaf6085425778f7894
+- 00_RULES_INDEX.md | 11737 bytes | sha256 56add34fd63698551d0116314a681232e67190398f02b6f6231ae7dc31988298
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 15690 bytes | sha256 b3c62500bc7594ace5a6a875861da98e68303923cc035edcb7864833bd91649a
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 69515 bytes | sha256 14284f057212d44ab3623c912c12aa1c6ca42fd67d893c48360a02e1688883f6
@@ -29,7 +29,8 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 8405 bytes | sha256 ba8c41a874b029f55c247b1448cceaebbc514a0033e25504e3a82e6981764756
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 7552 bytes | sha256 03550c7cd9cf076597d0842d0e438bd2badbed6eefd472c7576398a245600cff
 - 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 12188 bytes | sha256 987e848be84fa8fed6b73dc21081f7052cc0bc33efb7d36d37e68fab12b71dc4
-- 04_VISUAL/도형추출.md | 54090 bytes | sha256 ec5922d7abc791a46d015346d166ef34f88a10ff16050d0b4d4282074958893c
+- 04_VISUAL/도형추출.md | 54520 bytes | sha256 292c193bdfe4544fe5cf2ebca779aaa0894374d452da9dd35b91fb8f85182fb6
+- 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 65827 bytes | sha256 e136ca000b5e16fa0bd493cf7067c1e219683bfecbe4daa7e487f020b87bac3b
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 91353 bytes | sha256 b0c8b214d1052750d0ff60e3c83c179b02b3a4fe3f24ed72763f41292e0368c4
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2

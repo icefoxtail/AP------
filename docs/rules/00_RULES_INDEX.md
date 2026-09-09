@@ -50,12 +50,14 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0
-3. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-4. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-5. `02_PIPELINES/해설프로토콜.md`
-6. `02_PIPELINES/JS_문항품질_업그레이드.md`
-7. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함)
-8. `03_REVIEW/무결성검수.md`
+3. `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`
+   (상태 `QUALIFICATION_READY`, 전역 `ADOPTED` 아님; `UNIT_OVERLAY` 대체 아님; 명시적 path/version/raw SHA pin 시에만 활성화)
+4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+6. `02_PIPELINES/해설프로토콜.md`
+7. `02_PIPELINES/JS_문항품질_업그레이드.md`
+8. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함)
+9. `03_REVIEW/무결성검수.md`
 
 ### 수정·최종 출시
 
@@ -68,8 +70,9 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 7. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 8. `03_REVIEW/무결성검수.md`
 9. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
-10. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
-11. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
+10. `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md` (상태 `QUALIFICATION_READY`, 전역 `ADOPTED` 아님; `UNIT_OVERLAY` 대체 아님; 명시적 path/version/raw SHA pin 시에만 활성화)
+11. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+12. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
 
 ## 2. 디렉터리별 역할
 
