@@ -115,14 +115,14 @@ RECOVERY_CODES = (
 )
 
 # Only the bounded R0/R1 producer and verifier adapters are operative in this
-# scaffold.  Higher tiers are deliberately not represented as ACTIVE until a
-# real producer, validator, and (for visual tiers) visual capability are
-# registered with evidence.
+# scaffold. Higher tiers remain blocked/deferred until a real producer,
+# validator, and (for visual tiers) visual capability are registered with
+# evidence.
 DEFAULT_CAPABILITY_REGISTRY: dict[str, dict[str, Any]] = {
     "R0": {"producerCapability": "answer-key-local", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r0-v1", "version": "1.0"},
     "R1": {"producerCapability": "choice-local-bounded", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r1-v1", "version": "1.0"},
     "R2": {"producerCapability": "token-numeric-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
-    "R3": {"producerCapability": "condition-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
+    "R3": {"producerCapability": "condition-addition-bounded", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r3-v1", "version": "1.0"},
     "R4": {"producerCapability": "target-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
     "R5": {"producerCapability": "visual-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_REGISTERED", "status": "CAPABILITY_BLOCKED", "evidenceRef": None, "version": "0.0"},
     "R6": {"producerCapability": "reconstruction-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_REGISTERED", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
@@ -282,7 +282,7 @@ def capability_registry_report() -> dict[str, Any]:
 
     return {
         "schemaVersion": "ALIVE_SOURCE_RECOVERY_CAPABILITY_REGISTRY_v1",
-        "status": "BOUNDED_R0_R1_ONLY",
+        "status": "BOUNDED_R0_R1_R3_ONLY",
         "tiers": copy.deepcopy(DEFAULT_CAPABILITY_REGISTRY),
     }
 
@@ -759,6 +759,21 @@ def _r1_duplicate_choices_payload(
     return payload, "DUPLICATE_CHOICES"
 
 
+def _r3_missing_condition_payload(
+    payload: dict[str, Any],
+    answer: str,
+    independent_solve: Mapping[str, Any],
+) -> tuple[dict[str, Any], str] | None:
+    condition = payload.pop("recoveryCondition", None)
+    if not isinstance(condition, str) or not condition.strip() or not payload.get("content"):
+        return None
+    payload["content"] = f"{payload['content']} 단, {condition.strip()}"
+    payload["answer"] = answer
+    if independent_solve.get("solution") is not None:
+        payload["solution"] = independent_solve["solution"]
+    return payload, "MISSING_CONDITION"
+
+
 def produce_recovery_candidates(
     source_payload: Mapping[str, Any],
     independent_solve: Mapping[str, Any],
@@ -792,6 +807,15 @@ def produce_recovery_candidates(
         )
         if produced is None:
             return {"R1": []}, {"R1": {"producerStatus": "COMPLETED", "attemptCount": 1, "candidateBudget": 1, "candidateBudgetConsumed": 1, "retryBudget": 0, "retryBudgetConsumed": True, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R1", "attemptEvidenceSha": _prefixed_sha({"tier": "R1", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
+        payload, producer_kind = produced
+    elif primary == "R3" and "MISSING_CONDITION" in defect_types:
+        produced = _r3_missing_condition_payload(
+            payload,
+            _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer"))),
+            independent_solve,
+        )
+        if produced is None:
+            return {"R3": []}, {"R3": {"producerStatus": "COMPLETED", "attemptCount": 1, "candidateBudget": 1, "candidateBudgetConsumed": 1, "retryBudget": 0, "retryBudgetConsumed": True, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R3", "attemptEvidenceSha": _prefixed_sha({"tier": "R3", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
         payload, producer_kind = produced
     else:
         return {}, {}
