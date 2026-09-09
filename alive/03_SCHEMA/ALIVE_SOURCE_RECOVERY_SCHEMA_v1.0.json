@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ALIVE_SOURCE_RECOVERY_SCHEMA_v1",
+  "title": "ALIVE Source Defect Auto-Recovery sidecar contract",
+  "description": "Internal recovery evidence. This schema is never emitted into the student-facing question payload.",
+  "type": "object",
+  "required": ["schemaVersion", "sourceQuestionUid", "status"],
+  "properties": {
+    "schemaVersion": { "const": "ALIVE_SOURCE_RECOVERY_v1" },
+    "sourceQuestionUid": { "type": "string", "minLength": 1 },
+    "recoveredQuestionUid": { "type": "string", "minLength": 1 },
+    "slotUid": { "type": "string", "minLength": 1 },
+    "effectiveArtifactUid": { "type": "string", "minLength": 1 },
+    "sourceLockSha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "sourceDefectTypes": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/defectType" } },
+    "sourceRecoveryPolicy": { "$ref": "#/$defs/policy" },
+    "recoveryAuthority": { "$ref": "#/$defs/authority" },
+    "productionAdoptionStatus": { "$ref": "#/$defs/adoption" },
+    "status": { "$ref": "#/$defs/status" },
+    "exhaustionStatus": { "const": "AUTO_RECOVERY_EXHAUSTED" },
+    "recoveryTier": { "$ref": "#/$defs/tier" },
+    "currentRecoveryTier": { "$ref": "#/$defs/tier" },
+    "recoveryDisposition": { "$ref": "#/$defs/disposition" },
+    "replacementDisposition": { "const": "DERIVED_REPLACEMENT_VERIFIED" },
+    "replacementEvidenceRef": { "type": "string", "minLength": 1 },
+    "replacementEvidenceSha": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "tierMatrix": {
+      "type": "object",
+      "required": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"],
+      "additionalProperties": false,
+      "patternProperties": {
+        "^R[0-6]$": {
+          "type": "object",
+          "required": ["applicability", "capability", "execution"],
+          "properties": {
+            "applicability": { "enum": ["NOT_APPLICABLE", "APPLICABLE_PRIMARY", "APPLICABLE_FALLBACK"] },
+            "capability": { "enum": ["ACTIVE", "CAPABILITY_BLOCKED", "DEFERRED_CAPABILITY"] },
+            "execution": { "enum": ["NOT_RUN", "AVAILABLE_PENDING", "ATTEMPTED_PASS", "ATTEMPTED_EXHAUSTED", "SKIPPED_AFTER_LOWER_TIER_PASS"] }
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "replacement": { "$ref": "#/$defs/replacement" },
+    "resumeFromStage": { "type": ["string", "null"] },
+    "requiredResource": { "type": ["string", "null"], "enum": ["SOURCE_PAGE", "FULL_SCAN", "COMMON_MATERIAL", "SOURCE_VISUAL", "SOURCE_FILE", null] },
+    "verifierEvidence": {
+      "type": "object",
+      "required": ["candidateId", "candidateVersion", "candidatePayloadSha256", "verifierId", "verifierSessionId", "inputVisibilityProfile", "blindInput", "independentlyComputedAnswer", "answerUnique", "responseContractValid", "allChoicesChecked", "distractorsWrong", "mathVerdict", "evidenceSha256"],
+      "properties": {
+        "candidateId": { "type": "string", "minLength": 1 },
+        "candidateVersion": { "type": "integer", "minimum": 1 },
+        "candidatePayloadSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "verifierId": { "type": "string", "minLength": 1 },
+        "verifierSessionId": { "type": "string", "minLength": 1 },
+        "inputVisibilityProfile": { "enum": ["ARTIFACT_ONLY", "RECOVERED_ONLY"] },
+        "blindInput": { "type": "object" },
+        "independentlyComputedAnswer": {},
+        "answerUnique": { "const": true },
+        "responseContractValid": { "const": true },
+        "allChoicesChecked": { "const": true },
+        "distractorsWrong": { "const": true },
+        "mathVerdict": { "const": "PASS" },
+        "evidenceSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+      },
+      "additionalProperties": true
+    },
+    "validatorEvidence": {
+      "type": "object",
+      "required": ["validatorId", "gates"],
+      "properties": {
+        "validatorId": { "type": "string", "minLength": 1 },
+        "gates": { "type": "object", "minProperties": 1 }
+      },
+      "additionalProperties": true
+    },
+    "producerAttempts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["producerStatus", "attemptCount", "candidateBudget", "candidateBudgetConsumed", "retryBudget", "retryBudgetConsumed", "generatedCandidateCount", "attemptEvidenceRef", "attemptEvidenceSha", "allProducedCandidatesRejected"],
+        "additionalProperties": true
+      }
+    },
+    "answerKeyResolution": {
+      "type": "object",
+      "required": ["effectiveArtifactUid", "effectiveArtifactSha256", "lineageStatus", "verifierEvidenceSha256"],
+      "properties": {
+        "effectiveArtifactUid": { "type": "string", "minLength": 1 },
+        "effectiveArtifactSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "lineageStatus": { "const": "PASS" },
+        "verifierEvidenceSha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "policy": { "enum": ["PRESERVE_ONLY", "SHADOW_AUTO_RECOVER", "AUTO_RECOVER"] },
+    "authority": { "enum": ["SHADOW_ONLY", "BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"] },
+    "adoption": { "enum": ["NOT_AUTHORIZED", "AUTHORIZED", "ADOPTED"] },
+    "tier": { "enum": ["R0", "R1", "R2", "R3", "R4", "R5", "R6"] },
+    "status": { "enum": ["NOT_REQUIRED", "SOURCE_RECHECK", "SOURCE_DEFECT_CONFIRMED", "RECOVERING", "RECOVERED", "RECOVERY_VALIDATION_FAILED", "SOURCE_RECOVERY_EVIDENCE_BLOCKED", "RECOVERY_CAPABILITY_BLOCKED", "RECOVERY_DEFERRED_CAPABILITY", "HUMAN_REQUIRED", "PRESERVE_ONLY"] },
+    "disposition": { "enum": ["ANSWER_KEY_RECOVERED", "MINIMAL_RECOVERED", "STRUCTURAL_RECOVERED", "RECOVERED_RECONSTRUCTION", "SOURCE_PRESERVED_ONLY", "DERIVED_REPLACEMENT_VERIFIED"] },
+    "defectType": { "enum": ["ANSWER_KEY_CONFLICT", "NO_CORRECT_ANSWER", "MULTIPLE_CORRECT_ANSWERS", "DUPLICATE_CHOICES", "UNDERDETERMINED_STEM", "CONTRADICTORY_CONDITIONS", "MISSING_CONDITION", "INVALID_DOMAIN", "INVALID_RANGE", "NUMERIC_DEFECT", "SIGN_DEFECT", "OPERATOR_DEFECT", "VARIABLE_OR_SYMBOL_DEFECT", "QUESTION_TARGET_DEFECT", "RESPONSE_FORM_DEFECT", "VISUAL_STEM_CONFLICT", "VISUAL_NUMERIC_CONFLICT", "VISUAL_LABEL_CONFLICT", "COMMON_MATERIAL_CONFLICT", "SOURCE_TEXT_AMBIGUITY", "OTHER_SOURCE_DEFECT"] },
+    "replacement": {
+      "type": "object",
+      "required": ["status", "replacementCardinality", "productionOriginalActive", "productionRecoveredActive", "replacementLineageParity", "recoveredQualityClosure"],
+      "properties": {
+        "status": { "const": "DERIVED_REPLACEMENT_VERIFIED" },
+        "replacementCardinality": { "const": "1:1" },
+        "productionOriginalActive": { "const": false },
+        "productionRecoveredActive": { "const": true },
+        "replacementLineageParity": { "const": "PASS" },
+        "recoveredQualityClosure": { "const": "PASS" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
