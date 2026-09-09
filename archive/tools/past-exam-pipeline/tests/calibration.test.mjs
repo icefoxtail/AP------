@@ -130,7 +130,7 @@ test('complete preparation preserves page source evidence and emits only unrevie
   f.manifest.referenceSampleLock.path = path.join(f.root, 'lock.json');
   const sourceSha = f.lock.target.sourceFiles[0].sha256;
   const sourceIdentityKey = `${sourceSha}|1`;
-  const q = { id: 1, content: 'x+1=2', choices: ['1', '2'], answer: '1', solution: '양변에서 1을 빼면 x=1이다.', sourceIdentityKey, sourceDocumentSha256: sourceSha, sourceQuestionNo: '1', sourcePageNo: 1, sourcePageEvidencePaths: ['pages/page_p001.png'] };
+  const q = { id: 1, content: 'x+1=2', choices: ['1', '2'], answer: '1', solution: '양변에서 1을 빼면 x=1이다.', sourceIdentityKey, sourceDocumentSha256: sourceSha, sourceQuestionNo: '1', sourcePageNo: 1, sourcePageEvidencePaths: ['pages/page_p001.png'], sourceEvidencePath: 'pages/page_p001.png' };
   q.image = 'assets/images/target/q001_visual.png';
   f.write('staged/' + q.image, 'synthetic problem image');
   f.write('staged/source.js', `window.examTitle="target";window.questionBank=${JSON.stringify([{ ...q, answer: '', solution: '' }])};`);

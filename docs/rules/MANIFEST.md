@@ -8,7 +8,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 11782 bytes | sha256 98d3c6fd85d986ef2f4d27a472d917e008a528ae0653c3d63a41f4e32e997791
+- 00_RULES_INDEX.md | 12274 bytes | sha256 38969f432270032c6091ee690b5400c173278715ddf01caf4ef71fdb23ae2b65
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 15690 bytes | sha256 b3c62500bc7594ace5a6a875861da98e68303923cc035edcb7864833bd91649a
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 69515 bytes | sha256 14284f057212d44ab3623c912c12aa1c6ca42fd67d893c48360a02e1688883f6
