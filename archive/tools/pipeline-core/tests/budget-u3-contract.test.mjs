@@ -248,6 +248,29 @@ test('U3 carries candidate choices and accepts bracket-prefixed solution text', 
   assert.equal(validateAuditorPacket(batch, { affectedUidSet: [f.uid], candidateContext }).status, 'PASS');
 });
 
+test('U1 permits literal bracket-prefixed source content without opening a blind JSON leak', t => {
+  const f = jobFixture(t);
+  const { run } = f.makeRun(1);
+  const packet = buildAuditorPacket({
+    phase: 'U1',
+    questionUid: f.uid,
+    payload: { questionUid: f.uid, content: '[주관식] source-only prompt', choices: ['1', '2'], problemAssets: [] },
+    affectedUidSet: [f.uid],
+    auditorId: 'auditor',
+    auditorSessionId: 'u1-session',
+    builderId: run.builderId,
+    builderSessionId: run.builderSessionId,
+    auditorPrincipalType: 'STATELESS_MODEL',
+    contextId: 'u1-context',
+    inputVisibilityProfile: 'SOURCE_ONLY',
+    priorReviewVisibility: 'NONE',
+    sealed: true,
+    launchId: 'job:1',
+    externalTaskId: 'provider'
+  });
+  assert.equal(validateAuditorPacket(packet, { affectedUidSet: [f.uid] }).status, 'PASS');
+});
+
 test('provider bridge binds a runtime-attested plan, phase packets, and one terminal receipt', t => {
   const f = jobFixture(t);
   const first = f.makeRun(1);

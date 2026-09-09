@@ -10,6 +10,13 @@ import { auditRun } from '../closure.mjs';
 import { createRenderReview } from '../render.mjs';
 import { runtimeDependencyBundle } from '../runtime.mjs';
 
+test('runtime bundle binds dynamic same-origin metadata and MathJax loader resources', () => {
+  const bundle = runtimeDependencyBundle(process.cwd());
+  const paths = new Set(bundle.localFiles.map(ref => ref.path));
+  assert.equal(paths.has('archive/data/question_metadata.json'), true);
+  assert.equal(paths.has('archive/vendor/mathjax/input/tex/extensions/boldsymbol.js'), true);
+});
+
 test('a valid closure for a different native scope does not authorize legacy finalizers', () => {
   const f = fixture(); try {
     const manifest = path.join(f.root, 'run.json'); fs.writeFileSync(manifest, JSON.stringify(f.run));
