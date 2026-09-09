@@ -482,3 +482,15 @@ source-only V1 7/7, 독립 검산 7/7 mismatch 0, candidate static 7/7, artifact
 r44 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r44f` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. 이전 r44e preparation은 최종 lineage에 사용하지 않는다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r44 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 38개 target-scoped candidate visual, 42개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r45 function/open-graph and discrete-parameter continuation update (2026-09-09)
+
+r45는 r44 직후 target inventory에서 실제로 미처리인 8개 문항을 처리했다. 23 매산고 1mid q20의 접선 조건, 23 여수여고 1mid q17의 포물선 접점, 23 충무고 1mid q15/q21의 함수 관계, 26 효천고 1mid q26의 조각함수 핵심 포물선, 26 금당고 1mid q14와 25 제일고 1mid q22의 제한구간 최적화는 개방형 cartesian SVG로 구성했다. 23 여수여고 1mid q16은 $3/2<k<7/2$와 정수해 $k=2,3$을 열린 끝점·정수 marker가 있는 수직선 SVG로 구성했다. 접점·꼭짓점·최댓값·최솟값·정수해·결과 anchor를 SVG에 명시했다.
+
+25 제일고 q22의 긴 최댓값·최솟값·결과 패널은 mobile 렌더에서 가독성을 확인한 뒤 2줄 panel로 구성했다. 23 여수여고 q17의 접점은 `접점 (1,3)`으로 보강해 artifact-only V2가 좌표를 독립적으로 관찰할 수 있게 했다. 두 수정 모두 수학 fact·source content·answer·solution을 변경하지 않는 visual layout/label repair다.
+
+source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다. candidate bank validation은 59 source bank·1295 row·full candidate visual 401건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 349건, 잔여 30건, decisionMissing 0이다. fresh expected fact 누적은 현재 counting 기준 396건, 잔여 34건이다. 최신 상태는 [r45 V3 closure snapshot](676_current_closure_snapshot_r45_v3_closed.json)이다.
+
+r45 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r45a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r45 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 30개 target-scoped candidate visual, 34개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
