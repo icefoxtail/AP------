@@ -29,7 +29,7 @@ export function validateSolutionQuality(contract, question = null) {
   if (question?.level === '상') required.add('highLevelEnhanced');
   // Constructed responses require reproducible scoring steps, even when an old
   // questionType is blank. This does not grant any special layout permission.
-  if (question && (!question.choices?.length || /서술|서답|주관|subjective|essay/i.test(question.questionType || ''))) required.add('subjectiveScoringReady');
+  if (question && ((!nonempty(question.questionType) && !question.choices?.length) || /서술|서답|주관|subjective|essay/i.test(question.questionType || ''))) required.add('subjectiveScoringReady');
   if (!isObject(contract.checks)) return { status: 'FAIL', errors: ['SOLUTION_QUALITY_CHECKS_REQUIRED'] };
   for (const key of Object.keys(contract.checks)) if (!SOLUTION_QUALITY_CHECKS.includes(key)) errors.push(`SOLUTION_QUALITY_UNKNOWN_CHECK:${key}`);
   for (const key of SOLUTION_QUALITY_CHECKS) {

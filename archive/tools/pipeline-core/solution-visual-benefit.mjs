@@ -21,6 +21,8 @@ export function validateVisualBenefit(contract, { phase, question, visual, expec
   if (!nonempty(c.decisiveStep) || !nonempty(c.geometryVisualRole) || !nonempty(c.expectedVisualType)) errors.push('VISUAL_BENEFIT_SEMANTICS_REQUIRED');
   if (!Array.isArray(c.applicablePolicyRefs) || !c.applicablePolicyRefs.length) errors.push('VISUAL_BENEFIT_POLICY_REQUIRED');
   else for (const ref of c.applicablePolicyRefs) if (!nonempty(ref?.version) || !ruleRefs.some(r => r.path === ref.path && r.bytes === ref.bytes && r.sha256 === ref.sha256)) errors.push('VISUAL_BENEFIT_POLICY_UNBOUND');
+  if (!['DECISIVE_REASONING', 'DEFINITION_REINFORCEMENT', 'RELATIONSHIP_EXPLANATION', 'REPRESENTATION_SUPPORT', 'SOURCE_RECONSTRUCTION', 'NONE', 'NOT_GEOMETRY'].includes(c.geometryVisualRole)) errors.push('VISUAL_BENEFIT_ROLE_INVALID');
+  if (c.visualRequirement === 'VISUAL_OPTIONAL' && c.studentUnderstandingBenefit !== true) errors.push('VISUAL_OPTIONAL_BENEFIT_REQUIRED');
   const wantsVisual = c.studentUnderstandingBenefit === true || c.visualRequirement === 'VISUAL_REQUIRED';
   if (wantsVisual && !['ADD', 'REBUILD', 'KEEP'].includes(c.visualAction)) errors.push('SOLUTION_VISUAL_BENEFIT_IGNORED');
   if (c.visualRequirement === 'VISUAL_EXEMPT' && (c.studentUnderstandingBenefit !== false || !['NONE', 'REMOVE'].includes(c.visualAction))) errors.push('VISUAL_EXEMPT_CONTRADICTION');
