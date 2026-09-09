@@ -105,3 +105,30 @@ are metadata, not a license to rewrite `content`, `choices`, `answer`,
 `solution`, or source images without the relevant evidence.
 
 If it finds a content/choice/image extraction error, it must verify the mismatch against full-page evidence and write an extraction correction report instead of silently changing extraction fields. It must not use a crop failure as the basis for rewriting content or choices.
+
+## Source Defect Recovery handoff
+
+After the full-page source check and an independent answer/solution solve, a
+confirmed source conflict is routed separately from extraction repair:
+
+```text
+extraction mismatch -> SOURCE_FIDELITY_RESTORATION
+answer-only mismatch -> R0 ANSWER_KEY_RECOVERY
+payload defect -> DERIVED_SOURCE_RECOVERY
+```
+
+For the bounded R0/R1 lane, the recovery request may be sent to the ALIVE
+runtime without hand-authoring `defectTypes` or `candidatesByTier`:
+
+```powershell
+python -m alive.engine.alive_cli source-recovery-run \
+  --input <locked-source-plus-independent-solve.json> --json
+```
+
+The input must include full-page/zoom/choice evidence, a source independent
+solve, and a separate `blindVerifierSolve` produced by a different verifier
+identity/session. The bridge creates the diagnosis, bounded candidate, frozen
+candidate identity, blind verifier envelope, and shadow/blocked result. It
+must not copy the source independent solve into verifier evidence. The
+original extraction candidate and source evidence remain unchanged. R2-R6 are
+not enabled until their producer and validator capabilities are registered.

@@ -186,6 +186,23 @@ finite_sampling/numerical_approximation만으로 Math PASS를 확정하지 않�
 
 `CURRICULUM_BOUNDARY_UNRESOLVED`는 판정 불가에 따른 BLOCKED이고, `CURRICULUM_BOUNDARY_FAIL`은 범위 위반이 확정된 FAIL이다.
 
+Source Recovery 구현이 사용하는 code registry는 다음 항목을 추가한다.
+각 문자열은 이 표와 일치해야 하며, `finalStatus` 값이 아니다.
+
+| code | finalStatus | blocking | 의미 |
+|---|---|---:|---|
+| `SOURCE_RECOVERY_EVIDENCE_BLOCKED` | BLOCKED | true | source page/scan/material/visual/file 부족 |
+| `SOURCE_RECOVERY_CAPABILITY_BLOCKED` | BLOCKED | true | 필요한 recovery capability 미구현 |
+| `SOURCE_RECOVERY_CAPABILITY_DEFERRED` | BLOCKED | true | capability는 있으나 rollout 비활성 |
+| `SOURCE_RECOVERY_HUMAN_REQUIRED` | BLOCKED | true | 모든 applicable active producer attempt 소진 후 candidate 없음 |
+| `SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION` | BLOCKED | true | authority/adoption 없는 recovered artifact를 final target으로 사용 |
+| `SOURCE_RECOVERY_VALIDATION_FAIL` | FAIL | true | recovery candidate/검증 결과 불일치 |
+| `DERIVED_REPLACEMENT_CARDINALITY_FAIL` | FAIL | true | replacement가 1:1이 아님 |
+| `DERIVED_REPLACEMENT_LINEAGE_FAIL` | FAIL | true | source/effective identity 또는 replacement evidence 결박 실패 |
+| `DERIVED_REPLACEMENT_PARITY_FAIL` | FAIL | true | original/recovered active 상태 또는 initial scope parity 실패 |
+| `DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL` | FAIL | true | recovered quality closure 미통과 |
+| `SOURCE_RECOVERY_LEDGER_REQUIRED` | BLOCKED | true | recovery 신호가 있으나 hash-bound ledger 없음 |
+
 ## 10. Resume metadata
 
 BLOCKED/HOLD 후 외부 자원 확보 시 재개할 수 있도록 최소한 아래를 저장한다.
@@ -248,10 +265,40 @@ productionAdoptionStatus = ADOPTED
 `INITIAL_INCLUDED_SCOPE_UID_SET`와 그 SHA는 replacement 전후 변경하지 않는다.
 `DERIVED_REPLACEMENT_VERIFIED`는 이 parity를 통과한 경우에만 기록한다.
 
+candidate가 수학적으로 승인되려면 `verifierEvidence`가 반드시 별도
+blind verifier envelope로 존재해야 한다. candidate payload의
+`independentVerification: PASS` self-claim은 충분하지 않다.
+
+```text
+candidateId
+candidateVersion
+candidatePayloadSha256
+verifierId / verifierSessionId
+inputVisibilityProfile = ARTIFACT_ONLY | RECOVERED_ONLY
+blindInput
+independentlyComputedAnswer
+answerUnique = true
+responseContractValid = true
+allChoicesChecked = true
+distractorsWrong = true
+mathVerdict = PASS
+evidenceSha256
+```
+
+verifier evidence는 candidate SHA와 정확히 일치해야 하고, builder/verifier
+session collision 및 answer/solution/intended answer/printed answer leak를
+거부한다. 누락·불일치 evidence는 `NOT_TESTED`/FAIL로 처리하며 PASS로
+승격하지 않는다.
+
 R0~R6는 하나의 상태 enum으로 축약하지 않는다. 각 tier에
 `applicability`, `capability`, `execution`을 따로 기록한다. capability가
 `CAPABILITY_BLOCKED` 또는 `DEFERRED_CAPABILITY`이면 execution exhaustion으로
 세지 않는다.
+
+현재 등록 capability는 `alive/engine/source_recovery.py`의 명시 registry를
+기준으로 R0/R1 bounded producer·blind-contract verifier만 `ACTIVE`다.
+R2/R3/R4/R6는 deferred, R5는 visual capability blocked 상태이며, 등록
+evidence 없이 기본 ACTIVE로 취급하지 않는다.
 
 필요 source evidence가 없으면 `HUMAN_REQUIRED`가 아니라 다음 resume 계약을
 사용한다.

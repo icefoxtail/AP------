@@ -650,6 +650,20 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
         ],
         "allowedExternalAgentEdits": ["answer", "solution", "answerStatus", "solutionStatus"],
         "contentChoicesPolicy": "content/choices/image are extraction outputs. External answer-solution agent must not change them unless it verifies the mismatch against full-page evidence and records an explicit extraction_correction_report item. cropPath/debug crops are auxiliary zoom evidence only.",
+        "sourceRecoveryHandoff": {
+            "trigger": "independent solve confirms a source payload defect after full-page fidelity is closed",
+            "operation": "SOURCE_RECOVERY",
+            "orchestrator": "archive/tools/past-exam-pipeline/helpers/source_recovery_handoff.py",
+            "command": "python archive/tools/past-exam-pipeline/helpers/source_recovery_handoff.py --input <locked-source-independent-solve-and-blind-verifier.json> --output <source-recovery-result.json>",
+            "requiresSeparateBlindVerifierSolve": True,
+            "routes": {
+                "EXTRACTION_DEFECT": "SOURCE_FIDELITY_RESTORATION",
+                "ANSWER_KEY_DEFECT": "R0_ANSWER_KEY_RECOVERY",
+                "QUESTION_PAYLOAD_DEFECT": "DERIVED_SOURCE_RECOVERY"
+            },
+            "originalSourcePolicy": "preserve source bytes, choices, visual, page evidence, and hashes",
+            "productionPolicy": "recovered artifacts require blind verifier evidence and final closure; R2-R6 remain blocked until capability registration"
+        },
         "items": answer_solution_rows,
     }
     write_json(reports / "gpt_gemini_handoff_manifest.json", handoff_manifest)
