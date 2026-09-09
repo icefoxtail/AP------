@@ -8,8 +8,11 @@ export function rulePreflight(root) {
     refs.push({ path: 'docs/rules/MANIFEST.md', bytes: manifest.length, sha256: bytesSha(manifest), role: 'rule' });
     const entries = [...manifest.toString('utf8').matchAll(/^- (.+) \| (\d+) bytes \| sha256 ([0-9a-f]{64})$/gm)];
     if (!entries.length) errors.push('EMPTY_RULE_MANIFEST');
+    const seenPaths = new Set();
     for (const [, relative, size, digest] of entries) {
       const file = `docs/rules/${relative}`;
+      if (seenPaths.has(file)) { errors.push(`RULE_MANIFEST_DUPLICATE:${file}`); continue; }
+      seenPaths.add(file);
       try {
         const bytes = fs.readFileSync(safePath(root, file));
         const ref = { path: file, bytes: bytes.length, sha256: bytesSha(bytes), declaredVersion: bytes.toString('utf8').split(/\r?\n/)[0], role: 'rule' };

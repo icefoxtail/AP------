@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { solutionQualityDraft, validateSolutionQuality, SOLUTION_QUALITY_CHECKS } from '../solution-quality.mjs';
-import { validateVisualBenefitPair } from '../solution-visual-benefit.mjs';
+import { validateVisualBenefit, validateVisualBenefitPair } from '../solution-visual-benefit.mjs';
 import { auditRun } from '../closure.mjs';
 import { axisInputSha } from '../projection.mjs';
 import { fixture } from './fixture.mjs';
@@ -80,5 +80,48 @@ test('missing beneficial SVG and unanchored solution both block despite review P
     assert.ok(result.errors.includes('SOLUTION_VISUAL_MISSING'));
     f.rewriteEvidence('solution', e => { e.payload.solutionQuality.checks.studentReproducible.solutionExcerpts = ['존재하지 않는 해설']; });
     assert.ok(auditRun(f.root, f.run).errors.some(e => e.includes('SOLUTION_QUALITY_ANCHOR_STALE')));
+  } finally { f.cleanup(); }
+});
+
+test('explicit objective type with empty choices does not force subjective scoring', () => {
+  const c = solutionQualityDraft();
+  for (const key of SOLUTION_QUALITY_CHECKS) c.checks[key] = { status: 'PASS', reason: 'reviewed', solutionExcerpts: ['풀이'] };
+  c.checks.subjectiveScoringReady.status = 'NOT_APPLICABLE';
+  const q = { solution: '풀이', choices: [], questionType: '객관식' };
+  assert.equal(validateSolutionQuality(c, q).status, 'PASS');
+  for (const questionType of ['', '서술형', '서답형']) {
+    const report = validateSolutionQuality(c, { ...q, questionType });
+    assert.ok(report.errors.includes('SOLUTION_QUALITY_EXEMPTION_FORBIDDEN:subjectiveScoringReady'));
+  }
+});
+
+test('optional false benefit with NONE fails at both review phases', () => {
+  const f = fixture();
+  try {
+    const c = structuredClone(f.records.get('v1').payload.visualBenefit);
+    const context = { ruleRefs: f.run.inputs.filter(r => r.role === 'rule') };
+    assert.equal(validateVisualBenefit(c, context).status, 'PASS');
+    Object.assign(c, { studentUnderstandingBenefit: false, visualAction: 'NONE', expectedFacts: [] });
+    for (const phase of ['U1', 'U3']) {
+      const report = validateVisualBenefit(c, { ...context, phase, question: {}, visual: { requirement: 'VISUAL_OPTIONAL', action: 'NONE' } });
+      assert.equal(report.status, 'FAIL');
+      assert.ok(report.errors.includes('VISUAL_OPTIONAL_BENEFIT_REQUIRED'));
+    }
+  } finally { f.cleanup(); }
+});
+
+test('visual role accepts canonical roles and legacy non-geometry sentinel only', () => {
+  const f = fixture();
+  try {
+    const c = structuredClone(f.records.get('v1').payload.visualBenefit);
+    const context = { ruleRefs: f.run.inputs.filter(r => r.role === 'rule') };
+    for (const role of ['DECISIVE_REASONING', 'DEFINITION_REINFORCEMENT', 'RELATIONSHIP_EXPLANATION', 'REPRESENTATION_SUPPORT', 'SOURCE_RECONSTRUCTION', 'NONE', 'NOT_GEOMETRY']) {
+      assert.equal(validateVisualBenefit({ ...c, geometryVisualRole: role }, context).status, 'PASS');
+    }
+    for (const role of ['invented', 'decisive_reasoning', '', null, 1]) {
+      const report = validateVisualBenefit({ ...c, geometryVisualRole: role }, context);
+      assert.equal(report.status, 'FAIL');
+      assert.ok(report.errors.includes('VISUAL_BENEFIT_ROLE_INVALID'));
+    }
   } finally { f.cleanup(); }
 });

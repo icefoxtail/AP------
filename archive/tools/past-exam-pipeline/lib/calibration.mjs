@@ -96,7 +96,7 @@ export function validateCalibration(root, lock, { manifest = null, requireLatest
     if (lock.sampleRole !== 'QUALITY_CALIBRATION_ONLY' || lock.sourceTruthPolicy !== 'TARGET_SOURCE_ONLY') errors.push('CALIBRATION_SOURCE_TRUTH_CONFLATION');
     if (requirePass && lock.status !== 'PASS') errors.push('REFERENCE_SAMPLE_LOCK_NOT_PASS');
     if (!Array.isArray(lock.samples) || ![2, 3].includes(lock.samples.length) || new Set(lock.samples.map(s => s.path)).size !== lock.samples.length) errors.push('CALIBRATION_REQUIRES_2_OR_3_DISTINCT_SAMPLES');
-    const anchors = new Set();
+    const anchors = new Map();
     for (const sample of lock.samples || []) {
       const actual = readProductionSample(root, lock.mainCommit, sample.path);
       const { bank, ...summary } = actual;
@@ -109,12 +109,21 @@ export function validateCalibration(root, lock, { manifest = null, requireLatest
       for (const q of bank) {
         const row = rows.find(r => r.qid === q.id);
         if (!row || row.questionSha !== objectSha(q) || !nonempty(row.observation) || !nonempty(row.solutionExcerpt) || !String(q.solution || '').includes(row.solutionExcerpt)) errors.push(`CALIBRATION_QUESTION_NOT_READ:${sample.path}:q${q.id}`);
-        else anchors.add(`${sample.path}|${q.id}`);
+        else anchors.set(`${sample.path}|${q.id}`, q);
       }
     }
+    const applicable = (key, q) => {
+      if (!q) return false;
+      if (key === 'highLevelNoLogicJump') return q.level === '상';
+      if (key === 'subjectiveStepsSufficient') return /서술|서답|주관|subjective|essay/i.test(q.questionType || '');
+      if (key === 'choiceConclusionNumber') return q.choices?.length > 0;
+      if (['problemSolutionImagesSeparate', 'beneficialVisualsUsed', 'visualAltCaption', 'visualMathParity'].includes(key)) return Boolean(q.solutionImage || /<(?:svg|table|img)\b/i.test(q.solution || ''));
+      return true;
+    };
     for (const key of QUALITY_PROFILE_CHECKS) {
       const item = lock.productionQualityProfile?.[key];
       if (item?.status !== 'PASS' || !nonempty(item.minimumStandard) || !Array.isArray(item.sampleAnchors) || !item.sampleAnchors.length || item.sampleAnchors.some(anchor => !anchors.has(anchor))) errors.push(`PRODUCTION_QUALITY_PROFILE_INCOMPLETE:${key}`);
+      else if (item.sampleAnchors.some(anchor => !applicable(key, anchors.get(anchor)))) errors.push(`PRODUCTION_QUALITY_PROFILE_ANCHOR_INAPPLICABLE:${key}`);
     }
   } catch (error) { errors.push(String(error.message || error)); }
   return { status: errors.length ? 'BLOCKED' : 'PASS', errors: [...new Set(errors)] };

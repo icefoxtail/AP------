@@ -22,7 +22,7 @@ function fixture(t) {
   const b = fs.readFileSync(path.join(root, 'docs/rules/rule.md'));
   write('docs/rules/MANIFEST.md', `- rule.md | ${b.length} bytes | sha256 ${bytesSha(b).slice(7)}\n`);
   const samplePaths = ['archive/exams/original/high/h1/1mid/one.js', 'archive/exams/original/high/h1/1mid/two.js'];
-  for (const file of samplePaths) write(file, `window.examTitle=${JSON.stringify(file)};window.questionBank=${JSON.stringify([1, 2].map(id => ({ id, standardCourse: '공통수학1', content: 'x+1=2', choices: ['1', '2'], answer: '1', solution: '양변에서 1을 빼면 x=1이다.' })))};`);
+  for (const file of samplePaths) write(file, `window.examTitle=${JSON.stringify(file)};window.questionBank=${JSON.stringify([1, 2].map(id => ({ id, level: id === 1 ? '상' : '중', questionType: id === 1 ? '서술형' : '객관식', solutionImage: id === 1 ? 'solution.svg' : undefined, standardCourse: '공통수학1', content: 'x+1=2', choices: id === 1 ? [] : ['1', '2'], answer: '1', solution: '양변에서 1을 빼면 x=1이다.' })))};`);
   git(['init', '-b', 'main']); git(['add', '.']); git(['-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-m', 'synthetic']);
   git(['remote', 'add', 'origin', root]); git(['update-ref', 'refs/remotes/origin/main', 'HEAD']);
   const manifest = { examId: 'target', pdfPath: write('source.pdf', 'synthetic source'), archiveRelativePath: 'original/high/h1/1mid/target.js' };
@@ -33,7 +33,7 @@ function fixture(t) {
     for (const axis of CALIBRATION_AXES) sample.checkedAxes[axis] = { status: 'PASS', observation: `Test observation ${axis}` };
     for (const q of sample.questionObservations) { q.solutionExcerpt = '양변에서 1을 빼면'; q.observation = `Test question ${q.qid}`; }
   }
-  for (const key of QUALITY_PROFILE_CHECKS) lock.productionQualityProfile[key] = { status: 'PASS', minimumStandard: `Test minimum ${key}`, sampleAnchors: [`${samplePaths[0]}|1`] };
+  for (const key of QUALITY_PROFILE_CHECKS) lock.productionQualityProfile[key] = { status: 'PASS', minimumStandard: `Test minimum ${key}`, sampleAnchors: [`${samplePaths[0]}|${key === 'choiceConclusionNumber' ? 2 : 1}`] };
   return { root, lock, manifest, write, git };
 }
 
@@ -178,4 +178,19 @@ else: raise AssertionError('unsafe exam id accepted')
 print('CANONICAL_STAGED_CROP_PASS')`;
   const out = execFileSync('python', ['-X', 'utf8', '-c', script, fileURLToPath(new URL('../helpers/scanned_exam_pipeline.py', import.meta.url)), root], { encoding: 'utf8' });
   assert.match(out, /CANONICAL_STAGED_CROP_PASS/);
+});
+
+for (const key of ['highLevelNoLogicJump', 'subjectiveStepsSufficient', 'problemSolutionImagesSeparate', 'beneficialVisualsUsed', 'visualAltCaption', 'visualMathParity']) test(`quality profile rejects inapplicable anchor: ${key}`, t => {
+  const f = fixture(t);
+  assert.equal(validateCalibration(f.root, f.lock).status, 'PASS');
+  f.lock.productionQualityProfile[key].sampleAnchors = [`${f.lock.samples[0].path}|2`];
+  const report = validateCalibration(f.root, f.lock);
+  assert.equal(report.status, 'BLOCKED');
+  assert.ok(report.errors.includes(`PRODUCTION_QUALITY_PROFILE_ANCHOR_INAPPLICABLE:${key}`));
+});
+
+test('one ordinary question cannot pass every quality profile', t => {
+  const f = fixture(t);
+  for (const item of Object.values(f.lock.productionQualityProfile)) item.sampleAnchors = [`${f.lock.samples[0].path}|2`];
+  assert.equal(validateCalibration(f.root, f.lock).status, 'BLOCKED');
 });

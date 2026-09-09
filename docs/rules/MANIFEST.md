@@ -35,5 +35,4 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 91353 bytes | sha256 b0c8b214d1052750d0ff60e3c83c179b02b3a4fe3f24ed72763f41292e0368c4
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2
 
-- 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 65827 bytes | sha256 e136ca000b5e16fa0bd493cf7067c1e219683bfecbe4daa7e487f020b87bac3b
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 8614 bytes | sha256 bb68fbc0267b7d3b36123a0cb202c2bbbe5844ffd69c5aaf9ed08e0584244fb8
