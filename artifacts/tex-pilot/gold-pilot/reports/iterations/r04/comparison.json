@@ -1,0 +1,124 @@
+{
+  "schema": "APMATH_GOLD_COMPARISON_r04",
+  "baseline": "reports/iterations/r03/comparison.json",
+  "rows": [
+    {
+      "id": "01_coordinate_perpendicular",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "common AUTO placement and compact math slope note"
+    },
+    {
+      "id": "02_coordinate_parallel",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "math-aware condition box"
+    },
+    {
+      "id": "03_circle_center_radius",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "TIE",
+      "evidence": "stable geometry rendering"
+    },
+    {
+      "id": "04_circle_tangent_bounds",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "numeric tangent boundary facts"
+    },
+    {
+      "id": "05_function_branch_switch",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "readability aspect and mobile-safe width"
+    },
+    {
+      "id": "06_function_tangent_triple_root",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "tangent annotation moved by common placement policy"
+    },
+    {
+      "id": "07_calculus_step_count",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "stable step graph and guides"
+    },
+    {
+      "id": "08_calculus_min_slope",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "minimum-slope note moved into open graph area"
+    },
+    {
+      "id": "09_calculus_reintersection",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "TIE",
+      "evidence": "stable explicit tangent label"
+    },
+    {
+      "id": "10_moving_segment_intersection",
+      "semantic": "PASS",
+      "factParity": "PASS",
+      "desktop": "PASS",
+      "mobile": "PASS",
+      "visualReview": "PASS",
+      "previous": "UNCHANGED",
+      "final": "NEW_WINS",
+      "evidence": "SPECIAL witness remains stable"
+    }
+  ],
+  "aggregate": {
+    "NEW_WINS": 8,
+    "TIE": 2,
+    "OLD_WINS": 0,
+    "IMPROVED": 3,
+    "UNCHANGED": 7,
+    "REGRESSED": 0
+  }
+}
