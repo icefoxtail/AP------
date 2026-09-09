@@ -6,12 +6,13 @@
 
 - branch: `codex/h2-s1-algebra-visual-upgrade-20260909`
 - remote: `origin/codex/h2-s1-algebra-visual-upgrade-20260909`
+- verified feature worktree: `C:/Users/USER/Desktop/AP-------h2-s1-algebra-visual`
 - current branch was created from and synced with latest `origin/main`; latest pushed base is the merge commit before the unpushed follow-up pack
 - main 최종 merge: 아직 하지 않음
 - target: 459 / candidate inventory 475 / excluded 16
 - current status: `SPECIALIST_EVIDENCE_PASS_CANONICAL_ROUTE_HOLD`, `NOT_SEALED`
 
-재개 전 `git checkout codex/h2-s1-algebra-visual-upgrade-20260909`, `git pull --ff-only`, `git status --short`, `git log -2 --oneline --decorate`를 실행한다.
+현재 기본 workspace가 다른 작업 브랜치를 사용할 수 있으므로, 그 디렉터리에서 무리하게 checkout하지 않는다. 별도 worktree를 사용하거나 새 clone에서 `git fetch origin`, `git worktree add <new-path> codex/h2-s1-algebra-visual-upgrade-20260909` 후 `git pull --ff-only`, `git status --short`, `git log -2 --oneline --decorate`를 실행한다.
 
 ## 이미 닫힌 gate
 
@@ -54,6 +55,8 @@
 - result: route `PASS`; candidate 39/39, freeze 459/459, baseline render 72/72, refresh render 18/18
 - authority: `productionAuthorized:false` 유지
 - consolidated audit: `FINAL_AUDIT_EVIDENCE.json` (`MACHINE_AUDIT_PASS_CANONICAL_SEAL_HOLD`)
+
+`FINAL_AUDIT_EVIDENCE.json`의 `mechanicalStatus`는 PASS이지만 `canonicalProviderFinalAudit`는 `NOT_RUN`이다. 따라서 이 파일의 machine PASS를 production seal이나 main 병합 승인으로 해석하지 않는다.
 
 일반 그래프를 cartesian/geometry 사실로 억지 변환하지 않는다. route가 없으면 `MISSING_CURRENT_PIPELINE_EVIDENCE`를 유지한다.
 
