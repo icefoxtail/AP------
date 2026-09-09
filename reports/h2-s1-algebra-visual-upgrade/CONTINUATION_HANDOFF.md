@@ -32,6 +32,7 @@
   - source-safe LaTeX repair 후 효천고 q24 6/6 재검수 포함
 
 주요 근거는 `SOLUTION_FREEZE_STATUS.md`, `candidate_manifest.json`, `visual_triage.json`, `PRODUCTION_ASSET_BINDINGS.json`, `browser_render_capture_matrix.json`, `browser_render_review.json`, `browser_render_check.md`다.
+학원 전수 시각 검수는 `ACADEMY_VISUAL_REVIEW_PACK.md`에서 시작하고, contact sheet와 원본 PNG를 함께 사용한다.
 
 ## 해설 source adjudication 기록
 

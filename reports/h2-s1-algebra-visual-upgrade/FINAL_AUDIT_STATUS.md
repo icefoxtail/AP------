@@ -26,6 +26,7 @@
   - zero image decode errors, MathJax errors, or horizontal overflow
 - specialist function-graph route adapter: pipeline-core CLI closure `PASS`, 39/39 candidate rows and 18/18 refresh rows included
 - consolidated machine audit: `FINAL_AUDIT_EVIDENCE.json` = `MACHINE_AUDIT_PASS_CANONICAL_SEAL_HOLD`; inventory/triage/freeze/asset/render/branch checks are all PASS
+- academy handoff: `ACADEMY_VISUAL_REVIEW_PACK.md`와 desktop/mobile/refresh contact sheet가 feature branch에 보존됨
 
 ## Not sealed yet
 
