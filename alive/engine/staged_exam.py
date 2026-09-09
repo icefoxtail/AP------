@@ -2750,6 +2750,11 @@ def _run_package_closure(root: Path, run_dir: Path, manifest: dict[str, Any]) ->
     ledger = _build_final_review_ledger(run_dir, manifest)
     render = run_dir / "render/render-evidence.json"
     external = run_dir / "final/external-findings.json"
+    recovery_ledger = None
+    if isinstance(manifest.get("sourceRecoveryLedger"), dict):
+        recovery_ledger = run_dir / "evidence/source-recovery-ledger.json"
+        if not recovery_ledger.is_file():
+            atomic_write_json(recovery_ledger, manifest["sourceRecoveryLedger"])
     closure_path = run_dir / "final/final-closure-report.json"
     report = audit_final_closure(
         root,
@@ -2758,6 +2763,10 @@ def _run_package_closure(root: Path, run_dir: Path, manifest: dict[str, Any]) ->
         render if render.is_file() else None,
         external if external.is_file() else None,
         closure_path,
+        None,
+        None,
+        None,
+        recovery_ledger,
     )
     internal_question_failures = [
         row for row in report.get("questions", [])

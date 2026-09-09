@@ -184,3 +184,45 @@ G09의 delta 축과 판정식은 Master Rulebook §13이 정본이다. Runtime�
 - checkpoint
 
 장문 chain-of-thought는 저장하지 않는다.
+
+## 13. Source Defect Auto-Recovery (v1.2 design amendment)
+
+Source recovery는 `generationMode`와 직교하는 runtime lane이다. 기존
+`APPROVED_SOURCE_REPAIR`와 원본 source lock을 대체하지 않는다.
+
+```text
+SOURCE_RECHECK
+ -> source evidence availability gate
+ -> source defect diagnosis
+ -> recovery policy
+ -> tier applicability/capability/execution matrix
+ -> candidate FREEZE
+ -> blind independent verification
+ -> deterministic ranking/reducer
+ -> quality closure
+ -> optional authority/adoption gate
+```
+
+결함 문항의 recovery가 BLOCKED/HUMAN_REQUIRED여도 다음 문항의 execution은
+계속할 수 있다. 다만 execution continuation은 release PASS가 아니다.
+
+필수 상태 축:
+
+```text
+sourceRecoveryPolicy = PRESERVE_ONLY | SHADOW_AUTO_RECOVER | AUTO_RECOVER
+recoveryAuthority = SHADOW_ONLY | BOUNDED_PRODUCTION | DEFAULT_PRODUCTION
+productionAdoptionStatus = NOT_AUTHORIZED | AUTHORIZED | ADOPTED
+```
+
+필요 source material이 없을 때는 `SOURCE_RECOVERY_EVIDENCE_BLOCKED`와
+`requiredResource`, `resumeFromStage=SOURCE_RECHECK`를 기록한다. capability가
+없는 tier는 `RECOVERY_CAPABILITY_BLOCKED` 또는
+`RECOVERY_DEFERRED_CAPABILITY`로 중단하며 `HUMAN_REQUIRED`로 세지 않는다.
+
+`RECOVERY_TARGETED_REPAIR`는 일반 `REGENERATE`의 예외적인 bounded action일
+뿐이며 frozen candidate를 수정하지 않는다. 같은 `recoveryPlanId` 아래 새
+candidate version/id/payload SHA를 생성하고 새 FREEZE·독립 검증을 한다.
+
+Derived artifact의 production slot 승계는 `DERIVED_REPLACEMENT_VERIFIED`
+one-to-one parity와 기존 final closure를 모두 통과한 경우에만 가능하다.
+초기 denominator UID set과 SHA는 replacement 전후 불변이다.

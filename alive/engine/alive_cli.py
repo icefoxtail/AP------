@@ -11,6 +11,7 @@ from . import ENGINE_VERSION
 from .contracts import FOLLOWUP_KINDS, GENERATION_MODES, OPERATION_MODES, OUTPUT_PROFILES, STAGES, initial_stages
 from .run_store import RunStore, atomic_write_json, make_run_id, sha256_file, utc_now
 from .source_resolver import resolve_explicit_source, resolve_source
+from .source_recovery import run_source_recovery
 from .task_runtime import (
     all_current_tasks_submitted,
     fail_task_dispatch,
@@ -2591,9 +2592,34 @@ def command_final_closure_audit(args: argparse.Namespace) -> int:
         args.js_path,
         Path(args.variant_proof_ledger).resolve() if args.variant_proof_ledger else None,
         Path(args.closure_manifest).resolve() if getattr(args, 'closure_manifest', None) else None,
+        Path(args.source_recovery_ledger).resolve() if getattr(args, 'source_recovery_ledger', None) else None,
     )
     emit(result, args.json)
     return 0 if result["status"] == "PASS" else 2
+
+
+def command_source_recovery_run(args: argparse.Namespace) -> int:
+    """Run the provider-neutral source recovery reducer over a JSON request."""
+
+    request = _read_json_object(args.input)
+    aliases = {
+        "sourceQuestionUid": "source_question_uid",
+        "sourceLockSha256": "source_lock_sha256",
+        "defectTypes": "defect_types",
+        "sourceRecoveryPolicy": "source_recovery_policy",
+        "recoveryAuthority": "recovery_authority",
+        "initialScopeUids": "initial_scope_uids",
+        "sourceEvidenceAvailable": "source_evidence_available",
+        "requiredResource": "required_resource",
+        "candidatesByTier": "candidates_by_tier",
+        "recoveryPlanId": "recovery_plan_id",
+    }
+    normalized = {aliases.get(key, key): value for key, value in request.items()}
+    result = run_source_recovery(**normalized)
+    if args.output:
+        atomic_write_json(Path(args.output).resolve(), result)
+    emit(result, args.json)
+    return 0 if result.get("status") in {"NOT_REQUIRED", "RECOVERED", "PRESERVE_ONLY"} else 2
 
 
 def add_common_output(parser: argparse.ArgumentParser) -> None:
@@ -3442,8 +3468,15 @@ def build_parser() -> argparse.ArgumentParser:
     final_closure.add_argument("--variant-proof-ledger", help="optional universal A/B/C variant proof ledger JSON")
     final_closure.add_argument("--output", help="write the final closure report JSON")
     final_closure.add_argument("--closure-manifest", help="shared APMath hash-bound closure manifest; otherwise reads <input>.closure.json")
+    final_closure.add_argument("--source-recovery-ledger", help="optional run-level source recovery ledger")
     add_common_output(final_closure)
     final_closure.set_defaults(func=command_final_closure_audit)
+
+    source_recovery = commands.add_parser("source-recovery-run")
+    source_recovery.add_argument("--input", required=True, help="JSON recovery request; accepts camelCase or Python field names")
+    source_recovery.add_argument("--output")
+    source_recovery.add_argument("--json", action="store_true")
+    source_recovery.set_defaults(func=command_source_recovery_run)
 
     visual_render = commands.add_parser("visual-render")
     visual_render.add_argument("--spec", required=True)
