@@ -83,9 +83,7 @@ const sourceFiles = walk(path.join(root, 'archive', 'exams', 'original', 'high',
 const nodeCheckFailures = sourceFiles.filter(file => childProcess.spawnSync(process.execPath, ['--check', file], { cwd: root, encoding: 'utf8' }).status !== 0).map(file => rel(path.relative(root, file)));
 
 const branch = git('branch', '--show-current');
-const head = git('rev-parse', 'HEAD');
 const originMain = git('rev-parse', 'origin/main');
-const remoteFeature = git('ls-remote', '--heads', 'origin', branch).split(/\s+/)[0] || null;
 const originMainIncluded = childProcess.spawnSync('git', ['merge-base', '--is-ancestor', 'origin/main', 'HEAD'], { cwd: root }).status === 0;
 
 const checks = {
@@ -108,7 +106,7 @@ const mechanicalPass = Object.values(checks).every(check => check.countsPass ===
 const output = {
   schemaVersion: 'apmath-h2-s1-algebra-final-audit-v1',
   generatedAt: new Date().toISOString(),
-  branch: { name: branch, head, originMain, remoteFeature, originMainIncluded },
+  branch: { name: branch, originMain, originMainIncluded, note: 'The audit report intentionally excludes its own commit hash to avoid self-referential evidence.' },
   scope: { sourceFileCount: 22, candidateQuestionCount: 475, targetQuestionCount: 459, excludedQuestionCount: 16 },
   checks,
   mechanicalStatus: mechanicalPass ? 'PASS' : 'FAIL',
@@ -120,4 +118,4 @@ const output = {
   blockingGates: mechanicalPass ? ['PROVIDER_ATTESTED_FINAL_AUDIT_NOT_RUN', 'ACADEMY_USER_VISUAL_REVIEW_PENDING', 'MAIN_MERGE_NOT_AUTHORIZED'] : ['MACHINE_AUDIT_FAILURE'],
 };
 fs.writeFileSync(path.join(reportDir, 'FINAL_AUDIT_EVIDENCE.json'), `${JSON.stringify(output, null, 2)}\n`, 'utf8');
-console.log(JSON.stringify({ status: output.status, mechanicalStatus: output.mechanicalStatus, target: output.scope.targetQuestionCount, candidatePass: checks.candidates.passRows, freeze: `${checks.solutionFreeze.pass}/${checks.solutionFreeze.unique}`, render: `${checks.render.baseline.passCases}/${checks.render.baseline.expectedCases}`, refresh: `${checks.render.refresh.passCases}/${checks.render.refresh.expectedCases}`, originMainIncluded, remoteFeature }, null, 2));
+console.log(JSON.stringify({ status: output.status, mechanicalStatus: output.mechanicalStatus, target: output.scope.targetQuestionCount, candidatePass: checks.candidates.passRows, freeze: `${checks.solutionFreeze.pass}/${checks.solutionFreeze.unique}`, render: `${checks.render.baseline.passCases}/${checks.render.baseline.expectedCases}`, refresh: `${checks.render.refresh.passCases}/${checks.render.refresh.expectedCases}`, originMainIncluded }, null, 2));
