@@ -105,7 +105,7 @@
   },
   "allOf": [
     {
-      "if": { "properties": { "productionAdoptionStatus": { "const": "ADOPTED" } } },
+      "if": { "required": ["productionAdoptionStatus"], "properties": { "productionAdoptionStatus": { "const": "ADOPTED" } } },
       "then": { "required": ["authorizationRef", "authorizationAuthority", "scopeAuthorizationStatus", "authorizedScope", "qualityClosureEvidenceRef", "qualityClosureEvidenceSha", "finalArtifactRef", "finalArtifactSha256"] }
     }
   ],
