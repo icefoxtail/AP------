@@ -557,6 +557,8 @@ r53/r54에서 source/id 기준 미기록 fact 16건을 추가했다. r53은 26 �
 
 ## r55-r60 full-scope evidence, candidate rebase, and pre-seal audit (2026-09-09)
 
+r60 checkpoint는 최신 `origin/main@f91bc32bd7e8db0e35dce1eaa682eba874e992d2`를 `da152f68c9cc566db076a6dd09cb6eecbc2386d9` merge commit으로 이 branch에 반영한 뒤 push했다. 이후 branch는 `origin/main`보다 뒤처지지 않으며, 후속 작업은 원격 `codex/hs-quadratic-svg-upgrade`에서 그대로 재개할 수 있다.
+
 r55/r56에서 source-only expected fact와 독립 계산을 각각 8건·7건 추가했다. r57/r58/r59/r60에서는 sourcePath|id 기준으로 남아 있던 독립 계산 증거를 각각 8건·8건·10건·10건 보강했다. 그 결과 authoritative full-scope coverage는 V1 `430/430`, independent math `430/430`, source solution static `430/430`이 됐다. 이 coverage는 report 안의 시험지명·legacy UID drift를 피하기 위해 `sourcePath|id`로 집계하며, r49의 과거 수기 누적값 `426/430`을 대체한다. 최신 근거는 [full-scope evidence coverage audit](743_full_scope_evidence_coverage_audit_r49.json)이다.
 
 r49 source repair 이후 candidate scoped bank에서 solution 1건이 stale한 것을 validation에서 확인했다. production source는 건드리지 않고 현재 source에서 candidate-only rebased bank를 다시 만들었으며, 59개 source bank·1,295개 bank row·scoped visual binding 387건, source-protected field drift 0, current solution drift 0으로 검증했다. scoped bank의 387건은 full historical candidate bank의 431건과 분모가 다르므로 혼용하지 않는다. 근거는 [rebased candidate manifest](764_rebased_candidate_bank_manifest_r60.json)와 [rebased bank validation](765_rebased_candidate_bank_validation_r60.json)이다.
