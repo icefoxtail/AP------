@@ -542,3 +542,9 @@ source-only V1 6/6, 독립 검산 6/6 mismatch 0, candidate static 6/6, artifact
 r49 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r49a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 target visual gate는 이제 닫혔지만, 전체 430문항 independent math/solution freeze 4건, provider-attested FINAL_AUDIT, 전체 scope의 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 아직 선언하지 않는다.
+
+## r50 full-scope evidence coverage checkpoint (2026-09-09)
+
+r50에서는 target-scoped V1/independent batch가 아니라, 과거 report 전체를 `sourcePath|id` 키로 재집계하는 full-scope evidence coverage audit를 추가했다. r50에서 source-only expected facts 8건과 독립 검산 8건을 추가한 현재 authoritative coverage는 V1 `389/430`(잔여 41), independent math `347/430`(잔여 83)이다. 과거 closure의 fresh expected fact 수기 누적값은 examTitle/path drift와 초기 report lineage 차이 때문에 전체 증거 coverage를 대체하지 않으며, [full-scope evidence coverage audit](743_full_scope_evidence_coverage_audit_r49.json)를 기준으로 후속 검산을 계속한다.
+
+r50 full-scope fact subset은 22 금당고 q2, 22 제일고 q3, 23 팔마고 q13, 25 강남여고 q4/q8, 25 매산여고 q1/q3/q9로 구성했다. source-only V1 8/8, 독립 재검산 8/8 mismatch 0이다. 이는 visual candidate batch가 아니므로 target visual coverage `379/379`를 변경하지 않는다. full 430-row solution freeze, provider-attested FINAL_AUDIT, 실제 provider render witness 및 remaining independent math는 여전히 열린 gate다. 최종 `PASS`·`SEALED`는 선언하지 않는다.
