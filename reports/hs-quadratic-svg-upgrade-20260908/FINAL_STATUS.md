@@ -506,3 +506,15 @@ candidate bank validation은 59 source bank·1295 row·full candidate visual 409
 r46 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r46a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r46 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 22개 target-scoped candidate visual, 26개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r47 function/inequality topology continuation and correction update (2026-09-09)
+
+r47는 r46 직후 target inventory에서 실제로 미처리인 8개 문항을 처리했다. 25 강남여고 1mid q19, 24 효천고 1mid q11, 24 한영고 1mid q20, 26 효천고 1mid q18은 제한구간 최적화·직사각형 가능성·함수 관계를 cartesian SVG로 구성했다. 25 강남여고 1mid q24, 23 충무고 1mid q12, 25 순천여고 2mid q11, 25 순천여고 1mid q20은 정수 parameter, 판별식 부호, 근의 범위·근의 위치를 수직선 topology로 구성했다. 반직선은 화살표로, 닫힌/열린 끝점과 discrete marker는 구분해 표시했다.
+
+r47 최초 후보 목록에서 r46에 이미 처리된 25 매산고 q18, 25 팔마고 q16, 26 금당고 q20을 attach 단계에서 중복 검출했고, 성공 근거로 사용하지 않았다. 이 3건을 제거한 뒤 24 한영고 q20, 25 순천여고 q20, 26 효천고 q18을 추가해 V1부터 전체 r47을 재실행했다. 효천고 q11의 긴 result panel은 실제 mobile render에서 graph를 가리는 문제가 확인되어 graph 아래 여백으로 이동하고 viewBox 높이를 확장했다.
+
+source-only V1 8/8, 독립 검산 8/8 mismatch 0, candidate static 8/8, artifact-only V2 8/8, V3 8/8(FAIL 0), candidate solution freeze 8/8, local desktop/mobile render 8/8 및 overflow 0이다. candidate bank validation은 59 source bank·1295 row·full candidate visual 417건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 365건, 잔여 14건, decisionMissing 0이다. fresh expected fact 누적은 현재 counting 기준 412건, 잔여 18건이다. 최신 상태는 [r47 V3 closure snapshot](708_current_closure_snapshot_r47_v3_closed.json)이다.
+
+r47 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r47a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+r47 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 14개 target-scoped candidate visual, 18개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
