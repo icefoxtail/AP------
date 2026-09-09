@@ -30,6 +30,7 @@ ENGINE_DIR = ROOT / "engine_results"
 BLIND_DIR = ROOT / "blind_verifier"
 VALIDATOR_DIR = ROOT / "validator"
 VERIFIER_SCRIPT = REPO / "tools/alive-source-recovery/real_source_verifier_b.py"
+PROVIDER_DIR = ROOT / "provider_b"
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -92,36 +93,25 @@ def make_validator(case_id: str, source_payload: dict[str, Any], tier: str):
 
 def call_verifier(case_id: str, view: dict[str, Any], out_dir: Path) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
+    providers = []
+    for provider_path in sorted(PROVIDER_DIR.glob("*.json")):
+        provider = json.loads(provider_path.read_text(encoding="utf-8"))
+        if provider.get("candidatePayloadSha256") == view.get("candidatePayloadSha256"):
+            providers.append(provider_path)
+    if len(providers) != 1:
+        raise RuntimeError(f"expected exactly one external provider result for candidate SHA, found {len(providers)}")
+    provider_path = providers[0]
     with tempfile.TemporaryDirectory(prefix="real-source-verifier-b-") as temp:
         input_path = Path(temp) / "candidate_view.json"
         output_path = Path(temp) / "verifier_b.json"
-        input_path.write_text(json.dumps({"caseId": case_id, **view}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        run = subprocess.run([sys.executable, str(VERIFIER_SCRIPT), "--input", str(input_path), "--output", str(output_path)], cwd=REPO, capture_output=True, text=True)
+        input_path.write_text(json.dumps(view, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        run = subprocess.run([sys.executable, str(VERIFIER_SCRIPT), "--input", str(input_path), "--provider-result", str(provider_path), "--output", str(output_path)], cwd=REPO, capture_output=True, text=True)
         if run.returncode != 0:
-            raise RuntimeError(f"Verifier B failed for {case_id}: {run.stdout}\n{run.stderr}")
+            raise RuntimeError(f"Verifier B failed for candidate {view.get('candidateId')}: {run.stdout}\n{run.stderr}")
         result = json.loads(output_path.read_text(encoding="utf-8"))
-    artifact = {**result, "candidateId": view.get("candidateId"), "candidateVersion": view.get("candidateVersion"), "candidatePayloadSha256": view.get("candidatePayloadSha256")}
-    artifact["evidenceSha256"] = "sha256:" + json_sha256(artifact)
+    artifact = {**result, "providerResultRef": f"provider_b/{provider_path.name}"}
     (out_dir / f"{case_id}.json").write_text(json.dumps(artifact, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    # Engine verifier adapter requires the standard evidence envelope.
-    body = {
-        "candidateId": view.get("candidateId"),
-        "candidateVersion": view.get("candidateVersion"),
-        "candidatePayloadSha256": view.get("candidatePayloadSha256"),
-        "verifierId": result["verifierId"],
-        "verifierSessionId": result["verifierSessionId"],
-        "inputVisibilityProfile": "ARTIFACT_ONLY",
-        "blindInput": copy.deepcopy(view["payload"]),
-        "independentlyComputedValue": result["computedAnswer"],
-        "independentlyComputedAnswer": result["computedAnswer"],
-        "answerUnique": result["answerUnique"],
-        "responseContractValid": result["responseContractValid"],
-        "allChoicesChecked": result["allChoicesChecked"],
-        "distractorsWrong": result["distractorsWrong"],
-        "mathVerdict": result["mathVerdict"],
-    }
-    body["evidenceSha256"] = "sha256:" + json_sha256(body)
-    return body
+    return result
 
 
 def run_case(gold: dict[str, Any]) -> dict[str, Any]:
