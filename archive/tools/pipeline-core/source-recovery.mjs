@@ -2,12 +2,19 @@ import { canonicalJson, isObject, nonempty, uidSet, uidSetSha } from './canonica
 
 export const SOURCE_RECOVERY_LEDGER_VERSION = 'ALIVE_SOURCE_RECOVERY_LEDGER_v1';
 const AUTHORITIES = new Set(['SHADOW_ONLY', 'BOUNDED_PRODUCTION', 'DEFAULT_PRODUCTION']);
+const validExhaustionAttempt = attempt => isObject(attempt)
+  && attempt.producerStatus === 'COMPLETED'
+  && Number.isSafeInteger(attempt.attemptCount) && attempt.attemptCount >= 1
+  && Number.isSafeInteger(attempt.candidateBudget) && attempt.candidateBudget >= 1
+  && Number.isSafeInteger(attempt.candidateBudgetConsumed) && attempt.candidateBudgetConsumed === attempt.candidateBudget
+  && Number.isSafeInteger(attempt.retryBudget) && attempt.retryBudget >= 0
+  && attempt.retryBudgetConsumed === true
+  && nonempty(attempt.attemptEvidenceRef)
+  && /^sha256:[0-9a-f]{64}$/.test(attempt.attemptEvidenceSha || '')
+  && attempt.allProducedCandidatesRejected === true;
 
 export function sourceRecoverySignal(run) {
-  return Boolean(run?.sourceRecovery || run?.derivedSourceRecovery || run?.questions?.some(q =>
-    q.slotUid !== undefined && q.effectiveArtifactUid !== undefined && q.slotUid !== q.effectiveArtifactUid
-    || ['replacementDisposition', 'productionRecoveredActive', 'sourceRecoveryStatus', 'sourceRecoveryPolicy', 'sourceRecovery'].some(field => field in q)
-  ));
+  return Boolean(run?.sourceRecoveryLedger || run?.sourceRecoverySignal === true || run?.sourceRecoveryStatus || run?.sourceRecovery || run?.derivedSourceRecovery);
 }
 
 const replacementErrors = (item, initial) => {
@@ -19,7 +26,7 @@ const replacementErrors = (item, initial) => {
   if (replacement.sourceOriginalPreserved !== true) errors.push('DERIVED_REPLACEMENT_LINEAGE_FAIL');
   if (replacement.productionOriginalActive !== false || replacement.productionRecoveredActive !== true) errors.push('DERIVED_REPLACEMENT_PARITY_FAIL');
   if (replacement.replacementLineageParity !== 'PASS' || replacement.recoveredQualityClosure !== 'PASS') errors.push('DERIVED_REPLACEMENT_PARITY_FAIL');
-  if (!nonempty(item.replacementEvidenceRef) || !nonempty(item.replacementEvidenceSha)) errors.push('DERIVED_REPLACEMENT_LINEAGE_FAIL');
+  if (!nonempty(item.replacementEvidenceRef) || !/^sha256:[0-9a-f]{64}$/.test(item.replacementEvidenceSha || '')) errors.push('DERIVED_REPLACEMENT_LINEAGE_FAIL');
   if (!AUTHORITIES.has(item.recoveryAuthority) || item.productionAdoptionStatus !== 'ADOPTED') errors.push('SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION');
   return [...new Set(errors)];
 };
@@ -64,6 +71,10 @@ export function validateSourceRecoveryLedger(ledger, run = null) {
     if (item.recoveryDisposition === 'ANSWER_KEY_RECOVERED' && item.finalTarget === true) {
       const resolution = item.answerKeyResolution;
       if (!isObject(resolution) || !nonempty(resolution.effectiveArtifactUid) || !nonempty(resolution.effectiveArtifactSha256) || resolution.lineageStatus !== 'PASS' || !nonempty(resolution.verifierEvidenceSha256)) errors.push('SOURCE_RECOVERY_VALIDATION_FAIL');
+    }
+    if (isObject(item.tierMatrix)) {
+      for (const [tier, row] of Object.entries(item.tierMatrix)) if (row?.execution === 'ATTEMPTED_EXHAUSTED' && !validExhaustionAttempt(item.producerAttempts?.[tier])) errors.push('RECOVERY_PRODUCER_BUDGET_NOT_EXHAUSTED');
+      if (item.status === 'HUMAN_REQUIRED') for (const row of Object.values(item.tierMatrix)) if (row?.applicability !== 'NOT_APPLICABLE' && row?.capability === 'ACTIVE' && row?.execution !== 'ATTEMPTED_EXHAUSTED') errors.push('RECOVERY_HUMAN_REQUIRED_PATH_NOT_EXHAUSTED');
     }
     if (item.status === 'RECOVERED' && finalTarget && !answerKeyRecovery && (item.recoveryAuthority === 'SHADOW_ONLY' || item.productionAdoptionStatus !== 'ADOPTED')) counts.shadowRecoveredUnapprovedCount++;
     if (finalTarget && !answerKeyRecovery && item.productionAdoptionStatus && item.productionAdoptionStatus !== 'ADOPTED' && !AUTHORITIES.has(item.recoveryAuthority)) counts.unauthorizedRecoveryAdoptionCount++;

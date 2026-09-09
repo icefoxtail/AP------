@@ -394,21 +394,16 @@ def _variant_proof_gate(value: Any, count: int) -> tuple[dict[str, Any], list[di
     return {"status": "PASS" if not findings else "FAIL", "questionCount": len(rows), "variantProofLedgerComplete": value.get("variantProofLedgerComplete")}, findings
 
 
-def _source_recovery_signal(questions: list[dict[str, Any]]) -> bool:
-    """Detect recovery metadata that cannot safely be audited without a ledger."""
+def _source_recovery_manifest_signal(value: Any) -> bool:
+    """Read only internal run/closure metadata, never student question fields."""
 
-    signal_fields = {
-        "replacementDisposition",
-        "productionRecoveredActive",
-        "sourceRecoveryStatus",
-        "sourceRecoveryPolicy",
-        "sourceRecovery",
-        "derivedSourceRecovery",
-    }
-    return any(
-        any(field in question for field in signal_fields)
-        or question.get("slotUid") != question.get("effectiveArtifactUid")
-        for question in questions
+    if not isinstance(value, dict):
+        return False
+    return bool(
+        value.get("sourceRecoveryLedger")
+        or value.get("sourceRecoverySignal") is True
+        or value.get("sourceRecoveryStatus")
+        or value.get("derivedSourceRecovery")
     )
 
 
@@ -534,7 +529,11 @@ def audit_final_closure(
                     detected_recovery_path = candidate_path
                     break
         recovery_value = _read_json(detected_recovery_path, "source recovery ledger") if detected_recovery_path else None
-        if _source_recovery_signal(questions) and recovery_value is None:
+        closure_manifest_value = _read_json(quality_manifest_path, "closure manifest") if quality_manifest_path and quality_manifest_path.is_file() else None
+        if recovery_value is None and isinstance(closure_manifest_value, dict) and isinstance(closure_manifest_value.get("sourceRecoveryLedger"), dict):
+            recovery_value = closure_manifest_value["sourceRecoveryLedger"]
+        internal_signal = _source_recovery_manifest_signal(closure_manifest_value)
+        if internal_signal and recovery_value is None:
             recovery_gate = {
                 "status": "BLOCKED",
                 "counts": {"sourceRecoveryLedgerRequiredCount": 1},

@@ -279,6 +279,8 @@ blindInput
 independentlyComputedAnswer
 answerUnique = true
 responseContractValid = true
+allChoicesChecked = true
+distractorsWrong = true
 mathVerdict = PASS
 evidenceSha256
 ```

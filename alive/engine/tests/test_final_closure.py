@@ -71,8 +71,10 @@ class FinalClosureTests(unittest.TestCase):
                 + ";\n",
                 encoding="utf-8",
             )
+            internal_manifest = root / "internal-closure.json"
+            internal_manifest.write_text(json.dumps({"sourceRecoverySignal": True}), encoding="utf-8")
 
-            report = audit_final_closure(root, path, None, None, None)
+            report = audit_final_closure(root, path, None, None, None, quality_manifest_path=internal_manifest)
 
             self.assertEqual("BLOCKED", report["sourceRecovery"]["status"])
             self.assertIn("SOURCE_RECOVERY_LEDGER_REQUIRED", report["sourceRecovery"]["errors"])

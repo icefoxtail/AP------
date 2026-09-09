@@ -11,7 +11,7 @@ from . import ENGINE_VERSION
 from .contracts import FOLLOWUP_KINDS, GENERATION_MODES, OPERATION_MODES, OUTPUT_PROFILES, STAGES, initial_stages
 from .run_store import RunStore, atomic_write_json, make_run_id, sha256_file, utc_now
 from .source_resolver import resolve_explicit_source, resolve_source
-from .source_recovery import capability_registry_report, run_source_recovery, validate_design_mirror
+from .source_recovery import build_blind_verifier_adapter, capability_registry_report, run_source_recovery, validate_design_mirror
 from .task_runtime import (
     all_current_tasks_submitted,
     fail_task_dispatch,
@@ -2615,12 +2615,18 @@ def command_source_recovery_run(args: argparse.Namespace) -> int:
         "attemptsByTier": "attempts_by_tier",
         "sourcePayload": "source_payload",
         "independentSolve": "independent_solve",
+        "blindVerifierSolve": "blind_verifier_solve",
         "recoveryPlanId": "recovery_plan_id",
         "builderSessionId": "builder_session_id",
         "verifierId": "verifier_id",
         "verifierSessionId": "verifier_session_id",
+        "qualityClosureEvidence": "quality_closure_evidence",
+        "lineageParityEvidence": "lineage_parity_evidence",
     }
     normalized = {aliases.get(key, key): value for key, value in request.items()}
+    blind_solve = normalized.pop("blind_verifier_solve", None)
+    if blind_solve is not None:
+        normalized["blind_verifier"] = build_blind_verifier_adapter(blind_solve)
     result = run_source_recovery(**normalized)
     if args.output:
         atomic_write_json(Path(args.output).resolve(), result)

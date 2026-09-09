@@ -399,6 +399,8 @@ def validate_verifier_evidence(
         "independentlyComputedAnswer",
         "answerUnique",
         "responseContractValid",
+        "allChoicesChecked",
+        "distractorsWrong",
         "mathVerdict",
         "evidenceSha256",
     )
@@ -419,7 +421,7 @@ def validate_verifier_evidence(
         leaked = sorted(forbidden.intersection(blind_input))
         if leaked:
             errors.append("VERIFIER_BLIND_INPUT_LEAK:" + ",".join(leaked))
-    if evidence.get("answerUnique") is not True or evidence.get("responseContractValid") is not True:
+    if evidence.get("answerUnique") is not True or evidence.get("responseContractValid") is not True or evidence.get("allChoicesChecked") is not True or evidence.get("distractorsWrong") is not True:
         errors.append("VERIFIER_RESPONSE_CONTRACT_NOT_PASS")
     if evidence.get("mathVerdict") != "PASS":
         errors.append("VERIFIER_MATH_NOT_PASS")
@@ -432,6 +434,133 @@ def validate_verifier_evidence(
     return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
 
 
+def _validator_evidence_sha(value: Mapping[str, Any]) -> str:
+    return _hash_without_self_field(value, "evidenceSha256")
+
+
+def validate_validator_evidence(
+    candidate: Mapping[str, Any],
+    evidence: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    """Validate per-gate evidence emitted by real validators, not a builder claim."""
+
+    errors: list[str] = []
+    if not isinstance(evidence, Mapping):
+        return {"status": "FAIL", "errors": ["VALIDATOR_EVIDENCE_REQUIRED"], "gates": {}}
+    gate_rows = evidence.get("gates")
+    if not isinstance(gate_rows, Mapping):
+        return {"status": "FAIL", "errors": ["VALIDATOR_GATE_EVIDENCE_REQUIRED"], "gates": {}}
+    statuses: dict[str, str] = {}
+    for gate in _GATE_NAMES:
+        row = gate_rows.get(gate)
+        if not isinstance(row, Mapping):
+            errors.append(f"VALIDATOR_GATE_EVIDENCE_MISSING:{gate}")
+            statuses[gate] = "NOT_TESTED"
+            continue
+        statuses[gate] = str(row.get("status", "NOT_TESTED")).upper()
+        for field in ("evidenceId", "candidateId", "candidateVersion", "candidatePayloadSha256", "evidenceSha256"):
+            if field not in row:
+                errors.append(f"VALIDATOR_GATE_FIELD_MISSING:{gate}:{field}")
+        if row.get("candidateId") != candidate.get("candidateId"):
+            errors.append(f"VALIDATOR_GATE_CANDIDATE_ID_MISMATCH:{gate}")
+        if row.get("candidateVersion") != candidate.get("candidateVersion"):
+            errors.append(f"VALIDATOR_GATE_CANDIDATE_VERSION_MISMATCH:{gate}")
+        if row.get("candidatePayloadSha256") != candidate.get("payloadSha256"):
+            errors.append(f"VALIDATOR_GATE_CANDIDATE_SHA_MISMATCH:{gate}")
+        if row.get("evidenceSha256") != _validator_evidence_sha(row):
+            errors.append(f"VALIDATOR_GATE_EVIDENCE_SHA_MISMATCH:{gate}")
+        if statuses[gate] != "PASS":
+            errors.append(f"VALIDATOR_GATE_NOT_PASS:{gate}")
+    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors), "gates": statuses}
+
+
+def build_validator_evidence(
+    candidate: Mapping[str, Any],
+    *,
+    visual_required: bool = False,
+) -> dict[str, Any]:
+    """Run the deterministic bounded validator adapter and emit hash-bound gate rows."""
+
+    payload = candidate.get("payload")
+    if not isinstance(payload, Mapping):
+        raise SourceRecoveryError("candidate payload is required for validation")
+    structural_pass = bool(payload.get("content")) and isinstance(payload.get("choices", []), list)
+    visual_pass = not visual_required or payload.get("visualValidationStatus") == "PASS"
+    verifier = candidate.get("verifierEvidence") if isinstance(candidate.get("verifierEvidence"), Mapping) else {}
+    statuses = {
+        "MATH_VALID": "PASS" if verifier.get("mathVerdict") == "PASS" else "FAIL",
+        "ANSWER_UNIQUE_OR_RESPONSE_CONTRACT_VALID": "PASS" if verifier.get("answerUnique") is True and verifier.get("responseContractValid") is True else "FAIL",
+        "CURRICULUM_VALID": "PASS" if payload.get("curriculumValidationStatus", "PASS") == "PASS" else "FAIL",
+        "QUESTION_WELL_FORMED": "PASS" if structural_pass else "FAIL",
+        "RECOVERY_FINGERPRINT_GATE_PASS": "PASS" if payload.get("fingerprintValidationStatus", "PASS") == "PASS" else "FAIL",
+        "DIFFICULTY_ROLE_ACCEPTABLE": "PASS" if payload.get("difficultyValidationStatus", "PASS") == "PASS" else "FAIL",
+        "VISUAL_VALID_IF_APPLICABLE": "PASS" if visual_pass else "FAIL",
+        "SERIALIZABLE": "PASS",
+    }
+    rows: dict[str, dict[str, Any]] = {}
+    for gate, status in statuses.items():
+        row = {
+            "evidenceId": f"validator-{candidate['candidateId']}-{gate}",
+            "candidateId": candidate["candidateId"],
+            "candidateVersion": candidate["candidateVersion"],
+            "candidatePayloadSha256": candidate["payloadSha256"],
+            "status": status,
+            "method": "bounded_deterministic_validator",
+            "coverage": "complete",
+        }
+        rows[gate] = {**row, "evidenceSha256": _validator_evidence_sha(row)}
+    return {"validatorId": "alive-bounded-validator", "gates": rows}
+
+
+def blind_candidate_view(candidate: Mapping[str, Any]) -> dict[str, Any]:
+    """Return the only candidate view a separate verifier may receive."""
+
+    payload = copy.deepcopy(dict(candidate.get("payload") or {}))
+    for field in ("answer", "solution", "intendedAnswer", "printedAnswer", "verifierEvidence", "validatorEvidence"):
+        payload.pop(field, None)
+    return {
+        "candidateId": candidate.get("candidateId"),
+        "candidateVersion": candidate.get("candidateVersion"),
+        "candidatePayloadSha256": candidate.get("payloadSha256"),
+        "payload": payload,
+        "inputVisibilityProfile": "ARTIFACT_ONLY",
+        "priorReviewVisibility": "NONE",
+        "builderSessionId": candidate.get("builderSessionId"),
+    }
+
+
+def build_blind_verifier_adapter(blind_solve: Mapping[str, Any]) -> Any:
+    """Adapt a separately-produced solve result into the verifier envelope.
+
+    The adapter receives the artifact-only view and never reads the source
+    ``independentSolve`` object. Its caller is responsible for supplying a
+    verifier result produced by a separate identity/session.
+    """
+
+    if not isinstance(blind_solve, Mapping):
+        raise SourceRecoveryError("separate blind verifier solve is required")
+
+    def verify(view: Mapping[str, Any]) -> dict[str, Any]:
+        body = {
+            "candidateId": view.get("candidateId"),
+            "candidateVersion": view.get("candidateVersion"),
+            "candidatePayloadSha256": view.get("candidatePayloadSha256"),
+            "verifierId": blind_solve.get("verifierId"),
+            "verifierSessionId": blind_solve.get("verifierSessionId"),
+            "inputVisibilityProfile": "ARTIFACT_ONLY",
+            "blindInput": copy.deepcopy(view.get("payload")),
+            "independentlyComputedAnswer": blind_solve.get("independentlyComputedAnswer"),
+            "answerUnique": blind_solve.get("answerUnique"),
+            "responseContractValid": blind_solve.get("responseContractValid"),
+            "allChoicesChecked": blind_solve.get("allChoicesChecked"),
+            "distractorsWrong": blind_solve.get("distractorsWrong"),
+            "mathVerdict": blind_solve.get("mathVerdict"),
+        }
+        return {**body, "evidenceSha256": _hash_without_self_field(body, "evidenceSha256")}
+
+    return verify
+
+
 def validate_producer_attempt(
     attempt: Mapping[str, Any] | None,
     *,
@@ -442,7 +571,7 @@ def validate_producer_attempt(
     errors: list[str] = []
     if not isinstance(attempt, Mapping):
         return {"status": "PENDING", "errors": ["RECOVERY_PRODUCER_ATTEMPT_EVIDENCE_REQUIRED"]}
-    required = ("producerStatus", "attemptCount", "generatedCandidateCount", "attemptEvidenceRef", "attemptEvidenceSha", "allProducedCandidatesRejected")
+    required = ("producerStatus", "attemptCount", "candidateBudget", "candidateBudgetConsumed", "retryBudget", "retryBudgetConsumed", "generatedCandidateCount", "attemptEvidenceRef", "attemptEvidenceSha", "allProducedCandidatesRejected")
     errors.extend(f"PRODUCER_ATTEMPT_FIELD_MISSING:{field}" for field in required if field not in attempt)
     if attempt.get("producerStatus") != "COMPLETED":
         errors.append("RECOVERY_PRODUCER_NOT_COMPLETED")
@@ -453,12 +582,23 @@ def validate_producer_attempt(
         errors.append("RECOVERY_PRODUCER_CANDIDATE_COUNT_INVALID")
     if generated_candidate_count is not None and count != generated_candidate_count:
         errors.append("RECOVERY_PRODUCER_CANDIDATE_COUNT_MISMATCH")
+    candidate_budget = attempt.get("candidateBudget")
+    candidate_consumed = attempt.get("candidateBudgetConsumed")
+    retry_budget = attempt.get("retryBudget")
+    if not isinstance(candidate_budget, int) or candidate_budget < 1 or not isinstance(candidate_consumed, int) or not 0 <= candidate_consumed <= candidate_budget:
+        errors.append("RECOVERY_CANDIDATE_BUDGET_INVALID")
+    if not isinstance(retry_budget, int) or retry_budget < 0 or not isinstance(attempt.get("retryBudgetConsumed"), bool):
+        errors.append("RECOVERY_RETRY_BUDGET_INVALID")
     if not isinstance(attempt.get("attemptEvidenceRef"), str) or not attempt.get("attemptEvidenceRef"):
         errors.append("RECOVERY_PRODUCER_ATTEMPT_REF_INVALID")
     if not isinstance(attempt.get("attemptEvidenceSha"), str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", attempt.get("attemptEvidenceSha", "")):
         errors.append("RECOVERY_PRODUCER_ATTEMPT_SHA_INVALID")
     if count == 0 and attempt.get("allProducedCandidatesRejected") is not True:
         errors.append("RECOVERY_EMPTY_PRODUCER_RESULT_NOT_CLOSED")
+    if attempt.get("allProducedCandidatesRejected") is True and (
+        candidate_consumed != candidate_budget or attempt.get("retryBudgetConsumed") is not True
+    ):
+        errors.append("RECOVERY_PRODUCER_BUDGET_NOT_EXHAUSTED")
     return {"status": "PASS" if not errors else "PENDING", "errors": _ordered_unique(errors)}
 
 
@@ -504,6 +644,13 @@ def diagnose_source_defects(
         raise SourceRecoveryError("independent solve evidence is required for diagnosis")
     if independent_solve.get("extractionMatchesSource") is False:
         return {"status": "EXTRACTION_DEFECT", "defectTypes": ["SOURCE_TEXT_AMBIGUITY"]}
+    if independent_solve.get("mathVerdict") != "PASS":
+        return {
+            "status": "SOURCE_RECOVERY_VALIDATION_FAILED",
+            "finalStatus": "BLOCKED",
+            "code": CODE_SOURCE_RECOVERY_VALIDATION_FAIL,
+            "reason": "INDEPENDENT_MATH_NOT_PASS",
+        }
     choices = source_payload.get("choices")
     choices = choices if isinstance(choices, list) else []
     normalized_choices = [_answer_text(choice) for choice in choices]
@@ -514,6 +661,30 @@ def diagnose_source_defects(
     defects: list[str] = []
     if len(normalized_choices) != len(set(normalized_choices)):
         defects.append("DUPLICATE_CHOICES")
+    if choices and independent_solve.get("answerUnique") is not True:
+        defects.append("MULTIPLE_CORRECT_ANSWERS")
+    if choices and independent_solve.get("responseContractValid") is not True:
+        defects.append("RESPONSE_FORM_DEFECT")
+    signal_map = {
+        "missingCondition": "MISSING_CONDITION",
+        "missing_condition": "MISSING_CONDITION",
+        "underdetermined": "UNDERDETERMINED_STEM",
+        "contradictoryConditions": "CONTRADICTORY_CONDITIONS",
+        "contradictory_conditions": "CONTRADICTORY_CONDITIONS",
+        "domainValid": "INVALID_DOMAIN",
+        "domain_valid": "INVALID_DOMAIN",
+        "rangeValid": "INVALID_RANGE",
+        "range_valid": "INVALID_RANGE",
+        "targetValid": "QUESTION_TARGET_DEFECT",
+        "target_valid": "QUESTION_TARGET_DEFECT",
+    }
+    for field, defect in signal_map.items():
+        value = source_payload.get(field)
+        if value is False or value is True and defect in {"MISSING_CONDITION", "UNDERDETERMINED_STEM", "CONTRADICTORY_CONDITIONS"}:
+            defects.append(defect)
+    for signal in source_payload.get("defectSignals", []):
+        if signal in DEFECT_TYPES:
+            defects.append(signal)
     if choices and len(matches) == 0:
         defects.append("NO_CORRECT_ANSWER")
     if len(matches) > 1:
@@ -531,27 +702,61 @@ def diagnose_source_defects(
     }
 
 
-def _verifier_evidence_for_candidate(
-    candidate: Mapping[str, Any],
-    independent_solve: Mapping[str, Any],
-    *,
-    verifier_id: str,
-    verifier_session_id: str,
-) -> dict[str, Any]:
-    body = {
-        "candidateId": candidate["candidateId"],
-        "candidateVersion": candidate["candidateVersion"],
-        "candidatePayloadSha256": candidate["payloadSha256"],
-        "verifierId": verifier_id,
-        "verifierSessionId": verifier_session_id,
-        "inputVisibilityProfile": "ARTIFACT_ONLY",
-        "blindInput": {"content": candidate["payload"].get("content"), "choices": candidate["payload"].get("choices", [])},
-        "independentlyComputedAnswer": _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer"))),
-        "answerUnique": independent_solve.get("answerUnique") is True,
-        "responseContractValid": independent_solve.get("responseContractValid") is True,
-        "mathVerdict": independent_solve.get("mathVerdict"),
-    }
-    return {**body, "evidenceSha256": _hash_without_self_field(body, "evidenceSha256")}
+def _r1_no_correct_answer_payload(
+    payload: dict[str, Any],
+    answer: str,
+    matches: list[Any],
+) -> tuple[dict[str, Any], str] | None:
+    if matches:
+        return None
+    choices = list(payload.get("choices") or [])
+    if not choices:
+        return None
+    replace_index = next((index for index, choice in enumerate(choices) if _answer_text(choice) != answer), 0)
+    choices[replace_index] = answer
+    payload["choices"] = choices
+    payload["answer"] = answer
+    return payload, "NO_CORRECT_ANSWER"
+
+
+def _r1_multiple_answers_payload(
+    payload: dict[str, Any],
+    answer: str,
+    matches: list[Any],
+) -> tuple[dict[str, Any], str] | None:
+    if len(matches) < 2:
+        return None
+    choices = list(payload.get("choices") or [])
+    replacement = payload.get("recoveryReplacementChoice")
+    if replacement is None:
+        return None
+    replace_index = int(matches[-1]) - 1 if isinstance(matches[-1], int) else None
+    if replace_index is None or not 0 <= replace_index < len(choices):
+        return None
+    if _answer_text(replacement) == answer or _answer_text(replacement) in {_answer_text(choice) for choice in choices}:
+        return None
+    choices[replace_index] = replacement
+    payload["choices"] = choices
+    payload["answer"] = answer
+    return payload, "MULTIPLE_CORRECT_ANSWERS"
+
+
+def _r1_duplicate_choices_payload(
+    payload: dict[str, Any],
+    answer: str,
+) -> tuple[dict[str, Any], str] | None:
+    choices = list(payload.get("choices") or [])
+    normalized = [_answer_text(choice) for choice in choices]
+    duplicate_index = next((index for index, value in enumerate(normalized) if value and value in normalized[:index]), None)
+    replacement = payload.get("recoveryReplacementChoice")
+    if duplicate_index is None or replacement is None:
+        return None
+    if _answer_text(replacement) == answer or _answer_text(replacement) in set(normalized):
+        return None
+    choices[duplicate_index] = replacement
+    payload["choices"] = choices
+    payload["answer"] = answer
+    return payload, "DUPLICATE_CHOICES"
 
 
 def produce_recovery_candidates(
@@ -561,8 +766,6 @@ def produce_recovery_candidates(
     *,
     recovery_plan_id: str,
     builder_session_id: str = "recovery-builder",
-    verifier_id: str = "recovery-blind-verifier",
-    verifier_session_id: str = "recovery-verifier-session",
 ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, dict[str, Any]]]:
     """Build the bounded R0/R1 candidate and verifier handoff artifacts."""
 
@@ -580,24 +783,29 @@ def produce_recovery_candidates(
         choices = list(payload.get("choices") or [])
         answer = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
         matches = diagnosis.get("matchingChoiceIndices") or []
-        replace_index = next((index for index in range(len(choices)) if index + 1 not in matches), None)
-        if replace_index is None:
-            replace_index = 0 if choices else None
-        if replace_index is None:
-            return {"R1": []}, {"R1": {"producerStatus": "COMPLETED", "attemptCount": 1, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R1", "attemptEvidenceSha": _prefixed_sha({"tier": "R1", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
-        payload["choices"] = choices
-        payload["choices"][replace_index] = answer
-        payload["answer"] = answer
+        produced = (
+            _r1_duplicate_choices_payload(payload, answer)
+            if "DUPLICATE_CHOICES" in defect_types
+            else _r1_multiple_answers_payload(payload, answer, matches)
+            if "MULTIPLE_CORRECT_ANSWERS" in defect_types
+            else _r1_no_correct_answer_payload(payload, answer, matches)
+        )
+        if produced is None:
+            return {"R1": []}, {"R1": {"producerStatus": "COMPLETED", "attemptCount": 1, "candidateBudget": 1, "candidateBudgetConsumed": 1, "retryBudget": 0, "retryBudgetConsumed": True, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R1", "attemptEvidenceSha": _prefixed_sha({"tier": "R1", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
+        payload, producer_kind = produced
     else:
         return {}, {}
-    payload["acceptanceGates"] = {name: "PASS" for name in _GATE_NAMES}
     candidate = make_candidate_version(recovery_plan_id, payload, candidate_version=1)
     candidate["builderSessionId"] = builder_session_id
-    candidate["verifierEvidence"] = _verifier_evidence_for_candidate(candidate, independent_solve, verifier_id=verifier_id, verifier_session_id=verifier_session_id)
+    candidate["producerKind"] = "ANSWER_KEY_CONFLICT" if primary == "R0" else producer_kind
     attempt_body = {"tier": primary, "generatedCandidateCount": 1, "candidateId": candidate["candidateId"], "candidatePayloadSha256": candidate["payloadSha256"]}
     attempt = {
         "producerStatus": "COMPLETED",
         "attemptCount": 1,
+        "candidateBudget": 3,
+        "candidateBudgetConsumed": 1,
+        "retryBudget": 1,
+        "retryBudgetConsumed": False,
         "generatedCandidateCount": 1,
         "attemptEvidenceRef": f"recovery-attempt-{primary}",
         "attemptEvidenceSha": _prefixed_sha(attempt_body),
@@ -620,10 +828,8 @@ def candidate_acceptance(
     payload = candidate.get("payload")
     if not isinstance(payload, Mapping):
         raise SourceRecoveryError("candidate payload is required")
-    gates = payload.get("acceptanceGates", candidate.get("acceptanceGates"))
-    if not isinstance(gates, Mapping):
-        gates = {}
-    gate_status = {name: str(gates.get(name, "NOT_TESTED")).upper() for name in _GATE_NAMES}
+    validator_result = validate_validator_evidence(candidate, candidate.get("validatorEvidence"))
+    gate_status = validator_result["gates"]
     evidence = verifier_evidence or candidate.get("verifierEvidence")
     verifier_result = validate_verifier_evidence(candidate, evidence)
     verifier = str(
@@ -634,6 +840,7 @@ def candidate_acceptance(
         else "NOT_TESTED"
     ).upper()
     failed = [name for name, status in gate_status.items() if status != "PASS"]
+    failed.extend(validator_result["errors"])
     if verifier_result["status"] != "PASS":
         failed.extend(verifier_result["errors"])
     if verifier != "PASS":
@@ -649,6 +856,7 @@ def candidate_acceptance(
         "gates": gate_status,
         "independentVerification": verifier,
         "verifierEvidence": verifier_result,
+        "validatorEvidence": validator_result,
         "failedGates": failed,
     }
 
@@ -731,6 +939,8 @@ def validate_replacement(
         errors.append(CODE_DERIVED_REPLACEMENT_PARITY_FAIL)
     if combined.get("recoveredQualityClosure") != "PASS":
         errors.append(CODE_DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL)
+    if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(combined.get("replacementEvidenceSha", ""))):
+        errors.append(CODE_DERIVED_REPLACEMENT_LINEAGE_FAIL)
     if combined.get("recoveryAuthority") not in {"BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"}:
         errors.append(CODE_SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION)
     if combined.get("productionAdoptionStatus") != "ADOPTED":
@@ -744,14 +954,34 @@ def validate_replacement(
     }
 
 
+def validate_closure_evidence(
+    evidence: Mapping[str, Any] | None,
+    *,
+    name: str,
+) -> dict[str, Any]:
+    """Require a PASS closure receipt with an explicit evidence hash/ref."""
+
+    errors: list[str] = []
+    if not isinstance(evidence, Mapping):
+        return {"status": "FAIL", "errors": [f"{name.upper()}_EVIDENCE_REQUIRED"]}
+    for field in ("evidenceId", "evidenceRef", "evidenceSha256"):
+        if not evidence.get(field):
+            errors.append(f"{name.upper()}_EVIDENCE_FIELD_MISSING:{field}")
+    if evidence.get("status") != "PASS":
+        errors.append(f"{name.upper()}_EVIDENCE_NOT_PASS")
+    if not re.fullmatch(r"sha256:[0-9a-f]{64}", str(evidence.get("evidenceSha256", ""))):
+        errors.append(f"{name.upper()}_EVIDENCE_SHA_INVALID")
+    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
+
+
 def atomic_adopt_replacement(
     recovered: Mapping[str, Any],
     *,
     authorization: Mapping[str, Any],
     initial_scope_uids: Iterable[str],
     initial_scope_sha256: str,
-    quality_closure: str = "PASS",
-    lineage_parity: str = "PASS",
+    quality_closure_evidence: Mapping[str, Any] | None = None,
+    lineage_parity_evidence: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Perform AUTHORIZED -> ADOPTED and disposition in one returned snapshot.
 
@@ -766,11 +996,13 @@ def atomic_adopt_replacement(
     authority = recovered.get("recoveryAuthority")
     if authority not in {"BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"}:
         raise SourceRecoveryError(CODE_SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION)
-    if authorization.get("status") != "PASS" or not authorization.get("authorizationRef"):
+    if not isinstance(authorization, Mapping) or authorization.get("status") != "PASS" or not authorization.get("authorizationRef"):
         raise SourceRecoveryError("recovery authorization scope is not proven")
-    if quality_closure != "PASS":
+    quality_evidence = validate_closure_evidence(quality_closure_evidence, name="quality_closure")
+    lineage_evidence = validate_closure_evidence(lineage_parity_evidence, name="lineage_parity")
+    if quality_evidence["status"] != "PASS":
         raise SourceRecoveryError(CODE_DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL)
-    if lineage_parity != "PASS":
+    if lineage_evidence["status"] != "PASS":
         raise SourceRecoveryError(CODE_DERIVED_REPLACEMENT_PARITY_FAIL)
 
     next_state = copy.deepcopy(dict(recovered))
@@ -779,24 +1011,19 @@ def atomic_adopt_replacement(
     next_state["productionOriginalActive"] = False
     next_state["productionRecoveredActive"] = True
     next_state["replacementCardinality"] = "1:1"
-    next_state["replacementLineageParity"] = lineage_parity
-    next_state["recoveredQualityClosure"] = quality_closure
-    next_state["replacementEvidenceRef"] = recovered.get("replacementEvidenceRef") or f"evidence/{recovered.get('recoveredQuestionUid', 'replacement')}.json"
-    next_state["replacementEvidenceSha"] = recovered.get("replacementEvidenceSha") or _prefixed_sha({
-        "sourceQuestionUid": recovered.get("sourceQuestionUid"),
-        "recoveredQuestionUid": recovered.get("recoveredQuestionUid"),
-        "replacementLineageParity": lineage_parity,
-        "recoveredQualityClosure": quality_closure,
-    })
+    next_state["replacementLineageParity"] = "PASS"
+    next_state["recoveredQualityClosure"] = "PASS"
+    next_state["replacementEvidenceRef"] = lineage_parity_evidence["evidenceRef"]
+    next_state["replacementEvidenceSha"] = lineage_parity_evidence["evidenceSha256"]
     next_state["replacement"] = {
         "status": "DERIVED_REPLACEMENT_VERIFIED",
         "replacementCardinality": "1:1",
         "productionOriginalActive": False,
         "productionRecoveredActive": True,
-        "replacementLineageParity": lineage_parity,
-        "recoveredQualityClosure": quality_closure,
-        "replacementEvidenceRef": next_state["replacementEvidenceRef"],
-        "replacementEvidenceSha": next_state["replacementEvidenceSha"],
+        "replacementLineageParity": "PASS",
+        "recoveredQualityClosure": "PASS",
+        "replacementEvidenceRef": lineage_parity_evidence["evidenceRef"],
+        "replacementEvidenceSha": lineage_parity_evidence["evidenceSha256"],
     }
     next_state["authorizationRef"] = authorization["authorizationRef"]
     parity = validate_replacement(next_state, initial_scope_uids, initial_scope_sha256)
@@ -823,9 +1050,11 @@ def run_source_recovery(
     builder_session_id: str = "recovery-builder",
     verifier_id: str = "recovery-blind-verifier",
     verifier_session_id: str = "recovery-verifier-session",
+    blind_verifier: Any | None = None,
+    validator: Any | None = None,
     authorization: Mapping[str, Any] | None = None,
-    quality_closure: str = "PASS",
-    lineage_parity: str = "PASS",
+    quality_closure_evidence: Mapping[str, Any] | None = None,
+    lineage_parity_evidence: Mapping[str, Any] | None = None,
     recovery_plan_id: str | None = None,
 ) -> dict[str, Any]:
     """Route one source question through the bounded recovery contract.
@@ -863,6 +1092,18 @@ def run_source_recovery(
                 "productionAdoptionStatus": "NOT_AUTHORIZED",
                 "candidatePool": [],
             }
+        if auto_diagnosis["status"] == "SOURCE_RECOVERY_VALIDATION_FAILED":
+            return {
+                "schemaVersion": SOURCE_RECOVERY_SCHEMA_VERSION,
+                "sourceQuestionUid": source_question_uid,
+                "status": "RECOVERY_VALIDATION_FAILED",
+                "finalStatus": "BLOCKED",
+                "diagnosis": auto_diagnosis,
+                "code": CODE_SOURCE_RECOVERY_VALIDATION_FAIL,
+                "nextAction": "RECHECK_INDEPENDENT_SOLVE",
+                "productionAdoptionStatus": "NOT_AUTHORIZED",
+                "candidatePool": [],
+            }
         if auto_diagnosis["status"] == "NO_DEFECT":
             return {
                 "schemaVersion": SOURCE_RECOVERY_SCHEMA_VERSION,
@@ -881,8 +1122,6 @@ def run_source_recovery(
                 auto_diagnosis,
                 recovery_plan_id=recovery_plan_id or f"RP-{source_question_uid}-{primary_tier(defect_types)}",
                 builder_session_id=builder_session_id,
-                verifier_id=verifier_id,
-                verifier_session_id=verifier_session_id,
             )
             attempts_by_tier = {**(attempts_by_tier or {}), **generated_attempts}
     defects = _ordered_unique(defect_types or [])
@@ -976,6 +1215,12 @@ def run_source_recovery(
                 )
             )
             base["candidateVersion"] = max(base["candidateVersion"], int(candidate.get("candidateVersion", 0)))
+            if not candidate.get("verifierEvidence") and blind_verifier is not None:
+                candidate["verifierEvidence"] = copy.deepcopy(blind_verifier(blind_candidate_view(candidate)))
+            if not candidate.get("validatorEvidence"):
+                candidate["validatorEvidence"] = copy.deepcopy(
+                    validator(candidate) if validator is not None else build_validator_evidence(candidate)
+                )
             acceptance = candidate_acceptance(
                 candidate,
                 recovery_tier=tier,
@@ -1041,8 +1286,8 @@ def run_source_recovery(
                         authorization=auth,
                         initial_scope_uids=initial,
                         initial_scope_sha256=initial_sha,
-                        quality_closure=quality_closure,
-                        lineage_parity=lineage_parity,
+                        quality_closure_evidence=quality_closure_evidence,
+                        lineage_parity_evidence=lineage_parity_evidence,
                     )
                 except SourceRecoveryError as error:
                     base["codes"] = [CODE_SOURCE_RECOVERY_VALIDATION_FAIL, CODE_DERIVED_REPLACEMENT_PARITY_FAIL]
@@ -1092,6 +1337,8 @@ def resume_source_recovery(
     attempts_by_tier: Mapping[str, Mapping[str, Any]] | None = None,
     source_payload: Mapping[str, Any] | None = None,
     independent_solve: Mapping[str, Any] | None = None,
+    blind_verifier: Any | None = None,
+    validator: Any | None = None,
 ) -> dict[str, Any]:
     """Resume only the remaining producer work from a saved checkpoint.
 
@@ -1118,6 +1365,8 @@ def resume_source_recovery(
         attempts_by_tier=attempts_by_tier,
         source_payload=source_payload,
         independent_solve=independent_solve,
+        blind_verifier=blind_verifier,
+        validator=validator,
         recovery_plan_id=state.get("recoveryPlanId"),
     )
     result["candidatePool"] = [*copy.deepcopy(state.get("candidatePool", [])), *result.get("candidatePool", [])]
@@ -1248,6 +1497,18 @@ def validate_ledger(ledger: Mapping[str, Any]) -> dict[str, Any]:
             resolution = item.get("answerKeyResolution")
             if not isinstance(resolution, Mapping) or not resolution.get("effectiveArtifactUid") or not resolution.get("effectiveArtifactSha256") or resolution.get("lineageStatus") != "PASS" or not resolution.get("verifierEvidenceSha256"):
                 errors.append(CODE_SOURCE_RECOVERY_VALIDATION_FAIL)
+        matrix = item.get("tierMatrix")
+        attempts = item.get("producerAttempts")
+        if isinstance(matrix, Mapping):
+            for tier, row in matrix.items():
+                if isinstance(row, Mapping) and row.get("execution") == "ATTEMPTED_EXHAUSTED":
+                    attempt_check = validate_producer_attempt(attempts.get(tier) if isinstance(attempts, Mapping) else None)
+                    if attempt_check["status"] != "PASS":
+                        errors.append("RECOVERY_PRODUCER_BUDGET_NOT_EXHAUSTED")
+            if item.get("status") == "HUMAN_REQUIRED":
+                for row in matrix.values():
+                    if isinstance(row, Mapping) and row.get("applicability") != "NOT_APPLICABLE" and row.get("capability") == "ACTIVE" and row.get("execution") != "ATTEMPTED_EXHAUSTED":
+                        errors.append("RECOVERY_HUMAN_REQUIRED_PATH_NOT_EXHAUSTED")
     return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
 
 

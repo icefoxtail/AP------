@@ -125,8 +125,10 @@ python -m alive.engine.alive_cli source-recovery-run \
   --input <locked-source-plus-independent-solve.json> --json
 ```
 
-The input must include full-page/zoom/choice evidence and an independently
-computed answer. The runtime creates the diagnosis, bounded candidate, frozen
-candidate identity, blind verifier envelope, and shadow/blocked result. The
+The input must include full-page/zoom/choice evidence, a source independent
+solve, and a separate `blindVerifierSolve` produced by a different verifier
+identity/session. The bridge creates the diagnosis, bounded candidate, frozen
+candidate identity, blind verifier envelope, and shadow/blocked result. It
+must not copy the source independent solve into verifier evidence. The
 original extraction candidate and source evidence remain unchanged. R2-R6 are
 not enabled until their producer and validator capabilities are registered.
