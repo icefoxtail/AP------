@@ -1,0 +1,137 @@
+window.examTitle = "23_복성고_1학기_기말_고1_기출";
+window.questionBank = [
+  {
+    "id": 2,
+    "level": "하",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "절댓값",
+      "부등식",
+      "정수조건",
+      "개수세기"
+    ],
+    "wide": false,
+    "content": "부등식 $|x-3| \\lt 4$를 만족시키는 모든 정수 $x$의 값의 개수는? [3점]",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 절댓값 부등식 $|A|\\lt c$는 $-c\\lt A\\lt c$로 바꾸어 푼다.\n조건 정리: $|x-3|\\lt 4$이다.\n풀이 방향: 절댓값을 없애고 정수 범위 안의 값을 모두 센다.\n정석 풀이:\n$|x-3|\\lt 4$이므로\n$-4\\lt x-3\\lt 4$이다.\n각 변에 $3$을 더하면\n$-1\\lt x\\lt 7$이다.\n이를 만족하는 정수 $x$는\n$0,1,2,3,4,5,6$으로 총 $7$개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 7,
+    "level": "중",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "연립부등식",
+      "실수조건",
+      "최댓값"
+    ],
+    "wide": false,
+    "content": "연립부등식 $3x+a\\le 2x-1\\le 5x+5$가 해를 갖도록 하는 실수 $a$의 최댓값은? [4점]",
+    "choices": [
+      "1",
+      "$-1$",
+      "2",
+      "$-2$",
+      "3"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 가운데 식을 기준으로 두 부등식으로 나누고, 두 해의 공통 범위가 존재하도록 조건을 세운다.\n조건 정리: $3x+a\\le 2x-1$과 $2x-1\\le 5x+5$를 동시에 만족해야 한다.\n풀이 방향: 각각의 부등식을 풀어 $x$의 범위를 구하고, 두 범위가 겹칠 조건을 찾는다.\n정석 풀이:\n먼저\n$3x+a\\le 2x-1$에서\n$x\\le -a-1$이다.\n또\n$2x-1\\le 5x+5$에서\n$-6\\le 3x$이므로\n$x\\ge -2$이다.\n따라서 연립부등식의 해가 존재하려면\n$-2\\le x\\le -a-1$인 $x$가 존재해야 한다.\n즉, 왼쪽 끝점이 오른쪽 끝점보다 크지 않아야 하므로\n$-2\\le -a-1$이다.\n양변에 $a+2$를 더하면\n$a\\le 1$이다.\n따라서 가능한 실수 $a$의 최댓값은 $1$이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+    "subUnit": "연립부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 9,
+    "level": "중",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차부등식",
+      "항상성립",
+      "범위"
+    ],
+    "wide": false,
+    "content": "부등식 $(m-1)x^2-2(m-1)x+4\\gt0$이 항상 성립할 때, 실수 $m$의 값의 범위는? [4점]",
+    "choices": [
+      "$1\\lt m\\le5$",
+      "$1\\le m\\lt5$",
+      "$1\\lt m\\lt5$",
+      "$2\\lt m\\lt3$",
+      "$2\\le m\\le3$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 이차식이 모든 실수 $x$에 대하여 양수가 되려면 계수의 경우를 나누어 확인해야 한다.\n조건 정리: 식은 $(m-1)x^2-2(m-1)x+4$이다.\n풀이 방향: $m=1$인 경우와 $m\\ne1$인 경우를 나누고, $m\\ne1$일 때는 완전제곱식으로 최솟값을 본다.\n정석 풀이:\n먼저 $m=1$이면 식은\n$0\\cdot x^2-0\\cdot x+4=4$이다.\n따라서 모든 실수 $x$에 대하여 $4\\gt0$이므로 조건을 만족한다.\n이제 $m\\ne1$인 경우를 보자. 식을 정리하면\n$(m-1)x^2-2(m-1)x+4$\n$=(m-1)(x^2-2x)+4$\n$=(m-1)\\{(x-1)^2-1\\}+4$\n$=(m-1)(x-1)^2+5-m$이다.\n모든 실수 $x$에 대하여 항상 양수가 되려면 먼저 위로 열린 형태이어야 하므로\n$m-1\\gt0$, 즉 $m\\gt1$이어야 한다.\n이때 최솟값은 $x=1$에서 $5-m$이다.\n항상 $0$보다 커야 하므로\n$5-m\\gt0$\n$m\\lt5$이다.\n따라서 $m\\ne1$인 경우에는 $1\\lt m\\lt5$이고, 앞에서 $m=1$도 가능하므로\n$1\\le m\\lt5$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 16,
+    "level": "상",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "연립이차부등식",
+      "정수조건",
+      "자연수조건",
+      "개수세기"
+    ],
+    "wide": false,
+    "content": "$x$에 대한 연립이차부등식 $\\begin{cases}x^2-6x+5\\le0\\\\x^2-2(n-1)x+n^2-2n\\ge0\\end{cases}$을 만족시키는 정수 $x$의 개수가 $4$가 되도록 하는 모든 자연수 $n$의 값의 합은? [5점]",
+    "choices": [
+      "15",
+      "18",
+      "20",
+      "21",
+      "27"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 첫 번째 부등식으로 가능한 정수 $x$를 먼저 제한하고, 두 번째 부등식이 그중 어떤 정수를 제외하는지 본다.\n조건 정리: 첫 번째 부등식은 $x^2-6x+5\\le0$이고, 두 번째 부등식은 $x^2-2(n-1)x+n^2-2n\\ge0$이다.\n풀이 방향: 첫 번째 부등식의 해에서 정수 후보를 찾은 뒤, 두 번째 부등식의 해를 인수분해하여 제외되는 정수를 파악한다.\n정석 풀이:\n첫 번째 부등식에서\n$x^2-6x+5=(x-1)(x-5)$이므로\n$(x-1)(x-5)\\le0$이다.\n따라서\n$1\\le x\\le5$이다.\n가능한 정수 $x$는 $1,2,3,4,5$의 $5$개이다.\n두 번째 식을 인수분해하면\n$x^2-2(n-1)x+n^2-2n=(x-n)(x-(n-2))$이다.\n따라서 두 번째 부등식은\n$(x-n)(x-(n-2))\\ge0$이다.\n$n$이 자연수일 때 $n-2\\lt n$이므로 해는\n$x\\le n-2$ 또는 $x\\ge n$이다.\n즉, $n-2\\lt x\\lt n$에 있는 정수는 제외된다.\n두 수 $n-2$와 $n$ 사이에는 정수 $n-1$ 하나만 있다.\n따라서 첫 번째 부등식에서 얻은 정수 $1,2,3,4,5$ 중 정확히 하나만 제외되려면\n$n-1$이 $1,2,3,4,5$ 중 하나이어야 한다.\n그러므로\n$n-1=1,2,3,4,5$이고\n$n=2,3,4,5,6$이다.\n이때 각각 가능한 정수 $x$는 $5$개 중 하나가 제외되어 $4$개가 된다.\n따라서 모든 자연수 $n$의 값의 합은\n$2+3+4+5+6=20$이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
+    "subUnit": "부등식의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  }
+];

@@ -1,0 +1,100 @@
+TAP version 13
+# Subtest: QUESTION_UID_v2 is canonical and migrations are explicit
+ok 1 - QUESTION_UID_v2 is canonical and migrations are explicit
+  ---
+  duration_ms: 18.5881
+  type: 'test'
+  ...
+# Subtest: axis projections isolate semantic inputs and hash deterministically
+ok 2 - axis projections isolate semantic inputs and hash deterministically
+  ---
+  duration_ms: 7.4649
+  type: 'test'
+  ...
+# Subtest: semantic diff maps a local solution edit without exposing unrelated UIDs
+ok 3 - semantic diff maps a local solution edit without exposing unrelated UIDs
+  ---
+  duration_ms: 22.221
+  type: 'test'
+  ...
+# Subtest: solution visual benefit gate follows the canonical V3 denominator
+ok 4 - solution visual benefit gate follows the canonical V3 denominator
+  ---
+  duration_ms: 0.6018
+  type: 'test'
+  ...
+# Subtest: validated reuse requires immutable prior evidence and exact receipt parity
+ok 5 - validated reuse requires immutable prior evidence and exact receipt parity
+  ---
+  duration_ms: 6.1443
+  type: 'test'
+  ...
+# Subtest: audit-v2 closes metadata-only revision one and reuses an unchanged SOURCE axis in revision two
+ok 6 - audit-v2 closes metadata-only revision one and reuses an unchanged SOURCE axis in revision two
+  ---
+  duration_ms: 984.5163
+  type: 'test'
+  ...
+# Subtest: question-quality closure set is 100% fresh or validated reuse and never production authority
+ok 7 - question-quality closure set is 100% fresh or validated reuse and never production authority
+  ---
+  duration_ms: 2.4318
+  type: 'test'
+  ...
+# Subtest: EXAM_RELEASE rejects case names without evidence and accepts canonical N/A
+ok 8 - EXAM_RELEASE rejects case names without evidence and accepts canonical N/A
+  ---
+  duration_ms: 3.2284
+  type: 'test'
+  ...
+# Subtest: unified auditor packets enforce sealed visibility and principal separation
+ok 9 - unified auditor packets enforce sealed visibility and principal separation
+  ---
+  duration_ms: 1.5088
+  type: 'test'
+  ...
+# Subtest: build ledger and machine-readable contracts are bounded
+ok 10 - build ledger and machine-readable contracts are bounded
+  ---
+  duration_ms: 3.7174
+  type: 'test'
+  ...
+# Subtest: audit-v2 requires a persisted whole-job freeze even for schema-valid input
+ok 11 - audit-v2 requires a persisted whole-job freeze even for schema-valid input
+  ---
+  duration_ms: 25.985
+  type: 'test'
+  ...
+# Subtest: render impact is selective and global invalidators escalate only render scope
+ok 12 - render impact is selective and global invalidators escalate only render scope
+  ---
+  duration_ms: 1.5911
+  type: 'test'
+  ...
+# Subtest: continuation denominator requires every frozen final block review
+ok 13 - continuation denominator requires every frozen final block review
+  ---
+  duration_ms: 0.8346
+  type: 'test'
+  ...
+# Subtest: HIGH_RISK review batches cannot bypass the hard maximum with a size exception
+ok 14 - HIGH_RISK review batches cannot bypass the hard maximum with a size exception
+  ---
+  duration_ms: 2.4692
+  type: 'test'
+  ...
+# Subtest: machine capture remains current and cannot masquerade as a fresh semantic review
+ok 15 - machine capture remains current and cannot masquerade as a fresh semantic review
+  ---
+  duration_ms: 0.2914
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1104.6696

@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..'); const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908'); const FACTS = JSON.parse(fs.readFileSync(path.join(REPORT, '489_specialist_v1_expected_facts_r35.json'), 'utf8')); const OUTPUT = path.join(REPORT, '495_independent_recheck_specialist_r35.json'); const checks = [
+  ['archive/exams/original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js', 22, { solutionInterval: [-3, 2], result: -5 }],
+  ['archive/exams/original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js', 23, { solutionInterval: [9, 11], result: '9<a≤11' }],
+  ['archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js', 13, { vertex: [-13 / 25, 56 / 625], result: '125/6' }],
+  ['archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js', 16, { result: 21 }],
+  ['archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js', 22, { vertex: [2, 5], maximum: 5, result: 5 }],
+  ['archive/exams/original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js', 16, { solutionInterval: [-8, 8], count: 6, result: 6 }],
+  ['archive/exams/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js', 10, { vertex: [40, 2400], maximum: 2400, result: 40 }],
+]; const factMap = new Map(FACTS.rows.map((row) => [`${row.sourceJsPath}|${row.id}`, row])); const rows = checks.map(([sourceJsPath, id, independentlyComputedFacts]) => { const fact = factMap.get(`${sourceJsPath}|${id}`); if (!fact) throw new Error(`V1 fact missing for ${sourceJsPath}|${id}`); const expectedFactParity = Object.entries(independentlyComputedFacts).every(([field, value]) => JSON.stringify(fact.expectedFacts[field]) === JSON.stringify(value)); return { questionUid: fact.questionUid, sourceJsPath, id, independentlyComputedFacts, expectedFactParity, independentCalculationStatus: expectedFactParity ? 'MATCH' : 'MISMATCH' }; }); const mismatchCount = rows.filter((row) => !row.expectedFactParity).length; const output = { schemaVersion: 'HS_QUADRATIC_INDEPENDENT_RECHECK_SPECIALIST_R35', status: mismatchCount ? 'INDEPENDENT_RECHECK_FAIL' : 'INDEPENDENT_RECHECK_PASS_NO_FINAL_PASS', productionAuthorized: false, inputVisibilityProfile: 'SOURCE_ONLY_INDEPENDENT_CALCULATOR', priorReviewVisibility: 'NONE', rows, checkedRows: rows.length, mismatchCount, calculatorDigest: crypto.createHash('sha256').update(JSON.stringify(checks)).digest('hex'), note: 'Independent second-pass arithmetic for r35; candidate-only row evidence, not full-scope final PASS.' }; fs.writeFileSync(OUTPUT, `${JSON.stringify(output, null, 2)}\n`, 'utf8'); console.log(JSON.stringify({ status: output.status, checkedRows: output.checkedRows, mismatchCount }, null, 2));

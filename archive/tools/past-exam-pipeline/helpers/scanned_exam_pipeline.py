@@ -3,6 +3,7 @@ import csv
 import hashlib
 import json
 import unicodedata
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -316,20 +317,6 @@ def protected_payload_sha(question):
     return object_sha(payload)
 
 
-def math_review_input_sha(question, source_fidelity_item):
-    return object_sha({
-        "content": question.get("content") or "",
-        "choices": question.get("choices") or [],
-        "sourceIdentityKey": question.get("sourceIdentityKey"),
-        "sourceDocumentSha256": question.get("sourceDocumentSha256"),
-        "sourceQuestionNo": question.get("sourceQuestionNo"),
-        "sourcePageEvidencePaths": question.get("sourcePageEvidencePaths") or [],
-        "sourceEvidencePath": question.get("sourceEvidencePath") or question.get("fullPageImageRelPath") or "",
-        "sourceEvidenceSha256": source_fidelity_item.get("sourceEvidenceSha256") if source_fidelity_item else None,
-        "sourcePageEvidence": source_fidelity_item.get("sourcePageEvidence") if source_fidelity_item else [],
-    })
-
-
 def bbox_validation(bbox, page_width, page_height):
     if not bbox:
         return False, ["visual_asset_bbox_missing"]
@@ -556,7 +543,9 @@ def write_candidate_js(manifest, questions, candidate_file):
     )
 
 
-def crop_visual_assets(root, questions):
+def crop_visual_assets(root, questions, exam_id=None):
+    if exam_id is not None and (not exam_id or "/" in exam_id or "\\" in exam_id or ".." in exam_id):
+        raise ValueError("INVALID_EXAM_ASSET_PREFIX")
     results = []
     for q in questions:
         if not q.get("hasVisualAsset"):
@@ -589,7 +578,8 @@ def crop_visual_assets(root, questions):
                     results.append(result)
                     continue
                 x1, y1, x2, y2 = bbox["x1"], bbox["y1"], bbox["x2"], bbox["y2"]
-                asset_rel = f"assets/q{int(q['id']):03d}_visual.png"
+                prefix = f"assets/images/{exam_id}" if exam_id else "assets"
+                asset_rel = f"{prefix}/q{int(q['id']):03d}_visual.png"
                 asset_path = root / asset_rel
                 asset_path.parent.mkdir(parents=True, exist_ok=True)
                 image.crop((x1, y1, x2, y2)).save(asset_path)
@@ -811,30 +801,13 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
         "status": "PENDING_REVIEW" if asset_evidence_items else "NOT_APPLICABLE",
         "items": asset_evidence_items,
     })
-    fidelity_by_key = {item.get("sourceIdentityKey"): item for item in source_fidelity_items}
-    fidelity_file = reports / "source_fidelity_evidence.json"
     write_json(reports / "math_review_evidence.json", {
         "schema": "PAST_EXAM_MATH_REVIEW_EVIDENCE_v1",
         "examId": manifest["examId"],
         "sourceInventorySha": manifest.get("sourceInventorySha", ""),
         "sourceIdentityMapSha": manifest.get("sourceIdentityMapSha", ""),
-        "sourceFidelityEvidenceSha": "sha256:" + hashlib.sha256(fidelity_file.read_bytes()).hexdigest(),
         "status": "NOT_STARTED",
-        "items": [
-            {
-                "sourceIdentityKey": q.get("sourceIdentityKey", ""),
-                "inputSha": math_review_input_sha(q, fidelity_by_key.get(q.get("sourceIdentityKey"))),
-                "inputVisibilityProfile": "SOURCE_ONLY",
-                "priorAnswerVisible": False,
-                "sourceOnlyBlindSolve": False,
-                "choiceUniqueness": False,
-                "questionValidity": False,
-                "solutionChecked": False,
-                "solutionConclusionMatches": False,
-                "verdict": "PENDING_REVIEW",
-            }
-            for q in questions
-        ],
+        "items": [],
     })
     answer_solution_rows = [
         {
@@ -870,6 +843,8 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
     ]:
         write_json(reports / report_name, {"examId": manifest["examId"], "generatedAt": now_iso(), "status": "ok", "items": []})
     handoff_manifest = {
+        "completionContract": "PAST_EXAM_V3_COMPLETE",
+        "referenceSampleLock": manifest.get("referenceSampleLock"),
         "examId": manifest["examId"],
         "generatedAt": now_iso(),
         "handoffTarget": "GPT/Gemini answer-solution agent",
@@ -885,7 +860,8 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
             str(reports / "asset_provenance_evidence.json"),
             str(reports / "math_review_evidence.json"),
         ],
-        "allowedExternalAgentEdits": ["answer", "solution", "answerStatus", "solutionStatus", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"],
+        "allowedExternalAgentEdits": json.loads((Path(__file__).resolve().parents[1] / "completion-contract.json").read_text(encoding="utf-8"))["allowedCompletionFields"],
+        "completionBaseline": questions,
         "protectedPayloadFields": ["content", "choices", "sourceQuestionNo", "sourcePageNo", "image", "visualAsset", "sourceEvidencePath", "sourceDocumentSha256"],
         "protectedPayload": [
             {
@@ -979,6 +955,10 @@ def main():
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest)
+    # Direct Python entry cannot bypass S0/S0.5 by avoiding run-one-exam.mjs.
+    subprocess.run(["node", str(Path(__file__).resolve().parents[1] / "calibration.mjs"),
+                    "--check", "--manifest", str(manifest_path.resolve())],
+                   check=True, stdout=subprocess.PIPE, encoding="utf-8")
     root = Path(args.out)
     resolved_root = root.resolve()
     protected_roots = [
@@ -1062,7 +1042,7 @@ def main():
     manifest["answerSolutionPolicy"] = "excluded_from_extraction_pipeline"
     write_json(root / "manifest.json", manifest)
 
-    crop_results = crop_visual_assets(root, questions)
+    crop_results = crop_visual_assets(root, questions, manifest["examId"])
     image_gate = image_path_gate(questions)
     write_candidate_js(manifest, questions, Path(args.candidate_file))
 

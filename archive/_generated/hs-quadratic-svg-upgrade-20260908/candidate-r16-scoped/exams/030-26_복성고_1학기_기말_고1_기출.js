@@ -1,0 +1,220 @@
+window.examTitle = "26_복성고_1학기_기말_고1_기출";
+window.questionBank = [
+  {
+    "id": 5,
+    "level": "하",
+    "category": "이차부등식",
+    "originalCategory": "이차부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차부등식"
+    ],
+    "wide": false,
+    "content": "이차부등식 $4x^2-4x-15\\le0$을 만족시키는 정수 $x$의 개수는? [3.7점]",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 이차식을 인수분해하여 두 근 사이의 범위를 구한다.\n조건 정리: $4x^2-4x-15=(2x+3)(2x-5)$이다.\n풀이 방향: 최고차항의 계수가 양수이므로 곱이 0 이하인 범위는 두 근 사이이다.\n정석 풀이: $(2x+3)(2x-5)\\le0$의 두 경계는 $x=-\\dfrac{3}{2}$, $x=\\dfrac{5}{2}$이다. 따라서 $-\\dfrac{3}{2}\\le x\\le\\dfrac{5}{2}$이고, 이 범위의 정수는 $-1,0,1,2$의 4개이다.\n따라서 정답은 ①이다.",
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "archive/_generated/hs-quadratic-svg-upgrade-20260908/candidate-r11/assets/hs-r11-016.svg",
+    "solutionImageAlt": "문항의 핵심 이차함수 그래프 또는 부등식 해집합을 나타낸 후보 해설 시각자료",
+    "solutionImageCaption": "후보 SVG: 문제 조건과 독립 계산으로 확정한 관계를 그림에서 확인한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 7,
+    "level": "하",
+    "category": "연립부등식",
+    "originalCategory": "연립부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "연립부등식"
+    ],
+    "wide": false,
+    "content": "부등식 $2x-3\\le5x+6\\le3x+7$의 해가 $a\\le x\\le b$일 때, $a+2b$의 값은? [3.7점]",
+    "choices": [
+      "$-6$",
+      "$-5$",
+      "$-4$",
+      "$-3$",
+      "$-2$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 연속부등식을 두 개의 부등식으로 나누어 푼다.\n조건 정리: $2x-3\\le5x+6$과 $5x+6\\le3x+7$을 동시에 만족해야 한다.\n풀이 방향: 각각의 해를 구한 뒤 공통 범위를 정한다.\n정석 풀이: 첫째 부등식에서 $-9\\le3x$이므로 $x\\ge-3$이다. 둘째 부등식에서 $2x\\le1$이므로 $x\\le\\dfrac{1}{2}$이다. 따라서 $-3\\le x\\le\\dfrac{1}{2}$이므로 $a=-3$, $b=\\dfrac{1}{2}$이다. 따라서 $a+2b=-3+1=-2$이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnit": "연립방정식과 연립부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 11,
+    "level": "중",
+    "category": "절댓값 부등식",
+    "originalCategory": "절댓값 부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "절댓값 부등식"
+    ],
+    "wide": false,
+    "content": "부등식 $|x+1|+|2x-3|\\le8$의 해가 $a\\le x\\le b$일 때, $a+b$의 값은? [4점]",
+    "choices": [
+      "1",
+      "$\\dfrac{4}{3}$",
+      "$\\dfrac{5}{3}$",
+      "2",
+      "$\\dfrac{7}{3}$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 절댓값 안의 식이 0이 되는 두 점을 기준으로 구간을 나눈다.\n조건 정리: 기준점은 $x=-1$, $x=\\dfrac{3}{2}$이다.\n풀이 방향: 세 구간에서 절댓값을 풀어 쓴 뒤 얻은 해를 합친다.\n정석 풀이: $x\\le-1$이면 $|x+1|+|2x-3|=-3x+2\\le8$이므로 $x\\ge-2$이고 $-2\\le x\\le-1$이다. $-1\\le x\\le\\dfrac{3}{2}$이면 식은 $-x+4\\le8$이므로 이 구간의 모든 $x$가 해이다. $x\\ge\\dfrac{3}{2}$이면 식은 $3x-2\\le8$이므로 $x\\le\\dfrac{10}{3}$이다. 따라서 전체 해는 $-2\\le x\\le\\dfrac{10}{3}$이고 $a+b=-2+\\dfrac{10}{3}=\\dfrac{4}{3}$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 14,
+    "level": "중",
+    "category": "이차부등식",
+    "originalCategory": "이차부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차부등식"
+    ],
+    "wide": false,
+    "content": "이차부등식 $x^2+2(3-k)x+11\\le0$에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4.2점]<br><div class='note-box'>(가) $k=9$일 때, 이차부등식의 해는 $1\\le x\\le11$이다.<br>(나) 이차부등식의 해가 존재하도록 하는 $k$값의 범위는 $x\\lt3-\\sqrt{11}$ 또는 $x\\gt3+\\sqrt{11}$이다.<br>(다) 이차부등식의 해가 존재하지 않도록 하는 모든 정수 $k$값의 합은 21이다.</div>",
+    "choices": [
+      "(가)",
+      "(나)",
+      "(나),(다)",
+      "(가),(다)",
+      "(가),(나),(다)"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 각 설명을 판별식과 인수분해로 따로 확인한다.\n조건 정리: 이차식의 최고차항 계수는 양수이므로 부등식의 해가 존재하려면 판별식이 0 이상이어야 한다.\n풀이 방향: (가)는 직접 인수분해하고, (나)와 (다)는 판별식의 부호를 이용한다.\n정석 풀이: (가) $k=9$이면 $x^2-12x+11=(x-1)(x-11)$이므로 해는 $1\\le x\\le11$이고 참이다. (나) 판별식은 $4(3-k)^2-44$이므로 해가 존재할 조건은 $(k-3)^2\\ge11$, 즉 $k\\le3-\\sqrt{11}$ 또는 $k\\ge3+\\sqrt{11}$이다. 보기에는 등호가 없으므로 거짓이다. (다) 해가 존재하지 않을 조건은 $3-\\sqrt{11}\\lt k\\lt3+\\sqrt{11}$이다. 이 범위의 정수는 $0,1,2,3,4,5,6$이고 합은 21이므로 참이다. 따라서 옳은 것은 (가), (다)이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C-06-INEQUALITY",
+    "subUnit": "여러 가지 부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 16,
+    "level": "상",
+    "category": "사차방정식",
+    "originalCategory": "사차방정식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "사차방정식"
+    ],
+    "wide": false,
+    "content": "자연수 $n$에 대하여 사차방정식 $16x^4-8(n^2+4)x^2+(n^2-4)^2=0$이 서로 다른 네 개의 정수해를 갖도록 하는 20 이하 자연수 $n$의 개수는? [4.3점]",
+    "choices": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "answer": "④",
+    "solution": "[키포인트] 사차식을 두 이차식의 곱으로 인수분해하여 네 근을 직접 나타낸다.\n조건 정리: 주어진 식은 $[4x^2-(n+2)^2][4x^2-(n-2)^2]=0$으로 인수분해된다.\n풀이 방향: 네 근이 모두 정수이면서 서로 달라지도록 하는 $n$의 조건을 찾는다.\n정석 풀이: 근은 $x=\\pm\\dfrac{n+2}{2}$, $x=\\pm\\dfrac{n-2}{2}$이다. 네 근이 정수가 되려면 $n$은 짝수여야 한다. $n=2$이면 뒤의 두 근이 모두 0이 되어 서로 다른 근이 3개뿐이므로 제외한다. 따라서 20 이하에서 가능한 $n$은 $4,6,8,10,12,14,16,18,20$의 9개이다.\n따라서 정답은 ④이다.",
+    "subUnitKey": "H22-C-06-EQUATION_BASIC",
+    "subUnit": "방정식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 18,
+    "level": "상",
+    "category": "입체도형",
+    "originalCategory": "입체도형",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "입체도형",
+      "도형"
+    ],
+    "wide": false,
+    "content": "밑면의 반지름의 길이가 $a$이고 높이가 $b$인 원기둥 모양의 입체도형이 있다. 이 입체도형에서 그림과 같이 한 모서리의 길이가 $b$인 정육면체 모양의 구멍을 뚫었다. 남아 있는 입체도형의 겉넓이가 $140\\pi+18$일 때, 두 유리수 $a,b$에 대하여 $a-b$의 값은? (단, $b\\lt\\sqrt{2}a$) [4.4점]",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 남은 겉넓이를 원기둥의 바깥 면, 위아래 면, 구멍 안쪽 면으로 나누어 센다.\n조건 정리: 원기둥의 옆넓이는 $2\\pi ab$이다. 위아래 원에서는 한 변이 $b$인 정사각형이 각각 빠지고, 구멍 안쪽에는 한 변이 $b$인 정사각형 4개가 새로 생긴다.\n풀이 방향: 각 면의 넓이를 합한 뒤 $\\pi$가 붙은 부분과 붙지 않은 부분을 비교한다.\n정석 풀이: 위아래 면의 넓이는 $2(\\pi a^2-b^2)$이고 구멍 안쪽 네 면의 넓이는 $4b^2$이다. 따라서 남은 입체도형의 겉넓이는 $2\\pi ab+2(\\pi a^2-b^2)+4b^2=2\\pi a(a+b)+2b^2$이다. 이것이 $140\\pi+18$과 같으므로 $2a(a+b)=140$, $2b^2=18$이다. 길이이므로 $b=3$이고, $a(a+3)=70$에서 $(a-7)(a+10)=0$이다. 반지름은 양수이므로 $a=7$이다. 따라서 $a-b=7-3=4$이다.\n따라서 정답은 ①이다.",
+    "image": "assets/images/26_복성고_1학기_기말_고1_기출/q18.png",
+    "subUnitKey": "H22-C-06-EQUATION_APPLICATION",
+    "subUnit": "방정식과 부등식의 활용",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 22,
+    "level": "상",
+    "category": "연립부등식",
+    "originalCategory": "연립부등식",
+    "standardCourse": "공통수학1",
+    "standardUnitKey": "H22-C-06",
+    "standardUnit": "여러 가지 방정식과 부등식",
+    "standardUnitOrder": 6,
+    "questionType": "단답형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "연립부등식"
+    ],
+    "wide": false,
+    "content": "&lt;서논술형 2&gt;<br>$x$에 대한 연립부등식 $\\begin{cases}|x-k|\\lt3\\\\x^2-3x-4\\le0\\end{cases}$을 만족시키는 정수 $x$가 존재할 때, 이 연립부등식을 만족시키는 모든 정수 $x$값의 합을 $p$라고 하자. $p=10$이 되도록 하는 모든 정수 $k$값의 합을 풀이과정과 함께 구하시오. [7점, 부분점수 있음]",
+    "choices": [],
+    "answer": "$5$",
+    "solution": "[키포인트] 둘째 부등식의 정수해를 먼저 고정하고, 첫째 부등식이 선택하는 정수들의 합을 조사한다.\n조건 정리: $(x-4)(x+1)\\le0$이므로 둘째 부등식의 정수해는 $-1,0,1,2,3,4$이다. 정수 $x,k$에 대하여 $|x-k|\\lt3$은 $k-2\\le x\\le k+2$와 같다.\n풀이 방향: $[-1,4]$의 정수 중 $[k-2,k+2]$에 들어가는 수의 합이 10이 되는 $k$를 찾는다.\n정석 풀이: 두 정수 구간 $[-1,4]$와 $[k-2,k+2]$가 만나려면 $k+2\\ge-1$이고 $k-2\\le4$이어야 하므로 $-3\\le k\\le6$만 확인하면 된다. $k=2$이면 공통 정수해는 $0,1,2,3,4$이고 합은 10이다. $k=3$이면 공통 정수해는 $1,2,3,4$이고 합은 10이다. $-3\\le k\\le1$에서는 포함되는 정수들의 합이 10보다 작고, $4\\le k\\le6$에서는 합이 $2+3+4=9$ 이하가 된다. 따라서 조건을 만족하는 정수 $k$는 2와 3이고, 그 합은 $2+3=5$이다.\n따라서 구하는 값은 $5$이다.",
+    "subUnitKey": "H22-C-06-SYSTEM",
+    "subUnit": "연립방정식과 연립부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  }
+];

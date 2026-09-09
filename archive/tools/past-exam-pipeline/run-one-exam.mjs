@@ -6,6 +6,7 @@ import { parseArgs, loadConfig } from "./lib/config.mjs";
 import { ensureDir, readJson, writeJson, writeText } from "./lib/fs-utils.mjs";
 import { makeCandidateJs } from "./lib/js-candidate.mjs";
 import { freezeSourceInventory } from "./lib/hardening.mjs";
+import { assertBuilderStart } from "./lib/calibration.mjs";
 
 const execFileAsync = promisify(execFile);
 const thisDir = path.dirname(fileURLToPath(import.meta.url));
@@ -33,6 +34,8 @@ function parseOneArgs(argv) {
 }
 
 export async function runOneExam(cfg, manifest) {
+  // S0 + S0.5 precede source inventory, provider use, and ALL candidate writes.
+  assertBuilderStart(path.resolve(thisDir, '../../..'), manifest);
   const outputDir = path.resolve(manifest.outputDir || path.join(cfg.generatedRoot, manifest.examId));
   const protectedRoots = [
     path.resolve(cfg.archiveRoot, "exams", "original"),

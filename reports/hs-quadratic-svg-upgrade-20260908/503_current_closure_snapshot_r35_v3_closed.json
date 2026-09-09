@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R35_V3_CLOSED",
+  "status": "R35_SPECIALIST_BATCH_V3_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "mainBaseline": "origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22",
+  "scope": {
+    "targetQuestionCount": 430,
+    "sourceFileCount": 59,
+    "examFileCount": 59
+  },
+  "sourceSolutionStatus": {
+    "sourceStaticIssueRows": 0,
+    "candidateStaticIssueRows": 0,
+    "sourceSolutionIndependentRecheckRows": 11,
+    "sourceCandidateParityErrors": 0,
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/457_current_source_solution_static_audit_post_r32.json"
+  },
+  "visualDecisionDenominator": {
+    "NO_VISUAL": 51,
+    "KEEP_EXISTING": 0,
+    "REBUILD_EXISTING": 2,
+    "ADD_NEW_VISUAL": 377,
+    "candidateVisualTarget": 379
+  },
+  "r35Batch": {
+    "rows": 7,
+    "numberLineRows": 3,
+    "cartesianRows": 4,
+    "v1ExpectedFacts": "7/7",
+    "independentRecheck": "7/7",
+    "solutionFreeze": "7/7 candidate rows",
+    "candidateStatic": "7/7",
+    "v2ArtifactOnly": "7/7",
+    "v3Pass": "7/7",
+    "v3Fail": 0,
+    "localRender": "7/7",
+    "localRenderOverflow": 0,
+    "evidence": {
+      "v1": "reports/hs-quadratic-svg-upgrade-20260908/489_specialist_v1_expected_facts_r35.json",
+      "independentRecheck": "reports/hs-quadratic-svg-upgrade-20260908/495_independent_recheck_specialist_r35.json",
+      "visualManifest": "reports/hs-quadratic-svg-upgrade-20260908/490_specialist_candidate_visual_manifest_r35.json",
+      "static": "reports/hs-quadratic-svg-upgrade-20260908/492_specialist_candidate_visual_static_check_r35.json",
+      "candidateBank": "reports/hs-quadratic-svg-upgrade-20260908/491_specialist_candidate_bank_manifest_r35.json",
+      "bankValidation": "reports/hs-quadratic-svg-upgrade-20260908/494_specialist_candidate_bank_validation_r35.json",
+      "v2": "reports/hs-quadratic-svg-upgrade-20260908/493_specialist_v2_artifact_only_r35.json",
+      "v3": "reports/hs-quadratic-svg-upgrade-20260908/496_specialist_v3_parity_r35.json",
+      "solutionFreeze": "reports/hs-quadratic-svg-upgrade-20260908/497_specialist_solution_freeze_ledger_r35.json",
+      "render": "reports/hs-quadratic-svg-upgrade-20260908/502_specialist_local_render_review_r35.json"
+    }
+  },
+  "candidateVisualProgress": {
+    "priorUniqueCandidateVisuals": 263,
+    "r35BatchRows": 7,
+    "r35SupersededPriorCandidateRows": 0,
+    "currentUniqueCandidateVisuals": 270,
+    "remainingCandidateVisuals": 109,
+    "freshExpectedFactRowsThroughR35": 317,
+    "remainingFreshExpectedFactsUnderCurrentCounting": 113
+  },
+  "currentV2Preparation": {
+    "workBatchId": "hs-quadratic-r35d",
+    "runCount": 59,
+    "preparedQuestionCount": 430,
+    "errors": 0,
+    "machineEvidenceCount": 860,
+    "machineEvidenceValidationErrors": 0,
+    "preparation": "reports/hs-quadratic-svg-upgrade-20260908/501_current_v2_preparation_r35d.json",
+    "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/499_machine_evidence_r35d.json",
+    "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/500_machine_evidence_validation_r35d.json",
+    "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_PROVIDER_RENDER_CAPTURE"
+  },
+  "registry": {
+    "candidateEntries": 430,
+    "identityMismatchCount": 15,
+    "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY",
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json"
+  },
+  "remainingGates": [
+    "fresh independent math A1/A2 and solution freeze for full 430 rows",
+    "fresh V1 expected facts for remaining 113 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 109 candidate visual rows",
+    "provider-attested FINAL_AUDIT",
+    "actual current desktop/mobile capture and independent render-review for the full required scope",
+    "source registry identity authority for 15 mismatched exam titles",
+    "DB/question-index/production promotion authority"
+  ],
+  "note": "R35 closes 4 function/cartesian rows and 3 discrete/parameter number-line rows inside the target inventory. An earlier out-of-scope q21 candidate row was removed from this corrected batch. Full-scope PASS, SEALED, provider-attested FINAL_AUDIT, and production promotion remain forbidden until every gate is current and independently evidenced."
+}

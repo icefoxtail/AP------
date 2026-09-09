@@ -201,7 +201,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트]\n이차함수의 꼭짓점과 정의역의 위치를 비교하여 구간의 최댓값을 구한다.\n\n풀이 과정\n$y=x^2-6x+4=(x-3)^2-5$이므로 위로 열린 포물선이고 축은 $x=3$이다. 정의역 $-1\\le x\\le2$는 축의 왼쪽에 있으므로 함수는 이 구간에서 감소한다. 따라서 최댓값은 왼쪽 끝점 $x=-1$에서 얻는다.\n$y(-1)=(-1)^2-6(-1)+4=1+6+4=11$이다.\n\n결론\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -306,7 +306,7 @@ window.questionBank = [
       "$\\dfrac{1}{4}$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트]\n이차방정식이 $x$축과 한 점에서 만나는 조건은 판별식이 $0$이라는 뜻이다.\n\n풀이 과정\n$y=2x^2-x+k$의 그래프가 $x$축과 한 점에서 만나려면 $2x^2-x+k=0$이 중근을 가져야 한다. 판별식은 $D=(-1)^2-4\\cdot2\\cdot k=1-8k$이다.\n$D=0$이므로 $1-8k=0$, 따라서 $k=\\dfrac18$이다. 보기에서 $\\dfrac18$은 ④이다.\n\n결론\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -434,7 +434,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "이차함수 $y=kx^2+2(k+1)x+k-3$의 그래프와 직선 $y=2ax+b$가 $k$의 값에 관계없이 항상 한 점에서 만날 때, $a+b$의 값은? (단, $a, b$는 상수이다.)",
+    "content": "이차함수 $y=kx^2+2(k+1)x+k-3$의 그래프와 직선 $y=2ax+b$가 $k$의 값에 관계없이 항상 한 점에서 만날 때, $a+b$의 값은? (단, $a, b$는 상수이고, k\\ne0이다.)",
     "choices": [
       "$-3$",
       "$-2$",
@@ -443,7 +443,7 @@ window.questionBank = [
       "1"
     ],
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "두 그래프의 교점 방정식은 $kx^2+2(k+1-a)x+k-3-b=0$이다. 단, $k=0$이면 두 그래프가 일치하므로 문제의 조건에서 제외된다. $k\\ne0$에서 한 점에서 만나려면 판별식이 0이어야 한다.\\n$D/4=(k+1-a)^2-k(k-3-b)=k(5+b-2a)+(1-a)^2$이다. 이 식이 모든 $k\\ne0$에서 0이 되려면 $a=1$, $b=-3$이다. 따라서 $a+b=-2$이고 정답은 ②이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -549,7 +549,7 @@ window.questionBank = [
       "$\\dfrac{13}{8}$"
     ],
     "answer": "③",
-    "solution": "교점의 $x$좌표를 $\\alpha,\\beta$라 하고 $\\beta=2\\alpha$로 둔다.\n$f(x)=x^2+px+q$라 하면 직선 $y=5x+k$와의 교점 방정식은 $x^2+(p-5)x+(q-k)=0$이다. 따라서 $\\alpha+\\beta=3\\alpha=5-p$이고, $f(1)=3$에서 $1+p+q=3$, 즉 $q=2-p=3\\alpha-3$이다.\n\n그러므로 $k=q-\\alpha\\beta=3\\alpha-3-2\\alpha^2=-2(\\alpha-\\frac34)^2-\\frac{15}{8}$이다. 최댓값은 $\\alpha=\\frac34$일 때 $-\\frac{15}{8}$이며, 선택지 ③이다. 원문 표시 정답 ⑤($13/8$)와는 충돌하므로 source defect로 기록한다.",
+    "solution": "교점의 $x$좌표를 $\\alpha,\\beta$라 하고 $\\beta=2\\alpha$로 둔다.\n$f(x)=x^2+px+q$라 하면 직선 $y=5x+k$와의 교점 방정식은 $x^2+(p-5)x+(q-k)=0$이다. 따라서 $\\alpha+\\beta=3\\alpha=5-p$이고, $f(1)=3$에서 $1+p+q=3$, 즉 $q=2-p=3\\alpha-3$이다.\n\n그러므로 $k=q-\\alpha\\beta=3\\alpha-3-2\\alpha^2=-2(\\alpha-\\frac34)^2-\\frac{15}{8}$이다. 최댓값은 $\\alpha=\\frac34$일 때 $-\\frac{15}{8}$이며, 선택지 ③이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -576,10 +576,10 @@ window.questionBank = [
       "2",
       "3",
       "4",
-      "5"
+      "없다"
     ],
-    "answer": "④",
-    "solution": "[SOURCE HOLD] D 원문 발문은 ‘서로 다른 세 점에서 만나도록 하는 a의 최댓값은?’이고 원문 인쇄 답은 ④이다. f(x)={−x² (x<0), x²−x (x≥0)}, g(x)={ax+a (x<−1), 0 (−1≤x<1), ax−a (x≥1)}, a>0로 두면 x=0과 x=1은 항상 교점이다. 1<a<4이면 x>1에서 x=a가 추가되고 x<−1에서는 교점이 없어 정확히 세 교점이지만, a=4에서는 x=−2와 x=4가 추가되어 네 교점이 된다. 따라서 세 교점을 만드는 a의 범위는 1<a<4이고 최댓값은 존재하지 않는다. 원문 정답 ④를 수학적 정답으로 확정할 수 없으므로 source defect hold를 유지한다.",
+    "answer": "⑤",
+    "solution": "항상 $x=0,1$은 두 그래프의 교점이다. $1<a<4$이면 $x=a$에서 교점이 하나 더 생기고, $x<-1$에서는 추가 교점이 없으므로 정확히 세 교점이다. $a=4$에서는 $x=-2$와 $x=4$가 추가되어 네 교점이 되며, $a>4$에서는 교점이 더 생긴다. 따라서 정확히 세 교점을 만드는 범위는 $1<a<4$이고 이 범위에는 최댓값이 없다. 그러므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

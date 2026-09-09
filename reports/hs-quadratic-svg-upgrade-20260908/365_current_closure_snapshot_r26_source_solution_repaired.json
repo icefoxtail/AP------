@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R26_SOURCE_SOLUTION_REPAIRED",
+  "status": "R26_SOURCE_SOLUTION_AND_AFFECTED_VISUALS_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "mainBaseline": "origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22",
+  "scope": { "targetQuestionCount": 430, "sourceFileCount": 59, "examFileCount": 59 },
+  "sourceSolutionRepairs": {
+    "affectedRows": 11,
+    "sourceStaticAudit": "430/430 issueRows=0",
+    "candidateStaticAudit": "1295/1295 issueRows=0",
+    "independentRecheck": "11/11",
+    "affectedVisualV1": "11/11",
+    "affectedVisualV2": "11/11",
+    "affectedVisualV3": "11/11",
+    "affectedVisualSolutionFreeze": "11/11",
+    "affectedVisualRender": "11/11 overflow=0",
+    "sourceSolutionAudit": "reports/hs-quadratic-svg-upgrade-20260908/328_current_source_solution_static_audit_post_r24.json",
+    "candidateSolutionAudit": "reports/hs-quadratic-svg-upgrade-20260908/331_current_candidate_solution_static_audit_r25.json",
+    "solutionRecheck": "reports/hs-quadratic-svg-upgrade-20260908/329_source_solution_repairs_independent_recheck_r25.json",
+    "candidateBankParity": "reports/hs-quadratic-svg-upgrade-20260908/349_source_repair_candidate_bank_validation_r26.json",
+    "affectedV3": "reports/hs-quadratic-svg-upgrade-20260908/351_source_repair_v3_parity_r26.json",
+    "affectedFreeze": "reports/hs-quadratic-svg-upgrade-20260908/354_source_repair_solution_freeze_ledger_r26_recheck.json",
+    "note": "The 11 source solution repairs replace generic placeholders, correct parabola direction wording, and remove one stale answer-conflict sentence. Content and answer fields were not changed."
+  },
+  "visualDecisionDenominator": { "NO_VISUAL": 51, "KEEP_EXISTING": 0, "REBUILD_EXISTING": 2, "ADD_NEW_VISUAL": 377, "candidateVisualTarget": 379 },
+  "currentCandidateRevision": {
+    "candidateBank": "reports/hs-quadratic-svg-upgrade-20260908/348_source_repair_candidate_bank_manifest_r26.json",
+    "sourceCandidateParity": "1295/1295 protected content/choices/answer/image/solution parity, errors=0",
+    "visualBindingCount": 248,
+    "replacedSourceRepairVisualCount": 11,
+    "candidateSolutionIssueRows": 0
+  },
+  "candidateVisualProgress": { "currentUniqueCandidateVisuals": 248, "remainingCandidateVisuals": 131, "freshExpectedFactRowsThroughR26": 243, "remainingFreshExpectedFactsUnderCurrentCounting": 187 },
+  "currentV2Preparation": { "workBatchId": "hs-quadratic-r26c", "runCount": 59, "preparedQuestionCount": 430, "errors": 0, "machineEvidenceCount": 860, "machineEvidenceValidationErrors": 0, "preparation": "reports/hs-quadratic-svg-upgrade-20260908/362_current_v2_preparation_r26c.json", "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/363_machine_evidence_r26c.json", "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/364_machine_evidence_validation_r26c.json", "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_PROVIDER_RENDER_CAPTURE" },
+  "registry": { "candidateEntries": 430, "identityMismatchCount": 15, "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY", "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json" },
+  "remainingGates": [
+    "fresh independent math A1/A2 and solution freeze for full 430 rows",
+    "fresh V1 expected facts for remaining 187 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 131 candidate visual rows",
+    "provider-attested FINAL_AUDIT",
+    "actual current desktop/mobile render capture and independent render-review for the full required scope",
+    "source registry identity authority for 15 mismatched exam titles",
+    "DB/question-index/production promotion authority"
+  ],
+  "note": "R26 closes the source solution residual and rebinds all 11 affected visual rows to fresh SVGs. Full-scope PASS, SEALED, and production promotion remain forbidden until every remaining gate is current and independently evidenced."
+}

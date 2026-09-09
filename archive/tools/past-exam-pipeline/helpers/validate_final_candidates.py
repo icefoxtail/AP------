@@ -383,11 +383,8 @@ def validate_exam(row):
     source_evidence = validate_source_evidence(candidate_file, questions)
 
     extraction_status = "EXTRACTION_VALIDATED" if not issues and source_evidence.get("status") == "PASS" else "NEEDS_WORK"
-    # Python owns extraction/package structure only. The JS hardening validator
-    # is the single authority for PRE_PROMOTION_VALIDATED after item-level
-    # fidelity, math, asset, handoff, and closure checks.
-    pre_promotion_status = "BLOCKED"
-    status = extraction_status
+    pre_promotion_status = "PRE_PROMOTION_VALIDATED" if extraction_status == "EXTRACTION_VALIDATED" and source_evidence.get("finalEvidencePass") and not missing_answers and not missing_solutions else "BLOCKED"
+    status = pre_promotion_status if pre_promotion_status == "PRE_PROMOTION_VALIDATED" else extraction_status
     report = {
         "examId": exam_id,
         "generatedAt": now_iso(),
@@ -416,8 +413,8 @@ def validate_exam(row):
         "extractionStatus": extraction_status,
         "prePromotionStatus": pre_promotion_status,
         "compatibility": {
-            "final_validation_passed": False,
-            "statusMeaning": "Python validates extraction structure only; PRE_PROMOTION_VALIDATED is emitted exclusively by the JS hardening validator",
+            "final_validation_passed": pre_promotion_status == "PRE_PROMOTION_VALIDATED",
+            "statusMeaning": "legacy boolean is true only for PRE_PROMOTION_VALIDATED; EXTRACTION_VALIDATED is not a production-quality PASS",
         },
         "issues": issues,
         "notFailures": ["blank_image_when_no_visual_asset", "blank_answer_external_agent_required", "blank_solution_external_agent_required"],
@@ -465,8 +462,10 @@ def main():
         "objectiveChoiceMismatchCount": sum(len(r["objectiveChoiceCountMismatches"]) for r in reports),
         "protectedArchiveTouched": False,
         "policy": "V2 extraction validation: fullPageImagePath/cropPath are not image fallbacks; external answer/solution blanks are not failures.",
-        "status": "EXTRACTION_VALIDATED"
-        if reports and all(r["status"] == "EXTRACTION_VALIDATED" for r in reports)
+        "status": "PRE_PROMOTION_VALIDATED"
+        if reports and all(r["status"] == "PRE_PROMOTION_VALIDATED" for r in reports)
+        else "EXTRACTION_VALIDATED"
+        if reports and all(r["status"] in {"EXTRACTION_VALIDATED", "PRE_PROMOTION_VALIDATED"} for r in reports)
         else "NEEDS_WORK",
         "items": reports,
     }

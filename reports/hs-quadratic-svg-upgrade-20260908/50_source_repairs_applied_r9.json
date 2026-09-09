@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "HS_QUADRATIC_SOURCE_REPAIRS_APPLIED_R9",
+  "status": "SOURCE_REPAIRS_APPLIED_ON_APPROVED_BRANCH_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "userApproval": "2026-09-08 user instruction to modify five source holds; q13 condition k≠0 explicitly requested",
+  "productionSourceMutationOnThisBranch": true,
+  "modifiedSourceFileCount": 3,
+  "modifiedQuestionCount": 5,
+  "fileRows": [
+    {
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "beforeFileSha256": "c5f7da49d41c8ff6058d3cdeb8447ecbe28b1bceeae7f1f4734fe9c3dda0afaf",
+      "afterFileSha256": "1994554721e52dc7346d3c773796e8038f79e19fb4157a148bc89514af5336e6",
+      "beforeQuestionCount": 20,
+      "afterQuestionCount": 20,
+      "changedQuestionIds": [
+        13,
+        17
+      ],
+      "status": "SOURCE_FILE_REPAIRED_ON_APPROVED_BRANCH"
+    },
+    {
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "beforeFileSha256": "1d8c917f1b09b9cc322dbf99ac39359d2f403c9a930daf4c151af4ea811d0b95",
+      "afterFileSha256": "22395392ff373dc2419037027442c49de02485d283456b768c9b6a81808c2f07",
+      "beforeQuestionCount": 23,
+      "afterQuestionCount": 23,
+      "changedQuestionIds": [
+        19
+      ],
+      "status": "SOURCE_FILE_REPAIRED_ON_APPROVED_BRANCH"
+    },
+    {
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "beforeFileSha256": "bfa5f94decaae3f0729110ae2c6ec7b9e144cb410eddecf9ba4342fd2c23a1fc",
+      "afterFileSha256": "cc3ec7d5e158e95b9fc20022449e5d602764ac27dfc7db0b01bedc3826d53059",
+      "beforeQuestionCount": 22,
+      "afterQuestionCount": 22,
+      "changedQuestionIds": [
+        9,
+        15
+      ],
+      "status": "SOURCE_FILE_REPAIRED_ON_APPROVED_BRANCH"
+    }
+  ],
+  "questionRows": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_c|13",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "id": 13,
+      "approvedFields": [
+        "content",
+        "solution"
+      ],
+      "sourceCandidateParity": true,
+      "status": "PARITY_RECHECKED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_c|17",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "id": 17,
+      "approvedFields": [
+        "choices",
+        "answer",
+        "solution"
+      ],
+      "sourceCandidateParity": true,
+      "status": "PARITY_RECHECKED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js|26_매산여고_1학기_중간_고1_기출_c|19",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "id": 19,
+      "approvedFields": [
+        "answer",
+        "solution"
+      ],
+      "sourceCandidateParity": true,
+      "status": "PARITY_RECHECKED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js|26_팔마고_1학기_중간_고1_기출_c|9",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "id": 9,
+      "approvedFields": [
+        "answer",
+        "solution"
+      ],
+      "sourceCandidateParity": true,
+      "status": "PARITY_RECHECKED"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js|26_팔마고_1학기_중간_고1_기출_c|15",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "id": 15,
+      "approvedFields": [
+        "answer",
+        "solution"
+      ],
+      "sourceCandidateParity": true,
+      "status": "PARITY_RECHECKED"
+    }
+  ],
+  "errors": [],
+  "candidateParity": true,
+  "note": "Approved correctness repairs are now present in the separate branch source JS. This does not promote SVGs to production or close current provider-attested FINAL_AUDIT."
+}

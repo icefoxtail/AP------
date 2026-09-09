@@ -1,0 +1,549 @@
+{
+  "schemaVersion": "HS_QUADRATIC_SPECIALIST_V1_EXPECTED_FACTS_R12",
+  "status": "EXPECTED_FACTS_FROZEN_SOURCE_ONLY_CANDIDATE_NO_PASS",
+  "inputVisibilityProfile": "SOURCE_ONLY",
+  "priorReviewVisibility": "NONE",
+  "rows": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js|22_금당고_1학기_기말_고1_기출|17",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+      "id": 17,
+      "content": "함수 $f(x)=x^2-x-3$에 대하여 부등식 $f(x)+\\dfrac12|f(x)-x|\\le p(x-3)+3$을 만족시키는 정수 $x$의 개수가 $6$이 되도록 하는 음수 $p$의 최댓값은? [4.8점]",
+      "choices": [
+        "$-\\dfrac14$",
+        "$-\\dfrac12$",
+        "$-1$",
+        "$-\\dfrac23$",
+        "$-2$"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "parameter": "p",
+        "parameterCandidates": [
+          -0.25,
+          -0.5,
+          -1,
+          -2
+        ],
+        "validParameter": "-1/2",
+        "integerSolutionsAtValidParameter": [
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3
+        ],
+        "count": 6
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js|22_매산고_1학기_기말_고1_기출|3",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+      "id": 3,
+      "content": "모든 실수 $x,y,z$에 대하여 항상 성립하는 부등식을 보기에서 있는 대로 고른 것은? [3.8점]\n<div class='q-box'><div><b>보기</b></div><div>ㄱ. $x^2+x+1>0$</div><div>ㄴ. $x^2-xy+y^2>0$</div><div>ㄷ. $x^2-2xy+y^2\\le0$</div><div>ㄹ. $x^2+y^2+z^2-xy-yz-zx\\ge0$</div></div>",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄴ, ㄷ",
+        "ㄷ, ㄹ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄹ"
+      ],
+      "expectedVisualType": "case-table",
+      "expectedFacts": {
+        "cases": [
+          {
+            "id": "ㄱ",
+            "verdict": "참",
+            "reason": "(x+1/2)^2+3/4>0"
+          },
+          {
+            "id": "ㄴ",
+            "verdict": "거짓",
+            "reason": "x=y=0에서 0>0 불성립"
+          },
+          {
+            "id": "ㄷ",
+            "verdict": "거짓",
+            "reason": "(x-y)^2≤0은 x=y일 때만"
+          },
+          {
+            "id": "ㄹ",
+            "verdict": "참",
+            "reason": "1/2{(x-y)^2+(y-z)^2+(z-x)^2}≥0"
+          }
+        ],
+        "trueCases": [
+          "ㄱ",
+          "ㄹ"
+        ]
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js|23_금당고_1학기_기말_고1_기출|16",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js",
+      "id": 16,
+      "content": "두 이차함수 $f(x),g(x)$가 다음 조건을 만족시킨다.<br><div class='note-box'>(가) 방정식 $f(x)=0$이 $x=0$을 중근으로 갖는다.<br>(나) 함수 $y=f(x)$의 그래프가 함수 $y=-g(x)$의 그래프보다 위쪽에 있도록 하는 $x$의 범위는 $x<3$이다.<br>(다) 모든 실수 $x$에 대하여 $f(x)-g(x)\\ge f(-1)-g(-1)$이다.</div>부등식 $g(x)>0$을 만족시키는 정수 $x$의 개수는? [4.6점]",
+      "choices": [
+        "1",
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionInterval": [
+          -6,
+          2
+        ],
+        "leftClosed": false,
+        "rightClosed": false,
+        "integerSolutions": [
+          -5,
+          -4,
+          -3,
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "count": 7,
+        "positiveFunction": "g(x)=-a(x+6)(x-2)",
+        "aPositive": true
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js|23_매산고_1학기_기말_고1_기출|3",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js",
+      "id": 3,
+      "content": "이차부등식 $x^2-7x+6\\le0$의 해가 $\\alpha\\le x\\le\\beta$일 때, $\\beta-\\alpha$의 값은? [4.2점]",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionInterval": [
+          1,
+          6
+        ],
+        "leftClosed": true,
+        "rightClosed": true,
+        "width": 5
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js|23_팔마고_1학기_기말_고1_기출|10",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js",
+      "id": 10,
+      "content": "$x$에 대한 연립부등식 $\\begin{cases} x^2+x-12\\lt0 \\\\ [x]^2-16\\lt0 \\end{cases}$을 만족하는 $x$의 범위로 알맞은 것은? (단, $[x]$는 $x$보다 크지 않은 최대의 정수이다.) [4.5점]",
+      "choices": [
+        "$-3\\lt x\\lt3$",
+        "$-3\\le x\\lt3$",
+        "$-3\\lt x\\lt4$",
+        "$-3\\le x\\lt4$",
+        "$-3\\le x\\le4$"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionInterval": [
+          -3,
+          3
+        ],
+        "leftClosed": true,
+        "rightClosed": false,
+        "floorCondition": "-3≤x<4",
+        "finalIntersection": "-3≤x<3"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js|25_강남여고_1학기_기말_고1_기출|5",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+      "id": 5,
+      "content": "이차함수 $y=x^2-2x+10$의 최솟값은?",
+      "choices": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -2,
+          "c": 10
+        },
+        "vertex": [
+          1,
+          9
+        ],
+        "minimum": 9
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js|26_광양제철고_1학기_기말_고1_기출|18",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
+      "id": 18,
+      "content": "[서답형 2]<br>부등식 $3|x-1|-\\sqrt{4x^2+12x+9}<x-2$를 만족시키는 범위를 구하는 풀이과정과 답을 쓰시오. [7점]",
+      "choices": [],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionInterval": [
+          0.3333333333333333,
+          null
+        ],
+        "leftClosed": false,
+        "rightClosed": false,
+        "boundary": "1/3",
+        "result": "x>1/3"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js|26_팔마고_1학기_기말_고1_기출|18",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js",
+      "id": 18,
+      "content": "$0\\le x\\le1$에서 이차함수 $f(x)=(x-p)^2+q$의 최솟값이 $3$일 때, 두 실수 $p$, $q$에 대하여 옳은 것만을 보기에서 있는 대로 고른 것은? [5점]<br><div class=\"note-box\">ㄱ. $p=\\dfrac12$일 때, $q=3$이다.<br>ㄴ. $p\\le0$일 때, $q=-p^2+3$이다.<br>ㄷ. $p+q$의 최댓값은 $\\dfrac{25}{4}$이다.</div>",
+      "choices": [
+        "ㄱ",
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄷ",
+        "ㄱ, ㄴ, ㄷ"
+      ],
+      "expectedVisualType": "case-table",
+      "expectedFacts": {
+        "cases": [
+          {
+            "id": "p≤0",
+            "verdict": "q=−p²+3",
+            "reason": "최솟값은 x=0"
+          },
+          {
+            "id": "0≤p≤1",
+            "verdict": "q=3",
+            "reason": "꼭짓점 x=p가 구간 안"
+          },
+          {
+            "id": "p≥1",
+            "verdict": "q=3−(p−1)²",
+            "reason": "최솟값은 x=1"
+          }
+        ],
+        "trueCases": [
+          "ㄱ",
+          "ㄴ"
+        ],
+        "maximum": "p+q의 최댓값=17/4"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js|23_충무고_1학기_중간_고1_기출|20",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
+      "id": 20,
+      "content": "서술형 2. 이차방정식 $x^2 + x + 1 = 0$의 두 근 $\\alpha, \\beta$에 대하여 이차함수 $f(x) = x^2 + px + q$가 $f(-\\alpha-1) = -2\\alpha$와 $f(\\beta^2) = -2\\beta$를 만족시킬 때, $f(2)$의 값을 구하면?",
+      "choices": [],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": 3,
+          "c": 3
+        },
+        "vertex": [
+          -1.5,
+          0.75
+        ],
+        "result": 13,
+        "identity": "f(x)=x²+3x+3"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js|24_효천고_1학기_중간_고1_기출|14",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js",
+      "id": 14,
+      "content": "이차방정식 $x^{2}-5x+3=0$의 두 근을 $\\alpha, \\beta$라 할 때, $f(\\alpha)=-20(5-\\beta), f(\\beta)=-20(5-\\alpha), f(1)=-5$를 만족시키는 이차식 $f(x)$에 대하여 이차방정식 $f(x)=0$의 두 근의 곱은?",
+      "choices": [
+        "① $-4$",
+        "② $2$",
+        "③ $3$",
+        "④ $6$",
+        "⑤ $9$"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": -15,
+          "b": 55,
+          "c": -45
+        },
+        "roots": [
+          "(11−√13)/6",
+          "(11+√13)/6"
+        ],
+        "rootProduct": 3
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js|25_강남여고_1학기_중간_고1_기출|8",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+      "id": 8,
+      "content": "이차함수 $y=x^{2}-4x-5$의 최솟값을 구하면? [3.7점]",
+      "choices": [
+        "-15",
+        "-12",
+        "-9",
+        "-6",
+        "-3"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -4,
+          "c": -5
+        },
+        "vertex": [
+          2,
+          -9
+        ],
+        "minimum": -9
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js|25_금당고_1학기_중간_고1_기출|5",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "id": 5,
+      "content": "이차함수 $y=x^2-x+1$의 그래프와 x축 사이의 서로 다른 교점의 개수는? [3.7점]",
+      "choices": [
+        "① $0$",
+        "② $1$",
+        "③ $2$",
+        "④ $3$",
+        "⑤ $4$"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -1,
+          "c": 1
+        },
+        "vertex": [
+          0.5,
+          0.75
+        ],
+        "xAxisIntersections": [],
+        "discriminant": -3
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js|25_매산고_1학기_중간_고1_기출|7",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js",
+      "id": 7,
+      "content": "$x$에 대한 이차방정식 $f(x)=0$의 두 근의 합이 27일 때, $x$에 대한 이차방정식 $f(225-9x)=0$의 두 근의 합을 구하면? [4.2점]",
+      "choices": [
+        "43",
+        "44",
+        "45",
+        "46",
+        "47"
+      ],
+      "expectedVisualType": "case-table",
+      "expectedFacts": {
+        "cases": [
+          {
+            "id": "원래 근",
+            "verdict": "α+β=27",
+            "reason": "f(x)=0의 두 근"
+          },
+          {
+            "id": "변환 근",
+            "verdict": "x₁=(225−α)/9, x₂=(225−β)/9",
+            "reason": "f(225−9x)=0"
+          },
+          {
+            "id": "합",
+            "verdict": "47",
+            "reason": "(450−27)/9"
+          }
+        ],
+        "result": 47
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js|25_순천여고_1학기_중간_고1_기출|5",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
+      "id": 5,
+      "content": "[중] $-2 \\le x \\le 0$에서 이차함수 $y=-x^{2}+2x+3$의 최댓값과 최솟값의 합은? [4.3점]",
+      "choices": [
+        "-5",
+        "-3",
+        "-2",
+        "1",
+        "3"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": -1,
+          "b": 2,
+          "c": 3,
+          "domain": [
+            -2,
+            0
+          ]
+        },
+        "vertex": [
+          1,
+          4
+        ],
+        "endpointValues": {
+          "0": 3,
+          "-2": -5
+        },
+        "maximum": 3,
+        "minimum": -5,
+        "sum": -2
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_content|6",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "id": 6,
+      "content": "$-1 \\le x \\le 2$에서 이차함수 $y=x^2-6x+4$의 최댓값은?",
+      "choices": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -6,
+          "c": 4,
+          "domain": [
+            -1,
+            2
+          ]
+        },
+        "vertex": [
+          3,
+          -5
+        ],
+        "endpointValues": {
+          "2": -4,
+          "-1": 11
+        },
+        "maximum": 11,
+        "minimum": -4
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js|26_매산고_1학기_중간_고1_기출|4",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js",
+      "id": 4,
+      "content": "$1 \\le x \\le 3$에서 이차함수 $y=x^2-4x+6$의 최솟값과 최댓값의 합은?",
+      "choices": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -4,
+          "c": 6,
+          "domain": [
+            1,
+            3
+          ]
+        },
+        "vertex": [
+          2,
+          2
+        ],
+        "endpointValues": {
+          "1": 3,
+          "3": 3
+        },
+        "maximum": 3,
+        "minimum": 2,
+        "sum": 5
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js|26_매산여고_1학기_중간_고1_기출|7",
+      "sourceJsPath": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "id": 7,
+      "content": "$1 \\le x \\le 3$에서 이차함수 $y=x^2-2x$의 최댓값과 최솟값의 합을 구하면?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -2,
+          "c": 0,
+          "domain": [
+            1,
+            3
+          ]
+        },
+        "vertex": [
+          1,
+          -1
+        ],
+        "endpointValues": {
+          "1": -1,
+          "3": 3
+        },
+        "maximum": 3,
+        "minimum": -1,
+        "sum": 2
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js|24_제일고_2학기_중간_고1_기출|20",
+      "sourceJsPath": "archive/exams/original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js",
+      "id": 20,
+      "content": "서술형 2. 이차부등식 $x^2-[x]-2\\le0$의 해를 구하는 과정을 서술하시오. (단, $[x]$는 $x$보다 크지 않은 최대 정수) [5점]",
+      "choices": [],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionIntervals": [
+          {
+            "left": -1,
+            "right": 1.7320508075688772,
+            "leftClosed": true,
+            "rightClosed": true
+          },
+          {
+            "left": 2,
+            "right": 2,
+            "leftClosed": true,
+            "rightClosed": true
+          }
+        ],
+        "exact": "-1≤x≤√3 또는 x=2"
+      }
+    }
+  ],
+  "note": "Fresh source-only fact batch for 18 remaining deterministic/specialist-ready rows. Facts were recomputed from problem content and choices without reading solution or existing SVG; this remains candidate evidence until current provider closure."
+}

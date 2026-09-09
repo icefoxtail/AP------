@@ -1,0 +1,12 @@
+import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto'; import { fileURLToPath } from 'node:url';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..','..'),REPORT=path.join(ROOT,'reports','hs-quadratic-svg-upgrade-20260908'),FACTS=JSON.parse(fs.readFileSync(path.join(REPORT,'752_full_scope_v1_expected_facts_r54.json'))),OUTPUT=path.join(REPORT,'753_full_scope_independent_recheck_r54.json');
+const checks=[
+ ['archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js',1,{result:4}],
+ ['archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js',4,{result:'ㄴ,ㄷ'}],
+ ['archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js',6,{result:'3√6/2'}],
+ ['archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js',7,{result:-4}],
+ ['archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js',8,{solutionInterval:[-4,6],integerSolutions:[-3,-2,-1,0,1,2,3,4,5],count:9,result:9}],
+ ['archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js',9,{result:5}],
+ ['archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js',22,{result:32}],
+ ['archive/exams/original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js',8,{result:1}],
+];const factMap=new Map(FACTS.rows.map(row=>[`${row.sourceJsPath}|${row.id}`,row]));const rows=checks.map(([sourceJsPath,id,independentlyComputedFacts])=>{const fact=factMap.get(`${sourceJsPath}|${id}`);if(!fact)throw new Error(`V1 fact missing for ${sourceJsPath}|${id}`);const expectedFactParity=Object.entries(independentlyComputedFacts).every(([field,value])=>JSON.stringify(fact.expectedFacts[field])===JSON.stringify(value));return {questionUid:fact.questionUid,sourceJsPath,id,independentlyComputedFacts,expectedFactParity,independentCalculationStatus:expectedFactParity?'MATCH':'MISMATCH'};});const mismatchCount=rows.filter(row=>!row.expectedFactParity).length,output={schemaVersion:'HS_QUADRATIC_FULL_SCOPE_INDEPENDENT_RECHECK_R54',status:mismatchCount?'INDEPENDENT_RECHECK_FAIL':'INDEPENDENT_RECHECK_PASS_NO_FINAL_PASS',productionAuthorized:false,inputVisibilityProfile:'SOURCE_ONLY_INDEPENDENT_CALCULATOR',priorReviewVisibility:'NONE',rows,checkedRows:rows.length,mismatchCount,calculatorDigest:crypto.createHash('sha256').update(JSON.stringify(checks)).digest('hex'),note:'Independent second-pass arithmetic for eight full-scope fact rows; this is not final full-scope PASS.'};fs.writeFileSync(OUTPUT,`${JSON.stringify(output,null,2)}\n`);console.log(JSON.stringify({status:output.status,checkedRows:output.checkedRows,mismatchCount},null,2));

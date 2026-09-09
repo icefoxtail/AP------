@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CANDIDATE_SOLUTION_FREEZE_SOURCE_RESOLVED_R9",
+  "status": "CANDIDATE_SOLUTION_FREEZE_RECORDED_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "sourceMutationPerformed": false,
+  "sourceHoldsBefore": 5,
+  "sourceHoldsAfterCandidateRepair": 0,
+  "independentRecheck": "reports/hs-quadratic-svg-upgrade-20260908/38_candidate_source_repair_independent_recheck_r8.json",
+  "v1": "reports/hs-quadratic-svg-upgrade-20260908/39_approved_source_only_v1_expected_facts_r9.json",
+  "v2": "reports/hs-quadratic-svg-upgrade-20260908/43_approved_v2_artifact_only_r9.json",
+  "v3": "reports/hs-quadratic-svg-upgrade-20260908/44_approved_v3_parity_r9.json",
+  "rows": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_c|13",
+      "sourceRepair": "content에 k≠0 조건을 최소 추가",
+      "solutionFreeze": "판별식 항등식과 k=0 그래프 일치 예외를 명시",
+      "answer": "②",
+      "v3Verdict": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js|26_금당고_1학기_중간_고1_기출_c|17",
+      "sourceRepair": "choices에 없다를 ⑤로 추가하고 answer를 ⑤로 수정",
+      "solutionFreeze": "정확히 세 교점 범위 1<a<4, 최댓값 없음",
+      "answer": "⑤",
+      "v3Verdict": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js|26_매산여고_1학기_중간_고1_기출_c|19",
+      "sourceRepair": "answer ①에서 ④로 수정",
+      "solutionFreeze": "t=0,1,4,5, 합 10",
+      "answer": "④",
+      "v3Verdict": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js|26_팔마고_1학기_중간_고1_기출_c|9",
+      "sourceRepair": "answer ⑤에서 ①로 수정",
+      "solutionFreeze": "P(t)=−8t²/3+4t+24, t=3/4, 최댓값 51/2",
+      "answer": "①",
+      "v3Verdict": "PASS"
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js|26_팔마고_1학기_중간_고1_기출_c|15",
+      "sourceRepair": "answer ⑤에서 ③으로 수정",
+      "solutionFreeze": "f(x)=3(x+3)(x−1)+7, f(3)=43",
+      "answer": "③",
+      "v3Verdict": "PASS"
+    }
+  ],
+  "visualAttachment": "reports/hs-quadratic-svg-upgrade-20260908/41_approved_candidate_bank_manifest_r9.json",
+  "note": "Freeze is candidate-only. Production JS/SVG/DB/index files were not mutated; provider-attested current pipeline FINAL_AUDIT and final production authority remain open."
+}

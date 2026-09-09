@@ -1,0 +1,135 @@
+window.examTitle = "24_제일고_2학기_중간_고1_기출";
+window.questionBank = [
+  {
+    "id": 5,
+    "level": "중",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "연립이차부등식",
+      "정수해의 합"
+    ],
+    "wide": false,
+    "content": "연립부등식 $\\begin{cases}x^2+5x+6>0\\\\x^2-4\\le0\\end{cases}$을 만족시키는 모든 정수 $x$의 값들의 합은? [4.4점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "②",
+    "solution": "[키포인트] 두 이차부등식의 해를 각각 구한 뒤 공통부분을 찾는다.\n조건 정리: $x^2+5x+6>0$과 $x^2-4\\le0$을 동시에 만족해야 한다.\n풀이 방향: 각 식을 인수분해하여 해의 범위를 구한다.\n정석 풀이: $x^2+5x+6=(x+2)(x+3)$이므로 첫째 부등식의 해는 $x<-3$ 또는 $x>-2$이다. 또 $x^2-4=(x-2)(x+2)$이므로 둘째 부등식의 해는 $-2\\le x\\le2$이다. 두 범위의 공통부분은 $-2<x\\le2$이다. 이 범위의 정수는 $-1,0,1,2$이고 합은 $-1+0+1+2=2$이다.\n따라서 정답은 ②이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "archive/_generated/hs-quadratic-svg-upgrade-20260908/candidate-r11/assets/hs-r11-025.svg",
+    "solutionImageAlt": "문항의 핵심 이차함수 그래프 또는 부등식 해집합을 나타낸 후보 해설 시각자료",
+    "solutionImageCaption": "후보 SVG: 문제 조건과 독립 계산으로 확정한 관계를 그림에서 확인한다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 6,
+    "level": "중",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "절댓값부등식",
+      "정수해"
+    ],
+    "wide": false,
+    "content": "부등식 $|2x-1|-|x-1|\\le2$를 만족시키는 정수 $x$의 개수는? [4.5점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "⑤",
+    "solution": "[키포인트] 절댓값 안의 식이 $0$이 되는 두 점을 기준으로 나누어 푼다.\n조건 정리: 기준점은 $2x-1=0$에서 $x=\\dfrac12$, $x-1=0$에서 $x=1$이다.\n풀이 방향: $x<\\dfrac12$, $\\dfrac12\\le x<1$, $x\\ge1$의 세 구간에서 절댓값을 없앤다.\n정석 풀이: $x<\\dfrac12$에서는 $(1-2x)-(1-x)=-x\\le2$이므로 $x\\ge-2$이다. 따라서 $-2\\le x<\\dfrac12$이다. $\\dfrac12\\le x<1$에서는 $(2x-1)-(1-x)=3x-2\\le2$이므로 $x\\le\\dfrac43$이고 이 구간 전체가 해이다. $x\\ge1$에서는 $(2x-1)-(x-1)=x\\le2$이므로 $1\\le x\\le2$이다. 전체 해는 $-2\\le x\\le2$이고 정수는 $-2,-1,0,1,2$의 5개이다.\n따라서 정답은 ⑤이다.",
+    "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+    "subUnit": "부등식의 풀이",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 8,
+    "level": "상",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식",
+      "이차부등식",
+      "해집합의 포함관계",
+      "매개변수"
+    ],
+    "wide": false,
+    "content": "두 집합 $A=\\{x\\mid x^2-kx+1<0\\}$, $B=\\{x\\mid0<x<5\\}$에 대하여 $A\\subset B$를 만족하는 정수 $k$의 개수는? (단, $A\\ne\\varnothing$) [4.7점]",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "③",
+    "solution": "[키포인트] 이차부등식의 두 근 사이가 집합 $A$가 되므로 두 근의 위치를 확인한다.\n조건 정리: $A$가 공집합이 아니고 $A\\subset(0,5)$이어야 한다.\n풀이 방향: 판별식으로 $A\\ne\\varnothing$ 조건을 구하고, 큰 근이 $5$를 넘지 않도록 한다.\n정석 풀이: $x^2-kx+1$의 판별식은 $k^2-4$이다. $A\\ne\\varnothing$이려면 $k^2-4>0$이다. 두 근의 곱이 $1>0$이고 $A$가 양수 구간 안에 있어야 하므로 $k>2$이다. 이때 작은 근은 $1$보다 작고, 큰 근이 $5$ 이하이면 $A\\subset(0,5)$이다. $x=5$를 대입하면 $25-5k+1=26-5k$이므로 큰 근이 $5$ 이하일 조건은 $26-5k\\ge0$, 즉 $k\\le\\dfrac{26}{5}$이다. 따라서 $2<k\\le\\dfrac{26}{5}$를 만족하는 정수는 $3,4,5$의 3개이다.\n따라서 정답은 ③이다.",
+    "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+    "subUnit": "이차부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  {
+    "id": 20,
+    "level": "상",
+    "category": "여러 가지 부등식",
+    "originalCategory": "여러 가지 부등식",
+    "standardCourse": "수학(상)",
+    "standardUnitKey": "H15-SA-08",
+    "standardUnit": "여러 가지 부등식",
+    "standardUnitOrder": 8,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "이차부등식",
+      "가우스기호",
+      "구간 분할"
+    ],
+    "wide": false,
+    "content": "서술형 2. 이차부등식 $x^2-[x]-2\\le0$의 해를 구하는 과정을 서술하시오. (단, $[x]$는 $x$보다 크지 않은 최대 정수) [5점]",
+    "choices": [],
+    "answer": "$-1\\le x\\le\\sqrt3$ 또는 $x=2$",
+    "solution": "[키포인트] 먼저 해의 전체 범위를 좁힌 뒤 정수부분이 일정한 구간별로 확인한다.\n조건 정리: $x^2-[x]-2\\le0$, 즉 $x^2\\le[x]+2$이다.\n풀이 방향: $[x]\\le x$를 이용하여 가능한 $x$의 범위를 구하고, 그 범위에서 $[x]$를 나눈다.\n정석 풀이: $x^2\\le[x]+2\\le x+2$이므로 $x^2-x-2\\le0$이다. 따라서 $(x-2)(x+1)\\le0$에서 $-1\\le x\\le2$이다. $-1\\le x<0$에서는 $[x]=-1$이므로 $x^2-1\\le0$이 되어 구간 전체가 해이다. $0\\le x<1$에서는 $[x]=0$이므로 $x^2-2\\le0$이 되어 구간 전체가 해이다. $1\\le x<2$에서는 $[x]=1$이므로 $x^2-3\\le0$, 즉 $1\\le x\\le\\sqrt3$이다. 마지막으로 $x=2$에서는 $4-2-2=0$이므로 해이다.\n따라서 해는 $-1\\le x\\le\\sqrt3$ 또는 $x=2$이다.",
+    "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+    "subUnit": "이차부등식",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "archive/_generated/hs-quadratic-svg-upgrade-20260908/candidate-r12/assets/hs-r12-018.svg",
+    "solutionImageAlt": "문항의 핵심 이차함수 그래프·부등식 해집합·조건 판정표를 나타낸 후보 해설 시각자료",
+    "solutionImageCaption": "후보 SVG: 문제 조건과 독립 계산으로 확정한 관계를 그림에서 확인한다.",
+    "solutionImageSize": "full"
+  }
+];

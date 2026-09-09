@@ -48,25 +48,13 @@ function writeCandidate(file, candidate) {
   fs.writeFileSync(file, source, "utf8");
 }
 
-export function promotionSourceIdentityScope(candidate, identities) {
-  return identities.map(identity => ({
-    sourceIdentityKey: identity.sourceIdentityKey,
-    sourceDocumentSha256: identity.sourceDocumentSha256,
-    sourceQuestionNo: identity.sourceQuestionNo,
-    sourcePageNo: identity.sourcePageNo,
-    sourcePageEvidencePaths: identity.sourcePageEvidencePaths,
-    qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
-  }));
-}
-
-export function runPromotion({ argv = process.argv, archiveRootOverride = archiveRoot, quiet = false } = {}) {
-  const manifestFile = arg("--manifest", argv);
-  const candidateFile = arg("--candidate", argv);
-  const reviewFile = arg("--review", argv);
-  const assetsDir = arg("--assets", argv);
-  const closureManifestFile = arg("--closure-manifest", argv);
-  const replaceExisting = argv.includes("--replace-existing");
-  const projectRoot = path.resolve(archiveRootOverride, "..");
+function main() {
+  const manifestFile = arg("--manifest");
+  const candidateFile = arg("--candidate");
+  const reviewFile = arg("--review");
+  const assetsDir = arg("--assets");
+  const closureManifestFile = arg("--closure-manifest");
+  const replaceExisting = process.argv.includes("--replace-existing");
   const manifest = readJson(manifestFile);
   const review = readJson(reviewFile);
   const candidate = loadCandidate(candidateFile);
@@ -74,7 +62,7 @@ export function runPromotion({ argv = process.argv, archiveRootOverride = archiv
   // All source, fidelity, math, asset, serialization, and handoff bindings are
   // checked before any protected destination is created.
   const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
-  const masterRows = loadSubunitMaster(archiveRootOverride);
+  const masterRows = loadSubunitMaster();
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
   if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
   const ids = candidate.questionBank.map((question) => question.id);
@@ -135,11 +123,18 @@ export function runPromotion({ argv = process.argv, archiveRootOverride = archiv
     if (!fs.existsSync(source)) throw new Error(`missing generated asset: ${source}`);
     return { source, destination: path.join(liveAssetsDir, name) };
   });
-  const expectedSourceIdentities = promotionSourceIdentityScope(candidate, hardening.identities);
+  const expectedSourceIdentities = hardening.identities.map(identity => ({
+    sourceIdentityKey: identity.sourceIdentityKey,
+    sourceDocumentSha256: identity.sourceDocumentSha256,
+    sourceQuestionNo: identity.sourceQuestionNo,
+    sourcePageNo: identity.sourcePageNo,
+    sourcePageEvidencePaths: identity.sourcePageEvidencePaths,
+    qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
+  }));
   const commonClosure = requireProductionClosure(
-    projectRoot,
+    path.resolve(archiveRoot, '..'),
     'past-exam',
-    argv,
+    process.argv,
     [candidateFile, ...copyPlan.map(item => item.source)],
     expectedSourceIdentities,
   );
@@ -152,7 +147,7 @@ export function runPromotion({ argv = process.argv, archiveRootOverride = archiv
     closure: commonClosure,
   });
   productionWritePreflight({
-    changedPaths: [`archive/exams/${manifest.archiveRelativePath}`, ...copyPlan.map(item => path.relative(projectRoot, item.destination))],
+    changedPaths: [`archive/exams/${manifest.archiveRelativePath}`, ...copyPlan.map(item => path.relative(path.resolve(archiveRoot, ".."), item.destination))],
     receipt,
     candidateFile,
     reviewFile,
@@ -169,9 +164,7 @@ export function runPromotion({ argv = process.argv, archiveRootOverride = archiv
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
   // Preserve the exact reviewed bytes; never reserialize after SHA-bound review.
   fs.copyFileSync(candidateFile, liveJs);
-  const result = { status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size };
-  if (!quiet) console.log(JSON.stringify(result, null, 2));
-  return result;
+  console.log(JSON.stringify({ status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
 }
 
 if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) runPromotion();

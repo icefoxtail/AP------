@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "HS_QUADRATIC_FULL_SCOPE_V1_EXPECTED_FACTS_R54",
+  "status": "EXPECTED_FACTS_FROZEN_SOURCE_ONLY_NO_PASS",
+  "inputVisibilityProfile": "SOURCE_ONLY",
+  "priorReviewVisibility": "NONE",
+  "scope": "full-scope-missing-v1-subset",
+  "rows": [
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js|25_순천여고_1학기_기말_고1_기출|1",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
+      "id": 1,
+      "content": "삼차방정식 $x^3-6x^2+11x-6=0$의 세 근 중에서 가장 큰 근과 가장 작은 근의 합은? [3.9점]",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionIntervals": [
+          {
+            "left": 1,
+            "right": 1,
+            "leftClosed": true,
+            "rightClosed": true,
+            "_leftLabel": "1",
+            "_rightLabel": "1"
+          },
+          {
+            "left": 2,
+            "right": 2,
+            "leftClosed": true,
+            "rightClosed": true,
+            "_leftLabel": "2",
+            "_rightLabel": "2"
+          },
+          {
+            "left": 3,
+            "right": 3,
+            "leftClosed": true,
+            "rightClosed": true,
+            "_leftLabel": "3",
+            "_rightLabel": "3"
+          }
+        ],
+        "result": 4,
+        "exact": "근 1,2,3, 최댓값+최솟값=4"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js|25_순천여고_1학기_기말_고1_기출|4",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
+      "id": 4,
+      "content": "방정식 $x^3+1=0$의 한 허근을 $\\omega$라 할 때, 옳은 것만을 있는 대로 고른 것은? (단, $\\overline{\\omega}$는 $\\omega$의 켤레복소수) [4.5점]\n<div style=\"display:block; margin:8px 0 0 0; padding:8px 10px; border:1px solid #000; box-sizing:border-box; line-height:1.7; text-align:left;\">\n&lt;보기&gt;\nㄱ. $\\omega^3=1$<br>\nㄴ. $\\omega+\\omega^3+\\omega^5=0$<br>\nㄷ. $\\dfrac{2}{1-\\omega}+\\dfrac{2}{1-\\overline{\\omega}}=2$\n</div>",
+      "choices": [
+        "ㄱ",
+        "ㄴ",
+        "ㄷ",
+        "ㄱ, ㄴ",
+        "ㄴ, ㄷ"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "result": "ㄴ,ㄷ",
+        "exact": "ω³=−1, ㄱ 거짓, ㄴ·ㄷ 참"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js|25_순천여고_1학기_기말_고1_기출|6",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
+      "id": 6,
+      "content": "방정식 $x^2y^2+x^2+4y^2=10xy-9$를 만족시키는 양수 $x, y$에 대하여 $x+y$의 값은? [4.8점]",
+      "choices": [
+        "$\\frac{\\sqrt{6}}{2}$",
+        "$\\sqrt{6}$",
+        "$\\frac{3\\sqrt{6}}{2}$",
+        "$2\\sqrt{6}$",
+        "$\\frac{5\\sqrt{6}}{2}$"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 0,
+          "b": 0,
+          "c": 3.674234614174767,
+          "domain": [
+            0,
+            5
+          ]
+        },
+        "result": "3√6/2",
+        "exact": "(xy−3)²+(x−2y)²=0, x+y=3√6/2"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js|25_순천여고_1학기_기말_고1_기출|7",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
+      "id": 7,
+      "content": "$x, y$가 실수일 때, 두 이차방정식 $x^2-ax+2b=0, x^2-bx+2a=0$이 오직 하나의 공통근을 갖고, 두 이차방정식의 근 중에서 공통근이 아닌 두 근의 차가 $2$일 때, 실수 $a, b$에 대하여 $a+2b$의 값은? (단, $a>b$) [4.9점]",
+      "choices": [
+        "$-4$",
+        "$-3$",
+        "$-2$",
+        "$-1$",
+        "$0$"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionIntervals": [
+          {
+            "left": -4,
+            "right": -4,
+            "leftClosed": true,
+            "rightClosed": true,
+            "_leftLabel": "a=0",
+            "_rightLabel": "a=0"
+          }
+        ],
+        "result": -4,
+        "exact": "공통근 α=−2, a=0,b=−2, a+2b=−4"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js|25_제일고_1학기_기말_고1_기출|8",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js",
+      "id": 8,
+      "content": "방정식 $x^3=1$의 한 허근을 $\\omega$라 하자. 자연수 $n$에 대하여 $f(n)$을 $f(n)=\\dfrac{1}{\\omega}+\\dfrac{1}{\\omega^2}+\\dfrac{1}{\\omega^3}+\\cdots+\\dfrac{1}{\\omega^n}$로 정의할 때, 보기 중 옳은 것만을 있는대로 고른 것은? [4.8점]\n<br>\n&lt;보기&gt;\nㄱ. $f(5)=-1$\n<br>\nㄴ. 자연수 $k$에 대하여 $f(6k)=0$이다.\n\nㄷ. $f(n)^2-f(n)=0$을 만족시키는 두 자리 자연수 $n$의 개수는 30이다.",
+      "choices": [
+        "ㄱ",
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄷ",
+        "ㄱ, ㄴ, ㄷ"
+      ],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "solutionInterval": [
+          -4,
+          6
+        ],
+        "leftClosed": false,
+        "rightClosed": false,
+        "leftLabel": "−4",
+        "rightLabel": "6",
+        "integerSolutions": [
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "count": 9,
+        "result": 9,
+        "exact": "−4<x<6, 정수합=9"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js|25_제일고_1학기_기말_고1_기출|9",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js",
+      "id": 9,
+      "content": "$x$에 대한 사차방정식 $x^4-8x^2+k=0$의 네 근 중 어느 두 근의 합은 2가 된다고 한다. 가장 큰 근과 가장 작은 근의 차가 $a+2\\sqrt{b}$일 때, 두 유리수 $a, b$에 대하여 $a+b$의 값은? (단, $k$는 실수) [4.8점]",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 1,
+          "b": -8,
+          "c": 4,
+          "domain": [
+            0,
+            8
+          ]
+        },
+        "vertex": [
+          4,
+          -12
+        ],
+        "result": 5,
+        "exact": "k=4, 네 근 ±(√3+1), ±(√3−1), a+b=5"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js|25_제일고_1학기_기말_고1_기출|22",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js",
+      "id": 22,
+      "content": "자연수 $n$에 대하여 방정식 $x^3+1=0$의 한 허근을 $\\omega$라 하고 $\\omega^n=a_n+b_ni$라 할 때,<br>\n$(a_1^2+a_2^2+a_3^2+\\cdots+a_n^2)$<br>\n$+(b_1^2+b_2^2+b_3^2+\\cdots+b_n^2)+(b_1+b_2+b_3+\\cdots+b_n)$<br>\n의 값이 정수가 되도록 하는 100 이하의 자연수 $n$의 개수를 구하시오. [6점]",
+      "choices": [],
+      "expectedVisualType": "number-line",
+      "expectedFacts": {
+        "result": 32,
+        "exact": "b_k 부분합 주기6, n≡0 또는5 (mod6), 100 이하 개수=32"
+      }
+    },
+    {
+      "questionUid": "archive/exams/original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js|25_효천고_1학기_기말_고1_기출|8",
+      "sourceJsPath": "archive/exams/original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js",
+      "id": 8,
+      "content": "삼차방정식 $x^3 + 1 = 0$의 한 허근을 $\\omega$라 할 때, $\\omega(\\omega-1)(\\bar{\\omega}-1) = a\\omega + b$를 만족하는 정수 $a, b$에 대하여 $a - b$의 값은? (단, $\\bar{\\omega}$는 $\\omega$의 켤레복소수이다.) [4점]",
+      "choices": [
+        "$-4$",
+        "$-2$",
+        "$1$",
+        "$3$",
+        "$5$"
+      ],
+      "expectedVisualType": "cartesian",
+      "expectedFacts": {
+        "function": {
+          "a": 0,
+          "b": 0,
+          "c": 1,
+          "domain": [
+            -1,
+            1
+          ]
+        },
+        "result": 1,
+        "exact": "(ω−1)(ω̄−1)=1, a=1,b=0, a−b=1"
+      }
+    }
+  ],
+  "note": "Fresh source-only facts for eight rows absent from the current source/id coverage ledger. This report is not a visual candidate batch and does not declare final PASS."
+}

@@ -1,4 +1,5 @@
 import { HASH_PATTERN, isObject, nonempty, objectSha } from './canonical.mjs';
+import { validateSolutionQuality } from './solution-quality.mjs';
 
 export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const REUSE_RECEIPT_VERSION = 'APMATH_EVIDENCE_REUSE_RECEIPT_v1';
@@ -123,7 +124,7 @@ export function validateTypedEvidence(evidence) {
     case 'SOURCE': hash('sourceTruthBundleSha'); text('fidelityRationale'); truth('sourceFidelityVerified'); break;
     case 'MATH_A1': text('independentAnswer'); text('independentDerivation'); truth('blindSolveFrozen'); truth('allChoicesChecked'); truth('answerUnique'); break;
     case 'MATH_A2': hash('a1EvidenceSha'); text('answerComparison'); truth('allChoicesChecked'); truth('answerUnique'); break;
-    case 'SOLUTION': text('solutionRationale'); checks(['mathematicalCorrectness', 'logicalCompleteness', 'studentUnderstandability']); break;
+    case 'SOLUTION': text('solutionRationale'); checks(['mathematicalCorrectness', 'logicalCompleteness', 'studentUnderstandability']); errors.push(...validateSolutionQuality(p.solutionQuality).errors); break;
     case 'METADATA': hash('metadataInputSha'); checks(['schema', 'uidBinding', 'curriculumBinding']); break;
     case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity']); break;
   }

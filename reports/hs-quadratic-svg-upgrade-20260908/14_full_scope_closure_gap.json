@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "HS_QUADRATIC_FULL_SCOPE_CLOSURE_GAP_V1",
+  "status": "BLOCKED_INCOMPLETE_NO_FINAL_PASS",
+  "scope": {
+    "targetCount": 430,
+    "targetExamCount": 59,
+    "targetSourceFileCount": 59,
+    "visualDecisionCounts": {
+      "NO_VISUAL": 51,
+      "KEEP_EXISTING": 0,
+      "REBUILD_EXISTING": 2,
+      "ADD_NEW_VISUAL": 377
+    }
+  },
+  "coverage": {
+    "solutionFreeze": {"covered": 5, "denominator": 430, "status": "INCOMPLETE"},
+    "independentA1BlindMath": {"covered": 5, "denominator": 430, "status": "INCOMPLETE"},
+    "V1SourceOnlyExpectedFact": {"covered": 5, "denominator": 430, "status": "INCOMPLETE"},
+    "candidateVisualGeneration": {"covered": 5, "denominator": 377, "status": "INCOMPLETE"},
+    "V2ArtifactOnlyObservedFact": {"covered": 5, "denominator": 377, "status": "INCOMPLETE"},
+    "V3Parity": {"covered": 5, "denominator": 377, "status": "INCOMPLETE"},
+    "renderCaptureAndReview": {"covered": 0, "denominator": "not safely executable in current environment", "status": "NOT_TESTED"},
+    "providerAttestedFinalAudit": {"covered": 0, "denominator": 1, "status": "NOT_EXECUTED"}
+  },
+  "residualFindings": [
+    {"code": "SOURCE_HOLD_CORRECTNESS_AFFECTING", "count": 1, "ref": "11_current_source_hold.json"},
+    {"code": "SOURCE_SOLUTION_DIRECTION_WORDING", "count": 2, "resolvedInCandidate": true, "ref": "03_solution_fix_plan.json"},
+    {"code": "MISSING_CANDIDATE_VISUAL_GENERATION", "count": 372, "status": "OPEN"},
+    {"code": "MISSING_CURRENT_PIPELINE_EVIDENCE", "count": 1, "status": "OPEN"},
+    {"code": "MISSING_REAL_RENDER_EVIDENCE", "count": 1, "status": "OPEN"}
+  ],
+  "softwareRegression": {"status": "PASS", "tests": 130, "failures": 0, "ref": "13_pipeline_core_regression.json"},
+  "productionMutation": {"status": "NONE", "protectedSourceAndProductionAssetsChanged": 0},
+  "finalPass": false
+}

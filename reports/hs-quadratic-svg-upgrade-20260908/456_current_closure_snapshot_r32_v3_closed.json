@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "HS_QUADRATIC_CURRENT_CLOSURE_SNAPSHOT_R32_V3_CLOSED",
+  "status": "R32_SPECIALIST_BATCH_V3_CLOSED_FULL_SCOPE_REMAINS_OPEN_NO_FINAL_PASS",
+  "productionAuthorized": false,
+  "branch": "codex/hs-quadratic-svg-upgrade",
+  "mainBaseline": "origin/main@c010c3ba9f8945b2d6f9b9440543f669efb1cc22",
+  "scope": {
+    "targetQuestionCount": 430,
+    "sourceFileCount": 59,
+    "examFileCount": 59
+  },
+  "sourceSolutionStatus": {
+    "sourceStaticIssueRows": 0,
+    "candidateStaticIssueRows": 0,
+    "sourceSolutionIndependentRecheckRows": 11,
+    "sourceCandidateParityErrors": 0,
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/365_current_closure_snapshot_r26_source_solution_repaired.json"
+  },
+  "visualDecisionDenominator": {
+    "NO_VISUAL": 51,
+    "KEEP_EXISTING": 0,
+    "REBUILD_EXISTING": 2,
+    "ADD_NEW_VISUAL": 377,
+    "candidateVisualTarget": 379
+  },
+  "r32Batch": {
+    "rows": 8,
+    "numberLineRows": 5,
+    "cartesianRows": 3,
+    "v1ExpectedFacts": "8/8",
+    "independentRecheck": "8/8",
+    "solutionFreeze": "8/8 candidate rows",
+    "candidateStatic": "8/8",
+    "v2ArtifactOnly": "8/8",
+    "v3Pass": "8/8",
+    "v3Fail": 0,
+    "localRender": "8/8",
+    "localRenderOverflow": 0,
+    "evidence": {
+      "v1": "reports/hs-quadratic-svg-upgrade-20260908/441_specialist_v1_expected_facts_r32.json",
+      "independentRecheck": "reports/hs-quadratic-svg-upgrade-20260908/447_independent_recheck_specialist_r32.json",
+      "visualManifest": "reports/hs-quadratic-svg-upgrade-20260908/442_specialist_candidate_visual_manifest_r32.json",
+      "static": "reports/hs-quadratic-svg-upgrade-20260908/444_specialist_candidate_visual_static_check_r32.json",
+      "candidateBank": "reports/hs-quadratic-svg-upgrade-20260908/443_specialist_candidate_bank_manifest_r32.json",
+      "bankValidation": "reports/hs-quadratic-svg-upgrade-20260908/446_specialist_candidate_bank_validation_r32.json",
+      "v2": "reports/hs-quadratic-svg-upgrade-20260908/445_specialist_v2_artifact_only_r32.json",
+      "v3": "reports/hs-quadratic-svg-upgrade-20260908/448_specialist_v3_parity_r32.json",
+      "solutionFreeze": "reports/hs-quadratic-svg-upgrade-20260908/449_specialist_solution_freeze_ledger_r32.json",
+      "render": "reports/hs-quadratic-svg-upgrade-20260908/455_specialist_local_render_review_r32.json"
+    }
+  },
+  "candidateVisualProgress": {
+    "priorUniqueCandidateVisuals": 291,
+    "r32BatchRows": 8,
+    "r32SupersededPriorCandidateRows": 0,
+    "currentUniqueCandidateVisuals": 299,
+    "remainingCandidateVisuals": 80,
+    "freshExpectedFactRowsThroughR32": 294,
+    "remainingFreshExpectedFactsUnderCurrentCounting": 136
+  },
+  "currentV2Preparation": {
+    "workBatchId": "hs-quadratic-r32d",
+    "runCount": 59,
+    "preparedQuestionCount": 430,
+    "errors": 0,
+    "machineEvidenceCount": 860,
+    "machineEvidenceValidationErrors": 0,
+    "preparation": "reports/hs-quadratic-svg-upgrade-20260908/453_current_v2_preparation_r32d.json",
+    "machineEvidence": "reports/hs-quadratic-svg-upgrade-20260908/451_machine_evidence_r32d.json",
+    "machineEvidenceValidation": "reports/hs-quadratic-svg-upgrade-20260908/452_machine_evidence_validation_r32d.json",
+    "wholeJobFreeze": "NOT_ATTEMPTED_MISSING_PROVIDER_RENDER_CAPTURE"
+  },
+  "registry": {
+    "candidateEntries": 430,
+    "identityMismatchCount": 15,
+    "authorityStatus": "PENDING_EXPLICIT_REGISTRY_AUTHORITY",
+    "evidence": "reports/hs-quadratic-svg-upgrade-20260908/61_source_exam_id_registry_candidate_r10.json"
+  },
+  "remainingGates": [
+    "fresh independent math A1/A2 and solution freeze for full 430 rows",
+    "fresh V1 expected facts for remaining 136 rows under current counting",
+    "artifact-only V2 and semantic V3 for remaining 80 candidate visual rows",
+    "provider-attested FINAL_AUDIT",
+    "actual current desktop/mobile capture and independent render-review for the full required scope",
+    "source registry identity authority for 15 mismatched exam titles",
+    "DB/question-index/production promotion authority"
+  ],
+  "note": "R32 closes 3 function/cartesian rows and 5 inequality/parameter number-line rows. Its candidate batch is closed at row level, but full-scope PASS, SEALED, provider-attested FINAL_AUDIT, and production promotion remain forbidden until every gate is current and independently evidenced."
+}
