@@ -530,3 +530,15 @@ candidate bank validation은 59 source bank·1295 row·full candidate visual 425
 r48 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r48a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
 
 r48 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 6개 target-scoped candidate visual, 10개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 current desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
+
+## r49 final target-visual closure and scoped source-repair update (2026-09-09)
+
+r49는 마지막 target-scoped 시각자료 미처리 6개를 처리했다. 24 여수고 1mid q20은 삼각형 넓이 3을 cartesian으로, 25 순천여고 1mid q19는 $x^2-4x+6$의 no-real-root 포물선을 cartesian으로, 26 매산여고 1mid q20은 $1\le a\le3$의 parameter 구간을 수직선으로, 26 매산여고 1mid q22는 $t=0(P=A)$ endpoint와 최댓값 9를 수직선으로, 26 팔마고 1mid q22는 함수 구조와 결과 25를 cartesian으로, 23 금당고 2mid q17은 $h(x)=f(x)-x$ 포물선·꼭짓점·결과 9를 cartesian으로 구성했다.
+
+source/solution correctness hold를 닫기 위해 3건을 최소 수정했다. 24 여수고 q20의 공란 solution을 좌표·넓이 유도 해설로 보강했고, 26 매산여고 q20의 one-line solution을 $a\in[1,3]$ 및 $M+m=10$ 계산으로 보강했다. 26 매산여고 q22는 `P\ne A,B` 조건을 제거해 $t=0$에서 최댓값 9가 달성되도록 content를 최소 수정하고, $[PQCR]=(36-t^2)/4$ 해설을 추가했다. answer choice는 이 3건에서 변경하지 않았다. source repair ledger와 candidate sync를 별도로 기록했다.
+
+source-only V1 6/6, 독립 검산 6/6 mismatch 0, candidate static 6/6, artifact-only V2 6/6, V3 6/6(FAIL 0), candidate solution freeze 6/6, local desktop/mobile render 6/6 및 overflow 0이다. candidate bank validation은 59 source bank·1295 row·full candidate visual 431건·candidate solution drift 0·asset 오류 0으로 끝났다. target-scoped coverage audit는 430 target row 중 visual-decision target `379/379`, visual 필요 누락 `0`, decisionMissing `0`이다. fresh expected fact 누적은 현재 counting 기준 426건, 잔여 4건이다. 최신 상태는 [r49 V3 closure snapshot](741_current_closure_snapshot_r49_v3_closed.json)이다.
+
+r49 current V2 preparation은 최종 scoped bank에 대해 새 `hs-quadratic-r49a` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다. production source/assets와 사용자 미추적 h2 작업물은 포함하지 않는다.
+
+target visual gate는 이제 닫혔지만, 전체 430문항 independent math/solution freeze 4건, provider-attested FINAL_AUDIT, 전체 scope의 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 아직 선언하지 않는다.
