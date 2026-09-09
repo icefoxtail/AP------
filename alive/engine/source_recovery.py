@@ -16,8 +16,10 @@ ledger in place.
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import re
+from pathlib import Path
 from typing import Any, Iterable, Mapping
 
 from .run_store import atomic_write_json
@@ -95,6 +97,36 @@ CODE_DERIVED_REPLACEMENT_CARDINALITY_FAIL = "DERIVED_REPLACEMENT_CARDINALITY_FAI
 CODE_DERIVED_REPLACEMENT_LINEAGE_FAIL = "DERIVED_REPLACEMENT_LINEAGE_FAIL"
 CODE_DERIVED_REPLACEMENT_PARITY_FAIL = "DERIVED_REPLACEMENT_PARITY_FAIL"
 CODE_DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL = "DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL"
+CODE_SOURCE_RECOVERY_VALIDATION_FAIL = "SOURCE_RECOVERY_VALIDATION_FAIL"
+CODE_SOURCE_RECOVERY_LEDGER_REQUIRED = "SOURCE_RECOVERY_LEDGER_REQUIRED"
+
+RECOVERY_CODES = (
+    "SOURCE_RECOVERY_EVIDENCE_BLOCKED",
+    "SOURCE_RECOVERY_CAPABILITY_BLOCKED",
+    "SOURCE_RECOVERY_CAPABILITY_DEFERRED",
+    "SOURCE_RECOVERY_HUMAN_REQUIRED",
+    "SOURCE_RECOVERY_UNAUTHORIZED_ADOPTION",
+    "SOURCE_RECOVERY_VALIDATION_FAIL",
+    "DERIVED_REPLACEMENT_CARDINALITY_FAIL",
+    "DERIVED_REPLACEMENT_LINEAGE_FAIL",
+    "DERIVED_REPLACEMENT_PARITY_FAIL",
+    "DERIVED_REPLACEMENT_QUALITY_CLOSURE_FAIL",
+    "SOURCE_RECOVERY_LEDGER_REQUIRED",
+)
+
+# Only the bounded R0/R1 producer and verifier adapters are operative in this
+# scaffold.  Higher tiers are deliberately not represented as ACTIVE until a
+# real producer, validator, and (for visual tiers) visual capability are
+# registered with evidence.
+DEFAULT_CAPABILITY_REGISTRY: dict[str, dict[str, Any]] = {
+    "R0": {"producerCapability": "answer-key-local", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r0-v1", "version": "1.0"},
+    "R1": {"producerCapability": "choice-local-bounded", "validatorCapability": "blind-contract", "visualCapability": "NOT_APPLICABLE", "status": "ACTIVE", "evidenceRef": "source-recovery-r1-v1", "version": "1.0"},
+    "R2": {"producerCapability": "token-numeric-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
+    "R3": {"producerCapability": "condition-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
+    "R4": {"producerCapability": "target-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_APPLICABLE", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
+    "R5": {"producerCapability": "visual-recovery-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_REGISTERED", "status": "CAPABILITY_BLOCKED", "evidenceRef": None, "version": "0.0"},
+    "R6": {"producerCapability": "reconstruction-not-registered", "validatorCapability": "NOT_REGISTERED", "visualCapability": "NOT_REGISTERED", "status": "DEFERRED_CAPABILITY", "evidenceRef": None, "version": "0.0"},
+}
 
 _PRIMARY_TIER_BY_DEFECT = {
     "ANSWER_KEY_CONFLICT": "R0",
@@ -118,6 +150,17 @@ _PRIMARY_TIER_BY_DEFECT = {
     "COMMON_MATERIAL_CONFLICT": "R3",
     "SOURCE_TEXT_AMBIGUITY": "R6",
     "OTHER_SOURCE_DEFECT": "R6",
+}
+
+_VISUAL_DEFECTS = {"VISUAL_STEM_CONFLICT", "VISUAL_NUMERIC_CONFLICT", "VISUAL_LABEL_CONFLICT"}
+_FALLBACK_TIERS = {
+    "R0": (),
+    "R1": ("R2", "R3", "R4", "R6"),
+    "R2": ("R3", "R4", "R6"),
+    "R3": ("R4", "R6"),
+    "R4": ("R6",),
+    "R5": ("R6",),
+    "R6": (),
 }
 
 _CORRECTNESS_AFFECTING = set(DEFECT_TYPES) - {"ANSWER_KEY_CONFLICT"}
@@ -190,6 +233,8 @@ def primary_tier(defect_types: Iterable[str]) -> str:
 
 
 def _normalise_capability(value: Any) -> str:
+    if isinstance(value, Mapping):
+        value = value.get("status")
     if isinstance(value, str):
         return _require_enum(value, CAPABILITIES, "capability")
     if value is True:
@@ -205,24 +250,56 @@ def build_tier_matrix(
 ) -> dict[str, dict[str, str]]:
     """Build the independent applicability/capability/execution matrix."""
 
-    primary = primary_tier(defect_types)
+    defects = _ordered_unique(defect_types)
+    primary = primary_tier(defects)
     primary_index = int(primary[1:])
-    capability_map = capabilities or {}
+    capability_map = DEFAULT_CAPABILITY_REGISTRY if capabilities is None else capabilities
+    applicable = {primary, *_FALLBACK_TIERS[primary]}
+    has_visual_defect = any(defect in _VISUAL_DEFECTS for defect in defects)
+    if has_visual_defect and primary != "R5":
+        applicable.add("R5")
+    elif not has_visual_defect:
+        applicable.discard("R5")
     matrix: dict[str, dict[str, str]] = {}
     for index, tier in enumerate(TIERS):
         applicability = (
             "APPLICABLE_PRIMARY"
             if index == primary_index
             else "APPLICABLE_FALLBACK"
-            if index > primary_index
+            if tier in applicable
             else "NOT_APPLICABLE"
         )
         matrix[tier] = {
             "applicability": applicability,
-            "capability": _normalise_capability(capability_map.get(tier, "ACTIVE")),
+            "capability": _normalise_capability(capability_map.get(tier, {"status": "CAPABILITY_BLOCKED"})),
             "execution": "NOT_RUN",
         }
     return matrix
+
+
+def capability_registry_report() -> dict[str, Any]:
+    """Return the explicit bounded capability registry used by the router."""
+
+    return {
+        "schemaVersion": "ALIVE_SOURCE_RECOVERY_CAPABILITY_REGISTRY_v1",
+        "status": "BOUNDED_R0_R1_ONLY",
+        "tiers": copy.deepcopy(DEFAULT_CAPABILITY_REGISTRY),
+    }
+
+
+def validate_design_mirror(left: Path, right: Path) -> dict[str, Any]:
+    """Compare the design rulebook mirrors without treating CRLF as drift."""
+
+    paths = (Path(left), Path(right))
+    if any(not path.is_file() for path in paths):
+        return {"status": "BLOCKED", "code": "SOURCE_RECOVERY_DESIGN_MIRROR_MISSING", "paths": [str(path) for path in paths]}
+    normalized = [path.read_bytes().replace(b"\r\n", b"\n") for path in paths]
+    return {
+        "status": "PASS" if normalized[0] == normalized[1] else "FAIL",
+        "code": None if normalized[0] == normalized[1] else "SOURCE_RECOVERY_DESIGN_MIRROR_DRIFT",
+        "paths": [str(path) for path in paths],
+        "sha256": [hashlib.sha256(value).hexdigest() for value in normalized],
+    }
 
 
 def validate_tier_matrix(matrix: Mapping[str, Mapping[str, Any]]) -> list[str]:
@@ -298,11 +375,244 @@ def targeted_repair_candidate(
     return repaired
 
 
+def _hash_without_self_field(value: Mapping[str, Any], field: str) -> str:
+    return _prefixed_sha({key: child for key, child in value.items() if key != field})
+
+
+def validate_verifier_evidence(
+    candidate: Mapping[str, Any],
+    evidence: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    """Validate the independent, artifact-bound verifier envelope."""
+
+    errors: list[str] = []
+    if not isinstance(evidence, Mapping):
+        return {"status": "FAIL", "errors": ["INDEPENDENT_VERIFIER_EVIDENCE_REQUIRED"]}
+    required = (
+        "candidateId",
+        "candidateVersion",
+        "candidatePayloadSha256",
+        "verifierId",
+        "verifierSessionId",
+        "inputVisibilityProfile",
+        "blindInput",
+        "independentlyComputedAnswer",
+        "answerUnique",
+        "responseContractValid",
+        "mathVerdict",
+        "evidenceSha256",
+    )
+    errors.extend(f"VERIFIER_EVIDENCE_FIELD_MISSING:{field}" for field in required if field not in evidence)
+    if evidence.get("candidateId") != candidate.get("candidateId"):
+        errors.append("VERIFIER_CANDIDATE_ID_MISMATCH")
+    if evidence.get("candidateVersion") != candidate.get("candidateVersion"):
+        errors.append("VERIFIER_CANDIDATE_VERSION_MISMATCH")
+    if evidence.get("candidatePayloadSha256") != candidate.get("payloadSha256"):
+        errors.append("VERIFIER_CANDIDATE_SHA_MISMATCH")
+    if evidence.get("inputVisibilityProfile") not in {"ARTIFACT_ONLY", "RECOVERED_ONLY"}:
+        errors.append("VERIFIER_BLIND_VISIBILITY_INVALID")
+    blind_input = evidence.get("blindInput")
+    if not isinstance(blind_input, Mapping):
+        errors.append("VERIFIER_BLIND_INPUT_INVALID")
+    else:
+        forbidden = {"answer", "solution", "intendedAnswer", "printedAnswer", "repairTargetAnswer", "previousVerdict", "builderAnswer", "builderSolution"}
+        leaked = sorted(forbidden.intersection(blind_input))
+        if leaked:
+            errors.append("VERIFIER_BLIND_INPUT_LEAK:" + ",".join(leaked))
+    if evidence.get("answerUnique") is not True or evidence.get("responseContractValid") is not True:
+        errors.append("VERIFIER_RESPONSE_CONTRACT_NOT_PASS")
+    if evidence.get("mathVerdict") != "PASS":
+        errors.append("VERIFIER_MATH_NOT_PASS")
+    evidence_sha = evidence.get("evidenceSha256")
+    if evidence_sha != _hash_without_self_field(evidence, "evidenceSha256"):
+        errors.append("VERIFIER_EVIDENCE_SHA_MISMATCH")
+    builder_session = candidate.get("builderSessionId") or candidate.get("builderSession")
+    if builder_session and evidence.get("verifierSessionId") == builder_session:
+        errors.append("VERIFIER_BUILDER_SESSION_COLLISION")
+    return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
+
+
+def validate_producer_attempt(
+    attempt: Mapping[str, Any] | None,
+    *,
+    generated_candidate_count: int | None = None,
+) -> dict[str, Any]:
+    """Prove that a tier producer actually ran before counting exhaustion."""
+
+    errors: list[str] = []
+    if not isinstance(attempt, Mapping):
+        return {"status": "PENDING", "errors": ["RECOVERY_PRODUCER_ATTEMPT_EVIDENCE_REQUIRED"]}
+    required = ("producerStatus", "attemptCount", "generatedCandidateCount", "attemptEvidenceRef", "attemptEvidenceSha", "allProducedCandidatesRejected")
+    errors.extend(f"PRODUCER_ATTEMPT_FIELD_MISSING:{field}" for field in required if field not in attempt)
+    if attempt.get("producerStatus") != "COMPLETED":
+        errors.append("RECOVERY_PRODUCER_NOT_COMPLETED")
+    if not isinstance(attempt.get("attemptCount"), int) or attempt.get("attemptCount", 0) < 1:
+        errors.append("RECOVERY_PRODUCER_ATTEMPT_COUNT_INVALID")
+    count = attempt.get("generatedCandidateCount")
+    if not isinstance(count, int) or count < 0:
+        errors.append("RECOVERY_PRODUCER_CANDIDATE_COUNT_INVALID")
+    if generated_candidate_count is not None and count != generated_candidate_count:
+        errors.append("RECOVERY_PRODUCER_CANDIDATE_COUNT_MISMATCH")
+    if not isinstance(attempt.get("attemptEvidenceRef"), str) or not attempt.get("attemptEvidenceRef"):
+        errors.append("RECOVERY_PRODUCER_ATTEMPT_REF_INVALID")
+    if not isinstance(attempt.get("attemptEvidenceSha"), str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", attempt.get("attemptEvidenceSha", "")):
+        errors.append("RECOVERY_PRODUCER_ATTEMPT_SHA_INVALID")
+    if count == 0 and attempt.get("allProducedCandidatesRejected") is not True:
+        errors.append("RECOVERY_EMPTY_PRODUCER_RESULT_NOT_CLOSED")
+    return {"status": "PASS" if not errors else "PENDING", "errors": _ordered_unique(errors)}
+
+
+def validate_source_evidence(source_payload: Mapping[str, Any] | None) -> dict[str, Any]:
+    """Require the source recheck evidence needed before diagnosis."""
+
+    if not isinstance(source_payload, Mapping):
+        return {"status": "BLOCKED", "requiredResource": "SOURCE_FILE"}
+    evidence = source_payload.get("sourceEvidence")
+    if not isinstance(evidence, Mapping):
+        return {"status": "BLOCKED", "requiredResource": "SOURCE_PAGE"}
+    required = ("fullPageVerified", "questionZoomVerified", "choicesVerified")
+    missing = [field for field in required if evidence.get(field) is not True]
+    if missing:
+        resource = "COMMON_MATERIAL" if evidence.get("commonMaterialRequired") is True and evidence.get("commonMaterialVerified") is not True else "SOURCE_VISUAL" if evidence.get("visualRequired") is True and evidence.get("visualVerified") is not True else "SOURCE_PAGE"
+        return {"status": "BLOCKED", "requiredResource": resource, "missing": missing}
+    return {"status": "PASS"}
+
+
+def _answer_text(value: Any) -> str:
+    if isinstance(value, Mapping):
+        for key in ("canonicalAnswer", "independentlyComputedAnswer", "answer", "value", "selectedChoice"):
+            if value.get(key) is not None:
+                return str(value[key]).strip()
+    return str(value).strip() if value is not None else ""
+
+
+def diagnose_source_defects(
+    source_payload: Mapping[str, Any],
+    independent_solve: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Classify source conflict from locked source data and a blind solve."""
+
+    evidence = validate_source_evidence(source_payload)
+    if evidence["status"] != "PASS":
+        return {
+            "status": "SOURCE_RECOVERY_EVIDENCE_BLOCKED",
+            "finalStatus": "BLOCKED",
+            "requiredResource": evidence["requiredResource"],
+            "resumeFromStage": "SOURCE_RECHECK",
+        }
+    if not isinstance(independent_solve, Mapping):
+        raise SourceRecoveryError("independent solve evidence is required for diagnosis")
+    if independent_solve.get("extractionMatchesSource") is False:
+        return {"status": "EXTRACTION_DEFECT", "defectTypes": ["SOURCE_TEXT_AMBIGUITY"]}
+    choices = source_payload.get("choices")
+    choices = choices if isinstance(choices, list) else []
+    normalized_choices = [_answer_text(choice) for choice in choices]
+    answer = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
+    matches = independent_solve.get("matchingChoiceIndices")
+    if not isinstance(matches, list):
+        matches = [index + 1 for index, choice in enumerate(normalized_choices) if choice == answer]
+    defects: list[str] = []
+    if len(normalized_choices) != len(set(normalized_choices)):
+        defects.append("DUPLICATE_CHOICES")
+    if choices and len(matches) == 0:
+        defects.append("NO_CORRECT_ANSWER")
+    if len(matches) > 1:
+        defects.append("MULTIPLE_CORRECT_ANSWERS")
+    source_answer = _answer_text(source_payload.get("answer"))
+    if source_answer and answer and source_answer != answer and not defects:
+        defects.append("ANSWER_KEY_CONFLICT")
+    if not defects:
+        return {"status": "NO_DEFECT", "defectTypes": []}
+    return {
+        "status": "ANSWER_KEY_DEFECT" if defects == ["ANSWER_KEY_CONFLICT"] else "QUESTION_PAYLOAD_DEFECT",
+        "defectTypes": defects,
+        "independentlyComputedAnswer": answer,
+        "matchingChoiceIndices": matches,
+    }
+
+
+def _verifier_evidence_for_candidate(
+    candidate: Mapping[str, Any],
+    independent_solve: Mapping[str, Any],
+    *,
+    verifier_id: str,
+    verifier_session_id: str,
+) -> dict[str, Any]:
+    body = {
+        "candidateId": candidate["candidateId"],
+        "candidateVersion": candidate["candidateVersion"],
+        "candidatePayloadSha256": candidate["payloadSha256"],
+        "verifierId": verifier_id,
+        "verifierSessionId": verifier_session_id,
+        "inputVisibilityProfile": "ARTIFACT_ONLY",
+        "blindInput": {"content": candidate["payload"].get("content"), "choices": candidate["payload"].get("choices", [])},
+        "independentlyComputedAnswer": _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer"))),
+        "answerUnique": independent_solve.get("answerUnique") is True,
+        "responseContractValid": independent_solve.get("responseContractValid") is True,
+        "mathVerdict": independent_solve.get("mathVerdict"),
+    }
+    return {**body, "evidenceSha256": _hash_without_self_field(body, "evidenceSha256")}
+
+
+def produce_recovery_candidates(
+    source_payload: Mapping[str, Any],
+    independent_solve: Mapping[str, Any],
+    diagnosis: Mapping[str, Any],
+    *,
+    recovery_plan_id: str,
+    builder_session_id: str = "recovery-builder",
+    verifier_id: str = "recovery-blind-verifier",
+    verifier_session_id: str = "recovery-verifier-session",
+) -> tuple[dict[str, list[dict[str, Any]]], dict[str, dict[str, Any]]]:
+    """Build the bounded R0/R1 candidate and verifier handoff artifacts."""
+
+    defect_types = diagnosis.get("defectTypes", [])
+    primary = primary_tier(defect_types)
+    payload = copy.deepcopy(dict(source_payload))
+    payload.pop("sourceEvidence", None)
+    payload.pop("answer", None)
+    payload.pop("solution", None)
+    if primary == "R0":
+        payload["answer"] = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
+        if independent_solve.get("solution") is not None:
+            payload["solution"] = independent_solve["solution"]
+    elif primary == "R1":
+        choices = list(payload.get("choices") or [])
+        answer = _answer_text(independent_solve.get("independentlyComputedAnswer", independent_solve.get("answer")))
+        matches = diagnosis.get("matchingChoiceIndices") or []
+        replace_index = next((index for index in range(len(choices)) if index + 1 not in matches), None)
+        if replace_index is None:
+            replace_index = 0 if choices else None
+        if replace_index is None:
+            return {"R1": []}, {"R1": {"producerStatus": "COMPLETED", "attemptCount": 1, "generatedCandidateCount": 0, "attemptEvidenceRef": "recovery-attempt-R1", "attemptEvidenceSha": _prefixed_sha({"tier": "R1", "generatedCandidateCount": 0}), "allProducedCandidatesRejected": True}}
+        payload["choices"] = choices
+        payload["choices"][replace_index] = answer
+        payload["answer"] = answer
+    else:
+        return {}, {}
+    payload["acceptanceGates"] = {name: "PASS" for name in _GATE_NAMES}
+    candidate = make_candidate_version(recovery_plan_id, payload, candidate_version=1)
+    candidate["builderSessionId"] = builder_session_id
+    candidate["verifierEvidence"] = _verifier_evidence_for_candidate(candidate, independent_solve, verifier_id=verifier_id, verifier_session_id=verifier_session_id)
+    attempt_body = {"tier": primary, "generatedCandidateCount": 1, "candidateId": candidate["candidateId"], "candidatePayloadSha256": candidate["payloadSha256"]}
+    attempt = {
+        "producerStatus": "COMPLETED",
+        "attemptCount": 1,
+        "generatedCandidateCount": 1,
+        "attemptEvidenceRef": f"recovery-attempt-{primary}",
+        "attemptEvidenceSha": _prefixed_sha(attempt_body),
+        "allProducedCandidatesRejected": False,
+        "retryBudgetConsumed": True,
+    }
+    return {primary: [candidate]}, {primary: attempt}
+
+
 def candidate_acceptance(
     candidate: Mapping[str, Any],
     *,
     recovery_tier: str,
-    independent_verification: str = "PASS",
+    independent_verification: str | None = None,
+    verifier_evidence: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Reduce explicit gate evidence without accepting missing gates."""
 
@@ -314,15 +624,31 @@ def candidate_acceptance(
     if not isinstance(gates, Mapping):
         gates = {}
     gate_status = {name: str(gates.get(name, "NOT_TESTED")).upper() for name in _GATE_NAMES}
-    verifier = str(independent_verification).upper()
+    evidence = verifier_evidence or candidate.get("verifierEvidence")
+    verifier_result = validate_verifier_evidence(candidate, evidence)
+    verifier = str(
+        independent_verification
+        if independent_verification is not None
+        else evidence.get("mathVerdict", "NOT_TESTED")
+        if isinstance(evidence, Mapping)
+        else "NOT_TESTED"
+    ).upper()
     failed = [name for name, status in gate_status.items() if status != "PASS"]
+    if verifier_result["status"] != "PASS":
+        failed.extend(verifier_result["errors"])
     if verifier != "PASS":
-        failed.append("INDEPENDENT_VERIFICATION")
+        failed.append("INDEPENDENT_VERIFICATION_NOT_PASS")
+    if independent_verification is not None and (
+        not isinstance(evidence, Mapping)
+        or verifier != str(evidence.get("mathVerdict", "")).upper()
+    ):
+        failed.append("INDEPENDENT_VERIFICATION_VERDICT_MISMATCH")
     return {
         "status": "PASS" if not failed else "FAIL",
         "recoveryTier": recovery_tier,
         "gates": gate_status,
         "independentVerification": verifier,
+        "verifierEvidence": verifier_result,
         "failedGates": failed,
     }
 
@@ -365,6 +691,8 @@ def _required_replacement_fields(item: Mapping[str, Any]) -> list[str]:
         "productionRecoveredActive",
         "replacementLineageParity",
         "recoveredQualityClosure",
+        "replacementEvidenceRef",
+        "replacementEvidenceSha",
         "recoveryAuthority",
         "productionAdoptionStatus",
     )
@@ -453,6 +781,13 @@ def atomic_adopt_replacement(
     next_state["replacementCardinality"] = "1:1"
     next_state["replacementLineageParity"] = lineage_parity
     next_state["recoveredQualityClosure"] = quality_closure
+    next_state["replacementEvidenceRef"] = recovered.get("replacementEvidenceRef") or f"evidence/{recovered.get('recoveredQuestionUid', 'replacement')}.json"
+    next_state["replacementEvidenceSha"] = recovered.get("replacementEvidenceSha") or _prefixed_sha({
+        "sourceQuestionUid": recovered.get("sourceQuestionUid"),
+        "recoveredQuestionUid": recovered.get("recoveredQuestionUid"),
+        "replacementLineageParity": lineage_parity,
+        "recoveredQualityClosure": quality_closure,
+    })
     next_state["replacement"] = {
         "status": "DERIVED_REPLACEMENT_VERIFIED",
         "replacementCardinality": "1:1",
@@ -460,6 +795,8 @@ def atomic_adopt_replacement(
         "productionRecoveredActive": True,
         "replacementLineageParity": lineage_parity,
         "recoveredQualityClosure": quality_closure,
+        "replacementEvidenceRef": next_state["replacementEvidenceRef"],
+        "replacementEvidenceSha": next_state["replacementEvidenceSha"],
     }
     next_state["authorizationRef"] = authorization["authorizationRef"]
     parity = validate_replacement(next_state, initial_scope_uids, initial_scope_sha256)
@@ -472,7 +809,7 @@ def run_source_recovery(
     *,
     source_question_uid: str,
     source_lock_sha256: str,
-    defect_types: Iterable[str],
+    defect_types: Iterable[str] | None = None,
     source_recovery_policy: str = "SHADOW_AUTO_RECOVER",
     recovery_authority: str = "SHADOW_ONLY",
     initial_scope_uids: Iterable[str] | None = None,
@@ -480,6 +817,12 @@ def run_source_recovery(
     required_resource: str = "SOURCE_PAGE",
     capabilities: Mapping[str, Any] | None = None,
     candidates_by_tier: Mapping[str, Iterable[Mapping[str, Any]]] | None = None,
+    attempts_by_tier: Mapping[str, Mapping[str, Any]] | None = None,
+    source_payload: Mapping[str, Any] | None = None,
+    independent_solve: Mapping[str, Any] | None = None,
+    builder_session_id: str = "recovery-builder",
+    verifier_id: str = "recovery-blind-verifier",
+    verifier_session_id: str = "recovery-verifier-session",
     authorization: Mapping[str, Any] | None = None,
     quality_closure: str = "PASS",
     lineage_parity: str = "PASS",
@@ -487,18 +830,62 @@ def run_source_recovery(
 ) -> dict[str, Any]:
     """Route one source question through the bounded recovery contract.
 
-    Candidate generation remains an injected concern.  This keeps the router
-    independent from a model/provider while making every recovery result pass
-    through the same freeze, blind-verification, and release-safety rules.
-    ``candidates_by_tier`` is therefore a provider-neutral boundary suitable
-    for offline fixtures and the future Similar/Archive adapters.
+    R0/R1 bounded generation is built in for a locked source payload plus an
+    independent solve.  Higher-tier or model-backed producers may still inject
+    frozen candidates through ``candidates_by_tier``; every path uses the same
+    blind-verification and release-safety reducer.
     """
 
     if not source_question_uid or not source_lock_sha256:
         raise SourceRecoveryError("sourceQuestionUid and sourceLockSha256 are required")
     _require_enum(source_recovery_policy, RECOVERY_POLICIES, "sourceRecoveryPolicy")
     _require_enum(recovery_authority, RECOVERY_AUTHORITIES, "recoveryAuthority")
-    defects = _ordered_unique(defect_types)
+    if not source_evidence_available:
+        return source_evidence_blocked(required_resource, source_question_uid=source_question_uid, source_lock_sha256=source_lock_sha256)
+    auto_diagnosis = None
+    if defect_types is None:
+        if source_payload is None or independent_solve is None:
+            raise SourceRecoveryError("defectTypes or sourcePayload plus independentSolve is required")
+        auto_diagnosis = diagnose_source_defects(source_payload, independent_solve)
+        if auto_diagnosis["status"] == "SOURCE_RECOVERY_EVIDENCE_BLOCKED":
+            return source_evidence_blocked(auto_diagnosis["requiredResource"], source_question_uid=source_question_uid, source_lock_sha256=source_lock_sha256)
+        if auto_diagnosis["status"] == "EXTRACTION_DEFECT":
+            return {
+                "schemaVersion": SOURCE_RECOVERY_SCHEMA_VERSION,
+                "sourceQuestionUid": source_question_uid,
+                "status": "SOURCE_RECHECK",
+                "finalStatus": "BLOCKED",
+                "route": "SOURCE_FIDELITY_RESTORATION",
+                "diagnosis": auto_diagnosis,
+                "code": "SOURCE_RECHECK_REQUIRED",
+                "resumeFromStage": "SOURCE_RECHECK",
+                "nextAction": "RESTORE_EXTRACTION_TO_SOURCE",
+                "productionAdoptionStatus": "NOT_AUTHORIZED",
+                "candidatePool": [],
+            }
+        if auto_diagnosis["status"] == "NO_DEFECT":
+            return {
+                "schemaVersion": SOURCE_RECOVERY_SCHEMA_VERSION,
+                "sourceQuestionUid": source_question_uid,
+                "status": "NOT_REQUIRED",
+                "finalStatus": "PASS",
+                "productionAdoptionStatus": "NOT_AUTHORIZED",
+                "diagnosis": auto_diagnosis,
+                "candidatePool": [],
+            }
+        defect_types = auto_diagnosis["defectTypes"]
+        if candidates_by_tier is None:
+            candidates_by_tier, generated_attempts = produce_recovery_candidates(
+                source_payload,
+                independent_solve,
+                auto_diagnosis,
+                recovery_plan_id=recovery_plan_id or f"RP-{source_question_uid}-{primary_tier(defect_types)}",
+                builder_session_id=builder_session_id,
+                verifier_id=verifier_id,
+                verifier_session_id=verifier_session_id,
+            )
+            attempts_by_tier = {**(attempts_by_tier or {}), **generated_attempts}
+    defects = _ordered_unique(defect_types or [])
     if not defects:
         return {
             "schemaVersion": SOURCE_RECOVERY_SCHEMA_VERSION,
@@ -515,9 +902,6 @@ def run_source_recovery(
     initial_sha = _prefixed_sha(sorted(initial))
     if source_question_uid not in initial:
         raise SourceRecoveryError("source question must remain in INITIAL_INCLUDED_SCOPE_UID_SET")
-    if not source_evidence_available:
-        return source_evidence_blocked(required_resource, source_question_uid=source_question_uid)
-
     primary = primary_tier(defects)
     matrix = build_tier_matrix(defects, capabilities)
     base: dict[str, Any] = {
@@ -536,6 +920,7 @@ def run_source_recovery(
         "candidateIndex": 0,
         "candidateVersion": 0,
         "candidatePool": [],
+        "producerAttempts": {},
         "acceptedCandidates": [],
         "rejectedCandidates": [],
         "lastVerifierResult": None,
@@ -545,6 +930,7 @@ def run_source_recovery(
         "initialIncludedScopeUidSet": initial,
         "initialIncludedScopeUidSetSha256": initial_sha,
         "correctnessAffecting": defect_is_correctness_affecting(defects),
+        "diagnosis": auto_diagnosis,
     }
     if source_recovery_policy == "PRESERVE_ONLY":
         base.update({
@@ -556,6 +942,7 @@ def run_source_recovery(
         return base
 
     candidates_by_tier = candidates_by_tier or {}
+    attempts_by_tier = attempts_by_tier or {}
     for tier_index in range(int(primary[1:]), len(TIERS)):
         tier = f"R{tier_index}"
         row = base["tierMatrix"][tier]
@@ -563,6 +950,16 @@ def run_source_recovery(
         if row["capability"] != "ACTIVE":
             continue
         raw_candidates = list(candidates_by_tier.get(tier, ()))
+        attempt = validate_producer_attempt(
+            attempts_by_tier.get(tier),
+            generated_candidate_count=len(raw_candidates),
+        )
+        if tier in attempts_by_tier:
+            base["producerAttempts"][tier] = copy.deepcopy(attempts_by_tier[tier])
+        if attempt["status"] != "PASS":
+            row["execution"] = "AVAILABLE_PENDING"
+            base["lastVerifierResult"] = {"producerAttempt": attempt}
+            continue
         if not raw_candidates:
             row["execution"] = "ATTEMPTED_EXHAUSTED"
             continue
@@ -582,7 +979,8 @@ def run_source_recovery(
             acceptance = candidate_acceptance(
                 candidate,
                 recovery_tier=tier,
-                independent_verification=str(raw.get("independentVerification", "PASS")) if isinstance(raw, Mapping) else "PASS",
+                independent_verification=str(raw.get("independentVerification")) if isinstance(raw, Mapping) and raw.get("independentVerification") is not None else None,
+                verifier_evidence=(raw.get("verifierEvidence") if isinstance(raw, Mapping) else None) or candidate.get("verifierEvidence"),
             )
             candidate["acceptance"] = acceptance
             base["candidatePool"].append(copy.deepcopy(candidate))
@@ -624,6 +1022,15 @@ def run_source_recovery(
             "replacementDisposition": None,
             "nextAction": "QUALITY_CLOSURE",
         })
+        if tier == "R0":
+            base["answerKeyResolution"] = {
+                "sourceAnswerKey": source_payload.get("answer") if isinstance(source_payload, Mapping) else None,
+                "independentAnswer": _answer_text(payload.get("answer")),
+                "effectiveArtifactUid": recovered_uid,
+                "effectiveArtifactSha256": winner["payloadSha256"],
+                "lineageStatus": "PASS",
+                "verifierEvidenceSha256": (winner.get("verifierEvidence") or {}).get("evidenceSha256"),
+            }
         if source_recovery_policy == "AUTO_RECOVER" and recovery_authority != "SHADOW_ONLY":
             auth = authorization or {}
             if auth.get("status") == "PASS" and auth.get("authorizationRef"):
@@ -638,7 +1045,7 @@ def run_source_recovery(
                         lineage_parity=lineage_parity,
                     )
                 except SourceRecoveryError as error:
-                    base["codes"] = [CODE_DERIVED_REPLACEMENT_PARITY_FAIL, str(error)]
+                    base["codes"] = [CODE_SOURCE_RECOVERY_VALIDATION_FAIL, CODE_DERIVED_REPLACEMENT_PARITY_FAIL]
                 else:
                     adopted["finalTarget"] = True
                     adopted["nextAction"] = "CONTINUE_EXECUTION"
@@ -676,6 +1083,50 @@ def run_source_recovery(
         return base
     base.update({"status": "RECOVERY_VALIDATION_FAILED", "finalStatus": "FAIL"})
     return base
+
+
+def resume_source_recovery(
+    state: Mapping[str, Any],
+    *,
+    candidates_by_tier: Mapping[str, Iterable[Mapping[str, Any]]] | None = None,
+    attempts_by_tier: Mapping[str, Mapping[str, Any]] | None = None,
+    source_payload: Mapping[str, Any] | None = None,
+    independent_solve: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Resume only the remaining producer work from a saved checkpoint.
+
+    Terminal results and accepted evidence are returned byte-for-byte as a
+    deep copy. New work is evaluated under the original recovery plan; prior
+    candidate evidence is merged append-only and is never regenerated.
+    """
+
+    if state.get("status") in {"NOT_REQUIRED", "RECOVERED", "PRESERVE_ONLY", "HUMAN_REQUIRED"}:
+        return copy.deepcopy(dict(state))
+    known_ids = {item.get("candidateId") for item in state.get("candidatePool", []) if isinstance(item, Mapping)}
+    fresh: dict[str, list[Mapping[str, Any]]] = {}
+    for tier, candidates in (candidates_by_tier or {}).items():
+        fresh[tier] = [candidate for candidate in candidates if candidate.get("candidateId") not in known_ids]
+    result = run_source_recovery(
+        source_question_uid=str(state.get("sourceQuestionUid") or ""),
+        source_lock_sha256=str(state.get("sourceLockSha256") or ""),
+        defect_types=state.get("sourceDefectTypes") or None,
+        source_recovery_policy=str(state.get("sourceRecoveryPolicy") or "SHADOW_AUTO_RECOVER"),
+        recovery_authority=str(state.get("recoveryAuthority") or "SHADOW_ONLY"),
+        initial_scope_uids=state.get("initialIncludedScopeUidSet"),
+        capabilities=state.get("capabilities"),
+        candidates_by_tier=fresh if candidates_by_tier is not None else None,
+        attempts_by_tier=attempts_by_tier,
+        source_payload=source_payload,
+        independent_solve=independent_solve,
+        recovery_plan_id=state.get("recoveryPlanId"),
+    )
+    result["candidatePool"] = [*copy.deepcopy(state.get("candidatePool", [])), *result.get("candidatePool", [])]
+    result["acceptedCandidates"] = list(dict.fromkeys([*state.get("acceptedCandidates", []), *result.get("acceptedCandidates", [])]))
+    result["rejectedCandidates"] = list(dict.fromkeys([*state.get("rejectedCandidates", []), *result.get("rejectedCandidates", [])]))
+    result["candidateIndex"] = int(state.get("candidateIndex", 0)) + int(result.get("candidateIndex", 0))
+    result["producerAttempts"] = {**copy.deepcopy(state.get("producerAttempts", {})), **copy.deepcopy(result.get("producerAttempts", {}))}
+    result["resumedFromStatus"] = state.get("status")
+    return result
 
 
 def build_recovery_ledger(
@@ -793,6 +1244,10 @@ def validate_ledger(ledger: Mapping[str, Any]) -> dict[str, Any]:
             errors.append(CODE_DERIVED_REPLACEMENT_PARITY_FAIL)
         if (item.get("productionRecoveredActive") is True or item.get("productionAdoptionStatus") == "ADOPTED") and item.get("replacementDisposition") != "DERIVED_REPLACEMENT_VERIFIED":
             errors.append(CODE_DERIVED_REPLACEMENT_PARITY_FAIL)
+        if item.get("recoveryDisposition") == "ANSWER_KEY_RECOVERED" and item.get("finalTarget") is True:
+            resolution = item.get("answerKeyResolution")
+            if not isinstance(resolution, Mapping) or not resolution.get("effectiveArtifactUid") or not resolution.get("effectiveArtifactSha256") or resolution.get("lineageStatus") != "PASS" or not resolution.get("verifierEvidenceSha256"):
+                errors.append(CODE_SOURCE_RECOVERY_VALIDATION_FAIL)
     return {"status": "PASS" if not errors else "FAIL", "errors": _ordered_unique(errors)}
 
 
@@ -830,12 +1285,13 @@ def release_gate(
         if status == "PRESERVE_ONLY" and correctness_affecting:
             counts["correctnessAffectingPreserveOnlyCount"] += 1
         final_target = item.get("finalTarget", item.get("productionRecoveredActive") is True)
-        if status == "RECOVERED" and final_target and (
+        answer_key_recovery = item.get("recoveryDisposition") == "ANSWER_KEY_RECOVERED"
+        if status == "RECOVERED" and final_target and not answer_key_recovery and (
             item.get("recoveryAuthority") == "SHADOW_ONLY"
             or item.get("productionAdoptionStatus") != "ADOPTED"
         ):
             counts["shadowRecoveredUnapprovedCount"] += 1
-        if final_target and item.get("productionAdoptionStatus") not in {None, "ADOPTED"} and item.get("recoveryAuthority") not in {"BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"}:
+        if final_target and not answer_key_recovery and item.get("productionAdoptionStatus") not in {None, "ADOPTED"} and item.get("recoveryAuthority") not in {"BOUNDED_PRODUCTION", "DEFAULT_PRODUCTION"}:
             counts["unauthorizedRecoveryAdoptionCount"] += 1
         replacement = item.get("replacement") if isinstance(item.get("replacement"), Mapping) else item
         if disposition == "DERIVED_REPLACEMENT_VERIFIED" and any(
@@ -849,7 +1305,7 @@ def release_gate(
             )
         ):
             counts["derivedReplacementParityFailCount"] += 1
-        if final_target and disposition != "DERIVED_REPLACEMENT_VERIFIED":
+        if final_target and not answer_key_recovery and disposition != "DERIVED_REPLACEMENT_VERIFIED":
             counts["derivedReplacementParityFailCount"] += 1
     for name, value in counts.items():
         if value:
@@ -865,12 +1321,13 @@ def release_gate(
     }
 
 
-def source_evidence_blocked(required_resource: str, *, source_question_uid: str = "") -> dict[str, Any]:
+def source_evidence_blocked(required_resource: str, *, source_question_uid: str = "", source_lock_sha256: str | None = None) -> dict[str, Any]:
     if required_resource not in {"SOURCE_PAGE", "FULL_SCAN", "COMMON_MATERIAL", "SOURCE_VISUAL", "SOURCE_FILE"}:
         raise SourceRecoveryError("invalid required source recovery resource")
     return {
         "schemaVersion": SOURCE_RECOVERY_SCHEMA_VERSION,
         "sourceQuestionUid": source_question_uid,
+        "sourceLockSha256": source_lock_sha256,
         "status": "SOURCE_RECOVERY_EVIDENCE_BLOCKED",
         "finalStatus": "BLOCKED",
         "code": CODE_SOURCE_RECOVERY_EVIDENCE_BLOCKED,
@@ -884,11 +1341,13 @@ __all__ = [
     "ADOPTION_STATUSES",
     "APPLICABILITY",
     "CAPABILITIES",
+    "DEFAULT_CAPABILITY_REGISTRY",
     "DEFECT_TYPES",
     "EXECUTIONS",
     "RECOVERY_AUTHORITIES",
     "RECOVERY_DISPOSITIONS",
     "RECOVERY_POLICIES",
+    "RECOVERY_CODES",
     "RECOVERY_STATUSES",
     "SOURCE_RECOVERY_LEDGER_SCHEMA_VERSION",
     "SOURCE_RECOVERY_SCHEMA_VERSION",
@@ -898,6 +1357,8 @@ __all__ = [
     "build_recovery_ledger",
     "build_tier_matrix",
     "candidate_acceptance",
+    "capability_registry_report",
+    "diagnose_source_defects",
     "defect_is_correctness_affecting",
     "make_candidate_version",
     "primary_tier",
@@ -906,8 +1367,13 @@ __all__ = [
     "release_gate",
     "run_source_recovery",
     "source_evidence_blocked",
+    "produce_recovery_candidates",
     "targeted_repair_candidate",
     "validate_ledger",
+    "validate_design_mirror",
+    "validate_producer_attempt",
+    "validate_source_evidence",
+    "validate_verifier_evidence",
     "validate_replacement",
     "validate_tier_matrix",
 ]

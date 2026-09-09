@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import copy
+import json
 import unittest
+from pathlib import Path
 
 from alive.engine.source_recovery import (
     SourceRecoveryError,
@@ -9,18 +11,23 @@ from alive.engine.source_recovery import (
     build_recovery_ledger,
     build_tier_matrix,
     candidate_acceptance,
+    capability_registry_report,
     make_candidate_version,
     rank_candidates,
     release_gate,
+    RECOVERY_CODES,
     persist_source_recovery,
+    resume_source_recovery,
     run_source_recovery,
     source_evidence_blocked,
     targeted_repair_candidate,
     validate_ledger,
     validate_replacement,
+    validate_design_mirror,
 )
 from alive.engine.run_store import RunStore
 from alive.engine.alive_cli import build_parser
+from alive.engine.source_question import json_sha256
 
 
 GATES = {
@@ -39,11 +46,73 @@ def candidate_payload(**extra: object) -> dict[str, object]:
     return {"acceptanceGates": dict(GATES), **extra}
 
 
+def verified_candidate(payload: dict[str, object], *, builder_session: str = "builder") -> dict[str, object]:
+    candidate = make_candidate_version("RP-Q1-R1", payload)
+    candidate["builderSessionId"] = builder_session
+    evidence = {
+        "candidateId": candidate["candidateId"],
+        "candidateVersion": candidate["candidateVersion"],
+        "candidatePayloadSha256": candidate["payloadSha256"],
+        "verifierId": "blind-verifier",
+        "verifierSessionId": "verifier-session",
+        "inputVisibilityProfile": "ARTIFACT_ONLY",
+        "blindInput": {"content": payload.get("content", ""), "choices": payload.get("choices", [])},
+        "independentlyComputedAnswer": "1",
+        "answerUnique": True,
+        "responseContractValid": True,
+        "mathVerdict": "PASS",
+    }
+    evidence["evidenceSha256"] = "sha256:" + json_sha256(evidence)
+    candidate["verifierEvidence"] = evidence
+    return candidate
+
+
+def producer_attempt(tier: str, generated: int) -> dict[str, object]:
+    return {
+        "producerStatus": "COMPLETED",
+        "attemptCount": 1,
+        "generatedCandidateCount": generated,
+        "attemptEvidenceRef": f"attempt-{tier}",
+        "attemptEvidenceSha": "sha256:" + "a" * 64,
+        "allProducedCandidatesRejected": generated == 0,
+    }
+
+
 class SourceRecoveryTests(unittest.TestCase):
     def test_cli_exposes_provider_neutral_recovery_route(self) -> None:
         args = build_parser().parse_args(["source-recovery-run", "--input", "request.json", "--json"])
         self.assertEqual("source-recovery-run", args.command)
         self.assertTrue(args.json)
+
+    def test_capability_registry_does_not_claim_unimplemented_tiers_active(self) -> None:
+        registry = capability_registry_report()
+        self.assertEqual("BOUNDED_R0_R1_ONLY", registry["status"])
+        self.assertEqual("ACTIVE", registry["tiers"]["R0"]["status"])
+        self.assertEqual("ACTIVE", registry["tiers"]["R1"]["status"])
+        self.assertNotEqual("ACTIVE", registry["tiers"]["R5"]["status"])
+        self.assertNotEqual("ACTIVE", registry["tiers"]["R6"]["status"])
+
+    def test_sidecar_code_registry_covers_every_emitted_recovery_code(self) -> None:
+        schema_doc = (Path(__file__).resolve().parents[2] / "03_SCHEMA/ALIVE_VALIDATION_SIDECAR_SCHEMA_v1.0.md").read_text(encoding="utf-8")
+        for code in RECOVERY_CODES:
+            with self.subTest(code=code):
+                self.assertIn(f"`{code}`", schema_doc)
+
+    def test_design_mirrors_and_historical_corpus_are_available(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        mirror = validate_design_mirror(
+            root / "05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md",
+            root.parent / "docs/rules/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md",
+        )
+        self.assertEqual("PASS", mirror["status"])
+        corpus = json.loads((root / "engine/fixtures_source_recovery.json").read_text(encoding="utf-8"))
+        self.assertEqual("OFFLINE_REGRESSION_ONLY", corpus["status"])
+        self.assertGreaterEqual(len(corpus["cases"]), 4)
+        self.assertTrue({"ANSWER_KEY_DEFECT", "NO_CORRECT_ANSWER", "MULTIPLE_CORRECT_ANSWERS", "VISUAL_STEM_CONFLICT"}.issubset({d for case in corpus["cases"] for d in case["expectedDiagnosis"]}))
+        for case in corpus["cases"]:
+            evidence_ref = case.get("sourceEvidenceRef")
+            if isinstance(evidence_ref, str) and not evidence_ref.startswith("synthetic:"):
+                self.assertTrue((root.parent / evidence_ref).is_file(), evidence_ref)
 
     def test_tier_matrix_keeps_three_axes_independent(self) -> None:
         matrix = build_tier_matrix(
@@ -55,11 +124,48 @@ class SourceRecoveryTests(unittest.TestCase):
         self.assertEqual("NOT_RUN", matrix["R4"]["execution"])
         self.assertEqual("DEFERRED_CAPABILITY", matrix["R5"]["capability"])
 
+    def test_applicability_is_diagnosis_specific(self) -> None:
+        choice_matrix = build_tier_matrix(["NO_CORRECT_ANSWER"])
+        self.assertEqual("NOT_APPLICABLE", choice_matrix["R5"]["applicability"])
+        visual_matrix = build_tier_matrix(["VISUAL_STEM_CONFLICT"])
+        self.assertEqual("APPLICABLE_PRIMARY", visual_matrix["R5"]["applicability"])
+        answer_matrix = build_tier_matrix(["ANSWER_KEY_CONFLICT"])
+        self.assertEqual("NOT_APPLICABLE", answer_matrix["R1"]["applicability"])
+
     def test_evidence_blocked_is_resumable_not_human_required(self) -> None:
         result = source_evidence_blocked("SOURCE_VISUAL", source_question_uid="Q17")
         self.assertEqual("SOURCE_RECOVERY_EVIDENCE_BLOCKED", result["status"])
         self.assertEqual("BLOCKED", result["finalStatus"])
         self.assertEqual("SOURCE_RECHECK", result["resumeFromStage"])
+
+    def test_extraction_defect_is_routed_to_fidelity_restoration(self) -> None:
+        result = run_source_recovery(
+            source_question_uid="Q17",
+            source_lock_sha256="b" * 64,
+            source_payload={"sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True}},
+            independent_solve={"extractionMatchesSource": False},
+        )
+        self.assertEqual("SOURCE_FIDELITY_RESTORATION", result["route"])
+        self.assertNotIn("recoveredQuestionUid", result)
+
+    def test_evidence_block_checkpoint_resumes_with_new_source_material(self) -> None:
+        blocked = run_source_recovery(
+            source_question_uid="Q17",
+            source_lock_sha256="b" * 64,
+            source_evidence_available=False,
+        )
+        resumed = resume_source_recovery(
+            blocked,
+            source_payload={
+                "content": "계산 결과를 고르시오.",
+                "choices": ["3", "6", "9", "10", "15"],
+                "answer": "①",
+                "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+            },
+            independent_solve={"independentlyComputedAnswer": "12", "answerUnique": True, "responseContractValid": True, "mathVerdict": "PASS"},
+        )
+        self.assertEqual("RECOVERED", resumed["status"])
+        self.assertEqual("SOURCE_RECOVERY_EVIDENCE_BLOCKED", blocked["status"])
 
     def test_preserve_only_blocks_release_but_execution_can_continue(self) -> None:
         result = run_source_recovery(
@@ -77,11 +183,16 @@ class SourceRecoveryTests(unittest.TestCase):
             source_question_uid="Q1",
             source_lock_sha256="a" * 64,
             defect_types=["ANSWER_KEY_CONFLICT"],
-            candidates_by_tier={"R0": [{"payload": candidate_payload(correctedAnswer="③")} ]},
+            candidates_by_tier={"R0": [verified_candidate(candidate_payload(correctedAnswer="③"))] },
+            attempts_by_tier={"R0": producer_attempt("R0", 1)},
         )
         self.assertEqual("R0", result["recoveryTier"])
         self.assertEqual("ANSWER_KEY_RECOVERED", result["recoveryDisposition"])
         self.assertIsNone(result["replacementDisposition"])
+        result["finalTarget"] = True
+        self.assertEqual("PASS", release_gate(build_recovery_ledger(["Q1"], [result]))["status"])
+        result["answerKeyResolution"].pop("verifierEvidenceSha256")
+        self.assertEqual("BLOCKED", release_gate(build_recovery_ledger(["Q1"], [result]))["status"])
 
     def test_source_defect_categories_route_to_expected_tiers(self) -> None:
         expected = {
@@ -102,16 +213,67 @@ class SourceRecoveryTests(unittest.TestCase):
                 )
 
     def test_candidate_acceptance_is_fail_closed_and_independent(self) -> None:
-        candidate = make_candidate_version("RP-Q1-R1", candidate_payload())
+        candidate = verified_candidate(candidate_payload())
         accepted = candidate_acceptance(candidate, recovery_tier="R1", independent_verification="PASS")
         self.assertEqual("PASS", accepted["status"])
         rejected = candidate_acceptance(
-            make_candidate_version("RP-Q1-R1", {**candidate_payload(), "x": 1}),
+            verified_candidate({**candidate_payload(), "x": 1}),
             recovery_tier="R1",
             independent_verification="FAIL",
         )
         self.assertEqual("FAIL", rejected["status"])
-        self.assertIn("INDEPENDENT_VERIFICATION", rejected["failedGates"])
+        self.assertIn("INDEPENDENT_VERIFICATION_VERDICT_MISMATCH", rejected["failedGates"])
+
+    def test_missing_or_mismatched_verifier_evidence_cannot_claim_pass(self) -> None:
+        candidate = make_candidate_version("RP-Q1-R1", candidate_payload())
+        missing = candidate_acceptance(candidate, recovery_tier="R1")
+        self.assertEqual("FAIL", missing["status"])
+        self.assertIn("INDEPENDENT_VERIFIER_EVIDENCE_REQUIRED", missing["failedGates"])
+        forged = verified_candidate(candidate_payload())
+        forged["verifierEvidence"]["candidatePayloadSha256"] = "sha256:" + "0" * 64
+        mismatched = candidate_acceptance(forged, recovery_tier="R1")
+        self.assertEqual("FAIL", mismatched["status"])
+        self.assertIn("VERIFIER_CANDIDATE_SHA_MISMATCH", mismatched["failedGates"])
+
+    def test_automatic_diagnosis_producer_and_blind_verifier_close_r1_shadow_lane(self) -> None:
+        result = run_source_recovery(
+            source_question_uid="Q17",
+            source_lock_sha256="b" * 64,
+            source_payload={
+                "content": "다음 계산 결과를 고르시오.",
+                "choices": ["3", "6", "9", "10", "15"],
+                "answer": "②",
+                "sourceEvidence": {
+                    "fullPageVerified": True,
+                    "questionZoomVerified": True,
+                    "choicesVerified": True,
+                },
+            },
+            independent_solve={
+                "independentlyComputedAnswer": "12",
+                "answerUnique": True,
+                "responseContractValid": True,
+                "mathVerdict": "PASS",
+            },
+        )
+        self.assertEqual("NO_CORRECT_ANSWER", result["diagnosis"]["defectTypes"][0])
+        self.assertEqual("RECOVERED", result["status"])
+        self.assertEqual("R1", result["recoveryTier"])
+        self.assertEqual("NOT_AUTHORIZED", result["productionAdoptionStatus"])
+        self.assertEqual("PASS", result["candidatePool"][0]["acceptance"]["verifierEvidence"]["status"])
+        result["finalTarget"] = True
+        shadow_gate = release_gate(build_recovery_ledger(["Q17"], [result]))
+        self.assertEqual("BLOCKED", shadow_gate["status"])
+
+    def test_empty_candidate_without_attempt_stays_pending(self) -> None:
+        result = run_source_recovery(
+            source_question_uid="Q17",
+            source_lock_sha256="b" * 64,
+            defect_types=["NO_CORRECT_ANSWER"],
+            candidates_by_tier={},
+        )
+        self.assertNotEqual("HUMAN_REQUIRED", result["status"])
+        self.assertEqual("AVAILABLE_PENDING", result["tierMatrix"]["R1"]["execution"])
 
     def test_targeted_repair_creates_new_immutable_version(self) -> None:
         original = make_candidate_version("RP-Q1-R3", candidate_payload(value=1))
@@ -140,7 +302,8 @@ class SourceRecoveryTests(unittest.TestCase):
             recovery_authority="BOUNDED_PRODUCTION",
             initial_scope_uids=["Q1", "Q17", "Q18"],
             authorization={"status": "PASS", "authorizationRef": "auth/rp-q17.json"},
-            candidates_by_tier={"R1": [{"payload": candidate_payload(effectiveArtifactUid="Q17-R")} ]},
+            candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))] },
+            attempts_by_tier={"R1": producer_attempt("R1", 1)},
         )
         self.assertEqual("ADOPTED", recovered["productionAdoptionStatus"])
         self.assertEqual("DERIVED_REPLACEMENT_VERIFIED", recovered["replacementDisposition"])
@@ -157,7 +320,8 @@ class SourceRecoveryTests(unittest.TestCase):
             source_lock_sha256="b" * 64,
             defect_types=["NO_CORRECT_ANSWER"],
             source_recovery_policy="SHADOW_AUTO_RECOVER",
-            candidates_by_tier={"R1": [{"payload": candidate_payload(effectiveArtifactUid="Q17-R")} ]},
+            candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))] },
+            attempts_by_tier={"R1": producer_attempt("R1", 1)},
         )
         before = copy.deepcopy(recovered)
         recovered["productionAdoptionStatus"] = "AUTHORIZED"
@@ -182,6 +346,8 @@ class SourceRecoveryTests(unittest.TestCase):
             "productionRecoveredActive": True,
             "replacementLineageParity": "PASS",
             "recoveredQualityClosure": "PASS",
+            "replacementEvidenceRef": "evidence/q17-replacement.json",
+            "replacementEvidenceSha": "sha256:" + "a" * 64,
             "recoveryAuthority": "BOUNDED_PRODUCTION",
             "productionAdoptionStatus": "ADOPTED",
         }
@@ -204,7 +370,8 @@ class SourceRecoveryTests(unittest.TestCase):
             defect_types=["DUPLICATE_CHOICES"],
             source_recovery_policy="SHADOW_AUTO_RECOVER",
             recovery_authority="SHADOW_ONLY",
-            candidates_by_tier={"R1": [{"payload": candidate_payload(effectiveArtifactUid="Q17-R")} ]},
+            candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))] },
+            attempts_by_tier={"R1": producer_attempt("R1", 1)},
         )
         item["finalTarget"] = True
         gate = release_gate(build_recovery_ledger(["Q17"], [item]))
@@ -226,6 +393,8 @@ class SourceRecoveryTests(unittest.TestCase):
             source_question_uid="Q17",
             source_lock_sha256="b" * 64,
             defect_types=["NO_CORRECT_ANSWER"],
+            capabilities={tier: "ACTIVE" for tier in ("R1", "R2", "R3", "R4", "R6")},
+            attempts_by_tier={tier: producer_attempt(tier, 0) for tier in ("R1", "R2", "R3", "R4", "R6")},
             candidates_by_tier={},
         )
         self.assertEqual("HUMAN_REQUIRED", result["status"])
@@ -251,7 +420,8 @@ class SourceRecoveryTests(unittest.TestCase):
                 source_question_uid="Q17",
                 source_lock_sha256="b" * 64,
                 defect_types=["NO_CORRECT_ANSWER"],
-                candidates_by_tier={"R1": [{"payload": candidate_payload(effectiveArtifactUid="Q17-R")} ]},
+                candidates_by_tier={"R1": [verified_candidate(candidate_payload(effectiveArtifactUid="Q17-R"))] },
+                attempts_by_tier={"R1": producer_attempt("R1", 1)},
             )
             first = persist_source_recovery(store, "run-1", record)
             second = persist_source_recovery(store, "run-1", record)
