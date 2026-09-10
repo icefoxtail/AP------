@@ -32,7 +32,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/도형추출.md | 54520 bytes | sha256 292c193bdfe4544fe5cf2ebca779aaa0894374d452da9dd35b91fb8f85182fb6
 - 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 65827 bytes | sha256 e136ca000b5e16fa0bd493cf7067c1e219683bfecbe4daa7e487f020b87bac3b
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
-- 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 96494 bytes | sha256 f8de9d89b1048cb225c7d50fdee5e6c767c493bf38cf095d686abd2a3f8ac36f
+- 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 105170 bytes | sha256 6a57ebc03f2211be32de230f55dae646552b2d0e003dae0e2e1007b2961a2407
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2
 
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 8614 bytes | sha256 bb68fbc0267b7d3b36123a0cb202c2bbbe5844ffd69c5aaf9ed08e0584244fb8
