@@ -584,7 +584,7 @@ window.questionBank = [
     "standardUnit": "함수",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "함수",

@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "직선",
