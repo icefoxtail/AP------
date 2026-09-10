@@ -1,0 +1,21 @@
+All shell commands ran with workdir C:\Users\USER\Desktop\AP-------gold2-job-b.
+
+node tools/skills/verify-skills.mjs : exit 0, PASS
+rulePreflight(process.cwd()) from archive/tools/pipeline-core/rulepack.mjs : PASS
+npm --prefix archive/tools/past-exam-pipeline run check : exit 0
+Get-Command soffice,libreoffice,hwp5html,hwp5odt,hwp5txt : no command found on PATH
+Standard C:\Program Files and C:\Program Files (x86) LibreOffice/OpenOffice soffice paths : absent
+Bundled native-executables.json : heif-convert, JxrDecApp, pdfinfo, pdftoppm; no HWP renderer
+python -c "import importlib.util; ..." : olefile=True, fitz=True, win32com=False, hwp5=True
+python -m hwp5.hwp5html --help / python -m hwp5.hwp5odt --help : no entry execution; inspected module main function and used it explicitly below
+python -c "from hwp5.hwp5html import main; main()" --output <JOB-B>/source/pyhwp-html <JOB-B>/source/original.hwp : exit 0
+python -c "from hwp5.hwp5odt import main; main()" --output <JOB-B>/source/pyhwp.odt <JOB-B>/source/original.hwp : exit 0
+python -X utf8 <JOB-B>/tools/diagnose-pyhwp.py : exit 0, 190 EqEdit source objects, 0 HTML/ODT math elements and 0 ODT embedded objects
+convert-source.ps1 : Hangul Open remained pending, process cleanup produced 0x800706BE, exit 1
+convert-source-with-module.ps1 long path : RegisterModule=False; Open pending, process cleanup produced 0x800706BE, exit 1
+convert-source-with-module.ps1 short path : RegisterModule=False; Open pending, process cleanup produced 0x800706BE, exit 1
+node archive/tools/pipeline-core/cli.mjs work-batch-init --spec <JOB-B>/work-batch-spec.json : exit 0; initialized exact JOB-B state
+node archive/tools/past-exam-pipeline/calibration.mjs --check --manifest <JOB-B>/target-manifest.pending.json : exit 1; BUILDER_START_BLOCKED:BUILDER_START_BLOCKED:REFERENCE_SAMPLE_LOCK_REQUIRED
+node archive/tools/pipeline-core/cli.mjs work-batch-status --work-batch-id past-exam-v3-gold2-20260910-job-b-hanyeong-2023 : exit 0; PRODUCTION(initial execution state), no freeze/launch
+
+git status --short --ignored : reviewed before selective force-add; only exact JOB-B paths selected.

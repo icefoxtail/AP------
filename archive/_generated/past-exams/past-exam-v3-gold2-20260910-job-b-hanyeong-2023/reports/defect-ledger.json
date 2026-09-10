@@ -1,0 +1,27 @@
+{
+  "workBatchId": "past-exam-v3-gold2-20260910-job-b-hanyeong-2023",
+  "runId": "run-gold2-job-b-hanyeong-2023-01",
+  "status": "HOLD",
+  "questionDenominator": null,
+  "sourceMathDefects": "NOT_TESTED",
+  "defects": [
+    {
+      "id": "JOB-B-ENV-001",
+      "type": "SOURCE_PAGE_RENDER_CAPABILITY_BLOCKED",
+      "stage": "SOURCE_INVENTORY_FREEZE",
+      "status": "OPEN",
+      "cause": "Original available only as HWP. Hangul Open did not complete. Official module registration returned false in both long and short JOB-B-local paths. pyhwp dropped original equation objects.",
+      "sourceEqEditCount": 190,
+      "htmlMathElementCount": 0,
+      "odtMathElementCount": 0,
+      "odtEmbeddedObjectCount": 0,
+      "contract": "V3 skill S1~S3 permits HOLD for inability to inspect source pixels; calibration requires bound PDF/full-page inputs; source fidelity and inventory must not be inferred.",
+      "repairAttempted": "Three local Hangul conversion attempts plus pyhwp HTML/ODT derivation and installed/bundled converter availability checks.",
+      "repairResult": "No faithful full-page source output",
+      "resumeCondition": "Obtain faithful PDF/full-page render from this exact HWP, preserving original HWP hash and conversion provenance; then finish calibration freeze before source inventory."
+    }
+  ],
+  "auditDefects": [],
+  "finalAuditExecuted": false,
+  "targetedRecheckCount": 0
+}

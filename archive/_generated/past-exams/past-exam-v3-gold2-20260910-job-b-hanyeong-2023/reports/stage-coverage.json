@@ -1,0 +1,154 @@
+{
+  "workBatchId": "past-exam-v3-gold2-20260910-job-b-hanyeong-2023",
+  "builderId": "builder-gold2-job-b-hanyeong-20260910-main-01",
+  "builderSessionId": "builder-session-gold2-job-b-hanyeong-20260910-main-01",
+  "runIds": [
+    "run-gold2-job-b-hanyeong-2023-01"
+  ],
+  "exam": "2023 한영고 고1 2학기 기말",
+  "startSha": "3531349d31cc8e17ea17c7e1f34ed0ce5745c9aa",
+  "branch": "codex/past-exam-v3-gold2-independent-20260910-job-b",
+  "createdAt": "2026-09-10T03:32:34.871Z",
+  "outcome": "HOLD",
+  "canonicalProductionOutcome": "NOT_PROMOTED",
+  "denominator": null,
+  "denominatorStatus": "UNKNOWN_NOT_ZERO",
+  "pipelineStateTargetCountMeaning": "An initialized work-batch reports targetCount=0 until a run is prepared/frozen; this is not the source exam question count.",
+  "stages": [
+    {
+      "stage": "RULE_PREFLIGHT",
+      "status": "PARTIAL",
+      "reason": "Five required entry/contract files read; current manifest raw-byte verification and skill verification PASS. Downstream-only operational documents have not all been fully read because builder start remains blocked."
+    },
+    {
+      "stage": "CANONICAL_PRODUCTION_SAMPLE_CALIBRATION",
+      "status": "PARTIAL",
+      "reason": "Two complete origin/main production JS files read, 44 per-question observations preserved. No semantic/render PASS asserted."
+    },
+    {
+      "stage": "PRODUCTION_QUALITY_PROFILE_FREEZE",
+      "status": "BLOCKED",
+      "reason": "Anchored profile draft exists; canonical REFERENCE_SAMPLE_LOCK is not PASS because full-page target input and complete calibration gate are unavailable."
+    },
+    {
+      "stage": "TARGET_BASELINE_REVIEW",
+      "status": "ABSENT",
+      "reason": "Exact target production JS absent; no target solution/answer read."
+    },
+    {
+      "stage": "SOURCE_INVENTORY_FREEZE",
+      "status": "BLOCKED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "FULL_PAGE_EXACT_EXTRACTION",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "SOURCE_FIDELITY_FREEZE",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "BUILDER_INDEPENDENT_SOLVE",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "SOLUTION_AND_CLASSIFICATION_BUILD",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "ALL_QUESTION_VISUAL_TRIAGE",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "EXPECTED_FACT_FREEZE",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "NUMERIC_VISUAL_BUILD",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "STATIC_AND_RENDER_CAPTURE",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "FINAL_AUDIT_SEALED_U1_U2_U3",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "TARGETED_REPAIR",
+      "status": "NOT_EXECUTED",
+      "reason": "No faithful original PDF/full-page images; original HWP equations are lost in pyhwp derivatives and Hangul automation Open did not finish."
+    },
+    {
+      "stage": "TARGETED_RECHECK_MAX_ONCE",
+      "status": "NOT_EXECUTED",
+      "reason": "No FINAL_AUDIT or defect-bound canonical recheck scope exists; allowance unused."
+    },
+    {
+      "stage": "PROMOTION",
+      "status": "NOT_EXECUTED",
+      "reason": "No complete source, candidate, independent review or closure authority; production write prohibited."
+    },
+    {
+      "stage": "FINAL_CLOSURE",
+      "status": "NOT_EXECUTED",
+      "reason": "No complete source, candidate, independent review or closure authority; production write prohibited."
+    }
+  ],
+  "renderCases": [
+    {
+      "renderCase": "exam/desktop",
+      "status": "NOT_TESTED",
+      "reason": "No source-derived candidate exists."
+    },
+    {
+      "renderCase": "exam/mobile",
+      "status": "NOT_TESTED",
+      "reason": "No source-derived candidate exists."
+    },
+    {
+      "renderCase": "solution/desktop",
+      "status": "NOT_TESTED",
+      "reason": "No source-derived candidate exists."
+    },
+    {
+      "renderCase": "solution/mobile",
+      "status": "NOT_TESTED",
+      "reason": "No source-derived candidate exists."
+    },
+    {
+      "renderCase": "answer/desktop",
+      "status": "NOT_TESTED",
+      "reason": "No source-derived candidate exists."
+    },
+    {
+      "renderCase": "answer/mobile",
+      "status": "NOT_TESTED",
+      "reason": "No source-derived candidate exists."
+    }
+  ],
+  "providerPreflight": "NOT_EXECUTED_NO_FROZEN_TARGETS",
+  "finalAuditCount": 0,
+  "targetedRecheckCount": 0,
+  "independentAgentLaunchCount": 0,
+  "expensiveAgentLaunchCount": 0,
+  "retryLaunchCount": 0,
+  "secondAuditorLaunchCount": 0,
+  "recursiveSubagentLaunchCount": 0,
+  "usedTokens": null,
+  "dbUpdate": "NOT_EXECUTED_NO_PROMOTION",
+  "indexUpdate": "NOT_EXECUTED_NO_PROMOTION",
+  "strictNewAudit": "NOT_EXECUTED_NO_NEW_PRODUCTION_JS",
+  "portablePackageStatus": "NOT_APPLICABLE_NO_DELIVERABLE_PACKAGE"
+}
