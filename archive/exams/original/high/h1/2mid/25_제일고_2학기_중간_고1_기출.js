@@ -350,7 +350,11 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 삼각형 $ABC$의 무게중심이 원점이라는 조건으로 $B+C$의 좌표합을 구한다.\n조건 정리: $A+B+C=(0,0)$이므로 $B+C=(-2,-4)$이다.\n풀이 방향: 삼각형 $OBC$의 세 꼭짓점 좌표를 평균낸다.\n정석 풀이: 삼각형 $OBC$의 무게중심은 $\\left(\\dfrac{0+B_x+C_x}{3},\\dfrac{0+B_y+C_y}{3}\\right)=\\left(-\\dfrac23,-\\dfrac43\\right)$이다. 따라서 $a+b=-\\dfrac23-\\dfrac43=-2$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 두 삼각형의 무게중심 조건을 x좌표와 y좌표로 각각 나누어 계산한다.\n조건 정리: $A=(2,4)$이고 삼각형 $ABC$의 무게중심은 원점 $O=(0,0)$이다.\n풀이 방향: $B=(x_B,y_B)$, $C=(x_C,y_C)$라 두고 무게중심의 좌표식을 세운다.\n정석 풀이: 삼각형 $ABC$의 x좌표 평균이 0이므로\n$\\dfrac{2+x_B+x_C}{3}=0$, 즉 $x_B+x_C=-2$이다.\n또 y좌표 평균이 0이므로\n$\\dfrac{4+y_B+y_C}{3}=0$, 즉 $y_B+y_C=-4$이다.\n따라서 삼각형 $OBC$의 무게중심은\n$\\left(\\dfrac{0+x_B+x_C}{3},\\dfrac{0+y_B+y_C}{3}\\right)=\\left(-\\dfrac23,-\\dfrac43\\right)$이다.\n그러므로 $a+b=-\\dfrac23-\\dfrac43=-2$이고, 정답은 ②이다.",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "A(2,4)와 원점 O, 두 삼각형의 무게중심 좌표식을 비교한 해설 도형",
+    "solutionImageCaption": "ABC의 x·y좌표 평균이 0이라는 조건에서 OBC의 x·y좌표 평균을 각각 확인한다.",
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
