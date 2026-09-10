@@ -17,7 +17,7 @@ The two independent workers were initially launched as `gpt-6-astra` with `high`
 ## JOB-A — 2020 매산고 고1 2학기 기말
 
 - Branch: `codex/past-exam-v3-gold2-independent-20260910-job-a`
-- Commit: `0ec3dea2d`
+- Commits: `0ec3dea2d`, `c7ed7b75f`, `f64f56641`
 - Exam ID: `20_매산고_2학기_기말_고1_기출`
 - Work batch: `past-exam-v3-gold2-20260910-job-a-maesan-2020`
 - Builder: `builder-gold2-job-a-maesan-20260910-main`
@@ -45,7 +45,7 @@ Stage status:
 | TARGETED_REPAIR / TARGETED_RECHECK | Not executed; no terminal audit defect list |
 | Real browser render closure | Not completed as a final three-mode PASS |
 | Promotion / DB / index / strict-new audit | Not executed; no production write |
-| Final outcome | `NOT_PROMOTED / INCOMPLETE_HOLD` |
+| Final outcome | `NOT_PROMOTED / HOLD` (`BUILDER_START_BLOCKED:CALIBRATION_MAIN_STALE`) |
 
 Fresh source findings:
 
@@ -54,7 +54,7 @@ Fresh source findings:
 - q15: independent count `216`; no printed option equals 216.
 - q19: the displayed quadrant condition is internally ambiguous under inclusive/exclusive reading; builder recorded the interpretation rather than rewriting source.
 
-Repair/recheck: none. The existing artifacts were committed without coordinator edits to candidate/solution content. The worker stopped before producing terminal closure/commit, so the coordinator committed the already-generated JOB-A evidence set mechanically; this commit is not a quality PASS or promotion receipt.
+Repair/recheck: `TARGETED_REPAIR` and `TARGETED_RECHECK` were `NOT_APPLICABLE`; no provider reservation was created. Core-v2 preparation was blocked because the frozen calibration lock used START_SHA while the moving `origin/main` had advanced. The worker's final report, final-audit status, render status, source-defect ledger, and local-static/generation diagnostics are preserved. No candidate/solution content was edited by the coordinator; the coordinator only collected the worker's immutable commits.
 
 ## JOB-B — 2023 한영고 고1 2학기 기말
 
@@ -86,8 +86,7 @@ Actual blocker: `SOURCE_PAGE_RENDER_CAPABILITY_BLOCKED`. Hangul COM open did not
 
 ## Aggregate outcome
 
-- JOB-A: `INCOMPLETE_HOLD / NOT_PROMOTED`; source and builder-side evidence preserved, final audit/promotion not closed.
+- JOB-A: `HOLD / NOT_PROMOTED`; source and builder-side evidence preserved; core-v2 prepare, FINAL_AUDIT, browser render closure, promotion, DB/index and strict-new audit were not executed because of `CALIBRATION_MAIN_STALE`.
 - JOB-B: `HOLD / NOT_PROMOTED`; source-render capability blocker, no downstream execution.
 - Production mutation: **none**. No production exam JS, DB, question index, taxonomy/master, validator, pipeline-core, or canonical rules were modified.
 - Pinned final coordinator HEAD is recorded after the two independent evidence commits; it must be pushed as the GOLD branch only, never merged to `main`.
-
