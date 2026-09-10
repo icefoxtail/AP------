@@ -157,21 +157,24 @@ function collectFreeze(root, state, runRefs) {
     const machineEvidence = (run.evidence || []).map(ref => load(root, ref)).filter(e => MACHINE_AXES.includes(e.axis));
     for (const [uid, axes] of Object.entries(shas)) for (const axis of ['STATIC','METADATA'].filter(a => axes[a])) {
       const matches = machineEvidence.filter(e => e.questionUid === uid && e.axis === axis);
-      check(matches.length === 1 && matches[0].axisInputSha === axes[axis] && !validateMachineEvidence(matches[0], run).length && !validateTypedEvidence(matches[0]).length, 'WHOLE_JOB_MACHINE_CHECK_REQUIRED');
+      check(matches.length === 1 && matches[0].axisInputSha === axes[axis] && !validateMachineEvidence(matches[0], run, { diagnostic: true }).length && !validateTypedEvidence(matches[0], { diagnostic: true }).length, 'WHOLE_JOB_MACHINE_CHECK_REQUIRED');
+      if (axis === 'STATIC') check(['jsLoad', 'hashes', 'assetBinding', 'fileParity'].every(key => matches[0].payload.checks[key] === 'PASS'), 'MACHINE_EXECUTION_BLOCKED');
     }
     const captureRefs = (run.evidence || []).filter(ref => load(root, ref).axis === 'RENDER_CAPTURE');
     const captures = captureRefs.map(ref => load(root, ref));
     for (const c of captures) check(c.mode === 'MACHINE_CURRENT' && c.auditorPrincipalType === 'MACHINE_COLLECTOR' && c.inputSha === run.inputSha && c.revision === run.revision && c.runId === run.runId && c.status === 'PASS', 'CURRENT_MACHINE_CAPTURE_REQUIRED');
     const witnesses = captures.flatMap(c => c.payload.itemWitnesses || []);
     const needsRender = Object.values(shas).some(row => row.RENDER_REVIEW);
-    if (needsRender) for (const q of run.questions) check(['exam', 'solution', 'answer'].every(mode => ['desktop', 'mobile'].every(viewport => witnesses.some(w => w.questionUid === q.questionUid && w.mode === mode && w.viewportProfile === viewport))), 'WHOLE_JOB_RENDER_CAPTURE_REQUIRED');
+    const missingRender = needsRender ? run.questions.filter(q => !['exam', 'solution', 'answer'].every(mode => ['desktop', 'mobile'].every(viewport => witnesses.some(w => w.questionUid === q.questionUid && w.mode === mode && w.viewportProfile === viewport)))).map(q => q.questionUid) : [];
+    if (run.pipeline !== 'past-exam') check(!missingRender.length, 'WHOLE_JOB_RENDER_CAPTURE_REQUIRED');
     const renderChanged = old && needsRender ? detectRenderImpact(old.witnesses, witnesses).affectedRenderUidSet : [];
     for (const [questionUid, axes] of Object.entries(shas)) {
       const row = { runId: run.runId, questionUid };
       targets.push(row);
       if (!old || defects.some(d => d.runId === run.runId && d.questionUid === questionUid) || impact.affectedUidAxisSet.some(a => a.questionUid === questionUid && !MACHINE_AXES.includes(a.axis)) || Object.entries(axes).some(([axis, sha]) => !MACHINE_AXES.includes(axis) && old.axisInputShas[questionUid]?.[axis] !== sha) || renderChanged.includes(questionUid)) affected.push(row);
     }
-    bindings.push({ questions: actual, runSemanticSha, runId: run.runId, revision: run.revision, inputSha: run.inputSha, axisInputShas: shas, witnesses });
+    bindings.push({ questions: actual, runSemanticSha, runId: run.runId, revision: run.revision, inputSha: run.inputSha, axisInputShas: shas, witnesses,
+      preAudit: { purpose: 'DIAGNOSTIC_CONTINUATION_ONLY', promotionAuthorized: false, machineEvidence: machineEvidence.map(e => ({ questionUid: e.questionUid, axis: e.axis, status: e.status, evidenceSha: objectSha(e) })), missingRender } });
   }
   targets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
   affected.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));

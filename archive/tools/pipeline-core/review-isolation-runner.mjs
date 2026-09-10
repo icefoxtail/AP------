@@ -26,7 +26,15 @@ export function loadCandidateReviewContext(root, run) {
 
 export function buildU3CandidatePayload(candidateContext, questionUid, frozenInputs = {}) {
   if (!candidateContext?.[questionUid]) throw new Error('U3_CANDIDATE_NOT_BOUND');
-  return structuredClone({ ...frozenInputs, questionUid, ...candidateContext[questionUid] });
+  return structuredClone({ ...frozenInputs, questionUid, ...candidateContext[questionUid], dependencies: {
+    ...(frozenInputs.dependencies || {}),
+    solutionReviewContract: {
+      answerOnlyPassForbidden: true,
+      required: ['keyIdea', 'conditionInterpretation', 'intermediateReasoningComplete', 'caseSplitComplete', 'studentReproducible', 'internalConsistency', 'independentIntermediateRecalculation', 'finalAnswerParity'],
+      recalculation: 'Recompute every decisive arithmetic/combinatorial intermediate from the source conditions. Record independentWork and recalculations with current solutionExcerpt, bounded expression, claimedValue and independentlyComputedValue. A correct final answer never repairs a wrong step.',
+      visual: 'Read frozen U1 and artifact-only U2 separately. Missing numeric geometry, coordinate FAIL, missing render or unresolved machine findings remain FAIL/HOLD. Complete the audit of all UIDs; do not promote unresolved defects.'
+    }
+  } });
 }
 
 export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null }) {

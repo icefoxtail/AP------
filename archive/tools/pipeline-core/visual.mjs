@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { canonicalJson, objectSha, bytesSha } from './canonical.mjs';
 import { validateSchema } from './schema.mjs';
-import { parseExpression, verifyBranch } from './expression.mjs';
+import { parseExpression, verifyBranch, evaluateExpression } from './expression.mjs';
 
 const contractBytes = fs.readFileSync(new URL('./visual-contract.json', import.meta.url));
 export const VISUAL_SPEC_SHA = bytesSha(contractBytes);
@@ -140,6 +140,75 @@ export function compareVisualFacts(expected, observed) {
   if (expectedValidation.status !== 'PASS' || observedValidation.status !== 'PASS') return { status: 'FAIL', expectedValidation, observedValidation, expectedSemanticSha: null, observedSemanticSha: null };
   const e = semanticSha(expected), o = semanticSha(observed);
   return { status: expected.questionUid === observed.questionUid && e === o ? 'PASS' : 'FAIL', expectedSemanticSha: e, observedSemanticSha: o, specSha: VISUAL_SPEC_SHA };
+}
+
+// Artifact-only: never reads expected coordinates, labels, data-fact metadata,
+// or generator receipts. Unsupported SVG constructs are an explicit HOLD/FAIL,
+// not an assumption that a renderer's picture equals a reviewer's fact object.
+export function extractSvgGeometry(svg) {
+  const errors = [], primitives = [];
+  if (!/<svg\b/.test(svg) || !/<\/svg>/.test(svg)) errors.push('SVG_ROOT_REQUIRED');
+  if (/<(?:g|use|image|ellipse|script|foreignObject|animate|set)\b|\b(?:transform|clip-path|mask|opacity|display|visibility)\s*=/i.test(svg)) errors.push('SVG_UNSUPPORTED_GEOMETRY_PRESENTATION');
+  for (const match of svg.matchAll(/<(line|circle|polyline|path)\b([^>]*?)\/?\s*>/g)) {
+    const attrs = Object.fromEntries([...match[2].matchAll(/([\w:-]+)\s*=\s*["']([^"']*)["']/g)].map(m => [m[1], m[2]]));
+    const numeric = k => attrs[k] === undefined ? NaN : Number(attrs[k]);
+    if (match[1] === 'path') {
+      if (!/\bclass\s*=\s*["'][^"']*\barrow\b/i.test(match[2])) errors.push('SVG_UNVERIFIED_PATH');
+      continue;
+    }
+    const primitive = match[1] === 'line' ? { type: 'line', x1: numeric('x1'), y1: numeric('y1'), x2: numeric('x2'), y2: numeric('y2') }
+      : match[1] === 'circle' ? { type: 'circle', x: numeric('cx'), y: numeric('cy'), radius: numeric('r'), closed: attrs.fill !== '#fff' && attrs.fill !== 'white' && attrs.fill !== 'none' }
+      : { type: 'polyline', points: (attrs.points || '').trim().split(/\s+/).map(p => p.split(',').map(Number)) };
+    if (primitive.type === 'polyline' ? primitive.points.some(p => p.length !== 2 || p.some(v => !Number.isFinite(v))) : Object.entries(primitive).some(([k, v]) => !['type', 'closed'].includes(k) && !Number.isFinite(v))) errors.push('SVG_NONNUMERIC_GEOMETRY');
+    primitives.push(primitive);
+  }
+  return { status: errors.length ? 'FAIL' : 'OBSERVED', artifactSha: bytesSha(Buffer.from(svg)), primitives, errors };
+}
+
+// Pixel parity for the existing deterministic generator's coordinate model.
+// Alternative representations require a new verified adapter, never labels-only PASS.
+export function verifySvgGeometry(fact, observation) {
+  const errors = [...observation.errors], s = fact?.semantic;
+  if (validateVisualFact(fact).status !== 'PASS') return { status: 'FAIL', errors: ['VISUAL_FACT_INVALID'] };
+  const near = (a, b) => Number.isFinite(a) && Number.isFinite(b) && Math.abs(a - b) <= 0.005;
+  const ps = observation.primitives;
+  const line = (x1, y1, x2, y2) => ps.some(p => p.type === 'line' && ((near(p.x1,x1)&&near(p.y1,y1)&&near(p.x2,x2)&&near(p.y2,y2)) || (near(p.x1,x2)&&near(p.y1,y2)&&near(p.x2,x1)&&near(p.y2,y1))));
+  const circle = (x, y, radius, closed = null) => ps.some(p => p.type === 'circle' && near(p.x,x) && near(p.y,y) && near(p.radius,radius) && (closed === null || p.closed === closed));
+  if (fact.visualType === 'cartesian') {
+    const offset = Math.max(0, s.branches.length - 1) * 44;
+    const X = x => 38 + (x-s.xMin)*284/(s.xMax-s.xMin), Y = y => 312+offset-(y-s.yMin)*264/(s.yMax-s.yMin);
+    if (s.xMin <= 0 && s.xMax >= 0 && !line(X(0),46+offset,X(0),320+offset)) errors.push('SVG_Y_AXIS_MISSING');
+    if (s.yMin <= 0 && s.yMax >= 0 && !line(28,Y(0),332,Y(0))) errors.push('SVG_X_AXIS_MISSING');
+    const curves = ps.filter(p => p.type === 'polyline');
+    if (curves.length !== s.branches.length) errors.push('SVG_BRANCH_COVERAGE');
+    for (const b of s.branches) {
+      const lo = b.points[0].x, hi = b.points.at(-1).x;
+      const valid = curves.some(p => p.points.length >= 513 && near(p.points[0][0],X(lo)) && near(p.points.at(-1)[0],X(hi)) && p.points.every(([px,py],i) => {
+        const x = lo+(hi-lo)*i/(p.points.length-1);
+        try { return near(px,X(x)) && near(py,Y(evaluateExpression(b.formula,x))); } catch { return false; }
+      }));
+      if (!valid) errors.push(`SVG_FUNCTION_GEOMETRY_MISMATCH:${b.id}`);
+      for (const [p,closed] of [[b.points[0],b.leftClosed],[b.points.at(-1),b.rightClosed]]) if (!circle(X(p.x),Y(p.y),4,closed)) errors.push(`SVG_BRANCH_ENDPOINT_MISMATCH:${b.id}`);
+    }
+    for (const p of s.keyPoints) if (!circle(X(p.x),Y(p.y),3)) errors.push(`SVG_KEY_POINT_MISSING:${p.id}`);
+  } else if (fact.visualType === 'geometry') {
+    const bounds = s.points.map(p => [p.x,p.y]);
+    for (const c of s.circles) bounds.push([c.x-c.radius,c.y-c.radius],[c.x+c.radius,c.y+c.radius]);
+    const xmin=Math.min(...bounds.map(p=>p[0])), xmax=Math.max(...bounds.map(p=>p[0])), ymin=Math.min(...bounds.map(p=>p[1])), ymax=Math.max(...bounds.map(p=>p[1]));
+    const scale=Math.min(264/Math.max(xmax-xmin,1),220/Math.max(ymax-ymin,1));
+    const X=x=>180+(x-(xmin+xmax)/2)*scale, Y=y=>154-(y-(ymin+ymax)/2)*scale;
+    for (const c of s.circles) if (!circle(X(c.x),Y(c.y),c.radius ? c.radius*scale : 3)) errors.push(`SVG_CIRCLE_GEOMETRY_MISMATCH:${c.id}`);
+    for (const p of s.points) if (!circle(X(p.x),Y(p.y),2.5)) errors.push(`SVG_POINT_GEOMETRY_MISMATCH:${p.id}`);
+    for (const seg of s.segments) { const a=s.points.find(p=>p.id===seg.start), b=s.points.find(p=>p.id===seg.end); if (!line(X(a.x),Y(a.y),X(b.x),Y(b.y))) errors.push(`SVG_SEGMENT_MISSING:${seg.id}`); }
+  } else if (fact.visualType === 'number-line') {
+    const values=s.intervals.flatMap(i=>[i.left,i.right]).filter(v=>v!==null), lo=values.length?Math.min(...values)-2:-5, hi=values.length?Math.max(...values)+2:5;
+    const X=x=>35+(x-lo)*290/(hi-lo);
+    s.intervals.forEach((v,i)=>{ const y=60+i*80, a=v.left===null?25:X(v.left), b=v.right===null?335:X(v.right);
+      if (!line(a,y,b,y)) errors.push(`SVG_INTERVAL_MISSING:${i}`);
+      for (const [x,value,closed] of [[a,v.left,v.leftClosed],[b,v.right,v.rightClosed]]) if (value!==null && !circle(x,y,4,closed)) errors.push(`SVG_INTERVAL_ENDPOINT_MISMATCH:${i}`);
+    });
+  } else errors.push('SVG_NUMERIC_ADAPTER_UNSUPPORTED');
+  return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
 
 export function circleRelation(a, b, relation, tolerance = 1e-9) {

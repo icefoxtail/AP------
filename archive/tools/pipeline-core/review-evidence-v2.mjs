@@ -104,22 +104,26 @@ export const AXIS_REVIEW_BINDING = Object.freeze({
   RENDER_REVIEW: ['U3', 'ACTUAL_RENDER', 'CAPTURE_ONLY']
 });
 const machineAxes = ['STATIC', 'METADATA', 'RENDER_CAPTURE'];
-export function validateMachineEvidence(evidence, run) {
+export function validateMachineEvidence(evidence, run, { diagnostic = false } = {}) {
   const errors = [];
   if (!machineAxes.includes(evidence?.axis) || evidence.mode !== 'MACHINE_CURRENT' || evidence.auditorPrincipalType !== 'MACHINE_COLLECTOR' || evidence.launchId || evidence.externalTaskId) errors.push('MACHINE_COLLECTOR_SEMANTICS_INVALID');
-  if (evidence?.runId !== run.runId || evidence?.revision !== run.revision || evidence?.inputSha !== run.inputSha || evidence?.reviewStartInputSha !== run.inputSha || evidence?.reviewEndInputSha !== run.inputSha || evidence?.status !== 'PASS') errors.push('MACHINE_CURRENT_BINDING_INVALID');
+  if (evidence?.runId !== run.runId || evidence?.revision !== run.revision || evidence?.inputSha !== run.inputSha || evidence?.reviewStartInputSha !== run.inputSha || evidence?.reviewEndInputSha !== run.inputSha || !(diagnostic ? ['PASS', 'FAIL', 'HOLD'] : ['PASS']).includes(evidence?.status)) errors.push('MACHINE_CURRENT_BINDING_INVALID');
   const provenance = evidence?.machineProvenance;
   if (!provenance || provenance.inputSha !== run.inputSha || provenance.runId !== run.runId || provenance.revision !== run.revision || !nonempty(provenance.collector) || objectSha(provenance) !== evidence.reviewIsolationProvenanceSha) errors.push('MACHINE_PROVENANCE_REQUIRED');
   if (evidence?.axis === 'RENDER_CAPTURE' && (evidence.payload?.actualBrowser !== true || evidence.payload?.productionEngine !== true || !evidence.payload?.itemWitnesses?.length)) errors.push('MACHINE_RENDER_WITNESSES_REQUIRED');
+  if (diagnostic && ['STATIC','METADATA'].includes(evidence?.axis)) {
+    const checks = Object.values(evidence.payload?.checks || {});
+    if (!checks.length || checks.some(value => !['PASS','FAIL','HOLD'].includes(value)) || (evidence.status === 'PASS') !== checks.every(value => value === 'PASS')) errors.push('MACHINE_STATUS_CHECKS_CONTRADICTION');
+  }
   return errors;
 }
-export function validateTypedEvidence(evidence) {
+export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {
   const errors = [], p = evidence?.payload;
   if (!isObject(p)) return ['TYPED_PAYLOAD_REQUIRED'];
   const text = field => { if (!nonempty(p[field])) errors.push(`TYPED_${evidence.axis}:${field}`); };
   const hash = field => { if (!HASH_PATTERN.test(p[field])) errors.push(`TYPED_${evidence.axis}:${field}`); };
   const truth = field => { if (p[field] !== true) errors.push(`TYPED_${evidence.axis}:${field}`); };
-  const checks = fields => { for (const field of fields) if (p.checks?.[field] !== 'PASS') errors.push(`TYPED_${evidence.axis}:checks.${field}`); };
+  const checks = fields => { for (const field of fields) if (!(diagnostic && machineAxes.includes(evidence.axis) ? ['PASS', 'FAIL', 'HOLD'] : ['PASS']).includes(p.checks?.[field])) errors.push(`TYPED_${evidence.axis}:checks.${field}`); };
   switch (evidence.axis) {
     case 'SOURCE': hash('sourceTruthBundleSha'); text('fidelityRationale'); truth('sourceFidelityVerified'); break;
     case 'MATH_A1': text('independentAnswer'); text('independentDerivation'); truth('blindSolveFrozen'); truth('allChoicesChecked'); truth('answerUnique'); break;
@@ -128,6 +132,7 @@ export function validateTypedEvidence(evidence) {
     case 'METADATA': hash('metadataInputSha'); checks(['schema', 'uidBinding', 'curriculumBinding']); break;
     case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity']); break;
   }
+  if (evidence.axis === 'STATIC' && p.checks?.studentSerialization !== undefined) checks(['studentSerialization']);
   if (machineAxes.includes(evidence.axis) !== (evidence.auditorPrincipalType === 'MACHINE_COLLECTOR' && evidence.mode === 'MACHINE_CURRENT')) errors.push('AXIS_EXECUTION_CLASS_MISMATCH');
   return errors;
 }
