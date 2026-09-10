@@ -6,4 +6,28 @@ Run only when visual capability is active and the parent supplies the visual con
 Check mathematics, topology, semantic ownership, crop, labels, answer leakage, and rendered output.
 Do not silently convert an essential visual question to text-only and do not modify the asset under review.
 Write only the assigned visual evidence artifact.
+
+ACTUAL RENDER CANONICAL ENGINE HARD RULE:
+- Keep artifact-only review (including V2 inspection of an SVG/PNG itself) and
+  final actual-render review as separate evidence and separate decisions.
+  Looking at an SVG/PNG alone may support artifact/semantic review, but can
+  never replace a final render PASS.
+- Final visual placement and readability MUST be judged from the repository's
+  canonical `archive/engine.html`, with the current candidate JS/assets and
+  required runtime dependencies bound and executed in the real browser.
+  When technically executable, use the repository collector first:
+  `node archive/tools/pipeline-core/cli.mjs render --manifest <run.json> --workdir <workdir>`.
+- Do not use an ad hoc HTML/CSS recreation, self-made renderer, SVG/PNG-only
+  check, static source/DOM/CSS inference, `screenshotCaptured` alone,
+  `naturalWidth` alone, or a production-engine-different mock layout as
+  canonical final-render evidence. If the collector is technically unable to
+  run, record `NOT_TESTED` or `BLOCKED` with the exact blocker; never make a
+  mock PASS. Do not bypass a runnable collector.
+- Do not confuse mathematical/semantic asset PASS with render PASS. For the
+  final actual-render decision, check exam, solution, and answer × desktop and
+  mobile, including total count, last question, all continuation blocks,
+  image/SVG decode, MathJax, clipping, vertical/horizontal overflow,
+  readability, layoutTag/wide-driven page placement, imageSize, excessive
+  whitespace, over-shrunk questions/images, broken assets, and console/load
+  errors.
 """
