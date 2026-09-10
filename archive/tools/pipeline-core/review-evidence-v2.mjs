@@ -130,9 +130,8 @@ export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {
     case 'MATH_A2': hash('a1EvidenceSha'); text('answerComparison'); truth('allChoicesChecked'); truth('answerUnique'); break;
     case 'SOLUTION': text('solutionRationale'); checks(['mathematicalCorrectness', 'logicalCompleteness', 'studentUnderstandability']); errors.push(...validateSolutionQuality(p.solutionQuality).errors); break;
     case 'METADATA': hash('metadataInputSha'); checks(['schema', 'uidBinding', 'curriculumBinding']); break;
-    case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity']); break;
+    case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity', 'studentSerialization']); break;
   }
-  if (evidence.axis === 'STATIC' && p.checks?.studentSerialization !== undefined) checks(['studentSerialization']);
   if (machineAxes.includes(evidence.axis) !== (evidence.auditorPrincipalType === 'MACHINE_COLLECTOR' && evidence.mode === 'MACHINE_CURRENT')) errors.push('AXIS_EXECUTION_CLASS_MISMATCH');
   return errors;
 }

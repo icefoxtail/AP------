@@ -12,6 +12,10 @@ import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, readWorkBatch } from '../work-batch.mjs';
 import { collectMachineEvidence, isChoicesContractValid } from '../machine-evidence.mjs';
 import { validateCurriculumBinding, validateStudentSerialization } from '../student-output.mjs';
+import { validateEvidenceFreshness, validateMachineEvidence, validateTypedEvidence } from '../review-evidence-v2.mjs';
+import { validateSchema } from '../schema.mjs';
+
+const evidenceContract = JSON.parse(fs.readFileSync(new URL('../contracts/evidence-v2.schema.json', import.meta.url), 'utf8'));
 
 const write = (root, relative, value) => {
   const file = path.join(root, relative);
@@ -27,7 +31,7 @@ function fixture(t, options = {}) {
   const bank = q => `window.examTitle="synthetic";window.questionBank=${JSON.stringify([q])};`;
   const q = options.imageOnly
     ? { id: 1, content: '그림 속 보기를 보고 정답을 고른다.', answer: '2', solution: '그림 속 ②가 정답이다.', questionType: '객관식', image: 'assets/images/synthetic/q001.png', tags: ['객관식', '통이미지보기'], standardCourse: 'synthetic', standardUnitKey: 'SYN-01', standardUnit: 'Synthetic', standardUnitOrder: 1, subUnitKey: 'SYN-01-CORE', subUnit: 'Synthetic', layoutTag: 'grid', wide: false }
-    : { id: 1, content: '2+2를 계산한다.', choices: ['3', '4'], answer: '2', solution: '2+2=4이다.' };
+    : { id: 1, content: '2+2를 계산한다.', choices: ['3', '4'], answer: '2', solution: options.invalidSerialization ? '$x ge 0$' : '2+2=4이다.' };
   const sourceRef = { ...write(root, 'source.js', bank(q)), role: 'source' };
   const candidateRef = { ...write(root, 'candidate.js', bank(q)), role: 'candidate' };
   const assetRef = options.imageOnly ? { ...write(root, q.image, 'synthetic image bytes'), role: 'asset' } : null;
@@ -90,6 +94,52 @@ test('machine bridge creates current STATIC and METADATA evidence and freeze suc
   const state = freezeWorkBatch(f.root, 'job', [out.ref]);
   assert.equal(state.status, 'FROZEN');
   assert.equal(readWorkBatch(f.root, 'job').freezes.length, 1);
+});
+
+test('STATIC studentSerialization is required by both schema and typed validation', t => {
+  const f = fixture(t);
+  const out = f.bridged();
+  const staticEvidenceRef = out.run.evidence.find(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8')).axis === 'STATIC');
+  const staticEvidence = JSON.parse(fs.readFileSync(path.join(f.root, staticEvidenceRef.path), 'utf8'));
+  delete staticEvidence.payload.checks.studentSerialization;
+  assert.ok(validateSchema(staticEvidence, evidenceContract).length > 0);
+  assert.ok(validateTypedEvidence(staticEvidence, { diagnostic: true }).includes('TYPED_STATIC:checks.studentSerialization'));
+});
+
+test('studentSerialization FAIL remains diagnostic/final-audit-continuable but blocks final closure', t => {
+  const f = fixture(t, { invalidSerialization: true });
+  const out = f.bridged();
+  const staticEvidence = out.run.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).find(evidence => evidence.axis === 'STATIC');
+  assert.equal(staticEvidence.status, 'FAIL');
+  assert.equal(staticEvidence.payload.checks.studentSerialization, 'FAIL');
+  assert.deepEqual(validateTypedEvidence(staticEvidence, { diagnostic: true }), []);
+  assert.ok(validateTypedEvidence(staticEvidence).includes('TYPED_STATIC:checks.studentSerialization'));
+  assert.deepEqual(validateMachineEvidence(staticEvidence, f.run, { diagnostic: true }), []);
+  assert.equal(freezeWorkBatch(f.root, 'job', [out.ref]).status, 'FROZEN');
+  const reserved = reserveWorkBatchReview(f.root, 'job', {
+    purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session',
+    parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false,
+    contexts: { U1: { sessionId: 'u1-session', contextId: 'u1-context' }, U2: { sessionId: 'u2-session', contextId: 'u2-context' }, U3: { sessionId: 'u3-session', contextId: 'u3-context' } },
+  });
+  assert.equal(reserved.launches[0].purpose, 'FINAL_AUDIT');
+  const finalFreshness = validateEvidenceFreshness(staticEvidence, { currentRunInputSha: f.run.inputSha, currentAxisInputSha: staticEvidence.axisInputSha });
+  assert.equal(finalFreshness.status, 'BLOCKED');
+  assert.ok(finalFreshness.errors.includes('EVIDENCE_NOT_PASS'));
+});
+
+test('studentSerialization HOLD is accepted only by diagnostic machine evidence validation', t => {
+  const f = fixture(t);
+  const out = f.bridged();
+  const passEvidence = out.run.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).find(evidence => evidence.axis === 'STATIC');
+  const holdEvidence = structuredClone(passEvidence);
+  holdEvidence.status = 'HOLD';
+  holdEvidence.payload.checks.studentSerialization = 'HOLD';
+  assert.deepEqual(validateTypedEvidence(holdEvidence, { diagnostic: true }), []);
+  assert.deepEqual(validateMachineEvidence(holdEvidence, f.run, { diagnostic: true }), []);
+  assert.ok(validateTypedEvidence(holdEvidence).includes('TYPED_STATIC:checks.studentSerialization'));
+  const finalFreshness = validateEvidenceFreshness(holdEvidence, { currentRunInputSha: f.run.inputSha, currentAxisInputSha: holdEvidence.axisInputSha });
+  assert.equal(finalFreshness.status, 'BLOCKED');
+  assert.ok(finalFreshness.errors.includes('EVIDENCE_NOT_PASS'));
 });
 
 test('candidate quality failure is preserved as diagnostic evidence and does not prevent freeze', t => {

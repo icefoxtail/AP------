@@ -148,7 +148,7 @@ export function compareVisualFacts(expected, observed) {
 export function extractSvgGeometry(svg) {
   const errors = [], primitives = [];
   if (!/<svg\b/.test(svg) || !/<\/svg>/.test(svg)) errors.push('SVG_ROOT_REQUIRED');
-  if (/<(?:g|use|image|ellipse|script|foreignObject|animate|set)\b|\b(?:transform|clip-path|mask|opacity|display|visibility)\s*=/i.test(svg)) errors.push('SVG_UNSUPPORTED_GEOMETRY_PRESENTATION');
+  if (/<(?:use|image|ellipse|script|foreignObject|animate|set)\b|\b(?:transform|clip-path|mask|opacity|display|visibility)\s*=/i.test(svg) || /\bstyle\s*=\s*["'][^"']*\b(?:transform|clip-path|mask|opacity|display|visibility)\s*:/i.test(svg)) errors.push('SVG_UNSUPPORTED_GEOMETRY_PRESENTATION');
   for (const match of svg.matchAll(/<(line|circle|polyline|path)\b([^>]*?)\/?\s*>/g)) {
     const attrs = Object.fromEntries([...match[2].matchAll(/([\w:-]+)\s*=\s*["']([^"']*)["']/g)].map(m => [m[1], m[2]]));
     const numeric = k => attrs[k] === undefined ? NaN : Number(attrs[k]);
