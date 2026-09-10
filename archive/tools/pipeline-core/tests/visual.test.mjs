@@ -1,8 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { canonicalJson, bytesSha, objectSha, safePath, fileRef } from '../canonical.mjs';
 import { compareVisualFacts, validateVisualFact, semanticSha, circleRelation, auditDuplicates, structureFingerprint, extractSvgGeometry, verifySvgGeometry } from '../visual.mjs';
 import { validateBatchManifest } from '../batch.mjs';
@@ -53,6 +55,66 @@ test('path-only curve sketches cannot satisfy the numeric SVG observation gate',
   const observation = extractSvgGeometry('<svg xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 C 10 10 20 10 30 0"/></svg>');
   assert.equal(observation.status, 'FAIL');
   assert.ok(observation.errors.includes('SVG_UNVERIFIED_PATH'));
+});
+
+test('benign generator font wrapper is accepted while geometry-changing SVG presentation is fail-closed', () => {
+  const valid = '<svg xmlns="http://www.w3.org/2000/svg"><g font-family="Arial, sans-serif"><line x1="0" y1="0" x2="10" y2="0"/></g></svg>';
+  const observation = extractSvgGeometry(valid);
+  assert.equal(observation.status, 'OBSERVED');
+  assert.deepEqual(observation.errors, []);
+  for (const attribute of ['transform="translate(1 1)"', 'clip-path="url(#clip)"', 'mask="url(#mask)"', 'style="transform: translate(1px 1px)"', 'style="clip-path: url(#clip)"', 'style="mask: url(#mask)"']) {
+    const blocked = extractSvgGeometry(`<svg xmlns="http://www.w3.org/2000/svg"><g ${attribute}><line x1="0" y1="0" x2="10" y2="0"/></g></svg>`);
+    assert.equal(blocked.status, 'FAIL', attribute);
+    assert.ok(blocked.errors.includes('SVG_UNSUPPORTED_GEOMETRY_PRESENTATION'), attribute);
+  }
+});
+
+function runCanonicalGenerator(t, fact) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-generator-e2e-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const factPath = path.join(root, `${fact.visualType}.json`);
+  const svgPath = path.join(root, `${fact.visualType}.svg`);
+  const evidencePath = path.join(root, `${fact.visualType}.evidence.json`);
+  fs.writeFileSync(factPath, `${JSON.stringify(fact)}\n`);
+  const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
+  const generatorPath = path.join(repository, 'archive/tools/pipeline-core/generator.py');
+  const result = spawnSync(process.env.APMATH_PYTHON || 'python', ['-X', 'utf8', generatorPath, '--fact', factPath, '--out', svgPath, '--evidence', evidencePath], {
+    cwd: repository,
+    encoding: 'utf8',
+    timeout: 30000,
+    windowsHide: true,
+  });
+  assert.equal(result.status, 0, `${result.stdout || ''}\n${result.stderr || ''}\n${result.error?.message || ''}`);
+  return { svg: fs.readFileSync(svgPath, 'utf8'), witness: JSON.parse(fs.readFileSync(evidencePath, 'utf8')) };
+}
+
+for (const [visualType, semantic] of [
+  ['cartesian', {
+    xMin: -2, xMax: 2, yMin: -1, yMax: 4,
+    branches: [{ id: 'f', formula: 'x**2', points: [{ id: 'L', x: -2, y: 4 }, { id: 'R', x: 2, y: 4 }], leftClosed: true, rightClosed: true }],
+    keyPoints: [{ id: 'V', x: 0, y: 0 }],
+  }],
+  ['geometry', {
+    points: [{ id: 'A', x: 0, y: 0 }, { id: 'B', x: 4, y: 0 }, { id: 'C', x: 4, y: 3 }],
+    circles: [],
+    segments: [{ id: 'AB', start: 'A', end: 'B' }, { id: 'BC', start: 'B', end: 'C' }],
+    relations: [{ from: 'AB', to: 'BC', relation: 'perpendicular' }],
+    scalePolicy: 'EXACT_EQUAL_UNITS',
+  }],
+  ['number-line', {
+    variable: 'x',
+    intervals: [{ left: -1, right: 3, leftClosed: false, rightClosed: true }],
+  }],
+]) test(`canonical generator ${visualType} output passes extractSvgGeometry and verifySvgGeometry`, (t) => {
+  const fact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: `generator-e2e-${visualType}`, visualType, semantic };
+  const { svg, witness } = runCanonicalGenerator(t, fact);
+  assert.match(svg, /<g font-family="Arial, sans-serif">/);
+  assert.equal(witness.generator, 'pipeline-core/generator.py');
+  assert.equal(witness.status, 'BUILD_SIDE_ONLY');
+  const observation = extractSvgGeometry(svg);
+  assert.equal(observation.status, 'OBSERVED', observation.errors.join(', '));
+  assert.deepEqual(observation.errors, []);
+  assert.equal(verifySvgGeometry(fact, observation).status, 'PASS');
 });
 
 test('cartesian artifact verification requires axes, numeric branch samples and point geometry', () => {
