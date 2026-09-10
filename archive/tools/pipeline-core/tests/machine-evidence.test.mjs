@@ -81,8 +81,13 @@ test('constructed responses with empty choices are valid while image-only object
 test('serialization and curriculum defects are deterministic machine findings', () => {
   assert.equal(validateStudentSerialization({ solution: '$x ge 0$, $a cdot b$' }).status, 'FAIL');
   assert.equal(validateStudentSerialization({ solution: '$x \\ge 0$, $a \\cdot b$' }).status, 'PASS');
-  assert.equal(validateCurriculumBinding({ standardCourse: '공통수학1', standardUnitKey: 'H22-C-05', standardUnit: '이차방정식과 이차함수' }, { examId: '26_금당고_1학기_기말_고1_기출' }).status, 'PASS');
-  assert.equal(validateCurriculumBinding({ standardCourse: '수학(상)', standardUnitKey: 'H15-SA-05', standardUnit: '이차방정식과 이차함수' }, { examId: '26_금당고_1학기_기말_고1_기출' }).status, 'FAIL');
+  const highSchool = (standardUnitKey, examId, standardCourse) => validateCurriculumBinding({ standardCourse, standardUnitKey, standardUnit: '이차방정식과 이차함수' }, { examId });
+  assert.equal(highSchool('H99-XXX-01', '26_금당고_1학기_기말_고1_기출', '공통수학1').status, 'FAIL');
+  assert.equal(highSchool('garbage-key', '26_금당고_1학기_기말_고1_기출', '공통수학1').status, 'FAIL');
+  assert.equal(highSchool('H22-C-05', '26_금당고_1학기_기말_고1_기출', '공통수학1').status, 'PASS');
+  assert.equal(highSchool('H15-SA-05', '20_금당고_1학기_기말_고1_기출', '수학(상)').status, 'PASS');
+  assert.equal(highSchool('H22-C-05', '20_금당고_1학기_기말_고1_기출', '공통수학1').status, 'FAIL');
+  assert.equal(validateCurriculumBinding({ standardCourse: '중1', standardUnitKey: 'M1-01', standardUnit: '중학교 단원' }, { examId: '26_금당중_1학기_기말_중1_기출' }).status, 'PASS');
 });
 
 test('machine bridge creates current STATIC and METADATA evidence and freeze succeeds', t => {

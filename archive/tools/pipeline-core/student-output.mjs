@@ -21,14 +21,17 @@ const courses = { 'H15-SA': ['수학(상)'], 'H15-SB': ['수학(하)'], 'H15-M1'
 const master = JSON.parse(fs.readFileSync(new URL('../../data/master_tables/js_archive_tag_master.json', import.meta.url), 'utf8'));
 export function validateCurriculumBinding(question, { source = {}, examId = '' } = {}) {
   const errors = [], unit = question?.standardUnitKey || '', sub = question?.subUnitKey;
+  const identity = String(examId).match(/^(\d{2}|\d{4})_.*_고([123])(?:_|$)/);
   const family = unit.match(/^(H(?:15|22)-[^-]+)-/)?.[1];
-  if (!family) return { status: 'PASS', errors }; // Other grade contracts retain their existing validator.
+  if (!family) {
+    if (identity) errors.push('CURRICULUM_HIGH_SCHOOL_UNIT_KEY_INVALID');
+    return { status: errors.length ? 'FAIL' : 'PASS', errors }; // Other grade contracts retain their existing validator.
+  }
   if (!courses[family]?.includes(String(question.standardCourse || '').replace(/\s/g, ''))) errors.push('CURRICULUM_COURSE_UNIT_MISMATCH');
   if (!master.some(r => r.keyType === 'standardUnitKey' && r.key === unit)) errors.push('CURRICULUM_UNIT_UNKNOWN');
   if (sub && !master.some(r => r.keyType === 'subUnitKey' && r.key === sub && r.standardUnitKey === unit)) errors.push('CURRICULUM_SUBUNIT_PARENT_MISMATCH');
   const sourceFamily = String(source.standardUnitKey || '').match(/^(H(?:15|22))-/)?.[1];
   if (sourceFamily && !unit.startsWith(sourceFamily + '-')) errors.push('CURRICULUM_SOURCE_SYSTEM_MISMATCH');
-  const identity = String(examId).match(/^(\d{2}|\d{4})_.*_고([123])(?:_|$)/);
   if (identity) {
     const year = Number(identity[1]) + (identity[1].length === 2 ? 2000 : 0), grade = Number(identity[2]);
     // Cohort transition: first high-school year of 2022 curriculum is 2025.
