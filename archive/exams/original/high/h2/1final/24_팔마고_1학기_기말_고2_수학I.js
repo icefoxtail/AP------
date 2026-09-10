@@ -238,8 +238,7 @@ window.questionBank = [
     "tags": [
       "그래프"
     ],
-    "wide": false,
-    "content": "함수 $y=a\\sin(bx-c)$의 그래프가 다음과 같다. $a>0$, $b>0$, $0<c<\\pi$일 때, $abc$의 값은? [4.3점]",
+    "wide": false,    "content": "함수 $y=a\\sin(bx-c)$의 그래프가 다음과 같다. $a>0$, $b>0$, $0<c<\\pi$일 때, $abc$의 값은? [4.3점]",
     "choices": [
       "$2\\pi$",
       "$\\dfrac{5}{2}\\pi$",
@@ -248,6 +247,11 @@ window.questionBank = [
       "$8\\pi$"
     ],
     "answer": "①",
+    "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q9-solution.svg",
+    "solutionImageAlt": "삼각함수 그래프 candidate · 24 팔마고 q9",
+    "solutionImageCaption": "y=3sin(2x−π/3), amplitude 3, period π, phase shift π/6",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "solution": "[키포인트] 사인 그래프에서 진폭, 주기, 위상 이동을 순서대로 읽는다.\n조건 정리: 함수는 $y=a\\sin(bx-c)$이고 $a>0$, $b>0$, $0<c<\\pi$이다.\n풀이 방향: 그래프에서 $a$는 진폭, $b$는 주기 $\\dfrac{2\\pi}{b}$, $\\dfrac{c}{b}$는 오른쪽 이동량이다.\n정석 풀이: 그래프의 최댓값과 최솟값의 차가 $6$이므로 진폭은 $a=3$이다.\n그래프의 한 주기 길이가 $\\pi$이므로 $\\dfrac{2\\pi}{b}=\\pi$이고, 따라서 $b=2$이다.\n그래프가 기본 $\\sin$ 그래프에서 오른쪽으로 $\\dfrac{\\pi}{6}$만큼 이동한 형태이므로 $\\dfrac{c}{b}=\\dfrac{\\pi}{6}$이다. $b=2$이므로 $c=\\dfrac{\\pi}{3}$이다.\n따라서 $abc=3\\cdot2\\cdot\\dfrac{\\pi}{3}=2\\pi$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_팔마고_1학기_기말_고2_수학I/q9.png",
     "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
