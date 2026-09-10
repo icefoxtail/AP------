@@ -115,6 +115,14 @@ export function validateMachineEvidence(evidence, run, { diagnostic = false } = 
     const checks = Object.values(evidence.payload?.checks || {});
     if (!checks.length || checks.some(value => !['PASS','FAIL','HOLD'].includes(value)) || (evidence.status === 'PASS') !== checks.every(value => value === 'PASS')) errors.push('MACHINE_STATUS_CHECKS_CONTRADICTION');
   }
+  if (run?.pipeline === 'past-exam' || run?.benchmarkKind) {
+    const declared = run.questions?.find(question => question.questionUid === evidence?.questionUid);
+    const candidate = declared && run.inputs?.find(ref => ref.role === 'candidate' && ref.path === declared.candidatePath);
+    const expectedArtifactSha = candidate?.sha256;
+    if (!expectedArtifactSha || evidence?.machineProvenance?.currentArtifactSha !== expectedArtifactSha || evidence?.machineProvenance?.CURRENT_ARTIFACT_SHA !== expectedArtifactSha || evidence?.machineProvenance?.EVIDENCE_INPUT_SHA !== expectedArtifactSha || evidence?.payload?.currentArtifactSha !== expectedArtifactSha || evidence?.payload?.CURRENT_ARTIFACT_SHA !== expectedArtifactSha || evidence?.payload?.EVIDENCE_INPUT_SHA !== expectedArtifactSha) errors.push('EVIDENCE_INPUT_SHA_CURRENT_ARTIFACT_MISMATCH');
+    if (run?.pastExamAuthority?.startSha !== undefined && evidence?.machineProvenance?.authorityStartSha !== run.pastExamAuthority.startSha) errors.push('EVIDENCE_START_SHA_MISMATCH');
+    if (run?.pastExamAuthority?.startSha !== undefined && evidence?.payload?.authorityStartSha !== run.pastExamAuthority.startSha) errors.push('EVIDENCE_START_SHA_PAYLOAD_MISMATCH');
+  }
   return errors;
 }
 export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {

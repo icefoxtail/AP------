@@ -42,6 +42,13 @@ A conflict/high-risk SECOND_AUDIT is optional, never automatic. It needs an
 explicit authorization identity and reason, consumes one bounded allowance,
 and shares the same expensive slot. Ordinary repairs use TARGETED_RECHECK.
 
+For GOLD/pilot/benchmark/holdout jobs, the start gate freezes the required
+`START_SHA`, calibration, and rule identity before the first freeze. A later
+live `origin/main` advance is `POST_START_MAIN_ADVANCE` and is not a reason to
+interrupt that job. `START_TIME_STALE` applies only when the baseline was
+already stale at start; frozen bytes, hashes, and job evidence still have to
+match the frozen authority.
+
 ## CLI contracts
 
 All commands are on `archive/tools/pipeline-core/cli.mjs`. Paths in bound refs
@@ -102,6 +109,15 @@ STATIC/METADATA/RENDER_CAPTURE use MACHINE_CURRENT and MACHINE_COLLECTOR with
 hash-bound local collection provenance. They never use reuse receipts or LLM
 launches. The semantic kernel still enforces mathematical/visual/render closure.
 Typed payloads and exact source/input/axis bindings supplement that kernel.
+
+When a candidate, asset, solutionImage, or metadata input mutates, the prior
+machine record is stale/invalidated and the collector must create a new current
+record. Current evidence binds both the current candidate/artifact SHA and its
+axis input SHA; old `status: PASS` records are not current by label alone.
+V1 `ADD` is closed only by generated artifact, candidate attachment, V2
+artifact-only review, V3 expected/observed fact parity, and render review (or
+explicit defect/HOLD/reclassification evidence). Diagnostic continuation may
+observe downstream failures but never changes canonical PASS or promotion.
 
 Upstream phase projections bind semantic inputs so that freezing A1/V1/V2
 outputs does not invalidate the job's pre-review input hashes. Exact frozen

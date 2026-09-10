@@ -85,6 +85,21 @@ function bindAuthority(root, run) {
   }
 }
 
+function validateEvidenceLifecycle(root, run, evidenceRefs) {
+  const errors = [];
+  const activeRefs = new Set((run.evidence || []).map(ref => `${ref.path}|${ref.sha256}`));
+  for (const row of run.evidenceLifecycle || []) {
+    try {
+      if (row?.schemaVersion !== 'APMATH_EVIDENCE_LIFECYCLE_v1' || row.status !== 'INVALIDATED' || !row.evidenceRef?.path || row.evidenceSha !== row.evidenceRef.sha256 || activeRefs.has(`${row.evidenceRef.path}|${row.evidenceRef.sha256}`)) throw new Error('EVIDENCE_LIFECYCLE_INVALID');
+      const evidence = JSON.parse(readBoundFile(root, row.evidenceRef));
+      if (evidence.evidenceId !== row.evidenceId || evidence.axis !== row.axis || evidence.questionUid !== row.questionUid) throw new Error('EVIDENCE_LIFECYCLE_IDENTITY_MISMATCH');
+      if (row.currentArtifactSha && evidence.payload?.currentArtifactSha === row.currentArtifactSha) throw new Error('EVIDENCE_LIFECYCLE_NOT_STALE');
+      if (evidenceRefs.some(ref => ref.path === row.evidenceRef.path && ref.sha256 === row.evidenceRef.sha256)) throw new Error('INVALIDATED_EVIDENCE_REUSED');
+    } catch (error) { errors.push(`${error.message}:${row?.evidenceId || 'UNKNOWN'}`); }
+  }
+  return errors;
+}
+
 export function auditV2Run(root, run) {
   const errors = [], freshness = [];
   let semantic = null, changeImpact = null, editClosure = null, closureSetSha = null, renderImpact = null;
@@ -129,6 +144,7 @@ export function auditV2Run(root, run) {
     changeImpact.changeImpactSha = objectSha({ predecessor: run.predecessor || null, runLevelSemanticHash: runHash, changedUidSet: diff.changedUidSet, affectedUidAxisSet: changeImpact.affectedUidAxisSet });
     const evidence = new Map(), evidenceRefs = new Map();
     for (const ref of run.evidence || []) { const e = load(root, ref); errors.push(...validateSchema(e, contracts['evidence-v2'])); if (evidence.has(e.evidenceId)) throw new Error('DUPLICATE_EVIDENCE_ID'); evidence.set(e.evidenceId, e); evidenceRefs.set(e.evidenceId, ref); }
+    errors.push(...validateEvidenceLifecycle(root, run, [...evidenceRefs.values()]));
     const receipts = (run.reuseReceipts || []).map(ref => load(root, ref)), packets = (run.auditorPacketRefs || []).map(ref => load(root, ref));
     for (const receipt of receipts) errors.push(...validateSchema(receipt, contracts['reuse-receipt-v1']));
     for (const ref of run.renderReviewReuseReceiptRefs || []) errors.push(...validateSchema(load(root, ref), contracts['render-review-reuse-receipt-v1']));
@@ -242,5 +258,5 @@ export function auditV2Run(root, run) {
   } catch (error) { errors.push(`V2_CONTRACT:${error.message}`); }
   const cost = workBatchMetrics(root, run, freshness);
   if (cost.agentBudgetStatus === 'HOLD') errors.push('AGENT_BUDGET_HOLD');
-  return { cost, schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', runId: run?.runId || null, revision: run?.revision || null, inputSha: run?.inputSha || null, status: errors.length ? 'BLOCKED' : 'PASS', productionAuthorized: false, errors, freshness, semantic, changeImpact, renderImpact, editClosure, closureSetSha };
+  return { cost, schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', runId: run?.runId || null, revision: run?.revision || null, inputSha: run?.inputSha || null, status: errors.length ? 'BLOCKED' : 'PASS', productionAuthorized: false, diagnosticContinuation: semantic?.diagnosticContinuation || { status: errors.length ? 'UPSTREAM_BLOCKED' : 'NOT_NEEDED', downstreamObserved: Boolean(semantic) }, errors, freshness, semantic, changeImpact, renderImpact, editClosure, closureSetSha };
 }

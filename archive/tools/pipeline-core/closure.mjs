@@ -14,13 +14,14 @@ import { validateSolutionQuality } from './solution-quality.mjs';
 import { validateVisualBenefitPair } from './solution-visual-benefit.mjs';
 import { validatePastExamCompletion } from './past-exam-contract.mjs';
 import { validateStudentSerialization, validateCurriculumBinding } from './student-output.mjs';
+import { criticalFactCoverage, validateGeneratorProvenance } from './gold-contract.mjs';
 
 export const RUN_VERSION = 'APMATH_PIPELINE_RUN_v1';
 export const RUN_VERSION_V2 = 'APMATH_PIPELINE_RUN_v2';
 export const EVIDENCE_VERSION = 'APMATH_PIPELINE_EVIDENCE_v1';
 export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const profiles = JSON.parse(fs.readFileSync(new URL('./profiles.json', import.meta.url)));
-export const CORE_SHA_INPUT_FILES = Object.freeze(['solution-quality.mjs', 'solution-visual-benefit.mjs', 'student-output.mjs', '../../data/master_tables/js_archive_tag_master.json', 'past-exam-contract.mjs', '../past-exam-pipeline/completion-contract.json', '../past-exam-pipeline/lib/calibration.mjs', 'contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'machine-evidence.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
+export const CORE_SHA_INPUT_FILES = Object.freeze(['solution-quality.mjs', 'solution-visual-benefit.mjs', 'student-output.mjs', 'gold-contract.mjs', '../../data/master_tables/js_archive_tag_master.json', 'past-exam-contract.mjs', '../past-exam-pipeline/completion-contract.json', '../past-exam-pipeline/lib/calibration.mjs', 'contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'machine-evidence.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
 export const CORE_SHA = objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
 const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
 
@@ -33,6 +34,8 @@ export function runInputSha(run) {
   // Decisions are outputs of review, not inputs to the blind source pass.
   // The final requirement map is bound separately by denominatorInput and V3.
   const payload = { schemaVersion: run.schemaVersion, pipeline: run.pipeline, runId: run.runId, revision: run.revision, assetRoot: run.assetRoot || 'archive', renderRuntime: run.renderRuntime || null, sourceRecoveryLedger: run.sourceRecoveryLedger || null, sourceRecoverySignal: run.sourceRecoverySignal === true, sourceRecoveryStatus: run.sourceRecoveryStatus || null, questionOrder: run.questions.map(q => q.questionUid), questionUids: uidSet(run.questions.map(q => q.questionUid)), questions, inputs: [...run.inputs].sort((a, b) => a.path < b.path ? -1 : 1), pastExamCompletionRef: run.pastExamCompletionRef || null, coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA };
+  if (Object.hasOwn(run, 'pastExamAuthority')) payload.jobAuthority = run.pastExamAuthority;
+  if (Object.hasOwn(run, 'benchmarkKind')) payload.benchmarkKind = run.benchmarkKind;
   if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { workBatchId: run.workBatchId || null, builderId: run.builderId || null, builderSessionId: run.builderSessionId || null, builderModelOrAgent: run.builderModelOrAgent || null, sourceAuthority: run.sourceAuthority || null, uidAuthority: run.uidAuthority || null, semanticDependencyBindings: run.semanticDependencyBindings || null, releaseRenderPolicy: run.releaseRenderPolicy || run.releasePolicy || null, viewportProfiles: run.viewportProfiles || profiles.viewports, requiredModeCaseSet: run.requiredModeCaseSet || null });
   if (run.schemaVersion === RUN_VERSION_V2) Object.assign(payload, { predecessor: run.predecessor || null, publicationIntent: run.publicationIntent || null, sharedMaterial: run.sharedMaterial || null, globalLayoutMetadata: run.globalLayoutMetadata || null, contextDependencyRefs: run.contextDependencyRefs || [], declaredContextDependencyUidSet: run.declaredContextDependencyUidSet || [] });
   return objectSha(payload);
@@ -66,7 +69,7 @@ export function validateRegistry(records, run) {
 }
 
 export function denominatorInput(run) {
-  const rows = run.questions.map(q => ({ questionUid: q.questionUid, requirement: q.visual.requirement, adjudicationId: q.visual.adjudicationId, adjudicationStatus: q.visual.adjudicationStatus, exemptReason: q.visual.exemptReason ?? null, actualSolutionVisualAttached: q.visual.actualSolutionVisualAttached, problemVisualMathDependency: q.visual.problemVisualMathDependency, sharedVisualMathDependency: q.visual.sharedVisualMathDependency })).sort((a, b) => a.questionUid < b.questionUid ? -1 : 1);
+  const rows = run.questions.map(q => ({ questionUid: q.questionUid, requirement: q.visual?.requirement ?? null, adjudicationId: q.visual?.adjudicationId ?? null, adjudicationStatus: q.visual?.adjudicationStatus ?? null, exemptReason: q.visual?.exemptReason ?? null, actualSolutionVisualAttached: q.visual?.actualSolutionVisualAttached ?? false, problemVisualMathDependency: q.visual?.problemVisualMathDependency ?? false, sharedVisualMathDependency: q.visual?.sharedVisualMathDependency ?? false })).sort((a, b) => a.questionUid < b.questionUid ? -1 : 1);
   const requiredUidSet = rows.filter(q => q.requirement === 'VISUAL_REQUIRED' || q.requirement === 'VISUAL_RECOMMENDED' || q.actualSolutionVisualAttached || q.problemVisualMathDependency || q.sharedVisualMathDependency).map(q => q.questionUid);
   return { inputSha: objectSha({ runInputSha: runInputSha(run), rows }), requiredUidSet, requiredUidSetSha: uidSetSha(requiredUidSet) };
 }
@@ -93,7 +96,7 @@ export function validateRender(root, record, profile, mode, run, inputSha, candi
   if (!reused && Date.parse(record.startedAt) < Date.parse(capture.frozenAt)) errors.push('RENDER_REVIEW_BEFORE_CAPTURE_FREEZE');
   const payload = capture.payload;
   if (run.schemaVersion === RUN_VERSION_V2 && (capture.inputSha !== inputSha || capture.runId !== run.runId || capture.revision !== run.revision)) errors.push('CURRENT_RENDER_CAPTURE_REQUIRED');
-  if (run.schemaVersion === RUN_VERSION_V2 && (canonicalJson(payload.candidateRef) !== canonicalJson(run.inputs.find(ref => ref.path === candidatePath && ref.role === 'candidate')) || canonicalJson(payload.assetRefs) !== canonicalJson(run.inputs.filter(ref => payload.assetAssociations?.some(row => row.path === ref.path))))) errors.push('RENDER_CURRENT_OUTPUT_REF_BINDING');
+  if (run.schemaVersion === RUN_VERSION_V2 && (canonicalJson(payload.candidateRef) !== canonicalJson(run.inputs.find(ref => ref.path === candidatePath && ref.role === 'candidate')) || canonicalJson(payload.assetRefs) !== canonicalJson(run.inputs.filter(ref => payload.assetAssociations?.some(row => row.path === ref.path))) || payload.currentArtifactSha !== run.inputs.find(ref => ref.path === candidatePath && ref.role === 'candidate')?.sha256 || capture.machineProvenance?.currentArtifactSha !== run.inputs.find(ref => ref.path === candidatePath && ref.role === 'candidate')?.sha256)) errors.push('RENDER_CURRENT_OUTPUT_REF_BINDING');
   if (!isObject(payload) || payload.actualBrowser !== true || payload.productionEngine !== true || payload.mode !== mode || !nonempty(payload.browserVersion)) errors.push('REAL_RENDER_CAPTURE_REQUIRED');
   if (review.runtimeBundleSha !== run.renderRuntime?.bundleSha || payload.runtimeBundleSha !== run.renderRuntime?.bundleSha) errors.push('RENDER_RUNTIME_BUNDLE_SHA_MISMATCH');
   if (!Array.isArray(payload.runtimeResponses) || !payload.runtimeResponses.length || payload.runtimeResponseBundleSha !== objectSha(payload.runtimeResponses) || review.runtimeResponseBundleSha !== payload.runtimeResponseBundleSha) errors.push('RENDER_RESPONSE_BUNDLE_SHA_MISMATCH');
@@ -209,13 +212,18 @@ export function loadBoundQuestionBanks(root, run) {
 // V2 supplies verified freshness rows; immutable evidence is never rewritten on disk.
 export function auditSemanticKernel(root, run, freshnessRows = null) {
   const errors = [], itemResults = [], renderResults = [], candidateQuestions = new Map();
+  const diagnosticContinuation = { status: 'NOT_STARTED', downstreamObserved: false };
   let productionAuthorized = false;
-  const result = () => ({ schemaVersion: 'APMATH_PIPELINE_CLOSURE_v1', pipeline: run?.pipeline || null, runId: run?.runId || null, status: errors.length ? 'BLOCKED' : 'PASS', verifiedScope: profiles.pipelines[run?.pipeline]?.scope || null, productionAuthorized, coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA, inputSha: run?.inputSha || null, errors, items: itemResults, renders: renderResults });
+  const result = () => ({ schemaVersion: 'APMATH_PIPELINE_CLOSURE_v1', pipeline: run?.pipeline || null, runId: run?.runId || null, status: errors.length ? 'BLOCKED' : 'PASS', verifiedScope: profiles.pipelines[run?.pipeline]?.scope || null, productionAuthorized, diagnosticContinuation, coreSha: CORE_SHA, visualSpecSha: VISUAL_SPEC_SHA, inputSha: run?.inputSha || null, errors, items: itemResults, renders: renderResults });
   if (!isObject(run) || ![RUN_VERSION, RUN_VERSION_V2].includes(run.schemaVersion) || (run.schemaVersion === RUN_VERSION_V2 && !Array.isArray(freshnessRows)) || !profiles.pipelines[run.pipeline] || !nonempty(run.runId) || !Number.isSafeInteger(run.revision) || run.revision < 1 || !Array.isArray(run.questions) || !run.questions.length || !Array.isArray(run.inputs) || !run.inputs.length || !Array.isArray(run.evidence) || !run.evidence.length || !nonempty(run.builderSessionId)) {
     errors.push('RUN_SCHEMA_INVALID'); return result();
   }
   const policy = profiles.pipelines[run.pipeline];
   try { uidSet(run.questions.map(q => q.questionUid)); } catch (error) { errors.push(error.message); }
+  // Duplicate/invalid UID sets are structural and cannot safely enter
+  // downstream denominator calculations. Other source/quality/visual defects
+  // intentionally continue through the diagnostic observation path below.
+  if (errors.includes('INVALID_UID_SET')) return result();
   const inputPaths = new Set();
   const sourceIdentities = new Set();
   for (const ref of run.inputs) {
@@ -261,15 +269,24 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
         for (const key of ['content', 'choices', 'answer', 'solution', 'image', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'layoutTag', 'wide']) if (JSON.stringify(source[key] ?? null) !== JSON.stringify(question[key] ?? null)) errors.push(`METADATA_SCOPE_CONTENT_MUTATION:${q.questionUid}:${key}`);
       }
       const attached = Boolean(question.solutionImage || /<(?:svg|table|img)\b/i.test(question.solution || ''));
+      const lifecycleException = q.visual.lifecycleException;
+      const exceptionRef = lifecycleException?.evidenceRef && run.inputs.find(ref => ref.path === lifecycleException.evidenceRef.path && ref.sha256 === lifecycleException.evidenceRef.sha256);
+      const explicitLifecycleException = Boolean(exceptionRef && ['DEFECT', 'HOLD', 'RECLASSIFICATION'].includes(lifecycleException.status) && nonempty(lifecycleException.reason));
+      if (lifecycleException && !explicitLifecycleException) errors.push(`VISUAL_LIFECYCLE_EXCEPTION_INVALID:${q.questionUid}`);
       if (attached !== q.visual.actualSolutionVisualAttached) errors.push(`ACTUAL_ATTACHMENT_MISMATCH:${q.questionUid}`);
       if (!attached && (question.solutionImageAlt || question.solutionImageCaption)) errors.push(`ORPHAN_ALT_CAPTION:${q.questionUid}`);
-      if ((['KEEP', 'ADD', 'REBUILD'].includes(q.visual.action) && !attached) || (['NONE', 'REMOVE'].includes(q.visual.action) && attached)) errors.push(`VISUAL_ACTION_PARITY:${q.questionUid}`);
-      if (['ADD', 'REBUILD'].includes(q.visual.action)) {
+      if (!explicitLifecycleException && ((['KEEP', 'ADD', 'REBUILD'].includes(q.visual.action) && !attached) || (['NONE', 'REMOVE'].includes(q.visual.action) && attached))) errors.push(`VISUAL_ACTION_PARITY:${q.questionUid}`);
+      if (['ADD', 'REBUILD'].includes(q.visual.action) && !explicitLifecycleException) {
         try {
           const witness = JSON.parse(readBoundFile(root, q.generationEvidence));
-          const generator = run.inputs.find(i => i.role === 'generator');
+          const generator = run.inputs.find(i => i.role === 'generator' && (i.path === witness.generatorPath || i.path.endsWith(`/${witness.generatorPath || witness.generator || ''}`) || String(witness.generatorPath || witness.generator || '').endsWith(`/${i.path}`)));
           const artifact = run.inputs.find(i => q.solutionAssetPaths?.includes(i.path));
-          if (!generator || !artifact || witness.schemaVersion !== 'APMATH_GENERATOR_WITNESS_v1' || witness.status !== 'BUILD_SIDE_ONLY' || witness.numericExecution !== 'PYTHON_EXECUTED' || witness.generatorSha !== generator.sha256 || witness.artifactSha !== artifact.sha256 || witness.visualSpecSha !== VISUAL_SPEC_SHA || !HASH_PATTERN.test(witness.semanticSha)) throw new Error('GENERATOR_BINDING_INVALID');
+          const provenance = validateGeneratorProvenance(witness, run.inputs.filter(i => i.role === 'generator'));
+          if (provenance.status !== 'PASS') throw new Error(provenance.errors.join(';'));
+          if (!artifact || witness.schemaVersion !== 'APMATH_GENERATOR_WITNESS_v1' || witness.status !== 'BUILD_SIDE_ONLY' || witness.numericExecution !== 'PYTHON_EXECUTED' || witness.artifactSha !== artifact.sha256 || witness.visualSpecSha !== VISUAL_SPEC_SHA || !HASH_PATTERN.test(witness.semanticSha)) throw new Error('GENERATOR_BINDING_INVALID');
+          const witnessAssets = run.inputs.filter(i => i.role === 'asset' && i.sha256 === witness.artifactSha);
+          const candidateAssetPathMatches = (field, ref) => field === ref.path || field === ref.path.replace(/^archive\//, '') || field === ref.path.replace(`${run.assetRoot || 'archive'}/`, '') || field === ref.path.replace(/^.*?(assets\/)/, '$1');
+          if (!witnessAssets.length || witnessAssets.some(i => !q.solutionAssetPaths?.includes(i.path) || !candidateAssetPathMatches(question.solutionImage, i))) throw new Error('GENERATED_ASSET_CANDIDATE_NOT_LINKED');
           if (witness.rulePackSha !== rulePreflight(root).rulePackSha) throw new Error('GENERATOR_RULE_PACK_STALE');
         } catch (error) { errors.push(`GENERATION_EVIDENCE:${q.questionUid}:${error.message}`); }
       }
@@ -281,12 +298,13 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
       if ((question.image || /<(?:svg|table|img)\b/i.test(question.content || '')) && !q.visual.problemVisualMathDependency && !nonempty(q.visual.problemDependencyExemption)) errors.push(`PROBLEM_VISUAL_DEPENDENCY_UNADJUDICATED:${q.questionUid}`);
     } catch (error) { errors.push(`CANDIDATE_READ:${q.questionUid}:${error.message}`); }
   }
-  if (errors.length) return result();
+  if (errors.length) diagnosticContinuation.status = 'CONTINUED_AFTER_UPSTREAM_DEFECT';
   try { if (run.inputSha !== runInputSha(run)) errors.push('RUN_INPUT_SHA_STALE'); } catch (error) { errors.push(error.message); }
   verifyRules(root, run, errors);
   try { errors.push(...validateRegistry(run.registry, run)); } catch { errors.push('REGISTRY_MALFORMED'); }
-  if (errors.length) return result();
+  if (errors.length) diagnosticContinuation.status = 'CONTINUED_AFTER_UPSTREAM_DEFECT';
   const evidence = new Map(), evidenceHashes = new Map(), invalidEvidenceIds = new Set();
+  diagnosticContinuation.downstreamObserved = true;
   for (const ref of run.evidence) {
     const beforeValidation = errors.length;
     const e = validateEvidence(root, ref, run, errors, freshnessRows);
@@ -340,6 +358,7 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
     }
     if (needed && policy.visual) {
       const v1 = get('v1'), v2 = get('v2'), v3 = get('v3');
+      if (v2 && (v2.payload?.reviewStatus === 'NOT_TESTED' || v2.payload?.notTested === true || v2.payload?.artifactStatus === 'NOT_TESTED')) findings.push('V2_NOT_TESTED');
       if (v1 && v2 && v3) {
         if (q.visual.adjudicationId !== v3.evidenceId) findings.push('REQUIREMENT_ADJUDICATION_NOT_BOUND');
         if (v3.payload?.finalVisualRequirement !== q.visual.requirement || v3.payload?.cDenominatorInputSha !== denominatorInput(run).inputSha) findings.push('V3_REQUIREMENT_MAP_STALE');
@@ -384,8 +403,21 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
             visualItems.push({ artifactSha: artifact.sha256, structureSha, fact: v2.payload.fact, reuseApproval: v3.payload.reuseApproval });
           }
         } catch (error) { findings.push(`VISUAL_FACT_INVALID:${error.message}`); }
+        const coverage = criticalFactCoverage(v1.payload?.visualBenefit?.expectedFacts, v2.payload?.observedFacts || v2.payload?.observedCriticalFacts || v2.payload?.factObservations);
+        for (const [field, expected] of Object.entries({ EXPECTED_CRITICAL_FACT_COUNT: coverage.EXPECTED_CRITICAL_FACT_COUNT, OBSERVED_CRITICAL_FACT_COUNT: coverage.OBSERVED_CRITICAL_FACT_COUNT, CRITICAL_FACT_COVERAGE: coverage.CRITICAL_FACT_COVERAGE, EXPECTED_OBSERVED_FACT_PARITY: coverage.EXPECTED_OBSERVED_FACT_PARITY })) if (v3.payload?.[field] !== expected) findings.push(`VISUAL_FACT_COVERAGE:${field}`);
+        findings.push(...coverage.errors);
         for (const gate of ['necessity', 'decisiveStep', 'completeness', 'mediumFit', 'solutionParity', 'altCaptionParity', 'semanticsLocks', 'staticContract']) if (v3.payload?.checks?.[gate] !== 'PASS') findings.push(`V3_GATE_NOT_PASS:${gate}`);
       }
+    }
+    const lifecycleException = q.visual.lifecycleException;
+    const explicitLifecycleException = Boolean(lifecycleException?.evidenceRef && run.inputs.some(ref => ref.path === lifecycleException.evidenceRef.path && ref.sha256 === lifecycleException.evidenceRef.sha256) && ['DEFECT', 'HOLD', 'RECLASSIFICATION'].includes(lifecycleException.status) && nonempty(lifecycleException.reason));
+    if (q.visual.action === 'ADD' && !explicitLifecycleException) {
+      const candidate = candidateQuestions.get(q.questionUid);
+      const candidateAttached = Boolean(candidate?.solutionImage || /<(?:svg|table|img)\b/i.test(candidate?.solution || ''));
+      if (!q.solutionAssetPaths?.length || !candidateAttached) findings.push('V1_ADD_ASSET_MISSING');
+      const v2 = evidence.get(q.evidence.V2), v3 = evidence.get(q.evidence.V3);
+      if (!q.requiredAxes?.includes('V2') || !v2 || v2.status !== 'PASS' || v2.payload?.reviewStatus === 'NOT_TESTED' || v2.payload?.notTested === true) findings.push('V1_ADD_V2_REVIEW_REQUIRED');
+      if (!v3 || v3.status !== 'PASS') findings.push('V1_ADD_V3_REVIEW_REQUIRED');
     }
     if (run.schemaVersion === RUN_VERSION_V2 && policy.visual) {
       const v3 = get('v3'), v1 = get('v1');
@@ -394,6 +426,8 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
     itemResults.push({ questionUid: q.questionUid, status: findings.length ? 'BLOCKED' : 'PASS', visualRequired: needed, parity, errors: findings });
     errors.push(...findings.map(f => `${q.questionUid}:${f}`));
   }
+  const linkedAssetPaths = new Set(run.questions.flatMap(q => [...(q.problemAssetPaths || []), ...(q.solutionAssetPaths || [])]));
+  for (const ref of run.inputs.filter(input => input.role === 'asset' && /\.svg$/i.test(input.path))) if (!linkedAssetPaths.has(ref.path)) errors.push(`ORPHAN_SVG:${ref.path}`);
   try {
     const duplicate = auditDuplicates(visualItems);
     if (duplicate.status !== 'PASS') errors.push(...duplicate.errors);

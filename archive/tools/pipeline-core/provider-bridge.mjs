@@ -4,6 +4,7 @@ import { canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, w
 import { loadBoundQuestionBanks } from './closure.mjs';
 import { loadCandidateReviewContext, validateAuditorPacket } from './review-isolation-runner.mjs';
 import { readWorkBatch, reconcileWorkBatchReview } from './work-batch.mjs';
+import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
 const PHASES = Object.freeze(['U1', 'U2', 'U3']);
@@ -49,14 +50,15 @@ function contextMap(contexts, builderSessionId) {
   return Object.fromEntries(PHASES.map(phase => [phase, { sessionId: contexts[phase].sessionId, contextId: contexts[phase].contextId }]));
 }
 
-function validatePreflightResponse(response, request) {
+function validatePreflightResponse(response, request, executionIdentity = null) {
   check(response?.schemaVersion === PROVIDER_BRIDGE_VERSION && response.operation === 'PREPARE_STATELESS_FINAL_AUDIT' && response.status === 'READY', 'PROVIDER_PREFLIGHT_RESPONSE_INVALID');
   check(request.requestSha === objectSha(Object.fromEntries(Object.entries(request).filter(([key]) => key !== 'requestSha'))) && response.requestSha === request.requestSha, 'PROVIDER_PREFLIGHT_INPUT_BINDING');
   check(nonempty(response.provider) && nonempty(response.model) && nonempty(response.externalTaskId), 'PROVIDER_IDENTITY_ATTESTATION_REQUIRED');
   check(nonempty(response.auditorId) && response.auditorId !== request.builderId && nonempty(response.auditorSessionId) && response.auditorSessionId !== request.builderSessionId, 'PROVIDER_AUDITOR_SEPARATION_REQUIRED');
   check(response.contextIsolation === 'STATELESS_INPUTS' && response.subagentToolsEnabled === false && response.modelInvocationCount === 0, 'PROVIDER_PREFLIGHT_CAPABILITY_INVALID');
   check(nonempty(response.runtimeAttestation), 'PROVIDER_RUNTIME_ATTESTATION_REQUIRED');
-  return contextMap(response.contexts, request.builderSessionId);
+  const route = observeModelRoute(response, new Date().toISOString());
+  return { contexts: contextMap(response.contexts, request.builderSessionId), route };
 }
 
 function plannedLaunch(state, purpose) {
@@ -85,6 +87,9 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     scope: purpose === 'FINAL_AUDIT' ? freeze.targets : freeze.affected,
     builderId: state.builderId,
     builderSessionId: state.builderSessionId,
+    requestedModel: state.executionIdentity?.requestedModel || null,
+    requestedReasoningEffort: state.executionIdentity?.requestedReasoningEffort || null,
+    jobKind: state.jobKind || 'PRODUCTION',
     requiredCapabilities: {
       contexts: PHASES,
       contextIsolation: 'STATELESS_INPUTS',
@@ -96,7 +101,15 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
   };
   const request = { ...body, requestSha: objectSha(body) };
   const response = transportCall(transport, request);
-  const contexts = validatePreflightResponse(response, request);
+  const { contexts, route } = validatePreflightResponse(response, request, state.executionIdentity);
+  const executionIdentity = {
+    ...(state.executionIdentity || {}),
+    actualModel: route.actualModel,
+    actualReasoningEffort: route.actualReasoningEffort,
+    modelRouteObservedAtStart: route.observedAt,
+  };
+  const parity = validateModelRouteParity(executionIdentity);
+  Object.assign(executionIdentity, { routeStatus: parity.routeStatus, MODEL_ROUTE_PARITY: parity.MODEL_ROUTE_PARITY });
   const plan = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     kind: 'PROVIDER_STATELESS_REVIEW_PLAN',
@@ -109,6 +122,9 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     builderSessionId: state.builderSessionId,
     provider: response.provider,
     model: response.model,
+    reasoningEffort: response.reasoningEffort || response.actualReasoningEffort || null,
+    jobAuthorityStartSha: state.jobAuthority?.startSha || null,
+    executionIdentity,
     externalId: response.externalTaskId,
     auditorId: response.auditorId,
     auditorSessionId: response.auditorSessionId,
@@ -136,6 +152,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
       subagentToolsEnabled: false,
       contexts: plan.contexts,
       providerAttestationPlanRef: ref,
+      executionIdentity,
     },
   };
 }
@@ -147,6 +164,10 @@ function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
   check(plan.auditorId === launch.auditorId && plan.auditorSessionId === launch.auditorSessionId && same(plan.contexts, launch.contexts), 'PROVIDER_PLAN_CONTEXT_BINDING');
   check(launch.providerAttestationPlanRef && same(launch.providerAttestationPlanRef, planRef) && same(planRef, fileRef(root, planRef.path)), 'PROVIDER_PLAN_RESERVATION_REQUIRED');
   check(plan.contextIsolation === 'STATELESS_INPUTS' && plan.subagentToolsEnabled === false && nonempty(plan.externalId), 'PROVIDER_PLAN_CAPABILITY_INVALID');
+  if (isBenchmarkJobKind(state.jobKind)) {
+    check(plan.executionIdentity?.jobKind === state.jobKind && plan.executionIdentity.requestedModel === state.executionIdentity.requestedModel && plan.executionIdentity.requestedReasoningEffort === state.executionIdentity.requestedReasoningEffort, 'MODEL_ROUTE_REQUEST_BINDING');
+    check(nonempty(plan.executionIdentity.actualModel) && nonempty(plan.executionIdentity.actualReasoningEffort) && nonempty(plan.executionIdentity.modelRouteObservedAtStart), 'MODEL_ROUTE_OBSERVATION_REQUIRED');
+  }
   check(plan.preflightResponse?.requestSha === plan.preflightRequest?.requestSha && plan.preflightResponseSha === objectSha(plan.preflightResponse), 'PROVIDER_PLAN_ATTESTATION_TAMPERED');
 }
 
@@ -203,6 +224,7 @@ function phaseRequest(plan, packet) {
     logicalLaunchId: plan.launchId,
     externalTaskId: plan.externalId,
     phase: packet.phase,
+    jobAuthorityStartSha: plan.jobAuthorityStartSha || null,
     subagentToolsEnabled: false,
     packet,
   };
@@ -218,6 +240,7 @@ function validatePhaseResponse(response, request, plan, seenInvocationIds) {
   check(response.inputVisibilityProfile === request.packet.inputVisibilityProfile && response.priorReviewVisibility === request.packet.priorReviewVisibility && response.subagentToolsEnabled === false, 'PROVIDER_PHASE_VISIBILITY_ATTESTATION_REQUIRED');
   check(response.usedTokens === null || response.usedTokens === 'NOT_AVAILABLE' || Number.isSafeInteger(response.usedTokens) && response.usedTokens >= 0, 'PROVIDER_TOKEN_TELEMETRY_INVALID');
   check(Array.isArray(response.evidence) && Array.isArray(response.defects), 'PROVIDER_PHASE_OUTPUT_INVALID');
+  return observeModelRoute(response, new Date().toISOString());
 }
 
 function receiptPathFor(root, relative) {
@@ -246,12 +269,13 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'DISPATCHED' });
   const base = path.dirname(receiptPathFor(root, receiptPath));
   const relativeBase = path.relative(path.resolve(root), base).split(path.sep).join('/');
-  const phaseAttestationRefs = [], evidenceRefs = [], defects = [], usedTokens = [], seenInvocationIds = new Set();
+  const phaseAttestationRefs = [], evidenceRefs = [], defects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
   for (const { packet } of packets) {
     const request = phaseRequest(plan, packet);
     const requestRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-request.json`, request);
     const response = transportCall(transport, request);
-    validatePhaseResponse(response, request, plan, seenInvocationIds);
+    const phaseRoute = validatePhaseResponse(response, request, plan, seenInvocationIds);
+    routeObservations.push({ phase: packet.phase, ...phaseRoute });
     seenInvocationIds.add(response.providerInvocationId);
     const responseRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-response.json`, response);
     phaseAttestationRefs.push({ phase: packet.phase, requestRef, responseRef, inputSha: request.inputSha, providerInvocationId: response.providerInvocationId });
@@ -269,6 +293,22 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     status: 'COMPLETED',
     provider: plan.provider,
     model: plan.model,
+    reasoningEffort: plan.reasoningEffort || null,
+    executionIdentity: (() => {
+      const identity = structuredClone(plan.executionIdentity || {});
+      const first = routeObservations.find(route => route.actualModel || route.actualReasoningEffort);
+      const routeChanged = routeObservations.some(route => (route.actualModel || null) !== identity.actualModel || (route.actualReasoningEffort || null) !== identity.actualReasoningEffort);
+      Object.assign(identity, {
+        actualModel: first?.actualModel || identity.actualModel || null,
+        actualReasoningEffort: first?.actualReasoningEffort || identity.actualReasoningEffort || null,
+        modelRouteObservedAtClosure: new Date().toISOString(),
+        modelRouteChanged: routeChanged,
+        modelRouteObservations: routeObservations,
+      });
+      const parity = validateModelRouteParity(identity, { modelRouteChanged: routeChanged });
+      Object.assign(identity, { routeStatus: parity.routeStatus, MODEL_ROUTE_PARITY: parity.MODEL_ROUTE_PARITY });
+      return identity;
+    })(),
     providerPlanRef: planRef,
     independentAgentLaunchCount: 1,
     expensiveAgentLaunchCount: 1,
