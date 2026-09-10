@@ -245,7 +245,12 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "평면좌표",
+      "무게중심",
+      "내분점",
+      "도형"
+    ],
     "wide": false,
     "content": "삼각형 $ABC$에서 변 $BC$의 중점 $M$의 좌표는 $(3,7)$, 삼각형 $ABC$의 무게중심 $G$의 좌표는 $(6,4)$이다. 점 $A$의 좌표 $(a,b)$는?",
     "choices": [
@@ -256,7 +261,11 @@ window.questionBank = [
       "$(12,2)$"
     ],
     "answer": "①",
-    "solution": "삼각형의 무게중심은 꼭짓점 $A$와 변 $BC$의 중점 $M$을 잇는 중선 위에서\n$AG:GM=2:1$을 만족한다. 좌표식으로 쓰면\n$G=\\dfrac{A+2M}{3}$이다.\n\n따라서\n$A=3G-2M=3(6,4)-2(3,7)=(18,12)-(6,14)=(12,-2)$이다.\n\n그러므로 점 $A$의 좌표는 $(12,-2)$이고 정답은 ①이다.",
+    "solution": "삼각형의 무게중심은 꼭짓점 $A$와 변 $BC$의 중점 $M$을 잇는 중선 위에 있고, $AG:GM=2:1$이다. 따라서 점 $G$는 선분 $AM$을 $2:1$로 내분한다.\n\n$x$좌표에 내분공식을 적용하면\n$6=\\dfrac{x_A+2\\cdot3}{3}$이므로 $x_A=12$이다.\n$y$좌표에 내분공식을 적용하면\n$4=\\dfrac{y_A+2\\cdot7}{3}$이므로 $y_A=-2$이다.\n\n따라서 점 $A$의 좌표는 $(12,-2)$이고 정답은 ①이다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q09-solution.svg",
+    "solutionImageAlt": "중선 AM 위의 A, G, M의 순서와 AG:GM=2:1을 나타낸 좌표평면",
+    "solutionImageCaption": "A-G-M의 순서, G(6,4), M(3,7), AG:GM=2:1에서 A(12,-2)를 좌표별로 구한다.",
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
