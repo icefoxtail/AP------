@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "APMATH_PAST_EXAM_V3_GOLD_PILOT_STAGE_STATUS_v1",
+  "examId": "20_매산고_2학기_기말_고1_기출",
+  "generatedAt": "2026-09-10T02:14:01.458Z",
+  "startSha": "b305c08798ee35dd0954dc200cb586d64024e3a4",
+  "originMainSha": "b305c08798ee35dd0954dc200cb586d64024e3a4",
+  "denominator": {
+    "sourceQuestions": 20,
+    "sourcePages": 6
+  },
+  "stages": [
+    {
+      "stage": "S0_RULE_PREFLIGHT",
+      "status": "PASS",
+      "evidenceRefs": [
+        "archive/tools/pipeline-core/cli.mjs rules",
+        "reference-sample-lock.json"
+      ]
+    },
+    {
+      "stage": "S0.5_REFERENCE_SAMPLE_CALIBRATION",
+      "status": "PASS",
+      "evidenceRefs": [
+        "reference-sample-lock.json"
+      ],
+      "detail": "Two complete origin/main production samples were read and calibration was frozen."
+    },
+    {
+      "stage": "S1_SOURCE_INVENTORY_FREEZE",
+      "status": "PASS",
+      "coverage": "20/20",
+      "evidenceRefs": [
+        "reports/source_inventory.json",
+        "reports/source_identity_map.json"
+      ]
+    },
+    {
+      "stage": "S2_FULL_PAGE_RENDER",
+      "status": "PASS",
+      "coverage": "6/6",
+      "evidenceRefs": [
+        "reports/page_render_report.json",
+        "pages/"
+      ]
+    },
+    {
+      "stage": "S3_VISION_EXTRACTION",
+      "status": "HOLD",
+      "coverage": "0/20",
+      "evidenceRefs": [
+        "reports/validation_summary.json",
+        "reports/vision_page_extract_request.json",
+        "reports/vision_page_extract.json"
+      ],
+      "reason": "Fresh page-level Vision JSON was not available; candidate remains an explicit extraction skeleton."
+    },
+    {
+      "stage": "S4_S8_COMPLETION_AND_VISUAL_BUILD",
+      "status": "NOT_RUN",
+      "reason": "Blocked by S3; no content/choices/answer/solution/classification/visual facts were invented."
+    },
+    {
+      "stage": "S9_S14_STATIC_AND_U1_U2_U3",
+      "status": "NOT_RUN",
+      "reason": "No completed candidate or independent review packets were available."
+    },
+    {
+      "stage": "S9_S14_FINAL_BROWSER_RENDER",
+      "status": "NOT_RUN",
+      "reason": "No completed candidate was available; source-page render is not final exam/solution/answer browser evidence."
+    },
+    {
+      "stage": "S15_FINAL_CLOSURE_AND_PROMOTION",
+      "status": "BLOCKED",
+      "reason": "Upstream S3 HOLD; production writes are out of scope and were not attempted."
+    }
+  ],
+  "observedSourceTextLayer": "ABSENT_SCAN_TEXT_LAYER",
+  "pipelineResult": {
+    "status": "NEEDS_WORK",
+    "state": "EXTRACTED",
+    "questionCount": 20,
+    "pageCount": 6,
+    "manualReviewCount": 20,
+    "visualAssetCropCount": 0,
+    "imageGateStatus": "ok",
+    "blockedReasons": [
+      "vision_json_missing_or_incomplete"
+    ]
+  },
+  "pageRenderResult": {
+    "status": "ok",
+    "pageCount": 6,
+    "itemCount": 6
+  },
+  "candidateSkeleton": "candidate/20_매산고_2학기_기말_고1_기출.candidate.js"
+}

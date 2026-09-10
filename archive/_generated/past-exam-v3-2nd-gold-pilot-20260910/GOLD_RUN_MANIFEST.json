@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "APMATH_PAST_EXAM_V3_GOLD_PILOT_RUN_v1",
+  "runName": "Past Exam V3 2차 GOLD pilot",
+  "generatedAt": "2026-09-10T02:14:01.458Z",
+  "status": "BLOCKED_AT_S3_VISION",
+  "startSha": "b305c08798ee35dd0954dc200cb586d64024e3a4",
+  "originMainSha": "b305c08798ee35dd0954dc200cb586d64024e3a4",
+  "branch": "codex/past-exam-v3-2nd-gold-pilot-20260910",
+  "rulePackSha": "sha256:1337e44c4f650ff080b63961a0867009ab1b6e7dd667be7cd82347d12bf61f17",
+  "freshnessPolicy": {
+    "existingGoldCandidateSolutionArtifactUsed": false,
+    "sourceTruthInputsOnly": true
+  },
+  "exams": [
+    {
+      "examId": "20_매산고_2학기_기말_고1_기출",
+      "denominator": 20,
+      "stageStatus": "20_매산고_2학기_기말_고1_기출/reports/stage-status.json",
+      "defectLedger": "20_매산고_2학기_기말_고1_기출/reports/defect-ledger.json",
+      "finalValidation": "20_매산고_2학기_기말_고1_기출/reports/validation_summary.json"
+    },
+    {
+      "examId": "23_한영고_2학기_기말_고1_기출",
+      "denominator": 21,
+      "stageStatus": "23_한영고_2학기_기말_고1_기출/reports/stage-status.json",
+      "defectLedger": "23_한영고_2학기_기말_고1_기출/reports/defect-ledger.json",
+      "finalValidation": "23_한영고_2학기_기말_고1_기출/reports/validation_summary.json"
+    }
+  ],
+  "excludedFromCommit": [
+    "cache",
+    "temporary inspection images",
+    "backup trees",
+    "calibration drafts",
+    "preflight manifests",
+    "existing GOLD candidate/solution/artifact"
+  ],
+  "notes": [
+    "No production JS/DB/assets were modified.",
+    "No PASS was assigned to missing Vision, completion, visual, machine, U1/U2/U3, final render, closure, or promotion stages."
+  ]
+}

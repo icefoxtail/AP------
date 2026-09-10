@@ -1,0 +1,60 @@
+{
+  "examId": "23_한영고_2학기_기말_고1_기출",
+  "generatedAt": "2026-09-10T02:09:14.334801Z",
+  "task": "Analyze each full page image and return only the JSON matching reports/vision_page_extract_schema.json.",
+  "strictRules": [
+    "Extract displayNo, questionType, content, choices, hasVisualAsset, visualAssetType, visualAssetBBox, confidence fields, reviewNeeded, and reviewReason from full-page evidence.",
+    "Do not solve questions.",
+    "Do not fill answer.",
+    "Do not write solution.",
+    "Do not guess missing text or choices. contentSource/choicesSource=vision_required must remain manual review, not dummy text.",
+    "If content, choices, formula, or visual bbox is uncertain, set reviewNeeded=true with a concrete reviewReason.",
+    "visualAssetBBox must surround only the graph/figure/table/diagram/image inside the question, not the whole question and not the whole page.",
+    "Full page evidence is the source of truth for content and choices; crops are auxiliary zoom evidence only.",
+    "If there is no graph/figure/table/diagram/image, set hasVisualAsset=false, visualAssetType='none', visualAssetBBox=null."
+  ],
+  "pages": [
+    {
+      "pageNo": 1,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p001.png",
+      "width": 1819,
+      "height": 2570
+    },
+    {
+      "pageNo": 2,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p002.png",
+      "width": 1819,
+      "height": 2570
+    },
+    {
+      "pageNo": 3,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p003.png",
+      "width": 1819,
+      "height": 2570
+    },
+    {
+      "pageNo": 4,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p004.png",
+      "width": 1819,
+      "height": 2570
+    },
+    {
+      "pageNo": 5,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p005.png",
+      "width": 1819,
+      "height": 2570
+    },
+    {
+      "pageNo": 6,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p006.png",
+      "width": 1819,
+      "height": 2570
+    },
+    {
+      "pageNo": 7,
+      "imagePath": "C:\\Users\\USER\\Desktop\\AP-------past-exam-v3-gold-stabilization-20260910\\archive\\_generated\\past-exam-v3-2nd-gold-pilot-20260910\\23_한영고_2학기_기말_고1_기출\\pages\\page_p007.png",
+      "width": 1819,
+      "height": 2570
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "APMATH_PAST_EXAM_V3_GOLD_DEFECT_LEDGER_v1",
+  "examId": "23_한영고_2학기_기말_고1_기출",
+  "generatedAt": "2026-09-10T02:14:01.458Z",
+  "status": "OPEN_BLOCKING_DEFECTS",
+  "defects": [
+    {
+      "defectId": "23_한영고_2학기_기말_고1_기출:VISION_JSON_MISSING_OR_INCOMPLETE",
+      "code": "VISION_JSON_MISSING_OR_INCOMPLETE",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "affectedQuestions": 21,
+      "evidenceRefs": [
+        "reports/validation_summary.json",
+        "reports/vision_page_extract.json"
+      ],
+      "detail": "The canonical extractor created a full-page-first skeleton but no fresh page-level Vision JSON was supplied. All question content/choices remain manual review; no filler was written."
+    },
+    {
+      "defectId": "23_한영고_2학기_기말_고1_기출:SOURCE_TEXT_LAYER",
+      "code": "PRESENT_BUT_MOJIBAKE",
+      "severity": "OBSERVED",
+      "status": "RECORDED",
+      "affectedPages": 7,
+      "evidenceRefs": [
+        "reports/page_render_report.json"
+      ],
+      "detail": "The PDF text layer contains mojibake; full-page PNG remains the source truth and text-layer output was not used."
+    }
+  ],
+  "blockedStages": [
+    {
+      "stage": "S3_VISION_EXTRACTION",
+      "status": "HOLD",
+      "reason": "Fresh page-level Vision JSON was not available; candidate remains an explicit extraction skeleton."
+    },
+    {
+      "stage": "S4_S8_COMPLETION_AND_VISUAL_BUILD",
+      "status": "NOT_RUN",
+      "reason": "Blocked by S3; no content/choices/answer/solution/classification/visual facts were invented."
+    },
+    {
+      "stage": "S9_S14_STATIC_AND_U1_U2_U3",
+      "status": "NOT_RUN",
+      "reason": "No completed candidate or independent review packets were available."
+    },
+    {
+      "stage": "S9_S14_FINAL_BROWSER_RENDER",
+      "status": "NOT_RUN",
+      "reason": "No completed candidate was available; source-page render is not final exam/solution/answer browser evidence."
+    },
+    {
+      "stage": "S15_FINAL_CLOSURE_AND_PROMOTION",
+      "status": "BLOCKED",
+      "reason": "Upstream S3 HOLD; production writes are out of scope and were not attempted."
+    }
+  ]
+}
