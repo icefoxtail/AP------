@@ -383,7 +383,7 @@ window.questionBank = [
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형",
       "직선",
