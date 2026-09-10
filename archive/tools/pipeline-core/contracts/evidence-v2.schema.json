@@ -70,7 +70,8 @@
     "status": {
       "enum": [
         "PASS",
-        "FAIL"
+        "FAIL",
+        "HOLD"
       ]
     },
     "validityStatus": {
@@ -395,13 +396,13 @@
                   ],
                   "properties": {
                     "schema": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     },
                     "uidBinding": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     },
                     "curriculumBinding": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     }
                   }
                 }
@@ -444,19 +445,19 @@
                   ],
                   "properties": {
                     "schema": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     },
                     "jsLoad": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     },
                     "hashes": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     },
                     "assetBinding": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     },
                     "fileParity": {
-                      "const": "PASS"
+                      "enum": ["PASS", "FAIL", "HOLD"]
                     }
                   }
                 }

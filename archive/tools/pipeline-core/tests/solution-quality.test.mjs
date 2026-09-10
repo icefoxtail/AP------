@@ -55,6 +55,51 @@ test('difficulty, type and choices invalidate solution review projection', () =>
   for (const patch of [{ level: '상' }, { questionType: '서술형' }, { choices: ['2', '1'] }]) assert.notEqual(axisInputSha(q, 'SOLUTION'), axisInputSha({ ...q, ...patch }, 'SOLUTION'));
 });
 
+function reviewedSolutionContract(solution, recalculation = { solutionExcerpt: '7*6=42', expression: '7*6', claimedValue: 42, independentlyComputedValue: 42 }) {
+  const contract = solutionQualityDraft();
+  for (const key of SOLUTION_QUALITY_CHECKS) contract.checks[key] = { status: 'PASS', reason: `Reviewed ${key}`, solutionExcerpts: [solution] };
+  contract.checks.independentIntermediateRecalculation = {
+    status: 'PASS', reason: 'Independent arithmetic recomputation recorded', solutionExcerpts: [recalculation.solutionExcerpt],
+    independentWork: `Recomputed ${recalculation.expression} independently`, recalculations: [recalculation]
+  };
+  return contract;
+}
+
+test('correct answer with wrong reasoning is blocked by the explicit reasoning check', () => {
+  const solution = '정답은 ④이다. 근거는 존재하지 않는 규칙을 적용했기 때문이다. 7*6=42이다.';
+  const contract = reviewedSolutionContract(solution);
+  contract.checks.keyIdeaAdequate.status = 'FAIL';
+  const result = validateSolutionQuality(contract, { answer: '④', solution, choices: ['1', '2', '3', '4'] });
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.includes('SOLUTION_QUALITY_FAIL:keyIdeaAdequate'));
+});
+
+test('correct final answer with a wrong intermediate count is independently recalculated', () => {
+  const solution = '중간 계산은 6*6=42이고 최종 정답은 42이다.';
+  const contract = reviewedSolutionContract(solution, { solutionExcerpt: '6*6=42', expression: '6*6', claimedValue: 42, independentlyComputedValue: 36 });
+  const result = validateSolutionQuality(contract, { answer: '42', solution, choices: ['36', '42'] });
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.includes('SOLUTION_INTERMEDIATE_RECALCULATION_FAIL'));
+});
+
+test('self-contradictory explanation is blocked even when the answer parity check passes', () => {
+  const solution = '첫째 경우는 3가지이다. 따라서 같은 문제의 경우의 수는 4가지이다. 3+1=4이다.';
+  const contract = reviewedSolutionContract(solution, { solutionExcerpt: '3+1=4', expression: '3+1', claimedValue: 4, independentlyComputedValue: 4 });
+  contract.checks.internalConsistency.status = 'FAIL';
+  const result = validateSolutionQuality(contract, { answer: '4', solution, choices: ['3', '4'] });
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.includes('SOLUTION_QUALITY_FAIL:internalConsistency'));
+});
+
+test('a bare direct count cannot pass the required case split check', () => {
+  const solution = '경우의 수는 직접 세면 237이다. 따라서 정답은 ④이다. 237=237이다.';
+  const contract = reviewedSolutionContract(solution, { solutionExcerpt: '237=237', expression: '237', claimedValue: 237, independentlyComputedValue: 237 });
+  contract.checks.caseSplitComplete.status = 'FAIL';
+  const result = validateSolutionQuality(contract, { answer: '④', solution, choices: ['1', '2', '3', '4'] });
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.includes('SOLUTION_QUALITY_FAIL:caseSplitComplete'));
+});
+
 for (const [name, mutate] of [
   ['PASS-only benefit', (v1, v3) => { delete v3.payload.visualBenefit; }],
   ['source image used as exemption', (v1, v3) => { v3.payload.visualBenefit.sourceFigureUsedAsExemption = true; }],

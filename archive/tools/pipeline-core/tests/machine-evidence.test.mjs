@@ -9,8 +9,9 @@ import { fileRef, objectSha } from '../canonical.mjs';
 import { profiles, runInputSha } from '../closure.mjs';
 import { requiredAxesForQuestion } from '../projection.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
-import { initWorkBatch, freezeWorkBatch, readWorkBatch } from '../work-batch.mjs';
+import { initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, readWorkBatch } from '../work-batch.mjs';
 import { collectMachineEvidence, isChoicesContractValid } from '../machine-evidence.mjs';
+import { validateCurriculumBinding, validateStudentSerialization } from '../student-output.mjs';
 
 const write = (root, relative, value) => {
   const file = path.join(root, relative);
@@ -67,6 +68,19 @@ test('choices contract rejects unjustified objective choices omission', () => {
   assert.equal(isChoicesContractValid({ questionType: '객관식', choices: [] }), false);
 });
 
+test('constructed responses with empty choices are valid while image-only objective omission stays explicit', () => {
+  assert.equal(isChoicesContractValid({ questionType: '서술형', choices: [] }), true);
+  assert.equal(isChoicesContractValid({ questionType: '단답형', choices: [] }), true);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: [] }), false);
+});
+
+test('serialization and curriculum defects are deterministic machine findings', () => {
+  assert.equal(validateStudentSerialization({ solution: '$x ge 0$, $a cdot b$' }).status, 'FAIL');
+  assert.equal(validateStudentSerialization({ solution: '$x \\ge 0$, $a \\cdot b$' }).status, 'PASS');
+  assert.equal(validateCurriculumBinding({ standardCourse: '공통수학1', standardUnitKey: 'H22-C-05', standardUnit: '이차방정식과 이차함수' }, { examId: '26_금당고_1학기_기말_고1_기출' }).status, 'PASS');
+  assert.equal(validateCurriculumBinding({ standardCourse: '수학(상)', standardUnitKey: 'H15-SA-05', standardUnit: '이차방정식과 이차함수' }, { examId: '26_금당고_1학기_기말_고1_기출' }).status, 'FAIL');
+});
+
 test('machine bridge creates current STATIC and METADATA evidence and freeze succeeds', t => {
   const f = fixture(t);
   const out = f.bridged();
@@ -76,6 +90,30 @@ test('machine bridge creates current STATIC and METADATA evidence and freeze suc
   const state = freezeWorkBatch(f.root, 'job', [out.ref]);
   assert.equal(state.status, 'FROZEN');
   assert.equal(readWorkBatch(f.root, 'job').freezes.length, 1);
+});
+
+test('candidate quality failure is preserved as diagnostic evidence and does not prevent freeze', t => {
+  const f = fixture(t);
+  const source = fs.readFileSync(path.join(f.root, 'candidate.js'), 'utf8');
+  const questions = JSON.parse(source.match(/window\.questionBank=(.*);\s*$/s)[1]);
+  questions[0].content = '';
+  fs.writeFileSync(path.join(f.root, 'candidate.js'), `window.examTitle="synthetic";window.questionBank=${JSON.stringify(questions)};`);
+  f.run.inputs = f.run.inputs.map(ref => ref.path === 'candidate.js' ? { ...fileRef(f.root, 'candidate.js'), role: 'candidate' } : ref);
+  f.run.inputSha = runInputSha(f.run);
+  f.run.questions[0].axisInputShas = computeV2AxisInputShas(f.root, f.run)[f.run.questions[0].questionUid];
+  const runRef = f.writeRun(f.run);
+  const result = collectMachineEvidence(f.root, runRef.path, { manifestOut: 'diagnostic.machine.json', evidenceDir: 'evidence/diagnostic' });
+  const machine = JSON.parse(fs.readFileSync(path.join(f.root, result.manifestRef.path), 'utf8'));
+  const staticEvidence = machine.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).find(e => e.axis === 'STATIC');
+  assert.equal(staticEvidence.status, 'FAIL');
+  assert.ok(staticEvidence.findings.some(finding => finding.code === 'MACHINE_CHECK_FAILED:STATIC:schema'));
+  assert.equal(freezeWorkBatch(f.root, 'job', [result.manifestRef]).status, 'FROZEN');
+  const reserved = reserveWorkBatchReview(f.root, 'job', {
+    purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session',
+    parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false,
+    contexts: { U1: { sessionId: 'u1-session', contextId: 'u1-context' }, U2: { sessionId: 'u2-session', contextId: 'u2-context' }, U3: { sessionId: 'u3-session', contextId: 'u3-context' } }
+  });
+  assert.equal(reserved.launches[0].purpose, 'FINAL_AUDIT');
 });
 
 test('image-only objective machine bridge and freeze succeed without choices', t => {

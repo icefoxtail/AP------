@@ -69,3 +69,9 @@ export function verifyBranch(branch, bounds) {
     return true;
   } catch { return false; }
 }
+
+export function evaluateExpression(expression, x = 0) {
+  const [value] = interval(parseExpression(expression), x, x);
+  if (!Number.isFinite(value)) throw new Error('NONFINITE_EXPRESSION');
+  return value;
+}

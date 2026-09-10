@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { canonicalJson, bytesSha, objectSha, safePath, fileRef } from '../canonical.mjs';
-import { compareVisualFacts, validateVisualFact, semanticSha, circleRelation, auditDuplicates, structureFingerprint } from '../visual.mjs';
+import { compareVisualFacts, validateVisualFact, semanticSha, circleRelation, auditDuplicates, structureFingerprint, extractSvgGeometry, verifySvgGeometry } from '../visual.mjs';
 import { validateBatchManifest } from '../batch.mjs';
 import { validateSchema } from '../schema.mjs';
 import { verifyBranch } from '../expression.mjs';
@@ -37,6 +37,34 @@ test('case rows use IDs; cell order and exhaustive reason cannot disappear', () 
   const a = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'q', visualType: 'case-table', semantic: { columns: ['x'], rows: [{ id: 'a', cells: ['1'], disposition: 'KEEP', reason: 'satisfies' }, { id: 'b', cells: ['2'], disposition: 'REJECT', reason: 'violates' }], exhaustivenessReason: 'x is 1 or 2' } };
   const b = structuredClone(a); b.semantic.rows.reverse(); assert.equal(semanticSha(a), semanticSha(b));
   delete b.semantic.exhaustivenessReason; assert.equal(validateVisualFact(b).status, 'FAIL');
+});
+
+test('number-line V2 artifact extraction catches a label-only or wrong-boundary SVG', () => {
+  const fact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'number-line-fixture', visualType: 'number-line', semantic: { variable: 'x', intervals: [{ left: 0, right: 4, leftClosed: false, rightClosed: false }] } };
+  const valid = '<svg xmlns="http://www.w3.org/2000/svg"><line x1="107.5" y1="60" x2="252.5" y2="60"/><circle cx="107.5" cy="60" r="4" fill="#fff"/><circle cx="252.5" cy="60" r="4" fill="#fff"/></svg>';
+  const wrong = valid.replace('cx="252.5"', 'cx="280"');
+  assert.equal(verifySvgGeometry(fact, extractSvgGeometry(valid)).status, 'PASS');
+  const result = verifySvgGeometry(fact, extractSvgGeometry(wrong));
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.some(error => error.includes('SVG_INTERVAL_ENDPOINT_MISMATCH')));
+});
+
+test('path-only curve sketches cannot satisfy the numeric SVG observation gate', () => {
+  const observation = extractSvgGeometry('<svg xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 C 10 10 20 10 30 0"/></svg>');
+  assert.equal(observation.status, 'FAIL');
+  assert.ok(observation.errors.includes('SVG_UNVERIFIED_PATH'));
+});
+
+test('cartesian artifact verification requires axes, numeric branch samples and point geometry', () => {
+  const fact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'cartesian-fixture', visualType: 'cartesian', semantic: {
+    xMin: -1, xMax: 1, yMin: -1, yMax: 2,
+    branches: [{ id: 'f', formula: 'x**2', points: [{ id: 'L', x: -1, y: 1 }, { id: 'M', x: 0, y: 0 }, { id: 'R', x: 1, y: 1 }], leftClosed: true, rightClosed: true }], keyPoints: []
+  } };
+  const result = verifySvgGeometry(fact, extractSvgGeometry('<svg xmlns="http://www.w3.org/2000/svg"></svg>'));
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.includes('SVG_X_AXIS_MISSING'));
+  assert.ok(result.errors.includes('SVG_Y_AXIS_MISSING'));
+  assert.ok(result.errors.includes('SVG_BRANCH_COVERAGE'));
 });
 for (const [name, change] of Object.entries({ negative: f => { f.semantic.maximumIntersection = -1; }, wrongMaximum: f => { f.semantic.maximumIntersection = 24; }, wrongMinimum: f => { f.semantic.minimumIntersection = 0; }, null: f => { f.semantic.aCount = null; }, unknownField: f => { f.semantic.pixelCircle = {}; }, uidType: f => { f.questionUid = 3; } })) test(`strict type/domain: ${name}`, () => {
   const f = fact(); change(f); assert.equal(validateVisualFact(f).status, 'FAIL');

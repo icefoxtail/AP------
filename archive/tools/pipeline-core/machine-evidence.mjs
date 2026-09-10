@@ -7,6 +7,7 @@ import { computeV2AxisInputShas } from './v2-audit.mjs';
 import { requiredAxesForQuestion } from './projection.mjs';
 import { validateMachineEvidence, validateTypedEvidence } from './review-evidence-v2.mjs';
 import { validateSchema } from './schema.mjs';
+import { validateStudentSerialization, validateCurriculumBinding } from './student-output.mjs';
 
 export const MACHINE_EVIDENCE_BRIDGE_VERSION = 'APMATH_MACHINE_EVIDENCE_BRIDGE_v1';
 export const MACHINE_EVIDENCE_COLLECTOR = 'pipeline-core-machine-collector';
@@ -27,7 +28,7 @@ export function isImageOnlyObjective(question) {
 export function isChoicesContractValid(question) {
   if (Object.hasOwn(question || {}, 'choices')) {
     if (!Array.isArray(question.choices)) return false;
-    if (question.choices.length === 0) return isImageOnlyObjective(question);
+    if (question.choices.length === 0) return isImageOnlyObjective(question) || /^(서술형|서답형|단답형|주관식|subjective|essay|short_answer)$/.test(questionType(question));
     return true;
   }
   return isImageOnlyObjective(question);
@@ -62,7 +63,8 @@ function staticChecks(root, run, question, declared, sourceBank, candidateBank, 
     jsLoad: Boolean(Array.isArray(sourceBank?.questionBank) && Array.isArray(candidateBank?.questionBank) && sourceBank.questionBank.some(q => q.id === declared.qid) && candidateBank.questionBank.some(q => q.id === declared.qid)),
     hashes: false,
     assetBinding: false,
-    fileParity: false
+    fileParity: false,
+    studentSerialization: validateStudentSerialization(question).status === 'PASS'
   };
   try {
     for (const input of run.inputs || []) readBoundFile(root, input);
@@ -88,7 +90,7 @@ function metadataChecks(question, declared, source) {
     (!Object.hasOwn(question, 'subUnitKey') || nonempty(question.subUnitKey)) &&
     (!Object.hasOwn(question, 'subUnit') || nonempty(question.subUnit))
   );
-  return { schema, uidBinding, curriculumBinding };
+  return { schema, uidBinding, curriculumBinding: curriculumBinding && validateCurriculumBinding(question, { source, examId: declared.examId }).status === 'PASS' };
 }
 
 function buildEvidence({ run, question, axis, axisInputSha, checks, startedAt, frozenAt }) {
@@ -103,7 +105,7 @@ function buildEvidence({ run, question, axis, axisInputSha, checks, startedAt, f
     inputSha: run.inputSha,
     axisInputSha,
     mode: 'MACHINE_CURRENT',
-    status: 'PASS',
+    status: Object.values(checks).every(Boolean) ? 'PASS' : 'FAIL',
     validityStatus: 'FROZEN',
     reviewerId: MACHINE_EVIDENCE_COLLECTOR,
     reviewSessionId: `${run.runId}:r${run.revision}:machine-checks`,
@@ -113,7 +115,7 @@ function buildEvidence({ run, question, axis, axisInputSha, checks, startedAt, f
     frozenAt,
     priorReviewVisibility: 'NONE',
     inputVisibilityProfile: 'MACHINE_CURRENT',
-    findings: [],
+    findings: Object.entries(checks).filter(([, value]) => !value).map(([key]) => ({ status: 'OPEN', code: `MACHINE_CHECK_FAILED:${axis}:${key}`, source: MACHINE_EVIDENCE_COLLECTOR })),
     reviewIsolationProvenanceSha: objectSha(machineProvenance),
     reviewStartInputSha: run.inputSha,
     reviewEndInputSha: run.inputSha,
@@ -128,8 +130,8 @@ function buildEvidence({ run, question, axis, axisInputSha, checks, startedAt, f
       : { metadataInputSha: axisInputSha, checks: Object.fromEntries(Object.entries(checks).map(([key, value]) => [key, value ? 'PASS' : 'FAIL'])) }
   };
   const schemaErrors = validateSchema(evidence, evidenceContract);
-  const machineErrors = validateMachineEvidence(evidence, run);
-  const typedErrors = validateTypedEvidence(evidence);
+  const machineErrors = validateMachineEvidence(evidence, run, { diagnostic: true });
+  const typedErrors = validateTypedEvidence(evidence, { diagnostic: true });
   if (schemaErrors.length || machineErrors.length || typedErrors.length) throw new Error(`MACHINE_EVIDENCE_CONTRACT:${[...schemaErrors, ...machineErrors, ...typedErrors].join(';')}`);
   return evidence;
 }
@@ -165,7 +167,9 @@ export function collectMachineEvidence(root, manifestPath, { manifestOut = null,
       if (!axisShas[axis]) continue;
       if (declared.axisInputShas?.[axis] !== axisShas[axis]) throw new Error(`MACHINE_AXIS_INPUT_SHA_STALE:${question.questionUid}:${axis}`);
       const checks = axis === 'STATIC' ? staticChecks(root, run, question, declared, sourceBank, candidateBank, axisShas) : metadataChecks(question, declared, question.sourceRecord);
-      if (Object.values(checks).some(value => value !== true)) throw new Error(`MACHINE_CHECK_FAILED:${question.questionUid}:${axis}:${Object.entries(checks).filter(([, value]) => !value).map(([key]) => key).join(',')}`);
+      // Input custody/executability remains hard. Candidate quality is immutable
+      // FAIL evidence for FINAL_AUDIT and still blocks canonical promotion.
+      if (axis === 'STATIC' && ['jsLoad', 'hashes', 'assetBinding', 'fileParity'].some(key => !checks[key])) throw new Error(`MACHINE_EXECUTION_BLOCKED:${question.questionUid}:${axis}`);
       const startedAt = new Date().toISOString();
       const evidence = buildEvidence({ run, question: declared, axis, axisInputSha: axisShas[axis], checks, startedAt, frozenAt: new Date().toISOString() });
       const relative = path.posix.join(rootDirectory, `q${String(declared.qid).padStart(3, '0')}-${axis.toLowerCase()}.json`);
