@@ -578,7 +578,7 @@ window.questionBank = [
     "standardUnit": "도형의 이동",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "도형의이동",

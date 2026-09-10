@@ -758,7 +758,7 @@ window.questionBank = [
     "standardUnitKey": "H22-A-04",
     "standardUnit": "삼각함수",
     "standardUnitOrder": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "questionType": "",
     "tags": [
       "객관식",
