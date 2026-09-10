@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "JOB_A_PREPARE_V2_BLOCKED_v1",
+  "status": "BLOCKED",
+  "command": "node archive/tools/pipeline-core/cli.mjs prepare-v2 --pipeline past-exam --past-exam-manifest archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/manifest-core-r2.json --source archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/freeze/source-core-r2.js --candidate archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/candidate/completed-r2.js --source-registry-ref archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/source-registry-ref.json --run-id run-gold2-job-a-maesan-2020-r1 --work-batch-id past-exam-v3-gold2-20260910-job-a-maesan-2020 --builder-id builder-gold2-job-a-maesan-20260910-main --builder-session-id builder-session-gold2-job-a-maesan-20260910-main --builder-model gpt-6-astra --workdir archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/core/run-r1 --asset-root archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020 --source-asset-root archive",
+  "error": "BUILDER_START_BLOCKED:CALIBRATION_MAIN_STALE: fetch origin main before preparing calibration",
+  "frozenStartSha": "3531349d31cc8e17ea17c7e1f34ed0ce5745c9aa",
+  "observedLocalOriginMain": "4da95df8bf042729df58d63577fa62021ebe6d24",
+  "observedRemoteOriginMain": "515cb9d2511c822cc54d13ddc7a6e78eb91db4ad",
+  "action": "HOLD; do not refreeze calibration against a moving main or fabricate a V3 run",
+  "productionAuthorized": false
+}
