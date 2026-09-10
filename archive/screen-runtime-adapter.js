@@ -14,6 +14,11 @@ function bindArchiveRuntimePrintReadiness() {
     const runtime = archiveScreenRuntime;
     const snapshot = runtime.activeSnapshot;
     const candidate = runtime.committedCandidate;
+    if (snapshot?.commonHardGateEvidence) {
+        const preflight = window.APArchiveSnapshotContract.preflight(snapshot, candidate);
+        document.documentElement.dataset.apSnapshotPrintPreflight = JSON.stringify(preflight);
+        if (!preflight.pass) throw new Error('PRINT_SNAPSHOT_PREFLIGHT_GATE:' + Object.keys(preflight.gates).filter(k => !preflight.gates[k]).join(','));
+    }
     if (!snapshot || snapshot.status !== 'ACTIVE' || snapshot.rootNode !== document.getElementById('print-area') ||
         snapshot.sessionId !== candidate?.source.targetSessionId || snapshot.key !== window.APRenderStateNormalizer.computeSnapshotKey(candidate)) throw new Error('PRINT_ACTIVE_BINDING_FAILED');
     if (window.APRenderLoop.unrenderedMathCount(snapshot.rootNode)) throw new Error('MATH_TYPESET_INCOMPLETE');
@@ -305,6 +310,22 @@ function createArchiveScreenRuntime() {
     }
     runtime = window.APScreenRuntime.create({
         captureInput, prepare, build, validate, capture, attach, commit, rollback, afterCommit,
+        cacheModes: new URLSearchParams(location.search).get('snapshotCache') === '0' ? [] : ['ans'],
+        freezeSnapshot(snapshot, ctx) {
+            if (snapshot.mode === 'ans') window.APArchiveSnapshotContract.freeze(snapshot, ctx);
+        },
+        canReuse: (snapshot, ctx) => window.APArchiveSnapshotContract.canReuse(snapshot, ctx),
+        reuse(ctx, snapshot) {
+            ctx.targetArea = snapshot.rootNode;
+            ctx.buildState = { ...snapshot.buildState };
+            ctx.diagnostics = { ...snapshot.diagnostics };
+            ctx.metrics = window.APRenderLoop.start({ mode: snapshot.mode, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, sessionId: ctx.requestedTargetSessionId, publish: false });
+            ctx.metrics.cacheStatus = 'HIT';
+            ctx.readinessTracker = window.APPrintRuntime.createReadinessTracker('ArchiveAdapter');
+            ctx.readinessTracker.begin({ snapshotId: snapshot.snapshotId });
+            for (const event of snapshot.readinessEvidence.events) ctx.readinessTracker.mark(event.state, event.evidence);
+            return { rootNode: snapshot.rootNode, sessionId: snapshot.sessionId, pageCount: snapshot.pageCount, evidence: ctx.readinessTracker.snapshot() };
+        },
         cleanup(root) { if (!root) return; window.MathJax?.typesetClear?.([root]); root.remove(); },
         release(ctx) { if (ctx.stagingHost) { window.MathJax?.typesetClear?.([ctx.stagingHost]); ctx.stagingHost.remove(); } },
         visible: async () => { updateScreenFitScale(); await raf(); },

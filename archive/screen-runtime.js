@@ -35,6 +35,8 @@
         let tail = Promise.resolve(), activeContext = null, latestReady = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
         let desired = null;
         const attempts = [], cleanupPending = [];
+        const owners = new WeakMap();
+        const canCache = mode => (adapter.cacheModes || []).includes(mode);
         function isLatest(ctx) { return ctx.requestGeneration === currentRequestGeneration && !ctx.abortSignal.aborted; }
         function observe(event, ctx) { try { adapter.observe?.(event, ctx); } catch (_) { /* observability cannot undo a commit */ } }
         async function cleanup(root, session, snapshot) {
@@ -65,13 +67,17 @@
                 if (ctx.candidate.source.targetSessionId !== ctx.requestedTargetSessionId) throw new Error('CANDIDATE_TARGET_SESSION_MISMATCH');
                 ctx.keyInputDigest = N.semanticDigest(ctx.candidate);
                 ctx.snapshotKey = N.computeSnapshotKey(ctx.candidate);
-                ctx.result = await adapter.build(ctx);
+                const cached = !sourceChange && canCache(ctx.candidate.mode) && currentSession.modeSnapshots[ctx.candidate.mode];
+                const force = ['FORCED_REBUILD', 'PRINT_STALE_REBUILD'].includes(ctx.intentType);
+                const hit = !force && cached?.status === 'READY' && cached.sessionId === ctx.requestedTargetSessionId && cached.key === ctx.snapshotKey && owners.get(cached.rootNode) === cached && adapter.canReuse?.(cached, ctx);
+                ctx.cacheStatus = hit ? 'HIT' : 'MISS';
+                ctx.result = hit ? await adapter.reuse(ctx, cached) : await adapter.build(ctx);
                 if (!isLatest(ctx)) throw new Error('DISCARDED_STALE');
                 ctx.buildInputDigest = N.semanticDigest(ctx.candidate);
                 if (ctx.keyInputDigest !== ctx.buildInputDigest || ctx.result.sessionId !== ctx.requestedTargetSessionId) throw new Error('BUILD_INPUT_PARITY_FAILED');
-                await adapter.validate?.(ctx);
+                if (!hit) await adapter.validate?.(ctx);
                 if (!isLatest(ctx)) throw new Error('DISCARDED_STALE');
-                const snapshot = {
+                const snapshot = hit ? cached : {
                     snapshotId: unique('snapshot'), mode: ctx.candidate.mode, canonicalMode: ctx.candidate.canonicalMode,
                     key: ctx.snapshotKey, sessionId: ctx.requestedTargetSessionId, status: 'READY',
                     rootNode: ctx.result.rootNode, ownershipToken: unique('owner'), pageCount: ctx.result.pageCount,
@@ -79,6 +85,7 @@
                     createdAt: Date.now(), lastUsedAt: Date.now()
                 };
                 ctx.snapshot = snapshot;
+                if (!hit) { adapter.freezeSnapshot?.(snapshot, ctx); owners.set(snapshot.rootNode, snapshot); }
                 let nextSession = currentSession;
                 if (ctx.pendingSession) {
                     Object.assign(ctx.pendingSession, {
@@ -104,8 +111,7 @@
                     currentSession = nextSession;
                     currentSession.activeMode = snapshot.mode;
                     currentSession.activeSnapshotKey = snapshot.key;
-                    // No inactive cache residency in Phase 1A.
-                    currentSession.modeSnapshots = { exam: null, sol: null, ans: null, [snapshot.mode]: snapshot };
+                    currentSession.modeSnapshots = { ...currentSession.modeSnapshots, [snapshot.mode]: snapshot };
                     activeSnapshot = snapshot;
                     committedCandidate = ctx.candidate;
                     if (ctx.pendingSession) { ctx.pendingSession.status = 'PROMOTED'; ctx.pendingSession.promotedSessionId = nextSession.sessionId; }
@@ -125,7 +131,15 @@
                 // Keep optional post-commit effects and cleanup out of correctness rollback.
                 try { adapter.afterCommit?.(ctx); } catch (error) { observe('POST_COMMIT_EFFECT_FAILED', { ...ctx, error }); }
                 if (oldSession && oldSession !== currentSession) oldSession.status = 'RETIRED_PENDING_CLEANUP';
-                if (oldSnapshot) await cleanup(oldSnapshot.rootNode, oldSession !== currentSession ? oldSession : null, oldSnapshot);
+                const retired = new Set();
+                if (oldSession && oldSession !== currentSession) Object.values(oldSession.modeSnapshots).filter(Boolean).forEach(s => retired.add(s));
+                else {
+                    if (oldSnapshot && (!canCache(oldSnapshot.mode) || oldSnapshot.mode === snapshot.mode)) retired.add(oldSnapshot);
+                    if (cached && cached !== snapshot) retired.add(cached);
+                }
+                for (const obsolete of retired) if (obsolete !== snapshot) await cleanup(obsolete.rootNode, null, obsolete);
+                if (oldSession && oldSession !== currentSession) { oldSession.status = 'EVICTED'; oldSession.modeSnapshots = { exam: null, sol: null, ans: null }; }
+                for (const [mode, s] of Object.entries(currentSession.modeSnapshots)) if (s?.status === 'EVICTED') currentSession.modeSnapshots[mode] = null;
                 for (const item of cleanupPending.splice(0)) await cleanup(item.root, item.session, item.snapshot);
                 await adapter.visible?.(ctx);
                 ctx.visibleReadyMs = Date.now() - ctx.createdAt;
@@ -136,7 +150,7 @@
                 ctx.state = !isLatest(ctx) ? 'DISCARDED_STALE' : 'FAILED';
                 ctx.error = String(error?.message || error);
                 if (ctx.pendingSession) { ctx.pendingSession.status = 'ABORTED'; ctx.pendingSession.preparedSnapshots = { exam: null, sol: null, ans: null }; }
-                await cleanup(ctx.result?.rootNode || ctx.targetArea, null, ctx.snapshot);
+                if (ctx.cacheStatus !== 'HIT') await cleanup(ctx.result?.rootNode || ctx.targetArea, null, ctx.snapshot);
                 observe('BUILD_FAILED', ctx);
                 if (isLatest(ctx)) desired = null;
                 return { ok: false, code: ctx.state === 'DISCARDED_STALE' ? ctx.state : ctx.error, transactionId: ctx.transactionId };
@@ -145,7 +159,7 @@
                 catch (error) { observe('STAGING_CLEANUP_FAILED', { ...ctx, error }); await cleanup(ctx.stagingHost, null, null); }
                 if (activeContext === ctx) activeContext = null;
                 // Do not retain failed/pending DOM or copied data in diagnostic history.
-                attempts.push({ transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, intentType: ctx.intentType, state: ctx.state, committed: !!ctx.committed, error: ctx.error || null, requestedTargetSessionId: ctx.requestedTargetSessionId, keyBuildParity: ctx.keyInputDigest === ctx.buildInputDigest, visibleReadyMs: ctx.visibleReadyMs || null, metrics: ctx.metrics || null });
+                attempts.push({ transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, intentType: ctx.intentType, cacheStatus: ctx.cacheStatus, state: ctx.state, committed: !!ctx.committed, error: ctx.error || null, requestedTargetSessionId: ctx.requestedTargetSessionId, keyBuildParity: ctx.keyInputDigest === ctx.buildInputDigest, visibleReadyMs: ctx.visibleReadyMs || null, metrics: ctx.metrics || null });
                 if (attempts.length > 50) attempts.shift();
             }
         }
