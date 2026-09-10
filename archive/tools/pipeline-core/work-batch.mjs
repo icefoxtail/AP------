@@ -26,10 +26,58 @@ const load = (root, ref) => JSON.parse(readBoundFile(root, ref));
 const sorted = values => [...new Set(values)].sort();
 const tokenTelemetry = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
 const retiredTokenHoldCodes = new Set(['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:TOKEN_RESERVATION_INVALID', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']);
+const targetKey = target => canonicalJson({ runId: target?.runId || null, questionUid: target?.questionUid || null });
 const statePath = (root, id) => {
   check(/^[A-Za-z0-9_-]+$/.test(id || ''), 'WORK_BATCH_ID_INVALID');
   return safePath(root, `alive/runtime/work-batches/${id}/state.json`, { mustExist: false });
 };
+
+function targetKeys(targets, missingCode = 'BENCHMARK_DENOMINATOR_TARGETS_REQUIRED') {
+  check(Array.isArray(targets), missingCode);
+  const keys = targets.map(target => {
+    check(nonempty(target?.runId) && nonempty(target?.questionUid), 'BENCHMARK_DENOMINATOR_TARGET_IDENTITY_INVALID');
+    return targetKey(target);
+  });
+  check(new Set(keys).size === keys.length, 'BENCHMARK_DENOMINATOR_DUPLICATE_TARGET');
+  return keys;
+}
+
+function validateBenchmarkDenominator(targets, denominator) {
+  check(denominator?.status === 'FROZEN', 'BENCHMARK_DENOMINATOR_REQUIRED');
+  const allKeys = targetKeys(targets);
+  const eligibleKeys = targetKeys(denominator.eligibleTargets, 'BENCHMARK_ELIGIBLE_TARGETS_REQUIRED');
+  const excludedKeys = targetKeys(denominator.excludedTargets, 'BENCHMARK_EXCLUDED_TARGETS_REQUIRED');
+  check(Number.isSafeInteger(denominator.totalTargetCount) && denominator.totalTargetCount >= 0, 'BENCHMARK_TOTAL_TARGET_COUNT_INVALID');
+  check(Number.isSafeInteger(denominator.eligibleTargetCount) && denominator.eligibleTargetCount >= 0, 'BENCHMARK_ELIGIBLE_TARGET_COUNT_INVALID');
+  check(Number.isSafeInteger(denominator.excludedTargetCount) && denominator.excludedTargetCount >= 0, 'BENCHMARK_EXCLUDED_TARGET_COUNT_INVALID');
+  check(denominator.totalTargetCount === targets.length, 'BENCHMARK_DENOMINATOR_TOTAL_MISMATCH');
+  check(denominator.eligibleTargetCount === denominator.eligibleTargets.length, 'BENCHMARK_DENOMINATOR_ELIGIBLE_COUNT_MISMATCH');
+  check(denominator.excludedTargetCount === denominator.excludedTargets.length, 'BENCHMARK_DENOMINATOR_EXCLUDED_COUNT_MISMATCH');
+  check(denominator.totalTargetCount === denominator.eligibleTargetCount + denominator.excludedTargetCount, 'BENCHMARK_DENOMINATOR_PARTITION_COUNT_MISMATCH');
+  check(!eligibleKeys.some(key => excludedKeys.includes(key)), 'BENCHMARK_DENOMINATOR_OVERLAP');
+  check(same([...new Set([...eligibleKeys, ...excludedKeys])].sort(), [...allKeys].sort()), 'BENCHMARK_DENOMINATOR_TARGET_PARTITION_MISMATCH');
+  check(Array.isArray(denominator.excludedRuns), 'BENCHMARK_EXCLUDED_RUNS_REQUIRED');
+  const excludedRunIds = denominator.excludedRuns.map(row => {
+    check(nonempty(row?.runId) && nonempty(row?.status), 'BENCHMARK_EXCLUDED_RUN_INVALID');
+    return row.runId;
+  });
+  check(new Set(excludedRunIds).size === excludedRunIds.length, 'BENCHMARK_EXCLUDED_RUN_DUPLICATE');
+  check(same(sorted(excludedRunIds), sorted([...new Set(denominator.excludedTargets.map(target => target.runId))])), 'BENCHMARK_EXCLUDED_RUNS_TARGET_PARITY');
+  check(denominator.eligibleTargetCount > 0, 'GOLD_BENCHMARK_DENOMINATOR_EMPTY');
+  return denominator;
+}
+
+// All semantic reviewer scopes are derived from this frozen partition. The
+// production branch deliberately retains its historical targets/affected
+// behavior; benchmark jobs review only the denominator-eligible targets.
+export function reviewScopeForPurpose(state, freeze, purpose) {
+  check(freeze, 'WHOLE_JOB_FREEZE_REQUIRED');
+  if (!isBenchmarkJobKind(state.jobKind)) return purpose === 'FINAL_AUDIT' ? freeze.targets : freeze.affected;
+  const denominator = validateBenchmarkDenominator(freeze.targets, freeze.benchmarkDenominator);
+  if (purpose === 'FINAL_AUDIT') return denominator.eligibleTargets;
+  const eligible = new Set(denominator.eligibleTargets.map(targetKey));
+  return freeze.affected.filter(target => eligible.has(targetKey(target)));
+}
 
 // All mutations share one repository lock. A crashed lock is HOLD, never a timeout lease.
 function mutate(root, id, fn) {
@@ -105,6 +153,7 @@ function validateState(state) {
   for (const purpose of ['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT']) check(state.launches.filter(l => l.purpose === purpose).length <= 1, 'AGENT_BUDGET_EXCEEDED');
   const active = state.launches.filter(l => ['RESERVED', 'DISPATCHED'].includes(l.status));
   check(active.length <= 1, 'CONCURRENT_EXPENSIVE_EXCEEDED');
+  for (const freeze of state.freezes) if (isBenchmarkJobKind(state.jobKind)) validateBenchmarkDenominator(freeze.targets, freeze.benchmarkDenominator);
   for (const launch of state.launches) {
     check(['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT'].includes(launch.purpose), 'PRODUCTION_OR_AXIS_DISPATCH_FORBIDDEN');
     check(launch.contextIsolation === 'STATELESS_INPUTS' && launch.subagentToolsEnabled === false && ['U1','U2','U3'].every(phase => nonempty(launch.contexts?.[phase]?.sessionId) && nonempty(launch.contexts?.[phase]?.contextId)), 'AUDITOR_CAPABILITIES_INVALID');
@@ -112,7 +161,7 @@ function validateState(state) {
     check(['RESERVED', 'DISPATCHED', 'COMPLETED', 'FAILED'].includes(launch.status), 'LAUNCH_STATE_INVALID');
     const freeze = state.freezes.find(f => f.freezeSha === launch.freezeSha);
     check(freeze && Date.parse(launch.reservedAt) >= Date.parse(freeze.frozenAt), 'REVIEW_BEFORE_FREEZE');
-    check(same(launch.scope, launch.purpose === 'FINAL_AUDIT' ? freeze.targets : freeze.affected), 'LAUNCH_SCOPE_MISMATCH');
+    check(same(launch.scope, reviewScopeForPurpose(state, freeze, launch.purpose)), 'LAUNCH_SCOPE_MISMATCH');
     if (launch.purpose === 'SECOND_AUDIT') check(launch.authorization?.explicit === true && ['CONFLICT', 'HIGH_RISK'].includes(launch.authorization.reason) && nonempty(launch.authorization.authorizedBy), 'SECOND_AUDITOR_NOT_AUTHORIZED');
   }
   for (let i = 0; i < state.launches.length; i++) {
@@ -156,24 +205,26 @@ export function initWorkBatch(root, spec) {
 function collectFreeze(root, state, runRefs) {
   const runs = runRefs.map(ref => load(root, ref));
   check(same(sorted(runs.map(r => r.runId)), state.runIds) && runs.length === state.runIds.length, 'WHOLE_JOB_FREEZE_REQUIRED');
-  const targets = [], affected = [], bindings = [];
+  const allTargets = [], eligibleTargets = [], excludedTargets = [], affected = [], bindings = [];
   const priorFreeze = state.freezes.at(-1);
   const finalLaunch = state.launches.find(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED');
   const defects = finalLaunch ? load(root, finalLaunch.providerReceiptRef).defects || [] : [];
   const authorities = [];
-  const benchmarkExcluded = [];
+  const excludedRuns = [];
   for (const run of runs) {
     check(run.schemaVersion === 'APMATH_PIPELINE_RUN_v2' && run.workBatchId === state.workBatchId, 'WORK_BATCH_RUN_BINDING');
     check(run.builderId === state.builderId && run.builderSessionId === state.builderSessionId, 'MAIN_WORKER_BINDING');
     check(run.inputSha === runInputSha(run), 'CURRENT_RUN_HASH_REQUIRED');
     if (run.pastExamAuthority) authorities.push(run.pastExamAuthority);
     const eligibility = run.sourceAuthority?.goldBenchmarkEligibility || run.goldBenchmarkEligibility || null;
+    let benchmarkEligible = true;
     if (isBenchmarkJobKind(state.jobKind)) {
       check(run.benchmarkKind === state.jobKind, 'JOB_KIND_RUN_BINDING');
       check(run.pastExamAuthority, 'FROZEN_JOB_AUTHORITY_REQUIRED');
       if (state.jobAuthority) check(same(run.pastExamAuthority, state.jobAuthority), 'FROZEN_START_SHA_MISMATCH');
       check(eligibility, 'GOLD_SOURCE_ELIGIBILITY_REQUIRED');
-      if (eligibility.denominatorIncluded !== true) benchmarkExcluded.push({ runId: run.runId, status: eligibility.status || 'GOLD_INELIGIBLE_SOURCE' });
+      benchmarkEligible = eligibility.denominatorIncluded === true;
+      if (!benchmarkEligible) excludedRuns.push({ runId: run.runId, status: eligibility.status || 'GOLD_INELIGIBLE_SOURCE' });
     }
     for (const ref of run.inputs) readBoundFile(root, ref);
     const shas = computeV2AxisInputShas(root, run);
@@ -200,15 +251,18 @@ function collectFreeze(root, state, runRefs) {
     const renderChanged = old && needsRender ? detectRenderImpact(old.witnesses, witnesses).affectedRenderUidSet : [];
     for (const [questionUid, axes] of Object.entries(shas)) {
       const row = { runId: run.runId, questionUid };
-      targets.push(row);
+      allTargets.push(row);
+      if (isBenchmarkJobKind(state.jobKind)) (benchmarkEligible ? eligibleTargets : excludedTargets).push(row);
       if (!old || defects.some(d => d.runId === run.runId && d.questionUid === questionUid) || impact.affectedUidAxisSet.some(a => a.questionUid === questionUid && !MACHINE_AXES.includes(a.axis)) || Object.entries(axes).some(([axis, sha]) => !MACHINE_AXES.includes(axis) && old.axisInputShas[questionUid]?.[axis] !== sha) || renderChanged.includes(questionUid)) affected.push(row);
     }
     bindings.push({ questions: actual, runSemanticSha, runId: run.runId, revision: run.revision, inputSha: run.inputSha, axisInputShas: shas, witnesses,
       preAudit: { purpose: 'DIAGNOSTIC_CONTINUATION_ONLY', promotionAuthorized: false, machineEvidence: machineEvidence.map(e => ({ questionUid: e.questionUid, axis: e.axis, status: e.status, evidenceSha: objectSha(e) })), missingRender } });
   }
-  targets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
+  allTargets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
+  eligibleTargets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
+  excludedTargets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
   affected.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
-  if (priorFreeze) check(same(targets, priorFreeze.targets), 'WORK_BATCH_TARGET_DENOMINATOR_CHANGED');
+  if (priorFreeze) check(same(allTargets, priorFreeze.targets), 'WORK_BATCH_TARGET_DENOMINATOR_CHANGED');
   if (authorities.length) {
     const authority = authorities[0];
     check(authorities.every(candidate => same(candidate, authority)), 'FROZEN_START_SHA_MISMATCH');
@@ -216,7 +270,11 @@ function collectFreeze(root, state, runRefs) {
     state.jobAuthority = authority;
   }
   if (isBenchmarkJobKind(state.jobKind)) check(state.jobAuthority || authorities.length > 0, 'FROZEN_JOB_AUTHORITY_REQUIRED');
-  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets, affected, bindings, machineCheckedUidCount: targets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator: isBenchmarkJobKind(state.jobKind) ? { status: 'FROZEN', eligibleTargetCount: targets.length - benchmarkExcluded.length, excludedRuns: benchmarkExcluded } : { status: 'NOT_APPLICABLE', eligibleTargetCount: targets.length, excludedRuns: [] } };
+  const benchmarkDenominator = isBenchmarkJobKind(state.jobKind)
+    ? { status: 'FROZEN', totalTargetCount: allTargets.length, eligibleTargetCount: eligibleTargets.length, excludedTargetCount: excludedTargets.length, eligibleTargets, excludedTargets, excludedRuns }
+    : { status: 'NOT_APPLICABLE', eligibleTargetCount: allTargets.length, excludedRuns: [] };
+  if (isBenchmarkJobKind(state.jobKind)) validateBenchmarkDenominator(allTargets, benchmarkDenominator);
+  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets: allTargets, affected, bindings, machineCheckedUidCount: allTargets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator };
   return { ...body, freezeSha: objectSha(body) };
 }
 
@@ -271,6 +329,8 @@ export function reserveWorkBatchReview(root, id, request) {
     if (request.purpose === 'FINAL_AUDIT') check(state.launches.length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
     else check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
     if (request.purpose === 'TARGETED_RECHECK') check(state.freezes.length > 1 && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
+    const scope = reviewScopeForPurpose(state, freeze, request.purpose);
+    if (isBenchmarkJobKind(state.jobKind) && request.purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
     check(!state.launches.some(l => l.purpose === request.purpose), 'AGENT_BUDGET_EXHAUSTED');
     check(request.callerRole === 'MAIN_WORKER', 'ONLY_MAIN_WORKER_CAN_DISPATCH');
     check(['U1','U2','U3'].every(phase => nonempty(request.contexts?.[phase]?.sessionId) && nonempty(request.contexts?.[phase]?.contextId)), 'SEALED_SUBCONTEXTS_REQUIRED');
@@ -291,7 +351,7 @@ export function reserveWorkBatchReview(root, id, request) {
       providerAttestationPlanRef = request.providerAttestationPlanRef;
       if (plan.executionIdentity) state.executionIdentity = structuredClone(plan.executionIdentity);
     }
-    const launch = { contexts: request.contexts, contextIsolation: request.contextIsolation, subagentToolsEnabled: false, launchId: `${id}:${state.launches.length + 1}`, purpose: request.purpose, freezeSha: freeze.freezeSha, scope: request.purpose === 'FINAL_AUDIT' ? freeze.targets : freeze.affected, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}) };
+    const launch = { contexts: request.contexts, contextIsolation: request.contextIsolation, subagentToolsEnabled: false, launchId: `${id}:${state.launches.length + 1}`, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}) };
     state.launches.push(launch); return state;
   });
 }
@@ -381,6 +441,8 @@ export function workBatchMetrics(root, run, rows = []) {
     const events = launches.flatMap(l => [{ t: l.dispatchedAt, n: 1 }, ...(l.endedAt ? [{ t: l.endedAt, n: -1 }] : [])]).sort((a,b) => a.t.localeCompare(b.t) || a.n-b.n);
     let active = 0, peak = 0; for (const e of events) { active += e.n; peak = Math.max(peak, active); }
     const route = validateModelRouteParity(state.executionIdentity);
-    return { workBatchId: state.workBatchId, targetCount: freeze?.targets.length || 0, totalTargetCount: freeze?.benchmarkDenominator?.eligibleTargetCount ?? freeze?.targets.length ?? 0, totalAffectedCount: freeze?.affected.length || 0, independentAgentLaunchCount: launches.length, expensiveAgentLaunchCount: launches.length, concurrentExpensiveAgentPeak: peak, freshLlmUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'FRESH' && !MACHINE_AXES.includes(r.axis)).map(r => r.questionUid)).size, reusedUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'REUSED').map(r => r.questionUid)).size, machineCheckedUidCount: freeze?.machineCheckedUidCount || 0, retryLaunchCount: 0, secondAuditorLaunchCount: launches.filter(l => l.purpose === 'SECOND_AUDIT').length, recursiveSubagentLaunchCount: 0, usedTokens: launches.every(l => Number.isSafeInteger(l.usedTokens)) ? launches.reduce((n,l) => n+l.usedTokens,0) : null, tokenTelemetryAvailable: launches.every(l => Number.isSafeInteger(l.usedTokens)), agentBudgetStatus: state.status === 'HOLD' || state.launches.some(l => ['RESERVED','DISPATCHED'].includes(l.status)) ? 'HOLD' : 'WITHIN_BUDGET', jobKind: state.jobKind || 'PRODUCTION', executionIdentity: state.executionIdentity || null, MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY, modelRouteStatus: route.routeStatus };
+    const benchmark = isBenchmarkJobKind(state.jobKind), denominator = freeze?.benchmarkDenominator;
+    const eligibleAffectedCount = benchmark && denominator ? freeze.affected.filter(target => denominator.eligibleTargets.some(candidate => targetKey(candidate) === targetKey(target))).length : null;
+    return { workBatchId: state.workBatchId, targetCount: freeze?.targets.length || 0, totalTargetCount: denominator?.eligibleTargetCount ?? freeze?.targets.length ?? 0, totalAffectedCount: freeze?.affected.length || 0, benchmarkReviewedTargetCount: benchmark ? denominator?.eligibleTargetCount ?? null : null, benchmarkEligibleTargetCount: benchmark ? denominator?.eligibleTargetCount ?? null : null, benchmarkExcludedTargetCount: benchmark ? denominator?.excludedTargetCount ?? null : null, benchmarkTotalSourceTargetCount: benchmark ? denominator?.totalTargetCount ?? null : null, benchmarkEligibleAffectedTargetCount: eligibleAffectedCount, independentAgentLaunchCount: launches.length, expensiveAgentLaunchCount: launches.length, concurrentExpensiveAgentPeak: peak, freshLlmUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'FRESH' && !MACHINE_AXES.includes(r.axis)).map(r => r.questionUid)).size, reusedUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'REUSED').map(r => r.questionUid)).size, machineCheckedUidCount: freeze?.machineCheckedUidCount || 0, retryLaunchCount: 0, secondAuditorLaunchCount: launches.filter(l => l.purpose === 'SECOND_AUDIT').length, recursiveSubagentLaunchCount: 0, usedTokens: launches.every(l => Number.isSafeInteger(l.usedTokens)) ? launches.reduce((n,l) => n+l.usedTokens,0) : null, tokenTelemetryAvailable: launches.every(l => Number.isSafeInteger(l.usedTokens)), agentBudgetStatus: state.status === 'HOLD' || state.launches.some(l => ['RESERVED','DISPATCHED'].includes(l.status)) ? 'HOLD' : 'WITHIN_BUDGET', jobKind: state.jobKind || 'PRODUCTION', executionIdentity: state.executionIdentity || null, MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY, modelRouteStatus: route.routeStatus };
   } catch (error) { return { workBatchId: run?.workBatchId || null, agentBudgetStatus: 'HOLD', errors: [error.message] }; }
 }
