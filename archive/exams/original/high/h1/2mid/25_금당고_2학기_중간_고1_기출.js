@@ -15,7 +15,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "평면좌표",
-      "내분점"
+      "내분점",
+      "도형"
     ],
     "wide": false,
     "content": "두 점 $A(-2,5)$, $B(4,8)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점 $P$를 $(a,b)$라 할 때, $a+b$의 값은? [3.5점]",
@@ -27,6 +28,10 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "선분 AB 위에서 AP:PB=2:1인 내분점 P(2,7)를 나타낸 좌표평면",
+    "solutionImageCaption": "A(-2,5), P(2,7), B(4,8)의 순서와 AP:PB=2:1을 확인한다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 내분점의 좌표는 두 끝점의 좌표에 내분비의 반대쪽 수를 곱하여 구한다.\n점 $P$가 선분 $AB$를 $2:1$로 내분하므로\n$P\\left(\\dfrac{1\\cdot(-2)+2\\cdot4}{2+1},\\dfrac{1\\cdot5+2\\cdot8}{2+1}\\right)=(2,7)$이다.\n따라서 $a+b=2+7=9$이므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -288,7 +293,8 @@ window.questionBank = [
       "객관식",
       "평면좌표",
       "무게중심",
-      "각의 이등분선"
+      "각의 이등분선",
+      "도형"
     ],
     "wide": false,
     "content": "세 점 $O(0,0)$, $A(4,0)$, $B(0,3)$을 꼭짓점으로 하는 삼각형 $OAB$의 무게중심을 $G$라 하고, 삼각형 $OAB$의 내각인 $\\angle A$의 이등분선이 선분 $OB$와 만나는 점을 $C$라 하자. 삼각형 $GBC$의 무게중심의 좌표가 $(a,b)$일 때, $\\dfrac{b}{a}$의 값은? [4점]",
@@ -300,6 +306,10 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "삼각형 OAB의 각의 이등분선 AC와 OB 위의 C, 무게중심 G를 나타낸 그림",
+    "solutionImageCaption": "AO:AB=4:5에서 OC:CB=4:5를 확인하고 C=(0,4/3), G=(4/3,1)을 표시한다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 먼저 삼각형 $OAB$의 무게중심과 각의 이등분선이 만드는 내분점을 구한다.\n삼각형 $OAB$의 무게중심은 $G\\left(\\dfrac43,1\\right)$이다.\n$\\overline{AO}=4$, $\\overline{AB}=5$이므로 각의 이등분선 정리에 따라 $OC:CB=4:5$이다.\n$\\overline{OB}=3$이므로 $C\\left(0,\\dfrac43\\right)$이다.\n삼각형 $GBC$의 무게중심은\n$(a,b)=\\left(\\dfrac{\\frac43+0+0}{3},\\dfrac{1+3+\\frac43}{3}\\right)=\\left(\\dfrac49,\\dfrac{16}{9}\\right)$이다.\n따라서 $\\dfrac ba=4$이므로 정답은 ④이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
