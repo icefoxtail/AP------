@@ -244,6 +244,11 @@ claude_*_files_*/
 # Generated pipeline workspaces stay out of git until explicitly promoted
 archive/_generated/
 archive/_generated/**
+# HS quadratic SVG candidate/evidence workspace is local-only; retain only handoff summaries.
+/reports/hs-quadratic-svg-upgrade-20260908/*
+/reports/hs-quadratic-svg-upgrade-20260908/**
+!/reports/hs-quadratic-svg-upgrade-20260908/FINAL_STATUS.md
+!/reports/hs-quadratic-svg-upgrade-20260908/STATUS.md
 # ALIVE staged operation inputs are local test fixtures; never register or publish them.
 archive/exams/_generated/
 archive/exams/_generated/**
@@ -331,3 +336,17 @@ backup_before_*.sql
 # ALIVE 외부검수 렌더/압축 검사 임시 폴더
 /.alive-review*/
 /.tmp/
+
+# Transient pipeline/backup artifacts observed in this repository.
+*.log
+*.cpuprofile
+*.bak*
+*.orig
+*.rej
+*.trace
+*.dump
+*~
+*.swp
+*.swo
+/archive/assets/images/**/*.zip
+/reports/backups/
