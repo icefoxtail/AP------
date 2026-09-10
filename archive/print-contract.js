@@ -212,6 +212,7 @@
             choices: Array.isArray(value.choices) ? value.choices.slice() : [],
             answer: value.answer,
             solution: typeof value.solution === 'string' ? value.solution : '',
+            writtenSolution: typeof value.writtenSolution === 'string' ? value.writtenSolution : '',
             sourcePayload: value.sourcePayload
         };
         for (const field of [

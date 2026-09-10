@@ -73,6 +73,51 @@ test('Archive solution executor is a DOM transaction module with injected engine
   assert.equal(typeof api.render, 'function');
 });
 
+test('writtenSolution survives canonical normalization and remains separate from solution', () => {
+  const authority = require('../archive/render-authority.js');
+  const raw = {
+    sourceArchiveFile: 'exams/fixture/written-solution.js',
+    content: '문제',
+    choices: [],
+    answer: '①',
+    writtenSolution: '모범답안 내용',
+    solution: '상세해설 내용'
+  };
+  const normalized = authority.normalizeArchiveQuestions([raw], {
+    sourceArchiveFile: raw.sourceArchiveFile
+  })[0];
+
+  assert.equal(normalized.writtenSolution, raw.writtenSolution);
+  assert.equal(normalized.solution, raw.solution);
+
+  const rendered = authority.renderQuestionHTML(normalized, {
+    mode: 'solution',
+    wrapLatex: value => String(value)
+  });
+  const writtenIndex = rendered.indexOf('[모범답안]');
+  const writtenTextIndex = rendered.indexOf(raw.writtenSolution);
+  const detailLabelIndex = rendered.indexOf('[상세해설]');
+  const detailTextIndex = rendered.indexOf(raw.solution);
+  assert.ok(writtenIndex >= 0);
+  assert.ok(writtenIndex < writtenTextIndex);
+  assert.ok(writtenTextIndex < detailLabelIndex);
+  assert.ok(detailLabelIndex < detailTextIndex);
+
+  const legacyRaw = { ...raw };
+  delete legacyRaw.writtenSolution;
+  const legacy = authority.normalizeArchiveQuestions([legacyRaw], {
+    sourceArchiveFile: legacyRaw.sourceArchiveFile
+  })[0];
+  assert.equal(legacy.writtenSolution, '');
+  assert.equal(legacy.solution, raw.solution);
+  const legacyRendered = authority.renderQuestionHTML(legacy, {
+    mode: 'solution',
+    wrapLatex: value => String(value)
+  });
+  assert.doesNotMatch(legacyRendered, /sol-written|\[모범답안\]|\[상세해설\]/);
+  assert.match(legacyRendered, /상세해설 내용/);
+});
+
 test('Phase A report uses legacy/shared executor A/B as the authority gate', () => {
   const report = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-a-solution-layout-bridge.json'), 'utf8'));
   assert.equal(report.status, 'PASS');

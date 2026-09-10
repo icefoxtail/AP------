@@ -1379,6 +1379,10 @@ function prepareArchiveCanonicalSolution(question) {
     return formatSolutionHtml(question.solution || '');
 }
 
+function prepareArchiveCanonicalWrittenSolution(question) {
+    return formatSolutionHtml(question.writtenSolution || '');
+}
+
 async function recordArchiveDualRun(area) {
     if (new URLSearchParams(window.location.search).get('renderAuthorityDualRun') !== '1') return;
     if (!AppState.canonicalData.length || typeof window.APRenderAuthority?.compareQuestionSemantics !== 'function') return;
@@ -1389,6 +1393,7 @@ async function recordArchiveDualRun(area) {
                 mode: AppState.mode,
                 wrapLatex,
                 prepareContent: prepareArchiveCanonicalContent,
+                prepareWrittenSolution: prepareArchiveCanonicalWrittenSolution,
                 prepareSolution: prepareArchiveCanonicalSolution,
                 resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef)
             })).join('');

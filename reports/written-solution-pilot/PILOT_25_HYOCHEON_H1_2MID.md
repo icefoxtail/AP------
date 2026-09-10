@@ -81,10 +81,11 @@ STATUS: PILOT / NON-CANONICAL
 | `docs/rules/02_PIPELINES/해설프로토콜.md` | 기존 `solution` 작성·검산·학생용 표현 규칙 | `solution`과 `writtenSolution`의 역할 분리, 문항별 작성·검산 규칙 추가 | 필수 | 아니오 |
 | `docs/rules/03_REVIEW/무결성검수.md` | 데이터·수학·렌더·전 문항 무결성 검수 | 필드 존재, 필수 근거, answer 일치, 모범답안→상세해설 순서 검수 추가 | 필수 | 아니오 |
 | `archive/render-authority.js` | canonical normalization/authority adapter | unknown field 보존 및 canonical dual-run 비교에 `writtenSolution` 포함 | 필수 | 아니오 |
+| `archive/print-contract.js` | canonical question object contract | `writtenSolution`을 `solution`과 함께 보존하는 canonical field로 추가 | 필수 | 예 |
 | `archive/solution-render-executor.js` | 공유 해설지 DOM·pagination·continuation executor | 조건부 `[모범답안]` 계층과 `[상세해설]` 순서의 정식 처리 | 필수 | 예 |
 | `archive/engine.html` | archive UI, CSS, legacy solution fallback, shared executor wiring | 정식 계층의 CSS·fallback·print contract 및 regression test 확정 | 필수 | 예 |
 | `tests/archive-solution-image.test.js` | solution answer/image/body order와 continuation 계약 | optional written layer가 있을 때의 order/continuation 계약 추가 | 필수 | 아니오 |
-| `tests/archive-render-authority-adapter.test.js` | shared/legacy authority 계약 | writtenSolution field가 shared/legacy 양쪽에서 보존되는지 계약 추가 | 필수 | 버전 assertion만 갱신 |
+| `tests/archive-render-authority-adapter.test.js` | shared/legacy authority 계약 | writtenSolution field가 normalization·canonical renderer에서 보존되는지 계약 추가 | 필수 | 예 |
 | `archive/tools/pipeline-core/contracts/exam-release-v1.schema.json` | pipeline release/evidence contract | 정식 release artifact에서 writtenSolution coverage/evidence 필드 필요 여부 결정 | 선택/검토 | 아니오 |
 | `archive/exams/original/**` | 실제 시험지 문항 객체 저장소 | 승인된 migration policy에 따라 대상 문항에 field 확산 | 필수 | 파일럿 대상만 예 |
 
@@ -102,7 +103,7 @@ STATUS: PILOT / NON-CANONICAL
 - `[모범답안]`: 23
 - `[상세해설]`: 23
 - 기존 solutionImage decode/render: 18
-- MathJax `mjx-container`: 720
+- MathJax `mjx-container`: 749
 - page overflow: 0
 - 문항 순서: 1→23 PASS
 - full-page screenshot: PASS
@@ -138,15 +139,30 @@ STATUS: PILOT / NON-CANONICAL
 
 - `node --check archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js`: PASS
 - `node --check archive/solution-render-executor.js`: PASS
+- `node --check archive/render-authority.js`: PASS
+- `node --check archive/print-contract.js`: PASS
 - 대상 파일과 `origin/main`의 보존 필드 비교: preserved diffs 0
 - 대상 파일의 23문항 parse: PASS
 - `writtenSolution` 존재/빈 문자열 검사: 23 / 23, empty 0
-- 전체 archive test files: 60 PASS / 0 FAIL
+- 전체 archive test files: 61 PASS / 0 FAIL
 - `git diff --check`: PASS
 
 `engine.html`은 HTML 문서이며 직접 `node --check` 대상이 아니다. inline script 문법은 전체 archive test suite의 `inline scripts in both engines remain syntactically valid` 테스트로 PASS 확인했다.
 
-## 7. 최종 판정
+## 7. 핀포인트 수정 회귀
+
+- q14 좌표별 내분점 공식, 점 산술 제거: PASS
+- q21 두 경우의 점 순서·거리 관계·좌표 변화량 풀이, 매개변수/벡터식 제거: PASS
+- q18 반사 등식의 근거(`PR_i=P_i'R_i`, 공선성) 보강: PASS
+- q22 네 중심 후보 직접 판별: PASS
+- q23 `branch` 표현 제거 및 한국어 직선 부분 표현: PASS
+- q14 독립 검산: `D=(-1,-2/5)` PASS
+- q21 독립 검산: `C=(-4,0), (-28,-36)` PASS
+- normalization parity: source → canonical question → canonical renderer에서 `writtenSolution` 유지: PASS
+- `solution` parity: 기존 상세해설 unchanged, 두 필드 동시 존재: PASS
+- canonical renderer 계층: `[모범답안]` → `[상세해설]`: PASS
+
+## 8. 최종 판정
 
 FINAL: `PILOT_PASS`
 

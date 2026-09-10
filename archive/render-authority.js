@@ -115,6 +115,7 @@
             choices: normalizedChoices(raw),
             answer: firstPresent(raw, ['answer', 'correctAnswer', 'correct', 'ans']),
             solution: text(firstPresent(raw, ['solution', 'explanation', 'commentary', 'sol'])),
+            writtenSolution: text(firstPresent(raw, ['writtenSolution'])),
             sourcePayload: rawQuestion
         };
 
@@ -255,11 +256,17 @@
         const image = mode === 'exam' ? renderImageHTML(question, 'image', 'q-image-wrap', config) : '';
         const choices = mode === 'exam' ? renderChoicesHTML(question, format) : '';
         const answer = mode === 'answer' ? `<div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>` : '';
+        const preparedWrittenSolution = typeof config.prepareWrittenSolution === 'function'
+            ? config.prepareWrittenSolution(question, format)
+            : format(question.writtenSolution || '');
+        const writtenSolution = mode === 'solution' && question.writtenSolution
+            ? `<div class="sol-written"><div class="sol-written-label">[모범답안]</div><div class="sol-written-body">${preparedWrittenSolution}</div></div><div class="sol-detail-label">[상세해설]</div>`
+            : '';
         const preparedSolution = typeof config.prepareSolution === 'function'
             ? config.prepareSolution(question, format)
             : format(question.solution || '해설이 없습니다.');
         const solution = mode === 'solution'
-            ? `<div class="sol-meta"><div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>${renderImageHTML(question, 'solutionImage', 'sol-image-wrap', config)}<div class="sol-exp">${preparedSolution}</div></div>`
+            ? `<div class="sol-meta"><div class="sol-ans">[정답] ${format(question.answer === undefined || question.answer === null ? '-' : question.answer)}</div>${writtenSolution}${renderImageHTML(question, 'solutionImage', 'sol-image-wrap', config)}<div class="sol-exp">${preparedSolution}</div></div>`
             : '';
         const contentClass = mode === 'solution' && config.solutionContentClass !== 'q-content'
             ? ' data-semantic-content="1"'
