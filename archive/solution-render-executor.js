@@ -35,7 +35,7 @@
             appState.solutionObservedPlacementLedger = null;
         }
 
-        const staging = document.getElementById('staging');
+        const staging = deps.stagingHost || document.getElementById('staging');
         if (!staging) throw new Error('SOLUTION_STAGING_MISSING');
         staging.style.width = '83mm';
         staging.innerHTML = '';

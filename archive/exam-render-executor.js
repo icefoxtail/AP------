@@ -30,7 +30,7 @@
         const SE_PAGE_TOLERANCE = Number(deps.SE_PAGE_TOLERANCE ?? 5);
         const SE_BLOCK_GAP = Number(deps.SE_BLOCK_GAP ?? 15);
 
-        const staging = document.getElementById('staging');
+        const staging = deps.stagingHost || document.getElementById('staging');
         if (!staging) throw new Error('EXAM_STAGING_MISSING');
         staging.style.width = '83mm';
         staging.innerHTML = '';
