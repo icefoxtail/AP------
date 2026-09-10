@@ -85,7 +85,45 @@
           "affected",
           "bindings",
           "runRefs"
-        ]
+        ],
+        "properties": {
+          "benchmarkDenominator": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "status",
+                  "totalTargetCount",
+                  "eligibleTargetCount",
+                  "excludedTargetCount",
+                  "eligibleTargets",
+                  "excludedTargets",
+                  "excludedRuns"
+                ],
+                "properties": {
+                  "status": {"const": "FROZEN"},
+                  "totalTargetCount": {"type": "integer", "minimum": 0},
+                  "eligibleTargetCount": {"type": "integer", "minimum": 0},
+                  "excludedTargetCount": {"type": "integer", "minimum": 0},
+                  "eligibleTargets": {"type": "array", "items": {"$ref": "#/$defs/targetIdentity"}},
+                  "excludedTargets": {"type": "array", "items": {"$ref": "#/$defs/targetIdentity"}},
+                  "excludedRuns": {"type": "array", "items": {"$ref": "#/$defs/excludedRun"}}
+                },
+                "additionalProperties": true
+              },
+              {
+                "type": "object",
+                "required": ["status", "eligibleTargetCount", "excludedRuns"],
+                "properties": {
+                  "status": {"const": "NOT_APPLICABLE"},
+                  "eligibleTargetCount": {"type": "integer", "minimum": 0},
+                  "excludedRuns": {"type": "array", "items": {"$ref": "#/$defs/excludedRun"}}
+                },
+                "additionalProperties": true
+              }
+            ]
+          }
+        }
       }
     },
     "launches": {
@@ -156,6 +194,26 @@
           "minLength": 1
         }
       }
+    }
+  },
+  "$defs": {
+    "targetIdentity": {
+      "type": "object",
+      "required": ["runId", "questionUid"],
+      "properties": {
+        "runId": {"type": "string", "minLength": 1},
+        "questionUid": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "excludedRun": {
+      "type": "object",
+      "required": ["runId", "status"],
+      "properties": {
+        "runId": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": false
