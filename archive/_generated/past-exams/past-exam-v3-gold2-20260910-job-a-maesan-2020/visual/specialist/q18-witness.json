@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "JOB_A_SPECIALIST_GENERATOR_WITNESS_v1",
+  "status": "BUILD_SIDE_ONLY",
+  "createdAt": "2026-09-10T11:59:05.310337+00:00",
+  "qid": 18,
+  "routeAuthority": "archive/tools/pipeline-core/README.md specialist route; archive/tools/function-family/generate-pilot-graphs.py uses alive.engine.visual_renderer",
+  "rendererPath": "alive/engine/visual_renderer.py",
+  "rendererSha": "sha256:0497b788cdfd362df6729bbf8f73fe2f9edd94dc0f71e50e2325b2500cfbeca6",
+  "generatorPath": "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\specialist-generation.py",
+  "generatorSha": "sha256:3059c13cf874e96fcb617c4439f61d43430739ad72d033947ec7e7f438011bf6",
+  "factSha": "sha256:afc1a32ba14ed51e63edd3731b7a09f283a3fe9c5fee1bd47b5b007e9efabb39",
+  "assetSha": "sha256:f3c02e6462ff8eb7a7ed308cb0f3435338cc67ca56dc1527e6fd05ec45ae6b18",
+  "coordinateModel": {
+    "originX": 280.0,
+    "originY": 379.2,
+    "sx": 12.4,
+    "sy": 49.6,
+    "formula": "screenX=originX+sx*x; screenY=originY-sy*y"
+  },
+  "numericBranches": [
+    {
+      "id": "fL",
+      "formula": "sqrt(-x-3)-1",
+      "sampleCount": 607,
+      "maxMidpointChordErrorPx": 0.2096864536196108,
+      "window": [
+        -19,
+        -3
+      ],
+      "branchSeparated": true
+    },
+    {
+      "id": "fM",
+      "formula": "x+2",
+      "sampleCount": 601,
+      "maxMidpointChordErrorPx": 5.684341886080802e-14,
+      "window": [
+        -3,
+        2
+      ],
+      "branchSeparated": true
+    },
+    {
+      "id": "fR",
+      "formula": "-sqrt(x-2)+4",
+      "sampleCount": 607,
+      "maxMidpointChordErrorPx": 0.20968645361955396,
+      "window": [
+        2,
+        18
+      ],
+      "branchSeparated": true
+    }
+  ],
+  "factRevisionReason": [],
+  "styleReview": "NOT_TESTED",
+  "independentV2": "NOT_TESTED"
+}

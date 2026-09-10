@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JOB_A_SPECIALIST_GENERATOR_WITNESS_v1",
+  "status": "BUILD_SIDE_ONLY",
+  "createdAt": "2026-09-10T11:59:05.235976+00:00",
+  "qid": 17,
+  "routeAuthority": "archive/tools/pipeline-core/README.md specialist route; archive/tools/function-family/generate-pilot-graphs.py uses alive.engine.visual_renderer",
+  "rendererPath": "alive/engine/visual_renderer.py",
+  "rendererSha": "sha256:0497b788cdfd362df6729bbf8f73fe2f9edd94dc0f71e50e2325b2500cfbeca6",
+  "generatorPath": "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\specialist-generation.py",
+  "generatorSha": "sha256:3059c13cf874e96fcb617c4439f61d43430739ad72d033947ec7e7f438011bf6",
+  "factSha": "sha256:1b67971b803791bdc63efccb9837b74805a17c58b6ee0b0fc4a9fa3516ed9e01",
+  "assetSha": "sha256:29372309391f1b66d7ed68d6b83dc46fb20e893a492d8233589324c9176693f6",
+  "coordinateModel": {
+    "originX": 373.0,
+    "originY": 311.0,
+    "sx": 31.0,
+    "sy": 31.0,
+    "formula": "screenX=originX+sx*x; screenY=originY-sy*y"
+  },
+  "numericBranches": [
+    {
+      "id": "gL",
+      "formula": "1-6/(x+3)",
+      "sampleCount": 601,
+      "maxMidpointChordErrorPx": 0.0031891910427646053,
+      "window": [
+        -9,
+        -4
+      ],
+      "branchSeparated": true
+    },
+    {
+      "id": "gR",
+      "formula": "1-6/(x+3)",
+      "sampleCount": 601,
+      "maxMidpointChordErrorPx": 0.003189191042793027,
+      "window": [
+        -2,
+        3
+      ],
+      "branchSeparated": true
+    }
+  ],
+  "factRevisionReason": [
+    "Equal-unit window for distance geometry"
+  ],
+  "styleReview": "NOT_TESTED",
+  "independentV2": "NOT_TESTED"
+}
