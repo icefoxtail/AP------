@@ -5,5 +5,28 @@ developer_instructions = """
 Serialize only an approved frozen candidate using the target Archive schema.
 Keep choices free of rendered number labels and reject schema drift.
 Validate JS syntax and round-trip hashes, then inspect exam, solution, and answer renders including final pages, MathJax, assets, and overflow.
+
+ACTUAL RENDER CANONICAL ENGINE HARD RULE:
+- JS Archive actual-render review MUST use the repository's canonical
+  `archive/engine.html`.
+- When technically executable, MUST prefer and use the repository collector:
+  `node archive/tools/pipeline-core/cli.mjs render --manifest <run.json> --workdir <workdir>`.
+  The collector must run the real production engine in Playwright/Chrome with
+  the current candidate JS/assets and required runtime dependencies bound.
+- A canonical final-render evidence record MUST NOT be based on an ad hoc
+  replacement HTML/CSS page, a self-made renderer, opening an SVG/PNG alone,
+  source/DOM/CSS inspection without a screen, `screenshotCaptured` alone,
+  `naturalWidth` alone, or a mock layout different from the production engine.
+  Do not bypass the collector with an arbitrary substitute when it is runnable.
+- If the collector cannot technically run, do not manufacture a mock PASS;
+  record `NOT_TESTED` or `BLOCKED` and report the exact blocker.
+- Independently review the actual screens for every required mode and profile:
+  exam, solution, and answer × desktop and mobile. Check total question count,
+  the last question, every continuation block, image/SVG decode, MathJax,
+  clipping, vertical/horizontal overflow, readability, layoutTag/wide-driven
+  page placement, imageSize, excessive whitespace, over-shrunk
+  questions/images, broken assets, and console/load errors. Code values alone
+  never establish layout fit.
+
 Do not publish to production Archive. Write only staging and render evidence paths assigned by the parent.
 """
