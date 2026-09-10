@@ -32,6 +32,14 @@ Agent execution is exclusively governed by
 `archive/tools/pipeline-core/AGENT_BUDGET.md`. Review labels do not authorize
 per-stage launches or production subagents.
 
+For GOLD/pilot/benchmark/holdout execution, latest-main/rule/calibration
+validation is a start-time gate. Once `START_SHA` and the required identities
+are frozen, a later `origin/main` advance is `POST_START_MAIN_ADVANCE` and does
+not invalidate the job; frozen bytes, hashes, or evidence must still match.
+V4 GOLD benchmark eligibility is PDF plus available source-pixel rendering.
+Non-PDF input is `GOLD_INELIGIBLE_SOURCE_FORMAT` and is excluded from the
+benchmark denominator without deleting production document capability.
+
 `90_ARCHIVE/` contains legacy, draft, superseded, or historical documents. It
 is not current authority for a new import.
 

@@ -331,7 +331,7 @@ def generate(fact: dict) -> tuple[str, dict]:
 
     title = {"set-regions": "집합 영역", "set-inclusion": "집합 포함 관계", "set-cardinality": "교집합의 최대와 최소", "case-table": "경우별 검산", "number-line": "해집합", "cartesian": "좌표 그래프", "geometry": "도형의 관계", "proof-flow": "증명 흐름", "quantifier-negation": "양화 명제의 부정"}[kind]
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc"><title id="title">{title}</title><desc id="desc">{title}의 문항별 수학 사실을 표시한다.</desc><g font-family="Arial, sans-serif">' + ''.join(elements) + '</g></svg>\n'
-    evidence = {"schemaVersion": "APMATH_GENERATOR_WITNESS_v1", "status": "BUILD_SIDE_ONLY", "generator": "pipeline-core/generator.py", "generatorSha": digest(Path(__file__).read_bytes()), "rulePackSha": rule_pack['rulePackSha'], "appliedRuleRefs": rule_pack['refs'], "semanticSha": validation["semanticSha"], "visualSpecSha": validation["specSha"], "artifactSha": digest(svg.encode()), "numericExecution": "PYTHON_EXECUTED", "computedPrimitives": computed, "independentReview": "NOT_TESTED", "render": "NOT_TESTED"}
+    evidence = {"schemaVersion": "APMATH_GENERATOR_WITNESS_v1", "status": "BUILD_SIDE_ONLY", "generator": "pipeline-core/generator.py", "generatorPath": "pipeline-core/generator.py", "generatorSha": digest(Path(__file__).read_bytes()), "rulePackSha": rule_pack['rulePackSha'], "appliedRuleRefs": rule_pack['refs'], "semanticSha": validation["semanticSha"], "visualSpecSha": validation["specSha"], "artifactSha": digest(svg.encode()), "numericExecution": "PYTHON_EXECUTED", "computedPrimitives": computed, "independentReview": "NOT_TESTED", "render": "NOT_TESTED"}
     return svg, evidence
 
 

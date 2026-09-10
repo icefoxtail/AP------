@@ -11,15 +11,17 @@ import { addRuntimeInputs, runtimeDependencyBundle } from './runtime.mjs';
 import { assertBuilderStart } from '../past-exam-pipeline/lib/calibration.mjs';
 import { solutionQualityDraft } from './solution-quality.mjs';
 import { visualBenefitDraft } from './solution-visual-benefit.mjs';
+import { evaluateGoldSourceEligibility } from './gold-contract.mjs';
 
-export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null }) {
+export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null, benchmarkKind = null }) {
   if (!profiles.pipelines[pipeline] || !/^[A-Za-z0-9_-]+$/.test(runId || '')) throw new Error('PIPELINE_AND_RUN_ID_REQUIRED');
   let pastManifest = null;
+  let calibrationStart = null;
   const pastSourceRefs = [];
   if (pipeline === 'past-exam') {
     if (!pastExamManifestPath || schemaVersion !== RUN_VERSION_V2) throw new Error('BUILDER_START_BLOCKED:PAST_EXAM_V3_MANIFEST_AND_CORE_V2_REQUIRED');
     pastManifest = JSON.parse(fs.readFileSync(path.resolve(root, pastExamManifestPath), 'utf8'));
-    assertBuilderStart(root, pastManifest);
+    calibrationStart = assertBuilderStart(root, pastManifest);
     const lock = JSON.parse(fs.readFileSync(pastManifest.referenceSampleLock.path, 'utf8'));
     if (lock.readerId !== builderId || lock.readerSessionId !== builderSessionId) throw new Error('BUILDER_START_BLOCKED:CALIBRATION_READER_BUILDER_MISMATCH');
   }
@@ -51,6 +53,7 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
     run.semanticDependencyBindings = {};
     if (!workBatchId) throw new Error('WORK_BATCH_ID_REQUIRED');
     run.workBatchId = workBatchId;
+    run.benchmarkKind = benchmarkKind || null;
   }
   const pendingBundles = [];
   run.assetRoot = assetRoot || (pastManifest ? path.relative(root, path.resolve(root, pastManifest.outputDir || path.join(path.dirname(pastManifest.sourceInventoryPath), '..'))).split(path.sep).join('/') : 'archive');
@@ -76,8 +79,19 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
     }
     const lockPath = path.relative(root, pastManifest.referenceSampleLock.path).split(path.sep).join('/');
     const lockRef = fileRef(root, lockPath);
+    const lock = JSON.parse(readBoundFile(root, lockRef));
+    const goldEligibility = evaluateGoldSourceEligibility(pastManifest);
+    run.benchmarkKind = benchmarkKind || pastManifest.benchmarkKind || run.benchmarkKind || null;
+    run.sourceAuthority.goldBenchmarkEligibility = goldEligibility;
+    run.pastExamAuthority = {
+      schemaVersion: 'APMATH_PAST_EXAM_JOB_AUTHORITY_v1',
+      startSha: calibrationStart.mainCommit,
+      calibrationRef: lockRef,
+      calibrationSha: lockRef.sha256,
+      rulePackSha: lock.rulePackSha,
+    };
     const configPath = `${workdir}/past-exam-project-config.json`;
-    writeNewJson(safePath(root, configPath, { mustExist: false }), { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256 });
+    writeNewJson(safePath(root, configPath, { mustExist: false }), { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256, authority: run.pastExamAuthority, goldBenchmarkEligibility: goldEligibility });
     run.pastExamCompletionRef = fileRef(root, configPath);
     run.publicationIntent = 'FULL_EXAM';
     run.inputs.push({ ...run.pastExamCompletionRef, role: 'spec' }, { ...lockRef, role: 'spec' }, { ...inventoryRef, role: 'dependency' }, { ...fileRef(root, contractPath), role: 'spec' });

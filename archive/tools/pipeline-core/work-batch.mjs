@@ -10,6 +10,8 @@ import { runInputSha, loadBoundQuestionBanks } from './closure.mjs';
 import { computeV2AxisInputShas } from './v2-audit.mjs';
 import { AXIS_REVIEW_BINDING, validateMachineEvidence, validateTypedEvidence } from './review-evidence-v2.mjs';
 import { detectRenderImpact, validateRenderReviewReuseReceipt } from './render-impact.mjs';
+import { createExecutionIdentity, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
+import { latestMainCommit } from '../past-exam-pipeline/lib/calibration.mjs';
 
 import { validateSchema } from './schema.mjs';
 const budgetContract = JSON.parse(fs.readFileSync(new URL('./contracts/work-batch-v1.schema.json', import.meta.url), 'utf8'));
@@ -92,6 +94,13 @@ function validateState(state) {
   check(validateSchema(state, budgetContract).length === 0, 'BUDGET_STATE_CONTRACT_INVALID');
   check(state?.schemaVersion === WORK_BATCH_VERSION && same(state.policy, AGENT_BUDGET), 'BUDGET_POLICY_INVALID');
   check(Array.isArray(state.launches) && Array.isArray(state.freezes), 'LEDGER_REQUIRED');
+  if (state.jobKind !== undefined) check(typeof state.jobKind === 'string' && (state.jobKind === 'PRODUCTION' || isBenchmarkJobKind(state.jobKind) || state.jobKind === 'DIAGNOSTIC'), 'JOB_KIND_INVALID');
+  if (state.executionIdentity !== undefined) {
+    check(state.executionIdentity?.schemaVersion === 'APMATH_GOLD_EXECUTION_CONTRACT_v1', 'MODEL_ROUTE_IDENTITY_INVALID');
+    check(state.executionIdentity.jobKind === state.jobKind, 'MODEL_ROUTE_JOB_KIND_MISMATCH');
+    const parity = validateModelRouteParity(state.executionIdentity);
+    if (isBenchmarkJobKind(state.jobKind) && parity.status === 'PASS' && state.executionIdentity.MODEL_ROUTE_PARITY !== 'PASS') throw new Error('MODEL_ROUTE_PARITY_STATE_MISMATCH');
+  }
   check(new Set(state.launches.map(l => l.launchId)).size === state.launches.length, 'DUPLICATE_LAUNCH');
   for (const purpose of ['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT']) check(state.launches.filter(l => l.purpose === purpose).length <= 1, 'AGENT_BUDGET_EXCEEDED');
   const active = state.launches.filter(l => ['RESERVED', 'DISPATCHED'].includes(l.status));
@@ -130,7 +139,17 @@ export function initWorkBatch(root, spec) {
     }
     check(Array.isArray(spec.runIds) && spec.runIds.length > 0 && sorted(spec.runIds).length === spec.runIds.length && spec.runIds.every(nonempty), 'WHOLE_JOB_RUN_IDS_REQUIRED');
     check(nonempty(spec.builderId) && nonempty(spec.builderSessionId), 'MAIN_WORKER_IDENTITY_REQUIRED');
-    return { schemaVersion: WORK_BATCH_VERSION, workBatchId: spec.workBatchId, runIds: sorted(spec.runIds), builderId: spec.builderId, builderSessionId: spec.builderSessionId, policy: AGENT_BUDGET, status: 'PRODUCTION', freezes: [], launches: [] };
+    const jobKind = String(spec.jobKind || 'PRODUCTION').trim().toUpperCase();
+    check(jobKind === 'PRODUCTION' || isBenchmarkJobKind(jobKind) || jobKind === 'DIAGNOSTIC', 'JOB_KIND_INVALID');
+    const executionIdentity = createExecutionIdentity({ jobKind, requestedModel: spec.requestedModel, requestedReasoningEffort: spec.requestedReasoningEffort });
+    if (isBenchmarkJobKind(jobKind)) check(nonempty(executionIdentity.requestedModel) && nonempty(executionIdentity.requestedReasoningEffort), 'MODEL_ROUTE_REQUEST_REQUIRED');
+    if (isBenchmarkJobKind(jobKind)) {
+      check(spec.jobAuthority?.startSha && spec.jobAuthority?.calibrationSha && spec.jobAuthority?.rulePackSha, 'START_TIME_AUTHORITY_REQUIRED');
+      let latest;
+      try { latest = latestMainCommit(root); } catch { throw new Error('START_TIME_STALE'); }
+      check(spec.jobAuthority.startSha === latest, 'START_TIME_STALE');
+    }
+    return { schemaVersion: WORK_BATCH_VERSION, workBatchId: spec.workBatchId, runIds: sorted(spec.runIds), builderId: spec.builderId, builderSessionId: spec.builderSessionId, jobKind, executionIdentity, jobAuthority: spec.jobAuthority || null, policy: AGENT_BUDGET, status: 'PRODUCTION', freezes: [], launches: [] };
   });
 }
 
@@ -141,10 +160,21 @@ function collectFreeze(root, state, runRefs) {
   const priorFreeze = state.freezes.at(-1);
   const finalLaunch = state.launches.find(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED');
   const defects = finalLaunch ? load(root, finalLaunch.providerReceiptRef).defects || [] : [];
+  const authorities = [];
+  const benchmarkExcluded = [];
   for (const run of runs) {
     check(run.schemaVersion === 'APMATH_PIPELINE_RUN_v2' && run.workBatchId === state.workBatchId, 'WORK_BATCH_RUN_BINDING');
     check(run.builderId === state.builderId && run.builderSessionId === state.builderSessionId, 'MAIN_WORKER_BINDING');
     check(run.inputSha === runInputSha(run), 'CURRENT_RUN_HASH_REQUIRED');
+    if (run.pastExamAuthority) authorities.push(run.pastExamAuthority);
+    const eligibility = run.sourceAuthority?.goldBenchmarkEligibility || run.goldBenchmarkEligibility || null;
+    if (isBenchmarkJobKind(state.jobKind)) {
+      check(run.benchmarkKind === state.jobKind, 'JOB_KIND_RUN_BINDING');
+      check(run.pastExamAuthority, 'FROZEN_JOB_AUTHORITY_REQUIRED');
+      if (state.jobAuthority) check(same(run.pastExamAuthority, state.jobAuthority), 'FROZEN_START_SHA_MISMATCH');
+      check(eligibility, 'GOLD_SOURCE_ELIGIBILITY_REQUIRED');
+      if (eligibility.denominatorIncluded !== true) benchmarkExcluded.push({ runId: run.runId, status: eligibility.status || 'GOLD_INELIGIBLE_SOURCE' });
+    }
     for (const ref of run.inputs) readBoundFile(root, ref);
     const shas = computeV2AxisInputShas(root, run);
     check(run.questions.length === Object.keys(shas).length, 'DUPLICATE_JOB_UID');
@@ -179,7 +209,14 @@ function collectFreeze(root, state, runRefs) {
   targets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
   affected.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
   if (priorFreeze) check(same(targets, priorFreeze.targets), 'WORK_BATCH_TARGET_DENOMINATOR_CHANGED');
-  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets, affected, bindings, machineCheckedUidCount: targets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null };
+  if (authorities.length) {
+    const authority = authorities[0];
+    check(authorities.every(candidate => same(candidate, authority)), 'FROZEN_START_SHA_MISMATCH');
+    if (state.jobAuthority) check(same(state.jobAuthority, authority), 'FROZEN_START_SHA_MISMATCH');
+    state.jobAuthority = authority;
+  }
+  if (isBenchmarkJobKind(state.jobKind)) check(state.jobAuthority || authorities.length > 0, 'FROZEN_JOB_AUTHORITY_REQUIRED');
+  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets, affected, bindings, machineCheckedUidCount: targets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator: isBenchmarkJobKind(state.jobKind) ? { status: 'FROZEN', eligibleTargetCount: targets.length - benchmarkExcluded.length, excludedRuns: benchmarkExcluded } : { status: 'NOT_APPLICABLE', eligibleTargetCount: targets.length, excludedRuns: [] } };
   return { ...body, freezeSha: objectSha(body) };
 }
 
@@ -247,7 +284,12 @@ export function reserveWorkBatchReview(root, id, request) {
       check(plan.workBatchId === id && plan.launchId === nextLaunchId && plan.purpose === request.purpose && plan.freezeSha === freeze.freezeSha && plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId, 'PROVIDER_PLAN_LAUNCH_BINDING');
       check(plan.preflightResponse?.requestSha === plan.preflightRequest?.requestSha && plan.preflightResponseSha === objectSha(plan.preflightResponse), 'PROVIDER_PLAN_ATTESTATION_TAMPERED');
       check(plan.auditorId === request.auditorId && plan.auditorSessionId === request.auditorSessionId && same(plan.contexts, request.contexts) && plan.contextIsolation === 'STATELESS_INPUTS' && plan.subagentToolsEnabled === false && nonempty(plan.externalId), 'PROVIDER_PLAN_CONTEXT_BINDING');
+      if (isBenchmarkJobKind(state.jobKind)) {
+        check(plan.executionIdentity?.jobKind === state.jobKind && plan.executionIdentity.requestedModel === state.executionIdentity.requestedModel && plan.executionIdentity.requestedReasoningEffort === state.executionIdentity.requestedReasoningEffort, 'MODEL_ROUTE_REQUEST_BINDING');
+        check(plan.executionIdentity.modelRouteObservedAtStart && plan.executionIdentity.actualModel && plan.executionIdentity.actualReasoningEffort, 'MODEL_ROUTE_OBSERVATION_REQUIRED');
+      }
       providerAttestationPlanRef = request.providerAttestationPlanRef;
+      if (plan.executionIdentity) state.executionIdentity = structuredClone(plan.executionIdentity);
     }
     const launch = { contexts: request.contexts, contextIsolation: request.contextIsolation, subagentToolsEnabled: false, launchId: `${id}:${state.launches.length + 1}`, purpose: request.purpose, freezeSha: freeze.freezeSha, scope: request.purpose === 'FINAL_AUDIT' ? freeze.targets : freeze.affected, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}) };
     state.launches.push(launch); return state;
@@ -272,6 +314,11 @@ export function reconcileWorkBatchReview(root, id, request) {
       check(Array.isArray(receipt.defects) && receipt.defects.every(d => launch.scope.some(row => row.runId === d.runId && row.questionUid === d.questionUid)), 'PROVIDER_DEFECT_SCOPE_REQUIRED');
       check(Array.isArray(receipt.evidenceRefs), 'PROVIDER_OUTPUT_REFS_REQUIRED');
       for (const ref of receipt.evidenceRefs) readBoundFile(root, ref);
+      if (isBenchmarkJobKind(state.jobKind)) {
+        check(receipt.executionIdentity?.jobKind === state.jobKind, 'MODEL_ROUTE_RECEIPT_BINDING');
+        check(receipt.executionIdentity?.modelRouteObservedAtClosure, 'MODEL_ROUTE_CLOSURE_OBSERVATION_REQUIRED');
+        state.executionIdentity = structuredClone(receipt.executionIdentity);
+      }
       launch.status = request.status; launch.endedAt = time(); launch.usedTokens = tokenTelemetry(receipt.usedTokens); launch.providerReceiptRef = request.providerReceiptRef;
       if (request.status === 'FAILED') state.status = 'HOLD';
       if (request.status === 'COMPLETED' && retiredTokenHoldCodes.has(state.lastHold?.code) && !state.launches.some(item => ['RESERVED', 'DISPATCHED'].includes(item.status))) {
@@ -322,6 +369,7 @@ export function validateWorkBatchEvidence(root, run, evidence) {
     }
     const evidenceRef = run.evidence?.find(ref => load(root, ref).evidenceId === evidence.evidenceId);
     check(evidenceRef && terminal.evidenceRefs?.some(ref => same(ref, evidenceRef)), 'PROVIDER_EVIDENCE_OUTPUT_BINDING');
+    if (state.jobAuthority?.startSha) check((evidence.jobAuthorityStartSha || evidence.machineProvenance?.authorityStartSha || evidence.payload?.authorityStartSha) === state.jobAuthority.startSha, 'EVIDENCE_START_SHA_MISMATCH');
   } catch (error) { errors.push(error.message); }
   return errors;
 }
@@ -332,6 +380,7 @@ export function workBatchMetrics(root, run, rows = []) {
     const launches = state.launches.filter(l => l.externalId);
     const events = launches.flatMap(l => [{ t: l.dispatchedAt, n: 1 }, ...(l.endedAt ? [{ t: l.endedAt, n: -1 }] : [])]).sort((a,b) => a.t.localeCompare(b.t) || a.n-b.n);
     let active = 0, peak = 0; for (const e of events) { active += e.n; peak = Math.max(peak, active); }
-    return { workBatchId: state.workBatchId, targetCount: freeze?.targets.length || 0, totalTargetCount: freeze?.targets.length || 0, totalAffectedCount: freeze?.affected.length || 0, independentAgentLaunchCount: launches.length, expensiveAgentLaunchCount: launches.length, concurrentExpensiveAgentPeak: peak, freshLlmUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'FRESH' && !MACHINE_AXES.includes(r.axis)).map(r => r.questionUid)).size, reusedUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'REUSED').map(r => r.questionUid)).size, machineCheckedUidCount: freeze?.machineCheckedUidCount || 0, retryLaunchCount: 0, secondAuditorLaunchCount: launches.filter(l => l.purpose === 'SECOND_AUDIT').length, recursiveSubagentLaunchCount: 0, usedTokens: launches.every(l => Number.isSafeInteger(l.usedTokens)) ? launches.reduce((n,l) => n+l.usedTokens,0) : null, tokenTelemetryAvailable: launches.every(l => Number.isSafeInteger(l.usedTokens)), agentBudgetStatus: state.status === 'HOLD' || state.launches.some(l => ['RESERVED','DISPATCHED'].includes(l.status)) ? 'HOLD' : 'WITHIN_BUDGET' };
+    const route = validateModelRouteParity(state.executionIdentity);
+    return { workBatchId: state.workBatchId, targetCount: freeze?.targets.length || 0, totalTargetCount: freeze?.benchmarkDenominator?.eligibleTargetCount ?? freeze?.targets.length ?? 0, totalAffectedCount: freeze?.affected.length || 0, independentAgentLaunchCount: launches.length, expensiveAgentLaunchCount: launches.length, concurrentExpensiveAgentPeak: peak, freshLlmUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'FRESH' && !MACHINE_AXES.includes(r.axis)).map(r => r.questionUid)).size, reusedUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'REUSED').map(r => r.questionUid)).size, machineCheckedUidCount: freeze?.machineCheckedUidCount || 0, retryLaunchCount: 0, secondAuditorLaunchCount: launches.filter(l => l.purpose === 'SECOND_AUDIT').length, recursiveSubagentLaunchCount: 0, usedTokens: launches.every(l => Number.isSafeInteger(l.usedTokens)) ? launches.reduce((n,l) => n+l.usedTokens,0) : null, tokenTelemetryAvailable: launches.every(l => Number.isSafeInteger(l.usedTokens)), agentBudgetStatus: state.status === 'HOLD' || state.launches.some(l => ['RESERVED','DISPATCHED'].includes(l.status)) ? 'HOLD' : 'WITHIN_BUDGET', jobKind: state.jobKind || 'PRODUCTION', executionIdentity: state.executionIdentity || null, MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY, modelRouteStatus: route.routeStatus };
   } catch (error) { return { workBatchId: run?.workBatchId || null, agentBudgetStatus: 'HOLD', errors: [error.message] }; }
 }

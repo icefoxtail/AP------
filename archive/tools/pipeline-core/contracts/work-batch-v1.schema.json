@@ -38,6 +38,30 @@
       "type": "string",
       "minLength": 1
     },
+    "jobKind": {
+      "enum": ["PRODUCTION", "GOLD", "PILOT", "BENCHMARK", "HOLDOUT", "DIAGNOSTIC"]
+    },
+    "executionIdentity": {
+      "type": "object",
+      "required": ["schemaVersion", "jobKind", "requestedModel", "requestedReasoningEffort", "actualModel", "actualReasoningEffort", "modelRouteObservedAtStart", "modelRouteObservedAtClosure", "modelRouteChanged", "routeStatus", "MODEL_ROUTE_PARITY"],
+      "properties": {
+        "schemaVersion": {"const": "APMATH_GOLD_EXECUTION_CONTRACT_v1"},
+        "jobKind": {"type": "string"},
+        "requestedModel": {"type": ["string", "null"]},
+        "requestedReasoningEffort": {"type": ["string", "null"]},
+        "actualModel": {"type": ["string", "null"]},
+        "actualReasoningEffort": {"type": ["string", "null"]},
+        "modelRouteObservedAtStart": {"type": ["string", "null"]},
+        "modelRouteObservedAtClosure": {"type": ["string", "null"]},
+        "modelRouteChanged": {"type": "boolean"},
+        "routeStatus": {"type": "string"},
+        "MODEL_ROUTE_PARITY": {"enum": ["PASS", "FAIL", "NOT_APPLICABLE"]}
+      },
+      "additionalProperties": true
+    },
+    "jobAuthority": {
+      "type": ["object", "null"]
+    },
     "tokenBudget": {},
     "status": {
       "enum": [

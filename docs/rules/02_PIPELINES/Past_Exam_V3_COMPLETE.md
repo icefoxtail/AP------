@@ -112,5 +112,28 @@ prepare의 assetRoot/sourceAssetRoot로 문제·해설 자산을 읽고, 검수 
 샘플 main 기준이 바뀌면 새 builder 시작에서 calibration을 다시 한다. 시작 후의 최종 검수는
 동결된 main commit의 바이트를 검증하며 네트워크 변화로 이미 진행 중인 수학 검수를 다시 띄우지 않는다.
 
+GOLD/pilot/benchmark/holdout JOB은 시작 전에 required main/rule/calibration
+baseline을 확인하고 `START_SHA`와 calibration identity를 freeze한다. freeze
+뒤 live `origin/main`이 앞으로 이동한 것은 `POST_START_MAIN_ADVANCE`이며
+실행 중 JOB을 stale 처리하지 않는다. `START_TIME_STALE`은 시작 시점에
+baseline 자체가 stale한 경우이고, frozen bytes/hash 또는 JOB evidence가
+frozen identity와 다르면 FAIL이다.
+
+V4 GOLD benchmark denominator는 `SOURCE_FORMAT == PDF` 및
+`SOURCE_PIXEL_RENDER_AVAILABLE == true`인 입력만 포함한다. HWP/HWPX 등은
+`GOLD_INELIGIBLE_SOURCE_FORMAT`으로 분류하여 denominator에서 제외하며,
+이는 production input capability를 제거하는 선언이 아니다. GOLD의
+requested/actual model과 reasoning effort는 start/closure에서 관찰해
+`MODEL_ROUTE_PARITY`를 계산한다. 관찰 불가·중간 변경은 성능 증거가 아닌
+`FAIL`/`MIXED_MODEL_ROUTE` diagnostic 결과다.
+
+candidate/asset/solutionImage/metadata mutation 뒤 MACHINE_CURRENT evidence는
+STALE/INVALIDATED로 기록하고 재수집한다. 최종 evidence는 current candidate
+artifact SHA와 axis input SHA를 함께 bind해야 한다. V1 `ADD`는 generated
+artifact → candidate attachment → V2 artifact-only → V3 expected↔observed
+fact parity → render review의 연결 또는 명시적 defect/HOLD/reclassification
+evidence 없이는 closure할 수 없다. Diagnostic continuation은 downstream
+관찰을 허용할 뿐 canonical PASS나 promotion authority가 아니다.
+
 19 강남여고 q1/q10/q20/q21/q23~25의 결함 유형은 회귀 대상으로 사용하되,
 테스트용 reviewer FAIL 기록을 실제 시험 전수검수 완료로 보고하지 않는다.

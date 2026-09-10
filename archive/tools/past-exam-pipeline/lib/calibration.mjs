@@ -15,7 +15,7 @@ const sameRef = (a, b) => a?.path === b?.path && a?.bytes === b?.bytes && a?.sha
 export function latestMainCommit(root) {
   const local = git(root, ['rev-parse', 'refs/remotes/origin/main']).toString().trim();
   const remote = git(root, ['ls-remote', '--exit-code', 'origin', 'refs/heads/main']).toString().trim().split(/\s+/)[0];
-  if (!/^[0-9a-f]{40,64}$/.test(local) || local !== remote) throw new Error('CALIBRATION_MAIN_STALE: fetch origin main before preparing calibration');
+  if (!/^[0-9a-f]{40,64}$/.test(local) || local !== remote) throw new Error('START_TIME_STALE: required origin/main baseline changed before JOB start');
   return local;
 }
 
@@ -68,11 +68,16 @@ export function prepareCalibration(root, manifest, samplePaths) {
     productionQualityProfile: Object.fromEntries(QUALITY_PROFILE_CHECKS.map(key => [key, { status: 'NOT_TESTED', minimumStandard: '', sampleAnchors: [] }])) };
 }
 
-export function validateCalibration(root, lock, { manifest = null, requireLatestMain = false, requirePass = true } = {}) {
-  const errors = [];
+export function validateCalibration(root, lock, { manifest = null, requireLatestMain = false, requiredStartSha = null, observePostStartAdvance = false, requirePass = true } = {}) {
+  const errors = [], warnings = [];
   if (lock?.schemaVersion !== CALIBRATION_VERSION) return { status: 'BLOCKED', errors: ['REFERENCE_SAMPLE_LOCK_REQUIRED'] };
   try {
-    if (requireLatestMain && latestMainCommit(root) !== lock.mainCommit) errors.push('CALIBRATION_MAIN_STALE');
+    if (requireLatestMain && latestMainCommit(root) !== lock.mainCommit) errors.push('START_TIME_STALE');
+    if (observePostStartAdvance) {
+      const liveRef = git(root, ['rev-parse', 'refs/remotes/origin/main']).toString().trim();
+      if (/^[0-9a-f]{40,64}$/.test(liveRef) && liveRef !== lock.mainCommit) warnings.push('POST_START_MAIN_ADVANCE');
+    }
+    if (requiredStartSha && lock.mainCommit !== requiredStartSha) errors.push('FROZEN_START_SHA_MISMATCH');
     const rules = rulePreflight(root);
     if (rules.status !== 'PASS' || rules.rulePackSha !== lock.rulePackSha) errors.push('CALIBRATION_RULE_PACK_STALE');
     if (manifest && objectSha(calibrationTarget(root, manifest)) !== objectSha(lock.target)) errors.push('CALIBRATION_TARGET_STALE');
@@ -126,7 +131,14 @@ export function validateCalibration(root, lock, { manifest = null, requireLatest
       else if (item.sampleAnchors.some(anchor => !applicable(key, anchors.get(anchor)))) errors.push(`PRODUCTION_QUALITY_PROFILE_ANCHOR_INAPPLICABLE:${key}`);
     }
   } catch (error) { errors.push(String(error.message || error)); }
-  return { status: errors.length ? 'BLOCKED' : 'PASS', errors: [...new Set(errors)] };
+  return { status: errors.length ? 'BLOCKED' : 'PASS', errors: [...new Set(errors)], warnings: [...new Set(warnings)] };
+}
+
+// A frozen JOB deliberately does not call latestMainCommit().  The start SHA
+// and the calibration/rule identities are the authority for the lifetime of
+// that JOB; only the bound bytes and the frozen SHA are revalidated.
+export function validateFrozenCalibration(root, lock, { manifest = null, startSha = null, requirePass = true } = {}) {
+  return validateCalibration(root, lock, { manifest, requiredStartSha: startSha, observePostStartAdvance: true, requirePass });
 }
 
 export function assertBuilderStart(root, manifest) {
@@ -135,6 +147,8 @@ export function assertBuilderStart(root, manifest) {
   const ref = manifest.referenceSampleLock;
   if (!ref || !sameRef(ref, localRef(path.resolve(root, ref.path)))) throw new Error('BUILDER_START_BLOCKED:REFERENCE_SAMPLE_LOCK_REQUIRED');
   const lock = JSON.parse(fs.readFileSync(ref.path, 'utf8'));
+  // This is the pre-start gate. Once a work batch has frozen this lock,
+  // callers must use validateFrozenCalibration instead of this function.
   const result = validateCalibration(root, lock, { manifest, requireLatestMain: true });
   if (result.status !== 'PASS') throw new Error(`BUILDER_START_BLOCKED:${result.errors.join(';')}`);
   return { referenceSampleLock: ref, mainCommit: lock.mainCommit, rulePackSha: lock.rulePackSha };

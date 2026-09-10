@@ -152,6 +152,14 @@ current baseline and must also be read when present. Existing target solutions
 never set the new solution-quality floor. Missing or weak calibration blocks
 the V3 builder start, direct Python extraction, and core Past Exam preparation.
 
+For a GOLD, pilot, benchmark, or holdout job, verify the required main,
+rule-pack, and calibration baseline before starting the job and freeze the
+`START_SHA` plus calibration identity. After that freeze, a live
+`origin/main` advance is `POST_START_MAIN_ADVANCE` information and does not
+invalidate the running job; `START_TIME_STALE` means the baseline was already
+stale at start. Frozen file/hash changes or evidence that disagrees with the
+frozen identity remain hard failures.
+
 1. Locate the repository root and read [archive-layout.md](references/archive-layout.md)
    and [rules-routing.md](references/rules-routing.md).
 2. Start from `docs/rules/00_RULES_INDEX.md`; read only the current operational
@@ -303,6 +311,17 @@ pilot is not a new canonical authority. For graph/geometry/table assets, also
 apply the current visual rule pack and keep source-problem `image` separate
 from instructional `solutionImage`.
 
+When V1 returns `ADD`, closure is generated artifact → candidate
+`solutionImage` attachment → V2 artifact-only review → V3 expected/observed
+parity → render review, or explicit defect/HOLD/reclassification evidence.
+Generated-but-unlinked assets, missing assets, orphan SVGs, V2 `NOT_TESTED`,
+V3 without V2, and stale V2/V3 reuse are machine failures. Critical EXPECTED
+FACT coverage must record expected count, observed count, coverage, and parity;
+generation success or numeric curve validity alone is not a V2/V3 PASS.
+Generator witnesses must resolve their declared generator path and SHA to a
+bound canonical repository generator or an immutable run-local specialist
+source (`GENERATOR_PROVENANCE_RESOLVABLE`).
+
 ## S9~S14 — static, six-case render capture, and sealed audit
 
 Record `MACHINE_CURRENT` static/metadata evidence and
@@ -320,6 +339,21 @@ capture cannot become semantic render PASS by itself; unchanged blocks require
 current validated reuse evidence. In one canonical FINAL_AUDIT, pipeline-core
 seals U1 `SOURCE/MATH_A1/V1`, U2 `V2` artifact-only, and U3
 `MATH_A2/SOLUTION/V3/RENDER_REVIEW` under its configured stateless contexts.
+
+After candidate, asset, `solutionImage`, or metadata mutation, prior
+`MACHINE_CURRENT` evidence is `STALE`/`INVALIDATED` and must be recollected.
+Final evidence binds `EVIDENCE_INPUT_SHA` to the current candidate/artifact and
+axis input SHA. BUILD_SIDE source-fidelity freeze and independent U1 canonical
+source fidelity remain separate cells.
+
+V4 GOLD benchmark eligibility is PDF-only with an available source-pixel
+render. HWP/HWPX and other non-PDF sources are recorded as
+`GOLD_INELIGIBLE_SOURCE_FORMAT` and excluded from the benchmark denominator;
+this does not remove production document capability. Benchmark route evidence
+freezes requested/actual model and reasoning effort at start and closure.
+Only observed `gpt-5.6-luna/xhigh` → `gpt-5.6-luna/xhigh` is Luna performance
+evidence; missing or changed identity is `MODEL_ROUTE_PARITY=FAIL` or
+`MIXED_MODEL_ROUTE`, retained for diagnostics but not performance promotion.
 
 Serve the repository and open `archive/engine.html` with the production JS
 path. Record durable evidence for all six cases with `PASS`, `WARN`, `FAIL`,

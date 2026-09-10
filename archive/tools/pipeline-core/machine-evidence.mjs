@@ -8,6 +8,7 @@ import { requiredAxesForQuestion } from './projection.mjs';
 import { validateMachineEvidence, validateTypedEvidence } from './review-evidence-v2.mjs';
 import { validateSchema } from './schema.mjs';
 import { validateStudentSerialization, validateCurriculumBinding } from './student-output.mjs';
+import { classifyMachineEvidenceFreshness } from './gold-contract.mjs';
 
 export const MACHINE_EVIDENCE_BRIDGE_VERSION = 'APMATH_MACHINE_EVIDENCE_BRIDGE_v1';
 export const MACHINE_EVIDENCE_COLLECTOR = 'pipeline-core-machine-collector';
@@ -17,6 +18,11 @@ const OBJECTIVE_TYPES = new Set(['객관식', 'objective', 'multiple_choice', 'c
 const IMAGE_ONLY_OBJECTIVE_TAG = '통이미지보기';
 
 const questionType = question => String(question?.questionType || '').trim().toLowerCase();
+const currentCandidateRef = (run, questionUid) => {
+  const declared = run.questions.find(question => question.questionUid === questionUid);
+  return declared && run.inputs.find(ref => ref.role === 'candidate' && ref.path === declared.candidatePath);
+};
+const currentArtifactSha = (run, questionUid) => currentCandidateRef(run, questionUid)?.sha256 || null;
 
 export function isImageOnlyObjective(question) {
   return OBJECTIVE_TYPES.has(questionType(question)) &&
@@ -94,7 +100,8 @@ function metadataChecks(question, declared, source) {
 }
 
 function buildEvidence({ run, question, axis, axisInputSha, checks, startedAt, frozenAt }) {
-  const machineProvenance = { bridge: MACHINE_EVIDENCE_BRIDGE_VERSION, collector: MACHINE_EVIDENCE_COLLECTOR, runId: run.runId, revision: run.revision, inputSha: run.inputSha, questionUid: question.questionUid, axis, axisInputSha };
+  const artifactSha = currentArtifactSha(run, question.questionUid);
+  const machineProvenance = { bridge: MACHINE_EVIDENCE_BRIDGE_VERSION, collector: MACHINE_EVIDENCE_COLLECTOR, runId: run.runId, revision: run.revision, inputSha: run.inputSha, currentArtifactSha: artifactSha, CURRENT_ARTIFACT_SHA: artifactSha, evidenceInputSha: artifactSha, EVIDENCE_INPUT_SHA: artifactSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUid: question.questionUid, axis, axisInputSha };
   const evidence = {
     schemaVersion: EVIDENCE_VERSION_V2,
     evidenceId: `machine:${run.runId}:r${run.revision}:${question.qid}:${axis}`,
@@ -126,8 +133,8 @@ function buildEvidence({ run, question, axis, axisInputSha, checks, startedAt, f
     eligibilityStatus: 'ELIGIBLE',
     machineProvenance,
     payload: axis === 'STATIC'
-      ? { checkedInputSha: run.inputSha, checks: Object.fromEntries(Object.entries(checks).map(([key, value]) => [key, value ? 'PASS' : 'FAIL'])) }
-      : { metadataInputSha: axisInputSha, checks: Object.fromEntries(Object.entries(checks).map(([key, value]) => [key, value ? 'PASS' : 'FAIL'])) }
+      ? { checkedInputSha: run.inputSha, currentArtifactSha: artifactSha, CURRENT_ARTIFACT_SHA: artifactSha, evidenceInputSha: artifactSha, EVIDENCE_INPUT_SHA: artifactSha, authorityStartSha: run.pastExamAuthority?.startSha || null, checks: Object.fromEntries(Object.entries(checks).map(([key, value]) => [key, value ? 'PASS' : 'FAIL'])) }
+      : { metadataInputSha: axisInputSha, currentArtifactSha: artifactSha, CURRENT_ARTIFACT_SHA: artifactSha, evidenceInputSha: artifactSha, EVIDENCE_INPUT_SHA: artifactSha, authorityStartSha: run.pastExamAuthority?.startSha || null, checks: Object.fromEntries(Object.entries(checks).map(([key, value]) => [key, value ? 'PASS' : 'FAIL'])) }
   };
   const schemaErrors = validateSchema(evidence, evidenceContract);
   const machineErrors = validateMachineEvidence(evidence, run, { diagnostic: true });
@@ -151,10 +158,20 @@ export function collectMachineEvidence(root, manifestPath, { manifestOut = null,
   const candidateRefByPath = new Map((run.inputs || []).filter(ref => ref.role === 'candidate').map(ref => [ref.path, ref]));
   const banks = new Map();
   for (const ref of [...sourceRefByPath.values(), ...candidateRefByPath.values()]) banks.set(ref.path, loadBank(root, ref));
-  const existing = (run.evidence || []).map(ref => JSON.parse(readBoundFile(root, ref)));
-  for (const evidence of existing) if (MACHINE_AXES.includes(evidence.axis) && run.questions.some(q => q.questionUid === evidence.questionUid)) throw new Error(`MACHINE_EVIDENCE_ALREADY_BOUND:${evidence.questionUid}:${evidence.axis}`);
+  const existingRefs = [...(run.evidence || [])];
+  const existing = existingRefs.map(ref => ({ ref, evidence: JSON.parse(readBoundFile(root, ref)) }));
+  const staleExisting = existing.filter(({ evidence }) => {
+    if (!MACHINE_AXES.includes(evidence.axis) || !run.questions.some(q => q.questionUid === evidence.questionUid)) return false;
+    const expectedAxisSha = computed[evidence.questionUid]?.[evidence.axis];
+    const expectedArtifactSha = currentArtifactSha(run, evidence.questionUid);
+    return classifyMachineEvidenceFreshness(evidence, { runInputSha: run.inputSha, axisInputSha: expectedAxisSha, currentArtifactSha: expectedArtifactSha }).status === 'STALE';
+  });
+  for (const { evidence } of existing) if (MACHINE_AXES.includes(evidence.axis) && run.questions.some(q => q.questionUid === evidence.questionUid) && !staleExisting.some(item => item.evidence.evidenceId === evidence.evidenceId)) throw new Error(`MACHINE_EVIDENCE_ALREADY_BOUND:${evidence.questionUid}:${evidence.axis}`);
   const outputRun = structuredClone(run);
-  outputRun.evidence = [...(outputRun.evidence || [])];
+  const staleIds = new Set(staleExisting.map(item => item.evidence.evidenceId));
+  outputRun.evidence = existingRefs.filter(ref => !staleExisting.some(item => item.ref.path === ref.path && item.ref.sha256 === ref.sha256));
+  outputRun.evidenceLifecycle = [...(outputRun.evidenceLifecycle || []), ...staleExisting.map(({ ref, evidence }) => ({ schemaVersion: 'APMATH_EVIDENCE_LIFECYCLE_v1', evidenceId: evidence.evidenceId, evidenceRef: ref, evidenceSha: ref.sha256, status: 'INVALIDATED', reason: 'CURRENT_ARTIFACT_MUTATED', invalidatedAt: new Date().toISOString(), currentRunInputSha: run.inputSha, currentArtifactSha: currentArtifactSha(run, evidence.questionUid), axis: evidence.axis, questionUid: evidence.questionUid }))];
+  for (const question of outputRun.questions) for (const [axis, evidenceId] of Object.entries(question.evidence || {})) if (staleIds.has(evidenceId)) delete question.evidence[axis];
   const evidenceRefs = [];
   const outputDirectory = path.posix.dirname(outputRelative);
   const rootDirectory = evidenceDir ? repositoryRelative(root, evidenceDir) : path.posix.join(outputDirectory, 'machine-evidence', `r${run.revision}`);
