@@ -1,0 +1,14 @@
+{
+  "observedError": "Error: BUILDER_START_BLOCKED:REFERENCE_SAMPLE_LOCK_REQUIRED\n    at assertBuilderStart (file:///C:/Users/USER/Desktop/AP-------gold2-job-a/archive/tools/past-exam-pipeline/lib/calibration.mjs:136:76)\n    at runOneExam (file:///C:/Users/USER/Desktop/AP-------gold2-job-a/archive/tools/past-exam-pipeline/run-one-exam.mjs:38:3)\n    at main (file:///C:/Users/USER/Desktop/AP-------gold2-job-a/archive/tools/past-exam-pipeline/run-one-exam.mjs:176:24)",
+  "exitCode": 1,
+  "command": "node archive/tools/past-exam-pipeline/run-one-exam.mjs --config archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/pipeline-config.json --manifest archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/manifest.json",
+  "lockRef": {
+    "path": "archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/reference-sample-lock.json",
+    "bytes": 37045,
+    "sha256": "sha256:85f8ae26906f1fa653ffdc4a9cda4d2c28266c40662b7b8cf9e1b5218f393733"
+  },
+  "cause": "sameRef compared a mixed-separator absolute path with path.resolve output; bytes and SHA were valid. Lock was frozen before fresh transcription.",
+  "failedReferencePath": "C:\\Users\\USER\\Desktop\\AP-------gold2-job-a/archive/_generated/past-exams/past-exam-v3-gold2-20260910-job-a-maesan-2020/reference-sample-lock.json",
+  "repair": "path.resolve applied to manifest.referenceSampleLock.path only",
+  "status": "FAILED_ATTEMPT_NOT_ACCEPTED"
+}

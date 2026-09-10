@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "JOB_A_SPECIALIST_GENERATOR_WITNESS_v1",
+  "status": "BUILD_SIDE_ONLY",
+  "createdAt": "2026-09-10T11:59:05.341819+00:00",
+  "qid": 19,
+  "routeAuthority": "archive/tools/pipeline-core/README.md specialist route; archive/tools/function-family/generate-pilot-graphs.py uses alive.engine.visual_renderer",
+  "rendererPath": "alive/engine/visual_renderer.py",
+  "rendererSha": "sha256:0497b788cdfd362df6729bbf8f73fe2f9edd94dc0f71e50e2325b2500cfbeca6",
+  "generatorPath": "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\specialist-generation.py",
+  "generatorSha": "sha256:3059c13cf874e96fcb617c4439f61d43430739ad72d033947ec7e7f438011bf6",
+  "factSha": "sha256:80dc29173871bc098a7ec9e7fa5d9b2a204f1c78bce62201f83f342b8bd503bd",
+  "assetSha": "sha256:5bfabcc27b43f79c3939548a489caa04bec4f6af6e2264384a7b2f1841b4b337",
+  "coordinateModel": {
+    "originX": 315.42857142857144,
+    "originY": 156.0,
+    "sx": 35.42857142857143,
+    "sy": 41.333333333333336,
+    "formula": "screenX=originX+sx*x; screenY=originY-sy*y"
+  },
+  "numericBranches": [
+    {
+      "id": "fL",
+      "formula": "-4-2/(x+1)",
+      "sampleCount": 601,
+      "maxMidpointChordErrorPx": 0.06591617878183342,
+      "window": [
+        -7.0,
+        -1.2999999999999998
+      ],
+      "branchSeparated": true
+    },
+    {
+      "id": "fR",
+      "formula": "-4-2/(x+1)",
+      "sampleCount": 601,
+      "maxMidpointChordErrorPx": 0.01351856031482157,
+      "window": [
+        -0.5,
+        5
+      ],
+      "branchSeparated": true
+    }
+  ],
+  "factRevisionReason": [
+    "Extend left plotted branch above the x-axis to expose quadrantII"
+  ],
+  "styleReview": "NOT_TESTED",
+  "independentV2": "NOT_TESTED"
+}
