@@ -195,12 +195,16 @@
             // continuation shell then contains only .sol-exp, so a solution image
             // is shown once in the first column rather than once per continuation.
             const solutionHtml = deps.formatSolutionHtml(solutionText);
+            const writtenSolutionText = String(q.writtenSolution || '').trim();
+            const writtenSolutionHtml = writtenSolutionText
+                ? `<div class="sol-written"><div class="sol-written-label">[모범답안]</div><div class="sol-written-body">${deps.formatSolutionHtml(writtenSolutionText)}</div></div><div class="sol-detail-label">[상세해설]</div>`
+                : '';
             const solutionImageHtml = deps.renderSolutionImageHTML(q);
             const box = document.createElement('div');
             box.className = 'q-box sol-box';
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
-            box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
+            box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${writtenSolutionHtml}${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
             staging.appendChild(box);
             return box;
         });
