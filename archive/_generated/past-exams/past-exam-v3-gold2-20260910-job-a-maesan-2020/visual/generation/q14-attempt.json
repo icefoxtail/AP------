@@ -1,0 +1,21 @@
+{
+  "qid": 14,
+  "command": [
+    "python",
+    "-X",
+    "utf8",
+    "archive/tools/pipeline-core/generator.py",
+    "--fact",
+    "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\visual\\facts\\q14.json",
+    "--out",
+    "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\assets\\images\\20_매산고_2학기_기말_고1_기출\\q14-solution.svg",
+    "--evidence",
+    "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\visual\\generation\\q14-witness.json"
+  ],
+  "startedAt": "2026-09-10T11:56:05.755995+00:00",
+  "completedAt": "2026-09-10T11:56:06.431138+00:00",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 362, in <module>\n    main()\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 352, in main\n    svg, evidence = generate(json.loads(args.fact.read_text(encoding=\"utf-8\")))\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 249, in generate\n    if not math.isclose(polynomial_value(branch[\"formula\"], point[\"x\"]), point[\"y\"], rel_tol=1e-9, abs_tol=1e-9):\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 65, in polynomial_value\n    result = visit(tree)\n             ^^^^^^^^^^^\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 44, in visit\n    return visit(node.body)\n           ^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 52, in visit\n    left, right = visit(node.left), visit(node.right)\n                                    ^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 63, in visit\n    raise ValueError(\"UNSUPPORTED_FORMULA_REQUIRES_REGISTERED_GENERATOR\")\nValueError: UNSUPPORTED_FORMULA_REQUIRES_REGISTERED_GENERATOR\n",
+  "status": "GENERATOR_CAPABILITY_HOLD"
+}

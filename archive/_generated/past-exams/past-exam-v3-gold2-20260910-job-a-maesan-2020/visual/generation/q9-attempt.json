@@ -1,0 +1,21 @@
+{
+  "qid": 9,
+  "command": [
+    "python",
+    "-X",
+    "utf8",
+    "archive/tools/pipeline-core/generator.py",
+    "--fact",
+    "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\visual\\facts\\q9.json",
+    "--out",
+    "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\assets\\images\\20_매산고_2학기_기말_고1_기출\\q9-solution.svg",
+    "--evidence",
+    "archive\\_generated\\past-exams\\past-exam-v3-gold2-20260910-job-a-maesan-2020\\visual\\generation\\q9-witness.json"
+  ],
+  "startedAt": "2026-09-10T11:56:12.207371+00:00",
+  "completedAt": "2026-09-10T11:56:12.845368+00:00",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 362, in <module>\n    main()\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 352, in main\n    svg, evidence = generate(json.loads(args.fact.read_text(encoding=\"utf-8\")))\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 200, in generate\n    text(18, 28, s[\"exhaustivenessReason\"], 16, \"start\")\n  File \"C:\\Users\\USER\\Desktop\\AP-------gold2-job-a\\archive\\tools\\pipeline-core\\generator.py\", line 87, in text\n    raise ValueError(\"LABEL_REQUIRES_BOUNDED_REWRITE_OR_HTML_TABLE\")\nValueError: LABEL_REQUIRES_BOUNDED_REWRITE_OR_HTML_TABLE\n",
+  "status": "GENERATOR_CAPABILITY_HOLD"
+}
