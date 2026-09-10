@@ -3,7 +3,7 @@ import path from 'node:path';
 import { canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
 import { loadCandidateReviewContext, validateAuditorPacket } from './review-isolation-runner.mjs';
-import { readWorkBatch, reconcileWorkBatchReview } from './work-batch.mjs';
+import { readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
@@ -69,14 +69,16 @@ function plannedLaunch(state, purpose) {
   if (purpose === 'FINAL_AUDIT') check(state.launches.length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
   if (purpose === 'TARGETED_RECHECK') check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED') && state.freezes.length > 1 && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
   check(['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(purpose), 'PROVIDER_BRIDGE_PURPOSE_INVALID');
-  return { freeze, launchId: `${state.workBatchId}:${state.launches.length + 1}` };
+  const scope = reviewScopeForPurpose(state, freeze, purpose);
+  if (isBenchmarkJobKind(state.jobKind) && purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
+  return { freeze, launchId: `${state.workBatchId}:${state.launches.length + 1}`, scope };
 }
 
 // This is control-plane only. A provider must attest modelInvocationCount: 0;
 // the three model invocations are issued later through dispatchProviderReview.
 export function prepareProviderReview(root, { workBatchId, purpose, transport, planPath }) {
   const state = readWorkBatch(root, workBatchId);
-  const { freeze, launchId } = plannedLaunch(state, purpose);
+  const { freeze, launchId, scope } = plannedLaunch(state, purpose);
   const body = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     operation: 'PREPARE_STATELESS_FINAL_AUDIT',
@@ -84,7 +86,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     purpose,
     launchId,
     freezeSha: freeze.freezeSha,
-    scope: purpose === 'FINAL_AUDIT' ? freeze.targets : freeze.affected,
+    scope,
     builderId: state.builderId,
     builderSessionId: state.builderSessionId,
     requestedModel: state.executionIdentity?.requestedModel || null,
@@ -162,6 +164,7 @@ function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
   check(plan.workBatchId === state.workBatchId && plan.launchId === launch.launchId && plan.purpose === launch.purpose && plan.freezeSha === launch.freezeSha, 'PROVIDER_PLAN_LAUNCH_BINDING');
   check(plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId, 'PROVIDER_PLAN_BUILDER_BINDING');
   check(plan.auditorId === launch.auditorId && plan.auditorSessionId === launch.auditorSessionId && same(plan.contexts, launch.contexts), 'PROVIDER_PLAN_CONTEXT_BINDING');
+  check(same(plan.scope, reviewScopeForPurpose(state, state.freezes.find(freeze => freeze.freezeSha === launch.freezeSha), launch.purpose)) && same(plan.scope, launch.scope), 'PROVIDER_PLAN_SCOPE_BINDING');
   check(launch.providerAttestationPlanRef && same(launch.providerAttestationPlanRef, planRef) && same(planRef, fileRef(root, planRef.path)), 'PROVIDER_PLAN_RESERVATION_REQUIRED');
   check(plan.contextIsolation === 'STATELESS_INPUTS' && plan.subagentToolsEnabled === false && nonempty(plan.externalId), 'PROVIDER_PLAN_CAPABILITY_INVALID');
   if (isBenchmarkJobKind(state.jobKind)) {
