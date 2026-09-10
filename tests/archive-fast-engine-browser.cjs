@@ -23,7 +23,7 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
     async function check(name, work) {
         try { await work(); tests.push({ name, status: 'PASS' }); console.log('PASS', name); }
         catch (error) { tests.push({ name, status: 'FAIL', error: String(error.stack || error) }); console.error('FAIL', name, error.message); }
-        fs.writeFileSync(path.join(out, 'phase1a-browser.json'), JSON.stringify({ tests, errors, posts }, null, 2));
+        fs.writeFileSync(path.join(out, process.env.AP_BROWSER_REPORT || 'phase1a-browser.json'), JSON.stringify({ tests, errors, posts }, null, 2));
     }
     await page.evaluate(() => {
         window.saveState = () => ({ root: document.getElementById('print-area'), mode: AppState.mode, qpp: AppState.qpp, data: AppState.data, header: AppState.printHeaderOptions, url: location.href, session: archiveScreenRuntime.currentSession, snapshot: archiveScreenRuntime.activeSnapshot, tab: document.querySelector('.mode-tab.active')?.id });
@@ -187,7 +187,7 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
         assert.equal(posts.filter(p => p.url.endsWith('class-exam-assignments')).length, count); assert.ok(count > 0);
         await other.close();
     });
-    await page.screenshot({ path: path.join(out, 'phase1a-browser-final.png'), fullPage: true });
+    await page.screenshot({ path: path.join(out, (process.env.AP_BROWSER_REPORT || 'phase1a-browser.json').replace('.json', '-final.png')), fullPage: true });
     await browser.close();
     if (tests.some(t => t.status === 'FAIL') || errors.length) process.exitCode = 1;
 })().catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+ok 1 - candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+  ---
+  duration_ms: 4.8036
+  type: 'test'
+  ...
+# Subtest: keys include semantic changes and exclude pending session/request provenance
+ok 2 - keys include semantic changes and exclude pending session/request provenance
+  ---
+  duration_ms: 0.9683
+  type: 'test'
+  ...
+# Subtest: pending materialization is a separate complete session and rejects mismatched targets
+ok 3 - pending materialization is a separate complete session and rejects mismatched targets
+  ---
+  duration_ms: 0.7492
+  type: 'test'
+  ...
+# Subtest: successful commit binds state, active status and current session; stale provenance is not validity
+ok 4 - successful commit binds state, active status and current session; stale provenance is not validity
+  ---
+  duration_ms: 3.8369
+  type: 'test'
+  ...
+# Subtest: PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+ok 5 - PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+  ---
+  duration_ms: 2.9092
+  type: 'test'
+  ...
+# Subtest: latest wins serializes builds and never commits stale work
+ok 6 - latest wins serializes builds and never commits stale work
+  ---
+  duration_ms: 1.3082
+  type: 'test'
+  ...
+# Subtest: background and invalid enums cannot execute builds or effects
+ok 7 - background and invalid enums cannot execute builds or effects
+  ---
+  duration_ms: 0.332
+  type: 'test'
+  ...
+# Subtest: side effect failure, acknowledgement and retry keep one logical identity/key
+ok 8 - side effect failure, acknowledgement and retry keep one logical identity/key
+  ---
+  duration_ms: 1.0497
+  type: 'test'
+  ...
+# Subtest: precommit effects are rejected before execution; no unresolved required compensation
+ok 9 - precommit effects are rejected before execution; no unresolved required compensation
+  ---
+  duration_ms: 1.3259
+  type: 'test'
+  ...
+# Subtest: asynchronous measurements remain bound to their own transaction metrics
+ok 10 - asynchronous measurements remain bound to their own transaction metrics
+  ---
+  duration_ms: 2.244
+  type: 'test'
+  ...
+# Subtest: batch renderer is the default and legacy remains an explicit fallback
+ok 11 - batch renderer is the default and legacy remains an explicit fallback
+  ---
+  duration_ms: 2.0405
+  type: 'test'
+  ...
+# Subtest: both archive engines install render metrics and the shared loop runtime
+ok 12 - both archive engines install render metrics and the shared loop runtime
+  ---
+  duration_ms: 88.2146
+  type: 'test'
+  ...
+# Subtest: render metrics are exposed on the document for browser QA
+ok 13 - render metrics are exposed on the document for browser QA
+  ---
+  duration_ms: 0.6754
+  type: 'test'
+  ...
+# Subtest: inline scripts in both engines remain syntactically valid
+ok 14 - inline scripts in both engines remain syntactically valid
+  ---
+  duration_ms: 10.1433
+  type: 'test'
+  ...
+# Subtest: Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
+ok 15 - Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
+  ---
+  duration_ms: 5.1246
+  type: 'test'
+  ...
+# Subtest: Archive solution executor is a DOM transaction module with injected engine dependencies
+ok 16 - Archive solution executor is a DOM transaction module with injected engine dependencies
+  ---
+  duration_ms: 2.8645
+  type: 'test'
+  ...
+# Subtest: Phase A report uses legacy/shared executor A/B as the authority gate
+ok 17 - Phase A report uses legacy/shared executor A/B as the authority gate
+  ---
+  duration_ms: 9.1173
+  type: 'test'
+  ...
+# Subtest: Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
+ok 18 - Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
+  ---
+  duration_ms: 2.1058
+  type: 'test'
+  ...
+# Subtest: Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
+ok 19 - Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
+  ---
+  duration_ms: 1.9021
+  type: 'test'
+  ...
+# Subtest: Archive golden browser fixture records semantic parity across all three output modes
+ok 20 - Archive golden browser fixture records semantic parity across all three output modes
+  ---
+  duration_ms: 10.7026
+  type: 'test'
+  ...
+# Subtest: Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
+ok 21 - Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
+  ---
+  duration_ms: 8.9334
+  type: 'test'
+  ...
+# Subtest: shared readiness tracker requires evidence-backed canonical order independent of transport
+ok 22 - shared readiness tracker requires evidence-backed canonical order independent of transport
+  ---
+  duration_ms: 2.0158
+  type: 'test'
+  ...
+# Subtest: readiness tracker rejects missing, skipped, and reordered transitions
+ok 23 - readiness tracker rejects missing, skipped, and reordered transitions
+  ---
+  duration_ms: 0.7154
+  type: 'test'
+  ...
+# Subtest: a failed transaction cannot reach RENDER_READY or PRINT_READY
+ok 24 - a failed transaction cannot reach RENDER_READY or PRINT_READY
+  ---
+  duration_ms: 0.4653
+  type: 'test'
+  ...
+# Subtest: the pre-render sentinel is fail-closed for every selected print transport
+ok 25 - the pre-render sentinel is fail-closed for every selected print transport
+  ---
+  duration_ms: 0.1883
+  type: 'test'
+  ...
+# Subtest: image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence
+ok 26 - image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence
+  ---
+  duration_ms: 0.4276
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 307.0824
