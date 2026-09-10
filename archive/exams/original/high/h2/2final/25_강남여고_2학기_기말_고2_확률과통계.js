@@ -971,7 +971,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "ocrSource": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/_ocr_anscombe/2final_25_강남여고_2학기_기말_고2_확률과통계_pages_page_p005.png.json",
+    "ocrSource": "",
     "level": "중",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
@@ -1013,7 +1013,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "ocrSource": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/_ocr_anscombe/2final_25_강남여고_2학기_기말_고2_확률과통계_pages_page_p005.png.json",
+    "ocrSource": "",
     "level": "중",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
@@ -1055,7 +1055,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "ocrSource": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/_ocr_anscombe/2final_25_강남여고_2학기_기말_고2_확률과통계_pages_page_p005.png.json",
+    "ocrSource": "",
     "level": "중",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
@@ -1098,7 +1098,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "ocrSource": "archive/_generated/past-exams/high_h2_probability_statistics_all_terms/_ocr_anscombe/2final_25_강남여고_2학기_기말_고2_확률과통계_pages_page_p005.png.json",
+    "ocrSource": "",
     "level": "중",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
