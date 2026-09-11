@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-a24dd166a-r3",
+  "launchId": "past20-maesan-final-a24dd166a-r3:1",
+  "phase": "U1",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_SECOND_REPAIR",
+  "auditorThreadId": "01a0927a-05fb-74f0-b489-dfe31ca6c453",
+  "turnId": "01a0927b-c399-7460-8f22-df8a52b8f70a",
+  "observedAt": "2026-09-11T22:01:02Z",
+  "evidenceSource": {
+    "providerLog": "~/.codex/logs_2.sqlite",
+    "providerLogAccess": "read-only",
+    "providerProcess": "pid:4424:6e5096bf-9b73-4d31-bc94-e87c57735071"
+  },
+  "observations": {
+    "modelTurn": {
+      "outputItemCompleted": true,
+      "turnCompletedNotificationEmitted": true,
+      "agentMessageDeltaCount": 545,
+      "totalUsageTokens": 23887,
+      "modelNeedsFollowUp": false,
+      "turnStatus": "completed"
+    },
+    "adapter": {
+      "phaseResponseWritten": false,
+      "historyRequestsAfterTurnCompletion": 418,
+      "firstHistoryRequestIdAfterCompletion": 167,
+      "lastHistoryRequestIdObserved": 584,
+      "historyRecoveryMethods": [
+        "thread/turns/list",
+        "thread/read"
+      ],
+      "transportTerminalStatus": "HOLD:PROVIDER_TRANSPORT_UNAVAILABLE"
+    }
+  },
+  "rootCauseFinding": {
+    "confirmed": "The app-server emitted the completion event, but the adapter did not convert the received notification stream into a completed turn; the adapter continued its recovery poll until the daemon timeout.",
+    "nextDiagnostic": "Capture raw JSON-RPC message envelopes and notification counters at AppServerClient.consume to identify the notification-shape mismatch.",
+    "notModelFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "rawProviderLogRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Apply the raw-envelope capture and notification-shape repair in a separate commit, then start another fresh run."
+  }
+}
