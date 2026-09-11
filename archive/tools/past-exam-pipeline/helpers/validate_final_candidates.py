@@ -185,8 +185,9 @@ def serialization_issues(questions):
                 issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:CONTROL_CHARACTER")
             if value.count("$") % 2:
                 issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:ODD_MATH_DELIMITER")
-            if re.search(r"(?<!\\)\\(?:pi|sqrt|neq|not)\b", value):
-                issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:LATEX_ESCAPE")
+            # Candidate JS is parsed before this check. A decoded single backslash
+            # is the expected runtime representation of a valid LaTeX command;
+            # checking source escapes here would misclassify \sqrt, \pi, \neq, and \not.
             if PLACEHOLDER_RE.search(value):
                 issues.append(f"PLACEHOLDER_PAYLOAD:q{question.get('id')}")
     return sorted(set(issues))
