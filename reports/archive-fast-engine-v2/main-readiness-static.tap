@@ -2,386 +2,386 @@ TAP version 13
 # Subtest: candidate recursively copies choices and rejects unsupported graphs without freezing raw input
 ok 1 - candidate recursively copies choices and rejects unsupported graphs without freezing raw input
   ---
-  duration_ms: 10.1336
+  duration_ms: 6.7791
   type: 'test'
   ...
 # Subtest: keys include semantic changes and exclude pending session/request provenance
 ok 2 - keys include semantic changes and exclude pending session/request provenance
   ---
-  duration_ms: 1.1675
+  duration_ms: 1.0063
   type: 'test'
   ...
 # Subtest: structural sharing trusts only normalizer-owned transitive immutable graphs
 ok 3 - structural sharing trusts only normalizer-owned transitive immutable graphs
   ---
-  duration_ms: 0.6179
+  duration_ms: 0.431
   type: 'test'
   ...
 # Subtest: pending materialization is a separate complete session and rejects mismatched targets
 ok 4 - pending materialization is a separate complete session and rejects mismatched targets
   ---
-  duration_ms: 1.0457
+  duration_ms: 1.1019
   type: 'test'
   ...
 # Subtest: successful commit binds state, active status and current session; stale provenance is not validity
 ok 5 - successful commit binds state, active status and current session; stale provenance is not validity
   ---
-  duration_ms: 3.7449
+  duration_ms: 4.6247
   type: 'test'
   ...
 # Subtest: PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
 ok 6 - PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
   ---
-  duration_ms: 3.2004
+  duration_ms: 2.2532
   type: 'test'
   ...
 # Subtest: latest wins serializes builds and never commits stale work
 ok 7 - latest wins serializes builds and never commits stale work
   ---
-  duration_ms: 2.1537
+  duration_ms: 3.654
   type: 'test'
   ...
 # Subtest: background and invalid enums cannot execute builds or effects
 ok 8 - background and invalid enums cannot execute builds or effects
   ---
-  duration_ms: 0.7463
+  duration_ms: 0.6506
   type: 'test'
   ...
 # Subtest: side effect failure, acknowledgement and retry keep one logical identity/key
 ok 9 - side effect failure, acknowledgement and retry keep one logical identity/key
   ---
-  duration_ms: 1.6854
+  duration_ms: 1.8465
   type: 'test'
   ...
 # Subtest: precommit effects are rejected before execution; no unresolved required compensation
 ok 10 - precommit effects are rejected before execution; no unresolved required compensation
   ---
-  duration_ms: 3.3957
+  duration_ms: 2.0235
   type: 'test'
   ...
 # Subtest: asynchronous measurements remain bound to their own transaction metrics
 ok 11 - asynchronous measurements remain bound to their own transaction metrics
   ---
-  duration_ms: 2.4203
+  duration_ms: 2.8604
   type: 'test'
   ...
 # Subtest: prewarm stores READY without committing state or creating business effects
 ok 12 - prewarm stores READY without committing state or creating business effects
   ---
-  duration_ms: 1.3562
+  duration_ms: 1.4114
   type: 'test'
   ...
 # Subtest: sequential prewarms queue without replacing the active snapshot
 ok 13 - sequential prewarms queue without replacing the active snapshot
   ---
-  duration_ms: 0.9784
+  duration_ms: 1.0709
   type: 'test'
   ...
 # Subtest: foreground work cancels stale prewarm before snapshot registration
 ok 14 - foreground work cancels stale prewarm before snapshot registration
   ---
-  duration_ms: 1.4646
+  duration_ms: 1.5246
   type: 'test'
   ...
 # Subtest: batch renderer is the default and legacy remains an explicit fallback
 ok 15 - batch renderer is the default and legacy remains an explicit fallback
   ---
-  duration_ms: 2.4319
+  duration_ms: 2.0879
   type: 'test'
   ...
 # Subtest: both archive engines install render metrics and the shared loop runtime
 ok 16 - both archive engines install render metrics and the shared loop runtime
   ---
-  duration_ms: 4.7781
+  duration_ms: 144.289
   type: 'test'
   ...
 # Subtest: render metrics are exposed on the document for browser QA
 ok 17 - render metrics are exposed on the document for browser QA
   ---
-  duration_ms: 0.5892
+  duration_ms: 0.7232
   type: 'test'
   ...
 # Subtest: inline scripts in both engines remain syntactically valid
 ok 18 - inline scripts in both engines remain syntactically valid
   ---
-  duration_ms: 14.1943
+  duration_ms: 14.0511
   type: 'test'
   ...
 # Subtest: Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
 ok 19 - Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
   ---
-  duration_ms: 6.8482
+  duration_ms: 5.5828
   type: 'test'
   ...
 # Subtest: Archive solution executor is a DOM transaction module with injected engine dependencies
 ok 20 - Archive solution executor is a DOM transaction module with injected engine dependencies
   ---
-  duration_ms: 2.982
+  duration_ms: 3.1457
   type: 'test'
   ...
 # Subtest: Phase A report uses legacy/shared executor A/B as the authority gate
 ok 21 - Phase A report uses legacy/shared executor A/B as the authority gate
   ---
-  duration_ms: 2.3907
+  duration_ms: 12.6044
   type: 'test'
   ...
 # Subtest: Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
 ok 22 - Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
   ---
-  duration_ms: 4.211
+  duration_ms: 3.0817
   type: 'test'
   ...
 # Subtest: Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
 ok 23 - Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
   ---
-  duration_ms: 3.0753
+  duration_ms: 2.7299
   type: 'test'
   ...
 # Subtest: Archive golden browser fixture records semantic parity across all three output modes
 ok 24 - Archive golden browser fixture records semantic parity across all three output modes
   ---
-  duration_ms: 1.1839
+  duration_ms: 13.3749
   type: 'test'
   ...
 # Subtest: Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
 ok 25 - Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
   ---
-  duration_ms: 0.9119
+  duration_ms: 11.4979
   type: 'test'
   ...
 # archive solution image contract checks passed
 # Subtest: tests\\archive-solution-image.test.js
 ok 4 - tests\\archive-solution-image.test.js
   ---
-  duration_ms: 211.2598
+  duration_ms: 507.9237
   type: 'test'
   ...
 # Subtest: Archive wrapLatex preserves structured table HTML while leaving its math for final MathJax typesetting
 ok 27 - Archive wrapLatex preserves structured table HTML while leaving its math for final MathJax typesetting
   ---
-  duration_ms: 6.2409
+  duration_ms: 7.1832
   type: 'test'
   ...
 # Subtest: Layout core keeps source data out while producing qpp, two-column, layoutTag, continuation, and overflow evidence
 ok 28 - Layout core keeps source data out while producing qpp, two-column, layoutTag, continuation, and overflow evidence
   ---
-  duration_ms: 7.3646
+  duration_ms: 7.0553
   type: 'test'
   ...
 # Subtest: Adapter materialization restores PageMap and separates continuation from primary question accounting
 ok 29 - Adapter materialization restores PageMap and separates continuation from primary question accounting
   ---
-  duration_ms: 1.7115
+  duration_ms: 4.4634
   type: 'test'
   ...
 # Subtest: Layout respects selected raw/tight measurements, block gap, and explicit slot occupancy before qpp page breaks
 ok 30 - Layout respects selected raw/tight measurements, block gap, and explicit slot occupancy before qpp page breaks
   ---
-  duration_ms: 0.611
+  duration_ms: 1.2389
   type: 'test'
   ...
 # Subtest: subjective layout tags automatically reserve legacy-compatible row spans and qpp slots
 ok 31 - subjective layout tags automatically reserve legacy-compatible row spans and qpp slots
   ---
-  duration_ms: 1.6705
+  duration_ms: 0.9278
   type: 'test'
   ...
 # Subtest: pure legacy SLOT_POLICY and CHUNK_POLICY preserve deterministic left/right and 2up repack placement facts
 ok 32 - pure legacy SLOT_POLICY and CHUNK_POLICY preserve deterministic left/right and 2up repack placement facts
   ---
-  duration_ms: 7.9778
+  duration_ms: 6.4671
   type: 'test'
   ...
 # Subtest: measured solution production planner requests only source-free range geometry then seals placement
 ok 33 - measured solution production planner requests only source-free range geometry then seals placement
   ---
-  duration_ms: 4.0727
+  duration_ms: 3.9079
   type: 'test'
   ...
 # Subtest: promotion comparator fails closed for a mutated legacy page, column, or continuation fact
 ok 34 - promotion comparator fails closed for a mutated legacy page, column, or continuation fact
   ---
-  duration_ms: 8.7001
+  duration_ms: 9.7219
   type: 'test'
   ...
 # Subtest: Clinic composition planner rejects recipient/source/duplex boundary mutations without collapsing review sections
 ok 35 - Clinic composition planner rejects recipient/source/duplex boundary mutations without collapsing review sections
   ---
-  duration_ms: 5.5235
+  duration_ms: 4.5916
   type: 'test'
   ...
 # Subtest: rendered geometry comparator rejects header, spacer, slot-flex, and body-height mutations
 ok 36 - rendered geometry comparator rejects header, spacer, slot-flex, and body-height mutations
   ---
-  duration_ms: 1.4205
+  duration_ms: 2.6534
   type: 'test'
   ...
 # Subtest: solution layout bridge preserves continuation identity and rejects solution placement mutations
 ok 37 - solution layout bridge preserves continuation identity and rejects solution placement mutations
   ---
-  duration_ms: 9.8251
+  duration_ms: 6.8776
   type: 'test'
   ...
 # Subtest: layout promotion browser harness reuses real Archive/Mixer fixtures and reports gate evidence without changing render output
 ok 38 - layout promotion browser harness reuses real Archive/Mixer fixtures and reports gate evidence without changing render output
   ---
-  duration_ms: 3.6863
+  duration_ms: 39.7521
   type: 'test'
   ...
 # Subtest: solution executor A/B harness compares clean legacy and shared DOM transactions
 ok 39 - solution executor A/B harness compares clean legacy and shared DOM transactions
   ---
-  duration_ms: 0.7044
+  duration_ms: 37.033
   type: 'test'
   ...
 # Subtest: answer executor A/B harness compares answer cells, MathJax, padding, and readiness
 ok 40 - answer executor A/B harness compares answer cells, MathJax, padding, and readiness
   ---
-  duration_ms: 0.4884
+  duration_ms: 58.1582
   type: 'test'
   ...
 # Subtest: exam executor A/B harness compares source semantics, layout, assets, and readiness
 ok 41 - exam executor A/B harness compares source semantics, layout, assets, and readiness
   ---
-  duration_ms: 0.4559
+  duration_ms: 48.0116
   type: 'test'
   ...
 # Subtest: SourceAuthority rejects zero or multiple winners and retains the single winner evidence
 ok 42 - SourceAuthority rejects zero or multiple winners and retains the single winner evidence
   ---
-  duration_ms: 6.2989
+  duration_ms: 7.2947
   type: 'test'
   ...
 # Subtest: SourceRef is canonical and never silently substitutes id, ordinal, or display number
 ok 43 - SourceRef is canonical and never silently substitutes id, ordinal, or display number
   ---
-  duration_ms: 0.9905
+  duration_ms: 0.9566
   type: 'test'
   ...
 # Subtest: PrintJob freezes pure renderer modes and composes review as answer then solution
 ok 44 - PrintJob freezes pure renderer modes and composes review as answer then solution
   ---
-  duration_ms: 3.0621
+  duration_ms: 2.932
   type: 'test'
   ...
 # Subtest: Policies preserve layout authority boundaries and asset resolution stays adapter-owned
 ok 45 - Policies preserve layout authority boundaries and asset resolution stays adapter-owned
   ---
-  duration_ms: 3.0175
+  duration_ms: 3.708
   type: 'test'
   ...
 # Subtest: PageMap measures canonical source references instead of display numbers and readiness order is evidence-backed
 ok 46 - PageMap measures canonical source references instead of display numbers and readiness order is evidence-backed
   ---
-  duration_ms: 2.8642
+  duration_ms: 2.2364
   type: 'test'
   ...
 # Subtest: all three adapters load the shared readiness tracker without collapsing transport capability
 ok 47 - all three adapters load the shared readiness tracker without collapsing transport capability
   ---
-  duration_ms: 7.1553
+  duration_ms: 6.8522
   type: 'test'
   ...
 # Subtest: adapters record success-only RENDER_READY and reject incomplete render/image transactions before PRINT_READY
 ok 48 - adapters record success-only RENDER_READY and reject incomplete render/image transactions before PRINT_READY
   ---
-  duration_ms: 6.4254
+  duration_ms: 5.6557
   type: 'test'
   ...
 # Subtest: readiness phase evidence distinguishes rendered readiness from an intentionally uninvoked print transport
 ok 49 - readiness phase evidence distinguishes rendered readiness from an intentionally uninvoked print transport
   ---
-  duration_ms: 1.917
+  duration_ms: 3.8549
   type: 'test'
   ...
 # Subtest: shared readiness tracker requires evidence-backed canonical order independent of transport
 ok 50 - shared readiness tracker requires evidence-backed canonical order independent of transport
   ---
-  duration_ms: 3.7003
+  duration_ms: 2.5044
   type: 'test'
   ...
 # Subtest: readiness tracker rejects missing, skipped, and reordered transitions
 ok 51 - readiness tracker rejects missing, skipped, and reordered transitions
   ---
-  duration_ms: 1.1947
+  duration_ms: 1.1675
   type: 'test'
   ...
 # Subtest: a failed transaction cannot reach RENDER_READY or PRINT_READY
 ok 52 - a failed transaction cannot reach RENDER_READY or PRINT_READY
   ---
-  duration_ms: 1.0275
+  duration_ms: 0.7951
   type: 'test'
   ...
 # Subtest: the pre-render sentinel is fail-closed for every selected print transport
 ok 53 - the pre-render sentinel is fail-closed for every selected print transport
   ---
-  duration_ms: 0.4981
+  duration_ms: 0.3239
   type: 'test'
   ...
 # Subtest: image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence
 ok 54 - image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence
   ---
-  duration_ms: 0.7799
+  duration_ms: 0.703
   type: 'test'
   ...
 # Subtest: Archive normalizer creates source-derived identity without treating id as SourceRef authority
 ok 55 - Archive normalizer creates source-derived identity without treating id as SourceRef authority
   ---
-  duration_ms: 3.171
+  duration_ms: 3.2133
   type: 'test'
   ...
 # Subtest: Mixer normalizer retains per-question provenance for same-id/different-source inputs
 ok 56 - Mixer normalizer retains per-question provenance for same-id/different-source inputs
   ---
-  duration_ms: 2.1465
+  duration_ms: 3.0472
   type: 'test'
   ...
 # Subtest: Mixer adapter may resolve canonical source ordinal independently of mixed cart order
 ok 57 - Mixer adapter may resolve canonical source ordinal independently of mixed cart order
   ---
-  duration_ms: 0.4814
+  duration_ms: 2.5914
   type: 'test'
   ...
 # Subtest: Clinic normalizer resolves payload aliases only into canonical fields and preserves restored provenance
 ok 58 - Clinic normalizer resolves payload aliases only into canonical fields and preserves restored provenance
   ---
-  duration_ms: 0.5148
+  duration_ms: 0.9128
   type: 'test'
   ...
 # Subtest: Normalizers create only pure PrintJobs and preserve source-authority boundaries
 ok 59 - Normalizers create only pure PrintJobs and preserve source-authority boundaries
   ---
-  duration_ms: 2.9454
+  duration_ms: 3.6955
   type: 'test'
   ...
 # Subtest: Question authority emits canonical exam, answer, and solution semantics
 ok 60 - Question authority emits canonical exam, answer, and solution semantics
   ---
-  duration_ms: 2.6477
+  duration_ms: 3.8465
   type: 'test'
   ...
 # Subtest: Question authority requires adapter-owned asset resolution and compares semantic parity deterministically
 ok 61 - Question authority requires adapter-owned asset resolution and compares semantic parity deterministically
   ---
-  duration_ms: 6.7658
+  duration_ms: 10.4796
   type: 'test'
   ...
 # Subtest: Semantic fingerprint rejects equal-count content, answer, choice, image, table, and standalone-view drift
 ok 62 - Semantic fingerprint rejects equal-count content, answer, choice, image, table, and standalone-view drift
   ---
-  duration_ms: 3.8245
+  duration_ms: 7.8087
   type: 'test'
   ...
 # Subtest: Answer authority fingerprints number, value order, and source identity rather than only answer-cell count
 ok 63 - Answer authority fingerprints number, value order, and source identity rather than only answer-cell count
   ---
-  duration_ms: 0.8866
+  duration_ms: 1.4466
   type: 'test'
   ...
 # Subtest: Question authority escapes data-SVG asset attributes without truncating quotes in the URL
 ok 64 - Question authority escapes data-SVG asset attributes without truncating quotes in the URL
   ---
-  duration_ms: 0.3295
+  duration_ms: 0.5507
   type: 'test'
   ...
 1..64
@@ -392,4 +392,4 @@ ok 64 - Question authority escapes data-SVG asset attributes without truncating 
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 541.2854
+# duration_ms 629.3691

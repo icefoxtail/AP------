@@ -60,9 +60,9 @@ assert.ok(legacy.filter(result => result.label === 'observed-layout').every(resu
 for (const name of ['main-readiness-static.tap', 'phase7-static.tap', 'phase6-static.tap', 'phase5-static.tap', 'phase4-static.tap', 'phase3-static.tap']) hasPassingTap(name);
 
 const readiness = readJson('main-readiness-browser.json');
-assert.equal(readiness.version, '20260911.4');
+assert.equal(readiness.version, '20260911.5');
 assert.equal(readiness.results.length, 2);
-assert.ok(readiness.results.every(result => result.warmScriptCount === 10 && result.header.value === 'ABC' && result.header.committed === 'ABC' && result.header.candidate === 'ABC' && result.clipping.colClass === 'grid-col sol-grid-col' && result.clipping.colOverflow === 'visible' && result.clipping.boxOverflowX === 'visible' && result.clipping.spills));
+assert.ok(readiness.results.every(result => result.warmScriptCount === 10 && result.header.value === 'ABC' && result.header.committed === 'ABC' && result.header.candidate === 'ABC' && result.clipping.colClass === 'grid-col sol-grid-col' && result.clipping.colOverflow === 'visible' && result.clipping.boxOverflowX === 'visible' && result.clipping.spills && result.qr.submit.candidate === false && result.qr.solution.candidate === false));
 
 const engine = fs.readFileSync(path.join(root, 'archive/engine.html'), 'utf8');
 const re = new RegExp('<script\\b[^>]*>([\\s\\S]*?)<\\/script>', 'g');
@@ -85,10 +85,10 @@ assert.match(adapter, /layoutPlannerMode: \(\) => new URL\(candidate\.environmen
 assert.match(engine, /runtimeParams\.get\('screenRuntime'\) !== 'legacy' && runtimeParams\.get\('renderer'\) !== 'legacy'/);
 assert.match(engine, /type: 'PRINT_STALE_REBUILD'/);
 for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter']) {
-    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=20260911\\.4`));
+    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=20260911\\.5`));
 }
-assert.match(adapter, /archive-fast-phase6-20260911\.4/);
-assert.match(adapter, /measured-production-v1-20260911\.4/);
+assert.match(adapter, /archive-fast-phase6-20260911\.5/);
+assert.match(adapter, /measured-production-v1-20260911\.5/);
 
 const scope = readJson('execution-scope.json');
 assert.equal(scope.mergeToMain, false);
@@ -106,7 +106,7 @@ const audit = {
         phase1D: 'PASS', phase2: 'PASS', phase3: 'PASS', phase4: 'PASS', phase5: 'PASS',
         phase6: 'PASS', phase7: 'PASS (RETAIN_LEGACY)'
     },
-    browser: { primaryScenarios: 19, snapshotProfiles: 6, layoutComparisons: 12, legacyCases: 12, headerCacheProfiles: 2 },
+    browser: { primaryScenarios: 19, snapshotProfiles: 6, layoutComparisons: 12, legacyCases: 12, headerCacheProfiles: 2, qrDesiredStateProfiles: 2 },
     staticTapFiles: ['main-readiness-static.tap', 'phase3-static.tap', 'phase4-static.tap', 'phase5-static.tap', 'phase6-static.tap', 'phase7-static.tap'],
     syntax: { externalFiles: syntaxFiles.length, inlineScripts: inlineCount },
     delivery: 'origin/main is merged into the feature branch; feature branch only is pushed; no merge or push to main'

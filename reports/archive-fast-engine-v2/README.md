@@ -13,8 +13,9 @@
 The feature branch then merged `origin/main` at `e1a4cf07578b0055fdbaf773bf27049fe54f05ce` and closed three pre-merge findings. This merge is into the feature branch only; it does not merge the feature branch into `main`.
 
 - The current main clipping fix is retained: `.grid-col` permits horizontal visibility, `.sol-grid-col` is fully visible, and `.q-box.sol-box` is explicitly visible. The authority materializer now creates `grid-col sol-grid-col` in both probe and actual solution pages. A real transformed-width probe crosses its column boundary without clipping.
-- The fast runtime bundle uses one browser identity: every changed runtime/planner/executor script loads with `?v=20260911.4`, and the candidate fingerprint uses matching `engine`, `layoutAuthority`, `executor`, and `pageLayout` versions. The browser test first warms an old `layout-authority.js?v=20260906.25` URL, then proves the new URL bundle loads in a fresh page and a warm reload.
+- The fast runtime bundle uses one browser identity: every changed runtime/planner/executor script loads with `?v=20260911.5`, and the candidate fingerprint uses matching `engine`, `layoutAuthority`, `executor`, and `pageLayout` versions. The browser test first warms an old `layout-authority.js?v=20260906.25` URL, then proves the new URL bundle loads in a fresh page and a warm reload.
 - Header input retains desired state across fast input events. The runtime path no longer re-renders controls from uncommitted `AppState`; the runtime's immutable desired candidate is the next event base. Real browser input `A → B → C` ends with `ABC` in the input, committed state, candidate and rendered page header.
+- QR controls follow the same rule. Fast runtime QR requests no longer reconcile controls from the old URL before request creation. Real submit-QR and solution-QR checkbox `ON → OFF` tests retain the user-selected state while the first render is held, then finish with OFF in the checkbox, URL, committed candidate, output canvas and button label.
 
 The specific gate record is [main-readiness-gates.json](main-readiness-gates.json).
 

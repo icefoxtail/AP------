@@ -13,7 +13,7 @@ const phase=mode==='ans'?'phase1b':mode==='sol'?'phase1c':'phase1d';
   const errors=[];page.on('pageerror',e=>errors.push(String(e)));
   await page.route('**/api/**',r=>r.abort());
   await page.goto('http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode='+mode+'&printDryRun=1');
-  await page.waitForFunction(()=>window.archiveScreenRuntime?.activeSnapshot,{timeout:60000});
+  await page.waitForFunction(()=>window.archiveScreenRuntime?.activeSnapshot,undefined,{timeout:60000});
   await page.evaluate(()=>archiveScreenRuntime.whenIdle());
   const result=await page.evaluate(async(targetMode)=>{
    const runtime=archiveScreenRuntime;const otherMode=targetMode==='exam'?'ans':'exam';
