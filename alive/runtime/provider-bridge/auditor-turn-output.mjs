@@ -33,3 +33,8 @@ export function completedTurnFromThreadRead(response, threadId, turnId) {
   return (response?.thread?.turns || [])
     .find(turn => turn?.id === turnId && ['completed', 'failed', 'interrupted'].includes(turn.status)) || null;
 }
+
+export function completedTurnFromTurnsList(response, turnId) {
+  return (response?.data || [])
+    .find(turn => turn?.id === turnId && ['completed', 'failed', 'interrupted'].includes(turn.status)) || null;
+}
