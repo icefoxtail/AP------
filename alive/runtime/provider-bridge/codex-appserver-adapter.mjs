@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, withTimeout } from './auditor-turn-output.mjs';
+import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, withTimeout } from './auditor-turn-output.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -45,6 +45,9 @@ class AppServerClient {
     this.nextId = 1;
     this.pending = new Map();
     this.notifications = [];
+    this.tracePath = path.join(stateDir, 'appserver-message-trace.jsonl');
+    this.traceSequence = 0;
+    fs.mkdirSync(stateDir, { recursive: true });
     this.proc.stdout.setEncoding('utf8');
     this.proc.stdout.on('data', chunk => this.consume(chunk));
     this.proc.on('exit', (code, signal) => {
@@ -61,7 +64,15 @@ class AppServerClient {
       if (!line.trim()) continue;
       let message;
       try { message = JSON.parse(line); } catch { continue; }
-      if (message.id !== undefined && this.pending.has(String(message.id))) {
+      const route = classifyAppServerMessage(message, this.pending);
+      try {
+        fs.appendFileSync(this.tracePath, `${JSON.stringify(summarizeAppServerMessage(message, route, ++this.traceSequence))}\n`, 'utf8');
+      } catch {
+        // Diagnostics must never change provider behavior.
+      }
+      if (route === 'notification') {
+        this.notifications.push(message);
+      } else if (route === 'response') {
         const pending = this.pending.get(String(message.id));
         this.pending.delete(String(message.id));
         if (message.error) pending.reject(new Error(`CODEX_APPSERVER_RPC:${JSON.stringify(message.error)}`));

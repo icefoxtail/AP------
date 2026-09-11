@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
+import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -62,4 +62,14 @@ test('provider history recovery timeout does not block completion polling', asyn
   const started = Date.now();
   await assert.rejects(withTimeout(new Promise(() => {}), 20, 'HISTORY_TIMEOUT'), /HISTORY_TIMEOUT/);
   assert.ok(Date.now() - started < 500);
+});
+
+test('app-server method envelopes are notifications even when they carry an id', () => {
+  const pending = new Map([['7', { resolve() {}, reject() {} }]]);
+  const message = { id: 7, method: 'turn/completed', params: { threadId: 'thread', turn: { id: 'turn', status: 'completed' } } };
+  assert.equal(classifyAppServerMessage(message, pending), 'notification');
+  const summary = summarizeAppServerMessage(message, 'notification', 1);
+  assert.equal(summary.method, 'turn/completed');
+  assert.equal(summary.route, 'notification');
+  assert.equal(summary.turnStatus, 'completed');
 });
