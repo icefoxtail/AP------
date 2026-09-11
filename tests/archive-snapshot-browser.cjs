@@ -3,6 +3,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const out = path.resolve(__dirname, '../reports/archive-fast-engine-v2');
+const mode=process.env.AP_SNAPSHOT_MODE || 'ans';
+const phase=mode==='ans'?'phase1b':mode==='sol'?'phase1c':'phase1d';
 (async () => {
  const browser = await chromium.launch({channel:'chrome',headless:true});
  const results=[];
@@ -10,10 +12,10 @@ const out = path.resolve(__dirname, '../reports/archive-fast-engine-v2');
   const page=await browser.newPage({viewport:{width,height:1000}});
   const errors=[];page.on('pageerror',e=>errors.push(String(e)));
   await page.route('**/api/**',r=>r.abort());
-  await page.goto('http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=ans&printDryRun=1');
+  await page.goto('http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode='+mode+'&printDryRun=1');
   await page.waitForFunction(()=>window.archiveScreenRuntime?.activeSnapshot,{timeout:60000});
   await page.evaluate(()=>archiveScreenRuntime.whenIdle());
-  const result=await page.evaluate(async()=>{
+  const result=await page.evaluate(async(targetMode)=>{
    const runtime=archiveScreenRuntime;
    const original=runtime.activeSnapshot, root=original.rootNode, text=root.textContent;
    const builtRequestGeneration=original.builtRequestGeneration;
@@ -21,7 +23,7 @@ const out = path.resolve(__dirname, '../reports/archive-fast-engine-v2');
    const kept=original.status==='READY' && !root.isConnected;
    const math=MathJax.typesetPromise;
    MathJax.typesetPromise=()=>{throw Error('CACHE_HIT_TYPESET_FORBIDDEN')};
-   const switched=await switchMode('ans');
+   const switched=await switchMode(targetMode);
    MathJax.typesetPromise=math;
    const attempt=runtime.inspect().attempts.at(-1);
    await safePrint('vector');
@@ -31,9 +33,9 @@ const out = path.resolve(__dirname, '../reports/archive-fast-engine-v2');
    await switchMode('exam');
    const beforeRoot=document.getElementById('print-area'), beforeMode=AppState.mode;
    const push=history.pushState;history.pushState=()=>{throw Error('CACHE_COMMIT_FAIL')};
-   const failed=await switchMode('ans');history.pushState=push;
+   const failed=await switchMode(targetMode);history.pushState=push;
    const rollback=!failed.ok && document.getElementById('print-area')===beforeRoot && AppState.mode===beforeMode && original.status==='READY';
-   const retry=await switchMode('ans');
+   const retry=await switchMode(targetMode);
    await setPrintHeaderOptions({title:'Changed header'});
    const invalidated=runtime.activeSnapshot!==original && original.status==='EVICTED';
    const invalidations=[];
@@ -54,16 +56,28 @@ const out = path.resolve(__dirname, '../reports/archive-fast-engine-v2');
    const refitCount=document.querySelectorAll('#print-area .ans-cell[data-source-ref]').length;
    const pages=document.querySelectorAll('#print-area .page').length;
    return {width:innerWidth,kept,switched:switched.ok,identity:root===original.rootNode,textParity:root.textContent===text,cacheStatus:attempt.cacheStatus,mathCalls:attempt.metrics.mathJaxCalls,oldProvenance:builtRequestGeneration<attempt.requestGeneration,preflight,repeated,rollback,retry:retry.ok,invalidated,invalidations,rejectedFont,refit:refit.ok,refitCount,pages,common:original.commonHardGateEvidence};
-  });
+  },mode);
   assert.equal(result.kept,true);assert.equal(result.switched,true);assert.equal(result.identity,true);assert.equal(result.textParity,true);
   assert.equal(result.cacheStatus,'HIT');assert.equal(result.mathCalls,0);assert.equal(result.oldProvenance,true);
   assert.equal(result.preflight.pass,true);assert.equal(Object.keys(result.preflight.gates).length,23);
   assert.equal(result.repeated,true);assert.equal(result.rollback,true);assert.equal(result.retry,true);assert.equal(result.invalidated,true);
   assert.ok(result.invalidations.every(r=>r.pass));assert.equal(result.rejectedFont,true);assert.equal(result.refit,true);assert.equal(result.refitCount,40);assert.ok(result.pages>1);
-  assert.deepEqual(errors,[]);results.push(result);
-  await page.screenshot({path:path.join(out,`phase1b-${width}.png`),fullPage:true});
+  assert.deepEqual(errors,[]);
+  await page.evaluate(async mode=>{
+   await archiveScreenRuntime.request({type:'SOURCE_CHANGE',payload:{safeDataUrl:'exams/test-fixtures/render-authority-golden.js',mode,qpp:4}});
+   await switchMode('exam');await switchMode(mode);
+  },mode);
+  const visual=await page.evaluate(()=>{const area=document.getElementById('print-area');return {
+   text:area.textContent,sourceRefs:[...area.querySelectorAll('[data-source-ref]')].map(n=>n.dataset.sourceRef),
+   pages:[...area.querySelectorAll('.page')].map(n=>({text:n.textContent,refs:[...n.querySelectorAll('[data-source-ref]')].map(n=>n.dataset.sourceRef),w:n.offsetWidth,h:n.offsetHeight})),
+   shapes:[...area.querySelectorAll('.q-box,.sol-box,.sol-box-long,.sol-exp,mjx-container,img')].map(n=>({tag:n.tagName,cls:typeof n.className==='string'?n.className:'',w:n.offsetWidth,h:n.offsetHeight}))
+  }});
+  const baseline=JSON.parse(fs.readFileSync(path.join(out,'phase0-parity.json'))).find(r=>r.width===width&&r.mode===mode).active;
+  for(const key of Object.keys(visual))assert.deepEqual(visual[key],baseline[key],key);
+  result.visualParity='PASS';results.push(result);
+  await page.screenshot({path:path.join(out,`${phase}-${width}.png`),fullPage:true});
   await page.close();console.log('PASS',width);
  }
- fs.writeFileSync(path.join(out,'phase1b-browser.json'),JSON.stringify(results,null,2));
+ fs.writeFileSync(path.join(out,`${phase}-browser.json`),JSON.stringify(results,null,2));
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
