@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "launchId": "past20-maesan-repair-7b03c100f:1",
+  "externalId": "01a09111-66a1-7891-9dde-8aaf78b98077",
+  "status": "FAILED",
+  "preDispatchFailure": false,
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "reasoningEffort": null,
+  "providerPlanRef": {
+    "path": "alive/runtime/provider-bridge/past20-maesan-repair-7b03c100f/preflight.json",
+    "bytes": 9669,
+    "sha256": "sha256:ee0a53cb429422968b204cc4e415a2ce5a28111c18deab4bfe2cce021d0c9590"
+  },
+  "failedPhase": "U1",
+  "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+  "independentAgentLaunchCount": 1,
+  "expensiveAgentLaunchCount": 1,
+  "concurrentExpensiveAgentPeak": 1,
+  "recursiveSubagentLaunchCount": 0,
+  "retryLaunchCount": 0,
+  "usedTokens": null,
+  "usedTokensByPhase": {
+    "U1": null,
+    "U2": null,
+    "U3": null
+  },
+  "phaseAttestationRefs": [],
+  "evidenceRefs": [
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-7b03c100f/provider-transport-failure.json",
+      "bytes": 1984,
+      "sha256": "sha256:09a5463fe8b8f4edceccb2742f1320bdea9325b87db5c746dd89c88c9b042798"
+    }
+  ],
+  "defects": [],
+  "executionIdentity": {
+    "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+    "jobKind": "PRODUCTION",
+    "requestedModel": null,
+    "requestedReasoningEffort": null,
+    "actualModel": "gpt-5.6-luna/xhigh",
+    "actualReasoningEffort": null,
+    "modelRouteObservedAtStart": "2026-09-11T15:23:52.824Z",
+    "modelRouteObservedAtClosure": null,
+    "modelRouteChanged": false,
+    "routeStatus": "NOT_APPLICABLE",
+    "MODEL_ROUTE_PARITY": "NOT_APPLICABLE"
+  },
+  "failedAt": "2026-09-11T15:31:54.151Z"
+}
