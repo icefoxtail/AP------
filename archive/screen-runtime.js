@@ -34,6 +34,7 @@
         let currentRequestGeneration = 0, currentSession = null, activeSnapshot = null, committedCandidate = null;
         let tail = Promise.resolve(), activeContext = null, latestReady = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
         let desired = null;
+        let pendingCount = 0;
         const attempts = [], cleanupPending = [];
         const retiredSessions = new Set();
         const owners = new WeakMap();
@@ -88,6 +89,16 @@
                 };
                 ctx.snapshot = snapshot;
                 if (!hit) { adapter.freezeSnapshot?.(snapshot, ctx); owners.set(snapshot.rootNode, snapshot); }
+                if (ctx.background) {
+                    if (!isLatest(ctx) || currentSession?.sessionId !== ctx.requestedTargetSessionId) throw new Error('DISCARDED_STALE');
+                    if (snapshot.mode === currentSession.activeMode || snapshot.rootNode === activeSnapshot.rootNode) throw new Error('PREWARM_TARGET_ACTIVE');
+                    const previous = currentSession.modeSnapshots[snapshot.mode];
+                    adapter.storeSnapshot?.(snapshot, ctx);
+                    currentSession.modeSnapshots[snapshot.mode] = snapshot;
+                    observe('PREWARM_READY', ctx);
+                    if (previous && previous !== snapshot) await cleanup(previous.rootNode, null, previous);
+                    return { ok: true, prewarmed: true, mode: snapshot.mode, sessionId: snapshot.sessionId };
+                }
                 let nextSession = currentSession;
                 if (ctx.pendingSession) {
                     Object.assign(ctx.pendingSession, {
@@ -159,7 +170,7 @@
                 if (ctx.pendingSession) { ctx.pendingSession.status = 'ABORTED'; ctx.pendingSession.preparedSnapshots = { exam: null, sol: null, ans: null }; }
                 if (ctx.cacheStatus !== 'HIT') await cleanup(ctx.result?.rootNode || ctx.targetArea, null, ctx.snapshot);
                 observe('BUILD_FAILED', ctx);
-                if (isLatest(ctx)) desired = null;
+                if (ctx.foreground && isLatest(ctx)) desired = null;
                 return { ok: false, code: ctx.state === 'DISCARDED_STALE' ? ctx.state : ctx.error, transactionId: ctx.transactionId };
             } finally {
                 try { await adapter.release?.(ctx); }
@@ -172,24 +183,32 @@
         }
         function request(value) {
             if (!Object.hasOwn(RenderIntentType, value?.type)) return Promise.resolve({ ok: false, code: 'UNKNOWN_RENDER_INTENT' });
-            if (value.foreground === false) return Promise.resolve({ ok: false, code: 'BACKGROUND_NOT_ENABLED_PHASE1A' });
+            const foreground = value.foreground !== false;
+            if (!foreground) {
+                if (!adapter.enablePrewarm) return Promise.resolve({ ok: false, code: 'BACKGROUND_NOT_ENABLED' });
+                if (value.type !== 'MODE_CHANGE') return Promise.resolve({ ok: false, code: 'BACKGROUND_INTENT_FORBIDDEN' });
+                if (!currentSession || pendingCount || value.requestedMode === currentSession.activeMode) return Promise.resolve({ ok: false, code: 'PREWARM_NOT_IDLE' });
+            }
             let intent, input;
             try {
-                intent = N.copy({ ...value, foreground: true });
-                input = adapter.captureInput(intent, desired, committedCandidate);
+                intent = N.copy({ ...value, foreground });
+                input = adapter.captureInput(intent, foreground ? desired : null, committedCandidate);
                 N.assertImmutable(input);
+                if (!foreground && input.mode === currentSession.activeMode) return Promise.resolve({ ok: false, code: 'PREWARM_NOT_IDLE' });
             } catch (error) { return Promise.resolve({ ok: false, code: String(error.message || error) }); }
-            desired = input;
+            if (foreground) desired = input;
             const abort = new AbortController();
             activeContext?.abortController.abort();
-            const ctx = { transactionId: unique('render'), requestGeneration: ++currentRequestGeneration, intentType: intent.type, intent, input, foreground: true, background: false, sideEffectsAllowed: false, abortController: abort, abortSignal: abort.signal, state: 'QUEUED', createdAt: Date.now(), committed: false };
-            latestReady = tail.then(() => run(ctx));
-            tail = latestReady.catch(() => {});
-            adapter.onRequest?.(latestReady, ctx);
-            return latestReady;
+            const ctx = { transactionId: unique('render'), requestGeneration: ++currentRequestGeneration, intentType: intent.type, intent, input, foreground, background: !foreground, sideEffectsAllowed: false, abortController: abort, abortSignal: abort.signal, state: 'QUEUED', createdAt: Date.now(), committed: false };
+            pendingCount += 1;
+            const pending = tail.then(() => run(ctx)).finally(() => { pendingCount -= 1; });
+            tail = pending.catch(() => {});
+            if (foreground) { latestReady = pending; adapter.onRequest?.(pending, ctx); }
+            return pending;
         }
-        async function whenIdle() { let pending; do { pending = latestReady; await pending; } while (pending !== latestReady); return latestReady; }
-        return Object.freeze({ request, whenIdle, get busy() { return activeContext !== null; }, get currentSession() { return currentSession; }, get activeSnapshot() { return activeSnapshot; }, get committedCandidate() { return committedCandidate; }, get requestGeneration() { return currentRequestGeneration; }, inspect: () => ({ requestGeneration: currentRequestGeneration, currentSession, activeSnapshot, attempts: attempts.slice(), cleanupPending: cleanupPending.length, backgroundSideEffectCount: 0 }) });
+        async function whenIdle() { let pending; do { pending = tail; await pending; } while (pending !== tail); return latestReady; }
+        function cancelBackground() { if (activeContext?.background) activeContext.abortController.abort(); }
+        return Object.freeze({ request, whenIdle, cancelBackground, prewarm: mode => request({ type: 'MODE_CHANGE', requestedMode: mode, foreground: false }), get busy() { return pendingCount > 0; }, get currentSession() { return currentSession; }, get activeSnapshot() { return activeSnapshot; }, get committedCandidate() { return committedCandidate; }, get requestGeneration() { return currentRequestGeneration; }, inspect: () => ({ requestGeneration: currentRequestGeneration, currentSession, activeSnapshot, attempts: attempts.slice(), cleanupPending: cleanupPending.length, backgroundSideEffectCount: 0 }) });
     }
     return Object.freeze({ RenderIntentType, BuildAttemptState, ModeSnapshotStatus, create, promotePendingSession });
 }));

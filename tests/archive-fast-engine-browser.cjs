@@ -134,7 +134,7 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
     await check('Background request executes zero business side effects', async () => {
         const count = posts.length;
         const result = await page.evaluate(() => archiveScreenRuntime.request({ type: 'FORCED_REBUILD', foreground: false }));
-        assert.equal(result.code, 'BACKGROUND_NOT_ENABLED_PHASE1A'); assert.equal(posts.length, count);
+        assert.ok(['BACKGROUND_NOT_ENABLED', 'BACKGROUND_INTENT_FORBIDDEN'].includes(result.code)); assert.equal(posts.length, count);
     });
     await check('Post-commit business delivery failure and next-activation retry keep identity', async () => {
         await page.evaluate(() => localStorage.setItem('APMATH_SESSION', JSON.stringify({ session_token: 'local-browser-test-only' })));
