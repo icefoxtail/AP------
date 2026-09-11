@@ -6,10 +6,11 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText } from './auditor-turn-output.mjs';
+import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, withTimeout } from './auditor-turn-output.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
+const HISTORY_RPC_TIMEOUT_MS = 1000;
 const JOB = process.argv[process.argv.indexOf('--job') + 1];
 if (!JOB) throw new Error('CODEX_APPSERVER_JOB_REQUIRED');
 
@@ -168,27 +169,39 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   let text = '';
   const deadline = Date.now() + 300000;
   let nextHistoryReadAt = 0;
+  let historyRecoveryInFlight = null;
   while (Date.now() < deadline) {
-    if (!completedTurnFor(app.notifications, thread.id, turnId) && Date.now() >= nextHistoryReadAt) {
-      nextHistoryReadAt = Date.now() + 1000;
-      try {
-        const turns = await app.request('thread/turns/list', { threadId: thread.id, itemsView: 'full', limit: 20, sortDirection: 'descending' });
-        const listedTurn = completedTurnFromTurnsList(turns, turnId);
-        if (listedTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: listedTurn } });
-      } catch {
-        // Fall through to thread/read for older app-server protocol variants.
-      }
-      try {
-        const history = await app.request('thread/read', { threadId: thread.id, includeTurns: true });
-        const historyTurn = completedTurnFromThreadRead(history, thread.id, turnId);
-        if (historyTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: historyTurn } });
-      } catch {
-        // Notification delivery remains the primary path; history polling is bounded recovery.
-      }
-    }
     const completedText = completedTurnText(app.notifications, thread.id, turnId);
     if (completedText.length > text.length) text = completedText;
     if (completedTurnFor(app.notifications, thread.id, turnId) || parseAuditorOutputText(text)) break;
+
+    if (!historyRecoveryInFlight && Date.now() >= nextHistoryReadAt) {
+      nextHistoryReadAt = Date.now() + 1000;
+      historyRecoveryInFlight = (async () => {
+        try {
+          const turns = await withTimeout(
+            app.request('thread/turns/list', { threadId: thread.id, itemsView: 'full', limit: 20, sortDirection: 'descending' }),
+            HISTORY_RPC_TIMEOUT_MS,
+            'CODEX_APPSERVER_HISTORY_LIST_TIMEOUT'
+          );
+          const listedTurn = completedTurnFromTurnsList(turns, turnId);
+          if (listedTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: listedTurn } });
+        } catch {
+          // Notification delivery remains primary; history polling is bounded recovery.
+        }
+        try {
+          const history = await withTimeout(
+            app.request('thread/read', { threadId: thread.id, includeTurns: true }),
+            HISTORY_RPC_TIMEOUT_MS,
+            'CODEX_APPSERVER_HISTORY_READ_TIMEOUT'
+          );
+          const historyTurn = completedTurnFromThreadRead(history, thread.id, turnId);
+          if (historyTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: historyTurn } });
+        } catch {
+          // Notification delivery remains primary; history polling is bounded recovery.
+        }
+      })().finally(() => { historyRecoveryInFlight = null; });
+    }
     await new Promise(resolve => setTimeout(resolve, 50));
   }
   if (!text) throw new Error('CODEX_APPSERVER_EMPTY_AGENT_OUTPUT');

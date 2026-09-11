@@ -6,6 +6,14 @@ export function completedTurnFor(notifications, threadId, turnId) {
   )) || null;
 }
 
+export function withTimeout(promise, timeoutMs, code) {
+  let timer;
+  const timeout = new Promise((_, reject) => {
+    timer = setTimeout(() => reject(new Error(code)), timeoutMs);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
+}
+
 export function completedTurnText(notifications, threadId, turnId) {
   const deltaText = notifications
     .filter(message => (

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
+import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -56,4 +56,10 @@ test('provider adapter recovers a completed turn from the turn list endpoint', (
 test('provider adapter accepts a complete auditor JSON output without a completion notification', () => {
   assert.deepEqual(parseAuditorOutputText('progress {"evidence":["{}"],"defects":[]}'), { evidence: ['{}'], defects: [] });
   assert.equal(parseAuditorOutputText('{"evidence":["{}"]}'), null);
+});
+
+test('provider history recovery timeout does not block completion polling', async () => {
+  const started = Date.now();
+  await assert.rejects(withTimeout(new Promise(() => {}), 20, 'HISTORY_TIMEOUT'), /HISTORY_TIMEOUT/);
+  assert.ok(Date.now() - started < 500);
 });
