@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_PIPELINE_DEFECT_EVIDENCE_v1",
+  "status": "ROOT_CAUSE_IDENTIFIED",
+  "workBatchId": "past20-maesan-resume-dba3d1283",
+  "launchId": "past20-maesan-resume-dba3d1283:1",
+  "failedPhase": "U1",
+  "failureEvidence": "alive/runtime/provider-bridge/past20-maesan-resume-dba3d1283/provider-transport-failure.json",
+  "observedProviderLog": {
+    "source": "C:/Users/USER/.codex/logs_2.sqlite",
+    "threadId": "01a090f8-107d-7c93-a456-ea40dc028d48",
+    "turnId": "01a090fb-b088-7e12-99ef-c22f68e8bde3",
+    "timestampUnixSeconds": 1789138809,
+    "errorType": "invalid_request_error",
+    "errorCode": "invalid_json_schema",
+    "message": "Invalid schema for response_format 'codex_output_schema': In context=('properties', 'evidence'), array schema missing items.",
+    "httpStatus": 400
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "defect": "turn/start outputSchema declared evidence and defects as arrays without JSON Schema items.",
+    "classification": "PIPELINE_DEFECT",
+    "transportErrorWasWrapper": true,
+    "semanticModelTurnCompleted": false
+  },
+  "repairPlan": {
+    "scope": "Add explicit object item schemas to both output arrays and cover the contract with a regression test.",
+    "sameLaunchRetry": false,
+    "freshRunRequiredAfterRepair": true
+  }
+}

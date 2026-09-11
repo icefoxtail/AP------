@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_TRANSPORT_FAILURE_v1",
+  "status": "FAILED",
+  "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+  "workBatchId": "past20-maesan-resume-dba3d1283",
+  "launchId": "past20-maesan-resume-dba3d1283:1",
+  "externalId": "01a090f8-0f5e-7893-8956-3df947aa213d",
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "phase": "U1",
+  "preDispatchFailure": false,
+  "observedAt": "2026-09-11T15:06:34.465Z",
+  "dispatchResult": {
+    "canonicalStatus": "HOLD:PROVIDER_TRANSPORT_UNAVAILABLE",
+    "responseReturned": false,
+    "responseAttestationReturned": false,
+    "evidenceReturned": false,
+    "laterPhasesInvoked": false
+  },
+  "sealedInputRefs": {
+    "providerPlanRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-resume-dba3d1283/preflight.json",
+      "bytes": 9669,
+      "sha256": "sha256:ffd244007b1a87f14085dcaaee328432f5eb9179755984e6819472ab6c47a01b"
+    },
+    "packetRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-resume-dba3d1283/u1-packet.json",
+      "bytes": 11485,
+      "sha256": "sha256:26788586995badc7e8ee5db07e2611cd2731b9bd7cef4bd176ffd8c539475de7"
+    },
+    "requestRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-resume-dba3d1283/u1-request.json",
+      "bytes": 12448,
+      "sha256": "sha256:6955dee0a767a7bcfa55149c77c1917e6d3cd3b256f0f9dce9fe3bf0fe65131c"
+    }
+  },
+  "requestInputSha": "sha256:e2f95b4e2e681d090f23835c48d15a493f8040cdbf2b082c01aee92452157761",
+  "transport": {
+    "command": "node",
+    "args": [
+      "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+      "--job",
+      "past20-maesan-resume-dba3d1283"
+    ],
+    "automaticRetry": false
+  },
+  "disposition": "Terminal provider failure; no retry or synthetic review evidence is authorized."
+}

@@ -1,0 +1,62 @@
+{
+  "cost": {
+    "workBatchId": "past20-maesan-resume-dba3d1283",
+    "targetCount": 20,
+    "totalTargetCount": 20,
+    "totalAffectedCount": 20,
+    "benchmarkReviewedTargetCount": null,
+    "benchmarkEligibleTargetCount": null,
+    "benchmarkExcludedTargetCount": null,
+    "benchmarkTotalSourceTargetCount": null,
+    "benchmarkEligibleAffectedTargetCount": null,
+    "independentAgentLaunchCount": 1,
+    "expensiveAgentLaunchCount": 1,
+    "concurrentExpensiveAgentPeak": 1,
+    "freshLlmUidCount": 0,
+    "reusedUidCount": 0,
+    "machineCheckedUidCount": 20,
+    "retryLaunchCount": 0,
+    "secondAuditorLaunchCount": 0,
+    "recursiveSubagentLaunchCount": 0,
+    "usedTokens": null,
+    "tokenTelemetryAvailable": false,
+    "agentBudgetStatus": "HOLD",
+    "jobKind": "PRODUCTION",
+    "executionIdentity": {
+      "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+      "jobKind": "PRODUCTION",
+      "requestedModel": null,
+      "requestedReasoningEffort": null,
+      "actualModel": "gpt-5.6-luna/xhigh",
+      "actualReasoningEffort": null,
+      "modelRouteObservedAtStart": "2026-09-11T14:56:11.884Z",
+      "modelRouteObservedAtClosure": null,
+      "modelRouteChanged": false,
+      "routeStatus": "NOT_APPLICABLE",
+      "MODEL_ROUTE_PARITY": "NOT_APPLICABLE"
+    },
+    "MODEL_ROUTE_PARITY": "NOT_APPLICABLE",
+    "modelRouteStatus": "NOT_APPLICABLE"
+  },
+  "schemaVersion": "APMATH_PIPELINE_AUDIT_v2",
+  "runId": "past20-maesan-resume-dba3d1283",
+  "revision": 1,
+  "inputSha": "sha256:31b83ebf5097dfd5bca840e2592b209278e1ad35e7edd7fee519329d0cda4cd3",
+  "status": "BLOCKED",
+  "productionAuthorized": false,
+  "diagnosticContinuation": {
+    "status": "UPSTREAM_BLOCKED",
+    "downstreamObserved": false
+  },
+  "errors": [
+    "V2_CONTRACT:RUN_V2_CONTRACT:$.auditorPacketRefs:MISSING;$.buildWorkLedgerRefs:MISSING;$.questionQualityClosureSetRef:MISSING;$.examReleaseClosureRef:MISSING;$.sourceAuthority.applicability:MISSING",
+    "AGENT_BUDGET_HOLD"
+  ],
+  "freshness": [],
+  "semantic": null,
+  "changeImpact": null,
+  "renderImpact": null,
+  "editClosure": null,
+  "closureSetSha": null,
+  "reportSha": "sha256:bf64878d57bce5d9763a14aefcd4b3ff3aa734479d48f59691e60be27ce51cb8"
+}
