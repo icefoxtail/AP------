@@ -1,5 +1,6 @@
 import { HASH_PATTERN, isObject, nonempty, objectSha } from './canonical.mjs';
 import { validateSolutionQuality } from './solution-quality.mjs';
+import { validateCalibrationConsumptionBinding } from './calibration-consumption.mjs';
 
 export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const REUSE_RECEIPT_VERSION = 'APMATH_EVIDENCE_REUSE_RECEIPT_v1';
@@ -125,7 +126,7 @@ export function validateMachineEvidence(evidence, run, { diagnostic = false } = 
   }
   return errors;
 }
-export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {
+export function validateTypedEvidence(evidence, { diagnostic = false, calibrationIdentity = null, calibrationAnchorCatalog = null, requiredCalibrationAxes = [], requiredCalibrationComparisonChecks = [] } = {}) {
   const errors = [], p = evidence?.payload;
   if (!isObject(p)) return ['TYPED_PAYLOAD_REQUIRED'];
   const text = field => { if (!nonempty(p[field])) errors.push(`TYPED_${evidence.axis}:${field}`); };
@@ -139,6 +140,11 @@ export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {
     case 'SOLUTION': text('solutionRationale'); checks(['mathematicalCorrectness', 'logicalCompleteness', 'studentUnderstandability']); errors.push(...validateSolutionQuality(p.solutionQuality).errors); break;
     case 'METADATA': hash('metadataInputSha'); checks(['schema', 'uidBinding', 'curriculumBinding']); break;
     case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity', 'studentSerialization']); break;
+  }
+  const calibrationPhase = { SOLUTION: 'U3', V2: 'U2', V3: 'U3', RENDER_REVIEW: 'RENDER_REVIEW' }[evidence?.axis];
+  if (calibrationIdentity && calibrationPhase && requiredCalibrationAxes.length) {
+    const binding = p.calibrationConsumption || p.calibration?.calibrationConsumption;
+    errors.push(...validateCalibrationConsumptionBinding(binding, { expectedIdentity: calibrationIdentity, reviewerPhase: calibrationPhase, requiredAxes: requiredCalibrationAxes, requirePass: true, anchorCatalog: calibrationAnchorCatalog, requiredComparisonChecks: requiredCalibrationComparisonChecks }).errors);
   }
   if (machineAxes.includes(evidence.axis) !== (evidence.auditorPrincipalType === 'MACHINE_COLLECTOR' && evidence.mode === 'MACHINE_CURRENT')) errors.push('AXIS_EXECUTION_CLASS_MISMATCH');
   return errors;

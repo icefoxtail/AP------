@@ -63,7 +63,19 @@ export function prepareCalibration(root, manifest, samplePaths) {
     samples: samplePaths.map(relative => {
       const { bank, ...sample } = readProductionSample(root, mainCommit, relative);
       return { ...sample, selectionReason: '', qualityAcceptanceReason: '', checkedAxes: Object.fromEntries(CALIBRATION_AXES.map(axis => [axis, { status: 'NOT_TESTED', observation: '' }])),
-        questionObservations: bank.map(q => ({ qid: q.id, questionSha: objectSha(q), solutionExcerpt: '', observation: '' })) };
+        questionObservations: bank.map(q => ({
+          qid: q.id,
+          questionSha: objectSha(q),
+          level: q.level || null,
+          standardCourse: q.standardCourse || null,
+          standardUnitKey: q.standardUnitKey || null,
+          subUnitKey: q.subUnitKey || null,
+          questionType: q.questionType || null,
+          choicesPresent: Array.isArray(q.choices) && q.choices.length > 0,
+          solutionImagePresent: Boolean(q.solutionImage || /<(?:svg|table|img)\b/i.test(q.solution || '')),
+          solutionExcerpt: '',
+          observation: ''
+        })) };
     }),
     productionQualityProfile: Object.fromEntries(QUALITY_PROFILE_CHECKS.map(key => [key, { status: 'NOT_TESTED', minimumStandard: '', sampleAnchors: [] }])) };
 }

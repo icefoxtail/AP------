@@ -1,12 +1,17 @@
 import { canonicalJson, isObject, nonempty, objectSha, uidSet, HASH_PATTERN } from './canonical.mjs';
 import { validateEvidenceFreshness } from './review-evidence-v2.mjs';
+import { calibrationComparisonChecksForReviewAxis, validateCalibrationConsumptionBinding } from './calibration-consumption.mjs';
 
 export const QUESTION_QUALITY_CLOSURE_VERSION = 'APMATH_QUESTION_QUALITY_CLOSURE_v2';
 export const QUESTION_QUALITY_CLOSURE_SET_VERSION = 'APMATH_QUESTION_QUALITY_CLOSURE_SET_v1';
 
 const normalizeAxes = axes => [...new Set((Array.isArray(axes) ? axes : Object.keys(axes || {})).map(axis => String(axis).toUpperCase()))].sort();
+const comparisonChecks = (axis, calibrationAxes) => calibrationComparisonChecksForReviewAxis(axis, {
+  problemAssetPaths: calibrationAxes.includes('problemVisual') ? ['calibration'] : [],
+  solutionAssetPaths: calibrationAxes.includes('solutionVisual') ? ['calibration'] : []
+});
 
-export function materializeQuestionQualityClosure({ questionUid, currentRunInputSha, requiredAxes, axes, affected = false, initialErrors = [] }) {
+export function materializeQuestionQualityClosure({ questionUid, currentRunInputSha, requiredAxes, axes, affected = false, initialErrors = [], calibrationByAxis = {}, requiredCalibrationAxesByAxis = {}, calibrationIdentity = null, calibrationAnchorCatalog = null }) {
   const errors = [...initialErrors];
   if (!nonempty(questionUid) || !HASH_PATTERN.test(currentRunInputSha)) errors.push('QUESTION_CLOSURE_IDENTITY_INVALID');
   const required = normalizeAxes(requiredAxes);
@@ -16,7 +21,13 @@ export function materializeQuestionQualityClosure({ questionUid, currentRunInput
     const entry = source[axis] || source[axis.toLowerCase()];
     if (!isObject(entry) || !['FRESH', 'REUSED', 'MACHINE_CURRENT'].includes(entry.mode) || entry.status !== 'PASS') errors.push(`QUESTION_CLOSURE_AXIS_NOT_CLOSED:${axis}`);
     if (entry?.questionUid !== questionUid || entry?.axis !== axis || !nonempty(entry?.evidenceId) || !HASH_PATTERN.test(entry?.evidenceSha || '') || !HASH_PATTERN.test(entry?.axisInputSha || '') || (entry?.mode === 'REUSED' ? !HASH_PATTERN.test(entry?.receiptSha || '') : entry?.receiptSha !== null)) errors.push(`QUESTION_CLOSURE_AXIS_BINDING:${axis}`);
-    normalizedAxes[axis] = entry || { status: 'BLOCKED', mode: null };
+    const calibrationAxes = requiredCalibrationAxesByAxis?.[axis] || requiredCalibrationAxesByAxis?.[axis.toUpperCase()] || [];
+    const calibration = calibrationByAxis?.[axis] || calibrationByAxis?.[axis.toUpperCase()] || entry?.calibrationConsumption || null;
+    if (calibrationAxes.length) {
+      const checked = validateCalibrationConsumptionBinding(calibration, { expectedIdentity: calibrationIdentity, reviewerPhase: axis === 'RENDER_REVIEW' ? 'RENDER_REVIEW' : ['V2'].includes(axis) ? 'U2' : 'U3', requiredAxes: calibrationAxes, requirePass: true, anchorCatalog: calibrationAnchorCatalog, requiredComparisonChecks: comparisonChecks(axis, calibrationAxes) });
+      errors.push(...checked.errors.map(error => `${axis}:${error}`));
+    }
+    normalizedAxes[axis] = calibrationAxes.length ? { ...(entry || { status: 'BLOCKED', mode: null }), calibrationConsumption: calibration, calibrationRequired: true } : (entry || { status: 'BLOCKED', mode: null });
   }
   const payload = { schemaVersion: QUESTION_QUALITY_CLOSURE_VERSION, questionUid, currentRunInputSha, requiredAxes: required, axes: normalizedAxes, affected, productionAuthorized: false, status: errors.length ? 'BLOCKED' : 'PASS' };
   return { ...payload, closureSha: objectSha(payload), errors };
@@ -43,7 +54,7 @@ export function createQuestionQualityClosureSet({ runId, revision, currentRunInp
   return { ...payload, closureSetSha: objectSha(payload), errors };
 }
 
-export function validateQuestionQualityClosureSet(closureSet, { runId, revision, currentRunInputSha, questionUids, requiredAxesByUid, freshness } = {}) {
+export function validateQuestionQualityClosureSet(closureSet, { runId, revision, currentRunInputSha, questionUids, requiredAxesByUid, freshness, calibrationIdentity = null, calibrationRequiredAxesByUid = {}, calibrationAnchorCatalog = null } = {}) {
   const errors = [];
   if (!isObject(closureSet) || closureSet.schemaVersion !== QUESTION_QUALITY_CLOSURE_SET_VERSION) errors.push('QUESTION_CLOSURE_SET_SCHEMA_INVALID');
   if (runId !== undefined && closureSet?.runId !== runId) errors.push('QUESTION_CLOSURE_SET_RUN_MISMATCH');
@@ -73,6 +84,12 @@ export function validateQuestionQualityClosureSet(closureSet, { runId, revision,
         const fields = ['questionUid', 'axis', 'mode', 'evidenceId', 'evidenceSha', 'receiptSha', 'axisInputSha', 'status'];
         if (rows.length !== 1 || fields.some(field => entry?.[field] !== rows[0][field])) errors.push(`QUESTION_CLOSURE_AUDIT_PARITY:${closure.questionUid}:${axis}`);
       }
+      const calibrationAxes = calibrationRequiredAxesByUid?.[closure.questionUid]?.[axis] || calibrationRequiredAxesByUid?.[closure.questionUid]?.[axis.toUpperCase()] || [];
+      if (calibrationAxes.length) {
+        const checked = validateCalibrationConsumptionBinding(entry?.calibrationConsumption, { expectedIdentity: calibrationIdentity, reviewerPhase: axis === 'RENDER_REVIEW' ? 'RENDER_REVIEW' : axis === 'V2' ? 'U2' : 'U3', requiredAxes: calibrationAxes, requirePass: true, anchorCatalog: calibrationAnchorCatalog, requiredComparisonChecks: comparisonChecks(axis, calibrationAxes) });
+        errors.push(...checked.errors.map(error => `${closure.questionUid}:${axis}:${error}`));
+        if (entry?.calibrationRequired !== true) errors.push(`QUESTION_CLOSURE_CALIBRATION_REQUIRED_FLAG:${closure.questionUid}:${axis}`);
+      }
     }
     for (const axis of Object.keys(closure.axes || {})) if (!requiredAxes.includes(axis.toUpperCase())) errors.push(`QUESTION_CLOSURE_AXIS_EXTRA:${closure.questionUid}:${axis}`);
   }
@@ -81,14 +98,15 @@ export function validateQuestionQualityClosureSet(closureSet, { runId, revision,
   return { status: errors.length ? 'BLOCKED' : 'PASS', errors, closureSetSha: errors.length ? null : objectSha(closureSetPayload) };
 }
 
-export function buildClosureFromEvidence({ question, requiredAxes, evidenceByAxis, evidenceRefsByAxis = {}, currentRunInputSha, axisInputShas, receiptsByAxis = {}, dependencies = {} }) {
+export function buildClosureFromEvidence({ question, requiredAxes, evidenceByAxis, evidenceRefsByAxis = {}, currentRunInputSha, axisInputShas, receiptsByAxis = {}, dependencies = {}, calibrationIdentity = null, calibrationRequiredAxesByAxis = {}, calibrationAnchorCatalog = null }) {
   const axes = {};
   const errors = [];
   for (const axis of normalizeAxes(requiredAxes)) {
     const evidence = evidenceByAxis?.[axis] || evidenceByAxis?.[axis.toLowerCase()];
     const freshness = validateEvidenceFreshness(evidence, { currentRunInputSha, currentAxisInputSha: axisInputShas?.[axis], reuseReceipt: receiptsByAxis?.[axis] || null, reuseContext: { ...dependencies, priorEvidence: evidence } });
-    axes[axis] = { questionUid: question.questionUid, axis, axisInputSha: axisInputShas?.[axis] || null, status: freshness.status === 'PASS' ? 'PASS' : 'BLOCKED', mode: freshness.mode, evidenceId: evidence?.evidenceId || null, evidenceSha: evidenceRefsByAxis[axis]?.sha256 || null, receiptSha: freshness.receiptSha || null, errors: freshness.errors };
+    const calibration = evidence?.payload?.calibrationConsumption || evidence?.payload?.calibration?.calibrationConsumption || null;
+    axes[axis] = { questionUid: question.questionUid, axis, axisInputSha: axisInputShas?.[axis] || null, status: freshness.status === 'PASS' ? 'PASS' : 'BLOCKED', mode: freshness.mode, evidenceId: evidence?.evidenceId || null, evidenceSha: evidenceRefsByAxis[axis]?.sha256 || null, receiptSha: freshness.receiptSha || null, errors: freshness.errors, ...(calibrationRequiredAxesByAxis?.[axis]?.length ? { calibrationConsumption: calibration, calibrationRequired: true } : {}) };
     if (freshness.status !== 'PASS') errors.push(...freshness.errors.map(error => `${axis}:${error}`));
   }
-  return materializeQuestionQualityClosure({ questionUid: question.questionUid, currentRunInputSha, requiredAxes, axes, affected: false, initialErrors: errors });
+  return materializeQuestionQualityClosure({ questionUid: question.questionUid, currentRunInputSha, requiredAxes, axes, affected: false, initialErrors: errors, calibrationIdentity, calibrationAnchorCatalog, requiredCalibrationAxesByAxis: calibrationRequiredAxesByAxis });
 }

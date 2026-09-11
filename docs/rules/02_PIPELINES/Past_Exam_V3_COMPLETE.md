@@ -59,6 +59,42 @@ Calibration은 builder의 작업 준비 증거다. U1 source-only나 U2 artifact
 `PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1`이다. 각 품질 항목은 PASS, 최소 기준의 문장,
 실제 샘플 문항 anchor를 요구한다. 부족한 샘플은 관찰 내용을 꾸며 통과시키지 말고 교체한다.
 
+## Calibration consumption binding
+
+S0.5에서 동결한 calibration은 builder 시작 조건만으로 끝나지 않는다. 실제 독립
+검수의 quality-sensitive 입력은 `APMATH_CALIBRATION_CONSUMPTION_BINDING_v1`으로
+동결 lock과 profile을 다시 결박한다. binding은
+`referenceSampleLockSha`, `productionQualityProfileSha`, `frozenMainCommit`,
+`consumedCalibrationAxes`, `reviewerPhase`, `comparisonResult`,
+`comparisonReason`, `referenceAnchorsUsed`를 모두 가져야 하며, 단순한
+"샘플을 참고했다" 문장은 증거가 아니다. target source, answer, existing target
+solution은 이 binding의 reference authority가 아니다.
+
+수정 전 실제 packet/evidence/closure wiring inventory는 다음과 같았다.
+
+| CALIBRATION AXIS | BUILDER CONSUMES? | U1 CONSUMES? | U2 CONSUMES? | U3 CONSUMES? | RENDER_REVIEW CONSUMES? | FINAL CLOSURE BINDS? | GAP |
+|---|---|---|---|---|---|---|---|
+| schema | S0.5 lock/start gate | NO (blind) | NO | NO | NO | NO | builder-start only |
+| solutionQuality | S0.5 profile/start gate | NO (blind) | NO | NO | NO | NO | typed SOLUTION was not bound to profile |
+| metadata | S0.5 profile/start gate | NO | NO | NO | NO | NO | style observation was discarded |
+| problemVisual | S0.5 profile/start gate | NO (blind) | NO | NO | NO | NO | crop usability floor was not consumed |
+| solutionVisual | S0.5 profile/start gate | NO (blind) | artifact-only, but no calibration binding | NO | mechanical render only | NO | semantic visual floor was not bound |
+| layout | S0.5 profile/start gate | NO (blind) | NO | render packet had no calibration input | mechanical checks only | NO | NO_CLIP/NO_OVERFLOW did not prove readability floor |
+
+The new contract preserves the stage order and binds only phase-safe derived packets:
+U1 receives `NONE`; U2 receives visual/layout profile and safe visual anchors without
+answer or solution authority; U3 receives solution-quality profile plus selected
+solution/visual/layout anchors; `RENDER_REVIEW` receives layout/readability profile.
+Applicable solution, visual, and render closure rows are blocked when their binding
+is absent, stale, or not `PASS`. Targeted recheck must use the same frozen lock,
+profile SHA, main commit, and reference-anchor set as FINAL_AUDIT.
+For a quality-sensitive PASS, `qualityFloorComparison` records typed per-axis
+comparisons: solution explanation/reasoning/reproducibility/conditional logic and
+student density; problem crop completeness/padding/labels/readability; instructional
+visual clarity and fact/text parity; or desktop/mobile layout readability as
+applicable. A final answer match or a no-overflow screenshot cannot substitute for
+these comparisons.
+
 ## Typed Solution Quality
 
 독립 U3 `SOLUTION.payload.solutionQuality`는 `APMATH_SOLUTION_QUALITY_v1`이다.

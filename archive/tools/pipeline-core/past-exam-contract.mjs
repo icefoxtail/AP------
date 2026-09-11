@@ -1,6 +1,7 @@
 import { readBoundFile, nonempty, canonicalJson } from './canonical.mjs';
 import { validateFrozenCalibration } from '../past-exam-pipeline/lib/calibration.mjs';
 import { evaluateGoldSourceEligibility, isBenchmarkJobKind } from './gold-contract.mjs';
+import { calibrationIdentityFromLock } from './calibration-consumption.mjs';
 
 export function validatePastExamCompletion(root, run) {
   if (run.pipeline !== 'past-exam') return [];
@@ -22,10 +23,19 @@ export function validatePastExamCompletion(root, run) {
     const ref = config.referenceSampleLockRef;
     if (!ref || !run.inputs.some(r => r.role === 'spec' && r.path === ref.path && r.bytes === ref.bytes && r.sha256 === ref.sha256)) throw new Error('REFERENCE_SAMPLE_LOCK_UNBOUND');
     const lock = JSON.parse(readBoundFile(root, ref));
+    const calibrationIdentity = calibrationIdentityFromLock(ref, lock);
     errors.push(...validateFrozenCalibration(root, lock, { startSha: (config.authority || run.pastExamAuthority)?.startSha || null }).errors);
     const authority = config.authority || run.pastExamAuthority || null;
+    if (authority && contract.calibrationConsumptionContract?.path) {
+      const calibrationContractRef = run.inputs.find(input => input.role === 'spec' && input.path === contract.calibrationConsumptionContract.path);
+      if (!calibrationContractRef) errors.push('CALIBRATION_CONTRACT_UNBOUND');
+      else {
+        const calibrationContract = JSON.parse(readBoundFile(root, calibrationContractRef));
+        if (calibrationContract.$id !== contract.calibrationConsumptionContract.schemaVersion || calibrationContractRef.bytes !== contract.calibrationConsumptionContract.bytes || calibrationContractRef.sha256 !== contract.calibrationConsumptionContract.sha256) errors.push('CALIBRATION_CONTRACT_STALE');
+      }
+    }
     if (authority) {
-      if (authority.schemaVersion !== 'APMATH_PAST_EXAM_JOB_AUTHORITY_v1' || authority.startSha !== lock.mainCommit || authority.calibrationSha !== ref.sha256 || authority.rulePackSha !== lock.rulePackSha) errors.push('FROZEN_CALIBRATION_IDENTITY_MISMATCH');
+      if (authority.schemaVersion !== 'APMATH_PAST_EXAM_JOB_AUTHORITY_v1' || authority.startSha !== lock.mainCommit || authority.calibrationSha !== ref.sha256 || authority.productionQualityProfileSha !== calibrationIdentity.productionQualityProfileSha || authority.rulePackSha !== lock.rulePackSha) errors.push('FROZEN_CALIBRATION_IDENTITY_MISMATCH');
       if (run.pastExamAuthority && canonicalJson(run.pastExamAuthority) !== canonicalJson(authority)) errors.push('FROZEN_JOB_AUTHORITY_MISMATCH');
     } else if (isBenchmarkJobKind(run.benchmarkKind)) errors.push('FROZEN_JOB_AUTHORITY_REQUIRED');
     if (lock.readerId !== run.builderId || lock.readerSessionId !== run.builderSessionId) errors.push('CALIBRATION_READER_BUILDER_MISMATCH');

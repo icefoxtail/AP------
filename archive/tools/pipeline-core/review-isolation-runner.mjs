@@ -1,13 +1,14 @@
 import { canonicalJson, HASH_PATTERN, isObject, nonempty, objectSha } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
+import { validatePhaseSafeCalibrationPacket, calibrationRequiredAxesForReviewAxis } from './calibration-consumption.mjs';
 
 export const AUDITOR_PACKET_VERSION = 'APMATH_AUDITOR_PACKET_v1';
 export const AUDITOR_PHASES = Object.freeze(['U1', 'U2', 'U3']);
 
 const allowed = Object.freeze({
   U1: ['questionUid', 'content', 'choices', 'problemAssets', 'curriculum'],
-  U2: ['questionUid', 'artifact', 'renderWitnesses'],
-  U3: ['renderWitnesses', 'currentQuestion', 'questionUid', 'frozenU1', 'frozenU2', 'currentAnswer', 'currentSolution', 'metadata', 'dependencies']
+  U2: ['questionUid', 'artifact', 'renderWitnesses', 'calibration'],
+  U3: ['renderWitnesses', 'currentQuestion', 'questionUid', 'frozenU1', 'frozenU2', 'currentAnswer', 'currentSolution', 'metadata', 'dependencies', 'calibration']
 });
 const forbidden = Object.freeze({ U1: ['answer', 'solution', 'solutionImage', 'previousVerdict'], U2: ['expectedAnswer', 'answer', 'solution', 'solutionImage', 'frozenU1', 'previousVerdict'], U3: [] });
 
@@ -37,16 +38,20 @@ export function buildU3CandidatePayload(candidateContext, questionUid, frozenInp
   } });
 }
 
-export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null }) {
+export function buildU2ArtifactPayload({ questionUid, artifact, renderWitnesses = [], calibration = null }) {
+  return structuredClone({ questionUid, artifact, renderWitnesses, ...(calibration ? { calibration } : {}) });
+}
+
+export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null, calibrationIdentity = null, calibrationAnchorCatalog = null, requiredCalibrationAxesByUid = {}, requireCalibration = false }) {
   if (!AUDITOR_PHASES.includes(phase)) throw new Error('AUDITOR_PHASE_INVALID');
-  const packet = { schemaVersion: AUDITOR_PACKET_VERSION, phase, questionUids, payload, auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId };
+  const packet = { schemaVersion: AUDITOR_PACKET_VERSION, phase, questionUids, payload, auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, calibrationConsumptionRequired: phase !== 'U1' };
   packet.packetSha = objectSha(packet);
-  const result = validateAuditorPacket(packet, { affectedUidSet, declaredContextDependencyUidSet, candidateContext });
+  const result = validateAuditorPacket(packet, { affectedUidSet, declaredContextDependencyUidSet, candidateContext, calibrationIdentity, calibrationAnchorCatalog, requiredCalibrationAxesByUid, requireCalibration });
   if (result.status !== 'PASS') throw new Error(result.errors.join(';'));
   return packet;
 }
 
-export function validateAuditorPacket(packet, { affectedUidSet = [], declaredContextDependencyUidSet = [], builderId, builderSessionId, candidateContext = null } = {}) {
+export function validateAuditorPacket(packet, { affectedUidSet = [], declaredContextDependencyUidSet = [], builderId, builderSessionId, candidateContext = null, calibrationIdentity = null, calibrationAnchorCatalog = null, requiredCalibrationAxesByUid = {}, requireCalibration = false } = {}) {
   const errors = [];
   if (!isObject(packet)) return { status: 'BLOCKED', errors: ['AUDITOR_PACKET_REQUIRED'] };
   const visibleUids = [...new Set([...affectedUidSet, ...declaredContextDependencyUidSet])];
@@ -56,6 +61,7 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
   if (!isObject(packet) || packet.schemaVersion !== AUDITOR_PACKET_VERSION || !AUDITOR_PHASES.includes(packet.phase)) errors.push('AUDITOR_PACKET_SCHEMA_INVALID');
   if (!Array.isArray(packet.questionUids) || packet.questionUids.length === 0 || packet.questionUids.some(uid => !nonempty(uid))) errors.push('AUDITOR_PACKET_UIDS_INVALID');
   if (packet.questionUids?.some(uid => !visibleUids.includes(uid))) errors.push('UNRELATED_UID_PROMPT_EXPOSURE');
+  if (packet.phase === 'U1' && packet.calibrationConsumptionRequired !== false) errors.push('CALIBRATION_CONSUMPTION_REQUIRED_MUST_BE_FALSE_FOR_U1');
   if (!nonempty(packet.auditorId) || !nonempty(packet.auditorSessionId)) errors.push('AUDITOR_IDENTITY_MISSING');
   const expectedBuilderId = builderId ?? packet.builderId;
   const expectedBuilderSessionId = builderSessionId ?? packet.builderSessionId;
@@ -66,7 +72,7 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
     for (const item of payload) {
       const { packetSha: ignored, ...body } = packet;
       const subpacket = { ...body, questionUids: [item?.questionUid], payload: item };
-      errors.push(...validateAuditorPacket({ ...subpacket, packetSha: objectSha(subpacket) }, { affectedUidSet, declaredContextDependencyUidSet, builderId, builderSessionId, candidateContext }).errors);
+      errors.push(...validateAuditorPacket({ ...subpacket, packetSha: objectSha(subpacket) }, { affectedUidSet, declaredContextDependencyUidSet, builderId, builderSessionId, candidateContext, calibrationIdentity, calibrationAnchorCatalog, requiredCalibrationAxesByUid, requireCalibration }).errors);
     }
   } else if (!isObject(payload)) errors.push('AUDITOR_PACKET_PAYLOAD_INVALID');
   else {
@@ -83,19 +89,36 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
         if (!expected || ['currentQuestion', 'currentAnswer', 'currentSolution'].some(field => canonicalJson(payload[field] ?? null) !== canonicalJson(expected[field] ?? null))) errors.push('U3_CURRENT_CANDIDATE_MISMATCH');
       }
     }
-    const walk = value => {
-      if (Array.isArray(value)) return value.forEach(walk);
+    const calibrationPacket = payload.calibration;
+    if (packet.phase === 'U1' && (Object.hasOwn(payload, 'calibration') || Object.hasOwn(payload, 'calibrationConsumption'))) errors.push('CALIBRATION_U1_FORBIDDEN');
+    if (['U2', 'U3'].includes(packet.phase) && (requireCalibration || calibrationPacket)) {
+      if (!calibrationPacket) errors.push(`CALIBRATION_${packet.phase}_PACKET_REQUIRED`);
+      else {
+        const requiredAxes = requiredCalibrationAxesByUid?.[payload.questionUid] || calibrationRequiredAxesForReviewAxis(packet.phase === 'U2' ? 'V2' : 'SOLUTION', payload.currentQuestion || payload);
+        errors.push(...validatePhaseSafeCalibrationPacket(calibrationPacket, {
+          expectedIdentity: calibrationIdentity,
+          reviewerPhase: packet.phase,
+          requiredAxes,
+          requirePass: true,
+          allowedAnchors: calibrationAnchorCatalog,
+          requiredComparisonChecks: packet.phase === 'U3' && requiredAxes.includes('solutionQuality') ? [] : []
+        }).errors);
+      }
+    }
+    const walk = (value, skipCalibration = false) => {
+      if (Array.isArray(value)) return value.forEach(item => walk(item, skipCalibration));
       if (!isObject(value)) return;
       if (typeof value.questionUid === 'string' && !visibleUids.includes(value.questionUid)) errors.push('NESTED_UNRELATED_UID_EXPOSURE');
       for (const [key, nested] of Object.entries(value)) {
+        if (skipCalibration && key === 'calibration') continue;
         if ((forbidden[packet.phase] || []).some(word => key.toLowerCase().replace(/[^a-z]/g, '').includes(word.toLowerCase())) || ['U1','U2'].includes(packet.phase) && /verdict|rationale|hiddencontext|systemprompt|answerkey|expectedfact/i.test(key)) errors.push(`NESTED_BLIND_CONTEXT_LEAK:${key}`);
         if (['U1', 'U2'].includes(packet.phase) && typeof nested === 'string' && /^\s*[\[{]/.test(nested)) {
           try { walk(JSON.parse(nested)); } catch { /* Literal bracket-prefixed content is valid blind input. */ }
         }
-        walk(nested);
+        walk(nested, false);
       }
     };
-    walk(payload);
+    walk(payload, ['U2', 'U3'].includes(packet.phase));
     const keys = Object.keys(payload);
     for (const key of keys) if (!allowed[packet.phase]?.includes(key)) errors.push(`AUDITOR_FIELD_NOT_ALLOWED:${packet.phase}:${key}`);
     for (const key of forbidden[packet.phase] || []) if (keys.includes(key)) errors.push(`AUDITOR_FORBIDDEN_FIELD:${packet.phase}:${key}`);

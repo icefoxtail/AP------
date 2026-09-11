@@ -1,6 +1,7 @@
 import { isObject, nonempty, objectSha } from './canonical.mjs';
 import { validateStudentSerialization } from './student-output.mjs';
 import { evaluateExpression } from './expression.mjs';
+import { validateCalibrationConsumptionBinding, SOLUTION_CALIBRATION_COMPARISON_AXES } from './calibration-consumption.mjs';
 
 export const SOLUTION_QUALITY_VERSION = 'APMATH_SOLUTION_QUALITY_v1';
 export const SOLUTION_CORE_CHECKS = Object.freeze([
@@ -25,7 +26,7 @@ export function solutionQualityDraft() {
     SOLUTION_QUALITY_CHECKS.map(key => [key, { status: 'NOT_TESTED', reason: '', solutionExcerpts: [] }])) };
 }
 
-export function validateSolutionQuality(contract, question = null) {
+export function validateSolutionQuality(contract, question = null, { calibration = null, expectedCalibration = null, calibrationAnchorCatalog = null, requireCalibration = false, requiredCalibrationComparisonChecks = SOLUTION_CALIBRATION_COMPARISON_AXES } = {}) {
   const errors = [];
   if (question) errors.push(...validateStudentSerialization(question).errors);
   if (!isObject(contract) || contract.schemaVersion !== SOLUTION_QUALITY_VERSION) return { status: 'FAIL', errors: ['SOLUTION_QUALITY_CONTRACT_REQUIRED'] };
@@ -59,6 +60,17 @@ export function validateSolutionQuality(contract, question = null) {
       if (!Array.isArray(check.solutionExcerpts) || !check.solutionExcerpts.length || check.solutionExcerpts.some(s => !nonempty(s))) errors.push(`SOLUTION_QUALITY_ANCHOR_REQUIRED:${key}`);
       else if (question && check.solutionExcerpts.some(s => !String(question.solution || '').includes(s))) errors.push(`SOLUTION_QUALITY_ANCHOR_STALE:${key}`);
     }
+  }
+  if (requireCalibration) {
+    const binding = calibration?.calibrationConsumption || calibration;
+    errors.push(...validateCalibrationConsumptionBinding(binding, {
+      expectedIdentity: expectedCalibration,
+      reviewerPhase: 'U3',
+      requiredAxes: ['solutionQuality'],
+      requirePass: true,
+      anchorCatalog: calibrationAnchorCatalog,
+      requiredComparisonChecks: requiredCalibrationComparisonChecks
+    }).errors);
   }
   return { status: errors.length ? 'FAIL' : 'PASS', errors, ...(errors.length ? {} : { contractSha: objectSha(contract) }) };
 }

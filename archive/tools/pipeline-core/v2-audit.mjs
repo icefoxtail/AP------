@@ -13,6 +13,7 @@ import { validateAuditorPacket, loadCandidateReviewContext } from './review-isol
 import { validateBuildWorkLedgerEntry } from './build-work-ledger.mjs';
 import { validateExamReleaseClosure, examReleaseApplicability } from './exam-release.mjs';
 import { detectRenderImpact } from './render-impact.mjs';
+import { calibrationBindingsEqual, calibrationComparisonChecksForReviewAxis, calibrationRequiredAxesForReviewAxis, loadCalibrationIdentity, validateCalibrationConsumptionBinding } from './calibration-consumption.mjs';
 
 const same = (a, b) => canonicalJson(a ?? null) === canonicalJson(b ?? null);
 const load = (root, ref) => JSON.parse(readBoundFile(root, ref));
@@ -20,7 +21,7 @@ const pairKey = row => `${row.questionUid}\u0000${row.axis}`;
 export function requiresSolutionVisualBenefitGate(requiredAxes = [], changedFields = [], v3Evidence = null) {
   return requiredAxes.includes('V3') && changedFields.includes('SOLUTION') && v3Evidence?.payload?.checks?.SOLUTION_VISUAL_BENEFIT_GATE !== 'PASS';
 }
-const contracts = Object.fromEntries(['run-v2', 'evidence-v2', 'reuse-receipt-v1', 'question-quality-closure-v2', 'exam-release-v1', 'build-work-ledger-v1', 'source-exam-id-registry-v1', 'edit-closure-v1', 'render-review-reuse-receipt-v1'].map(name => [name, JSON.parse(fs.readFileSync(new URL(`./contracts/${name}.schema.json`, import.meta.url), 'utf8'))]));
+const contracts = Object.fromEntries(['run-v2', 'evidence-v2', 'reuse-receipt-v1', 'question-quality-closure-v2', 'calibration-consumption-binding-v1', 'exam-release-v1', 'build-work-ledger-v1', 'source-exam-id-registry-v1', 'edit-closure-v1', 'render-review-reuse-receipt-v1'].map(name => [name, JSON.parse(fs.readFileSync(new URL(`./contracts/${name}.schema.json`, import.meta.url), 'utf8'))]));
 
 export function computeV2AxisInputShas(root, run) {
   return Object.fromEntries(loadBoundQuestionBanks(root, run).map(q => {
@@ -103,10 +104,16 @@ function validateEvidenceLifecycle(root, run, evidenceRefs) {
 export function auditV2Run(root, run) {
   const errors = [], freshness = [];
   let semantic = null, changeImpact = null, editClosure = null, closureSetSha = null, renderImpact = null;
+  let calibrationIdentity = null, calibrationAnchorCatalog = null;
   try {
     const schemaErrors = validateSchema(run, contracts['run-v2']);
     if (schemaErrors.length) throw new Error(`RUN_V2_CONTRACT:${schemaErrors.join(';')}`);
     if (run?.schemaVersion !== RUN_VERSION_V2 || !profiles.pipelines[run.pipeline] || !Number.isSafeInteger(run.revision) || run.revision < 1 || !run.questions?.length || !run.inputs?.length || ![run.runId, run.builderId, run.builderSessionId, run.builderModelOrAgent].every(nonempty)) throw new Error('RUN_V2_SCHEMA_INVALID');
+    if (run.pipeline === 'past-exam') {
+      const loadedCalibration = loadCalibrationIdentity(root, run);
+      calibrationIdentity = loadedCalibration;
+      calibrationAnchorCatalog = new Set((loadedCalibration.lock.samples || []).flatMap(sample => (sample.questionObservations || []).map(row => `${sample.path}|${row.qid}`)));
+    }
     for (const ref of run.inputs) readBoundFile(root, ref);
     if (run.inputSha !== runInputSha(run)) throw new Error('RUN_V2_INPUT_SHA_STALE');
     const budget = readWorkBatch(root, run.workBatchId);
@@ -130,6 +137,9 @@ export function auditV2Run(root, run) {
         for (const closure of predecessorClosure.closures || []) for (const [axis, row] of Object.entries(closure.axes || {})) if (!recomputed.freshness.some(f => f.questionUid === closure.questionUid && f.axis === axis && f.status === 'PASS' && f.evidenceId === row.evidenceId && f.evidenceSha === row.evidenceSha)) delete closure.axes[axis];
       }
       before = loadBoundQuestionBanks(root, previous);
+      if (run.pipeline === 'past-exam' && previous.pipeline === 'past-exam') {
+        for (const field of ['startSha', 'calibrationSha', 'productionQualityProfileSha']) if (run.pastExamAuthority?.[field] !== previous.pastExamAuthority?.[field]) errors.push(`TARGETED_RECHECK_CALIBRATION_IDENTITY_MISMATCH:${field}`);
+      }
       previousAxisShas = Object.fromEntries(before.map(q => [q.questionUid, Object.fromEntries((required[q.questionUid] || []).map(axis => [axis, axisInputSha(q, axis, projectionContext(root, previous, q, axis))]))]));
     } else if (run.predecessor) throw new Error('INITIAL_PREDECESSOR_FORBIDDEN');
     const runHash = runLevelSemanticHash(run, actual);
@@ -170,7 +180,31 @@ export function auditV2Run(root, run) {
     }
     if (!same([...(run.declaredContextDependencyUidSet || [])].sort(), [...contextUids].sort())) errors.push('DECLARED_CONTEXT_DEPENDENCY_PARITY');
     const candidateContext = packets.some(packet => packet.phase === 'U3') ? loadCandidateReviewContext(root, run) : null;
-    for (const packet of packets) errors.push(...validateAuditorPacket(packet, { affectedUidSet: changeImpact.affectedUidSet, declaredContextDependencyUidSet: [...contextUids], builderId: run.builderId, builderSessionId: run.builderSessionId, candidateContext }).errors);
+    const packetCalibrationAxes = phase => Object.fromEntries(run.questions.map(question => [question.questionUid, phase === 'U2'
+      ? calibrationRequiredAxesForReviewAxis('V2', question)
+      : [...new Set(['solutionQuality', ...calibrationRequiredAxesForReviewAxis('V3', question), ...(run.publicationIntent === 'FULL_EXAM' ? ['layout'] : [])])]]));
+    for (const packet of packets) errors.push(...validateAuditorPacket(packet, {
+      affectedUidSet: changeImpact.affectedUidSet,
+      declaredContextDependencyUidSet: [...contextUids],
+      builderId: run.builderId,
+      builderSessionId: run.builderSessionId,
+      candidateContext,
+      calibrationIdentity,
+      calibrationAnchorCatalog,
+      requiredCalibrationAxesByUid: packetCalibrationAxes(packet.phase),
+      requireCalibration: Boolean(calibrationIdentity) && packet.phase !== 'U1'
+    }).errors);
+    if (run.pipeline === 'past-exam' && previous) {
+      const priorPackets = (previous.auditorPacketRefs || []).map(ref => load(root, ref));
+      const packetRows = packet => Array.isArray(packet.payload) ? packet.payload : [packet.payload];
+      for (const packet of packets.filter(item => ['U2', 'U3'].includes(item.phase))) for (const row of packetRows(packet)) {
+        const priorPacket = priorPackets.find(item => item.phase === packet.phase && packetRows(item).some(candidate => candidate?.questionUid === row?.questionUid));
+        const priorRow = priorPacket && packetRows(priorPacket).find(candidate => candidate?.questionUid === row?.questionUid);
+        const currentBinding = row?.calibration?.calibrationConsumption;
+        const priorBinding = priorRow?.calibration?.calibrationConsumption;
+        if (!priorBinding || !currentBinding || !calibrationBindingsEqual(priorBinding, currentBinding)) errors.push(`TARGETED_RECHECK_CALIBRATION_BINDING_MISMATCH:${packet.phase}:${row?.questionUid || 'unknown'}`);
+      }
+    }
     for (const q of run.questions) {
       if (!same(q.requiredAxes, required[q.questionUid])) errors.push(`REQUIRED_AXES_EXACT_PARITY:${q.questionUid}`);
       if (!same(q.axisInputShas, axisShas[q.questionUid])) errors.push(`DECLARED_AXIS_SHA_MISMATCH:${q.questionUid}`);
@@ -193,12 +227,23 @@ export function auditV2Run(root, run) {
           const rootRun = load(root, receipt.rootFreshRunRef), rootPacket = load(root, receipt.rootFreshPacketRef);
           if (rootRun.runId !== receipt.rootFreshRunId || rootRun.inputSha !== receipt.rootFreshRunInputSha || rootRun.inputSha !== runInputSha(rootRun) || !rootRun.evidence?.some(ref => ref.sha256 === receipt.rootFreshEvidenceSha)) errors.push('ROOT_FRESH_RUN_BINDING');
           errors.push(...validateFreshEvidenceIndependence(rootEvidence, rootRun, rootPacket), ...validateWorkBatchEvidence(root, rootRun, rootEvidence));
-          errors.push(...validateAuditorPacket(rootPacket, { affectedUidSet: rootRun.questions.map(q => q.questionUid), builderId: rootRun.builderId, builderSessionId: rootRun.builderSessionId, candidateContext: rootPacket.phase === 'U3' ? loadCandidateReviewContext(root, rootRun) : null }).errors);
+          const rootCalibration = rootRun.pipeline === 'past-exam' ? loadCalibrationIdentity(root, rootRun) : null;
+          const rootCalibrationAxes = Object.fromEntries(rootRun.questions.map(question => [question.questionUid, rootPacket.phase === 'U2'
+            ? calibrationRequiredAxesForReviewAxis('V2', question)
+            : [...new Set(['solutionQuality', ...calibrationRequiredAxesForReviewAxis('V3', question), ...(rootRun.publicationIntent === 'FULL_EXAM' ? ['layout'] : [])])]]));
+          const rootAnchors = rootCalibration ? new Set((rootCalibration.lock.samples || []).flatMap(sample => (sample.questionObservations || []).map(row => `${sample.path}|${row.qid}`))) : null;
+          errors.push(...validateAuditorPacket(rootPacket, { affectedUidSet: rootRun.questions.map(q => q.questionUid), builderId: rootRun.builderId, builderSessionId: rootRun.builderSessionId, candidateContext: rootPacket.phase === 'U3' ? loadCandidateReviewContext(root, rootRun) : null, calibrationIdentity: rootCalibration, calibrationAnchorCatalog: rootAnchors, requiredCalibrationAxesByUid: rootCalibrationAxes, requireCalibration: Boolean(rootCalibration) && rootPacket.phase !== 'U1' }).errors);
         }
         const scopedEvidence = ['RENDER_CAPTURE', 'RENDER_REVIEW'].includes(axis) ? { ...e, questionUid: q.questionUid, axisInputSha: e.axisInputShas?.[q.questionUid] } : e;
         const scopedRoot = rootEvidence && ['RENDER_CAPTURE', 'RENDER_REVIEW'].includes(axis) ? { ...rootEvidence, questionUid: q.questionUid, axisInputSha: rootEvidence.axisInputShas?.[q.questionUid] } : rootEvidence;
         const f = validateEvidenceFreshness(scopedEvidence, { currentRunInputSha: run.inputSha, currentAxisInputSha: axisShas[q.questionUid][axis], reuseReceipt: receipt, reuseContext: { priorEvidence: scopedEvidence, priorEvidenceId: e.evidenceId, priorEvidenceSha: evidenceRefs.get(e.evidenceId).sha256, priorRunInputSha: e.inputSha, currentRunId: run.runId, currentRevision: run.revision, dependencySetSha: context.dependencySetSha, ruleDependencySetSha: context.ruleDependencySetSha, semanticVerifierSha: context.verifierDependencySetSha, sourceAuthoritySliceSha: context.sourceAuthoritySliceSha, lifecycleSnapshotSha: receipt?.lifecycleSnapshotRef?.sha256, rootFreshEvidence: scopedRoot, rootFreshEvidenceSha: receipt?.rootFreshEvidenceRef?.sha256, eligibility } });
-        const rowErrors = [...f.errors, ...validateTypedEvidence(e)];
+        const calibrationAxes = calibrationRequiredAxesForReviewAxis(axis, q);
+        const rowErrors = [...f.errors, ...validateTypedEvidence(e, { calibrationIdentity, calibrationAnchorCatalog, requiredCalibrationAxes: calibrationAxes, requiredCalibrationComparisonChecks: calibrationComparisonChecksForReviewAxis(axis, q) })];
+        if (calibrationIdentity && calibrationAxes.length) {
+          const binding = e.payload?.calibrationConsumption || e.payload?.calibration?.calibrationConsumption;
+          if (binding) rowErrors.push(...validateSchema(binding, contracts['calibration-consumption-binding-v1']));
+          rowErrors.push(...validateCalibrationConsumptionBinding(binding, { expectedIdentity: calibrationIdentity, reviewerPhase: axis === 'V2' ? 'U2' : axis === 'RENDER_REVIEW' ? 'RENDER_REVIEW' : 'U3', requiredAxes: calibrationAxes, requirePass: true, anchorCatalog: calibrationAnchorCatalog, requiredComparisonChecks: calibrationComparisonChecksForReviewAxis(axis, q) }).errors);
+        }
         if (axis === 'SOURCE' && e.payload.sourceTruthBundleSha !== run.sourceAuthority.sourceTruthBundleSha) rowErrors.push('SOURCE_TYPED_AUTHORITY_BINDING');
         if (axis === 'STATIC' && e.payload.checkedInputSha !== run.inputSha) rowErrors.push('STATIC_TYPED_INPUT_BINDING');
         if (axis === 'METADATA' && e.payload.metadataInputSha !== axisShas[q.questionUid][axis]) rowErrors.push('METADATA_TYPED_AXIS_BINDING');
@@ -242,7 +287,8 @@ export function auditV2Run(root, run) {
     semantic = auditSemanticKernel(root, run, [...freshness, ...renderFreshness]); errors.push(...semantic.errors);
     const closure = load(root, run.questionQualityClosureSetRef);
     errors.push(...validateSchema(closure, contracts['question-quality-closure-v2']));
-    const quality = validateQuestionQualityClosureSet(closure, { runId: run.runId, revision: run.revision, currentRunInputSha: run.inputSha, questionUids: run.questions.map(q => q.questionUid), requiredAxesByUid: required, freshness });
+    const closureCalibrationRequiredAxesByUid = Object.fromEntries(run.questions.map(question => [question.questionUid, Object.fromEntries(required[question.questionUid].map(axis => [axis, calibrationRequiredAxesForReviewAxis(axis, question)]))]));
+    const quality = validateQuestionQualityClosureSet(closure, { runId: run.runId, revision: run.revision, currentRunInputSha: run.inputSha, questionUids: run.questions.map(q => q.questionUid), requiredAxesByUid: required, freshness, calibrationIdentity, calibrationRequiredAxesByUid: closureCalibrationRequiredAxesByUid, calibrationAnchorCatalog });
     errors.push(...quality.errors); closureSetSha = quality.closureSetSha;
     { // Both REQUIRED and canonical NOT_APPLICABLE closures are mandatory.
       const release = load(root, run.examReleaseClosureRef);

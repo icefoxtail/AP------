@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_CALIBRATION_CONSUMPTION_BINDING_v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "referenceSampleLockSha",
+    "productionQualityProfileSha",
+    "frozenMainCommit",
+    "consumedCalibrationAxes",
+    "reviewerPhase",
+    "comparisonResult",
+    "comparisonReason",
+    "referenceAnchorsUsed"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "APMATH_CALIBRATION_CONSUMPTION_BINDING_v1" },
+    "referenceSampleLockSha": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "productionQualityProfileSha": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "frozenMainCommit": { "type": "string", "pattern": "^[0-9a-f]{40,64}$" },
+    "consumedCalibrationAxes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["schema", "solutionQuality", "metadata", "problemVisual", "solutionVisual", "layout"] }
+    },
+    "reviewerPhase": { "enum": ["U1", "U2", "U3", "RENDER_REVIEW"] },
+    "comparisonResult": { "enum": ["PASS", "QUALITY_DEFECT", "BLOCKED", "NOT_APPLICABLE"] },
+    "comparisonReason": { "type": "string", "minLength": 1 },
+    "referenceAnchorsUsed": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "qualityFloorComparison": { "type": "object", "additionalProperties": true }
+  },
+  "additionalProperties": true
+}

@@ -123,7 +123,7 @@ test('complete preparation preserves page source evidence and emits only unrevie
   const f = fixture(t);
   const contractPath = 'archive/tools/past-exam-pipeline/completion-contract.json';
   const contract = JSON.parse(fs.readFileSync(new URL('../completion-contract.json', import.meta.url), 'utf8'));
-  for (const relative of [contractPath, contract.geometryPolicyRef.path, 'archive/tools/pipeline-core/visual-contract.json', 'archive/tools/pipeline-core/closure.mjs', 'archive/tools/pipeline-core/generator.py']) {
+  for (const relative of [contractPath, contract.geometryPolicyRef.path, contract.calibrationConsumptionContract.path, 'archive/tools/pipeline-core/visual-contract.json', 'archive/tools/pipeline-core/closure.mjs', 'archive/tools/pipeline-core/generator.py']) {
     const dest = path.join(f.root, relative); fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.copyFileSync(new URL('../../../../' + relative, import.meta.url), dest);
   }

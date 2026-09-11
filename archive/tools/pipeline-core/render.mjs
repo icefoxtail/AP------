@@ -8,6 +8,7 @@ import { profiles, runInputSha, EVIDENCE_VERSION, EVIDENCE_VERSION_V2, RUN_VERSI
 import { validateRenderReviewReuseReceipt } from './render-impact.mjs';
 import { validateRuntimeBundle } from './runtime.mjs';
 import { createContinuationDenominator, validateContinuationDenominator } from './continuation.mjs';
+import { calibrationComparisonChecksForReviewAxis, loadCalibrationIdentity, validateCalibrationConsumptionBinding } from './calibration-consumption.mjs';
 
 export function createRenderReview(root, run, captureRef, decision) {
   const capture = JSON.parse(readBoundFile(root, captureRef));
@@ -17,6 +18,13 @@ export function createRenderReview(root, run, captureRef, decision) {
   if (decision.reviewSessionId === capture.reviewSessionId || decision.reviewerId === capture.reviewerId) throw new Error('RENDER_REVIEW_NOT_INDEPENDENT');
   if (!Number.isFinite(Date.parse(decision.startedAt)) || Date.parse(decision.startedAt) < Date.parse(capture.frozenAt)) throw new Error('RENDER_REVIEW_BEFORE_CAPTURE_FREEZE');
   for (const check of ['clipping', 'overflow', 'readability']) if (decision.checks?.[check] !== 'PASS') throw new Error(`RENDER_REVIEW_CHECK_NOT_PASS:${check}`);
+  let calibrationConsumption = decision.calibrationConsumption || decision.calibration?.calibrationConsumption || null;
+  if (v2 && run.pipeline === 'past-exam') {
+    const calibration = loadCalibrationIdentity(root, run);
+    const anchors = new Set((calibration.lock.samples || []).flatMap(sample => (sample.questionObservations || []).map(row => `${sample.path}|${row.qid}`)));
+    const checked = validateCalibrationConsumptionBinding(calibrationConsumption, { expectedIdentity: calibration, reviewerPhase: 'RENDER_REVIEW', requiredAxes: ['layout'], requirePass: true, anchorCatalog: anchors, requiredComparisonChecks: calibrationComparisonChecksForReviewAxis('RENDER_REVIEW', {}) });
+    if (checked.status !== 'PASS') throw new Error(checked.errors.join(';'));
+  }
   const witnesses = capture.payload?.itemWitnesses || [];
   if (!Array.isArray(decision.itemReviews) || decision.itemReviews.length !== witnesses.length) throw new Error('RENDER_ITEM_REVIEW_COVERAGE');
   for (const witness of witnesses) {
@@ -47,7 +55,7 @@ export function createRenderReview(root, run, captureRef, decision) {
     startedAt: decision.startedAt,
     frozenAt: decision.frozenAt || new Date().toISOString(),
     findings: decision.findings || [],
-    payload: { freshQuestionUids: decision.itemReviews.filter(item => item.mode !== 'REUSED').map(item => item.questionUid), questionUids: capture.payload.questionUids, captureEvidenceId: capture.evidenceId, captureEvidenceSha: captureRef.sha256, runtimeBundleSha: capture.payload.runtimeBundleSha, runtimeResponseBundleSha: capture.payload.runtimeResponseBundleSha, checks: decision.checks, itemReviews: decision.itemReviews }
+    payload: { freshQuestionUids: decision.itemReviews.filter(item => item.mode !== 'REUSED').map(item => item.questionUid), questionUids: capture.payload.questionUids, captureEvidenceId: capture.evidenceId, captureEvidenceSha: captureRef.sha256, runtimeBundleSha: capture.payload.runtimeBundleSha, runtimeResponseBundleSha: capture.payload.runtimeResponseBundleSha, checks: decision.checks, itemReviews: decision.itemReviews, ...(calibrationConsumption ? { calibrationConsumption } : {}) }
   };
 }
 

@@ -12,6 +12,23 @@
   },
   "geometryPolicyScope": "PROJECT_REFERENCED_ONLY",
   "logicOverlayAuthority": "QUALIFICATION_ONLY_NOT_PRODUCTION_RELEASE",
+  "calibrationConsumptionContract": {
+    "schemaVersion": "APMATH_CALIBRATION_CONSUMPTION_BINDING_v1",
+    "path": "archive/tools/pipeline-core/contracts/calibration-consumption-binding-v1.schema.json",
+    "bytes": 1459,
+    "sha256": "sha256:d405a0143ee56afdcbf8a9c2b119b39976eaafd691556facbc332f3467a45b26",
+    "u1": "NONE",
+    "u2Axes": ["problemVisual", "solutionVisual", "layout"],
+    "u3Axes": ["solutionQuality", "solutionVisual", "layout"],
+    "closureRequiredAxes": {
+      "SOLUTION": ["solutionQuality"],
+      "V2": ["problemVisual", "solutionVisual"],
+      "V3": ["solutionVisual"],
+      "RENDER_REVIEW": ["layout"]
+    },
+    "referenceRole": "QUALITY_CALIBRATION_ONLY",
+    "targetTruth": "FULL_PAGE_SOURCE_ONLY"
+  },
   "sampleRole": "QUALITY_CALIBRATION_ONLY",
   "targetTruth": "FULL_PAGE_SOURCE_ONLY"
 }

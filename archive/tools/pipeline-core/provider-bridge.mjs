@@ -3,6 +3,7 @@ import path from 'node:path';
 import { canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
 import { loadCandidateReviewContext, validateAuditorPacket } from './review-isolation-runner.mjs';
+import { calibrationRequiredAxesForReviewAxis, loadCalibrationIdentity } from './calibration-consumption.mjs';
 import { readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 
@@ -183,6 +184,10 @@ function loadPacket(root, ref, launch, plan, state, candidateContext, sourceCont
     builderId: state.builderId,
     builderSessionId: state.builderSessionId,
     candidateContext,
+    calibrationIdentity: sourceContext.calibrationIdentity,
+    calibrationAnchorCatalog: sourceContext.calibrationAnchorCatalog,
+    requiredCalibrationAxesByUid: sourceContext.requiredCalibrationAxesByPhase?.[packet.phase] || {},
+    requireCalibration: Boolean(sourceContext.calibrationIdentity) && packet.phase !== 'U1',
   });
   check(validation.status === 'PASS', `PROVIDER_PACKET_INVALID:${validation.errors.join(',')}`);
   check(packet.auditorPrincipalType === 'STATELESS_MODEL' && packet.launchId === launch.launchId && packet.externalTaskId === plan.externalId, 'PROVIDER_PACKET_LAUNCH_BINDING');
@@ -201,9 +206,26 @@ function sourceContexts(root, freeze) {
   const candidateContext = {};
   const sourcePayloads = new Map();
   const declaredContextDependencyUidSet = [];
+  let calibrationIdentity = null;
+  const calibrationAnchorCatalog = new Set();
+  const requiredCalibrationAxesByPhase = { U2: {}, U3: {} };
   for (const runRef of freeze.runRefs || []) {
     const run = JSON.parse(readBoundFile(root, runRef).toString('utf8'));
     Object.assign(candidateContext, loadCandidateReviewContext(root, run));
+    if (run.pipeline === 'past-exam') {
+      const current = loadCalibrationIdentity(root, run);
+      if (calibrationIdentity && !same({ ...calibrationIdentity, lock: undefined, lockRef: undefined }, { ...current, lock: undefined, lockRef: undefined })) check(false, 'PROVIDER_CALIBRATION_IDENTITY_COLLISION');
+      calibrationIdentity = current;
+      for (const anchor of (current.lock.samples || []).flatMap(sample => (sample.questionObservations || []).map(row => `${sample.path}|${row.qid}`))) calibrationAnchorCatalog.add(anchor);
+      for (const question of run.questions) {
+        requiredCalibrationAxesByPhase.U2[question.questionUid] = calibrationRequiredAxesForReviewAxis('V2', question);
+        requiredCalibrationAxesByPhase.U3[question.questionUid] = [...new Set([
+          'solutionQuality',
+          ...calibrationRequiredAxesForReviewAxis('V3', question),
+          ...(run.publicationIntent === 'FULL_EXAM' ? ['layout'] : [])
+        ])];
+      }
+    }
     declaredContextDependencyUidSet.push(...(run.declaredContextDependencyUidSet || []));
     for (const question of loadBoundQuestionBanks(root, run)) {
       const sourceImage = question.sourceRecord?.image;
@@ -217,7 +239,7 @@ function sourceContexts(root, freeze) {
       });
     }
   }
-  return { candidateContext, sourcePayloads, declaredContextDependencyUidSet: [...new Set(declaredContextDependencyUidSet)] };
+  return { candidateContext, sourcePayloads, declaredContextDependencyUidSet: [...new Set(declaredContextDependencyUidSet)], calibrationIdentity, calibrationAnchorCatalog, requiredCalibrationAxesByPhase };
 }
 
 function phaseRequest(plan, packet) {

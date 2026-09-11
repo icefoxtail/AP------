@@ -15,13 +15,14 @@ import { validateVisualBenefitPair } from './solution-visual-benefit.mjs';
 import { validatePastExamCompletion } from './past-exam-contract.mjs';
 import { validateStudentSerialization, validateCurriculumBinding } from './student-output.mjs';
 import { criticalFactCoverage, validateGeneratorProvenance } from './gold-contract.mjs';
+import { calibrationComparisonChecksForReviewAxis, calibrationRequiredAxesForReviewAxis, loadCalibrationIdentity, validateCalibrationConsumptionBinding } from './calibration-consumption.mjs';
 
 export const RUN_VERSION = 'APMATH_PIPELINE_RUN_v1';
 export const RUN_VERSION_V2 = 'APMATH_PIPELINE_RUN_v2';
 export const EVIDENCE_VERSION = 'APMATH_PIPELINE_EVIDENCE_v1';
 export const EVIDENCE_VERSION_V2 = 'APMATH_PIPELINE_EVIDENCE_v2';
 export const profiles = JSON.parse(fs.readFileSync(new URL('./profiles.json', import.meta.url)));
-export const CORE_SHA_INPUT_FILES = Object.freeze(['solution-quality.mjs', 'solution-visual-benefit.mjs', 'student-output.mjs', 'gold-contract.mjs', '../../data/master_tables/js_archive_tag_master.json', 'past-exam-contract.mjs', '../past-exam-pipeline/completion-contract.json', '../past-exam-pipeline/lib/calibration.mjs', 'contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'machine-evidence.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
+export const CORE_SHA_INPUT_FILES = Object.freeze(['solution-quality.mjs', 'solution-visual-benefit.mjs', 'student-output.mjs', 'gold-contract.mjs', '../../data/master_tables/js_archive_tag_master.json', 'past-exam-contract.mjs', '../past-exam-pipeline/completion-contract.json', '../past-exam-pipeline/lib/calibration.mjs', 'calibration-consumption.mjs', 'contracts/calibration-consumption-binding-v1.schema.json', 'contracts/work-batch-v1.schema.json', 'work-batch.mjs', 'provider-bridge.mjs', 'recover-dispatch-lock.py', 'canonical.mjs', 'source-recovery.mjs', 'schema.mjs', 'expression.mjs', 'rulepack.mjs', 'runtime.mjs', 'prepare.mjs', 'render.mjs', 'native-final.mjs', 'closure.mjs', 'batch.mjs', 'png.mjs', 'visual.mjs', 'integration.mjs', 'cli.mjs', 'machine-evidence.mjs', 'generator.py', 'profiles.json', 'visual-contract.json', 'question-uid.mjs', 'projection.mjs', 'semantic-diff.mjs', 'review-evidence-v2.mjs', 'question-quality-set.mjs', 'exam-release.mjs', 'review-isolation-runner.mjs', 'build-work-ledger.mjs', 'v2-audit.mjs', 'continuation.mjs', 'render-impact.mjs', 'contracts/run-v2.schema.json', 'contracts/evidence-v2.schema.json', 'contracts/review-batch-v2.schema.json', 'contracts/exam-release-v1.schema.json', 'contracts/build-work-ledger-v1.schema.json', 'contracts/source-exam-id-registry-v1.schema.json', 'contracts/reuse-receipt-v1.schema.json', 'contracts/question-quality-closure-v2.schema.json', 'contracts/continuation-denominator-v1.schema.json', 'contracts/render-impact-v1.schema.json', 'contracts/edit-closure-v1.schema.json', 'contracts/render-review-reuse-receipt-v1.schema.json']);
 export const CORE_SHA = objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
 const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
 
@@ -88,6 +89,20 @@ export function validateRender(root, record, profile, mode, run, inputSha, candi
     reused = true;
   }
   if (record?.axis !== 'render' || record.status !== 'PASS' || (!reused && record.inputSha !== inputSha) || !isObject(review)) return ['RENDER_REVIEW_EVIDENCE_NOT_PASS'];
+  if (run.pipeline === 'past-exam') {
+    try {
+      const calibration = loadCalibrationIdentity(root, run);
+      const anchors = new Set((calibration.lock.samples || []).flatMap(sample => (sample.questionObservations || []).map(row => `${sample.path}|${row.qid}`)));
+      errors.push(...validateCalibrationConsumptionBinding(review.calibrationConsumption || review.calibration?.calibrationConsumption, {
+        expectedIdentity: calibration,
+        reviewerPhase: 'RENDER_REVIEW',
+        requiredAxes: ['layout'],
+        requirePass: true,
+        anchorCatalog: anchors,
+        requiredComparisonChecks: calibrationComparisonChecksForReviewAxis('RENDER_REVIEW', {})
+      }).errors);
+    } catch (error) { errors.push(`RENDER_CALIBRATION_IDENTITY:${error.message}`); }
+  }
   const capture = evidence.get(review.captureEvidenceId);
   const captureSha = evidenceHashes.get(review.captureEvidenceId);
   if (!capture || capture.axis !== 'render-capture' || capture.status !== 'PASS' || capture.validityStatus !== 'FROZEN' || invalidEvidenceIds.has(capture.evidenceId)) return ['RENDER_CAPTURE_EVIDENCE_NOT_PASS'];
@@ -219,6 +234,15 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
     errors.push('RUN_SCHEMA_INVALID'); return result();
   }
   const policy = profiles.pipelines[run.pipeline];
+  let calibrationIdentity = null;
+  let calibrationAnchorCatalog = null;
+  if (run.pipeline === 'past-exam') {
+    try {
+      const loadedCalibration = loadCalibrationIdentity(root, run);
+      calibrationIdentity = loadedCalibration;
+      calibrationAnchorCatalog = new Set((loadedCalibration.lock.samples || []).flatMap(sample => (sample.questionObservations || []).map(row => `${sample.path}|${row.qid}`)));
+    } catch (error) { errors.push(`CALIBRATION_IDENTITY:${error.message}`); }
+  }
   try { uidSet(run.questions.map(q => q.questionUid)); } catch (error) { errors.push(error.message); }
   // Duplicate/invalid UID sets are structural and cannot safely enter
   // downstream denominator calculations. Other source/quality/visual defects
@@ -328,7 +352,13 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
       const e = get(axis);
       if (['math', 'solution', 'source'].includes(axis) && e && (e.reviewSessionId === run.builderSessionId || (run.schemaVersion !== RUN_VERSION_V2 || axis !== 'solution') && e.priorReviewVisibility !== 'NONE')) findings.push(`INDEPENDENT_REVIEW_REQUIRED:${axis}`);
       if (axis === 'math' && e && (e.payload?.blindSolveFrozen !== true || e.payload?.allChoicesChecked !== true || e.payload?.answerUnique !== true)) findings.push('MATH_COMPLETENESS_NOT_PROVEN');
-      if (axis === 'solution') findings.push(...validateSolutionQuality(e?.payload?.solutionQuality, candidateQuestions.get(q.questionUid)).errors);
+      if (axis === 'solution') findings.push(...validateSolutionQuality(e?.payload?.solutionQuality, candidateQuestions.get(q.questionUid), {
+        calibration: e?.payload?.calibrationConsumption || e?.payload?.calibration,
+        expectedCalibration: calibrationIdentity,
+        calibrationAnchorCatalog,
+        requireCalibration: Boolean(calibrationIdentity),
+        requiredCalibrationComparisonChecks: calibrationComparisonChecksForReviewAxis('SOLUTION', q)
+      }).errors);
     }
     if (run.pipeline === 'past-exam') {
       const candidate = candidateQuestions.get(q.questionUid);
@@ -360,6 +390,16 @@ export function auditSemanticKernel(root, run, freshnessRows = null) {
       const v1 = get('v1'), v2 = get('v2'), v3 = get('v3');
       if (v2 && (v2.payload?.reviewStatus === 'NOT_TESTED' || v2.payload?.notTested === true || v2.payload?.artifactStatus === 'NOT_TESTED')) findings.push('V2_NOT_TESTED');
       if (v1 && v2 && v3) {
+        if (calibrationIdentity) {
+          const v2Axes = calibrationRequiredAxesForReviewAxis('V2', q);
+          const v3Axes = calibrationRequiredAxesForReviewAxis('V3', q);
+          if (v2Axes.length) findings.push(...validateCalibrationConsumptionBinding(v2.payload?.calibrationConsumption || v2.payload?.calibration?.calibrationConsumption, {
+            expectedIdentity: calibrationIdentity, reviewerPhase: 'U2', requiredAxes: v2Axes, requirePass: true, anchorCatalog: calibrationAnchorCatalog, requiredComparisonChecks: calibrationComparisonChecksForReviewAxis('V2', q)
+          }).errors);
+          if (v3Axes.length) findings.push(...validateCalibrationConsumptionBinding(v3.payload?.calibrationConsumption || v3.payload?.calibration?.calibrationConsumption, {
+            expectedIdentity: calibrationIdentity, reviewerPhase: 'U3', requiredAxes: v3Axes, requirePass: true, anchorCatalog: calibrationAnchorCatalog, requiredComparisonChecks: calibrationComparisonChecksForReviewAxis('V3', q)
+          }).errors);
+        }
         if (q.visual.adjudicationId !== v3.evidenceId) findings.push('REQUIREMENT_ADJUDICATION_NOT_BOUND');
         if (v3.payload?.finalVisualRequirement !== q.visual.requirement || v3.payload?.cDenominatorInputSha !== denominatorInput(run).inputSha) findings.push('V3_REQUIREMENT_MAP_STALE');
         if (new Set([run.builderSessionId, v1.reviewSessionId, v2.reviewSessionId, v3.reviewSessionId]).size !== 4) findings.push('BLIND_SESSION_COLLISION');

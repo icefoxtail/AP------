@@ -12,6 +12,7 @@ import { assertBuilderStart } from '../past-exam-pipeline/lib/calibration.mjs';
 import { solutionQualityDraft } from './solution-quality.mjs';
 import { visualBenefitDraft } from './solution-visual-benefit.mjs';
 import { evaluateGoldSourceEligibility } from './gold-contract.mjs';
+import { calibrationIdentityFromLock } from './calibration-consumption.mjs';
 
 export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null, benchmarkKind = null }) {
   if (!profiles.pipelines[pipeline] || !/^[A-Za-z0-9_-]+$/.test(runId || '')) throw new Error('PIPELINE_AND_RUN_ID_REQUIRED');
@@ -88,13 +89,15 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
       startSha: calibrationStart.mainCommit,
       calibrationRef: lockRef,
       calibrationSha: lockRef.sha256,
+      productionQualityProfileSha: calibrationIdentityFromLock(lockRef, lock).productionQualityProfileSha,
       rulePackSha: lock.rulePackSha,
     };
+    const calibrationContractRef = fileRef(root, contract.calibrationConsumptionContract.path);
     const configPath = `${workdir}/past-exam-project-config.json`;
-    writeNewJson(safePath(root, configPath, { mustExist: false }), { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256, authority: run.pastExamAuthority, goldBenchmarkEligibility: goldEligibility });
+    writeNewJson(safePath(root, configPath, { mustExist: false }), { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, calibrationConsumptionContractRef: calibrationContractRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256, authority: run.pastExamAuthority, goldBenchmarkEligibility: goldEligibility });
     run.pastExamCompletionRef = fileRef(root, configPath);
     run.publicationIntent = 'FULL_EXAM';
-    run.inputs.push({ ...run.pastExamCompletionRef, role: 'spec' }, { ...lockRef, role: 'spec' }, { ...inventoryRef, role: 'dependency' }, { ...fileRef(root, contractPath), role: 'spec' });
+    run.inputs.push({ ...run.pastExamCompletionRef, role: 'spec' }, { ...lockRef, role: 'spec' }, { ...inventoryRef, role: 'dependency' }, { ...fileRef(root, contractPath), role: 'spec' }, { ...calibrationContractRef, role: 'spec' });
   }
   const asset = (reference, base = run.assetRoot) => {
     const relative = path.posix.join(base, reference.replace(/^archive\//, ''));
