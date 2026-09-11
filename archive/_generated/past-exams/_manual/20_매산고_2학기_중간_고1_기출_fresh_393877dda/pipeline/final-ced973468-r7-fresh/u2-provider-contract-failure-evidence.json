@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-ced973468-r7",
+  "launchId": "past20-maesan-final-ced973468-r7:1",
+  "phase": "U2",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_SIXTH_REPAIR",
+  "auditorThreadId": "01a092a5-a020-7200-b437-3122d6f9c089",
+  "turnId": "01a092a8-743a-7dd2-87e6-38effb022604",
+  "observations": {
+    "providerResponse": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-ced973468-r7/u2-response.json",
+      "bytes": 4480,
+      "sha256": "sha256:37c8ae18a79df61f3e6ef10b7b8e8c183a20d8ddc7f870f2f94df4ee24817426",
+      "status": "COMPLETED",
+      "defectCount": 21,
+      "aggregateFieldVariant": "questionUids",
+      "aggregateValue": "20_매산고_2학기_중간_고1_기출|1..20"
+    },
+    "dispatcher": {
+      "terminalStatus": "HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED",
+      "u1ResponseWritten": true,
+      "u2ResponseWritten": true,
+      "u3Started": false,
+      "receiptWritten": false
+    }
+  },
+  "rootCause": {
+    "component": "archive/tools/pipeline-core/provider-bridge.mjs",
+    "bug": "Scope binding expanded defect.scope ranges but did not recognize the provider's equivalent questionUids range field.",
+    "safeRepair": "Accept only explicit numeric ranges from either scope or questionUids, resolve them against the frozen launch scope, and reject all unresolved forms.",
+    "notModelTransportFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "providerResponseRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Extend the tested scope binder to questionUids range fields, then start another fresh run."
+  }
+}
