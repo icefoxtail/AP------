@@ -238,6 +238,15 @@ function phaseRequest(plan, packet) {
   return { ...body, inputSha: objectSha(body) };
 }
 
+export function bindProviderDefectsToLaunchScope(defects, scope) {
+  return defects.map(defect => {
+    const scoped = scope.find(row => row.questionUid === defect?.questionUid);
+    check(scoped, 'PROVIDER_DEFECT_SCOPE_REQUIRED');
+    if (defect.runId !== undefined && defect.runId !== scoped.runId) throw new Error('HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED');
+    return defect.runId === undefined ? { ...defect, runId: scoped.runId } : defect;
+  });
+}
+
 function validatePhaseResponse(response, request, plan, seenInvocationIds) {
   check(response?.schemaVersion === PROVIDER_BRIDGE_VERSION && response.operation === 'INVOKE_STATELESS_AUDITOR_PHASE' && response.status === 'COMPLETED', 'PROVIDER_PHASE_RESPONSE_INVALID');
   check(response.inputSha === request.inputSha && response.packetSha === request.packet.packetSha, 'PROVIDER_PHASE_INPUT_BINDING');
@@ -287,10 +296,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     const responseRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-response.json`, response);
     phaseAttestationRefs.push({ phase: packet.phase, requestRef, responseRef, inputSha: request.inputSha, providerInvocationId: response.providerInvocationId });
     usedTokens.push(Number.isSafeInteger(response.usedTokens) ? response.usedTokens : null);
-    for (const defect of response.defects) {
-      check(launch.scope.some(row => row.runId === defect?.runId && row.questionUid === defect?.questionUid), 'PROVIDER_DEFECT_SCOPE_REQUIRED');
-      defects.push(defect);
-    }
+    defects.push(...bindProviderDefectsToLaunchScope(response.defects, launch.scope));
     for (let index = 0; index < response.evidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, response.evidence[index]));
   }
   const receipt = {
