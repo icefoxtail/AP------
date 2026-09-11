@@ -1,9 +1,9 @@
 (function (global) {
     'use strict';
-    function columns(page, document, flex) {
+    function columns(page, document, flex, columnClass = 'grid-col') {
         const grid = document.createElement('div'); grid.className = 'grid-container';
         if (flex) grid.style.flex = flex;
-        const cols = [0, 1].map(() => { const col = document.createElement('div'); col.className = 'grid-col'; grid.appendChild(col); return col; });
+        const cols = [0, 1].map(() => { const col = document.createElement('div'); col.className = columnClass; grid.appendChild(col); return col; });
         page.body.appendChild(grid); return cols;
     }
     async function exam({ area, items, usableHeight, deps }) {
@@ -53,7 +53,7 @@
         probe.style.cssText = 'position:absolute;left:-20000px;top:0;visibility:hidden;width:210mm;pointer-events:none;';
         document.body.appendChild(probe);
         const probePage = deps.makePage(probe, 'sol', 0);
-        const cols = columns(probePage, document);
+        const cols = columns(probePage, document, undefined, 'grid-col sol-grid-col');
         const marker = document.createElement('div'); marker.style.cssText = 'flex:none;height:0;min-height:0;padding:0;margin:0;';
         const capacity = probePage.body.clientHeight;
         const records = [];
@@ -104,7 +104,7 @@
             const placements = [];
             const occurrences = new Map();
             for (const pagePlan of plan.pages) {
-                const page = deps.makePage(area, 'sol', pagePlan.pageNo), target = columns(page, document);
+                const page = deps.makePage(area, 'sol', pagePlan.pageNo), target = columns(page, document, undefined, 'grid-col sol-grid-col');
                 for (const item of pagePlan.itemPlacements) {
                     const record = byId.get(item.blockId), sourceRef = record.box.dataset.sourceRef;
                     let node = record.box;

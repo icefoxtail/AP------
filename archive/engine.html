@@ -29,21 +29,21 @@
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="native_print.js?v=20260824.3"></script>
     <script src="print_image_optimizer.js?v=20260811.3"></script>
-    <script src="mathjax_render_loop.js?v=20260910.1"></script>
+    <script src="mathjax_render_loop.js?v=20260911.4"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="layout-authority.js?v=20260906.25" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20260911.6"></script>
-    <script src="solution-render-executor.js?v=20260910.1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="layout-authority.js?v=20260911.4" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
+    <script src="layout-materializer.js?v=20260911.4"></script>
+    <script src="solution-render-executor.js?v=20260911.4" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20260907.1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="exam-render-executor.js?v=20260910.1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="render-state-normalizer.js?v=20260910.1"></script>
-    <script src="side-effect-ledger.js?v=20260910.1"></script>
-    <script src="screen-runtime.js?v=20260910.1"></script>
-    <script src="snapshot-contract.js?v=20260911.1"></script>
-    <script src="screen-runtime-adapter.js?v=20260910.1"></script>
+    <script src="exam-render-executor.js?v=20260911.4" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-state-normalizer.js?v=20260911.4"></script>
+    <script src="side-effect-ledger.js?v=20260911.4"></script>
+    <script src="screen-runtime.js?v=20260911.4"></script>
+    <script src="snapshot-contract.js?v=20260911.4"></script>
+    <script src="screen-runtime-adapter.js?v=20260911.4"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
@@ -194,7 +194,7 @@
         .grid-col.sol-grid-col { overflow: visible; }
 
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow-x: visible; overflow-y: hidden; }
-        .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
+        .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; overflow: visible; }
         .q-box.sol-box.sol-box-long { overflow: visible; padding-bottom: 1em; margin-bottom: 0; }
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
         .sol-ans { font-weight: bold; color: #dc2626; margin-bottom: 6px; }
@@ -556,7 +556,6 @@ function shouldApplyPrintHeader(type, renderState = AppState) {
 
 function setPrintHeaderOptions(next) {
     if (archiveScreenRuntime) {
-        renderPrintHeaderControls();
         return archiveScreenRuntime.request({ type: 'HEADER_CHANGE', payload: { printHeaderOptions: next || {} }, foreground: true });
     }
     AppState.printHeaderOptions = normalizePrintHeaderOptions({

@@ -8,6 +8,16 @@
 - Branch: `codex/archive-fast-engine-v2-phase1a`
 - Delivery policy: every completed Phase was committed and pushed to this feature branch. `main` was neither merged nor pushed after the explicit user instruction recorded in `execution-scope.json`.
 
+## Main-readiness corrective pass
+
+The feature branch then merged `origin/main` at `e1a4cf07578b0055fdbaf773bf27049fe54f05ce` and closed three pre-merge findings. This merge is into the feature branch only; it does not merge the feature branch into `main`.
+
+- The current main clipping fix is retained: `.grid-col` permits horizontal visibility, `.sol-grid-col` is fully visible, and `.q-box.sol-box` is explicitly visible. The authority materializer now creates `grid-col sol-grid-col` in both probe and actual solution pages. A real transformed-width probe crosses its column boundary without clipping.
+- The fast runtime bundle uses one browser identity: every changed runtime/planner/executor script loads with `?v=20260911.4`, and the candidate fingerprint uses matching `engine`, `layoutAuthority`, `executor`, and `pageLayout` versions. The browser test first warms an old `layout-authority.js?v=20260906.25` URL, then proves the new URL bundle loads in a fresh page and a warm reload.
+- Header input retains desired state across fast input events. The runtime path no longer re-renders controls from uncommitted `AppState`; the runtime's immutable desired candidate is the next event base. Real browser input `A → B → C` ends with `ABC` in the input, committed state, candidate and rendered page header.
+
+The specific gate record is [main-readiness-gates.json](main-readiness-gates.json).
+
 ## Completion status
 
 | Phase | Result | Feature-branch commit |

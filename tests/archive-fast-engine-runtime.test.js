@@ -175,6 +175,19 @@ test('prewarm stores READY without committing state or creating business effects
     assert.equal(f.state().effectCount, before.effectCount);
 });
 
+test('sequential prewarms queue without replacing the active snapshot', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const active = f.runtime.activeSnapshot;
+    const sol = await f.runtime.prewarm('sol');
+    const ans = await f.runtime.prewarm('ans');
+    assert.equal(sol.prewarmed, true);
+    assert.equal(ans.prewarmed, true);
+    assert.equal(f.runtime.activeSnapshot, active);
+    assert.equal(f.runtime.currentSession.modeSnapshots.sol.status, 'READY');
+    assert.equal(f.runtime.currentSession.modeSnapshots.ans.status, 'READY');
+});
+
 test('foreground work cancels stale prewarm before snapshot registration', async () => {
     const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
     await f.runtime.request(req('SOURCE_CHANGE'));
