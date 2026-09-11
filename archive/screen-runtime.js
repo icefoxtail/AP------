@@ -187,7 +187,7 @@
             if (!foreground) {
                 if (!adapter.enablePrewarm) return Promise.resolve({ ok: false, code: 'BACKGROUND_NOT_ENABLED' });
                 if (value.type !== 'MODE_CHANGE') return Promise.resolve({ ok: false, code: 'BACKGROUND_INTENT_FORBIDDEN' });
-                if (!currentSession || pendingCount || value.requestedMode === currentSession.activeMode) return Promise.resolve({ ok: false, code: 'PREWARM_NOT_IDLE' });
+                if (!currentSession || value.requestedMode === currentSession.activeMode) return Promise.resolve({ ok: false, code: 'PREWARM_NOT_IDLE' });
             }
             let intent, input;
             try {

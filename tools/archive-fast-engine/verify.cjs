@@ -10,8 +10,11 @@ const reports = path.join(root, 'reports/archive-fast-engine-v2');
 const readJson = name => JSON.parse(fs.readFileSync(path.join(reports, name), 'utf8'));
 const text = name => fs.readFileSync(path.join(reports, name), 'utf8');
 const hasPassingTap = name => assert.match(text(name), /# pass \d+[\s\S]*# fail 0/);
-const currentHead = cp.execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 const branch = cp.execFileSync('git', ['branch', '--show-current'], { cwd: root, encoding: 'utf8' }).trim();
+const mainHead = cp.execFileSync('git', ['rev-parse', 'origin/main'], { cwd: root, encoding: 'utf8' }).trim();
+cp.execFileSync('git', ['merge-base', '--is-ancestor', 'origin/main', 'HEAD'], { cwd: root });
+const codeFiles = ['archive/engine.html', 'archive/layout-materializer.js', 'archive/layout-authority.js', 'archive/screen-runtime.js', 'archive/screen-runtime-adapter.js', 'archive/snapshot-contract.js', 'archive/solution-render-executor.js', 'archive/exam-render-executor.js'];
+const codeHashes = Object.fromEntries(codeFiles.map(file => [file, crypto.createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex')]));
 
 const phase0 = readJson('phase0-seal.json');
 assert.ok(Object.values(phase0.gates).every(value => value === 'PASS'));
@@ -33,7 +36,7 @@ assert.equal(phase7.decision, 'RETAIN_LEGACY');
 assert.equal(phase7.decisionGate, 'PASS');
 assert.equal(phase7.telemetry.removalEligible, false);
 
-const primaryBrowser = readJson('phase6-regression.json');
+const primaryBrowser = readJson('main-readiness-regression.json');
 assert.equal(primaryBrowser.tests.length, 19);
 assert.ok(primaryBrowser.tests.every(test => test.status === 'PASS'));
 assert.deepEqual(primaryBrowser.errors, []);
@@ -54,7 +57,12 @@ assert.ok(legacy.every(result => result.math === 0));
 assert.ok(legacy.filter(result => ['screen-runtime-legacy', 'renderer-legacy'].includes(result.label)).every(result => result.runtime === false));
 assert.ok(legacy.filter(result => result.label === 'observed-layout').every(result => result.runtime && result.layoutProduction === null));
 
-for (const name of ['phase7-static.tap', 'phase6-static.tap', 'phase5-static.tap', 'phase4-static.tap', 'phase3-static.tap']) hasPassingTap(name);
+for (const name of ['main-readiness-static.tap', 'phase7-static.tap', 'phase6-static.tap', 'phase5-static.tap', 'phase4-static.tap', 'phase3-static.tap']) hasPassingTap(name);
+
+const readiness = readJson('main-readiness-browser.json');
+assert.equal(readiness.version, '20260911.4');
+assert.equal(readiness.results.length, 2);
+assert.ok(readiness.results.every(result => result.warmScriptCount === 10 && result.header.value === 'ABC' && result.header.committed === 'ABC' && result.header.candidate === 'ABC' && result.clipping.colClass === 'grid-col sol-grid-col' && result.clipping.colOverflow === 'visible' && result.clipping.boxOverflowX === 'visible' && result.clipping.spills));
 
 const engine = fs.readFileSync(path.join(root, 'archive/engine.html'), 'utf8');
 const re = new RegExp('<script\\b[^>]*>([\\s\\S]*?)<\\/script>', 'g');
@@ -76,6 +84,11 @@ assert.doesNotMatch(commit, /\bawait\b|requestAnimationFrame|setTimeout|\bfetch\
 assert.match(adapter, /layoutPlannerMode: \(\) => new URL\(candidate\.environment\.url\)\.searchParams\.get\('layoutPlanner'\) === 'observed' \? 'observed' : 'authority'/);
 assert.match(engine, /runtimeParams\.get\('screenRuntime'\) !== 'legacy' && runtimeParams\.get\('renderer'\) !== 'legacy'/);
 assert.match(engine, /type: 'PRINT_STALE_REBUILD'/);
+for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter']) {
+    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=20260911\\.4`));
+}
+assert.match(adapter, /archive-fast-phase6-20260911\.4/);
+assert.match(adapter, /measured-production-v1-20260911\.4/);
 
 const scope = readJson('execution-scope.json');
 assert.equal(scope.mergeToMain, false);
@@ -86,16 +99,17 @@ const audit = {
     result: 'PASS',
     checkedAt: new Date().toISOString(),
     branch,
-    headAtAudit: currentHead,
+    mergedOriginMain: mainHead,
+    codeHashes,
     phases: {
         phase0: '10/10 PASS', phase1A: '18/18 PASS', phase1B: 'PASS', phase1C: 'PASS',
         phase1D: 'PASS', phase2: 'PASS', phase3: 'PASS', phase4: 'PASS', phase5: 'PASS',
         phase6: 'PASS', phase7: 'PASS (RETAIN_LEGACY)'
     },
-    browser: { primaryScenarios: 19, snapshotProfiles: 6, layoutComparisons: 12, legacyCases: 12 },
-    staticTapFiles: ['phase3-static.tap', 'phase4-static.tap', 'phase5-static.tap', 'phase6-static.tap', 'phase7-static.tap'],
+    browser: { primaryScenarios: 19, snapshotProfiles: 6, layoutComparisons: 12, legacyCases: 12, headerCacheProfiles: 2 },
+    staticTapFiles: ['main-readiness-static.tap', 'phase3-static.tap', 'phase4-static.tap', 'phase5-static.tap', 'phase6-static.tap', 'phase7-static.tap'],
     syntax: { externalFiles: syntaxFiles.length, inlineScripts: inlineCount },
-    delivery: 'feature branch only; no main merge or push'
+    delivery: 'origin/main is merged into the feature branch; feature branch only is pushed; no merge or push to main'
 };
 fs.writeFileSync(path.join(reports, 'final-audit.json'), JSON.stringify(audit, null, 2));
-console.log(`Final audit PASS: ${branch} at ${currentHead}`);
+console.log(`Final audit PASS: ${branch}; ${codeFiles.length} runtime source hashes recorded`);

@@ -10,20 +10,24 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
     const browser = await chromium.launch({ channel: 'chrome', headless: true });
     const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
     const page = await context.newPage();
-    const tests = [], errors = [], posts = [];
+    const tests = [], errors = [], expectedPageErrors = [], posts = [];
     let failDelivery = false;
     await page.context().route('**/api/**', async route => {
         posts.push({ url: route.request().url(), body: route.request().postData() });
         await route.fulfill({ status: failDelivery ? 503 : 200, contentType: 'application/json', body: JSON.stringify({ success: !failDelivery }) });
     });
-    page.on('pageerror', error => errors.push(String(error)));
-    await page.goto(base + '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&printDryRun=1' + (process.env.AP_BROWSER_CACHE === '0' ? '&snapshotCache=0' : ''));
+    page.on('pageerror', error => {
+        const message = String(error);
+        if (message.includes('INJECTED_FONT_FAILURE')) expectedPageErrors.push(message);
+        else errors.push(message);
+    });
+    await page.goto(base + '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&printDryRun=1&prewarm=0' + (process.env.AP_BROWSER_CACHE === '0' ? '&snapshotCache=0' : ''));
     await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, { timeout: 120000 });
     await page.evaluate(() => archiveScreenRuntime.whenIdle());
     async function check(name, work) {
         try { await work(); tests.push({ name, status: 'PASS' }); console.log('PASS', name); }
         catch (error) { tests.push({ name, status: 'FAIL', error: String(error.stack || error) }); console.error('FAIL', name, error.message); }
-        fs.writeFileSync(path.join(out, process.env.AP_BROWSER_REPORT || 'phase1a-browser.json'), JSON.stringify({ tests, errors, posts }, null, 2));
+        fs.writeFileSync(path.join(out, process.env.AP_BROWSER_REPORT || 'phase1a-browser.json'), JSON.stringify({ tests, errors, expectedPageErrors, posts }, null, 2));
     }
     await page.evaluate(() => {
         window.saveState = () => ({ root: document.getElementById('print-area'), mode: AppState.mode, qpp: AppState.qpp, data: AppState.data, header: AppState.printHeaderOptions, url: location.href, session: archiveScreenRuntime.currentSession, snapshot: archiveScreenRuntime.activeSnapshot, tab: document.querySelector('.mode-tab.active')?.id });
