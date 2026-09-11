@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnText } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
+import { completedTurnFor, completedTurnFromThreadRead, completedTurnText } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -34,4 +34,15 @@ test('provider adapter falls back to the completed turn final agent message', ()
   }];
   assert.ok(completedTurnFor(notifications, 'thread', 'turn'));
   assert.equal(completedTurnText(notifications, 'thread', 'turn'), '{"evidence":[],"defects":[]}');
+});
+
+test('provider adapter recovers a completed turn from thread history', () => {
+  const response = {
+    thread: {
+      id: 'thread',
+      turns: [{ id: 'turn', status: 'completed', items: [] }],
+    },
+  };
+  assert.deepEqual(completedTurnFromThreadRead(response, 'thread', 'turn'), response.thread.turns[0]);
+  assert.equal(completedTurnFromThreadRead(response, 'other-thread', 'turn'), null);
 });
