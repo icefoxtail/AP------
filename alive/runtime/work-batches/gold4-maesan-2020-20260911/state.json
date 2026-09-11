@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "APMATH_WORK_BATCH_v1",
+  "workBatchId": "gold4-maesan-2020-20260911",
+  "runIds": [
+    "gold4-maesan-2020-20260911-r3"
+  ],
+  "builderId": "gold4-main-worker-gpt-5.6-luna",
+  "builderSessionId": "gold4-maesan-2020-20260911-main-session",
+  "jobKind": "GOLD",
+  "executionIdentity": {
+    "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+    "jobKind": "GOLD",
+    "requestedModel": "gpt-5.6-luna",
+    "requestedReasoningEffort": "xhigh",
+    "actualModel": null,
+    "actualReasoningEffort": null,
+    "modelRouteObservedAtStart": null,
+    "modelRouteObservedAtClosure": null,
+    "modelRouteChanged": false,
+    "routeStatus": "NOT_OBSERVED",
+    "MODEL_ROUTE_PARITY": "FAIL"
+  },
+  "jobAuthority": {
+    "startSha": "dad8db900c24c5cc6901db736baa569068953968",
+    "calibrationSha": "sha256:3b45c084cb465eee242a3f867e747e9c6f0292beb75a1367405551a2e59b6571",
+    "rulePackSha": "sha256:fe294e421f04b405bf418b24b699327d469d38cdf0bd89479223d734064ace87"
+  },
+  "policy": {
+    "productionIndependent": 0,
+    "finalAuditors": 1,
+    "targetedRechecks": 1,
+    "concurrentExpensive": 1,
+    "automaticSecondAuditors": 0,
+    "explicitSecondAuditors": 1,
+    "retries": 0,
+    "recursiveSubagents": 0
+  },
+  "status": "HOLD",
+  "freezes": [],
+  "launches": [],
+  "lastHold": {
+    "at": "2026-09-11T06:33:51.932Z",
+    "code": "HOLD:FROZEN_START_SHA_MISMATCH"
+  }
+}

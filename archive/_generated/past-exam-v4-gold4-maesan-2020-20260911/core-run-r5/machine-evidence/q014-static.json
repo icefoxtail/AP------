@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_EVIDENCE_v2",
+  "evidenceId": "machine:gold4-maesan-2020-20260911-r5:r1:14:STATIC",
+  "runId": "gold4-maesan-2020-20260911-r5",
+  "revision": 1,
+  "questionUid": "20_매산고_2학기_기말_고1_기출|14",
+  "axis": "STATIC",
+  "inputSha": "sha256:b76d1a9054cca1d9db794144ba0090103c45873a6e74978842993e7b6bd8e2b0",
+  "axisInputSha": "sha256:cb9ea1a0d73d8bb97f863d2709d8494b149e7841ef51c2d0d181491a067a2507",
+  "mode": "MACHINE_CURRENT",
+  "status": "FAIL",
+  "validityStatus": "FROZEN",
+  "reviewerId": "pipeline-core-machine-collector",
+  "reviewSessionId": "gold4-maesan-2020-20260911-r5:r1:machine-checks",
+  "reviewerModelOrAgent": "pipeline-core deterministic machine checks",
+  "auditorPrincipalType": "MACHINE_COLLECTOR",
+  "startedAt": "2026-09-11T06:37:08.625Z",
+  "frozenAt": "2026-09-11T06:37:08.625Z",
+  "priorReviewVisibility": "NONE",
+  "inputVisibilityProfile": "MACHINE_CURRENT",
+  "findings": [
+    {
+      "status": "OPEN",
+      "code": "MACHINE_CHECK_FAILED:STATIC:schema",
+      "source": "pipeline-core-machine-collector"
+    }
+  ],
+  "reviewIsolationProvenanceSha": "sha256:757934553958bcc9817783267be5d3f9dcbe075d33220a57ad13583216c45b3f",
+  "reviewStartInputSha": "sha256:b76d1a9054cca1d9db794144ba0090103c45873a6e74978842993e7b6bd8e2b0",
+  "reviewEndInputSha": "sha256:b76d1a9054cca1d9db794144ba0090103c45873a6e74978842993e7b6bd8e2b0",
+  "withdrawalStatus": "ACTIVE",
+  "revocationStatus": "NOT_REVOKED",
+  "supersessionStatus": "VALID",
+  "sourceAuthorityStatus": "VALID",
+  "eligibilityStatus": "ELIGIBLE",
+  "machineProvenance": {
+    "bridge": "APMATH_MACHINE_EVIDENCE_BRIDGE_v1",
+    "collector": "pipeline-core-machine-collector",
+    "runId": "gold4-maesan-2020-20260911-r5",
+    "revision": 1,
+    "inputSha": "sha256:b76d1a9054cca1d9db794144ba0090103c45873a6e74978842993e7b6bd8e2b0",
+    "currentArtifactSha": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "CURRENT_ARTIFACT_SHA": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "evidenceInputSha": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "EVIDENCE_INPUT_SHA": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "authorityStartSha": "dad8db900c24c5cc6901db736baa569068953968",
+    "questionUid": "20_매산고_2학기_기말_고1_기출|14",
+    "axis": "STATIC",
+    "axisInputSha": "sha256:cb9ea1a0d73d8bb97f863d2709d8494b149e7841ef51c2d0d181491a067a2507"
+  },
+  "payload": {
+    "checkedInputSha": "sha256:b76d1a9054cca1d9db794144ba0090103c45873a6e74978842993e7b6bd8e2b0",
+    "currentArtifactSha": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "CURRENT_ARTIFACT_SHA": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "evidenceInputSha": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "EVIDENCE_INPUT_SHA": "sha256:b0ea1bce0f0dcd462fa691664a4e6635a140d697353931e0fe6613e05c9b5331",
+    "authorityStartSha": "dad8db900c24c5cc6901db736baa569068953968",
+    "checks": {
+      "schema": "FAIL",
+      "jsLoad": "PASS",
+      "hashes": "PASS",
+      "assetBinding": "PASS",
+      "fileParity": "PASS",
+      "studentSerialization": "PASS"
+    }
+  }
+}

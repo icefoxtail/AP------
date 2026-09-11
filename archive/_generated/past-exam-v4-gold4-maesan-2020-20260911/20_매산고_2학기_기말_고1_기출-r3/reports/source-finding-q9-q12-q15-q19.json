@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "APMATH_GOLD4_SOURCE_FINDING_DIAGNOSTIC_v1",
+  "examId": "20_매산고_2학기_기말_고1_기출",
+  "sourceDocumentSha256": "sha256:6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd",
+  "sourceEvidencePolicy": "full-page-first; q-number identity comes from frozen source inventory, not candidate array order",
+  "status": "HOLD",
+  "reasonCode": "VISION_JSON_MISSING_OR_INCOMPLETE",
+  "partialVisionDiagnostic": {
+    "status": "FAIL",
+    "reasonCode": "SOURCE_INVENTORY_PAGE_COVERAGE_FAIL",
+    "evidence": "Supplying only q9/q12/q15/q19 produced 2/4 on page 3, 1/3 on page 4, 1/2 on page 6, and 9/20 overall; the extractor rejected the incomplete page package and did not treat displayNo as permission to remap candidates."
+  },
+  "items": [
+    {
+      "sourceQuestionNo": "9",
+      "sourcePageNo": 3,
+      "sourceEvidencePath": "pages/page_p003.png",
+      "sourceFinding": "Question is in the upper-left block of fresh page 3. It is an objective card/common-divisor count with five numeric choices.",
+      "currentPipelineHandling": "FROZEN_IDENTITY_CONFIRMED; CONTENT_CHOICES_HOLD until complete page-level Vision JSON or manual full-page transcription is supplied.",
+      "status": "HOLD",
+      "evidenceRef": "20_매산고_2학기_기말_고1_기출-r3/reports/source_inventory.json#q9"
+    },
+    {
+      "sourceQuestionNo": "12",
+      "sourcePageNo": 3,
+      "sourceEvidencePath": "pages/page_p003.png",
+      "sourceFinding": "Question is in the lower-right block of fresh page 3 and contains the five-region A-E figure; adjacency and point-contact semantics are part of source truth.",
+      "currentPipelineHandling": "FROZEN_IDENTITY_CONFIRMED; VISUAL_BBOX_AND_CONTENT_HOLD until full page coverage and visual review are complete. The figure is never replaced by a question-wide crop.",
+      "status": "HOLD",
+      "evidenceRef": "20_매산고_2학기_기말_고1_기출-r3/reports/source_inventory.json#q12"
+    },
+    {
+      "sourceQuestionNo": "15",
+      "sourcePageNo": 4,
+      "sourceEvidencePath": "pages/page_p004.png",
+      "sourceFinding": "Question is in the upper-right block of fresh page 4 and asks for three-digit numbers below 760 with distinct digits and an odd units digit.",
+      "currentPipelineHandling": "FROZEN_IDENTITY_CONFIRMED; content/choices can be manually checked from the full page, but the clean run remains HOLD because the page-level extraction package is incomplete.",
+      "status": "HOLD",
+      "evidenceRef": "20_매산고_2학기_기말_고1_기출-r3/reports/source_inventory.json#q15"
+    },
+    {
+      "sourceQuestionNo": "19",
+      "sourcePageNo": 6,
+      "sourceEvidencePath": "pages/page_p006.png",
+      "sourceFinding": "Question is the left <서술형1> block on fresh page 6, not page 5; it is a multi-part rational-graph quadrant prompt with a separate graph illustration.",
+      "currentPipelineHandling": "FROZEN_IDENTITY_CONFIRMED; MULTI_PART_CONTENT_AND_VISUAL_HOLD until full page extraction and bbox review are complete.",
+      "status": "HOLD",
+      "evidenceRef": "20_매산고_2학기_기말_고1_기출-r3/reports/source_inventory.json#q19"
+    }
+  ]
+}

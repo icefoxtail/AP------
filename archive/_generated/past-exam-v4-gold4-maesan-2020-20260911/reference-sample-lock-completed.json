@@ -1,0 +1,441 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "NOT_TESTED",
+  "mainCommit": "dad8db900c24c5cc6901db736baa569068953968",
+  "rulePackSha": "sha256:fe294e421f04b405bf418b24b699327d469d38cdf0bd89479223d734064ace87",
+  "target": {
+    "examId": "20_매산고_2학기_기말_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "D:\\기출\\(4)2기말\\수학(하)\\2020_매산고1_2기말.pdf",
+        "bytes": 1586200,
+        "sha256": "sha256:6c1d97b65a12db7a306e7406264d82bc654da95bd8abe90996c92b3f1100f7dd"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "gold4-main-worker-gpt-5.6-luna",
+  "readerSessionId": "gold4-maesan-2020-20260911-main-session",
+  "startedAt": "2026-09-11T06:05:10.025Z",
+  "frozenAt": "2026-09-11T06:05:10.025Z",
+  "baselineObservation": "Target production JS is absent on frozen origin/main; no baseline candidate was used. Source truth remains the supplied PDF.",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:4babd2f6e98d39c83004e424710592f8826ee6e75631202f2fa3d7bd79412041",
+      "bytes": 36881,
+      "examTitle": "22_매산고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "수학(하)"
+      ],
+      "questionCount": 20,
+      "selectionReason": "Same course, grade, semester, exam type, and school family as the target; selected as the closest complete production reference.",
+      "qualityAcceptanceReason": "Frozen from origin/main and read as a complete production file; every question has a non-empty student-facing solution and current metadata fields.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read the full questionBank: stable id, standardCourse, standardUnitKey, layoutTag, choices/solution shape, and typed subunit fields are present across the file."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read the full student-facing solutions and checked key idea, condition interpretation, intermediate reasoning, conclusion parity, and curriculum-bound reasoning."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read all question metadata and checked level, category, standard unit, subunit key/label, confidence, and classification depth against the current master-driven shape."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Checked problem-image bindings where present and kept source-problem image references distinct from solutionImage references."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Checked every declared solutionImage, alt text, caption, size, and the corresponding solution fact described in the solution."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Checked grid/wide/layout fields and the final questions for student-facing layout readiness; no answer-only or placeholder solution was accepted."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:557a3b6394c42af113299d39af3c3edab8de6a676fdc50361f4f4b0e9f580f8f",
+          "solutionExcerpt": "[키포인트] ${}_nP_2=n(n-1)$이다.",
+          "observation": "q1: 객관식 / 하; [키포인트] ${}_nP_2=n(n-1)$이다. 마지막 결론: 따라서 정답은 ④이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:fc0f8454d71bca9a92f038ccfcb973c2e40e80d032bb590d6e8c4461d0254f28",
+          "solutionExcerpt": "[키포인트] 수직점근선은 분모가 0인 직선이고 수평점근선은 최고차항의 계수비이다.",
+          "observation": "q2: 객관식 / 하; [키포인트] 수직점근선은 분모가 0인 직선이고 수평점근선은 최고차항의 계수비이다. 마지막 결론: 따라서 정답은 ④이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:0dd33d4cb03038fdc48cf011bace7e4ad8491324375d6ed815b8b8e9bc025b83",
+          "solutionExcerpt": "[키포인트] 근호 안이 0 이상인 조건과 그래프 위의 점을 이용한다.",
+          "observation": "q3: 객관식 / 하; [키포인트] 근호 안이 0 이상인 조건과 그래프 위의 점을 이용한다. 마지막 결론: 따라서 정답은 ③이다. 이미지=none, solutionImage=declared."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:f4683fbddf15eb8e8fbc8e65e2d0c7714a7ccd0fefe1e92e4e4ad5f5d353e388",
+          "solutionExcerpt": "[키포인트] 대응도에서 $g$를 먼저 적용한 뒤 $f$ 또는 $f^{-1}$을 적용한다.",
+          "observation": "q4: 객관식 / 중; [키포인트] 대응도에서 $g$를 먼저 적용한 뒤 $f$ 또는 $f^{-1}$을 적용한다. 마지막 결론: 따라서 정답은 ②이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:80a59a32550a15853d2a984b7fa9567adb20a1bb094d596cc8990d90043f5dcc",
+          "solutionExcerpt": "[키포인트] $450=2\\cdot3^2\\cdot5^2$에서 필요한 소인수의 지수를 고정한다.",
+          "observation": "q5: 객관식 / 중; [키포인트] $450=2\\cdot3^2\\cdot5^2$에서 필요한 소인수의 지수를 고정한다. 마지막 결론: 따라서 정답은 ⑤이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:341cc9d5bd037ad83fc79b672a891a2fd1f9bdebf9c171eeed31ee9cf47f9811",
+          "solutionExcerpt": "[키포인트] 금액을 100원 단위로 나타낸다.",
+          "observation": "q6: 객관식 / 중; [키포인트] 금액을 100원 단위로 나타낸다. 마지막 결론: 따라서 정답은 ②이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:f2d9d4db0d195ec406f29cdc8733c573e6bdb0bf7863ee200d857f7e4d6b9881",
+          "solutionExcerpt": "[키포인트] 교점의 $x$좌표를 이용하여 직선의 절편 $k$를 나타낸다.",
+          "observation": "q7: 객관식 / 중; [키포인트] 교점의 $x$좌표를 이용하여 직선의 절편 $k$를 나타낸다. 마지막 결론: 따라서 정답은 ①이다. 이미지=none, solutionImage=declared."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:bd5764fcecb0ed6d47261613321bd71e0bd4d9c40b70543c35e133359f83f84a",
+          "solutionExcerpt": "[키포인트] 점 $A$의 좌표를 $A=(t,\\dfrac2t)$로 놓고, 원문에서 정한 $B,C$의 위치를 그대로 사용한다.",
+          "observation": "q8: 객관식 / 상; [키포인트] 점 $A$의 좌표를 $A=(t,\\dfrac2t)$로 놓고, 원문에서 정한 $B,C$의 위치를 그대로 사용한다. 마지막 결론: 따라서 정답은 ①이다. 이미지=none, solutionImage=declared."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:ea228ac4433aacfe040764b22333fc7fc7956a213a93e9629e4c16989bcc7437",
+          "solutionExcerpt": "[키포인트] 결승 전까지 서로 만날 두 조를 나누고 각 조의 부전승 팀을 정한다.",
+          "observation": "q9: 객관식 / 중; [키포인트] 결승 전까지 서로 만날 두 조를 나누고 각 조의 부전승 팀을 정한다. 마지막 결론: 따라서 정답은 ③이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:b399f84795adf4ba443ff48c8e7d5caf1b68a6dd9cbf6a448f1eedfd67c15f0a",
+          "solutionExcerpt": "[키포인트] 완전한 두 켤레를 먼저 고르고 나머지 두 짝은 서로 다른 켤레에서 고른다.",
+          "observation": "q10: 객관식 / 상; [키포인트] 완전한 두 켤레를 먼저 고르고 나머지 두 짝은 서로 다른 켤레에서 고른다. 마지막 결론: 따라서 정답은 ⑤이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:a978feb17fc64600944e3e7cddbecebbd9152340852a664d8c99a33f7b1ffc0f",
+          "solutionExcerpt": "[키포인트] $x=1,2$를 차례로 대입하고 일대일대응 조건으로 값을 제한한다.",
+          "observation": "q11: 객관식 / 상; [키포인트] $x=1,2$를 차례로 대입하고 일대일대응 조건으로 값을 제한한다. 마지막 결론: 따라서 정답은 ③이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:85dcca9eb31019d2da52f31f932d8e57bd936e3923be9576efd68d2d60901607",
+          "solutionExcerpt": "[키포인트] 함수와 역함수 위의 대응하는 점은 직선 $y=x$에 대하여 대칭이다.",
+          "observation": "q12: 객관식 / 상; [키포인트] 함수와 역함수 위의 대응하는 점은 직선 $y=x$에 대하여 대칭이다. 마지막 결론: 따라서 정답은 ④이다. 이미지=problem, solutionImage=declared."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:49207720e3a7294fa6675593d1c65f53a361bc9265d16e837906a4643ddb6b02",
+          "solutionExcerpt": "[키포인트] 두 조각의 정의역과 치역이 끊김과 중복 없이 이어져야 한다.",
+          "observation": "q13: 객관식 / 상; [키포인트] 두 조각의 정의역과 치역이 끊김과 중복 없이 이어져야 한다. 마지막 결론: 따라서 정답은 ②이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:02bdb569c2a26180105cd7820c181868e358fc8d5bb45a0341507e94254bc472",
+          "solutionExcerpt": "[키포인트] 두 근호를 각각 새로운 음이 아닌 변수로 놓는다.",
+          "observation": "q14: 객관식 / 상; [키포인트] 두 근호를 각각 새로운 음이 아닌 변수로 놓는다. 마지막 결론: 따라서 정답은 ①이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:6eae7f5741e564c8a606f17e569dc2d4bb4be9b4fa2bde1f49a8f576382d1f6f",
+          "solutionExcerpt": "[키포인트] 중앙 영역 A의 색을 먼저 정하고, 바깥 다섯 영역 B,C,D,E,F의 실제 인접관계를 따라 경우를 나누어 센다.",
+          "observation": "q15: 객관식 / 상; [키포인트] 중앙 영역 A의 색을 먼저 정하고, 바깥 다섯 영역 B,C,D,E,F의 실제 인접관계를 따라 경우를 나누어 센다. 마지막 결론: 따라서 α+β=600+600=1200이고, 정답은 ⑤이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:4afbc357b28cbe7dd45161b725c9f92b7a50dfa5ea4c7cc6cf47ee408bf4e115",
+          "solutionExcerpt": "[키포인트] 주어진 함수는 정의된 구간에서 $x$가 커질수록 함숫값이 커진다.",
+          "observation": "q16: 단답형 / 중; [키포인트] 주어진 함수는 정의된 구간에서 $x$가 커질수록 함숫값이 커진다. 마지막 결론: 따라서 구하는 값은 $-7$이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:164a44dfe62596889cce79183f99bdabcc1dcddcc4b5eac67a707c3ab625507f",
+          "solutionExcerpt": "[키포인트] $f$는 짝함수이고 주기가 $2$이므로 $x\\ge0$에서의 교점 수를 센 뒤 대칭을 이용한다.",
+          "observation": "q17: 단답형 / 상; [키포인트] $f$는 짝함수이고 주기가 $2$이므로 $x\\ge0$에서의 교점 수를 센 뒤 대칭을 이용한다. 마지막 결론: 따라서 구하는 값은 $4044$이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:6d6ae3208e2951a91965a06144ffdd9262b990ccad5cbcc87324f2e0f58e472b",
+          "solutionExcerpt": "[키포인트] 유리함수를 $a+\\dfrac{b-ac}{x+c}$의 꼴로 바꾸어 일대일 조건을 판단한다.",
+          "observation": "q18: 단답형 / 상; [키포인트] 유리함수를 $a+\\dfrac{b-ac}{x+c}$의 꼴로 바꾸어 일대일 조건을 판단한다. 마지막 결론: 따라서 구하는 값은 $492$이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:4756150073e4abbbe4736a1c51abbede52cc692bb327b72da454688977964912",
+          "solutionExcerpt": "[키포인트] 두 교점의 $x$좌표를 이차방정식의 두 근으로 놓는다.",
+          "observation": "q19: 서술형 / 상; [키포인트] 두 교점의 $x$좌표를 이차방정식의 두 근으로 놓는다. 마지막 결론: 따라서 구하는 값은 $-5$이다. 이미지=problem, solutionImage=declared."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:67e1637f5a4aff9c7ad268ae4a817210da2206fd997d48bf6e08eba380d5e6bf",
+          "solutionExcerpt": "[키포인트] 점 $(2,2)$를 지나는 일차함수를 기울기 하나로 나타낸다.",
+          "observation": "q20: 서술형 / 상; [키포인트] 점 $(2,2)$를 지나는 일차함수를 기울기 하나로 나타낸다. 마지막 결론: 따라서 구하는 값은 $-45$이다. 이미지=none, solutionImage=none."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2final/22_제일고_2학기_기말_고1_기출.js",
+      "rawSha256": "sha256:599f161336eeaea3d83e553f9f44e47896762176dba239822cf60d7fc2bb0cc3",
+      "bytes": 61930,
+      "examTitle": "22_제일고_2학기_기말_고1_기출",
+      "standardCourse": [
+        "수학(상)",
+        "수학(하)"
+      ],
+      "questionCount": 22,
+      "selectionReason": "Same course, grade, semester, and exam type as the target; selected as a complete production reference with additional visual and constructed-response coverage.",
+      "qualityAcceptanceReason": "Frozen from origin/main and read as a complete production file; every question has a non-empty student-facing solution and current metadata fields.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "Read the full questionBank: stable id, standardCourse, standardUnitKey, layoutTag, choices/solution shape, and typed subunit fields are present across the file."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Read the full student-facing solutions and checked key idea, condition interpretation, intermediate reasoning, conclusion parity, and curriculum-bound reasoning."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Read all question metadata and checked level, category, standard unit, subunit key/label, confidence, and classification depth against the current master-driven shape."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "Checked problem-image bindings where present and kept source-problem image references distinct from solutionImage references."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "Checked every declared solutionImage, alt text, caption, size, and the corresponding solution fact described in the solution."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "Checked grid/wide/layout fields and the final questions for student-facing layout readiness; no answer-only or placeholder solution was accepted."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:6c2578f2a964bed7d10eb6b9fb33fdfc3c97c1e243922da24f8dff08b0588ca8",
+          "solutionExcerpt": "[키포인트] 합성함수의 대응을 먼저 만든 뒤 그 합성함수의 역함수를 읽는다.",
+          "observation": "q1: 객관식 / 하; [키포인트] 합성함수의 대응을 먼저 만든 뒤 그 합성함수의 역함수를 읽는다. 마지막 결론: 따라서 정답은 ②이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:f6d8b92c4eca50c6d30663d5a841249ec27bd7b7b74c49fac6c0c5dc845adca3",
+          "solutionExcerpt": "[키포인트] 유리함수를 $y=q+\\dfrac{r}{x-p}$ 꼴로 바꾸면 점근선과 대칭의 중심을 바로 확인할 수 있다.",
+          "observation": "q2: 객관식 / 하; [키포인트] 유리함수를 $y=q+\\dfrac{r}{x-p}$ 꼴로 바꾸면 점근선과 대칭의 중심을 바로 확인할 수 있다. 마지막 결론: 따라서 정답은 ④이다. 이미지=none, solutionImage=declared."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:1e20ec99d1e48a5e1e2388dd9e7b319ab1dfc38f85d06ed4fb71cc4be0146c23",
+          "solutionExcerpt": "[키포인트] $g^{-1}$은 출력값에서 입력값으로 거슬러 올라가고, 그 입력값을 다시 $f$에 넣는다.",
+          "observation": "q3: 객관식 / 중; [키포인트] $g^{-1}$은 출력값에서 입력값으로 거슬러 올라가고, 그 입력값을 다시 $f$에 넣는다. 마지막 결론: 따라서 정답은 ③이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:816d4019cc51a4c3aee7efb56dbd0aa6f1204595046609e5058748a33b9a03e1",
+          "solutionExcerpt": "[키포인트] 곱이 짝수가 아닌 경우는 선택한 세 수가 모두 홀수일 때뿐이다.",
+          "observation": "q4: 객관식 / 하; [키포인트] 곱이 짝수가 아닌 경우는 선택한 세 수가 모두 홀수일 때뿐이다. 마지막 결론: 따라서 정답은 ⑤이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:b31c69fb7163e7b7c1dc1e20ef71530622ecf9004bf1c6ae0a756881015833bc",
+          "solutionExcerpt": "[키포인트] 조합 항등식의 계산뿐 아니라 식이 정의되는 범위까지 확인한다.",
+          "observation": "q5: 객관식 / 중; [키포인트] 조합 항등식의 계산뿐 아니라 식이 정의되는 범위까지 확인한다. 마지막 결론: 따라서 정답은 ①이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:bb68e03562da62d98a9fa62fa9777af127925d545d26059b9a3ac79d241428ae",
+          "solutionExcerpt": "[키포인트] $A$와 $E$의 색이 같은지 다른지에 따라 가운데 $B,C,D$에 사용할 수 있는 색의 수가 달라진다.",
+          "observation": "q6: 객관식 / 중; [키포인트] $A$와 $E$의 색이 같은지 다른지에 따라 가운데 $B,C,D$에 사용할 수 있는 색의 수가 달라진다. 마지막 결론: 따라서 정답은 ④이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:05e0befb309bddd55e50b0c77e3f38d0c33b6b4e153348f39a154fcac27bc084",
+          "solutionExcerpt": "[키포인트] 두 조각의 치역이 정확히 이어지면서 서로 겹치지 않아야 전체 함수가 일대일이고 치역도 $y\\lt1$이 된다.",
+          "observation": "q7: 객관식 / 상; [키포인트] 두 조각의 치역이 정확히 이어지면서 서로 겹치지 않아야 전체 함수가 일대일이고 치역도 $y\\lt1$이 된다. 마지막 결론: 따라서 정답은 ⑤이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:e3daa6aab2038f84865df786ee379b2d16949e26dc20b99585cf9f5a25b12a30",
+          "solutionExcerpt": "[키포인트] $k-3$의 부호에 따라 유리함수의 증가·감소가 달라진다.",
+          "observation": "q8: 객관식 / 중; [키포인트] $k-3$의 부호에 따라 유리함수의 증가·감소가 달라진다. 마지막 결론: 따라서 정답은 ①이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:f3e3e940520afb7c672242c00949acf04a23737600cf3211dcacc9cd3b6d7330",
+          "solutionExcerpt": "[키포인트] 교점의 $y$좌표를 미지수로 두면 두 교점 조건이 이차방정식의 서로 다른 두 음이 아닌 근 조건으로 바뀐다.",
+          "observation": "q9: 객관식 / 중; [키포인트] 교점의 $y$좌표를 미지수로 두면 두 교점 조건이 이차방정식의 서로 다른 두 음이 아닌 근 조건으로 바뀐다. 마지막 결론: 따라서 정답은 ②, ③이다. 이미지=none, solutionImage=declared."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:fc5e4700b26c9b9f5d06ca18e797fe090c71212fe2c41d0ca730c4ca8486c590",
+          "solutionExcerpt": "[키포인트] 함수와 역함수의 정의역·치역을 구분하고, 합성식에서는 일대일함수 $h$를 소거한다.",
+          "observation": "q10: 객관식 / 상; [키포인트] 함수와 역함수의 정의역·치역을 구분하고, 합성식에서는 일대일함수 $h$를 소거한다. 마지막 결론: 따라서 정답은 ②이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:a82ec987eedfcc1cf0ffe4d0da19e4452e5fdb623d9ecd07eaf5d9b6f987dd7b",
+          "solutionExcerpt": "[키포인트] 복소수의 제곱이 실수이려면 실수부와 허수부의 곱이 $0$이어야 한다.",
+          "observation": "q11: 객관식 / 중; [키포인트] 복소수의 제곱이 실수이려면 실수부와 허수부의 곱이 $0$이어야 한다. 마지막 결론: 따라서 정답은 ②이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:339192f93b25b229fdf4f926e4c8942295bca03722d0f53b9cee4fd4dbd82784",
+          "solutionExcerpt": "[키포인트] 한 번 지난 지점을 다시 지날 수 없으므로 $A$에서 $C$까지 가능한 지점 방문 순서를 먼저 전부 나눈다.",
+          "observation": "q12: 객관식 / 중; [키포인트] 한 번 지난 지점을 다시 지날 수 없으므로 $A$에서 $C$까지 가능한 지점 방문 순서를 먼저 전부 나눈다. 마지막 결론: 따라서 정답은 ⑤이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:fca79ebcfc40360098a800bccb362ff9d650f333f94bcd1a055bb75e484583e5",
+          "solutionExcerpt": "[키포인트] 사전식 순서는 앞자리에서 더 작은 문자가 오는 순열의 개수를 팩토리얼 단위로 누적한다.",
+          "observation": "q13: 객관식 / 중; [키포인트] 사전식 순서는 앞자리에서 더 작은 문자가 오는 순열의 개수를 팩토리얼 단위로 누적한다. 마지막 결론: 따라서 정답은 ①이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:379ae7dd897003cf2df6f0bd0a87c0d8ac7282e4e62ff4212f450fd2a6f47333",
+          "solutionExcerpt": "[키포인트] 각 숫자가 십의 자리와 일의 자리에 나타나는 횟수를 이용하면 모든 수를 직접 만들 필요가 없다.",
+          "observation": "q14: 객관식 / 하; [키포인트] 각 숫자가 십의 자리와 일의 자리에 나타나는 횟수를 이용하면 모든 수를 직접 만들 필요가 없다. 마지막 결론: 따라서 정답은 ③이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:c134559b0a5c99f4d1354b52876f939300a6b07bfbcb727367a7309417e6f054",
+          "solutionExcerpt": "[키포인트] 절편 두 점과 점근선의 교점을 좌표로 나타내어 세 점의 기울기를 비교한다.",
+          "observation": "q15: 객관식 / 중; [키포인트] 절편 두 점과 점근선의 교점을 좌표로 나타내어 세 점의 기울기를 비교한다. 마지막 결론: 따라서 정답은 ②이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:d50008fe1e798b1382c8c431475f553fb0243b676bcef2532c0f7ea8bc2175fa",
+          "solutionExcerpt": "[키포인트] 역함수가 존재하려면 두 조각이 각각 일대일이고, 두 조각의 치역이 겹치지 않으면서 실수 전체를 정확히 덮어야 한다.",
+          "observation": "q16: 객관식 / 상; [키포인트] 역함수가 존재하려면 두 조각이 각각 일대일이고, 두 조각의 치역이 겹치지 않으면서 실수 전체를 정확히 덮어야 한다. 마지막 결론: 따라서 정답은 ④이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:932ef07da278aa763ff5495e38e7c5753bae7048a5f4ed72b097db354e31cd57",
+          "solutionExcerpt": "[키포인트] 공역과 치역이 일치한다는 것은 $Y$의 세 원소가 모두 한 번 이상 함수값으로 나타나는 전사함수라는 뜻이다.",
+          "observation": "q17: 객관식 / 중; [키포인트] 공역과 치역이 일치한다는 것은 $Y$의 세 원소가 모두 한 번 이상 함수값으로 나타나는 전사함수라는 뜻이다. 마지막 결론: 따라서 정답은 ⑤이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:7fcad0b198f590cf73200e158bf010ec37b60650623a24e967baff8103654d6c",
+          "solutionExcerpt": "[키포인트] 완전한 $2\\times2\\times2$ 격자에서의 최단 경로 수를 먼저 구한 뒤, 계단 모양 때문에 실제로 존재하지 않는 경로만 제외한다.",
+          "observation": "q18: 객관식 / 상; [키포인트] 완전한 $2\\times2\\times2$ 격자에서의 최단 경로 수를 먼저 구한 뒤, 계단 모양 때문에 실제로 존재하지 않는 경로만 제외한다. 마지막 결론: 따라서 정답은 ①이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:f71278c899693f05be1358516c2ba16d6b8fbf4b506cc1091b73ea787bd5773d",
+          "solutionExcerpt": "[키포인트] (1)은 증가 순서가 자동으로 정해지고, (2)는 서로 다른 함수값을 순서 있게 배정한다.",
+          "observation": "q19: 서술형 / 중; [키포인트] (1)은 증가 순서가 자동으로 정해지고, (2)는 서로 다른 함수값을 순서 있게 배정한다. 마지막 결론: 따라서 구하는 값은 (1) $35$, (2) $840$이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:53ee09d5c5de7532268aea5fc89126c12cfbf3e3312ffcce3b3731409b053a47",
+          "solutionExcerpt": "[키포인트] $A=\\operatorname{Im}f$에 대한 $f$의 제한을 보면 $n(A)=n(B)$ 조건이 $A$ 위의 순열 조건으로 바뀐다.",
+          "observation": "q20: 서술형 / 상; [키포인트] $A=\\operatorname{Im}f$에 대한 $f$의 제한을 보면 $n(A)=n(B)$ 조건이 $A$ 위의 순열 조건으로 바뀐다. 마지막 결론: 따라서 구하는 값은 $57$이다. 이미지=none, solutionImage=none."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:c7c32567c267bb920ef13b12a46bf8c628796baaffc11fd2ed30a7167168beb2",
+          "solutionExcerpt": "[키포인트] 두 정사각뿔의 부피를 $a^3,b^3$에 연결하고, 정삼각형 $AOB$에서 피타고라스 정리를 이용해 $AF^2=a^2-ab+b^2$를 만든다.",
+          "observation": "q21: 서술형 / 상; [키포인트] 두 정사각뿔의 부피를 $a^3,b^3$에 연결하고, 정삼각형 $AOB$에서 피타고라스 정리를 이용해 $AF^2=a^2-ab+b^2$를 만든다. 마지막 결론: 따라서 구하는 값은 $3\\sqrt2$이다. 이미지=problem, solutionImage=none."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:fbb91313160bddc98b10e3f3054c69e002e1272f2e4a4315cdc0c4f3d651ee3a",
+          "solutionExcerpt": "[키포인트] 같은 $x=k$에서 두 곡선의 세로 거리는 두 제곱근의 차이고, 이를 모두 더하면 중간 항이 소거된다.",
+          "observation": "q22: 서술형 / 중; [키포인트] 같은 $x=k$에서 두 곡선의 세로 거리는 두 제곱근의 차이고, 이를 모두 더하면 중간 항이 소거된다. 마지막 결론: 따라서 구하는 값은 $9$이다. 이미지=none, solutionImage=declared."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Solutions include concept, conditions, intermediate work, and a conclusion; answer-only text is insufficient.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "Each solution names the governing concept before calculation.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Each solution restates the operative domain, range, count, or geometric condition before solving.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|2"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Each solution retains reproducible intermediate equations or case counts.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|8"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Objective solutions end with the matching choice number.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|1"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "High-level items show the restrictive condition and the transition to the conclusion.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|8"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Constructed-response solutions expose enough ordered work to reproduce the result.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_제일고_2학기_기말_고1_기출.js|19"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Problem image and solutionImage are separate fields and paths.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|3"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "Where a visual materially clarifies the solution, a declared solutionImage is attached.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|3"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "Declared solution visuals include student-facing alt text and captions.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|3"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "The visual caption and solution describe the same coordinates, bounds, or graph facts.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js|3"
+      ]
+    }
+  }
+}

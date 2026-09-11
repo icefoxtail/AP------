@@ -1,0 +1,61 @@
+{
+  "cost": {
+    "workBatchId": "gold4-maesan-2020-20260911",
+    "targetCount": 0,
+    "totalTargetCount": 0,
+    "totalAffectedCount": 0,
+    "benchmarkReviewedTargetCount": null,
+    "benchmarkEligibleTargetCount": null,
+    "benchmarkExcludedTargetCount": null,
+    "benchmarkTotalSourceTargetCount": null,
+    "benchmarkEligibleAffectedTargetCount": null,
+    "independentAgentLaunchCount": 0,
+    "expensiveAgentLaunchCount": 0,
+    "concurrentExpensiveAgentPeak": 0,
+    "freshLlmUidCount": 0,
+    "reusedUidCount": 0,
+    "machineCheckedUidCount": 0,
+    "retryLaunchCount": 0,
+    "secondAuditorLaunchCount": 0,
+    "recursiveSubagentLaunchCount": 0,
+    "usedTokens": 0,
+    "tokenTelemetryAvailable": true,
+    "agentBudgetStatus": "WITHIN_BUDGET",
+    "jobKind": "GOLD",
+    "executionIdentity": {
+      "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+      "jobKind": "GOLD",
+      "requestedModel": "gpt-5.6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": null,
+      "actualReasoningEffort": null,
+      "modelRouteObservedAtStart": null,
+      "modelRouteObservedAtClosure": null,
+      "modelRouteChanged": false,
+      "routeStatus": "NOT_OBSERVED",
+      "MODEL_ROUTE_PARITY": "FAIL"
+    },
+    "MODEL_ROUTE_PARITY": "FAIL",
+    "modelRouteStatus": "MODEL_ROUTE_INVALID"
+  },
+  "schemaVersion": "APMATH_PIPELINE_AUDIT_v2",
+  "runId": "gold4-maesan-2020-20260911-r3",
+  "revision": 1,
+  "inputSha": "sha256:45d5efc5bd0357f08f7004c2a2ba25dce85bdd675518c646abc08a65a583c68c",
+  "status": "BLOCKED",
+  "productionAuthorized": false,
+  "diagnosticContinuation": {
+    "status": "UPSTREAM_BLOCKED",
+    "downstreamObserved": false
+  },
+  "errors": [
+    "V2_CONTRACT:RUN_V2_CONTRACT:$.auditorPacketRefs:MISSING;$.buildWorkLedgerRefs:MISSING;$.questionQualityClosureSetRef:MISSING;$.examReleaseClosureRef:MISSING;$.sourceAuthority.applicability:MISSING"
+  ],
+  "freshness": [],
+  "semantic": null,
+  "changeImpact": null,
+  "renderImpact": null,
+  "editClosure": null,
+  "closureSetSha": null,
+  "reportSha": "sha256:b7d81d3b4c895c268fba1994525c83a214a03ad6ce03f797dd91375694ffccaa"
+}
