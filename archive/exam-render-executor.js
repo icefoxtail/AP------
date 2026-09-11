@@ -62,7 +62,13 @@
         await deps.applyAutoImageSizeClasses(staging);
         await deps.typesetMath('exam-staging', [staging]);
         await deps.raf();
-        for (const item of items) {
+        if (deps.measurementMode?.() === 'batch') {
+            items.forEach(item => { item.profile = { proxyHeight_raw: item.box.scrollHeight }; });
+            items.forEach(item => item.box.classList.add('fit-tight'));
+            await deps.raf();
+            items.forEach(item => { item.profile.proxyHeight_tight = item.box.scrollHeight; });
+            items.forEach(item => item.box.classList.remove('fit-tight'));
+        } else for (const item of items) {
             const profile = {};
             profile.proxyHeight_raw = item.box.scrollHeight;
             item.box.classList.add('fit-tight');
