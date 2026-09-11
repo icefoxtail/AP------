@@ -51,6 +51,17 @@ test('keys include semantic changes and exclude pending session/request provenan
     assert.notEqual(N.computeSnapshotKey(a), N.computeSnapshotKey(N.createCandidate({ ...a, qpp: 6 })));
 });
 
+test('structural sharing trusts only normalizer-owned transitive immutable graphs', () => {
+    const raw = Object.freeze({ nested: { choice: 'before' } });
+    const copied = N.copy(raw);
+    raw.nested.choice = 'after';
+    assert.equal(copied.nested.choice, 'before');
+    assert.equal(Object.isFrozen(raw.nested), false);
+    assert.equal(N.copy(copied), copied);
+    assert.equal(N.semanticDigest(copied), N.semanticDigest(copied));
+    assert.throws(() => N.assertImmutable(raw), /MUTABLE_RENDER_VALUE/);
+});
+
 test('pending materialization is a separate complete session and rejects mismatched targets', () => {
     const c = candidate('target');
     const pending = { status: 'READY_TO_COMMIT', targetSessionId: 'target', preparedSnapshots: { exam: null, sol: null, ans: null }, createdAt: 1 };
