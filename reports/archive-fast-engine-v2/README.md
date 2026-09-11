@@ -1,111 +1,139 @@
-# Archive Fast Engine v2 — Phase 0 / Phase 1A 결과
+# Archive Fast Engine v2 — Phase 0–7 completion record
 
-구현 기준은 원본 `AP_Archive_Fast_Engine_v2_설계도_v1.4.md` 전체다. 설계도는 수정하지 않았다.
+`AP_Archive_Fast_Engine_v2_설계도_v1.4.md`를 구현 정본으로 사용했다. 설계도는 수정하지 않았다.
 
-- 시작 시 `git fetch origin main`으로 확인한 최신 main: `ea6564cdda7a496412246522fab5940086b48a65`
-- 작업 브랜치: `codex/archive-fast-engine-v2-phase1a`
-- 별도 worktree: `C:/Users/USER/Desktop/AP-fast-engine-v2-phase1a`
-- 기존 `C:/Users/USER/Desktop/AP------`의 작업 파일/기존 변경은 수정하지 않았다.
-- Phase 0 선행 Gate를 먼저 동결한 뒤 Phase 1A를 구현했다.
-- 최종 판정: Phase 0 **10/10 PASS**, Phase 1A **18/18 PASS**.
-- 커밋은 이 보고서를 포함하는 Git commit이다. 자기 참조 SHA 대신 `git rev-parse HEAD`로 확인하며 최종 사용자 보고에 SHA를 별도 제공한다.
+- Frozen baseline main: `ea6564cdda7a496412246522fab5940086b48a65`
+- Baseline browser: Chrome `153.0.8010.36`, `1440×1000` and `390×1000`
+- Worktree: `C:/Users/USER/Desktop/AP-fast-engine-v2-phase1a`
+- Branch: `codex/archive-fast-engine-v2-phase1a`
+- Delivery policy: every completed Phase was committed and pushed to this feature branch. `main` was neither merged nor pushed after the explicit user instruction recorded in `execution-scope.json`.
 
-## 실제 구현
+## Completion status
 
-1. `render-state-normalizer.js`: 실제 executor가 읽는 필드를 projection하고, 복사 후 재귀적으로 freeze한다. canonicalData의 shallow freeze를 신뢰하지 않으며 외부 raw 객체를 freeze하지 않는다. 알 수 없는 candidate 필드, accessor/function/cycle/non-plain 값은 거부한다. mode 이름을 명시적으로 매핑하고 동일 immutable candidate에서 key/build digest를 계산한다.
-2. `screen-runtime.js`: 12개 canonical intent, 단일 직렬 요청 큐, 최신 요청 우선, transaction context, PendingRenderSession과 별도 RenderSession materialization, synchronous COMMIT/rollback, snapshot status/ownership, retired cleanup을 소유한다.
-3. `screen-runtime-adapter.js`와 `engine.html`: 기존 canonical renderer를 그대로 사용하면서 mode/header/QR/source/QPP/강제 재렌더/인쇄 복구/명시적 invalidation을 runtime에 연결했다. DOM·AppState·URL·탭·readiness는 성공한 COMMIT에만 함께 반영한다.
-4. PREPARE는 연결된 비가시 foreground 작업 root와 요청별 staging/dependency view에서 실행한다. 기존 화면은 유지한다. 백그라운드 요청 및 prewarm은 활성화하지 않았다.
-5. 실제 source JS에 있는 최상위 `const` helper의 재선언 충돌을 방지하도록 로드별 함수 범위를 사용한다. source globals는 추출 직후 복원한다. fetch 실패 후 늦게 실행되는 script를 방지한다.
-6. MathJax/measurement metrics와 ledger를 요청별로 분리했다. 빌드 중 발생한 폰트 로딩 완료가 사용자 요청을 다시 취소하지 않도록 수정했다.
-7. `side-effect-ledger.js`: 성공한 COMMIT 이후 등록을 실행하고 HTTP ACK/실패/다음 activation 재시도를 기록한다. 재시도는 동일 logicalEffectId/idempotencyKey를 사용한다. Phase 0에서 가역성이 입증된 precommit 외부 효과가 없으므로 이를 실행 전에 거부하며 보상 미해결 수는 0이다.
-8. 캐시가 없는 현재 active 결과의 인쇄 바인딩을 확인하고 인쇄마다 readiness tracker를 새로 만든다. 기존 UI 문구를 유지했다.
+| Phase | Result | Feature-branch commit |
+|---|---|---|
+| 0 | PASS — fixed-SHA baseline, inventory, source/session and side-effect contract | `e4faa6b06` |
+| 1A | PASS — immutable candidate, render transactions, 2PC, rollback, pending session promotion | `e4faa6b06` |
+| 1B | PASS — answer snapshot pilot | `04e6c0594` |
+| 1C | PASS — solution snapshots | `6a3a60d37` |
+| 1D | PASS — exam snapshots | `5d7cac0d2` |
+| 2 | PASS — connected authoritative build and atomic activation | `0b218cc66` |
+| 3 | PASS — solution MathJax/measurement batching | `717456ede` |
+| 4 | PASS — exam raw/tight measurement batching | `d53e94475` |
+| 5 | PASS — cancellable idle prewarm | `3ebf9a9d0` |
+| 6 | PASS — Layout Authority production promotion | `35d439b81` |
+| 7 | PASS — legacy retirement review; retain legacy paths | `c939b5799`, `1d8e85b14` |
 
-Phase 1B의 Answer cache hit, Phase 1C/1D snapshot cache, background scheduling, measurement batching, layout authority promotion은 구현하지 않았다.
+The final pushed commit is verified by `git ls-remote` in the final audit. It is intentionally a feature-branch commit, not a `main` commit.
 
-## Phase 0 결과
+## What the implementation does
 
-정본 증거:
+- [render-state-normalizer.js](../../archive/render-state-normalizer.js) projects exactly the render-affecting source fields, copies and recursively freezes them, rejects unsupported graphs, and computes deterministic candidate/key digests.
+- [screen-runtime.js](../../archive/screen-runtime.js) owns all render requests. It serializes foreground work, protects COMMIT with request-generation latest-wins checks, materializes source changes through a separate pending session, rolls back synchronous DOM/state/UI mutations, and retains only current-session snapshots.
+- [screen-runtime-adapter.js](../../archive/screen-runtime-adapter.js) connects the runtime to the canonical `engine.html`, session-local render state, source loading, print readiness, QR effects, image/font readiness and request-scoped metrics.
+- [snapshot-contract.js](../../archive/snapshot-contract.js) preserves completed answer, solution and exam DOM by MOVE ownership. It freezes 18 common snapshot gates and validates all 23 print preflight conditions on every print request. Cache hits run no authoritative build, MathJax typeset, image wait, pagination, QR redraw or DOM clone.
+- [solution-render-executor.js](../../archive/solution-render-executor.js) batches independent staging work without changing continuation decisions. It retains individual chunk geometry where an adjacent chunk changes wrapping.
+- [exam-render-executor.js](../../archive/exam-render-executor.js) performs raw/tight question measurement as one write/barrier/read group.
+- [layout-authority.js](../../archive/layout-authority.js) now includes a source-free measured solution planner. [layout-materializer.js](../../archive/layout-materializer.js) is the production materializer for authority plans. `layoutPlanner=authority` is the default; `?layoutPlanner=observed` remains the rollback flag.
+- Idle prewarm happens only after a committed visible frame. It has no external effects, cannot replace the active root, is cancelled by foreground/source/print work, and registers a READY snapshot only after the original session is still current.
 
-- `phase0-inventory.json`: render 진입점, immutable 입력 schema, session lifecycle, side-effect 계약.
-- `phase0-baseline.json`: 고정 SHA의 48개 측정과 Chrome trace 요약.
-- `phase0-parity.json`: desktop/mobile 실제 출력과 offscreen 기하 prototype.
-- `phase0-seal.json`: 10개 Gate 및 선행 증거 SHA-256. 최종 검증에서 해당 파일 해시가 그대로임을 확인했다.
+## Phase 0 and Phase 1A evidence
 
-Fixture는 기존 golden 8문항, 이미지 중심 실제 시험지 24문항, 유형 시험지 32문항이다. 일반 선택지, 표/수식, SVG, 긴 해설/continuation, subjective-2up/4up, fullwidth, 규모, answer grouping/refit 대상, QR, header/QPP 경로를 포함한다. 동일 Chrome `153.0.8010.36`, desktop `1440×1000`, deviceScaleFactor 1, 각 fixture/작업 2회로 측정했다. 시각·기하 parity에는 mobile `390×1000`도 추가했다.
+Phase 0 froze the baseline and all mandatory entry conditions. The evidence is in:
 
-측정 작업은 initial exam, exam→sol, sol→ans, ans→exam, exam→sol 재진입, header, QR, QPP다. 별도로 세 모드의 실제 재빌드를 offscreen에서 비교했다. 문항 순서·page count·요소 크기·이미지 크기·mode별 ledger가 정확히 일치했고, 해당 frozen fixture의 관측 기하 허용 오차는 0이다.
+- `phase0-inventory.json`
+- `phase0-baseline.json`
+- `phase0-parity.json`
+- `phase0-seal.json`
 
-기존 main에는 font wait/materialization/강제 layout read의 개별 계수기가 없으므로 이를 임의의 숫자로 채우지 않았다. 기존 render phase/MathJax 지표, 실제 크기와 Chrome Layout/Paint/Scripting trace를 보존했다. raw trace는 JSON에 기록된 저장소 외부 `.trace.json.gz` 경로에 있으며, 요약과 지표는 이 보고서 디렉터리에 남겼다.
+The Phase 0 gate set is **10/10 PASS**. It covers baseline freeze, render-entry inventory, immutable input schema, pending-session lifecycle and the complete side-effect contract.
 
-## Phase 1A Gate 결과
+Phase 1A is **18/18 PASS**, recorded in `phase1a-gates.json`. It covers the canonical intent enum, CandidateRenderState, transitive immutability, key/build digest parity, every entry route, context isolation, pending materialization, target-session parity, render-state 2PC, synchronous COMMIT, rollback, status transition, request-generation semantics, direct bypass count 0, delivery/compensation contract and background side-effect count 0.
 
-`phase1a-gates.json`에 18개 canonical Gate ID별 PASS/FAIL, 근거, 구현 해시를 기록했다.
+## Promotion evidence
 
-| Gate | 결과 |
-|---|---|
-| CANONICAL_INTENT_ENUM | PASS |
-| CANDIDATE_RENDER_STATE | PASS |
-| RENDER_AFFECTING_TRANSITIVE_IMMUTABILITY | PASS |
-| KEY_INPUT_DIGEST_BUILD_INPUT_DIGEST_PARITY | PASS |
-| ALL_RENDER_ENTRY_ROUTED | PASS |
-| RENDER_TRANSACTION_CONTEXT | PASS |
-| PENDING_RENDER_SESSION | PASS |
-| PENDING_TO_CURRENT_MATERIALIZATION_GATE | PASS |
-| PENDING_TARGET_SESSION_ID_PARITY | PASS |
-| RENDER_STATE_2PC | PASS |
-| SYNCHRONOUS_ATOMIC_COMMIT | PASS |
-| SNAPSHOT_STATUS_COMMIT | PASS |
-| COMMIT_ROLLBACK | PASS |
-| REQUEST_GENERATION_STALENESS_ONLY | PASS |
-| DIRECT_RENDER_BYPASS | PASS — 0 |
-| SIDE_EFFECT_DELIVERY_FAILURE_CONTRACT | PASS |
-| SIDE_EFFECT_COMPENSATION_CONTRACT | PASS |
-| BACKGROUND_SIDE_EFFECT_COUNT | PASS — 0 |
+`phase1b-gates.json`, `phase1c-gates.json`, `phase1d-gates.json`, `phase2-gates.json`, `phase3-gates.json`, `phase4-gates.json`, `phase5-gates.json` and `phase6-gates.json` are the per-phase evidence records.
 
-## 정적 검사 및 실제 브라우저
+The fixture denominator is:
 
-- Node 테스트: **46 PASS / 0 FAIL**, `static-tests.tap`.
-- `node --check`: engine inline script를 포함한 **18개 대상 PASS**, `node-check.json`.
-- `git diff --check`: PASS.
-- Chrome 트랜잭션 시나리오: **19 PASS / 0 FAIL / 예기치 않은 pageerror 0**, `phase1a-browser.json`.
-- `screenRuntime=legacy` 및 legacy executor fallback: 세 모드씩 **6 PASS**, `legacy-browser.json`.
-- desktop/mobile × 세 모드: **6개 실제-render parity PASS**. 본문·문항 순서·페이지·이미지·요소 기하 및 해당 mode ledger를 비교했다. 이전 mode의 stale ledger를 계속 유지하는 것을 parity 조건으로 삼지 않았다.
-- 최종 구현 파일 해시를 고정한 **48개 반복 재측정**: `phase1a-baseline.json`. 실행 시작/끝과 최종 verification에서 파일 해시 일치.
-- 모든 대응 샘플의 page count와 MathJax call count가 기존 baseline과 일치했다.
-- MathJax/레이아웃/font/source/schema/image 실패, history COMMIT 예외, 늦은 요청 폐기, 헤더 입력 외부 변경, source 재진입, QR/preview/해설 잠금, 등록 재시도, 반복 인쇄 dry-run과 PRINT_STALE_REBUILD를 실제 canonical engine에서 검증했다.
-- DOM에 남은 abandoned build/staging root는 0, active root ownership PASS.
+- golden 8-question fixture: tables, MathJax, image, continuation and subjective layout tags;
+- original image-heavy 24-question paper;
+- 32-question type paper.
 
-브라우저 테스트의 업무 API는 실제 네트워크를 전송하기 전에 Playwright route로 대체했다. 503/200 응답에 대한 클라이언트 계약을 검증했으며 운영 출제 이력·blueprint를 생성하지 않았다. 인쇄는 `printDryRun=1`로 준비 동작을 검증했으며 물리 프린터 출력은 수행하지 않았다.
+Each promotion path was exercised on desktop and mobile viewport profiles. The checks compare source order, text, page count, raw/tight ledger, continuation identity and chunk ranges, image dimensions, overflow, page/column geometry and actual browser screenshots.
 
-## 성능 관측 및 남은 문제
+Phase 1B–1D cache tests prove that an older `builtRequestGeneration` still activates a READY snapshot when the session/key/ownership contract matches. Cache-hit tests also inject a MathJax failure so a hidden typeset call would fail the test.
 
-이 단계의 통과 판정은 Phase 1A transaction foundation Gate다. 성능 SLA나 cache promotion 완료로 판정하지 않는다. `performance-comparison.json`에 전체 비교를 남겼다.
+Phase 2 samples every animation frame during a held build. It proves there is no blank frame or mixed DOM/state/URL/tab frame. A forced retired-session MathJax cleanup failure keeps the new session committed, marks cleanup pending and succeeds on a later retry.
 
-| Fixture/작업 | main 평균 renderReady | Phase 1A 평균 renderReady |
+Phase 5 verifies automatic answer/solution prewarm after the visible frame, foreground/print/source cancellation, no background OS registration, QR-lock preservation and activation-only side effects.
+
+Phase 6 runs observed and authority layout paths across 12 combinations: three fixtures × desktop/mobile × exam/solution. All parity checks passed. 24 authority/observed screenshots are retained here.
+
+## Measured performance
+
+Correctness gates are the promotion authority. Timings are measurements, not a claim that every fixture improved in every environment.
+
+Phase 3 reduced solution batching cost without changing geometry:
+
+| Fixture | Desktop MathJax calls | Desktop layout barriers | Desktop render ready |
+|---|---:|---:|---:|
+| golden | 18 → 3 | 50 → 36 | 1,372.7ms → 1,140.5ms |
+| image-heavy 24 | 49 → 2 | 210 → 53 | 7,123.5ms → 4,592.8ms |
+| 32-question | 65 → 2 | 437 → 81 | 21,481.7ms → 15,991.1ms |
+
+Phase 4 reduced exam barriers:
+
+| Fixture | Desktop layout barriers | Desktop render ready |
 |---|---:|---:|
-| golden / initial | 780ms | 661ms |
-| 이미지 24문항 / initial | 2,513ms | 2,679ms |
-| 이미지 24문항 / 해설 전환·재진입 | 6,367ms | 6,487ms |
-| 32문항 / initial | 3,162ms | 2,776ms |
-| 32문항 / 해설 전환·재진입 | 20,932ms | 19,964ms |
-| 32문항 / 헤더 변경 | 20,690ms | 23,378ms |
+| golden | 14 → 7 | 707.5ms → 602.9ms |
+| image-heavy 24 | 33 → 10 | 2,696.8ms → 2,346.3ms |
+| 32-question | 42 → 11 | 3,199.0ms → 2,748.6ms |
 
-모든 mode 진입은 여전히 authoritative rebuild다. 이미지 시험지 초기 렌더와 일부 헤더 재렌더는 느려진 관측이 있으므로 성능 무회귀를 주장하지 않는다. 특히 32문항 헤더 재렌더의 약 13% 증가는 후속 최적화 전에 추가 재현·분석할 항목으로 남긴다. 이 작업에서 Phase 1B나 measurement 최적화를 앞당겨 적용하지 않았다.
+Authority production promotion maintains parity but is not itself a latency promotion. `phase6-layout-browser.json` records a few solution timings that are slightly slower because the measured planner intentionally converges range geometry before materialization. This is retained as a material performance observation.
 
-추가 범위 제한: 전체 archive 시험지 전수 브라우저 회귀, 운영 API의 수신측 end-to-end ACK, 물리 인쇄는 검증하지 않았다. 검증한 Phase 1A correctness Gate의 미해결 FAIL은 없다.
+## Verification summary
 
-## 재현
+- Phase 1A browser transaction scenarios: 19 PASS, 0 unexpected page errors.
+- Phase 6 and 7 final relevant Node suite: 63 PASS, 0 FAIL.
+- Cache snapshot browser tests: answer, solution and exam each PASS on desktop and mobile.
+- Layout Authority browser comparison: 12 PASS observed-versus-authority combinations; 24 visual captures.
+- Legacy review browser test: 12 PASS cases.
+- Syntax checks cover engine inline scripts plus the modified external runtime/executor/test files.
+- `git diff --check` passes before every phase commit.
 
-저장소 root를 `python -m http.server 8766 --bind 127.0.0.1`로 제공한다. Playwright를 저장소 외부에 설치하고 `AP_PLAYWRIGHT_MODULE`을 해당 모듈 경로로 설정한다.
+Browser business API calls were route-intercepted for tests. No production blueprint or class assignment was created. Print validation uses `printDryRun=1`; it does not print to a physical printer.
+
+## Legacy decision
+
+The Phase 7 result is **RETAIN_LEGACY**. [phase7-retirement-review.json](phase7-retirement-review.json) is the authority.
+
+The following paths remain tested and available:
+
+- `?screenRuntime=legacy`
+- `?renderer=legacy`
+- `?examAuthority=legacy&solutionAuthority=legacy&answerAuthority=legacy`
+- `?layoutPlanner=observed`
+- `?snapshotCache=0`
+
+The repository provides local transaction evidence but no durable production usage telemetry collector. The v1.4 policy therefore forbids removal in this release. No legacy renderer code was deleted.
+
+## Remaining limitations
+
+- There is no production telemetry sink yet, so Phase 7 deliberately does not retire rollback paths.
+- Full archive-bank exhaustive browser rendering and physical-printer output were not part of the local browser fixture denominator.
+- Layout Authority’s measured solution production path preserves correctness but has fixture-specific timing regressions noted above; that needs a separate performance release if it becomes a product SLA concern.
+
+## Reproduction
+
+Serve the repository root locally, then set `AP_PLAYWRIGHT_MODULE` to the locally installed Playwright package.
 
 ```text
 node tests/archive-fast-engine-browser.cjs
-node tools/archive-fast-engine/parity.cjs phase1a
-node tools/archive-fast-engine/baseline.cjs phase1a
-node tools/archive-fast-engine/verify.cjs
+node tests/archive-snapshot-browser.cjs
+node tests/archive-prewarm-browser.cjs
+node tests/archive-layout-browser.cjs
+node tests/archive-legacy-browser.cjs
 ```
 
-Phase 0 재측정은 frozen SHA의 runtime 파일이 있는 checkout에서만 `baseline.cjs phase0`로 실행한다. 해당 도구는 runtime 파일이 frozen SHA와 다르면 실행을 거부한다. runtime rollback은 `?screenRuntime=legacy`다.
-
-변경 파일 전체 목록은 `changed-files.json`에 기록했다. 원본 설계도, 관련 없는 시험지 bank, 기존 사용자 변경, 임시/백업 파일은 커밋에 포함하지 않았다.
+The exact fixture outputs and per-phase gate records in this directory are the review artifacts.
