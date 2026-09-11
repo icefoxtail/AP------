@@ -256,7 +256,7 @@ function collectFreeze(root, state, runRefs) {
       if (!old || defects.some(d => d.runId === run.runId && d.questionUid === questionUid) || impact.affectedUidAxisSet.some(a => a.questionUid === questionUid && !MACHINE_AXES.includes(a.axis)) || Object.entries(axes).some(([axis, sha]) => !MACHINE_AXES.includes(axis) && old.axisInputShas[questionUid]?.[axis] !== sha) || renderChanged.includes(questionUid)) affected.push(row);
     }
     bindings.push({ questions: actual, runSemanticSha, runId: run.runId, revision: run.revision, inputSha: run.inputSha, axisInputShas: shas, witnesses,
-      preAudit: { purpose: 'DIAGNOSTIC_CONTINUATION_ONLY', promotionAuthorized: false, machineEvidence: machineEvidence.map(e => ({ questionUid: e.questionUid, axis: e.axis, status: e.status, evidenceSha: objectSha(e) })), missingRender } });
+      preAudit: { purpose: 'DIAGNOSTIC_CONTINUATION_ONLY', promotionAuthorized: false, machineEvidence: machineEvidence.map(e => ({ questionUid: e.questionUid ?? null, axis: e.axis, status: e.status, evidenceSha: objectSha(e) })), missingRender } });
   }
   allTargets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));
   eligibleTargets.sort((a,b) => canonicalJson(a).localeCompare(canonicalJson(b)));

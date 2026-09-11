@@ -9,21 +9,28 @@ export const nonempty = value => typeof value === 'string' && value.trim().lengt
 // Never reinterpret mathematics here. Arrays remain ordered; typed SET fields
 // are sorted by their schema adapter, not by a global property-name heuristic.
 export function canonicalJson(value) {
-  function visit(item) {
+  const fail = (code, pathValue, item) => {
+    const error = new Error(code);
+    error.code = code;
+    error.path = pathValue;
+    error.valueType = item === null ? 'null' : typeof item === 'object' ? Object.prototype.toString.call(item).slice(8, -1) : typeof item;
+    throw error;
+  };
+  function visit(item, pathValue) {
     if (item === null || typeof item === 'boolean') return item;
     if (typeof item === 'number') {
-      if (!Number.isFinite(item) || Math.abs(item) > Number.MAX_SAFE_INTEGER) throw new Error('NON_CANONICAL_NUMBER');
+      if (!Number.isFinite(item) || Math.abs(item) > Number.MAX_SAFE_INTEGER) fail('NON_CANONICAL_NUMBER', pathValue, item);
       return Object.is(item, -0) ? 0 : item;
     }
     if (typeof item === 'string') return item.normalize('NFC');
-    if (Array.isArray(item)) return item.map(visit);
-    if (!isObject(item) || Object.getPrototypeOf(item) !== Object.prototype) throw new Error('NON_JSON_VALUE');
+    if (Array.isArray(item)) return item.map((child, index) => visit(child, pathValue + '[' + index + ']'));
+    if (!isObject(item) || Object.getPrototypeOf(item) !== Object.prototype) fail('NON_JSON_VALUE', pathValue, item);
     const keys = Object.keys(item).sort();
     const normalized = keys.map(key => key.normalize('NFC'));
-    if (new Set(normalized).size !== keys.length) throw new Error('NORMALIZED_KEY_COLLISION');
-    return Object.fromEntries(keys.map(key => [key.normalize('NFC'), visit(item[key])]));
+    if (new Set(normalized).size !== keys.length) fail('NORMALIZED_KEY_COLLISION', pathValue, item);
+    return Object.fromEntries(keys.map(key => [key.normalize('NFC'), visit(item[key], pathValue + '.' + key)]));
   }
-  return JSON.stringify(visit(value));
+  return JSON.stringify(visit(value, '$'));
 }
 export const bytesSha = bytes => {
   if (!Buffer.isBuffer(bytes) && !(bytes instanceof Uint8Array)) throw new Error('RAW_BYTES_REQUIRED');

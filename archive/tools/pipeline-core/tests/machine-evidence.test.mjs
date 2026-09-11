@@ -101,6 +101,37 @@ test('machine bridge creates current STATIC and METADATA evidence and freeze suc
   assert.equal(readWorkBatch(f.root, 'job').freezes.length, 1);
 });
 
+test('aggregate RENDER_CAPTURE evidence keeps freeze preAudit JSON-canonical and FINAL_AUDIT-ready', t => {
+  const f = fixture(t);
+  const out = f.bridged();
+  const capture = {
+    schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2',
+    evidenceId: 'aggregate-render-capture',
+    runId: out.run.runId,
+    revision: out.run.revision,
+    axis: 'RENDER_CAPTURE',
+    inputSha: out.run.inputSha,
+    mode: 'MACHINE_CURRENT',
+    auditorPrincipalType: 'MACHINE_COLLECTOR',
+    status: 'PASS',
+    validityStatus: 'FROZEN',
+    payload: { itemWitnesses: [] },
+  };
+  const captureRef = write(f.root, 'evidence/aggregate-render-capture.json', capture);
+  const runRef = f.writeRun({ ...out.run, evidence: [...out.run.evidence, captureRef] });
+  const state = freezeWorkBatch(f.root, 'job', [runRef]);
+  const evidence = state.freezes[0].bindings[0].preAudit.machineEvidence.at(-1);
+  assert.equal(evidence.axis, 'RENDER_CAPTURE');
+  assert.equal(evidence.questionUid, null);
+  assert.equal(readWorkBatch(f.root, 'job').freezes[0].freezeSha, state.freezes[0].freezeSha);
+  const reserved = reserveWorkBatchReview(f.root, 'job', {
+    purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session',
+    parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false,
+    contexts: { U1: { sessionId: 'u1-session', contextId: 'u1-context' }, U2: { sessionId: 'u2-session', contextId: 'u2-context' }, U3: { sessionId: 'u3-session', contextId: 'u3-context' } },
+  });
+  assert.equal(reserved.launches[0].purpose, 'FINAL_AUDIT');
+});
+
 test('STATIC studentSerialization is required by both schema and typed validation', t => {
   const f = fixture(t);
   const out = f.bridged();

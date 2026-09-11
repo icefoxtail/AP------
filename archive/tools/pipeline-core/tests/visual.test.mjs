@@ -19,6 +19,16 @@ test('raw bytes and canonical objects are separate hash domains', () => {
   assert.throws(() => canonicalJson({ a: undefined }), /NON_JSON/);
   assert.throws(() => canonicalJson({ a: NaN }), /NON_CANONICAL/);
 });
+test('canonical JSON failures retain the exact offending object path without coercion', () => {
+  assert.throws(
+    () => canonicalJson({ freeze: { renderEvidence: [{ foo: undefined }] } }),
+    error => error.message === 'NON_JSON_VALUE' && error.path === '$.freeze.renderEvidence[0].foo' && error.valueType === 'undefined'
+  );
+  assert.throws(
+    () => canonicalJson({ freeze: { renderEvidence: [new Date(0)] } }),
+    error => error.message === 'NON_JSON_VALUE' && error.path === '$.freeze.renderEvidence[0]' && error.valueType === 'Date'
+  );
+});
 test('same semantic meaning on another UID hashes the same; parity still checks identity', () => {
   assert.equal(semanticSha(fact('a')), semanticSha(fact('b')));
   assert.equal(compareVisualFacts(fact('a'), fact('b')).status, 'FAIL');
