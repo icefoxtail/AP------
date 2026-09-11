@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-4fffc4855-r6",
+  "launchId": "past20-maesan-final-4fffc4855-r6:1",
+  "phase": "U2",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_FIFTH_REPAIR",
+  "auditorThreadId": "01a0929c-4203-7e71-bee1-a509491680d6",
+  "turnId": "01a0929f-3f7c-7982-ba97-16c7c4846fd3",
+  "observations": {
+    "u1Completed": true,
+    "providerResponse": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-4fffc4855-r6/u2-response.json",
+      "bytes": 2652,
+      "sha256": "sha256:5d5ff6785ae62487ec5d37db617d441eafaed87ec61c9974cc0bf5a445d2a90f",
+      "status": "COMPLETED",
+      "defectCount": 3,
+      "aggregateScopes": [
+        "20_매산고_2학기_중간_고1_기출|1..20",
+        "20_매산고_2학기_중간_고1_기출|1..20",
+        "20_매산고_2학기_중간_고1_기출|5"
+      ]
+    },
+    "dispatcher": {
+      "terminalStatus": "HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED",
+      "u1ResponseWritten": true,
+      "u2ResponseWritten": true,
+      "u3Started": false,
+      "receiptWritten": false
+    }
+  },
+  "rootCause": {
+    "component": "archive/tools/pipeline-core/provider-bridge.mjs",
+    "bug": "The provider contract permits a defect scope range, but dispatcher validation only accepted one questionUid per defect and did not expand an authoritative range against the frozen launch scope.",
+    "safeRepair": "Expand only explicit numeric scope ranges that resolve to launch-scope questionUids; retain the original scope text and attach each authoritative runId/questionUid pair. Reject unresolved or unrelated scopes.",
+    "notModelTransportFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "providerResponseRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Apply explicit aggregate-scope expansion in a separate pipeline commit, pass targeted tests, then start another fresh run."
+  }
+}
