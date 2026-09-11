@@ -88,6 +88,24 @@ test('pure legacy SLOT_POLICY and CHUNK_POLICY preserve deterministic left/right
   assert.equal(slot.pages[1].columns[0].items[0].columnSpan, 2);
 });
 
+test('measured solution production planner requests only source-free range geometry then seals placement', () => {
+  const incomplete = L.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: 100, columns: 2 }, blocks: [
+    { blockId: 'solution-a', rawHeight: 180, compressedHeight: 150, chunkCount: 3 }
+  ] });
+  assert.equal(incomplete.status, 'NEEDS_MEASUREMENT');
+  assert.deepEqual(incomplete.measurementRequest, { blockId: 'solution-a', start: 0, primary: true });
+  const ready = L.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: 100, columns: 2, tolerance: 2 }, blocks: [
+    { blockId: 'solution-a', rawHeight: 180, compressedHeight: 150, chunkCount: 3,
+      primaryHeights: [35, 70, 104], continuationHeights: { 2: [40] } }
+  ] });
+  assert.equal(ready.status, 'READY');
+  assert.equal(ready.planner, 'MEASURED_SOLUTION_PRODUCTION');
+  assert.deepEqual(ready.pages.flatMap(page => page.itemPlacements.map(item => [item.chunkStart, item.chunkEnd, item.continuation])), [[0, 1, 0], [2, 2, 1]]);
+  const keys = value => value && typeof value === 'object' ? Object.keys(value).flatMap(key => [key, ...keys(value[key])]) : [];
+  for (const forbidden of ['sourceArchiveFile', 'sourceRef', 'sourcePayload', 'content', 'solution', 'answer']) assert.equal(keys(ready).includes(forbidden), false, forbidden);
+  assert.throws(() => L.planMeasuredSolutionLayout({ pageGeometry: { usableHeight: 100 }, blocks: [{ blockId: 'x', rawHeight: 1, compressedHeight: 1, chunkCount: 1, sourcePayload: {} }] }), /SOURCE_DATA_FORBIDDEN/);
+});
+
 test('promotion comparator fails closed for a mutated legacy page, column, or continuation fact', () => {
   const records = {
     a: { sectionId: 'exam', sourceRef: ref(1), displayNo: 1 },

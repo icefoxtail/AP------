@@ -73,7 +73,7 @@ function createArchiveScreenRuntime() {
         };
         idleHandle = window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 100);
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase1a-20260910.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: '20260906.25', executor: '20260907.1-context1', pageLayout: 'engine-20260910.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20260911.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1', executor: '20260911.1-context2', pageLayout: 'engine-20260911.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
 
     function captureInput(intent, desired, committed) {
         if (typeof printPending !== 'undefined' && printPending && intent.type !== 'PRINT_STALE_REBUILD') throw new Error('PRINT_TRANSACTION_BUSY');
@@ -235,6 +235,13 @@ function createArchiveScreenRuntime() {
             getArchiveQuestionSourceRef: (question, index) => getArchiveQuestionSourceRef(question, index, ctx.buildState),
             rendererMode: () => candidate.rendererMode,
             measurementMode: () => new URL(candidate.environment.url).searchParams.get('measurement') === 'legacy' ? 'legacy' : 'batch',
+            layoutPlannerMode: () => new URL(candidate.environment.url).searchParams.get('layoutPlanner') === 'observed' ? 'observed' : 'authority',
+            renderExamPlan: input => window.APArchiveLayoutMaterializer.exam({ ...input, deps: ctx.deps }),
+            renderSolutionPlan: input => window.APArchiveLayoutMaterializer.solution({ ...input, deps: ctx.deps }),
+            onLayoutPlan: evidence => {
+                ctx.buildState.layoutAuthorityEvidence = evidence;
+                ctx.diagnostics.apLayoutAuthorityProduction = JSON.stringify({ mode: evidence.mode, planner: evidence.planner, pages: evidence.pages, measuredBeforePlacement: evidence.measuredBeforePlacement, canonicalCloneCount: evidence.canonicalCloneCount });
+            },
             clearMath: elements => window.MathJax?.typesetClear?.(elements),
             typesetMath: async (label, elements) => {
                 if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
