@@ -3141,7 +3141,8 @@ async function registerBlueprintToOS(candidate = null) {
 }
 
 window.onload = () => {
-    if (new URLSearchParams(window.location.search).get('screenRuntime') !== 'legacy') {
+    const runtimeParams = new URLSearchParams(window.location.search);
+    if (runtimeParams.get('screenRuntime') !== 'legacy' && runtimeParams.get('renderer') !== 'legacy') {
         archiveScreenRuntime = createArchiveScreenRuntime();
         window.archiveScreenRuntime = archiveScreenRuntime;
     }
