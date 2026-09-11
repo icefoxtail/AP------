@@ -9,11 +9,14 @@
     const CANONICAL_TO_APP_MODE = Object.freeze({ exam: 'exam', solution: 'sol', answer: 'ans' });
     const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid']);
     const CANONICAL_FIELDS = Object.freeze(['sourceRef', 'displayNo', 'content', 'choices', 'answer', 'solution', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide']);
+    const ownedImmutableValues = new WeakSet();
+    const serializedValues = new WeakMap();
 
     function copy(value, ancestors = new Set()) {
         if (value === null || typeof value === 'string' || typeof value === 'boolean') return value;
         if (typeof value === 'number' && Number.isFinite(value)) return value;
         if (!value || typeof value !== 'object') throw new Error('UNSUPPORTED_RENDER_VALUE');
+        if (ownedImmutableValues.has(value)) return value;
         const proto = Object.getPrototypeOf(value);
         if (!Array.isArray(value) && proto !== Object.prototype && proto !== null) throw new Error('NON_PLAIN_RENDER_VALUE');
         if (ancestors.has(value)) throw new Error('CYCLIC_RENDER_VALUE');
@@ -27,7 +30,9 @@
             if (desc.value !== undefined) output[key] = copy(desc.value, ancestors);
         }
         ancestors.delete(value);
-        return Object.freeze(output);
+        Object.freeze(output);
+        ownedImmutableValues.add(output);
+        return output;
     }
 
     function project(value, fields) {
@@ -42,6 +47,7 @@
 
     function assertImmutable(value) {
         if (!value || typeof value !== 'object') return true;
+        if (ownedImmutableValues.has(value)) return true;
         if (!Object.isFrozen(value)) throw new Error('MUTABLE_RENDER_VALUE');
         for (const item of Object.values(value)) assertImmutable(item);
         return true;
@@ -49,7 +55,12 @@
 
     // Collision-free canonical serialization is the key authority in Phase 1A.
     // No lossy short hash can silently alias two distinct render inputs.
-    function semanticDigest(value) { return JSON.stringify(copy(value)); }
+    function semanticDigest(value) {
+        const immutable = copy(value);
+        if (!immutable || typeof immutable !== 'object') return JSON.stringify(immutable);
+        if (!serializedValues.has(immutable)) serializedValues.set(immutable, JSON.stringify(immutable));
+        return serializedValues.get(immutable);
+    }
 
     function canonicalRenderData(canonical, raw) {
         if (!Array.isArray(canonical) || !Array.isArray(raw) || canonical.length !== raw.length || !raw.length) throw new Error('INVALID_CANONICAL_RENDER_DATA');

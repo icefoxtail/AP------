@@ -5,6 +5,44 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createSolutionRenderExecutor(root) {
     'use strict';
 
+    async function measureSolutionBatch(boxes, staging, deps, document) {
+        const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
+        boxes.forEach(box => box.classList.add('fit-tight'));
+        await deps.raf();
+        records.forEach(record => { record.tight = deps.measureSolutionOuterFootprint(record.box); });
+        boxes.forEach(box => box.classList.remove('fit-tight'));
+        const hosts = [];
+        try {
+            records.forEach((record, index) => {
+                const host = document.createElement('div'); host.style.width = '83mm';
+                record.chunks = deps.makeSolutionHtmlChunks(record.box.dataset.solutionHtml || '').map((html, chunkIndex) => {
+                    const node = document.createElement('span'); node.className = 'sol-chunk'; node.dataset.chunkId = `c${chunkIndex}`; node.innerHTML = html; host.appendChild(node);
+                    return { node, chunkId: node.dataset.chunkId };
+                });
+                record.shell = deps.makeLongSolutionShell(record.box, index + 1, true);
+                staging.append(host, record.shell); hosts.push(host, record.shell);
+            });
+            await deps.typesetMath('solution-decision-batch', hosts);
+            records.forEach(record => record.chunks.forEach(chunk => { chunk.measuredHeight = deps.measureSolutionOuterFootprint(chunk.node); }));
+            // Only one inline chunk per independent host is tightened at a time.
+            // Tightening siblings together would change wrapping and the legacy
+            // per-chunk geometry contract.
+            const count = Math.max(0, ...records.map(record => record.chunks.length));
+            for (let index = 0; index < count; index += 1) {
+                const chunks = records.map(record => record.chunks[index]).filter(Boolean);
+                chunks.forEach(chunk => chunk.node.classList.add('fit-tight'));
+                await deps.raf();
+                chunks.forEach(chunk => { chunk.tight = deps.measureSolutionOuterFootprint(chunk.node); });
+                chunks.forEach(chunk => chunk.node.classList.remove('fit-tight'));
+            }
+            records.forEach(record => { record.continuationShellOverhead = Math.max(1, Number(record.shell.scrollHeight || 1)); });
+            return records;
+        } finally {
+            deps.clearMath?.(hosts);
+            hosts.forEach(host => host.remove());
+        }
+    }
+
     /**
      * The Archive solution pagination algorithm extracted from the historical
      * renderSol implementation.  This module deliberately owns no source or
@@ -206,7 +244,20 @@
         });
         await Promise.all(Array.from(staging.querySelectorAll('img')).map(deps.waitForQuestionImage));
         if (deps.rendererMode() === 'batch') await deps.typesetMath('solution-staging', [staging]);
-        for (let solutionIndex = 0; solutionIndex < solutionBoxes.length; solutionIndex += 1) {
+        if (deps.measurementMode?.() === 'batch') {
+            const records = await measureSolutionBatch(solutionBoxes, staging, deps, document);
+            records.forEach((record, index) => {
+                const sourceRef = String(record.box.getAttribute('data-source-ref') || '').trim();
+                const measurements = { raw: Math.max(1, record.raw), tight: Math.max(1, record.tight) };
+                solutionMeasurementBySource.set(sourceRef, measurements);
+                const blockId = `solution-block:${index + 1}:primary`;
+                record.box.dataset.solutionDecisionBlockId = blockId;
+                const chunks = record.chunks.map(({ chunkId, measuredHeight, tight }) => ({ chunkId, measuredHeight, tight }));
+                solutionDecisionBlocks.push({ blockId, questionKey: `solution-block:${index + 1}`, measuredHeight: record.raw, measurements,
+                    shellOverhead: Math.max(1, record.raw - chunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0)),
+                    continuationShellOverhead: record.continuationShellOverhead, chunks });
+            });
+        } else for (let solutionIndex = 0; solutionIndex < solutionBoxes.length; solutionIndex += 1) {
             const box = solutionBoxes[solutionIndex];
             const sourceRef = String(box.getAttribute('data-source-ref') || '').trim();
             const raw = deps.measureSolutionOuterFootprint(box);

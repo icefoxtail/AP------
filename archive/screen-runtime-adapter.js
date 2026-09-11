@@ -216,6 +216,8 @@ function createArchiveScreenRuntime() {
             makePage: (area, type, pageNo) => makePage(area, type, pageNo, ctx.buildState),
             getArchiveQuestionSourceRef: (question, index) => getArchiveQuestionSourceRef(question, index, ctx.buildState),
             rendererMode: () => candidate.rendererMode,
+            measurementMode: () => new URL(candidate.environment.url).searchParams.get('measurement') === 'legacy' ? 'legacy' : 'batch',
+            clearMath: elements => window.MathJax?.typesetClear?.(elements),
             typesetMath: (label, elements) => window.APRenderLoop.typeset(label, elements, ctx.metrics),
             raf: () => { ctx.metrics.rafCount += 1; ctx.metrics.layoutBarrierCount += 1; return raf(); }
         };
