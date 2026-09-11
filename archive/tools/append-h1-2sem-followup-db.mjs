@@ -16,14 +16,22 @@ function loadDb(file) {
 const currentText = fs.readFileSync(dbPath, 'utf8');
 const current = loadDb(dbPath);
 const generated = loadDb(generatedDbPath);
+// Legacy compatibility only. The canonical path is build_db.py, which now
+// inventories every production JS and enforces DB/source parity. If this
+// fallback is used, include all H1 semester-2 follow-up variants rather than
+// filtering only the old 확인/심화 suffixes.
+const isH1Semester2Followup = (entry) => entry.file.startsWith('similar/high/h1/2mid/25_') || entry.file.startsWith('similar/high/h1/2final/25_');
 const additions = generated.exams
-  .filter((entry) => entry.file.startsWith('similar/high/h1/2mid/25_') || entry.file.startsWith('similar/high/h1/2final/25_'))
-  .filter((entry) => entry.file.endsWith('_확인.js') || entry.file.endsWith('_심화.js'))
+  .filter(isH1Semester2Followup)
   .map((entry) => ({ ...entry, subject: entry.subject || '공통수학2' }));
 
 const existing = new Set(current.exams.map((entry) => entry.file));
 const fresh = additions.filter((entry) => !existing.has(entry.file));
-if (fresh.length !== 16) throw new Error('expected 16 fresh entries, got ' + fresh.length);
+
+if (!fresh.length) {
+  console.log(JSON.stringify({ added: 0, total: current.exams.length, files: [] }, null, 2));
+  process.exit(0);
+}
 
 const marker = '"exams": [';
 const start = currentText.indexOf(marker);
