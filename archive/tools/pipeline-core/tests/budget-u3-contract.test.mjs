@@ -127,6 +127,19 @@ test('FINAL_AUDIT remains limited to one launch', t => {
   assert.equal(readWorkBatch(f.root, 'job').launches.length, 1);
 });
 
+test('a pre-dispatch packet failure can be terminally reconciled without resetting the budget', t => {
+  const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  const evidenceRef = f.write('pre-dispatch-failure.json', { status: 'HOLD', code: 'PROVIDER_SOURCE_ASSET_NOT_BOUND' });
+  const receiptRef = f.write('pre-dispatch-terminal.json', { launchId: 'job:1', externalId: 'provider-control', status: 'FAILED', preDispatchFailure: true, independentAgentLaunchCount: 0, expensiveAgentLaunchCount: 0, concurrentExpensiveAgentPeak: 0, recursiveSubagentLaunchCount: 0, usedTokens: null, evidenceRefs: [evidenceRef], defects: [] });
+  const state = reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-control', status: 'FAILED', preDispatchFailure: true, providerReceiptRef: receiptRef });
+  assert.equal(state.status, 'HOLD');
+  assert.equal(state.launches[0].status, 'FAILED');
+  assert.equal(state.launches[0].externalId, 'provider-control');
+});
+
 test('TARGETED_RECHECK remains limited to one launch', t => {
   const f = jobFixture(t);
   f.prepareRecheck();
