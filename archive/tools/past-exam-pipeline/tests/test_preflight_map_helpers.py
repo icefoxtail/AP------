@@ -32,6 +32,10 @@ class PreflightMapHelperTests(unittest.TestCase):
         self.assertFalse(validator.is_objective_question({"displayNo": "20", "questionType": "서술형", "choices": []}))
         self.assertTrue(validator.is_objective_question({"displayNo": "15", "questionType": "객관식", "choices": ["1", "2", "3", "4", "5"]}))
 
+    def test_decoded_latex_commands_are_valid_serialized_values(self):
+        questions = [{"id": 4, "content": r"$x+\dfrac4x\ge4$", "answer": "④", "solution": r"$\sqrt2$, $\pi$, $\neq$, $\not p$"}]
+        self.assertEqual(validator.serialization_issues(questions), [])
+
     def test_expands_mixed_objective_and_subjective_ranges(self):
         with tempfile.TemporaryDirectory() as tmp:
             exam_root = Path(tmp)
