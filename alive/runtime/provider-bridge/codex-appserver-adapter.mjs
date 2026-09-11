@@ -5,6 +5,7 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
+import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -176,7 +177,9 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   const start = text.indexOf('{'), end = text.lastIndexOf('}');
   if (start < 0 || end <= start) throw new Error('CODEX_APPSERVER_AGENT_OUTPUT_NOT_JSON');
   const output = JSON.parse(text.slice(start, end + 1));
-  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: control.id, phase: request.phase, sessionId: contexts[request.phase].sessionId, contextId: contexts[request.phase].contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence: output.evidence, defects: output.defects };
+  const evidence = parseJsonObjectItems(output.evidence, 'evidence');
+  const defects = parseJsonObjectItems(output.defects, 'defects');
+  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: control.id, phase: request.phase, sessionId: contexts[request.phase].sessionId, contextId: contexts[request.phase].contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects };
 }
 
 function callDaemon(request) {
@@ -213,7 +216,19 @@ async function main() {
     process.stdout.write(JSON.stringify(response));
     return;
   }
-  const response = await callDaemon({ operation: 'phase', phase: request.phase, inputSha: request.inputSha, packet: request.packet, prompt: JSON.stringify(request.packet) });
+  const response = await callDaemon({
+    operation: 'phase',
+    phase: request.phase,
+    inputSha: request.inputSha,
+    packet: request.packet,
+    prompt: JSON.stringify({
+      packet: request.packet,
+      outputContract: {
+        evidence: 'Return an array of JSON-encoded strings. Each string must encode exactly one evidence object.',
+        defects: 'Return an array of JSON-encoded strings. Each string must encode exactly one defect object.',
+      },
+    }),
+  });
   process.stdout.write(JSON.stringify(response));
 }
 

@@ -4,11 +4,11 @@ export const AUDITOR_OUTPUT_SCHEMA = Object.freeze({
   properties: {
     evidence: {
       type: 'array',
-      items: { type: 'object', additionalProperties: true },
+      items: { type: 'string' },
     },
     defects: {
       type: 'array',
-      items: { type: 'object', additionalProperties: true },
+      items: { type: 'string' },
     },
   },
   required: ['evidence', 'defects'],
