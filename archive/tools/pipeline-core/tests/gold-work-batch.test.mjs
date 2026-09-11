@@ -6,9 +6,10 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { fileRef, objectSha } from '../canonical.mjs';
-import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
+import { RUN_VERSION_V2, profiles, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
-import { initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
+import { requiredAxesForQuestion } from '../projection.mjs';
+import { aggregateWorkBatchAudit, initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
 import { prepareProviderReview } from '../provider-bridge.mjs';
 
 const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
@@ -32,7 +33,7 @@ function reviewRequest(purpose) {
   };
 }
 
-function benchmarkFixture(t, { jobKind = 'GOLD', runIds } = {}) {
+function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', runIds } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-gold-work-batch-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   execFileSync('git', ['clone', '--shared', '--no-checkout', '--branch', 'main', repository, '.'], { cwd: root, stdio: 'ignore' });
@@ -56,7 +57,7 @@ function benchmarkFixture(t, { jobKind = 'GOLD', runIds } = {}) {
   return {
     root,
     write,
-    addRun(runId, count, { eligible = true, revision = 1, changed = false } = {}) {
+    addRun(runId, count, { eligible = true, revision = 1, changed = false, sourceFormat = eligible ? 'PDF' : 'HWP' } = {}) {
       const questions = Array.from({ length: count }, (_, offset) => {
         const index = offset + 1;
         const questionUid = `${runId}|${index}`;
@@ -81,9 +82,10 @@ function benchmarkFixture(t, { jobKind = 'GOLD', runIds } = {}) {
         evidence: {},
         visual: { requirement: 'VISUAL_EXEMPT' },
       }));
+      for (const row of rows) row.requiredAxes = requiredAxesForQuestion(profiles.pipelines[pipeline], row, { pipeline });
       const run = {
         schemaVersion: RUN_VERSION_V2,
-        pipeline: 'tag-enrichment',
+        pipeline,
         workBatchId: 'job',
         runId,
         revision,
@@ -93,7 +95,7 @@ function benchmarkFixture(t, { jobKind = 'GOLD', runIds } = {}) {
         ...(jobKind === 'PRODUCTION' ? {} : {
           benchmarkKind: jobKind,
           pastExamAuthority: authority,
-          sourceAuthority: { goldBenchmarkEligibility: eligible ? { status: 'GOLD_ELIGIBLE', denominatorIncluded: true, benchmarkEligible: true } : { status: 'GOLD_INELIGIBLE_SOURCE_FORMAT', denominatorIncluded: false, benchmarkEligible: false } },
+          sourceAuthority: { goldBenchmarkEligibility: eligible ? { status: 'GOLD_ELIGIBLE', sourceFormat, sourcePixelRenderAvailable: true, denominatorIncluded: true, benchmarkEligible: true } : { status: 'GOLD_INELIGIBLE_SOURCE_FORMAT', sourceFormat, sourcePixelRenderAvailable: true, denominatorIncluded: false, benchmarkEligible: false } },
         }),
         questions: rows,
         inputs: [sourceRef, candidateRef],
@@ -238,4 +240,46 @@ test('CASE 5: PRODUCTION retains freeze.targets and full FINAL_AUDIT scope', t =
   assert.equal(metrics.totalTargetCount, 3);
   assert.equal(metrics.benchmarkEligibleTargetCount, null);
   assert.equal(metrics.benchmarkExcludedTargetCount, null);
+});
+
+test('mixed-format past-exam aggregate passes eligible PDF targets and retains HWP diagnostics', t => {
+  const f = benchmarkFixture(t, { pipeline: 'past-exam', runIds: ['pdf-run', 'hwp-run', 'hwpx-run'] });
+  const pdf = f.addRun('pdf-run', 2, { eligible: true, sourceFormat: 'PDF' });
+  const hwp = f.addRun('hwp-run', 1, { eligible: false, sourceFormat: 'HWP' });
+  const hwpx = f.addRun('hwpx-run', 1, { eligible: false, sourceFormat: 'HWPX' });
+  const frozen = freezeWorkBatch(f.root, 'job', [pdf.ref, hwp.ref, hwpx.ref]);
+  const denominator = frozen.freezes[0].benchmarkDenominator;
+  assert.equal(denominator.totalTargetCount, 4);
+  assert.equal(denominator.eligibleTargetCount, 2);
+  assert.equal(denominator.excludedTargetCount, 2);
+
+  const statePath = path.join(f.root, 'alive/runtime/work-batches/job/state.json');
+  const state = readWorkBatch(f.root, 'job');
+  state.executionIdentity = { ...state.executionIdentity, actualModel: 'gpt-5.6-luna', actualReasoningEffort: 'xhigh', modelRouteObservedAtStart: '2026-09-11T00:00:00.000Z', modelRouteObservedAtClosure: '2026-09-11T00:01:00.000Z', routeStatus: 'VALID', MODEL_ROUTE_PARITY: 'PASS' };
+  fs.writeFileSync(statePath, JSON.stringify(state));
+  const reserved = reserveWorkBatchReview(f.root, 'job', reviewRequest('FINAL_AUDIT'));
+  assert.deepEqual(reserved.launches[0].scope, sortedTargets(pdf.targets));
+
+  const passReport = run => ({ runId: run.runId, status: 'PASS', freshness: run.questions.flatMap(question => question.requiredAxes.map(axis => ({ questionUid: question.questionUid, axis, mode: 'FRESH', status: 'PASS' }))) });
+  const excludedReport = run => ({ runId: run.runId, status: 'BLOCKED', freshness: run.questions.flatMap(question => question.requiredAxes.map(axis => ({ questionUid: question.questionUid, axis, mode: 'FRESH', status: 'BLOCKED' }))), errors: ['GOLD_INELIGIBLE_SOURCE_FORMAT'] });
+  const aggregate = aggregateWorkBatchAudit(f.root, reserved, [pdf.run, hwp.run, hwpx.run], [passReport(pdf.run), excludedReport(hwp.run), excludedReport(hwpx.run)]);
+  assert.equal(aggregate.status, 'PASS');
+  assert.equal(aggregate.benchmarkEligible, true);
+  assert.equal(aggregate.finalCoverage, 1);
+  assert.equal(aggregate.diagnostics.closed, true);
+  assert.equal(aggregate.diagnostics.eligibleReportCount, 1);
+  assert.deepEqual(aggregate.diagnostics.excludedRuns.map(row => row.runId), ['hwp-run', 'hwpx-run']);
+  assert.deepEqual(aggregate.reports.map(report => [report.runId, report.status]), [['pdf-run', 'PASS'], ['hwp-run', 'BLOCKED'], ['hwpx-run', 'BLOCKED']]);
+
+  const routeMismatchState = { ...reserved, executionIdentity: { ...reserved.executionIdentity, actualModel: 'gpt-6-astra', actualReasoningEffort: 'high', routeStatus: 'MODEL_ROUTE_INVALID', MODEL_ROUTE_PARITY: 'FAIL' } };
+  const routeMismatch = aggregateWorkBatchAudit(f.root, routeMismatchState, [pdf.run, hwp.run, hwpx.run], [passReport(pdf.run), excludedReport(hwp.run), excludedReport(hwpx.run)]);
+  assert.equal(routeMismatch.status, 'BLOCKED');
+  assert.equal(routeMismatch.benchmarkEligible, false);
+});
+
+test('all-ineligible past-exam jobs keep the zero-denominator HOLD gate', t => {
+  const f = benchmarkFixture(t, { pipeline: 'past-exam', runIds: ['hwp-run'] });
+  const hwp = f.addRun('hwp-run', 2, { eligible: false, sourceFormat: 'HWPX' });
+  assert.throws(() => freezeWorkBatch(f.root, 'job', [hwp.ref]), /GOLD_BENCHMARK_DENOMINATOR_EMPTY/);
+  assert.equal(readWorkBatch(f.root, 'job').status, 'HOLD');
 });
