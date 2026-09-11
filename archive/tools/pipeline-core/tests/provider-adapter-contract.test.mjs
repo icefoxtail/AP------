@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
+import { completedTurnFor, completedTurnText } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -17,4 +18,20 @@ test('provider auditor output normalizer restores strict JSON-string evidence it
   assert.throws(() => parseJsonObjectItems([{ questionUid: 'exam|1' }], 'evidence'), /ITEM_STRING_REQUIRED/);
   assert.throws(() => parseJsonObjectItems(['not-json'], 'defects'), /ITEM_JSON_INVALID/);
   assert.throws(() => parseJsonObjectItems(['[]'], 'defects'), /ITEM_OBJECT_REQUIRED/);
+});
+
+test('provider adapter falls back to the completed turn final agent message', () => {
+  const notifications = [{
+    method: 'turn/completed',
+    params: {
+      threadId: 'thread',
+      turn: {
+        id: 'turn',
+        status: 'completed',
+        items: [{ type: 'agentMessage', id: 'item', text: '{"evidence":[],"defects":[]}' }],
+      },
+    },
+  }];
+  assert.ok(completedTurnFor(notifications, 'thread', 'turn'));
+  assert.equal(completedTurnText(notifications, 'thread', 'turn'), '{"evidence":[],"defects":[]}');
 });

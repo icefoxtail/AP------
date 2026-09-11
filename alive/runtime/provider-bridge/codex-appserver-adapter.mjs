@@ -6,6 +6,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
+import { completedTurnFor, completedTurnText } from './auditor-turn-output.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -167,10 +168,9 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   let text = '';
   const deadline = Date.now() + 300000;
   while (Date.now() < deadline) {
-    const index = app.notifications.findIndex(message => message.method === 'turn/completed' && message.params?.threadId === thread.id && message.params?.turn?.id === turnId);
-    const delta = app.notifications.filter(message => message.method === 'item/agentMessage/delta' && message.params?.threadId === thread.id && message.params?.turnId === turnId).map(message => message.params.delta).join('');
-    if (delta.length > text.length) text = delta;
-    if (index >= 0) break;
+    const completedText = completedTurnText(app.notifications, thread.id, turnId);
+    if (completedText.length > text.length) text = completedText;
+    if (completedTurnFor(app.notifications, thread.id, turnId)) break;
     await new Promise(resolve => setTimeout(resolve, 50));
   }
   if (!text) throw new Error('CODEX_APPSERVER_EMPTY_AGENT_OUTPUT');
