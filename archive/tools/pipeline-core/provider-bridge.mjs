@@ -241,10 +241,11 @@ function phaseRequest(plan, packet) {
 export function bindProviderDefectsToLaunchScope(defects, scope) {
   const rowsFor = defect => {
     if (typeof defect?.questionUid === 'string') return scope.filter(row => row.questionUid === defect.questionUid);
-    if (typeof defect?.scope !== 'string') return [];
-    const exact = scope.filter(row => row.questionUid === defect.scope);
+    const declaredScope = typeof defect?.scope === 'string' ? defect.scope : typeof defect?.questionUids === 'string' ? defect.questionUids : null;
+    if (!declaredScope) return [];
+    const exact = scope.filter(row => row.questionUid === declaredScope);
     if (exact.length) return exact;
-    const match = defect.scope.match(/^(.*)\|(\d+)\.\.(\d+)$/);
+    const match = declaredScope.match(/^(.*)\|(\d+)\.\.(\d+)$/);
     if (!match) return [];
     const prefix = match[1];
     const start = Number(match[2]);
