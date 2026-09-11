@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_PIPELINE_DEFECT_EVIDENCE_v1",
+  "status": "ROOT_CAUSE_IDENTIFIED_PENDING_TERMINAL_RECONCILE",
+  "workBatchId": "past20-maesan-repair-912f9b7fb",
+  "launchId": "past20-maesan-repair-912f9b7fb:1",
+  "failedPhase": "U1",
+  "observedProviderLog": {
+    "source": "C:/Users/USER/.codex/logs_2.sqlite",
+    "threadId": "01a0911e-1290-7bc2-8e29-fbdb0ee69dbf",
+    "turnId": "01a0911f-c607-7ef0-b137-16fd66f3d5fa",
+    "timestampUnixSeconds": 1789141251,
+    "model": "gpt-5.6-luna",
+    "outputItemCompleted": true,
+    "totalUsageTokens": 23540,
+    "schema400Observed": false
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "defect": "The adapter only assembled output from item/agentMessage/delta notifications and did not fall back to the completed turn's final agent-message item, so a successful model turn never became a phase response.",
+    "classification": "PIPELINE_DEFECT",
+    "transportErrorWasWrapper": true,
+    "semanticModelTurnCompleted": true
+  },
+  "repairPlan": {
+    "scope": "Extract final agent-message text from turn/completed when delta aggregation is empty, while preserving the existing delta path.",
+    "sameLaunchRetry": false,
+    "freshRunRequiredAfterRepair": true
+  }
+}
