@@ -22,7 +22,7 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
         else errors.push(message);
     });
     await page.goto(base + '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&printDryRun=1&prewarm=0' + (process.env.AP_BROWSER_CACHE === '0' ? '&snapshotCache=0' : ''));
-    await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, { timeout: 120000 });
+    await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, undefined, { timeout: 120000 });
     await page.evaluate(() => archiveScreenRuntime.whenIdle());
     async function check(name, work) {
         try { await work(); tests.push({ name, status: 'PASS' }); console.log('PASS', name); }

@@ -6,7 +6,7 @@ const base='http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/r
  const browser=await chromium.launch({channel:'chrome',headless:true});const results=[];
  const runModes=async (label, query, clickNavigates=false) => {
   const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(String(e)));
-  await page.goto(base+'&mode=exam&'+query);await page.waitForFunction(()=>window.__AP_RENDER_METRICS__?.finishedAt,{timeout:60000});
+  await page.goto(base+'&mode=exam&'+query);await page.waitForFunction(()=>window.__AP_RENDER_METRICS__?.finishedAt,undefined,{timeout:60000});
   for(const mode of ['exam','sol','ans']){
    if(mode!=='exam'){
     if(clickNavigates) {

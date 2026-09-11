@@ -9,7 +9,7 @@ const fixtures=['test-fixtures/render-authority-golden.js','original/middle/m3/2
   const p=await browser.newPage({viewport:{width,height:1000}});
   await p.route('**/api/**',r=>r.abort());
   await p.goto('http://127.0.0.1:8766/archive/engine.html?data='+encodeURIComponent('exams/'+file)+'&mode='+mode+'&printDryRun=1');
-  await p.waitForFunction(()=>window.archiveScreenRuntime,{timeout:30000});
+  await p.waitForFunction(()=>window.archiveScreenRuntime,undefined,{timeout:30000});
   const initial=await p.evaluate(()=>archiveScreenRuntime.whenIdle());assert.equal(initial.ok,true,JSON.stringify(initial));
   const result=await p.evaluate(async mode=>{
    const runtime=archiveScreenRuntime,initial=runtime.activeSnapshot;

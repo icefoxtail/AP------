@@ -10,7 +10,7 @@ const fixtures=['test-fixtures/render-authority-golden.js','original/middle/m3/2
    const p=await browser.newPage({viewport:{width,height:1000}});const errors=[];p.on('pageerror',e=>errors.push(String(e)));
    await p.route('**/api/**',r=>r.abort());
    await p.goto('http://127.0.0.1:8766/archive/engine.html?data='+encodeURIComponent('exams/'+file)+'&mode='+mode+'&snapshotCache=0&prewarm=0'+(planner==='observed'?'&layoutPlanner=observed':''));
-   await p.waitForFunction(()=>window.archiveScreenRuntime);const ready=await p.evaluate(()=>archiveScreenRuntime.whenIdle());assert.equal(ready.ok,true,JSON.stringify(ready));
+   await p.waitForFunction(()=>window.archiveScreenRuntime?.activeSnapshot,undefined,{timeout:120000});const ready=await p.evaluate(()=>archiveScreenRuntime.whenIdle());assert.equal(ready.ok,true,JSON.stringify(ready));
    records.push(await p.evaluate(mode=>{const root=document.getElementById('print-area');return {
     text:root.textContent,pages:root.querySelectorAll('.page').length,
     shapes:[...root.querySelectorAll('.page,.q-box,.sol-box,.sol-exp,mjx-container,img')].map(n=>({w:n.offsetWidth,h:n.offsetHeight})),

@@ -6,7 +6,7 @@ const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const out = path.join(root, 'reports/archive-fast-engine-v2');
 const base = 'http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&prewarm=0&snapshotCache=0';
-const version = '20260911.4';
+const version = '20260911.5';
 const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter'];
 
 (async () => {
@@ -21,17 +21,17 @@ const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-mater
         // current runtime files to load even when the old resource is warm.
         await page.goto('http://127.0.0.1:8766/archive/layout-authority.js?v=20260906.25');
         await page.goto(base);
-        await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, { timeout: 60000 });
+        await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, undefined, { timeout: 60000 });
         await page.evaluate(() => archiveScreenRuntime.whenIdle());
         const scripts = await page.evaluate(() => [...document.scripts].map(script => script.src).filter(Boolean));
-        for (const script of runtimeScripts) assert.ok(scripts.some(src => src.endsWith(`/archive/${script}.js?v=20260911.4`)), script);
+        for (const script of runtimeScripts) assert.ok(scripts.some(src => src.endsWith(`/archive/${script}.js?v=20260911.5`)), script);
         const identity = await page.evaluate(() => ({
             runtime: Boolean(window.APScreenRuntime), planner: typeof window.APLayoutAuthority?.planMeasuredSolutionLayout,
             materializer: Boolean(window.APArchiveLayoutMaterializer), fingerprint: archiveScreenRuntime.committedCandidate.fingerprints
         }));
         assert.equal(identity.runtime, true); assert.equal(identity.planner, 'function'); assert.equal(identity.materializer, true);
-        assert.equal(identity.fingerprint.engine, 'archive-fast-phase6-20260911.4');
-        assert.equal(identity.fingerprint.layoutAuthority, 'measured-production-v1-20260911.4');
+        assert.equal(identity.fingerprint.engine, 'archive-fast-phase6-20260911.5');
+        assert.equal(identity.fingerprint.layoutAuthority, 'measured-production-v1-20260911.5');
 
         await page.getByRole('button', { name: '헤더 수정' }).click();
         const input = page.locator('#print-header-title-input');
@@ -79,10 +79,57 @@ const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-mater
         await page.goto(base);
         await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot);
         await page.evaluate(() => archiveScreenRuntime.whenIdle());
-        const warm = await page.evaluate(() => [...document.scripts].map(script => script.src).filter(src => src.includes('/archive/')).filter(src => src.includes('?v=20260911.4')).length);
+        const warm = await page.evaluate(() => [...document.scripts].map(script => script.src).filter(src => src.includes('/archive/')).filter(src => src.includes('?v=20260911.5')).length);
         assert.equal(warm, runtimeScripts.length);
+
+        const qrButton = page.getByRole('button', { name: /QR 출력/ });
+        if (await qrButton.isVisible()) await qrButton.click();
+        async function fastToggle(selector, param, candidateField, canvasSelector) {
+            await page.evaluate(() => {
+                window.__qrOriginalExecutor = window.APExamRenderExecutor;
+                window.__qrDelayEntered = false;
+                window.__qrDelayOnce = true;
+                window.APExamRenderExecutor = {
+                    ...window.__qrOriginalExecutor,
+                    async render(args) {
+                        if (window.__qrDelayOnce) {
+                            window.__qrDelayOnce = false;
+                            window.__qrDelayEntered = true;
+                            await new Promise(resolve => { window.__releaseQrDelay = resolve; });
+                        }
+                        return window.__qrOriginalExecutor.render(args);
+                    }
+                };
+            });
+            const checkbox = page.locator(selector);
+            const clickCheckbox = async () => {
+                if (await checkbox.isVisible()) await checkbox.click();
+                else await page.evaluate(target => document.querySelector(target).click(), selector);
+            };
+            await clickCheckbox();
+            await page.waitForFunction(() => window.__qrDelayEntered);
+            assert.equal(await checkbox.isChecked(), true, `${param}: desired ON must remain visible before commit`);
+            await clickCheckbox();
+            assert.equal(await checkbox.isChecked(), false, `${param}: fast OFF must remain visible before commit`);
+            await page.evaluate(() => window.__releaseQrDelay());
+            await page.evaluate(() => archiveScreenRuntime.whenIdle());
+            const result = await page.evaluate(({ param, candidateField, canvasSelector }) => ({
+                checkbox: document.querySelector(candidateField === 'submit' ? '#chk-submit-qr' : '#chk-sol-qr').checked,
+                url: new URL(location.href).searchParams.get(param),
+                candidate: archiveScreenRuntime.committedCandidate.qrState[candidateField],
+                canvasCount: document.querySelectorAll(canvasSelector).length,
+                label: document.getElementById('btn-qr-output').textContent
+            }), { param, candidateField, canvasSelector });
+            await page.evaluate(() => { window.APExamRenderExecutor = window.__qrOriginalExecutor; });
+            assert.deepEqual(result, { checkbox: false, url: '0', candidate: false, canvasCount: 0, label: 'QR 출력: 없음' });
+            return result;
+        }
+        const qr = {
+            submit: await fastToggle('#chk-submit-qr', 'submitQr', 'submit', '.page-submit-qr canvas'),
+            solution: await fastToggle('#chk-sol-qr', 'solQr', 'sol', '.page-qr canvas')
+        };
         assert.deepEqual(errors, []);
-        results.push({ width, identity, header, clipping, warmScriptCount: warm, errors });
+        results.push({ width, identity, header, clipping, qr, warmScriptCount: warm, errors });
         await context.close();
         console.log('PASS', width);
     }
