@@ -38,3 +38,15 @@ export function completedTurnFromTurnsList(response, turnId) {
   return (response?.data || [])
     .find(turn => turn?.id === turnId && ['completed', 'failed', 'interrupted'].includes(turn.status)) || null;
 }
+
+export function parseAuditorOutputText(text) {
+  const start = text.indexOf('{');
+  const end = text.lastIndexOf('}');
+  if (start < 0 || end <= start) return null;
+  try {
+    const output = JSON.parse(text.slice(start, end + 1));
+    return output && !Array.isArray(output) && Array.isArray(output.evidence) && Array.isArray(output.defects) ? output : null;
+  } catch {
+    return null;
+  }
+}
