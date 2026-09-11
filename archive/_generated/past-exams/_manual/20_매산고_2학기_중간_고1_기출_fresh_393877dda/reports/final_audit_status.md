@@ -4,6 +4,7 @@
 - Pipeline repair commits included: `ab9b39a53`, `7fdac72b2`, `393877dda`
 - Candidate static status: `EXTRACTION_VALIDATED`
 - Final validation issues: 0; missing answer/solution/subunit/image: 0
+- q20 constructed-response answer field repair: `b1b5dd6f1`; refreshed final validation evidence: `65d623701`
 - Source correction ledger: `source_correction_report.md`
 - Production provider work-batch: `past20-maesan-final-393877dda`
 - Provider FINAL_AUDIT: `FAILED` / `HOLD`
