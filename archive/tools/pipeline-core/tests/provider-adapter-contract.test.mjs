@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
 import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
+import { bindProviderDefectsToLaunchScope } from '../provider-bridge.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -78,4 +79,11 @@ test('app-server turn/start response unwraps the nested turn contract', () => {
   assert.equal(turnFromStartResponse({ turn: { id: 'nested-turn' } }).id, 'nested-turn');
   assert.equal(turnFromStartResponse({ id: 'legacy-turn' }).id, 'legacy-turn');
   assert.equal(turnFromStartResponse(null), null);
+});
+
+test('provider defects bind missing runId from the frozen launch scope', () => {
+  const scope = [{ runId: 'run-1', questionUid: 'exam|5' }];
+  assert.deepEqual(bindProviderDefectsToLaunchScope([{ questionUid: 'exam|5', severity: 'major' }], scope), [{ questionUid: 'exam|5', severity: 'major', runId: 'run-1' }]);
+  assert.throws(() => bindProviderDefectsToLaunchScope([{ questionUid: 'exam|9' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
+  assert.throws(() => bindProviderDefectsToLaunchScope([{ questionUid: 'exam|5', runId: 'run-2' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
 });
