@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "status": "HOLD",
+  "preDispatchFailure": true,
+  "failureCode": "PROVIDER_SOURCE_ASSET_NOT_BOUND",
+  "failureStage": "packet_validation_before_provider_dispatch",
+  "workBatchId": "past20-maesan-final-7fdac72b2",
+  "launchId": "past20-maesan-final-7fdac72b2:1",
+  "externalId": "01a090ba-3375-7c50-bf62-27c7d2617de3",
+  "providerPlanPath": "alive/runtime/provider-bridge/past20-maesan-final-7fdac72b2/plan.json",
+  "pipelineFixCommit": "393877dda",
+  "details": "The source problem visual was bound under the staged run assetRoot, while the provider bridge only looked under archive/assets. No U1/U2/U3 model phase was dispatched."
+}
