@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnText } from './auditor-turn-output.mjs';
+import { completedTurnFor, completedTurnFromThreadRead, completedTurnText } from './auditor-turn-output.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -167,7 +167,18 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   const turnId = turn.id;
   let text = '';
   const deadline = Date.now() + 300000;
+  let nextHistoryReadAt = 0;
   while (Date.now() < deadline) {
+    if (!completedTurnFor(app.notifications, thread.id, turnId) && Date.now() >= nextHistoryReadAt) {
+      nextHistoryReadAt = Date.now() + 1000;
+      try {
+        const history = await app.request('thread/read', { threadId: thread.id, includeTurns: true });
+        const historyTurn = completedTurnFromThreadRead(history, thread.id, turnId);
+        if (historyTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: historyTurn } });
+      } catch {
+        // Notification delivery remains the primary path; history polling is bounded recovery.
+      }
+    }
     const completedText = completedTurnText(app.notifications, thread.id, turnId);
     if (completedText.length > text.length) text = completedText;
     if (completedTurnFor(app.notifications, thread.id, turnId)) break;

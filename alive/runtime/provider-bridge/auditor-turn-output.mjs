@@ -27,3 +27,9 @@ export function completedTurnText(notifications, threadId, turnId) {
     })
     .join('');
 }
+
+export function completedTurnFromThreadRead(response, threadId, turnId) {
+  if (response?.thread?.id && response.thread.id !== threadId) return null;
+  return (response?.thread?.turns || [])
+    .find(turn => turn?.id === turnId && ['completed', 'failed', 'interrupted'].includes(turn.status)) || null;
+}
