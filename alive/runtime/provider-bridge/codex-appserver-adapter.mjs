@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -156,7 +157,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
     threadId: thread.id,
     model: 'gpt-5.6-luna',
     input: [{ type: 'text', text: request.prompt }],
-    outputSchema: { type: 'object', additionalProperties: false, properties: { evidence: { type: 'array' }, defects: { type: 'array' } }, required: ['evidence', 'defects'] },
+    outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
     collaborationMode: { mode: 'default', settings: { model: 'gpt-5.6-luna', developer_instructions: null } }
