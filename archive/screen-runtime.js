@@ -35,6 +35,7 @@
         let tail = Promise.resolve(), activeContext = null, latestReady = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
         let desired = null;
         const attempts = [], cleanupPending = [];
+        const retiredSessions = new Set();
         const owners = new WeakMap();
         const canCache = mode => (adapter.cacheModes || []).includes(mode);
         function isLatest(ctx) { return ctx.requestGeneration === currentRequestGeneration && !ctx.abortSignal.aborted; }
@@ -131,7 +132,7 @@
                 observe('COMMIT_SUCCESS', ctx);
                 // Keep optional post-commit effects and cleanup out of correctness rollback.
                 try { adapter.afterCommit?.(ctx); } catch (error) { observe('POST_COMMIT_EFFECT_FAILED', { ...ctx, error }); }
-                if (oldSession && oldSession !== currentSession) oldSession.status = 'RETIRED_PENDING_CLEANUP';
+                if (oldSession && oldSession !== currentSession) { oldSession.status = 'RETIRED_PENDING_CLEANUP'; retiredSessions.add(oldSession); }
                 const retired = new Set();
                 if (oldSession && oldSession !== currentSession) Object.values(oldSession.modeSnapshots).filter(Boolean).forEach(s => retired.add(s));
                 else {
@@ -139,9 +140,14 @@
                     if (cached && cached !== snapshot) retired.add(cached);
                 }
                 for (const obsolete of retired) if (obsolete !== snapshot) await cleanup(obsolete.rootNode, null, obsolete);
-                if (oldSession && oldSession !== currentSession) { oldSession.status = 'EVICTED'; oldSession.modeSnapshots = { exam: null, sol: null, ans: null }; }
                 for (const [mode, s] of Object.entries(currentSession.modeSnapshots)) if (s?.status === 'EVICTED') currentSession.modeSnapshots[mode] = null;
                 for (const item of cleanupPending.splice(0)) await cleanup(item.root, item.session, item.snapshot);
+                for (const retiredSession of retiredSessions) {
+                    if (Object.values(retiredSession.modeSnapshots).filter(Boolean).every(s => s.status === 'EVICTED')) {
+                        retiredSession.status = 'EVICTED'; retiredSession.modeSnapshots = { exam: null, sol: null, ans: null };
+                        retiredSessions.delete(retiredSession);
+                    }
+                }
                 await adapter.visible?.(ctx);
                 ctx.visibleReadyMs = Date.now() - ctx.createdAt;
                 observe('VISIBLE_READY', ctx);

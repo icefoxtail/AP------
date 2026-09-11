@@ -17,7 +17,7 @@ const base = process.env.AP_ARCHIVE_BASE || 'http://127.0.0.1:8766';
         await route.fulfill({ status: failDelivery ? 503 : 200, contentType: 'application/json', body: JSON.stringify({ success: !failDelivery }) });
     });
     page.on('pageerror', error => errors.push(String(error)));
-    await page.goto(base + '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&printDryRun=1');
+    await page.goto(base + '/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&qpp=4&printDryRun=1' + (process.env.AP_BROWSER_CACHE === '0' ? '&snapshotCache=0' : ''));
     await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, { timeout: 120000 });
     await page.evaluate(() => archiveScreenRuntime.whenIdle());
     async function check(name, work) {
