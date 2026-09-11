@@ -361,6 +361,20 @@ export function reconcileWorkBatchReview(root, id, request) {
   return mutate(root, id, state => {
     const launch = state?.launches.find(l => l.launchId === request.launchId);
     check(launch, 'UNKNOWN_LAUNCH');
+    if (launch.status === 'RESERVED' && request.status === 'FAILED' && request.preDispatchFailure === true) {
+      check(nonempty(request.externalId), 'PRE_DISPATCH_PROVIDER_ID_REQUIRED');
+      const receipt = load(root, request.providerReceiptRef);
+      check(receipt.status === 'FAILED' && receipt.preDispatchFailure === true && receipt.externalId === request.externalId && receipt.launchId === launch.launchId && receipt.independentAgentLaunchCount === 0 && receipt.expensiveAgentLaunchCount === 0 && receipt.concurrentExpensiveAgentPeak === 0 && receipt.recursiveSubagentLaunchCount === 0, 'PRE_DISPATCH_FAILURE_RECEIPT_REQUIRED');
+      check(Array.isArray(receipt.evidenceRefs) && receipt.evidenceRefs.length > 0, 'PRE_DISPATCH_FAILURE_EVIDENCE_REQUIRED');
+      for (const ref of receipt.evidenceRefs) readBoundFile(root, ref);
+      launch.externalId = request.externalId;
+      launch.status = 'FAILED';
+      launch.endedAt = time();
+      launch.usedTokens = null;
+      launch.providerReceiptRef = request.providerReceiptRef;
+      state.status = 'HOLD';
+      return state;
+    }
     if (launch.status === 'RESERVED') {
       check(request.status === 'DISPATCHED' && nonempty(request.externalId), 'PROVIDER_ID_REQUIRED');
       check(!state.launches.some(l => l.externalId === request.externalId), 'DUPLICATE_PROVIDER_TASK');

@@ -207,8 +207,12 @@ function sourceContexts(root, freeze) {
     declaredContextDependencyUidSet.push(...(run.declaredContextDependencyUidSet || []));
     for (const question of loadBoundQuestionBanks(root, run)) {
       const sourceImage = question.sourceRecord?.image;
-      const sourcePath = sourceImage ? (sourceImage.startsWith('archive/') ? sourceImage : `archive/${sourceImage}`) : null;
-      const sourceAsset = sourcePath ? run.inputs.find(ref => ref.path === sourcePath) : null;
+      const sourceAssetPaths = sourceImage
+        ? (sourceImage.startsWith('archive/')
+          ? [sourceImage]
+          : [path.posix.join(run.assetRoot || 'archive', sourceImage), `archive/${sourceImage}`])
+        : [];
+      const sourceAsset = sourceAssetPaths.length ? run.inputs.find(ref => sourceAssetPaths.includes(ref.path)) : null;
       if (sourceImage) check(sourceAsset, 'PROVIDER_SOURCE_ASSET_NOT_BOUND');
       sourcePayloads.set(question.questionUid, {
         content: question.sourceRecord.content,
