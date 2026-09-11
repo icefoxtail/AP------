@@ -87,3 +87,10 @@ test('provider defects bind missing runId from the frozen launch scope', () => {
   assert.throws(() => bindProviderDefectsToLaunchScope([{ questionUid: 'exam|9' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
   assert.throws(() => bindProviderDefectsToLaunchScope([{ questionUid: 'exam|5', runId: 'run-2' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
 });
+
+test('provider aggregate defect scopes expand only across matching launch UIDs', () => {
+  const scope = [1, 2, 3].map(id => ({ runId: 'run-1', questionUid: `exam|${id}` }));
+  const bound = bindProviderDefectsToLaunchScope([{ scope: 'exam|1..2', severity: 'blocker' }], scope);
+  assert.deepEqual(bound.map(defect => [defect.questionUid, defect.runId]), [['exam|1', 'run-1'], ['exam|2', 'run-1']]);
+  assert.throws(() => bindProviderDefectsToLaunchScope([{ scope: 'other|1..2' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
+});

@@ -239,11 +239,30 @@ function phaseRequest(plan, packet) {
 }
 
 export function bindProviderDefectsToLaunchScope(defects, scope) {
-  return defects.map(defect => {
-    const scoped = scope.find(row => row.questionUid === defect?.questionUid);
-    check(scoped, 'PROVIDER_DEFECT_SCOPE_REQUIRED');
-    if (defect.runId !== undefined && defect.runId !== scoped.runId) throw new Error('HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED');
-    return defect.runId === undefined ? { ...defect, runId: scoped.runId } : defect;
+  const rowsFor = defect => {
+    if (typeof defect?.questionUid === 'string') return scope.filter(row => row.questionUid === defect.questionUid);
+    if (typeof defect?.scope !== 'string') return [];
+    const exact = scope.filter(row => row.questionUid === defect.scope);
+    if (exact.length) return exact;
+    const match = defect.scope.match(/^(.*)\|(\d+)\.\.(\d+)$/);
+    if (!match) return [];
+    const prefix = match[1];
+    const start = Number(match[2]);
+    const end = Number(match[3]);
+    return scope.filter(row => {
+      const candidate = row.questionUid.match(/^(.*)\|(\d+)$/);
+      if (!candidate || candidate[1] !== prefix) return false;
+      const ordinal = Number(candidate[2]);
+      return ordinal >= start && ordinal <= end;
+    });
+  };
+  return defects.flatMap(defect => {
+    const rows = rowsFor(defect);
+    check(rows.length > 0, 'PROVIDER_DEFECT_SCOPE_REQUIRED');
+    return rows.map(scoped => {
+      if (defect.runId !== undefined && defect.runId !== scoped.runId) throw new Error('HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED');
+      return { ...defect, questionUid: scoped.questionUid, runId: defect.runId === undefined ? scoped.runId : defect.runId };
+    });
   });
 }
 
