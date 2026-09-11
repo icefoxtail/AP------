@@ -16,10 +16,10 @@ const phase=mode==='ans'?'phase1b':mode==='sol'?'phase1c':'phase1d';
   await page.waitForFunction(()=>window.archiveScreenRuntime?.activeSnapshot,{timeout:60000});
   await page.evaluate(()=>archiveScreenRuntime.whenIdle());
   const result=await page.evaluate(async(targetMode)=>{
-   const runtime=archiveScreenRuntime;
+   const runtime=archiveScreenRuntime;const otherMode=targetMode==='exam'?'ans':'exam';
    const original=runtime.activeSnapshot, root=original.rootNode, text=root.textContent;
    const builtRequestGeneration=original.builtRequestGeneration;
-   await switchMode('exam');
+   await switchMode(otherMode);
    const kept=original.status==='READY' && !root.isConnected;
    const math=MathJax.typesetPromise;
    MathJax.typesetPromise=()=>{throw Error('CACHE_HIT_TYPESET_FORBIDDEN')};
@@ -30,7 +30,7 @@ const phase=mode==='ans'?'phase1b':mode==='sol'?'phase1c':'phase1d';
    const preflight=JSON.parse(document.documentElement.dataset.apSnapshotPrintPreflight);
    const firstTracker=archiveReadinessTracker;await safePrint('vector');
    const repeated=firstTracker!==archiveReadinessTracker;
-   await switchMode('exam');
+   await switchMode(otherMode);
    const beforeRoot=document.getElementById('print-area'), beforeMode=AppState.mode;
    const push=history.pushState;history.pushState=()=>{throw Error('CACHE_COMMIT_FAIL')};
    const failed=await switchMode(targetMode);history.pushState=push;
@@ -64,8 +64,9 @@ const phase=mode==='ans'?'phase1b':mode==='sol'?'phase1c':'phase1d';
   assert.ok(result.invalidations.every(r=>r.pass));assert.equal(result.rejectedFont,true);assert.equal(result.refit,true);assert.equal(result.refitCount,40);assert.ok(result.pages>1);
   assert.deepEqual(errors,[]);
   await page.evaluate(async mode=>{
+   await setQrOutputParam('sol',false);
    await archiveScreenRuntime.request({type:'SOURCE_CHANGE',payload:{safeDataUrl:'exams/test-fixtures/render-authority-golden.js',mode,qpp:4}});
-   await switchMode('exam');await switchMode(mode);
+   await switchMode(mode==='exam'?'ans':'exam');await switchMode(mode);
   },mode);
   const visual=await page.evaluate(()=>{const area=document.getElementById('print-area');return {
    text:area.textContent,sourceRefs:[...area.querySelectorAll('[data-source-ref]')].map(n=>n.dataset.sourceRef),

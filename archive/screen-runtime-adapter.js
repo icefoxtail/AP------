@@ -310,9 +310,9 @@ function createArchiveScreenRuntime() {
     }
     runtime = window.APScreenRuntime.create({
         captureInput, prepare, build, validate, capture, attach, commit, rollback, afterCommit,
-        cacheModes: new URLSearchParams(location.search).get('snapshotCache') === '0' ? [] : ['ans', 'sol'],
+        cacheModes: new URLSearchParams(location.search).get('snapshotCache') === '0' ? [] : ['ans', 'sol', 'exam'],
         freezeSnapshot(snapshot, ctx) {
-            if (['ans', 'sol'].includes(snapshot.mode)) window.APArchiveSnapshotContract.freeze(snapshot, ctx);
+            window.APArchiveSnapshotContract.freeze(snapshot, ctx);
         },
         canReuse: (snapshot, ctx) => window.APArchiveSnapshotContract.canReuse(snapshot, ctx),
         reuse(ctx, snapshot) {
