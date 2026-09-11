@@ -274,6 +274,13 @@ def question_type_from_raw(raw, display_no):
     return "객관식"
 
 
+def choices_source_for(question_type, choices):
+    """Blank choices are expected for non-objective source questions."""
+    if choices:
+        return "vision_page"
+    return "vision_required" if question_type == "객관식" else "not_applicable"
+
+
 def as_float(value, default=0.0):
     try:
         return float(value)
@@ -369,6 +376,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
             display_no = str(source_item["sourceQuestionNo"]).strip()
             qid = sequential_id
             sequential_id += 1
+            question_type = question_type_from_raw(raw_q.get("questionType"), display_no)
             content = str(raw_q.get("content") or "").strip()
             raw_choices = raw_q.get("choices") or []
             choices = [str(choice).strip() for choice in raw_choices if str(choice).strip()]
@@ -379,7 +387,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
             review_reasons = []
             if not content:
                 review_reasons.append("content_empty_or_not_extracted")
-            if question_type_from_raw(raw_q.get("questionType"), display_no) == "객관식" and len(choices) not in (0, 5):
+            if question_type == "객관식" and len(choices) not in (0, 5):
                 review_reasons.append("objective_choices_count_not_5")
             if has_visual and not bbox_ok:
                 review_reasons.extend(bbox_reasons)
@@ -404,7 +412,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
                 "subUnit": "",
                 "subUnitConfidence": "",
                 "subUnitClassificationDepth": "",
-                "questionType": question_type_from_raw(raw_q.get("questionType"), display_no),
+                "questionType": question_type,
                 "layoutTag": "grid",
                 "tags": ["기출"],
                 "wide": False,
@@ -433,7 +441,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
                 "fullPageImageRelPath": page_meta["relativeImagePath"],
                 "imageStatus": "visual_asset_pending_crop" if has_visual and bbox_ok else "no_question_crop",
                 "contentSource": "vision_page" if content else "vision_required",
-                "choicesSource": "vision_page" if choices else "vision_required",
+                "choicesSource": choices_source_for(question_type, choices),
                 "answerSource": "not_in_pipeline",
                 "solutionSource": "not_in_pipeline",
                 "answerStatus": "external_agent_required",
