@@ -25,7 +25,7 @@
         const images = assets(snapshot.rootNode);
         const noMath = !snapshot.rootNode.querySelector('mjx-container') && countMath(snapshot.rootNode) === 0;
         const common = {
-            S01: ctx.result.pageCount > 0, S02: snapshot.key === ctx.snapshotKey,
+            S01: ctx.state === 'SUCCEEDED', S02: snapshot.key === ctx.snapshotKey,
             S03: snapshot.sessionId === ctx.requestedTargetSessionId, S04: !!ctx.candidate.source.sourceArchiveFile,
             S05: snapshot.rootNode === ctx.targetArea, S06: true,
             S07: document.fonts.status === 'loaded', S08: noMath || !!window.MathJax?.typesetPromise,

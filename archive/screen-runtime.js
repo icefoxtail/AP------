@@ -77,6 +77,7 @@
                 if (ctx.keyInputDigest !== ctx.buildInputDigest || ctx.result.sessionId !== ctx.requestedTargetSessionId) throw new Error('BUILD_INPUT_PARITY_FAILED');
                 if (!hit) await adapter.validate?.(ctx);
                 if (!isLatest(ctx)) throw new Error('DISCARDED_STALE');
+                ctx.state = 'SUCCEEDED';
                 const snapshot = hit ? cached : {
                     snapshotId: unique('snapshot'), mode: ctx.candidate.mode, canonicalMode: ctx.candidate.canonicalMode,
                     key: ctx.snapshotKey, sessionId: ctx.requestedTargetSessionId, status: 'READY',
