@@ -308,8 +308,14 @@
             });
         }
 
-        ({ cols } = makeGridPage());
-        for (let i = 0; i < solutionBoxes.length; i++) await placeSolutionBox(solutionBoxes[i], i + 1);
+        if (deps.layoutPlannerMode?.() === 'authority') {
+            const planned = await deps.renderSolutionPlan({ area, boxes: solutionBoxes, blocks: solutionDecisionBlocks, measurementsBySource: solutionMeasurementBySource });
+            solutionUsableHeight = planned.usableHeight;
+            planned.placements.forEach(item => solutionPlacementMap.set(item.blockId, item));
+        } else {
+            ({ cols } = makeGridPage());
+            for (let i = 0; i < solutionBoxes.length; i++) await placeSolutionBox(solutionBoxes[i], i + 1);
+        }
 
         if (appState) {
             appState.solutionDecisionLedger = {

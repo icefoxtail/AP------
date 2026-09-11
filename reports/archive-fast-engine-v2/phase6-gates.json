@@ -1,0 +1,24 @@
+{
+  "phase": "6",
+  "gates": {
+    "LAYOUT_AUTHORITY_PRODUCTION_PROMOTION": "PASS",
+    "ALL_PARITY_GATES": "PASS",
+    "ACTUAL_RENDER_PARITY": "PASS"
+  },
+  "defaultPlanner": "authority",
+  "rollbackFlag": "?layoutPlanner=observed",
+  "fixtures": 12,
+  "desktopMobile": true,
+  "visualCaptures": 24,
+  "staticTests": 63,
+  "browserRegressions": 19,
+  "evidence": [
+    "phase6-layout-browser.json",
+    "phase6-regression.json",
+    "phase6-static.tap",
+    "phase1b-browser.json",
+    "phase1c-browser.json",
+    "phase1d-browser.json"
+  ],
+  "performanceNote": "authority path preserves correctness; some solution fixture timings are slower, and no Phase 6 performance target is asserted"
+}

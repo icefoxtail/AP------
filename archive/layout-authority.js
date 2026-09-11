@@ -1106,6 +1106,68 @@
         return host;
     }
 
+    // Production solution planning consumes exact, source-free flow measurements.
+    // Missing continuation-range measurements are requested explicitly; the
+    // caller measures those ranges and invokes this pure function again.
+    function planMeasuredSolutionLayout(input) {
+        const geometry = input.pageGeometry || {};
+        const capacity = positive(geometry.usableHeight, 'MEASURED_SOLUTION_HEIGHT');
+        const columns = positiveInteger(geometry.columns, 'MEASURED_SOLUTION_COLUMNS', 2);
+        const tolerance = Math.max(0, Number(geometry.tolerance ?? 2));
+        const pages = [];
+        let pageNo = 1, columnNo = 1, attemptOrder = 0, order = 0;
+        const newPage = () => ({ pageNo, columns: Array.from({ length: columns }, (_, i) => ({ columnNo: i + 1, usedHeight: 0, items: [] })), itemPlacements: [] });
+        let page = newPage();
+        const current = () => page.columns[columnNo - 1];
+        const fits = height => Math.round(current().usedHeight + height) <= capacity + tolerance;
+        const advance = () => { if (columnNo < columns) columnNo += 1; else { pages.push(page); pageNo += 1; columnNo = 1; page = newPage(); } };
+        const add = (block, height, attempt, extra) => {
+            const item = Object.freeze({ blockId: block.blockId, columnNo, columnOrder: current().items.length, placementOrder: order++, attemptOrder: attempt, height, ...extra });
+            current().items.push(item); current().usedHeight += height; page.itemPlacements.push(item);
+        };
+        for (const block of input.blocks || []) {
+            for (const field of ['sourceRef', 'sourcePayload', 'sourceArchiveFile', 'sourceQuestionUid', 'studentId', 'recipientId', 'content', 'solution', 'answer']) {
+                if (Object.prototype.hasOwnProperty.call(block, field)) fail('SOURCE_DATA_FORBIDDEN_IN_LAYOUT:' + field);
+            }
+            safeText(block.blockId, 'MEASURED_BLOCK_ID');
+            const raw = positive(block.rawHeight, 'MEASURED_BLOCK_RAW');
+            const compressedHeight = positive(block.compressedHeight, 'MEASURED_BLOCK_COMPRESSED');
+            let compressed = false;
+            while (true) {
+                const attempt = attemptOrder++;
+                if (fits(compressed ? compressedHeight : raw)) { add(block, compressed ? compressedHeight : raw, attempt, { split: false, compressed }); break; }
+                compressed = true;
+                if (fits(compressedHeight)) { add(block, compressedHeight, attempt, { split: false, compressed }); break; }
+                if (current().items.length) { advance(); continue; }
+                let start = 0, continuation = 0;
+                const count = positiveInteger(block.chunkCount, 'MEASURED_CHUNK_COUNT', 1);
+                while (start < count) {
+                    const heights = continuation === 0 ? block.primaryHeights : block.continuationHeights?.[start];
+                    if (!heights) return Object.freeze({ status: 'NEEDS_MEASUREMENT', measurementRequest: Object.freeze({ blockId: block.blockId, start, primary: continuation === 0 }) });
+                    let end = start - 1, height = 0;
+                    for (let index = start; index < count; index += 1) {
+                        const measured = heights[index - start];
+                        if (measured === undefined) fail('INCOMPLETE_RANGE_MEASUREMENT');
+                        positive(measured, 'MEASURED_RANGE_HEIGHT');
+                        if (!fits(measured)) break;
+                        end = index; height = measured;
+                    }
+                    if (end < start) fail('MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE:' + block.blockId + ':' + start);
+                    add(block, height, attemptOrder++, { split: true, compressed, chunkStart: start, chunkEnd: end, continuation });
+                    start = end + 1; continuation += 1;
+                    if (start < count) advance();
+                }
+                break;
+            }
+        }
+        if (page.itemPlacements.length) pages.push(page);
+        return Object.freeze({ status: 'READY', planner: 'MEASURED_SOLUTION_PRODUCTION', columns, usableHeight: capacity,
+            pages: Object.freeze(pages.map(page => Object.freeze({ ...page,
+                columns: Object.freeze(page.columns.map(col => Object.freeze({ ...col, items: Object.freeze(col.items) }))),
+                itemPlacements: Object.freeze(page.itemPlacements)
+            }))) });
+    }
+
     function planClinicComposition(input) {
         const config = input || {};
         const recipients = Array.isArray(config.recipients) ? config.recipients : fail('CLINIC_RECIPIENTS_MUST_BE_ARRAY');
@@ -1193,5 +1255,5 @@
         return Object.freeze({ equal: differences.length === 0, differences: Object.freeze(differences), omissionCount, duplicationCount });
     }
 
-    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, planLegacySolutionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, observeLegacySolutionDomLayout, inspectRenderedOverflow, inspectRenderedLayoutGeometry, compareRenderedLayoutGeometry, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
+    return Object.freeze({ paginateRenderableBlocks, planLegacyProductionLayout, planLegacySolutionLayout, planMeasuredSolutionLayout, materializeLayoutMaps, materializePageMap, materializeLegacyLayoutMaps, buildExpectedLayoutMaps, comparePromotionLayouts, observeLegacyDomLayout, observeLegacySolutionDomLayout, inspectRenderedOverflow, inspectRenderedLayoutGeometry, compareRenderedLayoutGeometry, renderSharedLayoutWitness, planClinicComposition, compareClinicComposition });
 }));

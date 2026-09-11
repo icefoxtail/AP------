@@ -92,6 +92,7 @@
                 wide: item.q.wide === true
             }))
         };
+        if (deps.layoutPlannerMode?.() === 'authority') return deps.renderExamPlan({ area, items, usableHeight: usablePageHeight });
 
         const usesSlotLayout = items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
         if (usesSlotLayout) {

@@ -71,7 +71,7 @@
             P15: equalFingerprint('pageLayout') && JSON.stringify(actual) === JSON.stringify(snapshot?.geometry),
             P16: actual.every(p => !p.overflowY), P17: actual.every(p => !p.overflowX),
             P18: equalFingerprint('qrPolicy'), P19: equalFingerprint('qrPayload'), P20: equalFingerprint('printHeader'),
-            P21: equalFingerprint('profile') && equalFingerprint('executor'),
+            P21: equalFingerprint('profile') && equalFingerprint('executor') && equalFingerprint('layoutAuthority'),
             P22: !!snapshot && Object.values(snapshot.commonHardGateEvidence).every(Boolean),
             P23: !!snapshot && snapshot.readinessEvidence.events.length === 5 && snapshot.sessionId === candidate.source.targetSessionId
         };
