@@ -1,0 +1,61 @@
+{
+  "cost": {
+    "workBatchId": "past20-maesan-final-b607a13b5-r9",
+    "targetCount": 20,
+    "totalTargetCount": 20,
+    "totalAffectedCount": 20,
+    "benchmarkReviewedTargetCount": null,
+    "benchmarkEligibleTargetCount": null,
+    "benchmarkExcludedTargetCount": null,
+    "benchmarkTotalSourceTargetCount": null,
+    "benchmarkEligibleAffectedTargetCount": null,
+    "independentAgentLaunchCount": 1,
+    "expensiveAgentLaunchCount": 1,
+    "concurrentExpensiveAgentPeak": 1,
+    "freshLlmUidCount": 0,
+    "reusedUidCount": 0,
+    "machineCheckedUidCount": 20,
+    "retryLaunchCount": 0,
+    "secondAuditorLaunchCount": 0,
+    "recursiveSubagentLaunchCount": 0,
+    "usedTokens": null,
+    "tokenTelemetryAvailable": false,
+    "agentBudgetStatus": "WITHIN_BUDGET",
+    "jobKind": "PRODUCTION",
+    "executionIdentity": {
+      "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+      "jobKind": "PRODUCTION",
+      "requestedModel": null,
+      "requestedReasoningEffort": null,
+      "actualModel": "gpt-5.6-luna/xhigh",
+      "actualReasoningEffort": null,
+      "modelRouteObservedAtStart": "2026-09-11T23:04:25.578Z",
+      "modelRouteObservedAtClosure": null,
+      "modelRouteChanged": false,
+      "routeStatus": "NOT_APPLICABLE",
+      "MODEL_ROUTE_PARITY": "NOT_APPLICABLE"
+    },
+    "MODEL_ROUTE_PARITY": "NOT_APPLICABLE",
+    "modelRouteStatus": "NOT_APPLICABLE"
+  },
+  "schemaVersion": "APMATH_PIPELINE_AUDIT_v2",
+  "runId": "past20-maesan-final-b607a13b5-r9",
+  "revision": 1,
+  "inputSha": "sha256:7bafc0f9e39540d6d11cf04411049ce125da5da6a094c8462849b1030efa3220",
+  "status": "BLOCKED",
+  "productionAuthorized": false,
+  "diagnosticContinuation": {
+    "status": "UPSTREAM_BLOCKED",
+    "downstreamObserved": false
+  },
+  "errors": [
+    "V2_CONTRACT:RUN_V2_CONTRACT:$.auditorPacketRefs:MISSING;$.buildWorkLedgerRefs:MISSING;$.questionQualityClosureSetRef:MISSING;$.examReleaseClosureRef:MISSING;$.sourceAuthority.applicability:MISSING"
+  ],
+  "freshness": [],
+  "semantic": null,
+  "changeImpact": null,
+  "renderImpact": null,
+  "editClosure": null,
+  "closureSetSha": null,
+  "reportSha": "sha256:e43ceb544e9cc7fab91a4abc3c8bc4176aac2b584a5cd302328833556000a021"
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "APMATH_PAST_EXAM_FINAL_CLOSURE_v1",
+  "examId": "20_매산고_2학기_중간_고1_기출",
+  "sourcePdf": "D:/기출/(3)2중간/수학(하)/2020_매산고1_2중간.pdf",
+  "candidatePath": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/candidate/20_매산고_2학기_중간_고1_기출.candidate.js",
+  "candidateSha256": "sha256:ed86303ef9a4f33432afc4528cad079ac4661050841874802a928a866a95afe2",
+  "startSha": "b607a13b5144b88097e3cee5d31b3b7785e6092b",
+  "workBatchId": "past20-maesan-final-b607a13b5-r9",
+  "finalAudit": {
+    "status": "COMPLETED",
+    "provider": "CodexAppServer",
+    "model": "gpt-5.6-luna/xhigh",
+    "launchId": "past20-maesan-final-b607a13b5-r9:1",
+    "receiptRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/receipt.json",
+      "bytes": 21982,
+      "sha256": "sha256:c5651044eaac7c6bef262d86d31c336578f088b3f28aae18b1350db52e1fa961"
+    },
+    "independentAgentLaunchCount": 1,
+    "expensiveAgentLaunchCount": 1,
+    "u1U2U3Responses": true,
+    "evidenceCount": 41,
+    "defectCount": 44
+  },
+  "machineEvidence": {
+    "status": "MACHINE_EVIDENCE_READY",
+    "questionCount": 20,
+    "evidenceCount": 40,
+    "runRef": {
+      "path": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/pipeline/final-b607a13b5-r9-fresh/run-machine-current.json",
+      "bytes": 174458,
+      "sha256": "sha256:8f4137a3d5e46a4806d60a1087191705e594cc36eeaf5585b2f4fefb4eec45d1"
+    }
+  },
+  "blockingDefects": [
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|5",
+      "type": "MISSING_RENDER_WITNESS",
+      "reason": "The item depends on a diagram; the independent packet could not verify the referenced diagram from path/hash-only asset visibility."
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|8",
+      "type": "SOURCE_QUESTION_NON_UNIQUE",
+      "reason": "The supplied wording/choices do not yield a unique selectable k; the audit found injectivity for all k≥1 rather than one answer choice."
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|11",
+      "type": "QUESTION_PAYLOAD_DEFECT",
+      "reason": "The quantified conditional is ambiguous and does not determine the intended minimum without changing the source wording."
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|16",
+      "type": "SOURCE_ANSWER_CONFLICT",
+      "reason": "Independent recalculation conflicts with the attached source solution; the source authority is unresolved."
+    },
+    {
+      "scope": "20_매산고_2학기_중간_고1_기출|1..20",
+      "type": "MISSING_RENDER_WITNESSES",
+      "reason": "U2 reported no render witnesses for the current candidate; render closure was not available."
+    }
+  ],
+  "auditReports": {
+    "auditV2": {
+      "status": "BLOCKED",
+      "path": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/final-b607a13b5-r9-audit-v2.json",
+      "bytes": 2198,
+      "sha256": "sha256:e8095d43eaac03ac6ead4fe1300887e0b53fa250ac6c2c0026ee2fa08993670d",
+      "reason": "The prepared run is missing required V2 closure refs: auditorPacketRefs, buildWorkLedgerRefs, questionQualityClosureSetRef, examReleaseClosureRef, and sourceAuthority.applicability."
+    },
+    "workBatchAudit": {
+      "status": "BLOCKED",
+      "path": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/final-b607a13b5-r9-work-batch-audit.json",
+      "bytes": 2307,
+      "sha256": "sha256:56ebdc0e1a2315df854f4318d6acdd12af5b110d01f7867f12c008a888042196"
+    }
+  },
+  "targetedRecheck": {
+    "status": "NOT_STARTED",
+    "reason": "No source/question repair was authorized or completed after the final audit; a recheck cannot be invented for unresolved source conflicts."
+  },
+  "production": {
+    "status": "NOT_AUTHORIZED",
+    "jsWritten": false,
+    "databaseUpdated": false,
+    "questionIndexUpdated": false
+  },
+  "finalStatus": "BLOCKED",
+  "closureStatus": "BLOCKED",
+  "policy": {
+    "gateRelaxed": false,
+    "syntheticPassCreated": false,
+    "sourceDataManipulated": false,
+    "frozenJobResumed": false
+  }
+}

@@ -1,0 +1,542 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "launchId": "past20-maesan-final-b607a13b5-r9:1",
+  "externalId": "01a092b7-0b4d-7621-a236-9765f2f2efda",
+  "status": "COMPLETED",
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "reasoningEffort": null,
+  "executionIdentity": {
+    "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+    "jobKind": "PRODUCTION",
+    "requestedModel": null,
+    "requestedReasoningEffort": null,
+    "actualModel": "gpt-5.6-luna/xhigh",
+    "actualReasoningEffort": null,
+    "modelRouteObservedAtStart": "2026-09-11T23:04:25.578Z",
+    "modelRouteObservedAtClosure": "2026-09-11T23:10:01.529Z",
+    "modelRouteChanged": true,
+    "routeStatus": "NOT_APPLICABLE",
+    "MODEL_ROUTE_PARITY": "NOT_APPLICABLE",
+    "modelRouteObservations": [
+      {
+        "phase": "U1",
+        "actualModel": null,
+        "actualReasoningEffort": null,
+        "observedAt": "2026-09-11T23:07:43.526Z"
+      },
+      {
+        "phase": "U2",
+        "actualModel": null,
+        "actualReasoningEffort": null,
+        "observedAt": "2026-09-11T23:08:19.023Z"
+      },
+      {
+        "phase": "U3",
+        "actualModel": null,
+        "actualReasoningEffort": null,
+        "observedAt": "2026-09-11T23:10:01.347Z"
+      }
+    ]
+  },
+  "providerPlanRef": {
+    "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/preflight.json",
+    "bytes": 9757,
+    "sha256": "sha256:c202a24efed742a08a4333a8ecc2360987657372fb67b785e5a8cfa1751850ee"
+  },
+  "independentAgentLaunchCount": 1,
+  "expensiveAgentLaunchCount": 1,
+  "concurrentExpensiveAgentPeak": 1,
+  "recursiveSubagentLaunchCount": 0,
+  "retryLaunchCount": 0,
+  "usedTokens": null,
+  "usedTokensByPhase": {
+    "U1": null,
+    "U2": null,
+    "U3": null
+  },
+  "phaseAttestationRefs": [
+    {
+      "phase": "U1",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-request.json",
+        "bytes": 12452,
+        "sha256": "sha256:c3ddfb38730f3db11514cb4daabf75ecb9585b7221fece27adfc918ff15aca94"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-response.json",
+        "bytes": 5521,
+        "sha256": "sha256:ce19bb2c116f6e369baf278d4e754c917a8e0c41b9262158108f9758be515a1a"
+      },
+      "inputSha": "sha256:8e7f93104dbfd47e1d657f36845ebdab0713a8840b537491012e7173d9d76ba9",
+      "providerInvocationId": "01a092b8-c7ed-7452-8deb-296d9b1de52a"
+    },
+    {
+      "phase": "U2",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u2-request.json",
+        "bytes": 5406,
+        "sha256": "sha256:150b21846662b63320d2de1ac03e5d8587c7e472e4afc4504be73ed7790a4f4b"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u2-response.json",
+        "bytes": 6119,
+        "sha256": "sha256:35d532cfba81fd17d691c0caba3317f579741a3157061009bec8606fdfc28847"
+      },
+      "inputSha": "sha256:b21f3a53a3a7a573ffed48bd94ea0ad53fa862b3b481f65fe6425d52855d2951",
+      "providerInvocationId": "01a092ba-1542-76e2-b942-35827d050f15"
+    },
+    {
+      "phase": "U3",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-request.json",
+        "bytes": 63385,
+        "sha256": "sha256:591637219774d9f0a65d2b613460b3011ecd711ec8b5f0a1e2bab17f63c7e9d7"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-response.json",
+        "bytes": 15558,
+        "sha256": "sha256:658774b7f3a832d42b6f3a3b9999538137ed2f209764f0ff85bab96384ad3b18"
+      },
+      "inputSha": "sha256:b1d493049d3dec54ac24ac15772a3b1e80eb5c41eb0d0f9a7fad9f996ed13010",
+      "providerInvocationId": "01a092ba-9f92-7d13-ada6-42cc9c1fd101"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-1.json",
+      "bytes": 157,
+      "sha256": "sha256:2aea4521fa9fbc311c9deede0b3ac968dc88ac63acea7b7a95d35895838eaf91"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-2.json",
+      "bytes": 270,
+      "sha256": "sha256:3b6399179c3afe7f99178864b86c96041c419e1dfa900c412ead0652aac4f6c0"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-3.json",
+      "bytes": 230,
+      "sha256": "sha256:9b98f5d32fdc89d3b6421dad7076da605cd2c0d7478e5f4fbee205873f88f554"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-4.json",
+      "bytes": 138,
+      "sha256": "sha256:7718c0cecf0c34f4115ff2e447003df9caa9ae31ae965bce8188f2b9b359263d"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-5.json",
+      "bytes": 149,
+      "sha256": "sha256:6f9507219b2b937cbc57f954f61afa5b23472c85bb5019eccac56cca17f939c0"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-6.json",
+      "bytes": 145,
+      "sha256": "sha256:835b66e7097c963827885bb30076ce5dfe5ee52b2f621c09f7ca24d45f178337"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-7.json",
+      "bytes": 189,
+      "sha256": "sha256:581b0ba8b5a3d99dc2559bfa40cb94bc7d46e7747846d0b007da2450f909a4c9"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-8.json",
+      "bytes": 206,
+      "sha256": "sha256:345c5e051e56b444f0bf2187553e6f7fe6da29e2f95337ddb0625b7c60654f65"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-9.json",
+      "bytes": 174,
+      "sha256": "sha256:753ef1361776ac3edb8942d3e7b47b298786e7f7451a7e8d5ed28b526707cc1b"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-10.json",
+      "bytes": 175,
+      "sha256": "sha256:8e05b9aba93c0782bd78c9dd5d0bd2847c38aa26cb459a3816764729213f36d1"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-11.json",
+      "bytes": 223,
+      "sha256": "sha256:ed556c5ca1d5abe2af8c323dcd9aa1672e36ff5646d53e078d653353ef22e6a7"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-12.json",
+      "bytes": 216,
+      "sha256": "sha256:cfa35265ad1af57eca1ad6ba9f5ce3048d952c1cbb0b8798bb9b9918bdc3ff0f"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-13.json",
+      "bytes": 233,
+      "sha256": "sha256:8ea671d70e5bfd46dd0d850175a994188c76e4be4365ca2901d917ccf81d39aa"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-14.json",
+      "bytes": 230,
+      "sha256": "sha256:67300bf45bc2342605a3ea77262b6c5c54048b2d2f4156cf209dab178375f3cb"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-15.json",
+      "bytes": 200,
+      "sha256": "sha256:67aa248da37948d8659c5652e66be51cb160de16e326aa9688c9cc94f01f671e"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-16.json",
+      "bytes": 163,
+      "sha256": "sha256:65ead5e53351046d6aec2670e3fed9941f793f598ae644b2f8c34bbd920d6da1"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-17.json",
+      "bytes": 281,
+      "sha256": "sha256:e3df9f76bd045f2163cec3da2c479464c049c92bcb7796719da84310f6fc3f87"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u1-evidence-18.json",
+      "bytes": 210,
+      "sha256": "sha256:7f2a584d12b4ad2d4a95ed01e9338087796c84ca1b360cbfcdaf7c4c8a599149"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u2-evidence-1.json",
+      "bytes": 228,
+      "sha256": "sha256:b04bb55f6d69d0a6164fab91ff3b2915ff3de8fb5dc5b947ea39ac5a182c46da"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u2-evidence-2.json",
+      "bytes": 397,
+      "sha256": "sha256:6d90d6a3ba17ffbfd9bffaa9332e333e4fbff01ed29e5081366d89e1fdd6205a"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u2-evidence-3.json",
+      "bytes": 139,
+      "sha256": "sha256:997078601704efbd888af32206addd51f2390582ce420fdb89550e60be63a2bd"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-1.json",
+      "bytes": 545,
+      "sha256": "sha256:905a067487e4b948a9f7be6d2335527bd5526841ff7a4f69ea68efe1490b640e"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-2.json",
+      "bytes": 680,
+      "sha256": "sha256:5e93a2dbb13abd28dedb1c67558568df793392beb2ca259d3306b542f63d7a13"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-3.json",
+      "bytes": 628,
+      "sha256": "sha256:8b1c7ae5fd89547b2bb818e18515d89b02c69c4773109fa9d47fe64aa94e98f0"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-4.json",
+      "bytes": 493,
+      "sha256": "sha256:16488bcb8f174fb31353d8f24580d7b9e9592b85c2d3c2933ea2cfbac9dfa421"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-5.json",
+      "bytes": 768,
+      "sha256": "sha256:6d6290d99b9514739ca39b5fa5eec66ec62eb1efbc8e9be5b896ac7d351edb50"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-6.json",
+      "bytes": 571,
+      "sha256": "sha256:5c891a0925f90610d54dc2d45f8bb12daa20f427bbc08331fb82ed47053df8b6"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-7.json",
+      "bytes": 499,
+      "sha256": "sha256:45e3b6e92a0a01df3f7945c1b61cfba7e319b2ce2a5b595f488ca42d58a0990f"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-8.json",
+      "bytes": 529,
+      "sha256": "sha256:9bba75543f07add8d069191241bf90e73491df694433b1168307d2f331f2d7df"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-9.json",
+      "bytes": 650,
+      "sha256": "sha256:aba9a43d83da35cedae85eab157c9681e3667808f60c5e34dde31f5808610488"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-10.json",
+      "bytes": 631,
+      "sha256": "sha256:f4bdf4ad56a15836ab4f2428e38d192c77b29f5ea3aacad571711439dc863e8f"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-11.json",
+      "bytes": 660,
+      "sha256": "sha256:789a1a4e4ee85f212f9731c4ef563bd43c7fdb4481ca2455cc6472f10c08ba4b"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-12.json",
+      "bytes": 603,
+      "sha256": "sha256:afba03b993e8092123cc9fd5efec57deda626632a1cca9412f5d53f157ab74fb"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-13.json",
+      "bytes": 578,
+      "sha256": "sha256:835e3320dc45ee2956ff85e5c006d15f3e64e5338bc612b740908ba604b8f054"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-14.json",
+      "bytes": 688,
+      "sha256": "sha256:0b423dc2d3445a86d64599ee2c12e675c43c1269ca21efde363df0c44eb4c04a"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-15.json",
+      "bytes": 542,
+      "sha256": "sha256:31ceb2f10bd8157b7ca0db185239755dde40280a686d30fd2de454e49a7c4957"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-16.json",
+      "bytes": 763,
+      "sha256": "sha256:e3175f5c2ab5c46b8458901e115c2f903df2f9700a86d7779b596dd7243457c2"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-17.json",
+      "bytes": 464,
+      "sha256": "sha256:8bb0629a69962cfff11b6453a554342a6219c8906304fb12aa4e59228db1236c"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-18.json",
+      "bytes": 708,
+      "sha256": "sha256:794586f02446e918014850dffb6abd36d27ac98cc840ca581193486b986d6c50"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-19.json",
+      "bytes": 560,
+      "sha256": "sha256:5d72b216aa9bed878614b1fbff08db4a0b9e96f1b529decb5e77bb37a29fe4d7"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-b607a13b5-r9/u3-evidence-20.json",
+      "bytes": 648,
+      "sha256": "sha256:c427290129a4950245586842c3bc83b156bf11d0cedd6e41bdb523a2b97302b2"
+    }
+  ],
+  "defects": [
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|5",
+      "severity": "BLOCKING",
+      "defect": "문항이 합성함수 그림에 의존하지만 packet에는 그림의 내용이 제공되지 않고 asset 경로·해시만 제공되어 정답과 문항의 완전성을 검증할 수 없다.",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|11",
+      "severity": "MAJOR",
+      "defect": "명제의 문장이 ‘어떤 x,y에 대하여 p이면 q이다’로 되어 있어 존재적 조건부로 읽으면 p를 만족하지 않는 점을 택해 임의의 양의 r에서 참이 되므로 최솟값이 존재하지 않는다. 선택지 32를 얻으려면 ‘어떤 x,y에 대하여 p와 q가 동시에 성립한다’ 또는 ‘p이면 q인 점이 존재한다’ 등 의도한 의미를 명확히 다시 써야 한다.",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|1",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|2",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|3",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|4",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|6",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|7",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|8",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|9",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|10",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|11",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|12",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|13",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|14",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|15",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|16",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|17",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|18",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|19",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_artifact",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|20",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|1",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|2",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|3",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|4",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|5",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|6",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|7",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|8",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|9",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|10",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|11",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|12",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|13",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|14",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|15",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|16",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|17",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|18",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|19",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "type": "missing_render_witness",
+      "questionUid": "20_매산고_2학기_중간_고1_기출|20",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|5",
+      "severity": "HOLD",
+      "type": "MISSING_RENDER_WITNESS",
+      "description": "The question depends on a referenced diagram, but renderWitnesses is empty. The asserted values f(1)=2, f(2)=3, and g(1)=2 cannot be independently verified from the frozen packet.",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|8",
+      "severity": "FAIL",
+      "type": "SOURCE_QUESTION_NON_UNIQUE",
+      "description": "For f(x)=x^2−2x on X={x≥k}, injectivity holds for every k≥1, not for a single k. The wording asks for a value and the answer choices do not encode k≥1, so the item has no unique selectable answer as supplied.",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    },
+    {
+      "questionUid": "20_매산고_2학기_중간_고1_기출|16",
+      "severity": "HOLD",
+      "type": "SOURCE_ANSWER_CONFLICT",
+      "description": "The independently recomputed answer from the supplied candidate question is pq=−48, while the packet metadata identifies a source conflict and the attached solution explicitly reports a conflicting −2≤a≤6 calculation. The candidate solution is mathematically correct for the displayed +a+10 expression, but the source conflict remains unresolved and must not be promoted without reconciliation.",
+      "runId": "past20-maesan-final-b607a13b5-r9"
+    }
+  ]
+}
