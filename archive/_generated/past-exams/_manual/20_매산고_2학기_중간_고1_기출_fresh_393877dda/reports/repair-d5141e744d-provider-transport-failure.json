@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_TRANSPORT_FAILURE_EVIDENCE_v1",
+  "status": "TERMINAL_FAILURE_RECONCILIATION",
+  "workBatchId": "past20-maesan-repair-d5141e744d",
+  "launchId": "past20-maesan-repair-d5141e744d:1",
+  "phase": "U1",
+  "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+  "stateBeforeReconcile": "DISPATCHED",
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "observations": {
+    "u1RequestPresent": true,
+    "u1ResponsePresent": false,
+    "semanticEvidencePresent": false,
+    "providerTurnLogPresent": false,
+    "dispatchClientProcessPresent": false,
+    "providerDaemonProcessPresent": true,
+    "retryPerformed": false
+  },
+  "classification": "EXTERNAL_PROVIDER_TRANSPORT_OR_PROCESS_LOSS_NOT_CONFIRMED_AS_PIPELINE_DEFECT",
+  "disposition": "Terminal FAILED/HOLD; no synthetic response, retry, or gate relaxation."
+}
