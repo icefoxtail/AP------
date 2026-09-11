@@ -88,9 +88,9 @@
             const grid = document.createElement('div');
             grid.className = 'grid-container';
             const l = document.createElement('div');
-            l.className = 'grid-col';
+            l.className = 'grid-col sol-grid-col';
             const r = document.createElement('div');
-            r.className = 'grid-col';
+            r.className = 'grid-col sol-grid-col';
             grid.appendChild(l);
             grid.appendChild(r);
             p.body.appendChild(grid);
