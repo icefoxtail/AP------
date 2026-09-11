@@ -121,7 +121,7 @@ test('latest wins serializes builds and never commits stale work', async () => {
 
 test('background and invalid enums cannot execute builds or effects', async () => {
     const f = fixture();
-    assert.equal((await f.runtime.request({ type: 'FORCED_REBUILD', foreground: false })).code, 'BACKGROUND_NOT_ENABLED_PHASE1A');
+    assert.equal((await f.runtime.request({ type: 'FORCED_REBUILD', foreground: false })).code, 'BACKGROUND_NOT_ENABLED');
     assert.equal((await f.runtime.request({ type: 'INVALIDATION' })).code, 'UNKNOWN_RENDER_INTENT');
     assert.equal(f.state().effectCount, 0);
     assert.equal(Object.keys(R.RenderIntentType).length, 12);
@@ -160,4 +160,35 @@ test('asynchronous measurements remain bound to their own transaction metrics', 
     assert.equal(a.transactionId, 'a'); assert.equal(b.transactionId, 'b');
     assert.ok(Object.hasOwn(a.phases, 'slow')); assert.equal(Object.hasOwn(a.phases, 'fast'), false);
     assert.ok(Object.hasOwn(b.phases, 'fast')); assert.equal(Object.hasOwn(b.phases, 'slow'), false);
+});
+
+test('prewarm stores READY without committing state or creating business effects', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    const before = f.state(), active = f.runtime.activeSnapshot;
+    const result = await f.runtime.prewarm('sol');
+    assert.equal(result.prewarmed, true);
+    assert.equal(f.runtime.activeSnapshot, active);
+    assert.equal(f.runtime.currentSession.modeSnapshots.sol.status, 'READY');
+    assert.equal(f.state().visible, before.visible);
+    assert.equal(f.state().committed, before.committed);
+    assert.equal(f.state().effectCount, before.effectCount);
+});
+
+test('foreground work cancels stale prewarm before snapshot registration', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    let enter, release;
+    const started = new Promise(r => { enter = r; });
+    f.adapter.build = async ctx => {
+        if (ctx.background) { enter(); await new Promise(r => { release = r; }); }
+        return { rootNode: {}, sessionId: ctx.requestedTargetSessionId, pageCount: 1 };
+    };
+    const bg = f.runtime.prewarm('sol'); await started;
+    const fg = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans' });
+    release();
+    assert.equal((await bg).code, 'DISCARDED_STALE');
+    assert.equal((await fg).ok, true);
+    assert.equal(f.runtime.activeSnapshot.mode, 'ans');
+    assert.equal(f.runtime.currentSession.modeSnapshots.sol, null);
 });

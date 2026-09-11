@@ -55,6 +55,24 @@ function createArchiveScreenRuntime() {
     const effects = window.APSideEffectLedger.create();
     let sourceRequestSerial = 0;
     let runtime;
+    let idleHandle = null;
+    function cancelIdlePrewarm() {
+        if (idleHandle !== null) { if (window.cancelIdleCallback) cancelIdleCallback(idleHandle); else clearTimeout(idleHandle); idleHandle = null; }
+    }
+    function schedulePrewarm(ctx) {
+        const params = new URL(ctx.candidate.environment.url).searchParams;
+        if (ctx.background || params.get('prewarm') === '0' || params.get('snapshotCache') === '0' || params.get('qr') === '1') return;
+        cancelIdlePrewarm();
+        const candidate = ctx.candidate;
+        const warm = async () => {
+            idleHandle = null;
+            for (const mode of ['sol', 'ans', 'exam']) {
+                if (runtime.committedCandidate !== candidate) return;
+                if (mode !== candidate.mode) await runtime.prewarm(mode);
+            }
+        };
+        idleHandle = window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 100);
+    }
     const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase1a-20260910.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: '20260906.25', executor: '20260907.1-context1', pageLayout: 'engine-20260910.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
 
     function captureInput(intent, desired, committed) {
@@ -205,7 +223,7 @@ function createArchiveScreenRuntime() {
         ctx.stagingHost.setAttribute('data-archive-staging', ctx.transactionId);
         ctx.stagingHost.style.cssText = 'position:absolute;top:-9999px;left:0;visibility:hidden;width:83mm;';
         document.body.append(ctx.targetArea, ctx.stagingHost);
-        ctx.metrics = window.APRenderLoop.start({ mode: candidate.mode, questions: ctx.buildState.data.length, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, sessionId: ctx.requestedTargetSessionId, publish: false });
+        ctx.metrics = window.APRenderLoop.start({ mode: candidate.mode, questions: ctx.buildState.data.length, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, sessionId: ctx.requestedTargetSessionId, foreground: ctx.foreground, publish: false });
         ctx.diagnostics = {};
         ctx.readinessTracker = window.APPrintRuntime.createReadinessTracker('ArchiveAdapter');
         ctx.readinessTracker.begin({ source: candidate.source.sourceArchiveFile, transactionId: ctx.transactionId });
@@ -218,8 +236,17 @@ function createArchiveScreenRuntime() {
             rendererMode: () => candidate.rendererMode,
             measurementMode: () => new URL(candidate.environment.url).searchParams.get('measurement') === 'legacy' ? 'legacy' : 'batch',
             clearMath: elements => window.MathJax?.typesetClear?.(elements),
-            typesetMath: (label, elements) => window.APRenderLoop.typeset(label, elements, ctx.metrics),
-            raf: () => { ctx.metrics.rafCount += 1; ctx.metrics.layoutBarrierCount += 1; return raf(); }
+            typesetMath: async (label, elements) => {
+                if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                const result = await window.APRenderLoop.typeset(label, elements, ctx.metrics);
+                if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                return result;
+            },
+            raf: async () => {
+                if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+                ctx.metrics.rafCount += 1; ctx.metrics.layoutBarrierCount += 1; await raf();
+                if (ctx.abortSignal.aborted) throw new Error('DISCARDED_STALE');
+            }
         };
         const fontStart = performance.now();
         if (document.fonts) await document.fonts.ready;
@@ -313,6 +340,8 @@ function createArchiveScreenRuntime() {
     runtime = window.APScreenRuntime.create({
         captureInput, prepare, build, validate, capture, attach, commit, rollback, afterCommit,
         cacheModes: new URLSearchParams(location.search).get('snapshotCache') === '0' ? [] : ['ans', 'sol', 'exam'],
+        enablePrewarm: new URLSearchParams(location.search).get('snapshotCache') !== '0',
+        storeSnapshot(snapshot) { snapshot.rootNode.remove(); },
         freezeSnapshot(snapshot, ctx) {
             window.APArchiveSnapshotContract.freeze(snapshot, ctx);
         },
@@ -321,7 +350,7 @@ function createArchiveScreenRuntime() {
             ctx.targetArea = snapshot.rootNode;
             ctx.buildState = { ...snapshot.buildState };
             ctx.diagnostics = { ...snapshot.diagnostics };
-            ctx.metrics = window.APRenderLoop.start({ mode: snapshot.mode, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, sessionId: ctx.requestedTargetSessionId, publish: false });
+            ctx.metrics = window.APRenderLoop.start({ mode: snapshot.mode, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, sessionId: ctx.requestedTargetSessionId, foreground: ctx.foreground, publish: false });
             ctx.metrics.cacheStatus = 'HIT';
             ctx.readinessTracker = window.APPrintRuntime.createReadinessTracker('ArchiveAdapter');
             ctx.readinessTracker.begin({ snapshotId: snapshot.snapshotId });
@@ -331,9 +360,15 @@ function createArchiveScreenRuntime() {
         cleanup(root) { if (!root) return; window.MathJax?.typesetClear?.([root]); root.remove(); },
         release(ctx) { if (ctx.stagingHost) { window.MathJax?.typesetClear?.([ctx.stagingHost]); ctx.stagingHost.remove(); } },
         visible: async () => { updateScreenFitScale(); await raf(); },
-        onRequest(promise) { window.__AP_RENDER_READY__ = promise; },
+        onRequest(promise) { cancelIdlePrewarm(); window.__AP_RENDER_READY__ = promise; },
         observe(event, ctx) {
+            if (ctx.background) { window.__AP_PREWARM_METRICS__ = ctx.metrics; return; }
             document.documentElement.dataset.apScreenRuntime = JSON.stringify({ event, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, state: ctx.state, error: ctx.error || null, committed: ctx.committed, visibleReadyMs: ctx.visibleReadyMs || null });
+            if (event === 'VISIBLE_READY') {
+                ctx.metrics.visibleReadyMs = ctx.visibleReadyMs;
+                window.__AP_LAST_VISIBLE_AT__ = performance.now();
+                schedulePrewarm(ctx);
+            }
         }
     });
     let fontReadyObserved = false;

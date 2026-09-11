@@ -2912,6 +2912,7 @@ function getFastPrintCopies() {
 }
 
 async function safePrint(mode = 'vector') {
+    archiveScreenRuntime?.cancelBackground();
     mode = mode === 'raster' || mode === 'native' || mode === 'gdi' ? mode : 'vector';
     if (printPending) return;
     printPending = true;

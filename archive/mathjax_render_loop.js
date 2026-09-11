@@ -30,6 +30,7 @@
             transactionId: meta.transactionId || null,
             requestGeneration: meta.requestGeneration || null,
             sessionId: meta.sessionId || null,
+            foreground: meta.foreground !== false,
             rafCount: 0,
             layoutBarrierCount: 0,
             fontWaitMs: 0
