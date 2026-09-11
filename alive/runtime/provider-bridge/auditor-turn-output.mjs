@@ -20,6 +20,10 @@ export function classifyAppServerMessage(message, pending) {
   return 'orphan';
 }
 
+export function turnFromStartResponse(response) {
+  return response?.turn || response || null;
+}
+
 export function summarizeAppServerMessage(message, route, sequence) {
   const params = message?.params || {};
   const turn = params.turn || {};

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
-import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
+import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -72,4 +72,10 @@ test('app-server method envelopes are notifications even when they carry an id',
   assert.equal(summary.method, 'turn/completed');
   assert.equal(summary.route, 'notification');
   assert.equal(summary.turnStatus, 'completed');
+});
+
+test('app-server turn/start response unwraps the nested turn contract', () => {
+  assert.equal(turnFromStartResponse({ turn: { id: 'nested-turn' } }).id, 'nested-turn');
+  assert.equal(turnFromStartResponse({ id: 'legacy-turn' }).id, 'legacy-turn');
+  assert.equal(turnFromStartResponse(null), null);
 });

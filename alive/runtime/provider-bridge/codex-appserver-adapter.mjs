@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
-import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, withTimeout } from './auditor-turn-output.mjs';
+import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from './auditor-turn-output.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -167,7 +167,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   if (request.operation === 'preflight') return request.responseBase;
   if (request.operation !== 'phase') throw new Error('CODEX_APPSERVER_UNKNOWN_OPERATION');
   const thread = phaseResults[request.phase].thread;
-  const turn = await app.request('turn/start', {
+  const turnResponse = await app.request('turn/start', {
     threadId: thread.id,
     model: 'gpt-5.6-luna',
     input: [{ type: 'text', text: request.prompt }],
@@ -176,6 +176,8 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
     collaborationMode: { mode: 'default', settings: { model: 'gpt-5.6-luna', developer_instructions: null } }
   });
+  const turn = turnFromStartResponse(turnResponse);
+  if (!turn?.id) throw new Error('CODEX_APPSERVER_TURN_ID_MISSING');
   const turnId = turn.id;
   let text = '';
   const deadline = Date.now() + 300000;
@@ -191,7 +193,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
       historyRecoveryInFlight = (async () => {
         try {
           const turns = await withTimeout(
-            app.request('thread/turns/list', { threadId: thread.id, itemsView: 'full', limit: 20, sortDirection: 'descending' }),
+            app.request('thread/turns/list', { threadId: thread.id, itemsView: 'full', limit: 20, sortDirection: 'desc' }),
             HISTORY_RPC_TIMEOUT_MS,
             'CODEX_APPSERVER_HISTORY_LIST_TIMEOUT'
           );
@@ -202,7 +204,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
         }
         try {
           const history = await withTimeout(
-            app.request('thread/read', { threadId: thread.id, includeTurns: true }),
+            app.request('thread/read', { threadId: thread.id }),
             HISTORY_RPC_TIMEOUT_MS,
             'CODEX_APPSERVER_HISTORY_READ_TIMEOUT'
           );
