@@ -14,6 +14,35 @@ export function withTimeout(promise, timeoutMs, code) {
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
 }
 
+export function classifyAppServerMessage(message, pending) {
+  if (typeof message?.method === 'string') return 'notification';
+  if (message?.id !== undefined && pending?.has(String(message.id))) return 'response';
+  return 'orphan';
+}
+
+export function summarizeAppServerMessage(message, route, sequence) {
+  const params = message?.params || {};
+  const turn = params.turn || {};
+  const item = params.item || {};
+  return {
+    sequence,
+    route,
+    method: message?.method || null,
+    hasId: message?.id !== undefined,
+    idType: message?.id === undefined ? null : typeof message.id,
+    topLevelKeys: Object.keys(message || {}).sort(),
+    paramKeys: Object.keys(params).sort(),
+    threadId: params.threadId || null,
+    turnId: params.turnId || turn.id || null,
+    turnStatus: turn.status || null,
+    itemId: params.itemId || item.id || null,
+    itemType: item.type || null,
+    deltaLength: typeof params.delta === 'string' ? params.delta.length : null,
+    responseKeys: message?.result && typeof message.result === 'object' ? Object.keys(message.result).sort() : null,
+    error: message?.error ? String(message.error.message || message.error.code || 'RPC_ERROR') : null,
+  };
+}
+
 export function completedTurnText(notifications, threadId, turnId) {
   const deltaText = notifications
     .filter(message => (
