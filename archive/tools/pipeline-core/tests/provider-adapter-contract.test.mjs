@@ -94,4 +94,5 @@ test('provider aggregate defect scopes expand only across matching launch UIDs',
   assert.deepEqual(bound.map(defect => [defect.questionUid, defect.runId]), [['exam|1', 'run-1'], ['exam|2', 'run-1']]);
   assert.throws(() => bindProviderDefectsToLaunchScope([{ scope: 'other|1..2' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
   assert.equal(bindProviderDefectsToLaunchScope([{ questionUids: 'exam|2..3' }], scope).length, 2);
+  assert.equal(bindProviderDefectsToLaunchScope([{ scope: 'exam' }], scope).length, 3);
 });

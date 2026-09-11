@@ -245,6 +245,8 @@ export function bindProviderDefectsToLaunchScope(defects, scope) {
     if (!declaredScope) return [];
     const exact = scope.filter(row => row.questionUid === declaredScope);
     if (exact.length) return exact;
+    const prefixMatches = scope.filter(row => row.questionUid.startsWith(`${declaredScope}|`));
+    if (prefixMatches.length) return prefixMatches;
     const match = declaredScope.match(/^(.*)\|(\d+)\.\.(\d+)$/);
     if (!match) return [];
     const prefix = match[1];
