@@ -5,12 +5,14 @@ import { captureRender } from '../../archive/tools/pipeline-core/render.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const REPORT = path.join(ROOT, 'reports', 'hs-quadratic-svg-upgrade-20260908');
-const PREPARATION = JSON.parse(fs.readFileSync(path.join(REPORT, '780_current_v2_preparation_r63.json'), 'utf8'));
+const preparationReportName = process.env.HS_CAPTURE_PREP_REPORT || '780_current_v2_preparation_r63.json';
+const captureReportStem = process.env.HS_CAPTURE_REPORT_STEM || '785_browser_render_capture_r63';
+const PREPARATION = JSON.parse(fs.readFileSync(path.join(REPORT, preparationReportName), 'utf8'));
 const startOrdinal = Math.max(1, Number(process.argv[2] || 1));
 const endOrdinal = Math.min(PREPARATION.runs.length, Number(process.argv[3] || PREPARATION.runs.length));
 const selectedRuns = PREPARATION.runs.slice(startOrdinal - 1, endOrdinal);
 const shardLabel = startOrdinal === 1 && endOrdinal === PREPARATION.runs.length ? '' : `_part-${String(startOrdinal).padStart(3, '0')}-${String(endOrdinal).padStart(3, '0')}`;
-const OUTPUT = path.join(REPORT, `785_browser_render_capture_r63${shardLabel}.json`);
+const OUTPUT = path.join(REPORT, `${captureReportStem}${shardLabel}.json`);
 const runs = [];
 const errors = [];
 const expectedCaptureCount = 6;

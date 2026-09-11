@@ -94,7 +94,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "①",
-    "solution": "평행사변형 $ABCD$에서는 대각선의 중점이 서로 같으므로\n$A+C=B+D$가 성립한다. 따라서\n$C=B+D-A$이다.\n\n주어진 좌표를 대입하면\n$C=(-1,-1)+(3,0)-(1,2)=(1,-3)$이다.\n실제로 $C$는 제4사분면에 있으므로 조건에도 맞는다.\n\n따라서 $a=1$, $b=-3$이고\n$ab=-3$이므로 정답은 ①이다.",
+    "solution": "평행사변형 $ABCD$에서는 두 대각선의 중점이 같다. 대각선 $BD$의 중점을 $M$이라 하면\n$x_M=\\dfrac{-1+3}{2}=1$, $y_M=-\\dfrac12$이다.\n\n$M$은 대각선 $AC$의 중점이기도 하므로 x좌표와 y좌표를 각각 비교한다.\n$\\dfrac{1+x_C}{2}=1$에서 $x_C=1$이고,\n$\\dfrac{2+y_C}{2}=-\\dfrac12$에서 $y_C=-3$이다.\n\n따라서 $C=(1,-3)$이고, $ab=1\\times(-3)=-3$이므로 정답은 ①이다.",
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q03-solution.svg",
 
@@ -634,10 +634,10 @@ window.questionBank = [
     "imageSize": "large",
     "choices": [],
     "answer": "$21$",
-    "solution": "변 $BC$의 중점을 $M$이라 하자. 무게중심의 성질에 따라\n$G=\\dfrac{A+2M}{3}$이므로 $A=3G-2M$이다.\n\n직선 $BC$를 $L(x,y)=3x-y-1=0$으로 나타내면 $M$은 $BC$ 위에 있으므로 $L(M)=0$이다. 또\n$L(G)=3\\cdot3-1-1=7$이다.\n\n$L$은 일차식이므로 $A=3G-2M$을 대입하면\n$L(A)=L(3G-2M)=3L(G)-2L(M)=3\\cdot7-0=21$이다.\n\n따라서 점 $A$에서 직선 $BC$까지의 거리는\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다. 구하는 자연수는 $n=21$이므로 정답은 $21$이다.",
+    "solution": "변 $BC$의 중점을 $M=(u,v)$라 하자. $M$은 직선 $BC$ 위의 점이므로\n$3u-v-1=0$이다.\n\n삼각형 $ABC$의 무게중심 $G=(3,1)$을 x좌표와 y좌표로 각각 쓰면\n$\\dfrac{x_A+2u}{3}=3$, $\\dfrac{y_A+2v}{3}=1$이다. 따라서\n$x_A=9-2u$, $y_A=3-2v$이다.\n\n직선 $BC$를 $3x-y-1=0$으로 나타내면 점 $A$에서 직선까지의 거리의 분자는\n$3x_A-y_A-1=3(9-2u)-(3-2v)-1=23-2(3u-v)=21$이다.\n\n따라서\n$AH=\\dfrac{|3x_A-y_A-1|}{\\sqrt{3^2+(-1)^2}}=\\dfrac{21}{\\sqrt{10}}$이다. 구하는 자연수는 $n=21$이므로 정답은 $21$이다.",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 18의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "거리 · 풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
+    "solutionImageAlt": "G와 BC의 중점 M을 좌표별로 비교해 A와 수선의 발 H를 표시한 해설 도형",
+    "solutionImageCaption": "무게중심 조건을 좌표별로 적용하고 BC 위의 M과 AH의 거리 관계를 확인한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",

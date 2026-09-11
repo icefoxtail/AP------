@@ -19,31 +19,19 @@ const currentText = fs.readFileSync(indexPath, 'utf8');
 const current = loadIndex(indexPath);
 const generated = loadIndex(generatedIndexPath);
 
-const targetFiles = new Set([
-  'similar/high/h1/2mid/25_금당고_2학기_중간_고1_확인.js',
-  'similar/high/h1/2mid/25_금당고_2학기_중간_고1_심화.js',
-  'similar/high/h1/2mid/25_매산고_2학기_중간_고1_확인.js',
-  'similar/high/h1/2mid/25_매산고_2학기_중간_고1_심화.js',
-  'similar/high/h1/2mid/25_순천고_2학기_중간_고1_확인.js',
-  'similar/high/h1/2mid/25_순천고_2학기_중간_고1_심화.js',
-  'similar/high/h1/2final/25_금당고_2학기_기말_고1_확인.js',
-  'similar/high/h1/2final/25_금당고_2학기_기말_고1_심화.js',
-  'similar/high/h1/2final/25_순천고_2학기_기말_고1_확인.js',
-  'similar/high/h1/2final/25_순천고_2학기_기말_고1_심화.js',
-  'similar/high/h1/2final/25_제일고_2학기_기말_고1_확인.js',
-  'similar/high/h1/2final/25_제일고_2학기_기말_고1_심화.js',
-  'similar/high/h1/2final/25_팔마고_2학기_기말_고1_확인.js',
-  'similar/high/h1/2final/25_팔마고_2학기_기말_고1_심화.js',
-  'similar/high/h1/2final/25_효천고_2학기_기말_고1_확인.js',
-  'similar/high/h1/2final/25_효천고_2학기_기말_고1_심화.js',
-]);
-
-const additions = generated.filter((entry) => targetFiles.has(entry.sourceFile));
-if (additions.length !== 356) throw new Error('expected 356 generated rows, got ' + additions.length);
+// Legacy compatibility only. The canonical path is build-question-index.mjs,
+// which rebuilds the entire production index and enforces DB/source parity.
+// If this fallback is used, include every H1 semester-2 follow-up variant.
+const isH1Semester2Followup = (entry) => entry.sourceFile.startsWith('similar/high/h1/2mid/25_') || entry.sourceFile.startsWith('similar/high/h1/2final/25_');
+const additions = generated.filter(isH1Semester2Followup);
 
 const existingKeys = new Set(current.map((entry) => entry.qKey));
-const duplicate = additions.find((entry) => existingKeys.has(entry.qKey));
-if (duplicate) throw new Error('qKey already exists: ' + duplicate.qKey);
+const fresh = additions.filter((entry) => !existingKeys.has(entry.qKey));
+
+if (!fresh.length) {
+  console.log(JSON.stringify({ added: 0, total: current.length, files: [] }, null, 2));
+  process.exit(0);
+}
 
 const marker = 'window.questionIndex=[';
 const start = currentText.indexOf(marker);
@@ -69,14 +57,14 @@ for (let i = start + marker.length; i < currentText.length; i += 1) {
 }
 if (close < 0) throw new Error('questionIndex array close not found');
 
-const payload = additions.map((entry) => JSON.stringify(entry)).join(',');
+const payload = fresh.map((entry) => JSON.stringify(entry)).join(',');
 const before = currentText.slice(0, close).replace(/\s+$/, '');
 const after = currentText.slice(close);
 const nextText = before + ',' + payload + after;
 fs.writeFileSync(indexPath, nextText, 'utf8');
 
 console.log(JSON.stringify({
-  added: additions.length,
-  total: current.length + additions.length,
-  files: [...targetFiles],
+  added: fresh.length,
+  total: current.length + fresh.length,
+  files: [...new Set(fresh.map((entry) => entry.sourceFile))],
 }, null, 2));

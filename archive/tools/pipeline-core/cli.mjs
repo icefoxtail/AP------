@@ -1,10 +1,9 @@
 import fs from 'node:fs';
-import { inspectDispatchLock, recoverDispatchLock, initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, readWorkBatch, workBatchMetrics } from './work-batch.mjs';
+import { inspectDispatchLock, recoverDispatchLock, initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, readWorkBatch, aggregateWorkBatchAudit } from './work-batch.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { auditManifestFile, profiles, RUN_VERSION, RUN_VERSION_V2, CORE_SHA } from './closure.mjs';
 import { objectSha, writeNewJson, readBoundFile, canonicalJson } from './canonical.mjs';
-import { validateModelRouteParity, isBenchmarkJobKind } from './gold-contract.mjs';
 import { validateVisualFact, semanticSha, compareVisualFacts, VISUAL_SPEC_SHA } from './visual.mjs';
 import { rulePreflight } from './rulepack.mjs';
 import { prepareDraft } from './prepare.mjs';
@@ -36,20 +35,7 @@ try {
       const runs = read(value('--run-refs')).map(ref => JSON.parse(readBoundFile(root, ref)));
       if (canonicalJson(runs.map(r => r.runId).sort()) !== canonicalJson(state.runIds) || runs.some(r => r.workBatchId !== state.workBatchId)) throw new Error('WHOLE_JOB_AUDIT_REQUIRED');
       const reports = runs.map(run => auditV2Run(root, run));
-      const rows = reports.flatMap(report => report.freshness.map(row => ({ ...row, runId: report.runId, targetQuestionUid: row.questionUid, questionUid: `${report.runId}:${row.questionUid}` })));
-      const cost = workBatchMetrics(root, runs[0], rows);
-      const closed = reports.every(report => report.status === 'PASS');
-      const route = validateModelRouteParity(state.executionIdentity);
-      const routeErrors = isBenchmarkJobKind(state.jobKind) && route.status !== 'PASS' ? ['MODEL_ROUTE_PARITY_FAIL'] : [];
-      const freeze = state.freezes.at(-1);
-      const benchmarkDenominator = freeze?.benchmarkDenominator || null;
-      const denominator = benchmarkDenominator?.eligibleTargetCount;
-      const excluded = benchmarkDenominator?.excludedRuns || [];
-      const reviewTargets = isBenchmarkJobKind(state.jobKind) ? benchmarkDenominator?.eligibleTargets || [] : freeze?.targets || [];
-      const reviewTargetKeys = new Set(reviewTargets.map(row => canonicalJson({ runId: row.runId, questionUid: row.questionUid })));
-      const excludedStatus = excluded.find(row => row.status)?.status || null;
-      const finalStatus = excludedStatus ? excludedStatus : closed && !routeErrors.length ? 'PASS' : 'BLOCKED';
-      output = { status: finalStatus, benchmarkEligible: !excludedStatus && !routeErrors.length, workBatchId: state.workBatchId, productionAuthorized: false, MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY, modelRouteStatus: route.routeStatus, routeErrors, benchmarkDenominator, cost: { ...cost, totalTargetCount: denominator ?? cost.totalTargetCount }, finalCoverage: (() => { const denominatorAxes = runs.reduce((n, run) => n + run.questions.reduce((m, question) => m + (reviewTargetKeys.has(canonicalJson({ runId: run.runId, questionUid: question.questionUid })) ? question.requiredAxes?.length || 0 : 0), 0), 0); return denominatorAxes ? new Set(rows.filter(row => row.status === 'PASS' && reviewTargetKeys.has(canonicalJson({ runId: row.runId, questionUid: row.targetQuestionUid }))).map(row => `${row.questionUid}:${row.axis}`)).size / denominatorAxes : 0; })(), reports: reports.map(({ runId, status, errors }) => ({ runId, status, errors })) }; break;
+      output = aggregateWorkBatchAudit(root, state, runs, reports); break;
     }
     case 'work-batch-status': { const state = readWorkBatch(root, value('--work-batch-id')); output = { status: state.status, workBatchId: state.workBatchId, latestFreezeSha: state.freezes.at(-1)?.freezeSha || null, targetCount: state.freezes.at(-1)?.targets.length || 0, launches: state.launches.map(({ launchId, purpose, status, externalId, usedTokens }) => ({ launchId, purpose, status, externalId, usedTokens: Number.isSafeInteger(usedTokens) ? usedTokens : null })) }; break; }
     case 'rules': output = rulePreflight(root); break;

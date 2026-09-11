@@ -190,9 +190,10 @@
 
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; position: relative; gap: 0; min-height: 0; }
         .grid-container::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: #000; }
-        .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow: hidden; height: 100%; min-height: 0; }
+        .grid-col { display: flex; flex-direction: column; padding: 0 12px; overflow-x: visible; overflow-y: hidden; height: 100%; min-height: 0; }
+        .grid-col.sol-grid-col { overflow: visible; }
 
-        .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+        .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow-x: visible; overflow-y: hidden; }
         .q-box.sol-box { flex: none; border-bottom: 0.5px solid #eee; padding-bottom: 2.2em; margin-bottom: 2.2em; }
         .q-box.sol-box.sol-box-long { overflow: visible; padding-bottom: 1em; margin-bottom: 0; }
         .sol-meta { background: #fdfdfd; padding: 8px; border: 1px solid #eee; border-radius: 3px; margin-top: 10px; }
@@ -2266,8 +2267,8 @@ async function renderSolLegacy(area, data, ctx = null) {
         const makeGridPage = () => {
             const p = makePage(area, 'sol', pNum++);
             const grid = document.createElement('div'); grid.className = 'grid-container';
-            const l = document.createElement('div'); l.className = 'grid-col';
-            const r = document.createElement('div'); r.className = 'grid-col';
+            const l = document.createElement('div'); l.className = 'grid-col sol-grid-col';
+            const r = document.createElement('div'); r.className = 'grid-col sol-grid-col';
             grid.appendChild(l); grid.appendChild(r); p.body.appendChild(grid);
             solutionPageNo = pNum - 1;
             solutionUsableHeight = Math.max(solutionUsableHeight, Number(p.body.clientHeight || 1));
