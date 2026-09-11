@@ -17,7 +17,7 @@
 
 ## A. Executive Summary
 
-현재 코드상 실제 시험지 렌더/인쇄 엔진은 크게 `archive/engine.html`과 `archive/mixed_engine.html` 두 개다. 일반 아카이브는 `index.html`이 시험 JS URL을 만들어 `engine.html`을 열고, 엔진이 `questionBank`를 dynamic script로 로드한 뒤 시험지/해설/정답을 렌더한다.
+기존 조사에서 `archive/**`만 검색한 결과 실제 시험지 렌더/인쇄 엔진을 두 개로 판정했으나, 저장소 전체 보완 조사 결과 실제 QUESTION_PAPER_ENGINE은 세 개다. `archive/engine.html`은 일반 아카이브, `archive/mixed_engine.html`은 Mixer/단원별/assessment 및 일부 clinic worksheet, `apmath/wrong_print_engine.html`은 학생별·반별·학년별·유형별 오답 클리닉 시험지/해설지/정답표를 담당한다.
 
 일반 엔진은 `render-authority.js`, `layout-authority.js`, `print-contract.js`, `print-runtime.js`, `mathjax_render_loop.js`, exam/solution/answer executor와 부분적으로 공통화되어 있다. 그러나 현재 일반 엔진은 Fast Engine v2의 `screen-runtime`, snapshot, latest-wins, prewarm, side-effect ledger 계층을 사용하지 않고 직접 `render()` 트랜잭션을 수행한다.
 
@@ -27,7 +27,7 @@ Fast Engine v2 reference branch는 일반 `engine.html`에만 `render-state-norm
 
 일반 엔진의 시험지/해설/정답 executor는 이미 별도 파일로 분리되어 있으므로 renderer primitive 수준에서는 공통화가 진행되어 있다. 반면 믹서는 같은 입력/출력/역할을 수행하는 inline renderer와 print preflight를 별도로 보유하므로 `DUPLICATED_EQUIVALENT`로 분류된다.
 
-오답 기능은 현재 오답 문항만으로 새 시험지/해설지/정답표를 만드는 엔진으로 연결되어 있지 않다. 실제 확인된 오답 출력은 `assessment-analysis.html`의 결과표/분석표 브라우저 인쇄다.
+오답 기능에는 별도의 실제 시험지 renderer가 존재한다. `apmath/js/clinic-print.js`가 payload를 조립하고, 임시 출력은 `wrong_print_engine.html`과 `AP_CLINIC_PRINT_PAYLOAD` storage를 사용한다. 저장형 출력은 `wrong-clinics` API가 `public_set_key`와 `engine_url`을 반환하며, 학생 포털과 학생 상세 화면도 `wrong_print_engine.html?packet=...`를 직접 연다. `assessment-analysis.html`의 결과표/분석표 출력은 오답 클리닉 시험지와 별도의 REPORT_PRINT 경로다.
 
 취약점 모듈은 weakness score, metadata join, supplement preset, closed-loop fixture를 계산하지만 실제 `engine.html`/`mixed_engine.html` URL을 만들지 않는다. `candidate_non_operational`, `readOnly`, `noDbWrite`, `noStudentExposure`, `operationalExposure: HOLD`, `writes: 0`, `networkCalls: 0`이 코드상 명시되어 있다.
 
@@ -36,14 +36,16 @@ Fast Engine v2 reference branch는 일반 `engine.html`에만 `render-state-norm
 ```text
 일반 archive 시험지/해설/정답 출력: ACTIVE, Fast Engine v2 부분 공유
 Mixer/혼합/단원별/assessment 시험지 출력: ACTIVE, 별도 inline renderer
-오답 결과표/분석표 출력: ACTIVE, 별도 browser print report
-오답 시험지 renderer: NONE
+오답 클리닉 시험지/해설지/정답표: ACTIVE, 별도 QUESTION_PAPER_ENGINE
+오답 결과표/분석표 출력: ACTIVE, 별도 REPORT_PRINT
 취약점 기반 보충시험 출력: NON_OPERATIONAL CANDIDATE
 ```
 
 ---
 
 ## B. Inventory
+
+> 기존 이 절의 숫자 45/38/7은 `archive/**`에 한정한 1차 조사 denominator다. 저장소 전체 보완 조사 denominator와 엔진 수는 이 보고서의 `L. 보완 조사 Addendum`에서 갱신한다.
 
 ### B-1. Inventory 기준
 
@@ -235,7 +237,7 @@ assessment-mvp.html
 - `archive/assessment/assessment-mvp.html:1665` 부근 `goAssessmentMixedEngine()`
 - `archive/mixed_engine.html:801` 부근 `loadAssessmentPackFallback()`
 
-### C-5. 오답
+### C-5. 오답 결과표/분석표 — 1차 조사에서 확인한 부분
 
 ```text
 assessment-mvp.html
@@ -247,7 +249,7 @@ assessment-mvp.html
 → window.print()
 ```
 
-확인된 오답 경로에는 `engine.html`, `mixed_engine.html`, exam renderer, solution renderer, answer renderer가 없다.
+이 절은 `assessment-analysis.html`의 결과표/분석표 경로만 조사한 1차 결과였다. 저장소 전체 보완 조사에서 별도의 `apmath/wrong_print_engine.html` QUESTION_PAPER_ENGINE과 `clinic-print.js` 호출 경로가 추가로 확인되었다. 따라서 아래 1차 절의 “오답 renderer 없음” 결론은 폐기하고 Addendum의 corrected flow를 기준으로 한다.
 
 근거:
 
@@ -746,9 +748,38 @@ Mixed dual-run은 query parameter가 있을 때만 실행된다. 따라서 inlin
 
 세 가지는 서로 다른 개념이다.
 
-### J-8. 오답 시험지 경로 부재
+### J-8. 오답 시험지 경로 — 1차 조사 누락
 
-현재 wrong status를 `engine.html` data URL 또는 `mixedQuestions_<key>`로 변환하는 함수는 확인되지 않았다. 오답 시험지를 추가하려면 별도 source adapter와 source identity contract가 필요하다.
+저장소 전체 보완 조사에서 다음 실제 경로가 확인되었다.
+
+```text
+apmath/index.html
+→ apmath/js/clinic-print.js
+→ clinicPrintBuildPayload()
+→ clinicPrintOpenEngine()
+→ wrong_print_engine.html
+```
+
+또는:
+
+```text
+clinicPrintSaveAndOpen()
+→ POST wrong-clinics
+→ public_set_key / print.engine_url
+→ wrong_print_engine.html?set=...
+```
+
+학생 경로도 별도로 존재한다.
+
+```text
+apmath/js/student.js
+→ wrong_print_engine.html?packet=...&mode=review
+
+apmath/student/index.html
+→ wrong_print_engine.html?packet=...&mode=exam|sol&fit=screen
+```
+
+따라서 1차 보고서의 “오답 시험지 renderer 없음”은 `CORRECTED`다.
 
 ### J-9. 취약점 operational gap
 
@@ -786,3 +817,792 @@ COMMITS BEFORE REPORT COMMIT: 0
 PUSH/MERGE BEFORE REPORT COMMIT: NONE
 NEXT STEP: Architecture Review
 ```
+
+---
+
+## L. 보완 조사 Addendum — 저장소 전체 기준
+
+### L-1. 보완 조사 범위와 검색 방법
+
+기존 조사 브랜치와 기존 보고서를 기준으로 저장소 전체를 다시 검색했다.
+
+검색 대상:
+
+- `archive/**`
+- `apmath/**`
+- `eie/**`
+- `check/**`
+- `manual/**`
+- root HTML/JS
+- `apmath/worker-backup/worker/**`의 실제 payload/API route
+
+검색 문자열:
+
+```text
+window.print
+safePrint
+print_engine
+print-engine
+engine.html
+mixed_engine
+wrong_print_engine
+preview=1
+window.open
+iframe
+print-area
+MathJax
+qpp
+renderExam
+renderSol
+renderAns
+AP_CLINIC_PRINT_PAYLOAD
+mixedQuestions_
+public_set_key
+engine_url
+clinic-print
+wrong-clinic
+reportCenter.*Print
+printAttendanceLedgerReport
+printTimetableReport
+billingDocumentOpenPrint
+printGradeReport
+printStudents
+```
+
+다음은 검색에서 제외했다.
+
+- `docs/**`: 문서/계획/evidence
+- `tests/**`: 테스트와 fixture
+- `reports/**`: 생성 report/evidence
+- `archive/assets/**`, `archive/vendor/**`: asset/vendor
+- `archive/tools/**`, `tools/**`: tooling
+- `alive/**`: pipeline/evidence 문서 및 도구
+- `node_modules/**`
+
+이렇게 제한한 production source/config 검색 결과는 45개 파일이다. 이 수치는 “엔진 파일 수”가 아니라 출력 관련 token/call 관계가 있는 production source/config inventory다. 한 파일이 question-paper, preview, report print, business assembly를 동시에 지원할 수 있으므로 아래 카테고리 수와 합산하지 않는다.
+
+### L-2. 저장소 전체 Inventory denominator
+
+| 구분 | 조사 결과 |
+|---|---:|
+| 저장소 전체 production source/config 검색 hit | 45 files |
+| 실제 QUESTION_PAPER_ENGINE HTML | 3 |
+| REPORT_PRINT source modules | 11 |
+| PREVIEW/INTERNAL_REVIEW 경로 | 6 route families |
+| NON_OPERATIONAL weakness candidate modules | 5 |
+| 별도 engine이 아닌 지원/호출/API source | 20+ |
+| production code 수정 | 0 |
+
+`REPORT_PRINT source modules = 11`은 source module 기준이다. `report-center.js` 내부에 여러 print view/function이 있으므로 function-level route family는 16개로 세분된다. 이 둘을 중복 합산하지 않았다.
+
+### L-3. QUESTION_PAPER_ENGINE 확정 수
+
+최종 QUESTION_PAPER_ENGINE_COUNT는 **3**이다.
+
+| 엔진 | 역할 | 상태 |
+|---|---|---|
+| `archive/engine.html` | 일반 archive 시험지/해설지/정답표 | ACTIVE |
+| `archive/mixed_engine.html` | Mixer/혼합/단원별/assessment 및 일부 clinic worksheet | ACTIVE |
+| `apmath/wrong_print_engine.html` | 학생별/반별/학년별/유형별 오답 클리닉 시험지/해설지/정답표 | ACTIVE |
+
+추가 검색에서 다음은 별도 QUESTION_PAPER_ENGINE이 아닌 기존 엔진의 호출자/adapter로 분류했다.
+
+- `apmath/js/core.js`: clinic basket을 `archive/mixed_engine.html`로 보내는 source assembly
+- `apmath/worker-backup/worker/routes/exam-pdf.js`: archive/mixed engine을 headless browser로 열어 PDF를 만드는 transport
+- `check/check.js`: `archive/engine.html` 또는 `archive/mixed_engine.html` URL을 생성하는 answer/check flow
+- `apmath/student/index.html`: archive/mixed/wrong 중 기존 엔진을 선택하는 student portal entry
+- `archive/internal-review-engine.js`, `archive/internal-review-live.js`: `engine.html` preview를 사용하는 review UI
+
+### L-4. REPORT_PRINT 확정 수
+
+최종 REPORT_PRINT_COUNT는 **11 source modules**로 기록한다.
+
+| Source module | 실제 report print 역할 |
+|---|---|
+| `archive/assessment/assessment-analysis.html` | 평가 결과표/분석표 `window.print()` |
+| `archive/assessment/assessment-diagnostic-report-prototype.html` | 진단평가 report prototype print |
+| `apmath/js/report-print.js` | AP Math 평가 리포트 clean PDF popup + MathJax + print |
+| `apmath/js/report-center.js` | text/exam-analysis/batch/school-detail/premium report print view |
+| `apmath/js/cumulative.js` | 출석부/누적 출결 report popup print |
+| `apmath/js/timetable.js` | 시간표 report popup print |
+| `apmath/js/management.js` | 납부확인서 billing document print |
+| `eie/js/views/eie-attendance.js` | EIE 출결표 print |
+| `eie/js/views/eie-students.js` | 학생 명단 및 grade report print |
+| `eie/js/views/eie-timetable.js` | EIE 시간표 print |
+| `eie/js/views/eie-timetable-editor.js` | 시간표 편집 결과 print |
+
+이들은 question-paper engine이 아니다. 일부 report는 문항 원문/선택지/정답/해설 요약을 포함할 수 있지만, archive/mixer/clinic처럼 source question을 bank에서 복원하고 exam/solution/answer packet을 composition하는 엔진은 아니다.
+
+`report-center.js`의 function-level print route는 다음처럼 세분된다.
+
+- text report popup
+- exam analysis print view
+- batch report print view
+- school exam detailed parent report
+- premium exam report popup/portal
+
+따라서 source-module 기준 11, function-route 기준 16으로 관리한다.
+
+### L-5. PREVIEW/INTERNAL_REVIEW 확정
+
+별도 question-paper engine이 추가로 발견된 것은 아니다. 확인된 preview/review route family는 다음과 같다.
+
+1. `archive/index.html` assignment target preview → `engine.html?preview=1`
+2. `archive/index.html` unit-past assignment preview → `mixed_engine.html?key=...`
+3. `unit-past-exams.js` generated paper preview → `mixed_engine.html` iframe
+4. `apmath/js/clinic-print.js` clinic preview → `wrong_print_engine.html?preview=1`
+5. `archive/internal-review-engine.js` → `engine.html` live preview iframe
+6. `archive/internal-review-live.js` → `engine.html` live preview iframe
+
+이 중 1~4는 production preview, 5~6은 INTERNAL_REVIEW다. 엔진 수 denominator에는 중복하여 더하지 않았다.
+
+---
+
+## M. `apmath/js/clinic-print.js` E2E 조사
+
+### M-1. 사용자 진입
+
+`apmath/index.html:1010`에서 다음 script가 production AP Math OS에 로드된다.
+
+```html
+<script defer src="js/clinic-print.js"></script>
+```
+
+반 화면의 classroom UI에서도 `openClinicPrintCenter()`를 호출한다.
+
+- `apmath/js/classroom.js:1573`
+- `apmath/js/clinic-print.js:1650` 부근 `openClinicCenter()`
+- `apmath/js/clinic-print.js:1667` 부근 `openClinicClassPicker()`
+- `apmath/js/clinic-print.js:1771` 부근 `openClinicPrintCenter()`
+
+모드 UI는 실제로 다음을 제공한다.
+
+- 학생별 오답
+- 반별 공통 오답
+- 학년별 공통 오답
+- 유형별 오답
+- 유형별 최다빈출
+- 유형별 최다오답
+- 유형별 단원 선택
+
+### M-2. Business aggregation
+
+#### 학생별
+
+`clinicPrintBuildStudentWrongItems()` (`clinic-print.js:594`)는 다음을 수행한다.
+
+- selected exam keys
+- selected student IDs
+- class students
+- exam sessions
+- wrong answer IDs
+- exam blueprint source identity
+- source archive file/question no
+- unit/course/concept metadata
+- source-level dedupe
+
+#### 학년별
+
+`clinicPrintBuildGradeWrongSource()` (`clinic-print.js:671`)는:
+
+- 같은 grade class 목록
+- class별 latest session
+- 학생별 wrong items
+- grade cohort counts
+- source-level dedupe
+
+를 만든다.
+
+#### 반별 공통 오답
+
+`clinicPrintBuildClassWrongItems()` (`clinic-print.js:740`)는:
+
+- 동일 source question aggregation
+- wrong student list
+- total cohort count
+- wrong count
+- correct rate
+- unit/course/cluster metadata
+
+를 만든다.
+
+#### 전체 payload
+
+`clinicPrintBuildPayload()` (`clinic-print.js:797`)는 다음 구조를 만든다.
+
+```text
+version
+mode: student | class | grade | type
+printTitle
+classId/className/gradeName
+range
+options
+headerOptions
+exams
+students
+classWrongItems
+gradeWrongItems
+createdAt/createdDate
+```
+
+주요 output option:
+
+- `groupByStudent`
+- `groupByExam`
+- `dedupeByQuestion`
+- `showWrongStudents`
+- `pageBreakByStudent`
+- `includeAnswer`
+- `includeSolution`
+- `includeHomeworkCheckBox`
+
+이 항목들은 오답 클리닉 business logic이며, renderer infrastructure와 분리해야 한다.
+
+### M-3. 임시 출력 연결
+
+`clinicPrintOpenEngine()` (`clinic-print.js:861`)는 다음을 수행한다.
+
+```text
+payload
+→ JSON.stringify
+→ sessionStorage['AP_CLINIC_PRINT_PAYLOAD']
+→ localStorage['AP_CLINIC_PRINT_PAYLOAD']
+→ new URL('wrong_print_engine.html', window.location.href)
+→ window.open(engineUrl, '_blank', 'noopener')
+```
+
+실제 연결 증거:
+
+```text
+clinic-print.js:864  sessionStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', payloadJson)
+clinic-print.js:865  localStorage.setItem('AP_CLINIC_PRINT_PAYLOAD', payloadJson)
+clinic-print.js:871  new URL('wrong_print_engine.html', window.location.href)
+clinic-print.js:872  window.open(engineUrl, '_blank', 'noopener')
+```
+
+### M-4. 저장형 출력 연결
+
+`clinicPrintSaveAndOpen()` (`clinic-print.js:916`)는 `api.post('wrong-clinics', ...)`를 호출한다.
+
+payload:
+
+```text
+title
+mode
+source.scope_type
+source.class_id
+source.class_name
+source.grade
+targets
+payload
+```
+
+API 성공 결과에서:
+
+```text
+result.public_set_key
+result.print.engine_url
+```
+
+을 읽는다.
+
+fallback URL:
+
+```text
+wrong_print_engine.html?set=<public_set_key>
+```
+
+근거:
+
+- `clinic-print.js:919` `api.post('wrong-clinics', ...)`
+- `clinic-print.js:931` success/public key 검증
+- `clinic-print.js:934` `result.print.engine_url || wrong_print_engine.html?set=...`
+
+### M-5. Preview iframe 연결
+
+`openClinicPrintCenter()`가 만드는 UI에는 다음 iframe이 있다.
+
+```html
+<iframe id="clinic-print-preview-frame"
+        title="출력 미리보기"
+        src="wrong_print_engine.html?preview=1"></iframe>
+```
+
+근거:
+
+- `clinic-print.js:1928`
+- `clinic-print.js:989` 부근 `clinicPrintPushPreview()`
+- `clinic-print.js:1004` parent message payload
+- `clinic-print.js:2434` 부근 wrong engine의 `installPreviewMessageChannel()`
+
+preview는 URL/storage의 stale payload를 먼저 렌더하지 않고, parent의 `AP_PRINT_PREVIEW` 또는 `AP_CLINIC_PREVIEW` message를 source authority로 사용한다.
+
+---
+
+## N. `apmath/wrong_print_engine.html` E2E 조사
+
+### N-1. Source loading
+
+지원 source:
+
+```text
+?packet=<packet_key>
+?set=<public_set_key>
+?wp=<packed QR payload>
+sessionStorage['AP_CLINIC_PRINT_PAYLOAD']
+localStorage['AP_CLINIC_PRINT_PAYLOAD']
+preview parent message
+```
+
+근거:
+
+- `wrong_print_engine.html:2463` 부근 `loadPayloadFromUrl()`
+- `wrong_print_engine.html:2477` 부근 `loadWrongClinicPayloadFromServer()`
+- `wrong_print_engine.html:2487` 부근 `loadPayloadFromUrlOrStorage()`
+- `wrong_print_engine.html:2505` 부근 `boot()`
+- `wrong_print_engine.html:2434` 부근 preview message channel
+
+저장형 server source:
+
+```text
+GET https://ap-math-os-v2612.js-pdf.workers.dev/api/wrong-clinics/set/<key>
+GET https://ap-math-os-v2612.js-pdf.workers.dev/api/wrong-clinics/packet/<key>
+```
+
+### N-2. Data normalize와 문항 복원
+
+1. payload에서 `sourceArchiveFile` 또는 `archiveFile` 수집
+2. `normalizeArchiveFile()`로 source path 정규화
+3. 원본 archive JS를 `fetch()`로 로드
+4. `extractQuestionBank()`가 sandbox `new Function()`으로 `questionBank` 추출
+5. `normalizeQuestionBank()`가 array/questions/items/data를 수용
+6. `findQuestionInBank()`가 source question no/originalId/questionId/id를 순서대로 검색
+7. `cloneQuestionForRender()`가 output question no와 source identity를 보존
+
+근거:
+
+- `wrong_print_engine.html:645` 부근 `fetchArchiveText()`
+- `wrong_print_engine.html:674` 부근 `normalizeQuestionBank()`
+- `wrong_print_engine.html:699` 부근 `findQuestionInBank()`
+- `wrong_print_engine.html:1111` 부근 `cloneQuestionForRender()`
+- `wrong_print_engine.html:1360` 부근 `loadAllQuestionBanks()`
+
+### N-3. Exam render
+
+오답 엔진은 일반 archive executor를 로드하지 않는다. 대신 `renderMeasuredExamPages()` (`wrong_print_engine.html:1393`)가 자체적으로 다음을 수행한다.
+
+- staging에 q-box 생성
+- content/choice/image/wrong note 삽입
+- image size 측정
+- MathJax typeset
+- raw/tight proxy height 측정
+- `layoutTag`, `wide`, `subjective-2up`, `subjective-4up`, `fullwidth` 분류
+- normal/special/wide block pagination
+- page/column DOM 생성
+- overflow auto compress
+- 마지막 exam page에 solution QR 삽입
+
+모드별 exam composition:
+
+- `renderStudentPages()` (`:1556`)
+- `renderClassPages()` (`:1603`)
+- `renderGradePages()` (`:1671`)
+- `renderTypePages()` (`:1763`)
+
+### N-4. Solution render
+
+`placeSolutionItems()` (`wrong_print_engine.html:1858`)가 별도로 구현되어 있다.
+
+- 2-column solution page
+- question reminder/content
+- answer
+- solution image
+- solution HTML
+- `makeSolutionHtmlChunks()`
+- `makeLongSolutionShell()`
+- column overflow 검사
+- solution split continuation
+- auto compression
+- MathJax 재typeset
+
+`renderSol()` (`:1985`)는 type/class/grade/student mode별 source items를 조립하고 `placeSolutionItems()`에 넘긴다.
+
+### N-5. Answer render
+
+`collectAnswerRows()` (`:2040`)와 `renderAnswerRows()` (`:2058`)가 정답표를 자체 구현한다.
+
+- 40문항 page chunk
+- 4문항 group-end
+- 2-column answer grid
+- student/class/grade/type mode별 source list
+- sourceRef 보존
+
+`renderAns()`는 student별 answer pages 또는 aggregate answer rows를 만든다.
+
+### N-6. MathJax
+
+오답 엔진은 일반 archive의 `mathjax_render_loop.js`를 로드하지 않는다.
+
+대신:
+
+- HTML head의 local MathJax + CDN fallback setup
+- `MathJax.typesetPromise()` 직접 호출
+- `waitForMathJaxOrContinue()` inline 구현
+- staging/page/solution column별 개별 typeset
+
+근거:
+
+- `wrong_print_engine.html:8~26`
+- `wrong_print_engine.html:2266` 부근 `waitForMathJaxOrContinue()`
+- `wrong_print_engine.html:1406`, `1534`, `1923`, `2320`
+
+### N-7. Image readiness
+
+`waitForQuestionImage()`과 `waitForClinicPrintImages()`가 자체 구현되어 있다.
+
+- `complete`
+- `naturalWidth`
+- load/error event
+- timeout
+- `decode()`
+- `APPrintRuntime.summarizeImageReadiness()`가 존재하면 shared summary 사용
+
+즉 readiness summary helper는 공유하지만 기다림/수집 wrapper는 오답 엔진이 별도로 구현한다.
+
+### N-8. Pagination/layout
+
+오답 엔진에는 `CLINIC_QPP = 4`가 고정되어 있다.
+
+일반 exam pagination과 유사한 요소:
+
+- 2-column page
+- q-box height profile
+- raw/tight measurement
+- wide/fullwidth
+- subjective-2up
+- subjective-4up
+- block gap
+- page overflow auto compression
+
+오답 고유 요소:
+
+- 학생별 packet 경계
+- class/grade recipient별 packet
+- 학생별 duplex blank page
+- packet-level QR recipient
+- `pageBreakByStudent`
+- class/grade/type composition
+
+`APLayoutAuthority.planClinicComposition()`은 `renderAuthorityDualRun=1`일 때 composition evidence용으로 호출된다. Fast `layout-materializer.js`는 로드되지 않는다.
+
+### N-9. Header
+
+오답 payload는 다음 header policy를 가진다.
+
+- `title`
+- `metaRight`
+- `subtitle`
+- `showNameLine`
+- `showScoreLine`
+- `showDate`
+- `applyToSolution`
+- `applyToAnswer`
+
+학생별/반별/학년별/유형별 title/meta/name/date/score가 다르므로 header는 business recipient composition과 강하게 결합되어 있다.
+
+### N-10. QR
+
+오답 엔진은 `qrious`를 직접 로드한다.
+
+QR 종류:
+
+- 학생별 solution QR
+- 반/학년 common wrong QR
+- stored packet QR
+- stored set QR
+- 공개 `wrong_print_engine.html` URL
+
+URL 길이 안정성도 별도 관리한다.
+
+```text
+WRONG_PRINT_PUBLIC_URL
+QR_URL_LENGTH.safe = 1200
+QR_URL_LENGTH.warn = 1800
+```
+
+`injectSolutionQrToPage()`는 exam 마지막 페이지에 QR을 삽입한다. student packet은 `packet:<key>`를 target key로 사용할 수 있다.
+
+### N-11. Print readiness/transport
+
+오답 엔진은 `ClinicAdapter` readiness tracker를 사용한다.
+
+상태 흐름:
+
+```text
+DATA_READY
+→ MATH_READY
+→ IMAGE_READY
+→ LAYOUT_READY
+→ RENDER_READY
+→ PRINT_READY
+```
+
+`clinicSafePrint()` (`wrong_print_engine.html:214`)는:
+
+1. `__AP_RENDER_READY__` 대기
+2. `APPrintRuntime.assertSuccessfulRender()` 검증
+3. `PRINT_READY` mark
+4. `window.print()` 호출
+
+오답 엔진에는 다음이 없다.
+
+- `native_print.js`
+- `print_image_optimizer.js`
+- raster print
+- GDI print
+- native PCL print
+
+따라서 wrong engine의 print transport는 현재 browser `window.print()`만 확인된다.
+
+### N-12. Preview
+
+`?preview=1`일 때:
+
+- `preview-mode`/`screen-fit-mode` class
+- parent message channel install
+- stale storage/payload를 먼저 렌더하지 않음
+- parent의 `AP_PRINT_PREVIEW` 또는 `AP_CLINIC_PREVIEW` message를 source authority로 사용
+- header contenteditable
+- header edit를 parent로 postMessage
+- debounce preview rerender
+
+근거:
+
+- `wrong_print_engine.html:2434` 부근 `installPreviewMessageChannel()`
+- `wrong_print_engine.html:2505` 부근 `boot()` preview branch
+- `clinic-print.js:1928` iframe source
+- `clinic-print.js:989` preview payload push
+
+### N-13. Snapshot/cancellation/latest-wins
+
+현재 wrong engine에는 다음이 없다.
+
+- `render-state-normalizer.js`
+- `screen-runtime.js`
+- `screen-runtime-adapter.js`
+- `snapshot-contract.js`
+- `side-effect-ledger.js`
+- `layout-materializer.js`
+- AbortController 기반 render cancellation
+- latest-wins request generation
+
+preview debounce timer는 존재하지만 render transaction cancellation/latest-wins runtime과 동일하지 않다.
+
+---
+
+## O. 일반/Mixer/오답 3엔진 비교 Matrix
+
+| 기능 | 일반 `archive/engine.html` | Mixer `archive/mixed_engine.html` | 오답 `apmath/wrong_print_engine.html` |
+|---|---|---|---|
+| source loading | `data=exams/<file>` dynamic script | localStorage `mixedQuestions_<key>` 또는 assessment pack | `packet`, `set`, packed `wp`, session/localStorage, preview message |
+| normalization | `APRenderAuthority.normalizeArchiveQuestions()` | `APRenderAuthority.normalizeMixedQuestions()` | custom bank normalize + `APRenderAuthority.normalizeClinicQuestions()` dual-run only |
+| exam render | shared `APExamRenderExecutor`, legacy fallback | inline `renderExam()` | inline `renderMeasuredExamPages()` + student/class/grade/type composition |
+| solution render | shared `APSolutionRenderExecutor`, legacy fallback | inline `renderSol()` | inline `placeSolutionItems()`/`renderSol()` |
+| answer render | shared `APAnswerRenderExecutor`, legacy fallback | inline `renderAns()` | inline `collectAnswerRows()`/`renderAnswerRows()` |
+| MathJax | shared `mathjax_render_loop.js` wrapper + MathJax | same shared loop wrapper, inline engine orchestration | no shared loop script; direct `MathJax.typesetPromise()` and inline wait |
+| image readiness | own wait wrapper + shared summary | own wait wrapper + shared summary | own `waitForClinicPrintImages()` + shared summary helper |
+| pagination | executor/local algorithm; Fast ref has materializer | inline pagination | inline measured block pagination with clinic composition |
+| layout authority | current authority/dual-run; Fast ref production materializer | authority/dual-run only; inline primary | `planClinicComposition()` dual-run/evidence only; inline primary |
+| header | `printHeaderOptions` | `printHeaderOptions` | recipient/mode-specific header options and inline editable preview |
+| QR | solution/submit QR, archive target | solution/submit QR, mixed target | student/class/grade/type/stored packet QR, public wrong engine URL |
+| QPP | URL/AppState, default 4 | URL/meta, 4/6/8 | fixed `CLINIC_QPP = 4` |
+| screen preview | `preview=1`, postMessage witness | unit/mixer iframe preview | `preview=1`, parent payload message, contenteditable header |
+| print preflight | `__AP_RENDER_READY__`, fonts/images/math recovery | same direct preflight copy | render outcome + readiness tracker only |
+| print transport | vector/raster/native/GDI | vector/raster/native/GDI | browser `window.print()` only |
+| snapshot/cache | current none; Fast ref has snapshot/cache | none | payload source cache only; render snapshot none |
+| cancellation/latest-wins | current none; Fast ref has runtime | none | none; preview debounce only |
+| side effect | blueprint/class assignment async | mixed blueprint/class assignment async | wrong-clinics API save, packet/set fetch, student submit/reissue |
+| legacy fallback | executor missing/authority legacy | inline renderer primary | common helpers missing → inline renderer remains authoritative |
+
+---
+
+## P. Fast Engine v2 ↔ wrong_print_engine 비교
+
+| 기능 | 분류 | 근거 |
+|---|---|---|
+| `print-contract.js` | `SHARED_ALREADY` | `wrong_print_engine.html:23` 직접 include |
+| `render-authority.js` | `SHARED_ALREADY` 제한적 | clinic normalizer/semantic dual-run에 사용되나 primary renderer는 inline |
+| `layout-authority.js` | `SHARED_ALREADY` 제한적 | `planClinicComposition()` evidence/gate에 사용; materializer는 아님 |
+| `print-runtime.js` | `SHARED_ALREADY` 제한적 | readiness tracker/assert/summarize helper 사용 |
+| Fast exam executor | `DUPLICATED_EQUIVALENT` | executor를 로드하지 않고 `renderMeasuredExamPages()`가 동일 책임을 inline 수행 |
+| Fast solution executor | `DUPLICATED_EQUIVALENT` | `placeSolutionItems()`와 chunk/continuation 자체 구현 |
+| Fast answer executor | `DUPLICATED_EQUIVALENT` | `renderAnswerRows()` 자체 구현 |
+| Fast layout materializer | `DUPLICATED_EQUIVALENT` | pagination/materialization 기능은 유사하나 clinic recipient/duplex 특수성 존재 |
+| Fast MathJax loop | `DUPLICATED_EQUIVALENT` | local/CDN MathJax와 direct typeset은 있으나 `mathjax_render_loop.js`는 미로드 |
+| image readiness | `DUPLICATED_EQUIVALENT` | image/decode/timeout/readiness summary 자체 wrapper |
+| print preflight | `DUPLICATED_EQUIVALENT` | render readiness를 확인하지만 browser print만 사용 |
+| header/QR policy | `ENGINE_SPECIFIC` | 학생/반/학년/유형/packet recipient별 header와 QR |
+| screen runtime | `UNKNOWN` | Fast `screen-runtime.js`/adapter/snapshot과 clinic payload/recipient lifecycle parity 미확정 |
+| snapshot/cache | `UNKNOWN` | source payload cache는 있으나 Fast render snapshot 계약 없음 |
+| cancellation/latest-wins | `UNKNOWN` | preview debounce만 있고 Fast request generation/abort 없음 |
+| side-effect ledger | `ENGINE_SPECIFIC` | wrong-clinics save/packet submit/reissue effect가 clinic business flow에 결합 |
+
+---
+
+## Q. 오답 Business Logic과 Render Infrastructure 경계
+
+### Q-1. 오답 business logic
+
+- 학생별 오답 선택
+- 반별 공통 오답
+- 학년별 공통 오답
+- 최다빈출
+- 최다오답
+- 단원별 오답
+- exam/student/class/grade scope
+- wrong answer aggregation
+- wrong count/correct rate
+- wrong student list
+- saved clinic set
+- saved student packet
+- reissue wrong-of-wrong packet
+- target student selection
+- packet/set/public key
+
+구체적 근거:
+
+- `clinicPrintBuildStudentWrongItems()`
+- `clinicPrintBuildGradeWrongSource()`
+- `clinicPrintBuildClassWrongItems()`
+- `clinicPrintBuildPayload()`
+- `clinicPrintSaveAndOpen()`
+- `buildStudentWrongClinicReissuePayload()`
+
+### Q-2. Render/Print Infrastructure
+
+- bank fetch/extract
+- question normalization
+- question HTML
+- choices
+- solution HTML
+- answer grid
+- MathJax
+- image load/decode
+- measured pagination
+- solution continuation
+- page header
+- recipient header
+- QR injection
+- preview message channel
+- readiness tracker
+- `window.print()`
+
+오답 엔진에는 이 Infrastructure가 inline으로 존재하고, Fast executor/runtime을 직접 재사용하지 않는다.
+
+---
+
+## R. 추가 출력엔진 조사 결과
+
+### R-1. Homework
+
+저장소 전체에서 homework 관련 print 문자열은 확인했지만, homework 전용 QUESTION_PAPER_ENGINE은 확인되지 않았다.
+
+- homework photo/file viewer: 새 창 열기/이미지 열람
+- homework assignment/status: data/UI flow
+- 별도 exam/solution/answer renderer: NONE
+
+`manual/manual-data.js`의 “클리닉용 mixed_engine 시험지” 문구도 별도 엔진이 아니라 기존 `archive/mixed_engine.html`을 가리킨다.
+
+분류: `NON_QUESTION_PAPER` 또는 기존 Mixer engine 호출
+
+### R-2. Classroom
+
+classroom 경로에서 확인되는 출력은 다음이다.
+
+- clinic center 진입 → `wrong_print_engine.html`
+- attendance print → report print
+- timetable print → report print
+- student/grade report → report print
+
+classroom 전용 question-paper renderer는 확인되지 않았다.
+
+### R-3. Diagnostic/Assessment
+
+- `archive/assessment/assessment-mvp.html` → `mixed_engine.html`: QUESTION_PAPER_ENGINE, 기존 Mixer engine
+- `archive/assessment/assessment-analysis.html`: REPORT_PRINT
+- `archive/assessment/assessment-diagnostic-report-prototype.html`: REPORT_PRINT prototype
+- `apmath/worker-backup/worker/routes/exam-pdf.js`: archive/mixed engine headless PDF transport
+
+별도 diagnostic question-paper engine은 확인되지 않았다.
+
+### R-4. Internal review
+
+- `archive/internal-review-engine.html/js`
+- `archive/internal-review-live.html/js`
+
+둘은 review UI이며, 실제 시험지 렌더는 `engine.html` preview iframe으로 위임한다. 별도 QUESTION_PAPER_ENGINE이 아니다.
+
+### R-5. Cumulative/Report/Student
+
+- cumulative attendance ledger: REPORT_PRINT
+- timetable: REPORT_PRINT
+- billing receipt: REPORT_PRINT
+- report center: REPORT_PRINT
+- student wrong packet: `wrong_print_engine.html`
+- student archive/mixed exam preview: `archive/engine.html`/`archive/mixed_engine.html`
+
+---
+
+## S. 기존 보고서 주장 재판정
+
+| 기존 주장 | 재판정 | 근거 |
+|---|---|---|
+| 실제 엔진은 2개다 | `CORRECTED` | `apmath/wrong_print_engine.html` 추가 확인, QUESTION_PAPER_ENGINE_COUNT=3 |
+| 오답 시험지 renderer는 없다 | `CORRECTED` | `clinic-print.js → wrong_print_engine.html`, student packet/set routes |
+| 취약점 output은 없다 | `CONFIRMED` | weakness modules는 non-operational/fixture/HOLD, 다만 wrong clinic은 별도 operational engine |
+| Mixer는 inline renderer다 | `CONFIRMED` | `mixed_engine.html` inline `renderExam/renderSol/renderAns` |
+| Fast Engine은 일반 engine에만 적용된다 | `CONFIRMED` | reference branch의 screen runtime 계층은 `engine.html`에만 연결; Mixer/clinic은 별도 |
+| renderer primitive는 일부 공통화되어 있다 | `CORRECTED` | 일반/Mixer/clinic 모두 print/render/layout authority 일부를 공유하지만 executor/runtime은 일반만 직접 사용 |
+| 오답 출력은 assessment analysis report뿐이다 | `CORRECTED` | assessment report와 wrong clinic QUESTION_PAPER_ENGINE은 별도 경로 |
+| archive-only inventory 45/38/7을 전체 denominator로 사용할 수 있다 | `CORRECTED` | `apmath/**`, `eie/**`, report print, clinic engine 누락 |
+
+---
+
+## T. 갱신된 Architecture Review 질문
+
+1. 일반/Mixer/오답 3개 QUESTION_PAPER_ENGINE 모두 동일 Fast Runtime을 탈 수 있는가?
+2. 각 엔진마다 source adapter만 다르게 두면 되는가?
+3. `wrong_print_engine`의 학생별 packet/header/recipient/duplex 특수성이 runtime 공통화를 방해하는가?
+4. Mixer와 오답의 inline exam/solution/answer renderer를 기존 executor로 대체 가능한가?
+5. 일반/Mixer/오답의 print preflight를 하나로 합칠 수 있는가?
+6. QR/header/QPP를 common policy로 분리할 수 있는가?
+7. wrong clinic의 browser-only print transport를 native/raster/GDI transport와 같은 policy로 올릴 필요가 있는가?
+8. `APLayoutAuthority.planClinicComposition()`을 Fast `layout-materializer`의 production authority로 승격할 수 있는가?
+9. student packet/set source authority를 Fast snapshot key와 어떻게 결합할 것인가?
+10. wrong-clinics API side effect를 `side-effect-ledger`에 넣을 수 있는가?
+11. 취약점 출력은 새 renderer가 필요한가, 아니면 Mixer source adapter로 흡수 가능한가?
+12. `apmath/js/core.js`의 clinic worksheet(Mixer 경로)와 `clinic-print.js`의 wrong clinic을 같은 business product로 볼 것인가, 아니면 별도 source family로 유지할 것인가?
+13. report print와 question-paper engine의 공통 MathJax/print readiness만 공유하고 DOM/layout은 분리할 것인가?
+
+---
+
+## U. 보완 조사 최종 상태
+
+```text
+INVESTIGATION RESULT: PASS
+PREVIOUS REPORT STATUS: CORRECTED
+QUESTION-PAPER ENGINE COUNT: 3
+REPORT PRINT COUNT: 11 source modules
+REPORT PRINT ROUTE FAMILY COUNT: 16 function-level routes
+PRODUCTION CODE MODIFIED: 0
+FILES MODIFIED: 조사 보고서만
+NEXT STEP: Architecture Review
+```
+
+수정된 기존 보고서 파일:
+
+```text
+reports/archive-output-engine-investigation.md
+```
+
+이번 보완 조사에서 수정해야 하는 것은 보고서뿐이며, `archive/**`, `apmath/**`, `eie/**`, worker route 등 production source는 수정하지 않는다.
