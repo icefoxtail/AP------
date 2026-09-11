@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_PIPELINE_DEFECT_EVIDENCE_v1",
+  "status": "ROOT_CAUSE_IDENTIFIED_AND_RECONCILED",
+  "workBatchId": "past20-maesan-repair-eac09c29e",
+  "launchId": "past20-maesan-repair-eac09c29e:1",
+  "failedPhase": "U1",
+  "failureEvidence": "alive/runtime/provider-bridge/past20-maesan-repair-eac09c29e/provider-transport-failure.json",
+  "failureReceipt": "alive/runtime/provider-bridge/past20-maesan-repair-eac09c29e/provider-transport-failure-receipt.json",
+  "failureReceiptSha256": "sha256:f6ec3c00cc779c65bbcca9e5a2f3d168d6b4d8d51b58cadd0705ce6b921ffaa1",
+  "observedProviderLog": {
+    "source": "C:/Users/USER/.codex/logs_2.sqlite",
+    "threadId": "01a09137-30c0-7690-8c2b-7c9b791e58ba",
+    "turnId": "01a09138-e581-7671-ab52-11ccfa2b703d",
+    "timestampUnixSeconds": 1789142885,
+    "model": "gpt-5.6-luna",
+    "outputItemCompleted": true,
+    "totalUsageTokens": 22843,
+    "schema400Observed": false
+  },
+  "dispatchProcessObservation": {
+    "stateBeforeReconcile": "DISPATCHED",
+    "phaseResponseFilePresent": false,
+    "receiptFilePresent": false,
+    "dispatchClientProcessPresent": false,
+    "providerDaemonProcessPresent": true,
+    "retryPerformed": false
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "defect": "thread/read includeTurns history polling did not expose the completed turn to the adapter; the protocol's explicit thread/turns/list endpoint with itemsView=full is required for deterministic recovery.",
+    "classification": "PIPELINE_DEFECT",
+    "semanticModelTurnCompleted": true
+  },
+  "repairPlan": {
+    "scope": "Poll thread/turns/list with itemsView=full and recover the target turn from response.data.",
+    "sameLaunchRetry": false,
+    "freshRunRequiredAfterRepair": true
+  }
+}
