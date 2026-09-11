@@ -434,6 +434,43 @@ export function validateWorkBatchEvidence(root, run, evidence) {
   return errors;
 }
 
+export function aggregateWorkBatchAudit(root, state, runs, reports) {
+  const benchmark = isBenchmarkJobKind(state.jobKind);
+  const rows = reports.flatMap(report => report.freshness.map(row => ({ ...row, runId: report.runId, targetQuestionUid: row.questionUid, questionUid: `${report.runId}:${row.questionUid}` })));
+  const route = validateModelRouteParity(state.executionIdentity);
+  const routeErrors = benchmark && route.status !== 'PASS' ? ['MODEL_ROUTE_PARITY_FAIL'] : [];
+  const freeze = state.freezes.at(-1);
+  const benchmarkDenominator = freeze?.benchmarkDenominator || null;
+  const denominator = benchmarkDenominator?.eligibleTargetCount;
+  const excluded = benchmarkDenominator?.excludedRuns || [];
+  const reviewTargets = benchmark ? benchmarkDenominator?.eligibleTargets || [] : freeze?.targets || [];
+  const reviewTargetKeys = new Set(reviewTargets.map(row => canonicalJson({ runId: row.runId, questionUid: row.questionUid })));
+  const eligibleReports = benchmark ? reports.filter(report => reviewTargets.some(row => row.runId === report.runId)) : reports;
+  const closed = eligibleReports.length > 0 && eligibleReports.every(report => report.status === 'PASS');
+  const denominatorEmpty = benchmark && (!benchmarkDenominator || denominator === 0);
+  const cost = workBatchMetrics(root, runs[0], benchmark ? rows.filter(row => reviewTargetKeys.has(canonicalJson({ runId: row.runId, questionUid: row.targetQuestionUid }))) : rows);
+  const finalStatus = denominatorEmpty ? 'BLOCKED' : closed && !routeErrors.length ? 'PASS' : 'BLOCKED';
+  const benchmarkEligible = benchmark ? !denominatorEmpty && closed && !routeErrors.length : true;
+  const finalCoverage = (() => {
+    const denominatorAxes = runs.reduce((total, run) => total + run.questions.reduce((count, question) => count + (reviewTargetKeys.has(canonicalJson({ runId: run.runId, questionUid: question.questionUid })) ? question.requiredAxes?.length || 0 : 0), 0), 0);
+    return denominatorAxes ? new Set(rows.filter(row => row.status === 'PASS' && reviewTargetKeys.has(canonicalJson({ runId: row.runId, questionUid: row.targetQuestionUid }))).map(row => `${row.questionUid}:${row.axis}`)).size / denominatorAxes : 0;
+  })();
+  return {
+    status: finalStatus,
+    benchmarkEligible,
+    workBatchId: state.workBatchId,
+    productionAuthorized: false,
+    MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY,
+    modelRouteStatus: route.routeStatus,
+    routeErrors,
+    benchmarkDenominator,
+    cost: { ...cost, totalTargetCount: denominator ?? cost.totalTargetCount },
+    finalCoverage,
+    reports: reports.map(({ runId, status, errors }) => ({ runId, status, errors })),
+    diagnostics: { excludedRuns: excluded, eligibleReportCount: eligibleReports.length, closed },
+  };
+}
+
 export function workBatchMetrics(root, run, rows = []) {
   try {
     const state = readWorkBatch(root, run.workBatchId), freeze = state.freezes.at(-1);
