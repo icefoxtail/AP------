@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
+import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -51,4 +51,9 @@ test('provider adapter recovers a completed turn from the turn list endpoint', (
   const response = { data: [{ id: 'turn', status: 'completed', items: [] }] };
   assert.deepEqual(completedTurnFromTurnsList(response, 'turn'), response.data[0]);
   assert.equal(completedTurnFromTurnsList(response, 'other-turn'), null);
+});
+
+test('provider adapter accepts a complete auditor JSON output without a completion notification', () => {
+  assert.deepEqual(parseAuditorOutputText('progress {"evidence":["{}"],"defects":[]}'), { evidence: ['{}'], defects: [] });
+  assert.equal(parseAuditorOutputText('{"evidence":["{}"]}'), null);
 });

@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
-import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText } from './auditor-turn-output.mjs';
+import { completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText } from './auditor-turn-output.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -188,7 +188,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
     }
     const completedText = completedTurnText(app.notifications, thread.id, turnId);
     if (completedText.length > text.length) text = completedText;
-    if (completedTurnFor(app.notifications, thread.id, turnId)) break;
+    if (completedTurnFor(app.notifications, thread.id, turnId) || parseAuditorOutputText(text)) break;
     await new Promise(resolve => setTimeout(resolve, 50));
   }
   if (!text) throw new Error('CODEX_APPSERVER_EMPTY_AGENT_OUTPUT');
