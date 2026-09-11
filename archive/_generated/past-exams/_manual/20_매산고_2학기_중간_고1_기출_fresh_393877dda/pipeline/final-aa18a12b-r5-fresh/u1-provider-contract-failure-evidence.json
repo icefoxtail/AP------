@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-aa18a12b-r5",
+  "launchId": "past20-maesan-final-aa18a12b-r5:1",
+  "phase": "U1",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_FOURTH_REPAIR",
+  "auditorThreadId": "01a09291-cb5a-7e50-b959-873420c298eb",
+  "turnId": "01a09293-5d17-76b1-9ef4-601ac1f367fc",
+  "observedAt": "2026-09-11T22:27:07Z",
+  "observations": {
+    "providerResponse": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-aa18a12b-r5/u1-response.json",
+      "bytes": 6554,
+      "sha256": "sha256:8212f3a5f2ad63afc944368e402f17ef1556f8ed4b62237d71d2961e31de956a",
+      "status": "COMPLETED",
+      "evidenceCount": 17,
+      "defectCount": 3,
+      "defectQuestionUids": [
+        "20_매산고_2학기_중간_고1_기출|5",
+        "20_매산고_2학기_중간_고1_기출|8",
+        "20_매산고_2학기_중간_고1_기출|11"
+      ],
+      "defectsMissingRunId": true
+    },
+    "dispatcher": {
+      "terminalStatus": "HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED",
+      "u1ResponseWritten": true,
+      "receiptWritten": false
+    }
+  },
+  "rootCause": {
+    "component": "archive/tools/pipeline-core/provider-bridge.mjs",
+    "bug": "Dispatcher required every provider defect to contain runId, but the sealed auditor packet exposed questionUid without runId and the provider output contract did not bind runId. The dispatcher did not add the authoritative launch-scope runId before scope validation.",
+    "safeRepair": "Resolve questionUid against the frozen launch scope and add only the authoritative runId when absent; reject absent or unrelated questionUid values.",
+    "notModelTransportFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "providerResponseRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Apply launch-scope defect binding in a separate pipeline commit, pass targeted tests, then start another fresh run."
+  }
+}
