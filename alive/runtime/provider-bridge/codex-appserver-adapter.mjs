@@ -194,7 +194,7 @@ async function handleDaemonRequest(runtime, request) {
   const turnResponse = await runtime.app.request('turn/start', {
     threadId,
     model: 'gpt-5.6-luna',
-    input: [{ type: 'text', text: request.prompt }, ...imageUrls.map(image_url => ({ type: 'image', image_url, detail: 'original' }))],
+    input: [{ type: 'text', text: request.prompt }, ...imageUrls.map(url => ({ type: 'image', url, detail: 'original' }))],
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
