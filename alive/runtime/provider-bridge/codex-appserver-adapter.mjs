@@ -13,12 +13,15 @@ const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
 const HISTORY_RPC_TIMEOUT_MS = 1000;
 const JOB = process.argv[process.argv.indexOf('--job') + 1];
-if (!JOB) throw new Error('CODEX_APPSERVER_JOB_REQUIRED');
-
-const stateRelative = `alive/runtime/provider-bridge/${JOB}/codex-appserver-state.json`;
-const statePath = path.resolve(ROOT, stateRelative.replaceAll('/', path.sep));
-const stateDir = path.dirname(statePath);
+const stateRelative = JOB ? `alive/runtime/provider-bridge/${JOB}/codex-appserver-state.json` : null;
+const statePath = stateRelative ? path.resolve(ROOT, stateRelative.replaceAll('/', path.sep)) : null;
+const stateDir = statePath ? path.dirname(statePath) : null;
 const scriptPath = fileURLToPath(import.meta.url);
+
+export function nativeImageInput(url) {
+  if (typeof url !== 'string' || !url.startsWith('data:image/')) throw new Error('CODEX_NATIVE_IMAGE_URL_REQUIRED');
+  return { type: 'image', url, detail: 'original' };
+}
 
 const readStdin = () => new Promise((resolve, reject) => {
   let value = '';
@@ -190,7 +193,7 @@ async function handleDaemonRequest(runtime, request) {
   const imageUrls = [...new Set(packetRows.flatMap(row => [
     ...(row?.problemAssets || []),
     ...((row?.artifact?.assetRefs || []))
-  ]).map(asset => asset?.dataUrl).filter(url => typeof url === 'string' && url.startsWith('data:image/')) )];
+  ]).map(asset => asset?.dataUrl).filter(url => typeof url === 'string' && url.startsWith('data:image/')) ).map(nativeImageInput)];
   const turnResponse = await runtime.app.request('turn/start', {
     threadId,
     model: 'gpt-5.6-luna',
@@ -311,4 +314,7 @@ async function main() {
   process.stdout.write(JSON.stringify(response));
 }
 
-main().catch(error => { console.error(error.message); process.exitCode = 1; });
+if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) {
+  if (!JOB) throw new Error('CODEX_APPSERVER_JOB_REQUIRED');
+  main().catch(error => { console.error(error.message); process.exitCode = 1; });
+}
