@@ -2805,6 +2805,7 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
         applyIntent(state, intent) {
             if (intent.type === 'MODE_CHANGE') state.mode = intent.requestedMode;
             if (intent.type === 'SOURCE_CHANGE' && intent.payload) { state.payload = intent.payload.payload; if (intent.payload.mode) state.mode = intent.payload.mode; if (intent.payload.preview) state.previewParentPayloadReceived = true; }
+            if (wrongSourceAdapter.isQrSolutionMode()) state.mode = 'review';
         },
         async prepareState(state, ctx) {
             if (!state.payload || typeof state.payload !== 'object') throw Error('INVALID_CLINIC_PAYLOAD');

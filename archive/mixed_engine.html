@@ -3119,9 +3119,11 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
         applyIntent(state, intent) {
             if (intent.type === 'SOURCE_CHANGE' && intent.payload?.data) state.data = intent.payload.data;
             if (intent.type === 'MODE_CHANGE') state.mode = intent.requestedMode;
-            if (intent.type === 'QPP_CHANGE') state.qpp = intent.payload.qpp;
+            if (intent.type === 'QPP_CHANGE') state.qpp = mixerSourceAdapter.normalizeMixedQpp(intent.payload.qpp);
             if (intent.type === 'HEADER_CHANGE') state.printHeaderOptions = mixerSourceAdapter.normalizePrintHeaderOptions({ ...state.printHeaderOptions, ...intent.payload.header });
+            if (mixerSourceAdapter.isQrSolutionMode()) state.mode = 'sol';
         },
+        prepareState(state) { if (!Array.isArray(state.data) || !state.data.length) throw Error('INVALID_MIXED_SOURCE'); },
         createBuild: createMixerSourceAdapter,
         commit: mixerSourceAdapter.commitState,
         restoreState: mixerSourceAdapter.restoreState,
