@@ -30,7 +30,7 @@ function jobFixture(t, questionCount = 1, workflowProfile = 'PAST_EXAM') {
   const candidateContent = new Map();
   const sourceRef = { ...write('source.js', bank(sourceRows)), role: 'source' };
   initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session', workflowProfile });
-  const makeRun = (revision, changedQuestionUids = null, { sharedMaterial = null } = {}) => {
+  const makeRun = (revision, changedQuestionUids = null, { sharedMaterial = null, pipeline = 'tag-enrichment', withRenderCapture = false } = {}) => {
     const changed = changedQuestionUids ? new Set(changedQuestionUids) : null;
     const nextCandidateRows = candidateRows.map(row => {
       const questionUid = `synthetic|${row.id}`;
@@ -41,17 +41,23 @@ function jobFixture(t, questionCount = 1, workflowProfile = 'PAST_EXAM') {
       return { ...row, content };
     });
     const run = {
-      schemaVersion: RUN_VERSION_V2, pipeline: 'tag-enrichment', workBatchId: 'job', runId: 'run', revision,
+      schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision,
       builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY',
       questions: sourceRows.map(row => ({ questionUid: `synthetic|${row.id}`, sourceExamId: 'synthetic', examId: 'synthetic', qid: row.id, sourcePath: 'source.js', candidatePath: `candidate-${revision}.js`, problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { requirement: 'VISUAL_EXEMPT' } })),
       inputs: [sourceRef, { ...write(`candidate-${revision}.js`, bank(nextCandidateRows)), role: 'candidate' }], evidence: [], ...(sharedMaterial ? { sharedMaterial } : {}),
     };
     run.inputSha = runInputSha(run);
     const shas = computeV2AxisInputShas(root, run);
+    const candidateInput = run.inputs.find(ref => ref.role === 'candidate');
     for (const questionUid of uids) for (const axis of ['STATIC', 'METADATA']) {
-      const machineProvenance = { runId: run.runId, revision, inputSha: run.inputSha, collector: 'SYNTHETIC_TEST_ONLY' };
-      const e = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `${revision}:${questionUid}:${axis}`, runId: run.runId, revision, questionUid, axis, axisInputSha: shas[questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance, reviewIsolationProvenanceSha: objectSha(machineProvenance), payload: axis === 'STATIC' ? { checkedInputSha: run.inputSha, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' } } : { metadataInputSha: shas[questionUid][axis], checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' } } };
+      const artifactFields = pipeline === 'past-exam' ? { currentArtifactSha: candidateInput.sha256, CURRENT_ARTIFACT_SHA: candidateInput.sha256, EVIDENCE_INPUT_SHA: candidateInput.sha256 } : {};
+      const machineProvenance = { runId: run.runId, revision, inputSha: run.inputSha, collector: 'SYNTHETIC_TEST_ONLY', ...artifactFields };
+      const e = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `${revision}:${questionUid}:${axis}`, runId: run.runId, revision, questionUid, axis, axisInputSha: shas[questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance, reviewIsolationProvenanceSha: objectSha(machineProvenance), payload: axis === 'STATIC' ? { checkedInputSha: run.inputSha, ...artifactFields, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' } } : { metadataInputSha: shas[questionUid][axis], ...artifactFields, checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' } } };
       run.evidence.push(write(`machine-${revision}-${questionUid.replace('|', '-')}-${axis}.json`, e));
+    }
+    if (withRenderCapture) {
+      const capture = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `${revision}:RENDER_CAPTURE`, runId: run.runId, revision, questionUid: null, axis: 'RENDER_CAPTURE', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance: { runId: run.runId, revision, inputSha: run.inputSha, collector: 'SYNTHETIC_TEST_ONLY', currentArtifactSha: candidateInput.sha256, CURRENT_ARTIFACT_SHA: candidateInput.sha256, EVIDENCE_INPUT_SHA: candidateInput.sha256 }, payload: { actualBrowser: true, productionEngine: true, itemWitnesses: [{ questionUid: uids[0], mode: 'exam', viewportProfile: 'desktop' }] } };
+      run.evidence.push(write(`render-${revision}.json`, capture));
     }
     const ref = write(`run-${revision}.json`, run);
     return { run, ref };
@@ -134,6 +140,18 @@ test('completed predecessor materializes repair scope without changing its froze
   assert.equal(continuation.freezes[0].freezeSha, predecessor.freezes[0].freezeSha);
   assert.equal(continuation.launches[0].launchId, 'job:1');
   assert.equal(fs.readFileSync(f.stateFile, 'utf8'), predecessorBytes);
+});
+
+test('a Past Exam repair freeze treats an empty predecessor render witness set as new render impact', t => {
+  const f = jobFixture(t, 1, 'PAST_EXAM');
+  const first = f.makeRun(1, null, { pipeline: 'past-exam' });
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  f.complete('job:1', 'provider-final', null);
+  const second = f.makeRun(2, f.uids, { pipeline: 'past-exam', withRenderCapture: true });
+  assert.doesNotThrow(() => freezeWorkBatch(f.root, 'job', [second.ref]));
+  assert.deepEqual(readWorkBatch(f.root, 'job').freezes[1].affected, [{ runId: 'run', questionUid: f.uid }]);
 });
 
 test('TARGETED_RECHECK is not blocked by cumulative token estimates', t => {
