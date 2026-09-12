@@ -87,6 +87,24 @@ test('a very large token estimate never blocks FINAL_AUDIT', t => {
   assert.equal(Object.hasOwn(state, 'tokenBudget'), false);
 });
 
+test('legacy persisted state without iterative fields remains readable', t => {
+  const f = jobFixture(t, 1, 'LEGACY');
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  f.complete('job:1', 'provider-final', null);
+  const legacy = readWorkBatch(f.root, 'job');
+  delete legacy.workflowProfile;
+  delete legacy.openDefectSet;
+  delete legacy.openDefects;
+  delete legacy.repairIterations;
+  delete legacy.policy.maxRepairIterations;
+  fs.writeFileSync(f.stateFile, JSON.stringify(legacy));
+  assert.doesNotThrow(() => readWorkBatch(f.root, 'job'));
+  assert.equal(readWorkBatch(f.root, 'job').policy.targetedRechecks, 1);
+});
+
 test('TARGETED_RECHECK is not blocked by cumulative token estimates', t => {
   const f = jobFixture(t);
   f.prepareRecheck();
