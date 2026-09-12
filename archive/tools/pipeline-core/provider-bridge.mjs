@@ -10,6 +10,14 @@ export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
 const PHASES = Object.freeze(['U1', 'U2', 'U3']);
 const check = (condition, code) => { if (!condition) throw new Error(`HOLD:${code}`); };
 const same = (left, right) => canonicalJson(left) === canonicalJson(right);
+const mimeFor = relative => ({ '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' }[path.extname(relative).toLowerCase()] || 'application/octet-stream');
+
+export function visualAssetPayload(root, ref) {
+  const bytes = readBoundFile(root, ref);
+  return { ...ref, mimeType: mimeFor(ref.path), dataUrl: `data:${mimeFor(ref.path)};base64,${bytes.toString('base64')}` };
+}
+
+export const sourceVisualAssetPayload = visualAssetPayload;
 
 function bridgePath(root, relative, { mustExist = false } = {}) {
   check(typeof relative === 'string' && relative.startsWith('alive/runtime/provider-bridge/'), 'PROVIDER_BRIDGE_RUNTIME_PATH_REQUIRED');
@@ -240,7 +248,7 @@ function sourceContexts(root, freeze) {
       sourcePayloads.set(question.questionUid, {
         content: question.sourceRecord.content,
         choices: question.sourceRecord.choices || [],
-        problemAssets: sourceAsset ? [sourceAsset] : [],
+        problemAssets: sourceAsset ? [sourceVisualAssetPayload(root, sourceAsset)] : [],
       });
     }
   }

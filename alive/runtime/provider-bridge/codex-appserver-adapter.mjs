@@ -186,10 +186,15 @@ async function handleDaemonRequest(runtime, request) {
   if (request.operation !== 'phase') throw new Error('CODEX_APPSERVER_UNKNOWN_OPERATION');
   const { launch, context } = phaseContextForLaunch(runtime.state, request.logicalLaunchId, request.phase);
   const threadId = context.threadId;
+  const packetRows = Array.isArray(request.packet?.payload) ? request.packet.payload : [request.packet?.payload];
+  const imageUrls = [...new Set(packetRows.flatMap(row => [
+    ...(row?.problemAssets || []),
+    ...((row?.artifact?.assetRefs || []))
+  ]).map(asset => asset?.dataUrl).filter(url => typeof url === 'string' && url.startsWith('data:image/')) )];
   const turnResponse = await runtime.app.request('turn/start', {
     threadId,
     model: 'gpt-5.6-luna',
-    input: [{ type: 'text', text: request.prompt }],
+    input: [{ type: 'text', text: request.prompt }, ...imageUrls.map(image_url => ({ type: 'image', image_url, detail: 'original' }))],
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },

@@ -286,10 +286,10 @@ export function materializeWorkBatchRepair(root, spec) {
     check(!prior, 'WORK_BATCH_ALREADY_EXISTS_RECONCILE');
     check(nonempty(spec.predecessorWorkBatchId) && spec.predecessorWorkBatchId !== spec.workBatchId, 'PREDECESSOR_WORK_BATCH_REQUIRED');
     const predecessor = readWorkBatch(root, spec.predecessorWorkBatchId);
-    check(predecessor.status === 'FROZEN', 'PREDECESSOR_WORK_BATCH_NOT_FROZEN');
+    check(predecessor.status === 'FROZEN' || predecessor.status === 'HOLD' && predecessor.lastHold?.code === 'HOLD:REPAIR_STAGNATION', 'PREDECESSOR_WORK_BATCH_NOT_FROZEN');
     check(!predecessor.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'PREDECESSOR_EXPENSIVE_TASK_ACTIVE');
-    const finalLaunch = [...predecessor.launches].reverse().find(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED');
-    check(finalLaunch?.providerReceiptRef, 'PREDECESSOR_FINAL_AUDIT_REQUIRED');
+    const finalLaunch = [...predecessor.launches].reverse().find(launch => ['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(launch.purpose) && launch.status === 'COMPLETED');
+    check(finalLaunch?.providerReceiptRef, 'PREDECESSOR_COMPLETED_REVIEW_REQUIRED');
     const receipt = load(root, finalLaunch.providerReceiptRef);
     check(receipt.status === 'COMPLETED' && Array.isArray(receipt.defects) && receipt.defects.length > 0, 'PREDECESSOR_OPEN_DEFECTS_REQUIRED');
     const freeze = predecessor.freezes.find(candidate => candidate.freezeSha === finalLaunch.freezeSha);
