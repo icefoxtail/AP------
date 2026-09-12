@@ -8,7 +8,8 @@ import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { aggregateWorkBatchAudit, assertFreshLaunchIdentity, freezeInputSha, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
 import { loadCandidateReviewContext, buildU3CandidatePayload, buildAuditorPacket, validateAuditorPacket } from '../review-isolation-runner.mjs';
-import { prepareProviderReview, dispatchProviderReview } from '../provider-bridge.mjs';
+import { prepareProviderReview, dispatchProviderReview, validateProviderPacketPreflight } from '../provider-bridge.mjs';
+import { buildRepairPlan, defectFingerprint, nextWorkBatchAction, routeDefect } from '../defect-router.mjs';
 
 // Local synthetic data only. No provider or production archive is used.
 function jobFixture(t, questionCount = 1, workflowProfile = 'PAST_EXAM') {
@@ -254,20 +255,73 @@ test('bounded TARGETED_RECHECK iterations continue until the open defect set clo
 test('same input and same defect set enters stagnation HOLD', t => {
   const f = jobFixture(t);
   const first = f.makeRun(1);
+  const auditInputSha = first.run.inputSha;
   freezeWorkBatch(f.root, 'job', [first.ref]);
   reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
   const defects = [{ runId: 'run', questionUid: f.uid }];
   const afterFinal = f.complete('job:1', 'provider-final', null, 'COMPLETED', defects);
   assert.equal(afterFinal.status, 'REPAIR_REQUIRED');
+  const held = recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, auditInputSha, [{ ...defects[0], disposition: 'NO_CHANGE_WITH_EVIDENCE' }]));
+  assert.equal(held.status, 'HOLD');
+  assert.equal(held.lastHold.code, 'HOLD:REPAIR_STAGNATION');
+  assert.equal(held.repairIterations[0].noChangeEvidence, true);
+});
+
+test('changed input with the same UID and changed semantic defect is not stagnation', t => {
+  const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const firstDefect = { runId: 'run', questionUid: f.uid, phase: 'U1', type: 'SOURCE_TEXT_AMBIGUITY', reason: 'wording' };
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', [firstDefect]);
   const second = f.makeRun(2);
-  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...defects[0], disposition: 'NO_CHANGE_WITH_EVIDENCE' }]));
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...firstDefect, disposition: 'SOURCE_DEFECT_CONFIRMED' }]));
   freezeWorkBatch(f.root, 'job', [second.ref]);
   reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
-  const held = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', defects);
-  assert.equal(held.status, 'HOLD');
-  assert.equal(held.lastHold.code, 'HOLD:REPAIR_STAGNATION');
+  const changed = { ...firstDefect, phase: 'U3', type: 'LOGICAL_AND_GEOMETRIC_ERROR', reason: 'candidate interpretation' };
+  const state = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', [changed]);
+  assert.equal(state.status, 'REPAIR_REQUIRED');
+  assert.notEqual(state.lastHold?.code, 'HOLD:REPAIR_STAGNATION');
+  assert.equal(state.repairIterations[0].repairRoute, 'DERIVED_SOURCE_RECOVERY');
+  assert.notEqual(defectFingerprint(firstDefect), defectFingerprint(changed));
+});
+
+test('SOURCE_DEFECT_CONFIRMED routes to derived recovery instead of a user HOLD', t => {
+  const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const defect = { runId: 'run', questionUid: f.uid, type: 'SOURCE_PAYLOAD_DEFECT', reason: 'source is underdetermined' };
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', [defect]);
+  const second = f.makeRun(2);
+  const state = recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...defect, disposition: 'SOURCE_DEFECT_CONFIRMED' }]));
+  assert.equal(state.status, 'REPAIR_REQUIRED');
+  assert.equal(state.repairIterations[0].status, 'REPAIR_RECORDED');
+  assert.equal(state.repairIterations[0].repairRoute, 'DERIVED_SOURCE_RECOVERY');
+  assert.equal(state.repairIterations[0].repairPlan.status, 'AUTO_REPAIR_REQUIRED');
+  assert.equal(state.repairIterations[0].repairPlan.defects[0].requiresDerivedReplacement, true);
+});
+
+test('defect router maps semantic, visual, authority, execution, and unavailable-source findings', () => {
+  assert.equal(routeDefect({ type: 'UNFINALIZED_AUTHORITY' }).route, 'AUTHORITY_BINDING_REPAIR');
+  assert.equal(routeDefect({ type: 'ANSWER_RUBRIC_AUTHORITY' }).route, 'AUTHORITY_BINDING_REPAIR');
+  assert.equal(routeDefect({ type: 'VISUAL_DEPENDENCY_UNVERIFIED' }).route, 'VISUAL_EVIDENCE_REPAIR');
+  assert.equal(routeDefect({ type: 'PROVIDER_INPUT_ENVELOPE_INVALID' }).route, 'EXECUTION_RECOVERY');
+  assert.equal(routeDefect({ type: 'SOURCE_PAYLOAD_DEFECT' }).route, 'DERIVED_SOURCE_RECOVERY');
+  assert.equal(routeDefect({ type: 'SOURCE_PAYLOAD_DEFECT' }, { sourceRecoveryCapability: 'UNAVAILABLE' }).route, 'HUMAN_DECISION_REQUIRED');
+  assert.equal(buildRepairPlan([{ runId: 'run', questionUid: 'q', type: 'UNFINALIZED_AUTHORITY' }]).status, 'AUTO_REPAIR_REQUIRED');
+});
+
+test('work-batch next action exposes automatic repair and bounded terminal actions', () => {
+  const plan = nextWorkBatchAction({ status: 'REPAIR_REQUIRED', openDefects: [{ runId: 'run', questionUid: 'q', type: 'VISUAL_DEPENDENCY_UNVERIFIED' }] });
+  assert.equal(plan.action, 'AUTO_REPAIR');
+  assert.equal(plan.plan.routes[0], 'VISUAL_EVIDENCE_REPAIR');
+  assert.equal(nextWorkBatchAction({ status: 'HOLD', lastHold: { code: 'HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED' } }).action, 'WAIT_FOR_SLOT');
+  assert.equal(nextWorkBatchAction({ status: 'HOLD', lastHold: { code: 'HOLD:REPAIR_ITERATION_LIMIT' } }).action, 'TERMINAL_REPAIR_HOLD');
 });
 
 test('repair iteration limit is bounded', t => {
@@ -662,6 +716,7 @@ test('provider bridge binds a runtime-attested plan, phase packets, and one term
     { phase: 'U2', ref: f.write('packets/u2.json', u2) },
     { phase: 'U3', ref: f.write('packets/u3.json', u3) },
   ];
+  assert.equal(validateProviderPacketPreflight(f.root, { workBatchId: 'job', planPath, packetRefs }).status, 'PASS');
   const result = dispatchProviderReview(f.root, { workBatchId: 'job', launchId: 'job:1', planPath, packetRefs, transport, receiptPath: 'alive/runtime/provider-bridge/job/terminal.json' });
   assert.equal(result.status, 'COMPLETED');
   assert.equal(result.usedTokens, 21);

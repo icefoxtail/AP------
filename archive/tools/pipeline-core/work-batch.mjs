@@ -12,6 +12,7 @@ import { AXIS_REVIEW_BINDING, validateMachineEvidence, validateTypedEvidence } f
 import { detectRenderImpact, validateRenderReviewReuseReceipt } from './render-impact.mjs';
 import { createExecutionIdentity, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 import { latestMainCommit } from '../past-exam-pipeline/lib/calibration.mjs';
+import { buildRepairPlan, defectFingerprintSet, routeDefects } from './defect-router.mjs';
 
 import { validateSchema } from './schema.mjs';
 const budgetContract = JSON.parse(fs.readFileSync(new URL('./contracts/work-batch-v1.schema.json', import.meta.url), 'utf8'));
@@ -295,7 +296,7 @@ export function materializeWorkBatchRepair(root, spec) {
     const freeze = predecessor.freezes.find(candidate => candidate.freezeSha === finalLaunch.freezeSha);
     check(freeze, 'PREDECESSOR_FREEZE_REQUIRED');
     const targets = new Set(freeze.targets.map(targetKey));
-    const defects = receipt.defects.filter(defect => nonempty(defect?.runId) && nonempty(defect?.questionUid)).map(defect => structuredClone(defect));
+    const defects = routeDefects(receipt.defects.filter(defect => nonempty(defect?.runId) && nonempty(defect?.questionUid)).map(defect => structuredClone(defect)));
     check(defects.length > 0 && defects.every(defect => targets.has(targetKey(defect))), 'PREDECESSOR_DEFECT_SCOPE_REQUIRED');
     const openDefectSet = [...new Map(defects.map(defect => [targetKey(defect), { runId: defect.runId, questionUid: defect.questionUid }])).values()].sort((a, b) => targetKey(a).localeCompare(targetKey(b)));
     const runIds = spec.runIds || predecessor.runIds;
@@ -307,7 +308,7 @@ export function materializeWorkBatchRepair(root, spec) {
     check(workflowProfile === WORKFLOW_PROFILES.PAST_EXAM, 'PAST_EXAM_REPAIR_PROFILE_REQUIRED');
     const predecessorFreeze = structuredClone(predecessor.freezes);
     const predecessorLaunches = structuredClone(predecessor.launches);
-    const iteration = { iteration: 1, triggerLaunchId: finalLaunch.launchId, status: 'REPAIR_REQUIRED', openedAt: time(), closedAt: null, auditInputSha: freezeInputSha(freeze), openDefectSet, defects, recheckScope: [], dispositions: [] };
+    const iteration = { iteration: 1, triggerLaunchId: finalLaunch.launchId, status: 'REPAIR_REQUIRED', openedAt: time(), closedAt: null, auditInputSha: freezeInputSha(freeze), defectFingerprintSet: defectFingerprintSet(defects), repairPlan: buildRepairPlan(defects), openDefectSet, defects, recheckScope: [], dispositions: [] };
     return {
       schemaVersion: WORK_BATCH_VERSION,
       workBatchId: spec.workBatchId,
@@ -610,8 +611,9 @@ export function reconcileWorkBatchReview(root, id, request) {
       }
       launch.status = request.status; launch.endedAt = time(); launch.usedTokens = tokenTelemetry(receipt.usedTokens); launch.providerReceiptRef = request.providerReceiptRef;
       const defects = Array.isArray(receipt.defects) ? receipt.defects : [];
-      const openDefects = defects.filter(defect => nonempty(defect?.runId) && nonempty(defect?.questionUid)).map(defect => structuredClone(defect));
+      const openDefects = routeDefects(defects.filter(defect => nonempty(defect?.runId) && nonempty(defect?.questionUid)).map(defect => structuredClone(defect)));
       const defectSet = [...new Map(openDefects.map(defect => [targetKey(defect), { runId: defect.runId, questionUid: defect.questionUid }])).values()].sort((a, b) => targetKey(a).localeCompare(targetKey(b)));
+      const currentDefectFingerprintSet = defectFingerprintSet(openDefects);
       if (request.status === 'COMPLETED') {
         state.openDefectSet = defectSet;
         state.openDefects = openDefects;
@@ -623,9 +625,12 @@ export function reconcileWorkBatchReview(root, id, request) {
             return state;
           }
           const previousIteration = state.repairIterations?.at(-1);
+          // A repair may leave the same UID open while changing the actual
+          // defect. Stagnation is only real when the audited input and the
+          // semantic defect fingerprint set are both unchanged.
           const repeated = launch.purpose === 'TARGETED_RECHECK'
-            && same(previousIteration?.openDefectSet || [], defectSet)
-            && (previousIteration?.repairInputSha || previousIteration?.inputSha) === launch.inputSha;
+            && same(previousIteration?.defectFingerprintSet || defectFingerprintSet(previousIteration?.defects || []), currentDefectFingerprintSet)
+            && previousIteration?.auditInputSha === launch.inputSha;
           if (launch.purpose === 'TARGETED_RECHECK' && previousIteration?.status === 'FROZEN_FOR_RECHECK' && !repeated) {
             previousIteration.status = 'CLOSED';
             previousIteration.closedAt = time();
@@ -638,6 +643,8 @@ export function reconcileWorkBatchReview(root, id, request) {
             closedAt: null,
             inputSha: launch.inputSha,
             auditInputSha: launch.inputSha,
+            defectFingerprintSet: currentDefectFingerprintSet,
+            repairPlan: buildRepairPlan(openDefects),
             openDefectSet: defectSet,
             defects: openDefects,
             recheckScope: [],
@@ -688,9 +695,29 @@ export function recordWorkBatchRepair(root, id, request) {
     iteration.revision = request.revision;
     iteration.repairInputSha = request.inputSha;
     iteration.dispositions = structuredClone(request.dispositions);
+    iteration.repairPlan = buildRepairPlan(state.openDefects || [], request.dispositions, { sourceRecoveryCapability: request.sourceRecoveryCapability || 'ACTIVE', maxRepairIterations: maxRepairIterationsForState(state) });
+    iteration.repairRoute = iteration.repairPlan.routes.length === 1 ? iteration.repairPlan.routes[0] : 'SIMILAR_PROTOCOL';
     iteration.repairRef = request.repairRef || null;
     iteration.recordedAt = time();
-    const blockingDisposition = request.dispositions.find(disposition => ['HOLD', 'SOURCE_DEFECT_CONFIRMED'].includes(disposition.disposition));
+    const noChangeEvidence = request.dispositions.length > 0 && request.dispositions.every(disposition => disposition.disposition === 'NO_CHANGE_WITH_EVIDENCE');
+    if (noChangeEvidence && request.inputSha === iteration.auditInputSha) {
+      iteration.status = 'HOLD';
+      iteration.noChangeEvidence = true;
+      state.status = 'HOLD';
+      state.lastHold = { at: time(), code: 'HOLD:REPAIR_STAGNATION' };
+      return state;
+    }
+    // SOURCE_DEFECT_CONFIRMED is an automatic recovery route. The original
+    // source remains immutable; the builder must create a derived replacement
+    // and bind it through SOURCE_RECOVERY closure evidence. Only an explicit
+    // HOLD (or an unavailable recovery capability) may stop the batch here.
+    const blockingDisposition = request.dispositions.find(disposition => disposition.disposition === 'HOLD');
+    if (iteration.repairPlan.status === 'HUMAN_DECISION_REQUIRED' && request.sourceRecoveryCapability && ['UNAVAILABLE', 'BLOCKED', 'DEFERRED'].includes(String(request.sourceRecoveryCapability).toUpperCase())) {
+      state.status = 'HOLD';
+      state.lastHold = { at: time(), code: 'HOLD:SOURCE_RECOVERY_CAPABILITY_REQUIRED' };
+      iteration.status = 'HOLD';
+      return state;
+    }
     if (blockingDisposition) {
       iteration.status = 'HOLD';
       state.status = 'HOLD';
