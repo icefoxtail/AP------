@@ -221,10 +221,13 @@ different q-id set cannot authorize a Past Exam production write.
 ## bounded repair/recheck loop
 
 The review ledger is iterative after a completed FINAL_AUDIT. A receipt with
-defects moves the work batch to `REPAIR_REQUIRED`; the original builder records
-one disposition per open defect, creates a new revision/inputSha, reruns
-machine checks, and freezes a new immutable snapshot. `TARGETED_RECHECK` then
-reviews the union of the open defect set and semantic/dependency/render impact.
+defects moves the work batch to `REPAIR_REQUIRED`; for an already completed
+legacy Past Exam predecessor, `work-batch-materialize-repair` creates a fresh
+repair work batch while retaining the predecessor state/freeze/receipt as
+immutable references. The original builder then records one disposition per
+open defect, creates a new revision/inputSha, reruns machine checks, and
+freezes a new immutable snapshot. `TARGETED_RECHECK` then reviews the union of
+the open defect set and semantic/dependency/render impact.
 
 The Past Exam bound is three repair iterations. PASS axes remain eligible for
 validated reuse, while remaining or newly discovered defects replace the open

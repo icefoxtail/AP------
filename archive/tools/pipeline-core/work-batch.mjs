@@ -162,6 +162,9 @@ function validateState(state) {
   if (policy.maxRepairIterations === undefined) check(workflowProfile === WORKFLOW_PROFILES.LEGACY && policy.targetedRechecks === 1, 'BUDGET_POLICY_INVALID');
   else check(policy.maxRepairIterations === expectedBudget.maxRepairIterations, 'BUDGET_POLICY_INVALID');
   const maxRepairIterations = maxRepairIterationsForState({ workflowProfile, policy });
+  if (state.predecessorWorkBatchId !== undefined) check(/^[A-Za-z0-9_-]+$/.test(state.predecessorWorkBatchId) && state.predecessorWorkBatchId !== state.workBatchId, 'PREDECESSOR_WORK_BATCH_INVALID');
+  if (state.predecessorFreezeSha !== undefined) check(/^sha256:[0-9a-f]{64}$/.test(state.predecessorFreezeSha), 'PREDECESSOR_FREEZE_SHA_INVALID');
+  if (state.predecessorLaunchId !== undefined) check(nonempty(state.predecessorLaunchId), 'PREDECESSOR_LAUNCH_ID_INVALID');
   check(Array.isArray(state.launches) && Array.isArray(state.freezes), 'LEDGER_REQUIRED');
   const openDefectSet = state.openDefectSet || [];
   const openDefects = state.openDefects || [];
@@ -246,6 +249,58 @@ export function initWorkBatch(root, spec) {
     const workflowProfile = String(spec.workflowProfile || (spec.pipeline === 'past-exam' ? WORKFLOW_PROFILES.PAST_EXAM : WORKFLOW_PROFILES.LEGACY)).trim().toUpperCase();
     check(Object.values(WORKFLOW_PROFILES).includes(workflowProfile), 'WORKFLOW_PROFILE_INVALID');
     return { schemaVersion: WORK_BATCH_VERSION, workBatchId: spec.workBatchId, runIds: sorted(spec.runIds), builderId: spec.builderId, builderSessionId: spec.builderSessionId, jobKind, workflowProfile, executionIdentity, jobAuthority: spec.jobAuthority || null, policy: budgetForProfile(workflowProfile), status: 'PRODUCTION', freezes: [], launches: [], openDefectSet: [], openDefects: [], repairIterations: [] };
+  });
+}
+
+export function materializeWorkBatchRepair(root, spec) {
+  return mutate(root, spec.workBatchId, prior => {
+    check(!prior, 'WORK_BATCH_ALREADY_EXISTS_RECONCILE');
+    check(nonempty(spec.predecessorWorkBatchId) && spec.predecessorWorkBatchId !== spec.workBatchId, 'PREDECESSOR_WORK_BATCH_REQUIRED');
+    const predecessor = readWorkBatch(root, spec.predecessorWorkBatchId);
+    check(predecessor.status === 'FROZEN', 'PREDECESSOR_WORK_BATCH_NOT_FROZEN');
+    check(!predecessor.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'PREDECESSOR_EXPENSIVE_TASK_ACTIVE');
+    const finalLaunch = [...predecessor.launches].reverse().find(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED');
+    check(finalLaunch?.providerReceiptRef, 'PREDECESSOR_FINAL_AUDIT_REQUIRED');
+    const receipt = load(root, finalLaunch.providerReceiptRef);
+    check(receipt.status === 'COMPLETED' && Array.isArray(receipt.defects) && receipt.defects.length > 0, 'PREDECESSOR_OPEN_DEFECTS_REQUIRED');
+    const freeze = predecessor.freezes.find(candidate => candidate.freezeSha === finalLaunch.freezeSha);
+    check(freeze, 'PREDECESSOR_FREEZE_REQUIRED');
+    const targets = new Set(freeze.targets.map(targetKey));
+    const defects = receipt.defects.filter(defect => nonempty(defect?.runId) && nonempty(defect?.questionUid)).map(defect => structuredClone(defect));
+    check(defects.length > 0 && defects.every(defect => targets.has(targetKey(defect))), 'PREDECESSOR_DEFECT_SCOPE_REQUIRED');
+    const openDefectSet = [...new Map(defects.map(defect => [targetKey(defect), { runId: defect.runId, questionUid: defect.questionUid }])).values()].sort((a, b) => targetKey(a).localeCompare(targetKey(b)));
+    const runIds = spec.runIds || predecessor.runIds;
+    check(same(sorted(runIds), predecessor.runIds), 'PREDECESSOR_RUN_SCOPE_CHANGED');
+    const builderId = spec.builderId || predecessor.builderId;
+    const builderSessionId = spec.builderSessionId || predecessor.builderSessionId;
+    check(builderId === predecessor.builderId && builderSessionId === predecessor.builderSessionId, 'PREDECESSOR_BUILDER_BINDING');
+    const workflowProfile = String(spec.workflowProfile || WORKFLOW_PROFILES.PAST_EXAM).trim().toUpperCase();
+    check(workflowProfile === WORKFLOW_PROFILES.PAST_EXAM, 'PAST_EXAM_REPAIR_PROFILE_REQUIRED');
+    const predecessorFreeze = structuredClone(predecessor.freezes);
+    const predecessorLaunches = structuredClone(predecessor.launches);
+    const iteration = { iteration: 1, triggerLaunchId: finalLaunch.launchId, status: 'REPAIR_REQUIRED', openedAt: time(), closedAt: null, auditInputSha: freezeInputSha(freeze), openDefectSet, defects, recheckScope: [], dispositions: [] };
+    return {
+      schemaVersion: WORK_BATCH_VERSION,
+      workBatchId: spec.workBatchId,
+      runIds: sorted(runIds),
+      builderId,
+      builderSessionId,
+      jobKind: predecessor.jobKind || 'PRODUCTION',
+      workflowProfile,
+      executionIdentity: predecessor.executionIdentity || null,
+      jobAuthority: predecessor.jobAuthority || null,
+      policy: PAST_EXAM_AGENT_BUDGET,
+      status: 'REPAIR_REQUIRED',
+      predecessorWorkBatchId: predecessor.workBatchId,
+      predecessorFreezeSha: freeze.freezeSha,
+      predecessorLaunchId: finalLaunch.launchId,
+      predecessorReceiptRef: structuredClone(finalLaunch.providerReceiptRef),
+      freezes: predecessorFreeze,
+      launches: predecessorLaunches,
+      openDefectSet,
+      openDefects: defects,
+      repairIterations: [iteration]
+    };
   });
 }
 

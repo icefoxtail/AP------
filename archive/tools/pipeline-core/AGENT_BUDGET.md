@@ -72,6 +72,12 @@ snapshot when adding evidence rather than overwriting a frozen ref.
   `pipeline: past-exam`) for the iterative Past Exam route; omitted profile
   preserves the legacy one-recheck budget. A legacy `tokenBudget` field is
   ignored.
+- `work-batch-materialize-repair --spec spec.json`: creates a fresh Past Exam
+  repair work batch from an immutable completed FINAL_AUDIT predecessor. The
+  spec names `workBatchId`, `predecessorWorkBatchId`, and optionally the same
+  builder identity. It copies no mutable source bytes, carries the predecessor
+  freeze/receipt refs, and enters `REPAIR_REQUIRED` with a canonical open
+  defect set. It is not a new FINAL_AUDIT and does not authorize production.
 - `prepare-v2 ... --work-batch-id JOB`: associates existing v2 preparation with
   the job. Preparation is not freeze and grants no independent launch.
 - `work-batch-freeze --work-batch-id JOB --run-refs refs.json`: refs is the full

@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { inspectDispatchLock, recoverDispatchLock, initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, aggregateWorkBatchAudit } from './work-batch.mjs';
+import { inspectDispatchLock, recoverDispatchLock, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, aggregateWorkBatchAudit } from './work-batch.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { auditManifestFile, profiles, RUN_VERSION, RUN_VERSION_V2, CORE_SHA } from './closure.mjs';
@@ -25,6 +25,7 @@ try {
     case 'work-batch-lock-status': output = inspectDispatchLock(root); break;
     case 'work-batch-lock-recover': output = recoverDispatchLock(root, value('--expected-lock-sha')); break;
     case 'work-batch-init': output = initWorkBatch(root, read(value('--spec'))); break;
+    case 'work-batch-materialize-repair': output = materializeWorkBatchRepair(root, read(value('--spec'))); break;
     case 'work-batch-freeze': output = freezeWorkBatch(root, value('--work-batch-id'), read(value('--run-refs'))); break;
     case 'work-batch-reserve': output = reserveWorkBatchReview(root, value('--work-batch-id'), read(value('--request'))); break;
     case 'work-batch-reconcile': output = reconcileWorkBatchReview(root, value('--work-batch-id'), read(value('--request'))); break;
@@ -108,7 +109,7 @@ try {
       output = { schemaVersion: RUN_VERSION, pipeline, runId: 'REPLACE_WITH_NEW_RUN_ID', revision: 1, builderSessionId: 'REPLACE_WITH_BUILDER_SESSION', canonicalRecordId: 'REPLACE_WITH_REGISTRY_RECORD', questions: [], inputs: [], evidence: [], registry: [], denominator: { status: 'UNFROZEN', stale: true }, inputSha: null, status: 'DRAFT_NOT_EXECUTABLE' };
       break;
     }
-    default: throw new Error('Usage: cli.mjs work-batch-init|work-batch-freeze|work-batch-repair|work-batch-reserve|work-batch-reconcile|work-batch-audit ... | provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT|TARGETED_RECHECK --provider-command COMMAND [--provider-args JSON_FILE] --plan-out RUNTIME_PLAN | provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan RUNTIME_PLAN --packet-refs JSON_FILE --provider-command COMMAND [--provider-args JSON_FILE] --receipt-out RUNTIME_RECEIPT | prepare-v2 ... | machine-checks --manifest FILE [--manifest-out FILE] [--evidence-dir DIR] | audit-v2 --manifest FILE | release-audit --manifest FILE | semantic-diff --previous FILE --current FILE | change-impact --diff FILE --current FILE | axis-input --question FILE --axis AXIS | render-impact --previous FILE --current FILE [--global CSS] | audit --manifest FILE | fact --file FILE | parity --expected FILE | template --pipeline ID | inventory');
+    default: throw new Error('Usage: cli.mjs work-batch-init|work-batch-materialize-repair|work-batch-freeze|work-batch-repair|work-batch-reserve|work-batch-reconcile|work-batch-audit ... | provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT|TARGETED_RECHECK --provider-command COMMAND [--provider-args JSON_FILE] --plan-out RUNTIME_PLAN | provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan RUNTIME_PLAN --packet-refs JSON_FILE --provider-command COMMAND [--provider-args JSON_FILE] --receipt-out RUNTIME_RECEIPT | prepare-v2 ... | machine-checks --manifest FILE [--manifest-out FILE] [--evidence-dir DIR] | audit-v2 --manifest FILE | release-audit --manifest FILE | semantic-diff --previous FILE --current FILE | change-impact --diff FILE --current FILE | axis-input --question FILE --axis AXIS | render-impact --previous FILE --current FILE [--global CSS] | audit --manifest FILE | fact --file FILE | parity --expected FILE | template --pipeline ID | inventory');
   }
 } catch (error) { output = { status: error.message.startsWith('HOLD:') ? 'HOLD' : 'BLOCKED', errors: [error.message], productionAuthorized: false }; }
 if (args[0]?.startsWith('work-batch-') && output.freezes) output = { status: output.status, workBatchId: output.workBatchId, workflowProfile: output.workflowProfile || 'LEGACY', latestFreezeSha: output.freezes.at(-1)?.freezeSha || null, targetCount: output.freezes.at(-1)?.targets.length || 0, openDefectCount: (output.openDefectSet || []).length, openDefectSet: output.openDefectSet || [], repairIterationCount: (output.repairIterations || []).length, maxRepairIterations: output.policy?.maxRepairIterations || output.policy?.targetedRechecks || null, launch: output.launches.at(-1) || null };
