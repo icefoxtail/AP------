@@ -46,11 +46,11 @@ window.questionBank = [
     "choices": [
       "3",
       "5",
-      "7",
       "9",
-      "11"
+      "11",
+      "7"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -102,11 +102,11 @@ window.questionBank = [
     "choices": [
       "1개",
       "2개",
-      "3개",
       "4개",
-      "5개"
+      "5개",
+      "3개"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -186,11 +186,11 @@ window.questionBank = [
     "choices": [
       "0",
       "1",
-      "2",
       "3",
-      "4"
+      "4",
+      "2"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -214,11 +214,11 @@ window.questionBank = [
     "choices": [
       "2개",
       "3개",
-      "4개",
       "5개",
-      "6개"
+      "6개",
+      "4개"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -270,11 +270,11 @@ window.questionBank = [
     "choices": [
       "36",
       "37",
-      "38",
       "39",
-      "40"
+      "40",
+      "38"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -353,12 +353,12 @@ window.questionBank = [
     "content": "이차식 $(x-3)(x+B)$를 전개한 식에서 상수항이 -12일 때, $x$의 계수를 구하면?",
     "choices": [
       "-1",
-      "0",
       "1",
+      "0",
       "2",
       "3"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",

@@ -438,12 +438,12 @@ window.questionBank = [
     "choices": [
       "$\\pm 4\\sqrt{2}$",
       "$4\\sqrt{2}$",
-      "$-4\\sqrt{2}$",
       "$-4\\sqrt{3}$",
+      "$-4\\sqrt{2}$",
       "$\\pm 4\\sqrt{3}$"
     ],
-    "answer": "③",
-    "solution": "[키포인트] $(x-\\frac{1}{x})^2 = (x+\\frac{1}{x})^2 - 4$ 공식을 이용한다.\\n$(x-\\frac{1}{x})^2 = (x+\\frac{1}{x})^2 - 4 = 6^2 - 4 = 32$\\n따라서 $x - \\frac{1}{x} = \\pm \\sqrt{32} = \\pm 4\\sqrt{2}$이다.\\n조건에서 $0 \\lt x \\lt 1$이므로, $\\frac{1}{x} \\gt 1$이고 $x \\lt \\frac{1}{x}$이다.\\n즉, $x - \\frac{1}{x} \\lt 0$이어야 한다.\\n따라서 $x - \\frac{1}{x} = -4\\sqrt{2}$이다.\\n따라서 정답은 ③이다.",
+    "answer": "④",
+    "solution": "[키포인트] $(x-\\frac{1}{x})^2 = (x+\\frac{1}{x})^2 - 4$ 공식을 이용한다.\\n$(x-\\frac{1}{x})^2 = (x+\\frac{1}{x})^2 - 4 = 6^2 - 4 = 32$\\n따라서 $x - \\frac{1}{x} = \\pm \\sqrt{32} = \\pm 4\\sqrt{2}$이다.\\n조건에서 $0 \\lt x \\lt 1$이므로, $\\frac{1}{x} \\gt 1$이고 $x \\lt \\frac{1}{x}$이다.\\n즉, $x - \\frac{1}{x} \\lt 0$이어야 한다.\\n따라서 $x - \\frac{1}{x} = -4\\sqrt{2}$이다.\\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -550,12 +550,12 @@ window.questionBank = [
     "choices": [
       "$1$",
       "$x+1$",
-      "$x-3$",
       "$x^{2}+2x-9$",
+      "$x-3$",
       "$(x+1)^{2}$"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 공통부분이 생기도록 두 개씩 짝지어 전개한 후 치환하여 인수분해한다.\\n$A = \\{(x-2)(x+4)\\} \\times \\{x(x+2)\\} - 9 = (x^2+2x-8)(x^2+2x) - 9$\\n$x^2+2x = t$로 치환하면, $(t-8)t - 9 = t^2 - 8t - 9 = (t-9)(t+1)$이다.\\n원래 식을 대입하면 $(x^2+2x-9)(x^2+2x+1) = (x^2+2x-9)(x+1)^2$이다.\\n인수는 $1, x+1, (x+1)^2, x^2+2x-9$ 등이다. $x-3$은 인수가 아니다.\\n따라서 정답은 ③이다.",
+    "answer": "④",
+    "solution": "[키포인트] 공통부분이 생기도록 두 개씩 짝지어 전개한 후 치환하여 인수분해한다.\\n$A = \\{(x-2)(x+4)\\} \\times \\{x(x+2)\\} - 9 = (x^2+2x-8)(x^2+2x) - 9$\\n$x^2+2x = t$로 치환하면, $(t-8)t - 9 = t^2 - 8t - 9 = (t-9)(t+1)$이다.\\n원래 식을 대입하면 $(x^2+2x-9)(x^2+2x+1) = (x^2+2x-9)(x+1)^2$이다.\\n인수는 $1, x+1, (x+1)^2, x^2+2x-9$ 등이다. $x-3$은 인수가 아니다.\\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",

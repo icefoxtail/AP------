@@ -100,13 +100,13 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $n$에 대하여 ${}_nP_4=12\\times{}_nP_2$ 를 만족하는 $n$의 값은?",
     "choices": [
+      "6",
       "4",
       "5",
-      "6",
       "7",
       "8"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -184,13 +184,13 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 연립부등식 $\\begin{cases} |x-1| \\ge 2 \\\\ -2 \\le x<a \\end{cases}$ 를 만족시키는 정수 해가 정확히 $4$개가 되도록 하는 양수 $a$의 값의 범위는?",
     "choices": [
+      "$4<a\\le5$",
       "$3<a\\le4$",
       "$4\\le a<5$",
-      "$4<a\\le5$",
       "$5\\le a<6$",
       "$5<a\\le6$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -296,13 +296,13 @@ window.questionBank = [
     "wide": false,
     "content": "어른 $n$명과 어린이 $3$명이 일렬로 설 때, 양 끝에 적어도 한 명의 어린이가 서는 경우의 수가 $3600$이다. 이때 $n$의 값은?",
     "choices": [
-      "3",
       "4",
+      "3",
       "5",
       "6",
       "7"
     ],
-    "answer": "②",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -382,11 +382,11 @@ window.questionBank = [
     "choices": [
       "10",
       "15",
-      "20",
       "25",
+      "20",
       "30"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
@@ -438,11 +438,11 @@ window.questionBank = [
     "choices": [
       "1",
       "$\\frac{3}{2}$",
-      "2",
       "$\\frac{5}{2}$",
+      "2",
       "3"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -496,11 +496,11 @@ window.questionBank = [
     "choices": [
       "44",
       "46",
-      "48",
       "50",
-      "52"
+      "52",
+      "48"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -524,11 +524,11 @@ window.questionBank = [
     "choices": [
       "12",
       "18",
-      "24",
       "30",
-      "36"
+      "36",
+      "24"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
