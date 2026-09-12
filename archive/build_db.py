@@ -1036,7 +1036,26 @@ def extract_qcount_from_js(filepath):
     if not array_text:
         return 0
 
-    return count_top_level_objects_in_array(array_text)
+    count = count_top_level_objects_in_array(array_text)
+    # Some legacy production files remove a question after the literal array
+    # is declared. Account for the deterministic id-based filter so qCount
+    # matches the runtime questionBank length rather than the static literal.
+    removed_ids = set(re.findall(
+        r"(?:window\.)?questionBank\s*=\s*(?:window\.)?questionBank\.filter\(\s*\(\s*question\s*\)\s*=>\s*question\.id\s*!==\s*(\d+)",
+        text,
+    ))
+    return max(0, count - len(removed_ids))
+
+
+def has_runtime_question_filter(filepath):
+    try:
+        text = read_text_file(filepath)
+    except Exception:
+        return False
+    return bool(re.search(
+        r"(?:window\.)?questionBank\s*=\s*(?:window\.)?questionBank\.filter\(\s*\(\s*question\s*\)\s*=>\s*question\.id\s*!==\s*\d+",
+        text,
+    ))
 
 
 def extract_standard_unit_keys(text):
@@ -1618,6 +1637,7 @@ def build_engine_db():
     skipped = []
     qcount_failed = []
     range_failed = []
+    runtime_qcount_files = set()
 
     parsed_meta_map = {}
 
@@ -1669,6 +1689,8 @@ def build_engine_db():
         filepath = file_info["abs_path"]
         qcount = extract_qcount_from_js(filepath)
         meta["qCount"] = qcount
+        if has_runtime_question_filter(filepath):
+            runtime_qcount_files.add(rel_path)
 
         if qcount == 0:
             qcount_failed.append(rel_path)
@@ -1713,6 +1735,18 @@ def build_engine_db():
             # record; static source counting cannot see runtime filters such
             # as questionBank = questionBank.filter(...).
             merged = dict(existing)
+            if file_key in runtime_qcount_files:
+                merged["qCount"] = generated.get("qCount", 0)
+            if not str(merged.get("subject", "") or "").strip():
+                inferred_subject = infer_new_subject(
+                    generated,
+                    {
+                        "primaryStandardCourse": generated.get("primaryStandardCourse", ""),
+                        "courseRanges": generated.get("courseRanges", []),
+                    },
+                )
+                if inferred_subject:
+                    merged["subject"] = inferred_subject
             merged_exams.append(merged)
             preserved_count += 1
         else:
