@@ -5,6 +5,7 @@ import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/
 import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
 import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope } from '../provider-bridge.mjs';
 import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
+import { getOrCreateLaunchContext, phaseContextForLaunch } from '../../../../alive/runtime/provider-bridge/codex-appserver-launch-state.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -118,4 +119,31 @@ test('U2 visual applicability exempts nonvisual questions but keeps the visual-r
   assert.deepEqual(filtered.defects.map(defect => defect.questionUid), ['maesan|5', 'maesan|5']);
   assert.equal(filtered.suppressedDefects.length, 38);
   assert.equal(applyVisualApplicabilityToDefects([], applicability).defects.length, 0);
+});
+
+test('Codex app-server launch registry reuses only same launchId/requestSha and creates fresh phase contexts for new launches', async () => {
+  let createCount = 0;
+  const make = launchId => {
+    createCount += 1;
+    return {
+      control: { id: `control-${launchId}`, sessionId: `control-session-${launchId}`, threadId: `control-thread-${launchId}` },
+      contexts: Object.fromEntries(['U1', 'U2', 'U3'].map(phase => [phase, { sessionId: `${launchId}-${phase}-session`, contextId: `${launchId}-${phase}-context`, threadId: `${launchId}-${phase}-thread` }]))
+    };
+  };
+  let state = { launches: {} };
+  const first = await getOrCreateLaunchContext(state, { launchId: 'job:1', requestSha: 'sha-a', create: () => make('A') });
+  state = first.state;
+  const recovered = await getOrCreateLaunchContext(state, { launchId: 'job:1', requestSha: 'sha-a', create: () => make('A-retry') });
+  state = recovered.state;
+  const second = await getOrCreateLaunchContext(state, { launchId: 'job:2', requestSha: 'sha-b', create: () => make('B') });
+  state = second.state;
+  const third = await getOrCreateLaunchContext(state, { launchId: 'job:3', requestSha: 'sha-c', create: () => make('C') });
+  state = third.state;
+  assert.equal(createCount, 3);
+  assert.equal(recovered.created, false);
+  assert.equal(second.created, true);
+  assert.notEqual(first.launch.control.id, second.launch.control.id);
+  assert.notEqual(second.launch.contexts.U1.contextId, third.launch.contexts.U1.contextId);
+  assert.equal(phaseContextForLaunch(state, 'job:2', 'U2').context.threadId, 'B-U2-thread');
+  await assert.rejects(getOrCreateLaunchContext(state, { launchId: 'job:1', requestSha: 'sha-other', create: () => make('invalid') }), /CODEX_LAUNCH_REQUEST_SHA_MISMATCH/);
 });

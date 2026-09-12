@@ -252,7 +252,9 @@ export function applyVisualApplicabilityToDefects(defects, visualApplicabilities
   const suppressed = [];
   for (const defect of defects || []) {
     const applicability = visualApplicabilities?.get(defect.questionUid);
-    if (applicability?.status === 'VISUAL_EXEMPT' && VISUAL_ONLY_DEFECT_TYPES.includes(defect.type)) suppressed.push({ ...defect, suppression: 'VISUAL_EXEMPT' });
+    const suppressArtifact = defect.type === 'missing_artifact' && applicability?.artifactRequired === false;
+    const suppressWitness = defect.type === 'missing_render_witness' && applicability?.renderWitnessRequired === false;
+    if (suppressArtifact || suppressWitness) suppressed.push({ ...defect, suppression: 'VISUAL_APPLICABILITY_NOT_REQUIRED' });
     else kept.push(defect);
   }
   return { defects: kept, suppressedDefects: suppressed };

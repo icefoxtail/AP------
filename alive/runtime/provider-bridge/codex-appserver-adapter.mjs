@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { AUDITOR_OUTPUT_SCHEMA } from './auditor-output-schema.mjs';
 import { parseJsonObjectItems } from './auditor-output-normalizer.mjs';
 import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from './auditor-turn-output.mjs';
+import { APP_SERVER_PHASES, getOrCreateLaunchContext, phaseContextForLaunch } from './codex-appserver-launch-state.mjs';
 
 const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
@@ -111,41 +112,21 @@ async function daemonMain() {
   const app = new AppServerClient();
   await app.request('initialize', { clientInfo: { name: 'apmath-codex-provider-bridge', version: '1.0.0' }, capabilities: { experimentalApi: true } });
   app.proc.stdin.write(`${JSON.stringify({ jsonrpc: '2.0', method: 'initialized', params: {} })}\n`);
-  const controlResult = await app.request('thread/start', threadParams('CONTROL', 'Provider control-plane only. Do not start a model turn.'));
-  const phaseResults = {};
-  for (const phase of PHASES) {
-    phaseResults[phase] = await app.request('thread/start', threadParams(phase, `You are the isolated ${phase} auditor. Do not call tools, spawn subagents, or access any context outside the packet supplied in your turn. Return only the requested JSON evidence.`));
-  }
-  const control = controlResult.thread;
-  const contexts = Object.fromEntries(PHASES.map(phase => {
-    const thread = phaseResults[phase].thread;
-    return [phase, { sessionId: thread.sessionId, contextId: thread.id }];
-  }));
-  const response = {
-    schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1',
-    operation: 'PREPARE_STATELESS_FINAL_AUDIT',
-    status: 'READY',
-    provider: 'CodexAppServer',
-    model: 'gpt-5.6-luna/xhigh',
-    externalTaskId: control.id,
-    auditorId: control.id,
-    auditorSessionId: control.sessionId,
-    contextIsolation: 'STATELESS_INPUTS',
-    subagentToolsEnabled: false,
-    modelInvocationCount: 0,
-    contexts,
-    runtimeAttestation: JSON.stringify({
+  const priorState = fs.existsSync(statePath) ? readState() : null;
+  const legacyBootstrap = priorState && !priorState.adapterVersion ? { control: priorState.control || null, contexts: priorState.contexts || null, pid: priorState.pid || null, startedAt: priorState.startedAt || null } : priorState?.legacyBootstrap || null;
+  const runtime = {
+    state: {
+      ...(priorState || {}),
+      adapterVersion: 'APMATH_CODEX_APPSERVER_ADAPTER_v2',
+      job: JOB,
       provider: 'CodexAppServer',
-      appServerVersion: controlResult.thread.cliVersion,
-      controlThreadId: control.id,
-      phaseThreadIds: Object.fromEntries(PHASES.map(phase => [phase, phaseResults[phase].thread.id])),
-      threadStartOnly: true,
-      turnStartCount: 0,
-      dynamicToolsCount: 0,
-      multiAgentMode: 'explicitRequestOnly',
-      approvalPolicy: 'never',
-      sandbox: 'read-only'
-    })
+      model: 'gpt-5.6-luna/xhigh',
+      pid: process.pid,
+      launches: priorState?.launches || {},
+      ...(legacyBootstrap ? { legacyBootstrap } : {})
+    },
+    app,
+    appServerVersion: null
   };
   const server = net.createServer(socket => {
     let buffer = '';
@@ -153,22 +134,60 @@ async function daemonMain() {
       buffer += chunk.toString('utf8');
       const lines = buffer.split(/\r?\n/);
       buffer = lines.pop() || '';
-      for (const line of lines) if (line.trim()) handleDaemonRequest(app, JSON.parse(line), contexts, control, phaseResults).then(result => socket.write(`${JSON.stringify(result)}\n`)).catch(error => socket.write(`${JSON.stringify({ status: 'ERROR', error: error.message })}\n`));
+      for (const line of lines) if (line.trim()) handleDaemonRequest(runtime, JSON.parse(line)).then(result => socket.write(`${JSON.stringify(result)}\n`)).catch(error => socket.write(`${JSON.stringify({ status: 'ERROR', error: error.message })}\n`));
     });
   });
   await new Promise((resolve, reject) => server.listen(0, '127.0.0.1', resolve).once?.('error', reject));
   const address = server.address();
-  writeState({ schemaVersion: 'APMATH_CODEX_APPSERVER_BRIDGE_v1', job: JOB, pid: process.pid, host: '127.0.0.1', port: address.port, control, contexts, model: response.model, provider: response.provider, startedAt: new Date().toISOString() });
+  runtime.state = { ...runtime.state, schemaVersion: 'APMATH_CODEX_APPSERVER_BRIDGE_v2', host: '127.0.0.1', port: address.port, startedAt: new Date().toISOString() };
+  writeState(runtime.state);
   process.on('SIGTERM', () => { server.close(); app.close(); process.exit(0); });
   process.on('SIGINT', () => { server.close(); app.close(); process.exit(0); });
 }
 
-async function handleDaemonRequest(app, request, contexts, control, phaseResults) {
-  if (request.operation === 'preflight') return request.responseBase;
+async function createLaunchContextSet(app, launchId, requestSha) {
+  const controlResult = await app.request('thread/start', threadParams('CONTROL', `Provider control-plane for logical launch ${launchId}. Do not start a model turn.`));
+  const phaseResults = {};
+  for (const phase of PHASES) phaseResults[phase] = await app.request('thread/start', threadParams(phase, `You are the isolated ${phase} auditor for logical launch ${launchId}. Do not call tools, spawn subagents, or access any context outside the packet supplied in your turn. Return only the requested JSON evidence.`));
+  const control = controlResult.thread;
+  const contexts = Object.fromEntries(PHASES.map(phase => {
+    const thread = phaseResults[phase].thread;
+    return [phase, { sessionId: thread.sessionId, contextId: thread.id, threadId: thread.id }];
+  }));
+  return { launchId, requestSha, control: { id: control.id, sessionId: control.sessionId, threadId: control.id }, contexts, appServerVersion: control.cliVersion };
+}
+
+function preflightResponse(runtime, launch) {
+  const contexts = Object.fromEntries(PHASES.map(phase => [phase, { sessionId: launch.contexts[phase].sessionId, contextId: launch.contexts[phase].contextId }]));
+  return {
+    schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1',
+    operation: 'PREPARE_STATELESS_FINAL_AUDIT',
+    status: 'READY',
+    provider: runtime.state.provider,
+    model: runtime.state.model,
+    externalTaskId: launch.control.id,
+    auditorId: launch.control.id,
+    auditorSessionId: launch.control.sessionId,
+    contextIsolation: 'STATELESS_INPUTS',
+    subagentToolsEnabled: false,
+    modelInvocationCount: 0,
+    contexts,
+    runtimeAttestation: JSON.stringify({ provider: runtime.state.provider, appServerVersion: launch.appServerVersion || runtime.state.appServerVersion || null, logicalLaunchId: launch.launchId, controlThreadId: launch.control.threadId, phaseThreadIds: Object.fromEntries(PHASES.map(phase => [phase, launch.contexts[phase].threadId])), threadStartOnly: true, turnStartCount: 0, dynamicToolsCount: 0, multiAgentMode: 'explicitRequestOnly', approvalPolicy: 'never', sandbox: 'read-only' })
+  };
+}
+
+async function handleDaemonRequest(runtime, request) {
+  if (request.operation === 'preflight') {
+    const result = await getOrCreateLaunchContext(runtime.state, { launchId: request.launchId, requestSha: request.requestSha, create: () => createLaunchContextSet(runtime.app, request.launchId, request.requestSha) });
+    runtime.state = { ...result.state, appServerVersion: result.launch.appServerVersion || runtime.state.appServerVersion };
+    writeState(runtime.state);
+    return { ...preflightResponse(runtime, result.launch), requestSha: request.requestSha };
+  }
   if (request.operation !== 'phase') throw new Error('CODEX_APPSERVER_UNKNOWN_OPERATION');
-  const thread = phaseResults[request.phase].thread;
-  const turnResponse = await app.request('turn/start', {
-    threadId: thread.id,
+  const { launch, context } = phaseContextForLaunch(runtime.state, request.logicalLaunchId, request.phase);
+  const threadId = context.threadId;
+  const turnResponse = await runtime.app.request('turn/start', {
+    threadId,
     model: 'gpt-5.6-luna',
     input: [{ type: 'text', text: request.prompt }],
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
@@ -184,32 +203,32 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   let nextHistoryReadAt = 0;
   let historyRecoveryInFlight = null;
   while (Date.now() < deadline) {
-    const completedText = completedTurnText(app.notifications, thread.id, turnId);
+    const completedText = completedTurnText(runtime.app.notifications, threadId, turnId);
     if (completedText.length > text.length) text = completedText;
-    if (completedTurnFor(app.notifications, thread.id, turnId) || parseAuditorOutputText(text)) break;
+    if (completedTurnFor(runtime.app.notifications, threadId, turnId) || parseAuditorOutputText(text)) break;
 
     if (!historyRecoveryInFlight && Date.now() >= nextHistoryReadAt) {
       nextHistoryReadAt = Date.now() + 1000;
       historyRecoveryInFlight = (async () => {
         try {
           const turns = await withTimeout(
-            app.request('thread/turns/list', { threadId: thread.id, itemsView: 'full', limit: 20, sortDirection: 'desc' }),
+            runtime.app.request('thread/turns/list', { threadId, itemsView: 'full', limit: 20, sortDirection: 'desc' }),
             HISTORY_RPC_TIMEOUT_MS,
             'CODEX_APPSERVER_HISTORY_LIST_TIMEOUT'
           );
           const listedTurn = completedTurnFromTurnsList(turns, turnId);
-          if (listedTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: listedTurn } });
+          if (listedTurn) runtime.app.notifications.push({ method: 'turn/completed', params: { threadId, turn: listedTurn } });
         } catch {
           // Notification delivery remains primary; history polling is bounded recovery.
         }
         try {
           const history = await withTimeout(
-            app.request('thread/read', { threadId: thread.id }),
+            runtime.app.request('thread/read', { threadId }),
             HISTORY_RPC_TIMEOUT_MS,
             'CODEX_APPSERVER_HISTORY_READ_TIMEOUT'
           );
-          const historyTurn = completedTurnFromThreadRead(history, thread.id, turnId);
-          if (historyTurn) app.notifications.push({ method: 'turn/completed', params: { threadId: thread.id, turn: historyTurn } });
+          const historyTurn = completedTurnFromThreadRead(history, threadId, turnId);
+          if (historyTurn) runtime.app.notifications.push({ method: 'turn/completed', params: { threadId, turn: historyTurn } });
         } catch {
           // Notification delivery remains primary; history polling is bounded recovery.
         }
@@ -223,7 +242,7 @@ async function handleDaemonRequest(app, request, contexts, control, phaseResults
   const output = JSON.parse(text.slice(start, end + 1));
   const evidence = parseJsonObjectItems(output.evidence, 'evidence');
   const defects = parseJsonObjectItems(output.defects, 'defects');
-  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: control.id, phase: request.phase, sessionId: contexts[request.phase].sessionId, contextId: contexts[request.phase].contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects };
+  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: launch.control.id, phase: request.phase, sessionId: context.sessionId, contextId: context.contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects };
 }
 
 function callDaemon(request) {
@@ -245,24 +264,35 @@ function callDaemon(request) {
   });
 }
 
+async function ensureLaunchAwareDaemon() {
+  const current = fs.existsSync(statePath) ? readState() : null;
+  if (current?.adapterVersion === 'APMATH_CODEX_APPSERVER_ADAPTER_v2') return current;
+  const child = spawn(process.execPath, [scriptPath, '--daemon', '--job', JOB], { detached: true, stdio: 'ignore', windowsHide: true });
+  child.unref();
+  const deadline = Date.now() + 30000;
+  while (Date.now() < deadline) {
+    if (fs.existsSync(statePath)) {
+      const state = readState();
+      if (state.adapterVersion === 'APMATH_CODEX_APPSERVER_ADAPTER_v2') return state;
+    }
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+  throw new Error('HOLD:CODEX_APPSERVER_LAUNCH_AWARE_DAEMON_START_TIMEOUT');
+}
+
 async function main() {
   if (process.argv.includes('--daemon')) return daemonMain();
   const request = await readStdin();
   if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
-    if (!fs.existsSync(statePath)) {
-      const child = spawn(process.execPath, [scriptPath, '--daemon', '--job', JOB], { detached: true, stdio: 'ignore', windowsHide: true });
-      child.unref();
-      const deadline = Date.now() + 30000;
-      while (!fs.existsSync(statePath) && Date.now() < deadline) await new Promise(resolve => setTimeout(resolve, 100));
-    }
-    const state = readState();
-    const response = { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'PREPARE_STATELESS_FINAL_AUDIT', status: 'READY', provider: state.provider, model: state.model, externalTaskId: state.control.id, auditorId: state.control.id, auditorSessionId: state.control.sessionId, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, contexts: state.contexts, runtimeAttestation: JSON.stringify({ provider: state.provider, daemonPid: state.pid, controlThreadId: state.control.id, contexts: state.contexts, turnStartCount: 0 }), requestSha: request.requestSha };
+    await ensureLaunchAwareDaemon();
+    const response = await callDaemon({ operation: 'preflight', launchId: request.launchId, requestSha: request.requestSha });
     process.stdout.write(JSON.stringify(response));
     return;
   }
   const response = await callDaemon({
     operation: 'phase',
     phase: request.phase,
+    logicalLaunchId: request.logicalLaunchId,
     inputSha: request.inputSha,
     packet: request.packet,
     prompt: JSON.stringify({
