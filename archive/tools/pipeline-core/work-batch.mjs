@@ -32,6 +32,31 @@ const tokenTelemetry = value => Number.isSafeInteger(value) && value >= 0 ? valu
 const retiredTokenHoldCodes = new Set(['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:TOKEN_RESERVATION_INVALID', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']);
 const targetKey = target => canonicalJson({ runId: target?.runId || null, questionUid: target?.questionUid || null });
 const budgetForProfile = profile => profile === WORKFLOW_PROFILES.PAST_EXAM ? PAST_EXAM_AGENT_BUDGET : AGENT_BUDGET;
+
+function launchIdentityParts(launch) {
+  return {
+    auditorId: launch?.auditorId || null,
+    auditorSessionId: launch?.auditorSessionId || null,
+    sessionIds: ['U1', 'U2', 'U3'].map(phase => launch?.contexts?.[phase]?.sessionId).filter(nonempty),
+    contextIds: ['U1', 'U2', 'U3'].map(phase => launch?.contexts?.[phase]?.contextId).filter(nonempty)
+  };
+}
+
+function identityCollision(left, right) {
+  const a = launchIdentityParts(left);
+  const b = launchIdentityParts(right);
+  return (a.auditorId && a.auditorId === b.auditorId)
+    || (a.auditorSessionId && [b.auditorSessionId, ...b.sessionIds].includes(a.auditorSessionId))
+    || (b.auditorSessionId && a.sessionIds.includes(b.auditorSessionId))
+    || a.sessionIds.some(sessionId => b.sessionIds.includes(sessionId))
+    || a.contextIds.some(contextId => b.contextIds.includes(contextId));
+}
+
+export function assertFreshLaunchIdentity(previousLaunches = [], candidate) {
+  const candidateLaunch = { auditorId: candidate?.auditorId, auditorSessionId: candidate?.auditorSessionId, contexts: candidate?.contexts };
+  for (const previous of previousLaunches) check(!identityCollision(previous, candidateLaunch), 'CROSS_LAUNCH_AUDITOR_CONTEXT_REUSE');
+  return true;
+}
 export function maxRepairIterationsForState(state) {
   return state?.policy?.maxRepairIterations || state?.policy?.targetedRechecks || budgetForProfile(state?.workflowProfile).maxRepairIterations;
 }
@@ -206,6 +231,9 @@ function validateState(state) {
     if (launch.inputSha !== undefined) check(launch.inputSha === freezeInputSha(freeze), 'REVIEW_INPUT_SHA_BINDING');
     if (launch.repairIteration !== undefined) check(Number.isSafeInteger(launch.repairIteration) && launch.repairIteration >= 0 && launch.repairIteration <= maxRepairIterations, 'REPAIR_ITERATION_INVALID');
     if (launch.purpose === 'SECOND_AUDIT') check(launch.authorization?.explicit === true && ['CONFLICT', 'HIGH_RISK'].includes(launch.authorization.reason) && nonempty(launch.authorization.authorizedBy), 'SECOND_AUDITOR_NOT_AUTHORIZED');
+  }
+  for (let i = 0; i < state.launches.length; i++) for (let j = 0; j < i; j++) {
+    check(!identityCollision(state.launches[j], state.launches[i]), 'CROSS_LAUNCH_AUDITOR_CONTEXT_REUSE');
   }
   for (let i = 0; i < state.launches.length; i++) {
     const launch = state.launches[i];
@@ -480,6 +508,7 @@ export function reserveWorkBatchReview(root, id, request) {
     check(request.callerRole === 'MAIN_WORKER', 'ONLY_MAIN_WORKER_CAN_DISPATCH');
     check(['U1','U2','U3'].every(phase => nonempty(request.contexts?.[phase]?.sessionId) && nonempty(request.contexts?.[phase]?.contextId)), 'SEALED_SUBCONTEXTS_REQUIRED');
     check(new Set(Object.values(request.contexts).map(c => c.sessionId)).size === 3 && new Set(Object.values(request.contexts).map(c => c.contextId)).size === 3 && Object.values(request.contexts).every(c => c.sessionId !== state.builderSessionId), 'SEALED_CONTEXT_COLLISION');
+    assertFreshLaunchIdentity(state.launches, request);
     check(request.contextIsolation === 'STATELESS_INPUTS' && request.subagentToolsEnabled === false, 'AUDITOR_ISOLATION_CAPABILITY_REQUIRED');
     let providerAttestationPlanRef = null;
     if (request.providerAttestationPlanRef) {

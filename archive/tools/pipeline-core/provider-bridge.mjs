@@ -2,8 +2,8 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
-import { loadCandidateReviewContext, validateAuditorPacket } from './review-isolation-runner.mjs';
-import { freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
+import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityForQuestion, VISUAL_ONLY_DEFECT_TYPES } from './review-isolation-runner.mjs';
+import { assertFreshLaunchIdentity, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
@@ -41,12 +41,13 @@ function transportCall(transport, request) {
   try { return JSON.parse(result.stdout); } catch { throw new Error('HOLD:PROVIDER_TRANSPORT_RESPONSE_INVALID'); }
 }
 
-function contextMap(contexts, builderSessionId) {
+function contextMap(contexts, builderSessionId, controlSessionId = null) {
   check(contexts && typeof contexts === 'object' && PHASES.every(phase => nonempty(contexts[phase]?.sessionId) && nonempty(contexts[phase]?.contextId)), 'PROVIDER_CONTEXT_ATTESTATION_REQUIRED');
   const sessions = PHASES.map(phase => contexts[phase].sessionId);
   const contextIds = PHASES.map(phase => contexts[phase].contextId);
   check(new Set(sessions).size === PHASES.length && new Set(contextIds).size === PHASES.length, 'PROVIDER_CONTEXT_IDENTITY_COLLISION');
   check(!sessions.includes(builderSessionId), 'PROVIDER_BUILDER_SESSION_COLLISION');
+  if (controlSessionId) check(!sessions.includes(controlSessionId), 'PROVIDER_CONTROL_SESSION_COLLISION');
   return Object.fromEntries(PHASES.map(phase => [phase, { sessionId: contexts[phase].sessionId, contextId: contexts[phase].contextId }]));
 }
 
@@ -58,7 +59,7 @@ function validatePreflightResponse(response, request, executionIdentity = null) 
   check(response.contextIsolation === 'STATELESS_INPUTS' && response.subagentToolsEnabled === false && response.modelInvocationCount === 0, 'PROVIDER_PREFLIGHT_CAPABILITY_INVALID');
   check(nonempty(response.runtimeAttestation), 'PROVIDER_RUNTIME_ATTESTATION_REQUIRED');
   const route = observeModelRoute(response, new Date().toISOString());
-  return { contexts: contextMap(response.contexts, request.builderSessionId), route };
+  return { contexts: contextMap(response.contexts, request.builderSessionId, response.auditorSessionId), route };
 }
 
 function plannedLaunch(state, purpose) {
@@ -112,6 +113,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
   const request = { ...body, requestSha: objectSha(body) };
   const response = transportCall(transport, request);
   const { contexts, route } = validatePreflightResponse(response, request, state.executionIdentity);
+  assertFreshLaunchIdentity(state.launches, { auditorId: response.auditorId, auditorSessionId: response.auditorSessionId, contexts });
   const executionIdentity = {
     ...(state.executionIdentity || {}),
     actualModel: route.actualModel,
@@ -205,18 +207,28 @@ function loadPacket(root, ref, launch, plan, state, candidateContext, sourceCont
       check(expected && same({ content: row.content, choices: row.choices, problemAssets: row.problemAssets || [] }, expected), 'PROVIDER_U1_SOURCE_PACKET_MISMATCH');
     }
   }
+  if (packet.phase === 'U2') {
+    const rows = Array.isArray(packet.payload) ? packet.payload : [packet.payload];
+    for (const row of rows) {
+      const expected = sourceContext.visualApplicabilities.get(row.questionUid);
+      check(expected && same(row.visualApplicability, expected), 'PROVIDER_U2_VISUAL_APPLICABILITY_MISMATCH');
+    }
+  }
   return packet;
 }
 
 function sourceContexts(root, freeze) {
   const candidateContext = {};
   const sourcePayloads = new Map();
+  const visualApplicabilities = new Map();
   const declaredContextDependencyUidSet = [];
   for (const runRef of freeze.runRefs || []) {
     const run = JSON.parse(readBoundFile(root, runRef).toString('utf8'));
     Object.assign(candidateContext, loadCandidateReviewContext(root, run));
     declaredContextDependencyUidSet.push(...(run.declaredContextDependencyUidSet || []));
     for (const question of loadBoundQuestionBanks(root, run)) {
+      const declared = run.questions.find(row => row.questionUid === question.questionUid);
+      visualApplicabilities.set(question.questionUid, visualApplicabilityForQuestion({ ...declared, ...question, visual: declared?.visual }));
       const sourceImage = question.sourceRecord?.image;
       const sourceAssetPaths = sourceImage
         ? (sourceImage.startsWith('archive/')
@@ -232,7 +244,18 @@ function sourceContexts(root, freeze) {
       });
     }
   }
-  return { candidateContext, sourcePayloads, declaredContextDependencyUidSet: [...new Set(declaredContextDependencyUidSet)] };
+  return { candidateContext, sourcePayloads, visualApplicabilities, declaredContextDependencyUidSet: [...new Set(declaredContextDependencyUidSet)] };
+}
+
+export function applyVisualApplicabilityToDefects(defects, visualApplicabilities) {
+  const kept = [];
+  const suppressed = [];
+  for (const defect of defects || []) {
+    const applicability = visualApplicabilities?.get(defect.questionUid);
+    if (applicability?.status === 'VISUAL_EXEMPT' && VISUAL_ONLY_DEFECT_TYPES.includes(defect.type)) suppressed.push({ ...defect, suppression: 'VISUAL_EXEMPT' });
+    else kept.push(defect);
+  }
+  return { defects: kept, suppressedDefects: suppressed };
 }
 
 function phaseRequest(plan, packet) {
@@ -318,7 +341,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'DISPATCHED' });
   const base = path.dirname(receiptPathFor(root, receiptPath));
   const relativeBase = path.relative(path.resolve(root), base).split(path.sep).join('/');
-  const phaseAttestationRefs = [], evidenceRefs = [], defects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
+  const phaseAttestationRefs = [], evidenceRefs = [], defects = [], suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
   for (const { packet } of packets) {
     const request = phaseRequest(plan, packet);
     const requestRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-request.json`, request);
@@ -329,7 +352,12 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     const responseRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-response.json`, response);
     phaseAttestationRefs.push({ phase: packet.phase, requestRef, responseRef, inputSha: request.inputSha, providerInvocationId: response.providerInvocationId });
     usedTokens.push(Number.isSafeInteger(response.usedTokens) ? response.usedTokens : null);
-    defects.push(...bindProviderDefectsToLaunchScope(response.defects, launch.scope));
+    const scopedDefects = bindProviderDefectsToLaunchScope(response.defects, launch.scope);
+    const filtered = packet.phase === 'U2'
+      ? applyVisualApplicabilityToDefects(scopedDefects, contexts.visualApplicabilities)
+      : { defects: scopedDefects, suppressedDefects: [] };
+    defects.push(...filtered.defects);
+    suppressedDefects.push(...filtered.suppressedDefects.map(defect => ({ ...defect, phase: packet.phase })));
     for (let index = 0; index < response.evidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, response.evidence[index]));
   }
   const receipt = {
@@ -366,6 +394,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     phaseAttestationRefs,
     evidenceRefs,
     defects,
+    suppressedDefects,
   };
   writeNewJson(receiptPathFor(root, receiptPath), receipt);
   const providerReceiptRef = fileRef(root, receiptPath);

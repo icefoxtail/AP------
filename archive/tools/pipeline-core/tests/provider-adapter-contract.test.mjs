@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
 import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
-import { bindProviderDefectsToLaunchScope } from '../provider-bridge.mjs';
+import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope } from '../provider-bridge.mjs';
+import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -95,4 +96,26 @@ test('provider aggregate defect scopes expand only across matching launch UIDs',
   assert.throws(() => bindProviderDefectsToLaunchScope([{ scope: 'other|1..2' }], scope), /PROVIDER_DEFECT_SCOPE_REQUIRED/);
   assert.equal(bindProviderDefectsToLaunchScope([{ questionUids: 'exam|2..3' }], scope).length, 2);
   assert.equal(bindProviderDefectsToLaunchScope([{ scope: 'exam' }], scope).length, 3);
+});
+
+test('U2 visual applicability exempts nonvisual questions but keeps the visual-required question in scope', () => {
+  const questions = Array.from({ length: 20 }, (_, index) => ({
+    questionUid: `maesan|${index + 1}`,
+    visual: { requirement: index === 4 ? 'VISUAL_OPTIONAL' : 'VISUAL_EXEMPT', problemVisualMathDependency: index === 4, sharedVisualMathDependency: false, adjudicationId: `q${index + 1}:v3` },
+    problemAssetPaths: index === 4 ? ['q005_visual.png'] : [],
+    solutionAssetPaths: index === 4 ? ['q005-solution.svg'] : [],
+    sourceRecord: { visualAssetStatus: index === 4 ? 'cropped_from_full_page_bbox' : 'no_visual_asset_required' },
+  }));
+  const applicability = new Map(questions.map(question => [question.questionUid, visualApplicabilityForQuestion(question)]));
+  assert.equal([...applicability.values()].filter(value => value.status === 'VISUAL_EXEMPT').length, 19);
+  assert.equal(applicability.get('maesan|5').status, 'VISUAL_REQUIRED');
+  const defects = questions.flatMap(question => [
+    { type: 'missing_artifact', questionUid: question.questionUid },
+    { type: 'missing_render_witness', questionUid: question.questionUid },
+  ]);
+  const filtered = applyVisualApplicabilityToDefects(defects, applicability);
+  assert.equal(filtered.defects.length, 2);
+  assert.deepEqual(filtered.defects.map(defect => defect.questionUid), ['maesan|5', 'maesan|5']);
+  assert.equal(filtered.suppressedDefects.length, 38);
+  assert.equal(applyVisualApplicabilityToDefects([], applicability).defects.length, 0);
 });

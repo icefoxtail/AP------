@@ -6,10 +6,66 @@ export const AUDITOR_PHASES = Object.freeze(['U1', 'U2', 'U3']);
 
 const allowed = Object.freeze({
   U1: ['questionUid', 'content', 'choices', 'problemAssets', 'curriculum'],
-  U2: ['questionUid', 'artifact', 'renderWitnesses'],
+  U2: ['questionUid', 'artifact', 'renderWitnesses', 'visualApplicability'],
   U3: ['renderWitnesses', 'currentQuestion', 'questionUid', 'frozenU1', 'frozenU2', 'currentAnswer', 'currentSolution', 'metadata', 'dependencies']
 });
 const forbidden = Object.freeze({ U1: ['answer', 'solution', 'solutionImage', 'previousVerdict'], U2: ['expectedAnswer', 'answer', 'solution', 'solutionImage', 'frozenU1', 'previousVerdict'], U3: [] });
+
+export const VISUAL_APPLICABILITY_STATUSES = Object.freeze(['VISUAL_REQUIRED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT']);
+export const VISUAL_ONLY_DEFECT_TYPES = Object.freeze(['missing_artifact', 'missing_render_witness']);
+
+function assetPaths(question, key, refKey) {
+  const direct = Array.isArray(question?.[key]) ? question[key] : [];
+  if (direct.length) return direct;
+  return Array.isArray(question?.[refKey]) ? question[refKey].filter(Boolean).map(ref => ref.path).filter(Boolean) : [];
+}
+
+// This is a projection of existing question metadata and visual triage
+// authority. It is deliberately not a second visual classifier: a source
+// question marked no_visual_asset_required/VISUAL_EXEMPT stays exempt, while
+// an existing problem/shared visual dependency keeps the visual axis required
+// even when the solution visual itself was labelled optional.
+export function visualApplicabilityForQuestion(question = {}) {
+  const visual = question.visual || {};
+  const sourceRecord = question.sourceRecord || {};
+  const problemAssetPaths = assetPaths(question, 'problemAssetPaths', 'problemAssetRefs');
+  const solutionAssetPaths = assetPaths(question, 'solutionAssetPaths', 'solutionAssetRefs');
+  const hasDependency = visual.problemVisualMathDependency === true
+    || visual.sharedVisualMathDependency === true
+    || problemAssetPaths.length > 0;
+  const explicitlyExempt = visual.requirement === 'VISUAL_EXEMPT'
+    || sourceRecord.visualAssetStatus === 'no_visual_asset_required';
+  const status = hasDependency || visual.requirement === 'VISUAL_REQUIRED'
+    ? 'VISUAL_REQUIRED'
+    : explicitlyExempt
+      ? 'VISUAL_EXEMPT'
+      : 'VISUAL_OPTIONAL';
+  const artifactRequired = status === 'VISUAL_REQUIRED' || visual.actualSolutionVisualAttached === true || solutionAssetPaths.length > 0;
+  return {
+    status,
+    artifactRequired,
+    renderWitnessRequired: artifactRequired,
+    authority: {
+      requirement: visual.requirement || null,
+      visualAssetStatus: sourceRecord.visualAssetStatus || null,
+      action: visual.action || null,
+      adjudicationId: visual.adjudicationId || null,
+      adjudicationStatus: visual.adjudicationStatus || null,
+      problemDependency: visual.problemVisualMathDependency === true,
+      sharedDependency: visual.sharedVisualMathDependency === true,
+      sourceNoVisualAssetRequired: sourceRecord.visualAssetStatus === 'no_visual_asset_required'
+    }
+  };
+}
+
+function validateVisualApplicability(value) {
+  return isObject(value)
+    && VISUAL_APPLICABILITY_STATUSES.includes(value.status)
+    && typeof value.artifactRequired === 'boolean'
+    && typeof value.renderWitnessRequired === 'boolean'
+    && isObject(value.authority)
+    && (value.status === 'VISUAL_EXEMPT' ? value.artifactRequired === false && value.renderWitnessRequired === false : true);
+}
 
 // Read the byte-bound candidate, never the source choices or a previous verdict.
 export function loadCandidateReviewContext(root, run) {
@@ -71,6 +127,7 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
   } else if (!isObject(payload)) errors.push('AUDITOR_PACKET_PAYLOAD_INVALID');
   else {
     if (!packet.questionUids.includes(payload.questionUid)) errors.push('PAYLOAD_UID_SCOPE_MISMATCH');
+    if (packet.phase === 'U2' && !validateVisualApplicability(payload.visualApplicability)) errors.push('U2_VISUAL_APPLICABILITY_REQUIRED');
     if (packet.phase === 'U3') {
       const current = payload.currentQuestion;
       if (!isObject(current) || current.questionUid !== payload.questionUid || !nonempty(current.content)
