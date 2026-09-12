@@ -472,6 +472,49 @@ test('concurrent, recursive, and retry launches remain hard-blocked', t => {
   assert.equal(readWorkBatch(h.root, 'job').launches.length, 1);
 });
 
+test('GLOBAL_EXPENSIVE_SLOT_OCCUPIED preserves FROZEN state and exact legacy transient HOLD recovery is bounded', t => {
+  const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  const before = readWorkBatch(f.root, 'job');
+  const other = initWorkBatch(f.root, { workBatchId: 'other-global-slot', runIds: ['other-run'], builderId: 'other-builder', builderSessionId: 'other-session' });
+  const targets = [{ runId: 'other-run', questionUid: 'other|1' }];
+  const freezeBody = { workBatchId: 'other-global-slot', frozenAt: '2026-01-01T00:00:00Z', targets, affected: targets, bindings: [], runRefs: [], machineCheckedUidCount: 0, predecessorFreezeSha: null };
+  const freeze = { ...freezeBody, freezeSha: objectSha(freezeBody) };
+  const active = { contexts: { U1: { sessionId: 'other-u1', contextId: 'other-c1' }, U2: { sessionId: 'other-u2', contextId: 'other-c2' }, U3: { sessionId: 'other-u3', contextId: 'other-c3' } }, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId: 'other-global-slot:1', purpose: 'FINAL_AUDIT', freezeSha: freeze.freezeSha, scope: targets, auditorId: 'other-auditor', auditorSessionId: 'other-control', parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: null, reservedAt: '2026-01-01T00:01:00Z', status: 'RESERVED', externalId: null };
+  fs.writeFileSync(path.join(f.root, 'alive/runtime/work-batches/other-global-slot/state.json'), JSON.stringify({ ...other, status: 'FROZEN', freezes: [freeze], launches: [active] }));
+  assert.throws(() => reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT')), /GLOBAL_EXPENSIVE_SLOT_OCCUPIED/);
+  const preserved = readWorkBatch(f.root, 'job');
+  assert.equal(preserved.status, 'FROZEN');
+  assert.equal(preserved.freezes.at(-1).freezeSha, before.freezes.at(-1).freezeSha);
+  assert.equal(preserved.launches.length, before.launches.length);
+  const otherState = JSON.parse(fs.readFileSync(path.join(f.root, 'alive/runtime/work-batches/other-global-slot/state.json'), 'utf8'));
+  otherState.launches[0] = { ...otherState.launches[0], status: 'COMPLETED', externalId: 'other-provider', endedAt: '2026-01-01T00:02:00Z', usedTokens: null };
+  fs.writeFileSync(path.join(f.root, 'alive/runtime/work-batches/other-global-slot/state.json'), JSON.stringify(otherState));
+  assert.equal(reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT')).status, 'FROZEN');
+
+  const recover = jobFixture(t);
+  recover.prepareRecheck();
+  const held = readWorkBatch(recover.root, 'job');
+  held.status = 'HOLD';
+  held.lastHold = { at: new Date().toISOString(), code: 'HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED' };
+  fs.writeFileSync(recover.stateFile, JSON.stringify(held));
+  const recovered = reserveWorkBatchReview(recover.root, 'job', recover.request('TARGETED_RECHECK'));
+  assert.equal(recovered.status, 'FROZEN');
+  assert.equal(recovered.lastHold, undefined);
+  assert.equal(recovered.launches.length, 2);
+
+  const otherHold = jobFixture(t);
+  const otherFirst = otherHold.makeRun(1);
+  freezeWorkBatch(otherHold.root, 'job', [otherFirst.ref]);
+  const nonRecoverable = readWorkBatch(otherHold.root, 'job');
+  nonRecoverable.status = 'HOLD';
+  nonRecoverable.lastHold = { at: new Date().toISOString(), code: 'HOLD:REPAIR_STAGNATION' };
+  fs.writeFileSync(otherHold.stateFile, JSON.stringify(nonRecoverable));
+  assert.throws(() => reserveWorkBatchReview(otherHold.root, 'job', otherHold.request('FINAL_AUDIT')), /REPAIR_STAGNATION/);
+  assert.equal(readWorkBatch(otherHold.root, 'job').status, 'HOLD');
+});
+
 test('a historic token-only HOLD migrates without reintroducing a token gate', t => {
   for (const code of ['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']) {
     const f = jobFixture(t);

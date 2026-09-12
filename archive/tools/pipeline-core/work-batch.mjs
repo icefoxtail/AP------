@@ -30,6 +30,7 @@ const load = (root, ref) => JSON.parse(readBoundFile(root, ref));
 const sorted = values => [...new Set(values)].sort();
 const tokenTelemetry = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
 const retiredTokenHoldCodes = new Set(['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:TOKEN_RESERVATION_INVALID', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']);
+const nonPersistentReservationErrors = new Set(['HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED']);
 const targetKey = target => canonicalJson({ runId: target?.runId || null, questionUid: target?.questionUid || null });
 const budgetForProfile = profile => profile === WORKFLOW_PROFILES.PAST_EXAM ? PAST_EXAM_AGENT_BUDGET : AGENT_BUDGET;
 
@@ -134,7 +135,7 @@ function mutate(root, id, fn) {
     let state;
     try { state = fn(previous ? structuredClone(previous) : null); validateState(state); }
     catch (error) {
-      if (previous) {
+      if (previous && !nonPersistentReservationErrors.has(error.message)) {
         const held = { ...previous, status: 'HOLD', lastHold: { at: time(), code: error.message } };
         const holdFile = `${file}.hold`;
         const holdFd = fs.openSync(holdFile, 'wx');
@@ -473,6 +474,13 @@ function requireLegacyReconciled(root) {
 
 export function reserveWorkBatchReview(root, id, request) {
   return mutate(root, id, state => {
+    if (state?.status === 'HOLD' && state.lastHold?.code === 'HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED' && !state.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)) && state.freezes.length) {
+      const freeze = state.freezes.at(-1);
+      const fresh = collectFreeze(root, { ...state, freezes: state.freezes.slice(0, -1) }, freeze.runRefs);
+      check(same(fresh.bindings, freeze.bindings), 'FROZEN_INPUT_CHANGED');
+      state.status = 'FROZEN';
+      delete state.lastHold;
+    }
     // A historic token-only HOLD has no authority after token telemetry became
     // observational. Other HOLD causes, active providers, and all agent gates stay hard.
     if (state?.status === 'HOLD' && retiredTokenHoldCodes.has(state.lastHold?.code) && !state.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status))) {
@@ -529,6 +537,37 @@ export function reserveWorkBatchReview(root, id, request) {
     const launchInputSha = freezeInputSha(freeze);
     const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId: `${id}:${state.launches.length + 1}`, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? state.launches.filter(l => l.purpose === 'TARGETED_RECHECK').length + 1 : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}) };
     state.launches.push(launch); return state;
+  });
+}
+
+export function recoverLegacyReservationHold(root, id, evidenceRefs = []) {
+  return mutate(root, id, state => {
+    check(state?.status === 'HOLD', 'TRANSIENT_HOLD_REQUIRED');
+    const exactGlobal = state.lastHold?.code === 'HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED';
+    const overwrittenByRetry = state.lastHold?.code === 'HOLD:WHOLE_JOB_FREEZE_REQUIRED';
+    check(exactGlobal || overwrittenByRetry, 'TRANSIENT_HOLD_CODE_INVALID');
+    if (overwrittenByRetry) {
+      check(Array.isArray(evidenceRefs) && evidenceRefs.length === 2, 'TRANSIENT_HOLD_HISTORY_REQUIRED');
+      const reports = evidenceRefs.map(ref => load(root, ref));
+      check(reports[0]?.status === 'HOLD' && reports[0]?.errors?.includes('HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED') && reports[1]?.status === 'HOLD' && reports[1]?.errors?.includes('HOLD:WHOLE_JOB_FREEZE_REQUIRED'), 'TRANSIENT_HOLD_HISTORY_MISMATCH');
+    }
+    check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
+    const freeze = state.freezes.at(-1);
+    check(freeze, 'WHOLE_JOB_FREEZE_REQUIRED');
+    const fresh = collectFreeze(root, { ...state, freezes: state.freezes.slice(0, -1) }, freeze.runRefs);
+    check(same(fresh.bindings, freeze.bindings), 'FROZEN_INPUT_CHANGED');
+    const directory = path.dirname(path.dirname(statePath(root, id)));
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) if (entry.isDirectory()) {
+      const otherFile = path.join(directory, entry.name, 'state.json');
+      if (fs.existsSync(otherFile)) {
+        const other = JSON.parse(fs.readFileSync(otherFile, 'utf8'));
+        validateState(other);
+        check(!other.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED');
+      }
+    }
+    state.status = 'FROZEN';
+    delete state.lastHold;
+    return state;
   });
 }
 
