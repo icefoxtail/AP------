@@ -18,7 +18,11 @@ const budgetContract = JSON.parse(fs.readFileSync(new URL('./contracts/work-batc
 
 export const WORK_BATCH_VERSION = 'APMATH_WORK_BATCH_v1';
 export const MACHINE_AXES = Object.freeze(['STATIC', 'METADATA', 'RENDER_CAPTURE']);
-export const AGENT_BUDGET = Object.freeze({ productionIndependent: 0, finalAuditors: 1, targetedRechecks: 1, concurrentExpensive: 1, automaticSecondAuditors: 0, explicitSecondAuditors: 1, retries: 0, recursiveSubagents: 0 });
+export const MAX_REPAIR_ITERATIONS = 3;
+export const WORKFLOW_PROFILES = Object.freeze({ LEGACY: 'LEGACY', PAST_EXAM: 'PAST_EXAM' });
+export const AGENT_BUDGET = Object.freeze({ productionIndependent: 0, finalAuditors: 1, targetedRechecks: 1, maxRepairIterations: 1, concurrentExpensive: 1, automaticSecondAuditors: 0, explicitSecondAuditors: 1, retries: 0, recursiveSubagents: 0 });
+export const PAST_EXAM_AGENT_BUDGET = Object.freeze({ ...AGENT_BUDGET, targetedRechecks: MAX_REPAIR_ITERATIONS, maxRepairIterations: MAX_REPAIR_ITERATIONS });
+export const REPAIR_DISPOSITIONS = Object.freeze(['REPAIRED_CANDIDATE', 'REPAIRED_ASSET', 'EXTRACTION_CORRECTED', 'SOURCE_DEFECT_CONFIRMED', 'AUDITOR_FALSE_POSITIVE', 'NO_CHANGE_WITH_EVIDENCE', 'HOLD']);
 const same = (a, b) => canonicalJson(a) === canonicalJson(b);
 const check = (condition, code) => { if (!condition) throw new Error(`HOLD:${code}`); };
 const time = () => new Date().toISOString();
@@ -27,6 +31,15 @@ const sorted = values => [...new Set(values)].sort();
 const tokenTelemetry = value => Number.isSafeInteger(value) && value >= 0 ? value : null;
 const retiredTokenHoldCodes = new Set(['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:TOKEN_RESERVATION_INVALID', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']);
 const targetKey = target => canonicalJson({ runId: target?.runId || null, questionUid: target?.questionUid || null });
+const budgetForProfile = profile => profile === WORKFLOW_PROFILES.PAST_EXAM ? PAST_EXAM_AGENT_BUDGET : AGENT_BUDGET;
+export function maxRepairIterationsForState(state) {
+  return state?.policy?.maxRepairIterations || state?.policy?.targetedRechecks || budgetForProfile(state?.workflowProfile).maxRepairIterations;
+}
+export function freezeInputSha(freeze) {
+  const bindings = freeze?.bindings || [];
+  if (bindings.length === 1) return bindings[0].inputSha;
+  return objectSha(bindings.map(binding => ({ runId: binding.runId, inputSha: binding.inputSha })).sort((a, b) => canonicalJson(a).localeCompare(canonicalJson(b))));
+}
 const statePath = (root, id) => {
   check(/^[A-Za-z0-9_-]+$/.test(id || ''), 'WORK_BATCH_ID_INVALID');
   return safePath(root, `alive/runtime/work-batches/${id}/state.json`, { mustExist: false });
@@ -140,8 +153,28 @@ export function recoverDispatchLock(root, expectedLockSha) {
 
 function validateState(state) {
   check(validateSchema(state, budgetContract).length === 0, 'BUDGET_STATE_CONTRACT_INVALID');
-  check(state?.schemaVersion === WORK_BATCH_VERSION && same(state.policy, AGENT_BUDGET), 'BUDGET_POLICY_INVALID');
+  check(state?.schemaVersion === WORK_BATCH_VERSION, 'BUDGET_POLICY_INVALID');
+  const workflowProfile = state.workflowProfile || (state.policy?.maxRepairIterations > 1 ? WORKFLOW_PROFILES.PAST_EXAM : WORKFLOW_PROFILES.LEGACY);
+  check(Object.values(WORKFLOW_PROFILES).includes(workflowProfile), 'WORKFLOW_PROFILE_INVALID');
+  const policy = state.policy || {};
+  const expectedBudget = budgetForProfile(workflowProfile);
+  for (const key of Object.keys(expectedBudget).filter(key => key !== 'maxRepairIterations')) check(policy[key] === expectedBudget[key], 'BUDGET_POLICY_INVALID');
+  if (policy.maxRepairIterations === undefined) check(workflowProfile === WORKFLOW_PROFILES.LEGACY && policy.targetedRechecks === 1, 'BUDGET_POLICY_INVALID');
+  else check(policy.maxRepairIterations === expectedBudget.maxRepairIterations, 'BUDGET_POLICY_INVALID');
+  const maxRepairIterations = maxRepairIterationsForState({ workflowProfile, policy });
   check(Array.isArray(state.launches) && Array.isArray(state.freezes), 'LEDGER_REQUIRED');
+  check(Array.isArray(state.openDefectSet || []), 'OPEN_DEFECT_SET_REQUIRED');
+  check(new Set((state.openDefectSet || []).map(targetKey)).size === (state.openDefectSet || []).length, 'OPEN_DEFECT_SET_DUPLICATE');
+  check(Array.isArray(state.openDefects || []), 'OPEN_DEFECTS_REQUIRED');
+  const openKeys = new Set((state.openDefectSet || []).map(targetKey));
+  for (const defect of state.openDefects || []) check(openKeys.has(targetKey(defect)), 'OPEN_DEFECT_IDENTITY_MISMATCH');
+  check(Array.isArray(state.repairIterations || []) && state.repairIterations.length <= maxRepairIterations, 'REPAIR_ITERATION_LIMIT');
+  for (const iteration of state.repairIterations || []) {
+    check(Number.isSafeInteger(iteration.iteration) && iteration.iteration >= 1 && iteration.iteration <= maxRepairIterations, 'REPAIR_ITERATION_INVALID');
+    check(['REPAIR_REQUIRED', 'REPAIR_RECORDED', 'FROZEN_FOR_RECHECK', 'CLOSED', 'HOLD'].includes(iteration.status), 'REPAIR_ITERATION_STATUS_INVALID');
+    check(Array.isArray(iteration.openDefectSet || []), 'REPAIR_ITERATION_DEFECTS_REQUIRED');
+    check(Array.isArray(iteration.defects || []), 'REPAIR_ITERATION_DEFECT_RECORDS_REQUIRED');
+  }
   if (state.jobKind !== undefined) check(typeof state.jobKind === 'string' && (state.jobKind === 'PRODUCTION' || isBenchmarkJobKind(state.jobKind) || state.jobKind === 'DIAGNOSTIC'), 'JOB_KIND_INVALID');
   if (state.executionIdentity !== undefined) {
     check(state.executionIdentity?.schemaVersion === 'APMATH_GOLD_EXECUTION_CONTRACT_v1', 'MODEL_ROUTE_IDENTITY_INVALID');
@@ -150,7 +183,9 @@ function validateState(state) {
     if (isBenchmarkJobKind(state.jobKind) && parity.status === 'PASS' && state.executionIdentity.MODEL_ROUTE_PARITY !== 'PASS') throw new Error('MODEL_ROUTE_PARITY_STATE_MISMATCH');
   }
   check(new Set(state.launches.map(l => l.launchId)).size === state.launches.length, 'DUPLICATE_LAUNCH');
-  for (const purpose of ['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT']) check(state.launches.filter(l => l.purpose === purpose).length <= 1, 'AGENT_BUDGET_EXCEEDED');
+  for (const purpose of ['FINAL_AUDIT', 'SECOND_AUDIT']) check(state.launches.filter(l => l.purpose === purpose).length <= 1, 'AGENT_BUDGET_EXCEEDED');
+  check(state.launches.filter(l => l.purpose === 'TARGETED_RECHECK').length <= maxRepairIterations, 'REPAIR_ITERATION_LIMIT');
+  check(state.freezes.length <= maxRepairIterations + 1, 'REPAIR_FREEZE_LIMIT');
   const active = state.launches.filter(l => ['RESERVED', 'DISPATCHED'].includes(l.status));
   check(active.length <= 1, 'CONCURRENT_EXPENSIVE_EXCEEDED');
   for (const freeze of state.freezes) if (isBenchmarkJobKind(state.jobKind)) validateBenchmarkDenominator(freeze.targets, freeze.benchmarkDenominator);
@@ -162,6 +197,8 @@ function validateState(state) {
     const freeze = state.freezes.find(f => f.freezeSha === launch.freezeSha);
     check(freeze && Date.parse(launch.reservedAt) >= Date.parse(freeze.frozenAt), 'REVIEW_BEFORE_FREEZE');
     check(same(launch.scope, reviewScopeForPurpose(state, freeze, launch.purpose)), 'LAUNCH_SCOPE_MISMATCH');
+    if (launch.inputSha !== undefined) check(launch.inputSha === freezeInputSha(freeze), 'REVIEW_INPUT_SHA_BINDING');
+    if (launch.repairIteration !== undefined) check(Number.isSafeInteger(launch.repairIteration) && launch.repairIteration >= 0 && launch.repairIteration <= maxRepairIterations, 'REPAIR_ITERATION_INVALID');
     if (launch.purpose === 'SECOND_AUDIT') check(launch.authorization?.explicit === true && ['CONFLICT', 'HIGH_RISK'].includes(launch.authorization.reason) && nonempty(launch.authorization.authorizedBy), 'SECOND_AUDITOR_NOT_AUTHORIZED');
   }
   for (let i = 0; i < state.launches.length; i++) {
@@ -170,7 +207,12 @@ function validateState(state) {
     if (i) check(state.launches[i-1].endedAt && Date.parse(launch.reservedAt) >= Date.parse(state.launches[i-1].endedAt), 'CONCURRENT_HISTORY_INVALID');
     if (['COMPLETED','FAILED'].includes(launch.status)) check(nonempty(launch.externalId) && nonempty(launch.endedAt) && (launch.usedTokens === undefined || launch.usedTokens === null || Number.isSafeInteger(launch.usedTokens) && launch.usedTokens >= 0), 'TERMINAL_USAGE_REQUIRED');
   }
-  for (const freeze of state.freezes) { const { freezeSha, ...body } = freeze; check(freezeSha === objectSha(body), 'FREEZE_SHA_INVALID'); }
+  for (let index = 0; index < state.freezes.length; index++) {
+    const freeze = state.freezes[index];
+    const { freezeSha, ...body } = freeze;
+    check(freezeSha === objectSha(body), 'FREEZE_SHA_INVALID');
+    if (index > 0 && freeze.predecessorFreezeSha !== undefined) check(freeze.predecessorFreezeSha === state.freezes[index - 1].freezeSha, 'FREEZE_PREDECESSOR_INVALID');
+  }
 }
 
 export function readWorkBatch(root, id) {
@@ -198,7 +240,9 @@ export function initWorkBatch(root, spec) {
       try { latest = latestMainCommit(root); } catch { throw new Error('START_TIME_STALE'); }
       check(spec.jobAuthority.startSha === latest, 'START_TIME_STALE');
     }
-    return { schemaVersion: WORK_BATCH_VERSION, workBatchId: spec.workBatchId, runIds: sorted(spec.runIds), builderId: spec.builderId, builderSessionId: spec.builderSessionId, jobKind, executionIdentity, jobAuthority: spec.jobAuthority || null, policy: AGENT_BUDGET, status: 'PRODUCTION', freezes: [], launches: [] };
+    const workflowProfile = String(spec.workflowProfile || (spec.pipeline === 'past-exam' ? WORKFLOW_PROFILES.PAST_EXAM : WORKFLOW_PROFILES.LEGACY)).trim().toUpperCase();
+    check(Object.values(WORKFLOW_PROFILES).includes(workflowProfile), 'WORKFLOW_PROFILE_INVALID');
+    return { schemaVersion: WORK_BATCH_VERSION, workBatchId: spec.workBatchId, runIds: sorted(spec.runIds), builderId: spec.builderId, builderSessionId: spec.builderSessionId, jobKind, workflowProfile, executionIdentity, jobAuthority: spec.jobAuthority || null, policy: budgetForProfile(workflowProfile), status: 'PRODUCTION', freezes: [], launches: [], openDefectSet: [], openDefects: [], repairIterations: [] };
   });
 }
 
@@ -207,8 +251,8 @@ function collectFreeze(root, state, runRefs) {
   check(same(sorted(runs.map(r => r.runId)), state.runIds) && runs.length === state.runIds.length, 'WHOLE_JOB_FREEZE_REQUIRED');
   const allTargets = [], eligibleTargets = [], excludedTargets = [], affected = [], bindings = [];
   const priorFreeze = state.freezes.at(-1);
-  const finalLaunch = state.launches.find(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED');
-  const defects = finalLaunch ? load(root, finalLaunch.providerReceiptRef).defects || [] : [];
+  const latestCompletedLaunch = [...state.launches].reverse().find(l => l.status === 'COMPLETED');
+  const defects = latestCompletedLaunch ? load(root, latestCompletedLaunch.providerReceiptRef).defects || [] : [];
   const authorities = [];
   const excludedRuns = [];
   for (const run of runs) {
@@ -278,11 +322,45 @@ function collectFreeze(root, state, runRefs) {
   return { ...body, freezeSha: objectSha(body) };
 }
 
+function validateRepairLineage(state, freeze) {
+  const iteration = state.repairIterations?.at(-1);
+  if (!iteration || iteration.status !== 'REPAIR_RECORDED') return;
+  check((iteration.repairInputSha || iteration.inputSha) === freezeInputSha(freeze), 'REPAIR_INPUT_SHA_LINEAGE_MISMATCH');
+  const prior = state.freezes.at(-1);
+  const previousByRun = new Map((prior?.bindings || []).map(binding => [binding.runId, binding]));
+  const changed = freeze.bindings.filter(binding => {
+    const previous = previousByRun.get(binding.runId);
+    return !previous || previous.inputSha !== binding.inputSha || previous.revision !== binding.revision;
+  });
+  check(changed.length > 0, 'REPAIR_NEW_INPUT_REQUIRED');
+  check(changed.every(binding => {
+    const previous = previousByRun.get(binding.runId);
+    return previous && binding.revision === previous.revision + 1 && binding.inputSha !== previous.inputSha;
+  }), 'REPAIR_NEW_REVISION_REQUIRED');
+  check(iteration.revision === Math.max(...changed.map(binding => binding.revision)), 'REPAIR_REVISION_LINEAGE_MISMATCH');
+}
+
 export function freezeWorkBatch(root, id, runRefs) {
   return mutate(root, id, state => {
-    check(state && !state.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
-    if (state.freezes.length) check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED') && !state.launches.some(l => l.purpose === 'TARGETED_RECHECK'), 'NO_AUTOMATIC_REVIEW_LOOP');
-    state.freezes.push(collectFreeze(root, state, runRefs)); state.status = 'FROZEN'; return state;
+    check(state && state.status !== 'HOLD', 'WORK_BATCH_HOLD_REQUIRES_RECONCILIATION');
+    check(!state.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
+    if (state.freezes.length) {
+      check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
+      check(state.launches.at(-1)?.status === 'COMPLETED', 'PREVIOUS_REVIEW_MUST_COMPLETE');
+      const maxRepairIterations = maxRepairIterationsForState(state);
+      check(state.freezes.length <= maxRepairIterations + 1, 'REPAIR_ITERATION_LIMIT');
+    }
+    const freeze = collectFreeze(root, state, runRefs);
+    validateRepairLineage(state, freeze);
+    state.freezes.push(freeze);
+    const iteration = state.repairIterations?.at(-1);
+    if (iteration && iteration.status === 'REPAIR_RECORDED') {
+      iteration.status = 'FROZEN_FOR_RECHECK';
+      iteration.freezeSha = freeze.freezeSha;
+      iteration.recheckScope = freeze.affected;
+    }
+    state.status = 'FROZEN';
+    return state;
   });
 }
 
@@ -313,6 +391,7 @@ export function reserveWorkBatchReview(root, id, request) {
       state.status = state.freezes.length ? 'FROZEN' : 'PRODUCTION';
       delete state.lastHold;
     }
+    if (state?.status === 'HOLD' && ['HOLD:REPAIR_ITERATION_LIMIT', 'HOLD:REPAIR_STAGNATION'].includes(state.lastHold?.code)) throw new Error(state.lastHold.code);
     check(state?.status === 'FROZEN', 'WHOLE_JOB_FREEZE_REQUIRED');
     requireLegacyReconciled(root);
     check(!request.parentLaunchId && request.recursiveSubagentLaunchCount === 0, 'RECURSIVE_SUBAGENT_FORBIDDEN');
@@ -327,11 +406,17 @@ export function reserveWorkBatchReview(root, id, request) {
     check(same(fresh.bindings, freeze.bindings), 'FROZEN_INPUT_CHANGED');
     check(nonempty(request.auditorId) && request.auditorId !== state.builderId && nonempty(request.auditorSessionId) && request.auditorSessionId !== state.builderSessionId, 'AUDITOR_INDEPENDENCE_REQUIRED');
     if (request.purpose === 'FINAL_AUDIT') check(state.launches.length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
-    else check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
-    if (request.purpose === 'TARGETED_RECHECK') check(state.freezes.length > 1 && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
+    else if (request.purpose === 'TARGETED_RECHECK') {
+      check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
+      const repairCount = state.launches.filter(l => l.purpose === 'TARGETED_RECHECK').length;
+      const maxRepairIterations = maxRepairIterationsForState(state);
+      check(repairCount < maxRepairIterations, 'REPAIR_ITERATION_LIMIT');
+      check(state.freezes.length === repairCount + 2 && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
+      if (state.workflowProfile === WORKFLOW_PROFILES.PAST_EXAM && state.repairIterations?.length) check(state.repairIterations?.at(-1)?.status === 'FROZEN_FOR_RECHECK', 'REPAIR_NOT_FROZEN_FOR_RECHECK');
+    } else check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
     const scope = reviewScopeForPurpose(state, freeze, request.purpose);
     if (isBenchmarkJobKind(state.jobKind) && request.purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
-    check(!state.launches.some(l => l.purpose === request.purpose), 'AGENT_BUDGET_EXHAUSTED');
+    if (request.purpose !== 'TARGETED_RECHECK') check(!state.launches.some(l => l.purpose === request.purpose), 'AGENT_BUDGET_EXHAUSTED');
     check(request.callerRole === 'MAIN_WORKER', 'ONLY_MAIN_WORKER_CAN_DISPATCH');
     check(['U1','U2','U3'].every(phase => nonempty(request.contexts?.[phase]?.sessionId) && nonempty(request.contexts?.[phase]?.contextId)), 'SEALED_SUBCONTEXTS_REQUIRED');
     check(new Set(Object.values(request.contexts).map(c => c.sessionId)).size === 3 && new Set(Object.values(request.contexts).map(c => c.contextId)).size === 3 && Object.values(request.contexts).every(c => c.sessionId !== state.builderSessionId), 'SEALED_CONTEXT_COLLISION');
@@ -341,7 +426,8 @@ export function reserveWorkBatchReview(root, id, request) {
       const plan = load(root, request.providerAttestationPlanRef);
       const nextLaunchId = `${id}:${state.launches.length + 1}`;
       check(plan?.schemaVersion === 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1' && plan.kind === 'PROVIDER_STATELESS_REVIEW_PLAN', 'PROVIDER_PLAN_INVALID');
-      check(plan.workBatchId === id && plan.launchId === nextLaunchId && plan.purpose === request.purpose && plan.freezeSha === freeze.freezeSha && plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId, 'PROVIDER_PLAN_LAUNCH_BINDING');
+      const expectedRepairIteration = request.purpose === 'TARGETED_RECHECK' ? state.launches.filter(l => l.purpose === 'TARGETED_RECHECK').length + 1 : 0;
+      check(plan.workBatchId === id && plan.launchId === nextLaunchId && plan.purpose === request.purpose && plan.freezeSha === freeze.freezeSha && plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId && plan.inputSha === freezeInputSha(freeze) && plan.repairIteration === expectedRepairIteration, 'PROVIDER_PLAN_LAUNCH_BINDING');
       check(plan.preflightResponse?.requestSha === plan.preflightRequest?.requestSha && plan.preflightResponseSha === objectSha(plan.preflightResponse), 'PROVIDER_PLAN_ATTESTATION_TAMPERED');
       check(plan.auditorId === request.auditorId && plan.auditorSessionId === request.auditorSessionId && same(plan.contexts, request.contexts) && plan.contextIsolation === 'STATELESS_INPUTS' && plan.subagentToolsEnabled === false && nonempty(plan.externalId), 'PROVIDER_PLAN_CONTEXT_BINDING');
       if (isBenchmarkJobKind(state.jobKind)) {
@@ -351,7 +437,8 @@ export function reserveWorkBatchReview(root, id, request) {
       providerAttestationPlanRef = request.providerAttestationPlanRef;
       if (plan.executionIdentity) state.executionIdentity = structuredClone(plan.executionIdentity);
     }
-    const launch = { contexts: request.contexts, contextIsolation: request.contextIsolation, subagentToolsEnabled: false, launchId: `${id}:${state.launches.length + 1}`, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}) };
+    const launchInputSha = freezeInputSha(freeze);
+    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId: `${id}:${state.launches.length + 1}`, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? state.launches.filter(l => l.purpose === 'TARGETED_RECHECK').length + 1 : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}) };
     state.launches.push(launch); return state;
   });
 }
@@ -394,11 +481,92 @@ export function reconcileWorkBatchReview(root, id, request) {
         state.executionIdentity = structuredClone(receipt.executionIdentity);
       }
       launch.status = request.status; launch.endedAt = time(); launch.usedTokens = tokenTelemetry(receipt.usedTokens); launch.providerReceiptRef = request.providerReceiptRef;
+      const defects = Array.isArray(receipt.defects) ? receipt.defects : [];
+      const openDefects = defects.filter(defect => nonempty(defect?.runId) && nonempty(defect?.questionUid)).map(defect => structuredClone(defect));
+      const defectSet = [...new Map(openDefects.map(defect => [targetKey(defect), { runId: defect.runId, questionUid: defect.questionUid }])).values()].sort((a, b) => targetKey(a).localeCompare(targetKey(b)));
+      if (request.status === 'COMPLETED') {
+        state.openDefectSet = defectSet;
+        state.openDefects = openDefects;
+        if (defectSet.length) {
+          const maxRepairIterations = maxRepairIterationsForState(state);
+          if ((state.repairIterations?.length || 0) >= maxRepairIterations) {
+            state.status = 'HOLD';
+            state.lastHold = { at: time(), code: 'HOLD:REPAIR_ITERATION_LIMIT' };
+            return state;
+          }
+          const previousIteration = state.repairIterations?.at(-1);
+          const repeated = launch.purpose === 'TARGETED_RECHECK'
+            && same(previousIteration?.openDefectSet || [], defectSet)
+            && (previousIteration?.repairInputSha || previousIteration?.inputSha) === launch.inputSha;
+          if (launch.purpose === 'TARGETED_RECHECK' && previousIteration?.status === 'FROZEN_FOR_RECHECK' && !repeated) {
+            previousIteration.status = 'CLOSED';
+            previousIteration.closedAt = time();
+          }
+          const iteration = {
+            iteration: (state.repairIterations?.length || 0) + 1,
+            triggerLaunchId: launch.launchId,
+            status: repeated ? 'HOLD' : 'REPAIR_REQUIRED',
+            openedAt: time(),
+            closedAt: null,
+            inputSha: launch.inputSha,
+            auditInputSha: launch.inputSha,
+            openDefectSet: defectSet,
+            defects: openDefects,
+            recheckScope: [],
+            dispositions: []
+          };
+          state.repairIterations = [...(state.repairIterations || []), iteration];
+          if (repeated) {
+            state.status = 'HOLD';
+            state.lastHold = { at: time(), code: 'HOLD:REPAIR_STAGNATION' };
+          } else state.status = 'REPAIR_REQUIRED';
+        } else {
+          const iteration = state.repairIterations?.at(-1);
+          if (iteration && iteration.status !== 'CLOSED') { iteration.status = 'CLOSED'; iteration.closedAt = time(); }
+          if (!(state.status === 'HOLD' && !retiredTokenHoldCodes.has(state.lastHold?.code))) state.status = 'FROZEN';
+        }
+      }
       if (request.status === 'FAILED') state.status = 'HOLD';
       if (request.status === 'COMPLETED' && retiredTokenHoldCodes.has(state.lastHold?.code) && !state.launches.some(item => ['RESERVED', 'DISPATCHED'].includes(item.status))) {
         state.status = 'FROZEN';
         delete state.lastHold;
       }
+    }
+    return state;
+  });
+}
+
+export function recordWorkBatchRepair(root, id, request) {
+  return mutate(root, id, state => {
+    check(state.status === 'REPAIR_REQUIRED', 'REPAIR_REQUIRED_STATE_REQUIRED');
+    check(request.builderId === state.builderId && request.builderSessionId === state.builderSessionId, 'REPAIR_BUILDER_IDENTITY_REQUIRED');
+    const iteration = state.repairIterations?.at(-1);
+    check(iteration && iteration.status === 'REPAIR_REQUIRED', 'REPAIR_ITERATION_NOT_OPEN');
+    check(request.iteration === iteration.iteration, 'REPAIR_ITERATION_MISMATCH');
+    check(Number.isSafeInteger(request.revision) && request.revision >= 1, 'REPAIR_REVISION_REQUIRED');
+    check(/^sha256:[0-9a-f]{64}$/.test(request.inputSha || ''), 'REPAIR_INPUT_SHA_REQUIRED');
+    check(Array.isArray(request.dispositions) && request.dispositions.length > 0, 'REPAIR_DISPOSITIONS_REQUIRED');
+    const openKeys = new Set((state.openDefectSet || []).map(targetKey));
+    const dispositionKeys = new Set();
+    for (const disposition of request.dispositions) {
+      check(REPAIR_DISPOSITIONS.includes(disposition?.disposition), 'REPAIR_DISPOSITION_INVALID');
+      const key = targetKey(disposition);
+      check(openKeys.has(key), 'REPAIR_DISPOSITION_SCOPE_REQUIRED');
+      check(!dispositionKeys.has(key), 'REPAIR_DISPOSITION_DUPLICATE');
+      dispositionKeys.add(key);
+    }
+    check(dispositionKeys.size === openKeys.size, 'REPAIR_DISPOSITION_COVERAGE_REQUIRED');
+    iteration.status = 'REPAIR_RECORDED';
+    iteration.revision = request.revision;
+    iteration.repairInputSha = request.inputSha;
+    iteration.dispositions = structuredClone(request.dispositions);
+    iteration.repairRef = request.repairRef || null;
+    iteration.recordedAt = time();
+    const blockingDisposition = request.dispositions.find(disposition => ['HOLD', 'SOURCE_DEFECT_CONFIRMED'].includes(disposition.disposition));
+    if (blockingDisposition) {
+      iteration.status = 'HOLD';
+      state.status = 'HOLD';
+      state.lastHold = { at: time(), code: blockingDisposition.disposition === 'SOURCE_DEFECT_CONFIRMED' ? 'HOLD:SOURCE_DEFECT_CONFIRMED' : 'HOLD:BUILDER_REPAIR_HOLD' };
     }
     return state;
   });
@@ -460,7 +628,9 @@ export function aggregateWorkBatchAudit(root, state, runs, reports) {
   const reviewTargets = benchmark ? benchmarkDenominator?.eligibleTargets || [] : freeze?.targets || [];
   const reviewTargetKeys = new Set(reviewTargets.map(row => canonicalJson({ runId: row.runId, questionUid: row.questionUid })));
   const eligibleReports = benchmark ? reports.filter(report => reviewTargets.some(row => row.runId === report.runId)) : reports;
-  const closed = eligibleReports.length > 0 && eligibleReports.every(report => report.status === 'PASS');
+  const openDefectCount = (state.openDefectSet || []).length;
+  const repairClosureComplete = (state.repairIterations || []).every(iteration => iteration.status === 'CLOSED');
+  const closed = eligibleReports.length > 0 && eligibleReports.every(report => report.status === 'PASS') && openDefectCount === 0 && repairClosureComplete && state.status === 'FROZEN';
   const denominatorEmpty = benchmark && (!benchmarkDenominator || denominator === 0);
   const cost = workBatchMetrics(root, runs[0], benchmark ? rows.filter(row => reviewTargetKeys.has(canonicalJson({ runId: row.runId, questionUid: row.targetQuestionUid }))) : rows);
   const finalStatus = denominatorEmpty ? 'BLOCKED' : closed && !routeErrors.length ? 'PASS' : 'BLOCKED';
@@ -480,8 +650,11 @@ export function aggregateWorkBatchAudit(root, state, runs, reports) {
     benchmarkDenominator,
     cost: { ...cost, totalTargetCount: denominator ?? cost.totalTargetCount },
     finalCoverage,
+    openDefectCount,
+    repairIterationCount: (state.repairIterations || []).length,
+    maxRepairIterations: maxRepairIterationsForState(state),
     reports: reports.map(({ runId, status, errors }) => ({ runId, status, errors })),
-    diagnostics: { excludedRuns: excluded, eligibleReportCount: eligibleReports.length, closed },
+    diagnostics: { excludedRuns: excluded, eligibleReportCount: eligibleReports.length, repairClosureComplete, closed },
   };
 }
 
@@ -494,6 +667,6 @@ export function workBatchMetrics(root, run, rows = []) {
     const route = validateModelRouteParity(state.executionIdentity);
     const benchmark = isBenchmarkJobKind(state.jobKind), denominator = freeze?.benchmarkDenominator;
     const eligibleAffectedCount = benchmark && denominator ? freeze.affected.filter(target => denominator.eligibleTargets.some(candidate => targetKey(candidate) === targetKey(target))).length : null;
-    return { workBatchId: state.workBatchId, targetCount: freeze?.targets.length || 0, totalTargetCount: denominator?.eligibleTargetCount ?? freeze?.targets.length ?? 0, totalAffectedCount: freeze?.affected.length || 0, benchmarkReviewedTargetCount: benchmark ? denominator?.eligibleTargetCount ?? null : null, benchmarkEligibleTargetCount: benchmark ? denominator?.eligibleTargetCount ?? null : null, benchmarkExcludedTargetCount: benchmark ? denominator?.excludedTargetCount ?? null : null, benchmarkTotalSourceTargetCount: benchmark ? denominator?.totalTargetCount ?? null : null, benchmarkEligibleAffectedTargetCount: eligibleAffectedCount, independentAgentLaunchCount: launches.length, expensiveAgentLaunchCount: launches.length, concurrentExpensiveAgentPeak: peak, freshLlmUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'FRESH' && !MACHINE_AXES.includes(r.axis)).map(r => r.questionUid)).size, reusedUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'REUSED').map(r => r.questionUid)).size, machineCheckedUidCount: freeze?.machineCheckedUidCount || 0, retryLaunchCount: 0, secondAuditorLaunchCount: launches.filter(l => l.purpose === 'SECOND_AUDIT').length, recursiveSubagentLaunchCount: 0, usedTokens: launches.every(l => Number.isSafeInteger(l.usedTokens)) ? launches.reduce((n,l) => n+l.usedTokens,0) : null, tokenTelemetryAvailable: launches.every(l => Number.isSafeInteger(l.usedTokens)), agentBudgetStatus: state.status === 'HOLD' || state.launches.some(l => ['RESERVED','DISPATCHED'].includes(l.status)) ? 'HOLD' : 'WITHIN_BUDGET', jobKind: state.jobKind || 'PRODUCTION', executionIdentity: state.executionIdentity || null, MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY, modelRouteStatus: route.routeStatus };
+    return { workBatchId: state.workBatchId, targetCount: freeze?.targets.length || 0, totalTargetCount: denominator?.eligibleTargetCount ?? freeze?.targets.length ?? 0, totalAffectedCount: freeze?.affected.length || 0, openDefectCount: (state.openDefectSet || []).length, repairIterationCount: (state.repairIterations || []).length, maxRepairIterations: maxRepairIterationsForState(state), benchmarkReviewedTargetCount: benchmark ? denominator?.eligibleTargetCount ?? null : null, benchmarkEligibleTargetCount: benchmark ? denominator?.eligibleTargetCount ?? null : null, benchmarkExcludedTargetCount: benchmark ? denominator?.excludedTargetCount ?? null : null, benchmarkTotalSourceTargetCount: benchmark ? denominator?.totalTargetCount ?? null : null, benchmarkEligibleAffectedTargetCount: eligibleAffectedCount, independentAgentLaunchCount: launches.length, expensiveAgentLaunchCount: launches.length, concurrentExpensiveAgentPeak: peak, freshLlmUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'FRESH' && !MACHINE_AXES.includes(r.axis)).map(r => r.questionUid)).size, reusedUidCount: new Set(rows.filter(r => r.status === 'PASS' && r.mode === 'REUSED').map(r => r.questionUid)).size, machineCheckedUidCount: freeze?.machineCheckedUidCount || 0, retryLaunchCount: 0, secondAuditorLaunchCount: launches.filter(l => l.purpose === 'SECOND_AUDIT').length, recursiveSubagentLaunchCount: 0, usedTokens: launches.every(l => Number.isSafeInteger(l.usedTokens)) ? launches.reduce((n,l) => n+l.usedTokens,0) : null, tokenTelemetryAvailable: launches.every(l => Number.isSafeInteger(l.usedTokens)), agentBudgetStatus: state.status === 'HOLD' || state.status === 'REPAIR_REQUIRED' || state.launches.some(l => ['RESERVED','DISPATCHED'].includes(l.status)) ? 'HOLD' : 'WITHIN_BUDGET', jobKind: state.jobKind || 'PRODUCTION', workflowProfile: state.workflowProfile || WORKFLOW_PROFILES.LEGACY, executionIdentity: state.executionIdentity || null, MODEL_ROUTE_PARITY: route.MODEL_ROUTE_PARITY, modelRouteStatus: route.routeStatus };
   } catch (error) { return { workBatchId: run?.workBatchId || null, agentBudgetStatus: 'HOLD', errors: [error.message] }; }
 }

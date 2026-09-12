@@ -41,7 +41,8 @@ function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', ru
   execFileSync('git', ['init', '--bare', fixtureOrigin], { stdio: 'ignore' });
   const alternateObjects = path.join(fixtureOrigin, 'objects', 'info', 'alternates');
   fs.mkdirSync(path.dirname(alternateObjects), { recursive: true });
-  fs.writeFileSync(alternateObjects, `${path.join(repository, '.git', 'objects').replaceAll('\\', '/')}\n`);
+  const repositoryObjects = execFileSync('git', ['rev-parse', '--git-path', 'objects'], { cwd: repository, encoding: 'utf8' }).trim();
+  fs.writeFileSync(alternateObjects, `${repositoryObjects.replaceAll('\\', '/')}\n`);
   execFileSync('git', ['--git-dir', fixtureOrigin, 'update-ref', 'refs/heads/main', mainSha], { stdio: 'ignore' });
   execFileSync('git', ['remote', 'set-url', 'origin', fixtureOrigin], { cwd: root, stdio: 'ignore' });
   execFileSync('git', ['update-ref', 'refs/remotes/origin/main', mainSha], { cwd: root, stdio: 'ignore' });
@@ -58,6 +59,7 @@ function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', ru
     runIds,
     builderId: 'builder',
     builderSessionId: 'builder-session',
+    workflowProfile: pipeline === 'past-exam' ? 'PAST_EXAM' : 'LEGACY',
     jobKind,
     ...(jobKind === 'PRODUCTION' ? {} : { jobAuthority: authority }),
   });

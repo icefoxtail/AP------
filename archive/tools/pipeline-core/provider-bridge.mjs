@@ -3,7 +3,7 @@ import path from 'node:path';
 import { canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
 import { loadCandidateReviewContext, validateAuditorPacket } from './review-isolation-runner.mjs';
-import { readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
+import { freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
@@ -67,7 +67,12 @@ function plannedLaunch(state, purpose) {
   const freeze = state.freezes.at(-1);
   check(freeze, 'WHOLE_JOB_FREEZE_REQUIRED');
   if (purpose === 'FINAL_AUDIT') check(state.launches.length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
-  if (purpose === 'TARGETED_RECHECK') check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED') && state.freezes.length > 1 && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
+  if (purpose === 'TARGETED_RECHECK') {
+    const repairCount = state.launches.filter(launch => launch.purpose === 'TARGETED_RECHECK').length;
+    check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED') && state.freezes.length === repairCount + 2 && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
+    check(repairCount < maxRepairIterationsForState(state), 'REPAIR_ITERATION_LIMIT');
+    if (state.workflowProfile === 'PAST_EXAM' && state.repairIterations?.length) check(state.repairIterations?.at(-1)?.status === 'FROZEN_FOR_RECHECK', 'REPAIR_NOT_FROZEN_FOR_RECHECK');
+  }
   check(['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(purpose), 'PROVIDER_BRIDGE_PURPOSE_INVALID');
   const scope = reviewScopeForPurpose(state, freeze, purpose);
   if (isBenchmarkJobKind(state.jobKind) && purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
@@ -92,6 +97,9 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     requestedModel: state.executionIdentity?.requestedModel || null,
     requestedReasoningEffort: state.executionIdentity?.requestedReasoningEffort || null,
     jobKind: state.jobKind || 'PRODUCTION',
+    workflowProfile: state.workflowProfile || 'LEGACY',
+    inputSha: freezeInputSha(freeze),
+    repairIteration: purpose === 'TARGETED_RECHECK' ? state.launches.filter(launch => launch.purpose === 'TARGETED_RECHECK').length + 1 : 0,
     requiredCapabilities: {
       contexts: PHASES,
       contextIsolation: 'STATELESS_INPUTS',
@@ -120,6 +128,9 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     launchId,
     freezeSha: freeze.freezeSha,
     scope: body.scope,
+    workflowProfile: body.workflowProfile,
+    inputSha: body.inputSha,
+    repairIteration: body.repairIteration,
     builderId: state.builderId,
     builderSessionId: state.builderSessionId,
     provider: response.provider,
@@ -161,7 +172,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
 
 function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
   check(plan?.schemaVersion === PROVIDER_BRIDGE_VERSION && plan.kind === 'PROVIDER_STATELESS_REVIEW_PLAN', 'PROVIDER_PLAN_INVALID');
-  check(plan.workBatchId === state.workBatchId && plan.launchId === launch.launchId && plan.purpose === launch.purpose && plan.freezeSha === launch.freezeSha, 'PROVIDER_PLAN_LAUNCH_BINDING');
+  check(plan.workBatchId === state.workBatchId && plan.launchId === launch.launchId && plan.purpose === launch.purpose && plan.freezeSha === launch.freezeSha && plan.inputSha === launch.inputSha && plan.repairIteration === launch.repairIteration, 'PROVIDER_PLAN_LAUNCH_BINDING');
   check(plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId, 'PROVIDER_PLAN_BUILDER_BINDING');
   check(plan.auditorId === launch.auditorId && plan.auditorSessionId === launch.auditorSessionId && same(plan.contexts, launch.contexts), 'PROVIDER_PLAN_CONTEXT_BINDING');
   check(same(plan.scope, reviewScopeForPurpose(state, state.freezes.find(freeze => freeze.freezeSha === launch.freezeSha), launch.purpose)) && same(plan.scope, launch.scope), 'PROVIDER_PLAN_SCOPE_BINDING');

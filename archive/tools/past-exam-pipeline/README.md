@@ -61,8 +61,11 @@ node archive/tools/pipeline-core/cli.mjs prepare-v2 --pipeline past-exam --past-
 This is a draft, not a completed audit. It binds calibration, source inventory,
 geometry v1.1 project policy, and FULL_EXAM publication intent. Follow
 pipeline-core/AGENT_BUDGET.md for machine collection, one provider-attested
-FINAL_AUDIT with sealed U1/U2/U3 and at most one targeted recheck. U3 returns
-typed solutionQuality and visualBenefit decisions, then common closure decides.
+FINAL_AUDIT with sealed U1/U2/U3, then the bounded `REPAIR_REQUIRED` → builder
+repair → independent `TARGETED_RECHECK` loop (maximum three iterations). U3
+returns typed solutionQuality and visualBenefit decisions, then common closure
+decides. Each repair uses a new revision/inputSha and immutable freeze;
+validated reuse is required for unaffected axes.
 Use the canonical promotion helper only after all six render cases, source/math/
 visual/solution/metadata gates, and production authority pass.
 
