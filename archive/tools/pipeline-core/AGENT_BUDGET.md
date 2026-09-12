@@ -9,8 +9,10 @@ bound in `runInputSha`; a run cannot acquire a second budget by changing batch I
 ## Operating sequence
 
 1. The main worker initializes the job with its complete `runIds` and builder
-   identity. No independent production agent exists. Token values are telemetry,
-   never execution authority.
+   identity. A Past Exam job sets `workflowProfile: PAST_EXAM`; other workflows
+   retain the legacy profile and its existing one-targeted-recheck allowance.
+   No independent production agent exists. Token values are telemetry, never
+   execution authority.
 2. Produce all targets; preserve existing accepted evidence. Perform machine
    checks locally. STATIC and METADATA use typed MACHINE_CURRENT records;
    browser capture uses MACHINE_COLLECTOR, never an auditor identity.
@@ -31,12 +33,21 @@ bound in `runInputSha`; a run cannot acquire a second budget by changing batch I
 6. Reconcile a hash-bound terminal provider receipt. Quality defects mean a
    COMPLETED audit, not a new launch. Provider failure means HOLD. Unknown or
    timed-out provider state keeps RESERVED/DISPATCHED and occupies the slot.
-7. Repair all defects locally. Freeze once more and reserve TARGETED_RECHECK at
-   most once. Scope is defect UIDs plus computed semantic/dependency/render
-   impact. Accepted unaffected axes require direct-root validated reuse.
-8. Aggregate whole-job coverage and cost with work-batch-audit. A failed first
-   audit can supply a bound partial predecessor; only independently revalidated
-   PASS axes survive. No PASS-until-retry loop exists.
+7. A COMPLETED audit with defects enters `REPAIR_REQUIRED`; it is not a
+   terminal success and it is not an automatic retry. The original builder
+   records one disposition per open defect, creates a new revision/inputSha,
+   runs machine checks, and freezes a new immutable snapshot.
+8. Reserve `TARGETED_RECHECK` for the new freeze. Past Exam permits at most
+   three repair iterations; legacy profiles retain their stored one-recheck
+   budget. Each recheck is an independent U1/U2/U3 execution. Scope is the
+   union of the open defects and semantic/dependency/render impact. Accepted
+   unaffected axes require direct-root validated reuse.
+9. Recheck PASS closure accumulates with prior validated reuse; remaining or
+   newly discovered defects replace the open set for the next repair iteration.
+   Same-input same-defect stagnation and the iteration limit are HOLD.
+10. Aggregate whole-job coverage and cost with work-batch-audit. Only when the
+    open defect set is empty and all closure artifacts are valid can production
+    authorization be considered.
 
 A conflict/high-risk SECOND_AUDIT is optional, never automatic. It needs an
 explicit authorization identity and reason, consumes one bounded allowance,
@@ -57,11 +68,19 @@ pre-review snapshots and returned evidence immutable; write a new manifest
 snapshot when adding evidence rather than overwriting a frozen ref.
 
 - `work-batch-init --spec spec.json`: spec contains `workBatchId`, `runIds`,
-  `builderId`, and `builderSessionId`. A legacy `tokenBudget` field is ignored.
+  `builderId`, and `builderSessionId`. Set `workflowProfile: PAST_EXAM` (or
+  `pipeline: past-exam`) for the iterative Past Exam route; omitted profile
+  preserves the legacy one-recheck budget. A legacy `tokenBudget` field is
+  ignored.
 - `prepare-v2 ... --work-batch-id JOB`: associates existing v2 preparation with
   the job. Preparation is not freeze and grants no independent launch.
 - `work-batch-freeze --work-batch-id JOB --run-refs refs.json`: refs is the full
-  run-reference array. Run STATIC/METADATA and render collection before freeze.
+   run-reference array. Run STATIC/METADATA and render collection before freeze.
+- `work-batch-repair --work-batch-id JOB --request request.json`: the original
+  builder records `iteration`, `revision`, aggregate `inputSha`, builder
+  identity, and exactly one disposition per `openDefectSet` target. It does not
+  close an audit or grant production authority. A `HOLD` disposition holds the
+  batch until explicit reconciliation.
 - `work-batch-reserve --work-batch-id JOB --request request.json`: request has
   `purpose`, `callerRole: MAIN_WORKER`, `auditorId`, `auditorSessionId`,
   `parentLaunchId: null`, `recursiveSubagentLaunchCount: 0`,

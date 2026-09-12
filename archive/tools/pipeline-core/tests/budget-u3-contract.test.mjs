@@ -6,12 +6,12 @@ import path from 'node:path';
 import { fileRef, objectSha } from '../canonical.mjs';
 import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
-import { initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
+import { aggregateWorkBatchAudit, freezeInputSha, initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
 import { loadCandidateReviewContext, buildU3CandidatePayload, buildAuditorPacket, validateAuditorPacket } from '../review-isolation-runner.mjs';
 import { prepareProviderReview, dispatchProviderReview } from '../provider-bridge.mjs';
 
 // Local synthetic data only. No provider or production archive is used.
-function jobFixture(t) {
+function jobFixture(t, questionCount = 1, workflowProfile = 'PAST_EXAM') {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-budget-u3-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (relative, value) => {
@@ -20,33 +20,47 @@ function jobFixture(t) {
     fs.writeFileSync(file, typeof value === 'string' ? value : JSON.stringify(value));
     return fileRef(root, relative);
   };
-  const bank = q => `window.examTitle="synthetic";window.questionBank=${JSON.stringify([q])};`;
+  const bank = q => `window.examTitle="synthetic";window.questionBank=${JSON.stringify(Array.isArray(q) ? q : [q])};`;
   const source = { id: 1, content: 'Find the angle sum.', choices: ['110', '120'], answer: '2', solution: '[키포인트] 55+65=120.' };
   const candidate = { ...source, choices: ['104', '114'], solution: '[키포인트] 62+52=114.' };
+  const sourceRows = Array.from({ length: questionCount }, (_, index) => ({ ...source, id: index + 1, content: index ? `Find the angle sum for question ${index + 1}.` : source.content }));
+  const candidateRows = sourceRows.map(row => ({ ...candidate, id: row.id, content: row.content }));
   const uid = 'synthetic|1';
-  const sourceRef = { ...write('source.js', bank(source)), role: 'source' };
-  initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session' });
-  const makeRun = revision => {
+  const uids = sourceRows.map(row => `synthetic|${row.id}`);
+  const candidateContent = new Map();
+  const sourceRef = { ...write('source.js', bank(sourceRows)), role: 'source' };
+  initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session', workflowProfile });
+  const makeRun = (revision, changedQuestionUids = null, { sharedMaterial = null } = {}) => {
+    const changed = changedQuestionUids ? new Set(changedQuestionUids) : null;
+    const nextCandidateRows = candidateRows.map(row => {
+      const questionUid = `synthetic|${row.id}`;
+      const content = changed && !changed.has(questionUid)
+        ? candidateContent.get(questionUid) || `${row.content} Revision 1.`
+        : `${row.content} Revision ${revision}.`;
+      candidateContent.set(questionUid, content);
+      return { ...row, content };
+    });
     const run = {
       schemaVersion: RUN_VERSION_V2, pipeline: 'tag-enrichment', workBatchId: 'job', runId: 'run', revision,
       builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY',
-      questions: [{ questionUid: uid, sourceExamId: 'synthetic', examId: 'synthetic', qid: 1, sourcePath: 'source.js', candidatePath: `candidate-${revision}.js`, problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { requirement: 'VISUAL_EXEMPT' } }],
-      inputs: [sourceRef, { ...write(`candidate-${revision}.js`, bank({ ...candidate, content: `${candidate.content} Revision ${revision}.` })), role: 'candidate' }], evidence: [],
+      questions: sourceRows.map(row => ({ questionUid: `synthetic|${row.id}`, sourceExamId: 'synthetic', examId: 'synthetic', qid: row.id, sourcePath: 'source.js', candidatePath: `candidate-${revision}.js`, problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { requirement: 'VISUAL_EXEMPT' } })),
+      inputs: [sourceRef, { ...write(`candidate-${revision}.js`, bank(nextCandidateRows)), role: 'candidate' }], evidence: [], ...(sharedMaterial ? { sharedMaterial } : {}),
     };
     run.inputSha = runInputSha(run);
-    const shas = computeV2AxisInputShas(root, run)[uid];
-    for (const axis of ['STATIC', 'METADATA']) {
+    const shas = computeV2AxisInputShas(root, run);
+    for (const questionUid of uids) for (const axis of ['STATIC', 'METADATA']) {
       const machineProvenance = { runId: run.runId, revision, inputSha: run.inputSha, collector: 'SYNTHETIC_TEST_ONLY' };
-      const e = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `${revision}:${axis}`, runId: run.runId, revision, questionUid: uid, axis, axisInputSha: shas[axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance, reviewIsolationProvenanceSha: objectSha(machineProvenance), payload: axis === 'STATIC' ? { checkedInputSha: run.inputSha, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' } } : { metadataInputSha: shas[axis], checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' } } };
-      run.evidence.push(write(`machine-${revision}-${axis}.json`, e));
+      const e = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `${revision}:${questionUid}:${axis}`, runId: run.runId, revision, questionUid, axis, axisInputSha: shas[questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance, reviewIsolationProvenanceSha: objectSha(machineProvenance), payload: axis === 'STATIC' ? { checkedInputSha: run.inputSha, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' } } : { metadataInputSha: shas[questionUid][axis], checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' } } };
+      run.evidence.push(write(`machine-${revision}-${questionUid.replace('|', '-')}-${axis}.json`, e));
     }
     const ref = write(`run-${revision}.json`, run);
     return { run, ref };
   };
   const request = (purpose, maxTokens, overrides = {}) => ({ purpose, ...(maxTokens === undefined ? {} : { maxTokens }), callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session', recursiveSubagentLaunchCount: 0, parentLaunchId: null, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, contexts: Object.fromEntries(['U1', 'U2', 'U3'].map(phase => [phase, { sessionId: `${purpose}-${phase}`, contextId: `${purpose}-ctx-${phase}` }])), ...overrides });
+  const repair = (iteration, revision, inputSha, dispositions, overrides = {}) => ({ iteration, revision, inputSha, dispositions, builderId: 'builder', builderSessionId: 'builder-session', ...overrides });
   let receiptIndex = 0;
-  const complete = (launchId, externalId, usedTokens, status = 'COMPLETED') => {
-    const providerReceiptRef = write(`terminal-${++receiptIndex}.json`, { launchId, externalId, status, independentAgentLaunchCount: 1, expensiveAgentLaunchCount: 1, concurrentExpensiveAgentPeak: 1, recursiveSubagentLaunchCount: 0, usedTokens, evidenceRefs: [], defects: [] });
+  const complete = (launchId, externalId, usedTokens, status = 'COMPLETED', defects = []) => {
+    const providerReceiptRef = write(`terminal-${++receiptIndex}.json`, { launchId, externalId, status, independentAgentLaunchCount: 1, expensiveAgentLaunchCount: 1, concurrentExpensiveAgentPeak: 1, recursiveSubagentLaunchCount: 0, usedTokens, evidenceRefs: [], defects });
     return reconcileWorkBatchReview(root, 'job', { launchId, externalId, status, providerReceiptRef });
   };
   const prepareRecheck = ({ finalMaxTokens = Number.MAX_SAFE_INTEGER, finalUsedTokens = 6200 } = {}) => {
@@ -59,7 +73,7 @@ function jobFixture(t) {
     freezeWorkBatch(root, 'job', [second.ref]);
     return second.run;
   };
-  return { root, write, uid, makeRun, request, complete, prepareRecheck, stateFile: path.join(root, 'alive/runtime/work-batches/job/state.json') };
+  return { root, write, uid, uids, makeRun, request, repair, complete, prepareRecheck, stateFile: path.join(root, 'alive/runtime/work-batches/job/state.json') };
 }
 
 test('a very large token estimate never blocks FINAL_AUDIT', t => {
@@ -140,14 +154,222 @@ test('a pre-dispatch packet failure can be terminally reconciled without resetti
   assert.equal(state.launches[0].externalId, 'provider-control');
 });
 
-test('TARGETED_RECHECK remains limited to one launch', t => {
+test('bounded TARGETED_RECHECK iterations continue until the open defect set closes', t => {
+  const f = jobFixture(t, 2);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const firstDefects = f.uids.map(questionUid => ({ runId: 'run', questionUid }));
+  const afterFinal = f.complete('job:1', 'provider-final', null, 'COMPLETED', firstDefects);
+  assert.equal(afterFinal.status, 'REPAIR_REQUIRED');
+  const second = f.makeRun(2);
+  assert.equal(readWorkBatch(f.root, 'job').status, 'REPAIR_REQUIRED');
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, firstDefects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' }))));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
+  const remaining = firstDefects.slice(0, 1);
+  f.complete('job:2', 'provider-targeted', null, 'COMPLETED', remaining);
+  const third = f.makeRun(3);
+  recordWorkBatchRepair(f.root, 'job', f.repair(2, 3, third.run.inputSha, remaining.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' }))));
+  freezeWorkBatch(f.root, 'job', [third.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:3', externalId: 'provider-targeted-2', status: 'DISPATCHED' });
+  const closed = f.complete('job:3', 'provider-targeted-2', null, 'COMPLETED', []);
+  assert.equal(closed.status, 'FROZEN');
+  assert.deepEqual(closed.openDefectSet, []);
+  assert.equal(closed.launches.length, 3);
+  assert.equal(closed.repairIterations.length, 2);
+});
+
+test('same input and same defect set enters stagnation HOLD', t => {
   const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const defects = [{ runId: 'run', questionUid: f.uid }];
+  const afterFinal = f.complete('job:1', 'provider-final', null, 'COMPLETED', defects);
+  assert.equal(afterFinal.status, 'REPAIR_REQUIRED');
+  const second = f.makeRun(2);
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...defects[0], disposition: 'NO_CHANGE_WITH_EVIDENCE' }]));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
+  const held = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', defects);
+  assert.equal(held.status, 'HOLD');
+  assert.equal(held.lastHold.code, 'HOLD:REPAIR_STAGNATION');
+});
+
+test('repair iteration limit is bounded', t => {
+  const f = jobFixture(t, 2);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const defects = f.uids.map(questionUid => ({ runId: 'run', questionUid }));
+  const afterFinal = f.complete('job:1', 'provider-final', null, 'COMPLETED', defects);
+  assert.equal(afterFinal.status, 'REPAIR_REQUIRED');
+  let previous = first;
+  for (let iteration = 1; iteration <= 3; iteration++) {
+    const next = f.makeRun(iteration + 1);
+    const openDefects = iteration === 1 ? defects : iteration === 2 ? [defects[0]] : [defects[1]];
+    const nextDefects = iteration === 1 ? [defects[0]] : iteration === 2 ? [defects[1]] : [defects[0]];
+    recordWorkBatchRepair(f.root, 'job', f.repair(iteration, iteration + 1, next.run.inputSha, openDefects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' }))));
+    freezeWorkBatch(f.root, 'job', [next.ref]);
+    reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+    reconcileWorkBatchReview(f.root, 'job', { launchId: `job:${iteration + 1}`, externalId: `provider-targeted-${iteration}`, status: 'DISPATCHED' });
+    previous = next;
+    f.complete(`job:${iteration + 1}`, `provider-targeted-${iteration}`, null, 'COMPLETED', nextDefects);
+  }
+  const state = readWorkBatch(f.root, 'job');
+  assert.equal(state.status, 'HOLD');
+  assert.equal(state.lastHold.code, 'HOLD:REPAIR_ITERATION_LIMIT');
+  assert.equal(state.repairIterations.length, 3);
+  assert.throws(() => reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK')), /REPAIR_ITERATION_LIMIT/);
+});
+
+test('A/J: a 22-target Past Exam closes 7 defects, then 2 defects, with immutable lineage', t => {
+  const f = jobFixture(t, 22);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  const firstFreeze = structuredClone(readWorkBatch(f.root, 'job').freezes[0]);
+  const firstRunBytes = fs.readFileSync(path.join(f.root, 'run-1.json'), 'utf8');
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const firstDefects = f.uids.slice(0, 7).map(questionUid => ({ runId: 'run', questionUid, phase: 'U3', reason: 'FAIL' }));
+  assert.equal(f.complete('job:1', 'provider-final', null, 'COMPLETED', firstDefects).status, 'REPAIR_REQUIRED');
+
+  const second = f.makeRun(2, f.uids.slice(0, 7));
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, firstDefects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' }))));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  const afterFirstRepair = readWorkBatch(f.root, 'job');
+  assert.equal(afterFirstRepair.freezes[1].affected.length, 7);
+  assert.equal(afterFirstRepair.repairIterations[0].status, 'FROZEN_FOR_RECHECK');
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  assert.equal(readWorkBatch(f.root, 'job').launches[1].scope.length, 7);
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted-1', status: 'DISPATCHED' });
+  const remaining = firstDefects.slice(0, 2).map(defect => ({ ...defect, reason: 'REMAINING_FAIL' }));
+  assert.equal(f.complete('job:2', 'provider-targeted-1', null, 'COMPLETED', remaining).status, 'REPAIR_REQUIRED');
+
+  const third = f.makeRun(3, f.uids.slice(0, 2));
+  recordWorkBatchRepair(f.root, 'job', f.repair(2, 3, third.run.inputSha, remaining.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' }))));
+  freezeWorkBatch(f.root, 'job', [third.ref]);
+  const beforeSecondRecheck = readWorkBatch(f.root, 'job');
+  assert.equal(beforeSecondRecheck.freezes[2].affected.length, 2);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:3', externalId: 'provider-targeted-2', status: 'DISPATCHED' });
+  const closed = f.complete('job:3', 'provider-targeted-2', null, 'COMPLETED', []);
+  assert.equal(closed.status, 'FROZEN');
+  assert.deepEqual(closed.openDefectSet, []);
+  assert.equal(closed.repairIterations.every(iteration => iteration.status === 'CLOSED'), true);
+  assert.deepEqual(closed.freezes[0], firstFreeze);
+  assert.equal(fs.readFileSync(path.join(f.root, 'run-1.json'), 'utf8'), firstRunBytes);
+  assert.deepEqual(closed.launches.map(launch => launch.scope.length), [22, 7, 2]);
+  assert.notEqual(closed.launches[0].inputSha, closed.launches[1].inputSha);
+  assert.notEqual(closed.launches[1].inputSha, closed.launches[2].inputSha);
+  assert.equal(closed.launches[1].inputSha, freezeInputSha(closed.freezes[1]));
+  assert.equal(closed.launches[2].inputSha, freezeInputSha(closed.freezes[2]));
+  assert.equal(closed.freezes[1].predecessorFreezeSha, closed.freezes[0].freezeSha);
+  assert.equal(closed.freezes[2].predecessorFreezeSha, closed.freezes[1].freezeSha);
+});
+
+test('B: unchanged PASS targets stay outside the next expensive scope for validated reuse', t => {
+  const f = jobFixture(t, 3);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const defect = { runId: 'run', questionUid: f.uids[0], axis: 'SOLUTION' };
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', [defect]);
+  const second = f.makeRun(2, [f.uids[0]]);
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...defect, disposition: 'REPAIRED_CANDIDATE' }]));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  const state = readWorkBatch(f.root, 'job');
+  assert.deepEqual(state.freezes[1].affected, [{ runId: 'run', questionUid: f.uids[0] }]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  assert.deepEqual(readWorkBatch(f.root, 'job').launches[1].scope, [{ runId: 'run', questionUid: f.uids[0] }]);
+  assert.equal(state.freezes[0].bindings[0].axisInputShas[f.uids[1]].STATIC, state.freezes[1].bindings[0].axisInputShas[f.uids[1]].STATIC);
+});
+
+test('C: a shared semantic dependency expands the recheck scope beyond the edited UID', t => {
+  const f = jobFixture(t, 3);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const defect = { runId: 'run', questionUid: f.uids[0], reason: 'FAIL' };
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', [defect]);
+  const second = f.makeRun(2, [f.uids[0]], { sharedMaterial: 'changed-shared-material' });
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...defect, disposition: 'REPAIRED_CANDIDATE' }]));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  const affected = readWorkBatch(f.root, 'job').freezes[1].affected.map(row => row.questionUid);
+  assert.deepEqual(affected, f.uids);
+});
+
+test('D: a recheck can add a newly discovered defect to OPEN_DEFECT_SET', t => {
+  const f = jobFixture(t, 2);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const firstDefect = { runId: 'run', questionUid: f.uids[0], reason: 'FAIL' };
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', [firstDefect]);
+  const second = f.makeRun(2, f.uids);
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...firstDefect, disposition: 'REPAIRED_CANDIDATE' }]));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
+  const newlyFound = { runId: 'run', questionUid: f.uids[1], reason: 'NEW_FAIL' };
+  const state = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', [firstDefect, newlyFound]);
+  assert.deepEqual(state.openDefectSet.map(row => row.questionUid), f.uids);
+  assert.ok(state.openDefects.some(defect => defect.questionUid === f.uids[1] && defect.reason === 'NEW_FAIL'));
+  assert.equal(state.status, 'REPAIR_REQUIRED');
+});
+
+test('G: conflicting U1/U3 findings remain repair evidence and are not auto-confirmed as source defects', t => {
+  const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const conflict = { runId: 'run', questionUid: f.uid, conflict: true, phases: ['U1', 'U3'], reason: 'CONFLICT' };
+  const state = f.complete('job:1', 'provider-final', null, 'COMPLETED', [conflict]);
+  assert.equal(state.status, 'REPAIR_REQUIRED');
+  assert.equal(state.openDefects[0].conflict, true);
+  assert.notEqual(state.openDefects[0].disposition, 'SOURCE_DEFECT_CONFIRMED');
+  const second = f.makeRun(2, [f.uid]);
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...conflict, disposition: 'AUDITOR_FALSE_POSITIVE' }]));
+  freezeWorkBatch(f.root, 'job', [second.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
+  const closed = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', []);
+  assert.equal(closed.status, 'FROZEN');
+  assert.equal(closed.repairIterations[0].dispositions[0].disposition, 'AUDITOR_FALSE_POSITIVE');
+});
+
+test('H: work-batch audit cannot authorize production while OPEN_DEFECT_SET is nonempty', t => {
+  const f = jobFixture(t);
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', [{ runId: 'run', questionUid: f.uid, reason: 'FAIL' }]);
+  const state = readWorkBatch(f.root, 'job');
+  const report = aggregateWorkBatchAudit(f.root, state, [first.run], [{ runId: 'run', status: 'PASS', freshness: [] }]);
+  assert.equal(report.status, 'BLOCKED');
+  assert.equal(report.productionAuthorized, false);
+  assert.equal(report.openDefectCount, 1);
+});
+
+test('legacy workflow profile preserves its one-targeted-recheck budget', t => {
+  const f = jobFixture(t, 1, 'LEGACY');
   f.prepareRecheck();
   reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
   f.complete('job:2', 'provider-targeted', null);
-  assert.throws(() => reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK')), /AGENT_BUDGET_EXHAUSTED/);
-  assert.equal(readWorkBatch(f.root, 'job').launches.length, 2);
+  assert.throws(() => reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK')), /REPAIR_ITERATION_LIMIT/);
 });
 
 test('concurrent, recursive, and retry launches remain hard-blocked', t => {

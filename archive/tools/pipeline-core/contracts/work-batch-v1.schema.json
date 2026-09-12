@@ -62,20 +62,69 @@
     "jobAuthority": {
       "type": ["object", "null"]
     },
+    "workflowProfile": {
+      "enum": ["LEGACY", "PAST_EXAM"]
+    },
     "tokenBudget": {},
     "status": {
       "enum": [
         "PRODUCTION",
         "FROZEN",
+        "REPAIR_REQUIRED",
         "HOLD"
       ]
+    },
+    "openDefectSet": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/targetIdentity"
+      }
+    },
+    "openDefects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["runId", "questionUid"],
+        "properties": {
+          "runId": {"type": "string", "minLength": 1},
+          "questionUid": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": true
+      }
+    },
+    "repairIterations": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["iteration", "status", "openDefectSet"],
+        "properties": {
+          "iteration": {"type": "integer", "minimum": 1, "maximum": 3},
+          "status": {"enum": ["REPAIR_REQUIRED", "REPAIR_RECORDED", "FROZEN_FOR_RECHECK", "CLOSED", "HOLD"]},
+          "openDefectSet": {"type": "array", "items": {"$ref": "#/$defs/targetIdentity"}},
+          "recheckScope": {"type": "array", "items": {"$ref": "#/$defs/targetIdentity"}},
+          "triggerLaunchId": {"type": "string"},
+          "freezeSha": {"type": "string"},
+          "inputSha": {"type": "string"},
+          "auditInputSha": {"type": "string"},
+          "repairInputSha": {"type": "string"},
+          "revision": {"type": "integer", "minimum": 1},
+          "dispositions": {"type": "array"},
+          "defects": {"type": "array"},
+          "repairRef": {},
+          "openedAt": {"type": "string"},
+          "recordedAt": {"type": "string"},
+          "closedAt": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
     },
     "policy": {
       "type": "object"
     },
     "freezes": {
       "type": "array",
-      "maxItems": 2,
+      "maxItems": 4,
       "items": {
         "type": "object",
         "required": [
@@ -128,7 +177,7 @@
     },
     "launches": {
       "type": "array",
-      "maxItems": 3,
+      "maxItems": 5,
       "items": {
         "type": "object",
         "required": [
@@ -167,6 +216,8 @@
             "const": "STATELESS_INPUTS"
           },
           "maxTokens": {},
+          "inputSha": {"type": "string"},
+          "repairIteration": {"type": "integer", "minimum": 0, "maximum": 3},
           "status": {
             "enum": [
               "RESERVED",

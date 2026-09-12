@@ -21,8 +21,10 @@ whole-exam requests.
 Read [pipeline-v2-execution.md](references/pipeline-v2-execution.md) before starting a new
 pipeline-core-backed job. The current execution authority is
 archive/tools/pipeline-core/AGENT_BUDGET.md together with the current
-pipeline-core contracts. A job uses one whole-job work batch, one
-provider-attested FINAL_AUDIT, and at most one TARGETED_RECHECK. Semantic
+pipeline-core contracts. A Past Exam job uses one whole-job work batch, one
+provider-attested FINAL_AUDIT, and a bounded repair/recheck loop of up to three
+TARGETED_RECHECK iterations. Legacy profiles retain their stored allowance.
+Semantic
 batch labels, question axes, and review names do not authorize separate
 provider or agent launches.
 
@@ -413,10 +415,13 @@ evidence satisfy `visual-quality-floor.md`; otherwise use `MANUAL_REVIEW` or
 
 ## Review and correction loop
 
-For new v2 jobs, local machine checks happen before the whole-job freeze and a
-single provider audit reviews the frozen scope through sealed U1/U2/U3
-contexts. Repair defects locally, freeze again, and use at most one
-TARGETED_RECHECK. Unchanged axes require direct-root validated reuse receipts.
+For new Past Exam v2 jobs, local machine checks happen before the whole-job
+freeze and a single provider audit reviews the frozen scope through sealed
+U1/U2/U3 contexts. Defects enter `REPAIR_REQUIRED`; the original builder
+records a disposition, creates a new revision/inputSha, reruns machine checks,
+freezes again, and uses an independent `TARGETED_RECHECK`. Repeat only within
+the persisted three-iteration bound. Unchanged axes require direct-root
+validated reuse receipts. Other v2 profiles retain their declared budget.
 The batch reviewer sequence below is a legacy compatibility model only.
 
 ### Legacy batch review 1
