@@ -357,10 +357,6 @@ backup_before_*.sql
 # only newly generated reports are hidden from the working-tree change list.
 /reports/
 
-# Generated solution visualizations. Original/promoted qNN source images remain
-# available for review and are not covered by this rule.
-/archive/assets/images/**/*-solution.svg
-
 # One-off HS quadratic SVG audit scripts. Reusable tools already committed to
 # this directory remain tracked; these generated iteration helpers do not.
 /tools/hs-quadratic-svg-upgrade/build-current-closure-snapshot-r*.mjs
