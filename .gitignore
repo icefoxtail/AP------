@@ -335,6 +335,15 @@ backup_before_*.sql
 # include하지 않는다. ZIP을 검사할 때 만든 압축 해제 폴더도 runtime 아래에서 추적하지 않는다.
 /alive/runtime/
 
+# Provider bridge source is repository code; runtime state, traces, packets,
+# receipts, and other generated evidence remain ignored.
+!/alive/runtime/
+/alive/runtime/*
+!/alive/runtime/provider-bridge/
+/alive/runtime/provider-bridge/**
+!/alive/runtime/provider-bridge/codex-appserver-adapter.mjs
+!/alive/runtime/provider-bridge/codex-appserver-launch-state.mjs
+
 # ALIVE 외부검수 렌더/압축 검사 임시 폴더
 /.alive-review*/
 /.tmp/
