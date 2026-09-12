@@ -163,13 +163,16 @@ function validateState(state) {
   else check(policy.maxRepairIterations === expectedBudget.maxRepairIterations, 'BUDGET_POLICY_INVALID');
   const maxRepairIterations = maxRepairIterationsForState({ workflowProfile, policy });
   check(Array.isArray(state.launches) && Array.isArray(state.freezes), 'LEDGER_REQUIRED');
-  check(Array.isArray(state.openDefectSet || []), 'OPEN_DEFECT_SET_REQUIRED');
-  check(new Set((state.openDefectSet || []).map(targetKey)).size === (state.openDefectSet || []).length, 'OPEN_DEFECT_SET_DUPLICATE');
-  check(Array.isArray(state.openDefects || []), 'OPEN_DEFECTS_REQUIRED');
-  const openKeys = new Set((state.openDefectSet || []).map(targetKey));
-  for (const defect of state.openDefects || []) check(openKeys.has(targetKey(defect)), 'OPEN_DEFECT_IDENTITY_MISMATCH');
-  check(Array.isArray(state.repairIterations || []) && state.repairIterations.length <= maxRepairIterations, 'REPAIR_ITERATION_LIMIT');
-  for (const iteration of state.repairIterations || []) {
+  const openDefectSet = state.openDefectSet || [];
+  const openDefects = state.openDefects || [];
+  const repairIterations = state.repairIterations || [];
+  check(Array.isArray(openDefectSet), 'OPEN_DEFECT_SET_REQUIRED');
+  check(new Set(openDefectSet.map(targetKey)).size === openDefectSet.length, 'OPEN_DEFECT_SET_DUPLICATE');
+  check(Array.isArray(openDefects), 'OPEN_DEFECTS_REQUIRED');
+  const openKeys = new Set(openDefectSet.map(targetKey));
+  for (const defect of openDefects) check(openKeys.has(targetKey(defect)), 'OPEN_DEFECT_IDENTITY_MISMATCH');
+  check(Array.isArray(repairIterations) && repairIterations.length <= maxRepairIterations, 'REPAIR_ITERATION_LIMIT');
+  for (const iteration of repairIterations) {
     check(Number.isSafeInteger(iteration.iteration) && iteration.iteration >= 1 && iteration.iteration <= maxRepairIterations, 'REPAIR_ITERATION_INVALID');
     check(['REPAIR_REQUIRED', 'REPAIR_RECORDED', 'FROZEN_FOR_RECHECK', 'CLOSED', 'HOLD'].includes(iteration.status), 'REPAIR_ITERATION_STATUS_INVALID');
     check(Array.isArray(iteration.openDefectSet || []), 'REPAIR_ITERATION_DEFECTS_REQUIRED');
