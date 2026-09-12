@@ -1,9 +1,10 @@
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
+import fs from 'node:fs';
 import { bytesSha, canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
 import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityForQuestion, VISUAL_ONLY_DEFECT_TYPES } from './review-isolation-runner.mjs';
-import { assertFreshLaunchIdentity, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
+import { assertFreshLaunchIdentity, targetedReviewIteration, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
 
@@ -12,14 +13,8 @@ export const CANONICAL_AUTHORITY_TERMINAL_STATUSES = Object.freeze(['RESOLVED'])
 const PHASES = Object.freeze(['U1', 'U2', 'U3']);
 const check = (condition, code) => { if (!condition) throw new Error(`HOLD:${code}`); };
 const same = (left, right) => canonicalJson(left) === canonicalJson(right);
-const mimeFor = relative => ({ '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' }[path.extname(relative).toLowerCase()] || 'application/octet-stream');
-
-export function visualAssetPayload(root, ref) {
-  const bytes = readBoundFile(root, ref);
-  return { ...ref, mimeType: mimeFor(ref.path), dataUrl: `data:${mimeFor(ref.path)};base64,${bytes.toString('base64')}` };
-}
-
-export const sourceVisualAssetPayload = visualAssetPayload;
+export { visualAssetPayload, sourceVisualAssetPayload } from './native-visual.mjs';
+import { visualAssetPayload, sourceVisualAssetPayload } from './native-visual.mjs';
 
 function bridgePath(root, relative, { mustExist = false } = {}) {
   check(typeof relative === 'string' && relative.startsWith('alive/runtime/provider-bridge/'), 'PROVIDER_BRIDGE_RUNTIME_PATH_REQUIRED');
@@ -100,13 +95,7 @@ function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null } = 
   const freeze = state.freezes.at(-1);
   check(freeze, 'WHOLE_JOB_FREEZE_REQUIRED');
   if (purpose === 'FINAL_AUDIT' && !executionRecoveryOfLaunchId) check(state.launches.filter(launch => launch.executionRecovery !== true).length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
-  if (purpose === 'TARGETED_RECHECK') {
-    const repairCount = state.launches.filter(launch => launch.purpose === 'TARGETED_RECHECK' && launch.executionRecovery !== true).length;
-    const reviewOnly = state.repairIterations?.at(-1)?.repairKind === 'REVIEW_ONLY_RESOLUTION';
-    check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED') && (reviewOnly ? state.freezes.length === repairCount + 1 : state.freezes.length === repairCount + 2) && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
-    check(repairCount < maxRepairIterationsForState(state), 'REPAIR_ITERATION_LIMIT');
-    if (state.workflowProfile === 'PAST_EXAM' && state.repairIterations?.length) check(state.repairIterations?.at(-1)?.status === 'FROZEN_FOR_RECHECK', 'REPAIR_NOT_FROZEN_FOR_RECHECK');
-  }
+  if (purpose === 'TARGETED_RECHECK') targetedReviewIteration(state, freeze, executionRecoveryOfLaunchId);
   check(['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(purpose), 'PROVIDER_BRIDGE_PURPOSE_INVALID');
   const scope = reviewScopeForPurpose(state, freeze, purpose);
   if (isBenchmarkJobKind(state.jobKind) && purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
@@ -133,7 +122,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     jobKind: state.jobKind || 'PRODUCTION',
     workflowProfile: state.workflowProfile || 'LEGACY',
     inputSha: freezeInputSha(freeze),
-    repairIteration: purpose === 'TARGETED_RECHECK' ? state.launches.filter(launch => launch.purpose === 'TARGETED_RECHECK' && launch.executionRecovery !== true).length + 1 : 0,
+    repairIteration: purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, executionRecoveryOfLaunchId) : 0,
     executionRecoveryOfLaunchId,
     executionFailureClass: failedLaunch?.executionFailureClass || null,
     executionFailureFingerprint: failedLaunch?.executionFailureFingerprint || null,
@@ -147,14 +136,16 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     },
   };
   const request = { ...body, requestSha: objectSha(body) };
-  const response = transportCall(transport, request);
+  const existing = fs.existsSync(bridgePath(root, planPath)) ? loadBridgeJson(root, planPath) : null;
+  if (existing) check(same(existing.value.preflightRequest, request), 'PROVIDER_PREFLIGHT_REPLAY_REQUEST_MISMATCH');
+  const response = existing ? existing.value.preflightResponse : transportCall(transport, request);
   const { contexts, route } = validatePreflightResponse(response, request, state.executionIdentity);
   assertFreshLaunchIdentity(state.launches, { auditorId: response.auditorId, auditorSessionId: response.auditorSessionId, contexts });
   const executionIdentity = {
     ...(state.executionIdentity || {}),
     actualModel: route.actualModel,
     actualReasoningEffort: route.actualReasoningEffort,
-    modelRouteObservedAtStart: route.observedAt,
+    modelRouteObservedAtStart: existing ? existing.value.executionIdentity?.modelRouteObservedAtStart : route.observedAt,
   };
   const parity = validateModelRouteParity(executionIdentity);
   Object.assign(executionIdentity, { routeStatus: parity.routeStatus, MODEL_ROUTE_PARITY: parity.MODEL_ROUTE_PARITY });
@@ -189,7 +180,8 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     preflightResponse: response,
     preflightResponseSha: objectSha(response),
   };
-  const ref = writeBridgeJson(root, planPath, plan);
+  if (existing) check(same(existing.value, plan), 'PROVIDER_PREFLIGHT_REPLAY_PLAN_MISMATCH');
+  const ref = existing ? existing.ref : writeBridgeJson(root, planPath, plan);
   return {
     status: 'READY',
     planRef: ref,
@@ -296,6 +288,7 @@ function walkBoundRefs(root, value, pathValue = '$', seen = new Set()) {
   if (typeof value.path === 'string' && typeof value.sha256 === 'string' && /^sha256:[0-9a-f]{64}$/.test(value.sha256)) {
     const bytes = readBoundFile(root, value);
     if (bytesSha(bytes) !== value.sha256) throw new Error(`HOLD:PROVIDER_PACKET_ASSET_SHA_MISMATCH:${pathValue}`);
+    if (value.nativeSha256 && (path.extname(value.path).toLowerCase() !== '.svg' || visualAssetPayload(root, value).dataUrl !== value.dataUrl)) throw new Error(`HOLD:PROVIDER_NATIVE_DERIVATION_MISMATCH:${pathValue}`);
   }
   if (Array.isArray(value)) return value.forEach((item, index) => walkBoundRefs(root, item, `${pathValue}[${index}]`, seen));
   for (const [key, child] of Object.entries(value)) walkBoundRefs(root, child, `${pathValue}.${key}`, seen);
@@ -315,7 +308,7 @@ function requireNativeImages(value, pathValue = '$', required = false, seen = ne
   if (typeof value.dataUrl === 'string') {
     const bytes = decodeNativeImageDataUrl(value.dataUrl, pathValue);
     if (value.sha256 && /^sha256:[0-9a-f]{64}$/.test(value.sha256)) {
-      if (bytesSha(bytes) !== value.sha256) throw new Error(`HOLD:PROVIDER_NATIVE_IMAGE_SHA_MISMATCH:${pathValue}`);
+      if (bytesSha(bytes) !== (value.nativeSha256 || value.sha256)) throw new Error(`HOLD:PROVIDER_NATIVE_IMAGE_SHA_MISMATCH:${pathValue}`);
     }
   } else if (required && typeof value.path === 'string' && typeof value.sha256 === 'string') {
     throw new Error(`HOLD:PROVIDER_NATIVE_IMAGE_REQUIRED:${pathValue}`);

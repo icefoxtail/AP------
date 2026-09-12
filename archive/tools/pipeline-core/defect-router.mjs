@@ -246,6 +246,8 @@ export function nextWorkBatchAction(state, options = {}) {
     return { action: 'EXECUTION_RECOVERY', nextAction: 'START_FRESH_REVIEW_ATTEMPT', status: 'RECOVERY_AVAILABLE', failureClass: failure.executionFailureClass, failedLaunchId: failure.launchId || failure.failedLaunchId, freezeSha: failure.freezeSha || null, executionAttempt: attempts.length + 1, maxExecutionRecoveryAttempts: 2 };
   }
   if (status === 'REPAIR_REQUIRED') {
+    const recorded = state.repairIterations?.at(-1);
+    if (recorded?.status === 'REPAIR_RECORDED') return { action: 'FREEZE_RECORDED_REPAIR', status: 'REPAIR_ALREADY_MATERIALIZED' };
     const plan = buildRepairPlan(state.openDefects || [], [], options);
     return { action: plan.status === 'HUMAN_DECISION_REQUIRED' ? 'HUMAN_DECISION_REQUIRED' : 'AUTO_REPAIR', status: plan.status, reason: plan.defects.find(defect => defect.capabilityReason)?.capabilityReason || null, plan };
   }
