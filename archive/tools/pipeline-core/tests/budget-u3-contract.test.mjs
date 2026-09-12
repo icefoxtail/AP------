@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileRef, objectSha } from '../canonical.mjs';
 import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
-import { aggregateWorkBatchAudit, freezeInputSha, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
+import { aggregateWorkBatchAudit, assertFreshLaunchIdentity, freezeInputSha, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
 import { loadCandidateReviewContext, buildU3CandidatePayload, buildAuditorPacket, validateAuditorPacket } from '../review-isolation-runner.mjs';
 import { prepareProviderReview, dispatchProviderReview } from '../provider-bridge.mjs';
 
@@ -62,7 +62,8 @@ function jobFixture(t, questionCount = 1, workflowProfile = 'PAST_EXAM') {
     const ref = write(`run-${revision}.json`, run);
     return { run, ref };
   };
-  const request = (purpose, maxTokens, overrides = {}) => ({ purpose, ...(maxTokens === undefined ? {} : { maxTokens }), callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session', recursiveSubagentLaunchCount: 0, parentLaunchId: null, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, contexts: Object.fromEntries(['U1', 'U2', 'U3'].map(phase => [phase, { sessionId: `${purpose}-${phase}`, contextId: `${purpose}-ctx-${phase}` }])), ...overrides });
+  let requestIndex = 0;
+  const request = (purpose, maxTokens, overrides = {}) => { const tag = `${purpose}-${++requestIndex}`; return { purpose, ...(maxTokens === undefined ? {} : { maxTokens }), callerRole: 'MAIN_WORKER', auditorId: `${tag}-auditor`, auditorSessionId: `${tag}-auditor-session`, recursiveSubagentLaunchCount: 0, parentLaunchId: null, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, contexts: Object.fromEntries(['U1', 'U2', 'U3'].map(phase => [phase, { sessionId: `${tag}-${phase}`, contextId: `${tag}-ctx-${phase}` }])), ...overrides }; };
   const repair = (iteration, revision, inputSha, dispositions, overrides = {}) => ({ iteration, revision, inputSha, dispositions, builderId: 'builder', builderSessionId: 'builder-session', ...overrides });
   let receiptIndex = 0;
   const complete = (launchId, externalId, usedTokens, status = 'COMPLETED', defects = []) => {
@@ -573,6 +574,20 @@ test('U1 permits literal bracket-prefixed source content without opening a blind
   assert.equal(validateAuditorPacket(packet, { affectedUidSet: [f.uid] }).status, 'PASS');
 });
 
+test('FINAL_AUDIT and each targeted recheck require fresh cross-launch auditor identities', () => {
+  const launch = purpose => ({
+    auditorId: `${purpose}-auditor`,
+    auditorSessionId: `${purpose}-control-session`,
+    contexts: Object.fromEntries(['U1', 'U2', 'U3'].map(phase => [phase, { sessionId: `${purpose}-${phase}-session`, contextId: `${purpose}-${phase}-context` }]))
+  });
+  const launches = [launch('FINAL_AUDIT'), launch('TARGETED_RECHECK_1'), launch('TARGETED_RECHECK_2')];
+  assert.doesNotThrow(() => assertFreshLaunchIdentity(launches.slice(0, 1), launches[1]));
+  assert.doesNotThrow(() => assertFreshLaunchIdentity(launches.slice(0, 2), launches[2]));
+  assert.throws(() => assertFreshLaunchIdentity(launches, structuredClone(launches[0])), /CROSS_LAUNCH_AUDITOR_CONTEXT_REUSE/);
+  assert.throws(() => assertFreshLaunchIdentity(launches, { ...launch('new'), auditorSessionId: launches[1].contexts.U2.sessionId }), /CROSS_LAUNCH_AUDITOR_CONTEXT_REUSE/);
+  assert.throws(() => assertFreshLaunchIdentity(launches, { ...launch('new'), contexts: { ...launch('new').contexts, U3: { sessionId: 'new-u3', contextId: launches[2].contexts.U1.contextId } } }), /CROSS_LAUNCH_AUDITOR_CONTEXT_REUSE/);
+});
+
 test('provider bridge binds a runtime-attested plan, phase packets, and one terminal receipt', t => {
   const f = jobFixture(t);
   const first = f.makeRun(1);
@@ -596,7 +611,8 @@ test('provider bridge binds a runtime-attested plan, phase packets, and one term
   const common = { questionUid: f.uid, affectedUidSet: [f.uid], auditorId: plan.auditorId, builderId: first.run.builderId, builderSessionId: first.run.builderSessionId, auditorPrincipalType: 'STATELESS_MODEL', sealed: true, launchId: 'job:1', externalTaskId: plan.externalId };
   const u1 = buildAuditorPacket({ ...common, phase: 'U1', payload: { questionUid: f.uid, content: 'Find the angle sum.', choices: ['110', '120'], problemAssets: [] }, auditorSessionId: plan.contexts.U1.sessionId, contextId: plan.contexts.U1.contextId, inputVisibilityProfile: 'SOURCE_ONLY', priorReviewVisibility: 'NONE' });
   const artifact = f.write('artifact.svg', '<svg/>');
-  const u2 = buildAuditorPacket({ ...common, phase: 'U2', payload: { questionUid: f.uid, artifact, renderWitnesses: [] }, auditorSessionId: plan.contexts.U2.sessionId, contextId: plan.contexts.U2.contextId, inputVisibilityProfile: 'ARTIFACT_ONLY', priorReviewVisibility: 'NONE' });
+  const u2Applicability = { status: 'VISUAL_EXEMPT', artifactRequired: false, renderWitnessRequired: false, authority: { requirement: 'VISUAL_EXEMPT', visualAssetStatus: null, action: null, adjudicationId: null, adjudicationStatus: null, problemDependency: false, sharedDependency: false, sourceNoVisualAssetRequired: false } };
+  const u2 = buildAuditorPacket({ ...common, phase: 'U2', payload: { questionUid: f.uid, artifact, renderWitnesses: [], visualApplicability: u2Applicability }, auditorSessionId: plan.contexts.U2.sessionId, contextId: plan.contexts.U2.contextId, inputVisibilityProfile: 'ARTIFACT_ONLY', priorReviewVisibility: 'NONE' });
   const u3 = buildAuditorPacket({ ...common, phase: 'U3', payload: buildU3CandidatePayload(candidateContext, f.uid, { frozenU1: { result: 'PASS' }, frozenU2: { result: 'PASS' } }), candidateContext, auditorSessionId: plan.contexts.U3.sessionId, contextId: plan.contexts.U3.contextId, inputVisibilityProfile: 'FROZEN_V1_V2', priorReviewVisibility: 'FROZEN_U1_U2' });
   const packetRefs = [
     { phase: 'U1', ref: f.write('packets/u1.json', u1) },
