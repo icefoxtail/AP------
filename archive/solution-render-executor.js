@@ -338,5 +338,104 @@
         return area;
     }
 
-    return Object.freeze({ render });
+async function renderComposed({ area, items, deps }) {
+    const { document, makePage, makeBox, makeSolutionHtmlChunks, makeLongSolutionShell, applyAutoImageSizeClasses, autoCompress, raf } = deps;
+    let pageNo = 1;
+    let cols = null;
+    let colIdx = 0;
+
+    const makeGridPage = () => {
+        const page = makePage(area, pageNo++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        grid.style.flex = '1 1 0';
+        const left = document.createElement('div');
+        left.className = 'grid-col';
+        const right = document.createElement('div');
+        right.className = 'grid-col';
+        grid.appendChild(left);
+        grid.appendChild(right);
+        page.body.appendChild(grid);
+        cols = [left, right];
+        colIdx = 0;
+        return cols;
+    };
+
+    const advanceColumn = () => {
+        if (colIdx === 0) colIdx = 1;
+        else { makeGridPage(); }
+        return cols[colIdx];
+    };
+
+
+    // 한 컬럼에 해설 박스 하나만 있는데도 안 들어가면 해설을 조각내 다음 컬럼/페이지로 이어붙인다.
+    async function renderSplitSolutionBox(sourceBox) {
+        const originalExp = sourceBox.querySelector('.sol-exp');
+        const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
+        let shell = makeLongSolutionShell(sourceBox, false);
+        let exp = shell.querySelector('.sol-exp');
+        let targetCol = cols[colIdx];
+        targetCol.appendChild(shell);
+        await applyAutoImageSizeClasses(targetCol);
+
+        for (const chunkHtml of chunks) {
+            const chunk = document.createElement('span');
+            chunk.className = 'sol-chunk';
+            chunk.innerHTML = chunkHtml;
+            exp.appendChild(chunk);
+            await deps.typesetMath('composition-solution', [targetCol]);
+            await raf();
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
+
+            // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
+            if (exp.children.length > 1) {
+                exp.removeChild(chunk);
+                targetCol = advanceColumn();
+                shell = makeLongSolutionShell(sourceBox, true);
+                exp = shell.querySelector('.sol-exp');
+                targetCol.appendChild(shell);
+                exp.appendChild(chunk);
+                await deps.typesetMath('composition-solution', [targetCol]);
+                await raf();
+            }
+            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                autoCompress(shell);
+                await raf();
+            }
+        }
+    }
+
+    async function placeBox(box) {
+        while (true) {
+            const targetCol = cols[colIdx];
+            targetCol.appendChild(box);
+            await applyAutoImageSizeClasses(targetCol);
+            await deps.typesetMath('composition-solution', [targetCol]);
+            await raf();
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
+
+            autoCompress(box);
+            await raf();
+            await deps.typesetMath('composition-solution', [targetCol]);
+            await raf();
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
+
+            // 이 컬럼에 이 해설 박스 하나뿐이면 쪼개서 출력한다(잘림 금지).
+            const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
+            targetCol.removeChild(box);
+            if (isOnlyBoxInColumn) {
+                await renderSplitSolutionBox(box);
+                return;
+            }
+            advanceColumn();
+        }
+    }
+
+    makeGridPage();
+    for (let idx = 0; idx < items.length; idx++) {
+        await placeBox(makeBox(items[idx], idx));
+    }
+}
+
+    return Object.freeze({ render, renderComposed });
 });
