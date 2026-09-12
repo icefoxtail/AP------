@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
 import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
-import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope } from '../provider-bridge.mjs';
+import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope, validatePacketVisualAndAuthority } from '../provider-bridge.mjs';
 import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
 import { getOrCreateLaunchContext, phaseContextForLaunch } from '../../../../alive/runtime/provider-bridge/codex-appserver-launch-state.mjs';
+import { nativeImageInput } from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
+import { bytesSha } from '../canonical.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
   assert.equal(AUDITOR_OUTPUT_SCHEMA.type, 'object');
@@ -146,4 +148,50 @@ test('Codex app-server launch registry reuses only same launchId/requestSha and 
   assert.notEqual(second.launch.contexts.U1.contextId, third.launch.contexts.U1.contextId);
   assert.equal(phaseContextForLaunch(state, 'job:2', 'U2').context.threadId, 'B-U2-thread');
   await assert.rejects(getOrCreateLaunchContext(state, { launchId: 'job:1', requestSha: 'sha-other', create: () => make('invalid') }), /CODEX_LAUNCH_REQUEST_SHA_MISMATCH/);
+});
+
+test('Codex adapter emits the native image contract directly', () => {
+  const input = nativeImageInput('data:image/png;base64,AA==');
+  assert.deepEqual(input, { type: 'image', url: 'data:image/png;base64,AA==', detail: 'original' });
+});
+
+function finalizedApplicability(status = 'VISUAL_REQUIRED') {
+  return { status, artifactRequired: status !== 'VISUAL_EXEMPT', renderWitnessRequired: status !== 'VISUAL_EXEMPT', authority: { requirement: status, visualAssetStatus: status === 'VISUAL_EXEMPT' ? 'no_visual_asset_required' : 'cropped_from_full_page_bbox', action: status === 'VISUAL_EXEMPT' ? 'NONE' : 'KEEP', adjudicationId: 'q:v3', adjudicationStatus: 'RESOLVED', problemDependency: status === 'VISUAL_REQUIRED', sharedDependency: false, sourceNoVisualAssetRequired: status === 'VISUAL_EXEMPT' } };
+}
+
+test('U2 authority preflight rejects every non-final authority status regardless of visual applicability', () => {
+  const expected = finalizedApplicability('VISUAL_EXEMPT');
+  const sourceContext = { visualApplicabilities: new Map([['q', expected]]) };
+  for (const status of ['PENDING', 'UNFINALIZED', null]) {
+    const actual = structuredClone(expected);
+    actual.authority.adjudicationStatus = status;
+    assert.throws(() => validatePacketVisualAndAuthority({ phase: 'U2', payload: { questionUid: 'q', visualApplicability: actual, artifact: null, renderWitnesses: [] } }, sourceContext), /PROVIDER_PACKET_AUTHORITY_(UNFINALIZED|ID_REQUIRED)/);
+  }
+});
+
+test('U2 final authority and applicability are required for exempt and required questions', () => {
+  const exempt = finalizedApplicability('VISUAL_EXEMPT');
+  const exemptContext = { visualApplicabilities: new Map([['q', exempt]]) };
+  assert.doesNotThrow(() => validatePacketVisualAndAuthority({ phase: 'U2', payload: { questionUid: 'q', visualApplicability: exempt, artifact: null, renderWitnesses: [] } }, exemptContext));
+  const required = finalizedApplicability('VISUAL_REQUIRED');
+  const requiredContext = { visualApplicabilities: new Map([['q', required]]) };
+  const image = { path: 'asset.png', bytes: 1, sha256: bytesSha(Buffer.from([0])), dataUrl: 'data:image/png;base64,AA==' };
+  assert.doesNotThrow(() => validatePacketVisualAndAuthority({ phase: 'U2', payload: { questionUid: 'q', visualApplicability: required, artifact: { assetRefs: [image] }, renderWitnesses: [] } }, requiredContext));
+  const mismatch = structuredClone(required);
+  mismatch.status = 'VISUAL_OPTIONAL';
+  mismatch.artifactRequired = false;
+  mismatch.renderWitnessRequired = false;
+  mismatch.authority.requirement = 'VISUAL_OPTIONAL';
+  assert.throws(() => validatePacketVisualAndAuthority({ phase: 'U2', payload: { questionUid: 'q', visualApplicability: mismatch, artifact: null, renderWitnesses: [] } }, requiredContext), /PROVIDER_PACKET_VISUAL_APPLICABILITY_MISMATCH|PROVIDER_PACKET_AUTHORITY_APPLICABILITY_MISMATCH/);
+});
+
+test('provider packet negative image cases fail closed', () => {
+  const sourceContext = { visualApplicabilities: new Map() };
+  const pathOnly = { path: 'asset.png', bytes: 1, sha256: bytesSha(Buffer.from([0])) };
+  assert.throws(() => validatePacketVisualAndAuthority({ phase: 'U1', payload: { questionUid: 'q', problemAssets: [pathOnly] } }, sourceContext), /PROVIDER_NATIVE_IMAGE_REQUIRED/);
+  const mismatch = { ...pathOnly, dataUrl: 'data:image/png;base64,AQ==' };
+  assert.throws(() => validatePacketVisualAndAuthority({ phase: 'U1', payload: { questionUid: 'q', problemAssets: [mismatch] } }, sourceContext), /PROVIDER_NATIVE_IMAGE_SHA_MISMATCH/);
+  const malformed = { ...pathOnly, dataUrl: 'data:image/png;base64,not-base64!' };
+  assert.throws(() => validatePacketVisualAndAuthority({ phase: 'U1', payload: { questionUid: 'q', problemAssets: [malformed] } }, sourceContext), /PROVIDER_NATIVE_IMAGE_(ENVELOPE|BASE64)_INVALID/);
+  assert.throws(() => validatePacketVisualAndAuthority({ phase: 'U3', payload: { questionUid: 'q', renderWitnesses: [pathOnly] } }, sourceContext), /PROVIDER_NATIVE_IMAGE_REQUIRED/);
 });

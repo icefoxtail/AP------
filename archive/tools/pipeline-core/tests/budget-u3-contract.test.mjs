@@ -44,7 +44,7 @@ function jobFixture(t, questionCount = 1, workflowProfile = 'PAST_EXAM') {
     const run = {
       schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision,
       builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY',
-      questions: sourceRows.map(row => ({ questionUid: `synthetic|${row.id}`, sourceExamId: 'synthetic', examId: 'synthetic', qid: row.id, sourcePath: 'source.js', candidatePath: `candidate-${revision}.js`, problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { requirement: 'VISUAL_EXEMPT' } })),
+      questions: sourceRows.map(row => ({ questionUid: `synthetic|${row.id}`, sourceExamId: 'synthetic', examId: 'synthetic', qid: row.id, sourcePath: 'source.js', candidatePath: `candidate-${revision}.js`, problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { origin: 'NATIVE', requirement: 'VISUAL_EXEMPT', action: 'NONE', exemptReason: 'NO_VISUAL_NEEDED', adjudicationId: `synthetic|${row.id}:authority`, adjudicationStatus: 'RESOLVED', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false } })),
       inputs: [sourceRef, { ...write(`candidate-${revision}.js`, bank(nextCandidateRows)), role: 'candidate' }], evidence: [], ...(sharedMaterial ? { sharedMaterial } : {}),
     };
     run.inputSha = runInputSha(run);
@@ -252,7 +252,7 @@ test('bounded TARGETED_RECHECK iterations continue until the open defect set clo
   assert.equal(closed.repairIterations.length, 2);
 });
 
-test('same input and same defect set enters stagnation HOLD', t => {
+test('same input and same defect set is rechecked before stagnation is declared', t => {
   const f = jobFixture(t);
   const first = f.makeRun(1);
   const auditInputSha = first.run.inputSha;
@@ -262,10 +262,15 @@ test('same input and same defect set enters stagnation HOLD', t => {
   const defects = [{ runId: 'run', questionUid: f.uid }];
   const afterFinal = f.complete('job:1', 'provider-final', null, 'COMPLETED', defects);
   assert.equal(afterFinal.status, 'REPAIR_REQUIRED');
-  const held = recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, auditInputSha, [{ ...defects[0], disposition: 'NO_CHANGE_WITH_EVIDENCE' }]));
+  const recorded = recordWorkBatchRepair(f.root, 'job', f.repair(1, 1, auditInputSha, [{ ...defects[0], disposition: 'NO_CHANGE_WITH_EVIDENCE' }]));
+  assert.equal(recorded.status, 'REPAIR_REQUIRED');
+  assert.equal(recorded.repairIterations[0].repairKind, 'REVIEW_ONLY_RESOLUTION');
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
+  const held = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', defects);
   assert.equal(held.status, 'HOLD');
   assert.equal(held.lastHold.code, 'HOLD:REPAIR_STAGNATION');
-  assert.equal(held.repairIterations[0].noChangeEvidence, true);
 });
 
 test('changed input with the same UID and changed semantic defect is not stagnation', t => {
@@ -274,10 +279,10 @@ test('changed input with the same UID and changed semantic defect is not stagnat
   freezeWorkBatch(f.root, 'job', [first.ref]);
   reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
-  const firstDefect = { runId: 'run', questionUid: f.uid, phase: 'U1', type: 'SOURCE_TEXT_AMBIGUITY', reason: 'wording' };
+  const firstDefect = { runId: 'run', questionUid: f.uid, phase: 'U1', type: 'CANDIDATE_MATH_DEFECT', reason: 'wording' };
   f.complete('job:1', 'provider-final', null, 'COMPLETED', [firstDefect]);
   const second = f.makeRun(2);
-  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...firstDefect, disposition: 'SOURCE_DEFECT_CONFIRMED' }]));
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...firstDefect, disposition: 'REPAIRED_CANDIDATE' }]));
   freezeWorkBatch(f.root, 'job', [second.ref]);
   reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
@@ -285,7 +290,7 @@ test('changed input with the same UID and changed semantic defect is not stagnat
   const state = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', [changed]);
   assert.equal(state.status, 'REPAIR_REQUIRED');
   assert.notEqual(state.lastHold?.code, 'HOLD:REPAIR_STAGNATION');
-  assert.equal(state.repairIterations[0].repairRoute, 'DERIVED_SOURCE_RECOVERY');
+  assert.equal(state.repairIterations[0].repairRoute, 'CANDIDATE_REPAIR');
   assert.notEqual(defectFingerprint(firstDefect), defectFingerprint(changed));
 });
 
@@ -299,11 +304,12 @@ test('SOURCE_DEFECT_CONFIRMED routes to derived recovery instead of a user HOLD'
   f.complete('job:1', 'provider-final', null, 'COMPLETED', [defect]);
   const second = f.makeRun(2);
   const state = recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...defect, disposition: 'SOURCE_DEFECT_CONFIRMED' }]));
-  assert.equal(state.status, 'REPAIR_REQUIRED');
-  assert.equal(state.repairIterations[0].status, 'REPAIR_RECORDED');
-  assert.equal(state.repairIterations[0].repairRoute, 'DERIVED_SOURCE_RECOVERY');
-  assert.equal(state.repairIterations[0].repairPlan.status, 'AUTO_REPAIR_REQUIRED');
-  assert.equal(state.repairIterations[0].repairPlan.defects[0].requiresDerivedReplacement, true);
+  assert.equal(state.status, 'HOLD');
+  assert.equal(state.repairIterations[0].status, 'HOLD');
+  assert.equal(state.repairIterations[0].repairRoute, 'HUMAN_DECISION_REQUIRED');
+  assert.equal(state.repairIterations[0].repairPlan.status, 'HUMAN_DECISION_REQUIRED');
+  assert.equal(state.repairIterations[0].repairPlan.defects[0].requestedRoute, 'DERIVED_SOURCE_RECOVERY');
+  assert.equal(state.repairIterations[0].repairPlan.defects[0].capabilityReason, 'PRODUCER_NOT_IMPLEMENTED');
 });
 
 test('defect router maps semantic, visual, authority, execution, and unavailable-source findings', () => {
@@ -461,9 +467,8 @@ test('G: conflicting U1/U3 findings remain repair evidence and are not auto-conf
   assert.equal(state.status, 'REPAIR_REQUIRED');
   assert.equal(state.openDefects[0].conflict, true);
   assert.notEqual(state.openDefects[0].disposition, 'SOURCE_DEFECT_CONFIRMED');
-  const second = f.makeRun(2, [f.uid]);
-  recordWorkBatchRepair(f.root, 'job', f.repair(1, 2, second.run.inputSha, [{ ...conflict, disposition: 'AUDITOR_FALSE_POSITIVE' }]));
-  freezeWorkBatch(f.root, 'job', [second.ref]);
+  recordWorkBatchRepair(f.root, 'job', f.repair(1, 1, first.run.inputSha, [{ ...conflict, disposition: 'AUDITOR_FALSE_POSITIVE' }]));
+  freezeWorkBatch(f.root, 'job', [first.ref]);
   reserveWorkBatchReview(f.root, 'job', f.request('TARGETED_RECHECK'));
   reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:2', externalId: 'provider-targeted', status: 'DISPATCHED' });
   const closed = f.complete('job:2', 'provider-targeted', null, 'COMPLETED', []);
@@ -707,9 +712,8 @@ test('provider bridge binds a runtime-attested plan, phase packets, and one term
   const candidateContext = loadCandidateReviewContext(f.root, first.run);
   const common = { questionUid: f.uid, affectedUidSet: [f.uid], auditorId: plan.auditorId, builderId: first.run.builderId, builderSessionId: first.run.builderSessionId, auditorPrincipalType: 'STATELESS_MODEL', sealed: true, launchId: 'job:1', externalTaskId: plan.externalId };
   const u1 = buildAuditorPacket({ ...common, phase: 'U1', payload: { questionUid: f.uid, content: 'Find the angle sum.', choices: ['110', '120'], problemAssets: [] }, auditorSessionId: plan.contexts.U1.sessionId, contextId: plan.contexts.U1.contextId, inputVisibilityProfile: 'SOURCE_ONLY', priorReviewVisibility: 'NONE' });
-  const artifact = f.write('artifact.svg', '<svg/>');
-  const u2Applicability = { status: 'VISUAL_EXEMPT', artifactRequired: false, renderWitnessRequired: false, authority: { requirement: 'VISUAL_EXEMPT', visualAssetStatus: null, action: null, adjudicationId: null, adjudicationStatus: null, problemDependency: false, sharedDependency: false, sourceNoVisualAssetRequired: false } };
-  const u2 = buildAuditorPacket({ ...common, phase: 'U2', payload: { questionUid: f.uid, artifact, renderWitnesses: [], visualApplicability: u2Applicability }, auditorSessionId: plan.contexts.U2.sessionId, contextId: plan.contexts.U2.contextId, inputVisibilityProfile: 'ARTIFACT_ONLY', priorReviewVisibility: 'NONE' });
+  const u2Applicability = { status: 'VISUAL_EXEMPT', artifactRequired: false, renderWitnessRequired: false, authority: { requirement: 'VISUAL_EXEMPT', visualAssetStatus: null, action: 'NONE', adjudicationId: 'synthetic|1:authority', adjudicationStatus: 'RESOLVED', problemDependency: false, sharedDependency: false, sourceNoVisualAssetRequired: false } };
+  const u2 = buildAuditorPacket({ ...common, phase: 'U2', payload: { questionUid: f.uid, artifact: null, renderWitnesses: [], visualApplicability: u2Applicability }, auditorSessionId: plan.contexts.U2.sessionId, contextId: plan.contexts.U2.contextId, inputVisibilityProfile: 'ARTIFACT_ONLY', priorReviewVisibility: 'NONE' });
   const u3 = buildAuditorPacket({ ...common, phase: 'U3', payload: buildU3CandidatePayload(candidateContext, f.uid, { frozenU1: { result: 'PASS' }, frozenU2: { result: 'PASS' } }), candidateContext, auditorSessionId: plan.contexts.U3.sessionId, contextId: plan.contexts.U3.contextId, inputVisibilityProfile: 'FROZEN_V1_V2', priorReviewVisibility: 'FROZEN_U1_U2' });
   const packetRefs = [
     { phase: 'U1', ref: f.write('packets/u1.json', u1) },
