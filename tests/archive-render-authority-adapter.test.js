@@ -22,9 +22,10 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
   assert.match(engine, /recordArchiveDualRun\(area, ctx(?: = null)?\)/);
   for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter']) {
-    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=20260911\\.5`));
+    const version = ['screen-runtime', 'solution-render-executor'].includes(script) ? '20260913\\.1' : '20260911\\.5';
+    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
   }
-  assert.match(engine, /solution-render-executor\.js\?v=20260911\.5/);
+  assert.match(engine, /solution-render-executor\.js\?v=20260913\.1/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /exam-render-executor\.js\?v=20260911\.5/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);

@@ -35,6 +35,8 @@
         let tail = Promise.resolve(), activeContext = null, latestReady = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
         let desired = null;
         let pendingCount = 0;
+        let pendingForegroundCount = 0;
+        const backgroundControllers = new Set();
         const attempts = [], cleanupPending = [];
         const retiredSessions = new Set();
         const owners = new WeakMap();
@@ -187,6 +189,7 @@
             if (!foreground) {
                 if (!adapter.enablePrewarm) return Promise.resolve({ ok: false, code: 'BACKGROUND_NOT_ENABLED' });
                 if (value.type !== 'MODE_CHANGE') return Promise.resolve({ ok: false, code: 'BACKGROUND_INTENT_FORBIDDEN' });
+                if (pendingForegroundCount > 0) return Promise.resolve({ ok: false, code: 'PREWARM_NOT_IDLE' });
                 if (!currentSession || value.requestedMode === currentSession.activeMode) return Promise.resolve({ ok: false, code: 'PREWARM_NOT_IDLE' });
             }
             let intent, input;
@@ -201,13 +204,19 @@
             activeContext?.abortController.abort();
             const ctx = { transactionId: unique('render'), requestGeneration: ++currentRequestGeneration, intentType: intent.type, intent, input, foreground, background: !foreground, sideEffectsAllowed: false, abortController: abort, abortSignal: abort.signal, state: 'QUEUED', createdAt: Date.now(), committed: false };
             pendingCount += 1;
-            const pending = tail.then(() => run(ctx)).finally(() => { pendingCount -= 1; });
+            if (foreground) pendingForegroundCount += 1;
+            else backgroundControllers.add(abort);
+            const pending = tail.then(() => run(ctx)).finally(() => {
+                pendingCount -= 1;
+                if (foreground) pendingForegroundCount -= 1;
+                else backgroundControllers.delete(abort);
+            });
             tail = pending.catch(() => {});
             if (foreground) { latestReady = pending; adapter.onRequest?.(pending, ctx); }
             return pending;
         }
         async function whenIdle() { let pending; do { pending = tail; await pending; } while (pending !== tail); return latestReady; }
-        function cancelBackground() { if (activeContext?.background) activeContext.abortController.abort(); }
+        function cancelBackground() { for (const controller of backgroundControllers) controller.abort(); }
         return Object.freeze({ request, whenIdle, cancelBackground, prewarm: mode => request({ type: 'MODE_CHANGE', requestedMode: mode, foreground: false }), get busy() { return pendingCount > 0; }, get currentSession() { return currentSession; }, get activeSnapshot() { return activeSnapshot; }, get committedCandidate() { return committedCandidate; }, get requestGeneration() { return currentRequestGeneration; }, inspect: () => ({ requestGeneration: currentRequestGeneration, currentSession, activeSnapshot, attempts: attempts.slice(), cleanupPending: cleanupPending.length, backgroundSideEffectCount: 0 }) });
     }
     return Object.freeze({ RenderIntentType, BuildAttemptState, ModeSnapshotStatus, create, promotePendingSession });

@@ -383,10 +383,10 @@
     </style>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <script src="render-state-normalizer.js?v=20260912.1"></script>
-    <script src="screen-runtime.js?v=20260912.1"></script>
-    <script src="common-fast-runtime.js?v=20260912.1"></script>
+    <script src="screen-runtime.js?v=20260913.1"></script>
+    <script src="common-fast-runtime.js?v=20260913.1"></script>
     <script src="exam-render-executor.js?v=20260912.1"></script>
-    <script src="solution-render-executor.js?v=20260912.1"></script>
+    <script src="solution-render-executor.js?v=20260913.1"></script>
     <script src="answer-render-executor.js?v=20260912.1"></script>
 </head>
 <body>
@@ -2409,9 +2409,12 @@ async function renderBody() {
     else await measureRenderPhase('exam-layout', () => renderExam(area, AppState.data));
     if (AppState.mode === 'ans' || rendererMode() === 'legacy') await typesetMath('render-final', [area]);
     if (AppState.mode === 'ans') await fitAnswerPages(area, AppState.data);
-    const imageReadiness = await waitForPrintImages(area);
-    markMixedReadiness('IMAGE_READY', imageReadiness);
-    markMixedReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: AppState.mode });
+    // The common host owns the final image/readiness barrier.
+    if (!buildContext) {
+        const imageReadiness = await waitForPrintImages(area);
+        markMixedReadiness('IMAGE_READY', imageReadiness);
+        markMixedReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: AppState.mode });
+    }
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
     await recordMixedLayoutPromotionGate(area);
