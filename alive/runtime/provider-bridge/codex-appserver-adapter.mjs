@@ -23,6 +23,26 @@ export function nativeImageInput(url) {
   return { type: 'image', url, detail: 'original' };
 }
 
+// Only traverse the phase-authorized visual lanes, never arbitrary metadata.
+export function buildNativeTurnInput(prompt, packet) {
+  const urls = new Set();
+  const collect = value => {
+    if (!value || typeof value !== 'object') return;
+    if (typeof value.dataUrl === 'string') urls.add(value.dataUrl);
+    if (Array.isArray(value)) value.forEach(collect);
+    else for (const [key, child] of Object.entries(value)) if (key !== 'sourceRef') collect(child);
+  };
+  for (const row of Array.isArray(packet.payload) ? packet.payload : [packet.payload]) {
+    if (packet.phase === 'U1') collect(row.problemAssets);
+    if (packet.phase === 'U2') collect(row.artifact);
+    if (packet.phase === 'U3') {
+      collect(row.currentQuestion?.problemAssets);
+      collect(row.renderWitnesses);
+    }
+  }
+  return [{ type: 'text', text: prompt }, ...[...urls].map(nativeImageInput)];
+}
+
 const readStdin = () => new Promise((resolve, reject) => {
   let value = '';
   process.stdin.setEncoding('utf8');
@@ -189,15 +209,10 @@ async function handleDaemonRequest(runtime, request) {
   if (request.operation !== 'phase') throw new Error('CODEX_APPSERVER_UNKNOWN_OPERATION');
   const { launch, context } = phaseContextForLaunch(runtime.state, request.logicalLaunchId, request.phase);
   const threadId = context.threadId;
-  const packetRows = Array.isArray(request.packet?.payload) ? request.packet.payload : [request.packet?.payload];
-  const imageUrls = [...new Set(packetRows.flatMap(row => [
-    ...(row?.problemAssets || []),
-    ...((row?.artifact?.assetRefs || []))
-  ]).map(asset => asset?.dataUrl).filter(url => typeof url === 'string' && url.startsWith('data:image/')) ).map(nativeImageInput)];
   const turnResponse = await runtime.app.request('turn/start', {
     threadId,
     model: 'gpt-5.6-luna',
-    input: [{ type: 'text', text: request.prompt }, ...imageUrls.map(url => ({ type: 'image', url, detail: 'original' }))],
+    input: buildNativeTurnInput(request.prompt, request.packet),
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },

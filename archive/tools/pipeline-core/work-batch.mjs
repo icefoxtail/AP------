@@ -400,6 +400,32 @@ export function materializeWorkBatchRepair(root, spec) {
   });
 }
 
+// Semantic repair iterations and provider attempts are different counters.
+// A review-only iteration reuses its freeze; an execution successor reuses
+// both the freeze and the semantic iteration of its failed logical review.
+export function targetedReviewIteration(state, freeze, recoveryOfLaunchId = null) {
+  const reviews = state.launches.filter(l => l.purpose === 'TARGETED_RECHECK' && l.executionRecovery !== true);
+  check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
+  check(freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
+  if (recoveryOfLaunchId) {
+    const failed = state.launches.find(l => l.launchId === recoveryOfLaunchId);
+    check(failed?.status === 'FAILED' && failed.purpose === 'TARGETED_RECHECK' && failed.freezeSha === freeze.freezeSha, 'EXECUTION_RECOVERY_FREEZE_BINDING');
+    check(Number.isSafeInteger(failed.repairIteration) && failed.repairIteration > 0, 'EXECUTION_RECOVERY_ITERATION_REQUIRED');
+    return failed.repairIteration;
+  }
+  check(reviews.length < maxRepairIterationsForState(state), 'REPAIR_ITERATION_LIMIT');
+  const iteration = state.repairIterations?.at(-1);
+  if (state.workflowProfile === WORKFLOW_PROFILES.PAST_EXAM && iteration) {
+    check(iteration.status === 'FROZEN_FOR_RECHECK', 'REPAIR_NOT_FROZEN_FOR_RECHECK');
+    check(iteration.freezeSha === freeze.freezeSha, 'REPAIR_FREEZE_LINEAGE_MISMATCH');
+    check(!reviews.some(l => l.repairIteration === iteration.iteration), 'REPAIR_ITERATION_ALREADY_REVIEWED');
+    return iteration.iteration;
+  }
+  const reviewOnly = iteration?.repairKind === 'REVIEW_ONLY_RESOLUTION';
+  check(state.freezes.length === reviews.length + (reviewOnly ? 1 : 2), 'TARGETED_CHANGE_REQUIRED');
+  return reviews.length + 1;
+}
+
 function collectFreeze(root, state, runRefs) {
   const runs = runRefs.map(ref => load(root, ref));
   check(same(sorted(runs.map(r => r.runId)), state.runIds) && runs.length === state.runIds.length, 'WHOLE_JOB_FREEZE_REQUIRED');
@@ -622,13 +648,7 @@ export function reserveWorkBatchReview(root, id, request) {
     if (request.purpose === 'FINAL_AUDIT') {
       if (!executionRecoveryRequested) check(state.launches.filter(launch => launch.executionRecovery !== true).length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
     } else if (request.purpose === 'TARGETED_RECHECK') {
-      check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
-      const repairCount = state.launches.filter(l => l.purpose === 'TARGETED_RECHECK' && l.executionRecovery !== true).length;
-      const maxRepairIterations = maxRepairIterationsForState(state);
-      check(repairCount < maxRepairIterations, 'REPAIR_ITERATION_LIMIT');
-      const reviewOnly = state.repairIterations?.at(-1)?.repairKind === 'REVIEW_ONLY_RESOLUTION';
-      check((reviewOnly ? state.freezes.length === repairCount + 1 : state.freezes.length === repairCount + 2) && freeze.affected.length > 0, 'TARGETED_CHANGE_REQUIRED');
-      if (state.workflowProfile === WORKFLOW_PROFILES.PAST_EXAM && state.repairIterations?.length) check(state.repairIterations?.at(-1)?.status === 'FROZEN_FOR_RECHECK', 'REPAIR_NOT_FROZEN_FOR_RECHECK');
+      targetedReviewIteration(state, freeze, recoveryOfLaunchId);
     } else check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
     const scope = reviewScopeForPurpose(state, freeze, request.purpose);
     if (isBenchmarkJobKind(state.jobKind) && request.purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
@@ -643,7 +663,7 @@ export function reserveWorkBatchReview(root, id, request) {
       const plan = load(root, request.providerAttestationPlanRef);
       const nextLaunchId = `${id}:${state.launches.length + 1}`;
       check(plan?.schemaVersion === 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1' && plan.kind === 'PROVIDER_STATELESS_REVIEW_PLAN', 'PROVIDER_PLAN_INVALID');
-      const expectedRepairIteration = request.purpose === 'TARGETED_RECHECK' ? state.launches.filter(l => l.purpose === 'TARGETED_RECHECK' && l.executionRecovery !== true).length + 1 : 0;
+      const expectedRepairIteration = request.purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, recoveryOfLaunchId) : 0;
       check(plan.workBatchId === id && plan.launchId === nextLaunchId && plan.purpose === request.purpose && plan.freezeSha === freeze.freezeSha && plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId && plan.inputSha === freezeInputSha(freeze) && plan.repairIteration === expectedRepairIteration, 'PROVIDER_PLAN_LAUNCH_BINDING');
       if (executionRecoveryRequested) check(plan.executionRecoveryOfLaunchId === recoveryOfLaunchId && plan.executionFailureClass === executionRecoveryRecord.failure.failureClass && plan.executionFailureFingerprint === executionRecoveryRecord.failure.fingerprint, 'PROVIDER_PLAN_EXECUTION_RECOVERY_BINDING');
       check(plan.preflightResponse?.requestSha === plan.preflightRequest?.requestSha && plan.preflightResponseSha === objectSha(plan.preflightResponse), 'PROVIDER_PLAN_ATTESTATION_TAMPERED');
@@ -657,7 +677,7 @@ export function reserveWorkBatchReview(root, id, request) {
     }
     const launchInputSha = freezeInputSha(freeze);
     const launchId = `${id}:${state.launches.length + 1}`;
-    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? state.launches.filter(l => l.purpose === 'TARGETED_RECHECK' && l.executionRecovery !== true).length + 1 : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}), ...(executionRecoveryRecord ? { executionRecovery: true, recoveryOfLaunchId: executionRecoveryRecord.failedLaunch.launchId, executionFailureClass: executionRecoveryRecord.failure.failureClass, executionFailureFingerprint: executionRecoveryRecord.failure.fingerprint, executionAttempt: executionRecoveryRecord.attempt } : {}) };
+    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, recoveryOfLaunchId) : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}), ...(executionRecoveryRecord ? { executionRecovery: true, recoveryOfLaunchId: executionRecoveryRecord.failedLaunch.launchId, executionFailureClass: executionRecoveryRecord.failure.failureClass, executionFailureFingerprint: executionRecoveryRecord.failure.fingerprint, executionAttempt: executionRecoveryRecord.attempt } : {}) };
     if (executionRecoveryRecord) {
       state.executionRecovery = state.executionRecovery || { maxAttemptsPerFreeze: MAX_EXECUTION_RECOVERY_ATTEMPTS, attempts: [] };
       state.executionRecovery.attempts.push({ freezeSha: freeze.freezeSha, failedLaunchId: executionRecoveryRecord.failedLaunch.launchId, successorLaunchId: launchId, attempt: executionRecoveryRecord.attempt, failureClass: executionRecoveryRecord.failure.failureClass, fingerprint: executionRecoveryRecord.failure.fingerprint, recordedAt: time() });
@@ -836,6 +856,10 @@ export function recordWorkBatchRepair(root, id, request) {
       dispositionKeys.add(key);
     }
     check(dispositionKeys.size === openKeys.size, 'REPAIR_DISPOSITION_COVERAGE_REQUIRED');
+    if (request.runRefs !== undefined) {
+      check(Array.isArray(request.runRefs) && request.runRefs.length > 0, 'REPAIR_RUN_REFS_REQUIRED');
+      for (const ref of request.runRefs) load(root, ref);
+    }
     const repairKind = repairKindForDispositions(request.dispositions);
     const priorFreeze = state.freezes.at(-1);
     const priorRevision = Math.max(...(priorFreeze?.bindings || []).map(binding => binding.revision));
@@ -851,7 +875,12 @@ export function recordWorkBatchRepair(root, id, request) {
     const capabilities = recoveryCapabilityRegistry(root, { inputReady: true });
     iteration.repairPlan = buildRepairPlan(state.openDefects || [], request.dispositions, { capabilityRegistry: capabilities, sourceRecoveryCapability: request.sourceRecoveryCapability, maxRepairIterations: maxRepairIterationsForState(state) });
     iteration.repairRoute = iteration.repairPlan.routes.length === 1 ? iteration.repairPlan.routes[0] : 'SIMILAR_PROTOCOL';
+    if (request.dispositions.every(row => ['REPAIRED_CANDIDATE', 'REPAIRED_ASSET', 'EXTRACTION_CORRECTED'].includes(row.disposition))) {
+      const completedRoutes = [...new Set(iteration.repairPlan.defects.map(row => row.requestedRoute || row.route))];
+      iteration.repairRoute = completedRoutes.length === 1 ? completedRoutes[0] : 'SIMILAR_PROTOCOL';
+    }
     iteration.repairRef = request.repairRef || null;
+    iteration.pendingRunRefs = request.runRefs ? structuredClone(request.runRefs) : null;
     iteration.recordedAt = time();
     if (repairKind === 'REVIEW_ONLY_RESOLUTION') iteration.reviewOnly = true;
     // SOURCE_DEFECT_CONFIRMED is an automatic recovery route. The original
@@ -859,7 +888,11 @@ export function recordWorkBatchRepair(root, id, request) {
     // and bind it through SOURCE_RECOVERY closure evidence. Only an explicit
     // HOLD (or an unavailable recovery capability) may stop the batch here.
     const blockingDisposition = request.dispositions.find(disposition => disposition.disposition === 'HOLD');
-    if (repairKind !== 'REVIEW_ONLY_RESOLUTION' && iteration.repairPlan.status === 'HUMAN_DECISION_REQUIRED' && iteration.repairPlan.defects.some(defect => defect.capabilityReason === 'PRODUCER_NOT_IMPLEMENTED' || defect.capability === 'UNAVAILABLE')) {
+    // A recorded REPAIRED_* disposition is completed builder work, not a
+    // request to invoke a default producer. The following freeze still checks
+    // its actual changed inputs/evidence. Pending source recovery needs a
+    // producer and must keep its fail-closed boundary.
+    if (request.dispositions.some(disposition => disposition.disposition === 'SOURCE_DEFECT_CONFIRMED') && iteration.repairPlan.status === 'HUMAN_DECISION_REQUIRED' && iteration.repairPlan.defects.some(defect => defect.capabilityReason === 'PRODUCER_NOT_IMPLEMENTED' || defect.capability === 'UNAVAILABLE')) {
       state.status = 'HOLD';
       state.lastHold = { at: time(), code: 'HOLD:RECOVERY_CAPABILITY_NOT_IMPLEMENTED' };
       iteration.status = 'HOLD';

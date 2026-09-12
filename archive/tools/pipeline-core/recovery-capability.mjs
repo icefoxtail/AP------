@@ -65,10 +65,14 @@ const implementationRoot = path.resolve(path.dirname(fileURLToPath(import.meta.u
 
 const hasInput = inputReady => inputReady === true || (inputReady && typeof inputReady === 'object');
 
-function rowFor(root, route, { inputReady = false } = {}) {
+function rowFor(root, route, { inputReady = false, handlers = {} } = {}) {
   const definition = definitions[route];
   if (!definition) return { route, implemented: false, available: false, inputReady: false, handler: null, reason: 'UNKNOWN_ROUTE' };
-  const implemented = Boolean(definition.probe(root) || root !== implementationRoot && definition.probe(implementationRoot));
+  // Only execution recovery is wired end-to-end by the default runner. The
+  // other modules are preparation/reducers; a caller must register a producer
+  // which persists the revision, recollects evidence and returns frozen refs.
+  const registered = typeof handlers[route] === 'function';
+  const implemented = registered || route === 'EXECUTION_RECOVERY' && Boolean(definition.probe(root) || root !== implementationRoot && definition.probe(implementationRoot));
   const ready = hasInput(inputReady);
   const available = implemented && ready;
   return {
@@ -76,14 +80,14 @@ function rowFor(root, route, { inputReady = false } = {}) {
     implemented,
     available,
     inputReady: ready,
-    handler: definition.handler,
-    reason: !implemented ? (definition.reason || 'HANDLER_NOT_FOUND') : !ready ? 'INPUT_NOT_READY' : null,
+    handler: registered ? `REGISTERED_PRODUCER:${route}` : definition.handler,
+    reason: !implemented ? 'PRODUCER_NOT_IMPLEMENTED' : !ready ? 'INPUT_NOT_READY' : null,
   };
 }
 
-export function probeRecoveryCapabilities(root, { inputReady = false, routes = RECOVERY_ROUTES } = {}) {
+export function probeRecoveryCapabilities(root, { inputReady = false, routes = RECOVERY_ROUTES, handlers = {} } = {}) {
   const resolvedRoot = path.resolve(root || process.cwd());
-  return routes.map(route => rowFor(resolvedRoot, route, { inputReady }));
+  return routes.map(route => rowFor(resolvedRoot, route, { inputReady, handlers }));
 }
 
 export function recoveryCapabilityRegistry(root, options = {}) {
@@ -112,5 +116,5 @@ export function isCapabilityAvailable(registry, route) {
 }
 
 export function recoveryCapabilityDefinitions() {
-  return structuredClone(definitions);
+  return Object.fromEntries(Object.entries(definitions).map(([route, { probe, ...definition }]) => [route, { ...definition, producer: route === 'EXECUTION_RECOVERY' }]));
 }

@@ -21,7 +21,8 @@ test('recovery capability registry probes executable handlers instead of trustin
   assert.equal(derived.implemented, false);
   assert.equal(derived.available, false);
   assert.equal(derived.reason, 'PRODUCER_NOT_IMPLEMENTED');
-  for (const route of ['AUTHORITY_BINDING_REPAIR', 'EXECUTION_RECOVERY', 'VISUAL_EVIDENCE_REPAIR']) assert.equal(capabilityForRoute(registry, route).available, true);
+  for (const route of ['SOURCE_FIDELITY_RESTORATION', 'ANSWER_KEY_RECOVERY', 'CANDIDATE_REPAIR', 'AUTHORITY_BINDING_REPAIR', 'VISUAL_EVIDENCE_REPAIR']) assert.equal(capabilityForRoute(registry, route).available, false);
+  assert.equal(capabilityForRoute(registry, 'EXECUTION_RECOVERY').available, true);
 });
 
 test('unavailable derived source recovery is explicit human decision, while structured class wins over geometry text', () => {
@@ -32,7 +33,8 @@ test('unavailable derived source recovery is explicit human decision, while stru
   assert.equal(unavailable.capabilityReason, 'PRODUCER_NOT_IMPLEMENTED');
   assert.equal(routeDefect({ defectClass: 'SOURCE_PAYLOAD_DEFECT' }, { sourceRecoveryCapability: 'ACTIVE' }).route, 'HUMAN_DECISION_REQUIRED');
   const candidate = routeDefect({ defectClass: 'CANDIDATE_MATH_DEFECT', type: 'LOGICAL_AND_GEOMETRIC_ERROR' }, { capabilityRegistry: registry });
-  assert.equal(candidate.route, 'CANDIDATE_REPAIR');
+  assert.equal(candidate.route, 'HUMAN_DECISION_REQUIRED');
+  assert.equal(candidate.requestedRoute, 'CANDIDATE_REPAIR');
   assert.equal(candidate.classificationSource, 'STRUCTURED');
   assert.equal(buildRepairPlan([{ runId: 'run', questionUid: 'q', defectClass: 'SOURCE_PAYLOAD_DEFECT' }], [], { capabilityRegistry: registry }).status, 'HUMAN_DECISION_REQUIRED');
 });
@@ -45,9 +47,16 @@ test('Maesan-shaped defect fixture routes q5, q11, q19, and provider envelope by
     { runId: 'past20-maesan', questionUid: '20_매산고_2학기_중간_고1_기출|19', phase: 'U2', axis: 'AUTHORITY', defectClass: 'AUTHORITY_DEFECT', type: 'ANSWER_RUBRIC_AUTHORITY' },
     { runId: 'past20-maesan', questionUid: '20_매산고_2학기_중간_고1_기출|5', phase: 'U1', axis: 'EXECUTION', defectClass: 'EXECUTION_DEFECT', type: 'PROVIDER_INPUT_ENVELOPE_INVALID' },
   ], { capabilityRegistry: registry });
-  assert.equal(defects[0].route, 'VISUAL_EVIDENCE_REPAIR');
+  assert.equal(defects[0].requestedRoute, 'VISUAL_EVIDENCE_REPAIR');
+  assert.equal(defects[0].route, 'HUMAN_DECISION_REQUIRED');
   assert.equal(defects[1].route, 'HUMAN_DECISION_REQUIRED');
   assert.equal(defects[1].requestedRoute, 'DERIVED_SOURCE_RECOVERY');
-  assert.equal(defects[2].route, 'AUTHORITY_BINDING_REPAIR');
+  assert.equal(defects[2].requestedRoute, 'AUTHORITY_BINDING_REPAIR');
+  assert.equal(defects[2].route, 'HUMAN_DECISION_REQUIRED');
   assert.equal(defects[3].route, 'EXECUTION_RECOVERY');
+});
+
+test('registered producer enables its route explicitly', () => {
+  const registry = recoveryCapabilityRegistry(root, { inputReady: true, handlers: { CANDIDATE_REPAIR: () => {} } });
+  assert.equal(capabilityForRoute(registry, 'CANDIDATE_REPAIR').available, true);
 });

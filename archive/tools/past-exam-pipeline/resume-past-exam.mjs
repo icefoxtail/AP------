@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { aggregateWorkBatchAudit, freezeWorkBatch, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview } from '../pipeline-core/work-batch.mjs';
 import { buildAuditorPacket, buildU3CandidatePayload, loadCandidateReviewContext, visualApplicabilityForQuestion } from '../pipeline-core/review-isolation-runner.mjs';
-import { fileRef, readBoundFile, writeNewJson } from '../pipeline-core/canonical.mjs';
+import { canonicalJson, fileRef, readBoundFile, writeNewJson } from '../pipeline-core/canonical.mjs';
 import { loadBoundQuestionBanks } from '../pipeline-core/closure.mjs';
 import { prepareProviderReview, dispatchProviderReview, validateProviderPacketPreflight, visualAssetPayload } from '../pipeline-core/provider-bridge.mjs';
 import { nextWorkBatchAction } from '../pipeline-core/defect-router.mjs';
@@ -14,6 +14,7 @@ import { recoveryCapabilityRegistry } from '../pipeline-core/recovery-capability
 export const RESUME_RUNNER_VERSION = 'APMATH_PAST_EXAM_RESUME_RUNNER_v1';
 export const RESUME_ACTIONS = Object.freeze([
   'BUILD_AND_FREEZE',
+  'FREEZE_RECORDED_REPAIR',
   'AUTO_REPAIR',
   'AUTHORITY_BINDING_REPAIR',
   'VISUAL_EVIDENCE_REPAIR',
@@ -60,21 +61,42 @@ function sourceAssetRef(root, row) {
 
 function solutionAssets(root, row) {
   const paths = [
+    ...(row.declared.problemAssetPaths || []),
     ...(row.question.solutionAssetPaths || []),
     ...(row.question.solutionAssetRefs || []).map(ref => ref.path).filter(Boolean),
   ];
-  return paths.map(relative => refForPath(row.run, relative)).filter(Boolean).map(ref => visualAssetPayload(root, ref));
+  return [...new Set(paths)].map(relative => {
+    const ref = refForPath(row.run, relative);
+    if (!ref) throw new Error(`REVIEW_ASSET_NOT_BOUND:${relative}`);
+    return visualAssetPayload(root, ref);
+  });
 }
 
-function packetInputs(root, state, plan) {
-  const rows = runRows(root, state, state.freezes.find(freeze => freeze.freezeSha === plan.freezeSha));
+function renderWitnesses(root, row) {
+  const witnesses = [];
+  for (const ref of row.run.evidence || []) {
+    const evidence = readJsonRef(root, ref);
+    if (evidence.axis !== 'RENDER_CAPTURE') continue;
+    if (evidence.inputSha !== row.run.inputSha) throw new Error('REVIEW_RENDER_CAPTURE_STALE');
+    for (const witness of evidence.payload?.itemWitnesses || []) {
+      if (witness.questionUid !== row.question.questionUid) continue;
+      witnesses.push({ ...witness, screenshot: visualAssetPayload(root, witness.screenshot) });
+    }
+  }
+  return witnesses;
+}
+
+export function packetInputs(root, state, plan) {
+  const scope = new Set(plan.scope.map(target => `${target.runId}:${target.questionUid}`));
+  const rows = runRows(root, state, state.freezes.find(freeze => freeze.freezeSha === plan.freezeSha)).filter(row => scope.has(`${row.target.runId}:${row.target.questionUid}`));
+  if (rows.length !== scope.size) throw new Error('REVIEW_SCOPE_TARGET_MISSING');
   const byPhase = {
     U1: rows.map(row => ({ questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: sourceAssetRef(root, row) ? [sourceAssetRef(root, row)] : [] })),
     U2: rows.map(row => ({ questionUid: row.question.questionUid, artifact: solutionAssets(root, row).length ? { assetRefs: solutionAssets(root, row) } : null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion({ ...row.declared, ...row.question, visual: row.declared?.visual }) })),
     U3: [],
   };
   const candidateContext = Object.assign({}, ...rows.map(row => row.candidateContext));
-  byPhase.U3 = rows.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { frozenU1: { status: 'FROZEN_SOURCE_PACKET' }, frozenU2: { status: 'FROZEN_ARTIFACT_PACKET' }, renderWitnesses: [], metadata: {}, dependencies: {} }));
+  byPhase.U3 = rows.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { frozenU1: { status: 'FROZEN_SOURCE_PACKET' }, frozenU2: { status: 'FROZEN_ARTIFACT_PACKET' }, renderWitnesses: renderWitnesses(root, row), metadata: {}, dependencies: {} }));
   return { rows, byPhase };
 }
 
@@ -103,7 +125,9 @@ function buildPackets(root, state, plan, packetRoot) {
       candidateContext: phase === 'U3' ? Object.assign({}, ...packetInputs(root, state, plan).rows.map(row => row.candidateContext)) : null,
     });
     const relative = `${packetRoot}/${phase.toLowerCase()}-packet.json`;
-    writeNewJson(path.resolve(root, relative), packet);
+    if (fs.existsSync(path.resolve(root, relative))) {
+      if (canonicalJson(readJsonRef(root, fileRef(root, relative))) !== canonicalJson(packet)) throw new Error(`PACKET_REPLAY_CONTENT_MISMATCH:${phase}`);
+    } else writeNewJson(path.resolve(root, relative), packet);
     refs.push({ phase, ref: fileRef(root, relative) });
   }
   return refs;
@@ -122,11 +146,33 @@ async function runReview(root, state, purpose, options, executionRecoveryOfLaunc
   const planPath = options.planPath || `${launchRoot}/plan.json`;
   const receiptPath = options.receiptPath || `${launchRoot}/receipt.json`;
   const preflight = prepareProviderReview(root, { workBatchId: state.workBatchId, purpose, transport: providerTransport(root, state.workBatchId, options), planPath, executionRecoveryOfLaunchId });
-  const reserved = reserveWorkBatchReview(root, state.workBatchId, preflight.reservationRequest);
   const plan = readJsonRef(root, preflight.planRef);
-  const packets = options.packetRefsFactory ? await options.packetRefsFactory({ root, state: reserved, plan }) : buildPackets(root, reserved, plan, launchRoot);
+  const packets = options.packetRefsFactory ? await options.packetRefsFactory({ root, state, plan }) : buildPackets(root, state, plan, launchRoot);
   validateProviderPacketPreflight(root, { workBatchId: state.workBatchId, planPath, packetRefs: packets });
+  const reserved = await reserveWhenAvailable(root, state.workBatchId, preflight.reservationRequest, options);
+  if (!reserved) return { status: 'WAITING_FOR_SLOT', productionAuthorized: false };
   return dispatchProviderReview(root, { workBatchId: state.workBatchId, launchId: plan.launchId, planPath, packetRefs: packets, transport: providerTransport(root, state.workBatchId, options), receiptPath });
+}
+
+export async function reserveWhenAvailable(root, workBatchId, request, options = {}) {
+  const deadline = Date.now() + (options.maxSlotWaitMs ?? 180000);
+  let waits = 0;
+  for (;;) {
+    if (options.signal?.aborted) return null;
+    try { return reserveWorkBatchReview(root, workBatchId, request); }
+    catch (error) {
+      // Only an unreserved global slot conflict is safe to retry. Never replay
+      // dispatch, unknown provider failures, corrupt evidence or identity errors.
+      if (error.message !== 'HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED') throw error;
+      const remaining = deadline - Date.now();
+      if (remaining <= 0) return null;
+      const delayMs = Math.min(remaining, options.slotPollMs ?? 1000, 30000);
+      const state = readWorkBatch(root, workBatchId);
+      if (options.onWait) await options.onWait({ workBatchId, state, reason: error.message, waits: ++waits, delayMs });
+      if (options.waitForSlot) await options.waitForSlot({ root, state, delayMs });
+      else await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+  }
 }
 
 async function routeHandler(root, state, plan, route, options) {
@@ -170,6 +216,8 @@ async function performRepair(root, state, action, options) {
     builderId: state.builderId,
     builderSessionId: state.builderSessionId,
   };
+  if (!repairRequest.runRefs?.length) return { status: 'HUMAN_DECISION_REQUIRED', reason: 'REPAIR_PRODUCER_FROZEN_REFS_REQUIRED', results };
+  for (const ref of repairRequest.runRefs) readJsonRef(root, ref);
   const repaired = recordWorkBatchRepair(root, state.workBatchId, repairRequest);
   if (repairRequest.runRefs) freezeWorkBatch(root, state.workBatchId, repairRequest.runRefs);
   return { status: repaired.status, results, state: readWorkBatch(root, state.workBatchId) };
@@ -185,7 +233,7 @@ export async function resumePastExam(root, options = {}) {
       materialized = materializeWorkBatchRepair(resolvedRoot, { workBatchId: options.newWorkBatchId, predecessorWorkBatchId: options.predecessorWorkBatchId, builderId: options.builderId, builderSessionId: options.builderSessionId });
     } catch (error) {
       const reason = String(error?.message || '').startsWith('STALE_FILE:') || String(error?.message || '').startsWith('INVALID_FILE_REF') ? 'IMMUTABLE_EVIDENCE_CORRUPTION' : error.message;
-      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason, predecessorWorkBatchId: options.predecessorWorkBatchId, newWorkBatchId: options.newWorkBatchId, history: [] };
+      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason, detail: error.message, predecessorWorkBatchId: options.predecessorWorkBatchId, newWorkBatchId: options.newWorkBatchId, history: [] };
     }
     workBatchId = materialized.workBatchId;
   }
@@ -194,7 +242,7 @@ export async function resumePastExam(root, options = {}) {
   const history = [];
   for (let step = 0; step < maxSteps; step++) {
     const state = readWorkBatch(resolvedRoot, workBatchId);
-    const action = nextWorkBatchAction(state, { capabilityRegistry: recoveryCapabilityRegistry(resolvedRoot, { inputReady: true }), sourceRecoveryCapability: options.sourceRecoveryCapability });
+    const action = nextWorkBatchAction(state, { capabilityRegistry: recoveryCapabilityRegistry(resolvedRoot, { inputReady: true, handlers: options.handlers }), sourceRecoveryCapability: options.sourceRecoveryCapability });
     history.push({ step, action: action.action, status: action.status, reason: action.reason || null });
     if (options.onAction) await options.onAction({ state, action, step });
     if (action.action === 'DONE') return { schemaVersion: RESUME_RUNNER_VERSION, status: 'DONE', workBatchId, history, state };
@@ -204,15 +252,24 @@ export async function resumePastExam(root, options = {}) {
       freezeWorkBatch(resolvedRoot, workBatchId, refs);
       continue;
     }
+    if (action.action === 'FREEZE_RECORDED_REPAIR') {
+      const iteration = state.repairIterations.at(-1);
+      const refs = iteration.pendingRunRefs || options.runRefs || (iteration.repairKind === 'REVIEW_ONLY_RESOLUTION' ? currentRunRefs(state) : null);
+      if (!refs?.length) return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: 'RECORDED_REPAIR_RUN_REFS_REQUIRED', workBatchId, history, state };
+      freezeWorkBatch(resolvedRoot, workBatchId, refs);
+      continue;
+    }
     if (action.action === 'FINAL_AUDIT' || action.action === 'TARGETED_RECHECK') {
-      await runReview(resolvedRoot, state, action.action === 'FINAL_AUDIT' ? 'FINAL_AUDIT' : 'TARGETED_RECHECK', options);
+      const review = await runReview(resolvedRoot, state, action.action === 'FINAL_AUDIT' ? 'FINAL_AUDIT' : 'TARGETED_RECHECK', options);
+      if (review.status === 'WAITING_FOR_SLOT') return { schemaVersion: RESUME_RUNNER_VERSION, ...review, workBatchId, history, state: readWorkBatch(resolvedRoot, workBatchId) };
       continue;
     }
     if (action.action === 'EXECUTION_RECOVERY') {
       const failed = action.failedLaunchId;
       const purpose = state.launches.find(launch => launch.launchId === failed)?.purpose;
       if (!purpose) return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: 'EXECUTION_RECOVERY_PURPOSE_MISSING', workBatchId, history, state };
-      await runReview(resolvedRoot, state, purpose, options, failed);
+      const review = await runReview(resolvedRoot, state, purpose, options, failed);
+      if (review.status === 'WAITING_FOR_SLOT') return { schemaVersion: RESUME_RUNNER_VERSION, ...review, workBatchId, history, state: readWorkBatch(resolvedRoot, workBatchId) };
       continue;
     }
     if (action.action === 'AUTO_REPAIR') {
@@ -238,8 +295,9 @@ export const resumePastExamOnePass = resumePastExam;
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const root = process.cwd();
-  const workBatchId = process.argv[process.argv.indexOf('--work-batch-id') + 1];
-  const predecessorWorkBatchId = process.argv[process.argv.indexOf('--predecessor-work-batch-id') + 1];
-  const newWorkBatchId = process.argv[process.argv.indexOf('--new-work-batch-id') + 1];
+  const option = name => process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined;
+  const workBatchId = option('--work-batch-id');
+  const predecessorWorkBatchId = option('--predecessor-work-batch-id');
+  const newWorkBatchId = option('--new-work-batch-id');
   resumePastExam(root, { workBatchId, predecessorWorkBatchId, newWorkBatchId, providerCommand: process.execPath, providerArgs: [defaultProviderAdapter(root), '--job', newWorkBatchId || workBatchId] }).then(result => process.stdout.write(`${JSON.stringify(result, null, 2)}\n`)).catch(error => { process.stderr.write(`${error.message}\n`); process.exitCode = 1; });
 }

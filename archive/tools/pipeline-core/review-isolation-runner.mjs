@@ -1,5 +1,6 @@
 import { canonicalJson, HASH_PATTERN, isObject, nonempty, objectSha } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
+import { visualAssetPayload } from './native-visual.mjs';
 
 export const AUDITOR_PACKET_VERSION = 'APMATH_AUDITOR_PACKET_v1';
 export const AUDITOR_PHASES = Object.freeze(['U1', 'U2', 'U3']);
@@ -32,15 +33,16 @@ export function visualApplicabilityForQuestion(question = {}) {
   const solutionAssetPaths = assetPaths(question, 'solutionAssetPaths', 'solutionAssetRefs');
   const hasDependency = visual.problemVisualMathDependency === true
     || visual.sharedVisualMathDependency === true
-    || problemAssetPaths.length > 0;
-  const explicitlyExempt = visual.requirement === 'VISUAL_EXEMPT'
-    || sourceRecord.visualAssetStatus === 'no_visual_asset_required';
+    || problemAssetPaths.length > 0 || Boolean(question.image || sourceRecord.image);
+  const explicitlyExempt = (visual.requirement === 'VISUAL_EXEMPT'
+    || sourceRecord.visualAssetStatus === 'no_visual_asset_required')
+    && !solutionAssetPaths.length && !question.solutionImage && visual.actualSolutionVisualAttached !== true;
   const status = hasDependency || visual.requirement === 'VISUAL_REQUIRED'
     ? 'VISUAL_REQUIRED'
     : explicitlyExempt
       ? 'VISUAL_EXEMPT'
       : 'VISUAL_OPTIONAL';
-  const artifactRequired = status === 'VISUAL_REQUIRED' || visual.actualSolutionVisualAttached === true || solutionAssetPaths.length > 0;
+  const artifactRequired = status === 'VISUAL_REQUIRED' || visual.actualSolutionVisualAttached === true || solutionAssetPaths.length > 0 || Boolean(question.solutionImage);
   return {
     status,
     artifactRequired,
@@ -73,11 +75,18 @@ export function loadCandidateReviewContext(root, run) {
     const declared = run.questions.find(q => q.questionUid === question.questionUid);
     const candidateRef = run.inputs.find(ref => ref.role === 'candidate' && ref.path === declared.candidatePath);
     return [question.questionUid, {
-      currentQuestion: { questionUid: question.questionUid, content: question.content, choices: question.choices || [], candidateRef },
+      currentQuestion: { questionUid: question.questionUid, content: question.content || '', choices: question.choices || [], candidateRef,
+        ...(question.image ? { image: question.image, problemAssets: candidateProblemAssets(root, run, question) } : {}) },
       currentAnswer: question.answer,
       currentSolution: question.solution || '',
     }];
   }));
+}
+
+function candidateProblemAssets(root, run, question) {
+  const ref = (question.problemAssetRefs || []).find(ref => ref && (ref.path === question.image || ref.path === `archive/${question.image}` || ref.path === `${run.assetRoot || 'archive'}/${question.image}`));
+  if (!ref) throw new Error(`CANDIDATE_PROBLEM_ASSET_NOT_BOUND:${question.questionUid}`);
+  return [visualAssetPayload(root, ref)];
 }
 
 export function buildU3CandidatePayload(candidateContext, questionUid, frozenInputs = {}) {
@@ -130,7 +139,7 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
     if (packet.phase === 'U2' && !validateVisualApplicability(payload.visualApplicability)) errors.push('U2_VISUAL_APPLICABILITY_REQUIRED');
     if (packet.phase === 'U3') {
       const current = payload.currentQuestion;
-      if (!isObject(current) || current.questionUid !== payload.questionUid || !nonempty(current.content)
+      if (!isObject(current) || current.questionUid !== payload.questionUid || !(nonempty(current.content) || current.problemAssets?.length)
         || !Array.isArray(current.choices) || current.choices.some(choice => !nonempty(choice))
         || !nonempty(current.candidateRef?.path) || !Number.isSafeInteger(current.candidateRef?.bytes)
         || current.candidateRef.bytes < 0 || !HASH_PATTERN.test(current.candidateRef?.sha256)
