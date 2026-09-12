@@ -1,9 +1,20 @@
 import argparse
 import json
 import re
+import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+
+
+_REPO_ROOT = Path(__file__).resolve().parents[4]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from alive.engine.answer_index_distribution import (  # noqa: E402
+    evaluate_answer_index_distribution,
+    is_answer_distribution_target,
+)
 
 
 REQUIRED_FIELDS = [
@@ -186,8 +197,17 @@ def display_no_sequence_issues(questions, expected_count=None):
     return issues
 
 
-def review_file(candidate_file):
+def _auto_answer_distribution_scope(candidate_file, title):
+    return is_answer_distribution_target(str(candidate_file), exam_title=str(title or ""))
+
+
+def review_file(candidate_file, *, answer_distribution_policy=None):
     title, questions = load_candidate(candidate_file)
+    apply_answer_distribution = (
+        _auto_answer_distribution_scope(candidate_file, title)
+        if answer_distribution_policy is None
+        else bool(answer_distribution_policy)
+    )
     stage1_items = []
     stage2_items = []
     stage3_items = []
@@ -269,6 +289,21 @@ def review_file(candidate_file):
         if not isinstance(q.get("tags"), list):
             stage3_items.append({"displayNo": display_no, "issue": "tags_not_array"})
 
+    answer_distribution = evaluate_answer_index_distribution(
+        questions,
+        policy_enabled=apply_answer_distribution,
+        source_file=str(candidate_file),
+    )
+    distribution_failed = apply_answer_distribution and answer_distribution["gateStatus"] in {
+        "FAIL", "BLOCKED"
+    }
+    if distribution_failed:
+        stage3_items.append({
+            "displayNo": "file",
+            "issue": "answer_index_distribution_gate",
+            "detail": answer_distribution,
+        })
+
     stage1_status = "PASS" if not stage1_items else "FAIL"
     if stage1_status == "FAIL":
         stage2_status = "BLOCKED"
@@ -284,6 +319,12 @@ def review_file(candidate_file):
             "detail": "2차 수학·정오답 검수는 전 문항 직접 풀이 검수 보고가 있어야 PASS 처리할 수 있습니다.",
         })
         final_status = "FAIL"
+    if distribution_failed:
+        final_items.append({
+            "issue": "answer_index_distribution_gate",
+            "detail": answer_distribution,
+        })
+        final_status = "FAIL"
 
     return {
         "examTitle": title,
@@ -294,6 +335,8 @@ def review_file(candidate_file):
         "stage3": {"name": "3차 분류·메타·난이도 태그 검수", "status": stage3_status, "issues": stage3_items},
         "finalIntegrity": {"name": "최종 무결성 검수", "status": final_status, "issues": final_items},
         "promotionReady": final_status == "PASS",
+        "answerDistributionPolicyApplied": apply_answer_distribution,
+        "answerDistribution": answer_distribution,
     }
 
 
@@ -331,6 +374,11 @@ def main():
     parser.add_argument("--root", required=True, help="Root containing candidate JS files")
     parser.add_argument("--out", required=True, help="Output review summary JSON")
     parser.add_argument("--markdown-out", help="Optional output markdown report")
+    parser.add_argument(
+        "--answer-distribution-policy",
+        action="store_true",
+        help="Apply the ACTIVE exam-level answer-index distribution gate",
+    )
     args = parser.parse_args()
 
     root = Path(args.root)
@@ -339,7 +387,12 @@ def main():
     parse_errors = []
     for candidate_file in candidate_files:
         try:
-            reports.append(review_file(candidate_file))
+            reports.append(
+                review_file(
+                    candidate_file,
+                    answer_distribution_policy=(True if args.answer_distribution_policy else None),
+                )
+            )
         except Exception as exc:
             parse_errors.append({"candidateFile": str(candidate_file), "error": str(exc)})
 

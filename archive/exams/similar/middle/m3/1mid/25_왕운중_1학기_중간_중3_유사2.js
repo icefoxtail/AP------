@@ -46,11 +46,11 @@ window.questionBank = [
     "choices": [
       "10",
       "12",
-      "14",
       "16",
-      "18"
+      "18",
+      "14"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -102,11 +102,11 @@ window.questionBank = [
     "choices": [
       "-3",
       "-2",
-      "-1",
       "0",
-      "1"
+      "1",
+      "-1"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -242,11 +242,11 @@ window.questionBank = [
     "choices": [
       "9개",
       "10개",
-      "11개",
       "12개",
-      "13개"
+      "13개",
+      "11개"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -409,12 +409,12 @@ window.questionBank = [
     "content": "이차식 $(x+a)(x-a)+6x+13$ 이 완전제곱식이 되도록 하는 양수 $a$의 값은?",
     "choices": [
       "1",
-      "2",
       "3",
       "4",
+      "2",
       "5"
     ],
-    "answer": "②",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
