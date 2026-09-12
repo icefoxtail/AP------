@@ -18,11 +18,11 @@ window.questionBank = [
     "choices": [
       "-2",
       "0",
-      "2",
       "4",
-      "6"
+      "6",
+      "2"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -102,11 +102,11 @@ window.questionBank = [
     "choices": [
       "3",
       "4",
-      "5",
       "6",
-      "7"
+      "7",
+      "5"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -158,11 +158,11 @@ window.questionBank = [
     "choices": [
       "-10",
       "-8",
-      "-6",
       "-4",
-      "-2"
+      "-2",
+      "-6"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
@@ -186,11 +186,11 @@ window.questionBank = [
     "choices": [
       "4",
       "5",
-      "6",
       "7",
-      "8"
+      "8",
+      "6"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
@@ -213,12 +213,12 @@ window.questionBank = [
     "content": "$x$에 대한 부등식 $x+a \\le x^2-3x+8 \\le 2x^2+x+b$ 가 모든 실수 $x$에 대하여 성립하도록 하는 $a$의 최댓값과 $b$의 최솟값의 합은? (단, $a, b$는 실수이다.)",
     "choices": [
       "12",
-      "14",
       "16",
+      "14",
       "18",
       "20"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
@@ -241,12 +241,12 @@ window.questionBank = [
     "content": "$x$에 대한 이차부등식 $x^2+ax+b<0$ 의 해가 $-2<x<4$ 일 때, $x$에 대한 이차부등식 $x^2+bx-4a \\le 0$ 을 만족시키는 정수 $x$의 개수는? (단, $a, b$는 실수이다.)",
     "choices": [
       "3",
-      "4",
       "5",
+      "4",
       "6",
       "7"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "",
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
@@ -268,13 +268,13 @@ window.questionBank = [
     "wide": false,
     "content": "세 변의 길이가 $x, 8, 10$ 인 삼각형이 예각삼각형이 되도록 하는 정수 $x$의 개수는?",
     "choices": [
+      "6",
       "4",
       "5",
-      "6",
       "7",
       "8"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -296,13 +296,13 @@ window.questionBank = [
     "wide": false,
     "content": "남학생 $3$명과 여학생 $n$명이 일렬로 설 때, 양 끝에 남학생 $2$명이 서는 경우의 수가 $720$이다. 이때 $n$의 값은?",
     "choices": [
+      "4",
       "2",
       "3",
-      "4",
       "5",
       "6"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -464,13 +464,13 @@ window.questionBank = [
     "wide": false,
     "content": "$5$명의 학생이 자리를 바꾸려고 하는데 $1$명은 자기 자리에 그대로 앉고, 다른 $4$명은 기존 자기 자리와 다른 자리에 앉는 경우의 수를 구하시오.",
     "choices": [
+      "45",
       "35",
       "40",
-      "45",
       "50",
       "55"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",

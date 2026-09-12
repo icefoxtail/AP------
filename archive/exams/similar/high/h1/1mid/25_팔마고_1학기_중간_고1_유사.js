@@ -18,11 +18,11 @@ window.questionBank = [
     "choices": [
       "$1$",
       "$3$",
-      "$5$",
       "$7$",
-      "$9$"
+      "$9$",
+      "$5$"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "$P(x) = (x-1)^2(x+1)Q(x) + R(x)$라 하면, $R(x)$는 이차 이하의 다항식이다.\n$P(x)$를 $(x-1)^2$으로 나눈 나머지가 $x+2$이므로 $R(x) = a(x-1)^2 + x+2$로 놓을 수 있다.\n나머지 정리에 의해 $P(-1) = 5$이므로\n$R(-1) = a(-2)^2 + (-1)+2 = 4a+1 = 5 \\implies a=1$\n따라서 $R(x) = (x-1)^2 + x+2 = x^2-x+3$이다.\n$\\therefore R(2) = 4-2+3 = 5$",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
@@ -46,11 +46,11 @@ window.questionBank = [
     "choices": [
       "$1$",
       "$3$",
-      "$6$",
       "$9$",
-      "$12$"
+      "$12$",
+      "$6$"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "$a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca) = 0$\n$a, b, c$가 양수이므로 $a+b+c > 0$이다.\n따라서 $a^2+b^2+c^2-ab-bc-ca = \\frac{1}{2}\\{(a-b)^2+(b-c)^2+(c-a)^2\\} = 0$\n$\\implies a=b=c$\n이를 주어진 식에 대입하면\n$\\frac{2a}{a} + \\frac{2a}{a} + \\frac{2a}{a} = 2+2+2 = 6$",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
@@ -102,11 +102,11 @@ window.questionBank = [
     "choices": [
       "$11$",
       "$13$",
-      "$15$",
       "$17$",
+      "$15$",
       "$19$"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "주어진 조건에 의해\n$f(x) = (x^2+x+1)Q(x) + x-1$\n$Q(x) = (x-1)Q'(x) + 2$\n두 식을 결합하면\n$f(x) = (x^2+x+1)\\{(x-1)Q'(x) + 2\\} + x-1$\n$f(x) = (x^2+x+1)(x-1)Q'(x) + 2(x^2+x+1) + x-1$\n$f(x) = (x^3-1)Q'(x) + 2x^2+3x+1$\n따라서 $R(x) = 2x^2+3x+1$이다.\n$\\therefore R(2) = 2(2^2) + 3(2) + 1 = 8+6+1 = 15$",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
     "subUnit": "다항식의 나눗셈",
@@ -158,12 +158,12 @@ window.questionBank = [
     "choices": [
       "$-9$",
       "$1$",
-      "$6$",
       "$9$",
+      "$6$",
       "$25$"
     ],
-    "answer": "③",
-    "solution": "근과 계수의 관계에 의해 $\\alpha+\\beta=4, \\alpha\\beta=-5$이다.\n주어진 식을 변형하면\n$\\alpha^{2}+\\beta^{2}+\\alpha^{2}\\beta+\\alpha\\beta^{2} = (\\alpha+\\beta)^{2}-2\\alpha\\beta+\\alpha\\beta(\\alpha+\\beta)$\n$= 4^{2} - 2(-5) + (-5) \\cdot 4$\n$= 16 + 10 - 20 = 6$\n따라서 정답은 ③이다.",
+    "answer": "④",
+    "solution": "근과 계수의 관계에 의해 $\\alpha+\\beta=4, \\alpha\\beta=-5$이다.\n주어진 식을 변형하면\n$\\alpha^{2}+\\beta^{2}+\\alpha^{2}\\beta+\\alpha\\beta^{2} = (\\alpha+\\beta)^{2}-2\\alpha\\beta+\\alpha\\beta(\\alpha+\\beta)$\n$= 4^{2} - 2(-5) + (-5) \\cdot 4$\n$= 16 + 10 - 20 = 6$\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
