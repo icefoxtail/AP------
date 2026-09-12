@@ -18,17 +18,9 @@ const wrongEngine = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engin
 function loadEngineExports() {
     const blocks = [...wrongEngine.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m => m[1]);
     let script = blocks[blocks.length - 1];
-    // 부팅 호출(DOM 의존)을 제거하고 테스트 대상 함수만 반환한다.
-    script = script.replace(/\n\s*boot\(\);\s*$/, '\n');
-    script += `
-        return {
-            compactWrongItem, expandWrongItem,
-            buildStudentQrPayload, buildClassQrPayload, buildGradeQrPayload, buildTypeQrPayload,
-            encodeWrongQrPayload, decodeWrongQrPayload, expandWrongQrPayload,
-            buildQrTargetUrl, evaluateQrUrlLength,
-            makeSolutionHtmlChunks, findQuestionInBank,
-            WRONG_PRINT_PUBLIC_URL, QR_URL_LENGTH
-        };`;
+    // Use the adapter's isolated helper scope without installing UI or booting.
+    script = script.slice(0, script.indexOf('const wrongSourceAdapter ='));
+    script += `return createWrongSourceAdapter({ buildState: { payload: null, banks: {}, mode: 'exam' } });`;
 
     // makeSolutionHtmlChunks가 사용하는 최소 DOM 셰임.
     const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
