@@ -1,0 +1,62 @@
+[
+  {
+    "name": "mixer: shared transaction cache restores same root",
+    "pass": true
+  },
+  {
+    "name": "mixer: latest wins preserves visible root during a blocked build",
+    "pass": true
+  },
+  {
+    "name": "mixer: failed math build rolls back without fallback publication",
+    "pass": true
+  },
+  {
+    "name": "mixer: commit failure restores DOM, mode, history and snapshot",
+    "pass": true
+  },
+  {
+    "name": "mixer: prewarm leaves DOM/state/URL unchanged and performs zero API effects",
+    "pass": true
+  },
+  {
+    "name": "mixer: print snapshot mutation rebuilds and repeated dry-run reaches PRINT_READY",
+    "pass": true
+  },
+  {
+    "name": "mixer: rapid mode/header/QPP changes compose, QR toggle updates output",
+    "pass": true
+  },
+  {
+    "name": "wrong: shared transaction cache restores same root",
+    "pass": true
+  },
+  {
+    "name": "wrong: latest wins preserves visible root during a blocked build",
+    "pass": true
+  },
+  {
+    "name": "wrong: failed math build rolls back without fallback publication",
+    "pass": true
+  },
+  {
+    "name": "wrong: commit failure restores DOM, mode, history and snapshot",
+    "pass": true
+  },
+  {
+    "name": "wrong: prewarm leaves DOM/state/URL unchanged and performs zero API effects",
+    "pass": true
+  },
+  {
+    "name": "wrong: print snapshot mutation rebuilds and repeated dry-run reaches PRINT_READY",
+    "pass": true
+  },
+  {
+    "name": "wrong: failed source request preserves previous recipient packet",
+    "pass": true
+  },
+  {
+    "name": "wrong: review composition and recipient boundary survive source replacement",
+    "pass": true
+  }
+]
