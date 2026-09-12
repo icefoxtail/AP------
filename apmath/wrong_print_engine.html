@@ -157,10 +157,10 @@
     </style>
     <script src="../archive/mathjax_render_loop.js?v=20260912.1"></script>
     <script src="../archive/render-state-normalizer.js?v=20260912.1"></script>
-    <script src="../archive/screen-runtime.js?v=20260912.1"></script>
-    <script src="../archive/common-fast-runtime.js?v=20260912.1"></script>
+    <script src="../archive/screen-runtime.js?v=20260913.1"></script>
+    <script src="../archive/common-fast-runtime.js?v=20260913.1"></script>
     <script src="../archive/exam-render-executor.js?v=20260912.1"></script>
-    <script src="../archive/solution-render-executor.js?v=20260912.1"></script>
+    <script src="../archive/solution-render-executor.js?v=20260913.1"></script>
     <script src="../archive/answer-render-executor.js?v=20260912.1"></script>
 </head>
 <body>
@@ -221,21 +221,38 @@ function failClinicReadiness(code, evidence) {
     return failure;
 }
 
+let clinicPrintPending = false;
 async function clinicSafePrint() {
-    if (window.wrongFastHost) { try { await window.wrongFastHost.preflight(); } catch (error) { console.warn('[clinic] print preflight blocked', error); return { ok: false, code: error.message }; } }
-    const renderOutcome = await window.__AP_RENDER_READY__;
+    if (clinicPrintPending) return { ok: false, code: 'PRINT_TRANSACTION_BUSY' };
+    clinicPrintPending = true;
+    document.getElementById('clinic-print-error')?.remove();
+    const button = document.getElementById('btn-print');
+    const disabled = button?.disabled;
+    if (button) button.disabled = true;
     try {
+        if (window.wrongFastHost) await window.wrongFastHost.preflight();
+        const renderOutcome = await window.__AP_RENDER_READY__;
         if (window.APPrintRuntime?.assertSuccessfulRender) window.APPrintRuntime.assertSuccessfulRender(renderOutcome);
         else if (!renderOutcome || renderOutcome.ok !== true) throw Object.assign(new Error('RENDER_TRANSACTION_INCOMPLETE'), { code: 'RENDER_TRANSACTION_INCOMPLETE' });
+        markClinicReadiness('PRINT_READY', { transport: 'browser', pages: document.querySelectorAll('#print-area .page').length });
+        if (new URLSearchParams(location.search).get('printDryRun') === '1') return { ok: true, dryRun: true };
+        window.print();
+        return { ok: true };
     } catch (error) {
-        console.warn('[wrong_print_engine] print blocked by incomplete render transaction', error);
-        window.alert('출력 렌더 또는 이미지 준비가 완료되지 않아 인쇄를 시작하지 않았습니다. 화면의 오류를 확인한 뒤 다시 시도해 주세요.');
-        return;
+        console.warn('[clinic] print failed', error);
+        const notice = document.createElement('span');
+        notice.id = 'clinic-print-error';
+        notice.setAttribute('role', 'alert');
+        notice.textContent = '인쇄를 시작하지 못했습니다. 문항과 이미지 표시를 확인한 뒤 다시 시도해 주세요.';
+        document.getElementById('mode-ctrl')?.appendChild(notice);
+        return { ok: false, code: error.code || error.message };
+    } finally {
+        clinicPrintPending = false;
+        window.wrongFastHost?.unlockPrint();
+        if (button) button.disabled = disabled;
     }
-    markClinicReadiness('PRINT_READY', { transport: 'browser', pages: document.querySelectorAll('#print-area .page').length });
-    if (new URLSearchParams(location.search).get('printDryRun') === '1') { window.wrongFastHost?.unlockPrint(); return { ok: true, dryRun: true }; }
-    window.print();
 }
+
 let previewRenderTimer = null;
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
@@ -2614,6 +2631,7 @@ function wrongSolutionDeps(meta) {
     };
 
     return { document, makeBox, makeSolutionHtmlChunks, makeLongSolutionShell, applyAutoImageSizeClasses, autoCompress, raf,
+        stagingHost: buildContext.stagingHost, clearMath: nodes => window.MathJax?.typesetClear?.(nodes),
         typesetMath: buildContext.typeset,
         makePage: (area, no) => makePage(area, 'sol', getGroupTitle(meta.title), meta.metaLeft || '', meta.metaRight || '', no, { recipientId: meta.recipientId || '', sectionId: meta.sectionId || '' })
     };
@@ -2807,8 +2825,13 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
             if (intent.type === 'SOURCE_CHANGE' && intent.payload) { state.payload = intent.payload.payload; if (intent.payload.mode) state.mode = intent.payload.mode; if (intent.payload.preview) state.previewParentPayloadReceived = true; }
             if (wrongSourceAdapter.isQrSolutionMode()) state.mode = 'review';
         },
-        async prepareState(state, ctx) {
+        async prepareState(state, ctx, committed) {
             if (!state.payload || typeof state.payload !== 'object') throw Error('INVALID_CLINIC_PAYLOAD');
+            // Desired input predates the asynchronous first bank load. Reuse only
+            // the committed source's banks, never those from an aborted build.
+            if (committed?.source.sourceRequestId === ctx.input.sourceRequestId) {
+                state.banks = { ...committed.state.banks, ...state.banks };
+            }
             const binding = createWrongSourceAdapter({ ...ctx, buildState: state });
             await binding.loadAllQuestionBanks(state.payload);
         },

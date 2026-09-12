@@ -343,6 +343,17 @@ async function renderComposed({ area, items, deps }) {
     let pageNo = 1;
     let cols = null;
     let colIdx = 0;
+    const preparedBoxes = new WeakSet();
+    let lastChunkYield = performance.now();
+    async function yieldChunkLayout() {
+        // scrollHeight/clientHeight synchronously flush layout. An animation
+        // frame per text or BR chunk is unnecessary; yield on a time budget
+        // instead so long solutions remain cancellable and the UI responsive.
+        if (performance.now() - lastChunkYield >= 8) {
+            await raf();
+            lastChunkYield = performance.now();
+        }
+    }
 
     const makeGridPage = () => {
         const page = makePage(area, pageNo++);
@@ -376,32 +387,55 @@ async function renderComposed({ area, items, deps }) {
         let exp = shell.querySelector('.sol-exp');
         let targetCol = cols[colIdx];
         targetCol.appendChild(shell);
-        await applyAutoImageSizeClasses(targetCol);
-
-        for (const chunkHtml of chunks) {
+        const preparedChunks = chunks.map(chunkHtml => {
             const chunk = document.createElement('span');
             chunk.className = 'sol-chunk';
             chunk.innerHTML = chunkHtml;
-            exp.appendChild(chunk);
-            await deps.typesetMath('composition-solution', [targetCol]);
-            await raf();
-            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
-
-            // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
-            if (exp.children.length > 1) {
-                exp.removeChild(chunk);
-                targetCol = advanceColumn();
-                shell = makeLongSolutionShell(sourceBox, true);
-                exp = shell.querySelector('.sol-exp');
-                targetCol.appendChild(shell);
+            return chunk;
+        });
+        let chunkStage = null;
+        try {
+            await applyAutoImageSizeClasses(shell);
+            if (deps.stagingHost) {
+                // Match the real shell's width and inherited solution typography.
+                // Typeset all fragments once, then move the resulting DOM intact.
+                chunkStage = makeLongSolutionShell(sourceBox, false);
+                chunkStage.style.width = `${shell.getBoundingClientRect().width}px`;
+                const stageExp = chunkStage.querySelector('.sol-exp');
+                stageExp.append(...preparedChunks);
+                deps.stagingHost.appendChild(chunkStage);
+                await deps.typesetMath('composition-solution-chunks', [stageExp]);
+                // Remaining staged chunks need no further layout. Detaching avoids
+                // relaying out the shrinking staging document after every move.
+                chunkStage.remove();
+            }
+            for (const chunk of preparedChunks) {
                 exp.appendChild(chunk);
-                await deps.typesetMath('composition-solution', [targetCol]);
-                await raf();
+                if (!chunkStage) await deps.typesetMath('composition-solution-chunk', [chunk]);
+                await yieldChunkLayout();
+                if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
+
+                // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
+                if (exp.children.length > 1) {
+                    exp.removeChild(chunk);
+                    targetCol = advanceColumn();
+                    shell = makeLongSolutionShell(sourceBox, true);
+                    exp = shell.querySelector('.sol-exp');
+                    targetCol.appendChild(shell);
+                    exp.appendChild(chunk);
+                    // Moving an already typeset chunk does not introduce new TeX.
+                    await yieldChunkLayout();
+                }
+                if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                    autoCompress(shell);
+                    await yieldChunkLayout();
+                }
             }
-            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
-                autoCompress(shell);
-                await raf();
-            }
+        } finally {
+            // Moved fragments belong to the live shells. Clear only abandoned
+            // staging/source nodes, including the original oversized box.
+            try { deps.clearMath?.([sourceBox, ...(chunkStage ? [chunkStage] : [])]); }
+            finally { chunkStage?.remove(); }
         }
     }
 
@@ -409,15 +443,17 @@ async function renderComposed({ area, items, deps }) {
         while (true) {
             const targetCol = cols[colIdx];
             targetCol.appendChild(box);
-            await applyAutoImageSizeClasses(targetCol);
-            await deps.typesetMath('composition-solution', [targetCol]);
+            if (!preparedBoxes.has(box)) {
+                await applyAutoImageSizeClasses(box);
+                await deps.typesetMath('composition-solution-box', [box]);
+                preparedBoxes.add(box);
+            }
             await raf();
             if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
             autoCompress(box);
             await raf();
-            await deps.typesetMath('composition-solution', [targetCol]);
-            await raf();
+            // Compression changes CSS only; the preceding barrier measures it.
             if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
             // 이 컬럼에 이 해설 박스 하나뿐이면 쪼개서 출력한다(잘림 금지).

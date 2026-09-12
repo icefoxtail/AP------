@@ -205,3 +205,37 @@ test('foreground work cancels stale prewarm before snapshot registration', async
     assert.equal(f.runtime.activeSnapshot.mode, 'ans');
     assert.equal(f.runtime.currentSession.modeSnapshots.sol, null);
 });
+
+test('prewarm cannot supersede a queued or building foreground request', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    let entered, release;
+    const started = new Promise(resolve => { entered = resolve; });
+    f.adapter.build = async ctx => {
+        entered(); await new Promise(resolve => { release = resolve; });
+        return { rootNode: {}, sessionId: ctx.requestedTargetSessionId, pageCount: 1 };
+    };
+    const foreground = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol' });
+    const queuedGeneration = f.runtime.requestGeneration;
+    const queuedWarm = await f.runtime.prewarm('ans');
+    await started;
+    const buildingWarm = await f.runtime.prewarm('ans');
+    release();
+    assert.equal((await foreground).ok, true);
+    assert.equal(queuedWarm.code, 'PREWARM_NOT_IDLE');
+    assert.equal(buildingWarm.code, 'PREWARM_NOT_IDLE');
+    assert.equal(f.runtime.requestGeneration, queuedGeneration);
+    assert.equal(f.runtime.activeSnapshot.mode, 'sol');
+});
+
+test('cancelBackground also cancels a queued build before it can delay print', async () => {
+    const f = fixture({ enablePrewarm: true });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    let builds = 0;
+    f.adapter.build = async ctx => { builds++; return { rootNode: {}, sessionId: ctx.requestedTargetSessionId, pageCount: 1 }; };
+    const background = f.runtime.prewarm('sol');
+    f.runtime.cancelBackground();
+    assert.equal((await background).code, 'DISCARDED_STALE');
+    assert.equal(builds, 0);
+    assert.equal((await f.runtime.whenIdle()).ok, true);
+});

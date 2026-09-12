@@ -2,7 +2,7 @@ const { chromium } = require(process.env.AP_PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const out = path.resolve(__dirname, '../reports/three-engine-fast-runtime');
+const out = path.resolve(process.env.AP_REPORT_DIR || path.join(__dirname, '../reports/three-engine-fast-runtime'));
 fs.mkdirSync(out, { recursive: true });
 (async () => {
     const browser = await chromium.launch({ channel: 'chrome', headless: true });

@@ -3,7 +3,7 @@ const { chromium } = require(process.env.AP_PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const out = path.resolve(__dirname, '../reports/three-engine-fast-runtime');
+const out = path.resolve(process.env.AP_REPORT_DIR || path.join(__dirname, '../reports/three-engine-fast-runtime'));
 fs.mkdirSync(out, { recursive: true });
 const cases = [];
 for (const width of [1440, 390]) for (const mode of ['exam', 'sol', 'ans']) {
@@ -24,6 +24,8 @@ if (process.env.AP_EXTENDED_ONLY) {
     cases.push({ name: 'mixer-real-subjective', width: 1440, launcher: 'mixed-print-layout-launcher.html' });
     cases.push({ name: 'mixer-long-solution', width: 1440, long: true, launcher: 'mixer-render-authority-storage-launcher.html?mode=sol' });
     cases.push({ name: 'wrong-long-solution', width: 1440, long: true, launcher: 'wrong-print-layout-launcher.html?overflow=1&mode=sol' });
+    cases.push({ name: 'wrong-rich-solution', width: 1440, long: true, rich: true, launcher: 'wrong-print-layout-launcher.html?overflow=1&mode=sol' });
+    cases.push({ name: 'wrong-rich-review', width: 390, long: true, rich: true, launcher: 'wrong-print-layout-launcher.html?overflow=1&mode=review' });
     for (const payloadMode of ['class', 'grade', 'type']) for (const mode of ['sol', 'ans']) cases.push({ name: `wrong-${payloadMode}-${mode}`, width: 1440, overrideMode: mode, launcher: `wrong-print-modes-launcher.html?payloadMode=${payloadMode}&recipients=2` });
 }
 (async () => {
@@ -33,13 +35,13 @@ if (process.env.AP_EXTENDED_ONLY) {
         for (const item of cases) {
             if (process.env.AP_CASE_FILTER && !new RegExp(process.env.AP_CASE_FILTER).test(item.name)) continue;
             const pair = [];
-            for (const [label, port] of [['baseline', 8767], ['fast', 8766]]) {
+            for (const [label, port] of [['baseline', Number(process.env.AP_BASELINE_PORT || 8767)], ['fast', 8766]]) {
                 const context = await browser.newContext({ viewport: { width: item.width, height: 1000 } });
                 const page = await context.newPage();
                 const errors = [];
                 page.on('pageerror', e => errors.push(String(e)));
                 await context.route('**/api/**', route => route.fulfill({ status: 200, contentType: 'application/json', body: '{"success":true}' }));
-                if (item.long && item.name.startsWith('wrong')) await context.route('**/wrong-print-overflow-bank.js*', route => route.fulfill({ contentType: 'text/javascript', body: `window.questionBank = ${JSON.stringify([1, 2, 3].map(id => ({ id, content: `긴 해설 ${id}`, answer: '$7$', solution: Array.from({ length: id === 1 ? 70 : 2 }, (_, i) => `풀이 ${i + 1}: $x^2+2x+1=(x+1)^2$이다.<br>`).join('') })))}` }));
+                if (item.long && item.name.startsWith('wrong')) await context.route('**/wrong-print-overflow-bank.js*', route => route.fulfill({ contentType: 'text/javascript', body: `window.questionBank = ${JSON.stringify([1, 2, 3].map(id => ({ id, content: `긴 해설 ${id}`, answer: '$7$', solution: Array.from({ length: id === 1 ? 70 : 2 }, (_, i) => item.rich ? `<div>풀이 ${i + 1}: $x^2+2x+1=(x+1)^2$이다.</div>` : `풀이 ${i + 1}: $x^2+2x+1=(x+1)^2$이다.<br>`).join('') })))}` }));
                 await page.goto(`http://127.0.0.1:${port}` + (item.direct || `/tests/fixtures/${item.launcher}`));
                 await page.waitForURL(/\/(?:archive\/mixed_engine|apmath\/wrong_print_engine)\.html\?/);
                 if (item.overrideMode || (item.long && item.name.startsWith('mixer'))) {

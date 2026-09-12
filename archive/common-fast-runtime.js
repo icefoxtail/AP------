@@ -36,7 +36,7 @@
                 return N.copy({ state, mode: state.mode, sourceRequestId, url: url.href,
                     revision: intent.type.endsWith('INVALIDATION') ? ++revisionSerial : (desired?.revision || committed?.input.revision || 0) });
             },
-            async prepare(input, ctx) {
+            async prepare(input, ctx, committed) {
                 ctx.fetchText = async (url, options = {}) => {
                     const controller = new AbortController();
                     const abort = () => controller.abort();
@@ -50,7 +50,7 @@
                     } finally { clearTimeout(timer); ctx.abortSignal.removeEventListener('abort', abort); }
                 };
                 const state = clone(input.state);
-                await policy.prepareState?.(state, ctx);
+                await policy.prepareState?.(state, ctx, committed);
                 check(ctx);
                 return N.copy({ input, mode: input.mode, canonicalMode: input.mode,
                     source: { targetSessionId: ctx.requestedTargetSessionId, sourceRequestId: input.sourceRequestId,
@@ -177,8 +177,8 @@
                 if (!valid(snapshot)) {
                     root.APPrintRuntime.assertSuccessfulRender(await runtime.request({ type: 'PRINT_STALE_REBUILD' }));
                     snapshot = runtime.activeSnapshot;
+                    if (!valid(snapshot)) throw Error('PRINT_SNAPSHOT_PREFLIGHT_FAILED');
                 }
-                if (!valid(snapshot)) throw Error('PRINT_SNAPSHOT_PREFLIGHT_FAILED');
                 if (!snapshot.pageCount) throw Error('PRINT_EMPTY_DOCUMENT');
                 const tracker = root.APPrintRuntime.createReadinessTracker(policy.name);
                 tracker.begin({ snapshotId: snapshot.snapshotId });

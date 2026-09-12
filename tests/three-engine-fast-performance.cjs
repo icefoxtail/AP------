@@ -6,8 +6,10 @@ const assert = require('node:assert/strict');
 (async () => {
     const browser = await chromium.launch({ channel: 'chrome', headless: true });
     const rows = [];
+    const out = path.resolve(process.env.AP_REPORT_DIR || path.join(__dirname, '../reports/three-engine-fast-runtime'));
+    fs.mkdirSync(out, { recursive: true });
     try {
-        for (const kind of ['mixer', 'wrong']) for (const port of [8767, 8766]) {
+        for (const kind of ['mixer', 'wrong']) for (const port of [Number(process.env.AP_BASELINE_PORT || 8767), 8766]) {
             const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
             await page.route('**/api/**', route => route.fulfill({ contentType: 'application/json', body: '{"success":true}' }));
             const launcher = kind === 'mixer' ? 'mixer-render-authority-storage-launcher.html' : 'wrong-print-layout-launcher.html?duplex=1&recipients=2';
@@ -32,6 +34,6 @@ const assert = require('node:assert/strict');
             await page.close();
         }
     } finally { await browser.close(); }
-    fs.writeFileSync(path.resolve(__dirname, '../reports/three-engine-fast-runtime/performance.json'), JSON.stringify(rows, null, 2));
+    fs.writeFileSync(path.join(out, 'performance.json'), JSON.stringify(rows, null, 2));
     console.log(JSON.stringify(rows.map(r => ({ engine: r.engine, implementation: r.implementation, warmMedianMs: r.samples.slice(3).map(s => s.ms).sort((a, b) => a - b)[1] })), null, 2));
 })().catch(error => { console.error(error); process.exitCode = 1; });
