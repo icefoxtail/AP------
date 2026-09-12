@@ -12,7 +12,8 @@ import { semanticDiff, changeImpactMap, computeAxisInputShaMap } from './semanti
 import { axisInputSha } from './projection.mjs';
 import { createExamReleaseClosure, validateExamReleaseClosure } from './exam-release.mjs';
 import { detectRenderImpact } from './render-impact.mjs';
-import { prepareProviderReview, dispatchProviderReview } from './provider-bridge.mjs';
+import { prepareProviderReview, dispatchProviderReview, validateProviderPacketPreflight } from './provider-bridge.mjs';
+import { nextWorkBatchAction } from './defect-router.mjs';
 import { collectMachineEvidence } from './machine-evidence.mjs';
 
 const args = process.argv.slice(2);
@@ -32,7 +33,9 @@ try {
     case 'work-batch-reconcile': output = reconcileWorkBatchReview(root, value('--work-batch-id'), read(value('--request'))); break;
     case 'work-batch-repair': output = recordWorkBatchRepair(root, value('--work-batch-id'), read(value('--request'))); break;
     case 'provider-preflight': output = prepareProviderReview(root, { workBatchId: value('--work-batch-id'), purpose: value('--purpose'), transport: { command: value('--provider-command'), args: value('--provider-args') ? read(value('--provider-args')) : [] }, planPath: value('--plan-out') }); break;
+    case 'provider-packet-preflight': output = validateProviderPacketPreflight(root, { workBatchId: value('--work-batch-id'), planPath: value('--plan'), packetRefs: read(value('--packet-refs')) }); break;
     case 'provider-dispatch': output = dispatchProviderReview(root, { workBatchId: value('--work-batch-id'), launchId: value('--launch-id'), planPath: value('--plan'), packetRefs: read(value('--packet-refs')), transport: { command: value('--provider-command'), args: value('--provider-args') ? read(value('--provider-args')) : [] }, receiptPath: value('--receipt-out') }); break;
+    case 'work-batch-next-action': output = nextWorkBatchAction(readWorkBatch(root, value('--work-batch-id')), { sourceRecoveryCapability: value('--source-recovery-capability') || 'ACTIVE' }); break;
     case 'work-batch-audit': {
       const state = readWorkBatch(root, value('--work-batch-id'));
       const runs = read(value('--run-refs')).map(ref => JSON.parse(readBoundFile(root, ref)));
@@ -110,7 +113,7 @@ try {
       output = { schemaVersion: RUN_VERSION, pipeline, runId: 'REPLACE_WITH_NEW_RUN_ID', revision: 1, builderSessionId: 'REPLACE_WITH_BUILDER_SESSION', canonicalRecordId: 'REPLACE_WITH_REGISTRY_RECORD', questions: [], inputs: [], evidence: [], registry: [], denominator: { status: 'UNFROZEN', stale: true }, inputSha: null, status: 'DRAFT_NOT_EXECUTABLE' };
       break;
     }
-    default: throw new Error('Usage: cli.mjs work-batch-init|work-batch-materialize-repair|work-batch-freeze|work-batch-repair|work-batch-reserve|work-batch-recover-transient-hold|work-batch-reconcile|work-batch-audit ... | provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT|TARGETED_RECHECK --provider-command COMMAND [--provider-args JSON_FILE] --plan-out RUNTIME_PLAN | provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan RUNTIME_PLAN --packet-refs JSON_FILE --provider-command COMMAND [--provider-args JSON_FILE] --receipt-out RUNTIME_RECEIPT | prepare-v2 ... | machine-checks --manifest FILE [--manifest-out FILE] [--evidence-dir DIR] | audit-v2 --manifest FILE | release-audit --manifest FILE | semantic-diff --previous FILE --current FILE | change-impact --diff FILE --current FILE | axis-input --question FILE --axis AXIS | render-impact --previous FILE --current FILE [--global CSS] | audit --manifest FILE | fact --file FILE | parity --expected FILE | template --pipeline ID | inventory');
+    default: throw new Error('Usage: cli.mjs work-batch-init|work-batch-materialize-repair|work-batch-freeze|work-batch-repair|work-batch-reserve|work-batch-recover-transient-hold|work-batch-reconcile|work-batch-next-action|work-batch-audit ... | provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT|TARGETED_RECHECK --provider-command COMMAND [--provider-args JSON_FILE] --plan-out RUNTIME_PLAN | provider-packet-preflight --work-batch-id JOB --plan RUNTIME_PLAN --packet-refs JSON_FILE | provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan RUNTIME_PLAN --packet-refs JSON_FILE --provider-command COMMAND [--provider-args JSON_FILE] --receipt-out RUNTIME_RECEIPT | prepare-v2 ... | machine-checks --manifest FILE [--manifest-out FILE] [--evidence-dir DIR] | audit-v2 --manifest FILE | release-audit --manifest FILE | semantic-diff --previous FILE --current FILE | change-impact --diff FILE --current FILE | axis-input --question FILE --axis AXIS | render-impact --previous FILE --current FILE [--global CSS] | audit --manifest FILE | fact --file FILE | parity --expected FILE | template --pipeline ID | inventory');
   }
 } catch (error) { output = { status: error.message.startsWith('HOLD:') ? 'HOLD' : 'BLOCKED', errors: [error.message], productionAuthorized: false }; }
 if (args[0]?.startsWith('work-batch-') && output.freezes) output = { status: output.status, workBatchId: output.workBatchId, workflowProfile: output.workflowProfile || 'LEGACY', latestFreezeSha: output.freezes.at(-1)?.freezeSha || null, targetCount: output.freezes.at(-1)?.targets.length || 0, openDefectCount: (output.openDefectSet || []).length, openDefectSet: output.openDefectSet || [], repairIterationCount: (output.repairIterations || []).length, maxRepairIterations: output.policy?.maxRepairIterations || output.policy?.targetedRechecks || null, launch: output.launches.at(-1) || null };

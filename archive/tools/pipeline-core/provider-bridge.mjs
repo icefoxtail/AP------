@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
-import { canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
+import { bytesSha, canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
 import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityForQuestion, VISUAL_ONLY_DEFECT_TYPES } from './review-isolation-runner.mjs';
 import { assertFreshLaunchIdentity, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
@@ -208,6 +208,8 @@ function loadPacket(root, ref, launch, plan, state, candidateContext, sourceCont
   check(validation.status === 'PASS', `PROVIDER_PACKET_INVALID:${validation.errors.join(',')}`);
   check(packet.auditorPrincipalType === 'STATELESS_MODEL' && packet.launchId === launch.launchId && packet.externalTaskId === plan.externalId, 'PROVIDER_PACKET_LAUNCH_BINDING');
   check(packet.auditorId === launch.auditorId && packet.auditorSessionId === launch.contexts[packet.phase].sessionId && packet.contextId === launch.contexts[packet.phase].contextId, 'PROVIDER_PACKET_CONTEXT_BINDING');
+  walkBoundRefs(root, packet);
+  validatePacketVisualAndAuthority(packet, sourceContext);
   if (packet.phase === 'U1') {
     const rows = Array.isArray(packet.payload) ? packet.payload : [packet.payload];
     for (const row of rows) {
@@ -253,6 +255,68 @@ function sourceContexts(root, freeze) {
     }
   }
   return { candidateContext, sourcePayloads, visualApplicabilities, declaredContextDependencyUidSet: [...new Set(declaredContextDependencyUidSet)] };
+}
+
+function walkBoundRefs(root, value, pathValue = '$', seen = new Set()) {
+  if (!value || typeof value !== 'object' || seen.has(value)) return;
+  seen.add(value);
+  if (typeof value.path === 'string' && typeof value.sha256 === 'string' && /^sha256:[0-9a-f]{64}$/.test(value.sha256)) {
+    const bytes = readBoundFile(root, value);
+    if (bytesSha(bytes) !== value.sha256) throw new Error(`HOLD:PROVIDER_PACKET_ASSET_SHA_MISMATCH:${pathValue}`);
+  }
+  if (Array.isArray(value)) return value.forEach((item, index) => walkBoundRefs(root, item, `${pathValue}[${index}]`, seen));
+  for (const [key, child] of Object.entries(value)) walkBoundRefs(root, child, `${pathValue}.${key}`, seen);
+}
+
+function requireNativeImages(value, pathValue = '$', required = false, seen = new Set()) {
+  if (!value || typeof value !== 'object' || seen.has(value)) return;
+  seen.add(value);
+  if (typeof value.dataUrl === 'string') {
+    if (!/^data:image\/(png|jpeg|jpg|webp);base64,[A-Za-z0-9+/=]+$/.test(value.dataUrl)) throw new Error(`HOLD:PROVIDER_NATIVE_IMAGE_ENVELOPE_INVALID:${pathValue}`);
+    if (value.sha256 && /^sha256:[0-9a-f]{64}$/.test(value.sha256)) {
+      const encoded = value.dataUrl.slice(value.dataUrl.indexOf(',') + 1);
+      if (bytesSha(Buffer.from(encoded, 'base64')) !== value.sha256) throw new Error(`HOLD:PROVIDER_NATIVE_IMAGE_SHA_MISMATCH:${pathValue}`);
+    }
+  } else if (required && typeof value.path === 'string' && typeof value.sha256 === 'string') {
+    throw new Error(`HOLD:PROVIDER_NATIVE_IMAGE_REQUIRED:${pathValue}`);
+  }
+  if (Array.isArray(value)) return value.forEach((item, index) => requireNativeImages(item, `${pathValue}[${index}]`, required, seen));
+  for (const [key, child] of Object.entries(value)) requireNativeImages(child, `${pathValue}.${key}`, required || ['problemAssets', 'assetRefs', 'screenshot'].includes(key), seen);
+}
+
+function validatePacketVisualAndAuthority(packet, sourceContext) {
+  const rows = Array.isArray(packet.payload) ? packet.payload : [packet.payload];
+  if (packet.phase === 'U1') for (const row of rows) if (row.problemAssets?.length) requireNativeImages(row.problemAssets, `U1.${row.questionUid}.problemAssets`, true);
+  if (packet.phase === 'U2') for (const row of rows) {
+    const applicability = sourceContext.visualApplicabilities.get(row.questionUid);
+    const required = Boolean(row.visualApplicability?.artifactRequired || row.visualApplicability?.renderWitnessRequired);
+    if (required && ['PENDING', 'UNFINALIZED', null, undefined].includes(row.visualApplicability?.authority?.adjudicationStatus)) throw new Error(`HOLD:PROVIDER_PACKET_AUTHORITY_UNFINALIZED:${row.questionUid}`);
+    if (row.artifact?.assetRefs?.length) requireNativeImages(row.artifact.assetRefs, `U2.${row.questionUid}.artifact.assetRefs`, true);
+    if (applicability && canonicalJson(row.visualApplicability) !== canonicalJson(applicability)) throw new Error(`HOLD:PROVIDER_PACKET_VISUAL_APPLICABILITY_MISMATCH:${row.questionUid}`);
+  }
+  if (packet.phase === 'U3') for (const row of rows) if (row.renderWitnesses?.length) requireNativeImages(row.renderWitnesses, `U3.${row.questionUid}.renderWitnesses`, true);
+}
+
+// This check runs after control-plane identity creation and before repository
+// reservation. It is intentionally read-only and is repeated by dispatch as a
+// last defence. A malformed packet must never consume an expensive audit slot.
+export function validateProviderPacketPreflight(root, { workBatchId, planPath, packetRefs }) {
+  const state = readWorkBatch(root, workBatchId);
+  const { ref: planRef, value: plan } = loadBridgeJson(root, planPath);
+  check(plan?.workBatchId === workBatchId, 'PROVIDER_PLAN_WORK_BATCH_BINDING');
+  const freeze = state.freezes.find(item => item.freezeSha === plan.freezeSha);
+  check(freeze, 'PROVIDER_FREEZE_REQUIRED');
+  const contexts = sourceContexts(root, freeze);
+  const pseudoLaunch = { ...plan, status: 'RESERVED', scope: plan.scope, contexts: plan.contexts, auditorId: plan.auditorId, auditorSessionId: plan.auditorSessionId, launchId: plan.launchId, purpose: plan.purpose, freezeSha: plan.freezeSha, externalId: plan.externalId };
+  check(Array.isArray(packetRefs) && packetRefs.length === PHASES.length, 'PROVIDER_PACKET_REFS_REQUIRED');
+  const packets = packetRefs.map(({ phase, ref }) => {
+    check(PHASES.includes(phase) && ref, 'PROVIDER_PACKET_PHASES_INVALID');
+    const packet = loadPacket(root, ref, pseudoLaunch, plan, state, contexts.candidateContext, contexts);
+    check(packet.phase === phase, 'PROVIDER_PACKET_PHASE_REF_MISMATCH');
+    return { phase, ref };
+  });
+  check(new Set(packets.map(row => row.phase)).size === PHASES.length, 'PROVIDER_PACKET_PHASES_INVALID');
+  return { status: 'PASS', workBatchId, launchId: plan.launchId, planRef, packetRefs: packets, nativeImageAttachmentProtocol: 'url', expensiveLaunchAuthorized: true };
 }
 
 export function applyVisualApplicabilityToDefects(defects, visualApplicabilities) {
