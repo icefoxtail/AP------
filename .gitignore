@@ -333,3 +333,22 @@ backup_before_*.sql
 # ALIVE 외부검수 렌더/압축 검사 임시 폴더
 /.alive-review*/
 /.tmp/
+
+# Local generated verification outputs. Existing tracked reports remain tracked;
+# only newly generated reports are hidden from the working-tree change list.
+/reports/
+
+# Generated solution visualizations. Original/promoted qNN source images remain
+# available for review and are not covered by this rule.
+/archive/assets/images/**/*-solution.svg
+
+# One-off HS quadratic SVG audit scripts. Reusable tools already committed to
+# this directory remain tracked; these generated iteration helpers do not.
+/tools/hs-quadratic-svg-upgrade/build-current-closure-snapshot-r*.mjs
+/tools/hs-quadratic-svg-upgrade/build-scoped-candidate-banks-r*.mjs
+/tools/hs-quadratic-svg-upgrade/fix-official-svg-reference-prefix-r*.mjs
+/tools/hs-quadratic-svg-upgrade/materialize-machine-evidence-r*.mjs
+/tools/hs-quadratic-svg-upgrade/prepare-current-v2-r*.mjs
+/tools/hs-quadratic-svg-upgrade/promote-official-svg-r*.mjs
+/tools/hs-quadratic-svg-upgrade/validate-browser-render-capture-r*.mjs
+/tools/hs-quadratic-svg-upgrade/validate-machine-evidence-r*.mjs

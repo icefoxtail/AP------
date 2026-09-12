@@ -19,6 +19,7 @@ from alive.engine.source_recovery import (
     capability_registry_report,
     diagnose_source_defects,
     make_candidate_version,
+    primary_tier,
     produce_recovery_candidates,
     rank_candidates,
     release_gate,
@@ -331,6 +332,90 @@ class SourceRecoveryTests(unittest.TestCase):
             "mathVerdict": "PASS",
         })
         self.assertIn("ANSWER_KEY_CONFLICT", conflict["defectTypes"])
+
+    def test_payload_defect_outranks_stale_answer_key_and_unresolved_value(self) -> None:
+        source = {
+            "content": "조건이 부족한 문항",
+            "choices": ["1", "2", "3"],
+            "answer": "①",
+            "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+        }
+        result = diagnose_source_defects(source, {
+            "independentlyComputedValue": "UNDETERMINED",
+            "answerUnique": False,
+            "responseContractValid": False,
+            "mathVerdict": "PASS",
+            "defectSignals": ["MISSING_CONDITION", "UNDERDETERMINED_STEM"],
+        })
+        self.assertIn("MISSING_CONDITION", result["defectTypes"])
+        self.assertNotIn("NO_CORRECT_ANSWER", result["defectTypes"])
+        self.assertNotIn("MULTIPLE_CORRECT_ANSWERS", result["defectTypes"])
+        self.assertEqual("R3", primary_tier(result["defectTypes"]))
+
+    def test_valid_multi_answer_contract_is_not_a_source_defect(self) -> None:
+        source = {
+            "content": "가능한 것을 모두 고르시오.",
+            "questionType": "객관식",
+            "choices": ["$3$", "$4$", "$6$", "$11$", "$14$"],
+            "answer": "③, ⑤",
+            "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+        }
+        result = diagnose_source_defects(source, {
+            "answerCardinality": "MULTIPLE",
+            "matchingChoiceIndices": [3, 5],
+            "independentlyComputedValue": "MULTI",
+            "answerUnique": False,
+            "responseContractValid": True,
+            "mathVerdict": "PASS",
+        })
+        self.assertEqual("NO_DEFECT", result["status"])
+        self.assertEqual([3, 5], result["matchingChoiceIndices"])
+        self.assertEqual("③, ⑤", result["canonicalArchiveAnswer"])
+
+    def test_r1_duplicate_repair_supports_symbolic_answer_with_blind_gate(self) -> None:
+        source = {
+            "content": "계산 결과를 고르시오.",
+            "questionType": "객관식",
+            "choices": ["$-4\\sqrt{6}$", "$2\\sqrt{6}$", "$-2\\sqrt{6}$", "$4\\sqrt{6}$", "$4\\sqrt{6}$"],
+            "answer": "④",
+            "sourceEvidence": {"fullPageVerified": True, "questionZoomVerified": True, "choicesVerified": True},
+        }
+        result = run_source_recovery(
+            source_question_uid="P1-SYMBOLIC-DUPLICATE",
+            source_lock_sha256="a" * 64,
+            source_payload=source,
+            independent_solve={
+                "independentlyComputedValue": "$4\\sqrt{6}$",
+                "answerUnique": False,
+                "responseContractValid": False,
+                "mathVerdict": "PASS",
+                "defectSignals": ["DUPLICATE_CHOICES"],
+            },
+            blind_verifier=build_blind_verifier_adapter({
+                "verifierId": "symbolic-blind",
+                "verifierSessionId": "symbolic-blind-session",
+                "independentlyComputedValue": "$4\\sqrt{6}$",
+                "answerUnique": True,
+                "responseContractValid": True,
+                "allChoicesChecked": True,
+                "distractorsWrong": True,
+                "mathVerdict": "PASS",
+            }),
+            validator=lambda candidate: build_validator_evidence(
+                candidate,
+                gate_evidence={
+                    gate: validator_gate(candidate, gate)
+                    for gate in (
+                        "CURRICULUM_VALID",
+                        "RECOVERY_FINGERPRINT_GATE_PASS",
+                        "DIFFICULTY_ROLE_ACCEPTABLE",
+                    )
+                },
+            ),
+        )
+        self.assertEqual("RECOVERED", result["status"])
+        self.assertEqual("R1", result["recoveryTier"])
+        self.assertEqual(1, len(result["acceptedCandidates"]))
 
     def test_no_defect_requires_complete_independent_solve_evidence(self) -> None:
         source = {
