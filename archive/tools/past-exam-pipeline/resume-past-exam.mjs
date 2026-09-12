@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { aggregateWorkBatchAudit, freezeWorkBatch, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview } from '../pipeline-core/work-batch.mjs';
-import { buildAuditorPacket, buildU3CandidatePayload, loadCandidateReviewContext, visualApplicabilityForQuestion } from '../pipeline-core/review-isolation-runner.mjs';
+import { buildAuditorPacket, buildU3CandidatePayload, loadCandidateReviewContext, visualApplicabilityForQuestion, sourcePixelPayloads } from '../pipeline-core/review-isolation-runner.mjs';
 import { canonicalJson, fileRef, readBoundFile, writeNewJson } from '../pipeline-core/canonical.mjs';
 import { loadBoundQuestionBanks } from '../pipeline-core/closure.mjs';
 import { prepareProviderReview, dispatchProviderReview, validateProviderPacketPreflight, visualAssetPayload } from '../pipeline-core/provider-bridge.mjs';
@@ -91,12 +91,12 @@ export function packetInputs(root, state, plan) {
   const rows = runRows(root, state, state.freezes.find(freeze => freeze.freezeSha === plan.freezeSha)).filter(row => scope.has(`${row.target.runId}:${row.target.questionUid}`));
   if (rows.length !== scope.size) throw new Error('REVIEW_SCOPE_TARGET_MISSING');
   const byPhase = {
-    U1: rows.map(row => ({ questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: sourceAssetRef(root, row) ? [sourceAssetRef(root, row)] : [] })),
+    U1: rows.map(row => ({ questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: sourceAssetRef(root, row) ? [sourceAssetRef(root, row)] : [], sourcePixels: sourcePixelPayloads(root, row.run, row.question.sourceRecord) })),
     U2: rows.map(row => ({ questionUid: row.question.questionUid, artifact: solutionAssets(root, row).length ? { assetRefs: solutionAssets(root, row) } : null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion({ ...row.declared, ...row.question, visual: row.declared?.visual }) })),
     U3: [],
   };
   const candidateContext = Object.assign({}, ...rows.map(row => row.candidateContext));
-  byPhase.U3 = rows.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { frozenU1: { status: 'FROZEN_SOURCE_PACKET' }, frozenU2: { status: 'FROZEN_ARTIFACT_PACKET' }, renderWitnesses: renderWitnesses(root, row), metadata: {}, dependencies: {} }));
+  byPhase.U3 = rows.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { renderWitnesses: renderWitnesses(root, row), metadata: {}, dependencies: {} }));
   return { rows, byPhase };
 }
 
@@ -117,8 +117,8 @@ function buildPackets(root, state, plan, packetRoot) {
       builderSessionId: state.builderSessionId,
       auditorPrincipalType: 'STATELESS_MODEL',
       contextId: plan.contexts[phase].contextId,
-      inputVisibilityProfile: phase === 'U1' ? 'SOURCE_ONLY' : phase === 'U2' ? 'ARTIFACT_ONLY' : 'FROZEN_V1_V2',
-      priorReviewVisibility: phase === 'U3' ? 'FROZEN_U1_U2' : 'NONE',
+      inputVisibilityProfile: phase === 'U1' ? 'SOURCE_ONLY' : phase === 'U2' ? 'ARTIFACT_ONLY' : 'CANDIDATE_ONLY',
+      priorReviewVisibility: 'NONE',
       sealed: true,
       launchId: plan.launchId,
       externalTaskId: plan.externalId,
@@ -145,7 +145,7 @@ async function runReview(root, state, purpose, options, executionRecoveryOfLaunc
   const launchRoot = `${bridgeRoot}/launch-${ordinal}`;
   const planPath = options.planPath || `${launchRoot}/plan.json`;
   const receiptPath = options.receiptPath || `${launchRoot}/receipt.json`;
-  const preflight = prepareProviderReview(root, { workBatchId: state.workBatchId, purpose, transport: providerTransport(root, state.workBatchId, options), planPath, executionRecoveryOfLaunchId });
+  const preflight = prepareProviderReview(root, { workBatchId: state.workBatchId, purpose, transport: providerTransport(root, state.workBatchId, options), planPath, executionRecoveryOfLaunchId, authorization: purpose === 'SECOND_AUDIT' ? options.conflictAuthorization || null : null });
   const plan = readJsonRef(root, preflight.planRef);
   const packets = options.packetRefsFactory ? await options.packetRefsFactory({ root, state, plan }) : buildPackets(root, state, plan, launchRoot);
   validateProviderPacketPreflight(root, { workBatchId: state.workBatchId, planPath, packetRefs: packets });
@@ -245,6 +245,11 @@ export async function resumePastExam(root, options = {}) {
     const action = nextWorkBatchAction(state, { capabilityRegistry: recoveryCapabilityRegistry(resolvedRoot, { inputReady: true, handlers: options.handlers }), sourceRecoveryCapability: options.sourceRecoveryCapability });
     history.push({ step, action: action.action, status: action.status, reason: action.reason || null });
     if (options.onAction) await options.onAction({ state, action, step });
+    if (action.reason === 'REVIEW_CONFLICT' && options.conflictAuthorization && !state.launches.some(l => l.purpose === 'SECOND_AUDIT')) {
+      const review = await runReview(resolvedRoot, state, 'SECOND_AUDIT', options);
+      if (review.status === 'WAITING_FOR_SLOT') return { schemaVersion: RESUME_RUNNER_VERSION, ...review, workBatchId, history, state: readWorkBatch(resolvedRoot, workBatchId) };
+      continue;
+    }
     if (action.action === 'DONE') return { schemaVersion: RESUME_RUNNER_VERSION, status: 'DONE', workBatchId, history, state };
     if (action.action === 'BUILD_AND_FREEZE') {
       const refs = options.runRefs || currentRunRefs(state);

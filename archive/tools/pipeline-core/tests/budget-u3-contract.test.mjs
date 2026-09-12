@@ -630,11 +630,11 @@ test('U3 carries candidate choices and accepts bracket-prefixed solution text', 
   const f = jobFixture(t);
   const { run } = f.makeRun(1);
   const candidateContext = loadCandidateReviewContext(f.root, run);
-  const payload = buildU3CandidatePayload(candidateContext, f.uid, { frozenU1: {}, frozenU2: {} });
+  const payload = buildU3CandidatePayload(candidateContext, f.uid, { });
   assert.deepEqual(payload.currentQuestion.choices, ['104', '114']);
   assert.equal(payload.currentAnswer, '2');
   assert.equal(payload.currentSolution, '[키포인트] 62+52=114.');
-  const options = { phase: 'U3', questionUid: f.uid, payload, candidateContext, affectedUidSet: [f.uid], auditorId: 'auditor', auditorSessionId: 'u3-session', builderId: run.builderId, builderSessionId: run.builderSessionId, auditorPrincipalType: 'STATELESS_MODEL', contextId: 'u3-context', inputVisibilityProfile: 'FROZEN_V1_V2', priorReviewVisibility: 'FROZEN_U1_U2', sealed: true, launchId: 'job:1', externalTaskId: 'synthetic-provider' };
+  const options = { phase: 'U3', questionUid: f.uid, payload, candidateContext, affectedUidSet: [f.uid], auditorId: 'auditor', auditorSessionId: 'u3-session', builderId: run.builderId, builderSessionId: run.builderSessionId, auditorPrincipalType: 'STATELESS_MODEL', contextId: 'u3-context', inputVisibilityProfile: 'CANDIDATE_ONLY', priorReviewVisibility: 'NONE', sealed: true, launchId: 'job:1', externalTaskId: 'synthetic-provider' };
   const packet = buildAuditorPacket(options);
   assert.equal(validateAuditorPacket(packet, { affectedUidSet: [f.uid], candidateContext }).status, 'PASS');
   const { packetSha, ...body } = packet;
@@ -714,7 +714,7 @@ test('provider bridge binds a runtime-attested plan, phase packets, and one term
   const u1 = buildAuditorPacket({ ...common, phase: 'U1', payload: { questionUid: f.uid, content: 'Find the angle sum.', choices: ['110', '120'], problemAssets: [] }, auditorSessionId: plan.contexts.U1.sessionId, contextId: plan.contexts.U1.contextId, inputVisibilityProfile: 'SOURCE_ONLY', priorReviewVisibility: 'NONE' });
   const u2Applicability = { status: 'VISUAL_EXEMPT', artifactRequired: false, renderWitnessRequired: false, authority: { requirement: 'VISUAL_EXEMPT', visualAssetStatus: null, action: 'NONE', adjudicationId: 'synthetic|1:authority', adjudicationStatus: 'RESOLVED', problemDependency: false, sharedDependency: false, sourceNoVisualAssetRequired: false } };
   const u2 = buildAuditorPacket({ ...common, phase: 'U2', payload: { questionUid: f.uid, artifact: null, renderWitnesses: [], visualApplicability: u2Applicability }, auditorSessionId: plan.contexts.U2.sessionId, contextId: plan.contexts.U2.contextId, inputVisibilityProfile: 'ARTIFACT_ONLY', priorReviewVisibility: 'NONE' });
-  const u3 = buildAuditorPacket({ ...common, phase: 'U3', payload: buildU3CandidatePayload(candidateContext, f.uid, { frozenU1: { result: 'PASS' }, frozenU2: { result: 'PASS' } }), candidateContext, auditorSessionId: plan.contexts.U3.sessionId, contextId: plan.contexts.U3.contextId, inputVisibilityProfile: 'FROZEN_V1_V2', priorReviewVisibility: 'FROZEN_U1_U2' });
+  const u3 = buildAuditorPacket({ ...common, phase: 'U3', payload: buildU3CandidatePayload(candidateContext, f.uid, { }), candidateContext, auditorSessionId: plan.contexts.U3.sessionId, contextId: plan.contexts.U3.contextId, inputVisibilityProfile: 'CANDIDATE_ONLY', priorReviewVisibility: 'NONE' });
   const packetRefs = [
     { phase: 'U1', ref: f.write('packets/u1.json', u1) },
     { phase: 'U2', ref: f.write('packets/u2.json', u2) },

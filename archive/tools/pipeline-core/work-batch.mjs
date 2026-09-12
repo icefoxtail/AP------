@@ -603,6 +603,11 @@ export function reserveWorkBatchReview(root, id, request) {
     const failedLaunch = recoveryOfLaunchId ? state.launches.find(launch => launch.launchId === recoveryOfLaunchId) : null;
     const executionRecoveryRequested = Boolean(recoveryOfLaunchId);
     let executionRecoveryRecord = null;
+    if (request.purpose === 'SECOND_AUDIT' && !executionRecoveryRequested && state.status === 'REPAIR_REQUIRED') {
+      check(state.openDefects?.some(d => d.type === 'REVIEW_CONFLICT'), 'SECOND_AUDIT_CONFLICT_REQUIRED');
+      check(request.authorization?.explicit === true && request.authorization.reason === 'CONFLICT' && nonempty(request.authorization.authorizedBy), 'SECOND_AUDITOR_NOT_AUTHORIZED');
+      state.status = 'FROZEN'; // Same semantic freeze; this is conditional review, not candidate repair.
+    }
     if (executionRecoveryRequested) {
       check(state.status === 'HOLD', 'EXECUTION_RECOVERY_HOLD_REQUIRED');
       check(failedLaunch?.status === 'FAILED' && failedLaunch.executionFailureClass, 'EXECUTION_RECOVERY_FAILED_LAUNCH_REQUIRED');

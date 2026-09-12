@@ -122,13 +122,25 @@ block new reservations until their provider state has been reconciled.
 ## Evidence and execution are separate
 
 SOURCE/MATH_A1/V1 bind U1 SOURCE_ONLY/NONE. V2 binds U2 ARTIFACT_ONLY/NONE.
-MATH_A2/SOLUTION/V3 bind U3 FROZEN_V1_V2/FROZEN_U1_U2. RENDER_REVIEW binds U3
-ACTUAL_RENDER/CAPTURE_ONLY. U3 may consume frozen results. These are sealed input
+MATH_A2/SOLUTION/V3/RENDER_REVIEW bind U3 CANDIDATE_ONLY/NONE. Render captures
+are frozen machine inputs, not peer auditor outputs. No phase may consume another auditor's results.
+All three packets are sealed from frozen inputs before dispatch; sequential
+transport does not create an output dependency. `review-merger.mjs` combines
+their immutable outputs deterministically. Conflicting claims become
+REVIEW_CONFLICT and are eligible for an explicitly authorized SECOND_AUDIT;
+ordinary agreement never launches an adjudicator. These are sealed input
 contexts within one execution, not separate execution agents. Fresh evidence
 binds a completed launch, provider output ref, phase session, packet context,
 UID scope, freeze and timestamps. A provider incapable of stateless input
 isolation with subagent tools disabled must HOLD; a stateful chat that has seen
 answers cannot become blind by changing a label.
+
+The resume runner accepts `conflictAuthorization: {explicit: true,
+reason: 'CONFLICT', authorizedBy: '<authority identity>'}`. Only an open
+REVIEW_CONFLICT may use this authorization to invoke the existing bounded
+SECOND_AUDIT. Without it the conflict is returned for an authorization decision;
+with it, a conflict-free run still launches no additional review. SECOND_AUDIT
+also uses three fresh isolated contexts and receives no earlier auditor output.
 
 STATIC/METADATA/RENDER_CAPTURE use MACHINE_CURRENT and MACHINE_COLLECTOR with
 hash-bound local collection provenance. They never use reuse receipts or LLM
@@ -144,9 +156,10 @@ artifact-only review, V3 expected/observed fact parity, and render review (or
 explicit defect/HOLD/reclassification evidence). Diagnostic continuation may
 observe downstream failures but never changes canonical PASS or promotion.
 
-Upstream phase projections bind semantic inputs so that freezing A1/V1/V2
-outputs does not invalidate the job's pre-review input hashes. Exact frozen
-output hashes remain mandatory in A2/V3 semantic checks.
+Each phase projection binds its own frozen semantic inputs. A1/V1/V2 output
+hashes are retained in the merger's response references; they are not A2/V3
+inputs. The deterministic closure kernel compares independent math and visual
+observations after all three reports exist, without rewriting auditor output.
 
 Render capture remains current across every required case. A composite current
 render review can contain fresh affected item reviews and hash/axis/witness-bound

@@ -33,8 +33,8 @@ export function buildNativeTurnInput(prompt, packet) {
     else for (const [key, child] of Object.entries(value)) if (key !== 'sourceRef') collect(child);
   };
   for (const row of Array.isArray(packet.payload) ? packet.payload : [packet.payload]) {
-    if (packet.phase === 'U1') collect(row.problemAssets);
-    if (packet.phase === 'U2') collect(row.artifact);
+    if (packet.phase === 'U1') { collect(row.problemAssets); collect(row.sourcePixels); }
+    if (packet.phase === 'U2') { collect(row.artifact); collect(row.renderWitnesses); }
     if (packet.phase === 'U3') {
       collect(row.currentQuestion?.problemAssets);
       collect(row.renderWitnesses);
@@ -320,9 +320,11 @@ async function main() {
     packet: request.packet,
     prompt: JSON.stringify({
       packet: request.packet,
+      reviewContract: request.reviewContract,
       outputContract: {
         evidence: 'Return an array of JSON-encoded strings. Each string must encode exactly one evidence object.',
         defects: 'Return an array of JSON-encoded strings. Each string must encode exactly one defect object.',
+        assessments: 'For an explicit correctness claim, evidence.payload.assessments may contain {domain: SOURCE|MATH|VISUAL|SOLUTION, status: PASS|FAIL, subjectSha: the reviewed source/candidate/artifact SHA}. Report only domains you actually reviewed. Never infer agreement from absent findings. Conflicts are resolved by a deterministic merger, not by an auditor.',
       },
     }),
   });
