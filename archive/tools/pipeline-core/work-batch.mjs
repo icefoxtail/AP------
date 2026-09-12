@@ -350,7 +350,9 @@ function collectFreeze(root, state, runRefs) {
     const needsRender = Object.values(shas).some(row => row.RENDER_REVIEW);
     const missingRender = needsRender ? run.questions.filter(q => !['exam', 'solution', 'answer'].every(mode => ['desktop', 'mobile'].every(viewport => witnesses.some(w => w.questionUid === q.questionUid && w.mode === mode && w.viewportProfile === viewport)))).map(q => q.questionUid) : [];
     if (run.pipeline !== 'past-exam') check(!missingRender.length, 'WHOLE_JOB_RENDER_CAPTURE_REQUIRED');
-    const renderChanged = old && needsRender ? detectRenderImpact(old.witnesses, witnesses).affectedRenderUidSet : [];
+    const renderChanged = old && needsRender
+      ? (old.witnesses?.length ? detectRenderImpact(old.witnesses, witnesses).affectedRenderUidSet : run.questions.map(question => question.questionUid))
+      : [];
     for (const [questionUid, axes] of Object.entries(shas)) {
       const row = { runId: run.runId, questionUid };
       allTargets.push(row);
