@@ -65,6 +65,28 @@
     "workflowProfile": {
       "enum": ["LEGACY", "PAST_EXAM"]
     },
+    "predecessorWorkBatchId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "predecessorFreezeSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "predecessorLaunchId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessorReceiptRef": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    },
     "tokenBudget": {},
     "status": {
       "enum": [

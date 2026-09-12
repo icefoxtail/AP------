@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileRef, objectSha } from '../canonical.mjs';
 import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
-import { aggregateWorkBatchAudit, freezeInputSha, initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
+import { aggregateWorkBatchAudit, freezeInputSha, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, reserveWorkBatchReview, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, workBatchMetrics } from '../work-batch.mjs';
 import { loadCandidateReviewContext, buildU3CandidatePayload, buildAuditorPacket, validateAuditorPacket } from '../review-isolation-runner.mjs';
 import { prepareProviderReview, dispatchProviderReview } from '../provider-bridge.mjs';
 
@@ -103,6 +103,37 @@ test('legacy persisted state without iterative fields remains readable', t => {
   fs.writeFileSync(f.stateFile, JSON.stringify(legacy));
   assert.doesNotThrow(() => readWorkBatch(f.root, 'job'));
   assert.equal(readWorkBatch(f.root, 'job').policy.targetedRechecks, 1);
+});
+
+test('completed predecessor materializes repair scope without changing its frozen evidence', t => {
+  const f = jobFixture(t, 2, 'LEGACY');
+  const first = f.makeRun(1);
+  freezeWorkBatch(f.root, 'job', [first.ref]);
+  reserveWorkBatchReview(f.root, 'job', f.request('FINAL_AUDIT'));
+  reconcileWorkBatchReview(f.root, 'job', { launchId: 'job:1', externalId: 'provider-final', status: 'DISPATCHED' });
+  const defects = [{ runId: 'run', questionUid: f.uids[0], type: 'SOURCE_CONFLICT' }];
+  f.complete('job:1', 'provider-final', null, 'COMPLETED', defects);
+  const legacyState = readWorkBatch(f.root, 'job');
+  legacyState.status = 'FROZEN';
+  delete legacyState.workflowProfile;
+  delete legacyState.openDefectSet;
+  delete legacyState.openDefects;
+  delete legacyState.repairIterations;
+  delete legacyState.policy.maxRepairIterations;
+  fs.writeFileSync(f.stateFile, JSON.stringify(legacyState));
+  const predecessorBytes = fs.readFileSync(f.stateFile, 'utf8');
+  const predecessor = readWorkBatch(f.root, 'job');
+  const continuation = materializeWorkBatchRepair(f.root, { workBatchId: 'repair', predecessorWorkBatchId: 'job', workflowProfile: 'PAST_EXAM' });
+  assert.equal(continuation.status, 'REPAIR_REQUIRED');
+  assert.equal(continuation.workflowProfile, 'PAST_EXAM');
+  assert.deepEqual(continuation.openDefectSet, [{ runId: 'run', questionUid: f.uids[0] }]);
+  assert.equal(continuation.openDefects[0].type, 'SOURCE_CONFLICT');
+  assert.equal(continuation.predecessorWorkBatchId, 'job');
+  assert.equal(continuation.predecessorFreezeSha, predecessor.freezes[0].freezeSha);
+  assert.equal(continuation.predecessorLaunchId, 'job:1');
+  assert.equal(continuation.freezes[0].freezeSha, predecessor.freezes[0].freezeSha);
+  assert.equal(continuation.launches[0].launchId, 'job:1');
+  assert.equal(fs.readFileSync(f.stateFile, 'utf8'), predecessorBytes);
 });
 
 test('TARGETED_RECHECK is not blocked by cumulative token estimates', t => {
