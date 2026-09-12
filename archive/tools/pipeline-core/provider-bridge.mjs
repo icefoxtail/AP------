@@ -1,9 +1,10 @@
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import fs from 'node:fs';
+import { mergeIndependentReviews } from './review-merger.mjs';
 import { bytesSha, canonicalJson, fileRef, nonempty, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
-import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityForQuestion, VISUAL_ONLY_DEFECT_TYPES } from './review-isolation-runner.mjs';
+import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityForQuestion, VISUAL_ONLY_DEFECT_TYPES, sourcePixelPayloads, INDEPENDENT_REVIEW_CONTRACTS } from './review-isolation-runner.mjs';
 import { assertFreshLaunchIdentity, targetedReviewIteration, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
@@ -81,7 +82,7 @@ function validatePreflightResponse(response, request, executionIdentity = null) 
   return { contexts: contextMap(response.contexts, request.builderSessionId, response.auditorSessionId), route };
 }
 
-function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null } = {}) {
+function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null, authorization = null } = {}) {
   const failedLaunch = executionRecoveryOfLaunchId ? state.launches.find(launch => launch.launchId === executionRecoveryOfLaunchId) : null;
   if (executionRecoveryOfLaunchId) {
     check(state.status === 'HOLD', 'EXECUTION_RECOVERY_HOLD_REQUIRED');
@@ -90,13 +91,17 @@ function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null } = 
     const attempts = (state.executionRecovery?.attempts || []).filter(attempt => attempt.freezeSha === failedLaunch.freezeSha);
     check(attempts.length < MAX_EXECUTION_RECOVERY_ATTEMPTS, 'EXECUTION_RECOVERY_LIMIT');
     check(!attempts.some(attempt => attempt.fingerprint === failedLaunch.executionFailureFingerprint), 'EXECUTION_RECOVERY_IDENTICAL_FAILURE');
+  } else if (purpose === 'SECOND_AUDIT') {
+    check(authorization?.explicit === true && authorization.reason === 'CONFLICT' && nonempty(authorization.authorizedBy), 'SECOND_AUDITOR_NOT_AUTHORIZED');
+    check(state.status === 'REPAIR_REQUIRED' && state.openDefects?.some(d => d.type === 'REVIEW_CONFLICT'), 'SECOND_AUDIT_CONFLICT_REQUIRED');
+    check(!state.launches.some(l => l.purpose === 'SECOND_AUDIT'), 'AGENT_BUDGET_EXHAUSTED');
   } else check(state.status === 'FROZEN', 'WHOLE_JOB_FREEZE_REQUIRED');
   check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
   const freeze = state.freezes.at(-1);
   check(freeze, 'WHOLE_JOB_FREEZE_REQUIRED');
   if (purpose === 'FINAL_AUDIT' && !executionRecoveryOfLaunchId) check(state.launches.filter(launch => launch.executionRecovery !== true).length === 0 && state.freezes.length === 1, 'FINAL_AUDITOR_ALREADY_USED');
   if (purpose === 'TARGETED_RECHECK') targetedReviewIteration(state, freeze, executionRecoveryOfLaunchId);
-  check(['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(purpose), 'PROVIDER_BRIDGE_PURPOSE_INVALID');
+  check(['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT'].includes(purpose), 'PROVIDER_BRIDGE_PURPOSE_INVALID');
   const scope = reviewScopeForPurpose(state, freeze, purpose);
   if (isBenchmarkJobKind(state.jobKind) && purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
   return { freeze, launchId: `${state.workBatchId}:${state.launches.length + 1}`, scope, failedLaunch, executionRecoveryOfLaunchId };
@@ -104,9 +109,9 @@ function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null } = 
 
 // This is control-plane only. A provider must attest modelInvocationCount: 0;
 // the three model invocations are issued later through dispatchProviderReview.
-export function prepareProviderReview(root, { workBatchId, purpose, transport, planPath, executionRecoveryOfLaunchId = null }) {
+export function prepareProviderReview(root, { workBatchId, purpose, transport, planPath, executionRecoveryOfLaunchId = null, authorization = null }) {
   const state = readWorkBatch(root, workBatchId);
-  const { freeze, launchId, scope, failedLaunch } = plannedLaunch(state, purpose, { executionRecoveryOfLaunchId });
+  const { freeze, launchId, scope, failedLaunch } = plannedLaunch(state, purpose, { executionRecoveryOfLaunchId, authorization });
   const body = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     operation: 'PREPARE_STATELESS_FINAL_AUDIT',
@@ -124,6 +129,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     inputSha: freezeInputSha(freeze),
     repairIteration: purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, executionRecoveryOfLaunchId) : 0,
     executionRecoveryOfLaunchId,
+    authorization,
     executionFailureClass: failedLaunch?.executionFailureClass || null,
     executionFailureFingerprint: failedLaunch?.executionFailureFingerprint || null,
     requiredCapabilities: {
@@ -179,6 +185,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     preflightRequest: request,
     preflightResponse: response,
     preflightResponseSha: objectSha(response),
+    authorization,
   };
   if (existing) check(same(existing.value, plan), 'PROVIDER_PREFLIGHT_REPLAY_PLAN_MISMATCH');
   const ref = existing ? existing.ref : writeBridgeJson(root, planPath, plan);
@@ -198,6 +205,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
       subagentToolsEnabled: false,
       contexts: plan.contexts,
       providerAttestationPlanRef: ref,
+      authorization,
       ...(executionRecoveryOfLaunchId ? { executionRecoveryOfLaunchId, executionRecovery: true, executionFailureClass: plan.executionFailureClass, executionFailureFingerprint: plan.executionFailureFingerprint } : {}),
       executionIdentity,
     },
@@ -210,6 +218,7 @@ function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
   if (launch.executionRecovery === true) check(plan.executionRecoveryOfLaunchId === launch.recoveryOfLaunchId && plan.executionFailureClass === launch.executionFailureClass && plan.executionFailureFingerprint === launch.executionFailureFingerprint, 'PROVIDER_PLAN_EXECUTION_RECOVERY_BINDING');
   check(plan.builderId === state.builderId && plan.builderSessionId === state.builderSessionId, 'PROVIDER_PLAN_BUILDER_BINDING');
   check(plan.auditorId === launch.auditorId && plan.auditorSessionId === launch.auditorSessionId && same(plan.contexts, launch.contexts), 'PROVIDER_PLAN_CONTEXT_BINDING');
+  if (launch.purpose === 'SECOND_AUDIT') check(same(plan.authorization, launch.authorization), 'PROVIDER_PLAN_AUTHORIZATION_BINDING');
   check(same(plan.scope, reviewScopeForPurpose(state, state.freezes.find(freeze => freeze.freezeSha === launch.freezeSha), launch.purpose)) && same(plan.scope, launch.scope), 'PROVIDER_PLAN_SCOPE_BINDING');
   check(launch.providerAttestationPlanRef && same(launch.providerAttestationPlanRef, planRef) && same(planRef, fileRef(root, planRef.path)), 'PROVIDER_PLAN_RESERVATION_REQUIRED');
   check(plan.contextIsolation === 'STATELESS_INPUTS' && plan.subagentToolsEnabled === false && nonempty(plan.externalId), 'PROVIDER_PLAN_CAPABILITY_INVALID');
@@ -239,7 +248,7 @@ function loadPacket(root, ref, launch, plan, state, candidateContext, sourceCont
     const rows = Array.isArray(packet.payload) ? packet.payload : [packet.payload];
     for (const row of rows) {
       const expected = sourceContext.sourcePayloads.get(row.questionUid);
-      check(expected && same({ content: row.content, choices: row.choices, problemAssets: row.problemAssets || [] }, expected), 'PROVIDER_U1_SOURCE_PACKET_MISMATCH');
+      check(expected && same({ content: row.content, choices: row.choices, problemAssets: row.problemAssets || [], sourcePixels: row.sourcePixels || [] }, expected), 'PROVIDER_U1_SOURCE_PACKET_MISMATCH');
     }
   }
   if (packet.phase === 'U2') {
@@ -276,6 +285,7 @@ function sourceContexts(root, freeze) {
         content: question.sourceRecord.content,
         choices: question.sourceRecord.choices || [],
         problemAssets: sourceAsset ? [sourceVisualAssetPayload(root, sourceAsset)] : [],
+        sourcePixels: sourcePixelPayloads(root, run, question.sourceRecord),
       });
     }
   }
@@ -332,6 +342,7 @@ export function validateAuthorityBinding(value, expected, questionUid) {
 export function validatePacketVisualAndAuthority(packet, sourceContext) {
   const rows = Array.isArray(packet.payload) ? packet.payload : [packet.payload];
   if (packet.phase === 'U1') for (const row of rows) if (row.problemAssets?.length) requireNativeImages(row.problemAssets, `U1.${row.questionUid}.problemAssets`, true);
+  if (packet.phase === 'U1') for (const row of rows) if (row.sourcePixels?.length) requireNativeImages(row.sourcePixels, `U1.${row.questionUid}.sourcePixels`, true);
   if (packet.phase === 'U2') for (const row of rows) {
     const applicability = sourceContext.visualApplicabilities.get(row.questionUid);
     if (!applicability) throw new Error(`HOLD:PROVIDER_PACKET_VISUAL_APPLICABILITY_UNKNOWN:${row.questionUid}`);
@@ -339,6 +350,10 @@ export function validatePacketVisualAndAuthority(packet, sourceContext) {
     if (canonicalJson(row.visualApplicability) !== canonicalJson(applicability)) throw new Error(`HOLD:PROVIDER_PACKET_VISUAL_APPLICABILITY_MISMATCH:${row.questionUid}`);
     if (row.artifact) requireNativeImages(row.artifact, `U2.${row.questionUid}.artifact`, true);
     if (row.artifact?.assetRefs?.length) requireNativeImages(row.artifact.assetRefs, `U2.${row.questionUid}.artifact.assetRefs`, true);
+    for (const witness of row.renderWitnesses || []) {
+      check(witness.visibility === 'ARTIFACT_ONLY', 'U2_ARTIFACT_RENDER_VISIBILITY_REQUIRED');
+      requireNativeImages(witness, `U2.${row.questionUid}.renderWitnesses`, true);
+    }
   }
   if (packet.phase === 'U3') for (const row of rows) if (row.renderWitnesses?.length) requireNativeImages(row.renderWitnesses, `U3.${row.questionUid}.renderWitnesses`, true);
 }
@@ -385,6 +400,7 @@ function phaseRequest(plan, packet) {
     logicalLaunchId: plan.launchId,
     externalTaskId: plan.externalId,
     phase: packet.phase,
+    reviewContract: INDEPENDENT_REVIEW_CONTRACTS[packet.phase],
     jobAuthorityStartSha: plan.jobAuthorityStartSha || null,
     subagentToolsEnabled: false,
     packet,
@@ -512,7 +528,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   check(launch?.status === 'RESERVED', 'PROVIDER_RESERVED_LAUNCH_REQUIRED');
   const { ref: planRef, value: plan } = loadBridgeJson(root, planPath);
   validatePlanAgainstLaunch(root, planRef, plan, launch, state);
-  check(Array.isArray(packetRefs) && packetRefs.length > 0 && packetRefs.length <= PHASES.length, 'PROVIDER_PACKET_REFS_REQUIRED');
+  check(Array.isArray(packetRefs) && packetRefs.length === PHASES.length, 'PROVIDER_PACKET_REFS_REQUIRED');
   check(new Set(packetRefs.map(row => row.phase)).size === packetRefs.length && packetRefs.every(row => PHASES.includes(row.phase) && row.ref), 'PROVIDER_PACKET_PHASES_INVALID');
   const freeze = state.freezes.find(item => item.freezeSha === launch.freezeSha);
   check(freeze, 'PROVIDER_FREEZE_REQUIRED');
@@ -533,7 +549,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, evidenceRefs: [failed.evidenceRef], failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
   }
   reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'DISPATCHED' });
-  const phaseAttestationRefs = [], evidenceRefs = [], defects = [], suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
+  const phaseAttestationRefs = [], evidenceRefs = [], phaseResults = [], suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
   for (const { packet } of packets) {
     const request = phaseRequest(plan, packet);
     const requestRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-request.json`, request);
@@ -559,10 +575,12 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     const filtered = packet.phase === 'U2'
       ? applyVisualApplicabilityToDefects(scopedDefects, contexts.visualApplicabilities)
       : { defects: scopedDefects, suppressedDefects: [] };
-    defects.push(...filtered.defects);
+    phaseResults.push({ phase: packet.phase, responseRef, defects: filtered.defects, evidence: response.evidence.map(row => ({ ...row, runId: row.runId || launch.scope.find(target => target.questionUid === row.questionUid)?.runId || null })) });
     suppressedDefects.push(...filtered.suppressedDefects.map(defect => ({ ...defect, phase: packet.phase })));
     for (let index = 0; index < response.evidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, response.evidence[index]));
   }
+  const merge = mergeIndependentReviews(phaseResults);
+  const mergeRef = writeBridgeJson(root, `${relativeBase}/merged-review.json`, merge);
   const receipt = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     launchId,
@@ -596,7 +614,9 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     usedTokensByPhase: Object.fromEntries(packets.map(({ packet }, index) => [packet.phase, usedTokens[index]])),
     phaseAttestationRefs,
     evidenceRefs,
-    defects,
+    defects: merge.defects,
+    mergeRef,
+    adjudication: merge.adjudication,
     suppressedDefects,
   };
   writeNewJson(receiptPathFor(root, receiptPath), receipt);

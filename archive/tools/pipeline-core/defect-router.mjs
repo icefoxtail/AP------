@@ -24,17 +24,20 @@ export const CANONICAL_DEFECT_CLASSES = Object.freeze([
   'VISUAL_DEFECT',
   'AUTHORITY_DEFECT',
   'EXECUTION_DEFECT',
+  'REVIEW_CONFLICT',
 ]);
 
 const CLASS_ROUTE = Object.freeze({
   EXTRACTION_DEFECT: REPAIR_ROUTES.EXTRACTION,
   ANSWER_KEY_CONFLICT: REPAIR_ROUTES.ANSWER,
   SOURCE_PAYLOAD_DEFECT: REPAIR_ROUTES.SOURCE,
+  SOURCE_DEFECT: REPAIR_ROUTES.SOURCE,
   CANDIDATE_MATH_DEFECT: REPAIR_ROUTES.CANDIDATE,
   SOLUTION_DEFECT: REPAIR_ROUTES.CANDIDATE,
   VISUAL_DEFECT: REPAIR_ROUTES.VISUAL,
   AUTHORITY_DEFECT: REPAIR_ROUTES.AUTHORITY,
   EXECUTION_DEFECT: REPAIR_ROUTES.EXECUTION,
+  REVIEW_CONFLICT: REPAIR_ROUTES.HUMAN,
 });
 
 const TYPE_ROUTE = Object.freeze({
@@ -45,6 +48,7 @@ const TYPE_ROUTE = Object.freeze({
   LOGICAL_AND_GEOMETRIC_ERROR: REPAIR_ROUTES.SOURCE,
   SOURCE_LOGICAL_AMBIGUITY: REPAIR_ROUTES.SOURCE,
   SOURCE_QUESTION_NON_UNIQUE: REPAIR_ROUTES.SOURCE,
+  SOURCE_DEFECT: REPAIR_ROUTES.SOURCE,
   SOURCE_PAYLOAD_DEFECT: REPAIR_ROUTES.SOURCE,
   ANSWER_RUBRIC_AUTHORITY: REPAIR_ROUTES.AUTHORITY,
   UNFINALIZED_AUTHORITY: REPAIR_ROUTES.AUTHORITY,
@@ -246,6 +250,8 @@ export function nextWorkBatchAction(state, options = {}) {
     return { action: 'EXECUTION_RECOVERY', nextAction: 'START_FRESH_REVIEW_ATTEMPT', status: 'RECOVERY_AVAILABLE', failureClass: failure.executionFailureClass, failedLaunchId: failure.launchId || failure.failedLaunchId, freezeSha: failure.freezeSha || null, executionAttempt: attempts.length + 1, maxExecutionRecoveryAttempts: 2 };
   }
   if (status === 'REPAIR_REQUIRED') {
+    const conflicts = (state.openDefects || []).filter(d => d.type === 'REVIEW_CONFLICT' || d.defectClass === 'REVIEW_CONFLICT');
+    if (conflicts.length) return { action: 'HUMAN_DECISION_REQUIRED', status: 'REVIEW_CONFLICT', reason: 'REVIEW_CONFLICT', conflicts, conditionalReview: { purpose: 'SECOND_AUDIT', reason: 'CONFLICT', explicitAuthorizationRequired: true, automaticLaunch: false } };
     const recorded = state.repairIterations?.at(-1);
     if (recorded?.status === 'REPAIR_RECORDED') return { action: 'FREEZE_RECORDED_REPAIR', status: 'REPAIR_ALREADY_MATERIALIZED' };
     const plan = buildRepairPlan(state.openDefects || [], [], options);

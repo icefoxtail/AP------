@@ -164,7 +164,7 @@ builder가 별도로 풀이·해설·분류·triage·visual build 수행 [기본
 |---|---|---|
 | X01 P0 | `promote-reviewed-exam.mjs`는 main을 선언하지만 파일 끝에서 미정의 `runPromotion()` 호출. `loadSubunitMaster()`에 root 미전달, `archiveRootOverride` 미정의 | promotion CLI/함수 분리. sandbox dry-run부터 실제 gated copy까지 동일 exported 함수로 검사 |
 | X02 P0 | integration→auditManifestFile→auditRun은 V1만 허용. 신규 Past Exam은 V2 필수. auditV2는 의도적으로 productionAuthorized=false | V2 closure dispatcher와 별도 authorization verifier 연결. auditV2의 false를 true로 하드코딩하지 말 것 |
-| X03 P0 | U3 frozenU1/U2는 `FROZEN_SOURCE_PACKET`/`FROZEN_ARTIFACT_PACKET` 문자열 placeholder. dispatch가 U1/U2 출력을 저장해도 U3 packet을 갱신/봉인하지 않음 | phase output 저장 후 **동일 logical launch 안에서** U3를 최종 seal. real phaseOutputSha 및 data 결속 |
+| X03 P0 | U3 frozenU1/U2 의존성과 placeholder가 독립 Candidate Auditor 역할을 침해 | **U3 의존성 제거**. U1/U2/U3는 frozen input에서 서로의 출력 없이 fresh context로 실행. 결과는 deterministic merger가 결합하며 충돌은 REVIEW_CONFLICT로 기록하고 조건부 SECOND_AUDIT에 연결 |
 | X04 P0 | r9 receipt/run raw SHA 불일치. 두 파일 모두 LF 환산 SHA가 저장된 expected SHA와 정확히 일치 | evidence checkout/EOL 보존 정책 + immutable object 복구 절차. runtime byte hash를 normalized hash로 바꾸지 말 것 |
 | X05 P0 | U1은 full-page source를 입력으로 보지 않고 extracted text/crop만 보므로 원문 transcription fidelity를 독립 관찰하기 어려움 | scope별 source-page/image evidence lane. 같은 페이지의 다른 문항 exposure를 명시 dependency로 허용하거나 승인된 identity-bound review crop 사용 |
 | X06 P0 | transportCall은 timeout 없음. nonzero exit를 TRANSPORT_UNAVAILABLE로 축약; provider가 이미 turn을 시작했는지 잃음. ambiguous 실패 후 새 launch가 중복 모델 작업을 만들 가능성 | bounded async transport, provider turn/status receipt, unknown attempt reconciliation. unknown은 slot 해제 금지 |
@@ -241,9 +241,9 @@ registry row는 `kind`, `supportedDefectClasses`, `requiredInputRefs`, `handlerV
 2. `AssetBinding`은 원본 `{path, bytes, sha256}` + role(`SOURCE_PROBLEM`, `CANDIDATE_PROBLEM`, `SOLUTION`, `SHARED`) + owners/dependencies를 가진다. 기존 `image`/`solutionImage` 문자열은 그대로 저장한다.
 3. SVG는 production 원본을 유지한다. 검수용 PNG를 별도 생성하고 `{sourceSvgRef, rasterRef, rendererVersion/refSha, viewport/font/runtime binding}`으로 결속한다. SVG SHA와 PNG SHA를 같은 값으로 비교하지 않는다. 외부 font/image/filter dependencies는 검사·고정한다. 변환 성공이 geometry PASS는 아니다.
 4. PNG/JPG는 magic bytes/decode/type를 확인하고 actual bytes를 native attachment로 전달한다. path/hash, `naturalWidth`, MIME label만으로 모델 시야가 입증되지 않는다.
-5. U1에는 source pixels만, U2에는 artifact-only pixels만 전달한다. **U2에 정답/해설이 보이는 전체 solution render screenshot을 넣지 않는다.** 필요한 경우 artifact-only render witness를 별도로 만든다. U3는 실제 candidate problem pixels + actual six-case/continuation witnesses + frozen U1/U2 결과를 받는다.
+5. U1에는 source text/choices/pixels만, U2에는 artifact-only pixels/render만 전달한다. **U2에 정답/해설이 보이는 전체 solution render screenshot을 넣지 않는다.** U3는 current candidate 문제·정답·해설·필요한 문제 visual·actual six-case/continuation witnesses를 받으며 frozenU1/frozenU2를 받지 않는다.
 6. `reviewScope`와 `contextDependencyScope`를 명시적으로 분리한다. header UID set=payload UID set을 강제하고 source full-page에 타 문항이 포함될 때도 exposure 규칙을 적용한다. 전체 freeze 대상으로 payload를 만든 후 header만 줄이는 방식 금지.
-7. audit 전 deterministic preflight는 candidate/assets/render/authority/scope를 모두 검사한다. CONTROL identity 생성 후 identity-binding preflight를 반복하고 reserve한다. 단 U3의 실제 선행 결과는 아직 없으므로 **U3 template/static 부분 사전 검증**, U1/U2 성공 후 output refs 주입 및 final seal을 수행한다.
+7. audit 전 deterministic preflight는 candidate/assets/render/authority/scope를 모두 검사한다. CONTROL identity 생성 후 세 phase를 각각 seal하고 identity-binding preflight를 반복한 뒤 reserve한다. 결과 주입은 금지하며 세 출력은 deterministic merger에서만 결합한다. 충돌이 없으면 추가 adjudicator를 실행하지 않는다.
 8. 최종 `turn/start.input`의 이미지 원소는 정확히 `{type:'image', url:'data:image/png;base64,...', detail:'original'}`. 실제 transport mock의 최종 envelope와 attachment SHA/phase/UID manifest를 비교한다. image_url, object url, 누락, 중복 role 노출을 negative fixture로 검사한다.
 9. text prompt에는 attachmentId/ref만 표시하고 base64는 native lane만 통과시킨다. packet canonical hash 및 실제 native attachment manifest hash를 모두 provider attestation에 남긴다.
 10. render capture는 production engine의 visible print-area, 마지막 문항, 모든 continuation block, 실제 decode, MathJax, overflow를 확인한다. capture ref→packet witness→native manifest→RENDER_REVIEW evidence의 exact byte lineage를 closure에서 확인한다.
@@ -290,7 +290,7 @@ operation journal은 파일 저장 전에 intent, 저장 후 exact ref, 마지�
 
 - 파일: `provider-bridge.mjs`, `review-isolation-runner.mjs`, `resume-past-exam.mjs`, `codex-appserver-adapter.mjs`, `integration.mjs`, `closure.mjs`, `promote-reviewed-exam.mjs`.
 - artifact projector와 native derivative 계약 확정; U3 candidate image 보존; 최종 input double wrapping 제거.
-- static packet preflight를 reservation 앞에 배치하고, U3는 실제 U1/U2 output 이후 seal하도록 dispatch lifecycle 수정.
+- static packet preflight를 reservation 앞에 배치하고, 세 auditor를 frozen input에서 독립 seal한다. U3 의존성을 제거하고 deterministic merger 및 REVIEW_CONFLICT 경로를 연결한다.
 - V2 audit/authorization bridge와 promotion의 미정의 심볼 수정. 이 단계는 publication 권한을 발급하지 않는다.
 - exact-byte evidence/EOL 복구 경로 설계·구현. r9 진단 파일은 변경하지 않는다.
 - 완료: 실제 production 샘플의 PNG/SVG/통이미지/shared 경우 최종 envelope probe 통과; malformed packet은 model call/slot 소비 0; V2 dry-run publication gate는 권한 없이 fail-closed.

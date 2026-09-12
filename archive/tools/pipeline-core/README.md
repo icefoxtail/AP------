@@ -142,8 +142,10 @@ Final records require explicit PASS, VALID/FROZEN and zero unresolved findings.
   artifactPath/artifactSha and `structureFingerprint(fact)`. Its bundle excludes
   expected/answer/solution/alt/caption. Intended-meaning accessibility metadata
   is not independent observation.
-- V3 uses FROZEN_V1_V2 after both first-pass freezes. It binds v1EvidenceSha,
-  v2EvidenceSha, finalVisualRequirement and cDenominatorInputSha. Separate checks:
+- V2-run V3 uses CANDIDATE_ONLY/NONE, independently of U1/U2 outputs. It binds
+  candidate/visual/render inputs, finalVisualRequirement and cDenominatorInputSha.
+  Expected/observed comparisons belong to the deterministic closure/merger;
+  legacy V1 runs retain their historical first-pass evidence bindings. Separate checks:
   necessity, decisiveStep, completeness, mediumFit, solutionParity,
   altCaptionParity, semanticsLocks, staticContract.
 
