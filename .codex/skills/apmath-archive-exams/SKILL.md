@@ -29,7 +29,7 @@ Past Exam V3 COMPLETE
   └─ S4~S8 builder solve, solution/classification, visual triage, expected facts,
        and deterministic visual build
   └─ S9~S14 static, render capture, and sealed U1/U2/U3 FINAL_AUDIT
-  └─ S15~DONE repair, at-most-once targeted recheck, promotion, final closure
+  └─ S15~DONE bounded repair / TARGETED_RECHECK loop, promotion, final closure
 ```
 
 The V2 extractor is a subordinate S1~S3 implementation. It is not the V3
@@ -98,7 +98,7 @@ NUMERIC_VISUAL_BUILD
 STATIC_AND_RENDER_CAPTURE
 FINAL_AUDIT_SEALED_U1_U2_U3
 TARGETED_REPAIR
-TARGETED_RECHECK_MAX_ONCE
+TARGETED_RECHECK
 PROMOTION
 FINAL_CLOSURE
 ```
@@ -338,7 +338,17 @@ Capture and review the last question and every continuation block. A machine
 capture cannot become semantic render PASS by itself; unchanged blocks require
 current validated reuse evidence. In one canonical FINAL_AUDIT, pipeline-core
 seals U1 `SOURCE/MATH_A1/V1`, U2 `V2` artifact-only, and U3
-`MATH_A2/SOLUTION/V3/RENDER_REVIEW` under its configured stateless contexts.
+`MATH_A2/SOLUTION/V3/RENDER_REVIEW` as independent packets from the frozen
+inputs: U1 is `SOURCE_ONLY` / `priorReviewVisibility NONE`, U2 is
+`ARTIFACT_ONLY` / `priorReviewVisibility NONE`, and U3 is `CANDIDATE_ONLY` /
+`priorReviewVisibility NONE`. No auditor consumes another auditor's output;
+the immutable phase results are combined only by the deterministic review
+merger.
+
+An explicit correctness-claim disagreement is `REVIEW_CONFLICT`. It is not
+automatically adjudicated: a bounded `SECOND_AUDIT` is allowed only when
+pipeline-core has an explicit `CONFLICT` or `HIGH_RISK` authorization. Ordinary
+agreement or an ordinary defect does not create a `SECOND_AUDIT`.
 
 After candidate, asset, `solutionImage`, or metadata mutation, prior
 `MACHINE_CURRENT` evidence is `STALE`/`INVALIDATED` and must be recollected.
@@ -390,9 +400,20 @@ render, DB/index, and package obligation is satisfied.
 ## S15~DONE — repair, promotion, and archive audit
 
 Repair all final-audit defects locally, compute semantic/dependency/render
-impact, freeze again, and reserve `TARGETED_RECHECK` at most once through
-pipeline-core. There is no PASS-until-retry loop. Accepted unaffected axes
-require direct-root validated reuse evidence.
+impact, freeze again, and reserve the bounded `TARGETED_RECHECK` loop through
+pipeline-core. The persisted Past Exam repair allowance in
+`AGENT_BUDGET.md` is the authority (currently three iterations); legacy
+profiles retain their stored allowance. Accepted unaffected axes require
+direct-root validated reuse evidence, while unchanged input/defect stagnation
+or the iteration limit is `HOLD`.
+
+Completed audit defects enter `REPAIR_REQUIRED` and follow canonical defect
+routing into the appropriate bounded recovery lane. The builder records the
+disposition, creates a new immutable revision/input SHA and freeze, and only
+the impacted semantic/dependency/render scope enters `TARGETED_RECHECK`.
+Crash/provider execution recovery is a separate boundary: reconcile the
+existing immutable lineage and launch identity, and do not treat recovery as a
+new semantic repair or an automatic retry.
 
 New Past Exam completion requires core v2, the calibration lock, the
 project-scoped geometry pin, and whole-exam publication intent. Use

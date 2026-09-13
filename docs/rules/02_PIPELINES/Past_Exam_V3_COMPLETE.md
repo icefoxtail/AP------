@@ -28,10 +28,17 @@
    한 번의 FINAL_AUDIT에서 sealed U1(SOURCE/MATH_A1/V1), U2(V2 artifact-only),
    U3(MATH_A2/SOLUTION/V3/RENDER_REVIEW) 검수. 독립 U1 판정은 builder 예상과 다를 수 있다.
    불일치는 결함으로 반환하고 원본·동결된 첫 판정을 덮어쓰지 않는다.
-8. **S15~DONE**: 결함 수정 및 영향 범위 계산 → 최대 한 번 TARGETED_RECHECK → 전 문항
+8. **S15~DONE**: 결함 수정 및 영향 범위 계산 → `AGENT_BUDGET.md`에 저장된
+   Past Exam repair allowance에 따른 bounded `TARGETED_RECHECK` loop
+   (현재 3 iterations; legacy profile은 저장된 allowance 유지) → 전 문항
    공통 품질 closure + production authority → canonical promotion helper → DB/index/최종 release.
 
-실행 topology와 launch/recheck 권위는 `archive/tools/pipeline-core/AGENT_BUDGET.md`다.
+이 문서는 Past Exam의 semantic/lifecycle contract다. 실행 topology,
+launch, repair iteration allowance, provider isolation 권위는
+`archive/tools/pipeline-core/AGENT_BUDGET.md`에 있다. 따라서 이 문서의
+recheck 설명은 해당 파일의 current persisted Past Exam repair allowance를
+참조하며, 실행 allowance가 변경될 때 두 문서가 별도 권위로 갈라지지 않게
+한다.
 위 단계마다 별도 하위 agent를 실행하지 않는다. builder 풀이/EXPECTED는 제작 근거이며
 독립 MATH_A1/V1 증거로 둔갑시키지 않는다. Source defect는 별도 recovery 경계를 유지한다.
 

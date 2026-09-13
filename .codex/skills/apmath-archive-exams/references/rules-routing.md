@@ -63,7 +63,7 @@ NUMERIC_VISUAL_BUILD
 STATIC_AND_RENDER_CAPTURE
 FINAL_AUDIT_SEALED_U1_U2_U3
 TARGETED_REPAIR
-TARGETED_RECHECK_MAX_ONCE
+TARGETED_RECHECK
 PROMOTION
 FINAL_CLOSURE
 ```
@@ -96,7 +96,25 @@ FINAL_AUDIT / U1/U2/U3 contract, not an ad hoc GPT/Gemini handoff.
 One normal pipeline-core JOB may still contain multiple `runIds`; that batch
 capability is unchanged. Within that JOB, `AGENT_BUDGET.md` requires one main
 worker and provides no independent production agent. FINAL_AUDIT and the
-at-most-once TARGETED_RECHECK are managed by that JOB's canonical contract.
+bounded `TARGETED_RECHECK` loop are managed by that JOB's canonical contract;
+the persisted Past Exam repair allowance is currently three iterations, while
+legacy profiles retain their stored allowance.
+
+The auditor packets are sealed independently from frozen input: U1 is
+`SOURCE_ONLY` / `priorReviewVisibility NONE`, U2 is
+`ARTIFACT_ONLY` / `priorReviewVisibility NONE`, and U3 is `CANDIDATE_ONLY` /
+`priorReviewVisibility NONE`. No auditor output is passed to another auditor.
+The immutable results are combined only by the deterministic review merger.
+An explicit correctness-claim disagreement becomes `REVIEW_CONFLICT`;
+`SECOND_AUDIT` is never automatic and requires explicit `CONFLICT` or
+`HIGH_RISK` authorization.
+
+Completed audit defects enter `REPAIR_REQUIRED`, then canonical defect routing
+selects the bounded recovery lane. The builder creates a new revision/input
+SHA and freeze, and only the impacted scope is rechecked. Same-input/same-
+defect stagnation and the persisted iteration limit hold the job. Execution
+recovery preserves the existing immutable lineage and launch identity and is
+not a fresh semantic retry.
 
 Machine/static/metadata candidate-quality defects remain explicit FAIL/HOLD
 evidence. If downstream semantic audit is technically executable, those
