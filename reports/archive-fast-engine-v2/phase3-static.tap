@@ -1,0 +1,293 @@
+TAP version 13
+# Subtest: candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+ok 1 - candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+  ---
+  duration_ms: 5.4677
+  type: 'test'
+  ...
+# Subtest: keys include semantic changes and exclude pending session/request provenance
+ok 2 - keys include semantic changes and exclude pending session/request provenance
+  ---
+  duration_ms: 1.0156
+  type: 'test'
+  ...
+# Subtest: structural sharing trusts only normalizer-owned transitive immutable graphs
+ok 3 - structural sharing trusts only normalizer-owned transitive immutable graphs
+  ---
+  duration_ms: 0.3732
+  type: 'test'
+  ...
+# Subtest: pending materialization is a separate complete session and rejects mismatched targets
+ok 4 - pending materialization is a separate complete session and rejects mismatched targets
+  ---
+  duration_ms: 1.0455
+  type: 'test'
+  ...
+# Subtest: successful commit binds state, active status and current session; stale provenance is not validity
+ok 5 - successful commit binds state, active status and current session; stale provenance is not validity
+  ---
+  duration_ms: 5.476
+  type: 'test'
+  ...
+# Subtest: PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+ok 6 - PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+  ---
+  duration_ms: 2.4761
+  type: 'test'
+  ...
+# Subtest: latest wins serializes builds and never commits stale work
+ok 7 - latest wins serializes builds and never commits stale work
+  ---
+  duration_ms: 3.4521
+  type: 'test'
+  ...
+# Subtest: background and invalid enums cannot execute builds or effects
+ok 8 - background and invalid enums cannot execute builds or effects
+  ---
+  duration_ms: 0.595
+  type: 'test'
+  ...
+# Subtest: side effect failure, acknowledgement and retry keep one logical identity/key
+ok 9 - side effect failure, acknowledgement and retry keep one logical identity/key
+  ---
+  duration_ms: 1.9647
+  type: 'test'
+  ...
+# Subtest: precommit effects are rejected before execution; no unresolved required compensation
+ok 10 - precommit effects are rejected before execution; no unresolved required compensation
+  ---
+  duration_ms: 2.2377
+  type: 'test'
+  ...
+# Subtest: asynchronous measurements remain bound to their own transaction metrics
+ok 11 - asynchronous measurements remain bound to their own transaction metrics
+  ---
+  duration_ms: 2.8675
+  type: 'test'
+  ...
+# Subtest: batch renderer is the default and legacy remains an explicit fallback
+ok 12 - batch renderer is the default and legacy remains an explicit fallback
+  ---
+  duration_ms: 2.248
+  type: 'test'
+  ...
+# Subtest: both archive engines install render metrics and the shared loop runtime
+ok 13 - both archive engines install render metrics and the shared loop runtime
+  ---
+  duration_ms: 4.6295
+  type: 'test'
+  ...
+# Subtest: render metrics are exposed on the document for browser QA
+ok 14 - render metrics are exposed on the document for browser QA
+  ---
+  duration_ms: 0.5824
+  type: 'test'
+  ...
+# Subtest: inline scripts in both engines remain syntactically valid
+ok 15 - inline scripts in both engines remain syntactically valid
+  ---
+  duration_ms: 19.1178
+  type: 'test'
+  ...
+# Subtest: Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
+ok 16 - Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
+  ---
+  duration_ms: 5.8817
+  type: 'test'
+  ...
+# Subtest: Archive solution executor is a DOM transaction module with injected engine dependencies
+ok 17 - Archive solution executor is a DOM transaction module with injected engine dependencies
+  ---
+  duration_ms: 3.3904
+  type: 'test'
+  ...
+# Subtest: Phase A report uses legacy/shared executor A/B as the authority gate
+ok 18 - Phase A report uses legacy/shared executor A/B as the authority gate
+  ---
+  duration_ms: 2.3592
+  type: 'test'
+  ...
+# Subtest: Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
+ok 19 - Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
+  ---
+  duration_ms: 1.869
+  type: 'test'
+  ...
+# Subtest: Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
+ok 20 - Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
+  ---
+  duration_ms: 2.3044
+  type: 'test'
+  ...
+# Subtest: Archive golden browser fixture records semantic parity across all three output modes
+ok 21 - Archive golden browser fixture records semantic parity across all three output modes
+  ---
+  duration_ms: 1.0813
+  type: 'test'
+  ...
+# Subtest: Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
+ok 22 - Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
+  ---
+  duration_ms: 0.9259
+  type: 'test'
+  ...
+# archive solution image contract checks passed
+# Subtest: tests\\archive-solution-image.test.js
+ok 4 - tests\\archive-solution-image.test.js
+  ---
+  duration_ms: 357.9141
+  type: 'test'
+  ...
+# Subtest: Archive wrapLatex preserves structured table HTML while leaving its math for final MathJax typesetting
+ok 24 - Archive wrapLatex preserves structured table HTML while leaving its math for final MathJax typesetting
+  ---
+  duration_ms: 6.5502
+  type: 'test'
+  ...
+# Subtest: SourceAuthority rejects zero or multiple winners and retains the single winner evidence
+ok 25 - SourceAuthority rejects zero or multiple winners and retains the single winner evidence
+  ---
+  duration_ms: 6.5364
+  type: 'test'
+  ...
+# Subtest: SourceRef is canonical and never silently substitutes id, ordinal, or display number
+ok 26 - SourceRef is canonical and never silently substitutes id, ordinal, or display number
+  ---
+  duration_ms: 1.0814
+  type: 'test'
+  ...
+# Subtest: PrintJob freezes pure renderer modes and composes review as answer then solution
+ok 27 - PrintJob freezes pure renderer modes and composes review as answer then solution
+  ---
+  duration_ms: 3.0105
+  type: 'test'
+  ...
+# Subtest: Policies preserve layout authority boundaries and asset resolution stays adapter-owned
+ok 28 - Policies preserve layout authority boundaries and asset resolution stays adapter-owned
+  ---
+  duration_ms: 2.8089
+  type: 'test'
+  ...
+# Subtest: PageMap measures canonical source references instead of display numbers and readiness order is evidence-backed
+ok 29 - PageMap measures canonical source references instead of display numbers and readiness order is evidence-backed
+  ---
+  duration_ms: 2.3839
+  type: 'test'
+  ...
+# Subtest: all three adapters load the shared readiness tracker without collapsing transport capability
+ok 30 - all three adapters load the shared readiness tracker without collapsing transport capability
+  ---
+  duration_ms: 34.5491
+  type: 'test'
+  ...
+# Subtest: adapters record success-only RENDER_READY and reject incomplete render/image transactions before PRINT_READY
+ok 31 - adapters record success-only RENDER_READY and reject incomplete render/image transactions before PRINT_READY
+  ---
+  duration_ms: 5.6669
+  type: 'test'
+  ...
+# Subtest: readiness phase evidence distinguishes rendered readiness from an intentionally uninvoked print transport
+ok 32 - readiness phase evidence distinguishes rendered readiness from an intentionally uninvoked print transport
+  ---
+  duration_ms: 14.1755
+  type: 'test'
+  ...
+# Subtest: shared readiness tracker requires evidence-backed canonical order independent of transport
+ok 33 - shared readiness tracker requires evidence-backed canonical order independent of transport
+  ---
+  duration_ms: 3.3052
+  type: 'test'
+  ...
+# Subtest: readiness tracker rejects missing, skipped, and reordered transitions
+ok 34 - readiness tracker rejects missing, skipped, and reordered transitions
+  ---
+  duration_ms: 1.2606
+  type: 'test'
+  ...
+# Subtest: a failed transaction cannot reach RENDER_READY or PRINT_READY
+ok 35 - a failed transaction cannot reach RENDER_READY or PRINT_READY
+  ---
+  duration_ms: 1.066
+  type: 'test'
+  ...
+# Subtest: the pre-render sentinel is fail-closed for every selected print transport
+ok 36 - the pre-render sentinel is fail-closed for every selected print transport
+  ---
+  duration_ms: 0.3398
+  type: 'test'
+  ...
+# Subtest: image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence
+ok 37 - image error or timeout mutation blocks IMAGE_READY rather than treating an image count as evidence
+  ---
+  duration_ms: 0.7401
+  type: 'test'
+  ...
+# Subtest: Archive normalizer creates source-derived identity without treating id as SourceRef authority
+ok 38 - Archive normalizer creates source-derived identity without treating id as SourceRef authority
+  ---
+  duration_ms: 3.4323
+  type: 'test'
+  ...
+# Subtest: Mixer normalizer retains per-question provenance for same-id/different-source inputs
+ok 39 - Mixer normalizer retains per-question provenance for same-id/different-source inputs
+  ---
+  duration_ms: 5.2593
+  type: 'test'
+  ...
+# Subtest: Mixer adapter may resolve canonical source ordinal independently of mixed cart order
+ok 40 - Mixer adapter may resolve canonical source ordinal independently of mixed cart order
+  ---
+  duration_ms: 0.6999
+  type: 'test'
+  ...
+# Subtest: Clinic normalizer resolves payload aliases only into canonical fields and preserves restored provenance
+ok 41 - Clinic normalizer resolves payload aliases only into canonical fields and preserves restored provenance
+  ---
+  duration_ms: 0.7571
+  type: 'test'
+  ...
+# Subtest: Normalizers create only pure PrintJobs and preserve source-authority boundaries
+ok 42 - Normalizers create only pure PrintJobs and preserve source-authority boundaries
+  ---
+  duration_ms: 3.7181
+  type: 'test'
+  ...
+# Subtest: Question authority emits canonical exam, answer, and solution semantics
+ok 43 - Question authority emits canonical exam, answer, and solution semantics
+  ---
+  duration_ms: 3.6036
+  type: 'test'
+  ...
+# Subtest: Question authority requires adapter-owned asset resolution and compares semantic parity deterministically
+ok 44 - Question authority requires adapter-owned asset resolution and compares semantic parity deterministically
+  ---
+  duration_ms: 6.9132
+  type: 'test'
+  ...
+# Subtest: Semantic fingerprint rejects equal-count content, answer, choice, image, table, and standalone-view drift
+ok 45 - Semantic fingerprint rejects equal-count content, answer, choice, image, table, and standalone-view drift
+  ---
+  duration_ms: 3.8267
+  type: 'test'
+  ...
+# Subtest: Answer authority fingerprints number, value order, and source identity rather than only answer-cell count
+ok 46 - Answer authority fingerprints number, value order, and source identity rather than only answer-cell count
+  ---
+  duration_ms: 0.8904
+  type: 'test'
+  ...
+# Subtest: Question authority escapes data-SVG asset attributes without truncating quotes in the URL
+ok 47 - Question authority escapes data-SVG asset attributes without truncating quotes in the URL
+  ---
+  duration_ms: 0.3574
+  type: 'test'
+  ...
+1..47
+# tests 47
+# suites 0
+# pass 47
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 498.5766

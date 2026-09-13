@@ -1,0 +1,18 @@
+{
+  "phase": "4",
+  "gates": {
+    "EXAM_BATCH_MEASUREMENT_PARITY": "PASS",
+    "EXAM_RAW_TIGHT_GEOMETRY_PARITY": "PASS",
+    "EXAM_PAGE_COUNT_PARITY": "PASS",
+    "EXAM_PLACEMENT_PARITY": "PASS",
+    "EXAM_OVERFLOW_PARITY": "PASS",
+    "EXAM_LAYOUT_BARRIER_REDUCTION": "PASS",
+    "EXAM_ACTUAL_RENDER_VISUAL_PARITY": "PASS"
+  },
+  "geometryTolerance": 0,
+  "evidence": [
+    "measurement-exam-parity.json",
+    "phase4-static.tap"
+  ],
+  "publishTarget": "feature branch only; no main merge"
+}

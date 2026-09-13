@@ -30,7 +30,7 @@
         const SE_PAGE_TOLERANCE = Number(deps.SE_PAGE_TOLERANCE ?? 5);
         const SE_BLOCK_GAP = Number(deps.SE_BLOCK_GAP ?? 15);
 
-        const staging = document.getElementById('staging');
+        const staging = deps.stagingHost || document.getElementById('staging');
         if (!staging) throw new Error('EXAM_STAGING_MISSING');
         staging.style.width = '83mm';
         staging.innerHTML = '';
@@ -62,15 +62,7 @@
         await deps.applyAutoImageSizeClasses(staging);
         await deps.typesetMath('exam-staging', [staging]);
         await deps.raf();
-        for (const item of items) {
-            const profile = {};
-            profile.proxyHeight_raw = item.box.scrollHeight;
-            item.box.classList.add('fit-tight');
-            await deps.raf();
-            profile.proxyHeight_tight = item.box.scrollHeight;
-            item.box.classList.remove('fit-tight');
-            item.profile = profile;
-        }
+        await measureProfiles(items, deps);
         const tempPage = deps.makePage(area, 'exam', 0);
         const usablePageHeight = tempPage.body.clientHeight;
         area.removeChild(tempPage);
@@ -86,6 +78,7 @@
                 wide: item.q.wide === true
             }))
         };
+        if (deps.layoutPlannerMode?.() === 'authority') return deps.renderExamPlan({ area, items, usableHeight: usablePageHeight });
 
         const usesSlotLayout = items.some(item => ['subjective-2up', 'subjective-4up'].includes(item.q.layoutTag || ''));
         if (usesSlotLayout) {
@@ -295,5 +288,163 @@
         return area;
     }
 
-    return Object.freeze({ render });
+async function renderComposed({ area, items, deps }) {
+    const { document, staging, buildBox, makePage, applyAutoImageSizeClasses, raf, fitQuestionBox, autoCompress, afterPage } = deps;
+    const { qpp, SE_OVERHEAD_COL, SE_OVERHEAD_GRID, SE_PAGE_TOLERANCE, SE_BLOCK_GAP } = deps;
+    if (!items.length) return;
+    staging.style.width = '83mm';
+    staging.innerHTML = '';
+
+    const stagedItems = items.map((q, idx) => {
+        const box = buildBox(q, idx);
+        staging.appendChild(box);
+        return { q, box };
+    });
+
+    await applyAutoImageSizeClasses(staging);
+    await deps.typesetMath('composition-exam', [staging]);
+    await raf();
+
+    await measureProfiles(stagedItems, { raf, measurementMode: () => 'batch' });
+
+    const tempPage = makePage(area, 0);
+    const usablePageHeight = tempPage.body.clientHeight;
+    area.removeChild(tempPage.page);
+
+    const pages = [];
+    let currentPage = { blocks: [], usedHeight: 0 };
+    let activeChunk = [];
+    let currentType = null;
+
+    const flushBlock = () => {
+        if (!activeChunk.length) return;
+        const type = currentType || 'normal';
+        const chunk = [...activeChunk];
+        const hType = type === 'normal' ? 'proxyHeight_tight' : 'proxyHeight_raw';
+        let blockH;
+
+        if (type === 'wide') {
+            blockH = chunk[0].profile.proxyHeight_raw + SE_OVERHEAD_COL + SE_OVERHEAD_GRID;
+        } else {
+            const split = Math.ceil(chunk.length / 2);
+            const leftH = chunk.slice(0, split).reduce((sum, item) => sum + item.profile[hType], 0) + SE_OVERHEAD_COL;
+            const rightH = chunk.slice(split).reduce((sum, item) => sum + item.profile[hType], 0) + SE_OVERHEAD_COL;
+            blockH = Math.max(leftH, rightH) + SE_OVERHEAD_GRID;
+        }
+
+        const gap = currentPage.blocks.length ? SE_BLOCK_GAP : 0;
+        const normalForceBreak = type === 'normal' && currentPage.blocks.length > 0;
+        if ((normalForceBreak || currentPage.usedHeight + gap + blockH > usablePageHeight) && currentPage.blocks.length > 0) {
+            pages.push(currentPage);
+            currentPage = { blocks: [], usedHeight: 0 };
+        }
+
+        currentPage.usedHeight += (currentPage.blocks.length ? SE_BLOCK_GAP : 0) + blockH;
+        currentPage.blocks.push({ type, items: chunk, blockH });
+        activeChunk = [];
+    };
+
+    stagedItems.forEach(item => {
+        const layoutTag = item.q.layoutTag || '';
+        let qType = 'normal';
+        let limit = qpp;
+        if (item.q.wide === true || layoutTag === 'fullwidth') {
+            qType = 'wide';
+            limit = 1;
+        } else if (layoutTag === 'subjective-2up') {
+            qType = 'subj2';
+            limit = 2;
+        } else if (layoutTag === 'subjective-4up') {
+            qType = 'subj4';
+            limit = 4;
+        }
+
+        const isSpecialType = qType === 'subj2' || qType === 'subj4' || qType === 'wide';
+        const prevWasSpecial = currentType === 'subj2' || currentType === 'subj4' || currentType === 'wide';
+        if ((currentType !== null && currentType !== qType) || activeChunk.length >= limit || ((isSpecialType || prevWasSpecial) && currentPage.blocks.length > 0)) {
+            flushBlock();
+            if (isSpecialType && currentPage.blocks.length > 0) {
+                pages.push(currentPage);
+                currentPage = { blocks: [], usedHeight: 0 };
+            }
+            currentType = qType;
+        }
+        if (currentType === null) currentType = qType;
+        activeChunk.push(item);
+    });
+    flushBlock();
+    if (currentPage.blocks.length > 0) pages.push(currentPage);
+
+    for (let pageIdx = 0; pageIdx < pages.length; pageIdx++) {
+        const pageData = pages[pageIdx];
+        // 첫 페이지만 전체 헤더, 2페이지부터는 작은 러닝 이름표
+        const page = makePage(area, pageIdx + 1);
+
+        pageData.blocks.forEach((block, blockIdx) => {
+            if (block.type === 'wide') {
+                const wideCol = document.createElement('div');
+                wideCol.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
+                wideCol.appendChild(block.items[0].box.cloneNode(true));
+                page.body.appendChild(wideCol);
+                return;
+            }
+
+            const grid = document.createElement('div');
+            grid.className = 'grid-container';
+            grid.style.flex = block.type === 'normal' ? '1 1 0' : 'none';
+            if (blockIdx < pageData.blocks.length - 1) grid.style.marginBottom = `${SE_BLOCK_GAP}px`;
+
+            const left = document.createElement('div');
+            left.className = 'grid-col';
+            const right = document.createElement('div');
+            right.className = 'grid-col';
+            grid.appendChild(left);
+            grid.appendChild(right);
+            page.body.appendChild(grid);
+
+            const split = Math.ceil(block.items.length / 2);
+            block.items.slice(0, split).forEach(item => left.appendChild(item.box.cloneNode(true)));
+            block.items.slice(split).forEach(item => right.appendChild(item.box.cloneNode(true)));
+        });
+
+        deps.decorateBody?.(page, pageIdx === pages.length - 1);
+
+        await deps.typesetMath('composition-exam', [page.page]);
+        await raf();
+
+        const boxes = page.page.querySelectorAll('.q-box');
+        boxes.forEach(box => fitQuestionBox(box));
+
+        if (page.body.scrollHeight > usablePageHeight + SE_PAGE_TOLERANCE) {
+            boxes.forEach(box => autoCompress(box));
+            await raf();
+            await deps.typesetMath('composition-exam', [page.page]);
+        }
+
+        afterPage?.(page, pageIdx === pages.length - 1);
+    }
+}
+
+
+    // Shared by Archive/Mixer slot layout and recipient-composed chunk layout.
+    // Each independent staging box is measured before any page materialization.
+    async function measureProfiles(items, deps) {
+        const measure = deps.measure || (node => node.scrollHeight);
+        if (deps.measurementMode?.() === 'batch') {
+            items.forEach(item => { item.profile = { proxyHeight_raw: measure(item.box) }; });
+            items.forEach(item => item.box.classList.add('fit-tight'));
+            try {
+                await deps.raf();
+                items.forEach(item => { item.profile.proxyHeight_tight = measure(item.box); });
+            } finally { items.forEach(item => item.box.classList.remove('fit-tight')); }
+        } else for (const item of items) {
+            item.profile = { proxyHeight_raw: measure(item.box) };
+            item.box.classList.add('fit-tight');
+            try { await deps.raf(); item.profile.proxyHeight_tight = measure(item.box); }
+            finally { item.box.classList.remove('fit-tight'); }
+        }
+        return items;
+    }
+
+    return Object.freeze({ render, renderComposed, measureProfiles });
 });

@@ -1,0 +1,20 @@
+{
+  "phase": "7",
+  "decision": "RETAIN_LEGACY",
+  "decisionGate": "PASS",
+  "reason": "The design requires usage telemetry/evidence, a rollback flag, and full parity before a separate-release removal decision. Browser parity and rollback flags pass, but no durable production telemetry sink exists in the current repository.",
+  "rollbackPaths": {
+    "screenRuntime": "?screenRuntime=legacy — PASS",
+    "renderer": "?renderer=legacy — PASS",
+    "executor": "?examAuthority=legacy&solutionAuthority=legacy&answerAuthority=legacy — PASS",
+    "layout": "?layoutPlanner=observed — PASS",
+    "snapshots": "?snapshotCache=0 — retained and browser-regressed"
+  },
+  "browserEvidence": "phase7-legacy-browser.json: 12 mode/path cases, each with expected page count and no unrendered math",
+  "telemetry": {
+    "runtimeLocalEvidence": "document.documentElement.dataset.apScreenRuntime and per-transaction metrics exist only in the browser process",
+    "durableProductionCollector": false,
+    "removalEligible": false
+  },
+  "action": "No legacy code was deleted. A future, separate release may re-evaluate removal after durable usage telemetry has been collected and reviewed."
+}

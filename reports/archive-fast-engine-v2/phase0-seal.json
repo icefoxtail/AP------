@@ -1,0 +1,43 @@
+{
+  "sha": "ea6564cdda7a496412246522fab5940086b48a65",
+  "at": "2026-09-10T14:06:04.378Z",
+  "gates": {
+    "PHASE0_BASELINE_FROZEN": "PASS",
+    "RENDER_ENTRY_INVENTORY_COMPLETE": "PASS",
+    "CANONICAL_RENDER_INPUT_SCHEMA_FROZEN": "PASS",
+    "CANDIDATE_IMMUTABILITY_STRATEGY_FROZEN": "PASS",
+    "PENDING_SESSION_LIFECYCLE_FROZEN": "PASS",
+    "SIDE_EFFECT_INVENTORY_COMPLETE": "PASS",
+    "SIDE_EFFECT_CONTRACT_MATRIX_FROZEN": "PASS",
+    "SIDE_EFFECT_IDEMPOTENCY_RULES_FROZEN": "PASS",
+    "SIDE_EFFECT_FAILURE_POLICY_FROZEN": "PASS",
+    "SIDE_EFFECT_COMPENSATION_POLICY_FROZEN": "PASS"
+  },
+  "baselineSamples": 48,
+  "profiles": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 1000
+    }
+  ],
+  "geometryTolerance": {
+    "absoluteCssPx": 0,
+    "relative": 0,
+    "scope": "same browser/font fixture parity; freeze from observed exact matching geometry"
+  },
+  "canonicalModes": [
+    "exam",
+    "sol",
+    "ans"
+  ],
+  "evidenceHashes": {
+    "phase0-baseline.json": "d53de66abaf8ebc596bb191d444ba00738423cfd8661cdbf21e849992179ba17",
+    "phase0-parity.json": "c5f288b2855cd16946526ce696acad3bdea0f87b5e768637f5abdd55a8a616c2",
+    "phase0-inventory.json": "72b01a7d58e367a2e0a62b994792cce20f7565631e6f7ca217084886ca297368"
+  },
+  "metricsScope": "renderReady, visible wall-time, MathJax calls/time, image dimensions, page/node counts and Chrome Layout/Paint/FunctionCall totals measured. Main has no separate font wait/materialization/forced-read counters; phase totals and raw traces retained, not fabricated."
+}

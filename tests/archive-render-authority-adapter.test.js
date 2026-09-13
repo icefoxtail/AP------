@@ -20,15 +20,18 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /compareAnswerSemantics/);
   assert.match(engine, /data-semantic-content="1"/);
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
-  assert.match(engine, /recordArchiveDualRun\(area\)/);
-  assert.match(engine, /layout-authority\.js\?v=20260906\.25/);
-  assert.match(engine, /solution-render-executor\.js\?v=20260907\.1/);
+  assert.match(engine, /recordArchiveDualRun\(area, ctx(?: = null)?\)/);
+  for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter']) {
+    const version = ['screen-runtime', 'solution-render-executor'].includes(script) ? '20260913\\.1' : '20260911\\.5';
+    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
+  }
+  assert.match(engine, /solution-render-executor\.js\?v=20260913\.1/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
-  assert.match(engine, /exam-render-executor\.js\?v=20260907\.1/);
-  assert.match(engine, /function recordArchiveLayoutPromotionGate\(area\)/);
-  assert.match(engine, /recordArchiveLayoutPromotionGate\(area\)/);
-  assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area\)/);
-  assert.match(engine, /recordArchiveSolutionLayoutPromotionGate\(area\)/);
+  assert.match(engine, /exam-render-executor\.js\?v=20260911\.5/);
+  assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
+  assert.match(engine, /recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
+  assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);
+  assert.match(engine, /recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /layoutMeasurementLedger/);
   assert.match(engine, /RENDER_INCOMPLETE/);
   assert.match(engine, /expectedQuestionCount/);
@@ -44,19 +47,19 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(layout, /legacyPages\[pageLayout\.pageNo - 1\]/);
   assert.match(layout, /pageHasSlotRows/);
   assert.match(layout, /spacer\.dataset\.layoutSpacer/);
-  assert.match(engine, /async function renderExam\(area, data\)/);
-  assert.match(engine, /async function renderSol\(area, data\)/);
-  assert.match(engine, /async function renderSolLegacy\(area, data\)/);
-  assert.match(engine, /async function renderExamLegacy\(area, data\)/);
-  assert.match(engine, /APExamRenderExecutor\.render\(\{ area, data, deps: archiveExamDeps \}\)/);
+  assert.match(engine, /async function renderExam\(area, data, ctx = null\)/);
+  assert.match(engine, /async function renderSol\(area, data, ctx = null\)/);
+  assert.match(engine, /async function renderSolLegacy\(area, data, ctx = null\)/);
+  assert.match(engine, /async function renderExamLegacy\(area, data, ctx = null\)/);
+  assert.match(engine, /APExamRenderExecutor\.render\(\{ area, data, deps: ctx\?\.deps \|\| archiveExamDeps \}\)/);
   assert.match(engine, /examAuthority/);
-  assert.match(engine, /function renderAnsLegacy\(area, data, perPage = 40\)/);
-  assert.match(engine, /APAnswerRenderExecutor\.render\(\{ area, data, perPage, deps: archiveAnswerDeps \}\)/);
+  assert.match(engine, /function renderAnsLegacy\(area, data, perPage = 40, ctx = null\)/);
+  assert.match(engine, /APAnswerRenderExecutor\.render\(\{ area, data, perPage, deps: ctx\?\.deps \|\| archiveAnswerDeps \}\)/);
   assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
-  assert.match(engine, /APSolutionRenderExecutor\.render\(\{ area, data, deps: archiveSolutionDeps \}\)/);
+  assert.match(engine, /APSolutionRenderExecutor\.render\(\{ area, data, deps: ctx\?\.deps \|\| archiveSolutionDeps \}\)/);
   assert.match(engine, /const authority = requestedAuthority \|\| 'shared'/);
   assert.match(engine, /solutionAuthority/);
-  assert.match(engine, /injectQrToLastExamPage\(area\);[\s\S]{0,80}injectSubmitQrToLastExamPage\(area\);/);
+  assert.match(engine, /injectQrToLastExamPage\(area, ctx\);[\s\S]{0,80}injectSubmitQrToLastExamPage\(area, ctx\);/);
 });
 
 test('Archive solution executor is a DOM transaction module with injected engine dependencies', () => {
