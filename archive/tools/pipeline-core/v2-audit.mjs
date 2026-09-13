@@ -49,12 +49,7 @@ function projectionContext(root, run, question, axis) {
   const rules = run.inputs.filter(ref => ref.role === 'rule'), verifiers = run.inputs.filter(ref => ref.role === 'verifier');
   for (const ref of [...rules, ...verifiers]) readBoundFile(root, ref);
   const sourceAuthority = { sourceRecord: question.sourceRecord, sourceExamId: question.sourceExamId, registryEntrySha: run.uidAuthority?.sourceExamIdRegistryEntrySha || null, repair: run.sourceAuthority?.approvedSourceRepairLedgerRef || null, exception: run.sourceAuthority?.approvedSourceExceptionLedgerRef || null };
-  const frozen = {};
-  for (const [name, evidenceAxis] of [['A1', 'MATH_A1'], ['V1', 'V1'], ['V2', 'V2']]) {
-    if (!AXIS_INPUT_PROJECTION_MAP[axis]?.includes(`${name}_FROZEN`)) continue;
-    // Bind upstream semantic inputs; exact frozen output hashes remain checked by the semantic kernel.
-    frozen[name] = axisInputSha(question, evidenceAxis, projectionContext(root, run, question, evidenceAxis));
-  }
+  const frozen = {}; // Independent axes bind inputs only; peer results are merger outputs.
   return { frozen, dependencies: { shared: dependencies }, dependencySetSha: objectSha(dependencies), ruleDependencySetSha: objectSha(rules), verifierDependencySetSha: objectSha({ verifiers, coreSha: CORE_SHA }), sourceAuthority, sourceAuthoritySliceSha: objectSha(sourceAuthority), renderPolicy: run.releaseRenderPolicy || run.releasePolicy || null, runtime: axis === 'RENDER_CAPTURE' ? { bundle: run.renderRuntime || null, captureRunId: run.runId, captureRevision: run.revision } : run.renderRuntime || null };
 }
 

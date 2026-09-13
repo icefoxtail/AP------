@@ -14,8 +14,28 @@ VALIDATOR_SPEC = importlib.util.spec_from_file_location("final_validator", VALID
 validator = importlib.util.module_from_spec(VALIDATOR_SPEC)
 VALIDATOR_SPEC.loader.exec_module(validator)
 
+SCANNED_PATH = Path(__file__).resolve().parents[1] / "helpers" / "scanned_exam_pipeline.py"
+SCANNED_SPEC = importlib.util.spec_from_file_location("scanned_exam_pipeline", SCANNED_PATH)
+scanned = importlib.util.module_from_spec(SCANNED_SPEC)
+SCANNED_SPEC.loader.exec_module(scanned)
+
 
 class PreflightMapHelperTests(unittest.TestCase):
+    def test_blank_choices_are_not_required_for_non_objective_questions(self):
+        self.assertEqual(scanned.choices_source_for("서술형", []), "not_applicable")
+        self.assertEqual(scanned.choices_source_for("단답형", []), "not_applicable")
+        self.assertEqual(scanned.choices_source_for("객관식", []), "vision_required")
+        self.assertEqual(scanned.choices_source_for("객관식", ["1", "2", "3", "4", "5"]), "vision_page")
+
+    def test_validator_does_not_treat_numeric_subjective_questions_as_objective(self):
+        self.assertFalse(validator.is_objective_question({"displayNo": "16", "questionType": "단답형", "choices": []}))
+        self.assertFalse(validator.is_objective_question({"displayNo": "20", "questionType": "서술형", "choices": []}))
+        self.assertTrue(validator.is_objective_question({"displayNo": "15", "questionType": "객관식", "choices": ["1", "2", "3", "4", "5"]}))
+
+    def test_decoded_latex_commands_are_valid_serialized_values(self):
+        questions = [{"id": 4, "content": r"$x+\dfrac4x\ge4$", "answer": "④", "solution": r"$\sqrt2$, $\pi$, $\neq$, $\not p$"}]
+        self.assertEqual(validator.serialization_issues(questions), [])
+
     def test_expands_mixed_objective_and_subjective_ranges(self):
         with tempfile.TemporaryDirectory() as tmp:
             exam_root = Path(tmp)

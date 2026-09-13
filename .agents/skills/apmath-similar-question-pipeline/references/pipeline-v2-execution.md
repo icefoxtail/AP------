@@ -34,11 +34,17 @@ launches.
    complete frozen scope through the provider bridge.
 8. Reconcile the single terminal receipt. Provider failure, invalid
    attestation, or unknown state remains HOLD/DISPATCHED; it is not an
-   invitation to retry automatically.
-9. Repair defects locally, create a new immutable freeze, and use at most one
-   TARGETED_RECHECK. Its scope is the computed affected UID and axis set.
+   invitation to retry automatically. A completed receipt with defects enters
+   `REPAIR_REQUIRED` and retains the defect evidence.
+9. For the Past Exam profile, the original builder records one disposition per
+   open defect, creates a new revision/inputSha, reruns machine checks, and
+   creates a new immutable freeze. Reserve an independent `TARGETED_RECHECK`
+   for the union of open defects and semantic/dependency/render impact. Repeat
+   until closure or the persisted three-iteration bound; legacy profiles keep
+   their stored allowance.
 10. Use direct-root validated reuse receipts for unchanged axes. A composite
-    review record does not authorize rereviewing unaffected questions.
+    review record does not authorize rereviewing unaffected questions, and
+    builder dispositions alone never close a defect.
 11. Run whole-job audit, v2 audit, and the separate release audit. A quality
     PASS never grants production publication authority.
 

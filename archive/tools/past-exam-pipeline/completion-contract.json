@@ -2,8 +2,9 @@
   "schemaVersion": "PAST_EXAM_V3_COMPLETE",
   "executionAuthority": "archive/tools/pipeline-core/AGENT_BUDGET.md",
   "allowedCompletionFields": ["answer", "solution", "answerStatus", "solutionStatus", "level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth", "solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize"],
+  "repairLoop": {"workflowProfile": "PAST_EXAM", "maxRepairIterations": 3, "finalAuditCount": 1, "targetedRecheckIndependent": true, "productionRequiresOpenDefectCountZero": true},
   "requiredRenderCases": ["exam/desktop", "exam/mobile", "solution/desktop", "solution/mobile", "answer/desktop", "answer/mobile"],
-  "stages": ["RULE_PREFLIGHT", "CANONICAL_PRODUCTION_SAMPLE_CALIBRATION", "PRODUCTION_QUALITY_PROFILE_FREEZE", "TARGET_BASELINE_REVIEW", "SOURCE_INVENTORY_FREEZE", "FULL_PAGE_EXACT_EXTRACTION", "SOURCE_FIDELITY_FREEZE", "BUILDER_INDEPENDENT_SOLVE", "SOLUTION_AND_CLASSIFICATION_BUILD", "ALL_QUESTION_VISUAL_TRIAGE", "EXPECTED_FACT_FREEZE", "NUMERIC_VISUAL_BUILD", "STATIC_AND_RENDER_CAPTURE", "FINAL_AUDIT_SEALED_U1_U2_U3", "TARGETED_REPAIR", "TARGETED_RECHECK_MAX_ONCE", "PROMOTION", "FINAL_CLOSURE"],
+  "stages": ["RULE_PREFLIGHT", "CANONICAL_PRODUCTION_SAMPLE_CALIBRATION", "PRODUCTION_QUALITY_PROFILE_FREEZE", "TARGET_BASELINE_REVIEW", "SOURCE_INVENTORY_FREEZE", "FULL_PAGE_EXACT_EXTRACTION", "SOURCE_FIDELITY_FREEZE", "BUILDER_INDEPENDENT_SOLVE", "SOLUTION_AND_CLASSIFICATION_BUILD", "ALL_QUESTION_VISUAL_TRIAGE", "EXPECTED_FACT_FREEZE", "NUMERIC_VISUAL_BUILD", "STATIC_AND_RENDER_CAPTURE", "FINAL_AUDIT_SEALED_U1_U2_U3", "TARGETED_REPAIR", "TARGETED_RECHECK_BOUNDED_3_ITERATIONS", "PROMOTION", "FINAL_CLOSURE"],
   "geometryPolicyRef": {
     "path": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md",
     "version": "v1.1",

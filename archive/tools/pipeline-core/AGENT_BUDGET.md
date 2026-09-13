@@ -9,8 +9,10 @@ bound in `runInputSha`; a run cannot acquire a second budget by changing batch I
 ## Operating sequence
 
 1. The main worker initializes the job with its complete `runIds` and builder
-   identity. No independent production agent exists. Token values are telemetry,
-   never execution authority.
+   identity. A Past Exam job sets `workflowProfile: PAST_EXAM`; other workflows
+   retain the legacy profile and its existing one-targeted-recheck allowance.
+   No independent production agent exists. Token values are telemetry, never
+   execution authority.
 2. Produce all targets; preserve existing accepted evidence. Perform machine
    checks locally. STATIC and METADATA use typed MACHINE_CURRENT records;
    browser capture uses MACHINE_COLLECTOR, never an auditor identity.
@@ -31,12 +33,21 @@ bound in `runInputSha`; a run cannot acquire a second budget by changing batch I
 6. Reconcile a hash-bound terminal provider receipt. Quality defects mean a
    COMPLETED audit, not a new launch. Provider failure means HOLD. Unknown or
    timed-out provider state keeps RESERVED/DISPATCHED and occupies the slot.
-7. Repair all defects locally. Freeze once more and reserve TARGETED_RECHECK at
-   most once. Scope is defect UIDs plus computed semantic/dependency/render
-   impact. Accepted unaffected axes require direct-root validated reuse.
-8. Aggregate whole-job coverage and cost with work-batch-audit. A failed first
-   audit can supply a bound partial predecessor; only independently revalidated
-   PASS axes survive. No PASS-until-retry loop exists.
+7. A COMPLETED audit with defects enters `REPAIR_REQUIRED`; it is not a
+   terminal success and it is not an automatic retry. The original builder
+   records one disposition per open defect, creates a new revision/inputSha,
+   runs machine checks, and freezes a new immutable snapshot.
+8. Reserve `TARGETED_RECHECK` for the new freeze. Past Exam permits at most
+   three repair iterations; legacy profiles retain their stored one-recheck
+   budget. Each recheck is an independent U1/U2/U3 execution. Scope is the
+   union of the open defects and semantic/dependency/render impact. Accepted
+   unaffected axes require direct-root validated reuse.
+9. Recheck PASS closure accumulates with prior validated reuse; remaining or
+   newly discovered defects replace the open set for the next repair iteration.
+   Same-input same-defect stagnation and the iteration limit are HOLD.
+10. Aggregate whole-job coverage and cost with work-batch-audit. Only when the
+    open defect set is empty and all closure artifacts are valid can production
+    authorization be considered.
 
 A conflict/high-risk SECOND_AUDIT is optional, never automatic. It needs an
 explicit authorization identity and reason, consumes one bounded allowance,
@@ -57,11 +68,25 @@ pre-review snapshots and returned evidence immutable; write a new manifest
 snapshot when adding evidence rather than overwriting a frozen ref.
 
 - `work-batch-init --spec spec.json`: spec contains `workBatchId`, `runIds`,
-  `builderId`, and `builderSessionId`. A legacy `tokenBudget` field is ignored.
+  `builderId`, and `builderSessionId`. Set `workflowProfile: PAST_EXAM` (or
+  `pipeline: past-exam`) for the iterative Past Exam route; omitted profile
+  preserves the legacy one-recheck budget. A legacy `tokenBudget` field is
+  ignored.
+- `work-batch-materialize-repair --spec spec.json`: creates a fresh Past Exam
+  repair work batch from an immutable completed FINAL_AUDIT predecessor. The
+  spec names `workBatchId`, `predecessorWorkBatchId`, and optionally the same
+  builder identity. It copies no mutable source bytes, carries the predecessor
+  freeze/receipt refs, and enters `REPAIR_REQUIRED` with a canonical open
+  defect set. It is not a new FINAL_AUDIT and does not authorize production.
 - `prepare-v2 ... --work-batch-id JOB`: associates existing v2 preparation with
   the job. Preparation is not freeze and grants no independent launch.
 - `work-batch-freeze --work-batch-id JOB --run-refs refs.json`: refs is the full
-  run-reference array. Run STATIC/METADATA and render collection before freeze.
+   run-reference array. Run STATIC/METADATA and render collection before freeze.
+- `work-batch-repair --work-batch-id JOB --request request.json`: the original
+  builder records `iteration`, `revision`, aggregate `inputSha`, builder
+  identity, and exactly one disposition per `openDefectSet` target. It does not
+  close an audit or grant production authority. A `HOLD` disposition holds the
+  batch until explicit reconciliation.
 - `work-batch-reserve --work-batch-id JOB --request request.json`: request has
   `purpose`, `callerRole: MAIN_WORKER`, `auditorId`, `auditorSessionId`,
   `parentLaunchId: null`, `recursiveSubagentLaunchCount: 0`,
@@ -97,13 +122,25 @@ block new reservations until their provider state has been reconciled.
 ## Evidence and execution are separate
 
 SOURCE/MATH_A1/V1 bind U1 SOURCE_ONLY/NONE. V2 binds U2 ARTIFACT_ONLY/NONE.
-MATH_A2/SOLUTION/V3 bind U3 FROZEN_V1_V2/FROZEN_U1_U2. RENDER_REVIEW binds U3
-ACTUAL_RENDER/CAPTURE_ONLY. U3 may consume frozen results. These are sealed input
+MATH_A2/SOLUTION/V3/RENDER_REVIEW bind U3 CANDIDATE_ONLY/NONE. Render captures
+are frozen machine inputs, not peer auditor outputs. No phase may consume another auditor's results.
+All three packets are sealed from frozen inputs before dispatch; sequential
+transport does not create an output dependency. `review-merger.mjs` combines
+their immutable outputs deterministically. Conflicting claims become
+REVIEW_CONFLICT and are eligible for an explicitly authorized SECOND_AUDIT;
+ordinary agreement never launches an adjudicator. These are sealed input
 contexts within one execution, not separate execution agents. Fresh evidence
 binds a completed launch, provider output ref, phase session, packet context,
 UID scope, freeze and timestamps. A provider incapable of stateless input
 isolation with subagent tools disabled must HOLD; a stateful chat that has seen
 answers cannot become blind by changing a label.
+
+The resume runner accepts `conflictAuthorization: {explicit: true,
+reason: 'CONFLICT', authorizedBy: '<authority identity>'}`. Only an open
+REVIEW_CONFLICT may use this authorization to invoke the existing bounded
+SECOND_AUDIT. Without it the conflict is returned for an authorization decision;
+with it, a conflict-free run still launches no additional review. SECOND_AUDIT
+also uses three fresh isolated contexts and receives no earlier auditor output.
 
 STATIC/METADATA/RENDER_CAPTURE use MACHINE_CURRENT and MACHINE_COLLECTOR with
 hash-bound local collection provenance. They never use reuse receipts or LLM
@@ -119,9 +156,10 @@ artifact-only review, V3 expected/observed fact parity, and render review (or
 explicit defect/HOLD/reclassification evidence). Diagnostic continuation may
 observe downstream failures but never changes canonical PASS or promotion.
 
-Upstream phase projections bind semantic inputs so that freezing A1/V1/V2
-outputs does not invalidate the job's pre-review input hashes. Exact frozen
-output hashes remain mandatory in A2/V3 semantic checks.
+Each phase projection binds its own frozen semantic inputs. A1/V1/V2 output
+hashes are retained in the merger's response references; they are not A2/V3
+inputs. The deterministic closure kernel compares independent math and visual
+observations after all three reports exist, without rewriting auditor output.
 
 Render capture remains current across every required case. A composite current
 render review can contain fresh affected item reviews and hash/axis/witness-bound

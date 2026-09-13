@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_TRANSPORT_FAILURE_v1",
+  "status": "FAILED",
+  "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+  "workBatchId": "past20-maesan-repair-d5141e744d",
+  "launchId": "past20-maesan-repair-d5141e744d:1",
+  "externalId": "01a09155-37d8-7171-a610-a441bcb453ca",
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "phase": "U1",
+  "preDispatchFailure": false,
+  "observedAt": "2026-09-11T16:46:45.117Z",
+  "dispatchResult": {
+    "canonicalStatus": "HOLD:PROVIDER_TRANSPORT_UNAVAILABLE",
+    "responseReturned": false,
+    "responseAttestationReturned": false,
+    "evidenceReturned": false,
+    "laterPhasesInvoked": false,
+    "providerTurnLogPresent": false,
+    "dispatchClientProcessPresent": false
+  },
+  "sealedInputRefs": {
+    "providerPlanRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-d5141e744d/preflight.json",
+      "bytes": 9713,
+      "sha256": "sha256:4b507fc7042fb692ecabd0e22525faff5cd9b5db1ebc0ccc431025d6bd825f19"
+    },
+    "packetRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-d5141e744d/u1-packet.json",
+      "bytes": 11486,
+      "sha256": "sha256:30a84fa910a19e2d96365f9147f7bb916e20dee5267ff9ec43b65dc06452440e"
+    },
+    "requestRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-d5141e744d/u1-request.json",
+      "bytes": 12450,
+      "sha256": "sha256:b9b6c4b194d012b0ea3ddf75d1f685b7ecdde38b8c5be62f5769ae5394924340"
+    }
+  },
+  "requestInputSha": "sha256:86be9a549d463f47fa736930aaae1e0a425838e9a0c08f75c455b1cd5a7c9f9f",
+  "transport": {
+    "command": "node",
+    "args": [
+      "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+      "--job",
+      "past20-maesan-repair-d5141e744d"
+    ],
+    "automaticRetry": false
+  },
+  "rootCauseEvidence": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/repair-d5141e744d-provider-transport-failure.json",
+  "disposition": "Terminal provider failure; no retry or synthetic review evidence is authorized."
+}

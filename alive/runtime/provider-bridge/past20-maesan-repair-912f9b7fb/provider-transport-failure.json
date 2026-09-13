@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_TRANSPORT_FAILURE_v1",
+  "status": "FAILED",
+  "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+  "workBatchId": "past20-maesan-repair-912f9b7fb",
+  "launchId": "past20-maesan-repair-912f9b7fb:1",
+  "externalId": "01a0911e-117a-7212-904e-5e55338506dc",
+  "provider": "CodexAppServer",
+  "model": "gpt-5.6-luna/xhigh",
+  "phase": "U1",
+  "preDispatchFailure": false,
+  "observedAt": "2026-09-11T15:45:25.036Z",
+  "dispatchResult": {
+    "canonicalStatus": "HOLD:PROVIDER_TRANSPORT_UNAVAILABLE",
+    "responseReturned": false,
+    "responseAttestationReturned": false,
+    "evidenceReturned": false,
+    "laterPhasesInvoked": false
+  },
+  "sealedInputRefs": {
+    "providerPlanRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-912f9b7fb/preflight.json",
+      "bytes": 9669,
+      "sha256": "sha256:573652f86b0dfaf1134cf8dc39b96cd3f7c86e8c968343a988c420491da6ab33"
+    },
+    "packetRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-912f9b7fb/u1-packet.json",
+      "bytes": 11485,
+      "sha256": "sha256:2eeda2194cf019e2bac92d34997d6de4d25f44dc5c47611965e3a652d9dd87e3"
+    },
+    "requestRef": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-repair-912f9b7fb/u1-request.json",
+      "bytes": 12448,
+      "sha256": "sha256:eb55ea2cf92b090e8c3f0524a34d1be7ca0174193a3c73a4ebadb9da916293f3"
+    }
+  },
+  "requestInputSha": "sha256:33cd04ea5da18ed2df6197e509ef76096f384cdd1c4f2efc151ce24187deafcf",
+  "transport": {
+    "command": "node",
+    "args": [
+      "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+      "--job",
+      "past20-maesan-repair-912f9b7fb"
+    ],
+    "automaticRetry": false
+  },
+  "rootCauseEvidence": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/repair-912f9b7fb-provider-root-cause-3.json",
+  "disposition": "Terminal provider failure; no retry or synthetic review evidence is authorized."
+}

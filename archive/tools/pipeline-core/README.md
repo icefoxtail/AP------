@@ -1,6 +1,7 @@
 > Current v2 execution authority: [Agent / Token Budget Architecture](AGENT_BUDGET.md).
-> Produce the entire requested job in the main worker, freeze once, and reserve
-> one final auditor. At most one targeted recheck; no per-axis/per-UID waves.
+> Produce the entire requested job in the main worker. Past Exam work batches
+> use one FINAL_AUDIT followed by a bounded repair/recheck loop; legacy profiles
+> retain their historical one-recheck allowance. No per-axis/per-UID waves.
 > Legacy task dispatch instructions cannot bypass the persisted budget gate.
 
 # APMath common pipeline core
@@ -141,8 +142,10 @@ Final records require explicit PASS, VALID/FROZEN and zero unresolved findings.
   artifactPath/artifactSha and `structureFingerprint(fact)`. Its bundle excludes
   expected/answer/solution/alt/caption. Intended-meaning accessibility metadata
   is not independent observation.
-- V3 uses FROZEN_V1_V2 after both first-pass freezes. It binds v1EvidenceSha,
-  v2EvidenceSha, finalVisualRequirement and cDenominatorInputSha. Separate checks:
+- V2-run V3 uses CANDIDATE_ONLY/NONE, independently of U1/U2 outputs. It binds
+  candidate/visual/render inputs, finalVisualRequirement and cDenominatorInputSha.
+  Expected/observed comparisons belong to the deterministic closure/merger;
+  legacy V1 runs retain their historical first-pass evidence bindings. Separate checks:
   necessity, decisiveStep, completeness, mediumFit, solutionParity,
   altCaptionParity, semanticsLocks, staticContract.
 
@@ -216,6 +219,25 @@ Past Exam callers additionally pass the complete frozen source identity set as
 `sourceDocumentSha256|sourceQuestionNo`; the legacy `sourcePath|qid` form is
 retained only for older pipeline-core callers. A closure that is valid for a
 different q-id set cannot authorize a Past Exam production write.
+
+## bounded repair/recheck loop
+
+The review ledger is iterative after a completed FINAL_AUDIT. A receipt with
+defects moves the work batch to `REPAIR_REQUIRED`; for an already completed
+legacy Past Exam predecessor, `work-batch-materialize-repair` creates a fresh
+repair work batch while retaining the predecessor state/freeze/receipt as
+immutable references. The original builder then records one disposition per
+open defect, creates a new revision/inputSha, reruns machine checks, and
+freezes a new immutable snapshot. `TARGETED_RECHECK` then reviews the union of
+the open defect set and semantic/dependency/render impact.
+
+The Past Exam bound is three repair iterations. PASS axes remain eligible for
+validated reuse, while remaining or newly discovered defects replace the open
+set. Same-input same-defect stagnation and the iteration limit enter HOLD.
+`work-batch-repair` records the original builder identity, disposition and
+new revision/inputSha before a new freeze; it never authorizes a PASS by
+itself. Production remains unauthorized until the complete V2 quality and
+release closures are valid.
 
 ## v2 change-scoped audit
 
