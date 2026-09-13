@@ -28,7 +28,9 @@ test('one-pass resume runner connects provider review, route handler, repair, an
       CANDIDATE_REPAIR: ({ defects }) => ({ route: 'CANDIDATE_REPAIR', repairRequest: { iteration: 1, revision: second.run.revision, inputSha: second.run.inputSha, dispositions: defects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' })), builderId: 'builder', builderSessionId: 'builder-session', runRefs: [second.ref] } }),
     },
   });
-  assert.equal(result.status, 'CLOSURE_READY');
+  assert.equal(result.status, 'REVIEW_READY');
+  assert.equal(result.state.status, 'REVIEW_READY');
+  assert.equal(result.state.productionAuthorized, false);
   assert.ok(result.history.some(row => row.action === 'FINAL_AUDIT'));
   assert.ok(result.history.some(row => row.action === 'AUTO_REPAIR'));
   assert.ok(result.history.some(row => row.action === 'TARGETED_RECHECK'));

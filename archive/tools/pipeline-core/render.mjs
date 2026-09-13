@@ -63,7 +63,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
   for (const input of run.inputs) readBoundFile(root, input);
   const output = safePath(root, workdir, { mustExist: false });
   if (fs.existsSync(output)) throw new Error('NEW_RENDER_ATTEMPT_DIRECTORY_REQUIRED');
-  for (const p of ['archive/exams', 'archive/assets']) if (output === path.resolve(root, p) || output.startsWith(`${path.resolve(root, p)}${path.sep}`)) throw new Error('PRODUCTION_RENDER_OUTPUT_FORBIDDEN');
+  for (const p of ['archive/exams', 'archive/assets', 'archive/db.js', 'archive/question-index.js']) if (output === path.resolve(root, p) || output.startsWith(`${path.resolve(root, p)}${path.sep}`)) throw new Error('PRODUCTION_RENDER_OUTPUT_FORBIDDEN');
   const engine = run.inputs.find(i => i.path === run.renderRuntime.enginePath && i.role === 'engine');
   if (!engine) throw new Error('PRODUCTION_ENGINE_NOT_BOUND');
   const require = createRequire(process.env.APMATH_NODE_MODULES ? path.join(process.env.APMATH_NODE_MODULES, '..', 'package.json') : import.meta.url);

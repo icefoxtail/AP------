@@ -1,5 +1,6 @@
 import path from "node:path";
 import { readJson } from "./fs-utils.mjs";
+import { assertStagingOutput } from "./production-boundary.mjs";
 
 export function parseArgs(argv) {
   const args = {
@@ -56,6 +57,7 @@ export async function loadConfig(args) {
     allowBatchRunWithoutSelectedManifest: raw.allowBatchRunWithoutSelectedManifest === true,
     args
   };
+  assertStagingOutput(projectRoot, cfg.generatedRoot, "PIPELINE_GENERATED_ROOT_FORBIDDEN");
   cfg.batchDir = path.join(cfg.generatedRoot, "_batch");
   return cfg;
 }

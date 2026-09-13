@@ -215,6 +215,15 @@ function validateState(state) {
   if (policy.maxRepairIterations === undefined) check(workflowProfile === WORKFLOW_PROFILES.LEGACY && policy.targetedRechecks === 1, 'BUDGET_POLICY_INVALID');
   else check(policy.maxRepairIterations === expectedBudget.maxRepairIterations, 'BUDGET_POLICY_INVALID');
   const maxRepairIterations = maxRepairIterationsForState({ workflowProfile, policy });
+  if (state.status === 'REVIEW_READY') {
+    check(state.productionAuthorized === false, 'REVIEW_READY_PRODUCTION_AUTHORITY_FORBIDDEN');
+    check((state.openDefectSet || []).length === 0, 'REVIEW_READY_OPEN_DEFECTS');
+    check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'REVIEW_READY_ACTIVE_LAUNCH');
+    if (state.reviewReadyRef) {
+      check(/^sha256:[0-9a-f]{64}$/.test(state.reviewReadyRef.sha256 || '') && Number.isSafeInteger(state.reviewReadyRef.bytes) && nonempty(state.reviewReadyRef.path), 'REVIEW_READY_REF_INVALID');
+      if (state.reviewReadySha !== state.reviewReadyRef.sha256) throw new Error('REVIEW_READY_SHA_REF_MISMATCH');
+    }
+  }
   if (state.predecessorWorkBatchId !== undefined) check(/^[A-Za-z0-9_-]+$/.test(state.predecessorWorkBatchId) && state.predecessorWorkBatchId !== state.workBatchId, 'PREDECESSOR_WORK_BATCH_INVALID');
   if (state.predecessorFreezeSha !== undefined) check(/^sha256:[0-9a-f]{64}$/.test(state.predecessorFreezeSha), 'PREDECESSOR_FREEZE_SHA_INVALID');
   if (state.predecessorLaunchId !== undefined) check(nonempty(state.predecessorLaunchId), 'PREDECESSOR_LAUNCH_ID_INVALID');
@@ -530,6 +539,7 @@ function validateRepairLineage(state, freeze) {
 
 export function freezeWorkBatch(root, id, runRefs) {
   return mutate(root, id, state => {
+    check(state.status !== 'REVIEW_READY', 'REVIEW_READY_TERMINAL');
     check(state && state.status !== 'HOLD', 'WORK_BATCH_HOLD_REQUIRES_RECONCILIATION');
     check(!state.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
     if (state.freezes.length) {
@@ -574,6 +584,29 @@ export function freezeWorkBatch(root, id, runRefs) {
       }
       state.status = 'REPAIR_REQUIRED';
     } else state.status = 'FROZEN';
+    return state;
+  });
+}
+
+export function markWorkBatchReviewReady(root, id, { reviewReadyRef = null, reviewReadySha = null } = {}) {
+  return mutate(root, id, state => {
+    check(state.status === 'FROZEN', 'REVIEW_READY_REQUIRES_FROZEN');
+    check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
+    check((state.openDefectSet || []).length === 0, 'OPEN_DEFECTS_REMAIN');
+    check((state.repairIterations || []).every(iteration => iteration.status === 'CLOSED'), 'REPAIR_CLOSURE_REQUIRED');
+    check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED'), 'FINAL_AUDIT_REQUIRED');
+    if (reviewReadyRef) {
+      check(/^sha256:[0-9a-f]{64}$/.test(reviewReadyRef.sha256 || '') && Number.isSafeInteger(reviewReadyRef.bytes) && nonempty(reviewReadyRef.path), 'REVIEW_READY_REF_INVALID');
+      readBoundFile(root, reviewReadyRef);
+      check(reviewReadySha === reviewReadyRef.sha256, 'REVIEW_READY_SHA_REF_MISMATCH');
+    } else {
+      check(reviewReadySha === null, 'REVIEW_READY_SHA_WITHOUT_REF');
+    }
+    state.status = 'REVIEW_READY';
+    state.reviewReadyRef = reviewReadyRef ? structuredClone(reviewReadyRef) : null;
+    state.reviewReadySha = reviewReadySha || null;
+    state.reviewReadyAt = time();
+    state.productionAuthorized = false;
     return state;
   });
 }

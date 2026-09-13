@@ -5,6 +5,7 @@ import path from "node:path";
 import vm from "node:vm";
 
 import { canonicalJson, objectSha } from "../../pipeline-core/canonical.mjs";
+import { assertPromotionWriteScope } from "./production-boundary.mjs";
 
 export const SOURCE_INVENTORY_SCHEMA = "PAST_EXAM_SOURCE_INVENTORY_v1";
 export const SOURCE_IDENTITY_MAP_SCHEMA = "PAST_EXAM_SOURCE_IDENTITY_MAP_v1";
@@ -616,40 +617,22 @@ export function protectedPath(relative) {
   return /(?:^|\/)archive\/(?:db\.js|question-index\.js|exams\/original\/|assets\/images\/)/.test(normalized);
 }
 
-export function productionWritePreflight({ changedPaths, receipt, candidateFile = "", reviewFile = "", closureManifestFile = "", expectedSourceIdentities = null, closure = null }) {
+export function productionWritePreflight({ changedPaths, receipt, candidateFile = "", reviewFile = "", closureManifestFile = "", expectedSourceIdentities = null, closure = null, phase = "BUILD", root = process.cwd(), targetProductionJs = "", targetAssetRoot = "" }) {
   const protectedChanges = changedPaths.filter(protectedPath);
   if (!protectedChanges.length) return { status: "PASS", protectedChanges: [] };
-  const required = ["candidateSha", "closureManifestSha", "sourceIdentitySetSha", "reviewedPassEnvelopeSha", "promotionTransactionId"];
+  if (phase !== "PROMOTE_APPROVED_EXAM") throw new Error("UNAUTHORIZED_PRODUCTION_WRITE:" + phase);
+  assertPromotionWriteScope(root, protectedChanges, { targetProductionJs, targetAssetRoot });
+  const required = ["candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "reviewReadyRunId", "approvalEvidenceIdentity", "approvalEvidenceSha256"];
   const errors = required.filter((key) => !nonEmpty(receipt?.[key]));
-  if (receipt?.status !== "AUTHORIZED") errors.push("RECEIPT_NOT_AUTHORIZED");
-  for (const key of ["candidateSha", "closureManifestSha", "sourceIdentitySetSha", "reviewedPassEnvelopeSha"]) if (nonEmpty(receipt?.[key]) && !/^sha256:[0-9a-f]{64}$/.test(String(receipt[key]))) errors.push(`RECEIPT_SHA_INVALID:${key}`);
-  if (closure && (closure.status !== "PASS" || closure.productionAuthorized !== true)) errors.push("COMMON_CLOSURE_NOT_AUTHORIZED");
-  if (candidateFile && receipt.candidateSha !== fileSha(candidateFile)) errors.push("RECEIPT_CANDIDATE_SHA_MISMATCH");
-  if (reviewFile && receipt.reviewedPassEnvelopeSha !== fileSha(reviewFile)) errors.push("RECEIPT_REVIEW_SHA_MISMATCH");
-  if (closureManifestFile && receipt.closureManifestSha !== fileSha(closureManifestFile)) errors.push("RECEIPT_CLOSURE_SHA_MISMATCH");
-  if (expectedSourceIdentities && receipt.sourceIdentitySetSha !== objectSha(expectedSourceIdentities.map((row) => row.sourceIdentityKey).sort())) errors.push("RECEIPT_SOURCE_SCOPE_MISMATCH");
-  if (errors.length) throw new Error(`UNAUTHORIZED_PRODUCTION_WRITE:${errors.join(",")}`);
+  if (receipt?.approvalStatus !== "APPROVED") errors.push("APPROVAL_RECEIPT_NOT_APPROVED");
+  for (const key of ["candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "approvalEvidenceSha256"]) if (nonEmpty(receipt?.[key]) && !/^sha256:[0-9a-f]{64}$/.test(String(receipt[key]))) errors.push("APPROVAL_SHA_INVALID:" + key);
+  if (closure && (closure.status !== "PASS" || closure.productionAuthorized !== false)) errors.push("REVIEW_READY_CLOSURE_INVALID");
+  if (candidateFile && receipt.candidateSha256 !== fileSha(candidateFile)) errors.push("APPROVAL_CANDIDATE_SHA_MISMATCH");
+  if (reviewFile && receipt.reviewFileSha256 && receipt.reviewFileSha256 !== fileSha(reviewFile)) errors.push("APPROVAL_REVIEW_SHA_MISMATCH");
+  if (closureManifestFile && receipt.finalClosureSha && receipt.finalClosureSha !== fileSha(closureManifestFile)) errors.push("APPROVAL_CLOSURE_SHA_MISMATCH");
+  if (expectedSourceIdentities && receipt.sourceIdentitySetSha && receipt.sourceIdentitySetSha !== objectSha(expectedSourceIdentities.map((row) => row.sourceIdentityKey).sort())) errors.push("APPROVAL_SOURCE_SCOPE_MISMATCH");
+  if (errors.length) throw new Error("UNAUTHORIZED_PRODUCTION_WRITE:" + errors.join(","));
   return { status: "PASS", protectedChanges };
-}
-
-export function makePromotionReceipt({ manifest, candidateFile, reviewFile, closureManifestFile, hardening, closure }) {
-  const sourceIdentitySetSha = objectSha(hardening.identityKeys);
-  return {
-    schema: "PAST_EXAM_PRODUCTION_PROMOTION_RECEIPT_v1",
-    status: "AUTHORIZED",
-    examId: manifest.examId,
-    candidateSha: hardening.candidateSha,
-    closureManifestSha: closureManifestFile && fs.existsSync(closureManifestFile) ? fileSha(closureManifestFile) : "",
-    sourceIdentitySetSha,
-    reviewedPassEnvelopeSha: reviewFile && fs.existsSync(reviewFile) ? fileSha(reviewFile) : "",
-    promotionTransactionId: `past-exam-${Date.now()}-${crypto.randomUUID()}`,
-    closureInputSha: closure?.inputSha || "",
-    sourceInventorySha: hardening.sourceInventorySha,
-    sourceIdentityMapSha: hardening.sourceIdentityMapSha,
-    sourceFidelityEvidenceSha: hardening.sourceFidelityEvidenceSha,
-    mathReviewEvidenceSha: hardening.mathReviewEvidenceSha,
-    assetProvenanceEvidenceSha: hardening.assetProvenanceEvidenceSha,
-  };
 }
 
 export function temporaryDirectory(prefix = "past-exam-hardening-") {
