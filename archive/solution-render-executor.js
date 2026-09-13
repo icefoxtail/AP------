@@ -5,6 +5,44 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createSolutionRenderExecutor(root) {
     'use strict';
 
+    async function measureSolutionBatch(boxes, staging, deps, document) {
+        const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
+        boxes.forEach(box => box.classList.add('fit-tight'));
+        await deps.raf();
+        records.forEach(record => { record.tight = deps.measureSolutionOuterFootprint(record.box); });
+        boxes.forEach(box => box.classList.remove('fit-tight'));
+        const hosts = [];
+        try {
+            records.forEach((record, index) => {
+                const host = document.createElement('div'); host.style.width = '83mm';
+                record.chunks = deps.makeSolutionHtmlChunks(record.box.dataset.solutionHtml || '').map((html, chunkIndex) => {
+                    const node = document.createElement('span'); node.className = 'sol-chunk'; node.dataset.chunkId = `c${chunkIndex}`; node.innerHTML = html; host.appendChild(node);
+                    return { node, chunkId: node.dataset.chunkId };
+                });
+                record.shell = deps.makeLongSolutionShell(record.box, index + 1, true);
+                staging.append(host, record.shell); hosts.push(host, record.shell);
+            });
+            await deps.typesetMath('solution-decision-batch', hosts);
+            records.forEach(record => record.chunks.forEach(chunk => { chunk.measuredHeight = deps.measureSolutionOuterFootprint(chunk.node); }));
+            // Only one inline chunk per independent host is tightened at a time.
+            // Tightening siblings together would change wrapping and the legacy
+            // per-chunk geometry contract.
+            const count = Math.max(0, ...records.map(record => record.chunks.length));
+            for (let index = 0; index < count; index += 1) {
+                const chunks = records.map(record => record.chunks[index]).filter(Boolean);
+                chunks.forEach(chunk => chunk.node.classList.add('fit-tight'));
+                await deps.raf();
+                chunks.forEach(chunk => { chunk.tight = deps.measureSolutionOuterFootprint(chunk.node); });
+                chunks.forEach(chunk => chunk.node.classList.remove('fit-tight'));
+            }
+            records.forEach(record => { record.continuationShellOverhead = Math.max(1, Number(record.shell.scrollHeight || 1)); });
+            return records;
+        } finally {
+            deps.clearMath?.(hosts);
+            hosts.forEach(host => host.remove());
+        }
+    }
+
     /**
      * The Archive solution pagination algorithm extracted from the historical
      * renderSol implementation.  This module deliberately owns no source or
@@ -35,7 +73,7 @@
             appState.solutionObservedPlacementLedger = null;
         }
 
-        const staging = document.getElementById('staging');
+        const staging = deps.stagingHost || document.getElementById('staging');
         if (!staging) throw new Error('SOLUTION_STAGING_MISSING');
         staging.style.width = '83mm';
         staging.innerHTML = '';
@@ -206,7 +244,20 @@
         });
         await Promise.all(Array.from(staging.querySelectorAll('img')).map(deps.waitForQuestionImage));
         if (deps.rendererMode() === 'batch') await deps.typesetMath('solution-staging', [staging]);
-        for (let solutionIndex = 0; solutionIndex < solutionBoxes.length; solutionIndex += 1) {
+        if (deps.measurementMode?.() === 'batch') {
+            const records = await measureSolutionBatch(solutionBoxes, staging, deps, document);
+            records.forEach((record, index) => {
+                const sourceRef = String(record.box.getAttribute('data-source-ref') || '').trim();
+                const measurements = { raw: Math.max(1, record.raw), tight: Math.max(1, record.tight) };
+                solutionMeasurementBySource.set(sourceRef, measurements);
+                const blockId = `solution-block:${index + 1}:primary`;
+                record.box.dataset.solutionDecisionBlockId = blockId;
+                const chunks = record.chunks.map(({ chunkId, measuredHeight, tight }) => ({ chunkId, measuredHeight, tight }));
+                solutionDecisionBlocks.push({ blockId, questionKey: `solution-block:${index + 1}`, measuredHeight: record.raw, measurements,
+                    shellOverhead: Math.max(1, record.raw - chunks.reduce((sum, chunk) => sum + chunk.measuredHeight, 0)),
+                    continuationShellOverhead: record.continuationShellOverhead, chunks });
+            });
+        } else for (let solutionIndex = 0; solutionIndex < solutionBoxes.length; solutionIndex += 1) {
             const box = solutionBoxes[solutionIndex];
             const sourceRef = String(box.getAttribute('data-source-ref') || '').trim();
             const raw = deps.measureSolutionOuterFootprint(box);
@@ -257,8 +308,14 @@
             });
         }
 
-        ({ cols } = makeGridPage());
-        for (let i = 0; i < solutionBoxes.length; i++) await placeSolutionBox(solutionBoxes[i], i + 1);
+        if (deps.layoutPlannerMode?.() === 'authority') {
+            const planned = await deps.renderSolutionPlan({ area, boxes: solutionBoxes, blocks: solutionDecisionBlocks, measurementsBySource: solutionMeasurementBySource });
+            solutionUsableHeight = planned.usableHeight;
+            planned.placements.forEach(item => solutionPlacementMap.set(item.blockId, item));
+        } else {
+            ({ cols } = makeGridPage());
+            for (let i = 0; i < solutionBoxes.length; i++) await placeSolutionBox(solutionBoxes[i], i + 1);
+        }
 
         if (appState) {
             appState.solutionDecisionLedger = {
@@ -281,5 +338,140 @@
         return area;
     }
 
-    return Object.freeze({ render });
+async function renderComposed({ area, items, deps }) {
+    const { document, makePage, makeBox, makeSolutionHtmlChunks, makeLongSolutionShell, applyAutoImageSizeClasses, autoCompress, raf } = deps;
+    let pageNo = 1;
+    let cols = null;
+    let colIdx = 0;
+    const preparedBoxes = new WeakSet();
+    let lastChunkYield = performance.now();
+    async function yieldChunkLayout() {
+        // scrollHeight/clientHeight synchronously flush layout. An animation
+        // frame per text or BR chunk is unnecessary; yield on a time budget
+        // instead so long solutions remain cancellable and the UI responsive.
+        if (performance.now() - lastChunkYield >= 8) {
+            await raf();
+            lastChunkYield = performance.now();
+        }
+    }
+
+    const makeGridPage = () => {
+        const page = makePage(area, pageNo++);
+        const grid = document.createElement('div');
+        grid.className = 'grid-container';
+        grid.style.flex = '1 1 0';
+        const left = document.createElement('div');
+        left.className = 'grid-col';
+        const right = document.createElement('div');
+        right.className = 'grid-col';
+        grid.appendChild(left);
+        grid.appendChild(right);
+        page.body.appendChild(grid);
+        cols = [left, right];
+        colIdx = 0;
+        return cols;
+    };
+
+    const advanceColumn = () => {
+        if (colIdx === 0) colIdx = 1;
+        else { makeGridPage(); }
+        return cols[colIdx];
+    };
+
+
+    // 한 컬럼에 해설 박스 하나만 있는데도 안 들어가면 해설을 조각내 다음 컬럼/페이지로 이어붙인다.
+    async function renderSplitSolutionBox(sourceBox) {
+        const originalExp = sourceBox.querySelector('.sol-exp');
+        const chunks = makeSolutionHtmlChunks(sourceBox.dataset.solutionHtml || (originalExp ? originalExp.innerHTML : ''));
+        let shell = makeLongSolutionShell(sourceBox, false);
+        let exp = shell.querySelector('.sol-exp');
+        let targetCol = cols[colIdx];
+        targetCol.appendChild(shell);
+        const preparedChunks = chunks.map(chunkHtml => {
+            const chunk = document.createElement('span');
+            chunk.className = 'sol-chunk';
+            chunk.innerHTML = chunkHtml;
+            return chunk;
+        });
+        let chunkStage = null;
+        try {
+            await applyAutoImageSizeClasses(shell);
+            if (deps.stagingHost) {
+                // Match the real shell's width and inherited solution typography.
+                // Typeset all fragments once, then move the resulting DOM intact.
+                chunkStage = makeLongSolutionShell(sourceBox, false);
+                chunkStage.style.width = `${shell.getBoundingClientRect().width}px`;
+                const stageExp = chunkStage.querySelector('.sol-exp');
+                stageExp.append(...preparedChunks);
+                deps.stagingHost.appendChild(chunkStage);
+                await deps.typesetMath('composition-solution-chunks', [stageExp]);
+                // Remaining staged chunks need no further layout. Detaching avoids
+                // relaying out the shrinking staging document after every move.
+                chunkStage.remove();
+            }
+            for (const chunk of preparedChunks) {
+                exp.appendChild(chunk);
+                if (!chunkStage) await deps.typesetMath('composition-solution-chunk', [chunk]);
+                await yieldChunkLayout();
+                if (targetCol.scrollHeight <= targetCol.clientHeight + 2) continue;
+
+                // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
+                if (exp.children.length > 1) {
+                    exp.removeChild(chunk);
+                    targetCol = advanceColumn();
+                    shell = makeLongSolutionShell(sourceBox, true);
+                    exp = shell.querySelector('.sol-exp');
+                    targetCol.appendChild(shell);
+                    exp.appendChild(chunk);
+                    // Moving an already typeset chunk does not introduce new TeX.
+                    await yieldChunkLayout();
+                }
+                if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                    autoCompress(shell);
+                    await yieldChunkLayout();
+                }
+            }
+        } finally {
+            // Moved fragments belong to the live shells. Clear only abandoned
+            // staging/source nodes, including the original oversized box.
+            try { deps.clearMath?.([sourceBox, ...(chunkStage ? [chunkStage] : [])]); }
+            finally { chunkStage?.remove(); }
+        }
+    }
+
+    async function placeBox(box) {
+        while (true) {
+            const targetCol = cols[colIdx];
+            targetCol.appendChild(box);
+            if (!preparedBoxes.has(box)) {
+                await applyAutoImageSizeClasses(box);
+                await deps.typesetMath('composition-solution-box', [box]);
+                preparedBoxes.add(box);
+            }
+            await raf();
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
+
+            autoCompress(box);
+            await raf();
+            // Compression changes CSS only; the preceding barrier measures it.
+            if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
+
+            // 이 컬럼에 이 해설 박스 하나뿐이면 쪼개서 출력한다(잘림 금지).
+            const isOnlyBoxInColumn = targetCol.querySelectorAll('.sol-box').length === 1;
+            targetCol.removeChild(box);
+            if (isOnlyBoxInColumn) {
+                await renderSplitSolutionBox(box);
+                return;
+            }
+            advanceColumn();
+        }
+    }
+
+    makeGridPage();
+    for (let idx = 0; idx < items.length; idx++) {
+        await placeBox(makeBox(items[idx], idx));
+    }
+}
+
+    return Object.freeze({ render, renderComposed });
 });
