@@ -2,21 +2,18 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { requireProductionClosure } from "../pipeline-core/integration.mjs";
-import {
-  assertPastExamPromotion,
-  fileSha,
-  makePromotionReceipt,
-  productionWritePreflight,
-} from "./lib/hardening.mjs";
-import { objectSha } from "../pipeline-core/canonical.mjs";
+
+import { assertPastExamPromotion, productionWritePreflight } from "./lib/hardening.mjs";
+import { assertExternalApproval } from "./lib/release-authority.mjs";
+import { assertProductionPayloadClean, assertPromotionWriteScope, assertStagingOutput } from "./lib/production-boundary.mjs";
+import { assertReviewReady } from "./lib/review-ready.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const archiveRoot = path.resolve(here, "../..");
+const defaultRoot = path.resolve(here, "../../..");
 
 function arg(name, argv = process.argv) {
   const index = argv.indexOf(name);
-  if (index < 0 || !argv[index + 1]) throw new Error(`${name} is required`);
+  if (index < 0 || !argv[index + 1]) throw new Error(name + " is required");
   return path.resolve(argv[index + 1]);
 }
 
@@ -27,160 +24,112 @@ function readJson(file) {
 function loadCandidate(file) {
   const context = { window: {} };
   vm.createContext(context);
-  vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
+  vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file, timeout: 3000 });
+  if (!Array.isArray(context.window.questionBank)) throw new Error("CANDIDATE_QUESTION_BANK_REQUIRED");
   return context.window;
 }
 
-function isNonEmpty(value) {
-  return value !== undefined && value !== null && String(value).trim() !== "";
+function relative(root, file) {
+  return path.relative(root, file).split(path.sep).join("/");
 }
 
-function loadSubunitMaster(root) {
-  const file = path.join(root, "data", "master_tables", "js_archive_tag_master.json");
-  const rows = JSON.parse(fs.readFileSync(file, "utf8"));
-  return Array.isArray(rows) ? rows.filter((row) => isNonEmpty(row?.subUnitKey)) : [];
-}
+export function promoteApprovedExam({
+  root = defaultRoot,
+  manifest,
+  candidateFile,
+  reviewFile,
+  reviewReady,
+  approval,
+  assetsDir,
+  replaceExisting = false,
+} = {}) {
+  if (!manifest || !candidateFile || !reviewFile || !reviewReady || !approval || !assetsDir) throw new Error("PROMOTION_INPUT_REQUIRED");
+  const repoRoot = path.resolve(root);
+  assertStagingOutput(repoRoot, candidateFile, "PROMOTION_CANDIDATE_PRODUCTION_FORBIDDEN");
+  assertStagingOutput(repoRoot, assetsDir, "PROMOTION_ASSET_ROOT_PRODUCTION_FORBIDDEN");
+  const candidate = loadCandidate(candidateFile);
+  const candidateRef = reviewReady.candidateRef || { path: relative(repoRoot, candidateFile) };
+  const assetRefs = reviewReady.assetRefs || [];
+  assertReviewReady(reviewReady, { root: repoRoot, candidateRef, assetRefs });
+  assertExternalApproval({ root: repoRoot, reviewReady, approval, candidateRef, assetRefs });
+  assertProductionPayloadClean(candidate);
+  const candidateAssetNames = [...new Set(candidate.questionBank.flatMap(question => [question.image, question.solutionImage].filter(Boolean).map(value => path.basename(String(value)))))].sort();
+  const approvedAssetNames = [...new Set(assetRefs.map(ref => path.basename(String(ref.path))))].sort();
+  if (JSON.stringify(candidateAssetNames) !== JSON.stringify(approvedAssetNames)) throw new Error("PROMOTION_ASSET_SET_SCOPE_MISMATCH");
+  const review = readJson(reviewFile);
+  const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
+  if (candidate.examTitle !== manifest.examId) throw new Error("EXAM_IDENTITY_MISMATCH");
+  if (candidate.questionBank.length !== review.questionCount) throw new Error("QUESTION_COUNT_MISMATCH");
+  if (!manifest.archiveRelativePath) throw new Error("ARCHIVE_RELATIVE_PATH_REQUIRED");
 
-function writeCandidate(file, candidate) {
-  const source = [
-    `window.examTitle = ${JSON.stringify(candidate.examTitle)};`,
-    `window.questionBank = ${JSON.stringify(candidate.questionBank, null, 2)};`,
-    "",
-  ].join("\n");
-  fs.writeFileSync(file, source, "utf8");
+  const liveRoot = path.resolve(repoRoot, "archive", "exams");
+  const liveJs = path.resolve(liveRoot, manifest.archiveRelativePath);
+  if (!liveJs.startsWith(liveRoot + path.sep)) throw new Error("TARGET_PRODUCTION_JS_ESCAPE");
+  if (fs.existsSync(liveJs) && !replaceExisting) throw new Error("LIVE_JS_EXISTS_REPLACE_EXPLICIT_REQUIRED");
+  const liveAssetsDir = path.resolve(repoRoot, "archive", "assets", "images", manifest.examId);
+  const expectedPrefix = "assets/images/" + manifest.examId + "/";
+  const assetSources = new Map();
+  for (const question of candidate.questionBank) {
+    for (const field of ["image", "solutionImage"]) {
+      const value = String(question[field] || "").replaceAll("\\", "/");
+      if (!value) continue;
+      if (!value.startsWith(expectedPrefix) || value.includes("..")) throw new Error("NON_CANONICAL_PROMOTION_ASSET:q" + question.id + ":" + field);
+      const name = path.basename(value);
+      if (!name || name === "." || name === path.sep) throw new Error("PROMOTION_ASSET_NAME_INVALID");
+      assetSources.set(name, value);
+    }
+  }
+  const copyPlan = [...assetSources.entries()].map(([name, archiveRelative]) => {
+    const source = path.resolve(assetsDir, name);
+    const destination = path.resolve(liveAssetsDir, name);
+    if (!source.startsWith(path.resolve(assetsDir) + path.sep)) throw new Error("STAGED_ASSET_SOURCE_ESCAPE");
+    if (!fs.existsSync(source) || !fs.statSync(source).isFile()) throw new Error("STAGED_ASSET_MISSING:" + source);
+    return { name, archiveRelative, source, destination };
+  });
+  const changedPaths = [relative(repoRoot, liveJs), ...copyPlan.map(item => relative(repoRoot, item.destination))];
+  assertPromotionWriteScope(repoRoot, changedPaths, {
+    targetProductionJs: relative(repoRoot, liveJs),
+    targetAssetRoot: relative(repoRoot, liveAssetsDir),
+  });
+  productionWritePreflight({
+    root: repoRoot,
+    changedPaths,
+    receipt: approval,
+    candidateFile,
+    phase: "PROMOTE_APPROVED_EXAM",
+    targetProductionJs: relative(repoRoot, liveJs),
+    targetAssetRoot: relative(repoRoot, liveAssetsDir),
+  });
+
+  if (copyPlan.length) fs.mkdirSync(liveAssetsDir, { recursive: true });
+  for (const item of copyPlan) fs.copyFileSync(item.source, item.destination);
+  fs.mkdirSync(path.dirname(liveJs), { recursive: true });
+  fs.copyFileSync(candidateFile, liveJs);
+  return {
+    status: "PROMOTED",
+    productionAuthorized: false,
+    examId: manifest.examId,
+    liveJs: relative(repoRoot, liveJs),
+    liveAssetsDir: relative(repoRoot, liveAssetsDir),
+    questionCount: candidate.questionBank.length,
+    assetCount: copyPlan.length,
+    candidateSha256: hardening.candidateSha,
+    changedPaths,
+  };
 }
 
 function main() {
-  const manifestFile = arg("--manifest");
-  const candidateFile = arg("--candidate");
-  const reviewFile = arg("--review");
-  const assetsDir = arg("--assets");
-  const closureManifestFile = arg("--closure-manifest");
-  const replaceExisting = process.argv.includes("--replace-existing");
-  const manifest = readJson(manifestFile);
-  const review = readJson(reviewFile);
-  const candidate = loadCandidate(candidateFile);
-  // A reviewed_pass string cannot authorize copying unbound/stale evidence.
-  // All source, fidelity, math, asset, serialization, and handoff bindings are
-  // checked before any protected destination is created.
-  const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
-  const masterRows = loadSubunitMaster(archiveRoot);
-  if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
-  if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
-  const ids = candidate.questionBank.map((question) => question.id);
-  if (ids.some((id, index) => id !== index + 1)) throw new Error("question ids must be sequential from 1");
-  if (!manifest.archiveRelativePath) throw new Error("manifest.archiveRelativePath is required");
-  const required = ["level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "questionType", "layoutTag", "tags", "wide", "content", "choices", "answer", "solution", ...["subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]];
-  const nonEmptyRequired = ["content", "answer", "solution", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"];
-  const confidenceValues = new Set(["existing_preserved", "candidate_evidence", "category_or_cue_inferred", "rule_inferred"]);
-  const depthValues = new Set(["complete_candidate", "complete_category", "complete_documented", "complete_rule"]);
-  for (const question of candidate.questionBank) {
-    for (const key of required) if (!(key in question)) throw new Error(`q${question.id} missing ${key}`);
-    for (const key of nonEmptyRequired) if (!isNonEmpty(question[key])) throw new Error(`q${question.id} empty ${key}`);
-    if (!confidenceValues.has(question.subUnitConfidence)) throw new Error(`q${question.id} invalid subUnitConfidence`);
-    if (!depthValues.has(question.subUnitClassificationDepth)) throw new Error(`q${question.id} invalid subUnitClassificationDepth`);
-    const masterMatch = masterRows.find((row) =>
-      row.subUnitKey === question.subUnitKey &&
-      row.standardUnitKey === question.standardUnitKey &&
-      row.labelKo === question.subUnit &&
-      row.status !== "deprecated"
-    );
-    if (!masterMatch) throw new Error(`q${question.id} subunit master mismatch`);
-  }
-
-  const liveRoot = path.resolve(archiveRoot, "exams");
-  const liveJs = path.resolve(liveRoot, manifest.archiveRelativePath);
-  if (!liveJs.startsWith(`${liveRoot}${path.sep}`)) throw new Error("manifest.archiveRelativePath escapes archive/exams");
-  if (fs.existsSync(liveJs) && !replaceExisting) throw new Error(`live JS already exists: ${liveJs}`);
-
-  const liveAssetsDir = path.join(archiveRoot, "assets", "images", manifest.examId);
-  const expectedPrefix = `assets/images/${manifest.examId}/`;
-  const assetSources = new Map();
-  const reviewedQuestionBytes = JSON.stringify(candidate.questionBank);
-  function canonicalizeAsset(question, field) {
-    const value = String(question[field] || "");
-    if (!value) return;
-    if (value.startsWith(expectedPrefix)) {
-      assetSources.set(path.basename(value), value);
-      return;
-    }
-    if (value.startsWith("assets/") && !value.includes("/images/")) {
-      const canonical = `${expectedPrefix}${path.basename(value)}`;
-      question[field] = canonical;
-      if (field === "image" && question.visualAsset === value) question.visualAsset = canonical;
-      assetSources.set(path.basename(canonical), canonical);
-      return;
-    }
-    throw new Error(`q${question.id} ${field} path mismatch`);
-  }
-  for (const question of candidate.questionBank) {
-    canonicalizeAsset(question, "image");
-    canonicalizeAsset(question, "solutionImage");
-  }
-  if (JSON.stringify(candidate.questionBank) !== reviewedQuestionBytes) throw new Error('candidate asset paths must be canonical BEFORE independent review and closure');
-  // Validate the complete copy plan before the first destination write.
-  const copyPlan = [...assetSources.values()].map(canonical => {
-    const name = path.basename(canonical);
-    const source = path.join(assetsDir, name);
-    if (!fs.existsSync(source)) throw new Error(`missing generated asset: ${source}`);
-    return { source, destination: path.join(liveAssetsDir, name) };
+  const result = promoteApprovedExam({
+    root: defaultRoot,
+    manifest: readJson(arg("--manifest")),
+    candidateFile: arg("--candidate"),
+    reviewFile: arg("--review"),
+    reviewReady: readJson(arg("--review-ready")),
+    approval: readJson(arg("--approval-receipt")),
+    assetsDir: arg("--assets"),
+    replaceExisting: process.argv.includes("--replace-existing"),
   });
-  const expectedSourceIdentities = hardening.identities.map(identity => ({
-    sourceIdentityKey: identity.sourceIdentityKey,
-    sourceDocumentSha256: identity.sourceDocumentSha256,
-    sourceQuestionNo: identity.sourceQuestionNo,
-    sourcePageNo: identity.sourcePageNo,
-    sourcePageEvidencePaths: identity.sourcePageEvidencePaths,
-    qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
-  }));
-  const commonClosure = (() => {
-    const declared = readJson(closureManifestFile);
-    if (declared?.kind !== "APMATH_PAST_EXAM_PRODUCTION_CLOSURE_ATTESTATION_v1") {
-      return requireProductionClosure(
-        path.resolve(archiveRoot, '..'),
-        'past-exam',
-        process.argv,
-        [candidateFile, ...copyPlan.map(item => item.source)],
-        expectedSourceIdentities,
-      );
-    }
-    const expectedCandidateSha = fileSha(candidateFile);
-    const expectedSourceScopeSha = objectSha(expectedSourceIdentities.map(row => row.sourceIdentityKey).sort());
-    const errors = [];
-    if (declared.status !== "PASS" || declared.productionAuthorized !== true) errors.push("ATTESTATION_NOT_AUTHORIZED");
-    if (declared.candidateSha !== expectedCandidateSha) errors.push("ATTESTATION_CANDIDATE_SHA_MISMATCH");
-    if (declared.sourceIdentitySetSha !== expectedSourceScopeSha) errors.push("ATTESTATION_SOURCE_SCOPE_MISMATCH");
-    if (declared.examId !== manifest.examId || declared.pipeline !== "past-exam") errors.push("ATTESTATION_IDENTITY_MISMATCH");
-    if (errors.length) throw new Error(`COMMON_PIPELINE_PRODUCTION_AUTHORITY_BLOCKED:${errors.join(",")}`);
-    return declared;
-  })();
-  const receipt = makePromotionReceipt({
-    manifest,
-    candidateFile,
-    reviewFile,
-    closureManifestFile,
-    hardening,
-    closure: commonClosure,
-  });
-  productionWritePreflight({
-    changedPaths: [`archive/exams/${manifest.archiveRelativePath}`, ...copyPlan.map(item => path.relative(path.resolve(archiveRoot, ".."), item.destination))],
-    receipt,
-    candidateFile,
-    reviewFile,
-    closureManifestFile,
-    expectedSourceIdentities,
-    closure: commonClosure,
-  });
-  const receiptFile = path.join(path.dirname(candidateFile), "..", "reports", "production_promotion_receipt.json");
-  if (fs.existsSync(receiptFile)) throw new Error(`PROMOTION_RECEIPT_ALREADY_EXISTS:${receiptFile}`);
-  fs.mkdirSync(path.dirname(receiptFile), { recursive: true });
-  fs.writeFileSync(receiptFile, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
-  if (assetSources.size) fs.mkdirSync(liveAssetsDir, { recursive: true });
-  for (const { source, destination } of copyPlan) fs.copyFileSync(source, destination);
-  fs.mkdirSync(path.dirname(liveJs), { recursive: true });
-  // Preserve the exact reviewed bytes; never reserialize after SHA-bound review.
-  fs.copyFileSync(candidateFile, liveJs);
-  console.log(JSON.stringify({ status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
+  console.log(JSON.stringify(result, null, 2));
 }
 
 if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) main();

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_REVIEW_READY_v1",
+  "type": "object",
+  "required": ["schemaVersion", "state", "status", "productionAuthorized", "examId", "reviewReadyRunId", "revision", "candidateRef", "candidateSha256", "assetRefs", "stagedAssetSetSha256", "finalClosureRef", "finalClosureRefSha256", "finalClosureSha", "finalAuditClosureRef", "requiredRenderCases", "gateStatuses", "openDefectCount", "renderCases", "reviewReadySha"],
+  "properties": {
+    "schemaVersion": {"const": "APMATH_REVIEW_READY_v1"},
+    "state": {"const": "REVIEW_READY"},
+    "status": {"const": "REVIEW_READY"},
+    "productionAuthorized": {"const": false},
+    "examId": {"type": "string", "minLength": 1},
+    "reviewReadyRunId": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "candidateRef": {"$ref": "#/$defs/fileRef"},
+    "candidateSha256": {"$ref": "#/$defs/sha"},
+    "assetRefs": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}},
+    "stagedAssetSetSha256": {"$ref": "#/$defs/sha"},
+    "finalClosureRef": {"$ref": "#/$defs/fileRef"},
+    "finalClosureRefSha256": {"$ref": "#/$defs/sha"},
+    "finalClosureSha": {"$ref": "#/$defs/sha"},
+    "finalAuditClosureRef": {"$ref": "#/$defs/fileRef"},
+    "requiredRenderCases": {"const": ["exam/desktop", "exam/mobile", "solution/desktop", "solution/mobile", "answer/desktop", "answer/mobile"]},
+    "gateStatuses": {"type": "object", "additionalProperties": {"const": "PASS"}},
+    "openDefectCount": {"const": 0},
+    "renderCases": {"type": "array", "minItems": 6},
+    "reviewReadySha": {"$ref": "#/$defs/sha"}
+  },
+  "$defs": {
+    "sha": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "fileRef": {"type": "object", "required": ["path", "bytes", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 0}, "sha256": {"$ref": "#/$defs/sha"}}, "additionalProperties": false}
+  },
+  "additionalProperties": true
+}

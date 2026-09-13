@@ -38,7 +38,7 @@ export async function runOneExam(cfg, manifest) {
   assertBuilderStart(path.resolve(thisDir, '../../..'), manifest);
   const outputDir = path.resolve(manifest.outputDir || path.join(cfg.generatedRoot, manifest.examId));
   const protectedRoots = [
-    path.resolve(cfg.archiveRoot, "exams", "original"),
+    path.resolve(cfg.archiveRoot, "exams"),
     path.resolve(cfg.archiveRoot, "assets", "images"),
     path.resolve(cfg.archiveRoot, "db.js"),
     path.resolve(cfg.archiveRoot, "question-index.js"),

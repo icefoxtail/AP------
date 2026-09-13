@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_APPROVED_RELEASE_TRANSACTION_v1",
+  "type": "object",
+  "required": ["schemaVersion", "examId", "reviewReadyRunId", "stages", "status", "productionAuthorized", "transactionSha"],
+  "properties": {
+    "schemaVersion": {"const": "APMATH_APPROVED_RELEASE_TRANSACTION_v1"},
+    "examId": {"type": ["string", "null"]},
+    "reviewReadyRunId": {"type": ["string", "null"]},
+    "reviewReadySha": {"type": ["string", "null"]},
+    "approvalStatus": {"type": ["string", "null"]},
+    "stages": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["HOLD", "DONE"]},
+    "productionAuthorized": {"type": "boolean"},
+    "failure": {},
+    "transactionSha": {"$ref": "#/$defs/sha"}
+  },
+  "$defs": {
+    "sha": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

@@ -1,6 +1,80 @@
-import { isObject, nonempty, objectSha } from './canonical.mjs';
+import { HASH_PATTERN, isObject, nonempty, objectSha } from './canonical.mjs';
 
 export const VISUAL_BENEFIT_VERSION = 'APMATH_SOLUTION_VISUAL_BENEFIT_v1';
+export const DEFAULT_VISUAL_NEED_TYPES = Object.freeze(['GRAPH_BASED', 'INEQUALITY_BASED', 'GEOMETRY_BASED']);
+
+const visualText = question => [
+  question?.visualNeed,
+  question?.visualType,
+  question?.visual?.visualNeed,
+  question?.visual?.expectedVisualType,
+  question?.category,
+  question?.standardUnit,
+  question?.subUnit,
+  ...(Array.isArray(question?.tags) ? question.tags : []),
+  question?.content,
+].filter(nonempty).join(' ').toLowerCase();
+
+export function inferDefaultVisualNeed(question = {}) {
+  const explicit = String(question.visualNeed || question.visual?.visualNeed || '').trim().toUpperCase();
+  if (DEFAULT_VISUAL_NEED_TYPES.includes(explicit)) return { type: explicit, required: true, source: 'EXPLICIT_PIPELINE_POLICY' };
+  if (explicit === 'NONE' || explicit === 'OPTIONAL') return { type: 'NONE', required: false, source: 'EXPLICIT_EXEMPTION' };
+  const text = visualText(question);
+  if (/(inequality|부등식|부등|해집합|수직선|구간)/i.test(text)) return { type: 'INEQUALITY_BASED', required: true, source: 'DEFAULT_TYPE_POLICY' };
+  if (/(geometry|geometry-based|기하|도형|접선|원의 방정식|대칭이동|최단거리)/i.test(text)) return { type: 'GEOMETRY_BASED', required: true, source: 'DEFAULT_TYPE_POLICY' };
+  if (/(graph|graph-based|그래프|함수|좌표|점근선|역함수|합성함수|대응)/i.test(text)) return { type: 'GRAPH_BASED', required: true, source: 'DEFAULT_TYPE_POLICY' };
+  return { type: 'NONE', required: false, source: 'NO_DEFAULT_VISUAL_MATCH' };
+}
+
+export function hasSolutionVisual(question = {}) {
+  return Boolean(question.solutionImage || /<(?:svg|table|img)\b/i.test(String(question.solution || '')));
+}
+
+export function validateTypedVisualExemption(exemption) {
+  const errors = [];
+  if (!isObject(exemption) || exemption.status !== 'APPROVED') errors.push('VISUAL_EXEMPTION_APPROVAL_REQUIRED');
+  if (!nonempty(exemption?.reason)) errors.push('VISUAL_EXEMPTION_REASON_REQUIRED');
+  if (['easy_question', 'source_has_no_figure', 'easy question', 'source has no figure'].includes(String(exemption?.reason || '').trim().toLowerCase())) errors.push('VISUAL_EXEMPTION_REASON_TOO_WEAK');
+  const identity = exemption?.approvalEvidenceIdentity || exemption?.evidenceIdentity || exemption?.evidenceRef?.path;
+  const evidenceSha = exemption?.approvalEvidenceSha256 || exemption?.evidenceSha256 || exemption?.evidenceRef?.sha256;
+  if (!nonempty(identity)) errors.push('VISUAL_EXEMPTION_EVIDENCE_IDENTITY_REQUIRED');
+  if (!HASH_PATTERN.test(String(evidenceSha || ''))) errors.push('VISUAL_EXEMPTION_EVIDENCE_SHA_REQUIRED');
+  return { status: errors.length ? 'FAIL' : 'PASS', errors };
+}
+
+export function validateDefaultVisualGate(question = {}, { exemption = null } = {}) {
+  const need = inferDefaultVisualNeed(question);
+  if (!need.required || hasSolutionVisual(question)) return { status: 'PASS', errors: [], need, exempted: false };
+  if (exemption) {
+    const checked = validateTypedVisualExemption(exemption);
+    if (checked.status === 'PASS') return { status: 'PASS', errors: [], need, exempted: true };
+    return { status: 'FAIL', errors: checked.errors, need, exempted: false };
+  }
+  return { status: 'FAIL', errors: ['SOLUTION_VISUAL_MISSING'], need, exempted: false };
+}
+
+function visualIdentity(question) {
+  return String(question?.sourceIdentityKey || question?.questionUid || question?.id || '');
+}
+
+export function validateVisualBaselineNonRegression(baselineQuestions = [], currentQuestions = [], { exemptions = {} } = {}) {
+  const current = new Map(currentQuestions.map(question => [visualIdentity(question), question]));
+  const regressions = [];
+  for (const baseline of baselineQuestions) {
+    if (!hasSolutionVisual(baseline)) continue;
+    const currentQuestion = current.get(visualIdentity(baseline));
+    if (!currentQuestion || !hasSolutionVisual(currentQuestion)) {
+      const checked = validateTypedVisualExemption(exemptions[visualIdentity(baseline)]);
+      if (checked.status !== 'PASS') regressions.push({ questionUid: visualIdentity(baseline), code: 'VISUAL_BASELINE_REGRESSION' });
+    }
+  }
+  return {
+    status: regressions.length ? 'FAIL' : 'PASS',
+    errors: regressions.map(item => item.code + ':' + item.questionUid),
+    regressions,
+  };
+}
+
 export function visualBenefitDraft() {
   return { schemaVersion: VISUAL_BENEFIT_VERSION, visualRequirement: null, visualAction: null,
     studentUnderstandingBenefit: null, benefitReasons: [], geometryVisualRole: null,

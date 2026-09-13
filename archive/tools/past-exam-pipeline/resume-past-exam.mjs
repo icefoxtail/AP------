@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { aggregateWorkBatchAudit, freezeWorkBatch, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview } from '../pipeline-core/work-batch.mjs';
+import { aggregateWorkBatchAudit, freezeWorkBatch, markWorkBatchReviewReady, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview } from '../pipeline-core/work-batch.mjs';
 import { buildAuditorPacket, buildU3CandidatePayload, loadCandidateReviewContext, visualApplicabilityForQuestion, sourcePixelPayloads } from '../pipeline-core/review-isolation-runner.mjs';
 import { canonicalJson, fileRef, readBoundFile, writeNewJson } from '../pipeline-core/canonical.mjs';
 import { loadBoundQuestionBanks } from '../pipeline-core/closure.mjs';
@@ -26,6 +26,7 @@ export const RESUME_ACTIONS = Object.freeze([
   'FINAL_AUDIT',
   'TARGETED_RECHECK',
   'CLOSURE',
+  'EXTERNAL_APPROVAL_REQUIRED',
   'HUMAN_DECISION_REQUIRED',
   'DONE',
 ]);
@@ -283,8 +284,15 @@ export async function resumePastExam(root, options = {}) {
       continue;
     }
     if (action.action === 'CLOSURE') {
-      if (options.closureHandler) return { schemaVersion: RESUME_RUNNER_VERSION, status: await options.closureHandler({ root: resolvedRoot, state, history }), workBatchId, history, state: readWorkBatch(resolvedRoot, workBatchId) };
-      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'CLOSURE_READY', productionAuthorized: false, workBatchId, history, state };
+      const closure = options.closureHandler ? await options.closureHandler({ root: resolvedRoot, state, history }) : { status: 'PASS', productionAuthorized: false };
+      if (['PROMOTED', 'REGISTERED', 'DONE'].includes(typeof closure === 'string' ? closure : closure?.status) || closure?.productionAuthorized === true) throw new Error('AUTOMATIC_RELEASE_FORBIDDEN');
+      const reviewReadyRef = typeof closure === 'object' ? closure.reviewReadyRef || null : null;
+      const reviewReadySha = typeof closure === 'object' ? closure.reviewReadySha || null : null;
+      const readyState = markWorkBatchReviewReady(resolvedRoot, workBatchId, { reviewReadyRef, reviewReadySha });
+      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'REVIEW_READY', productionAuthorized: false, reviewReady: closure, workBatchId, history, state: readyState };
+    }
+    if (action.action === 'EXTERNAL_APPROVAL_REQUIRED') {
+      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'REVIEW_READY', productionAuthorized: false, workBatchId, history, state };
     }
     if (action.action === 'WAIT_FOR_SLOT') {
       if (options.waitForSlot) { await options.waitForSlot({ root: resolvedRoot, state }); continue; }
