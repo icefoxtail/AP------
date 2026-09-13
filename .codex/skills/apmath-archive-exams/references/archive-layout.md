@@ -19,8 +19,12 @@ RULE_PREFLIGHT -> CANONICAL_PRODUCTION_SAMPLE_CALIBRATION
 -> SOLUTION_AND_CLASSIFICATION_BUILD -> ALL_QUESTION_VISUAL_TRIAGE
 -> EXPECTED_FACT_FREEZE -> NUMERIC_VISUAL_BUILD
 -> STATIC_AND_RENDER_CAPTURE -> FINAL_AUDIT_SEALED_U1_U2_U3
--> TARGETED_REPAIR -> TARGETED_RECHECK_MAX_ONCE -> PROMOTION -> FINAL_CLOSURE
+-> TARGETED_REPAIR -> TARGETED_RECHECK -> PROMOTION -> FINAL_CLOSURE
 ```
+
+`TARGETED_RECHECK` is a bounded loop governed by the persisted Past Exam
+repair allowance in `archive/tools/pipeline-core/AGENT_BUDGET.md` (currently
+three iterations); legacy profiles retain their stored allowance.
 
 The V2 full-page-first extractor under
 `archive/tools/past-exam-pipeline/` is only the implementation used beneath
