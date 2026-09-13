@@ -1,0 +1,70 @@
+{
+  "status": "BLOCKED",
+  "benchmarkEligible": true,
+  "workBatchId": "past20-maesan-resume-dba3d1283",
+  "productionAuthorized": false,
+  "MODEL_ROUTE_PARITY": "NOT_APPLICABLE",
+  "modelRouteStatus": "NOT_APPLICABLE",
+  "routeErrors": [],
+  "benchmarkDenominator": {
+    "status": "NOT_APPLICABLE",
+    "eligibleTargetCount": 20,
+    "excludedRuns": []
+  },
+  "cost": {
+    "workBatchId": "past20-maesan-resume-dba3d1283",
+    "targetCount": 20,
+    "totalTargetCount": 20,
+    "totalAffectedCount": 20,
+    "benchmarkReviewedTargetCount": null,
+    "benchmarkEligibleTargetCount": null,
+    "benchmarkExcludedTargetCount": null,
+    "benchmarkTotalSourceTargetCount": null,
+    "benchmarkEligibleAffectedTargetCount": null,
+    "independentAgentLaunchCount": 1,
+    "expensiveAgentLaunchCount": 1,
+    "concurrentExpensiveAgentPeak": 1,
+    "freshLlmUidCount": 0,
+    "reusedUidCount": 0,
+    "machineCheckedUidCount": 20,
+    "retryLaunchCount": 0,
+    "secondAuditorLaunchCount": 0,
+    "recursiveSubagentLaunchCount": 0,
+    "usedTokens": null,
+    "tokenTelemetryAvailable": false,
+    "agentBudgetStatus": "HOLD",
+    "jobKind": "PRODUCTION",
+    "executionIdentity": {
+      "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+      "jobKind": "PRODUCTION",
+      "requestedModel": null,
+      "requestedReasoningEffort": null,
+      "actualModel": "gpt-5.6-luna/xhigh",
+      "actualReasoningEffort": null,
+      "modelRouteObservedAtStart": "2026-09-11T14:56:11.884Z",
+      "modelRouteObservedAtClosure": null,
+      "modelRouteChanged": false,
+      "routeStatus": "NOT_APPLICABLE",
+      "MODEL_ROUTE_PARITY": "NOT_APPLICABLE"
+    },
+    "MODEL_ROUTE_PARITY": "NOT_APPLICABLE",
+    "modelRouteStatus": "NOT_APPLICABLE"
+  },
+  "finalCoverage": 0,
+  "reports": [
+    {
+      "runId": "past20-maesan-resume-dba3d1283",
+      "status": "BLOCKED",
+      "errors": [
+        "V2_CONTRACT:RUN_V2_CONTRACT:$.auditorPacketRefs:MISSING;$.buildWorkLedgerRefs:MISSING;$.questionQualityClosureSetRef:MISSING;$.examReleaseClosureRef:MISSING;$.sourceAuthority.applicability:MISSING",
+        "AGENT_BUDGET_HOLD"
+      ]
+    }
+  ],
+  "diagnostics": {
+    "excludedRuns": [],
+    "eligibleReportCount": 1,
+    "closed": false
+  },
+  "reportSha": "sha256:35f63b3576f712e88adf5f78283986435d9021c57b540193b76eb3ca6bcbce65"
+}

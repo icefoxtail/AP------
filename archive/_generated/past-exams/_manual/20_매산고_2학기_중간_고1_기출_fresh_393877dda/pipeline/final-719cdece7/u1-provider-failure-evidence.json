@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-719cdece7",
+  "launchId": "past20-maesan-final-719cdece7:1",
+  "phase": "U1",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_REPAIR",
+  "auditorThreadId": "01a0925b-3014-7a03-bd5f-e9d9ddd79dfa",
+  "turnId": "01a0925c-cf55-7c12-9bf1-644d7b93619e",
+  "observedAt": "2026-09-11T21:30:21Z",
+  "evidenceSource": {
+    "providerLog": "~/.codex/logs_2.sqlite",
+    "providerLogAccess": "read-only",
+    "queries": [
+      "thread_id = 01a0925b-3014-7a03-bd5f-e9d9ddd79dfa",
+      "process_uuid LIKE pid:340:%",
+      "target = codex_app_server::outgoing_message"
+    ]
+  },
+  "observations": {
+    "modelTurn": {
+      "outputItemCompleted": true,
+      "turnCompletedNotificationEmitted": true,
+      "agentMessageDeltaCount": 508,
+      "totalUsageTokens": 23164,
+      "modelNeedsFollowUp": false,
+      "turnStatus": "completed"
+    },
+    "adapter": {
+      "phaseResponseWritten": false,
+      "historyRecoveryRequestsContinuedAfterTurnCompletion": true,
+      "historyRecoveryMethods": [
+        "thread/turns/list",
+        "thread/read"
+      ],
+      "observedHistoryRequestRange": {
+        "firstRequestId": 478,
+        "lastRequestId": 594
+      }
+    }
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "failure": "The U1 receive loop awaited history-recovery RPCs before checking already-arrived completion notifications. The recovery request path had no per-request timeout, so a slow or non-returning app-server history call prevented the loop from consuming the completed turn and returning the valid auditor JSON.",
+    "notModelFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "rawProviderLogRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Apply minimal adapter repair in a separate commit, then start a fresh run from the repair commit SHA."
+  }
+}

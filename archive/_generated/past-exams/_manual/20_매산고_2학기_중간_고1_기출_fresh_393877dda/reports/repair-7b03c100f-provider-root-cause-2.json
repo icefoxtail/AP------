@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_PIPELINE_DEFECT_EVIDENCE_v1",
+  "status": "ROOT_CAUSE_IDENTIFIED_AND_RECONCILED",
+  "workBatchId": "past20-maesan-repair-7b03c100f",
+  "launchId": "past20-maesan-repair-7b03c100f:1",
+  "failedPhase": "U1",
+  "failureEvidence": "alive/runtime/provider-bridge/past20-maesan-repair-7b03c100f/provider-transport-failure.json",
+  "failureReceipt": "alive/runtime/provider-bridge/past20-maesan-repair-7b03c100f/provider-transport-failure-receipt.json",
+  "failureReceiptSha256": "sha256:add279e6fc3b6b34fc403de557f70ea1c86477721e3909c79571298d66f40f4f",
+  "observedProviderLog": {
+    "source": "C:/Users/USER/.codex/logs_2.sqlite",
+    "threadId": "01a09111-6846-71e1-8408-2cae72efb573",
+    "turnId": "01a09113-8fc2-73a3-9eee-2a5b526fa149",
+    "timestampUnixSeconds": 1789140374,
+    "errorType": "invalid_request_error",
+    "errorCode": "invalid_json_schema",
+    "message": "Invalid schema for response_format 'codex_output_schema': In context=('properties', 'evidence', 'items'), 'additionalProperties' is required to be supplied and to be false.",
+    "httpStatus": 400
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/auditor-output-schema.mjs",
+    "defect": "Array item schemas used additionalProperties=true, but the Codex response-format contract requires strict object item schemas with additionalProperties=false.",
+    "classification": "PIPELINE_DEFECT",
+    "transportErrorWasWrapper": true,
+    "semanticModelTurnCompleted": false
+  },
+  "repairPlan": {
+    "scope": "Set evidence and defects item objects to additionalProperties=false and define their accepted properties for the provider output contract.",
+    "sameLaunchRetry": false,
+    "freshRunRequiredAfterRepair": true
+  }
+}

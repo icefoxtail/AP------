@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-011210ddf-r4",
+  "launchId": "past20-maesan-final-011210ddf-r4:1",
+  "phase": "U1",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_THIRD_REPAIR",
+  "auditorThreadId": "01a09286-9b89-7683-b98b-e6357624a88b",
+  "turnId": "01a09288-2b4b-7443-899d-9caa2697b6f2",
+  "observedAt": "2026-09-11T22:14:31Z",
+  "evidenceSource": {
+    "providerLog": "~/.codex/logs_2.sqlite",
+    "providerLogAccess": "read-only",
+    "rawEnvelopeTrace": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-011210ddf-r4/appserver-message-trace.jsonl",
+      "bytes": 958696,
+      "sha256": "sha256:3784f97c86241b41385caf62506f89bff6872612fddf0be03490945a2aba873e"
+    }
+  },
+  "observations": {
+    "modelTurn": {
+      "outputItemCompleted": true,
+      "turnCompletedNotificationEmitted": true,
+      "totalUsageTokens": 23621,
+      "modelNeedsFollowUp": false,
+      "turnStatus": "completed"
+    },
+    "rawEnvelopeTrace": {
+      "turnCompletedRoute": "notification",
+      "turnCompletedSequence": 1885,
+      "historyRpcErrors": {
+        "invalidSortDirection": 288,
+        "ephemeralIncludeTurnsUnsupported": 288
+      },
+      "transportTerminalStatus": "HOLD:PROVIDER_TRANSPORT_UNAVAILABLE"
+    }
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "providerContract": "turn/start returns { turn: Turn } in the current app-server v2 contract.",
+    "bug": "The adapter read response.id instead of response.turn.id, so its local turnId was undefined. The actual turn/completed notification could not satisfy the adapter's threadId + turnId completion predicate, and the loop continued polling until timeout.",
+    "secondaryContractDrift": [
+      "thread/turns/list expects sortDirection=desc, not descending.",
+      "ephemeral thread/read does not support includeTurns."
+    ],
+    "notModelFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "rawEnvelopeTraceRetained": true,
+    "rawProviderLogRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Apply nested turn response normalization plus the two current history parameter fixes in a separate commit, then start a fresh run."
+  }
+}

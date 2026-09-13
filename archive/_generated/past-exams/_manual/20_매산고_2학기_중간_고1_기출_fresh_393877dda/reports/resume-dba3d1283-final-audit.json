@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "APMATH_PAST_EXAM_FINAL_AUDIT_RESUME_v1",
+  "examId": "20_매산고_2학기_중간_고1_기출",
+  "candidateSha256": "sha256:ed86303ef9a4f33432afc4528cad079ac4661050841874802a928a866a95afe2",
+  "freshRun": {
+    "startSha": "dba3d1283e54a8ea1bfef8ce126e0769ebdfa030",
+    "workBatchId": "past20-maesan-resume-dba3d1283",
+    "runId": "past20-maesan-resume-dba3d1283",
+    "runInputSha": "sha256:31b83ebf5097dfd5bca840e2592b209278e1ad35e7edd7fee519329d0cda4cd3",
+    "freezeSha": "sha256:8f2e05fde61dc240d2d469fab4008589136d8f1602b9a7a05e84aaedbc67d791",
+    "targetCount": 20
+  },
+  "staticCandidate": {
+    "status": "EXTRACTION_VALIDATED",
+    "questionCount": 20,
+    "expectedQuestionCount": 20,
+    "issues": 0,
+    "missingAnswers": 0,
+    "missingSolutions": 0,
+    "missingSubunitMetadata": 0,
+    "missingImages": 0,
+    "sourceEvidence": "PASS",
+    "sourceFidelityStatus": "PENDING_REVIEW",
+    "mathReviewStatus": "NOT_STARTED",
+    "assetProvenanceStatus": "PENDING_REVIEW",
+    "prePromotionStatus": "BLOCKED"
+  },
+  "machineEvidence": {
+    "status": "MACHINE_EVIDENCE_READY",
+    "staticAndMetadataQuestionCount": 20,
+    "runManifest": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/pipeline/resume-dba3d1283-r4/run-machine-current.json"
+  },
+  "providerFinalAudit": {
+    "status": "FAILED",
+    "launchId": "past20-maesan-resume-dba3d1283:1",
+    "externalId": "01a090f8-0f5e-7893-8956-3df947aa213d",
+    "provider": "CodexAppServer",
+    "model": "gpt-5.6-luna/xhigh",
+    "failedPhase": "U1",
+    "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+    "retryPerformed": false,
+    "reconciledWorkBatchStatus": "HOLD",
+    "failureEvidence": "alive/runtime/provider-bridge/past20-maesan-resume-dba3d1283/provider-transport-failure.json",
+    "failureReceipt": "alive/runtime/provider-bridge/past20-maesan-resume-dba3d1283/provider-transport-failure-receipt.json",
+    "failureEvidenceSha256": "sha256:b99f1123fbc9fc21ef443de7074961d72ff6bbab49952d5c2465b061c8ae2694",
+    "failureReceiptSha256": "sha256:a4e6094ee50f527f5be064145e30a522600f6c7b8258f7a255c10ad031a2439d"
+  },
+  "auditV2": {
+    "status": "BLOCKED",
+    "report": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/resume-dba3d1283-audit-v2.json",
+    "reportSha256": "sha256:bf64878d57bce5d9763a14aefcd4b3ff3aa734479d48f59691e60be27ce51cb8",
+    "errors": [
+      "AGENT_BUDGET_HOLD",
+      "provider semantic evidence absent",
+      "closure refs absent"
+    ]
+  },
+  "wholeJobAudit": {
+    "status": "BLOCKED",
+    "finalCoverage": 0,
+    "report": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/resume-dba3d1283-work-batch-audit.json",
+    "reportSha256": "sha256:35f63b3576f712e88adf5f78283986435d9021c57b540193b76eb3ca6bcbce65"
+  },
+  "render": {
+    "status": "NOT_TESTED",
+    "reason": "Playwright is unavailable; the prior CUA fallback was interrupted and was not retried.",
+    "productionPromotionAuthorized": false
+  },
+  "targetedRecheck": {
+    "status": "NOT_AUTHORIZED",
+    "reason": "The required first FINAL_AUDIT did not complete; no semantic defect scope exists for a targeted recheck."
+  },
+  "finalClosure": {
+    "status": "BLOCKED",
+    "productionJsWritten": false,
+    "databaseUpdated": false,
+    "questionIndexUpdated": false,
+    "noSyntheticPass": true
+  }
+}

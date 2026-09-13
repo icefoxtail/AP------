@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_PIPELINE_DEFECT_EVIDENCE_v1",
+  "status": "ROOT_CAUSE_IDENTIFIED_PENDING_TERMINAL_RECONCILE",
+  "workBatchId": "past20-maesan-repair-eac09c29e",
+  "launchId": "past20-maesan-repair-eac09c29e:1",
+  "failedPhase": "U1",
+  "observedProviderLog": {
+    "source": "C:/Users/USER/.codex/logs_2.sqlite",
+    "threadId": "01a0912a-155f-7d91-9b2f-93384d51de85",
+    "turnId": "01a0912b-d62b-7f23-bff7-3a8ea0d1b9f6",
+    "timestampUnixSeconds": 1789142030,
+    "model": "gpt-5.6-luna",
+    "outputItemCompleted": true,
+    "totalUsageTokens": 22915,
+    "schema400Observed": false
+  },
+  "dispatchProcessObservation": {
+    "stateBeforeReconcile": "DISPATCHED",
+    "phaseResponseFilePresent": false,
+    "receiptFilePresent": false,
+    "dispatchClientProcessPresent": false,
+    "providerDaemonProcessPresent": true,
+    "retryPerformed": false
+  },
+  "rootCause": {
+    "component": "alive/runtime/provider-bridge/codex-appserver-adapter.mjs",
+    "defect": "The adapter relied on notifications for turn completion; when the dispatch client lost the phase connection before the notification was consumed, no thread/read history fallback could recover the completed turn.",
+    "classification": "PIPELINE_DEFECT",
+    "semanticModelTurnCompleted": true
+  },
+  "repairPlan": {
+    "scope": "Poll thread/read with includeTurns after a turn starts and recover the completed turn's final agent message when notifications are absent.",
+    "sameLaunchRetry": false,
+    "freshRunRequiredAfterRepair": true
+  }
+}

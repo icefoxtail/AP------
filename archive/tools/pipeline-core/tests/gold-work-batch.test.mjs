@@ -13,7 +13,7 @@ import { aggregateWorkBatchAudit, initWorkBatch, freezeWorkBatch, reserveWorkBat
 import { prepareProviderReview } from '../provider-bridge.mjs';
 
 const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
-const mainSha = execFileSync('git', ['rev-parse', 'refs/remotes/origin/main'], { cwd: repository, encoding: 'utf8' }).trim();
+const mainSha = execFileSync('git', ['rev-parse', 'refs/heads/main'], { cwd: repository, encoding: 'utf8' }).trim();
 const authority = { startSha: mainSha, calibrationSha: 'sha256:calibration', rulePackSha: 'sha256:rule-pack' };
 const phases = ['U1', 'U2', 'U3'];
 
@@ -37,13 +37,6 @@ function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', ru
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-gold-work-batch-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   execFileSync('git', ['clone', '--shared', '--no-checkout', '--branch', 'main', repository, '.'], { cwd: root, stdio: 'ignore' });
-  const fixtureOrigin = path.join(root, '.fixture-origin.git');
-  execFileSync('git', ['init', '--bare', fixtureOrigin], { stdio: 'ignore' });
-  const alternateObjects = path.join(fixtureOrigin, 'objects', 'info', 'alternates');
-  fs.mkdirSync(path.dirname(alternateObjects), { recursive: true });
-  fs.writeFileSync(alternateObjects, `${path.join(repository, '.git', 'objects').replaceAll('\\', '/')}\n`);
-  execFileSync('git', ['--git-dir', fixtureOrigin, 'update-ref', 'refs/heads/main', mainSha], { stdio: 'ignore' });
-  execFileSync('git', ['remote', 'set-url', 'origin', fixtureOrigin], { cwd: root, stdio: 'ignore' });
   execFileSync('git', ['update-ref', 'refs/remotes/origin/main', mainSha], { cwd: root, stdio: 'ignore' });
 
   const write = (relative, value) => {
@@ -58,6 +51,7 @@ function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', ru
     runIds,
     builderId: 'builder',
     builderSessionId: 'builder-session',
+    workflowProfile: pipeline === 'past-exam' ? 'PAST_EXAM' : 'LEGACY',
     jobKind,
     ...(jobKind === 'PRODUCTION' ? {} : { jobAuthority: authority }),
   });
@@ -88,7 +82,7 @@ function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', ru
         problemAssetPaths: [],
         solutionAssetPaths: [],
         evidence: {},
-        visual: { requirement: 'VISUAL_EXEMPT' },
+        visual: { origin: 'NATIVE', requirement: 'VISUAL_EXEMPT', action: 'NONE', exemptReason: 'NO_VISUAL_NEEDED', adjudicationId: `${questionUid}:authority`, adjudicationStatus: 'RESOLVED', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false },
       }));
       for (const row of rows) row.requiredAxes = requiredAxesForQuestion(profiles.pipelines[pipeline], row, { pipeline });
       const run = {

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_FAILURE_EVIDENCE_v1",
+  "job": "past20-maesan-final-2a21947d9-r8",
+  "launchId": "past20-maesan-final-2a21947d9-r8:1",
+  "phase": "U2",
+  "classification": "PIPELINE_DEFECT",
+  "status": "PRESERVED_BEFORE_SEVENTH_REPAIR",
+  "auditorThreadId": "01a092ae-1db0-7d52-bc14-90299bc2509e",
+  "turnId": "01a092b0-df00-7742-920e-07c69509a437",
+  "observations": {
+    "providerResponse": {
+      "path": "alive/runtime/provider-bridge/past20-maesan-final-2a21947d9-r8/u2-response.json",
+      "bytes": 3568,
+      "sha256": "sha256:b8cd47fcec3e5cb69c21d2c1c780e4d56da7626555bf83584460f3942c9e5ce3",
+      "status": "COMPLETED",
+      "defectCount": 3,
+      "aggregateScopeVariant": "examId"
+    },
+    "dispatcher": {
+      "terminalStatus": "HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED",
+      "u1ResponseWritten": true,
+      "u2ResponseWritten": true,
+      "u3Started": false,
+      "receiptWritten": false
+    }
+  },
+  "rootCause": {
+    "component": "archive/tools/pipeline-core/provider-bridge.mjs",
+    "bug": "Scope binding handled questionUid, scope numeric ranges, and questionUids ranges, but not a whole-exam scope string that is the prefix of every frozen questionUid.",
+    "safeRepair": "Resolve exact exam scope only when it matches the prefix of the frozen launch scope; reject unrelated prefixes.",
+    "notModelTransportFailure": true,
+    "notSourceDataFailure": true,
+    "notGateRelaxation": true
+  },
+  "preservation": {
+    "providerResponseRetained": true,
+    "frozenJobWasNotResumed": true,
+    "nextAction": "Add exact exam-prefix scope expansion, pass targeted tests, then start another fresh run."
+  }
+}

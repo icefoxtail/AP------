@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-09-11T14:30:41.456163+00:00",
+  "batchId": "1final_middle_m2_2022_2025",
+  "jobCount": 1,
+  "extractionValidatedCount": 1,
+  "prePromotionValidatedCount": 0,
+  "passedCount": 0,
+  "needsWorkCount": 0,
+  "missingContentCount": 0,
+  "visionRequiredContentOrChoicesCount": 0,
+  "missingAnswerCount": 0,
+  "missingRequiredSolutionCount": 0,
+  "missingSubunitMetadataCount": 0,
+  "invalidSubunitMetadataCount": 0,
+  "missingImageCount": 0,
+  "forbiddenCandidateImagePathCount": 0,
+  "objectiveChoiceMismatchCount": 0,
+  "protectedArchiveTouched": false,
+  "policy": "V2 extraction validation: fullPageImagePath/cropPath are not image fallbacks; external answer/solution blanks are not failures.",
+  "status": "EXTRACTION_VALIDATED",
+  "items": [
+    {
+      "examId": "20_매산고_2학기_중간_고1_기출",
+      "generatedAt": "2026-09-11T14:30:41.454179+00:00",
+      "candidateFile": "C:\\Users\\USER\\Desktop\\AP-------worktree-maesang2020\\archive\\_generated\\past-exams\\_manual\\20_매산고_2학기_중간_고1_기출_fresh_393877dda\\candidate\\20_매산고_2학기_중간_고1_기출.candidate.js",
+      "questionCount": 20,
+      "expectedQuestionCount": 20,
+      "policy": {
+        "version": "past_exam_pipeline_v2_full_page_first",
+        "image": "blank is valid for no-visual questions; nonblank image must point only to a visual asset crop",
+        "fullPageImagePath": "source evidence only; never used as image fallback",
+        "cropPath": "auxiliary/debug evidence only; never used as image fallback",
+        "answerSolution": "blank answer/solution with external_agent_required is valid at extraction stage",
+        "contentChoices": "contentSource/choicesSource=vision_required remains needs_work; no dummy content allowed"
+      },
+      "missingVisualAssetImageFiles": [],
+      "forbiddenCandidateImagePaths": [],
+      "missingContent": [],
+      "visionRequiredContentOrChoices": [],
+      "missingAnswer": [],
+      "missingRequiredSolution": [],
+      "missingSubunitMetadata": [],
+      "invalidSubunitMetadata": [],
+      "objectiveChoiceCountMismatches": [],
+      "serializationIssues": [],
+      "sourceEvidence": {
+        "status": "PASS",
+        "sourceInventorySha": "sha256:4dd7714452d2a85efbdd4eb11377303157c739021b119ac2351b32c6bc1343ca",
+        "sourceIdentityMapSha": "sha256:77fe3e2b4d5765cbd8c3e3f19f90725fd44c2a1a43fd76015e8f975522a22d44",
+        "issues": [],
+        "sourceFidelitySha": "sha256:aa60f915e5d40a65b1fc71c2b0271d230b2df5427ed98a4291f2bf270d8c6282",
+        "mathReviewSha": "sha256:d6804464ced0945543fab815592bc601696d009d432fbf49c44f616937461d32",
+        "assetProvenanceSha": "sha256:ae8224f398a00eb06956fb67fae9bc496d6a076442bb97b50fea3b712ff6d982",
+        "sourceFidelityStatus": "PENDING_REVIEW",
+        "mathReviewStatus": "NOT_STARTED",
+        "assetProvenanceStatus": "PENDING_REVIEW",
+        "finalEvidencePass": false
+      },
+      "extractionStatus": "EXTRACTION_VALIDATED",
+      "prePromotionStatus": "BLOCKED",
+      "compatibility": {
+        "final_validation_passed": false,
+        "statusMeaning": "legacy boolean is true only for PRE_PROMOTION_VALIDATED; EXTRACTION_VALIDATED is not a production-quality PASS"
+      },
+      "issues": [],
+      "notFailures": [
+        "blank_image_when_no_visual_asset",
+        "blank_answer_external_agent_required",
+        "blank_solution_external_agent_required"
+      ],
+      "protectedArchiveTouched": false,
+      "status": "EXTRACTION_VALIDATED"
+    }
+  ]
+}

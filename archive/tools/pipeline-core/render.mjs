@@ -40,7 +40,7 @@ export function createRenderReview(root, run, captureRef, decision) {
     reviewerId: decision.reviewerId,
     reviewSessionId: decision.reviewSessionId,
     reviewerModelOrAgent: decision.reviewerModelOrAgent,
-    priorReviewVisibility: 'CAPTURE_ONLY',
+    priorReviewVisibility: v2 ? 'NONE' : 'CAPTURE_ONLY',
     inputSha: run.inputSha,
     reviewStartInputSha: run.inputSha,
     reviewEndInputSha: runInputSha(run),

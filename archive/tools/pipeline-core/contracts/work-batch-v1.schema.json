@@ -62,20 +62,119 @@
     "jobAuthority": {
       "type": ["object", "null"]
     },
+    "workflowProfile": {
+      "enum": ["LEGACY", "PAST_EXAM"]
+    },
+    "predecessorWorkBatchId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "predecessorFreezeSha": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "predecessorLaunchId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessorReceiptRef": {
+      "type": "object",
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "bytes": {"type": "integer", "minimum": 0},
+        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    },
     "tokenBudget": {},
     "status": {
       "enum": [
         "PRODUCTION",
         "FROZEN",
+        "REPAIR_REQUIRED",
         "HOLD"
       ]
+    },
+    "openDefectSet": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/targetIdentity"
+      }
+    },
+    "openDefects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["runId", "questionUid"],
+        "properties": {
+          "runId": {"type": "string", "minLength": 1},
+          "questionUid": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": true
+      }
+    },
+    "repairIterations": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["iteration", "status", "openDefectSet"],
+        "properties": {
+          "iteration": {"type": "integer", "minimum": 1, "maximum": 3},
+          "status": {"enum": ["REPAIR_REQUIRED", "REPAIR_RECORDED", "FROZEN_FOR_RECHECK", "CLOSED", "HOLD"]},
+          "openDefectSet": {"type": "array", "items": {"$ref": "#/$defs/targetIdentity"}},
+          "recheckScope": {"type": "array", "items": {"$ref": "#/$defs/targetIdentity"}},
+          "triggerLaunchId": {"type": "string"},
+          "freezeSha": {"type": "string"},
+          "inputSha": {"type": "string"},
+          "auditInputSha": {"type": "string"},
+          "repairInputSha": {"type": "string"},
+          "repairRoute": {"type": "string"},
+          "defectFingerprintSet": {"type": "array", "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}},
+          "repairPlan": {"type": "object"},
+          "revision": {"type": "integer", "minimum": 1},
+          "dispositions": {"type": "array"},
+          "defects": {"type": "array"},
+          "repairRef": {},
+          "openedAt": {"type": "string"},
+          "recordedAt": {"type": "string"},
+          "closedAt": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "executionRecovery": {
+      "type": "object",
+      "required": ["maxAttemptsPerFreeze", "attempts"],
+      "properties": {
+        "maxAttemptsPerFreeze": {"const": 2},
+        "attempts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["freezeSha", "failedLaunchId", "attempt", "failureClass", "fingerprint"],
+            "properties": {
+              "freezeSha": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+              "failedLaunchId": {"type": "string", "minLength": 1},
+              "successorLaunchId": {"type": ["string", "null"]},
+              "attempt": {"type": "integer", "minimum": 1, "maximum": 2},
+              "failureClass": {"enum": ["PRE_MODEL_EXECUTION_FAILURE", "MODEL_STATE_AMBIGUOUS_FAILURE"]},
+              "fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+              "recordedAt": {"type": "string"}
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
     },
     "policy": {
       "type": "object"
     },
     "freezes": {
       "type": "array",
-      "maxItems": 2,
+      "maxItems": 4,
       "items": {
         "type": "object",
         "required": [
@@ -128,7 +227,7 @@
     },
     "launches": {
       "type": "array",
-      "maxItems": 3,
+      "maxItems": 12,
       "items": {
         "type": "object",
         "required": [
@@ -167,6 +266,8 @@
             "const": "STATELESS_INPUTS"
           },
           "maxTokens": {},
+          "inputSha": {"type": "string"},
+          "repairIteration": {"type": "integer", "minimum": 0, "maximum": 3},
           "status": {
             "enum": [
               "RESERVED",
@@ -174,7 +275,13 @@
               "COMPLETED",
               "FAILED"
             ]
-          }
+          },
+          "executionRecovery": {"type": "boolean"},
+          "recoveryOfLaunchId": {"type": "string", "minLength": 1},
+          "executionFailureClass": {"enum": ["PRE_MODEL_EXECUTION_FAILURE", "MODEL_STATE_AMBIGUOUS_FAILURE"]},
+          "executionFailureFingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+          "executionAttempt": {"type": "integer", "minimum": 1, "maximum": 2},
+          "reviewExecutionAttempt": {"type": "integer", "minimum": 1}
         }
       }
     },

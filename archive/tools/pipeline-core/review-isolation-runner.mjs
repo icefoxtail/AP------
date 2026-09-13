@@ -1,15 +1,87 @@
 import { canonicalJson, HASH_PATTERN, isObject, nonempty, objectSha } from './canonical.mjs';
 import { loadBoundQuestionBanks } from './closure.mjs';
+import { visualAssetPayload } from './native-visual.mjs';
 
 export const AUDITOR_PACKET_VERSION = 'APMATH_AUDITOR_PACKET_v1';
 export const AUDITOR_PHASES = Object.freeze(['U1', 'U2', 'U3']);
+export const INDEPENDENT_REVIEW_CONTRACTS = Object.freeze({
+  U1: 'Independently audit source fidelity, source defects and mathematics using only the provided source pixels, source text and ordered choices. Source-page pixels are evidence, not candidate solutions. Do not review other questions visible on a page outside the declared UID scope.',
+  U2: 'Independently audit only supplied visual artifacts and artifact renders: crop completeness, geometry, labels, coordinates and visual fidelity. Do not infer intended answers or consume source/candidate solutions or peer reports.',
+  U3: 'Independently audit the current candidate problem, choices, answer, solution, necessary problem visuals and actual browser renders for mathematical correctness, intermediate reasoning and student output consistency. No U1/U2 reports are available. Return independentAnswer and independentDerivation for MATH_A2, not peer evidence hashes.',
+});
 
 const allowed = Object.freeze({
-  U1: ['questionUid', 'content', 'choices', 'problemAssets', 'curriculum'],
-  U2: ['questionUid', 'artifact', 'renderWitnesses'],
-  U3: ['renderWitnesses', 'currentQuestion', 'questionUid', 'frozenU1', 'frozenU2', 'currentAnswer', 'currentSolution', 'metadata', 'dependencies']
+  U1: ['questionUid', 'content', 'choices', 'problemAssets', 'sourcePixels', 'curriculum'],
+  U2: ['questionUid', 'artifact', 'renderWitnesses', 'visualApplicability'],
+  U3: ['renderWitnesses', 'currentQuestion', 'questionUid', 'currentAnswer', 'currentSolution', 'metadata', 'dependencies']
 });
 const forbidden = Object.freeze({ U1: ['answer', 'solution', 'solutionImage', 'previousVerdict'], U2: ['expectedAnswer', 'answer', 'solution', 'solutionImage', 'frozenU1', 'previousVerdict'], U3: [] });
+
+export const VISUAL_APPLICABILITY_STATUSES = Object.freeze(['VISUAL_REQUIRED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT']);
+export const VISUAL_ONLY_DEFECT_TYPES = Object.freeze(['missing_artifact', 'missing_render_witness']);
+
+export function sourcePixelPayloads(root, run, source) {
+  const paths = source?.sourcePageEvidencePaths || (source?.sourceEvidencePath ? [source.sourceEvidencePath] : []);
+  return [...new Set(paths)].map(relative => {
+    const matches = run.inputs.filter(ref => ref.path === relative || ref.path.endsWith(`/${relative}`));
+    if (matches.length !== 1) throw new Error(`SOURCE_PIXEL_BINDING_REQUIRED:${relative}`);
+    return visualAssetPayload(root, matches[0]);
+  });
+}
+
+function assetPaths(question, key, refKey) {
+  const direct = Array.isArray(question?.[key]) ? question[key] : [];
+  if (direct.length) return direct;
+  return Array.isArray(question?.[refKey]) ? question[refKey].filter(Boolean).map(ref => ref.path).filter(Boolean) : [];
+}
+
+// This is a projection of existing question metadata and visual triage
+// authority. It is deliberately not a second visual classifier: a source
+// question marked no_visual_asset_required/VISUAL_EXEMPT stays exempt, while
+// an existing problem/shared visual dependency keeps the visual axis required
+// even when the solution visual itself was labelled optional.
+export function visualApplicabilityForQuestion(question = {}) {
+  const visual = question.visual || {};
+  const sourceRecord = question.sourceRecord || {};
+  const problemAssetPaths = assetPaths(question, 'problemAssetPaths', 'problemAssetRefs');
+  const solutionAssetPaths = assetPaths(question, 'solutionAssetPaths', 'solutionAssetRefs');
+  const hasDependency = visual.problemVisualMathDependency === true
+    || visual.sharedVisualMathDependency === true
+    || problemAssetPaths.length > 0 || Boolean(question.image || sourceRecord.image);
+  const explicitlyExempt = (visual.requirement === 'VISUAL_EXEMPT'
+    || sourceRecord.visualAssetStatus === 'no_visual_asset_required')
+    && !solutionAssetPaths.length && !question.solutionImage && visual.actualSolutionVisualAttached !== true;
+  const status = hasDependency || visual.requirement === 'VISUAL_REQUIRED'
+    ? 'VISUAL_REQUIRED'
+    : explicitlyExempt
+      ? 'VISUAL_EXEMPT'
+      : 'VISUAL_OPTIONAL';
+  const artifactRequired = status === 'VISUAL_REQUIRED' || visual.actualSolutionVisualAttached === true || solutionAssetPaths.length > 0 || Boolean(question.solutionImage);
+  return {
+    status,
+    artifactRequired,
+    renderWitnessRequired: artifactRequired,
+    authority: {
+      requirement: visual.requirement || null,
+      visualAssetStatus: sourceRecord.visualAssetStatus || null,
+      action: visual.action || null,
+      adjudicationId: visual.adjudicationId || null,
+      adjudicationStatus: visual.adjudicationStatus || null,
+      problemDependency: visual.problemVisualMathDependency === true,
+      sharedDependency: visual.sharedVisualMathDependency === true,
+      sourceNoVisualAssetRequired: sourceRecord.visualAssetStatus === 'no_visual_asset_required'
+    }
+  };
+}
+
+function validateVisualApplicability(value) {
+  return isObject(value)
+    && VISUAL_APPLICABILITY_STATUSES.includes(value.status)
+    && typeof value.artifactRequired === 'boolean'
+    && typeof value.renderWitnessRequired === 'boolean'
+    && isObject(value.authority)
+    && (value.status === 'VISUAL_EXEMPT' ? value.artifactRequired === false && value.renderWitnessRequired === false : true);
+}
 
 // Read the byte-bound candidate, never the source choices or a previous verdict.
 export function loadCandidateReviewContext(root, run) {
@@ -17,22 +89,30 @@ export function loadCandidateReviewContext(root, run) {
     const declared = run.questions.find(q => q.questionUid === question.questionUid);
     const candidateRef = run.inputs.find(ref => ref.role === 'candidate' && ref.path === declared.candidatePath);
     return [question.questionUid, {
-      currentQuestion: { questionUid: question.questionUid, content: question.content, choices: question.choices || [], candidateRef },
+      currentQuestion: { questionUid: question.questionUid, content: question.content || '', choices: question.choices || [], candidateRef,
+        ...(question.image ? { image: question.image, problemAssets: candidateProblemAssets(root, run, question) } : {}) },
       currentAnswer: question.answer,
       currentSolution: question.solution || '',
     }];
   }));
 }
 
+function candidateProblemAssets(root, run, question) {
+  const ref = (question.problemAssetRefs || []).find(ref => ref && (ref.path === question.image || ref.path === `archive/${question.image}` || ref.path === `${run.assetRoot || 'archive'}/${question.image}`));
+  if (!ref) throw new Error(`CANDIDATE_PROBLEM_ASSET_NOT_BOUND:${question.questionUid}`);
+  return [visualAssetPayload(root, ref)];
+}
+
 export function buildU3CandidatePayload(candidateContext, questionUid, frozenInputs = {}) {
   if (!candidateContext?.[questionUid]) throw new Error('U3_CANDIDATE_NOT_BOUND');
+  if ('frozenU1' in frozenInputs || 'frozenU2' in frozenInputs) throw new Error('CROSS_AUDITOR_OUTPUT_FORBIDDEN');
   return structuredClone({ ...frozenInputs, questionUid, ...candidateContext[questionUid], dependencies: {
     ...(frozenInputs.dependencies || {}),
     solutionReviewContract: {
       answerOnlyPassForbidden: true,
       required: ['keyIdea', 'conditionInterpretation', 'intermediateReasoningComplete', 'caseSplitComplete', 'studentReproducible', 'internalConsistency', 'independentIntermediateRecalculation', 'finalAnswerParity'],
       recalculation: 'Recompute every decisive arithmetic/combinatorial intermediate from the source conditions. Record independentWork and recalculations with current solutionExcerpt, bounded expression, claimedValue and independentlyComputedValue. A correct final answer never repairs a wrong step.',
-      visual: 'Read frozen U1 and artifact-only U2 separately. Missing numeric geometry, coordinate FAIL, missing render or unresolved machine findings remain FAIL/HOLD. Complete the audit of all UIDs; do not promote unresolved defects.'
+      visual: 'Independently review the current candidate, its problem visuals and actual browser renders. No other auditor output is available. Report your own findings; a deterministic merger handles agreement and conflicts.'
     }
   } });
 }
@@ -61,6 +141,8 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
   const expectedBuilderSessionId = builderSessionId ?? packet.builderSessionId;
   if (!nonempty(expectedBuilderId) || !nonempty(expectedBuilderSessionId) || packet.auditorId === expectedBuilderId || packet.auditorSessionId === expectedBuilderSessionId) errors.push('AUDITOR_BUILDER_NOT_INDEPENDENT');
   const payload = packet.payload;
+  const visibility = { U1: 'SOURCE_ONLY', U2: 'ARTIFACT_ONLY', U3: 'CANDIDATE_ONLY' };
+  if (packet.inputVisibilityProfile !== visibility[packet.phase] || packet.priorReviewVisibility !== 'NONE') errors.push('INDEPENDENT_PHASE_VISIBILITY_REQUIRED');
   if (Array.isArray(payload)) {
     if (payload.length !== packet.questionUids.length || payload.some(p => !packet.questionUids.includes(p?.questionUid)) || new Set(payload.map(p => p?.questionUid)).size !== payload.length) errors.push('AUDITOR_BATCH_PAYLOAD_PARITY');
     for (const item of payload) {
@@ -71,9 +153,10 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
   } else if (!isObject(payload)) errors.push('AUDITOR_PACKET_PAYLOAD_INVALID');
   else {
     if (!packet.questionUids.includes(payload.questionUid)) errors.push('PAYLOAD_UID_SCOPE_MISMATCH');
+    if (packet.phase === 'U2' && !validateVisualApplicability(payload.visualApplicability)) errors.push('U2_VISUAL_APPLICABILITY_REQUIRED');
     if (packet.phase === 'U3') {
       const current = payload.currentQuestion;
-      if (!isObject(current) || current.questionUid !== payload.questionUid || !nonempty(current.content)
+      if (!isObject(current) || current.questionUid !== payload.questionUid || !(nonempty(current.content) || current.problemAssets?.length)
         || !Array.isArray(current.choices) || current.choices.some(choice => !nonempty(choice))
         || !nonempty(current.candidateRef?.path) || !Number.isSafeInteger(current.candidateRef?.bytes)
         || current.candidateRef.bytes < 0 || !HASH_PATTERN.test(current.candidateRef?.sha256)
@@ -88,8 +171,9 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
       if (!isObject(value)) return;
       if (typeof value.questionUid === 'string' && !visibleUids.includes(value.questionUid)) errors.push('NESTED_UNRELATED_UID_EXPOSURE');
       for (const [key, nested] of Object.entries(value)) {
+        if (/^(?:frozenU[123]|u[123](?:Output|Result|Evidence)|a1EvidenceSha|v[12]EvidenceSha|v1ContractSha|priorReview|previousVerdict)$/i.test(key)) errors.push(`CROSS_AUDITOR_OUTPUT_FORBIDDEN:${key}`);
         if ((forbidden[packet.phase] || []).some(word => key.toLowerCase().replace(/[^a-z]/g, '').includes(word.toLowerCase())) || ['U1','U2'].includes(packet.phase) && /verdict|rationale|hiddencontext|systemprompt|answerkey|expectedfact/i.test(key)) errors.push(`NESTED_BLIND_CONTEXT_LEAK:${key}`);
-        if (['U1', 'U2'].includes(packet.phase) && typeof nested === 'string' && /^\s*[\[{]/.test(nested)) {
+        if (typeof nested === 'string' && /^\s*[\[{]/.test(nested)) {
           try { walk(JSON.parse(nested)); } catch { /* Literal bracket-prefixed content is valid blind input. */ }
         }
         walk(nested);

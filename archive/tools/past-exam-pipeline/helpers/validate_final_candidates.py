@@ -12,6 +12,8 @@ DEFAULT_BATCH_DIR = Path("archive/_generated/past-exams/_batch")
 V2_EXTERNAL_STATUS = "external_agent_required"
 V2_ALLOWED_BLANK_ANSWER_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
 V2_ALLOWED_BLANK_SOLUTION_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
+SUBJECTIVE_QUESTION_TYPES = {"단답형", "서술형", "주관식", "short_answer", "essay", "subjective"}
+OBJECTIVE_QUESTION_TYPES = {"객관식", "objective", "multiple_choice"}
 PLACEHOLDER_RE = re.compile(
     r"Source\s+question\b.*\bunresolved|\[\s*판독불가\s*\]|dummy\s+question|placeholder|truncated\s+summary|요약문만|조건을\s*생략|추측\s*복원",
     re.IGNORECASE,
@@ -183,8 +185,9 @@ def serialization_issues(questions):
                 issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:CONTROL_CHARACTER")
             if value.count("$") % 2:
                 issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:ODD_MATH_DELIMITER")
-            if re.search(r"(?<!\\)\\(?:pi|sqrt|neq|not)\b", value):
-                issues.append(f"SERIALIZATION_FAIL:q{question.get('id')}:LATEX_ESCAPE")
+            # Candidate JS is parsed before this check. A decoded single backslash
+            # is the expected runtime representation of a valid LaTeX command;
+            # checking source escapes here would misclassify \sqrt, \pi, \neq, and \not.
             if PLACEHOLDER_RE.search(value):
                 issues.append(f"PLACEHOLDER_PAYLOAD:q{question.get('id')}")
     return sorted(set(issues))
@@ -216,6 +219,11 @@ def is_solution_required(question):
 
 
 def is_objective_question(question):
+    question_type = str(question.get("questionType") or "").strip()
+    if question_type in SUBJECTIVE_QUESTION_TYPES:
+        return False
+    if question_type in OBJECTIVE_QUESTION_TYPES:
+        return True
     source_label = str(question.get("sourceDisplayNoLabel") or question.get("sourceQuestionNo") or question.get("displayNo") or "")
     objective_cutoff = int(question.get("objectiveCutoff", 9999))
     if source_label.isdigit() and int(source_label) <= objective_cutoff:

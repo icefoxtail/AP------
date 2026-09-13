@@ -98,10 +98,10 @@ export function evidenceReuseMetrics(rows) {
 export const AXIS_REVIEW_BINDING = Object.freeze({
   SOURCE: ['U1', 'SOURCE_ONLY', 'NONE'], MATH_A1: ['U1', 'SOURCE_ONLY', 'NONE'],
   V1: ['U1', 'SOURCE_ONLY', 'NONE'], V2: ['U2', 'ARTIFACT_ONLY', 'NONE'],
-  MATH_A2: ['U3', 'FROZEN_V1_V2', 'FROZEN_U1_U2'],
-  SOLUTION: ['U3', 'FROZEN_V1_V2', 'FROZEN_U1_U2'],
-  V3: ['U3', 'FROZEN_V1_V2', 'FROZEN_U1_U2'],
-  RENDER_REVIEW: ['U3', 'ACTUAL_RENDER', 'CAPTURE_ONLY']
+  MATH_A2: ['U3', 'CANDIDATE_ONLY', 'NONE'],
+  SOLUTION: ['U3', 'CANDIDATE_ONLY', 'NONE'],
+  V3: ['U3', 'CANDIDATE_ONLY', 'NONE'],
+  RENDER_REVIEW: ['U3', 'CANDIDATE_ONLY', 'NONE']
 });
 const machineAxes = ['STATIC', 'METADATA', 'RENDER_CAPTURE'];
 export function validateMachineEvidence(evidence, run, { diagnostic = false } = {}) {
@@ -135,7 +135,7 @@ export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {
   switch (evidence.axis) {
     case 'SOURCE': hash('sourceTruthBundleSha'); text('fidelityRationale'); truth('sourceFidelityVerified'); break;
     case 'MATH_A1': text('independentAnswer'); text('independentDerivation'); truth('blindSolveFrozen'); truth('allChoicesChecked'); truth('answerUnique'); break;
-    case 'MATH_A2': hash('a1EvidenceSha'); text('answerComparison'); truth('allChoicesChecked'); truth('answerUnique'); break;
+    case 'MATH_A2': text('independentAnswer'); text('independentDerivation'); text('answerComparison'); truth('allChoicesChecked'); truth('answerUnique'); break;
     case 'SOLUTION': text('solutionRationale'); checks(['mathematicalCorrectness', 'logicalCompleteness', 'studentUnderstandability']); errors.push(...validateSolutionQuality(p.solutionQuality).errors); break;
     case 'METADATA': hash('metadataInputSha'); checks(['schema', 'uidBinding', 'curriculumBinding']); break;
     case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity', 'studentSerialization']); break;

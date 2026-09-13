@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "required": [
+    "pages"
+  ],
+  "properties": {
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "pageNo",
+          "questions"
+        ],
+        "properties": {
+          "pageNo": {
+            "type": "integer"
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "displayNo",
+                "questionType",
+                "content",
+                "choices",
+                "hasVisualAsset",
+                "visualAssetType",
+                "visualAssetBBox",
+                "reviewNeeded",
+                "reviewReason"
+              ],
+              "properties": {
+                "displayNo": {
+                  "type": "string"
+                },
+                "questionType": {
+                  "type": "string",
+                  "description": "객관식 or 서술형"
+                },
+                "content": {
+                  "type": "string"
+                },
+                "choices": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "hasVisualAsset": {
+                  "type": "boolean"
+                },
+                "visualAssetType": {
+                  "type": "string",
+                  "description": "graph|figure|table|diagram|image|none|unknown"
+                },
+                "visualAssetBBox": {
+                  "description": "page-coordinate bbox {x1,y1,x2,y2}; null if no visual asset"
+                },
+                "contentConfidence": {
+                  "type": "number"
+                },
+                "choicesConfidence": {
+                  "type": "number"
+                },
+                "visualAssetConfidence": {
+                  "type": "number"
+                },
+                "reviewNeeded": {
+                  "type": "boolean"
+                },
+                "reviewReason": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

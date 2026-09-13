@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "APMATH_PAST_EXAM_FINAL_CLOSURE_v1",
+  "examId": "20_매산고_2학기_중간_고1_기출",
+  "sourcePdf": "D:/기출/(3)2중간/수학(하)/2020_매산고1_2중간.pdf",
+  "sourcePdfSha256": "sha256:d5bd4973fa604cd9de5f606e5c29e3c8354cbe0203ceca99358d72fcca27f34f",
+  "candidate": {
+    "path": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/candidate/20_매산고_2학기_중간_고1_기출.candidate.js",
+    "sha256": "sha256:ed86303ef9a4f33432afc4528cad079ac4661050841874802a928a866a95afe2",
+    "questionCount": 20,
+    "status": "EXTRACTION_VALIDATED",
+    "issueCount": 0,
+    "prePromotionStatus": "BLOCKED"
+  },
+  "repairLineage": [
+    {
+      "commit": "ab9b39a53",
+      "status": "PASS",
+      "change": "Classify non-objective blank choices correctly."
+    },
+    {
+      "commit": "7fdac72b2",
+      "status": "PASS",
+      "change": "Accept decoded LaTeX in candidate validation."
+    },
+    {
+      "commit": "393877dda",
+      "status": "PASS",
+      "change": "Reconcile pre-dispatch holds and staging assets."
+    },
+    {
+      "commit": "7b03c100f",
+      "status": "PASS_TESTED_THEN_EXPOSED_NEXT_DEFECT",
+      "change": "Add explicit response-array item schemas."
+    },
+    {
+      "commit": "912f9b7fb",
+      "status": "PASS_TESTED_THEN_EXPOSED_NEXT_DEFECT",
+      "change": "Transport strict JSON-string items and normalize them back to objects."
+    },
+    {
+      "commit": "eac09c29e",
+      "status": "PASS_TESTED_THEN_EXPOSED_NEXT_DEFECT",
+      "change": "Recover completed turn final agent-message text."
+    },
+    {
+      "commit": "d5141e744",
+      "status": "PASS_TESTED",
+      "change": "Poll thread/turns/list history with full items."
+    }
+  ],
+  "latestFreshRun": {
+    "startSha": "d5141e744",
+    "workBatchId": "past20-maesan-repair-d5141e744d",
+    "runId": "past20-maesan-repair-d5141e744d",
+    "runInputSha": "sha256:f66742f7f51f8965b557af37b7bfa602324bf5571d0694dd32e7eca7e7f587ea",
+    "freezeSha": "sha256:ec42e88ef1ac604e0f33c47b1c961721d095ac20cd91b73129235369d4795aec",
+    "machineEvidenceStatus": "MACHINE_EVIDENCE_READY",
+    "machineCheckedQuestionCount": 20
+  },
+  "providerFinalAudit": {
+    "status": "FAILED",
+    "launchId": "past20-maesan-repair-d5141e744d:1",
+    "externalId": "01a09155-37d8-7171-a610-a441bcb453ca",
+    "phase": "U1",
+    "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+    "classification": "EXTERNAL_PROVIDER_TRANSPORT_OR_PROCESS_LOSS_NOT_CONFIRMED_AS_PIPELINE_DEFECT",
+    "retryPerformed": false,
+    "workBatchStatus": "HOLD",
+    "failureEvidence": "alive/runtime/provider-bridge/past20-maesan-repair-d5141e744d/provider-transport-failure.json",
+    "failureReceipt": "alive/runtime/provider-bridge/past20-maesan-repair-d5141e744d/provider-transport-failure-receipt.json",
+    "failureReceiptSha256": "sha256:66116fa473f9e2dc4b36f17852a585babfdfe0817cf389fde6004adfa6b7af8e"
+  },
+  "auditV2": {
+    "status": "BLOCKED",
+    "report": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/repair-d5141e744d-audit-v2.json",
+    "reportSha256": "sha256:ba4ca434b3eca1e2baa345129ff2dc9a6d53e2ad93f8ccaecb6681d69ad229c1",
+    "finalSemanticCoverage": 0
+  },
+  "wholeJobAudit": {
+    "status": "BLOCKED",
+    "report": "archive/_generated/past-exams/_manual/20_매산고_2학기_중간_고1_기출_fresh_393877dda/reports/repair-d5141e744d-work-batch-audit.json",
+    "reportSha256": "sha256:25be690f9e6096febf2f14e89b5e6b25f115bdb1b7923034ae3fa9e1afe3e4a9",
+    "finalCoverage": 0
+  },
+  "targetedRecheck": {
+    "status": "NOT_AUTHORIZED",
+    "reason": "FINAL_AUDIT did not complete and therefore produced no evidence-bound defect scope."
+  },
+  "render": {
+    "status": "NOT_TESTED",
+    "reason": "Playwright is unavailable and the prior CUA fallback was interrupted; no render PASS was claimed."
+  },
+  "productionClosure": {
+    "status": "NOT_AUTHORIZED",
+    "productionJsWritten": false,
+    "databaseUpdated": false,
+    "questionIndexUpdated": false,
+    "noGateRelaxation": true,
+    "noSyntheticPass": true,
+    "noDataManipulation": true
+  },
+  "finalClosure": {
+    "status": "BLOCKED",
+    "blockingCondition": "Provider FINAL_AUDIT transport/process loss remains external after all identified pipeline defects were repaired and tested.",
+    "futureAction": "Run a new fresh job only after external provider transport/process state changes."
+  }
+}
