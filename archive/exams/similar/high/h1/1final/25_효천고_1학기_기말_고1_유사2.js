@@ -156,13 +156,13 @@ window.questionBank = [
     "wide": false,
     "content": "세 실수 $a$, $b$, $c$에 대하여 두 행렬 $A=\\begin{pmatrix} a & b \\\\ b+c & 2 \\end{pmatrix}$, $B=\\begin{pmatrix} c+2 & a-1 \\\\ 5 & 2 \\end{pmatrix}$가 $A=B$를 만족할 때, $abc$의 값은?",
     "choices": [
+      "$24$",
       "$12$",
       "$18$",
-      "$24$",
       "$30$",
       "$36$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
@@ -436,13 +436,13 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표가 $0$과 $-4$이다. $h(x)=f(x)-g(x)$라 할 때, $-3\\leq x\\leq1$에서 $y=h(x)$의 최댓값과 최솟값의 차가 $18$이다. 이때 $h(x)$의 이차항 계수는? (단, 이차항 계수는 양수이다.)",
     "choices": [
+      "$2$",
       "$1$",
       "$\\dfrac{3}{2}$",
-      "$2$",
       "$\\dfrac{5}{2}$",
       "$3$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
@@ -465,12 +465,12 @@ window.questionBank = [
     "content": "$x$에 대한 연립부등식 $$\\begin{cases} x^2-5x+4<0 \\\\ x^2-bx+b-1>0 \\end{cases}$$을 만족시키는 정수 $x$가 정확히 $1$개가 되도록 하는 양의 정수 $b$의 개수는? (단, $b>1$)",
     "choices": [
       "$0$",
-      "$1$",
       "$2$",
       "$3$",
-      "$4$"
+      "$4$",
+      "$1$"
     ],
-    "answer": "②",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
