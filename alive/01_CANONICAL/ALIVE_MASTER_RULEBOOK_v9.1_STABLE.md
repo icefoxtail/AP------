@@ -244,7 +244,41 @@ V1-A와 완전 exact 계산 결과 충돌 → FAIL `COMPUTATIONAL_CONFLICT`.
 오답은 실제 오류 경로에서 생성한다. 단순 주변 수치 나열 금지.
 정답 1개, 오답 4개, 동일 의미 보기 없음, 보기 5개 전수 판정.
 
-정답번호 분산은 시험지 조립기 책임이며 ALIVE 생성 품질보다 우선하지 않는다.
+### ANSWER INDEX DISTRIBUTION CONTRACT (ACTIVE)
+
+정답번호 분산은 생성형 유사 시험지의 시험지 단위 ACTIVE 계약이며,
+시험지 조립기와 validator가 동일한 evaluator를 사용해 판정한다.
+정답값·오답값·문항 content·수학 풀이를 바꾸지 않고, 허용된 문항의 보기
+순서만 deterministic permutation할 수 있다.
+
+적용 대상은 `GENERATED_SIMILAR`, `GENERATED_CONFIRMATION`,
+`GENERATED_ADVANCED`이다. `original` 기출, 원본 보기 순서 보존 자료,
+`TYPE_CONFIRMATION`·`TYPE_ADVANCED` 유형은행, 단답형·서술형, image-only
+choices, 그리고 보기 순서에 semantic dependency가 있는 문항에는 적용하지
+않는다.
+
+유효 객관식은 5개 보기와 단일 answer index를 가진 문항이다.
+
+- 유효 객관식이 10개 이상이면 `max(count1..count5) - min(count1..count5) <= 2`,
+  동일 answer index 최대 2연속, 가능한 mutable 문항이 충분할 때 ①~⑤ 5종
+  사용을 모두 HARD로 요구한다.
+- 유효 객관식이 5~9개이면 동일 answer index 최대 2연속과 최소 3종 사용을
+  HARD로 요구하며, max-min은 advisory로 기록한다.
+- 유효 객관식이 5개 미만이면 분포 HARD gate를 적용하지 않고
+  `NOT_APPLICABLE_LOW_MCQ_COUNT`로 기록한다.
+- `choiceOrderMutable=false` 문항은 억지로 재배열하지 않는다. `orderedChoice`,
+  보기/선택지 자체의 순서 참조, image-only, shared-material option index
+  dependency는 immutable evidence로 남긴다. 일반적인 수치형 보기의 오름차순은
+  그 자체만으로 immutable이 아니다.
+- 시험지별 seed는 `relativeExamPath + "|ANSWER_INDEX_DISTRIBUTION_V1|" +
+  policyVersion`에서 결정론적으로 파생하며 `Math.random()`은 사용하지 않는다.
+
+HARD gate failure code는 `ANSWER_INDEX_DISTRIBUTION_EXCESS`,
+`ANSWER_INDEX_RUN_EXCESS`, `ANSWER_INDEX_VARIETY_INSUFFICIENT`,
+`ANSWER_INDEX_REPAIR_BLOCKED_IMMUTABLE`을 사용한다. 실제 permutation 시에는
+choices 집합·정답값·오답 유일성·content·image·metadata를 보존하고,
+solution의 정답번호 표현과 answer index를 하나의 변경 단위로 동기화한 뒤
+재검한다.
 
 ## 18. Visual Dependency
 

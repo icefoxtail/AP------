@@ -17,12 +17,12 @@ window.questionBank = [
     "content": "$(x+y+z)(a+b+c)-(x+y)(a+b)$를 전개하여 동류항을 정리했을 때, 생겨나는 서로 다른 항의 개수는? (단, $x, y, z, a, b, c$는 모두 서로 다른 문자이다.)",
     "choices": [
       "3",
-      "4",
       "5",
+      "4",
       "6",
       "7"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
@@ -45,12 +45,12 @@ window.questionBank = [
     "content": "1학년 학생 2명, 2학년 학생 3명, 3학년 학생 4명 중에서 학년에 관계없이 회장 1명, 부회장 1명, 서기 1명을 뽑는 경우의 수를 $a$, 3학년 학생 중에서만 회장, 부회장, 서기를 뽑는 경우의 수를 $b$라 할 때, $a-b$의 값은?",
     "choices": [
       "420",
-      "450",
       "480",
+      "450",
       "510",
       "540"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -129,12 +129,12 @@ window.questionBank = [
     "content": "이차함수 $y = x^2 - 2ax + 3a^2 - 8a + 15$의 최솟값을 $m$이라 할 때, $m$이 가질 수 있는 최솟값은? (단, $a$는 실수이다.)",
     "choices": [
       "3",
-      "5",
       "7",
+      "5",
       "9",
       "11"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -242,11 +242,11 @@ window.questionBank = [
     "choices": [
       "3",
       "4",
-      "5",
       "6",
-      "7"
+      "7",
+      "5"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
@@ -326,11 +326,11 @@ window.questionBank = [
     "choices": [
       "1",
       "2",
-      "3",
       "4",
-      "5"
+      "5",
+      "3"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
@@ -382,11 +382,11 @@ window.questionBank = [
     "choices": [
       "18",
       "22",
-      "26",
       "30",
-      "34"
+      "34",
+      "26"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-06-SYSTEM_OF_EQUATIONS",
     "subUnit": "system of equations",
@@ -410,11 +410,11 @@ window.questionBank = [
     "choices": [
       "288",
       "312",
-      "336",
       "360",
-      "384"
+      "384",
+      "336"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -494,11 +494,11 @@ window.questionBank = [
     "choices": [
       "-7",
       "-6",
-      "-5",
       "-4",
+      "-5",
       "-3"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
@@ -550,11 +550,11 @@ window.questionBank = [
     "choices": [
       "4",
       "6",
-      "8",
       "10",
+      "8",
       "12"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",

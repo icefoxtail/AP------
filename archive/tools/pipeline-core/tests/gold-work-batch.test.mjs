@@ -37,6 +37,14 @@ function benchmarkFixture(t, { jobKind = 'GOLD', pipeline = 'tag-enrichment', ru
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-gold-work-batch-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   execFileSync('git', ['clone', '--shared', '--no-checkout', '--branch', 'main', repository, '.'], { cwd: root, stdio: 'ignore' });
+  const fixtureOrigin = path.join(root, '.fixture-origin.git');
+  execFileSync('git', ['init', '--bare', fixtureOrigin], { stdio: 'ignore' });
+  const alternateObjects = path.join(fixtureOrigin, 'objects', 'info', 'alternates');
+  fs.mkdirSync(path.dirname(alternateObjects), { recursive: true });
+  fs.writeFileSync(alternateObjects, `${path.join(repository, '.git', 'objects').replaceAll('\\', '/')}\n`);
+  execFileSync('git', ['--git-dir', fixtureOrigin, 'update-ref', 'refs/heads/main', mainSha], { stdio: 'ignore' });
+  execFileSync('git', ['remote', 'set-url', 'origin', fixtureOrigin], { cwd: root, stdio: 'ignore' });
+  execFileSync('git', ['update-ref', 'refs/remotes/origin/main', mainSha], { cwd: root, stdio: 'ignore' });
 
   const write = (relative, value) => {
     const file = path.join(root, relative);
