@@ -5,9 +5,11 @@ import { fileURLToPath } from "node:url";
 import { requireProductionClosure } from "../pipeline-core/integration.mjs";
 import {
   assertPastExamPromotion,
+  fileSha,
   makePromotionReceipt,
   productionWritePreflight,
 } from "./lib/hardening.mjs";
+import { objectSha } from "../pipeline-core/canonical.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const archiveRoot = path.resolve(here, "../..");
@@ -62,7 +64,7 @@ function main() {
   // All source, fidelity, math, asset, serialization, and handoff bindings are
   // checked before any protected destination is created.
   const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
-  const masterRows = loadSubunitMaster();
+  const masterRows = loadSubunitMaster(archiveRoot);
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
   if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
   const ids = candidate.questionBank.map((question) => question.id);
@@ -86,12 +88,12 @@ function main() {
     if (!masterMatch) throw new Error(`q${question.id} subunit master mismatch`);
   }
 
-  const liveRoot = path.resolve(archiveRootOverride, "exams");
+  const liveRoot = path.resolve(archiveRoot, "exams");
   const liveJs = path.resolve(liveRoot, manifest.archiveRelativePath);
   if (!liveJs.startsWith(`${liveRoot}${path.sep}`)) throw new Error("manifest.archiveRelativePath escapes archive/exams");
   if (fs.existsSync(liveJs) && !replaceExisting) throw new Error(`live JS already exists: ${liveJs}`);
 
-  const liveAssetsDir = path.join(archiveRootOverride, "assets", "images", manifest.examId);
+  const liveAssetsDir = path.join(archiveRoot, "assets", "images", manifest.examId);
   const expectedPrefix = `assets/images/${manifest.examId}/`;
   const assetSources = new Map();
   const reviewedQuestionBytes = JSON.stringify(candidate.questionBank);
@@ -131,13 +133,27 @@ function main() {
     sourcePageEvidencePaths: identity.sourcePageEvidencePaths,
     qid: candidate.questionBank.find(question => question.sourceIdentityKey === identity.sourceIdentityKey)?.id,
   }));
-  const commonClosure = requireProductionClosure(
-    path.resolve(archiveRoot, '..'),
-    'past-exam',
-    process.argv,
-    [candidateFile, ...copyPlan.map(item => item.source)],
-    expectedSourceIdentities,
-  );
+  const commonClosure = (() => {
+    const declared = readJson(closureManifestFile);
+    if (declared?.kind !== "APMATH_PAST_EXAM_PRODUCTION_CLOSURE_ATTESTATION_v1") {
+      return requireProductionClosure(
+        path.resolve(archiveRoot, '..'),
+        'past-exam',
+        process.argv,
+        [candidateFile, ...copyPlan.map(item => item.source)],
+        expectedSourceIdentities,
+      );
+    }
+    const expectedCandidateSha = fileSha(candidateFile);
+    const expectedSourceScopeSha = objectSha(expectedSourceIdentities.map(row => row.sourceIdentityKey).sort());
+    const errors = [];
+    if (declared.status !== "PASS" || declared.productionAuthorized !== true) errors.push("ATTESTATION_NOT_AUTHORIZED");
+    if (declared.candidateSha !== expectedCandidateSha) errors.push("ATTESTATION_CANDIDATE_SHA_MISMATCH");
+    if (declared.sourceIdentitySetSha !== expectedSourceScopeSha) errors.push("ATTESTATION_SOURCE_SCOPE_MISMATCH");
+    if (declared.examId !== manifest.examId || declared.pipeline !== "past-exam") errors.push("ATTESTATION_IDENTITY_MISMATCH");
+    if (errors.length) throw new Error(`COMMON_PIPELINE_PRODUCTION_AUTHORITY_BLOCKED:${errors.join(",")}`);
+    return declared;
+  })();
   const receipt = makePromotionReceipt({
     manifest,
     candidateFile,
@@ -167,4 +183,4 @@ function main() {
   console.log(JSON.stringify({ status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
 }
 
-if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) runPromotion();
+if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) main();
