@@ -54,7 +54,8 @@ export async function collectProductionSmoke({ root, run, binding, transactionId
   const outputRelative = path.relative(rootPath, outputPath);
   if (!outputRelative || outputRelative.startsWith('..') || path.isAbsolute(outputRelative)) throw new Error('NON_CANONICAL_PATH');
   const captureOutputDirectory = outputRelative.split(path.sep).join('/');
-  const captureReport = await captureRender(rootPath, run, captureOutputDirectory, { channel });
+  const selectedChannel = channel || process.env.APMATH_BROWSER_CHANNEL || 'chrome';
+  const captureReport = await captureRender(rootPath, run, captureOutputDirectory, { channel: selectedChannel });
   const captures = (captureReport.captures || []).map(ref => ({ ref, capture: readJsonRef(rootPath, ref) }));
   const cases = captures.map(({ ref, capture }) => buildCase(ref, capture));
   const required = ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'];

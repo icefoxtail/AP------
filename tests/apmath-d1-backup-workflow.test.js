@@ -13,7 +13,8 @@ assert.match(workflow, /D1_BACKUP_BUCKET\.put\(objectKey, response\.body/);
 assert.match(workflow, /D1_BACKUP_API_TOKEN/);
 assert.doesNotMatch(workflow, /D1_BACKUP_API_TOKEN\s*[:=]\s*["'][^"']+["']/);
 assert.match(config, /"name":\s*"ap-math-os-d1-backup"/);
-assert.match(config, /"schedules":\s*\["0 18 \* \* \*"\]/);
+assert.doesNotMatch(config, /"schedules"\s*:/, 'backup Workflow must not use a paid-only schedule binding');
+assert.doesNotMatch(config, /"0 18 \* \* \*"/, 'backup cron is deferred on the Free plan');
 assert.match(config, /"bucket_name":\s*"apmath-d1-backups"/);
 
 console.log('apmath D1 backup workflow contract: ok');
