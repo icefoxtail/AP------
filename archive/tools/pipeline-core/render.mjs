@@ -105,7 +105,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
   try {
     await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
     const port = server.address().port;
-    browser = await chromium.launch({ channel, headless: true });
+    browser = await chromium.launch({ ...(channel ? { channel } : {}), headless: true });
     for (let index = 0; index < candidates.length; index++) {
       const candidatePath = candidates[index], sourceContext = { window: {} };
       vm.runInNewContext(readBoundFile(root, refByPath.get(candidatePath)).toString('utf8'), sourceContext, { timeout: 1000 });

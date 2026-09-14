@@ -240,7 +240,7 @@ function validateState(state, root = null) {
     if (root) {
       try {
         const receipt = JSON.parse(readBoundFile(root, state.reviewReadyRef).toString('utf8'));
-        check(validateReviewReady(receipt, { root }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
+        check(validateReviewReady(receipt, { root, validateAuthority: false }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
       } catch (error) {
         if (String(error.message || '').startsWith('HOLD:')) throw error;
         throw new Error('HOLD:REVIEW_READY_RECEIPT_INVALID');
@@ -645,6 +645,7 @@ export function markWorkBatchReviewReady(root, id, { reviewReadyRef = null, revi
     check(reviewReadyRef && /^sha256:[0-9a-f]{64}$/.test(reviewReadyRef.sha256 || '') && Number.isSafeInteger(reviewReadyRef.bytes) && nonempty(reviewReadyRef.path), 'REVIEW_READY_RECEIPT_REQUIRED');
     const receipt = JSON.parse(readBoundFile(root, reviewReadyRef).toString('utf8'));
     check(validateReviewReady(receipt, { root }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
+    check(receipt.finalAuditAuthority?.workBatchId === state.workBatchId && receipt.finalAuditAuthority?.runId === receipt.reviewReadyRunId && state.runIds.includes(receipt.finalAuditAuthority?.runId), 'REVIEW_READY_AUTHORITY_WORK_BATCH_MISMATCH');
     check(reviewReadySha === reviewReadyRef.sha256, 'REVIEW_READY_SHA_REF_MISMATCH');
     state.status = 'REVIEW_READY';
     state.reviewReadyRef = reviewReadyRef ? structuredClone(reviewReadyRef) : null;

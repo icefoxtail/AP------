@@ -251,6 +251,10 @@ export function registerApprovedExam({
   const target = normalizeExamFile(targetFile);
   if (normalizeExamFile(dbEntry.file) !== target) throw new Error('DB_TARGET_FILE_MISMATCH');
   if (dbEntry.examId && dbEntry.examId !== examId) throw new Error('DB_TARGET_EXAM_ID_MISMATCH');
+  if (promotion.targetFile !== target) throw new Error('PROMOTION_TARGET_FILE_MISMATCH');
+  if (normalizeExamFile(promotion.liveJs) !== normalizeExamFile('archive/exams/' + target)) throw new Error('PROMOTION_LIVE_JS_PATH_MISMATCH');
+  if (promotion.reviewReadyRunId !== reviewReady.reviewReadyRunId || promotion.revision !== reviewReady.revision || promotion.reviewReadySha !== reviewReady.reviewReadySha) throw new Error('PROMOTION_REVIEW_READY_LINEAGE_MISMATCH');
+  if (promotion.approvalSha256 !== objectSha(approval)) throw new Error('PROMOTION_APPROVAL_BINDING_MISMATCH');
   assertSha(expectedDbSha256, 'DB_BASELINE_SHA_REQUIRED');
   if (approval.dbBaselineSha256 !== expectedDbSha256) throw new Error('APPROVAL_DB_BASELINE_SHA_MISMATCH');
   const file = absolute(root, dbPath);
@@ -259,6 +263,8 @@ export function registerApprovedExam({
   if (bytesSha(beforeBytes) !== expectedDbSha256) throw new Error('DB_BASELINE_CHANGED');
   const before = readArchiveDb(file);
   const production = loadProductionBank(root, target);
+  const targetProductionSha256 = bytesSha(fs.readFileSync(production.file));
+  if (targetProductionSha256 !== reviewReady.candidateSha256 || promotion.liveJsSha256 !== targetProductionSha256) throw new Error('PROMOTION_LIVE_JS_SHA_MISMATCH');
   if (Number(dbEntry.qCount) !== production.bank.length) throw new Error('DB_TARGET_QCOUNT_MISMATCH');
   const currentEntries = before.mainDB.exams;
   const existing = currentEntries.findIndex(entry => normalizeExamFile(entry.file) === target);
@@ -270,7 +276,7 @@ export function registerApprovedExam({
   const afterData = { ...before, mainDB: { ...before.mainDB, exams: afterEntries } };
   if (write && canonicalJson(before.mainDB.exams) !== canonicalJson(afterData.mainDB.exams)) atomicReplace(file, serializeDb(afterData));
   const afterBytes = fs.readFileSync(file);
-  return {
+  const payload = {
     schemaVersion: REGISTER_APPROVED_EXAM_VERSION,
     status: 'PASS',
     phase: 'REGISTER_APPROVED_EXAM',
@@ -279,11 +285,20 @@ export function registerApprovedExam({
     dbPath,
     reviewReadyRunId: reviewReady.reviewReadyRunId,
     approvalStatus: approval.approvalStatus,
+    revision: reviewReady.revision,
+    reviewReadySha: reviewReady.reviewReadySha,
+    approvalSha256: objectSha(approval),
+    promotionSha256: promotion.promotionSha256 || null,
+    approvedCandidateSha256: reviewReady.candidateSha256,
+    targetProductionSha256,
+    questionCount: production.questionCount,
+    dbEntrySha256: objectSha(dbEntry),
     beforeSha256: bytesSha(beforeBytes),
     afterSha256: bytesSha(afterBytes),
     delta,
     changed: bytesSha(beforeBytes) !== bytesSha(afterBytes),
   };
+  return { ...payload, registrationSha: objectSha(payload) };
 }
 
 export function rebuildApprovedIndex({
@@ -299,12 +314,26 @@ export function rebuildApprovedIndex({
   if (!root || !examId || !targetFile || !dbEntry) throw new Error('INDEX_REBUILD_INPUT_REQUIRED');
   if (registration?.status !== 'PASS' || registration.phase !== 'REGISTER_APPROVED_EXAM' || registration.approvalStatus !== 'APPROVED' || !registration.reviewReadyRunId) throw new Error('INDEX_BEFORE_REGISTRATION_FORBIDDEN');
   const target = normalizeExamFile(targetFile);
+  if (registration.examId !== examId || normalizeExamFile(registration.targetFile) !== target) throw new Error('REGISTRATION_TARGET_LINEAGE_MISMATCH');
+  if (!Number.isSafeInteger(registration.revision) || registration.revision < 1 || registration.approvedCandidateSha256 !== registration.targetProductionSha256) throw new Error('REGISTRATION_LINEAGE_BINDING_REQUIRED');
+  const { registrationSha: ignoredRegistrationSha, ...registrationPayload } = registration;
+  if (!registration.registrationSha || registration.registrationSha !== objectSha(registrationPayload)) throw new Error('REGISTRATION_RECEIPT_SHA_MISMATCH');
   assertSha(expectedIndexSha256, 'INDEX_BASELINE_SHA_REQUIRED');
   const file = absolute(root, indexPath);
   if (repoRelative(root, indexPath) !== 'archive/question-index.js') throw new Error('INDEX_WRITE_ALLOWLIST_TARGET_INVALID');
   const beforeBytes = fs.readFileSync(file);
   if (bytesSha(beforeBytes) !== expectedIndexSha256) throw new Error('INDEX_BASELINE_CHANGED');
   const beforeRows = readQuestionIndex(file);
+  const currentDbBytes = fs.readFileSync(absolute(root, 'archive/db.js'));
+  if (bytesSha(currentDbBytes) !== registration.afterSha256) throw new Error('REGISTRATION_DB_AFTER_SHA_MISMATCH');
+  const currentDbEntry = loadTargetDbEntry(root, 'archive/db.js', target);
+  if (!currentDbEntry || objectSha(currentDbEntry) !== registration.dbEntrySha256) throw new Error('REGISTRATION_DB_TARGET_BINDING_MISMATCH');
+  if (normalizeExamFile(currentDbEntry.file) !== target) throw new Error('REGISTRATION_DB_TARGET_FILE_MISMATCH');
+  if (Number(currentDbEntry.qCount) !== registration.questionCount) throw new Error('REGISTRATION_DB_TARGET_QCOUNT_MISMATCH');
+  if (objectSha(dbEntry) !== registration.dbEntrySha256) throw new Error('REGISTRATION_DB_ENTRY_REPLAY_MISMATCH');
+  const currentProduction = loadProductionBank(root, target);
+  const currentProductionSha256 = bytesSha(fs.readFileSync(currentProduction.file));
+  if (currentProductionSha256 !== registration.targetProductionSha256 || currentProductionSha256 !== registration.approvedCandidateSha256) throw new Error('REGISTRATION_TARGET_PRODUCTION_SHA_MISMATCH');
   const targetBuild = buildTargetIndexRows(root, target, dbEntry);
   const withoutTarget = beforeRows.filter(row => normalizeExamFile(row.sourceFile) !== target);
   const firstTarget = beforeRows.findIndex(row => normalizeExamFile(row.sourceFile) === target);
@@ -319,13 +348,18 @@ export function rebuildApprovedIndex({
   assertRegistrationWriteScope(root, [indexPath], { dbPath: indexPath, indexPath });
   if (write && canonicalJson(beforeRows) !== canonicalJson(afterRows)) atomicReplace(file, serializeIndex(afterRows));
   const afterBytes = fs.readFileSync(file);
-  return {
+  const payload = {
     schemaVersion: INDEX_REBUILD_VERSION,
     status: 'PASS',
     phase: 'INDEX_REBUILD',
     examId,
     targetFile: target,
     indexPath,
+    reviewReadyRunId: registration.reviewReadyRunId,
+    revision: registration.revision,
+    registrationSha: registration.registrationSha,
+    approvedCandidateSha256: registration.approvedCandidateSha256,
+    dbAfterSha256: registration.afterSha256,
     questionCount: targetBuild.questionCount,
     beforeSha256: bytesSha(beforeBytes),
     afterSha256: bytesSha(afterBytes),
@@ -333,6 +367,7 @@ export function rebuildApprovedIndex({
     changed: bytesSha(beforeBytes) !== bytesSha(afterBytes),
     targetRows: targetBuild.rows,
   };
+  return { ...payload, indexReceiptSha: objectSha(payload) };
 }
 
 export function loadTargetDbEntry(root, dbPath, targetFile) {

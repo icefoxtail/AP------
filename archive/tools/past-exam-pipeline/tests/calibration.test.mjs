@@ -79,7 +79,7 @@ test('runOneExam stops before creating a candidate directory without calibration
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'past-start-gate-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const out = path.join(root, 'must-not-exist');
-  await assert.rejects(runOneExam({ generatedRoot: root, archiveRoot: root }, { examId: 'target', year: 2026, schoolName: '테스트고', grade: '고1', semester: '1', examType: 'final', outputDir: out }), /BUILDER_START_BLOCKED/);
+  await assert.rejects(runOneExam({ generatedRoot: root, archiveRoot: root }, { examId: 'target', year: 2026, schoolName: '테스트고', grade: '고1', semester: '1', examType: 'final', course: '공통수학1', outputDir: out }), /BUILDER_START_BLOCKED/);
   assert.equal(fs.existsSync(out), false);
 });
 

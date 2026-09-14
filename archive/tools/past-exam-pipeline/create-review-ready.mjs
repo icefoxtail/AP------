@@ -46,6 +46,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       renderCases: readJson(arg("--render-cases")),
       gateStatuses: readJson(arg("--gates")),
       finalClosureRef: fileRef(root, path.relative(root, path.resolve(finalClosurePath)).split(path.sep).join("/")),
+      finalAuditAuthority: process.argv.includes("--final-audit-authority") ? readJson(arg("--final-audit-authority")) : null,
       openDefectCount: Number(optionalArg("--open-defect-count") || 0),
       telemetry: process.argv.includes("--telemetry") ? readJson(arg("--telemetry")) : null,
     });

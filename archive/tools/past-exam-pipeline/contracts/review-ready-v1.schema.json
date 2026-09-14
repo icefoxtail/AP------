@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "APMATH_REVIEW_READY_v1",
   "type": "object",
-  "required": ["schemaVersion", "state", "status", "productionAuthorized", "examId", "reviewReadyRunId", "revision", "candidateRef", "candidateSha256", "assetRefs", "assetBindings", "stagedAssetSetSha256", "finalClosureRef", "finalClosureRefSha256", "finalClosureSha", "finalAuditClosureRef", "requiredRenderCases", "gateStatuses", "openDefectCount", "renderCases", "telemetry", "reviewReadySha"],
+  "required": ["schemaVersion", "state", "status", "productionAuthorized", "examId", "reviewReadyRunId", "revision", "candidateRef", "candidateSha256", "assetRefs", "assetBindings", "stagedAssetSetSha256", "finalClosureRef", "finalClosureRefSha256", "finalClosureSha", "finalAuditClosureRef", "finalAuditAuthority", "finalAuditAuthoritySha", "requiredRenderCases", "gateStatuses", "openDefectCount", "renderCases", "telemetry", "reviewReadySha"],
   "properties": {
     "schemaVersion": {"const": "APMATH_REVIEW_READY_v1"},
     "state": {"const": "REVIEW_READY"},
@@ -20,6 +20,8 @@
     "finalClosureRefSha256": {"$ref": "#/$defs/sha"},
     "finalClosureSha": {"$ref": "#/$defs/sha"},
     "finalAuditClosureRef": {"$ref": "#/$defs/fileRef"},
+    "finalAuditAuthority": {"type": "object", "required": ["schemaVersion", "status", "examId", "workBatchId", "workBatchRef", "runId", "runRef", "freezeSha", "revision", "inputSha", "candidateRef", "candidateSha256", "assetRefs", "assetSetSha256", "launchId", "providerReceiptRef", "phaseAttestationRefs", "phaseEvidenceRefs", "finalAuditRef", "canonicalClosureRef", "authoritySha"], "properties": {"schemaVersion": {"const": "APMATH_FINAL_AUDIT_AUTHORITY_v1"}, "status": {"const": "PASS"}, "examId": {"type": "string", "minLength": 1}, "workBatchId": {"type": "string", "minLength": 1}, "workBatchRef": {"$ref": "#/$defs/fileRef"}, "runId": {"type": "string", "minLength": 1}, "runRef": {"$ref": "#/$defs/fileRef"}, "freezeSha": {"$ref": "#/$defs/sha"}, "revision": {"type": "integer", "minimum": 1}, "inputSha": {"$ref": "#/$defs/sha"}, "candidateRef": {"$ref": "#/$defs/fileRef"}, "candidateSha256": {"$ref": "#/$defs/sha"}, "assetRefs": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}}, "assetSetSha256": {"$ref": "#/$defs/sha"}, "launchId": {"type": "string", "minLength": 1}, "providerReceiptRef": {"$ref": "#/$defs/fileRef"}, "phaseAttestationRefs": {"type": "array", "minItems": 3}, "phaseEvidenceRefs": {"type": "array", "minItems": 3, "items": {"type": "object", "required": ["phase", "evidenceRefs"], "properties": {"phase": {"type": "string"}, "evidenceRefs": {"type": "array", "items": {"$ref": "#/$defs/fileRef"}}}, "additionalProperties": true}}, "finalAuditRef": {"$ref": "#/$defs/fileRef"}, "canonicalClosureRef": {"$ref": "#/$defs/fileRef"}, "authoritySha": {"$ref": "#/$defs/sha"}}, "additionalProperties": true},
+    "finalAuditAuthoritySha": {"$ref": "#/$defs/sha"},
     "requiredRenderCases": {"const": ["exam/desktop", "exam/mobile", "solution/desktop", "solution/mobile", "answer/desktop", "answer/mobile"]},
     "gateStatuses": {"type": "object", "additionalProperties": {"const": "PASS"}},
     "openDefectCount": {"const": 0},

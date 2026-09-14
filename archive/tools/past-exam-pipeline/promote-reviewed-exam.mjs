@@ -5,8 +5,9 @@ import { fileURLToPath } from "node:url";
 
 import { assertPastExamPromotion, productionWritePreflight } from "./lib/hardening.mjs";
 import { assertExternalApproval } from "./lib/release-authority.mjs";
-import { assertProductionPayloadClean, assertPromotionWriteScope, assertStagingOutput, readActualRef } from "./lib/production-boundary.mjs";
+import { assetSetSha, assertProductionPayloadClean, assertPromotionWriteScope, assertStagingOutput, readActualRef } from "./lib/production-boundary.mjs";
 import { assertReviewReady } from "./lib/review-ready.mjs";
+import { objectSha, bytesSha } from "../pipeline-core/canonical.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(here, "../../..");
@@ -126,17 +127,27 @@ export function promoteApprovedExam({
   }
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
   fs.copyFileSync(candidateFile, liveJs);
-  return {
+  const liveJsSha256 = bytesSha(fs.readFileSync(liveJs));
+  if (liveJsSha256 !== reviewReady.candidateSha256 || liveJsSha256 !== hardening.candidateSha) throw new Error("PROMOTION_LIVE_JS_SHA_MISMATCH");
+  const payload = {
     status: "PROMOTED",
     productionAuthorized: false,
     examId: manifest.examId,
+    reviewReadyRunId: reviewReady.reviewReadyRunId,
+    revision: reviewReady.revision,
+    reviewReadySha: reviewReady.reviewReadySha,
+    approvalSha256: objectSha(approval),
+    targetFile: manifest.archiveRelativePath.replaceAll("\\", "/"),
     liveJs: relative(repoRoot, liveJs),
+    liveJsSha256,
     liveAssetsDir: relative(repoRoot, liveAssetsDir),
     questionCount: candidate.questionBank.length,
     assetCount: copyPlan.length,
     candidateSha256: hardening.candidateSha,
+    assetSetSha256: assetSetSha(copyPlan.map(item => item.approvedRef)),
     changedPaths,
   };
+  return { ...payload, promotionSha256: objectSha(payload) };
 }
 
 function main() {

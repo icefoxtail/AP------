@@ -2,19 +2,44 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { resumePastExam } from '../../past-exam-pipeline/resume-past-exam.mjs';
-import { createReviewReady } from '../../past-exam-pipeline/lib/review-ready.mjs';
+import { fileRef, objectSha } from '../canonical.mjs';
+import { runInputSha } from '../closure.mjs';
 import { recoveryFixture } from './recovery-fixture.mjs';
+import { makeReviewReadyFromCompletedState } from '../../past-exam-pipeline/tests/release-authority-fixture.mjs';
+
+function attachClosure(f, generated, relative) {
+  const candidateRef = generated.run.inputs.find(ref => ref.role === 'candidate');
+  const uid = generated.run.questions[0].questionUid;
+  const requiredCases = ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'];
+  const payload = { schemaVersion: 'APMATH_EXAM_RELEASE_CLOSURE_v1', runId: generated.run.runId, revision: generated.run.revision, applicability: 'REQUIRED', qualityClosureSetSha: null, questionUids: [uid], questionUidSetSha: objectSha([uid]), candidateRefs: [candidateRef], assetRefs: [], runtimeBundleSha: null, requiredCases, cases: requiredCases.map(caseKey => ({ caseKey, captureEvidenceId: `capture:${caseKey}`, reviewEvidenceId: `review:${caseKey}` })), actualCases: requiredCases, currentRunInputSha: generated.run.inputSha, productionAuthorized: false, status: 'PASS' };
+  const closure = { ...payload, closureSha: objectSha(payload) };
+  const closureRef = f.write(relative, closure);
+  const run = { ...generated.run, examReleaseClosureRef: closureRef };
+  run.inputSha = runInputSha(run);
+  const ref = f.write(relative.replace(/closure\.json$/, 'run.json'), run);
+  return { ...generated, run, ref, closure, closureRef };
+}
+
+function candidateQuestions(root, run) {
+  const context = { window: {} };
+  const ref = run.inputs.find(item => item.role === 'candidate' && item.path === run.questions[0].candidatePath);
+  vm.runInNewContext(fs.readFileSync(path.join(root, ref.path), 'utf8'), context);
+  return context.window.questionBank;
+}
 
 test('one-pass resume runner connects provider review, route handler, repair, and targeted recheck', async t => {
   const f = recoveryFixture(t, { pipeline: 'past-exam', revisionMutation: 'solution', currentPassAxes: ['SOURCE', 'MATH_A1', 'MATH_A2', 'V1'] });
-  const first = f.makeRun(1);
-  const second = f.makeRun(2);
+  const first = attachClosure(f, f.makeRun(1), 'review/first-closure.json');
+  const second = attachClosure(f, f.makeRun(2), 'review/second-closure.json');
   const phaseLog = path.join(f.root, 'phase-calls.json');
   const axisLog = path.join(f.root, 'phase-axes.json');
   const transport = f.write('transport.mjs', `
     import fs from 'node:fs';
     const request = JSON.parse(fs.readFileSync(0, 'utf8'));
+    const firstInputSha = ${JSON.stringify(first.run.inputSha)};
+    const secondInputSha = ${JSON.stringify(second.run.inputSha)};
     if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
       process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'READY', requestSha: request.requestSha, provider: 'synthetic', model: 'synthetic', externalTaskId: 'external-' + request.launchId, auditorId: 'auditor-' + request.launchId, auditorSessionId: 'auditor-session-' + request.launchId, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, runtimeAttestation: 'synthetic', contexts: { U1: { sessionId: request.launchId + '-u1', contextId: request.launchId + '-c1' }, U2: { sessionId: request.launchId + '-u2', contextId: request.launchId + '-c2' }, U3: { sessionId: request.launchId + '-u3', contextId: request.launchId + '-c3' } } }));
     } else {
@@ -26,41 +51,31 @@ test('one-pass resume runner connects provider review, route handler, repair, an
       const axes = fs.existsSync(axisLog) ? JSON.parse(fs.readFileSync(axisLog, 'utf8')) : [];
       axes.push({ phase: request.phase, targetedAxes: request.targetedAxes });
       fs.writeFileSync(axisLog, JSON.stringify(axes));
+      const firstLaunch = request.logicalLaunchId.endsWith(':1');
+      const runInputSha = firstLaunch ? firstInputSha : secondInputSha;
+      const revision = firstLaunch ? 1 : 2;
+      const item = Array.isArray(request.packet.payload) ? request.packet.payload[0] : request.packet.payload;
+      const axis = { U1: 'SOURCE', U2: 'V2', U3: 'SOLUTION' }[request.phase];
+      const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: request.logicalLaunchId + '-' + request.phase + '-evidence', runId: 'run', revision, questionUid: item.questionUid, axis, inputSha: runInputSha, axisInputSha: 'sha256:' + 'a'.repeat(64), mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'auditor-' + request.logicalLaunchId, reviewSessionId: request.packet.auditorSessionId, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: request.packet.inputVisibilityProfile, findings: [], reviewIsolationProvenanceSha: request.packet.packetSha, launchId: request.logicalLaunchId, externalTaskId: request.externalTaskId, reviewStartInputSha: runInputSha, reviewEndInputSha: runInputSha, withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', payload: { independentAnswer: '1' } };
       const defects = request.logicalLaunchId.endsWith(':1') && request.phase === 'U3' ? [{ runId: 'run', questionUid: 'recovery|1', type: 'CANDIDATE_MATH_DEFECT', defectClass: 'CANDIDATE_MATH_DEFECT', reason: 'synthetic repair' }] : [];
-      process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 0, evidence: [], defects }));
+      process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: 'NONE', subagentToolsEnabled: false, usedTokens: 0, evidence: [evidence], defects }));
     }
   `);
-  const finalClosureRef = f.write('review/final-closure.json', { status: 'PASS', productionAuthorized: false });
-  const candidateRef = first.run.inputs.find(ref => ref.role === 'candidate');
-  const ready = createReviewReady({
-    root: f.root,
-    run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'recovery', runId: 'review-ready', revision: 1 },
-    closure: { status: 'PASS', productionAuthorized: false },
-    finalAudit: { status: 'PASS' },
-    candidateRef,
-    assetRefs: [],
-    candidateQuestions: [{ id: 1, visualNeed: 'NONE', content: 'Find the value.', choices: ['1', '2'], answer: '1', solution: 'The answer is 1.' }],
-    baselineQuestions: [],
-    renderCases: ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'].map(caseKey => ({ caseKey, status: 'PASS' })),
-    gateStatuses: { sourceFidelity: 'PASS', math: 'PASS', solutionQuality: 'PASS', visual: 'PASS', metadata: 'PASS', finalAudit: 'PASS', render: 'PASS' },
-    finalClosureRef,
-    openDefectCount: 0,
-  });
-  assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready.errors));
-  const reviewReadyRef = f.write('review/review-ready.json', ready);
   const result = await resumePastExam(f.root, {
     workBatchId: 'job',
     runRefs: [first.ref],
     providerCommand: process.execPath,
     providerArgs: [path.join(f.root, transport.path)],
-    reviewReadyRef,
-    reviewReadySha: reviewReadyRef.sha256,
     maxSteps: 12,
     handlers: {
       CANDIDATE_REPAIR: ({ defects }) => ({ route: 'CANDIDATE_REPAIR', repairRequest: { iteration: 1, revision: second.run.revision, inputSha: second.run.inputSha, dispositions: defects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' })), builderId: 'builder', builderSessionId: 'builder-session', runRefs: [second.ref] } }),
     },
+    closureHandler: ({ state }) => {
+      const ready = makeReviewReadyFromCompletedState({ root: f.root, state, runRef: second.ref, closure: second.closure, closureRef: second.closureRef, examId: 'recovery', candidateQuestions: candidateQuestions(f.root, second.run), outputPath: 'review/review-ready.json' });
+      return { status: 'PASS', productionAuthorized: false, reviewReadyRef: ready.readyRef, reviewReadySha: ready.readyRef.sha256 };
+    },
   });
-  assert.equal(result.status, 'REVIEW_READY');
+  assert.equal(result.status, 'REVIEW_READY', JSON.stringify(result));
   assert.equal(result.state.status, 'REVIEW_READY');
   assert.equal(result.state.productionAuthorized, false);
   assert.ok(result.history.some(row => row.action === 'FINAL_AUDIT'));
@@ -82,44 +97,31 @@ test('one-pass resume runner connects provider review, route handler, repair, an
 
 test('targeted recheck merges reused U1 evidence with fresh U3 evidence and preserves answer conflicts', async t => {
   const f = recoveryFixture(t, { pipeline: 'past-exam', revisionMutation: 'solution', currentPassAxes: ['MATH_A1'], currentPassAnswers: { MATH_A1: '2' } });
-  const first = f.makeRun(1);
-  const second = f.makeRun(2);
+  const first = attachClosure(f, f.makeRun(1), 'conflict-review/first-closure.json');
+  const second = attachClosure(f, f.makeRun(2), 'conflict-review/second-closure.json');
   const transport = f.write('conflict-transport.mjs', `
     import fs from 'node:fs';
     const request = JSON.parse(fs.readFileSync(0, 'utf8'));
+    const firstInputSha = ${JSON.stringify(first.run.inputSha)};
+    const secondInputSha = ${JSON.stringify(second.run.inputSha)};
     if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
       process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'READY', requestSha: request.requestSha, provider: 'synthetic', model: 'synthetic', externalTaskId: 'external-' + request.launchId, auditorId: 'auditor-' + request.launchId, auditorSessionId: 'auditor-session-' + request.launchId, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, runtimeAttestation: 'synthetic', contexts: { U1: { sessionId: request.launchId + '-u1', contextId: request.launchId + '-c1' }, U2: { sessionId: request.launchId + '-u2', contextId: request.launchId + '-c2' }, U3: { sessionId: request.launchId + '-u3', contextId: request.launchId + '-c3' } } }));
     } else {
-      const evidence = request.logicalLaunchId.endsWith(':2') && request.phase === 'U3' ? [{ schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: 'fresh-u3-answer', runId: 'run', questionUid: 'recovery|1', axis: 'MATH_A2', status: 'PASS', payload: { independentAnswer: '3' } }] : [];
+      const firstLaunch = request.logicalLaunchId.endsWith(':1');
+      const runInputSha = firstLaunch ? firstInputSha : secondInputSha;
+      const revision = firstLaunch ? 1 : 2;
+      const item = Array.isArray(request.packet.payload) ? request.packet.payload[0] : request.packet.payload;
+      const axis = request.phase === 'U1' ? 'MATH_A1' : request.phase === 'U2' ? 'V2' : 'MATH_A2';
+      const evidence = [{ schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: request.logicalLaunchId + '-' + request.phase + '-evidence', runId: 'run', revision, questionUid: item.questionUid, axis, inputSha: runInputSha, axisInputSha: 'sha256:' + 'a'.repeat(64), mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'auditor-' + request.logicalLaunchId, reviewSessionId: request.packet.auditorSessionId, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: request.packet.inputVisibilityProfile, findings: [], reviewIsolationProvenanceSha: request.packet.packetSha, launchId: request.logicalLaunchId, externalTaskId: request.externalTaskId, reviewStartInputSha: runInputSha, reviewEndInputSha: runInputSha, withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', payload: { independentAnswer: request.logicalLaunchId.endsWith(':2') && request.phase === 'U3' ? '3' : '1' } }];
       const defects = request.logicalLaunchId.endsWith(':1') && request.phase === 'U3' ? [{ runId: 'run', questionUid: 'recovery|1', type: 'CANDIDATE_MATH_DEFECT', defectClass: 'CANDIDATE_MATH_DEFECT', reason: 'synthetic repair' }] : [];
       process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 0, evidence, defects }));
     }
   `);
-  const finalClosureRef = f.write('conflict-review/final-closure.json', { status: 'PASS', productionAuthorized: false });
-  const candidateRef = first.run.inputs.find(ref => ref.role === 'candidate');
-  const ready = createReviewReady({
-    root: f.root,
-    run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'recovery', runId: 'review-ready-conflict', revision: 1 },
-    closure: { status: 'PASS', productionAuthorized: false },
-    finalAudit: { status: 'PASS' },
-    candidateRef,
-    assetRefs: [],
-    candidateQuestions: [{ id: 1, visualNeed: 'NONE', content: 'Find the value.', choices: ['1', '2'], answer: '1', solution: 'The answer is 1.' }],
-    baselineQuestions: [],
-    renderCases: ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'].map(caseKey => ({ caseKey, status: 'PASS' })),
-    gateStatuses: { sourceFidelity: 'PASS', math: 'PASS', solutionQuality: 'PASS', visual: 'PASS', metadata: 'PASS', finalAudit: 'PASS', render: 'PASS' },
-    finalClosureRef,
-    openDefectCount: 0,
-  });
-  assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready.errors));
-  const reviewReadyRef = f.write('conflict-review/review-ready.json', ready);
   const result = await resumePastExam(f.root, {
     workBatchId: 'job',
     runRefs: [first.ref],
     providerCommand: process.execPath,
     providerArgs: [path.join(f.root, transport.path)],
-    reviewReadyRef,
-    reviewReadySha: reviewReadyRef.sha256,
     maxSteps: 12,
     handlers: {
       CANDIDATE_REPAIR: ({ defects }) => ({ route: 'CANDIDATE_REPAIR', repairRequest: { iteration: 1, revision: second.run.revision, inputSha: second.run.inputSha, dispositions: defects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' })), builderId: 'builder', builderSessionId: 'builder-session', runRefs: [second.ref] } }),
