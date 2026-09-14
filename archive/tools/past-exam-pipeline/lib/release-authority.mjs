@@ -5,7 +5,7 @@ import { aggregateWorkBatchAudit, freezeInputSha, readWorkBatch, reviewScopeForP
 import { RELEASE_CASES, validateExamReleaseClosure } from '../../pipeline-core/exam-release.mjs';
 import { validateQuestionQualityClosureSet } from '../../pipeline-core/question-quality-set.mjs';
 import { auditV2Run } from '../../pipeline-core/v2-audit.mjs';
-import { validateCanonicalAuditSnapshot } from '../../pipeline-core/canonical-audit-authority.mjs';
+import { evaluateCanonicalAuditOnce } from '../../pipeline-core/canonical-audit-authority.mjs';
 import { validateRenderReviewReuseReceipt } from '../../pipeline-core/render-impact.mjs';
 
 export const EXTERNAL_APPROVAL_SCHEMA = 'APMATH_FINAL_EXTERNAL_APPROVAL_v1';
@@ -359,19 +359,11 @@ export function validateCanonicalFinalAuditAuthority(root, { authority, expected
       if (!isObject(run.uidAuthority)) errors.push('FINAL_AUDIT_AUTHORITY_UID_AUTHORITY_REQUIRED');
       if (!isObject(run.questionQualityClosureSetRef) || !nonempty(run.questionQualityClosureSetRef.path)) errors.push('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_REF_REQUIRED');
       try {
-        if (authority.canonicalAuditSnapshotRef) {
-          const snapshotLoaded = readAuthorityRef(root, authority, 'canonicalAuditSnapshotRef', errors, { json: true });
-          const checked = snapshotLoaded && validateCanonicalAuditSnapshot(root, snapshotLoaded.ref, { run, audit, authority });
-          if (!checked || checked.status !== 'PASS') {
-            errors.push(...(checked?.errors || ['FINAL_AUDIT_AUTHORITY_CANONICAL_SNAPSHOT_INVALID']));
-            if (checked?.errors?.includes('CANONICAL_AUDIT_SNAPSHOT_IDENTITY_MISMATCH') || checked?.errors?.includes('CANONICAL_AUDIT_SNAPSHOT_AUDIT_PARITY_INVALID')) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID');
-          }
-          else canonicalAudit = checked.snapshot.audit;
-        } else {
-          canonicalAudit = auditV2Run(root, run);
-          if (canonicalJson(canonicalAudit) !== canonicalJson(audit)) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID');
-          if (canonicalAudit.status !== 'PASS') errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_NOT_PASS');
-        }
+        const snapshotLoaded = authority.canonicalAuditSnapshotRef ? readAuthorityRef(root, authority, 'canonicalAuditSnapshotRef', errors, { json: true }) : null;
+        const evaluated = evaluateCanonicalAuditOnce(root, run, { snapshotRef: snapshotLoaded?.ref || null, authority, evaluator: auditV2Run });
+        canonicalAudit = evaluated.audit;
+        if (canonicalJson(canonicalAudit) !== canonicalJson(audit)) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID');
+        if (canonicalAudit.status !== 'PASS') errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_NOT_PASS');
       } catch (error) {
         errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_ERROR:' + error.message);
       }

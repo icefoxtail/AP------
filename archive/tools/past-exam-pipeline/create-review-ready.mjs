@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { fileRef } from "../pipeline-core/canonical.mjs";
+import { canonicalJson, fileRef, objectSha } from "../pipeline-core/canonical.mjs";
+import { evaluateCanonicalAuditOnce, writeCanonicalAuditSnapshot } from "../pipeline-core/canonical-audit-authority.mjs";
 import { createReviewReady, writeReviewReady } from "./lib/review-ready.mjs";
 
 function arg(name) {
@@ -33,11 +34,27 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const root = process.cwd();
     const candidatePath = arg("--candidate");
     const finalClosurePath = arg("--final-closure");
+    const run = readJson(arg("--run"));
+    const finalAudit = readJson(arg("--final-audit"));
+    let finalAuditAuthority = process.argv.includes("--final-audit-authority") ? readJson(arg("--final-audit-authority")) : null;
+    if (finalAuditAuthority) {
+      const snapshotPath = `alive/runtime/canonical-audits/${run.runId}-r${run.revision}-${String(finalAudit.inputSha || 'unknown').replace(/^sha256:/, '').slice(0, 16)}.json`;
+      const existingSnapshotRef = finalAuditAuthority.canonicalAuditSnapshotRef || (fs.existsSync(path.resolve(root, snapshotPath)) ? fileRef(root, snapshotPath) : null);
+      const evaluation = evaluateCanonicalAuditOnce(root, run, { snapshotRef: existingSnapshotRef });
+      if (evaluation.audit.status !== 'PASS' || canonicalJson(evaluation.audit) !== canonicalJson(finalAudit)) throw new Error('CANONICAL_AUDIT_FINAL_REPORT_PARITY_REQUIRED');
+      const snapshotRef = evaluation.status === 'REUSED' && existingSnapshotRef
+        ? existingSnapshotRef
+        : evaluation.snapshotRef || writeCanonicalAuditSnapshot(root, evaluation.snapshot, existingSnapshotRef ? snapshotPath.replace(/\.json$/, '-' + evaluation.snapshot.snapshotSha.slice(7, 23) + '.json') : snapshotPath);
+      if (!finalAuditAuthority.canonicalAuditSnapshotRef) {
+        const { authoritySha: ignoredAuthoritySha, ...authorityPayload } = finalAuditAuthority;
+        finalAuditAuthority = { ...authorityPayload, canonicalAuditSnapshotRef: snapshotRef, authoritySha: objectSha({ ...authorityPayload, canonicalAuditSnapshotRef: snapshotRef }) };
+      }
+    }
     const ready = createReviewReady({
       root,
-      run: readJson(arg("--run")),
+      run,
       closure: readJson(arg("--closure")),
-      finalAudit: readJson(arg("--final-audit")),
+      finalAudit,
       candidateRef: fileRef(root, path.relative(root, path.resolve(candidatePath)).split(path.sep).join("/")),
       assetRefs: readJson(arg("--asset-refs")),
       candidateQuestions: candidateQuestions(candidatePath),
@@ -46,7 +63,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       renderCases: readJson(arg("--render-cases")),
       gateStatuses: readJson(arg("--gates")),
       finalClosureRef: fileRef(root, path.relative(root, path.resolve(finalClosurePath)).split(path.sep).join("/")),
-      finalAuditAuthority: process.argv.includes("--final-audit-authority") ? readJson(arg("--final-audit-authority")) : null,
+      finalAuditAuthority,
       openDefectCount: Number(optionalArg("--open-defect-count") || 0),
       telemetry: process.argv.includes("--telemetry") ? readJson(arg("--telemetry")) : null,
     });
