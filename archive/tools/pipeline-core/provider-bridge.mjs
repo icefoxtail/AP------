@@ -313,8 +313,8 @@ function loadPacket(root, ref, launch, plan, state, candidateContext, sourceCont
   check(packet.auditorPrincipalType === 'STATELESS_MODEL' && packet.launchId === launch.launchId && packet.externalTaskId === plan.externalId, 'PROVIDER_PACKET_LAUNCH_BINDING');
   check(packet.auditorId === launch.auditorId && packet.auditorSessionId === launch.contexts[packet.phase].sessionId && packet.contextId === launch.contexts[packet.phase].contextId, 'PROVIDER_PACKET_CONTEXT_BINDING');
   if (plan.axisScope) {
-    const expectedAxes = [...new Set((plan.axisScope[packet.phase] || []).filter(row => packet.questionUids.includes(row.questionUid)).flatMap(row => row.axes || []))].sort();
-    check(same(packet.targetedAxes || [], expectedAxes), 'PROVIDER_PACKET_TARGETED_AXES_BINDING');
+    const expectedAxesByQuestionUid = Object.fromEntries(packet.questionUids.map(questionUid => [questionUid, [...new Set((plan.axisScope[packet.phase] || []).find(row => row.questionUid === questionUid)?.axes || [])].sort()]));
+    check(same(packet.targetedAxesByQuestionUid || null, expectedAxesByQuestionUid), 'PROVIDER_PACKET_TARGETED_AXES_BINDING');
   }
   walkBoundRefs(root, packet);
   validatePacketVisualAndAuthority(packet, sourceContext);
@@ -468,6 +468,31 @@ export function applyVisualApplicabilityToDefects(defects, visualApplicabilities
   return { defects: kept, suppressedDefects: suppressed };
 }
 
+export function validateProviderEvidenceScope(evidence, packet) {
+  const allowed = new Set();
+  const map = packet?.targetedAxesByQuestionUid;
+  if (map) {
+    for (const [questionUid, axes] of Object.entries(map)) for (const axis of axes || []) allowed.add(`${questionUid}\u0000${axis}`);
+  } else if (packet?.targetedAxes !== undefined) {
+    throw new Error('HOLD:PROVIDER_TARGETED_AXES_MAP_REQUIRED');
+  } else {
+    for (const [axis, phase] of Object.entries(TARGETED_SEMANTIC_PHASE)) if (phase === packet?.phase) for (const questionUid of packet.questionUids || []) allowed.add(`${questionUid}\u0000${axis}`);
+  }
+  if (!Array.isArray(evidence)) throw new Error('HOLD:PROVIDER_PHASE_EVIDENCE_INVALID');
+  const seen = new Set();
+  for (const row of evidence) {
+    // Diagnostic/claim rows are merger metadata rather than question-axis
+    // evidence. They remain available to the existing defect merger; only
+    // rows carrying a semantic axis are subject to UID-axis sealing.
+    if (!nonempty(row?.axis) || row.axis === 'DIAGNOSTIC_ONLY') continue;
+    const key = `${row?.questionUid || ''}\u0000${row?.axis || ''}`;
+    if (!allowed.has(key)) throw new Error(`HOLD:PROVIDER_UNREQUESTED_EVIDENCE_SCOPE:${packet?.phase || ''}:${key}`);
+    if (seen.has(key)) throw new Error(`HOLD:PROVIDER_DUPLICATE_EVIDENCE_SCOPE:${packet?.phase || ''}:${key}`);
+    seen.add(key);
+  }
+  return evidence;
+}
+
 function phaseRequest(plan, packet) {
   const body = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
@@ -477,6 +502,7 @@ function phaseRequest(plan, packet) {
     phase: packet.phase,
     reviewContract: INDEPENDENT_REVIEW_CONTRACTS[packet.phase],
     targetedAxes: packet.targetedAxes || null,
+    targetedAxesByQuestionUid: packet.targetedAxesByQuestionUid || null,
     jobAuthorityStartSha: plan.jobAuthorityStartSha || null,
     subagentToolsEnabled: false,
     packet,
@@ -655,8 +681,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     const filtered = packet.phase === 'U2'
       ? applyVisualApplicabilityToDefects(scopedDefects, contexts.visualApplicabilities)
       : { defects: scopedDefects, suppressedDefects: [] };
-    const targetedAxes = packet.targetedAxes ? new Set(packet.targetedAxes) : null;
-    const phaseEvidence = response.evidence.filter(row => !targetedAxes || targetedAxes.has(row.axis));
+    const phaseEvidence = validateProviderEvidenceScope(response.evidence, packet);
     phaseResultsByPhase.set(packet.phase, { phase: packet.phase, responseRef, defects: filtered.defects, evidence: phaseEvidence.map(row => ({ ...row, runId: row.runId || phaseScope.find(target => target.questionUid === row.questionUid)?.runId || null })) });
     suppressedDefects.push(...filtered.suppressedDefects.map(defect => ({ ...defect, phase: packet.phase })));
     for (let index = 0; index < phaseEvidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, phaseEvidence[index]));

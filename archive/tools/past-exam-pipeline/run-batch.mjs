@@ -1,9 +1,11 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { parseArgs, loadConfig } from "./lib/config.mjs";
 import { ensureDir, listPdfFiles, readJson, rel, writeJson } from "./lib/fs-utils.mjs";
-import { buildManifestFromInventoryItem, parseExamPdfMetadata } from "./lib/exam-id.mjs";
+import { buildManifestFromInventoryItem, canonicalExamIdentity, parseExamPdfMetadata } from "./lib/exam-id.mjs";
 import { runOneExam } from "./run-one-exam.mjs";
-import { existingExamPreflight, loadExistingExamEntries } from "./lib/existing-exam.mjs";
+import { existingExamPreflight, indexProductionCandidates, loadExistingExamEntries, scanProductionCandidates } from "./lib/existing-exam.mjs";
+import { canonicalJson } from "../pipeline-core/canonical.mjs";
 
 function toFullYear(twoDigit) {
   const n = Number(twoDigit);
@@ -143,9 +145,13 @@ async function writeBatchProgress(cfg, manifestFile, jobs, results, active = nul
   return progress;
 }
 
-export async function buildInventory(cfg) {
+export async function buildInventory(cfg, dependencies = {}) {
   await ensureDir(cfg.batchDir);
-  const pdfs = await listPdfFiles(cfg.sourceRoot);
+  const listPdfs = dependencies.listPdfFiles || listPdfFiles;
+  const scanCandidates = dependencies.scanProductionCandidates || scanProductionCandidates;
+  const makeCandidateIndex = dependencies.indexProductionCandidates || indexProductionCandidates;
+  const preflight = dependencies.existingExamPreflight || existingExamPreflight;
+  const pdfs = await listPdfs(cfg.sourceRoot);
   const items = pdfs.map((pdf) => ({
     ...parseExamPdfMetadata(pdf.file, cfg.sourceRoot),
     size: pdf.size,
@@ -168,7 +174,14 @@ export async function buildInventory(cfg) {
     item.hasSolutionPdf = Boolean(group?.solution?.length);
   }
   const existingDbEntries = loadExistingExamEntries(cfg.archiveRoot);
-  for (const item of items) item.existingExam = existingExamPreflight({ archiveRoot: cfg.archiveRoot, examIdentity: item, dbEntries: existingDbEntries });
+  const productionScan = scanCandidates({ archiveRoot: cfg.archiveRoot, dbEntries: existingDbEntries, onScan: dependencies.onProductionScan });
+  const productionIndex = makeCandidateIndex(productionScan?.candidates || []);
+  const preflightByIdentity = new Map();
+  for (const item of items) {
+    const key = canonicalJson(canonicalExamIdentity(item));
+    if (!preflightByIdentity.has(key)) preflightByIdentity.set(key, preflight({ archiveRoot: cfg.archiveRoot, examIdentity: item, dbEntries: existingDbEntries, productionIndex }));
+    item.existingExam = structuredClone(preflightByIdentity.get(key));
+  }
   const duplicateGroups = new Map();
   for (const item of items.filter((entry) => entry.pdfKind === "problem")) {
     if (!item.examId) continue;
@@ -284,7 +297,7 @@ async function main() {
   }, null, 2));
 }
 
-main().catch((error) => {
+if (process.argv[1] && path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1])) main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });

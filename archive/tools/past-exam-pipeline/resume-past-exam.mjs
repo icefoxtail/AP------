@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { aggregateWorkBatchAudit, freezeWorkBatch, markWorkBatchReviewReady, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview, reviewScopeForPurpose } from '../pipeline-core/work-batch.mjs';
 import { buildAuditorPacket, buildU3CandidatePayload, loadCandidateReviewContext, visualApplicabilityForQuestion, sourcePixelPayloads } from '../pipeline-core/review-isolation-runner.mjs';
 import { canonicalJson, fileRef, readBoundFile, writeNewJson } from '../pipeline-core/canonical.mjs';
-import { loadBoundQuestionBanks } from '../pipeline-core/closure.mjs';
+import { createAuditSnapshot, loadBoundQuestionBanks } from '../pipeline-core/closure.mjs';
 import { prepareProviderReview, dispatchProviderReview, validateProviderPacketPreflight, visualAssetPayload } from '../pipeline-core/provider-bridge.mjs';
 import { nextWorkBatchAction } from '../pipeline-core/defect-router.mjs';
 import { materializeAuthorityBinding } from '../pipeline-core/authority-repair.mjs';
@@ -143,12 +143,12 @@ function targetedDispatchPlanForState(root, state, freeze, scope) {
   });
 }
 
-function runRows(root, state, freeze) {
+function runRows(root, state, freeze, { snapshot = null, assetCache = null } = {}) {
   const rows = [];
   for (const runRef of freeze.runRefs || []) {
     const run = readJsonRef(root, runRef);
-    const candidateContext = loadCandidateReviewContext(root, run);
-    const questions = new Map(loadBoundQuestionBanks(root, run).map(question => [question.questionUid, { question, declared: run.questions.find(row => row.questionUid === question.questionUid), run, candidateContext }]).map(([uid, value]) => [uid, value]));
+    const candidateContext = loadCandidateReviewContext(root, run, { snapshot, assetCache });
+    const questions = new Map(loadBoundQuestionBanks(root, run, { snapshot }).map(question => [question.questionUid, { question, declared: run.questions.find(row => row.questionUid === question.questionUid), run, candidateContext }]).map(([uid, value]) => [uid, value]));
     for (const target of freeze.targets || []) if (target.runId === run.runId && questions.has(target.questionUid)) rows.push({ target, ...questions.get(target.questionUid) });
   }
   return rows.sort((left, right) => `${left.target.runId}:${left.target.questionUid}`.localeCompare(`${right.target.runId}:${right.target.questionUid}`));
@@ -158,15 +158,15 @@ function refForPath(run, relative) {
   return (run.inputs || []).find(ref => ref.path === relative || ref.path === path.posix.normalize(relative) || ref.path === relative.replace(/^archive\//, '')) || null;
 }
 
-function sourceAssetRef(root, row) {
+export function sourceAssetRef(root, row, assetCache = null) {
   const image = row.question.sourceRecord?.image;
   if (!image) return null;
   const candidates = [image, image.startsWith('archive/') ? image : path.posix.join(row.run.assetRoot || 'archive', image), `archive/${image}`];
   const ref = candidates.map(candidate => refForPath(row.run, candidate)).find(Boolean);
-  return ref ? visualAssetPayload(root, ref) : null;
+  return ref ? visualAssetPayload(root, ref, assetCache) : null;
 }
 
-function solutionAssets(root, row) {
+export function solutionAssets(root, row, assetCache = null) {
   const paths = [
     ...(row.declared.problemAssetPaths || []),
     ...(row.question.solutionAssetPaths || []),
@@ -175,27 +175,38 @@ function solutionAssets(root, row) {
   return [...new Set(paths)].map(relative => {
     const ref = refForPath(row.run, relative);
     if (!ref) throw new Error(`REVIEW_ASSET_NOT_BOUND:${relative}`);
-    return visualAssetPayload(root, ref);
+    return visualAssetPayload(root, ref, assetCache);
   });
 }
 
-function renderWitnesses(root, row) {
+export function renderWitnesses(root, row, { snapshot = null, assetCache = null, evidenceIndex = null } = {}) {
+  const runKey = `${row.run.runId}|${row.run.revision}|${row.run.inputSha}`;
+  const index = evidenceIndex || new Map();
+  if (!index.has(runKey)) {
+    const captures = [];
+    for (const ref of row.run.evidence || []) {
+      const evidence = snapshot?.json(ref) || readJsonRef(root, ref);
+      if (evidence.axis === 'RENDER_CAPTURE') captures.push(evidence);
+    }
+    index.set(runKey, captures);
+  }
   const witnesses = [];
-  for (const ref of row.run.evidence || []) {
-    const evidence = readJsonRef(root, ref);
-    if (evidence.axis !== 'RENDER_CAPTURE') continue;
+  for (const evidence of index.get(runKey) || []) {
     if (evidence.inputSha !== row.run.inputSha) throw new Error('REVIEW_RENDER_CAPTURE_STALE');
     for (const witness of evidence.payload?.itemWitnesses || []) {
       if (witness.questionUid !== row.question.questionUid) continue;
-      witnesses.push({ ...witness, screenshot: visualAssetPayload(root, witness.screenshot) });
+      witnesses.push({ ...witness, screenshot: visualAssetPayload(root, witness.screenshot, assetCache) });
     }
   }
   return witnesses;
 }
 
 export function packetInputs(root, state, plan) {
+  const snapshot = createAuditSnapshot(root);
+  const assetCache = new Map();
+  const evidenceIndex = new Map();
   const scope = new Set(plan.scope.map(target => `${target.runId}:${target.questionUid}`));
-  const rows = runRows(root, state, state.freezes.find(freeze => freeze.freezeSha === plan.freezeSha)).filter(row => scope.has(`${row.target.runId}:${row.target.questionUid}`));
+  const rows = runRows(root, state, state.freezes.find(freeze => freeze.freezeSha === plan.freezeSha), { snapshot, assetCache }).filter(row => scope.has(`${row.target.runId}:${row.target.questionUid}`));
   if (rows.length !== scope.size) throw new Error('REVIEW_SCOPE_TARGET_MISSING');
   const phaseRows = Object.fromEntries(PHASES.map(phase => {
     const declared = plan.axisScope?.[phase];
@@ -204,23 +215,23 @@ export function packetInputs(root, state, plan) {
     return [phase, rows.filter(row => allowed.has(`${row.target.runId}:${row.target.questionUid}`))];
   }));
   const byPhase = {
-    U1: phaseRows.U1.map(row => ({ questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: sourceAssetRef(root, row) ? [sourceAssetRef(root, row)] : [], sourcePixels: sourcePixelPayloads(root, row.run, row.question.sourceRecord) })),
-    U2: phaseRows.U2.map(row => ({ questionUid: row.question.questionUid, artifact: solutionAssets(root, row).length ? { assetRefs: solutionAssets(root, row) } : null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion({ ...row.declared, ...row.question, visual: row.declared?.visual }) })),
+    U1: phaseRows.U1.map(row => { const problemAsset = sourceAssetRef(root, row, assetCache); return { questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: problemAsset ? [problemAsset] : [], sourcePixels: sourcePixelPayloads(root, row.run, row.question.sourceRecord, { assetCache }) }; }),
+    U2: phaseRows.U2.map(row => { const assets = solutionAssets(root, row, assetCache); return { questionUid: row.question.questionUid, artifact: assets.length ? { assetRefs: assets } : null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion({ ...row.declared, ...row.question, visual: row.declared?.visual }) }; }),
     U3: [],
   };
   const candidateContext = Object.assign({}, ...phaseRows.U3.map(row => row.candidateContext));
-  byPhase.U3 = phaseRows.U3.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { renderWitnesses: renderWitnesses(root, row), metadata: {}, dependencies: {} }));
+  byPhase.U3 = phaseRows.U3.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { renderWitnesses: renderWitnesses(root, row, { snapshot, assetCache, evidenceIndex }), metadata: {}, dependencies: {} }));
   return { rows, phaseRows, byPhase };
 }
 
-function buildPackets(root, state, plan, packetRoot) {
+export function buildPackets(root, state, plan, packetRoot) {
   const { byPhase, phaseRows } = packetInputs(root, state, plan);
   const refs = [];
   for (const phase of PHASES) {
     if (!phaseRows[phase].length) continue;
     const payload = byPhase[phase];
-    const targetedAxes = plan.axisScope?.[phase]
-      ? [...new Set(phaseRows[phase].flatMap(row => plan.axisScope[phase].find(target => target.runId === row.target.runId && target.questionUid === row.target.questionUid)?.axes || []))].sort()
+    const targetedAxesByQuestionUid = plan.axisScope?.[phase]
+      ? Object.fromEntries(phaseRows[phase].map(row => [row.question.questionUid, [...new Set(plan.axisScope[phase].find(target => target.runId === row.target.runId && target.questionUid === row.target.questionUid)?.axes || [])].sort()]))
       : null;
     const questionUids = phaseRows[phase].map(row => row.question.questionUid);
     const packet = buildAuditorPacket({
@@ -241,7 +252,7 @@ function buildPackets(root, state, plan, packetRoot) {
       launchId: plan.launchId,
       externalTaskId: plan.externalId,
       candidateContext: phase === 'U3' ? Object.assign({}, ...phaseRows.U3.map(row => row.candidateContext)) : null,
-      targetedAxes,
+      targetedAxesByQuestionUid,
     });
     const relative = `${packetRoot}/${phase.toLowerCase()}-packet.json`;
     if (fs.existsSync(path.resolve(root, relative))) {
