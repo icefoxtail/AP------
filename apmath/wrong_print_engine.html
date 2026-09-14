@@ -1004,7 +1004,7 @@ function splitSubjectiveHeadingSource(source) {
 function formatQuestionContent(html, q) {
     if (!html) return '';
     if (state.mode === 'exam') {
-        const split = splitSubjectiveHeadingSource(q?.content || q?.question || q?.text || q?.prompt || '');
+        const split = splitSubjectiveHeadingSource(html);
         if (split) {
             const prefix = applyQuestionContentBreaks(wrapLatex(split.prefix));
             const heading = applyQuestionContentBreaks(wrapLatex(split.heading));

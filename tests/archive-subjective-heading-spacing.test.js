@@ -14,7 +14,7 @@ const engineFiles = [
 function loadFormatter(engineFile) {
   const source = fs.readFileSync(path.join(root, engineFile), 'utf8');
   const start = source.indexOf('function applyQuestionContentBreaks');
-  const end = source.indexOf('function normalizeQuestionTables', start);
+  const end = source.indexOf('function renderQuestionImageHTML', start);
   assert.ok(start >= 0, `${engineFile}: subjective formatter section was not found`);
   assert.ok(end > start, `${engineFile}: subjective formatter section boundary was not found`);
 
@@ -24,11 +24,15 @@ function loadFormatter(engineFile) {
     wrapLatex(value) { return String(value ?? ''); }
   };
   vm.runInNewContext(
-    `${source.slice(start, end)}\nthis.__api = { formatQuestionContent };`,
+    `${source.slice(start, end)}\nthis.__api = { formatQuestionContent, stripInlineImagesFromContent };`,
     context,
     { filename: engineFile }
   );
-  return { formatQuestionContent: context.__api.formatQuestionContent, state: context.state };
+  return {
+    formatQuestionContent: context.__api.formatQuestionContent,
+    stripInlineImagesFromContent: context.__api.stripInlineImagesFromContent,
+    state: context.state
+  };
 }
 
 test('all three engines split only an existing subjective heading into semantic blocks', () => {
@@ -88,6 +92,40 @@ test('bracketed, unnumbered, prefixed, and image-bearing subjective headings sta
       assert.match(output, new RegExp(`<div class="subjective-heading">${fixture.heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}<\\/div>`), `${engineFile}: ${fixture.heading}`);
       assert.match(output, new RegExp(`<div class="subjective-prompt">${fixture.body.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), `${engineFile}: ${fixture.heading} body`);
     }
+  }
+});
+
+test('subjective formatting consumes the already-stripped render source', () => {
+  const source = '서술형 1. [5점]<br><br>도형을 보고 답을 구하시오.<br><img src="assets/images/inline.png"><br>풀이를 쓰시오.';
+  for (const engineFile of engineFiles) {
+    const loaded = loadFormatter(engineFile);
+    const question = {
+      content: source,
+      image: 'assets/images/legacy.png',
+      __apExamSubjectiveSpacing: true
+    };
+    const stripped = loaded.stripInlineImagesFromContent(source, true);
+    const formatted = loaded.formatQuestionContent(stripped, question);
+    const finalHtml = `${formatted}<div class="q-image-wrap"><img src="${question.image}"></div>`;
+
+    assert.doesNotMatch(formatted, /<img\b/i, `${engineFile}: stripped inline image was restored`);
+    assert.equal((finalHtml.match(/<img\b/gi) || []).length, 1, `${engineFile}: duplicate subjective image`);
+    assert.match(formatted, /<div class="subjective-heading">서술형 1\. \[5점\]<\/div>/, engineFile);
+    assert.match(formatted, /<div class="subjective-prompt">도형을 보고 답을 구하시오\.<br>풀이를 쓰시오\.<\/div>/, engineFile);
+    assert.equal(loaded.formatQuestionContent(stripped, question), formatted, `${engineFile}: repeated formatting changed output`);
+  }
+});
+
+test('subjective formatting preserves an inline-only image when no q.image exists', () => {
+  const source = '서술형 1. [5점]<br><br>도형을 보고 답을 구하시오.<br><img src="assets/images/inline-only.png">';
+  for (const engineFile of engineFiles) {
+    const loaded = loadFormatter(engineFile);
+    const question = { content: source, __apExamSubjectiveSpacing: true };
+    const stripped = loaded.stripInlineImagesFromContent(source, false);
+    const formatted = loaded.formatQuestionContent(stripped, question);
+
+    assert.equal((formatted.match(/<img\b/gi) || []).length, 1, `${engineFile}: inline-only image was lost`);
+    assert.equal(loaded.formatQuestionContent(stripped, question), formatted, `${engineFile}: repeated formatting changed output`);
   }
 });
 
