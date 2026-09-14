@@ -135,7 +135,7 @@
                 snapshot.geometry = geometry(snapshot.rootNode);
                 snapshot.canvases = canvases(snapshot.rootNode);
             },
-            canReuse(snapshot) { return document.fonts.status === 'loaded' && !!root.MathJax?.typesetPromise && snapshot.html === snapshot.rootNode.innerHTML && N.semanticDigest(canvases(snapshot.rootNode)) === N.semanticDigest(snapshot.canvases) && !root.APRenderLoop.unrenderedMathCount(snapshot.rootNode) && !snapshot.rootNode.querySelector('mjx-merror') && [...snapshot.rootNode.querySelectorAll('img')].every(i => i.complete && i.naturalWidth > 0); },
+            canReuse(snapshot) { return document.fonts.status === 'loaded' && !!root.MathJax?.typesetPromise && snapshot.html === snapshot.rootNode.innerHTML && N.semanticDigest(canvases(snapshot.rootNode)) === N.semanticDigest(snapshot.canvases) && !root.APRenderLoop.unrenderedMathCount(snapshot.rootNode) && !snapshot.rootNode.querySelector('mjx-merror') && [...snapshot.rootNode.querySelectorAll('img')].every(i => i.complete && i.naturalWidth > 0 && i.naturalHeight > 0); },
             reuse(ctx, snapshot) {
                 ctx.targetArea = snapshot.rootNode; ctx.buildState = clone(snapshot.buildState); ctx.diagnostics = { ...snapshot.diagnostics };
                 ctx.metrics = root.APRenderLoop.start({ mode: snapshot.mode, transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, sessionId: ctx.requestedTargetSessionId, foreground: ctx.foreground, publish: false });

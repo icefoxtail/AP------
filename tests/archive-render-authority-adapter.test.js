@@ -21,13 +21,20 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /data-semantic-content="1"/);
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
   assert.match(engine, /recordArchiveDualRun\(area, ctx(?: = null)?\)/);
-  for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter']) {
-    const version = ['screen-runtime', 'solution-render-executor'].includes(script) ? '20260913\\.1' : '20260911\\.5';
+  for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter']) {
+    const version = {
+      'layout-materializer': '20260914\\.1',
+      'solution-render-executor': '20260914\\.1',
+      'exam-render-executor': '20260914\\.1',
+      'question-image-readiness': '20260915\\.2',
+      'screen-runtime-adapter': '20260914\\.1',
+      'screen-runtime': '20260913\\.1'
+    }[script] || '20260911\\.5';
     assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
   }
-  assert.match(engine, /solution-render-executor\.js\?v=20260913\.1/);
+  assert.match(engine, /solution-render-executor\.js\?v=20260914\.1/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
-  assert.match(engine, /exam-render-executor\.js\?v=20260911\.5/);
+  assert.match(engine, /exam-render-executor\.js\?v=20260914\.1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);

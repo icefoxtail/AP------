@@ -38,7 +38,7 @@ test('adapters record success-only RENDER_READY and reject incomplete render/ima
     ['clinic', clinic, 'failClinicReadiness']
   ]) {
     assert.match(source, new RegExp(`${fail}\\(outcome\\.code, outcome\\)`), `${name} records failure evidence`);
-    assert.match(source, /error\?\.code === 'IMAGE_READINESS_INCOMPLETE' \? 'IMAGE_READINESS_INCOMPLETE' : 'RENDER_FAILED'/, `${name} preserves image failure code`);
+    assert.match(source, /(?:error\?\.code === 'IMAGE_READINESS_INCOMPLETE' \? 'IMAGE_READINESS_INCOMPLETE' : 'RENDER_FAILED'|const imageFailureCodes = \['IMAGE_READINESS_INCOMPLETE', 'QUESTION_IMAGE_LOAD_FAILED', 'QUESTION_IMAGE_READINESS_INCOMPLETE'\])/, `${name} preserves image failure code`);
     assert.match(source, /assertSuccessfulRender\(renderOutcome\)/, `${name} blocks PRINT_READY for failed render outcome`);
   }
   assert.doesNotMatch(archive, /finally \{[\s\S]{0,240}markArchiveReadiness\('RENDER_READY'/);

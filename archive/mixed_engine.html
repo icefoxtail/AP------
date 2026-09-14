@@ -386,9 +386,10 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <script src="render-state-normalizer.js?v=20260912.1"></script>
     <script src="screen-runtime.js?v=20260913.1"></script>
-    <script src="common-fast-runtime.js?v=20260913.1"></script>
-    <script src="exam-render-executor.js?v=20260912.1"></script>
-    <script src="solution-render-executor.js?v=20260913.1"></script>
+    <script src="question-image-readiness.js?v=20260915.2"></script>
+    <script src="common-fast-runtime.js?v=20260914.1"></script>
+    <script src="exam-render-executor.js?v=20260914.1"></script>
+    <script src="solution-render-executor.js?v=20260914.1"></script>
     <script src="answer-render-executor.js?v=20260912.1"></script>
 </head>
 <body>
@@ -1242,6 +1243,7 @@ async function recordMixedDualRun(area) {
         const witness = document.createElement('div');
         witness.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:83mm;';
         witness.innerHTML = shared;
+        normalizeQuestionImageSources(witness);
         document.body.appendChild(witness);
         try { await typesetMath('mixed-authority-dual-run', [witness]); } catch (error) { console.warn('[mixed-engine] shared dual-run MathJax failed', error); }
         const result = AppState.mode === 'ans'
@@ -1884,6 +1886,7 @@ function withArchiveAssetCacheBuster(src) {
     const hashIndex = raw.indexOf('#');
     const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
     const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
+    if (/(?:^|[?&])v=[^&#]*/i.test(base)) return raw;
     const separator = base.includes('?') ? '&' : '?';
     return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
 }
@@ -1921,22 +1924,46 @@ function autoImageSizeClassFor(img) {
     return 'image-small';
 }
 
-function waitForQuestionImage(img) {
-    if (!img || img.complete) return Promise.resolve();
-    return new Promise(resolve => {
-        let done = false;
-        const finish = () => {
-            if (done) return;
-            done = true;
-            resolve();
-        };
-        img.addEventListener('load', finish, { once: true });
-        img.addEventListener('error', finish, { once: true });
-        setTimeout(finish, 1200);
+function collectQuestionImages(root) {
+    return window.APQuestionImageReadiness.collectQuestionImages(root);
+}
+
+function normalizeQuestionImageSources(root) {
+    return window.APQuestionImageReadiness.normalizeQuestionImageSources(root, withArchiveAssetCacheBuster);
+}
+
+function validateQuestionImageReadiness(root) {
+    return window.APQuestionImageReadiness.validateImages(collectQuestionImages(root), {
+        failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' }
     });
 }
 
+async function waitForQuestionImages(root, timeoutMs = 1200) {
+    const images = normalizeQuestionImageSources(root);
+    const result = await window.APQuestionImageReadiness.waitForImages(images, {
+        timeoutMs,
+        failureCodes: { error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE' },
+        throwOnFailure: true
+    });
+    return result.summary;
+}
+
+async function prepareQuestionImages(root, timeoutMs = 1200) {
+    return waitForQuestionImages(root, timeoutMs);
+}
+
+async function waitForQuestionImage(img, timeoutMs = 1200) {
+    const result = await window.APQuestionImageReadiness.waitForImage(img, timeoutMs);
+    if (result.status !== 'loaded') {
+        throw window.APQuestionImageReadiness.createReadinessError([result], {
+            error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE'
+        });
+    }
+    return result;
+}
+
 async function applyAutoImageSizeClasses(root) {
+    await prepareQuestionImages(root);
     const wraps = Array.from(root.querySelectorAll('.q-image-wrap'));
     await Promise.all(wraps.map(async wrap => {
         if (AUTO_IMAGE_SIZE_CLASSES.some(cls => wrap.classList.contains(cls))) return;
@@ -1945,7 +1972,6 @@ async function applyAutoImageSizeClasses(root) {
             wrap.classList.add('image-medium');
             return;
         }
-        await waitForQuestionImage(img);
         wrap.classList.add(autoImageSizeClassFor(img));
     }));
 }
@@ -2086,7 +2112,7 @@ async function renderExam(area, data) {
                          <div class="q-content">${formattedContent}</div>
                          ${imageHTML}
                          ${choicesHTML}`;
-        
+        normalizeQuestionImageSources(box);
         staging.appendChild(box); return { q, box, originalIndex: i };
     });
 
@@ -2427,6 +2453,7 @@ async function renderSol(area, data) {
             const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getMixedQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
+            normalizeQuestionImageSources(box);
             staging.appendChild(box);
             return box;
         });
@@ -2507,7 +2534,7 @@ async function renderSol(area, data) {
         box.innerHTML = `<div class="q-num">${i+1}.</div>
                          <div data-semantic-content="1" style="margin-bottom:8px; color:#555; font-size:8.5pt;">${reminderContent}</div>
                          <div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(solText)}</div></div>`;
-
+        normalizeQuestionImageSources(box);
         await placeSolutionBox(box);
     }
 }
@@ -2603,11 +2630,12 @@ async function render() {
         markMixedReadiness('RENDER_READY', { mode: AppState.mode, pages: document.querySelectorAll('#print-area .page').length });
         outcome = { ok: true, mode: AppState.mode, pages: document.querySelectorAll('#print-area .page').length };
     } catch (error) {
-        outcome = { ok: false, code: error?.code === 'IMAGE_READINESS_INCOMPLETE' ? 'IMAGE_READINESS_INCOMPLETE' : 'RENDER_FAILED', message: String(error?.message || error), mode: AppState.mode };
+        const imageFailureCodes = ['IMAGE_READINESS_INCOMPLETE', 'QUESTION_IMAGE_LOAD_FAILED', 'QUESTION_IMAGE_READINESS_INCOMPLETE'];
+        outcome = { ok: false, code: imageFailureCodes.includes(error?.code) ? error.code : 'RENDER_FAILED', message: String(error?.message || error), details: error?.details || null, mode: AppState.mode };
         failMixedReadiness(outcome.code, outcome);
         console.error('[mixed-engine] render transaction failed; PRINT_READY is blocked', error);
     } finally {
-        window.APRenderLoop?.finish((buildContext?.targetArea || document.getElementById('print-area')));
+        window.APRenderLoop?.finish((buildContext?.targetArea || document.getElementById('print-area')), undefined, outcome?.ok === true);
         settleRender(outcome || { ok: false, code: 'RENDER_FAILED', message: 'missing render outcome' });
     }
 }
@@ -2650,30 +2678,18 @@ const AP_PRINT_CSS_DPI = 96;
 function waitForPrintImages(root, timeoutMs = 5000) {
     const images = Array.from(root?.querySelectorAll('img') || []);
     if (!images.length) return Promise.resolve({ images: 0, loaded: 0, errors: 0, timeouts: 0 });
-    const waitOne = async image => {
-        if (image.complete) return image.naturalWidth > 0 ? { status: 'loaded' } : { status: 'error', reason: 'COMPLETE_WITHOUT_DIMENSIONS' };
-        const eventResult = await Promise.race([
-            new Promise(resolve => {
-                image.addEventListener('load', () => resolve({ status: 'loaded' }), { once: true });
-                image.addEventListener('error', () => resolve({ status: 'error', reason: 'LOAD_ERROR' }), { once: true });
-            }),
-            new Promise(resolve => setTimeout(() => resolve({ status: 'timeout', reason: 'LOAD_TIMEOUT' }), timeoutMs))
-        ]);
-        if (eventResult.status !== 'loaded') return eventResult;
-        if (typeof image.decode === 'function') {
-            const decodeResult = await Promise.race([
-                image.decode().then(() => ({ status: 'loaded' })).catch(() => ({ status: 'error', reason: 'DECODE_ERROR' })),
-                new Promise(resolve => setTimeout(() => resolve({ status: 'timeout', reason: 'DECODE_TIMEOUT' }), timeoutMs))
-            ]);
-            if (decodeResult.status !== 'loaded') return decodeResult;
+    return window.APQuestionImageReadiness.waitForImages(images, { timeoutMs, throwOnFailure: false }).then(({ results }) => {
+        const questionImages = new Set(collectQuestionImages(root));
+        const badQuestionIndex = images.findIndex((image, index) => questionImages.has(image) && results[index]?.status !== 'loaded');
+        if (badQuestionIndex >= 0) {
+            throw window.APQuestionImageReadiness.createReadinessError([results[badQuestionIndex]], {
+                error: 'QUESTION_IMAGE_LOAD_FAILED', timeout: 'QUESTION_IMAGE_READINESS_INCOMPLETE'
+            });
         }
-        return image.naturalWidth > 0 ? { status: 'loaded' } : { status: 'error', reason: 'LOADED_WITHOUT_DIMENSIONS' };
-    };
-    return Promise.all(images.map(waitOne)).then(results => {
         if (window.APPrintRuntime?.summarizeImageReadiness) return window.APPrintRuntime.summarizeImageReadiness(results);
         const bad = results.find(result => result.status !== 'loaded');
-        if (bad) { const error = new Error('IMAGE_READINESS_INCOMPLETE'); error.code = 'IMAGE_READINESS_INCOMPLETE'; throw error; }
-        return { images: results.length, loaded: results.length, errors: 0, timeouts: 0 };
+        if (bad) throw window.APQuestionImageReadiness.createReadinessError(results, { error: 'IMAGE_READINESS_INCOMPLETE', timeout: 'IMAGE_READINESS_INCOMPLETE' });
+        return window.APQuestionImageReadiness.summarize(results);
     });
 }
 
@@ -2950,7 +2966,7 @@ async function safePrint(mode = 'vector') {
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
 
-    if (preparationError && ((window.mixedFastHost && (mode === 'vector' || !fastPreflightComplete)) || ['RENDER_TRANSACTION_INCOMPLETE', 'IMAGE_READINESS_INCOMPLETE'].includes(preparationError.code))) {
+    if (preparationError && ((window.mixedFastHost && (mode === 'vector' || !fastPreflightComplete)) || ['RENDER_TRANSACTION_INCOMPLETE', 'IMAGE_READINESS_INCOMPLETE', 'QUESTION_IMAGE_LOAD_FAILED', 'QUESTION_IMAGE_READINESS_INCOMPLETE'].includes(preparationError.code))) {
         rasterPrint.restore();
         optimizedImages.restore();
         printPending = false;
@@ -3178,6 +3194,8 @@ function mixedExecutorDeps() {
         stripInlineImagesFromContent, sanitizeProtectedSegments, normalizeQuestionNotes,
         normalizeViewBlocks, normalizeQuestionTables, formatQuestionContent, wrapLatex,
         renderQuestionImageHTML, renderChoicesHTML, fitQuestionBox, autoCompress, rendererMode,
+        collectQuestionImages, normalizeQuestionImageSources, prepareQuestionImages,
+        waitForQuestionImages, validateQuestionImageReadiness,
         SE_OVERHEAD_COL, SE_OVERHEAD_GRID, SE_PAGE_TOLERANCE, SE_BLOCK_GAP,
         makeSolutionHtmlChunks, makeLongSolutionShell, renderSolutionImageHTML,
         formatSolutionHtml, waitForQuestionImage, formatGridAnswer,

@@ -6,8 +6,21 @@ const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const out = path.join(root, 'reports/archive-fast-engine-v2');
 const base = 'http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&prewarm=0&snapshotCache=0';
-const version = '20260911.5';
-const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'screen-runtime-adapter'];
+const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter'];
+const runtimeVersions = Object.freeze({
+    mathjax_render_loop: '20260911.5',
+    'layout-authority': '20260911.5',
+    'layout-materializer': '20260914.1',
+    'solution-render-executor': '20260914.1',
+    'exam-render-executor': '20260914.1',
+    'render-state-normalizer': '20260911.5',
+    'side-effect-ledger': '20260911.5',
+    'screen-runtime': '20260913.1',
+    'snapshot-contract': '20260911.5',
+    'question-image-readiness': '20260915.2',
+    'screen-runtime-adapter': '20260914.1'
+});
+const version = '20260915.2';
 
 (async () => {
     const browser = await chromium.launch({ channel: 'chrome', headless: true });
@@ -24,14 +37,14 @@ const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-mater
         await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot, undefined, { timeout: 60000 });
         await page.evaluate(() => archiveScreenRuntime.whenIdle());
         const scripts = await page.evaluate(() => [...document.scripts].map(script => script.src).filter(Boolean));
-        for (const script of runtimeScripts) assert.ok(scripts.some(src => src.endsWith(`/archive/${script}.js?v=20260911.5`)), script);
+        for (const script of runtimeScripts) assert.ok(scripts.some(src => src.endsWith(`/archive/${script}.js?v=${runtimeVersions[script]}`)), script);
         const identity = await page.evaluate(() => ({
             runtime: Boolean(window.APScreenRuntime), planner: typeof window.APLayoutAuthority?.planMeasuredSolutionLayout,
             materializer: Boolean(window.APArchiveLayoutMaterializer), fingerprint: archiveScreenRuntime.committedCandidate.fingerprints
         }));
         assert.equal(identity.runtime, true); assert.equal(identity.planner, 'function'); assert.equal(identity.materializer, true);
-        assert.equal(identity.fingerprint.engine, 'archive-fast-phase6-20260911.5');
-        assert.equal(identity.fingerprint.layoutAuthority, 'measured-production-v1-20260911.5');
+        assert.equal(identity.fingerprint.engine, 'archive-fast-phase6-20260914.1');
+        assert.equal(identity.fingerprint.layoutAuthority, 'measured-production-v1-20260914.1');
 
         await page.getByRole('button', { name: '헤더 수정' }).click();
         const input = page.locator('#print-header-title-input');
@@ -79,7 +92,7 @@ const runtimeScripts = ['mathjax_render_loop', 'layout-authority', 'layout-mater
         await page.goto(base);
         await page.waitForFunction(() => window.archiveScreenRuntime?.activeSnapshot);
         await page.evaluate(() => archiveScreenRuntime.whenIdle());
-        const warm = await page.evaluate(() => [...document.scripts].map(script => script.src).filter(src => src.includes('/archive/')).filter(src => src.includes('?v=20260911.5')).length);
+        const warm = await page.evaluate(versions => [...document.scripts].map(script => script.src).filter(src => Object.entries(versions).some(([name, value]) => src.endsWith(`/archive/${name}.js?v=${value}`))).length, runtimeVersions);
         assert.equal(warm, runtimeScripts.length);
 
         const qrButton = page.getByRole('button', { name: /QR 출력/ });
