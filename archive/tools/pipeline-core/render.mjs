@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { readBoundFile, safePath, bytesSha, fileRef, objectSha, writeNewJson } from './canonical.mjs';
 import { profiles, runInputSha, EVIDENCE_VERSION, EVIDENCE_VERSION_V2, RUN_VERSION_V2 } from './closure.mjs';
-import { validateRenderReviewReuseReceipt } from './render-impact.mjs';
+import { validateRenderReviewReuseReceipt, validateRenderTransitionParity } from './render-impact.mjs';
 import { validateRuntimeBundle } from './runtime.mjs';
 import { createContinuationDenominator, validateContinuationDenominator } from './continuation.mjs';
 
@@ -151,12 +151,143 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
       vm.runInNewContext(readBoundFile(root, refByPath.get(candidatePath)).toString('utf8'), sourceContext, { timeout: 1000 });
       const bank = sourceContext.window.questionBank;
       const questions = run.questions.filter(q => q.candidatePath === candidatePath);
+      const sessions = new Map();
+      const ownedContexts = new Set();
+      const pageStates = new WeakMap();
+      const observedPages = new WeakSet();
+      const candidateAssetSha = objectSha(run.inputs.filter(ref => ref.role === 'asset' && questions.some(question => [...(question.problemAssetPaths || []), ...(question.solutionAssetPaths || [])].includes(ref.path))).map(ref => ({ path: ref.path, sha256: ref.sha256 })));
+      const resetPageState = page => {
+        const state = { pageErrors: [], failedRequests: [], responseHashes: new Map(), runtimeResponses: [], pendingResponseReads: [] };
+        pageStates.set(page, state);
+        return state;
+      };
+      const attachPageObservers = casePage => {
+        if (observedPages.has(casePage)) return;
+        observedPages.add(casePage);
+        casePage.on('pageerror', error => pageStates.get(casePage)?.pageErrors.push(error.message));
+        casePage.on('requestfailed', request => pageStates.get(casePage)?.failedRequests.push({ url: request.url(), error: request.failure()?.errorText || 'REQUEST_FAILED' }));
+        casePage.on('response', response => {
+          const state = pageStates.get(casePage);
+          if (!state) return;
+          const body = Promise.race([response.body(), new Promise((_, reject) => setTimeout(() => reject(new Error('RESPONSE_BODY_TIMEOUT')), 10000))]);
+          state.pendingResponseReads.push(body.then(bytes => {
+            const parsed = new URL(response.url());
+            const local = parsed.origin === ('http://127.0.0.1:' + port) ? decodeURIComponent(parsed.pathname).slice(1) : null;
+            let resolved = local;
+            const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
+            if (candidateMatch) resolved = candidates[Number(candidateMatch[1])];
+            else if (local?.startsWith('archive/assets/') && run.assetRoot) resolved = run.assetRoot + '/' + local.slice('archive/'.length);
+            else if (local?.startsWith('archive/archive/')) resolved = local.slice('archive/'.length);
+            const ref = resolved ? refByPath.get(resolved) : null;
+            if (ref?.role === 'asset') {
+              const sha256 = bytesSha(bytes);
+              state.responseHashes.set(local, sha256);
+              state.responseHashes.set(resolved, sha256);
+            }
+            if (!local || ['engine', 'runtime'].includes(ref?.role)) state.runtimeResponses.push({ url: response.url(), localPath: resolved || null, role: ref?.role || 'external', status: response.status(), bytes: ref && response.status() >= 200 && response.status() < 400 ? ref.bytes : bytes.length, sha256: ref && response.status() >= 200 && response.status() < 400 ? ref.sha256 : bytesSha(bytes), bodyBoundRef: ref && response.status() >= 200 && response.status() < 400 ? true : false });
+          }).catch(error => {
+            try {
+              const parsed = new URL(response.url());
+              const local = parsed.origin === ('http://127.0.0.1:' + port) ? decodeURIComponent(parsed.pathname).slice(1) : null;
+              const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
+              const resolved = candidateMatch ? candidates[Number(candidateMatch[1])] : local?.startsWith('archive/archive/') ? local.slice('archive/'.length) : local;
+              const ref = resolved ? refByPath.get(resolved) : null;
+              if (ref && response.status() >= 200 && response.status() < 400 && /evicted|not available/i.test(error.message)) {
+                state.runtimeResponses.push({ url: response.url(), localPath: resolved, role: ref.role, status: response.status(), bytes: ref.bytes, sha256: ref.sha256, bodyRead: 'INSPECTOR_EVICTED_BOUND_REF' });
+                return;
+              }
+            } catch {}
+            state.failedRequests.push({ url: response.url(), error: 'RESPONSE_BODY:' + error.message });
+          }));
+        });
+      };
+      const openCasePage = async viewport => {
+        const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
+        ownedContexts.add(context);
+        const page = await context.newPage();
+        attachPageObservers(page);
+        return { context, page };
+      };
+      const identityFor = async (page, mode, profile, runtimeReadiness) => page.evaluate(({ mode, profile, runtimeReadiness, candidatePath, candidateSha, sourceRef, candidateAssetSha, questionUids, questionCount }) => ({
+        candidatePath,
+        candidateSha,
+        sourceRef,
+        assetSha: candidateAssetSha,
+        mode,
+        viewport: profile,
+        questionUids,
+        questionCount,
+        runtimeTransactionId: runtimeReadiness.transactionId || null,
+        sessionId: runtimeReadiness.sessionId || null,
+        snapshotId: runtimeReadiness.snapshotId || null,
+        pagination: String(document.querySelectorAll('#print-area .page').length) + ':' + (document.querySelector('#print-area .page:last-child')?.textContent?.length || 0),
+        solutionBlock: document.querySelectorAll('#print-area .sol-box, #print-area .sol-exp').length,
+        answerBlock: document.querySelectorAll('#print-area .ans-n').length,
+        mathJax: window.MathJax && !document.querySelector('mjx-merror,[data-mjx-error]') ? 'loaded' : 'missing',
+        errorState: document.documentElement.dataset.apRenderError || null,
+      }), { mode, profile: profile.profile, runtimeReadiness, candidatePath, candidateSha: refByPath.get(candidatePath)?.sha256 || null, sourceRef: questions[0]?.sourcePath || null, candidateAssetSha, questionUids: questions.map(question => question.questionUid), questionCount: bank.length });
+      const prepareCase = async ({ mode, profile, viewport, engineMode, selector, url, forceFresh = false, fallbackReason = null }) => {
+        let session = sessions.get(profile.profile) || { page: null, context: null, lastIdentity: null, reuseDisabled: false };
+        let reusedContext = !forceFresh && !session.reuseDisabled && Boolean(session.page && session.context);
+        let casePage = session.page;
+        let context = session.context;
+        let runtimeReadiness = null;
+        const navigateAndWait = async page => {
+          resetPageState(page);
+          activeUnboundRequests = [];
+          await page.goto(url, { waitUntil: 'load', timeout: 45000 });
+          runtimeReadiness = await waitForProductionReadiness(page, { timeoutMs: 45000 });
+          await page.waitForFunction(({ selector, count }) => new Set([...document.querySelectorAll(selector)].map((node, index) => node.dataset.sourceRef || String(index))).size === count, { selector, count: bank.length }, { timeout: 45000 });
+        };
+        if (reusedContext) {
+          resetPageState(casePage);
+          activeUnboundRequests = [];
+          const transition = await casePage.evaluate(async requestedMode => {
+            const runtime = window.archiveScreenRuntime;
+            if (!runtime) return { ok: false, code: 'MODE_TRANSITION_API_MISSING' };
+            try { return await runtime.request({ type: 'MODE_CHANGE', requestedMode, foreground: true }); }
+            catch (error) { return { ok: false, code: 'MODE_TRANSITION_FAILED', message: String(error?.message || error) }; }
+          }, engineMode);
+          if (!transition?.ok) {
+            session.reuseDisabled = true;
+            sessions.set(profile.profile, session);
+            return prepareCase({ mode, profile, viewport, engineMode, selector, url, forceFresh: true, fallbackReason: transition?.code || 'MODE_TRANSITION_FAILED' });
+          }
+          runtimeReadiness = await waitForProductionReadiness(casePage, { timeoutMs: 45000 });
+          await casePage.waitForFunction(({ selector, count }) => new Set([...document.querySelectorAll(selector)].map((node, index) => node.dataset.sourceRef || String(index))).size === count, { selector, count: bank.length }, { timeout: 45000 });
+        } else {
+          const opened = await openCasePage(viewport);
+          context = opened.context;
+          casePage = opened.page;
+          reusedContext = false;
+          await navigateAndWait(casePage);
+        }
+        const identity = await identityFor(casePage, mode, profile, runtimeReadiness);
+        const parity = session.lastIdentity && !session.reuseDisabled && !forceFresh ? validateRenderTransitionParity(session.lastIdentity, identity) : { status: 'PASS', errors: [] };
+        if (parity.status !== 'PASS' && !forceFresh) {
+          session.reuseDisabled = true;
+          sessions.set(profile.profile, session);
+          return prepareCase({ mode, profile, viewport, engineMode, selector, url, forceFresh: true, fallbackReason: 'PARITY:' + parity.errors.join(',') });
+        }
+        session.page = casePage;
+        session.context = context;
+        session.lastIdentity = identity;
+        sessions.set(profile.profile, session);
+        return { context, page: casePage, caseState: pageStates.get(casePage), runtimeReadiness, reusedContext, transition: { action: reusedContext ? 'MODE_CHANGE' : 'NAVIGATION', fallbackReason, parity } };
+      };
       for (const mode of (run.publicationIntent === 'FULL_EXAM' ? ['exam', 'solution', 'answer'] : profiles.pipelines[run.pipeline].modes)) for (const profile of profiles.viewports) {
         const viewport = { profile: profile.profile, width: profile.minWidth, height: profile.profile === 'mobile' ? 844 : 1000 };
-        const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
-        const page = await context.newPage(), pageErrors = [], failedRequests = [], responseHashes = new Map(), runtimeResponses = [];
+        const engineMode = { exam: 'exam', solution: 'sol', answer: 'ans' }[mode];
+        const url = 'http://127.0.0.1:' + port + '/' + run.renderRuntime.enginePath + '?data=exams/__pipeline_review__/' + index + '.js&mode=' + engineMode + '&qpp=4&fit=screen';
+        const selector = mode === 'answer' ? '#print-area .ans-n' : '#print-area .q-box';
+        const preparedCase = await prepareCase({ mode, profile, viewport, engineMode, selector, url });
+        const { context, page, caseState, runtimeReadiness, reusedContext, transition } = preparedCase;
+        const { pageErrors, failedRequests, responseHashes, runtimeResponses, pendingResponseReads } = caseState;
+        const startedAt = new Date().toISOString();
+        /*
+         * Legacy per-case navigation and observer setup is superseded by
+         * prepareCase(), which owns the reusable viewport session.
         activeUnboundRequests = [];
-        const pendingResponseReads = [];
         page.on('pageerror', error => pageErrors.push(error.message));
         page.on('requestfailed', request => failedRequests.push({ url: request.url(), error: request.failure()?.errorText || 'REQUEST_FAILED' }));
         page.on('response', response => {
@@ -202,6 +333,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         await page.goto(url, { waitUntil: 'load', timeout: 45000 });
         const runtimeReadiness = await waitForProductionReadiness(page, { timeoutMs: 45000 });
         await page.waitForFunction(({ selector, count }) => new Set([...document.querySelectorAll(selector)].map((node, index) => node.dataset.sourceRef || String(index))).size === count, { selector, count: bank.length }, { timeout: 45000 });
+        */
         await page.evaluate(async () => {
           const within = (promise, ms) => Promise.race([promise, new Promise(resolve => setTimeout(resolve, ms))]);
           await within(document.fonts.ready, 10000);
@@ -286,7 +418,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const checks = { runtime: !metrics.renderError && !pageErrors.length && !failedRequests.length && !activeUnboundRequests.length ? 'PASS' : 'FAIL', mathJax: metrics.mathJaxPresent && !metrics.mathErrors && !metrics.rawMergedRelations ? 'PASS' : 'FAIL', fonts: metrics.fonts === 'loaded' ? 'PASS' : 'FAIL', imageDecode: metrics.badImages === 0 ? 'PASS' : 'FAIL', assetAssociation: assetAssociations.every(a => a.status === 'PASS') ? 'PASS' : 'FAIL', questionCount: metrics.observedQuestionCount === bank.length ? 'PASS' : 'FAIL', lastQuestion: 'PASS', clipping: geometryPass ? 'PASS' : 'FAIL', overflow: overflowPass ? 'PASS' : 'FAIL', readability: 'NOT_TESTED' };
         const mechanicalPass = ['runtime', 'mathJax', 'fonts', 'imageDecode', 'assetAssociation', 'questionCount', 'lastQuestion', 'clipping', 'overflow'].every(key => checks[key] === 'PASS');
         const currentCandidateSha = refByPath.get(candidatePath)?.sha256 || null;
-        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, runtimeReadiness, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
+        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, runtimeReadiness, captureSession: { viewportProfile: profile.profile, contextReused: reusedContext, action: transition.action, fallbackReason: transition.fallbackReason, parity: transition.parity }, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
         const recordPath = `${workdir}/${stem}.json`;
         record.payload.candidateRef = refByPath.get(candidatePath);
         record.payload.assetRefs = run.inputs.filter(ref => assetAssociations.some(row => row.path === ref.path));
@@ -295,8 +427,8 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
           Object.assign(record, { schemaVersion: EVIDENCE_VERSION_V2, machineProvenance, axis: 'RENDER_CAPTURE', mode: 'MACHINE_CURRENT', withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', reviewerId: collectorIdentity.reviewerId, reviewSessionId: collectorIdentity.reviewSessionId, reviewerModelOrAgent: collectorIdentity.reviewerModelOrAgent, auditorPrincipalType: collectorIdentity.auditorPrincipalType, reviewIsolationProvenanceSha: objectSha(machineProvenance), priorReviewVisibility: 'NONE', inputVisibilityProfile: 'ACTUAL_RENDER', axisInputShas: Object.fromEntries(questions.map(q => [q.questionUid, axisShas[q.questionUid].RENDER_CAPTURE])), reviewAxisInputShas: Object.fromEntries(questions.map(q => [q.questionUid, axisShas[q.questionUid].RENDER_REVIEW])) });
         }
         writeNewJson(safePath(root, recordPath, { mustExist: false }), record); captures.push(fileRef(root, recordPath));
-        await context.close();
       }
+      for (const context of ownedContexts) await context.close();
     }
     for (const input of run.inputs) readBoundFile(root, input);
     const report = { status: 'CAPTURED_REVIEW_REQUIRED', runId: run.runId, inputSha: run.inputSha, captures, productionAuthorized: false };

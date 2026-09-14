@@ -8,6 +8,7 @@ import { computeAxisInputShaMap } from '../semantic-diff.mjs';
 import { objectSha } from '../canonical.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
 import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, providerTelemetryFromReceipts, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
+import { validateRenderTransitionParity } from '../render-impact.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
 import { runOneExam } from '../../past-exam-pipeline/run-one-exam.mjs';
 
@@ -253,4 +254,13 @@ test('SPEED-08 telemetry keeps stage timings and separates provider launches fro
     { status: 'FAILED', launchId: 'job:3', modelInvocationCount: 0 },
   ]);
   assert.deepEqual(aggregated, { providerInvocationCount: 2, modelInvocationCount: 4 });
+});
+
+test('SPEED-09 mode transition reuse requires complete render identity parity', () => {
+  const previous = { candidatePath: 'candidate.js', candidateSha: 'sha-candidate', sourceRef: 'exam-source', assetSha: 'sha-assets', mode: 'exam', viewport: 'desktop', questionUids: ['q1'], questionCount: 1, runtimeTransactionId: 'tx-1', sessionId: 'session-1', snapshotId: 'snapshot-1', pagination: 'page-1', solutionBlock: null, answerBlock: null, mathJax: 'loaded', errorState: null };
+  const next = { ...previous, mode: 'solution', runtimeTransactionId: 'tx-2', solutionBlock: 'solution-block-1' };
+  assert.equal(validateRenderTransitionParity(previous, next).status, 'PASS');
+  assert.ok(validateRenderTransitionParity(previous, { ...next, candidateSha: 'sha-changed' }).errors.includes('CANDIDATE_IDENTITY_MISMATCH'));
+  assert.ok(validateRenderTransitionParity(previous, { ...next, viewport: 'mobile' }).errors.includes('VIEWPORT_IDENTITY_MISMATCH'));
+  assert.ok(validateRenderTransitionParity(previous, { ...next, snapshotId: null }).errors.includes('RUNTIME_SNAPSHOT_IDENTITY_MISSING'));
 });

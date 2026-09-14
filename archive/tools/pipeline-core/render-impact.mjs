@@ -23,6 +23,22 @@ export function detectRenderImpact(previous, current, { globalDependencies = [] 
   return { ...result, status: 'PASS', impactSha: objectSha(result) };
 }
 
+export function validateRenderTransitionParity(previous, current) {
+  const errors = [];
+  if (!previous || !current || previous.candidateSha !== current.candidateSha) errors.push('CANDIDATE_IDENTITY_MISMATCH');
+  if (!previous || !current || previous.sourceRef !== current.sourceRef) errors.push('SOURCE_IDENTITY_MISMATCH');
+  if (!previous || !current || previous.assetSha !== current.assetSha) errors.push('ASSET_IDENTITY_MISMATCH');
+  if (!previous || !current || previous.viewport !== current.viewport) errors.push('VIEWPORT_IDENTITY_MISMATCH');
+  if (!previous || !current || previous.questionCount !== current.questionCount || canonicalJson(previous.questionUids || []) !== canonicalJson(current.questionUids || [])) errors.push('QUESTION_SET_IDENTITY_MISMATCH');
+  if (!current?.mode || previous?.mode === current?.mode) errors.push('MODE_IDENTITY_MISMATCH');
+  if (!previous?.sessionId || !current?.sessionId || previous.sessionId !== current.sessionId) errors.push('RUNTIME_SESSION_IDENTITY_MISMATCH');
+  if (!previous?.runtimeTransactionId || !current?.runtimeTransactionId || previous.runtimeTransactionId === current.runtimeTransactionId) errors.push('RUNTIME_TRANSACTION_IDENTITY_MISMATCH');
+  if (!previous?.snapshotId || !current?.snapshotId) errors.push('RUNTIME_SNAPSHOT_IDENTITY_MISSING');
+  if (current && (!Object.hasOwn(current, 'pagination') || !Object.hasOwn(current, 'solutionBlock') || !Object.hasOwn(current, 'answerBlock'))) errors.push('RENDER_BLOCK_IDENTITY_MISSING');
+  if (current?.mathJax !== 'loaded' || current?.errorState) errors.push('RENDER_RUNTIME_STATE_INVALID');
+  return { status: errors.length ? 'BLOCKED' : 'PASS', errors: [...new Set(errors)] };
+}
+
 export const RENDER_REVIEW_REUSE_RECEIPT_VERSION = 'RENDER_REVIEW_REUSE_RECEIPT_v1';
 export function validateRenderReviewReuseReceipt(root, receipt, { currentCaptureRef, currentRunInputSha, questionUid = null } = {}) {
   const errors = [];
