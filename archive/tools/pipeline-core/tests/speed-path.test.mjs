@@ -8,7 +8,7 @@ import { computeAxisInputShaMap } from '../semantic-diff.mjs';
 import { objectSha } from '../canonical.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
 import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, providerTelemetryFromReceipts, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
-import { validateRenderTransitionParity } from '../render-impact.mjs';
+import { evaluateRenderReuseEligibility, validateRenderTransitionParity } from '../render-impact.mjs';
 import { createScreenshotStore } from '../render.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
 import { runOneExam } from '../../past-exam-pipeline/run-one-exam.mjs';
@@ -284,4 +284,17 @@ test('SPEED-10 screenshot store reuses only exact pixels within the same case', 
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
+});
+
+test('SPEED-11 pre-capture render reuse is identity-bound and fail-closed', () => {
+  const identity = { candidateSha: 'candidate', assetSetSha: 'assets', runtimeBundleSha: 'runtime', engineIdentity: 'engine', releaseIdentity: 'release', layoutAuthorityIdentity: 'layout', renderPolicyIdentity: 'policy', viewportPolicyIdentity: 'viewport', fontIdentity: 'font', mathJaxIdentity: 'mathjax', mode: 'solution', qpp: 4, semanticDependencySetSha: 'semantic' };
+  assert.equal(evaluateRenderReuseEligibility({ previousIdentity: identity, currentIdentity: { ...identity }, priorStatus: 'PASS', lifecycleStatus: 'VALID' }).status, 'REUSE_ELIGIBLE');
+  assert.equal(evaluateRenderReuseEligibility({ previousIdentity: identity, currentIdentity: { ...identity, semanticDependencySetSha: 'solution-changed' }, priorStatus: 'PASS', lifecycleStatus: 'VALID' }).status, 'FRESH_REQUIRED');
+  assert.ok(evaluateRenderReuseEligibility({ previousIdentity: identity, currentIdentity: { ...identity, assetSetSha: 'asset-changed' }, priorStatus: 'PASS', lifecycleStatus: 'VALID' }).reasonCodes.includes('ASSET_INVALIDATOR'));
+  assert.ok(evaluateRenderReuseEligibility({ previousIdentity: identity, currentIdentity: { ...identity, runtimeBundleSha: 'runtime-changed' }, priorStatus: 'PASS', lifecycleStatus: 'VALID' }).reasonCodes.includes('GLOBAL_RUNTIME_INVALIDATOR'));
+  assert.equal(evaluateRenderReuseEligibility({ previousIdentity: identity, currentIdentity: identity, priorStatus: 'STALE', lifecycleStatus: 'VALID' }).status, 'REUSE_BLOCKED');
+  assert.equal(evaluateRenderReuseEligibility({ previousIdentity: identity, currentIdentity: { ...identity, fontIdentity: null }, priorStatus: 'PASS', lifecycleStatus: 'VALID' }).status, 'FRESH_REQUIRED');
+  const previousCapture = { status: 'PASS', payload: { itemWitnesses: witnesses('synthetic-exam|7'), renderIdentity: identity } };
+  const currentCapture = { status: 'PASS', payload: { itemWitnesses: witnesses('synthetic-exam|7'), renderIdentity: identity } };
+  assert.equal(renderReusePlan(previousCapture, currentCapture).preCaptureReuse.status, 'REUSE_ELIGIBLE');
 });

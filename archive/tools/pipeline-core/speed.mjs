@@ -3,7 +3,7 @@ import { CANONICAL_AXES } from './projection.mjs';
 import { objectSha } from './canonical.mjs';
 import { validateEvidenceFreshness, validateFreshEvidenceIndependence, evidenceReuseMetrics, AXIS_REVIEW_BINDING } from './review-evidence-v2.mjs';
 import { validateAuditorPacket } from './review-isolation-runner.mjs';
-import { detectRenderImpact } from './render-impact.mjs';
+import { detectRenderImpact, evaluateRenderReuseEligibility } from './render-impact.mjs';
 
 export const SPEED_PIPELINE_VERSION = 'APMATH_SPEED_PATH_v1';
 export const TARGETED_RECHECK_PHASE_AXES = Object.freeze({
@@ -118,7 +118,14 @@ export function validatedPassReuse({ evidence, currentRunInputSha, currentAxisIn
 export function renderReusePlan(previousCapture, currentCapture, { globalDependencies = [] } = {}) {
   const impact = detectRenderImpact(previousCapture, currentCapture, { globalDependencies });
   const currentRows = Array.isArray(currentCapture) ? currentCapture : currentCapture?.payload?.itemWitnesses || [];
-  return { ...impact, freshRenderCount: impact.affectedRenderUidSet.length, reusedRenderCount: Math.max(0, new Set(currentRows.map(row => row.questionUid)).size - impact.affectedRenderUidSet.length) };
+  const previousIdentity = Array.isArray(previousCapture) ? null : previousCapture?.payload?.renderIdentity || null;
+  const currentIdentity = Array.isArray(currentCapture) ? null : currentCapture?.payload?.renderIdentity || null;
+  const preCaptureReuse = globalDependencies.length
+    ? { status: 'FRESH_REQUIRED', reasonCodes: ['GLOBAL_RUNTIME_INVALIDATOR'], globalInvalidatorSet: [...new Set(globalDependencies)].sort() }
+    : previousIdentity && currentIdentity
+    ? evaluateRenderReuseEligibility({ previousIdentity, currentIdentity, priorStatus: previousCapture.status === 'PASS' ? 'PASS' : 'STALE', lifecycleStatus: currentCapture.payload?.renderLifecycleStatus || 'VALID' })
+    : { status: 'FRESH_REQUIRED', reasonCodes: ['RENDER_REUSE_IDENTITY_MISSING'] };
+  return { ...impact, preCaptureReuse, freshRenderCount: impact.affectedRenderUidSet.length, reusedRenderCount: Math.max(0, new Set(currentRows.map(row => row.questionUid)).size - impact.affectedRenderUidSet.length) };
 }
 
 const timing = value => Object.fromEntries(Object.entries(value || {}).map(([key, raw]) => [key, Number.isFinite(raw) && raw >= 0 ? raw : null]));
