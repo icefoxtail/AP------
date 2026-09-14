@@ -7,7 +7,7 @@ import path from 'node:path';
 import { computeAxisInputShaMap } from '../semantic-diff.mjs';
 import { objectSha } from '../canonical.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
-import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
+import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, providerTelemetryFromReceipts, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
 import { runOneExam } from '../../past-exam-pipeline/run-one-exam.mjs';
 
@@ -227,4 +227,30 @@ test('SPEED-07 telemetry records the synthetic 20-question speed comparison', ()
   assert.equal(repaired.targetedRecheckInvocationCount, 1);
   assert.ok(repaired.reusedPassQuestionAxisCount > 0);
   assert.equal(repaired.skipExistingExam, false);
+});
+
+test('SPEED-08 telemetry keeps stage timings and separates provider launches from fresh model turns', () => {
+  const telemetry = speedTelemetry({
+    phaseTimings: { freezeMs: 11, packetBuildMs: 12, providerPreflightMs: 13, providerReservationMs: 14, u1Ms: 15, u2Ms: 16, u3Ms: 17, mergeMs: 18, reconcileMs: 19 },
+    renderTimings: { browserLaunchMs: 21, contextCreationMs: 22, navigationMs: 23, fastRuntimeMs: 24, runtimeReadinessMs: 25, fontsMs: 26, mathJaxMs: 27, imageDecodeMs: 28, geometryValidationMs: 29, screenshotEncodeMs: 30, screenshotWriteMs: 31, totalCaseMs: 32, totalCaptureMs: 33 },
+    auditTimings: { auditV2RunMs: 41, evidenceFreshnessMs: 42, qualityClosureMs: 43, releaseClosureMs: 44, authorityValidationMs: 45, reviewReadyValidationMs: 46 },
+    freshPhaseSet: ['U3'],
+    reusedPhaseSet: ['U1', 'U2'],
+    freshAxisSet: [{ questionUid: 'q1', axis: 'SOLUTION' }],
+    reusedAxisSet: [{ questionUid: 'q1', axis: 'SOURCE' }],
+    screenshotStats: { count: 2, bytes: 1024, encodeMs: 30, writeMs: 31 },
+  });
+  assert.equal(telemetry.phaseTimings.u3Ms, 17);
+  assert.equal(telemetry.renderTimings.totalCaptureMs, 33);
+  assert.equal(telemetry.auditTimings.auditV2RunMs, 41);
+  assert.deepEqual(telemetry.freshPhaseSet, ['U3']);
+  assert.deepEqual(telemetry.reusedAxisSet, [{ questionUid: 'q1', axis: 'SOURCE' }]);
+  assert.deepEqual(telemetry.screenshotStats, { count: 2, bytes: 1024, encodeMs: 30, writeMs: 31 });
+
+  const aggregated = providerTelemetryFromReceipts([
+    { status: 'COMPLETED', launchId: 'job:1', modelInvocationCount: 3 },
+    { status: 'COMPLETED', launchId: 'job:2', modelInvocationCount: 1 },
+    { status: 'FAILED', launchId: 'job:3', modelInvocationCount: 0 },
+  ]);
+  assert.deepEqual(aggregated, { providerInvocationCount: 2, modelInvocationCount: 4 });
 });

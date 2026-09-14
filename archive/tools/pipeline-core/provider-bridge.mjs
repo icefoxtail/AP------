@@ -111,6 +111,7 @@ function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null, aut
 // This is control-plane only. A provider must attest modelInvocationCount: 0;
 // the three model invocations are issued later through dispatchProviderReview.
 export function prepareProviderReview(root, { workBatchId, purpose, transport, planPath, executionRecoveryOfLaunchId = null, authorization = null, targetedDispatchPlan = null }) {
+  const preflightStartedAt = Date.now();
   const state = readWorkBatch(root, workBatchId);
   const { freeze, launchId, scope, failedLaunch } = plannedLaunch(state, purpose, { executionRecoveryOfLaunchId, authorization });
   const body = {
@@ -159,6 +160,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
   };
   const parity = validateModelRouteParity(executionIdentity);
   Object.assign(executionIdentity, { routeStatus: parity.routeStatus, MODEL_ROUTE_PARITY: parity.MODEL_ROUTE_PARITY });
+  const providerPreflightMs = existing ? (existing.value.providerPreflightMs ?? null) : Math.max(0, Date.now() - preflightStartedAt);
   const plan = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     kind: 'PROVIDER_STATELESS_REVIEW_PLAN',
@@ -193,6 +195,7 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     preflightResponse: response,
     preflightResponseSha: objectSha(response),
     authorization,
+    providerPreflightMs,
   };
   if (existing) check(same(existing.value, plan), 'PROVIDER_PREFLIGHT_REPLAY_PLAN_MISMATCH');
   const ref = existing ? existing.ref : writeBridgeJson(root, planPath, plan);
@@ -654,12 +657,14 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, evidenceRefs: [failed.evidenceRef], failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
   }
   reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'DISPATCHED' });
-  const phaseAttestationRefs = [], evidenceRefs = [], phaseResultsByPhase = new Map(), suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
+  const phaseAttestationRefs = [], evidenceRefs = [], phaseResultsByPhase = new Map(), suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set(), phaseTimings = {};
+  let modelInvocationCount = 0;
   for (const { packet } of packets) {
     const request = phaseRequest(plan, packet);
     const requestRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-request.json`, request);
     let response;
     let phaseRoute;
+    const phaseStartedAt = Date.now();
     try {
       response = transportCall(transport, request);
       phaseRoute = validatePhaseResponse(response, request, plan, seenInvocationIds);
@@ -671,6 +676,8 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
       const stateAfterFailure = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'FAILED', providerReceiptRef });
       return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs: [failed.evidenceRef], failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
     }
+    phaseTimings[packet.phase] = Math.max(0, Date.now() - phaseStartedAt);
+    modelInvocationCount += Number.isSafeInteger(response.modelInvocationCount) && response.modelInvocationCount >= 0 ? response.modelInvocationCount : 1;
     routeObservations.push({ phase: packet.phase, ...phaseRoute });
     seenInvocationIds.add(response.providerInvocationId);
     const responseRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-response.json`, response);
@@ -696,8 +703,11 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     phaseResultsByPhase.set(phase, result);
   }
   const phaseResults = PHASES.map(phase => phaseResultsByPhase.get(phase) || { phase, responseRef: null, defects: [], evidence: [] });
+  const mergeStartedAt = Date.now();
   const merge = mergeIndependentReviews(phaseResults);
+  const mergeMs = Math.max(0, Date.now() - mergeStartedAt);
   const mergeRef = writeBridgeJson(root, `${relativeBase}/merged-review.json`, merge);
+  const reconcileStartedAt = Date.now();
   const receipt = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     launchId,
@@ -729,6 +739,11 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     retryLaunchCount: 0,
     usedTokens: usedTokens.every(Number.isSafeInteger) ? usedTokens.reduce((total, value) => total + value, 0) : null,
     usedTokensByPhase: Object.fromEntries(packets.map(({ packet }, index) => [packet.phase, usedTokens[index]])),
+    modelInvocationCount,
+    providerPreflightMs: plan.providerPreflightMs || 0,
+    phaseTimings,
+    mergeMs,
+    reconcileStartedAt: new Date(reconcileStartedAt).toISOString(),
     freshPhaseSet: [...freshPhaseSet],
     reusedPhaseSet,
     targetedDispatchPlanSha: plan.targetedDispatchPlanSha || null,

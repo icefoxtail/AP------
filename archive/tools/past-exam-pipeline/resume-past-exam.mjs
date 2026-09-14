@@ -10,7 +10,7 @@ import { nextWorkBatchAction } from '../pipeline-core/defect-router.mjs';
 import { materializeAuthorityBinding } from '../pipeline-core/authority-repair.mjs';
 import { materializeVisualEvidence } from '../pipeline-core/visual-repair.mjs';
 import { recoveryCapabilityRegistry } from '../pipeline-core/recovery-capability.mjs';
-import { buildTargetedDispatchPlan, speedTelemetry, validatedPassReuse } from '../pipeline-core/speed.mjs';
+import { buildTargetedDispatchPlan, providerTelemetryFromReceipts, speedTelemetry, validatedPassReuse } from '../pipeline-core/speed.mjs';
 import { validateRenderReviewReuseReceipt } from '../pipeline-core/render-impact.mjs';
 
 export const RESUME_RUNNER_VERSION = 'APMATH_PAST_EXAM_RESUME_RUNNER_v1';
@@ -42,11 +42,26 @@ const launchOrdinal = state => state.launches.length + 1;
 function resumeTelemetry(state, startedAt, root = null) {
   const launches = state?.launches || [];
   const completed = launches.filter(launch => launch.status === 'COMPLETED');
-  const receipts = root ? completed.map(launch => {
-    try { return launch.providerReceiptRef ? readJsonRef(root, launch.providerReceiptRef) : null; } catch { return null; }
+  const receiptEntries = root ? completed.map(launch => {
+    try { return launch.providerReceiptRef ? { launch, receipt: readJsonRef(root, launch.providerReceiptRef) } : null; } catch { return null; }
   }).filter(Boolean) : [];
+  const receipts = receiptEntries.map(entry => entry.receipt);
   const receiptFreshAxes = receipts.flatMap(receipt => receipt.freshAxisSet || []);
   const receiptReusedAxes = receipts.flatMap(receipt => receipt.reusedAxisSet || []);
+  const providerTelemetry = providerTelemetryFromReceipts(receipts);
+  const freshPhaseSet = [...new Set(receipts.flatMap(receipt => receipt.freshPhaseSet || []))].sort();
+  const reusedPhaseSet = [...new Set(receipts.flatMap(receipt => receipt.reusedPhaseSet || []))].sort();
+  const freshAxisSet = [...new Map(receiptFreshAxes.map(row => [`${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`, row])).values()];
+  const reusedAxisSet = [...new Map(receiptReusedAxes.map(row => [`${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`, row])).values()];
+  const phaseTimings = Object.fromEntries(['freezeMs', 'packetBuildMs', 'providerPreflightMs', 'providerReservationMs', 'u1Ms', 'u2Ms', 'u3Ms', 'mergeMs', 'reconcileMs'].map(key => [key, null]));
+  const auditTimings = Object.fromEntries(['auditV2RunMs', 'evidenceFreshnessMs', 'qualityClosureMs', 'releaseClosureMs', 'authorityValidationMs', 'reviewReadyValidationMs'].map(key => [key, null]));
+  for (const { launch, receipt } of receiptEntries) {
+    phaseTimings.providerPreflightMs = (phaseTimings.providerPreflightMs || 0) + (receipt.providerPreflightMs || 0);
+    phaseTimings.mergeMs = (phaseTimings.mergeMs || 0) + (receipt.mergeMs || 0);
+    const reconcileMs = Number.isFinite(Date.parse(receipt.reconcileStartedAt)) && Number.isFinite(Date.parse(launch.endedAt)) ? Math.max(0, Date.parse(launch.endedAt) - Date.parse(receipt.reconcileStartedAt)) : 0;
+    phaseTimings.reconcileMs = (phaseTimings.reconcileMs || 0) + reconcileMs;
+    for (const [phase, elapsed] of Object.entries(receipt.phaseTimings || {})) phaseTimings[phase.toLowerCase() + 'Ms'] = (phaseTimings[phase.toLowerCase() + 'Ms'] || 0) + elapsed;
+  }
   return speedTelemetry({
     startedAt,
     questionCount: state?.freezes?.at(-1)?.targets?.length || 0,
@@ -55,8 +70,14 @@ function resumeTelemetry(state, startedAt, root = null) {
     reviewedQuestionAxisCount: receiptFreshAxes.length + receiptReusedAxes.length || completed.reduce((total, launch) => total + (launch.scope?.length || 0) * PHASES.length, 0),
     reusedPassQuestionAxisCount: receiptReusedAxes.length || state?.telemetry?.reusedPassQuestionAxisCount || 0,
     repairIterationCount: state?.repairIterations?.length || 0,
-    providerInvocationCount: launches.length,
-    modelInvocationCount: launches.length,
+    providerInvocationCount: providerTelemetry.providerInvocationCount || completed.length,
+    modelInvocationCount: providerTelemetry.modelInvocationCount,
+    phaseTimings,
+    auditTimings,
+    freshPhaseSet,
+    reusedPhaseSet,
+    freshAxisSet,
+    reusedAxisSet,
     skipExistingExam: false,
   });
 }
