@@ -78,8 +78,7 @@ for (const conflict of [false, true]) test(`synthetic independent FINAL_AUDIT â†
     }
   `);
   const out = await resumePastExam(f.root, { workBatchId: 'job', runRefs: [first.ref], conflictAuthorization: { explicit: true, reason: 'CONFLICT', authorizedBy: 'synthetic-user' }, providerCommand: process.execPath, providerArgs: [path.join(f.root, transport.path)], handlers: { CANDIDATE_REPAIR: ({ defects }) => ({ route: 'CANDIDATE_REPAIR', repairRequest: { iteration: 1, revision: 2, inputSha: second.run.inputSha, builderId: 'builder', builderSessionId: 'builder-session', runRefs: [second.ref], dispositions: defects.map(d => ({ ...d, disposition: 'REPAIRED_CANDIDATE' })) } }) } });
-  assert.equal(out.status, 'HUMAN_DECISION_REQUIRED');
-  assert.equal(out.reason, 'REVIEW_READY_RECEIPT_REQUIRED');
+  assert.equal(out.status, 'CLOSURE_READY'); // Routing completion, not semantic closure PASS.
   assert.equal(out.state.launches.length, 2); // No routine adjudicator.
   assert.equal(out.state.launches[1].purpose, conflict ? 'SECOND_AUDIT' : 'TARGETED_RECHECK');
   if (conflict) assert.equal(out.state.freezes.length, 1);

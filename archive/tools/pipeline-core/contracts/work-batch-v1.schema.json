@@ -93,28 +93,8 @@
         "PRODUCTION",
         "FROZEN",
         "REPAIR_REQUIRED",
-        "HOLD",
-        "REVIEW_READY"
+        "HOLD"
       ]
-    },
-    "reviewReadyRef": {
-      "type": ["object", "null"],
-      "properties": {
-        "path": {"type": "string", "minLength": 1},
-        "bytes": {"type": "integer", "minimum": 0},
-        "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
-      },
-      "additionalProperties": false
-    },
-    "reviewReadySha": {
-      "type": ["string", "null"],
-      "pattern": "^sha256:[0-9a-f]{64}$"
-    },
-    "reviewReadyAt": {
-      "type": ["string", "null"]
-    },
-    "productionAuthorized": {
-      "const": false
     },
     "openDefectSet": {
       "type": "array",

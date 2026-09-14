@@ -23,65 +23,6 @@ export function detectRenderImpact(previous, current, { globalDependencies = [] 
   return { ...result, status: 'PASS', impactSha: objectSha(result) };
 }
 
-export function validateRenderTransitionParity(previous, current) {
-  const errors = [];
-  if (!previous || !current || previous.candidateSha !== current.candidateSha) errors.push('CANDIDATE_IDENTITY_MISMATCH');
-  if (!previous || !current || previous.sourceRef !== current.sourceRef) errors.push('SOURCE_IDENTITY_MISMATCH');
-  if (!previous || !current || previous.assetSha !== current.assetSha) errors.push('ASSET_IDENTITY_MISMATCH');
-  if (!previous || !current || previous.viewport !== current.viewport) errors.push('VIEWPORT_IDENTITY_MISMATCH');
-  if (!previous || !current || previous.questionCount !== current.questionCount || canonicalJson(previous.questionUids || []) !== canonicalJson(current.questionUids || [])) errors.push('QUESTION_SET_IDENTITY_MISMATCH');
-  if (!current?.mode || previous?.mode === current?.mode) errors.push('MODE_IDENTITY_MISMATCH');
-  if (!previous?.sessionId || !current?.sessionId || previous.sessionId !== current.sessionId) errors.push('RUNTIME_SESSION_IDENTITY_MISMATCH');
-  if (!previous?.runtimeTransactionId || !current?.runtimeTransactionId || previous.runtimeTransactionId === current.runtimeTransactionId) errors.push('RUNTIME_TRANSACTION_IDENTITY_MISMATCH');
-  if (!previous?.snapshotId || !current?.snapshotId) errors.push('RUNTIME_SNAPSHOT_IDENTITY_MISSING');
-  if (current && (!Object.hasOwn(current, 'pagination') || !Object.hasOwn(current, 'solutionBlock') || !Object.hasOwn(current, 'answerBlock'))) errors.push('RENDER_BLOCK_IDENTITY_MISSING');
-  if (current?.mathJax !== 'loaded' || current?.errorState) errors.push('RENDER_RUNTIME_STATE_INVALID');
-  return { status: errors.length ? 'BLOCKED' : 'PASS', errors: [...new Set(errors)] };
-}
-
-export const PRE_CAPTURE_RENDER_IDENTITY_FIELDS = Object.freeze([
-  'candidateSha',
-  'assetSetSha',
-  'runtimeBundleSha',
-  'engineIdentity',
-  'releaseIdentity',
-  'layoutAuthorityIdentity',
-  'renderPolicyIdentity',
-  'viewportPolicyIdentity',
-  'fontIdentity',
-  'mathJaxIdentity',
-  'mode',
-  'qpp',
-  'semanticDependencySetSha',
-]);
-
-export function evaluateRenderReuseEligibility({ previousIdentity = null, currentIdentity = null, priorStatus = 'MISSING', lifecycleStatus = 'MISSING' } = {}) {
-  const reasonCodes = [];
-  if (priorStatus !== 'PASS') reasonCodes.push('PRIOR_CAPTURE_NOT_CANONICAL');
-  if (lifecycleStatus !== 'VALID') reasonCodes.push('REUSE_LIFECYCLE_INVALID');
-  if (reasonCodes.length) return { status: 'REUSE_BLOCKED', reasonCodes };
-  const missing = PRE_CAPTURE_RENDER_IDENTITY_FIELDS.filter(field => previousIdentity?.[field] === null || previousIdentity?.[field] === undefined || currentIdentity?.[field] === null || currentIdentity?.[field] === undefined);
-  if (missing.length) return { status: 'FRESH_REQUIRED', reasonCodes: ['RENDER_REUSE_IDENTITY_MISSING'], missingFields: missing };
-  const invalidators = {
-    candidateSha: 'CANDIDATE_INVALIDATOR',
-    assetSetSha: 'ASSET_INVALIDATOR',
-    runtimeBundleSha: 'GLOBAL_RUNTIME_INVALIDATOR',
-    engineIdentity: 'GLOBAL_RUNTIME_INVALIDATOR',
-    releaseIdentity: 'RELEASE_INVALIDATOR',
-    layoutAuthorityIdentity: 'LAYOUT_INVALIDATOR',
-    renderPolicyIdentity: 'RENDER_POLICY_INVALIDATOR',
-    viewportPolicyIdentity: 'VIEWPORT_INVALIDATOR',
-    fontIdentity: 'FONT_INVALIDATOR',
-    mathJaxIdentity: 'MATHJAX_INVALIDATOR',
-    mode: 'MODE_INVALIDATOR',
-    qpp: 'QPP_INVALIDATOR',
-    semanticDependencySetSha: 'SEMANTIC_RENDER_INVALIDATOR',
-  };
-  const changed = PRE_CAPTURE_RENDER_IDENTITY_FIELDS.filter(field => canonicalJson(previousIdentity[field]) !== canonicalJson(currentIdentity[field]));
-  if (changed.length) return { status: 'FRESH_REQUIRED', reasonCodes: [...new Set(changed.map(field => invalidators[field]))], changedFields: changed };
-  return { status: 'REUSE_ELIGIBLE', reasonCodes: ['EXACT_RENDER_IDENTITY_MATCH'], identityFields: [...PRE_CAPTURE_RENDER_IDENTITY_FIELDS] };
-}
-
 export const RENDER_REVIEW_REUSE_RECEIPT_VERSION = 'RENDER_REVIEW_REUSE_RECEIPT_v1';
 export function validateRenderReviewReuseReceipt(root, receipt, { currentCaptureRef, currentRunInputSha, questionUid = null } = {}) {
   const errors = [];

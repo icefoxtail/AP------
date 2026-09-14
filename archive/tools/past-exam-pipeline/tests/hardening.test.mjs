@@ -320,14 +320,7 @@ test("portable ZIP gate detects a manifest path that differs from the exact entr
 test("direct production write guard requires a promotion receipt", () => {
   assert.throws(() => productionWritePreflight({ changedPaths: ["archive/exams/original/high/h1/1final/x.js"], receipt: {} }), /UNAUTHORIZED_PRODUCTION_WRITE/);
   const value = "sha256:" + "a".repeat(64);
-  assert.throws(() => productionWritePreflight({ changedPaths: ["archive/db.js"], receipt: { approvalStatus: "APPROVED", candidateSha256: value, stagedAssetSetSha256: value, finalClosureSha: value, reviewReadyRunId: "run", approvalEvidenceIdentity: "evidence", approvalEvidenceSha256: value } }), /UNAUTHORIZED_PRODUCTION_WRITE|UNEXPECTED_PRODUCTION_WRITE_SCOPE/);
-  assert.equal(productionWritePreflight({
-    changedPaths: ["archive/exams/original/high/h1/1final/x.js"],
-    phase: "PROMOTE_APPROVED_EXAM",
-    targetProductionJs: "archive/exams/original/high/h1/1final/x.js",
-    targetAssetRoot: "archive/assets/images/x",
-    receipt: { approvalStatus: "APPROVED", candidateSha256: value, stagedAssetSetSha256: value, finalClosureSha: value, dbBaselineSha256: value, indexBaselineSha256: value, reviewReadyRunId: "run", approvalEvidenceIdentity: "evidence", approvalEvidenceSha256: value },
-  }).status, "PASS");
+  assert.equal(productionWritePreflight({ changedPaths: ["archive/db.js"], receipt: { status: "AUTHORIZED", candidateSha: value, closureManifestSha: value, sourceIdentitySetSha: value, reviewedPassEnvelopeSha: value, promotionTransactionId: "tx" } }).status, "PASS");
 });
 
 test('V3 completion permits classification and solution-visual fields but checks real baseline differences', () => {
