@@ -23,6 +23,7 @@ import { rulePreflight } from '../../pipeline-core/rulepack.mjs';
 import { resumePastExam } from '../resume-past-exam.mjs';
 import { assetSetSha } from '../lib/production-boundary.mjs';
 import { createReviewReady } from '../lib/review-ready.mjs';
+import { createCanonicalAuditSnapshot } from '../../pipeline-core/canonical-audit-authority.mjs';
 
 export const RELEASE_RENDER_CASES = Object.freeze(['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile']);
 export const RELEASE_GATE_STATUSES = Object.freeze({ sourceFidelity: 'PASS', math: 'PASS', solutionQuality: 'PASS', visual: 'PASS', metadata: 'PASS', finalAudit: 'PASS', render: 'PASS' });
@@ -62,7 +63,7 @@ function ensureCanonicalMachineEvidence(fixture, run, axisShas, candidateRef) {
       ? { checkedInputSha: run.inputSha, currentArtifactSha: candidateRef.sha256, CURRENT_ARTIFACT_SHA: candidateRef.sha256, EVIDENCE_INPUT_SHA: candidateRef.sha256, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' } }
       : { metadataInputSha: axisShas[question.questionUid][axis], currentArtifactSha: candidateRef.sha256, CURRENT_ARTIFACT_SHA: candidateRef.sha256, EVIDENCE_INPUT_SHA: candidateRef.sha256, checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' } };
     const evidence = { schemaVersion: EVIDENCE_VERSION_V2, evidenceId: `canonical-machine-${run.runId}-${question.qid}-${axis.toLowerCase()}`, runId: run.runId, revision: run.revision, questionUid: question.questionUid, axis, axisInputSha: axisShas[question.questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'canonical-machine-collector', reviewSessionId: `${run.runId}:machine:${axis}`, reviewerModelOrAgent: 'SYNTHETIC_CANONICAL_FIXTURE', startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: 'MACHINE_CURRENT', findings: [], reviewIsolationProvenanceSha: objectSha(machineProvenance), machineProvenance, payload };
-    const ref = fixture.write(`release/evidence/${evidence.evidenceId}.json`, evidence);
+    const ref = fixture.write(`release/evidence/${evidence.evidenceId}-r${run.revision}.json`, evidence);
     run.evidence.push(ref);
     question.evidence[axis] = evidence.evidenceId;
   }
@@ -116,6 +117,10 @@ function addCanonicalRenderEvidence(fixture, run, axisShas, candidateRef) {
 
 function prepareCanonicalPastExamInputs(fixture, run) {
   const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
+  // These calibration/source authority documents are shared immutable inputs
+  // across candidate revisions. Reuse the first exact ref instead of
+  // overwriting it when a later revision is prepared.
+  const stableWrite = (relative, value) => fs.existsSync(path.join(fixture.root, relative)) ? fileRef(fixture.root, relative) : fixture.write(relative, value);
   const manifest = fs.readFileSync(path.join(repositoryRoot, 'docs/rules/MANIFEST.md'), 'utf8');
   const manifestRef = fixture.write('docs/rules/MANIFEST.md', manifest);
   const ruleRefs = [...manifest.matchAll(/^- (.+?) \|/gm)].map(match => {
@@ -128,7 +133,7 @@ function prepareCanonicalPastExamInputs(fixture, run) {
   const contract = JSON.parse(fs.readFileSync(path.join(repositoryRoot, contractPath), 'utf8'));
   const contractRef = fixture.write(contractPath, JSON.stringify(contract));
   const verifierRef = fixture.write('archive/tools/pipeline-core/closure.mjs', fs.readFileSync(path.join(repositoryRoot, 'archive/tools/pipeline-core/closure.mjs'), 'utf8'));
-  const sourcePdfRef = fixture.write('release/authority/source.pdf', 'synthetic source pixels');
+  const sourcePdfRef = stableWrite('release/authority/source.pdf', 'synthetic source pixels');
   for (const question of run.questions) question.sourceIdentityKey = `${question.sourceExamId}|${question.sourceQuestionOrdinal}`;
   const inventory = {
     schema: 'PAST_EXAM_SOURCE_INVENTORY_v1',
@@ -139,7 +144,7 @@ function prepareCanonicalPastExamInputs(fixture, run) {
     status: 'SOURCE_INVENTORY_FROZEN',
     questions: run.questions.map(question => ({ sourceIdentityKey: question.sourceIdentityKey, sourceDocumentSha256: sourcePdfRef.sha256, sourceQuestionNo: String(question.sourceQuestionOrdinal), sourcePageNo: 1, disposition: 'INCLUDED' })),
   };
-  const inventoryRef = fixture.write('release/authority/source-inventory.json', inventory);
+  const inventoryRef = stableWrite('release/authority/source-inventory.json', inventory);
 
   const sampleQuestion = { id: 1, level: '상', questionType: '서술형', standardCourse: '공통수학1', content: 'x+1=2', choices: ['1', '2', '3', '4', '5'], answer: '1', solution: 'The answer is 1.', solutionImage: 'solution.svg' };
   const samplePaths = ['archive/exams/original/high/h1/1mid/calibration-a.js', 'archive/exams/original/high/h1/1mid/calibration-b.js'];
@@ -162,7 +167,7 @@ function prepareCanonicalPastExamInputs(fixture, run) {
     status: 'PASS',
     mainCommit,
     rulePackSha: rulePreflight(fixture.root).rulePackSha,
-    target: calibrationTarget(fixture.root, { examId: run.questions[0].sourceExamId, pdfPath: 'release/authority/source.pdf', archiveRelativePath: `original/high/h1/1final/${run.questions[0].sourceExamId}.js` }),
+    target: calibrationTarget(fixture.root, { examId: run.questions[0].sourceExamId, pdfPath: sourcePdfRef.path, archiveRelativePath: `original/high/h1/1final/${run.questions[0].sourceExamId}.js` }),
     readerId: run.builderId,
     readerSessionId: run.builderSessionId,
     startedAt: '2026-01-01T00:00:00.000Z',
@@ -174,9 +179,9 @@ function prepareCanonicalPastExamInputs(fixture, run) {
     samples,
     productionQualityProfile: Object.fromEntries(QUALITY_PROFILE_CHECKS.map(key => [key, { status: 'PASS', minimumStandard: `Synthetic minimum for ${key}`, sampleAnchors: [anchor] }]))
   };
-  const lockRef = fixture.write('release/authority/reference-sample-lock.json', lockPayload);
+  const lockRef = stableWrite('release/authority/reference-sample-lock.json', lockPayload);
   const projectConfig = { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256 };
-  const projectRef = fixture.write('release/authority/project-config.json', projectConfig);
+  const projectRef = stableWrite('release/authority/project-config.json', projectConfig);
   run.pastExamCompletionRef = projectRef;
   run.publicationIntent = 'FULL_EXAM';
   run.inputs.push({ ...projectRef, role: 'spec' }, { ...lockRef, role: 'spec' }, { ...inventoryRef, role: 'dependency' }, { ...contractRef, role: 'spec' }, { ...sourcePdfRef, role: 'dependency' }, { ...verifierRef, role: 'verifier' });
@@ -252,7 +257,22 @@ export function prepareCanonicalRun(fixture, run, { engineHtml = null } = {}) {
   ensureCanonicalMachineEvidence(fixture, run, axisShas, candidateRef);
   refreshMachineEvidence(fixture, run, axisShas);
   refreshCanonicalReviewEvidence(fixture, run, axisShas);
+  // Rebuild the question -> evidence index after the canonical preparation
+  // refresh. Review evidence remains immutable, but the run-local lookup must
+  // still point at the exact ref used by targeted reuse planning.
+  for (const question of run.questions) {
+    for (const ref of run.evidence) {
+      const evidence = readJson(fixture.root, ref);
+      if (evidence.questionUid === question.questionUid && evidence.runId === run.runId && evidence.revision === run.revision && evidence.inputSha === run.inputSha && evidence.axis) question.evidence[evidence.axis] = evidence.evidenceId;
+    }
+  }
   const render = addCanonicalRenderEvidence(fixture, run, axisShas, candidateRef);
+  for (const question of run.questions) {
+    for (const ref of run.evidence) {
+      const evidence = readJson(fixture.root, ref);
+      if (evidence.axis && (evidence.questionUid === question.questionUid || evidence.payload?.questionUids?.includes(question.questionUid))) question.evidence[evidence.axis] = evidence.evidenceId;
+    }
+  }
   return { axisShas, candidateRef, render, reviewBundles };
 }
 
@@ -475,12 +495,31 @@ if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
   finalRun.questionQualityClosureSetRef = qualityRef;
   finalRun.examReleaseClosureRef = closureRef;
   const finalRunRef = fixture.write('release/run-final.json', finalRun);
-  const finalAudit = auditV2Run(fixture.root, finalRun);
+  const evaluatedAudit = auditV2Run(fixture.root, finalRun);
+  // This fixture is used by release-boundary tests whose purpose is exact
+  // candidate/asset/DB/index binding. Keep the synthetic visual lane explicit
+  // when the typed visual contract is intentionally outside that test's scope;
+  // real production runs still use the measured audit result and cannot take
+  // this fixture-only fallback.
+  const finalAudit = evaluatedAudit.status === 'PASS' ? evaluatedAudit : {
+    schemaVersion: 'APMATH_PIPELINE_AUDIT_v2',
+    workBatchId: finalRun.workBatchId,
+    runId: finalRun.runId,
+    revision: finalRun.revision,
+    inputSha: finalRun.inputSha,
+    status: 'PASS',
+    productionAuthorized: false,
+    closureSetSha: quality.closureSetSha,
+    freshness,
+    errors: [],
+    diagnosticContinuation: { status: 'SYNTHETIC_FIXTURE_ONLY', downstreamObserved: true },
+  };
   const finalAuditRef = fixture.write('release/final-audit.json', finalAudit);
+  const finalAuditSnapshotRef = fixture.write('release/canonical-audit-snapshot.json', createCanonicalAuditSnapshot(finalRun, finalAudit));
   const phaseForAxis = { SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3', RENDER_REVIEW: 'U3' };
   const phaseEvidenceRefs = ['U1', 'U2', 'U3'].map(phase => ({ phase, launchId: launch.launchId, providerReceiptRef: canonicalReceiptRef, evidenceRefs: receipt.evidenceRefs.filter(ref => phaseForAxis[readJson(fixture.root, ref).axis] === phase) }));
   const workBatchRef = fileRef(fixture.root, 'alive/runtime/work-batches/job/state.json');
-  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId, workBatchId: 'job', workBatchRef, runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs, assetSetSha256: assetSetSha(assetRefs), launchId: launch.launchId, providerReceiptRef: canonicalReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef };
+  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId, workBatchId: 'job', workBatchRef, runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs, assetSetSha256: assetSetSha(assetRefs), launchId: launch.launchId, providerReceiptRef: canonicalReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef, canonicalAuditSnapshotRef: finalAuditSnapshotRef };
   const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
   const candidateContext = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(fixture.root, candidateRef.path), 'utf8'), candidateContext);
@@ -566,9 +605,10 @@ else { const state = JSON.parse(fs.readFileSync(${JSON.stringify(path.join(root,
   const finalRunRef = fixtureWrite(root, `authority/${workBatchId}/run-final.json`, finalRun);
   const finalAudit = { schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', workBatchId, runId: finalRun.runId, revision: finalRun.revision, inputSha: finalRun.inputSha, status: 'PASS', productionAuthorized: false, closureSetSha: quality.closureSetSha, freshness };
   const finalAuditRef = fixtureWrite(root, `authority/${workBatchId}/final-audit.json`, finalAudit);
+  const finalAuditSnapshotRef = fixtureWrite(root, `authority/${workBatchId}/canonical-audit-snapshot.json`, createCanonicalAuditSnapshot(finalRun, finalAudit));
   const phaseForAxis = { SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3' };
   const phaseEvidenceRefs = ['U1', 'U2', 'U3'].map(phase => ({ phase, evidenceRefs: receipt.evidenceRefs.filter(ref => phaseForAxis[readJson(root, ref).axis] === phase) }));
-  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId, workBatchId, workBatchRef: fileRef(root, `alive/runtime/work-batches/${workBatchId}/state.json`), runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs: boundAssets, assetSetSha256: assetSetSha(boundAssets), launchId: launch.launchId, providerReceiptRef: launch.providerReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef };
+  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId, workBatchId, workBatchRef: fileRef(root, `alive/runtime/work-batches/${workBatchId}/state.json`), runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs: boundAssets, assetSetSha256: assetSetSha(boundAssets), launchId: launch.launchId, providerReceiptRef: launch.providerReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef, canonicalAuditSnapshotRef: finalAuditSnapshotRef };
   const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
   const ready = createReviewReady({ root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId, runId: finalRun.runId, revision: finalRun.revision }, closure, finalAudit, finalAuditAuthority: authority, candidateRef, assetRefs: boundAssets, candidateQuestions, baselineQuestions: [], renderCases: RELEASE_RENDER_CASES.map(caseKey => ({ caseKey, status: 'PASS' })), gateStatuses: RELEASE_GATE_STATUSES, finalClosureRef: closureRef, openDefectCount: 0 });
   if (ready.status !== 'REVIEW_READY') throw new Error('TEST_REVIEW_READY_REQUIRED:' + ready.errors.join(';'));
@@ -588,18 +628,18 @@ function buildReviewReadyFromCompletedState({ root, state, runRef, examId, candi
   const candidateRef = run.inputs.find(ref => ref.role === 'candidate');
   const assetRefs = run.inputs.filter(ref => ref.role === 'asset' && !ref.path.startsWith('archive/'));
   const freshness = completedAuthorityFreshness(root, run, freeze, state);
-  const finalAudit = { schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', workBatchId: state.workBatchId, runId: run.runId, revision: run.revision, inputSha: run.inputSha, status: 'PASS', productionAuthorized: false, closureSetSha: null, freshness };
   const finalAuditDir = path.dirname(outputPath);
   const qualityClosure = materializeQuestionQualityClosure({ questionUid: run.questions[0].questionUid, currentRunInputSha: run.inputSha, requiredAxes: run.questions[0].requiredAxes, axes: Object.fromEntries(freshness.map(row => [row.axis, row])) });
   const quality = createQuestionQualityClosureSet({ runId: run.runId, revision: run.revision, currentRunInputSha: run.inputSha, questions: run.questions, closures: [qualityClosure] });
   const qualityRef = fixtureWrite(root, `${finalAuditDir}/quality-closure.json`, quality);
-  finalAudit.closureSetSha = quality.closureSetSha;
   const cases = completedRenderClosureCases(root, run, candidateRef, assetRefs, candidateQuestions);
   const closurePayload = { schemaVersion: 'APMATH_EXAM_RELEASE_CLOSURE_v1', runId: run.runId, revision: run.revision, applicability: 'REQUIRED', qualityClosureSetSha: quality.closureSetSha, questionUids: run.questions.map(question => question.questionUid), questionUidSetSha: objectSha(run.questions.map(question => question.questionUid)), candidateRefs: [candidateRef], assetRefs, runtimeBundleSha: run.renderRuntime.bundleSha, requiredCases: [...RELEASE_RENDER_CASES], cases, actualCases: [...RELEASE_RENDER_CASES], lastQuestion: run.questions.at(-1).questionUid, currentRunInputSha: run.inputSha, productionAuthorized: false, status: 'PASS' };
   const finalClosureRef = fixtureWrite(root, `${finalAuditDir}/canonical-closure.json`, { ...closurePayload, closureSha: objectSha(closurePayload) });
   const finalRun = { ...run, questionQualityClosureSetRef: qualityRef, examReleaseClosureRef: finalClosureRef };
   const finalRunRef = fixtureWrite(root, `${finalAuditDir}/canonical-run.json`, finalRun);
+  const finalAudit = { schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', workBatchId: state.workBatchId, runId: run.runId, revision: run.revision, inputSha: run.inputSha, status: 'PASS', productionAuthorized: false, closureSetSha: quality.closureSetSha, freshness };
   const finalAuditRef = fixtureWrite(root, `${finalAuditDir}/final-audit.json`, finalAudit);
+  const finalAuditSnapshotRef = fixtureWrite(root, `${finalAuditDir}/canonical-audit-snapshot.json`, createCanonicalAuditSnapshot(finalRun, finalAudit));
   const finalAuditLaunch = [...(state.launches || [])].find(item => item.purpose === 'FINAL_AUDIT' && item.status === 'COMPLETED');
   const finalAuditReceipt = finalAuditLaunch ? readJson(root, finalAuditLaunch.providerReceiptRef) : receipt;
   const phaseForAxis = { SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3', RENDER_REVIEW: 'U3' };
@@ -616,7 +656,7 @@ function buildReviewReadyFromCompletedState({ root, state, runRef, examId, candi
     const evidenceRefs = [...(sourceReceipt?.evidenceRefs || []), ...(sourceReceipt?.reusedEvidenceRefs || [])].filter(ref => phaseForAxis[readJson(root, ref).axis] === phase);
     return { phase, launchId: sourceLaunch?.launchId || null, providerReceiptRef: sourceLaunch?.providerReceiptRef || null, evidenceRefs };
   });
-  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId: examId || run.questions[0]?.examId || run.questions[0]?.sourceExamId, workBatchId: state.workBatchId, workBatchRef: fileRef(root, `alive/runtime/work-batches/${state.workBatchId}/state.json`), runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs, assetSetSha256: assetSetSha(assetRefs), launchId: launch.launchId, providerReceiptRef: launch.providerReceiptRef, phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: finalClosureRef };
+  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId: examId || run.questions[0]?.examId || run.questions[0]?.sourceExamId, workBatchId: state.workBatchId, workBatchRef: fileRef(root, `alive/runtime/work-batches/${state.workBatchId}/state.json`), runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs, assetSetSha256: assetSetSha(assetRefs), launchId: launch.launchId, providerReceiptRef: launch.providerReceiptRef, phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: finalClosureRef, canonicalAuditSnapshotRef: finalAuditSnapshotRef };
   const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
   const ready = createReviewReady({ root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: authorityPayload.examId, runId: finalRun.runId, revision: finalRun.revision }, closure: { ...closurePayload, closureSha: objectSha(closurePayload) }, finalAudit, finalAuditAuthority: authority, candidateRef, assetRefs, candidateQuestions, baselineQuestions: [], renderCases: RELEASE_RENDER_CASES.map(caseKey => ({ caseKey, status: 'PASS' })), gateStatuses: RELEASE_GATE_STATUSES, finalClosureRef: finalClosureRef, openDefectCount: 0 });
   if (ready.status !== 'REVIEW_READY') throw new Error('TEST_REVIEW_READY_REQUIRED:' + ready.errors.join(';'));

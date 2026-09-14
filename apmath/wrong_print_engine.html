@@ -92,6 +92,8 @@
         .sol-chunk { display: inline; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
+        .q-content > .subjective-heading { display: block; margin-bottom: 0.8em; }
+        .q-content > .subjective-prompt { display: block; }
         .q-content img, .q-image-wrap img { display: block; max-width: 100%; height: auto; margin: 8px auto; break-inside: avoid; page-break-inside: avoid; }
         .q-content img.img-fit-tight, .q-image-wrap img.img-fit-tight { max-width: 92%; max-height: 120px; }
         .q-content img.img-fit-tighter, .q-image-wrap img.img-fit-tighter { max-width: 84%; max-height: 105px; }
@@ -962,7 +964,7 @@ function renderChoicesHTML(q) {
     return `<div class="choices choices-${mode}">${itemsHTML}</div>`;
 }
 
-function formatQuestionContent(html) {
+function applyQuestionContentBreaks(html) {
     if (!html) return '';
     let count = 0;
     return html.replace(/([\.?\!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
@@ -971,6 +973,46 @@ function formatQuestionContent(html) {
         if (p1.includes('br>') || p1.includes('\n')) return match;
         return p1 + '<br>' + p2;
     });
+}
+
+function splitSubjectiveHeadingSource(source) {
+    const value = String(source || '');
+    const locator = /(?:^|(?:<br\s*\/?>(?:\s*)?){2,}|\r?\n{2,})\s*(?=(?:\[|&lt;|<)?\s*서(?:술|논술)형(?![가-힣]))/i;
+    const located = value.match(locator);
+    if (!located) return null;
+    const markerStart = located.index + located[0].length;
+    const marker = value.slice(markerStart).match(/^(?:\[|&lt;|<)?\s*서(?:술|논술)형/i);
+    if (!marker) return null;
+
+    let headingEnd = markerStart + marker[0].length;
+    const rest = value.slice(headingEnd);
+    const numberedSuffix = rest.match(/^\s*\d+\s*(?:[.．:：)]|\]|&gt;|>)?/i);
+    const bracketSuffix = rest.match(/^\s*(?:\]|&gt;|>)/i);
+    const suffix = numberedSuffix || bracketSuffix;
+    if (!suffix) return null;
+    headingEnd += suffix[0].length;
+
+    const score = value.slice(headingEnd).match(/^\s*\[(?:총\s*)?\d+(?:\.\d+)?\s*점[^\]\r\n]*\]/);
+    if (score) headingEnd += score[0].length;
+
+    const heading = value.slice(markerStart, headingEnd).trim();
+    const body = value.slice(headingEnd).replace(/^(?:\s|<br\s*\/?>(?:\s*)?)+/i, '');
+    if (!heading || !body.trim()) return null;
+    return { prefix: value.slice(0, markerStart), heading, body };
+}
+
+function formatQuestionContent(html, q) {
+    if (!html) return '';
+    if (state.mode === 'exam') {
+        const split = splitSubjectiveHeadingSource(q?.content || q?.question || q?.text || q?.prompt || '');
+        if (split) {
+            const prefix = applyQuestionContentBreaks(wrapLatex(split.prefix));
+            const heading = applyQuestionContentBreaks(wrapLatex(split.heading));
+            const body = applyQuestionContentBreaks(wrapLatex(split.body));
+            return `${prefix}<div class="subjective-heading">${heading}</div><div class="subjective-prompt">${body}</div>`;
+        }
+    }
+    return applyQuestionContentBreaks(html);
 }
 
 function normalizeQuestionTables(html) {
@@ -988,6 +1030,91 @@ function normalizeQuestionNotes(html) {
         if (brCount < 2 && plainText.length < 60) return match;
         return `<div class="question-note-box">${noteBlock}</div>`;
     });
+}
+
+function normalizeHangulStatementBreaks(html) {
+    if (!html) return '';
+
+    const tokens = [];
+    const save = (kind, match) => {
+        const token = '__HANGUL_STATEMENT_' + kind + '_' + tokens.length + '__';
+        tokens.push(match);
+        return token;
+    };
+
+    // Keep the existing note/box wrappers available for normalization, while
+    // shielding structures whose text is not a question statement stream.
+    let protectedHtml = String(html)
+        .replace(
+            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
+            match => save('BLOCK', match)
+        )
+        .replace(
+            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi,
+            match => save('BLOCK', match)
+        )
+        .replace(
+            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
+            match => save('MATH', match)
+        )
+        .replace(/<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi, match => save('TAG', match));
+
+    const rank = new Map([['ㄱ', 0], ['ㄴ', 1], ['ㄷ', 2], ['ㄹ', 3], ['ㅁ', 4]]);
+    const markers = [...protectedHtml.matchAll(/([ㄱㄴㄷㄹㅁ])\./g)];
+    const replacements = [];
+
+    for (let index = 1; index < markers.length; index += 1) {
+        const previous = markers[index - 1];
+        const current = markers[index];
+        if (rank.get(current[1]) <= rank.get(previous[1])) continue;
+
+        const between = protectedHtml.slice(previous.index + previous[0].length, current.index);
+        if (/__HANGUL_STATEMENT_BLOCK_\d+__/.test(between)) continue;
+
+        const separatorMatch = between.match(
+            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__HANGUL_STATEMENT_TAG_\d+__)*$/i
+        );
+        const separator = separatorMatch ? separatorMatch[0] : '';
+        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
+        const tagMatches = [...separator.matchAll(/__HANGUL_STATEMENT_TAG_\d+__/gi)];
+        const lastTag = tagMatches[tagMatches.length - 1];
+        const normalizedSeparator = breakMatches.length > 0
+            ? separator.slice(0, breakMatches[0].index)
+                + '<br>'
+                + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
+                    .replace(/<br\s*\/?>/gi, '')
+                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                    .replace(/^\s+|\s+$/g, '')
+            : lastTag
+            ? separator.slice(0, lastTag.index + lastTag[0].length)
+                + separator.slice(lastTag.index + lastTag[0].length)
+                    .replace(/<br\s*\/?>/gi, '')
+                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                    .replace(/\s+/g, '')
+                + '<br>'
+            : separator
+                .replace(/<br\s*\/?>/gi, '')
+                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                .replace(/\s+/g, '') + '<br>';
+
+        replacements.push({
+            start: current.index - separator.length,
+            end: current.index,
+            value: normalizedSeparator
+        });
+    }
+
+    for (let index = replacements.length - 1; index >= 0; index -= 1) {
+        const replacement = replacements[index];
+        protectedHtml = protectedHtml.slice(0, replacement.start)
+            + replacement.value
+            + protectedHtml.slice(replacement.end);
+    }
+
+    return protectedHtml.replace(
+        /__HANGUL_STATEMENT_(?:BLOCK|MATH|TAG)_(\d+)__/g,
+        (match, index) => tokens[Number(index)] ?? ''
+    );
 }
 
 function protectRenderSegments(html) {
@@ -1022,9 +1149,99 @@ function protectRenderSegments(html) {
     };
 }
 
+
+function normalizeConditionMarkerBreaks(html) {
+    if (!html) return '';
+
+    const tokens = [];
+    const save = (kind, match) => {
+        const token = '__CONDITION_' + kind + '_' + tokens.length + '__';
+        tokens.push(match);
+        return token;
+    };
+    let protectedHtml = String(html)
+        .replace(
+            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
+            match => save('BLOCK', match)
+        )
+        .replace(
+            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<img\b[^>]*>/gi,
+            match => save('BLOCK', match)
+        )
+        .replace(
+            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
+            match => save('MATH', match)
+        )
+        .replace(
+            /<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi,
+            match => save('TAG', match)
+        );
+
+    const markers = [];
+    const addMarker = (match, index, label) => markers.push({ index, end: index + match.length, label });
+    for (const match of protectedHtml.matchAll(/[（(][가나다라마][）)]/g)) {
+        addMarker(match[0], match.index, match[0].replace(/[（()）]/g, ''));
+    }
+    for (const match of protectedHtml.matchAll(/(?:^|[\s>]|__CONDITION_TAG_[A-Z]+_\d+__)([가나다라마])\./g)) {
+        addMarker(match[0].slice(-2), match.index + match[0].length - 2, match[1]);
+    }
+    markers.sort((left, right) => left.index - right.index);
+
+    const rank = new Map([['가', 0], ['나', 1], ['다', 2], ['라', 3], ['마', 4]]);
+    const replacements = [];
+    for (let index = 1; index < markers.length; index += 1) {
+        const previous = markers[index - 1];
+        const current = markers[index];
+        if (rank.get(current.label) <= rank.get(previous.label)) continue;
+
+        const between = protectedHtml.slice(previous.end, current.index);
+        const separatorMatch = between.match(
+            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__CONDITION_TAG_[A-Z]+_\d+__)*$/i
+        );
+        const separator = separatorMatch ? separatorMatch[0] : '';
+        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
+        const markerOnlySeparator = between
+            .replace(/<br\s*\/?>/gi, '')
+            .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+            .replace(/__CONDITION_TAG_[A-Z]+_\d+__/gi, '')
+            .replace(/\s+/g, '');
+        if (!breakMatches.length && /^[,，、;；:：~〜～∼\-–—…·]*$/.test(markerOnlySeparator)) continue;
+        const normalizedSeparator = breakMatches.length > 0
+            ? separator.slice(0, breakMatches[0].index)
+                + '<br>'
+                + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
+                    .replace(/<br\s*\/?>/gi, '')
+                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                    .replace(/^\s+|\s+$/g, '')
+            : separator
+                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                .replace(/\s+/g, '')
+                + '<br>';
+
+        replacements.push({
+            start: current.index - separator.length,
+            end: current.index,
+            value: normalizedSeparator
+        });
+    }
+
+    for (let index = replacements.length - 1; index >= 0; index -= 1) {
+        const replacement = replacements[index];
+        protectedHtml = protectedHtml.slice(0, replacement.start)
+            + replacement.value
+            + protectedHtml.slice(replacement.end);
+    }
+
+    return protectedHtml.replace(
+        /__CONDITION_(?:BLOCK|MATH|TAG)_(\d+)__/g,
+        (match, index) => tokens[Number(index)] ?? ''
+    );
+}
+
 function normalizeViewBlocks(html) {
     if (!html) return '';
-    const protectedState = protectRenderSegments(html);
+    const normalizedHtml = normalizeConditionMarkerBreaks(normalizeHangulStatementBreaks(html));
+    const protectedState = protectRenderSegments(normalizedHtml);
     let out = protectedState.html;
 
     out = out.replace(
@@ -1316,7 +1533,8 @@ function buildClinicCanonicalData() {
 function prepareClinicCanonicalContent(question) {
     const raw = question.sourcePayload || {};
     const rawContent = stripInlineImagesFromContent(raw.content || raw.question || raw.text || raw.prompt || question.content || '', !!getQuestionImageRaw(raw));
-    return rewriteImgSrcInHtml(formatQuestionForRender(rawContent, raw), getQuestionArchiveFile(raw));
+    const renderQuestion = state.mode === 'exam' ? { ...raw, __apExamSubjectiveSpacing: true } : raw;
+    return rewriteImgSrcInHtml(formatQuestionForRender(rawContent, renderQuestion), getQuestionArchiveFile(raw));
 }
 
 function prepareClinicCanonicalSolution(question) {
