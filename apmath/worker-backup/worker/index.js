@@ -3196,14 +3196,25 @@ async function buildTeacherHomeFastData(request, env, currentUser, url) {
 export default {
   async scheduled(event, env, ctx) {
     const scheduledAt = new Date(event?.scheduledTime || Date.now());
-    const tasks = [
-      autoCompleteExpiredOperationMemos(env, scheduledAt)
-        .then(result => console.log('[operation-memos] scheduled auto-complete', result))
-    ];
-    if (event?.cron !== '5 15 * * *') {
-      tasks.push(saveCurrentMonthTimetableArchive(env, scheduledAt)
-        .then(result => console.log('[timetable-months] scheduled archive', result))
+    const cron = String(event?.cron || '');
+    const tasks = [];
+
+    if (cron === '0 18 * * *') {
+      tasks.push(
+        Promise.resolve()
+          .then(() => env.D1_BACKUP_WORKFLOW.create())
+          .then(instance => console.log('[d1-backup] scheduled workflow', { id: instance?.id || null }))
       );
+    } else {
+      tasks.push(
+        autoCompleteExpiredOperationMemos(env, scheduledAt)
+          .then(result => console.log('[operation-memos] scheduled auto-complete', result))
+      );
+      if (cron !== '5 15 * * *') {
+        tasks.push(saveCurrentMonthTimetableArchive(env, scheduledAt)
+          .then(result => console.log('[timetable-months] scheduled archive', result))
+        );
+      }
     }
     const task = Promise.allSettled(tasks).then(results => {
       for (const result of results) {

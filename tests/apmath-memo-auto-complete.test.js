@@ -101,8 +101,12 @@ test('날짜 변경 동기화가 실패하면 다음 검사에서 다시 시도�
 
 test('자동 완료는 매일 자정 직후와 데이터 조회 시 모두 실행된다', () => {
   assert.match(wrangler, /"5 15 \* \* \*"/, '00:05 KST daily cron must be configured');
+  assert.match(wrangler, /"0 0 28-31 \* \*"/, 'month-end cron must be configured');
+  assert.match(wrangler, /"0 18 \* \* \*"/, 'backup cron must be configured');
   assert.match(workerIndex, /async scheduled[\s\S]*autoCompleteExpiredOperationMemos\(env, scheduledAt\)/);
-  assert.match(workerIndex, /if \(event\?\.cron !== '5 15 \* \* \*'\)/, 'daily memo cron must not run month-end archive');
+  assert.match(workerIndex, /const cron = String\(event\?\.cron \|\| ''\)/);
+  assert.match(workerIndex, /if \(cron !== '5 15 \* \* \*'\)/, 'daily memo cron must not run month-end archive');
+  assert.match(workerIndex, /if \(cron === '0 18 \* \* \*'\)/, 'backup cron must use the Workflow binding');
   assert.match(workerIndex, /resource === 'initial-data'[\s\S]*await autoCompleteExpiredOperationMemos\(/);
   assert.match(operations, /if \(method === 'GET'\) \{\s*await autoCompleteExpiredOperationMemos\(/);
   assert.match(memoClient, /setInterval\(syncTodoMemosAfterKstDateChange, 60 \* 1000\)/);
