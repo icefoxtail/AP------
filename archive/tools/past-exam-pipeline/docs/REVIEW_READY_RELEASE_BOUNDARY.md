@@ -38,13 +38,13 @@ REVIEW_READY
 → DONE
 ```
 
-approval receipt는 `APMATH_FINAL_EXTERNAL_APPROVAL_v1` 형식이며 examId, reviewReadyRunId, reviewReadySha, candidateSha256, stagedAssetSetSha256, finalClosureSha, approvalStatus=APPROVED, approval evidence identity/SHA, approvedAt를 요구한다. release transaction에서는 DB/index baseline SHA도 receipt와 명시적으로 결속한다. candidate나 asset set이 바뀌면 SHA parity 검증에서 중단한다.
+approval receipt는 `APMATH_FINAL_EXTERNAL_APPROVAL_v1` 형식이며 examId, reviewReadyRunId, reviewReadySha, candidateSha256, stagedAssetSetSha256, finalClosureSha, DB/index baseline SHA, approvalStatus=APPROVED, approval evidence identity/SHA, approvedAt를 요구한다. candidate나 승인 asset set이 바뀌면 SHA parity 검증에서 중단한다.
 
-`promote-reviewed-exam.mjs`는 승인된 target JS와 target examId asset directory만 쓴다. DB와 question-index는 쓰지 않는다. `register-approved-exam.mjs`는 명시된 targetFile과 dbEntry만 처리하며 저장소 전체 미등록 시험을 자동 등록하지 않는다.
+`promote-reviewed-exam.mjs`는 `REVIEW_READY.assetBindings`의 exact path/bytes/SHA를 copy source로 사용해 승인된 target JS와 target examId asset directory만 쓴다. `assetsDir + basename`으로 source를 재탐색하지 않으며 DB와 question-index는 쓰지 않는다. `register-approved-exam.mjs`는 명시된 targetFile과 dbEntry만 처리하며 저장소 전체 미등록 시험을 자동 등록하지 않는다.
 
 DB와 index는 각각 baseline SHA를 확인하고 semantic delta를 계산한다. target 외 examId/file/qKey의 add/delete/change가 있으면 `UNEXPECTED_DB_SCOPE_DELTA` 또는 `UNEXPECTED_INDEX_SCOPE_DELTA`로 transaction을 중단한다.
 
-promotion 이후 DB/index 단계가 실패하면 `DONE`이 아니라 `HOLD`를 반환한다.
+promotion 이후 DB/index 단계가 실패하면 `DONE`이 아니라 `HOLD`를 반환한다. `PRODUCTION_SMOKE_RENDER`는 promotion·target DB parity·target index parity 후 현재 production JS/assets/DB/index의 identity와 SHA에 결박된 exam/solution/answer × desktop/mobile 6개 case를 검증한다.
 
 ## visual gate
 
@@ -61,9 +61,11 @@ candidate가 `generated_pending`, `builder_complete_pending_final_audit`, local 
 - `lib/production-boundary.mjs`: protected roots, release allowlist, transient payload gate, asset-set SHA
 - `lib/review-ready.mjs`: REVIEW_READY receipt와 six-case/baseline/visual gate
 - `lib/release-authority.mjs`: external approval, smoke render, target parity, release transaction contract
+- `lib/existing-exam.mjs`: canonical exam identity 기반 기존 production preflight
 - `promote-reviewed-exam.mjs`: target-only approved promotion
 - `register-approved-exam.mjs`: target-only DB registration와 index semantic helpers
 - `release-approved-exam.mjs`: 승인 후 고정된 release 순서
 - `pipeline-core/work-batch.mjs`: persisted REVIEW_READY terminal state
+- `pipeline-core/speed.mjs`: 기존 axis/render/evidence kernel을 이용한 validated reuse, impact-only recheck, telemetry
 
 모든 일반 builder/review output은 staging으로만 향해야 하며, `archive/exams`, `archive/assets`, `archive/db.js`, `archive/question-index.js`를 output directory로 선택하면 hard fail한다.

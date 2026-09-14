@@ -5,7 +5,7 @@ import { randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { canonicalJson, bytesSha, objectSha, readBoundFile, nonempty, safePath } from './canonical.mjs';
-import { semanticDiff, changeImpactMap, runLevelSemanticHash } from './semantic-diff.mjs';
+import { runLevelSemanticHash } from './semantic-diff.mjs';
 import { runInputSha, loadBoundQuestionBanks } from './closure.mjs';
 import { computeV2AxisInputShas } from './v2-audit.mjs';
 import { AXIS_REVIEW_BINDING, validateMachineEvidence, validateTypedEvidence } from './review-evidence-v2.mjs';
@@ -15,6 +15,8 @@ import { latestMainCommit } from '../past-exam-pipeline/lib/calibration.mjs';
 import { buildRepairPlan, defectFingerprintSet, routeDefects } from './defect-router.mjs';
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
 import { recoveryCapabilityRegistry } from './recovery-capability.mjs';
+import { validateReviewReady } from '../past-exam-pipeline/lib/review-ready.mjs';
+import { buildTargetedRecheckPlan } from './speed.mjs';
 
 import { validateSchema } from './schema.mjs';
 const budgetContract = JSON.parse(fs.readFileSync(new URL('./contracts/work-batch-v1.schema.json', import.meta.url), 'utf8'));
@@ -158,9 +160,9 @@ function mutate(root, id, fn) {
     fs.writeFileSync(fd, JSON.stringify(owner) + '\n'); fs.fsyncSync(fd);
     check(!fs.existsSync(recovering), 'LOCK_RECOVERY_IN_PROGRESS');
     const previous = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
-    if (previous) validateState(previous);
+    if (previous) validateState(previous, root);
     let state;
-    try { state = fn(previous ? structuredClone(previous) : null); validateState(state); }
+    try { state = fn(previous ? structuredClone(previous) : null); validateState(state, root); }
     catch (error) {
       if (previous && !nonPersistentReservationErrors.has(error.message)) {
         const held = { ...previous, status: 'HOLD', lastHold: { at: time(), code: error.message } };
@@ -171,7 +173,7 @@ function mutate(root, id, fn) {
       }
       throw error;
     }
-    validateState(state);
+    validateState(state, root);
     const temporary = `${file}.next`;
     const out = fs.openSync(temporary, 'wx');
     try { fs.writeFileSync(out, JSON.stringify(state, null, 2) + '\n'); fs.fsyncSync(out); } finally { fs.closeSync(out); }
@@ -204,7 +206,7 @@ export function recoverDispatchLock(root, expectedLockSha) {
   return report;
 }
 
-function validateState(state) {
+function validateState(state, root = null) {
   check(validateSchema(state, budgetContract).length === 0, 'BUDGET_STATE_CONTRACT_INVALID');
   check(state?.schemaVersion === WORK_BATCH_VERSION, 'BUDGET_POLICY_INVALID');
   const workflowProfile = state.workflowProfile || (state.policy?.maxRepairIterations > 1 ? WORKFLOW_PROFILES.PAST_EXAM : WORKFLOW_PROFILES.LEGACY);
@@ -219,9 +221,16 @@ function validateState(state) {
     check(state.productionAuthorized === false, 'REVIEW_READY_PRODUCTION_AUTHORITY_FORBIDDEN');
     check((state.openDefectSet || []).length === 0, 'REVIEW_READY_OPEN_DEFECTS');
     check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'REVIEW_READY_ACTIVE_LAUNCH');
-    if (state.reviewReadyRef) {
-      check(/^sha256:[0-9a-f]{64}$/.test(state.reviewReadyRef.sha256 || '') && Number.isSafeInteger(state.reviewReadyRef.bytes) && nonempty(state.reviewReadyRef.path), 'REVIEW_READY_REF_INVALID');
-      if (state.reviewReadySha !== state.reviewReadyRef.sha256) throw new Error('REVIEW_READY_SHA_REF_MISMATCH');
+    check(state.reviewReadyRef && /^sha256:[0-9a-f]{64}$/.test(state.reviewReadyRef.sha256 || '') && Number.isSafeInteger(state.reviewReadyRef.bytes) && nonempty(state.reviewReadyRef.path), 'REVIEW_READY_REF_INVALID');
+    if (state.reviewReadySha !== state.reviewReadyRef.sha256) throw new Error('REVIEW_READY_SHA_REF_MISMATCH');
+    if (root) {
+      try {
+        const receipt = JSON.parse(readBoundFile(root, state.reviewReadyRef).toString('utf8'));
+        check(validateReviewReady(receipt, { root }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
+      } catch (error) {
+        if (String(error.message || '').startsWith('HOLD:')) throw error;
+        throw new Error('HOLD:REVIEW_READY_RECEIPT_INVALID');
+      }
     }
   }
   if (state.predecessorWorkBatchId !== undefined) check(/^[A-Za-z0-9_-]+$/.test(state.predecessorWorkBatchId) && state.predecessorWorkBatchId !== state.workBatchId, 'PREDECESSOR_WORK_BATCH_INVALID');
@@ -312,7 +321,7 @@ function validateState(state) {
 
 export function readWorkBatch(root, id) {
   const state = JSON.parse(fs.readFileSync(statePath(root, id), 'utf8'));
-  validateState(state); return state;
+  validateState(state, root); return state;
 }
 
 export function initWorkBatch(root, spec) {
@@ -321,7 +330,7 @@ export function initWorkBatch(root, spec) {
     const directory = path.dirname(path.dirname(statePath(root, spec.workBatchId)));
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) if (entry.isDirectory()) {
       const existing = path.join(directory, entry.name, 'state.json');
-      if (fs.existsSync(existing)) { const owner = JSON.parse(fs.readFileSync(existing, 'utf8')); validateState(owner); check(!owner.runIds.some(runId => spec.runIds?.includes(runId)), 'RUN_ALREADY_OWNED_REUSE_EXISTING_WORK_BATCH'); }
+      if (fs.existsSync(existing)) { const owner = JSON.parse(fs.readFileSync(existing, 'utf8')); validateState(owner, root); check(!owner.runIds.some(runId => spec.runIds?.includes(runId)), 'RUN_ALREADY_OWNED_REUSE_EXISTING_WORK_BATCH'); }
     }
     check(Array.isArray(spec.runIds) && spec.runIds.length > 0 && sorted(spec.runIds).length === spec.runIds.length && spec.runIds.every(nonempty), 'WHOLE_JOB_RUN_IDS_REQUIRED');
     check(nonempty(spec.builderId) && nonempty(spec.builderSessionId), 'MAIN_WORKER_IDENTITY_REQUIRED');
@@ -465,8 +474,13 @@ function collectFreeze(root, state, runRefs) {
     const old = priorFreeze?.bindings.find(b => b.runId === run.runId);
     const actual = loadBoundQuestionBanks(root, run);
     const runSemanticSha = runLevelSemanticHash(run, actual);
-    const delta = semanticDiff(old?.questions || [], actual, { previousDependencies: old ? { runLevel: old.runSemanticSha } : {}, currentDependencies: { runLevel: runSemanticSha } });
-    const impact = changeImpactMap(delta, actual, { previousAxisInputShas: old?.axisInputShas || {}, currentAxisInputShas: shas });
+    const targetedPlan = buildTargetedRecheckPlan(old?.questions || [], actual, {
+      previousDependencies: old ? { runLevel: old.runSemanticSha } : {},
+      currentDependencies: { runLevel: runSemanticSha },
+      previousAxisInputShas: old?.axisInputShas || {},
+      currentAxisInputShas: shas,
+    });
+    const { diff: delta, impact } = targetedPlan;
     if (old) check(run.revision === old.revision || run.revision === old.revision + 1, 'REVISION_LINEAGE_INVALID');
     const machineEvidence = (run.evidence || []).map(ref => load(root, ref)).filter(e => MACHINE_AXES.includes(e.axis));
     for (const [uid, axes] of Object.entries(shas)) for (const axis of ['STATIC','METADATA'].filter(a => axes[a])) {
@@ -595,13 +609,10 @@ export function markWorkBatchReviewReady(root, id, { reviewReadyRef = null, revi
     check((state.openDefectSet || []).length === 0, 'OPEN_DEFECTS_REMAIN');
     check((state.repairIterations || []).every(iteration => iteration.status === 'CLOSED'), 'REPAIR_CLOSURE_REQUIRED');
     check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED'), 'FINAL_AUDIT_REQUIRED');
-    if (reviewReadyRef) {
-      check(/^sha256:[0-9a-f]{64}$/.test(reviewReadyRef.sha256 || '') && Number.isSafeInteger(reviewReadyRef.bytes) && nonempty(reviewReadyRef.path), 'REVIEW_READY_REF_INVALID');
-      readBoundFile(root, reviewReadyRef);
-      check(reviewReadySha === reviewReadyRef.sha256, 'REVIEW_READY_SHA_REF_MISMATCH');
-    } else {
-      check(reviewReadySha === null, 'REVIEW_READY_SHA_WITHOUT_REF');
-    }
+    check(reviewReadyRef && /^sha256:[0-9a-f]{64}$/.test(reviewReadyRef.sha256 || '') && Number.isSafeInteger(reviewReadyRef.bytes) && nonempty(reviewReadyRef.path), 'REVIEW_READY_RECEIPT_REQUIRED');
+    const receipt = JSON.parse(readBoundFile(root, reviewReadyRef).toString('utf8'));
+    check(validateReviewReady(receipt, { root }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
+    check(reviewReadySha === reviewReadyRef.sha256, 'REVIEW_READY_SHA_REF_MISMATCH');
     state.status = 'REVIEW_READY';
     state.reviewReadyRef = reviewReadyRef ? structuredClone(reviewReadyRef) : null;
     state.reviewReadySha = reviewReadySha || null;
@@ -676,7 +687,7 @@ export function reserveWorkBatchReview(root, id, request) {
     const directory = path.dirname(path.dirname(statePath(root, id)));
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) if (entry.isDirectory()) {
       const otherFile = path.join(directory, entry.name, 'state.json');
-      if (fs.existsSync(otherFile)) { const other = JSON.parse(fs.readFileSync(otherFile, 'utf8')); validateState(other); check(!other.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED'); }
+      if (fs.existsSync(otherFile)) { const other = JSON.parse(fs.readFileSync(otherFile, 'utf8')); validateState(other, root); check(!other.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED'); }
     }
     const freeze = state.freezes.at(-1);
     check(unresolvedAuthorityDefects(root, freeze).length === 0, 'AUTHORITY_BINDING_REPAIR_REQUIRED');
@@ -748,7 +759,7 @@ export function recoverLegacyReservationHold(root, id, evidenceRefs = []) {
       const otherFile = path.join(directory, entry.name, 'state.json');
       if (fs.existsSync(otherFile)) {
         const other = JSON.parse(fs.readFileSync(otherFile, 'utf8'));
-        validateState(other);
+        validateState(other, root);
         check(!other.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED');
       }
     }

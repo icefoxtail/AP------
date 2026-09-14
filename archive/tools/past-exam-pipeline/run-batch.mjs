@@ -3,6 +3,7 @@ import { parseArgs, loadConfig } from "./lib/config.mjs";
 import { ensureDir, listPdfFiles, readJson, rel, writeJson } from "./lib/fs-utils.mjs";
 import { buildManifestFromInventoryItem, parseExamPdfMetadata } from "./lib/exam-id.mjs";
 import { runOneExam } from "./run-one-exam.mjs";
+import { existingExamPreflight, loadExistingExamEntries } from "./lib/existing-exam.mjs";
 
 function toFullYear(twoDigit) {
   const n = Number(twoDigit);
@@ -17,7 +18,7 @@ function normalizeExamType(value) {
   return value;
 }
 
-function filterInventory(items, cfg) {
+export function filterInventory(items, cfg) {
   const args = cfg.args;
   let selected = items.filter((item) => item.parseStatus === "parsed" && item.pdfKind === "problem");
   if (args.years.length) {
@@ -35,6 +36,7 @@ function filterInventory(items, cfg) {
   if (args.grade) selected = selected.filter((item) => item.grade === args.grade);
   if (args.semester) selected = selected.filter((item) => item.semester === args.semester.replace(/\D/g, ""));
   if (args.examType) selected = selected.filter((item) => item.examType === normalizeExamType(args.examType));
+  if (!(args.forceExisting || cfg.existingExamMode === "FORCE_EXISTING")) selected = selected.filter((item) => !item.existingExam?.skip);
   if (args.limit > 0) selected = selected.slice(0, args.limit);
   return selected;
 }
@@ -65,6 +67,13 @@ function summarizeJobResult(job, result, index) {
     nextActions: result?.nextActions || "",
     blockedReasons: result?.blockedReasons || [],
     nextStages: result?.nextStages || [],
+    skipReason: result?.skipReason || "",
+    existingProductionFile: result?.existingProductionFile || "",
+    providerInvocationCount: result?.providerInvocationCount ?? 0,
+    modelInvocationCount: result?.modelInvocationCount ?? 0,
+    extractionInvocationCount: result?.extractionInvocationCount ?? 0,
+    dbIndexWriteCount: result?.dbIndexWriteCount ?? 0,
+    telemetry: result?.telemetry || null,
   };
 }
 
@@ -88,6 +97,13 @@ async function writeBatchProgress(cfg, manifestFile, jobs, results, active = nul
         nextActions: "",
         blockedReasons: [],
         nextStages: [],
+        skipReason: "",
+        existingProductionFile: "",
+        providerInvocationCount: 0,
+        modelInvocationCount: 0,
+        extractionInvocationCount: 0,
+        dbIndexWriteCount: 0,
+        telemetry: null,
       };
     }
     return summarizeJobResult(job, result, index + 1);
@@ -127,7 +143,7 @@ async function writeBatchProgress(cfg, manifestFile, jobs, results, active = nul
   return progress;
 }
 
-async function buildInventory(cfg) {
+export async function buildInventory(cfg) {
   await ensureDir(cfg.batchDir);
   const pdfs = await listPdfFiles(cfg.sourceRoot);
   const items = pdfs.map((pdf) => ({
@@ -151,6 +167,8 @@ async function buildInventory(cfg) {
     item.hasAnswerPdf = Boolean(group?.answer?.length);
     item.hasSolutionPdf = Boolean(group?.solution?.length);
   }
+  const existingDbEntries = loadExistingExamEntries(cfg.archiveRoot);
+  for (const item of items) item.existingExam = existingExamPreflight({ archiveRoot: cfg.archiveRoot, examIdentity: item, dbEntries: existingDbEntries });
   const duplicateGroups = new Map();
   for (const item of items.filter((entry) => entry.pdfKind === "problem")) {
     if (!item.examId) continue;
@@ -171,6 +189,9 @@ async function buildInventory(cfg) {
     parsedCount: items.filter((item) => item.parseStatus === "parsed").length,
     parsedProblemCount: items.filter((item) => item.parseStatus === "parsed" && item.pdfKind === "problem").length,
     manualReviewCount: items.filter((item) => item.parseStatus !== "parsed").length,
+    existingExamMode: cfg.existingExamMode || "NEW_EXAM_ONLY",
+    skippedExistingExamCount: items.filter((item) => item.existingExam?.skip).length,
+    newExamCount: items.filter((item) => item.parseStatus === "parsed" && item.pdfKind === "problem" && !item.existingExam?.skip).length,
     duplicateExamIdCount: duplicates.length,
     items
   };
@@ -200,7 +221,8 @@ async function main() {
         grade: args.grade,
         semester: args.semester,
         examType: args.examType,
-        limit: args.limit
+        limit: args.limit,
+        existingMode: cfg.existingExamMode || (args.forceExisting ? "FORCE_EXISTING" : "NEW_EXAM_ONLY")
       },
       jobCount: manifests.length,
       jobs: manifests

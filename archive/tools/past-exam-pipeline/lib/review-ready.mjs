@@ -6,6 +6,7 @@ import {
   bytesSha,
   canonicalJson,
   fileRef,
+  isObject,
   objectSha,
   writeNewJson,
 } from '../../pipeline-core/canonical.mjs';
@@ -18,6 +19,7 @@ import {
   validateDefaultVisualGate,
   validateVisualBaselineNonRegression,
 } from '../../pipeline-core/solution-visual-benefit.mjs';
+import { speedTelemetry } from '../../pipeline-core/speed.mjs';
 
 export const REVIEW_READY_SCHEMA = 'APMATH_REVIEW_READY_v1';
 export const REVIEW_READY_STATUS = 'REVIEW_READY';
@@ -109,6 +111,7 @@ export function createReviewReady({
   gateStatuses = {},
   finalClosureRef = null,
   openDefectCount = 0,
+  telemetry = null,
 } = {}) {
   const errors = [];
   if (run?.pipeline !== 'past-exam') errors.push('REVIEW_READY_PAST_EXAM_REQUIRED');
@@ -120,6 +123,7 @@ export function createReviewReady({
   let candidate = null;
   let assets = [];
   let closureRef = null;
+  let assetBindings = [];
   try {
     if (!root) throw new Error('REVIEW_READY_ROOT_REQUIRED');
     candidate = actualFileRef(root, candidateRef);
@@ -136,6 +140,17 @@ export function createReviewReady({
     const candidateAssetNames = [...new Set(candidateQuestions.flatMap(question => [question.image, question.solutionImage].filter(Boolean).map(value => path.basename(String(value)))))].sort();
     const stagedAssetNames = [...new Set(assets.map(ref => path.basename(String(ref.path))))].sort();
     if (canonicalJson(candidateAssetNames) !== canonicalJson(stagedAssetNames)) throw new Error('REVIEW_READY_ASSET_SET_COVERAGE_FAIL');
+    const assetsByName = new Map();
+    for (const ref of assets) {
+      const name = path.basename(String(ref.path));
+      if (assetsByName.has(name)) throw new Error('REVIEW_READY_ASSET_BASENAME_COLLISION:' + name);
+      assetsByName.set(name, ref);
+    }
+    assetBindings = [...new Set(candidateQuestions.flatMap(question => [question.image, question.solutionImage].filter(Boolean).map(String)))].sort().map(candidatePath => {
+      const assetRef = assetsByName.get(path.basename(candidatePath));
+      if (!assetRef) throw new Error('REVIEW_READY_ASSET_BINDING_MISSING:' + candidatePath);
+      return { candidatePath, assetRef };
+    });
   } catch (error) {
     errors.push(error.message);
   }
@@ -152,6 +167,11 @@ export function createReviewReady({
   }
   if (!candidate) errors.push('REVIEW_READY_CANDIDATE_REQUIRED');
   if (!finalClosureRef?.path && !nonempty(finalClosureRef)) errors.push('FINAL_CLOSURE_REF_REQUIRED');
+  const receiptTelemetry = {
+    ...speedTelemetry({ questionCount: candidateQuestions.length }),
+    ...(telemetry || {}),
+    questionCount: telemetry?.questionCount ?? candidateQuestions.length,
+  };
 
   const payload = {
     schemaVersion: REVIEW_READY_SCHEMA,
@@ -164,6 +184,7 @@ export function createReviewReady({
     candidateRef: candidate,
     candidateSha256: candidate?.sha256 || null,
     assetRefs: assets,
+    assetBindings,
     stagedAssetSetSha256: assetSetSha(assets),
     finalClosureRef: finalClosureRef || null,
     finalClosureRefSha256: closureRef?.sha256 || null,
@@ -173,6 +194,7 @@ export function createReviewReady({
     gateStatuses: { ...gateStatuses, baselineNonRegression: baseline.status },
     openDefectCount,
     renderCases: renderCases.map(row => ({ ...row, caseKey: caseKey(row) })),
+    telemetry: receiptTelemetry,
   };
 
   if (errors.length) return { ...payload, status: 'BLOCKED', state: 'BLOCKED', errors: [...new Set(errors)] };
@@ -193,6 +215,21 @@ export function validateReviewReady(ready, { root = null, candidateRef = null, a
   errors.push(...requiredGateErrors(ready?.gateStatuses));
   errors.push(...validateRequiredRenderCases(ready?.renderCases || []).errors);
   if (ready?.openDefectCount !== 0) errors.push('OPEN_DEFECT_COUNT_NONZERO');
+  const telemetryFields = ['questionCount', 'finalAuditInvocationCount', 'targetedRecheckInvocationCount', 'reviewedQuestionAxisCount', 'reusedPassQuestionAxisCount', 'repairIterationCount', 'newSolutionVisualCount', 'reusedVisualCount', 'renderFreshCount', 'renderReusedCount', 'providerInvocationCount', 'modelInvocationCount'];
+  if (!isObject(ready?.telemetry)) errors.push('REVIEW_READY_TELEMETRY_REQUIRED');
+  else {
+    for (const field of telemetryFields) if (!Number.isSafeInteger(ready.telemetry[field]) || ready.telemetry[field] < 0) errors.push('REVIEW_READY_TELEMETRY_INVALID:' + field);
+    if (typeof ready.telemetry.skipExistingExam !== 'boolean') errors.push('REVIEW_READY_TELEMETRY_INVALID:skipExistingExam');
+  }
+  if (!Array.isArray(ready?.assetBindings)) errors.push('REVIEW_READY_ASSET_BINDINGS_REQUIRED');
+  else {
+    const refsByName = new Map((ready.assetRefs || []).map(ref => [path.basename(String(ref.path)), ref]));
+    for (const binding of ready.assetBindings) {
+      const name = path.basename(String(binding?.candidatePath || ''));
+      const ref = refsByName.get(name);
+      if (!name || !ref || canonicalJson(ref) !== canonicalJson(binding.assetRef)) errors.push('REVIEW_READY_ASSET_BINDING_INVALID:' + String(binding?.candidatePath || ''));
+    }
+  }
   const { reviewReadySha: ignored, errors: ignoredErrors, ...payload } = ready || {};
   if (!HASH_PATTERN.test(String(ready?.reviewReadySha || '')) || ready.reviewReadySha !== objectSha(payload)) errors.push('REVIEW_READY_SHA_MISMATCH');
 
@@ -207,6 +244,10 @@ export function validateReviewReady(ready, { root = null, candidateRef = null, a
         return actual;
       });
       if (assetSetSha(actualAssets) !== ready.stagedAssetSetSha256) errors.push('REVIEW_READY_ASSET_SET_SHA_MISMATCH');
+      for (const binding of ready.assetBindings || []) {
+        const actual = actualAssets.find(ref => ref.path === binding.assetRef.path);
+        if (!actual || actual.sha256 !== binding.assetRef.sha256 || actual.bytes !== binding.assetRef.bytes) errors.push('REVIEW_READY_ASSET_BINDING_SHA_MISMATCH:' + binding.candidatePath);
+      }
       const actualClosure = actualFileRef(root, ready.finalClosureRef);
       if (actualClosure.sha256 !== ready.finalClosureRefSha256) errors.push('REVIEW_READY_CLOSURE_REF_SHA_MISMATCH');
       try { validateClosureDocument(path.resolve(root, ready.finalClosureRef.path), ready.finalClosureSha); } catch (error) { errors.push(error.message); }

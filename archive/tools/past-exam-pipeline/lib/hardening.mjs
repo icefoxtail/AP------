@@ -622,10 +622,10 @@ export function productionWritePreflight({ changedPaths, receipt, candidateFile 
   if (!protectedChanges.length) return { status: "PASS", protectedChanges: [] };
   if (phase !== "PROMOTE_APPROVED_EXAM") throw new Error("UNAUTHORIZED_PRODUCTION_WRITE:" + phase);
   assertPromotionWriteScope(root, protectedChanges, { targetProductionJs, targetAssetRoot });
-  const required = ["candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "reviewReadyRunId", "approvalEvidenceIdentity", "approvalEvidenceSha256"];
+  const required = ["candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "dbBaselineSha256", "indexBaselineSha256", "reviewReadyRunId", "approvalEvidenceIdentity", "approvalEvidenceSha256"];
   const errors = required.filter((key) => !nonEmpty(receipt?.[key]));
   if (receipt?.approvalStatus !== "APPROVED") errors.push("APPROVAL_RECEIPT_NOT_APPROVED");
-  for (const key of ["candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "approvalEvidenceSha256"]) if (nonEmpty(receipt?.[key]) && !/^sha256:[0-9a-f]{64}$/.test(String(receipt[key]))) errors.push("APPROVAL_SHA_INVALID:" + key);
+  for (const key of ["candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "dbBaselineSha256", "indexBaselineSha256", "approvalEvidenceSha256"]) if (nonEmpty(receipt?.[key]) && !/^sha256:[0-9a-f]{64}$/.test(String(receipt[key]))) errors.push("APPROVAL_SHA_INVALID:" + key);
   if (closure && (closure.status !== "PASS" || closure.productionAuthorized !== false)) errors.push("REVIEW_READY_CLOSURE_INVALID");
   if (candidateFile && receipt.candidateSha256 !== fileSha(candidateFile)) errors.push("APPROVAL_CANDIDATE_SHA_MISMATCH");
   if (reviewFile && receipt.reviewFileSha256 && receipt.reviewFileSha256 !== fileSha(reviewFile)) errors.push("APPROVAL_REVIEW_SHA_MISMATCH");

@@ -10,6 +10,7 @@ import { nextWorkBatchAction } from '../pipeline-core/defect-router.mjs';
 import { materializeAuthorityBinding } from '../pipeline-core/authority-repair.mjs';
 import { materializeVisualEvidence } from '../pipeline-core/visual-repair.mjs';
 import { recoveryCapabilityRegistry } from '../pipeline-core/recovery-capability.mjs';
+import { speedTelemetry } from '../pipeline-core/speed.mjs';
 
 export const RESUME_RUNNER_VERSION = 'APMATH_PAST_EXAM_RESUME_RUNNER_v1';
 export const RESUME_ACTIONS = Object.freeze([
@@ -36,6 +37,23 @@ const defaultProviderAdapter = root => path.relative(root, path.resolve(root, 'a
 const readJsonRef = (root, ref) => JSON.parse(readBoundFile(root, ref).toString('utf8'));
 const currentRunRefs = state => state.freezes.at(-1)?.runRefs || [];
 const launchOrdinal = state => state.launches.length + 1;
+
+function resumeTelemetry(state, startedAt) {
+  const launches = state?.launches || [];
+  const completed = launches.filter(launch => launch.status === 'COMPLETED');
+  return speedTelemetry({
+    startedAt,
+    questionCount: state?.freezes?.at(-1)?.targets?.length || 0,
+    finalAuditInvocationCount: launches.filter(launch => launch.purpose === 'FINAL_AUDIT' && launch.executionRecovery !== true).length,
+    targetedRecheckInvocationCount: launches.filter(launch => launch.purpose === 'TARGETED_RECHECK' && launch.executionRecovery !== true).length,
+    reviewedQuestionAxisCount: completed.reduce((total, launch) => total + (launch.scope?.length || 0) * PHASES.length, 0),
+    reusedPassQuestionAxisCount: state?.telemetry?.reusedPassQuestionAxisCount || 0,
+    repairIterationCount: state?.repairIterations?.length || 0,
+    providerInvocationCount: launches.length,
+    modelInvocationCount: launches.length,
+    skipExistingExam: false,
+  });
+}
 
 function runRows(root, state, freeze) {
   const rows = [];
@@ -226,6 +244,8 @@ async function performRepair(root, state, action, options) {
 
 export async function resumePastExam(root, options = {}) {
   const resolvedRoot = path.resolve(root || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..'));
+  const startedAt = Date.now();
+  const withTelemetry = (result, state) => ({ ...result, telemetry: result?.telemetry || resumeTelemetry(state, startedAt) });
   let workBatchId = options.workBatchId || null;
   if (!workBatchId && options.predecessorWorkBatchId) {
     if (!options.newWorkBatchId) throw new Error('RESUME_NEW_WORK_BATCH_ID_REQUIRED');
@@ -251,7 +271,7 @@ export async function resumePastExam(root, options = {}) {
       if (review.status === 'WAITING_FOR_SLOT') return { schemaVersion: RESUME_RUNNER_VERSION, ...review, workBatchId, history, state: readWorkBatch(resolvedRoot, workBatchId) };
       continue;
     }
-    if (action.action === 'DONE') return { schemaVersion: RESUME_RUNNER_VERSION, status: 'DONE', workBatchId, history, state };
+    if (action.action === 'DONE') return withTelemetry({ schemaVersion: RESUME_RUNNER_VERSION, status: 'DONE', workBatchId, history, state }, state);
     if (action.action === 'BUILD_AND_FREEZE') {
       const refs = options.runRefs || currentRunRefs(state);
       if (!refs.length) return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: 'RUN_REFS_REQUIRED', workBatchId, history, state };
@@ -286,13 +306,14 @@ export async function resumePastExam(root, options = {}) {
     if (action.action === 'CLOSURE') {
       const closure = options.closureHandler ? await options.closureHandler({ root: resolvedRoot, state, history }) : { status: 'PASS', productionAuthorized: false };
       if (['PROMOTED', 'REGISTERED', 'DONE'].includes(typeof closure === 'string' ? closure : closure?.status) || closure?.productionAuthorized === true) throw new Error('AUTOMATIC_RELEASE_FORBIDDEN');
-      const reviewReadyRef = typeof closure === 'object' ? closure.reviewReadyRef || null : null;
-      const reviewReadySha = typeof closure === 'object' ? closure.reviewReadySha || null : null;
+      const reviewReadyRef = (typeof closure === 'object' ? closure.reviewReadyRef : null) || options.reviewReadyRef || null;
+      const reviewReadySha = (typeof closure === 'object' ? closure.reviewReadySha : null) || options.reviewReadySha || null;
+      if (!reviewReadyRef || !reviewReadySha) return withTelemetry({ schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: 'REVIEW_READY_RECEIPT_REQUIRED', productionAuthorized: false, workBatchId, history, state }, state);
       const readyState = markWorkBatchReviewReady(resolvedRoot, workBatchId, { reviewReadyRef, reviewReadySha });
-      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'REVIEW_READY', productionAuthorized: false, reviewReady: closure, workBatchId, history, state: readyState };
+      return withTelemetry({ schemaVersion: RESUME_RUNNER_VERSION, status: 'REVIEW_READY', productionAuthorized: false, reviewReady: closure, workBatchId, history, state: readyState }, readyState);
     }
     if (action.action === 'EXTERNAL_APPROVAL_REQUIRED') {
-      return { schemaVersion: RESUME_RUNNER_VERSION, status: 'REVIEW_READY', productionAuthorized: false, workBatchId, history, state };
+      return withTelemetry({ schemaVersion: RESUME_RUNNER_VERSION, status: 'REVIEW_READY', productionAuthorized: false, workBatchId, history, state }, state);
     }
     if (action.action === 'WAIT_FOR_SLOT') {
       if (options.waitForSlot) { await options.waitForSlot({ root: resolvedRoot, state }); continue; }
@@ -301,7 +322,7 @@ export async function resumePastExam(root, options = {}) {
     return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: action.reason || action.action, workBatchId, history, state };
   }
   const state = readWorkBatch(resolvedRoot, workBatchId);
-  return { schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: 'RESUME_STEP_LIMIT', workBatchId, history, state };
+  return withTelemetry({ schemaVersion: RESUME_RUNNER_VERSION, status: 'HUMAN_DECISION_REQUIRED', reason: 'RESUME_STEP_LIMIT', workBatchId, history, state }, state);
 }
 
 export const resumePastExamOnePass = resumePastExam;

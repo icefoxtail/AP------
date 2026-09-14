@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "APMATH_FINAL_EXTERNAL_APPROVAL_v1",
   "type": "object",
-  "required": ["schemaVersion", "approvalStatus", "examId", "reviewReadyRunId", "reviewReadySha", "candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "approvalEvidenceIdentity", "approvalEvidenceSha256", "approvedAt"],
+  "required": ["schemaVersion", "approvalStatus", "examId", "reviewReadyRunId", "reviewReadySha", "candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "dbBaselineSha256", "indexBaselineSha256", "approvalEvidenceIdentity", "approvalEvidenceSha256", "approvedAt"],
   "properties": {
     "schemaVersion": {"const": "APMATH_FINAL_EXTERNAL_APPROVAL_v1"},
     "approvalStatus": {"const": "APPROVED"},

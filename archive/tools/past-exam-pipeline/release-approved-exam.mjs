@@ -2,9 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { fileRef, writeNewJson } from "../pipeline-core/canonical.mjs";
+import { fileRef, objectSha, writeNewJson } from "../pipeline-core/canonical.mjs";
 import { createReleaseTransaction, assertExternalApproval, assertProductionSmokeRender, assertTargetParity } from "./lib/release-authority.mjs";
-import { assertStagingOutput } from "./lib/production-boundary.mjs";
+import { assetSetSha, assertStagingOutput } from "./lib/production-boundary.mjs";
 import { assertReviewReady } from "./lib/review-ready.mjs";
 import { promoteApprovedExam } from "./promote-reviewed-exam.mjs";
 import { loadProductionBank, loadTargetDbEntry, loadTargetIndexRows, rebuildApprovedIndex, registerApprovedExam } from "./register-approved-exam.mjs";
@@ -24,6 +24,21 @@ function targetDbEntry(root, dbEntryFile, examId) {
   const entry = readJson(dbEntryFile);
   if (entry.examId && entry.examId !== examId) throw new Error("DB_ENTRY_EXAM_ID_MISMATCH");
   return entry;
+}
+
+function productionSmokeBinding(repoRoot, manifest, reviewReady, production, currentDbEntry, indexRows) {
+  const productionJs = fileRef(repoRoot, relative(repoRoot, production.file));
+  const productionAssets = (reviewReady.assetRefs || []).map(ref => fileRef(repoRoot, "archive/assets/images/" + manifest.examId + "/" + path.basename(String(ref.path))));
+  const dbRef = fileRef(repoRoot, "archive/db.js");
+  const indexRef = fileRef(repoRoot, "archive/question-index.js");
+  return {
+    examId: manifest.examId,
+    productionJsSha256: productionJs.sha256,
+    productionAssetSetSha256: assetSetSha(productionAssets),
+    questionCount: production.questionCount,
+    dbTarget: { file: currentDbEntry.file, qCount: currentDbEntry.qCount, entrySha256: objectSha(currentDbEntry), dbFileSha256: dbRef.sha256 },
+    indexTarget: { sourceFile: manifest.archiveRelativePath.replaceAll("\\", "/"), qCount: indexRows.length, targetSha256: objectSha(indexRows), indexFileSha256: indexRef.sha256 },
+  };
 }
 
 export function executeApprovedRelease({
@@ -78,12 +93,13 @@ export function executeApprovedRelease({
     assertTargetParity({ examId: manifest.examId, targetFile: manifest.archiveRelativePath.replaceAll("\\", "/"), questionCount: production.questionCount, dbEntry: currentDbEntry, indexRows });
     stages.push("INDEX_TARGET_PARITY_PASS");
 
+    const smokeBinding = productionSmokeBinding(repoRoot, manifest, reviewReady, production, currentDbEntry, indexRows);
     const smoke = dependencies.smoke || assertProductionSmokeRender;
     stages.push("PRODUCTION_SMOKE_RENDER");
-    smoke(smokeReport, production.questionCount);
+    smoke(smokeReport, production.questionCount, smokeBinding);
     stages.push("DONE");
     const transaction = createReleaseTransaction({ reviewReady, approval, stages, status: "DONE" });
-    return { ...transaction, productionAuthorized: true, promotion, registered, indexed };
+    return { ...transaction, productionAuthorized: true, productionSmokeBinding: smokeBinding, promotion, registered, indexed };
   } catch (error) {
     const failure = { phase: stages[stages.length - 1], code: error.message };
     return { ...createReleaseTransaction({ reviewReady, approval, stages, status: "HOLD", failure }), status: "HOLD", productionAuthorized: false, failure };
@@ -94,6 +110,12 @@ function arg(name, argv = process.argv) {
   const index = argv.indexOf(name);
   if (index < 0 || !argv[index + 1]) throw new Error(name + " is required");
   return path.resolve(argv[index + 1]);
+}
+
+function scalarArg(name, argv = process.argv) {
+  const index = argv.indexOf(name);
+  if (index < 0 || !argv[index + 1]) throw new Error(name + " is required");
+  return argv[index + 1];
 }
 
 function main() {
@@ -112,8 +134,8 @@ function main() {
     approval,
     assetsDir: arg("--assets"),
     dbEntry,
-    dbBaselineSha256: process.argv[process.argv.indexOf("--db-baseline-sha256") + 1],
-    indexBaselineSha256: process.argv[process.argv.indexOf("--index-baseline-sha256") + 1],
+    dbBaselineSha256: scalarArg("--db-baseline-sha256"),
+    indexBaselineSha256: scalarArg("--index-baseline-sha256"),
     smokeReport,
     replaceExisting: process.argv.includes("--replace-existing"),
   });

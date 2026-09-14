@@ -27,6 +27,8 @@ export function validateExternalApproval({ root, reviewReady, approval, candidat
   if (!HASH_PATTERN.test(String(approval?.candidateSha256 || ''))) errors.push('APPROVAL_CANDIDATE_SHA_REQUIRED');
   if (!HASH_PATTERN.test(String(approval?.stagedAssetSetSha256 || ''))) errors.push('APPROVAL_ASSET_SET_SHA_REQUIRED');
   if (!HASH_PATTERN.test(String(approval?.finalClosureSha || ''))) errors.push('APPROVAL_CLOSURE_SHA_REQUIRED');
+  if (!HASH_PATTERN.test(String(approval?.dbBaselineSha256 || ''))) errors.push('APPROVAL_DB_BASELINE_SHA_REQUIRED');
+  if (!HASH_PATTERN.test(String(approval?.indexBaselineSha256 || ''))) errors.push('APPROVAL_INDEX_BASELINE_SHA_REQUIRED');
   if (approval?.candidateSha256 !== reviewReady?.candidateSha256) errors.push('APPROVAL_CANDIDATE_SHA_NOT_REVIEW_READY');
   if (approval?.stagedAssetSetSha256 !== reviewReady?.stagedAssetSetSha256) errors.push('APPROVAL_ASSET_SET_SHA_NOT_REVIEW_READY');
   if (approval?.finalClosureSha !== reviewReady?.finalClosureSha) errors.push('APPROVAL_CLOSURE_SHA_NOT_REVIEW_READY');
@@ -53,7 +55,7 @@ export function assertExternalApproval(options = {}) {
   return result;
 }
 
-export function validateProductionSmokeRender(report, expectedCount = null) {
+export function validateProductionSmokeRender(report, expectedCount = null, expectedBinding = null) {
   const errors = [];
   const rows = Array.isArray(report?.cases) ? report.cases : [];
   const keys = rows.map(row => row.caseKey || [row.mode, row.profile || row.viewport || row.viewportProfile].filter(Boolean).join('/'));
@@ -65,11 +67,20 @@ export function validateProductionSmokeRender(report, expectedCount = null) {
   }
   for (const key of keys) if (!required.includes(key)) errors.push('PRODUCTION_SMOKE_UNEXPECTED_CASE:' + key);
   if (report?.status !== 'PASS') errors.push('PRODUCTION_SMOKE_REPORT_NOT_PASS');
+  if (expectedBinding) {
+    const binding = report?.productionBinding;
+    if (!binding || binding.examId !== expectedBinding.examId) errors.push('PRODUCTION_SMOKE_EXAM_ID_BINDING_FAIL');
+    if (!binding || binding.productionJsSha256 !== expectedBinding.productionJsSha256) errors.push('PRODUCTION_SMOKE_JS_SHA_BINDING_FAIL');
+    if (!binding || binding.productionAssetSetSha256 !== expectedBinding.productionAssetSetSha256) errors.push('PRODUCTION_SMOKE_ASSET_SET_SHA_BINDING_FAIL');
+    if (!binding || binding.questionCount !== expectedBinding.questionCount) errors.push('PRODUCTION_SMOKE_QUESTION_COUNT_BINDING_FAIL');
+    if (!binding || canonicalJson(binding.dbTarget || null) !== canonicalJson(expectedBinding.dbTarget || null)) errors.push('PRODUCTION_SMOKE_DB_TARGET_BINDING_FAIL');
+    if (!binding || canonicalJson(binding.indexTarget || null) !== canonicalJson(expectedBinding.indexTarget || null)) errors.push('PRODUCTION_SMOKE_INDEX_TARGET_BINDING_FAIL');
+  }
   return { status: errors.length ? 'FAIL' : 'PASS', errors: [...new Set(errors)] };
 }
 
-export function assertProductionSmokeRender(report, expectedCount = null) {
-  const result = validateProductionSmokeRender(report, expectedCount);
+export function assertProductionSmokeRender(report, expectedCount = null, expectedBinding = null) {
+  const result = validateProductionSmokeRender(report, expectedCount, expectedBinding);
   if (result.status !== 'PASS') throw new Error('PRODUCTION_SMOKE_BLOCKED:' + result.errors.join(';'));
   return result;
 }

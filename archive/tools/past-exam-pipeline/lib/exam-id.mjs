@@ -75,6 +75,31 @@ function parseCourse(text) {
   return COURSE_ALIASES.get(found) || found;
 }
 
+function normalizeIdentityYear(value) {
+  const digits = String(value || '').replace(/\D/g, '');
+  if (!digits) return '';
+  if (digits.length === 2) return String(2000 + Number(digits));
+  return digits.length === 4 ? digits : '';
+}
+
+function normalizeIdentitySchool(value) {
+  return String(value || '').normalize('NFKC').trim().replace(/\s+/g, '').toLocaleLowerCase();
+}
+
+export function canonicalExamIdentity(value = {}) {
+  return {
+    year: normalizeIdentityYear(value.year),
+    school: normalizeIdentitySchool(value.school ?? value.schoolName),
+    grade: String(value.grade || '').trim(),
+    semester: String(value.semester || '').replace(/\D/g, ''),
+    examType: String(value.examType || '').trim().toLowerCase(),
+  };
+}
+
+export function sameCanonicalExamIdentity(left, right) {
+  return JSON.stringify(canonicalExamIdentity(left)) === JSON.stringify(canonicalExamIdentity(right));
+}
+
 function parseSchool(tokens) {
   for (const token of tokens) {
     if (/^(중|고)[1-3]$/.test(token)) continue;
@@ -177,6 +202,8 @@ export function buildManifestFromInventoryItem(item, cfg, duplicateIndex = 0) {
     expectedQuestionCount: cfg.defaultQuestionCount,
     outputFileName: `${safeExamId}${cfg.candidateFileSuffix}.js`,
     outputDir: path.join(cfg.generatedRoot, safeExamId),
+    existingExamMode: cfg.existingExamMode || "NEW_EXAM_ONLY",
+    forceExisting: cfg.args?.forceExisting === true || cfg.existingExamMode === "FORCE_EXISTING",
     status: item.parseStatus === "parsed" ? "pending" : "blocked",
     notes: item.parseIssues
   };

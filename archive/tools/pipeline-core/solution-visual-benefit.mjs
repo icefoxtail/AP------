@@ -13,16 +13,63 @@ const visualText = question => [
   question?.subUnit,
   ...(Array.isArray(question?.tags) ? question.tags : []),
   question?.content,
+  question?.solution,
 ].filter(nonempty).join(' ').toLowerCase();
 
 export function inferDefaultVisualNeed(question = {}) {
   const explicit = String(question.visualNeed || question.visual?.visualNeed || '').trim().toUpperCase();
   if (DEFAULT_VISUAL_NEED_TYPES.includes(explicit)) return { type: explicit, required: true, source: 'EXPLICIT_PIPELINE_POLICY' };
-  if (explicit === 'NONE' || explicit === 'OPTIONAL') return { type: 'NONE', required: false, source: 'EXPLICIT_EXEMPTION' };
+  const strongRequirement = String(question.visual?.requirement || '').trim().toUpperCase();
+  if (strongRequirement === 'VISUAL_REQUIRED') {
+    const declaredType = [explicit, question.visual?.expectedVisualType].map(value => String(value || '').trim().toUpperCase()).find(value => DEFAULT_VISUAL_NEED_TYPES.includes(value));
+    return { type: declaredType || 'VISUAL_REQUIRED', required: true, source: 'EXPLICIT_VISUAL_REQUIREMENT' };
+  }
   const text = visualText(question);
-  if (/(inequality|부등식|부등|해집합|수직선|구간)/i.test(text)) return { type: 'INEQUALITY_BASED', required: true, source: 'DEFAULT_TYPE_POLICY' };
-  if (/(geometry|geometry-based|기하|도형|접선|원의 방정식|대칭이동|최단거리)/i.test(text)) return { type: 'GEOMETRY_BASED', required: true, source: 'DEFAULT_TYPE_POLICY' };
-  if (/(graph|graph-based|그래프|함수|좌표|점근선|역함수|합성함수|대응)/i.test(text)) return { type: 'GRAPH_BASED', required: true, source: 'DEFAULT_TYPE_POLICY' };
+  const unitText = [question?.standardUnit, question?.subUnit, question?.category].filter(nonempty).join(' ').toLowerCase();
+
+  // A unit-level policy can be stronger than the generic classifier. Keep it
+  // explicit and narrow: course names or one isolated word such as 함수 or
+  // 좌표 are not enough to manufacture a visual obligation.
+  if (/도형의\s*방정식|coordinate\s*geometry|analytic\s*geometry/.test(unitText)) {
+    return { type: 'GEOMETRY_BASED', required: true, source: 'UNIT_SPECIFIC_POLICY' };
+  }
+
+  // These predicates describe a visual operation or relationship, not merely
+  // a topic label. In particular, 함수/좌표/구간/역함수/합성함수 alone do not
+  // match any predicate below.
+  const graphInterpretation = [
+    /그래프(?:를|에|의|상|로|와|에서)/,
+    /그래프.{0,24}(그려|읽|해석|비교|이용|나타내|교점|절편|꼭짓점|영역)/,
+    /(절편|꼭짓점|점근선|사분면|교점).{0,24}(구하|찾|읽|비교|그래프|위치|개수)/,
+    /(영역|넓이).{0,24}(그래프|곡선|직선|좌표평면)/,
+    /(함수|곡선).{0,24}(교점|절편|꼭짓점|점근선|사분면|그래프)/,
+    /graph.{0,24}(intercept|vertex|intersection|asymptote|plot|read|interpret)/i,
+  ].some(pattern => pattern.test(text));
+  if (graphInterpretation) return { type: 'GRAPH_BASED', required: true, source: 'SEMANTIC_VISUAL_POLICY' };
+
+  const inequalityInterpretation = [
+    /해집합/,
+    /수직선/,
+    /부호\s*(?:표|구간)/,
+    /(부등식|부등).{0,28}(해|범위|구간|영역|경계|포함|제외).{0,28}(나타내|표시|겹치|공통|그리|읽|비교)/,
+    /(경계|끝점).{0,16}(포함|제외|열린|닫힌)/,
+    /(영역|구간).{0,24}(그래프|수직선|부등식|해집합)/,
+    /inequalit.{0,24}(number\s*line|solution\s*set|sign\s*chart|boundary|region)/i,
+  ].some(pattern => pattern.test(text));
+  if (inequalityInterpretation) return { type: 'INEQUALITY_BASED', required: true, source: 'SEMANTIC_VISUAL_POLICY' };
+
+  const geometryInterpretation = [
+    /접선/,
+    /반지름/,
+    /대칭\s*이동|대칭이동/,
+    /최단\s*거리|자취|위치\s*관계/,
+    /(평행|수직).{0,24}(직선|선분|두\s*직선|관계|조건)/,
+    /(점|직선|원|삼각형|도형).{0,24}(거리|교점|접선|반지름|평행|수직|대칭|이동|자취|위치)/,
+    /geometry.{0,24}(distance|parallel|perpendicular|tangent|radius|locus|symmetr|position)/i,
+  ].some(pattern => pattern.test(text));
+  if (geometryInterpretation) return { type: 'GEOMETRY_BASED', required: true, source: 'SEMANTIC_VISUAL_POLICY' };
+
+  if (explicit === 'NONE' || explicit === 'OPTIONAL') return { type: 'NONE', required: false, source: 'EXPLICIT_EXEMPTION_AFTER_SEMANTIC_CHECK' };
   return { type: 'NONE', required: false, source: 'NO_DEFAULT_VISUAL_MATCH' };
 }
 

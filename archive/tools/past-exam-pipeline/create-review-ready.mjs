@@ -47,6 +47,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       gateStatuses: readJson(arg("--gates")),
       finalClosureRef: fileRef(root, path.relative(root, path.resolve(finalClosurePath)).split(path.sep).join("/")),
       openDefectCount: Number(optionalArg("--open-defect-count") || 0),
+      telemetry: process.argv.includes("--telemetry") ? readJson(arg("--telemetry")) : null,
     });
     if (ready.status !== "REVIEW_READY") throw new Error("REVIEW_READY_BLOCKED:" + ready.errors.join(";"));
     const ref = writeReviewReady(root, arg("--out"), ready);
