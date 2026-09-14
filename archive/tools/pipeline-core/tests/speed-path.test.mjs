@@ -9,6 +9,7 @@ import { objectSha } from '../canonical.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
 import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, providerTelemetryFromReceipts, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
 import { validateRenderTransitionParity } from '../render-impact.mjs';
+import { createScreenshotStore } from '../render.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
 import { runOneExam } from '../../past-exam-pipeline/run-one-exam.mjs';
 
@@ -263,4 +264,24 @@ test('SPEED-09 mode transition reuse requires complete render identity parity', 
   assert.ok(validateRenderTransitionParity(previous, { ...next, candidateSha: 'sha-changed' }).errors.includes('CANDIDATE_IDENTITY_MISMATCH'));
   assert.ok(validateRenderTransitionParity(previous, { ...next, viewport: 'mobile' }).errors.includes('VIEWPORT_IDENTITY_MISMATCH'));
   assert.ok(validateRenderTransitionParity(previous, { ...next, snapshotId: null }).errors.includes('RUNTIME_SNAPSHOT_IDENTITY_MISSING'));
+});
+
+test('SPEED-10 screenshot store reuses only exact pixels within the same case', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-screenshot-store-'));
+  try {
+    const store = createScreenshotStore(root);
+    const first = store.write(Buffer.from('same-pixels'), 'captures/exam-desktop-q1.png', { caseKey: 'exam/desktop' });
+    const duplicate = store.write(Buffer.from('same-pixels'), 'captures/exam-desktop-q1-block.png', { caseKey: 'exam/desktop' });
+    const otherCase = store.write(Buffer.from('same-pixels'), 'captures/exam-mobile-q1.png', { caseKey: 'exam/mobile' });
+    assert.equal(first.ref.path, duplicate.ref.path);
+    assert.notEqual(first.ref.path, otherCase.ref.path);
+    assert.equal(first.reused, false);
+    assert.equal(duplicate.reused, true);
+    assert.equal(store.stats().uniqueFileCount, 2);
+    assert.equal(store.stats().dedupHitCount, 1);
+    assert.equal(store.stats().writtenBytes, Buffer.byteLength('same-pixels') * 2);
+    assert.equal(fs.existsSync(path.join(root, 'captures/exam-desktop-q1-block.png')), false);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
 });
