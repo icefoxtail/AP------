@@ -326,7 +326,7 @@ test("direct production write guard requires a promotion receipt", () => {
     phase: "PROMOTE_APPROVED_EXAM",
     targetProductionJs: "archive/exams/original/high/h1/1final/x.js",
     targetAssetRoot: "archive/assets/images/x",
-    receipt: { approvalStatus: "APPROVED", candidateSha256: value, stagedAssetSetSha256: value, finalClosureSha: value, reviewReadyRunId: "run", approvalEvidenceIdentity: "evidence", approvalEvidenceSha256: value },
+    receipt: { approvalStatus: "APPROVED", candidateSha256: value, stagedAssetSetSha256: value, finalClosureSha: value, dbBaselineSha256: value, indexBaselineSha256: value, reviewReadyRunId: "run", approvalEvidenceIdentity: "evidence", approvalEvidenceSha256: value },
   }).status, "PASS");
 });
 

@@ -8,10 +8,11 @@ import { fileURLToPath } from 'node:url';
 import { bytesSha, fileRef } from '../../pipeline-core/canonical.mjs';
 import { nextWorkBatchAction } from '../../pipeline-core/defect-router.mjs';
 import { assertNoProductionWrite, assertProductionPayloadClean, assertStagingOutput, stripTransientProductionFields } from '../lib/production-boundary.mjs';
-import { createReviewReady, validateDefaultVisualGate, validateVisualBaselineNonRegression } from '../lib/review-ready.mjs';
-import { validateDefaultVisualGate as coreVisualGate } from '../../pipeline-core/solution-visual-benefit.mjs';
-import { validateExternalApproval } from '../lib/release-authority.mjs';
+import { createReviewReady, validateDefaultVisualGate, validateReviewReady, validateVisualBaselineNonRegression } from '../lib/review-ready.mjs';
+import { inferDefaultVisualNeed, validateDefaultVisualGate as coreVisualGate } from '../../pipeline-core/solution-visual-benefit.mjs';
+import { assertProductionSmokeRender, validateExternalApproval, validateProductionSmokeRender } from '../lib/release-authority.mjs';
 import { executeApprovedRelease } from '../release-approved-exam.mjs';
+import { resolveApprovedAssetCopySources } from '../promote-reviewed-exam.mjs';
 import { readArchiveDb, readQuestionIndex, registerApprovedExam, assertTargetOnlyDbDelta, assertTargetOnlyIndexDelta, rebuildApprovedIndex } from '../register-approved-exam.mjs';
 
 const SHA = 'sha256:' + 'a'.repeat(64);
@@ -28,6 +29,12 @@ function renderCases() {
   return ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'].map(caseKey => ({ caseKey, status: 'PASS' }));
 }
 
+const smokeBinding = { examId: 'target', productionJsSha256: 'sha256:' + 'b'.repeat(64), productionAssetSetSha256: 'sha256:' + 'c'.repeat(64), questionCount: 1, dbTarget: { file: 'target.js', qCount: 1, entrySha256: 'sha256:' + 'd'.repeat(64), dbFileSha256: 'sha256:' + 'e'.repeat(64) }, indexTarget: { sourceFile: 'target.js', qCount: 1, targetSha256: 'sha256:' + 'f'.repeat(64), indexFileSha256: 'sha256:' + '1'.repeat(64) } };
+
+function smokeReport(binding = smokeBinding) {
+  return { status: 'PASS', productionBinding: binding, cases: renderCases().map(row => ({ ...row, expectedQuestionCount: 1, observedQuestionCount: 1 })) };
+}
+
 function makeReady(t, { withAsset = false } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-review-ready-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
@@ -40,6 +47,7 @@ function makeReady(t, { withAsset = false } = {}) {
   const gates = { sourceFidelity: 'PASS', math: 'PASS', solutionQuality: 'PASS', visual: 'PASS', metadata: 'PASS', finalAudit: 'PASS', render: 'PASS' };
   const ready = createReviewReady({ root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'target', runId: 'review-run', revision: 1 }, closure: { status: 'PASS', productionAuthorized: false }, finalAudit: { status: 'PASS' }, candidateRef, assetRefs, candidateQuestions: [question], baselineQuestions: [], renderCases: renderCases(), gateStatuses: gates, finalClosureRef: fileRef(root, 'staging/final-closure.json'), openDefectCount: 0 });
   assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready.errors));
+  assert.equal(validateReviewReady(ready, { root }).status, 'PASS');
   const approval = { schemaVersion: 'APMATH_FINAL_EXTERNAL_APPROVAL_v1', approvalStatus: 'APPROVED', examId: 'target', reviewReadyRunId: ready.reviewReadyRunId, reviewReadySha: ready.reviewReadySha, candidateSha256: ready.candidateSha256, stagedAssetSetSha256: ready.stagedAssetSetSha256, finalClosureSha: ready.finalClosureSha, approvalEvidenceIdentity: 'external-review/target/approval-1', approvalEvidenceSha256: SHA, approvedAt: '2026-09-13T00:00:00.000Z' };
   return { root, candidatePath, candidateRef, assetPath, assetRefs, question, ready, approval };
 }
@@ -96,6 +104,35 @@ test('D: asset bytes changed after approval are rejected', t => {
   const checked = validateExternalApproval({ root: f.root, reviewReady: f.ready, approval: f.approval, candidateRef: f.candidateRef, assetRefs: f.assetRefs });
   assert.equal(checked.status, 'FAIL');
   assert.ok(checked.errors.includes('APPROVED_ASSET_SET_SHA_MISMATCH'));
+});
+
+test('P0: approved asset binding rejects an alternate same-basename source', t => {
+  const f = makeReady(t, { withAsset: true });
+  const alternatePath = write(f.root, 'staging/alternate/asset.svg', '<svg xmlns="http://www.w3.org/2000/svg"><path d="different"/></svg>');
+  const alternateRef = fileRef(f.root, 'staging/alternate/asset.svg');
+  assert.notEqual(alternateRef.sha256, f.ready.assetBindings[0].assetRef.sha256);
+  const sourcePlan = resolveApprovedAssetCopySources({ repoRoot: f.root, manifest: { examId: 'target' }, candidate: { questionBank: [f.question] }, reviewReady: f.ready });
+  assert.equal(sourcePlan.length, 1);
+  assert.equal(sourcePlan[0].approvedRef.sha256, f.ready.assetBindings[0].assetRef.sha256);
+  assert.notEqual(sourcePlan[0].source, alternatePath);
+  const forged = {
+    ...f.ready,
+    assetBindings: [{ candidatePath: f.ready.assetBindings[0].candidatePath, assetRef: alternateRef }],
+  };
+  assert.throws(() => resolveApprovedAssetCopySources({ repoRoot: f.root, manifest: { examId: 'target' }, candidate: { questionBank: [f.question] }, reviewReady: forged }), /APPROVED_ASSET_COPY_SOURCE_MISMATCH/);
+  const checked = validateReviewReady(forged, { root: f.root });
+  assert.equal(checked.status, 'FAIL');
+  assert.ok(checked.errors.includes('REVIEW_READY_ASSET_BINDING_INVALID:' + f.ready.assetBindings[0].candidatePath));
+  assert.ok(checked.errors.includes('REVIEW_READY_SHA_MISMATCH'));
+  assert.equal(path.basename(alternatePath), path.basename(f.ready.assetBindings[0].assetRef.path));
+});
+
+test('P0: a REVIEW_READY asset ref changed after approval cannot pass exact SHA validation', t => {
+  const f = makeReady(t, { withAsset: true });
+  fs.appendFileSync(f.assetPath, 'changed-after-approval');
+  const checked = validateReviewReady(f.ready, { root: f.root });
+  assert.equal(checked.status, 'FAIL');
+  assert.ok(checked.errors.includes('REVIEW_READY_FILE_SHA_MISMATCH:staging/asset.svg'));
 });
 
 test('E: promotion allowlist rejects DB/index writes', () => {
@@ -155,12 +192,43 @@ test('release transaction follows approval, promotion, target DB registration, i
     replaceExisting: true,
     dependencies: {
       promote: ({ candidateFile }) => { fs.copyFileSync(candidateFile, f.targetPath); return { status: 'PROMOTED', examId: 'target', candidateSha256: f.reviewReady.candidateSha256, liveJs: f.targetFile }; },
+      smoke: (report, count, binding) => assertProductionSmokeRender({ ...report, productionBinding: binding }, count, binding),
     },
   });
   assert.equal(result.status, 'DONE', JSON.stringify(result));
   assert.deepEqual(result.stages, ['REVIEW_READY', 'EXTERNAL_APPROVED', 'PROMOTE_APPROVED_EXAM', 'PROMOTION_PARITY_PASS', 'REGISTER_APPROVED_EXAM', 'DB_TARGET_PARITY_PASS', 'INDEX_REBUILD', 'INDEX_TARGET_PARITY_PASS', 'PRODUCTION_SMOKE_RENDER', 'DONE']);
   assert.equal(readArchiveDb(f.dbPath).mainDB.exams.length, 1);
   assert.equal(readQuestionIndex(f.indexPath).filter(row => row.sourceFile === f.targetFile).length, 1);
+});
+
+test('stale pre-promotion smoke report is rejected', () => {
+  const checked = validateProductionSmokeRender({ status: 'PASS', cases: smokeReport().cases }, 1, smokeBinding);
+  assert.equal(checked.status, 'FAIL');
+  assert.ok(checked.errors.includes('PRODUCTION_SMOKE_EXAM_ID_BINDING_FAIL'));
+});
+
+test('smoke report from an older production JS is rejected', () => {
+  const checked = validateProductionSmokeRender(smokeReport({ ...smokeBinding, productionJsSha256: 'sha256:' + '0'.repeat(64) }), 1, smokeBinding);
+  assert.equal(checked.status, 'FAIL');
+  assert.ok(checked.errors.includes('PRODUCTION_SMOKE_JS_SHA_BINDING_FAIL'));
+});
+
+test('smoke report from changed production assets is rejected', () => {
+  const checked = validateProductionSmokeRender(smokeReport({ ...smokeBinding, productionAssetSetSha256: 'sha256:' + '0'.repeat(64) }), 1, smokeBinding);
+  assert.equal(checked.status, 'FAIL');
+  assert.ok(checked.errors.includes('PRODUCTION_SMOKE_ASSET_SET_SHA_BINDING_FAIL'));
+});
+
+test('smoke report from changed DB or index target is rejected', () => {
+  const changedDb = validateProductionSmokeRender(smokeReport({ ...smokeBinding, dbTarget: { ...smokeBinding.dbTarget, dbFileSha256: 'sha256:' + '0'.repeat(64) } }), 1, smokeBinding);
+  const changedIndex = validateProductionSmokeRender(smokeReport({ ...smokeBinding, indexTarget: { ...smokeBinding.indexTarget, indexFileSha256: 'sha256:' + '0'.repeat(64) } }), 1, smokeBinding);
+  assert.ok(changedDb.errors.includes('PRODUCTION_SMOKE_DB_TARGET_BINDING_FAIL'));
+  assert.ok(changedIndex.errors.includes('PRODUCTION_SMOKE_INDEX_TARGET_BINDING_FAIL'));
+});
+
+test('smoke report bound to current production identity passes', () => {
+  const checked = validateProductionSmokeRender(smokeReport(), 1, smokeBinding);
+  assert.equal(checked.status, 'PASS', JSON.stringify(checked));
 });
 
 test('L: deleting a baseline solution visual is a hard regression', () => {
@@ -173,6 +241,38 @@ test('M: GRAPH_BASED defaults to required visual', () => {
   const result = coreVisualGate({ id: 1, visualNeed: 'GRAPH_BASED', solution: '' });
   assert.equal(result.status, 'FAIL');
   assert.ok(result.errors.includes('SOLUTION_VISUAL_MISSING'));
+});
+
+test('visual classifier does not require a visual for simple function, inverse, composition, interval, or coordinate substitution', () => {
+  const simple = [
+    { content: '함수 f(x)=2x+1의 값을 구하여라.', solution: '' },
+    { content: '함수 f와 g의 합성함수 (f∘g)(1)을 구하여라.', solution: '' },
+    { content: '역함수의 식을 구하여라.', solution: '' },
+    { content: '구간 1<x<3에서 정수의 개수를 구하여라.', solution: '' },
+    { content: '점 (1, 2)에 x=1, y=2를 대입하여 값을 구하여라.', solution: '' },
+  ];
+  for (const question of simple) {
+    assert.equal(inferDefaultVisualNeed(question).required, false, JSON.stringify(question));
+    assert.equal(coreVisualGate(question).status, 'PASS', JSON.stringify(question));
+  }
+});
+
+test('semantic graph interpretation and geometry relation remain visual-required', () => {
+  const graph = inferDefaultVisualNeed({ content: '함수 f(x)의 그래프를 그리고 x절편과 교점의 위치를 비교하여라.', solution: '' });
+  assert.deepEqual(graph, { type: 'GRAPH_BASED', required: true, source: 'SEMANTIC_VISUAL_POLICY' });
+  assert.equal(coreVisualGate({ content: '함수 f(x)의 그래프를 그리고 x절편과 교점의 위치를 비교하여라.', solution: '' }).status, 'FAIL');
+  const geometry = inferDefaultVisualNeed({ content: '점과 직선 사이의 거리를 구하고 두 직선의 수직 관계를 판단하여라.', solution: '' });
+  assert.deepEqual(geometry, { type: 'GEOMETRY_BASED', required: true, source: 'SEMANTIC_VISUAL_POLICY' });
+});
+
+test('NONE or OPTIONAL cannot bypass semantic visual requirement, while a typed exemption can', () => {
+  const question = { visualNeed: 'NONE', content: '부등식의 해집합을 수직선에 나타내고 경계 포함 여부를 판단하여라.', solution: '' };
+  assert.equal(inferDefaultVisualNeed(question).required, true);
+  assert.equal(coreVisualGate(question).status, 'FAIL');
+  assert.equal(coreVisualGate({ ...question, visualNeed: 'OPTIONAL' }).status, 'FAIL');
+  const exempted = coreVisualGate(question, { exemption: { status: 'APPROVED', reason: '독립 검토 기록이 텍스트 풀이만으로 결정적 시각 정보를 손실하지 않음을 입증한다.', approvalEvidenceIdentity: 'review/q-visual/exemption', approvalEvidenceSha256: SHA } });
+  assert.equal(exempted.status, 'PASS');
+  assert.equal(exempted.exempted, true);
 });
 
 test('N: INEQUALITY_BASED defaults to required visual', () => {
@@ -201,4 +301,15 @@ test('Q: weak legacy attestation cannot authorize release', t => {
   const checked = validateExternalApproval({ root: f.root, reviewReady: f.ready, approval: weak, candidateRef: f.candidateRef, assetRefs: f.assetRefs });
   assert.equal(checked.status, 'FAIL');
   assert.ok(checked.errors.includes('APPROVAL_RECEIPT_SCHEMA_INVALID'));
+});
+
+test('external approval requires DB and index baselines in both schema and runtime', t => {
+  const f = makeReady(t);
+  const schema = JSON.parse(fs.readFileSync(path.resolve(repositoryRoot, 'archive/tools/past-exam-pipeline/contracts/external-approval-v1.schema.json'), 'utf8'));
+  assert.ok(schema.required.includes('dbBaselineSha256'));
+  assert.ok(schema.required.includes('indexBaselineSha256'));
+  const checked = validateExternalApproval({ root: f.root, reviewReady: f.ready, approval: f.approval, candidateRef: f.candidateRef, assetRefs: f.assetRefs });
+  assert.equal(checked.status, 'FAIL');
+  assert.ok(checked.errors.includes('APPROVAL_DB_BASELINE_SHA_REQUIRED'));
+  assert.ok(checked.errors.includes('APPROVAL_INDEX_BASELINE_SHA_REQUIRED'));
 });
