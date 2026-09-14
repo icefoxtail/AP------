@@ -121,13 +121,13 @@ export function createReviewReady({
   if (closure?.status !== 'PASS' || closure?.productionAuthorized !== false) errors.push('REVIEW_READY_CLOSURE_NOT_QUALITY_ONLY');
   if (finalAudit?.status !== 'PASS') errors.push('FINAL_AUDIT_NOT_PASS');
   if (!finalAuditAuthority) errors.push('FINAL_AUDIT_AUTHORITY_REQUIRED');
-  else errors.push(...validateCanonicalFinalAuditAuthority(root, { authority: finalAuditAuthority, expected: { examId: run?.examId || run?.sourceExamId || null, runId: run?.runId || null, revision: run?.revision || null } }).errors);
   if (openDefectCount !== 0) errors.push('OPEN_DEFECT_COUNT_NONZERO');
 
   let candidate = null;
   let assets = [];
   let closureRef = null;
   let assetBindings = [];
+  let authorityValidationMs = 0;
   try {
     if (!root) throw new Error('REVIEW_READY_ROOT_REQUIRED');
     candidate = actualFileRef(root, candidateRef);
@@ -156,7 +156,8 @@ export function createReviewReady({
       return { candidatePath, assetRef };
     });
     if (finalAuditAuthority) {
-      errors.push(...validateCanonicalFinalAuditAuthority(root, {
+      const authorityStartedAt = Date.now();
+      const authorityValidation = validateCanonicalFinalAuditAuthority(root, {
         authority: finalAuditAuthority,
         expected: {
           examId: run?.examId || run?.sourceExamId || null,
@@ -165,7 +166,9 @@ export function createReviewReady({
           candidateSha256: candidate.sha256,
           assetSetSha256: assetSetSha(assets),
         },
-      }).errors);
+      });
+      authorityValidationMs = Math.max(0, Date.now() - authorityStartedAt);
+      errors.push(...authorityValidation.errors);
     }
   } catch (error) {
     errors.push(error.message);
@@ -183,10 +186,12 @@ export function createReviewReady({
   }
   if (!candidate) errors.push('REVIEW_READY_CANDIDATE_REQUIRED');
   if (!finalClosureRef?.path && !nonempty(finalClosureRef)) errors.push('FINAL_CLOSURE_REF_REQUIRED');
+  const telemetryDefaults = speedTelemetry({ questionCount: candidateQuestions.length, auditTimings: { authorityValidationMs } });
   const receiptTelemetry = {
-    ...speedTelemetry({ questionCount: candidateQuestions.length }),
+    ...telemetryDefaults,
     ...(telemetry || {}),
     questionCount: telemetry?.questionCount ?? candidateQuestions.length,
+    auditTimings: { ...telemetryDefaults.auditTimings, ...(telemetry?.auditTimings || {}), authorityValidationMs: telemetry?.auditTimings?.authorityValidationMs ?? authorityValidationMs },
   };
 
   const payload = {
