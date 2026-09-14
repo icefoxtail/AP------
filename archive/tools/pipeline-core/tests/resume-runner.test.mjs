@@ -49,7 +49,7 @@ test('one-pass resume runner connects provider review, route handler, repair, an
       fs.writeFileSync(phaseLog, JSON.stringify(calls));
       const axisLog = ${JSON.stringify(axisLog)};
       const axes = fs.existsSync(axisLog) ? JSON.parse(fs.readFileSync(axisLog, 'utf8')) : [];
-      axes.push({ phase: request.phase, targetedAxes: request.targetedAxes });
+      axes.push({ phase: request.phase, targetedAxes: request.targetedAxes, targetedAxesByQuestionUid: request.targetedAxesByQuestionUid });
       fs.writeFileSync(axisLog, JSON.stringify(axes));
       const firstLaunch = request.logicalLaunchId.endsWith(':1');
       const runInputSha = firstLaunch ? firstInputSha : secondInputSha;
@@ -92,7 +92,7 @@ test('one-pass resume runner connects provider review, route handler, repair, an
   assert.ok(targetedReceipt.freshAxisSet.some(row => row.questionUid === 'recovery|1' && row.axis === 'SOLUTION'));
   assert.equal(result.state.freezes.at(-1).targetedDispatchPlan.plans[0].renderReuse.schemaVersion, 'APMATH_SPEED_PATH_v1');
   const phaseAxes = JSON.parse(fs.readFileSync(axisLog, 'utf8'));
-  assert.deepEqual(phaseAxes.at(-1), { phase: 'U3', targetedAxes: ['RENDER_REVIEW', 'SOLUTION', 'V3'] });
+  assert.deepEqual(phaseAxes.at(-1), { phase: 'U3', targetedAxes: null, targetedAxesByQuestionUid: { 'recovery|1': ['RENDER_REVIEW', 'SOLUTION', 'V3'] } });
 });
 
 test('targeted recheck merges reused U1 evidence with fresh U3 evidence and preserves answer conflicts', async t => {
@@ -111,7 +111,8 @@ test('targeted recheck merges reused U1 evidence with fresh U3 evidence and pres
       const runInputSha = firstLaunch ? firstInputSha : secondInputSha;
       const revision = firstLaunch ? 1 : 2;
       const item = Array.isArray(request.packet.payload) ? request.packet.payload[0] : request.packet.payload;
-      const axis = request.phase === 'U1' ? 'MATH_A1' : request.phase === 'U2' ? 'V2' : 'MATH_A2';
+      const requestedAxes = request.targetedAxesByQuestionUid?.[item.questionUid] || request.targetedAxes;
+      const axis = requestedAxes?.[0] || (request.phase === 'U1' ? 'MATH_A1' : request.phase === 'U2' ? 'V2' : 'MATH_A2');
       const evidence = [{ schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: request.logicalLaunchId + '-' + request.phase + '-evidence', runId: 'run', revision, questionUid: item.questionUid, axis, inputSha: runInputSha, axisInputSha: 'sha256:' + 'a'.repeat(64), mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'auditor-' + request.logicalLaunchId, reviewSessionId: request.packet.auditorSessionId, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: request.packet.inputVisibilityProfile, findings: [], reviewIsolationProvenanceSha: request.packet.packetSha, launchId: request.logicalLaunchId, externalTaskId: request.externalTaskId, reviewStartInputSha: runInputSha, reviewEndInputSha: runInputSha, withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', payload: { independentAnswer: request.logicalLaunchId.endsWith(':2') && request.phase === 'U3' ? '3' : '1' } }];
       const defects = request.logicalLaunchId.endsWith(':1') && request.phase === 'U3' ? [{ runId: 'run', questionUid: 'recovery|1', type: 'CANDIDATE_MATH_DEFECT', defectClass: 'CANDIDATE_MATH_DEFECT', reason: 'synthetic repair' }] : [];
       process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 0, evidence, defects }));
