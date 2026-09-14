@@ -91,6 +91,36 @@ export async function waitForProductionReadiness(page, { timeoutMs = 45000 } = {
   return validateProductionReadiness(readiness);
 }
 
+export function createScreenshotStore(root) {
+  const byCaseAndSha = new Map();
+  const counters = { encodedCount: 0, uniqueFileCount: 0, dedupHitCount: 0, writtenBytes: 0, encodeMs: 0, writeMs: 0 };
+  return {
+    write(bytes, relative, { caseKey = 'unknown' } = {}) {
+      const payload = Buffer.from(bytes);
+      counters.encodedCount += 1;
+      const sha256 = bytesSha(payload);
+      const key = String(caseKey) + '|' + sha256;
+      const existing = byCaseAndSha.get(key);
+      if (existing) {
+        counters.dedupHitCount += 1;
+        return { ref: existing, reused: true, sha256 };
+      }
+      const startedAt = Date.now();
+      const target = safePath(root, relative, { mustExist: false });
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.writeFileSync(target, payload, { flag: 'wx' });
+      counters.writeMs += Math.max(0, Date.now() - startedAt);
+      counters.uniqueFileCount += 1;
+      counters.writtenBytes += payload.length;
+      const ref = fileRef(root, relative);
+      byCaseAndSha.set(key, ref);
+      return { ref, reused: false, sha256 };
+    },
+    observeEncode(elapsedMs) { if (Number.isFinite(elapsedMs) && elapsedMs >= 0) counters.encodeMs += elapsedMs; },
+    stats() { return { ...counters }; },
+  };
+}
+
 // This collector measures runtime and saves witnesses. Readability remains
 // NOT_TESTED until a separate reviewer actually inspects those saved screens.
 export async function captureRender(root, run, workdir, { channel = 'chrome', collectorIdentity = null } = {}) {
@@ -142,6 +172,8 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
   });
   let browser;
   const captures = [];
+  const caseMetrics = [];
+  const captureStartedAt = Date.now();
   try {
     await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
     const port = server.address().port;
@@ -151,6 +183,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
       vm.runInNewContext(readBoundFile(root, refByPath.get(candidatePath)).toString('utf8'), sourceContext, { timeout: 1000 });
       const bank = sourceContext.window.questionBank;
       const questions = run.questions.filter(q => q.candidatePath === candidatePath);
+      const screenshotStore = createScreenshotStore(root);
       const sessions = new Map();
       const ownedContexts = new Set();
       const pageStates = new WeakMap();
@@ -284,6 +317,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const { context, page, caseState, runtimeReadiness, reusedContext, transition } = preparedCase;
         const { pageErrors, failedRequests, responseHashes, runtimeResponses, pendingResponseReads } = caseState;
         const startedAt = new Date().toISOString();
+        const screenshotBaseline = screenshotStore.stats();
         /*
          * Legacy per-case navigation and observer setup is superseded by
          * prepareCase(), which owns the reusable viewport session.
@@ -362,9 +396,11 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
           }, { selector, ordinal });
           const target = page.locator(selector).nth(blockIndexes[0]);
           await target.scrollIntoViewIfNeeded(); await page.evaluate(() => scrollBy(0, -60));
+          const screenshotEncodeStartedAt = Date.now();
           const png = await page.screenshot({ type: 'png' });
           const relative = `${workdir}/${stem}-q${q.qid}.png`;
-          fs.writeFileSync(safePath(root, relative, { mustExist: false }), png, { flag: 'wx' });
+          const screenshot = screenshotStore.write(png, relative, { caseKey: mode + '/' + profile.profile });
+          screenshotStore.observeEncode(Math.max(0, Date.now() - screenshotEncodeStartedAt));
           const box = await target.boundingBox();
           const blocks = [];
           for (let blockIndex = 0; blockIndex < blockIndexes.length; blockIndex++) {
@@ -386,18 +422,25 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
             for (let segment = 0; segment < segments; segment++) {
               await page.evaluate(y => scrollTo(0, y), geometry.boundingBox.y + segment * (viewport.height - 120) - 60);
               const blockPath = `${workdir}/${stem}-q${q.qid}-b${blockIndex}-s${segment}.png`;
-              fs.writeFileSync(safePath(root, blockPath, { mustExist: false }), await page.screenshot({ type: 'png' }), { flag: 'wx' });
+              const blockEncodeStartedAt = Date.now();
+              const blockScreenshot = screenshotStore.write(await page.screenshot({ type: 'png' }), blockPath, { caseKey: mode + '/' + profile.profile });
+              screenshotStore.observeEncode(Math.max(0, Date.now() - blockEncodeStartedAt));
               const { blockId: sourceBlockId, ...geometryFields } = geometry;
               const placement = { ...geometryFields, sourceBlockId, segment, segmentOffset: segment * (viewport.height - 120) };
-              blocks.push({ questionUid: q.questionUid, mode, viewportProfile: profile.profile, caseKey: `${mode}/${profile.profile}`, ...placement, blockId: `${geometry.blockId || `${q.questionUid}:${blockIndex}`}:segment:${segment}`, placementSha: objectSha(placement), screenshot: fileRef(root, blockPath), final: blockIndex === blockIndexes.length - 1 && segment === segments - 1 });
+              blocks.push({ questionUid: q.questionUid, mode, viewportProfile: profile.profile, caseKey: `${mode}/${profile.profile}`, ...placement, blockId: `${geometry.blockId || `${q.questionUid}:${blockIndex}`}:segment:${segment}`, placementSha: objectSha(placement), screenshot: blockScreenshot.ref, final: blockIndex === blockIndexes.length - 1 && segment === segments - 1 });
             }
           }
           const first = blocks[0];
-          itemWitnesses.push({ questionUid: q.questionUid, mode, viewportProfile: profile.profile, status: 'CAPTURED', screenshot: fileRef(root, relative), boundingBox: first.boundingBox, page: first.page, column: first.column, flowPosition: first.flowPosition, continuation: blocks.length > 1, blocks, continuationDenominator: createContinuationDenominator({ questionUid: q.questionUid, cases: [`${mode}/${profile.profile}`], blocks }) });
+          itemWitnesses.push({ questionUid: q.questionUid, mode, viewportProfile: profile.profile, status: 'CAPTURED', screenshot: screenshot.ref, boundingBox: first.boundingBox, page: first.page, column: first.column, flowPosition: first.flowPosition, continuation: blocks.length > 1, blocks, continuationDenominator: createContinuationDenominator({ questionUid: q.questionUid, cases: [`${mode}/${profile.profile}`], blocks }) });
         }
         await page.locator(selector).last().scrollIntoViewIfNeeded();
+        const lastEncodeStartedAt = Date.now();
         const lastPng = await page.screenshot({ type: 'png' }), lastPath = `${workdir}/${stem}-last.png`;
-        fs.writeFileSync(safePath(root, lastPath, { mustExist: false }), lastPng, { flag: 'wx' });
+        const lastScreenshot = screenshotStore.write(lastPng, lastPath, { caseKey: mode + '/' + profile.profile });
+        screenshotStore.observeEncode(Math.max(0, Date.now() - lastEncodeStartedAt));
+        const screenshotStats = screenshotStore.stats();
+        for (const key of ['encodedCount', 'uniqueFileCount', 'dedupHitCount', 'writtenBytes', 'encodeMs', 'writeMs']) screenshotStats[key] -= screenshotBaseline[key];
+        caseMetrics.push({ caseKey: mode + '/' + profile.profile, ...screenshotStats, contextReused: reusedContext, transition: transition.action, fallbackReason: transition.fallbackReason });
         const metrics = await page.evaluate(selector => ({ observedQuestionCount: new Set([...document.querySelectorAll(selector)].map((node, index) => node.dataset.sourceRef || String(index))).size, fonts: document.fonts.status, mathJaxPresent: !!window.MathJax, mathErrors: document.querySelectorAll('mjx-merror,[data-mjx-error]').length, rawMergedRelations: /\\(?:lt|gt|leq|geq)[A-Za-z]+/.test(document.querySelector('#print-area')?.innerText || ''), badImages: [...document.querySelectorAll('#print-area img')].filter(i => !i.complete || i.naturalWidth === 0).length, renderError: document.documentElement.dataset.apRenderError || null, scrollWidth: document.documentElement.scrollWidth, viewportWidth: innerWidth }), selector);
         const assetAssociations = [];
         for (const q of questions) for (const assetPath of (mode === 'solution' ? q.solutionAssetPaths : mode === 'exam' ? q.problemAssetPaths : [])) {
@@ -418,7 +461,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const checks = { runtime: !metrics.renderError && !pageErrors.length && !failedRequests.length && !activeUnboundRequests.length ? 'PASS' : 'FAIL', mathJax: metrics.mathJaxPresent && !metrics.mathErrors && !metrics.rawMergedRelations ? 'PASS' : 'FAIL', fonts: metrics.fonts === 'loaded' ? 'PASS' : 'FAIL', imageDecode: metrics.badImages === 0 ? 'PASS' : 'FAIL', assetAssociation: assetAssociations.every(a => a.status === 'PASS') ? 'PASS' : 'FAIL', questionCount: metrics.observedQuestionCount === bank.length ? 'PASS' : 'FAIL', lastQuestion: 'PASS', clipping: geometryPass ? 'PASS' : 'FAIL', overflow: overflowPass ? 'PASS' : 'FAIL', readability: 'NOT_TESTED' };
         const mechanicalPass = ['runtime', 'mathJax', 'fonts', 'imageDecode', 'assetAssociation', 'questionCount', 'lastQuestion', 'clipping', 'overflow'].every(key => checks[key] === 'PASS');
         const currentCandidateSha = refByPath.get(candidatePath)?.sha256 || null;
-        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, runtimeReadiness, captureSession: { viewportProfile: profile.profile, contextReused: reusedContext, action: transition.action, fallbackReason: transition.fallbackReason, parity: transition.parity }, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
+        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: lastScreenshot.ref, itemWitnesses, assetAssociations, checks, metrics, runtimeReadiness, captureSession: { viewportProfile: profile.profile, contextReused: reusedContext, action: transition.action, fallbackReason: transition.fallbackReason, parity: transition.parity }, screenshotStats, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
         const recordPath = `${workdir}/${stem}.json`;
         record.payload.candidateRef = refByPath.get(candidatePath);
         record.payload.assetRefs = run.inputs.filter(ref => assetAssociations.some(row => row.path === ref.path));
@@ -431,7 +474,8 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
       for (const context of ownedContexts) await context.close();
     }
     for (const input of run.inputs) readBoundFile(root, input);
-    const report = { status: 'CAPTURED_REVIEW_REQUIRED', runId: run.runId, inputSha: run.inputSha, captures, productionAuthorized: false };
+    const screenshotStats = caseMetrics.reduce((total, row) => Object.fromEntries(Object.keys(total).map(key => [key, total[key] + (row[key] || 0)])), { encodedCount: 0, uniqueFileCount: 0, dedupHitCount: 0, writtenBytes: 0, encodeMs: 0, writeMs: 0 });
+    const report = { status: 'CAPTURED_REVIEW_REQUIRED', runId: run.runId, inputSha: run.inputSha, captures, productionAuthorized: false, totalCaptureMs: Math.max(0, Date.now() - captureStartedAt), screenshotStats, caseMetrics };
     writeNewJson(path.join(output, 'capture-report.json'), report);
     return report;
   } finally {

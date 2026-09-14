@@ -68,4 +68,8 @@ test('production Fast Runtime reuses viewport sessions while preserving six-case
   assert.ok(captures.every(capture => capture.payload.captureSession.parity.status === 'PASS'));
   assert.equal(captures.filter(capture => capture.payload.captureSession.contextReused === true).length, 4);
   assert.equal(captures.filter(capture => capture.payload.captureSession.action === 'MODE_CHANGE').length, 4);
+  assert.equal(report.caseMetrics.length, 6);
+  assert.ok(report.totalCaptureMs >= 0);
+  assert.ok(report.screenshotStats.encodedCount >= report.screenshotStats.uniqueFileCount);
+  assert.ok(report.screenshotStats.writtenBytes > 0);
 });
