@@ -51,6 +51,46 @@ export function createRenderReview(root, run, captureRef, decision) {
   };
 }
 
+export function validateProductionReadiness(readiness) {
+  if (!readiness || readiness.ok !== true) throw new Error(`RENDER_RUNTIME_NOT_READY:${readiness?.code || 'UNKNOWN'}`);
+  if (readiness.runtimePresent && (!readiness.transactionId || !readiness.sessionId)) throw new Error('RENDER_RUNTIME_TRANSACTION_BINDING_MISSING');
+  if (readiness.runtimePresent && (!readiness.snapshotId || readiness.snapshotStatus !== 'ACTIVE')) throw new Error('RENDER_RUNTIME_SNAPSHOT_INVALID');
+  if (readiness.runtimePresent && readiness.renderReady !== true) throw new Error('RENDER_RUNTIME_READY_MARKER_MISSING');
+  return readiness;
+}
+
+export async function waitForProductionReadiness(page, { timeoutMs = 45000 } = {}) {
+  const readiness = await page.evaluate(async timeout => {
+    const runtime = window.archiveScreenRuntime || null;
+    const ready = runtime?.whenIdle ? runtime.whenIdle() : window.__AP_RENDER_READY__;
+    if (!ready) return { ok: false, code: 'RENDER_READINESS_API_MISSING' };
+    const timeoutMarker = Symbol('render-readiness-timeout');
+    let outcome;
+    try {
+      outcome = await Promise.race([
+        Promise.resolve(ready).catch(error => ({ ok: false, code: 'RENDER_TRANSACTION_REJECTED', message: String(error?.message || error) })),
+        new Promise(resolve => setTimeout(() => resolve(timeoutMarker), timeout)),
+      ]);
+    } catch (error) {
+      return { ok: false, code: 'RENDER_TRANSACTION_REJECTED', message: String(error?.message || error) };
+    }
+    if (outcome === timeoutMarker) return { ok: false, code: 'RENDER_READINESS_TIMEOUT' };
+    const snapshot = runtime?.activeSnapshot || null;
+    return {
+      ...(outcome || { ok: false, code: 'RENDER_TRANSACTION_EMPTY' }),
+      runtimePresent: Boolean(runtime),
+      transactionId: outcome?.transactionId || null,
+      sessionId: outcome?.sessionId || runtime?.currentSession?.sessionId || null,
+      snapshotId: snapshot?.snapshotId || null,
+      snapshotStatus: snapshot?.status || null,
+      renderReady: document.documentElement.dataset.apRenderReady === 'true',
+      readiness: document.documentElement.dataset.apPrintReadiness || null,
+      metrics: window.__AP_RENDER_METRICS__ || null,
+    };
+  }, timeoutMs);
+  return validateProductionReadiness(readiness);
+}
+
 // This collector measures runtime and saves witnesses. Readability remains
 // NOT_TESTED until a separate reviewer actually inspects those saved screens.
 export async function captureRender(root, run, workdir, { channel = 'chrome', collectorIdentity = null } = {}) {
@@ -160,6 +200,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const url = `http://127.0.0.1:${port}/${run.renderRuntime.enginePath}?data=exams/__pipeline_review__/${index}.js&mode=${engineMode}&qpp=4&fit=screen`;
         const selector = mode === 'answer' ? '#print-area .ans-n' : '#print-area .q-box';
         await page.goto(url, { waitUntil: 'load', timeout: 45000 });
+        const runtimeReadiness = await waitForProductionReadiness(page, { timeoutMs: 45000 });
         await page.waitForFunction(({ selector, count }) => new Set([...document.querySelectorAll(selector)].map((node, index) => node.dataset.sourceRef || String(index))).size === count, { selector, count: bank.length }, { timeout: 45000 });
         await page.evaluate(async () => {
           const within = (promise, ms) => Promise.race([promise, new Promise(resolve => setTimeout(resolve, ms))]);
@@ -245,7 +286,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const checks = { runtime: !metrics.renderError && !pageErrors.length && !failedRequests.length && !activeUnboundRequests.length ? 'PASS' : 'FAIL', mathJax: metrics.mathJaxPresent && !metrics.mathErrors && !metrics.rawMergedRelations ? 'PASS' : 'FAIL', fonts: metrics.fonts === 'loaded' ? 'PASS' : 'FAIL', imageDecode: metrics.badImages === 0 ? 'PASS' : 'FAIL', assetAssociation: assetAssociations.every(a => a.status === 'PASS') ? 'PASS' : 'FAIL', questionCount: metrics.observedQuestionCount === bank.length ? 'PASS' : 'FAIL', lastQuestion: 'PASS', clipping: geometryPass ? 'PASS' : 'FAIL', overflow: overflowPass ? 'PASS' : 'FAIL', readability: 'NOT_TESTED' };
         const mechanicalPass = ['runtime', 'mathJax', 'fonts', 'imageDecode', 'assetAssociation', 'questionCount', 'lastQuestion', 'clipping', 'overflow'].every(key => checks[key] === 'PASS');
         const currentCandidateSha = refByPath.get(candidatePath)?.sha256 || null;
-        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
+        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, runtimeReadiness, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
         const recordPath = `${workdir}/${stem}.json`;
         record.payload.candidateRef = refByPath.get(candidatePath);
         record.payload.assetRefs = run.inputs.filter(ref => assetAssociations.some(row => row.path === ref.path));
