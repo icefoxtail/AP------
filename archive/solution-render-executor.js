@@ -244,7 +244,7 @@
             staging.appendChild(box);
             return box;
         });
-        await Promise.all(Array.from(staging.querySelectorAll('img')).map(deps.waitForQuestionImage));
+        await Promise.all(Array.from(staging.querySelectorAll('img')).map(img => deps.waitForQuestionImage(img)));
         if (deps.rendererMode() === 'batch') await deps.typesetMath('solution-staging', [staging]);
         if (deps.measurementMode?.() === 'batch') {
             const records = await measureSolutionBatch(solutionBoxes, staging, deps, document);
