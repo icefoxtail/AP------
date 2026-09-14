@@ -33,7 +33,7 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
   if (v2 && (![builderId, builderSessionId, builderModelOrAgent].every(value => typeof value === 'string' && value.trim()))) throw new Error('V2_BUILDER_IDENTITY_REQUIRED');
   const destination = safePath(root, workdir, { mustExist: false });
   if (fs.existsSync(destination)) throw new Error('NEW_RUN_DIRECTORY_REQUIRED');
-  for (const protectedRoot of ['archive/exams', 'archive/assets']) {
+  for (const protectedRoot of ['archive/exams', 'archive/assets', 'archive/db.js', 'archive/question-index.js']) {
     const protectedPath = path.resolve(root, protectedRoot);
     if (destination === protectedPath || destination.startsWith(`${protectedPath}${path.sep}`) || protectedPath.startsWith(`${destination}${path.sep}`)) throw new Error('PRODUCTION_WORKDIR_FORBIDDEN');
   }

@@ -78,10 +78,37 @@ exam solutions or prove that a person/agent genuinely read the files.
 
 # AP Math Past Exam Pipeline
 
-Promotion now requires `--closure-manifest <run.json>` validated by
-[`../pipeline-core/README.md`](../pipeline-core/README.md). Candidate and asset
-bytes must already be canonical and reviewed; promotion no longer reserializes
-the accepted JS. Extraction drafts may remain incomplete, but cannot be promoted
+The normal builder/review route terminates at `REVIEW_READY`. It never writes
+production exam JS/assets, `archive/db.js`, or `archive/question-index.js`.
+External approval and the release transaction are separate commands:
+
+```text
+... → CLOSURE → REVIEW_READY
+REVIEW_READY + FINAL_EXTERNAL_APPROVAL
+  → PROMOTE_APPROVED_EXAM
+  → REGISTER_APPROVED_EXAM
+  → INDEX_REBUILD
+  → PRODUCTION_SMOKE_RENDER
+  → DONE
+```
+
+`REVIEW_READY` is a quality handoff, not a production authorization. Use
+`create-review-ready.mjs` to emit the staging receipt and
+`release-approved-exam.mjs` only after an independent
+`APMATH_FINAL_EXTERNAL_APPROVAL_v1` receipt exists. Promotion writes only the
+allowlisted target JS and target asset directory. DB registration and index
+changes are target-only semantic transactions performed afterward.
+
+Promotion now requires a `REVIEW_READY` receipt and an external approval
+receipt validated by the canonical release authority. Candidate payloads must
+be sanitized before approval; transient fields such as `generated_pending`,
+builder/review status, local absolute paths, and `_generated` paths are
+rejected rather than silently copied into production.
+
+The closure manifest remains quality evidence bound into the REVIEW_READY
+receipt; it is not itself a release authorization. Candidate and asset bytes
+must already be canonical and reviewed, and promotion never reserializes the
+accepted JS. Extraction drafts may remain incomplete, but cannot be promoted
 using only a `reviewed_pass` string. `npm run quality -- --manifest <run.json>`
 checks the shared final evidence contract without production writes.
 

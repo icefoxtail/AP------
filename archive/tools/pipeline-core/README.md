@@ -26,6 +26,12 @@ One fail-closed quality contract for archive pipelines. This is a verifier and
 bounded generator library, not a general theorem prover or publication tool.
 Every PASS declares its scope; `productionAuthorized` remains false.
 
+Past Exam quality execution terminates at `REVIEW_READY`. Core closure and
+question-quality receipts never grant production authority. The separate
+`archive/tools/past-exam-pipeline/release-approved-exam.mjs` transaction
+requires an external approval receipt before promotion, target-only DB
+registration, target-only index delta validation, and production smoke render.
+
 ## Routes and integration
 
 | Pipeline | Connected boundary | Scope |
@@ -35,7 +41,7 @@ Every PASS declares its scope; `productionAuthorized` remains false.
 | function-family | candidate-only numeric generation, local report/common audit | Question quality |
 | high1-svg | line finalizer/common audit for other unit manifests | Question quality |
 | set-visual-pilot | candidate-only generator and JS attachment | Question quality |
-| past-exam | reviewed promotion binds source inventory, exact source identities, actual JS, all copied assets, and release receipt | Question quality |
+| past-exam | REVIEW_READY quality handoff; external approval release binds source identity, candidate/assets, target DB/index, and smoke render | Question quality |
 | textbook | extraction execution separate from final quality closure | Question quality |
 | alive | Python final closure invokes this same Node verifier | Question quality |
 | tag-enrichment | strict identity and quality command | Metadata only |

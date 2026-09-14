@@ -5,7 +5,7 @@ import { randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { canonicalJson, bytesSha, objectSha, readBoundFile, nonempty, safePath } from './canonical.mjs';
-import { semanticDiff, changeImpactMap, runLevelSemanticHash } from './semantic-diff.mjs';
+import { runLevelSemanticHash } from './semantic-diff.mjs';
 import { runInputSha, loadBoundQuestionBanks } from './closure.mjs';
 import { computeV2AxisInputShas } from './v2-audit.mjs';
 import { AXIS_REVIEW_BINDING, validateMachineEvidence, validateTypedEvidence } from './review-evidence-v2.mjs';
@@ -15,6 +15,8 @@ import { latestMainCommit } from '../past-exam-pipeline/lib/calibration.mjs';
 import { buildRepairPlan, defectFingerprintSet, routeDefects } from './defect-router.mjs';
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
 import { recoveryCapabilityRegistry } from './recovery-capability.mjs';
+import { validateReviewReady } from '../past-exam-pipeline/lib/review-ready.mjs';
+import { buildTargetedRecheckPlan, renderReusePlan, SPEED_PIPELINE_VERSION, TARGETED_RECHECK_PHASE_AXES } from './speed.mjs';
 
 import { validateSchema } from './schema.mjs';
 const budgetContract = JSON.parse(fs.readFileSync(new URL('./contracts/work-batch-v1.schema.json', import.meta.url), 'utf8'));
@@ -37,6 +39,7 @@ const tokenTelemetry = value => Number.isSafeInteger(value) && value >= 0 ? valu
 const retiredTokenHoldCodes = new Set(['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:TOKEN_RESERVATION_INVALID', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']);
 const nonPersistentReservationErrors = new Set(['HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED']);
 const targetKey = target => canonicalJson({ runId: target?.runId || null, questionUid: target?.questionUid || null });
+const axisPairKey = row => `${row?.runId || ''}\u0000${row?.questionUid || ''}\u0000${row?.axis || ''}`;
 const budgetForProfile = profile => profile === WORKFLOW_PROFILES.PAST_EXAM ? PAST_EXAM_AGENT_BUDGET : AGENT_BUDGET;
 const executionAttemptsForFreeze = (state, freezeSha) => (state?.executionRecovery?.attempts || []).filter(attempt => attempt.freezeSha === freezeSha);
 const lastExecutionFailure = state => {
@@ -145,6 +148,19 @@ export function reviewScopeForPurpose(state, freeze, purpose) {
   return freeze.affected.filter(target => eligible.has(targetKey(target)));
 }
 
+function validateAxisScope(scope, axisScope) {
+  check(axisScope && typeof axisScope === 'object' && !Array.isArray(axisScope), 'TARGETED_AXIS_SCOPE_INVALID');
+  const allowedTargets = new Set((scope || []).map(targetKey));
+  for (const phase of ['U1', 'U2', 'U3']) {
+    const rows = axisScope[phase];
+    check(Array.isArray(rows), 'TARGETED_AXIS_SCOPE_PHASE_REQUIRED');
+    const keys = rows.map(row => targetKey(row));
+    check(new Set(keys).size === keys.length, 'TARGETED_AXIS_SCOPE_DUPLICATE');
+    for (const row of rows) check(allowedTargets.has(targetKey(row)) && Array.isArray(row.axes) && row.axes.length > 0 && row.axes.every(nonempty) && row.axes.every(axis => TARGETED_RECHECK_PHASE_AXES[phase].includes(axis)) && new Set(row.axes).size === row.axes.length, 'TARGETED_AXIS_SCOPE_TARGET_INVALID');
+  }
+  return axisScope;
+}
+
 // All mutations share one repository lock. A crashed lock is HOLD, never a timeout lease.
 function mutate(root, id, fn) {
   const file = statePath(root, id), lock = path.join(path.dirname(path.dirname(file)), '.dispatch.lock');
@@ -158,9 +174,9 @@ function mutate(root, id, fn) {
     fs.writeFileSync(fd, JSON.stringify(owner) + '\n'); fs.fsyncSync(fd);
     check(!fs.existsSync(recovering), 'LOCK_RECOVERY_IN_PROGRESS');
     const previous = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
-    if (previous) validateState(previous);
+    if (previous) validateState(previous, root);
     let state;
-    try { state = fn(previous ? structuredClone(previous) : null); validateState(state); }
+    try { state = fn(previous ? structuredClone(previous) : null); validateState(state, root); }
     catch (error) {
       if (previous && !nonPersistentReservationErrors.has(error.message)) {
         const held = { ...previous, status: 'HOLD', lastHold: { at: time(), code: error.message } };
@@ -171,7 +187,7 @@ function mutate(root, id, fn) {
       }
       throw error;
     }
-    validateState(state);
+    validateState(state, root);
     const temporary = `${file}.next`;
     const out = fs.openSync(temporary, 'wx');
     try { fs.writeFileSync(out, JSON.stringify(state, null, 2) + '\n'); fs.fsyncSync(out); } finally { fs.closeSync(out); }
@@ -204,7 +220,7 @@ export function recoverDispatchLock(root, expectedLockSha) {
   return report;
 }
 
-function validateState(state) {
+function validateState(state, root = null) {
   check(validateSchema(state, budgetContract).length === 0, 'BUDGET_STATE_CONTRACT_INVALID');
   check(state?.schemaVersion === WORK_BATCH_VERSION, 'BUDGET_POLICY_INVALID');
   const workflowProfile = state.workflowProfile || (state.policy?.maxRepairIterations > 1 ? WORKFLOW_PROFILES.PAST_EXAM : WORKFLOW_PROFILES.LEGACY);
@@ -215,6 +231,22 @@ function validateState(state) {
   if (policy.maxRepairIterations === undefined) check(workflowProfile === WORKFLOW_PROFILES.LEGACY && policy.targetedRechecks === 1, 'BUDGET_POLICY_INVALID');
   else check(policy.maxRepairIterations === expectedBudget.maxRepairIterations, 'BUDGET_POLICY_INVALID');
   const maxRepairIterations = maxRepairIterationsForState({ workflowProfile, policy });
+  if (state.status === 'REVIEW_READY') {
+    check(state.productionAuthorized === false, 'REVIEW_READY_PRODUCTION_AUTHORITY_FORBIDDEN');
+    check((state.openDefectSet || []).length === 0, 'REVIEW_READY_OPEN_DEFECTS');
+    check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'REVIEW_READY_ACTIVE_LAUNCH');
+    check(state.reviewReadyRef && /^sha256:[0-9a-f]{64}$/.test(state.reviewReadyRef.sha256 || '') && Number.isSafeInteger(state.reviewReadyRef.bytes) && nonempty(state.reviewReadyRef.path), 'REVIEW_READY_REF_INVALID');
+    if (state.reviewReadySha !== state.reviewReadyRef.sha256) throw new Error('REVIEW_READY_SHA_REF_MISMATCH');
+    if (root) {
+      try {
+        const receipt = JSON.parse(readBoundFile(root, state.reviewReadyRef).toString('utf8'));
+        check(validateReviewReady(receipt, { root, validateAuthority: false }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
+      } catch (error) {
+        if (String(error.message || '').startsWith('HOLD:')) throw error;
+        throw new Error('HOLD:REVIEW_READY_RECEIPT_INVALID');
+      }
+    }
+  }
   if (state.predecessorWorkBatchId !== undefined) check(/^[A-Za-z0-9_-]+$/.test(state.predecessorWorkBatchId) && state.predecessorWorkBatchId !== state.workBatchId, 'PREDECESSOR_WORK_BATCH_INVALID');
   if (state.predecessorFreezeSha !== undefined) check(/^sha256:[0-9a-f]{64}$/.test(state.predecessorFreezeSha), 'PREDECESSOR_FREEZE_SHA_INVALID');
   if (state.predecessorLaunchId !== undefined) check(nonempty(state.predecessorLaunchId), 'PREDECESSOR_LAUNCH_ID_INVALID');
@@ -266,6 +298,8 @@ function validateState(state) {
     check(['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT'].includes(launch.purpose), 'PRODUCTION_OR_AXIS_DISPATCH_FORBIDDEN');
     check(launch.contextIsolation === 'STATELESS_INPUTS' && launch.subagentToolsEnabled === false && ['U1','U2','U3'].every(phase => nonempty(launch.contexts?.[phase]?.sessionId) && nonempty(launch.contexts?.[phase]?.contextId)), 'AUDITOR_CAPABILITIES_INVALID');
     check(launch.parentLaunchId === null && launch.recursiveSubagentLaunchCount === 0, 'RECURSIVE_SUBAGENT_FORBIDDEN');
+    if (launch.axisScope !== undefined) validateAxisScope(launch.scope, launch.axisScope);
+    if (launch.targetedDispatchPlanSha !== undefined) check(/^sha256:[0-9a-f]{64}$/.test(launch.targetedDispatchPlanSha || ''), 'TARGETED_DISPATCH_PLAN_SHA_INVALID');
     check(['RESERVED', 'DISPATCHED', 'COMPLETED', 'FAILED'].includes(launch.status), 'LAUNCH_STATE_INVALID');
     const freeze = state.freezes.find(f => f.freezeSha === launch.freezeSha);
     check(freeze && Date.parse(launch.reservedAt) >= Date.parse(freeze.frozenAt), 'REVIEW_BEFORE_FREEZE');
@@ -303,7 +337,7 @@ function validateState(state) {
 
 export function readWorkBatch(root, id) {
   const state = JSON.parse(fs.readFileSync(statePath(root, id), 'utf8'));
-  validateState(state); return state;
+  validateState(state, root); return state;
 }
 
 export function initWorkBatch(root, spec) {
@@ -312,7 +346,7 @@ export function initWorkBatch(root, spec) {
     const directory = path.dirname(path.dirname(statePath(root, spec.workBatchId)));
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) if (entry.isDirectory()) {
       const existing = path.join(directory, entry.name, 'state.json');
-      if (fs.existsSync(existing)) { const owner = JSON.parse(fs.readFileSync(existing, 'utf8')); validateState(owner); check(!owner.runIds.some(runId => spec.runIds?.includes(runId)), 'RUN_ALREADY_OWNED_REUSE_EXISTING_WORK_BATCH'); }
+      if (fs.existsSync(existing)) { const owner = JSON.parse(fs.readFileSync(existing, 'utf8')); validateState(owner, root); check(!owner.runIds.some(runId => spec.runIds?.includes(runId)), 'RUN_ALREADY_OWNED_REUSE_EXISTING_WORK_BATCH'); }
     }
     check(Array.isArray(spec.runIds) && spec.runIds.length > 0 && sorted(spec.runIds).length === spec.runIds.length && spec.runIds.every(nonempty), 'WHOLE_JOB_RUN_IDS_REQUIRED');
     check(nonempty(spec.builderId) && nonempty(spec.builderSessionId), 'MAIN_WORKER_IDENTITY_REQUIRED');
@@ -429,7 +463,7 @@ export function targetedReviewIteration(state, freeze, recoveryOfLaunchId = null
 function collectFreeze(root, state, runRefs) {
   const runs = runRefs.map(ref => load(root, ref));
   check(same(sorted(runs.map(r => r.runId)), state.runIds) && runs.length === state.runIds.length, 'WHOLE_JOB_FREEZE_REQUIRED');
-  const allTargets = [], eligibleTargets = [], excludedTargets = [], affected = [], bindings = [];
+  const allTargets = [], eligibleTargets = [], excludedTargets = [], affected = [], bindings = [], speedPlans = [];
   const priorFreeze = state.freezes.at(-1);
   const latestCompletedLaunch = [...state.launches].reverse().find(l => l.status === 'COMPLETED');
   const defects = latestCompletedLaunch ? load(root, latestCompletedLaunch.providerReceiptRef).defects || [] : [];
@@ -456,8 +490,13 @@ function collectFreeze(root, state, runRefs) {
     const old = priorFreeze?.bindings.find(b => b.runId === run.runId);
     const actual = loadBoundQuestionBanks(root, run);
     const runSemanticSha = runLevelSemanticHash(run, actual);
-    const delta = semanticDiff(old?.questions || [], actual, { previousDependencies: old ? { runLevel: old.runSemanticSha } : {}, currentDependencies: { runLevel: runSemanticSha } });
-    const impact = changeImpactMap(delta, actual, { previousAxisInputShas: old?.axisInputShas || {}, currentAxisInputShas: shas });
+    const targetedPlan = buildTargetedRecheckPlan(old?.questions || [], actual, {
+      previousDependencies: old ? { runLevel: old.runSemanticSha } : {},
+      currentDependencies: { runLevel: runSemanticSha },
+      previousAxisInputShas: old?.axisInputShas || {},
+      currentAxisInputShas: shas,
+    });
+    const { diff: delta, impact } = targetedPlan;
     if (old) check(run.revision === old.revision || run.revision === old.revision + 1, 'REVISION_LINEAGE_INVALID');
     const machineEvidence = (run.evidence || []).map(ref => load(root, ref)).filter(e => MACHINE_AXES.includes(e.axis));
     for (const [uid, axes] of Object.entries(shas)) for (const axis of ['STATIC','METADATA'].filter(a => axes[a])) {
@@ -472,9 +511,20 @@ function collectFreeze(root, state, runRefs) {
     const needsRender = Object.values(shas).some(row => row.RENDER_REVIEW);
     const missingRender = needsRender ? run.questions.filter(q => !['exam', 'solution', 'answer'].every(mode => ['desktop', 'mobile'].every(viewport => witnesses.some(w => w.questionUid === q.questionUid && w.mode === mode && w.viewportProfile === viewport)))).map(q => q.questionUid) : [];
     if (run.pipeline !== 'past-exam') check(!missingRender.length, 'WHOLE_JOB_RENDER_CAPTURE_REQUIRED');
-    const renderChanged = old && needsRender
-      ? (old.witnesses?.length ? detectRenderImpact(old.witnesses, witnesses).affectedRenderUidSet : run.questions.map(question => question.questionUid))
-      : [];
+    const renderReuse = old && needsRender
+      ? (old.witnesses?.length ? renderReusePlan(old.witnesses, witnesses) : { affectedRenderUidSet: run.questions.map(question => question.questionUid), freshRenderCount: run.questions.length, reusedRenderCount: 0 })
+      : { affectedRenderUidSet: [], freshRenderCount: 0, reusedRenderCount: 0 };
+    const renderChanged = renderReuse.affectedRenderUidSet;
+    const speedAffected = new Map((targetedPlan.impact.affectedUidAxisSet || []).map(row => [axisPairKey(row), { runId: run.runId, ...row }]));
+    for (const questionUid of renderChanged) speedAffected.set(axisPairKey({ runId: run.runId, questionUid, axis: 'RENDER_REVIEW' }), { runId: run.runId, questionUid, axis: 'RENDER_REVIEW', action: 'RECHECK', reasonCodes: ['ACTUAL_RENDER_WITNESS_CHANGED'] });
+    const speedReusable = (targetedPlan.impact.reusableUidAxisSet || []).filter(row => !renderChanged.includes(row.questionUid) || row.axis !== 'RENDER_REVIEW').map(row => ({ runId: run.runId, ...row }));
+    speedPlans.push({
+      runId: run.runId,
+      affectedUidAxisSet: [...speedAffected.values()].sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+      reusableUidAxisSet: speedReusable.sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+      requiredAxesByUid: Object.fromEntries(Object.entries(shas).map(([uid, axes]) => [uid, Object.keys(axes)])),
+      renderReuse: { schemaVersion: SPEED_PIPELINE_VERSION, affectedRenderUidSet: renderChanged, freshRenderCount: renderReuse.freshRenderCount, reusedRenderCount: renderReuse.reusedRenderCount },
+    });
     for (const [questionUid, axes] of Object.entries(shas)) {
       const row = { runId: run.runId, questionUid };
       allTargets.push(row);
@@ -500,7 +550,13 @@ function collectFreeze(root, state, runRefs) {
     ? { status: 'FROZEN', totalTargetCount: allTargets.length, eligibleTargetCount: eligibleTargets.length, excludedTargetCount: excludedTargets.length, eligibleTargets, excludedTargets, excludedRuns }
     : { status: 'NOT_APPLICABLE', eligibleTargetCount: allTargets.length, excludedRuns: [] };
   if (isBenchmarkJobKind(state.jobKind)) validateBenchmarkDenominator(allTargets, benchmarkDenominator);
-  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets: allTargets, affected, bindings, machineCheckedUidCount: allTargets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator };
+  const targetedDispatchPlan = {
+    schemaVersion: SPEED_PIPELINE_VERSION,
+    affectedUidAxisSet: speedPlans.flatMap(plan => plan.affectedUidAxisSet).sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+    reusableUidAxisSet: speedPlans.flatMap(plan => plan.reusableUidAxisSet).sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+    plans: speedPlans,
+  };
+  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets: allTargets, affected, bindings, targetedDispatchPlan, machineCheckedUidCount: allTargets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator };
   return { ...body, freezeSha: objectSha(body) };
 }
 
@@ -530,6 +586,7 @@ function validateRepairLineage(state, freeze) {
 
 export function freezeWorkBatch(root, id, runRefs) {
   return mutate(root, id, state => {
+    check(state.status !== 'REVIEW_READY', 'REVIEW_READY_TERMINAL');
     check(state && state.status !== 'HOLD', 'WORK_BATCH_HOLD_REQUIRES_RECONCILIATION');
     check(!state.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
     if (state.freezes.length) {
@@ -574,6 +631,27 @@ export function freezeWorkBatch(root, id, runRefs) {
       }
       state.status = 'REPAIR_REQUIRED';
     } else state.status = 'FROZEN';
+    return state;
+  });
+}
+
+export function markWorkBatchReviewReady(root, id, { reviewReadyRef = null, reviewReadySha = null } = {}) {
+  return mutate(root, id, state => {
+    check(state.status === 'FROZEN', 'REVIEW_READY_REQUIRES_FROZEN');
+    check(!state.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'RECONCILE_EXISTING_EXPENSIVE_TASK');
+    check((state.openDefectSet || []).length === 0, 'OPEN_DEFECTS_REMAIN');
+    check((state.repairIterations || []).every(iteration => iteration.status === 'CLOSED'), 'REPAIR_CLOSURE_REQUIRED');
+    check(state.launches.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED'), 'FINAL_AUDIT_REQUIRED');
+    check(reviewReadyRef && /^sha256:[0-9a-f]{64}$/.test(reviewReadyRef.sha256 || '') && Number.isSafeInteger(reviewReadyRef.bytes) && nonempty(reviewReadyRef.path), 'REVIEW_READY_RECEIPT_REQUIRED');
+    const receipt = JSON.parse(readBoundFile(root, reviewReadyRef).toString('utf8'));
+    check(validateReviewReady(receipt, { root }).status === 'PASS', 'REVIEW_READY_RECEIPT_INVALID');
+    check(receipt.finalAuditAuthority?.workBatchId === state.workBatchId && receipt.finalAuditAuthority?.runId === receipt.reviewReadyRunId && state.runIds.includes(receipt.finalAuditAuthority?.runId), 'REVIEW_READY_AUTHORITY_WORK_BATCH_MISMATCH');
+    check(reviewReadySha === reviewReadyRef.sha256, 'REVIEW_READY_SHA_REF_MISMATCH');
+    state.status = 'REVIEW_READY';
+    state.reviewReadyRef = reviewReadyRef ? structuredClone(reviewReadyRef) : null;
+    state.reviewReadySha = reviewReadySha || null;
+    state.reviewReadyAt = time();
+    state.productionAuthorized = false;
     return state;
   });
 }
@@ -643,7 +721,7 @@ export function reserveWorkBatchReview(root, id, request) {
     const directory = path.dirname(path.dirname(statePath(root, id)));
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) if (entry.isDirectory()) {
       const otherFile = path.join(directory, entry.name, 'state.json');
-      if (fs.existsSync(otherFile)) { const other = JSON.parse(fs.readFileSync(otherFile, 'utf8')); validateState(other); check(!other.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED'); }
+      if (fs.existsSync(otherFile)) { const other = JSON.parse(fs.readFileSync(otherFile, 'utf8')); validateState(other, root); check(!other.launches.some(l => ['RESERVED', 'DISPATCHED'].includes(l.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED'); }
     }
     const freeze = state.freezes.at(-1);
     check(unresolvedAuthorityDefects(root, freeze).length === 0, 'AUTHORITY_BINDING_REPAIR_REQUIRED');
@@ -657,6 +735,7 @@ export function reserveWorkBatchReview(root, id, request) {
     } else check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
     const scope = reviewScopeForPurpose(state, freeze, request.purpose);
     if (isBenchmarkJobKind(state.jobKind) && request.purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
+    if (request.axisScope !== undefined) validateAxisScope(scope, request.axisScope);
     if (request.purpose !== 'TARGETED_RECHECK' && !executionRecoveryRequested) check(!state.launches.some(l => l.purpose === request.purpose), 'AGENT_BUDGET_EXHAUSTED');
     check(request.callerRole === 'MAIN_WORKER', 'ONLY_MAIN_WORKER_CAN_DISPATCH');
     check(['U1','U2','U3'].every(phase => nonempty(request.contexts?.[phase]?.sessionId) && nonempty(request.contexts?.[phase]?.contextId)), 'SEALED_SUBCONTEXTS_REQUIRED');
@@ -682,7 +761,7 @@ export function reserveWorkBatchReview(root, id, request) {
     }
     const launchInputSha = freezeInputSha(freeze);
     const launchId = `${id}:${state.launches.length + 1}`;
-    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, recoveryOfLaunchId) : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}), ...(executionRecoveryRecord ? { executionRecovery: true, recoveryOfLaunchId: executionRecoveryRecord.failedLaunch.launchId, executionFailureClass: executionRecoveryRecord.failure.failureClass, executionFailureFingerprint: executionRecoveryRecord.failure.fingerprint, executionAttempt: executionRecoveryRecord.attempt } : {}) };
+    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, ...(request.axisScope !== undefined ? { axisScope: structuredClone(request.axisScope) } : {}), ...(request.targetedDispatchPlanSha ? { targetedDispatchPlanSha: request.targetedDispatchPlanSha } : {}), auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, recoveryOfLaunchId) : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}), ...(executionRecoveryRecord ? { executionRecovery: true, recoveryOfLaunchId: executionRecoveryRecord.failedLaunch.launchId, executionFailureClass: executionRecoveryRecord.failure.failureClass, executionFailureFingerprint: executionRecoveryRecord.failure.fingerprint, executionAttempt: executionRecoveryRecord.attempt } : {}) };
     if (executionRecoveryRecord) {
       state.executionRecovery = state.executionRecovery || { maxAttemptsPerFreeze: MAX_EXECUTION_RECOVERY_ATTEMPTS, attempts: [] };
       state.executionRecovery.attempts.push({ freezeSha: freeze.freezeSha, failedLaunchId: executionRecoveryRecord.failedLaunch.launchId, successorLaunchId: launchId, attempt: executionRecoveryRecord.attempt, failureClass: executionRecoveryRecord.failure.failureClass, fingerprint: executionRecoveryRecord.failure.fingerprint, recordedAt: time() });
@@ -715,7 +794,7 @@ export function recoverLegacyReservationHold(root, id, evidenceRefs = []) {
       const otherFile = path.join(directory, entry.name, 'state.json');
       if (fs.existsSync(otherFile)) {
         const other = JSON.parse(fs.readFileSync(otherFile, 'utf8'));
-        validateState(other);
+        validateState(other, root);
         check(!other.launches.some(launch => ['RESERVED', 'DISPATCHED'].includes(launch.status)), 'GLOBAL_EXPENSIVE_SLOT_OCCUPIED');
       }
     }
