@@ -353,13 +353,16 @@ export function validateCanonicalFinalAuditAuthority(root, { authority, expected
       if (audit.schemaVersion !== 'APMATH_PIPELINE_AUDIT_v2' || audit.status !== 'PASS' || audit.productionAuthorized !== false || (audit.workBatchId !== undefined && audit.workBatchId !== authority.workBatchId) || audit.runId !== run.runId || audit.revision !== run.revision || audit.inputSha !== run.inputSha) errors.push('FINAL_AUDIT_AUTHORITY_REPORT_INVALID');
       const coverage = validateFinalAuditEvidenceCoverage(root, run, state, freeze, authority, launch, receipt, audit, errors);
       let canonicalAudit = null;
-      if (run.schemaVersion === 'APMATH_PIPELINE_RUN_v2' && run.questionQualityClosureSetRef && run.sourceAuthority && run.uidAuthority) {
-        try {
-          canonicalAudit = auditV2Run(root, run);
-          if (canonicalJson(canonicalAudit) !== canonicalJson(audit)) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID');
-        } catch (error) {
-          errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_ERROR:' + error.message);
-        }
+      if (run.schemaVersion !== 'APMATH_PIPELINE_RUN_v2') errors.push('FINAL_AUDIT_AUTHORITY_RUN_V2_REQUIRED');
+      if (!isObject(run.sourceAuthority)) errors.push('FINAL_AUDIT_AUTHORITY_SOURCE_AUTHORITY_REQUIRED');
+      if (!isObject(run.uidAuthority)) errors.push('FINAL_AUDIT_AUTHORITY_UID_AUTHORITY_REQUIRED');
+      if (!isObject(run.questionQualityClosureSetRef) || !nonempty(run.questionQualityClosureSetRef.path)) errors.push('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_REF_REQUIRED');
+      try {
+        canonicalAudit = auditV2Run(root, run);
+        if (canonicalJson(canonicalAudit) !== canonicalJson(audit)) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID');
+        if (canonicalAudit.status !== 'PASS') errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_NOT_PASS');
+      } catch (error) {
+        errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_ERROR:' + error.message);
       }
       const qualitySha = closure?.qualityClosureSetSha;
       if (!HASH_PATTERN.test(String(qualitySha || ''))) errors.push('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_SHA_REQUIRED');

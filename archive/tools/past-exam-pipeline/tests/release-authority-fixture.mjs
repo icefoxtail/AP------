@@ -1,16 +1,25 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 import { bytesSha, fileRef, objectSha } from '../../pipeline-core/canonical.mjs';
-import { EVIDENCE_VERSION_V2, runInputSha } from '../../pipeline-core/closure.mjs';
-import { computeV2AxisInputShas } from '../../pipeline-core/v2-audit.mjs';
+import { EVIDENCE_VERSION_V2, denominatorInput, runInputSha } from '../../pipeline-core/closure.mjs';
+import { auditV2Run, computeV2AxisInputShas } from '../../pipeline-core/v2-audit.mjs';
+import { normalizeSourceExamIdRegistry } from '../../pipeline-core/question-uid.mjs';
 import { runtimeDependencyBundle } from '../../pipeline-core/runtime.mjs';
 import { createContinuationDenominator } from '../../pipeline-core/continuation.mjs';
+import { structureFingerprint } from '../../pipeline-core/visual.mjs';
+import { SOLUTION_QUALITY_CHECKS, SOLUTION_QUALITY_VERSION } from '../../pipeline-core/solution-quality.mjs';
+import { createBuildWorkLedgerEntry } from '../../pipeline-core/build-work-ledger.mjs';
 import { materializeQuestionQualityClosure, createQuestionQualityClosureSet } from '../../pipeline-core/question-quality-set.mjs';
 import { initWorkBatch, readWorkBatch } from '../../pipeline-core/work-batch.mjs';
 import { recoveryFixture } from '../../pipeline-core/tests/recovery-fixture.mjs';
 import { png } from '../../pipeline-core/tests/fixture.mjs';
+import { createRenderReview } from '../../pipeline-core/render.mjs';
+import { CALIBRATION_AXES, QUALITY_PROFILE_CHECKS, calibrationTarget, readProductionSample } from '../lib/calibration.mjs';
+import { rulePreflight } from '../../pipeline-core/rulepack.mjs';
 import { resumePastExam } from '../resume-past-exam.mjs';
 import { assetSetSha } from '../lib/production-boundary.mjs';
 import { createReviewReady } from '../lib/review-ready.mjs';
@@ -94,7 +103,7 @@ function addCanonicalRenderEvidence(fixture, run, axisShas, candidateRef) {
     const witness = { ...witnessBase, witnessSha: objectSha(witnessBase) };
     const machineProvenance = { runId: run.runId, revision: run.revision, inputSha: run.inputSha, currentArtifactSha: candidateRef.sha256, CURRENT_ARTIFACT_SHA: candidateRef.sha256, EVIDENCE_INPUT_SHA: candidateRef.sha256, collector: 'SYNTHETIC_CANONICAL_FIXTURE' };
     const capturePayload = { actualBrowser: true, productionEngine: true, browserVersion: 'SYNTHETIC_CANONICAL_BROWSER', mode, candidatePath: candidateRef.path, candidateRef, currentArtifactSha: candidateRef.sha256, CURRENT_ARTIFACT_SHA: candidateRef.sha256, EVIDENCE_INPUT_SHA: candidateRef.sha256, questionUids: [uid], viewport, expectedQuestionCount: 1, observedQuestionCount: 1, lastQuestionId: 1, screenshot, itemWitnesses: [witness], assetAssociations, assetRefs, checks: { runtime: 'PASS', mathJax: 'PASS', fonts: 'PASS', imageDecode: 'PASS', assetAssociation: 'PASS', questionCount: 'PASS', lastQuestion: 'PASS', clipping: 'PASS', overflow: 'PASS' }, pageErrors: [], failedRequests: [], unboundRequests: [], runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses, runtimeResponseBundleSha };
-    const captureBody = { schemaVersion: EVIDENCE_VERSION_V2, evidenceId: `${run.runId}-${run.revision}-${mode}-${viewportProfile}-capture`, runId: run.runId, revision: run.revision, axis: 'RENDER_CAPTURE', mode: 'MACHINE_CURRENT', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'canonical-machine-collector', reviewSessionId: `canonical-machine-${run.runId}-${run.revision}-${caseKey}`, reviewerModelOrAgent: 'SYNTHETIC_CANONICAL_FIXTURE', auditorPrincipalType: 'MACHINE_COLLECTOR', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', findings: [], priorReviewVisibility: 'NONE', inputVisibilityProfile: 'MACHINE_CURRENT', reviewIsolationProvenanceSha: objectSha(machineProvenance), machineProvenance, axisInputShas: { [uid]: axisShas[uid].RENDER_CAPTURE }, payload: capturePayload };
+    const captureBody = { schemaVersion: EVIDENCE_VERSION_V2, evidenceId: `${run.runId}-${run.revision}-${mode}-${viewportProfile}-capture`, runId: run.runId, revision: run.revision, axis: 'RENDER_CAPTURE', questionUid: uid, mode: 'MACHINE_CURRENT', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'canonical-machine-collector', reviewSessionId: `canonical-machine-${run.runId}-${run.revision}-${caseKey}`, reviewerModelOrAgent: 'SYNTHETIC_CANONICAL_FIXTURE', auditorPrincipalType: 'MACHINE_COLLECTOR', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', findings: [], priorReviewVisibility: 'NONE', inputVisibilityProfile: 'MACHINE_CURRENT', reviewIsolationProvenanceSha: objectSha(machineProvenance), machineProvenance, axisInputShas: { [uid]: axisShas[uid].RENDER_CAPTURE }, reviewAxisInputShas: { [uid]: axisShas[uid].RENDER_REVIEW }, payload: capturePayload };
     const captureRef = fixture.write(`release/evidence/${run.runId}-${run.revision}-${mode}-${viewportProfile}-capture.json`, captureBody);
     const blockReview = { caseKey, blockId: block.blockId, status: 'PASS', placementSha: block.placementSha, screenshotSha: screenshot.sha256 };
     const reviewBody = { schemaVersion: EVIDENCE_VERSION_V2, evidenceId: `${run.runId}-${run.revision}-${mode}-${viewportProfile}-review`, runId: run.runId, revision: run.revision, axis: 'RENDER_REVIEW', mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: `canonical-reviewer-${run.runId}-${run.revision}-${caseKey}`, reviewSessionId: `canonical-review-${run.runId}-${run.revision}-${caseKey}`, reviewerModelOrAgent: 'SYNTHETIC_CANONICAL_FIXTURE', auditorPrincipalType: 'STATELESS_MODEL', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, startedAt: '2026-09-14T06:02:00.000Z', frozenAt: '2026-09-14T06:03:00.000Z', findings: [], priorReviewVisibility: 'NONE', inputVisibilityProfile: 'CANDIDATE_ONLY', reviewIsolationProvenanceSha: objectSha({ runId: run.runId, revision: run.revision, caseKey, reviewer: 'canonical' }), axisInputShas: { [uid]: axisShas[uid].RENDER_REVIEW }, payload: { captureEvidenceId: captureBody.evidenceId, captureEvidenceSha: captureRef.sha256, runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponseBundleSha, questionUids: [uid], freshQuestionUids: [uid], checks: { clipping: 'PASS', overflow: 'PASS', readability: 'PASS' }, itemReviews: [{ questionUid: uid, screenshotSha: screenshot.sha256, status: 'PASS', blockReviews: [blockReview] }] } };
@@ -105,25 +114,146 @@ function addCanonicalRenderEvidence(fixture, run, axisShas, candidateRef) {
   return { cases, runtimeResponseBundleSha };
 }
 
-export function prepareCanonicalRun(fixture, run) {
-  fixture.write('archive/engine.html', '<!doctype html><html><body></body></html>');
+function prepareCanonicalPastExamInputs(fixture, run) {
+  const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
+  const manifest = fs.readFileSync(path.join(repositoryRoot, 'docs/rules/MANIFEST.md'), 'utf8');
+  const manifestRef = fixture.write('docs/rules/MANIFEST.md', manifest);
+  const ruleRefs = [...manifest.matchAll(/^- (.+?) \|/gm)].map(match => {
+    const relative = `docs/rules/${match[1]}`;
+    return fixture.write(relative, fs.readFileSync(path.join(repositoryRoot, relative), 'utf8'));
+  });
+  run.inputs.push({ ...manifestRef, role: 'rule' }, ...ruleRefs.map(ref => ({ ...ref, role: 'rule' })));
+
+  const contractPath = 'archive/tools/past-exam-pipeline/completion-contract.json';
+  const contract = JSON.parse(fs.readFileSync(path.join(repositoryRoot, contractPath), 'utf8'));
+  const contractRef = fixture.write(contractPath, JSON.stringify(contract));
+  const verifierRef = fixture.write('archive/tools/pipeline-core/closure.mjs', fs.readFileSync(path.join(repositoryRoot, 'archive/tools/pipeline-core/closure.mjs'), 'utf8'));
+  const sourcePdfRef = fixture.write('release/authority/source.pdf', 'synthetic source pixels');
+  for (const question of run.questions) question.sourceIdentityKey = `${question.sourceExamId}|${question.sourceQuestionOrdinal}`;
+  const inventory = {
+    schema: 'PAST_EXAM_SOURCE_INVENTORY_v1',
+    examId: run.questions[0].sourceExamId,
+    sourceDocumentSha256: sourcePdfRef.sha256,
+    pageCount: 1,
+    expectedQuestionCount: run.questions.length,
+    status: 'SOURCE_INVENTORY_FROZEN',
+    questions: run.questions.map(question => ({ sourceIdentityKey: question.sourceIdentityKey, sourceDocumentSha256: sourcePdfRef.sha256, sourceQuestionNo: String(question.sourceQuestionOrdinal), sourcePageNo: 1, disposition: 'INCLUDED' })),
+  };
+  const inventoryRef = fixture.write('release/authority/source-inventory.json', inventory);
+
+  const sampleQuestion = { id: 1, level: '상', questionType: '서술형', standardCourse: '공통수학1', content: 'x+1=2', choices: ['1', '2', '3', '4', '5'], answer: '1', solution: 'The answer is 1.', solutionImage: 'solution.svg' };
+  const samplePaths = ['archive/exams/original/high/h1/1mid/calibration-a.js', 'archive/exams/original/high/h1/1mid/calibration-b.js'];
+  for (const samplePath of samplePaths) fixture.write(samplePath, `window.examTitle="calibration";window.questionBank=${JSON.stringify([sampleQuestion])};`);
+  execFileSync('git', ['init', '-b', 'main'], { cwd: fixture.root, stdio: 'ignore' });
+  execFileSync('git', ['config', 'user.name', 'Synthetic Fixture'], { cwd: fixture.root, stdio: 'ignore' });
+  execFileSync('git', ['config', 'user.email', 'synthetic-fixture@example.invalid'], { cwd: fixture.root, stdio: 'ignore' });
+  execFileSync('git', ['add', '.'], { cwd: fixture.root, stdio: 'ignore' });
+  execFileSync('git', ['commit', '-m', 'synthetic calibration baseline'], { cwd: fixture.root, stdio: 'ignore' });
+  const mainCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: fixture.root, encoding: 'utf8' }).trim();
+  execFileSync('git', ['update-ref', 'refs/remotes/origin/main', mainCommit], { cwd: fixture.root, stdio: 'ignore' });
+  const samples = samplePaths.map(samplePath => {
+    const actual = readProductionSample(fixture.root, mainCommit, samplePath);
+    const { bank, ...summary } = actual;
+    return { ...summary, selectionReason: 'Synthetic calibration sample', qualityAcceptanceReason: 'Synthetic canonical fixture', checkedAxes: Object.fromEntries(CALIBRATION_AXES.map(axis => [axis, { status: 'PASS', observation: `Synthetic ${axis} observation` }])), questionObservations: bank.map(question => ({ qid: question.id, questionSha: objectSha(question), solutionExcerpt: 'The answer is 1.', observation: 'Synthetic full-question observation' })) };
+  });
+  const anchor = `${samplePaths[0]}|1`;
+  const lockPayload = {
+    schemaVersion: 'PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1',
+    status: 'PASS',
+    mainCommit,
+    rulePackSha: rulePreflight(fixture.root).rulePackSha,
+    target: calibrationTarget(fixture.root, { examId: run.questions[0].sourceExamId, pdfPath: 'release/authority/source.pdf', archiveRelativePath: `original/high/h1/1final/${run.questions[0].sourceExamId}.js` }),
+    readerId: run.builderId,
+    readerSessionId: run.builderSessionId,
+    startedAt: '2026-01-01T00:00:00.000Z',
+    frozenAt: '2026-01-01T00:01:00.000Z',
+    baselineObservation: 'Synthetic baseline absent',
+    baselineQuestionObservations: [],
+    sourceTruthPolicy: 'TARGET_SOURCE_ONLY',
+    sampleRole: 'QUALITY_CALIBRATION_ONLY',
+    samples,
+    productionQualityProfile: Object.fromEntries(QUALITY_PROFILE_CHECKS.map(key => [key, { status: 'PASS', minimumStandard: `Synthetic minimum for ${key}`, sampleAnchors: [anchor] }]))
+  };
+  const lockRef = fixture.write('release/authority/reference-sample-lock.json', lockPayload);
+  const projectConfig = { schemaVersion: 'PAST_EXAM_V3_PROJECT_CONFIG', referenceSampleLockRef: lockRef, geometryPolicyRef: contract.geometryPolicyRef, sourceInventorySha: inventoryRef.sha256 };
+  const projectRef = fixture.write('release/authority/project-config.json', projectConfig);
+  run.pastExamCompletionRef = projectRef;
+  run.publicationIntent = 'FULL_EXAM';
+  run.inputs.push({ ...projectRef, role: 'spec' }, { ...lockRef, role: 'spec' }, { ...inventoryRef, role: 'dependency' }, { ...contractRef, role: 'spec' }, { ...sourcePdfRef, role: 'dependency' }, { ...verifierRef, role: 'verifier' });
+}
+
+function prepareCanonicalAuthorities(fixture, run) {
+  const sourceRef = run.inputs.find(ref => ref.role === 'source');
+  if (!sourceRef) throw new Error('TEST_CANONICAL_SOURCE_REF_REQUIRED');
+  const sourceTruthRefs = [sourceRef];
+  const sourceTruthBundleSha = objectSha(sourceTruthRefs);
+  const applicability = Object.fromEntries(['baselineDiscoveryEvidenceRef', 'approvedSourceRepairLedgerRef', 'approvedSourceExceptionLedgerRef'].map(key => {
+    const evidenceRef = fixture.write(`release/authority/${run.runId}-${key}.json`, { status: 'PASS', applicability: 'NOT_APPLICABLE', reason: `SYNTHETIC_CANONICAL_FIXTURE:${key}`, sourceTruthBundleSha });
+    return [key, { status: 'NOT_APPLICABLE', reason: `SYNTHETIC_CANONICAL_FIXTURE:${key}`, evidenceRef }];
+  }));
+  const registry = normalizeSourceExamIdRegistry({ entries: run.questions.map(question => ({
+    canonicalSourceExamId: question.sourceExamId,
+    sourceIdentityKey: `synthetic-source:${question.sourceExamId}`,
+    status: 'ACTIVE',
+    sourceExamId: question.sourceExamId,
+    sourceQuestionOrdinal: question.sourceQuestionOrdinal,
+    questionUidV2: question.questionUid,
+    sourcePath: question.sourcePath,
+    sourceSha256: sourceRef.sha256,
+  })) });
+  const registryRef = fixture.write(`release/authority/${run.runId}-source-exam-id-registry.json`, registry);
+  run.inputs.push({ ...registryRef, role: 'dependency' });
+  run.sourceAuthority = { sourceTruthRefs, sourceTruthBundleSha, activeBaselineRef: sourceRef, activeBaselineSha: sourceRef.sha256, applicability };
+  run.uidAuthority = { sourceExamIdRegistryRef: registryRef, sourceExamIdRegistryEntrySha: objectSha(registry.entries), uidMigrationEvidenceRefs: [], uidMigrationEvidenceSetSha: objectSha([]) };
+}
+
+export function prepareCanonicalRun(fixture, run, { engineHtml = null } = {}) {
+  run.semanticDependencyBindings ||= {};
+  run.buildWorkLedgerRefs ||= [];
+  for (const question of run.questions) question.sourceQuestionOrdinal ||= question.qid;
+  prepareCanonicalPastExamInputs(fixture, run);
+  prepareCanonicalAuthorities(fixture, run);
+  const staleMachineRefs = new Set(run.evidence.filter(ref => ['STATIC', 'METADATA'].includes(readJson(fixture.root, ref).axis)).map(ref => ref.path));
+  run.evidence = run.evidence.filter(ref => !staleMachineRefs.has(ref.path));
+  for (const question of run.questions) question.evidence = {};
+  run.inputSha = runInputSha(run);
+  fixture.write('archive/engine.html', engineHtml || '<!doctype html><html><body></body></html>');
   const runtime = runtimeDependencyBundle(fixture.root, 'archive/engine.html');
   run.renderRuntime = runtime;
   run.publicationIntent = 'FULL_EXAM';
   run.inputs.push(...runtime.localFiles.filter(ref => !run.inputs.some(existing => existing.path === ref.path)).map(ref => ({ ...ref, role: ref.path === runtime.enginePath ? 'engine' : 'runtime' })));
   run.inputSha = runInputSha(run);
-  const axisShas = computeV2AxisInputShas(fixture.root, run);
+  let axisShas = computeV2AxisInputShas(fixture.root, run);
   for (const question of run.questions) {
     question.requiredAxes = Object.keys(axisShas[question.questionUid]).sort();
     question.axisInputShas = axisShas[question.questionUid];
   }
   run.inputSha = runInputSha(run);
   const candidateRef = run.inputs.find(ref => ref.role === 'candidate');
+  const candidateContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(fixture.root, candidateRef.path), 'utf8'), candidateContext);
+  const reviewBundles = {};
+  for (const question of run.questions) {
+    const candidate = candidateContext.window.questionBank.find(row => row.id === question.qid);
+    const bundleName = question.questionUid.replaceAll('|', '-');
+    const v1Ref = fixture.write(`release/bundles/${bundleName}-v1.json`, { questionUid: question.questionUid, content: candidate.content, choices: candidate.choices, problemAssets: [] });
+    run.inputs.push({ ...v1Ref, role: 'dependency' });
+    const v2Ref = candidate.solutionImage ? fixture.write(`release/bundles/${bundleName}-v2.json`, { questionUid: question.questionUid, artifact: run.inputs.find(ref => ref.path === question.solutionImage) || null, renderWitnesses: [] }) : null;
+    if (v2Ref) run.inputs.push({ ...v2Ref, role: 'dependency' });
+    reviewBundles[question.questionUid] = { v1Ref, v2Ref };
+  }
+  run.inputSha = runInputSha(run);
+  axisShas = computeV2AxisInputShas(fixture.root, run);
+  for (const question of run.questions) question.axisInputShas = axisShas[question.questionUid];
+  for (const question of run.questions) question.visual.adjudicationId = `${run.workBatchId}:1-U3-V3`;
+  run.denominator = { status: 'FROZEN', stale: false, ...denominatorInput(run) };
+  run.canonicalRecordId = `${run.runId}:r${run.revision}`;
+  run.registry = [{ recordId: run.canonicalRecordId, batchId: run.runId, revision: run.revision, supersedes: null, isCanonical: true, inputSha: run.inputSha, questionUids: run.questions.map(question => question.questionUid) }];
   ensureCanonicalMachineEvidence(fixture, run, axisShas, candidateRef);
   refreshMachineEvidence(fixture, run, axisShas);
   refreshCanonicalReviewEvidence(fixture, run, axisShas);
   const render = addCanonicalRenderEvidence(fixture, run, axisShas, candidateRef);
-  return { axisShas, candidateRef, render };
+  return { axisShas, candidateRef, render, reviewBundles };
 }
 
 function evidenceRowsForCanonicalRun(root, run, freeze, providerReceipt) {
@@ -189,59 +319,168 @@ function completedRenderClosureCases(root, run, candidateRef, assetRefs, candida
   });
 }
 
-export async function makeCanonicalReleaseFixture(t, { examId = 'target', candidateOverrides = null, assetFiles = {}, targetFile = null } = {}) {
-  const fixture = recoveryFixture(t, { pipeline: 'past-exam', examId, candidateOverrides, assetFiles });
+export async function makeCanonicalReleaseFixture(t, { examId = 'target', candidateOverrides = null, assetFiles = {}, targetFile = null, engineHtml = null } = {}) {
+  const fixture = recoveryFixture(t, {
+    pipeline: 'past-exam',
+    examId,
+    candidateOverrides: {
+      level: '중',
+      category: '수와 식',
+      standardCourse: '공통수학1',
+      standardUnitKey: 'H22-C-01',
+      standardUnit: '다항식의 연산',
+      subUnitKey: 'H22-C-01-CORE',
+      subUnit: '다항식의 연산 핵심 개념',
+      subUnitConfidence: 'candidate_evidence',
+      subUnitClassificationDepth: 'complete_candidate',
+      questionType: '객관식',
+      layoutTag: 'grid',
+      tags: [],
+      wide: false,
+      image: '',
+      solutionImage: '',
+      ...(candidateOverrides || {}),
+    },
+    assetFiles,
+  });
   const initial = fixture.makeRun(1);
-  const prepared = prepareCanonicalRun(fixture, initial.run);
+  const prepared = prepareCanonicalRun(fixture, initial.run, { engineHtml });
   const candidateRef = initial.run.inputs.find(ref => ref.role === 'candidate');
   const assetRefs = initial.run.inputs.filter(ref => ref.role === 'asset');
   const uid = initial.run.questions[0].questionUid;
   const run = initial.run;
+  const providerCandidateContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync(path.join(fixture.root, candidateRef.path), 'utf8'), providerCandidateContext);
+  const candidateQuestion = providerCandidateContext.window.questionBank[0];
+  const visualPolicyRef = run.inputs.find(ref => ref.role === 'rule' && ref.path.includes('도형추출.md')) || run.inputs.find(ref => ref.role === 'rule');
+  const visualFact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: uid, visualType: 'set-cardinality', semantic: { setIds: ['A', 'B'], universeId: 'U', universeCount: 45, aCount: 28, bCount: 23, maximumIntersection: 23, minimumIntersection: 6 } };
+  const hasSolutionVisual = Boolean(candidateQuestion.solutionImage);
+  const visualBenefit = { schemaVersion: 'APMATH_SOLUTION_VISUAL_BENEFIT_v1', visualRequirement: run.questions[0].visual.requirement, visualAction: run.questions[0].visual.action, studentUnderstandingBenefit: hasSolutionVisual, benefitReasons: [hasSolutionVisual ? 'Synthetic visual review preserves an attached instructional artifact.' : 'Synthetic algebra question is text-complete without a visual.'], geometryVisualRole: 'NOT_GEOMETRY', expectedVisualType: hasSolutionVisual ? 'set-cardinality' : 'NONE', decisiveStep: 'The decisive algebraic step is visible in the student-facing solution.', sourceFigurePresence: 'ABSENT', sourceFigureUsedAsExemption: false, expectedFacts: hasSolutionVisual ? [{ id: 'synthetic-fact', statement: 'The synthetic visual fact is preserved.', critical: true }] : [], applicablePolicyRefs: [{ ...visualPolicyRef, version: 'synthetic-v3' }] };
+  const solutionQuality = { schemaVersion: SOLUTION_QUALITY_VERSION, checks: Object.fromEntries(SOLUTION_QUALITY_CHECKS.map(key => [key, { status: 'PASS', reason: `Synthetic canonical evidence for ${key}`, solutionExcerpts: [candidateQuestion.solution] }])) };
+  solutionQuality.checks.independentIntermediateRecalculation = { status: 'PASS', reason: 'Synthetic independent recalculation', solutionExcerpts: [candidateQuestion.solution], independentWork: 'Recalculate 1 directly.', recalculations: [{ solutionExcerpt: '1', expression: '1', claimedValue: 1, independentlyComputedValue: 1 }] };
+  const visualPayloads = {
+    V1: { freshBlind: true, visualRequirementSignal: hasSolutionVisual ? 'MAY_BE_OPTIONAL' : 'SHOULD_BE_EXEMPT', inputBundle: prepared.reviewBundles[uid].v1Ref, fact: hasSolutionVisual ? visualFact : null, visualBenefit },
+    V2: { freshBlind: true, inputBundle: prepared.reviewBundles[uid].v2Ref, artifactPath: candidateQuestion.solutionImage || null, artifactSha: run.inputs.find(ref => ref.path === candidateQuestion.solutionImage)?.sha256 || null, fact: hasSolutionVisual ? visualFact : null, observedFacts: hasSolutionVisual ? [{ id: 'synthetic-fact', status: 'OBSERVED', observation: 'Synthetic artifact preserves the declared fact.' }] : [], structureSha: structureFingerprint(visualFact), visualBenefit },
+    V3: { visualBenefit, finalVisualRequirement: run.questions[0].visual.requirement, finalVisualAction: run.questions[0].visual.action, cDenominatorInputSha: run.denominator.inputSha, checks: { SOLUTION_VISUAL_BENEFIT_GATE: 'PASS' } },
+  };
   const runRef = fixture.write('release/run.json', run);
   const provider = fixture.write('release/provider.mjs', `
 import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
 const request = JSON.parse(fs.readFileSync(0, 'utf8'));
 const runInputSha = ${JSON.stringify(run.inputSha)};
 const statePath = ${JSON.stringify(path.join(fixture.root, 'alive/runtime/work-batches/job/state.json'))};
+const providerBridgeRoot = ${JSON.stringify(path.join(fixture.root, 'alive/runtime/provider-bridge/job'))};
+const visualPayloads = ${JSON.stringify(visualPayloads)};
+const solutionQuality = ${JSON.stringify(solutionQuality)};
+const sourceTruthBundleSha = ${JSON.stringify(run.sourceAuthority.sourceTruthBundleSha)};
+const runId = ${JSON.stringify(run.runId)};
+const reviewStartedAt = new Date().toISOString();
+const reviewFrozenAt = new Date().toISOString();
+const shaOfFile = file => 'sha256:' + createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
   process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'READY', requestSha: request.requestSha, provider: 'synthetic-release-provider', model: 'synthetic-release-model', externalTaskId: 'external-' + request.launchId, auditorId: 'auditor-' + request.launchId, auditorSessionId: 'auditor-session-' + request.launchId, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, runtimeAttestation: 'synthetic-release-runtime', contexts: { U1: { sessionId: request.launchId + '-u1', contextId: request.launchId + '-c1' }, U2: { sessionId: request.launchId + '-u2', contextId: request.launchId + '-c2' }, U3: { sessionId: request.launchId + '-u3', contextId: request.launchId + '-c3' } } }));
 } else {
   const item = Array.isArray(request.packet.payload) ? request.packet.payload[0] : request.packet.payload;
   const state = JSON.parse(fs.readFileSync(statePath, 'utf8'));
   const axisSet = { U1: ['SOURCE', 'MATH_A1', 'V1'], U2: ['V2'], U3: ['MATH_A2', 'SOLUTION', 'V3'] }[request.phase] || [];
-  const axisShas = state.freezes.at(-1).bindings.find(binding => binding.runId === 'run').axisInputShas[item.questionUid];
-  const payloadFor = axis => axis === 'SOURCE' ? { sourceTruthBundleSha: 'sha256:' + 'b'.repeat(64), fidelityRationale: 'synthetic source fidelity', sourceFidelityVerified: true } : axis === 'MATH_A1' ? { independentAnswer: '1', independentDerivation: 'synthetic independent derivation', blindSolveFrozen: true, allChoicesChecked: true, answerUnique: true } : axis === 'MATH_A2' ? { a1EvidenceSha: 'sha256:' + 'c'.repeat(64), answerComparison: 'synthetic answer parity', allChoicesChecked: true, answerUnique: true } : axis === 'SOLUTION' ? { solutionRationale: 'synthetic solution rationale', checks: { mathematicalCorrectness: 'PASS', logicalCompleteness: 'PASS', studentUnderstandability: 'PASS' } } : {};
-  const evidence = axisSet.map(axis => ({ schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: request.logicalLaunchId + '-' + request.phase + '-' + axis, runId: 'run', revision: 1, questionUid: item.questionUid, axis, inputSha: runInputSha, axisInputSha: axisShas[axis], mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'auditor-' + request.logicalLaunchId, reviewSessionId: request.packet.auditorSessionId, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: request.packet.inputVisibilityProfile, findings: [], reviewIsolationProvenanceSha: request.packet.packetSha, launchId: request.logicalLaunchId, externalTaskId: request.externalTaskId, reviewStartInputSha: runInputSha, reviewEndInputSha: runInputSha, withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', payload: payloadFor(axis) }));
+  const axisShas = ${JSON.stringify(prepared.axisShas[uid])};
+  const payloadFor = axis => axis === 'SOURCE' ? { sourceTruthBundleSha, fidelityRationale: 'synthetic source fidelity', sourceFidelityVerified: true } : axis === 'MATH_A1' ? { independentAnswer: '1', independentDerivation: 'synthetic independent derivation', blindSolveFrozen: true, allChoicesChecked: true, answerUnique: true } : axis === 'MATH_A2' ? { a1EvidenceSha: 'sha256:' + '0'.repeat(64), independentAnswer: '1', independentDerivation: 'synthetic candidate derivation', answerComparison: 'synthetic answer parity', allChoicesChecked: true, answerUnique: true } : axis === 'SOLUTION' ? { solutionRationale: 'synthetic solution rationale', checks: { mathematicalCorrectness: 'PASS', logicalCompleteness: 'PASS', studentUnderstandability: 'PASS' }, solutionQuality } : axis === 'V1' ? visualPayloads.V1 : axis === 'V2' ? visualPayloads.V2 : axis === 'V3' ? { ...visualPayloads.V3, v1EvidenceSha: shaOfFile(path.join(providerBridgeRoot, 'launch-' + request.logicalLaunchId.split(':').at(-1), 'u1-evidence-3.json')) } : {};
+  const evidence = axisSet.map(axis => ({ schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: request.logicalLaunchId + '-' + request.phase + '-' + axis, runId: runId, revision: 1, questionUid: item.questionUid, axis, inputSha: runInputSha, axisInputSha: axisShas[axis] || 'sha256:' + '0'.repeat(64), mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'auditor-' + request.logicalLaunchId, reviewSessionId: request.packet.auditorSessionId, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: reviewStartedAt, frozenAt: reviewFrozenAt, priorReviewVisibility: 'NONE', inputVisibilityProfile: request.packet.inputVisibilityProfile, findings: [], reviewIsolationProvenanceSha: request.packet.packetSha, launchId: request.logicalLaunchId, externalTaskId: request.externalTaskId, reviewStartInputSha: runInputSha, reviewEndInputSha: runInputSha, withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', payload: payloadFor(axis) }));
   process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: 'NONE', subagentToolsEnabled: false, usedTokens: 0, evidence, defects: [] }));
 }
 `);
-  await resumePastExam(fixture.root, { workBatchId: 'job', runRefs: [runRef], providerCommand: process.execPath, providerArgs: [path.join(fixture.root, provider.path)], maxSteps: 6 });
+  const resumed = await resumePastExam(fixture.root, { workBatchId: 'job', runRefs: [runRef], providerCommand: process.execPath, providerArgs: [path.join(fixture.root, provider.path)], maxSteps: 6 });
   const state = readWorkBatch(fixture.root, 'job');
   const freeze = state.freezes.at(-1);
   const launch = state.launches.find(item => item.purpose === 'FINAL_AUDIT' && item.status === 'COMPLETED');
-  if (!launch) throw new Error('TEST_FINAL_AUDIT_LAUNCH_REQUIRED');
-  const receipt = readJson(fixture.root, launch.providerReceiptRef);
-  // Provider evidence is bound through the provider receipt and phaseEvidenceRefs.
-  // Keep it out of run.evidence so the work-batch evidence validator does not
-  // mistake provider output for a builder-sealed machine evidence record.
-  const finalRun = { ...run, evidence: [...run.evidence] };
+  if (!launch) throw new Error('TEST_FINAL_AUDIT_LAUNCH_REQUIRED:' + JSON.stringify({ resumed: { status: resumed.status, history: resumed.history }, state: { status: state.status, launches: state.launches, lastHold: state.lastHold, openDefects: state.openDefects }, receipts: state.launches.map(item => item.providerReceiptRef ? readJson(fixture.root, item.providerReceiptRef) : null) }));
+  const providerReceipt = readJson(fixture.root, launch.providerReceiptRef);
+  const packetRefs = providerReceipt.phaseAttestationRefs.map(attestation => fileRef(fixture.root, attestation.requestRef.path.replace(/-request\.json$/, '-packet.json')));
+  const u3Packet = readJson(fixture.root, packetRefs.find(ref => ref.path.endsWith('/u3-packet.json')));
+  const reviewEvidenceRefs = prepared.render.cases.map(({ caseKey, captureRef, capture }) => {
+    const safeCaseKey = caseKey.replace('/', '-');
+    const startedAt = new Date(Date.parse(launch.dispatchedAt) + 1).toISOString();
+    const frozenAt = launch.endedAt;
+    const review = createRenderReview(fixture.root, run, captureRef, {
+      reviewerId: launch.auditorId,
+      reviewSessionId: launch.contexts.U3.sessionId,
+      reviewerModelOrAgent: 'SYNTHETIC_CANONICAL_FIXTURE',
+      auditorPrincipalType: 'STATELESS_MODEL',
+      startedAt,
+      frozenAt,
+      launchId: launch.launchId,
+      externalTaskId: launch.externalId,
+      inputVisibilityProfile: 'CANDIDATE_ONLY',
+      reviewIsolationProvenanceSha: u3Packet.packetSha,
+      checks: { clipping: 'PASS', overflow: 'PASS', readability: 'PASS' },
+      itemReviews: capture.payload.itemWitnesses.map(witness => ({ questionUid: witness.questionUid, screenshotSha: witness.screenshot.sha256, status: 'PASS', blockReviews: witness.blocks.map(block => ({ caseKey, blockId: block.blockId, status: 'PASS', placementSha: block.placementSha, screenshotSha: block.screenshot.sha256 })) })),
+      findings: [],
+    });
+    return fixture.write(`alive/runtime/provider-bridge/job/launch-${launch.launchId.split(':').at(-1)}/render-review-${safeCaseKey}.json`, review);
+  });
+  const finalRunRequiredAxes = new Set(run.questions.flatMap(question => question.requiredAxes));
+  const providerEvidenceRefs = providerReceipt.evidenceRefs.filter(ref => readJson(fixture.root, ref).schemaVersion === 'APMATH_PIPELINE_EVIDENCE_v2' && finalRunRequiredAxes.has(readJson(fixture.root, ref).axis));
+  const canonicalReceipt = { ...providerReceipt, evidenceRefs: [...providerReceipt.evidenceRefs, ...reviewEvidenceRefs] };
+  const canonicalReceiptRef = fixture.write(`alive/runtime/provider-bridge/job/launch-${launch.launchId.split(':').at(-1)}/canonical-receipt.json`, canonicalReceipt);
+  const canonicalState = { ...state, launches: state.launches.map(item => item.launchId === launch.launchId ? { ...item, providerReceiptRef: canonicalReceiptRef } : item) };
+  fixture.write('alive/runtime/work-batches/job/state.json', canonicalState);
+  const finalRun = {
+    ...run,
+    auditorPacketRefs: packetRefs,
+    questions: run.questions.map(question => ({ ...question, evidence: { ...question.evidence } })),
+    evidence: [...run.evidence.filter(ref => readJson(fixture.root, ref).axis !== 'RENDER_REVIEW'), ...providerEvidenceRefs, ...reviewEvidenceRefs],
+  };
+  for (const ref of providerEvidenceRefs) {
+    const evidence = readJson(fixture.root, ref);
+    if (evidence.questionUid === uid && evidence.axis !== 'RENDER_REVIEW') finalRun.questions[0].evidence[evidence.axis] = evidence.evidenceId;
+  }
+  const firstCapture = finalRun.evidence.map(ref => ({ ref, evidence: readJson(fixture.root, ref) })).find(({ evidence }) => evidence.axis === 'RENDER_CAPTURE');
+  const firstReview = finalRun.evidence.map(ref => ({ ref, evidence: readJson(fixture.root, ref) })).find(({ evidence }) => evidence.axis === 'RENDER_REVIEW');
+  finalRun.questions[0].evidence.RENDER_CAPTURE = firstCapture.evidence.evidenceId;
+  finalRun.questions[0].evidence.RENDER_REVIEW = firstReview.evidence.evidenceId;
+  finalRun.questions[0].visual.adjudicationId = finalRun.questions[0].evidence.V3;
+  finalRun.denominator = { status: 'FROZEN', stale: false, ...denominatorInput(finalRun) };
+  const receipt = canonicalReceipt;
   const freshness = evidenceRowsForCanonicalRun(fixture.root, finalRun, freeze, receipt);
+  const buildLedger = createBuildWorkLedgerEntry({
+    buildId: `${finalRun.runId}:build:${finalRun.revision}`,
+    pipeline: finalRun.pipeline,
+    questionUid: uid,
+    builderId: finalRun.builderId,
+    builderSessionId: finalRun.builderSessionId,
+    builderModelOrAgent: finalRun.builderModelOrAgent,
+    runId: finalRun.runId,
+    revision: finalRun.revision,
+    inputSha: finalRun.inputSha,
+    outputRefs: finalRun.inputs.filter(ref => ref.path === finalRun.questions[0].candidatePath || finalRun.questions[0].solutionAssetPaths.includes(ref.path) || finalRun.questions[0].problemAssetPaths.includes(ref.path)),
+    reviewEvidenceIds: freshness.map(row => row.evidenceId).sort(),
+    createdAt: '2026-01-01T00:00:00.000Z',
+  });
+  const buildLedgerRef = fixture.write('release/build-work-ledger.json', buildLedger);
+  finalRun.buildWorkLedgerRefs = [buildLedgerRef];
   const qualityClosure = materializeQuestionQualityClosure({ questionUid: uid, currentRunInputSha: finalRun.inputSha, requiredAxes: finalRun.questions[0].requiredAxes, axes: Object.fromEntries(freshness.map(row => [row.axis, row])) });
   const quality = createQuestionQualityClosureSet({ runId: finalRun.runId, revision: finalRun.revision, currentRunInputSha: finalRun.inputSha, questions: finalRun.questions, closures: [qualityClosure] });
   const qualityRef = fixture.write('release/quality-closure.json', quality);
-  const closureCases = prepared.render.cases.map(({ caseKey, captureRef, capture, reviewRef, review }) => { const [mode, viewportProfile] = caseKey.split('/'); return { caseKey, mode, viewportProfile, captureEvidenceId: capture.evidenceId, captureEvidenceSha: captureRef.sha256, reviewEvidenceId: review.evidenceId, reviewEvidenceSha: reviewRef.sha256, runtimeBundleSha: finalRun.renderRuntime.bundleSha, runtimeResponseBundleSha: prepared.render.runtimeResponseBundleSha, candidateRef, assetRefs: capture.payload.assetRefs, itemWitnessesSha: objectSha(capture.payload.itemWitnesses), lastQuestionId: 1 }; });
+  const closureCases = prepared.render.cases.map(({ caseKey, captureRef, capture }) => {
+    const [mode, viewportProfile] = caseKey.split('/');
+    const reviewRef = reviewEvidenceRefs.find(ref => readJson(fixture.root, ref).payload.captureEvidenceId === capture.evidenceId);
+    const review = readJson(fixture.root, reviewRef);
+    return { caseKey, mode, viewportProfile, captureEvidenceId: capture.evidenceId, captureEvidenceSha: captureRef.sha256, reviewEvidenceId: review.evidenceId, reviewEvidenceSha: reviewRef.sha256, runtimeBundleSha: finalRun.renderRuntime.bundleSha, runtimeResponseBundleSha: prepared.render.runtimeResponseBundleSha, candidateRef, assetRefs: capture.payload.assetRefs, itemWitnessesSha: objectSha(capture.payload.itemWitnesses), lastQuestionId: 1 };
+  });
   const closurePayload = { schemaVersion: 'APMATH_EXAM_RELEASE_CLOSURE_v1', runId: finalRun.runId, revision: finalRun.revision, applicability: 'REQUIRED', qualityClosureSetSha: quality.closureSetSha, questionUids: [uid], questionUidSetSha: objectSha([uid]), candidateRefs: [candidateRef], assetRefs, runtimeBundleSha: finalRun.renderRuntime.bundleSha, requiredCases: [...RELEASE_RENDER_CASES], cases: closureCases, actualCases: [...RELEASE_RENDER_CASES], lastQuestion: uid, currentRunInputSha: finalRun.inputSha, productionAuthorized: false, status: 'PASS' };
   const closure = { ...closurePayload, closureSha: objectSha(closurePayload) };
   const closureRef = fixture.write('release/closure.json', closure);
   finalRun.questionQualityClosureSetRef = qualityRef;
   finalRun.examReleaseClosureRef = closureRef;
   const finalRunRef = fixture.write('release/run-final.json', finalRun);
-  const finalAudit = { schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', workBatchId: 'job', runId: finalRun.runId, revision: finalRun.revision, inputSha: finalRun.inputSha, status: 'PASS', productionAuthorized: false, closureSetSha: quality.closureSetSha, freshness };
+  const finalAudit = auditV2Run(fixture.root, finalRun);
   const finalAuditRef = fixture.write('release/final-audit.json', finalAudit);
-  const phaseForAxis = { SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3' };
-  const phaseEvidenceRefs = ['U1', 'U2', 'U3'].map(phase => ({ phase, evidenceRefs: receipt.evidenceRefs.filter(ref => phaseForAxis[readJson(fixture.root, ref).axis] === phase) }));
+  const phaseForAxis = { SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3', RENDER_REVIEW: 'U3' };
+  const phaseEvidenceRefs = ['U1', 'U2', 'U3'].map(phase => ({ phase, launchId: launch.launchId, providerReceiptRef: canonicalReceiptRef, evidenceRefs: receipt.evidenceRefs.filter(ref => phaseForAxis[readJson(fixture.root, ref).axis] === phase) }));
   const workBatchRef = fileRef(fixture.root, 'alive/runtime/work-batches/job/state.json');
-  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId, workBatchId: 'job', workBatchRef, runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs, assetSetSha256: assetSetSha(assetRefs), launchId: launch.launchId, providerReceiptRef: launch.providerReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef };
+  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId, workBatchId: 'job', workBatchRef, runId: finalRun.runId, runRef: finalRunRef, freezeSha: freeze.freezeSha, revision: finalRun.revision, inputSha: finalRun.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs, assetSetSha256: assetSetSha(assetRefs), launchId: launch.launchId, providerReceiptRef: canonicalReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef };
   const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
   const candidateContext = { window: {} };
   vm.runInNewContext(fs.readFileSync(path.join(fixture.root, candidateRef.path), 'utf8'), candidateContext);
@@ -281,7 +520,7 @@ async function buildCanonicalAuthorityFixture(t, { root, examId = 'target', cand
   });
   const assetFor = value => boundAssets.find(ref => path.basename(ref.path) === path.basename(String(value || '')))?.path || null;
   const questions = candidateQuestions.map(question => ({
-    questionUid: `${runId}|${question.id}`,
+    questionUid: `${examId}|${question.id}`,
     sourceExamId: examId,
     examId,
     qid: question.id,

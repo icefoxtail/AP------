@@ -151,6 +151,66 @@ test('real-looking authority refs without a completed canonical launch are rejec
   assert.ok(checked.errors.length > 0, JSON.stringify(checked));
 });
 
+test('removing sourceAuthority from a V2 run blocks FINAL_AUDIT authority', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'source-authority-required' });
+  const run = JSON.parse(fs.readFileSync(path.join(f.root, f.authority.runRef.path), 'utf8'));
+  delete run.sourceAuthority;
+  const runRef = write(f.root, 'release/missing-source-authority-run.json', run);
+  const { authoritySha: ignoredAuthoritySha, ...authorityWithoutSha } = f.authority;
+  const authorityPayload = { ...authorityWithoutSha, runRef };
+  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
+  const checked = validateCanonicalFinalAuditAuthority(f.root, { authority, expected: { examId: 'source-authority-required', runId: run.runId, revision: run.revision } });
+  assert.equal(checked.status, 'FAIL', JSON.stringify(checked));
+  assert.ok(checked.errors.some(error => error.includes('SOURCE_AUTHORITY')), JSON.stringify(checked.errors));
+});
+
+test('removing uidAuthority from a V2 run blocks FINAL_AUDIT authority', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'uid-authority-required' });
+  const run = JSON.parse(fs.readFileSync(path.join(f.root, f.authority.runRef.path), 'utf8'));
+  delete run.uidAuthority;
+  const runRef = write(f.root, 'release/missing-uid-authority-run.json', run);
+  const { authoritySha: ignoredAuthoritySha, ...authorityWithoutSha } = f.authority;
+  const authorityPayload = { ...authorityWithoutSha, runRef };
+  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
+  const checked = validateCanonicalFinalAuditAuthority(f.root, { authority, expected: { examId: 'uid-authority-required', runId: run.runId, revision: run.revision } });
+  assert.equal(checked.status, 'FAIL', JSON.stringify(checked));
+  assert.ok(checked.errors.some(error => error.includes('UID_AUTHORITY')), JSON.stringify(checked.errors));
+});
+
+test('a synthetic FRESH RENDER_REVIEW without launch and packet provenance cannot authorize release', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'synthetic-render-review' });
+  const run = JSON.parse(fs.readFileSync(path.join(f.root, f.authority.runRef.path), 'utf8'));
+  const originalReviewRef = run.evidence.map(ref => ({ ref, evidence: JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8')) }))
+    .find(({ evidence }) => evidence.axis === 'RENDER_REVIEW').ref;
+  const originalReview = JSON.parse(fs.readFileSync(path.join(f.root, originalReviewRef.path), 'utf8'));
+  const { launchId: ignoredLaunchId, externalTaskId: ignoredExternalTaskId, reviewIsolationProvenanceSha: ignoredProvenanceSha, ...syntheticReviewBody } = originalReview;
+  const syntheticReviewRef = write(f.root, 'release/evidence/synthetic-render-review.json', {
+    ...syntheticReviewBody,
+    evidenceId: `${originalReview.evidenceId}-synthetic`,
+    reviewerId: 'synthetic-unbound-render-reviewer',
+    reviewSessionId: 'synthetic-unbound-render-session',
+  });
+  const badRun = { ...run, evidence: [...run.evidence, syntheticReviewRef] };
+  const badRunRef = write(f.root, 'release/synthetic-render-review-run.json', badRun);
+  const { authoritySha: ignoredAuthoritySha, ...authorityWithoutSha } = f.authority;
+  const authorityPayload = { ...authorityWithoutSha, runRef: badRunRef };
+  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
+  const checked = validateCanonicalFinalAuditAuthority(f.root, { authority, expected: { examId: 'synthetic-render-review', runId: badRun.runId, revision: badRun.revision } });
+  assert.equal(checked.status, 'FAIL', JSON.stringify(checked));
+  assert.ok(checked.errors.includes('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID'), JSON.stringify(checked.errors));
+});
+
+test('a complete canonical V2 run with bound evidence creates REVIEW_READY', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'complete-canonical-v2' });
+  assert.equal(f.sourceRun.schemaVersion, 'APMATH_PIPELINE_RUN_v2');
+  assert.ok(f.sourceRun.sourceAuthority, JSON.stringify(f.sourceRun));
+  assert.ok(f.sourceRun.uidAuthority, JSON.stringify(f.sourceRun));
+  assert.ok(f.sourceRun.questionQualityClosureSetRef, JSON.stringify(f.sourceRun));
+  const checked = validateCanonicalFinalAuditAuthority(f.root, { authority: f.authority, expected: { examId: 'complete-canonical-v2', runId: f.sourceRun.runId, revision: f.sourceRun.revision } });
+  assert.equal(checked.status, 'PASS', JSON.stringify(checked));
+  assert.equal(f.reviewReady.status, 'REVIEW_READY', JSON.stringify(f.reviewReady));
+});
+
 test('synthetic finalAudit freshness rows without canonical evidence are rejected', async t => {
   const fixture = recoveryFixture(t, { pipeline: 'past-exam' });
   const initial = fixture.makeRun(1);
@@ -647,8 +707,8 @@ test('release HOLD receipt carries a transaction identity, baselines, and mutati
   assert.ok(transaction.transactionSha);
 });
 
-async function releaseFixtureWithAuthority(t) {
-  return makeCanonicalReleaseFixture(t, { examId: 'recovery' });
+async function releaseFixtureWithAuthority(t, options = {}) {
+  return makeCanonicalReleaseFixture(t, { examId: 'recovery', ...options });
 }
 
 function injectedPromotion(f) {
@@ -742,8 +802,7 @@ test('release ignores a pre-read smoke JSON when a fresh capture dependency is a
 });
 
 test('default release smoke calls the fresh canonical browser collector', async t => {
-  const f = await releaseFixtureWithAuthority(t);
-  write(f.root, 'archive/engine.html', SMOKE_ENGINE);
+  const f = await releaseFixtureWithAuthority(t, { engineHtml: SMOKE_ENGINE });
   const result = executeApprovedRelease({ ...f, smokeReport: { status: 'PASS', cases: smokeCases(), productionBinding: oldSmokeBinding() }, dependencies: { promote: () => injectedPromotion(f), register: options => registerApprovedExam(options), rebuildIndex: options => rebuildApprovedIndex(options) } });
   assert.equal(result.status, 'DONE', JSON.stringify(result));
   assert.equal(result.productionAuthorized, true);
