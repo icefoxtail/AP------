@@ -79,3 +79,63 @@ test('one-pass resume runner connects provider review, route handler, repair, an
   const phaseAxes = JSON.parse(fs.readFileSync(axisLog, 'utf8'));
   assert.deepEqual(phaseAxes.at(-1), { phase: 'U3', targetedAxes: ['RENDER_REVIEW', 'SOLUTION', 'V3'] });
 });
+
+test('targeted recheck merges reused U1 evidence with fresh U3 evidence and preserves answer conflicts', async t => {
+  const f = recoveryFixture(t, { pipeline: 'past-exam', revisionMutation: 'solution', currentPassAxes: ['MATH_A1'], currentPassAnswers: { MATH_A1: '2' } });
+  const first = f.makeRun(1);
+  const second = f.makeRun(2);
+  const transport = f.write('conflict-transport.mjs', `
+    import fs from 'node:fs';
+    const request = JSON.parse(fs.readFileSync(0, 'utf8'));
+    if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
+      process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'READY', requestSha: request.requestSha, provider: 'synthetic', model: 'synthetic', externalTaskId: 'external-' + request.launchId, auditorId: 'auditor-' + request.launchId, auditorSessionId: 'auditor-session-' + request.launchId, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, runtimeAttestation: 'synthetic', contexts: { U1: { sessionId: request.launchId + '-u1', contextId: request.launchId + '-c1' }, U2: { sessionId: request.launchId + '-u2', contextId: request.launchId + '-c2' }, U3: { sessionId: request.launchId + '-u3', contextId: request.launchId + '-c3' } } }));
+    } else {
+      const evidence = request.logicalLaunchId.endsWith(':2') && request.phase === 'U3' ? [{ schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: 'fresh-u3-answer', runId: 'run', questionUid: 'recovery|1', axis: 'MATH_A2', status: 'PASS', payload: { independentAnswer: '3' } }] : [];
+      const defects = request.logicalLaunchId.endsWith(':1') && request.phase === 'U3' ? [{ runId: 'run', questionUid: 'recovery|1', type: 'CANDIDATE_MATH_DEFECT', defectClass: 'CANDIDATE_MATH_DEFECT', reason: 'synthetic repair' }] : [];
+      process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 0, evidence, defects }));
+    }
+  `);
+  const finalClosureRef = f.write('conflict-review/final-closure.json', { status: 'PASS', productionAuthorized: false });
+  const candidateRef = first.run.inputs.find(ref => ref.role === 'candidate');
+  const ready = createReviewReady({
+    root: f.root,
+    run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'recovery', runId: 'review-ready-conflict', revision: 1 },
+    closure: { status: 'PASS', productionAuthorized: false },
+    finalAudit: { status: 'PASS' },
+    candidateRef,
+    assetRefs: [],
+    candidateQuestions: [{ id: 1, visualNeed: 'NONE', content: 'Find the value.', choices: ['1', '2'], answer: '1', solution: 'The answer is 1.' }],
+    baselineQuestions: [],
+    renderCases: ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'].map(caseKey => ({ caseKey, status: 'PASS' })),
+    gateStatuses: { sourceFidelity: 'PASS', math: 'PASS', solutionQuality: 'PASS', visual: 'PASS', metadata: 'PASS', finalAudit: 'PASS', render: 'PASS' },
+    finalClosureRef,
+    openDefectCount: 0,
+  });
+  assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready.errors));
+  const reviewReadyRef = f.write('conflict-review/review-ready.json', ready);
+  const result = await resumePastExam(f.root, {
+    workBatchId: 'job',
+    runRefs: [first.ref],
+    providerCommand: process.execPath,
+    providerArgs: [path.join(f.root, transport.path)],
+    reviewReadyRef,
+    reviewReadySha: reviewReadyRef.sha256,
+    maxSteps: 12,
+    handlers: {
+      CANDIDATE_REPAIR: ({ defects }) => ({ route: 'CANDIDATE_REPAIR', repairRequest: { iteration: 1, revision: second.run.revision, inputSha: second.run.inputSha, dispositions: defects.map(defect => ({ ...defect, disposition: 'REPAIRED_CANDIDATE' })), builderId: 'builder', builderSessionId: 'builder-session', runRefs: [second.ref] } }),
+    },
+  });
+  assert.equal(result.status, 'HUMAN_DECISION_REQUIRED');
+  assert.equal(result.reason, 'REVIEW_CONFLICT');
+  const targetedLaunch = result.state.launches.find(launch => launch.purpose === 'TARGETED_RECHECK');
+  const targetedReceipt = JSON.parse(fs.readFileSync(path.join(f.root, targetedLaunch.providerReceiptRef.path), 'utf8'));
+  assert.equal(targetedReceipt.adjudication.required, true);
+  assert.equal(targetedReceipt.reusedEvidenceRefs.length, 1);
+  const reusedEvidence = JSON.parse(fs.readFileSync(path.join(f.root, targetedReceipt.reusedEvidenceRefs[0].path), 'utf8'));
+  assert.equal(reusedEvidence.payload.independentAnswer, '2');
+  const merged = JSON.parse(fs.readFileSync(path.join(f.root, targetedReceipt.mergeRef.path), 'utf8'));
+  assert.equal(merged.conflicts.length, 1);
+  assert.equal(merged.conflicts[0].type, 'REVIEW_CONFLICT');
+  assert.equal(merged.conflicts[0].claims.some(claim => claim.phase === 'U1' && claim.value === '2'), true);
+  assert.equal(merged.conflicts[0].claims.some(claim => claim.phase === 'U3' && claim.value === '3'), true);
+});

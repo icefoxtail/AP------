@@ -12,6 +12,7 @@ import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECO
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
 export const CANONICAL_AUTHORITY_TERMINAL_STATUSES = Object.freeze(['RESOLVED']);
 const PHASES = Object.freeze(['U1', 'U2', 'U3']);
+const TARGETED_SEMANTIC_PHASE = Object.freeze({ SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3' });
 const check = (condition, code) => { if (!condition) throw new Error(`HOLD:${code}`); };
 const same = (left, right) => canonicalJson(left) === canonicalJson(right);
 export { visualAssetPayload, sourceVisualAssetPayload } from './native-visual.mjs';
@@ -239,6 +240,30 @@ function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
   }
   check(plan.preflightResponse?.requestSha === plan.preflightRequest?.requestSha && plan.preflightResponseSha === objectSha(plan.preflightResponse), 'PROVIDER_PLAN_ATTESTATION_TAMPERED');
   validateTargetedReuseProof(root, state, plan);
+}
+
+function targetedReuseEvidence(root, plan) {
+  const targeted = plan.targetedDispatchPlan;
+  if (!targeted) return [];
+  const reusedKeys = new Set((targeted.reusedAxisSet || []).map(row => `${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`));
+  const rows = (targeted.validatedReuseRows || []).filter(row => TARGETED_SEMANTIC_PHASE[row.axis] && reusedKeys.has(`${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`));
+  const byKey = new Map();
+  for (const row of rows) {
+    const key = `${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`;
+    check(!byKey.has(key), 'PROVIDER_REUSED_EVIDENCE_DUPLICATE');
+    check(row.reuseStatus === 'VALIDATED_PASS_REUSE' || row.reuseStatus === 'CURRENT_PASS' && row.independentEvidenceValidated === true, 'PROVIDER_REUSED_EVIDENCE_NOT_VALIDATED');
+    check(row.evidenceRef?.path && row.evidenceRef?.sha256 && nonempty(row.evidenceId), 'PROVIDER_REUSED_EVIDENCE_REF_REQUIRED');
+    const evidence = JSON.parse(readBoundFile(root, row.evidenceRef).toString('utf8'));
+    check(evidence.schemaVersion === 'APMATH_PIPELINE_EVIDENCE_v2' && evidence.status === 'PASS', 'PROVIDER_REUSED_EVIDENCE_INVALID');
+    check(evidence.evidenceId === row.evidenceId && evidence.runId === row.runId && evidence.questionUid === row.questionUid && evidence.axis === row.axis, 'PROVIDER_REUSED_EVIDENCE_BINDING');
+    byKey.set(key, { row, evidence, phase: TARGETED_SEMANTIC_PHASE[row.axis] });
+  }
+  for (const row of targeted.reusedAxisSet || []) {
+    if (!TARGETED_SEMANTIC_PHASE[row.axis]) continue;
+    const key = `${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`;
+    check(byKey.has(key), 'PROVIDER_REUSED_EVIDENCE_MISSING');
+  }
+  return [...byKey.values()].sort((left, right) => `${left.phase}:${left.row.runId}:${left.row.questionUid}:${left.row.axis}`.localeCompare(`${right.phase}:${right.row.runId}:${right.row.questionUid}:${right.row.axis}`));
 }
 
 function validateTargetedReuseProof(root, state, plan) {
@@ -587,13 +612,14 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   check(freeze, 'PROVIDER_FREEZE_REQUIRED');
   const contexts = sourceContexts(root, freeze);
   const relativeBase = relativeDirectoryFor(root, receiptPath);
-  let packets;
+  let packets, reusedEvidenceRows;
   try {
     packets = packetRefs.map(({ phase, ref }) => {
       const packet = loadPacket(root, ref, launch, plan, state, contexts.candidateContext, contexts);
       check(packet.phase === phase, 'PROVIDER_PACKET_PHASE_REF_MISMATCH');
       return { packet, ref };
     }).sort((left, right) => PHASES.indexOf(left.packet.phase) - PHASES.indexOf(right.packet.phase));
+    reusedEvidenceRows = targetedReuseEvidence(root, plan);
   } catch (error) {
     const failed = executionFailureEvidence(root, relativeBase, { ...plan, providerPlanRef: planRef }, launch, { phase: error?.phase || null, error, preDispatchFailure: true, providerPlanRef: planRef });
     writeNewJson(receiptPathFor(root, receiptPath), failed.receipt);
@@ -602,7 +628,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, evidenceRefs: [failed.evidenceRef], failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
   }
   reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'DISPATCHED' });
-  const phaseAttestationRefs = [], evidenceRefs = [], phaseResults = [], suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
+  const phaseAttestationRefs = [], evidenceRefs = [], phaseResultsByPhase = new Map(), suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
   for (const { packet } of packets) {
     const request = phaseRequest(plan, packet);
     const requestRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-request.json`, request);
@@ -631,13 +657,20 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
       : { defects: scopedDefects, suppressedDefects: [] };
     const targetedAxes = packet.targetedAxes ? new Set(packet.targetedAxes) : null;
     const phaseEvidence = response.evidence.filter(row => !targetedAxes || targetedAxes.has(row.axis));
-    phaseResults.push({ phase: packet.phase, responseRef, defects: filtered.defects, evidence: phaseEvidence.map(row => ({ ...row, runId: row.runId || phaseScope.find(target => target.questionUid === row.questionUid)?.runId || null })) });
+    phaseResultsByPhase.set(packet.phase, { phase: packet.phase, responseRef, defects: filtered.defects, evidence: phaseEvidence.map(row => ({ ...row, runId: row.runId || phaseScope.find(target => target.questionUid === row.questionUid)?.runId || null })) });
     suppressedDefects.push(...filtered.suppressedDefects.map(defect => ({ ...defect, phase: packet.phase })));
     for (let index = 0; index < phaseEvidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, phaseEvidence[index]));
   }
   const freshPhaseSet = new Set(packets.map(({ packet }) => packet.phase));
   const reusedPhaseSet = PHASES.filter(phase => !freshPhaseSet.has(phase));
-  for (const phase of reusedPhaseSet) phaseResults.push({ phase, responseRef: null, defects: [], evidence: [] });
+  const reusedEvidenceRefs = [];
+  for (const { row, evidence, phase } of reusedEvidenceRows) {
+    const result = phaseResultsByPhase.get(phase) || { phase, responseRef: null, defects: [], evidence: [] };
+    if (!result.evidence.some(item => item.evidenceId === evidence.evidenceId)) result.evidence.push(evidence);
+    reusedEvidenceRefs.push(row.evidenceRef);
+    phaseResultsByPhase.set(phase, result);
+  }
+  const phaseResults = PHASES.map(phase => phaseResultsByPhase.get(phase) || { phase, responseRef: null, defects: [], evidence: [] });
   const merge = mergeIndependentReviews(phaseResults);
   const mergeRef = writeBridgeJson(root, `${relativeBase}/merged-review.json`, merge);
   const receipt = {
@@ -679,6 +712,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     validatedReuseRows: plan.targetedDispatchPlan?.validatedReuseRows || null,
     phaseAttestationRefs,
     evidenceRefs,
+    reusedEvidenceRefs,
     defects: merge.defects,
     mergeRef,
     adjudication: merge.adjudication,
@@ -687,5 +721,5 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   writeNewJson(receiptPathFor(root, receiptPath), receipt);
   const providerReceiptRef = fileRef(root, receiptPath);
   const completed = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'COMPLETED', providerReceiptRef });
-  return { status: 'COMPLETED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs, usedTokens: receipt.usedTokens, state: completed.status };
+  return { status: 'COMPLETED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs, reusedEvidenceRefs, usedTokens: receipt.usedTokens, state: completed.status };
 }

@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { computeAxisInputShaMap } from '../semantic-diff.mjs';
+import { objectSha } from '../canonical.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
 import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
@@ -162,13 +163,37 @@ test('SPEED-03 source and shared-asset changes scope targeted rechecks to impact
   assert.equal(sharedPlan.affectedUidSet.includes('synthetic-exam|3'), false);
 });
 
-test('SPEED-04 validated PASS reuse blocks stale inputs and accepts the current PASS path', () => {
+test('SPEED-04 weak CURRENT_PASS evidence cannot suppress fresh review', () => {
   const currentRunInputSha = 'sha256:' + 'a'.repeat(64);
   const currentAxisInputSha = 'sha256:' + 'b'.repeat(64);
   const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', status: 'PASS', validityStatus: 'VALID', questionUid: 'q1', axis: 'SOLUTION', inputSha: currentRunInputSha, axisInputSha: currentAxisInputSha };
   const current = validatedPassReuse({ evidence, currentRunInputSha, currentAxisInputSha });
-  assert.equal(current.status, 'PASS');
-  assert.equal(current.reuseStatus, 'CURRENT_PASS');
+  assert.equal(current.status, 'BLOCKED');
+  assert.equal(current.reuseStatus, 'REUSE_BLOCKED');
+  assert.ok(current.errors.includes('CURRENT_PASS_INDEPENDENCE_CONTEXT_REQUIRED'));
+  const weakDispatch = buildTargetedDispatchPlan({
+    scope: [{ runId: 'run', questionUid: 'q1' }],
+    requiredAxesByUid: { q1: ['SOLUTION'] },
+    reusableUidAxisSet: [{ runId: 'run', questionUid: 'q1', axis: 'SOLUTION' }],
+    validatedReuseRows: [{ runId: 'run', questionUid: 'q1', axis: 'SOLUTION', status: 'PASS', reuseStatus: 'CURRENT_PASS' }],
+  });
+  assert.deepEqual(weakDispatch.freshAxisSet, [{ runId: 'run', questionUid: 'q1', axis: 'SOLUTION' }]);
+
+  const packetBody = { schemaVersion: 'APMATH_AUDITOR_PACKET_v1', phase: 'U3', questionUids: ['q1'], payload: { questionUid: 'q1', currentQuestion: { questionUid: 'q1', content: 'Question', choices: ['1', '2'], candidateRef: { path: 'q.js', bytes: 1, sha256: objectSha('candidate') } }, currentAnswer: '1', currentSolution: 'Independent solution.' }, auditorId: 'auditor', auditorSessionId: 'u3-session', auditorPrincipalType: 'STATELESS_MODEL', inputVisibilityProfile: 'CANDIDATE_ONLY', priorReviewVisibility: 'NONE', sealed: true, contextId: 'u3-context', launchId: 'job:1', externalTaskId: 'provider' };
+  const packet = { ...packetBody, packetSha: objectSha(packetBody) };
+  const boundEvidence = { ...evidence, runId: 'run', revision: 1, reviewerId: 'auditor', reviewSessionId: 'u3-session', reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-13T00:00:00Z', frozenAt: '2026-09-13T00:01:00Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: 'CANDIDATE_ONLY', reviewIsolationProvenanceSha: packet.packetSha, launchId: 'job:1', externalTaskId: 'provider', withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', findings: [] };
+  const bound = validatedPassReuse({
+    evidence: boundEvidence,
+    currentRunInputSha,
+    currentAxisInputSha,
+    independentContext: {
+      run: { runId: 'run', revision: 1, builderId: 'builder', builderSessionId: 'builder-session' },
+      packet,
+      launch: { launchId: 'job:1', status: 'COMPLETED', externalId: 'provider', auditorId: 'auditor', scope: [{ runId: 'run', questionUid: 'q1' }], contexts: { U3: { sessionId: 'u3-session', contextId: 'u3-context' } } },
+    },
+  });
+  assert.equal(bound.status, 'PASS');
+  assert.equal(bound.reuseStatus, 'CURRENT_PASS');
   const stale = validatedPassReuse({ evidence, currentRunInputSha, currentAxisInputSha: 'sha256:' + 'c'.repeat(64) });
   assert.equal(stale.reuseStatus, 'REUSE_BLOCKED');
 });
