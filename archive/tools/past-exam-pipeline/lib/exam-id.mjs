@@ -1,6 +1,6 @@
 import path from "node:path";
 
-export const COURSE_TOKENS = Object.freeze([
+const COURSE_TOKENS = [
   "공통수학1",
   "공통수학2",
   "수학(상)",
@@ -23,29 +23,19 @@ export const COURSE_TOKENS = Object.freeze([
   "확률과 통계",
   "확통",
   "기벡",
-  "기하",
-  "기하와벡터",
-  "중1 수학",
-  "중2 수학",
-  "중3 수학"
-]);
+  "기하"
+];
 
-export const COURSE_ALIASES = new Map([
+const COURSE_ALIASES = new Map([
   ["수1", "수학I"],
-  ["수학1", "수학I"],
   ["수2", "수학II"],
-  ["수학2", "수학II"],
   ["수학Ⅰ", "수학I"],
   ["수학Ⅱ", "수학II"],
   ["확통", "확률과통계"],
   ["확률과 통계", "확률과통계"],
   ["미적분1", "미적분I"],
-  ["미적분2", "미적분II"],
-  ["기하와벡터", "기하"]
+  ["미적분2", "미적분II"]
 ]);
-
-const COURSE_NORMALIZED_ALIASES = new Map([...COURSE_ALIASES.entries()].map(([key, value]) => [String(key).normalize('NFKC').replace(/\s+/g, ''), value]));
-const COURSE_NORMALIZED_TOKENS = COURSE_TOKENS.map(token => ({ token, normalized: token.normalize('NFKC').replace(/\s+/g, '') }));
 
 function normalizeYear(raw) {
   if (!raw) return "";
@@ -80,58 +70,9 @@ function parseGrade(text) {
   return "";
 }
 
-export function normalizeCourse(value) {
-  const normalized = String(value || '').normalize('NFKC').replace(/\s+/g, '').trim();
-  if (!normalized || normalized === '수학' || normalized === '기출' || normalized === 'c') return '';
-  return COURSE_NORMALIZED_ALIASES.get(normalized)
-    || COURSE_NORMALIZED_TOKENS.find(row => row.normalized === normalized)?.token
-    || '';
-}
-
-export function parseCourse(text) {
-  const source = String(text || '').normalize('NFKC');
-  const found = COURSE_NORMALIZED_TOKENS
-    .filter(row => source.replace(/\s+/g, '').includes(row.normalized))
-    .sort((left, right) => right.normalized.length - left.normalized.length)[0]?.token || '';
-  return normalizeCourse(found);
-}
-
-function normalizeIdentityYear(value) {
-  const digits = String(value || '').replace(/\D/g, '');
-  if (!digits) return '';
-  if (digits.length === 2) return String(2000 + Number(digits));
-  return digits.length === 4 ? digits : '';
-}
-
-function normalizeIdentitySchool(value) {
-  return String(value || '').normalize('NFKC').trim().replace(/\s+/g, '').toLocaleLowerCase();
-}
-
-function normalizeIdentityExamType(value) {
-  const normalized = String(value || '').normalize('NFKC').trim().toLocaleLowerCase();
-  if (normalized === '중간' || normalized === 'mid') return 'mid';
-  if (normalized === '기말' || normalized === 'final') return 'final';
-  return normalized;
-}
-
-export function canonicalExamIdentity(value = {}) {
-  const course = normalizeCourse(value.course)
-    || normalizeCourse(value.subject)
-    || normalizeCourse(value.standardCourse)
-    || normalizeCourse(value.primaryStandardCourse)
-    || parseCourse([value.course, value.subject, value.standardCourse, value.primaryStandardCourse, value.topic].filter(Boolean).join(' '));
-  return {
-    year: normalizeIdentityYear(value.year),
-    school: normalizeIdentitySchool(value.school ?? value.schoolName),
-    grade: String(value.grade || '').trim(),
-    semester: String(value.semester || '').replace(/\D/g, ''),
-    examType: normalizeIdentityExamType(value.examType),
-    course,
-  };
-}
-
-export function sameCanonicalExamIdentity(left, right) {
-  return JSON.stringify(canonicalExamIdentity(left)) === JSON.stringify(canonicalExamIdentity(right));
+function parseCourse(text) {
+  const found = COURSE_TOKENS.find((token) => text.includes(token)) || "";
+  return COURSE_ALIASES.get(found) || found;
 }
 
 function parseSchool(tokens) {
@@ -236,8 +177,6 @@ export function buildManifestFromInventoryItem(item, cfg, duplicateIndex = 0) {
     expectedQuestionCount: cfg.defaultQuestionCount,
     outputFileName: `${safeExamId}${cfg.candidateFileSuffix}.js`,
     outputDir: path.join(cfg.generatedRoot, safeExamId),
-    existingExamMode: cfg.existingExamMode || "NEW_EXAM_ONLY",
-    forceExisting: cfg.args?.forceExisting === true || cfg.existingExamMode === "FORCE_EXISTING",
     status: item.parseStatus === "parsed" ? "pending" : "blocked",
     notes: item.parseIssues
   };
