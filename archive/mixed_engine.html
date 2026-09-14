@@ -2492,7 +2492,7 @@ async function renderSol(area, data) {
             staging.appendChild(box);
             return box;
         });
-        await Promise.all(Array.from(staging.querySelectorAll('img')).map(waitForQuestionImage));
+        await Promise.all(Array.from(staging.querySelectorAll('img')).map(img => waitForQuestionImage(img)));
         if (rendererMode() === 'batch') await typesetMath('solution-staging', [staging]);
 
         ({ cols } = makeGridPage());
