@@ -7,21 +7,27 @@ import assert from 'node:assert/strict';
 const { buildReportExamCohortStats } = await import('../apmath/worker-backup/worker/index.js');
 
 const cohortRows = [
-  { id: 'e1', score: '82', question_count: 20, student_grade: '중3', class_grade: null },
-  { id: 'e2', score: '90', question_count: 20, student_grade: '중3', class_grade: null },
-  { id: 'e3', score: '74', question_count: 20, student_grade: null, class_grade: '중3' }
+  { id: 'e1', score: '82', question_count: 20, archive_file: 'exam-a.js', exam_title: '중간고사', exam_date: '2026-06-30', student_grade: '중3', class_grade: null },
+  { id: 'e2', score: '90', question_count: 20, archive_file: 'exam-a.js', exam_title: '중간고사', exam_date: '2026-06-30', student_grade: '중3', class_grade: null },
+  { id: 'e3', score: '74', question_count: 20, archive_file: 'exam-a.js', exam_title: '중간고사', exam_date: '2026-06-30', student_grade: null, class_grade: '중3' },
+  { id: 'e4', score: '82', question_count: 20, archive_file: '', exam_title: '중간고사', exam_date: '6/30', student_grade: '중3', class_grade: null }
 ];
+const wrongRows = [
+  { session_id: 'e1', question_id: 3 },
+  { session_id: 'e2', question_id: 3 }
+];
+const preparedSql = [];
 const env = {
   DB: {
-    prepare: sql => ({
-      bind: () => ({
-        all: async () => {
-          if (/FROM exam_sessions/.test(sql)) return { results: cohortRows };
-          if (/FROM wrong_answers/.test(sql)) return { results: [{ question_id: 3, wrong_count: 2 }] };
-          return { results: [] };
-        }
-      })
-    })
+    prepare: sql => {
+      preparedSql.push(sql);
+      const result = async () => {
+        if (/FROM exam_sessions/.test(sql)) return { results: cohortRows };
+        if (/FROM wrong_answers/.test(sql)) return { results: wrongRows };
+        return { results: [] };
+      };
+      return { bind: () => ({ all: result }), all: result };
+    }
   }
 };
 const students = [{ id: 's1', grade: '중3' }];
@@ -67,5 +73,15 @@ for (const grade of ['중3학년', '3학년', '중등3']) {
 rows = await buildReportExamCohortStats(env, [mkSession({ exam_date: '6/30' })], students, [], []);
 assert.equal(rows.length, 1);
 assert.equal(rows[0].cohortScope, 'grade_title_date_question_count');
+
+assert.equal(
+  preparedSql.filter(sql => /FROM exam_sessions/.test(sql)).length,
+  preparedSql.filter(sql => /FROM wrong_answers/.test(sql)).length,
+  'cohort stats should batch the session and wrong-answer reads one-for-one'
+);
+assert.ok(
+  preparedSql.filter(sql => /FROM exam_sessions/.test(sql)).every(sql => !/WHERE \$\{/.test(sql)),
+  'cohort session read should not interpolate one WHERE clause per cohort'
+);
 
 console.log('report cohort stats worker test passed');
