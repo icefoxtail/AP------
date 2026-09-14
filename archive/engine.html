@@ -1766,6 +1766,91 @@ function normalizeQuestionNotes(html) {
     );
 }
 
+function normalizeHangulStatementBreaks(html) {
+    if (!html) return '';
+
+    const tokens = [];
+    const save = (kind, match) => {
+        const token = '__HANGUL_STATEMENT_' + kind + '_' + tokens.length + '__';
+        tokens.push(match);
+        return token;
+    };
+
+    // Keep the existing note/box wrappers available for normalization, while
+    // shielding structures whose text is not a question statement stream.
+    let protectedHtml = String(html)
+        .replace(
+            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
+            match => save('BLOCK', match)
+        )
+        .replace(
+            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi,
+            match => save('BLOCK', match)
+        )
+        .replace(
+            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
+            match => save('MATH', match)
+        )
+        .replace(/<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi, match => save('TAG', match));
+
+    const rank = new Map([['ㄱ', 0], ['ㄴ', 1], ['ㄷ', 2], ['ㄹ', 3], ['ㅁ', 4]]);
+    const markers = [...protectedHtml.matchAll(/([ㄱㄴㄷㄹㅁ])\./g)];
+    const replacements = [];
+
+    for (let index = 1; index < markers.length; index += 1) {
+        const previous = markers[index - 1];
+        const current = markers[index];
+        if (rank.get(current[1]) <= rank.get(previous[1])) continue;
+
+        const between = protectedHtml.slice(previous.index + previous[0].length, current.index);
+        if (/__HANGUL_STATEMENT_BLOCK_\d+__/.test(between)) continue;
+
+        const separatorMatch = between.match(
+            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__HANGUL_STATEMENT_TAG_\d+__)*$/i
+        );
+        const separator = separatorMatch ? separatorMatch[0] : '';
+        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
+        const tagMatches = [...separator.matchAll(/__HANGUL_STATEMENT_TAG_\d+__/gi)];
+        const lastTag = tagMatches[tagMatches.length - 1];
+        const normalizedSeparator = breakMatches.length > 0
+            ? separator.slice(0, breakMatches[0].index)
+                + '<br>'
+                + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
+                    .replace(/<br\s*\/?>/gi, '')
+                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                    .replace(/^\s+|\s+$/g, '')
+            : lastTag
+            ? separator.slice(0, lastTag.index + lastTag[0].length)
+                + separator.slice(lastTag.index + lastTag[0].length)
+                    .replace(/<br\s*\/?>/gi, '')
+                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                    .replace(/\s+/g, '')
+                + '<br>'
+            : separator
+                .replace(/<br\s*\/?>/gi, '')
+                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                .replace(/\s+/g, '') + '<br>';
+
+        replacements.push({
+            start: current.index - separator.length,
+            end: current.index,
+            value: normalizedSeparator
+        });
+    }
+
+    for (let index = replacements.length - 1; index >= 0; index -= 1) {
+        const replacement = replacements[index];
+        protectedHtml = protectedHtml.slice(0, replacement.start)
+            + replacement.value
+            + protectedHtml.slice(replacement.end);
+    }
+
+    return protectedHtml.replace(
+        /__HANGUL_STATEMENT_(?:BLOCK|MATH|TAG)_(\d+)__/g,
+        (match, index) => tokens[Number(index)] ?? ''
+    );
+}
+
 function protectRenderSegments(html) {
     const tokens = [];
     const save = (match) => {
@@ -1806,7 +1891,8 @@ function protectRenderSegments(html) {
 
 function normalizeViewBlocks(html) {
     if (!html) return '';
-    const protectedState = protectRenderSegments(html);
+    const normalizedHtml = normalizeHangulStatementBreaks(html);
+    const protectedState = protectRenderSegments(normalizedHtml);
     let out = protectedState.html;
 
     // 보기/조건/자료 라벨은 문자열 시작 또는 명시적 줄바꿈 뒤에서만 블록으로 승격한다.
