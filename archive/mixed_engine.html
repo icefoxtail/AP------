@@ -176,6 +176,8 @@
 
         /* [v1.9] 발문 가독성 및 이미지 분리 렌더 보정 */
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }
+        .q-content > .subjective-heading { display: block; margin-bottom: 0.8em; }
+        .q-content > .subjective-prompt { display: block; }
         
         .q-content img, .q-image-wrap img { 
             display: block; 
@@ -1328,11 +1330,12 @@ async function recordMixedLayoutPromotionGate(area) {
 function prepareMixedCanonicalContent(question) {
     const raw = question.sourcePayload || {};
     const rawContent = stripInlineImagesFromContent(raw.content || raw.question || question.content || '', !!question.image);
+    const renderQuestion = AppState.mode === 'exam' ? { ...raw, __apExamSubjectiveSpacing: true } : raw;
     return sanitizeProtectedSegments(
         normalizeQuestionNotes(
             normalizeViewBlocks(
                 normalizeQuestionTables(
-                    formatQuestionContent(wrapLatex(rawContent), raw)
+                    formatQuestionContent(wrapLatex(rawContent), renderQuestion)
                 )
             )
         )
@@ -1535,7 +1538,7 @@ function renderChoicesHTML(q) {
     }).join('');
     return `<div class="choices choices-${mode}">${itemsHTML}</div>`;
 }
-function formatQuestionContent(html, q) {
+function applyQuestionContentBreaks(html) {
     if (!html) return '';
     let count = 0;
     return html.replace(/([\.?!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
@@ -1544,6 +1547,46 @@ function formatQuestionContent(html, q) {
         if (p1.includes('br>') || p1.includes('\n')) return match;
         return p1 + '<br>' + p2;
     });
+}
+
+function splitSubjectiveHeadingSource(source) {
+    const value = String(source || '');
+    const locator = /(?:^|(?:<br\s*\/?>(?:\s*)?){2,}|\r?\n{2,})\s*(?=(?:\[|&lt;|<)?\s*서(?:술|논술)형(?![가-힣]))/i;
+    const located = value.match(locator);
+    if (!located) return null;
+    const markerStart = located.index + located[0].length;
+    const marker = value.slice(markerStart).match(/^(?:\[|&lt;|<)?\s*서(?:술|논술)형/i);
+    if (!marker) return null;
+
+    let headingEnd = markerStart + marker[0].length;
+    const rest = value.slice(headingEnd);
+    const numberedSuffix = rest.match(/^\s*\d+\s*(?:[.．:：)]|\]|&gt;|>)?/i);
+    const bracketSuffix = rest.match(/^\s*(?:\]|&gt;|>)/i);
+    const suffix = numberedSuffix || bracketSuffix;
+    if (!suffix) return null;
+    headingEnd += suffix[0].length;
+
+    const score = value.slice(headingEnd).match(/^\s*\[(?:총\s*)?\d+(?:\.\d+)?\s*점[^\]\r\n]*\]/);
+    if (score) headingEnd += score[0].length;
+
+    const heading = value.slice(markerStart, headingEnd).trim();
+    const body = value.slice(headingEnd).replace(/^(?:\s|<br\s*\/?>(?:\s*)?)+/i, '');
+    if (!heading || !body.trim()) return null;
+    return { prefix: value.slice(0, markerStart), heading, body };
+}
+
+function formatQuestionContent(html, q) {
+    if (!html) return '';
+    if (q?.__apExamSubjectiveSpacing === true) {
+        const split = splitSubjectiveHeadingSource(q.content || q.question || q.text || q.prompt || '');
+        if (split) {
+            const prefix = applyQuestionContentBreaks(wrapLatex(split.prefix));
+            const heading = applyQuestionContentBreaks(wrapLatex(split.heading));
+            const body = applyQuestionContentBreaks(wrapLatex(split.body));
+            return `${prefix}<div class="subjective-heading">${heading}</div><div class="subjective-prompt">${body}</div>`;
+        }
+    }
+    return applyQuestionContentBreaks(html);
 }
 
 function normalizeQuestionTables(html) {
@@ -1927,11 +1970,12 @@ function makePage(area, type, pNum) {
 /** [PASS] renderExam - Rulebook v1.9 + Image Field Synchronized */
 
 async function renderExam(area, data) {
-    if (buildContext && new URLSearchParams(buildContext.input.url).get('executor') !== 'legacy') return APExamRenderExecutor.render({ area, data, deps: mixedExecutorDeps() });
+    const examData = data.map(question => question && typeof question === 'object' ? { ...question, __apExamSubjectiveSpacing: true } : question);
+    if (buildContext && new URLSearchParams(buildContext.input.url).get('executor') !== 'legacy') return APExamRenderExecutor.render({ area, data: examData, deps: mixedExecutorDeps() });
     const staging = (buildContext?.stagingHost || document.getElementById('staging')); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
 
-    const items = data.map((q, i) => {
+    const items = examData.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box'; box.dataset.sourceRef = getMixedQuestionSourceRef(q, i);
         
         const hasImageField = !!q.image;
