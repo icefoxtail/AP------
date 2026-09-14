@@ -25,6 +25,37 @@ export const CORE_SHA_INPUT_FILES = Object.freeze(['review-merger.mjs', 'native-
 export const CORE_SHA = objectSha(CORE_SHA_INPUT_FILES.map(name => ({ name, sha256: bytesSha(fs.readFileSync(new URL(name, import.meta.url))) })));
 const MINIMUM_RULES = ['00_RULES_INDEX.md', '01_CANONICAL/JS아카이브룰북_v2.6.md', '02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md', '02_PIPELINES/공통파이프라인_실행계약_v1.md', '02_PIPELINES/작업방식_적응형배치루프_v1.md', '03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md'];
 
+const snapshotKey = ref => `${ref?.path || ''}|${ref?.bytes ?? ''}|${ref?.sha256 || ''}`;
+
+// A snapshot is deliberately scoped to one verification operation. It keeps
+// the first boundary read and its parsed projections, while a later call gets
+// a new snapshot and therefore observes any file mutation after the operation.
+export function createAuditSnapshot(root) {
+  const bytesByRef = new Map();
+  const jsonByRef = new Map();
+  const banksByRef = new Map();
+  const read = ref => {
+    const key = snapshotKey(ref);
+    if (!bytesByRef.has(key)) bytesByRef.set(key, Buffer.from(readBoundFile(root, ref)));
+    return Buffer.from(bytesByRef.get(key));
+  };
+  const json = ref => {
+    const key = snapshotKey(ref);
+    if (!jsonByRef.has(key)) jsonByRef.set(key, JSON.parse(read(ref).toString('utf8')));
+    return structuredClone(jsonByRef.get(key));
+  };
+  const bank = ref => {
+    const key = snapshotKey(ref);
+    if (!banksByRef.has(key)) {
+      const context = { window: {} };
+      vm.runInNewContext(read(ref).toString('utf8'), context, { timeout: 1000 });
+      banksByRef.set(key, JSON.parse(JSON.stringify(context.window)));
+    }
+    return structuredClone(banksByRef.get(key));
+  };
+  return Object.freeze({ read, json, bank });
+}
+
 export function runInputSha(run) {
   const questions = [...run.questions].sort((a, b) => a.questionUid < b.questionUid ? -1 : 1).map(({ evidence, renderEvidenceIds, sourceStatus, visual, ...q }) => {
     if (run.schemaVersion === RUN_VERSION_V2) delete q.axisInputShas;
@@ -190,14 +221,18 @@ export function auditRun(root, run) {
   return auditSemanticKernel(root, run);
 }
 
-export function loadBoundQuestionBanks(root, run) {
+export function loadBoundQuestionBanks(root, run, { snapshot = null } = {}) {
   const banks = new Map();
-  for (const ref of run.inputs.filter(ref => ['source', 'candidate'].includes(ref.role))) {
+  const read = ref => snapshot?.read(ref) || readBoundFile(root, ref);
+  const bank = ref => snapshot?.bank(ref) || (() => {
     const context = { window: {} };
-    vm.runInNewContext(readBoundFile(root, ref).toString('utf8'), context, { timeout: 1000 });
-    const bank = JSON.parse(JSON.stringify(context.window));
-    if (!Array.isArray(bank.questionBank) || new Set(bank.questionBank.map(q => q.id)).size !== bank.questionBank.length) throw new Error(`BANK_IDENTITY_INVALID:${ref.path}`);
-    banks.set(ref.path, bank);
+    vm.runInNewContext(read(ref).toString('utf8'), context, { timeout: 1000 });
+    return JSON.parse(JSON.stringify(context.window));
+  })();
+  for (const ref of run.inputs.filter(ref => ['source', 'candidate'].includes(ref.role))) {
+    const loaded = bank(ref);
+    if (!Array.isArray(loaded.questionBank) || new Set(loaded.questionBank.map(q => q.id)).size !== loaded.questionBank.length) throw new Error(`BANK_IDENTITY_INVALID:${ref.path}`);
+    banks.set(ref.path, loaded);
   }
   return run.questions.map(q => {
     const candidate = banks.get(q.candidatePath)?.questionBank.find(item => item.id === q.qid);
