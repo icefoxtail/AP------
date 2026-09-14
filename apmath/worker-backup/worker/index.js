@@ -732,29 +732,47 @@ export async function buildReportExamCohortStats(env, sessions = [], students = 
     byKey.get(key).sessions.push(session);
   }
 
-  for (const item of byKey.values()) {
-    const cohortRes = await env.DB.prepare(`
-      SELECT DISTINCT es.id, es.score, es.question_count, s.grade AS student_grade, c.grade AS class_grade
-      FROM exam_sessions es
-      JOIN students s ON s.id = es.student_id
-      LEFT JOIN class_students cs ON cs.student_id = es.student_id
-      LEFT JOIN classes c ON c.id = COALESCE(es.class_id, cs.class_id)
-      WHERE ${item.identity.where}
-        AND TRIM(COALESCE(es.score, '')) != ''
-    `).bind(...item.identity.params).all();
+  if (!byKey.size) return [];
 
-    const rowsBySessionId = new Map();
-    for (const rawRow of (cohortRes.results || [])) {
-      const rawScore = String(rawRow.score ?? '').trim();
-      if (!rawScore) continue;
-      const score = Number(rawScore);
-      if (!Number.isFinite(score)) continue;
+  // The previous implementation executed one exam_sessions join and one
+  // wrong_answers aggregation for every cohort. On a dashboard refresh that
+  // turned a single request into dozens of full-table scans. Load the scored
+  // session candidates once, then apply the same identity/grade predicates in
+  // memory before aggregating wrong answers in bounded batches.
+  const cohortRes = await env.DB.prepare(`
+    SELECT DISTINCT
+      es.id,
+      es.score,
+      es.question_count,
+      es.archive_file,
+      es.exam_title,
+      es.exam_date,
+      s.grade AS student_grade,
+      c.grade AS class_grade
+    FROM exam_sessions es
+    JOIN students s ON s.id = es.student_id
+    LEFT JOIN class_students cs ON cs.student_id = es.student_id
+    LEFT JOIN classes c ON c.id = COALESCE(es.class_id, cs.class_id)
+    WHERE TRIM(COALESCE(es.score, '')) != ''
+  `).all();
 
-      const studentGrade = normalizeReportCohortGrade(rawRow.student_grade);
-      const classGrade = normalizeReportCohortGrade(rawRow.class_grade);
-      const matchedGrade = studentGrade || classGrade;
-      if (matchedGrade !== item.grade) continue;
+  const rowsByCohortKey = new Map(
+    Array.from(byKey.keys(), key => [key, new Map()])
+  );
+  for (const rawRow of (cohortRes.results || [])) {
+    const rawScore = String(rawRow.score ?? '').trim();
+    if (!rawScore) continue;
+    const score = Number(rawScore);
+    if (!Number.isFinite(score)) continue;
 
+    const studentGrade = normalizeReportCohortGrade(rawRow.student_grade);
+    const classGrade = normalizeReportCohortGrade(rawRow.class_grade);
+    const matchedGrade = studentGrade || classGrade;
+    if (!matchedGrade) continue;
+
+    for (const [key, item] of byKey.entries()) {
+      if (matchedGrade !== item.grade || !matchesReportCohortIdentity(rawRow, item.identity)) continue;
+      const rowsBySessionId = rowsByCohortKey.get(key);
       const sessionId = String(rawRow.id);
       if (!rowsBySessionId.has(sessionId)) {
         rowsBySessionId.set(sessionId, {
@@ -764,35 +782,66 @@ export async function buildReportExamCohortStats(env, sessions = [], students = 
         });
       }
     }
+  }
 
-    const cohortRows = Array.from(rowsBySessionId.values());
+  const maxQuestionNoByCohortKey = new Map(
+    Array.from(rowsByCohortKey.entries(), ([key, rows]) => [
+      key,
+      Math.max(0, ...Array.from(rows.values()).map(row => Number(row.question_count || 0)))
+    ])
+  );
+  const allCohortSessionIds = Array.from(new Set(
+    Array.from(rowsByCohortKey.entries())
+      .filter(([key]) => maxQuestionNoByCohortKey.get(key) > 0)
+      .flatMap(([, rows]) => Array.from(rows.keys()))
+  ));
+  const wrongRows = [];
+  const wrongAnswerBatchSize = 90;
+  for (let offset = 0; offset < allCohortSessionIds.length; offset += wrongAnswerBatchSize) {
+    const sessionIds = allCohortSessionIds.slice(offset, offset + wrongAnswerBatchSize);
+    const markers = sessionIds.map(() => '?').join(',');
+    const wrongRes = await env.DB.prepare(`
+      SELECT session_id, question_id
+      FROM wrong_answers
+      WHERE session_id IN (${markers})
+    `).bind(...sessionIds).all();
+    wrongRows.push(...(wrongRes.results || []));
+  }
+
+  const wrongPairs = new Set();
+  const wrongCountByCohortKey = new Map();
+  for (const [key, rowsBySessionId] of rowsByCohortKey.entries()) {
+    const sessionIds = new Set(rowsBySessionId.keys());
+    const wrongCountByQuestion = new Map();
+    for (const row of wrongRows) {
+      const sessionId = String(row.session_id ?? '');
+      if (!sessionIds.has(sessionId)) continue;
+      const questionId = String(row.question_id ?? '');
+      const pairKey = `${key}\u0000${sessionId}\u0000${questionId}`;
+      if (wrongPairs.has(pairKey)) continue;
+      wrongPairs.add(pairKey);
+      wrongCountByQuestion.set(questionId, (wrongCountByQuestion.get(questionId) || 0) + 1);
+    }
+    wrongCountByCohortKey.set(key, wrongCountByQuestion);
+  }
+
+  for (const [key, item] of byKey.entries()) {
+    const cohortRows = Array.from(rowsByCohortKey.get(key).values());
     if (!cohortRows.length) continue;
 
     const scores = cohortRows.map(row => row.score);
     const average = Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
-    const maxQuestionNo = Math.max(0, ...cohortRows.map(row => Number(row.question_count || 0)));
-    const sessionIds = cohortRows.map(row => String(row.id));
-    let questionStats = [];
-
-    if (maxQuestionNo && sessionIds.length) {
-      const markers = sessionIds.map(() => '?').join(',');
-      const wrongRes = await env.DB.prepare(`
-        SELECT question_id, COUNT(DISTINCT session_id) AS wrong_count
-        FROM wrong_answers
-        WHERE session_id IN (${markers})
-        GROUP BY question_id
-      `).bind(...sessionIds).all();
-      const wrongCountByQuestion = new Map((wrongRes.results || []).map(row => [String(row.question_id), Number(row.wrong_count || 0)]));
-      questionStats = Array.from({ length: maxQuestionNo }, (_, index) => {
-        const questionNo = index + 1;
-        const wrongCount = wrongCountByQuestion.get(String(questionNo)) || 0;
-        return {
-          questionNo,
-          wrongCount,
-          correctRate: Math.round(((cohortRows.length - wrongCount) / cohortRows.length) * 100)
-        };
-      });
-    }
+    const maxQuestionNo = maxQuestionNoByCohortKey.get(key) || 0;
+    const wrongCountByQuestion = wrongCountByCohortKey.get(key) || new Map();
+    const questionStats = Array.from({ length: maxQuestionNo }, (_, index) => {
+      const questionNo = index + 1;
+      const wrongCount = wrongCountByQuestion.get(String(questionNo)) || 0;
+      return {
+        questionNo,
+        wrongCount,
+        correctRate: Math.round(((cohortRows.length - wrongCount) / cohortRows.length) * 100)
+      };
+    });
 
     for (const session of item.sessions) {
       const score = Number(session.score);
@@ -815,6 +864,26 @@ export async function buildReportExamCohortStats(env, sessions = [], students = 
   }
 
   return Array.from(resultBySessionId.values());
+}
+
+function matchesReportCohortIdentity(row, identity) {
+  const archiveFile = String(row?.archive_file ?? '').trim();
+  const examTitle = String(row?.exam_title ?? '').trim();
+  const examDate = String(row?.exam_date ?? '').trim();
+  if (identity.scope === 'grade_archive_year') {
+    return archiveFile === String(identity.params[0] ?? '')
+      && examDate.slice(0, 4) === String(identity.params[1] ?? '');
+  }
+  if (identity.scope === 'grade_title_date_question_count') {
+    return examTitle === String(identity.params[0] ?? '')
+      && examDate === String(identity.params[1] ?? '')
+      && Number(row?.question_count ?? 0) === Number(identity.params[2] ?? 0);
+  }
+  if (identity.scope === 'grade_title_date') {
+    return examTitle === String(identity.params[0] ?? '')
+      && examDate === String(identity.params[1] ?? '');
+  }
+  return false;
 }
 
 function pushConflict(conflicts, type, targetId, classA, classB, branchPair, dayOfWeek, start, end) {
