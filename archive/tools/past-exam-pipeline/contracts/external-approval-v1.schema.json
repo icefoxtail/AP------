@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "APMATH_FINAL_EXTERNAL_APPROVAL_v1",
+  "type": "object",
+  "required": ["schemaVersion", "approvalStatus", "examId", "reviewReadyRunId", "reviewReadySha", "candidateSha256", "stagedAssetSetSha256", "finalClosureSha", "dbBaselineSha256", "indexBaselineSha256", "approvalEvidenceIdentity", "approvalEvidenceSha256", "approvedAt"],
+  "properties": {
+    "schemaVersion": {"const": "APMATH_FINAL_EXTERNAL_APPROVAL_v1"},
+    "approvalStatus": {"const": "APPROVED"},
+    "examId": {"type": "string", "minLength": 1},
+    "reviewReadyRunId": {"type": "string", "minLength": 1},
+    "reviewReadySha": {"$ref": "#/$defs/sha"},
+    "candidateSha256": {"$ref": "#/$defs/sha"},
+    "stagedAssetSetSha256": {"$ref": "#/$defs/sha"},
+    "finalClosureSha": {"$ref": "#/$defs/sha"},
+    "dbBaselineSha256": {"$ref": "#/$defs/sha"},
+    "indexBaselineSha256": {"$ref": "#/$defs/sha"},
+    "approvalEvidenceIdentity": {"type": "string", "minLength": 1},
+    "approvalEvidenceSha256": {"$ref": "#/$defs/sha"},
+    "approvedAt": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "sha": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  },
+  "additionalProperties": true
+}

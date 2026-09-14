@@ -1,5 +1,6 @@
 import path from "node:path";
 import { readJson } from "./fs-utils.mjs";
+import { assertStagingOutput } from "./production-boundary.mjs";
 
 export function parseArgs(argv) {
   const args = {
@@ -14,7 +15,9 @@ export function parseArgs(argv) {
     grade: "",
     semester: "",
     examType: "",
-    limit: 0
+    limit: 0,
+    forceExisting: false,
+    existingMode: "NEW_EXAM_ONLY"
   };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -31,6 +34,8 @@ export function parseArgs(argv) {
     else if (arg === "--semester") args.semester = argv[++i];
     else if (arg === "--exam-type") args.examType = argv[++i];
     else if (arg === "--limit") args.limit = Number(argv[++i]);
+    else if (arg === "--force-existing") args.forceExisting = true;
+    else if (arg === "--existing-mode") args.existingMode = String(argv[++i] || "NEW_EXAM_ONLY").toUpperCase();
   }
   return args;
 }
@@ -54,8 +59,10 @@ export async function loadConfig(args) {
     defaultQuestionCount: Number(raw.defaultQuestionCount || 0),
     candidateFileSuffix: raw.candidateFileSuffix || ".candidate",
     allowBatchRunWithoutSelectedManifest: raw.allowBatchRunWithoutSelectedManifest === true,
+    existingExamMode: args.forceExisting ? "FORCE_EXISTING" : String(args.existingMode || "NEW_EXAM_ONLY").toUpperCase(),
     args
   };
+  assertStagingOutput(projectRoot, cfg.generatedRoot, "PIPELINE_GENERATED_ROOT_FORBIDDEN");
   cfg.batchDir = path.join(cfg.generatedRoot, "_batch");
   return cfg;
 }

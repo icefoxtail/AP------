@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { inspectDispatchLock, recoverDispatchLock, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, reserveWorkBatchReview, recoverLegacyReservationHold, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, aggregateWorkBatchAudit } from './work-batch.mjs';
+import { inspectDispatchLock, recoverDispatchLock, initWorkBatch, materializeWorkBatchRepair, freezeWorkBatch, markWorkBatchReviewReady, reserveWorkBatchReview, recoverLegacyReservationHold, reconcileWorkBatchReview, recordWorkBatchRepair, readWorkBatch, aggregateWorkBatchAudit } from './work-batch.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { auditManifestFile, profiles, RUN_VERSION, RUN_VERSION_V2, CORE_SHA } from './closure.mjs';
@@ -29,6 +29,7 @@ try {
     case 'work-batch-init': output = initWorkBatch(root, read(value('--spec'))); break;
     case 'work-batch-materialize-repair': output = materializeWorkBatchRepair(root, read(value('--spec'))); break;
     case 'work-batch-freeze': output = freezeWorkBatch(root, value('--work-batch-id'), read(value('--run-refs'))); break;
+    case 'work-batch-review-ready': output = markWorkBatchReviewReady(root, value('--work-batch-id'), { reviewReadyRef: value('--review-ready-ref') ? read(value('--review-ready-ref')) : null, reviewReadySha: value('--review-ready-sha') || null }); break;
     case 'work-batch-reserve': output = reserveWorkBatchReview(root, value('--work-batch-id'), read(value('--request'))); break;
     case 'work-batch-recover-transient-hold': output = recoverLegacyReservationHold(root, value('--work-batch-id'), read(value('--evidence-refs'))); break;
     case 'work-batch-reconcile': output = reconcileWorkBatchReview(root, value('--work-batch-id'), read(value('--request'))); break;
@@ -115,16 +116,16 @@ try {
       output = { schemaVersion: RUN_VERSION, pipeline, runId: 'REPLACE_WITH_NEW_RUN_ID', revision: 1, builderSessionId: 'REPLACE_WITH_BUILDER_SESSION', canonicalRecordId: 'REPLACE_WITH_REGISTRY_RECORD', questions: [], inputs: [], evidence: [], registry: [], denominator: { status: 'UNFROZEN', stale: true }, inputSha: null, status: 'DRAFT_NOT_EXECUTABLE' };
       break;
     }
-    default: throw new Error('Usage: cli.mjs work-batch-init|work-batch-materialize-repair|work-batch-freeze|work-batch-repair|work-batch-reserve|work-batch-recover-transient-hold|work-batch-reconcile|work-batch-next-action|work-batch-audit ... | provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT|TARGETED_RECHECK --provider-command COMMAND [--provider-args JSON_FILE] --plan-out RUNTIME_PLAN | provider-packet-preflight --work-batch-id JOB --plan RUNTIME_PLAN --packet-refs JSON_FILE | provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan RUNTIME_PLAN --packet-refs JSON_FILE --provider-command COMMAND [--provider-args JSON_FILE] --receipt-out RUNTIME_RECEIPT | prepare-v2 ... | machine-checks --manifest FILE [--manifest-out FILE] [--evidence-dir DIR] | audit-v2 --manifest FILE | release-audit --manifest FILE | semantic-diff --previous FILE --current FILE | change-impact --diff FILE --current FILE | axis-input --question FILE --axis AXIS | render-impact --previous FILE --current FILE [--global CSS] | audit --manifest FILE | fact --file FILE | parity --expected FILE | template --pipeline ID | inventory');
+    default: throw new Error('Usage: cli.mjs work-batch-init|work-batch-materialize-repair|work-batch-freeze|work-batch-review-ready|work-batch-repair|work-batch-reserve|work-batch-recover-transient-hold|work-batch-reconcile|work-batch-next-action|work-batch-audit ... | provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT|TARGETED_RECHECK --provider-command COMMAND [--provider-args JSON_FILE] --plan-out RUNTIME_PLAN | provider-packet-preflight --work-batch-id JOB --plan RUNTIME_PLAN --packet-refs JSON_FILE | provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan RUNTIME_PLAN --packet-refs JSON_FILE --provider-command COMMAND [--provider-args JSON_FILE] --receipt-out RUNTIME_RECEIPT | prepare-v2 ... | machine-checks --manifest FILE [--manifest-out FILE] [--evidence-dir DIR] | audit-v2 --manifest FILE | release-audit --manifest FILE | semantic-diff --previous FILE --current FILE | change-impact --diff FILE --current FILE | axis-input --question FILE --axis AXIS | render-impact --previous FILE --current FILE [--global CSS] | audit --manifest FILE | fact --file FILE | parity --expected FILE | template --pipeline ID | inventory');
   }
 } catch (error) { output = { status: error.message.startsWith('HOLD:') ? 'HOLD' : 'BLOCKED', errors: [error.message], productionAuthorized: false }; }
-if (args[0]?.startsWith('work-batch-') && output.freezes) output = { status: output.status, workBatchId: output.workBatchId, workflowProfile: output.workflowProfile || 'LEGACY', latestFreezeSha: output.freezes.at(-1)?.freezeSha || null, targetCount: output.freezes.at(-1)?.targets.length || 0, openDefectCount: (output.openDefectSet || []).length, openDefectSet: output.openDefectSet || [], repairIterationCount: (output.repairIterations || []).length, maxRepairIterations: output.policy?.maxRepairIterations || output.policy?.targetedRechecks || null, launch: output.launches.at(-1) || null };
+if (args[0]?.startsWith('work-batch-') && output.freezes) output = { status: output.status, workBatchId: output.workBatchId, workflowProfile: output.workflowProfile || 'LEGACY', latestFreezeSha: output.freezes.at(-1)?.freezeSha || null, targetCount: output.freezes.at(-1)?.targets.length || 0, openDefectCount: (output.openDefectSet || []).length, openDefectSet: output.openDefectSet || [], reviewReadyRef: output.reviewReadyRef || null, reviewReadySha: output.reviewReadySha || null, repairIterationCount: (output.repairIterations || []).length, maxRepairIterations: output.policy?.maxRepairIterations || output.policy?.targetedRechecks || null, launch: output.launches.at(-1) || null };
 output.reportSha = objectSha(output);
 if (value('--out')) {
   const target = path.resolve(value('--out'));
-  const protectedRoots = ['archive/exams', 'archive/assets'].map(p => path.resolve(root, p));
+  const protectedRoots = ['archive/exams', 'archive/assets', 'archive/db.js', 'archive/question-index.js'].map(p => path.resolve(root, p));
   if (protectedRoots.some(p => target === p || target.startsWith(`${p}${path.sep}`))) throw new Error('PRODUCTION_OUTPUT_FORBIDDEN');
   writeNewJson(target, output);
 }
 console.log(JSON.stringify(output, null, 2));
-if (!['PASS', 'INVENTORY_ONLY', 'DRAFT_NOT_EXECUTABLE', 'CAPTURED_REVIEW_REQUIRED', 'MACHINE_EVIDENCE_READY', 'PRODUCTION', 'FROZEN', 'REPAIR_REQUIRED', 'FAILED', 'NO_DISPATCH_LOCK', 'LOCK_RECONCILIATION_REQUIRED', 'RECOVERED_RECONCILE_REQUIRED'].includes(output.status)) process.exitCode = 1;
+if (!['PASS', 'INVENTORY_ONLY', 'DRAFT_NOT_EXECUTABLE', 'CAPTURED_REVIEW_REQUIRED', 'MACHINE_EVIDENCE_READY', 'PRODUCTION', 'FROZEN', 'REPAIR_REQUIRED', 'REVIEW_READY', 'FAILED', 'NO_DISPATCH_LOCK', 'LOCK_RECONCILIATION_REQUIRED', 'RECOVERED_RECONCILE_REQUIRED'].includes(output.status)) process.exitCode = 1;

@@ -7,6 +7,8 @@ import { ensureDir, readJson, writeJson, writeText } from "./lib/fs-utils.mjs";
 import { makeCandidateJs } from "./lib/js-candidate.mjs";
 import { freezeSourceInventory } from "./lib/hardening.mjs";
 import { assertBuilderStart } from "./lib/calibration.mjs";
+import { existingExamPreflight } from "./lib/existing-exam.mjs";
+import { speedTelemetry } from "../pipeline-core/speed.mjs";
 
 const execFileAsync = promisify(execFile);
 const thisDir = path.dirname(fileURLToPath(import.meta.url));
@@ -34,11 +36,60 @@ function parseOneArgs(argv) {
 }
 
 export async function runOneExam(cfg, manifest) {
+  const startedAt = Date.now();
+  const hasExtractionInput = Boolean(manifest.pdfPath || (Array.isArray(manifest.sourcePageImagePaths) && manifest.sourcePageImagePaths.length > 0));
+  const withTelemetry = (result, overrides = {}) => ({
+    ...result,
+    telemetry: result?.telemetry || speedTelemetry({
+      startedAt,
+      questionCount: result?.questionCount ?? result?.expectedQuestionCount ?? overrides.questionCount ?? 0,
+      providerInvocationCount: result?.providerInvocationCount ?? 0,
+      modelInvocationCount: result?.modelInvocationCount ?? 0,
+      extractionInvocationCount: result?.extractionInvocationCount ?? (hasExtractionInput ? 1 : 0),
+      newSolutionVisualCount: result?.newSolutionVisualCount ?? 0,
+      reusedVisualCount: result?.reusedVisualCount ?? 0,
+      renderFreshCount: result?.renderFreshCount ?? 0,
+      renderReusedCount: result?.renderReusedCount ?? 0,
+      skipExistingExam: result?.status === "SKIP_EXISTING_EXAM",
+      ...overrides,
+    }),
+  });
+  const existing = existingExamPreflight({
+    archiveRoot: cfg.archiveRoot,
+    examIdentity: manifest,
+    forceExisting: cfg.args?.forceExisting === true || manifest.forceExisting === true || cfg.existingExamMode === "FORCE_EXISTING",
+  });
+  if (existing.hold) return withTelemetry({
+    examId: manifest.examId || null,
+    canonicalExamId: manifest.canonicalExamId || manifest.examId || null,
+    status: existing.status,
+    currentStage: "existing_exam_identity_preflight",
+    blockedReasons: existing.missingIdentityFields || ["canonical_exam_identity_incomplete"],
+    existingIdentity: existing.identity,
+    protectedArchiveTouched: false,
+    providerInvocationCount: 0,
+    modelInvocationCount: 0,
+    extractionInvocationCount: 0,
+    dbIndexWriteCount: 0,
+  });
+  if (existing.skip) return withTelemetry({
+    examId: manifest.examId,
+    canonicalExamId: manifest.canonicalExamId || manifest.examId,
+    status: "SKIP_EXISTING_EXAM",
+    skipReason: "production_exam_identity_exists",
+    existingProductionFile: existing.existing.file,
+    existingIdentity: existing.identity,
+    protectedArchiveTouched: false,
+    providerInvocationCount: 0,
+    modelInvocationCount: 0,
+    extractionInvocationCount: 0,
+    dbIndexWriteCount: 0,
+  });
   // S0 + S0.5 precede source inventory, provider use, and ALL candidate writes.
   assertBuilderStart(path.resolve(thisDir, '../../..'), manifest);
   const outputDir = path.resolve(manifest.outputDir || path.join(cfg.generatedRoot, manifest.examId));
   const protectedRoots = [
-    path.resolve(cfg.archiveRoot, "exams", "original"),
+    path.resolve(cfg.archiveRoot, "exams"),
     path.resolve(cfg.archiveRoot, "assets", "images"),
     path.resolve(cfg.archiveRoot, "db.js"),
     path.resolve(cfg.archiveRoot, "question-index.js"),
@@ -132,9 +183,9 @@ export async function runOneExam(cfg, manifest) {
       nextStages: ["provide_independent_source_inventory", "rerun_source_inventory_freeze"],
     };
     await writeJson(path.join(reportsDir, "validation_summary.json"), blocked);
-    return blocked;
+    return withTelemetry(blocked, { extractionInvocationCount: 0 });
   }
-  if (manifest.pdfPath || (Array.isArray(manifest.sourcePageImagePaths) && manifest.sourcePageImagePaths.length > 0)) {
+  if (hasExtractionInput) {
     const helperPath = path.join(thisDir, "helpers", "scanned_exam_pipeline.py");
     try {
       const helperArgs = [
@@ -152,7 +203,7 @@ export async function runOneExam(cfg, manifest) {
         maxBuffer: 1024 * 1024 * 50,
         env: { ...process.env, PYTHONIOENCODING: "utf-8" },
       });
-      return JSON.parse(result.stdout);
+      return withTelemetry(JSON.parse(result.stdout), { extractionInvocationCount: 1 });
     } catch (error) {
       const failed = {
         ...validationSummary,
@@ -161,10 +212,10 @@ export async function runOneExam(cfg, manifest) {
         helperError: String(error.stderr || error.message || error).slice(0, 4000),
       };
       await writeJson(path.join(reportsDir, "validation_summary.json"), failed);
-      return failed;
+      return withTelemetry(failed, { extractionInvocationCount: 1 });
     }
   }
-  return validationSummary;
+  return withTelemetry(validationSummary, { extractionInvocationCount: 0 });
 }
 
 async function main() {
