@@ -15,6 +15,7 @@ import { readWorkBatch } from '../../pipeline-core/work-batch.mjs';
 import { runInputSha } from '../../pipeline-core/closure.mjs';
 import { readArchiveDb, rebuildApprovedIndex, registerApprovedExam } from '../register-approved-exam.mjs';
 import { executeApprovedRelease } from '../release-approved-exam.mjs';
+import { makeCanonicalReleaseFixture } from './release-authority-fixture.mjs';
 
 const SMOKE_ENGINE = `<!doctype html><meta name="viewport" content="width=device-width"><style>body{margin:0}#print-area{width:100%;padding:8px;box-sizing:border-box}.q-box,.ans-n{display:block;min-height:32px;margin:8px 0;border:1px solid #ccc}</style><script>window.MathJax={startup:{promise:Promise.resolve()}};(async()=>{const params=new URLSearchParams(location.search);const response=await fetch('/archive/'+params.get('data'));const source=await response.text();const scope={};new Function('window',source)(scope);const root=document.createElement('main');root.id='print-area';for(const question of scope.questionBank||[]){const node=document.createElement(params.get('mode')==='ans'?'div':'section');node.className=params.get('mode')==='ans'?'ans-n':'q-box';node.dataset.sourceRef=String(question.id);node.textContent=question.content||String(question.id);root.append(node)}document.body.append(root)})()</script>`;
 import { canonicalExamIdentity, sameCanonicalExamIdentity } from '../lib/exam-id.mjs';
@@ -150,7 +151,7 @@ test('real-looking authority refs without a completed canonical launch are rejec
   assert.ok(checked.errors.length > 0, JSON.stringify(checked));
 });
 
-test('canonical FINAL_AUDIT authority binds work-batch, phase evidence, audit report, and closure', async t => {
+test('synthetic finalAudit freshness rows without canonical evidence are rejected', async t => {
   const fixture = recoveryFixture(t, { pipeline: 'past-exam' });
   const initial = fixture.makeRun(1);
   const closurePayload = {
@@ -301,26 +302,54 @@ if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
   };
   const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
   const checked = validateCanonicalFinalAuditAuthority(fixture.root, { authority, expected: { examId: 'recovery', runId: run.runId, revision: run.revision, candidateSha256: authority.candidateSha256, assetSetSha256: authority.assetSetSha256 } });
-  assert.equal(checked.status, 'PASS', JSON.stringify(checked));
+  assert.equal(checked.status, 'FAIL', JSON.stringify(checked));
+  assert.ok(checked.errors.some(error => error.includes('EVIDENCE') || error.includes('FRESHNESS')), JSON.stringify(checked));
+  assert.ok(checked.errors.includes('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_SHA_REQUIRED'), JSON.stringify(checked));
+});
 
-  const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(fixture.root, 'candidate-1.js'), 'utf8'), context);
-  const ready = createReviewReady({
-    root: fixture.root,
-    run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'recovery', runId: run.runId, revision: run.revision },
-    closure,
-    finalAudit,
-    finalAuditAuthority: authority,
-    candidateRef: authority.candidateRef,
-    assetRefs: [],
-    candidateQuestions: context.window.questionBank,
-    baselineQuestions: [],
-    renderCases,
-    gateStatuses,
-    finalClosureRef: closureRef,
-    openDefectCount: 0,
-  });
-  assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready));
+test('quality closure SHA is mandatory for an otherwise canonical FINAL_AUDIT authority', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'quality-sha-required' });
+  const { closureSha: ignoredClosureSha, ...canonicalClosurePayload } = f.closure;
+  const badClosurePayload = { ...canonicalClosurePayload, qualityClosureSetSha: null };
+  const badClosure = { ...badClosurePayload, closureSha: objectSha(badClosurePayload) };
+  const badClosureRef = write(f.root, 'release/bad-quality-closure.json', badClosure);
+  const badRun = { ...f.sourceRun, examReleaseClosureRef: badClosureRef };
+  const badRunRef = write(f.root, 'release/bad-quality-run.json', badRun);
+  const authorityPayload = { ...f.authority, runRef: badRunRef, canonicalClosureRef: badClosureRef };
+  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
+  const candidateContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync(f.candidateFile, 'utf8'), candidateContext);
+  const ready = createReviewReady({ root: f.root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'quality-sha-required', runId: badRun.runId, revision: badRun.revision }, closure: badClosure, finalAudit: f.finalAudit, finalAuditAuthority: authority, candidateRef: f.candidateRef, assetRefs: f.assetRefs, candidateQuestions: candidateContext.window.questionBank, baselineQuestions: [], renderCases, gateStatuses, finalClosureRef: badClosureRef, openDefectCount: 0 });
+  assert.equal(ready.status, 'BLOCKED', JSON.stringify(ready));
+  assert.ok(ready.errors.includes('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_SHA_REQUIRED'), JSON.stringify(ready.errors));
+});
+
+test('FINAL_AUDIT freshness cannot alias a different persisted evidence ref', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'evidence-identity' });
+  const badFreshness = f.finalAudit.freshness.map((row, index) => index === 0 ? { ...row, evidenceId: 'forged-evidence-id', evidenceSha: 'sha256:' + 'f'.repeat(64) } : row);
+  const badAudit = { ...f.finalAudit, freshness: badFreshness };
+  const badAuditRef = write(f.root, 'release/bad-final-audit.json', badAudit);
+  const authorityPayload = { ...f.authority, finalAuditRef: badAuditRef };
+  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
+  const candidateContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync(f.candidateFile, 'utf8'), candidateContext);
+  const ready = createReviewReady({ root: f.root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'evidence-identity', runId: f.sourceRun.runId, revision: f.sourceRun.revision }, closure: f.closure, finalAudit: badAudit, finalAuditAuthority: authority, candidateRef: f.candidateRef, assetRefs: f.assetRefs, candidateQuestions: candidateContext.window.questionBank, baselineQuestions: [], renderCases, gateStatuses, finalClosureRef: f.closureRef, openDefectCount: 0 });
+  assert.equal(ready.status, 'BLOCKED', JSON.stringify(ready));
+  assert.ok(ready.errors.some(error => error.startsWith('FINAL_AUDIT_AUTHORITY_EVIDENCE_IDENTITY_MISMATCH') || error.startsWith('FINAL_AUDIT_AUTHORITY_EVIDENCE_SHA_MISMATCH')), JSON.stringify(ready.errors));
+});
+
+test('provider output omitted from declared phase evidence cannot authorize a required axis', async t => {
+  const f = await makeCanonicalReleaseFixture(t, { examId: 'phase-lineage' });
+  const phaseEvidenceRefs = f.authority.phaseEvidenceRefs.map(row => row.phase === 'U1'
+    ? { ...row, evidenceRefs: row.evidenceRefs.filter(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8')).axis !== 'SOURCE') }
+    : row);
+  const authorityPayload = { ...f.authority, phaseEvidenceRefs };
+  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
+  const candidateContext = { window: {} };
+  vm.runInNewContext(fs.readFileSync(f.candidateFile, 'utf8'), candidateContext);
+  const ready = createReviewReady({ root: f.root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'phase-lineage', runId: f.sourceRun.runId, revision: f.sourceRun.revision }, closure: f.closure, finalAudit: f.finalAudit, finalAuditAuthority: authority, candidateRef: f.candidateRef, assetRefs: f.assetRefs, candidateQuestions: candidateContext.window.questionBank, baselineQuestions: [], renderCases, gateStatuses, finalClosureRef: f.closureRef, openDefectCount: 0 });
+  assert.equal(ready.status, 'BLOCKED', JSON.stringify(ready));
+  assert.ok(ready.errors.some(error => error.startsWith('FINAL_AUDIT_AUTHORITY_PROVIDER_OUTPUT_LINEAGE_REQUIRED')), JSON.stringify(ready.errors));
 });
 
 function smokeCases() {
@@ -619,68 +648,7 @@ test('release HOLD receipt carries a transaction identity, baselines, and mutati
 });
 
 async function releaseFixtureWithAuthority(t) {
-  const fixture = recoveryFixture(t, { pipeline: 'past-exam' });
-  const initial = fixture.makeRun(1);
-  const closurePayload = {
-    schemaVersion: 'APMATH_EXAM_RELEASE_CLOSURE_v1',
-    runId: initial.run.runId,
-    revision: initial.run.revision,
-    applicability: 'REQUIRED',
-    qualityClosureSetSha: null,
-    questionUids: ['recovery|1'],
-    questionUidSetSha: objectSha(['recovery|1']),
-    candidateRefs: [initial.run.inputs.find(ref => ref.role === 'candidate')],
-    assetRefs: [],
-    runtimeBundleSha: null,
-    requiredCases: ['exam/desktop', 'exam/mobile', 'solution/desktop', 'solution/mobile', 'answer/desktop', 'answer/mobile'],
-    cases: canonicalClosureCases(),
-    actualCases: renderCases.map(row => row.caseKey),
-    currentRunInputSha: initial.run.inputSha,
-    productionAuthorized: false,
-    status: 'PASS',
-  };
-  const closure = { ...closurePayload, closureSha: objectSha(closurePayload) };
-  const closureRef = fixture.write('release/closure.json', closure);
-  const run = { ...initial.run, examReleaseClosureRef: closureRef };
-  run.inputSha = runInputSha(run);
-  const runRef = fixture.write('release/run.json', run);
-  const provider = fixture.write('release/provider.mjs', `
-import fs from 'node:fs';
-const request = JSON.parse(fs.readFileSync(0, 'utf8'));
-const runInputSha = ${JSON.stringify(run.inputSha)};
-if (request.operation === 'PREPARE_STATELESS_FINAL_AUDIT') {
-  process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'READY', requestSha: request.requestSha, provider: 'synthetic-release-provider', model: 'synthetic-release-model', externalTaskId: 'external-' + request.launchId, auditorId: 'auditor-' + request.launchId, auditorSessionId: 'auditor-session-' + request.launchId, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, modelInvocationCount: 0, runtimeAttestation: 'synthetic-release-runtime', contexts: { U1: { sessionId: request.launchId + '-u1', contextId: request.launchId + '-c1' }, U2: { sessionId: request.launchId + '-u2', contextId: request.launchId + '-c2' }, U3: { sessionId: request.launchId + '-u3', contextId: request.launchId + '-c3' } } }));
-} else {
-  const item = Array.isArray(request.packet.payload) ? request.packet.payload[0] : request.packet.payload;
-  const axis = { U1: 'SOURCE', U2: 'V2', U3: 'MATH_A2' }[request.phase];
-  const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: request.logicalLaunchId + '-' + request.phase + '-evidence', runId: 'run', revision: 1, questionUid: item.questionUid, axis, inputSha: runInputSha, axisInputSha: 'sha256:' + 'a'.repeat(64), mode: 'FRESH', status: 'PASS', validityStatus: 'FROZEN', reviewerId: 'auditor-' + request.logicalLaunchId, reviewSessionId: request.packet.auditorSessionId, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-14T06:00:00.000Z', frozenAt: '2026-09-14T06:01:00.000Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: request.packet.inputVisibilityProfile, findings: [], reviewIsolationProvenanceSha: request.packet.packetSha, launchId: request.logicalLaunchId, externalTaskId: request.externalTaskId, reviewStartInputSha: runInputSha, reviewEndInputSha: runInputSha, withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', payload: { independentAnswer: '1' } };
-  process.stdout.write(JSON.stringify({ schemaVersion: request.schemaVersion, operation: request.operation, status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: request.externalTaskId, phase: request.phase, sessionId: request.packet.auditorSessionId, contextId: request.packet.contextId, providerInvocationId: request.logicalLaunchId + '-' + request.phase, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 0, evidence: [evidence], defects: [] }));
-}
-`);
-  await resumePastExam(fixture.root, { workBatchId: 'job', runRefs: [runRef], providerCommand: process.execPath, providerArgs: [path.join(fixture.root, provider.path)], maxSteps: 6 });
-  const state = readWorkBatch(fixture.root, 'job');
-  const freeze = state.freezes.at(-1);
-  const launch = state.launches.find(item => item.purpose === 'FINAL_AUDIT' && item.status === 'COMPLETED');
-  const receipt = JSON.parse(fs.readFileSync(path.join(fixture.root, launch.providerReceiptRef.path), 'utf8'));
-  const freshness = freeze.bindings.flatMap(binding => (binding.questions || []).flatMap(question => Object.entries(binding.axisInputShas[question.questionUid] || {}).map(([axis, axisInputSha]) => ({ questionUid: question.questionUid, axis, axisInputSha, status: 'PASS', mode: 'FRESH', evidenceId: `${question.questionUid}:${axis}`, evidenceSha: objectSha([question.questionUid, axis]), receiptSha: null }))));
-  const finalAudit = { schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', workBatchId: 'job', runId: run.runId, revision: run.revision, inputSha: run.inputSha, status: 'PASS', productionAuthorized: false, freshness };
-  const finalAuditRef = fixture.write('release/final-audit.json', finalAudit);
-  const phaseForAxis = { SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3' };
-  const phaseEvidenceRefs = ['U1', 'U2', 'U3'].map(phase => ({ phase, evidenceRefs: receipt.evidenceRefs.filter(ref => phaseForAxis[JSON.parse(fs.readFileSync(path.join(fixture.root, ref.path), 'utf8')).axis] === phase) }));
-  const candidateRef = run.inputs.find(ref => ref.role === 'candidate');
-  const authorityPayload = { schemaVersion: 'APMATH_FINAL_AUDIT_AUTHORITY_v1', status: 'PASS', examId: 'recovery', workBatchId: 'job', workBatchRef: fileRef(fixture.root, 'alive/runtime/work-batches/job/state.json'), runId: run.runId, runRef, freezeSha: freeze.freezeSha, revision: run.revision, inputSha: run.inputSha, candidateRef, candidateSha256: candidateRef.sha256, assetRefs: [], assetSetSha256: assetSetSha([]), launchId: launch.launchId, providerReceiptRef: launch.providerReceiptRef, phaseAttestationRefs: receipt.phaseAttestationRefs, phaseEvidenceRefs, finalAuditRef, canonicalClosureRef: closureRef };
-  const authority = { ...authorityPayload, authoritySha: objectSha(authorityPayload) };
-  const context = { window: {} };
-  vm.runInNewContext(fs.readFileSync(path.join(fixture.root, candidateRef.path), 'utf8'), context);
-  const ready = createReviewReady({ root: fixture.root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'recovery', runId: run.runId, revision: run.revision }, closure, finalAudit, finalAuditAuthority: authority, candidateRef, assetRefs: [], candidateQuestions: context.window.questionBank, baselineQuestions: [], renderCases, gateStatuses, finalClosureRef: closureRef, openDefectCount: 0 });
-  assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready));
-  const targetFile = 'original/high/h1/1final/recovery.js';
-  fixture.write('archive/engine.html', '<!doctype html><title>synthetic release engine</title>');
-  const dbPath = fixture.write('archive/db.js', 'window.mainDB=' + JSON.stringify({ exams: [] }) + ';');
-  const indexPath = fixture.write('archive/question-index.js', 'window.questionIndex=[];');
-  const reviewFile = fixture.write('release/review.json', { status: 'reviewed_pass', questionCount: 1 });
-  const approval = { schemaVersion: 'APMATH_FINAL_EXTERNAL_APPROVAL_v1', approvalStatus: 'APPROVED', examId: 'recovery', reviewReadyRunId: ready.reviewReadyRunId, reviewReadySha: ready.reviewReadySha, candidateSha256: ready.candidateSha256, stagedAssetSetSha256: ready.stagedAssetSetSha256, finalClosureSha: ready.finalClosureSha, dbBaselineSha256: bytesSha(fs.readFileSync(path.join(fixture.root, dbPath.path))), indexBaselineSha256: bytesSha(fs.readFileSync(path.join(fixture.root, indexPath.path))), approvalEvidenceIdentity: 'release/recovery/approval', approvalEvidenceSha256: 'sha256:' + 'c'.repeat(64), approvedAt: '2026-09-14T07:00:00.000Z' };
-  return { root: fixture.root, candidateFile: path.join(fixture.root, candidateRef.path), reviewFile: path.join(fixture.root, reviewFile.path), reviewReady: ready, approval, manifest: { examId: 'recovery', archiveRelativePath: targetFile }, targetFile, targetPath: path.join(fixture.root, 'archive/exams', targetFile), dbEntry: { file: targetFile, examId: 'recovery', school: '테스트고', grade: '고1', year: 2026, semester: '1', examType: 'final', subject: '공통수학1', contentType: '기출', qCount: 1 }, dbBaselineSha256: approval.dbBaselineSha256, indexBaselineSha256: approval.indexBaselineSha256, dbPath: path.join(fixture.root, dbPath.path), indexPath: path.join(fixture.root, indexPath.path), reviewPath: path.join(fixture.root, reviewFile.path), assetRefs: [] };
+  return makeCanonicalReleaseFixture(t, { examId: 'recovery' });
 }
 
 function injectedPromotion(f) {

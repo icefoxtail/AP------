@@ -3,6 +3,9 @@ import { HASH_PATTERN, bytesSha, canonicalJson, isObject, nonempty, objectSha, r
 import { assetSetSha, readActualRef } from './production-boundary.mjs';
 import { aggregateWorkBatchAudit, freezeInputSha, readWorkBatch, reviewScopeForPurpose, validateWorkBatchEvidence } from '../../pipeline-core/work-batch.mjs';
 import { RELEASE_CASES, validateExamReleaseClosure } from '../../pipeline-core/exam-release.mjs';
+import { validateQuestionQualityClosureSet } from '../../pipeline-core/question-quality-set.mjs';
+import { auditV2Run } from '../../pipeline-core/v2-audit.mjs';
+import { validateRenderReviewReuseReceipt } from '../../pipeline-core/render-impact.mjs';
 
 export const EXTERNAL_APPROVAL_SCHEMA = 'APMATH_FINAL_EXTERNAL_APPROVAL_v1';
 export const FINAL_AUDIT_AUTHORITY_SCHEMA = 'APMATH_FINAL_AUDIT_AUTHORITY_v1';
@@ -88,9 +91,10 @@ function validateFinalAuditPhaseEvidence(root, run, state, launch, receipt, auth
     const sourceReceiptRef = row?.providerReceiptRef || sourceLaunch?.providerReceiptRef;
     const sourceReceiptLoaded = sourceReceiptRef ? readAuthorityRef(root, { sourceReceiptRef }, 'sourceReceiptRef', errors, { json: true }) : null;
     const sourceReceipt = sourceReceiptLoaded?.value || (sourceLaunchId === launch.launchId ? receipt : null);
+    if (sourceLaunch && sourceReceiptRef && !sameRef(sourceReceiptRef, sourceLaunch.providerReceiptRef)) errors.push('FINAL_AUDIT_AUTHORITY_PHASE_RECEIPT_BINDING:' + phase);
     const receiptAttestations = Array.isArray(sourceReceipt?.phaseAttestationRefs) ? sourceReceipt.phaseAttestationRefs : [];
     const receiptRow = receiptAttestations.find(candidate => candidate?.phase === phase);
-    if (!sourceLaunch || !sourceReceipt) errors.push('FINAL_AUDIT_AUTHORITY_PHASE_SOURCE_LAUNCH_INVALID:' + phase);
+    if (!sourceLaunch || !sourceReceipt || sourceReceipt.status !== 'COMPLETED') errors.push('FINAL_AUDIT_AUTHORITY_PHASE_SOURCE_LAUNCH_INVALID:' + phase);
     if (!row || !receiptRow || !sameRef(row.requestRef, receiptRow.requestRef) || !sameRef(row.responseRef, receiptRow.responseRef)) {
       errors.push('FINAL_AUDIT_AUTHORITY_PHASE_ATTESTATION_BINDING:' + phase);
       continue;
@@ -114,9 +118,11 @@ function validateFinalAuditPhaseEvidence(root, run, state, launch, receipt, auth
       errors.push('FINAL_AUDIT_AUTHORITY_PHASE_RESPONSE_EVIDENCE_MISSING:' + phase);
       continue;
     }
-    const sourceLaunch = state.launches?.find(item => item.launchId === (row.launchId || launch.launchId) && item.status === 'COMPLETED');
+    const sourceLaunch = state.launches?.find(item => item.launchId === (row.launchId || launch.launchId) && item.status === 'COMPLETED' && ['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(item.purpose));
+    if (sourceLaunch && row.providerReceiptRef && !sameRef(row.providerReceiptRef, sourceLaunch.providerReceiptRef)) errors.push('FINAL_AUDIT_AUTHORITY_PHASE_RECEIPT_BINDING:' + phase);
     const sourceReceipt = sourceLaunch?.launchId === launch.launchId ? receipt : sourceLaunch?.providerReceiptRef ? readAuthorityRef(root, { sourceReceiptRef: sourceLaunch.providerReceiptRef }, 'sourceReceiptRef', errors, { json: true })?.value : null;
     const receiptEvidence = [...(sourceReceipt?.evidenceRefs || []), ...(sourceReceipt?.reusedEvidenceRefs || [])];
+    if (!sourceReceipt || sourceReceipt.status !== 'COMPLETED') errors.push('FINAL_AUDIT_AUTHORITY_PHASE_RECEIPT_INVALID:' + phase);
     const sourceFreeze = state.freezes?.find(item => item.freezeSha === sourceLaunch?.freezeSha);
     let sourceRun = null;
     for (const sourceRunRef of sourceFreeze?.runRefs || []) {
@@ -131,11 +137,147 @@ function validateFinalAuditPhaseEvidence(root, run, state, launch, receipt, auth
       const loaded = readAuthorityRef(root, { evidenceRef }, 'evidenceRef', errors, { json: true });
       const evidence = loaded?.value;
       if (!evidence) continue;
-      if (phaseForAxis(evidence.axis) !== phase || evidence.runId !== (sourceRun?.runId || run.runId) || evidence.status !== 'PASS' || sourceLaunch && evidence.launchId !== sourceLaunch.launchId || sourceLaunch && evidence.externalTaskId !== sourceLaunch.externalId) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_BINDING:' + phase);
+      const reusedOutput = sourceReceipt?.reusedEvidenceRefs?.some(candidate => sameRef(candidate, evidenceRef));
+      if (phaseForAxis(evidence.axis) !== phase || evidence.runId !== (sourceRun?.runId || run.runId) || evidence.status !== 'PASS' || !reusedOutput && sourceLaunch && (evidence.launchId !== sourceLaunch.launchId || evidence.externalTaskId !== sourceLaunch.externalId)) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_BINDING:' + phase);
       else if (sourceRun && (evidence.revision !== sourceRun.revision || evidence.inputSha !== sourceRun.inputSha)) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_RUN_BINDING:' + phase);
-      else if (run.evidence?.some(candidate => sameRef(candidate, evidenceRef))) errors.push(...validateWorkBatchEvidence(root, run, evidence));
+      else if (!reusedOutput && run.evidence?.some(candidate => sameRef(candidate, evidenceRef))) errors.push(...validateWorkBatchEvidence(root, run, evidence));
     }
   }
+}
+
+function requiredAuthorityPairs(freeze, runId) {
+  return (freeze?.bindings || [])
+    .filter(binding => binding.runId === runId)
+    .flatMap(binding => (binding.questions || []).flatMap(question => Object.entries(binding.axisInputShas?.[question.questionUid] || {}).map(([axis, axisInputSha]) => ({ questionUid: question.questionUid, axis, axisInputSha }))));
+}
+
+function evidenceQuestionMatches(evidence, questionUid, axis) {
+  if (evidence?.axis !== axis) return false;
+  if (evidence.questionUid === questionUid) return true;
+  return ['RENDER_CAPTURE', 'RENDER_REVIEW'].includes(axis) && evidence.payload?.questionUids?.includes(questionUid);
+}
+
+function evidenceAxisInputSha(evidence, questionUid, axis) {
+  return ['RENDER_CAPTURE', 'RENDER_REVIEW'].includes(axis)
+    ? evidence?.axisInputShas?.[questionUid] || null
+    : evidence?.axisInputSha || null;
+}
+
+function collectAuthorityEvidence(root, run, state, authority, launch, receipt, errors) {
+  const entries = new Map();
+  const add = (ref, { runEvidence = false, reuseReceipt = null, renderReuseReceipt = null, phaseEvidenceDeclaration = null } = {}) => {
+    if (!isObject(ref) || !nonempty(ref.path)) return null;
+    const key = refKey(ref);
+    let entry = entries.get(key);
+    if (!entry) {
+      const loaded = readAuthorityRef(root, { evidenceRef: ref }, 'evidenceRef', errors, { json: true });
+      if (!loaded) return null;
+      entry = { ref: loaded.ref, evidence: loaded.value, runEvidence: false, reuseReceipts: [], renderReuseReceipts: [], phaseEvidenceDeclarations: [] };
+      entries.set(key, entry);
+    }
+    entry.runEvidence ||= runEvidence;
+    if (reuseReceipt && !entry.reuseReceipts.some(item => item.ref && sameRef(item.ref, reuseReceipt.ref))) entry.reuseReceipts.push(reuseReceipt);
+    if (renderReuseReceipt && !entry.renderReuseReceipts.some(item => item.ref && sameRef(item.ref, renderReuseReceipt.ref))) entry.renderReuseReceipts.push(renderReuseReceipt);
+    if (phaseEvidenceDeclaration && !entry.phaseEvidenceDeclarations.some(item => item.phase === phaseEvidenceDeclaration.phase && item.sourceLaunch?.launchId === phaseEvidenceDeclaration.sourceLaunch?.launchId && item.providerReceipt?.ref && sameRef(item.providerReceipt.ref, phaseEvidenceDeclaration.providerReceipt?.ref))) entry.phaseEvidenceDeclarations.push(phaseEvidenceDeclaration);
+    return entry;
+  };
+  const addReceipt = (receiptRef, sourceLaunch = null) => {
+    if (!isObject(receiptRef)) return null;
+    const loaded = readAuthorityRef(root, { receiptRef }, 'receiptRef', errors, { json: true });
+    if (!loaded) return null;
+    const providerReceipt = { ref: loaded.ref, value: loaded.value, launch: sourceLaunch };
+    for (const ref of loaded.value?.evidenceRefs || []) add(ref);
+    for (const ref of loaded.value?.reusedEvidenceRefs || []) add(ref);
+    return providerReceipt;
+  };
+  for (const ref of run.evidence || []) add(ref, { runEvidence: true });
+  addReceipt(authority.providerReceiptRef, launch);
+  for (const row of authority.phaseEvidenceRefs || []) {
+    const sourceLaunch = state.launches?.find(item => item.launchId === (row.launchId || launch?.launchId) && item.status === 'COMPLETED' && ['FINAL_AUDIT', 'TARGETED_RECHECK'].includes(item.purpose)) || null;
+    const sourceReceiptRef = row.providerReceiptRef || sourceLaunch?.providerReceiptRef || (sourceLaunch?.launchId === launch?.launchId ? authority.providerReceiptRef : null);
+    const providerReceipt = sourceReceiptRef ? addReceipt(sourceReceiptRef, sourceLaunch) : null;
+    for (const ref of row.evidenceRefs || []) add(ref, { phaseEvidenceDeclaration: { phase: row.phase, sourceLaunch, providerReceipt } });
+  }
+  for (const ref of run.reuseReceipts || []) {
+    const loaded = readAuthorityRef(root, { reuseReceiptRef: ref }, 'reuseReceiptRef', errors, { json: true });
+    if (!loaded) continue;
+    const reuseReceipt = { ref: loaded.ref, value: loaded.value };
+    add(loaded.value.rootFreshEvidenceRef, { reuseReceipt });
+  }
+  for (const ref of run.renderReviewReuseReceiptRefs || []) {
+    const loaded = readAuthorityRef(root, { renderReuseReceiptRef: ref }, 'renderReuseReceiptRef', errors, { json: true });
+    if (!loaded) continue;
+    const renderReuseReceipt = { ref: loaded.ref, value: loaded.value };
+    add(loaded.value.rootFreshReviewRef, { renderReuseReceipt });
+  }
+  const evidenceById = new Map();
+  for (const entry of entries.values()) {
+    const previous = evidenceById.get(entry.evidence.evidenceId);
+    if (previous && !sameRef(previous.ref, entry.ref)) errors.push('FINAL_AUDIT_AUTHORITY_DUPLICATE_EVIDENCE_ID:' + entry.evidence.evidenceId);
+    else evidenceById.set(entry.evidence.evidenceId, entry);
+  }
+  return [...entries.values()];
+}
+
+function validateFinalAuditEvidenceCoverage(root, run, state, freeze, authority, launch, receipt, audit, errors) {
+  const requiredPairs = requiredAuthorityPairs(freeze, run.runId);
+  const requiredKeys = new Set(requiredPairs.map(pair => `${pair.questionUid}\u0000${pair.axis}`));
+  if (!requiredPairs.length || requiredKeys.size !== requiredPairs.length) errors.push('FINAL_AUDIT_AUTHORITY_REQUIRED_UID_AXIS_COVERAGE_INVALID');
+  const evidenceEntries = collectAuthorityEvidence(root, run, state, authority, launch, receipt, errors);
+  const freshness = Array.isArray(audit?.freshness) ? audit.freshness : [];
+  if (!freshness.length) {
+    errors.push('FINAL_AUDIT_AUTHORITY_FRESHNESS_REQUIRED');
+    return { requiredPairs, evidenceEntries };
+  }
+  const seenFreshness = new Set();
+  for (const pair of requiredPairs) {
+    const pairKeyValue = `${pair.questionUid}\u0000${pair.axis}`;
+    const rows = freshness.filter(row => row?.questionUid === pair.questionUid && row?.axis === pair.axis);
+    if (rows.length !== 1 || rows[0]?.status !== 'PASS') {
+      errors.push('FINAL_AUDIT_AUTHORITY_FRESHNESS_BINDING:' + pair.axis);
+      continue;
+    }
+    seenFreshness.add(pairKeyValue);
+    const row = rows[0];
+    const candidates = evidenceEntries.filter(entry => evidenceQuestionMatches(entry.evidence, pair.questionUid, pair.axis) && evidenceAxisInputSha(entry.evidence, pair.questionUid, pair.axis) === pair.axisInputSha);
+    if (!candidates.length) {
+      errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_EVIDENCE_REQUIRED:' + pair.questionUid + ':' + pair.axis);
+      continue;
+    }
+    // Render evidence is case-scoped: one UID×axis can have one canonical
+    // evidence ref per required render case. The freshness row must still
+    // name and hash one of those actual refs; a synthetic row cannot stand in
+    // for the case evidence set.
+    const matched = candidates.filter(entry => entry.evidence.evidenceId === row.evidenceId && entry.ref.sha256 === row.evidenceSha);
+    if (matched.length !== 1) {
+      errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_IDENTITY_MISMATCH:' + pair.questionUid + ':' + pair.axis);
+      continue;
+    }
+    const entry = matched[0];
+    const evidence = entry.evidence;
+    const actualAxisSha = evidenceAxisInputSha(evidence, pair.questionUid, pair.axis);
+    const machineEvidenceWithoutValidity = evidence.mode === 'MACHINE_CURRENT' && ['STATIC', 'METADATA'].includes(pair.axis) && evidence.validityStatus === undefined;
+    if (evidence.status !== 'PASS' || (!machineEvidenceWithoutValidity && !['FROZEN', 'VALID'].includes(evidence.validityStatus))) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_NOT_PASS:' + pair.questionUid + ':' + pair.axis);
+    if (row.mode !== 'REUSED' && row.mode !== evidence.mode) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_MODE_MISMATCH:' + pair.questionUid + ':' + pair.axis);
+    if (row.evidenceId !== evidence.evidenceId || row.evidenceSha !== entry.ref.sha256 || row.questionUid !== pair.questionUid || row.axis !== pair.axis || row.axisInputSha !== pair.axisInputSha || actualAxisSha !== pair.axisInputSha) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_IDENTITY_MISMATCH:' + pair.questionUid + ':' + pair.axis);
+    if (row.evidenceSha !== entry.ref.sha256 || !HASH_PATTERN.test(String(row.evidenceSha || ''))) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_SHA_MISMATCH:' + pair.questionUid + ':' + pair.axis);
+    if ((row.runId !== undefined && row.runId !== evidence.runId) || (row.revision !== undefined && row.revision !== evidence.revision) || (row.inputSha !== undefined && row.inputSha !== evidence.inputSha)) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_LINEAGE_MISMATCH:' + pair.questionUid + ':' + pair.axis);
+    if (row.mode === 'REUSED') {
+      const reuse = entry.reuseReceipts.find(item => item.value?.questionUid === pair.questionUid && item.value?.axis === pair.axis && item.value?.currentRunId === run.runId && item.value?.currentRevision === run.revision && item.value?.currentRunInputSha === run.inputSha && item.value?.currentAxisInputSha === pair.axisInputSha && item.value?.rootFreshEvidenceId === evidence.evidenceId && item.value?.rootFreshEvidenceSha === entry.ref.sha256);
+      const renderReuse = entry.renderReuseReceipts.find(item => item.value?.schemaVersion === 'RENDER_REVIEW_REUSE_RECEIPT_v1' && item.value?.status === 'PASS' && item.value?.currentRunInputSha === run.inputSha && sameRef(item.value.rootFreshReviewRef, entry.ref) && item.value.currentCaptureRef && run.evidence?.some(ref => sameRef(ref, item.value.currentCaptureRef)) && row.receiptSha === objectSha(item.value));
+      let renderReuseErrors = [];
+      if (renderReuse) renderReuseErrors = validateRenderReviewReuseReceipt(root, renderReuse.value, { currentCaptureRef: renderReuse.value.currentCaptureRef, currentRunInputSha: run.inputSha }).errors;
+      if ((!reuse && !renderReuse) || reuse && (reuse.value.schemaVersion !== 'APMATH_EVIDENCE_REUSE_RECEIPT_v1' || reuse.value.status !== 'PASS' || !sameRef(reuse.value.rootFreshEvidenceRef, entry.ref) || reuse.value.priorEvidenceId !== evidence.evidenceId || reuse.value.priorEvidenceSha !== entry.ref.sha256 || reuse.value.rootFreshRunId !== evidence.runId || reuse.value.rootFreshRunInputSha !== evidence.inputSha || reuse.value.rootFreshAxisInputSha !== actualAxisSha || row.receiptSha !== objectSha(reuse.value)) || renderReuseErrors.length) errors.push('FINAL_AUDIT_AUTHORITY_REUSE_LINEAGE_MISMATCH:' + pair.questionUid + ':' + pair.axis);
+    } else {
+      const machine = ['STATIC', 'METADATA', 'RENDER_CAPTURE'].includes(pair.axis) && evidence.mode === 'MACHINE_CURRENT' && entry.runEvidence;
+      const provider = entry.phaseEvidenceDeclarations.some(declaration => declaration.sourceLaunch?.status === 'COMPLETED' && declaration.providerReceipt?.value?.status === 'COMPLETED' && phaseForAxis(evidence.axis) === declaration.phase && [...(declaration.providerReceipt.value.evidenceRefs || []), ...(declaration.providerReceipt.value.reusedEvidenceRefs || [])].some(ref => sameRef(ref, entry.ref)));
+      if (evidence.runId !== run.runId || evidence.revision !== run.revision || evidence.inputSha !== run.inputSha) errors.push('FINAL_AUDIT_AUTHORITY_EVIDENCE_RUN_BINDING:' + pair.questionUid + ':' + pair.axis);
+      const renderer = entry.runEvidence && pair.axis === 'RENDER_REVIEW';
+      if (!machine && !provider && !renderer) errors.push('FINAL_AUDIT_AUTHORITY_PROVIDER_OUTPUT_LINEAGE_REQUIRED:' + pair.questionUid + ':' + pair.axis);
+    }
+  }
+  if (seenFreshness.size !== new Set(requiredPairs.map(pair => `${pair.questionUid}\u0000${pair.axis}`)).size || freshness.some(row => !requiredPairs.some(pair => pair.questionUid === row?.questionUid && pair.axis === row?.axis))) errors.push('FINAL_AUDIT_AUTHORITY_FRESHNESS_SCOPE_INVALID');
+  return { requiredPairs, evidenceEntries };
 }
 
 export function validateCanonicalFinalAuditAuthority(root, { authority, expected = {} } = {}) {
@@ -208,35 +350,43 @@ export function validateCanonicalFinalAuditAuthority(root, { authority, expected
       if (launch && (launch.freezeSha !== authority.freezeSha || launch.inputSha !== authority.inputSha || launch.externalId !== receipt.externalId || !Array.isArray(launch.scope) || canonicalJson(launch.scope) !== canonicalJson(reviewScopeForPurpose(state, freeze, launch.purpose)))) errors.push('FINAL_AUDIT_AUTHORITY_LAUNCH_LINEAGE_INVALID');
       if (!sameRef(launch?.providerReceiptRef, authority.providerReceiptRef) || receipt.status !== 'COMPLETED' || receipt.launchId !== authority.launchId || receipt.externalId !== launch?.externalId || (receipt.defects || []).length !== 0) errors.push('FINAL_AUDIT_AUTHORITY_PROVIDER_RECEIPT_INVALID');
       if (launch && receipt) validateFinalAuditPhaseEvidence(root, run, state, launch, receipt, authority, errors);
-      if (audit.status !== 'PASS' || audit.productionAuthorized !== false || audit.runId !== run.runId || audit.revision !== run.revision || audit.inputSha !== run.inputSha) errors.push('FINAL_AUDIT_AUTHORITY_REPORT_INVALID');
-      if (!Array.isArray(audit.freshness) || audit.freshness.length === 0) errors.push('FINAL_AUDIT_AUTHORITY_FRESHNESS_REQUIRED');
-      const requiredPairs = (freeze?.bindings || []).filter(item => item.runId === run.runId).flatMap(item => (item.questions || []).flatMap(question => Object.entries(item.axisInputShas?.[question.questionUid] || {}).map(([axis, axisInputSha]) => ({ questionUid: question.questionUid, axis, axisInputSha }))));
-      const declaredPairs = new Set((audit.freshness || []).map(row => `${row.questionUid}\u0000${row.axis}`));
-      for (const pair of requiredPairs) {
-        const matches = (audit.freshness || []).filter(row => row.questionUid === pair.questionUid && row.axis === pair.axis && row.status === 'PASS' && row.axisInputSha === pair.axisInputSha);
-        if (matches.length !== 1) errors.push('FINAL_AUDIT_AUTHORITY_FRESHNESS_BINDING:' + pair.axis);
-        declaredPairs.delete(`${pair.questionUid}\u0000${pair.axis}`);
+      if (audit.schemaVersion !== 'APMATH_PIPELINE_AUDIT_v2' || audit.status !== 'PASS' || audit.productionAuthorized !== false || (audit.workBatchId !== undefined && audit.workBatchId !== authority.workBatchId) || audit.runId !== run.runId || audit.revision !== run.revision || audit.inputSha !== run.inputSha) errors.push('FINAL_AUDIT_AUTHORITY_REPORT_INVALID');
+      const coverage = validateFinalAuditEvidenceCoverage(root, run, state, freeze, authority, launch, receipt, audit, errors);
+      let canonicalAudit = null;
+      if (run.schemaVersion === 'APMATH_PIPELINE_RUN_v2' && run.questionQualityClosureSetRef && run.sourceAuthority && run.uidAuthority) {
+        try {
+          canonicalAudit = auditV2Run(root, run);
+          if (canonicalJson(canonicalAudit) !== canonicalJson(audit)) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_PARITY_INVALID');
+        } catch (error) {
+          errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_AUDIT_ERROR:' + error.message);
+        }
       }
-      if (declaredPairs.size && requiredPairs.length) errors.push('FINAL_AUDIT_AUTHORITY_FRESHNESS_SCOPE_INVALID');
-      const aggregate = aggregateWorkBatchAudit(root, state, [run], [audit]);
+      const qualitySha = closure?.qualityClosureSetSha;
+      if (!HASH_PATTERN.test(String(qualitySha || ''))) errors.push('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_SHA_REQUIRED');
+      if (!HASH_PATTERN.test(String(audit.closureSetSha || '')) || audit.closureSetSha !== qualitySha) errors.push('FINAL_AUDIT_AUTHORITY_AUDIT_CLOSURE_SHA_BINDING_INVALID');
+      const qualityRef = run.questionQualityClosureSetRef;
+      let quality = null;
+      if (!isObject(qualityRef) || !nonempty(qualityRef.path)) errors.push('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_REF_REQUIRED');
+      else {
+        const qualityLoaded = readAuthorityRef(root, { qualityRef }, 'qualityRef', errors, { json: true });
+        quality = qualityLoaded?.value || null;
+        if (quality && quality.closureSetSha !== qualitySha) errors.push('FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE_SHA_MISMATCH');
+        if (quality) {
+          const requiredAxesByUid = (coverage.requiredPairs || []).reduce((map, pair) => { (map[pair.questionUid] ||= []).push(pair.axis); return map; }, {});
+          const qualityValidation = validateQuestionQualityClosureSet(quality, { runId: run.runId, revision: run.revision, currentRunInputSha: run.inputSha, questionUids: [...new Set((coverage.requiredPairs || []).map(pair => pair.questionUid))], requiredAxesByUid, freshness: audit.freshness });
+          errors.push(...qualityValidation.errors.map(error => 'FINAL_AUDIT_AUTHORITY_QUALITY_CLOSURE:' + error));
+        }
+      }
+      const closureEvidence = new Map((coverage.evidenceEntries || []).map(entry => [entry.evidence.evidenceId, entry.evidence]));
+      const closureEvidenceRefs = new Map((coverage.evidenceEntries || []).map(entry => [entry.evidence.evidenceId, entry.ref]));
+      const closureValidation = validateExamReleaseClosure(closure, { root, run, evidence: closureEvidence, evidenceRefs: closureEvidenceRefs, qualityClosureSetSha: qualitySha });
+      errors.push(...closureValidation.errors.map(error => 'FINAL_AUDIT_AUTHORITY_CANONICAL_CLOSURE:' + error));
+      const aggregate = aggregateWorkBatchAudit(root, state, [run], [canonicalAudit || audit]);
       if (aggregate.status !== 'PASS' || aggregate.workBatchId !== authority.workBatchId || aggregate.productionAuthorized !== false) errors.push('FINAL_AUDIT_AUTHORITY_AGGREGATE_NOT_PASS');
       const closureSha = objectSha(Object.fromEntries(Object.entries(closure || {}).filter(([key]) => !['closureSha', 'errors'].includes(key))));
       const actualCases = Array.isArray(closure.actualCases) ? closure.actualCases : [];
       const closureCases = Array.isArray(closure.cases) ? closure.cases : [];
-      if (closure.schemaVersion !== 'APMATH_EXAM_RELEASE_CLOSURE_v1' || closure.applicability !== 'REQUIRED' || closure.status !== 'PASS' || closure.productionAuthorized !== false || closure.runId !== run.runId || closure.revision !== run.revision || closure.currentRunInputSha !== run.inputSha || closureSha !== closure.closureSha || normalizePath(authority.canonicalClosureRef.path) !== normalizePath(run.examReleaseClosureRef?.path) || canonicalJson(closure.requiredCases || []) !== canonicalJson([...RELEASE_CASES]) || actualCases.length !== RELEASE_CASES.length || canonicalJson([...actualCases].sort()) !== canonicalJson([...RELEASE_CASES].sort()) || closureCases.length !== RELEASE_CASES.length || new Set(closureCases.map(row => row?.caseKey || [row?.mode, row?.viewport || row?.viewportProfile].filter(Boolean).join('/'))).size !== RELEASE_CASES.length || closureCases.some(row => !RELEASE_CASES.includes(row?.caseKey || [row?.mode, row?.viewport || row?.viewportProfile].filter(Boolean).join('/')) || !nonempty(row?.captureEvidenceId) || !nonempty(row?.reviewEvidenceId))) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_CLOSURE_INVALID');
-      if (closure.qualityClosureSetSha && Array.isArray(run.evidence) && closureCases.length === RELEASE_CASES.length) {
-        const evidence = new Map();
-        const evidenceRefs = new Map();
-        for (const ref of run.evidence) {
-          try {
-            const loaded = readAuthorityRef(root, { evidenceRef: ref }, 'evidenceRef', errors, { json: true });
-            if (loaded?.value?.evidenceId) evidence.set(loaded.value.evidenceId, loaded.value);
-            if (loaded?.value?.evidenceId) evidenceRefs.set(loaded.value.evidenceId, loaded.ref);
-          } catch {}
-        }
-        const canonicalClosure = validateExamReleaseClosure(closure, { root, run, evidence, evidenceRefs, qualityClosureSetSha: closure.qualityClosureSetSha });
-        errors.push(...canonicalClosure.errors.map(error => 'FINAL_AUDIT_AUTHORITY_CANONICAL_CLOSURE:' + error));
-      }
+      if (closure.schemaVersion !== 'APMATH_EXAM_RELEASE_CLOSURE_v1' || closure.applicability !== 'REQUIRED' || closure.status !== 'PASS' || closure.productionAuthorized !== false || closure.runId !== run.runId || closure.revision !== run.revision || closure.currentRunInputSha !== run.inputSha || closureSha !== closure.closureSha || !sameRef(authority.canonicalClosureRef, run.examReleaseClosureRef) || canonicalJson(closure.requiredCases || []) !== canonicalJson([...RELEASE_CASES]) || actualCases.length !== RELEASE_CASES.length || canonicalJson([...actualCases].sort()) !== canonicalJson([...RELEASE_CASES].sort()) || closureCases.length !== RELEASE_CASES.length || new Set(closureCases.map(row => row?.caseKey || [row?.mode, row?.viewport || row?.viewportProfile].filter(Boolean).join('/'))).size !== RELEASE_CASES.length || closureCases.some(row => !RELEASE_CASES.includes(row?.caseKey || [row?.mode, row?.viewport || row?.viewportProfile].filter(Boolean).join('/')) || !nonempty(row?.captureEvidenceId) || !nonempty(row?.reviewEvidenceId))) errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_CLOSURE_INVALID');
     } catch (error) {
       errors.push('FINAL_AUDIT_AUTHORITY_CANONICAL_VALIDATION_ERROR:' + error.message);
     }
