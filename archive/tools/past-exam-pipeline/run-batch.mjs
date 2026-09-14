@@ -36,7 +36,7 @@ export function filterInventory(items, cfg) {
   if (args.grade) selected = selected.filter((item) => item.grade === args.grade);
   if (args.semester) selected = selected.filter((item) => item.semester === args.semester.replace(/\D/g, ""));
   if (args.examType) selected = selected.filter((item) => item.examType === normalizeExamType(args.examType));
-  if (!(args.forceExisting || cfg.existingExamMode === "FORCE_EXISTING")) selected = selected.filter((item) => !item.existingExam?.skip);
+  if (!(args.forceExisting || cfg.existingExamMode === "FORCE_EXISTING")) selected = selected.filter((item) => !item.existingExam?.skip && !item.existingExam?.hold);
   if (args.limit > 0) selected = selected.slice(0, args.limit);
   return selected;
 }
@@ -191,7 +191,8 @@ export async function buildInventory(cfg) {
     manualReviewCount: items.filter((item) => item.parseStatus !== "parsed").length,
     existingExamMode: cfg.existingExamMode || "NEW_EXAM_ONLY",
     skippedExistingExamCount: items.filter((item) => item.existingExam?.skip).length,
-    newExamCount: items.filter((item) => item.parseStatus === "parsed" && item.pdfKind === "problem" && !item.existingExam?.skip).length,
+    newExamCount: items.filter((item) => item.parseStatus === "parsed" && item.pdfKind === "problem" && !item.existingExam?.skip && !item.existingExam?.hold).length,
+    identityIncompleteCount: items.filter((item) => item.existingExam?.hold).length,
     duplicateExamIdCount: duplicates.length,
     items
   };

@@ -5,9 +5,16 @@ import { validateEvidenceFreshness, evidenceReuseMetrics } from './review-eviden
 import { detectRenderImpact } from './render-impact.mjs';
 
 export const SPEED_PIPELINE_VERSION = 'APMATH_SPEED_PATH_v1';
+export const TARGETED_RECHECK_PHASE_AXES = Object.freeze({
+  U1: Object.freeze(['SOURCE', 'MATH_A1', 'V1']),
+  U2: Object.freeze(['V2']),
+  U3: Object.freeze(['MATH_A2', 'SOLUTION', 'V3', 'RENDER_REVIEW']),
+});
 
 const questionList = value => Array.isArray(value) ? value : Array.isArray(value?.questions) ? value.questions : Array.isArray(value?.questionBank) ? value.questionBank : [];
 const questionUid = question => question?.questionUid || `${question?.sourcePath || 'unknown'}|${question?.examId || 'unknown'}|${question?.id ?? question?.qid}`;
+const pairKey = (row, axis = row?.axis) => `${row?.runId || ''}\u0000${row?.questionUid || ''}\u0000${axis || ''}`;
+const axisRows = value => (value || []).map(row => typeof row === 'string' ? { questionUid: row.split('\u0000').at(-2), axis: row.split('\u0000').at(-1) } : row).filter(row => row?.questionUid && row?.axis);
 
 export function buildTargetedRecheckPlan(previousQuestions = [], currentQuestions = [], { previousDependencies = {}, currentDependencies = {}, previousAxisInputShas = {}, currentAxisInputShas = null } = {}) {
   const currentAxes = currentAxisInputShas || computeAxisInputShaMap(currentQuestions);
@@ -40,6 +47,45 @@ export function buildTargetedRecheckPlan(previousQuestions = [], currentQuestion
     return { schemaVersion: SPEED_PIPELINE_VERSION, diff, impact: failClosedImpact, affectedUidSet: failClosedImpact.affectedUidSet, reusableUidAxisSet: failClosedImpact.reusableUidAxisSet, fullFinalAuditRequired: false, reason: 'SEMANTIC_CHANGE_IMPACT_ONLY', proofStatus: failClosedImpact.proofStatus };
   }
   return { schemaVersion: SPEED_PIPELINE_VERSION, diff, impact: { ...impact, proofStatus: 'PASS' }, affectedUidSet: impact.affectedUidSet, reusableUidAxisSet: impact.reusableUidAxisSet, fullFinalAuditRequired: false, reason: 'SEMANTIC_CHANGE_IMPACT_ONLY', proofStatus: 'PASS' };
+}
+
+export function buildTargetedDispatchPlan({ scope = [], requiredAxesByUid = {}, affectedUidAxisSet = [], reusableUidAxisSet = [], validatedReuseRows = [], renderImpactUidSet = [] } = {}) {
+  const affected = new Set(axisRows(affectedUidAxisSet).map(row => pairKey(row)));
+  for (const questionUid of renderImpactUidSet || []) affected.add(pairKey({ questionUid }, 'RENDER_REVIEW'));
+  const reusable = new Set(axisRows(reusableUidAxisSet).map(row => pairKey(row)));
+  const validated = new Set(axisRows(validatedReuseRows).filter(row => row.status === 'PASS' && ['VALIDATED_PASS_REUSE', 'CURRENT_PASS'].includes(row.reuseStatus)).map(row => pairKey(row)));
+  const phaseScope = Object.fromEntries(Object.keys(TARGETED_RECHECK_PHASE_AXES).map(phase => [phase, []]));
+  const freshAxisSet = [], reusedAxisSet = [];
+  for (const target of scope || []) {
+    const uid = target.questionUid;
+    const declared = new Set(requiredAxesByUid?.[uid] || Object.values(TARGETED_RECHECK_PHASE_AXES).flat());
+    if (declared.has('RENDER_CAPTURE')) declared.add('RENDER_REVIEW');
+    for (const [phase, phaseAxes] of Object.entries(TARGETED_RECHECK_PHASE_AXES)) {
+      const relevantAxes = phaseAxes.filter(axis => declared.has(axis));
+      const freshAxes = [];
+      for (const axis of relevantAxes) {
+        const key = pairKey(target, axis);
+        if (affected.has(key) || !reusable.has(key) || !validated.has(key)) {
+          freshAxes.push(axis);
+          freshAxisSet.push({ runId: target.runId, questionUid: uid, axis });
+        } else reusedAxisSet.push({ runId: target.runId, questionUid: uid, axis });
+      }
+      if (freshAxes.length) phaseScope[phase].push({ runId: target.runId, questionUid: uid, axes: freshAxes.sort() });
+    }
+  }
+  for (const phase of Object.keys(phaseScope)) phaseScope[phase].sort((a, b) => `${a.runId}:${a.questionUid}`.localeCompare(`${b.runId}:${b.questionUid}`));
+  const freshPhaseSet = Object.keys(phaseScope).filter(phase => phaseScope[phase].length);
+  const reusedPhaseSet = Object.keys(phaseScope).filter(phase => !phaseScope[phase].length);
+  return {
+    schemaVersion: SPEED_PIPELINE_VERSION,
+    phaseScope,
+    freshPhaseSet,
+    reusedPhaseSet,
+    freshAxisSet,
+    reusedAxisSet,
+    validatedReuseRows: axisRows(validatedReuseRows),
+    status: freshAxisSet.length ? 'FRESH_TARGETED_AXES_REQUIRED' : 'VALIDATED_PASS_REUSE_ONLY',
+  };
 }
 
 export function validatedPassReuse({ evidence, currentRunInputSha, currentAxisInputSha, reuseReceipt = null, reuseContext = {} } = {}) {

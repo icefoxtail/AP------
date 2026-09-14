@@ -6,7 +6,7 @@ import path from 'node:path';
 
 import { computeAxisInputShaMap } from '../semantic-diff.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
-import { buildTargetedRecheckPlan, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
+import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
 import { runOneExam } from '../../past-exam-pipeline/run-one-exam.mjs';
 
@@ -78,6 +78,27 @@ test('SPEED-01 existing canonical exam preflight skips before extraction/provide
   assert.equal(result.dbIndexWriteCount, 0);
   assert.equal(result.telemetry.skipExistingExam, true);
   assert.equal(fs.existsSync(generatedRoot), false);
+  const incompleteOutput = path.join(generatedRoot, 'incomplete');
+  const held = await runOneExam({ archiveRoot: path.join(root, 'archive'), generatedRoot, args: { forceExisting: false }, existingExamMode: 'NEW_EXAM_ONLY' }, {
+    year: 2026,
+    schoolName: '모의고',
+    grade: '고1',
+    semester: '2',
+    examType: '',
+    examId: 'incomplete-identity',
+    outputDir: incompleteOutput,
+  });
+  assert.equal(held.status, 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE');
+  assert.ok(held.blockedReasons.includes('examType'));
+  assert.equal(fs.existsSync(incompleteOutput), false);
+});
+
+test('SPEED-01 identity-incomplete existing-exam preflight fails closed instead of returning NEW_EXAM', () => {
+  const result = existingExamPreflight({ archiveRoot: 'archive', examIdentity: { year: 2026, schoolName: '모의고', grade: '고1', semester: '2' } });
+  assert.equal(result.status, 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE');
+  assert.equal(result.skip, false);
+  assert.deepEqual(result.missingIdentityFields, ['examType']);
+  assert.equal(existingExamPreflight({ archiveRoot: 'archive', forceExisting: true, examIdentity: { year: 2026, schoolName: '모의고', grade: '고1', semester: '2' } }).status, 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE');
 });
 
 test('SPEED-02 semantic impact keeps unchanged axes reusable and fails closed when proof is missing', () => {
@@ -99,6 +120,30 @@ test('SPEED-02 semantic impact keeps unchanged axes reusable and fails closed wh
   assert.equal(noProof.proofStatus, 'FAIL_CLOSED_PREVIOUS_OR_CURRENT_AXIS_INPUT_MISSING');
   assert.equal(noProof.affectedUidSet.length, 20);
   assert.equal(noProof.reusableUidAxisSet.length, 0);
+});
+
+test('SPEED-02 dispatch plan sends only changed axes to fresh U1/U2/U3 phases', () => {
+  const scope = [{ runId: 'run', questionUid: 'synthetic-exam|7' }];
+  const plan = buildTargetedDispatchPlan({
+    scope,
+    requiredAxesByUid: { 'synthetic-exam|7': ['SOURCE', 'MATH_A1', 'MATH_A2', 'SOLUTION', 'V1', 'V2', 'V3', 'RENDER_REVIEW'] },
+    affectedUidAxisSet: [
+      { runId: 'run', questionUid: 'synthetic-exam|7', axis: 'SOLUTION' },
+      { runId: 'run', questionUid: 'synthetic-exam|7', axis: 'V3' },
+      { runId: 'run', questionUid: 'synthetic-exam|7', axis: 'RENDER_REVIEW' },
+    ],
+    reusableUidAxisSet: [
+      'SOURCE', 'MATH_A1', 'MATH_A2', 'V1', 'V2',
+    ].map(axis => ({ runId: 'run', questionUid: 'synthetic-exam|7', axis })),
+    validatedReuseRows: [
+      'SOURCE', 'MATH_A1', 'MATH_A2', 'V1', 'V2',
+    ].map(axis => ({ runId: 'run', questionUid: 'synthetic-exam|7', axis, status: 'PASS', reuseStatus: 'VALIDATED_PASS_REUSE' })),
+  });
+  assert.deepEqual(plan.phaseScope.U1, []);
+  assert.deepEqual(plan.phaseScope.U2, []);
+  assert.deepEqual(plan.phaseScope.U3, [{ runId: 'run', questionUid: 'synthetic-exam|7', axes: ['RENDER_REVIEW', 'SOLUTION', 'V3'] }]);
+  assert.equal(plan.reusedAxisSet.length, 5);
+  assert.equal(plan.freshAxisSet.some(row => row.axis === 'MATH_A2'), false);
 });
 
 test('SPEED-03 source and shared-asset changes scope targeted rechecks to impacted questions', () => {

@@ -99,9 +99,9 @@ export function promoteApprovedExam({
   const liveAssetsDir = path.resolve(repoRoot, "archive", "assets", "images", manifest.examId);
   const copyPlan = resolveApprovedAssetCopySources({ repoRoot, manifest, candidate, reviewReady }).map(asset => {
     const source = asset.source;
-    const destination = path.resolve(liveAssetsDir, name);
+    const destination = path.resolve(liveAssetsDir, asset.name);
     if (!fs.existsSync(source) || !fs.statSync(source).isFile()) throw new Error("STAGED_ASSET_MISSING:" + source);
-    return { name, candidatePath: asset.candidatePath, approvedRef: asset.approvedRef, source, destination };
+    return { name: asset.name, candidatePath: asset.candidatePath, approvedRef: asset.approvedRef, source, destination };
   });
   const changedPaths = [relative(repoRoot, liveJs), ...copyPlan.map(item => relative(repoRoot, item.destination))];
   assertPromotionWriteScope(repoRoot, changedPaths, {

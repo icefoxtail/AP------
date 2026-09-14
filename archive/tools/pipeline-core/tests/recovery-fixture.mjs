@@ -6,7 +6,7 @@ import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { initWorkBatch } from '../work-batch.mjs';
 
-export function recoveryFixture(t, { questionCount = 1, authorityFinalized = true } = {}) {
+export function recoveryFixture(t, { questionCount = 1, authorityFinalized = true, pipeline = 'tag-enrichment', revisionMutation = 'content', currentPassAxes = [] } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-recovery-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (relative, value) => {
@@ -20,15 +20,29 @@ export function recoveryFixture(t, { questionCount = 1, authorityFinalized = tru
   initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session', workflowProfile: 'PAST_EXAM' });
   let serial = 0;
   const makeRun = (revision = 1) => {
-    const candidateRows = sourceRows.map(row => ({ ...row, content: revision === 1 ? row.content : `${row.content} Revision ${revision}.` }));
+    const candidateRows = sourceRows.map(row => {
+      if (revision === 1) return { ...row };
+      if (revisionMutation === 'solution') return { ...row, solution: `${row.solution} Revision ${revision}.` };
+      return { ...row, content: `${row.content} Revision ${revision}.` };
+    });
     const candidateRef = { ...write(`candidate-${revision}.js`, `window.examTitle="recovery";window.questionBank=${JSON.stringify(candidateRows)};`), role: 'candidate' };
     const questions = sourceRows.map(row => ({ questionUid: `recovery|${row.id}`, sourceExamId: 'recovery', examId: 'recovery', qid: row.id, sourcePath: sourceRef.path, candidatePath: candidateRef.path, requiredAxes: [], sourceStatus: 'RESOLVED', problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { origin: 'NATIVE', requirement: 'VISUAL_EXEMPT', action: 'NONE', exemptReason: 'NO_VISUAL_NEEDED', adjudicationId: `q${row.id}:authority`, adjudicationStatus: authorityFinalized ? 'RESOLVED' : 'PENDING', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false } }));
-    const run = { schemaVersion: RUN_VERSION_V2, pipeline: 'tag-enrichment', workBatchId: 'job', runId: 'run', revision, builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', questions, inputs: [sourceRef, candidateRef], evidence: [], registry: [] };
+    const run = { schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision, builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', questions, inputs: [sourceRef, candidateRef], evidence: [], registry: [] };
     run.inputSha = runInputSha(run);
     const shas = computeV2AxisInputShas(root, run);
+    if (revision > 1 && currentPassAxes.length) {
+      for (const question of questions) for (const axis of currentPassAxes) {
+        const evidenceId = `current-pass-${revision}-${question.id}-${axis}`;
+        const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId, runId: run.runId, revision, questionUid: question.questionUid, axis, axisInputSha: shas[question.questionUid][axis], inputSha: run.inputSha, status: 'PASS', validityStatus: 'VALID', mode: 'FRESH' };
+        run.evidence.push(write(`evidence/${evidenceId}.json`, evidence));
+        question.evidence[axis] = evidenceId;
+      }
+    }
     for (const question of questions) for (const axis of ['STATIC', 'METADATA']) {
-      const machineProvenance = { runId: run.runId, revision, inputSha: run.inputSha, collector: 'SYNTHETIC_TEST_ONLY' };
-      const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `machine-${revision}-${++serial}`, runId: run.runId, revision, questionUid: question.questionUid, axis, axisInputSha: shas[question.questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance, reviewIsolationProvenanceSha: objectSha(machineProvenance), payload: axis === 'STATIC' ? { checkedInputSha: run.inputSha, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' } } : { metadataInputSha: shas[question.questionUid][axis], checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' } } };
+      const artifactBinding = pipeline === 'past-exam' ? { currentArtifactSha: candidateRef.sha256, CURRENT_ARTIFACT_SHA: candidateRef.sha256, EVIDENCE_INPUT_SHA: candidateRef.sha256 } : {};
+      const machineProvenance = { runId: run.runId, revision, inputSha: run.inputSha, collector: 'SYNTHETIC_TEST_ONLY', ...artifactBinding };
+      const payload = axis === 'STATIC' ? { checkedInputSha: run.inputSha, checks: { schema: 'PASS', jsLoad: 'PASS', hashes: 'PASS', assetBinding: 'PASS', fileParity: 'PASS', studentSerialization: 'PASS' }, ...artifactBinding } : { metadataInputSha: shas[question.questionUid][axis], checks: { schema: 'PASS', uidBinding: 'PASS', curriculumBinding: 'PASS' }, ...artifactBinding };
+      const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId: `machine-${revision}-${++serial}`, runId: run.runId, revision, questionUid: question.questionUid, axis, axisInputSha: shas[question.questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, mode: 'MACHINE_CURRENT', auditorPrincipalType: 'MACHINE_COLLECTOR', status: 'PASS', machineProvenance, reviewIsolationProvenanceSha: objectSha(machineProvenance), payload };
       run.evidence.push(write(`evidence/${evidence.evidenceId}.json`, evidence));
     }
     const ref = write(`run-${revision}.json`, run);
