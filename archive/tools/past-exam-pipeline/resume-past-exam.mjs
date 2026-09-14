@@ -123,6 +123,12 @@ function targetedDispatchPlanForState(root, state, freeze, scope) {
         currentAxisInputSha: binding.axisInputShas[row.questionUid][row.axis],
         reuseReceipt: reuse?.receipt || null,
         reuseContext: dispatchReuseContext(root, run, current.evidence, current.ref, reuse?.receipt || null),
+        independentContext: {
+          run,
+          packet: (run.auditorPacketRefs || []).map(ref => readJsonRef(root, ref)).find(packet => packet.packetSha === current.evidence.reviewIsolationProvenanceSha) || null,
+          launch: state.launches.find(launch => launch.launchId === current.evidence.launchId) || null,
+          candidateContext: ['MATH_A2', 'SOLUTION', 'V3'].includes(row.axis) ? loadCandidateReviewContext(root, run) : null,
+        },
       });
       if (checked.status === 'PASS') validatedReuseRows.push({ ...row, ...checked, evidenceId: current.evidence.evidenceId, evidenceRef: current.ref, reuseReceiptRef: reuse?.ref || null });
     }

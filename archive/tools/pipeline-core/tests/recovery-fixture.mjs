@@ -5,8 +5,9 @@ import { fileRef, objectSha } from '../canonical.mjs';
 import { RUN_VERSION_V2, runInputSha } from '../closure.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { initWorkBatch } from '../work-batch.mjs';
+import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
 
-export function recoveryFixture(t, { questionCount = 1, authorityFinalized = true, pipeline = 'tag-enrichment', revisionMutation = 'content', currentPassAxes = [] } = {}) {
+export function recoveryFixture(t, { questionCount = 1, authorityFinalized = true, pipeline = 'tag-enrichment', revisionMutation = 'content', currentPassAxes = [], currentPassAnswers = {} } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-recovery-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (relative, value) => {
@@ -27,13 +28,43 @@ export function recoveryFixture(t, { questionCount = 1, authorityFinalized = tru
     });
     const candidateRef = { ...write(`candidate-${revision}.js`, `window.examTitle="recovery";window.questionBank=${JSON.stringify(candidateRows)};`), role: 'candidate' };
     const questions = sourceRows.map(row => ({ questionUid: `recovery|${row.id}`, sourceExamId: 'recovery', examId: 'recovery', qid: row.id, sourcePath: sourceRef.path, candidatePath: candidateRef.path, requiredAxes: [], sourceStatus: 'RESOLVED', problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { origin: 'NATIVE', requirement: 'VISUAL_EXEMPT', action: 'NONE', exemptReason: 'NO_VISUAL_NEEDED', adjudicationId: `q${row.id}:authority`, adjudicationStatus: authorityFinalized ? 'RESOLVED' : 'PENDING', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false } }));
-    const run = { schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision, builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', questions, inputs: [sourceRef, candidateRef], evidence: [], registry: [] };
+    const run = { schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision, builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', questions, inputs: [sourceRef, candidateRef], evidence: [], auditorPacketRefs: [], registry: [] };
     run.inputSha = runInputSha(run);
     const shas = computeV2AxisInputShas(root, run);
     if (revision > 1 && currentPassAxes.length) {
+      const phaseForAxis = axis => ['SOURCE', 'MATH_A1', 'V1'].includes(axis) ? 'U1' : axis === 'V2' ? 'U2' : 'U3';
+      const packetRefs = new Map();
+      for (const phase of [...new Set(currentPassAxes.map(phaseForAxis))]) {
+        const packetBody = {
+          schemaVersion: 'APMATH_AUDITOR_PACKET_v1',
+          phase,
+          questionUids: questions.map(question => question.questionUid),
+          payload: phase === 'U3'
+            ? questions.map(question => { const candidate = candidateRows.find(row => row.id === question.qid); return { questionUid: question.questionUid, currentQuestion: { questionUid: question.questionUid, content: candidate.content, choices: candidate.choices, candidateRef }, currentAnswer: candidate.answer, currentSolution: candidate.solution }; })
+            : phase === 'U2'
+              ? questions.map(question => ({ questionUid: question.questionUid, artifact: null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion(question) }))
+              : questions.map(question => ({ questionUid: question.questionUid, content: sourceRows.find(row => row.id === question.qid).content, choices: sourceRows.find(row => row.id === question.qid).choices })),
+          auditorId: 'auditor-job:1',
+          auditorSessionId: `job:1-${phase.toLowerCase()}`,
+          builderId: 'builder',
+          builderSessionId: 'builder-session',
+          auditorPrincipalType: 'STATELESS_MODEL',
+          contextId: `job:1-c${phase.slice(1)}`,
+          inputVisibilityProfile: phase === 'U1' ? 'SOURCE_ONLY' : phase === 'U2' ? 'ARTIFACT_ONLY' : 'CANDIDATE_ONLY',
+          priorReviewVisibility: 'NONE',
+          sealed: true,
+          launchId: 'job:1',
+          externalTaskId: 'external-job:1',
+        };
+        const packet = { ...packetBody, packetSha: objectSha(packetBody) };
+        const packetRef = write(`packets/current-pass-${revision}-${phase.toLowerCase()}.json`, packet);
+        packetRefs.set(phase, { packet, ref: packetRef });
+        run.auditorPacketRefs.push(packetRef);
+      }
       for (const question of questions) for (const axis of currentPassAxes) {
         const evidenceId = `current-pass-${revision}-${question.id}-${axis}`;
-        const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId, runId: run.runId, revision, questionUid: question.questionUid, axis, axisInputSha: shas[question.questionUid][axis], inputSha: run.inputSha, status: 'PASS', validityStatus: 'VALID', mode: 'FRESH' };
+        const phase = phaseForAxis(axis);
+        const evidence = { schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2', evidenceId, runId: run.runId, revision, questionUid: question.questionUid, axis, axisInputSha: shas[question.questionUid][axis], inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: run.inputSha, status: 'PASS', validityStatus: 'VALID', mode: 'FRESH', reviewerId: 'auditor-job:1', reviewSessionId: `job:1-${phase.toLowerCase()}`, reviewerModelOrAgent: 'SYNTHETIC_TEST_ONLY', auditorPrincipalType: 'STATELESS_MODEL', startedAt: '2026-09-13T00:00:00Z', frozenAt: '2026-09-13T00:01:00Z', priorReviewVisibility: 'NONE', inputVisibilityProfile: phase === 'U1' ? 'SOURCE_ONLY' : phase === 'U2' ? 'ARTIFACT_ONLY' : 'CANDIDATE_ONLY', reviewIsolationProvenanceSha: packetRefs.get(phase).packet.packetSha, launchId: 'job:1', externalTaskId: 'external-job:1', withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', findings: [], payload: ['MATH_A1', 'MATH_A2'].includes(axis) ? { independentAnswer: currentPassAnswers[axis] || '1', independentDerivation: 'Synthetic independent derivation.' } : {} };
         run.evidence.push(write(`evidence/${evidenceId}.json`, evidence));
         question.evidence[axis] = evidenceId;
       }

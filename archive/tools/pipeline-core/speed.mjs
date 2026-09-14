@@ -1,7 +1,8 @@
 import { changeImpactMap, computeAxisInputShaMap, semanticDiff } from './semantic-diff.mjs';
 import { CANONICAL_AXES } from './projection.mjs';
 import { objectSha } from './canonical.mjs';
-import { validateEvidenceFreshness, evidenceReuseMetrics } from './review-evidence-v2.mjs';
+import { validateEvidenceFreshness, validateFreshEvidenceIndependence, evidenceReuseMetrics, AXIS_REVIEW_BINDING } from './review-evidence-v2.mjs';
+import { validateAuditorPacket } from './review-isolation-runner.mjs';
 import { detectRenderImpact } from './render-impact.mjs';
 
 export const SPEED_PIPELINE_VERSION = 'APMATH_SPEED_PATH_v1';
@@ -53,7 +54,7 @@ export function buildTargetedDispatchPlan({ scope = [], requiredAxesByUid = {}, 
   const affected = new Set(axisRows(affectedUidAxisSet).map(row => pairKey(row)));
   for (const questionUid of renderImpactUidSet || []) affected.add(pairKey({ questionUid }, 'RENDER_REVIEW'));
   const reusable = new Set(axisRows(reusableUidAxisSet).map(row => pairKey(row)));
-  const validated = new Set(axisRows(validatedReuseRows).filter(row => row.status === 'PASS' && ['VALIDATED_PASS_REUSE', 'CURRENT_PASS'].includes(row.reuseStatus)).map(row => pairKey(row)));
+  const validated = new Set(axisRows(validatedReuseRows).filter(row => row.status === 'PASS' && (row.reuseStatus === 'VALIDATED_PASS_REUSE' || row.reuseStatus === 'CURRENT_PASS' && row.independentEvidenceValidated === true)).map(row => pairKey(row)));
   const phaseScope = Object.fromEntries(Object.keys(TARGETED_RECHECK_PHASE_AXES).map(phase => [phase, []]));
   const freshAxisSet = [], reusedAxisSet = [];
   for (const target of scope || []) {
@@ -88,9 +89,30 @@ export function buildTargetedDispatchPlan({ scope = [], requiredAxesByUid = {}, 
   };
 }
 
-export function validatedPassReuse({ evidence, currentRunInputSha, currentAxisInputSha, reuseReceipt = null, reuseContext = {} } = {}) {
+function currentIndependentEvidenceErrors(evidence, independentContext = {}) {
+  const errors = [];
+  const { run, packet, launch } = independentContext || {};
+  if (!run || !packet || !launch) return ['CURRENT_PASS_INDEPENDENCE_CONTEXT_REQUIRED'];
+  errors.push(...validateFreshEvidenceIndependence(evidence, run, packet));
+  errors.push(...validateAuditorPacket(packet, { affectedUidSet: launch.scope?.filter(row => row.runId === evidence.runId).map(row => row.questionUid) || run.questions?.map(question => question.questionUid) || [evidence.questionUid], builderId: run.builderId, builderSessionId: run.builderSessionId, candidateContext: independentContext.candidateContext || null }).errors.map(error => `CURRENT_PASS_PACKET_INVALID:${error}`));
+  const phase = AXIS_REVIEW_BINDING[evidence?.axis]?.[0];
+  const { packetSha, ...boundPacket } = packet;
+  if (packetSha !== objectSha(boundPacket)) errors.push('CURRENT_PASS_PACKET_SEAL_INVALID');
+  if (evidence.runId !== run.runId || evidence.revision !== run.revision) errors.push('CURRENT_PASS_RUN_BINDING_INVALID');
+  if (!phase || launch.status !== 'COMPLETED' || launch.launchId !== evidence.launchId || launch.externalId !== evidence.externalTaskId || launch.auditorId !== evidence.reviewerId) errors.push('CURRENT_PASS_LAUNCH_BINDING_INVALID');
+  if (phase && (launch.contexts?.[phase]?.sessionId !== evidence.reviewSessionId || launch.contexts?.[phase]?.contextId !== packet.contextId)) errors.push('CURRENT_PASS_CONTEXT_BINDING_INVALID');
+  if (!launch.scope?.some(row => row.runId === evidence.runId && row.questionUid === evidence.questionUid)) errors.push('CURRENT_PASS_SCOPE_BINDING_INVALID');
+  return [...new Set(errors)];
+}
+
+export function validatedPassReuse({ evidence, currentRunInputSha, currentAxisInputSha, reuseReceipt = null, reuseContext = {}, independentContext = null } = {}) {
   const result = validateEvidenceFreshness(evidence, { currentRunInputSha, currentAxisInputSha, reuseReceipt, reuseContext });
-  return { ...result, reuseStatus: result.status === 'PASS' && result.mode === 'REUSED' ? 'VALIDATED_PASS_REUSE' : result.status === 'PASS' ? 'CURRENT_PASS' : 'REUSE_BLOCKED' };
+  if (result.status === 'PASS' && result.mode === 'FRESH') {
+    const errors = currentIndependentEvidenceErrors(evidence, independentContext);
+    if (errors.length) return { ...result, status: 'BLOCKED', errors: [...result.errors, ...errors], reuseStatus: 'REUSE_BLOCKED' };
+    return { ...result, reuseStatus: 'CURRENT_PASS', independentEvidenceValidated: true };
+  }
+  return { ...result, reuseStatus: result.status === 'PASS' && result.mode === 'REUSED' ? 'VALIDATED_PASS_REUSE' : 'REUSE_BLOCKED' };
 }
 
 export function renderReusePlan(previousCapture, currentCapture, { globalDependencies = [] } = {}) {
