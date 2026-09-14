@@ -7,7 +7,7 @@ import path from 'node:path';
 import { computeAxisInputShaMap } from '../semantic-diff.mjs';
 import { objectSha } from '../canonical.mjs';
 import { nextWorkBatchAction } from '../defect-router.mjs';
-import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, providerTelemetryFromReceipts, renderReusePlan, speedTelemetry, validatedPassReuse } from '../speed.mjs';
+import { buildTargetedDispatchPlan, buildTargetedRecheckPlan, providerTelemetryFromReceipts, renderReusePlan, speedTelemetry, validateTargetedDispatchTelemetry, validatedPassReuse } from '../speed.mjs';
 import { evaluateRenderReuseEligibility, validateRenderTransitionParity } from '../render-impact.mjs';
 import { createScreenshotStore } from '../render.mjs';
 import { existingExamPreflight } from '../../past-exam-pipeline/lib/existing-exam.mjs';
@@ -297,4 +297,39 @@ test('SPEED-11 pre-capture render reuse is identity-bound and fail-closed', () =
   const previousCapture = { status: 'PASS', payload: { itemWitnesses: witnesses('synthetic-exam|7'), renderIdentity: identity } };
   const currentCapture = { status: 'PASS', payload: { itemWitnesses: witnesses('synthetic-exam|7'), renderIdentity: identity } };
   assert.equal(renderReusePlan(previousCapture, currentCapture).preCaptureReuse.status, 'REUSE_ELIGIBLE');
+});
+
+test('SPEED-12 targeted dispatch telemetry must equal actual fresh and reused execution sets', () => {
+  const plan = { freshPhaseSet: ['U3'], reusedPhaseSet: ['U1', 'U2'], freshAxisSet: [{ runId: 'run', questionUid: 'q1', axis: 'SOLUTION' }], reusedAxisSet: [{ runId: 'run', questionUid: 'q1', axis: 'SOURCE' }] };
+  const receipt = { freshPhaseSet: ['U3'], reusedPhaseSet: ['U1', 'U2'], freshAxisSet: plan.freshAxisSet, reusedAxisSet: plan.reusedAxisSet };
+  assert.equal(validateTargetedDispatchTelemetry(plan, receipt).status, 'PASS');
+  assert.ok(validateTargetedDispatchTelemetry(plan, { ...receipt, freshPhaseSet: ['U1', 'U3'] }).errors.includes('FRESH_PHASE_SET_MISMATCH'));
+  const noOp = buildTargetedDispatchPlan({ scope: [{ runId: 'run', questionUid: 'q1' }], requiredAxesByUid: { q1: ['SOURCE', 'MATH_A1'] }, reusableUidAxisSet: [{ runId: 'run', questionUid: 'q1', axis: 'SOURCE' }, { runId: 'run', questionUid: 'q1', axis: 'MATH_A1' }], validatedReuseRows: [{ runId: 'run', questionUid: 'q1', axis: 'SOURCE', status: 'PASS', reuseStatus: 'VALIDATED_PASS_REUSE' }, { runId: 'run', questionUid: 'q1', axis: 'MATH_A1', status: 'PASS', reuseStatus: 'VALIDATED_PASS_REUSE' }] });
+  assert.deepEqual(noOp.freshAxisSet, []);
+  assert.deepEqual(noOp.reusedPhaseSet, ['U1', 'U2', 'U3']);
+});
+
+test('SPEED-13 revision matrix maps each change to the expected fresh axis scope', () => {
+  const initial = [question(1, { tags: ['base'], solutionAssetPaths: ['asset.svg'] })];
+  const initialAxisShas = computeAxisInputShaMap(initial);
+  const planFor = (current, options = {}) => buildTargetedRecheckPlan(initial, current, { previousAxisInputShas: initialAxisShas, currentAxisInputShas: computeAxisInputShaMap(current), ...options });
+  const answer = planFor([question(1, { tags: ['base'], solutionAssetPaths: ['asset.svg'], answer: '2' })]);
+  assert.ok(answer.impact.affectedUidAxisSet.some(row => row.axis === 'MATH_A2'));
+  assert.equal(answer.impact.affectedUidAxisSet.some(row => row.axis === 'SOURCE'), false);
+  const solution = planFor([question(1, { tags: ['base'], solutionAssetPaths: ['asset.svg'], solution: '수정된 풀이' })]);
+  assert.ok(solution.impact.affectedUidAxisSet.some(row => row.axis === 'SOLUTION'));
+  assert.ok(solution.impact.affectedUidAxisSet.some(row => row.axis === 'RENDER_REVIEW'));
+  const svg = planFor([question(1, { tags: ['base'], solutionAssetPaths: ['asset-v2.svg'] })]);
+  assert.ok(svg.impact.affectedUidAxisSet.some(row => row.axis === 'V2'));
+  const source = planFor([question(1, { tags: ['base'], solutionAssetPaths: ['asset.svg'], content: '원문 조건이 수정되었다.' })]);
+  assert.ok(source.impact.affectedUidAxisSet.some(row => row.axis === 'SOURCE'));
+  const metadata = planFor([question(1, { tags: ['changed'], solutionAssetPaths: ['asset.svg'] })]);
+  assert.ok(metadata.impact.affectedUidAxisSet.some(row => row.axis === 'METADATA'));
+  const global = planFor(initial, { previousDependencies: { runtime: 'v1' }, currentDependencies: { runtime: 'v2' } });
+  assert.deepEqual(global.diff.globalInvalidatorSet, ['runtime']);
+  assert.ok(global.impact.affectedUidAxisSet.some(row => row.axis === 'RENDER_CAPTURE'));
+  assert.equal(global.impact.affectedUidAxisSet.some(row => row.axis === 'SOURCE'), false);
+  const noOp = planFor(initial);
+  assert.deepEqual(noOp.impact.affectedUidAxisSet, []);
+  assert.ok(noOp.reusableUidAxisSet.length > 0);
 });

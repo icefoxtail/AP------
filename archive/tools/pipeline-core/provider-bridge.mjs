@@ -8,6 +8,7 @@ import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityF
 import { assertFreshLaunchIdentity, targetedReviewIteration, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
+import { validateTargetedDispatchTelemetry } from './speed.mjs';
 
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
 export const CANONICAL_AUTHORITY_TERMINAL_STATUSES = Object.freeze(['RESOLVED']);
@@ -695,6 +696,9 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   }
   const freshPhaseSet = new Set(packets.map(({ packet }) => packet.phase));
   const reusedPhaseSet = PHASES.filter(phase => !freshPhaseSet.has(phase));
+  const actualFreshAxisSet = plan.targetedDispatchPlan
+    ? packets.flatMap(({ packet }) => packet.questionUids.flatMap(questionUid => (packet.targetedAxesByQuestionUid?.[questionUid] || []).map(axis => ({ runId: launch.scope.find(target => target.questionUid === questionUid)?.runId || '', questionUid, axis }))))
+    : null;
   const reusedEvidenceRefs = [];
   for (const { row, evidence, phase } of reusedEvidenceRows) {
     const result = phaseResultsByPhase.get(phase) || { phase, responseRef: null, defects: [], evidence: [] };
@@ -708,6 +712,7 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   const mergeMs = Math.max(0, Date.now() - mergeStartedAt);
   const mergeRef = writeBridgeJson(root, `${relativeBase}/merged-review.json`, merge);
   const reconcileStartedAt = Date.now();
+  const actualReusedAxisSet = plan.targetedDispatchPlan ? reusedEvidenceRows.map(({ row }) => ({ runId: row.runId || '', questionUid: row.questionUid, axis: row.axis })) : null;
   const receipt = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     launchId,
@@ -747,8 +752,8 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     freshPhaseSet: [...freshPhaseSet],
     reusedPhaseSet,
     targetedDispatchPlanSha: plan.targetedDispatchPlanSha || null,
-    freshAxisSet: plan.targetedDispatchPlan?.freshAxisSet || null,
-    reusedAxisSet: plan.targetedDispatchPlan?.reusedAxisSet || null,
+    freshAxisSet: actualFreshAxisSet,
+    reusedAxisSet: actualReusedAxisSet,
     validatedReuseRows: plan.targetedDispatchPlan?.validatedReuseRows || null,
     phaseAttestationRefs,
     evidenceRefs,
@@ -758,6 +763,25 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     adjudication: merge.adjudication,
     suppressedDefects,
   };
+  if (plan.targetedDispatchPlan) {
+    const telemetry = validateTargetedDispatchTelemetry(plan.targetedDispatchPlan, receipt);
+    if (telemetry.status !== 'PASS') {
+      const error = new Error('HOLD:TARGETED_DISPATCH_TELEMETRY_MISMATCH');
+      error.failureCode = 'TARGETED_DISPATCH_TELEMETRY_MISMATCH';
+      error.responseReturned = true;
+      error.responseAttestationReturned = true;
+      error.evidenceReturned = true;
+      error.modelInvocationCount = modelInvocationCount;
+      error.semanticEvidenceCount = actualFreshAxisSet?.length || 0;
+      const failed = executionFailureEvidence(root, relativeBase, { ...plan, providerPlanRef: planRef }, launch, { phase: null, error, preDispatchFailure: false, phaseAttestationRefs, providerPlanRef: planRef });
+      failed.receipt.telemetryValidation = telemetry;
+      writeNewJson(receiptPathFor(root, receiptPath), failed.receipt);
+      const providerReceiptRef = fileRef(root, receiptPath);
+      const stateAfterFailure = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'FAILED', providerReceiptRef });
+      return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs: failed.receipt.evidenceRefs, failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
+    }
+    receipt.targetedDispatchTelemetryStatus = telemetry.status;
+  }
   writeNewJson(receiptPathFor(root, receiptPath), receipt);
   const providerReceiptRef = fileRef(root, receiptPath);
   const completed = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'COMPLETED', providerReceiptRef });

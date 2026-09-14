@@ -1,6 +1,6 @@
 import { changeImpactMap, computeAxisInputShaMap, semanticDiff } from './semantic-diff.mjs';
 import { CANONICAL_AXES } from './projection.mjs';
-import { objectSha } from './canonical.mjs';
+import { canonicalJson, objectSha } from './canonical.mjs';
 import { validateEvidenceFreshness, validateFreshEvidenceIndependence, evidenceReuseMetrics, AXIS_REVIEW_BINDING } from './review-evidence-v2.mjs';
 import { validateAuditorPacket } from './review-isolation-runner.mjs';
 import { detectRenderImpact, evaluateRenderReuseEligibility } from './render-impact.mjs';
@@ -87,6 +87,18 @@ export function buildTargetedDispatchPlan({ scope = [], requiredAxesByUid = {}, 
     validatedReuseRows: axisRows(validatedReuseRows),
     status: freshAxisSet.length ? 'FRESH_TARGETED_AXES_REQUIRED' : 'VALIDATED_PASS_REUSE_ONLY',
   };
+}
+
+export function validateTargetedDispatchTelemetry(plan, receipt) {
+  const errors = [];
+  if (!plan || !receipt) return { status: 'BLOCKED', errors: ['TARGETED_DISPATCH_TELEMETRY_REQUIRED'] };
+  const sortedPhases = value => [...new Set(value || [])].sort();
+  const sortedAxes = value => axisRows(value).map(row => ({ runId: row.runId || '', questionUid: row.questionUid, axis: row.axis })).sort((a, b) => pairKey(a).localeCompare(pairKey(b)));
+  if (canonicalJson(sortedPhases(plan.freshPhaseSet)) !== canonicalJson(sortedPhases(receipt.freshPhaseSet))) errors.push('FRESH_PHASE_SET_MISMATCH');
+  if (canonicalJson(sortedPhases(plan.reusedPhaseSet)) !== canonicalJson(sortedPhases(receipt.reusedPhaseSet))) errors.push('REUSED_PHASE_SET_MISMATCH');
+  if (canonicalJson(sortedAxes(plan.freshAxisSet)) !== canonicalJson(sortedAxes(receipt.freshAxisSet))) errors.push('FRESH_AXIS_SET_MISMATCH');
+  if (canonicalJson(sortedAxes(plan.reusedAxisSet)) !== canonicalJson(sortedAxes(receipt.reusedAxisSet))) errors.push('REUSED_AXIS_SET_MISMATCH');
+  return { status: errors.length ? 'BLOCKED' : 'PASS', errors: [...new Set(errors)] };
 }
 
 function currentIndependentEvidenceErrors(evidence, independentContext = {}) {
