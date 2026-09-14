@@ -970,7 +970,7 @@ def main():
     root = Path(args.out)
     resolved_root = root.resolve()
     protected_roots = [
-        Path("archive/exams/original").resolve(),
+        Path("archive/exams").resolve(),
         Path("archive/assets/images").resolve(),
         Path("archive/db.js").resolve(),
         Path("archive/question-index.js").resolve(),

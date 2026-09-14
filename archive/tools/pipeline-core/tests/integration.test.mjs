@@ -7,7 +7,7 @@ import { fixture } from './fixture.mjs';
 import { closureFromFile, requireProductionClosure, reviewedMutationPlan, sourceIdentityKey } from '../integration.mjs';
 import { prepareDraft } from '../prepare.mjs';
 import { auditRun } from '../closure.mjs';
-import { createRenderReview } from '../render.mjs';
+import { createRenderReview, validateProductionReadiness } from '../render.mjs';
 import { runtimeDependencyBundle } from '../runtime.mjs';
 
 test('runtime bundle binds dynamic same-origin metadata and MathJax loader resources', () => {
@@ -15,6 +15,12 @@ test('runtime bundle binds dynamic same-origin metadata and MathJax loader resou
   const paths = new Set(bundle.localFiles.map(ref => ref.path));
   assert.equal(paths.has('archive/data/question_metadata.json'), true);
   assert.equal(paths.has('archive/vendor/mathjax/input/tex/extensions/boldsymbol.js'), true);
+});
+
+test('production runtime readiness is a fail-closed capture gate', () => {
+  assert.throws(() => validateProductionReadiness({ ok: false, code: 'DISCARDED_STALE' }), /RENDER_RUNTIME_NOT_READY:DISCARDED_STALE/);
+  assert.throws(() => validateProductionReadiness({ ok: true, runtimePresent: true, transactionId: 'tx', sessionId: 'session', renderReady: true, snapshotStatus: 'STALE' }), /RENDER_RUNTIME_SNAPSHOT_INVALID/);
+  assert.doesNotThrow(() => validateProductionReadiness({ ok: true, runtimePresent: true, transactionId: 'tx', sessionId: 'session', snapshotId: 'snapshot', snapshotStatus: 'ACTIVE', renderReady: true }));
 });
 
 test('a valid closure for a different native scope does not authorize legacy finalizers', () => {

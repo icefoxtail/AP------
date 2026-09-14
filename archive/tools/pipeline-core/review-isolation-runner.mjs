@@ -16,16 +16,21 @@ const allowed = Object.freeze({
   U3: ['renderWitnesses', 'currentQuestion', 'questionUid', 'currentAnswer', 'currentSolution', 'metadata', 'dependencies']
 });
 const forbidden = Object.freeze({ U1: ['answer', 'solution', 'solutionImage', 'previousVerdict'], U2: ['expectedAnswer', 'answer', 'solution', 'solutionImage', 'frozenU1', 'previousVerdict'], U3: [] });
+const TARGETED_AXES_BY_PHASE = Object.freeze({
+  U1: Object.freeze(['SOURCE', 'MATH_A1', 'V1']),
+  U2: Object.freeze(['V2']),
+  U3: Object.freeze(['MATH_A2', 'SOLUTION', 'V3', 'RENDER_REVIEW']),
+});
 
 export const VISUAL_APPLICABILITY_STATUSES = Object.freeze(['VISUAL_REQUIRED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT']);
 export const VISUAL_ONLY_DEFECT_TYPES = Object.freeze(['missing_artifact', 'missing_render_witness']);
 
-export function sourcePixelPayloads(root, run, source) {
+export function sourcePixelPayloads(root, run, source, { assetCache = null } = {}) {
   const paths = source?.sourcePageEvidencePaths || (source?.sourceEvidencePath ? [source.sourceEvidencePath] : []);
   return [...new Set(paths)].map(relative => {
     const matches = run.inputs.filter(ref => ref.path === relative || ref.path.endsWith(`/${relative}`));
     if (matches.length !== 1) throw new Error(`SOURCE_PIXEL_BINDING_REQUIRED:${relative}`);
-    return visualAssetPayload(root, matches[0]);
+    return visualAssetPayload(root, matches[0], assetCache);
   });
 }
 
@@ -84,23 +89,23 @@ function validateVisualApplicability(value) {
 }
 
 // Read the byte-bound candidate, never the source choices or a previous verdict.
-export function loadCandidateReviewContext(root, run) {
-  return Object.fromEntries(loadBoundQuestionBanks(root, run).map(question => {
+export function loadCandidateReviewContext(root, run, { snapshot = null, assetCache = null } = {}) {
+  return Object.fromEntries(loadBoundQuestionBanks(root, run, { snapshot }).map(question => {
     const declared = run.questions.find(q => q.questionUid === question.questionUid);
     const candidateRef = run.inputs.find(ref => ref.role === 'candidate' && ref.path === declared.candidatePath);
     return [question.questionUid, {
       currentQuestion: { questionUid: question.questionUid, content: question.content || '', choices: question.choices || [], candidateRef,
-        ...(question.image ? { image: question.image, problemAssets: candidateProblemAssets(root, run, question) } : {}) },
+        ...(question.image ? { image: question.image, problemAssets: candidateProblemAssets(root, run, question, assetCache) } : {}) },
       currentAnswer: question.answer,
       currentSolution: question.solution || '',
     }];
   }));
 }
 
-function candidateProblemAssets(root, run, question) {
+function candidateProblemAssets(root, run, question, assetCache = null) {
   const ref = (question.problemAssetRefs || []).find(ref => ref && (ref.path === question.image || ref.path === `archive/${question.image}` || ref.path === `${run.assetRoot || 'archive'}/${question.image}`));
   if (!ref) throw new Error(`CANDIDATE_PROBLEM_ASSET_NOT_BOUND:${question.questionUid}`);
-  return [visualAssetPayload(root, ref)];
+  return [visualAssetPayload(root, ref, assetCache)];
 }
 
 export function buildU3CandidatePayload(candidateContext, questionUid, frozenInputs = {}) {
@@ -117,9 +122,15 @@ export function buildU3CandidatePayload(candidateContext, questionUid, frozenInp
   } });
 }
 
-export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null }) {
+function normalizedTargetedAxesByQuestionUid(value, questionUids = []) {
+  if (!value) return null;
+  return Object.fromEntries([...questionUids].sort().map(uid => [uid, [...new Set(value[uid] || [])].sort()]));
+}
+
+export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null, targetedAxes = null, targetedAxesByQuestionUid = null }) {
   if (!AUDITOR_PHASES.includes(phase)) throw new Error('AUDITOR_PHASE_INVALID');
-  const packet = { schemaVersion: AUDITOR_PACKET_VERSION, phase, questionUids, payload, auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId };
+  const targetedMap = normalizedTargetedAxesByQuestionUid(targetedAxesByQuestionUid, questionUids);
+  const packet = { schemaVersion: AUDITOR_PACKET_VERSION, phase, questionUids, ...(targetedMap ? { targetedAxesByQuestionUid: targetedMap } : targetedAxes ? { targetedAxes: [...new Set(targetedAxes)].sort() } : {}), payload, auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId };
   packet.packetSha = objectSha(packet);
   const result = validateAuditorPacket(packet, { affectedUidSet, declaredContextDependencyUidSet, candidateContext });
   if (result.status !== 'PASS') throw new Error(result.errors.join(';'));
@@ -136,6 +147,23 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
   if (!isObject(packet) || packet.schemaVersion !== AUDITOR_PACKET_VERSION || !AUDITOR_PHASES.includes(packet.phase)) errors.push('AUDITOR_PACKET_SCHEMA_INVALID');
   if (!Array.isArray(packet.questionUids) || packet.questionUids.length === 0 || packet.questionUids.some(uid => !nonempty(uid))) errors.push('AUDITOR_PACKET_UIDS_INVALID');
   if (packet.questionUids?.some(uid => !visibleUids.includes(uid))) errors.push('UNRELATED_UID_PROMPT_EXPOSURE');
+  if (packet.targetedAxes !== undefined) {
+    if (!Array.isArray(packet.targetedAxes) || packet.targetedAxes.length === 0 || packet.targetedAxes.some(axis => !nonempty(axis)) || new Set(packet.targetedAxes).size !== packet.targetedAxes.length) errors.push('AUDITOR_TARGETED_AXES_INVALID');
+    if (packet.targetedAxesByQuestionUid === undefined) errors.push('AUDITOR_TARGETED_AXES_MAP_REQUIRED');
+  }
+  if (packet.targetedAxesByQuestionUid !== undefined) {
+    const map = packet.targetedAxesByQuestionUid;
+    if (!isObject(map) || Array.isArray(map) || packet.targetedAxes !== undefined) errors.push('AUDITOR_TARGETED_AXES_MAP_INVALID');
+    else {
+      const packetUidSet = new Set(packet.questionUids || []);
+      const mapKeys = Object.keys(map);
+      if (mapKeys.some(uid => !packetUidSet.has(uid)) || mapKeys.length !== packetUidSet.size) errors.push('AUDITOR_TARGETED_AXES_MAP_UID_INVALID');
+      for (const uid of packet.questionUids || []) {
+        const axes = map[uid];
+        if (!Array.isArray(axes) || axes.length === 0 || new Set(axes).size !== axes.length || axes.some(axis => !TARGETED_AXES_BY_PHASE[packet.phase]?.includes(axis))) errors.push(`AUDITOR_TARGETED_AXES_MAP_ROW_INVALID:${uid}`);
+      }
+    }
+  }
   if (!nonempty(packet.auditorId) || !nonempty(packet.auditorSessionId)) errors.push('AUDITOR_IDENTITY_MISSING');
   const expectedBuilderId = builderId ?? packet.builderId;
   const expectedBuilderSessionId = builderSessionId ?? packet.builderSessionId;
@@ -147,7 +175,7 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
     if (payload.length !== packet.questionUids.length || payload.some(p => !packet.questionUids.includes(p?.questionUid)) || new Set(payload.map(p => p?.questionUid)).size !== payload.length) errors.push('AUDITOR_BATCH_PAYLOAD_PARITY');
     for (const item of payload) {
       const { packetSha: ignored, ...body } = packet;
-      const subpacket = { ...body, questionUids: [item?.questionUid], payload: item };
+      const subpacket = { ...body, questionUids: [item?.questionUid], payload: item, ...(packet.targetedAxesByQuestionUid ? { targetedAxesByQuestionUid: { [item?.questionUid]: packet.targetedAxesByQuestionUid[item?.questionUid] } } : {}) };
       errors.push(...validateAuditorPacket({ ...subpacket, packetSha: objectSha(subpacket) }, { affectedUidSet, declaredContextDependencyUidSet, builderId, builderSessionId, candidateContext }).errors);
     }
   } else if (!isObject(payload)) errors.push('AUDITOR_PACKET_PAYLOAD_INVALID');
