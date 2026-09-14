@@ -20,6 +20,7 @@ import {
   validateVisualBaselineNonRegression,
 } from '../../pipeline-core/solution-visual-benefit.mjs';
 import { speedTelemetry } from '../../pipeline-core/speed.mjs';
+import { validateCanonicalFinalAuditAuthority } from './release-authority.mjs';
 
 export const REVIEW_READY_SCHEMA = 'APMATH_REVIEW_READY_v1';
 export const REVIEW_READY_STATUS = 'REVIEW_READY';
@@ -110,6 +111,7 @@ export function createReviewReady({
   renderCases = [],
   gateStatuses = {},
   finalClosureRef = null,
+  finalAuditAuthority = null,
   openDefectCount = 0,
   telemetry = null,
 } = {}) {
@@ -118,6 +120,8 @@ export function createReviewReady({
   if (run?.publicationIntent !== 'FULL_EXAM') errors.push('REVIEW_READY_FULL_EXAM_REQUIRED');
   if (closure?.status !== 'PASS' || closure?.productionAuthorized !== false) errors.push('REVIEW_READY_CLOSURE_NOT_QUALITY_ONLY');
   if (finalAudit?.status !== 'PASS') errors.push('FINAL_AUDIT_NOT_PASS');
+  if (!finalAuditAuthority) errors.push('FINAL_AUDIT_AUTHORITY_REQUIRED');
+  else errors.push(...validateCanonicalFinalAuditAuthority(root, { authority: finalAuditAuthority, expected: { examId: run?.examId || run?.sourceExamId || null, runId: run?.runId || null, revision: run?.revision || null } }).errors);
   if (openDefectCount !== 0) errors.push('OPEN_DEFECT_COUNT_NONZERO');
 
   let candidate = null;
@@ -151,6 +155,18 @@ export function createReviewReady({
       if (!assetRef) throw new Error('REVIEW_READY_ASSET_BINDING_MISSING:' + candidatePath);
       return { candidatePath, assetRef };
     });
+    if (finalAuditAuthority) {
+      errors.push(...validateCanonicalFinalAuditAuthority(root, {
+        authority: finalAuditAuthority,
+        expected: {
+          examId: run?.examId || run?.sourceExamId || null,
+          runId: run?.runId || null,
+          revision: run?.revision || null,
+          candidateSha256: candidate.sha256,
+          assetSetSha256: assetSetSha(assets),
+        },
+      }).errors);
+    }
   } catch (error) {
     errors.push(error.message);
   }
@@ -190,6 +206,8 @@ export function createReviewReady({
     finalClosureRefSha256: closureRef?.sha256 || null,
     finalClosureSha: closureSha(closure),
     finalAuditClosureRef: finalClosureRef || null,
+    finalAuditAuthority: finalAuditAuthority || null,
+    finalAuditAuthoritySha: finalAuditAuthority?.authoritySha || null,
     requiredRenderCases: [...REQUIRED_REVIEW_RENDER_CASES],
     gateStatuses: { ...gateStatuses, baselineNonRegression: baseline.status },
     openDefectCount,
@@ -201,7 +219,7 @@ export function createReviewReady({
   return { ...payload, reviewReadySha: objectSha(payload), errors: [] };
 }
 
-export function validateReviewReady(ready, { root = null, candidateRef = null, assetRefs = null } = {}) {
+export function validateReviewReady(ready, { root = null, candidateRef = null, assetRefs = null, validateAuthority = true } = {}) {
   const errors = [];
   if (ready?.schemaVersion !== REVIEW_READY_SCHEMA) errors.push('REVIEW_READY_SCHEMA_INVALID');
   if (ready?.state !== REVIEW_READY_STATUS || ready?.status !== REVIEW_READY_STATUS) errors.push('REVIEW_READY_STATUS_INVALID');
@@ -212,6 +230,11 @@ export function validateReviewReady(ready, { root = null, candidateRef = null, a
   if (!HASH_PATTERN.test(String(ready?.finalClosureRefSha256 || ''))) errors.push('REVIEW_READY_CLOSURE_REF_SHA_REQUIRED');
   if (!HASH_PATTERN.test(String(ready?.finalClosureSha || ''))) errors.push('REVIEW_READY_CLOSURE_SHA_REQUIRED');
   if (!ready?.finalClosureRef?.path && !nonempty(ready?.finalClosureRef)) errors.push('REVIEW_READY_CLOSURE_REF_REQUIRED');
+  if (!ready?.finalAuditAuthority) errors.push('FINAL_AUDIT_AUTHORITY_REQUIRED');
+  else {
+    if (!HASH_PATTERN.test(String(ready.finalAuditAuthoritySha || '')) || ready.finalAuditAuthoritySha !== ready.finalAuditAuthority.authoritySha) errors.push('FINAL_AUDIT_AUTHORITY_SHA_BINDING_FAIL');
+    if (root && validateAuthority) errors.push(...validateCanonicalFinalAuditAuthority(root, { authority: ready.finalAuditAuthority, expected: { examId: ready.examId, runId: ready.reviewReadyRunId, revision: ready.revision, candidateSha256: ready.candidateSha256, assetSetSha256: ready.stagedAssetSetSha256 } }).errors);
+  }
   errors.push(...requiredGateErrors(ready?.gateStatuses));
   errors.push(...validateRequiredRenderCases(ready?.renderCases || []).errors);
   if (ready?.openDefectCount !== 0) errors.push('OPEN_DEFECT_COUNT_NONZERO');
@@ -251,6 +274,7 @@ export function validateReviewReady(ready, { root = null, candidateRef = null, a
       const actualClosure = actualFileRef(root, ready.finalClosureRef);
       if (actualClosure.sha256 !== ready.finalClosureRefSha256) errors.push('REVIEW_READY_CLOSURE_REF_SHA_MISMATCH');
       try { validateClosureDocument(path.resolve(root, ready.finalClosureRef.path), ready.finalClosureSha); } catch (error) { errors.push(error.message); }
+      if (ready.finalAuditAuthority && validateAuthority) errors.push(...validateCanonicalFinalAuditAuthority(root, { authority: ready.finalAuditAuthority, expected: { examId: ready.examId, runId: ready.reviewReadyRunId, revision: ready.revision, candidateSha256: ready.candidateSha256, assetSetSha256: ready.stagedAssetSetSha256 } }).errors);
     } catch (error) {
       errors.push(error.message);
     }

@@ -57,7 +57,7 @@ test('SPEED-01 existing canonical exam preflight skips before extraction/provide
   const targetFile = 'original/high/h1/2final/26_모의고_2학기_기말_고1_공통수학1.js';
   write(root, `archive/exams/${targetFile}`, 'window.examTitle="existing";window.questionBank=[];');
   write(root, 'archive/db.js', `window.mainDB=${JSON.stringify({ exams: [{ file: targetFile, school: '모의고', grade: '고1', year: 2026, semester: '2', examType: 'final' }] })};`);
-  const identity = { year: 2026, schoolName: '모의고', grade: '고1', semester: '2', examType: 'final' };
+  const identity = { year: 2026, schoolName: '모의고', grade: '고1', semester: '2', examType: 'final', course: '공통수학1' };
   assert.equal(existingExamPreflight({ archiveRoot: path.join(root, 'archive'), examIdentity: identity }).status, 'SKIP_EXISTING_EXAM');
   assert.equal(existingExamPreflight({ archiveRoot: path.join(root, 'archive'), examIdentity: { ...identity, semester: '1' } }).status, 'NEW_EXAM');
   assert.equal(existingExamPreflight({ archiveRoot: path.join(root, 'archive'), examIdentity: identity, forceExisting: true }).status, 'FORCE_EXISTING_EXAM');
@@ -86,6 +86,7 @@ test('SPEED-01 existing canonical exam preflight skips before extraction/provide
     grade: '고1',
     semester: '2',
     examType: '',
+    course: '공통수학1',
     examId: 'incomplete-identity',
     outputDir: incompleteOutput,
   });
@@ -95,11 +96,11 @@ test('SPEED-01 existing canonical exam preflight skips before extraction/provide
 });
 
 test('SPEED-01 identity-incomplete existing-exam preflight fails closed instead of returning NEW_EXAM', () => {
-  const result = existingExamPreflight({ archiveRoot: 'archive', examIdentity: { year: 2026, schoolName: '모의고', grade: '고1', semester: '2' } });
+  const result = existingExamPreflight({ archiveRoot: 'archive', examIdentity: { year: 2026, schoolName: '모의고', grade: '고1', semester: '2', course: '공통수학1' } });
   assert.equal(result.status, 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE');
   assert.equal(result.skip, false);
   assert.deepEqual(result.missingIdentityFields, ['examType']);
-  assert.equal(existingExamPreflight({ archiveRoot: 'archive', forceExisting: true, examIdentity: { year: 2026, schoolName: '모의고', grade: '고1', semester: '2' } }).status, 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE');
+  assert.equal(existingExamPreflight({ archiveRoot: 'archive', forceExisting: true, examIdentity: { year: 2026, schoolName: '모의고', grade: '고1', semester: '2', course: '공통수학1' } }).status, 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE');
 });
 
 test('SPEED-02 semantic impact keeps unchanged axes reusable and fails closed when proof is missing', () => {

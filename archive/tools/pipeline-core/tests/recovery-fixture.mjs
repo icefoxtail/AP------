@@ -7,7 +7,7 @@ import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { initWorkBatch } from '../work-batch.mjs';
 import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
 
-export function recoveryFixture(t, { questionCount = 1, authorityFinalized = true, pipeline = 'tag-enrichment', revisionMutation = 'content', currentPassAxes = [], currentPassAnswers = {} } = {}) {
+export function recoveryFixture(t, { questionCount = 1, authorityFinalized = true, pipeline = 'tag-enrichment', revisionMutation = 'content', currentPassAxes = [], currentPassAnswers = {}, candidateOverrides = null, assetFiles = {}, examId = 'recovery' } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-recovery-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (relative, value) => {
@@ -17,18 +17,28 @@ export function recoveryFixture(t, { questionCount = 1, authorityFinalized = tru
     return fileRef(root, relative);
   };
   const sourceRows = Array.from({ length: questionCount }, (_, index) => ({ id: index + 1, content: `Find the value for question ${index + 1}.`, choices: ['1', '2'], answer: '1', solution: 'The answer is 1.' }));
-  const sourceRef = { ...write('source.js', `window.examTitle="recovery";window.questionBank=${JSON.stringify(sourceRows)};`), role: 'source' };
+  const sourceRef = { ...write('source.js', `window.examTitle=${JSON.stringify(examId)};window.questionBank=${JSON.stringify(sourceRows)};`), role: 'source' };
   initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session', workflowProfile: 'PAST_EXAM' });
   let serial = 0;
   const makeRun = (revision = 1) => {
-    const candidateRows = sourceRows.map(row => {
-      if (revision === 1) return { ...row };
-      if (revisionMutation === 'solution') return { ...row, solution: `${row.solution} Revision ${revision}.` };
-      return { ...row, content: `${row.content} Revision ${revision}.` };
+    const candidateRows = sourceRows.map((row, index) => {
+      const base = revision === 1
+        ? { ...row }
+        : revisionMutation === 'solution'
+          ? { ...row, solution: `${row.solution} Revision ${revision}.` }
+          : { ...row, content: `${row.content} Revision ${revision}.` };
+      const override = typeof candidateOverrides === 'function' ? candidateOverrides(base, index, revision) : candidateOverrides;
+      return { ...base, ...(override || {}) };
     });
-    const candidateRef = { ...write(`candidate-${revision}.js`, `window.examTitle="recovery";window.questionBank=${JSON.stringify(candidateRows)};`), role: 'candidate' };
-    const questions = sourceRows.map(row => ({ questionUid: `recovery|${row.id}`, sourceExamId: 'recovery', examId: 'recovery', qid: row.id, sourcePath: sourceRef.path, candidatePath: candidateRef.path, requiredAxes: [], sourceStatus: 'RESOLVED', problemAssetPaths: [], solutionAssetPaths: [], evidence: {}, visual: { origin: 'NATIVE', requirement: 'VISUAL_EXEMPT', action: 'NONE', exemptReason: 'NO_VISUAL_NEEDED', adjudicationId: `q${row.id}:authority`, adjudicationStatus: authorityFinalized ? 'RESOLVED' : 'PENDING', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false } }));
-    const run = { schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision, builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', questions, inputs: [sourceRef, candidateRef], evidence: [], auditorPacketRefs: [], registry: [] };
+    const candidateRef = { ...write(`candidate-${revision}.js`, `window.examTitle=${JSON.stringify(examId)};window.questionBank=${JSON.stringify(candidateRows)};`), role: 'candidate' };
+    const assetRefs = Object.entries(assetFiles || {}).map(([relative, value]) => ({ ...write(relative, value), role: 'asset' }));
+    const assetPaths = new Set(assetRefs.map(ref => ref.path));
+    const questions = sourceRows.map(row => {
+      const candidate = candidateRows.find(item => item.id === row.id) || row;
+      const requirement = candidate.image ? 'VISUAL_REQUIRED' : candidate.solutionImage ? 'VISUAL_OPTIONAL' : 'VISUAL_EXEMPT';
+      return { questionUid: `${examId}|${row.id}`, sourceExamId: examId, examId, qid: row.id, sourcePath: sourceRef.path, candidatePath: candidateRef.path, requiredAxes: [], sourceStatus: 'RESOLVED', problemAssetPaths: [candidate.image].filter(value => value && assetPaths.has(value)), solutionAssetPaths: [candidate.solutionImage].filter(value => value && assetPaths.has(value)), evidence: {}, visual: { origin: 'NATIVE', requirement, action: requirement === 'VISUAL_EXEMPT' ? 'NONE' : 'KEEP', exemptReason: requirement === 'VISUAL_EXEMPT' ? 'NO_VISUAL_NEEDED' : null, adjudicationId: `q${row.id}:authority`, adjudicationStatus: authorityFinalized ? 'RESOLVED' : 'PENDING', actualSolutionVisualAttached: Boolean(candidate.solutionImage), problemVisualMathDependency: Boolean(candidate.image), sharedVisualMathDependency: false } };
+    });
+    const run = { schemaVersion: RUN_VERSION_V2, pipeline, workBatchId: 'job', runId: 'run', revision, builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', questions, inputs: [sourceRef, candidateRef, ...assetRefs], evidence: [], auditorPacketRefs: [], registry: [] };
     run.inputSha = runInputSha(run);
     const shas = computeV2AxisInputShas(root, run);
     if (revision > 1 && currentPassAxes.length) {

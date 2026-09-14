@@ -1,6 +1,6 @@
 import path from "node:path";
 
-const COURSE_TOKENS = [
+export const COURSE_TOKENS = Object.freeze([
   "공통수학1",
   "공통수학2",
   "수학(상)",
@@ -23,19 +23,29 @@ const COURSE_TOKENS = [
   "확률과 통계",
   "확통",
   "기벡",
-  "기하"
-];
+  "기하",
+  "기하와벡터",
+  "중1 수학",
+  "중2 수학",
+  "중3 수학"
+]);
 
-const COURSE_ALIASES = new Map([
+export const COURSE_ALIASES = new Map([
   ["수1", "수학I"],
+  ["수학1", "수학I"],
   ["수2", "수학II"],
+  ["수학2", "수학II"],
   ["수학Ⅰ", "수학I"],
   ["수학Ⅱ", "수학II"],
   ["확통", "확률과통계"],
   ["확률과 통계", "확률과통계"],
   ["미적분1", "미적분I"],
-  ["미적분2", "미적분II"]
+  ["미적분2", "미적분II"],
+  ["기하와벡터", "기하"]
 ]);
+
+const COURSE_NORMALIZED_ALIASES = new Map([...COURSE_ALIASES.entries()].map(([key, value]) => [String(key).normalize('NFKC').replace(/\s+/g, ''), value]));
+const COURSE_NORMALIZED_TOKENS = COURSE_TOKENS.map(token => ({ token, normalized: token.normalize('NFKC').replace(/\s+/g, '') }));
 
 function normalizeYear(raw) {
   if (!raw) return "";
@@ -70,9 +80,20 @@ function parseGrade(text) {
   return "";
 }
 
-function parseCourse(text) {
-  const found = COURSE_TOKENS.find((token) => text.includes(token)) || "";
-  return COURSE_ALIASES.get(found) || found;
+export function normalizeCourse(value) {
+  const normalized = String(value || '').normalize('NFKC').replace(/\s+/g, '').trim();
+  if (!normalized || normalized === '수학' || normalized === '기출' || normalized === 'c') return '';
+  return COURSE_NORMALIZED_ALIASES.get(normalized)
+    || COURSE_NORMALIZED_TOKENS.find(row => row.normalized === normalized)?.token
+    || '';
+}
+
+export function parseCourse(text) {
+  const source = String(text || '').normalize('NFKC');
+  const found = COURSE_NORMALIZED_TOKENS
+    .filter(row => source.replace(/\s+/g, '').includes(row.normalized))
+    .sort((left, right) => right.normalized.length - left.normalized.length)[0]?.token || '';
+  return normalizeCourse(found);
 }
 
 function normalizeIdentityYear(value) {
@@ -86,13 +107,26 @@ function normalizeIdentitySchool(value) {
   return String(value || '').normalize('NFKC').trim().replace(/\s+/g, '').toLocaleLowerCase();
 }
 
+function normalizeIdentityExamType(value) {
+  const normalized = String(value || '').normalize('NFKC').trim().toLocaleLowerCase();
+  if (normalized === '중간' || normalized === 'mid') return 'mid';
+  if (normalized === '기말' || normalized === 'final') return 'final';
+  return normalized;
+}
+
 export function canonicalExamIdentity(value = {}) {
+  const course = normalizeCourse(value.course)
+    || normalizeCourse(value.subject)
+    || normalizeCourse(value.standardCourse)
+    || normalizeCourse(value.primaryStandardCourse)
+    || parseCourse([value.course, value.subject, value.standardCourse, value.primaryStandardCourse, value.topic].filter(Boolean).join(' '));
   return {
     year: normalizeIdentityYear(value.year),
     school: normalizeIdentitySchool(value.school ?? value.schoolName),
     grade: String(value.grade || '').trim(),
     semester: String(value.semester || '').replace(/\D/g, ''),
-    examType: String(value.examType || '').trim().toLowerCase(),
+    examType: normalizeIdentityExamType(value.examType),
+    course,
   };
 }
 

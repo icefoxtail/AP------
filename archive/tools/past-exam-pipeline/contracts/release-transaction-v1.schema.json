@@ -2,9 +2,10 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "APMATH_APPROVED_RELEASE_TRANSACTION_v1",
   "type": "object",
-  "required": ["schemaVersion", "examId", "reviewReadyRunId", "stages", "status", "productionAuthorized", "transactionSha"],
+  "required": ["schemaVersion", "transactionId", "examId", "reviewReadyRunId", "stages", "status", "productionAuthorized", "baseline", "mutations", "recovery", "transactionSha"],
   "properties": {
     "schemaVersion": {"const": "APMATH_APPROVED_RELEASE_TRANSACTION_v1"},
+    "transactionId": {"type": "string", "minLength": 1},
     "examId": {"type": ["string", "null"]},
     "reviewReadyRunId": {"type": ["string", "null"]},
     "reviewReadySha": {"type": ["string", "null"]},
@@ -13,6 +14,9 @@
     "status": {"enum": ["HOLD", "DONE"]},
     "productionAuthorized": {"type": "boolean"},
     "failure": {},
+    "baseline": {"type": ["object", "null"]},
+    "mutations": {"type": "array"},
+    "recovery": {"type": ["object", "null"]},
     "transactionSha": {"$ref": "#/$defs/sha"}
   },
   "$defs": {
