@@ -112,6 +112,42 @@ test('all three engines normalize both condition marker forms with one boundary 
   }
 });
 
+test('condition normalization has complete boundary witnesses and preserves non-targets', () => {
+  const fixtures = [
+    { input: '(가) A (나) B', expected: '(가) A<br>(나) B', transition: true },
+    { input: '가. A 나. B', expected: '가. A<br>나. B', transition: true },
+    { input: '<b>가.</b> A <b>나.</b> B', expected: '<b>가.</b> A<br><b>나.</b> B', transition: true },
+    { input: '<span>(가)</span> A <span>(나)</span> B', expected: '<span>(가)</span> A<br><span>(나)</span> B', transition: true },
+    { input: '(가) A<br>(나) B', expected: '(가) A<br>(나) B', transition: true },
+    { input: '(가) A<br><br>(나) B', expected: '(가) A<br>(나) B', transition: true },
+    { input: '(가), (나), (다)', expected: '(가), (나), (다)', transition: false },
+    { input: '(가)~(마)', expected: '(가)~(마)', transition: false },
+    { input: '(가)와 (나)', expected: '(가)와 (나)', transition: false },
+    { input: '$(가) A (나) B$', expected: '$(가) A (나) B$', transition: false },
+    { input: '<div class="choices">(가) A (나) B</div>', expected: '<div class="choices">(가) A (나) B</div>', transition: false },
+    { input: 'ㄱ. A ㄴ. B (가) C (나) D', expected: 'ㄱ. A ㄴ. B (가) C<br>(나) D', transition: true }
+  ];
+
+  for (const engineFile of engineFiles) {
+    const normalize = loadNormalizer(engineFile);
+    for (const fixture of fixtures) {
+      const once = normalize(fixture.input);
+      const twice = normalize(once);
+      const thrice = normalize(twice);
+
+      assert.equal(once, fixture.expected, `${engineFile}: completeness witness changed unexpectedly`);
+      assert.equal(twice, once, `${engineFile}: second normalization changed output`);
+      assert.equal(thrice, once, `${engineFile}: third normalization changed output`);
+      assert.doesNotMatch(once, /__CONDITION_(?:BLOCK|MATH|TAG)_\d+__/, `${engineFile}: token leak`);
+      assert.equal(
+        (once.match(/<br\s*\/?>/gi) || []).length,
+        fixture.transition ? 1 : 0,
+        `${engineFile}: completeness witness break count`
+      );
+    }
+  }
+});
+
 test('condition normalization protects math, tables, SVG, images, choices, and note wrappers', () => {
   const fixtures = [
     '<div class="question-note-box">(가) A (나) B</div>',
@@ -120,6 +156,10 @@ test('condition normalization protects math, tables, SVG, images, choices, and n
     '<svg><text>(가) A (나) B</text></svg>',
     '<img alt="(가) A (나) B" src="x.png"> (가) A (나) B',
     '$(가) A (나) B$ (가) A (나) B',
+    '<div class="solution"><p>(가) A (나) B</p></div>',
+    '<script>const marker = "(가) A (나) B";</script>',
+    '<style>.marker::before { content: "(가) A (나) B"; }</style>',
+    '<div data-marker="(가) A (나) B">보호된 attribute</div>',
     'ㄱ. A ㄴ. B (가) A (나) B',
     '(가) A'
   ];
@@ -150,6 +190,7 @@ test('all production condition candidates pass mechanical marker and structure c
     for (const question of candidates) {
       const once = normalize(question.content);
       if (normalize(once) !== once || normalize(normalize(once)) !== once) failures.push({ key: question.key, code: 'IDEMPOTENCE' });
+      if (/__CONDITION_(?:BLOCK|MATH|TAG)_\d+__/.test(once)) failures.push({ key: question.key, code: 'TOKEN_LEAK' });
       if (conditionMarkerSignature(once).join('|') !== conditionMarkerSignature(question.content).join('|')) failures.push({ key: question.key, code: 'MARKER_SEQUENCE' });
       if (JSON.stringify(structureSignature(once)) !== JSON.stringify(structureSignature(question.content))) failures.push({ key: question.key, code: 'STRUCTURE' });
       if (JSON.stringify(mathSignature(once)) !== JSON.stringify(mathSignature(question.content))) failures.push({ key: question.key, code: 'MATH' });

@@ -1942,10 +1942,30 @@ function normalizeConditionMarkerBreaks(html) {
     if (!html) return '';
 
     const tokens = [];
+    const conditionTokenRe = /__CONDITION_(?:BLOCK|MATH|TAG)_(\d+)__/g;
+    const conditionTagTokenRe = /__CONDITION_TAG_\d+__/g;
+    const conditionTagIndexRe = /^__CONDITION_TAG_(\d+)__$/;
     const save = (kind, match) => {
         const token = '__CONDITION_' + kind + '_' + tokens.length + '__';
         tokens.push(match);
         return token;
+    };
+    const tagTokenSource = token => {
+        const match = String(token || '').match(conditionTagIndexRe);
+        return match ? String(tokens[Number(match[1])] || '') : '';
+    };
+    const isOpeningTagToken = token => /^<[A-Za-z][^>]*>$/.test(tagTokenSource(token));
+    const findMarkerWrapperStart = separator => {
+        conditionTagTokenRe.lastIndex = 0;
+        const tagMatches = [...String(separator || '').matchAll(conditionTagTokenRe)];
+        let lastNonOpening = -1;
+        for (let index = 0; index < tagMatches.length; index += 1) {
+            if (!isOpeningTagToken(tagMatches[index][0])) lastNonOpening = index;
+        }
+        for (let index = lastNonOpening + 1; index < tagMatches.length; index += 1) {
+            if (isOpeningTagToken(tagMatches[index][0])) return tagMatches[index];
+        }
+        return null;
     };
     let protectedHtml = String(html)
         .replace(
@@ -1970,7 +1990,7 @@ function normalizeConditionMarkerBreaks(html) {
     for (const match of protectedHtml.matchAll(/[（(][가나다라마][）)]/g)) {
         addMarker(match[0], match.index, match[0].replace(/[（()）]/g, ''));
     }
-    for (const match of protectedHtml.matchAll(/(?:^|[\s>]|__CONDITION_TAG_[A-Z]+_\d+__)([가나다라마])\./g)) {
+    for (const match of protectedHtml.matchAll(/(?:^|[\s>]|__CONDITION_TAG_\d+__)([가나다라마])\./g)) {
         addMarker(match[0].slice(-2), match.index + match[0].length - 2, match[1]);
     }
     markers.sort((left, right) => left.index - right.index);
@@ -1984,27 +2004,41 @@ function normalizeConditionMarkerBreaks(html) {
 
         const between = protectedHtml.slice(previous.end, current.index);
         const separatorMatch = between.match(
-            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__CONDITION_TAG_[A-Z]+_\d+__)*$/i
+            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__CONDITION_TAG_\d+__)*$/i
         );
         const separator = separatorMatch ? separatorMatch[0] : '';
         const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
         const markerOnlySeparator = between
             .replace(/<br\s*\/?>/gi, '')
             .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-            .replace(/__CONDITION_TAG_[A-Z]+_\d+__/gi, '')
+            .replace(conditionTagTokenRe, '')
             .replace(/\s+/g, '');
-        if (!breakMatches.length && /^[,，、;；:：~〜～∼\-–—…·]*$/.test(markerOnlySeparator)) continue;
-        const normalizedSeparator = breakMatches.length > 0
-            ? separator.slice(0, breakMatches[0].index)
-                + '<br>'
-                + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
-                    .replace(/<br\s*\/?>/gi, '')
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/^\s+|\s+$/g, '')
-            : separator
+        if (!breakMatches.length && /^[,，、;；:：~〜～∼\-–—…·와]*$/.test(markerOnlySeparator)) continue;
+        const markerWrapperStart = findMarkerWrapperStart(separator);
+        let normalizedSeparator;
+        if (markerWrapperStart) {
+            const beforeWrapper = separator.slice(0, markerWrapperStart.index)
+                .replace(/<br\s*\/?>/gi, '')
                 .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+/g, '')
-                + '<br>';
+                .replace(/\s+$/g, '');
+            const afterWrapper = separator.slice(markerWrapperStart.index)
+                .replace(/<br\s*\/?>/gi, '')
+                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                .replace(/\s+/g, '');
+            normalizedSeparator = beforeWrapper + '<br>' + afterWrapper;
+        } else {
+            normalizedSeparator = breakMatches.length > 0
+                ? separator.slice(0, breakMatches[0].index)
+                    + '<br>'
+                    + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
+                        .replace(/<br\s*\/?>/gi, '')
+                        .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                        .replace(/^\s+|\s+$/g, '')
+                : separator
+                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                    .replace(/\s+/g, '')
+                    + '<br>';
+        }
 
         replacements.push({
             start: current.index - separator.length,
@@ -2020,8 +2054,9 @@ function normalizeConditionMarkerBreaks(html) {
             + protectedHtml.slice(replacement.end);
     }
 
+    conditionTokenRe.lastIndex = 0;
     return protectedHtml.replace(
-        /__CONDITION_(?:BLOCK|MATH|TAG)_(\d+)__/g,
+        conditionTokenRe,
         (match, index) => tokens[Number(index)] ?? ''
     );
 }
