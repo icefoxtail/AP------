@@ -6,13 +6,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { bytesSha, fileRef } from '../../pipeline-core/canonical.mjs';
+import { fileSha, objectFileSha, protectedPayloadSha } from '../lib/hardening.mjs';
 import { nextWorkBatchAction } from '../../pipeline-core/defect-router.mjs';
 import { assertNoProductionWrite, assertProductionPayloadClean, assertStagingOutput, stripTransientProductionFields } from '../lib/production-boundary.mjs';
 import { createReviewReady, validateDefaultVisualGate, validateReviewReady, validateVisualBaselineNonRegression } from '../lib/review-ready.mjs';
 import { inferDefaultVisualNeed, validateDefaultVisualGate as coreVisualGate } from '../../pipeline-core/solution-visual-benefit.mjs';
 import { assertProductionSmokeRender, validateExternalApproval, validateProductionSmokeRender } from '../lib/release-authority.mjs';
 import { executeApprovedRelease } from '../release-approved-exam.mjs';
-import { resolveApprovedAssetCopySources } from '../promote-reviewed-exam.mjs';
+import { promoteApprovedExam, resolveApprovedAssetCopySources } from '../promote-reviewed-exam.mjs';
 import { readArchiveDb, readQuestionIndex, registerApprovedExam, assertTargetOnlyDbDelta, assertTargetOnlyIndexDelta, rebuildApprovedIndex } from '../register-approved-exam.mjs';
 
 const SHA = 'sha256:' + 'a'.repeat(64);
@@ -66,6 +67,92 @@ function releaseFixture(t) {
   const indexBaselineSha256 = bytesSha(fs.readFileSync(indexPath));
   return { ...f, targetFile, targetPath: path.join(f.root, 'archive/exams/' + targetFile), candidateFile: f.candidatePath, reviewFile: reviewPath, reviewReady: f.ready, approval: { ...f.approval, dbBaselineSha256, indexBaselineSha256 }, dbEntry, dbPath, indexPath, reviewPath, manifest, smokeReport, dbBaselineSha256, indexBaselineSha256 };
 }
+
+function fullPromotionFixture(t) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-full-promotion-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const sourceDocumentSha256 = SHA;
+  const sourceIdentityKey = `${sourceDocumentSha256}|1`;
+  const question = {
+    id: 1,
+    content: '다음 문제의 조건을 이용하여 값을 구하여라.',
+    choices: ['1', '2', '3', '4', '5'],
+    answer: '1',
+    solution: '조건을 정리하고 계산하면 정답은 1이다.',
+    sourceDocumentSha256,
+    sourceQuestionNo: '1',
+    sourcePageNo: 1,
+    sourcePageEvidencePaths: ['pages/page_p001.png'],
+    sourceIdentityKey,
+    sourceEvidencePath: 'pages/page_p001.png',
+    image: 'assets/images/target/problem.svg',
+    visualAsset: 'assets/images/target/problem.svg',
+    hasVisualAsset: true,
+    solutionImage: 'assets/images/target/solution.svg',
+    visualAssetProvenance: {
+      assetPath: 'assets/images/target/problem.svg',
+      assetSha256: '',
+      assetBindingType: 'DIRECT',
+      sourceDocumentSha256,
+      sourceQuestionNo: '1',
+      sourcePageNo: 1,
+      sourcePageEvidence: 'pages/page_p001.png',
+      sourceBBox: { x1: 1, y1: 1, x2: 40, y2: 40 },
+      cropGenerator: 'full-promotion-fixture',
+      cropStatus: 'SEMANTIC_REVIEW_PASS',
+      verdict: 'PASS',
+      checks: {
+        CROP_PURITY: true,
+        NO_OTHER_QUESTION_TEXT: true,
+        NO_CHOICES_CONTAMINATION: true,
+        NO_PAGE_BORDER_CONTAMINATION: true,
+        NO_CLIPPING: true,
+        REQUIRED_LABELS_PRESENT: true,
+        QUESTION_SEMANTIC_MATCH: true,
+      },
+    },
+  };
+  const candidateFile = write(root, 'staging/candidate/candidate.js', 'window.examTitle="target";window.questionBank=' + JSON.stringify([question]) + ';');
+  const pageFile = write(root, 'staging/pages/page_p001.png', 'source-page');
+  const problemFile = write(root, 'staging/assets/images/target/problem.svg', '<svg xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20"/></svg>');
+  const solutionFile = write(root, 'staging/assets/images/target/solution.svg', '<svg xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8"/></svg>');
+  question.visualAssetProvenance.assetSha256 = fileSha(problemFile);
+  fs.writeFileSync(candidateFile, 'window.examTitle="target";window.questionBank=' + JSON.stringify([question]) + ';');
+  const reportsDir = path.join(root, 'staging/reports');
+  const inventory = { schema: 'PAST_EXAM_SOURCE_INVENTORY_v1', examId: 'target', sourceDocumentSha256, pageCount: 1, expectedQuestionCount: 1, status: 'SOURCE_INVENTORY_FROZEN', questions: [{ sourceIdentityKey, sourceDocumentSha256, sourceQuestionNo: '1', sourcePageNo: 1, sourceEvidencePath: 'pages/page_p001.png', sourcePageEvidencePaths: ['pages/page_p001.png'], disposition: 'INCLUDED' }] };
+  write(root, 'staging/reports/source_inventory.json', inventory);
+  write(root, 'staging/reports/source_identity_map.json', { schema: 'PAST_EXAM_SOURCE_IDENTITY_MAP_v1', status: 'SOURCE_INVENTORY_FROZEN', sourceInventorySha: fileSha(path.join(reportsDir, 'source_inventory.json')), questions: inventory.questions, includedIdentitySet: [sourceIdentityKey] });
+  const pageSha = fileSha(pageFile);
+  write(root, 'staging/reports/source_fidelity_evidence.json', { schema: 'PAST_EXAM_SOURCE_FIDELITY_EVIDENCE_v1', status: 'PASS', sourceInventorySha: fileSha(path.join(reportsDir, 'source_inventory.json')), sourceIdentityMapSha: fileSha(path.join(reportsDir, 'source_identity_map.json')), items: [{ sourceIdentityKey, sourceQuestionNo: '1', sourcePageNo: 1, sourcePageEvidencePaths: ['pages/page_p001.png'], sourcePageEvidence: [{ path: 'pages/page_p001.png', sha256: pageSha }], sourceEvidencePath: 'pages/page_p001.png', sourceEvidenceSha256: pageSha, contentChecked: true, choicesChecked: true, verdict: 'PASS', contentSha256: objectFileSha(question.content), choicesSha256: objectFileSha(question.choices) }] });
+  write(root, 'staging/reports/math_review_evidence.json', { schema: 'PAST_EXAM_MATH_REVIEW_EVIDENCE_v1', status: 'PASS', sourceInventorySha: fileSha(path.join(reportsDir, 'source_inventory.json')), sourceIdentityMapSha: fileSha(path.join(reportsDir, 'source_identity_map.json')), items: [{ sourceIdentityKey, inputVisibilityProfile: 'SOURCE_ONLY', priorAnswerVisible: false, sourceOnlyBlindSolve: true, choiceUniqueness: true, questionValidity: true, solutionChecked: true, solutionConclusionMatches: true, independentAnswer: '1', verdict: 'PASS' }] });
+  write(root, 'staging/reports/asset_provenance_evidence.json', { schema: 'PAST_EXAM_ASSET_PROVENANCE_EVIDENCE_v1', status: 'PASS', sourceInventorySha: fileSha(path.join(reportsDir, 'source_inventory.json')), sourceIdentityMapSha: fileSha(path.join(reportsDir, 'source_identity_map.json')), items: [{ sourceIdentityKey, ...question.visualAssetProvenance }] });
+  const handoffFile = write(root, 'staging/reports/gpt_gemini_handoff_manifest.json', { protectedPayload: [{ sourceIdentityKey, sha256: protectedPayloadSha(question) }] });
+  const review = { status: 'reviewed_pass', examId: 'target', questionCount: 1, candidateSha: fileSha(candidateFile), promotionTransactionId: 'full-promotion-fixture', sourceIdentitySet: [sourceIdentityKey], handoffManifestSha: fileSha(handoffFile), protectedPayload: [{ sourceIdentityKey, sha256: protectedPayloadSha(question) }], sourceInventorySha: fileSha(path.join(reportsDir, 'source_inventory.json')), sourceIdentityMapSha: fileSha(path.join(reportsDir, 'source_identity_map.json')), sourceFidelityEvidenceSha: fileSha(path.join(reportsDir, 'source_fidelity_evidence.json')), mathReviewEvidenceSha: fileSha(path.join(reportsDir, 'math_review_evidence.json')), assetProvenanceEvidenceSha: fileSha(path.join(reportsDir, 'asset_provenance_evidence.json')) };
+  const reviewFile = write(root, 'staging/review.json', review);
+  const closureFile = write(root, 'staging/final-closure.json', { status: 'PASS', productionAuthorized: false });
+  const candidateRef = fileRef(root, 'staging/candidate/candidate.js');
+  const assetRefs = [fileRef(root, 'staging/assets/images/target/problem.svg'), fileRef(root, 'staging/assets/images/target/solution.svg')];
+  const ready = createReviewReady({ root, run: { pipeline: 'past-exam', publicationIntent: 'FULL_EXAM', examId: 'target', runId: 'full-promotion-run', revision: 1 }, closure: { status: 'PASS', productionAuthorized: false }, finalAudit: { status: 'PASS' }, candidateRef, assetRefs, candidateQuestions: [question], baselineQuestions: [], renderCases: renderCases(), gateStatuses: { sourceFidelity: 'PASS', math: 'PASS', solutionQuality: 'PASS', visual: 'PASS', metadata: 'PASS', finalAudit: 'PASS', render: 'PASS' }, finalClosureRef: fileRef(root, 'staging/final-closure.json'), openDefectCount: 0 });
+  assert.equal(ready.status, 'REVIEW_READY', JSON.stringify(ready.errors));
+  const approval = { schemaVersion: 'APMATH_FINAL_EXTERNAL_APPROVAL_v1', approvalStatus: 'APPROVED', examId: 'target', reviewReadyRunId: ready.reviewReadyRunId, reviewReadySha: ready.reviewReadySha, candidateSha256: ready.candidateSha256, stagedAssetSetSha256: ready.stagedAssetSetSha256, finalClosureSha: ready.finalClosureSha, dbBaselineSha256: SHA, indexBaselineSha256: SHA, approvalEvidenceIdentity: 'external/full-promotion', approvalEvidenceSha256: SHA, approvedAt: '2026-09-13T00:00:00.000Z' };
+  const alternateDir = path.join(root, 'staging/alternate-assets');
+  write(root, 'staging/alternate-assets/problem.svg', '<svg xmlns="http://www.w3.org/2000/svg"><path d="B-problem"/></svg>');
+  write(root, 'staging/alternate-assets/solution.svg', '<svg xmlns="http://www.w3.org/2000/svg"><path d="B-solution"/></svg>');
+  const targetFile = 'original/high/h1/1final/target.js';
+  return { root, question, candidateFile, reviewFile, reviewReady: ready, approval, assetsDir: alternateDir, targetFile, targetJs: path.join(root, 'archive/exams', targetFile), targetProblem: path.join(root, 'archive/assets/images/target/problem.svg'), targetSolution: path.join(root, 'archive/assets/images/target/solution.svg'), problemBytes: fs.readFileSync(problemFile), solutionBytes: fs.readFileSync(solutionFile) };
+}
+
+test('full promoteApprovedExam copies real problem and solution assets through the complete path', t => {
+  const f = fullPromotionFixture(t);
+  const result = promoteApprovedExam({ root: f.root, manifest: { examId: 'target', archiveRelativePath: f.targetFile }, candidateFile: f.candidateFile, reviewFile: f.reviewFile, reviewReady: f.reviewReady, approval: f.approval, assetsDir: f.assetsDir });
+  assert.equal(result.status, 'PROMOTED', JSON.stringify(result));
+  assert.equal(result.assetCount, 2);
+  assert.deepEqual(fs.readFileSync(f.targetProblem), f.problemBytes);
+  assert.deepEqual(fs.readFileSync(f.targetSolution), f.solutionBytes);
+  assert.notDeepEqual(fs.readFileSync(f.targetProblem), fs.readFileSync(path.join(f.assetsDir, 'problem.svg')));
+  assert.notDeepEqual(fs.readFileSync(f.targetSolution), fs.readFileSync(path.join(f.assetsDir, 'solution.svg')));
+  assert.ok(fs.existsSync(f.targetJs));
+});
 
 test('A: normal completion exposes REVIEW_READY and every builder output root is protected', () => {
   assert.equal(nextWorkBatchAction({ status: 'REVIEW_READY', openDefectSet: [], launches: [], freezes: [] }).action, 'EXTERNAL_APPROVAL_REQUIRED');

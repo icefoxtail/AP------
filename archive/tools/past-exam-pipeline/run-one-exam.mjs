@@ -59,6 +59,19 @@ export async function runOneExam(cfg, manifest) {
     examIdentity: manifest,
     forceExisting: cfg.args?.forceExisting === true || manifest.forceExisting === true || cfg.existingExamMode === "FORCE_EXISTING",
   });
+  if (existing.hold) return withTelemetry({
+    examId: manifest.examId || null,
+    canonicalExamId: manifest.canonicalExamId || manifest.examId || null,
+    status: existing.status,
+    currentStage: "existing_exam_identity_preflight",
+    blockedReasons: existing.missingIdentityFields || ["canonical_exam_identity_incomplete"],
+    existingIdentity: existing.identity,
+    protectedArchiveTouched: false,
+    providerInvocationCount: 0,
+    modelInvocationCount: 0,
+    extractionInvocationCount: 0,
+    dbIndexWriteCount: 0,
+  });
   if (existing.skip) return withTelemetry({
     examId: manifest.examId,
     canonicalExamId: manifest.canonicalExamId || manifest.examId,

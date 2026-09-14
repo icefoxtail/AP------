@@ -117,9 +117,9 @@ export function buildU3CandidatePayload(candidateContext, questionUid, frozenInp
   } });
 }
 
-export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null }) {
+export function buildAuditorPacket({ phase, questionUid, questionUids = [questionUid], payload = {}, affectedUidSet = [questionUid], declaredContextDependencyUidSet = [], auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId, candidateContext = null, targetedAxes = null }) {
   if (!AUDITOR_PHASES.includes(phase)) throw new Error('AUDITOR_PHASE_INVALID');
-  const packet = { schemaVersion: AUDITOR_PACKET_VERSION, phase, questionUids, payload, auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId };
+  const packet = { schemaVersion: AUDITOR_PACKET_VERSION, phase, questionUids, ...(targetedAxes ? { targetedAxes: [...new Set(targetedAxes)].sort() } : {}), payload, auditorId, auditorSessionId, builderId, builderSessionId, auditorPrincipalType, contextId, inputVisibilityProfile, priorReviewVisibility, sealed, launchId, externalTaskId };
   packet.packetSha = objectSha(packet);
   const result = validateAuditorPacket(packet, { affectedUidSet, declaredContextDependencyUidSet, candidateContext });
   if (result.status !== 'PASS') throw new Error(result.errors.join(';'));
@@ -136,6 +136,7 @@ export function validateAuditorPacket(packet, { affectedUidSet = [], declaredCon
   if (!isObject(packet) || packet.schemaVersion !== AUDITOR_PACKET_VERSION || !AUDITOR_PHASES.includes(packet.phase)) errors.push('AUDITOR_PACKET_SCHEMA_INVALID');
   if (!Array.isArray(packet.questionUids) || packet.questionUids.length === 0 || packet.questionUids.some(uid => !nonempty(uid))) errors.push('AUDITOR_PACKET_UIDS_INVALID');
   if (packet.questionUids?.some(uid => !visibleUids.includes(uid))) errors.push('UNRELATED_UID_PROMPT_EXPOSURE');
+  if (packet.targetedAxes !== undefined && (!Array.isArray(packet.targetedAxes) || packet.targetedAxes.length === 0 || packet.targetedAxes.some(axis => !nonempty(axis)) || new Set(packet.targetedAxes).size !== packet.targetedAxes.length)) errors.push('AUDITOR_TARGETED_AXES_INVALID');
   if (!nonempty(packet.auditorId) || !nonempty(packet.auditorSessionId)) errors.push('AUDITOR_IDENTITY_MISSING');
   const expectedBuilderId = builderId ?? packet.builderId;
   const expectedBuilderSessionId = builderSessionId ?? packet.builderSessionId;

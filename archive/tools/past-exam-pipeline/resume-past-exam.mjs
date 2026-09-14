@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { aggregateWorkBatchAudit, freezeWorkBatch, markWorkBatchReviewReady, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview } from '../pipeline-core/work-batch.mjs';
+import { aggregateWorkBatchAudit, freezeWorkBatch, markWorkBatchReviewReady, materializeWorkBatchRepair, readWorkBatch, recordWorkBatchRepair, reserveWorkBatchReview, reconcileWorkBatchReview, reviewScopeForPurpose } from '../pipeline-core/work-batch.mjs';
 import { buildAuditorPacket, buildU3CandidatePayload, loadCandidateReviewContext, visualApplicabilityForQuestion, sourcePixelPayloads } from '../pipeline-core/review-isolation-runner.mjs';
 import { canonicalJson, fileRef, readBoundFile, writeNewJson } from '../pipeline-core/canonical.mjs';
 import { loadBoundQuestionBanks } from '../pipeline-core/closure.mjs';
@@ -10,7 +10,8 @@ import { nextWorkBatchAction } from '../pipeline-core/defect-router.mjs';
 import { materializeAuthorityBinding } from '../pipeline-core/authority-repair.mjs';
 import { materializeVisualEvidence } from '../pipeline-core/visual-repair.mjs';
 import { recoveryCapabilityRegistry } from '../pipeline-core/recovery-capability.mjs';
-import { speedTelemetry } from '../pipeline-core/speed.mjs';
+import { buildTargetedDispatchPlan, speedTelemetry, validatedPassReuse } from '../pipeline-core/speed.mjs';
+import { validateRenderReviewReuseReceipt } from '../pipeline-core/render-impact.mjs';
 
 export const RESUME_RUNNER_VERSION = 'APMATH_PAST_EXAM_RESUME_RUNNER_v1';
 export const RESUME_ACTIONS = Object.freeze([
@@ -38,20 +39,101 @@ const readJsonRef = (root, ref) => JSON.parse(readBoundFile(root, ref).toString(
 const currentRunRefs = state => state.freezes.at(-1)?.runRefs || [];
 const launchOrdinal = state => state.launches.length + 1;
 
-function resumeTelemetry(state, startedAt) {
+function resumeTelemetry(state, startedAt, root = null) {
   const launches = state?.launches || [];
   const completed = launches.filter(launch => launch.status === 'COMPLETED');
+  const receipts = root ? completed.map(launch => {
+    try { return launch.providerReceiptRef ? readJsonRef(root, launch.providerReceiptRef) : null; } catch { return null; }
+  }).filter(Boolean) : [];
+  const receiptFreshAxes = receipts.flatMap(receipt => receipt.freshAxisSet || []);
+  const receiptReusedAxes = receipts.flatMap(receipt => receipt.reusedAxisSet || []);
   return speedTelemetry({
     startedAt,
     questionCount: state?.freezes?.at(-1)?.targets?.length || 0,
     finalAuditInvocationCount: launches.filter(launch => launch.purpose === 'FINAL_AUDIT' && launch.executionRecovery !== true).length,
     targetedRecheckInvocationCount: launches.filter(launch => launch.purpose === 'TARGETED_RECHECK' && launch.executionRecovery !== true).length,
-    reviewedQuestionAxisCount: completed.reduce((total, launch) => total + (launch.scope?.length || 0) * PHASES.length, 0),
-    reusedPassQuestionAxisCount: state?.telemetry?.reusedPassQuestionAxisCount || 0,
+    reviewedQuestionAxisCount: receiptFreshAxes.length + receiptReusedAxes.length || completed.reduce((total, launch) => total + (launch.scope?.length || 0) * PHASES.length, 0),
+    reusedPassQuestionAxisCount: receiptReusedAxes.length || state?.telemetry?.reusedPassQuestionAxisCount || 0,
     repairIterationCount: state?.repairIterations?.length || 0,
     providerInvocationCount: launches.length,
     modelInvocationCount: launches.length,
     skipExistingExam: false,
+  });
+}
+
+function dispatchReuseContext(root, run, evidence, evidenceRef, receipt) {
+  if (!receipt) return {};
+  const rootFreshEvidence = receipt.rootFreshEvidenceRef ? readJsonRef(root, receipt.rootFreshEvidenceRef) : null;
+  const eligibility = receipt.eligibilityEvidenceRef ? readJsonRef(root, receipt.eligibilityEvidenceRef) : null;
+  return {
+    priorEvidence: evidence,
+    priorEvidenceId: evidence.evidenceId,
+    priorEvidenceSha: evidenceRef.sha256,
+    priorRunInputSha: evidence.inputSha,
+    currentRunId: run.runId,
+    currentRevision: run.revision,
+    currentRunInputSha: run.inputSha,
+    dependencySetSha: receipt.dependencySetSha,
+    ruleDependencySetSha: receipt.ruleDependencySetSha,
+    semanticVerifierSha: receipt.semanticVerifierSha,
+    sourceAuthoritySliceSha: eligibility?.sourceAuthoritySliceSha,
+    lifecycleSnapshotSha: receipt.lifecycleSnapshotRef?.sha256,
+    rootFreshEvidence,
+    rootFreshEvidenceSha: receipt.rootFreshEvidenceRef?.sha256,
+    eligibility,
+  };
+}
+
+function targetedDispatchPlanForState(root, state, freeze, scope) {
+  const stored = freeze?.targetedDispatchPlan;
+  if (!stored) return null;
+  const runs = Object.fromEntries((freeze.runRefs || []).map(ref => {
+    const run = readJsonRef(root, ref);
+    return [run.runId, run];
+  }));
+  const validatedReuseRows = [];
+  for (const storedPlan of stored.plans || []) {
+    const run = runs[storedPlan.runId];
+    const binding = freeze.bindings?.find(row => row.runId === storedPlan.runId);
+    if (!run || !binding) continue;
+    const evidenceById = new Map((run.evidence || []).map(ref => {
+      const evidence = readJsonRef(root, ref);
+      return [evidence.evidenceId, { ref, evidence }];
+    }));
+    const receipts = (run.reuseReceipts || []).map(ref => ({ ref, receipt: readJsonRef(root, ref) }));
+    const renderReceipts = (run.renderReviewReuseReceiptRefs || []).map(ref => ({ ref, receipt: readJsonRef(root, ref) }));
+    for (const row of storedPlan.reusableUidAxisSet || []) {
+      if (row.axis === 'RENDER_REVIEW') {
+        const renderReuse = renderReceipts.find(item => item.receipt.questionUid === row.questionUid && item.receipt.status === 'PASS');
+        if (renderReuse) {
+          const checked = validateRenderReviewReuseReceipt(root, renderReuse.receipt, { currentCaptureRef: renderReuse.receipt.currentCaptureRef, currentRunInputSha: run.inputSha, questionUid: row.questionUid });
+          if (checked.status === 'PASS') {
+            validatedReuseRows.push({ ...row, status: 'PASS', reuseStatus: 'VALIDATED_PASS_REUSE', receiptSha: checked.receiptSha, reuseReceiptRef: renderReuse.ref });
+            continue;
+          }
+        }
+      }
+      const evidenceId = run.questions.find(question => question.questionUid === row.questionUid)?.evidence?.[row.axis];
+      const current = evidenceById.get(evidenceId);
+      if (!current || !binding.axisInputShas?.[row.questionUid]?.[row.axis]) continue;
+      const reuse = receipts.find(item => item.receipt.questionUid === row.questionUid && item.receipt.axis === row.axis);
+      const checked = validatedPassReuse({
+        evidence: current.evidence,
+        currentRunInputSha: run.inputSha,
+        currentAxisInputSha: binding.axisInputShas[row.questionUid][row.axis],
+        reuseReceipt: reuse?.receipt || null,
+        reuseContext: dispatchReuseContext(root, run, current.evidence, current.ref, reuse?.receipt || null),
+      });
+      if (checked.status === 'PASS') validatedReuseRows.push({ ...row, ...checked, evidenceId: current.evidence.evidenceId, evidenceRef: current.ref, reuseReceiptRef: reuse?.ref || null });
+    }
+  }
+  const requiredAxesByUid = Object.fromEntries((stored.plans || []).flatMap(plan => Object.entries(plan.requiredAxesByUid || {})));
+  return buildTargetedDispatchPlan({
+    scope,
+    requiredAxesByUid,
+    affectedUidAxisSet: stored.affectedUidAxisSet || [],
+    reusableUidAxisSet: stored.reusableUidAxisSet || [],
+    validatedReuseRows,
   });
 }
 
@@ -109,26 +191,37 @@ export function packetInputs(root, state, plan) {
   const scope = new Set(plan.scope.map(target => `${target.runId}:${target.questionUid}`));
   const rows = runRows(root, state, state.freezes.find(freeze => freeze.freezeSha === plan.freezeSha)).filter(row => scope.has(`${row.target.runId}:${row.target.questionUid}`));
   if (rows.length !== scope.size) throw new Error('REVIEW_SCOPE_TARGET_MISSING');
+  const phaseRows = Object.fromEntries(PHASES.map(phase => {
+    const declared = plan.axisScope?.[phase];
+    if (!declared) return [phase, rows];
+    const allowed = new Set(declared.map(target => `${target.runId}:${target.questionUid}`));
+    return [phase, rows.filter(row => allowed.has(`${row.target.runId}:${row.target.questionUid}`))];
+  }));
   const byPhase = {
-    U1: rows.map(row => ({ questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: sourceAssetRef(root, row) ? [sourceAssetRef(root, row)] : [], sourcePixels: sourcePixelPayloads(root, row.run, row.question.sourceRecord) })),
-    U2: rows.map(row => ({ questionUid: row.question.questionUid, artifact: solutionAssets(root, row).length ? { assetRefs: solutionAssets(root, row) } : null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion({ ...row.declared, ...row.question, visual: row.declared?.visual }) })),
+    U1: phaseRows.U1.map(row => ({ questionUid: row.question.questionUid, content: row.question.sourceRecord?.content, choices: row.question.sourceRecord?.choices || [], problemAssets: sourceAssetRef(root, row) ? [sourceAssetRef(root, row)] : [], sourcePixels: sourcePixelPayloads(root, row.run, row.question.sourceRecord) })),
+    U2: phaseRows.U2.map(row => ({ questionUid: row.question.questionUid, artifact: solutionAssets(root, row).length ? { assetRefs: solutionAssets(root, row) } : null, renderWitnesses: [], visualApplicability: visualApplicabilityForQuestion({ ...row.declared, ...row.question, visual: row.declared?.visual }) })),
     U3: [],
   };
-  const candidateContext = Object.assign({}, ...rows.map(row => row.candidateContext));
-  byPhase.U3 = rows.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { renderWitnesses: renderWitnesses(root, row), metadata: {}, dependencies: {} }));
-  return { rows, byPhase };
+  const candidateContext = Object.assign({}, ...phaseRows.U3.map(row => row.candidateContext));
+  byPhase.U3 = phaseRows.U3.map(row => buildU3CandidatePayload(candidateContext, row.question.questionUid, { renderWitnesses: renderWitnesses(root, row), metadata: {}, dependencies: {} }));
+  return { rows, phaseRows, byPhase };
 }
 
 function buildPackets(root, state, plan, packetRoot) {
-  const { byPhase } = packetInputs(root, state, plan);
+  const { byPhase, phaseRows } = packetInputs(root, state, plan);
   const refs = [];
   for (const phase of PHASES) {
+    if (!phaseRows[phase].length) continue;
     const payload = byPhase[phase];
+    const targetedAxes = plan.axisScope?.[phase]
+      ? [...new Set(phaseRows[phase].flatMap(row => plan.axisScope[phase].find(target => target.runId === row.target.runId && target.questionUid === row.target.questionUid)?.axes || []))].sort()
+      : null;
+    const questionUids = phaseRows[phase].map(row => row.question.questionUid);
     const packet = buildAuditorPacket({
       phase,
-      questionUids: plan.scope.map(row => row.questionUid),
+      questionUids,
       payload,
-      affectedUidSet: plan.scope.map(row => row.questionUid),
+      affectedUidSet: questionUids,
       declaredContextDependencyUidSet: [],
       auditorId: plan.auditorId,
       auditorSessionId: plan.contexts[phase].sessionId,
@@ -141,7 +234,8 @@ function buildPackets(root, state, plan, packetRoot) {
       sealed: true,
       launchId: plan.launchId,
       externalTaskId: plan.externalId,
-      candidateContext: phase === 'U3' ? Object.assign({}, ...packetInputs(root, state, plan).rows.map(row => row.candidateContext)) : null,
+      candidateContext: phase === 'U3' ? Object.assign({}, ...phaseRows.U3.map(row => row.candidateContext)) : null,
+      targetedAxes,
     });
     const relative = `${packetRoot}/${phase.toLowerCase()}-packet.json`;
     if (fs.existsSync(path.resolve(root, relative))) {
@@ -164,7 +258,10 @@ async function runReview(root, state, purpose, options, executionRecoveryOfLaunc
   const launchRoot = `${bridgeRoot}/launch-${ordinal}`;
   const planPath = options.planPath || `${launchRoot}/plan.json`;
   const receiptPath = options.receiptPath || `${launchRoot}/receipt.json`;
-  const preflight = prepareProviderReview(root, { workBatchId: state.workBatchId, purpose, transport: providerTransport(root, state.workBatchId, options), planPath, executionRecoveryOfLaunchId, authorization: purpose === 'SECOND_AUDIT' ? options.conflictAuthorization || null : null });
+  const freeze = state.freezes.at(-1);
+  const scope = reviewScopeForPurpose(state, freeze, purpose);
+  const targetedDispatchPlan = purpose === 'TARGETED_RECHECK' ? targetedDispatchPlanForState(root, state, freeze, scope) : null;
+  const preflight = prepareProviderReview(root, { workBatchId: state.workBatchId, purpose, transport: providerTransport(root, state.workBatchId, options), planPath, executionRecoveryOfLaunchId, authorization: purpose === 'SECOND_AUDIT' ? options.conflictAuthorization || null : null, targetedDispatchPlan });
   const plan = readJsonRef(root, preflight.planRef);
   const packets = options.packetRefsFactory ? await options.packetRefsFactory({ root, state, plan }) : buildPackets(root, state, plan, launchRoot);
   validateProviderPacketPreflight(root, { workBatchId: state.workBatchId, planPath, packetRefs: packets });
@@ -245,7 +342,7 @@ async function performRepair(root, state, action, options) {
 export async function resumePastExam(root, options = {}) {
   const resolvedRoot = path.resolve(root || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..'));
   const startedAt = Date.now();
-  const withTelemetry = (result, state) => ({ ...result, telemetry: result?.telemetry || resumeTelemetry(state, startedAt) });
+  const withTelemetry = (result, state) => ({ ...result, telemetry: result?.telemetry || resumeTelemetry(state, startedAt, resolvedRoot) });
   let workBatchId = options.workBatchId || null;
   if (!workBatchId && options.predecessorWorkBatchId) {
     if (!options.newWorkBatchId) throw new Error('RESUME_NEW_WORK_BATCH_ID_REQUIRED');

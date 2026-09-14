@@ -16,7 +16,7 @@ import { buildRepairPlan, defectFingerprintSet, routeDefects } from './defect-ro
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
 import { recoveryCapabilityRegistry } from './recovery-capability.mjs';
 import { validateReviewReady } from '../past-exam-pipeline/lib/review-ready.mjs';
-import { buildTargetedRecheckPlan } from './speed.mjs';
+import { buildTargetedRecheckPlan, renderReusePlan, SPEED_PIPELINE_VERSION, TARGETED_RECHECK_PHASE_AXES } from './speed.mjs';
 
 import { validateSchema } from './schema.mjs';
 const budgetContract = JSON.parse(fs.readFileSync(new URL('./contracts/work-batch-v1.schema.json', import.meta.url), 'utf8'));
@@ -39,6 +39,7 @@ const tokenTelemetry = value => Number.isSafeInteger(value) && value >= 0 ? valu
 const retiredTokenHoldCodes = new Set(['HOLD:TOKEN_BUDGET_EXCEEDED', 'HOLD:TOKEN_RESERVATION_INVALID', 'HOLD:PROVIDER_TOKEN_USAGE_INVALID']);
 const nonPersistentReservationErrors = new Set(['HOLD:GLOBAL_EXPENSIVE_SLOT_OCCUPIED']);
 const targetKey = target => canonicalJson({ runId: target?.runId || null, questionUid: target?.questionUid || null });
+const axisPairKey = row => `${row?.runId || ''}\u0000${row?.questionUid || ''}\u0000${row?.axis || ''}`;
 const budgetForProfile = profile => profile === WORKFLOW_PROFILES.PAST_EXAM ? PAST_EXAM_AGENT_BUDGET : AGENT_BUDGET;
 const executionAttemptsForFreeze = (state, freezeSha) => (state?.executionRecovery?.attempts || []).filter(attempt => attempt.freezeSha === freezeSha);
 const lastExecutionFailure = state => {
@@ -145,6 +146,19 @@ export function reviewScopeForPurpose(state, freeze, purpose) {
   if (purpose === 'FINAL_AUDIT') return denominator.eligibleTargets;
   const eligible = new Set(denominator.eligibleTargets.map(targetKey));
   return freeze.affected.filter(target => eligible.has(targetKey(target)));
+}
+
+function validateAxisScope(scope, axisScope) {
+  check(axisScope && typeof axisScope === 'object' && !Array.isArray(axisScope), 'TARGETED_AXIS_SCOPE_INVALID');
+  const allowedTargets = new Set((scope || []).map(targetKey));
+  for (const phase of ['U1', 'U2', 'U3']) {
+    const rows = axisScope[phase];
+    check(Array.isArray(rows), 'TARGETED_AXIS_SCOPE_PHASE_REQUIRED');
+    const keys = rows.map(row => targetKey(row));
+    check(new Set(keys).size === keys.length, 'TARGETED_AXIS_SCOPE_DUPLICATE');
+    for (const row of rows) check(allowedTargets.has(targetKey(row)) && Array.isArray(row.axes) && row.axes.length > 0 && row.axes.every(nonempty) && row.axes.every(axis => TARGETED_RECHECK_PHASE_AXES[phase].includes(axis)) && new Set(row.axes).size === row.axes.length, 'TARGETED_AXIS_SCOPE_TARGET_INVALID');
+  }
+  return axisScope;
 }
 
 // All mutations share one repository lock. A crashed lock is HOLD, never a timeout lease.
@@ -284,6 +298,8 @@ function validateState(state, root = null) {
     check(['FINAL_AUDIT', 'TARGETED_RECHECK', 'SECOND_AUDIT'].includes(launch.purpose), 'PRODUCTION_OR_AXIS_DISPATCH_FORBIDDEN');
     check(launch.contextIsolation === 'STATELESS_INPUTS' && launch.subagentToolsEnabled === false && ['U1','U2','U3'].every(phase => nonempty(launch.contexts?.[phase]?.sessionId) && nonempty(launch.contexts?.[phase]?.contextId)), 'AUDITOR_CAPABILITIES_INVALID');
     check(launch.parentLaunchId === null && launch.recursiveSubagentLaunchCount === 0, 'RECURSIVE_SUBAGENT_FORBIDDEN');
+    if (launch.axisScope !== undefined) validateAxisScope(launch.scope, launch.axisScope);
+    if (launch.targetedDispatchPlanSha !== undefined) check(/^sha256:[0-9a-f]{64}$/.test(launch.targetedDispatchPlanSha || ''), 'TARGETED_DISPATCH_PLAN_SHA_INVALID');
     check(['RESERVED', 'DISPATCHED', 'COMPLETED', 'FAILED'].includes(launch.status), 'LAUNCH_STATE_INVALID');
     const freeze = state.freezes.find(f => f.freezeSha === launch.freezeSha);
     check(freeze && Date.parse(launch.reservedAt) >= Date.parse(freeze.frozenAt), 'REVIEW_BEFORE_FREEZE');
@@ -447,7 +463,7 @@ export function targetedReviewIteration(state, freeze, recoveryOfLaunchId = null
 function collectFreeze(root, state, runRefs) {
   const runs = runRefs.map(ref => load(root, ref));
   check(same(sorted(runs.map(r => r.runId)), state.runIds) && runs.length === state.runIds.length, 'WHOLE_JOB_FREEZE_REQUIRED');
-  const allTargets = [], eligibleTargets = [], excludedTargets = [], affected = [], bindings = [];
+  const allTargets = [], eligibleTargets = [], excludedTargets = [], affected = [], bindings = [], speedPlans = [];
   const priorFreeze = state.freezes.at(-1);
   const latestCompletedLaunch = [...state.launches].reverse().find(l => l.status === 'COMPLETED');
   const defects = latestCompletedLaunch ? load(root, latestCompletedLaunch.providerReceiptRef).defects || [] : [];
@@ -495,9 +511,20 @@ function collectFreeze(root, state, runRefs) {
     const needsRender = Object.values(shas).some(row => row.RENDER_REVIEW);
     const missingRender = needsRender ? run.questions.filter(q => !['exam', 'solution', 'answer'].every(mode => ['desktop', 'mobile'].every(viewport => witnesses.some(w => w.questionUid === q.questionUid && w.mode === mode && w.viewportProfile === viewport)))).map(q => q.questionUid) : [];
     if (run.pipeline !== 'past-exam') check(!missingRender.length, 'WHOLE_JOB_RENDER_CAPTURE_REQUIRED');
-    const renderChanged = old && needsRender
-      ? (old.witnesses?.length ? detectRenderImpact(old.witnesses, witnesses).affectedRenderUidSet : run.questions.map(question => question.questionUid))
-      : [];
+    const renderReuse = old && needsRender
+      ? (old.witnesses?.length ? renderReusePlan(old.witnesses, witnesses) : { affectedRenderUidSet: run.questions.map(question => question.questionUid), freshRenderCount: run.questions.length, reusedRenderCount: 0 })
+      : { affectedRenderUidSet: [], freshRenderCount: 0, reusedRenderCount: 0 };
+    const renderChanged = renderReuse.affectedRenderUidSet;
+    const speedAffected = new Map((targetedPlan.impact.affectedUidAxisSet || []).map(row => [axisPairKey(row), { runId: run.runId, ...row }]));
+    for (const questionUid of renderChanged) speedAffected.set(axisPairKey({ runId: run.runId, questionUid, axis: 'RENDER_REVIEW' }), { runId: run.runId, questionUid, axis: 'RENDER_REVIEW', action: 'RECHECK', reasonCodes: ['ACTUAL_RENDER_WITNESS_CHANGED'] });
+    const speedReusable = (targetedPlan.impact.reusableUidAxisSet || []).filter(row => !renderChanged.includes(row.questionUid) || row.axis !== 'RENDER_REVIEW').map(row => ({ runId: run.runId, ...row }));
+    speedPlans.push({
+      runId: run.runId,
+      affectedUidAxisSet: [...speedAffected.values()].sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+      reusableUidAxisSet: speedReusable.sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+      requiredAxesByUid: Object.fromEntries(Object.entries(shas).map(([uid, axes]) => [uid, Object.keys(axes)])),
+      renderReuse: { schemaVersion: SPEED_PIPELINE_VERSION, affectedRenderUidSet: renderChanged, freshRenderCount: renderReuse.freshRenderCount, reusedRenderCount: renderReuse.reusedRenderCount },
+    });
     for (const [questionUid, axes] of Object.entries(shas)) {
       const row = { runId: run.runId, questionUid };
       allTargets.push(row);
@@ -523,7 +550,13 @@ function collectFreeze(root, state, runRefs) {
     ? { status: 'FROZEN', totalTargetCount: allTargets.length, eligibleTargetCount: eligibleTargets.length, excludedTargetCount: excludedTargets.length, eligibleTargets, excludedTargets, excludedRuns }
     : { status: 'NOT_APPLICABLE', eligibleTargetCount: allTargets.length, excludedRuns: [] };
   if (isBenchmarkJobKind(state.jobKind)) validateBenchmarkDenominator(allTargets, benchmarkDenominator);
-  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets: allTargets, affected, bindings, machineCheckedUidCount: allTargets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator };
+  const targetedDispatchPlan = {
+    schemaVersion: SPEED_PIPELINE_VERSION,
+    affectedUidAxisSet: speedPlans.flatMap(plan => plan.affectedUidAxisSet).sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+    reusableUidAxisSet: speedPlans.flatMap(plan => plan.reusableUidAxisSet).sort((a, b) => axisPairKey(a).localeCompare(axisPairKey(b))),
+    plans: speedPlans,
+  };
+  const body = { workBatchId: state.workBatchId, frozenAt: time(), runRefs, targets: allTargets, affected, bindings, targetedDispatchPlan, machineCheckedUidCount: allTargets.length, predecessorFreezeSha: priorFreeze?.freezeSha || null, jobAuthority: state.jobAuthority || null, benchmarkDenominator };
   return { ...body, freezeSha: objectSha(body) };
 }
 
@@ -701,6 +734,7 @@ export function reserveWorkBatchReview(root, id, request) {
     } else check(state.launches.some(l => l.purpose === 'FINAL_AUDIT' && l.status === 'COMPLETED'), 'FIRST_AUDIT_MUST_COMPLETE');
     const scope = reviewScopeForPurpose(state, freeze, request.purpose);
     if (isBenchmarkJobKind(state.jobKind) && request.purpose === 'TARGETED_RECHECK') check(scope.length > 0, 'GOLD_BENCHMARK_RECHECK_SCOPE_EMPTY');
+    if (request.axisScope !== undefined) validateAxisScope(scope, request.axisScope);
     if (request.purpose !== 'TARGETED_RECHECK' && !executionRecoveryRequested) check(!state.launches.some(l => l.purpose === request.purpose), 'AGENT_BUDGET_EXHAUSTED');
     check(request.callerRole === 'MAIN_WORKER', 'ONLY_MAIN_WORKER_CAN_DISPATCH');
     check(['U1','U2','U3'].every(phase => nonempty(request.contexts?.[phase]?.sessionId) && nonempty(request.contexts?.[phase]?.contextId)), 'SEALED_SUBCONTEXTS_REQUIRED');
@@ -726,7 +760,7 @@ export function reserveWorkBatchReview(root, id, request) {
     }
     const launchInputSha = freezeInputSha(freeze);
     const launchId = `${id}:${state.launches.length + 1}`;
-    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, recoveryOfLaunchId) : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}), ...(executionRecoveryRecord ? { executionRecovery: true, recoveryOfLaunchId: executionRecoveryRecord.failedLaunch.launchId, executionFailureClass: executionRecoveryRecord.failure.failureClass, executionFailureFingerprint: executionRecoveryRecord.failure.fingerprint, executionAttempt: executionRecoveryRecord.attempt } : {}) };
+    const launch = { contexts: request.contexts, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false, launchId, purpose: request.purpose, freezeSha: freeze.freezeSha, scope, ...(request.axisScope !== undefined ? { axisScope: structuredClone(request.axisScope) } : {}), ...(request.targetedDispatchPlanSha ? { targetedDispatchPlanSha: request.targetedDispatchPlanSha } : {}), auditorId: request.auditorId, auditorSessionId: request.auditorSessionId, parentLaunchId: null, recursiveSubagentLaunchCount: 0, authorization: request.authorization || null, reservedAt: time(), status: 'RESERVED', externalId: null, inputSha: launchInputSha, repairIteration: request.purpose === 'TARGETED_RECHECK' ? targetedReviewIteration(state, freeze, recoveryOfLaunchId) : 0, ...(providerAttestationPlanRef ? { providerAttestationPlanRef } : {}), ...(executionRecoveryRecord ? { executionRecovery: true, recoveryOfLaunchId: executionRecoveryRecord.failedLaunch.launchId, executionFailureClass: executionRecoveryRecord.failure.failureClass, executionFailureFingerprint: executionRecoveryRecord.failure.fingerprint, executionAttempt: executionRecoveryRecord.attempt } : {}) };
     if (executionRecoveryRecord) {
       state.executionRecovery = state.executionRecovery || { maxAttemptsPerFreeze: MAX_EXECUTION_RECOVERY_ATTEMPTS, attempts: [] };
       state.executionRecovery.attempts.push({ freezeSha: freeze.freezeSha, failedLaunchId: executionRecoveryRecord.failedLaunch.launchId, successorLaunchId: launchId, attempt: executionRecoveryRecord.attempt, failureClass: executionRecoveryRecord.failure.failureClass, fingerprint: executionRecoveryRecord.failure.fingerprint, recordedAt: time() });

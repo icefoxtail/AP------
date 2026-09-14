@@ -3,6 +3,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { canonicalExamIdentity, parseExamPdfMetadata, sameCanonicalExamIdentity } from './exam-id.mjs';
 
+export const CANONICAL_EXAM_IDENTITY_FIELDS = Object.freeze(['year', 'school', 'grade', 'semester', 'examType']);
+
 function loadDatabase(file) {
   if (!fs.existsSync(file)) return [];
   const context = { window: {} };
@@ -50,6 +52,8 @@ export function findExistingProductionExam({ archiveRoot, examIdentity, dbEntrie
 
 export function existingExamPreflight({ archiveRoot, examIdentity, forceExisting = false, dbEntries = null } = {}) {
   const identity = canonicalExamIdentity(examIdentity);
+  const missingIdentityFields = CANONICAL_EXAM_IDENTITY_FIELDS.filter(field => !identity[field]);
+  if (missingIdentityFields.length) return { status: 'HOLD_EXISTING_EXAM_IDENTITY_INCOMPLETE', skip: false, hold: true, identity, missingIdentityFields };
   if (forceExisting) return { status: 'FORCE_EXISTING_EXAM', skip: false, identity, existing: null };
   const existing = findExistingProductionExam({ archiveRoot, examIdentity: identity, dbEntries });
   if (!existing) return { status: 'NEW_EXAM', skip: false, identity, existing: null };
