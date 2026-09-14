@@ -1,5 +1,6 @@
 import { CORE_SHA } from './closure.mjs';
-import { canonicalJson, objectSha, readBoundFile } from './canonical.mjs';
+import { canonicalJson, fileRef, objectSha, readBoundFile, safePath, writeNewJson } from './canonical.mjs';
+import { auditV2Run } from './v2-audit.mjs';
 
 export const CANONICAL_AUDIT_SNAPSHOT_SCHEMA = 'APMATH_CANONICAL_AUDIT_SNAPSHOT_v1';
 
@@ -28,6 +29,12 @@ export function createCanonicalAuditSnapshot(run, audit, { authority = null, eva
   return { ...payload, snapshotSha: objectSha(payload) };
 }
 
+export function writeCanonicalAuditSnapshot(root, snapshot, outputPath) {
+  const target = safePath(root, outputPath, { mustExist: false });
+  writeNewJson(target, snapshot);
+  return fileRef(root, outputPath);
+}
+
 export function validateCanonicalAuditSnapshot(root, ref, { run, audit, authority = null } = {}) {
   const errors = [];
   let snapshot = null;
@@ -38,9 +45,21 @@ export function validateCanonicalAuditSnapshot(root, ref, { run, audit, authorit
     if (snapshot.status !== 'PASS') errors.push('CANONICAL_AUDIT_SNAPSHOT_NOT_PASS');
     if (!declared || declared !== objectSha(payload)) errors.push('CANONICAL_AUDIT_SNAPSHOT_SHA_INVALID');
     if (canonicalJson(snapshot.identity) !== canonicalJson(canonicalAuditIdentity(run, { authority }))) errors.push('CANONICAL_AUDIT_SNAPSHOT_IDENTITY_MISMATCH');
-    if (!snapshot.audit || snapshot.audit.status !== 'PASS' || canonicalJson(snapshot.audit) !== canonicalJson(audit)) errors.push('CANONICAL_AUDIT_SNAPSHOT_AUDIT_PARITY_INVALID');
+    if (!snapshot.audit || snapshot.audit.status !== 'PASS' || audit && canonicalJson(snapshot.audit) !== canonicalJson(audit)) errors.push('CANONICAL_AUDIT_SNAPSHOT_AUDIT_PARITY_INVALID');
   } catch (error) {
     errors.push(`CANONICAL_AUDIT_SNAPSHOT_READ_FAILED:${error.message}`);
   }
   return { status: errors.length ? 'FAIL' : 'PASS', errors: [...new Set(errors)], snapshot };
+}
+
+export function evaluateCanonicalAuditOnce(root, run, { snapshotRef = null, outputPath = null, authority = null, evaluator = auditV2Run } = {}) {
+  if (snapshotRef) {
+    const checked = validateCanonicalAuditSnapshot(root, snapshotRef, { run, audit: null, authority });
+    if (checked.status === 'PASS') return { status: 'REUSED', audit: checked.snapshot.audit, snapshot: checked.snapshot, snapshotRef, errors: [] };
+  }
+  const audit = evaluator(root, run);
+  const snapshot = createCanonicalAuditSnapshot(run, audit, { authority });
+  let persistedRef = null;
+  if (outputPath) persistedRef = writeCanonicalAuditSnapshot(root, snapshot, outputPath);
+  return { status: 'FRESH', audit, snapshot, snapshotRef: persistedRef, errors: [] };
 }
