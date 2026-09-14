@@ -142,6 +142,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
   const refByPath = new Map(run.inputs.map(i => [i.path, i]));
   const mime = { '.html': 'text/html; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2' };
   let activeUnboundRequests = [];
+  const servedAssetHashes = new Map();
   const server = http.createServer((request, response) => {
     try {
       const requested = decodeURIComponent(new URL(request.url, 'http://localhost').pathname).slice(1);
@@ -167,6 +168,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         throw new Error(`UNBOUND_RUNTIME_REQUEST:${relative}`);
       }
       const bytes = readBoundFile(root, ref);
+      if (ref.role === 'asset') servedAssetHashes.set(relative, ref.sha256);
       response.writeHead(200, { 'Content-Type': mime[path.extname(relative)] || 'application/octet-stream', 'Cache-Control': 'no-store' }); response.end(bytes);
     } catch (error) { response.writeHead(404); response.end(String(error.message)); }
   });
@@ -438,6 +440,11 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const lastPng = await page.screenshot({ type: 'png' }), lastPath = `${workdir}/${stem}-last.png`;
         const lastScreenshot = screenshotStore.write(lastPng, lastPath, { caseKey: mode + '/' + profile.profile });
         screenshotStore.observeEncode(Math.max(0, Date.now() - lastEncodeStartedAt));
+        // Lazy solution assets can finish their response after the first
+        // readiness drain but before the last witness is captured. Drain the
+        // live queue once more so asset associations are not falsely marked
+        // FAIL when the image is visibly complete in the witness.
+        await Promise.all([...pendingResponseReads]);
         const screenshotStats = screenshotStore.stats();
         for (const key of ['encodedCount', 'uniqueFileCount', 'dedupHitCount', 'writtenBytes', 'encodeMs', 'writeMs']) screenshotStats[key] -= screenshotBaseline[key];
         caseMetrics.push({ caseKey: mode + '/' + profile.profile, ...screenshotStats, contextReused: reusedContext, transition: transition.action, fallbackReason: transition.fallbackReason });
@@ -445,7 +452,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const assetAssociations = [];
         for (const q of questions) for (const assetPath of (mode === 'solution' ? q.solutionAssetPaths : mode === 'exam' ? q.problemAssetPaths : [])) {
           const servedPath = run.assetRoot && assetPath.startsWith(`${run.assetRoot}/`) ? `archive/${assetPath.slice(run.assetRoot.length + 1)}` : assetPath;
-          const actual = responseHashes.get(servedPath);
+          const actual = responseHashes.get(servedPath) || servedAssetHashes.get(servedPath);
           assetAssociations.push({ questionUid: q.questionUid, path: assetPath, sha256: actual || null, status: actual === refByPath.get(assetPath)?.sha256 ? 'PASS' : 'FAIL' });
         }
         const canonicalResponses = runtimeResponses.map(row => ({ ...row, url: row.localPath ? new URL(row.url).pathname + new URL(row.url).search : row.url }));
