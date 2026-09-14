@@ -257,7 +257,6 @@ export function nextWorkBatchAction(state, options = {}) {
     const plan = buildRepairPlan(state.openDefects || [], [], options);
     return { action: plan.status === 'HUMAN_DECISION_REQUIRED' ? 'HUMAN_DECISION_REQUIRED' : 'AUTO_REPAIR', status: plan.status, reason: plan.defects.find(defect => defect.capabilityReason)?.capabilityReason || null, plan };
   }
-  if (status === 'REVIEW_READY') return { action: 'EXTERNAL_APPROVAL_REQUIRED', status: 'REVIEW_READY', reason: 'FINAL_EXTERNAL_APPROVAL_REQUIRED' };
   if (status === 'FROZEN') {
     const finalCompleted = state.launches?.some(launch => launch.purpose === 'FINAL_AUDIT' && launch.status === 'COMPLETED');
     const open = (state.openDefectSet || []).length > 0;

@@ -8,12 +8,10 @@ import { loadCandidateReviewContext, validateAuditorPacket, visualApplicabilityF
 import { assertFreshLaunchIdentity, targetedReviewIteration, freezeInputSha, maxRepairIterationsForState, readWorkBatch, reconcileWorkBatchReview, reviewScopeForPurpose } from './work-batch.mjs';
 import { observeModelRoute, isBenchmarkJobKind, validateModelRouteParity } from './gold-contract.mjs';
 import { classifyExecutionFailure, EXECUTION_FAILURE_CLASSES, MAX_EXECUTION_RECOVERY_ATTEMPTS } from './execution-recovery.mjs';
-import { validateTargetedDispatchTelemetry } from './speed.mjs';
 
 export const PROVIDER_BRIDGE_VERSION = 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1';
 export const CANONICAL_AUTHORITY_TERMINAL_STATUSES = Object.freeze(['RESOLVED']);
 const PHASES = Object.freeze(['U1', 'U2', 'U3']);
-const TARGETED_SEMANTIC_PHASE = Object.freeze({ SOURCE: 'U1', MATH_A1: 'U1', V1: 'U1', V2: 'U2', MATH_A2: 'U3', SOLUTION: 'U3', V3: 'U3' });
 const check = (condition, code) => { if (!condition) throw new Error(`HOLD:${code}`); };
 const same = (left, right) => canonicalJson(left) === canonicalJson(right);
 export { visualAssetPayload, sourceVisualAssetPayload } from './native-visual.mjs';
@@ -111,8 +109,7 @@ function plannedLaunch(state, purpose, { executionRecoveryOfLaunchId = null, aut
 
 // This is control-plane only. A provider must attest modelInvocationCount: 0;
 // the three model invocations are issued later through dispatchProviderReview.
-export function prepareProviderReview(root, { workBatchId, purpose, transport, planPath, executionRecoveryOfLaunchId = null, authorization = null, targetedDispatchPlan = null }) {
-  const preflightStartedAt = Date.now();
+export function prepareProviderReview(root, { workBatchId, purpose, transport, planPath, executionRecoveryOfLaunchId = null, authorization = null }) {
   const state = readWorkBatch(root, workBatchId);
   const { freeze, launchId, scope, failedLaunch } = plannedLaunch(state, purpose, { executionRecoveryOfLaunchId, authorization });
   const body = {
@@ -135,9 +132,6 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     authorization,
     executionFailureClass: failedLaunch?.executionFailureClass || null,
     executionFailureFingerprint: failedLaunch?.executionFailureFingerprint || null,
-    targetedDispatchPlan,
-    axisScope: targetedDispatchPlan?.phaseScope || null,
-    targetedDispatchPlanSha: targetedDispatchPlan ? objectSha(targetedDispatchPlan) : null,
     requiredCapabilities: {
       contexts: PHASES,
       contextIsolation: 'STATELESS_INPUTS',
@@ -161,7 +155,6 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
   };
   const parity = validateModelRouteParity(executionIdentity);
   Object.assign(executionIdentity, { routeStatus: parity.routeStatus, MODEL_ROUTE_PARITY: parity.MODEL_ROUTE_PARITY });
-  const providerPreflightMs = existing ? (existing.value.providerPreflightMs ?? null) : Math.max(0, Date.now() - preflightStartedAt);
   const plan = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     kind: 'PROVIDER_STATELESS_REVIEW_PLAN',
@@ -176,9 +169,6 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     executionRecoveryOfLaunchId,
     executionFailureClass: failedLaunch?.executionFailureClass || null,
     executionFailureFingerprint: failedLaunch?.executionFailureFingerprint || null,
-    targetedDispatchPlan,
-    axisScope: targetedDispatchPlan?.phaseScope || null,
-    targetedDispatchPlanSha: targetedDispatchPlan ? objectSha(targetedDispatchPlan) : null,
     builderId: state.builderId,
     builderSessionId: state.builderSessionId,
     provider: response.provider,
@@ -196,7 +186,6 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
     preflightResponse: response,
     preflightResponseSha: objectSha(response),
     authorization,
-    providerPreflightMs,
   };
   if (existing) check(same(existing.value, plan), 'PROVIDER_PREFLIGHT_REPLAY_PLAN_MISMATCH');
   const ref = existing ? existing.ref : writeBridgeJson(root, planPath, plan);
@@ -217,8 +206,6 @@ export function prepareProviderReview(root, { workBatchId, purpose, transport, p
       contexts: plan.contexts,
       providerAttestationPlanRef: ref,
       authorization,
-      ...(plan.axisScope ? { axisScope: plan.axisScope } : {}),
-      ...(plan.targetedDispatchPlan ? { targetedDispatchPlanSha: objectSha(plan.targetedDispatchPlan) } : {}),
       ...(executionRecoveryOfLaunchId ? { executionRecoveryOfLaunchId, executionRecovery: true, executionFailureClass: plan.executionFailureClass, executionFailureFingerprint: plan.executionFailureFingerprint } : {}),
       executionIdentity,
     },
@@ -233,9 +220,6 @@ function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
   check(plan.auditorId === launch.auditorId && plan.auditorSessionId === launch.auditorSessionId && same(plan.contexts, launch.contexts), 'PROVIDER_PLAN_CONTEXT_BINDING');
   if (launch.purpose === 'SECOND_AUDIT') check(same(plan.authorization, launch.authorization), 'PROVIDER_PLAN_AUTHORIZATION_BINDING');
   check(same(plan.scope, reviewScopeForPurpose(state, state.freezes.find(freeze => freeze.freezeSha === launch.freezeSha), launch.purpose)) && same(plan.scope, launch.scope), 'PROVIDER_PLAN_SCOPE_BINDING');
-  check(same(plan.axisScope || null, launch.axisScope || null), 'PROVIDER_PLAN_AXIS_SCOPE_BINDING');
-  check((plan.targetedDispatchPlanSha || null) === (launch.targetedDispatchPlanSha || null), 'PROVIDER_PLAN_TARGETED_RECHECK_SHA_BINDING');
-  if (plan.targetedDispatchPlan) check(plan.targetedDispatchPlanSha === objectSha(plan.targetedDispatchPlan), 'PROVIDER_PLAN_TARGETED_RECHECK_SHA_INVALID');
   check(launch.providerAttestationPlanRef && same(launch.providerAttestationPlanRef, planRef) && same(planRef, fileRef(root, planRef.path)), 'PROVIDER_PLAN_RESERVATION_REQUIRED');
   check(plan.contextIsolation === 'STATELESS_INPUTS' && plan.subagentToolsEnabled === false && nonempty(plan.externalId), 'PROVIDER_PLAN_CAPABILITY_INVALID');
   if (isBenchmarkJobKind(state.jobKind)) {
@@ -243,64 +227,6 @@ function validatePlanAgainstLaunch(root, planRef, plan, launch, state) {
     check(nonempty(plan.executionIdentity.actualModel) && nonempty(plan.executionIdentity.actualReasoningEffort) && nonempty(plan.executionIdentity.modelRouteObservedAtStart), 'MODEL_ROUTE_OBSERVATION_REQUIRED');
   }
   check(plan.preflightResponse?.requestSha === plan.preflightRequest?.requestSha && plan.preflightResponseSha === objectSha(plan.preflightResponse), 'PROVIDER_PLAN_ATTESTATION_TAMPERED');
-  validateTargetedReuseProof(root, state, plan);
-}
-
-function targetedReuseEvidence(root, plan) {
-  const targeted = plan.targetedDispatchPlan;
-  if (!targeted) return [];
-  const reusedKeys = new Set((targeted.reusedAxisSet || []).map(row => `${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`));
-  const rows = (targeted.validatedReuseRows || []).filter(row => TARGETED_SEMANTIC_PHASE[row.axis] && reusedKeys.has(`${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`));
-  const byKey = new Map();
-  for (const row of rows) {
-    const key = `${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`;
-    check(!byKey.has(key), 'PROVIDER_REUSED_EVIDENCE_DUPLICATE');
-    check(row.reuseStatus === 'VALIDATED_PASS_REUSE' || row.reuseStatus === 'CURRENT_PASS' && row.independentEvidenceValidated === true, 'PROVIDER_REUSED_EVIDENCE_NOT_VALIDATED');
-    check(row.evidenceRef?.path && row.evidenceRef?.sha256 && nonempty(row.evidenceId), 'PROVIDER_REUSED_EVIDENCE_REF_REQUIRED');
-    const evidence = JSON.parse(readBoundFile(root, row.evidenceRef).toString('utf8'));
-    check(evidence.schemaVersion === 'APMATH_PIPELINE_EVIDENCE_v2' && evidence.status === 'PASS', 'PROVIDER_REUSED_EVIDENCE_INVALID');
-    check(evidence.evidenceId === row.evidenceId && evidence.runId === row.runId && evidence.questionUid === row.questionUid && evidence.axis === row.axis, 'PROVIDER_REUSED_EVIDENCE_BINDING');
-    byKey.set(key, { row, evidence, phase: TARGETED_SEMANTIC_PHASE[row.axis] });
-  }
-  for (const row of targeted.reusedAxisSet || []) {
-    if (!TARGETED_SEMANTIC_PHASE[row.axis]) continue;
-    const key = `${row.runId || ''}\u0000${row.questionUid || ''}\u0000${row.axis || ''}`;
-    check(byKey.has(key), 'PROVIDER_REUSED_EVIDENCE_MISSING');
-  }
-  return [...byKey.values()].sort((left, right) => `${left.phase}:${left.row.runId}:${left.row.questionUid}:${left.row.axis}`.localeCompare(`${right.phase}:${right.row.runId}:${right.row.questionUid}:${right.row.axis}`));
-}
-
-function validateTargetedReuseProof(root, state, plan) {
-  const targeted = plan.targetedDispatchPlan;
-  if (!targeted) return;
-  const freeze = state.freezes.find(item => item.freezeSha === plan.freezeSha);
-  const runs = Object.fromEntries((freeze?.runRefs || []).map(ref => {
-    const run = JSON.parse(readBoundFile(root, ref).toString('utf8'));
-    return [run.runId, run];
-  }));
-  for (const row of targeted.validatedReuseRows || []) {
-    const run = runs[row.runId];
-    const binding = freeze?.bindings?.find(item => item.runId === row.runId);
-    check(run && binding, 'TARGETED_REUSE_RUN_BINDING');
-    if (row.evidenceRef) {
-      const evidenceBytes = readBoundFile(root, row.evidenceRef);
-      check(bytesSha(evidenceBytes) === row.evidenceRef.sha256, 'TARGETED_REUSE_EVIDENCE_SHA_STALE');
-      const evidence = JSON.parse(evidenceBytes.toString('utf8'));
-      check(evidence.evidenceId === row.evidenceId && evidence.questionUid === row.questionUid && evidence.axis === row.axis && evidence.status === 'PASS', 'TARGETED_REUSE_EVIDENCE_BINDING');
-      const currentAxisInputSha = binding.axisInputShas?.[row.questionUid]?.[row.axis];
-      if (row.mode === 'FRESH') check(evidence.inputSha === run.inputSha && evidence.axisInputSha === currentAxisInputSha, 'TARGETED_REUSE_CURRENT_PASS_STALE');
-      if (row.mode === 'REUSED') {
-        check(row.reuseReceiptRef, 'TARGETED_REUSE_RECEIPT_REQUIRED');
-        const receiptBytes = readBoundFile(root, row.reuseReceiptRef);
-        const receipt = JSON.parse(receiptBytes.toString('utf8'));
-        check(receipt.status === 'PASS' && (!row.receiptSha || objectSha(receipt) === row.receiptSha), 'TARGETED_REUSE_RECEIPT_STALE');
-      }
-    } else {
-      check(row.axis === 'RENDER_REVIEW' && row.reuseReceiptRef, 'TARGETED_REUSE_RENDER_RECEIPT_REQUIRED');
-      const receipt = JSON.parse(readBoundFile(root, row.reuseReceiptRef).toString('utf8'));
-      check(receipt.status === 'PASS' && (!row.receiptSha || objectSha(receipt) === row.receiptSha), 'TARGETED_REUSE_RENDER_RECEIPT_STALE');
-    }
-  }
 }
 
 function loadPacket(root, ref, launch, plan, state, candidateContext, sourceContext) {
@@ -316,10 +242,6 @@ function loadPacket(root, ref, launch, plan, state, candidateContext, sourceCont
   check(validation.status === 'PASS', `PROVIDER_PACKET_INVALID:${validation.errors.join(',')}`);
   check(packet.auditorPrincipalType === 'STATELESS_MODEL' && packet.launchId === launch.launchId && packet.externalTaskId === plan.externalId, 'PROVIDER_PACKET_LAUNCH_BINDING');
   check(packet.auditorId === launch.auditorId && packet.auditorSessionId === launch.contexts[packet.phase].sessionId && packet.contextId === launch.contexts[packet.phase].contextId, 'PROVIDER_PACKET_CONTEXT_BINDING');
-  if (plan.axisScope) {
-    const expectedAxesByQuestionUid = Object.fromEntries(packet.questionUids.map(questionUid => [questionUid, [...new Set((plan.axisScope[packet.phase] || []).find(row => row.questionUid === questionUid)?.axes || [])].sort()]));
-    check(same(packet.targetedAxesByQuestionUid || null, expectedAxesByQuestionUid), 'PROVIDER_PACKET_TARGETED_AXES_BINDING');
-  }
   walkBoundRefs(root, packet);
   validatePacketVisualAndAuthority(packet, sourceContext);
   if (packet.phase === 'U1') {
@@ -447,15 +369,14 @@ export function validateProviderPacketPreflight(root, { workBatchId, planPath, p
   check(freeze, 'PROVIDER_FREEZE_REQUIRED');
   const contexts = sourceContexts(root, freeze);
   const pseudoLaunch = { ...plan, status: 'RESERVED', scope: plan.scope, contexts: plan.contexts, auditorId: plan.auditorId, auditorSessionId: plan.auditorSessionId, launchId: plan.launchId, purpose: plan.purpose, freezeSha: plan.freezeSha, externalId: plan.externalId };
-  const expectedPhases = plan.axisScope ? PHASES.filter(phase => (plan.axisScope[phase] || []).length > 0) : PHASES;
-  check(Array.isArray(packetRefs) && packetRefs.length === expectedPhases.length && expectedPhases.length > 0, 'PROVIDER_PACKET_REFS_REQUIRED');
+  check(Array.isArray(packetRefs) && packetRefs.length === PHASES.length, 'PROVIDER_PACKET_REFS_REQUIRED');
   const packets = packetRefs.map(({ phase, ref }) => {
     check(PHASES.includes(phase) && ref, 'PROVIDER_PACKET_PHASES_INVALID');
     const packet = loadPacket(root, ref, pseudoLaunch, plan, state, contexts.candidateContext, contexts);
     check(packet.phase === phase, 'PROVIDER_PACKET_PHASE_REF_MISMATCH');
     return { phase, ref };
   });
-  check(same([...new Set(packets.map(row => row.phase))].sort(), [...expectedPhases].sort()), 'PROVIDER_PACKET_PHASES_INVALID');
+  check(new Set(packets.map(row => row.phase)).size === PHASES.length, 'PROVIDER_PACKET_PHASES_INVALID');
   return { status: 'PASS', workBatchId, launchId: plan.launchId, planRef, packetRefs: packets, nativeImageAttachmentProtocol: 'url', expensiveLaunchAuthorized: true };
 }
 
@@ -472,31 +393,6 @@ export function applyVisualApplicabilityToDefects(defects, visualApplicabilities
   return { defects: kept, suppressedDefects: suppressed };
 }
 
-export function validateProviderEvidenceScope(evidence, packet) {
-  const allowed = new Set();
-  const map = packet?.targetedAxesByQuestionUid;
-  if (map) {
-    for (const [questionUid, axes] of Object.entries(map)) for (const axis of axes || []) allowed.add(`${questionUid}\u0000${axis}`);
-  } else if (packet?.targetedAxes !== undefined) {
-    throw new Error('HOLD:PROVIDER_TARGETED_AXES_MAP_REQUIRED');
-  } else {
-    for (const [axis, phase] of Object.entries(TARGETED_SEMANTIC_PHASE)) if (phase === packet?.phase) for (const questionUid of packet.questionUids || []) allowed.add(`${questionUid}\u0000${axis}`);
-  }
-  if (!Array.isArray(evidence)) throw new Error('HOLD:PROVIDER_PHASE_EVIDENCE_INVALID');
-  const seen = new Set();
-  for (const row of evidence) {
-    // Diagnostic/claim rows are merger metadata rather than question-axis
-    // evidence. They remain available to the existing defect merger; only
-    // rows carrying a semantic axis are subject to UID-axis sealing.
-    if (!nonempty(row?.axis) || row.axis === 'DIAGNOSTIC_ONLY') continue;
-    const key = `${row?.questionUid || ''}\u0000${row?.axis || ''}`;
-    if (!allowed.has(key)) throw new Error(`HOLD:PROVIDER_UNREQUESTED_EVIDENCE_SCOPE:${packet?.phase || ''}:${key}`);
-    if (seen.has(key)) throw new Error(`HOLD:PROVIDER_DUPLICATE_EVIDENCE_SCOPE:${packet?.phase || ''}:${key}`);
-    seen.add(key);
-  }
-  return evidence;
-}
-
 function phaseRequest(plan, packet) {
   const body = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
@@ -505,8 +401,6 @@ function phaseRequest(plan, packet) {
     externalTaskId: plan.externalId,
     phase: packet.phase,
     reviewContract: INDEPENDENT_REVIEW_CONTRACTS[packet.phase],
-    targetedAxes: packet.targetedAxes || null,
-    targetedAxesByQuestionUid: packet.targetedAxesByQuestionUid || null,
     jobAuthorityStartSha: plan.jobAuthorityStartSha || null,
     subagentToolsEnabled: false,
     packet,
@@ -634,22 +528,19 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
   check(launch?.status === 'RESERVED', 'PROVIDER_RESERVED_LAUNCH_REQUIRED');
   const { ref: planRef, value: plan } = loadBridgeJson(root, planPath);
   validatePlanAgainstLaunch(root, planRef, plan, launch, state);
-  const expectedPhases = plan.axisScope ? PHASES.filter(phase => (plan.axisScope[phase] || []).length > 0) : PHASES;
-  check(Array.isArray(packetRefs) && packetRefs.length === expectedPhases.length && expectedPhases.length > 0, 'PROVIDER_PACKET_REFS_REQUIRED');
+  check(Array.isArray(packetRefs) && packetRefs.length === PHASES.length, 'PROVIDER_PACKET_REFS_REQUIRED');
   check(new Set(packetRefs.map(row => row.phase)).size === packetRefs.length && packetRefs.every(row => PHASES.includes(row.phase) && row.ref), 'PROVIDER_PACKET_PHASES_INVALID');
-  check(same([...new Set(packetRefs.map(row => row.phase))].sort(), [...expectedPhases].sort()), 'PROVIDER_PACKET_PHASES_INVALID');
   const freeze = state.freezes.find(item => item.freezeSha === launch.freezeSha);
   check(freeze, 'PROVIDER_FREEZE_REQUIRED');
   const contexts = sourceContexts(root, freeze);
   const relativeBase = relativeDirectoryFor(root, receiptPath);
-  let packets, reusedEvidenceRows;
+  let packets;
   try {
     packets = packetRefs.map(({ phase, ref }) => {
       const packet = loadPacket(root, ref, launch, plan, state, contexts.candidateContext, contexts);
       check(packet.phase === phase, 'PROVIDER_PACKET_PHASE_REF_MISMATCH');
       return { packet, ref };
     }).sort((left, right) => PHASES.indexOf(left.packet.phase) - PHASES.indexOf(right.packet.phase));
-    reusedEvidenceRows = targetedReuseEvidence(root, plan);
   } catch (error) {
     const failed = executionFailureEvidence(root, relativeBase, { ...plan, providerPlanRef: planRef }, launch, { phase: error?.phase || null, error, preDispatchFailure: true, providerPlanRef: planRef });
     writeNewJson(receiptPathFor(root, receiptPath), failed.receipt);
@@ -658,14 +549,12 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, evidenceRefs: [failed.evidenceRef], failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
   }
   reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'DISPATCHED' });
-  const phaseAttestationRefs = [], evidenceRefs = [], phaseResultsByPhase = new Map(), suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set(), phaseTimings = {};
-  let modelInvocationCount = 0;
+  const phaseAttestationRefs = [], evidenceRefs = [], phaseResults = [], suppressedDefects = [], usedTokens = [], routeObservations = [], seenInvocationIds = new Set();
   for (const { packet } of packets) {
     const request = phaseRequest(plan, packet);
     const requestRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-request.json`, request);
     let response;
     let phaseRoute;
-    const phaseStartedAt = Date.now();
     try {
       response = transportCall(transport, request);
       phaseRoute = validatePhaseResponse(response, request, plan, seenInvocationIds);
@@ -677,42 +566,21 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
       const stateAfterFailure = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'FAILED', providerReceiptRef });
       return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs: [failed.evidenceRef], failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
     }
-    phaseTimings[packet.phase] = Math.max(0, Date.now() - phaseStartedAt);
-    modelInvocationCount += Number.isSafeInteger(response.modelInvocationCount) && response.modelInvocationCount >= 0 ? response.modelInvocationCount : 1;
     routeObservations.push({ phase: packet.phase, ...phaseRoute });
     seenInvocationIds.add(response.providerInvocationId);
     const responseRef = writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-response.json`, response);
     phaseAttestationRefs.push({ phase: packet.phase, requestRef, responseRef, inputSha: request.inputSha, providerInvocationId: response.providerInvocationId });
     usedTokens.push(Number.isSafeInteger(response.usedTokens) ? response.usedTokens : null);
-    const phaseScope = launch.scope.filter(target => packet.questionUids.includes(target.questionUid));
-    const scopedDefects = bindProviderDefectsToLaunchScope(response.defects, phaseScope);
+    const scopedDefects = bindProviderDefectsToLaunchScope(response.defects, launch.scope);
     const filtered = packet.phase === 'U2'
       ? applyVisualApplicabilityToDefects(scopedDefects, contexts.visualApplicabilities)
       : { defects: scopedDefects, suppressedDefects: [] };
-    const phaseEvidence = validateProviderEvidenceScope(response.evidence, packet);
-    phaseResultsByPhase.set(packet.phase, { phase: packet.phase, responseRef, defects: filtered.defects, evidence: phaseEvidence.map(row => ({ ...row, runId: row.runId || phaseScope.find(target => target.questionUid === row.questionUid)?.runId || null })) });
+    phaseResults.push({ phase: packet.phase, responseRef, defects: filtered.defects, evidence: response.evidence.map(row => ({ ...row, runId: row.runId || launch.scope.find(target => target.questionUid === row.questionUid)?.runId || null })) });
     suppressedDefects.push(...filtered.suppressedDefects.map(defect => ({ ...defect, phase: packet.phase })));
-    for (let index = 0; index < phaseEvidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, phaseEvidence[index]));
+    for (let index = 0; index < response.evidence.length; index++) evidenceRefs.push(writeBridgeJson(root, `${relativeBase}/${packet.phase.toLowerCase()}-evidence-${index + 1}.json`, response.evidence[index]));
   }
-  const freshPhaseSet = new Set(packets.map(({ packet }) => packet.phase));
-  const reusedPhaseSet = PHASES.filter(phase => !freshPhaseSet.has(phase));
-  const actualFreshAxisSet = plan.targetedDispatchPlan
-    ? packets.flatMap(({ packet }) => packet.questionUids.flatMap(questionUid => (packet.targetedAxesByQuestionUid?.[questionUid] || []).map(axis => ({ runId: launch.scope.find(target => target.questionUid === questionUid)?.runId || '', questionUid, axis }))))
-    : null;
-  const reusedEvidenceRefs = [];
-  for (const { row, evidence, phase } of reusedEvidenceRows) {
-    const result = phaseResultsByPhase.get(phase) || { phase, responseRef: null, defects: [], evidence: [] };
-    if (!result.evidence.some(item => item.evidenceId === evidence.evidenceId)) result.evidence.push(evidence);
-    reusedEvidenceRefs.push(row.evidenceRef);
-    phaseResultsByPhase.set(phase, result);
-  }
-  const phaseResults = PHASES.map(phase => phaseResultsByPhase.get(phase) || { phase, responseRef: null, defects: [], evidence: [] });
-  const mergeStartedAt = Date.now();
   const merge = mergeIndependentReviews(phaseResults);
-  const mergeMs = Math.max(0, Date.now() - mergeStartedAt);
   const mergeRef = writeBridgeJson(root, `${relativeBase}/merged-review.json`, merge);
-  const reconcileStartedAt = Date.now();
-  const actualReusedAxisSet = plan.targetedDispatchPlan ? reusedEvidenceRows.map(({ row }) => ({ runId: row.runId || '', questionUid: row.questionUid, axis: row.axis })) : null;
   const receipt = {
     schemaVersion: PROVIDER_BRIDGE_VERSION,
     launchId,
@@ -744,46 +612,15 @@ export function dispatchProviderReview(root, { workBatchId, launchId, planPath, 
     retryLaunchCount: 0,
     usedTokens: usedTokens.every(Number.isSafeInteger) ? usedTokens.reduce((total, value) => total + value, 0) : null,
     usedTokensByPhase: Object.fromEntries(packets.map(({ packet }, index) => [packet.phase, usedTokens[index]])),
-    modelInvocationCount,
-    providerPreflightMs: plan.providerPreflightMs || 0,
-    phaseTimings,
-    mergeMs,
-    reconcileStartedAt: new Date(reconcileStartedAt).toISOString(),
-    freshPhaseSet: [...freshPhaseSet],
-    reusedPhaseSet,
-    targetedDispatchPlanSha: plan.targetedDispatchPlanSha || null,
-    freshAxisSet: actualFreshAxisSet,
-    reusedAxisSet: actualReusedAxisSet,
-    validatedReuseRows: plan.targetedDispatchPlan?.validatedReuseRows || null,
     phaseAttestationRefs,
     evidenceRefs,
-    reusedEvidenceRefs,
     defects: merge.defects,
     mergeRef,
     adjudication: merge.adjudication,
     suppressedDefects,
   };
-  if (plan.targetedDispatchPlan) {
-    const telemetry = validateTargetedDispatchTelemetry(plan.targetedDispatchPlan, receipt);
-    if (telemetry.status !== 'PASS') {
-      const error = new Error('HOLD:TARGETED_DISPATCH_TELEMETRY_MISMATCH');
-      error.failureCode = 'TARGETED_DISPATCH_TELEMETRY_MISMATCH';
-      error.responseReturned = true;
-      error.responseAttestationReturned = true;
-      error.evidenceReturned = true;
-      error.modelInvocationCount = modelInvocationCount;
-      error.semanticEvidenceCount = actualFreshAxisSet?.length || 0;
-      const failed = executionFailureEvidence(root, relativeBase, { ...plan, providerPlanRef: planRef }, launch, { phase: null, error, preDispatchFailure: false, phaseAttestationRefs, providerPlanRef: planRef });
-      failed.receipt.telemetryValidation = telemetry;
-      writeNewJson(receiptPathFor(root, receiptPath), failed.receipt);
-      const providerReceiptRef = fileRef(root, receiptPath);
-      const stateAfterFailure = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'FAILED', providerReceiptRef });
-      return { status: 'FAILED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs: failed.receipt.evidenceRefs, failureClass: failed.failure.failureClass, state: stateAfterFailure.status };
-    }
-    receipt.targetedDispatchTelemetryStatus = telemetry.status;
-  }
   writeNewJson(receiptPathFor(root, receiptPath), receipt);
   const providerReceiptRef = fileRef(root, receiptPath);
   const completed = reconcileWorkBatchReview(root, workBatchId, { launchId, externalId: plan.externalId, status: 'COMPLETED', providerReceiptRef });
-  return { status: 'COMPLETED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs, reusedEvidenceRefs, usedTokens: receipt.usedTokens, state: completed.status };
+  return { status: 'COMPLETED', workBatchId, launchId, externalId: plan.externalId, providerReceiptRef, phaseAttestationRefs, evidenceRefs, usedTokens: receipt.usedTokens, state: completed.status };
 }
