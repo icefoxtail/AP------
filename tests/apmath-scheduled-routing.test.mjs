@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 
 const workerModule = await import('../apmath/worker-backup/worker/index.js');
 const worker = workerModule.default;
@@ -48,8 +49,12 @@ async function runScheduled(cron, scheduledTime) {
 
 const DAILY_MEMO_CRON = '5 15 * * *';
 const MONTH_END_CRON = '0 0 28-31 * *';
-const D1_BACKUP_CRON = '0 18 * * *';
 const MONTH_END_UTC = Date.parse('2026-06-29T15:00:00.000Z');
+const wranglerConfig = fs.readFileSync(new URL('../apmath/worker-backup/worker/wrangler.jsonc', import.meta.url), 'utf8');
+
+assert.match(wranglerConfig, /"5 15 \* \* \*"/);
+assert.match(wranglerConfig, /"0 0 28-31 \* \*"/);
+assert.doesNotMatch(wranglerConfig, /"0 18 \* \* \*"/, 'Free-plan backup cron must not remain active');
 
 const memoCalls = await runScheduled(DAILY_MEMO_CRON, MONTH_END_UTC);
 assert.equal(memoCalls.filter(call => call.type === 'workflow.create').length, 0);
@@ -60,10 +65,5 @@ const monthEndCalls = await runScheduled(MONTH_END_CRON, MONTH_END_UTC);
 assert.equal(monthEndCalls.filter(call => call.type === 'workflow.create').length, 0);
 assert.equal(monthEndCalls.filter(call => /UPDATE operation_memos/.test(call.sql || '')).length, 1, 'month-end cron must run memo auto-complete');
 assert.ok(monthEndCalls.some(call => /INSERT INTO ap_timetable_month_snapshots/.test(call.sql || '')), 'month-end cron must archive timetable');
-
-const backupCalls = await runScheduled(D1_BACKUP_CRON, Date.parse('2026-09-14T18:00:00.000Z'));
-assert.equal(backupCalls.filter(call => call.type === 'workflow.create').length, 1, 'backup cron must create one Workflow instance');
-assert.equal(backupCalls.filter(call => /UPDATE operation_memos/.test(call.sql || '')).length, 0, 'backup cron must not auto-complete memos');
-assert.equal(backupCalls.filter(call => /ap_timetable_month_snapshots/.test(call.sql || '')).length, 0, 'backup cron must not archive timetable');
 
 console.log('AP scheduled routing test passed');
