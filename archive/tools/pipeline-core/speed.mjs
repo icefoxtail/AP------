@@ -121,8 +121,40 @@ export function renderReusePlan(previousCapture, currentCapture, { globalDepende
   return { ...impact, freshRenderCount: impact.affectedRenderUidSet.length, reusedRenderCount: Math.max(0, new Set(currentRows.map(row => row.questionUid)).size - impact.affectedRenderUidSet.length) };
 }
 
-export function speedTelemetry({ startedAt = null, questionCount = 0, finalAuditInvocationCount = 0, targetedRecheckInvocationCount = 0, reviewedQuestionAxisCount = 0, reusedPassQuestionAxisCount = 0, repairIterationCount = 0, newSolutionVisualCount = 0, reusedVisualCount = 0, renderFreshCount = 0, renderReusedCount = 0, providerInvocationCount = 0, modelInvocationCount = 0, skipExistingExam = false } = {}) {
-  return { version: SPEED_PIPELINE_VERSION, totalElapsedMs: startedAt === null ? null : Math.max(0, Date.now() - startedAt), questionCount, finalAuditInvocationCount, targetedRecheckInvocationCount, reviewedQuestionAxisCount, reusedPassQuestionAxisCount, repairIterationCount, newSolutionVisualCount, reusedVisualCount, renderFreshCount, renderReusedCount, providerInvocationCount, modelInvocationCount, skipExistingExam };
+const timing = value => Object.fromEntries(Object.entries(value || {}).map(([key, raw]) => [key, Number.isFinite(raw) && raw >= 0 ? raw : null]));
+
+export function providerTelemetryFromReceipts(receipts = []) {
+  const completed = receipts.filter(receipt => receipt?.status === 'COMPLETED' && receipt.launchId);
+  const modelInvocationCount = receipts.reduce((total, receipt) => total + (Number.isSafeInteger(receipt?.modelInvocationCount) && receipt.modelInvocationCount >= 0 ? receipt.modelInvocationCount : 0), 0);
+  return { providerInvocationCount: completed.length, modelInvocationCount };
+}
+
+export function speedTelemetry({ startedAt = null, questionCount = 0, finalAuditInvocationCount = 0, targetedRecheckInvocationCount = 0, reviewedQuestionAxisCount = 0, reusedPassQuestionAxisCount = 0, repairIterationCount = 0, newSolutionVisualCount = 0, reusedVisualCount = 0, renderFreshCount = 0, renderReusedCount = 0, providerInvocationCount = 0, modelInvocationCount = 0, skipExistingExam = false, phaseTimings = {}, renderTimings = {}, auditTimings = {}, freshPhaseSet = [], reusedPhaseSet = [], freshAxisSet = [], reusedAxisSet = [], screenshotStats = {} } = {}) {
+  return {
+    version: SPEED_PIPELINE_VERSION,
+    totalElapsedMs: startedAt === null ? null : Math.max(0, Date.now() - startedAt),
+    questionCount,
+    finalAuditInvocationCount,
+    targetedRecheckInvocationCount,
+    reviewedQuestionAxisCount,
+    reusedPassQuestionAxisCount,
+    repairIterationCount,
+    newSolutionVisualCount,
+    reusedVisualCount,
+    renderFreshCount,
+    renderReusedCount,
+    providerInvocationCount,
+    modelInvocationCount,
+    skipExistingExam,
+    phaseTimings: timing(phaseTimings),
+    renderTimings: timing(renderTimings),
+    auditTimings: timing(auditTimings),
+    freshPhaseSet: [...freshPhaseSet],
+    reusedPhaseSet: [...reusedPhaseSet],
+    freshAxisSet: [...freshAxisSet],
+    reusedAxisSet: [...reusedAxisSet],
+    screenshotStats: { count: screenshotStats.count ?? 0, bytes: screenshotStats.bytes ?? 0, encodeMs: screenshotStats.encodeMs ?? 0, writeMs: screenshotStats.writeMs ?? 0 },
+  };
 }
 
 export function reuseTelemetry(rows = []) {

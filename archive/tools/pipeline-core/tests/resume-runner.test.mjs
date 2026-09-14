@@ -85,6 +85,10 @@ test('one-pass resume runner connects provider review, route handler, repair, an
   assert.ok(result.history.some(row => row.action === 'AUTO_REPAIR'));
   assert.ok(result.history.some(row => row.action === 'TARGETED_RECHECK'));
   assert.deepEqual(JSON.parse(fs.readFileSync(phaseLog, 'utf8')), ['U1', 'U2', 'U3', 'U3']);
+  assert.equal(result.telemetry.providerInvocationCount, 2);
+  assert.equal(result.telemetry.modelInvocationCount, 4);
+  assert.deepEqual(result.telemetry.freshPhaseSet, ['U1', 'U2', 'U3']);
+  assert.ok(result.telemetry.phaseTimings.u3Ms >= 0);
   const targetedReceipt = JSON.parse(fs.readFileSync(path.join(f.root, result.state.launches.at(-1).providerReceiptRef.path), 'utf8'));
   assert.deepEqual(targetedReceipt.freshPhaseSet, ['U3']);
   assert.deepEqual(targetedReceipt.reusedPhaseSet, ['U1', 'U2']);
