@@ -561,7 +561,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 각 빈칸이 증명 흐름에서 어떤 내용을 나타내는지 확인한다.\n$AB\\parallel DC$이므로 $\\angle BAC=\\angle DCA$이고, $AD\\parallel BC$이므로 $\\angle BCA=\\angle DAC$이다. 또한 $AC$는 공통이므로 $\\triangle ABC\\equiv\\triangle CDA$이다.\n따라서 ①에는 $AB\\parallel DC$, ③에는 $\\triangle ABC\\equiv\\triangle CDA$가 들어간다. 또 $\\angle A=\\angle BAC+\\angle CAD=\\angle DCA+\\angle ACB=\\angle C$이므로 ④와 ⑤도 알맞다.\n②의 자리에는 $\\angle BCA=\\angle DAC$이 들어가야 하므로 '$\\angle B=\\angle C$'는 적절하지 않다. 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중2_수학/q16_diagram.png",
-    "imageSize": "full",
+    "imageSize": "medium",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
