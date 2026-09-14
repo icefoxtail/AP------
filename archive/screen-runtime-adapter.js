@@ -73,7 +73,7 @@ function createArchiveScreenRuntime() {
         };
         idleHandle = window.requestIdleCallback ? requestIdleCallback(warm, { timeout: 2000 }) : setTimeout(warm, 100);
     }
-    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20260911.5', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260911.5', executor: '20260911.5-context6', pageLayout: 'engine-20260911.5', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
+    const initialFingerprints = Object.freeze({ engine: 'archive-fast-phase6-20260914.1', renderAuthority: 'ap-render-authority-v2.2-phase1a', layoutAuthority: 'measured-production-v1-20260914.1', executor: '20260914.1-context7', pageLayout: 'engine-20260914.1', font: 'Nanum-Myeongjo:400,700,800/mathjax-tex', asset: ARCHIVE_ASSET_CACHE_VERSION, qrPolicy: 'archive-qr-v1' });
 
     async function waitForArchiveFonts() {
         if (!document.fonts?.ready) return;
@@ -277,6 +277,13 @@ function createArchiveScreenRuntime() {
         if (!ctx.result.pageCount || !ctx.targetArea.isConnected || getComputedStyle(ctx.targetArea).display === 'none') throw new Error('INVALID_RENDER_ROOT');
         if (!window.MathJax?.typesetPromise || window.APRenderLoop.unrenderedMathCount(ctx.targetArea)) throw new Error('MATH_TYPESET_INCOMPLETE');
         if (ctx.targetArea.querySelector('mjx-merror')) throw new Error('MATH_TYPESET_ERROR');
+        const imageReadiness = ctx.deps.validateQuestionImageReadiness?.(ctx.targetArea);
+        if (imageReadiness && !imageReadiness.ok) {
+            const error = new Error(imageReadiness.code || 'QUESTION_IMAGE_READINESS_INCOMPLETE');
+            error.code = imageReadiness.code || 'QUESTION_IMAGE_READINESS_INCOMPLETE';
+            error.details = imageReadiness;
+            throw error;
+        }
         if ((ctx.candidate.qrState.renderSubmit || ctx.candidate.qrState.renderSolution) && typeof QRious !== 'function') throw new Error('QR_RUNTIME_UNAVAILABLE');
     }
 

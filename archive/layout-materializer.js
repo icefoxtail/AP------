@@ -6,8 +6,18 @@
         const cols = [0, 1].map(() => { const col = document.createElement('div'); col.className = columnClass; grid.appendChild(col); return col; });
         page.body.appendChild(grid); return cols;
     }
+    function assertQuestionImagesReady(root, deps) {
+        const readiness = deps.validateQuestionImageReadiness?.(root);
+        if (readiness && !readiness.ok) {
+            const error = new Error(readiness.code || 'QUESTION_IMAGE_READINESS_INCOMPLETE');
+            error.code = readiness.code || 'QUESTION_IMAGE_READINESS_INCOMPLETE';
+            error.details = readiness;
+            throw error;
+        }
+    }
     async function exam({ area, items, usableHeight, deps }) {
         const document = area.ownerDocument;
+        items.forEach(item => assertQuestionImagesReady(item.box, deps));
         const blocks = items.map((item, index) => ({ blockId: `exam-block:${index + 1}`, measuredHeight: item.profile.proxyHeight_raw,
             measurements: { raw: item.profile.proxyHeight_raw, tight: item.profile.proxyHeight_tight },
             layoutTag: ['fullwidth', 'subjective-2up', 'subjective-4up'].includes(item.q.layoutTag) ? item.q.layoutTag : '',
@@ -49,6 +59,7 @@
     }
     async function solution({ area, boxes, blocks, measurementsBySource, deps }) {
         const document = area.ownerDocument;
+        boxes.forEach(box => assertQuestionImagesReady(box, deps));
         const probe = document.createElement('div');
         probe.style.cssText = 'position:absolute;left:-20000px;top:0;visibility:hidden;width:210mm;pointer-events:none;';
         document.body.appendChild(probe);

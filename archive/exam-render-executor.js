@@ -17,7 +17,7 @@
             'sanitizeProtectedSegments', 'normalizeQuestionNotes', 'normalizeViewBlocks',
             'normalizeQuestionTables', 'formatQuestionContent', 'wrapLatex',
             'renderQuestionImageHTML', 'renderChoicesHTML', 'fitQuestionBox',
-            'autoCompress', 'rendererMode'
+            'autoCompress', 'rendererMode', 'normalizeQuestionImageSources'
         ];
         for (const name of required) {
             if (typeof deps?.[name] !== 'function') throw new TypeError(`APExamRenderExecutor missing dependency: ${name}`);
@@ -56,6 +56,7 @@
                              <div class="q-content">${formattedContent}</div>
                              ${imageHTML}
                              ${choicesHTML}`;
+            deps.normalizeQuestionImageSources(box);
             staging.appendChild(box);
             return { q, box, originalIndex: i };
         });

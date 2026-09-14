@@ -57,6 +57,7 @@
             'makeLongSolutionShell', 'renderSolutionImageHTML', 'formatSolutionHtml',
             'formatQuestionContent', 'getArchiveQuestionSourceRef', 'waitForQuestionImage',
             'rendererMode', 'wrapLatex', 'stripInlineImagesFromContent',
+            'normalizeQuestionImageSources',
             'sanitizeProtectedSegments', 'normalizeQuestionNotes', 'normalizeViewBlocks',
             'normalizeQuestionTables', 'measureSolutionOuterFootprint'
         ];
@@ -239,6 +240,7 @@
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
+            deps.normalizeQuestionImageSources(box);
             staging.appendChild(box);
             return box;
         });
