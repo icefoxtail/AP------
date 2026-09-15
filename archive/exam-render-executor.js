@@ -60,6 +60,12 @@
             staging.appendChild(box);
             return { q, box, originalIndex: i };
         });
+        if (root.APEqualSlotEngine?.enabled(appState.qpp, deps.engineUrl || root.location?.href, data)) {
+            appState.layoutMeasurementLedger = null;
+            return root.APEqualSlotEngine.render({ area, items, deps: {
+                ...deps, makePage: (target, number) => { const page = deps.makePage(target, 'exam', number); return { page, body: page.body }; }
+            } });
+        }
         await deps.applyAutoImageSizeClasses(staging);
         await deps.typesetMath('exam-staging', [staging]);
         await deps.raf();
@@ -301,6 +307,10 @@ async function renderComposed({ area, items, deps }) {
         staging.appendChild(box);
         return { q, box };
     });
+
+    if (root.APEqualSlotEngine?.enabled(qpp, deps.engineUrl || root.location?.href, items)) {
+        return root.APEqualSlotEngine.render({ area, items: stagedItems, deps });
+    }
 
     await applyAutoImageSizeClasses(staging);
     await deps.typesetMath('composition-exam', [staging]);

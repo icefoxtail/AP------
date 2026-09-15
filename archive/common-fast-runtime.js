@@ -180,6 +180,7 @@
                     if (!valid(snapshot)) throw Error('PRINT_SNAPSHOT_PREFLIGHT_FAILED');
                 }
                 if (!snapshot.pageCount) throw Error('PRINT_EMPTY_DOCUMENT');
+                root.APEqualSlotEngine?.assertReady(snapshot.rootNode);
                 const tracker = root.APPrintRuntime.createReadinessTracker(policy.name);
                 tracker.begin({ snapshotId: snapshot.snapshotId });
                 for (const event of snapshot.readinessEvidence.events) tracker.mark(event.state, event.evidence);

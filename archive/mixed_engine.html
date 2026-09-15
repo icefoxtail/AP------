@@ -388,7 +388,9 @@
     <script src="screen-runtime.js?v=20260913.1"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
     <script src="common-fast-runtime.js?v=20260914.1"></script>
-    <script src="exam-render-executor.js?v=20260914.1"></script>
+    <script src="equal-slot-engine.js?v=20260915.1"></script>
+    <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
+    <script src="exam-render-executor.js?v=20260915.1"></script>
     <script src="solution-render-executor.js?v=20260914.1"></script>
     <script src="answer-render-executor.js?v=20260912.1"></script>
 </head>
@@ -2699,6 +2701,7 @@ async function renderBody() {
     }
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
+    await window.APEqualSlotEngine?.finalize(area);
     await recordMixedLayoutPromotionGate(area);
     await recordMixedDualRun(area);
     if (buildContext) return;
