@@ -34,7 +34,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q01-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -238,7 +237,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q07-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -306,7 +304,6 @@ window.questionBank = [
     "solution": "[키포인트]\n삼각형의 한 꼭짓점을 지나는 직선이 넓이를 이등분하려면, 그 직선은 마주 보는 변의 중점을 지나야 한다.\n조건 정리\n직선 $y=mx+2$는 $x=0$일 때 $y=2$이므로 점 $A(0,2)$를 지난다.\n풀이 과정\n직선이 꼭짓점 $A$를 지나면서 삼각형의 넓이를 이등분하려면, 변 $BC$의 중점을 지나야 한다.\n$B(-1,4)$, $C(3,2)$의 중점을 $M$이라 하면\n$M=\\left(\\dfrac{-1+3}{2},\\dfrac{4+2}{2}\\right)=(1,3)$이다.\n따라서 이등분선은 점 $A(0,2)$와 $M(1,3)$을 지나는 직선이다.\n기울기는\n$\\dfrac{3-2}{1-0}=1$이다.\n직선 $y=mx+2$의 기울기가 $m$이므로 $m=1$이다.\n결론\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q09-solution.svg",
     "solutionImageAlt": "평면좌표 문항 9의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
     "subUnit": "삼각형의 좌표와 무게중심",
@@ -479,7 +476,6 @@ window.questionBank = [
     "solution": "[키포인트]\n포물선의 꼭짓점이 어떻게 옮겨지는지로 평행이동을 찾고, 원 밖의 한 점에서 그은 두 접선이 수직이 되는 조건을 이용한다.\n조건 정리\n$y=x^2+2kx+k^2=(x+k)^2$의 꼭짓점은 $(-k,0)$이다. $y=x^2-k$의 꼭짓점은 $(0,-k)$이다.\n풀이 과정\n꼭짓점 $(-k,0)$이 $(0,-k)$로 옮겨지므로 평행이동은 $x$축의 방향으로 $k$, $y$축의 방향으로 $-k$만큼이다.\n원 $x^2+y^2+4x=0$은\n$(x+2)^2+y^2=4$이므로 중심은 $(-2,0)$, 반지름은 $2$이다.\n이 원을 위의 평행이동으로 옮기면 중심은 $(k-2,-k)$, 반지름은 그대로 $2$이다.\n점 $P(2,0)$에서 원에 그은 두 접선이 서로 수직이면, 중심을 $O$라 할 때 직각삼각형에서 $OP=2\\sqrt2$가 된다.\n따라서\n$(k-2-2)^2+(-k-0)^2=(2\\sqrt2)^2$이다.\n$(k-4)^2+k^2=8$\n$k^2-8k+16+k^2=8$\n$2k^2-8k+8=0$\n$k^2-4k+4=0$\n$(k-2)^2=0$이므로 $k=2$이다.\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q14-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 14의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",
@@ -550,7 +546,6 @@ window.questionBank = [
     "solution": "[키포인트]\n원을 평행이동하고 대칭이동하면 중심만 같은 방식으로 움직이고 반지름은 변하지 않는다. 두 원 위의 점 사이의 최단거리는 두 중심 사이의 거리에서 두 반지름의 합을 뺀 값이다.\n조건 정리\n$C_1$의 중심과 반지름을 먼저 구하고, $m,n$에 따른 $C_2$의 중심을 구한다.\n풀이 과정\n$C_1:x^2+y^2+4x-6y+12=0$에서\n$(x+2)^2+(y-3)^2=1$이다.\n따라서 $C_1$의 중심은 $(-2,3)$, 반지름은 $1$이다.\n이를 $x$축의 방향으로 $m$, $y$축의 방향으로 $n$만큼 평행이동하면 중심은 $(-2+m,3+n)$이다.\n그 뒤 $x$축에 대칭이동하면 $y$좌표의 부호가 바뀌므로 $C_2$의 중심은 $(-2+m,-3-n)$이고 반지름은 $1$이다.\n$H_1H_2$는 두 점 $P,Q$의 $x$좌표 차이의 절댓값이다. 두 원의 $x$좌표 범위는 각각 $[-3,-1]$, $[m-3,m-1]$이다.\n$m$이 자연수일 때 두 범위 사이의 최솟값은 $m-2$가 된다. 이것이 $2$이므로\n$m-2=2$, 즉 $m=4$이다.\n또 $QH_2$는 점 $Q$의 $x$축까지의 거리이다. $C_2$의 중심의 $y$좌표는 $-3-n$이고 반지름이 $1$이므로 $QH_2$의 최댓값은 $n+4$이다.\n$n+4=6$이므로 $n=2$이다.\n따라서 두 원의 중심은 $(-2,3)$, $(2,-5)$이다.\n두 중심 사이의 거리는\n$\\sqrt{(2-(-2))^2+(-5-3)^2}=\\sqrt{4^2+(-8)^2}=\\sqrt{80}=4\\sqrt5$이다.\n두 원의 반지름이 모두 $1$이므로 두 원 위의 점 사이의 최솟값은\n$4\\sqrt5-2$이다.\n따라서 $a=-2$, $b=4$이고\n$a^2+b^2=(-2)^2+4^2=4+16=20$이다.\n결론\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q16-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 16의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/22_금당고_1학기_기말_고1_기출/q16.png",
     "imageSize": "medium",

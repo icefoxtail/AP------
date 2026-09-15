@@ -365,7 +365,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_제일고_1학기_기말_고1_기출/q11-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 11의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -534,7 +533,6 @@ window.questionBank = [
     "solution": "[키포인트] 두 원 위의 두 점 사이 거리의 최댓값과 최솟값은 두 원의 중심 사이 거리와 반지름으로 결정된다.\n조건 정리: 먼저 원 $C$의 중심과 반지름을 구한 뒤, $C_1$, $C_2$의 중심을 구한다.\n풀이 방향: 두 원의 반지름이 같고 서로 떨어져 있으므로 $M=d+2r$, $m=d-2r$를 이용한다. 여기서 $d$는 두 중심 사이의 거리, $r$은 반지름이다.\n정석 풀이:\n원 $C$의 방정식을 완전제곱으로 고치면\n$x^2-6x+y^2+2y-1=0$\n$(x-3)^2+(y+1)^2=11$이다.\n따라서 원 $C$의 중심은 $(3,-1)$, 반지름은 $\\sqrt{11}$이다.\n$C$를 $x$축 방향으로 $5$, $y$축 방향으로 $-2$만큼 평행이동하면 중심은\n$(3+5,-1-2)=(8,-3)$이므로 $C_1$의 중심은 $(8,-3)$이다.\n원 $C$를 직선 $y=x$에 대하여 대칭이동하면 좌표가 서로 바뀌므로 중심 $(3,-1)$은 $(-1,3)$으로 이동한다.\n따라서 $C_2$의 중심은 $(-1,3)$이다.\n두 원의 반지름은 모두 $\\sqrt{11}$이다.\n두 중심 사이의 거리는\n$d=\\sqrt{(8-(-1))^2+(-3-3)^2}=\\sqrt{9^2+(-6)^2}=\\sqrt{117}=3\\sqrt{13}$이다.\n두 원은 서로 떨어져 있으므로 두 점 사이 거리의 최댓값과 최솟값은 각각\n$M=d+2\\sqrt{11}$, $m=d-2\\sqrt{11}$이다.\n따라서\n$Mm=(d+2\\sqrt{11})(d-2\\sqrt{11})=d^2-(2\\sqrt{11})^2$\n$=117-44=73$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_제일고_1학기_기말_고1_기출/q16-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 16의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",
@@ -604,7 +602,6 @@ window.questionBank = [
     "solution": "[키포인트] 꺾인 경로의 최솟값은 대칭이동으로 직선거리 문제로 바꿀 수 있다.\n조건 정리: $P,Q$는 $y$축 위에 있고, $R$은 직선 $x=-1$ 위에 있다.\n풀이 방향: $y$축에서 꺾이는 $A\\rightarrow P\\rightarrow R$ 경로는 $A$를 $y$축에 대하여 대칭이동하고, 다시 $R\\rightarrow Q\\rightarrow B$ 경로는 $B$를 $y$축에 대하여 대칭이동하여 직선거리로 바꾼다. 마지막으로 $R$이 $x=-1$ 위에 있어야 하므로 한 번 더 대칭을 이용한다.\n정석 풀이:\n먼저 점 $A(-6,3)$을 $y$축에 대하여 대칭이동하면\n$A'(6,3)$이다.\n$P$가 $y$축 위에서 움직일 때, $\\overline{AP}+\\overline{PR}$의 최솟값은 $A'$에서 $R$까지의 직선거리 $\\overline{A'R}$로 생각할 수 있다.\n마찬가지로 점 $B(-4,-5)$를 $y$축에 대하여 대칭이동하면\n$B'(4,-5)$이다.\n$Q$가 $y$축 위에서 움직일 때, $\\overline{RQ}+\\overline{QB}$의 최솟값은 $R$에서 $B'$까지의 직선거리 $\\overline{RB'}$로 생각할 수 있다.\n따라서 전체 최솟값은 $R$이 직선 $x=-1$ 위를 움직일 때\n$\\overline{A'R}+\\overline{RB'}$의 최솟값이다.\n이제 $B'(4,-5)$를 직선 $x=-1$에 대하여 대칭이동한다.\n직선 $x=-1$에서 $B'$의 $x$좌표 $4$까지의 거리는 $5$이므로, 대칭점은 $x=-6$에 있다.\n따라서 $B''=(-6,-5)$이다.\n그러면 $\\overline{A'R}+\\overline{RB'}$의 최솟값은 $\\overline{A'B''}$이다.\n따라서\n$\\overline{A'B''}=\\sqrt{(6-(-6))^2+(3-(-5))^2}$\n$=\\sqrt{12^2+8^2}$\n$=\\sqrt{208}=4\\sqrt{13}$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_제일고_1학기_기말_고1_기출/q18-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "image": "assets/images/24_제일고_1학기_기말_고1_기출/q18.png",
     "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
