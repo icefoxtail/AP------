@@ -1399,7 +1399,7 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "content": "다음 중 거짓인 것은 모두 몇 개인가? $(\\text{양수}) \\times (\\text{음수}) = (\\text{음수})$$(\\text{음수}) \\times (\\text{음수}) = (\\text{음수})$$(\\text{양수}) + (\\text{음수}) = (\\text{음수})$$(\\text{음수}) + (\\text{음수}) = (\\text{음수})$$(\\text{양수}) - (\\text{음수}) = (\\text{음수})$$(\\text{음수}) - (\\text{양수}) = (\\text{음수})$$(\\text{음수}) \\div (\\text{양수}) = (\\text{양수})$$(\\text{음수}) \\div (\\text{음수}) = (\\text{양수})$",
+    "content": "다음 중 거짓인 것은 모두 몇 개인가? $(\\text{양수}) \\times (\\text{음수}) = (\\text{음수})$<br>$(\\text{음수}) \\times (\\text{음수}) = (\\text{음수})$<br>$(\\text{양수}) + (\\text{음수}) = (\\text{음수})$<br>$(\\text{음수}) + (\\text{음수}) = (\\text{음수})$<br>$(\\text{양수}) - (\\text{음수}) = (\\text{음수})$<br>$(\\text{음수}) - (\\text{양수}) = (\\text{음수})$<br>$(\\text{음수}) \\div (\\text{양수}) = (\\text{양수})$<br>$(\\text{음수}) \\div (\\text{음수}) = (\\text{양수})$",
     "choices": [
       "1",
       "2",
