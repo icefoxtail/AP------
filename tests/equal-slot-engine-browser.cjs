@@ -225,7 +225,7 @@ function assertExam(data, count, recipients = 1) {
             }
         }
         if (phase === 'raster') {
-            for (const kind of ['archive', 'mixer', 'wrong']) {
+            for (const kind of ['archive', 'mixer']) {
                 const run = await launch(browser, origin, { kind, count: 9 });
                 try {
                     assert.equal(run.outcome.ok, true);

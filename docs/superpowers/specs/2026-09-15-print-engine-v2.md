@@ -25,3 +25,9 @@ Keep the proven source formatting, MathJax readiness and transactional snapshot 
 
 ## Acceptance
 Real Chromium tests on all three engine entry points, adversarial shared content (long Korean prompt, long math, image/SVG, table, five choices and mixed blocks), 4/8/9 question ordering and partial slots, QR, Wrong recipients/duplex, mode switching and snapshot reuse, screen/print media. PDF and screenshot outputs are inspected. Compare old/new cold-render wall time and MathJax/layout counters on the same fixture; no machine-independent speed claims. Existing focused runtime/readiness/identity tests continue to pass. Branch includes reproducible commands, evidence and rollback instructions.
+
+## Implementation details verified during integration
+- Inner content uses CSS zoom with an explicit pre-zoom width so Chromium paginates the scaled footprint. Paint-only transform scaling moved long choices onto the following PDF page, despite correct print-media DOM rectangles.
+- html2canvas 1.x requires a private-clone conversion from zoom to equivalent paint transform; the original snapshot is never changed. Archive/Mixer raster and shared native PCL/GDI capture call this adapter.
+- Production entry points defer fit/audit until late QR decorations are complete. Public render finalizes by default. Repeated finalize uses a same-node size/content cache without repeating fitting; audit still runs.
+- Legacy/special executors are preserved. Missing required strict-mode modules fail closed; default special-layout documents do not require v2.
