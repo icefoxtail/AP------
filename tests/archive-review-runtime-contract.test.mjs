@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import test from 'node:test';
 import normalizer from '../archive/render-state-normalizer.js';
 
 const { createCandidate } = normalizer;
+const adapterSource = fs.readFileSync('archive/screen-runtime-adapter.js', 'utf8');
+const engineSource = fs.readFileSync('archive/engine.html', 'utf8');
 
 function reviewCandidate() {
   return {
@@ -74,4 +77,12 @@ test('review snapshot candidates can represent an intentionally empty bank', () 
   const candidate = createCandidate(value);
   assert.deepEqual(candidate.source.canonicalRenderData, []);
   assert.deepEqual(candidate.input.reviewSnapshot.questionBank, []);
+});
+
+test('review bridge source input is isolated from the normal fetch/script loader', () => {
+  assert.match(adapterSource, /sourceKind === 'review-snapshot'/);
+  assert.match(adapterSource, /payload\.questionBank/);
+  assert.match(adapterSource, /N\.canonicalRenderData/);
+  assert.match(engineSource, /installArchiveReviewPreviewBridgeReceiver/);
+  assert.match(engineSource, /review-preview-bridge\.js/);
 });

@@ -44,7 +44,8 @@
 ```js
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { parseArchiveSource, replaceQuestionBankPreservingSource, validateRoundTrip } from '../archive/review-source-writer.js';
+import writer from '../archive/review-source-writer.js';
+const { parseArchiveSource, replaceQuestionBankPreservingSource, validateRoundTrip } = writer;
 
 const source = `// keep this comment\nwindow.examTitle = "보존 시험";\nwindow.examDisplayTitle = "표시 제목";\nconst helper = { keep: true };\nwindow.questionBank = [{ id: 1, content: "원본", choices: ["①"] }];\nwindow.extraMeta = { keep: "yes" };\n`;
 
@@ -62,8 +63,8 @@ test('rejects identifier-backed question banks instead of rewriting unknown sour
   assert.throws(() => replaceQuestionBankPreservingSource('const bank = []; window.questionBank = bank;', []), /SOURCE_WRITER_UNSUPPORTED_SHAPE/);
 });
 
-test('round-trip validation rejects a bank that differs from the intended snapshot', async () => {
-  await assert.rejects(() => validateRoundTrip(source, [{ id: 1, content: '다른 값' }], 'fixture.js'), /ROUND_TRIP_SEMANTIC_MISMATCH/);
+test('round-trip validation rejects a bank that differs from the intended snapshot', () => {
+  assert.throws(() => validateRoundTrip(source, [{ id: 1, content: '다른 값' }], 'fixture.js'), /ROUND_TRIP_SEMANTIC_MISMATCH/);
 });
 ```
 
@@ -75,7 +76,7 @@ Expected: FAIL because `archive/review-source-writer.js` does not exist.
 
 - [ ] **Step 3: Implement the minimal structural writer**
 
-Implement a balanced JavaScript scanner that ignores strings, template literals, line comments, block comments, and nested brackets. Locate a direct `questionBank` assignment whose RHS begins with an array literal, or a direct `questions`/`problems` array member inside a question-bank object. Replace only that balanced expression with a deterministic literal serializer; reject identifier-backed or executable RHS values with `SOURCE_WRITER_UNSUPPORTED_SHAPE`. Execute the source in an isolated `new Function('window', source)` sandbox for parsing, accept top-level `questionBank`, `.questions`, and `.problems`, and return `{ title, displayTitle, bank, bankShape }`. Compute `fingerprintText` with SHA-256 through `crypto.subtle.digest`, returning a lowercase hex digest.
+Implement a balanced JavaScript scanner that ignores strings, template literals, line comments, block comments, and nested brackets. Locate a direct `questionBank` assignment whose RHS begins with an array literal, or a direct `questions`/`problems` array member inside a question-bank object. Replace only that balanced expression with a deterministic literal serializer; reject identifier-backed or executable RHS values with `SOURCE_WRITER_UNSUPPORTED_SHAPE`. Re-run the rewritten source in an isolated sandbox; if a legacy post-bank helper changes the edited result, append and then reuse one `AP_REVIEW_SOURCE_OVERRIDE` marker assignment so the final bank equals the edited snapshot without repeatedly growing the file. Execute the source in an isolated `new Function('window', source)` sandbox for parsing, accept top-level `questionBank`, `.questions`, and `.problems`, and return `{ title, displayTitle, bank, bankShape }`. Compute `fingerprintText` with SHA-256 through `crypto.subtle.digest`, returning a lowercase hex digest.
 
 - [ ] **Step 4: Run the writer tests and verify the green result**
 
@@ -106,7 +107,8 @@ git commit -m "feat(review): add source-preserving archive writer"
 ```js
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { buildReviewSessionSnapshot, restoreReviewSession } from '../archive/review-session-store.js';
+import sessionStore from '../archive/review-session-store.js';
+const { buildReviewSessionSnapshot, restoreReviewSession } = sessionStore;
 
 test('builds one versioned logical snapshot without storing duplicated independent records', () => {
   const snapshot = buildReviewSessionSnapshot({
@@ -167,7 +169,8 @@ git commit -m "feat(review): persist one atomic session snapshot"
 ```js
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { PROTOCOL_VERSION, createReviewMessage, isCurrentRevisionTuple, createReviewPreviewBridge } from '../archive/review-preview-bridge.js';
+import bridgeApi from '../archive/review-preview-bridge.js';
+const { PROTOCOL_VERSION, createReviewMessage, isCurrentRevisionTuple, createReviewPreviewBridge } = bridgeApi;
 
 test('every message carries the protocol and three revision axes', () => {
   const message = createReviewMessage('REVIEW_SET_SOURCE', { sourceKind: 'review-snapshot' }, { bridgeEpoch: 2, sourceEpoch: 3, revision: 4 });
@@ -364,15 +367,17 @@ git commit -m "perf(review): keep canonical preview iframe persistent"
 
 **Files:**
 - Modify: `archive/internal-review-engine.js:340-405, 1613-1710, 1880-2108`
+- Create: `archive/review-save-transaction.js`
 - Replace: `archive/internal-review-live.html` with a redirect-only compatibility entry
 - Delete: `archive/internal-review-live.js`
 - Delete: `archive/internal-review-live.css`
 - Modify: `tests/archive-engine-launch-fallback.test.js` to cover the compatibility redirect
 - Create: `tests/archive-review-save-contract.test.mjs`
+- Create: `tests/archive-review-save-transaction.test.mjs`
 
 **Interfaces:**
 - Consumes: source writer, current file handle, loaded fingerprint, bridge `waitForRevision`, and atomic session store.
-- Produces: safe save transaction, disk re-read verification, conflict error, conditional discard guard, and one canonical implementation.
+- Produces: `saveReviewSource(options)` safe save transaction, disk re-read verification, conflict error, conditional discard guard, and one canonical implementation.
 
 - [ ] **Step 1: Write failing save/compatibility tests**
 
@@ -401,13 +406,13 @@ test('legacy live entry redirects while preserving query string and hash', () =>
 
 - [ ] **Step 2: Run save tests and verify they fail against the old writer/entry**
 
-Run: `node --test tests/archive-review-save-contract.test.mjs`
+Run: `node --test tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs`
 
 Expected: FAIL because the current save rewrites the complete source, never compares the disk fingerprint, and the live page remains a full implementation.
 
 - [ ] **Step 3: Implement the save transaction**
 
-Flush the editor DOM, wait for the bridge to report `REVIEW_RENDER_DONE` for the latest revision, freeze `{ bank, source, revision }`, re-read the current file and compute its fingerprint, and abort with `파일을 연 이후 외부에서 파일이 변경되었습니다. 현재 변경 내용을 덮어쓸 수 없습니다.` when the fingerprint differs. Use `replaceQuestionBankPreservingSource` and `createWritable`, close the writer, re-read the file, parse it, compare the parsed bank/title to the frozen snapshot, and only then update `currentSource`, `originalBank`, `sourceFingerprint`, and `postWriteVerifiedRevision`. If another edit occurs while the write is in flight, keep it as a new unsaved draft against the verified saved baseline.
+Flush the editor DOM, wait for the bridge to report `REVIEW_RENDER_DONE` for the latest revision, freeze `{ bank, source, revision }`, re-read the current file and compute its fingerprint, and abort with `파일을 연 이후 외부에서 파일이 변경되었습니다. 현재 변경 내용을 덮어쓸 수 없습니다.` when the fingerprint differs. `saveReviewSource(options)` performs `replaceQuestionBankPreservingSource`, `createWritable`, close, disk re-read, parse, semantic bank comparison, and returns `{ source, fingerprint, revision, postWriteVerified: true }` only after verification. The editor updates `currentSource`, `originalBank`, `sourceFingerprint`, and `postWriteVerifiedRevision` only from that result. If another edit occurs while the write is in flight, keep it as a new unsaved draft against the verified saved baseline.
 
 - [ ] **Step 4: Normalize discard protection**
 
@@ -419,12 +424,12 @@ Make `internal-review-live.html` contain only an inline redirect that creates a 
 
 - [ ] **Step 6: Run save/compatibility tests and commit**
 
-Run: `node --test tests/archive-review-save-contract.test.mjs tests/archive-engine-launch-fallback.test.js`
+Run: `node --test tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-engine-launch-fallback.test.js`
 
 Expected: PASS.
 
 ```powershell
-git add archive/internal-review-engine.js archive/internal-review-live.html tests/archive-review-save-contract.test.mjs tests/archive-engine-launch-fallback.test.js
+git add archive/internal-review-engine.js archive/review-save-transaction.js archive/internal-review-live.html tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-engine-launch-fallback.test.js
 git rm archive/internal-review-live.js archive/internal-review-live.css
 git commit -m "fix(review): make save conflict-safe and remove duplicate entry"
 ```
@@ -441,7 +446,7 @@ git commit -m "fix(review): make save conflict-safe and remove duplicate entry"
 
 - [ ] **Step 1: Run targeted unit and static tests**
 
-Run: `node --test tests/archive-review-source-writer.test.mjs tests/archive-review-session-store.test.mjs tests/archive-review-preview-bridge.test.mjs tests/archive-review-runtime-contract.test.mjs tests/archive-review-editor-contract.test.mjs tests/archive-review-save-contract.test.mjs tests/archive-fast-engine-runtime.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js`
+Run: `node --test tests/archive-review-source-writer.test.mjs tests/archive-review-session-store.test.mjs tests/archive-review-preview-bridge.test.mjs tests/archive-review-runtime-contract.test.mjs tests/archive-review-editor-contract.test.mjs tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-fast-engine-runtime.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js`
 
 Expected: PASS with zero failures.
 

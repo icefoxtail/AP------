@@ -304,6 +304,9 @@ function createArchiveScreenRuntime() {
         ctx.deps = {
             ...archiveExamDeps, ...archiveSolutionDeps, ...archiveAnswerDeps,
             appState: ctx.buildState, stagingHost: ctx.stagingHost,
+            renderQuestionImageHTML: question => renderQuestionImageHTML(question, ctx.buildState),
+            renderSolutionImageHTML: question => renderSolutionImageHTML(question, ctx.buildState),
+            normalizeQuestionImageSources: root => normalizeQuestionImageSources(root, ctx.buildState),
             makePage: (area, type, pageNo) => makePage(area, type, pageNo, ctx.buildState),
             getArchiveQuestionSourceRef: (question, index) => getArchiveQuestionSourceRef(question, index, ctx.buildState),
             rendererMode: () => candidate.rendererMode,
