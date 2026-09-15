@@ -15,7 +15,7 @@
         return Array.from({ length: count }, (_, i) => ({
             id: i + 1, sourceOrdinal: i + 1, sourceQuestionNo: i + 1, sourceQuestionUid: `equal-slot-${i + 1}`,
             content: `검증문항${String(i + 1).padStart(3, '0')} ${prompts[i % prompts.length]}`,
-            choices: i % 9 === 4 ? Array.from({ length: 5 }, (_, n) => `${n + 1}번째 선택지는 $x^2+${n + 1}x+1$의 값이 양수이고 주어진 모든 조건을 만족한다.`) : ['1', '$\\frac{2}{3}$', '3', '4', '5'],
+            choices: i % 9 === 4 ? Array.from({ length: 5 }, (_, n) => `${n + 1}번째 선택지는 $x^2+${n + 1}x+1$의 값이 양수이고 주어진 모든 조건을 만족한다.${n === 4 ? ' 선택끝' + String(i + 1).padStart(3, '0') : ''}`) : ['1', '$\\frac{2}{3}$', '3', '4', '선택끝' + String(i + 1).padStart(3, '0')],
             ...(i % 9 === 3 || i % 9 === 6 ? { image: svg, imageSize: 'full', imageAlt: '삼각형 ABC' } : {}),
             ...(special && i % 9 === 7 ? { layoutTag: 'subjective-2up' } : {}),
             answer: '3', solution: `검증해설${i + 1}. 조건을 정리하면 $x=3$이다.`

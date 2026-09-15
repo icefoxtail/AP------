@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -2499,6 +2499,8 @@ const archiveExamDeps = Object.freeze({
 });
 
 async function renderExam(area, data, ctx = null) {
+    const slotParams = new URLSearchParams(ctx ? new URL(ctx.candidate.environment.url).search : window.location.search);
+    if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && Number((ctx?.buildState || AppState).qpp) === 4 && (!window.APExamRenderExecutor?.render || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
     const requestedAuthority = new URLSearchParams(ctx ? new URL(ctx.candidate.environment.url).search : window.location.search).get('examAuthority');
     const authority = requestedAuthority || 'shared';
     data = data.map(question => question && typeof question === 'object' ? { ...question, __apExamSubjectiveSpacing: true } : question);
@@ -3061,7 +3063,7 @@ async function prepareRasterPrint() {
     try {
         for (let index = 0; index < pages.length; index += 1) {
             const page = pages[index];
-            const canvas = await window.html2canvas(page, {
+            const canvas = await (window.APEqualSlotEngine?.rasterizePage || window.html2canvas)(page, {
                 backgroundColor: '#ffffff',
                 scale,
                 width: Math.ceil(page.offsetWidth),
@@ -3214,6 +3216,7 @@ async function safePrint(mode = 'vector') {
     let nativePrint = { summary: {}, restore() {} };
     let gdiPrint = { summary: {}, restore() {} };
     let preparationError = null;
+    let archivePreflightComplete = false;
     try {
         const limit = ms => new Promise(resolve => setTimeout(resolve, ms));
         const renderOutcome = await Promise.race([archiveScreenRuntime ? archiveScreenRuntime.whenIdle() : window.__AP_RENDER_READY__, limit(20000)]);
@@ -3232,6 +3235,7 @@ async function safePrint(mode = 'vector') {
         if (archiveScreenRuntime) bindArchiveRuntimePrintReadiness();
         window.APEqualSlotEngine?.assertReady(document.getElementById('print-area'));
         markArchiveReadiness('PRINT_READY', { transport: mode, pages: document.querySelectorAll('#print-area .page').length });
+        archivePreflightComplete = true;
         if (mode === 'raster') rasterPrint = await prepareRasterPrint();
         else if (mode === 'native') {
             nativePrint = { summary: await window.APNativePrint.print(document.getElementById('print-area'), {
@@ -3277,7 +3281,7 @@ async function safePrint(mode = 'vector') {
     };
     document.documentElement.dataset.apPrintMetrics = JSON.stringify(printMetrics);
 
-    if (preparationError && ['RENDER_TRANSACTION_INCOMPLETE', 'IMAGE_READINESS_INCOMPLETE', 'QUESTION_IMAGE_LOAD_FAILED', 'QUESTION_IMAGE_READINESS_INCOMPLETE'].includes(preparationError.code)) {
+    if (preparationError && (!archivePreflightComplete || String(preparationError.code || '').startsWith('EQUAL_SLOT_') || ['RENDER_TRANSACTION_INCOMPLETE', 'IMAGE_READINESS_INCOMPLETE', 'QUESTION_IMAGE_LOAD_FAILED', 'QUESTION_IMAGE_READINESS_INCOMPLETE'].includes(preparationError.code))) {
         rasterPrint.restore();
         optimizedImages.restore();
         printPending = false;

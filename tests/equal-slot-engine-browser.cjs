@@ -4,7 +4,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
-const { makeBank } = require('./fixtures/equal-slot-engine-bank.js');
+const { execFileSync } = require('node:child_process');
+const { makeBank } = require('../archive/exams/test-fixtures/equal-slot-engine-bank.js');
 const root = path.resolve(__dirname, '..');
 const out = path.join(root, 'reports/print-engine-v2');
 fs.mkdirSync(out, { recursive: true });
@@ -36,9 +37,10 @@ async function ready(page) {
     }
     throw Error('render readiness timeout: ' + JSON.stringify(await page.evaluate(() => ({ text: document.body.innerText.slice(-1000), data: {...document.documentElement.dataset} }))));
 }
-async function launch(browser, origin, { kind, count = 9, legacy = false, width = 1440, recipients = 1, broken = false, mode = 'exam', qpp = 4, strict = true, special = true }) {
+async function launch(browser, origin, { kind, count = 9, legacy = false, width = 1440, recipients = 1, broken = false, mode = 'exam', qpp = 4, strict = true, special = true, missingEngine = false }) {
     const context = await browser.newContext({ viewport: { width, height: 1050 } });
     await context.route('**/api/**', r => r.fulfill({ contentType: 'application/json', body: '{"success":true}' }));
+    if (missingEngine) await context.route(`**/${missingEngine === 'executor' ? 'exam-render-executor' : 'equal-slot-engine'}.js*`, r => r.abort());
     const page = await context.newPage(); const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.addInitScript(() => {
@@ -76,7 +78,11 @@ async function capture(page) {
         const area = document.getElementById('print-area');
         const norm = r => ({ left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height });
         const pages = [...area.querySelectorAll('.page')].map(p => ({ className: p.className, boxes: [...p.querySelectorAll('.q-box')].map(b => ({ rect: norm(b.getBoundingClientRect()), text: b.textContent, source: b.dataset.sourceRef, data: { ...b.dataset } })), rect: norm(p.getBoundingClientRect()), qr: [...p.querySelectorAll('.page-qr,.page-submit-qr')].map(q => norm(q.getBoundingClientRect())) }));
-        return { pages, api: !!window.APEqualSlotEngine, audit: window.APEqualSlotEngine?.audit(area), metrics: window.__AP_RENDER_METRICS__, mathErrors: area.querySelectorAll('mjx-merror').length, images: [...area.querySelectorAll('img')].map(i => ({ ready: i.complete && i.naturalWidth > 0, src: i.currentSrc })), questionText: [...area.querySelectorAll('.q-box')].map(q => q.textContent), rootData: { ...area.dataset } };
+        const overflowBoxes = [...area.querySelectorAll('.q-box')].filter(box => {
+            const r = box.getBoundingClientRect();
+            return [...box.querySelectorAll('.q-content,.choices,.q-image-wrap')].some(n => { const x = n.getBoundingClientRect(); return x.left < r.left - 2 || x.top < r.top - 2 || x.right > r.right + 2 || x.bottom > r.bottom + 2; });
+        }).map(q => q.dataset.sourceRef);
+        return { pages, overflowBoxes, api: !!window.APEqualSlotEngine, audit: window.APEqualSlotEngine?.audit(area), metrics: window.__AP_RENDER_METRICS__, mathErrors: area.querySelectorAll('mjx-merror').length, images: [...area.querySelectorAll('img')].map(i => ({ ready: i.complete && i.naturalWidth > 0, src: i.currentSrc })), questionText: [...area.querySelectorAll('.q-box')].map(q => q.textContent), rootData: { ...area.dataset } };
     });
 }
 function assertExam(data, count, recipients = 1) {
@@ -120,8 +126,10 @@ function assertExam(data, count, recipients = 1) {
                 await run.page.emulateMedia({ media: 'print' });
                 await run.page.evaluate(() => document.fonts.ready);
                 const print = await capture(run.page); assertExam(print, item.count, item.recipients);
-                if (item.count === 9) {
+                if (item.count === 9 || process.env.AP_SLOT_PDF) {
                     await run.page.pdf({ path: path.join(out, name + '.pdf'), preferCSSPageSize: true, printBackground: true });
+                    const texts = JSON.parse(execFileSync(process.env.AP_PYTHON || 'python', ['-c', 'import sys,json; from pypdf import PdfReader; print(json.dumps([p.extract_text() or "" for p in PdfReader(sys.argv[1]).pages]))', path.join(out, name + '.pdf')], { encoding: 'utf8' })).map(s => s.replace(/\s+/g, ''));
+                    for (let i = 1; i <= item.count; i++) assert.ok(texts[Math.floor((i - 1) / 4)].includes('선택끝' + String(i).padStart(3, '0')), `PDF lost or moved choices for question ${i}`);
                     await run.page.locator('#print-area .page').first().screenshot({ path: path.join(out, name + '.png') });
                 }
                 assert.deepEqual(run.errors, []);
@@ -172,10 +180,13 @@ function assertExam(data, count, recipients = 1) {
                         box.style.transform = 'translateX(-100px)'; const escaped = APEqualSlotEngine.audit(document.getElementById('print-area')); box.style.transform = original;
                         const content = box.querySelector('.q-content'), style = content.style.cssText;
                         content.style.height = '1px'; content.style.overflow = 'hidden'; const clipped = APEqualSlotEngine.audit(document.getElementById('print-area')); content.style.cssText = style;
-                        return { escaped: escaped.issues, clipped: clipped.issues, restored: APEqualSlotEngine.audit(document.getElementById('print-area')).ok };
+                        const math = box.querySelector('mjx-math'), mathStyle = math.style.cssText;
+                        math.style.display = 'inline-block'; math.style.transform = 'translateX(-1000px)'; const mathEscape = APEqualSlotEngine.audit(document.getElementById('print-area')); math.style.cssText = mathStyle;
+                        return { escaped: escaped.issues, clipped: clipped.issues, mathEscape: mathEscape.issues, restored: APEqualSlotEngine.audit(document.getElementById('print-area')).ok };
                     });
                     assert.ok(mutated.escaped.some(i => i.code === 'CONTENT_OUTSIDE_SLOT'));
                     assert.ok(mutated.clipped.some(i => i.code === 'INTERNAL_CLIPPING'));
+                    assert.ok(mutated.mathEscape.some(i => i.code === 'CONTENT_OUTSIDE_SLOT'), 'MathJax inner ink cannot escape its slot');
                     assert.equal(mutated.restored, true);
                     const stable = await run.page.evaluate(async () => {
                         const area = document.getElementById('print-area');
@@ -206,15 +217,77 @@ function assertExam(data, count, recipients = 1) {
                             const start = performance.now(); const result = await rt.request({ type: 'FORCED_REBUILD' });
                             return { ok: result.ok, ms: performance.now() - start, metrics: window.__AP_RENDER_METRICS__ };
                         });
-                        assert.equal(rebuild.ok, true); samples.push({ wallMs: run.wallMs, metrics: data.metrics, rebuild });
+                        assert.equal(rebuild.ok, true); samples.push({ wallMs: run.wallMs, metrics: data.metrics, overflowBoxes: data.overflowBoxes, rebuild });
                     } finally { await run.context.close(); }
                 }
                 results.push({ name: `${kind}-${legacy ? 'legacy' : 'v2'}-performance`, ok: true, samples });
                 console.log('MEASURE', kind, legacy ? 'legacy' : 'v2', samples.map(s => s.metrics.renderReadyMs));
             }
         }
+        if (phase === 'raster') {
+            for (const kind of ['archive', 'mixer', 'wrong']) {
+                const run = await launch(browser, origin, { kind, count: 9 });
+                try {
+                    assert.equal(run.outcome.ok, true);
+                    const raster = await run.page.evaluate(async () => {
+                        const page = document.querySelector('#print-area .page');
+                        const renderer = window.APEqualSlotEngine?.rasterizePage || window.html2canvas;
+                        const canvas = await renderer(page, { scale: 1.5, width: Math.ceil(page.offsetWidth), height: Math.ceil(page.offsetHeight), logging: false, useCORS: true, backgroundColor: '#fff' });
+                        return canvas.toDataURL('image/png').split(',')[1];
+                    });
+                    fs.writeFileSync(path.join(out, `${kind}-raster.png`), Buffer.from(raster, 'base64'));
+                    results.push({ name: `${kind}-raster`, ok: true }); console.log('CAPTURE raster', kind);
+                } finally { await run.context.close(); }
+            }
+        }
+        if (phase === 'guards' || phase === 'all') {
+            for (const kind of ['archive', 'mixer', 'wrong']) {
+                const run = await launch(browser, origin, { kind, count: 4 });
+                try {
+                    assert.equal(run.outcome.ok, true);
+                    const prints = await run.page.evaluate(async kind => {
+                        let prints = 0; window.print = () => { prints++; }; window.alert = () => {};
+                        const original = APEqualSlotEngine.assertReady;
+                        APEqualSlotEngine.assertReady = () => { throw Object.assign(Error('injected invalid geometry'), { code: 'EQUAL_SLOT_AUDIT_FAILED' }); };
+                        if (kind === 'wrong') await clinicSafePrint(); else await safePrint('vector');
+                        APEqualSlotEngine.assertReady = original;
+                        return prints;
+                    }, kind);
+                    assert.equal(prints, 0, `${kind}: failed slot preflight must not print`);
+                    if (kind === 'archive') {
+                        const result = await run.page.evaluate(async () => {
+                            let prints = 0; window.print = () => { prints++; };
+                            const original = bindArchiveRuntimePrintReadiness;
+                            bindArchiveRuntimePrintReadiness = () => { throw Error('PRINT_ACTIVE_BINDING_FAILED'); };
+                            await safePrint('vector'); bindArchiveRuntimePrintReadiness = original; return prints;
+                        });
+                        assert.equal(result, 0, 'snapshot readiness failure must block vector print');
+                    }
+                    results.push({ name: `${kind}-preflight-blocks-print`, ok: true }); console.log('PASS print guard', kind);
+                } finally { await run.context.close(); }
+                const missing = await launch(browser, origin, { kind, count: 4, missingEngine: true });
+                try { assert.equal(missing.outcome.ok, false, `${kind}: unavailable strict compositor must not silently change layout`); results.push({ name: `${kind}-missing-engine`, ok: true }); console.log('PASS missing engine', kind); }
+                finally { await missing.context.close(); }
+                const compatible = await launch(browser, origin, { kind, count: 9, missingEngine: true, strict: false });
+                try { assert.equal(compatible.outcome.ok, true, `${kind}: special layout must remain available without v2`); results.push({ name: `${kind}-missing-engine-special-compatibility`, ok: true }); }
+                finally { await compatible.context.close(); }
+                const executorMissing = await launch(browser, origin, { kind, count: 4, missingEngine: 'executor' });
+                try { assert.equal(executorMissing.outcome.ok, false, `${kind}: strict mode cannot use missing executor fallback`); }
+                finally { await executorMissing.context.close(); }
+            }
+        }
+        if (phase === 'quality') {
+            for (const kind of ['archive', 'mixer', 'wrong']) {
+                const pair = [];
+                for (const legacy of [true, false]) {
+                    const run = await launch(browser, origin, { kind, count: 9, legacy, special: false });
+                    try { assert.equal(run.outcome.ok, true); const data = await capture(run.page); pair.push({ legacy, overflow: data.overflowBoxes.length, math: data.metrics.mathJaxCalls }); }
+                    finally { await run.context.close(); }
+                }
+                assert.equal(pair[1].overflow, 0); assert.ok(pair[0].overflow > pair[1].overflow, `${kind}: clipping fixture must improve`);
+                results.push({ name: `${kind}-clip-improvement`, ok: true, pair }); console.log('QUALITY', kind, pair);
+            }
+        }
         fs.writeFileSync(path.join(out, `browser-${phase}.json`), JSON.stringify(results, null, 2));
     } finally { await browser.close(); await new Promise(resolve => server.close(resolve)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });
-
-
