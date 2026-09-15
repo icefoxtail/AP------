@@ -8,6 +8,8 @@
 
 작업 worktree: `C:/Users/USER/.codex/worktrees/internal-review-engine-integration`
 
+최신 `origin/main` 반영: `53e1ae66c`를 `07f2e0a79` merge commit으로 이 feature branch에 반영했다.
+
 원래 checkout `C:/Users/USER/Desktop/AP------`의 기존 수정 파일은 이 작업에 포함하지 않았고 그대로 보존했다.
 
 ## 변경 범위
@@ -17,6 +19,8 @@
 - 중복 구현인 `archive/internal-review-live.js`와 `archive/internal-review-live.css`는 제거했다.
 - `archive/exams/**/*.js` production exam source는 수정하지 않았다. `git diff --name-status` 기준 production exam 데이터 변경은 0건이다.
 - source-preserving writer, atomic session store, versioned preview bridge, save transaction, runtime/editor contract tests를 추가했다.
+- writer는 bank를 JSON single-line이 아닌 2-space multiline/indent JSON literal로 저장하고, nested assignment의 line indent를 유지한다.
+- post-write 검증 실패는 `beforeSource`, recovery source/file name, `writeCompleted`, `rollbackAttempted=false`를 포함하는 명시적 recovery contract로 전달하며 자동 rollback하지 않는다.
 
 ## 자동 검증
 
@@ -25,10 +29,10 @@
 실행 명령:
 
 ```powershell
-node --test tests/archive-review-source-writer.test.mjs tests/archive-review-session-store.test.mjs tests/archive-review-preview-bridge.test.mjs tests/archive-review-runtime-contract.test.mjs tests/archive-review-editor-contract.test.mjs tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-fast-engine-runtime.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js tests/archive-solution-image.test.js tests/archive-render-authority-adapter.test.js tests/archive-canonical-identity-propagation.test.js
+node --test tests/archive-review-source-writer.test.mjs tests/archive-review-session-store.test.mjs tests/archive-review-preview-bridge.test.mjs tests/archive-review-runtime-contract.test.mjs tests/archive-review-editor-contract.test.mjs tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-fast-engine-runtime.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js tests/archive-solution-image.test.js tests/archive-render-authority-adapter.test.js tests/archive-canonical-identity-propagation.test.js tests/archive-adjacent-math-readability.test.mjs
 ```
 
-결과: `66 passed / 0 failed`.
+결과: `72 passed / 0 failed`.
 
 포함한 회귀 범위:
 
@@ -38,6 +42,7 @@ node --test tests/archive-review-source-writer.test.mjs tests/archive-review-ses
 - review snapshot의 빈 bank, canonical `reviewSourceRef` 보존, normal fetch/script loader와의 분리
 - sourceRef 기반 선택 및 null ID 편집, 파일 읽기 실패 시 현재 handle 보존, metadata markup escaping
 - save 전 preview 대기, 외부 파일 변경 차단, post-write semantic mismatch 차단, legacy redirect
+- multiline/indent formatting regression, post-write recovery artifact, beforeSource 보존, 무조건 rollback 금지, recovery snapshot persistence
 - regular archive runtime, MathJax loop, render-authority adapter, solution image, canonical identity 회귀
 
 ### Source writer 전체 inventory
@@ -69,7 +74,7 @@ archive/internal-review-engine.js
 
 ### Skill verification
 
-작업 시작 시 기준 HEAD `5abf17d8d05b4e8e6914be5d833833c2519ad1c8`에서 `node tools/skills/verify-skills.mjs`는 PASS였다. 최종 검증 시에는 원격 `origin/main`이 작업 중 `9b75aa4f5b39181609a33a1df7fd14d27950dd03`으로 한 커밋 전진하여 `ahead=8, behind=1`이 되었고, `branch does not contain the latest origin/main` 한 항목 때문에 exit code 1을 반환했다. 이 브랜치는 계획서가 지정한 기준 HEAD에서의 작업 이력을 보존하므로 해당 원격 커밋을 임의로 merge/rebase하지 않았다.
+작업 시작 시 기준 HEAD `5abf17d8d05b4e8e6914be5d833833c2519ad1c8`에서 `node tools/skills/verify-skills.mjs`는 PASS였다. 작업 중 전진한 최신 `origin/main` `53e1ae66c`를 feature branch에 merge한 뒤 최종 검증을 다시 실행한다. merge/rebase 대상은 현재 feature branch뿐이며 `main` checkout은 변경하지 않는다.
 
 ### 저장소 전체 러너
 
@@ -90,7 +95,7 @@ svg-point-decimal-labels.test.js
 
 `print-render-authority-phase0-baseline.test.js`는 2026-09-06 historical frozen closure의 stale fixture/hash/direct-test denominator도 함께 검증하는 테스트이므로, 이번 브랜치의 canonical review entry migration과 별개로 기준선 실패로 남겨 두었다. 신규 `archive-engine-launch-fallback.test.js`에는 redirect query/hash 보존 검사를 추가했다.
 
-## 실제 localhost 브라우저 검증
+## 이전 localhost 브라우저 smoke 검증
 
 테스트 서버: `http://127.0.0.1:8765`
 
@@ -113,13 +118,21 @@ Chrome diagnostics에는 local URL에서 발생한 `A listener indicated an asyn
 
 별도 malformed source fixture `25_왕운중...`에서는 child가 `MATH_TYPESET_ERROR`로 전환되는 것을 재현했다. 동일 bridge로 정상 fixture가 통과했고, 오류는 해당 source의 math/typeset 입력 품질에 귀속되는 source-specific 결과로 기록했다.
 
+## 이번 follow-up의 실제 FSA 저장 시나리오 시도
+
+이번 follow-up에서는 새 branch worktree를 root로 `npx --yes live-server --host=127.0.0.1 --port=8765 --no-browser`를 실행해 Live Server를 기동했다. 실제 대상 fixture는 production exam이 아닌 임시 `archive/exams/test-fixtures/internal-review-live-save-fixture.js`로 준비했다.
+
+Chrome에서 canonical editor를 열고 archive 폴더 열기 → 한국어 직접 입력 → preview → Ctrl+S → disk 재로드 → browser reload/session restore → 외부 변경 overwrite 차단을 실행하려 했으나, Chrome CUA helper가 새 tab 생성 직후부터 `getState()`와 기존 tab `getTab()` 모두 30–120초 timeout되어 kernel이 재설정되었다. 문서화된 reset/retry 절차까지 수행했지만 브라우저 window/tab을 재연결하지 못했다. 이 때문에 이번 follow-up에서 실제 FSA permission prompt, 실제 Ctrl+S, browser reload/session restore, 실제 외부 파일 overwrite 차단은 실행 완료로 주장하지 않는다.
+
+임시 fixture는 테스트 inventory와 production diff에 남지 않도록 제거했으며 Live Server도 종료했다.
+
 ## 아직 실제 브라우저에서 실행하지 않은 항목
 
-- File System Access API의 실제 directory/file permission prompt를 승인하지 않고 진행했으므로, 실제 UI 직접 저장과 browser reload 후 IndexedDB handle 복원은 fake-handle unit test로만 검증했다.
+- File System Access API의 실제 directory/file permission prompt를 승인하지 못했으므로, 실제 UI 직접 저장과 browser reload 후 IndexedDB handle 복원은 fake-handle unit test로만 검증했다.
 - 실제 운영체제 IME composition event sequence를 자동 입력으로 재현하지 않았다. `compositionstart/update/end` 핸들러와 direct Korean text 입력은 확인했다.
 - 동일 경로 이미지 파일 교체, mode/file switch가 실제 렌더 중 겹치는 브라우저 시나리오, 장시간 Blob/listener leak 계수는 end-to-end로 실행하지 않았다. asset-only revision, object URL revoke/serial guard, bridge stale-race는 정적·단위 테스트와 위 browser stress metrics로 보강했다.
 - source parser는 기존 production bank 형식 호환성을 위해 JavaScript 평가가 필요하므로 capability-limited evaluator와 fail-closed ambient identifier 검사를 사용한다. 이는 review page의 document/network/storage capability를 노출하지 않도록 하는 경계이며, 완전한 OS 수준 보안 sandbox를 의미하지 않는다.
 
 ## 결론
 
-새 검수 엔진 변경과 대상 회귀 테스트는 통과했고, 실제 browser preview/bridge stress도 최신 revision 수렴과 iframe persistence를 확인했다. 저장소 전체 러너는 위의 기준선 6개 실패 때문에 exit code 1이며, 그 실패를 이번 변경이 해결했다고 표시하지 않는다. 이 evidence를 기준으로 branch를 원격에 push하고, merge/PR은 별도 결정으로 남긴다.
+새 검수 엔진 변경과 대상 회귀 테스트는 통과했고, 이전 localhost browser smoke에서는 preview/bridge 최신 revision 수렴과 iframe persistence를 확인했다. 이번 follow-up의 실제 FSA 저장 시나리오는 CUA helper timeout으로 미완료이며, 저장소 전체 러너의 최종 결과와 이 제한을 숨기지 않고 함께 보고한다. 이 evidence를 기준으로 feature branch만 원격에 push하고, `main` merge/PR은 수행하지 않는다.

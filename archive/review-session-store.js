@@ -49,6 +49,7 @@
         currentBank: diskBank,
         originalBank: clone(diskBank),
         sourceFingerprint: String(diskSource.sourceFingerprint || ''),
+        emergencyRecovery: clone(snapshot.draftState?.emergencyRecovery || null),
       };
     }
     const draft = snapshot.draftState || {};
@@ -68,6 +69,7 @@
       selectedSourceRef: editor.selectedSourceRef || null,
       editorState: clone(editor),
       uiState: clone(ui),
+      emergencyRecovery: clone(draft.emergencyRecovery || null),
       sessionRevision: snapshot.sessionRevision,
     };
   }

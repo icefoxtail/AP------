@@ -10,6 +10,7 @@ function createFileHandle(initialSource, { corruptAfterWrite = false } = {}) {
   let writes = 0;
   return {
     get writes() { return writes; },
+    get source() { return source; },
     setExternalSource(next) { source = next; },
     async getFile() { return { name: 'fixture.js', text: async () => source }; },
     async createWritable() {
@@ -60,9 +61,21 @@ test('rejects an external source change before opening a writable handle', async
 test('rejects a post-write semantic mismatch instead of reporting save success', async () => {
   const handle = createFileHandle(source, { corruptAfterWrite: true });
   const loadedFingerprint = await writer.fingerprintText(source);
+  let failure;
 
   await assert.rejects(
     () => saveReviewSource({ fileHandle: handle, loadedFingerprint, bank: [{ id: 1, content: '수정' }], fileName: 'fixture.js', writer }),
-    /ROUND_TRIP_SEMANTIC_MISMATCH/
+    error => {
+      failure = error;
+      return error.code === 'POST_WRITE_VERIFICATION_FAILED';
+    }
   );
+
+  assert.equal(failure.beforeSource, source);
+  assert.equal(failure.recoverySource, source);
+  assert.match(failure.recoveryFileName, /fixture\.before-review-recovery\.js$/);
+  assert.equal(failure.writeCompleted, true);
+  assert.equal(failure.rollbackAttempted, false);
+  assert.equal(handle.writes, 1);
+  assert.notEqual(handle.source, source, 'the test confirms that verification failed after disk mutation');
 });

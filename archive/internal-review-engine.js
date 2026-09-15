@@ -1,7 +1,7 @@
 /* ================================================================
    JS아카이브 내부 검수 엔진  —  internal-review-engine.js
    Chrome / Edge (localhost) 전용. File System Access API 사용.
-   eval 금지 — new Function('window', source)(sandbox) 방식 파싱.
+   eval 금지 — capability-limited new Function source evaluator 사용.
    ================================================================ */
 
 'use strict';
@@ -58,6 +58,7 @@ const state = {
   assetFingerprint: '',
   imagePreviewSerial: 0,
   editorRenderSerial: 0,
+  emergencyRecovery: null,
   reviewMetrics: {
     draftAtByRevision: {},
     bridgeSendAtByRevision: {},
@@ -754,6 +755,7 @@ async function loadBank(source, fileName, sourcePath = state.currentFilePath, so
   state.sourceRequestId = state.sourceIdentity + ':' + sourceFingerprint;
   state.sourceFingerprint = sourceFingerprint;
   state.loadedFingerprint = sourceFingerprint;
+  state.emergencyRecovery = null;
   state.originalBank   = deepClone(parsed.bank);
   state.currentBank    = deepClone(parsed.bank);
   state.questionSourceRefs.clear();
@@ -836,6 +838,7 @@ async function openArchiveDir() {
     state.currentFilePath = '';
     state.currentFileName = '';
     state.currentSource = '';
+    state.emergencyRecovery = null;
     state.examTitle = '';
     state.examDisplayTitle = '';
     state.sourceIdentity = '';
@@ -2011,6 +2014,7 @@ async function saveCurrentFile() {
     }
 
     state.currentSource = saveResult.source;
+    state.emergencyRecovery = null;
     state.loadedFingerprint = saveResult.fingerprint;
     state.sourceFingerprint = saveResult.fingerprint;
     state.originalBank = frozenBank;
@@ -2042,7 +2046,14 @@ async function saveCurrentFile() {
 
     showToast('저장 완료: ' + state.currentFileName);
   } catch (e) {
-    if (e.code === 'EXTERNAL_SOURCE_MODIFIED') {
+    if (e.code === 'POST_WRITE_VERIFICATION_FAILED') {
+      state.emergencyRecovery = {
+        source: e.recoverySource || e.beforeSource || state.currentSource,
+        fileName: e.recoveryFileName || (state.currentFileName.replace(/\.js$/, '') + '.before-review-recovery.js'),
+      };
+      showError('저장 후 disk 재검증에 실패했습니다. 저장 성공으로 처리하지 않았고 자동 rollback하지 않았습니다. 디스크는 변경되었을 수 있습니다. 기존 원본은 백업 다운로드 버튼으로 즉시 복구본을 보관하세요.');
+      schedulePersistSessionState(0);
+    } else if (e.code === 'EXTERNAL_SOURCE_MODIFIED') {
       showError('파일을 연 이후 외부에서 파일이 변경되었습니다. 현재 변경 내용을 덮어쓸 수 없습니다.');
     } else if (e.code === 'SAVE_REVISION_CHANGED') {
       showError('저장 중 새 수정이 발생했습니다. 최신 미리보기를 확인한 뒤 다시 저장하세요.');
@@ -2066,11 +2077,13 @@ function downloadModified() {
 }
 
 function downloadBackup() {
-  if (!state.currentSource || !state.currentFileName) { showToast('파일을 먼저 열어주세요.'); return; }
+  const recovery = state.emergencyRecovery;
+  const source = recovery?.source || state.currentSource;
+  if (!source || !state.currentFileName) { showToast('파일을 먼저 열어주세요.'); return; }
   const ts = formatDate();
-  const name = state.currentFileName.replace(/\.js$/, '') + '.before-internal-review-' + ts + '.js';
-  downloadText(state.currentSource, name);
-  showToast('백업 다운로드 완료');
+  const name = recovery?.fileName || state.currentFileName.replace(/\.js$/, '') + '.before-internal-review-' + ts + '.js';
+  downloadText(source, name);
+  showToast(recovery ? '저장 검증 실패 원본 복구본 다운로드 완료' : '백업 다운로드 완료');
 }
 
 /* ================================================================
@@ -2348,6 +2361,7 @@ function buildCurrentReviewSessionSnapshot() {
       sourceRefs: state.currentBank.map(function(q, index) { return getReviewQuestionSourceRef(q, index); }),
       modifiedIds: Array.from(state.modifiedIds),
       removedItems: state.removedItems,
+      emergencyRecovery: state.emergencyRecovery,
     },
     savedAt: Date.now(),
   });
@@ -2434,6 +2448,7 @@ async function applyRestoredState(snapshot) {
   state.loadedFingerprint = disk.sourceFingerprint;
   state.currentBank       = restored.currentBank || deepClone(disk.parsed.bank);
   state.originalBank      = restored.originalBank || deepClone(disk.parsed.bank);
+  state.emergencyRecovery = restored.emergencyRecovery || null;
   state.questionSourceRefs.clear();
   registerReviewQuestionSourceRefs(state.currentBank, state.sourceIdentity, restored.sourceRefs || []);
   registerReviewQuestionSourceRefs(state.originalBank, state.sourceIdentity);
