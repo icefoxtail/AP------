@@ -582,10 +582,11 @@ function getRenderHeaderMetaRight(type, fallbackMetaRight) {
 }
 
 function getRenderHeaderSubtitle(type) {
-    if (String(AppState.key || '').startsWith('unitpast_')) {
-        return type === 'exam' ? '' : clampText(AppState.meta?.sourceSummary || '', 180);
-    }
     const opts = getPrintHeaderOptions();
+    if (String(AppState.key || '').startsWith('unitpast_')) {
+        if (type === 'exam') return shouldApplyPrintHeader(type) ? opts.subtitle : '';
+        return clampText(AppState.meta?.sourceSummary || '', 180);
+    }
     return shouldApplyPrintHeader(type) ? opts.subtitle : '';
 }
 
