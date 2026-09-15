@@ -100,7 +100,6 @@ window.questionBank = [
 
     "solutionImageAlt": "평면좌표 문항 3의 핵심 관계를 표시한 해설 도형",
 
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
 
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
@@ -282,7 +281,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q08-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 8의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -535,7 +533,6 @@ window.questionBank = [
 
     "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
 
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
 
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",

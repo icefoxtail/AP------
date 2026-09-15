@@ -58,7 +58,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q02-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 2의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -174,7 +173,6 @@ window.questionBank = [
     "solution": "[키포인트] 한 점을 직선에 대하여 대칭이동하면 꺾인 거리의 최솟값을 직선거리로 바꿀 수 있다.\n조건 정리: 점 $A(2,1)$을 직선 $y=x$에 대하여 대칭이동한 점을 $A'(1,2)$라 하면 $AP=A'P$이다.\n풀이 방향: $A'P+PB$의 최솟값은 $A'$와 $B$를 잇는 선분의 길이이다.\n정석 풀이: $A'B=\\sqrt{(5-1)^2+(4-2)^2}=\\sqrt{20}=2\\sqrt5$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q06-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 6의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
