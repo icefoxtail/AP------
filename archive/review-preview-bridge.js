@@ -146,7 +146,7 @@
 
     function validateIncoming(event, message) {
       if (!message) return false;
-      if (expectedOrigin && event?.origin && event.origin !== expectedOrigin) return false;
+      if (expectedOrigin && event?.origin !== expectedOrigin) return false;
       const source = expectedWindow || iframe?.contentWindow;
       if (source && event?.source !== source) return false;
       return true;
@@ -415,19 +415,22 @@
       if (!isCurrentRevisionTuple(message, tuple)) return;
       const mode = message.payload?.mode;
       if (!['exam', 'sol', 'ans'].includes(mode)) return;
+      const requestTuple = normalizeTuple(message, tuple);
       markChildState(STATUS.RENDERING);
-      post('REVIEW_RENDER_START', { mode }, tuple);
+      post('REVIEW_RENDER_START', { mode }, requestTuple);
       try {
         const runtime = runtimeProvider();
         if (!runtime?.request) throw new Error('REVIEW_RUNTIME_UNAVAILABLE');
         const outcome = await runtime.request({ type: 'MODE_CHANGE', requestedMode: mode, foreground: true });
+        if (!isCurrentRevisionTuple(requestTuple, tuple)) return;
         if (!outcome?.ok) throw Object.assign(new Error(outcome?.code || 'REVIEW_RENDER_ERROR'), outcome || {});
         markChildState(STATUS.READY);
-        post('REVIEW_RENDER_DONE', { mode, pages: outcome.pages || null, metrics: windowRef.__AP_RENDER_METRICS__ || null }, tuple);
+        post('REVIEW_RENDER_DONE', { mode, pages: outcome.pages || null, metrics: windowRef.__AP_RENDER_METRICS__ || null }, requestTuple);
       } catch (error) {
+        if (!isCurrentRevisionTuple(requestTuple, tuple)) return;
         const code = String(error?.code || error?.message || error);
         markChildState(STATUS.ERROR, code);
-        post('REVIEW_RENDER_ERROR', { code }, tuple);
+        post('REVIEW_RENDER_ERROR', { code }, requestTuple);
       }
     }
 
@@ -438,24 +441,30 @@
       else if (message.type === 'REVIEW_SET_MODE') applyMode(message);
     };
     windowRef.addEventListener('message', listener);
-    windowRef.addEventListener('load', () => {
+    const onLoad = () => {
       markChildState(STATUS.READY);
       post('REVIEW_BRIDGE_READY', { status }, tuple);
-    }, { once: true });
+    };
+    windowRef.addEventListener('load', onLoad, { once: true });
     markChildState(STATUS.READY);
     post('REVIEW_BRIDGE_READY', { status: STATUS.READY }, tuple);
 
     const documentRef = windowRef.document;
+    const onDocumentClick = event => {
+      const node = event.target?.closest?.('[data-source-ref]');
+      const sourceRef = node?.getAttribute?.('data-source-ref');
+      if (sourceRef) post('REVIEW_QUESTION_SELECT', { sourceRef }, tuple);
+    };
     if (documentRef?.addEventListener) {
-      documentRef.addEventListener('click', event => {
-        const node = event.target?.closest?.('[data-source-ref]');
-        const sourceRef = node?.getAttribute?.('data-source-ref');
-        if (sourceRef) post('REVIEW_QUESTION_SELECT', { sourceRef }, tuple);
-      });
+      documentRef.addEventListener('click', onDocumentClick);
     }
 
     return Object.freeze({
-      dispose() { windowRef.removeEventListener('message', listener); },
+      dispose() {
+        windowRef.removeEventListener('message', listener);
+        windowRef.removeEventListener('load', onLoad);
+        documentRef?.removeEventListener?.('click', onDocumentClick);
+      },
       get status() { return status; },
       get tuple() { return { ...tuple }; },
     });

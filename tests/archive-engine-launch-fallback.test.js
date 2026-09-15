@@ -5,6 +5,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const indexHtml = fs.readFileSync(path.join(root, 'archive', 'index.html'), 'utf8');
 const engineHtml = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
+const legacyReviewHtml = fs.readFileSync(path.join(root, 'archive', 'internal-review-live.html'), 'utf8');
 
 assert(
   indexHtml.includes("const ARCHIVE_ENGINE_LAUNCH_STORAGE_KEY = 'APMATH_ARCHIVE_ENGINE_LAUNCH';") &&
@@ -24,6 +25,14 @@ assert(
 assert(
   engineHtml.includes("showArchiveDataLoadError('시험지 데이터가 전달되지 않았습니다. 아카이브에서 시험지를 다시 선택해 주세요.');"),
   'archive engine should show an actionable error instead of a blank page when no exam data is available'
+);
+
+assert(
+  legacyReviewHtml.includes("new URL('internal-review-engine.html', document.baseURI)") &&
+    legacyReviewHtml.includes('target.search = window.location.search;') &&
+    legacyReviewHtml.includes('target.hash = window.location.hash;') &&
+    legacyReviewHtml.includes('window.location.replace(target.href);'),
+  'legacy internal review entry should redirect to the canonical editor while preserving query and hash'
 );
 
 console.log('archive engine launch fallback checks passed');

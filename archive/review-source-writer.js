@@ -8,6 +8,13 @@
 
   const BANK_PROPERTIES = new Set(['questions', 'problems']);
   const REVIEW_OVERRIDE_MARKER = '/* AP_REVIEW_SOURCE_OVERRIDE */';
+  const BLOCKED_SOURCE_IDENTIFIERS = new Set([
+    'document', 'globalThis', 'self', 'top', 'parent', 'frames', 'location', 'history',
+    'fetch', 'XMLHttpRequest', 'WebSocket', 'EventSource', 'navigator', 'localStorage',
+    'sessionStorage', 'indexedDB', 'caches', 'alert', 'confirm', 'prompt', 'open',
+    'postMessage', 'importScripts', 'eval', 'Function', 'require', 'process', 'Deno',
+    'constructor', '__proto__'
+  ]);
 
   function isIdentifierStart(char) {
     return !!char && /[A-Za-z_$]/.test(char);
@@ -190,12 +197,46 @@
     return JSON.parse(JSON.stringify(value));
   }
 
+  function assertSafeSource(source) {
+    // This is deliberately fail-closed for archive files. The evaluator below
+    // still needs JavaScript semantics for the existing literal banks, but a
+    // selected source must not receive the review page's ambient capabilities.
+    let cursor = 0;
+    while (cursor < source.length) {
+      const token = nextToken(source, cursor);
+      if (!token) break;
+      if (token.kind === 'identifier' && BLOCKED_SOURCE_IDENTIFIERS.has(token.value)) {
+        throw new Error('SOURCE_WRITER_UNSAFE_SOURCE');
+      }
+      cursor = Math.max(token.end, cursor + 1);
+    }
+  }
+
+  function evaluateInLimitedScope(source, sandboxWindow) {
+    assertSafeSource(source);
+    const globalRef = typeof globalThis !== 'undefined' ? globalThis : root;
+    const scope = new Proxy(Object.create(null), {
+      has() { return true; },
+      get(_, property) {
+        if (property === Symbol.unscopables) return undefined;
+        if (property === 'window') return sandboxWindow;
+        if (typeof property === 'string' && BLOCKED_SOURCE_IDENTIFIERS.has(property)) {
+          throw new Error('SOURCE_WRITER_UNSAFE_SOURCE');
+        }
+        return globalRef && property in globalRef ? globalRef[property] : undefined;
+      },
+      set() { throw new Error('SOURCE_WRITER_UNSAFE_SOURCE'); },
+    });
+    const evaluator = new Function('window', 'scope',
+      'with (scope) { return (function () { "use strict";\n' + source + '\n}).call(null); }');
+    return evaluator(sandboxWindow, scope);
+  }
+
   function parseArchiveSource(source, fileName) {
     if (typeof source !== 'string') throw new TypeError('SOURCE_WRITER_SOURCE_MUST_BE_STRING');
-    const sandbox = { window: {} };
-    const fn = new Function('window', source);
-    fn(sandbox.window);
-    const raw = sandbox.window.questionBank;
+    const sandbox = Object.create(null);
+    evaluateInLimitedScope(source, sandbox);
+    const raw = sandbox.questionBank;
     let bank;
     let bankShape;
     if (Array.isArray(raw)) {
@@ -212,8 +253,8 @@
     }
     const fallback = String(fileName || 'archive.js').replace(/\.js$/i, '');
     return {
-      title: sandbox.window.examTitle || sandbox.window.title || fallback,
-      displayTitle: sandbox.window.examDisplayTitle || sandbox.window.examTitle || sandbox.window.title || fallback,
+      title: sandbox.examTitle || sandbox.title || fallback,
+      displayTitle: sandbox.examDisplayTitle || sandbox.examTitle || sandbox.title || fallback,
       bank: clone(bank),
       bankShape,
     };
