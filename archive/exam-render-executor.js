@@ -5,6 +5,15 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createExamRenderExecutor(root) {
     'use strict';
 
+    function usesEqualSlots(qpp, questions, deps) {
+        const url = deps.engineUrl || root.location?.href || 'https://ap.invalid/';
+        const params = new URL(url, 'https://ap.invalid/').searchParams;
+        if (Number(qpp) !== 4 || params.get('slotEngine') === 'legacy') return false;
+        if (params.get('equalSlots') !== '1' && questions.some(q => q.wide === true || ['fullwidth', 'subjective-2up', 'subjective-4up'].includes(q.layoutTag))) return false;
+        if (!root.APEqualSlotEngine) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
+        return root.APEqualSlotEngine.enabled(qpp, url, questions);
+    }
+
     // Mechanical extraction of Archive's verified renderExam DOM transaction.
     // The executor receives all Archive-specific format/source helpers through
     // deps; the staging, slot, chunk, image, and page materialization order is
@@ -60,6 +69,12 @@
             staging.appendChild(box);
             return { q, box, originalIndex: i };
         });
+        if (usesEqualSlots(appState.qpp, data, deps)) {
+            appState.layoutMeasurementLedger = null;
+            return root.APEqualSlotEngine.render({ area, items, deps: {
+                ...deps, deferFinalize: true, makePage: (target, number) => { const page = deps.makePage(target, 'exam', number); return { page, body: page.body }; }
+            } });
+        }
         await deps.applyAutoImageSizeClasses(staging);
         await deps.typesetMath('exam-staging', [staging]);
         await deps.raf();
@@ -301,6 +316,10 @@ async function renderComposed({ area, items, deps }) {
         staging.appendChild(box);
         return { q, box };
     });
+
+    if (usesEqualSlots(qpp, items, deps)) {
+        return root.APEqualSlotEngine.render({ area, items: stagedItems, deps: { ...deps, deferFinalize: true } });
+    }
 
     await applyAutoImageSizeClasses(staging);
     await deps.typesetMath('composition-exam', [staging]);

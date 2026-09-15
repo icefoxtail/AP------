@@ -160,8 +160,10 @@
     <script src="../archive/mathjax_render_loop.js?v=20260912.1"></script>
     <script src="../archive/render-state-normalizer.js?v=20260912.1"></script>
     <script src="../archive/screen-runtime.js?v=20260913.1"></script>
-    <script src="../archive/common-fast-runtime.js?v=20260913.1"></script>
-    <script src="../archive/exam-render-executor.js?v=20260912.1"></script>
+    <script src="../archive/common-fast-runtime.js?v=20260915.2"></script>
+    <script src="../archive/equal-slot-engine.js?v=20260915.1"></script>
+    <link rel="stylesheet" href="../archive/equal-slot-engine.css?v=20260915.1">
+    <script src="../archive/exam-render-executor.js?v=20260915.1"></script>
     <script src="../archive/solution-render-executor.js?v=20260913.1"></script>
     <script src="../archive/answer-render-executor.js?v=20260912.1"></script>
 </head>
@@ -1676,6 +1678,8 @@ function getGroupTitle(defaultTitle) {
 
 
 async function renderMeasuredExamPages(area, items, pageMeta = {}) {
+    const slotParams = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
+    if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && (!buildContext || !window.APExamRenderExecutor?.renderComposed || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
     if (buildContext && useSharedExecutor()) return APExamRenderExecutor.renderComposed({ area, items, deps: wrongExamDeps(pageMeta) });
     if (!items.length) return;
     const staging = (buildContext?.stagingHost || document.getElementById('staging'));
@@ -2910,7 +2914,8 @@ async function buildWrongTransaction() {
     else if (state.payload.mode === 'class') await renderClassPages(area, state.payload);
     else await renderStudentPages(area, state.payload);
     if (!area.textContent.trim()) area.innerHTML = '<div class="notice">출력할 오답 문항이 없습니다.</div>';
-    await buildContext.typeset('composition-final', [area]);
+    if (!area.querySelector('.ap-equal-slot-page') || window.APRenderLoop.unrenderedMathCount(area)) await buildContext.typeset('composition-final', [area]);
+    await window.APEqualSlotEngine?.finalize(area);
     await raf();
     await recordClinicDualRun(area);
     recordClinicCompositionPromotionGate(area);
