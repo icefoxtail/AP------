@@ -8,7 +8,7 @@
 
 작업 worktree: `C:/Users/USER/.codex/worktrees/internal-review-engine-integration`
 
-최신 `origin/main` 반영: `38e45da653fbb12bca41672d65ded01e100d026e`를 `707cd214eb22033e4a6fea5cbc418bd4ba888d2e` merge commit으로 이 feature branch에 반영했다.
+최신 `origin/main` 반영: `91d8b7528efd1a9099a2646bf89ee0edd17a02d2`를 `f3da72544ae80f0f75359d4066a24dba45f7ba2c` merge commit으로 이 feature branch에 반영했다.
 
 원래 checkout `C:/Users/USER/Desktop/AP------`의 기존 수정 파일은 이 작업에 포함하지 않았고 그대로 보존했다.
 
@@ -74,7 +74,7 @@ archive/internal-review-engine.js
 
 ### Skill verification
 
-작업 시작 시 기준 HEAD `5abf17d8d05b4e8e6914be5d833833c2519ad1c8`에서 `node tools/skills/verify-skills.mjs`는 PASS였다. 작업 중 전진한 최신 `origin/main` `38e45da653fbb12bca41672d65ded01e100d026e`를 feature branch에 merge했고, 최신 merge 결과에서 최종 검증도 PASS였다. merge 대상은 현재 feature branch뿐이며 `main` checkout은 변경하지 않는다.
+작업 시작 시 기준 HEAD `5abf17d8d05b4e8e6914be5d833833c2519ad1c8`에서 `node tools/skills/verify-skills.mjs`는 PASS였다. 작업 중 전진한 최신 `origin/main` `91d8b7528efd1a9099a2646bf89ee0edd17a02d2`를 feature branch에 merge했고, 최신 merge 결과에서 최종 검증도 PASS였다. merge 대상은 현재 feature branch뿐이며 `main` checkout은 변경하지 않는다.
 
 ### 저장소 전체 러너
 
