@@ -196,3 +196,62 @@ REGENERATABLE 또는 CANONICAL_RECORD로 판정한다. 생성 evidence를 Git에
 아니다. 실제 pipeline 재실행 후에도 generated output은 local workspace에
 남고, source 또는 production 결과가 바뀐 경우에만 해당 exact path가 Git
 status에 나타나야 한다.
+
+## Lifecycle cleanup contract
+
+Git에서 보이지 않게 만드는 것과 local lifecycle을 끝내는 것은 별개의
+계약이다. generated output은 실행 중 검수와 다음 stage의 입력으로 사용한
+뒤, production 또는 명시된 canonical handoff 결과가 성공적으로 확정된
+경우에만 TEMP 산출물을 정리한다.
+
+### TEMP_GENERATED
+
+`candidate`, `pages`, `crops`, `debug`, `review`, `audit`, `evidence`,
+`render`, `screenshot`, `benchmark`, packet, trace, temporary manifest,
+generated JSON/CSV/TXT/HTML, intermediate SVG/PNG/JPG/WebP는 source와
+production 입력으로 재생성 가능한 한 TEMP_GENERATED다. 이름에 `final`,
+`evidence`, `audit`, `receipt`가 들어갔다는 이유만으로 보존하지 않는다.
+
+Archive-side run은 `tools/archive/generated-artifact-lifecycle.mjs`의
+`.lifecycle.json` success marker가 없으면 cleanup하지 않는다. Past Exam은
+promotion helper가 production JS/asset copy와 promotion receipt를 모두
+성공시킨 뒤에만 staging TEMP를 cleanup한다. extraction, manual review,
+partial, blocked, failed run은 local debug lineage를 보존한다.
+
+### CANONICAL_GENERATED
+
+다음 단계 또는 handoff가 실제로 읽고, 현재 코드/프로토콜에 보존 계약과
+hash binding이 있는 최소 산출물만 CANONICAL_GENERATED다. 현재 ALIVE의
+`alive/runtime/results/<run-id>.zip` 및 `<run-id>-summary.json`은 compact
+handoff result로 이 계약을 가진다. verbose run directory는 canonical이
+아니며 `runtime_lifecycle.finalize_run`이 성공 후 quarantine으로 이동한다.
+result와 quarantine은 retention 기준 이후 별도 GC 대상이다.
+
+### ALIVE success/failure boundary
+
+`alive/engine/runtime_lifecycle.py`는 legacy/fast/staged/adaptive뿐 아니라
+universal run의 `SEALED_LOCAL`도 terminal success로 취급한다. package가
+CRC/hash 검증을 통과하면 compact result를 먼저 기록하고 successful verbose
+workdir를 제거한다. FAILED run만 OS quarantine으로 이동해 bounded debugging
+retention을 적용한다. `--keep-workdir`는 명시적인 debugging escape hatch이며
+기본값이 아니다.
+
+`runtime-gc`는 dry-run이 기본이고 active/held/manual-review 상태를 절대
+sweep하지 않는다. FAILED run은 즉시 삭제하지 않고 retention 이후에만
+finalize/quarantine하며, 다음 성공 run 또는 명시된 retention GC가 오기
+전까지 필요한 debug bundle을 보존한다.
+
+### Required lifecycle checks
+
+- `A`: pipeline-only execution은 Git status noise를 만들지 않는다.
+- `B`: source/production edit은 계속 Git status에 나타난다.
+- `C`: 새 production SVG/PNG는 visible하고 ignore되지 않는다.
+- `D`: generated workspace의 동일 확장자 SVG/PNG는 Git에 나타나지 않으며,
+  success marker가 있을 때만 cleanup된다.
+- `E`: active/held/failed run은 success cleanup으로 삭제되지 않는다.
+- `F`: universal sealed run은 compact result/package를 남기고 verbose workdir를
+  repository 밖으로 이동한다.
+
+현재 상태가 불명확한 legacy generated directory는 TEMP 또는 CANONICAL로
+추측하지 않고 `UNCLASSIFIED_LEGACY`로 보고하며, producer/consumer/manifest
+관계를 새로 확인하기 전에는 삭제하지 않는다.

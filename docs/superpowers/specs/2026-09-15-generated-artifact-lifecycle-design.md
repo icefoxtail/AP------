@@ -105,8 +105,9 @@ mistaken for disposable output.
 
 `alive/engine/runtime_lifecycle.py` is the common runtime boundary. Package/final
 commands call `finalize_run` by default. It verifies the package and writes a
-compact result before moving verbose workdir data to an OS quarantine directory.
-`--keep-workdir` is the explicit debugging escape hatch.
+compact result before removing successful verbose workdir data. Failed runs move
+to an OS quarantine directory for bounded debugging retention. `--keep-workdir`
+is the explicit debugging escape hatch.
 
 The lifecycle includes universal runs and `SEALED_LOCAL` as a terminal success
 state. `runtime-gc` remains dry-run by default, protects active/held runs, and
