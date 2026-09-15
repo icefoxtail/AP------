@@ -20,6 +20,11 @@ target PDF의 source truth를 대신하지 않는다. V3 completion은 typed 해
 `02_PIPELINES/공통파이프라인_실행계약_v1.md`와 `archive/tools/pipeline-core/`를 적용한다.
 추출/초안 완료와 실제 문항 품질 PASS는 서로 다른 상태다.
 
+모든 archive/pipeline 실행의 생성 evidence·검수·runtime 산출물 Git 경계는
+`02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md`를 적용한다. 이 문서는
+파일 확장자가 아니라 generated workspace를 ignore하고, production JS·이미지·SVG
+신규 추가 가능성과 기존 참조 asset의 Git 추적 가능성을 함께 검사한다.
+
 ### JS아카이브 공통 권위 구조
 
 JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
