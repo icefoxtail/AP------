@@ -562,7 +562,7 @@ window.questionBank = [
     answer: "②",
     solution: "[키포인트] 각 빈칸이 증명 흐름에서 어떤 내용을 나타내는지 확인한다.\n$AB\\parallel DC$이므로 $\\angle BAC=\\angle DCA$이고, $AD\\parallel BC$이므로 $\\angle BCA=\\angle DAC$이다. 또한 $AC$는 공통이므로 $\\triangle ABC\\equiv\\triangle CDA$이다.\n따라서 ①에는 $AB\\parallel DC$, ③에는 $\\triangle ABC\\equiv\\triangle CDA$가 들어간다. 또 $\\angle A=\\angle BAC+\\angle CAD=\\angle DCA+\\angle ACB=\\angle C$이므로 ④와 ⑤도 알맞다.\n②의 자리에는 $\\angle BCA=\\angle DAC$이 들어가야 하므로 '$\\angle B=\\angle C$'는 적절하지 않다. 정답은 ②이다.",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q16_diagram.png",
-    imageSize: "medium",
+    imageSize: "half",
     subUnitConfidence: "rule_inferred",
     subUnitClassificationDepth: "complete_rule"
   },
@@ -672,7 +672,7 @@ window.questionBank = [
     answer: "③",
     solution: "[키포인트] 직사각형의 대각선은 길이가 같고 서로를 이등분한다.\n$AC=BD$이고 $AO=CO=\\dfrac12AC$, $BO=DO=\\dfrac12BD$이다. 두 대각선의 길이가 같으므로 $AO=BO$도 성립한다. 따라서 ㄴ, ㄷ, ㄹ은 참이다.\n직사각형의 대각선이 항상 수직인 것은 아니므로 ㄱ은 거짓이다. 또한 일반적인 직사각형에서 $AB=BC$ 또는 $AB=AD$가 보장되지 않으므로 ㅁ, ㅂ도 거짓이다.\n따라서 옳은 것은 ㄴ, ㄷ, ㄹ이고 정답은 ③이다.",
     image: "assets/images/25_왕운중_2학기_중간_중2_수학/q19.png",
-    imageSize: "full",
+    imageSize: "medium",
     subUnitConfidence: "candidate_evidence",
     subUnitClassificationDepth: "complete_candidate"
   },
