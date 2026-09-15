@@ -48,6 +48,60 @@ test('updates one review override on repeated saves instead of appending overrid
   assert.equal((second.match(/AP_REVIEW_SOURCE_OVERRIDE/g) || []).length, 1);
 });
 
+test('preserves readable multiline bank formatting and keeps a one-question edit local', () => {
+  const readableSource = [
+    'window.examTitle = "표현";',
+    '',
+    'window.questionBank = [',
+    '  {',
+    '    "id": 1,',
+    '    "content": "첫 문항",',
+    '    "choices": [',
+    '      "①",',
+    '      "②"',
+    '    ]',
+    '  },',
+    '  {',
+    '    "id": 2,',
+    '    "content": "둘째 문항"',
+    '  }',
+    '];',
+    '',
+  ].join('\n');
+  const parsed = parseArchiveSource(readableSource, 'format.js');
+  const unchanged = replaceQuestionBankPreservingSource(readableSource, parsed.bank);
+  assert.equal(unchanged, readableSource);
+
+  const editedBank = parsed.bank.map(question => ({ ...question }));
+  editedBank[0].content = '첫 문항 수정';
+  const edited = replaceQuestionBankPreservingSource(readableSource, editedBank);
+  assert.match(edited, /window\.questionBank = \[\n  \{\n    "id": 1,/);
+  assert.doesNotMatch(edited, /window\.questionBank = \[\{"id"/);
+  assert.equal(edited.split('\n').length, readableSource.split('\n').length);
+  assert.equal(
+    edited.split('\n').filter((line, index) => line !== readableSource.split('\n')[index]).length,
+    1,
+    'editing one field must not collapse the whole bank or rewrite unrelated lines'
+  );
+  assert.deepEqual(parseArchiveSource(edited, 'format.js').bank, editedBank);
+});
+
+test('retains the assignment line indentation for nested bank declarations', () => {
+  const source = [
+    '(function makeReviewSource() {',
+    '  window.questionBank = [',
+    '    {',
+    '      "id": 1,',
+    '      "content": "원본"',
+    '    }',
+    '  ];',
+    '}());',
+  ].join('\n');
+  const rewritten = replaceQuestionBankPreservingSource(source, [{ id: 1, content: '수정' }]);
+  assert.match(rewritten, /  window\.questionBank = \[\n    \{\n      "id": 1,/);
+  assert.deepEqual(parseArchiveSource(rewritten, 'nested-format.js').bank, [{ id: 1, content: '수정' }]);
+});
+
 test('rejects identifier-backed banks instead of rewriting unknown source structure', () => {
   assert.throws(
     () => replaceQuestionBankPreservingSource('const bank = []; window.questionBank = bank;', []),

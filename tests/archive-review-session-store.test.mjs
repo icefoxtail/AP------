@@ -23,7 +23,10 @@ test('builds one versioned logical snapshot without duplicated independent recor
 test('does not apply an old draft when the current disk fingerprint differs', () => {
   const snapshot = buildReviewSessionSnapshot({
     sourceFingerprint: 'sha-a', sourceIdentity: 'foo.js',
-    draftState: { currentBank: [{ id: 1 }] }
+    draftState: {
+      currentBank: [{ id: 1 }],
+      emergencyRecovery: { source: 'before-source', fileName: 'foo.before-review-recovery.js' },
+    }
   });
   const restored = restoreReviewSession(snapshot, {
     sourceFingerprint: 'sha-b', bank: [{ id: 2 }]
@@ -32,6 +35,7 @@ test('does not apply an old draft when the current disk fingerprint differs', ()
   assert.equal(restored.status, 'CONFLICT');
   assert.deepEqual(restored.currentBank, [{ id: 2 }]);
   assert.equal(restored.draftApplied, false);
+  assert.deepEqual(restored.emergencyRecovery, { source: 'before-source', fileName: 'foo.before-review-recovery.js' });
 });
 
 test('restores the stored draft only when the disk fingerprint matches', () => {

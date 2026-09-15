@@ -266,14 +266,20 @@
     return encoded;
   }
 
-  function serializeQuestionBankLiteral(bank) {
+  function lineIndentAt(source, index) {
+    const lineStart = source.lastIndexOf('\n', Math.max(0, index - 1)) + 1;
+    const prefix = source.slice(lineStart, index);
+    return /^[ \t]*/.exec(prefix)?.[0] || '';
+  }
+
+  function serializeQuestionBankLiteral(bank, lineIndent = '') {
     if (!Array.isArray(bank)) throw new TypeError('SOURCE_WRITER_BANK_MUST_BE_ARRAY');
-    return ensureSerializable(bank);
+    const formatted = JSON.stringify(JSON.parse(ensureSerializable(bank)), null, 2);
+    return formatted.replace(/\n/g, '\n' + lineIndent);
   }
 
   function replaceQuestionBankPreservingSource(source, bank) {
     if (typeof source !== 'string') throw new TypeError('SOURCE_WRITER_SOURCE_MUST_BE_STRING');
-    const literal = serializeQuestionBankLiteral(bank);
     const markerStart = source.lastIndexOf(REVIEW_OVERRIDE_MARKER);
     if (markerStart >= 0) {
       try {
@@ -281,6 +287,7 @@
         const markedRange = findQuestionBankRange(markedSource);
         const start = markerStart + markedRange.start;
         const end = markerStart + markedRange.end;
+        const literal = serializeQuestionBankLiteral(bank, lineIndentAt(source, start));
         return source.slice(0, start) + literal + source.slice(end);
       } catch (_) {
         // A manually edited marker is not trusted; fall through to the
@@ -288,6 +295,7 @@
       }
     }
     const range = findQuestionBankRange(source);
+    const literal = serializeQuestionBankLiteral(bank, lineIndentAt(source, range.start));
     const rewritten = source.slice(0, range.start) + literal + source.slice(range.end);
     try {
       const parsed = parseArchiveSource(rewritten, 'review.js');

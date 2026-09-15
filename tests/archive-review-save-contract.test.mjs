@@ -29,3 +29,15 @@ test('canonical editor loads the writer, session store, and preview bridge depen
   assert.match(reviewHtml, /review-save-transaction\.js/);
   assert.match(reviewHtml, /review-preview-bridge\.js/);
 });
+
+test('post-write verification failure keeps an emergency recovery path without rollback', () => {
+  assert.match(editor, /emergencyRecovery/);
+  assert.match(editor, /POST_WRITE_VERIFICATION_FAILED/);
+  assert.match(editor, /recoverySource/);
+  assert.match(editor, /downloadBackup/);
+  const failureBlock = editor.slice(
+    editor.indexOf("if (e.code === 'POST_WRITE_VERIFICATION_FAILED')"),
+    editor.indexOf("} else if (e.code === 'EXTERNAL_SOURCE_MODIFIED')")
+  );
+  assert.match(failureBlock, /schedulePersistSessionState\(0\)/);
+});
