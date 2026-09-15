@@ -10,6 +10,7 @@
     challenge: { label: '도전 문제', buckets: ['중', '상'], weights: [0.3, 0.7] }
   };
   const WORKFLOW_STEPS = ['단원', '출처', '구성', '확인'];
+  const PRINT_HEADER_TEXT_LIMITS = { title: 80, metaRight: 60, subtitle: 120 };
   const state = {
     catalog: null, index: [], profileId: 'h1', selectedUnitKey: '', fileCache: new Map(), busyKey: '',
     metadataLoaded: false, metadataError: false, filterState: null, collectionState: null, generatedPapers: [],
@@ -160,6 +161,27 @@
     }
     return getUnit(unitKey)?.papers.find(paper => paper.index === Number(paperIndex));
   }
+  function getDefaultPaperPrintHeaderOptions(unit, paper) {
+    const profile = getProfile();
+    return {
+      title: paper.title,
+      metaRight: `${profile.gradeLabel} ${unit.course} 단원별 기출`,
+      subtitle: '',
+      showNameLine: true,
+      showScoreLine: true,
+      applyToSolution: true,
+      applyToAnswer: true
+    };
+  }
+  function ensurePaperPrintHeaderOptions(unit, paper) {
+    if (!paper.printHeaderOptions || typeof paper.printHeaderOptions !== 'object') {
+      paper.printHeaderOptions = getDefaultPaperPrintHeaderOptions(unit, paper);
+    }
+    return paper.printHeaderOptions;
+  }
+  function normalizePrintHeaderText(value, maxLength) {
+    return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+  }
   function getSourceExamLabel(sourceFile, record = {}) {
     const filename = String(sourceFile || '').split('/').pop().replace(/\.js$/i, '');
     const parts = filename.split('_');
@@ -198,6 +220,7 @@
     const collection = selection.collection || null;
     const selectedSubUnits = [...new Map(paper.records.map(record => [record.subUnitKey || '__unclassified__', core.getSubUnitLabel(record) || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
     const sourceSummary = getPaperSources(paper).map(source => source.label).filter(Boolean).join(' / ');
+    const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const meta = {
       title: paper.title, customTitle: paper.title, identityTitle: paper.title, count: questions.length,
       generatedAt: new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
@@ -210,10 +233,7 @@
       sourceSummary: sourceSummary ? `출처: ${sourceSummary}` : '',
       questionUids: questions.map(question => core.getQuestionUid(question)).filter(Boolean),
       metadataRevision: [...new Set(paper.records.map(record => record.metadataRevision).filter(Boolean))].join(',') || '',
-      printHeaderOptions: {
-        title: paper.title, metaRight: `${profile.gradeLabel} ${unit.course} 단원별 기출`, subtitle: '', showNameLine: true,
-        showScoreLine: true, applyToSolution: true, applyToAnswer: true
-      }
+      printHeaderOptions: { ...printHeaderOptions }
     };
     localStorage.setItem(`mixedQuestions_${paper.snapshotKey}`, JSON.stringify(questions));
     localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
@@ -929,6 +949,25 @@
     return state.generatedPapers[state.previewPaperPosition];
   }
 
+  function updatePrintHeaderOption(field, value) {
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    if (!paper || !unit) return;
+    const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
+    if (Object.prototype.hasOwnProperty.call(PRINT_HEADER_TEXT_LIMITS, field)) {
+      const normalizedValue = normalizePrintHeaderText(value, PRINT_HEADER_TEXT_LIMITS[field]);
+      printHeaderOptions[field] = field === 'title' && !normalizedValue
+        ? getDefaultPaperPrintHeaderOptions(unit, paper).title
+        : normalizedValue;
+    } else if (field === 'showNameLine' || field === 'showScoreLine') {
+      printHeaderOptions[field] = Boolean(value);
+    } else {
+      return;
+    }
+    const frame = document.getElementById('unit-preview-iframe');
+    frame?.contentWindow?.setPrintHeaderOptions?.({ [field]: printHeaderOptions[field] });
+  }
+
   function getSummarySubUnits(paper) {
     return [...new Set(paper.records.map(record => core.getSubUnitLabel(record)).filter(Boolean))];
   }
@@ -937,6 +976,7 @@
     const root = document.getElementById('unit-content');
     const paper = getActivePreviewPaper();
     if (!paper) { state.workflowStep = 3; renderConfigStep(unit); return; }
+    const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const profile = getProfile();
     const subUnits = getSummarySubUnits(paper);
     const levels = core.getDifficultySummary(paper.records);
@@ -948,7 +988,7 @@
     const difficultyText = LEVELS.filter(level => levels[level]).map(level => `${level} ${levels[level]}문항`).join(' · ') || '난이도 정보 없음';
     const bars = LEVELS.map(level => `<span style="width:${(Number(levels[level] || 0) / total * 100).toFixed(2)}%"></span>`).join('');
     const pager = state.generatedPapers.length > 1 ? `<div class="unit-preview-pager"><button class="unit-btn" type="button" aria-label="이전 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition - 1})"${state.previewPaperPosition <= 0 ? ' disabled' : ''}><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><span>${state.previewPaperPosition + 1} / ${state.generatedPapers.length}</span><button class="unit-btn" type="button" aria-label="다음 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition + 1})"${state.previewPaperPosition >= state.generatedPapers.length - 1 ? ' disabled' : ''}><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div>` : '';
-    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">조건에 맞는 문항<strong>${available.toLocaleString()}문항</strong></div><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">구성 수정</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
+    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">조건에 맞는 문항<strong>${available.toLocaleString()}문항</strong></div><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">구성 수정</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
     loadPreviewPaper(state.previewPaperPosition);
   }
 
@@ -973,13 +1013,18 @@
   function tunePreviewFrame() {
     const frame = document.getElementById('unit-preview-iframe');
     const doc = frame?.contentDocument;
-    if (!doc || doc.getElementById('unit-preview-style')) return;
-    const style = doc.createElement('style');
-    style.id = 'unit-preview-style';
-    style.textContent = '#mode-ctrl,#fast-print-dialog{display:none!important}body{padding-top:0!important;background:#eef1f5!important}#print-area{padding:18px 0!important;gap:14px!important}.page{box-shadow:0 4px 18px rgba(15,23,42,.12)!important}@media(max-width:640px){body.screen-fit-mode #print-area{margin-left:0!important;margin-right:0!important;transform-origin:top left!important}}';
-    doc.head.appendChild(style);
+    if (!doc) return;
+    if (!doc.getElementById('unit-preview-style')) {
+      const style = doc.createElement('style');
+      style.id = 'unit-preview-style';
+      style.textContent = '#mode-ctrl,#fast-print-dialog{display:none!important}body{padding-top:0!important;background:#eef1f5!important}#print-area{padding:18px 0!important;gap:14px!important}.page{box-shadow:0 4px 18px rgba(15,23,42,.12)!important}@media(max-width:640px){body.screen-fit-mode #print-area{margin-left:0!important;margin-right:0!important;transform-origin:top left!important}}';
+      doc.head.appendChild(style);
+    }
     doc.body.classList.add('screen-fit-mode');
     frame.contentWindow?.updateScreenFitScale?.();
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    if (paper && unit) frame.contentWindow?.setPrintHeaderOptions?.({ ...ensurePaperPrintHeaderOptions(unit, paper) });
   }
 
   function selectPreviewPaper(position) {
@@ -1092,6 +1137,6 @@
     state.index = joinApprovedMetadata(window.questionIndex); const requested = new URLSearchParams(window.location.search).get('grade'); selectProfile(core.PROFILES[requested] ? requested : 'h1');
   }
   window.addEventListener('popstate', restoreFromUrl);
-  window.UnitPastExams = { init, selectProfile, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
+  window.UnitPastExams = { init, selectProfile, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
   window.High1UnitPastExams = window.UnitPastExams;
 })();
