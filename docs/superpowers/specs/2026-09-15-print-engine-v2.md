@@ -8,7 +8,7 @@ Keep the proven source formatting, MathJax readiness and transactional snapshot 
 
 ## Invariants
 - Four identical slots per exam page; final partial page retains empty slots. Order is column-major: left top, left bottom, right top, right bottom.
-- qpp=4 ignores fullwidth/subjective span hints for placement; content remains intact. Existing other-qpp behavior is preserved.
+- Functional parity and quality superiority are the replacement gates. By default, documents with fullwidth/subjective span hints retain their existing compositor; explicit `equalSlots=1` selects strict four-slot placement even for these hints. Other qpp values retain existing behavior. This is a scoped compositor replacement, not a claim that all modes have been rewritten.
 - No content deletion, rasterization of question text, anisotropic scaling, or hidden clipping used as successful fitting.
 - Fonts, MathJax, images ready before final measurement. Late QR additions are incorporated before readiness and audited again at print preflight.
 - Printed and preview page geometry match in v2; preview scaling does not change physical layout.
@@ -16,7 +16,7 @@ Keep the proven source formatting, MathJax readiness and transactional snapshot 
 - Scale below 0.85 is a warning; below 0.75 requires composition review in diagnostics (provisional thresholds, not hidden font shrinking).
 - Audit rendered content in all four directions, internal clipping, page bounds, equal slots and fixed-element overlap. Invalid/missing assets or geometric failures block print rather than silently reporting ready. Account correctly for transform/zoom versus scroll metrics.
 - Reserve footer/QR space consistently across the four slots of the page. Never reduce only the QR-adjacent slot.
-- Switch `slotEngine=legacy` explicitly restores old exam behavior for comparison. This branch defaults to v2 for qpp=4.
+- Switch `slotEngine=legacy` explicitly restores old exam behavior for comparison. This branch defaults to v2 for compatible qpp=4 documents; `equalSlots=1` opts into strict placement for special documents.
 
 ## Public interface
 `APEqualSlotEngine.render({area, items, deps})` where items contain canonical `{q, box}`, deps supplies `makePage(area,no)` returning `{page,body}`, `typesetMath(label,nodes)`, `raf()`, optional `applyAutoImageSizeClasses(root)`, `decorateBody(page,last)` and `afterPage(page,last)`.

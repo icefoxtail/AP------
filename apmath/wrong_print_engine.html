@@ -161,7 +161,9 @@
     <script src="../archive/render-state-normalizer.js?v=20260912.1"></script>
     <script src="../archive/screen-runtime.js?v=20260913.1"></script>
     <script src="../archive/common-fast-runtime.js?v=20260913.1"></script>
-    <script src="../archive/exam-render-executor.js?v=20260912.1"></script>
+    <script src="../archive/equal-slot-engine.js?v=20260915.1"></script>
+    <link rel="stylesheet" href="../archive/equal-slot-engine.css?v=20260915.1">
+    <script src="../archive/exam-render-executor.js?v=20260915.1"></script>
     <script src="../archive/solution-render-executor.js?v=20260913.1"></script>
     <script src="../archive/answer-render-executor.js?v=20260912.1"></script>
 </head>
@@ -2910,7 +2912,8 @@ async function buildWrongTransaction() {
     else if (state.payload.mode === 'class') await renderClassPages(area, state.payload);
     else await renderStudentPages(area, state.payload);
     if (!area.textContent.trim()) area.innerHTML = '<div class="notice">출력할 오답 문항이 없습니다.</div>';
-    await buildContext.typeset('composition-final', [area]);
+    if (!area.querySelector('.ap-equal-slot-page') || window.APRenderLoop.unrenderedMathCount(area)) await buildContext.typeset('composition-final', [area]);
+    await window.APEqualSlotEngine?.finalize(area);
     await raf();
     await recordClinicDualRun(area);
     recordClinicCompositionPromotionGate(area);
