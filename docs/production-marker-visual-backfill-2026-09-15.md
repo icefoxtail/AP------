@@ -59,8 +59,9 @@ types, marker 없는 문항 및 unrelated 파일은 수정하지 않았다.
 - current HEAD: 027357a703066b1301e50327e766d230ffce8b62
 - origin/main: 027357a703066b1301e50327e766d230ffce8b62
 - latest baseline rebase: 완료. verify-skills PASS.
-- task commit SHA: 없음
-- push: 하지 않음
+- implementation commit SHA: 25770fe35
+- report finalization commit: this follow-up commit; final branch tip is reported in the final response
+- push: pending final verification and branch push
 - main merge: 하지 않음
 
 최종 worktree에는 기존 21_연향중 변경, 신규 q4/q11/q18 SVG, 기존 q11/q14 PNG,
