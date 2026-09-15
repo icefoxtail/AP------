@@ -125,6 +125,12 @@
       }));
     }
 
+    function enqueue(operation) {
+      const task = writeTail.then(operation, operation);
+      writeTail = task;
+      return task;
+    }
+
     async function put(snapshot) {
       const value = buildReviewSessionSnapshot(snapshot);
       const performWrite = async () => {
@@ -135,9 +141,7 @@
         metrics.payloadSize = JSON.stringify(value).length;
         return value;
       };
-      const write = writeTail.then(performWrite, performWrite);
-      writeTail = write;
-      return write;
+      return enqueue(performWrite);
     }
 
     async function get() {
@@ -149,7 +153,7 @@
     }
 
     async function clear() {
-      await transaction('readwrite', store => { store.delete(SNAPSHOT_KEY); });
+      await enqueue(() => transaction('readwrite', store => { store.delete(SNAPSHOT_KEY); }));
     }
 
     return Object.freeze({ put, get, clear, metrics, schemaVersion: SCHEMA_VERSION });

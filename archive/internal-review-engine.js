@@ -26,7 +26,7 @@ const state = {
   currentBank: [],
   selectedId: null,           // 선택된 문항의 id (인덱스 아님)
   selectedSourceRef: '',
-  modifiedIds: new Set(),
+  modifiedIds: new Set(),       // 내부 값은 sourceRef 문자열 (레거시 세션 키 이름 유지)
   removedItems: [],           // {item, originalIndex} 보관
   activeFilter: 'all',
   gradeFilter: '',            // '' | '중1' | '중2' | '중3' | '고1' | '고2'
@@ -193,6 +193,15 @@ function stripHtml(html) {
   const div = document.createElement('div');
   div.innerHTML = html;
   return div.textContent || '';
+}
+
+function escapeReviewHtml(value) {
+  return String(value === undefined || value === null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 /* ================================================================
@@ -384,6 +393,10 @@ function getCurrentEditorQuestion() {
   return state.currentBank.find(function(item) { return String(item.id) === String(state.selectedId); }) || null;
 }
 
+function modifiedQuestionKey(q) {
+  return q ? getReviewQuestionSourceRef(q, state.currentBank.indexOf(q)) : '';
+}
+
 async function getImageBlobUrl(imgPath) {
   const key = normalizeImagePath(imgPath);
   const handle = state.imageMap.get(key);
@@ -476,12 +489,12 @@ function banksHaveSameContent(a, b) {
 
 function markQuestionModified(q) {
   if (!q) return;
-  const sourceRef = getReviewQuestionSourceRef(q, state.currentBank.indexOf(q));
+  const sourceRef = modifiedQuestionKey(q);
   const orig = findQuestionBySourceRefIn(state.originalBank, sourceRef);
   if (!orig || stableQuestionString(orig) !== stableQuestionString(q)) {
-    state.modifiedIds.add(q.id);
+    state.modifiedIds.add(sourceRef);
   } else {
-    state.modifiedIds.delete(q.id);
+    state.modifiedIds.delete(sourceRef);
   }
 }
 
@@ -489,7 +502,7 @@ function reconcileModifiedIds() {
   const next = new Set();
   state.currentBank.forEach(function(q) {
     const orig = findQuestionBySourceRefIn(state.originalBank, getReviewQuestionSourceRef(q, state.currentBank.indexOf(q)));
-    if (!orig || stableQuestionString(orig) !== stableQuestionString(q)) next.add(q.id);
+    if (!orig || stableQuestionString(orig) !== stableQuestionString(q)) next.add(modifiedQuestionKey(q));
   });
   state.modifiedIds = next;
 }
@@ -551,7 +564,6 @@ function setEditorLayoutTag(layoutTag) {
 }
 
 function commitEditorDraft() {
-  if (state.selectedId === null) return false;
   const q = getCurrentEditorQuestion();
   if (!q) return false;
   const before = stableQuestionString(q);
@@ -652,14 +664,14 @@ function openEditPanel(q) {
 
   const warnList = document.getElementById('edit-warnings-list');
   warnList.innerHTML = warnings.map(function(w) {
-    return '<div class="edit-warn-item">⚠ ' + w + '</div>';
+    return '<div class="edit-warn-item">⚠ ' + escapeReviewHtml(w) + '</div>';
   }).join('');
 
   const recDiv = document.getElementById('edit-rec-level');
   if (recLevel !== q.level) {
-    recDiv.innerHTML = '<span class="badge badge-rec-diff">추천 난이도: ' + recLevel + ' (현재: ' + (q.level || '?') + ')</span>';
+    recDiv.innerHTML = '<span class="badge badge-rec-diff">추천 난이도: ' + escapeReviewHtml(recLevel) + ' (현재: ' + escapeReviewHtml(q.level || '?') + ')</span>';
   } else {
-    recDiv.innerHTML = '<span style="font-size:11px;color:#888">추천 난이도: ' + recLevel + ' (일치)</span>';
+    recDiv.innerHTML = '<span style="font-size:11px;color:#888">추천 난이도: ' + escapeReviewHtml(recLevel) + ' (일치)</span>';
   }
 
   document.getElementById('e-level').value   = q.level || '';
@@ -699,7 +711,10 @@ async function updateImagePreview(imgPath) {
       image.alt = normalized;
       el.appendChild(image);
     } else {
-      el.innerHTML = '<span style="font-size:11px;color:#bf360c">⚠ 파일 없음: ' + normalized + '</span>';
+      const missing = document.createElement('span');
+      missing.style.cssText = 'font-size:11px;color:#bf360c';
+      missing.textContent = '⚠ 파일 없음: ' + normalized;
+      el.appendChild(missing);
     }
   } else {
     el.innerHTML = '<span style="font-size:11px;color:#6a1a6a">이미지 경로 있음 (폴더 미열림)</span>';
@@ -709,7 +724,7 @@ async function updateImagePreview(imgPath) {
 /* ================================================================
    파일 로드 (parseAndLoad)
 ================================================================ */
-async function loadBank(source, fileName) {
+async function loadBank(source, fileName, sourcePath = state.currentFilePath, sourceHandle = state.currentFileHandle, directSave = state.canDirectSave) {
   const loadSerial = ++state.loadSerial;
   clearError();
   let parsed;
@@ -717,18 +732,21 @@ async function loadBank(source, fileName) {
     parsed = parseSource(source, fileName);
   } catch (e) {
     showError('파싱 실패: ' + e.message + '\n파일: ' + fileName);
-    return;
+    return false;
   }
   let sourceFingerprint;
   try {
     sourceFingerprint = await window.APReviewSourceWriter.fingerprintText(source);
   } catch (e) {
     showError('source fingerprint 생성 실패: ' + e.message + '\n파일: ' + fileName);
-    return;
+    return false;
   }
-  if (loadSerial !== state.loadSerial) return;
+  if (loadSerial !== state.loadSerial) return false;
 
   state.currentSource  = source;
+  state.currentFilePath = String(sourcePath || '');
+  state.currentFileHandle = sourceHandle || null;
+  state.canDirectSave = !!sourceHandle && directSave === true;
   state.currentFileName = fileName;
   state.examTitle      = parsed.title;
   state.examDisplayTitle = parsed.displayTitle || parsed.title;
@@ -775,6 +793,7 @@ async function loadBank(source, fileName) {
   persistSessionState();
 
   showToast(fileName + ' 로드 완료 (' + parsed.bank.length + '문항)');
+  return true;
 }
 
 /* ================================================================
@@ -795,12 +814,7 @@ async function autoloadFromQuery() {
     if (!response.ok) throw new Error(response.status + ' ' + response.statusText);
     const source = await response.text();
     const fileName = normalized.split(/[\\/]/).pop() || 'autoload.js';
-    state.currentFilePath = archiveRelative.replace(/^archive\//i, '');
-    state.currentFileHandle = null;
-    state.canDirectSave = false;
-    const previewFrame = document.getElementById('enginePreviewFrame');
-    if (previewFrame) previewFrame.style.visibility = 'hidden';
-    loadBank(source, fileName);
+    await loadBank(source, fileName, archiveRelative.replace(/^archive\//i, ''), null, false);
     return true;
   } catch (e) {
     showError('자동 로드 실패: ' + e.message + '\n경로: ' + dataPath);
@@ -893,12 +907,7 @@ async function openSingleFile() {
         types: [{ description: 'JS Files', accept: { 'text/javascript': ['.js'] } }],
         multiple: false,
       });
-      state.currentFileHandle = handle;
-      state.currentFilePath = '';  // 단일 열기 시 경로 미확인
-      state.canDirectSave = true;
-      updateSaveModeUI();
-      clearError();
-      await loadFileHandle(handle);
+      await loadFileHandle(handle, '');
     } catch (e) {
       if (e.name !== 'AbortError') showError('파일 열기 실패: ' + e.message);
     }
@@ -913,23 +922,17 @@ document.getElementById('fallback-input').addEventListener('change', async funct
   const file = this.files[0];
   if (!file) return;
   const src = await file.text();
-  state.currentFileHandle = null;
-  state.currentFilePath = '';
-  state.currentFileName = file.name;
-  loadBank(src, file.name);
+  await loadBank(src, file.name, '', null, false);
 });
 
-async function loadFileHandle(handle) {
+async function loadFileHandle(handle, filePath = '') {
   try {
     const file = await handle.getFile();
     const src  = await file.text();
-    state.currentFileHandle = handle;
-    state.currentFileName   = handle.name;
-    state.canDirectSave     = true;
-    updateSaveModeUI();
-    await loadBank(src, handle.name);
+    return await loadBank(src, handle.name, filePath, handle, true);
   } catch (e) {
     showError('파일 읽기 실패: ' + e.message);
+    return false;
   }
 }
 
@@ -997,13 +1000,11 @@ function renderFileList() {
     const parts = entry.path.split('/');
     const name = parts.pop();
     const subpath = parts.join('/');
-    div.innerHTML = '<span>' + name + '</span>' + (subpath ? '<span class="file-subpath">' + subpath + '</span>' : '');
+    div.innerHTML = '<span>' + escapeReviewHtml(name) + '</span>' + (subpath ? '<span class="file-subpath">' + escapeReviewHtml(subpath) + '</span>' : '');
     div.title = entry.path;
     div.addEventListener('click', async function() {
       if (!confirmDiscardUnsaved()) return;
-      state.currentFileHandle = entry.handle;
-      state.currentFilePath   = entry.path;
-      await loadFileHandle(entry.handle);
+      await loadFileHandle(entry.handle, entry.path);
       renderFileList();
     });
     container.appendChild(div);
@@ -1155,7 +1156,7 @@ function applyFilter(bank) {
   // ③ 검수 필터
   if (f === 'all')        return list;
   if (f === 'warning')    return list.filter(function(e) { return detectWarnings(e.item).length > 0; });
-  if (f === 'modified')   return list.filter(function(e) { return state.modifiedIds.has(e.item.id); });
+  if (f === 'modified')   return list.filter(function(e) { return state.modifiedIds.has(modifiedQuestionKey(e.item)); });
   if (f === 'removed')    return [];
   if (f === 'recdiff')    return list.filter(function(e) { return e.item.level !== recommendLevel(e.item); });
   if (f === 'imgneeded')  return list.filter(function(e) {
@@ -1526,7 +1527,7 @@ function refreshEnginePreviewFrameOnly() {
 function makeCard(q, displayNum) {
   const warnings  = detectWarnings(q);
   const recLevel  = recommendLevel(q);
-  const isModified = state.modifiedIds.has(q.id);
+  const isModified = state.modifiedIds.has(modifiedQuestionKey(q));
   const sourceRef = getReviewQuestionSourceRef(q, state.currentBank.indexOf(q));
   const isSelected = sourceRef === state.selectedSourceRef;
 
@@ -1547,13 +1548,13 @@ function makeCard(q, displayNum) {
   header.className = 'card-header';
   const levelKey = ['하','중','상'].includes(q.level) ? q.level : 'unknown';
   header.innerHTML =
-    '<span class="card-num">' + displayNum + '번</span>' +
-    '<span class="card-id">id:' + q.id + '</span>' +
-    '<span class="badge badge-level-' + levelKey + '">' + (q.level || '?') + '</span>' +
-    (q.questionType ? '<span class="badge badge-qtype">' + q.questionType + '</span>' : '') +
+    '<span class="card-num">' + escapeReviewHtml(displayNum) + '번</span>' +
+    '<span class="card-id">id:' + escapeReviewHtml(q.id) + '</span>' +
+    '<span class="badge badge-level-' + levelKey + '">' + escapeReviewHtml(q.level || '?') + '</span>' +
+    (q.questionType ? '<span class="badge badge-qtype">' + escapeReviewHtml(q.questionType) + '</span>' : '') +
     (warnings.length > 0 ? '<span class="badge badge-warning">⚠ ' + warnings.length + '</span>' : '') +
     (isModified ? '<span class="badge badge-modified">수정됨</span>' : '') +
-    (recLevel !== q.level ? '<span class="badge badge-rec-diff">추천:' + recLevel + '</span>' : '');
+    (recLevel !== q.level ? '<span class="badge badge-rec-diff">추천:' + escapeReviewHtml(recLevel) + '</span>' : '');
   div.appendChild(header);
 
   if (q.tags && q.tags.length > 0) {
@@ -1677,9 +1678,9 @@ function makeRemovedCard(q, displayNum, removedIndex) {
   const levelKey = ['하','중','상'].includes(q.level) ? q.level : 'unknown';
   div.innerHTML =
     '<div class="card-header">' +
-    '<span class="card-num">' + displayNum + '번</span>' +
-    '<span class="card-id">id:' + q.id + '</span>' +
-    '<span class="badge badge-level-' + levelKey + '">' + (q.level || '?') + '</span>' +
+    '<span class="card-num">' + escapeReviewHtml(displayNum) + '번</span>' +
+    '<span class="card-id">id:' + escapeReviewHtml(q.id) + '</span>' +
+    '<span class="badge badge-level-' + levelKey + '">' + escapeReviewHtml(q.level || '?') + '</span>' +
     '<span class="badge badge-removed">제거됨</span>' +
     '<button type="button" class="removed-restore-btn" data-removed-index="' + removedIndex + '">복구</button>' +
     '</div>' +
@@ -1698,7 +1699,7 @@ function makeRemovedCard(q, displayNum, removedIndex) {
 function makeReviewRow(q, displayNum) {
   const warnings  = detectWarnings(q);
   const recLevel  = recommendLevel(q);
-  const isModified = state.modifiedIds.has(q.id);
+  const isModified = state.modifiedIds.has(modifiedQuestionKey(q));
   const sourceRef = getReviewQuestionSourceRef(q, state.currentBank.indexOf(q));
 
   const tr = document.createElement('tr');
@@ -1711,15 +1712,15 @@ function makeReviewRow(q, displayNum) {
   tr.addEventListener('click', function() { selectQuestionBySourceRef(sourceRef); });
 
   tr.innerHTML =
-    '<td>' + displayNum + '</td>' +
-    '<td>' + q.id + '</td>' +
-    '<td>' + (q.level || '') + '</td>' +
-    '<td>' + (recLevel !== q.level ? '<b style="color:#f57f17">' + recLevel + '</b>' : recLevel) + '</td>' +
-    '<td>' + (q.questionType || '') + '</td>' +
-    '<td class="td-preview">' + (q.tags || []).join(', ') + '</td>' +
-    '<td class="td-preview">' + stripHtml(q.content || '').slice(0, 40) + '</td>' +
-    '<td class="td-preview">' + String(q.answer || '').slice(0, 20) + '</td>' +
-    '<td class="td-warn">' + warnings.slice(0, 2).join(' / ') + (warnings.length > 2 ? ' ...' : '') + '</td>' +
+    '<td>' + escapeReviewHtml(displayNum) + '</td>' +
+    '<td>' + escapeReviewHtml(q.id) + '</td>' +
+    '<td>' + escapeReviewHtml(q.level || '') + '</td>' +
+    '<td>' + (recLevel !== q.level ? '<b style="color:#f57f17">' + escapeReviewHtml(recLevel) + '</b>' : escapeReviewHtml(recLevel)) + '</td>' +
+    '<td>' + escapeReviewHtml(q.questionType || '') + '</td>' +
+    '<td class="td-preview">' + escapeReviewHtml((q.tags || []).join(', ')) + '</td>' +
+    '<td class="td-preview">' + escapeReviewHtml(stripHtml(q.content || '').slice(0, 40)) + '</td>' +
+    '<td class="td-preview">' + escapeReviewHtml(String(q.answer || '').slice(0, 20)) + '</td>' +
+    '<td class="td-warn">' + escapeReviewHtml(warnings.slice(0, 2).join(' / ') + (warnings.length > 2 ? ' ...' : '')) + '</td>' +
     '<td class="' + (isModified ? 'td-mod' : '') + '">' + (isModified ? '✓' : '') + '</td>' +
     '<td></td>';
   return tr;
@@ -1730,14 +1731,14 @@ function makeRemovedRow(q, displayNum, removedIndex) {
   const tr = document.createElement('tr');
   tr.style.opacity = '0.6';
   tr.innerHTML =
-    '<td>' + displayNum + '</td>' +
-    '<td>' + q.id + '</td>' +
-    '<td>' + (q.level || '') + '</td>' +
-    '<td>' + (q.questionType || '') + '</td>' +
-    '<td class="td-preview">' + (q.tags || []).join(', ') + '</td>' +
-    '<td class="td-preview">' + stripHtml(q.content || '').slice(0, 40) + '</td>' +
-    '<td class="td-preview">' + String(q.answer || '').slice(0, 20) + '</td>' +
-    '<td class="td-warn">' + warnings.slice(0, 2).join(' / ') + '</td>' +
+    '<td>' + escapeReviewHtml(displayNum) + '</td>' +
+    '<td>' + escapeReviewHtml(q.id) + '</td>' +
+    '<td>' + escapeReviewHtml(q.level || '') + '</td>' +
+    '<td>' + escapeReviewHtml(q.questionType || '') + '</td>' +
+    '<td class="td-preview">' + escapeReviewHtml((q.tags || []).join(', ')) + '</td>' +
+    '<td class="td-preview">' + escapeReviewHtml(stripHtml(q.content || '').slice(0, 40)) + '</td>' +
+    '<td class="td-preview">' + escapeReviewHtml(String(q.answer || '').slice(0, 20)) + '</td>' +
+    '<td class="td-warn">' + escapeReviewHtml(warnings.slice(0, 2).join(' / ')) + '</td>' +
     '<td><button type="button" class="removed-restore-btn" data-removed-index="' + removedIndex + '">복구</button></td>';
   tr.querySelector('.removed-restore-btn').addEventListener('click', function(e) {
     e.preventDefault();
@@ -1750,16 +1751,21 @@ function makeRemovedRow(q, displayNum, removedIndex) {
 function restoreRemovedItem(removedIndex) {
   const ri = state.removedItems[removedIndex];
   if (!ri) return;
-  if (state.currentBank.some(function(item) { return String(item.id) === String(ri.item.id); })) {
-    showToast('이미 현재 문항 목록에 있는 id입니다.');
+  const restoredRef = ri.sourceRef || deriveReviewQuestionSourceRef(ri.item, ri.originalIndex);
+  if (state.currentBank.some(function(item, index) {
+    return getReviewQuestionSourceRef(item, index) === restoredRef;
+  })) {
+    showToast('이미 현재 문항 목록에 있는 sourceRef입니다.');
     return;
   }
   const insertAt = Math.max(0, Math.min(ri.originalIndex, state.currentBank.length));
   const restoredItem = deepClone(ri.item);
   state.currentBank.splice(insertAt, 0, restoredItem);
-  if (ri.sourceRef) state.questionSourceRefs.set(restoredItem, ri.sourceRef);
+  state.questionSourceRefs.set(restoredItem, restoredRef);
   state.removedItems.splice(removedIndex, 1);
-  const q = state.currentBank.find(function(item) { return String(item.id) === String(ri.item.id); });
+  const q = state.currentBank.find(function(item, index) {
+    return getReviewQuestionSourceRef(item, index) === restoredRef;
+  });
   state.selectedId = q ? q.id : null;
   state.selectedSourceRef = q ? getReviewQuestionSourceRef(q, state.currentBank.indexOf(q)) : '';
   if (q) markQuestionModified(q);
@@ -2073,7 +2079,6 @@ function downloadBackup() {
 // 현재 문항 적용
 document.getElementById('btn-apply').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
-  if (state.selectedId === null) return;
   const changed = commitEditorDraft();
   const q = getCurrentEditorQuestion();
   if (!q) return;
@@ -2092,7 +2097,6 @@ document.getElementById('btn-apply').addEventListener('click', function(e) {
 // 제거
 document.getElementById('btn-remove').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
-  if (state.selectedId === null) return;
   commitEditorDraft();
   const q = getCurrentEditorQuestion();
   if (!q) return;
@@ -2113,13 +2117,12 @@ document.getElementById('btn-remove').addEventListener('click', function(e) {
 // 되돌리기
 document.getElementById('btn-revert').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
-  if (state.selectedId === null) return;
   const q = getCurrentEditorQuestion();
   if (!q) { showToast('문항을 찾을 수 없습니다.'); return; }
   const orig = findQuestionBySourceRefIn(state.originalBank, state.selectedSourceRef);
   if (!orig) { showToast('원본을 찾을 수 없습니다.'); return; }
   Object.assign(q, deepClone(orig));
-  state.modifiedIds.delete(q.id);
+  state.modifiedIds.delete(modifiedQuestionKey(q));
   openEditPanel(q);
   renderAll();
   queueReviewPreviewRevision(true);
@@ -2130,7 +2133,6 @@ document.getElementById('btn-revert').addEventListener('click', function(e) {
 // 수정 지시 복사
 document.getElementById('btn-copy-edit').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
-  if (state.selectedId === null) return;
   commitEditorDraft();
   const q = getCurrentEditorQuestion();
   if (!q) return;
@@ -2164,7 +2166,6 @@ document.getElementById('btn-copy-edit').addEventListener('click', function(e) {
 // 삭제 지시 복사
 document.getElementById('btn-copy-delete').addEventListener('click', function(e) {
   e.preventDefault(); e.stopPropagation();
-  if (state.selectedId === null) return;
   const q = getCurrentEditorQuestion();
   if (!q) return;
 
@@ -2194,7 +2195,7 @@ document.getElementById('e-image').addEventListener('input', function() {
 });
 
 function handleEditFieldChanged(event) {
-  if (state.selectedId === null) return;
+  if (!getCurrentEditorQuestion()) return;
   if (event && event.target && event.target.id === 'e-layout') {
     const customInput = document.getElementById('e-layout-custom');
     if (event.target.value === 'custom' && customInput && !customInput.value.trim()) {
@@ -2213,13 +2214,13 @@ function handleEditFieldChanged(event) {
 }
 
 function handleCompositionStart() {
-  if (state.selectedId === null) return;
+  if (!getCurrentEditorQuestion()) return;
   state.isComposing = true;
   state.compositionDirty = false;
 }
 
 function handleCompositionUpdate() {
-  if (state.selectedId === null) return;
+  if (!getCurrentEditorQuestion()) return;
   if (commitEditorDraft()) state.compositionDirty = true;
   updateStats();
   updateUnsavedBadge();
@@ -2227,7 +2228,7 @@ function handleCompositionUpdate() {
 }
 
 function handleCompositionEnd() {
-  if (state.selectedId === null) return;
+  if (!getCurrentEditorQuestion()) return;
   const changed = commitEditorDraft();
   const shouldRender = changed || state.compositionDirty || state.isComposing;
   state.isComposing = false;
@@ -2437,6 +2438,7 @@ async function applyRestoredState(snapshot) {
   registerReviewQuestionSourceRefs(state.currentBank, state.sourceIdentity, restored.sourceRefs || []);
   registerReviewQuestionSourceRefs(state.originalBank, state.sourceIdentity);
   state.modifiedIds       = new Set(Array.isArray(restored.modifiedIds) ? restored.modifiedIds : []);
+  reconcileModifiedIds();
   state.removedItems      = restored.removedItems || [];
   state.canDirectSave     = true;
   state.revision = 0;

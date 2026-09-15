@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import sessionStore from '../archive/review-session-store.js';
 
-const { buildReviewSessionSnapshot, restoreReviewSession } = sessionStore;
+const { buildReviewSessionSnapshot, restoreReviewSession, createReviewSessionStore } = sessionStore;
 
 test('builds one versioned logical snapshot without duplicated independent records', () => {
   const snapshot = buildReviewSessionSnapshot({
@@ -48,4 +48,56 @@ test('restores the stored draft only when the disk fingerprint matches', () => {
   assert.equal(restored.draftApplied, true);
   assert.deepEqual(restored.currentBank, [{ id: 1, content: 'draft' }]);
   assert.equal(restored.selectedSourceRef, 'foo.js#q1');
+});
+
+test('serializes clear behind queued writes so a cleared session cannot reappear', async () => {
+  let stored = null;
+  let transactionCount = 0;
+  const indexedDB = {
+    open() {
+      const request = { result: null };
+      const database = {
+        objectStoreNames: { contains: () => true },
+        transaction() {
+          const id = ++transactionCount;
+          const tx = {};
+          const store = {
+            put(value, key) {
+              setTimeout(() => {
+                stored = key === 'current' ? value : stored;
+                tx.oncomplete?.();
+              }, id === 1 ? 20 : 0);
+            },
+            delete(key) {
+              setTimeout(() => {
+                if (key === 'current') stored = null;
+                tx.oncomplete?.();
+              }, 0);
+            },
+            get(key) {
+              const read = {};
+              setTimeout(() => {
+                read.onsuccess?.({ target: { result: key === 'current' ? stored : null } });
+                tx.oncomplete?.();
+              }, 0);
+              return read;
+            },
+          };
+          tx.objectStore = () => store;
+          return tx;
+        },
+      };
+      queueMicrotask(() => {
+        request.result = database;
+        request.onsuccess?.();
+      });
+      return request;
+    },
+  };
+
+  const store = createReviewSessionStore({ indexedDB });
+  const putPromise = store.put({ sourceFingerprint: 'sha-a', draftState: { currentBank: [{ id: 1 }] } });
+  const clearPromise = store.clear();
+  await Promise.all([putPromise, clearPromise]);
+  assert.equal(await store.get(), null);
 });

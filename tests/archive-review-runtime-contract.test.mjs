@@ -2,8 +2,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import normalizer from '../archive/render-state-normalizer.js';
+import renderAuthority from '../archive/render-authority.js';
 
 const { createCandidate } = normalizer;
+const { normalizeArchiveQuestions } = renderAuthority;
 const adapterSource = fs.readFileSync('archive/screen-runtime-adapter.js', 'utf8');
 const engineSource = fs.readFileSync('archive/engine.html', 'utf8');
 
@@ -85,4 +87,19 @@ test('review bridge source input is isolated from the normal fetch/script loader
   assert.match(adapterSource, /N\.canonicalRenderData/);
   assert.match(engineSource, /installArchiveReviewPreviewBridgeReceiver/);
   assert.match(engineSource, /review-preview-bridge\.js/);
+});
+
+test('canonical normalization preserves the review sourceRef after a legacy question moves', () => {
+  const [question] = normalizeArchiveQuestions([{
+    id: null,
+    content: '원래 두 번째였던 문항',
+    reviewSourceRef: 'fixture.js#legacy:fixture.js#ordinal:2',
+  }], { sourceArchiveFile: 'fixture.js' });
+
+  assert.deepEqual(question.sourceRef, {
+    sourceArchiveFile: 'fixture.js',
+    sourceQuestionUid: 'legacy:fixture.js#ordinal:2',
+    sourceQuestionOrdinal: 2,
+    sourceQuestionNo: null,
+  });
 });

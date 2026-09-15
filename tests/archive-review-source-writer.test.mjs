@@ -69,6 +69,17 @@ test('text fingerprints are stable for identical bytes and change for edited byt
   assert.match(first, /^[0-9a-f]{64}$/);
 });
 
+test('rejects selected sources that request ambient page or dynamic-code capabilities', () => {
+  assert.throws(
+    () => parseArchiveSource('window.questionBank = []; document.cookie;', 'unsafe.js'),
+    /SOURCE_WRITER_UNSAFE_SOURCE/
+  );
+  assert.throws(
+    () => parseArchiveSource('window.questionBank = []; fetch("https://example.invalid");', 'unsafe.js'),
+    /SOURCE_WRITER_UNSAFE_SOURCE/
+  );
+});
+
 test('all production exam sources pass an unchanged source round-trip', () => {
   for (const file of [
     'archive/exams/types/high/h1/RPM_공통수학1_행렬_12_행렬_고1.js',
