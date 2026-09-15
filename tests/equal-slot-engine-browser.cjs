@@ -188,6 +188,26 @@ function assertExam(data, count, recipients = 1) {
                     assert.ok(mutated.clipped.some(i => i.code === 'INTERNAL_CLIPPING'));
                     assert.ok(mutated.mathEscape.some(i => i.code === 'CONTENT_OUTSIDE_SLOT'), 'MathJax inner ink cannot escape its slot');
                     assert.equal(mutated.restored, true);
+                    const slotChecks = await run.page.evaluate(() => {
+                        const area = document.getElementById('print-area'), slot = area.querySelector('.ap-equal-slot'), content = slot.querySelector('.ap-slot-content');
+                        const html = content.innerHTML, style = content.style.cssText;
+                        content.remove(); delete slot.dataset.empty;
+                        const missing = APEqualSlotEngine.audit(area);
+                        slot.dataset.empty = 'true'; const marker = document.createElement('span'); marker.textContent = '오염'; slot.appendChild(marker);
+                        const contaminated = APEqualSlotEngine.audit(area);
+                        slot.replaceChildren(); slot.dataset.empty = 'true'; const empty = APEqualSlotEngine.audit(area);
+                        slot.dataset.empty = ''; const restored = document.createElement('div'); restored.className = 'ap-slot-content'; restored.style.cssText = style; restored.innerHTML = html; slot.appendChild(restored);
+                        return { missing: missing.issues, contaminated: contaminated.issues, empty: empty.issues };
+                    });
+                    assert.ok(slotChecks.missing.some(i => i.code === 'MISSING_SLOT_CONTENT'));
+                    assert.ok(slotChecks.contaminated.some(i => i.code === 'EMPTY_SLOT_HAS_CONTENT'));
+                    assert.equal(slotChecks.empty.some(i => i.code === 'MISSING_SLOT_CONTENT'), false);
+                    const svgCheck = await run.page.evaluate(async () => {
+                        const host = document.querySelector('.ap-slot-content'), svg = document.createElementNS('http://www.w3.org/2000/svg','svg'); svg.setAttribute('viewBox','0 0 100 100'); svg.setAttribute('width','80'); svg.setAttribute('height','80'); const text = document.createElementNS('http://www.w3.org/2000/svg','text'); text.textContent='label'; text.setAttribute('x','20'); text.setAttribute('y','50'); svg.appendChild(text); host.appendChild(svg);
+                        const original = text.getAttribute('x'); text.setAttribute('x', '1000'); await new Promise(requestAnimationFrame); const clipped = APEqualSlotEngine.audit(document.getElementById('print-area')); text.setAttribute('x', original); svg.remove(); await document.fonts.ready; const restored = APEqualSlotEngine.audit(document.getElementById('print-area'));
+                        return { skipped: false, clipped: clipped.issues, restored: restored.ok };
+                    });
+                    if (!svgCheck.skipped) { assert.ok(svgCheck.clipped.some(i => i.code === 'SVG_VIEWBOX_CLIP')); assert.equal(svgCheck.restored, true, JSON.stringify(svgCheck)); }
                     const stable = await run.page.evaluate(async () => {
                         const area = document.getElementById('print-area');
                         const before = [...area.querySelectorAll('.ap-slot-content')].map(n => n.style.cssText);

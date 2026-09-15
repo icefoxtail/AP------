@@ -75,6 +75,40 @@
         bounds.width = bounds.right - bounds.left; bounds.height = bounds.bottom - bounds.top;
         return bounds;
     }
+    function visibleSemanticContent(slot) {
+        for (const node of list(slot, '*')) {
+            if (node.matches('defs, symbol, clipPath, mask, marker, script, style')) continue;
+            const style = root.getComputedStyle(node);
+            if (style.display === 'none' || style.visibility === 'hidden') continue;
+            if (node.textContent?.trim() || node.getClientRects().length) return true;
+        }
+        return Array.from(slot.childNodes || []).some(node => node.nodeType === 3 && node.textContent.trim());
+    }
+    function auditSvgViewBoxes(box, add, pageIndex, slotIndex) {
+        for (const svg of list(box, 'svg')) {
+            const style = root.getComputedStyle(svg);
+            if (style.display === 'none' || style.visibility === 'hidden' || !svg.getClientRects().length) continue;
+            const raw = String(svg.getAttribute('viewBox') || '').trim().split(/[ ,]+/).map(Number);
+            if (raw.length !== 4 || !raw.every(Number.isFinite) || raw[2] <= 0 || raw[3] <= 0) continue;
+            const [vx, vy, vw, vh] = raw; let inverse;
+            try { inverse = svg.getScreenCTM?.()?.inverse?.(); } catch (_) { inverse = null; }
+            if (!inverse) continue;
+            let union = null;
+            for (const drawable of list(svg, 'path,circle,ellipse,line,polyline,polygon,rect,text,use,image')) {
+                if (drawable.closest('defs, symbol, clipPath, mask, marker')) continue;
+                const ds = root.getComputedStyle(drawable); if (ds.display === 'none' || ds.visibility === 'hidden' || !drawable.getClientRects().length) continue;
+                let bbox; try { bbox = drawable.getBBox?.(); } catch (_) { bbox = null; }
+                if (!bbox || ![bbox.x,bbox.y,bbox.width,bbox.height].every(Number.isFinite) || (!bbox.width && !bbox.height)) continue;
+                let matrix; try { matrix = inverse.multiply(drawable.getScreenCTM?.()); } catch (_) { matrix = null; }
+                if (!matrix) continue;
+                for (const [x,y] of [[bbox.x,bbox.y],[bbox.x+bbox.width,bbox.y],[bbox.x,bbox.y+bbox.height],[bbox.x+bbox.width,bbox.y+bbox.height]]) {
+                    const point = svg.createSVGPoint?.(); if (!point) continue; point.x=x; point.y=y; const p=point.matrixTransform(matrix); if (!Number.isFinite(p.x)||!Number.isFinite(p.y)) continue;
+                    union = union ? {left:Math.min(union.left,p.x),top:Math.min(union.top,p.y),right:Math.max(union.right,p.x),bottom:Math.max(union.bottom,p.y)} : {left:p.x,top:p.y,right:p.x,bottom:p.y};
+                }
+            }
+            if (union && (union.left < vx - 0.75 || union.top < vy - 0.75 || union.right > vx + vw + 0.75 || union.bottom > vy + vh + 0.75)) add('SVG_VIEWBOX_CLIP', { page: pageIndex, slot: slotIndex, viewBox: raw, drawableBounds: union });
+        }
+    }
     function applyProfile(box, profile) {
         box.dataset.equalSlotProfile = profile;
         box.style.zoom = '1';
@@ -215,9 +249,16 @@
                 if (!validSize(rect) || outside(rect, pageRect)) add('INVALID_SLOT_GEOMETRY', {page:pageIndex, slot:slotIndex});
                 if (first && (Math.abs(rect.width-first.width)>1 || Math.abs(rect.height-first.height)>1)) add('UNEQUAL_SLOTS', {page:pageIndex, slot:slotIndex});
                 for (const f of fixed) if (overlap(rect, f.rect)) add('FIXED_SLOT_OVERLAP', {page:pageIndex, slot:slotIndex, rect, fixedRect:f.rect, fixedClass:f.node.className});
-                if (!box) { slots.push({page:pageIndex, slot:slotIndex, empty:true, rect}); return; }
+                const markedEmpty = slot.dataset.empty === 'true';
+                if (!box) {
+                    if (markedEmpty && visibleSemanticContent(slot)) add('EMPTY_SLOT_HAS_CONTENT', { page: pageIndex, slot: slotIndex });
+                    else if (!markedEmpty) add('MISSING_SLOT_CONTENT', { page: pageIndex, slot: slotIndex });
+                    slots.push({page:pageIndex, slot:slotIndex, empty:true, rect}); return;
+                }
+                if (markedEmpty && visibleSemanticContent(box)) add('EMPTY_SLOT_HAS_CONTENT', { page: pageIndex, slot: slotIndex });
                 const bounds = footprint(box, geo);
                 if (outside(bounds, rect)) add('CONTENT_OUTSIDE_SLOT', {page:pageIndex, slot:slotIndex, bounds, rect});
+                auditSvgViewBoxes(box, add, pageIndex, slotIndex);
                 for (const node of [box, ...list(box, '*')]) {
                     if (ignored(node) || node.closest('svg')) continue;
                     const style = root.getComputedStyle(node);

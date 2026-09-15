@@ -51,3 +51,10 @@ test('audit compares physical local rectangles consistently under zoom and trans
   const origin = { left:10, top:20 };
   assert.deepEqual(engine.normalizeRect(rect, origin, 0.5), {left:100,top:160,right:400,bottom:560,width:300,height:400});
 });
+
+test('audit source contains explicit empty-slot and SVG viewBox failure codes', () => {
+  const source = require('fs').readFileSync(require('path').join(__dirname, '../archive/equal-slot-engine.js'), 'utf8');
+  assert.match(source, /MISSING_SLOT_CONTENT/);
+  assert.match(source, /EMPTY_SLOT_HAS_CONTENT/);
+  assert.match(source, /SVG_VIEWBOX_CLIP/);
+});
