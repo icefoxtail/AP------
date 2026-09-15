@@ -41,3 +41,12 @@ test('post-write verification failure keeps an emergency recovery path without r
   );
   assert.match(failureBlock, /schedulePersistSessionState\(0\)/);
 });
+
+test('conflict restore keeps both recovery artifacts reachable through the existing backup flow', () => {
+  assert.match(editor, /conflictDraftRecovery/);
+  assert.match(editor, /review-draft-recovery\.js/);
+  assert.match(editor, /replaceQuestionBankPreservingSource/);
+  assert.match(editor, /state\.emergencyRecovery, state\.conflictDraftRecovery/);
+  assert.match(editor, /recoveries\.forEach/);
+  assert.match(editor, /자동 rollback하지 않았습니다/);
+});

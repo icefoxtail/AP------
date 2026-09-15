@@ -21,6 +21,7 @@
 - source-preserving writer, atomic session store, versioned preview bridge, save transaction, runtime/editor contract tests를 추가했다.
 - writer는 bank를 JSON single-line이 아닌 2-space multiline/indent JSON literal로 저장하고, nested assignment의 line indent를 유지한다.
 - post-write 검증 실패는 `beforeSource`, recovery source/file name, `writeCompleted`, `rollbackAttempted=false`를 포함하는 명시적 recovery contract로 전달하며 자동 rollback하지 않는다.
+- session fingerprint CONFLICT에서도 disk bank는 현재 기준으로 유지하고 snapshot의 edited `currentBank`는 `conflictDraftRecovery.bank`로 별도 보존한다.
 
 ## 자동 검증
 
@@ -29,10 +30,10 @@
 실행 명령:
 
 ```powershell
-node --test tests/archive-review-source-writer.test.mjs tests/archive-review-session-store.test.mjs tests/archive-review-preview-bridge.test.mjs tests/archive-review-runtime-contract.test.mjs tests/archive-review-editor-contract.test.mjs tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-fast-engine-runtime.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js tests/archive-solution-image.test.js tests/archive-render-authority-adapter.test.js tests/archive-canonical-identity-propagation.test.js tests/archive-adjacent-math-readability.test.mjs
+node --test tests/archive-review-source-writer.test.mjs tests/archive-review-session-store.test.mjs tests/archive-review-preview-bridge.test.mjs tests/archive-review-runtime-contract.test.mjs tests/archive-review-editor-contract.test.mjs tests/archive-review-save-contract.test.mjs tests/archive-review-save-transaction.test.mjs tests/archive-review-conflict-recovery.test.mjs tests/archive-fast-engine-runtime.test.js tests/archive-engine-launch-fallback.test.js tests/archive-mathjax-render-loop.test.js tests/archive-solution-image.test.js tests/archive-render-authority-adapter.test.js tests/archive-canonical-identity-propagation.test.js tests/archive-adjacent-math-readability.test.mjs
 ```
 
-결과: `72 passed / 0 failed`.
+결과: `74 passed / 0 failed`.
 
 포함한 회귀 범위:
 
@@ -43,6 +44,7 @@ node --test tests/archive-review-source-writer.test.mjs tests/archive-review-ses
 - sourceRef 기반 선택 및 null ID 편집, 파일 읽기 실패 시 현재 handle 보존, metadata markup escaping
 - save 전 preview 대기, 외부 파일 변경 차단, post-write semantic mismatch 차단, legacy redirect
 - multiline/indent formatting regression, post-write recovery artifact, beforeSource 보존, 무조건 rollback 금지, recovery snapshot persistence
+- post-write FAIL → session persist → disk fingerprint CONFLICT → restore 순서에서 disk bank 불변, beforeSource 보존, edited currentBank 보존, writer 기반 draft recovery 생성, 두 recovery artifact 접근 가능성
 - regular archive runtime, MathJax loop, render-authority adapter, solution image, canonical identity 회귀
 
 ### Source writer 전체 inventory
@@ -55,6 +57,19 @@ node --test tests/archive-review-source-writer.test.mjs tests/archive-review-ses
 4. canonical semantic round-trip 비교
 
 결과: `files=465, ok=465, fail=0`.
+
+## P1 conflict-draft recovery 검증
+
+`tests/archive-review-conflict-recovery.test.mjs`는 post-write semantic verification FAIL을 만드는 handle에서 다음 계약을 순서대로 검증한다.
+
+1. post-write FAIL은 성공 결과를 반환하지 않고 `beforeSource`와 `rollbackAttempted=false`를 남긴다.
+2. 그 snapshot을 session store에 persist한 뒤 다시 읽는다.
+3. write 이후 disk fingerprint가 달라진 상태로 restore한다.
+4. restore 결과의 `currentBank`는 disk bank이고 `draftApplied=false`다. 입력 disk bank도 mutate되지 않는다.
+5. 기존 `emergencyRecovery.source`와 snapshot의 edited `currentBank`가 각각 보존된다.
+6. `review-source-writer`로 beforeSource + conflict draft bank를 조합해 `fixture.review-draft-recovery.js` source를 만들고 round-trip 검증한다.
+
+editor는 conflict restore 때 이 draft source를 `conflictDraftRecovery`로 보관하고, 기존 백업 다운로드 버튼에서 `emergencyRecovery`와 `conflictDraftRecovery`를 함께 내려받도록 한다. 자동 disk overwrite와 자동 merge는 수행하지 않는다.
 
 ### JavaScript syntax
 

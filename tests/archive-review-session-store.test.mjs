@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import sessionStore from '../archive/review-session-store.js';
+import writer from '../archive/review-source-writer.js';
 
 const { buildReviewSessionSnapshot, restoreReviewSession, createReviewSessionStore } = sessionStore;
 
@@ -21,21 +22,33 @@ test('builds one versioned logical snapshot without duplicated independent recor
 });
 
 test('does not apply an old draft when the current disk fingerprint differs', () => {
+  const beforeSource = 'window.examTitle = "시험";\nwindow.questionBank = [{ id: 1, content: "원본" }];\n';
+  const editedBank = [{ id: 1, content: 'edited draft' }];
   const snapshot = buildReviewSessionSnapshot({
     sourceFingerprint: 'sha-a', sourceIdentity: 'foo.js',
     draftState: {
-      currentBank: [{ id: 1 }],
-      emergencyRecovery: { source: 'before-source', fileName: 'foo.before-review-recovery.js' },
+      currentBank: editedBank,
+      emergencyRecovery: { source: beforeSource, fileName: 'foo.before-review-recovery.js' },
     }
   });
+  const diskBank = [{ id: 1, content: 'current disk' }];
   const restored = restoreReviewSession(snapshot, {
-    sourceFingerprint: 'sha-b', bank: [{ id: 2 }]
+    sourceFingerprint: 'sha-b', bank: diskBank
   }, 'foo.js');
 
   assert.equal(restored.status, 'CONFLICT');
-  assert.deepEqual(restored.currentBank, [{ id: 2 }]);
+  assert.deepEqual(restored.currentBank, diskBank);
   assert.equal(restored.draftApplied, false);
-  assert.deepEqual(restored.emergencyRecovery, { source: 'before-source', fileName: 'foo.before-review-recovery.js' });
+  assert.deepEqual(restored.emergencyRecovery, { source: beforeSource, fileName: 'foo.before-review-recovery.js' });
+  assert.deepEqual(restored.conflictDraftRecovery.bank, editedBank);
+  assert.equal(restored.conflictDraftRecovery.fileName, 'foo.review-draft-recovery.js');
+  assert.deepEqual(diskBank, [{ id: 1, content: 'current disk' }], 'conflict restore must not mutate the disk bank');
+
+  const draftRecoverySource = writer.replaceQuestionBankPreservingSource(
+    restored.emergencyRecovery.source,
+    restored.conflictDraftRecovery.bank
+  );
+  writer.validateRoundTrip(draftRecoverySource, editedBank, 'foo.review-draft-recovery.js');
 });
 
 test('restores the stored draft only when the disk fingerprint matches', () => {

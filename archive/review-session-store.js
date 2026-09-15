@@ -35,10 +35,33 @@
     };
   }
 
+  function conflictDraftFileName(fileName) {
+    const baseName = String(fileName || 'archive.js').split(/[\\/]/).pop() || 'archive.js';
+    const base = baseName.replace(/\.js$/i, '').replace(/[^A-Za-z0-9._-]+/g, '_') || 'archive';
+    return `${base}.review-draft-recovery.js`;
+  }
+
+  function buildConflictDraftRecovery(snapshot, fileName) {
+    const draft = snapshot?.draftState || {};
+    const existing = draft.conflictDraftRecovery;
+    if (existing && typeof existing === 'object') {
+      const value = clone(existing);
+      value.bank = clone(Array.isArray(value.bank) ? value.bank : (Array.isArray(draft.currentBank) ? draft.currentBank : []));
+      value.fileName = value.fileName || conflictDraftFileName(fileName);
+      return value;
+    }
+    return {
+      bank: clone(Array.isArray(draft.currentBank) ? draft.currentBank : []),
+      fileName: conflictDraftFileName(fileName),
+      reason: 'SESSION_SOURCE_FINGERPRINT_CONFLICT',
+    };
+  }
+
   function restoreReviewSession(snapshot, diskSource, fileName = '') {
     if (!snapshot || snapshot.schemaVersion !== SCHEMA_VERSION || !diskSource) {
       return { status: 'INVALID', draftApplied: false, currentBank: [] };
     }
+    const draft = snapshot.draftState || {};
     const diskBank = clone(Array.isArray(diskSource.bank) ? diskSource.bank : []);
     if (String(snapshot.sourceFingerprint || '') !== String(diskSource.sourceFingerprint || '')) {
       return {
@@ -50,9 +73,9 @@
         originalBank: clone(diskBank),
         sourceFingerprint: String(diskSource.sourceFingerprint || ''),
         emergencyRecovery: clone(snapshot.draftState?.emergencyRecovery || null),
+        conflictDraftRecovery: buildConflictDraftRecovery(snapshot, fileName),
       };
     }
-    const draft = snapshot.draftState || {};
     const editor = snapshot.editorState || {};
     const ui = snapshot.uiState || {};
     return {
@@ -70,6 +93,7 @@
       editorState: clone(editor),
       uiState: clone(ui),
       emergencyRecovery: clone(draft.emergencyRecovery || null),
+      conflictDraftRecovery: clone(draft.conflictDraftRecovery || null),
       sessionRevision: snapshot.sessionRevision,
     };
   }
