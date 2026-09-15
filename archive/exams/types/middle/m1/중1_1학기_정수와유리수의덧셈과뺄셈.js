@@ -1501,7 +1501,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "아래의 표는 가로줄과 세로줄 모두 같은 수 만큼 증가하는 규칙을 갖는다. 다음 중 이 표를 완성하는 데 필요하지 않은 숫자는? 00$2$$5$",
+    "content": "아래의 표는 가로줄과 세로줄 모두 같은 수 만큼 증가하는 규칙을 갖는다. 다음 중 이 표를 완성하는 데 필요하지 않은 숫자는? 00$2$<span style=\"display:inline-block;width:0.7em;\" aria-hidden=\"true\"></span>$5$",
     "choices": [
       "1",
       "4",
@@ -1714,7 +1714,7 @@ window.questionBank = [
       "혼합계산"
     ],
     "wide": false,
-    "content": "다음 식에서 $a-b$의 값은?$(-3)+a=-5$$(-4)+b=-2$",
+    "content": "다음 식에서 $a-b$의 값은?$(-3)+a=-5$<br>$(-4)+b=-2$",
     "choices": [
       "-4",
       "-2",
