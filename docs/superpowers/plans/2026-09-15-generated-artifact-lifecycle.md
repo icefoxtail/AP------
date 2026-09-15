@@ -161,7 +161,7 @@
 
 - [ ] **Step 3: Implement the minimal runtime changes.**
 
-  Add `SEALED_LOCAL` and the universal package filename to the existing lifecycle contract. Add `universal-runs` to discovery and `universal` to `--runtime-kind`. Keep active/held protection and dry-run defaults unchanged.
+  Add `SEALED_LOCAL` and the universal package filename to the existing lifecycle contract. Add `universal-runs` to discovery and `universal` to `--runtime-kind`. Keep active/held protection and dry-run defaults unchanged. Successful terminal workdirs are removed after compact result verification; FAILED/BLOCKED debug workdirs are moved to quarantine.
 
 - [ ] **Step 4: Connect seal/finalizer commands to cleanup.**
 
@@ -229,7 +229,7 @@
 
 - [ ] **Step 4: Apply cleanup only to safe sealed terminal runs.**
 
-  Apply the existing runtime finalizer to exact universal sealed runs in the requested generated scope. Preserve compact results and move verbose workdirs to quarantine. Do not touch the unrelated dirty paths or unclassified archive staging.
+  Apply the existing runtime finalizer to exact universal sealed runs in the requested generated scope. Preserve compact results and remove successful verbose workdirs; retain only failure/debug workdirs in quarantine. Do not touch the unrelated dirty paths or unclassified archive staging.
 
 - [ ] **Step 5: Re-run inventory and Git/source protections.**
 

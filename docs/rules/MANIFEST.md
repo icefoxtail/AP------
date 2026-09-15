@@ -34,6 +34,6 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 105170 bytes | sha256 6a57ebc03f2211be32de230f55dae646552b2d0e003dae0e2e1007b2961a2407
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2
-- 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 8305 bytes | sha256 57811189bdd5577169f89e4cb622aa6d0f31045b3e4b730661a80cb68272fa9c
+- 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 11585 bytes | sha256 fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56
 
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 10638 bytes | sha256 3ebee2497f2aa3e170e558f2ce904fd222ee575811ef1c96137e3fe32c80512d

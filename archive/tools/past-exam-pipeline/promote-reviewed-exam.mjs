@@ -8,6 +8,7 @@ import {
   makePromotionReceipt,
   productionWritePreflight,
 } from "./lib/hardening.mjs";
+import { cleanupGeneratedRun, markGeneratedRun } from "../../../tools/archive/generated-artifact-lifecycle.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const archiveRoot = path.resolve(here, "../..");
@@ -62,7 +63,7 @@ function main() {
   // All source, fidelity, math, asset, serialization, and handoff bindings are
   // checked before any protected destination is created.
   const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
-  const masterRows = loadSubunitMaster();
+  const masterRows = loadSubunitMaster(archiveRoot);
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
   if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
   const ids = candidate.questionBank.map((question) => question.id);
@@ -86,12 +87,12 @@ function main() {
     if (!masterMatch) throw new Error(`q${question.id} subunit master mismatch`);
   }
 
-  const liveRoot = path.resolve(archiveRootOverride, "exams");
+  const liveRoot = path.resolve(archiveRoot, "exams");
   const liveJs = path.resolve(liveRoot, manifest.archiveRelativePath);
   if (!liveJs.startsWith(`${liveRoot}${path.sep}`)) throw new Error("manifest.archiveRelativePath escapes archive/exams");
   if (fs.existsSync(liveJs) && !replaceExisting) throw new Error(`live JS already exists: ${liveJs}`);
 
-  const liveAssetsDir = path.join(archiveRootOverride, "assets", "images", manifest.examId);
+  const liveAssetsDir = path.join(archiveRoot, "assets", "images", manifest.examId);
   const expectedPrefix = `assets/images/${manifest.examId}/`;
   const assetSources = new Map();
   const reviewedQuestionBytes = JSON.stringify(candidate.questionBank);
@@ -164,7 +165,23 @@ function main() {
   fs.mkdirSync(path.dirname(liveJs), { recursive: true });
   // Preserve the exact reviewed bytes; never reserialize after SHA-bound review.
   fs.copyFileSync(candidateFile, liveJs);
-  console.log(JSON.stringify({ status: "promoted", commonClosure, receipt, receiptFile, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
+  const stagingRoot = path.resolve(path.dirname(candidateFile), "..");
+  let cleanup = { status: "SKIPPED", reason: "LIFECYCLE_MARKER_MISSING" };
+  if (fs.existsSync(path.join(stagingRoot, ".lifecycle.json"))) {
+    markGeneratedRun(stagingRoot, "SUCCEEDED", {
+      canonicalPaths: [".lifecycle.json", "reports/production_promotion_receipt.json"],
+    });
+    cleanup = cleanupGeneratedRun({
+      repoRoot: path.resolve(archiveRoot, ".."),
+      runDir: stagingRoot,
+      mode: "success",
+    });
+  }
+  console.log(JSON.stringify({ status: "promoted", commonClosure, receipt, receiptFile, cleanup, examId: manifest.examId, liveJs, liveAssetsDir, questionCount: candidate.questionBank.length, assetCount: assetSources.size }, null, 2));
+}
+
+function runPromotion() {
+  main();
 }
 
 if (path.resolve(fileURLToPath(import.meta.url)) === path.resolve(process.argv[1] || "")) runPromotion();
