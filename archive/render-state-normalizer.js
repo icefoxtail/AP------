@@ -7,7 +7,7 @@
     const VERSION = 'archive-candidate-v1';
     const MODE_MAP = Object.freeze({ exam: 'exam', sol: 'solution', ans: 'answer' });
     const CANONICAL_TO_APP_MODE = Object.freeze({ exam: 'exam', solution: 'sol', answer: 'ans' });
-    const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid']);
+    const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid', 'reviewSourceRef']);
     const CANONICAL_FIELDS = Object.freeze(['sourceRef', 'displayNo', 'content', 'choices', 'answer', 'solution', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide']);
     const ownedImmutableValues = new WeakSet();
     const serializedValues = new WeakMap();
@@ -63,7 +63,7 @@
     }
 
     function canonicalRenderData(canonical, raw) {
-        if (!Array.isArray(canonical) || !Array.isArray(raw) || canonical.length !== raw.length || !raw.length) throw new Error('INVALID_CANONICAL_RENDER_DATA');
+        if (!Array.isArray(canonical) || !Array.isArray(raw) || canonical.length !== raw.length) throw new Error('INVALID_CANONICAL_RENDER_DATA');
         return copy(canonical.map((question, index) => ({
             ...project(question, CANONICAL_FIELDS),
             sourcePayload: project(raw[index], ['content', 'question']),
@@ -76,12 +76,16 @@
             for (const key of Object.keys(object || {})) if (!fields.includes(key)) throw new Error(`UNKNOWN_CANDIDATE_FIELD:${key}`);
         };
         assertFields(value, ['schemaVersion', 'canonicalMode', 'input', 'mode', 'qpp', 'source', 'printHeaderOptions', 'qrState', 'rendererMode', 'profile', 'layoutOptions', 'environment', 'fingerprints']);
-        assertFields(value.source, ['targetSessionId', 'sourceRequestId', 'safeDataUrl', 'sourceArchiveFile', 'canonicalRenderData', 'canonicalDataFingerprint', 'title', 'identityTitle', 'displayTitle', 'businessData']);
+        assertFields(value.source, ['targetSessionId', 'sourceRequestId', 'sourceKind', 'safeDataUrl', 'sourceArchiveFile', 'bridgeEpoch', 'sourceEpoch', 'revision', 'canonicalRenderData', 'canonicalDataFingerprint', 'title', 'identityTitle', 'displayTitle', 'businessData']);
         assertFields(value.printHeaderOptions, ['title', 'metaRight', 'subtitle', 'showNameLine', 'showScoreLine', 'applyToSolution', 'applyToAnswer']);
         assertFields(value.fingerprints, ['engine', 'renderAuthority', 'layoutAuthority', 'executor', 'pageLayout', 'font', 'asset', 'qrPolicy', 'qrPayload', 'printHeader', 'profile']);
         if (!Object.hasOwn(MODE_MAP, value.mode)) throw new Error('INVALID_RENDER_MODE');
         if (!Number.isInteger(value.qpp) || value.qpp < 1 || value.qpp > 40) throw new Error('INVALID_QPP');
-        if (!value.source?.targetSessionId || !value.source?.canonicalRenderData?.length) throw new Error('INVALID_CANDIDATE_SOURCE');
+        if (!value.source?.targetSessionId || !Array.isArray(value.source?.canonicalRenderData) || (value.source.sourceKind !== 'review-snapshot' && !value.source.canonicalRenderData.length)) throw new Error('INVALID_CANDIDATE_SOURCE');
+        if (value.source?.sourceKind && !['archive-source', 'review-snapshot'].includes(value.source.sourceKind)) throw new Error('INVALID_SOURCE_KIND');
+        for (const key of ['bridgeEpoch', 'sourceEpoch', 'revision']) {
+            if (value.source?.[key] !== undefined && (!Number.isInteger(value.source[key]) || value.source[key] < 0)) throw new Error(`INVALID_SOURCE_REVISION:${key}`);
+        }
         const candidate = copy({ ...value, schemaVersion: VERSION, canonicalMode: MODE_MAP[value.mode] });
         assertImmutable(candidate);
         return candidate;

@@ -62,6 +62,8 @@
       sourceFingerprint: snapshot.sourceFingerprint,
       currentBank: clone(Array.isArray(draft.currentBank) ? draft.currentBank : diskBank),
       originalBank: clone(Array.isArray(draft.originalBank) ? draft.originalBank : diskBank),
+      sourceRefs: clone(Array.isArray(draft.sourceRefs) ? draft.sourceRefs : []),
+      modifiedIds: clone(Array.isArray(draft.modifiedIds) ? draft.modifiedIds : []),
       removedItems: clone(Array.isArray(draft.removedItems) ? draft.removedItems : []),
       selectedSourceRef: editor.selectedSourceRef || null,
       editorState: clone(editor),
@@ -81,6 +83,7 @@
     const dbName = options.dbName || DB_NAME;
     const metrics = options.metrics || { writeCount: 0, writeMs: 0, payloadSize: 0 };
     let openPromise = null;
+    let writeTail = Promise.resolve();
 
     function open() {
       if (openPromise) return openPromise;
@@ -124,12 +127,17 @@
 
     async function put(snapshot) {
       const value = buildReviewSessionSnapshot(snapshot);
-      const started = now();
-      await transaction('readwrite', store => { store.put(value, SNAPSHOT_KEY); });
-      metrics.writeCount = Number(metrics.writeCount || 0) + 1;
-      metrics.writeMs = Number((now() - started).toFixed(2));
-      metrics.payloadSize = JSON.stringify(value).length;
-      return value;
+      const performWrite = async () => {
+        const started = now();
+        await transaction('readwrite', store => { store.put(value, SNAPSHOT_KEY); });
+        metrics.writeCount = Number(metrics.writeCount || 0) + 1;
+        metrics.writeMs = Number((now() - started).toFixed(2));
+        metrics.payloadSize = JSON.stringify(value).length;
+        return value;
+      };
+      const write = writeTail.then(performWrite, performWrite);
+      writeTail = write;
+      return write;
     }
 
     async function get() {
