@@ -277,6 +277,7 @@
 
     function reloadForFatal(reason) {
       const pendingSnapshot = pending?.snapshot || lastSnapshot;
+      if (pending) pending.accepted.resolve({ ok: false, code: 'REVIEW_BRIDGE_RELOADED' });
       for (const waiting of waiters.values()) waiting.forEach(entry => entry.reject(Object.assign(new Error('REVIEW_BRIDGE_RELOADED'), { code: 'REVIEW_BRIDGE_RELOADED' })));
       waiters.clear();
       tuple = { bridgeEpoch: tuple.bridgeEpoch + 1, sourceEpoch: tuple.sourceEpoch, revision: tuple.revision };

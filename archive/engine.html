@@ -43,7 +43,7 @@
     <script src="side-effect-ledger.js?v=20260911.5"></script>
     <script src="screen-runtime.js?v=20260913.1"></script>
     <script src="snapshot-contract.js?v=20260911.5"></script>
-    <script src="review-preview-bridge.js?v=20260915.1"></script>
+    <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
     <script src="screen-runtime-adapter.js?v=20260914.1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
@@ -2121,14 +2121,16 @@ function stripInlineImagesFromContent(content, hasImageField) {
     return stripped;
 }
 
-function renderQuestionImageHTML(q, renderState = AppState) {
+function renderQuestionImageHTML(q, renderState) {
+    renderState = renderState || (typeof AppState !== 'undefined' ? AppState : {});
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
     return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image, renderState))}"></div>`;
 }
 
-function withArchiveAssetCacheBuster(src, renderState = AppState) {
+function withArchiveAssetCacheBuster(src, renderState) {
+    renderState = renderState || (typeof AppState !== 'undefined' ? AppState : {});
     const raw = String(src == null ? '' : src).trim();
     if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
     const hashIndex = raw.indexOf('#');
@@ -2149,7 +2151,8 @@ function escapeArchiveHtmlAttribute(value) {
         .replace(/'/g, '&#39;');
 }
 
-function renderSolutionImageHTML(q, renderState = AppState) {
+function renderSolutionImageHTML(q, renderState) {
+    renderState = renderState || (typeof AppState !== 'undefined' ? AppState : {});
     if (!q || !q.solutionImage) return '';
     const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
     const alt = q.solutionImageAlt || `문항 ${q.id ?? ''} 해설 그래프`;
@@ -2177,8 +2180,8 @@ function collectQuestionImages(root) {
     return window.APQuestionImageReadiness.collectQuestionImages(root);
 }
 
-function normalizeQuestionImageSources(root) {
-    return window.APQuestionImageReadiness.normalizeQuestionImageSources(root, withArchiveAssetCacheBuster);
+function normalizeQuestionImageSources(root, renderState = AppState) {
+    return window.APQuestionImageReadiness.normalizeQuestionImageSources(root, src => withArchiveAssetCacheBuster(src, renderState));
 }
 
 function validateQuestionImageReadiness(root) {

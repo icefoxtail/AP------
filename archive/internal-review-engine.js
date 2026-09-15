@@ -752,8 +752,11 @@ async function loadBank(source, fileName) {
   state.saveRevision = 0;
   state.postWriteVerifiedRevision = 0;
   state.previewStatus = 'BOOTING';
+  resetReviewMetrics();
   state.assetFingerprint = '';
   state.assetRevision = 0;
+  const previewFrame = document.getElementById('enginePreviewFrame');
+  if (previewFrame) previewFrame.style.visibility = 'visible';
   if (state.reviewBridge) {
     const tuple = state.reviewBridge.beginSource();
     state.bridgeEpoch = tuple.bridgeEpoch;
@@ -795,6 +798,8 @@ async function autoloadFromQuery() {
     state.currentFilePath = archiveRelative.replace(/^archive\//i, '');
     state.currentFileHandle = null;
     state.canDirectSave = false;
+    const previewFrame = document.getElementById('enginePreviewFrame');
+    if (previewFrame) previewFrame.style.visibility = 'hidden';
     loadBank(source, fileName);
     return true;
   } catch (e) {
@@ -831,6 +836,8 @@ async function openArchiveDir() {
     state.modifiedIds = new Set();
     state.removedItems = [];
     state.canDirectSave = false;
+    const previewFrame = document.getElementById('enginePreviewFrame');
+    if (previewFrame) previewFrame.style.visibility = 'hidden';
     updateSaveModeUI();
     clearError();
     closeEditPanel();
@@ -1272,6 +1279,22 @@ function publishReviewMetrics() {
   });
 }
 
+function resetReviewMetrics() {
+  state.reviewMetrics = {
+    draftAtByRevision: {},
+    bridgeSendAtByRevision: {},
+    renderStartAtByRevision: {},
+    editToRenderDoneMs: [],
+    draftToBridgeSendMs: [],
+    renderQueueWaitMs: [],
+    coalescedRevisionCount: 0,
+    staleDiscardCount: 0,
+    fullReloadCount: 0,
+  };
+  state.reviewBridgeFallbackAttempt = false;
+  publishReviewMetrics();
+}
+
 function syncReviewBridgeTuple(tuple) {
   if (!tuple) return;
   state.bridgeEpoch = tuple.bridgeEpoch;
@@ -1299,6 +1322,7 @@ function ensureReviewPreviewBridge() {
       state.lastBridgeMessage = message;
       const revision = Number(message?.revision);
       const at = nowReviewMetric();
+      if (event === 'REVIEW_BRIDGE_READY') state.reviewBridgeFallbackAttempt = false;
       if (Number.isInteger(revision)) {
         if (event === 'REVIEW_SET_SOURCE') {
           state.reviewMetrics.bridgeSendAtByRevision[revision] = at;
@@ -1437,7 +1461,11 @@ async function dispatchReviewPreviewRevision(revision) {
   const bridge = ensureReviewPreviewBridge();
   if (!bridge || revision !== state.revision || !state.currentFileName) return { ok: false, code: 'REVIEW_PREVIEW_NOT_READY' };
   await refreshReviewAssetRevision();
-  if (revision !== state.revision) return { ok: false, code: 'DISCARDED_STALE' };
+  if (revision !== state.revision) {
+    state.reviewMetrics.staleDiscardCount += 1;
+    publishReviewMetrics();
+    return { ok: false, code: 'DISCARDED_STALE' };
+  }
   const tuple = { bridgeEpoch: state.bridgeEpoch, sourceEpoch: state.sourceEpoch, revision };
   const anchor = capturePreviewAnchor();
   setReviewPreviewStatus('RENDERING');
@@ -1448,7 +1476,11 @@ async function dispatchReviewPreviewRevision(revision) {
   }
   try {
     const outcome = await bridge.waitForRevision(tuple);
-    if (revision !== state.revision || state.sourceEpoch !== tuple.sourceEpoch) return { ok: false, code: 'DISCARDED_STALE' };
+    if (revision !== state.revision || state.sourceEpoch !== tuple.sourceEpoch) {
+      state.reviewMetrics.staleDiscardCount += 1;
+      publishReviewMetrics();
+      return { ok: false, code: 'DISCARDED_STALE' };
+    }
     state.visiblePreviewRevision = revision;
     state.requestedPreviewRevision = revision;
     publishReviewMetrics();
@@ -2412,6 +2444,7 @@ async function applyRestoredState(snapshot) {
   state.requestedPreviewRevision = 0;
   state.visiblePreviewRevision = 0;
   state.postWriteVerifiedRevision = 0;
+  resetReviewMetrics();
   state.assetFingerprint = '';
   state.assetRevision = 0;
   const bridge = ensureReviewPreviewBridge();
@@ -2421,6 +2454,7 @@ async function applyRestoredState(snapshot) {
     state.sourceEpoch = tuple.sourceEpoch;
   } else state.sourceEpoch += 1;
   await buildImageMap(state.archiveDirHandle);
+  if (state.archiveDirHandle && state.fileEntries.length === 0) await scanArchiveDir(state.archiveDirHandle);
 
   if (state.archiveDirHandle) {
     var dirStatus = document.getElementById('left-dir-status');
