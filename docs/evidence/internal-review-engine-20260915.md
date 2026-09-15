@@ -67,6 +67,10 @@ archive/internal-review-engine.js
 
 결과: 전부 exit code 0.
 
+### Skill verification
+
+작업 시작 시 기준 HEAD `5abf17d8d05b4e8e6914be5d833833c2519ad1c8`에서 `node tools/skills/verify-skills.mjs`는 PASS였다. 최종 검증 시에는 원격 `origin/main`이 작업 중 `9b75aa4f5b39181609a33a1df7fd14d27950dd03`으로 한 커밋 전진하여 `ahead=8, behind=1`이 되었고, `branch does not contain the latest origin/main` 한 항목 때문에 exit code 1을 반환했다. 이 브랜치는 계획서가 지정한 기준 HEAD에서의 작업 이력을 보존하므로 해당 원격 커밋을 임의로 merge/rebase하지 않았다.
+
 ### 저장소 전체 러너
 
 실행 명령: `node tools/run-tests.js`
