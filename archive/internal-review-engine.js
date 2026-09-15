@@ -59,6 +59,7 @@ const state = {
   imagePreviewSerial: 0,
   editorRenderSerial: 0,
   emergencyRecovery: null,
+  conflictDraftRecovery: null,
   reviewMetrics: {
     draftAtByRevision: {},
     bridgeSendAtByRevision: {},
@@ -756,6 +757,7 @@ async function loadBank(source, fileName, sourcePath = state.currentFilePath, so
   state.sourceFingerprint = sourceFingerprint;
   state.loadedFingerprint = sourceFingerprint;
   state.emergencyRecovery = null;
+  state.conflictDraftRecovery = null;
   state.originalBank   = deepClone(parsed.bank);
   state.currentBank    = deepClone(parsed.bank);
   state.questionSourceRefs.clear();
@@ -839,6 +841,7 @@ async function openArchiveDir() {
     state.currentFileName = '';
     state.currentSource = '';
     state.emergencyRecovery = null;
+    state.conflictDraftRecovery = null;
     state.examTitle = '';
     state.examDisplayTitle = '';
     state.sourceIdentity = '';
@@ -2015,6 +2018,7 @@ async function saveCurrentFile() {
 
     state.currentSource = saveResult.source;
     state.emergencyRecovery = null;
+    state.conflictDraftRecovery = null;
     state.loadedFingerprint = saveResult.fingerprint;
     state.sourceFingerprint = saveResult.fingerprint;
     state.originalBank = frozenBank;
@@ -2076,14 +2080,45 @@ function downloadModified() {
   showToast('다운로드 완료');
 }
 
+function buildConflictDraftRecovery(draftRecovery) {
+  if (!draftRecovery || !Array.isArray(draftRecovery.bank)) return null;
+  const bank = deepClone(draftRecovery.bank);
+  const fileName = draftRecovery.fileName || (state.currentFileName.replace(/\.js$/, '') + '.review-draft-recovery.js');
+  const writer = window.APReviewSourceWriter;
+  let source = typeof draftRecovery.source === 'string' ? draftRecovery.source : '';
+
+  if (source && writer?.validateRoundTrip) {
+    try { writer.validateRoundTrip(source, bank, fileName); }
+    catch (_) { source = ''; }
+  }
+  if (!source && state.emergencyRecovery?.source && writer?.replaceQuestionBankPreservingSource && writer?.validateRoundTrip) {
+    try {
+      source = writer.replaceQuestionBankPreservingSource(state.emergencyRecovery.source, bank);
+      writer.validateRoundTrip(source, bank, fileName);
+    } catch (_) { source = ''; }
+  }
+  if (!source) source = serializeQuestionBank(state.examTitle, bank, '');
+  return {
+    bank,
+    source,
+    fileName,
+    reason: draftRecovery.reason || 'SESSION_SOURCE_FINGERPRINT_CONFLICT',
+  };
+}
+
 function downloadBackup() {
-  const recovery = state.emergencyRecovery;
-  const source = recovery?.source || state.currentSource;
-  if (!source || !state.currentFileName) { showToast('파일을 먼저 열어주세요.'); return; }
+  const recoveries = [state.emergencyRecovery, state.conflictDraftRecovery]
+    .filter(function(item) { return item && typeof item.source === 'string' && item.source; });
+  if (recoveries.length > 0) {
+    recoveries.forEach(function(item) { downloadText(item.source, item.fileName); });
+    showToast(recoveries.length > 1 ? '원본 및 편집 draft 복구본 다운로드 완료' : '복구본 다운로드 완료');
+    return;
+  }
+  if (!state.currentSource || !state.currentFileName) { showToast('파일을 먼저 열어주세요.'); return; }
   const ts = formatDate();
-  const name = recovery?.fileName || state.currentFileName.replace(/\.js$/, '') + '.before-internal-review-' + ts + '.js';
-  downloadText(source, name);
-  showToast(recovery ? '저장 검증 실패 원본 복구본 다운로드 완료' : '백업 다운로드 완료');
+  const name = state.currentFileName.replace(/\.js$/, '') + '.before-internal-review-' + ts + '.js';
+  downloadText(state.currentSource, name);
+  showToast('백업 다운로드 완료');
 }
 
 /* ================================================================
@@ -2362,6 +2397,7 @@ function buildCurrentReviewSessionSnapshot() {
       modifiedIds: Array.from(state.modifiedIds),
       removedItems: state.removedItems,
       emergencyRecovery: state.emergencyRecovery,
+      conflictDraftRecovery: state.conflictDraftRecovery,
     },
     savedAt: Date.now(),
   });
@@ -2449,6 +2485,9 @@ async function applyRestoredState(snapshot) {
   state.currentBank       = restored.currentBank || deepClone(disk.parsed.bank);
   state.originalBank      = restored.originalBank || deepClone(disk.parsed.bank);
   state.emergencyRecovery = restored.emergencyRecovery || null;
+  state.conflictDraftRecovery = restored.status === 'CONFLICT'
+    ? buildConflictDraftRecovery(restored.conflictDraftRecovery)
+    : restored.conflictDraftRecovery || null;
   state.questionSourceRefs.clear();
   registerReviewQuestionSourceRefs(state.currentBank, state.sourceIdentity, restored.sourceRefs || []);
   registerReviewQuestionSourceRefs(state.originalBank, state.sourceIdentity);
@@ -2483,7 +2522,10 @@ async function applyRestoredState(snapshot) {
   updateSaveModeUI();
   renderFileList();
   renderAll();
-  if (restored.status === 'CONFLICT') showError('저장된 작업 이후 파일이 외부에서 변경되어 이전 draft는 적용하지 않았습니다. 현재 디스크 내용을 기준으로 시작합니다.');
+  if (restored.status === 'CONFLICT') {
+    showError('저장된 작업 이후 파일이 외부에서 변경되어 이전 draft는 적용하지 않았습니다. 현재 디스크 내용을 기준으로 시작합니다. 기존 원본과 편집 draft 복구본은 백업 다운로드 버튼으로 보관할 수 있습니다.');
+    await persistSessionState();
+  }
   queueReviewPreviewRevision(true);
 
   if (state.selectedSourceRef) {
