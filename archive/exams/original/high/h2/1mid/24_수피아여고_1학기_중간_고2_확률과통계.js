@@ -334,42 +334,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule"
   },
   {
-    "id": 11,
-    "level": "중",
-    "category": "같은 것이 있는 순열",
-    "originalCategory": "경우의 수",
-    "standardCourse": "확률과 통계",
-    "standardUnitKey": "H22-PS-01",
-    "standardUnit": "순열과 조합",
-    "standardUnitOrder": 1,
-    "questionType": "객관식",
-    "layoutTag": "grid",
-    "tags": [
-      "순열",
-      "경로수",
-      "좌표이동",
-      "중복순열",
-      "조건해석",
-      "응용",
-      "객관식"
-    ],
-    "wide": false,
-    "content": "[도형필요]좌표평면 위에서 상하 방향으로는 한 번에 1만큼씩, 좌우 방향으로는 한 번에 2만큼씩 움직이는 점 $P$가 있다.\\n원점을 출발한 점 $P$가 7번 움직여서 도착한 최종 위치가 점 $A(6,2)$가 되는 경우의 수는? [4.1점]",
-    "choices": [
-      "10",
-      "35",
-      "105",
-      "245",
-      "128"
-    ],
-    "answer": "④",
-    "solution": "[키포인트] 각 방향으로 이동한 횟수를 미지수로 두고 연립방정식을 세워 경우의 수를 구한다.\\n조건 정리: 우측(+2), 좌측(-2), 상단(+1), 하단(-1)으로 총 7번 이동하여 $(6,2)$에 도착한다.\\n풀이 과정: 우측, 좌측, 상단, 하단으로 이동한 횟수를 각각 $R, L, U, D$라 하자.\\n총 이동 횟수: $R + L + U + D = 7$\\n$x$좌표 이동: $2R - 2L = 6 \\implies R - L = 3 \\implies R = L + 3$\\n$y$좌표 이동: $U - D = 2 \\implies U = D + 2$\\n위 식들을 첫 번째 식에 대입하면 $(L+3) + L + (D+2) + D = 7 \\implies 2L + 2D = 2 \\implies L + D = 1$이다.\\n따라서 $L$과 $D$는 음이 아닌 정수이므로 두 가지 경우가 가능하다.\\n1) $L=1, D=0$인 경우: $R=4, U=2$가 된다.\\n이때의 경우의 수는 $\\frac{7!}{4!1!2!0!} = \\frac{7 \\times 6 \\times 5}{2} = 105$가지이다.\\n2) $L=0, D=1$인 경우: $R=3, U=3$이 된다.\\n이때의 경우의 수는 $\\frac{7!}{3!0!3!1!} = \\frac{7 \\times 6 \\times 5 \\times 4}{6} = 140$가지이다.\\n따라서 총 경우의 수는 $105 + 140 = 245$이다.\\n결론: 따라서 정답은 ④이다.",
-    "subUnitKey": "H22-PS-01-CORE",
-    "subUnit": "순열 핵심 개념",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
-  },
-  {
     "id": 12,
     "level": "중",
     "category": "중복조합",
