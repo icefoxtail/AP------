@@ -1501,16 +1501,16 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
-    "content": "아래의 표는 가로줄과 세로줄 모두 같은 수 만큼 증가하는 규칙을 갖는다. 다음 중 이 표를 완성하는 데 필요하지 않은 숫자는? 00$2$<span style=\"display:inline-block;width:0.7em;\" aria-hidden=\"true\"></span>$5$",
+    "content": "다음 표에서 가로줄과 세로줄의 세 수가 각각 같은 수만큼 증가하는 규칙을 가질 때, 빈칸에 들어갈 두 수의 합은? <div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th></th><th>첫째 수</th><th>둘째 수</th><th>셋째 수</th></tr></thead><tbody><tr><th>첫째 줄</th><td>2</td><td>5</td><td>8</td></tr><tr><th>둘째 줄</th><td>4</td><td>7</td><td>□</td></tr><tr><th>셋째 줄</th><td>6</td><td>□</td><td>12</td></tr></tbody></table></div>",
     "choices": [
-      "1",
-      "4",
-      "5",
-      "7",
-      "8"
+      "15",
+      "17",
+      "19",
+      "21",
+      "23"
     ],
-    "answer": "①",
-    "solution": "[솔포인트] 표의 행과 열이 늘어나는 등차 형태의 변화 규칙을 분석했을 때, 필요하지 않은 숫자를 보기에서 고르면 ①번 $1$이 됩니다.",
+    "answer": "③",
+    "solution": "[솔포인트] 가로줄과 세로줄에서 가운데 수는 양끝 수의 평균이라는 점을 이용한다.\n첫째 줄 $2,5,8$은 $3$씩 증가하고, 첫째 열 $2,4,6$은 $2$씩 증가한다.\n둘째 줄은 $4,7,□$이므로 $7-4=3$에서 빈칸은 $7+3=10$이다. 셋째 줄은 $6,□,12$이므로 두 칸의 차가 같아야 하므로 빈칸은 $6+3=9$이다.\n따라서 빈칸에 들어갈 두 수의 합은 $10+9=19$이고, 정답은 ③이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
