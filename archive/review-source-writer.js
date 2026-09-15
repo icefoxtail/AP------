@@ -7,6 +7,7 @@
   'use strict';
 
   const BANK_PROPERTIES = new Set(['questions', 'problems']);
+  const REVIEW_OVERRIDE_MARKER = '/* AP_REVIEW_SOURCE_OVERRIDE */';
 
   function isIdentifierStart(char) {
     return !!char && /[A-Za-z_$]/.test(char);
@@ -231,9 +232,33 @@
 
   function replaceQuestionBankPreservingSource(source, bank) {
     if (typeof source !== 'string') throw new TypeError('SOURCE_WRITER_SOURCE_MUST_BE_STRING');
-    const range = findQuestionBankRange(source);
     const literal = serializeQuestionBankLiteral(bank);
-    return source.slice(0, range.start) + literal + source.slice(range.end);
+    const markerStart = source.lastIndexOf(REVIEW_OVERRIDE_MARKER);
+    if (markerStart >= 0) {
+      try {
+        const markedSource = source.slice(markerStart);
+        const markedRange = findQuestionBankRange(markedSource);
+        const start = markerStart + markedRange.start;
+        const end = markerStart + markedRange.end;
+        return source.slice(0, start) + literal + source.slice(end);
+      } catch (_) {
+        // A manually edited marker is not trusted; fall through to the
+        // ordinary structural scan and fail closed if that is unsupported.
+      }
+    }
+    const range = findQuestionBankRange(source);
+    const rewritten = source.slice(0, range.start) + literal + source.slice(range.end);
+    try {
+      const parsed = parseArchiveSource(rewritten, 'review.js');
+      if (JSON.stringify(canonicalize(parsed.bank)) === JSON.stringify(canonicalize(bank))) return rewritten;
+    } catch (_) {
+      // The source was already parsed before editing. A post-bank helper may
+      // reject the replacement; append only the final bank assignment below.
+    }
+    // Some legacy banks run solution/figure helpers after the array literal.
+    // Keep those declarations and side effects intact, then override only the
+    // final questionBank value so the edited semantic snapshot is authoritative.
+    return rewritten + `\n${REVIEW_OVERRIDE_MARKER}\nwindow.questionBank = ${literal};\n`;
   }
 
   function canonicalize(value) {

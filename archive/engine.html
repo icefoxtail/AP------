@@ -43,6 +43,7 @@
     <script src="side-effect-ledger.js?v=20260911.5"></script>
     <script src="screen-runtime.js?v=20260913.1"></script>
     <script src="snapshot-contract.js?v=20260911.5"></script>
+    <script src="review-preview-bridge.js?v=20260915.1"></script>
     <script src="question-image-readiness.js?v=20260915.2"></script>
     <script src="screen-runtime-adapter.js?v=20260914.1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
@@ -448,7 +449,7 @@ const SE_OVERHEAD_GRID = 20;
 const SE_PAGE_TOLERANCE = 5;
 const SE_BLOCK_GAP = 15;
 
-const AppState = { data: [], canonicalData: [], sourceArchiveFile: '', mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {}, layoutMeasurementLedger: null, solutionDecisionLedger: null, solutionObservedPlacementLedger: null };
+const AppState = { data: [], canonicalData: [], sourceArchiveFile: '', mode: 'exam', qpp: 4, title: '', identityTitle: '', printHeaderOptions: {}, assetRevision: '', layoutMeasurementLedger: null, solutionDecisionLedger: null, solutionObservedPlacementLedger: null };
 const committedArchiveState = AppState;
 const committedTypesetMath = typesetMath;
 const committedRaf = raf;
@@ -1381,6 +1382,7 @@ function buildArchiveCanonicalData(sourceArchiveFile) {
 }
 
 function getArchiveQuestionSourceRef(q, index, renderState = AppState) {
+    if (q?.reviewSourceRef) return String(q.reviewSourceRef);
     const sourceArchiveFile = String(q?.sourceArchiveFile || q?.source_archive_file || renderState.sourceArchiveFile || '').trim();
     const sourceOrdinal = Number(q?.sourceOrdinal || q?.sourceQuestionOrdinal || q?.source_question_ordinal || index + 1) || index + 1;
     const sourceUid = String(q?.questionUid || q?.sourceQuestionUid || q?.source_question_uid || `legacy:${sourceArchiveFile}#ordinal:${sourceOrdinal}`).trim();
@@ -1419,7 +1421,7 @@ async function recordArchiveDualRun(area, ctx = null) {
                 wrapLatex,
                 prepareContent: prepareArchiveCanonicalContent,
                 prepareSolution: prepareArchiveCanonicalSolution,
-                resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef)
+                resolveAssetUrl: assetRef => withArchiveAssetCacheBuster(assetRef, AppState)
             })).join('');
         const witness = document.createElement('div');
         witness.style.cssText = 'position:absolute;left:-100000px;top:-100000px;visibility:hidden;width:83mm;';
@@ -2119,14 +2121,14 @@ function stripInlineImagesFromContent(content, hasImageField) {
     return stripped;
 }
 
-function renderQuestionImageHTML(q) {
+function renderQuestionImageHTML(q, renderState = AppState) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image))}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image, renderState))}"></div>`;
 }
 
-function withArchiveAssetCacheBuster(src) {
+function withArchiveAssetCacheBuster(src, renderState = AppState) {
     const raw = String(src == null ? '' : src).trim();
     if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
     const hashIndex = raw.indexOf('#');
@@ -2134,7 +2136,8 @@ function withArchiveAssetCacheBuster(src) {
     const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
     if (/(?:^|[?&])v=[^&#]*/i.test(base)) return raw;
     const separator = base.includes('?') ? '&' : '?';
-    return `${base}${separator}v=${encodeURIComponent(ARCHIVE_ASSET_CACHE_VERSION)}${hash}`;
+    const revision = String(renderState?.assetRevision || ARCHIVE_ASSET_CACHE_VERSION);
+    return `${base}${separator}v=${encodeURIComponent(revision)}${hash}`;
 }
 
 function escapeArchiveHtmlAttribute(value) {
@@ -2146,14 +2149,14 @@ function escapeArchiveHtmlAttribute(value) {
         .replace(/'/g, '&#39;');
 }
 
-function renderSolutionImageHTML(q) {
+function renderSolutionImageHTML(q, renderState = AppState) {
     if (!q || !q.solutionImage) return '';
     const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
     const alt = q.solutionImageAlt || `문항 ${q.id ?? ''} 해설 그래프`;
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
-    return `<span class="sol-image-wrap image-${size}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.solutionImage))}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    return `<span class="sol-image-wrap image-${size}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.solutionImage, renderState))}" alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -2244,7 +2247,7 @@ async function renderExamLegacy(area, data, ctx = null) {
                 )
             )
         );
-        const imageHTML = renderQuestionImageHTML(q);
+        const imageHTML = renderQuestionImageHTML(q, AppState);
         const choicesHTML = renderChoicesHTML(q);
         box.innerHTML = `<div class="q-num">${i + 1}.</div>
                          <div class="q-content">${formattedContent}</div>
@@ -2652,7 +2655,7 @@ async function renderSolLegacy(area, data, ctx = null) {
             // continuation shell then contains only .sol-exp, so a solution image
             // is shown once in the first column rather than once per continuation.
             const solutionHtml = formatSolutionHtml(solutionText);
-            const solutionImageHtml = renderSolutionImageHTML(q);
+        const solutionImageHtml = renderSolutionImageHTML(q, AppState);
             const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
             box.dataset.solutionHtml = solutionHtml;
             box.innerHTML = `<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
@@ -2750,7 +2753,7 @@ async function renderSolLegacy(area, data, ctx = null) {
             )
         );
         const box = document.createElement('div'); box.className = 'q-box sol-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
-        box.innerHTML = `<div class="q-num">${i+1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q)}<div class="sol-exp">${formatSolutionHtml(solutionText)}</div></div>`;
+        box.innerHTML = `<div class="q-num">${i+1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${wrapLatex(q.answer ?? '–')}</div>${renderSolutionImageHTML(q, AppState)}<div class="sol-exp">${formatSolutionHtml(solutionText)}</div></div>`;
         normalizeQuestionImageSources(box);
         cols[colIdx].appendChild(box);
         await typesetMath('solution-reminder-box', [box]); await raf();
@@ -3425,6 +3428,9 @@ window.onload = () => {
     if (runtimeParams.get('screenRuntime') !== 'legacy' && runtimeParams.get('renderer') !== 'legacy') {
         archiveScreenRuntime = createArchiveScreenRuntime();
         window.archiveScreenRuntime = archiveScreenRuntime;
+    }
+    if (runtimeParams.get('reviewBridge') === '1') {
+        installArchiveReviewPreviewBridgeReceiver(() => archiveScreenRuntime);
     }
     restoreApmathSessionFromHash();
     const params = new URLSearchParams(window.location.search);

@@ -93,6 +93,7 @@
     const handshakeTimeoutMs = Number.isFinite(options.handshakeTimeoutMs) ? options.handshakeTimeoutMs : 5000;
     const onQuestionSelect = options.onQuestionSelect || (() => {});
     const onFatal = options.onFatal || (() => {});
+    const onEvent = options.onEvent || (() => {});
     const initial = normalizeTuple(options.initialTuple);
     let tuple = initial;
     let status = STATUS.BOOTING;
@@ -131,8 +132,14 @@
           tuple = item.tuple;
           lastSnapshot = item.snapshot;
           status = STATUS.RENDERING;
-          post(createReviewMessage('REVIEW_SET_SOURCE', item.snapshot, item.tuple), expectedOrigin);
-          item.accepted.resolve({ ok: true, revision: item.tuple.revision, tuple: { ...item.tuple } });
+          onEvent('REVIEW_SET_SOURCE', item.snapshot);
+          try {
+            post(createReviewMessage('REVIEW_SET_SOURCE', item.snapshot, item.tuple), expectedOrigin);
+            item.accepted.resolve({ ok: true, revision: item.tuple.revision, tuple: { ...item.tuple } });
+          } catch (error) {
+            status = STATUS.ERROR;
+            item.accepted.resolve({ ok: false, code: String(error?.code || error?.message || error) });
+          }
         });
       });
     }
@@ -141,7 +148,7 @@
       if (!message) return false;
       if (expectedOrigin && event?.origin && event.origin !== expectedOrigin) return false;
       const source = expectedWindow || iframe?.contentWindow;
-      if (source && event?.source && event.source !== source) return false;
+      if (source && event?.source !== source) return false;
       return true;
     }
 
@@ -153,23 +160,27 @@
         ready = true;
         status = STATUS.READY;
         if (handshakeTimer) { clearTimeout(handshakeTimer); handshakeTimer = null; }
+        onEvent('REVIEW_BRIDGE_READY', message);
         scheduleFlush();
         return true;
       }
       if (!isCurrentRevisionTuple(message, tuple)) return false;
       if (message.type === 'REVIEW_RENDER_START') {
         status = STATUS.RENDERING;
+        onEvent('REVIEW_RENDER_START', message);
         return true;
       }
       if (message.type === 'REVIEW_RENDER_DONE') {
         status = STATUS.READY;
         lastDone = normalizeTuple(message);
+        onEvent('REVIEW_RENDER_DONE', message);
         resolveWaiters(message, { ok: true, ...lastDone, pages: message.payload?.pages ?? null });
         return true;
       }
       if (message.type === 'REVIEW_RENDER_ERROR') {
         status = STATUS.ERROR;
         const outcome = { ok: false, code: message.payload?.code || 'REVIEW_RENDER_ERROR', ...normalizeTuple(message) };
+        onEvent('REVIEW_RENDER_ERROR', message);
         resolveWaiters(message, outcome);
         return true;
       }
@@ -186,6 +197,13 @@
       if (nextTuple.sourceEpoch < tuple.sourceEpoch || (nextTuple.sourceEpoch === tuple.sourceEpoch && nextTuple.revision < tuple.revision)) {
         return Promise.resolve({ ok: false, code: 'STALE_REVIEW_REVISION' });
       }
+      for (const [key, waiting] of waiters) {
+        const [bridgeEpoch, sourceEpoch, revision] = key.split(':').map(Number);
+        if (bridgeEpoch === nextTuple.bridgeEpoch && sourceEpoch === nextTuple.sourceEpoch && revision < nextTuple.revision) {
+          waiters.delete(key);
+          waiting.forEach(entry => entry.reject(Object.assign(new Error('SUPERSEDED_REVIEW_REVISION'), { code: 'SUPERSEDED_REVIEW_REVISION', revision })));
+        }
+      }
       if (pending) pending.accepted.resolve({ ok: false, code: 'COALESCED', revision: pending.tuple.revision });
       const accepted = deferred();
       pending = { snapshot: { ...snapshot, ...nextTuple }, tuple: nextTuple, accepted };
@@ -198,7 +216,8 @@
       if (!['exam', 'sol', 'ans'].includes(mode)) return Promise.resolve({ ok: false, code: 'INVALID_REVIEW_MODE' });
       if (!isReady()) return Promise.resolve({ ok: false, code: 'REVIEW_BRIDGE_NOT_READY' });
       status = STATUS.RENDERING;
-      post(createReviewMessage('REVIEW_SET_MODE', { mode }, tuple), expectedOrigin);
+      try { post(createReviewMessage('REVIEW_SET_MODE', { mode }, tuple), expectedOrigin); }
+      catch (error) { status = STATUS.ERROR; return Promise.resolve({ ok: false, code: String(error?.code || error?.message || error) }); }
       return Promise.resolve({ ok: true, revision: tuple.revision, tuple: { ...tuple } });
     }
 
@@ -213,6 +232,8 @@
     }
 
     function beginSource() {
+      for (const waiting of waiters.values()) waiting.forEach(entry => entry.reject(Object.assign(new Error('SOURCE_EPOCH_REPLACED'), { code: 'SOURCE_EPOCH_REPLACED' })));
+      waiters.clear();
       tuple = { bridgeEpoch: tuple.bridgeEpoch, sourceEpoch: tuple.sourceEpoch + 1, revision: 0 };
       lastDone = null;
       if (pending) { pending.accepted.resolve({ ok: false, code: 'SOURCE_EPOCH_REPLACED' }); pending = null; }
@@ -255,13 +276,16 @@
     }
 
     function reloadForFatal(reason) {
+      const pendingSnapshot = pending?.snapshot || lastSnapshot;
+      for (const waiting of waiters.values()) waiting.forEach(entry => entry.reject(Object.assign(new Error('REVIEW_BRIDGE_RELOADED'), { code: 'REVIEW_BRIDGE_RELOADED' })));
+      waiters.clear();
       tuple = { bridgeEpoch: tuple.bridgeEpoch + 1, sourceEpoch: tuple.sourceEpoch, revision: tuple.revision };
       ready = false;
       status = STATUS.BOOTING;
       if (handshakeTimer) clearTimeout(handshakeTimer);
       if (iframe) iframe.src = buildIframeUrl();
-      if (lastSnapshot) {
-        const snapshot = { ...lastSnapshot, ...tuple };
+      if (pendingSnapshot) {
+        const snapshot = { ...pendingSnapshot, ...tuple };
         pending = { snapshot, tuple: { ...tuple }, accepted: deferred() };
       }
       if (handshakeTimeoutMs > 0) handshakeTimer = setTimeout(() => { if (!ready) { status = STATUS.ERROR; onFatal('HANDSHAKE_TIMEOUT'); } }, handshakeTimeoutMs);
@@ -318,6 +342,16 @@
     let status = STATUS.BOOTING;
     const runtimeProvider = options.runtimeProvider || (() => windowRef.archiveScreenRuntime);
 
+    function markChildState(nextStatus, errorCode = '') {
+      status = nextStatus;
+      if (windowRef.document?.documentElement) {
+        windowRef.document.documentElement.dataset.apReviewBridgeStatus = nextStatus;
+        windowRef.document.documentElement.dataset.apReviewBridgeTuple = tupleKey(tuple);
+        if (errorCode) windowRef.document.documentElement.dataset.apReviewBridgeError = String(errorCode);
+        else delete windowRef.document.documentElement.dataset.apReviewBridgeError;
+      }
+    }
+
     function post(type, payload = {}, messageTuple = tuple) {
       parentWindow.postMessage(createReviewMessage(type, payload, messageTuple), expectedOrigin);
     }
@@ -337,11 +371,12 @@
       const requestTuple = normalizeTuple(message, tuple);
       const payload = message.payload || {};
       if (payload.sourceKind !== 'review-snapshot' || !Array.isArray(payload.questionBank)) {
+        markChildState(STATUS.ERROR, 'INVALID_REVIEW_SNAPSHOT');
         post('REVIEW_RENDER_ERROR', { code: 'INVALID_REVIEW_SNAPSHOT' }, requestTuple);
         return;
       }
       tuple = requestTuple;
-      status = STATUS.RENDERING;
+      markChildState(STATUS.RENDERING);
       post('REVIEW_RENDER_START', { mode: payload.mode || 'exam' }, requestTuple);
       try {
         const runtime = runtimeProvider();
@@ -365,12 +400,13 @@
         });
         if (!isCurrentRevisionTuple(requestTuple, tuple)) return;
         if (!outcome?.ok) throw Object.assign(new Error(outcome?.code || 'REVIEW_RENDER_ERROR'), outcome || {});
-        status = STATUS.READY;
-        post('REVIEW_RENDER_DONE', { mode: payload.mode || 'exam', pages: outcome.pages || null }, requestTuple);
+        markChildState(STATUS.READY);
+        post('REVIEW_RENDER_DONE', { mode: payload.mode || 'exam', pages: outcome.pages || null, metrics: windowRef.__AP_RENDER_METRICS__ || null }, requestTuple);
       } catch (error) {
         if (!isCurrentRevisionTuple(requestTuple, tuple)) return;
-        status = STATUS.ERROR;
-        post('REVIEW_RENDER_ERROR', { code: String(error?.code || error?.message || error) }, requestTuple);
+        const code = String(error?.code || error?.message || error);
+        markChildState(STATUS.ERROR, code);
+        post('REVIEW_RENDER_ERROR', { code }, requestTuple);
       }
     }
 
@@ -378,18 +414,19 @@
       if (!isCurrentRevisionTuple(message, tuple)) return;
       const mode = message.payload?.mode;
       if (!['exam', 'sol', 'ans'].includes(mode)) return;
-      status = STATUS.RENDERING;
+      markChildState(STATUS.RENDERING);
       post('REVIEW_RENDER_START', { mode }, tuple);
       try {
         const runtime = runtimeProvider();
         if (!runtime?.request) throw new Error('REVIEW_RUNTIME_UNAVAILABLE');
         const outcome = await runtime.request({ type: 'MODE_CHANGE', requestedMode: mode, foreground: true });
         if (!outcome?.ok) throw Object.assign(new Error(outcome?.code || 'REVIEW_RENDER_ERROR'), outcome || {});
-        status = STATUS.READY;
-        post('REVIEW_RENDER_DONE', { mode, pages: outcome.pages || null }, tuple);
+        markChildState(STATUS.READY);
+        post('REVIEW_RENDER_DONE', { mode, pages: outcome.pages || null, metrics: windowRef.__AP_RENDER_METRICS__ || null }, tuple);
       } catch (error) {
-        status = STATUS.ERROR;
-        post('REVIEW_RENDER_ERROR', { code: String(error?.code || error?.message || error) }, tuple);
+        const code = String(error?.code || error?.message || error);
+        markChildState(STATUS.ERROR, code);
+        post('REVIEW_RENDER_ERROR', { code }, tuple);
       }
     }
 
@@ -401,9 +438,10 @@
     };
     windowRef.addEventListener('message', listener);
     windowRef.addEventListener('load', () => {
-      status = STATUS.READY;
+      markChildState(STATUS.READY);
       post('REVIEW_BRIDGE_READY', { status }, tuple);
     }, { once: true });
+    markChildState(STATUS.READY);
     post('REVIEW_BRIDGE_READY', { status: STATUS.READY }, tuple);
 
     const documentRef = windowRef.document;

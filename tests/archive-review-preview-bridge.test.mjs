@@ -57,3 +57,52 @@ test('coalescing accepts only the newest pending snapshot', async () => {
   assert.equal(sent[0].type, 'REVIEW_SET_SOURCE');
   assert.equal(sent[0].revision, 2);
 });
+
+test('iframe receiver forwards in-memory snapshots and suppresses stale completions', async () => {
+  const parentMessages = [];
+  const messageListeners = [];
+  const parentWindow = { postMessage: message => parentMessages.push(message) };
+  const documentListeners = [];
+  const childWindow = {
+    parent: parentWindow,
+    location: { origin: 'http://localhost', search: '?reviewBridge=1&bridgeEpoch=4' },
+    addEventListener(type, listener) { if (type === 'message') messageListeners.push(listener); },
+    removeEventListener() {},
+    document: { addEventListener(type, listener) { if (type === 'click') documentListeners.push(listener); } },
+  };
+  let releaseFirst;
+  let calls = 0;
+  const requests = [];
+  const receiver = bridgeApi.installReviewPreviewReceiver({
+    windowRef: childWindow,
+    parentWindow,
+    origin: 'http://localhost',
+    runtimeProvider: () => ({
+      request: async intent => {
+        requests.push(intent);
+        calls += 1;
+        if (calls === 1) await new Promise(resolve => { releaseFirst = resolve; });
+        return { ok: true, pages: calls };
+      },
+    }),
+  });
+  assert.ok(receiver);
+
+  const source = tuple => bridgeApi.createReviewMessage('REVIEW_SET_SOURCE', {
+    sourceKind: 'review-snapshot', sourceArchiveFile: 'fixture.js',
+    questionBank: [{ id: 1, content: String(tuple.revision) }], mode: 'exam', qpp: 4,
+  }, tuple);
+  messageListeners[0]({ origin: 'http://localhost', source: parentWindow, data: source({ bridgeEpoch: 4, sourceEpoch: 1, revision: 1 }) });
+  await Promise.resolve();
+  messageListeners[0]({ origin: 'http://localhost', source: parentWindow, data: source({ bridgeEpoch: 4, sourceEpoch: 1, revision: 2 }) });
+  await Promise.resolve();
+  releaseFirst();
+  await new Promise(resolve => setTimeout(resolve, 0));
+
+  assert.equal(requests.length, 2);
+  assert.equal(requests[1].payload.revision, 2);
+  assert.equal(parentMessages.filter(message => message.type === 'REVIEW_RENDER_DONE').length, 1);
+  assert.equal(parentMessages.find(message => message.type === 'REVIEW_RENDER_DONE').revision, 2);
+  receiver.dispose();
+  assert.equal(documentListeners.length, 1);
+});

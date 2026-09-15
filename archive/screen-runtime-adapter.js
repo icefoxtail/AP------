@@ -4,6 +4,14 @@ function setArchiveBuildEvidence(name, value, ctx) {
     else document.documentElement.dataset[name] = value;
 }
 
+function installArchiveReviewPreviewBridgeReceiver(runtimeProvider) {
+    if (typeof window.APReviewPreviewBridge?.installReviewPreviewReceiver !== 'function') return null;
+    return window.APReviewPreviewBridge.installReviewPreviewReceiver({
+        windowRef: window,
+        runtimeProvider: runtimeProvider || (() => archiveScreenRuntime),
+    });
+}
+
 function setArchiveQpp(qpp) {
     if (archiveScreenRuntime) return archiveScreenRuntime.request({ type: 'QPP_CHANGE', payload: { qpp: Number(qpp) }, foreground: true });
     AppState.qpp = Number(qpp);
@@ -34,6 +42,9 @@ async function initArchiveScreenRuntime() {
     const launch = params.get('data') ? null : readRecentArchiveEngineLaunch();
     const data = params.get('data') || launch?.data;
     if (!data) {
+        // A review iframe receives its first source from the parent bridge.
+        // It must not attempt the normal URL/file source loader before READY.
+        if (params.get('reviewBridge') === '1') return;
         showArchiveDataLoadError('시험지 데이터가 전달되지 않았습니다. 아카이브에서 시험지를 다시 선택해 주세요.');
         return;
     }
@@ -84,22 +95,48 @@ function createArchiveScreenRuntime() {
     function captureInput(intent, desired, committed) {
         if (typeof printPending !== 'undefined' && printPending && intent.type !== 'PRINT_STALE_REBUILD') throw new Error('PRINT_TRANSACTION_BUSY');
         const base = desired || committed?.input || {
-            mode: 'exam', qpp: 4, header: {}, safeDataUrl: '', sourceRequestId: '', title: '',
+            mode: 'exam', qpp: 4, header: {}, sourceKind: 'archive-source', safeDataUrl: '', sourceRequestId: '', title: '',
             url: window.location.href, fingerprints: initialFingerprints, profile: {}, layoutOptions: {}
         };
         const next = { ...base };
         const payload = intent.payload || {};
         const url = new URL(base.url);
         if (intent.type === 'SOURCE_CHANGE') {
-            const safe = normalizeArchiveExamScriptPath(payload.safeDataUrl || payload.dataUrl || '');
-            if (!safe) throw new Error('INVALID_SOURCE_PATH');
-            next.safeDataUrl = safe;
-            next.sourceRequestId = `source-${++sourceRequestSerial}`;
-            next.title = payload.title || '';
-            next.header = payload.printHeaderOptions || {};
-            next.mode = payload.mode || next.mode;
-            next.qpp = payload.qpp ?? next.qpp;
-            url.searchParams.set('data', safe);
+            if (payload.sourceKind === 'review-snapshot') {
+                if (!Array.isArray(payload.questionBank)) throw new Error('INVALID_REVIEW_SNAPSHOT');
+                const sourceArchiveFile = String(payload.sourceArchiveFile || '').trim();
+                if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile)) throw new Error('INVALID_REVIEW_SOURCE_IDENTITY');
+                next.sourceKind = 'review-snapshot';
+                next.safeDataUrl = sourceArchiveFile;
+                next.sourceRequestId = String(payload.sourceRequestId || `review-source-${sourceArchiveFile}`);
+                next.reviewSnapshot = {
+                    questionBank: payload.questionBank,
+                    examTitle: payload.examTitle || payload.title || '',
+                    examDisplayTitle: payload.examDisplayTitle || payload.displayTitle || '',
+                    sourceArchiveFile,
+                };
+                next.sourceArchiveFile = sourceArchiveFile;
+                next.bridgeEpoch = payload.bridgeEpoch;
+                next.sourceEpoch = payload.sourceEpoch;
+                next.revision = payload.revision;
+                next.title = payload.examTitle || payload.title || '';
+                next.header = payload.printHeaderOptions || {};
+                next.mode = payload.mode || next.mode;
+                next.qpp = payload.qpp ?? next.qpp;
+                next.assetRevision = payload.assetRevision || '';
+                url.searchParams.delete('data');
+            } else {
+                const safe = normalizeArchiveExamScriptPath(payload.safeDataUrl || payload.dataUrl || '');
+                if (!safe) throw new Error('INVALID_SOURCE_PATH');
+                next.sourceKind = 'archive-source';
+                next.safeDataUrl = safe;
+                next.sourceRequestId = `source-${++sourceRequestSerial}`;
+                next.title = payload.title || '';
+                next.header = payload.printHeaderOptions || {};
+                next.mode = payload.mode || next.mode;
+                next.qpp = payload.qpp ?? next.qpp;
+                url.searchParams.set('data', safe);
+            }
         }
         if (intent.type === 'MODE_CHANGE') next.mode = intent.requestedMode;
         if (url.searchParams.get('qr') === '1') next.mode = 'sol';
@@ -124,6 +161,27 @@ function createArchiveScreenRuntime() {
     }
 
     async function loadSource(input, ctx) {
+        if (input.sourceKind === 'review-snapshot') {
+            const snapshot = input.reviewSnapshot;
+            if (!snapshot || !Array.isArray(snapshot.questionBank)) throw new Error('INVALID_REVIEW_SNAPSHOT');
+            const sourceArchiveFile = String(snapshot.sourceArchiveFile || input.sourceArchiveFile || input.safeDataUrl || '').trim();
+            if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile)) throw new Error('INVALID_REVIEW_SOURCE_IDENTITY');
+            const data = snapshot.questionBank.map((question, index) => window.mergeArchiveQuestionMetadata
+                ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
+                : question);
+            const canonical = window.APRenderAuthority.normalizeArchiveQuestions(data, { sourceArchiveFile });
+            const canonicalRenderData = N.canonicalRenderData(canonical, data);
+            return N.copy({
+                sourceKind: 'review-snapshot', sourceRequestId: input.sourceRequestId,
+                safeDataUrl: sourceArchiveFile, sourceArchiveFile,
+                bridgeEpoch: input.bridgeEpoch, sourceEpoch: input.sourceEpoch, revision: input.revision,
+                canonicalRenderData, canonicalDataFingerprint: N.semanticDigest(canonicalRenderData),
+                title: snapshot.examTitle || input.title || '수학 시험지',
+                identityTitle: snapshot.examTitle || input.title || '수학 시험지',
+                displayTitle: snapshot.examDisplayTitle || snapshot.examTitle || input.title || '수학 시험지',
+                businessData: data.map(q => N.project(q, ['id', 'standardUnitKey', 'standardUnit', 'standardCourse']))
+            });
+        }
         const timeout = new AbortController();
         const timer = setTimeout(() => timeout.abort(), 15000);
         const abort = () => timeout.abort();
@@ -168,7 +226,8 @@ function createArchiveScreenRuntime() {
         const canonical = window.APRenderAuthority.normalizeArchiveQuestions(data, { sourceArchiveFile });
         const canonicalRenderData = N.canonicalRenderData(canonical, data);
         return N.copy({
-            sourceRequestId: input.sourceRequestId, safeDataUrl: input.safeDataUrl, sourceArchiveFile,
+            sourceKind: 'archive-source', sourceRequestId: input.sourceRequestId, safeDataUrl: input.safeDataUrl, sourceArchiveFile,
+            bridgeEpoch: input.bridgeEpoch, sourceEpoch: input.sourceEpoch, revision: input.revision,
             canonicalRenderData, canonicalDataFingerprint: N.semanticDigest(canonicalRenderData),
             title, identityTitle: title, displayTitle,
             businessData: data.map(q => N.project(q, ['id', 'standardUnitKey', 'standardUnit', 'standardCourse']))
@@ -195,7 +254,14 @@ function createArchiveScreenRuntime() {
     }
 
     async function prepare(input, ctx, committed) {
-        const source = committed?.source.sourceRequestId === input.sourceRequestId ? committed.source : await loadSource(input, ctx);
+        const sameReviewSnapshot = input.sourceKind === 'review-snapshot'
+            && committed?.source.sourceKind === 'review-snapshot'
+            && committed.source.sourceRequestId === input.sourceRequestId
+            && committed.source.sourceEpoch === input.sourceEpoch
+            && committed.source.revision === input.revision;
+        const source = sameReviewSnapshot || (input.sourceKind !== 'review-snapshot' && committed?.source.sourceRequestId === input.sourceRequestId)
+            ? committed.source
+            : await loadSource(input, ctx);
         const state = { title: source.title, identityTitle: source.identityTitle, displayTitle: source.displayTitle };
         const header = normalizePrintHeaderOptions(input.header, state);
         const qr = qrState(input, source);
@@ -216,6 +282,7 @@ function createArchiveScreenRuntime() {
         ctx.buildState = {
             mode: candidate.mode, qpp: candidate.qpp, title: candidate.source.title, identityTitle: candidate.source.identityTitle,
             displayTitle: candidate.source.displayTitle, url: candidate.environment.url,
+            assetRevision: candidate.input.assetRevision || candidate.fingerprints.asset || '',
             printHeaderOptions: candidate.printHeaderOptions, sourceArchiveFile: candidate.source.sourceArchiveFile,
             data: candidate.source.canonicalRenderData.map(q => q.renderInput), canonicalData: candidate.source.canonicalRenderData,
             layoutMeasurementLedger: null, solutionDecisionLedger: null, solutionObservedPlacementLedger: null
@@ -266,6 +333,13 @@ function createArchiveScreenRuntime() {
         ctx.metrics.fontWaitMs = performance.now() - fontStart;
         await ctx.deps.raf();
         await renderBody(ctx);
+        if (!ctx.buildState.data.length && !ctx.targetArea.querySelector('.page')) {
+            const emptyPage = ctx.deps.makePage(ctx.targetArea, candidate.mode, 1);
+            const notice = document.createElement('div');
+            notice.textContent = '현재 검수본에 문항이 없습니다.';
+            notice.style.cssText = 'padding:24px;text-align:center;color:#64748b;font-size:12pt;';
+            emptyPage.body.appendChild(notice);
+        }
         await waitForArchiveFonts();
         ctx.readinessTracker.mark('RENDER_READY', { mode: candidate.mode, pages: ctx.targetArea.querySelectorAll('.page').length });
         window.APRenderLoop.finish(ctx.targetArea, ctx.metrics, false);
