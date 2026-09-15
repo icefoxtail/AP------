@@ -194,6 +194,16 @@
         max: state.catalog.scope.hardMaxQuestionsPerPaper
       });
       records = collection.records || [];
+      const selectedYearsBySchool = paper.selection?.collection?.selectedYearsBySchool;
+      if (selectedYearsBySchool && typeof selectedYearsBySchool === 'object') {
+        records = records.filter(record => {
+          const schoolKey = core.getSchoolKey(record) || '__unknown__';
+          const years = Array.isArray(selectedYearsBySchool[schoolKey])
+            ? selectedYearsBySchool[schoolKey]
+            : [];
+          return years.includes(core.getExamYear(record));
+        });
+      }
       if (paper.schoolKey) records = records.filter(record => core.getSchoolKey(record) === paper.schoolKey);
     }
     return records.filter(isReplacementRecordAllowed);
