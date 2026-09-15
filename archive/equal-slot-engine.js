@@ -47,7 +47,7 @@
     }
     function ignored(node) {
         return !!node.closest('mjx-assistive-mml, [aria-hidden="true"].MJX_Assistive_MathML, svg defs, svg symbol') ||
-            !!node.parentElement?.closest('svg, mjx-container');
+            !!node.parentElement?.closest('svg');
     }
     // Include visible descendants and text runs: scrollHeight alone misses left/top
     // escapes, inline runs, transforms and overflowing tables.
@@ -77,6 +77,8 @@
     }
     function applyProfile(box, profile) {
         box.dataset.equalSlotProfile = profile;
+        box.style.zoom = '1';
+        box.style.width = '100%';
         box.style.transform = 'none';
         box.style.transformOrigin = 'top left';
     }
@@ -140,7 +142,11 @@
         records.forEach(r => {
             const fit = selectFit(r.candidates, r.slot);
             applyProfile(r.box, fit.profile);
-            r.box.style.transform = fit.scale === 1 && !fit.offsetX && !fit.offsetY ? 'none' : `translate(${fit.offsetX * fit.scale}px, ${fit.offsetY * fit.scale}px) scale(${fit.scale})`;
+            // CSS zoom contributes its scaled height to Chromium's print layout.
+            // transform:scale only changes paint and can paginate trailing choices.
+            r.box.style.width = `${r.slot.width}px`;
+            r.box.style.zoom = String(fit.scale);
+            r.box.style.transform = fit.offsetX || fit.offsetY ? `translate(${fit.offsetX}px, ${fit.offsetY}px)` : 'none';
             const baseFont = parseFloat(root.getComputedStyle(r.box).fontSize);
             r.box.dataset.equalSlotScale = String(fit.scale);
             r.box.dataset.equalSlotStatus = fit.status;
@@ -178,7 +184,7 @@
         await deps.typesetMath('exam-equal-slots', items.map(item => item.box));
         await ready(area);
         await deps.raf();
-        await finalize(area);
+        if (!deps.deferFinalize) await finalize(area);
         return area;
     }
     async function finalize(area) {
@@ -234,6 +240,20 @@
         if (!evidence.ok) throw failure('EQUAL_SLOT_AUDIT_FAILED', evidence);
         return evidence;
     }
-    return Object.freeze({ VERSION, enabled, plan, selectFit, normalizeRect, render, finalize, audit, assertReady });
+    function rasterizePage(page, options = {}) {
+        if (!page.matches(PAGE)) return root.html2canvas(page, options);
+        // html2canvas 1.x ignores CSS zoom when drawing fonts. Its private clone
+        // uses the equivalent paint transform; no paged-media fragmentation occurs
+        // on canvas, and the live snapshot stays byte-for-byte untouched.
+        return root.html2canvas(page, { ...options, async onclone(document, element) {
+            await options.onclone?.(document, element);
+            for (const content of list(document, PAGE + ' .ap-slot-content')) {
+                const fit = JSON.parse(content.dataset.equalSlotFit);
+                content.style.zoom = '1';
+                content.style.transform = `translate(${fit.offsetX * fit.scale}px, ${fit.offsetY * fit.scale}px) scale(${fit.scale})`;
+            }
+        } });
+    }
+    return Object.freeze({ VERSION, enabled, plan, selectFit, normalizeRect, render, finalize, audit, assertReady, rasterizePage });
 });
 

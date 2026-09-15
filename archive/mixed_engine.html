@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -2122,6 +2122,8 @@ function makePage(area, type, pNum) {
 /** [PASS] renderExam - Rulebook v1.9 + Image Field Synchronized */
 
 async function renderExam(area, data) {
+    const slotParams = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
+    if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && Number(AppState.qpp) === 4 && (!buildContext || !window.APExamRenderExecutor?.render || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
     const examData = data.map(question => question && typeof question === 'object' ? { ...question, __apExamSubjectiveSpacing: true } : question);
     if (buildContext && new URLSearchParams(buildContext.input.url).get('executor') !== 'legacy') return APExamRenderExecutor.render({ area, data: examData, deps: mixedExecutorDeps() });
     const staging = (buildContext?.stagingHost || document.getElementById('staging')); staging.style.width = '83mm'; staging.innerHTML = '';
@@ -2788,7 +2790,7 @@ async function prepareRasterPrint() {
     try {
         for (let index = 0; index < pages.length; index += 1) {
             const page = pages[index];
-            const canvas = await window.html2canvas(page, {
+            const canvas = await (window.APEqualSlotEngine?.rasterizePage || window.html2canvas)(page, {
                 backgroundColor: '#ffffff',
                 scale,
                 width: Math.ceil(page.offsetWidth),

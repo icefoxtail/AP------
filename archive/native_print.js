@@ -260,7 +260,7 @@
         for (let index = 0; index < pages.length; index += 1) {
             const pageStartedAt = performance.now();
             const page = pages[index];
-            const canvas = await global.html2canvas(page, {
+            const canvas = await (global.APEqualSlotEngine?.rasterizePage || global.html2canvas)(page, {
                 backgroundColor: '#ffffff',
                 scale: dpi / 96,
                 width: Math.ceil(page.offsetWidth),
@@ -339,7 +339,7 @@
         for (let index = 0; index < pages.length; index += 1) {
             const pageStartedAt = performance.now();
             const page = pages[index];
-            const canvas = await global.html2canvas(page, {
+            const canvas = await (global.APEqualSlotEngine?.rasterizePage || global.html2canvas)(page, {
                 backgroundColor: '#ffffff',
                 scale: dpi / 96,
                 width: Math.ceil(page.offsetWidth),

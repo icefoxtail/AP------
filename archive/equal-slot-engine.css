@@ -6,7 +6,9 @@
 .ap-equal-slot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); flex: 1 1 0; min-height: 0; min-width: 0; }
 .ap-equal-slot-grid > .grid-col { min-width: 0; overflow: visible; }
 .ap-equal-slot-grid .q-box.ap-equal-slot { flex: 1 1 0; min-width: 0; min-height: 0; padding: 10px 0; overflow: visible !important; position: relative; }
-.ap-slot-content { display: flow-root; flex: none; width: 100%; box-sizing: border-box; transform-origin: top left; }
+/* Out of flow: Chromium must not paginate the unscaled content height before
+   painting its transform. The fixed flex slot remains the layout footprint. */
+.ap-slot-content { position: absolute; top: 10px; left: 0; display: flow-root; width: 100%; box-sizing: border-box; transform-origin: top left; break-inside: avoid; }
 .ap-slot-content[data-equal-slot-profile~="compact"] .q-num { margin-bottom: 3px; }
 .ap-slot-content[data-equal-slot-profile~="compact"] .q-content { line-height: 1.45; }
 .ap-slot-content[data-equal-slot-profile~="compact"] .choices { margin-top: 5px; gap: 2px 8px; }

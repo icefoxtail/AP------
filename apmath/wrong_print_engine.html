@@ -1678,6 +1678,8 @@ function getGroupTitle(defaultTitle) {
 
 
 async function renderMeasuredExamPages(area, items, pageMeta = {}) {
+    const slotParams = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
+    if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && (!buildContext || !window.APExamRenderExecutor?.renderComposed || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
     if (buildContext && useSharedExecutor()) return APExamRenderExecutor.renderComposed({ area, items, deps: wrongExamDeps(pageMeta) });
     if (!items.length) return;
     const staging = (buildContext?.stagingHost || document.getElementById('staging'));
