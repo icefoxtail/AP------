@@ -55,6 +55,8 @@
 | `tagConfidence` | 자동 태깅 신뢰도 | high / medium / low |
 | `tagStatus` | 태그 검수 상태 | existing / auto_high / auto_medium / auto_low / manual_review / reviewed_pass / reviewed_fail |
 
+`difficultyBucket` 1~5의 상세 단계·경계·blind 판정·confidence·boundary·legacy compatibility·recheck 기준은 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 단일 authority로 따른다.
+
 ### 유사문제 판정 원칙
 
 - `standardUnitKey`만 같은 문항은 유사문제가 아니라 같은 단원 문항이다.

@@ -152,6 +152,7 @@ AND GRAPH_RENDER_PASS
 - `problemTypeKey`는 같은 문제 유형을 뜻한다.
 - `templateKey`는 거의 같은 풀이 구조 또는 출제 패턴을 뜻한다.
 - `difficultyBucket`은 `level`을 대체하지 않고, 자동 추천·자동 출제용 보조 난이도 구간으로만 사용한다.
+- `difficultyBucket` 1~5의 단계 정의·경계·blind 판정·confidence·boundary·legacy compatibility·recheck·자동 사용 gate는 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 단일 authority로 따른다.
 - `tagConfidence`와 `tagStatus`는 자동 태깅 결과의 신뢰도와 검수 상태를 표시한다.
 
 ### 자동 태깅 허용 범위
