@@ -25,7 +25,7 @@ window.questionBank = [
       "$5a+3b$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q1.png",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
@@ -54,7 +54,7 @@ window.questionBank = [
       "$3a-4$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -82,7 +82,7 @@ window.questionBank = [
       "$\\dfrac{a}{b}$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -110,7 +110,7 @@ window.questionBank = [
       "$x^2$, $x$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -138,7 +138,7 @@ window.questionBank = [
       "$5(x-1)=4x-3$ [$2$]"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -166,7 +166,7 @@ window.questionBank = [
       "$-2a+3=-b+3$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -194,7 +194,7 @@ window.questionBank = [
       "$2x\\underline{+1}=-x+4 \\Rightarrow 2x+x=4+1$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -222,7 +222,7 @@ window.questionBank = [
       "$x=4$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -250,7 +250,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -278,7 +278,7 @@ window.questionBank = [
       "$58$"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
     "subUnit": "일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -306,7 +306,7 @@ window.questionBank = [
       "6개"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
     "subUnit": "일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -334,7 +334,7 @@ window.questionBank = [
       "78 km"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
     "subUnit": "일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -362,7 +362,7 @@ window.questionBank = [
       "150 g"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
     "subUnit": "일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -392,7 +392,7 @@ window.questionBank = [
       "$E(2,\\,-2)$"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q14.png",
     "imageSize": "large",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
@@ -422,7 +422,7 @@ window.questionBank = [
       "$\\left(\\dfrac{b}{a},\\,-a-b\\right)$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -452,7 +452,7 @@ window.questionBank = [
       "두 사람은 동시에 공원에 도착하였다."
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q16.png",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
@@ -481,7 +481,7 @@ window.questionBank = [
       "$y=2x$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -511,7 +511,7 @@ window.questionBank = [
       "$\\dfrac{8}{5}$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q18.png",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
@@ -542,7 +542,7 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "image": "assets/images/AP수학학원_1학기_기말_중1_모의고사_2회/q19.png",
     "imageSize": "large",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
@@ -572,7 +572,7 @@ window.questionBank = [
       "$x\\gt0$일 때, $x$의 값이 증가하면 $y$의 값도 증가한다."
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
@@ -596,7 +596,7 @@ window.questionBank = [
     "content": "(서술형1) \n다음 식을 계산하고, 그 과정을 서술하시오.\\n$3x-[-4x+5-\\{12-(-7x-2)\\}]$",
     "choices": [],
     "answer": "$14x+9$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $14x+9$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -620,7 +620,7 @@ window.questionBank = [
     "content": "(서술형2) \n일차방정식 $0.5(2+x)-\\dfrac{3x-1}{5}=2$의 해를 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "$x=-8$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $x=-8$이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -644,7 +644,7 @@ window.questionBank = [
     "content": "(서술형3) \n어떤 일을 완성하는 데 가은이는 30일, 우석이는 24일이 걸린다고 한다. 이 일을 가은이가 혼자서 12일 동안 한 후 가은이와 우석이가 함께 완성했을 때, 가은이와 우석이가 함께 일한 기간은 며칠인지 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "8일",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 8일이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
     "subUnit": "일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -668,7 +668,7 @@ window.questionBank = [
     "content": "(서술형4) \n두 점 $P(a-3,\\,\\dfrac{1}{2}b+2)$, $Q(a-5,\\,b+3)$이 각각 $x$축, $y$축 위의 점일 때, $a+b$의 값을 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "1",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 1이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
@@ -692,22 +692,10 @@ window.questionBank = [
     "content": "(서술형5) \n서로 맞물려 회전하는 두 톱니바퀴 A, B가 있다. 톱니가 24개인 톱니바퀴 A가 5번 회전할 때, 톱니가 $x$개인 톱니바퀴 B는 $y$번 회전한다고 한다. 다음 물음에 답하고, 그 과정을 서술하시오.\\n\n(1) $x$와 $y$ 사이의 관계식을 구하시오.\\n\n\n\n\n\n(2) 톱니바퀴 B가 8번 회전한다고 할 때, 톱니바퀴 B의 톱니의 개수를 구하시오.",
     "choices": [],
     "answer": "(1) $y=\\dfrac{120}{x}$, (2) 15개",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 (1) $y=\\dfrac{120}{x}$, (2) 15개이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-const _similarSolutionText = (q) => {
-  const c = q.content || "";
-  let method = "주어진 조건을 식으로 정리하고 필요한 값을 계산한 뒤 선택지와 대조한다.";
-  if (/행렬|matrix/i.test(c)) method = "행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다.";
-  else if (/부등식|절댓값|\\|/.test(c)) method = "절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다.";
-  else if (/이차함수|이차방정식|이차식|포물선/.test(c)) method = "완전제곱·근의 공식·판별식 또는 꼭짓점 공식을 적용해 근과 최댓값·최솟값을 구한다.";
-  else if (/경우의 수|뽑|배열|일렬|자리|문자|카드|주사위|확률/.test(c)) method = "곱의 법칙·순열·조합을 사용해 조건별 경우를 세고, 동일한 결과가 겹치면 중복을 제외한다.";
-  else if (/삼각형|사각형|원|직사각형|평행|닮음|각|길이|넓이/.test(c)) method = "도형의 각의 합, 닮음비, 피타고라스 정리와 넓이비를 조건에 맞게 적용한다. 그림 의존 표시는 JS의 도형 배치를 기준으로 확인한다.";
-  else if (/순환소수|분수|소수/.test(c)) method = "분수를 기약화한 뒤 분모의 소인수와 순환마디를 확인하고, 필요한 자리수·대소관계를 계산한다.";
-  return "[JS 기준 풀이] " + method + " 계산 결과는 " + (q.answer || "문항의 요구값") + "이다.";
-};
-window.questionBank.forEach(q => { if (!q.solution) q.solution = _similarSolutionText(q); });

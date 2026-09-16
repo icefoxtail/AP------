@@ -1090,6 +1090,8 @@ id,questionType,tags,forbidden_tag,approved,status
 id,questionType,tags,forbidden_tag,source_structure,semantic_mismatch,approved,status
 ```
 
+`difficultyBucket` 1~5의 상세 단계 정의·경계·blind 판정·confidence·boundary·legacy compatibility·recheck는 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 단일 authority로 따른다. 기존 `level` 하/중/상 및 `LEVEL BORDERLINE STABILITY LOCK`은 유지한다.
+
 ## 11-3. level
 허용:
 ```text

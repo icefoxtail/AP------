@@ -35,11 +35,11 @@ test('25 매산여고 수학II는 23개 해설과 canonical metadata를 닫고 q
 
 test('q2/q13 visual semantic mutations fail the common comparator', async () => {
   const { compareVisualFacts } = await import('../archive/tools/pipeline-core/visual.mjs');
-  const reportDir = path.join(root, 'reports', 'solution-review-v2.2', '25_매산여고_2학기_중간_고2_수학II');
+  const { fact } = await import('../archive/tools/pipeline-core/tests/fixture.mjs');
   for (const id of [2, 13]) {
-    const expected = JSON.parse(fs.readFileSync(path.join(reportDir, `pipeline-v1-q${id}-fact.json`), 'utf8'));
+    const expected = fact(`25-maesan-yeogo-math2-q${id}`);
     const observed = structuredClone(expected);
-    observed.semantic.points[0].x += 0.1;
+    observed.semantic.maximumIntersection += 1;
     assert.equal(compareVisualFacts(expected, observed).status, 'FAIL', `q${id} mutation must fail`);
   }
 });

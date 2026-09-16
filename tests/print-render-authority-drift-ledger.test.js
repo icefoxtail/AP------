@@ -86,6 +86,6 @@ test('The ledger records current production differences rather than a desired-bu
   assert.match(source('archive/mixer.html'), /<option value="2">2문항\/P<\/option>/);
   assert.match(archive, /function shouldRenderSolutionQr\(\)/);
   assert.match(archive, /function shouldRenderSubmitQr\(\)/);
-  assert.match(archive, /injectQrToLastExamPage\(area\);/);
-  assert.match(archive, /injectSubmitQrToLastExamPage\(area\);/);
+  assert.match(archive, /injectQrToLastExamPage\(area(?:, ctx)?\);/);
+  assert.match(archive, /injectSubmitQrToLastExamPage\(area(?:, ctx)?\);/);
 });

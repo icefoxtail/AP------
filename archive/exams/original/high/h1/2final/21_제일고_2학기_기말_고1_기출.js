@@ -1,12 +1,5 @@
 window.examTitle = "21_제일고_2학기_기말_고1_기출";
 
-const U = {"집합":["H15-SB-01",1,"수학(하)"],"함수":["H15-SB-03",3,"수학(하)"],"유리함수":["H15-SB-04",4,"수학(하)"],"무리함수":["H15-SB-05",5,"수학(하)"],"경우의 수":["H15-SB-06",6,"수학(하)"],"순열":["H15-SB-07",7,"수학(하)"],"조합":["H15-SB-08",8,"수학(하)"],"평면좌표":["H15-SA-09",9,"수학(상)"],"도형의 이동":["H15-SA-12",12,"수학(상)"]};
-function q(id,u,t,c,ch=[],e={}){
-  const [k,o,course]=U[u];
-  const {level="중",category=u,tags=[u],answer="",solution="",...rest}=e;
-  const normalizedTags=t==="서술형" ? ["서술형",...tags.filter(v=>v!=="서술형")] : tags;
-  return {id,level,category,originalCategory:u,standardCourse:course,standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags:normalizedTags,wide:false,content:c,choices:ch,...rest,answer,solution};
-}
 
 window.questionBank = [
   {

@@ -450,8 +450,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $OA=6$, $OM=2$, $OM\\perp AB$이다.\n풀이 방향: 직각삼각형 $OAM$에서 $AM$을 구한 뒤 두 배한다.\n정석 풀이: $AM=\\sqrt{OA^2-OM^2}=\\sqrt{36-4}=4\\sqrt2$이다. $M$은 $AB$의 중점이므로 $AB=2AM=8\\sqrt2\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q14.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -483,8 +483,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 현의 수직이등분선은 원의 중심을 지나므로 중심을 $CD$ 위에 잡는다.\n조건 정리: $AD=4$, $CD=2$이고 $D$는 현 $AB$의 중점이다.\n풀이 방향: 반지름을 $r$라 두고 직각삼각형에서 피타고라스 정리를 사용한다.\n정석 풀이: 중심을 $O$라 하면 $OC=r$, $OD=r-2$이다. $OA=r$이고 $AD=4$이므로 $r^2=(r-2)^2+4^2$이다. 전개하면 $r^2=r^2-4r+20$이므로 $4r=20$, $r=5$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q15.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -516,8 +516,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 접는 선은 옮겨지는 점과 원의 중심을 잇는 선분의 수직이등분선이다.\n조건 정리: 원 위의 점과 중심 사이의 거리는 반지름 $4$이고, 접는 선이 현 $AB$이다.\n풀이 방향: 중심에서 현까지의 거리를 구한 뒤 현의 반쪽 길이를 구한다.\n정석 풀이: 접는 선까지의 거리는 $4$의 절반인 $2$이다. 현의 중점을 $M$이라 하면 $AM=\\sqrt{4^2-2^2}=2\\sqrt3$이다. 따라서 $AB=2AM=4\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q16.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -549,8 +549,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같고, 수선끼리의 각으로 꼭짓각을 구한다.\n조건 정리: $OM=ON$, $OM\\perp AB$, $ON\\perp AC$, $\\angle MON=130^\\circ$이다.\n풀이 방향: $AB=AC$를 확인하고 $\\angle A$를 구한 뒤 이등변삼각형의 밑각을 구한다.\n정석 풀이: 중심에서 같은 거리에 있는 현은 길이가 같으므로 $AB=AC$이다. 또한 $OM$, $ON$은 각각 $AB$, $AC$에 수직이므로 그림에서 $\\angle A+\\angle MON=180^\\circ$이다. 따라서 $\\angle A=50^\\circ$이고, 이등변삼각형 $ABC$의 밑각은 $\\dfrac{180^\\circ-50^\\circ}{2}=65^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q17.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -582,8 +582,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 접선의 길이가 같아 $OP$가 꼭짓각을 이등분하고, 반지름은 접선에 수직이다.\n조건 정리: $OA=OB=2$, $OA\\perp PA$, $OB\\perp PB$, $\\angle APB=60^\\circ$이다.\n풀이 방향: 직각삼각형 $AOP$에서 $PA$를 구한 뒤 합동인 두 삼각형의 넓이를 더한다.\n정석 풀이: $\\angle APO=30^\\circ$이므로 $\\tan30^\\circ=\\dfrac{OA}{PA}=\\dfrac{2}{PA}$이다. 따라서 $PA=2\\sqrt3$이다. 사각형 $APBO$는 합동인 두 직각삼각형 $AOP$, $BOP$로 나뉘므로 넓이는 $2\\times\\dfrac12\\times2\\times2\\sqrt3=4\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -615,8 +615,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 한 점에서 같은 원에 그은 두 접선의 길이가 같다는 성질을 세 꼭짓점에 적용한다.\n조건 정리: $OT\\perp AT$, $AO=17$, $OT=8$이고 $B$, $C$에서도 접선 길이 관계를 사용할 수 있다.\n풀이 방향: 먼저 $AT$를 구하고, 삼각형의 둘레를 $AT+AT^{\\prime}$로 바꾼다.\n정석 풀이: 직각삼각형 $AOT$에서 $AT=\\sqrt{17^2-8^2}=15$이다. 점 $A$에서 그은 접선이므로 $AT=AT^{\\prime}=15$이다. 또 $BT=BE$, $CT^{\\prime}=CE$이므로 $AB+BC+CA=AB+(BE+CE)+AC=(AB+BT)+(AC+CT^{\\prime})=AT+AT^{\\prime}=15+15=30$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q19.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -648,8 +648,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 한 점에서 그은 접선의 길이가 같다는 성질로 두 변의 합을 $DC$로 바꾼다.\n조건 정리: $AO=5$이므로 지름 $AB=10$이고, $DA=DE$, $CB=CE$이다.\n풀이 방향: $AD+BC$와 $DC$의 관계를 이용해 둘레를 계산한다.\n정석 풀이: $AD+BC=DE+CE=DC=14$이다. 따라서 사각형의 둘레는 $AB+BC+CD+DA=10+14+14=38\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q20.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -729,8 +729,8 @@ window.questionBank = [
     "answer": "$(96-16\\pi)\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 한 점에서 그은 두 접선의 길이가 같다는 성질로 세 변을 반지름 $r$로 나타낸다.\n조건 정리: $AF=AD=8$, $CF=CE=12$이고 직각 꼭짓점 $B$에서 두 접선의 길이는 반지름 $r$와 같다.\n풀이 방향: 피타고라스 정리로 $r$을 구한 뒤 삼각형 넓이에서 내접원 넓이를 뺀다.\n정석 풀이: $AB=8+r$, $BC=12+r$, $AC=8+12=20$이다. 따라서 $(8+r)^2+(12+r)^2=20^2$이다. 전개하면 $2r^2+40r-192=0$, 즉 $r^2+20r-96=0$이고 $(r-4)(r+24)=0$이므로 $r=4$이다. 두 직각변은 $12$, $16$이므로 삼각형의 넓이는 $\\dfrac12\\times12\\times16=96$이고, 내접원의 넓이는 $\\pi\\times4^2=16\\pi$이다. 따라서 색칠한 부분의 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $(96-16\\pi)\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

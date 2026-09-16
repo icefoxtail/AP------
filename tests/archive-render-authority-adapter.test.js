@@ -25,7 +25,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
     const version = {
       'layout-materializer': '20260914\\.1',
       'solution-render-executor': '20260914\\.1',
-      'exam-render-executor': '20260914\\.1',
+      'exam-render-executor': '20260915\\.1',
       'question-image-readiness': '20260915\\.2',
       'screen-runtime-adapter': '20260914\\.1',
       'screen-runtime': '20260913\\.1'
@@ -34,7 +34,7 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   }
   assert.match(engine, /solution-render-executor\.js\?v=20260914\.1/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
-  assert.match(engine, /exam-render-executor\.js\?v=20260914\.1/);
+  assert.match(engine, /exam-render-executor\.js\?v=20260915\.1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);

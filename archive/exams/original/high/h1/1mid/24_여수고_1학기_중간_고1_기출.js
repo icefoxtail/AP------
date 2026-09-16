@@ -1,4 +1,5 @@
 window.examTitle = "24_여수고_1학기_중간_고1_기출";
+
 window.questionBank = [
   {
     "id": 1,
@@ -535,15 +536,15 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "정팔면체 면의 수 합 231일 때 꼭짓점 수 합은? [4.3점]",
+    "content": "다항식 $P(x)=x^4+ax^2+b$가 $x^2+4$와 $x^2+9$로 각각 나누어떨어질 때, $a+b$의 값을 구하면? [4.3점]",
     "choices": [
-      "17",
-      "18",
-      "19",
-      "20",
-      "21"
+      "45",
+      "47",
+      "49",
+      "51",
+      "53"
     ],
-    "answer": "⑤",
+    "answer": "③",
     "category": "인수분해 기하",
     "originalCategory": "인수분해 기하",
     "standardCourse": "수학(상)",
@@ -560,12 +561,12 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution":"[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "approved_source_repair",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -637,7 +638,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어 떨어질 때 $\\{P(4)\\}^2$은? ($P(0)>0$) [4.8점]",
+    "content": "최고차항의 계수가 1인 이차다항식 $P(x)=x^2+ax+b$가 $P(0)=1$을 만족한다. $P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어질 때, $\\{P(4)\\}^2$의 값을 구하면? [4.8점]",
     "choices": [
       "9",
       "25",
@@ -645,7 +646,7 @@ window.questionBank = [
       "225",
       "729"
     ],
-    "answer": "②",
+    "answer": "③",
     "category": "다항식 추론",
     "originalCategory": "다항식 추론",
     "standardCourse": "수학(상)",
@@ -662,7 +663,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution":"[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.",
+    "solution": "[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
@@ -739,9 +740,9 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "사차식 $P(x)$ 추론 과정을 통해 $P(0)$을 구하시오. [7점]",
+    "content": "[서술형 2] 다항식 $P(x)$를 $x^2-2x-3$으로 나눈 몫이 $x^2+2x+1$이고 나머지가 $3x-2$일 때, $P(4)$의 값을 구하는 과정을 서술하시오. [7점]",
     "choices": [],
-    "answer": "15",
+    "answer": "135",
     "category": "서술형 2",
     "originalCategory": "서술형 2",
     "standardCourse": "수학(상)",
@@ -758,7 +759,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution":"[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.",
+    "solution": "[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.",
     "level": "중",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
@@ -796,22 +797,3 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate"
   }
 ];
-
-const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
-
-question(16).content = "다항식 $P(x)=x^4+ax^2+b$가 $x^2+4$와 $x^2+9$로 각각 나누어떨어질 때, $a+b$의 값을 구하면? [4.3점]";
-question(16).choices = ["45","47","49","51","53"];
-question(16).answer = "③";
-question(16).solution = "[키포인트] 서로소인 두 이차식으로 나누어떨어지는 조건을 이용해 곱의 형태로 바꾼다.\n\n$x^2+4$와 $x^2+9$는 서로소인 이차식이다. 두 식의 곱은 최고차항이 1인 사차식이므로, 최고차항의 계수가 1인 $P(x)$가 두 식으로 각각 나누어떨어지면\n$P(x)=(x^2+4)(x^2+9)$\n이다.\n\n곱을 전개하면\n$P(x)=x^4+13x^2+36$\n이다. 따라서\n$a=13,\\quad b=36$\n이고\n$a+b=13+36=49$\n이다.\n\n따라서 정답은 ③이다.";
-delete question(16).studentVisible;
-delete question(16).internalStatus;
-question(19).content = "최고차항의 계수가 1인 이차다항식 $P(x)=x^2+ax+b$가 $P(0)=1$을 만족한다. $P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어질 때, $\\{P(4)\\}^2$의 값을 구하면? [4.8점]";
-question(19).answer = "③";
-question(19).solution = "[키포인트] 곱이 두 일차식으로 나누어떨어진다는 조건을 각 근에서 조사한다.\n\n$P(0)=1$이므로 $b=1$이다. 또\n$P(x)P(x-2)$가 $(x-1)(x-3)$으로 나누어떨어지므로\n$P(1)P(-1)=0,\\qquad P(3)P(1)=0$\n이다.\n\n먼저 $P(1)=0$이라고 하자. 그러면 $P(x)$는 $x-1$을 인수로 갖고 상수항이 1이므로\n$P(x)=(x-1)^2$\n이다.\n\n반대로 $P(1)\\ne0$이라고 하면 위의 두 식에서 $P(-1)=0$과 $P(3)=0$을 얻는다. 이때 최고차항의 계수가 1인 이차식은\n$P(x)=(x+1)(x-3)=x^2-2x-3$\n이므로 상수항이 $-3$이 된다. 이는 $b=1$과 모순이다. 따라서 $P(1)=0$인 경우만 가능하다.\n\n그러므로\n$P(4)=(4-1)^2=9$\n이고\n$\\{P(4)\\}^2=81$\n이다. 따라서 정답은 ③이다.";
-delete question(19).studentVisible;
-delete question(19).internalStatus;
-question(22).content = "[서술형 2] 다항식 $P(x)$를 $x^2-2x-3$으로 나눈 몫이 $x^2+2x+1$이고 나머지가 $3x-2$일 때, $P(4)$의 값을 구하는 과정을 서술하시오. [7점]";
-question(22).answer = "135";
-question(22).solution = "[키포인트] 다항식 나눗셈의 관계식에 $x=4$를 대입한다.\n\n다항식 나눗셈에 의해\n$P(x)=(x^2-2x-3)(x^2+2x+1)+(3x-2)$\n이다.\n\n따라서\n$P(4)=(16-8-3)(16+8+1)+(12-2)$\n$=5\\cdot25+10=135$\n이다.\n\n그러므로 정답은 135이다.";
-delete question(22).studentVisible;
-delete question(22).internalStatus;

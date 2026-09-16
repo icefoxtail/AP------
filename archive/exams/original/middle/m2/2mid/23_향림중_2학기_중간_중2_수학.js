@@ -1,26 +1,3 @@
-function q(id,level,category,key,content,choices,answer,solution,image,visualTag){
-  const tags=[choices.length?"객관식":"서술형"];
-  if(visualTag) tags.push(visualTag);
-  return {
-    id,
-    level,
-    category,
-    originalCategory:category,
-    standardCourse:"중2 수학",
-    standardUnitKey:key,
-    standardUnit:category,
-    standardUnitOrder:Number(key.slice(-2)),
-    questionType:choices.length?"객관식":"서술형",
-    layoutTag:"grid",
-    tags,
-    wide:false,
-    content,
-    choices,
-    answer,
-    solution,
-    ...(image?{image:"assets/images/23_향림중_2학기_중간_중2_수학/"+image}:{})
-  };
-}
 
 window.examTitle="23_향림중_2학기_중간_중2_수학";
 window.questionBank=[

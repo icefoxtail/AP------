@@ -1,39 +1,8 @@
 window.examTitle = "26_동산중_1학기_기말_중2_기출";
 
-const U = {
-  fn: ["M2-04", "일차함수와 그래프", 4],
-  eq: ["M2-03", "연립일차방정식", 3]
-};
 
-const LEVELS = {
-  1: "하", 2: "하", 3: "하", 4: "하", 5: "하", 6: "하",
-  7: "중", 8: "중", 9: "중", 10: "상", 11: "중", 12: "하",
-  13: "중", 14: "중", 15: "하", 16: "중", 17: "하", 18: "중",
-  19: "중", 20: "중", 21: "상", 22: "중", 23: "중", 24: "중"
-};
 
-const q = (id, u, type, content, choices, answer, solution, extra = {}) => ({
-  id,
-  level: LEVELS[id],
-  category: u[1],
-  originalCategory: u[1],
-  standardCourse: "중2",
-  standardUnitKey: u[0],
-  standardUnit: u[1],
-  standardUnitOrder: u[2],
-  questionType: type,
-  layoutTag: "grid",
-  tags: type === "서술형" ? ["서술형"] : [],
-  wide: false,
-  content,
-  choices,
-  answer,
-  solution,
-  ...extra
-});
 
-const C = (n) =>
-  "assets/images/26_동산중_1학기_기말_중2_기출/q" + String(n).padStart(2, "0") + ".png";
 
 window.questionBank = [
   {

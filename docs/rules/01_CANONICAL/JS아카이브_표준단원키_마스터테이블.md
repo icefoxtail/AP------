@@ -55,6 +55,8 @@
 | `tagConfidence` | 자동 태깅 신뢰도 | high / medium / low |
 | `tagStatus` | 태그 검수 상태 | existing / auto_high / auto_medium / auto_low / manual_review / reviewed_pass / reviewed_fail |
 
+`difficultyBucket` 1~5의 상세 단계·경계·blind 판정·confidence·boundary·legacy compatibility·recheck 기준은 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 단일 authority로 따른다.
+
 ### 유사문제 판정 원칙
 
 - `standardUnitKey`만 같은 문항은 유사문제가 아니라 같은 단원 문항이다.
@@ -158,8 +160,8 @@ templateKey: LINEAR_FUNCTION_TWO_POINTS
 | M3-04 | M3-04-QUADRATIC_FUNCTION_APPLICATION | 이차함수의 활용 | QUADRATIC_FUNCTION_APPLICATION |
 | M3-05 | M3-05-TRIG_RATIO | 삼각비 | TRIG_RATIO |
 | M3-05 | M3-05-TRIG_RATIO_APPLICATION | 삼각비의 활용 | TRIG_RATIO_APPLICATION |
-| M3-06 | M3-06-CIRCLE_PROPERTIES | 원의 성질 | CIRCLE_PROPERTIES |
-| M3-06 | M3-06-CIRCLE_ANGLE | 원과 각 | CIRCLE_ANGLE |
+| M3-06 | M3-06-CIRCLE_LINE | 원과 직선 | CIRCLE_LINE |
+| M3-06 | M3-06-CIRCLE_INSCRIBED_ANGLE | 원주각 | CIRCLE_INSCRIBED_ANGLE |
 | M3-07 | M3-07-STATISTICS_REPRESENTATIVE | 대푯값과 산포도 | STATISTICS_REPRESENTATIVE |
 | M3-07 | M3-07-STATISTICS_DATA_INTERPRETATION | 통계 자료 해석 | STATISTICS_DATA_INTERPRETATION |
 
@@ -187,7 +189,7 @@ templateKey: LINEAR_FUNCTION_TWO_POINTS
 | COMBINATION | COMBINATION_SELECTION_CONDITION | COMBINATION_COMPLEMENT_COUNT | 여사건/보완 계산 조합 |
 | PROBABILITY_BASIC | PROBABILITY_BASIC_COUNT | PROBABILITY_COMPLEMENT | 여사건 확률 |
 | PYTHAGOREAN_THEOREM | PYTHAGOREAN_LENGTH_FIND | PYTHAGOREAN_RIGHT_TRIANGLE_LENGTH | 직각삼각형 길이 구하기 |
-| CIRCLE_PROPERTIES | CIRCLE_ANGLE_FIND | CIRCLE_INSCRIBED_ANGLE | 원주각 활용 |
+| CIRCLE_INSCRIBED_ANGLE | CIRCLE_ANGLE_FIND | CIRCLE_INSCRIBED_ANGLE | 원주각 활용 |
 | TRIG_RATIO | TRIG_RATIO_LENGTH_FIND | TRIG_RATIO_RIGHT_TRIANGLE | 직각삼각형 삼각비 |
 
 ---

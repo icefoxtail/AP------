@@ -23,7 +23,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "14"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "$4\\\\sqrt{2}$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "-1"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "33.6"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "189.01"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "$4\\\\sqrt{2}$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "33"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "11개"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "41"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -303,7 +303,7 @@ window.questionBank = [
       "$2x$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -359,7 +359,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -387,7 +387,7 @@ window.questionBank = [
       "14"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -415,7 +415,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -443,7 +443,7 @@ window.questionBank = [
       "18"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -471,7 +471,7 @@ window.questionBank = [
       "30"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -499,7 +499,7 @@ window.questionBank = [
       "$-4x+1$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -527,7 +527,7 @@ window.questionBank = [
       "20"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -555,7 +555,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -577,7 +577,7 @@ window.questionBank = [
     "content": "36의 음의 제곱근을 $A$, $\\\\sqrt{16}$의 양의 제곱근을 $B$라 할 때, 다음 물음에 답하시오.<br>(1) $A, B$를 각각 구하시오.<br>(2) $\\\\frac{\\\\sqrt{B}}{A+\\\\sqrt{B}}$ 의 값을 유리화하시오.",
     "choices": [],
     "answer": "(1) $A=-6,\\ B=2$ (2) $\\\\frac{-1-3\\\\sqrt{2}}{17}$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 (1) $A=-6,\\ B=2$ (2) $\\\\frac{-1-3\\\\sqrt{2}}{17}$이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -599,7 +599,7 @@ window.questionBank = [
     "content": "$x=3+\\\\sqrt{5},\\ y=3-\\\\sqrt{5}$ 일 때, $x^3y - xy^3$ 의 값을 구하시오.",
     "choices": [],
     "answer": "$48\\\\sqrt{5}$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $48\\\\sqrt{5}$이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -621,7 +621,7 @@ window.questionBank = [
     "content": "$x^2-4mx-n$ 에 $2mx+3n$ 을 더한 식이 완전제곱식이 될 때, 100 이하의 자연수 $m, n$ 에 대하여 $m+n$ 이 가질 수 있는 모든 값의 합을 구하시오.",
     "choices": [],
     "answer": "336",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 336이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -643,22 +643,10 @@ window.questionBank = [
     "content": "수직선 위의 점 1을 기준으로 밑변 1, 높이 2인 직각삼각형 빗변을 반지름으로 하여 왼쪽으로 내린 점을 $A$, 오른쪽으로 내린 점을 $B$라 하자. 점 5를 기준으로 밑변 3, 높이 1인 직각삼각형 빗변을 반지름으로 하여 왼쪽으로 내린 점을 $C$, 오른쪽으로 내린 점을 $D$라 할 때, 선분 $\\\\overline{AC}$ 의 중점을 $M$, 선분 $\\\\overline{BD}$ 의 중점을 $N$이라 하자. 이때 선분 $\\\\overline{MN}$ 의 길이를 구하시오.\n<br><svg width=\"400\" height=\"180\" viewBox=\"0 0 400 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"20\" y1=\"120\" x2=\"380\" y2=\"120\" stroke=\"black\" stroke-width=\"1.2\" />\n  <polygon points=\"120,120 120,80 100,80\" fill=\"#eee\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <polygon points=\"280,120 280,100 340,100\" fill=\"#eee\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <text x=\"120\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\">1</text>\n  <text x=\"280\" y=\"135\" font-size=\"10px\" text-anchor=\"middle\">5</text>\n</svg>",
     "choices": [],
     "answer": "$\\\\sqrt{5}+\\\\sqrt{10}$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $\\\\sqrt{5}+\\\\sqrt{10}$이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-const _similarSolutionText = (q) => {
-  const c = q.content || "";
-  let method = "주어진 조건을 식으로 정리하고 필요한 값을 계산한 뒤 선택지와 대조한다.";
-  if (/행렬|matrix/i.test(c)) method = "행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다.";
-  else if (/부등식|절댓값|\\|/.test(c)) method = "절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다.";
-  else if (/이차함수|이차방정식|이차식|포물선/.test(c)) method = "완전제곱·근의 공식·판별식 또는 꼭짓점 공식을 적용해 근과 최댓값·최솟값을 구한다.";
-  else if (/경우의 수|뽑|배열|일렬|자리|문자|카드|주사위|확률/.test(c)) method = "곱의 법칙·순열·조합을 사용해 조건별 경우를 세고, 동일한 결과가 겹치면 중복을 제외한다.";
-  else if (/삼각형|사각형|원|직사각형|평행|닮음|각|길이|넓이/.test(c)) method = "도형의 각의 합, 닮음비, 피타고라스 정리와 넓이비를 조건에 맞게 적용한다. 그림 의존 표시는 JS의 도형 배치를 기준으로 확인한다.";
-  else if (/순환소수|분수|소수/.test(c)) method = "분수를 기약화한 뒤 분모의 소인수와 순환마디를 확인하고, 필요한 자리수·대소관계를 계산한다.";
-  return "[JS 기준 풀이] " + method + " 계산 결과는 " + (q.answer || "문항의 요구값") + "이다.";
-};
-window.questionBank.forEach(q => { if (!q.solution) q.solution = _similarSolutionText(q); });
