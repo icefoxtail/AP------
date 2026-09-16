@@ -26,7 +26,7 @@
     if (!meta) return q;
     const merged = { ...q };
     const conflicts = {};
-    for (const field of ['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','conceptClusterKey','problemTypeKey','templateKey','difficultyBucket','tagConfidence','tagStatus','metadataStatus','metadataRevision']) {
+    for (const field of ['curriculumKey','courseKey','L1','L2','L3','L4','secondaryConceptKeys','curriculumApplicability','defaultSelectable','standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','conceptClusterKey','problemTypeKey','templateKey','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','tagConfidence','tagStatus','reviewStatus','metadataStatus','metadataRevision']) {
       const sourceValue = merged[field];
       const metadataValue = meta[field];
       const sourceText = sourceValue === undefined || sourceValue === null ? '' : String(sourceValue).trim();
