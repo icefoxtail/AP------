@@ -3,7 +3,7 @@
 상태: **PASS_WITH_EXPLICIT_HOLDS**
 branch: `codex/metadata-foundation-m2`
 base SHA: `130e59de5a948d7de3c276cd50b1d06e4ad4eec1`
-final HEAD: `2bde7c5b16af5aa2bc68e5e905fc6546e389cfa7`
+final HEAD: `1870b99fc0f36533758550c4ed9b16493d0964f9`
 
 - exact denominator: **1450**
 - 2015: **1331**, 2022: **119**
