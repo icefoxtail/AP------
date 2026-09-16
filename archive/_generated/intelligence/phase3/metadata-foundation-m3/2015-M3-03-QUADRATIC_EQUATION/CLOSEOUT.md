@@ -128,7 +128,7 @@ Machine receipts:
 
 비대상 M3/H1/중1/중2/고1/고2 record mutation: 0.
 
-- metadata apply commit SHA: pending until targeted reconciliation commit
+- metadata apply commit SHA: e5ea85dce0bf95ddb7e119a10f1ab1a6efd87b45
 - push result: PASS
 - remote: origin/codex/metadata-foundation-m3
 - HEAD == remote after closeout: PASS
