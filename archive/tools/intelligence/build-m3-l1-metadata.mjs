@@ -169,8 +169,10 @@ function classifyM306(combined, content = combined) {
     return { L2: '원주각', L3: '원주각의 활용', L4: '복합 각 추론', cues: ['원 성질 복합 추론'], confidence: 'medium' };
 }
 
-function classifyM307(combined) {
-    if (/산점도|상관관계|양의 상관|음의 상관|상관이 약/.test(combined)) return { L2: '상관관계', L3: '상관관계', L4: /산점도.*작성|자료를 산점도/.test(combined) ? '자료를 산점도로' : /양의/.test(combined) ? '양의 상관관계' : /음의/.test(combined) ? '음의 상관관계' : /약/.test(combined) ? '상관관계가 약한 경우' : '산점도 읽기', cues: ['산점도/상관관계'], confidence: 'high' };
+function classifyM307(combined, content = combined) {
+    const relationGoal = /상관관계|양의 상관|음의 상관|상관이 약/.test(content) || /양의 상관|음의 상관|상관이 약/.test(combined);
+    if (relationGoal) return { L2: '상관관계', L3: '상관관계', L4: /양의/.test(combined) ? '양의 상관관계' : /음의/.test(combined) ? '음의 상관관계' : '상관관계가 약한 경우', cues: ['상관관계 해석'], confidence: 'high' };
+    if (/산점도/.test(content) || /산점도/.test(combined)) return { L2: '상관관계', L3: '산점도', L4: /작성|나타내|그리/.test(content) ? '자료를 산점도로' : '산점도 읽기', cues: ['산점도 자료 읽기'], confidence: 'high' };
     if (/분산|표준편차|편차/.test(combined)) return { L2: '대푯값과 산포도', L3: '산포도', L4: /표준편차/.test(combined) ? '표준편차' : /분산/.test(combined) ? '분산' : '편차', cues: ['편차/분산/표준편차'], confidence: 'high' };
     if (/평균|중앙값|최빈값/.test(combined)) return { L2: '대푯값과 산포도', L3: '대푯값', L4: /비교|어느 것이|적절|자료의 중심/.test(combined) ? '대푯값 비교' : '평균·중앙값·최빈값', cues: ['평균/중앙값/최빈값'], confidence: 'high' };
     return { L2: '대푯값과 산포도', L3: '자료 비교', L4: '조건으로 자료 추론', cues: ['통계 자료 비교 fallback'], confidence: 'low' };
@@ -190,7 +192,7 @@ function classify(record, target) {
         case 'M3-04': pathResult = classifyM304(combined); break;
         case 'M3-05': pathResult = classifyM305(combined); break;
         case 'M3-06': pathResult = classifyM306(combined, content); break;
-        case 'M3-07': pathResult = classifyM307(combined); break;
+        case 'M3-07': pathResult = classifyM307(combined, content); break;
         default: pathResult = { L2: '', L3: '', L4: '', cues: [], confidence: 'low' };
     }
     const evidence = {
