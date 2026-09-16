@@ -464,8 +464,16 @@ function main() {
             for (const unitKey of unitKeys) {
                 const l1 = l1ForUnit(unitKey);
                 const targetRecords = scopeRecords.filter(record => record.currentStandardUnitKey === unitKey);
-                const masterScope = scopes.find(record => record.curriculum === curriculum && record.scope === scope && record.majorUnit && l1 && record.majorUnit);
-                const majorUnit = masterScope?.majorUnit || targetRecords[0]?.currentStandardUnit || unitKey;
+                const l1Names = {
+                    'M3-01': '실수와 그 연산',
+                    'M3-02': '다항식의 곱셈과 인수분해',
+                    'M3-03': '이차방정식',
+                    'M3-04': '이차함수',
+                    'M3-05': '삼각비',
+                    'M3-06': '원의 성질',
+                    'M3-07': '통계'
+                };
+                const majorUnit = l1Names[unitKey] || targetRecords[0]?.currentStandardUnit || unitKey;
                 const canonical = scopeSummary(scopes, curriculum, scope, majorUnit);
                 const sourceFiles = new Set(targetRecords.map(record => record.sourceArchiveFile));
                 targets.push({
