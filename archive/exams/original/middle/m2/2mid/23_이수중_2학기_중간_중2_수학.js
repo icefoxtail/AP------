@@ -1,24 +1,3 @@
-function q(id,level,category,key,content,choices,answer,solution,image){
-  return {
-    id,
-    level,
-    category,
-    originalCategory: category,
-    standardCourse: "중2 수학",
-    standardUnitKey: key,
-    standardUnit: category,
-    standardUnitOrder: Number(key.slice(-2)),
-    questionType: choices.length ? "객관식" : "서술형",
-    layoutTag: "grid",
-    tags: [choices.length ? "객관식" : "서술형"].concat(image ? ["도형"] : []),
-    wide: false,
-    content,
-    choices,
-    answer,
-    solution,
-    ...(image ? { image: "assets/images/23_이수중_2학기_중간_중2_수학/" + image } : {})
-  };
-}
 
 window.examTitle = "23_이수중_2학기_중간_중2_수학";
 window.questionBank = [

@@ -1,4 +1,4 @@
-function q(id,level,category,standardCourse,standardUnitKey,standardUnitOrder,questionType,tags,content,choices,answer,solution,image){return {id,level,category,originalCategory:category,standardCourse,standardUnitKey,standardUnit:category,standardUnitOrder,questionType,layoutTag:"grid",tags,wide:false,content,choices,answer,solution,...(image?{image}: {})};}
+
 window.examTitle="23_풍덕중_2학기_중간_중3_수학";
 window.questionBank=[
   {

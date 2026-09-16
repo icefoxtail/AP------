@@ -620,10 +620,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[단답형 4] 소수인 자연수 $x, y, z$에 대하여 $x^3-2x^2y+xy^2-x^2z+2xyz-yz^2$가 $48$의 값을 가질 때, $x+y+z$의 최솟값을 구하시오. [5.5점]",
+    "content": "최고차항의 계수가 1인 사차다항식 $P(x)=x^4+ax^3+bx^2+cx-12$를 $x^2+x-6$으로 나눈 몫이 $x^2-4x+2$이고 나머지가 0일 때, $a+b+c$의 값을 구하는 과정을 서술하시오. [5.5점]",
     "choices": [],
-    "answer": "41",
-    "solution":"[키포인트] 나눗셈의 몫과 나머지로 다항식을 나타낸 뒤 전개하여 계수를 비교한다.\n\n나머지가 0이므로\n$P(x)=(x^2+x-6)(x^2-4x+2)$\n이다. 또\n$x^2+x-6=(x-2)(x+3)$\n이므로 주어진 다항식은 인수분해 형태로도 확인된다.\n\n곱을 전개하면\n$P(x)=x^4-4x^3+2x^2+x^3-4x^2+2x-6x^2+24x-12$\n$=x^4-3x^3-8x^2+26x-12$\n이다. 따라서\n$a=-3,\\quad b=-8,\\quad c=26$\n이고\n$a+b+c=-3-8+26=15$\n이다.\n\n따라서 정답은 15이다.",
+    "answer": "15",
+    "solution": "[키포인트] 나눗셈의 몫과 나머지로 다항식을 나타낸 뒤 전개하여 계수를 비교한다.\n\n나머지가 0이므로\n$P(x)=(x^2+x-6)(x^2-4x+2)$\n이다. 또\n$x^2+x-6=(x-2)(x+3)$\n이므로 주어진 다항식은 인수분해 형태로도 확인된다.\n\n곱을 전개하면\n$P(x)=x^4-4x^3+2x^2+x^3-4x^2+2x-6x^2+24x-12$\n$=x^4-3x^3-8x^2+26x-12$\n이다. 따라서\n$a=-3,\\quad b=-8,\\quad c=26$\n이고\n$a+b+c=-3-8+26=15$\n이다.\n\n따라서 정답은 15이다.",
     "subUnitKey": "H15-SA-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -692,11 +692,3 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-
-const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
-
-question(18).content = "최고차항의 계수가 1인 사차다항식 $P(x)=x^4+ax^3+bx^2+cx-12$를 $x^2+x-6$으로 나눈 몫이 $x^2-4x+2$이고 나머지가 0일 때, $a+b+c$의 값을 구하는 과정을 서술하시오. [5.5점]";
-question(18).answer = "15";
-question(18).solution = "[키포인트] 나눗셈의 몫과 나머지로 다항식을 나타낸 뒤 전개하여 계수를 비교한다.\n\n나머지가 0이므로\n$P(x)=(x^2+x-6)(x^2-4x+2)$\n이다. 또\n$x^2+x-6=(x-2)(x+3)$\n이므로 주어진 다항식은 인수분해 형태로도 확인된다.\n\n곱을 전개하면\n$P(x)=x^4-4x^3+2x^2+x^3-4x^2+2x-6x^2+24x-12$\n$=x^4-3x^3-8x^2+26x-12$\n이다. 따라서\n$a=-3,\\quad b=-8,\\quad c=26$\n이고\n$a+b+c=-3-8+26=15$\n이다.\n\n따라서 정답은 15이다.";
-delete question(18).studentVisible;
-delete question(18).internalStatus;

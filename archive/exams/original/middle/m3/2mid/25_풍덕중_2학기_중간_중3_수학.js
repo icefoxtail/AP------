@@ -1,14 +1,4 @@
-function q(id, level, category, key, order, questionType, tags, content, choices, answer, solution, hasImage) {
-  return {
-    id, level, category, originalCategory: category, standardCourse: "중3 수학",
-    standardUnitKey: key, standardUnit: category, standardUnitOrder: order,
-    questionType, layoutTag: "grid", tags, wide: false,
-    content, choices, answer, solution,
-    ...(hasImage ? { image: `assets/images/25_풍덕중_2학기_중간_중3_수학/q${id}.png` } : {})
-  };
-}
 
-window.examTitle = "25_풍덕중_2학기_중간_중3_수학";
 
 window.questionBank = [
   {
@@ -771,3 +761,4 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
+window.examTitle = "25_풍덕중_2학기_중간_중3_수학";

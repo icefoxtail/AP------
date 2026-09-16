@@ -1,6 +1,6 @@
 window.examTitle="23_풍덕중_2학기_기말_중3_기출";
-const U={"원의 성질":["M3-06",6],"통계":["M3-07",7]};
-function q(id,u,t,lv,c,ch=[],ans="",sol="",image="",tags=[]){const[k,o]=U[u];return{id,level:lv,category:u,originalCategory:u,standardCourse:"중3 수학",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags,wide:false,content:c,choices:ch,answer:ans,solution:sol,...(image?{image}: {})}}
+
+
 window.questionBank=[
   {
     "id": 1,

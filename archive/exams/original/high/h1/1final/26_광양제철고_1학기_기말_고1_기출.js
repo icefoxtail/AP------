@@ -1,12 +1,5 @@
 window.examTitle = "26_광양제철고_1학기_기말_고1_기출";
 
-const makeQuestion = (id, level, category, unitKey, unit, type, content, choices, answer, solution, extra = {}) => ({
-  id, level, category, originalCategory: category,
-  standardCourse: "공통수학1", standardUnitKey: unitKey, standardUnit: unit,
-  standardUnitOrder: Number(unitKey.slice(-2)), questionType: type, layoutTag: "grid",
-  tags: type === "서술형" ? ["서술형"] : [], wide: false,
-  content, choices, answer, solution, ...extra
-});
 
 window.questionBank = [
   {
