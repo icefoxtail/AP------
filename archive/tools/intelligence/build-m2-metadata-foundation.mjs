@@ -527,14 +527,14 @@ function classifyQuestion(question, sourceFile, curriculum, taxonomy) {
         else if (has(text, /동등|모든 경우|경우의 수|전체 경우/)) { L3 = '확률의 뜻'; L4 = '동등가능한 경우'; }
         else { L3 = '확률의 뜻'; L4 = '확률 계산'; }
     } else if (current.includes('M1-07-SOLID_FIGURE_MEASURE')) {
-        scope = 'M2-2'; L1 = '도형의 닮음과 피타고라스 정리'; L2 = '도형의 닮음'; L3 = '닮음의 활용'; L4 = '넓이·부피 비'; applicability = 'RPM_EXTENDED_CANDIDATE';
-        classificationNote = 'legacy source key is M1-07; volume evidence maps to the closest locked M2 similarity application path; applicability held as RPM_EXTENDED_CANDIDATE for authority review';
+        scope = 'M2-2'; L1 = '도형의 닮음과 피타고라스 정리'; L2 = '도형의 닮음'; L3 = '닮음의 활용'; L4 = '넓이·부피 비';
+        classificationNote = 'legacy source key is M1-07, but the decisive educational concept is volume ratio; solid/three-dimensional representation is context evidence and is not treated as an outlier or hold';
     } else if (current.includes('M1-01-PRIME_FACTORIZATION')) {
         scope = 'M2-1'; L1 = '식의 계산'; L2 = '단항식의 계산'; L3 = '지수법칙'; L4 = '거듭제곱의 곱·몫'; applicability = 'RPM_EXTENDED_CANDIDATE';
         classificationNote = 'legacy source key is M1-01; prime-factor exponent evidence is retained on the closest locked M2 exponent path and held as RPM_EXTENDED_CANDIDATE';
     } else if (current.includes('M1-03-ALGEBRAIC_EXPRESSION')) {
-        scope = 'M2-1'; L1 = '식의 계산'; L2 = '다항식의 계산'; L3 = '단항식과 다항식의 곱셈·나눗셈'; L4 = '분배법칙'; applicability = 'RPM_EXTENDED_CANDIDATE';
-        classificationNote = 'legacy source key is M1-03; algebraic expansion evidence is retained on the closest locked M2 polynomial path and held as RPM_EXTENDED_CANDIDATE';
+        scope = 'M2-1'; L1 = '식의 계산'; L2 = '다항식의 계산'; L3 = '단항식과 다항식의 곱셈·나눗셈'; L4 = '분배법칙';
+        classificationNote = 'legacy source key is M1-03, but the decisive educational concept is polynomial expansion; legacy source-unit naming is preserved without outlier/hold treatment';
     } else {
         throw new Error(`unrouted middle-grade-2 source key: ${current} (${sourceFile}#${question.id})`);
     }
