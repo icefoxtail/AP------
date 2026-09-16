@@ -2,6 +2,7 @@ import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
+import { handleArchive2 } from './archive2.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -1276,6 +1277,11 @@ export async function handleExams(request, env, teacher, path, url) {
   }
 
   if (resource === 'class-exam-assignments') {
+    if (id === 'studio' || id === 'question-history') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      return handleArchive2(request, env, currentTeacher, id);
+    }
     if ((method === 'GET' || method === 'POST') && id && path[3] === 'pdf') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -1522,6 +1528,9 @@ export async function handleExams(request, env, teacher, path, url) {
       }
 
       if (existing?.id) {
+        if (existing.archive2_write_key) {
+          return jsonResponse({ success: false, error: 'Archive 2.0의 확정 배부는 원본을 변경할 수 없습니다. 새 문제지로 출제하세요.', assignment_id: existing.id }, 409);
+        }
         await env.DB.prepare(`
           UPDATE class_exam_assignments
           SET ${updateSets.join(',\n              ')}
