@@ -235,7 +235,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
   if (!file || file.startsWith('MIXED:') || /^https?:\/\//i.test(file)) return;
   try {
     const url = EXAM_ARCHIVE_BASE_URL + file.split('/').map(encodeURIComponent).join('/');
-    const res = await fetch(url);
+    const res = env.ARCHIVE2_ASSETS ? await env.ARCHIVE2_ASSETS.fetch(url) : await fetch(url);
     if (!res.ok) return;
     const jsText = await res.text();
     const bank = extractQuestionBankFromArchiveText(jsText);
@@ -1015,6 +1015,10 @@ export async function handleExams(request, env, teacher, path, url) {
       const d = await request.json();
       if (!d.archive_file) return jsonResponse({ error: 'archive_file required' }, 400);
       if (!Array.isArray(d.items)) return jsonResponse({ error: 'items must be an array' }, 400);
+      if (String(d.archive_file).startsWith('MIXED:archive2-')) {
+        const frozen = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE archive_file = ? LIMIT 1').bind(d.archive_file).first();
+        if (frozen?.archive2_write_key) return jsonResponse({ error: 'Archive 2.0 확정 문항 blueprint는 배부 snapshot과 함께 동결됩니다.' }, 409);
+      }
 
       const blueprintColumns = await getTableColumnSet(env, 'exam_blueprints');
       const blueprintMetaColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_META_COLUMNS);
@@ -1280,7 +1284,7 @@ export async function handleExams(request, env, teacher, path, url) {
     if (id === 'studio' || id === 'question-history') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
-      return handleArchive2(request, env, currentTeacher, id);
+      return handleArchive2(request, env, currentTeacher, id, { buildArchiveQuestionMetadata, buildArchiveMetadataHash });
     }
     if ((method === 'GET' || method === 'POST') && id && path[3] === 'pdf') {
       const currentTeacher = await requireTeacher(request, env, teacher);
