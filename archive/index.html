@@ -2064,6 +2064,7 @@ async function init() {
     document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
     renderFeatured();
+    if (await window.openArchive2OriginalIssue?.()) return;
     await openPendingUnitPastAssignmentFromUrl();
 }
 
@@ -2704,14 +2705,15 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         headers: { 'Content-Type': 'application/json', ...authHeader },
         body: JSON.stringify(payload)
     });
-    if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    // A PDF failure may follow a successful assignment write. Apply the selected
+    // student exclusions to that saved assignment before reporting the failure.
+    if (!res.ok && !(res.status === 502 && data?.assignment?.id)) {
         notifyArchiveQrApiFailure(res.status, 'class-exam-assignments');
         throw new Error(`assignment failed: ${res.status}`);
     }
-    const data = await res.json().catch(() => ({}));
-    if (data?.assignment?.pdf_status === 'failed') {
-        throw new Error(data.assignment.pdf_error || '시험지 PDF 생성 실패');
-    }
+    if (!res.ok || data?.assignment?.pdf_status === 'failed')
+        data.pdfFailure = data.assignment?.pdf_error || data.error || '시험지 PDF 생성 실패';
     return data;
 }
 
@@ -3270,6 +3272,7 @@ function renderAssignTargetReviewView() {
 async function assignTargetSubmit() {
     const classIds = Object.keys(AssignTarget.classState).filter(id => AssignTarget.classState[id].checked);
     if (!classIds.length) return;
+    window.rememberArchive2OriginalTargets?.();
     if (!resolveExamQuestionCountForAssignment(AssignTarget.item)) {
         renderAssignTargetNotice('문항 수 확인이 필요합니다.');
         return;
@@ -3296,7 +3299,7 @@ async function assignTargetProcessOneClass(classId) {
     const st = AssignTarget.classState[classId];
     AssignTarget.progress[classId] = { status: 'pending' };
     try {
-        await registerIndexClassExamAssignment(st.row, AssignTarget.item, {
+        const registration = await registerIndexClassExamAssignment(st.row, AssignTarget.item, {
             assignmentBatchId: AssignTarget.assignmentBatchId,
             target_scope: AssignTarget.scope,
             gradeLabel: AssignTarget.grade,
@@ -3311,6 +3314,7 @@ async function assignTargetProcessOneClass(classId) {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', ...authHeader },
                     body: JSON.stringify({
+                        assignment_id: registration?.assignment?.id || undefined,
                         class_id: classId,
                         student_ids: excludedIds,
                         exam_title: getIndexExamTitle(AssignTarget.item),
@@ -3322,6 +3326,7 @@ async function assignTargetProcessOneClass(classId) {
                 if (!res.ok || !data.success) throw new Error('exclude-students failed: ' + res.status);
             }
         }
+        if (registration.pdfFailure) throw new Error('출제 대상 저장 완료 · PDF 재시도 필요: ' + registration.pdfFailure);
         AssignTarget.progress[classId] = { status: 'success' };
     } catch(e) {
         console.warn('[assign target] class 처리 실패:', classId, e);
@@ -3335,7 +3340,7 @@ function renderAssignTargetProgressView() {
         const st = AssignTarget.classState[id];
         const p = AssignTarget.progress[id];
         const icon = p.status === 'success' ? '✔' : p.status === 'error' ? '✕' : '…';
-        return `<div class="assign-progress-row ${p.status}"><span class="icon">${icon}</span><span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — 등록 실패' : ''}</span></div>`;
+        return `<div class="assign-progress-row ${p.status}"><span class="icon">${icon}</span><span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : ''}</span></div>`;
     }).join('');
 
     const anyError = classIds.some(id => AssignTarget.progress[id].status === 'error');
@@ -3548,5 +3553,6 @@ window.onload = function () {
     init();
 };
 </script>
+<script src="archive2-entry.js"></script>
 </body>
 </html>

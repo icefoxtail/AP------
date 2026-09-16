@@ -1,5 +1,18 @@
 # JS아카이브 2.0 정본 문서 인덱스
 
+## RC1 구현 자료
+
+- `RC1_REPORT.md`: 구현 범위, 실제 runtime 증거, 데이터 coverage와 운영 전 조건.
+- `OPERATIONS.md`: 로컬 재현, migration/rollout/rollback, read-only reconciliation.
+- `ADR-001-METADATA-WORKSPACE.md`: metadata 소비와 작업공간 경계.
+- `ADR-002-ATOMIC-ASSIGNMENT.md`: 기존 assignment와 문항 snapshot의 원자적 저장.
+- `ADR-003-CURRICULUM-SCOPE.md`: 교육과정별 구성과 미검수 legacy crosswalk 처리.
+- `ADR-004-ORIGINAL-FIRST.md`: 원본 기출 출제를 기본 행동으로 유지하고 기존 반·학생 패널 재사용.
+
+현재 작업공간은 `archive/workspace.html`이다. 아래 초기 설계와 baseline은
+제품/기존 시스템 근거로 보존하며, 현재 구현 상태는 `IMPLEMENTATION_STATUS.md`와
+RC 보고서를 따른다. canonical metadata HARD authority는 변경하지 않는다.
+
 이 디렉터리는 JS아카이브 2.0의 방향, 계약, 분류, Studio 설계, 실제 코드
 baseline을 한 묶음으로 관리하는 정본 저장소다. 이 문서 묶음은 Archive 2.0
 기능을 이미 구현했다는 선언이 아니라, 기존 APMS/Archive 시스템을 어디까지
