@@ -99,7 +99,8 @@ function classifyM303(combined) {
     if (application) {
         if (/직사각형|삼각형|도형|넓이|길이|피타고라스/.test(combined)) return { L2: '이차방정식의 활용', L3: '도형', L4: /피타고라스/.test(combined) ? '피타고라스와 결합' : '길이·넓이', cues: ['이차방정식 도형 활용'], confidence: 'high' };
         if (/속력|거리|운동|시간/.test(combined)) return { L2: '이차방정식의 활용', L3: '거리·속력·기타', L4: '운동 문제', cues: ['거리/속력/운동'], confidence: 'high' };
-        return { L2: '이차방정식의 활용', L3: '수와 식', L4: /자리수|십의 자리|일의 자리/.test(combined) ? '자리수·식의 값' : /개수|증가|감소/.test(combined) ? '증감·개수' : '연속된 수', cues: ['이차방정식 수/식 활용'], confidence: 'medium' };
+        if (/개수|증가|감소/.test(combined)) return { L2: '이차방정식의 활용', L3: '거리·속력·기타', L4: '증감·개수', cues: ['이차방정식 증감/개수 활용'], confidence: 'medium' };
+        return { L2: '이차방정식의 활용', L3: '수와 식', L4: /자리수|십의 자리|일의 자리/.test(combined) ? '자리수·식의 값' : '연속된 수', cues: ['이차방정식 수/식 활용'], confidence: 'medium' };
     }
     if (/인수분해|인수로/.test(combined)) return { L2: '이차방정식의 풀이', L3: '인수분해를 이용한 풀이', L4: '기본 인수분해', cues: ['인수분해 풀이'], confidence: 'high' };
     if (/근의 공식|\\frac\\{-b|b\s*±|판별식/.test(combined)) return { L2: '이차방정식의 풀이', L3: '근의 공식', L4: /근의 개수|판별식|서로 다른|중근|실근/.test(combined) ? '근의 개수·판별' : '근의 공식', cues: ['근의 공식/판별식'], confidence: 'high' };
