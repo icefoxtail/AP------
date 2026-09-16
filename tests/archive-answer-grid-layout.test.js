@@ -14,7 +14,7 @@ for (const filename of engines) {
     assert.match(html, /\.ans-v\s*\{[^}]*line-height:\s*1\.5;[^}]*overflow-wrap:\s*anywhere;/s);
     assert.match(html, /function formatGridAnswer\(answer\)/);
     assert.match(html, /replace\(\/\\s\+\\\/\\s\+\(\?=\\\(\\d\+\\\)\)\/g, '<br>'\)/);
-    assert.match(html, /async function fitAnswerPages\(area, data\)/);
-    assert.match(html, /if \(AppState\.mode === 'ans'\)[\s\S]{0,80}await fitAnswerPages\(area, AppState\.data\)/);
+    assert.match(html, /async function fitAnswerPages\(area, data(?:,\s*ctx\s*=\s*null)?\)/);
+    assert.match(html, /if \(AppState\.mode === 'ans'\)[\s\S]{0,80}await fitAnswerPages\(area, AppState\.data(?:,\s*ctx)?\)/);
   });
 }

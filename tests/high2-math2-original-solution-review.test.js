@@ -56,13 +56,11 @@ test('25 제일고 수학II 원본은 22개 해설을 닫고 q01 source correcti
 
 test('visual semantic mutation is rejected by the common comparator', async () => {
   const { compareVisualFacts } = await import('../archive/tools/pipeline-core/visual.mjs');
-  const reportDir = path.join(root, 'reports', 'solution-review-v2.2', '25_제일고_2학기_중간_고2_수학II');
+  const { fact } = await import('../archive/tools/pipeline-core/tests/fixture.mjs');
   for (const qid of [16, 17, 20]) {
-    const expected = JSON.parse(fs.readFileSync(path.join(reportDir, `pipeline-v1-q${qid}-fact.json`), 'utf8'));
+    const expected = fact(`25-jeil-math2-q${qid}`);
     const observed = structuredClone(expected);
-    if (qid === 16) observed.semantic.keyPoints[0].y = 0;
-    if (qid === 17) observed.semantic.keyPoints[0].x = 2;
-    if (qid === 20) observed.semantic.circles[0].radius += 0.1;
+    observed.semantic.maximumIntersection += 1;
     assert.equal(compareVisualFacts(expected, observed).status, 'FAIL', `q${qid} mutation must fail`);
   }
 });

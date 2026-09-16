@@ -26,7 +26,7 @@ function memoryStorage() {
 }
 
 test('unit-past producer writes the real mixed storage contract with canonical provenance header metadata', () => {
-  const storeMixedPayload = sourceBetween(unitPast, 'function storeMixedPayload', 'function appendSessionHash');
+  const storeMixedPayload = sourceBetween(unitPast, 'function getDefaultPaperPrintHeaderOptions', 'function appendSessionHash');
   const localStorage = memoryStorage();
   const context = {
     String, Number, Date, JSON, Map, Set, localStorage,
@@ -35,7 +35,12 @@ test('unit-past producer writes the real mixed storage contract with canonical p
     core: {
       getSubUnitLabel: record => record.subUnitLabel || '다항식',
       getDifficultyBucket: record => record.difficulty || '중',
-      getQuestionUid: question => question.sourceQuestionUid || ''
+      getQuestionUid: question => question.sourceQuestionUid || '',
+      getExamYear: record => Number(record.examYear || 2026),
+      getSchool: record => record.school || '',
+      getPeriod: () => '1mid',
+      getSemester: record => record.semester || 1,
+      getExamType: record => record.examType || 'mid'
     }
   };
   vm.createContext(context);
@@ -45,7 +50,7 @@ test('unit-past producer writes the real mixed storage contract with canonical p
   const paper = {
     title: '단원별 기출 fixture', snapshotKey: 'unit-past-fixture-key', school: 'Fixture School', schoolKey: 'fixture',
     selection: { mode: 'quick', collection: { scopeLabel: '1학기 중간', course: '수학' } },
-    records: [{ sourceFile: 'exams/fixture.js', subUnitKey: 'poly', subUnitLabel: '다항식', difficulty: '중', metadataRevision: 'archive-metadata-v1' }]
+    records: [{ sourceFile: 'exams/fixture.js', school: 'Fixture School', examYear: 2026, semester: 1, examType: 'mid', subUnitKey: 'poly', subUnitLabel: '다항식', difficulty: '중', metadataRevision: 'archive-metadata-v1' }]
   };
   const questions = [{ id: 1, sourceQuestionUid: 'unit-past-q-1' }];
   const meta = context.storeMixedPayload(unit, paper, questions);
