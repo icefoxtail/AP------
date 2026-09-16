@@ -46,12 +46,12 @@ window.questionBank = [
     "choices": [
       "1개",
       "2개",
-      "3개",
       "4개",
+      "3개",
       "5개"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 근호 안의 수가 유리수의 제곱이면 근호를 사용하지 않고 나타낼 수 있다.\\n$\\sqrt{144}=12$\\n$\\sqrt{\\frac{1}{9}}=\\frac{1}{3}$\\n$\\sqrt{0.9}=\\sqrt{\\frac{9}{10}}=\\frac{3}{\\sqrt{10}}$이므로 근호 없이 나타낼 수 없다.\\n$\\sqrt{\\frac{3}{16}}=\\frac{\\sqrt{3}}{4}$이므로 근호 없이 나타낼 수 없다.\\n$-\\sqrt{0.49}=-0.7$\\n따라서 근호 없이 나타낼 수 있는 수는 3개이므로 정답은 ③이다.",
+    "answer": "④",
+    "solution": "[키포인트] 근호 안의 수가 유리수의 제곱이면 근호를 사용하지 않고 나타낼 수 있다.\\n$\\sqrt{144}=12$\\n$\\sqrt{\\frac{1}{9}}=\\frac{1}{3}$\\n$\\sqrt{0.9}=\\sqrt{\\frac{9}{10}}=\\frac{3}{\\sqrt{10}}$이므로 근호 없이 나타낼 수 없다.\\n$\\sqrt{\\frac{3}{16}}=\\frac{\\sqrt{3}}{4}$이므로 근호 없이 나타낼 수 없다.\\n$-\\sqrt{0.49}=-0.7$\\n따라서 근호 없이 나타낼 수 있는 수는 3개이므로 정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",

@@ -7,6 +7,7 @@ import { ensureDir, readJson, writeJson, writeText } from "./lib/fs-utils.mjs";
 import { makeCandidateJs } from "./lib/js-candidate.mjs";
 import { freezeSourceInventory } from "./lib/hardening.mjs";
 import { assertBuilderStart } from "./lib/calibration.mjs";
+import { markGeneratedRun, writeGeneratedLifecycle } from "../../../tools/archive/generated-artifact-lifecycle.mjs";
 
 const execFileAsync = promisify(execFile);
 const thisDir = path.dirname(fileURLToPath(import.meta.url));
@@ -53,6 +54,19 @@ export async function runOneExam(cfg, manifest) {
     ensureDir(reportsDir),
     ensureDir(candidateDir)
   ]);
+  writeGeneratedLifecycle(outputDir, {
+    runId: manifest.examId,
+    producer: "past-exam-pipeline",
+    status: "ACTIVE",
+    tempPaths: [
+      "manifest.json",
+      "pages",
+      "assets",
+      "candidate",
+      "reports",
+    ],
+    canonicalPaths: [".lifecycle.json", "reports/production_promotion_receipt.json"],
+  });
   let sourceFreeze;
   try {
     sourceFreeze = freezeSourceInventory({
@@ -160,6 +174,7 @@ export async function runOneExam(cfg, manifest) {
         currentStage: "scanned_exam_helper_failed",
         helperError: String(error.stderr || error.message || error).slice(0, 4000),
       };
+      markGeneratedRun(outputDir, "FAILED", { failure: failed.helperError });
       await writeJson(path.join(reportsDir, "validation_summary.json"), failed);
       return failed;
     }

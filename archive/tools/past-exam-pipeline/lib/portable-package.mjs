@@ -38,7 +38,7 @@ function pythonConsumer(zipFile, outputDir) {
     "    rows.append({'path': info.filename, 'bytes': len(data), 'crc': info.CRC, 'utf8': bool(info.flag_bits & 0x800), 'sha256': 'sha256:' + hashlib.sha256(data).hexdigest()})",
     "print(json.dumps(rows, ensure_ascii=False))",
   ].join("\n");
-  const raw = execFileSync("python", ["-c", script, zipFile, outputDir], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
+  const raw = execFileSync(process.env.APMATH_PYTHON || "python", ["-c", script, zipFile, outputDir], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
   return JSON.parse(raw);
 }
 
@@ -49,6 +49,16 @@ function secondConsumer(zipFile, outputDir) {
   if (sevenZip) {
     execFileSync(sevenZip, ["x", "-y", zipFile, `-o${outputDir}`], { stdio: "pipe" });
     return "7zip";
+  }
+  if (process.platform === "win32") {
+    try {
+      const tar = execFileSync("where.exe", ["tar"], { encoding: "utf8" }).split(/\r?\n/).find(Boolean);
+      if (tar) {
+        fs.mkdirSync(outputDir, { recursive: true });
+        execFileSync(tar, ["-xf", zipFile, "-C", outputDir], { stdio: "pipe" });
+        return "bsdtar";
+      }
+    } catch { /* Fall through to the platform archive consumer. */ }
   }
   if (process.platform === "win32") {
     const quote = value => `'${String(value).replaceAll("'", "''")}'`;

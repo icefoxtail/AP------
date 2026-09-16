@@ -1,10 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { canonicalJson, bytesSha, objectSha, safePath, fileRef } from '../canonical.mjs';
-import { compareVisualFacts, validateVisualFact, semanticSha, circleRelation, auditDuplicates, structureFingerprint } from '../visual.mjs';
+import { compareVisualFacts, validateVisualFact, semanticSha, circleRelation, auditDuplicates, structureFingerprint, extractSvgGeometry, verifySvgGeometry } from '../visual.mjs';
 import { validateBatchManifest } from '../batch.mjs';
 import { validateSchema } from '../schema.mjs';
 import { verifyBranch } from '../expression.mjs';
@@ -16,6 +18,16 @@ test('raw bytes and canonical objects are separate hash domains', () => {
   assert.equal(objectSha({ z: 1, a: 2 }), objectSha({ a: 2, z: 1 }));
   assert.throws(() => canonicalJson({ a: undefined }), /NON_JSON/);
   assert.throws(() => canonicalJson({ a: NaN }), /NON_CANONICAL/);
+});
+test('canonical JSON failures retain the exact offending object path without coercion', () => {
+  assert.throws(
+    () => canonicalJson({ freeze: { renderEvidence: [{ foo: undefined }] } }),
+    error => error.message === 'NON_JSON_VALUE' && error.path === '$.freeze.renderEvidence[0].foo' && error.valueType === 'undefined'
+  );
+  assert.throws(
+    () => canonicalJson({ freeze: { renderEvidence: [new Date(0)] } }),
+    error => error.message === 'NON_JSON_VALUE' && error.path === '$.freeze.renderEvidence[0]' && error.valueType === 'Date'
+  );
 });
 test('same semantic meaning on another UID hashes the same; parity still checks identity', () => {
   assert.equal(semanticSha(fact('a')), semanticSha(fact('b')));
@@ -37,6 +49,94 @@ test('case rows use IDs; cell order and exhaustive reason cannot disappear', () 
   const a = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'q', visualType: 'case-table', semantic: { columns: ['x'], rows: [{ id: 'a', cells: ['1'], disposition: 'KEEP', reason: 'satisfies' }, { id: 'b', cells: ['2'], disposition: 'REJECT', reason: 'violates' }], exhaustivenessReason: 'x is 1 or 2' } };
   const b = structuredClone(a); b.semantic.rows.reverse(); assert.equal(semanticSha(a), semanticSha(b));
   delete b.semantic.exhaustivenessReason; assert.equal(validateVisualFact(b).status, 'FAIL');
+});
+
+test('number-line V2 artifact extraction catches a label-only or wrong-boundary SVG', () => {
+  const fact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'number-line-fixture', visualType: 'number-line', semantic: { variable: 'x', intervals: [{ left: 0, right: 4, leftClosed: false, rightClosed: false }] } };
+  const valid = '<svg xmlns="http://www.w3.org/2000/svg"><line x1="107.5" y1="60" x2="252.5" y2="60"/><circle cx="107.5" cy="60" r="4" fill="#fff"/><circle cx="252.5" cy="60" r="4" fill="#fff"/></svg>';
+  const wrong = valid.replace('cx="252.5"', 'cx="280"');
+  assert.equal(verifySvgGeometry(fact, extractSvgGeometry(valid)).status, 'PASS');
+  const result = verifySvgGeometry(fact, extractSvgGeometry(wrong));
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.some(error => error.includes('SVG_INTERVAL_ENDPOINT_MISMATCH')));
+});
+
+test('path-only curve sketches cannot satisfy the numeric SVG observation gate', () => {
+  const observation = extractSvgGeometry('<svg xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 C 10 10 20 10 30 0"/></svg>');
+  assert.equal(observation.status, 'FAIL');
+  assert.ok(observation.errors.includes('SVG_UNVERIFIED_PATH'));
+});
+
+test('benign generator font wrapper is accepted while geometry-changing SVG presentation is fail-closed', () => {
+  const valid = '<svg xmlns="http://www.w3.org/2000/svg"><g font-family="Arial, sans-serif"><line x1="0" y1="0" x2="10" y2="0"/></g></svg>';
+  const observation = extractSvgGeometry(valid);
+  assert.equal(observation.status, 'OBSERVED');
+  assert.deepEqual(observation.errors, []);
+  for (const attribute of ['transform="translate(1 1)"', 'clip-path="url(#clip)"', 'mask="url(#mask)"', 'style="transform: translate(1px 1px)"', 'style="clip-path: url(#clip)"', 'style="mask: url(#mask)"']) {
+    const blocked = extractSvgGeometry(`<svg xmlns="http://www.w3.org/2000/svg"><g ${attribute}><line x1="0" y1="0" x2="10" y2="0"/></g></svg>`);
+    assert.equal(blocked.status, 'FAIL', attribute);
+    assert.ok(blocked.errors.includes('SVG_UNSUPPORTED_GEOMETRY_PRESENTATION'), attribute);
+  }
+});
+
+function runCanonicalGenerator(t, fact) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-generator-e2e-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  const factPath = path.join(root, `${fact.visualType}.json`);
+  const svgPath = path.join(root, `${fact.visualType}.svg`);
+  const evidencePath = path.join(root, `${fact.visualType}.evidence.json`);
+  fs.writeFileSync(factPath, `${JSON.stringify(fact)}\n`);
+  const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../..');
+  const generatorPath = path.join(repository, 'archive/tools/pipeline-core/generator.py');
+  const result = spawnSync(process.env.APMATH_PYTHON || 'python', ['-X', 'utf8', generatorPath, '--fact', factPath, '--out', svgPath, '--evidence', evidencePath], {
+    cwd: repository,
+    encoding: 'utf8',
+    timeout: 30000,
+    windowsHide: true,
+  });
+  assert.equal(result.status, 0, `${result.stdout || ''}\n${result.stderr || ''}\n${result.error?.message || ''}`);
+  return { svg: fs.readFileSync(svgPath, 'utf8'), witness: JSON.parse(fs.readFileSync(evidencePath, 'utf8')) };
+}
+
+for (const [visualType, semantic] of [
+  ['cartesian', {
+    xMin: -2, xMax: 2, yMin: -1, yMax: 4,
+    branches: [{ id: 'f', formula: 'x**2', points: [{ id: 'L', x: -2, y: 4 }, { id: 'R', x: 2, y: 4 }], leftClosed: true, rightClosed: true }],
+    keyPoints: [{ id: 'V', x: 0, y: 0 }],
+  }],
+  ['geometry', {
+    points: [{ id: 'A', x: 0, y: 0 }, { id: 'B', x: 4, y: 0 }, { id: 'C', x: 4, y: 3 }],
+    circles: [],
+    segments: [{ id: 'AB', start: 'A', end: 'B' }, { id: 'BC', start: 'B', end: 'C' }],
+    relations: [{ from: 'AB', to: 'BC', relation: 'perpendicular' }],
+    scalePolicy: 'EXACT_EQUAL_UNITS',
+  }],
+  ['number-line', {
+    variable: 'x',
+    intervals: [{ left: -1, right: 3, leftClosed: false, rightClosed: true }],
+  }],
+]) test(`canonical generator ${visualType} output passes extractSvgGeometry and verifySvgGeometry`, (t) => {
+  const fact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: `generator-e2e-${visualType}`, visualType, semantic };
+  const { svg, witness } = runCanonicalGenerator(t, fact);
+  assert.match(svg, /<g font-family="Arial, sans-serif">/);
+  assert.equal(witness.generator, 'pipeline-core/generator.py');
+  assert.equal(witness.status, 'BUILD_SIDE_ONLY');
+  const observation = extractSvgGeometry(svg);
+  assert.equal(observation.status, 'OBSERVED', observation.errors.join(', '));
+  assert.deepEqual(observation.errors, []);
+  assert.equal(verifySvgGeometry(fact, observation).status, 'PASS');
+});
+
+test('cartesian artifact verification requires axes, numeric branch samples and point geometry', () => {
+  const fact = { schemaVersion: 'APMATH_VISUAL_FACT_v2', questionUid: 'cartesian-fixture', visualType: 'cartesian', semantic: {
+    xMin: -1, xMax: 1, yMin: -1, yMax: 2,
+    branches: [{ id: 'f', formula: 'x**2', points: [{ id: 'L', x: -1, y: 1 }, { id: 'M', x: 0, y: 0 }, { id: 'R', x: 1, y: 1 }], leftClosed: true, rightClosed: true }], keyPoints: []
+  } };
+  const result = verifySvgGeometry(fact, extractSvgGeometry('<svg xmlns="http://www.w3.org/2000/svg"></svg>'));
+  assert.equal(result.status, 'FAIL');
+  assert.ok(result.errors.includes('SVG_X_AXIS_MISSING'));
+  assert.ok(result.errors.includes('SVG_Y_AXIS_MISSING'));
+  assert.ok(result.errors.includes('SVG_BRANCH_COVERAGE'));
 });
 for (const [name, change] of Object.entries({ negative: f => { f.semantic.maximumIntersection = -1; }, wrongMaximum: f => { f.semantic.maximumIntersection = 24; }, wrongMinimum: f => { f.semantic.minimumIntersection = 0; }, null: f => { f.semantic.aCount = null; }, unknownField: f => { f.semantic.pixelCircle = {}; }, uidType: f => { f.questionUid = 3; } })) test(`strict type/domain: ${name}`, () => {
   const f = fact(); change(f); assert.equal(validateVisualFact(f).status, 'FAIL');

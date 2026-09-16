@@ -44,13 +44,13 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 삼차방정식 $2x^3-mx^2+2x=0$이 서로 다른 세 실근을 갖도록 하는 $10$ 이하의 자연수 $m$의 개수는?",
     "choices": [
+      "$6$",
       "$4$",
       "$5$",
-      "$6$",
       "$7$",
       "$8$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
@@ -100,13 +100,13 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $-1\\leq 3x+2\\leq -x$의 해가 $a\\leq x\\leq b$일 때, $a+b$의 값은? (단, $a$, $b$는 상수이다.)",
     "choices": [
+      "$-\\dfrac{3}{2}$",
       "$-3$",
       "$-2$",
-      "$-\\dfrac{3}{2}$",
       "$-1$",
       "$-\\dfrac{1}{2}$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -496,11 +496,11 @@ window.questionBank = [
     "choices": [
       "$2^{4047}$",
       "$2^{4049}$",
-      "$2^{4051}$",
       "$2^{4053}$",
-      "$2^{4055}$"
+      "$2^{4055}$",
+      "$2^{4051}$"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",

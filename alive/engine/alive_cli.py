@@ -89,6 +89,7 @@ def _lifecycle_runtime_root(args: argparse.Namespace) -> Path:
         "fast": fast_runtime_root_path(root, None),
         "staged": staged_runtime_root_path(root, None),
         "adaptive": adaptive_runtime_root_path(root, None),
+        "universal": _universal_runtime_root(root, None),
     }
     return roots[args.runtime_kind]
 
@@ -1148,6 +1149,8 @@ def command_universal_run_seal(args: argparse.Namespace) -> int:
 
     store = UniversalRunStore(_universal_runtime_root(repository_root(), args.runtime_root))
     result = seal_universal_run(store, args.run)
+    if result.get("status") == "SEALED_LOCAL":
+        result["cleanup"] = _finalize_packaged_run(store.runtime_root, args, store.load(args.run))
     emit(result, args.json)
     return 0
 
@@ -1226,6 +1229,7 @@ def command_universal_high1_finalize(args: argparse.Namespace) -> int:
         },
     )
     sealed = seal_universal_run(store, args.run)
+    cleanup = _finalize_packaged_run(store.runtime_root, args, store.load(args.run))
     emit(
         {
             "runId": args.run,
@@ -1240,6 +1244,7 @@ def command_universal_high1_finalize(args: argparse.Namespace) -> int:
             },
             "closure": closure,
             "publicationStatus": sealed.get("publicationStatus"),
+            "cleanup": cleanup,
         },
         args.json,
     )
@@ -1257,6 +1262,11 @@ def command_universal_bounded_finalize(args: argparse.Namespace) -> int:
         render_evidence_path=Path(args.render_evidence),
         external_findings_path=Path(args.external_findings),
     )
+    if result.get("status") == "SEALED_LOCAL":
+        from .universal_variant_runtime import UniversalRunStore
+
+        store = UniversalRunStore(_universal_runtime_root(root, args.runtime_root))
+        result["cleanup"] = _finalize_packaged_run(store.runtime_root, args, store.load(args.run))
     emit(result, args.json)
     return 0 if result["status"] == "SEALED_LOCAL" else 2
 
@@ -3034,6 +3044,7 @@ def build_parser() -> argparse.ArgumentParser:
     universal_run_seal = commands.add_parser("universal-run-seal")
     universal_run_seal.add_argument("--run", required=True)
     add_common_output(universal_run_seal)
+    add_package_cleanup(universal_run_seal)
     universal_run_seal.set_defaults(func=command_universal_run_seal)
 
     universal_high1_finalize = commands.add_parser("universal-high1-finalize")
@@ -3042,6 +3053,7 @@ def build_parser() -> argparse.ArgumentParser:
     universal_high1_finalize.add_argument("--review-ledger", required=True)
     universal_high1_finalize.add_argument("--external-findings", required=True)
     add_common_output(universal_high1_finalize)
+    add_package_cleanup(universal_high1_finalize)
     universal_high1_finalize.set_defaults(func=command_universal_high1_finalize)
 
     universal_bounded_finalize = commands.add_parser("universal-bounded-finalize")
@@ -3049,13 +3061,14 @@ def build_parser() -> argparse.ArgumentParser:
     universal_bounded_finalize.add_argument("--render-evidence", required=True)
     universal_bounded_finalize.add_argument("--external-findings", required=True)
     add_common_output(universal_bounded_finalize)
+    add_package_cleanup(universal_bounded_finalize)
     universal_bounded_finalize.set_defaults(func=command_universal_bounded_finalize)
 
     runtime_finalize = commands.add_parser("runtime-finalize")
     runtime_finalize.add_argument("--run", required=True)
     runtime_finalize.add_argument(
         "--runtime-kind",
-        choices=("legacy", "fast", "staged", "adaptive"),
+        choices=("legacy", "fast", "staged", "adaptive", "universal"),
         default="adaptive",
     )
     runtime_finalize.add_argument("--result-root")

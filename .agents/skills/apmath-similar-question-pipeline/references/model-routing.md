@@ -14,7 +14,7 @@ The provider bridge is the only new external review launch path:
 | Source, candidate, local repair, STATIC, METADATA, RENDER_CAPTURE | Main worker and deterministic local tooling |
 | provider-preflight | Zero-model control-plane attestation |
 | FINAL_AUDIT | One provider launch over the complete frozen job through sealed U1/U2/U3 contexts |
-| TARGETED_RECHECK | At most one provider launch after local repair, restricted to computed impact |
+| TARGETED_RECHECK | Past Exam: up to three independent provider launches after disposition-bound local repairs, restricted to computed impact; legacy profiles retain their stored allowance |
 | Unchanged axes | Direct-root validated reuse receipt |
 | Whole-job audit, v2 audit, release audit, hashing, packaging | Deterministic local tooling |
 
@@ -26,8 +26,9 @@ cannot become blind by changing a label.
 ## Allowances and escalation
 
 - FINAL_AUDIT is reserved once per work batch.
-- TARGETED_RECHECK is the normal bounded recovery path and may be reserved at
-  most once.
+- TARGETED_RECHECK is the normal bounded recovery path. Past Exam reserves it
+  only after a new disposition-bound freeze and may use at most three
+  iterations; legacy profiles preserve their stored allowance.
 - SECOND_AUDIT is never automatic. It requires explicit authorization and a
   reason of CONFLICT or HIGH_RISK, while sharing the same expensive slot.
 - Provider transport failure, invalid attestation, or unknown state remains

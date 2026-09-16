@@ -1,0 +1,66 @@
+const {chromium}=require(process.env.AP_PLAYWRIGHT_MODULE||'playwright');
+const fs=require('fs'),path=require('path'),assert=require('assert/strict');
+const out=path.resolve(__dirname,'../reports/archive-fast-engine-v2');
+(async()=>{
+ const browser=await chromium.launch({channel:'chrome',headless:true});const results=[];
+ for(const width of [1440,390]){
+  const context=await browser.newContext({viewport:{width,height:1000}});let posts=0;
+  await context.route('**/api/**',async r=>{posts++;await r.fulfill({status:200,contentType:'application/json',body:'{"success":true}'})});
+  await context.addInitScript(()=>localStorage.setItem('APMATH_SESSION',JSON.stringify({session_token:'local-test-only'})));
+  const p=await context.newPage();const errors=[];p.on('pageerror',e=>errors.push(String(e)));
+  const url='http://127.0.0.1:8766/archive/engine.html?data=exams/test-fixtures/render-authority-golden.js&mode=exam&submitQr=1&class=prewarm-test&date=2026-09-10&printDryRun=1';
+  await p.goto(url);
+  await p.waitForFunction(()=>archiveScreenRuntime?.currentSession?.modeSnapshots.sol?.status==='READY'&&archiveScreenRuntime.currentSession.modeSnapshots.ans?.status==='READY',{},{timeout:60000});
+  await p.evaluate(()=>archiveScreenRuntime.whenIdle());
+  const automatic=await p.evaluate(()=>({mode:AppState.mode,active:archiveScreenRuntime.activeSnapshot.mode,metricsMode:__AP_RENDER_METRICS__.mode,foreground:__AP_RENDER_METRICS__.foreground,background:__AP_PREWARM_METRICS__.foreground,afterPaint:archiveScreenRuntime.inspect().attempts.filter(a=>a.metrics?.foreground===false).every(a=>a.metrics.startedAt>=__AP_LAST_VISIBLE_AT__),backgroundAttempts:archiveScreenRuntime.inspect().attempts.filter(a=>a.metrics?.foreground===false).length,count:Object.values(archiveScreenRuntime.currentSession.modeSnapshots).filter(Boolean).length,ledger:__AP_SIDE_EFFECT_LEDGER__.snapshot()}));
+  assert.equal(automatic.mode,'exam');assert.equal(automatic.active,'exam');assert.equal(automatic.metricsMode,'exam');assert.equal(automatic.foreground,true);assert.equal(automatic.background,false);assert.equal(automatic.afterPaint,true);assert.equal(automatic.count,3);
+  assert.equal(automatic.ledger.entries.length,2);assert.equal(posts,2);
+  assert.equal(automatic.backgroundAttempts,2);
+  const switched=await p.evaluate(async()=>{const result=await switchMode('sol');return {ok:result.ok,cache:archiveScreenRuntime.inspect().attempts.at(-1).cacheStatus,math:__AP_RENDER_METRICS__.mathJaxCalls}});
+  assert.deepEqual(switched,{ok:true,cache:'HIT',math:0});
+  await p.goto(url+'&prewarm=0');await p.waitForFunction(()=>archiveScreenRuntime?.activeSnapshot);await p.evaluate(()=>archiveScreenRuntime.whenIdle());
+  await p.waitForFunction(()=>__AP_SIDE_EFFECT_LEDGER__.snapshot().entries.filter(e=>e.state==='ACKNOWLEDGED').length===2);
+  const countBefore=posts;
+  await p.evaluate(()=>{
+   window.originalExecutor=APSolutionRenderExecutor;
+   window.oldRoot=document.getElementById('print-area');window.oldReady=__AP_RENDER_READY__;window.oldMetrics=__AP_RENDER_METRICS__;
+   window.APSolutionRenderExecutor={...originalExecutor,async render(args){window.entered=true;await new Promise(r=>window.releaseBuild=r);return originalExecutor.render(args)}};
+   window.prewarming=archiveScreenRuntime.prewarm('sol');
+  });
+  await p.waitForFunction(()=>window.entered);
+  const during=await p.evaluate(()=>({mode:AppState.mode,root:oldRoot===document.getElementById('print-area'),ready:oldReady===__AP_RENDER_READY__,metrics:oldMetrics===__AP_RENDER_METRICS__}));
+  assert.deepEqual(during,{mode:'exam',root:true,ready:true,metrics:true});assert.equal(posts,countBefore);
+  await p.evaluate(()=>{window.foreground=switchMode('ans');releaseBuild()});
+  const cancelled=await p.evaluate(async()=>{const bg=await prewarming,fg=await foreground;window.APSolutionRenderExecutor=originalExecutor;return {bg:bg.code,fg:fg.ok,mode:AppState.mode,noStale:archiveScreenRuntime.currentSession.modeSnapshots.sol===null,hosts:document.querySelectorAll('[data-archive-build-root],[data-archive-staging]').length}});
+  assert.deepEqual(cancelled,{bg:'DISCARDED_STALE',fg:true,mode:'ans',noStale:true,hosts:0});
+  await p.evaluate(()=>{window.entered=false;window.APSolutionRenderExecutor={...originalExecutor,async render(args){window.entered=true;await new Promise(r=>window.releaseBuild=r);return originalExecutor.render(args)}};window.prewarming=archiveScreenRuntime.prewarm('sol')});
+  await p.waitForFunction(()=>window.entered);
+  await p.evaluate(()=>{window.printing=safePrint('vector');releaseBuild()});
+  const printed=await p.evaluate(async()=>{const bg=await prewarming;await printing;window.APSolutionRenderExecutor=originalExecutor;return {cancelled:bg.code,ready:archiveReadinessTracker.snapshot().ready,mode:AppState.mode}});
+  assert.deepEqual(printed,{cancelled:'DISCARDED_STALE',ready:true,mode:'ans'});
+  assert.equal(posts,countBefore);assert.deepEqual(errors,[]);
+  await p.evaluate(()=>{window.entered=false;window.previousSession=archiveScreenRuntime.currentSession;window.APSolutionRenderExecutor={...originalExecutor,async render(args){window.entered=true;await new Promise(r=>window.releaseBuild=r);return originalExecutor.render(args)}};window.prewarming=archiveScreenRuntime.prewarm('sol')});
+  await p.waitForFunction(()=>window.entered);assert.equal(posts,countBefore);
+  await p.evaluate(()=>{
+   const bank=[{id:1,content:'새 자료 첫 문항',answer:'1',solution:'해설'},{id:2,content:'새 자료 둘째 문항',answer:'2',solution:'해설'}];
+   window.sourceUrl=URL.createObjectURL(new Blob(['window.examTitle="New source";window.questionBank='+JSON.stringify(bank)],{type:'text/javascript'}));
+   window.changing=archiveScreenRuntime.request({type:'SOURCE_CHANGE',payload:{safeDataUrl:sourceUrl,mode:'exam'}});releaseBuild();
+  });
+  const source=await p.evaluate(async()=>{const bg=await prewarming,fg=await changing;window.APSolutionRenderExecutor=originalExecutor;URL.revokeObjectURL(sourceUrl);return {bg:bg.code,fg:fg.ok,newSession:previousSession.sessionId!==archiveScreenRuntime.currentSession.sessionId,retired:previousSession.status,noStale:archiveScreenRuntime.currentSession.modeSnapshots.sol===null}});
+  assert.deepEqual(source,{bg:'DISCARDED_STALE',fg:true,newSession:true,retired:'EVICTED',noStale:true});
+  await p.waitForFunction(()=>__AP_SIDE_EFFECT_LEDGER__.snapshot().entries.filter(e=>e.state==='ACKNOWLEDGED').length===4);
+  assert.equal(posts,countBefore+2);
+  await p.goto(url+'&qr=1');await p.waitForFunction(()=>archiveScreenRuntime?.activeSnapshot);await p.evaluate(()=>archiveScreenRuntime.whenIdle());
+  const locked=await p.evaluate(async()=>{const root=document.getElementById('print-area');const result=await archiveScreenRuntime.prewarm('exam');return {rejected:!result.ok,connected:root.isConnected,mode:AppState.mode,active:archiveScreenRuntime.currentSession.modeSnapshots.sol===archiveScreenRuntime.activeSnapshot,pages:root.querySelectorAll('.page').length}});
+  assert.deepEqual(locked,{rejected:true,connected:true,mode:'sol',active:true,pages:3});
+  const beforeActivation=posts;const solutionUrl=new URL(url);solutionUrl.searchParams.set('mode','sol');
+  await p.goto(solutionUrl.href);await p.waitForFunction(()=>archiveScreenRuntime?.currentSession?.modeSnapshots.exam?.status==='READY');await p.evaluate(()=>archiveScreenRuntime.whenIdle());
+  assert.equal(posts,beforeActivation);
+  const activation=await p.evaluate(async()=>{const result=await switchMode('exam');return {ok:result.ok,cache:archiveScreenRuntime.inspect().attempts.at(-1).cacheStatus}});
+  await p.waitForFunction(()=>__AP_SIDE_EFFECT_LEDGER__.snapshot().entries.filter(e=>e.state==='ACKNOWLEDGED').length===2);
+  assert.deepEqual(activation,{ok:true,cache:'HIT'});assert.equal(posts,beforeActivation+2);
+  results.push({width,automatic,during,cancelled,printed,source,locked,activation,backgroundPosts:0,errors});
+  await context.close();console.log('PASS',width);
+ }
+ fs.writeFileSync(path.join(out,'phase5-browser.json'),JSON.stringify(results,null,2));await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});

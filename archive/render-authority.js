@@ -56,6 +56,24 @@
         ])) || index + 1;
     }
 
+    function reviewSourceIdentity(raw, options) {
+        const reference = text(firstPresent(raw, ['reviewSourceRef'])).trim();
+        if (!reference) return {};
+        const archiveFile = sourceFile(raw, options);
+        const separator = reference.indexOf('#');
+        if (separator <= 0 || separator === reference.length - 1 || reference.slice(0, separator) !== archiveFile) {
+            throw new Error('INVALID_REVIEW_SOURCE_REF');
+        }
+        const sourceQuestionUid = reference.slice(separator + 1).trim();
+        if (!sourceQuestionUid) throw new Error('INVALID_REVIEW_SOURCE_REF');
+        const legacyOrdinal = sourceQuestionUid.match(/#ordinal:(\d+)$/);
+        return {
+            sourceArchiveFile: archiveFile,
+            sourceQuestionUid,
+            ...(legacyOrdinal ? { sourceQuestionOrdinal: Number(legacyOrdinal[1]) } : {})
+        };
+    }
+
     function sourceQuestionNo(raw) {
         const value = firstPresent(raw, [
             'sourceQuestionNo', 'source_question_no', '_sourceQuestionNo',
@@ -97,10 +115,11 @@
         const contract = requireContract();
         normalizerProfile(kind);
         const raw = rawQuestion && typeof rawQuestion === 'object' ? rawQuestion : {};
+        const reviewIdentity = reviewSourceIdentity(raw, options);
         const adapterIdentity = typeof options.resolveSourceRef === 'function'
             ? (options.resolveSourceRef(raw, index) || {})
             : {};
-        const identity = { ...raw, ...adapterIdentity };
+        const identity = { ...raw, ...reviewIdentity, ...adapterIdentity };
         const archiveFile = sourceFile(identity, options);
         const ordinal = sourceOrdinal(identity, index);
         const question = {

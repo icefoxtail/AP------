@@ -9,8 +9,13 @@ import { fileRef, objectSha } from '../canonical.mjs';
 import { profiles, runInputSha } from '../closure.mjs';
 import { requiredAxesForQuestion } from '../projection.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
-import { initWorkBatch, freezeWorkBatch, readWorkBatch } from '../work-batch.mjs';
-import { collectMachineEvidence } from '../machine-evidence.mjs';
+import { initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, readWorkBatch } from '../work-batch.mjs';
+import { collectMachineEvidence, isChoicesContractValid } from '../machine-evidence.mjs';
+import { validateCurriculumBinding, validateStudentSerialization } from '../student-output.mjs';
+import { validateEvidenceFreshness, validateMachineEvidence, validateTypedEvidence } from '../review-evidence-v2.mjs';
+import { validateSchema } from '../schema.mjs';
+
+const evidenceContract = JSON.parse(fs.readFileSync(new URL('../contracts/evidence-v2.schema.json', import.meta.url), 'utf8'));
 
 const write = (root, relative, value) => {
   const file = path.join(root, relative);
@@ -19,17 +24,20 @@ const write = (root, relative, value) => {
   return fileRef(root, relative);
 };
 
-function fixture(t) {
+function fixture(t, options = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'apmath-machine-evidence-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const uid = 'synthetic|1';
   const bank = q => `window.examTitle="synthetic";window.questionBank=${JSON.stringify([q])};`;
-  const q = { id: 1, content: '2+2를 계산한다.', choices: ['3', '4'], answer: '2', solution: '2+2=4이다.' };
+  const q = options.imageOnly
+    ? { id: 1, content: '그림 속 보기를 보고 정답을 고른다.', answer: '2', solution: '그림 속 ②가 정답이다.', questionType: '객관식', image: 'assets/images/synthetic/q001.png', tags: ['객관식', '통이미지보기'], standardCourse: 'synthetic', standardUnitKey: 'SYN-01', standardUnit: 'Synthetic', standardUnitOrder: 1, subUnitKey: 'SYN-01-CORE', subUnit: 'Synthetic', layoutTag: 'grid', wide: false }
+    : { id: 1, content: '2+2를 계산한다.', choices: ['3', '4'], answer: '2', solution: options.invalidSerialization ? '$x ge 0$' : '2+2=4이다.' };
   const sourceRef = { ...write(root, 'source.js', bank(q)), role: 'source' };
   const candidateRef = { ...write(root, 'candidate.js', bank(q)), role: 'candidate' };
+  const assetRef = options.imageOnly ? { ...write(root, q.image, 'synthetic image bytes'), role: 'asset' } : null;
   initWorkBatch(root, { workBatchId: 'job', runIds: ['run'], builderId: 'builder', builderSessionId: 'builder-session' });
-  const question = { questionUid: uid, sourceExamId: 'synthetic', sourceQuestionOrdinal: 1, examId: 'synthetic', sourcePath: sourceRef.path, candidatePath: candidateRef.path, qid: 1, requiredAxes: [], axisInputShas: {}, evidence: {}, visual: { requirement: 'VISUAL_EXEMPT', action: 'NONE', adjudicationId: 'synthetic-r1', adjudicationStatus: 'RESOLVED', exemptReason: 'NO_VISUAL_NEEDED', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false }, problemAssetPaths: [], solutionAssetPaths: [] };
-  const run = { schemaVersion: 'APMATH_PIPELINE_RUN_v2', pipeline: 'tag-enrichment', runId: 'run', revision: 1, workBatchId: 'job', builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', inputSha: null, inputs: [sourceRef, candidateRef], evidence: [], questions: [question] };
+  const question = { questionUid: uid, sourceExamId: 'synthetic', sourceQuestionOrdinal: 1, examId: 'synthetic', sourcePath: sourceRef.path, candidatePath: candidateRef.path, qid: 1, requiredAxes: [], axisInputShas: {}, evidence: {}, visual: { requirement: 'VISUAL_EXEMPT', action: 'NONE', adjudicationId: 'synthetic-r1', adjudicationStatus: 'RESOLVED', exemptReason: 'NO_VISUAL_NEEDED', actualSolutionVisualAttached: false, problemVisualMathDependency: false, sharedVisualMathDependency: false }, problemAssetPaths: assetRef ? [assetRef.path] : [], solutionAssetPaths: [] };
+  const run = { schemaVersion: 'APMATH_PIPELINE_RUN_v2', pipeline: 'tag-enrichment', runId: 'run', revision: 1, workBatchId: 'job', builderId: 'builder', builderSessionId: 'builder-session', builderModelOrAgent: 'SYNTHETIC_TEST_ONLY', inputSha: null, inputs: [sourceRef, candidateRef, ...(assetRef ? [assetRef] : [])], evidence: [], questions: [question] };
   question.requiredAxes = requiredAxesForQuestion(profiles.pipelines[run.pipeline], question, run);
   run.inputSha = runInputSha(run);
   question.axisInputShas = computeV2AxisInputShas(root, run)[uid];
@@ -45,6 +53,43 @@ function fixture(t) {
   return { root, run, runRef, bridged, writeRun };
 }
 
+test('choices contract keeps normal objective arrays valid', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: ['1', '2', '3', '4', '5'] }), true);
+});
+
+test('choices contract accepts an image-only objective with omitted choices', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식', image: 'assets/images/exam/q001.png', tags: ['객관식', '통이미지보기'] }), true);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', image: 'assets/images/exam/q001.png', tags: ['객관식', '통이미지보기'], choices: [] }), true);
+});
+
+test('choices contract rejects a non-array choices field', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: '1,2,3,4,5' }), false);
+});
+
+test('choices contract rejects unjustified objective choices omission', () => {
+  assert.equal(isChoicesContractValid({ questionType: '객관식' }), false);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', image: 'assets/images/exam/q001.png', tags: ['객관식'] }), false);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: [] }), false);
+});
+
+test('constructed responses with empty choices are valid while image-only objective omission stays explicit', () => {
+  assert.equal(isChoicesContractValid({ questionType: '서술형', choices: [] }), true);
+  assert.equal(isChoicesContractValid({ questionType: '단답형', choices: [] }), true);
+  assert.equal(isChoicesContractValid({ questionType: '객관식', choices: [] }), false);
+});
+
+test('serialization and curriculum defects are deterministic machine findings', () => {
+  assert.equal(validateStudentSerialization({ solution: '$x ge 0$, $a cdot b$' }).status, 'FAIL');
+  assert.equal(validateStudentSerialization({ solution: '$x \\ge 0$, $a \\cdot b$' }).status, 'PASS');
+  const highSchool = (standardUnitKey, examId, standardCourse) => validateCurriculumBinding({ standardCourse, standardUnitKey, standardUnit: '이차방정식과 이차함수' }, { examId });
+  assert.equal(highSchool('H99-XXX-01', '26_금당고_1학기_기말_고1_기출', '공통수학1').status, 'FAIL');
+  assert.equal(highSchool('garbage-key', '26_금당고_1학기_기말_고1_기출', '공통수학1').status, 'FAIL');
+  assert.equal(highSchool('H22-C-05', '26_금당고_1학기_기말_고1_기출', '공통수학1').status, 'PASS');
+  assert.equal(highSchool('H15-SA-05', '20_금당고_1학기_기말_고1_기출', '수학(상)').status, 'PASS');
+  assert.equal(highSchool('H22-C-05', '20_금당고_1학기_기말_고1_기출', '공통수학1').status, 'FAIL');
+  assert.equal(validateCurriculumBinding({ standardCourse: '중1', standardUnitKey: 'M1-01', standardUnit: '중학교 단원' }, { examId: '26_금당중_1학기_기말_중1_기출' }).status, 'PASS');
+});
+
 test('machine bridge creates current STATIC and METADATA evidence and freeze succeeds', t => {
   const f = fixture(t);
   const out = f.bridged();
@@ -54,6 +99,115 @@ test('machine bridge creates current STATIC and METADATA evidence and freeze suc
   const state = freezeWorkBatch(f.root, 'job', [out.ref]);
   assert.equal(state.status, 'FROZEN');
   assert.equal(readWorkBatch(f.root, 'job').freezes.length, 1);
+});
+
+test('aggregate RENDER_CAPTURE evidence keeps freeze preAudit JSON-canonical and FINAL_AUDIT-ready', t => {
+  const f = fixture(t);
+  const out = f.bridged();
+  const capture = {
+    schemaVersion: 'APMATH_PIPELINE_EVIDENCE_v2',
+    evidenceId: 'aggregate-render-capture',
+    runId: out.run.runId,
+    revision: out.run.revision,
+    axis: 'RENDER_CAPTURE',
+    inputSha: out.run.inputSha,
+    mode: 'MACHINE_CURRENT',
+    auditorPrincipalType: 'MACHINE_COLLECTOR',
+    status: 'PASS',
+    validityStatus: 'FROZEN',
+    payload: { itemWitnesses: [] },
+  };
+  const captureRef = write(f.root, 'evidence/aggregate-render-capture.json', capture);
+  const runRef = f.writeRun({ ...out.run, evidence: [...out.run.evidence, captureRef] });
+  const state = freezeWorkBatch(f.root, 'job', [runRef]);
+  const evidence = state.freezes[0].bindings[0].preAudit.machineEvidence.at(-1);
+  assert.equal(evidence.axis, 'RENDER_CAPTURE');
+  assert.equal(evidence.questionUid, null);
+  assert.equal(readWorkBatch(f.root, 'job').freezes[0].freezeSha, state.freezes[0].freezeSha);
+  const reserved = reserveWorkBatchReview(f.root, 'job', {
+    purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session',
+    parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false,
+    contexts: { U1: { sessionId: 'u1-session', contextId: 'u1-context' }, U2: { sessionId: 'u2-session', contextId: 'u2-context' }, U3: { sessionId: 'u3-session', contextId: 'u3-context' } },
+  });
+  assert.equal(reserved.launches[0].purpose, 'FINAL_AUDIT');
+});
+
+test('STATIC studentSerialization is required by both schema and typed validation', t => {
+  const f = fixture(t);
+  const out = f.bridged();
+  const staticEvidenceRef = out.run.evidence.find(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8')).axis === 'STATIC');
+  const staticEvidence = JSON.parse(fs.readFileSync(path.join(f.root, staticEvidenceRef.path), 'utf8'));
+  delete staticEvidence.payload.checks.studentSerialization;
+  assert.ok(validateSchema(staticEvidence, evidenceContract).length > 0);
+  assert.ok(validateTypedEvidence(staticEvidence, { diagnostic: true }).includes('TYPED_STATIC:checks.studentSerialization'));
+});
+
+test('studentSerialization FAIL remains diagnostic/final-audit-continuable but blocks final closure', t => {
+  const f = fixture(t, { invalidSerialization: true });
+  const out = f.bridged();
+  const staticEvidence = out.run.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).find(evidence => evidence.axis === 'STATIC');
+  assert.equal(staticEvidence.status, 'FAIL');
+  assert.equal(staticEvidence.payload.checks.studentSerialization, 'FAIL');
+  assert.deepEqual(validateTypedEvidence(staticEvidence, { diagnostic: true }), []);
+  assert.ok(validateTypedEvidence(staticEvidence).includes('TYPED_STATIC:checks.studentSerialization'));
+  assert.deepEqual(validateMachineEvidence(staticEvidence, f.run, { diagnostic: true }), []);
+  assert.equal(freezeWorkBatch(f.root, 'job', [out.ref]).status, 'FROZEN');
+  const reserved = reserveWorkBatchReview(f.root, 'job', {
+    purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session',
+    parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false,
+    contexts: { U1: { sessionId: 'u1-session', contextId: 'u1-context' }, U2: { sessionId: 'u2-session', contextId: 'u2-context' }, U3: { sessionId: 'u3-session', contextId: 'u3-context' } },
+  });
+  assert.equal(reserved.launches[0].purpose, 'FINAL_AUDIT');
+  const finalFreshness = validateEvidenceFreshness(staticEvidence, { currentRunInputSha: f.run.inputSha, currentAxisInputSha: staticEvidence.axisInputSha });
+  assert.equal(finalFreshness.status, 'BLOCKED');
+  assert.ok(finalFreshness.errors.includes('EVIDENCE_NOT_PASS'));
+});
+
+test('studentSerialization HOLD is accepted only by diagnostic machine evidence validation', t => {
+  const f = fixture(t);
+  const out = f.bridged();
+  const passEvidence = out.run.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).find(evidence => evidence.axis === 'STATIC');
+  const holdEvidence = structuredClone(passEvidence);
+  holdEvidence.status = 'HOLD';
+  holdEvidence.payload.checks.studentSerialization = 'HOLD';
+  assert.deepEqual(validateTypedEvidence(holdEvidence, { diagnostic: true }), []);
+  assert.deepEqual(validateMachineEvidence(holdEvidence, f.run, { diagnostic: true }), []);
+  assert.ok(validateTypedEvidence(holdEvidence).includes('TYPED_STATIC:checks.studentSerialization'));
+  const finalFreshness = validateEvidenceFreshness(holdEvidence, { currentRunInputSha: f.run.inputSha, currentAxisInputSha: holdEvidence.axisInputSha });
+  assert.equal(finalFreshness.status, 'BLOCKED');
+  assert.ok(finalFreshness.errors.includes('EVIDENCE_NOT_PASS'));
+});
+
+test('candidate quality failure is preserved as diagnostic evidence and does not prevent freeze', t => {
+  const f = fixture(t);
+  const source = fs.readFileSync(path.join(f.root, 'candidate.js'), 'utf8');
+  const questions = JSON.parse(source.match(/window\.questionBank=(.*);\s*$/s)[1]);
+  questions[0].content = '';
+  fs.writeFileSync(path.join(f.root, 'candidate.js'), `window.examTitle="synthetic";window.questionBank=${JSON.stringify(questions)};`);
+  f.run.inputs = f.run.inputs.map(ref => ref.path === 'candidate.js' ? { ...fileRef(f.root, 'candidate.js'), role: 'candidate' } : ref);
+  f.run.inputSha = runInputSha(f.run);
+  f.run.questions[0].axisInputShas = computeV2AxisInputShas(f.root, f.run)[f.run.questions[0].questionUid];
+  const runRef = f.writeRun(f.run);
+  const result = collectMachineEvidence(f.root, runRef.path, { manifestOut: 'diagnostic.machine.json', evidenceDir: 'evidence/diagnostic' });
+  const machine = JSON.parse(fs.readFileSync(path.join(f.root, result.manifestRef.path), 'utf8'));
+  const staticEvidence = machine.evidence.map(ref => JSON.parse(fs.readFileSync(path.join(f.root, ref.path), 'utf8'))).find(e => e.axis === 'STATIC');
+  assert.equal(staticEvidence.status, 'FAIL');
+  assert.ok(staticEvidence.findings.some(finding => finding.code === 'MACHINE_CHECK_FAILED:STATIC:schema'));
+  assert.equal(freezeWorkBatch(f.root, 'job', [result.manifestRef]).status, 'FROZEN');
+  const reserved = reserveWorkBatchReview(f.root, 'job', {
+    purpose: 'FINAL_AUDIT', callerRole: 'MAIN_WORKER', auditorId: 'auditor', auditorSessionId: 'auditor-session',
+    parentLaunchId: null, recursiveSubagentLaunchCount: 0, contextIsolation: 'STATELESS_INPUTS', subagentToolsEnabled: false,
+    contexts: { U1: { sessionId: 'u1-session', contextId: 'u1-context' }, U2: { sessionId: 'u2-session', contextId: 'u2-context' }, U3: { sessionId: 'u3-session', contextId: 'u3-context' } }
+  });
+  assert.equal(reserved.launches[0].purpose, 'FINAL_AUDIT');
+});
+
+test('image-only objective machine bridge and freeze succeed without choices', t => {
+  const f = fixture(t, { imageOnly: true });
+  const out = f.bridged();
+  assert.equal(out.result.status, 'MACHINE_EVIDENCE_READY');
+  assert.equal(out.result.machineEvidenceCount, 2);
+  assert.equal(freezeWorkBatch(f.root, 'job', [out.ref]).status, 'FROZEN');
 });
 
 test('machine-checks CLI emits a manifest usable by work-batch-freeze', t => {

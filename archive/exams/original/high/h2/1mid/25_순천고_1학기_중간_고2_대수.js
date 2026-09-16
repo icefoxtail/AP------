@@ -145,6 +145,11 @@ window.questionBank = [
   },
   {
     "id": 5,
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q5-solution.svg",
+    "solutionImageAlt": "25_suncheon_q5_exp_shift_graph",
+    "solutionImageCaption": "exp_shift_graph",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y=2^{x-a}+b$의 그래프가 다음 그림과 같을 때, $ab$의 값은? (단, a, b는 상수이고 점선은 그래프의 점근선이다.) (3.5점)<br><div class='flex justify-center my-4'><svg width='280' height='220' viewBox='-100 -160 320 230' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrowhead' markerWidth='10' markerHeight='7' refX='0' refY='3.5' orient='auto'><polygon points='0 0, 10 3.5, 0 7' fill='#000'/></marker></defs><line x1='-90' y1='0' x2='200' y2='0' stroke='#000' stroke-width='1.2' marker-end='url(#arrowhead)'/><line x1='0' y1='60' x2='0' y2='-140' stroke='#000' stroke-width='1.2' marker-end='url(#arrowhead)'/><line x1='-90' y1='50' x2='200' y2='50' stroke='#000' stroke-width='1' stroke-dasharray='4 3'/><path d='M -100 48 Q -20 48 0 -50 T 25 -155' fill='none' stroke='#000' stroke-width='1.8'/><text x='190' y='18' font-family='serif' font-style='italic' font-size='14'>x</text><text x='-20' y='-130' font-family='serif' font-style='italic' font-size='14'>y</text><text x='8' y='-45' font-family='serif' font-size='14'>2</text><text x='8' y='68' font-family='serif' font-size='14'>-2</text><text x='-18' y='18' font-family='serif' font-size='14'>O</text></svg></div>",
     "choices": [
       "4",
@@ -289,6 +294,11 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "25_suncheon_q9_log_inverse",
+    "solutionImageCaption": "log_inverse",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y=\\log_3(x-1)$의 그래프의 특징에 대한 설명으로 옳은 것은? (3.8점)",
     "choices": [
       "점 $(1,\\,0)$을 지난다.",
@@ -433,6 +443,11 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "25_suncheon_q13_sector_annulus",
+    "solutionImageCaption": "sector_annulus",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "아래 그림과 같은 두 부채꼴 AOB, COD에 대하여 $\\overset{\\frown}{\\text{AB}}=2\\pi$, $\\overset{\\frown}{\\text{CD}}=\\frac{4}{3}\\pi$이다. 색칠한 부분의 넓이가 $5\\pi$일 때, $\\angle\\text{AOB}$의 크기는? (4.3점)<br><div class='flex justify-center my-4'><svg width='200' height='180' viewBox='0 0 200 180' xmlns='http://www.w3.org/2000/svg'><path d='M 100 160 L 170 48 A 140 140 0 0 0 30 48 Z' fill='none' stroke='#000' stroke-width='1.5'/><path d='M 147 85 A 93 93 0 0 0 53 85 L 30 48 A 140 140 0 0 0 170 48 Z' fill='gray' fill-opacity='0.2'/><path d='M 147 85 A 93 93 0 0 0 53 85' fill='none' stroke='#000' stroke-width='1.5'/><text x='95' y='175' font-family='serif' font-size='14'>O</text><text x='175' y='45' font-family='serif' font-size='14'>A</text><text x='15' y='45' font-family='serif' font-size='14'>B</text><text x='152' y='90' font-family='serif' font-size='14'>C</text><text x='38' y='90' font-family='serif' font-size='14'>D</text></svg></div>",
     "choices": [
       "$\\frac{\\pi}{9}$",
@@ -811,6 +826,11 @@ window.questionBank = [
   },
   {
     "id": 24,
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q24-solution.svg",
+    "solutionImageAlt": "25_suncheon_q24_inverse_graph",
+    "solutionImageCaption": "inverse_line",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "아래 그림과 같이 함수 $y=a^{x-2}$, 함수 $y=\\log_a(x-2)$의 그래프와 함수 $y=-x+6$의 그래프의 교점을 각각 A, B라 하고 $y=-x+6$과 $y$축의 교점을 C라 하면 $\\overline{\\text{AB}}:\\overline{\\text{AC}}=2:3$이다. 이때 $a$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. (단, $a \\gt 1$) (6점)<br><div class='flex justify-center my-4'><svg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='200' x2='220' y2='200' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='210' x2='40' y2='20' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='50' x2='190' y2='200' stroke='black' stroke-width='1.5'/><path d='M 42 198 Q 100 195 115 125 C 122 80 125 40 128 15' fill='none' stroke='#000' stroke-width='1.8'/><path d='M 92 230 Q 95 185 165 175 C 205 170 230 165 245 162' fill='none' stroke='#000' stroke-width='1.8'/><circle cx='40' cy='50' r='2.5' fill='black'/><text x='20' y='55' font-size='14' font-family='serif' font-style='italic'>C</text><circle cx='115' cy='125' r='2.5' fill='black'/><text x='102' y='120' font-size='14' font-family='serif' font-style='italic'>A</text><circle cx='165' cy='175' r='2.5' fill='black'/><text x='170' y='170' font-size='14' font-family='serif' font-style='italic'>B</text><text x='225' y='215' font-size='13' font-family='serif' font-style='italic'>x</text><text x='20' y='25' font-size='13' font-family='serif' font-style='italic'>y</text><text x='20' y='215' font-size='14' font-family='serif' font-style='italic'>O</text></svg></div>",
     "choices": [],
     "answer": "3",

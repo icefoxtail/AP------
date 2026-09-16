@@ -166,7 +166,6 @@ window.questionBank = [
     "solution": "[키포인트] 직선 $y=x$에 대한 대칭이동으로 꺾인 거리의 합을 직선거리로 바꾼다.\\n점 $A(5,3)$을 직선 $y=x$에 대하여 대칭이동한 점을 $A'(3,5)$라 하자. $P$가 $y=x$ 위에 있으므로 $PA=PA'$이다.\\n따라서 $PA+PB=PA'+PB$이고, 이는 $A'$, $P$, $B$가 한 직선 위에 있을 때 최소이다.\\n최솟값은 $A'B=\\sqrt{(8-3)^2+(2-5)^2}=\\sqrt{34}$이다.\\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q06-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 6의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -192,7 +191,6 @@ window.questionBank = [
     "solution": "[키포인트] 직선을 대칭이동한 뒤, 중심에서 대칭 직선까지의 거리를 원의 반지름과 비교한다.\n\n직선 $x-2y=9$를 직선 $y=x$에 대하여 대칭이동하면 $x$와 $y$가 서로 바뀌므로\n$y-2x=9$, 즉 $2x-y+9=0$이다.\n\n원의 중심은 $(3,-5)$이다. 중심에서 이 직선까지의 거리는\n$\\dfrac{|2\\cdot3-(-5)+9|}{\\sqrt{2^2+(-1)^2}} =\\dfrac{20}{\\sqrt5}=4\\sqrt5$이다.\n\n원의 방정식이 $(x-3)^2+(y+5)^2=k^2$이므로 반지름은 $|k|$이다. 접하려면\n$|k|=4\\sqrt5$이어야 하므로\n$k=4\\sqrt5$ 또는 $k=-4\\sqrt5$이다.\n\n따라서 가능한 값은 ⑤의 $\\pm4\\sqrt5$이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q07-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -227,7 +225,6 @@ window.questionBank = [
     "solution": "[키포인트] 좌표를 설정하고 내분점의 좌표를 구한다.\\n$A=(0,0)$, $B=(8,0)$으로 두고 $C=(u,v)$라 하자. $AC=4$, $BC=4\\sqrt3$이므로 $u^2+v^2=16$, $(u-8)^2+v^2=48$이다.\\n두 식을 빼면 $-16u+64=32$이므로 $u=2$, 따라서 $v^2=12$이다.\\n$AP:PB=3:1$이므로 $P=(6,0)$이다. 따라서 $CP^2=(6-2)^2+v^2=16+12=28$이다.\\n그러므로 $CP=2\\sqrt7m$이다.\\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q08-solution.svg",
     "solutionImageAlt": "평면좌표 문항 8의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -245,7 +242,12 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "tags": [],
+    "tags": [
+      "평면좌표",
+      "무게중심",
+      "내분점",
+      "도형"
+    ],
     "wide": false,
     "content": "삼각형 $ABC$에서 변 $BC$의 중점 $M$의 좌표는 $(3,7)$, 삼각형 $ABC$의 무게중심 $G$의 좌표는 $(6,4)$이다. 점 $A$의 좌표 $(a,b)$는?",
     "choices": [
@@ -256,7 +258,11 @@ window.questionBank = [
       "$(12,2)$"
     ],
     "answer": "①",
-    "solution": "삼각형의 무게중심은 꼭짓점 $A$와 변 $BC$의 중점 $M$을 잇는 중선 위에서\n$AG:GM=2:1$을 만족한다. 좌표식으로 쓰면\n$G=\\dfrac{A+2M}{3}$이다.\n\n따라서\n$A=3G-2M=3(6,4)-2(3,7)=(18,12)-(6,14)=(12,-2)$이다.\n\n그러므로 점 $A$의 좌표는 $(12,-2)$이고 정답은 ①이다.",
+    "solution": "삼각형의 무게중심은 꼭짓점 $A$와 변 $BC$의 중점 $M$을 잇는 중선 위에 있고, $AG:GM=2:1$이다. 따라서 점 $G$는 선분 $AM$을 $2:1$로 내분한다.\n\n$x$좌표에 내분공식을 적용하면\n$6=\\dfrac{x_A+2\\cdot3}{3}$이므로 $x_A=12$이다.\n$y$좌표에 내분공식을 적용하면\n$4=\\dfrac{y_A+2\\cdot7}{3}$이므로 $y_A=-2$이다.\n\n따라서 점 $A$의 좌표는 $(12,-2)$이고 정답은 ①이다.",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q09-solution.svg",
+    "solutionImageAlt": "중선 AM 위의 A, G, M의 순서와 AG:GM=2:1을 나타낸 좌표평면",
+    "solutionImageCaption": "A-G-M의 순서, G(6,4), M(3,7), AG:GM=2:1에서 A(12,-2)를 좌표별로 구한다.",
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -374,7 +380,7 @@ window.questionBank = [
     "standardUnit": "직선의 방정식",
     "standardUnitOrder": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형",
       "직선",
@@ -461,7 +467,6 @@ window.questionBank = [
     "solution": "[키포인트] 원의 중심이 옮겨진 좌표를 확인하고, 같은 좌표 변화를 직선에 적용한다.\n첫째 원은 $(x-2)^2+(y+1)^2=4$이므로 중심은 $(2,-1)$이고, 옮겨진 원 $x^2+y^2=4$의 중심은 $(0,0)$이다. 따라서 x방향으로 2만큼 왼쪽, y방향으로 1만큼 위로 옮긴 것이다.\n\n직선 $l:3x-y+4=0$ 위의 점 $(x,y)$가 이 이동으로 $(X,Y)$가 되면 $X=x-2$, $Y=y+1$이므로 $x=X+2$, $y=Y-1$이다. 이를 원래 직선의 식에 대입하면\n$3(X+2)-(Y-1)+4=0$, 즉 $3X-Y+11=0$이다. 따라서 옮겨진 직선은 $l':3x-y+11=0$이다.\n\n두 직선은 평행하므로 두 직선 사이의 거리는 $\\dfrac{|11-4|}{\\sqrt{3^2+(-1)^2}}=\\dfrac7{\\sqrt{10}}$이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q15-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -557,7 +562,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q18-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
                     {

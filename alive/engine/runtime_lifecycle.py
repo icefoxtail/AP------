@@ -3,9 +3,10 @@ from __future__ import annotations
 """Lifecycle management for ALIVE's generated runtime artifacts.
 
 Run directories are useful while a run is active, but they are not durable
-project artifacts.  This module promotes the small, reviewable result surface
-to ``alive/runtime/results`` and moves the verbose working directory outside
-the repository.  Held and active runs are deliberately protected.
+project artifacts. This module promotes the small, reviewable result surface
+to ``alive/runtime/results`` and removes successful verbose workdirs. Failed
+runs move to an OS quarantine for bounded debugging retention. Held and active
+runs are deliberately protected.
 """
 
 import json
@@ -22,12 +23,12 @@ from .run_store import atomic_write_json, sha256_file, utc_now
 
 RUN_ID_RE = re.compile(r"[0-9A-Za-z가-힣._-]+")
 TERMINAL_STATUSES = frozenset(
-    {"FAILED", "DRAFT_PACKAGED", "RENDERED_PACKAGED", "AUTO_READY"}
+    {"FAILED", "DRAFT_PACKAGED", "RENDERED_PACKAGED", "AUTO_READY", "SEALED_LOCAL"}
 )
 HELD_STATUSES = frozenset(
     {"READY_FOR_MANUAL_REVIEW", "MANUAL_REVIEW_REQUIRED", "ROUND1_GENERATING"}
 )
-KNOWN_RUNTIME_ROOTS = ("runs", "fast-runs", "staged-runs", "adaptive-staged-runs")
+KNOWN_RUNTIME_ROOTS = ("runs", "fast-runs", "staged-runs", "adaptive-staged-runs", "universal-runs")
 
 
 class RuntimeLifecycleError(ValueError):
@@ -96,6 +97,7 @@ def _package_source(run_dir: Path) -> Path | None:
     preferred = (
         run_dir / "final" / "alive-staged-exam-pack.zip",
         run_dir / "final" / "alive-fast-exam-pack.zip",
+        run_dir / "final" / "universal-run-package.zip",
     )
     existing = [path for path in preferred if path.is_file()]
     if len(existing) == 1:
@@ -244,7 +246,11 @@ def finalize_run(
     package_name: str | None = None
     if package_source:
         package_report = manifest.get("package")
-        expected = package_report.get("zipSha256") if isinstance(package_report, dict) else None
+        expected = (
+            (package_report.get("zipSha256") or package_report.get("sha256"))
+            if isinstance(package_report, dict)
+            else None
+        )
         package_sha256 = _verify_package(package_source, expected)
         package_name = f"{run_id}.zip"
         package_destination = result_root / package_name
@@ -268,12 +274,18 @@ def finalize_run(
     atomic_write_json(summary_path, summary)
 
     if move_workdir:
-        quarantine_root.mkdir(parents=True, exist_ok=True)
-        quarantine_target = quarantine_root / run_id
-        if quarantine_target.exists():
-            raise RuntimeLifecycleError(f"quarantine target already exists: {quarantine_target}")
-        shutil.move(str(run_dir), str(quarantine_target))
-        summary["cleanup"]["status"] = "MOVED"
+        retain_debug = status == "FAILED" or (status == "BLOCKED" and allow_blocked)
+        if retain_debug:
+            quarantine_root.mkdir(parents=True, exist_ok=True)
+            quarantine_target = quarantine_root / run_id
+            if quarantine_target.exists():
+                raise RuntimeLifecycleError(f"quarantine target already exists: {quarantine_target}")
+            shutil.move(str(run_dir), str(quarantine_target))
+            summary["cleanup"]["status"] = "MOVED"
+        else:
+            shutil.rmtree(run_dir)
+            summary["cleanup"]["status"] = "REMOVED"
+            summary["cleanup"]["quarantineRunId"] = None
         atomic_write_json(summary_path, summary)
     return summary
 

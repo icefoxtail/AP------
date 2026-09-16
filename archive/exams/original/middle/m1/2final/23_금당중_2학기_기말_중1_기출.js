@@ -134,22 +134,22 @@ window.questionBank = [
     "[서술형1] 집에서 6km 떨어진 학교 운동장까지 진수는 자전거를 타고 가고, 영서는 걸어가기로 했다. 다음 그림은 두 사람이 동시에 출발하여 $x$분 동안 이동한 거리를 $y$m라 할 때, $x$와 $y$ 사이의 관계를 나타낸 그래프이다. 진수가 학교 운동장에 도착한 지 몇 분 후에 영서가 도착하는지를 다음 <조건>에 맞추어 서술하시오. (5점)<br><div class=\"question-note-box\"><b>&lt;조건&gt;</b><br>진수와 영서의 $x$와 $y$ 사이의 관계식과 도착하는 시간을 각각 구하여 풀이 과정에 포함하여 서술할 것</div>",
     [], "60분",
     "[키포인트] 학교까지의 거리를 그래프의 세로축 단위인 m로 바꾸고, 각 직선의 기울기에서 1분 동안 이동하는 거리를 구한다.<br><br>[정석 풀이] $6\\mathrm{km}=6000\\mathrm{m}$이다. 그래프에서 진수의 직선은 $(3,1200)$을 지나므로 관계식은 $y=400x$이다. $6000=400x$에서 진수의 도착 시간은 $15$분이다. 영서의 직선은 $(3,240)$을 지나므로 관계식은 $y=80x$이다. $6000=80x$에서 영서의 도착 시간은 $75$분이다. 따라서 영서는 진수가 도착한 뒤 $75-15=60$분 후에 도착한다.<br><br>[결론] 영서는 진수가 도착한 지 60분 후에 도착한다.",
-    { wide: true, layoutTag: "fullwidth", image: "assets/images/23_금당중_2학기_기말_중1_기출/q21.png", imageSize: "medium", visualAssetStatus: "ready", subUnitKey: "M1-04-COORDINATE_PLANE", subUnit: "정비례와 그래프", tags: ["그래프", "관계식"] }),
+    { wide: false, layoutTag: "subjective-2up", image: "assets/images/23_금당중_2학기_기말_중1_기출/q21.png", imageSize: "medium", visualAssetStatus: "ready", subUnitKey: "M1-04-COORDINATE_PLANE", subUnit: "정비례와 그래프", tags: ["그래프", "관계식"] }),
   q(22, "M1-06", "평면도형의 성질", "중", "서술형",
     "[서술형2] 오른쪽 그림에서 $\\angle x$의 크기를 구하시오. (4점)",
     [], "$60^\\circ$",
     "[키포인트] 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같다.<br><br>[정석 풀이] 그림에서 왼쪽 내각은 $(x-30)^\\circ$, 오른쪽 아래 내각은 $80^\\circ$, 위 꼭짓점의 외각은 $(2x-10)^\\circ$이다. 따라서 $(x-30)+80=2x-10$이다. 정리하면 $x+50=2x-10$이므로 $x=60$이다.<br><br>[결론] $\\angle x=60^\\circ$이다.",
-    { wide: true, layoutTag: "fullwidth", image: "assets/images/23_금당중_2학기_기말_중1_기출/q22.png", imageSize: "medium", visualAssetStatus: "ready", subUnitKey: "M1-06-POLYGON_CIRCLE", subUnit: "각의 성질", tags: ["각", "외각"] }),
+    { wide: false, layoutTag: "subjective-2up", image: "assets/images/23_금당중_2학기_기말_중1_기출/q22.png", imageSize: "medium", visualAssetStatus: "ready", subUnitKey: "M1-06-POLYGON_CIRCLE", subUnit: "각의 성질", tags: ["각", "외각"] }),
   q(23, "M1-06", "평면도형의 성질", "중", "서술형",
     "[서술형3] 한 내각의 크기와 한 외각의 크기의 비가 $7:2$인 정다각형의 대각선의 개수를 구하고자 한다. 다음 물음에 답하시오. (5점)<br>(1) 한 내각의 크기와 한 외각의 크기의 비가 $7:2$인 정다각형을 구하시오. (3점)<br>(2) 이 정다각형의 대각선의 개수를 구하시오. (2점)",
     [], "(1) 정구각형 (2) 27개",
     "[키포인트] 정다각형의 한 내각과 이웃한 한 외각의 합은 $180^\\circ$이다.<br><br>[정석 풀이] 내각과 외각을 각각 $7k,2k$라 하면 $7k+2k=180^\\circ$이므로 $k=20^\\circ$이다. 한 외각은 $40^\\circ$이고, 정다각형의 변의 수는 $360^\\circ\\div40^\\circ=9$이다. 따라서 정구각형이다. 대각선의 개수는 $\\dfrac{9(9-3)}{2}=27$개이다.<br><br>[결론] (1) 정구각형, (2) 27개이다.",
-    { wide: true, layoutTag: "fullwidth", subUnitKey: "M1-06-POLYGON_CIRCLE", subUnit: "정다각형", tags: ["다각형", "대각선"] }),
+    { wide: false, layoutTag: "subjective-2up", subUnitKey: "M1-06-POLYGON_CIRCLE", subUnit: "정다각형", tags: ["다각형", "대각선"] }),
   q(24, "M1-07", "입체도형의 성질", "중", "서술형",
     "[서술형4] 다음 그림과 같은 입체도형의 겉넓이와 부피를 구하시오. (6점)<br>(1) 오른쪽 원기둥의 겉넓이를 구하시오. (3점)<br><img src=\"assets/images/23_금당중_2학기_기말_중1_기출/q24_1.png\" alt=\"24번 (1) 원기둥\" style=\"display:block;max-width:100%;height:auto;margin:10px auto;\"><br>(2) 오른쪽 정사각뿔의 부피를 구하시오. (3점)<br><img src=\"assets/images/23_금당중_2학기_기말_중1_기출/q24_2.png\" alt=\"24번 (2) 정사각뿔\" style=\"display:block;max-width:100%;height:auto;margin:10px auto;\">",
     [], "(1) $28\\pi\\,\\mathrm{cm}^2$ (2) $84\\mathrm{cm}^3$",
     "[키포인트] 원기둥의 겉넓이는 두 밑면과 옆면의 넓이의 합이고, 각뿔의 부피는 밑면 넓이와 높이를 이용한다.<br><br>[정석 풀이] (1) 원기둥의 반지름은 2cm, 높이는 5cm이므로 겉넓이는 $2\\pi\\times2^2+2\\pi\\times2\\times5=8\\pi+20\\pi=28\\pi\\mathrm{cm}^2$이다. (2) 정사각뿔의 밑면은 한 변 6cm인 정사각형이므로 밑면 넓이는 $6^2=36\\mathrm{cm}^2$이다. 높이가 7cm이므로 부피는 $\\dfrac13\\times36\\times7=84\\mathrm{cm}^3$이다.<br><br>[결론] (1) $28\\pi\\mathrm{cm}^2$, (2) $84\\mathrm{cm}^3$이다.",
-    { wide: true, layoutTag: "fullwidth", visualAssetStatus: "ready", subUnitKey: "M1-07-SOLID_FIGURE_MEASURE", subUnit: "입체도형의 측정", tags: ["원기둥", "정사각뿔", "겉넓이", "부피"] })
+    { wide: false, layoutTag: "subjective-2up", visualAssetStatus: "ready", subUnitKey: "M1-07-SOLID_FIGURE_MEASURE", subUnit: "입체도형의 측정", tags: ["원기둥", "정사각뿔", "겉넓이", "부피"] })
 ];
 // 2026-08-26 v2.1 solution format normalization
 const FORMAT_V21_SOLUTIONS = {

@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { prepareCalibration, validateCalibration, assertBuilderStart, QUALITY_PROFILE_CHECKS, CALIBRATION_AXES } from '../lib/calibration.mjs';
+import { prepareCalibration, validateCalibration, validateFrozenCalibration, assertBuilderStart, QUALITY_PROFILE_CHECKS, CALIBRATION_AXES } from '../lib/calibration.mjs';
 import { bytesSha } from '../../pipeline-core/canonical.mjs';
 import { runOneExam } from '../run-one-exam.mjs';
 import { fileRef } from '../../pipeline-core/canonical.mjs';
@@ -63,11 +63,16 @@ for (const [name, mutate] of [
 test('updated main and changed target source require fresh calibration', t => {
   const f = fixture(t);
   f.write('new.txt', 'next main'); f.git(['add', 'new.txt']); f.git(['-c', 'user.name=Test', '-c', 'user.email=test@example.invalid', 'commit', '-m', 'new main']);
+  f.git(['update-ref', 'refs/remotes/origin/main', 'HEAD']);
   assert.equal(validateCalibration(f.root, f.lock, { manifest: f.manifest, requireLatestMain: true }).status, 'BLOCKED');
   // Existing frozen jobs verify their pinned main commit without demanding a new launch.
-  assert.equal(validateCalibration(f.root, f.lock, { manifest: f.manifest }).status, 'PASS');
+  const frozen = validateFrozenCalibration(f.root, f.lock, { manifest: f.manifest, startSha: f.lock.mainCommit });
+  assert.equal(frozen.status, 'PASS');
+  assert.ok(frozen.warnings.includes('POST_START_MAIN_ADVANCE'));
+  const lockFile = f.write('lock.json', f.lock), lockBytes = fs.readFileSync(lockFile);
+  assert.throws(() => assertBuilderStart(f.root, { ...f.manifest, referenceSampleLock: { path: lockFile, bytes: lockBytes.length, sha256: bytesSha(lockBytes) } }), /START_TIME_STALE/);
   f.write('source.pdf', 'changed bytes');
-  assert.equal(validateCalibration(f.root, f.lock, { manifest: f.manifest }).status, 'BLOCKED');
+  assert.equal(validateFrozenCalibration(f.root, f.lock, { manifest: f.manifest, startSha: f.lock.mainCommit }).status, 'BLOCKED');
 });
 
 test('runOneExam stops before creating a candidate directory without calibration', async t => {

@@ -242,12 +242,12 @@ window.questionBank = [
     "choices": [
       "5",
       "6",
-      "8",
       "9",
-      "10"
+      "10",
+      "8"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈 성질 $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$ 및 $\\sqrt{a}\\div\\sqrt{b}=\\sqrt{a/b}$를 이용한다.\\n조건 정리: 주어진 식을 계산하여 $a\\sqrt{b}$ 형태로 변환한다.\\n풀이 방향: 근호 안의 수를 먼저 계산하거나, 각각을 $a\\sqrt{b}$ 꼴로 고친 후 계산한다.\\n정석 풀이:\\n$\\sqrt{54} \\times \\sqrt{20} \\div \\sqrt{15} = \\sqrt{\\frac{54 \\times 20}{15}}$\\n$= \\sqrt{\\frac{1080}{15}} = \\sqrt{72}$\\n$\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$\\n따라서 $a=6, b=2$이므로 $a+b = 6+2 = 8$이다.\\n따라서 정답은 ③이다.",
+    "answer": "⑤",
+    "solution": "[키포인트] 제곱근의 곱셈과 나눗셈 성질 $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$ 및 $\\sqrt{a}\\div\\sqrt{b}=\\sqrt{a/b}$를 이용한다.\\n조건 정리: 주어진 식을 계산하여 $a\\sqrt{b}$ 형태로 변환한다.\\n풀이 방향: 근호 안의 수를 먼저 계산하거나, 각각을 $a\\sqrt{b}$ 꼴로 고친 후 계산한다.\\n정석 풀이:\\n$\\sqrt{54} \\times \\sqrt{20} \\div \\sqrt{15} = \\sqrt{\\frac{54 \\times 20}{15}}$\\n$= \\sqrt{\\frac{1080}{15}} = \\sqrt{72}$\\n$\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$\\n따라서 $a=6, b=2$이므로 $a+b = 6+2 = 8$이다.\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -520,14 +520,14 @@ window.questionBank = [
     "wide": false,
     "content": "$x = \\frac{1}{\\sqrt{3}-\\sqrt{2}}, y = \\frac{1}{\\sqrt{3}+\\sqrt{2}}$일 때, $x^2 - xy + y^2$의 값은?",
     "choices": [
+      "9",
       "7",
       "8",
-      "9",
       "10",
       "11"
     ],
-    "answer": "③",
-    "solution": "[키포인트] 분모를 유리화한 후 곱셈 공식의 변형 $x^2-xy+y^2 = (x+y)^2 - 3xy$를 이용한다.\\n조건 정리: $x, y$를 유리화하여 합($x+y$)과 곱($xy$)을 구한다.\\n풀이 방향: 유리화된 값을 변형 공식에 대입하여 계산을 간소화한다.\\n정석 풀이:\\n$x = \\frac{\\sqrt{3}+\\sqrt{2}}{3-2} = \\sqrt{3}+\\sqrt{2}$\\n$y = \\frac{\\sqrt{3}-\\sqrt{2}}{3-2} = \\sqrt{3}-\\sqrt{2}$\\n$x+y = 2\\sqrt{3}$, $xy = (\\sqrt{3}+\\sqrt{2})(\\sqrt{3}-\\sqrt{2}) = 3-2 = 1$\\n$x^2-xy+y^2 = (x+y)^2 - 3xy = (2\\sqrt{3})^2 - 3(1) = 12 - 3 = 9$\\n따라서 정답은 ③이다.",
+    "answer": "①",
+    "solution": "[키포인트] 분모를 유리화한 후 곱셈 공식의 변형 $x^2-xy+y^2 = (x+y)^2 - 3xy$를 이용한다.\\n조건 정리: $x, y$를 유리화하여 합($x+y$)과 곱($xy$)을 구한다.\\n풀이 방향: 유리화된 값을 변형 공식에 대입하여 계산을 간소화한다.\\n정석 풀이:\\n$x = \\frac{\\sqrt{3}+\\sqrt{2}}{3-2} = \\sqrt{3}+\\sqrt{2}$\\n$y = \\frac{\\sqrt{3}-\\sqrt{2}}{3-2} = \\sqrt{3}-\\sqrt{2}$\\n$x+y = 2\\sqrt{3}$, $xy = (\\sqrt{3}+\\sqrt{2})(\\sqrt{3}-\\sqrt{2}) = 3-2 = 1$\\n$x^2-xy+y^2 = (x+y)^2 - 3xy = (2\\sqrt{3})^2 - 3(1) = 12 - 3 = 9$\\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",

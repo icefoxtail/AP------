@@ -40,7 +40,7 @@ export function createRenderReview(root, run, captureRef, decision) {
     reviewerId: decision.reviewerId,
     reviewSessionId: decision.reviewSessionId,
     reviewerModelOrAgent: decision.reviewerModelOrAgent,
-    priorReviewVisibility: 'CAPTURE_ONLY',
+    priorReviewVisibility: v2 ? 'NONE' : 'CAPTURE_ONLY',
     inputSha: run.inputSha,
     reviewStartInputSha: run.inputSha,
     reviewEndInputSha: runInputSha(run),
@@ -80,11 +80,18 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         response.end();
         return;
       }
-      let relative = requested;
+      // Candidate solutionImage values are repository-relative archive paths,
+      // while engine.html prefixes asset URLs with archive/. Normalize the
+      // resulting double prefix before looking up the bound ref.
+      let relative = requested.startsWith('archive/archive/') ? requested.slice('archive/'.length) : requested;
       const match = requested.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
       if (match) relative = candidates[Number(match[1])];
       else if (requested.startsWith('archive/assets/') && run.assetRoot) relative = `${run.assetRoot}/${requested.slice('archive/'.length)}`;
-      const ref = refByPath.get(relative);
+      // Some engine-relative data URLs are requested below /archive/ even
+      // though the manifest binds them at repository root (for example
+      // data/question_metadata.json). Preserve exact archive paths first,
+      // then resolve the archive-prefixed alias against the bound ref map.
+      const ref = refByPath.get(relative) || (requested.startsWith('archive/') ? refByPath.get(requested.slice('archive/'.length)) : null);
       if (!ref) {
         activeUnboundRequests.push(relative);
         throw new Error(`UNBOUND_RUNTIME_REQUEST:${relative}`);
@@ -121,8 +128,13 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
             const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
             if (candidateMatch) resolved = candidates[Number(candidateMatch[1])];
             else if (local?.startsWith('archive/assets/') && run.assetRoot) resolved = `${run.assetRoot}/${local.slice('archive/'.length)}`;
+            else if (local?.startsWith('archive/archive/')) resolved = local.slice('archive/'.length);
             const ref = resolved ? refByPath.get(resolved) : null;
-            if (local?.startsWith('archive/assets/')) responseHashes.set(local, bytesSha(bytes));
+            if (ref?.role === 'asset') {
+              const sha256 = bytesSha(bytes);
+              responseHashes.set(local, sha256);
+              responseHashes.set(resolved, sha256);
+            }
             if (!local || ['engine', 'runtime'].includes(ref?.role)) runtimeResponses.push({ url: response.url(), localPath: resolved || null, role: ref?.role || 'external', status: response.status(), bytes: ref && response.status() >= 200 && response.status() < 400 ? ref.bytes : bytes.length, sha256: ref && response.status() >= 200 && response.status() < 400 ? ref.sha256 : bytesSha(bytes), bodyBoundRef: ref && response.status() >= 200 && response.status() < 400 ? true : false });
           }).catch(error => {
             // Chrome may evict an already-consumed local response body while a
@@ -133,7 +145,7 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
               const parsed = new URL(response.url());
               const local = parsed.origin === `http://127.0.0.1:${port}` ? decodeURIComponent(parsed.pathname).slice(1) : null;
               const candidateMatch = local?.match(/^archive\/exams\/__pipeline_review__\/(\d+)\.js$/);
-              const resolved = candidateMatch ? candidates[Number(candidateMatch[1])] : local;
+              const resolved = candidateMatch ? candidates[Number(candidateMatch[1])] : local?.startsWith('archive/archive/') ? local.slice('archive/'.length) : local;
               const ref = resolved ? refByPath.get(resolved) : null;
               if (ref && response.status() >= 200 && response.status() < 400 && /evicted|not available/i.test(error.message)) {
                 runtimeResponses.push({ url: response.url(), localPath: resolved, role: ref.role, status: response.status(), bytes: ref.bytes, sha256: ref.sha256, bodyRead: 'INSPECTOR_EVICTED_BOUND_REF' });
@@ -232,11 +244,15 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const overflowPass = metrics.scrollWidth <= metrics.viewportWidth && itemWitnesses.every(w => w.blocks.every(b => b.boundingBox.x >= 0 && b.boundingBox.x + b.boundingBox.width <= viewport.width));
         const checks = { runtime: !metrics.renderError && !pageErrors.length && !failedRequests.length && !activeUnboundRequests.length ? 'PASS' : 'FAIL', mathJax: metrics.mathJaxPresent && !metrics.mathErrors && !metrics.rawMergedRelations ? 'PASS' : 'FAIL', fonts: metrics.fonts === 'loaded' ? 'PASS' : 'FAIL', imageDecode: metrics.badImages === 0 ? 'PASS' : 'FAIL', assetAssociation: assetAssociations.every(a => a.status === 'PASS') ? 'PASS' : 'FAIL', questionCount: metrics.observedQuestionCount === bank.length ? 'PASS' : 'FAIL', lastQuestion: 'PASS', clipping: geometryPass ? 'PASS' : 'FAIL', overflow: overflowPass ? 'PASS' : 'FAIL', readability: 'NOT_TESTED' };
         const mechanicalPass = ['runtime', 'mathJax', 'fonts', 'imageDecode', 'assetAssociation', 'questionCount', 'lastQuestion', 'clipping', 'overflow'].every(key => checks[key] === 'PASS');
-        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
+        const currentCandidateSha = refByPath.get(candidatePath)?.sha256 || null;
+        const record = { schemaVersion: EVIDENCE_VERSION, evidenceId: `${run.runId}:${stem}:capture`, runId: run.runId, revision: run.revision, axis: 'render-capture', status: mechanicalPass ? 'PASS' : 'FAIL', validityStatus: 'FROZEN', reviewerId: 'actual-browser-collector', reviewSessionId: `${run.runId}:browser-capture`, reviewerModelOrAgent: 'Playwright/Chrome', inputSha: run.inputSha, reviewStartInputSha: run.inputSha, reviewEndInputSha: runInputSha(run), startedAt, frozenAt: new Date().toISOString(), findings: mechanicalPass ? [] : [{ status: 'OPEN', code: 'CAPTURE_MECHANICAL_FAIL' }], payload: { actualBrowser: true, productionEngine: true, browserVersion: browser.version(), mode, candidatePath, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, questionUids: questions.map(q => q.questionUid), viewport, expectedQuestionCount: bank.length, observedQuestionCount: metrics.observedQuestionCount, lastQuestionId: bank.at(-1).id, screenshot: fileRef(root, lastPath), itemWitnesses, assetAssociations, checks, metrics, pageErrors, failedRequests, unboundRequests: [...new Set(activeUnboundRequests)].sort(), runtimeBundleSha: run.renderRuntime.bundleSha, runtimeResponses: uniqueRuntimeResponses, runtimeResponseBundleSha, url } };
         const recordPath = `${workdir}/${stem}.json`;
         record.payload.candidateRef = refByPath.get(candidatePath);
         record.payload.assetRefs = run.inputs.filter(ref => assetAssociations.some(row => row.path === ref.path));
-        if (v2) Object.assign(record, { schemaVersion: EVIDENCE_VERSION_V2, machineProvenance: { runId: run.runId, revision: run.revision, inputSha: run.inputSha, collector: 'Playwright/Chrome' }, axis: 'RENDER_CAPTURE', mode: 'MACHINE_CURRENT', withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', reviewerId: collectorIdentity.reviewerId, reviewSessionId: collectorIdentity.reviewSessionId, reviewerModelOrAgent: collectorIdentity.reviewerModelOrAgent, auditorPrincipalType: collectorIdentity.auditorPrincipalType, reviewIsolationProvenanceSha: collectorIdentity.reviewIsolationProvenanceSha, priorReviewVisibility: 'NONE', inputVisibilityProfile: 'ACTUAL_RENDER', axisInputShas: Object.fromEntries(questions.map(q => [q.questionUid, axisShas[q.questionUid].RENDER_CAPTURE])), reviewAxisInputShas: Object.fromEntries(questions.map(q => [q.questionUid, axisShas[q.questionUid].RENDER_REVIEW])) });
+        if (v2) {
+          const machineProvenance = { runId: run.runId, revision: run.revision, inputSha: run.inputSha, currentArtifactSha: currentCandidateSha, CURRENT_ARTIFACT_SHA: currentCandidateSha, EVIDENCE_INPUT_SHA: currentCandidateSha, authorityStartSha: run.pastExamAuthority?.startSha || null, collector: 'Playwright/Chrome' };
+          Object.assign(record, { schemaVersion: EVIDENCE_VERSION_V2, machineProvenance, axis: 'RENDER_CAPTURE', mode: 'MACHINE_CURRENT', withdrawalStatus: 'ACTIVE', revocationStatus: 'NOT_REVOKED', supersessionStatus: 'VALID', sourceAuthorityStatus: 'VALID', eligibilityStatus: 'ELIGIBLE', reviewerId: collectorIdentity.reviewerId, reviewSessionId: collectorIdentity.reviewSessionId, reviewerModelOrAgent: collectorIdentity.reviewerModelOrAgent, auditorPrincipalType: collectorIdentity.auditorPrincipalType, reviewIsolationProvenanceSha: objectSha(machineProvenance), priorReviewVisibility: 'NONE', inputVisibilityProfile: 'ACTUAL_RENDER', axisInputShas: Object.fromEntries(questions.map(q => [q.questionUid, axisShas[q.questionUid].RENDER_CAPTURE])), reviewAxisInputShas: Object.fromEntries(questions.map(q => [q.questionUid, axisShas[q.questionUid].RENDER_REVIEW])) });
+        }
         writeNewJson(safePath(root, recordPath, { mustExist: false }), record); captures.push(fileRef(root, recordPath));
         await context.close();
       }

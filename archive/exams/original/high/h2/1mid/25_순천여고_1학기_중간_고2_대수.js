@@ -92,6 +92,11 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q3-solution.svg",
+    "solutionImageAlt": "25_suncheon_woman_q3_exp_shift",
+    "solutionImageCaption": "exp_shift",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y=\\left(\\frac{1}{2}\\right)^x+1$의 그래프를 $y$축에 대하여 대칭이동 한 후 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동 하였더니 함수 $y=2^{x-3}+5$의 그래프와 일치하였다. 상수 $a, b$에 대하여 $ab$의 값은? [3.4점]",
     "choices": [
       "-12",
@@ -269,6 +274,11 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q8-solution.svg",
+    "solutionImageAlt": "25_suncheon_woman_q8_inverse_point",
+    "solutionImageCaption": "inverse_point",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $f(x) = \\log_2 (x-a) + 2$의 역함수의 그래프가 점 $(a+4, a+2)$를 지날 때, $a$의 값은? (단, $a$는 상수이다.) [3.8점]",
     "choices": [
       "-5",
@@ -343,6 +353,11 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q10-solution.svg",
+    "solutionImageAlt": "25_suncheon_woman_q10_log_statements",
+    "solutionImageCaption": "log_statements",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y=2\\log(x+1)+1$에 대한 설명으로 옳은 것만을 <보기>\\n에서 있는대로 모두 고른 것은? [4점]\\n<보기>\\nㄱ. 그래프는 점 $(0, 1)$을 지난다.\\nㄴ. 그래프의 점근선은 직선 $y=1$이다.\\nㄷ. 그래프는 제 $4$사분면을 지나지 않는다.\\nㄹ. 그래프는 함수 $y=\\log(x+1)^2$를 $y$축의 방향으로 $1$만큼\\n    평행이동 한 것이다.",
     "choices": [
       "ㄱ",
@@ -488,6 +503,11 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "절댓값 지수함수 candidate · 25 순천여고 q14",
+    "solutionImageCaption": "minimum fact model",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $f(x) = \\begin{cases} |4^x - 4| & (x \\ge 0) \\\\ |4^{-x} - 4| & (x < 0) \\end{cases}$ 와 직선 $y=k$ ($k$는 실수)\\n에 대하여 방정식 $f(x)=k$이 서로 다른 세 실근을 가질\\n때, $k$의 값은? [4.2점]",
     "choices": [
       "1",
@@ -636,6 +656,11 @@ window.questionBank = [
       "자연수조건"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "25_suncheon_woman_q18_periodic_log",
+    "solutionImageCaption": "periodic_log",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "실수 전체 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다.\\n| (가) $f(x) = \\begin{cases} x & (0 \\le x < 1) \\\\ -x+2 & (1 \\le x < 2) \\end{cases}$ |\\n| (나) 모든 실수 $x$에 대하여 $f(x+2) = f(x)$이다. |\\n자연수 $n$에 대하여 함수 $y=f(x)$의 그래프가 함수\\n$y=\\log_{3n} x$와 만나는 점의 개수가 $98$일 때, 자연수 $n$의 값\\n은? [4.6점]",
     "choices": [
       "27",
@@ -673,6 +698,11 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "25_suncheon_woman_q19_piecewise_roots",
+    "solutionImageCaption": "piecewise_roots",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "두 양수 $a, b(a>1, 0<b<1)$에 대하여\\n$f(x) = \\begin{cases} \\log_2 (x-4) - a & (x \\ge 6) \\\\ b^{x-6} - a & (x < 6) \\end{cases}$ 이다. 함수 $y=f(x)$와 $x$축\\n이 만나는 두 점을 각각 $\\mathrm{A, B}$라 하자. $\\overline{\\mathrm{AB}} = 5$ 이고\\n$f(12) = \\frac{a}{2}$일 때, $(ab)^3$의 값은? [4.6점]",
     "choices": [
       "$\\frac{1}{2}$",
