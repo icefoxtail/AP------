@@ -60,11 +60,11 @@ primary path를 결정했다.
 | legacyLevelCompatibility | 문항 수 |
 |---|---:|
 | NORMAL | 31 |
-| BORDERLINE_REVIEW | 21 |
-| BORDERLINE_ACCEPTABLE | 0 |
+| BORDERLINE_REVIEW | 0 |
+| BORDERLINE_ACCEPTABLE | 21 |
 | STRONG_CONFLICT | 20 |
 
-기존 `level=하|중|상`은 수정하지 않았다. BORDERLINE_REVIEW와
+기존 `level=하|중|상`은 수정하지 않았다. BORDERLINE_ACCEPTABLE과
 STRONG_CONFLICT는 freeze 이후 recheck/adjudication evidence를 남겼다.
 
 ## Review / adjudication

@@ -50,8 +50,7 @@ blind first-pass → freeze → legacy compare → source/solution independent r
 
 `difficultyConfidence`, `difficultyBoundaryFlag`,
 `legacyLevelCompatibility`를 함께 저장했다. legacy compare는 first-pass
-freeze 이후에만 수행했으며, compatibility 현황은 NORMAL 33,
-BORDERLINE_REVIEW 21, STRONG_CONFLICT 14이다. 이는 기존 `level`을 자동
+freeze 이후에만 수행했으며, compatibility 현황은 NORMAL 33, BORDERLINE_REVIEW 0, BORDERLINE_ACCEPTABLE 21, STRONG_CONFLICT 14이다. 이는 기존 `level`을 자동
 수정하지 않는다는 뜻이며, 각 recheck record에 source/solution 근거를 남겼다.
 
 ## Validation

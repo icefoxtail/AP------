@@ -60,12 +60,11 @@ RPM Primary Taxonomy v1.0에 존재한다.
 | legacyLevelCompatibility | 문항 수 |
 |---|---:|
 | NORMAL | 53 |
-| BORDERLINE_REVIEW | 44 |
-| BORDERLINE_ACCEPTABLE | 0 |
+| BORDERLINE_REVIEW | 0 |
+| BORDERLINE_ACCEPTABLE | 44 |
 | STRONG_CONFLICT | 8 |
 
-기존 `level`은 자동 수정하지 않았다. BORDERLINE_REVIEW와
-STRONG_CONFLICT는 independent recheck evidence를 남겼다.
+기존 `level`은 자동 수정하지 않았다. BORDERLINE_ACCEPTABLE과 STRONG_CONFLICT는 independent recheck/adjudication evidence를 남겼다.
 
 ## Review / adjudication
 

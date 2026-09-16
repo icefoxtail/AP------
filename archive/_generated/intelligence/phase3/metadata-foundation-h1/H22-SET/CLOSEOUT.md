@@ -45,8 +45,7 @@ blind first-pass → freeze → legacy compare → source/solution independent r
 | 4 | 18 |
 | 5 | 0 |
 
-legacy compatibility 현황은 NORMAL 10, BORDERLINE_REVIEW 15,
-STRONG_CONFLICT 15이다. 기존 `level`은 자동 수정하지 않았다.
+legacy compatibility 현황은 NORMAL 10, BORDERLINE_REVIEW 0, BORDERLINE_ACCEPTABLE 15, STRONG_CONFLICT 15이다. 기존 `level`은 자동 수정하지 않았다.
 
 ## Validation
 

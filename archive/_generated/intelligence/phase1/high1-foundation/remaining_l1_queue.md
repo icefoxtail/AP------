@@ -5,7 +5,9 @@
 - source questions: **2498**
 - load errors: **0**
 - completed work units: **35**
-- completed applied UID count: **2464**
+- completed source-reviewed UID count: **2464**
+- identity-backed applied UID count: **2444**
+- identity reconciliation HOLD UID count: **20**
 - remaining canonical candidate rows: **33**
 - unmapped/HOLD rows: **1**
 
@@ -25,4 +27,4 @@
 |---|---|---|---|---:|---|---|
 | H15-M3-01-HOLD | 2015 | 수학(상) | M3-01 | 1 | HOLD | source row is middle-school curriculum content (제곱근과 실수) and has no locked high1 canonical path; no invented taxonomy path applied |
 
-완료된 candidate/receipt/closeout은 재작업하지 않고, 다음 재개 시 위 pending queue부터 이어갈 수 있다.
+완료된 candidate/receipt/closeout은 재작업하지 않고, identity reconciliation HOLD 20건은 identity 등록 후 별도 apply gate를 통과시킨다. 다음 재개 시 위 pending queue부터 이어갈 수 있다.
