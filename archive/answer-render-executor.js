@@ -35,9 +35,10 @@
                         grid.appendChild(u);
                         return;
                     }
-                    const num = start + idx + 1;
+                    const num = deps.getDisplayNumber ? deps.getDisplayNumber(chunk[idx], start + idx) : start + idx + 1;
                     if (num % 4 === 0) u.classList.add('group-end');
-                    u.dataset.sourceRef = deps.getArchiveQuestionSourceRef(chunk[idx], num - 1);
+                    const sourceRef = deps.getArchiveQuestionSourceRef(chunk[idx], start + idx);
+                    if (sourceRef) u.dataset.sourceRef = sourceRef;
                     u.innerHTML = `<div class="ans-n">${num}.</div><div class="ans-v">${deps.formatGridAnswer(chunk[idx].answer)}</div>`;
                     grid.appendChild(u);
                 });

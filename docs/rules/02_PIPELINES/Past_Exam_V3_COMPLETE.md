@@ -28,10 +28,17 @@
    한 번의 FINAL_AUDIT에서 sealed U1(SOURCE/MATH_A1/V1), U2(V2 artifact-only),
    U3(MATH_A2/SOLUTION/V3/RENDER_REVIEW) 검수. 독립 U1 판정은 builder 예상과 다를 수 있다.
    불일치는 결함으로 반환하고 원본·동결된 첫 판정을 덮어쓰지 않는다.
-8. **S15~DONE**: 결함 수정 및 영향 범위 계산 → 최대 한 번 TARGETED_RECHECK → 전 문항
+8. **S15~DONE**: 결함 수정 및 영향 범위 계산 → `AGENT_BUDGET.md`에 저장된
+   Past Exam repair allowance에 따른 bounded `TARGETED_RECHECK` loop
+   (현재 3 iterations; legacy profile은 저장된 allowance 유지) → 전 문항
    공통 품질 closure + production authority → canonical promotion helper → DB/index/최종 release.
 
-실행 topology와 launch/recheck 권위는 `archive/tools/pipeline-core/AGENT_BUDGET.md`다.
+이 문서는 Past Exam의 semantic/lifecycle contract다. 실행 topology,
+launch, repair iteration allowance, provider isolation 권위는
+`archive/tools/pipeline-core/AGENT_BUDGET.md`에 있다. 따라서 이 문서의
+recheck 설명은 해당 파일의 current persisted Past Exam repair allowance를
+참조하며, 실행 allowance가 변경될 때 두 문서가 별도 권위로 갈라지지 않게
+한다.
 위 단계마다 별도 하위 agent를 실행하지 않는다. builder 풀이/EXPECTED는 제작 근거이며
 독립 MATH_A1/V1 증거로 둔갑시키지 않는다. Source defect는 별도 recovery 경계를 유지한다.
 
@@ -111,6 +118,29 @@ prepare의 assetRoot/sourceAssetRoot로 문제·해설 자산을 읽고, 검수 
 기존 production 및 동결된 과거 evidence는 그대로 보존하고, 새 작업은 현재 증거로 작성한다.
 샘플 main 기준이 바뀌면 새 builder 시작에서 calibration을 다시 한다. 시작 후의 최종 검수는
 동결된 main commit의 바이트를 검증하며 네트워크 변화로 이미 진행 중인 수학 검수를 다시 띄우지 않는다.
+
+GOLD/pilot/benchmark/holdout JOB은 시작 전에 required main/rule/calibration
+baseline을 확인하고 `START_SHA`와 calibration identity를 freeze한다. freeze
+뒤 live `origin/main`이 앞으로 이동한 것은 `POST_START_MAIN_ADVANCE`이며
+실행 중 JOB을 stale 처리하지 않는다. `START_TIME_STALE`은 시작 시점에
+baseline 자체가 stale한 경우이고, frozen bytes/hash 또는 JOB evidence가
+frozen identity와 다르면 FAIL이다.
+
+V4 GOLD benchmark denominator는 `SOURCE_FORMAT == PDF` 및
+`SOURCE_PIXEL_RENDER_AVAILABLE == true`인 입력만 포함한다. HWP/HWPX 등은
+`GOLD_INELIGIBLE_SOURCE_FORMAT`으로 분류하여 denominator에서 제외하며,
+이는 production input capability를 제거하는 선언이 아니다. GOLD의
+requested/actual model과 reasoning effort는 start/closure에서 관찰해
+`MODEL_ROUTE_PARITY`를 계산한다. 관찰 불가·중간 변경은 성능 증거가 아닌
+`FAIL`/`MIXED_MODEL_ROUTE` diagnostic 결과다.
+
+candidate/asset/solutionImage/metadata mutation 뒤 MACHINE_CURRENT evidence는
+STALE/INVALIDATED로 기록하고 재수집한다. 최종 evidence는 current candidate
+artifact SHA와 axis input SHA를 함께 bind해야 한다. V1 `ADD`는 generated
+artifact → candidate attachment → V2 artifact-only → V3 expected↔observed
+fact parity → render review의 연결 또는 명시적 defect/HOLD/reclassification
+evidence 없이는 closure할 수 없다. Diagnostic continuation은 downstream
+관찰을 허용할 뿐 canonical PASS나 promotion authority가 아니다.
 
 19 강남여고 q1/q10/q20/q21/q23~25의 결함 유형은 회귀 대상으로 사용하되,
 테스트용 reviewer FAIL 기록을 실제 시험 전수검수 완료로 보고하지 않는다.

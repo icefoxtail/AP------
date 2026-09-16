@@ -166,7 +166,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "도형"

@@ -287,10 +287,10 @@ window.questionBank = [
       "8",
       "9",
       "10",
-      "11",
-      "12"
+      "12",
+      "11"
     ],
-    "answer": "④",
+    "answer": "⑤",
     "category": "거듭제곱근",
     "originalCategory": "거듭제곱근",
     "standardCourse": "대수",
@@ -538,11 +538,11 @@ window.questionBank = [
     "choices": [
       "25",
       "5",
-      "75",
       "1",
+      "75",
       "25"
     ],
-    "answer": "③",
+    "answer": "④",
     "category": "지수방정식",
     "originalCategory": "지수방정식",
     "standardCourse": "대수",

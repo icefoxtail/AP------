@@ -1,0 +1,24 @@
+{
+  "phase": "3",
+  "gates": {
+    "SOLUTION_MATHJAX_CALL_REDUCTION": "PASS",
+    "SOLUTION_BATCH_MEASUREMENT_PARITY": "PASS",
+    "CONTINUATION_PARITY": "PASS",
+    "SOLUTION_IMAGE_PARITY": "PASS",
+    "SOLUTION_LAYOUT_BARRIER_REDUCTION": "PASS",
+    "SOLUTION_FIRST_RENDER_PERF_IMPROVEMENT": "PASS",
+    "SOLUTION_ACTUAL_RENDER_VISUAL_PARITY": "PASS"
+  },
+  "geometryTolerance": 0,
+  "fixtures": 6,
+  "staticTests": 47,
+  "browserRegressions": 19,
+  "evidence": [
+    "measurement-sol-parity.json",
+    "phase3-static.tap",
+    "phase3-regression.json",
+    "phase3-1440.png",
+    "phase3-390.png"
+  ],
+  "next": "Phase 4 only after this phase commit is pushed; never merge or push main"
+}

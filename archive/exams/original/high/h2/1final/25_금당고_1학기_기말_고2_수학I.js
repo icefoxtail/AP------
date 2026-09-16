@@ -482,6 +482,11 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학I/q17-solution.svg",
+    "solutionImageAlt": "25_geumdang_final_q17_cycle",
+    "solutionImageCaption": "cycle",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "모든 항이 자연수이고 다음 조건을 만족하는 수열 $\\{a_n\\}$에 대하여, 가능한 모든 $a_1$의 값의 합은?\n(가) 모든 자연수 $n$에 대하여 <div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td rowspan=\"2\">$a_{n+1}=$</td><td>$\\dfrac{a_n}{4}$</td><td>($a_n$이 4의 배수인 경우)</td></tr><tr><td>$a_n+3$</td><td>($a_n$이 4의 배수가 아닌 경우)</td></tr></tbody></table></div>이다.\n(나) $n \\ge p$인 모든 자연수 $n$에 대하여 $a_{n+3}=a_n$이 성립하는 자연수 $p$의 최솟값은 3이다.",
     "choices": [
       "166",

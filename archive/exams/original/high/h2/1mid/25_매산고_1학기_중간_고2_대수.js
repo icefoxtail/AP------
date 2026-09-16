@@ -392,6 +392,11 @@ window.questionBank = [
       "표해석"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "25_maesan_q11_sine_params",
+    "solutionImageCaption": "sine_params",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "[그래프필요]\n함수 $y=a\\sin(bx+c)+d$의 그래프 중 일부가 아래 그림과 같을 때, 상수 $a, b, c, d$에 대하여 $\\frac{abcd}{2\\pi}$의 값은?\n(단, $a>0, b>0, \\pi<c<2\\pi$) (5.1점)",
     "choices": [
       "1",
@@ -633,6 +638,11 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "25_maesan_q18_sector_max",
+    "solutionImageCaption": "sector_max",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "[도형필요]\n다음 그림과 같이 중심각을 공유하는 두 부채꼴 $OAB$, $OCD$에 대하여 도형 $ABDC$의 둘레의 길이가 48이다. 도형 $ABDC$의 넓이가 최대가 될 때, 선분 $AC$의 길움을 구하시오. (6점)",
     "choices": [],
     "answer": "12",

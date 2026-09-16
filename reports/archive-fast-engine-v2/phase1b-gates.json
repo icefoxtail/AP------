@@ -1,0 +1,31 @@
+{
+  "phase": "1B",
+  "gates": {
+    "SNAPSHOT_COMMON_HARD_GATE": "PASS",
+    "NO_CANONICAL_CLONE": "PASS",
+    "MATH_TYPESET_COMPLETENESS": "PASS",
+    "FONT_READINESS": "PASS",
+    "IMAGE_ASSET_READINESS": "PASS",
+    "CACHE_HIT_NO_REBUILD": "PASS",
+    "PRINT_REVALIDATION": "PASS",
+    "ACTUAL_RENDER_VISUAL_PARITY_DESKTOP": "PASS",
+    "ACTUAL_RENDER_VISUAL_PARITY_MOBILE": "PASS",
+    "INVALIDATION_MATRIX": "PASS",
+    "OWNERSHIP": "PASS",
+    "ANSWER_SNAPSHOT_BUILD": "PASS",
+    "ANSWER_CACHE_HIT": "PASS",
+    "ANSWER_COUNT_ORDER_PARITY": "PASS",
+    "ANSWER_GROUPING_PARITY": "PASS",
+    "ANSWER_PAGE_OVERFLOW_REFIT_PARITY": "PASS"
+  },
+  "evidence": [
+    "phase1b-browser.json",
+    "phase1b-regression.json",
+    "phase1b-static.tap"
+  ],
+  "cacheModes": [
+    "ans"
+  ],
+  "printDenominator": 23,
+  "commonDenominator": 18
+}

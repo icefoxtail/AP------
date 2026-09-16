@@ -1,0 +1,102 @@
+{
+  "tests": [
+    {
+      "name": "Canonical candidate schema and recursive immutability",
+      "status": "PASS"
+    },
+    {
+      "name": "PREPARE keeps DOM/state/URL/tab; late request wins and composes header delta",
+      "status": "PASS"
+    },
+    {
+      "name": "MathJax failure preserves active state and has no committed effects",
+      "status": "PASS"
+    },
+    {
+      "name": "Executor layout throw preserves active root and ledgers",
+      "status": "PASS"
+    },
+    {
+      "name": "Font readiness rejection preserves active root",
+      "status": "PASS"
+    },
+    {
+      "name": "Synchronous history failure rolls back root/state/session/snapshot status",
+      "status": "PASS"
+    },
+    {
+      "name": "Source load failure preserves current session",
+      "status": "PASS"
+    },
+    {
+      "name": "Canonical normalization rejects function input and restores source globals",
+      "status": "PASS"
+    },
+    {
+      "name": "Image failure aborts pending source without destroying old MathJax DOM",
+      "status": "PASS"
+    },
+    {
+      "name": "Pending session materializes separately, old root evicts after successful commit",
+      "status": "PASS"
+    },
+    {
+      "name": "Real bank top-level const helpers are isolated across repeated SOURCE_CHANGE",
+      "status": "PASS"
+    },
+    {
+      "name": "QPP/header/QR/profile/invalidation/forced entries all commit through runtime",
+      "status": "PASS"
+    },
+    {
+      "name": "Background request executes zero business side effects",
+      "status": "PASS"
+    },
+    {
+      "name": "Post-commit business delivery failure and next-activation retry keep identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Print dry-run validates active render, repeated print gets fresh readiness",
+      "status": "PASS"
+    },
+    {
+      "name": "Print stale math recovery is routed through PRINT_STALE_REBUILD",
+      "status": "PASS"
+    },
+    {
+      "name": "No abandoned build/staging DOM; current snapshot owns canonical root",
+      "status": "PASS"
+    },
+    {
+      "name": "Preview disables QR and business effects; QR solution mode remains locked",
+      "status": "PASS"
+    },
+    {
+      "name": "Class assignment is delivered once after COMMIT and acknowledged",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "expectedPageErrors": [
+    "Error: INJECTED_FONT_FAILURE"
+  ],
+  "posts": [
+    {
+      "url": "https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints",
+      "body": "{\"archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"items\":[{\"question_no\":1,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":1,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":2,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":2,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":3,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":3,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":4,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":4,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":5,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":5,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":6,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":6,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":7,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":7,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":8,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":8,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"}]}"
+    },
+    {
+      "url": "https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints",
+      "body": "{\"archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"items\":[{\"question_no\":1,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":1,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":2,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":2,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":3,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":3,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":4,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":4,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":5,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":5,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":6,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":6,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":7,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":7,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":8,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":8,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"}]}"
+    },
+    {
+      "url": "https://ap-math-os-v2612.js-pdf.workers.dev/api/exam-blueprints",
+      "body": "{\"archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"items\":[{\"question_no\":1,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":1,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":2,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":2,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":3,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":3,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":4,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":4,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":5,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":5,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":6,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":6,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":7,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":7,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"},{\"question_no\":8,\"source_archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_question_no\":8,\"standard_unit_key\":\"\",\"standard_unit\":\"\",\"standard_course\":\"\",\"concept_cluster_key\":\"__UNMAPPED__\"}]}"
+    },
+    {
+      "url": "https://ap-math-os-v2612.js-pdf.workers.dev/api/class-exam-assignments",
+      "body": "{\"class_id\":\"phase1a-test\",\"exam_title\":\"Render Authority Golden Fixture\",\"exam_date\":\"2026-09-10\",\"question_count\":8,\"archive_file\":\"exams/test-fixtures/render-authority-golden.js\",\"source_type\":\"archive\",\"subject\":\"\",\"pdf_qpp\":4}"
+    }
+  ]
+}

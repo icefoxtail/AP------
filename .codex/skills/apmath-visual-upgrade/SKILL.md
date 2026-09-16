@@ -13,7 +13,9 @@ This skill is a router only. Do not copy, summarize, merge, or rewrite the rule 
 
 For new work, the execution topology is defined by
 archive/tools/pipeline-core/AGENT_BUDGET.md: one whole-job work batch,
-provider-attested FINAL_AUDIT, and at most one TARGETED_RECHECK. Semantic
+provider-attested FINAL_AUDIT, and a bounded `TARGETED_RECHECK` loop governed
+by the persisted Past Exam repair allowance in `AGENT_BUDGET.md` (currently
+three iterations; legacy profiles retain their stored allowance). Semantic
 visual axes, batch labels, and render-review roles do not authorize extra
 agent/provider launches. Read the repository skill manifest and verify the
 active worktree before starting visual changes.
@@ -28,9 +30,19 @@ This skill remains router-only, but the current shared execution contract is the
 2. `docs/rules/02_PIPELINES/작업방식_적응형배치루프_v1.md`
 3. `archive/tools/pipeline-core/`
 
-When current rules require independent visual closure for a question whose visual material is newly generated or modified, completion/PASS is allowed only after this lineage is actually closed:
+When current rules require independent visual closure for a question whose visual material is newly generated or modified, completion/PASS is allowed only after this semantic lineage is actually closed:
 
-`Builder/Generator → V1 SOURCE_ONLY → V2 ARTIFACT_ONLY → V3 FROZEN_V1_V2 → render-capture → independent render-review → closure`
+`V1 benefit triage → EXPECTED FACT freeze → deterministic artifact build → V2 artifact-only observed geometry → V3 expected ↔ observed parity → render-capture → independent render-review → closure`
+
+This semantic V1/V2/V3 relationship is not auditor-context dependency. The
+pipeline-core packets are independently sealed from frozen input: U1 is
+`SOURCE_ONLY` / `priorReviewVisibility NONE`, U2 is
+`ARTIFACT_ONLY` / `priorReviewVisibility NONE`, and U3 is `CANDIDATE_ONLY` /
+`priorReviewVisibility NONE`. U3 does not receive U1 or U2 reviewer output;
+the immutable auditor results are combined only by the deterministic review
+merger. An explicit correctness-claim disagreement is
+`REVIEW_CONFLICT`; a bounded `SECOND_AUDIT` requires explicit `CONFLICT` or
+`HIGH_RISK` authorization.
 
 Past `solution-review-v2.2`, legacy coordinate-parity reports, and past individual review scripts/reports are diagnostic/supporting evidence only. They may not replace current `pipeline-core` closure or justify a PASS declaration. If required current pipeline evidence is missing, `SELF_FAIL` with `MISSING_CURRENT_PIPELINE_EVIDENCE`.
 

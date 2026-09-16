@@ -16,7 +16,7 @@
     }
 
     function start(meta = {}) {
-        current = {
+        const metrics = {
             renderer: rendererMode(),
             mode: meta.mode || '',
             questions: Number(meta.questions) || 0,
@@ -26,8 +26,17 @@
             mathJaxTotalMs: 0,
             calls: [],
             phases: {},
-            pages: 0
+            pages: 0,
+            transactionId: meta.transactionId || null,
+            requestGeneration: meta.requestGeneration || null,
+            sessionId: meta.sessionId || null,
+            foreground: meta.foreground !== false,
+            rafCount: 0,
+            layoutBarrierCount: 0,
+            fontWaitMs: 0
         };
+        if (meta.publish === false) return metrics;
+        current = metrics;
         global.__AP_RENDER_METRICS__ = current;
         try {
             global.document.documentElement.dataset.apRenderReady = 'false';
@@ -36,24 +45,24 @@
         return current;
     }
 
-    async function measure(label, work) {
+    async function measure(label, work, metrics = current) {
         const startedAt = now();
         try {
             return await work();
         } finally {
-            if (current) current.phases[label] = Number((now() - startedAt).toFixed(1));
+            if (metrics) metrics.phases[label] = Number((now() - startedAt).toFixed(1));
         }
     }
 
-    async function typeset(label, elements) {
+    async function typeset(label, elements, metrics = current) {
         if (!global.MathJax?.typesetPromise) return false;
         const startedAt = now();
         await global.MathJax.typesetPromise(elements);
         const elapsedMs = Number((now() - startedAt).toFixed(1));
-        if (current) {
-            current.mathJaxCalls += 1;
-            current.mathJaxTotalMs = Number((current.mathJaxTotalMs + elapsedMs).toFixed(1));
-            current.calls.push({ label, elapsedMs });
+        if (metrics) {
+            metrics.mathJaxCalls += 1;
+            metrics.mathJaxTotalMs = Number((metrics.mathJaxTotalMs + elapsedMs).toFixed(1));
+            metrics.calls.push({ label, elapsedMs });
         }
         return true;
     }
@@ -63,12 +72,14 @@
         return (text.match(/\$\$[\s\S]+?\$\$|\$[^$\n]+?\$/g) || []).length;
     }
 
-    function finish(scope) {
-        if (!current) return null;
-        current.renderReadyMs = Number((now() - current.startedAt).toFixed(1));
-        current.pages = scope?.querySelectorAll?.('.page')?.length || 0;
-        current.unrenderedMath = unrenderedMathCount(scope);
-        current.finishedAt = now();
+    function finish(scope, metrics = current, publish = true) {
+        if (!metrics) return null;
+        metrics.renderReadyMs = Number((now() - metrics.startedAt).toFixed(1));
+        metrics.pages = scope?.querySelectorAll?.('.page')?.length || 0;
+        metrics.unrenderedMath = unrenderedMathCount(scope);
+        metrics.finishedAt = now();
+        if (!publish) return metrics;
+        current = metrics;
         global.__AP_RENDER_METRICS__ = current;
         try {
             global.document.documentElement.dataset.apRenderMetrics = JSON.stringify(current);

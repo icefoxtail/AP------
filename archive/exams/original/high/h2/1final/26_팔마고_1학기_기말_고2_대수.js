@@ -139,7 +139,7 @@ window.questionBank = [
     "standardUnit": "수학적 귀납법",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "수학적 귀납법",

@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+ok 1 - candidate recursively copies choices and rejects unsupported graphs without freezing raw input
+  ---
+  duration_ms: 5.152
+  type: 'test'
+  ...
+# Subtest: keys include semantic changes and exclude pending session/request provenance
+ok 2 - keys include semantic changes and exclude pending session/request provenance
+  ---
+  duration_ms: 1.0734
+  type: 'test'
+  ...
+# Subtest: structural sharing trusts only normalizer-owned transitive immutable graphs
+ok 3 - structural sharing trusts only normalizer-owned transitive immutable graphs
+  ---
+  duration_ms: 0.362
+  type: 'test'
+  ...
+# Subtest: pending materialization is a separate complete session and rejects mismatched targets
+ok 4 - pending materialization is a separate complete session and rejects mismatched targets
+  ---
+  duration_ms: 0.8931
+  type: 'test'
+  ...
+# Subtest: successful commit binds state, active status and current session; stale provenance is not validity
+ok 5 - successful commit binds state, active status and current session; stale provenance is not validity
+  ---
+  duration_ms: 2.9286
+  type: 'test'
+  ...
+# Subtest: PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+ok 6 - PREPARE failure and history-like synchronous COMMIT failure preserve old state and status
+  ---
+  duration_ms: 1.6394
+  type: 'test'
+  ...
+# Subtest: latest wins serializes builds and never commits stale work
+ok 7 - latest wins serializes builds and never commits stale work
+  ---
+  duration_ms: 2.0144
+  type: 'test'
+  ...
+# Subtest: background and invalid enums cannot execute builds or effects
+ok 8 - background and invalid enums cannot execute builds or effects
+  ---
+  duration_ms: 0.3124
+  type: 'test'
+  ...
+# Subtest: side effect failure, acknowledgement and retry keep one logical identity/key
+ok 9 - side effect failure, acknowledgement and retry keep one logical identity/key
+  ---
+  duration_ms: 0.9261
+  type: 'test'
+  ...
+# Subtest: precommit effects are rejected before execution; no unresolved required compensation
+ok 10 - precommit effects are rejected before execution; no unresolved required compensation
+  ---
+  duration_ms: 1.9556
+  type: 'test'
+  ...
+# Subtest: asynchronous measurements remain bound to their own transaction metrics
+ok 11 - asynchronous measurements remain bound to their own transaction metrics
+  ---
+  duration_ms: 2.0071
+  type: 'test'
+  ...
+# Subtest: batch renderer is the default and legacy remains an explicit fallback
+ok 12 - batch renderer is the default and legacy remains an explicit fallback
+  ---
+  duration_ms: 1.3002
+  type: 'test'
+  ...
+# Subtest: both archive engines install render metrics and the shared loop runtime
+ok 13 - both archive engines install render metrics and the shared loop runtime
+  ---
+  duration_ms: 3.441
+  type: 'test'
+  ...
+# Subtest: render metrics are exposed on the document for browser QA
+ok 14 - render metrics are exposed on the document for browser QA
+  ---
+  duration_ms: 0.5518
+  type: 'test'
+  ...
+# Subtest: inline scripts in both engines remain syntactically valid
+ok 15 - inline scripts in both engines remain syntactically valid
+  ---
+  duration_ms: 8.5556
+  type: 'test'
+  ...
+# Subtest: Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
+ok 16 - Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths
+  ---
+  duration_ms: 4.288
+  type: 'test'
+  ...
+# Subtest: Archive solution executor is a DOM transaction module with injected engine dependencies
+ok 17 - Archive solution executor is a DOM transaction module with injected engine dependencies
+  ---
+  duration_ms: 2.0749
+  type: 'test'
+  ...
+# Subtest: Phase A report uses legacy/shared executor A/B as the authority gate
+ok 18 - Phase A report uses legacy/shared executor A/B as the authority gate
+  ---
+  duration_ms: 1.1268
+  type: 'test'
+  ...
+# Subtest: Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
+ok 19 - Archive answer executor is a mechanical DOM extraction with explicit legacy rollback
+  ---
+  duration_ms: 1.2348
+  type: 'test'
+  ...
+# Subtest: Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
+ok 20 - Archive exam executor is a mechanical DOM extraction with explicit legacy rollback
+  ---
+  duration_ms: 1.5493
+  type: 'test'
+  ...
+# Subtest: Archive golden browser fixture records semantic parity across all three output modes
+ok 21 - Archive golden browser fixture records semantic parity across all three output modes
+  ---
+  duration_ms: 0.8388
+  type: 'test'
+  ...
+# Subtest: Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
+ok 22 - Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog
+  ---
+  duration_ms: 0.8977
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 184.3585

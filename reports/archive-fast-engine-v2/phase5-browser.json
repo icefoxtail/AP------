@@ -1,0 +1,180 @@
+[
+  {
+    "width": 1440,
+    "automatic": {
+      "mode": "exam",
+      "active": "exam",
+      "metricsMode": "exam",
+      "foreground": true,
+      "background": false,
+      "afterPaint": true,
+      "backgroundAttempts": 2,
+      "count": 3,
+      "ledger": {
+        "entries": [
+          {
+            "logicalEffectId": "blueprint:exams/test-fixtures/render-authority-golden.js|1,2,3,4,5,6,7,8",
+            "effectId": "blueprint",
+            "triggerEventId": "render-1789126102895-1",
+            "idempotencyKey": "exams/test-fixtures/render-authority-golden.js|1,2,3,4,5,6,7,8",
+            "attempt": 1,
+            "state": "ACKNOWLEDGED",
+            "lastError": null,
+            "createdAt": 1789126103565,
+            "required": false,
+            "updatedAt": 1789126103595
+          },
+          {
+            "logicalEffectId": "assignment:prewarm-test|2026-09-10|exams/test-fixtures/render-authority-golden.js|8|archive",
+            "effectId": "assignment",
+            "triggerEventId": "render-1789126102895-1",
+            "idempotencyKey": "prewarm-test|2026-09-10|exams/test-fixtures/render-authority-golden.js|8|archive",
+            "attempt": 1,
+            "state": "ACKNOWLEDGED",
+            "lastError": null,
+            "createdAt": 1789126103565,
+            "required": false,
+            "updatedAt": 1789126103595
+          }
+        ],
+        "compensationLedger": [],
+        "counters": {
+          "DUPLICATE_LOGICAL_EFFECT_CREATION_COUNT": 0,
+          "RETRY_IDEMPOTENCY_KEY_MISMATCH_COUNT": 0,
+          "RETRY_LOGICAL_EFFECT_ID_MISMATCH_COUNT": 0,
+          "BACKGROUND_SIDE_EFFECT_COUNT": 0,
+          "MISSED_REQUIRED_EFFECT_COUNT": 0,
+          "UNRESOLVED_REQUIRED_EFFECT_COUNT": 0,
+          "UNRESOLVED_REQUIRED_COMPENSATION_COUNT": 0
+        }
+      }
+    },
+    "during": {
+      "mode": "exam",
+      "root": true,
+      "ready": true,
+      "metrics": true
+    },
+    "cancelled": {
+      "bg": "DISCARDED_STALE",
+      "fg": true,
+      "mode": "ans",
+      "noStale": true,
+      "hosts": 0
+    },
+    "printed": {
+      "cancelled": "DISCARDED_STALE",
+      "ready": true,
+      "mode": "ans"
+    },
+    "source": {
+      "bg": "DISCARDED_STALE",
+      "fg": true,
+      "newSession": true,
+      "retired": "EVICTED",
+      "noStale": true
+    },
+    "locked": {
+      "rejected": true,
+      "connected": true,
+      "mode": "sol",
+      "active": true,
+      "pages": 3
+    },
+    "activation": {
+      "ok": true,
+      "cache": "HIT"
+    },
+    "backgroundPosts": 0,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "automatic": {
+      "mode": "exam",
+      "active": "exam",
+      "metricsMode": "exam",
+      "foreground": true,
+      "background": false,
+      "afterPaint": true,
+      "backgroundAttempts": 2,
+      "count": 3,
+      "ledger": {
+        "entries": [
+          {
+            "logicalEffectId": "blueprint:exams/test-fixtures/render-authority-golden.js|1,2,3,4,5,6,7,8",
+            "effectId": "blueprint",
+            "triggerEventId": "render-1789126110226-1",
+            "idempotencyKey": "exams/test-fixtures/render-authority-golden.js|1,2,3,4,5,6,7,8",
+            "attempt": 1,
+            "state": "ACKNOWLEDGED",
+            "lastError": null,
+            "createdAt": 1789126110946,
+            "required": false,
+            "updatedAt": 1789126110965
+          },
+          {
+            "logicalEffectId": "assignment:prewarm-test|2026-09-10|exams/test-fixtures/render-authority-golden.js|8|archive",
+            "effectId": "assignment",
+            "triggerEventId": "render-1789126110226-1",
+            "idempotencyKey": "prewarm-test|2026-09-10|exams/test-fixtures/render-authority-golden.js|8|archive",
+            "attempt": 1,
+            "state": "ACKNOWLEDGED",
+            "lastError": null,
+            "createdAt": 1789126110946,
+            "required": false,
+            "updatedAt": 1789126110966
+          }
+        ],
+        "compensationLedger": [],
+        "counters": {
+          "DUPLICATE_LOGICAL_EFFECT_CREATION_COUNT": 0,
+          "RETRY_IDEMPOTENCY_KEY_MISMATCH_COUNT": 0,
+          "RETRY_LOGICAL_EFFECT_ID_MISMATCH_COUNT": 0,
+          "BACKGROUND_SIDE_EFFECT_COUNT": 0,
+          "MISSED_REQUIRED_EFFECT_COUNT": 0,
+          "UNRESOLVED_REQUIRED_EFFECT_COUNT": 0,
+          "UNRESOLVED_REQUIRED_COMPENSATION_COUNT": 0
+        }
+      }
+    },
+    "during": {
+      "mode": "exam",
+      "root": true,
+      "ready": true,
+      "metrics": true
+    },
+    "cancelled": {
+      "bg": "DISCARDED_STALE",
+      "fg": true,
+      "mode": "ans",
+      "noStale": true,
+      "hosts": 0
+    },
+    "printed": {
+      "cancelled": "DISCARDED_STALE",
+      "ready": true,
+      "mode": "ans"
+    },
+    "source": {
+      "bg": "DISCARDED_STALE",
+      "fg": true,
+      "newSession": true,
+      "retired": "EVICTED",
+      "noStale": true
+    },
+    "locked": {
+      "rejected": true,
+      "connected": true,
+      "mode": "sol",
+      "active": true,
+      "pages": 3
+    },
+    "activation": {
+      "ok": true,
+      "cache": "HIT"
+    },
+    "backgroundPosts": 0,
+    "errors": []
+  }
+]

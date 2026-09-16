@@ -467,7 +467,7 @@ r43 최초 실행에서 25 매산고 1final q15를 잘못 지정한 path/id 오�
 
 r43 current V2 preparation은 새 `hs-quadratic-r43e` work-batch/run root에서 59 run·430/430·오류 0, machine STATIC/METADATA evidence 860개·validation 오류 0이다.
 
-target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 334건, 잔여 45건이다. fresh expected fact 누적은 현재 counting 기준 381건, 잔여 49건이다. 최신 상태는 [r43 V3 closure snapshot](C:/Users/USER/Desktop/AP------/reports/hs-quadratic-svg-upgrade-20260908/644_current_closure_snapshot_r43_v3_closed.json)이다.
+target-scoped coverage 기준으로는 430 target row 중 visual-decision target current visual 334건, 잔여 45건이다. fresh expected fact 누적은 현재 counting 기준 381건, 잔여 49건이다. r43 V3 closure snapshot은 로컬 전용 machine-evidence workspace에 보존하며, 해당 중간 산출물은 Git source tree에 포함하지 않는다.
 
 r43 역시 candidate row-level 결과를 full-scope PASS로 승격하지 않는다. 남은 45개 target-scoped candidate visual, 49개 fresh expected fact, 전체 430-row independent math/solution freeze, provider-attested FINAL_AUDIT, 실제 provider desktop/mobile capture 및 independent render review, 15개 registry identity authority, DB/question-index/production promotion은 계속 열린 gate다. 따라서 최종 `PASS`·`SEALED`는 선언하지 않는다.
 

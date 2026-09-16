@@ -60,6 +60,11 @@ window.questionBank = [
       "식세우기"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_수학I/q2-solution.svg",
+    "solutionImageAlt": "탄젠트 점근선 candidate · 25 제일고 q2",
+    "solutionImageCaption": "branch-separated tangent graph",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y = \\tan\\dfrac{3}{2}x$의 점근선의 방정식은? (단, $n$은 정수)",
     "choices": [
       "$x = \\dfrac{n\\pi}{3}$",
@@ -513,6 +518,11 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "25_jeil_final_q15_trig_interval",
+    "solutionImageCaption": "trig_interval",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "$0 \\le x < 2\\pi$일 때, 두 부등식\n$$\\sin x > \\frac{\\sqrt{2}}{2}, \\quad \\cos x < \\frac{1}{2}$$\n을 동시에 만족시키는 $x$의 값의 범위는 $a\\pi < x < b\\pi$이다. $ab$의 값은?",
     "choices": [
       "$\\dfrac{1}{4}$",

@@ -468,13 +468,13 @@ window.questionBank = [
     "wide": false,
     "content": "[상] 한 변의 길이가 10인 정사각형 $ABCD$ 내부에 $DE=5, DF=4$인 선분 $EF$ 위의 점 $P$로부터 변 $AB, BC$에 내린 수선으로 만든 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]",
     "choices": [
+      "245/4",
       "235/4",
       "60",
-      "245/4",
       "62",
       "255/4"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "좌표평면 도입 및 이차함수 최대치 산출\\n$D(0,0)$으로 설정하면 $E(5,0), F(0,4)$ 이므로 선분 $EF$의 방정식은 $y=-\\frac{4}{5}x+4$\\n$P(t, -\\frac{4}{5}t+4)$ ($0 \\le t \\le 5$)라 하면, 사각형의 가로는 $10-t$, 세로는 $10-(-\\frac{4}{5}t+4)=6+\\frac{4}{5}t$\\n넓이 $S(t)=(10-t)(6+\\frac{4}{5}t)=-\\frac{4}{5}t^2+2t+60=-\\frac{4}{5}\\left(t-\\frac{5}{4}\\right)^2+\\frac{245}{4}$\\n범위 내 꼭짓점에서 최댓값을 가지므로 넓이의 최댓값은 $\\frac{245}{4}$\\n$\\therefore \\frac{245}{4}$",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",

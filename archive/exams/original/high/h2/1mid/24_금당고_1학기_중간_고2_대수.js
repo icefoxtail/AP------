@@ -539,6 +539,11 @@ window.questionBank = [
   },
   {
     "id": 16,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "24_geumdang_q16_exp_log_triangle",
+    "solutionImageCaption": "triangle_log",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">점 A(8, 0)을 지나는 직선 $y=-x+8$이 두 곡선 $y=a^x$, $y=\\log_a x$와 만나는 점을 각각 B, C라 하고, 점 B를 지나고 $y$축에 수직인 직선이 곡선 $y=\\log_a x$와 만나는 점을 D라 하자. $\\overline{BC}:\\overline{CA}=2:1$일 때, 삼각형 BCD의 넓이는? (단, $a>1$) [4.6]</div>",
     "choices": [
       "107",
@@ -567,7 +572,7 @@ window.questionBank = [
       "삼각형"
     ],
     "wide": false,
-    "solution": "직선 $y=-x+8$ 위에서 지수함수와 로그함수의 교점은 서로 좌표가 뒤바뀌므로 $B=(t, 8-t)$, $C=(8-t, t)$ 로 둘 수 있다. 또 $A=(8,0)$ 이고 $\\overline{BC}:\\overline{CA}=2:1$ 이므로 같은 직선 위의 길이비를 이용하면 $\\frac{8-2t}{t}=2$ 이고, 따라서 $t=2$ 이다. 그러므로 $B=(2,6)$, $C=(6,2)$ 이다.<br><div style='text-align:center; margin: 10px 0;'><svg viewBox='0 0 320 300' preserveAspectRatio='xMidYMid meet'><line x1='20' y1='260' x2='300' y2='260' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><line x1='40' y1='280' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><defs><marker id='arrow' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='4' markerHeight='4' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='260' x2='240' y2='60' stroke='gray' stroke-dasharray='4 4' stroke-width='1'/><line x1='40' y1='60' x2='240' y2='260' stroke='blue' stroke-width='1.5'/><path d='M 40,235 Q 65,220 90,110 T 110,20' fill='none' stroke='black' stroke-width='1.5'/><path d='M 65,260 Q 120,240 190,210 Q 240,160 280,110' fill='none' stroke='black' stroke-width='1.5'/><line x1='90' y1='110' x2='280' y2='110' stroke='green' stroke-dasharray='3 3' stroke-width='1.5'/><line x1='280' y1='110' x2='280' y2='260' stroke='gray' stroke-dasharray='2 2' stroke-width='1'/><circle cx='90' cy='110' r='4' fill='red'/><circle cx='190' cy='210' r='4' fill='red'/><circle cx='240' cy='260' r='3' fill='black'/><circle cx='280' cy='110' r='4' fill='green'/><text x='70' y='105' font-size='12' font-weight='bold'>B</text><text x='195' y='225' font-size='12' font-weight='bold'>C</text><text x='230' y='275' font-size='10'>A(8,0)</text><text x='285' y='105' font-size='12' font-weight='bold'>D(a^6, 6)</text><text x='270' y='275' font-size='10'>216</text><text x='290' y='250' font-size='10' font-style='italic'>x</text><text x='25' y='25' font-size='10' font-style='italic'>y</text><text x='25' y='275' font-size='10'>O</text><text x='130' y='150' font-size='11' fill='blue' font-weight='bold'>2</text><text x='220' y='230' font-size='11' fill='blue' font-weight='bold'>1</text><text x='110' y='45' font-size='10'>y=a^x</text><text x='245' y='165' font-size='10'>y=log_a x</text><text x='45' y='90' font-size='10' fill='blue'>y=-x+8</text></svg></div><br>점 $B$ 가 $y=a^x$ 위에 있으므로 $a^2=6$ 이다. 점 $D$ 는 $y=6$ 과 $y=\\log_a x$ 의 교점이므로 $x=a^6=(a^2)^3=6^3=216$ 이고, 따라서 $D=(216,6)$ 이다. 삼각형 BCD 의 넓이는 $\\frac{1}{2}\\cdot(216-2)\\cdot(6-2)=428$ 이다.",
+    "solution": "직선 $y=-x+8$ 위에서 지수함수와 로그함수의 교점은 서로 좌표가 뒤바뀌므로 $B=(t, 8-t)$, $C=(8-t, t)$ 로 둘 수 있다. 또 $A=(8,0)$ 이고 $\\overline{BC}:\\overline{CA}=2:1$ 이므로 같은 직선 위의 길이비를 이용하면 $\\frac{8-2t}{t}=2$ 이고, 따라서 $t=2$ 이다. 그러므로 $B=(2,6)$, $C=(6,2)$ 이다.<br>점 $B$ 가 $y=a^x$ 위에 있으므로 $a^2=6$ 이다. 점 $D$ 는 $y=6$ 과 $y=\\log_a x$ 의 교점이므로 $x=a^6=(a^2)^3=6^3=216$ 이고, 따라서 $D=(216,6)$ 이다. 삼각형 BCD 의 넓이는 $\\frac{1}{2}\\cdot(216-2)\\cdot(6-2)=428$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "exponential function",
@@ -576,6 +581,11 @@ window.questionBank = [
   },
   {
     "id": 17,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q17-solution.svg",
+    "solutionImageAlt": "24_geumdang_q17_cos_counts",
+    "solutionImageCaption": "cos_counts",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">닫힌구간 $[0, 2\\pi]$에서 정의된 함수 $f(x)$는 $$f(x)=\\begin{cases}\\cos x & \\left(0 \\le x \\le \\frac{k}{3}\\pi\\right)\\\\[6pt]2\\cos\\left(\\frac{k}{3}\\pi\\right)-\\cos x & \\left(\\frac{k}{3}\\pi < x \\le 2\\pi\\right)\\end{cases}$$ 이다. 곡선 $y=f(x)$와 직선 $y=\\cos\\left(\\frac{k}{3}\\pi\\right)$의 교점의 개수를 $a_k$라 할 때, $a_1+a_2+a_3+a_4+a_5$의 값은? [4.8]</div>",
     "choices": [
       "6",
@@ -604,7 +614,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "두 구간 모두에서 직선 $y=\\cos\\left(\\frac{k}{3}\\pi\\right)$ 와의 교점은 결국 $\\cos x = \\cos\\left(\\frac{k}{3}\\pi\\right)$ 의 해를 세는 것과 같다. <br><div style='text-align:center; margin: 10px 0;'><svg viewBox='0 0 350 250' preserveAspectRatio='xMidYMid meet'><line x1='20' y1='200' x2='320' y2='200' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><line x1='40' y1='220' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><defs><marker id='arrow' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='4' markerHeight='4' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='140' x2='300' y2='140' stroke='gray' stroke-dasharray='2 2' stroke-width='0.5'/><line x1='40' y1='80' x2='300' y2='80' stroke='gray' stroke-dasharray='2 2' stroke-width='0.5'/><line x1='160' y1='200' x2='160' y2='80' stroke='gray' stroke-dasharray='2 2' stroke-width='0.5'/><line x1='40' y1='170' x2='300' y2='170' stroke='blue' stroke-width='1.2'/><path d='M 40,140 C 50,140 65,145 80,170' fill='none' stroke='black' stroke-width='2'/><path d='M 80,170 C 100,130 130,80 160,80 C 190,80 250,200 280,200' fill='none' stroke='black' stroke-width='2'/><circle cx='80' cy='170' r='4' fill='red'/><circle cx='240' cy='170' r='4' fill='red'/><text x='25' y='215' font-size='10'>O</text><text x='310' y='190' font-size='10' font-style='italic'>x</text><text x='25' y='25' font-size='10' font-style='italic'>y</text><text x='25' y='145' font-size='10'>1</text><text x='25' y='85' font-size='10'>2</text><text x='275' y='215' font-size='10'>2π</text><text x='155' y='215' font-size='10'>π</text><text x='255' y='165' font-size='10' fill='blue'>y=1/2</text><text x='180' y='100' font-size='10' font-weight='bold'>y=f(x)</text></svg></div><br>$k=1,2,3,4,5$ 에 대하여 각각의 해 개수는 $a_1=2$, $a_2=2$, $a_3=1$, $a_4=2$, $a_5=2$ 이다. 따라서 $a_1+a_2+a_3+a_4+a_5=9$ 이다.",
+    "solution": "두 구간 모두에서 직선 $y=\\cos\\left(\\frac{k}{3}\\pi\\right)$ 와의 교점은 결국 $\\cos x = \\cos\\left(\\frac{k}{3}\\pi\\right)$ 의 해를 세는 것과 같다. <br>$k=1,2,3,4,5$ 에 대하여 각각의 해 개수는 $a_1=2$, $a_2=2$, $a_3=1$, $a_4=2$, $a_5=2$ 이다. 따라서 $a_1+a_2+a_3+a_4+a_5=9$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
@@ -613,6 +623,11 @@ window.questionBank = [
   },
   {
     "id": 18,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "24_geumdang_q18_log_transform",
+    "solutionImageCaption": "log_transform",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">함수 $y=\\log_2 x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 후 $x$축에 대하여 대칭이동한 그래프가 함수 $y=\\log_a bx$의 그래프와 일치할 때, $a+b$의 값을 구하시오. (단, $a \\ne 1$, $a>0$, $b>0$이고, $a, b$는 상수이다.) [4.0]</div>",
     "choices": [],
     "answer": "\\frac{5}{8}",
@@ -643,6 +658,11 @@ window.questionBank = [
   },
   {
     "id": 19,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "24_geumdang_q19_abs_sine_range",
+    "solutionImageCaption": "abs_sine",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">실수 $t$에 대하여 직선 $y=t$와 함수 $y=|a\\sin 2x + b|\\ (0 \\le x \\le 2\\pi)$의 그래프가 만나는 서로 다른 교점의 개수를 $f(t)$라 하자. $f(3)=7$일 때, $f(t)=4$를 만족시키는 모든 실수 $t$의 범위를 구하시오. (단, $a>0$, $b>0$) [5.0]</div>",
     "choices": [],
     "answer": "3<t<9",
@@ -665,7 +685,7 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "solution": "$f(3)=7$ 이 되려면 방정식 $|a\\sin 2x+b|=3$ 이 $\\sin 2x=0$ 에서 5개, $\\sin 2x=-1$ 또는 $1$ 에서 2개 해를 가져야 한다. 이 조건을 만족시키는 값은 $a=6$, $b=3$ 이다. 따라서 함수는 $y=|6\\sin 2x+3|$ 이다.<br><div style='text-align:center; margin: 10px 0;'><svg viewBox='0 0 400 200' preserveAspectRatio='xMidYMid meet'><line x1='20' y1='160' x2='380' y2='160' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><line x1='40' y1='180' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrow)'/><defs><marker id='arrow' viewBox='0 0 10 10' refX='5' refY='5' markerWidth='4' markerHeight='4' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='120' x2='360' y2='120' stroke='blue' stroke-dasharray='4 4' stroke-width='1.5'/><line x1='40' y1='80' x2='360' y2='80' stroke='green' stroke-width='1.5'/><path d='M 40,120 C 50,40 65,40 77.5,40 C 90,40 105,40 115,120 C 120,160 125,160 127.5,160 C 135,160 145,120 152.5,120 C 160,120 170,160 177.5,160 C 180,160 185,160 190,120 C 200,40 215,40 227.5,40 C 240,40 255,40 265,120 C 270,160 275,160 277.5,160 C 285,160 295,120 302.5,120 C 310,120 320,160 327.5,160 C 330,160 335,160 340,120' fill='none' stroke='black' stroke-width='1.5'/><circle cx='40' cy='120' r='3' fill='red'/><circle cx='115' cy='120' r='3' fill='red'/><circle cx='152.5' cy='120' r='3' fill='red'/><circle cx='190' cy='120' r='3' fill='red'/><circle cx='265' cy='120' r='3' fill='red'/><circle cx='302.5' cy='120' r='3' fill='red'/><circle cx='340' cy='120' r='3' fill='red'/><circle cx='52.5' cy='80' r='3' fill='green'/><circle cx='102.5' cy='80' r='3' fill='green'/><circle cx='202.5' cy='80' r='3' fill='green'/><circle cx='252.5' cy='80' r='3' fill='green'/><text x='25' y='175' font-size='10'>O</text><text x='385' y='150' font-size='10' font-style='italic'>x</text><text x='25' y='25' font-size='10' font-style='italic'>y</text><text x='365' y='115' font-size='10' fill='blue'>y=3 (7개)</text><text x='365' y='75' font-size='10' fill='green'>y=t (4개)</text></svg></div><br>이제 $|6\\sin 2x+3|=t$ 를 풀면 $\\sin 2x=\\frac{t-3}{6}$ 또는 $\\sin 2x=\\frac{-t-3}{6}$ 이다. $3<t<9$ 에서는 첫 번째 식만 해를 4개 갖고 두 번째 식은 해가 없으므로 $f(t)=4$ 이다. 따라서 구하는 범위는 $3<t<9$ 이다.",
+    "solution": "$f(3)=7$ 이 되려면 방정식 $|a\\sin 2x+b|=3$ 이 $\\sin 2x=0$ 에서 5개, $\\sin 2x=-1$ 또는 $1$ 에서 2개 해를 가져야 한다. 이 조건을 만족시키는 값은 $a=6$, $b=3$ 이다. 따라서 함수는 $y=|6\\sin 2x+3|$ 이다.<br>이제 $|6\\sin 2x+3|=t$ 를 풀면 $\\sin 2x=\\frac{t-3}{6}$ 또는 $\\sin 2x=\\frac{-t-3}{6}$ 이다. $3<t<9$ 에서는 첫 번째 식만 해를 4개 갖고 두 번째 식은 해가 없으므로 $f(t)=4$ 이다. 따라서 구하는 범위는 $3<t<9$ 이다.",
     "level": "중",
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
@@ -702,6 +722,11 @@ window.questionBank = [
   },
   {
     "id": 21,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "24_geumdang_q21_exp_log_triangle",
+    "solutionImageCaption": "exp_log_triangle",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">$a>2$인 실수 $a$에 대하여 기울기가 $-1$인 직선이 두 곡선 $y=a^{x-3}$, $y=\\log_a(x-3)$과 만나는 점을 각각 A, B라 하자. 점 C(3, 0)에 대하여 삼각형 ABC의 넓이가 10이고 선분 AB의 중점의 $x$좌표가 $\\frac{11}{2}$일 때, $a$의 값을 구하시오. [10]</div>",
     "choices": [],
     "answer": "$\\frac{81}{4}$",

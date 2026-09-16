@@ -10,10 +10,14 @@
     challenge: { label: '도전 문제', buckets: ['중', '상'], weights: [0.3, 0.7] }
   };
   const WORKFLOW_STEPS = ['단원', '출처', '구성', '확인'];
+  const PRINT_HEADER_TEXT_LIMITS = { title: 80, metaRight: 60, subtitle: 120 };
+  const REPLACEMENT_PAGE_SIZE = 10;
   const state = {
     catalog: null, index: [], profileId: 'h1', selectedUnitKey: '', fileCache: new Map(), busyKey: '',
     metadataLoaded: false, metadataError: false, filterState: null, collectionState: null, generatedPapers: [],
-    workflowStep: 1, sourceMode: 'archive', previewPaperPosition: 0, previewLoadToken: 0, qpp: '4'
+    workflowStep: 1, sourceMode: 'archive', previewPaperPosition: 0, previewLoadToken: 0, qpp: '4',
+    questionEditMode: false, selectedQuestionIndex: -1, replacementCandidates: [], replacementCandidatePage: 0,
+    replacementFilter: null
   };
 
   function escapeHtml(value) {
@@ -160,6 +164,117 @@
     }
     return getUnit(unitKey)?.papers.find(paper => paper.index === Number(paperIndex));
   }
+  function resetQuestionReplacementState(options = {}) {
+    state.selectedQuestionIndex = -1;
+    state.replacementCandidates = [];
+    state.replacementCandidatePage = 0;
+    state.replacementFilter = null;
+    if (options.disableEditMode) state.questionEditMode = false;
+  }
+  function getReplacementIncludeUnclassified() {
+    return state.sourceMode === 'school'
+      ? state.collectionState?.includeUnclassified === true
+      : state.filterState?.includeUnclassified === true;
+  }
+  function isReplacementRecordAllowed(record) {
+    if (getReplacementIncludeUnclassified()) return true;
+    return Boolean(core.getSubUnitKey(record)) && core.getDifficultyBucket(record) !== '미분류';
+  }
+  function getReplacementSourcePool(unit, paper) {
+    let records = unit.records;
+    if (state.sourceMode === 'school' && state.collectionState) {
+      const collection = core.buildCollectionPapers(getCollectionRecords(), getProfile(), {
+        ...state.collectionState,
+        profileId: state.profileId,
+        unitKey: unit.key,
+        subUnitKeys: [],
+        difficultyBuckets: [],
+        countMode: 'all',
+        target: state.catalog.scope.targetQuestionsPerPaper,
+        max: state.catalog.scope.hardMaxQuestionsPerPaper
+      });
+      records = collection.records || [];
+      const selectedYearsBySchool = paper.selection?.collection?.selectedYearsBySchool;
+      if (selectedYearsBySchool && typeof selectedYearsBySchool === 'object') {
+        records = records.filter(record => {
+          const schoolKey = core.getSchoolKey(record) || '__unknown__';
+          const years = Array.isArray(selectedYearsBySchool[schoolKey])
+            ? selectedYearsBySchool[schoolKey]
+            : [];
+          return years.includes(core.getExamYear(record));
+        });
+      }
+      if (paper.schoolKey) records = records.filter(record => core.getSchoolKey(record) === paper.schoolKey);
+    }
+    return records.filter(isReplacementRecordAllowed);
+  }
+  function getUsedGeneratedQuestionIdentities() {
+    return new Set(state.generatedPapers.flatMap(paper => paper.records || []).map(record => core.getRecordIdentity(record)));
+  }
+  function getReplacementFilterForRecord(record) {
+    return {
+      subUnitKey: core.getSubUnitKey(record) || '',
+      difficultyBucket: core.getDifficultyBucket(record)
+    };
+  }
+  function getReplacementSubUnitOptions(records) {
+    const options = new Map();
+    records.forEach(record => {
+      const key = core.getSubUnitKey(record) || '__unclassified__';
+      if (!options.has(key)) options.set(key, core.getSubUnitLabel(record) || '미분류 소단원');
+    });
+    return [...options.entries()]
+      .map(([key, label]) => ({ key, label }))
+      .sort((a, b) => String(a.label).localeCompare(String(b.label), 'ko'));
+  }
+  function compareReplacementRecords(a, b) {
+    return core.compareRecords(a, b) || String(core.getRecordIdentity(a)).localeCompare(String(core.getRecordIdentity(b)));
+  }
+  function getReplacementCandidates(unit, paper, index, filter = state.replacementFilter) {
+    const currentIdentity = core.getRecordIdentity(paper.records[index]);
+    const used = getUsedGeneratedQuestionIdentities();
+    const subUnitKey = filter?.subUnitKey || '';
+    const difficultyBucket = filter?.difficultyBucket || '';
+    return getReplacementSourcePool(unit, paper)
+      .filter(record => {
+        const recordSubUnitKey = core.getSubUnitKey(record) || '';
+        const recordDifficulty = core.getDifficultyBucket(record);
+        if (subUnitKey && recordSubUnitKey !== (subUnitKey === '__unclassified__' ? '' : subUnitKey)) return false;
+        if (difficultyBucket && recordDifficulty !== difficultyBucket) return false;
+        const identity = core.getRecordIdentity(record);
+        return identity !== currentIdentity && !used.has(identity);
+      })
+      .sort(compareReplacementRecords);
+  }
+  function rebuildPaperAfterReplacement(unit, paper) {
+    paper.count = paper.records.length;
+    paper.sourceCount = new Set(paper.records.map(record => record.sourceFile)).size;
+    const snapshotUnitKey = state.sourceMode === 'school'
+      ? `collection-${paper.schoolKey || 'combined'}`
+      : unit.key;
+    paper.snapshotKey = core.buildSnapshotKey(snapshotUnitKey, paper.records, state.catalog.scope, paper.selection);
+  }
+  function getDefaultPaperPrintHeaderOptions(unit, paper) {
+    const profile = getProfile();
+    return {
+      title: paper.title,
+      metaRight: `${profile.gradeLabel} ${unit.course} 단원별 기출`,
+      subtitle: '',
+      showNameLine: true,
+      showScoreLine: true,
+      applyToSolution: true,
+      applyToAnswer: true
+    };
+  }
+  function ensurePaperPrintHeaderOptions(unit, paper) {
+    if (!paper.printHeaderOptions || typeof paper.printHeaderOptions !== 'object') {
+      paper.printHeaderOptions = getDefaultPaperPrintHeaderOptions(unit, paper);
+    }
+    return paper.printHeaderOptions;
+  }
+  function normalizePrintHeaderText(value, maxLength) {
+    return String(value ?? '').replace(/\s+/g, ' ').trim().slice(0, maxLength);
+  }
   function getSourceExamLabel(sourceFile, record = {}) {
     const filename = String(sourceFile || '').split('/').pop().replace(/\.js$/i, '');
     const parts = filename.split('_');
@@ -198,6 +313,7 @@
     const collection = selection.collection || null;
     const selectedSubUnits = [...new Map(paper.records.map(record => [record.subUnitKey || '__unclassified__', core.getSubUnitLabel(record) || '미분류 소단원'])).entries()].map(([key, label]) => ({ key, label }));
     const sourceSummary = getPaperSources(paper).map(source => source.label).filter(Boolean).join(' / ');
+    const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const meta = {
       title: paper.title, customTitle: paper.title, identityTitle: paper.title, count: questions.length,
       generatedAt: new Date().toISOString(), category: '단원별 기출', grade: profile.grade, gradeLabel: profile.gradeLabel,
@@ -210,10 +326,7 @@
       sourceSummary: sourceSummary ? `출처: ${sourceSummary}` : '',
       questionUids: questions.map(question => core.getQuestionUid(question)).filter(Boolean),
       metadataRevision: [...new Set(paper.records.map(record => record.metadataRevision).filter(Boolean))].join(',') || '',
-      printHeaderOptions: {
-        title: paper.title, metaRight: `${profile.gradeLabel} ${unit.course} 단원별 기출`, subtitle: '', showNameLine: true,
-        showScoreLine: true, applyToSolution: true, applyToAnswer: true
-      }
+      printHeaderOptions: { ...printHeaderOptions }
     };
     localStorage.setItem(`mixedQuestions_${paper.snapshotKey}`, JSON.stringify(questions));
     localStorage.setItem(`mixedMeta_${paper.snapshotKey}`, JSON.stringify(meta));
@@ -327,6 +440,7 @@
     state.generatedPapers = [];
     state.previewPaperPosition = 0;
     state.previewLoadToken += 1;
+    resetQuestionReplacementState({ disableEditMode: true });
     const report = document.getElementById('unit-selection-report');
     if (report) report.innerHTML = '';
     const collectionReport = document.getElementById('unit-collection-report');
@@ -639,11 +753,13 @@
     const unit = getUnit(state.selectedUnitKey); if (!unit || !state.collectionState) return false;
     const plan = buildCollectionSelection(unit); const result = plan.result;
     if (!result.candidateCount || !result.ok || !result.papers.length) {
+      resetQuestionReplacementState({ disableEditMode: true });
       state.generatedPapers = [];
       renderCollectionReport(unit, plan, false);
       setStatus(!result.candidateCount ? '조건에 맞는 기출 자료가 없습니다.' : `조건에 맞는 문항이 ${result.shortage}개 부족합니다.`, true);
       return false;
     }
+    resetQuestionReplacementState({ disableEditMode: true });
     state.generatedPapers = result.papers.map((paper, index) => {
       const selection = { ...plan.selection, paperKey: `${paper.schoolKey || 'combined'}-${index + 1}` };
       const records = paper.records;
@@ -799,12 +915,13 @@
     const unit = getUnit(state.selectedUnitKey); if (!unit || !state.filterState) return false;
     const plan = buildSelection(unit); const result = plan.result; const report = document.getElementById('unit-selection-report');
     if (!result.requestedCount) { if (report) report.innerHTML = '<div class="unit-empty-result">출제할 문항 수를 입력하거나 고급 조합 행을 추가해 주세요.</div>'; setStatus('출제 조건을 확인해 주세요.', true); return false; }
-    if (!result.ok) { state.generatedPapers = []; renderSelectionReport(unit, plan, false); setStatus(result.limitExceeded ? `한 문제지는 최대 ${result.limit}문항까지 만들 수 있습니다.` : `조건에 맞는 문항이 ${result.shortage}개 부족합니다. 아래 완화 방법을 선택해 주세요.`, true); return false; }
+    if (!result.ok) { resetQuestionReplacementState({ disableEditMode: true }); state.generatedPapers = []; renderSelectionReport(unit, plan, false); setStatus(result.limitExceeded ? `한 문제지는 최대 ${result.limit}문항까지 만들 수 있습니다.` : `조건에 맞는 문항이 ${result.shortage}개 부족합니다. 아래 완화 방법을 선택해 주세요.`, true); return false; }
     const paperTitle = `${unit.name} · ${buildSelectionLabel(plan.selection)}`;
     const paperRecords = core.splitIntoPapers(result.selected, {
       target: state.catalog.scope.targetQuestionsPerPaper,
       max: state.catalog.scope.hardMaxQuestionsPerPaper
     });
+    resetQuestionReplacementState({ disableEditMode: true });
     state.generatedPapers = paperRecords.map((records, index) => ({
       index: `generated-${index + 1}`, unitKey: unit.key,
       title: paperRecords.length === 1 ? paperTitle : `${paperTitle} · 문제지 ${index + 1}`,
@@ -929,6 +1046,249 @@
     return state.generatedPapers[state.previewPaperPosition];
   }
 
+  function updatePrintHeaderOption(field, value) {
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    if (!paper || !unit) return;
+    const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
+    let finalValue;
+    let shouldRestoreDefaultTitle = false;
+    if (Object.prototype.hasOwnProperty.call(PRINT_HEADER_TEXT_LIMITS, field)) {
+      const normalizedValue = normalizePrintHeaderText(value, PRINT_HEADER_TEXT_LIMITS[field]);
+      shouldRestoreDefaultTitle = field === 'title' && !normalizedValue;
+      finalValue = shouldRestoreDefaultTitle
+        ? getDefaultPaperPrintHeaderOptions(unit, paper).title
+        : normalizedValue;
+    } else if (field === 'showNameLine' || field === 'showScoreLine') {
+      finalValue = Boolean(value);
+    } else {
+      return;
+    }
+    printHeaderOptions[field] = finalValue;
+    if (shouldRestoreDefaultTitle) {
+      const input = document.getElementById('unit-print-header-title-input');
+      if (input && input.value !== finalValue) input.value = finalValue;
+    }
+    const frame = document.getElementById('unit-preview-iframe');
+    frame?.contentWindow?.setPrintHeaderOptions?.({ [field]: finalValue });
+  }
+
+  function ensurePaperReplacementState(paper) {
+    if (!Array.isArray(paper.replacementHistory)) paper.replacementHistory = [];
+    if (!paper.replacementSeenBySlot || typeof paper.replacementSeenBySlot !== 'object') paper.replacementSeenBySlot = {};
+  }
+  function selectPreviewQuestion(questionIndex) {
+    const paper = getActivePreviewPaper();
+    if (!paper || !Number.isInteger(questionIndex) || questionIndex < 0 || questionIndex >= paper.records.length) return;
+    state.selectedQuestionIndex = questionIndex;
+    state.replacementFilter = getReplacementFilterForRecord(paper.records[questionIndex]);
+    state.replacementCandidatePage = 0;
+    refreshReplacementCandidates();
+    syncPreviewQuestionEditMode();
+    updateQuestionReplacementPanel();
+  }
+  function resetReplacementFilterFromCurrentQuestion() {
+    const paper = getActivePreviewPaper();
+    const index = state.selectedQuestionIndex;
+    if (!paper || index < 0 || index >= paper.records.length) return false;
+    state.replacementFilter = getReplacementFilterForRecord(paper.records[index]);
+    state.replacementCandidatePage = 0;
+    return true;
+  }
+  function refreshReplacementCandidates() {
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    const index = state.selectedQuestionIndex;
+    if (!paper || !unit || index < 0 || index >= paper.records.length) {
+      state.replacementCandidates = [];
+      state.replacementCandidatePage = 0;
+      return;
+    }
+    if (!state.replacementFilter) state.replacementFilter = getReplacementFilterForRecord(paper.records[index]);
+    state.replacementCandidates = getReplacementCandidates(unit, paper, index, state.replacementFilter);
+    const pageCount = Math.max(1, Math.ceil(state.replacementCandidates.length / REPLACEMENT_PAGE_SIZE));
+    state.replacementCandidatePage = Math.min(Math.max(0, state.replacementCandidatePage), pageCount - 1);
+  }
+  function updateQuestionReplacementPanel() {
+    const panel = document.getElementById('unit-question-replacement-panel');
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    if (!panel || !paper || !unit || !state.questionEditMode) return;
+    panel.outerHTML = renderQuestionReplacementPanel(unit, paper);
+  }
+  function setReplacementFilter(field, value) {
+    if (!state.replacementFilter || !['subUnitKey', 'difficultyBucket'].includes(field)) return;
+    state.replacementFilter[field] = String(value || '');
+    state.replacementCandidatePage = 0;
+    refreshReplacementCandidates();
+    updateQuestionReplacementPanel();
+  }
+  function setReplacementCandidatePage(page) {
+    const pageCount = Math.max(1, Math.ceil(state.replacementCandidates.length / REPLACEMENT_PAGE_SIZE));
+    state.replacementCandidatePage = Math.min(pageCount - 1, Math.max(0, Number(page || 0)));
+    updateQuestionReplacementPanel();
+  }
+  function getQuestionNumberFromBox(box) {
+    const raw = box?.querySelector('.q-num')?.textContent || '';
+    const match = String(raw).match(/\d+/);
+    return match ? Number(match[0]) : NaN;
+  }
+  function syncPreviewQuestionEditMode() {
+    const frame = document.getElementById('unit-preview-iframe');
+    const doc = frame?.contentDocument;
+    const printArea = doc?.getElementById('print-area');
+    if (!doc || !printArea) return;
+    printArea.classList.toggle('unit-question-edit-mode', state.questionEditMode);
+    const selectedIndex = state.selectedQuestionIndex;
+    doc.querySelectorAll('.q-box').forEach(box => {
+      box.classList.remove('unit-question-edit-selected');
+      const questionNo = getQuestionNumberFromBox(box);
+      if (state.questionEditMode && Number.isInteger(questionNo) && questionNo - 1 === selectedIndex) {
+        box.classList.add('unit-question-edit-selected');
+      }
+    });
+  }
+  function bindPreviewQuestionSelection(doc) {
+    const printArea = doc?.getElementById('print-area');
+    if (!printArea || printArea.dataset.unitQuestionEditBound === '1') return;
+    printArea.addEventListener('click', event => {
+      if (!state.questionEditMode) return;
+      const box = event.target.closest('.q-box');
+      if (!box || !printArea.contains(box)) return;
+      const questionNo = getQuestionNumberFromBox(box);
+      const index = questionNo - 1;
+      const paper = getActivePreviewPaper();
+      if (!Number.isInteger(questionNo) || !paper || index < 0 || index >= paper.records.length) return;
+      event.preventDefault();
+      selectPreviewQuestion(index);
+    });
+    printArea.dataset.unitQuestionEditBound = '1';
+  }
+  function schedulePreviewQuestionBinding(frame) {
+    if (!frame || frame.dataset.unitQuestionBindingScheduled === '1') return;
+    frame.dataset.unitQuestionBindingScheduled = '1';
+    const observe = () => {
+      const doc = frame.contentDocument;
+      if (!doc?.body) {
+        window.setTimeout(observe, 50);
+        return;
+      }
+      const observer = new doc.defaultView.MutationObserver(() => {
+        bindPreviewQuestionSelection(doc);
+        syncPreviewQuestionEditMode();
+      });
+      observer.observe(doc.body, { childList: true, subtree: true });
+      bindPreviewQuestionSelection(doc);
+      syncPreviewQuestionEditMode();
+    };
+    observe();
+  }
+  function toggleQuestionEditMode() {
+    state.questionEditMode = !state.questionEditMode;
+    if (!state.questionEditMode) resetQuestionReplacementState();
+    renderWorkflow();
+  }
+  function quickReplaceSelectedQuestion() {
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    const index = state.selectedQuestionIndex;
+    if (!paper || !unit || index < 0 || index >= paper.records.length) return;
+    resetReplacementFilterFromCurrentQuestion();
+    refreshReplacementCandidates();
+    ensurePaperReplacementState(paper);
+    const currentIdentity = core.getRecordIdentity(paper.records[index]);
+    const seen = new Set(paper.replacementSeenBySlot[index] || [currentIdentity]);
+    let candidate = state.replacementCandidates.find(record => !seen.has(core.getRecordIdentity(record)));
+    if (!candidate && state.replacementCandidates.length) {
+      seen.clear();
+      seen.add(currentIdentity);
+      candidate = state.replacementCandidates[0];
+    }
+    if (!candidate) {
+      setStatus('같은 조건의 다른 문항이 없습니다. 후보 조건을 변경해 직접 선택해 주세요.', true);
+      updateQuestionReplacementPanel();
+      return;
+    }
+    replaceSelectedQuestion(state.replacementCandidates.indexOf(candidate));
+  }
+  function replaceSelectedQuestion(candidateIndex) {
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    const index = state.selectedQuestionIndex;
+    const candidate = state.replacementCandidates[candidateIndex];
+    if (!paper || !unit || !candidate || index < 0 || index >= paper.records.length) return;
+    const current = paper.records[index];
+    const candidateIdentity = core.getRecordIdentity(candidate);
+    const currentIdentity = core.getRecordIdentity(current);
+    const sourcePool = getReplacementSourcePool(unit, paper);
+    const used = getUsedGeneratedQuestionIdentities();
+    if (!sourcePool.some(record => core.getRecordIdentity(record) === candidateIdentity)
+      || candidateIdentity === currentIdentity || used.has(candidateIdentity)) {
+      setStatus('이미 사용 중이거나 현재 출처 범위를 벗어난 문항입니다.', true);
+      refreshReplacementCandidates();
+      updateQuestionReplacementPanel();
+      return;
+    }
+    ensurePaperReplacementState(paper);
+    paper.replacementHistory.push({ index, before: current, after: candidate });
+    const seen = new Set(paper.replacementSeenBySlot[index] || [currentIdentity]);
+    seen.add(currentIdentity);
+    seen.add(candidateIdentity);
+    paper.replacementSeenBySlot[index] = [...seen];
+    paper.records[index] = candidate;
+    rebuildPaperAfterReplacement(unit, paper);
+    refreshReplacementCandidates();
+    renderConfirmation(unit);
+  }
+  function undoLastQuestionReplacement() {
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    if (!paper || !unit || !paper.replacementHistory?.length) return;
+    const entry = paper.replacementHistory.pop();
+    if (!entry || entry.index < 0 || entry.index >= paper.records.length) return;
+    const currentIdentity = core.getRecordIdentity(paper.records[entry.index]);
+    const usedElsewhere = getUsedGeneratedQuestionIdentities();
+    usedElsewhere.delete(currentIdentity);
+    const beforeIdentity = core.getRecordIdentity(entry.before);
+    if (usedElsewhere.has(beforeIdentity)) {
+      paper.replacementHistory.push(entry);
+      setStatus('되돌릴 문항이 다른 문제지에서 사용 중이라 복원할 수 없습니다.', true);
+      return;
+    }
+    paper.records[entry.index] = entry.before;
+    rebuildPaperAfterReplacement(unit, paper);
+    refreshReplacementCandidates();
+    renderConfirmation(unit);
+  }
+  function renderQuestionEditToggle() {
+    return `<div class="unit-question-edit-actions"><button type="button" class="unit-btn${state.questionEditMode ? ' primary' : ''}" aria-pressed="${state.questionEditMode ? 'true' : 'false'}" onclick="UnitPastExams.toggleQuestionEditMode()">문항 수정</button></div>`;
+  }
+  function renderQuestionReplacementPanel(unit, paper) {
+    if (!state.questionEditMode) return '';
+    const panelId = 'unit-question-replacement-panel';
+    const index = state.selectedQuestionIndex;
+    if (index < 0 || index >= paper.records.length) {
+      return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>선택 문항</h3><p class="unit-replacement-empty">왼쪽 미리보기에서 교체할 문항을 클릭하세요.</p></section>`;
+    }
+    const record = paper.records[index];
+    const sourcePool = getReplacementSourcePool(unit, paper);
+    const filter = state.replacementFilter || getReplacementFilterForRecord(record);
+    const subUnitOptions = [{ key: '', label: '전체 소단원' }, ...getReplacementSubUnitOptions(sourcePool)]
+      .map(option => `<option value="${escapeHtml(option.key)}"${filter.subUnitKey === option.key ? ' selected' : ''}>${escapeHtml(option.label)}</option>`).join('');
+    const allowUnclassified = getReplacementIncludeUnclassified();
+    const difficultyOptions = ['', ...LEVELS.filter(level => level !== '미분류' || allowUnclassified)]
+      .map(level => `<option value="${escapeHtml(level)}"${filter.difficultyBucket === level ? ' selected' : ''}>${escapeHtml(level || '전체 난이도')}</option>`).join('');
+    const pageCount = Math.max(1, Math.ceil(state.replacementCandidates.length / REPLACEMENT_PAGE_SIZE));
+    const page = Math.min(state.replacementCandidatePage, pageCount - 1);
+    const pageItems = state.replacementCandidates.slice(page * REPLACEMENT_PAGE_SIZE, (page + 1) * REPLACEMENT_PAGE_SIZE);
+    const candidates = pageItems.map(candidate => {
+      const candidateIndex = state.replacementCandidates.indexOf(candidate);
+      const label = getSourceExamLabel(candidate.sourceFile, candidate) || '출처 확인 필요';
+      return `<article class="unit-replacement-candidate"><div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(core.getSubUnitLabel(candidate) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(candidate))} · 원본 ${escapeHtml(candidate.sourceQuestionNo || candidate.id || '')}번</span></div><button type="button" class="unit-btn" onclick="UnitPastExams.replaceSelectedQuestion(${candidateIndex})">이 문제로 교체</button></article>`;
+    }).join('');
+    return `<section id="${panelId}" class="unit-question-replacement-panel"><h3>선택 문항</h3><div class="unit-replacement-selected"><strong>${index + 1}번</strong><span>${escapeHtml(core.getSubUnitLabel(record) || '미분류 소단원')} · ${escapeHtml(core.getDifficultyBucket(record))}</span><small>${escapeHtml(getSourceExamLabel(record.sourceFile, record) || '출처 확인 필요')} · 원본 ${escapeHtml(record.sourceQuestionNo || record.id || '')}번</small></div><div class="unit-replacement-filters"><label>소단원<select id="unit-replacement-subunit" onchange="UnitPastExams.setReplacementFilter('subUnitKey', this.value)">${subUnitOptions}</select></label><label>난이도<select id="unit-replacement-difficulty" onchange="UnitPastExams.setReplacementFilter('difficultyBucket', this.value)">${difficultyOptions}</select></label></div><div class="unit-replacement-tools"><button type="button" class="unit-btn primary" onclick="UnitPastExams.quickReplaceSelectedQuestion()">같은 조건으로 교체</button><button type="button" class="unit-btn" onclick="UnitPastExams.undoLastQuestionReplacement()"${paper.replacementHistory?.length ? '' : ' disabled'}>교체 되돌리기</button></div><div class="unit-replacement-count">후보 ${state.replacementCandidates.length}문항</div>${candidates || '<p class="unit-replacement-empty">조건에 맞는 다른 문항이 없습니다.</p>'}${pageCount > 1 ? `<div class="unit-replacement-pagination"><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page - 1})"${page <= 0 ? ' disabled' : ''}>이전</button><span>${page + 1} / ${pageCount}</span><button type="button" class="unit-btn" onclick="UnitPastExams.setReplacementCandidatePage(${page + 1})"${page >= pageCount - 1 ? ' disabled' : ''}>다음</button></div>` : ''}</section>`;
+  }
+
   function getSummarySubUnits(paper) {
     return [...new Set(paper.records.map(record => core.getSubUnitLabel(record)).filter(Boolean))];
   }
@@ -937,6 +1297,7 @@
     const root = document.getElementById('unit-content');
     const paper = getActivePreviewPaper();
     if (!paper) { state.workflowStep = 3; renderConfigStep(unit); return; }
+    const printHeaderOptions = ensurePaperPrintHeaderOptions(unit, paper);
     const profile = getProfile();
     const subUnits = getSummarySubUnits(paper);
     const levels = core.getDifficultySummary(paper.records);
@@ -948,7 +1309,9 @@
     const difficultyText = LEVELS.filter(level => levels[level]).map(level => `${level} ${levels[level]}문항`).join(' · ') || '난이도 정보 없음';
     const bars = LEVELS.map(level => `<span style="width:${(Number(levels[level] || 0) / total * 100).toFixed(2)}%"></span>`).join('');
     const pager = state.generatedPapers.length > 1 ? `<div class="unit-preview-pager"><button class="unit-btn" type="button" aria-label="이전 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition - 1})"${state.previewPaperPosition <= 0 ? ' disabled' : ''}><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button><span>${state.previewPaperPosition + 1} / ${state.generatedPapers.length}</span><button class="unit-btn" type="button" aria-label="다음 문제지" onclick="UnitPastExams.selectPreviewPaper(${state.previewPaperPosition + 1})"${state.previewPaperPosition >= state.generatedPapers.length - 1 ? ' disabled' : ''}><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button></div>` : '';
-    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">조건에 맞는 문항<strong>${available.toLocaleString()}문항</strong></div><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">구성 수정</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
+    root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: state.sourceMode === 'school' ? paper.school || '학교별 문제지' : QUICK_PRESETS[state.filterState?.preset]?.label, count: paper.count })}<div class="unit-confirmation"><div class="unit-preview-pane"><div class="unit-preview-toolbar"><div class="unit-preview-title"><strong>${escapeHtml(paper.title)}</strong><span>${paper.count}문항 · 원본 ${paper.sourceCount}개 시험지</span></div></div><div class="unit-preview-frame" id="unit-preview-frame"><div class="unit-preview-loading"><span><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> 실제 문제지를 준비하는 중입니다.</span></div></div>${pager}</div><aside class="unit-confirm-pane"><h2>출제 요약</h2><dl class="unit-summary-list"><div class="unit-summary-row"><dt>단원</dt><dd>${escapeHtml(profile.gradeLabel)} · ${escapeHtml(unit.course)} · ${escapeHtml(unit.name)}</dd></div><div class="unit-summary-row"><dt>출처</dt><dd>${escapeHtml(sourceLabel)}</dd></div><div class="unit-summary-row"><dt>선택 소단원</dt><dd>${escapeHtml(subUnits.slice(0, 6).join(' · ') || '전체 소단원')}</dd></div><div class="unit-summary-row"><dt>난이도</dt><dd>${escapeHtml(difficultyText)}<div class="unit-difficulty-bar" aria-hidden="true">${bars}</div></dd></div><div class="unit-summary-row"><dt>문항 수</dt><dd>${paper.count}문항</dd></div><div class="unit-summary-row"><dt>원본 시험지</dt><dd>원본 ${paper.sourceCount}개 시험지</dd></div></dl><div class="unit-summary-emphasis">조건에 맞는 문항<strong>${available.toLocaleString()}문항</strong></div><section class="unit-print-header-editor" aria-labelledby="unit-print-header-title"><h3 id="unit-print-header-title">시험지 헤더</h3><div class="unit-print-header-fields"><label>제목<input id="unit-print-header-title-input" type="text" maxlength="80" value="${escapeHtml(printHeaderOptions.title)}" oninput="UnitPastExams.updatePrintHeaderOption('title', this.value)"></label><label>우측 문구<input type="text" maxlength="60" value="${escapeHtml(printHeaderOptions.metaRight)}" oninput="UnitPastExams.updatePrintHeaderOption('metaRight', this.value)"></label><label>보조 문구<input type="text" maxlength="120" value="${escapeHtml(printHeaderOptions.subtitle)}" oninput="UnitPastExams.updatePrintHeaderOption('subtitle', this.value)"></label></div><div class="unit-print-header-checks"><label><input type="checkbox"${printHeaderOptions.showNameLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showNameLine', this.checked)"> 이름칸</label><label><input type="checkbox"${printHeaderOptions.showScoreLine ? ' checked' : ''} onchange="UnitPastExams.updatePrintHeaderOption('showScoreLine', this.checked)"> 점수칸</label></div></section><div class="unit-confirm-actions"><button type="button" class="unit-btn" onclick="UnitPastExams.goToStep(3)">구성 수정</button><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', '${paper.index}', this)"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>학생에게 출제</button></div></aside></div></section>`;
+    const headerEditor = root.querySelector('.unit-print-header-editor');
+    headerEditor?.insertAdjacentHTML('afterend', `${renderQuestionEditToggle()}${renderQuestionReplacementPanel(unit, paper)}`);
     loadPreviewPaper(state.previewPaperPosition);
   }
 
@@ -973,19 +1336,37 @@
   function tunePreviewFrame() {
     const frame = document.getElementById('unit-preview-iframe');
     const doc = frame?.contentDocument;
-    if (!doc || doc.getElementById('unit-preview-style')) return;
-    const style = doc.createElement('style');
-    style.id = 'unit-preview-style';
-    style.textContent = '#mode-ctrl,#fast-print-dialog{display:none!important}body{padding-top:0!important;background:#eef1f5!important}#print-area{padding:18px 0!important;gap:14px!important}.page{box-shadow:0 4px 18px rgba(15,23,42,.12)!important}@media(max-width:640px){body.screen-fit-mode #print-area{margin-left:0!important;margin-right:0!important;transform-origin:top left!important}}';
-    doc.head.appendChild(style);
+    if (!doc) return;
+    if (!doc.getElementById('unit-preview-style')) {
+      const style = doc.createElement('style');
+      style.id = 'unit-preview-style';
+      style.textContent = '#mode-ctrl,#fast-print-dialog{display:none!important}body{padding-top:0!important;background:#eef1f5!important}#print-area{padding:18px 0!important;gap:14px!important}.page{box-shadow:0 4px 18px rgba(15,23,42,.12)!important}@media(max-width:640px){body.screen-fit-mode #print-area{margin-left:0!important;margin-right:0!important;transform-origin:top left!important}}';
+      doc.head.appendChild(style);
+    }
     doc.body.classList.add('screen-fit-mode');
+    if (!doc.getElementById('unit-question-edit-style')) {
+      const style = doc.createElement('style');
+      style.id = 'unit-question-edit-style';
+      style.textContent = '#print-area.unit-question-edit-mode .q-box{cursor:pointer;outline:1px dashed transparent;outline-offset:2px}#print-area.unit-question-edit-mode .q-box:hover{outline:2px solid rgba(240,108,62,.6)}#print-area.unit-question-edit-mode .q-box.unit-question-edit-selected{outline:3px solid #f06c3e;outline-offset:2px;background:rgba(240,108,62,.06)}';
+      doc.head.appendChild(style);
+    }
+    bindPreviewQuestionSelection(doc);
+    schedulePreviewQuestionBinding(frame);
     frame.contentWindow?.updateScreenFitScale?.();
+    const paper = getActivePreviewPaper();
+    const unit = getUnit(state.selectedUnitKey);
+    if (paper && unit) {
+      const headerRequest = frame.contentWindow?.setPrintHeaderOptions?.({ ...ensurePaperPrintHeaderOptions(unit, paper) });
+      headerRequest?.finally?.(() => syncPreviewQuestionEditMode());
+    }
+    syncPreviewQuestionEditMode();
   }
 
   function selectPreviewPaper(position) {
     const next = Math.min(state.generatedPapers.length - 1, Math.max(0, Number(position || 0)));
     if (next === state.previewPaperPosition) return;
     state.previewPaperPosition = next;
+    resetQuestionReplacementState();
     renderWorkflow();
   }
 
@@ -1058,6 +1439,7 @@
     if (!core.PROFILES[profileId] || state.busyKey) return;
     const profileChangedAfterInitialLoad = Boolean(state.catalog) && state.profileId !== profileId;
     state.profileId = profileId; state.selectedUnitKey = ''; state.filterState = null; state.collectionState = null; state.generatedPapers = [];
+    resetQuestionReplacementState({ disableEditMode: true });
     state.workflowStep = 1; state.sourceMode = 'archive'; state.previewPaperPosition = 0; state.previewLoadToken += 1;
     const url = new URL(window.location.href); url.searchParams.set('grade', profileId);
     if (profileChangedAfterInitialLoad) ['unit', 'step', 'subUnit', 'difficulty', 'mode', 'preset', 'count', 'seed', 'includeUnclassified', 'adjacentDifficulty', 'blueprint', 'collection', 'collectionScope', 'collectionStart', 'collectionEnd', 'collectionYearMode', 'collectionYear', 'collectionYearCount', 'collectionYearFrom', 'collectionYearTo', 'collectionSemester', 'collectionExamType', 'collectionSchools', 'collectionOutput', 'collectionCountMode', 'collectionCount', 'collectionSubUnit', 'collectionDifficulty', 'collectionIncludeUnclassified'].forEach(key => url.searchParams.delete(key));
@@ -1092,6 +1474,6 @@
     state.index = joinApprovedMetadata(window.questionIndex); const requested = new URLSearchParams(window.location.search).get('grade'); selectProfile(core.PROFILES[requested] ? requested : 'h1');
   }
   window.addEventListener('popstate', restoreFromUrl);
-  window.UnitPastExams = { init, selectProfile, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
+  window.UnitPastExams = { init, selectProfile, renderDetail, goToStep, selectSourceMode, continueSource, updateDetailFilter, generateUnifiedPreview, generatePaper, generateCollectionPapers, updateCollectionFilter, resetCollectionFilter, filterCollectionSchools, selectAllCollectionSchools, clearCollectionSchools, addBlueprintRow, removeBlueprintRow, updateBlueprintRow, resetDetailFilter, reduceRequestedCount, enableAdjacentDifficulty, enableUnclassified, focusSubUnitFilter, selectPreviewPaper, tunePreviewFrame, updatePrintHeaderOption, toggleQuestionEditMode, selectPreviewQuestion, setReplacementFilter, setReplacementCandidatePage, quickReplaceSelectedQuestion, replaceSelectedQuestion, undoLastQuestionReplacement, printPaper, assignPaper, restoreFromUrl, renderSafeFallback };
   window.High1UnitPastExams = window.UnitPastExams;
 })();

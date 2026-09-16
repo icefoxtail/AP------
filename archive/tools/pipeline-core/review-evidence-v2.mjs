@@ -98,35 +98,47 @@ export function evidenceReuseMetrics(rows) {
 export const AXIS_REVIEW_BINDING = Object.freeze({
   SOURCE: ['U1', 'SOURCE_ONLY', 'NONE'], MATH_A1: ['U1', 'SOURCE_ONLY', 'NONE'],
   V1: ['U1', 'SOURCE_ONLY', 'NONE'], V2: ['U2', 'ARTIFACT_ONLY', 'NONE'],
-  MATH_A2: ['U3', 'FROZEN_V1_V2', 'FROZEN_U1_U2'],
-  SOLUTION: ['U3', 'FROZEN_V1_V2', 'FROZEN_U1_U2'],
-  V3: ['U3', 'FROZEN_V1_V2', 'FROZEN_U1_U2'],
-  RENDER_REVIEW: ['U3', 'ACTUAL_RENDER', 'CAPTURE_ONLY']
+  MATH_A2: ['U3', 'CANDIDATE_ONLY', 'NONE'],
+  SOLUTION: ['U3', 'CANDIDATE_ONLY', 'NONE'],
+  V3: ['U3', 'CANDIDATE_ONLY', 'NONE'],
+  RENDER_REVIEW: ['U3', 'CANDIDATE_ONLY', 'NONE']
 });
 const machineAxes = ['STATIC', 'METADATA', 'RENDER_CAPTURE'];
-export function validateMachineEvidence(evidence, run) {
+export function validateMachineEvidence(evidence, run, { diagnostic = false } = {}) {
   const errors = [];
   if (!machineAxes.includes(evidence?.axis) || evidence.mode !== 'MACHINE_CURRENT' || evidence.auditorPrincipalType !== 'MACHINE_COLLECTOR' || evidence.launchId || evidence.externalTaskId) errors.push('MACHINE_COLLECTOR_SEMANTICS_INVALID');
-  if (evidence?.runId !== run.runId || evidence?.revision !== run.revision || evidence?.inputSha !== run.inputSha || evidence?.reviewStartInputSha !== run.inputSha || evidence?.reviewEndInputSha !== run.inputSha || evidence?.status !== 'PASS') errors.push('MACHINE_CURRENT_BINDING_INVALID');
+  if (evidence?.runId !== run.runId || evidence?.revision !== run.revision || evidence?.inputSha !== run.inputSha || evidence?.reviewStartInputSha !== run.inputSha || evidence?.reviewEndInputSha !== run.inputSha || !(diagnostic ? ['PASS', 'FAIL', 'HOLD'] : ['PASS']).includes(evidence?.status)) errors.push('MACHINE_CURRENT_BINDING_INVALID');
   const provenance = evidence?.machineProvenance;
   if (!provenance || provenance.inputSha !== run.inputSha || provenance.runId !== run.runId || provenance.revision !== run.revision || !nonempty(provenance.collector) || objectSha(provenance) !== evidence.reviewIsolationProvenanceSha) errors.push('MACHINE_PROVENANCE_REQUIRED');
   if (evidence?.axis === 'RENDER_CAPTURE' && (evidence.payload?.actualBrowser !== true || evidence.payload?.productionEngine !== true || !evidence.payload?.itemWitnesses?.length)) errors.push('MACHINE_RENDER_WITNESSES_REQUIRED');
+  if (diagnostic && ['STATIC','METADATA'].includes(evidence?.axis)) {
+    const checks = Object.values(evidence.payload?.checks || {});
+    if (!checks.length || checks.some(value => !['PASS','FAIL','HOLD'].includes(value)) || (evidence.status === 'PASS') !== checks.every(value => value === 'PASS')) errors.push('MACHINE_STATUS_CHECKS_CONTRADICTION');
+  }
+  if (run?.pipeline === 'past-exam' || run?.benchmarkKind) {
+    const declared = run.questions?.find(question => question.questionUid === evidence?.questionUid);
+    const candidate = declared && run.inputs?.find(ref => ref.role === 'candidate' && ref.path === declared.candidatePath);
+    const expectedArtifactSha = candidate?.sha256;
+    if (!expectedArtifactSha || evidence?.machineProvenance?.currentArtifactSha !== expectedArtifactSha || evidence?.machineProvenance?.CURRENT_ARTIFACT_SHA !== expectedArtifactSha || evidence?.machineProvenance?.EVIDENCE_INPUT_SHA !== expectedArtifactSha || evidence?.payload?.currentArtifactSha !== expectedArtifactSha || evidence?.payload?.CURRENT_ARTIFACT_SHA !== expectedArtifactSha || evidence?.payload?.EVIDENCE_INPUT_SHA !== expectedArtifactSha) errors.push('EVIDENCE_INPUT_SHA_CURRENT_ARTIFACT_MISMATCH');
+    if (run?.pastExamAuthority?.startSha !== undefined && evidence?.machineProvenance?.authorityStartSha !== run.pastExamAuthority.startSha) errors.push('EVIDENCE_START_SHA_MISMATCH');
+    if (run?.pastExamAuthority?.startSha !== undefined && evidence?.payload?.authorityStartSha !== run.pastExamAuthority.startSha) errors.push('EVIDENCE_START_SHA_PAYLOAD_MISMATCH');
+  }
   return errors;
 }
-export function validateTypedEvidence(evidence) {
+export function validateTypedEvidence(evidence, { diagnostic = false } = {}) {
   const errors = [], p = evidence?.payload;
   if (!isObject(p)) return ['TYPED_PAYLOAD_REQUIRED'];
   const text = field => { if (!nonempty(p[field])) errors.push(`TYPED_${evidence.axis}:${field}`); };
   const hash = field => { if (!HASH_PATTERN.test(p[field])) errors.push(`TYPED_${evidence.axis}:${field}`); };
   const truth = field => { if (p[field] !== true) errors.push(`TYPED_${evidence.axis}:${field}`); };
-  const checks = fields => { for (const field of fields) if (p.checks?.[field] !== 'PASS') errors.push(`TYPED_${evidence.axis}:checks.${field}`); };
+  const checks = fields => { for (const field of fields) if (!(diagnostic && machineAxes.includes(evidence.axis) ? ['PASS', 'FAIL', 'HOLD'] : ['PASS']).includes(p.checks?.[field])) errors.push(`TYPED_${evidence.axis}:checks.${field}`); };
   switch (evidence.axis) {
     case 'SOURCE': hash('sourceTruthBundleSha'); text('fidelityRationale'); truth('sourceFidelityVerified'); break;
     case 'MATH_A1': text('independentAnswer'); text('independentDerivation'); truth('blindSolveFrozen'); truth('allChoicesChecked'); truth('answerUnique'); break;
-    case 'MATH_A2': hash('a1EvidenceSha'); text('answerComparison'); truth('allChoicesChecked'); truth('answerUnique'); break;
+    case 'MATH_A2': text('independentAnswer'); text('independentDerivation'); text('answerComparison'); truth('allChoicesChecked'); truth('answerUnique'); break;
     case 'SOLUTION': text('solutionRationale'); checks(['mathematicalCorrectness', 'logicalCompleteness', 'studentUnderstandability']); errors.push(...validateSolutionQuality(p.solutionQuality).errors); break;
     case 'METADATA': hash('metadataInputSha'); checks(['schema', 'uidBinding', 'curriculumBinding']); break;
-    case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity']); break;
+    case 'STATIC': hash('checkedInputSha'); checks(['schema', 'jsLoad', 'hashes', 'assetBinding', 'fileParity', 'studentSerialization']); break;
   }
   if (machineAxes.includes(evidence.axis) !== (evidence.auditorPrincipalType === 'MACHINE_COLLECTOR' && evidence.mode === 'MACHINE_CURRENT')) errors.push('AXIS_EXECUTION_CLASS_MISMATCH');
   return errors;

@@ -15,7 +15,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "평면좌표",
-      "내분점"
+      "내분점",
+      "도형"
     ],
     "wide": false,
     "content": "두 점 $A(-2,5)$, $B(4,8)$에 대하여 선분 $AB$를 $2:1$로 내분하는 점 $P$를 $(a,b)$라 할 때, $a+b$의 값은? [3.5점]",
@@ -27,6 +28,10 @@ window.questionBank = [
       "9"
     ],
     "answer": "⑤",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "선분 AB 위에서 AP:PB=2:1인 내분점 P(2,7)를 나타낸 좌표평면",
+    "solutionImageCaption": "A(-2,5), P(2,7), B(4,8)의 순서와 AP:PB=2:1을 확인한다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 내분점의 좌표는 두 끝점의 좌표에 내분비의 반대쪽 수를 곱하여 구한다.\n점 $P$가 선분 $AB$를 $2:1$로 내분하므로\n$P\\left(\\dfrac{1\\cdot(-2)+2\\cdot4}{2+1},\\dfrac{1\\cdot5+2\\cdot8}{2+1}\\right)=(2,7)$이다.\n따라서 $a+b=2+7=9$이므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -165,7 +170,6 @@ window.questionBank = [
     "solution": "$(x+5)^2+(y-5)^2=1$의 중심은 $(-5,5)$이고 반지름은 $1$이다.\n평행이동은 중심에도 같은 이동량을 더하고 반지름은 바꾸지 않으므로, $(3,-2)$만큼 옮긴 뒤의 중심은\n$(-5+3,5-2)=(-2,3)$이다.\n\n따라서 $a=-2$, $b=3$, $r=1$이고\n$a+b+r=-2+3+1=2$이다.\n\n그러므로 정답은 ②이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q05-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 5의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -206,7 +210,6 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q06-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 6의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full"
   },
   {
@@ -236,6 +239,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 점까지의 거리가 같다는 조건을 거리의 제곱으로 나타낸다.\n$\\overline{AP}=\\overline{BP}$이므로\n$(a+1)^2+(b-2)^2=(a-2)^2+b^2$이다.\n정리하면 $6a-4b+1=0$이다.\n또 점 $P$는 $y=2x+1$ 위에 있으므로 $b=2a+1$이다.\n이를 대입하면 $6a-4(2a+1)+1=0$에서 $a=-\\dfrac32$, $b=-2$이다.\n따라서 $a+b=-\\dfrac72$이므로 정답은 ①이다.",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "직선 y=2x+1과 AB의 수직이등분선의 교점 P(-3/2,-2)를 표시한 좌표평면",
+    "solutionImageCaption": "AP=BP의 위치관계와 P가 주어진 직선 위에 있다는 조건을 두 직선의 교점으로 확인한다.",
+    "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -288,7 +295,8 @@ window.questionBank = [
       "객관식",
       "평면좌표",
       "무게중심",
-      "각의 이등분선"
+      "각의 이등분선",
+      "도형"
     ],
     "wide": false,
     "content": "세 점 $O(0,0)$, $A(4,0)$, $B(0,3)$을 꼭짓점으로 하는 삼각형 $OAB$의 무게중심을 $G$라 하고, 삼각형 $OAB$의 내각인 $\\angle A$의 이등분선이 선분 $OB$와 만나는 점을 $C$라 하자. 삼각형 $GBC$의 무게중심의 좌표가 $(a,b)$일 때, $\\dfrac{b}{a}$의 값은? [4점]",
@@ -300,6 +308,10 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "삼각형 OAB의 각의 이등분선 AC와 OB 위의 C, 무게중심 G를 나타낸 그림",
+    "solutionImageCaption": "AO:AB=4:5에서 OC:CB=4:5를 확인하고 C=(0,4/3), G=(4/3,1)을 표시한다.",
+    "solutionImageSize": "full",
     "solution": "[키포인트] 먼저 삼각형 $OAB$의 무게중심과 각의 이등분선이 만드는 내분점을 구한다.\n삼각형 $OAB$의 무게중심은 $G\\left(\\dfrac43,1\\right)$이다.\n$\\overline{AO}=4$, $\\overline{AB}=5$이므로 각의 이등분선 정리에 따라 $OC:CB=4:5$이다.\n$\\overline{OB}=3$이므로 $C\\left(0,\\dfrac43\\right)$이다.\n삼각형 $GBC$의 무게중심은\n$(a,b)=\\left(\\dfrac{\\frac43+0+0}{3},\\dfrac{1+3+\\frac43}{3}\\right)=\\left(\\dfrac49,\\dfrac{16}{9}\\right)$이다.\n따라서 $\\dfrac ba=4$이므로 정답은 ④이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -336,7 +348,6 @@ window.questionBank = [
     "solution": "[키포인트] 선분 $AB$와 수직이고 길이가 같은 방향으로 두 점을 이동하여 나머지 꼭짓점을 구한다.\n$A(4,0)$에서 $B(0,3)$으로의 좌표 변화는 $(-4,3)$이다.\n제1사분면에 정사각형이 놓이려면 이에 수직이고 길이가 같은 좌표 변화 $(3,4)$를 이용하므로\n$C=(0,3)+(3,4)=(3,7)$, $D=(4,0)+(3,4)=(7,4)$이다.\n직선 $CD$의 기울기는 $\\dfrac{4-7}{7-3}=-\\dfrac34$이다.\n$y-7=-\\dfrac34(x-3)$에서 $x=0$을 대입하면 $y=\\dfrac{37}{4}$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q10-solution.svg",
     "solutionImageAlt": "평면좌표 문항 10의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -438,7 +449,6 @@ window.questionBank = [
     "solution": "[키포인트] 세 직선이 만드는 삼각형의 밑변과 높이를 $a$에 대한 식으로 나타낸다.\n직선 $l$을 $x$축에 대하여 대칭이동한 뒤 위로 $3$만큼 평행이동하면\n$l':y=-x-a+3$이다.\n두 직선의 교점은 $x=\\dfrac32-a$ 위에 있다.\n$x=1$에서 두 직선의 $y$좌표 차는 $|2a-1|$이고, 교점에서 $x=1$까지의 거리는 $\\left|a-\\dfrac12\\right|=\\dfrac{|2a-1|}{2}$이다.\n따라서 넓이는 $\\dfrac12\\cdot|2a-1|\\cdot\\dfrac{|2a-1|}{2}=\\dfrac{(2a-1)^2}{4}$이다.\n$\\dfrac{(2a-1)^2}{4}=4$에서 $a=\\dfrac52$ 또는 $a=-\\dfrac32$이다.\n$a$는 양수이므로 $a=\\dfrac52$이고 정답은 ①이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q13-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 13의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -518,7 +528,6 @@ window.questionBank = [
     "solution": "[키포인트] $\\dfrac{b-2}{a}$를 점 $(0,2)$와 원 위의 점 $(a,b)$를 잇는 직선의 기울기로 해석한다.\n원래 원은 $(x-3)^2+(y+2)^2=8$이고, 이를 $x$축에 대하여 대칭이동한 원 $C$는\n$(x-3)^2+(y-2)^2=8$이다.\n$m=\\dfrac{b-2}{a}$라 하면 직선 $y=mx+2$가 원 $C$와 만난다.\n$m$의 최댓값은 이 직선이 원에 접할 때 얻어진다.\n원의 중심 $(3,2)$에서 직선 $mx-y+2=0$까지의 거리를 반지름 $2\\sqrt2$와 같게 두면\n$\\dfrac{|3m|}{\\sqrt{m^2+1}}=2\\sqrt2$이다.\n이를 제곱하여 정리하면 $m^2=8$이므로 최댓값은 $2\\sqrt2$이다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -683,7 +692,6 @@ window.questionBank = [
     "solution": "[키포인트] 공통접선을 $y=mx+n$으로 놓고 두 중심에서 직선까지의 거리를 각각 $1$로 둔다.\n원 $C'$의 중심은 $(2,1)$이다.\n외공통접선에서는 두 중심이 직선의 같은 쪽에 있으므로 두 중심까지의 부호 있는 거리가 같아 $m=\\dfrac12$이다.\n내공통접선에서는 두 중심이 직선의 반대쪽에 있고 두 원이 원점에 대하여 대칭이므로 $n=0$이다.\n따라서 직선은 $y=mx$이고, 중심 $(-2,-1)$에서 이 직선까지의 거리가 $1$이므로\n$\\dfrac{|1-2m|}{\\sqrt{m^2+1}}=1$이다.\n이를 제곱하면 $3m^2-4m=0$이므로 $m=0$ 또는 $m=\\dfrac43$이다.\n가능한 기울기 중 최댓값은 $\\dfrac43$이므로 정답은 ①이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q20-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 20의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -740,7 +748,6 @@ window.questionBank = [
     "solution": "[키포인트] 이동한 포물선의 식을 구한 뒤 두 곡선이 한 점에서만 만난다는 조건을 중근 조건으로 이용한다.\n곡선 $C$를 $x$축에 대하여 대칭이동한 뒤 $(a,b)$만큼 평행이동하면\n$C':y=-(x-a)^2+2(x-a)+b$이다.\n두 곡선의 교점의 $x$좌표는\n$x^2-2x=-(x-a)^2+2(x-a)+b$를 만족한다.\n정리하면 $2x^2-(2a+4)x+a^2+2a-b=0$이다.\n두 곡선이 오직 $x=3$에서만 만나므로 이 식은 $2(x-3)^2=0$과 같다.\n계수를 비교하면 $2a+4=12$에서 $a=4$, $a^2+2a-b=18$에서 $b=6$이다.\n따라서 $C:y=(x-1)^2-1$, $C':y=-(x-5)^2+7$이다.\n직선 $y=k$는 $C$와 $k>-1$일 때 두 점, $k=-1$일 때 한 점에서 만나고, $C'$과 $k<7$일 때 두 점, $k=7$일 때 한 점에서 만난다.\n$k=-1$일 때는 $1+2=3$개, $k=7$일 때는 $2+1=3$개이다.\n또 $k=3$일 때 각 곡선과 두 점씩 만나지만 공통점 $A(3,3)$이 중복되므로 서로 다른 점은 $3$개이다.\n그 밖의 $k$에서는 서로 다른 교점의 개수가 $3$이 되지 않는다.\n따라서 $k=-1,3,7$이고, $a=4$, $b=6$이다.",
     "solutionImage": "assets/images/25_금당고_2학기_중간_고1_기출/q22-solution.svg",
     "solutionImageAlt": "도형의 이동 문항 22의 핵심 관계를 표시한 해설 도형",
-    "solutionImageCaption": "풀이에 필요한 점·도형·관계를 좌표평면에 표시한 해설 자료",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",

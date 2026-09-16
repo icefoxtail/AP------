@@ -26,12 +26,6 @@ pdf_archive/
 data/images/
 data/source_images/
 
-# 모든 이미지 확장자 개별 차단 (추가 방어)
-*.jpg
-*.jpeg
-*.gif
-*.svg
-
 # 캐시 및 임시 파일
 __pycache__/
 *.py[cod]
@@ -221,6 +215,8 @@ reports/**/*_review_pack*
 reports/**/*_patch*
 reports/**/*PATCH*
 reports/**/*REVIEW*
+# Solution-review pipeline evidence is generated locally and kept outside Git.
+reports/solution-review-v2.2/
 *_review_pack*.zip
 *_patch*.zip
 *_review.zip
@@ -241,39 +237,29 @@ claude_*_files_*/
 *_review_pack_extract*/
 *_patch_extract*/
 
-# Generated pipeline workspaces stay out of git until explicitly promoted
-archive/_generated/
-archive/_generated/**
+# Generated pipeline workspaces stay out of git until explicitly promoted.
+# Their files remain available locally for review and regeneration.
+/archive/_generated/
+/archive/_generated/**
+# HS quadratic SVG candidate/evidence workspace is local-only; retain only handoff summaries.
+/reports/hs-quadratic-svg-upgrade-20260908/*
+/reports/hs-quadratic-svg-upgrade-20260908/**
+!/reports/hs-quadratic-svg-upgrade-20260908/FINAL_STATUS.md
+!/reports/hs-quadratic-svg-upgrade-20260908/STATUS.md
 # ALIVE staged operation inputs are local test fixtures; never register or publish them.
-archive/exams/_generated/
-archive/exams/_generated/**
+/archive/exams/_generated/
+/archive/exams/_generated/**
 reports/high*_exam_inventory_*/
 reports/high*_exam_inventory_*/**
 
-# Generated archive image assets are promoted explicitly after review
-archive/assets/images/**/*.png
-archive/assets/images/**/*.jpg
-archive/assets/images/**/*.jpeg
-!archive/assets/images/중1_1단원_소인수분해/
-!archive/assets/images/중1_1단원_소인수분해/**
-!archive/assets/images/중1_1학기_문자의사용/
-!archive/assets/images/중1_1학기_문자의사용/**
-!archive/assets/images/중1_1학기_식의값/
-!archive/assets/images/중1_1학기_식의값/**
-!archive/assets/images/중1_1학기_일차식의계산/
-!archive/assets/images/중1_1학기_일차식의계산/**
-!archive/assets/images/중1_1학기_일차방정식의풀이/
-!archive/assets/images/중1_1학기_일차방정식의풀이/**
-!archive/assets/images/중1_1학기_정수와유리수의대소관계/
-!archive/assets/images/중1_1학기_정수와유리수의대소관계/**
-!archive/assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/
-!archive/assets/images/중1_1학기_정수와유리수의덧셈과뺄셈/**
-!archive/assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/
-!archive/assets/images/중1_1학기_정수와유리수의곱셈과나눗셈/**
-# Archive image assets must stay available in GitHub/runtime.
+# Production archive assets are always visible; generated assets belong in
+# archive/_generated/ or another explicitly ignored workspace instead.
+# Keep production archive assets available in GitHub/runtime.
 !archive/assets/
 !archive/assets/images/
 !archive/assets/images/**
+# Logic-visual review bundles and reports are regeneratable evidence.
+/archive/tools/logic-visual-audit/reports/
 tmp_*/
 /tmp/
 **/.wrangler/cache/
@@ -323,11 +309,46 @@ backup_before_*.sql
 **/.wrangler/
 
 # ALIVE 실행 런타임은 작업 중간물·렌더 캐시·검수 증거·결과 ZIP을 생성한다.
-# 결과 ZIP도 세션 전달용 파생물이지 저장소 소스가 아니므로 runtime 전체를 Git에서 제외한다.
-# 승인된 최종 JS와 참조 이미지의 저장소 승격 위치는 archive/이며, runtime을 예외로 다시
-# include하지 않는다. ZIP을 검사할 때 만든 압축 해제 폴더도 runtime 아래에서 추적하지 않는다.
-/alive/runtime/
+# Provider bridge의 다섯 소스 모듈만 repository source로 유지하고, packets,
+# traces, receipts, work-batches, and other runtime evidence remain ignored.
+/alive/runtime/*
+!/alive/runtime/provider-bridge/
+/alive/runtime/provider-bridge/**
+!/alive/runtime/provider-bridge/auditor-output-normalizer.mjs
+!/alive/runtime/provider-bridge/auditor-output-schema.mjs
+!/alive/runtime/provider-bridge/auditor-turn-output.mjs
+!/alive/runtime/provider-bridge/codex-appserver-adapter.mjs
+!/alive/runtime/provider-bridge/codex-appserver-launch-state.mjs
 
 # ALIVE 외부검수 렌더/압축 검사 임시 폴더
 /.alive-review*/
 /.tmp/
+
+# Transient pipeline/backup artifacts observed in this repository.
+*.log
+*.cpuprofile
+*.bak*
+*.orig
+*.rej
+*.trace
+*.dump
+*~
+*.swp
+*.swo
+/archive/assets/images/**/*.zip
+/reports/backups/
+
+# Local generated verification outputs. Existing tracked reports remain tracked;
+# only newly generated reports are hidden from the working-tree change list.
+/reports/
+
+# One-off HS quadratic SVG audit scripts. Reusable tools already committed to
+# this directory remain tracked; these generated iteration helpers do not.
+/tools/hs-quadratic-svg-upgrade/build-current-closure-snapshot-r*.mjs
+/tools/hs-quadratic-svg-upgrade/build-scoped-candidate-banks-r*.mjs
+/tools/hs-quadratic-svg-upgrade/fix-official-svg-reference-prefix-r*.mjs
+/tools/hs-quadratic-svg-upgrade/materialize-machine-evidence-r*.mjs
+/tools/hs-quadratic-svg-upgrade/prepare-current-v2-r*.mjs
+/tools/hs-quadratic-svg-upgrade/promote-official-svg-r*.mjs
+/tools/hs-quadratic-svg-upgrade/validate-browser-render-capture-r*.mjs
+/tools/hs-quadratic-svg-upgrade/validate-machine-evidence-r*.mjs

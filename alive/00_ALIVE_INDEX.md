@@ -5,6 +5,8 @@
 ## 1. 현재 작업 읽기 순서
 
 1. `01_CANONICAL/ALIVE_MASTER_RULEBOOK_v9.1_STABLE.md`
+   - §17 `ANSWER INDEX DISTRIBUTION CONTRACT (ACTIVE)`와
+     `engine/answer_index_distribution.py`를 함께 적용한다.
 2. `02_PIPELINES/ALIVE_PIPELINE_RUNTIME_SPEC_v1.0.md`
 3. `02_PIPELINES/ALIVE_PROMPT_COMPILER_SPEC_v1.0.md`
 4. `03_SCHEMA/ALIVE_STRUCTURED_QUESTION_SCHEMA_v1.0.md`
@@ -60,6 +62,10 @@ JS 아카이브의 최신 통합 운영 기준은 `docs/rules/02_PIPELINES/코�
 | `90_ARCHIVE/LEGACY_PROMPTS/` | 기존 루트 프롬프트와 과거 생산 규칙 | 회귀·참고 전용 |
 
 현재 엔진은 `alive/engine/`에 있으며 Phase 1 source lock, Phase 2 `R03`~`R12` task/reducer, Phase 3 `R13`~`R17` 객관식·주관식·서술형·ESSENTIAL SVG 문항 구조화·JS 직렬화·실렌더·패키징·로컬 동결, Phase 4A `E00`~`E06` 전체 시험지 preflight·자식 Run·시각 에셋 조립·전체 실렌더·패키징 계약을 `STRICT_AUDIT` 경로로 구현한다. Phase 4B Visual Spec 기반 결정론적 SVG, 독립 `VISUAL_EVIDENCE`, adapter 복사, review shadow, child/whole-exam ZIP 연결이 활성화되었다. 별도로 Phase 4C `FAST_EXAM` MVP는 부모 Run 하나, 문항별 Builder/블라인드 Verifier, bounded recheck·regeneration, 전체 조립·직렬화·렌더 증거·ZIP을 `NONVISUAL_WHOLE_EXAM` 범위에서 제공한다. FAST MVP는 기본 `STRUCTURAL_VARIANT`와 명시적 `CONFIRMATION` 프로필을 지원하고, 구조형 숫자·표면 clone 및 객관식 distractor provenance를 inbox 단계에서 결정론적으로 검사한다. 시각 의존 문항은 `F01`에서 `FAST_VISUAL_NOT_SUPPORTED`로 차단하며 STRICT 경로로 자동 전환하지 않는다. 전체 시험지는 각 capability 밖 문항이 하나라도 있으면 해당 preflight에서 자식/문항 작업을 만들지 않고 부분 시험지를 완성본으로 만들지 않는다. STRICT Run 상태는 `alive/runtime/runs/{runId}/`, FAST Run 상태는 `alive/runtime/fast-runs/{runId}/`에 저장한다. 저장소 Skill 진입점은 `.agents/skills/apmath-similar-question-pipeline/`, 역할별 Agent 설정은 `.codex/agents/`에 둔다. CLI는 모델이나 브라우저를 직접 호출하지 않으며 Codex가 task packet과 실제 브라우저 검수에 따라 하위 에이전트를 조율한다. 이 코드·런타임 영역은 MD 운영팩 manifest와 별도로 관리한다.
+
+시험지 단위 정답 위치 분포는 `engine/answer_index_distribution.py`의 공통
+evaluator를 `exam_batch.py`와 candidate review가 공유한다. 이 계약은
+생성형 유사·확인·심화에만 적용하며 original과 유형은행은 별도 범위다.
 
 ## 3. 우선순위
 

@@ -46,11 +46,11 @@ window.questionBank = [
     "choices": [
       "120",
       "240",
-      "360",
       "480",
+      "360",
       "720"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -74,11 +74,11 @@ window.questionBank = [
     "choices": [
       "24",
       "28",
-      "32",
       "36",
+      "32",
       "40"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -102,11 +102,11 @@ window.questionBank = [
     "choices": [
       "8",
       "9",
-      "10",
       "11",
-      "12"
+      "12",
+      "10"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -130,11 +130,11 @@ window.questionBank = [
     "choices": [
       "3",
       "4",
-      "5",
       "6",
+      "5",
       "7"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -158,11 +158,11 @@ window.questionBank = [
     "choices": [
       "3개",
       "4개",
-      "5개",
       "6개",
+      "5개",
       "7개"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
@@ -186,11 +186,11 @@ window.questionBank = [
     "choices": [
       "25",
       "27",
-      "29",
       "31",
-      "33"
+      "33",
+      "29"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
@@ -214,11 +214,11 @@ window.questionBank = [
     "choices": [
       "10",
       "12",
-      "14",
       "16",
+      "14",
       "18"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -354,11 +354,11 @@ window.questionBank = [
     "choices": [
       "2",
       "3",
-      "4",
       "5",
-      "6"
+      "6",
+      "4"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -548,13 +548,13 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $f(x)=-x^2+6x$의 그래프와 직선 $y=2x$가 만나는 두 점 중 원점이 아닌 점을 A라 하고, 점 A의 $x$좌표를 $\\alpha$라 하자. $0 < t < \\alpha$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=2x$와 만나는 점을 각각 P, Q라 할 때, 선분 PQ의 길이의 최댓값은 $M$이다. $M+\\alpha$의 값은?",
     "choices": [
+      "8",
       "4",
       "6",
-      "8",
       "10",
       "12"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",

@@ -44,6 +44,16 @@ export function validateVisualBenefit(contract, { phase, question, visual, expec
 }
 
 export function validateVisualBenefitPair(v1, v3, context) {
+  if (context?.independent) {
+    // Both reports are independently validated. Numeric expected/observed
+    // parity is computed by the closure kernel, never asserted using a peer's
+    // hash by the candidate auditor.
+    const errors = [
+      ...validateVisualBenefit(v1?.payload?.visualBenefit, { ...context, phase: 'U1', expectedFact: v1?.payload?.fact }).errors,
+      ...validateVisualBenefit(v3?.payload?.visualBenefit, { ...context, phase: 'U3' }).errors,
+    ];
+    return { status: errors.length ? 'FAIL' : 'PASS', errors };
+  }
   const errors = [
     ...validateVisualBenefit(v1?.payload?.visualBenefit, { ...context, phase: 'U1', expectedFact: v1?.payload?.fact }).errors,
     ...validateVisualBenefit(v3?.payload?.visualBenefit, { ...context, phase: 'U3', expectedFact: v1?.payload?.fact }).errors

@@ -49,12 +49,7 @@ function projectionContext(root, run, question, axis) {
   const rules = run.inputs.filter(ref => ref.role === 'rule'), verifiers = run.inputs.filter(ref => ref.role === 'verifier');
   for (const ref of [...rules, ...verifiers]) readBoundFile(root, ref);
   const sourceAuthority = { sourceRecord: question.sourceRecord, sourceExamId: question.sourceExamId, registryEntrySha: run.uidAuthority?.sourceExamIdRegistryEntrySha || null, repair: run.sourceAuthority?.approvedSourceRepairLedgerRef || null, exception: run.sourceAuthority?.approvedSourceExceptionLedgerRef || null };
-  const frozen = {};
-  for (const [name, evidenceAxis] of [['A1', 'MATH_A1'], ['V1', 'V1'], ['V2', 'V2']]) {
-    if (!AXIS_INPUT_PROJECTION_MAP[axis]?.includes(`${name}_FROZEN`)) continue;
-    // Bind upstream semantic inputs; exact frozen output hashes remain checked by the semantic kernel.
-    frozen[name] = axisInputSha(question, evidenceAxis, projectionContext(root, run, question, evidenceAxis));
-  }
+  const frozen = {}; // Independent axes bind inputs only; peer results are merger outputs.
   return { frozen, dependencies: { shared: dependencies }, dependencySetSha: objectSha(dependencies), ruleDependencySetSha: objectSha(rules), verifierDependencySetSha: objectSha({ verifiers, coreSha: CORE_SHA }), sourceAuthority, sourceAuthoritySliceSha: objectSha(sourceAuthority), renderPolicy: run.releaseRenderPolicy || run.releasePolicy || null, runtime: axis === 'RENDER_CAPTURE' ? { bundle: run.renderRuntime || null, captureRunId: run.runId, captureRevision: run.revision } : run.renderRuntime || null };
 }
 
@@ -83,6 +78,21 @@ function bindAuthority(root, run) {
       if (matches.length !== 1 || validateUidMigrationEvidence(matches[0], { legacyQuestionUid: q.legacyQuestionUid, questionUidV2: q.questionUid, sourcePath: q.sourcePath, sourceSha256: run.inputs.find(ref => ref.path === q.sourcePath)?.sha256 }).status !== 'PASS') throw new Error(`UID_MIGRATION_REQUIRED:${q.questionUid}`);
     }
   }
+}
+
+function validateEvidenceLifecycle(root, run, evidenceRefs) {
+  const errors = [];
+  const activeRefs = new Set((run.evidence || []).map(ref => `${ref.path}|${ref.sha256}`));
+  for (const row of run.evidenceLifecycle || []) {
+    try {
+      if (row?.schemaVersion !== 'APMATH_EVIDENCE_LIFECYCLE_v1' || row.status !== 'INVALIDATED' || !row.evidenceRef?.path || row.evidenceSha !== row.evidenceRef.sha256 || activeRefs.has(`${row.evidenceRef.path}|${row.evidenceRef.sha256}`)) throw new Error('EVIDENCE_LIFECYCLE_INVALID');
+      const evidence = JSON.parse(readBoundFile(root, row.evidenceRef));
+      if (evidence.evidenceId !== row.evidenceId || evidence.axis !== row.axis || evidence.questionUid !== row.questionUid) throw new Error('EVIDENCE_LIFECYCLE_IDENTITY_MISMATCH');
+      if (row.currentArtifactSha && evidence.payload?.currentArtifactSha === row.currentArtifactSha) throw new Error('EVIDENCE_LIFECYCLE_NOT_STALE');
+      if (evidenceRefs.some(ref => ref.path === row.evidenceRef.path && ref.sha256 === row.evidenceRef.sha256)) throw new Error('INVALIDATED_EVIDENCE_REUSED');
+    } catch (error) { errors.push(`${error.message}:${row?.evidenceId || 'UNKNOWN'}`); }
+  }
+  return errors;
 }
 
 export function auditV2Run(root, run) {
@@ -129,6 +139,7 @@ export function auditV2Run(root, run) {
     changeImpact.changeImpactSha = objectSha({ predecessor: run.predecessor || null, runLevelSemanticHash: runHash, changedUidSet: diff.changedUidSet, affectedUidAxisSet: changeImpact.affectedUidAxisSet });
     const evidence = new Map(), evidenceRefs = new Map();
     for (const ref of run.evidence || []) { const e = load(root, ref); errors.push(...validateSchema(e, contracts['evidence-v2'])); if (evidence.has(e.evidenceId)) throw new Error('DUPLICATE_EVIDENCE_ID'); evidence.set(e.evidenceId, e); evidenceRefs.set(e.evidenceId, ref); }
+    errors.push(...validateEvidenceLifecycle(root, run, [...evidenceRefs.values()]));
     const receipts = (run.reuseReceipts || []).map(ref => load(root, ref)), packets = (run.auditorPacketRefs || []).map(ref => load(root, ref));
     for (const receipt of receipts) errors.push(...validateSchema(receipt, contracts['reuse-receipt-v1']));
     for (const ref of run.renderReviewReuseReceiptRefs || []) errors.push(...validateSchema(load(root, ref), contracts['render-review-reuse-receipt-v1']));
@@ -242,5 +253,5 @@ export function auditV2Run(root, run) {
   } catch (error) { errors.push(`V2_CONTRACT:${error.message}`); }
   const cost = workBatchMetrics(root, run, freshness);
   if (cost.agentBudgetStatus === 'HOLD') errors.push('AGENT_BUDGET_HOLD');
-  return { cost, schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', runId: run?.runId || null, revision: run?.revision || null, inputSha: run?.inputSha || null, status: errors.length ? 'BLOCKED' : 'PASS', productionAuthorized: false, errors, freshness, semantic, changeImpact, renderImpact, editClosure, closureSetSha };
+  return { cost, schemaVersion: 'APMATH_PIPELINE_AUDIT_v2', runId: run?.runId || null, revision: run?.revision || null, inputSha: run?.inputSha || null, status: errors.length ? 'BLOCKED' : 'PASS', productionAuthorized: false, diagnosticContinuation: semantic?.diagnosticContinuation || { status: errors.length ? 'UPSTREAM_BLOCKED' : 'NOT_NEEDED', downstreamObserved: Boolean(semantic) }, errors, freshness, semantic, changeImpact, renderImpact, editClosure, closureSetSha };
 }

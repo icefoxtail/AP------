@@ -10,6 +10,10 @@ from pathlib import Path
 from typing import Any
 
 from .contracts import initial_stages
+from .answer_index_distribution import (
+    evaluate_answer_index_distribution,
+    is_answer_distribution_target,
+)
 from .phase3 import _archive_projection, _parse_serialized_js
 from .run_store import RunStore, atomic_write_json, make_run_id, sha256_file, utc_now
 from .solution_quality import infer_solution_visual_elements, infer_solution_visual_requirement
@@ -68,6 +72,22 @@ _RECOVERY_INTEGRITY_MARKERS = (
     "CRC",
     "PACKAGE",
 )
+
+
+def validate_exam_answer_distribution(
+    questions: list[dict[str, Any]], *, source_file: str | None = None,
+    policy_enabled: bool | None = None,
+) -> dict[str, Any]:
+    """Run the shared exam-level answer-index validator."""
+
+    enabled = (
+        is_answer_distribution_target(source_file)
+        if policy_enabled is None
+        else policy_enabled
+    )
+    return evaluate_answer_index_distribution(
+        questions, policy_enabled=enabled, source_file=source_file
+    )
 
 
 def _atomic_write_text(path: Path, text: str) -> None:
@@ -349,6 +369,11 @@ def preflight_exam(root: Path, source_file: str) -> tuple[dict[str, Any], dict[s
     held = [item["ordinal"] for item in questions if item["status"] == "HOLD"]
     source_ids = [question.get("id") for question in exam["questions"]]
     exam_codes: list[str] = []
+    answer_distribution = validate_exam_answer_distribution(
+        exam["questions"], source_file=relative
+    )
+    if answer_distribution["gateStatus"] in {"FAIL", "BLOCKED"}:
+        exam_codes.extend(answer_distribution["failureCodes"])
     if source_ids != list(range(1, len(source_ids) + 1)):
         exam_codes.append("SOURCE_IDS_NOT_CONTIGUOUS")
     score_presence = [item["score"] is not None for item in questions]
@@ -368,6 +393,7 @@ def preflight_exam(root: Path, source_file: str) -> tuple[dict[str, Any], dict[s
         "supportedOrdinals": supported,
         "heldOrdinals": held,
         "examCodes": exam_codes,
+        "answerDistribution": answer_distribution,
         "scoreContract": {
             "status": "PRESENT" if score_presence and all(score_presence) else (
                 "ABSENT" if not any(score_presence) else "INVALID"

@@ -73,6 +73,11 @@ window.questionBank = [
   },
   {
     "id": 3,
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q3-solution.svg",
+    "solutionImageAlt": "23_hanyoung_q3_log_shift",
+    "solutionImageCaption": "log_shift",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y = \\log_{\\frac{1}{3}}(x-2)-1$ 에 대한 설명으로 옳지 않은 것은? [4.2점]",
     "choices": [
       "정의역은 $\\{x|x>2\\}$이다.",
@@ -288,6 +293,11 @@ window.questionBank = [
   },
   {
     "id": 9,
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "23_hanyoung_q9_graph_inequality",
+    "solutionImageCaption": "graph_compare",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y=f(x)$와 직선 $y=g(x)$의 그래프를 바탕으로, 부등식 $2^{-f(x)} < 0.5^{g(x)}$ 의 해를 구하시오. [4.3점]",
     "choices": [
       "$x < -3$ 또는 $x > 2$",
@@ -399,6 +409,11 @@ window.questionBank = [
   },
   {
     "id": 12,
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q12-solution.svg",
+    "solutionImageAlt": "23_hanyoung_q12_exp_compare",
+    "solutionImageCaption": "exp_compare",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "$x < 0$에서 $f(x) = a^x$ 그래프가 $g(x) = b^x$ 보다 항상 위에 있을 때, 옳은 것만을 보기에서 고른 것은? [4.5점]\\nㄱ. $a > 1$이면 $b > 1$이다. \\nㄴ. $0 < a < 1$이면 $b > 1$이다. \\nㄷ. $0 < b < 1$이면 $ab < 1$이다.",
     "choices": [
       "ㄱ",
@@ -436,6 +451,11 @@ window.questionBank = [
   },
   {
     "id": 13,
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "23_hanyoung_q13_cos_params",
+    "solutionImageCaption": "cos_params",
+    "solutionImageSize": "full",
+    "solutionImageStatus": "asset_verified",
     "content": "함수 $y = a \\cos b(x-c\\pi) + d$ 의 그래프를 보고 $5ab + 8cd$ 의 값을 구하시오. (단, $a>0, b>0, 0<c<1$) [4.5점]",
     "choices": [
       "9",

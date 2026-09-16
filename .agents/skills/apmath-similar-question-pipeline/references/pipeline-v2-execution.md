@@ -34,13 +34,32 @@ launches.
    complete frozen scope through the provider bridge.
 8. Reconcile the single terminal receipt. Provider failure, invalid
    attestation, or unknown state remains HOLD/DISPATCHED; it is not an
-   invitation to retry automatically.
-9. Repair defects locally, create a new immutable freeze, and use at most one
-   TARGETED_RECHECK. Its scope is the computed affected UID and axis set.
+   invitation to retry automatically. A completed receipt with defects enters
+   `REPAIR_REQUIRED` and retains the defect evidence.
+9. For the Past Exam profile, the original builder records one disposition per
+   open defect, creates a new revision/inputSha, reruns machine checks, and
+   creates a new immutable freeze. Reserve an independent `TARGETED_RECHECK`
+   for the union of open defects and semantic/dependency/render impact. Repeat
+   until closure or the persisted three-iteration bound; legacy profiles keep
+   their stored allowance.
 10. Use direct-root validated reuse receipts for unchanged axes. A composite
-    review record does not authorize rereviewing unaffected questions.
+    review record does not authorize rereviewing unaffected questions, and
+    builder dispositions alone never close a defect.
 11. Run whole-job audit, v2 audit, and the separate release audit. A quality
     PASS never grants production publication authority.
+
+### Auditor isolation and deterministic merger
+
+Each FINAL_AUDIT or TARGETED_RECHECK packet is sealed independently from its
+phase-authorized projection of the frozen input set. U1 is `SOURCE_ONLY` /
+`priorReviewVisibility NONE`, U2 is `ARTIFACT_ONLY` /
+`priorReviewVisibility NONE`, and U3 is `CANDIDATE_ONLY` /
+`priorReviewVisibility NONE`. No phase consumes another auditor's output;
+the three immutable phase results are combined only by the deterministic
+`review-merger`. An explicit correctness-claim disagreement is emitted as
+`REVIEW_CONFLICT`. Ordinary agreement or an ordinary defect does not launch a
+second review; `SECOND_AUDIT` is bounded and requires explicit `CONFLICT` or
+`HIGH_RISK` authorization.
 
 The executable command family is:
 
@@ -50,8 +69,10 @@ node archive/tools/pipeline-core/cli.mjs prepare-v2 ... --work-batch-id JOB --so
 node archive/tools/pipeline-core/cli.mjs work-batch-freeze --work-batch-id JOB --run-refs refs.json
 node archive/tools/pipeline-core/cli.mjs provider-preflight --work-batch-id JOB --purpose FINAL_AUDIT --provider-command COMMAND --plan-out PLAN
 node archive/tools/pipeline-core/cli.mjs work-batch-reserve --work-batch-id JOB --request request.json
+node archive/tools/pipeline-core/cli.mjs provider-packet-preflight --work-batch-id JOB --plan PLAN --packet-refs packets.json
 node archive/tools/pipeline-core/cli.mjs provider-dispatch --work-batch-id JOB --launch-id JOB:N --plan PLAN --packet-refs packets.json --provider-command COMMAND --receipt-out RECEIPT
 node archive/tools/pipeline-core/cli.mjs work-batch-reconcile --work-batch-id JOB --request request.json
+node archive/tools/pipeline-core/cli.mjs work-batch-next-action --work-batch-id JOB
 node archive/tools/pipeline-core/cli.mjs work-batch-status --work-batch-id JOB
 node archive/tools/pipeline-core/cli.mjs work-batch-audit --work-batch-id JOB --run-refs final-refs.json
 node archive/tools/pipeline-core/cli.mjs audit-v2 --manifest run-v2.json
@@ -63,6 +84,18 @@ node archive/tools/pipeline-core/cli.mjs work-batch-lock-recover --root ROOT --e
 For a recheck, provider-preflight and reservation use
 TARGETED_RECHECK. Do not invoke a second FINAL_AUDIT automatically. A
 SECOND_AUDIT needs explicit authorization and reason for CONFLICT or HIGH_RISK.
+
+`defect-router.mjs` is the canonical defect-routing boundary. A completed
+audit with defects enters `REPAIR_REQUIRED`; the builder records dispositions,
+creates a new revision/input SHA and freeze, and the next action is selected
+through `work-batch-next-action`. Only the impacted scope enters
+`TARGETED_RECHECK`. Same-input/same-defect stagnation and the persisted repair
+iteration limit become `HOLD`.
+
+Crash or provider execution recovery is separate from semantic repair. Resume
+and recovery must reconcile the existing immutable freeze/lineage and launch
+identity through the current work-batch/recovery commands; it must not create a
+new semantic launch or retry an ambiguous provider state automatically.
 
 ## Render and review boundary
 

@@ -9,6 +9,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_bufferin
 
 EXAMS_DIR = "exams"
 OUTPUT_FILE = "db.js"
+PRODUCTION_EXAM_ROOTS = {"original", "similar", "types"}
 
 
 # =========================================================
@@ -1035,7 +1036,26 @@ def extract_qcount_from_js(filepath):
     if not array_text:
         return 0
 
-    return count_top_level_objects_in_array(array_text)
+    count = count_top_level_objects_in_array(array_text)
+    # Some legacy production files remove a question after the literal array
+    # is declared. Account for the deterministic id-based filter so qCount
+    # matches the runtime questionBank length rather than the static literal.
+    removed_ids = set(re.findall(
+        r"(?:window\.)?questionBank\s*=\s*(?:window\.)?questionBank\.filter\(\s*\(\s*question\s*\)\s*=>\s*question\.id\s*!==\s*(\d+)",
+        text,
+    ))
+    return max(0, count - len(removed_ids))
+
+
+def has_runtime_question_filter(filepath):
+    try:
+        text = read_text_file(filepath)
+    except Exception:
+        return False
+    return bool(re.search(
+        r"(?:window\.)?questionBank\s*=\s*(?:window\.)?questionBank\.filter\(\s*\(\s*question\s*\)\s*=>\s*question\.id\s*!==\s*\d+",
+        text,
+    ))
 
 
 def extract_standard_unit_keys(text):
@@ -1386,8 +1406,11 @@ def collect_js_files_recursive(exams_path):
 
         rel_path = normalize_slash(path.relative_to(exams_path))
         name = path.name
+        top_level = rel_path.split("/", 1)[0]
 
         if name.lower() in ("db.js", "concept_map.js"):
+            continue
+        if top_level not in PRODUCTION_EXAM_ROOTS:
             continue
 
         results.append({
@@ -1505,6 +1528,53 @@ def load_existing_db(output_path):
         return {"exams": []}
 
 
+def infer_new_subject(meta, range_meta):
+    """Infer subject only for newly discovered files.
+
+    Existing DB entries are authoritative because many legacy/original files
+    carry curated subject values that cannot be recovered reliably from their
+    filenames alone. New similar files still need a usable subject for the DB
+    contract and question-index metadata gate.
+    """
+    current = str(meta.get("subject", "") or "").strip()
+    if current:
+        return current
+
+    grade = str(meta.get("grade", "") or "").strip()
+    semester = str(meta.get("semester", "") or "").strip()
+    topic = compact_text(meta.get("topic", ""))
+
+    if grade == "고1" and semester == "2":
+        return "공통수학2"
+
+    topic_subjects = {
+        "수학I": "수학I",
+        "수학II": "수학II",
+        "확률과통계": "확률과 통계",
+        "확률과 통계": "확률과 통계",
+        "대수": "대수",
+        "공통수학1": "공통수학1",
+        "공통수학2": "공통수학2",
+    }
+    if topic in topic_subjects:
+        return topic_subjects[topic]
+
+    courses = []
+    primary = str(range_meta.get("primaryStandardCourse", "") or "").strip()
+    if primary:
+        courses.append(primary)
+    for course_range in range_meta.get("courseRanges", []) or []:
+        course = str(course_range.get("standardCourse", "") or "").strip()
+        if course and course not in courses:
+            courses.append(course)
+
+    if grade == "고1" and semester == "1":
+        for preferred in ("공통수학1", "수학(상)"):
+            if preferred in courses:
+                return preferred
+    return courses[0] if courses else ""
+
+
 def build_db_diff_summary(previous_db, next_db):
     prev_items = {
         str(item.get("file", "")): item
@@ -1555,12 +1625,19 @@ def build_engine_db():
         print(f"❌ 오류: '{exams_path}' 폴더를 찾을 수 없습니다.")
         return
 
+    previous_db_content = load_existing_db(output_path)
+    previous_by_file = {
+        str(item.get("file", "")): item
+        for item in previous_db_content.get("exams", [])
+        if isinstance(item, dict) and item.get("file")
+    }
     all_files = collect_js_files_recursive(exams_path)
 
     exams_list = []
     skipped = []
     qcount_failed = []
     range_failed = []
+    runtime_qcount_files = set()
 
     parsed_meta_map = {}
 
@@ -1612,6 +1689,8 @@ def build_engine_db():
         filepath = file_info["abs_path"]
         qcount = extract_qcount_from_js(filepath)
         meta["qCount"] = qcount
+        if has_runtime_question_filter(filepath):
+            runtime_qcount_files.add(rel_path)
 
         if qcount == 0:
             qcount_failed.append(rel_path)
@@ -1624,10 +1703,66 @@ def build_engine_db():
 
         exams_list.append(meta)
 
-    exams_list.sort(key=sort_key)
+    if skipped:
+        raise ValueError(
+            "production JS filename parse failed; refusing to write a partial db.js: "
+            + ", ".join(skipped)
+        )
+    if qcount_failed:
+        raise ValueError(
+            "production JS qCount extraction failed; refusing to write db.js: "
+            + ", ".join(qcount_failed)
+        )
+
+    generated_by_file = {str(item.get("file", "")): item for item in exams_list}
+    removed = sorted(set(previous_by_file) - set(generated_by_file))
+    if removed:
+        raise ValueError(
+            "production JS disappeared from the inventory; refusing to delete DB entries: "
+            + ", ".join(removed[:20])
+            + (f" (외 {len(removed) - 20}개)" if len(removed) > 20 else "")
+        )
+
+    merged_exams = []
+    preserved_count = 0
+    new_count = 0
+    for generated in exams_list:
+        file_key = str(generated.get("file", ""))
+        existing = previous_by_file.get(file_key)
+        if existing:
+            # Existing DB metadata may contain deliberate/manual corrections
+            # that filename heuristics cannot reconstruct. Preserve the full
+            # record; static source counting cannot see runtime filters such
+            # as questionBank = questionBank.filter(...).
+            merged = dict(existing)
+            if file_key in runtime_qcount_files:
+                merged["qCount"] = generated.get("qCount", 0)
+            if not str(merged.get("subject", "") or "").strip():
+                inferred_subject = infer_new_subject(
+                    generated,
+                    {
+                        "primaryStandardCourse": generated.get("primaryStandardCourse", ""),
+                        "courseRanges": generated.get("courseRanges", []),
+                    },
+                )
+                if inferred_subject:
+                    merged["subject"] = inferred_subject
+            merged_exams.append(merged)
+            preserved_count += 1
+        else:
+            generated["subject"] = infer_new_subject(
+                generated,
+                {
+                    "primaryStandardCourse": generated.get("primaryStandardCourse", ""),
+                    "courseRanges": generated.get("courseRanges", []),
+                },
+            )
+            merged_exams.append(generated)
+            new_count += 1
+
+    exams_list = sorted(merged_exams, key=sort_key)
 
     db_content = {"exams": exams_list}
-    previous_db_content = load_existing_db(output_path)
     diff_summary = build_db_diff_summary(previous_db_content, db_content)
 
     output_text = "window.mainDB = "
@@ -1645,6 +1780,7 @@ def build_engine_db():
         f"이전 {diff_summary['previous_count']}개 → 현재 {diff_summary['next_count']}개 "
         f"(추가 {len(diff_summary['added'])} / 삭제 {len(diff_summary['removed'])} / 메타 변경 {len(diff_summary['changed'])})"
     )
+    print(f"✅ 기존 메타데이터 보존: {preserved_count}개; 신규 inventory 등록: {new_count}개")
     print_limited_file_list("➕ 새로 추가됨", diff_summary["added"])
     print_limited_file_list("➖ DB에서 제거됨", diff_summary["removed"])
     print_limited_file_list("✏️ 메타 변경됨", diff_summary["changed"])

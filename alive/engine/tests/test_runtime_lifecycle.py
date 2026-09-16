@@ -59,6 +59,37 @@ class RuntimeLifecycleTests(unittest.TestCase):
             self.store.save(run_id, manifest)
         return run_dir
 
+    def create_universal_sealed_run(self, run_id: str) -> Path:
+        manifest = {
+            "runId": run_id,
+            "status": "SEALED_LOCAL",
+            "currentStage": "SEALED",
+            "createdAt": "2020-01-01T00:00:00Z",
+            "updatedAt": "2020-01-01T00:00:00Z",
+            "request": {
+                "query": "universal lifecycle test",
+                "sourceFile": "archive/exams/test.js",
+                "expectedQuestionCount": 1,
+            },
+            "codes": [],
+            "events": [{"type": "TEST"}],
+            "tasks": {},
+            "publicationStatus": "NOT_PUBLISHED",
+        }
+        run_dir = self.store.create(run_id, manifest)
+        package_path = run_dir / "final/universal-run-package.zip"
+        with zipfile.ZipFile(package_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+            archive.writestr("package-manifest.json", "{}")
+            archive.writestr("final/staging/generated-exam.js", "window.questionBank=[];")
+        manifest["package"] = {
+            "path": "final/universal-run-package.zip",
+            "sha256": sha256_file(package_path),
+            "roundTrip": "PASS",
+            "publicationStatus": "NOT_PUBLISHED",
+        }
+        self.store.save(run_id, manifest)
+        return run_dir
+
     def test_finalize_preserves_compact_summary_and_moves_workdir(self) -> None:
         run_dir = self.create_run("failed-run", "FAILED")
 
@@ -193,9 +224,28 @@ class RuntimeLifecycleTests(unittest.TestCase):
 
         self.assertEqual(0, code)
         payload = json.loads(output.getvalue())
-        self.assertEqual("MOVED", payload["cleanup"]["cleanup"]["status"])
+        self.assertEqual("REMOVED", payload["cleanup"]["cleanup"]["status"])
         self.assertFalse((self.runtime / "cli-run").exists())
         self.assertTrue((self.results / "cli-run.zip").is_file())
+
+    def test_finalize_copies_and_quarantines_universal_sealed_run(self) -> None:
+        run_dir = self.create_universal_sealed_run("universal-sealed")
+
+        result = finalize_run(
+            self.runtime,
+            "universal-sealed",
+            result_root=self.results,
+            quarantine_root=self.quarantine,
+        )
+
+        self.assertEqual("REMOVED", result["cleanup"]["status"])
+        self.assertFalse(run_dir.exists())
+        self.assertTrue((self.results / "universal-sealed.zip").is_file())
+        self.assertFalse((self.quarantine / "universal-sealed/manifest.json").exists())
+
+    def test_parser_accepts_universal_runtime_kind(self) -> None:
+        args = build_parser().parse_args(["runtime-finalize", "--run", "run-1", "--runtime-kind", "universal"])
+        self.assertEqual("universal", args.runtime_kind)
 
 
 if __name__ == "__main__":
