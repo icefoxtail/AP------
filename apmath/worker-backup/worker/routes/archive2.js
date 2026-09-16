@@ -301,14 +301,16 @@ export async function handleArchive2(
       statements.push(
         env.DB.prepare(
           `INSERT OR IGNORE INTO class_exam_assignment_recipients
-      (assignment_id,student_id) SELECT (${selectId}), value FROM json_each(?) WHERE (${selectId}) = ?`,
+      (assignment_id,student_id) SELECT (${selectId}), value FROM json_each(?) WHERE (${selectId}) = ?
+       AND EXISTS (SELECT 1 FROM students s WHERE s.id = value AND s.status IN ('재원','active'))`,
         ).bind(writeKey, JSON.stringify(rosterIds), writeKey, assignmentId),
       );
     if (!existing)
       statements.push(
         env.DB.prepare(
           `INSERT OR IGNORE INTO class_exam_assignment_exclusions
-      (assignment_id,student_id,reason) SELECT (${selectId}), value, 'archive2_target' FROM json_each(?) WHERE (${selectId}) = ?`,
+      (assignment_id,student_id,reason) SELECT (${selectId}), value, 'archive2_target' FROM json_each(?) WHERE (${selectId}) = ?
+       AND EXISTS (SELECT 1 FROM students s WHERE s.id = value AND s.status IN ('재원','active'))`,
         ).bind(
           writeKey,
           JSON.stringify(rosterIds.filter((id) => !targetIds.includes(id))),
