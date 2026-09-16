@@ -16,6 +16,7 @@ const repoRoot = path.resolve(archiveDir, '..');
 const foundationDir = path.join(archiveDir, '_generated', 'intelligence');
 const inventoryPath = path.join(foundationDir, 'phase1', 'middle3-foundation', 'M3_FRESH_INVENTORY.json');
 const queuePath = path.join(foundationDir, 'phase1', 'middle3-foundation', 'M3_L1_WORK_QUEUE.json');
+const reconciliationPath = path.join(foundationDir, 'phase1', 'middle3-foundation', 'M3_L1_RECONCILIATION.json');
 const metadataPath = path.join(archiveDir, 'data', 'question_metadata.json');
 const runtimePath = path.join(archiveDir, 'question-meta.js');
 
@@ -55,7 +56,14 @@ function main() {
     const candidate = readJson(candidatePath);
     const beforeRaw = fs.readFileSync(metadataPath, 'utf8');
     const sidecar = JSON.parse(beforeRaw);
-    const sourceRecords = inventory.records.filter(record => record.curriculum === target.curriculum && record.currentStandardUnitKey === target.standardUnitKey);
+    const reconciliation = fs.existsSync(reconciliationPath) ? readJson(reconciliationPath) : { records: [] };
+    const reassignedByUid = new Map((reconciliation.records || []).map(record => [record.questionUid, record]));
+    const sourceRecords = inventory.records.filter(record => {
+        if (record.curriculum !== target.curriculum) return false;
+        const reassigned = reassignedByUid.get(record.questionUid);
+        const assignedUnitKey = reassigned?.assignedCanonicalStandardUnitKey || record.currentStandardUnitKey;
+        return assignedUnitKey === target.standardUnitKey;
+    });
     const byUid = new Map((sidecar.records || []).map(record => [record.questionUid, record]));
     const sourceByUid = new Map(sourceRecords.map(record => [record.questionUid, record]));
     const candidateByUid = new Map((candidate.records || []).map(record => [record.questionUid, record]));

@@ -19,9 +19,9 @@
 | order | curriculum | scope | L1 key | L1 name | questions | source files | L2 count | visual | shared | status |
 |---:|---|---|---|---|---:|---:|---:|---:|---:|---|
 | 1 | 2015 | M3-1 | `2015-M3-01-REAL_NUMBER_OPERATIONS` | 실수와 그 연산 | 318 | 23 | 2 | 29 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
-| 2 | 2015 | M3-1 | `2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION` | 다항식의 곱셈과 인수분해 | 285 | 30 | 2 | 11 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
+| 2 | 2015 | M3-1 | `2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION` | 다항식의 곱셈과 인수분해 | 286 | 30 | 2 | 11 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
 | 3 | 2015 | M3-1 | `2015-M3-03-QUADRATIC_EQUATION` | 이차방정식 | 143 | 16 | 2 | 9 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
-| 4 | 2015 | M3-1 | `2015-M3-04-QUADRATIC_FUNCTION` | 이차함수 | 198 | 17 | 2 | 65 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
+| 4 | 2015 | M3-1 | `2015-M3-04-QUADRATIC_FUNCTION` | 이차함수 | 197 | 17 | 2 | 65 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
 | 5 | 2015 | M3-2 | `2015-M3-05-TRIG_RATIO` | 삼각비 | 206 | 14 | 2 | 164 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
 | 6 | 2015 | M3-2 | `2015-M3-06-CIRCLE_PROPERTIES` | 원의 성질 | 320 | 28 | 2 | 315 | 0 | QUEUED_FOR_BLIND_L1_REVIEW |
 | 7 | 2015 | M3-2 | `2015-M3-07-STATISTICS` | 통계 | 174 | 17 | 2 | 112 | 23 | QUEUED_FOR_BLIND_L1_REVIEW |

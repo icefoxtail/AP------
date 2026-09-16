@@ -15,6 +15,7 @@ const repoRoot = path.resolve(archiveDir, '..');
 const foundationDir = path.join(archiveDir, '_generated', 'intelligence');
 const inventoryPath = path.join(foundationDir, 'phase1', 'middle3-foundation', 'M3_FRESH_INVENTORY.json');
 const queuePath = path.join(foundationDir, 'phase1', 'middle3-foundation', 'M3_L1_WORK_QUEUE.json');
+const reconciliationPath = path.join(foundationDir, 'phase1', 'middle3-foundation', 'M3_L1_RECONCILIATION.json');
 const taxonomyPath = path.join(repoRoot, 'docs', 'rules', '01_CANONICAL', 'taxonomy', 'rpm-primary-v1.0', '00_POLICY', 'CANONICAL_MASTER.json');
 const revision = 'metadata-foundation-v2-m3-20260916';
 
@@ -260,7 +261,14 @@ function main() {
     if (target.curriculum !== '2015' || !target.questionCount) throw new Error('only non-empty 2015 M3 L1 targets are executable; target=' + target.L1Key);
     const taxonomy = readJson(taxonomyPath);
     const pathMap = taxonomyPathMap(taxonomy, target.curriculum, target.scope, target.L1Name);
-    const sourceRecords = inventory.records.filter(record => record.curriculum === target.curriculum && record.currentStandardUnitKey === target.standardUnitKey);
+    const reconciliation = fs.existsSync(reconciliationPath) ? readJson(reconciliationPath) : { records: [] };
+    const reassignedByUid = new Map((reconciliation.records || []).map(record => [record.questionUid, record]));
+    const sourceRecords = inventory.records.filter(record => {
+        if (record.curriculum !== target.curriculum) return false;
+        const reassigned = reassignedByUid.get(record.questionUid);
+        const assignedUnitKey = reassigned?.assignedCanonicalStandardUnitKey || record.currentStandardUnitKey;
+        return assignedUnitKey === target.standardUnitKey;
+    });
     if (sourceRecords.length !== target.questionCount) throw new Error('inventory/queue denominator mismatch for ' + target.L1Key + ': ' + sourceRecords.length + ' vs ' + target.questionCount);
     const outDir = path.join(foundationDir, 'phase3', 'metadata-foundation-m3', target.L1Key);
     const blindRecords = [];
