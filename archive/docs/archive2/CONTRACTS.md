@@ -773,7 +773,7 @@ class_exam_assignments.id
 
 `assignment_batch_id`는 여러 반 출제를 한 번에 묶는 batch identity이며 개별 assignment row identity가 아니다.
 
-현재 compatibility unique identity:
+현재 Worker가 사용하는 compatibility lookup identity:
 
 ```text
 Archive-backed:
@@ -783,7 +783,14 @@ Manual/no archive:
 class_id + exam_title + exam_date
 ```
 
-따라서 retry 때 새 subsystem을 만들 필요는 없다.
+이것은 현재 route의 existing lookup/upsert key이지, 배포된 D1에서 모든 경우의
+논리적 유일성이 이미 봉인되었다는 뜻은 아니다. 2026-09-16 Phase 0 remote D1
+감사에서 assignment 테이블에는 `(class_id, exam_title, exam_date, archive_file)`
+전체 UNIQUE 제약은 있었지만, 이 문서가 전제했던 archive-backed/manual용
+partial unique index는 확인되지 않았다. Archive-backed 논리 identity 중복도
+9개 그룹, unique 초과 row 9개가 남아 있었다. 따라서 retry 때 새 assignment
+subsystem을 만들 필요는 없지만, Phase 1에서 중복 정리와 실제 배포 제약 검증을
+끝내기 전까지는 이 key를 **논리적 compatibility key**로만 취급한다.
 
 ## 19.2 Client hardening
 

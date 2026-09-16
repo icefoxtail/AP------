@@ -761,7 +761,13 @@ class_exam_assignments.id
 
 `assignment_batch_id`는 여러 반 배포 묶음용이다.
 
-현재 archive-backed assignment에는 class/date/archive identity 기반 upsert/unique 방어가 존재하므로 새 assignment identity subsystem은 만들지 않는다.
+현재 archive-backed assignment에는 class/date/archive identity를 이용하는
+기존 lookup/upsert 흐름이 있으므로 새 assignment identity subsystem은 만들지
+않는다. 다만 Phase 0 remote D1 감사 기준으로는 전체 UNIQUE 제약만 확인되었고,
+archive-backed/manual partial unique index는 배포되어 있지 않았다. 또한
+archive-backed 논리 identity 중복 9개 그룹이 관측되었다. 따라서 이 문서에서
+말하는 “unique 방어”는 현재 route의 논리적 compatibility 방어를 뜻하며,
+실제 DB 유일성 봉인은 Phase 1의 정리·검증 조건이다.
 
 신규 프론트 hardening:
 
