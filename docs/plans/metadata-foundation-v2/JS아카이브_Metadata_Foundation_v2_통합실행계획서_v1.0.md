@@ -5,7 +5,7 @@
 상태: FOUNDATION LOCK 이후 실행계획 확정
 기본 실행 모델: Luna xhigh  
 기본 작업 단위: **L1 대단원 1개**  
-목표: **RPM Primary L1~L4 정본 + difficultyBucket 1~5를 하나의 문항 메타데이터 파이프라인으로 통합하고, Archive 2.0이 처음부터 이 계약을 사용하도록 기반을 봉인한다.**
+목표: **RPM Primary L1~L4 정본 + difficultyBucket 1~5를 하나의 문항 메타데이터 파이프라인으로 통합하고, 전 아카이브 문항의 canonical metadata를 재현 가능하게 업그레이드·검증한다.**
 
 ---
 
@@ -294,7 +294,7 @@ Taxonomy 존재 여부와 실제 현행 교육과정 기본 출력 여부를 분
 - 기존 level과 blind compare
 - metadata migration
 - metadata validator
-- Archive 2.0이 읽을 Metadata Contract 봉인
+- Metadata Contract v2 봉인
 
 ## 이번 프로젝트의 기본 범위가 아니다
 
@@ -305,7 +305,7 @@ Taxonomy 존재 여부와 실제 현행 교육과정 기본 출력 여부를 분
 - image/SVG 수정
 - 모든 templateKey 신규 전수 작성
 - 모든 skillTags 전수 작성
-- Archive 2.0 UI 본구현
+- downstream consumer UI 본구현
 - 자동출제 알고리즘의 최종 비율 설계
 
 명백한 원문 오류가 발견되면 metadata 작업에 섞어 수정하지 않고 별도 defect queue로 분리한다.
@@ -961,8 +961,6 @@ FOUNDATION LOCK
   → 2015 고1 수학(하) — 집합
   → 2022 고1 공통수학2 — 집합 관련 L1
 
-  → 위 네 L1의 정제된 실제 metadata를 기준으로 Archive 2.0 본업그레이드
-
   → 고1 나머지
   → 중3
   → 중2
@@ -970,8 +968,8 @@ FOUNDATION LOCK
   → 고2
 ```
 
-2015와 2022는 하나의 작업으로 합치지 않는다. 고1 도형의 방정식과 집합
-네 L1이 모두 PASS하기 전에는 Archive 2.0 구현을 선행하지 않는다.
+2015와 2022는 하나의 작업으로 합치지 않는다. 완료된 L1은 다시 분류하지
+않고, fresh inventory에서 아직 닫히지 않은 L1만 지정 순서로 처리한다.
 
 변경이 필요하면 foundation defect를 즉석 수정하지 않고 별도
 `FOUNDATION_DEFECT_CANDIDATE`로 기록한다. **L1 단위 실행 규칙은 변경하지
@@ -979,25 +977,12 @@ FOUNDATION LOCK
 
 ---
 
-# 15. Archive 2.0 재개 Gate
+# 15. Metadata Foundation 계속 진행 Gate
 
-Archive 2.0 본구현을 전체 100% 분류 완료까지 무조건 막지는 않는다.
-
-다음이 모두 충족되면 Archive 2.0 본업그레이드를 시작할 수 있다.
-
-```text
-Taxonomy Authority LOCKED
-Difficulty Authority LOCKED
-Metadata Contract LOCKED
-2015 고1 도형의 방정식 실데이터 PASS
-2022 고1 도형의 방정식 실데이터 PASS
-2015 고1 집합 실데이터 PASS
-2022 고1 집합 실데이터 PASS
-```
-
-전체 archive 전수 migration 완료는 Archive 2.0 시작의 선행조건이 아니다.
-Archive 2.0은 위 네 L1의 정제된 실제 metadata와 LOCKED contract를 기준으로
-구현하고, 이후 coverage를 확장한다.
+전체 archive 전수 migration 완료를 기다리지 않고, fresh inventory의 미완료
+L1을 하나씩 처리한다. 다음 L1을 시작하려면 직전 L1의 denominator,
+canonical path, difficulty 4-field, conflict adjudication, sidecar parity,
+source fingerprint gate가 모두 PASS여야 한다.
 
 아직 분류되지 않은 문항은 안전하게:
 
@@ -1008,17 +993,28 @@ difficultyBucket = UNKNOWN
 
 으로 취급할 수 있어야 한다.
 
-그러나 Archive 2.0에서:
+# 16. Metadata Foundation이 보장하는 산출물
 
-- UNKNOWN을 임의 추정
-- legacy 필드를 새 canonical처럼 사용
-- RPM_EXTENDED_CANDIDATE 자동출제
+Foundation data는 canonical metadata 저장 계약과 검증 evidence로만 확정한다.
 
-하는 것은 금지한다.
+- L1/L2/L3/L4 primary path
+- `secondaryConceptKeys`
+- `curriculumApplicability` / `defaultSelectable`
+- `difficultyBucket` 1~5 또는 `UNKNOWN`
+- `difficultyConfidence` / `difficultyBoundaryFlag`
+- `legacyLevelCompatibility`
+- `reviewStatus` / `metadataRevision`
+- source identity 및 source/content fingerprint
+- L1별 blind ledger, freeze, recheck, adjudication, closeout
+
+아직 분류되지 않은 문항은 `taxonomyStatus=UNKNOWN`,
+`difficultyBucket=UNKNOWN`으로 명시하며, legacy field를 새 canonical로
+추정하지 않는다. `RPM_EXTENDED_CANDIDATE`는 taxonomy policy에 따라 기본
+선택에서 제외한다.
 
 ---
 
-# 16. Archive 2.0이 최종적으로 활용할 기능
+# 16. Metadata Foundation 최종 산출물
 
 Foundation data가 충분히 채워지면 다음이 가능해야 한다.
 
@@ -1168,18 +1164,13 @@ Metadata Contract v2 작성
 2022 집합
 → PASS / closeout / commit / push
 
-[8]
-Archive 2.0 본업그레이드
-→ 위 네 L1 실데이터 + 새 contract 기준
-
-[9~]
+[8~]
 고1 나머지 → 중3 → 중2 → 중1 → 고2
 → L1 하나씩 production classification + difficulty migration
 
 [마지막]
 전체 metadata coverage audit
 → Metadata Foundation v2 release seal
-→ Archive 2.0 RC에서 실제 Finder/Studio/출력 전수 smoke
 ```
 
 ---
@@ -1195,8 +1186,8 @@ Foundation 문서 lock 이후 첫 실제 작업은 현재 repo를 fresh scan하�
 3. 2015 집합
 4. 2022 집합
 
-그 다음 Archive 2.0 본업그레이드를 시작하고, 이후
-`고1 나머지 → 중3 → 중2 → 중1 → 고2` 순서로 확장한다.
+이후에도 `고1 나머지 → 중3 → 중2 → 중1 → 고2` 순서로
+metadata migration을 확장한다.
 
 ---
 
@@ -1208,6 +1199,7 @@ Metadata Foundation v2의 목적은 문서 숫자를 늘리는 것이 아니다.
 
 > 모든 작업자가 동일한 L1~L4와 동일한 difficultyBucket 기준을 사용하고,
 > 문항별 canonical metadata가 재현 가능하게 생성·검수되며,
-> Archive 2.0이 별도 추론 없이 그 데이터를 그대로 소비할 수 있는 상태.
+> downstream consumer가 별도 추론 없이 그 데이터를 그대로 소비할 수 있는 상태.
 
-이 상태에 도달하면 Foundation 설계를 멈추고 데이터 coverage 및 Archive 2.0 구현으로 넘어간다.
+이 상태에 도달하면 Foundation 설계를 멈추고, 봉인된 metadata package를
+별도 downstream 작업에 전달한다.
