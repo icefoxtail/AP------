@@ -373,7 +373,14 @@ function main() {
     const outlierUids = new Set();
     for (const group of groups.values()) {
         const values = group.map(record => bucketNumber(record.difficultyBucket)).filter(value => value !== null);
-        if (values.length > 1 && Math.max(...values) - Math.min(...values) >= 2) group.forEach(record => outlierUids.add(record.questionUid));
+        if (values.length > 2 && Math.max(...values) - Math.min(...values) >= 2) {
+            const sorted = [...values].sort((a, b) => a - b);
+            const median = sorted[Math.floor(sorted.length / 2)];
+            group.forEach(record => {
+                const value = bucketNumber(record.difficultyBucket);
+                if (value !== null && Math.abs(value - median) >= 2) outlierUids.add(record.questionUid);
+            });
+        }
     }
     const recheckRecords = compareRecords
         .filter(record => record.difficultyConfidence === 'low'
@@ -399,6 +406,7 @@ function main() {
                 recheckPath: { L1: independent.L1, L2: independent.L2, L3: independent.L3, L4: independent.L4 },
                 firstConfidence: record.difficultyConfidence,
                 recheckConfidence: independent.difficultyConfidence,
+                difficultyBoundaryFlag: record.difficultyBoundaryFlag,
                 legacyLevelCompatibilityBefore: record.legacyLevelCompatibility,
                 legacyLevelCompatibilityAfter: resolvedCompatibility,
                 sameTypeOutlier: outlierUids.has(record.questionUid),
