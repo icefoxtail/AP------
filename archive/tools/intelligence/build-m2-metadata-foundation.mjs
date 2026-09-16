@@ -733,6 +733,7 @@ function makeBlindRecord(item) {
         sourceFingerprint: row.sourceFingerprint,
         curriculumKey: classification.curriculumKey,
         courseKey: classification.courseKey,
+        scope: classification.scope,
         L1: classification.L1,
         L2: classification.L2,
         L3: classification.L3,
@@ -1184,6 +1185,126 @@ function ensureInventory() {
     return { taxonomy, inventory, queue };
 }
 
+function readQueuePrepared(queueEntry, inventory, taxonomy) {
+    const dir = path.join(outputRoot, queueEntry.queueId.replaceAll('|', '__'));
+    const candidatePath = path.join(dir, 'metadata_candidate.json');
+    const validationPath = path.join(dir, 'validation.json');
+    const candidate = fs.existsSync(candidatePath) ? readJson(candidatePath) : { records: [], counts: {} };
+    const validation = fs.existsSync(validationPath) ? readJson(validationPath) : { status: 'NOT_RUN', counts: {} };
+    return { dir, candidate, validation };
+}
+
+function gitRecordMap(revisionRef) {
+    const raw = execFileSync('git', ['show', `${revisionRef}:archive/data/question_metadata.json`], {
+        encoding: 'utf8',
+        maxBuffer: 100 * 1024 * 1024
+    });
+    return new Map((JSON.parse(raw).records || []).map(record => [record.questionUid, JSON.stringify(record)]));
+}
+
+function buildFinalCloseout(inventory, queue, taxonomy) {
+    const completed = queue.map(entry => ({ entry, ...readQueuePrepared(entry, inventory, taxonomy) }));
+    const candidates = completed.flatMap(item => item.candidate.records || []);
+    const nonEmpty = completed.filter(item => item.entry.questionCount > 0);
+    const allValidationPass = completed.every(item => item.validation.status === 'PASS');
+    const counts = {
+        difficultyBucket: Object.fromEntries([1, 2, 3, 4, 5].map(value => [String(value), candidates.filter(record => record.difficultyBucket === value).length])),
+        difficultyConfidence: Object.fromEntries(['high', 'medium', 'low'].map(value => [value, candidates.filter(record => record.difficultyConfidence === value).length])),
+        difficultyBoundaryFlag: Object.fromEntries(['B12', 'B23', 'B34', 'B45'].map(value => [value, candidates.filter(record => record.difficultyBoundaryFlag === value).length])),
+        legacyLevelCompatibility: Object.fromEntries(['NORMAL', 'BORDERLINE_REVIEW', 'BORDERLINE_ACCEPTABLE', 'STRONG_CONFLICT'].map(value => [value, candidates.filter(record => record.legacyLevelCompatibility === value).length])),
+        curriculumApplicability: Object.fromEntries(['DEFAULT_SCOPE', 'RPM_EXTENDED', 'RPM_EXTENDED_CANDIDATE'].map(value => [value, candidates.filter(record => record.curriculumApplicability === value).length])),
+        reviewStatus: {
+            reviewed_pass: candidates.filter(record => record.reviewStatus === 'reviewed_pass').length,
+            HOLD: candidates.filter(record => record.reviewStatus === 'HOLD').length,
+            manual_review: candidates.filter(record => record.tagStatus === 'manual_review').length
+        }
+    };
+    const recheck = completed.reduce((sum, item) => sum + Number(item.validation.counts?.recheck || 0), 0);
+    const recheckResolved = completed.reduce((sum, item) => sum + Number(item.validation.counts?.recheckResolved || 0), 0);
+    const recheckHold = completed.reduce((sum, item) => sum + Number(item.validation.counts?.recheckHold || 0), 0);
+    const sameTypeOutlier = completed.reduce((sum, item) => sum + Number(item.validation.counts?.sameTypeOutlier || 0), 0);
+    const sourceJsMutation = inventory.files.filter(file => file.sourceJsSha256 !== fileSha256(path.join(archiveDir, 'exams', file.sourceArchiveFile))).length;
+    const sourceMap = buildSourceMap(findIdentityRecords());
+    const sourceContentMutation = inventory.rows.filter(row => {
+        const loaded = sourceMap.get(row.questionUid);
+        return sourceFingerprint(loaded.question) !== row.sourceFingerprint || contentFingerprint(loaded.question) !== row.contentFingerprint;
+    }).length;
+    const targetUids = new Set(inventory.rows.map(row => row.questionUid));
+    const metadata = readCurrentMetadata().metadata;
+    const metadataByUid = new Map((metadata.records || []).map(record => [record.questionUid, record]));
+    const missingCanonicalFields = candidates.filter(record => {
+        const current = metadataByUid.get(record.questionUid);
+        return !current || CANONICAL_FIELDS.some(field => current[field] === undefined);
+    }).length;
+    const preflightRecordMap = gitRecordMap('130e59de5a948d7de3c276cd50b1d06e4ad4eec1');
+    const currentRecordMap = new Map((metadata.records || []).map(record => [record.questionUid, JSON.stringify(record)]));
+    const changedOutsideTarget = [...currentRecordMap].filter(([uid, value]) => !targetUids.has(uid) && preflightRecordMap.get(uid) !== value).length;
+    const changedTarget = [...currentRecordMap].filter(([uid, value]) => targetUids.has(uid) && preflightRecordMap.get(uid) !== value).length;
+    const l1 = completed.map(item => {
+        const candidate = item.candidate.records || [];
+        const uniquePath = new Set(candidate.map(record => `${record.L1} > ${record.L2} > ${record.L3} > ${record.L4}`));
+        const commitPath = path.relative(repoRoot, path.join(item.dir, 'CLOSEOUT.md')).replaceAll('\\', '/');
+        let commitSha = '';
+        try { commitSha = execFileSync('git', ['log', '-1', '--format=%H', '--', commitPath], { encoding: 'utf8' }).trim(); } catch { commitSha = ''; }
+        return {
+            queueId: item.entry.queueId,
+            curriculum: item.entry.curriculum,
+            semester: item.entry.semester,
+            L1: item.entry.canonicalL1Key,
+            questionCount: candidate.length,
+            L2Count: new Set(candidate.map(record => record.L2)).size,
+            L3Count: new Set(candidate.map(record => record.L3)).size,
+            L4PathCount: uniquePath.size,
+            validation: item.validation.status,
+            commitSha,
+            remotePush: Boolean(commitSha)
+        };
+    });
+    const updatedQueue = {
+        schemaVersion: 'metadata-foundation-m2-l1-work-queue-v1',
+        generatedAt: new Date().toISOString(),
+        sourceInventory: 'archive/_generated/intelligence/phase1/metadata-foundation-m2/M2_FRESH_INVENTORY.json',
+        sourceInventoryDigest: inventory.digest,
+        status: allValidationPass ? 'ALL_L1_CLOSED' : 'CLOSEOUT_REVIEW_REQUIRED',
+        entries: queue.map(entry => ({ ...entry, status: entry.questionCount === 0 ? 'CLOSED_NO_SOURCE_IN_CURRENT_INVENTORY' : (completed.find(item => item.entry.queueId === entry.queueId)?.validation.status || 'NOT_RUN') }))
+    };
+    const sourceCounts = Object.fromEntries(['2015', '2022'].map(value => [value, inventory.rows.filter(row => row.curriculum === value).length]));
+    const sourceSemesterCounts = Object.fromEntries(['1', '2'].map(value => [value, inventory.rows.filter(row => String(row.sourceSemester) === value).length]));
+    const canonicalSemesterCounts = Object.fromEntries(['1', '2'].map(value => [value, completed.filter(item => String(item.entry.semester) === value).reduce((sum, item) => sum + (item.candidate.records || []).length, 0)]));
+    const summary = {
+        schemaVersion: 'metadata-foundation-m2-final-closeout-v1',
+        status: allValidationPass && candidates.length === inventory.totals.questions && changedOutsideTarget === 0 && sourceContentMutation === 0 && sourceJsMutation === 0 && missingCanonicalFields === 0 ? 'PASS_WITH_EXPLICIT_HOLDS' : 'FAIL',
+        branch: execFileSync('git', ['branch', '--show-current'], { encoding: 'utf8' }).trim(),
+        baseSha: '130e59de5a948d7de3c276cd50b1d06e4ad4eec1',
+        finalHead: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+        inventory: {
+            exactDenominator: inventory.totals.questions,
+            files: inventory.totals.files,
+            curriculum: sourceCounts,
+            sourceExamSemester: sourceSemesterCounts,
+            canonicalCourseSemester: canonicalSemesterCounts,
+            solutionMissing: inventory.totals.solutionMissing,
+            visualQuestionCount: inventory.rows.filter(row => row.visualDependency.visualDependency).length,
+            sharedMaterialCount: inventory.rows.filter(row => row.sharedMaterialDependency.dependency).length
+        },
+        l1,
+        counts,
+        independentRecheckCount: recheck,
+        independentRecheckResolved: recheckResolved,
+        independentRecheckHold: recheckHold,
+        sameTypeOutlierCount: sameTypeOutlier,
+        sourceContentMutation: sourceContentMutation,
+        sourceJsMutation: sourceJsMutation,
+        metadataScopeAudit: { changedTargetRecords: changedTarget, changedOutsideTargetRecords: changedOutsideTarget, missingCanonicalFields },
+        builderParity: { allL1ValidationPass: allValidationPass, appliedTargetRecords: candidates.length },
+        runtimeSidecarParity: runtimeFieldParity(),
+        finalQueueStatus: updatedQueue.status,
+        generatedAt: new Date().toISOString(),
+        statement: '본 branch는 중2 Metadata Foundation / canonical metadata upgrade 전용이다. Archive 2.0 구현 및 고1·중3·중1·고2 metadata 작업은 수행하지 않았다.'
+    };
+    return { updatedQueue, summary };
+}
+
 function loadInventoryAndQueue() {
     const taxonomy = readTaxonomy();
     const inventory = readJson(path.join(inventoryRoot, 'M2_FRESH_INVENTORY.json'));
@@ -1199,6 +1320,45 @@ function main() {
     }
     const { taxonomy, inventory, queue } = loadInventoryAndQueue();
     const queueId = process.argv[3];
+    if (mode === '--finalize') {
+        const { updatedQueue, summary } = buildFinalCloseout(inventory, queue, taxonomy);
+        writeJson(path.join(inventoryRoot, 'M2_L1_WORK_QUEUE.json'), updatedQueue);
+        writeJson(path.join(outputRoot, 'M2_METADATA_FOUNDATION_CLOSEOUT.json'), summary);
+        const markdown = [
+            '# M2 Metadata Foundation Final Closeout', '',
+            `상태: **${summary.status}**`,
+            `branch: \`${summary.branch}\``,
+            `base SHA: \`${summary.baseSha}\``,
+            `final HEAD: \`${summary.finalHead}\``,
+            '',
+            `- exact denominator: **${summary.inventory.exactDenominator}**`,
+            `- 2015: **${summary.inventory.curriculum['2015']}**, 2022: **${summary.inventory.curriculum['2022']}**`,
+            `- source exam semester 1: **${summary.inventory.sourceExamSemester['1']}**, 2: **${summary.inventory.sourceExamSemester['2']}**`,
+            `- canonical course semester 1: **${summary.inventory.canonicalCourseSemester['1']}**, 2: **${summary.inventory.canonicalCourseSemester['2']}**`,
+            `- difficulty recheck: **${summary.independentRecheckCount}** (resolved ${summary.independentRecheckResolved}, hold ${summary.independentRecheckHold})`,
+            `- same-type outlier recheck: **${summary.sameTypeOutlierCount}**`,
+            `- changed target metadata records: **${summary.metadataScopeAudit.changedTargetRecords}**`,
+            `- changed non-target metadata records: **${summary.metadataScopeAudit.changedOutsideTargetRecords}**`,
+            `- source/content mutation: **${summary.sourceContentMutation} / ${summary.sourceJsMutation}**`,
+            '',
+            '| Curriculum | Semester | L1 | Questions | L2 | L3 | L4 paths | Validator | Commit |',
+            '|---:|---:|---|---:|---:|---:|---:|---|---|',
+            ...summary.l1.map(item => `| ${item.curriculum} | ${item.semester} | ${item.L1} | ${item.questionCount} | ${item.L2Count} | ${item.L3Count} | ${item.L4PathCount} | ${item.validation} | ${item.commitSha || 'NO_COMMIT'} |`),
+            '',
+            `- difficultyBucket: ${JSON.stringify(summary.counts.difficultyBucket)}`,
+            `- difficultyConfidence: ${JSON.stringify(summary.counts.difficultyConfidence)}`,
+            `- difficultyBoundaryFlag: ${JSON.stringify(summary.counts.difficultyBoundaryFlag)}`,
+            `- legacyLevelCompatibility: ${JSON.stringify(summary.counts.legacyLevelCompatibility)}`,
+            `- curriculumApplicability: ${JSON.stringify(summary.counts.curriculumApplicability)}`,
+            `- reviewStatus: ${JSON.stringify(summary.counts.reviewStatus)}`,
+            '',
+            summary.statement,
+            ''
+        ].join('\n');
+        fs.writeFileSync(path.join(outputRoot, 'M2_METADATA_FOUNDATION_CLOSEOUT.md'), markdown, 'utf8');
+        console.log(JSON.stringify(summary, null, 2));
+        return;
+    }
     if (!queueId) throw new Error(`${mode} requires queueId, e.g. 2015|M2-1|유리수와_순환소수`);
     const queueEntry = queue.find(item => item.queueId === queueId);
     if (!queueEntry) throw new Error(`queue not found: ${queueId}`);
