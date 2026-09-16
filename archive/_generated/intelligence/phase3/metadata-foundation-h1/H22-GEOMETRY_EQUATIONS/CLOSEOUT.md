@@ -17,7 +17,7 @@ legacy key: `H22-C2-01`
 ## Taxonomy result
 
 blind first-pass → freeze → legacy compare → source/solution independent recheck
-순서로 처리했다. 모든 primary path가 RPM Primary Taxonomy v1.0에 존재한다.
+순서로 처리했다. 모든 primary path가 RPM Primary Taxonomy v1.0에 존재한다. 외분점 2건은 RPM_EXTENDED_CANDIDATE로 보존하고 defaultSelectable=false로 기본 출력에서 제외한다.
 
 | L2 > L3 > L4 | 문항 수 |
 |---|---:|
@@ -40,8 +40,7 @@ blind first-pass → freeze → legacy compare → source/solution independent r
 | 4 | 4 |
 | 5 | 0 |
 
-legacy compatibility 현황은 NORMAL 12, BORDERLINE_REVIEW 7,
-STRONG_CONFLICT 8이다. 기존 `level`은 자동 수정하지 않았다.
+legacy compatibility 현황은 NORMAL 12, BORDERLINE_REVIEW 0, BORDERLINE_ACCEPTABLE 7, STRONG_CONFLICT 8이다. 기존 `level`은 자동 수정하지 않았다.
 
 ## Validation
 
@@ -51,7 +50,7 @@ STRONG_CONFLICT 8이다. 기존 `level`은 자동 수정하지 않았다.
 - difficulty 4-field enum: PASS
 - blind ledger + freeze: PASS
 - legacy compare after freeze: PASS
-- DEFAULT_SCOPE / `defaultSelectable=true`: PASS
+- applicability/defaultSelectable gate: PASS (25 DEFAULT_SCOPE; 2 RPM_EXTENDED_CANDIDATE with `defaultSelectable=false`)
 - generated metadata sidecar parity: PASS
 - runtime field-list parity: PASS
 - JS syntax / JSON parse: PASS

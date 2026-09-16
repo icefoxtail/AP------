@@ -35,4 +35,8 @@
 
 ## Identity reconciliation note
 
-기존 identity map과 비교할 때 실제 source에는 `original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js` 20문항이 추가로 존재한다. 이 20문항은 fresh inventory에서 제외하지 않고 qid_v1 알고리즘으로 queue에 포함했다. 기존 identity/classification map을 자동 수정하지 않았다.
+기존 identity map과 비교할 때 실제 source에는 `original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js` 20문항이 추가로 존재한다. 이 20문항은 fresh inventory에서 제외하지 않고 qid_v1 알고리즘으로 queue에 포함했다. 기존 identity/classification map은 자동 수정하지 않았으며, 20문항은 source review 결과만 보존하고 identity 등록 전까지 global metadata sidecar에 반영하지 않는 명시적 HOLD다.
+
+- fresh source-reviewed UID: **2498**
+- current identity-backed UID: **2478**
+- identity reconciliation HOLD: **20**

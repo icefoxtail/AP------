@@ -13,7 +13,9 @@ legacy key: `H15-SB-01`
 - UID cardinality: PASS
 - source fingerprint mutation: **0**
 - solution presence at inventory: **156/156**
-- fresh-only source records applied: **4**
+- fresh-only source records held for identity reconciliation: **4**
+
+현재 canonical identity map에는 152/156건만 등록되어 있다. `original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js`의 fresh-only 4건은 source review 결과를 보존하되 identity 등록 전까지 global metadata sidecar에 반영하지 않는 명시적 HOLD다.
 
 ## Taxonomy result
 
@@ -46,8 +48,7 @@ blind first-pass → freeze → legacy compare → source/solution independent r
 | 4 | 68 |
 | 5 | 12 |
 
-legacy compatibility 현황은 NORMAL 54, BORDERLINE_REVIEW 42,
-STRONG_CONFLICT 60이다. 기존 `level`은 자동 수정하지 않았다.
+legacy compatibility 현황은 NORMAL 54, BORDERLINE_REVIEW 0, BORDERLINE_ACCEPTABLE 42, STRONG_CONFLICT 60이다. 기존 `level`은 자동 수정하지 않았다.
 
 ## Validation
 
@@ -57,7 +58,7 @@ STRONG_CONFLICT 60이다. 기존 `level`은 자동 수정하지 않았다.
 - difficulty 4-field enum: PASS
 - blind ledger + freeze: PASS
 - legacy compare after freeze: PASS
-- DEFAULT_SCOPE / `defaultSelectable=true`: PASS
+- DEFAULT_SCOPE / `defaultSelectable=true`: PASS for identity-backed records; fresh-only 4건은 identity reconciliation HOLD
 - generated metadata sidecar parity: PASS
 - runtime field-list parity: PASS
 - JS syntax / JSON parse: PASS
@@ -72,6 +73,6 @@ Machine receipts:
 - `metadata_candidate.json`
 - `apply_receipt.json`
 
-이 L1의 metadata는 `archive/data/question_metadata.json`에 sidecar로
-적용했다. fresh inventory에서 새로 확인된 4문항은 qid_v1 source tuple로
-등록했으며, source exam JS는 수정하지 않았다.
+이 L1의 metadata는 identity-backed 152건만 `archive/data/question_metadata.json`에
+sidecar로 적용했다. fresh inventory에서 새로 확인된 4문항은 qid_v1 source tuple
+후보로 보존했지만 identity 등록 전까지 명시적 HOLD이며, source exam JS는 수정하지 않았다.

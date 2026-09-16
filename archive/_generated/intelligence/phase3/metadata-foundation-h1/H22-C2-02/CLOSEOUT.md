@@ -31,7 +31,7 @@ blind first-pass → freeze → legacy compare → boundary/conflict recheck →
 
 - bucket: {"1":6,"2":2,"3":8,"4":14,"5":1}
 - confidence: {"medium":10,"high":21}
-- legacy compatibility: {"NORMAL":15,"BORDERLINE_REVIEW":13,"STRONG_CONFLICT":3}
+- legacy compatibility: {"BORDERLINE_ACCEPTABLE":13,"BORDERLINE_REVIEW":0,"NORMAL":15,"STRONG_CONFLICT":3}
 
 ## Review / adjudication
 

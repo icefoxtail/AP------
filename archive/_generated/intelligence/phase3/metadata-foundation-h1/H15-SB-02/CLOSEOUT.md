@@ -18,6 +18,8 @@ source files: **29**
 - source JS SHA mutation: **0**
 - source/content fingerprint mutation: **0**
 
+canonical identity map에 등록된 144/150건만 global metadata sidecar에 반영했다. `original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js`의 fresh-only 6건은 source review 결과를 보존하되 identity 등록 전까지 명시적 identity reconciliation HOLD로 유지한다.
+
 ## Taxonomy result
 
 blind first-pass → freeze → legacy compare → boundary/conflict recheck → adjudication 순서로 처리했다. 도형·그래프·표·입체는 representation/context일 수 있으므로, 실제 해결에 결정적인 교육과정 개념과 풀이 전략을 primary로 사용했다.
@@ -31,7 +33,7 @@ blind first-pass → freeze → legacy compare → boundary/conflict recheck →
 
 - bucket: {"1":11,"2":5,"3":7,"4":125,"5":2}
 - confidence: {"high":128,"medium":22}
-- legacy compatibility: {"BORDERLINE_REVIEW":79,"NORMAL":49,"STRONG_CONFLICT":22}
+- legacy compatibility: {"BORDERLINE_ACCEPTABLE":79,"BORDERLINE_REVIEW":0,"NORMAL":49,"STRONG_CONFLICT":22}
 
 ## Review / adjudication
 
@@ -51,10 +53,11 @@ blind first-pass → freeze → legacy compare → boundary/conflict recheck →
 - global builder rebuild: NOT RUN — identity reconciliation remains separate
 
 ## Apply
-- global sidecar updated: **150 records**
+- identity-backed global sidecar updated: **144 records**
+- fresh-only identity reconciliation HOLD: **6 records**
 - updated existing: **144**
-- newly registered: **6**
-- global metadata record count: **11044**
+- fresh-only registration held: **6**
+- global metadata record count after scope reconciliation: **11,034**
 - reviewStatus: `reviewed_pass` 150 / `HOLD` 0
 
 Evidence:
