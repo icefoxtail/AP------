@@ -109,7 +109,8 @@ function text(file) {
 }
 
 function sha256(file) {
-  return crypto.createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex');
+  const text = fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n');
+  return crypto.createHash('sha256').update(text, 'utf8').digest('hex');
 }
 
 function walk(dir, output = []) {
