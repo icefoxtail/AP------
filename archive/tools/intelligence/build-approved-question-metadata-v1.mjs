@@ -154,7 +154,15 @@ function buildMetadata() {
 
     for (const identityRecord of identity.records) {
         const uid = identityRecord.questionUid;
-        const classified = classificationByUid.get(uid);
+        // Test fixtures remain in the identity/runtime regression corpus but
+        // are intentionally outside the production classification snapshot.
+        // Keep them in the sidecar with explicit empty metadata; a missing
+        // classification for a real archive question must still block build.
+        const classified = classificationByUid.get(uid) || (
+            normalizeFile(identityRecord.sourceArchiveFile).startsWith('test-fixtures/')
+                ? { standardUnitKey: '', standardUnit: '', classification: {} }
+                : null
+        );
         const question = sourceQuestions.get(uid);
         if (!classified || !question) throw new Error(`metadata join failed: ${uid}`);
         const classificationData = classified.classification || {};
