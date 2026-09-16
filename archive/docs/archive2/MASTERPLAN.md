@@ -649,6 +649,13 @@ studentId
   → question_uid[]
 ```
 
+학생 exposure의 최종 Authority는 항상 `question_uid`다. 서버 history query는
+selected student IDs의 effective exposure UID set과 현재 candidate
+questionUid set의 intersection을 계산해야 한다. `unit_keys`나 이후 변경될
+difficulty/problem type metadata는 선택·성능·진단 hint일 수는 있지만 history
+correctness를 자르는 HARD filter가 아니다. metadata/unit 재분류가 일어나도
+동일 questionUid exposure는 유지하고, legacy coverage 상태를 함께 반환한다.
+
 여러 학생 공통 시험에서는 각 학생 history의 UNION을 selector exclusion으로 사용한다.
 
 이 구조의 장점:

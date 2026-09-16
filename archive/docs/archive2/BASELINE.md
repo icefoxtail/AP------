@@ -305,12 +305,15 @@ remote D1 snapshot:
 | assignment with no recipient | 0 | 구조적 PASS |
 | assignment with zero effective recipient | 0 | 구조적 PASS |
 
-2026-08-19 migration boundary를 기준으로:
+2026-08-19 migration boundary를 기준으로 scope를 분리하면 다음과 같다.
 
-- pre-boundary 122 assignments / 695 recipient rows는 모두 존재하지만 legacy backfill/inferred 구간이다.
-- pre-boundary recipient rows 중 703건은 assignment와 다른 날짜에 생성되었고 2026-08-19 backfill 시각이 나타난다. 이들은 `LEGACY_INFERRED`다.
-- post-boundary 40 assignments 중 39 assignments / 267 rows는 assignment와 같은 calendar day에 snapshot이 생성되어 operational timestamp가 구조적으로 확인된다.
-- post-boundary 1 assignment / 8 rows는 assignment가 2026-08-22이고 recipient가 2026-09-05에 생성되어 issue-time snapshot 증거가 없다. 이 구간은 `UNRESOLVED`다.
+- pre-boundary 122 assignments / 695 recipient rows: migration 당시 roster backfill/inferred 구간 → `LEGACY_INFERRED`.
+- post-boundary same-day 39 assignments / 267 recipient rows: assignment와 recipient가 같은 calendar day에 생성되어 operational timestamp가 구조적으로 확인되는 구간 → `VERIFIED` 계열.
+- post-boundary delayed 1 assignment / 8 recipient rows: assignment가 2026-08-22이고 recipient가 2026-09-05에 생성되어 issue-time snapshot 증거가 없는 구간 → `UNRESOLVED`.
+
+따라서 recipient 합계는 `695 + 267 + 8 = 970`이고, assignment 합계는
+`122 + 39 + 1 = 162`다. pre-boundary inferred rows와 post-boundary delayed
+rows를 하나의 숫자로 합쳐 표현하지 않는다.
 
 그러므로 “모든 과거 학생 출제가 issue-time에 정확히 기록되었다”고 말할 수
 없다. 현재 가능한 요약은 `VERIFIED`(구조적/동일일자 확인),
@@ -326,11 +329,13 @@ remote D1 snapshot:
 
 ### 7.3 OMR/result history reliability
 
-- `exam_sessions`: 531 rows 중 488 rows가 nonblank `assignment_id`, 43 rows는 assignment id가 없다.
+- current `exam_sessions` denominator는 531 rows다. 이 중 result item이 있는 current session은 242, 없는 current session은 289이며 `242 + 289 = 531`이다.
+- `assessment_result_items`가 참조하는 distinct session ID 전체는 246이다. 이 중 current `exam_sessions`에 존재하는 session은 242, current table에 없는 orphan result session은 4이며 `242 + 4 = 246`이다. 따라서 246을 current 531의 분모로 사용하지 않는다.
+- current `exam_sessions`: 531 rows 중 488 rows가 nonblank `assignment_id`, 43 rows는 assignment id가 없다.
 - 494 distinct session이 wrong answers를 가지고 있고, current wrong answer row가 session 없는 orphan은 0이었다.
-- `assessment_result_items`: 5,910 rows 중 5,814 rows는 current archive assignment 62개에 연결되지만 question UID field가 없다.
-- 96 rows는 현재 존재하지 않는 assignment id 2개(4 sessions)를 가리키는 orphan이다.
-- 531 sessions 중 289 sessions는 result item이 없고, 246 sessions는 result item이 있다. 이 차이는 result item을 complete history authority로 사용할 수 없음을 뜻한다.
+- `assessment_result_items`: 5,910 rows 중 5,814 rows는 current `exam_sessions`에 연결되고, 96 rows는 orphan session에 연결된다. current-session result rows 중 5,814 rows는 current archive assignment 62개에 연결되지만 question UID field가 없다.
+- orphan result rows 96개는 현재 존재하지 않는 assignment id 2개(4 orphan sessions)를 가리킨다. 이 4 orphan sessions는 current `exam_sessions` 531 rows에 포함되지 않는다.
+- current session 기준 result item coverage는 242/531 with-result, 289/531 without-result다. result-session 전체 기준 246에는 별도의 orphan 4가 포함되므로, result item을 complete history authority로 사용할 수 없다는 결론은 유지된다.
 - exclusion cleanup은 exam session/wrong answer를 정리하지만 result item cleanup은 구현되어 있지 않다. 현재 excluded student의 result item은 확인되지 않았지만 orphan result row가 이미 존재하므로 별도 reconciliation이 필요하다.
 
 ## 8. Taxonomy Inventory
@@ -540,7 +545,7 @@ FAIL 4건은 다음과 같으며 이 감사에서 수정하지 않았다.
 | legacy history | `VERIFIED/LEGACY_INFERRED/UNRESOLVED` 분류 정의 | 122 pre-boundary assignments와 1 delayed post-boundary assignment 확인 | 실제 coverage를 계획 문구보다 엄격하게 기록 |
 | assignment-question bridge | 신규 핵심 bridge 후보 | remote table/route/payload field 없음 | 신규 구현으로 분리; 이번 작업에서 변경하지 않음 |
 | remote schema | source `schema.sql`을 Worker authority로 간주할 위험 | deployed `exam_sessions.assignment_id/meta`, snapshots가 source ledger와 다름 | schema drift를 Phase 1 entry condition으로 기록 |
-| history/result | result items table 존재 | UID column 없음, 96 orphan assignment rows, 289 sessions no result items | complete history authority로 승격하지 않음 |
+| history/result | result items table 존재 | current sessions 531 = 242 with-result + 289 without-result; result-session IDs 246 = current 242 + orphan 4; result rows 5,910 = current-session 5,814 + orphan 96; UID column 없음 | complete history authority로 승격하지 않음 |
 | PDF | pipeline은 existing | 162 assignment 중 ready 36, pending 125, failed 1 | pipeline reuse는 existing, universal readiness는 아님 |
 
 이번 문서 커밋에서 수정한 기존 canonical 문서는 `CONTRACTS.md`와
@@ -606,32 +611,57 @@ history exclusion이나 bridge를 production ON할 준비가 끝났다는 뜻은
 
 ```text
 Phase 0 document/audit: COMPLETE
-Phase 1 design + read-only reconciliation: READY TO START
-Phase 1 student-facing bridge/history rollout: NOT READY
+Phase 1A design + read-only reconciliation: READY TO START
+Phase 1B student-facing bridge/history rollout: NOT READY
 ```
 
-### 15.2 진입 전 hard conditions
+### 15.2 Phase 1A 진입 조건
 
-Phase 1 구현을 시작하기 전에 아래 조건을 모두 기록하고 확인해야 한다.
+Phase 1A는 read-only reconciliation과 bridge 설계를 수행하는 단계다. Phase 1A를
+시작하려면 아래의 baseline과 policy가 이미 확보되어 있어야 한다.
 
-- audit baseline HEAD와 문서 commit이 보존되고, 기존 사용자 변경이 문서 commit에 섞이지 않아야 한다.
-- qid_v1 source path normalization, legacy flattened alias, ordinal change 정책을 계약으로 확정해야 한다.
-- 200 current h2 sidecar 누락, 272 remote/local alias gap, 157 blueprint blank, 7 legacy MIXED payload, 9 no-blueprint assignment group의 처리 결과가 각각 분류되어야 한다.
-- bridge migration의 primary key/unique key, order parity, normal/MIXED freeze source, retry idempotency를 fixture로 검증해야 한다.
-- remote D1의 9 duplicate logical archive identity groups와 partial unique index 부재를 정리/검증해야 한다. `assignment_batch_id`를 row identity로 사용하지 않는다.
-- source `schema.sql`과 deployed `exam_sessions`/assessment snapshot 실제 schema 차이를 migration ledger/운영 문서로 해소해야 한다.
-- Unit Past multi-source loader가 isolated evaluation으로 바뀌고, embedded preview header update가 iframe에 실제 반영되는지 브라우저에서 확인해야 한다.
-- 21/25 test 결과 중 4 fixture/version/generated-artifact failure의 처리 방침을 결정하고, local Wrangler dry-run dependency blocker를 해소하거나 명시적으로 환경 조건으로 남겨야 한다.
-- PDF `ready`를 출제 가능의 일반 조건으로 사용할지, pending/failed 재시도와 사용자 표시를 어떻게 할지 기존 route semantics 안에서 확정해야 한다.
-- true cold-cache/performance API 기반의 production budget을 별도로 측정해야 한다.
+- audit base HEAD, Phase 0 seal commit, current verified documentation HEAD가 분리 기록되어 있어야 한다.
+- qid_v1 source path normalization과 sourceOrdinal 의미가 계약으로 확정되어 있어야 한다. qid_v2는 이 단계의 전제가 아니다.
+- identity policy가 UID 기준이고, metadata/unit 재분류가 history correctness를 바꾸지 않는다는 원칙이 확정되어 있어야 한다.
+- 현재 known-gap inventory가 denominator와 함께 확보되어 있어야 한다: assignment question 4,138/UID 확인 3,407/gap 731, recipient 695/267/8, result session 242/289/4, sidecar/blueprint/path gap, duplicate 및 schema drift.
+- 기존 assignment, recipients, exclusions, OMR, wrong answer, PDF, mixed snapshot의 Authority mapping이 고정되어 있어야 한다.
+- Phase 1A는 별도 student exposure ledger나 새 assignment subsystem을 전제로 하지 않아야 한다.
 
-### 15.3 권장 Phase 1 순서
+### 15.3 Phase 1A — read-only reconciliation + bridge design/fixture
 
-1. bridge contract와 read-only candidate backfill/report를 먼저 만든다.
-2. qid/legacy coverage를 `VERIFIED`, `LEGACY_INFERRED`, `UNRESOLVED`로 노출하고 unresolved를 자동 제외/자동 재사용으로 숨기지 않는다.
-3. assignment question parity와 retry idempotency를 fixture/remote staging에서 검증한다.
+Phase 1A에서 수행할 작업은 다음과 같다. 이 단계는 student-facing rollout이
+아니며, 대상 학생에게 출제하거나 remote production data를 쓰지 않는다.
+
+1. normal blueprint와 persisted MIXED payload를 assignment/order 기준으로 read-only candidate report에 모은다.
+2. `VERIFIED`, `LEGACY_INFERRED`, `UNRESOLVED`를 유지한 채 `class_exam_assignment_questions`의 최소 필드·키·source priority를 설계한다.
+3. `candidateQuestionUids`와 student IDs를 이용한 batch history query 계약과 UID intersection fixture를 만든다. `unit_keys`는 hint/diagnostic일 뿐 correctness filter가 아니다.
+4. `(assignment_id, order_no)` parity, assignment/question UID uniqueness, normal/MIXED freeze source, retry/upsert idempotency의 fixture를 설계한다.
+5. remote logical assignment duplicate, source/deployed schema drift, legacy alias와 blank identity를 reconciliation report로 분리한다.
+6. N+1 없는 batch query plan과 기존 `canAccessStudentsBatch` 또는 동등 권한 검증을 fixture에 포함한다.
+
+### 15.4 Phase 1B student-facing rollout HARD Gate
+
+Phase 1A 결과를 production student-facing 흐름에 연결하는 것은 아래 HARD
+Gate가 모두 PASS한 뒤에만 가능하다. 아래 항목은 Phase 1A의 진입 조건이 아니라
+Phase 1B rollout 조건이다.
+
+- **bridge parity**: `question_count == class_exam_assignment_questions row count == final UID count`, UID unique, normal/MIXED snapshot과 최종 paper가 일치
+- **retry/idempotency**: 동일 assignment create/update/retry와 question write가 `(assignment_id, order_no)` 중복을 만들지 않으며 `assignment_batch_id`를 row identity로 사용하지 않음
+- **legacy coverage**: 모든 반환 history가 `VERIFIED / LEGACY_INFERRED / UNRESOLVED` 상태를 보존하고, unresolved를 조용히 verified/complete로 승격하지 않음
+- **schema drift**: deployed `exam_sessions`/assessment snapshot과 source schema/migration ledger의 차이가 운영 가능한 migration/documentation 상태로 정리됨
+- **critical runtime fixes**: Unit Past multi-source loader isolation과 embedded header propagation이 실제 브라우저에서 PASS
+- **regression**: normal 문제지/해설/정답, MIXED, Unit Past single, school/year, replacement/undo, header, assignment target/exclusion, PDF, Student Portal, OMR, score, wrong_answers, Wrong Clinic 및 관련 test suite가 승인된 기준으로 PASS
+
+추가로 PDF pending/failed 처리, cold-cache/API performance budget, 권한 경계도
+rollout 승인 기록에 포함해야 한다.
+
+### 15.5 권장 순서
+
+1. Phase 1A 진입 조건을 확인한다.
+2. Phase 1A에서 read-only reconciliation, UID intersection contract, bridge design/fixture를 완료한다.
+3. Phase 1B HARD Gate를 승인된 검증 환경에서 검증한다.
 4. 그 후에만 student history batch query와 Studio UI를 연결한다.
-5. 기존 normal/MIXED/OMR/PDF regression을 재실행하고, 실제 assignment write는 별도 승인된 검증 환경에서 수행한다.
+5. 마지막으로 실제 assignment write를 별도 승인된 환경에서 수행하고, main에는 장기 branch를 merge하지 않는다.
 
 Phase 1의 첫 구현은 “새 assignment 제품”이 아니라 기존 assignment와 canonical
 questionUid를 연결하는 최소 bridge여야 한다.

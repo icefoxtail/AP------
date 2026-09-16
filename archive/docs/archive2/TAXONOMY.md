@@ -791,6 +791,13 @@ query
 
 Finder의 `grade` UI는 `effectiveBrowseGrade`를 대상으로 한다.
 
+이 문서의 `unitKeys[]`는 Finder/Studio 후보 범위를 표현하는 selection field다.
+Student History correctness의 Authority가 아니다. History query는 canonical
+`questionUid` set을 기준으로 exposure와 candidate의 교집합을 계산하며,
+`unitKeys[]`는 필요할 때 query hint 또는 diagnostic으로만 전달한다. metadata나
+unit 재분류가 UID history에서 과거 exposure를 제거하는 HARD filter가 되어서는
+안 된다.
+
 ---
 
 # 25. Studio Source Filter Contract

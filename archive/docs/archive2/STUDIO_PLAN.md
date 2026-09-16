@@ -180,6 +180,11 @@ History(studentId)
 class_exam_assignment_questions.question_uid UNION
 ```
 
+학생 exposure의 최종 Authority는 `questionUid`다. `unitKey`, difficulty,
+problem type은 assignment 당시 metadata snapshot과 선택/진단 정보로만
+사용하며, metadata나 unit 재분류 후 history correctness를 자르는 HARD
+predicate로 사용하지 않는다.
+
 규칙:
 
 - `studentId` = APMS `students.id`
@@ -689,10 +694,17 @@ Worker에 batch history query를 둔다.
 ```json
 {
   "student_ids": ["student-123"],
-  "unit_keys": ["H22-C2-01", "H22-C2-02"],
-  "mode": "all"
+  "candidate_question_uids": ["qid_v1_..."],
+  "history_mode": "all"
 }
 ```
+
+기존 Studio filter와의 호환을 위해 `unit_keys`를 함께 보낼 수 있지만, 이는
+query hint/diagnostic용 optional field일 뿐 history correctness의 HARD filter가
+아니다. 서버는 먼저 recipients−exclusions와 assignment-question bridge에서
+학생별 exposure UID set을 계산한 뒤 `candidate_question_uids`와 교집합을
+계산한다. `candidate_question_uids`를 생략하면 full history UID set을 batch로
+반환한다.
 
 개념 응답:
 
@@ -701,6 +713,7 @@ Worker에 batch history query를 둔다.
   "students": {
     "student-123": {
       "question_uids": ["qid_v1_..."],
+      "matched_candidate_question_uids": ["qid_v1_..."],
       "coverage": {
         "verified": 84,
         "legacy_inferred": 0,
@@ -714,6 +727,11 @@ Worker에 batch history query를 둔다.
 ```
 
 정확한 endpoint 이름은 Worker route 스타일에 맞춰 구현 시 확정한다.
+`question_uids`는 candidate가 주어진 경우 candidate와의 UID intersection,
+생략된 경우 full effective history UID set이다. `coverage`는 candidate filter
+전에 평가한 effective history rows/UID의 `VERIFIED / LEGACY_INFERRED /
+UNRESOLVED` 상태를 함께 반환하여 후보 축소로 legacy gap을 숨기지 않는다. query는
+selected studentIds를 batch로 처리하며 학생별 N+1 query를 금지한다.
 
 ## 10.4 대상 학생 선택 시점
 
