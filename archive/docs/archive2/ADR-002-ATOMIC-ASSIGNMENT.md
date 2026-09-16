@@ -55,3 +55,18 @@ coverage를 집계한다. 타이밍이 불확실한 effective recipient도 known
 
 production rollout은 `ARCHIVE2_ENABLED=true`, additive migration,
 승인 catalog 배포가 모두 필요하다. 현재 production에 적용하지 않았다.
+
+## RC 검증에서 추가로 닫은 경계
+
+기존 APMS 분석 경로가 소비하는 `exam_blueprints`도 MIXED snapshot과 같은 batch에
+저장한다. metadata 추출/hash는 기존 exams route의 함수를 주입해 재사용하며 별도
+정의를 만들지 않는다. strict snapshot의 legacy blueprint 재작성은 차단한다.
+MIXED key는 `MIXED:archive2-...`로 구분하며 같은 key의 다른 payload도 차단한다.
+
+Student Portal의 기존 문항 상한에 맞춰 assignment당 80문항으로 제한한다. UI는
+50문항씩 분할한다. 실제 50문항 저장과 기존 Student Portal OMR route 제출 후,
+50번 `wrong_answers`가 bridge의 50번째 UID와 일치함을 확인했다. 이 검증을 위해
+기존 OMR 또는 wrong_answers 의미를 변경하지 않았다.
+
+D1의 compound SELECT 제한은 multi-row VALUES로 해결했다. question insert는
+8행, blueprint insert는 6행 단위로 묶어 statement당 bind 수를 100 미만으로 유지한다.
