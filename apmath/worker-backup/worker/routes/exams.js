@@ -1281,10 +1281,30 @@ export async function handleExams(request, env, teacher, path, url) {
   }
 
   if (resource === 'class-exam-assignments') {
+    if(method==='POST'&&!id){
+      if(request.headers.get('X-Archive2-Contract')==='archive2-v1'){
+        const currentTeacher=await requireTeacher(request,env,teacher);
+        if(!currentTeacher)return jsonResponse({error:'Unauthorized'},401);
+        return handleArchive2(request,env,currentTeacher,'original',{buildArchiveQuestionMetadata,buildArchiveMetadataHash});
+      }
+    }
     if (id === 'studio' || id === 'question-history') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       return handleArchive2(request, env, currentTeacher, id, { buildArchiveQuestionMetadata, buildArchiveMetadataHash });
+    }
+    if(method==='GET'&&id&&path[3]==='status'){
+      const currentTeacher=await requireTeacher(request,env,teacher);
+      if(!currentTeacher)return jsonResponse({error:'Unauthorized'},401);
+      const assignment=await loadClassExamAssignmentById(env,id);
+      if(!assignment)return jsonResponse({error:'출제 내역을 찾을 수 없습니다.'},404);
+      if(!(await canAccessClass(currentTeacher,assignment.class_id,env)))return jsonResponse({error:'Forbidden'},403);
+      const students=(await env.DB.prepare(`SELECT r.student_id,s.name,CASE WHEN x.student_id IS NULL THEN 0 ELSE 1 END excluded,
+        (SELECT e.id FROM exam_sessions e WHERE e.student_id=r.student_id AND e.assignment_id=r.assignment_id ORDER BY e.updated_at DESC LIMIT 1) session_id
+        FROM class_exam_assignment_recipients r JOIN students s ON s.id=r.student_id
+        LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+        WHERE r.assignment_id=? ORDER BY s.name`).bind(id).all()).results;
+      return jsonResponse({success:true,assignment,students});
     }
     if ((method === 'GET' || method === 'POST') && id && path[3] === 'pdf') {
       const currentTeacher = await requireTeacher(request, env, teacher);
@@ -1658,7 +1678,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const exclusions = await loadClassAssignmentExclusions(env, assignments.map(a => a.id));
       // 이 시험이 배정된 시점에 blueprint 동기화가 안 됐던 옛 데이터를 소급 채운다.
       // 이후 요청은 archive metadata revision/hash가 같을 때만 빠르게 스킵된다.
-      const archiveFilesToSync = [...new Set(assignments.map(a => a.archive_file).filter(Boolean))];
+      const archiveFilesToSync = [...new Set(assignments.filter(a=>!a.archive2_write_key).map(a => a.archive_file).filter(Boolean))];
       await Promise.all(archiveFilesToSync.map(file => syncExamBlueprintsFromArchive(env, file)));
       return jsonResponse({ success: true, assignments, exclusions });
     }

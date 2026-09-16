@@ -8,6 +8,8 @@
     <script defer src="mixer-selector.js"></script>
     <script defer src="archive2-core.js"></script>
     <script defer src="archive2-source.js"></script>
+    <script defer src="archive2-output.js"></script>
+    <script defer src="archive2-papers.js"></script>
     <script defer src="archive2-workspace.js"></script>
   </head>
   <body>
@@ -16,11 +18,11 @@
       <a class="brand" href="workspace.html">JS 아카이브 <span>2.0</span></a>
       <nav aria-label="작업공간">
         <button data-view="find" class="active">기출 찾기</button
-        ><button data-view="compose">맞춤 구성</button
-        ><button data-view="recent">최근 작업</button
-        ><button data-view="health">데이터 상태</button>
+        ><button data-view="compose">문제지 만들기</button
+        ><button data-view="recent">출제 내역</button>
       </nav>
       <a class="legacy" href="index.html">전체 기능</a>
+      <button class="legacy" data-view="health">자료 점검</button>
     </header>
     <div id="status" class="status" role="status" aria-live="polite">
       문항 목록을 준비하고 있습니다.

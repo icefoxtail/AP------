@@ -40,7 +40,7 @@ const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': DEFAULT_ALLOWED_ORIGINS[0],
   'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token'
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token, X-Archive2-Contract'
 };
 
 // 요청 Origin이 허용 목록(env.ALLOWED_ORIGINS 콤마 구분 또는 기본값) 또는 localhost일 때만 해당 Origin을 반환한다.

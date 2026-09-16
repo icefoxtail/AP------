@@ -206,7 +206,7 @@
     const rowIds = new Set();
     for (const row of request.rows || []) {
       if (!text(row.id) || rowIds.has(row.id))
-        errors.push("구성 행 ID가 중복되거나 없습니다.");
+        errors.push("출제 조건 ID가 중복되거나 없습니다.");
       rowIds.add(row.id);
       if (!Number.isInteger(row.count) || row.count < 1 || row.count > 400)
         errors.push("문항 수는 1~400 사이 정수여야 합니다.");
@@ -264,7 +264,7 @@
       }
       const result = rowResults.find((r) => r.id === row.id);
       if (result.selected >= row.count) {
-        errors.push("고정 문항 수가 구성 계획보다 많습니다.");
+        errors.push("고정 문항 수가 문항 수 설정보다 많습니다.");
         continue;
       }
       selected.push({ ...record, rowId: row.id });
@@ -332,7 +332,7 @@
         hardFailures.push("학생·시리즈·수동 제외 이력과 중복됩니다.");
       const row = request.rows.find((r) => r.id === record.rowId);
       if (!row || !rowMatches(record, row))
-        hardFailures.push("구성 행과 문항이 일치하지 않습니다.");
+        hardFailures.push("출제 조건과 문항이 일치하지 않습니다.");
     }
     for (const row of request.rows || [])
       if (selected.filter((r) => r.rowId === row.id).length !== row.count)
@@ -349,7 +349,7 @@
       );
     const schools = new Set(selected.map((r) => r.school));
     if (selected.length >= 10 && schools.size === 1)
-      warnings.push("한 학교의 문항으로 구성되어 있습니다.");
+      warnings.push("한 학교의 문항으로 선택했습니다.");
     return {
       status: hardFailures.length
         ? "HARD_BLOCK"

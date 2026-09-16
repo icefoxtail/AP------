@@ -15,7 +15,9 @@ import {
   validateNormalBlueprint,
   checkTargetGrade,
   blueprintInsertStatements,
+  validateOriginalSnapshot,
 } from "../helpers/archive2-questions.js";
+import output from "../../../../archive/archive2-output.js";
 
 async function readPayload(request) {
   if (!request.body) fail("JSON body required");
@@ -68,7 +70,8 @@ export async function handleArchive2(
       fail("JSON object required");
     if (action === "question-history")
       return jsonResponse(await loadQuestionHistory(env, teacher, input));
-    if (action !== "studio") fail("Not found", 404);
+    if (!["studio", "original"].includes(action)) fail("Not found", 404);
+    const original = action === "original";
     if (!(await hasQuestionBridge(env)))
       fail("Archive 2.0 migration required", 503);
     if (input.contract_version !== ARCHIVE2_CONTRACT)
@@ -84,7 +87,6 @@ export async function handleArchive2(
     if (!classRow) fail("class not found", 404);
     const targetIds = uniqueIds(input.student_ids);
     if (!targetIds.length) fail("출제 대상 학생을 선택하세요.");
-    await requireStudentAccess(teacher, targetIds, env);
     const roster =
       (
         await env.DB.prepare(
@@ -119,10 +121,37 @@ export async function handleArchive2(
         409,
       );
     const existing = existingRows[0];
+    if (!existing) await requireStudentAccess(teacher, targetIds, env);
     let payload = null,
       questions,
       meta;
-    if (file.startsWith("MIXED:")) {
+    if (original) {
+      if (!file.startsWith("exams/") || file.includes(".."))
+        fail("원본 경로가 올바르지 않습니다.");
+      payload = input.original_payload_json;
+      if (!payload || !Array.isArray(payload.questions))
+        fail("원본 문항이 필요합니다.");
+      payload = {
+        questions: payload.questions,
+        meta: {
+          sourceKind: "archive2-original",
+          sourceArchiveFile: file.replace(/^exams\//, ""),
+          identityTitle: String(payload.meta?.identityTitle || ""),
+          printHeaderOptions: output.normalize(
+            payload.meta?.printHeaderOptions,
+            title,
+          ),
+          includeQr: payload.meta?.includeQr === true,
+          qpp: Number(input.pdf_qpp || 4),
+        },
+      };
+      if (!existing) {
+        const verified = await validateOriginalSnapshot(env, payload, input);
+        questions = verified.questions;
+        payload.meta.identityTitle = verified.exam.identityTitle;
+      }
+      meta = {};
+    } else if (file.startsWith("MIXED:")) {
       if (!file.startsWith("MIXED:archive2-"))
         fail("Archive 2.0 snapshot key required");
       try {
@@ -157,7 +186,21 @@ export async function handleArchive2(
       const sourceGrade = await validateNormalBlueprint(env, questions, input);
       if (!existing) checkTargetGrade(classRow, sourceGrade);
     }
-    const rows = await buildQuestionSnapshot(input, questions, meta);
+    const rows =
+      original && existing
+        ? (
+            await env.DB.prepare(
+              "SELECT order_no,question_uid,source_archive_file,source_question_no,source_question_ordinal,source_fingerprint,standard_unit_key,difficulty_at_assignment,metadata_revision,metadata_json,resolution_status FROM class_exam_assignment_questions WHERE assignment_id=? ORDER BY order_no",
+            )
+              .bind(existing.id)
+              .all()
+          ).results
+        : await buildQuestionSnapshot(input, questions, meta, {
+            legacy: original,
+          });
+    if (!rows?.length || rows.length !== Number(input.question_count))
+      fail("저장된 원본 문항 정보를 확인할 수 없습니다.", 409);
+    if (original) payload.meta.questionUids = rows.map((r) => r.question_uid);
     if (rows.length > 80)
       fail("학생 출제는 문제지당 최대 80문항입니다. 나누어 출제하세요.");
     const qpp = Number(input.pdf_qpp || 4);
@@ -177,12 +220,14 @@ export async function handleArchive2(
     if (!existing) {
       if (targetIds.some((id) => !rosterIds.includes(id)))
         fail("대상 학생의 반 소속이 변경되었습니다.", 409);
-      const history = await loadQuestionHistory(env, teacher, {
-        student_ids: targetIds,
-        candidate_question_uids: rows.map((r) => r.question_uid),
-        history_mode: input.history_mode || "all",
-        recent_days: input.recent_days,
-      });
+      const history = original
+        ? { union_question_uids: [], coverage: {} }
+        : await loadQuestionHistory(env, teacher, {
+            student_ids: targetIds,
+            candidate_question_uids: rows.map((r) => r.question_uid),
+            history_mode: input.history_mode || "all",
+            recent_days: input.recent_days,
+          });
       if (history.union_question_uids.length)
         fail(
           "선택 학생의 출제 이력이 변경되었습니다. 중복 문항을 교체하세요.",
@@ -218,14 +263,14 @@ export async function handleArchive2(
       snapshotHash,
     );
     const statements = [insert];
-    if (payload)
+    if (payload && !original)
       statements.push(
         env.DB.prepare(
           `INSERT INTO class_exam_assignment_questions (assignment_id,order_no,resolution_status)
       SELECT (${selectId}),0,'UNRESOLVED' WHERE EXISTS (SELECT 1 FROM class_exam_assignments WHERE archive_file=? AND archive2_write_key IS NOT ? AND mixed_payload_json IS NOT ?)`,
         ).bind(writeKey, file, writeKey, JSON.stringify(payload)),
       );
-    if (!existing && input.history_mode !== "off") {
+    if (!existing && !original && input.history_mode !== "off") {
       // Recheck inside the same D1 transaction: another assignment may have
       // committed after the preflight history response.
       statements.push(
@@ -256,29 +301,32 @@ export async function handleArchive2(
       statements.push(
         env.DB.prepare(
           `INSERT OR IGNORE INTO class_exam_assignment_recipients
-      (assignment_id,student_id) SELECT (${selectId}), value FROM json_each(?)`,
-        ).bind(writeKey, JSON.stringify(rosterIds)),
+      (assignment_id,student_id) SELECT (${selectId}), value FROM json_each(?) WHERE (${selectId}) = ?`,
+        ).bind(writeKey, JSON.stringify(rosterIds), writeKey, assignmentId),
       );
     if (!existing)
       statements.push(
         env.DB.prepare(
           `INSERT OR IGNORE INTO class_exam_assignment_exclusions
-      (assignment_id,student_id,reason) SELECT (${selectId}), value, 'archive2_target' FROM json_each(?)`,
+      (assignment_id,student_id,reason) SELECT (${selectId}), value, 'archive2_target' FROM json_each(?) WHERE (${selectId}) = ?`,
         ).bind(
           writeKey,
           JSON.stringify(rosterIds.filter((id) => !targetIds.includes(id))),
+          writeKey,
+          assignmentId,
         ),
       );
     statements.push(
       ...questionInsertStatements(env, selectId, [writeKey], rows),
     );
-    if (payload)
+    if (payload && questions)
       statements.push(
         ...(await blueprintInsertStatements(
           env,
           file,
           questions,
           metadataAuthority,
+          { original },
         )),
       );
     await env.DB.batch(statements);

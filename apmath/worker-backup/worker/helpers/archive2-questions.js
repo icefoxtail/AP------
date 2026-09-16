@@ -156,6 +156,53 @@ export async function validateApprovedMixedQuestions(env, questions, input) {
       if (record[field] !== undefined) q[field] = record[field];
   }
 }
+// Original issue needs verified source bytes/ordinal identity, not automatic
+// selection approval. All raw fields (including visual/layout fields) are hashed.
+export async function validateOriginalSnapshot(env, payload, input) {
+  const catalog = await loadCatalog(env),
+    file = norm(input.archive_file);
+  const exam = catalog.exams.find((e) => e.file === file),
+    raw = payload?.questions;
+  if (
+    !exam ||
+    !Array.isArray(raw) ||
+    raw.length !== exam.qCount ||
+    Number(input.question_count) !== exam.qCount
+  )
+    fail("원본 시험의 문항 수가 일치하지 않습니다.", 409);
+  const records = catalog.records
+    .filter((r) => r.sourceFile === file)
+    .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
+  if (records.length !== raw.length)
+    fail("원본 문항 목록을 확인할 수 없습니다.", 409);
+  const verified = await Promise.all(
+    raw.map(async (q, i) => {
+      const r = records[i];
+      if (
+        !r.rawQuestionHash ||
+        (await sha256hex(JSON.stringify(q))) !== r.rawQuestionHash
+      )
+        fail(
+          "원본 내용 또는 문항 순서가 변경되었습니다. 목록을 새로고침하세요.",
+          409,
+        );
+      const result = {
+        ...q,
+        questionUid: r.identityStatus === "VERIFIED" ? r.questionUid : null,
+        sourceArchiveFile: file,
+        sourceOrdinal: i + 1,
+        sourceQuestionNo: r.sourceQuestionNo,
+        sourceFingerprint: r.sourceFingerprint,
+      };
+      for (const field of core.META_FIELDS) {
+        delete result[field];
+        if (r[field] !== undefined) result[field] = r[field];
+      }
+      return result;
+    }),
+  );
+  return { questions: verified, exam };
+}
 export async function buildQuestionSnapshot(
   assignment,
   questions,
@@ -291,6 +338,7 @@ export async function blueprintInsertStatements(
   file,
   questions,
   metadataAuthority,
+  options = {},
 ) {
   const columns = [
     "archive_file",
@@ -318,7 +366,7 @@ export async function blueprintInsertStatements(
         i + 1,
         norm(q.sourceArchiveFile || q._sourceFile),
         String(q.sourceQuestionNo ?? q._sourceQuestionNo ?? q.id ?? ""),
-        q.questionUid,
+        q.questionUid || null,
         Number(q.sourceOrdinal),
         metadata.standardUnitKey || null,
         metadata.standardUnit || null,
@@ -338,7 +386,14 @@ export async function blueprintInsertStatements(
     const batch = values.slice(i, i + 6);
     statements.push(
       env.DB.prepare(
-        `INSERT OR IGNORE INTO exam_blueprints (${columns.join(",")}) VALUES ${batch.map(() => `(${columns.map(() => "?").join(",")})`).join(",")}`,
+        `INSERT ${options.original ? "" : "OR IGNORE "}INTO exam_blueprints (${columns.join(",")}) VALUES ${batch.map(() => `(${columns.map(() => "?").join(",")})`).join(",")}${
+          options.original
+            ? ` ON CONFLICT(archive_file,question_no) DO UPDATE SET ${columns
+                .slice(2)
+                .map((c) => `${c}=excluded.${c}`)
+                .join(",")} WHERE excluded.source_question_uid IS NOT NULL`
+            : ""
+        }`,
       ).bind(...batch.flat()),
     );
   }

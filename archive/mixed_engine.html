@@ -629,6 +629,7 @@ function appendHeaderFill(metaWrap, label, scoreSuffix = '') {
 
 function buildQrTargetUrl() {
     const url = new URL(buildContext?.input.url || window.location.href);
+    if(url.searchParams.get('portalQr')==='1'){const portal=new URL('../apmath/student/index.html',url);portal.searchParams.set('omr','1');if(url.searchParams.has('assignmentId'))portal.searchParams.set('assignment_id',url.searchParams.get('assignmentId'));return portal.href;}
     url.searchParams.set('mode', 'sol');
     url.searchParams.set('qr', '1');
     url.searchParams.set('key', AppState.key);
@@ -735,7 +736,8 @@ function injectQrToLastExamPage(area) {
 
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-qr';
-    qrWrap.innerHTML = `<div class="page-qr-label">${QR_PATCH.label}</div><canvas></canvas>`;
+    qrWrap.dataset.qrTarget=buildQrTargetUrl();
+    qrWrap.innerHTML = `<div class="page-qr-label">${new URLSearchParams(location.search).get('portalQr')==='1'?'학생 포털':QR_PATCH.label}</div><canvas></canvas>`;
 
     targetPage.appendChild(qrWrap);
 

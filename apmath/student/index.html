@@ -1908,6 +1908,8 @@
         ? '../../archive/mixed_engine.html'
         : '../../archive/engine.html';
       const url = new URL(enginePath, window.location.href);
+      let frozenPayload=null;try{frozenPayload=JSON.parse(exam.mixed_payload_json||'null');}catch{}
+      const rc2=frozenPayload?.meta?.sourceKind==='archive2-original'||frozenPayload?.meta?.outputContractVersion==='archive2-v1';
 
       if (archiveFile.startsWith('MIXED:')) {
         const key = archiveFile.slice('MIXED:'.length).trim();
@@ -1917,11 +1919,13 @@
         if (exam?.pack_id) url.searchParams.set('packId', String(exam.pack_id));
       } else {
         url.searchParams.set('data', archiveFile);
+        if(frozenPayload?.meta?.sourceKind==='archive2-original')url.searchParams.set('originalSnapshot','original-'+exam.assignment_id);
       }
 
       url.searchParams.set('mode', isExam ? 'exam' : (isSolution ? 'sol' : 'ans'));
       url.searchParams.set('fit', 'screen');
-      if (isSolution) url.searchParams.set('solQr', '1');
+      if(rc2){url.searchParams.set('qpp',String(frozenPayload.meta.qpp||4));url.searchParams.set('studio','1');url.searchParams.set('submitQr','0');url.searchParams.set('solQr','0');url.searchParams.set('preRegistered','1');url.searchParams.set('assignmentRegistered','1');url.searchParams.set('assignmentId',exam.assignment_id);}
+      else if (isSolution) url.searchParams.set('solQr', '1');
       return url.toString();
     }
     function isOmrReviewAvailable(exam) {
@@ -1941,9 +1945,12 @@
     }
     function restoreMixedOmrPayload(exam) {
       const archiveFile = String(exam?.archive_file || '').trim();
-      // 일반 아카이브 시험은 URL의 data 파라미터만으로 원본을 열 수 있다.
-      // MIXED: 출제본만 학생 화면에서 저장한 문항 스냅샷을 복원한다.
-      if (!archiveFile.startsWith('MIXED:')) return !!archiveFile;
+      // Legacy originals keep their data URL. Archive 2.0 originals and MIXED
+      // papers restore the issued content before opening the existing engine.
+      if (!archiveFile.startsWith('MIXED:')) {
+        try{const payload=JSON.parse(exam.mixed_payload_json||'null');if(payload?.meta?.sourceKind==='archive2-original')localStorage.setItem('archive2Original_original-'+exam.assignment_id,JSON.stringify(payload));}catch{return false;}
+        return !!archiveFile;
+      }
       const key = archiveFile.startsWith('MIXED:') ? archiveFile.slice('MIXED:'.length).trim() : '';
       const rawPayload = String(exam?.mixed_payload_json || '').trim();
       if (!key || !rawPayload) return false;

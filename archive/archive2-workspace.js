@@ -2,6 +2,17 @@
   "use strict";
   const C = window.Archive2Core,
     Source = window.Archive2Source;
+  const O = window.Archive2Output;
+  const Parts = window.Archive2Papers;
+  const frozenPaperCache = new Map();
+  const lockedIndex = (index) =>
+    Boolean(Parts.receipt(state.receipts, Parts.partIndex(index)));
+  const ownHistoryContext = () => {
+    const ctx = context(),
+      own = Parts.lockedUids(state.receipts);
+    ctx.student = ctx.student.filter((uid) => !own.has(uid));
+    return ctx;
+  };
   const $ = (id) => document.getElementById(id);
   const esc = (value) =>
     String(value ?? "").replace(
@@ -51,6 +62,7 @@
     sealed: false,
     title: "시험 대비 문제지",
     qpp: 4,
+    includeQr: false,
     header: {
       title: "시험 대비 문제지",
       subtitle: "",
@@ -150,6 +162,7 @@
       "sealed",
       "title",
       "qpp",
+      "includeQr",
       "header",
       "studentIds",
       "classId",
@@ -158,6 +171,7 @@
       "recentDays",
       "sources",
       "receipts",
+      "failedPart",
       "issueDate",
     ];
     return {
@@ -201,7 +215,7 @@
       );
     } catch {
       status(
-        "브라우저 저장 공간이 부족합니다. JSON 백업으로 보관하세요.",
+        "브라우저 저장 공간이 부족합니다. 작업 파일 저장으로 보관하세요.",
         true,
       );
     }
@@ -236,7 +250,7 @@
       )
     )
       throw new Error(
-        "원본 문항이 변경되었습니다. 과거 작업을 조용히 새 문항으로 복원하지 않습니다. 새 작업에서 다시 구성하세요.",
+        "원본 문항이 변경되었습니다. 과거 작업을 조용히 새 문항으로 복원하지 않습니다. 새 작업에서 다시 만들어 주세요.",
       );
     if (
       !Array.isArray(data.rows) ||
@@ -247,7 +261,7 @@
       !data.header ||
       !data.custom
     )
-      throw new Error("작업 파일의 필수 구성이 없습니다.");
+      throw new Error("작업 파일의 필수 정보가 없습니다.");
     if (
       data.rounds.some(
         (round) =>
@@ -268,6 +282,21 @@
       ...state.byUid.get(r.questionUid),
       rowId: r.rowId,
     }));
+    state.receipts = state.receipts.map((r) => {
+      const partIndex = Number.isInteger(r.partIndex)
+        ? r.partIndex
+        : Number(r.key?.match(/-(\d+)-(\d+)-[a-f0-9]{12}$/)?.[2] || 0);
+      return {
+        ...r,
+        partIndex,
+        questionUids:
+          r.questionUids ||
+          state.selected
+            .slice(partIndex * 50, partIndex * 50 + 50)
+            .map((q) => q.questionUid),
+      };
+    });
+    state.sealed = Parts.status(state.selected.length, state.receipts).complete;
     state.history = null;
     state.historyReady = false;
     state.targetVersion++;
@@ -280,12 +309,16 @@
     status(
       data.indexVersion === state.catalog.indexVersion
         ? "이전 작업을 복원했습니다. 학생 이력은 새로 확인합니다."
-        : "catalog 버전이 변경되었습니다. 다시 구성한 뒤 출력하세요.",
+        : "문항 목록이 갱신되었습니다. 다시 만들기한 뒤 출력하세요.",
       data.indexVersion !== state.catalog.indexVersion,
     );
     if (state.studentIds.length) refreshHistory();
   }
   function invalidate() {
+    if (state.receipts.length)
+      throw new Error(
+        "이미 출제한 문제지는 보존됩니다. 아직 출제하지 않은 문제지에서 문항을 교체하거나 다시 만들어 주세요.",
+      );
     state.selected = [];
     state.pins = [];
     state.prepared = [];
@@ -399,18 +432,17 @@
     };
   }
   function review() {
-    const ctx = context(),
+    const ctx = ownHistoryContext(),
       req = request(true);
     if (state.receipts.length && state.sealed) {
-      ctx.student = ctx.student.filter(
-        (uid) => !state.selected.some((r) => r.questionUid === uid),
-      );
       req.historyReady = true;
     }
     const result = C.review(state.selected, req, ctx);
     if (state.indexVersion !== state.catalog.indexVersion) {
       result.status = "HARD_BLOCK";
-      result.hardFailures.push("catalog가 변경되었습니다. 다시 구성하세요.");
+      result.hardFailures.push(
+        "문항 목록이 갱신되었습니다. 다시 만들어 주세요.",
+      );
     }
     return result;
   }
@@ -565,37 +597,102 @@
       );
     });
   }
-  function openOriginalIssue(exam){
-    state.originalExam=exam;
-    const stored=Number(localStorage.getItem('APMATH_ARCHIVE2_ORIGINAL_QPP')||4);
-    const qpp=[4,6].includes(stored)?stored:4;
-    const url=new URL('index.html',location.href);url.searchParams.set('archive2Issue',exam.file);url.searchParams.set('archive2Embedded','1');url.searchParams.set('qpp',String(qpp));
-    showDialog(`${exam.year} ${exam.school||exam.topic||exam.subject} · 원본 기출 출제`,`<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 원본 순서 그대로</span><label>문항/쪽<select id="original-qpp">${options([4,6],qpp,null)}</select></label>${button('original-print','일반 출력') }<span class="muted">반·학생 선택과 출제는 기존 아카이브와 동일합니다.</span></div><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`);
-    $('modal').classList.add('original-issue-dialog');
+  function openOriginalIssue(exam) {
+    state.originalExam = exam;
+    const stored = Number(
+      localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4,
+    );
+    const qpp = [4, 6].includes(stored) ? stored : 4;
+    const url = new URL("index.html", location.href);
+    url.searchParams.set("archive2Issue", exam.file);
+    url.searchParams.set("archive2Embedded", "1");
+    url.searchParams.set("qpp", String(qpp));
+    state.originalSettings = O.settings({
+      header: {
+        title: O.displayTitle(exam),
+        subtitle: exam.subject || exam.primaryStandardCourse,
+      },
+      qpp,
+    });
+    state.originalReceipts = [];
+    showDialog(
+      O.displayTitle(exam),
+      `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 원본 순서 그대로</span>${button("original-print", "문제지 확인")}<details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+    );
+    $("modal").classList.add("original-issue-dialog");
   }
-  function originalIssueBusy(){return Boolean($('original-issue-frame')?.contentWindow?.isArchive2OriginalBusy?.());}
+  function originalIssueBusy() {
+    return Boolean(
+      $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.(),
+    );
+  }
+  async function originalPrint() {
+    const popup = window.open("about:blank", "_blank");
+    try {
+      const e = state.originalExam,
+        s = state.originalSettings;
+      const saved = state.originalReceipts?.[0];
+      let key = saved?.key;
+      if (!key) {
+        key = "preview-" + crypto.randomUUID();
+        const questions = await Source.load(
+          e.file,
+          new Map(state.catalog.sourceHashes).get(e.file),
+        );
+        const questionUids = state.catalog.records
+          .filter((r) => r.sourceFile === e.file)
+          .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)
+          .map((r) => (r.identityStatus === "VERIFIED" ? r.questionUid : null));
+        localStorage.setItem(
+          "archive2Original_" + key,
+          JSON.stringify({
+            questions,
+            meta: {
+              sourceKind: "archive2-original",
+              sourceArchiveFile: e.file,
+              questionUids,
+              identityTitle:
+                e.identityTitle || e.file.split("/").pop().replace(/\.js$/, ""),
+              printHeaderOptions: s.header,
+              qpp: s.qpp,
+              includeQr: s.includeQr,
+            },
+          }),
+        );
+      }
+      const u = O.applyUrl(new URL("engine.html", location.href), s);
+      u.searchParams.set("originalSnapshot", key);
+      u.searchParams.set("data", "exams/" + e.file);
+      u.searchParams.set("mode", "exam");
+      if (!popup) throw new Error("팝업을 허용해 주세요.");
+      popup.location.href = u.href;
+    } catch (error) {
+      popup?.close();
+      throw error;
+    }
+  }
   function renderFind() {
     const exams = findExams(),
       page = exams.slice(state.page * 18, (state.page + 1) * 18);
-    return `<div class="intro"><div><h1>기출 찾기</h1><p class="muted">기출을 누르면 원본 전체를 그대로 반·학생에게 출제합니다.</p></div>${button("go-compose", "맞춤 문제지 구성")}</div>
+    return `<div class="intro"><div><h1>기출 찾기</h1><p class="muted">기출을 누르면 원본 전체를 그대로 반·학생에게 출제합니다.</p></div>${button("go-compose", "문제지 만들기")}</div>
       <section class="panel">${filterMarkup(state.find, "find")}</section>
       <div class="resultbar"><strong>시험 ${exams.length.toLocaleString()}개</strong><span class="muted">원본 출제 · 문제지 · 해설 · 정답</span></div>
       <div class="exam-list">${page
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-issue" data-exam="${n}">${esc(e.year)} · ${esc(e.school || e.topic || e.subject)}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">원본 전체</span></div><div class="actions">${button("source-issue","바로 출제",`data-exam="${n}" class="small primary"`)}${button("source-preview", "원본 보기", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-issue" data-exam="${n}">${esc(e.year)} · ${esc(e.school || e.topic || e.subject)}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">원본 전체</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "원본 보기", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
         })
         .join("")}</div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
-      ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택 자료로 구성하기")}</div></div>` : ""}`;
+      ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 기출로 문제지 만들기")}</div></div>` : ""}`;
   }
   function renderScopes() {
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1));
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">숫자는 현재 조건과 이력을 반영한 검수 문항 수입니다. 단원을 골라 한 번에 구성할 수 있습니다.</p>
+      <p class="muted">숫자는 현재 조건과 이력을 반영한 검수 문항 수입니다. 단원을 골라 한 번에 만들 수 있습니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.L2 })),
         0,
@@ -644,26 +741,26 @@
         r.courseKey === state.filters.courseKey &&
         (!state.scopes.length || state.scopes.includes(C.pathKey(r, 4))),
     );
-    return `<section class="panel"><h2>문제지 구성</h2><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
+    return `<section class="panel"><h2>출제 범위 · 문항 수</h2><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
       [
         { value: "equal", label: "단원별 균등" },
-        { value: "pool", label: "전체에서 구성" },
+        { value: "pool", label: "전체에서 선택" },
         { value: "custom", label: "직접 배분" },
         { value: "all", label: "조건 일치 전부" },
       ],
       state.distribution,
       null,
     )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><label>난이도 (1~5)${bucketButtons(state.buckets)}</label></div>
-      <details style="margin-top:15px"><summary>개념·유형으로 더 좁히기</summary><div class="filters" style="margin-top:12px"><label>개념 (L3)<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.map((r) => r.L3)), state.filters.L3, "전체 개념")}</select></label><label>유형 (L4)<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.filter((r) => !state.filters.L3 || r.L3 === state.filters.L3).map((r) => r.L4)), state.filters.L4, "전체 유형")}</select></label></div></details>
+      <details style="margin-top:15px"><summary>개념·유형으로 더 좁히기</summary><div class="filters" style="margin-top:12px"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.map((r) => r.L3)), state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.filter((r) => !state.filters.L3 || r.L3 === state.filters.L3).map((r) => r.L4)), state.filters.L4, "전체 유형")}</select></label></div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
-      <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "새로 구성" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">50문항 기준으로 분할합니다. 부족한 문항은 자동으로 다른 난이도나 과거 문항으로 채우지 않습니다.</p></section>`;
+      <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">50문항 기준으로 분할합니다. 부족한 문항은 자동으로 다른 난이도나 과거 문항으로 채우지 않습니다.</p></section>`;
   }
   function renderInspector() {
     const r = state.selected.length ? review() : null;
     const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
       <div class="summary-line"><span>선택 범위</span><strong>${state.scopes.length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
-      ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>UID ${r.metrics.uniqueUidCount}개 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
+      ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
     const targeting = `<h3>출제 대상 · 중복 방지</h3><p>${esc(state.studentLabels.join(" · ") || "학생을 선택하면 과거 출제 문항을 제외합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
       <label style="margin-top:12px">학생 이력 범위<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
@@ -678,33 +775,28 @@
           : state.historyMode,
         null,
       )}</select></label>
-      ${state.studentIds.length ? `<div class="callout">${state.receipts.length ? "이 회차의 배부가 저장되었습니다. PDF 준비 상태를 확인하세요." : state.historyMode === "off" ? "이전 출제 문항 재사용을 허용한 상태입니다." : !state.historyReady ? "이력을 확인하지 못했습니다. 구성·출제가 차단됩니다." : `과거 사용 ${state.history?.union_question_uids.length || 0}문항 제외<br>확정 ${state.history?.coverage.verified || 0} · 추정 ${state.history?.coverage.legacy_inferred || 0} · 미복원 ${state.history?.coverage.unresolved || 0}`}</div>${button("history-refresh", "이력 다시 확인", 'class="small"')}` : ""}`;
-    const header = `<div class="header-fields">${[
-      ["title", "제목"],
-      ["subtitle", "부제"],
-      ["metaRight", "우측 정보"],
-    ]
-      .map(
-        ([k, l]) =>
-          `<label>${l}<input data-header="${k}" value="${esc(state.header[k])}" maxlength="${k === "subtitle" ? 120 : k === "title" ? 80 : 60}" ${state.sealed ? "disabled" : ""}></label>`,
-      )
-      .join("")}${[
-      ["showNameLine", "이름란"],
-      ["showScoreLine", "점수란"],
-      ["applyToSolution", "해설지에 적용"],
-      ["applyToAnswer", "정답표에 적용"],
-    ]
-      .map(
-        ([k, l]) =>
-          `<label class="check"><input type="checkbox" data-header="${k}" ${state.header[k] ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${l}</label>`,
-      )
-      .join(
-        "",
-      )}<label>한 페이지 문항 수<select id="qpp" ${state.sealed ? "disabled" : ""}>${options([4, 6, 8], state.qpp, null)}</select></label></div>`;
-    return `<aside class="inspector"><section class="panel"><div class="tabs" role="tablist">${[
-      ["summary", "구성"],
+      ${state.studentIds.length ? `<div class="callout">${state.receipts.length ? `${state.receipts.length} / ${Math.ceil(state.selected.length / 50)}개 문제지가 저장됐습니다. 아래에서 각각 확인하세요.` : state.historyMode === "off" ? "이전 출제 문항 재사용을 허용한 상태입니다." : !state.historyReady ? "이력을 확인하지 못했습니다. 문제지 만들기·출제가 차단됩니다." : `과거 사용 ${state.history?.union_question_uids.length || 0}문항 제외<br>확정 ${state.history?.coverage.verified || 0} · 추정 ${state.history?.coverage.legacy_inferred || 0} · 미복원 ${state.history?.coverage.unresolved || 0}`}</div>${button("history-refresh", "이력 다시 확인", 'class="small"')}` : ""}`;
+    const frozen = Parts.receipt(state.receipts, state.previewIndex),
+      frozenPaper = frozen && frozenPaperCache.get(frozen.key);
+    const header =
+      (frozen
+        ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다. 수정할 문제지를 먼저 선택하세요.</p>'
+        : "") +
+      O.markup(
+        frozenPaper
+          ? {
+              header: frozenPaper.meta.printHeaderOptions,
+              qpp: frozenPaper.meta.qpp,
+              includeQr: frozenPaper.meta.includeQr,
+            }
+          : state,
+        "studio",
+        Boolean(frozen) || state.sealed,
+      );
+    return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}"><section class="panel">${button("close-inspector", "설정 닫기", 'class="mobile-sheet-close"')}<div class="tabs" role="tablist">${[
+      ["summary", "출제 확인"],
       ["targets", "대상"],
-      ["header", "헤더"],
+      ["header", "출력 설정"],
     ]
       .map(([k, l]) =>
         button(
@@ -716,8 +808,19 @@
       .join(
         "",
       )}</div><div>${state.inspector === "header" ? header : state.inspector === "targets" ? targeting : summary + `<hr style="border:0;border-top:1px solid var(--line);margin:18px 0">` + targeting}</div>
-      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "일반 출력", `class="primary" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("assign", state.receipts.some((r) => !r.ready) ? "PDF 다시 준비" : "학생에게 출제", `${!state.studentIds.length || r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>${state.sealed ? '<p class="callout">확정된 회차입니다. 다음 회차에서 새 문제지를 만드세요.</p>' : ""}<div class="actions" style="margin-top:12px">${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}${button("backup", "JSON 백업", 'class="small"')}</div>` : ""}
-      ${state.receipts.length ? `<p class="muted">저장된 배부 ${state.receipts.length}건</p>${state.receipts.map((r) => `<div class="callout">${esc(r.className || r.classId)} · ${r.ready ? "PDF 준비 완료" : "저장됨 · PDF 재시도 필요"}<br><details><summary>배부 정보</summary>${esc(r.id)}</details></div>`).join("")}` : ""}</section></aside>`;
+      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "일반 출력", `class="primary" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 다시 준비" : "학생에게 출제", `${!state.studentIds.length || r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>${state.sealed ? '<p class="callout">확정된 회차입니다. 다음 회차에서 새 문제지를 만드세요.</p>' : ""}<div class="actions" style="margin-top:12px">${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}${button("backup", "작업 파일 저장", 'class="small"')}</div>` : ""}
+      ${renderDeliveryProgress()}</section></aside>`;
+  }
+  function renderDeliveryProgress() {
+    if (!state.receipts.length && !state.failedPart) return "";
+    const p = Parts.status(state.selected.length, state.receipts);
+    return `<section class="delivery-progress"><h3>${p.saved} / ${p.total}개 문제지 출제 저장</h3><p>${p.pending ? "아직 출제하지 않은 문제지만 수정하고 이어서 출제할 수 있습니다." : "선택한 학생의 내 시험지에서 확인할 수 있습니다."}</p>${Array.from(
+      { length: p.total },
+      (_, i) => {
+        const r = Parts.receipt(state.receipts, i);
+        return `<div class="callout"><strong>${i + 1}권 · ${r ? "출제 저장됨" : "아직 출제하지 않음"}</strong><p>${r ? (r.ready ? "PDF 준비 완료" : "PDF 파일 재시도 필요") : state.failedPart?.index === i ? esc(state.failedPart.message) : "문항 수정 가능"}</p>${r ? button("assignment-status", "학생별 확인 · 출력", `data-assignment="${r.id}" class="small"`) : button("recover-part", "이 문제지 수정", `data-part="${i}" class="small"`)}</div>`;
+      },
+    ).join("")}</section>`;
   }
   function renderPaper() {
     const modes = [
@@ -737,22 +840,23 @@
     const tools =
       button("pin-all", "전체 고정", 'class="small"') +
       button("pin-clear", "고정 해제", 'class="small"') +
-      button("rebuild", "고정 외 재구성", state.sealed ? "disabled" : "") +
+      button("rebuild", "고정 외 다시 만들기", state.sealed ? "disabled" : "") +
       button(
         "undo",
         "교체 되돌리기",
         !state.undo.length || state.sealed ? "disabled" : "",
       );
     const rows = state.selected
-      .map(
-        (r, i) =>
-          `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${i + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(r.L4)}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed ? "disabled" : ""}`)}</div></div>`,
+      .map((r, i) =>
+        Parts.partIndex(i) !== state.previewIndex
+          ? ""
+          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(r.L4)}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
       )
       .join("");
     return `<section class="panel paper-panel"><div class="paper-toolbar"><div class="actions mode-switch">${modes}</div><span class="muted paper-count">${state.selected.length}문항</span><label class="part-select">문제지<select id="preview-index">${options(
       Array.from({ length: parts }, (_, i) => ({
         value: i,
-        label: i + 1 + " / " + parts,
+        label: `${i + 1}권 / ${parts}권${Parts.receipt(state.receipts, i) ? " · 출제됨" : ""}`,
       })),
       state.previewIndex,
       null,
@@ -763,29 +867,109 @@
     const r = review(),
       blocked =
         r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings);
-    return `<div class="mobile-actions">${button("mobile-inspector", "구성·헤더")}${button("print", "일반 출력", `class="primary" ${blocked ? "disabled" : ""}`)}${button("assign", state.receipts.some((r) => !r.ready) ? "PDF 재시도" : "학생 출제", blocked || !state.studentIds.length ? "disabled" : "")}</div>`;
+    return `<div class="mobile-actions">${button("mobile-inspector", "출력·출제 설정")}${button("print", "일반 출력", `class="primary" ${blocked ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 재시도" : "학생 출제", blocked || !state.studentIds.length ? "disabled" : "")}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "JSON 백업")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace"><div>${!state.selected.length ? `<section class="panel">${filterMarkup(state.filters, "compose", true)}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 구성합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}${renderScopes()}</section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·구성 계획 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", true)}${renderScopes()}${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 파일 저장")}${button("import", "백업 불러오기")}</div></div>
+    <div class="workspace"><div>${!state.selected.length ? `<section class="panel">${filterMarkup(state.filters, "compose", true)}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}${renderScopes()}</section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", true)}${renderScopes()}${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function renderRecent() {
     const list = drafts();
-    return `<div class="intro"><div><h1>최근 작업</h1><p class="muted">이 브라우저에 자동 저장한 문제지입니다. 중요한 작업은 JSON으로 백업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "JSON 불러오기")}</div></div><section class="panel">${list.length ? list.map((d, i) => `<div class="recent-row"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</section>`;
+    return `<div class="intro"><div><h1>최근 출제 · 작업</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div><section class="panel"><h2>최근 출제</h2><label>반<select id="recent-class">${options(
+      classRows.map((c) => ({ value: c.id, label: c.name })),
+      state.recentClassId,
+      "반 선택",
+    )}</select></label><div id="recent-assignments">${recentAssignmentMarkup()}</div></section><section class="panel"><h2>만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="recent-row"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</section>`;
+  }
+  function recentAssignmentMarkup() {
+    return (
+      (state.recentAssignments || [])
+        .map(
+          (a) =>
+            `<div class="recent-row"><div><h3>${esc(a.exam_title)}</h3><p class="muted">${esc(a.exam_date)} · ${a.question_count}문항 · ${a.pdf_status === "ready" ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</p></div>${button("assignment-status", "학생별 확인 · 출력", `data-assignment="${a.id}"`)}</div>`,
+        )
+        .join("") ||
+      '<p class="muted">반을 선택하면 기존 출제 내역을 불러옵니다.</p>'
+    );
+  }
+  async function loadRecent(classId) {
+    if (!classRows.length) {
+      const d = await api("/qr-classes");
+      classRows = d.classes || [];
+    }
+    state.recentClassId =
+      classId || state.recentClassId || state.classId || classRows[0]?.id || "";
+    state.recentAssignments = state.recentClassId
+      ? (
+          await api(
+            "/class-exam-assignments?class=" +
+              encodeURIComponent(state.recentClassId),
+          )
+        ).assignments || []
+      : [];
+    if (state.view === "recent") render();
+  }
+  async function assignmentStatus(id) {
+    const data = await api(
+      "/class-exam-assignments/" + encodeURIComponent(id) + "/status",
+    );
+    state.openAssignment = data;
+    const a = data.assignment,
+      active = data.students.filter((s) => !s.excluded),
+      excluded = data.students.filter((s) => s.excluded);
+    showDialog(
+      a.exam_title,
+      `<p>${esc(a.exam_date)} · ${a.question_count}문항 · 출제 대상 ${active.length}명 · 제외 ${excluded.length}명</p><div class="callout">학생 포털의 ‘내 시험지’에 표시됩니다. ${a.pdf_status === "ready" ? "PDF 준비 완료" : "PDF 파일은 아직 준비되지 않았지만 온라인 문제·정답·해설과 오답 입력을 사용할 수 있습니다."}</div><div class="actions">${["exam", "ans", "sol"].map((m, i) => button("assignment-output", ["문제지", "정답", "해설"][i], `data-mode="${m}"`)).join("")}${a.pdf_status !== "ready" ? button("assignment-pdf", "PDF 다시 준비", `data-assignment="${a.id}"`) : ""}</div><h3>학생별 확인</h3><div class="assignment-students">${active.map((s) => `<div class="recent-row"><span>${esc(s.name)}</span><span>${s.session_id ? "오답 입력 완료" : "오답 입력 전"}</span><a href="../apmath/student/index.html?teacher_preview=1&student_id=${encodeURIComponent(s.student_id)}" target="_blank">학생 화면 확인</a></div>`).join("")}</div>${excluded.length ? `<details><summary>제외한 학생 ${excluded.length}명</summary><p>${excluded.map((s) => esc(s.name)).join(" · ")}</p></details>` : ""}`,
+    );
+  }
+  function assignmentOutput(mode) {
+    const a = state.openAssignment.assignment,
+      p = JSON.parse(a.mixed_payload_json || "null"),
+      u = new URL(
+        a.archive_file.startsWith("MIXED:")
+          ? "mixed_engine.html"
+          : "engine.html",
+        location.href,
+      );
+    if (a.archive_file.startsWith("MIXED:")) {
+      const key = a.archive_file.slice(6);
+      localStorage.setItem(
+        "mixedQuestions_" + key,
+        JSON.stringify(p.questions),
+      );
+      localStorage.setItem("mixedMeta_" + key, JSON.stringify(p.meta));
+      u.searchParams.set("key", key);
+    } else {
+      u.searchParams.set("data", a.archive_file);
+      if (p?.meta?.sourceKind === "archive2-original") {
+        const key = "original-" + a.id;
+        localStorage.setItem("archive2Original_" + key, JSON.stringify(p));
+        u.searchParams.set("originalSnapshot", key);
+      }
+    }
+    O.applyUrl(u, {
+      header: p?.meta?.printHeaderOptions,
+      qpp: p?.meta?.qpp || a.pdf_qpp,
+      includeQr: p?.meta?.includeQr,
+    });
+    if (a.archive_file.startsWith("MIXED:")) u.searchParams.set("studio", "1");
+    u.searchParams.set("mode", mode);
+    u.searchParams.set("assignmentId", a.id);
+    window.open(u.href, "_blank");
   }
   function renderHealth() {
     const h = state.catalog.health,
       reasons = {
-        identity: "identity 미등록",
+        identity: "문항 등록 확인 필요",
         grade: "출처·단원 학년 충돌",
-        source: "source fingerprint 확인 필요",
-        taxonomy: "canonical 경로 미분류",
+        source: "원본 일치 여부 확인 필요",
+        taxonomy: "단원 분류 확인 필요",
         review: "검수 승인 전",
         difficulty: "난이도 규칙 확인 필요",
         applicability: "기본 출력 범위 밖",
-        conflict: "source metadata 충돌",
+        conflict: "원본 분류 정보 충돌",
       };
-    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료와 검수된 자동출제 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
+    return `<div class="intro"><div><h1>데이터 상태</h1><p class="muted">전체 자료와 문제지 만들기에 사용 가능 범위를 구분합니다. 제외 사유는 서로 중복될 수 있습니다.</p></div>${button("health-export", "진단 JSON 내보내기")}</div><div class="metrics">${[
       ["시험", h.exams],
       ["전체 문항", h.questions],
       ["자동출제 가능", h.automatic],
@@ -803,7 +987,7 @@
       .map(([k, l]) => `<tr><th>${l}</th><td>${h[k] || 0}</td></tr>`)
       .join(
         "",
-      )}</tbody></table><div class="callout">미분류는 보류와 다른 상태입니다. 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 source 불일치는 원본 시험 열기를 막지 않으며 자동 구성에서 제외합니다.</div><div class="callout">교육과정 간 연결 검수: 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. 자동 구성은 선택한 교육과정 안에서 수행합니다. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
+      )}</tbody></table><div class="callout">미분류는 보류와 다른 상태입니다. 기존 난이도 하·중·상을 숫자로 추정하지 않습니다. 검수 대기나 원본 불일치는 원본 시험 열기를 막지 않으며 문제지 자동 선택에서 제외합니다.</div><div class="callout">교육과정 간 연결 검수: 기존 연결 ${state.crosswalkInventory?.total ?? "확인 불가"}개 · 승인된 EXACT ${state.crosswalkInventory?.reviewedExact ?? "확인 불가"}개. 문제지 자동 선택은 선택한 교육과정 안에서 수행합니다. <a href="data/archive2-crosswalk-inventory.json" target="_blank">연결 근거 보기</a></div><p class="muted">정본: RPM Primary v1.0 · Difficulty v1.3 · Metadata Contract v2<br>catalog ${esc(state.catalog.indexVersion.slice(0, 16))}</p></section>`;
   }
   function renderControls() {
     const inspector = document.querySelector(".inspector");
@@ -848,32 +1032,77 @@
         state.header,
         state.qpp,
         state.round,
+        state.includeQr,
       ]);
     if (state.prepared.signature === signature) return state.prepared;
-    const questions = await Source.restore(records, state.catalog);
-    if (
-      signature !==
-      JSON.stringify([
-        state.selected.map((r) => r.questionUid),
-        state.header,
-        state.qpp,
-        state.round,
-      ])
-    )
-      throw new Error("편집 내용이 변경되었습니다. 다시 시도하세요.");
     const prepared = [];
-    for (let i = 0; i < questions.length; i += 50) {
-      const part = questions.slice(i, i + 50),
-        key = `archive2-${state.draftId}-${state.round}-${i / 50}-${(await Source.digest(signature)).slice(0, 12)}`;
+    for (let i = 0; i < records.length; i += 50) {
+      const index = i / 50,
+        saved = Parts.receipt(state.receipts, index);
+      if (saved) {
+        if (!frozenPaperCache.has(saved.key)) {
+          const data = await api(
+            "/class-exam-assignments/" +
+              encodeURIComponent(saved.id) +
+              "/status",
+          );
+          const payload = JSON.parse(data.assignment.mixed_payload_json);
+          if (
+            JSON.stringify(payload.meta.questionUids) !==
+            JSON.stringify(records.slice(i, i + 50).map((r) => r.questionUid))
+          )
+            throw new Error(
+              "이미 출제한 문제지의 문항이 변경되었습니다. 최근 출제에서 원본을 확인해 주세요.",
+            );
+          frozenPaperCache.set(saved.key, {
+            key: saved.key,
+            index,
+            questions: payload.questions,
+            meta: payload.meta,
+          });
+        }
+        const frozen = frozenPaperCache.get(saved.key);
+        localStorage.setItem(
+          "mixedQuestions_" + frozen.key,
+          JSON.stringify(frozen.questions),
+        );
+        localStorage.setItem(
+          "mixedMeta_" + frozen.key,
+          JSON.stringify(frozen.meta),
+        );
+        prepared.push(frozen);
+        continue;
+      }
+      const part = await Source.restore(
+          records.slice(i, i + 50),
+          state.catalog,
+        ),
+        partSignature = JSON.stringify([
+          part.map((q) => q.questionUid),
+          state.header,
+          state.qpp,
+          state.includeQr,
+        ]),
+        key = `archive2-${state.draftId}-${state.round}-${index}-${(await Source.digest(partSignature)).slice(0, 12)}`;
       const meta = {
-        title: state.header.title,
+        title:
+          records.length > 50
+            ? `${state.header.title} · ${index + 1}권`
+            : state.header.title,
         customTitle: state.header.title,
         identityTitle: state.header.title,
         count: part.length,
         grade: state.filters.grade,
         subject: state.filters.courseKey,
         questionUids: part.map((q) => q.questionUid),
-        printHeaderOptions: { ...state.header },
+        printHeaderOptions: {
+          ...state.header,
+          title:
+            records.length > 50
+              ? `${state.header.title} · ${index + 1}권`
+              : state.header.title,
+        },
+        includeQr: state.includeQr === true,
         qpp: state.qpp,
         sourceType: "mixed",
         seriesId: state.draftId,
@@ -883,8 +1112,19 @@
       };
       localStorage.setItem("mixedQuestions_" + key, JSON.stringify(part));
       localStorage.setItem("mixedMeta_" + key, JSON.stringify(meta));
-      prepared.push({ key, questions: part, meta });
+      prepared.push({ key, index, questions: part, meta });
     }
+    if (
+      signature !==
+      JSON.stringify([
+        state.selected.map((r) => r.questionUid),
+        state.header,
+        state.qpp,
+        state.round,
+        state.includeQr,
+      ])
+    )
+      throw new Error("편집 내용이 변경되었습니다. 다시 시도하세요.");
     prepared.signature = signature;
     state.prepared = prepared;
     return prepared;
@@ -896,6 +1136,11 @@
     url.searchParams.set("q", paper.questions.length);
     url.searchParams.set("mode", mode);
     url.searchParams.set("studio", "1");
+    O.applyUrl(url, {
+      header: paper.meta.printHeaderOptions,
+      qpp: paper.meta.qpp,
+      includeQr: paper.meta.includeQr,
+    });
     if (preview) url.searchParams.set("preview", "1");
     return url.href;
   }
@@ -953,6 +1198,10 @@
   }
   function generate(rebuild = false) {
     if (state.sealed) return;
+    if (state.receipts.length || (rebuild && state.selected.length > 50)) {
+      rebuildUnissued();
+      return;
+    }
     state.seed = crypto.randomUUID();
     const req = request();
     if (!rebuild) req.pins = [];
@@ -965,7 +1214,7 @@
     if (!result.ok) {
       showDialog(
         "현재 조건에서 문항이 부족합니다",
-        `<p>${result.errors.map(esc).join("<br>")}</p>${result.shortages.map((s) => `<div class="callout">${esc(req.rows.find((r) => r.id === s.id)?.label || "선택 범위")} · 요청 ${s.requested}, 선택 가능 ${s.selected}, 부족 ${s.shortage}</div>`).join("")}<p>문항 수·난이도·범위 또는 이력 정책을 직접 변경한 뒤 다시 구성하세요.</p>`,
+        `<p>${result.errors.map(esc).join("<br>")}</p>${result.shortages.map((s) => `<div class="callout">${esc(req.rows.find((r) => r.id === s.id)?.label || "선택 범위")} · 요청 ${s.requested}, 선택 가능 ${s.selected}, 부족 ${s.shortage}</div>`).join("")}<p>문항 수·난이도·범위 또는 이력 정책을 직접 변경한 뒤 다시 만들어 주세요.</p>`,
       );
       return;
     }
@@ -980,7 +1229,7 @@
     save();
     render();
     status(
-      `${result.selected.length}문항 구성 · UID 중복 0 · ${result.diagnostics.elapsedMs}ms`,
+      `${result.selected.length}문항 선택 · 중복 없음 · ${result.diagnostics.elapsedMs}ms`,
     );
   }
   function showDialog(title, body) {
@@ -990,7 +1239,13 @@
     if (!$("modal").open) $("modal").showModal();
   }
   function replace(index) {
-    const selectionFilters = { ...state.filters, sourceFiles: state.sources };
+    if (lockedIndex(index))
+      throw new Error("이미 학생에게 출제한 문제지는 변경할 수 없습니다.");
+    const selectionFilters = {
+      ...state.filters,
+      sourceFiles: state.sources,
+      primaryPaths: state.scopes,
+    };
     replacementIndex = index;
     const current = state.selected[index],
       row = state.rows.find((r) => r.id === current.rowId),
@@ -1005,8 +1260,8 @@
         !excluded.has(r.questionUid),
     );
     showDialog(
-      `${index + 1}번 교체 · ${current.L2}`,
-      `<p class="muted">현재 구성 행·출처·학생 이력을 유지합니다. 후보 ${candidateRecords.length}문항</p>${
+      `${Math.floor(index / 50) + 1}권 ${(index % 50) + 1}번 교체 · ${current.L2}`,
+      `<p class="muted">현재 출제 조건·출처·학생 이력을 유지합니다. 후보 ${candidateRecords.length}문항</p>${
         candidateRecords
           .slice(0, 30)
           .map(
@@ -1019,13 +1274,15 @@
     );
   }
   function replaceWith(candidate) {
+    if (lockedIndex(replacementIndex))
+      throw new Error("이미 출제한 문항입니다.");
     const before = state.selected[replacementIndex],
       after = { ...candidate, rowId: before.rowId };
     const next = state.selected.slice();
     next[replacementIndex] = after;
-    const check = C.review(next, request(true), context());
-    if (check.status === "HARD_BLOCK")
-      throw new Error(check.hardFailures.join(" "));
+    const check = C.review(next, request(true), ownHistoryContext());
+    if (!candidateRecords.some((r) => r.questionUid === candidate.questionUid))
+      throw new Error("현재 교체 후보가 아닙니다.");
     state.undo.push({
       index: replacementIndex,
       before,
@@ -1041,29 +1298,22 @@
     save();
     $("modal").close();
     render();
+    status("문항을 교체했습니다. 필요하면 되돌릴 수 있습니다.");
   }
   function seal() {
-    state.sealed = true;
+    state.sealed = Parts.status(state.selected.length, state.receipts).complete;
     save();
   }
   async function finalGate() {
-    if (
-      state.studentIds.length &&
-      state.historyMode !== "off" &&
-      !state.receipts.length
-    )
+    if (state.studentIds.length && state.historyMode !== "off" && !state.sealed)
       await refreshHistory();
     // A committed immutable paper may retry its own PDF without excluding itself.
-    const ctx = context();
-    if (state.receipts.length)
-      ctx.student = ctx.student.filter(
-        (uid) => !state.selected.some((r) => r.questionUid === uid),
-      );
+    const ctx = ownHistoryContext();
     const req = request(true);
-    if (state.receipts.length) req.historyReady = true;
+    if (state.sealed) req.historyReady = true;
     const r = C.review(state.selected, req, ctx);
     if (state.indexVersion !== state.catalog.indexVersion)
-      throw new Error("catalog가 변경되었습니다. 다시 검증하세요.");
+      throw new Error("문항 목록이 갱신되었습니다. 다시 검증하세요.");
     if (r.status === "HARD_BLOCK") throw new Error(r.hardFailures.join(" "));
     if (r.warnings.length && !state.ackWarnings) {
       state.inspector = "summary";
@@ -1082,16 +1332,17 @@
         state.outputMode,
         false,
       );
-      seal();
       render();
-      status("출력 엔진으로 연결했습니다. 현재 회차를 확정했습니다.");
+      status(
+        "출력 창을 열었습니다. 학생 출제 전까지 문항을 수정할 수 있습니다.",
+      );
     } catch (e) {
       popup?.close();
       throw e;
     }
   }
   async function targets() {
-    if (state.sealed)
+    if (state.receipts.length)
       throw new Error(
         "확정 회차의 대상은 변경할 수 없습니다. 다음 회차를 시작하세요.",
       );
@@ -1139,14 +1390,27 @@
         const existing = state.receipts.find(
           (r) => r.key === paper.key && r.classId === state.classId,
         );
-        if (existing?.ready) continue;
+        if (existing) {
+          if (!existing.ready) {
+            try {
+              const d = await api(
+                "/class-exam-assignments/" + existing.id + "/pdf",
+                {},
+              );
+              existing.ready = d.assignment?.pdf_status === "ready";
+            } catch {
+              /* A PDF retry never changes the saved paper or recipients. */
+            }
+          }
+          continue;
+        }
         const body = {
           contract_version: C.VERSION,
           index_version: state.catalog.indexVersion,
           selection_filters: request(true).filters,
           class_id: state.classId,
           student_ids: state.studentIds,
-          exam_title: state.header.title,
+          exam_title: paper.meta.title,
           exam_date:
             state.issueDate ||
             (state.issueDate = new Date(Date.now() + 9 * 3600000)
@@ -1155,7 +1419,7 @@
           question_count: paper.questions.length,
           archive_file: "MIXED:" + paper.key,
           subject: state.filters.courseKey,
-          pdf_qpp: state.qpp,
+          pdf_qpp: paper.meta.qpp,
           history_mode: state.historyMode,
           recent_days: state.recentDays,
           acknowledge_incomplete_history: state.ackWarnings,
@@ -1168,16 +1432,21 @@
           if (e.data?.saved) {
             rememberReceipt(paper, e.data.assignment);
             seal();
-            e.message =
-              "배부는 저장했지만 PDF 준비에 실패했습니다. PDF 다시 준비를 눌러 재시도하세요.";
+            continue;
           }
+          state.failedPart = { index: paper.index, message: e.message };
+          save();
+          state.previewIndex = paper.index;
+          e.message = `${paper.index + 1}권은 아직 출제되지 않았습니다. ${state.receipts.length}개 문제지는 저장됐습니다. 이 문제지만 수정한 뒤 이어서 출제하세요. ${e.message}`;
           throw e;
         }
         rememberReceipt(paper, data.assignment);
         seal();
       }
       status(
-        "선택 학생에게 출제했습니다. 다음 출제부터 이 문항들을 제외합니다.",
+        state.receipts.some((r) => !r.ready)
+          ? "학생의 내 시험지에 표시됐습니다. PDF 파일은 다시 준비해야 합니다."
+          : "선택한 학생의 내 시험지에 출제했습니다.",
       );
     } finally {
       state.busy = false;
@@ -1185,20 +1454,76 @@
       state.historyReady = false;
       save();
       render();
+      if (!state.sealed) await refreshHistory();
     }
   }
   function rememberReceipt(paper, a) {
+    frozenPaperCache.set(paper.key, structuredClone(paper));
+    state.failedPart = null;
     state.receipts = state.receipts.filter(
       (r) => !(r.key === paper.key && r.classId === state.classId),
     );
     state.receipts.push({
       key: paper.key,
+      partIndex: paper.index,
+      questionUids: paper.questions.map((q) => q.questionUid),
       classId: state.classId,
       className:
         classRows.find((r) => r.id === state.classId)?.name || "선택한 반",
       id: a.id,
       ready: a.pdf_status === "ready",
     });
+  }
+  function rebuildUnissued() {
+    const saved = Parts.lockedUids(state.receipts),
+      req = request(true),
+      ctx = ownHistoryContext();
+    const pending = state.selected.filter(
+        (q, i) =>
+          Parts.partIndex(i) === state.previewIndex &&
+          !saved.has(q.questionUid),
+      ),
+      pins = pending.filter((q) => state.pins.includes(q.questionUid));
+    if (!pending.length)
+      throw new Error("이미 출제한 문제지입니다. 수정할 문제지를 선택하세요.");
+    const pendingUids = new Set(pending.map((q) => q.questionUid));
+    req.rows = req.rows
+      .map((row) => ({
+        ...row,
+        count: pending.filter((q) => q.rowId === row.id).length,
+      }))
+      .filter((row) => row.count > 0);
+    req.pins = pins.map((q) => ({
+      questionUid: q.questionUid,
+      rowId: q.rowId,
+    }));
+    req.seed = crypto.randomUUID();
+    ctx.current = state.selected
+      .filter(
+        (q) =>
+          !pendingUids.has(q.questionUid) ||
+          !state.pins.includes(q.questionUid),
+      )
+      .map((q) => q.questionUid);
+    const result = C.selectBlueprint(pool(), req, ctx);
+    if (!result.ok)
+      throw new Error(
+        "같은 조건의 새 문항이 부족합니다. 필요한 문항만 개별 교체해 주세요.",
+      );
+    const available = result.selected.slice();
+    state.selected = state.selected.map((q) => {
+      if (!pendingUids.has(q.questionUid)) return q;
+      const i = available.findIndex((r) => r.rowId === q.rowId);
+      return available.splice(i, 1)[0];
+    });
+    state.prepared = [];
+    state.undo = [];
+    state.failedPart = null;
+    save();
+    render();
+    status(
+      `${state.previewIndex + 1}권에서 고정한 문항을 유지하고 나머지를 다시 만들었습니다.`,
+    );
   }
   function download(data, name) {
     const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -1234,6 +1559,8 @@
       prepared: [],
       undo: [],
       receipts: [],
+      failedPart: null,
+      includeQr: false,
       ackWarnings: false,
       previewIndex: 0,
       indexVersion: state.catalog.indexVersion,
@@ -1250,19 +1577,66 @@
         state.view = b.dataset.view;
         urlState();
         render();
+        if (state.view === "recent") await loadRecent();
         return;
       }
       const a = b.dataset.action;
+      if (a === "assignment-status") {
+        await assignmentStatus(b.dataset.assignment);
+        return;
+      }
+      if (a === "assignment-output") {
+        assignmentOutput(b.dataset.mode);
+        return;
+      }
+      if (a === "assignment-pdf") {
+        b.disabled = true;
+        await api(
+          "/class-exam-assignments/" + b.dataset.assignment + "/pdf",
+          {},
+        );
+        await assignmentStatus(b.dataset.assignment);
+        return;
+      }
+      if (a === "recover-part") {
+        state.previewIndex = Number(b.dataset.part);
+        state.questionListOpen = true;
+        if ($("question-list")) $("question-list").open = true;
+        state.inspector = "header";
+        render();
+        return;
+      }
+      if (a === "close-inspector") {
+        state.mobileInspectorOpen = false;
+        renderControls();
+        return;
+      }
+      if (
+        state.receipts.length &&
+        [
+          "scope-all",
+          "scope-clear",
+          "scope-range",
+          "scope-group",
+          "bucket",
+          "source-toggle",
+          "sources-clear",
+          "targets-clear",
+        ].includes(a)
+      )
+        throw new Error(
+          "이미 출제한 문제지를 보존하려면 남은 문제지의 문항을 교체해 주세요. 범위나 대상을 바꾸려면 새 작업을 시작하세요.",
+        );
       if (["generate", "rebuild", "assign", "print"].includes(a) && state.busy)
         return;
       if (a === "mobile-inspector") {
-        document
-          .querySelector(".inspector")
-          ?.scrollIntoView({ block: "start" });
+        state.mobileInspectorOpen = !state.mobileInspectorOpen;
+        renderControls();
         return;
       }
-      if (a === "close-dialog") {if(!originalIssueBusy())$("modal").close();}
-      else if (a === "go-compose") {
+      if (a === "close-dialog") {
+        if (!originalIssueBusy()) $("modal").close();
+      } else if (a === "go-compose") {
         state.view = "compose";
         if (state.find.grade) state.filters.grade = state.find.grade;
         urlState();
@@ -1280,8 +1654,10 @@
           : [...state.sources, f];
         invalidate();
         render();
-      } else if (a === "source-issue") {openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)]);
-      } else if(a === "original-print"){const e=state.originalExam;if(!e)return;const u=new URL("engine.html",location.href);u.searchParams.set("data","exams/"+e.file);u.searchParams.set("qpp",$("original-qpp").value);u.searchParams.set("mode","exam");window.open(u.href,"_blank");
+      } else if (a === "source-issue") {
+        openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)]);
+      } else if (a === "original-print") {
+        await originalPrint();
       } else if (a === "source-preview") {
         const exam = state.catalog.exams[Number(b.dataset.exam)];
         const url = new URL("engine.html", location.href);
@@ -1338,6 +1714,7 @@
         state.inspector = b.dataset.tab;
         renderControls();
       } else if (a === "pin") {
+        if (lockedIndex(Number(b.dataset.index))) return;
         const uid = state.selected[Number(b.dataset.index)].questionUid;
         state.pins = state.pins.includes(uid)
           ? state.pins.filter((x) => x !== uid)
@@ -1346,8 +1723,16 @@
         renderControls();
       } else if (a === "pin-all" || a === "pin-clear") {
         if (state.sealed) return;
+        const currentPart = state.selected
+          .filter(
+            (r, i) =>
+              Parts.partIndex(i) === state.previewIndex && !lockedIndex(i),
+          )
+          .map((r) => r.questionUid);
         state.pins =
-          a === "pin-all" ? state.selected.map((r) => r.questionUid) : [];
+          a === "pin-all"
+            ? unique([...state.pins, ...currentPart])
+            : state.pins.filter((uid) => !currentPart.includes(uid));
         scheduleSave();
         renderControls();
       } else if (a === "replace") replace(Number(b.dataset.index));
@@ -1361,9 +1746,10 @@
       } else if (a === "undo") {
         const change = state.undo.at(-1);
         if (!change) return;
+        if (lockedIndex(change.index)) return;
         const next = state.selected.slice();
         next[change.index] = change.before;
-        const r = C.review(next, request(true), context());
+        const r = C.review(next, request(true), ownHistoryContext());
         if (r.status === "HARD_BLOCK")
           throw new Error(r.hardFailures.join(" "));
         state.undo.pop();
@@ -1463,6 +1849,26 @@
     if (state.busy) return;
     const el = event.target;
     try {
+      if (el.dataset.outputField) {
+        changeOutput(el);
+        return;
+      }
+      if (el.id === "recent-class") {
+        await loadRecent(el.value);
+        return;
+      }
+      if (
+        state.receipts.length &&
+        (el.dataset.group === "compose" ||
+          el.dataset.scope ||
+          el.dataset.rowCount ||
+          ["count", "distribution", "history-mode"].includes(el.id))
+      ) {
+        render();
+        throw new Error(
+          "출제한 문제지는 보존됩니다. 남은 문제지의 문항을 수정해 주세요.",
+        );
+      }
       if (el.dataset.filter) {
         if (state.sealed && el.dataset.group === "compose") {
           render();
@@ -1511,7 +1917,12 @@
         state.recentDays = Number(el.value) || 90;
         scheduleSave();
         await refreshHistory();
-      } else if(el.id === "original-qpp"){const value=Number(el.value);localStorage.setItem("APMATH_ARCHIVE2_ORIGINAL_QPP",String(value));$("original-issue-frame")?.contentWindow?.setArchive2OriginalQpp?.(value);
+      } else if (el.id === "original-qpp") {
+        const value = Number(el.value);
+        localStorage.setItem("APMATH_ARCHIVE2_ORIGINAL_QPP", String(value));
+        $("original-issue-frame")?.contentWindow?.setArchive2OriginalQpp?.(
+          value,
+        );
       } else if (el.id === "target-class") await loadRoster(el.value);
       else if (el.id === "qpp") {
         if (state.sealed) return;
@@ -1521,7 +1932,7 @@
         updatePreview();
       } else if (el.id === "preview-index") {
         state.previewIndex = Number(el.value);
-        updatePreview();
+        render();
       } else if (el.id === "ack-warnings") {
         state.ackWarnings = el.checked;
         render();
@@ -1538,6 +1949,39 @@
   });
   document.addEventListener("input", (event) => {
     const el = event.target;
+    if (el.dataset.outputField) {
+      changeOutput(el);
+      return;
+    }
+    if (el.id === "count" && !state.busy && !state.receipts.length) {
+      state.count = Number(el.value);
+      state.rows = [];
+      state.selected = [];
+      state.prepared = [];
+      scheduleSave();
+      const panel = el.closest(".panel"),
+        fragment = document.createElement("template");
+      fragment.innerHTML = renderComposition();
+      const fresh = fragment.content.firstElementChild;
+      for (const selector of [".composition", ".resultbar"]) {
+        const old = panel?.querySelector(selector),
+          next = fresh.querySelector(selector);
+        if (old && next) old.replaceWith(next);
+      }
+      panel?.querySelectorAll(".callout.danger").forEach((n) => n.remove());
+      const shortage = fresh.querySelector(".callout.danger");
+      if (shortage)
+        panel.insertBefore(shortage, panel.querySelector(".resultbar"));
+      if (
+        !Number.isInteger(state.count) ||
+        state.count < 1 ||
+        state.count > 400
+      ) {
+        const action = panel.querySelector('[data-action="generate"]');
+        if (action) action.disabled = true;
+      }
+      return;
+    }
     if (!el.dataset.header || state.sealed || state.busy) return;
     state.header[el.dataset.header] =
       el.type === "checkbox" ? el.checked : el.value;
@@ -1552,6 +1996,33 @@
     clearTimeout(previewTimer);
     previewTimer = setTimeout(updatePreview, 600);
   });
+  function changeOutput(el) {
+    if (state.busy) return;
+    if (
+      el.closest("[data-output-settings]")?.dataset.outputSettings ===
+      "original"
+    ) {
+      if (originalIssueBusy() || state.originalReceipts?.length) return;
+      state.originalSettings = O.read(el, state.originalSettings);
+      $("original-issue-frame")?.contentWindow?.setArchive2OriginalSettings?.(
+        state.originalSettings,
+      );
+    } else {
+      if (state.sealed || Parts.receipt(state.receipts, state.previewIndex))
+        return;
+      const s = O.read(el, state);
+      Object.assign(state, {
+        header: s.header,
+        qpp: s.qpp,
+        includeQr: s.includeQr,
+      });
+      state.title = s.header.title;
+      state.prepared = [];
+      scheduleSave();
+      clearTimeout(previewTimer);
+      previewTimer = setTimeout(updatePreview, 450);
+    }
+  }
   document.addEventListener("keydown", (event) => {
     if (
       state.busy ||
@@ -1566,12 +2037,40 @@
     urlState();
     render();
   });
-  window.addEventListener('message',event=>{const frame=$('original-issue-frame');if(event.origin!==location.origin||!frame||event.source!==frame.contentWindow)return;if(event.data?.type==='archive2-original-close')$('modal').close();if(event.data?.type==='archive2-original-ready')frame.contentWindow.setArchive2OriginalQpp?.(Number($('original-qpp')?.value||4));});
-  $('modal').addEventListener('cancel',event=>{if(originalIssueBusy())event.preventDefault();});
+  window.addEventListener("message", (event) => {
+    const frame = $("original-issue-frame");
+    if (
+      event.origin !== location.origin ||
+      !frame ||
+      event.source !== frame.contentWindow
+    )
+      return;
+    if (event.data?.type === "archive2-original-close") $("modal").close();
+    if (event.data?.type === "archive2-original-ready")
+      frame.contentWindow.setArchive2OriginalSettings?.(state.originalSettings);
+    if (event.data?.type === "archive2-original-saved") {
+      const a = event.data.assignment;
+      state.originalReceipts = (state.originalReceipts || []).filter(
+        (r) => r.id !== a.id,
+      );
+      state.originalReceipts.push({ id: a.id, key: event.data.key });
+      $("modal")
+        .querySelectorAll(
+          "[data-output-settings] input,[data-output-settings] select",
+        )
+        .forEach((el) => (el.disabled = true));
+      $("original-receipts").innerHTML =
+        `<div class="callout"><strong>${state.originalReceipts.length}개 반에 출제 저장 완료</strong><p>선택한 학생의 ‘내 시험지’에 표시됩니다. 문제·정답·해설 확인과 오답 입력이 가능합니다.${a.pdf_status === "ready" ? "" : " PDF 파일은 다시 준비해야 합니다."}</p>${state.originalReceipts.map((r) => button("assignment-status", "학생별 확인 · 출력", `data-assignment="${r.id}"`)).join("")}</div>`;
+    }
+  });
+  $("modal").addEventListener("cancel", (event) => {
+    if (originalIssueBusy()) event.preventDefault();
+  });
   window.addEventListener("pagehide", save);
-  window.addEventListener("popstate", () => {
+  window.addEventListener("popstate", async () => {
     readUrl();
     render();
+    if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
@@ -1598,7 +2097,7 @@
       const response = await fetch("data/archive2-catalog.json", {
         cache: "no-cache",
       });
-      if (!response.ok) throw new Error("catalog 로드 실패");
+      if (!response.ok) throw new Error("문항 목록을 불러오지 못했습니다");
       state.catalog = C.decodeCatalog(await response.json());
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
@@ -1614,9 +2113,10 @@
       readUrl();
       render();
       status(
-        `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 검수된 자동출제 ${state.catalog.health.automatic.toLocaleString()}문항`,
+        `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`,
       );
       const previous = drafts();
+      if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
       if (previous.length && state.view === "compose")
         showDialog(
           "이전 작업이 있습니다",
