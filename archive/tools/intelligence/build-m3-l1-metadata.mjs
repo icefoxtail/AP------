@@ -140,11 +140,17 @@ function classifyM305(combined) {
     return { L2: '삼각비', L3: '삼각비와 길이', L4: /각을 이용|각.*길이/.test(combined) ? '각을 이용한 길이' : '직각삼각형의 변', cues: ['삼각비 길이'], confidence: 'medium' };
 }
 
-function classifyM306(combined) {
-    const inscribed = /원주각|중심각|같은 호|반원|내접사각형|네 점이 한 원|한 원 위|접선과 현이 이루는 각/.test(combined);
+function classifyM306(combined, content = combined) {
+    const explicitAngleGoal = /원주각|호|원에 내접|내접하는 사각형|할선/.test(content);
+    const tangential = /내접원|접점|외접하는|외접사각형|접하는 원/.test(combined) && !explicitAngleGoal;
+    const inscribed = /원주각|중심각|같은 호|반원|내접사각형|원에 내접|내접하는|네 점이 한 원|한 원 위|접선과 현이 이루는 각|할선|호/.test(combined);
+    if (tangential) return { L2: '원과 직선', L3: '원의 접선', L4: /각|도°|°/.test(combined) && !/길이|넓이|반지름/.test(combined) ? '접선 조건으로 각 구하기' : '접선 조건으로 길이 구하기', cues: ['접점/내접원/외접원'], confidence: 'medium' };
     if (inscribed) {
+        if (/육각형|할선|호/.test(combined) && !/원주각|중심각|반원/.test(combined)) return { L2: '원주각', L3: '원주각의 활용', L4: '복합 각 추론', cues: ['호/할선/복합 각'], confidence: 'medium' };
         if (/내접사각형/.test(combined)) return { L2: '원주각', L3: '원주각의 활용', L4: '내접사각형의 각', cues: ['내접사각형'], confidence: 'high' };
         if (/네 점이 한 원|한 원 위/.test(combined)) return { L2: '원주각', L3: '원주각의 활용', L4: '네 점이 한 원 위에 있을 조건', cues: ['네 점과 원'], confidence: 'high' };
+        if (/항상|판단|조건|고른/.test(combined) && /내접/.test(combined)) return { L2: '원주각', L3: '원주각의 활용', L4: '네 점이 한 원 위에 있을 조건', cues: ['내접 조건 판정'], confidence: 'high' };
+        if (/사각형/.test(combined)) return { L2: '원주각', L3: '원주각의 활용', L4: '내접사각형의 각', cues: ['원에 내접한 사각형'], confidence: 'high' };
         if (/접선과 현/.test(combined)) return { L2: '원주각', L3: '원주각의 활용', L4: '접선과 현이 이루는 각', cues: ['접선-현 각'], confidence: 'high' };
         if (/반원/.test(combined)) return { L2: '원주각', L3: '원주각과 중심각', L4: '반원에 대한 원주각', cues: ['반원'], confidence: 'high' };
         return { L2: '원주각', L3: '원주각과 중심각', L4: /중심각/.test(combined) ? '중심각과 원주각' : '같은 호에 대한 원주각', cues: ['원주각/중심각'], confidence: 'high' };
@@ -160,7 +166,7 @@ function classifyM306(combined) {
         if (/중심거리|현의 길이/.test(combined)) return { L2: '원과 직선', L3: '원의 중심과 현', L4: '중심거리와 현의 길이', cues: ['중심거리/현 길이'], confidence: 'high' };
         return { L2: '원과 직선', L3: '원의 중심과 현', L4: '중심에서 현에 내린 수선', cues: ['현과 수선'], confidence: 'medium' };
     }
-    return { L2: '원주각', L3: '원주각의 활용', L4: '복합 각 추론', cues: ['원 성질 fallback'], confidence: 'low' };
+    return { L2: '원주각', L3: '원주각의 활용', L4: '복합 각 추론', cues: ['원 성질 복합 추론'], confidence: 'medium' };
 }
 
 function classifyM307(combined) {
@@ -183,7 +189,7 @@ function classify(record, target) {
         case 'M3-03': pathResult = classifyM303(combined); break;
         case 'M3-04': pathResult = classifyM304(combined); break;
         case 'M3-05': pathResult = classifyM305(combined); break;
-        case 'M3-06': pathResult = classifyM306(combined); break;
+        case 'M3-06': pathResult = classifyM306(combined, content); break;
         case 'M3-07': pathResult = classifyM307(combined); break;
         default: pathResult = { L2: '', L3: '', L4: '', cues: [], confidence: 'low' };
     }
