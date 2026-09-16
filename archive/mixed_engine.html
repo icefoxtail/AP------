@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script>
+        // Studio owns ordering/header/layout. Keep the existing renderer and print
+        // actions, but do not expose a second editor for a Studio snapshot.
+        if (new URLSearchParams(location.search).get('studio') === '1') {
+            document.documentElement.classList.add('archive2-output');
+            if (new URLSearchParams(location.search).get('preview') === '1') document.documentElement.classList.add('archive2-preview');
+        }
+    </script>
+    <style>
+        html.archive2-output .qpp-selector,
+        html.archive2-output .print-header-editor-wrap,
+        html.archive2-output button[onclick="shuffleData()"],
+        html.archive2-output .qr-output-wrap { display: none !important; }
+        html.archive2-preview #mode-ctrl { display: none !important; }
+        html.archive2-preview body { background: #eef0f3 !important; background-image: none !important; padding-top: 10px !important; }
+        html.archive2-preview #print-area { margin-top: 0 !important; }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS아카이브 | 믹서 출력 (Rulebook v1.9 + Image Field Final)</title>

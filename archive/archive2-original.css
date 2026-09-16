@@ -1,0 +1,14 @@
+/* A thin presentation host for the existing Archive assignment panel. */
+html.archive2-original-host,html.archive2-original-host body{margin:0;padding:0;background:#fff!important;background-image:none!important;min-height:100%;font-family:system-ui,"Malgun Gothic",sans-serif}
+html.archive2-original-host body>*:not(#assignTargetModalOverlay):not(script):not(style):not(link){display:none!important}
+html.archive2-original-host #assignTargetModalOverlay{position:static!important;inset:auto!important;padding:0!important;background:white!important;min-height:100vh;align-items:stretch!important}
+html.archive2-original-host #assignTargetBox{width:100%!important;max-width:none!important;max-height:none!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+html.archive2-original-host #assignTargetBody{min-height:540px;flex:1}
+html.archive2-original-host .assign-target-panel{border:0;border-radius:0;min-height:540px}
+html.archive2-original-host .assign-target-head{padding:16px 20px!important}
+html.archive2-original-host .assign-target-foot{padding:12px 20px!important}
+html.archive2-original-host .modal-title{font-size:17px!important;letter-spacing:-.4px}
+html.archive2-original-host .modal-sub{font-size:12px!important}
+html.archive2-original-host .modal-btn-primary{background:#24364b!important;border-radius:5px!important}
+html.archive2-original-host .modal-btn-cancel{border-radius:5px!important}
+@media(max-width:700px){html.archive2-original-host .assign-target-head,html.archive2-original-host .assign-target-foot{padding:12px!important}html.archive2-original-host #assignTargetBody,html.archive2-original-host .assign-target-panel{min-height:560px}}
