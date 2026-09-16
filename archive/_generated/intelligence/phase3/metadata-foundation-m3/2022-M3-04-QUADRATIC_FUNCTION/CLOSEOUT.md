@@ -77,8 +77,10 @@ source JS·DB에 curriculum field도 없다. 따라서 2022 분모는 0으로 �
 - zero-denominator evidence under archive/_generated/intelligence/phase3/metadata-foundation-m3/2022-M3-04-QUADRATIC_FUNCTION
 - source JS, question metadata records, runtime, DB and index: unchanged
 
-- metadata apply commit SHA: pending until this L1 commit
-- push result: pending until this L1 commit
+- metadata/closeout commit SHA: b20125224e81ed6bcb66f229b28a645e687f5cc2
+- push result: PASS
+- remote: origin/codex/metadata-foundation-m3
+- HEAD == remote after closeout: PASS
 
 본 branch는 중3 Metadata Foundation / canonical metadata upgrade 전용이다.
 Archive 2.0 구현 및 고1·중1·중2·고2 metadata 작업은 수행하지 않았다.
