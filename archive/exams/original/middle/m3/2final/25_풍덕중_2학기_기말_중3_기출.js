@@ -1,12 +1,6 @@
 window.examTitle="25_풍덕중_2학기_기말_중3_기출";
-const U={"원의 성질":["M3-06",6],"통계":["M3-07",7]};
-function q(id,u,level,t,c,ch=[],a="",s="",extraTags=[],image="",imageSize=""){
-  const[k,o]=U[u];
-  const obj={id,level,category:u,originalCategory:u,standardCourse:"중3 수학",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags:[t,...extraTags],wide:false,content:c,choices:ch,answer:a,solution:s};
-  if(image)obj.image=image;
-  if(imageSize)obj.imageSize=imageSize;
-  return obj;
-}
+
+
 window.questionBank=[
   {
     "id": 1,

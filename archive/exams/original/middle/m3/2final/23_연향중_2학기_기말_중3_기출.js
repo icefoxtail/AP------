@@ -1,12 +1,6 @@
 window.examTitle="23_연향중_2학기_기말_중3_기출";
-const U={"원의 성질":["M3-06",6],"통계":["M3-07",7]};
-function q(id,u,t,level,c,ch,a,s,tags=[],image="",imageSize=""){
-  const [k,o]=U[u];
-  const item={id,level,category:u,originalCategory:u,standardCourse:"중3 수학",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags,wide:false,content:c,choices:ch,answer:a,solution:s};
-  if(image)item.image=image;
-  if(imageSize)item.imageSize=imageSize;
-  return item;
-}
+
+
 window.questionBank=[
   {
     "id": 1,

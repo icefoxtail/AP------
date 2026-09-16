@@ -1,16 +1,3 @@
-function q(id, key, unit, type, content, choices, answer, options = {}) {
-  const order = Number.isFinite(options.standardUnitOrder)
-    ? options.standardUnitOrder
-    : (/^M1-\d{2}$/.test(key) ? Number(key.slice(-2)) : 999);
-  const level = options.level || ({1:"하",3:"하",4:"하",5:"하",6:"하",10:"상",15:"상",17:"상",18:"상",20:"상"}[id] || "중");
-  return { id, level, category: unit, originalCategory: unit,
-    standardCourse: "중1 수학", standardUnitKey: key, standardUnit: unit,
-    standardUnitOrder: order, questionType: type, layoutTag: "grid",
-    tags: [type, unit, ...(options.tags || [])], wide: false, content,
-    ...(options.image ? { image: options.image } : {}),
-    ...(options.imageSize ? { imageSize: options.imageSize } : {}),
-    choices, answer, solution: "" };
-}
 
 window.examTitle = "23_연향중_2학기_중간_중1_기출";
 window.questionBank = [

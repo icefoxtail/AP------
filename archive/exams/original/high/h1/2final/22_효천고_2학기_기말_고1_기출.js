@@ -1,4 +1,4 @@
-window.examTitle="22_효천고_2학기_기말_고1_기출";const U={"집합":["H15-SB-01",1],"명제":["H15-SB-02",2],"함수":["H15-SB-03",3],"유리함수":["H15-SB-04",4],"무리함수":["H15-SB-05",5],"경우의 수":["H15-SB-06",6],"순열":["H15-SB-07",7],"조합":["H15-SB-08",8]};function q(id,u,t,c,ch=[],answer="",solution="",level="중",extraTags=[],image=""){const[k,o]=U[u];return{id,level,category:u,originalCategory:u,standardCourse:"수학(하)",standardUnitKey:k,standardUnit:u,standardUnitOrder:o,questionType:t,layoutTag:"grid",tags:[t,...extraTags],wide:false,content:c,choices:ch,...(image?{image}:{}),answer,solution}}window.questionBank=[
+window.examTitle="22_효천고_2학기_기말_고1_기출";window.questionBank=[
   {
     "id": 1,
     "level": "하",

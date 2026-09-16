@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '..');
+const examsRoot = path.join(archiveDir, 'exams');
 const examsDir = path.join(archiveDir, 'exams', 'original');
 
 const args = process.argv.slice(2);
@@ -37,6 +38,217 @@ function walk(dir, out = []) {
   return out;
 }
 
+// The declaration gate deliberately uses a small lexer instead of a regex.
+// It tracks lexical nesting and skips comments, strings, templates, and regex
+// literals so content/solution/SVG text and function-local declarations do not
+// become production-scope findings. No parser dependency is required.
+const REGEX_PREFIX_KEYWORDS = new Set([
+  'return', 'throw', 'case', 'delete', 'void', 'typeof', 'instanceof',
+  'in', 'of', 'new', 'yield', 'await',
+]);
+
+function canStartRegex(previous) {
+  if (!previous) return true;
+  if (previous.type === 'identifier') return REGEX_PREFIX_KEYWORDS.has(previous.value);
+  if (previous.type === 'number' || previous.type === 'string'
+    || previous.type === 'template' || previous.type === 'regex') return false;
+  return ['(', '[', '{', '=', ':', ',', ';', '!', '?', '&&', '||', '??', '=>',
+    '+', '-', '*', '%', '&', '|', '^', '~', '<', '>', '==', '===', '!=', '!==']
+    .includes(previous.value);
+}
+
+function tokenizeForDeclarationGate(source) {
+  const tokens = [];
+  let index = 0;
+  let line = 1;
+  let braceDepth = 0;
+  let parenDepth = 0;
+  let bracketDepth = 0;
+  let previous = null;
+
+  const add = (type, value, start, end, tokenLine) => {
+    const token = {
+      type,
+      value,
+      start,
+      end,
+      line: tokenLine,
+      depthBefore: { braceDepth, parenDepth, bracketDepth },
+    };
+    tokens.push(token);
+    previous = token;
+  };
+
+  const isIdentifierStart = (character) => /[A-Za-z_$]/.test(character)
+    || character.charCodeAt(0) >= 0x80;
+  const isIdentifierPart = (character) => /[A-Za-z0-9_$]/.test(character)
+    || character.charCodeAt(0) >= 0x80;
+
+  while (index < source.length) {
+    const character = source[index];
+    if (character === '\n') {
+      line += 1;
+      index += 1;
+      continue;
+    }
+    if (/\s/.test(character)) {
+      index += 1;
+      continue;
+    }
+
+    if (character === '/' && source[index + 1] === '/') {
+      index += 2;
+      while (index < source.length && source[index] !== '\n') index += 1;
+      continue;
+    }
+    if (character === '/' && source[index + 1] === '*') {
+      index += 2;
+      while (index < source.length && !(source[index] === '*' && source[index + 1] === '/')) {
+        if (source[index] === '\n') line += 1;
+        index += 1;
+      }
+      if (index < source.length) index += 2;
+      continue;
+    }
+
+    const start = index;
+    const tokenLine = line;
+    if (character === '"' || character === "'") {
+      const quote = character;
+      index += 1;
+      while (index < source.length) {
+        if (source[index] === '\\') {
+          index += 2;
+          continue;
+        }
+        if (source[index] === quote) {
+          index += 1;
+          break;
+        }
+        if (source[index] === '\n') line += 1;
+        index += 1;
+      }
+      add('string', source.slice(start, index), start, index, tokenLine);
+      continue;
+    }
+    if (character === '`') {
+      index += 1;
+      while (index < source.length) {
+        if (source[index] === '\\') {
+          index += 2;
+          continue;
+        }
+        if (source[index] === '`') {
+          index += 1;
+          break;
+        }
+        if (source[index] === '\n') line += 1;
+        index += 1;
+      }
+      add('template', source.slice(start, index), start, index, tokenLine);
+      continue;
+    }
+    if (character === '/' && canStartRegex(previous)) {
+      index += 1;
+      let inCharacterClass = false;
+      while (index < source.length) {
+        if (source[index] === '\\') {
+          index += 2;
+          continue;
+        }
+        if (source[index] === '[') inCharacterClass = true;
+        else if (source[index] === ']') inCharacterClass = false;
+        else if (source[index] === '/' && !inCharacterClass) {
+          index += 1;
+          while (/[A-Za-z]/.test(source[index] || '')) index += 1;
+          break;
+        }
+        if (source[index] === '\n') break;
+        index += 1;
+      }
+      add('regex', source.slice(start, index), start, index, tokenLine);
+      continue;
+    }
+    if (isIdentifierStart(character)) {
+      index += 1;
+      while (index < source.length && isIdentifierPart(source[index])) index += 1;
+      add('identifier', source.slice(start, index), start, index, tokenLine);
+      continue;
+    }
+    if (/[0-9]/.test(character)) {
+      index += 1;
+      while (index < source.length && /[A-Za-z0-9._]/.test(source[index])) index += 1;
+      add('number', source.slice(start, index), start, index, tokenLine);
+      continue;
+    }
+
+    const three = source.slice(index, index + 3);
+    const two = source.slice(index, index + 2);
+    const value = ['===', '!==', '>>>', '**=', '&&=', '||=', '??=', '...'].includes(three)
+      ? three
+      : ['=>', '==', '!=', '<=', '>=', '&&', '||', '??', '?.', '++', '--', '+=',
+        '-=', '*=', '/=', '%=', '**', '<<', '>>', '&=', '|=', '^='].includes(two)
+        ? two
+        : character;
+    index += value.length;
+    add('punctuation', value, start, index, tokenLine);
+    if (value === '{') braceDepth += 1;
+    else if (value === '}') braceDepth = Math.max(0, braceDepth - 1);
+    else if (value === '(') parenDepth += 1;
+    else if (value === ')') parenDepth = Math.max(0, parenDepth - 1);
+    else if (value === '[') bracketDepth += 1;
+    else if (value === ']') bracketDepth = Math.max(0, bracketDepth - 1);
+  }
+
+  return tokens;
+}
+
+function isTopLevelFunctionOrClassDeclaration(tokens, index) {
+  const previous = tokens[index - 1];
+  if (!previous) return true;
+  if (['export', 'default', ';', '}'].includes(previous.value)) return true;
+  if (previous.value === 'async') return true;
+  const lineBreak = previous.line < tokens[index].line;
+  return lineBreak && !['=', '=>', '(', '[', '{', ',', ':', '?'].includes(previous.value);
+}
+
+function declarationName(tokens, index) {
+  const kind = tokens[index].value;
+  let next = index + 1;
+  if (kind === 'function' || kind === 'class') {
+    if (tokens[next]?.value === '*') next += 1;
+    return tokens[next]?.type === 'identifier' ? tokens[next].value : '<anonymous>';
+  }
+  if (tokens[next]?.type === 'identifier') return tokens[next].value;
+  if (tokens[next]?.value === '{' || tokens[next]?.value === '[') {
+    const names = [];
+    const close = tokens[next].value === '{' ? '}' : ']';
+    for (let cursor = next + 1; cursor < tokens.length && tokens[cursor].value !== close; cursor += 1) {
+      if (tokens[cursor].type === 'identifier') names.push(tokens[cursor].value);
+    }
+    return names.length ? `{${[...new Set(names)].join(', ')}}` : '<pattern>';
+  }
+  return '<unresolved>';
+}
+
+function scanTopLevelDeclarations(source) {
+  const tokens = tokenizeForDeclarationGate(source);
+  return tokens.flatMap((token, index) => {
+    const topLevel = token.depthBefore.braceDepth === 0
+      && token.depthBefore.parenDepth === 0
+      && token.depthBefore.bracketDepth === 0;
+    if (!topLevel) return [];
+    if (['const', 'let', 'var'].includes(token.value)) {
+      return [{ declarationKind: token.value, declarationName: declarationName(tokens, index), line: token.line }];
+    }
+    if (['function', 'class'].includes(token.value)
+      && isTopLevelFunctionOrClassDeclaration(tokens, index)) {
+      return [{ declarationKind: token.value, declarationName: declarationName(tokens, index), line: token.line }];
+    }
+    return [];
+  });
+}
+
 /** $...$ 밖에 LaTeX 명령이 노출됐는지 (렌더 시 원문 그대로 보임) */
 const LATEX_CMD = /\\(sqrt|frac|dfrac|dot|times|div|pi|le\b|ge\b|lt\b|gt\b|neq|cdot|overline|angle|therefore)/;
 /** $ 개수가 홀수면 수식이 안 닫힘 */
@@ -48,6 +260,12 @@ function mathUnbalanced(s) {
 
 const files = walk(examsDir).filter(f => path.basename(f).includes(filter));
 const report = [];
+const declarationGateFiles = walk(examsRoot).filter(f => path.basename(f).includes(filter));
+const topLevelDeclarationViolations = declarationGateFiles.flatMap(file => {
+  const source = fs.readFileSync(file, 'utf8');
+  const rel = path.relative(archiveDir, file).replace(/\\/g, '/');
+  return scanTopLevelDeclarations(source).map(declaration => ({ file: rel, ...declaration }));
+});
 
 for (const file of files) {
   const rel = path.relative(archiveDir, file).replace(/\\/g, '/');
@@ -222,10 +440,26 @@ const warnFiles = report.filter(r => !r.fail.length && r.warn.length);
 const totalQ = report.reduce((s, r) => s + r.count, 0);
 
 if (asJson) {
-  console.log(JSON.stringify({ files: report.length, totalQ, failFiles: failFiles.length, warnFiles: warnFiles.length, report }, null, 1));
+  console.log(JSON.stringify({
+    files: report.length,
+    totalQ,
+    failFiles: failFiles.length,
+    warnFiles: warnFiles.length,
+    topLevelDeclarationGate: {
+      files: declarationGateFiles.length,
+      violations: topLevelDeclarationViolations.length,
+      report: topLevelDeclarationViolations,
+    },
+    report,
+  }, null, 1));
 } else {
   console.log(`대상 ${report.length}개 파일 / ${totalQ}문항`);
   console.log(`FAIL ${failFiles.length}개 파일 / WARN ${warnFiles.length}개 파일\n`);
+  console.log(`TOP_LEVEL_DECLARATION_GATE ${topLevelDeclarationViolations.length}건 / ${declarationGateFiles.length}개 파일`);
+  topLevelDeclarationViolations.forEach(({ file, declarationKind, declarationName, line }) => {
+    console.log(`  [FAIL] file=${file} declaration kind=${declarationKind} declaration name=${declarationName} line=${line}`);
+  });
+  if (topLevelDeclarationViolations.length) console.log();
   for (const r of report) {
     if (!r.fail.length && !r.warn.length) continue;
     console.log(`## ${r.file} (${r.count}문항) ${r.fail.length ? 'FAIL' : 'WARN'}`);
@@ -235,4 +469,4 @@ if (asJson) {
   }
 }
 
-process.exit(failFiles.length ? 1 : 0);
+process.exit(failFiles.length || topLevelDeclarationViolations.length ? 1 : 0);

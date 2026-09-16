@@ -1,33 +1,6 @@
 window.examTitle = "25_팔마중_2학기_기말_중1_기출";
 
-const U = {
-  "평면도형의 성질": ["M1-06", 6],
-  "입체도형의 성질": ["M1-07", 7],
-  "자료의 정리와 해석": ["M1-08", 8]
-};
 
-function q(id, level, unit, questionType, tags, content, choices, answer, image = "") {
-  const [standardUnitKey, standardUnitOrder] = U[unit];
-  return {
-    id,
-    level,
-    category: unit,
-    originalCategory: unit,
-    standardCourse: "중1 수학",
-    standardUnitKey,
-    standardUnit: unit,
-    standardUnitOrder,
-    questionType,
-    layoutTag: "grid",
-    tags,
-    wide: false,
-    ...(image ? { image } : {}),
-    content,
-    choices,
-    answer,
-    solution: ""
-  };
-}
 
 window.questionBank = [
   {

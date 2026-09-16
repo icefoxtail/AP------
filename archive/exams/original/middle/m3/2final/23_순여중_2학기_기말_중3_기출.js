@@ -1,30 +1,4 @@
-function q(id, level, category, standardUnitKey, standardUnitOrder, questionType, tags, content, choices, answer, solution, image, subUnitKey, subUnit) {
-  return {
-    id,
-    level,
-    category,
-    originalCategory: category,
-    standardCourse: "중3 수학",
-    standardUnitKey,
-    standardUnit: category,
-    standardUnitOrder,
-    questionType,
-    layoutTag: "grid",
-    tags,
-    wide: false,
-    content,
-    choices,
-    answer,
-    solution,
-    image: `assets/images/23_순여중_2학기_기말_중3_기출/q${id}.png`,
-    subUnitKey,
-    subUnit,
-    subUnitConfidence: "source_checked",
-    subUnitClassificationDepth: "complete_rule"
-  };
-}
 
-window.examTitle = "23_순여중_2학기_기말_중3_기출";
 
 window.questionBank = [
   {
@@ -773,3 +747,4 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
+window.examTitle = "23_순여중_2학기_기말_중3_기출";

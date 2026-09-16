@@ -390,7 +390,7 @@ window.questionBank = [
     "subUnitKey": "H15-SA-03-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "approved_source_repair",
-    "subUnitClassificationDepth": "complete_rule",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 12,
@@ -596,16 +596,16 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다항식 $f(x)$를 $(x^2-1)$로 나눈 몫과 나머지가 같고, 나머지가 $1$인 조건에서 $R(x)$의 계수를 구하시오. [5.2점]",
+    "content": "다항식 $P(x)$를 $x^2-1$로 나눈 나머지가 $2x+3$일 때, 이 나머지의 $x$항의 계수와 상수항의 합을 구하시오.",
     "choices": [
-      "-2",
-      "-1",
-      "0",
-      "1",
-      "2"
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
     ],
-    "answer": "①",
-    "solution":"[키포인트] 나머지다항식의 계수와 상수항을 그대로 읽어 합한다.\n\n문제에서 나머지는\n$R(x)=2x+3$\n으로 주어졌다. 따라서 $R(x)$의 $x$항의 계수는 2이고 상수항은 3이다.\n\n그러므로 구하는 값은\n$2+3=5$\n이다. 보기에서 5는 ③이므로 정답은 ③이다.",
+    "answer": "③",
+    "solution": "[키포인트] 나머지다항식의 계수와 상수항을 그대로 읽어 합한다.\n\n문제에서 나머지는\n$R(x)=2x+3$\n으로 주어졌다. 따라서 $R(x)$의 $x$항의 계수는 2이고 상수항은 3이다.\n\n그러므로 구하는 값은\n$2+3=5$\n이다. 보기에서 5는 ③이므로 정답은 ③이다.",
     "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
     "subUnit": "나머지정리와 인수정리",
     "subUnitConfidence": "rule_inferred",
@@ -699,10 +699,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[서술형 2] 주어진 사차식이 이차식 $f(x)$의 제곱으로 인수분해될 때 $k$값과 $f(1)$을 구하시오. [5점]",
+    "content": "[서술형 2] $P(x)=\\{(x+1)(x+6)\\}\\cdot\\{(x+2)(x+5)\\}+k$가 최고차항의 계수가 1인 이차식 $f(x)$의 제곱으로 나타날 때, $k$와 $f(1)$을 구하는 과정을 서술하시오.",
     "choices": [],
-    "answer": "k=1, f(1)=11",
-    "solution":"[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.",
+    "answer": "k=4, f(1)=16",
+    "solution": "[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
     "subUnitConfidence": "rule_inferred",
@@ -770,17 +770,3 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-
-const question = (id) => window.questionBank.find((q) => q.id === id); // final student-facing polynomial replacements
-
-question(20).content = "[서술형 2] $P(x)=\\{(x+1)(x+6)\\}\\cdot\\{(x+2)(x+5)\\}+k$가 최고차항의 계수가 1인 이차식 $f(x)$의 제곱으로 나타날 때, $k$와 $f(1)$을 구하는 과정을 서술하시오.";
-question(20).answer = "k=4, f(1)=16";
-question(20).solution = "[키포인트] 두 곱을 같은 식 $t$를 이용해 나타내면 완전제곱식의 조건을 바로 확인할 수 있다.\n\n$t=x^2+7x$로 두면\n$(x+1)(x+6)=t+6,\\qquad (x+2)(x+5)=t+10$\n이다. 따라서\n$P(x)=(t+6)(t+10)+k=t^2+16t+60+k$\n이다.\n\n최고차항의 계수가 1인 이차식의 제곱은 $t$에 대한 완전제곱식\n$(t+8)^2=t^2+16t+64$\n의 꼴이어야 한다. 그러므로\n$60+k=64$\n에서 $k=4$를 얻는다.\n\n따라서\n$P(x)=(t+8)^2=(x^2+7x+8)^2$\n이고 $f(x)=x^2+7x+8$이다. 최고차항의 계수가 1이라는 조건에 맞는 식을 택했으므로\n$f(1)=1+7+8=16$\n이다.\n\n따라서 $k=4,\\ f(1)=16$이다.";
-delete question(20).studentVisible;
-delete question(20).internalStatus;
-question(17).content = "다항식 $P(x)$를 $x^2-1$로 나눈 나머지가 $2x+3$일 때, 이 나머지의 $x$항의 계수와 상수항의 합을 구하시오.";
-question(17).choices = ["3","4","5","6","7"];
-question(17).answer = "③";
-question(17).solution = "[키포인트] 나머지다항식의 계수와 상수항을 그대로 읽어 합한다.\n\n문제에서 나머지는\n$R(x)=2x+3$\n으로 주어졌다. 따라서 $R(x)$의 $x$항의 계수는 2이고 상수항은 3이다.\n\n그러므로 구하는 값은\n$2+3=5$\n이다. 보기에서 5는 ③이므로 정답은 ③이다.";
-delete question(17).studentVisible;
-delete question(17).internalStatus;
