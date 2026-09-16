@@ -2,7 +2,7 @@
   "schemaVersion": "metadata-foundation-v2-blind-first-pass-v1",
   "queueId": "2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
   "status": "BLIND_FIRST_PASS_FROZEN",
-  "generatedAt": "2026-09-16T07:15:01.856Z",
+  "generatedAt": "2026-09-16T07:23:47.466Z",
   "sourceCommit": "a2b0a4c1ea42d1d1d3800a2238cda63861020ca7",
   "blindRule": "currentLevel/currentDifficultyBucket/currentSubUnitKey/currentConceptClusterKey/currentProblemTypeKey/currentTemplateKey/reviewer fields omitted from first-pass inputs",
   "evidenceRule": "content + choices + solution + validated visual/shared dependency only; representation does not determine primary taxonomy",
@@ -406,6 +406,50 @@
       ],
       "solution": "[키포인트] 이차식의 인수분해 공식(대각선 분해법, 합차 공식, 완전제곱식)을 올바르게 적용했는지 각각 검증합니다.\\n정석 풀이:\\n① $x^2+5x+6 = (x+2)(x+3)$이므로 옳지 않습니다.\\n② $x^2-6x+9 = (x-3)^2$이므로 옳지 않습니다.\\n③ $x^2-9 = (x+3)(x-3)$이므로 옳지 않습니다.\\n④ $2x^2+5x+2$에서 대각선 항 분해를 하면 $(2x+1)(x+2)$가 되므로 올바릅니다.\\n⑤ $9x^2-25 = (3x)^2 - 5^2 = (3x+5)(3x-5)$이므로 올바릅니다.\\n따라서 정답은 ④, ⑤이다.",
       "image": ""
+    },
+    {
+      "questionUid": "qid_v1_7f3077083ec523affe4f9b6c47d7e230db7d6ed6cf23a2f6887f6cceb41a2483",
+      "sourceArchiveFile": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 21,
+      "sourceFingerprint": "49ab779169594f8b59b2607e97f0779451c63133cbe5a88cd25a491ddc6a4c72",
+      "curriculumKey": "2015",
+      "courseKey": "중3 수학",
+      "L1": "다항식의 곱셈과 인수분해",
+      "L2": "인수분해",
+      "L3": "인수분해 공식",
+      "L4": "이차식",
+      "secondaryConceptKeys": [],
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "firstPassEvidence": {
+        "conceptCount": 1,
+        "conditionInterpretation": "high",
+        "strategyChoice": false,
+        "nonRoutineTransformation": true,
+        "caseBranching": true,
+        "rangeConstraint": false,
+        "integerConstraint": false,
+        "existenceCheck": false,
+        "decisiveInsight": false,
+        "visualRequired": true,
+        "solutionPresent": true,
+        "contentLength": 226,
+        "choicesCount": 0,
+        "structuralScore": 3,
+        "matchedCues": [
+          "인수분해 공식"
+        ],
+        "evidenceSource": "content + choices + solution + validated visual/shared dependency only; legacy metadata omitted"
+      },
+      "classificationConfidence": "medium",
+      "taxonomyClassificationStatus": "FIRST_PASS_CANDIDATE",
+      "content": "[서술형1] 대수막대로 인수분해 (5점)<br>\\n(1) 넓이가 $x^2, x, 1$인 직사각형 타일들을 겹치지 않게 이어 붙여 하나의 큰 직사각형을 만드려고 한다. 타일이 $x^2$이 1개, $x$가 4개, $1$이 3개 주어졌을 때 만들어지는 큰 직사각형의 가로와 세로의 길이를 서술하시오. (3점)<br>\\n(2) (1)에서 구한 직사각형을 보고 다항식의 인수분해 결과를 식으로 나타내시오. (2점)",
+      "choices": [],
+      "solution": "[키포인트] 대수막대들의 총 넓이 합이 직사각형의 $\\text{가로} \\times \\text{세로}$의 곱과 같음을 이용해 인수분해 식을 도출합니다.\\n정석 풀이:\\n\\n(1) 주어진 대수막대 타일들의 넓이의 총합을 식으로 표현하면 $x^2 \\cdot 1 + x \\cdot 4 + 1 \\cdot 3 = x^2 + 4x + 3$입니다. 이 타일들을 빈틈없이 이어 붙여 하나의 직사각형을 만들면 직사각형의 넓이가 $x^2+4x+3$이 되어야 합니다. 넓이가 $x^2+4x+3$인 이차식을 인수분해하면 $(x+1)(x+3)$이 되므로, 직사각형의 가로와 세로의 길이는 각각 $x+3$과 $x+1$이 됩니다.\\n\\n(2) 큰 직사각형의 넓이는 (가로의 길이) $\\times$ (세로의 길이)의 구조를 지니므로, 대수막대의 결합 상태를 인수분해 식으로 모델링하면 다음과 같습니다.\\n$x^2+4x+3 = (x+1)(x+3)$\\n따라서 구하는 값은 (1) 가로 $x+3$, 세로 $x+1$이고 (2) $x^2+4x+3 = (x+1)(x+3)$이다.",
+      "image": "assets/images/22_신흥중_1학기_기말_중3_기출/q21.png"
     },
     {
       "questionUid": "qid_v1_8e43ba89f38d61404039f6f3f19959df2ac93b331f5e5adb63fe9a87de446a92",
@@ -14001,13 +14045,13 @@
     }
   ],
   "counts": {
-    "recordCount": 285,
-    "solutionPresent": 285,
-    "visualRequired": 11,
+    "recordCount": 286,
+    "solutionPresent": 286,
+    "visualRequired": 12,
     "sharedMaterial": 0,
     "invalidTaxonomyPath": 0,
     "unknownDifficulty": 0
   },
-  "uidSetSha": "31349afe84d217ef377cf0376ea778c3c08849fca73347f71ff1472104f0df5d",
-  "ledgerSha": "90c567dcc220783a92d8445e91b22cf5a7cda9a776a54d47215c3789ae3017b4"
+  "uidSetSha": "8b5a2f7995b7bd8db27133b6c1d98aecb0582ea9872971ff8a3fcb9305a13b22",
+  "ledgerSha": "c64be10eb37a1e69305b63d0931a084341b0ec3a1b9af5bc5a51ef4d43514609"
 }

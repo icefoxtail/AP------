@@ -7,7 +7,7 @@
 - scope: M3-1
 - L1 key: 2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION
 - L1 name: 다항식의 곱셈과 인수분해
-- questionCount: 285
+- questionCount: 286
 - sourceFileCount: 30
 
 ## Taxonomy
@@ -30,7 +30,7 @@
 | 인수분해 > 인수분해 공식 > 합과 차 | 2 |
 | 인수분해 > 인수분해의 활용 > 조건식 | 31 |
 | 인수분해 > 공통인수 > 단계적 인수분해 | 2 |
-| 인수분해 > 인수분해 공식 > 이차식 | 32 |
+| 인수분해 > 인수분해 공식 > 이차식 | 33 |
 | 다항식의 곱셈 > 곱셈공식의 활용 > 도형 활용 | 15 |
 | 다항식의 곱셈 > 곱셈공식 > 두 일차식의 곱 | 27 |
 | 인수분해 > 인수분해의 활용 > 인수분해를 이용한 수의 계산 | 5 |
@@ -45,19 +45,19 @@
 |---:|---:|
 | 1 | 129 |
 | 2 | 60 |
-| 3 | 68 |
+| 3 | 69 |
 | 4 | 26 |
 | 5 | 2 |
 
 | difficultyConfidence | 문항 수 |
 |---|---:|
 | high | 33 |
-| medium | 252 |
+| medium | 253 |
 | low | 0 |
 
 | difficultyBoundaryFlag | 문항 수 |
 |---|---:|
-| NONE | 79 |
+| NONE | 80 |
 | B12 | 112 |
 | B23 | 62 |
 | B34 | 28 |
@@ -82,22 +82,22 @@ bucket을 유지하는 독립 재검/adjudication을 완료했다.
 - boundary recheck: 206
 - low confidence recheck: 0
 - strong conflict recheck/adjudication: 58
-- same-type outlier recheck: 23
-- independent recheck resolved: 257
+- same-type outlier recheck: 24
+- independent recheck resolved: 258
 - independent recheck hold: 0
 
 ## Review
 
-- reviewed_pass: 285
+- reviewed_pass: 286
 - HOLD/manual_review: 0
 - RPM_EXTENDED: 0
 - RPM_EXTENDED_CANDIDATE: 0
-- curriculumApplicability DEFAULT_SCOPE: 285
-- defaultSelectable=true: 285
+- curriculumApplicability DEFAULT_SCOPE: 286
+- defaultSelectable=true: 286
 
 ## Validation
 
-- denominator before == after: PASS (285 == 285)
+- denominator before == after: PASS (286 == 286)
 - UID cardinality / source join: PASS
 - L1/L2/L3/L4 assigned: PASS
 - invalid taxonomy path: 0
@@ -129,12 +129,12 @@ Machine receipts:
 
 ## Changed files
 
-- archive/data/question_metadata.json: 285 target records only
+- archive/data/question_metadata.json: 286 target records only
 - archive/_generated/intelligence/phase3/metadata-foundation-m3/2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION/*
 
 비대상 M3/H1/중1/중2/고1/고2 record mutation: 0.
 
-- metadata apply commit SHA: e3c73dd264b0d304b5d87db1ba66608bbede49a8
+- metadata apply commit SHA: pending until reconciled L1 commit
 - push result: PASS
 - remote: origin/codex/metadata-foundation-m3
 - HEAD == remote after closeout: PASS

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-question-metadata-v1",
   "metadataRevision": "archive-metadata-v1-phase1b-20260825",
-  "generatedAt": "2026-09-16T07:18:11.420Z",
+  "generatedAt": "2026-09-16T07:24:04.822Z",
   "approvalStatus": "APPROVED_PARTIAL_WITH_EXPLICIT_HOLDS",
   "promotionPolicy": {
     "candidateOnlyTagsPromoted": false,
@@ -491,7 +491,7 @@
     "explicitProblemTypeHolds": 11023,
     "explicitTemplateHolds": 11023,
     "explicitDifficultyHolds": 352,
-    "m3FoundationV2AppliedRecords": 746
+    "m3FoundationV2AppliedRecords": 747
   },
   "records": [
     {
@@ -201053,9 +201053,9 @@
       "conceptClusterKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
       "problemTypeKey": "",
       "templateKey": "",
-      "difficultyBucket": "중",
-      "tagConfidence": "rule_inferred",
-      "tagStatus": "approved_subunit_concept_partial",
+      "difficultyBucket": 3,
+      "tagConfidence": "medium",
+      "tagStatus": "approved_semantic_review",
       "metadataStatus": "approved_partial_with_explicit_holds",
       "fieldStatus": {
         "standardUnit": "approved_source",
@@ -201065,10 +201065,85 @@
         "template": "manual_review_pending",
         "difficulty": "approved_source"
       },
-      "metadataRevision": "archive-metadata-v1-phase1b-20260825",
+      "metadataRevision": "metadata-foundation-v2-m3-20260916",
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
-      ]
+      ],
+      "curriculumKey": "2015",
+      "courseKey": "중3 수학",
+      "L1Key": "2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
+      "L1": "다항식의 곱셈과 인수분해",
+      "L2": "인수분해",
+      "L3": "인수분해 공식",
+      "L4": "이차식",
+      "secondaryConceptKeys": [],
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyStandardUnitKey": "M3-04",
+      "legacyStandardUnit": "이차함수와 그래프",
+      "legacySubUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "legacySubUnit": "이차함수의 그래프",
+      "reviewStatus": "reviewed_pass",
+      "firstPassEvidence": {
+        "conceptCount": 1,
+        "conditionInterpretation": "high",
+        "strategyChoice": false,
+        "nonRoutineTransformation": true,
+        "caseBranching": true,
+        "rangeConstraint": false,
+        "integerConstraint": false,
+        "existenceCheck": false,
+        "decisiveInsight": false,
+        "visualRequired": true,
+        "solutionPresent": true,
+        "contentLength": 226,
+        "choicesCount": 0,
+        "structuralScore": 3,
+        "matchedCues": [
+          "인수분해 공식"
+        ],
+        "evidenceSource": "content + choices + solution + validated visual/shared dependency only; legacy metadata omitted"
+      },
+      "independentRecheck": {
+        "questionUid": "qid_v1_7f3077083ec523affe4f9b6c47d7e230db7d6ed6cf23a2f6887f6cceb41a2483",
+        "sourceArchiveFile": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js",
+        "sourceOrdinal": 21,
+        "sourceFingerprint": "49ab779169594f8b59b2607e97f0779451c63133cbe5a88cd25a491ddc6a4c72",
+        "independentMethod": "independent-recheck-rule-pass-v1; reread content/choices/solution/validated dependency without legacy fields",
+        "firstBucket": 3,
+        "recheckBucket": 3,
+        "firstPath": {
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "인수분해",
+          "L3": "인수분해 공식",
+          "L4": "이차식"
+        },
+        "recheckPath": {
+          "L1": "다항식의 곱셈과 인수분해",
+          "L2": "인수분해",
+          "L3": "인수분해 공식",
+          "L4": "이차식"
+        },
+        "firstConfidence": "medium",
+        "recheckConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibilityBefore": "NORMAL",
+        "legacyLevelCompatibilityAfter": "NORMAL",
+        "sameTypeOutlier": true,
+        "status": "RESOLVED",
+        "adjudication": "RECHECK_ACCEPTED",
+        "reason": "independent path/bucket stable"
+      },
+      "reviewEvidence": {
+        "blindFreeze": "first_pass_freeze.json",
+        "legacyCompare": "legacy_compare.json",
+        "independentRecheck": "independent_recheck.json",
+        "representationRole": "visual/context evidence inspected as needed; representation does not determine primary taxonomy"
+      }
     },
     {
       "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
@@ -407403,14 +407478,14 @@
       ]
     }
   ],
-  "digest": "612120ad8345aa29455076b2813b49a8b3e65b802cc947c7ee9dfa78ebb78fd1",
+  "digest": "8b23bdbb2290ff759672c0123f481380a29009fd434d816ecabeb13b5e6c4776",
   "metadataFoundationV2": {
     "revision": "metadata-foundation-v2-m3-20260916",
     "sourceInventory": "archive/_generated/intelligence/phase1/middle3-foundation/M3_FRESH_INVENTORY.json",
     "sourceCommit": "a2b0a4c1ea42d1d1d3800a2238cda63861020ca7",
-    "lastAppliedL1": "2015-M3-03-QUADRATIC_EQUATION",
+    "lastAppliedL1": "2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
     "appliedScope": "M3 only; source JS/content/choices/answer/solution/image/layoutTag/wide unchanged",
-    "appliedRecordCount": 746,
+    "appliedRecordCount": 747,
     "appliedL1History": [
       "2015-M3-01-REAL_NUMBER_OPERATIONS",
       "2015-M3-02-POLYNOMIAL_MULTIPLICATION_FACTORIZATION",
