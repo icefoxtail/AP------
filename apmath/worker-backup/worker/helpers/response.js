@@ -3,7 +3,7 @@ export const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': 'https://icefoxtail.github.io',
   'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token'
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token, X-Archive2-Contract'
 };
 
 export function jsonResponse(data, status = 200) {

@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
+import { runRc2 } from "./archive2-rc2-boundaries.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const worker = path.join(root, "apmath/worker-backup/worker");
@@ -18,16 +19,22 @@ const catalogText = fs.readFileSync(
 );
 const catalog = core.decodeCatalog(JSON.parse(catalogText));
 const serving = process.argv.includes("--serve");
+const fixturePort = Number(process.env.ARCHIVE2_FIXTURE_PORT || 8790);
 const bundle = await build({
   stdin: {
     contents: `import { handleExams } from './routes/exams.js';
 import { handleStudentPortal } from './routes/student-portal.js';
+let splitFault=false;
 export default {async fetch(request, env) {
 const url=new URL(request.url);
 if(!url.pathname.startsWith('/api/'))return env.FIXTURE_ASSETS.fetch(request);
 const role=request.headers.get('X-Fixture-Role') || (request.headers.get('Authorization')==='Bearer fixture-admin'?'admin':null);
 const teacher=role ? {id:role==='admin'?'admin':'teacher-a',role} : null;
+if(url.pathname==='/api/__fixture/split-failure'&&teacher){splitFault=true;return Response.json({success:true});}
+if(url.pathname==='/api/class-exam-assignments/studio'&&splitFault){const body=await request.clone().json();if(body.question_count<50){splitFault=false;return Response.json({success:false,error:'검증용 후속 문제지 충돌: 이 문제지만 수정한 뒤 재시도하세요.'},{status:409});}}
 if(url.pathname==='/api/qr-classes'&&teacher)return Response.json({success:true,classes:(await env.DB.prepare('SELECT * FROM classes').all()).results});
+if(url.pathname==='/api/student-portal/home')return Response.json({success:true,read_only:!!teacher,access_mode:teacher?'teacher_preview':'student',student:await env.DB.prepare('SELECT id,name,grade,school_name FROM students WHERE id=?').bind(url.searchParams.get('student_id')).first(),classes:[],assignments:[],class_exam_assignments:[]});
+if(url.pathname==='/api/student-portal/wrong-clinics')return Response.json({success:true,packets:[]});
 if(url.pathname.startsWith('/api/student-portal/'))return handleStudentPortal(request,env,teacher,url.pathname.split('/').filter(Boolean),url);
 return handleExams(request,env,teacher,url.pathname.split('/').filter(Boolean),url);
 }}`,
@@ -88,6 +95,36 @@ const mf = new Miniflare({
             ".jpg": "image/jpeg",
           }[ext] || "application/octet-stream";
       let content = fs.readFileSync(file);
+      if (ext === ".html")
+        content = Buffer.from(
+          content
+            .toString("utf8")
+            .replaceAll(
+              "https://ap-math-os-v2612.js-pdf.workers.dev/api",
+              new URL(request.url).origin + "/api",
+            )
+            .replace(
+              "<head>",
+              "<head><script>window.APMATH_API_BASE=location.origin+'/api';</script>",
+            ),
+        );
+      if (pathname === "/apmath/student/index.html") {
+        const studentId =
+          new URL(request.url).searchParams.get("fixtureStudent") ||
+          "student-a";
+        const token = crypto
+          .createHash("sha256")
+          .update(studentId + "::student-portal:v1")
+          .digest("hex");
+        content = Buffer.from(
+          content
+            .toString("utf8")
+            .replace(
+              "<head>",
+              `<head><script>localStorage.setItem('APMATH_STUDENT_PORTAL_SESSION',JSON.stringify(${JSON.stringify({ student_id: studentId, student_token: token, name: "검증학생", grade: "고1" })}));</script>`,
+            ),
+        );
+      }
       if (["/archive/workspace.html", "/archive/index.html"].includes(pathname))
         content = Buffer.from(
           content
@@ -106,7 +143,7 @@ const mf = new Miniflare({
       });
     },
   },
-  port: serving ? 8789 : 0,
+  port: serving ? fixturePort : 0,
 });
 try {
   const db = await mf.getD1Database("DB");
@@ -203,6 +240,9 @@ try {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          ...(body.contract_version
+            ? { "X-Archive2-Contract": body.contract_version }
+            : {}),
           ...(role ? { "X-Fixture-Role": role } : {}),
         },
         body: JSON.stringify(body),
@@ -499,20 +539,83 @@ try {
     .run();
   // The primary original-exam path keeps the existing assignment API. Canonical
   // automatic-selection eligibility must not prevent issuing an intact source.
-  const nativeExam = catalog.exams.find(e => e.file.startsWith('original/high/h1/') && e.qCount > 0);
-  const nativeInput = {class_id:'class-a',exam_title:'Native original runtime',exam_date:'2026-09-17',question_count:nativeExam.qCount,archive_file:'exams/'+nativeExam.file,source_type:'archive',pdf_qpp:4};
-  const native = await post('', nativeInput);
-  assert.equal(native.status,502);
+  const nativeExam = catalog.exams.find(
+    (e) => e.file.startsWith("original/high/h1/") && e.qCount > 0,
+  );
+  const nativeInput = {
+    class_id: "class-a",
+    exam_title: "Native original runtime",
+    exam_date: "2026-09-17",
+    question_count: nativeExam.qCount,
+    archive_file: "exams/" + nativeExam.file,
+    source_type: "archive",
+    pdf_qpp: 4,
+  };
+  const native = await post("", nativeInput);
+  assert.equal(native.status, 502);
   assert.ok(native.body.assignment.id);
-  assert.equal(native.body.assignment.question_count,nativeExam.qCount);
-  const nativeExcluded = await post('exclude-students',{...nativeInput,assignment_id:native.body.assignment.id,student_ids:['student-b']});
-  assert.equal(nativeExcluded.status,200);
-  assert.equal(nativeExcluded.body.success,true);
-  const nativeRetry = await post('',nativeInput);
-  assert.equal(nativeRetry.body.assignment.id,native.body.assignment.id);
-  const effectiveNative = (await db.prepare('SELECT r.student_id FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=? AND x.student_id IS NULL').bind(native.body.assignment.id).all()).results;
-  assert.deepEqual(effectiveNative.map(r=>r.student_id),['student-a']);
-  await db.prepare('DELETE FROM class_exam_assignments WHERE id=?').bind(native.body.assignment.id).run();
+  assert.equal(native.body.assignment.question_count, nativeExam.qCount);
+  const nativeExcluded = await post("exclude-students", {
+    ...nativeInput,
+    assignment_id: native.body.assignment.id,
+    student_ids: ["student-b"],
+  });
+  assert.equal(nativeExcluded.status, 200);
+  assert.equal(nativeExcluded.body.success, true);
+  const nativeRetry = await post("", nativeInput);
+  assert.equal(nativeRetry.body.assignment.id, native.body.assignment.id);
+  const effectiveNative = (
+    await db
+      .prepare(
+        "SELECT r.student_id FROM class_exam_assignment_recipients r LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id WHERE r.assignment_id=? AND x.student_id IS NULL",
+      )
+      .bind(native.body.assignment.id)
+      .all()
+  ).results;
+  assert.deepEqual(
+    effectiveNative.map((r) => r.student_id),
+    ["student-a"],
+  );
+  if (process.argv.includes("--audit-rc2")) {
+    const bridgeCount = (
+      await db
+        .prepare(
+          "SELECT COUNT(*) n FROM class_exam_assignment_questions WHERE assignment_id=?",
+        )
+        .bind(native.body.assignment.id)
+        .first()
+    ).n;
+    await db
+      .prepare("INSERT INTO class_students VALUES('class-a','student-c')")
+      .run();
+    await post("", nativeInput);
+    const added = await db
+      .prepare(
+        "SELECT student_id FROM class_exam_assignment_recipients WHERE assignment_id=? AND student_id=?",
+      )
+      .bind(native.body.assignment.id, "student-c")
+      .first();
+    console.log(
+      JSON.stringify({
+        rc1Reproduction: {
+          P1_01: { bridgeCount, missing: bridgeCount === 0 },
+          P1_02: { newStudentAddedOnRetry: !!added },
+          split: "first rememberReceipt calls seal() before subsequent papers",
+        },
+      }),
+    );
+    await db
+      .prepare(
+        "DELETE FROM class_students WHERE class_id='class-a' AND student_id='student-c'",
+      )
+      .run();
+  }
+  await db
+    .prepare("DELETE FROM class_exam_assignments WHERE id=?")
+    .bind(native.body.assignment.id)
+    .run();
+  if (!process.argv.includes("--audit-rc2"))
+    await runRc2({ db, mf, catalog, post, root });
   console.log(
     JSON.stringify({
       status: "PASS",

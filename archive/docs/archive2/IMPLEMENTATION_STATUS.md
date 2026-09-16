@@ -2,7 +2,11 @@
 
 ## 현재 상태
 
-**RC1 — 구현 및 자체 critical runtime 검증 완료. Production rollout 전.**
+**RC2 — 원본 출제·대상 snapshot·split recovery 및 학생 포털 연결 개선. Production rollout 전.**
+
+최신 검증 범위와 실제 사용 결과는 `RC2_REPORT.md`, 설계 근거는
+`ADR-005-RC2-DELIVERY-LIFECYCLE.md`에 기록한다. 아래 RC1 기준 설명은 함께 적용하되
+원본 저장·출력·부분 성공 처리는 ADR 005를 따른다.
 
 - 작업 브랜치: `codex/archive2-longterm-20260916`
 - 기반 main: `994ac4fd60c117e571ec79334e0d90b4f49bfa89`

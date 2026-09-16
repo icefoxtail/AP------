@@ -1213,5 +1213,218 @@ input,
 select {
   min-width: 0;
 }
-.exam .exam-title{display:inline;padding:0;min-height:0;border:0;background:none;font:inherit;font-weight:700;color:var(--ink);text-align:left;cursor:pointer}.exam .exam-title:hover{text-decoration:underline;text-underline-offset:3px}.exam-count>.muted{font-size:10px}.exam{grid-template-columns:190px minmax(0,1fr) 75px 270px}.exam .actions button.primary{color:#fff;background:var(--navy)}.original-issue-dialog{width:min(1160px,calc(100% - 24px));max-width:1160px;padding:18px 18px 12px;max-height:94vh}.original-issue-dialog h2{font-size:17px;margin-bottom:12px}.original-issue-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px;font-size:12px}.original-issue-toolbar label{display:flex;gap:8px;align-items:center}.original-issue-toolbar select{width:68px}.original-issue-toolbar>.muted{font-size:11px}#original-issue-frame{width:100%;height:min(72vh,760px);min-height:530px;border:0}.original-issue-dialog>.dialog-close{margin-top:8px}
-@media(max-width:1100px){.exam{grid-template-columns:175px minmax(0,1fr) 75px}.exam .actions{grid-column:2/4}}@media(max-width:600px){.exam{grid-template-columns:1fr 70px}.exam .actions{grid-column:1/-1}.original-issue-dialog{width:calc(100% - 12px);padding:13px 10px}.original-issue-toolbar>.muted{display:none}#original-issue-frame{height:74vh;min-height:510px}.exam .actions button{min-height:40px}}
+.delivery-progress {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+.delivery-progress h3 {
+  font-size: 14px;
+}
+.assignment-students .recent-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  padding: 12px 0;
+}
+.appbar > .legacy {
+  font-size: 12px;
+  background: none;
+  border: 0;
+  min-height: 32px;
+}
+.original-output {
+  flex-basis: 100%;
+}
+.original-output > summary {
+  font-weight: 650;
+  cursor: pointer;
+  padding: 8px 0;
+}
+.original-output .header-fields {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px 14px;
+  padding: 8px 0;
+}
+.original-issue-toolbar .header-fields label {
+  display: grid;
+  gap: 5px;
+  align-items: start;
+}
+.original-issue-toolbar .header-fields label.check {
+  display: flex;
+  align-items: center;
+}
+.original-issue-toolbar .header-fields select {
+  width: 100%;
+}
+.original-output .header-fields > p {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: 11px;
+}
+.original-issue-dialog {
+  overscroll-behavior: contain;
+}
+.original-issue-dialog > .dialog-close {
+  position: sticky;
+  bottom: 0;
+  background: white;
+}
+.original-issue-dialog #original-receipts:empty {
+  display: none;
+}
+.original-issue-dialog:has(#original-receipts:not(:empty))
+  #original-issue-frame {
+  height: 290px;
+  min-height: 290px;
+}
+.mobile-sheet-close {
+  display: none;
+}
+@media (max-width: 700px) {
+  .inspector.mobile-open {
+    position: fixed;
+    inset: auto 8px 72px;
+    max-height: 72vh;
+    overflow: auto;
+    z-index: 40;
+    box-shadow:
+      0 0 0 100vmax #1d293b44,
+      0 6px 28px #17243633;
+    border-radius: 10px;
+    background: white;
+  }
+  .inspector.mobile-open .mobile-sheet-close {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    margin-left: auto;
+    background: white;
+  }
+  .inspector.mobile-open .panel {
+    margin: 0;
+  }
+  .mobile-actions button {
+    font-size: 12px;
+    padding: 9px 10px;
+  }
+}
+@media (max-width: 600px) {
+  .original-output .header-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+  .original-output .header-fields > label:first-child {
+    grid-column: 1/-1;
+  }
+  .assignment-students .recent-row {
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+  }
+  .assignment-students .recent-row > a {
+    grid-column: 1/-1;
+  }
+  .appbar > .legacy {
+    font-size: 11px;
+  }
+  .original-issue-dialog .header-fields input {
+    min-height: 40px;
+  }
+}
+.exam .exam-title {
+  display: inline;
+  padding: 0;
+  min-height: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+.exam .exam-title:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.exam-count > .muted {
+  font-size: 10px;
+}
+.exam {
+  grid-template-columns: 190px minmax(0, 1fr) 75px 270px;
+}
+.exam .actions button.primary {
+  color: #fff;
+  background: var(--navy);
+}
+.original-issue-dialog {
+  width: min(1160px, calc(100% - 24px));
+  max-width: 1160px;
+  padding: 18px 18px 12px;
+  max-height: 94vh;
+}
+.original-issue-dialog h2 {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+.original-issue-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  font-size: 12px;
+}
+.original-issue-toolbar label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.original-issue-toolbar select {
+  width: 68px;
+}
+.original-issue-toolbar > .muted {
+  font-size: 11px;
+}
+#original-issue-frame {
+  width: 100%;
+  height: min(72vh, 760px);
+  min-height: 530px;
+  border: 0;
+}
+.original-issue-dialog > .dialog-close {
+  margin-top: 8px;
+}
+@media (max-width: 1100px) {
+  .exam {
+    grid-template-columns: 175px minmax(0, 1fr) 75px;
+  }
+  .exam .actions {
+    grid-column: 2/4;
+  }
+}
+@media (max-width: 600px) {
+  .exam {
+    grid-template-columns: 1fr 70px;
+  }
+  .exam .actions {
+    grid-column: 1/-1;
+  }
+  .original-issue-dialog {
+    width: calc(100% - 12px);
+    padding: 13px 10px;
+  }
+  .original-issue-toolbar > .muted {
+    display: none;
+  }
+  #original-issue-frame {
+    height: 74vh;
+    min-height: 510px;
+  }
+  .exam .actions button {
+    min-height: 40px;
+  }
+}

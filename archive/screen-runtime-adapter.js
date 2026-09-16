@@ -39,6 +39,18 @@ function bindArchiveRuntimePrintReadiness() {
 async function initArchiveScreenRuntime() {
     installArchivePreviewWitness();
     const params = new URLSearchParams(window.location.search);
+    const originalKey=params.get('originalSnapshot');
+    if(originalKey){
+        document.documentElement.classList.add('archive2-snapshot-output');
+        try{
+            const payload=JSON.parse(localStorage.getItem('archive2Original_'+originalKey)||'null');
+            if(!payload?.questions?.length||payload.meta?.sourceKind!=='archive2-original')throw new Error('출제된 시험지가 만료되었습니다. 학생 포털이나 최근 출제에서 다시 열어 주세요.');
+            const meta=payload.meta;
+            const outcome=await archiveScreenRuntime.request({type:'SOURCE_CHANGE',foreground:true,payload:{sourceKind:'review-snapshot',frozenSource:true,questionUids:meta.questionUids,sourceArchiveFile:meta.sourceArchiveFile,questionBank:payload.questions,examTitle:meta.identityTitle,examDisplayTitle:meta.printHeaderOptions?.title,printHeaderOptions:meta.printHeaderOptions,mode:params.get('mode')||'exam',qpp:Number(meta.qpp||4),sourceRequestId:originalKey}});
+            if(!outcome.ok)throw new Error(outcome.code);
+        }catch(error){showArchiveDataLoadError(error.message);}
+        return;
+    }
     const launch = params.get('data') ? null : readRecentArchiveEngineLaunch();
     const data = params.get('data') || launch?.data;
     if (!data) {
@@ -114,6 +126,8 @@ function createArchiveScreenRuntime() {
                     examTitle: payload.examTitle || payload.title || '',
                     examDisplayTitle: payload.examDisplayTitle || payload.displayTitle || '',
                     sourceArchiveFile,
+                    frozenSource: payload.frozenSource === true,
+                    questionUids: payload.questionUids,
                 };
                 next.sourceArchiveFile = sourceArchiveFile;
                 next.bridgeEpoch = payload.bridgeEpoch;
@@ -166,7 +180,7 @@ function createArchiveScreenRuntime() {
             if (!snapshot || !Array.isArray(snapshot.questionBank)) throw new Error('INVALID_REVIEW_SNAPSHOT');
             const sourceArchiveFile = String(snapshot.sourceArchiveFile || input.sourceArchiveFile || input.safeDataUrl || '').trim();
             if (!sourceArchiveFile || /(?:^|[\\/])\.\.(?:[\\/]|$)/.test(sourceArchiveFile)) throw new Error('INVALID_REVIEW_SOURCE_IDENTITY');
-            const data = snapshot.questionBank.map((question, index) => window.mergeArchiveQuestionMetadata
+            const data = snapshot.questionBank.map((question, index) => snapshot.frozenSource ? {...question,questionUid:snapshot.questionUids?.[index]||question.questionUid,sourceArchiveFile,sourceOrdinal:index+1} : window.mergeArchiveQuestionMetadata
                 ? window.mergeArchiveQuestionMetadata(question, { sourceArchiveFile, sourceOrdinal: index + 1 })
                 : question);
             const canonical = window.APRenderAuthority.normalizeArchiveQuestions(data, { sourceArchiveFile });
@@ -239,7 +253,9 @@ function createArchiveScreenRuntime() {
         const preview = p.get('preview') === '1';
         const submit = p.get('submitQr') === '1' || (p.get('submitQr') !== '0' && p.get('osqr') === '1');
         const sol = p.get('solQr') === '1';
-        const solution = new URL(url); solution.searchParams.set('mode', 'sol'); solution.searchParams.set('qr', '1');
+        const solution = p.get('portalQr')==='1'?new URL('../apmath/student/index.html',url):new URL(url);
+        if(p.get('portalQr')==='1'){solution.searchParams.set('omr','1');if(p.get('assignmentId'))solution.searchParams.set('assignment_id',p.get('assignmentId'));}
+        else{solution.searchParams.set('mode', 'sol'); solution.searchParams.set('qr', '1');}
         const hasClass = !!p.get('class');
         const target = new URL(hasClass ? '../check/' : '../apmath/student/', url);
         if (!hasClass) target.searchParams.set('omr', '1');

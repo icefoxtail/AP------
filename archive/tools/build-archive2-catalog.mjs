@@ -81,6 +81,7 @@ for (const exam of exams) {
   vm.createContext(scope);
   vm.runInContext(source, scope, { filename: file, timeout: 3000 });
   const bank = scope.window.questions || scope.window.questionBank;
+  exam.identityTitle = scope.window.examTitle || file.split('/').pop().replace(/\.js$/,'');
   if (!Array.isArray(bank)) throw new Error("source bank unavailable: " + file);
   if (bank.length !== Number(exam.qCount))
     throw new Error("catalog/source cardinality mismatch: " + file);
@@ -155,6 +156,7 @@ for (const exam of exams) {
       legacySubUnitKey: question.subUnitKey || "",
       identityStatus,
       sourceFingerprint: fingerprint,
+      rawQuestionHash: hash(JSON.stringify(question)),
       approvedSourceFingerprint: meta?.sourceFingerprint || "",
       sourceStatus:
         validJoin && meta.sourceFingerprint === fingerprint

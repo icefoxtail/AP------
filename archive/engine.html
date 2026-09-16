@@ -50,6 +50,7 @@
     <script src="screen-runtime-adapter.js?v=20260914.1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
+        .archive2-snapshot-output #print-header-editor-wrap,.archive2-snapshot-output #qr-output-wrap{display:none!important}
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
         @page { size: A4; margin: 0; }
         body { margin: 0; font-family: 'Nanum Myeongjo', serif; font-size: 9.5pt; background: #f1f5f9; padding-top: 54px; }
@@ -644,6 +645,7 @@ function appendHeaderFill(metaWrap, label, scoreSuffix = '') {
 
 function buildQrTargetUrl() {
     const url = new URL(window.location.href);
+    if(url.searchParams.get('portalQr')==='1'){const portal=new URL('../apmath/student/index.html',url);portal.searchParams.set('omr','1');if(url.searchParams.has('assignmentId'))portal.searchParams.set('assignment_id',url.searchParams.get('assignmentId'));return portal.href;}
     url.searchParams.set('mode', 'sol');
     url.searchParams.set('qr', '1');
     if (!url.searchParams.has('qpp')) {
@@ -781,8 +783,9 @@ function injectQrToLastExamPage(area, ctx = null) {
 
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-qr';
+    qrWrap.dataset.qrTarget=ctx ? ctx.candidate.qrState.solutionUrl : buildQrTargetUrl();
     qrWrap.innerHTML = `
-        <div class="page-qr-label">${QR_PATCH.label}</div>
+        <div class="page-qr-label">${new URLSearchParams(location.search).get('portalQr')==='1'?'학생 포털':QR_PATCH.label}</div>
         <canvas></canvas>
     `;
 
@@ -1597,6 +1600,10 @@ async function init() {
     if (archiveScreenRuntime) return initArchiveScreenRuntime();
     installArchivePreviewWitness();
     const p = new URLSearchParams(window.location.search);
+    if (p.get('originalSnapshot')) {
+        showArchiveDataLoadError('저장된 시험지를 여는 데 필요한 출력 모듈을 불러오지 못했습니다. 새로고침해 주세요.');
+        return;
+    }
     let dataUrl = p.get('data');
     const recentLaunch = dataUrl ? null : readRecentArchiveEngineLaunch();
     if (!dataUrl && recentLaunch?.data) {

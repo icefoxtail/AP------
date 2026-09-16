@@ -2,6 +2,9 @@
 
 ## RC1 구현 자료
 
+최신 제품 마감 검토는 `RC2_REPORT.md`와 `ADR-005-RC2-DELIVERY-LIFECYCLE.md`를 따른다.
+RC1 자료는 이전 구현과 검증 근거로 보존한다.
+
 - `RC1_REPORT.md`: 구현 범위, 실제 runtime 증거, 데이터 coverage와 운영 전 조건.
 - `OPERATIONS.md`: 로컬 재현, migration/rollout/rollback, read-only reconciliation.
 - `ADR-001-METADATA-WORKSPACE.md`: metadata 소비와 작업공간 경계.

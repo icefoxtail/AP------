@@ -16,7 +16,8 @@ node tests/archive2-worker-runtime.mjs
 node tests/archive2-worker-runtime.mjs --serve
 ```
 
-`--serve`는 8789 포트에서 로컬 fixture UI를 제공한다. 고1 검증반 A/B와 합성 학생만
+`--serve`는 기본 8790 포트에서 로컬 fixture UI를 제공한다. `ARCHIVE2_FIXTURE_PORT`로
+포트를 지정할 수 있다. 고1 검증반 A/B와 합성 학생만
 있으며, production 연결이 없다는 표시가 나온다. fake auth는 이 fixture server에만
 존재한다. 서버를 종료하면 fixture D1 상태는 사라진다.
 
@@ -33,6 +34,10 @@ source JS, identity map, metadata approval을 다시 쓰지 않는다. `--check`
 projection과 현재 입력의 parity를 검사한다.
 
 ## Migration와 rollout
+
+RC2는 추가 schema migration이 없다. 원본 snapshot 검증에 `rawQuestionHash`와
+`identityTitle`이 들어 있는 최신 catalog를 사용한다. `X-Archive2-Contract` 헤더 허용과
+원본/MIXED snapshot을 읽는 engine·Student Portal 변경도 Worker와 함께 배포한다.
 
 1. 별도 감사에서 RC와 배포 source parity를 확인한다.
 2. 현재 D1 schema를 읽어 기존 assignment/recipient/exclusion/blueprint/PDF columns를 확인한다.

@@ -23,7 +23,8 @@ async function sha256hex(value) {
 }
 
 function parseMixedPayload(assignment) {
-  if (!isMixedAssignment(assignment)) return null;
+  if (!isMixedAssignment(assignment) && !assignment?.archive2_write_key) return null;
+  if(!isMixedAssignment(assignment) && !String(assignment?.mixed_payload_json||'').trim())return null;
   const parsed = JSON.parse(String(assignment?.mixed_payload_json || ''));
   if (!parsed || !Array.isArray(parsed.questions) || !parsed.questions.length) {
     throw new Error('MIXED 출제 스냅샷이 없습니다.');
@@ -36,9 +37,10 @@ function parseMixedPayload(assignment) {
 
 async function buildPdfIdentity(assignment) {
   const qpp = normalizePdfQpp(assignment?.pdf_qpp);
-  const mixedPayload = isMixedAssignment(assignment) ? parseMixedPayload(assignment) : null;
+  const mixedPayload = isMixedAssignment(assignment) || assignment?.archive2_write_key ? parseMixedPayload(assignment) : null;
   const canonical = JSON.stringify({
     revision: PDF_RENDER_REVISION,
+    archive2_output_revision: assignment?.archive2_write_key ? 'archive2-rc2-v1' : undefined,
     assignment_id: String(assignment?.id || ''),
     class_id: String(assignment?.class_id || ''),
     exam_title: String(assignment?.exam_title || ''),
@@ -65,8 +67,9 @@ function buildRenderUrl(env, assignment, identity) {
   url.searchParams.set('mode', 'exam');
   url.searchParams.set('qpp', String(identity.qpp));
   url.searchParams.set('fit', 'print');
-  url.searchParams.set('submitQr', assignment.class_id ? '1' : '0');
-  url.searchParams.set('solQr', '0');
+  url.searchParams.set('submitQr', assignment.archive2_write_key ? '0' : assignment.class_id ? '1' : '0');
+  url.searchParams.set('solQr', assignment.archive2_write_key && identity.mixedPayload?.meta?.includeQr ? '1' : '0');
+  if(assignment.archive2_write_key){url.searchParams.set('portalQr','1');url.searchParams.set('assignmentId',assignment.id);}
   url.searchParams.set('assignmentRegistered', '1');
   url.searchParams.set('preRegistered', '1');
   if (assignment.class_id) url.searchParams.set('class', String(assignment.class_id));
@@ -78,6 +81,7 @@ function buildRenderUrl(env, assignment, identity) {
     url.searchParams.set('key', String(assignment.archive_file).slice('MIXED:'.length));
   } else {
     url.searchParams.set('data', String(assignment.archive_file || ''));
+    if(identity.mixedPayload?.meta?.sourceKind==='archive2-original')url.searchParams.set('originalSnapshot','original-'+assignment.id);
     if (assignment.exam_title) url.searchParams.set('title', String(assignment.exam_title));
     if (assignment.subject) url.searchParams.set('subject', String(assignment.subject));
   }
@@ -105,10 +109,11 @@ async function renderAssignmentPdf(env, assignment, identity) {
     });
 
     if (identity.mixedPayload) {
-      const storageKey = String(assignment.archive_file).slice('MIXED:'.length);
+      const storageKey = isMixedAssignment(assignment) ? String(assignment.archive_file).slice('MIXED:'.length) : 'original-'+assignment.id;
       const payloadJson = JSON.stringify(identity.mixedPayload);
       await page.evaluateOnNewDocument((key, rawPayload) => {
         const payload = JSON.parse(rawPayload);
+        if(payload.meta?.sourceKind==='archive2-original'){localStorage.setItem('archive2Original_'+key,rawPayload);return;}
         localStorage.setItem(`mixedQuestions_${key}`, JSON.stringify(payload.questions || []));
         localStorage.setItem(`mixedMeta_${key}`, JSON.stringify(payload.meta || {}));
       }, storageKey, payloadJson);
