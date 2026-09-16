@@ -1,6 +1,6 @@
 # M3 L1 Work Queue — Metadata Foundation v2
 
-- source commit: `878be10eee86dd422f48ce832cd6bdbd97e16c25`
+- source commit: `a2b0a4c1ea42d1d1d3800a2238cda63861020ca7`
 - fresh inventory: `archive/_generated/intelligence/phase1/middle3-foundation/M3_FRESH_INVENTORY.json`
 - exact original denominator: **1646 questions / 69 source files**
 - curriculum resolution: undefined

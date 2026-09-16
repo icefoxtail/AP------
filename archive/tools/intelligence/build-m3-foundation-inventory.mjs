@@ -454,7 +454,7 @@ function main() {
             solution: record.sourceFieldSnapshot.solution,
             disposition: 'FOUNDATION_DEFECT_CANDIDATE',
             status: 'HOLD',
-            reason: 'source question is in the M3 production folder but its current standardUnitKey is outside the locked M3-01..M3-07 taxonomy; content evidence must be adjudicated before any M3 path is assigned'
+            reason: 'content/solution evidence indicates a decisive mathematical concept outside the locked M3-01..M3-07 taxonomy (for example Pythagorean or solid geometry); the source-unit mismatch is only supporting evidence, and visual/diagram/solid representation alone is never an outlier reason'
         }));
     let order = 1;
     for (const curriculum of ['2015', '2022']) {
