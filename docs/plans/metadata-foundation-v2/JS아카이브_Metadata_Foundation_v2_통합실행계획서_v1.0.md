@@ -586,6 +586,7 @@ PRIMARY PATH
 - 복합 개념은 secondaryConceptKeys
 - 키워드만 보고 분류 금지
 - 문제 + solution의 실제 핵심 전략 기준
+- 도형·그래프·표·입체는 representation/context일 수 있으며, 그 존재만으로 primary path를 결정하거나 source-unit outlier/HOLD를 만들지 않음
 
 DIFFICULTY
 difficultyBucket = 1|2|3|4|5
@@ -951,15 +952,20 @@ difficultyBucket
 
 # 14. 확정 Coverage / Rollout 순서
 
-Foundation lock 이후 실제 실행 순서는 다음으로 고정한다. 각 항목은
-서로 합치지 않는 독립 L1 작업이며, 각 L1 PASS 후 바로 closeout·commit·push한다.
+Foundation lock 이후 실제 실행 순서는 다음으로 고정한다. 중간고사 범위인
+geometry metadata를 먼저 처리한다. 각 항목은 서로 합치지 않는 독립 작업
+단위이며, 각 작업 PASS 후 바로 closeout·commit·push한다.
 
 ```text
 FOUNDATION LOCK
-  → 2015 고1 수학(상) — 도형의 방정식
-  → 2022 고1 공통수학2 — 도형의 방정식
-  → 2015 고1 수학(하) — 집합
-  → 2022 고1 공통수학2 — 집합 관련 L1
+  → 2015 고1 수학(상) — H15-SA-10 직선의 방정식
+  → 2015 고1 수학(상) — H15-SA-11 원의 방정식
+  → 2015 고1 수학(상) — H15-SA-12 도형의 이동
+  → 2022 고1 공통수학2 — H22-C2-02 직선의 방정식
+  → 2022 고1 공통수학2 — H22-C2-03 원의 방정식
+  → 2022 고1 공통수학2 — H22-C2-04 도형의 이동
+
+  → 2015/2022 집합은 기존 완료 범위를 유지하고 재작업하지 않음
 
   → 고1 나머지
   → 중3
@@ -968,8 +974,9 @@ FOUNDATION LOCK
   → 고2
 ```
 
-2015와 2022는 하나의 작업으로 합치지 않는다. 완료된 L1은 다시 분류하지
-않고, fresh inventory에서 아직 닫히지 않은 L1만 지정 순서로 처리한다.
+2015와 2022는 하나의 작업으로 합치지 않는다. 완료된 291문항과 완료된
+집합 범위는 다시 분류하지 않고, fresh inventory에서 아직 닫히지 않은
+geometry 작업 단위부터 지정 순서로 처리한다.
 
 변경이 필요하면 foundation defect를 즉석 수정하지 않고 별도
 `FOUNDATION_DEFECT_CANDIDATE`로 기록한다. **L1 단위 실행 규칙은 변경하지
@@ -1149,22 +1156,30 @@ Metadata Contract v2 작성
 → L1_WORK_QUEUE
 
 [4]
-2015 도형의 방정식
+2015 H15-SA-10 직선의 방정식
 → PASS / closeout / commit / push
 
 [5]
-2022 도형의 방정식
+2015 H15-SA-11 원의 방정식
 → PASS / closeout / commit / push
 
 [6]
-2015 집합
+2015 H15-SA-12 도형의 이동
 → PASS / closeout / commit / push
 
 [7]
-2022 집합
+2022 H22-C2-02 직선의 방정식
 → PASS / closeout / commit / push
 
 [8~]
+2022 H22-C2-03 원의 방정식
+→ PASS / closeout / commit / push
+
+[9]
+2022 H22-C2-04 도형의 이동
+→ PASS / closeout / commit / push
+
+[10~]
 고1 나머지 → 중3 → 중2 → 중1 → 고2
 → L1 하나씩 production classification + difficulty migration
 
@@ -1177,17 +1192,20 @@ Metadata Contract v2 작성
 
 # 21. 바로 다음 작업
 
-Foundation 문서 lock 이후 첫 실제 작업은 현재 repo를 fresh scan하여 2015/2022
-고1 denominator를 확정하고 `L1_WORK_QUEUE`를 만드는 것이다. 그 다음부터
-아래 네 L1을 지정 순서로 처리한다.
+Foundation 문서 lock 이후에는 현재 repo를 fresh scan하여 2015/2022 고1
+denominator를 확정하고 `L1_WORK_QUEUE`를 갱신한다. 중간고사 우선순위는
+다음과 같다.
 
-1. 2015 도형의 방정식
-2. 2022 도형의 방정식
-3. 2015 집합
-4. 2022 집합
+1. 2015 `H15-SA-10` 직선의 방정식
+2. 2015 `H15-SA-11` 원의 방정식
+3. 2015 `H15-SA-12` 도형의 이동
+4. 2022 `H22-C2-02` 직선의 방정식
+5. 2022 `H22-C2-03` 원의 방정식
+6. 2022 `H22-C2-04` 도형의 이동
 
-이후에도 `고1 나머지 → 중3 → 중2 → 중1 → 고2` 순서로
-metadata migration을 확장한다.
+2015/2022 집합(`H15-SB-01`, `H22-C2-05`)은 완료 범위를 유지하고
+재작업하지 않는다. 이후에도 `고1 나머지 → 중3 → 중2 → 중1 → 고2`
+순서로 metadata migration을 확장한다.
 
 ---
 

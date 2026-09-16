@@ -1,8 +1,8 @@
 {
   "schemaVersion": "metadata-foundation-v2-independent-recheck-v1",
   "queueId": "H15-POLYNOMIAL",
-  "status": "HOLD",
-  "adjudicationCount": 103,
+  "status": "RECHECK_PASS",
+  "adjudicationCount": 105,
   "records": [
     {
       "questionUid": "qid_v1_0dfda33af0430e79ca3fdb54f4cb45329e1445b80f069bcb33a2015488f80fc6",
@@ -4309,8 +4309,8 @@
       "courseKey": "수학(상)",
       "L1": "다항식",
       "L2": "다항식의 연산",
-      "L3": "다항식의 곱셈",
-      "L4": "곱셈공식",
+      "L3": "다항식의 덧셈과 뺄셈",
+      "L4": "다항식의 덧셈·뺄셈",
       "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
@@ -4346,10 +4346,12 @@
       "currentDifficultyBucket": "UNKNOWN",
       "legacyLevelCompatibility": "NORMAL",
       "legacyCompareStatus": "REVEALED_AFTER_FREEZE",
-      "independentRecheckStatus": "HOLD",
-      "independentRecheckReason": "outlier recheck: source prompt + visual confirm solid geometry outside selected polynomial L1; do not reclassify under a locked polynomial path",
-      "adjudicationStatus": "FOUNDATION_DEFECT_CANDIDATE",
-      "finalDisposition": "HOLD"
+      "independentRecheckStatus": "RESOLVED",
+      "independentRecheckReason": "representation/context is solid prism; decisive strategy is polynomial volume addition/subtraction; representation does not determine primary taxonomy",
+      "adjudicationStatus": "ACCEPTED",
+      "finalDisposition": "ACCEPTED_FOR_METADATA_APPLY",
+      "reason": "representation/context is solid prism; decisive strategy is polynomial volume addition/subtraction",
+      "representationRole": "context_or_representation_not_primary"
     },
     {
       "questionUid": "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
@@ -5157,9 +5159,9 @@
       "curriculumKey": "2015",
       "courseKey": "수학(상)",
       "L1": "다항식",
-      "L2": "다항식의 연산",
-      "L3": "다항식의 덧셈과 뺄셈",
-      "L4": "다항식의 덧셈·뺄셈",
+      "L2": "인수분해",
+      "L3": "인수분해 공식",
+      "L4": "합과 차",
       "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
@@ -5189,10 +5191,12 @@
       "currentDifficultyBucket": "UNKNOWN",
       "legacyLevelCompatibility": "NORMAL",
       "legacyCompareStatus": "REVEALED_AFTER_FREEZE",
-      "independentRecheckStatus": "HOLD",
-      "independentRecheckReason": "outlier recheck: source prompt + visual confirm solid geometry outside selected polynomial L1; do not reclassify under a locked polynomial path",
-      "adjudicationStatus": "FOUNDATION_DEFECT_CANDIDATE",
-      "finalDisposition": "HOLD"
+      "independentRecheckStatus": "RESOLVED",
+      "independentRecheckReason": "solid-pyramid geometry supplies conditions; decisive strategy is a^3+b^3=(a+b)(a^2-ab+b^2); representation does not determine primary taxonomy",
+      "adjudicationStatus": "ACCEPTED",
+      "finalDisposition": "ACCEPTED_FOR_METADATA_APPLY",
+      "reason": "solid-pyramid geometry supplies conditions; decisive strategy is a^3+b^3=(a+b)(a^2-ab+b^2)",
+      "representationRole": "context_or_representation_not_primary"
     },
     {
       "questionUid": "qid_v1_a069a7cf45962ad79c5afbf255d205ea5aa097474a9ef3974895aa481475fc98",
@@ -5240,5 +5244,6 @@
       "finalDisposition": "ACCEPTED_FOR_METADATA_APPLY"
     }
   ],
-  "holdCount": 2
+  "holdCount": 0,
+  "resolvedOutlierCount": 2
 }
