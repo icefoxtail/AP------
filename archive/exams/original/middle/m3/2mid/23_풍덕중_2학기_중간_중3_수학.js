@@ -534,8 +534,8 @@ window.questionBank=[
     "answer": "①",
     "solution": "[키포인트] 현 $AB$에 대한 원주각과 중심각의 관계를 이용해 반지름이 포함된 직각삼각형을 만든다.\\n조건 정리: 세 각의 비가 $3:5:4$이고 합이 $180^\\circ$이므로 $\\angle A=45^\\circ$, $\\angle B=75^\\circ$, $\\angle C=60^\\circ$이다.\\n풀이 방향: 외접원의 중심을 $O$라 하고 현 $AB$에 대한 중심각 $\\angle AOB$를 구한다.\\n정석 풀이: 같은 현 $AB$에 대한 중심각은 원주각의 두 배이므로 $\\angle AOB=2\\angle ACB=120^\\circ$이다. $O$에서 $AB$에 내린 수선의 발을 $M$이라 하면 $AM=BM=3$이고 $\\angle BOM=60^\\circ$이다. 반지름을 $R$이라 하면 $\\sin60^\\circ=\\dfrac{BM}{OB}=\\dfrac3R$이므로 $\\dfrac{\\sqrt3}{2}=\\dfrac3R$, 따라서 $R=2\\sqrt3$이다.\\n따라서 정답은 ①이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q17.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -706,8 +706,8 @@ window.questionBank=[
     "answer": "$15\\pi-9$",
     "solution": "[키포인트] 활꼴의 넓이는 부채꼴의 넓이에서 두 반지름과 현으로 이루어진 삼각형의 넓이를 뺀 값이다.\\n조건 정리: $OB=OC=6$, $\\angle CBO=15^\\circ$이다.\\n풀이 방향: 이등변삼각형 $BOC$의 중심각을 구한 뒤 부채꼴과 삼각형의 넓이를 각각 계산한다.\\n정석 풀이: $OB=OC$이므로 $\\angle CBO=\\angle BCO=15^\\circ$이다. 따라서 $\\angle BOC=180^\\circ-15^\\circ-15^\\circ=150^\\circ$이다. 부채꼴 $BOC$의 넓이는 $\\dfrac{150}{360}\\times\\pi\\times6^2=15\\pi$이다. 점 $B$의 반대쪽 지름의 끝점을 $A$라 하면 $\\angle COA=180^\\circ-\\angle BOC=30^\\circ$이다. 점 $C$에서 지름 $AB$에 내린 높이는 $OC\\sin30^\\circ=6\\times\\dfrac12=3$이다. 따라서 삼각형 $BOC$의 넓이는 $\\dfrac12\\times OB\\times3=\\dfrac12\\times6\\times3=9$이다. 따라서 활꼴의 넓이는 $15\\pi-9$이다.\\n따라서 구하는 넓이는 $15\\pi-9$이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -445,8 +445,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분하고, 길이가 같은 두 현은 중심에서 같은 거리에 있다.\n조건 정리: 위쪽 현은 수선의 발까지의 길이가 $4$이므로 전체 길이가 $8$이고, 아래쪽 현의 길이도 $8$이다. 아래쪽 현과 중심 사이의 거리는 $3$이다.\n풀이 방향: 두 현의 길이가 같음을 확인하여 중심에서 두 현까지의 거리를 비교한다.\n정석 풀이: 중심에서 위쪽 현에 내린 수선은 그 현을 이등분하므로 위쪽 현의 길이는 $4+4=8$이다. 아래쪽 현의 길이도 $8$이므로 두 현의 길이는 같다. 한 원에서 길이가 같은 두 현은 중심으로부터 같은 거리에 있으므로 $x=3$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q14.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -475,8 +475,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 문제의 조건인 “길이가 같은 현”에서 바로 적용되는 현의 성질을 찾는다.\n조건 정리: 같은 원 안에 길이가 서로 같은 현들을 그린다.\n풀이 방향: 길이가 같은 현과 원의 중심 사이의 거리 관계를 나타낸 보기를 고른다.\n정석 풀이: 한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다. 따라서 길이가 같은 현을 계속 그리면 모든 현이 중심에서 일정한 거리를 유지하게 된다. 이 성질을 직접 나타낸 것은 ⑤이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -507,8 +507,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 현의 중점과 원의 중심을 연결하여 반지름을 포함하는 직각삼각형을 만든다.\n조건 정리: 현 $AB$의 길이는 $6+6=12\\,\\mathrm{cm}$이고, 현의 중점 $D$에서 원주까지의 길이 $DC$는 $3\\,\\mathrm{cm}$이다.\n풀이 방향: 반지름을 $r$라 두고 피타고라스 정리로 $r$을 구한다.\n정석 풀이: 원의 중심을 $O$라 하면 $OD\\perp AB$이고 $AD=6$이다. $OC=r$, $DC=3$이므로 $OD=r-3$이다. 직각삼각형 $ODA$에서 $r^2=6^2+(r-3)^2$이다. 전개하면 $r^2=36+r^2-6r+9$이므로 $6r=45$, $r=\\dfrac{15}{2}$이다. 따라서 접시의 둘레는 $2\\pi r=2\\pi\\times\\dfrac{15}{2}=15\\pi\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q16.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -539,8 +539,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 중심에서 두 현까지의 거리가 같으면 두 현의 길이가 같고, 같은 현에 대한 원주각의 크기도 같다.\n조건 정리: 중심 $O$에서 위쪽 현과 오른쪽 현에 내린 수선의 길이가 서로 같다. 원에 내접한 삼각형의 한 각은 $62^\\circ$이다.\n풀이 방향: 같은 길이의 두 현에 마주 보는 두 각을 같다고 두고 삼각형의 내각의 합을 이용한다.\n정석 풀이: 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 위쪽 현과 오른쪽 현의 길이는 같다. 따라서 이 두 현에 마주 보는 원주각도 같아, 아래쪽 꼭짓점의 각도 $x^\\circ$이다. 내접삼각형의 세 각의 합에서 $x+x+62=180$이므로 $2x=118$, $x=59$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q17.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -571,8 +571,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같으므로 각 꼭짓점에서 접점까지의 길이를 같은 문자로 둔다.\n조건 정리: $AB=3$, $AC=6$, $BC=7$이고 $AP=AR$, $BP=BQ$, $CR=CQ=x$이다.\n풀이 방향: 접선의 길이를 이용하여 세 변의 길이를 식으로 나타내고 $x$를 구한다.\n정석 풀이: $AP=AR=a$, $BP=BQ=b$라 두면 $a+b=3$, $a+x=6$, $b+x=7$이다. 뒤의 두 식을 더하고 첫 번째 식을 빼면 $(a+x)+(b+x)-(a+b)=6+7-3$이므로 $2x=10$이다. 따라서 $x=5$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -603,8 +603,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 같은 점에서 그은 접선의 길이를 이용해 $CD$를 나타낸 뒤 피타고라스 정리를 적용한다.\n조건 정리: $AD$와 $DE$는 점 $D$에서 그은 두 접선이므로 $AD=DE$이고, $BC$와 $CE$는 점 $C$에서 그은 두 접선이므로 $BC=CE=5$이다. 또한 $AD\\perp AB$, $BC\\perp AB$이다.\n풀이 방향: $AD=t$로 두고 $CD$를 $t+5$로 나타낸다. 두 수직 접선의 높이 차와 $AB=6$으로 직각삼각형을 만들어 식을 세운다.\n정석 풀이: $AD=t$라 하면 $DE=t$, $CE=5$이므로 $CD=t+5$이다. 점 $D$와 $C$의 가로 방향 거리는 $AB=6$, 세로 방향 높이 차는 $5-t$이다. 따라서 피타고라스 정리에 의해 $CD^2=6^2+(5-t)^2$이다. 즉 $(t+5)^2=36+(5-t)^2$이다. 전개하면 $t^2+10t+25=36+t^2-10t+25$이므로 $20t=36$, $t=\\dfrac{9}{5}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -636,8 +636,8 @@ window.questionBank = [
     "solution": "[키포인트] 두 접선의 길이가 같다는 결론을 얻기 위해 두 직각삼각형의 RHS 합동을 먼저 증명한다.\n조건 정리: 반지름은 접점에서 접선에 수직이므로 $\\angle PAO=\\angle PBO=90^\\circ$이다. $OP$는 공통인 빗변이고 $OA=OB$는 원의 반지름이다.\n풀이 방향: 증명문의 빈칸을 순서대로 채워 합동의 근거와 결론을 구분한다.\n정석 풀이: ①에는 $90^\\circ$, ②에는 공통인 변 $OP$, ③에는 반지름이므로 $OA=OB$, ④에는 $\\triangle PBO$, ⑤에는 RHS가 들어간다. $PA=PB$는 두 삼각형의 합동을 증명한 뒤 얻는 결론이므로 합동의 조건인 ③의 자리에 들어갈 수 없다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q20.png",
     "imageSize": "tall",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -739,8 +739,8 @@ window.questionBank = [
     "answer": "$64\\sqrt{3}\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 접점에서 반지름과 접선은 수직이므로 두 개의 합동인 직각삼각형으로 나누어 넓이를 구한다.\n조건 정리: $OA\\perp PA$, $OB\\perp PB$, $PO=16\\,\\mathrm{cm}$, $\\angle APO=30^\\circ$이다.\n풀이 방향: 직각삼각형 $APO$에서 $OA$와 $AP$를 구하고, 같은 넓이의 두 삼각형을 더한다.\n정석 풀이: $OA=PO\\sin30^\\circ=16\\times\\dfrac{1}{2}=8\\,\\mathrm{cm}$이다. 또한 $AP=PO\\cos30^\\circ=16\\times\\dfrac{\\sqrt{3}}{2}=8\\sqrt{3}\\,\\mathrm{cm}$이다. 한 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB$이고, 반지름은 $OA=OB$이므로 $\\triangle APO$와 $\\triangle BPO$의 넓이는 같다. 따라서 $\\square APBO$의 넓이는 $2\\times\\dfrac{1}{2}\\times8\\times8\\sqrt{3}=64\\sqrt{3}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $64\\sqrt{3}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -765,8 +765,8 @@ window.questionBank = [
     "answer": "$6$",
     "solution": "[키포인트] 같은 점에서 한 원에 그은 두 접선의 길이가 같다는 성질을 점 $P$, $C$, $D$에서 차례로 적용한다.\n조건 정리: $PA=PB=8$, $PC=7$, $CD=3$이고 $x=PD$이다.\n풀이 방향: 먼저 $CA$를 구하고, 점 $C$와 점 $D$에서의 접선 길이 관계를 이용하여 $DB$를 구한다.\n정석 풀이: 점 $P$에서 그은 두 접선의 길이가 같으므로 $PA=PB=8$이다. 따라서 $CA=PA-PC=8-7=1$이다. 점 $C$에서 그은 두 접선의 길이가 같으므로 $CE=CA=1$이다. 그러므로 $DE=CD-CE=3-1=2$이다. 점 $D$에서 그은 두 접선의 길이가 같으므로 $DB=DE=2$이다. 아래쪽 접선에서 $PB=PD+DB$이므로 $x=PD=8-2=6$이다.\n따라서 구하는 값은 $6$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

@@ -441,8 +441,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 중심을 지나는 현 $AB$는 지름이고, 중심에서 현 $CD$에 내린 수선은 현을 이등분한다.\n조건 정리: $AB=AM+MB=10+4=14\\,\\mathrm{cm}$이고 중심 $O$가 $AB$ 위에 있다.\n풀이 방향: 반지름과 $OM$을 구한 뒤 직각삼각형 $OMC$에서 $CM$을 구한다.\n정석 풀이: $AB$는 지름이므로 반지름은 $7\\,\\mathrm{cm}$이다. $AO=7\\,\\mathrm{cm}$이고 $AM=10\\,\\mathrm{cm}$이므로 $OM=3\\,\\mathrm{cm}$이다. $AB\\perp CD$이고 $O$가 $AB$ 위에 있으므로 $M$은 현 $CD$의 중점이다. 따라서 $CM=DM$이다. 직각삼각형 $OMC$에서 $CM=\\sqrt{OC^2-OM^2}=\\sqrt{7^2-3^2}=2\\sqrt{10}$이다. 그러므로 $CD=2CM=4\\sqrt{10}\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q14.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -473,8 +473,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같고, 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: 그림에서 $CD=6\\,\\mathrm{cm}$이고 $\\angle BAO=30^\\circ$이다.\n풀이 방향: $AB=CD$를 이용해 현 $AB$의 반을 구한 뒤, 반지름을 빗변으로 하는 직각삼각형에 $\\cos30^\\circ$를 적용한다.\n정석 풀이: 중심에서 두 현까지의 거리가 같으므로 $AB=CD=6\\,\\mathrm{cm}$이다. $O$에서 $AB$에 내린 수선의 발을 $P$라 하면 $AP=PB=3\\,\\mathrm{cm}$이다. 직각삼각형 $AOP$에서 $\\angle OAP=30^\\circ$이므로 $\\cos30^\\circ=\\dfrac{AP}{AO}=\\dfrac{3}{AO}$이다. 따라서 $\\dfrac{\\sqrt3}{2}=\\dfrac{3}{AO}$이므로 $AO=2\\sqrt3\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q15.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -505,8 +505,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현의 길이는 같다는 성질을 이용한다.\n조건 정리: 현 $AB$와 현 $AC$가 원의 중심에서 같은 거리에 있다.\n풀이 방향: 두 현의 길이가 같음을 이용하여 $\\triangle ABC$를 이등변삼각형으로 보고 두 밑각을 구한다.\n정석 풀이: 원의 중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB=AC$이다. 따라서 $\\triangle ABC$는 꼭지각이 $\\angle A=40^\\circ$인 이등변삼각형이다. 두 밑각의 크기는 같으므로 $x=\\dfrac{180^\\circ-40^\\circ}{2}=70^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q16.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -538,8 +538,8 @@ window.questionBank = [
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이가 같다는 성질과 두 직각삼각형의 합동을 이용한다.\n조건 정리: $PA=PB$, $QB=QC$이고 $OA=OB=OC$이다. 또한 반지름은 접점에서 접선과 수직이다.\n풀이 방향: $\\triangle OAP$와 $\\triangle OBP$, $\\triangle OBQ$와 $\\triangle OCQ$의 합동으로 중심각을 이등분하는 관계를 찾는다.\n정석 풀이: $OA=OB$, $OP$는 공통이고 $\\angle OAP=\\angle OBP=90^\\circ$이므로 두 직각삼각형 $OAP$, $OBP$는 합동이다. 따라서 $\\angle AOP=\\angle BOP$이므로 $(가)=\\angle BOP$이다. 같은 방법으로 $\\triangle OBQ\\cong\\triangle OCQ$이므로 $\\angle BOQ=\\angle COQ$이다. 따라서 $x=\\angle BOP+\\angle BOQ=\\dfrac12\\angle AOB+\\dfrac12\\angle BOC=\\dfrac12(\\angle AOB+\\angle BOC)$이다. $A$, $O$, $C$가 일직선 위에 있으므로 $\\angle AOB+\\angle BOC=180^\\circ$이다. 따라서 $x=90^\\circ$이다. 즉 $(나)=\\dfrac12$, $(다)=90^\\circ$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q17.png",
     "imageSize": "tall",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -570,8 +570,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이가 같다는 성질을 직사각형의 각 꼭짓점에 적용한다.\n조건 정리: $\\triangle DCE$는 $C$에서 직각이고 $DC=12$, $DE=13$이다. 원은 직사각형의 위아래 두 변에 접하므로 지름은 $12$이다.\n풀이 방향: 먼저 $CE$를 구하고, 직사각형의 가로 길이를 $w$라 하여 접선 길이들을 $w$로 나타낸다.\n정석 풀이: 피타고라스 정리에 의하여 $CE=\\sqrt{13^2-12^2}=5\\,\\mathrm{cm}$이다. 원의 반지름은 $6\\,\\mathrm{cm}$이므로 $AF=AG=6$, $BH=BG=6$이다. 직사각형의 가로 길이를 $BC=AD=w$라 하면 $DF=AD-AF=w-6$이다. 점 $D$에서 그은 두 접선의 길이는 같으므로 $DI=DF=w-6$이다. 또한 $BE=BC-CE=w-5$이고 $EH=BE-BH=w-11$이다. 점 $E$에서 그은 두 접선의 길이는 같으므로 $EI=EH=w-11$이다. 따라서 $DE=DI+IE=(w-6)+(w-11)=13$이므로 $2w=30$, $w=15$이다. 그러므로 $BE=w-5=10\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -602,8 +602,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 접점에서 반지름과 접선은 수직이고, 두 접선의 길이는 같다는 성질을 이용한다.\n조건 정리: $OA\\perp PA$, $OB\\perp PB$, $OA=OB=6$, $PA=PB=6\\sqrt3$이다.\n풀이 방향: 직각삼각형 $OAP$에서 $PO$와 각을 구한 뒤, 사각형 $PAOB$의 넓이에서 부채꼴 $OAB$의 넓이를 뺀다.\n정석 풀이: $PO=\\sqrt{OA^2+PA^2}=\\sqrt{6^2+(6\\sqrt3)^2}=12$이다. $\\sin\\angle APO=\\dfrac{OA}{PO}=\\dfrac12$이므로 $\\angle APO=30^\\circ$이다. 두 직각삼각형 $OAP$, $OBP$는 합동이므로 $OP$는 $\\angle APB$를 이등분하고 $\\angle APB=60^\\circ$이다. 따라서 $\\angle AOB=120^\\circ$이다. 사각형 $PAOB$의 넓이는 두 직각삼각형의 넓이의 합이므로 $2\\times\\dfrac12\\times6\\times6\\sqrt3=36\\sqrt3$이다. 부채꼴 $OAB$의 넓이는 $\\dfrac{120}{360}\\times\\pi\\times6^2=12\\pi$이다. 따라서 색칠한 부분의 넓이는 $36\\sqrt3-12\\pi\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q19.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -634,8 +634,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 현이 지나간 부분은 두 동심원 사이의 고리이며, 현의 절반과 두 반지름으로 직각삼각형을 만든다.\n조건 정리: 큰 원의 반지름을 $R$, 작은 원의 반지름을 $r$라 하자. 길이가 $2$인 현은 작은 원에 접하므로 중심에서 현까지의 거리는 $r$이다.\n풀이 방향: 중심에서 현에 수선을 내려 $R^2-r^2$를 구한 뒤 두 원의 넓이의 차를 계산한다.\n정석 풀이: 중심에서 현에 내린 수선은 현을 이등분하므로 현의 절반의 길이는 $1$이다. 따라서 피타고라스 정리에 의하여 $R^2=r^2+1^2$, 즉 $R^2-r^2=1$이다. 현을 한 바퀴 돌릴 때 지나가는 부분은 두 원 사이의 고리이므로 그 넓이는 $\\pi R^2-\\pi r^2=\\pi(R^2-r^2)=\\pi$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q20.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -712,8 +712,8 @@ window.questionBank = [
     "answer": "B",
     "solution": "[키포인트] 한 원의 현의 수직이등분선은 항상 그 원의 중심을 지난다.\n조건 정리: 어느 조각이든 원래 원의 둘레에 해당하는 원호가 남아 있다.\n풀이 방향: 한 조각의 원호 위에서 세 점을 잡아 두 현을 만들고, 두 현의 수직이등분선의 교점을 찾는다.\n정석 풀이: 한 조각의 원호 위에 서로 다른 세 점 $P$, $Q$, $R$을 잡고 두 현 $PQ$, $QR$을 긋는다. 현 $PQ$의 수직이등분선과 현 $QR$의 수직이등분선은 모두 원래 원의 중심을 지나므로, 두 수직이등분선의 교점이 원의 중심이다. 이 교점이 조각의 바깥에 있더라도 작도할 수 있으므로 조각의 크기나 중심이 조각 안에 있는지는 관계가 없다. 따라서 어느 조각을 이용하더라도 중심을 찾을 수 있다고 말한 학생 B가 옳다.\n따라서 옳게 말한 사람은 B이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -738,8 +738,8 @@ window.questionBank = [
     "answer": "$14\\pi\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 중심에서 현에 내린 수선은 현을 이등분하므로 큰 원과 작은 원의 반지름을 직각삼각형에서 구할 수 있다.\n조건 정리: 큰 원의 반지름은 $OA=OB=6\\,\\mathrm{cm}$이고 $OM=2\\,\\mathrm{cm}$이다. 점의 순서는 현 위에서 $A$, $C$, $M$, $D$, $B$이다.\n풀이 방향: 먼저 직각삼각형 $OAM$에서 $AM$을 구하고, $MB=AM$과 $DB$를 이용하여 $MD$를 구한다. 이어서 직각삼각형 $OMD$에서 작은 원의 반지름을 구한다.\n정석 풀이: $AB\\perp OM$이므로 $M$은 큰 원의 현 $AB$의 중점이다. 따라서 $AM=MB$이다. 직각삼각형 $OAM$에서 $AM=\\sqrt{OA^2-OM^2}=\\sqrt{6^2-2^2}=4\\sqrt2\\,\\mathrm{cm}$이다. 그러므로 $MB=4\\sqrt2\\,\\mathrm{cm}$이고 $MD=MB-DB=4\\sqrt2-\\sqrt2=3\\sqrt2\\,\\mathrm{cm}$이다. 작은 원의 반지름은 $OD$이므로 $OD=\\sqrt{OM^2+MD^2}=\\sqrt{2^2+(3\\sqrt2)^2}=\\sqrt{22}\\,\\mathrm{cm}$이다. 따라서 어두운 부분의 넓이는 두 원의 넓이의 차이이므로 $\\pi\\times6^2-\\pi\\times(\\sqrt{22})^2=36\\pi-22\\pi=14\\pi\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $14\\pi\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q24.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

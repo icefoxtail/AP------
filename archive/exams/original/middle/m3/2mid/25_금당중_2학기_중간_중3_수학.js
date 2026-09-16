@@ -440,8 +440,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n조건 정리: 현의 전체 길이는 $12\\,\\mathrm{cm}$이고 중심 $O$에서 현에 수선을 내렸다.\n풀이 방향: 현의 절반이 $x$임을 이용한다.\n정석 풀이: 중심에서 현에 내린 수선은 현을 똑같이 둘로 나누므로 $x=12\\div2=6$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q14.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -472,8 +472,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 중심에서 현에 내린 수선이 현을 이등분한다는 성질과 피타고라스 정리를 이용한다.\n조건 정리: $OM\\perp AB$이므로 $AM=BM=7\\,\\mathrm{cm}$이고, $OC$는 반지름이며 $CM=3\\,\\mathrm{cm}$이다.\n풀이 방향: 반지름을 $r$이라 놓고 직각삼각형 $OMB$에서 식을 세운다.\n정석 풀이: $OA=OB=OC=r$이라 하면 $OM=OC-CM=r-3$이다. 직각삼각형 $OMB$에서 $OB^2=OM^2+BM^2$이므로 $r^2=(r-3)^2+7^2$이다. 전개하면 $r^2=r^2-6r+9+49$이므로 $6r=58$, $r=\\dfrac{29}{3}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q15.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -505,8 +505,8 @@ window.questionBank = [
     "solution": "[키포인트] 중앙 원과 모서리 원의 중심 사이의 거리는 두 반지름의 합인 $4\\,\\mathrm{cm}$이다.\n조건 정리: 모든 원의 반지름은 $2\\,\\mathrm{cm}$이고, 네 모서리 원은 정사각형의 두 변에 각각 접한다.\n풀이 방향: 정사각형 한 변을 $s$라 하고, 중앙 원의 중심과 왼쪽 위 원의 중심을 이은 선분으로 직각삼각형을 만든다.\n정석 풀이: 중앙 원의 중심은 정사각형의 중심에 있고, 왼쪽 위 원의 중심은 왼쪽 변과 위쪽 변에서 각각 $2$만큼 떨어져 있다. 따라서 두 중심의 가로 차와 세로 차는 각각 $\\dfrac{s}{2}-2$이다. 두 원은 서로 접하므로 중심 사이의 거리는 $4$이다. 피타고라스 정리에 의해 $\\left(\\dfrac{s}{2}-2\\right)^2+\\left(\\dfrac{s}{2}-2\\right)^2=4^2$이다. 따라서 $2\\left(\\dfrac{s}{2}-2\\right)^2=16$이고, $\\dfrac{s}{2}-2=2\\sqrt2$이다. 그러므로 $s=4+4\\sqrt2$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q16.png",
     "imageSize": "full",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -537,8 +537,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n조건 정리: $PA=6\\,\\mathrm{cm}$이고 $PA$, $PB$는 점 $P$에서 그은 두 접선이다.\n풀이 방향: $PB$를 구한 뒤 두 변과 그 끼인각으로 삼각형의 넓이를 구한다.\n정석 풀이: 한 점에서 원에 그은 두 접선의 길이는 같으므로 $PB=PA=6$이다. 따라서 $\\triangle APB$의 넓이는 $\\dfrac{1}{2}\\times PA\\times PB\\times\\sin60^\\circ=\\dfrac{1}{2}\\times6\\times6\\times\\dfrac{\\sqrt3}{2}=9\\sqrt3$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q17.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -569,8 +569,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 같은 점에서 원에 그은 접선의 길이가 같다는 성질로 직각삼각형의 세 변과 내접원의 반지름을 구한다.\n조건 정리: $BE=BD=8$, $CE=CF=12$이고 $BC=20$이다.\n풀이 방향: $AD=AF=t$로 놓아 직각삼각형의 변을 나타내고, 피타고라스 정리로 $t$를 구한다.\n정석 풀이: 접선의 성질에 의해 $AB=AD+DB=t+8$, $AC=AF+FC=t+12$이다. $\\angle A=90^\\circ$이고 $BC=20$이므로 $(t+8)^2+(t+12)^2=20^2$이다. 전개하면 $2t^2+40t+208=400$, 즉 $t^2+20t-96=0$이다. $(t-4)(t+24)=0$이고 길이는 양수이므로 $t=4$이다. 따라서 $AB=12$, $AC=16$이다. 삼각형의 넓이는 $\\dfrac{1}{2}\\times12\\times16=96$이고, 반둘레는 $\\dfrac{12+16+20}{2}=24$이다. 내접원의 반지름을 $r$이라 하면 넓이 $=r\\times$반둘레이므로 $96=24r$, $r=4$이다. $OE\\perp BC$이므로 $\\triangle OBE$와 $\\triangle OCE$는 직각삼각형이다. 따라서 $OB=\\sqrt{8^2+4^2}=4\\sqrt5$, $OC=\\sqrt{12^2+4^2}=4\\sqrt{10}$이다. 그러므로 둘레는 $OB+OC+BC=4\\sqrt5+4\\sqrt{10}+20$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -601,8 +601,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 접점에서 반지름과 접선은 서로 수직이다.\n조건 정리: $OA=4\\,\\mathrm{cm}$, $OP=6\\,\\mathrm{cm}$이고 $OA\\perp PA$이다.\n풀이 방향: 직각삼각형 $OAP$에서 피타고라스 정리를 이용한다.\n정석 풀이: $PA^2=OP^2-OA^2=6^2-4^2=36-16=20$이다. 길이는 양수이므로 $PA=\\sqrt{20}=2\\sqrt5$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q19.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -633,8 +633,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 어두운 부분을 두 직각삼각형과 하나의 부채꼴로 나누어 계산한다.\n조건 정리: 반지름은 $6$, $ON=OM=3$이고 $ON\\perp CD$, $OM\\perp AB$이다.\n풀이 방향: 현의 절반 길이와 중심각 $\\angle DOB$를 구한 뒤 각 부분의 넓이를 더한다.\n정석 풀이: 직각삼각형 $OND$에서 $ND=\\sqrt{OD^2-ON^2}=\\sqrt{36-9}=3\\sqrt3$이다. 같은 방법으로 $MB=3\\sqrt3$이다. 또 $\\cos\\angle NOD=\\dfrac{ON}{OD}=\\dfrac{1}{2}$이므로 $\\angle NOD=60^\\circ$이고, $\\angle MOB=60^\\circ$이다. 따라서 $\\angle DOB=150^\\circ-60^\\circ-60^\\circ=30^\\circ$이다. 두 직각삼각형 $OND$, $OMB$의 넓이의 합은 $2\\times\\dfrac{1}{2}\\times3\\times3\\sqrt3=9\\sqrt3$이다. 중심각이 $30^\\circ$인 부채꼴 $DOB$의 넓이는 $\\dfrac{30}{360}\\times\\pi\\times6^2=3\\pi$이다. 그러므로 어두운 부분의 넓이는 $9\\sqrt3+3\\pi$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q20.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -737,8 +737,8 @@ window.questionBank = [
     "answer": "$\\overline{AB}=\\overline{CD}$",
     "solution": "[키포인트] 두 직각삼각형의 빗변과 한 변이 각각 같음을 보인 뒤, 중심에서 현에 내린 수선의 성질을 이용한다.\n조건 정리: $OA=OC$는 같은 원의 반지름이고, $OM=ON$이며 $OM\\perp AB$, $ON\\perp CD$이다.\n풀이 방향: (1) 두 직각삼각형의 합동을 보이고, (2) 합동에서 얻은 선분의 길이와 현의 이등분 성질을 연결한다.\n정석 풀이: (1) $OA=OC$이고 $OM=ON$이다. 또한 $\\angle OMA=\\angle ONC=90^\\circ$이므로 $\\triangle OAM$과 $\\triangle OCN$은 빗변과 한 변이 각각 같은 두 직각삼각형이다. 따라서 $\\triangle OAM\\equiv\\triangle OCN$이다. (2) 합동인 두 삼각형의 대응변이므로 $AM=CN$이다. 원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=MB$, $CN=ND$이다. 따라서 $AB=2AM$, $CD=2CN$이고 $AM=CN$이므로 $AB=CD$이다.\n따라서 $\\overline{AB}=\\overline{CD}$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q24.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

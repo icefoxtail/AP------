@@ -107,8 +107,8 @@ const MIDDLE_DEFINITIONS = {
     ['M3-05-TRIG_RATIO_APPLICATION', '삼각비의 활용', ['삼각비의 활용', '그림자', '높이', '거리', '경사', '앙각', '부각', '측량']]
   ],
   'M3-06': [
-    ['M3-06-CIRCLE_ANGLE', '원과 각', ['원주각', '중심각', '현', '접선', '각']],
-    ['M3-06-CIRCLE_PROPERTIES', '원의 성질', ['원의 성질', '접선', '접점', '현의 수직이등분선', '원주']]
+    ['M3-06-CIRCLE_LINE', '원과 직선', ['원과 직선', '현', '접선', '접점', '현의 수직이등분선', '중심에서 현까지의 거리']],
+    ['M3-06-CIRCLE_INSCRIBED_ANGLE', '원주각', ['원주각', '중심각', '호', '내접사각형', '공원성', '할선', '접선과 현']]
   ],
   'M3-07': [
     ['M3-07-STATISTICS_REPRESENTATIVE', '대푯값과 산포도', ['평균', '중앙값', '최빈값', '분산', '표준편차', '대푯값', '산포도']],
@@ -375,7 +375,10 @@ function focusedSubUnitKey(standardUnitKey, question) {
   if (standardUnitKey === 'M3-03') return has('활용', '넓이', '수량', '연속정수', '속력', '변수설정') ? pick('QUADRATIC_EQUATION_WORD') : pick('QUADRATIC_EQUATION');
   if (standardUnitKey === 'M3-04') return has('활용', '최댓값', '최솟값', '울타리', '수익', '실생활') ? pick('QUADRATIC_FUNCTION_APPLICATION') : pick('QUADRATIC_FUNCTION_GRAPH');
   if (standardUnitKey === 'M3-05') return has('활용', '그림자', '높이', '거리', '경사', '앙각', '부각', '측량') ? pick('TRIG_RATIO_APPLICATION') : pick('TRIG_RATIO');
-  if (standardUnitKey === 'M3-06') return has('원주각', '중심각', '현', '각') ? pick('CIRCLE_ANGLE') : pick('CIRCLE_PROPERTIES');
+  if (standardUnitKey === 'M3-06') {
+    if (has('원주각', '호', '내접사각형', '공원성', '할선', '접선과 현', '접현각', '같은 호')) return pick('CIRCLE_INSCRIBED_ANGLE');
+    return pick('CIRCLE_LINE');
+  }
   if (standardUnitKey === 'M3-07') return has('도수분포표', '히스토그램', '상대도수', '자료해석', '그래프') ? pick('STATISTICS_DATA_INTERPRETATION') : pick('STATISTICS_REPRESENTATIVE');
   if (standardUnitKey === 'H15-SA-01') return has('나눗셈', '몫', '나머지') ? pick('POLYNOMIAL_DIVISION') : pick('POLYNOMIAL_BASIC');
   if (standardUnitKey === 'H15-SA-02') return has('나머지정리', '인수정리', '나머지') ? pick('REMAINDER_FACTOR') : pick('IDENTITY');
