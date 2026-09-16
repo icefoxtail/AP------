@@ -2,7 +2,7 @@
 
 작성일: 2026-09-16  
 대상: 코드검사실 / JS아카이브  
-상태: 실행계획 후보  
+상태: FOUNDATION LOCK 이후 실행계획 확정
 기본 실행 모델: Luna xhigh  
 기본 작업 단위: **L1 대단원 1개**  
 목표: **RPM Primary L1~L4 정본 + difficultyBucket 1~5를 하나의 문항 메타데이터 파이프라인으로 통합하고, Archive 2.0이 처음부터 이 계약을 사용하도록 기반을 봉인한다.**
@@ -32,9 +32,11 @@
 
 ## 1.1 Taxonomy 기준
 
-현재 정본 후보:
+현재 taxonomy 정본:
 
-`JS_ARCHIVE_TAXONOMY_CANONICAL_RPM_PRIMARY_v0.3_AUDIT_INTEGRATED`
+`docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`
+
+상태: `TAXONOMY_AUTHORITY = LOCKED`
 
 검증된 현재 규모:
 
@@ -54,7 +56,7 @@
 - 26개 Markdown ↔ master: PASS
 - 2015 M3-2 원의 성질 Pilot ↔ master: PASS
 - `RPM_EXTENDED_CANDIDATE` 기본 출력 제외: PASS
-- production migration: 아직 금지
+- production migration: taxonomy lock만으로는 시작하지 않으며, Metadata Contract v2와 실제 L1 gate 이후 별도 branch에서 시작
 
 ## 1.2 Taxonomy 계층
 
@@ -370,14 +372,11 @@ metadataRevision
 
 ### 작업
 
-1. Taxonomy v0.3 최종 acceptance gate
-2. 구체적 재현 결함이 없으면:
-   - `RPM Primary Taxonomy v1.0 LOCKED`
-3. 신규 문서 작성:
-   - `JS아카이브_difficultyBucket_5단계_운영규칙_v1.0.md`
-4. Metadata Contract v2 확정
-5. 기존 관련 문서와 일점이위 정합성 확인
-6. migration field 정책 확정
+1. Taxonomy v0.3 bounded acceptance 및 `RPM Primary Taxonomy v1.0 LOCKED`
+2. LOCKED difficulty authority 확인
+3. 실제 repo code를 읽고 Metadata Contract v2 확정
+4. 기존 관련 문서와 field/precedence 정합성 확인
+5. migration bridge와 production branch 정책 확정
 
 ### difficulty 운영규칙에서 반드시 봉인할 것
 
@@ -950,29 +949,33 @@ difficultyBucket
 
 ---
 
-# 14. 전체 Coverage Wave
+# 14. 확정 Coverage / Rollout 순서
 
-Calibration 이후 L1 단위로 계속 진행한다.
+Foundation lock 이후 실제 실행 순서는 다음으로 고정한다. 각 항목은
+서로 합치지 않는 독립 L1 작업이며, 각 L1 PASS 후 바로 closeout·commit·push한다.
 
-우선순위는 Phase 1 inventory에서 실제 사용량/문항량을 보고 확정한다.
+```text
+FOUNDATION LOCK
+  → 2015 고1 수학(상) — 도형의 방정식
+  → 2022 고1 공통수학2 — 도형의 방정식
+  → 2015 고1 수학(하) — 집합
+  → 2022 고1 공통수학2 — 집합 관련 L1
 
-기본 권장:
+  → 위 네 L1의 정제된 실제 metadata를 기준으로 Archive 2.0 본업그레이드
 
-### Wave A
-고1 / 고2에서 Archive 2.0 Finder·Studio 사용도가 높은 영역
+  → 고1 나머지
+  → 중3
+  → 중2
+  → 중1
+  → 고2
+```
 
-### Wave B
-나머지 고등
+2015와 2022는 하나의 작업으로 합치지 않는다. 고1 도형의 방정식과 집합
+네 L1이 모두 PASS하기 전에는 Archive 2.0 구현을 선행하지 않는다.
 
-### Wave C
-중등
-
-### Wave D
-단원평가 / 특수 source / 기타 분류 hold
-
-단, 이 순서는 inventory 결과에 따라 바꿀 수 있다.
-
-변경하더라도 **L1 단위 실행 규칙은 변경하지 않는다.**
+변경이 필요하면 foundation defect를 즉석 수정하지 않고 별도
+`FOUNDATION_DEFECT_CANDIDATE`로 기록한다. **L1 단위 실행 규칙은 변경하지
+않는다.**
 
 ---
 
@@ -980,16 +983,21 @@ Calibration 이후 L1 단위로 계속 진행한다.
 
 Archive 2.0 본구현을 전체 100% 분류 완료까지 무조건 막지는 않는다.
 
-다음이 충족되면 Finder / Selector / Studio 쪽은 Metadata Contract v2를 기준으로 재개할 수 있다.
+다음이 모두 충족되면 Archive 2.0 본업그레이드를 시작할 수 있다.
 
 ```text
 Taxonomy Authority LOCKED
 Difficulty Authority LOCKED
 Metadata Contract LOCKED
-Calibration Wave PASS
-production metadata reader contract 확정
-UNKNOWN/HOLD 처리 계약 확정
+2015 고1 도형의 방정식 실데이터 PASS
+2022 고1 도형의 방정식 실데이터 PASS
+2015 고1 집합 실데이터 PASS
+2022 고1 집합 실데이터 PASS
 ```
+
+전체 archive 전수 migration 완료는 Archive 2.0 시작의 선행조건이 아니다.
+Archive 2.0은 위 네 L1의 정제된 실제 metadata와 LOCKED contract를 기준으로
+구현하고, 이후 coverage를 확장한다.
 
 아직 분류되지 않은 문항은 안전하게:
 
@@ -1139,26 +1147,34 @@ Metadata Contract v2 작성
 → LOCKED
 
 [3]
-fresh production inventory
+고1 fresh production inventory
+→ 2015/2022 분리
 → exact denominator
 → L1_WORK_QUEUE
 
 [4]
-Calibration L1 #1
+2015 도형의 방정식
+→ PASS / closeout / commit / push
 
 [5]
-Calibration L1 #2
+2022 도형의 방정식
+→ PASS / closeout / commit / push
 
 [6]
-Calibration L1 #3
-→ rubric freeze
+2015 집합
+→ PASS / closeout / commit / push
 
-[7~]
-L1 하나씩 production classification + difficulty migration
+[7]
+2022 집합
+→ PASS / closeout / commit / push
 
-[병행 가능 시점]
-Archive 2.0은 Foundation Schema + Calibration PASS 후
-새 contract를 기준으로 본구현 재개
+[8]
+Archive 2.0 본업그레이드
+→ 위 네 L1 실데이터 + 새 contract 기준
+
+[9~]
+고1 나머지 → 중3 → 중2 → 중1 → 고2
+→ L1 하나씩 production classification + difficulty migration
 
 [마지막]
 전체 metadata coverage audit
@@ -1170,21 +1186,17 @@ Archive 2.0은 Foundation Schema + Calibration PASS 후
 
 # 21. 바로 다음 작업
 
-이 계획서 승인 후 첫 실행은 **문항 분류가 아니다.**
+Foundation 문서 lock 이후 첫 실제 작업은 현재 repo를 fresh scan하여 2015/2022
+고1 denominator를 확정하고 `L1_WORK_QUEUE`를 만드는 것이다. 그 다음부터
+아래 네 L1을 지정 순서로 처리한다.
 
-다음 순서로 시작한다.
+1. 2015 도형의 방정식
+2. 2022 도형의 방정식
+3. 2015 집합
+4. 2022 집합
 
-### Task 1
-`JS아카이브_difficultyBucket_5단계_운영규칙_v1.0.md` 작성
-
-### Task 2
-Taxonomy v0.3 + 난이도 규칙을 기준으로  
-`Metadata Contract v2` 작성
-
-### Task 3
-현재 repo production fresh inventory 및 L1_WORK_QUEUE 생성
-
-그 다음부터 Luna xhigh에 **L1 대단원 하나씩** 맡긴다.
+그 다음 Archive 2.0 본업그레이드를 시작하고, 이후
+`고1 나머지 → 중3 → 중2 → 중1 → 고2` 순서로 확장한다.
 
 ---
 
