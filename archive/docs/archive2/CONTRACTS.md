@@ -7,6 +7,25 @@
 >
 > v1.1 기준 실제 Worker/Archive 코드를 감사했다. 현재 canonical UID는 `qid_v1 = SHA256(normalizedSourceFile + "#" + sourceOrdinal)` 계열로 확인되었으며, assignment/recipient/exclusion/mixed payload/PDF/OMR은 이미 운영 구조가 존재한다. 이 문서는 그 구조를 재사용하고, 없는 부분만 additive하게 정의한다.
 
+## Metadata Foundation v2 Authority boundary
+
+이 문서는 Archive 2.0 제품·assignment·history contract를 정의하지만 문항
+metadata의 의미를 새로 만들지 않는다.
+
+- 문항 primary path `curriculumKey + courseKey + L1 + L2 + L3 + L4`:
+  `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`
+- difficulty 4-field:
+  `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`
+- metadata 저장·source fingerprint·builder/runtime parity:
+  `docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md`
+
+`standardUnitKey`/`subUnitKey`/`conceptClusterKey`/`problemTypeKey`/
+`templateKey`는 legacy bridge/evidence이며 L1/L2와 기계적으로 같지 않다.
+`level`은 historical compatibility다. Archive 2.0은 numeric
+`difficultyBucket`과 `difficultyConfidence`, `difficultyBoundaryFlag`,
+`legacyLevelCompatibility`를 native하게 소비하고,
+`difficultyBucket=UNKNOWN`과 `reviewStatus=HOLD`를 분리한다.
+
 ---
 
 # 0. Contract Priority
@@ -191,15 +210,19 @@ questionUid
 sourceFile
 sourceOrdinal
 sourceQuestionNo
-standardCourse
-standardUnitKey
-subUnitKey
-conceptClusterKey
-problemTypeKey
-templateKey
-difficultyBucket
+canonical metadata reference:
+  curriculumKey + courseKey + L1 + L2 + L3 + L4
+legacy bridge:
+  standardCourse / standardUnitKey / subUnitKey / conceptClusterKey /
+  problemTypeKey / templateKey
+difficulty reference:
+  difficultyBucket / difficultyConfidence / difficultyBoundaryFlag /
+  legacyLevelCompatibility
 tags[]
 ```
+
+전체 field requiredness, precedence, UNKNOWN/HOLD, write/read 및 runtime
+parity는 Metadata Contract v2를 복제하지 않고 그 문서를 참조한다.
 
 Release 1 additive 후보:
 
@@ -1000,6 +1023,10 @@ badge:
 ## Studio strict
 
 UNKNOWN은 기본 자동선택 제외.
+
+문항 taxonomy UNKNOWN과 `difficultyBucket=UNKNOWN`은 coverage 부족을
+표시하는 정상 상태다. legacy `level`을 numeric bucket으로 자동 추정하지
+않으며, 보류 문항은 `reviewStatus=HOLD`로 별도 표시한다.
 
 명시적 `[미분류 포함]` 사용 시 WARN.
 

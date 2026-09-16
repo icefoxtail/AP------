@@ -9,6 +9,21 @@
 
 > **v1.2 핵심 수정:** 학생 history는 별도 student×question exposure ledger를 새로 만드는 방식이 아니라, 기존 `class_exam_assignment_recipients - exclusions`와 신규 `class_exam_assignment_questions`를 JOIN해 계산한다. `mixed_payload_json`은 기존 content snapshot으로 승격하고, qid_v1 안정성 감사와 legacy history coverage를 P0로 올린다.
 
+## Metadata Foundation v2 소비 경계
+
+Studio는 제품 workflow와 UI/UX를 자유롭게 설계하되, 문항 데이터 의미는
+canonical 문서를 소비한다. 문항 primary filter는
+`curriculumKey + courseKey + L1 + L2 + L3 + L4`를 사용하고,
+`standardUnitKey`/`subUnitKey`를 L1/L2로 직접 치환하지 않는다. 난이도
+selector와 assignment snapshot은 `difficultyBucket` 1~5,
+`difficultyConfidence`, `difficultyBoundaryFlag`,
+`legacyLevelCompatibility`를 native하게 보존한다. 기존 `level=하|중|상`은
+historical display/compatibility이고, `difficultyBucket=UNKNOWN`은 숨기지
+않는 coverage 부족 상태다. 보류는 `reviewStatus=HOLD`로 분리한다.
+
+세부 의미는 RPM Primary Taxonomy v1.0, difficulty v1.3, Metadata Contract
+v2를 참조하며 이 Studio 계획서에서 field dictionary를 재정의하지 않는다.
+
 ---
 
 # 0. 이번 작업의 성격
@@ -1213,11 +1228,11 @@ UI 코드가 직접 후보를 이리저리 필터해서 quota를 맞추지 않�
 
 ```text
 [
-  { unitKey: 'H22-C2-01', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-02', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-03', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-04', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-05', difficultyBucket: '중', count: 10 }
+  { unitKey: 'H22-C2-01', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-02', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-03', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-04', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-05', difficultyBuckets: [2, 3], count: 10 }
 ]
 ```
 
@@ -1814,7 +1829,8 @@ Preview에서 본 문항과 실제 mixed output/학생 출제 문항이 동일.
 
 ## O. 난이도 metadata 변경 내성
 
-과거 출제 당시 `중`, 현재 metadata가 `상`으로 바뀐 같은 questionUid를 fixture로 둔다.
+과거 출제 당시 legacy `level=중`, 현재 metadata가
+`difficultyBucket=4`로 기록된 같은 questionUid를 fixture로 둔다.
 
 검증:
 

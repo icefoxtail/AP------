@@ -3,6 +3,22 @@
 이 파일은 Phase 0 문서 봉인 시점의 초기 상태 기록이다. 계획 문서의 목표를
 구현 완료로 계산하지 않으며, 실제 근거는 `BASELINE.md`를 따른다.
 
+## Metadata Foundation v2 Authority Sync
+
+현재 branch는 Metadata Foundation v2를 main에 통합한 상태를 기준으로 한다.
+Archive 2.0 문서는 제품 목표·계약·browse taxonomy·Studio workflow를
+제공하고, 문항 의미와 저장 의미는 다음 canonical authority를 소비한다.
+
+- RPM Primary Taxonomy v1.0: `curriculumKey + courseKey + L1 + L2 + L3 + L4`
+- difficulty v1.3: `difficultyBucket` 및 4-field compatibility contract
+- Metadata Contract v2: source identity/fingerprint, field precedence,
+  builder/runtime parity, UNKNOWN/HOLD 및 adoption gate
+
+따라서 이 파일의 historical Phase 0 수치나 기존 `standardUnitKey`/`level`
+표현은 위 정본을 재정의하지 않는다. `UNKNOWN`은 정상 coverage 상태이며,
+보류는 `reviewStatus=HOLD`로 별도 취급한다. 제품 IA, Finder/Studio 구조와
+interaction은 이 data-language 경계를 지키는 범위에서 계속 재설계할 수 있다.
+
 ## Audit Base HEAD
 
 `91b8657e41098b5ab41c2bef1dbfb7ee1b292825`

@@ -5,6 +5,24 @@ baseline을 한 묶음으로 관리하는 정본 저장소다. 이 문서 묶음
 기능을 이미 구현했다는 선언이 아니라, 기존 APMS/Archive 시스템을 어디까지
 재사용하고 무엇을 새로 만들지 고정하는 문서다.
 
+## Metadata Foundation v2 Authority 경계
+
+Archive 2.0 문서가 소비하는 문항 데이터의 HARD Authority는 아래 canonical
+문서에 위임한다.
+
+| 데이터 의미 | HARD Authority |
+|---|---|
+| 문항 `curriculumKey + courseKey + L1 + L2 + L3 + L4` primary path | `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/` |
+| `difficultyBucket` 1~5, confidence, boundary, legacy compatibility | `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md` |
+| metadata field, source identity/fingerprint, write/read/runtime parity | `docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md` |
+
+`standardUnitKey`, `subUnitKey`, `conceptClusterKey`, `problemTypeKey`,
+`templateKey`, `level`은 기존 source/runtime의 legacy bridge 또는 historical
+compatibility 값으로 보존한다. 이 field의 깊이를 새 L1/L2로 기계적으로
+치환하지 않는다. 미분류 문항은 `taxonomyStatus=UNKNOWN`과
+`difficultyBucket=UNKNOWN`으로 보존하고, 추가 근거가 필요한 경우
+`reviewStatus=HOLD`로 표시한다.
+
 ## 정확한 읽기 순서
 
 README는 이 순서를 안내하는 인덱스이며, 본문 정본은 아래 순서로 읽는다.
@@ -29,7 +47,10 @@ D1·배포 Worker·브라우저 동작의 차이를 확인하고, `IMPLEMENTATIO
 |---|---|---|
 | 제품 목표, Release 범위, Phase 의존성 | `MASTERPLAN.md` | 상위 제품 방향과 우선순위 |
 | Identity / Selection / Assignment / History / Review 계약 | `CONTRACTS.md` | 필드명·UID·API·parity를 포함하는 공통 계약 |
-| grade, curriculum, course family, unit crosswalk, 검색 분류 | `TAXONOMY.md` | 분류·탐색의 정본 |
+| grade, curriculum, course family, unit crosswalk, Finder browse/search semantics | `TAXONOMY.md` | 제품 탐색 taxonomy의 정본 |
+| 문항 L1~L4 primary taxonomy | `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/` | 문항 의미의 HARD Authority |
+| canonical difficulty 4-field | `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md` | 난이도 의미의 HARD Authority |
+| metadata storage/runtime contract | `docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md` | 저장·검증·runtime parity Authority |
 | Studio 상태, 선택·교체·출력 UX, 시리즈 흐름 | `STUDIO_PLAN.md` | 교사용 제작 경험의 정본 |
 | 실제 존재·부분 연결·부재·배포/데이터 증거 | `BASELINE.md` | 감사 시점의 사실 기록. 계획 문구를 실제 구현으로 승격하지 않음 |
 | Phase 0 결과와 다음 진입 조건 | `IMPLEMENTATION_STATUS.md` | 상태 기록. 계약 자체를 재정의하지 않음 |
@@ -40,7 +61,7 @@ D1·배포 Worker·브라우저 동작의 차이를 확인하고, `IMPLEMENTATIO
 |---|---|
 | archive exam/source catalog | `archive/db.js`, `archive/question-index.js`, 원본 `archive/exams/**/*.js` |
 | canonical question identity | `archive/question-identity.js`, Worker `routes/exams.js`의 qid 계산식, `archive/data/question_identity_map.json` |
-| approved question metadata | `archive/data/question_metadata.json` 및 `archive/question-meta.js` |
+| approved question metadata | Metadata Contract v2와 `archive/data/question_metadata.json` / `archive/question-meta.js` |
 | 기존 단원별 기출 selection | `archive/unit-past-exams-core.js`와 `archive/unit-past-exams.js` |
 | 고급 mixed selection | `archive/mixer-selector.js`, `archive/mixer.html` |
 | 문제지/해설/정답 출력 | `archive/engine.html`, `archive/mixed_engine.html` 및 기존 render/print/solution/answer 모듈 |

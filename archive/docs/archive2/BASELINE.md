@@ -11,6 +11,17 @@
 > 현재 구현/배포에서 확인되지 않은 것이다. 문서에 적힌 목표 동작을 현재 동작으로
 > 간주하지 않는다.
 
+## Metadata Foundation v2 Authority boundary
+
+이 baseline의 수치와 `하/중/상` 기반 historical normalization은 감사 당시
+관측값이지 새 canonical metadata 의미가 아니다. 문항 L1~L4는
+`docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`, difficulty 4-field는
+`docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`,
+metadata 저장·runtime parity는
+`docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md`가 HARD
+Authority다. 기존 standard/sub-unit keys와 `level`은 legacy bridge 및
+historical compatibility로만 해석한다.
+
 ## 1. Audit HEAD
 
 ### 1.1 저장소 기준점
@@ -389,8 +400,8 @@ m1/m2/m3다. Unit Past profile과 sidecar를 대조한 실제 grade mismatch는 
 | distinct course | 17 |
 | distinct subUnitKey | 278 |
 
-normalized difficulty는 하 2,185 / 중 6,156 / 상 2,487 / 미분류 398이다.
-`question_metadata` production 11,026 records에는 UID/source/ordinal과
+legacy level normalization은 하 2,185 / 중 6,156 / 상 2,487 / 미분류 398이다.
+`question_metadata` production 11,034 records에는 UID/source/ordinal과
 standardUnitKey/subUnitKey가 있으나 standardCourse 12건, difficulty 344건이
 비어 있다. `problemType`/template은 11건만 존재하고 11,023건은 explicit hold로
 남아 있다. sidecar 상태는 `approved_partial_with_explicit_holds`를 유지해야
@@ -417,7 +428,7 @@ Unit Past runtime의 기존 profile은 실제 운영 중인 taxonomy asset이다
 | 기능 | Mixer | Unit Past | Shared 가능 여부 | 신규 구현 필요 여부 |
 |---|---|---|---|---|
 | 단원 범위 | cart와 advanced selector | profile + `selectByBlueprint` | 공통 candidate/unit key layer 가능 | Unit Past multi-unit UI 필요 |
-| 난이도 | selector hard/soft difficulty | config의 하·중·상 및 adjacent fallback | 공통 difficulty normalization 가능 | set-level parity 연결 필요 |
+| 난이도 | selector hard/soft difficulty | config의 legacy level display 및 adjacent fallback | canonical difficulty adapter 연결 가능 | set-level parity 연결 필요 |
 | 학교 | include/exclude school filter | collection school grouping/filter | 공통 metadata filter 가능 | 없음(계약 통합만) |
 | 연도 | yearFrom/yearTo/exclude year | exact/recent/range collection year | 공통 year normalization 가능 | 없음(계약 통합만) |
 | 시험축 | 전용 hard gate는 확인되지 않음; source metadata 사용 | semester/examType/period filter | 공통 exam-axis field 가능 | Mixer 전용 축 filter는 필요 시 추가 |
