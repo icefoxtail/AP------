@@ -35,6 +35,12 @@ export async function runRc2({ db, mf, catalog, post, root }) {
     },
   };
   await db
+    .prepare("INSERT INTO students(id,name,status) VALUES('student-d','퇴원학생','퇴원')")
+    .run();
+  await db
+    .prepare("INSERT INTO class_students VALUES('class-a','student-d')")
+    .run();
+  await db
     .prepare(
       "INSERT OR REPLACE INTO exam_blueprints(archive_file,question_no,source_question_uid,source_question_ordinal) VALUES(?,?,?,?)",
     )
@@ -201,6 +207,12 @@ export async function runRc2({ db, mf, catalog, post, root }) {
       "DELETE FROM class_students WHERE class_id='class-a' AND student_id='student-c'",
     )
     .run();
+  await db
+    .prepare(
+      "DELETE FROM class_students WHERE class_id='class-a' AND student_id='student-d'",
+    )
+    .run();
+  await db.prepare("DELETE FROM students WHERE id='student-d'").run();
   console.log(
     JSON.stringify({
       rc2: "PASS",
