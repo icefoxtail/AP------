@@ -113,6 +113,10 @@ function classifyM304(combined) {
     const application = /최대|최소|넓이|둘레|수익|거리|활용|조건으로 식|값의 범위/.test(combined);
     if (application && /최대|최소/.test(combined)) return { L2: '이차함수 y=ax²+bx+c의 그래프', L3: '일반형', L4: '최대·최소', cues: ['최대/최소 활용'], confidence: 'high' };
     if (application && /조건으로 식|계수|결정/.test(combined)) return { L2: '이차함수 y=ax²+bx+c의 그래프', L3: '그래프와 계수', L4: '조건으로 식 구하기', cues: ['조건으로 계수 결정'], confidence: 'high' };
+    if (/이차함수가 아닌|이차함수가 되|이차함수인|이차함수인지/.test(combined)) return { L2: '이차함수와 그 그래프', L3: '이차함수의 뜻', L4: '이차함수 판별', cues: ['이차함수 판별'], confidence: 'high' };
+    if (/그래프 위의 점|점이 아닌|점.*그래프/.test(combined)) return { L2: '이차함수와 그 그래프', L3: '그래프와 식', L4: '점의 좌표', cues: ['그래프와 점'], confidence: 'high' };
+    if (/x축|y축|절편|교점/.test(combined)) return { L2: '이차함수 y=ax²+bx+c의 그래프', L3: '그래프와 계수', L4: '그래프 위치', cues: ['절편/교점과 그래프'], confidence: 'medium' };
+    if (/식으로 나타|y를 x에 대한|넓이 함수|y\\s*=/.test(combined) && application) return { L2: '이차함수 y=ax²+bx+c의 그래프', L3: '그래프와 계수', L4: '조건으로 식 구하기', cues: ['조건에서 이차함수식 도출'], confidence: 'high' };
     if (/평행이동|y\s*=\s*a?\(?x[-+]|꼭짓점 꼴/.test(combined)) return { L2: '이차함수 y=ax²+bx+c의 그래프', L3: '꼭짓점형', L4: /꼭짓점|대칭축/.test(combined) ? '꼭짓점·축' : '평행이동', cues: ['꼭짓점형/평행이동'], confidence: 'high' };
     if (/완전제곱식으로|완전제곱식 변형|일반형/.test(combined)) return { L2: '이차함수 y=ax²+bx+c의 그래프', L3: '일반형', L4: '완전제곱식 변형', cues: ['일반형 완전제곱 변형'], confidence: 'high' };
     if (/y\s*=\s*a?x\^?2|y=ax²|그래프의 모양|위로|아래로/.test(combined)) return { L2: '이차함수와 그 그래프', L3: 'y=ax²의 그래프', L4: /대칭축|증가|감소/.test(combined) ? '대칭축·증감' : '그래프의 모양', cues: ['y=ax² 그래프'], confidence: 'high' };

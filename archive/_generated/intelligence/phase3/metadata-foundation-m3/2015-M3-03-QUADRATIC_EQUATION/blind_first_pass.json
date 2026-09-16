@@ -2,7 +2,7 @@
   "schemaVersion": "metadata-foundation-v2-blind-first-pass-v1",
   "queueId": "2015-M3-03-QUADRATIC_EQUATION",
   "status": "BLIND_FIRST_PASS_FROZEN",
-  "generatedAt": "2026-09-16T07:17:51.958Z",
+  "generatedAt": "2026-09-16T07:27:18.823Z",
   "sourceCommit": "a2b0a4c1ea42d1d1d3800a2238cda63861020ca7",
   "blindRule": "currentLevel/currentDifficultyBucket/currentSubUnitKey/currentConceptClusterKey/currentProblemTypeKey/currentTemplateKey/reviewer fields omitted from first-pass inputs",
   "evidenceRule": "content + choices + solution + validated visual/shared dependency only; representation does not determine primary taxonomy",
@@ -456,6 +456,56 @@
       ],
       "solution": "[키포인트] 계수가 소수인 방정식을 정수 계수로 고쳐 해를 구한 다음, 큰 근에서 작은 근을 뺍니다.\\n정석 풀이:\\n방정식 $0.4x^2 = 0.5x - 0.1$의 양변에 $10$을 곱하여 정수 형태로 만듭니다.\\n$4x^2 = 5x - 1$\\n모든 항을 좌변으로 이항하면\\n$4x^2 - 5x + 1 = 0$\\n이차식을 인수분해하면 다음과 같습니다.\\n$(4x-1)(x-1) = 0$\\n따라서 두 근은 $x = \\dfrac{1}{4}$ 또는 $x = 1$입니다.\\n두 근의 차를 구하기 위해 큰 값에서 작은 값을 뺍니다.\\n$1 - \\dfrac{1}{4} = \\dfrac{3}{4}$\\n따라서 정답은 ①이다.",
       "image": ""
+    },
+    {
+      "questionUid": "qid_v1_041c43e1e74ffec28a3bb1ccbba51a1e5085e424a4d0b1d4c8b73400b5ae94f3",
+      "sourceArchiveFile": "original/middle/m3/1final/22_신흥중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 18,
+      "sourceFingerprint": "91c93f69f847052a5bf965bbc1345a85a1d98719154ca90c1dacab07b92ac173",
+      "curriculumKey": "2015",
+      "courseKey": "중3 수학",
+      "L1": "이차방정식",
+      "L2": "이차방정식의 활용",
+      "L3": "도형",
+      "L4": "길이·넓이",
+      "secondaryConceptKeys": [],
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "firstPassEvidence": {
+        "conceptCount": 1,
+        "conditionInterpretation": "low",
+        "strategyChoice": false,
+        "nonRoutineTransformation": true,
+        "caseBranching": true,
+        "rangeConstraint": false,
+        "integerConstraint": false,
+        "existenceCheck": false,
+        "decisiveInsight": true,
+        "visualRequired": true,
+        "solutionPresent": true,
+        "contentLength": 172,
+        "choicesCount": 5,
+        "structuralScore": 3.5,
+        "matchedCues": [
+          "이차방정식 도형 활용"
+        ],
+        "evidenceSource": "content + choices + solution + validated visual/shared dependency only; legacy metadata omitted"
+      },
+      "classificationConfidence": "high",
+      "taxonomyClassificationStatus": "FIRST_PASS_CANDIDATE",
+      "content": "폭이 $60\\text{ cm}$인 철판의 양쪽을 같은 길이만큼 직각으로 접어 올려 물받이를 만드는데, 직사각형 모양의 색칠한 부분의 넓이가 $400\\text{ cm}^2$이었다. 접어올린 부분의 한쪽 길이를 $x\\text{ cm}$라 할 때, 다음 중에서 옳지 않은 것을 모두 고르면? (정답 2개) (5점)",
+      "choices": [
+        "색칠한 부분의 세로의 길이는 $x$이다.",
+        "색칠한 부분의 가로의 길이는 $(60-x)\\text{ cm}$이다.",
+        "색칠한 부분의 넓이를 식으로 나타내면 $(60x-2x^2)\\text{ cm}^2$이다.",
+        "$x=10$ 또는 $x=20$이다.",
+        "색칠한 부분의 둘레의 길이는 $(120-x)\\text{ cm}$이다."
+      ],
+      "solution": "[키포인트] 실생활 문장제 문제 상황을 기하학적 직사각형의 변의 길이와 넓이 공식으로 정형화하여 식을 세웁니다.\\n풀이 방향: 양쪽에서 $x$만큼 접어 올렸을 때 만들어지는 단면 직사각형의 가로와 세로를 $x$에 관한 식으로 유도합니다.\\n정석 풀이:\\n철판의 전체 폭이 $60\\text{ cm}$이고 양쪽 끝에서 각각 $x\\text{ cm}$만큼 접어 올렸으므로,\\n접혀진 단면 직사각형의 세로 길이는 $x\\text{ cm}$가 되고, 가로 길이는 전체 $60$에서 양쪽 $x$ 두 개를 제외한 $(60-2x)\\text{ cm}$가 됩니다.\\n이를 통해 보기 문항들을 검증해 보겠습니다.\\n① 세로의 길이는 $x\\text{ cm}$가 맞습니다. (옳음)\\n② 가로의 길이는 $(60-2x)\\text{ cm}$이므로 $(60-x)\\text{ cm}$라고 진술한 ②번은 옳지 않습니다. (거짓)\\n③ 단면의 넓이는 $\\text{가로} \\times \\text{세로}$이므로 $x(60-2x) = 60x-2x^2\\text{ cm}^2$입니다. (옳음)\\n④ 넓이가 $400\\text{ cm}^2$이므로 식을 세우면 $60x-2x^2 = 400$입니다.\\n이항하여 정리하면 $2x^2 - 60x + 400 = 0 \\implies x^2 - 30x + 200 = 0$\\n인수분해하면 $(x-10)(x-20) = 0$이 되어 $x=10$ 또는 $x=20$이 됩니다. (옳음)\\n⑤ 색칠한 직사각형의 둘레의 길이는 $2 \\times (\\text{가로} + \\text{세로}) = 2 \\cdot \\{(60-2x) + x\\} = 2(60-x) = 120-2x\\text{ cm}$입니다. 따라서 $(120-x)\\text{ cm}$라고 서술한 ⑤번은 옳지 않습니다. (거짓)\\n따라서 정답은 ②, ⑤이다.",
+      "image": "assets/images/22_신흥중_1학기_기말_중3_기출/q18.png"
     },
     {
       "questionUid": "qid_v1_a262fd20cad841983550ca5cefe021ccea75b88690f41637d076028b6eebf1f3",
@@ -7003,13 +7053,13 @@
     }
   ],
   "counts": {
-    "recordCount": 143,
-    "solutionPresent": 143,
-    "visualRequired": 9,
+    "recordCount": 144,
+    "solutionPresent": 144,
+    "visualRequired": 10,
     "sharedMaterial": 0,
     "invalidTaxonomyPath": 0,
     "unknownDifficulty": 0
   },
-  "uidSetSha": "6164b5e3f5e18bcf780cf032c01a88881c4f627e15d5c80544d12ad55468627a",
-  "ledgerSha": "77fa6b7e33dc3c9feacecba9fcd970472e007943db439eba83469130e35b6b94"
+  "uidSetSha": "30a9790bdac1e5d5f31e19b0122c80dc7f1b004f8945a969ed38d12140b2d26a",
+  "ledgerSha": "631b6b980024b657764a0beb1c64352119c9957cb325f77c7196649e0ee91ed7"
 }
