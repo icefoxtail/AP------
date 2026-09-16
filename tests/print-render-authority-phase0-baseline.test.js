@@ -21,14 +21,12 @@ const EXPECTED_MEMBER_PATHS = [
   'archive/assessment/assessment-mvp.html',
   'archive/assessment/assessment-packs-1sem.generated.js',
   'archive/assessment/assessment-question-index-1sem.generated.js',
-  'archive/exams/test-fixtures/render-authority-golden.js',
   'archive/concept_map.js',
   'archive/css/js-archive-theme-override.css',
   'archive/db.js',
   'archive/engine.html',
   'archive/index.html',
   'archive/internal-review-engine.js',
-  'archive/internal-review-live.js',
   'archive/mathjax_render_loop.js',
   'archive/mixed_engine.html',
   'archive/mixer-school-fingerprint-runtime.js',
@@ -111,7 +109,8 @@ function text(file) {
 }
 
 function sha256(file) {
-  return crypto.createHash('sha256').update(fs.readFileSync(path.join(root, file))).digest('hex');
+  const text = fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n');
+  return crypto.createHash('sha256').update(text, 'utf8').digest('hex');
 }
 
 function walk(dir, output = []) {

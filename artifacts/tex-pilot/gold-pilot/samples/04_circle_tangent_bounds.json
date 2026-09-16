@@ -1,12 +1,13 @@
 {
   "id": "04_circle_tangent_bounds",
   "visualType": "line_circle_geometry",
+  "sourceFacts": {"line": "x+y=3", "radius": 0.3333333333, "centerLocus": "y=x"},
   "viewport": {"xMin": -1, "xMax": 3.5, "yMin": -0.2, "yMax": 3.5, "width": 13, "height": 9},
   "axes": {"visible": true, "grid": true, "xLabel": "x", "yLabel": "y"},
   "lines": [{"id": "tangentLine", "slope": -1, "intercept": 3, "equation": "x+y=3", "style": {"color": "purple", "lineWidth": 1.1}}],
   "auxiliaryLines": [{"id": "bisector", "orientation": "vertical", "value": 1.5, "style": {"color": "gray", "lineStyle": "dashed", "lineWidth": 0.8}}],
   "circles": [{"id": "left", "center": [1.2642977396, 1.2642977396], "radius": 0.3333333333, "style": {"color": "blue", "lineWidth": 1.1}}, {"id": "right", "center": [1.7357022604, 1.7357022604], "radius": 0.3333333333, "style": {"color": "red", "lineWidth": 1.1}}],
   "points": [{"id": "Cm", "x": 1.2642977396, "y": 1.2642977396, "label": "C(m,m)", "role": "critical"}, {"id": "CM", "x": 1.7357022604, "y": 1.7357022604, "label": "C(M,M)", "role": "critical"}, {"id": "T", "x": 1.5, "y": 1.5, "label": "T", "role": "intersection"}],
-  "labels": [{"id": "lineLabel", "text": "x+y=3", "at": [2.5, 0.5], "kind": "equation"}, {"id": "range", "text": "m <= a <= M", "at": [1.8, 3.1], "kind": "generic"}],
+  "labels": [{"id": "lineLabel", "text": "x+y=3", "at": [2.5, 0.5], "kind": "equation"}, {"id": "range", "text": "m<=a<=M", "at": [1.8, 3.1], "kind": "equation"}],
   "components": [{"kind": "AXIS"}, {"kind": "LINE", "ref": "tangentLine"}, {"kind": "AUXILIARY_LINE", "ref": "bisector"}, {"kind": "CIRCLE", "ref": "left"}, {"kind": "CIRCLE", "ref": "right"}, {"kind": "POINT", "ref": "Cm"}, {"kind": "POINT", "ref": "CM"}, {"kind": "INTERSECTION", "ref": "T"}, {"kind": "EQUATION_LABEL", "ref": "lineLabel"}, {"kind": "GRAPH_ANNOTATION", "ref": "range"}]
 }

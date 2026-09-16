@@ -436,8 +436,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\\n조건 정리: 현 $AB=8\\,\\mathrm{cm}$이므로 수선의 발을 $M$이라 하면 $AM=4\\,\\mathrm{cm}$이고 $OA=7\\,\\mathrm{cm}$이다.\\n풀이 방향: 직각삼각형 $OAM$에서 피타고라스 정리를 이용한다.\\n정석 풀이: $OM^2=OA^2-AM^2=7^2-4^2=49-16=33$이므로 $OM=\\sqrt{33}\\,\\mathrm{cm}$이다.\\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q14.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -468,8 +468,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 중심에서 현에 내린 수선의 성질과 두 개의 직각삼각형을 차례로 이용한다.\\n조건 정리: $M$은 현 $AB$의 중점이므로 $AM=6\\,\\mathrm{cm}$이다. 또한 $MC\\perp AB$이다.\\n풀이 방향: 먼저 $\\triangle AMC$에서 $MC$를 구하고, 반지름 $OC$와 $OA$가 같다는 식을 세운다.\\n정석 풀이: $AC^2=AM^2+MC^2$이므로 $45=36+MC^2$, 따라서 $MC=3\\,\\mathrm{cm}$이다. $OM=x$라 하면 $OC=x+3$이고, 직각삼각형 $OAM$에서 $OA^2=x^2+6^2$이다. $OA=OC$이므로 $(x+3)^2=x^2+36$이다. 전개하면 $6x+9=36$이므로 $x=\\dfrac92$이다.\\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q15.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -500,8 +500,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 접점에서 반지름과 접선은 수직이므로 중심각을 먼저 구할 수 있다.\\n조건 정리: $OA\\perp PA$, $OB\\perp PB$이므로 사각형 $OAPB$에서 두 각은 각각 $90^\\circ$이다.\\n풀이 방향: 작은 중심각 $\\angle AOB$를 구한 뒤 색칠한 큰 부채꼴의 중심각을 구한다.\\n정석 풀이: $\\angle AOB+90^\\circ+90^\\circ+40^\\circ=360^\\circ$이므로 $\\angle AOB=140^\\circ$이다. 색칠한 부분의 중심각은 $360^\\circ-140^\\circ=220^\\circ$이다. 따라서 넓이는 $\\dfrac{220}{360}\\times\\pi\\times6^2=22\\pi\\,\\mathrm{cm}^2$이다.\\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q16.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -532,8 +532,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 현의 중점과 호까지의 높이를 이용해 반지름에 관한 방정식을 세운다.\\n조건 정리: 원의 중심을 $O$, 반지름을 $r$이라 하면 $AM=6\\,\\mathrm{m}$이고 $OM=r-4$이다. $OM\\perp AB$이다.\\n풀이 방향: 직각삼각형 $OAM$에서 피타고라스 정리를 적용한다.\\n정석 풀이: $OA=r$이므로 $r^2=(r-4)^2+6^2$이다. 전개하면 $r^2=r^2-8r+16+36$이므로 $8r=52$, $r=\\dfrac{13}{2}$이다. 원의 둘레는 $2\\pi r=2\\pi\\times\\dfrac{13}{2}=13\\pi\\,\\mathrm{m}$이다.\\n따라서 정답은 ④이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q17.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -564,8 +564,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 접점에서 반지름은 접선에 수직이므로 $\\triangle PTO$는 직각삼각형이다.\\n조건 정리: 반지름을 $r$이라 하면 $AO=r$, $PO=PA+AO=6+r$이고 $OT=r$이다.\\n풀이 방향: $\\sin30^\\circ$로 반지름을 먼저 구한 뒤 $\\cos30^\\circ$로 접선의 길이를 구한다.\\n정석 풀이: $\\sin30^\\circ=\\dfrac{OT}{PO}=\\dfrac{r}{r+6}=\\dfrac12$이므로 $2r=r+6$, 따라서 $r=6$이고 $PO=12$이다. 그러므로 $PT=PO\\cos30^\\circ=12\\times\\dfrac{\\sqrt3}{2}=6\\sqrt3\\,\\mathrm{cm}$이다.\\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q18.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -596,8 +596,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\\n조건 정리: $AD=AF$, $BD=BE$, $CE=CF$이다.\\n풀이 방향: $AD=AF=x$로 두고 세 변의 길이를 이용해 $x$를 구한다.\\n정석 풀이: $AB=AD+DB=6$이므로 $DB=6-x$이고 $BE=6-x$이다. $AC=AF+FC=8$이므로 $FC=8-x$이고 $CE=8-x$이다. 따라서 $BC=BE+EC=(6-x)+(8-x)=14-2x=9$이다. 그러므로 $2x=5$, $x=\\dfrac52$이고 $CF=8-\\dfrac52=\\dfrac{11}{2}\\,\\mathrm{cm}$이다.\\n따라서 정답은 ③이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q19.png",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -628,8 +628,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 직각 꼭짓점에서 두 접점까지의 길이는 내접원의 반지름과 같다.\\n조건 정리: $BD=BE=6$, $CF=CE=9$이고 $AD=AF=r$이라 두면 $AB=r+6$, $AC=r+9$, $BC=15$이다.\\n풀이 방향: 직각삼각형 $ABC$에 피타고라스 정리를 적용해 $r$을 구한다.\\n정석 풀이: $(r+6)^2+(r+9)^2=15^2$이다. 전개하면 $2r^2+30r+117=225$, 즉 $r^2+15r-54=0$이다. $(r+18)(r-3)=0$이므로 길이인 $r=3$이다. 따라서 원의 넓이는 $\\pi r^2=9\\pi\\,\\mathrm{cm}^2$이다.\\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q20.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -706,8 +706,8 @@ window.questionBank = [
     "answer": "$3\\sqrt6\\,\\mathrm{cm}$",
     "solution": "[키포인트] 안쪽 원의 현 $AB$의 절반을 먼저 구한 뒤, 바깥 원의 반지름에 해당하는 직각삼각형을 만든다.\\n조건 정리: $OA=OB=6\\,\\mathrm{cm}$이고, 중심에서 현 $AB$에 내린 수선은 현을 이등분하므로 $M$은 $AB$의 중점이다. 점 $B$는 $M$과 $D$ 사이에 있고 $DB=\\sqrt2\\,\\mathrm{cm}$이다.\\n풀이 방향: 직각삼각형 $OMB$에서 $MB$를 구하고, $MD=MB+BD$를 이용한 뒤 직각삼각형 $OMD$에서 $OD$를 구한다.\\n정석 풀이: $MB^2=OB^2-OM^2=6^2-2^2=32$이므로 $MB=4\\sqrt2\\,\\mathrm{cm}$이다. 따라서 $MD=MB+BD=4\\sqrt2+\\sqrt2=5\\sqrt2\\,\\mathrm{cm}$이다. $OM\\perp AB$이고 $A,B,C,D$가 같은 직선 위에 있으므로 $OM\\perp MD$이다. 그러므로 $OD^2=OM^2+MD^2=2^2+(5\\sqrt2)^2=4+50=54$이고 $OD=3\\sqrt6\\,\\mathrm{cm}$이다.\\n따라서 구하는 길이는 $3\\sqrt6\\,\\mathrm{cm}$이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

@@ -44,6 +44,7 @@ visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출
 agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
+   - `01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`는 difficultyBucket 1~5의 단계·경계·검수·자동사용 gate 단일 authority다.
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 3. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
 4. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`

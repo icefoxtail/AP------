@@ -1,25 +1,3 @@
-function q(id, key, unit, type, content, choices, answer, options = {}) {
-  return {
-    id,
-    level: options.level || "중",
-    category: unit,
-    originalCategory: unit,
-    standardCourse: "중1 수학",
-    standardUnitKey: key,
-    standardUnit: unit,
-    standardUnitOrder: Number(key.slice(-2)),
-    questionType: type,
-    layoutTag: "grid",
-    tags: Array.from(new Set([...(type === "서술형" ? ["서술형"] : []), ...(options.tags || [])])),
-    wide: false,
-    content,
-    choices,
-    answer,
-    solution: "",
-    ...(options.image ? { image: options.image } : {}),
-    ...(options.imageSize ? { imageSize: options.imageSize } : {})
-  };
-}
 
 window.examTitle = "23_신흥중_2학기_중간_중1_기출";
 window.questionBank = [

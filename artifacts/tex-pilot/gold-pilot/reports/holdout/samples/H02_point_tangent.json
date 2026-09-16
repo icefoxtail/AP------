@@ -1,0 +1,12 @@
+{
+  "id": "H02_point_tangent",
+  "visualType": "calculus_graph",
+  "sourceFacts": {"point": [2, 3], "tangentSlope": 4, "tangentEquation": "y=4x-5"},
+  "viewport": {"xMin": -1, "xMax": 4, "yMin": -6, "yMax": 10, "width": 9, "height": 8},
+  "axes": {"visible": true, "grid": true, "xLabel": "x", "yLabel": "y"},
+  "functionGraphs": [{"id": "f", "expression": "2*(x-2)^2+4*(x-2)+3", "domain": [-0.5, 3.5], "samples": 121, "label": "f(x)", "style": {"color": "black", "lineWidth": 1.1}}],
+  "lines": [{"id": "tangent", "slope": 4, "intercept": -5, "equation": "y=4x-5", "domain": [0, 3.5], "style": {"color": "red", "lineWidth": 1.0}}],
+  "points": [{"id": "P", "x": 2, "y": 3, "label": "P(2,3)", "role": "critical"}],
+  "labels": [{"id": "lineLabel", "text": "y=4x-5", "at": [2.2, 3.8], "kind": "equation"}],
+  "components": [{"kind": "AXIS"}, {"kind": "FUNCTION_GRAPH", "ref": "f"}, {"kind": "LINE", "ref": "tangent"}, {"kind": "TANGENT", "options": {"lineRef": "tangent", "curveRef": "f", "at": [2, 3]}}, {"kind": "POINT", "ref": "P"}, {"kind": "POINT_LABEL", "ref": "P"}, {"kind": "EQUATION_LABEL", "ref": "lineLabel"}]
+}

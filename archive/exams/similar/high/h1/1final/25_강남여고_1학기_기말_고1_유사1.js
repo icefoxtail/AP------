@@ -23,7 +23,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "720"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "40"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "7개"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "29"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "18"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -303,7 +303,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "$\\begin{pmatrix} -1 & 2 \\\\ 0 & 3 \\end{pmatrix}$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -387,7 +387,7 @@ window.questionBank = [
       "19"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -415,7 +415,7 @@ window.questionBank = [
       "120"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -443,7 +443,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -471,7 +471,7 @@ window.questionBank = [
       "0"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -499,7 +499,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -527,7 +527,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -555,7 +555,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -579,7 +579,7 @@ window.questionBank = [
     "content": "$x$의 다항식 $f(x)=x^3+ax+b$는 $x-1$로 나누어 떨어지고, $x+1$로 나누면 나머지가 12라고 한다. $a, b$의 값과 방정식 $f(x)=0$의 세 근의 곱을 구하시오.",
     "choices": [],
     "answer": "$a=-7,\\ b=6$, 세 근의 곱은 $-6$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $a=-7,\\ b=6$, 세 근의 곱은 $-6$이다.",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -603,7 +603,7 @@ window.questionBank = [
     "content": "연립부등식 $\\begin{cases} x^2+2x-8 > 0 \\\\ x^2 - (a+4)x + 4a \\le 0 \\end{cases}$ 의 해가 $2 < x \\le 4$가 되도록 하는 실수 $a$의 값의 범위와 그 범위 안에 있는 정수 $a$의 개수를 구하시오.",
     "choices": [],
     "answer": "$-4 \\le a \\le 2$, 7개",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $-4 \\le a \\le 2$, 7개이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -627,7 +627,7 @@ window.questionBank = [
     "content": "어느 상점에 모자 3종류, 셔츠 4종류, 바지 5종류가 있다. 이 중에서 셔츠 2종류와 바지 2종류를 고르는 방법의 수를 $a$, 특정한 모자 1종류를 반드시 포함하여 모자 2종류, 셔츠 2종류, 바지 2종류를 고르는 방법의 수를 $b$라 할 때, $a+b$의 값을 구하시오. (단, 같은 종류의 상품은 1개씩만 고른다.)",
     "choices": [],
     "answer": "180",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 180이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -651,22 +651,10 @@ window.questionBank = [
     "content": "이차정사각행렬 $A$가 $A^2 - A + E = O$를 만족시키고, $A \\begin{pmatrix} -1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 4 \\\\ 5 \\end{pmatrix}$일 때, 행렬 $A^2 \\begin{pmatrix} 2 \\\\ -4 \\end{pmatrix}$의 모든 성분의 합을 구하시오. (단, $E$는 단위행렬, $O$는 영행렬이다.)",
     "choices": [],
     "answer": "-16",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 -16이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-const _similarSolutionText = (q) => {
-  const c = q.content || "";
-  let method = "주어진 조건을 식으로 정리하고 필요한 값을 계산한 뒤 선택지와 대조한다.";
-  if (/행렬|matrix/i.test(c)) method = "행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다.";
-  else if (/부등식|절댓값|\\|/.test(c)) method = "절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다.";
-  else if (/이차함수|이차방정식|이차식|포물선/.test(c)) method = "완전제곱·근의 공식·판별식 또는 꼭짓점 공식을 적용해 근과 최댓값·최솟값을 구한다.";
-  else if (/경우의 수|뽑|배열|일렬|자리|문자|카드|주사위|확률/.test(c)) method = "곱의 법칙·순열·조합을 사용해 조건별 경우를 세고, 동일한 결과가 겹치면 중복을 제외한다.";
-  else if (/삼각형|사각형|원|직사각형|평행|닮음|각|길이|넓이/.test(c)) method = "도형의 각의 합, 닮음비, 피타고라스 정리와 넓이비를 조건에 맞게 적용한다. 그림 의존 표시는 JS의 도형 배치를 기준으로 확인한다.";
-  else if (/순환소수|분수|소수/.test(c)) method = "분수를 기약화한 뒤 분모의 소인수와 순환마디를 확인하고, 필요한 자리수·대소관계를 계산한다.";
-  return "[JS 기준 풀이] " + method + " 계산 결과는 " + (q.answer || "문항의 요구값") + "이다.";
-};
-window.questionBank.forEach(q => { if (!q.solution) q.solution = _similarSolutionText(q); });

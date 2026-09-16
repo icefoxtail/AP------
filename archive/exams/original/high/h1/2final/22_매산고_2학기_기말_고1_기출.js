@@ -1,22 +1,6 @@
 window.examTitle = "22_매산고_2학기_기말_고1_기출";
 
-const UNIT = {
-  "집합": ["H15-SB-01", 1], "명제": ["H15-SB-02", 2], "함수": ["H15-SB-03", 3],
-  "유리함수": ["H15-SB-04", 4], "무리함수": ["H15-SB-05", 5], "경우의 수": ["H15-SB-06", 6],
-  "순열": ["H15-SB-07", 7], "조합": ["H15-SB-08", 8]
-};
 
-function q(id, unit, questionType, content, choices = [], extra = {}) {
-  const [standardUnitKey, standardUnitOrder] = UNIT[unit];
-  const { level = "중", category = unit, tags = [unit], answer, solution, ...rest } = extra;
-  return {
-    id, level, category, originalCategory: unit, standardCourse: "수학(하)", standardUnitKey,
-    standardUnit: unit, standardUnitOrder, questionType,
-    layoutTag: "grid",
-    tags: questionType === "서술형" ? ["서술형", ...tags.filter(tag => tag !== "서술형")] : tags,
-    wide: false, content, choices, ...rest, answer, solution
-  };
-}
 
 window.questionBank = [
   {

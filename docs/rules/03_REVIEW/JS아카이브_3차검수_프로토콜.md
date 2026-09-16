@@ -20,6 +20,8 @@
 - category/originalCategory도 무조건 믿지 않는다.
 - standardUnitKey와 standardUnit이 서로 맞는지 확인한다.
 
+`difficultyBucket` 1~5의 상세 단계 정의·경계·blind 판정·confidence·boundary·legacy compatibility·recheck는 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 단일 authority로 따른다. 기존 `level` 3단계 재판정 규칙은 유지한다.
+
 ==================================================
 0. 입력 대상
 ==================================================

@@ -23,7 +23,7 @@ window.questionBank = [
       "철중: 자연수는 1, 소수, 합성수로 이루어져 있어."
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$2^2\\times3^3$"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "1, 2, 3, 5, 7"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -107,7 +107,7 @@ window.questionBank = [
       "135"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "195"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "42"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "$-\\dfrac{10}{3}$은 정수가 아닌 유리수이다."
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "9개"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "$4<|-4.5|$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -303,7 +303,7 @@ window.questionBank = [
       "$\\left(-\\dfrac{5}{8}\\right)+\\left(+\\dfrac{8}{3}\\right)$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
       "$\\dfrac{25}{2}$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -387,7 +387,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -417,7 +417,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q15.png",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
@@ -448,7 +448,7 @@ window.questionBank = [
       "ㅁ"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q16.png",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
@@ -479,7 +479,7 @@ window.questionBank = [
       "$15a+12b$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_4회/q17.png",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
@@ -508,7 +508,7 @@ window.questionBank = [
       "$\\dfrac{8}{a}$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -536,7 +536,7 @@ window.questionBank = [
       "$a^2+b$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -564,7 +564,7 @@ window.questionBank = [
       "$3a$, $3$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -588,7 +588,7 @@ window.questionBank = [
     "content": "소인수분해를 이용하여 168의 약수의 개수를 구하려고 한다. 다음 물음에 답하고, 그 과정을 서술하시오.<br>(1) 168을 소인수분해 하시오.<br>(2) 168의 약수의 개수를 구하시오.",
     "choices": [],
     "answer": "(1) $2^3\\times3\\times7$ (2) 16개",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 (1) $2^3\\times3\\times7$ (2) 16개이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -612,7 +612,7 @@ window.questionBank = [
     "content": "소인수분해를 이용하여 세 수 40, 72, 180의 최대공약수를 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "4",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 4이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -636,7 +636,7 @@ window.questionBank = [
     "content": "다음 물음에 답하고, 그 과정을 서술하시오.<br>(1) “$a$는 $-5$ 초과 2 이하이다.”를 부등호를 사용하여 나타내시오.<br>(2) (1)을 만족시키는 $a$의 값 중에서 정수를 모두 구하시오.",
     "choices": [],
     "answer": "(1) $-5<a\\leq2$ (2) $-4,-3,-2,-1,0,1,2$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 (1) $-5<a\\leq2$ (2) $-4,-3,-2,-1,0,1,2$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -661,7 +661,7 @@ window.questionBank = [
     "content": "오른쪽 표에서 가로, 세로, 대각선에 놓인 세 수의 합이 모두 같을 때, $A$, $B$, $C$의 값을 각각 구하고, 그 과정을 서술하시오.<br><div style=\"display:inline-block; margin:10px 0 6px 0;\"><table style=\"border-collapse:collapse; font-size:18px; text-align:center;\"><tr><td style=\"border:1px solid #333; width:44px; height:44px;\">$A$</td><td style=\"border:1px solid #333; width:44px; height:44px;\">$-2$</td><td style=\"border:1px solid #333; width:44px; height:44px;\">$5$</td></tr><tr><td style=\"border:1px solid #333; width:44px; height:44px;\">$4$</td><td style=\"border:1px solid #333; width:44px; height:44px;\">$2$</td><td style=\"border:1px solid #333; width:44px; height:44px;\">$B$</td></tr><tr><td style=\"border:1px solid #333; width:44px; height:44px;\">$-1$</td><td style=\"border:1px solid #333; width:44px; height:44px;\">$C$</td><td style=\"border:1px solid #333; width:44px; height:44px;\">$1$</td></tr></table></div>",
     "choices": [],
     "answer": "A=3, B=0, C=6",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 A=3, B=0, C=6이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -685,22 +685,10 @@ window.questionBank = [
     "content": "다음을 계산하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$3-\\dfrac{1}{2}\\left[2x-6-\\{4+2(-5x-4)\\}\\right]$</div>",
     "choices": [],
     "answer": "$-6x+4$",
-    "solution": "",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $-6x+4$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
 ];
-const _similarSolutionText = (q) => {
-  const c = q.content || "";
-  let method = "주어진 조건을 식으로 정리하고 필요한 값을 계산한 뒤 선택지와 대조한다.";
-  if (/행렬|matrix/i.test(c)) method = "행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다.";
-  else if (/부등식|절댓값|\\|/.test(c)) method = "절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다.";
-  else if (/이차함수|이차방정식|이차식|포물선/.test(c)) method = "완전제곱·근의 공식·판별식 또는 꼭짓점 공식을 적용해 근과 최댓값·최솟값을 구한다.";
-  else if (/경우의 수|뽑|배열|일렬|자리|문자|카드|주사위|확률/.test(c)) method = "곱의 법칙·순열·조합을 사용해 조건별 경우를 세고, 동일한 결과가 겹치면 중복을 제외한다.";
-  else if (/삼각형|사각형|원|직사각형|평행|닮음|각|길이|넓이/.test(c)) method = "도형의 각의 합, 닮음비, 피타고라스 정리와 넓이비를 조건에 맞게 적용한다. 그림 의존 표시는 JS의 도형 배치를 기준으로 확인한다.";
-  else if (/순환소수|분수|소수/.test(c)) method = "분수를 기약화한 뒤 분모의 소인수와 순환마디를 확인하고, 필요한 자리수·대소관계를 계산한다.";
-  return "[JS 기준 풀이] " + method + " 계산 결과는 " + (q.answer || "문항의 요구값") + "이다.";
-};
-window.questionBank.forEach(q => { if (!q.solution) q.solution = _similarSolutionText(q); });

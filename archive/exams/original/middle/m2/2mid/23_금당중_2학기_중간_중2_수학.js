@@ -1,33 +1,4 @@
-const UNIT_META = {
-  "M2-03": { name: "연립일차방정식", order: 3 },
-  "M2-04": { name: "일차함수와 그래프", order: 4 },
-  "M2-06": { name: "도형의 닮음", order: 6 },
-  "M2-07": { name: "피타고라스 정리", order: 7 }
-};
 
-function q(id, level, category, key, content, choices, answer, solution, image, extraTags = []) {
-  const unit = UNIT_META[key];
-  const questionType = choices.length ? "객관식" : "서술형";
-  return {
-    id,
-    level,
-    category,
-    originalCategory: category,
-    standardCourse: "중2 수학",
-    standardUnitKey: key,
-    standardUnit: unit.name,
-    standardUnitOrder: unit.order,
-    questionType,
-    layoutTag: "grid",
-    tags: [questionType, ...extraTags],
-    wide: false,
-    content,
-    choices,
-    answer,
-    solution,
-    ...(image ? { image: "assets/images/23_금당중_2학기_중간_중2_수학/" + image } : {})
-  };
-}
 
 window.examTitle = "23_금당중_2학기_중간_중2_수학";
 window.questionBank = [

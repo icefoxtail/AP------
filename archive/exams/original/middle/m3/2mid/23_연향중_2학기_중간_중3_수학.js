@@ -470,8 +470,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $AB=10$, $OM=5$, $OM\\perp AB$이고 $x$는 원의 반지름이다.\n풀이 방향: 현의 절반과 중심에서 현까지의 거리를 두 직각변으로 사용한다.\n정석 풀이: $M$은 현 $AB$의 중점이므로 $AM=5$이다. 직각삼각형 $OMA$에서 $x=OA=\\sqrt{OM^2+AM^2}=\\sqrt{5^2+5^2}=5\\sqrt2$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -502,8 +502,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 원 밖의 한 점에서 그은 두 접선의 길이는 같다.\n조건 정리: $AD=2$, $AB=6$, $AC=5$이고 $D$, $E$, $F$는 접점이다.\n풀이 방향: 각 꼭짓점에서 출발한 두 접선의 길이를 차례로 대응한다.\n정석 풀이: $AD=AF=2$이다. 따라서 $BD=AB-AD=4$이므로 $BE=4$이고, $CF=AC-AF=3$이므로 $CE=3$이다. 그러므로 $BC=BE+CE=4+3=7\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -534,8 +534,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 접은 선은 겹쳐지는 두 점을 잇는 선분의 수직이등분선이다.\n조건 정리: 원 위의 점과 중심 사이의 거리는 반지름 $10$이다.\n풀이 방향: 중심에서 접은 선까지의 거리를 구한 뒤 현의 절반을 계산한다.\n정석 풀이: 접은 선 $AB$는 길이 $10$인 선분의 수직이등분선이므로 원의 중심에서 $AB$까지의 거리는 $5$이다. 중심에서 현에 내린 수선은 현을 이등분하므로 현의 절반은 $\\sqrt{10^2-5^2}=5\\sqrt3$이다. 따라서 $AB=2\\times5\\sqrt3=10\\sqrt3$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -566,8 +566,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 중심에서 같은 거리에 있는 두 현은 길이가 같다.\n조건 정리: $ON=OM$이고 $ON\\perp AB$, $OM\\perp AC$이다.\n풀이 방향: 두 현의 길이가 같음을 이용해 삼각형 $ABC$의 각을 구하고 사각형 $AMON$의 내각의 합을 이용한다.\n정석 풀이: 중심에서 두 현까지의 거리가 같으므로 $AB=AC$이다. 따라서 $\\angle B=\\angle C=55^\\circ$이고 $\\angle A=70^\\circ$이다. 사각형 $AMON$에서 $\\angle AMO=\\angle ANO=90^\\circ$이므로 $\\angle MON=360^\\circ-70^\\circ-90^\\circ-90^\\circ=110^\\circ$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -598,8 +598,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 먼저 직각삼각형의 나머지 변을 구한 뒤 넓이와 반둘레를 이용해 내접원의 반지름을 구한다.\n조건 정리: 빗변 $AB=13\\,\\mathrm{cm}$, 직각변 $BC=12\\,\\mathrm{cm}$이다.\n풀이 방향: $AC$, 삼각형의 넓이, 반둘레를 차례로 구한다.\n정석 풀이: $AC=\\sqrt{13^2-12^2}=5\\,\\mathrm{cm}$이다. 삼각형의 넓이는 $\\dfrac12\\times5\\times12=30\\,\\mathrm{cm^2}$이고 반둘레는 $\\dfrac{5+12+13}{2}=15\\,\\mathrm{cm}$이다. 내접원의 반지름을 $r$라 하면 넓이 $=r\\times$ 반둘레이므로 $30=15r$, 따라서 $r=2$이다. 원 $I$의 넓이는 $\\pi r^2=4\\pi\\,\\mathrm{cm^2}$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -630,8 +630,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 같은 점에서 그은 두 접선의 길이는 같고, 평행한 두 접선의 길이 차로 직각삼각형을 만들 수 있다.\n조건 정리: $AD=10\\,\\mathrm{cm}$, $CD=14\\,\\mathrm{cm}$이고 $A$, $E$, $B$는 접점이다.\n풀이 방향: 접선의 성질로 $BC$를 구한 뒤 $CD$를 빗변으로 하는 직각삼각형을 만든다.\n정석 풀이: 점 $D$에서 그은 접선이므로 $DE=DA=10$이다. 따라서 $CE=CD-DE=4$이고, 점 $C$에서 그은 접선이므로 $CB=CE=4$이다. $AD$와 $BC$는 지름 $AB$에 수직이므로 서로 평행하다. 두 수직변의 길이 차는 $10-4=6$이고 가로 거리는 $AB$이다. 따라서 $AB^2+6^2=14^2$, 즉 $AB^2=160$이므로 $AB=4\\sqrt{10}\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -708,8 +708,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{50}{3}$",
     "solution": "[키포인트] 두 원이 외접하면 중심 사이의 거리는 반지름의 합이고, 내접하면 반지름의 차이다.\n조건 정리: 원 $P$의 반지름은 $10$이고 중심 $P$는 지름 위의 접점 $O$에서 수직으로 $10$만큼 떨어져 있다.\n풀이 방향: 큰 반원의 반지름을 구한 뒤 반원 $Q$의 반지름을 미지수로 놓고 피타고라스 정리를 적용한다.\n정석 풀이: $OP=10$이고 원 $P$가 반원 $O$에 내접하므로 반원 $O$의 반지름은 $20$이다. 반원 $Q$의 반지름을 $r$라 하면 내접 관계에서 $OQ=20-r$, 외접 관계에서 $PQ=10+r$이다. 또한 $OP\\perp OQ$이므로 $(10+r)^2=10^2+(20-r)^2$이다. 전개하면 $100+20r+r^2=500-40r+r^2$이므로 $60r=400$, $r=\\dfrac{20}{3}$이다. 따라서 $PQ=10+\\dfrac{20}{3}=\\dfrac{50}{3}$이다.\n따라서 구하는 값은 $\\dfrac{50}{3}$이다.",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -734,8 +734,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$",
     "solution": "[키포인트] 실의 길이는 점 $P$에서 원으로 그은 두 접선과 원에 감긴 큰 호의 길이의 합이다.\n조건 정리: 원기둥의 반지름은 $8\\,\\mathrm{cm}$이고 점 $P$와 원기둥의 최단 거리는 $8\\,\\mathrm{cm}$이다.\n풀이 방향: 중심에서 $P$까지의 거리, 접선의 길이, 감긴 호의 중심각을 차례로 구한다.\n정석 풀이: 단면의 중심을 $O$라 하면 $OP=8+8=16$이다. 접점을 $T$라 하면 $OT\\perp PT$이므로 $PT=\\sqrt{16^2-8^2}=8\\sqrt3$이다. 접선은 두 개이므로 접선 부분의 합은 $16\\sqrt3$이다. 또한 $\\cos\\angle TOP=\\dfrac{OT}{OP}=\\dfrac12$이므로 $\\angle TOP=60^\\circ$이다. 두 접점 사이에서 점 $P$ 쪽의 중심각은 $120^\\circ$이므로 실이 감긴 큰 호의 중심각은 $240^\\circ$이다. 큰 호의 길이는 $2\\pi\\times8\\times\\dfrac{240}{360}=\\dfrac{32\\pi}{3}$이다. 따라서 실의 길이는 $16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.\n따라서 구하는 값은 $16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

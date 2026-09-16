@@ -1,32 +1,3 @@
-function q(id, level, category, key, content, choices, answer, solution, image, visualTag) {
-  const unitMap = {
-    "M3-04": { standardUnit: "이차함수와 그래프", standardUnitOrder: 4 },
-    "M3-05": { standardUnit: "삼각비", standardUnitOrder: 5 }
-  };
-  const meta = unitMap[key];
-  const tags = [choices.length ? "객관식" : "서술형"];
-  if (Array.isArray(visualTag)) tags.push(...visualTag);
-  else if (visualTag) tags.push(visualTag);
-  return {
-    id,
-    level,
-    category,
-    originalCategory: category,
-    standardCourse: "중3 수학",
-    standardUnitKey: key,
-    standardUnit: meta.standardUnit,
-    standardUnitOrder: meta.standardUnitOrder,
-    questionType: choices.length ? "객관식" : "서술형",
-    layoutTag: "grid",
-    tags,
-    wide: false,
-    content,
-    choices,
-    answer,
-    solution,
-    ...(image ? { image: `assets/images/24_왕운중_2학기_중간_중3_수학/${image}` } : {})
-  };
-}
 
 window.examTitle = "24_왕운중_2학기_중간_중3_수학";
 window.questionBank = [

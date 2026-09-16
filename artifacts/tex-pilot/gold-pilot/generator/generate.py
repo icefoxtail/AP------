@@ -18,6 +18,18 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+STYLE_TOKENS = {
+    "axis": {"color": "black", "lineWidth": 0.8},
+    "mainCurve": {"color": "blue", "lineWidth": 1.0},
+    "secondaryCurve": {"color": "red", "lineWidth": 1.0},
+    "tangent": {"color": "red", "lineWidth": 1.0},
+    "auxiliary": {"color": "gray", "lineWidth": 0.8},
+    "point": {"color": "black", "markSize": 1.8},
+    "criticalPoint": {"color": "black", "markSize": 2.0},
+    "label": {"fontSize": "small"},
+    "mathLabel": {"fontSize": "small"},
+    "conditionBox": {"padding": 4},
+}
 
 
 def fail(message: str) -> None:
@@ -47,7 +59,14 @@ def tex(text: str) -> str:
 
 def math_label(text: str) -> str:
     """Render the pilot's small equation-label language in math mode."""
-    return "$" + str(text).replace("\\", "\\\\") + "$"
+    raw = str(text)
+    if "\\\\" in raw:
+        fail("double-backslash corruption in math label")
+    raw = re.sub(r"sqrt\(([^()]+)\)", r"\\sqrt{\1}", raw)
+    raw = raw.replace("<=", r"\le ").replace(">=", r"\ge ").replace("->", r"\to ")
+    raw = re.sub(r"([A-Za-z0-9)])\^([A-Za-z0-9+-]+)", r"\1^{\2}", raw)
+    raw = raw.replace("prime", r"\prime")
+    return "$" + raw + "$"
 
 
 ALLOWED_AST = (ast.Expression, ast.BinOp, ast.UnaryOp, ast.Add, ast.Sub, ast.Mult,
@@ -117,6 +136,69 @@ def coordinate(value: list[Any], label: str) -> tuple[float, float]:
     return number(value[0], f"{label}[0]"), number(value[1], f"{label}[1]")
 
 
+def line_coefficients(item: dict[str, Any], label: str) -> tuple[float, float, float]:
+    """Return canonical a*x+b*y+c=0 coefficients."""
+    if all(key in item for key in ("a", "b", "c")):
+        a, b, c = (number(item[key], f"{label}.{key}") for key in ("a", "b", "c"))
+    elif "through" in item:
+        p, q = (coordinate(value, f"{label}.through[{i}]") for i, value in enumerate(item["through"]))
+        a, b, c = p[1] - q[1], q[0] - p[0], p[0] * q[1] - q[0] * p[1]
+    elif "slope" in item and "intercept" in item:
+        m, k = number(item["slope"], f"{label}.slope"), number(item["intercept"], f"{label}.intercept")
+        a, b, c = m, -1.0, k
+    else:
+        fail(f"{label} needs (a,b,c), through, or (slope,intercept)")
+    norm = math.hypot(a, b)
+    if norm == 0:
+        fail(f"{label} has zero line normal")
+    return a / norm, b / norm, c / norm
+
+
+def line_intersection(first: tuple[float, float, float], second: tuple[float, float, float]) -> tuple[float, float] | None:
+    a1, b1, c1 = first
+    a2, b2, c2 = second
+    determinant = a1 * b2 - a2 * b1
+    if abs(determinant) < 1e-9:
+        return None
+    return ((b1 * c2 - b2 * c1) / determinant, (c1 * a2 - c2 * a1) / determinant)
+
+
+def line_relation(kind: str, first: tuple[float, float, float], second: tuple[float, float, float]) -> bool:
+    a1, b1, _ = first
+    a2, b2, _ = second
+    # Direction vectors are (b,-a).
+    dot = b1 * b2 + a1 * a2
+    cross = b1 * (-a2) - b2 * (-a1)
+    if kind == "PERPENDICULAR":
+        return abs(dot) < 1e-7
+    if kind == "PARALLEL":
+        return abs(cross) < 1e-7
+    return False
+
+
+def position_anchor(position: str | None, x: float, y: float, viewport: dict[str, Any], occupied: list[tuple[float, float]]) -> str:
+    anchors = {"N": "south", "NE": "south west", "E": "west", "SE": "north west",
+               "S": "north", "SW": "north east", "W": "east", "NW": "south east"}
+    if position in anchors:
+        return anchors[position]
+    candidates = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+    x_min, x_max = float(viewport["xMin"]), float(viewport["xMax"])
+    y_min, y_max = float(viewport["yMin"]), float(viewport["yMax"])
+    scored = []
+    for candidate in candidates:
+        dx = 0 if candidate in {"N", "S"} else (1 if candidate in {"NE", "E", "SE"} else -1)
+        dy = 0 if candidate in {"E", "W"} else (1 if candidate in {"N", "NE", "NW"} else -1)
+        edge = (x_max - x if dx > 0 else x - x_min if dx < 0 else min(x - x_min, x_max - x)) + (y_max - y if dy > 0 else y - y_min if dy < 0 else min(y - y_min, y_max - y))
+        clearance = min((math.hypot(x - ox, y - oy) for ox, oy in occupied), default=10.0)
+        scored.append((edge + clearance, candidate))
+    return anchors[max(scored)[1]]
+
+
+def label_content(item: dict[str, Any], force_math: bool = False) -> str:
+    is_math = force_math or item.get("math", False) or item.get("kind") == "equation"
+    return math_label(item["text"]) if is_math else tex(item["text"])
+
+
 def by_id(items: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for item in items:
@@ -157,8 +239,55 @@ def validate(data: dict[str, Any]) -> None:
     by_id(data.get("labels", []))
     by_id(data.get("annotations", []))
     by_id(data.get("auxiliaryLines", []))
+    for key in ("sourceFacts", "derivedFacts", "styleTokens"):
+        if key in data and not isinstance(data[key], dict):
+            fail(f"{key} must be an object")
+    source = data.get("sourceFacts", {})
+    derived = data.get("derivedFacts", {})
+    for key in set(source).intersection(derived):
+        if source[key] != derived[key]:
+            fail(f"source/derived fact parity mismatch at {key}")
+    for line_id, line in by_id(data.get("lines", [])).items():
+        line_coefficients(line, f"line.{line_id}")
     for graph in data.get("functionGraphs", []):
         samples(graph["expression"], graph["domain"], graph.get("samples", 81))
+    points = by_id(data.get("points", []))
+    lines = by_id(data.get("lines", []))
+    for component in data.get("components", []):
+        kind = component["kind"]
+        refs = component.get("refs", [])
+        if kind in {"PARALLEL", "PERPENDICULAR", "PERPENDICULAR_MARK"}:
+            if len(refs) != 2 or any(ref not in lines for ref in refs):
+                fail(f"{kind} requires two known line refs")
+            if not line_relation(kind if kind != "PERPENDICULAR_MARK" else "PERPENDICULAR", line_coefficients(lines[refs[0]], refs[0]), line_coefficients(lines[refs[1]], refs[1])):
+                fail(f"{kind} relation check failed for {refs}")
+        if kind == "INTERSECTION" and refs and len(refs) == 2 and all(ref in lines for ref in refs):
+            expected = line_intersection(line_coefficients(lines[refs[0]], refs[0]), line_coefficients(lines[refs[1]], refs[1]))
+            item = points.get(component.get("ref", ""))
+            if expected is None or not item:
+                fail(f"INTERSECTION {component.get('ref')} is not a unique line intersection")
+            if math.hypot(expected[0] - number(item["x"], "intersection.x"), expected[1] - number(item["y"], "intersection.y")) > 1e-6:
+                fail(f"INTERSECTION {component.get('ref')} does not match numeric authority")
+        if kind == "TANGENT":
+            options = component.get("options", {})
+            line_id, graph_id = options.get("lineRef"), options.get("curveRef")
+            if line_id not in lines or not graph_id:
+                fail("TANGENT requires options.lineRef and options.curveRef")
+            if "at" not in options:
+                fail("TANGENT requires options.at")
+            graph = by_id(data.get("functionGraphs", [])).get(graph_id)
+            if not graph:
+                fail(f"TANGENT curveRef {graph_id!r} is unknown")
+            tx, ty = coordinate(options["at"], "TANGENT.at")
+            evaluate = compile_expression(graph["expression"])
+            if abs(evaluate(tx) - ty) > 1e-5:
+                fail("TANGENT point is not on the referenced curve")
+            h = 1e-5
+            derivative = (evaluate(tx + h) - evaluate(tx - h)) / (2 * h)
+            a, b, _ = line_coefficients(lines[line_id], line_id)
+            slope = -a / b if abs(b) > 1e-12 else math.inf
+            if not math.isfinite(slope) or abs(slope - derivative) > 1e-3:
+                fail(f"TANGENT slope mismatch: line={slope}, derivative={derivative}")
 
 
 def component_order(data: dict[str, Any]) -> list[dict[str, Any]]:
@@ -176,6 +305,34 @@ def component_order(data: dict[str, Any]) -> list[dict[str, Any]]:
     return result
 
 
+def derive_facts(data: dict[str, Any]) -> tuple[dict[str, Any], dict[str, float]]:
+    lines = by_id(data.get("lines", []))
+    points = by_id(data.get("points", []))
+    derived: dict[str, Any] = {"lineCoefficients": {}, "intersections": {}}
+    for line_id, line in lines.items():
+        derived["lineCoefficients"][line_id] = [round(value, 12) for value in line_coefficients(line, line_id)]
+    for component in data.get("components", []):
+        if component["kind"] == "INTERSECTION" and len(component.get("refs", [])) == 2:
+            first, second = component["refs"]
+            if first in lines and second in lines:
+                hit = line_intersection(line_coefficients(lines[first], first), line_coefficients(lines[second], second))
+                if hit is not None:
+                    derived["intersections"][component.get("ref", f"{first}_{second}")] = [round(hit[0], 12), round(hit[1], 12)]
+    samples_bounds: list[tuple[float, float]] = []
+    for graph in data.get("functionGraphs", []):
+        samples_bounds.extend(samples(graph["expression"], graph["domain"], graph.get("samples", 81)))
+    samples_bounds.extend((number(point["x"], point["id"]), number(point["y"], point["id"])) for point in points.values())
+    if samples_bounds:
+        xs, ys = zip(*samples_bounds)
+        margin_x = max(0.2, (max(xs) - min(xs)) * 0.08)
+        margin_y = max(0.2, (max(ys) - min(ys)) * 0.08)
+        suggestion = {"xMin": round(min(xs) - margin_x, 6), "xMax": round(max(xs) + margin_x, 6), "yMin": round(min(ys) - margin_y, 6), "yMax": round(max(ys) + margin_y, 6)}
+    else:
+        suggestion = {key: number(data["viewport"][key], f"viewport.{key}") for key in ("xMin", "xMax", "yMin", "yMax")}
+    derived["viewportSuggestion"] = suggestion
+    return derived, suggestion
+
+
 def emit(data: dict[str, Any]) -> str:
     vp = data["viewport"]
     axes = data.get("axes", {})
@@ -183,6 +340,12 @@ def emit(data: dict[str, Any]) -> str:
     y_min, y_max = number(vp["yMin"], "yMin"), number(vp["yMax"], "yMax")
     width = number(vp.get("width", 10), "viewport.width")
     height = number(vp.get("height", 7), "viewport.height")
+    geometry_scale = data["visualType"] in {"coordinate_geometry", "line_circle_geometry", "explanation_card"}
+    aspect = "axis equal image" if geometry_scale else "scale only axis"
+    if not geometry_scale:
+        # Keep graph SVGs intrinsically mobile-safe; graph readability comes
+        # from the viewport and samples, not a fixed geometric unit scale.
+        width = min(width, 9.0)
     axis_lines = "middle" if axes.get("visible", True) else "none"
     grid = "major" if axes.get("grid", True) else "none"
     x_label = tex(axes.get("xLabel", "x"))
@@ -193,13 +356,17 @@ def emit(data: dict[str, Any]) -> str:
         r"\documentclass{article}",
         r"\usepackage[margin=1cm]{geometry}",
         r"\def\pgfsysdriver{pgfsys-dvisvgm.def}",
+        r"\usepackage{fontspec}",
+        r"\setmainfont{Malgun Gothic}",
+        r"\setsansfont{Malgun Gothic}",
+        r"\usepackage{amsmath}",
         r"\usepackage{amssymb}",
         r"\usepackage{pgfplots}",
         r"\pgfplotsset{compat=1.18}",
         r"\pagestyle{empty}",
         r"\begin{document}",
         rf"\begin{{tikzpicture}}",
-        rf"\begin{{axis}}[width={fmt(width)}cm,height={fmt(height)}cm,axis equal image,axis lines={axis_lines},grid={grid},xmin={fmt(x_min)},xmax={fmt(x_max)},ymin={fmt(y_min)},ymax={fmt(y_max)},xlabel={{{x_label}}},ylabel={{{y_label}}},clip=true]",
+        rf"\begin{{axis}}[width={fmt(width)}cm,height={fmt(height)}cm,{aspect},axis lines={axis_lines},grid={grid},xmin={fmt(x_min)},xmax={fmt(x_max)},ymin={fmt(y_min)},ymax={fmt(y_max)},xlabel={{{x_label}}},ylabel={{{y_label}}},clip=true]",
     ]
     points = by_id(data.get("points", []))
     lines_by_id = by_id(data.get("lines", []))
@@ -210,6 +377,7 @@ def emit(data: dict[str, Any]) -> str:
     annotations = by_id(data.get("annotations", []))
     auxiliaries = by_id(data.get("auxiliaryLines", []))
     emphasis = {item["target"]: item for item in data.get("emphasis", [])}
+    occupied: list[tuple[float, float]] = []
     for component in component_order(data):
         kind = component["kind"]
         ref = component.get("ref")
@@ -220,7 +388,13 @@ def emit(data: dict[str, Any]) -> str:
             if not item:
                 fail(f"{kind} refers to unknown point {ref!r}")
             st = emphasis.get(ref, item).get("color", "black")
-            lines.append(rf"\addplot[only marks,mark=*,mark size=1.8pt,{st}] coordinates {{({fmt(item['x'])},{fmt(item['y'])})}};")
+            px, py = number(item["x"], ref), number(item["y"], ref)
+            if kind == "INTERSECTION" and component.get("refs") and all(r in lines_by_id for r in component["refs"]):
+                hit = line_intersection(line_coefficients(lines_by_id[component["refs"][0]], component["refs"][0]), line_coefficients(lines_by_id[component["refs"][1]], component["refs"][1]))
+                if hit is not None:
+                    px, py = hit
+            lines.append(rf"\addplot[only marks,mark=*,mark size=1.8pt,{st}] coordinates {{({fmt(px)},{fmt(py)})}};")
+            occupied.append((px, py))
         elif kind == "POINT_LABEL":
             item = points.get(ref) or labels.get(ref)
             if not item:
@@ -231,18 +405,20 @@ def emit(data: dict[str, Any]) -> str:
             else:
                 x, y = number(item["x"], ref), number(item["y"], ref)
                 text = item.get("label", ref)
-            lines.append(rf"\node[anchor={tex(item.get('anchor','south west'))}] at (axis cs:{fmt(x)},{fmt(y)}) {{{tex(text)}}};")
+            anchor = tex(item.get("anchor")) if item.get("anchor") else position_anchor(item.get("position", "AUTO"), x, y, vp, occupied)
+            rendered = label_content({"text": text, "kind": item.get("kind"), "math": item.get("math", False)})
+            lines.append(rf"\node[anchor={anchor}] at (axis cs:{fmt(x)},{fmt(y)}) {{{rendered}}};")
+            occupied.append((x, y))
         elif kind == "LINE":
             item = lines_by_id.get(ref)
             if not item:
                 fail(f"LINE refers to unknown line {ref!r}")
             lo, hi = item.get("domain", [x_min, x_max])
             lo, hi = number(lo, "line.domain[0]"), number(hi, "line.domain[1]")
-            pts = [(x, number(item["slope"], "slope") * x + number(item["intercept"], "intercept")) for x in [lo + (hi-lo)*i/80 for i in range(81)]]
+            a, b, c = line_coefficients(item, ref)
+            pts = [(x, (-a * x - c) / b) for x in [lo + (hi-lo)*i/80 for i in range(81)]] if abs(b) > 1e-12 else [(number(-c / a, ref), y_min + (y_max-y_min)*i/80) for i in range(81)]
             coords = " ".join(f"({fmt(x)},{fmt(y)})" for x, y in pts)
             lines.append(rf"\addplot[{style(item.get('style'), 'blue')}] coordinates {{{coords}}};")
-            if item.get("equation"):
-                lines.append(rf"\node[anchor=south west] at (axis cs:{fmt(lo)},{fmt(number(item['slope'],'slope')*lo+number(item['intercept'],'intercept'))}) {{{math_label(item['equation'])}}};")
         elif kind == "SEGMENT":
             item = segments.get(ref)
             if not item:
@@ -270,8 +446,10 @@ def emit(data: dict[str, Any]) -> str:
             if not item:
                 fail(f"{kind} refers to unknown label {ref!r}")
             x, y = coordinate(item["at"], ref)
-            label = math_label(item["text"]) if item.get("kind") == "equation" else tex(item["text"])
-            lines.append(rf"\node[anchor={tex(item.get('anchor','south west'))}] at (axis cs:{fmt(x)},{fmt(y)}) {{{label}}};")
+            anchor = tex(item.get("anchor")) if item.get("anchor") else position_anchor(item.get("position", "AUTO"), x, y, vp, occupied)
+            label = label_content(item)
+            lines.append(rf"\node[anchor={anchor}] at (axis cs:{fmt(x)},{fmt(y)}) {{{label}}};")
+            occupied.append((x, y))
         elif kind == "AUXILIARY_LINE":
             item = auxiliaries.get(ref)
             if not item:
@@ -287,10 +465,38 @@ def emit(data: dict[str, Any]) -> str:
             if not box:
                 fail("CONDITION_BOX requested without conditionBox")
             x, y = coordinate(box["at"], "conditionBox.at")
-            box_text = tex(box["text"]).replace("\n", r"\\")
-            lines.append(rf"\node[draw,rounded corners,align=left,anchor={tex(box.get('anchor','north west'))},text width={fmt(number(box.get('width',4),'conditionBox.width'))}cm] at (axis cs:{fmt(x)},{fmt(y)}) {{{box_text}}};")
+            if box.get("lines"):
+                rendered_lines = []
+                for row in box["lines"]:
+                    rendered_lines.append(math_label(row["text"]) if row.get("math") else tex(row["text"]))
+                box_text = r"\shortstack[l]{" + r"\\[2pt]".join(rendered_lines) + "}"
+            else:
+                box_text = tex(box.get("text", "")).replace("\n", r"\\[2pt]")
+            box_width = number(box.get("width", box.get("maxWidth", 3.8)), "conditionBox.width")
+            box_width = max(number(box.get("minWidth", 2.2), "conditionBox.minWidth"), box_width)
+            if "maxWidth" in box:
+                box_width = min(box_width, number(box["maxWidth"], "conditionBox.maxWidth"))
+            padding = number(box.get("padding", 3), "conditionBox.padding")
+            lines.append(rf"\node[draw,rounded corners,inner sep={fmt(padding)}pt,align=left,anchor={tex(box.get('anchor','north west'))},text width={fmt(box_width)}cm] at (axis cs:{fmt(x)},{fmt(y)}) {{{box_text}}};")
+        elif kind in {"PARALLEL", "PERPENDICULAR"}:
+            refs = component.get("refs", [])
+            if len(refs) != 2:
+                fail(f"{kind} requires two refs")
+            lines.append(rf"% verified relation {kind}: {tex(refs[0])} / {tex(refs[1])}")
+        elif kind == "TANGENT":
+            options = component.get("options", {})
+            lines.append(rf"% verified tangent: {tex(options.get('lineRef',''))} / {tex(options.get('curveRef',''))}")
+        elif kind == "LENGTH_LABEL":
+            item = labels.get(ref) or annotations.get(ref)
+            if not item:
+                fail(f"LENGTH_LABEL refers to unknown label {ref!r}")
+            x, y = coordinate(item["at"], ref)
+            lines.append(rf"\node[anchor={tex(item.get('anchor','south west'))}] at (axis cs:{fmt(x)},{fmt(y)}) {{{label_content(item, True)}}};")
         elif kind == "PERPENDICULAR_MARK":
             opt = component.get("options", {})
+            refs = component.get("refs", [])
+            if len(refs) != 2:
+                fail("PERPENDICULAR_MARK requires verified refs")
             x, y = coordinate(opt.get("at", [0, 0]), "PERPENDICULAR_MARK.at")
             size = number(opt.get("size", 0.2), "PERPENDICULAR_MARK.size")
             lines.append(rf"\node[draw,inner sep=1pt,font=\scriptsize] at (axis cs:{fmt(x+size)},{fmt(y+size)}) {{$\square$}};")
@@ -314,6 +520,7 @@ def main() -> None:
     args = parser.parse_args()
     data = json.loads(args.input.read_text(encoding="utf-8"))
     validate(data)
+    derived, suggestion = derive_facts(data)
     canonical = json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     output = emit(data)
     args.tex.parent.mkdir(parents=True, exist_ok=True)
@@ -327,6 +534,9 @@ def main() -> None:
         "objectCount": sum(len(data.get(k, [])) for k in ("points", "lines", "segments", "circles", "functionGraphs", "labels", "annotations", "auxiliaryLines")),
         "componentKinds": [component["kind"] for component in component_order(data)],
         "numericAuthority": "python-sampled-coordinates",
+        "derivedFacts": derived,
+        "aspectPolicy": "equal-unit" if data["visualType"] in {"coordinate_geometry", "line_circle_geometry", "explanation_card"} else "readability",
+        "styleTokens": data.get("styleTokens", STYLE_TOKENS),
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
