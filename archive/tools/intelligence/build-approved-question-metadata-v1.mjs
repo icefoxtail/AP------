@@ -221,14 +221,27 @@ function buildMetadata() {
             standardCourse,
             standardUnitKey,
             standardUnit,
+            ...(carryForward?.curriculumKey ? { curriculumKey: carryForward.curriculumKey } : {}),
+            ...(carryForward?.courseKey ? { courseKey: carryForward.courseKey } : {}),
+            ...(carryForward?.L1 ? { L1: carryForward.L1 } : {}),
+            ...(carryForward?.L2 ? { L2: carryForward.L2 } : {}),
+            ...(carryForward?.L3 ? { L3: carryForward.L3 } : {}),
+            ...(carryForward?.L4 ? { L4: carryForward.L4 } : {}),
+            ...(Array.isArray(carryForward?.secondaryConceptKeys) ? { secondaryConceptKeys: carryForward.secondaryConceptKeys } : {}),
+            ...(carryForward?.curriculumApplicability ? { curriculumApplicability: carryForward.curriculumApplicability } : {}),
+            ...(carryForward?.defaultSelectable !== undefined ? { defaultSelectable: carryForward.defaultSelectable } : {}),
             subUnitKey,
             subUnit,
             conceptClusterKey,
             problemTypeKey,
             templateKey,
             difficultyBucket,
+            ...(carryForward?.difficultyConfidence ? { difficultyConfidence: carryForward.difficultyConfidence } : {}),
+            ...(carryForward?.difficultyBoundaryFlag ? { difficultyBoundaryFlag: carryForward.difficultyBoundaryFlag } : {}),
+            ...(carryForward?.legacyLevelCompatibility ? { legacyLevelCompatibility: carryForward.legacyLevelCompatibility } : {}),
             tagConfidence: carryForward?.tagConfidence && !reviewed ? carryForward.tagConfidence : (semanticallyReviewed ? 'high' : String(classificationData.confidence || 'rule_inferred')),
             tagStatus: carryForward?.tagStatus && !reviewed ? carryForward.tagStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_subunit_concept_partial'),
+            ...(carryForward?.reviewStatus ? { reviewStatus: carryForward.reviewStatus } : {}),
             metadataStatus: carryForward?.metadataStatus && !reviewed ? carryForward.metadataStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_partial_with_explicit_holds'),
             fieldStatus,
             metadataRevision: revision,
@@ -320,7 +333,7 @@ function runtimeSource(report) {
     if (!meta) return q;
     const merged = { ...q };
     const conflicts = {};
-    for (const field of ['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','conceptClusterKey','problemTypeKey','templateKey','difficultyBucket','tagConfidence','tagStatus','metadataStatus','metadataRevision']) {
+    for (const field of ['curriculumKey','courseKey','L1','L2','L3','L4','secondaryConceptKeys','curriculumApplicability','defaultSelectable','standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','conceptClusterKey','problemTypeKey','templateKey','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','tagConfidence','tagStatus','reviewStatus','metadataStatus','metadataRevision']) {
       const sourceValue = merged[field];
       const metadataValue = meta[field];
       const sourceText = sourceValue === undefined || sourceValue === null ? '' : String(sourceValue).trim();
