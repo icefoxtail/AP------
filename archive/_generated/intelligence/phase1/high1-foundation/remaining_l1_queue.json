@@ -1,8 +1,8 @@
 {
   "summary": {
     "schemaVersion": "metadata-foundation-h1-remaining-l1-fresh-queue-v1",
-    "generatedAt": "2026-09-16T06:35:01.472Z",
-    "sourceCommit": "130e59de5a948d7de3c276cd50b1d06e4ad4eec1",
+    "generatedAt": "2026-09-16T07:00:21.390Z",
+    "sourceCommit": "81b6a64789f77b1f555d6b435707f3b3d7a9f70d",
     "freshScan": {
       "sourceRoot": "archive/exams/original/high/h1/**/*.js",
       "files": 113,
@@ -13,24 +13,15 @@
       "H15-GEOMETRY_EQUATIONS": 68,
       "H22-GEOMETRY_EQUATIONS": 27,
       "H15-SET": 156,
-      "H22-SET": 40
+      "H22-SET": 40,
+      "H15-POLYNOMIAL": 105
     },
-    "completedUidCount": 291,
-    "remainingCanonicalRows": 2205,
+    "completedUidCount": 396,
+    "remainingCanonicalRows": 2100,
     "unmappedRows": 2,
     "remainingL1Queue": [
       {
         "order": 1,
-        "queueId": "H15-POLYNOMIAL",
-        "curriculum": "2015",
-        "courseKey": "수학(상)",
-        "canonicalL1": "다항식",
-        "count": 105,
-        "sourceFileCount": 14,
-        "status": "INCOMPLETE_L1"
-      },
-      {
-        "order": 2,
         "queueId": "H15-EQUATIONS_INEQUALITIES",
         "curriculum": "2015",
         "courseKey": "수학(상)",
@@ -40,7 +31,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 3,
+        "order": 2,
         "queueId": "H15-GEOMETRY_REMAINING",
         "curriculum": "2015",
         "courseKey": "수학(상)",
@@ -50,7 +41,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 4,
+        "order": 3,
         "queueId": "H15-SET_REMAINING",
         "curriculum": "2015",
         "courseKey": "수학(하)",
@@ -60,7 +51,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 5,
+        "order": 4,
         "queueId": "H15-FUNCTIONS",
         "curriculum": "2015",
         "courseKey": "수학(하)",
@@ -70,7 +61,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 6,
+        "order": 5,
         "queueId": "H15-COUNTING",
         "curriculum": "2015",
         "courseKey": "수학(하)",
@@ -80,7 +71,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 7,
+        "order": 6,
         "queueId": "H22-C1-POLYNOMIAL",
         "curriculum": "2022",
         "courseKey": "공통수학1",
@@ -90,7 +81,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 8,
+        "order": 7,
         "queueId": "H22-C1-EQUATIONS_INEQUALITIES",
         "curriculum": "2022",
         "courseKey": "공통수학1",
@@ -100,7 +91,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 9,
+        "order": 8,
         "queueId": "H22-C1-COUNTING",
         "curriculum": "2022",
         "courseKey": "공통수학1",
@@ -110,7 +101,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 10,
+        "order": 9,
         "queueId": "H22-MATRIX",
         "curriculum": "2022",
         "courseKey": "공통수학1",
@@ -120,7 +111,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 11,
+        "order": 10,
         "queueId": "H22-GEOMETRY_REMAINING",
         "curriculum": "2022",
         "courseKey": "공통수학2",
@@ -130,7 +121,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 12,
+        "order": 11,
         "queueId": "H22-SET_REMAINING",
         "curriculum": "2022",
         "courseKey": "공통수학2",
@@ -140,7 +131,7 @@
         "status": "INCOMPLETE_L1"
       },
       {
-        "order": 13,
+        "order": 12,
         "queueId": "H22-FUNCTIONS",
         "curriculum": "2022",
         "courseKey": "공통수학2",
@@ -151,159 +142,115 @@
       }
     ],
     "selectedNext": {
-      "queueId": "H15-POLYNOMIAL",
-      "canonicalL1": "다항식",
+      "order": 1,
+      "queueId": "H15-SA-10",
       "curriculum": "2015",
       "courseKey": "수학(상)",
-      "count": 105,
-      "sourceFileCount": 14,
-      "currentStandardUnitKeys": {
-        "H15-SA-03": 21,
-        "H15-SA-01": 44,
-        "H15-SA-02": 40
-      }
+      "currentStandardUnitKey": "H15-SA-10",
+      "canonicalL1": "도형의 방정식",
+      "label": "직선의 방정식",
+      "count": 63,
+      "sourceFileCount": 19,
+      "status": "INCOMPLETE_PRIORITY_L1",
+      "priorityReason": "2학기 중간고사 geometry 범위"
     },
-    "uidSetSha": "c27017ce465d25c15834564d9985609aa51c5ded91e967c55fd23da206c7adfe"
+    "uidSetSha": "c27017ce465d25c15834564d9985609aa51c5ded91e967c55fd23da206c7adfe",
+    "urgentMidtermPriority": [
+      {
+        "order": 1,
+        "queueId": "H15-SA-10",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "currentStandardUnitKey": "H15-SA-10",
+        "canonicalL1": "도형의 방정식",
+        "label": "직선의 방정식",
+        "count": 63,
+        "sourceFileCount": 19,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 2,
+        "queueId": "H15-SA-11",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "currentStandardUnitKey": "H15-SA-11",
+        "canonicalL1": "도형의 방정식",
+        "label": "원의 방정식",
+        "count": 95,
+        "sourceFileCount": 24,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 3,
+        "queueId": "H15-SA-12",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "currentStandardUnitKey": "H15-SA-12",
+        "canonicalL1": "도형의 방정식",
+        "label": "도형의 이동",
+        "count": 72,
+        "sourceFileCount": 21,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 4,
+        "queueId": "H22-C2-02",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-02",
+        "canonicalL1": "도형의 방정식",
+        "label": "직선의 방정식",
+        "count": 31,
+        "sourceFileCount": 9,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 5,
+        "queueId": "H22-C2-03",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-03",
+        "canonicalL1": "도형의 방정식",
+        "label": "원의 방정식",
+        "count": 45,
+        "sourceFileCount": 9,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 6,
+        "queueId": "H22-C2-04",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-04",
+        "canonicalL1": "도형의 방정식",
+        "label": "도형의 이동",
+        "count": 24,
+        "sourceFileCount": 7,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "queueId": "H15-SB-01",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "currentStandardUnitKey": "H15-SB-01",
+        "canonicalL1": "집합과 명제",
+        "label": "집합",
+        "count": 156,
+        "status": "ALREADY_COMPLETE"
+      },
+      {
+        "queueId": "H22-C2-05",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-05",
+        "canonicalL1": "집합과 명제",
+        "label": "집합",
+        "count": 40,
+        "status": "ALREADY_COMPLETE"
+      }
+    ]
   },
   "queue": [
-    {
-      "queueId": "H15-POLYNOMIAL",
-      "curriculum": "2015",
-      "courseKey": "수학(상)",
-      "canonicalL1": "다항식",
-      "count": 105,
-      "currentStandardUnitKeys": {
-        "H15-SA-03": 21,
-        "H15-SA-01": 44,
-        "H15-SA-02": 40
-      },
-      "sourceFiles": [
-        "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js",
-        "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
-        "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
-        "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js",
-        "original/high/h1/2final/22_제일고_2학기_기말_고1_기출.js",
-        "original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js"
-      ],
-      "uids": [
-        "qid_v1_001962b3c8131aa6e7eb564b2e802d95871374cac8e5db91cce53fcdeb993891",
-        "qid_v1_002dfb0aef014c024b03d93fd7897ffd03482fb56be8146a1f6d99cfdbc035da",
-        "qid_v1_021dde5d08a5c729376894bf0b3f1012193fb65147d089799eeafc99ec74ac51",
-        "qid_v1_0313f749236d56690ece056431b5bda52da6e9b5189d75c4cd1fa418537be57c",
-        "qid_v1_04feafe5354072d798c30a9482bfbb9870bc7d7e6c6e39a68c87cc429fa62db5",
-        "qid_v1_06aa0b040a7f5303828c562a6cfbae35375a5abb2b908fe27f033e2a82481d9d",
-        "qid_v1_0d1689aafbf55eca204adae00f6c55662e7f63e0058b63e43205abba5b011424",
-        "qid_v1_0dfda33af0430e79ca3fdb54f4cb45329e1445b80f069bcb33a2015488f80fc6",
-        "qid_v1_0e425abc310063a482b08d897646d95576a531d512f160dcb90695a331ab08c7",
-        "qid_v1_0f498504c2ab0ad8604fbff8b1fe398cb4551f88aa6f15f80b634be2f3fe912c",
-        "qid_v1_1084c7d0892dcd914c533641fd648e88f453f15d72503697c94d2f643930ad47",
-        "qid_v1_130072bcb5a979567915cc9f60f51a0e302b94fc02744693aa3a19761a6d52b3",
-        "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
-        "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
-        "qid_v1_1c3e81f73186e605ad3785c8d753f21b5c8864749bd7bd6ded3e19132d270714",
-        "qid_v1_1d466fbb2e06fef8d1ba28bd75e5650b5bf2b96047f6706021f24d7d5a8c8432",
-        "qid_v1_24cbade0454eab3e022cfe546c8dd57cc4022c0c284cf3b367c66df446f70e55",
-        "qid_v1_25ac3f41d20b2ad67ef5f2f29bb5a2b4f2b4a1535a21cc4c39f46a2c5f026543",
-        "qid_v1_271ae4da63f6aad5eb5907016c57fb333b3dec9e3d144b9fde570e98308f36b9",
-        "qid_v1_27872e02d093266766c343ed4e6cd0735a44f7a60e955d62c9dbbe6b9ced7242",
-        "qid_v1_3141603e392470b3bde39f91dce6b68483c93f2959b588992dff4090da1a89df",
-        "qid_v1_33d4d9d4621635c22edf07fc0e35eb626c7beb71ef9b1425ce61e77cf708f7a7",
-        "qid_v1_34e872d2bdfe91208ac5b16baad9c70735778a90c50aa12996a25f001e5f562a",
-        "qid_v1_37b93301408d72343acd8d69e8cdfe93c981508a048a4c3c9127adad140b1662",
-        "qid_v1_3834bc1aa017b5f86bad1aea82e0f6b51b086ca57cadc3c67624ad8240efbb11",
-        "qid_v1_38b561f2aed6f446397ee91c3f1744f2109c8cf49cea8a795242699bb971d304",
-        "qid_v1_3bce5da9e542fbb4bcdd3f5ded87682d26eeb0196986ba4d662babd08d439bb7",
-        "qid_v1_3c977f4a69f054da691a3f24ca99b9c8018bf64de771f11e519adff687317583",
-        "qid_v1_3d11097056a1f45c39560cfff71d94c24a8ae5dc785097a76c212c1ee5fdef37",
-        "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
-        "qid_v1_445d8b625362e9f629d66241bdd8177b6aeca118fc2be46130b75da9032aef17",
-        "qid_v1_46878df0add5618569fc7b2563d1159bf2527a7f17feb7d186d11f034899482d",
-        "qid_v1_46dd9a244af5eceab8322b4efd90f6564ae0e5d1a2d89fb0f5aa5579744974cd",
-        "qid_v1_4e9934202ea69183b8f7b2c27fcf2124e0c3f5e4020ed2d6a9a29fd83864f408",
-        "qid_v1_4f63d6d3373701ef80ff7af3d52e019c3f579f0d09c5122c1537f85eddc4fc4e",
-        "qid_v1_56c848f12eed52e96a340dfbc978189cc4008ccbc62845cb0348674ba44fc0ef",
-        "qid_v1_58e387824cd804671c59f8848d617c9b0483e54010a7d0e96457dcfff4457a35",
-        "qid_v1_5a440d4b0541d072a2a7537d9c76ad003ee16a1323366231d61275f1b13f789d",
-        "qid_v1_5eb428c1a8f5bd0cd94f01f35639eaa3e48d9021b9657815b8ebacbb25e66eab",
-        "qid_v1_5ebf91ee4dcffb8fef64d4f567cfb38bbb8a7f0073d7adb3138760eadfcdb20a",
-        "qid_v1_5fabedac33034b810f24a4047d9a4855f0f3a51be94a18355c643f5cf4c5418e",
-        "qid_v1_60e3f418926d8b5895788d751a655e1cfc810be7baa3487c086cc7c8908c7bd4",
-        "qid_v1_65454c398b883d71b6dcf6b7bd8f15ea1bbbe935649f44d22a1da5ff36cce773",
-        "qid_v1_66a1d4e036dd75c532c1b069af8ed373671d45f2f1d47afe13bb27986d91a742",
-        "qid_v1_674bbb4c9daaa21abbddc6e3a65ce31d579ba56ff286823603f8347ee94aa5c6",
-        "qid_v1_68d4efa83f2ee94b992ce49e34f567f90c5d7e8495d784704961ca3bf81af2bf",
-        "qid_v1_6a8c89afa5399b849ffc69fdfa517366597be8e97be5a8179930cef5d08f1939",
-        "qid_v1_6b420570a404628c81b12e3f89ef1b673130907f1e37d27058840684d435525f",
-        "qid_v1_6d862c854917e989a07bffeb2b654074119565b9a34d7a43812cd6f57bdfd759",
-        "qid_v1_6df0249ccdb6b1b0e899f0b2bbd2653f35700e0a322f3a4f90bd135cb0b94754",
-        "qid_v1_6e9c9eb4fb999a24aa4d80579647db2323896c622a8391c4cc290f328ce94917",
-        "qid_v1_70985d095c9990c24e4b9b677069f263a6cbf8e08f2df32c2383f3cf57b95112",
-        "qid_v1_71cee9311e06f65ac055b10493a43d2252e66967dde16d5febac1f923afe023a",
-        "qid_v1_78d4b01896491e11e0d194578453adfb891e762dc7bc833c455c8b2e7ae469a4",
-        "qid_v1_7bf29f42a77119d09304069f3fbc2960bc628697fb918c2f3d4e11bafa721762",
-        "qid_v1_7cfb87bf44872d6dd95af3dcaf717130893dc1dcab789665e4863a388166bf1f",
-        "qid_v1_7d887c7038e17b63b7815a83df38f3de93288816bece55217e86162730c3ff1e",
-        "qid_v1_8447ea96b4d85fbb8c543a12fd55008f007252f9ef49042488bf0cf9ddc839e9",
-        "qid_v1_84a0c8078805c81477e667b0139f58ee687d6673741326160d84bf7d7eeda102",
-        "qid_v1_84d68b0fb99db6d2917a4229f615c9bcac74bc23dfea8744f4d4ce1301e5f24c",
-        "qid_v1_86210102d59b232d1dc05ab5989daa2898df431b2fad9a1215b9fd2749975d11",
-        "qid_v1_86685097e2580dde9a083a0f927895e11b29c3018281a4b5b86db82f8772a053",
-        "qid_v1_87ad079d1c292383bb525712fb4c03a588a625e9f291e716ba4fc80628ee9faa",
-        "qid_v1_8a78678038a93bcd90e970f050d7823aa08b8bbf584b30e5768fc7c09413da41",
-        "qid_v1_8a99717b0ce829486f2edc467541308456a823e0d5a439b104fc949c3aacdac2",
-        "qid_v1_8af06999d1a0b438d90a0643d1c241e20c11317b78164ec7e057c5e1720a6960",
-        "qid_v1_91644f20ac71a305bdb493ce8470373f82a3e6dd7d03fbc4acb5368c1eaeb500",
-        "qid_v1_9874925214839a6e386145e469cd109acca849193b87c1ee810c547c626f264c",
-        "qid_v1_9965efcd43ab0e472b178caafc626c85e371dbf59bfe6911a0f98c2d3495e5e9",
-        "qid_v1_99ec988e292c053ceeeedd3fce5ba467519c4f498a34cef19576236a41b008d6",
-        "qid_v1_a02b84f0496cfe03cd37e02d341ab1919b84af4619b1242d6d0c6fa713b5e9d8",
-        "qid_v1_a069a7cf45962ad79c5afbf255d205ea5aa097474a9ef3974895aa481475fc98",
-        "qid_v1_a629eeff8309a667131549fc54883f7d5c5c3006e7a6158c25457ab0f62c581e",
-        "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
-        "qid_v1_aaeeebc1f4e666cef32bc03c6f4a8151f56edb796f6cacf0f91ceefd3ab83624",
-        "qid_v1_ac20c73f701b575bb16e05a40b18120bfcca697b47837de159084e2d9f6e01eb",
-        "qid_v1_b31a42219516d03827dd14717ba936488fc3e2e14a083a325e1feea0b53380bc",
-        "qid_v1_b3572fb504cda7b5195b03c0917f7f7951b3565c53c629ee560f15a244cc6ed3",
-        "qid_v1_b6d649209ea7f09165ac3bcf9b58581fa3119802a18873e12ed6c8535a35c3a4",
-        "qid_v1_b7969c1be96032aa33b14559233211fceb796a9bfad20cf75ec516b11dd0a75e",
-        "qid_v1_b89b39ef15b0ea72e49e7e2ffa532eb42b75effcc7c63c142914fd39b73cd970",
-        "qid_v1_bae5b2c590c5a426ce93613835dad90a7a089b6f41ea731826b37f33647dae1f",
-        "qid_v1_bd12593a1ceeac51d514cc6532afd8a18a792e9758eb5240df252059d76ec605",
-        "qid_v1_bd278f69cb7d7e1c24bd08a46fa5ac8167108441fd6775b63e7e51280061645a",
-        "qid_v1_c5452cc9bfd7df4549f8e92d83f6fe6db1e4d6dd6aaa48471d22c27e198521a4",
-        "qid_v1_c58815c406197ef10cb0cbf62e9808d120db8d83d0a37e871b826af5bb5beae3",
-        "qid_v1_c685e18a842709b75639cc8365e9b8c1e32c04b11d2658f0fa70d01558b25c37",
-        "qid_v1_c6d1e8fbaaa8b69271395ae45c8c30016cf6595b7f942f3705a2240ecf1cdf93",
-        "qid_v1_c7608dfdab860c14a63532405d818283fbebe5329492321f5125a7fd29be505d",
-        "qid_v1_c99ae2573cbf8deca2a78887f6f53848f952c89bec0c6739fe1b5f760113e169",
-        "qid_v1_cc7b910744d78f0ff8697711b93deee16b6cf9901f8a297e9ec5dcb8973d51bd",
-        "qid_v1_d0a41c96083b56e59d02c8d3fcda0231fb22d377ed236def500e06f9e19434d2",
-        "qid_v1_d1a4c54c0494d3fe14472f0979da232260b819f4167e3eb89f1159c7d6470f80",
-        "qid_v1_d47cda8310af149af98163b6b0fb7f8921e2c6e6496b66ebe962e33933cb6937",
-        "qid_v1_d521048894cfb5b2686b0d682b06fc8caf6f9caca28ac5eb1df2551ae6901a50",
-        "qid_v1_de484b42a863e85eafb89fc7895d79e51080c4838b70fb351b755b0b6e34b0fe",
-        "qid_v1_df8a358ef1b795699bc63a0f8f6bfc1a4b498e81aea22d040052535fc0cf7d92",
-        "qid_v1_eb79ae53518628ba74a3c864ce2d2c4f4490e048cdb7e7fc2c7e5abcc7c0eb46",
-        "qid_v1_ebc35db1f50235c2ac00d2ce9390521019b3a00f8eb92f91d4b110d97333daef",
-        "qid_v1_f032900137475d0ed240e089e045895c1a25dc0defba3a849d3c30669c65e159",
-        "qid_v1_f4b5481527f31883d9df76d9fb55a3fc3058d42eb6788d1e5e72b0d719ba76b3",
-        "qid_v1_f6750759085dc447aa47611a8133d6f2966cc9cc7a74de029234ae949280995d",
-        "qid_v1_f6fc89187a9f7f32fbf752f6a1306ff1dc9333514e693bd5d93a2bfc5b140f7e",
-        "qid_v1_f7f70eda19a970ade8f9a52734a998cd7dce928e7d864065c8d403d576ac1ac4",
-        "qid_v1_f8c35d172d6063ec318efa3530350eaab4fa0e8ef3bac0601887095f3510a0e5"
-      ],
-      "order": 1,
-      "sourceFileCount": 14,
-      "status": "INCOMPLETE_L1"
-    },
     {
       "queueId": "H15-EQUATIONS_INEQUALITIES",
       "curriculum": "2015",
@@ -602,7 +549,7 @@
         "qid_v1_ffa8da29ec61196bd9293f78c65577dc087ec7b1ff6223fe9669f735a796c841",
         "qid_v1_ffe6753a424ceabcb1b5e7e85711ee95aa24663689664017c147662f31c3b13b"
       ],
-      "order": 2,
+      "order": 1,
       "sourceFileCount": 33,
       "status": "INCOMPLETE_L1"
     },
@@ -882,7 +829,7 @@
         "qid_v1_ff5dfa443d5a51268301fca216e40001a38ad28ac31f566ba9d716a848fdfe61",
         "qid_v1_ff8ee8cdd1bbb6db552708fec770ce5f49cfd3190beb8f1e4ae20304470243b2"
       ],
-      "order": 3,
+      "order": 2,
       "sourceFileCount": 31,
       "status": "INCOMPLETE_L1"
     },
@@ -1078,7 +1025,7 @@
         "qid_v1_ff3c3ee70bc833ed9a55d38273db5ab93cf8a26d838ad4e7d4da1ef5d81716e6",
         "qid_v1_ff5cf49e673811cc5188127341e9646b441818d8e056fd5ad0c79b530f70516a"
       ],
-      "order": 4,
+      "order": 3,
       "sourceFileCount": 29,
       "status": "INCOMPLETE_L1"
     },
@@ -1594,7 +1541,7 @@
         "qid_v1_ff9763d664750ea5d2f8bf553ef8e5f91e8144f0871df9945d4ab3a120df41cc",
         "qid_v1_ffa106018f49828255f49445f7c92be24c1e11208b611a0f01a5bd19700e49c7"
       ],
-      "order": 5,
+      "order": 4,
       "sourceFileCount": 45,
       "status": "INCOMPLETE_L1"
     },
@@ -1814,7 +1761,7 @@
         "qid_v1_f9edd3c53964011a484c07844088d4ae9fc644d242a0e105088a1b798c33bd0e",
         "qid_v1_fda5f330d846ab951bd2a8cd18c414dd57541b70142f88f104b9d6c04b6c8c28"
       ],
-      "order": 6,
+      "order": 5,
       "sourceFileCount": 22,
       "status": "INCOMPLETE_L1"
     },
@@ -1961,7 +1908,7 @@
         "qid_v1_fb65c21a6e25a9407c5c2c77795280c30b2471b802a1183829074bcccf4e94a3",
         "qid_v1_fded5d00e48101af4eaba9d6550e186067e3e55dd449bda64bc8a5ee1549bccf"
       ],
-      "order": 7,
+      "order": 6,
       "sourceFileCount": 16,
       "status": "INCOMPLETE_L1"
     },
@@ -2345,7 +2292,7 @@
         "qid_v1_ff801ad2de59f6558d04b7f8b8bcd527891e3a131c9dce8705cf15ae1825130d",
         "qid_v1_fffebe353b1c401615e553b592a0851e65614349e1497fda4d6a68dde8a29fcb"
       ],
-      "order": 8,
+      "order": 7,
       "sourceFileCount": 30,
       "status": "INCOMPLETE_L1"
     },
@@ -2488,7 +2435,7 @@
         "qid_v1_f9ecb683a252464ea1f85fc7da492acad0d2da3249aa9293fd96aa421c8821cf",
         "qid_v1_fe069dc9e6f7c1d3dc2fcb3d9af8cdb6f712c84ccc3a6dca00e9e798ac095893"
       ],
-      "order": 9,
+      "order": 8,
       "sourceFileCount": 17,
       "status": "INCOMPLETE_L1"
     },
@@ -2607,7 +2554,7 @@
         "qid_v1_fc559062546d90f302f1d2efbce3af2ea80585edbf2282ea18251814381af1d0",
         "qid_v1_ffde0bee554ffb17c05152e25bf629aa66a2509f1128e06210a8050afd187bec"
       ],
-      "order": 10,
+      "order": 9,
       "sourceFileCount": 19,
       "status": "INCOMPLETE_L1"
     },
@@ -2736,7 +2683,7 @@
         "qid_v1_fae28e898bb4027cd1df44826b9f37fd512489ba9bbf4b2b1182b32a84a49027",
         "qid_v1_fc11c869c6b7a3e3fe93f651d26c482557eea26c97328e8da33a3df6d00a1805"
       ],
-      "order": 11,
+      "order": 10,
       "sourceFileCount": 10,
       "status": "INCOMPLETE_L1"
     },
@@ -2782,7 +2729,7 @@
         "qid_v1_f1a98276b1bb5e0bdb3ed134dc92235fb8b5156ecbd208b6a364534da6d7af39",
         "qid_v1_f753fe1268fad99110f180a9fa81de60bfc1af309f49ba530035a85a681da76c"
       ],
-      "order": 12,
+      "order": 11,
       "sourceFileCount": 5,
       "status": "INCOMPLETE_L1"
     },
@@ -2887,9 +2834,121 @@
         "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84",
         "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2"
       ],
-      "order": 13,
+      "order": 12,
       "sourceFileCount": 6,
       "status": "INCOMPLETE_L1"
     }
-  ]
+  ],
+  "priorityOverride": {
+    "reason": "2학기 중간고사 범위",
+    "status": "PRIORITY_ORDER_FROZEN",
+    "next": {
+      "order": 1,
+      "queueId": "H15-SA-10",
+      "curriculum": "2015",
+      "courseKey": "수학(상)",
+      "currentStandardUnitKey": "H15-SA-10",
+      "canonicalL1": "도형의 방정식",
+      "label": "직선의 방정식",
+      "count": 63,
+      "sourceFileCount": 19,
+      "status": "INCOMPLETE_PRIORITY_L1"
+    },
+    "geometry": [
+      {
+        "order": 1,
+        "queueId": "H15-SA-10",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "currentStandardUnitKey": "H15-SA-10",
+        "canonicalL1": "도형의 방정식",
+        "label": "직선의 방정식",
+        "count": 63,
+        "sourceFileCount": 19,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 2,
+        "queueId": "H15-SA-11",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "currentStandardUnitKey": "H15-SA-11",
+        "canonicalL1": "도형의 방정식",
+        "label": "원의 방정식",
+        "count": 95,
+        "sourceFileCount": 24,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 3,
+        "queueId": "H15-SA-12",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "currentStandardUnitKey": "H15-SA-12",
+        "canonicalL1": "도형의 방정식",
+        "label": "도형의 이동",
+        "count": 72,
+        "sourceFileCount": 21,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 4,
+        "queueId": "H22-C2-02",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-02",
+        "canonicalL1": "도형의 방정식",
+        "label": "직선의 방정식",
+        "count": 31,
+        "sourceFileCount": 9,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 5,
+        "queueId": "H22-C2-03",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-03",
+        "canonicalL1": "도형의 방정식",
+        "label": "원의 방정식",
+        "count": 45,
+        "sourceFileCount": 9,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      },
+      {
+        "order": 6,
+        "queueId": "H22-C2-04",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-04",
+        "canonicalL1": "도형의 방정식",
+        "label": "도형의 이동",
+        "count": 24,
+        "sourceFileCount": 7,
+        "status": "INCOMPLETE_PRIORITY_L1"
+      }
+    ],
+    "sets": [
+      {
+        "queueId": "H15-SB-01",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "currentStandardUnitKey": "H15-SB-01",
+        "canonicalL1": "집합과 명제",
+        "label": "집합",
+        "count": 156,
+        "status": "ALREADY_COMPLETE"
+      },
+      {
+        "queueId": "H22-C2-05",
+        "curriculum": "2022",
+        "courseKey": "공통수학2",
+        "currentStandardUnitKey": "H22-C2-05",
+        "canonicalL1": "집합과 명제",
+        "label": "집합",
+        "count": 40,
+        "status": "ALREADY_COMPLETE"
+      }
+    ]
+  }
 }
