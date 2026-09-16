@@ -121,7 +121,7 @@ function main() {
         sourceCommit: inventory.sourceCommit,
         lastAppliedL1: queueId,
         appliedScope: 'M3 only; source JS/content/choices/answer/solution/image/layoutTag/wide unchanged',
-        appliedRecordCount: (sidecar.metadataFoundationV2?.appliedRecordCount || 0) + targetRecords.length,
+        appliedRecordCount: sidecar.records.filter(record => String(record.sourceArchiveFile || '').startsWith('original/middle/m3/') && record.metadataRevision === 'metadata-foundation-v2-m3-20260916').length,
         appliedL1History: [...new Set([...(sidecar.metadataFoundationV2?.appliedL1History || []), queueId])]
     };
     sidecar.counts = {
