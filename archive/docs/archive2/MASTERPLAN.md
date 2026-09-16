@@ -5,15 +5,34 @@
 >
 > 이 문서는 세부 필드/API 계약을 반복해서 담지 않는다. 구현 시 반드시 아래 하위 정본을 함께 따른다.
 >
-> - `ARCHIVE_2_CONTRACTS_v1.1.md`
-> - `ARCHIVE_2_TAXONOMY_v1.1.md`
-> - `JS아카이브_단원별기출_Studio_UI_v2_다중단원_반복테스트_학생별출제이력_문항교체_통합계획서_v1.2.md`
+> - `CONTRACTS.md`
+> - `TAXONOMY.md`
+> - `STUDIO_PLAN.md`
 >
 > 대상 저장소: `icefoxtail/AP------`
 >
 > 최종 목적:
 >
 > **파일을 보여주는 아카이브를, 기출을 찾고 → 구성하고 → 검증하고 → 학생에게 출제하고 → 다음 출제를 더 잘 만드는 교사용 작업공간으로 전환한다.**
+
+## Metadata Foundation v2 Authority boundary
+
+이 마스터플랜은 제품 목표와 Phase 의존성을 정하며, 문항 데이터 의미를
+재정의하지 않는다. 질문 primary taxonomy의 canonical path는
+`docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`, 난이도는
+`docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`,
+metadata 저장·runtime parity는
+`docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md`가 HARD Authority다.
+
+Archive 2.0의 `TAXONOMY.md`는 source/grade/course family/unit crosswalk와
+Finder browse semantics를 다룬다. 기존 `standardUnitKey`나 `subUnitKey`를
+L1/L2로 동일시하지 않으며, legacy bridge/evidence로만 소비한다. `level`은
+historical compatibility이고, Studio가 소비하는 difficulty는 canonical
+`difficultyBucket` 1~5 및 그 4-field contract다. `UNKNOWN`은 정상적인
+coverage 부족 상태이고 `reviewStatus=HOLD`와 구분한다.
+
+이 경계는 제품 IA, Finder/Studio 분리, navigation, interaction, design
+system, workflow와 module boundary를 제한하지 않는다.
 
 ---
 
@@ -279,7 +298,8 @@ effectiveBrowseGrade = 고2
 
 로 분류하고 Data Health 검수 대상으로 올린다.
 
-정확한 세부 계산 규칙은 `ARCHIVE_2_TAXONOMY_v1.1.md`가 Authority다.
+정확한 grade/browse/crosswalk 계산은 `TAXONOMY.md`가 담당하고, 문항
+L1~L4의 세부 의미는 RPM Primary Taxonomy v1.0 canonical pack을 따른다.
 
 ---
 
@@ -375,7 +395,10 @@ unit range
 Finder / Studio
 ```
 
-주요 필드와 Authority는 `ARCHIVE_2_TAXONOMY_v1.1.md`를 따른다.
+주요 제품 browse 필드와 Authority는 `TAXONOMY.md`를 따른다. 문항
+`curriculumKey + courseKey + L1 + L2 + L3 + L4`는 RPM Primary Taxonomy
+v1.0에서 읽고, 난이도와 metadata field 의미는 각 canonical contract를
+그대로 소비한다.
 
 ---
 
@@ -1482,20 +1505,20 @@ flag OFF에서 기존 route 정상.
 상위:
 
 ```text
-ARCHIVE_2_MASTERPLAN_v1.2.md
+MASTERPLAN.md
 ```
 
 항상 같이 읽을 계약:
 
 ```text
-ARCHIVE_2_CONTRACTS_v1.1.md
-ARCHIVE_2_TAXONOMY_v1.1.md
+CONTRACTS.md
+TAXONOMY.md
 ```
 
 Studio 상세:
 
 ```text
-JS아카이브_단원별기출_Studio_UI_v2_다중단원_반복테스트_학생별출제이력_문항교체_통합계획서_v1.2.md
+STUDIO_PLAN.md
 ```
 
 구현 시점에 생성:
