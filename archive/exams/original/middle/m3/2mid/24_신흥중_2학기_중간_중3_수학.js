@@ -441,8 +441,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n조건 정리: $OM\\perp AB$, $ON\\perp AC$이고 $AB$, $AC$는 원의 현이다.\n풀이 방향: $M$, $N$이 각각 두 현의 중점임을 확인한 뒤 삼각형의 중점 연결 정리를 적용한다.\n정석 풀이: 원의 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=BM$, $AN=CN$이다. 따라서 $AB=2BM$, $AC=2CN$이므로 ①과 ②는 옳다. 또한 $M$, $N$은 각각 $\\triangle ABC$의 두 변 $AB$, $AC$의 중점이므로 중점 연결 정리에 따라 $MN\\parallel BC$이고 $MN=\\dfrac12BC$이다. 따라서 $BC=2MN$이므로 ③과 ④도 옳다. 그러나 두 현 $AB$, $AC$가 반드시 같은 길이라는 조건은 없으므로 $AB=AC$는 항상 성립하지 않는다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -473,8 +473,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 한 원에서 중심으로부터 같은 거리에 있는 두 현의 길이는 같다.\n조건 정리: 두 현까지의 중심거리의 길이가 모두 $4\\,\\mathrm{cm}$이고, 아래 현의 절반의 길이가 $5\\,\\mathrm{cm}$이다.\n풀이 방향: 중심거리와 현의 길이의 관계로 두 현의 길이를 비교한다.\n정석 풀이: 한 원에서 중심으로부터 같은 거리에 있는 두 현의 길이는 같다. 아래 현은 중심에서 내린 수선에 의해 이등분되고 그 절반의 길이가 $5\\,\\mathrm{cm}$이므로 아래 현 전체의 길이는 $5+5=10\\,\\mathrm{cm}$이다. 위 현도 아래 현과 길이가 같으므로 $x=10\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -505,8 +505,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 작은 원의 반지름은 큰 원의 현 $AB$까지의 중심거리와 같다.\n조건 정리: 큰 원과 작은 원의 반지름을 각각 $R$, $r$라 하면 $\\pi R^2-\\pi r^2=36\\pi$이다.\n풀이 방향: 넓이의 차로 $R^2-r^2$를 구하고, 현의 절반과 중심거리로 이루어진 직각삼각형에 피타고라스 정리를 적용한다.\n정석 풀이: $\\pi(R^2-r^2)=36\\pi$이므로 $R^2-r^2=36$이다. 작은 원의 접선 $AB$에 내린 중심 $O$의 수선의 발을 $M$이라 하면 $OM=r$이고, 중심에서 현에 내린 수선은 현을 이등분하므로 $AM=BM$이다. 직각삼각형 $OMA$에서 $AM^2=OA^2-OM^2=R^2-r^2=36$이므로 $AM=6$이다. 따라서 $AB=2AM=12\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -537,8 +537,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 접점에서의 반지름은 접선에 수직이므로 직각삼각형 $PAO$를 만든다.\n조건 정리: $BO=AO=r$이고 $P$, $B$, $O$가 한 직선 위에 있으므로 $PO=PB+BO=6+r$이다.\n풀이 방향: 직각삼각형 $PAO$에 피타고라스 정리를 적용한다.\n정석 풀이: $OA\\perp PA$이므로 $(6+r)^2=(6\\sqrt3)^2+r^2$이다. 전개하면 $36+12r+r^2=108+r^2$이고, $12r=72$이므로 $r=6$이다. 따라서 $BO=6\\,\\mathrm{cm}$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -569,8 +569,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 같은 점에서 원에 그은 두 접선의 길이는 같다는 성질을 연속해서 이용한다.\n조건 정리: $AB=12$, $BC=AD=18$이고, $AE=AF$, $BF=BG$, $DE=DI$, $HG=HI$이다.\n풀이 방향: 직각인 두 변 $AB$, $AD$에 동시에 접하는 원의 반지름과 각 접선 길이를 구한 뒤 $DH$, $HC$를 나타낸다.\n정석 풀이: 원은 서로 수직인 $AB$, $AD$와 아래쪽의 $BH$에 접하므로 원의 지름은 $AB=12\\,\\mathrm{cm}$이고 반지름은 $6\\,\\mathrm{cm}$이다. 따라서 $AF=AE=6$, $BF=AB-AF=6$, $BG=BF=6$이다. 또 $DE=AD-AE=18-6=12$이므로 $DI=DE=12$이다. $GH=HI=x$라 하면 $DH=DI+IH=12+x$이고 $BH=BG+GH=6+x$이다. 따라서 $HC=BC-BH=18-(6+x)=12-x$이다. 그러므로 $\\triangle CDH$의 둘레는 $CD+DH+HC=12+(12+x)+(12-x)=36\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -601,8 +601,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 원주 위의 점을 중심에 겹치게 접으면 접은 선은 두 점을 잇는 선분의 수직이등분선이 된다.\n조건 정리: 원주 위의 접힌 점을 $Q$라 하면 접은 선은 $QO$의 수직이등분선이고, 그 선이 원과 만나는 점이 $A$, $B$이다.\n풀이 방향: $A$, $B$가 $O$와 $Q$에서 같은 거리에 있다는 사실로 중심각을 구한 뒤 원주각을 이용한다.\n정석 풀이: $A$는 접은 선 위의 점이므로 $AQ=AO$이고, 두 길이는 모두 원의 반지름이다. 또한 $OQ$도 반지름이므로 $\\triangle AOQ$는 정삼각형이다. 같은 이유로 $\\triangle BOQ$도 정삼각형이다. 따라서 중심각 $\\angle AOB=60^\\circ+60^\\circ=120^\\circ$이다. 같은 호 $AB$에 대한 원주각은 중심각의 절반이므로 $\\angle APB=60^\\circ$이다. 그러므로 $\\triangle PAB$의 넓이는 $\\dfrac12\\cdot AP\\cdot BP\\cdot\\sin60^\\circ=\\dfrac12\\cdot4\\cdot3\\cdot\\dfrac{\\sqrt3}{2}=3\\sqrt3$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-06-CIRCLE_PROPERTIES",
-    "subUnit": "원의 성질",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -633,8 +633,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 직각삼각형의 넓이를 두 직각변으로 구한 값과 내접원의 반지름으로 구한 값을 같게 둔다.\n조건 정리: 두 직각변은 $9\\,\\mathrm{cm}$, $12\\,\\mathrm{cm}$이고 빗변은 피타고라스 정리로 구한다.\n풀이 방향: 빗변과 반둘레를 구한 뒤 $\\triangle ABC$의 넓이 $=$ 반지름 $\\times$ 반둘레를 이용한다.\n정석 풀이: $AB=\\sqrt{9^2+12^2}=\\sqrt{225}=15\\,\\mathrm{cm}$이다. 삼각형의 넓이는 $\\dfrac12\\cdot9\\cdot12=54\\,\\mathrm{cm}^2$이고 반둘레는 $\\dfrac{9+12+15}{2}=18\\,\\mathrm{cm}$이다. 내접원의 반지름을 $r$라 하면 삼각형의 넓이는 세 변을 밑변으로 하는 세 삼각형의 넓이 합이므로 $54=18r$이다. 따라서 $r=3\\,\\mathrm{cm}$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -712,8 +712,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$9\\sqrt3\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 한 원에서 중심으로부터 같은 거리에 있는 현의 길이는 같다.\n조건 정리: $OL$, $OM$, $ON$은 각각 현 $BC$, $AB$, $AC$에 내린 수선이고 그 길이가 모두 같다.\n풀이 방향: 세 현의 길이가 같음을 보인 뒤 정삼각형의 넓이를 구한다.\n정석 풀이: 한 원에서 중심으로부터 같은 거리에 있는 두 현의 길이는 같다. $OL=OM=ON$이므로 현 $BC$, $AB$, $AC$의 길이가 모두 같다. 따라서 $AB=BC=CA=6\\,\\mathrm{cm}$이고 $\\triangle ABC$는 한 변의 길이가 $6\\,\\mathrm{cm}$인 정삼각형이다. 꼭짓점 $A$에서 $BC$에 내린 높이는 $\\sqrt{6^2-3^2}=\\sqrt{27}=3\\sqrt3\\,\\mathrm{cm}$이다. 그러므로 넓이는 $\\dfrac12\\cdot6\\cdot3\\sqrt3=9\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $9\\sqrt3\\,\\mathrm{cm}^2$이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -738,8 +738,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$22\\,\\mathrm{cm}$",
     "solution": "[키포인트] 같은 점에서 원에 그은 두 접선의 길이는 서로 같다.\n조건 정리: 점 $A$에서는 $AD=AE$, 점 $B$에서는 $BD=BF$, 점 $C$에서는 $CE=CF$이다.\n풀이 방향: 삼각형의 세 변을 접선 길이의 합으로 바꾸어 $AD+AE$로 정리한다.\n정석 풀이: 그림에서 $A$, $B$, $D$가 한 직선 위에 있으므로 $AD=AB+BD$이다. 또한 $A$, $C$, $E$가 한 직선 위에 있으므로 $AE=AC+CE$이다. 접점 $F$는 선분 $BC$ 위에 있으므로 $BC=BF+FC$이다. 같은 점에서 그은 두 접선의 길이가 같으므로 $BD=BF$, $CE=CF$이다. 따라서 $\\triangle ABC$의 둘레는 $AB+BC+CA=AB+BF+FC+AC=AB+BD+CE+AC=AD+AE$이다. $AD=AE=11\\,\\mathrm{cm}$이므로 둘레는 $11+11=22\\,\\mathrm{cm}$이다.\n따라서 구하는 둘레는 $22\\,\\mathrm{cm}$이다.",
-    "subUnitKey": "M3-06-CIRCLE_ANGLE",
-    "subUnit": "원과 각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }
