@@ -58,6 +58,8 @@
 
 `conceptClusterKey`, `problemTypeKey`, `templateKey`, `difficultyBucket` 및 provenance·review 상태 필드는 별도 승인된 확장 필드다. 신규 JS에 넣을 때는 master 등록 여부와 사용 목적을 함께 확인한다.
 
+`difficultyBucket` 1~5의 상세 authority는 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 따른다. 기존 세부단원·level 규칙은 이 참조로 대체하지 않는다.
+
 ## 3. 세부단원 필드 의미와 허용값
 
 | 필드 | 의미 | 허용값/검사 |
