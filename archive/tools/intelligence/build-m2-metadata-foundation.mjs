@@ -572,7 +572,7 @@ function difficultyFeatures(text, question, visual, shared, L1, L2, L3, L4, appl
     const caseBranching = /경우\s*[1-9]|경우를 나누|각 경우|모든 .*순서쌍|경우에 따라/.test(text);
     const rangeConstraint = /범위|이내|최대|최소|가장 큰|가장 작은|이상|이하/.test(text);
     const integerConstraint = /정수|자연수/.test(text);
-    const existenceCheck = /가능|존재|해가 없|무수히|판정|옳은 것|옳지 않은 것/.test(text);
+    const existenceCheck = /가능|존재|해가 없|무수히|해의 상태/.test(text);
     const nonRoutineTransformation = /잘못|대칭|반사|최단경로|복합도형|분할도형|차례로|여러 .*조건|조건을 모두/.test(text);
     const decisiveInsight = /구조를|핵심 관찰|대칭|반사|최단경로|무게중심을 이용한 복합|외심·내심을 이용한 복합/.test(text) && (caseBranching || nonRoutineTransformation || /모든|항상/.test(text));
     const directL4 = new Set([
@@ -607,7 +607,7 @@ function chooseDifficulty(features) {
     let bucket = 2;
     if (features.directL4 && !features.caseBranching && !features.nonRoutineTransformation && !features.integerConstraint) bucket = 1;
     if (features.strategyChoice) bucket = Math.max(bucket, 3);
-    if (features.nonRoutineTransformation || features.caseBranching || features.rangeConstraint || features.integerConstraint || features.existenceCheck) bucket = Math.max(bucket, 4);
+    if (features.nonRoutineTransformation || features.caseBranching || features.existenceCheck || (features.rangeConstraint && features.caseBranching) || (features.integerConstraint && features.caseBranching)) bucket = Math.max(bucket, 4);
     if (features.decisiveInsight) bucket = 5;
     if (features.executionBurden === 'high' && bucket < 5 && (features.caseBranching || features.nonRoutineTransformation)) bucket = Math.max(bucket, 4);
     let boundary = 'NONE';
@@ -869,10 +869,11 @@ function hashLedger(records) {
 function prepareQueue(queueId, inventory, queue, taxonomy) {
     const queueEntry = queue.find(item => item.queueId === queueId);
     if (!queueEntry) throw new Error(`unknown queue: ${queueId}`);
+    const sourceMap = buildSourceMap(findIdentityRecords());
     const items = inventory.rows
         .filter(row => row.canonicalL1 === queueEntry.canonicalL1Key && row.curriculum === queueEntry.curriculum && row.canonicalScope === queueEntry.scope)
         .map(row => {
-            const source = buildSourceMap(findIdentityRecords()).get(row.questionUid);
+            const source = sourceMap.get(row.questionUid);
             const classification = classifyQuestion(source.question, row.sourceArchiveFile, row.curriculum, taxonomy);
             return { row, loaded: source, classification, legacyLevel: String(source.question.level || '').trim() || 'UNKNOWN' };
         });
