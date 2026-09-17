@@ -623,7 +623,6 @@
     );
     $("modal").classList.add("original-issue-dialog");
     setOriginalStep(step);
-    updateOriginalPreview();
   }
   function originalIssueBusy() {
     return Boolean(
@@ -636,6 +635,9 @@
     document.querySelector('[data-action="original-review"]').setAttribute("aria-pressed", String(step === "review"));
     document.querySelector('[data-action="original-targets"]').setAttribute("aria-pressed", String(step === "targets"));
     $("modal").scrollTop = 0;
+    // Equal-slot layout requires measurable width. A hidden iframe cannot
+    // render; refresh only after the review panel becomes visible.
+    if (step === "review") updateOriginalPreview();
   }
   async function originalOutputUrl() {
     const e = state.originalExam, s = state.originalSettings;
@@ -661,12 +663,12 @@
   async function updateOriginalPreview() {
     const token = state.originalPreviewToken = (state.originalPreviewToken || 0) + 1;
     const frame = $("original-preview-frame");
-    if (!frame) return;
+    if (!frame || $("original-review").hidden) return;
     const status = $("original-preview-status");
     status.textContent = "시험지를 불러오는 중…";
     try {
       const url = await originalOutputUrl();
-      if (token !== state.originalPreviewToken || !frame.isConnected) return;
+      if (token !== state.originalPreviewToken || !frame.isConnected || $("original-review").hidden) return;
       url.searchParams.set("archive2Review", "1");
       // Refresh after an output setting changes, even though snapshot identity stays stable.
       url.searchParams.set("revision", String(token));
