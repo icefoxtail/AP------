@@ -2303,43 +2303,19 @@ function getClassProgressTextbookGroups() {
 
 function renderClassProgressInlineAddForm() {
     const modalState = getClassProgressModalState();
-    return `<div class="ap-class-progress-inline-form">
-        <div class="ap-class-progress-inline-form__head">
-            <strong>새 교재 등록</strong>
-            <button type="button" class="btn apms-button apms-button--quiet" onclick="cancelClassProgressTextbookInlineAction()">취소</button>
-        </div>
-        <input type="hidden" id="new-tb-class" value="${apEscapeHtml(String(modalState.classId || ''))}">
-        <input type="text" id="new-tb-title" class="cls-input" placeholder="교재명 (예: 개념원리 중1-1)">
-        <div class="ap-class-progress-inline-form__row">
-            <label for="new-tb-start">시작일</label>
-            <input type="date" id="new-tb-start" class="cls-input" value="${apEscapeHtml(String(modalState.date || getClassroomOperationDate()))}">
-        </div>
-        <button type="button" class="btn apms-button apms-button--primary btn-primary" onclick="submitClassProgressTextbookAdd()">저장</button>
-    </div>`;
+    return renderTextbookInlineAddForm({
+        classId: modalState.classId || '',
+        date: modalState.date || getClassroomOperationDate(),
+        submitAction: 'submitClassProgressTextbookAdd()',
+        cancelAction: 'cancelClassProgressTextbookInlineAction()'
+    });
 }
 
 function renderClassProgressTextbookManageRow(tb) {
-    const status = tb?.status === 'completed' ? 'complete' : tb?.status === 'hidden' ? 'unlearned' : 'current';
-    const statusLabel = tb?.status === 'completed' ? '완료' : tb?.status === 'hidden' ? '숨김' : '진행 중';
-    const tbId = String(tb?.id || '');
-    const idArg = classProgressJsArg(tbId);
-    const actionHtml = tb?.isFallback
-        ? ''
-        : `<div class="ap-class-progress-manage-row__actions">
-            ${tb?.status === 'active'
-                ? `<button type="button" class="btn apms-button apms-button--quiet" onclick="submitClassProgressTextbookPatch(${idArg}, 'completed')">교재 완료 처리</button>
-                   <button type="button" class="btn apms-button apms-button--quiet" onclick="submitClassProgressTextbookPatch(${idArg}, 'hidden')">숨김 보류</button>`
-                : `<button type="button" class="btn apms-button apms-button--quiet" onclick="submitClassProgressTextbookPatch(${idArg}, 'active')">진행중으로 복구</button>`}
-            <button type="button" class="btn apms-button apms-button--quiet ap-class-progress-manage-row__delete" onclick="submitClassProgressTextbookDelete(${idArg})">교재 완전 삭제</button>
-        </div>`;
-    return `<article class="ap-class-progress-manage-row">
-        <div class="ap-class-progress-manage-row__head">
-            <strong>${apEscapeHtml(String(tb?.title || ''))}</strong>
-            <span class="ap-class-progress-status ap-class-progress-status--${apEscapeHtml(status)}">${apEscapeHtml(statusLabel)}</span>
-        </div>
-        <div class="ap-class-progress-manage-row__meta">시작: ${apEscapeHtml(String(tb?.start_date || '-'))}${tb?.end_date ? ` · 종료: ${apEscapeHtml(String(tb.end_date))}` : ''}</div>
-        ${actionHtml}
-    </article>`;
+    return renderTextbookManagementRow(tb, {
+        patchAction: (id, targetStatus) => `submitClassProgressTextbookPatch(${classProgressJsArg(id)}, ${classProgressJsArg(targetStatus)})`,
+        deleteAction: id => `submitClassProgressTextbookDelete(${classProgressJsArg(id)})`
+    });
 }
 
 function renderClassProgressTextbookPanel() {

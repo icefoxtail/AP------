@@ -1580,6 +1580,190 @@ body.dark .omr-card {
   }
 }
 
+/* Global textbook management uses the compact progress-management language without
+   changing the class-progress modal shell or its save flow. */
+#modal-content:has(.ap-global-textbook-manage) {
+  height: auto;
+  max-height: calc(100vh - 32px);
+  min-height: 0;
+}
+
+#modal-content:has(.ap-global-textbook-manage) #modal-body {
+  display: block;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.ap-global-textbook-manage {
+  display: grid;
+  min-width: 0;
+  gap: 10px;
+}
+
+.ap-global-textbook-manage__intro,
+.ap-global-textbook-manage__context {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ap-global-textbook-manage__intro {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2px 2px 4px;
+}
+
+.ap-global-textbook-manage__intro strong,
+.ap-global-textbook-manage__context-main strong {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.ap-global-textbook-manage__intro span,
+.ap-global-textbook-manage__context-main span {
+  color: var(--secondary);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.ap-global-textbook-manage__context-main {
+  display: grid;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 2px;
+}
+
+.ap-global-textbook-class-list {
+  display: grid;
+  min-width: 0;
+  max-height: min(62vh, 520px);
+  gap: 6px;
+  overflow-y: auto;
+}
+
+.ap-global-textbook-class {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--ap-ui-radius-card, 6px);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.ap-global-textbook-class:hover,
+.ap-global-textbook-class:focus-visible {
+  border-color: rgba(var(--primary-rgb), 0.35);
+  background: var(--surface-2);
+}
+
+.ap-global-textbook-class__main,
+.ap-global-textbook-class__counts {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+
+.ap-global-textbook-class__main {
+  flex-wrap: wrap;
+}
+
+.ap-global-textbook-class__main strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ap-global-textbook-class__inactive {
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--secondary);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.ap-global-textbook-class__counts {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.ap-global-textbook-class__counts .ap-class-progress-status {
+  min-height: 22px;
+  padding: 3px 6px;
+  font-size: 10px;
+}
+
+.ap-global-textbook-manage__card {
+  height: auto;
+  min-width: 0;
+  overflow: visible;
+}
+
+.ap-global-textbook-section {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.ap-global-textbook-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.ap-global-textbook-section__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 2px;
+}
+
+.ap-global-textbook-section__head h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ap-global-textbook-section__head span {
+  color: var(--secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 560px) {
+  #modal-content:has(.ap-global-textbook-manage) {
+    max-height: calc(100vh - 16px);
+  }
+
+  .ap-global-textbook-manage__context {
+    align-items: flex-start;
+  }
+
+  .ap-global-textbook-class {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .ap-global-textbook-class__counts {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 480px) {
   .ap-class-progress-layout {
     gap: 10px;
