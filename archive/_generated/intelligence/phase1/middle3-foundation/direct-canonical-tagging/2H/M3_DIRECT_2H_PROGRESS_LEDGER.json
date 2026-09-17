@@ -1,0 +1,384 @@
+{
+  "schemaVersion": "m3-direct-canonical-tagging-progress-ledger-v1",
+  "targetGrade": "MIDDLE3",
+  "semester": "2H",
+  "executionMode": "DIRECT_CANONICAL_TAGGING_V1_1_AB_LONG_RUN",
+  "motherSemanticAdjudication": "DEFERRED_UNTIL_FULL_A_B_FREEZE",
+  "methodRevision": "2026-09-17 supplementary instruction: Mother performs checkpoint gates during A/B execution and full semantic adjudication only after full A/B freeze; L4-only gaps are allowed.",
+  "targetCount": 700,
+  "batchSize": 20,
+  "batchCount": 35,
+  "lastSealedBatch": "035",
+  "lastCheckpointBatch": "035",
+  "restartPoint": null,
+  "A": {
+    "status": "COMPLETE_FULL_2H_FREEZE",
+    "agent": null,
+    "agentId": null,
+    "currentBatch": null,
+    "artifact": "M3_DIRECT_2H_FINAL.json; A_DIRECT_2H_BATCH_001..035.json",
+    "completedIdentityCount": 700,
+    "unresolvedBlockedCount": 0
+  },
+  "B": {
+    "status": "COMPLETE_FULL_2H_FREEZE",
+    "agent": null,
+    "agentId": null,
+    "currentBatch": null,
+    "artifact": "M3_DIRECT_2H_FINAL.json; B_DIRECT_2H_BATCH_001..035.json",
+    "completedIdentityCount": 700,
+    "disagreementCount": 0,
+    "unresolvedBlockedCount": 0
+  },
+  "Mother": {
+    "status": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+    "finalizedIdentityCount": 700,
+    "artifact": "M3_DIRECT_2H_FINAL.json; M3_DIRECT_2H_APPLY_RECEIPT.json",
+    "finalCounts": {
+      "PASS": 699,
+      "HOLD_KEEP": 1,
+      "HOLD_RELEASE": 0,
+      "FOUNDATION_DEFECT_CANDIDATE": 44,
+      "CONFLICT": 1
+    },
+    "repairNote": "All 35 A/B batch packets were frozen and identity-checked. Full diff was generated only after the A/B freeze. Mother final packet passed hard-field, canonical key, parent-child, L4-gap, source fidelity, and non-target mutation checks."
+  },
+  "batchLedger": {
+    "001": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "002": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "003": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "004": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED_REPAIRED (dropped extra source #16; corrected invalid L3 parent at 연향 #20)",
+      "status": "SEALED"
+    },
+    "005": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "006": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED_REPAIRED (restored 향림중 #1–5)",
+      "status": "SEALED"
+    },
+    "007": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "008": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "009": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "010": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "011": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED_REPAIRED (regenerated missing Mother final)",
+      "status": "SEALED"
+    },
+    "012": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED_REPAIRED (restored omitted ordinals/files)",
+      "status": "SEALED"
+    },
+    "013": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "014": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "015": {
+      "A": "COMPLETE 20/20 (Mother direct fallback after repeated A_STALLED replacements)",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "016": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "017": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "018": {
+      "A": "COMPLETE 20/20",
+      "B": "COMPLETE 20/20",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "019": {
+      "A": "COMPLETE 20/20 (two 10-record shards)",
+      "B": "COMPLETE 20/20 (two 10-record shards)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "020": {
+      "A": "COMPLETE 20/20 (four 5-record shards)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "021": {
+      "A": "COMPLETE 20/20 (four 5-record shards)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "022": {
+      "A": "COMPLETE 20/20 (four 5-record shards)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "023": {
+      "A": "COMPLETE 20/20 (four 5-record shards)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "024": {
+      "A": "COMPLETE 20/20 (four 5-record shards; A shard03 identity replacement)",
+      "B": "COMPLETE 20/20 (four 5-record shards; B shard01 identity replacement)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "025": {
+      "A": "COMPLETE 20/20 (four 5-record shards; q24 visual HOLD released by Mother)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "FINALIZED",
+      "status": "SEALED"
+    },
+    "026": {
+      "A": "COMPLETE 20/20 (four 5-record shards; A shard01 index normalization)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "FINALIZED (one canonical gap)",
+      "status": "SEALED"
+    },
+    "027": {
+      "A": "COMPLETE 20/20 (four 5-record shards)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "CHECKPOINT FINALIZED (three candidate gaps; full semantic adjudication deferred)",
+      "status": "SEALED"
+    },
+    "028": {
+      "A": "COMPLETE 20/20 (four 5-record shards)",
+      "B": "COMPLETE 20/20 (four 5-record shards)",
+      "Mother": "CHECKPOINT FINALIZED (one candidate gap; image-only HOLDs rejected by Mother evidence check)",
+      "status": "SEALED"
+    },
+    "029": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    },
+    "030": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    },
+    "031": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    },
+    "032": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    },
+    "033": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    },
+    "034": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    },
+    "035": {
+      "A": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "B": "COMPLETE 20/20 (v1.1; recovery shards mechanically assembled where needed)",
+      "Mother": "FINALIZED_AFTER_FULL_A_B_FREEZE",
+      "status": "SEALED"
+    }
+  },
+  "artifactRule": "A/B packet artifacts and exact identity counts are the only completion evidence; verbal progress is not completion evidence.",
+  "replacement": {
+    "type": "B_AGENT_REPLACED",
+    "previousAgent": "01a0aae0-0414-7050-b0c7-5e0525af5b43",
+    "priorReplacedAgent": "01a0aaa8-be56-7101-b77a-c5343b70582a",
+    "abandonedCurrentBatch": "007",
+    "previousA": "01a0aaa8-bd13-7c41-87fb-795069e1a09d",
+    "previousB": "01a0aae0-0414-7050-b0c7-5e0525af5b43",
+    "lastSealedBatch": "006",
+    "abandonedBatch": "007",
+    "restartPoint": "007",
+    "reason": "B_STALLED: no B batch 007 packet after repeated progress checks; A packet retained but batch not sealed"
+  },
+  "replacementHistory": [
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0aaa8-bd13-7c41-87fb-795069e1a09d",
+      "replacementAgent": "01a0ab24-ee26-7113-b6f8-06cd06bdec64",
+      "lastSealedBatch": "014",
+      "abandonedBatch": "015",
+      "restartPoint": "015",
+      "reason": "A_STALLED: repeated progress checks showed no A packet artifact for batch 015"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab24-ee26-7113-b6f8-06cd06bdec64",
+      "replacementAgent": "01a0ab2a-338b-7340-8625-52c16408af62",
+      "lastSealedBatch": "014",
+      "abandonedBatch": "015",
+      "restartPoint": "015",
+      "reason": "A_STALLED: previous replacement was shut down after no artifact progress; incomplete batch restarted from source"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab2a-338b-7340-8625-52c16408af62",
+      "replacementAgent": "01a0ab31-2bfd-7d10-920c-ff8deb1ccff8",
+      "lastSealedBatch": "014",
+      "abandonedBatch": "015",
+      "restartPoint": "015",
+      "reason": "A_STALLED: repeated progress checks showed no A packet artifact"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab31-2bfd-7d10-920c-ff8deb1ccff8",
+      "replacementAgent": "01a0ab3f-7098-73b1-bda6-d5bd32ac7cc1",
+      "lastSealedBatch": "014",
+      "abandonedBatch": "015",
+      "restartPoint": "015",
+      "reason": "A_STALLED: repeated progress checks showed no A packet artifact"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab3f-7098-73b1-bda6-d5bd32ac7cc1",
+      "replacementAgent": "01a0ab43-cfa7-76a3-a681-c058c157095e",
+      "lastSealedBatch": "014",
+      "abandonedBatch": "015",
+      "restartPoint": "015",
+      "reason": "A_STALLED: repeated progress checks showed no A packet artifact"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab43-cfa7-76a3-a681-c058c157095e",
+      "replacementAgent": "01a0ab4a-ea92-7053-9811-cdfda97a6b1f",
+      "lastSealedBatch": "014",
+      "abandonedBatch": "015",
+      "restartPoint": "015",
+      "reason": "A_STALLED: repeated progress checks showed no A packet artifact even after 10-record shard redirection; Mother direct fallback used"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab58-eb95-7051-bb5b-951af32fc7ef",
+      "replacementAgent": "01a0ab8c-a93f-73f2-9aea-0d676ee24560",
+      "lastSealedBatch": "018",
+      "abandonedBatch": "019",
+      "restartPoint": "019",
+      "reason": "A_STALLED: interrupted resume produced no 019 packet after repeated bounded waits"
+    },
+    {
+      "type": "B_AGENT_REPLACED",
+      "previousAgent": "01a0aae6-4734-7970-9505-5dbd0deb7eaf",
+      "replacementAgent": "01a0ab8c-aa76-73d1-b00b-935bc2a58b20",
+      "lastSealedBatch": "018",
+      "abandonedBatch": "019",
+      "restartPoint": "019",
+      "reason": "B_STALLED: interrupted resume produced no 019 packet after repeated bounded waits"
+    },
+    {
+      "type": "A_AGENT_REPLACED",
+      "previousAgent": "01a0ab8c-a93f-73f2-9aea-0d676ee24560",
+      "replacementAgent": "01a0aba2-4365-7473-99b2-3478e1a1eb89",
+      "lastSealedBatch": "018",
+      "abandonedBatch": "019",
+      "restartPoint": "019",
+      "reason": "A_STALLED: full 019 run produced no packet; restarted as two 10-record shards"
+    },
+    {
+      "type": "B_AGENT_REPLACED",
+      "previousAgent": "01a0ab8c-aa76-73d1-b00b-935bc2a58b20",
+      "replacementAgent": "01a0aba2-449b-77d2-ac01-b7415becee38",
+      "lastSealedBatch": "018",
+      "abandonedBatch": "019",
+      "restartPoint": "019",
+      "reason": "B_STALLED: full 019 run produced no packet; restarted as two 10-record shards"
+    }
+  ],
+  "fallbackNote": "Batch 015 A semantic packet was recorded by Mother only after six A-agent stall/replacement attempts; this does not count as an independent A pass and is explicitly retained for final verdict/review.",
+  "replacementNote": "Banach/Sartre completed 019 shards; Archimedes/Franklin completed 020 in four 5-record shards; Hooke/Franklin completed 021 in four 5-record shards. Hegel/Helmholtz completed 022 and Kant/Poincare completed 023. Batch 024 was sealed after A shard03 identity replacement and B shard01 identity replacement; invalid source-file bindings were excluded and corrected packets were independently rechecked. Batch 025 was sealed after q24 visual HOLD release and canonical/path adjudication. Before this checkpoint, Mother repaired prior artifact coverage defects: batch004 dropped an extra #16 and corrected an invalid L3 parent; batch006 restored 향림중 #1–5; batch011 was regenerated; batch012 restored omitted ordinals/files. The only 2H HOLD retained through batch025 is a source visual/solution numeric contradiction in batch002; it is not representation-based. No active A/B role remains until batch 026 starts.",
+  "updatedAt": "2026-09-17T09:39:09.992Z",
+  "fullFreeze": {
+    "status": "SEALED",
+    "targetCount": 700,
+    "checkedCount": 700,
+    "uniqueIdentityCount": 700,
+    "finalPacket": "M3_DIRECT_2H_FINAL.json",
+    "motherDecisionPacket": "M3_DIRECT_2H_MOTHER_DECISIONS.json",
+    "applyReceipt": "M3_DIRECT_2H_APPLY_RECEIPT.json",
+    "counts": {
+      "PASS": 699,
+      "HOLD_KEEP": 1,
+      "HOLD_RELEASE": 0,
+      "FOUNDATION_DEFECT_CANDIDATE": 44,
+      "CONFLICT": 1
+    },
+    "sourceMutationCount": 0,
+    "nonTargetMetadataMutationCount": 0
+  }
+}
