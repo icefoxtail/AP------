@@ -872,7 +872,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
 
         ${drawerSection('수업 자료')}
-        ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openTextbookManageModal==='function') openTextbookManageModal(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') openGlobalTextbookManage(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
