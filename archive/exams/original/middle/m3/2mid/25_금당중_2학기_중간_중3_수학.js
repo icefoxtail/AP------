@@ -590,7 +590,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림에서 두 점 $A$와 $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이고 $\\overline{PO}=6\\,\\mathrm{cm}$, 원의 반지름은 $4\\,\\mathrm{cm}$일 때, $\\overline{PA}$의 길이를 구하면? [4점]",
+    "content": "다음 그림에서 두 점 $A$와 $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이고, 점 $P$에서 원 $O$의 원주까지의 거리가 $6\\,\\mathrm{cm}$, 원의 반지름은 $4\\,\\mathrm{cm}$일 때, $\\overline{PA}$의 길이를 구하면? [4점]",
     "choices": [
       "$2\\sqrt5\\,\\mathrm{cm}$",
       "$9\\,\\mathrm{cm}$",
@@ -598,8 +598,8 @@ window.questionBank = [
       "$\\sqrt{83}\\,\\mathrm{cm}$",
       "$2\\sqrt{21}\\,\\mathrm{cm}$"
     ],
-    "answer": "①",
-    "solution": "[키포인트] 접점에서 반지름과 접선은 서로 수직이다.\n조건 정리: $OA=4\\,\\mathrm{cm}$, $OP=6\\,\\mathrm{cm}$이고 $OA\\perp PA$이다.\n풀이 방향: 직각삼각형 $OAP$에서 피타고라스 정리를 이용한다.\n정석 풀이: $PA^2=OP^2-OA^2=6^2-4^2=36-16=20$이다. 길이는 양수이므로 $PA=\\sqrt{20}=2\\sqrt5$이다.\n따라서 정답은 ①이다.",
+    "answer": "⑤",
+    "solution": "[키포인트] 접점에서 중심으로 이은 반지름은 접선과 수직이고, 원의 반지름을 이용하여 $OP$를 먼저 구한다.\n조건 정리: 점 $P$에서 원주까지의 거리는 $6\\,\\mathrm{cm}$이고 원의 반지름은 $4\\,\\mathrm{cm}$이다. 점 $P$와 중심 $O$와 원주 위의 가까운 점은 한 직선 위에 있다.\n풀이 방향: 원주 위의 가까운 점을 $Q$라 하여 $PO=PQ+QO$를 구한 뒤, 직각삼각형 $OAP$에 피타고라스 정리를 적용한다.\n정석 풀이: $PQ=6\\,\\mathrm{cm}$, $QO=4\\,\\mathrm{cm}$이므로 $PO=PQ+QO=6+4=10\\,\\mathrm{cm}$이다. 접점 $A$에서 반지름을 이은 선분은 접선에 수직이므로 $OA\\perp PA$이다. 따라서 직각삼각형 $OAP$에서 $PA^2=PO^2-OA^2=10^2-4^2=100-16=84$이다. 길이는 양수이므로 $PA=\\sqrt{84}=2\\sqrt{21}\\,\\mathrm{cm}$이다. 이 값은 보기 ⑤에 해당한다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q19.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
