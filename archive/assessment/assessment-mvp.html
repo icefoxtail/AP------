@@ -1703,6 +1703,9 @@
       url.searchParams.set('qpp', qpp);
       url.searchParams.set('mode', mode || 'exam');
       if (options.preview) {
+        // Reuse the renderer's frozen-paper UI so review cannot shuffle or edit
+        // a copy that differs from the pack subsequently assigned by this page.
+        url.searchParams.set('studio', '1');
         url.searchParams.set('preview', '1');
         url.searchParams.set('submitQr', '0');
         url.searchParams.set('preRegistered', '1');
