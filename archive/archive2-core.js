@@ -95,6 +95,23 @@
       })
       .map((semester) => `${base}-${semester}`);
   };
+  const middleCurriculumRolloutYear = Object.freeze({
+    중1: 2025,
+    중2: 2026,
+    중3: 2027,
+  });
+  function middleCurriculumFromYear(grade, year) {
+    const rolloutYear = middleCurriculumRolloutYear[text(grade)],
+      sourceYearValue = Number(year);
+    if (
+      !rolloutYear ||
+      !Number.isInteger(sourceYearValue) ||
+      sourceYearValue < 1900 ||
+      sourceYearValue > 2100
+    )
+      return "";
+    return sourceYearValue >= rolloutYear ? "2022" : "2015";
+  }
   function finderCourseKeys(taxonomy, filters = {}) {
     return new Set(
       (taxonomy || [])
@@ -147,20 +164,15 @@
         if (record.courseKey) courseKeys.add(record.courseKey);
         if (record.curriculumKey) curriculumKeys.add(record.curriculumKey);
       }
-      let hasMiddleRange = false;
+      let hasNeutralMiddleRange = false;
       for (const range of exam.courseRanges || []) {
+        if (/^M[123]$/.test(text(range.courseCode)))
+          hasNeutralMiddleRange = true;
         const middleKeys = middleCourseRange(range).filter((key) =>
           curriculaByCourse.has(key),
         );
         if (middleKeys.length) {
-          hasMiddleRange = true;
           middleKeys.forEach((key) => courseKeys.add(key));
-          if (!curriculumKeys.size)
-            middleKeys.forEach((key) =>
-              (curriculaByCourse.get(key) || []).forEach((value) =>
-                curriculumKeys.add(value),
-              ),
-            );
           continue;
         }
         // The current catalog has no canonical courseKey on courseRanges for
@@ -174,13 +186,13 @@
         if (curriculum && candidates.size)
           curriculumKeys.add(curriculum);
       }
-      // Middle-school ranges are curriculum-neutral in the catalog: the same
-      // canonical M#-1/M#-2 scopes exist in both taxonomy curricula. Only use
-      // that fallback when the source has no more specific curriculum metadata.
-      if (hasMiddleRange && !curriculumKeys.size)
-        for (const key of courseKeys)
-          for (const value of curriculaByCourse.get(key) || [])
-            curriculumKeys.add(value);
+      if (!curriculumKeys.size && hasNeutralMiddleRange) {
+        const curriculum = middleCurriculumFromYear(
+          exam.effectiveBrowseGrade || exam.grade,
+          exam.year,
+        );
+        if (curriculum) curriculumKeys.add(curriculum);
+      }
       byFile.set(file, { courseKeys, curriculumKeys });
     }
     return byFile;
@@ -549,6 +561,7 @@
     gradeRank,
     normalizeCourseIdentity,
     finderCourseGrade,
+    middleCurriculumFromYear,
     finderCourseKeys,
     reconcileFinderFilters,
     buildFinderIndex,

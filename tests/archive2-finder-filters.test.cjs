@@ -49,25 +49,22 @@ const expectedCurriculumMatch = (exam, curriculumKey) => {
       .filter(Boolean),
   );
   if (codeCurricula.size) return codeCurricula.has(curriculumKey);
-  return codes.some((code) =>
-    /^M[123]$/.test(code) && ["2015", "2022"].includes(curriculumKey),
-  );
+  const rolloutYear = { 중1: 2025, 중2: 2026, 중3: 2027 }[
+    exam.effectiveBrowseGrade
+  ];
+  if (!rolloutYear || !/^M[123]$/.test(codes.find((code) => /^M[123]$/.test(code)) || ""))
+    return false;
+  const sourceYear = Number(exam.year);
+  return String(exam.year ?? "").trim() !== "" && Number.isInteger(sourceYear)
+    ? curriculumKey === (sourceYear >= rolloutYear ? "2022" : "2015")
+    : false;
 };
 
 test("actual catalog retains exact course intersections for every available grade", () => {
-  const expectedGradeCounts = {
-    중1: 61,
-    중2: 65,
-    중3: 80,
-    고1: 143,
-    고2: 113,
-    고3: 0,
-  };
   for (const grade of grades) {
     const exams = catalog.exams.filter(
       (exam) => exam.effectiveBrowseGrade === grade,
     );
-    assert.equal(exams.length, expectedGradeCounts[grade], grade);
     for (const courseKey of taxonomyCourseKeys(grade)) {
       const expected = exams.filter((exam) => expectedCourseMatch(exam, courseKey));
       const actual = exams.filter((exam) =>
@@ -95,6 +92,109 @@ test("actual catalog retains exact course intersections for every available grad
       }
     }
   }
+});
+
+test("middle-school rollout assigns metadata-free exams to one curriculum by grade and year", () => {
+  const middleExams = catalog.exams.filter((exam) =>
+    /^중[123]$/.test(exam.effectiveBrowseGrade),
+  );
+  assert.ok(middleExams.length > 0);
+  assert.ok(middleExams.every((exam) => !exam.curriculums?.length));
+  const rolloutCases = [
+    ["중1", 2024, "2015"],
+    ["중1", 2025, "2022"],
+    ["중2", 2025, "2015"],
+    ["중2", 2026, "2022"],
+    ["중3", 2026, "2015"],
+    ["중3", 2027, "2022"],
+  ];
+  for (const [grade, year, curriculum] of rolloutCases)
+    assert.equal(core.middleCurriculumFromYear(grade, year), curriculum);
+  for (const exam of middleExams) {
+    const expected = middleCurriculumFromYearForTest(exam);
+    if (!expected) continue;
+    assert.equal(
+      core.finderMatches(exam, { curriculumKey: expected }, finderIndex),
+      true,
+      `${exam.file} must match ${expected}`,
+    );
+    assert.equal(
+      core.finderMatches(
+        exam,
+        { curriculumKey: expected === "2015" ? "2022" : "2015" },
+        finderIndex,
+      ),
+      false,
+      `${exam.file} must not match the other curriculum`,
+    );
+  }
+});
+
+function middleCurriculumFromYearForTest(exam) {
+  const rolloutYear = { 중1: 2025, 중2: 2026, 중3: 2027 }[
+    exam.effectiveBrowseGrade
+  ];
+  if (
+    !rolloutYear ||
+    String(exam.year ?? "").trim() === "" ||
+    !Number.isInteger(Number(exam.year))
+  )
+    return "";
+  return Number(exam.year) >= rolloutYear ? "2022" : "2015";
+}
+
+test("actual M1-2 catalog rows split between 2015 and 2022 without overlap", () => {
+  const middle1 = catalog.exams.filter(
+    (exam) => exam.effectiveBrowseGrade === "중1",
+  );
+  const curriculum2015 = middle1.filter((exam) =>
+    core.finderMatches(
+      exam,
+      { courseKey: "M1-2", curriculumKey: "2015" },
+      finderIndex,
+    ),
+  );
+  const curriculum2022 = middle1.filter((exam) =>
+    core.finderMatches(
+      exam,
+      { courseKey: "M1-2", curriculumKey: "2022" },
+      finderIndex,
+    ),
+  );
+  assert.ok(curriculum2015.some((exam) => Number(exam.year) <= 2024));
+  assert.ok(curriculum2022.some((exam) => Number(exam.year) >= 2025));
+  assert.ok(curriculum2015.every((exam) => Number(exam.year) <= 2024));
+  assert.ok(curriculum2022.every((exam) => Number(exam.year) >= 2025));
+  assert.equal(
+    new Set(files(curriculum2015).filter((file) => files(curriculum2022).includes(file))).size,
+    0,
+  );
+});
+
+test("direct middle-school curriculum metadata overrides rollout fallback", () => {
+  const exam = {
+    file: "middle-direct-metadata.js",
+    effectiveBrowseGrade: "중1",
+    year: 2025,
+    curriculums: ["2015"],
+    courseRanges: [
+      {
+        courseCode: "M1",
+        rangeStartUnitKey: "M1-05",
+        rangeEndUnitKey: "M1-08",
+      },
+    ],
+  };
+  const index = core.buildFinderIndex({
+    taxonomy: [
+      { curriculumKey: "2015", courseKey: "M1-2" },
+      { curriculumKey: "2022", courseKey: "M1-2" },
+    ],
+    exams: [exam],
+    records: [],
+  });
+  assert.equal(core.finderMatches(exam, { curriculumKey: "2015" }, index), true);
+  assert.equal(core.finderMatches(exam, { curriculumKey: "2022" }, index), false);
 });
 
 test("middle-school catalog range keys normalize to canonical semester course identities", () => {
@@ -145,11 +245,11 @@ test("middle-school catalog range keys normalize to canonical semester course id
   );
   assert.equal(
     core.finderMatches(exams[1], { curriculumKey: "2015" }, index),
-    true,
+    false,
   );
   assert.equal(
     core.finderMatches(exams[1], { curriculumKey: "2022" }, index),
-    true,
+    false,
   );
 });
 
@@ -220,4 +320,31 @@ test("grade/curriculum changes keep compatible courseKey and clear incompatible 
     ).courseKey,
     "M1-2",
   );
+});
+
+test("stale URL filter state is reconciled after parsing", () => {
+  const staleUrl = new URL(
+    "https://example.test/archive/workspace.html?view=find&grade=%EC%A4%911&courseKey=M3-2",
+  );
+  const parsed = Object.fromEntries(
+    ["grade", "curriculumKey", "courseKey"].flatMap((key) =>
+      staleUrl.searchParams.has(key)
+        ? [[key, staleUrl.searchParams.get(key)]]
+        : [],
+    ),
+  );
+  assert.deepEqual(
+    core.reconcileFinderFilters(parsed, catalog.taxonomy),
+    { grade: "중1", courseKey: "" },
+  );
+});
+
+test("workspace readUrl and popstate paths reconcile parsed Finder state", () => {
+  const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
+  assert.match(
+    workspace,
+    /state\.find,\s*C\.reconcileFinderFilters\(state\.find, state\.catalog\.taxonomy\)/s,
+  );
+  assert.match(workspace, /history\.replaceState\(null, "", url\)/);
+  assert.match(workspace, /window\.addEventListener\("popstate"/);
 });

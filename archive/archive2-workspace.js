@@ -2210,6 +2210,24 @@
     ])
       if (p.has(k)) state.find[k] = p.get(k);
     state.page = 0;
+    if (state.catalog?.taxonomy) {
+      const before = JSON.stringify(state.find);
+      Object.assign(
+        state.find,
+        C.reconcileFinderFilters(state.find, state.catalog.taxonomy),
+      );
+      if (state.view === "find" && before !== JSON.stringify(state.find))
+        replaceFinderUrlState();
+    }
+  }
+  function replaceFinderUrlState() {
+    if (state.view !== "find") return;
+    const url = new URL(location.href);
+    url.search = "";
+    url.searchParams.set("view", state.view);
+    for (const [key, value] of Object.entries(state.find))
+      if (value) url.searchParams.set(key, value);
+    history.replaceState(null, "", url);
   }
   (async () => {
     try {
