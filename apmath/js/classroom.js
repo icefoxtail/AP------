@@ -2264,11 +2264,19 @@ function renderClassProgressTextbookRow(tb, progressInfo, selected) {
     const idAttr = apEscapeHtml(textbookId);
     const titleAttr = apEscapeHtml(title);
     const inputHtml = isCompleted
-        ? `<div class="ap-class-progress-book__readonly">${apEscapeHtml(progressText || '미기록')}</div>`
+        ? `<div class="ap-class-progress-book__readonly">
+            <span class="ap-class-progress-book__editor-date">${apEscapeHtml(tb?.start_date || '-')}</span>
+            <span class="ap-class-progress-book__editor-value">${apEscapeHtml(progressText || '미기록')}</span>
+        </div>`
         : `<label class="ap-class-progress-book__editor" onclick="event.stopPropagation()">
+            <span class="ap-class-progress-book__editor-date">${apEscapeHtml(tb?.start_date || '-')}</span>
+            <span class="ap-class-progress-book__editor-label">
             <input type="checkbox" class="record-tb-check" value="${idAttr}" data-title="${titleAttr}"${checked}>
-            <span>진도</span>
-            <input type="text" class="cls-input record-tb-progress" id="progress_${idAttr}" value="${apEscapeHtml(progressText)}" placeholder="예: p.10~25" aria-label="${titleAttr} 진도">
+                <span>진도</span>
+            </span>
+            ${selected
+                ? `<span class="ap-class-progress-book__editor-value">${apEscapeHtml(progressText || '미기록')}</span>`
+                : `<input type="hidden" class="record-tb-progress" id="progress_${idAttr}" value="${apEscapeHtml(progressText)}"> <span class="ap-class-progress-book__editor-value">${apEscapeHtml(progressText || '미기록')}</span>`}
         </label>`;
     return `<article class="ap-class-progress-book${selectedClass}" data-textbook-id="${idAttr}">
         <button type="button" class="ap-class-progress-book__select" aria-pressed="${selected ? 'true' : 'false'}" onclick="selectClassProgressTextbook(${classProgressJsArg(textbookId)})">
@@ -2276,7 +2284,6 @@ function renderClassProgressTextbookRow(tb, progressInfo, selected) {
                 <strong class="ap-class-progress-book__title">${apEscapeHtml(title)}</strong>
                 <span class="ap-class-progress-status ap-class-progress-status--${apEscapeHtml(status)}">${apEscapeHtml(getClassProgressStatusLabel(status === 'complete' ? 'complete' : 'current') === '완료' ? '완료' : '진행 중')}</span>
             </span>
-            <span class="ap-class-progress-book__meta">${apEscapeHtml(tb?.start_date || '')}</span>
         </button>
         ${inputHtml}
     </article>`;
@@ -2357,7 +2364,7 @@ function renderClassProgressTextbookPanel() {
         ? groups.active.map(tb => renderClassProgressTextbookRow(tb, progressByTextbook[String(tb.id)], String(tb.id) === selectedId)).join('')
         : '<div class="apms-empty ap-class-progress-empty">활성 교재 없음</div>';
     const completedHtml = groups.completed.length
-        ? `<details class="ap-class-progress-completed-books"><summary><span>완료 교재</span><span>${groups.completed.length}</span></summary><div class="ap-class-progress-completed-list">${groups.completed.map(tb => renderClassProgressTextbookRow(tb, progressByTextbook[String(tb.id)], String(tb.id) === selectedId)).join('')}</div></details>`
+        ? `<details class="ap-class-progress-completed-books"${modalState.completedBooksOpen ? ' open' : ''}><summary><span>완료 교재</span><span>${groups.completed.length}</span></summary><div class="ap-class-progress-completed-list">${groups.completed.map(tb => renderClassProgressTextbookRow(tb, progressByTextbook[String(tb.id)], String(tb.id) === selectedId)).join('')}</div></details>`
         : '';
     return `${addHtml}${activeHtml}${completedHtml}`;
 }
@@ -2377,6 +2384,9 @@ function renderClassProgressTextbookDetail(book) {
     const statusLabel = status === 'complete' ? '완료' : '진행 중';
     const title = String(book?.title || '활성 교재 없음');
     const progressText = String(progressInfo.progressText || '').trim();
+    const progressHtml = status === 'complete'
+        ? `<div class="ap-class-progress-detail-progress__row"><span class="apms-muted">교재 진도</span><strong>${apEscapeHtml(progressText || '미기록')}</strong></div>`
+        : `<label class="ap-class-progress-detail-progress__row"><span class="apms-muted">교재 진도</span><input type="text" class="cls-input record-tb-progress" id="progress_${apEscapeHtml(selectedId)}" value="${apEscapeHtml(progressText)}" placeholder="예: p.10~25" aria-label="${apEscapeHtml(title)} 진도"></label>`;
 
     if (!book) {
         return `<div class="apms-empty ap-class-progress-empty">활성 교재 없음</div>`;
@@ -2391,8 +2401,7 @@ function renderClassProgressTextbookDetail(book) {
             <span class="ap-class-progress-status ap-class-progress-status--${apEscapeHtml(status)}">${statusLabel}</span>
         </div>
         <div class="ap-class-progress-detail-progress">
-            <span class="apms-muted">교재별 진도</span>
-            <strong>${apEscapeHtml(progressText || '미기록')}</strong>
+            ${progressHtml}
         </div>
         <section class="ap-class-progress-canonical">
             <div class="ap-class-progress-section-head">
@@ -2415,14 +2424,11 @@ function selectClassProgressTextbook(textbookId) {
     const selectedId = String(textbookId || '');
     const book = (modalState.books || []).find(item => String(item?.id || '') === selectedId);
     if (!book) return;
+    const completedPanel = document.querySelector('.ap-class-progress-completed-books');
+    if (completedPanel) modalState.completedBooksOpen = !!completedPanel.open;
+    syncClassProgressTextbookDraftsFromDom();
     modalState.selectedTextbookId = selectedId;
-
-    document.querySelectorAll('.ap-class-progress-book').forEach(node => {
-        const selected = String(node.getAttribute('data-textbook-id') || '') === selectedId;
-        node.classList.toggle('is-selected', selected);
-        const button = node.querySelector('.ap-class-progress-book__select');
-        if (button) button.setAttribute('aria-pressed', selected ? 'true' : 'false');
-    });
+    renderClassProgressTextbookPanelInPlace();
     const detail = document.getElementById('record-progress-detail');
     if (detail) detail.innerHTML = renderClassProgressTextbookDetail(book);
 }
@@ -2470,6 +2476,12 @@ function syncClassProgressTextbookDraftsFromDom() {
             isChecked: checkbox ? !!checkbox.checked : !!modalState.progressByTextbook[textbookId]?.isChecked
         };
     });
+    const selectedId = String(modalState.selectedTextbookId || '');
+    const selectedInput = document.querySelector('#record-progress-detail .record-tb-progress');
+    if (selectedId && selectedInput) {
+        if (!modalState.progressByTextbook[selectedId]) modalState.progressByTextbook[selectedId] = {};
+        modalState.progressByTextbook[selectedId].progressText = String(selectedInput.value || '').trim();
+    }
 }
 
 function cancelClassProgressTextbookInlineAction() {
@@ -2648,13 +2660,12 @@ async function openClassRecordModal(cid, requestedDate) {
         activeGroupKeys: Array.from(activeKeys),
         recommendedGroupKey: recommendedGroup?.key || '',
         inlineAddOpen: false,
-        manageMode: false
+        manageMode: false,
+        completedBooksOpen: false
     };
 
     const booksHtml = renderClassProgressTextbookPanel();
-    const legacyHtml = legacyFallback
-        ? `<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px dashed var(--border);font-size:12px;line-height:1.5;color:var(--secondary);">기존 일지의 단원 기록을 호환 표시 중입니다: <strong style="color:var(--text);">${apEscapeHtml(legacyFallback.text)}</strong><br><span style="font-size:11px;">새로 저장하는 canonical 진도는 별도 지속형 상태로 보관됩니다.</span></div>`
-        : '';
+    const legacyHtml = '';
     const dailyLoadWarning = dailyState.loadFailed
         ? '<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:rgba(var(--warning-rgb),0.10);border:1px solid rgba(var(--warning-rgb),0.22);font-size:12px;line-height:1.5;color:var(--warning);">기존 일지 원본을 확인하지 못해 저장을 잠시 막았습니다. 네트워크를 확인한 뒤 다시 열어주세요.</div>'
         : '';
