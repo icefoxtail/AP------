@@ -1890,16 +1890,6 @@ function renderClass(cid) {
     }
 }
 
-// 학년별 소단원 마스터 테이블
-var MATH_CURRICULUM_UNITS = {
-    '중1': ['소인수분해','정수와 유리수','문자와 식','좌표평면과 그래프','기본도형','평면도형의 성질','입체도형의 성질','자료의 정리와 해석'],
-    '중2': ['수와 식','일차부등식','연립일차방정식','일차함수와 그래프','도형의 성질','도형의 닮음','피타고라스 정리','확률'],
-    '중3': ['실수와 그 계산','다항식의 곱셈과 인수분해','이차방정식','이차함수와 그래프','삼각비','원의 성질','통계'],
-    '고1': ['다항식의 연산','항등식과 나머지 정리','인수분해','복소수와 이차방정식','이차방정식과 이차함수','여러 가지 방정식과 부등식','합의 법칙과 곱의 법칙','순열과 조합','행렬과 그 연산','평면좌표','직선의 방정식','원의 방정식','도형의 이동','집합','명제','함수','유리함수','무리함수'],
-    '고2': ['지수와 로그','지수함수','로그함수','삼각함수','사인법칙과 코사인법칙','등차수열과 등비수열','수열의 합','수학적 귀납법','함수의 극한','함수의 연속','미분계수','도함수','도함수의 활용','부정적분','정적분','정적분의 활용'],
-    '고3': ['수열의 극한','급수','지수함수와 로그함수의 미분','삼각함수의 미분','여러 가지 미분법','도함수의 활용','여러 가지 적분법','정적분의 활용','순열과 조합','이항정리','확률의 뜻과 활용','조건부확률','확률분포','통계적 추정','이차곡선','이차곡선의 접선','공간도형','공간좌표','벡터의 연산','벡터의 성분','벡터의 내적','도형의 방정식']
-};
-
 function _getClassGradeKey(cls) {
     if (!cls) return '';
     var text = String(cls.grade || '') + ' ' + String(cls.name || '');
@@ -1907,27 +1897,314 @@ function _getClassGradeKey(cls) {
     return match ? match[1] : '';
 }
 
-function openClassRecordModal(cid) {
+function getClassProgressDbArray(name) {
+    return state && state.db && Array.isArray(state.db[name]) ? state.db[name] : [];
+}
+
+function getClassProgressItemPath(item) {
+    return String(item && (item.canonical_path_key || item.canonicalPathKey) || '').trim();
+}
+
+function getClassProgressItemGroupKey(item) {
+    const curriculumKey = String(item && (item.curriculum_key || item.curriculumKey) || '').trim();
+    const courseKey = String(item && (item.course_key || item.courseKey) || '').trim();
+    const level = String(item && (item.level_key || item.level) || '').trim();
+    return [curriculumKey, level, courseKey].join('|');
+}
+
+function getClassProgressCatalog() {
+    return getClassProgressDbArray('class_progress_taxonomy').filter(item =>
+        item && item.canonicalPathKey && item.curriculumKey && item.courseKey
+    );
+}
+
+function getClassProgressCourseGroups() {
+    const groups = new Map();
+    getClassProgressCatalog().forEach(item => {
+        const key = [item.curriculumKey, item.level, item.courseKey].join('|');
+        if (!groups.has(key)) {
+            groups.set(key, {
+                key,
+                curriculumKey: String(item.curriculumKey || ''),
+                level: String(item.level || ''),
+                courseKey: String(item.courseKey || ''),
+                courseLabel: String(item.courseLabel || item.courseKey || ''),
+                gradeKey: String(item.gradeKey || ''),
+                items: []
+            });
+        }
+        groups.get(key).items.push(item);
+    });
+
+    return Array.from(groups.values()).map(group => {
+        group.items.sort((a, b) =>
+            String(a.l1 || '').localeCompare(String(b.l1 || '')) ||
+            String(a.l2 || '').localeCompare(String(b.l2 || ''))
+        );
+        return group;
+    }).sort((a, b) =>
+        (a.curriculumKey === '2022' ? 0 : 1) - (b.curriculumKey === '2022' ? 0 : 1) ||
+        String(a.courseLabel).localeCompare(String(b.courseLabel)) ||
+        String(a.courseKey).localeCompare(String(b.courseKey))
+    );
+}
+
+function getClassProgressSnapshotForDate(cid, date) {
+    const snapshots = getClassProgressDbArray('class_progress_snapshots')
+        .filter(snapshot =>
+            String(snapshot.class_id) === String(cid) &&
+            String(snapshot.effective_date || '') <= String(date || '')
+        )
+        .sort((a, b) =>
+            String(b.effective_date || '').localeCompare(String(a.effective_date || '')) ||
+            String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
+            String(b.id || '').localeCompare(String(a.id || ''))
+        );
+    const snapshot = snapshots[0] || null;
+    const items = snapshot
+        ? getClassProgressDbArray('class_progress_items').filter(item => String(item.snapshot_id) === String(snapshot.id))
+        : [];
+    return { snapshot, items };
+}
+
+function getLegacyClassProgressRecord(cid, date) {
+    return getClassProgressDbArray('class_daily_records')
+        .filter(record =>
+            String(record.class_id) === String(cid) &&
+            String(record.date || '') <= String(date || '') &&
+            /^\[단원선택\]/.test(String(record.special_note || '').trim())
+        )
+        .sort((a, b) =>
+            String(b.date || '').localeCompare(String(a.date || '')) ||
+            String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
+            String(b.id || '').localeCompare(String(a.id || ''))
+        )[0] || null;
+}
+
+function parseLegacyClassProgressNote(rawNote) {
+    const raw = String(rawNote || '');
+    const match = raw.match(/^\[단원선택\]\s*([^\n]*)\n?/);
+    if (!match) return { line: '', text: '', units: [] };
+    return {
+        line: match[0].trim(),
+        text: match[1].trim(),
+        units: match[1].split(',').map(unit => unit.trim()).filter(Boolean)
+    };
+}
+
+function stripLegacyClassProgressNote(rawNote) {
+    return String(rawNote || '').replace(/^\[단원선택\][^\n]*\n?/, '').trim();
+}
+
+function getClassProgressCache() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classProgressCache) state.ui.classProgressCache = {};
+    return state.ui.classProgressCache;
+}
+
+function syncClassProgressToState(cid, date, snapshot, items) {
+    if (!snapshot) return;
+    if (!Array.isArray(state.db.class_progress_snapshots)) state.db.class_progress_snapshots = [];
+    if (!Array.isArray(state.db.class_progress_items)) state.db.class_progress_items = [];
+
+    const removedSnapshotIds = new Set(state.db.class_progress_snapshots
+        .filter(row => String(row.class_id) === String(cid) && String(row.effective_date) === String(snapshot.effective_date))
+        .map(row => String(row.id)));
+    removedSnapshotIds.add(String(snapshot.id));
+    state.db.class_progress_snapshots = state.db.class_progress_snapshots
+        .filter(row => !removedSnapshotIds.has(String(row.id)))
+        .concat([snapshot]);
+    state.db.class_progress_items = state.db.class_progress_items
+        .filter(row => !removedSnapshotIds.has(String(row.snapshot_id)))
+        .concat(Array.isArray(items) ? items : []);
+
+    getClassProgressCache()[`${cid}|${date}`] = { snapshot, items: Array.isArray(items) ? items : [], legacy_record: null };
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+}
+
+async function loadClassProgressForDate(cid, date) {
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const cache = getClassProgressCache();
+    const cacheKey = `${cid}|${d}`;
+    if (Object.prototype.hasOwnProperty.call(cache, cacheKey)) return cache[cacheKey];
+
+    if (String(state.db.class_progress_date || '') === String(d)) {
+        const local = getClassProgressSnapshotForDate(cid, d);
+        const legacyRecord = local.snapshot ? null : getLegacyClassProgressRecord(cid, d);
+        const result = {
+            ...local,
+            legacy_record: legacyRecord
+        };
+        // A current batch may omit an old legacy record because initial-data is bounded.
+        // Ask the date-scoped API when no structured state or local legacy fallback exists.
+        if (local.snapshot || legacyRecord) {
+            cache[cacheKey] = result;
+            return result;
+        }
+    }
+
+    try {
+        const response = await api.get(`class-progress?class_id=${encodeURIComponent(cid)}&date=${encodeURIComponent(d)}`);
+        if (response && response.success) {
+            const result = {
+                snapshot: response.snapshot || null,
+                items: Array.isArray(response.items) ? response.items : [],
+                legacy_record: response.legacy_record || null
+            };
+            if (result.snapshot) syncClassProgressToState(cid, d, result.snapshot, result.items);
+            cache[cacheKey] = result;
+            return result;
+        }
+    } catch (error) {
+        console.warn('[loadClassProgressForDate] failed:', error);
+    }
+
+    const local = getClassProgressSnapshotForDate(cid, d);
+    const result = {
+        ...local,
+        legacy_record: local.snapshot ? null : getLegacyClassProgressRecord(cid, d)
+    };
+    cache[cacheKey] = result;
+    return result;
+}
+
+function getClassDailyRecordCache() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classDailyRecordCache) state.ui.classDailyRecordCache = {};
+    return state.ui.classDailyRecordCache;
+}
+
+function mergeClassDailyRecordReadToState(cid, date, record, progressRows) {
+    if (!Array.isArray(state.db.class_daily_records)) state.db.class_daily_records = [];
+    if (!Array.isArray(state.db.class_daily_progress)) state.db.class_daily_progress = [];
+    const staleIds = new Set(state.db.class_daily_records
+        .filter(row => String(row.class_id) === String(cid) && String(row.date || '') === String(date))
+        .map(row => String(row.id || '')));
+    if (record) staleIds.add(String(record.id || ''));
+    state.db.class_daily_records = state.db.class_daily_records
+        .filter(row => !(String(row.class_id) === String(cid) && String(row.date || '') === String(date)))
+        .concat(record ? [record] : []);
+    state.db.class_daily_progress = state.db.class_daily_progress
+        .filter(row => !staleIds.has(String(row.record_id || '')))
+        .concat(Array.isArray(progressRows) ? progressRows : []);
+    if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
+}
+
+async function loadClassDailyRecordForDate(cid, date) {
+    const d = normalizeClassroomDate(date) || getClassroomOperationDate();
+    const cache = getClassDailyRecordCache();
+    const cacheKey = `${cid}|${d}`;
+    if (Object.prototype.hasOwnProperty.call(cache, cacheKey)) return cache[cacheKey];
+
+    const localRecord = (state.db.class_daily_records || []).find(record =>
+        String(record.class_id) === String(cid) && String(record.date || '') === String(d)
+    ) || null;
+    const localProgress = localRecord
+        ? (state.db.class_daily_progress || []).filter(row => String(row.record_id) === String(localRecord.id))
+        : [];
+    try {
+        const response = await api.get(`class-daily-records?class=${encodeURIComponent(cid)}&date=${encodeURIComponent(d)}`);
+        if (response && response.success) {
+            const record = Array.isArray(response.records)
+                ? response.records.find(row => String(row.class_id) === String(cid) && String(row.date || '') === String(d)) || null
+                : null;
+            const progress = record && Array.isArray(response.progress)
+                ? response.progress.filter(row => String(row.record_id) === String(record.id))
+                : [];
+            mergeClassDailyRecordReadToState(cid, d, record, progress);
+            const result = { record, progress, loadFailed: false };
+            cache[cacheKey] = result;
+            return result;
+        }
+    } catch (error) {
+        console.warn('[loadClassDailyRecordForDate] failed:', error);
+    }
+
+    const result = { record: localRecord, progress: localProgress, loadFailed: true };
+    cache[cacheKey] = result;
+    return result;
+}
+
+function getClassProgressCourseOptionLabel(group) {
+    return `${group.curriculumKey} 개정 · ${group.courseLabel}`;
+}
+
+function renderClassProgressCoursePanel(group, selectedPaths) {
+    const active = new Set(selectedPaths || []);
+    const itemsHtml = group.items.map(item => {
+        const pathKey = String(item.canonicalPathKey || '');
+        const checked = active.has(pathKey) ? ' checked' : '';
+        const l1 = String(item.l1 || '');
+        const l2 = String(item.l2 || '');
+        const sameLevelLabel = l1 === l2;
+        const itemLabelHtml = sameLevelLabel
+            ? `<strong>L1/L2</strong><span style="color:var(--secondary);"> · ${apEscapeHtml(l1)}</span>`
+            : `<strong>${apEscapeHtml(l1)}</strong><span style="color:var(--secondary);"> · ${apEscapeHtml(l2)}</span>`;
+        return `<label style="display:flex;align-items:center;gap:8px;min-height:42px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);font-size:12px;line-height:1.45;color:var(--text);cursor:pointer;">
+            <input type="checkbox" class="record-unit-check" value="${apEscapeHtml(pathKey)}" data-canonical-path-key="${apEscapeHtml(pathKey)}" data-curriculum-key="${apEscapeHtml(String(item.curriculumKey || ''))}" data-level-key="${apEscapeHtml(String(item.level || ''))}" data-course-key="${apEscapeHtml(String(item.courseKey || ''))}" data-l1="${apEscapeHtml(String(item.l1 || ''))}" data-l2="${apEscapeHtml(String(item.l2 || ''))}"${checked} style="margin-top:2px;accent-color:var(--primary);">
+            <span>${itemLabelHtml}</span>
+        </label>`;
+    }).join('');
+    return `<section class="record-course-panel" data-progress-group="${apEscapeHtml(group.key)}" style="margin-bottom:14px;padding:12px;border:1px solid var(--border);border-radius:14px;background:var(--surface);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:9px;">
+            <strong style="font-size:13px;color:var(--text);">${apEscapeHtml(getClassProgressCourseOptionLabel(group))}</strong>
+            <span style="font-size:11px;color:var(--secondary);">${apEscapeHtml(group.courseKey)}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:7px;">${itemsHtml}</div>
+    </section>`;
+}
+
+function addClassProgressCourseFromSelect() {
+    const select = document.getElementById('record-progress-course-select');
+    const root = document.getElementById('record-progress-course-panels');
+    if (!select || !root || !state.ui?.classProgressModalGroups) return;
+    const key = String(select.value || '');
+    const group = state.ui.classProgressModalGroups.find(item => item.key === key);
+    if (!group) return;
+    if (Array.from(root.querySelectorAll('[data-progress-group]')).some(node => node.getAttribute('data-progress-group') === key)) return;
+    root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, []));
+    const option = Array.from(select.options).find(item => item.value === key);
+    if (option) option.disabled = true;
+    select.value = '';
+}
+
+async function openClassRecordModal(cid, requestedDate) {
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    const todayStr = getClassroomOperationDate();
+    const todayStr = normalizeClassroomDate(requestedDate) || getClassroomOperationDate();
+    if (!cls) return;
+
+    if (!state.ui) state.ui = {};
+    const requestId = Number(state.ui.classProgressModalRequestId || 0) + 1;
+    state.ui.classProgressModalRequestId = requestId;
+
+    showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
+    const [resolvedProgress, dailyState] = await Promise.all([
+        loadClassProgressForDate(cid, todayStr),
+        loadClassDailyRecordForDate(cid, todayStr)
+    ]);
+    if (Number(state.ui.classProgressModalRequestId || 0) !== requestId) return;
     const allTextbooks = state.db.class_textbooks || [];
     let activeBooks = allTextbooks.filter(tb => String(tb.class_id) === String(cid) && tb.status === 'active');
     if (activeBooks.length === 0 && cls?.textbook) activeBooks = [{ id: 'fallback', title: cls.textbook }];
 
-const existingRecord = (state.db.class_daily_records || [])
-    .filter(r =>
-        String(r.class_id) === String(cid) &&
-        String(r.date || '') <= String(todayStr)
-    )
-    .sort((a, b) =>
-        String(b.date || '').localeCompare(String(a.date || '')) ||
-        String(b.id || '').localeCompare(String(a.id || ''))
-    )[0] || null;
-
-const existingProgress = existingRecord
-    ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(existingRecord.id))
-    : [];
+    const existingRecord = dailyState.record || (state.db.class_daily_records || []).find(r =>
+        String(r.class_id) === String(cid) && String(r.date || '') === String(todayStr)
+    ) || null;
+    // 교재별 페이지 진도는 기존 화면처럼 선택 날짜 이전의 최신 일지를 fallback으로 복원한다.
+    // 특이사항은 날짜별 일지이므로 exact record에서만 복원해 새 날짜에 메모를 복사하지 않는다.
+    const textbookRecord = existingRecord || (state.db.class_daily_records || [])
+        .filter(record => String(record.class_id) === String(cid) && String(record.date || '') <= String(todayStr))
+        .sort((a, b) =>
+            String(b.date || '').localeCompare(String(a.date || '')) ||
+            String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
+            String(b.id || '').localeCompare(String(a.id || ''))
+        )[0] || null;
+    const existingProgress = dailyState.record && String(textbookRecord?.id || '') === String(dailyState.record.id || '')
+        ? dailyState.progress
+        : textbookRecord
+            ? (state.db.class_daily_progress || []).filter(p => String(p.record_id) === String(textbookRecord.id))
+        : [];
     
     const booksHtml = activeBooks.length > 0 ? activeBooks.map((tb) => {
         const prevP = existingProgress.find(p => String(p.textbook_id) === String(tb.id) || (tb.id === 'fallback' && p.textbook_title_snapshot === tb.title));
@@ -1943,25 +2220,58 @@ const existingProgress = existingRecord
     }).join('') : `<div style="font-size: 12px; color: var(--secondary); padding: 24px; text-align: center; background: var(--surface-2); border-radius: 16px; font-weight:500; line-height: 1.5;">활성 교재 없음</div>`;
 
     const rawNote = existingRecord ? (existingRecord.special_note || '') : '';
-    const unitLineMatch = rawNote.match(/^\[단원선택\]([^\n]*)\n?/);
-    const prevSelectedUnits = unitLineMatch ? unitLineMatch[1].split(',').map(u => u.trim()).filter(Boolean) : [];
-    const prevNote = rawNote.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
-
+    const exactLegacy = parseLegacyClassProgressNote(rawNote);
+    const fallbackLegacy = resolvedProgress.legacy_record
+        ? parseLegacyClassProgressNote(resolvedProgress.legacy_record.special_note)
+        : { line: '', text: '', units: [] };
+    const legacyFallback = !resolvedProgress.snapshot && (exactLegacy.text || fallbackLegacy.text)
+        ? (exactLegacy.text ? exactLegacy : fallbackLegacy)
+        : null;
+    const prevNote = stripLegacyClassProgressNote(rawNote);
+    const savedItems = Array.isArray(resolvedProgress.items) ? resolvedProgress.items : [];
+    const savedPaths = savedItems.map(getClassProgressItemPath).filter(Boolean);
+    const groups = getClassProgressCourseGroups();
+    const savedGroupKeys = new Set(savedItems.map(getClassProgressItemGroupKey).filter(Boolean));
     const gradeKey = _getClassGradeKey(cls);
-    const units = gradeKey ? (MATH_CURRICULUM_UNITS[gradeKey] || []) : [];
-    let unitsHtml = '';
-    if (units.length > 0) {
-        unitsHtml = `<div style="margin-bottom: 20px;">
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;">
-                <h4 style="margin:0;font-size:16px;font-weight:500;color:var(--text);line-height:1.3;">오늘 수업 단원 <span style="font-size:11px;font-weight:400;color:var(--secondary);">${gradeKey}</span></h4>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">${units.map(u => {
-                const checked = prevSelectedUnits.indexOf(u) !== -1 ? 'checked' : '';
-                return `<label style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;cursor:pointer;padding:4px 8px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);white-space:nowrap;color:var(--text);">
-                    <input type="checkbox" class="record-unit-check" value="${apEscapeHtml(u)}" ${checked} style="accent-color:var(--primary);cursor:pointer;">${apEscapeHtml(u)}</label>`;
-            }).join('')}</div>
-        </div>`;
+    const recommendedGroup = groups.find(group => group.gradeKey === gradeKey) || groups[0] || null;
+    if (!savedGroupKeys.size) {
+        if (recommendedGroup) savedGroupKeys.add(recommendedGroup.key);
     }
+    const activeGroups = groups.filter(group => savedGroupKeys.has(group.key));
+    if (!state.ui) state.ui = {};
+    state.ui.classProgressModalGroups = groups;
+    state.ui.classProgressModalMeta = {
+        classId: String(cid),
+        date: todayStr,
+        legacyLine: exactLegacy.line,
+        legacyFallbackLine: legacyFallback ? legacyFallback.line : '',
+        previousNote: prevNote,
+        dailyLoadFailed: !!dailyState.loadFailed
+    };
+
+    const activeKeys = new Set(activeGroups.map(group => group.key));
+    const courseOptions = groups.map(group => `<option value="${apEscapeHtml(group.key)}"${activeKeys.has(group.key) ? ' disabled' : ''}>${apEscapeHtml(getClassProgressCourseOptionLabel(group))}${group.key === recommendedGroup?.key ? ' · 기본 추천' : ''}</option>`).join('');
+    const coursePanels = activeGroups.map(group => renderClassProgressCoursePanel(group, savedPaths)).join('');
+    const legacyHtml = legacyFallback
+        ? `<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:var(--surface-2);border:1px dashed var(--border);font-size:12px;line-height:1.5;color:var(--secondary);">기존 일지의 단원 기록을 호환 표시 중입니다: <strong style="color:var(--text);">${apEscapeHtml(legacyFallback.text)}</strong><br><span style="font-size:11px;">새로 저장하는 canonical 진도는 별도 지속형 상태로 보관됩니다.</span></div>`
+        : '';
+    const dailyLoadWarning = dailyState.loadFailed
+        ? '<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:rgba(var(--warning-rgb),0.10);border:1px solid rgba(var(--warning-rgb),0.22);font-size:12px;line-height:1.5;color:var(--warning);">기존 일지 원본을 확인하지 못해 저장을 잠시 막았습니다. 네트워크를 확인한 뒤 다시 열어주세요.</div>'
+        : '';
+    const unitsHtml = `<div style="margin-bottom:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:10px;">
+                <h4 style="margin:0;font-size:16px;font-weight:500;color:var(--text);line-height:1.3;">현재 수업 진도 <span style="font-size:11px;font-weight:400;color:var(--secondary);">${apEscapeHtml(todayStr)}${gradeKey ? ` · ${apEscapeHtml(gradeKey)} 추천` : ''}</span></h4>
+            </div>
+            ${legacyHtml}
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;">
+                <select id="record-progress-course-select" class="cls-input" style="flex:1 1 190px;min-width:0;width:auto;min-height:42px;">
+                    <option value="">과정 추가…</option>${courseOptions}
+                </select>
+                <button type="button" class="btn cls-input" style="flex:0 0 auto;width:auto;min-width:64px;min-height:42px;white-space:nowrap;" onclick="addClassProgressCourseFromSelect()">추가</button>
+            </div>
+            ${dailyLoadWarning}
+            <div id="record-progress-course-panels">${coursePanels || '<div style="padding:18px;text-align:center;color:var(--secondary);font-size:12px;">canonical 과정 목록을 불러오지 못했습니다.</div>'}</div>
+        </div>`;
 
     showModal('진도관리', `${unitsHtml}<div style="margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
@@ -1973,7 +2283,7 @@ const existingProgress = existingRecord
         <div style="margin-bottom: 32px;"><h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight:500; color: var(--text); line-height: 1.3;">특이사항</h4>
             <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모" style="height: 100px; resize: none; padding: 14px; line-height: 1.6;">${apEscapeHtml(prevNote)}</textarea>
         </div>
-        <button class="btn apms-button apms-button--primary btn-primary" style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:500; border-radius: 14px; box-shadow: none;" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>`);
+        <button class="btn apms-button apms-button--primary btn-primary" ${dailyState.loadFailed ? 'disabled' : ''} style="width: 100%; min-height: 52px; padding: 14px 16px; font-size: 14px; font-weight:500; border-radius: 14px; box-shadow: none;${dailyState.loadFailed ? ' opacity:0.55;cursor:not-allowed;' : ''}" onclick="saveClassRecord('${cid}', '${todayStr}')">기록 저장하기</button>`);
 }
 
 function syncClassDailyRecordToState(classId, dateStr, record, progressRows) {
@@ -2016,11 +2326,22 @@ function syncClassDailyRecordToState(classId, dateStr, record, progressRows) {
             .concat(Array.isArray(progressRows) ? progressRows : []);
     }
 
+    if (state.ui?.classDailyRecordCache) {
+        state.ui.classDailyRecordCache[`${cid}|${d}`] = {
+            record,
+            progress: Array.isArray(progressRows) ? progressRows : []
+        };
+    }
+
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
     return true;
 }
 
 async function saveClassRecord(cid, dateStr) {
+    if (state.ui?.classProgressModalMeta?.dailyLoadFailed) {
+        toast('기존 일지 확인 전에는 저장할 수 없습니다.', 'warn');
+        return;
+    }
     const checks = document.querySelectorAll('.record-tb-check:checked');
     const progresses = [];
     checks.forEach(chk => {
@@ -2028,21 +2349,45 @@ async function saveClassRecord(cid, dateStr) {
         const progInput = document.getElementById(`progress_${tbId}`);
         progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: chk.getAttribute('data-title'), progress_text: progInput ? progInput.value.trim() : '' });
     });
-    const selectedUnits = Array.from(document.querySelectorAll('.record-unit-check:checked')).map(cb => cb.value);
-    let specialNote = document.getElementById('record-special-note')?.value.trim() || '';
-    if (selectedUnits.length > 0) specialNote = '[단원선택] ' + selectedUnits.join(', ') + (specialNote ? '\n' + specialNote : '');
+    const selectedItems = Array.from(document.querySelectorAll('.record-unit-check:checked')).map((checkbox, index) => ({
+        curriculum_key: checkbox.getAttribute('data-curriculum-key') || '',
+        level_key: checkbox.getAttribute('data-level-key') || '',
+        course_key: checkbox.getAttribute('data-course-key') || '',
+        canonical_path_key: checkbox.getAttribute('data-canonical-path-key') || checkbox.value || '',
+        l1_snapshot: checkbox.getAttribute('data-l1') || '',
+        l2_snapshot: checkbox.getAttribute('data-l2') || '',
+        sort_order: index
+    }));
+    const meta = state.ui?.classProgressModalMeta;
+    const noteText = document.getElementById('record-special-note')?.value.trim() || '';
+    const preservedLegacyLine = meta && String(meta.classId) === String(cid) && String(meta.date) === String(dateStr)
+        ? String(meta.legacyLine || '')
+        : '';
+    const specialNote = [preservedLegacyLine, noteText].filter(Boolean).join('\n');
     const payload = { class_id: cid, date: dateStr, teacher_name: (typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당')), special_note: specialNote, progress: progresses };
 
     try {
         const r = await api.post('class-daily-records', payload);
         if (r?.success) {
-            toast('저장 완료', 'success');
-            closeModal(true);
-            // 저장 응답이 곧 확정된 행이라 전체 재조회 없이 반영한다. 행을 돌려주지 않는 구버전 워커에서만 재조회로 되돌린다.
             if (!syncClassDailyRecordToState(cid, dateStr, r.record, r.progress)) {
                 await loadData();
                 renderClass(cid);
             }
+
+            const progressResponse = await api.post('class-progress', {
+                class_id: cid,
+                effective_date: dateStr,
+                items: selectedItems
+            });
+            if (!progressResponse?.success || !progressResponse.snapshot) {
+                toast('일지는 저장됐지만 지속형 진도 저장에 실패했습니다. 다시 시도해주세요.', 'warn');
+                return;
+            }
+
+            syncClassProgressToState(cid, dateStr, progressResponse.snapshot, progressResponse.items);
+            toast('저장 완료', 'success');
+            closeModal(true);
+            if (document.getElementById('timetable-root') && typeof renderTimetable === 'function') renderTimetable();
             return;
         }
         toast(r?.message || r?.error || '저장 실패', 'error');
