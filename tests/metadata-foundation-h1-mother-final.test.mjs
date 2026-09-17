@@ -33,8 +33,8 @@ test('HIGH1 Mother final candidate closes identity, Mother, and canonical gates'
   assert.equal(candidate.unresolvedDisagreementCount, 0);
   assert.equal(candidate.errors.length, 0);
   assert.equal(candidate.readyForGate, true);
-  assert.equal(candidate.canonicalCounts.CANONICAL_PATH_MATCH, 2227);
-  assert.equal(candidate.canonicalCounts.EXPLICIT_NO_FIT_OR_UNKNOWN, 271);
+  assert.equal(candidate.canonicalCounts.CANONICAL_PATH_MATCH, 2256);
+  assert.equal(candidate.canonicalCounts.EXPLICIT_NO_FIT_OR_UNKNOWN, 242);
   assert.equal(candidate.canonicalCounts.CANONICAL_PATH_UNMATCHED || 0, 0);
   assert.equal(candidate.records.length, 2498);
   assert.equal(new Set(candidate.records.map(record => record.recordIndex)).size, 2498);

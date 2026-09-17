@@ -67,15 +67,20 @@ function canonicalKey(labels) {
 const masterPath = path.join(root, 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json');
 const master = read(masterPath);
 const masterKeys = new Set();
+const masterLeaves = new Map();
 for (const record of master.records || []) {
   for (const concept of record.concepts || []) {
     for (const problemType of concept.problemTypes || []) {
-      masterKeys.add(canonicalKey({
+      const labels = {
         L1: record.majorUnit,
         L2: record.midUnit,
         L3: concept.concept,
         L4: problemType.problemType,
-      }));
+      };
+      masterKeys.add(canonicalKey(labels));
+      const groupKey = [labels.L1, labels.L2, labels.L3].join('|');
+      if (!masterLeaves.has(groupKey)) masterLeaves.set(groupKey, []);
+      if (!masterLeaves.get(groupKey).includes(labels.L4)) masterLeaves.get(groupKey).push(labels.L4);
     }
   }
 }
@@ -275,6 +280,71 @@ function resolveCanonical(recordIndex, value) {
   if (l1 === '도형의 방정식' && l2 === '도형의 이동' && l3 === 'CANONICAL_NO_FIT') l3 = String(l4).includes('대칭') || String(l4).includes('반사') ? '대칭이동' : '이동의 합성';
   if (l1 === '다항식' && l2 === '인수분해' && l3 === 'CANONICAL_NO_FIT') l3 = '인수분해의 활용';
   if (l1 === '다항식' && l2 === '항등식과 나머지정리' && l3 === 'CANONICAL_NO_FIT') l3 = String(l4).includes('인수') ? '인수정리' : '항등식';
+
+  const groupKey = [l1, l2, l3].join('|');
+  const availableLeaves = masterLeaves.get(groupKey) || [];
+  let resolvedL4 = l4;
+  const chooseLeaf = leaf => { if (availableLeaves.includes(leaf)) resolvedL4 = leaf; };
+  if (groupKey === '도형의 방정식|평면좌표|두 점 사이의 거리') {
+    if (String(l4).includes('거리 공식')) chooseLeaf('거리 공식');
+    else if (String(l4).includes('변 길이')) chooseLeaf('도형의 변 길이');
+  } else if (groupKey === '도형의 방정식|원의 방정식|원의 접선') {
+    if (String(l4).includes('기울기')) chooseLeaf('기울기가 주어진 접선');
+    else if (String(l4).includes('접점')) chooseLeaf('접점이 주어진 접선');
+  } else if (groupKey === '방정식과 부등식|여러 가지 방정식|삼차·사차방정식') {
+    if (String(l4).includes('인수분해')) chooseLeaf('인수분해형');
+    else if (String(l4).includes('치환')) chooseLeaf('치환형');
+  } else if (groupKey === '방정식과 부등식|이차방정식|복소수 근') {
+    if (String(l4).includes('허근')) chooseLeaf('허근');
+    else if (String(l4).includes('계수')) chooseLeaf('계수 조건');
+  } else if (groupKey === '도형의 방정식|원의 방정식|원의 방정식') {
+    if (String(l4).includes('중심') || String(l4).includes('반지름')) chooseLeaf('중심과 반지름');
+    else if (String(l4).includes('일반형') || String(l4).includes('조건') || String(l4).includes('기본')) chooseLeaf('일반형에서 원 찾기');
+  } else if (groupKey === '도형의 방정식|원의 방정식|원과 직선') {
+    if (String(l4).includes('교점')) chooseLeaf('교점 개수');
+    else if (String(l4).includes('현')) chooseLeaf('현의 길이');
+  } else if (groupKey === '행렬|행렬|행렬의 성질') {
+    if (String(l4).includes('곱셈') || String(l4).includes('거듭제곱')) chooseLeaf('곱셈의 성질');
+    else if (String(l4).includes('조건') || String(l4).includes('응용') || String(l4).includes('이익')) chooseLeaf('조건을 만족하는 행렬');
+  } else if (groupKey === '함수|유리함수|유리함수의 그래프') {
+    if (String(l4).includes('기본')) chooseLeaf('기본 그래프');
+    else if (String(l4).includes('평행')) chooseLeaf('평행이동');
+  } else if (groupKey === '도형의 방정식|직선의 방정식|점과 직선 사이의 거리') {
+    if (String(l4).includes('거리 공식')) chooseLeaf('거리 공식');
+    else if (String(l4).includes('넓이') || String(l4).includes('최소')) chooseLeaf('도형의 넓이·최소거리');
+  } else if (groupKey === '방정식과 부등식|여러 가지 부등식|부등식의 활용') {
+    if (String(l4).includes('최대') || String(l4).includes('최소')) chooseLeaf('최대·최소');
+    else if (String(l4).includes('계수')) chooseLeaf('계수 조건');
+  } else if (groupKey === '방정식과 부등식|이차방정식과 이차함수|그래프와 근') {
+    if (String(l4).includes('x축')) chooseLeaf('x축과의 교점');
+    else if (String(l4).includes('판별') || String(l4).includes('두 함수')) chooseLeaf('판별식과 위치');
+  } else if (groupKey === '도형의 방정식|도형의 이동|대칭이동') {
+    if (String(l4).includes('직선') || String(l4).includes('반사')) chooseLeaf('직선에 대한 대칭');
+    else if (String(l4).includes('축') || String(l4).includes('원점')) chooseLeaf('x축·y축·원점 대칭');
+  } else if (groupKey === '방정식과 부등식|복소수|i의 거듭제곱') {
+    if (String(l4).includes('주기')) chooseLeaf('주기성');
+    else if (String(l4).includes('조건')) chooseLeaf('복소수 조건');
+  } else if (groupKey === '함수|유리함수|유리함수의 활용') {
+    if (String(l4).includes('식 결정')) chooseLeaf('식 결정');
+    else if (String(l4).includes('최대') || String(l4).includes('최소')) chooseLeaf('유리함수의 최대·최소');
+    else if (String(l4).includes('교점')) chooseLeaf('유리함수와 그래프의 교점');
+  } else if (groupKey === '도형의 방정식|평면좌표|삼각형의 무게중심') {
+    if (String(l4).includes('무게중심') || String(l4).includes('중선')) chooseLeaf('좌표로 무게중심');
+    else if (String(l4).includes('좌표') || String(l4).includes('삼각형')) chooseLeaf('좌표 도형 활용');
+  } else if (groupKey === '경우의 수|경우의 수와 순열|합·곱의 법칙') {
+    if (String(l4).includes('단계') || String(l4).includes('선택')) chooseLeaf('단계별 선택');
+    else if (String(l4).includes('나누') || String(l4).includes('경우')) chooseLeaf('경우를 나누어 세기');
+  } else if (groupKey === '경우의 수|조합|조합의 활용') {
+    if (String(l4).includes('도형')) chooseLeaf('도형에서의 선택');
+    else if (String(l4).includes('선택')) chooseLeaf('선택 조건');
+  } else if (groupKey === '경우의 수|조합|분할·분배') {
+    if (String(l4).includes('배치')) chooseLeaf('선택 후 배치');
+    else if (String(l4).includes('경우') || String(l4).includes('분배')) chooseLeaf('조합을 이용한 경우의 수');
+  } else if (groupKey === '도형의 방정식|선분의 내분·외분|선분의 내분·외분') {
+    if (String(l4).includes('외분')) chooseLeaf('외분점');
+    else if (String(l4).includes('내분')) chooseLeaf('내분점');
+  }
+  if (resolvedL4 !== l4) l4 = resolvedL4;
 
   const canonical = { L1: l1, L2: l2, L3: l3, L4: l4 };
   if (masterKeys.has(canonicalKey(canonical))) return { canonical, state: 'CANONICAL_PATH_MATCH', reason: 'Mother canonical alias normalization matched the exact RPM v1.0 master path.' };
