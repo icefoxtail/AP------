@@ -81,6 +81,6 @@ test('Mother final difficulty uses only buckets 1 through 5 and preserves eviden
     else if (value == null) counts.null += 1;
     else counts.other += 1;
   }
-  assert.deepEqual(counts, { 1: 414, 2: 495, 3: 636, 4: 640, 5: 296, null: 17, other: 0 });
+  assert.deepEqual(counts, { 1: 414, 2: 498, 3: 640, 4: 647, 5: 299, null: 0, other: 0 });
   assert.ok(Object.values(counts).slice(0, 5).every(value => value > 0));
 });

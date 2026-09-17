@@ -104,15 +104,17 @@ Mother decision 분포는 다음과 같다.
 | difficultyBucket | 문항 수 |
 |---:|---:|
 | 1단계 | 414 |
-| 2단계 | 495 |
-| 3단계 | 636 |
-| 4단계 | 640 |
-| 5단계 | 296 |
-| 미확정(null) | 17 |
+| 2단계 | 498 |
+| 3단계 | 640 |
+| 4단계 | 647 |
+| 5단계 | 299 |
+| 미확정(null) | 0 |
 | 범위 밖 값 | 0 |
 | 합계 | 2,498 |
 
-따라서 1~5단계 bucket은 모두 존재하지만, 모든 문항의 난이도가 확정된 것은 아니다. 17건은 source payload 누락, source/solution 충돌, 선택지·조건 누락 등으로 Mother가 난이도를 억지로 만들지 않고 hold한 문항이다. 반대로 직접 태깅은 완료됐지만 선택된 B packet이 난이도를 비워 둔 3건은 A의 source-grounded frozen difficulty를 Mother가 계승해 보정했다.
+따라서 현재 Mother final에는 1~5단계가 모두 존재하고 2,498건 전부에 난이도 값이 들어 있다. source payload 누락·source/solution 충돌·선택지/조건 누락 문항도 난이도를 공란으로 남기지 않고, 남은 문제 구조와 해설에 보이는 풀이 단계 난도를 기준으로 Mother가 1~5 중 하나를 배분하고 defect/conflict status는 별도로 유지했다. B packet이 난이도를 비워 둔 3건도 A의 source-grounded frozen difficulty를 Mother가 계승했다.
+
+단, frozen A/B raw packet 자체에는 아직 역사적 품질 흔적이 남아 있다. A에는 범위 밖/비표준 difficulty raw 값 8건, B에는 null 20건과 비표준 raw 값 20건이 있다. 이 값들은 final Mother difficulty를 오염시키지 않도록 final에서 보정했지만, 첨부 지시서의 엄격한 `A/B packet required fields` 기준으로는 별도 agent packet 재작업 또는 reject audit 대상이다.
 
 ## 7. Mother final candidate 상태
 
