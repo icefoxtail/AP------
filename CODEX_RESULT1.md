@@ -202,3 +202,96 @@ node tests/exam-analysis-store.test.mjs
 
 - 학부모 PDF 정책이 바뀌면서 기존 테스트의 “저장된 문항 분석 원문이 PDF 카드에 노출” 기대값은 “안전 문항 코멘트만 노출”로 갱신했습니다.
 - `docs/plans/REPORT_CENTER_SCHOOL_EXAM_REPORT_LAYER_DIRECTIVE_20260703.md`는 작업 시작 전부터 untracked 상태였으므로 코드 커밋 범위에는 넣지 않았습니다.
+
+---
+
+## MIDDLE3 2H Metadata Foundation Direct Canonical Tagging Closeout (2026-09-17)
+
+### 1. EXECUTION BASELINE
+
+- `TARGET_GRADE`: `MIDDLE3`
+- `TARGET_BRANCH`: `codex/metadata-foundation-m3`
+- `START_SHA`: `b2476a225d34dc9160353e62f393491ad1c16765`
+- `CURRICULUM_SCOPE`: `2015 / M3-2 / 삼각비·원의 성질·통계`
+- `EXPECTED_DENOMINATOR`: `700` for 2H
+- `ACTUAL_DENOMINATOR`: `700`
+- `AGENT_AVAILABILITY`: `MULTI_AGENT_AVAILABLE`; Mother 1 + A 1 + B 1, maximum two active subagents
+- `METHOD`: `DIRECT_CANONICAL_TAGGING_V1.1`; A and B direct source reading, full diff deferred until both scopes froze
+
+### 2. PRE-FLIGHT
+
+Confirmed in the target repository before applying metadata:
+
+- branch and start SHA
+- MIDDLE3 2H manifest, 35 batches × 20 identities
+- actual source denominator and source JS coverage
+- M3-2 canonical authority at `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-2.md`
+- question content, choices, answer, solution, and required visual/table access
+- metadata sidecar at `archive/data/question_metadata.json`
+- direct packet, diff, Mother final, and apply receipt paths
+
+Source fidelity check covered 31 distinct source JS files. Original source JS, content, choices, answer, solution, image, SVG, table, and asset files were not edited.
+
+### 3. INITIAL BLIND PILOT / ROOT-CAUSE RECORD
+
+The earlier quality-first pilot and repairs identified actual artifact/engine risks: shard identity drift, incomplete packet coverage, legacy packet shape differences, generic B030 taxonomy, nested decision parsing, stale nested source identity, and an invalid parent-level key. These were handled as recording/validation defects rather than silently accepted as semantic truth.
+
+The v1.1 execution lock was then applied: L1/L2/L3, primary concept, difficulty, and status are mandatory; L4 may be null only with a source-derived gap and reason; representation alone never caused HOLD.
+
+### 4. A/B FULL FREEZE
+
+- A frozen identity coverage: `700/700`, unique `700`
+- B frozen identity coverage: `700/700`, unique `700`
+- batches: `001–035`
+- full diff artifacts: `M3_DIRECT_2H_BATCH_001_AB_DIFF.json` through `035_AB_DIFF.json`
+- Mother semantic adjudication began only after the full A/B packet set existed
+- 030 invalid generic B packet was excluded and replaced through direct B recovery artifacts
+- 035 A identity-overlap artifact was excluded and replaced with exact source ordinals
+
+### 5. ENGINE / RECORDING CHANGES
+
+Added or updated recording-only helpers:
+
+- `archive/tools/intelligence/build-m3-direct-tagging-manifests.mjs`
+- `archive/tools/intelligence/merge-m3-direct-packets.mjs`
+- `archive/tools/intelligence/assemble-m3-direct-role-packet.mjs`
+- `archive/tools/intelligence/assemble-m3-direct-micro-shard.mjs`
+- `archive/tools/intelligence/make-m3-direct-ab-diff.mjs`
+- `archive/tools/intelligence/build-m3-direct-2h-final.mjs`
+- `archive/tools/intelligence/apply-m3-direct-2h-final.mjs`
+- `archive/tools/intelligence/finalize-m3-direct-2h-ledger.mjs`
+
+These helpers do not classify questions. They assemble frozen packets, normalize identity, compare A/B records, enforce hard gates, and apply Mother-supplied final decisions to metadata only.
+
+### 6. FULL RESULT
+
+- `TOTAL`: `700`
+- `CHECKED`: `700`
+- `PASS / RESOLVED`: `699`
+- `HOLD_KEEP`: `1`
+- `HOLD_RELEASE`: `0`
+- `FOUNDATION_DEFECT_CANDIDATE`: `44`
+- `CONFLICT`: `1`
+- `SOURCE_DEFECT_CANDIDATE`: `1`
+- canonical invalid-key / parent-child defects in final packet: `0`
+- missing hard fields/evidence in final packet: `0`
+- source JS mutation: `0`
+- non-target metadata mutation: `0`
+
+The one retained HOLD is the previously recorded real source contradiction where the visual numeric label conflicts with the solution/answer. It is not a geometry/graph/table/solid representation HOLD. The 44 foundation candidates retain L1–L3 and difficulty while leaving L4 empty; they are not nearest-L4 fallbacks.
+
+### 7. FINAL ARTIFACTS
+
+- final Mother packet: `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_FINAL.json`
+- machine-readable Mother decisions: `.../M3_DIRECT_2H_MOTHER_DECISIONS.json`
+- apply receipt: `.../M3_DIRECT_2H_APPLY_RECEIPT.json`
+- progress ledger: `.../M3_DIRECT_2H_PROGRESS_LEDGER.json`
+- metadata sidecar: `archive/data/question_metadata.json`
+
+The apply receipt reports metadata digest `972c81bbe4f8cb49dd6b6d5571ed0a638be8c5487290d79e665913bfceefba14` and 31 source files checked.
+
+### 8. FINAL VERDICT FOR THIS 2H STOP POINT
+
+`CONDITIONAL PASS`
+
+The 2H denominator is fully covered, applied, and structurally sealed. The conditional label records that batches 001–028 retain their already-recorded Mother semantic decisions while the full A/B freeze and v1.1 structural gates were completed across all 700 identities; the next 1H run must keep the same v1.1 packet contract and perform its own full A/B freeze before Mother finalization. No 1H work was started after the user’s stop instruction.
