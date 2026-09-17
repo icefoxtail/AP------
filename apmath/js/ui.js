@@ -531,6 +531,9 @@ function closeModal(suppressReturn = false) {
     if (!overlay) return;
     if (overlay.dataset.mutationPending) return;
     if (!state.ui) state.ui = {};
+    if (Object.prototype.hasOwnProperty.call(state.ui, 'classProgressModalRequestId')) {
+        state.ui.classProgressModalRequestId = Number(state.ui.classProgressModalRequestId || 0) + 1;
+    }
 
     if (!suppressReturn && modalStepStack.length) {
         const previous = modalStepStack.pop();

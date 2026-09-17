@@ -121,7 +121,9 @@ let state = {
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
         exam_sessions: [], wrong_answers: [], class_exam_assignments: [], wrong_clinic_status: [], report_exam_cohort_stats: [], exam_blueprints: [], exam_question_reviews: [], exam_analysis_meta: [], attendance_history: [], homework_history: [],
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
-        class_textbooks: [], class_daily_records: [], class_daily_progress: [], timetable_classes: [],
+        class_textbooks: [], class_daily_records: [], class_daily_progress: [],
+        class_progress_date: '', class_progress_taxonomy_version: '', class_progress_taxonomy: [],
+        class_progress_snapshots: [], class_progress_items: [], timetable_classes: [],
         timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
         timetable_class_daily_records: [], timetable_class_daily_progress: [],
         parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: [],
@@ -827,6 +829,11 @@ async function loadData(isInitial = false) {
         timetable_class_textbooks: Array.isArray(data.timetable_class_textbooks) ? data.timetable_class_textbooks : [],
         timetable_class_daily_records: Array.isArray(data.timetable_class_daily_records) ? data.timetable_class_daily_records : [],
         timetable_class_daily_progress: Array.isArray(data.timetable_class_daily_progress) ? data.timetable_class_daily_progress : [],
+        class_progress_date: data.class_progress_date || '',
+        class_progress_taxonomy_version: data.class_progress_taxonomy_version || '',
+        class_progress_taxonomy: Array.isArray(data.class_progress_taxonomy) ? data.class_progress_taxonomy : [],
+        class_progress_snapshots: Array.isArray(data.class_progress_snapshots) ? data.class_progress_snapshots : [],
+        class_progress_items: Array.isArray(data.class_progress_items) ? data.class_progress_items : [],
         students: normalizeStudentRows(data.students),
         class_students: Array.isArray(data.class_students) ? data.class_students : [],
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
@@ -857,6 +864,10 @@ async function loadData(isInitial = false) {
         timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : [],
         timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : []
     };
+    if (state.ui) {
+        state.ui.classProgressCache = {};
+        state.ui.classDailyRecordCache = {};
+    }
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();
     
@@ -889,6 +900,11 @@ async function refreshDataOnly() {
         timetable_class_textbooks: Array.isArray(data.timetable_class_textbooks) ? data.timetable_class_textbooks : (state.db.timetable_class_textbooks || []),
         timetable_class_daily_records: Array.isArray(data.timetable_class_daily_records) ? data.timetable_class_daily_records : (state.db.timetable_class_daily_records || []),
         timetable_class_daily_progress: Array.isArray(data.timetable_class_daily_progress) ? data.timetable_class_daily_progress : (state.db.timetable_class_daily_progress || []),
+        class_progress_date: data.class_progress_date || state.db.class_progress_date || '',
+        class_progress_taxonomy_version: data.class_progress_taxonomy_version || state.db.class_progress_taxonomy_version || '',
+        class_progress_taxonomy: Array.isArray(data.class_progress_taxonomy) ? data.class_progress_taxonomy : (state.db.class_progress_taxonomy || []),
+        class_progress_snapshots: Array.isArray(data.class_progress_snapshots) ? data.class_progress_snapshots : (state.db.class_progress_snapshots || []),
+        class_progress_items: Array.isArray(data.class_progress_items) ? data.class_progress_items : (state.db.class_progress_items || []),
         attendance: Array.isArray(data.attendance) ? data.attendance : [], 
         homework: Array.isArray(data.homework) ? data.homework : [], 
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 
@@ -915,6 +931,10 @@ async function refreshDataOnly() {
         timetable_conflict_logs: Array.isArray(data.timetable_conflict_logs) ? data.timetable_conflict_logs : (state.db.timetable_conflict_logs || []),
         timetable_conflict_overrides: Array.isArray(data.timetable_conflict_overrides) ? data.timetable_conflict_overrides : (state.db.timetable_conflict_overrides || [])
     };
+    if (state.ui) {
+        state.ui.classProgressCache = {};
+        state.ui.classDailyRecordCache = {};
+    }
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();
     return true;
