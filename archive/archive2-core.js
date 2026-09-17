@@ -48,6 +48,151 @@
       .replace(/\s+/g, "");
   const gradeRank = (grade) =>
     ({ 중1: 1, 중2: 2, 중3: 3, 고1: 4, 고2: 5, 고3: 6 })[grade] || 0;
+  const normalizeCourseIdentity = (value) =>
+    text(value)
+      .normalize("NFC")
+      .replace(/Ⅰ/g, "I")
+      .replace(/Ⅱ/g, "II")
+      .replace(/\s+/g, "");
+  const finderCourseGrades = Object.freeze({
+    공통수학1: "고1",
+    공통수학2: "고1",
+    "수학(상)": "고1",
+    "수학(하)": "고1",
+    대수: "고2",
+    수학I: "고2",
+    "확률과통계": "고2",
+    미적분: "고3",
+    미적분I: "고3",
+    미적분II: "고3",
+    수학II: "고3",
+    기하: "고3",
+    "기하와 벡터": "고3",
+  });
+  const finderCourseGrade = (courseKey) => {
+    const middle = text(courseKey).match(/^M([123])-[12]$/);
+    return middle
+      ? `중${middle[1]}`
+      : finderCourseGrades[courseKey] || "";
+  };
+  const middleCourseRange = (range) => {
+    const startKey = text(range?.rangeStartUnitKey),
+      endKey = text(range?.rangeEndUnitKey),
+      unitKeys = [startKey, endKey].filter(Boolean),
+      base = text(range?.courseCode).match(/^M([123])$/)?.[0] ||
+        unitKeys.map((key) => key.match(/^(M[123])-\d{1,2}$/)?.[1]).find(Boolean),
+      numbers = unitKeys
+        .map((key) => key.match(new RegExp(`^${base || "M[123]"}-(\\d{1,2})$`))?.[1])
+        .filter(Boolean)
+        .map(Number);
+    if (!base || !numbers.length) return [];
+    const first = Math.min(...numbers), last = Math.max(...numbers);
+    return [1, 2]
+      .filter((semester) => {
+        const start = semester === 1 ? 1 : 5,
+          end = semester === 1 ? 4 : 8;
+        return first <= end && last >= start;
+      })
+      .map((semester) => `${base}-${semester}`);
+  };
+  function finderCourseKeys(taxonomy, filters = {}) {
+    return new Set(
+      (taxonomy || [])
+        .filter(
+          (row) =>
+            (!filters.grade || finderCourseGrade(row.courseKey) === filters.grade) &&
+            (!filters.curriculumKey || row.curriculumKey === filters.curriculumKey),
+        )
+        .map((row) => row.courseKey)
+        .filter(Boolean),
+    );
+  }
+  function reconcileFinderFilters(filters = {}, taxonomy = []) {
+    const next = { ...filters };
+    if (next.courseKey && !finderCourseKeys(taxonomy, next).has(next.courseKey))
+      next.courseKey = "";
+    return next;
+  }
+  function finderCourseCodeCurriculum(courseCode) {
+    const match = text(courseCode).match(/^H(15|22)(?:-|$)/);
+    return match ? `20${match[1]}` : "";
+  }
+  function buildFinderIndex(catalog = {}) {
+    const taxonomy = Array.isArray(catalog.taxonomy) ? catalog.taxonomy : [],
+      canonicalByIdentity = new Map(),
+      curriculaByCourse = new Map(),
+      recordsByFile = new Map();
+    for (const row of taxonomy) {
+      const key = text(row.courseKey),
+        identity = normalizeCourseIdentity(key);
+      if (!key) continue;
+      if (!canonicalByIdentity.has(identity))
+        canonicalByIdentity.set(identity, new Set());
+      canonicalByIdentity.get(identity).add(key);
+      if (!curriculaByCourse.has(key)) curriculaByCourse.set(key, new Set());
+      if (row.curriculumKey)
+        curriculaByCourse.get(key).add(row.curriculumKey);
+    }
+    for (const record of catalog.records || []) {
+      const file = normalizeFile(record.sourceFile);
+      if (!recordsByFile.has(file)) recordsByFile.set(file, []);
+      recordsByFile.get(file).push(record);
+    }
+    const byFile = new Map();
+    for (const exam of catalog.exams || []) {
+      const file = normalizeFile(exam.file),
+        courseKeys = new Set(),
+        curriculumKeys = new Set(exam.curriculums || []);
+      for (const record of recordsByFile.get(file) || []) {
+        if (record.courseKey) courseKeys.add(record.courseKey);
+        if (record.curriculumKey) curriculumKeys.add(record.curriculumKey);
+      }
+      let hasMiddleRange = false;
+      for (const range of exam.courseRanges || []) {
+        const middleKeys = middleCourseRange(range).filter((key) =>
+          curriculaByCourse.has(key),
+        );
+        if (middleKeys.length) {
+          hasMiddleRange = true;
+          middleKeys.forEach((key) => courseKeys.add(key));
+          if (!curriculumKeys.size)
+            middleKeys.forEach((key) =>
+              (curriculaByCourse.get(key) || []).forEach((value) =>
+                curriculumKeys.add(value),
+              ),
+            );
+          continue;
+        }
+        // The current catalog has no canonical courseKey on courseRanges for
+        // high-school rows. Resolve the range's display label to the matching
+        // taxonomy identity here; Finder filters compare that identity set,
+        // never the display label directly.
+        const identity = normalizeCourseIdentity(range.standardCourse),
+          candidates = canonicalByIdentity.get(identity) || [];
+        for (const key of candidates) courseKeys.add(key);
+        const curriculum = finderCourseCodeCurriculum(range.courseCode);
+        if (curriculum && candidates.size)
+          curriculumKeys.add(curriculum);
+      }
+      // Middle-school ranges are curriculum-neutral in the catalog: the same
+      // canonical M#-1/M#-2 scopes exist in both taxonomy curricula. Only use
+      // that fallback when the source has no more specific curriculum metadata.
+      if (hasMiddleRange && !curriculumKeys.size)
+        for (const key of courseKeys)
+          for (const value of curriculaByCourse.get(key) || [])
+            curriculumKeys.add(value);
+      byFile.set(file, { courseKeys, curriculumKeys });
+    }
+    return byFile;
+  }
+  function finderMatches(exam, filters = {}, index = new Map()) {
+    const identity = index.get(normalizeFile(exam?.file));
+    return (
+      (!filters.curriculumKey ||
+        identity?.curriculumKeys?.has(filters.curriculumKey)) &&
+      (!filters.courseKey || identity?.courseKeys?.has(filters.courseKey))
+    );
+  }
   const sourceYear = (record) => {
     const year = Number(record.year);
     return Number.isInteger(year) && year >= 1900 && year <= 2100 ? year : 0;
@@ -402,6 +547,12 @@
     normalizeFile,
     normalizeSearch,
     gradeRank,
+    normalizeCourseIdentity,
+    finderCourseGrade,
+    finderCourseKeys,
+    reconcileFinderFilters,
+    buildFinderIndex,
+    finderMatches,
     sourceYear,
     compareNewest,
     taxonomyPaths,
