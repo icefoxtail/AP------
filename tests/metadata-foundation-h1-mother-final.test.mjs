@@ -71,3 +71,16 @@ test('raw Mother canonical values remain auditable after resolution', () => {
     assert.equal(typeof record.final.canonicalResolution, 'string');
   }
 });
+
+test('Mother final difficulty uses only buckets 1 through 5 and preserves evidence holds', () => {
+  const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, null: 0, other: 0 };
+  for (const record of candidate.records) {
+    const value = record.final.difficultyBucket;
+    const number = Number(value);
+    if (Number.isInteger(number) && number >= 1 && number <= 5) counts[number] += 1;
+    else if (value == null) counts.null += 1;
+    else counts.other += 1;
+  }
+  assert.deepEqual(counts, { 1: 414, 2: 495, 3: 636, 4: 640, 5: 296, null: 17, other: 0 });
+  assert.ok(Object.values(counts).slice(0, 5).every(value => value > 0));
+});
