@@ -213,6 +213,20 @@ const difficultyOverrides = {
   1164: { bucket: 2, reason: 'Mother read the complex arithmetic expression; answer choices/context are incomplete, but the visible calculation is direct.' },
 };
 
+const primaryConceptOverrides = {
+  788: '두 이차방정식의 근과 계수의 관계',
+  789: '제한구간 이차함수의 최대·최소',
+  893: '복소수와 켤레복소수 조건',
+  895: '이차함수 위 좌표점과 삼각형 넓이',
+  898: '제한구간 이차함수의 최댓값·최솟값',
+  920: '다항식 인수분해 조건',
+  939: '이차방정식의 근과 근호식 조건',
+  1033: '다항식의 나눗셈과 미정계수',
+  1047: '행렬 등식과 정수 조건',
+  1048: '다항식 곱과 완전제곱 인수분해 조건',
+  1050: '원의 현 길이와 근으로 방정식 구성'
+};
+
 function pathLabels(values) {
   return { L1: values[0], L2: values[1], L3: values[2], L4: values[3] };
 }
@@ -434,6 +448,10 @@ for (let index = 0; index < sourceRecords.length; index++) {
   const canonicalRaw = { ...finalValue.canonical };
   const canonicalResolution = resolveCanonical(recordIndex, finalValue);
   const canonicalState = canonicalResolution.state;
+  if (!finalValue.primaryConcept && primaryConceptOverrides[recordIndex]) {
+    finalValue.primaryConcept = primaryConceptOverrides[recordIndex];
+    finalValue.primaryConceptResolution = 'Mother direct source/solution primary concept recovery for final release.';
+  }
   let difficultyResolution = null;
   const difficultyOverride = difficultyOverrides[recordIndex];
   if (difficultyOverride) {
