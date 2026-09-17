@@ -99,14 +99,6 @@ function buildProjection() {
     });
   }
 
-  records.sort((a, b) =>
-    a.curriculumKey.localeCompare(b.curriculumKey) ||
-    a.level.localeCompare(b.level) ||
-    a.courseKey.localeCompare(b.courseKey) ||
-    a.l1.localeCompare(b.l1) ||
-    a.l2.localeCompare(b.l2)
-  );
-
   return {
     sourceVersion: String(source.authorityVersion || source.schemaVersion || ''),
     records

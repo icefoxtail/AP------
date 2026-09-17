@@ -1936,13 +1936,7 @@ function getClassProgressCourseGroups() {
         groups.get(key).items.push(item);
     });
 
-    return Array.from(groups.values()).map(group => {
-        group.items.sort((a, b) =>
-            String(a.l1 || '').localeCompare(String(b.l1 || '')) ||
-            String(a.l2 || '').localeCompare(String(b.l2 || ''))
-        );
-        return group;
-    }).sort((a, b) =>
+    return Array.from(groups.values()).sort((a, b) =>
         (a.curriculumKey === '2022' ? 0 : 1) - (b.curriculumKey === '2022' ? 0 : 1) ||
         String(a.courseLabel).localeCompare(String(b.courseLabel)) ||
         String(a.courseKey).localeCompare(String(b.courseKey))
