@@ -2428,7 +2428,7 @@ function selectClassProgressTextbook(textbookId) {
     if (completedPanel) modalState.completedBooksOpen = !!completedPanel.open;
     syncClassProgressTextbookDraftsFromDom();
     modalState.selectedTextbookId = selectedId;
-    renderClassProgressTextbookPanelInPlace();
+    renderClassProgressTextbookPanelInPlace(false);
     const detail = document.getElementById('record-progress-detail');
     if (detail) detail.innerHTML = renderClassProgressTextbookDetail(book);
 }
@@ -2451,9 +2451,9 @@ function openClassProgressTextbookManage(cid) {
     renderClassProgressTextbookPanelInPlace();
 }
 
-function renderClassProgressTextbookPanelInPlace() {
+function renderClassProgressTextbookPanelInPlace(syncDrafts = true) {
     const root = document.getElementById('record-progress-books-panel');
-    syncClassProgressTextbookDraftsFromDom();
+    if (syncDrafts) syncClassProgressTextbookDraftsFromDom();
     if (root) root.innerHTML = renderClassProgressTextbookPanel();
     const modalState = getClassProgressModalState();
     const addToggle = document.querySelector('[data-class-progress-add-toggle]');
@@ -2695,11 +2695,13 @@ async function openClassRecordModal(cid, requestedDate) {
                     <div id="record-progress-detail">${selectedBookHtml}</div>
                 </section>
             </div>
-            <section class="ap-class-progress-note">
-                <h3>특이사항</h3>
-                <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모">${apEscapeHtml(prevNote)}</textarea>
-            </section>
-            <button class="btn apms-button apms-button--primary btn-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${classProgressJsArg(cid)}, ${classProgressJsArg(todayStr)})">기록 저장하기</button>
+            <div class="ap-class-progress-footer">
+                <section class="ap-class-progress-note">
+                    <h3>특이사항</h3>
+                    <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모">${apEscapeHtml(prevNote)}</textarea>
+                </section>
+                <button class="btn apms-button apms-button--primary btn-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${classProgressJsArg(cid)}, ${classProgressJsArg(todayStr)})">기록 저장하기</button>
+            </div>
         </div>`);
 }
 
