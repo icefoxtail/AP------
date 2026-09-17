@@ -121,18 +121,18 @@ final candidate의 L1~L4를 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/0
 
 | canonical state | 문항 수 |
 |---|---:|
-| `CANONICAL_PATH_MATCH` | 2,227 |
-| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 271 |
+| `CANONICAL_PATH_MATCH` | 2,256 |
+| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 242 |
 | `CANONICAL_PATH_UNMATCHED` | 0 |
 
-최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 412건은 raw path와 resolved path가 달라졌으며, 그중 263건은 exact master path로, 149건은 L1~L3 primary를 복원한 partial/no-fit path로 정리했다. 현재 `EXPLICIT_NO_FIT_OR_UNKNOWN`은 271건이며, exact unmatched는 0건이다.
+최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 441건은 raw path와 resolved path가 달라졌으며, 그중 292건은 exact master path로, 149건은 L1~L3 primary를 복원한 partial/no-fit path로 정리했다. 현재 `EXPLICIT_NO_FIT_OR_UNKNOWN`은 242건이며, exact unmatched는 0건이다.
 
 ```json
 {
   "unresolvedDisagreementCount": 0,
   "canonicalCounts": {
-    "CANONICAL_PATH_MATCH": 2227,
-    "EXPLICIT_NO_FIT_OR_UNKNOWN": 271,
+    "CANONICAL_PATH_MATCH": 2256,
+    "EXPLICIT_NO_FIT_OR_UNKNOWN": 242,
     "CANONICAL_PATH_UNMATCHED": 0
   },
   "errorCount": 0,
@@ -173,10 +173,20 @@ canonical resolution이 적용된 대표 raw path 유형은 다음과 같다.
 | L1 recognized | 2,498 / 2,498 |
 | L2 recognized | 2,498 / 2,498 |
 | L3 recognized | 2,498 / 2,498 |
-| L4 exact master match | 2,227 |
-| L4 no-fit/evidence hold | 271 |
+| L4 exact master match | 2,256 |
+| L4 no-fit/evidence hold | 242 |
 
-따라서 현재 no-fit은 L1·L2·L3를 포기한 상태가 아니다. 현재 남은 271건은 primary hierarchy를 채운 뒤에도 L4 leaf가 없거나 source/evidence 상태 때문에 L4를 확정하지 않은 문항이다.
+### L4 review correction
+
+초기 L4 보류 271건도 candidate leaf와 source/solution의 풀이 단서를 다시 대조했다. 약수 개수, 입체도형의 겉넓이·부피, 나머지정리, 행렬 성질, 복소수 주기, 원과 직선의 교점·현의 길이 등 기존 master leaf로 닫히는 29건을 추가 복원했다.
+
+현재 남은 242건은 L1·L2·L3 primary를 채운 뒤에도 다음 중 하나인 경우다.
+
+- 현재 master의 L4 목록에 해당 세부 풀이법이 없음
+- source prompt/solution이 불완전하거나 서로 충돌함
+- 여러 보조 방법이 섞여 기존 L4 하나로 확정할 수 없음
+
+따라서 242건은 L1·L2·L3를 비워 둔 no-fit이 아니라, Mother L4 검수 결과를 보존한 명시적 L4 hold/no-fit이다.
 
 ## 8. Gate 및 검증 결과
 
