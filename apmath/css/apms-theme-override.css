@@ -2108,6 +2108,17 @@ body.dark .omr-card {
   padding: 6px 8px;
 }
 
+.ap-class-progress-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+}
+
+.ap-class-progress-footer .ap-class-progress-note {
+  min-width: 0;
+}
+
 .ap-class-progress-note textarea {
   min-height: 34px;
   height: 34px;
@@ -2134,6 +2145,10 @@ body.dark .omr-card {
   }
 
   .ap-class-progress-note {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ap-class-progress-footer {
     grid-template-columns: minmax(0, 1fr);
   }
 
