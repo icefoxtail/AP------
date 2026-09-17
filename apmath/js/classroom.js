@@ -2002,6 +2002,21 @@ function getClassProgressCache() {
     return state.ui.classProgressCache;
 }
 
+function invalidateClassProgressCacheFromDate(classId, effectiveDate) {
+    const cid = String(classId || '');
+    const date = String(effectiveDate || '');
+    if (!cid || !date) return;
+
+    const cache = getClassProgressCache();
+    Object.keys(cache).forEach(cacheKey => {
+        const separator = cacheKey.lastIndexOf('|');
+        if (separator < 0) return;
+        const cacheClassId = cacheKey.slice(0, separator);
+        const queryDate = cacheKey.slice(separator + 1);
+        if (cacheClassId === cid && queryDate >= date) delete cache[cacheKey];
+    });
+}
+
 function syncClassProgressToState(cid, date, snapshot, items) {
     if (!snapshot) return;
     if (!Array.isArray(state.db.class_progress_snapshots)) state.db.class_progress_snapshots = [];
@@ -2018,6 +2033,7 @@ function syncClassProgressToState(cid, date, snapshot, items) {
         .filter(row => !removedSnapshotIds.has(String(row.snapshot_id)))
         .concat(Array.isArray(items) ? items : []);
 
+    invalidateClassProgressCacheFromDate(cid, snapshot.effective_date);
     getClassProgressCache()[`${cid}|${date}`] = { snapshot, items: Array.isArray(items) ? items : [], legacy_record: null };
     if (typeof apmsInvalidateDataIndexes === 'function') apmsInvalidateDataIndexes();
 }
@@ -2245,6 +2261,7 @@ async function openClassRecordModal(cid, requestedDate) {
         date: todayStr,
         legacyLine: exactLegacy.line,
         legacyFallbackLine: legacyFallback ? legacyFallback.line : '',
+        hasStructuredSnapshot: !!resolvedProgress.snapshot,
         previousNote: prevNote,
         dailyLoadFailed: !!dailyState.loadFailed
     };
@@ -2372,6 +2389,16 @@ async function saveClassRecord(cid, dateStr) {
             if (!syncClassDailyRecordToState(cid, dateStr, r.record, r.progress)) {
                 await loadData();
                 renderClass(cid);
+            }
+
+            const hasStructuredSnapshot = meta && String(meta.classId) === String(cid) && String(meta.date) === String(dateStr)
+                ? !!meta.hasStructuredSnapshot
+                : !!getClassProgressSnapshotForDate(cid, dateStr).snapshot;
+            if (!hasStructuredSnapshot && selectedItems.length === 0) {
+                toast('저장 완료', 'success');
+                closeModal(true);
+                if (document.getElementById('timetable-root') && typeof renderTimetable === 'function') renderTimetable();
+                return;
             }
 
             const progressResponse = await api.post('class-progress', {

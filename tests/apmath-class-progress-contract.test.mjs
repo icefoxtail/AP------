@@ -57,8 +57,187 @@ assert.match(classroom, /class_progress_taxonomy/);
 assert.match(classroom, /api\.get\(`class-progress\?/);
 assert.match(classroom, /api\.post\('class-progress'/);
 assert.match(classroom, /specialNote = \[preservedLegacyLine, noteText\]/);
+assert.match(classroom, /function invalidateClassProgressCacheFromDate\(classId, effectiveDate\)/);
+assert.match(classroom, /hasStructuredSnapshot: !!resolvedProgress\.snapshot/);
 assert.match(core, /class_progress_snapshots/);
 assert.match(core, /class_progress_taxonomy/);
+
+// Regression: saving a snapshot must invalidate every later as-of cache entry for
+// the same class, while keeping earlier dates and their resolved state intact.
+const progressFunctionsStart = classroom.indexOf('function getClassProgressDbArray');
+const progressCacheStart = classroom.indexOf('function getClassProgressCache', progressFunctionsStart);
+const progressFunctionsEnd = classroom.indexOf('function getClassDailyRecordCache', progressCacheStart);
+assert.ok(progressCacheStart > progressFunctionsStart);
+assert.ok(progressFunctionsStart >= 0 && progressFunctionsEnd > progressFunctionsStart);
+const progressFunctions = classroom.slice(progressFunctionsStart, progressCacheStart) +
+  classroom.slice(progressCacheStart, progressFunctionsEnd);
+let progressApiCalls = 0;
+const progressContext = {
+  console,
+  state: {
+    db: {
+      class_progress_date: '',
+      class_progress_snapshots: [
+        { id: 'snapshot-a', class_id: 'c1', effective_date: '2026-09-10', updated_at: '2026-09-10T01:00:00Z' }
+      ],
+      class_progress_items: [
+        { id: 'item-a', snapshot_id: 'snapshot-a', class_id: 'c1', canonical_path_key: 'path-a' }
+      ]
+    },
+    ui: {
+      classProgressCache: {
+        'c1|2026-09-14': { snapshot: { id: 'snapshot-a' }, items: [] },
+        'c1|2026-09-20': { snapshot: { id: 'snapshot-a' }, items: [] },
+        'other|2026-09-20': { snapshot: { id: 'other-snapshot' }, items: [] }
+      }
+    }
+  },
+  api: {
+    get: async () => {
+      progressApiCalls += 1;
+      return {
+        success: true,
+        snapshot: { id: 'snapshot-b', class_id: 'c1', effective_date: '2026-09-15', updated_at: '2026-09-15T01:00:00Z' },
+        items: [{ id: 'item-b', snapshot_id: 'snapshot-b', class_id: 'c1', canonical_path_key: 'path-b' }]
+      };
+    }
+  },
+  normalizeClassroomDate: value => String(value || ''),
+  getClassroomOperationDate: () => '2026-09-20',
+  apmsInvalidateDataIndexes: () => {},
+  Set,
+  Map,
+  Array,
+  Date,
+  String,
+  Number,
+  Object,
+  Math,
+  JSON
+};
+vm.runInNewContext(progressFunctions, progressContext, { filename: 'apmath/js/classroom.js' });
+await vm.runInNewContext("loadClassProgressForDate('c1', '2026-09-20')", progressContext);
+vm.runInNewContext(
+  "syncClassProgressToState('c1', '2026-09-15', " +
+  "{ id: 'snapshot-b', class_id: 'c1', effective_date: '2026-09-15', updated_at: '2026-09-15T01:00:00Z' }, " +
+  "[{ id: 'item-b', snapshot_id: 'snapshot-b', class_id: 'c1', canonical_path_key: 'path-b' }])",
+  progressContext
+);
+assert.ok(progressContext.state.ui.classProgressCache['c1|2026-09-14']);
+assert.equal(progressContext.state.ui.classProgressCache['c1|2026-09-15'].snapshot.id, 'snapshot-b');
+assert.equal(progressContext.state.ui.classProgressCache['c1|2026-09-20'], undefined);
+assert.equal(progressContext.state.ui.classProgressCache['other|2026-09-20'].snapshot.id, 'other-snapshot');
+assert.equal(
+  vm.runInNewContext("getClassProgressSnapshotForDate('c1', '2026-09-14').snapshot.id", progressContext),
+  'snapshot-a'
+);
+assert.equal(
+  vm.runInNewContext("getClassProgressSnapshotForDate('c1', '2026-09-20').snapshot.id", progressContext),
+  'snapshot-b'
+);
+const refreshedProgress = await vm.runInNewContext("loadClassProgressForDate('c1', '2026-09-20')", progressContext);
+assert.equal(refreshedProgress.snapshot.id, 'snapshot-b');
+assert.equal(progressApiCalls, 1, 'invalidated future cache should be fetched again');
+
+// Regression: legacy-only saves with no canonical selection must not create an
+// empty structured snapshot. Explicitly clearing an existing structured state
+// and creating a new canonical state remain supported.
+const saveClassRecordStart = classroom.indexOf('async function saveClassRecord');
+assert.ok(saveClassRecordStart >= 0);
+const saveClassRecordFunction = classroom.slice(saveClassRecordStart);
+let selectedUnitCheckboxes = [];
+const saveCalls = [];
+const saveContext = {
+  console,
+  state: {
+    db: { class_progress_snapshots: [], class_progress_items: [] },
+    ui: {
+      classProgressModalMeta: {
+        classId: 'c1',
+        date: '2026-09-20',
+        legacyLine: '[단원선택] legacy unit',
+        hasStructuredSnapshot: false,
+        dailyLoadFailed: false
+      }
+    }
+  },
+  document: {
+    querySelectorAll(selector) {
+      if (selector === '.record-tb-check:checked') return [];
+      if (selector === '.record-unit-check:checked') return selectedUnitCheckboxes;
+      return [];
+    },
+    getElementById(id) {
+      if (id === 'record-special-note') return { value: '일반 특이사항' };
+      return null;
+    }
+  },
+  api: {
+    post: async (path, payload) => {
+      saveCalls.push({ path, payload });
+      if (path === 'class-daily-records') {
+        return {
+          success: true,
+          record: { id: 'record-1', class_id: 'c1', date: '2026-09-20', special_note: payload.special_note },
+          progress: []
+        };
+      }
+      return {
+        success: true,
+        snapshot: { id: 'snapshot-new', class_id: 'c1', effective_date: '2026-09-20' },
+        items: payload.items
+      };
+    }
+  },
+  syncClassDailyRecordToState: () => true,
+  syncClassProgressToState: () => {},
+  getClassProgressSnapshotForDate: () => ({ snapshot: null }),
+  getTeacherNameForUI: () => '교사',
+  toast: () => {},
+  closeModal: () => {},
+  loadData: async () => {},
+  renderClass: () => {},
+  renderTimetable: () => {},
+  Set,
+  Map,
+  Array,
+  Date,
+  String,
+  Number,
+  Object,
+  Math,
+  JSON
+};
+vm.runInNewContext(saveClassRecordFunction, saveContext, { filename: 'apmath/js/classroom.js' });
+await vm.runInNewContext("saveClassRecord('c1', '2026-09-20')", saveContext);
+assert.deepEqual(saveCalls.map(call => call.path), ['class-daily-records']);
+assert.equal(saveCalls[0].payload.special_note, '[단원선택] legacy unit\n일반 특이사항');
+
+selectedUnitCheckboxes = [{
+  value: 'path-canonical',
+  getAttribute(name) {
+    return {
+      'data-curriculum-key': '2022',
+      'data-level-key': 'middle',
+      'data-course-key': 'M3-1',
+      'data-canonical-path-key': 'path-canonical',
+      'data-l1': '이차방정식',
+      'data-l2': '이차방정식의 풀이'
+    }[name] || '';
+  }
+}];
+saveContext.state.ui.classProgressModalMeta.hasStructuredSnapshot = false;
+saveCalls.length = 0;
+await vm.runInNewContext("saveClassRecord('c1', '2026-09-20')", saveContext);
+assert.deepEqual(saveCalls.map(call => call.path), ['class-daily-records', 'class-progress']);
+assert.equal(saveCalls[1].payload.items.length, 1);
+
+selectedUnitCheckboxes = [];
+saveContext.state.ui.classProgressModalMeta.hasStructuredSnapshot = true;
+saveCalls.length = 0;
+await vm.runInNewContext("saveClassRecord('c1', '2026-09-20')", saveContext);
+assert.deepEqual(saveCalls.map(call => call.path), ['class-daily-records', 'class-progress']);
+assert.equal(saveCalls[1].payload.items.length, 0);
 
 assert.match(timetable, /if \(isTimetableMonthArchiveMode\(\)\) return null;/);
 assert.match(timetable, /class_progress_snapshots/);
