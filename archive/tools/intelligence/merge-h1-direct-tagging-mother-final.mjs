@@ -189,6 +189,30 @@ const canonicalOverrides = {
   2273: { path: ['집합과 명제', '명제', '필요조건·충분조건', '조건 관계'], reason: 'The solution interprets implication, converse, contrapositive, and condition inclusion relations.' },
 };
 
+// Mother difficulty adjudication for records where a frozen packet omitted a
+// bucket or the source/solution conflict prevented the packet from freezing
+// one. The A/B packet values remain unchanged; final difficulty is assigned
+// from the visible source demand and surviving solution steps.
+const difficultyOverrides = {
+  788: { bucket: 3, reason: 'Mother read the surviving root-relation prompt; the missing equations block full verification, but the visible quadratic-root relation requires multi-step coefficient reasoning.' },
+  789: { bucket: 4, reason: 'Mother read the surviving constrained quadratic-minimum prompt; omitted function/interval data is a source defect, while the visible optimization structure is advanced.' },
+  893: { bucket: 4, reason: 'Mother read the surviving conjugate-complex-number condition; omitted variable definitions block verification, but the visible complex-condition reasoning is multi-step.' },
+  895: { bucket: 4, reason: 'Mother read the surviving quadratic-function/triangle-area method; omitted defining data is held, while coordinate symmetry plus slope/area reasoning is advanced.' },
+  898: { bucket: 4, reason: 'Mother read the surviving restricted-interval extremum prompt; missing parameter definitions are held, while the visible piecewise optimization demand is advanced.' },
+  920: { bucket: 5, reason: 'Mother read the quartic factorization and integer-factor constraints; source/solution conflict is retained, but the visible multi-case algebraic structure is highest difficulty.' },
+  939: { bucket: 5, reason: 'Mother read the quadratic-root radical expression and competing answer evidence; the visible root-relation plus radical manipulation is highest difficulty despite conflict hold.' },
+  1033: { bucket: 3, reason: 'Mother read the polynomial-division prompt; omitted polynomials prevent final verification, but the visible division/coefficient task is a direct multi-step application.' },
+  1047: { bucket: 2, reason: 'Mother read the surviving matrix-equality/prime-condition prompt; missing matrix context is held, while the visible operation is a short direct condition application.' },
+  1048: { bucket: 4, reason: 'Mother read the polynomial-factorization condition; omitted P,Q constraints block verification, while the visible square-factor condition requires multi-step algebra.' },
+  1050: { bucket: 4, reason: 'Mother read the circle-chord/root-construction prompt; omitted diagram relation blocks verification, while the visible geometry-to-quadratic construction is advanced.' },
+  1063: { bucket: 3, reason: 'Mother read the square-root sign/branch condition; the branch convention is held, while the visible domain and sign casework is intermediate.' },
+  1100: { bucket: 2, reason: 'Mother read the factorization-choice prompt; choices are missing, but the visible task is a direct factorization-formula check.' },
+  1115: { bucket: 4, reason: 'Mother read the cubic inverse-symmetry/remainder prompt; source conflict is held, while the visible cubic remainder reasoning is multi-step.' },
+  1136: { bucket: 5, reason: 'Mother read the piecewise-function intersection prompt; endpoint data is incomplete, while the visible piecewise graph/intersection analysis is high difficulty.' },
+  1145: { bucket: 3, reason: 'Mother read the modular expression and supplied remainder-theorem solution; the arithmetic substitution is a multi-step but direct application.' },
+  1164: { bucket: 2, reason: 'Mother read the complex arithmetic expression; answer choices/context are incomplete, but the visible calculation is direct.' },
+};
+
 function pathLabels(values) {
   return { L1: values[0], L2: values[1], L3: values[2], L4: values[3] };
 }
@@ -411,7 +435,12 @@ for (let index = 0; index < sourceRecords.length; index++) {
   const canonicalResolution = resolveCanonical(recordIndex, finalValue);
   const canonicalState = canonicalResolution.state;
   let difficultyResolution = null;
-  if (finalValue.difficultyBucket == null && finalValue.status === 'DIRECT_TAGGED') {
+  const difficultyOverride = difficultyOverrides[recordIndex];
+  if (difficultyOverride) {
+    finalValue.difficultyBucket = difficultyOverride.bucket;
+    difficultyResolution = difficultyOverride.reason;
+  }
+  if (!difficultyOverride && finalValue.difficultyBucket == null && finalValue.status === 'DIRECT_TAGGED') {
     const fallbackDifficulty = [av.difficultyBucket, bv.difficultyBucket]
       .map(value => Number(value))
       .find(value => Number.isInteger(value) && value >= 1 && value <= 5);
