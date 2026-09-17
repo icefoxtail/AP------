@@ -294,4 +294,132 @@ The apply receipt reports metadata digest `972c81bbe4f8cb49dd6b6d5571ed0a638be8c
 
 `CONDITIONAL PASS`
 
-The 2H denominator is fully covered, applied, and structurally sealed. The conditional label records that batches 001–028 retain their already-recorded Mother semantic decisions while the full A/B freeze and v1.1 structural gates were completed across all 700 identities; the next 1H run must keep the same v1.1 packet contract and perform its own full A/B freeze before Mother finalization. No 1H work was started after the user’s stop instruction.
+The 2H denominator is fully covered, applied, and structurally sealed. The conditional label records that batches 001–028 retain their already-recorded Mother semantic decisions while the full A/B freeze and v1.1 structural gates were completed across all 700 identities. The subsequent 1H run was started only to the pause checkpoint recorded below.
+
+## MIDDLE3 1H Pause Checkpoint (2026-09-17)
+
+The user requested that the 1H run be paused. No 1H Mother finalization, metadata apply, commit, or push was performed.
+
+- Actual current M3-1 manifest denominator: `944` across `48` batches
+- Reference expected denominator: `946`
+- Difference: `2` inventory records remain outside the M3-1 unit scope as `M2-07 / 중2 수학` source-unit records; they remain preserved in the fresh inventory for explicit scope review
+- A direct tagging frozen: `20/944` (`A_DIRECT_1H_BATCH_001.json`)
+- B independent review frozen: `140/944` (`B_DIRECT_1H_BATCH_001.json` through `B_DIRECT_1H_BATCH_007.json`)
+- Mother final: `0`; 1H production metadata apply: `0`
+- Restart point: batch `002` for A; B next unreviewed batch is `007`
+- Partial A batch002 work was not promoted to a final packet
+- Original source JS, content, choices, answer, solution, image, SVG, table, and assets were not changed
+
+The authoritative pause ledger is `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/1H/M3_DIRECT_1H_PROGRESS_LEDGER.json` with status `PAUSED_BY_USER`.
+
+---
+
+## MIDDLE3 / 2H Metadata Foundation Final Pinpoint Repair (2026-09-17)
+
+### 1. EXECUTION LOCK
+
+- `BRANCH`: `codex/metadata-foundation-m3`
+- `START_HEAD`: `3ab446aeab68fa146fb72f65818a0de639428a39`
+- `END_HEAD`: `3ab446aeab68fa146fb72f65818a0de639428a39` (no commit)
+- `WORKTREE`: `C:\Users\USER\Desktop\AP-------m3`
+- `2H_DENOMINATOR`: `700`
+- `A_PACKET_COVERAGE`: `700/700`
+- `B_PACKET_COVERAGE`: `700/700`
+- `AB_DIFF_COVERAGE`: `700/700`; batches `001–035` present
+- `MOTHER_FINAL_001_028`: present; pre-existing Mother semantic decisions retained
+- `MOTHER_FINAL_029_035`: generated from frozen A/B + AB_DIFF + source evidence
+- `question_metadata.json`: present and applied only for the 2H target identities
+
+The existing dirty `CODEX_RESULT1.md` state was preserved and this repair report was appended. No reset, restore, stash, clean, commit, push, `git add .`, or `git add -A` was used. MIDDLE3 / 1H work was not started.
+
+### 2. PINPOINT REPAIR
+
+- Added explicit `M3_DIRECT_2H_BATCH_029_MOTHER_DECISIONS.json` through `035_MOTHER_DECISIONS.json`.
+- Added explicit `M3_DIRECT_2H_BATCH_029_MOTHER_FINAL.json` through `035_MOTHER_FINAL.json`.
+- Each 029–035 Mother record contains source identity, content/choices/answer/solution read evidence, required visual/table evidence where applicable, frozen A evidence, frozen B evidence, AB_DIFF provenance, and the Mother resolution.
+- Removed all 029–035 B-direct final fallback behavior from `build-m3-direct-2h-final.mjs`; every batch now requires a Mother Final artifact.
+- Normalized the 001–028 pre-existing gap parent paths and GAP wrappers without changing their existing L4/difficulty/semantic decisions.
+- Repaired archive canonical metadata mapping through the compiled master:
+  - `삼각비` → `M3-05-TRIG_RATIO` / `삼각비`
+  - `삼각비의 활용` → `M3-05-TRIG_RATIO_APPLICATION` / `삼각비의 활용`
+  - `원과 직선` → `M3-06-CIRCLE_LINE` / `원과 직선`
+  - `원주각` → `M3-06-CIRCLE_INSCRIBED_ANGLE` / `원주각`
+  - `대푯값과 산포도` → `M3-07-STATISTICS_REPRESENTATIVE` / `대푯값과 산포도`
+  - `상관관계` → `M3-07-STATISTICS_DATA_INTERPRETATION` / `통계 자료 해석`
+- `independentRecheck` now records the actual frozen B path/bucket/status/hold/foundation/source evidence; it is not populated from the Mother result.
+- Progress ledger counts and `SEALED` status are computed from the actual artifacts; no fixed `699/1/44/1` result string remains in the ledger helper.
+
+### 3. ACTUAL RESULT
+
+- `RESOLVED` finalDecision status: `655`
+- `PASS` / non-HOLD: `699`
+- `HOLD_KEEP`: `1`
+- `HOLD_RELEASE`: `0`
+- `FOUNDATION_DEFECT_CANDIDATE`: `44`
+- `CONFLICT`: `1` (the retained source contradiction is also the one HOLD)
+- `SOURCE_DEFECT_CANDIDATE`: `1`
+- raw normalized disagreement total across 001–035: `652`
+- Mother-adjudicated disagreement total: `652`
+- unresolved disagreement total: `0`
+- 029–035 raw normalized disagreement: `138` (`020/020/020/020/020/020/018`)
+- 029–035 Mother adjudicated disagreement: `138`
+- 029–035 unresolved disagreement: `0`
+
+### 4. FINAL MACHINE AUDIT
+
+- final records: `700`
+- unique `questionUid`: `700`
+- unique `sourceArchiveFile#sourceOrdinal`: `700`
+- A coverage: `700`, unique identity: `700`
+- B coverage: `700`, unique identity: `700`
+- Mother coverage: `700`, unique identity: `700`
+- Mother Final files missing: `0`
+- 029–035 Mother decision files missing: `0`
+- Mother decision record omissions: `0`
+- Mother direct auto-promotion: `0`
+- invalid taxonomy key: `0`
+- parent-child violation: `0`
+- missing hard field / difficulty range error: `0`
+- L4 gap without `foundationDefectCandidate`: `0`
+- nearest-L4 fallback: `0`
+- invalid archive `standardUnitKey`: `0`
+- invalid archive `subUnitKey`: `0`
+- wrong standard-unit parent: `0`
+- `subUnitKey` ↔ `subUnit` label mismatch: `0`
+- B evidence overwritten by Mother result: `0`
+- Mother provenance missing: `0`
+- source JS mutation: `0`
+- asset mutation: `0`
+- non-target metadata mutation: `0`
+- MIDDLE3 / 1H mutation: `0`
+- `node --check` for every modified/added `.mjs`: `PASS`
+- `git diff --check`: `PASS`
+- apply receipt metadata digest: `4cdb96ad0c67918bc72d1ff9a2744b015a7d26f1097a277443d0b7a3f0659bef`
+- source JS files checked: `31`
+- progress ledger status: `SEALED`
+
+### 5. WORKING TREE CHANGE SCOPE
+
+Changed or generated files are limited to:
+
+- `CODEX_RESULT1.md`
+- `archive/tools/intelligence/adjudicate-m3-direct-2h-mother.mjs`
+- `archive/tools/intelligence/build-m3-direct-2h-final.mjs`
+- `archive/tools/intelligence/apply-m3-direct-2h-final.mjs`
+- `archive/tools/intelligence/finalize-m3-direct-2h-ledger.mjs`
+- the four 001–028 Mother schema-normalization helpers/outputs and the 029–035 Mother helper/output artifacts
+- `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_001_MOTHER_FINAL.json` through `035_MOTHER_FINAL.json`
+- `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_029_MOTHER_DECISIONS.json` through `035_MOTHER_DECISIONS.json`
+- `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_FINAL.json`
+- `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_MOTHER_DECISIONS.json`
+- `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_APPLY_RECEIPT.json`
+- `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_PROGRESS_LEDGER.json`
+- `archive/data/question_metadata.json`
+
+No `archive/exams/original/**`, source question content/choices/answer/solution, image/SVG/table/PNG assets, or 1H artifacts were changed.
+
+### 6. FINAL VERDICT
+
+`MIDDLE3_2H_METADATA_FOUNDATION_REPAIR_PASS`
+
+The 2H repair is complete through Mother adjudication, fail-closed final assembly, canonical sidecar re-application, receipt regeneration, actual ledger calculation, and full machine audit. Stop here as instructed; do not begin 1H, commit, or push.

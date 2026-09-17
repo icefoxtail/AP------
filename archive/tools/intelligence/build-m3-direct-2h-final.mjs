@@ -2,216 +2,281 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// Final-packet recorder. It normalizes frozen evidence and carries forward
-// Mother decisions already recorded for 001-028; it does not classify source
-// questions or infer a nearest L4.
+// Final-packet recorder. This helper only assembles frozen evidence and
+// Mother decisions. It deliberately has no A/B-to-final fallback: every
+// batch, including 029-035, must have an explicit Mother Final artifact.
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '../..');
 const root = path.resolve(archiveDir, '..');
 const dir = path.join(archiveDir, '_generated', 'intelligence', 'phase1', 'middle3-foundation', 'direct-canonical-tagging', '2H');
+const taxonomyPath = path.join(root, 'docs', 'rules', '01_CANONICAL', 'taxonomy', 'rpm-primary-v1.0', '01_2015', 'MIDDLE', 'M3-2.md');
 const read = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const write = (file, value) => fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n', 'utf8');
-const recordsOf = packet => Array.isArray(packet) ? packet : (packet.records || packet.results || []);
-const normalizeKey = value => {
-    const match = String(value ?? '').match(/(L\d-\d(?:\.\d+)*)\b/);
-    return match ? match[1] : String(value ?? '');
-};
-const keyLabelMap = markdown => {
-    const map = {};
-    for (const line of markdown.split(/\r?\n/)) {
-        let match = line.match(/^#{2,4}\s+(L[1-3]-[0-9.]+)\.\s+(.+)$/);
-        if (!match) match = line.match(/^[-*]\s+\*\*(L4-[0-9.]+)\*\*\s+(.+)$/);
-        if (match) map[match[1]] = match[2].trim();
-    }
-    return map;
-};
-const identity = record => ({ ...(record || {}), ...(record?.sourceIdentity || {}) });
+const recordsOf = packet => Array.isArray(packet) ? packet : (packet?.records || packet?.results || []);
+
+function identityOf(record) {
+    const nested = record?.sourceIdentity && typeof record.sourceIdentity === 'object' ? record.sourceIdentity : {};
+    return {
+        questionUid: record?.questionUid || nested.questionUid || '',
+        sourceArchiveFile: record?.sourceArchiveFile || nested.sourceArchiveFile || '',
+        sourceOrdinal: record?.sourceOrdinal ?? nested.sourceOrdinal ?? ''
+    };
+}
+
 const identityKey = record => {
-    const x = identity(record);
-    return `${x.sourceArchiveFile || ''}#${x.sourceOrdinal ?? x.ordinal ?? ''}`;
+    const x = identityOf(record);
+    return `${x.sourceArchiveFile}#${x.sourceOrdinal}`;
 };
-const number = value => {
-    if (Number.isInteger(value)) return value;
-    if (/^[1-5]$/.test(String(value))) return Number(value);
-    return ({ EASY: 1, MEDIUM: 3, HARD: 4 }[String(value)] ?? null);
-};
-const l4Resolution = d => d?.l4Resolution || d?.L4Resolution || {};
-const nodeValue = value => typeof value === 'object' && value !== null ? (value.key || value.code || value.label || '') : value;
-const keyFrom = (value, labels, prefix = '') => {
-    const raw = nodeValue(value);
-    const match = String(raw ?? '').match(/(L\d-\d(?:\.\d+)*)\b/);
+
+function parseLabels(markdown) {
+    const labels = new Map();
+    for (const line of markdown.split(/\r?\n/)) {
+        let match = line.match(/^#{2,4}\s+(L[1-4]-[0-9.]+)\.\s+(.+)$/);
+        if (!match) match = line.match(/^[-*]\s+\*\*(L4-[0-9.]+)\*\*\s+(.+)$/);
+        if (match) labels.set(match[1], match[2].trim());
+    }
+    return labels;
+}
+
+function keyFrom(value, labels, level) {
+    if (value && typeof value === 'object') value = value.key || value.code || value.label || '';
+    const text = String(value ?? '').trim();
+    const match = text.match(new RegExp(`(?:M3-2-)?(L${level}-\\d(?:\\.\\d+)*)\\b`));
     if (match) return match[1];
-    const labelMatch = Object.entries(labels).find(([key, label]) => (!prefix || key.startsWith(prefix)) && label === String(raw ?? ''));
-    return labelMatch ? labelMatch[0] : String(raw ?? '');
-};
-function candidatePath(raw, labels) {
-    const direct = raw?.finalDecision || raw?.decision || raw?.independentDecision || {};
-    const canonical = raw?.canonical || raw?.canonicalPath || raw?.taxonomy?.primary || raw?.directTaxonomy || raw?.target || {};
-    let l1 = keyFrom(direct.L1Key || direct.L1 || canonical.L1Key || canonical.L1 || canonical.l1 || raw?.currentStandardUnitKey, labels, 'L1-');
-    let l2 = keyFrom(direct.L2Key || direct.L2 || canonical.L2Key || canonical.L2 || canonical.l2 || raw?.currentSubUnitKey, labels, 'L2-');
-    let l3 = keyFrom(direct.L3Key || direct.L3 || canonical.L3Key || canonical.L3 || canonical.l3 || raw?.currentConceptClusterKey, labels, 'L3-');
-    let l4 = keyFrom(direct.L4Key || direct.L4 || canonical.L4Key || canonical.L4 || canonical.l4 || raw?.currentProblemTypeKey, labels, 'L4-');
-    const primaryId = raw?.canonicalDecision?.primaryCanonicalId;
-    if (primaryId && /^(?:M3-2-)?L4-/.test(primaryId)) {
-        l4 = keyFrom(primaryId, labels);
-        const parts = l4.split('-')[1].split('.');
-        l1 ||= `L1-${parts[0]}`;
-        l2 ||= `L2-${parts.slice(0, 2).join('.')}`;
-        l3 ||= `L3-${parts.slice(0, 3).join('.')}`;
+    for (const [key, label] of labels) {
+        if (key.startsWith(`L${level}-`) && label === text) return key;
     }
-    return { l1, l2, l3, l4 };
+    return '';
 }
-function rawEvidence(raw) {
-    const direct = raw?.finalDecision || raw?.decision || raw?.independentDecision || {};
-    const canonical = raw?.canonical || raw?.canonicalPath || raw?.taxonomy?.primary || raw?.directTaxonomy || {};
-    const solve = raw?.directSolveEvidence || raw?.substantiveEvidence?.directSolve || raw?.evidence?.independentSolve || {};
-    const text = value => typeof value === 'string' ? value : '';
+
+function pathFromRecord(record, labels) {
+    const candidates = [
+        record?.finalDecision,
+        record?.decision,
+        record?.independentDecision,
+        record?.canonical,
+        record?.taxonomy?.primary,
+        record?.directTaxonomy,
+        record
+    ].filter(candidate => candidate && typeof candidate === 'object');
+    const values = level => candidates.flatMap(candidate => [
+        candidate[`L${level}Key`], candidate[`L${level}`],
+        candidate[`L${level}Label`],
+        candidate[`l${level}`], candidate[`l${level}Key`],
+        candidate[`level${level}`]
+    ]);
+    const pathNodes = Array.isArray(record?.canonicalPath) ? record.canonicalPath : [];
+    return [1, 2, 3, 4].map(level => {
+        const node = pathNodes.find(item => item?.level === `L${level}` || item?.level === level);
+        return keyFrom(node?.key || node?.code || node?.label || values(level).find(Boolean), labels, level);
+    });
+}
+
+function bSnapshot(record, labels) {
+    const decision = record?.finalDecision || record?.decision || {};
+    const p = pathFromRecord(record, labels);
+    const difficulty = record?.difficultyBucket ?? decision.difficultyBucket ?? record?.difficulty?.difficultyBucket ?? record?.difficulty?.bucket ?? record?.difficulty ?? null;
     return {
-        primaryConceptReason: direct.primaryConceptReason || raw?.primaryReason || raw?.primaryConceptReason || canonical.rationale || raw?.taxonomy?.rationale || raw?.directTaxonomy?.basis || text(raw?.canonicalEvidence) || text(raw?.substantiveEvidence) || text(raw?.evidence) || text(solve.reasoning) || text(solve.calculation) || '',
-        decisiveSolutionStep: direct.decisiveSolutionStep || direct.decisiveStep || raw?.decisiveSolutionStep || raw?.decisiveStrategy || text(solve.reasoning) || text(solve.calculation) || text(direct.substantiveEvidence) || text(direct.evidence) || text(raw?.substantiveEvidence) || text(raw?.evidence) || text(raw?.canonicalEvidence) || text(raw?.reviewReason) || text(raw?.sourceEvidence?.solution) || '',
-        difficultyReason: direct.difficultyReason || direct.difficultyRationale || raw?.difficultyReason || raw?.difficultyRationale || raw?.difficulty?.rationale || raw?.difficulty?.evidence || raw?.difficultyEvidence?.basis || text(direct.substantiveEvidence) || text(raw?.substantiveEvidence) || text(raw?.reviewReason) || ''
+        sourceArchiveFile: record?.sourceArchiveFile || record?.sourceIdentity?.sourceArchiveFile || '',
+        sourceOrdinal: record?.sourceOrdinal ?? record?.sourceIdentity?.sourceOrdinal ?? null,
+        path: p.some(Boolean) ? p : null,
+        difficultyBucket: Number.isInteger(difficulty) ? difficulty : null,
+        status: record?.status || record?.reviewStatus || decision.status || '',
+        reviewOutcome: record?.reviewOutcome || record?.reviewStatus || '',
+        hold: record?.hold === true || decision.hold === true,
+        holdReason: record?.holdReason || decision.holdReason || '',
+        foundationDefectCandidate: record?.foundationDefectCandidate === true || decision.foundationDefectCandidate === true,
+        foundationDefectReason: record?.foundationDefectReason || decision.foundationDefectReason || '',
+        sourceDefectCandidate: record?.sourceDefectCandidate === true || decision.sourceDefectCandidate === true,
+        sourceDefectReason: record?.sourceDefectReason || decision.sourceDefectReason || '',
+        reason: record?.reviewReason || record?.reason || decision.primaryConceptReason || decision.reason || record?.reviewEvidence?.substantiveEvidence || '',
+        evidence: record?.independentEvidence || record?.reviewEvidence || record?.sourceReadAudit || { independentDecision: record?.independentDecision || null },
+        reviewedBy: 'B_INDEPENDENT_REVIEWER'
     };
 }
 
-const gapParentRepairs = new Map([
-    ['019|original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js#7', ['L1-2', 'L2-2.2', 'L3-2.2.2']],
-    ['019|original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js#10', ['L1-2', 'L2-2.2', 'L3-2.2.2']],
-    ['019|original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js#18', ['L1-3', 'L2-3.1', 'L3-3.1.2']],
-    ['020|original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js#16', ['L1-3', 'L2-3.1', 'L3-3.1.2']],
-    ['021|original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js#16', ['L1-3', 'L2-3.1', 'L3-3.1.1']],
-    ['024|original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#9', ['L1-1', 'L2-1.1', 'L3-1.1.1']],
-    ['025|original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#18', ['L1-2', 'L2-2.1', 'L3-2.1.2']],
-    ['026|original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#23', ['L1-2', 'L2-2.1', 'L3-2.1.1']],
-    ['027|original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#19', ['L1-2', 'L2-2.1', 'L3-2.1.2']],
-    ['027|original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#4', ['L1-1', 'L2-1.1', 'L3-1.1.3']],
-    ['027|original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#6', ['L1-1', 'L2-1.1', 'L3-1.1.1']],
-    ['028|original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#20', ['L1-2', 'L2-2.1', 'L3-2.1.2']]
-]);
-const exactPathRepairs = new Map([
-    ['027|original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#2', ['L1-1', 'L2-1.2', 'L3-1.2.3', 'L4-1.2.3.1']]
-]);
-
-function enrichExistingFinal(record, diffRecord, batchNo, labels) {
-    const finalDecision = { ...record.finalDecision };
-    const explicitPath = exactPathRepairs.get(`${batchNo}|${record.sourceArchiveFile}#${record.sourceOrdinal}`);
-    if (explicitPath) {
-        [finalDecision.L1Key, finalDecision.L2Key, finalDecision.L3Key, finalDecision.L4Key] = explicitPath;
-        [finalDecision.L1, finalDecision.L2, finalDecision.L3, finalDecision.L4] = explicitPath.map(key => labels[key] || '');
-    }
-    const candidate = diffRecord?.a?.L1 ? diffRecord.a : (diffRecord?.b?.L1 ? diffRecord.b : null);
-    const candidatePath = candidate ? [keyFrom(candidate.L1, labels), keyFrom(candidate.L2, labels), keyFrom(candidate.L3, labels)] : [];
-    const manualPath = gapParentRepairs.get(`${batchNo}|${record.sourceArchiveFile}#${record.sourceOrdinal}`) || [];
-    const path = [finalDecision.L1Key, finalDecision.L2Key, finalDecision.L3Key];
-    const candidateKeyShape = candidatePath.length === 3 && candidatePath[0].startsWith('L1-') && candidatePath[1].startsWith('L2-') && candidatePath[2].startsWith('L3-') && labels[candidatePath[0]] && labels[candidatePath[1]] && labels[candidatePath[2]];
-    const repairedPath = path.every(Boolean) ? path : (candidateKeyShape ? candidatePath : manualPath);
-    if (!finalDecision.L1Key && repairedPath[0]) { finalDecision.L1Key = repairedPath[0]; finalDecision.L1 = labels[repairedPath[0]] || ''; }
-    if (!finalDecision.L2Key && repairedPath[1]) { finalDecision.L2Key = repairedPath[1]; finalDecision.L2 = labels[repairedPath[1]] || ''; }
-    if (!finalDecision.L3Key && repairedPath[2]) { finalDecision.L3Key = repairedPath[2]; finalDecision.L3 = labels[repairedPath[2]] || ''; }
-    // Repair a legacy parent-level L2 key without selecting a new L4.
-    if (finalDecision.L2Key?.startsWith('L3-')) {
-        finalDecision.L2Key = `L2-${finalDecision.L2Key.slice(3)}`;
-        finalDecision.L2 = labels[finalDecision.L2Key] || finalDecision.L2;
-    }
-    if (!finalDecision.primaryConceptReason || !finalDecision.decisiveSolutionStep || !finalDecision.difficultyReason) {
-        const evidence = rawEvidence(candidate || {});
-        finalDecision.primaryConceptReason ||= evidence.primaryConceptReason;
-        finalDecision.decisiveSolutionStep ||= evidence.decisiveSolutionStep;
-        finalDecision.difficultyReason ||= evidence.difficultyReason;
-    }
-    return { ...record, finalDecision };
+function validateSourcePacket(source, batchNo) {
+    const records = recordsOf(source);
+    if (records.length !== 20) throw new Error(`source batch ${batchNo} count ${records.length}/20`);
+    const keys = new Set(records.map(identityKey));
+    if (keys.size !== records.length || records.some(record => !identityOf(record).questionUid)) throw new Error(`source batch ${batchNo} identity failure`);
+    return records;
 }
 
-function fromB(record, source, labels, batchNo) {
-    // Some frozen packets keep the canonical path in finalDecision but the
-    // substantive reasons in decision. Merge without replacing non-empty
-    // fields with an incomplete later wrapper.
-    const mergedDecision = { ...(record.decision || {}), ...(record.finalDecision || {}) };
-    const d = Object.keys(mergedDecision).length ? mergedDecision : record;
-    const resolution = l4Resolution(d);
-    const canonical = record.canonical || {};
-    const labelToKey = new Map(Object.entries(labels).map(([key, label]) => [label, key]));
-    const canonicalKey = (keyValue, labelValue, prefix) => normalizeKey(keyValue || keyFrom(labelValue, labels, prefix));
-    const l1 = canonicalKey(d.L1Key || canonical.L1Key, d.L1 || canonical.L1, 'L1-');
-    const l2 = canonicalKey(d.L2Key || canonical.L2Key, d.L2 || canonical.L2, 'L2-');
-    const l3 = canonicalKey(d.L3Key || canonical.L3Key, d.L3 || canonical.L3, 'L3-');
-    const l4 = canonicalKey(d.L4Key || canonical.L4Key || resolution.L4Key, d.L4 || canonical.L4 || resolution.L4 || '', 'L4-');
-    const exact = !String(resolution.mode || resolution.status || '').toUpperCase().includes('GAP') && Boolean(l4);
-    const levelPath = l1 && l2 && l3 ? [l1, l2, l3] : null;
-    const path = exact && levelPath ? [...levelPath, l4] : null;
-    const difficultyBucket = number(d.difficultyBucket ?? d.bucket ?? record.difficultyBucket ?? record.difficulty?.difficultyBucket ?? record.difficulty);
-    if (!difficultyBucket) throw new Error(`missing difficulty in B batch ${batchNo} ordinal ${source.sourceOrdinal}`);
-    return {
-        questionUid: source.questionUid,
-        sourceArchiveFile: source.sourceArchiveFile,
-        sourceOrdinal: source.sourceOrdinal,
-        finalDecision: {
-            L1Key: levelPath ? levelPath[0] : '', L1: levelPath ? labels[levelPath[0]] : '',
-            L2Key: levelPath ? levelPath[1] : '', L2: levelPath ? labels[levelPath[1]] : '',
-            L3Key: levelPath ? levelPath[2] : '', L3: levelPath ? labels[levelPath[2]] : '',
-            L4Key: path ? path[3] : '', L4: path ? labels[path[3]] : '',
-            primaryConcept: d.primaryConcept || record.primaryConcept || resolution.primaryConcept || (path ? labels[path[3]] : ''),
-            primaryConceptReason: d.primaryConceptReason || record.primaryReason || record.canonicalEvidence || d.reason || resolution.reason || d.taxonomyReason || d.sourceDerivedType || rawEvidence(record).primaryConceptReason,
-            rejectedAlternativeConcepts: d.rejectedAlternativeConcepts || d.rejected || [],
-            secondaryConceptKeys: path ? (d.secondaryConceptKeys || []) : [],
-            decisiveSolutionStep: d.decisiveSolutionStep || d.decisiveStep || record.decisiveStrategy || record.evidence || d.sourceDerivedType || resolution.reason || rawEvidence(record).decisiveSolutionStep,
-            taxonomyReason: d.taxonomyReason || record.canonicalEvidence || resolution.taxonomyReason || d.reason || rawEvidence(record).primaryConceptReason,
-            difficultyBucket,
-            difficultyReason: d.difficultyReason || d.difficultyRationale || record.difficulty?.evidence || record.difficultyRationale || d.reason || resolution.reason || rawEvidence(record).difficultyReason,
-            curriculumApplicability: path ? (d.curriculumApplicability || 'DEFAULT_SCOPE') : 'UNKNOWN',
-            defaultSelectable: path ? d.defaultSelectable !== false : false,
-            status: path ? 'RESOLVED' : 'FOUNDATION_DEFECT_CANDIDATE',
-            hold: d.hold === true || record.hold === true,
-            holdReason: d.holdReason || record.holdReason || '',
-            foundationDefectCandidate: !path || d.foundationDefectCandidate === true || record.foundationDefectCandidate === true,
-            foundationDefectReason: !path ? (d.foundationDefectReason || d.gapReason || resolution.gapReason || 'canonical L4 gap retained after A/B review') : '',
-            conflictStatus: d.conflictStatus || record.conflictStatus || 'NONE',
-            sourceDefectCandidate: d.sourceDefectCandidate === true || record.sourceDefectCandidate === true,
-            sourceDefectReason: d.sourceDefectReason || record.sourceDefectReason || ''
-        },
-        motherAdjudication: `A/B frozen evidence and batch ${batchNo} diff reviewed; selected path follows the decisive source-solving structure and canonical contract.`,
-        sourceB: `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/B_DIRECT_2H_BATCH_${batchNo}.json`,
-        sourceABDiff: `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_${batchNo}_AB_DIFF.json`
-    };
+function validateFrozenPacket(packet, sourceRecords, role, batchNo, labels) {
+    const records = recordsOf(packet);
+    if (records.length !== sourceRecords.length) throw new Error(`${role} batch ${batchNo} count mismatch`);
+    const byKey = new Map(sourceRecords.map(record => [identityKey(record), record]));
+    const seen = new Set();
+    for (const record of records) {
+        const id = identityOf(record);
+        const key = identityKey(record);
+        if (!id.questionUid || !byKey.has(key) || seen.has(key)) throw new Error(`${role} batch ${batchNo} identity mismatch ${key}`);
+        const source = byKey.get(key);
+        if (id.questionUid !== source.questionUid || record.sourceFingerprint && record.sourceFingerprint !== source.sourceFingerprint) throw new Error(`${role} batch ${batchNo} source identity mismatch ${key}`);
+        seen.add(key);
+    }
+    return new Map(records.map(record => [identityKey(record), bSnapshot(record, labels)]));
+}
+
+function validateDiff(diff, sourceRecords, batchNo) {
+    const records = recordsOf(diff);
+    if (records.length !== sourceRecords.length || diff.identityMatch !== true) throw new Error(`AB_DIFF batch ${batchNo} identity/count failure`);
+    const expected = new Set(sourceRecords.map(identityKey));
+    const seen = new Set();
+    for (const record of records) {
+        const key = identityKey(record);
+        if (!expected.has(key) || seen.has(key)) throw new Error(`AB_DIFF batch ${batchNo} identity mismatch ${key}`);
+        seen.add(key);
+    }
+    const actual = records.filter(record => {
+        const d = record.normalizedDifferences || {};
+        return d.path?.length || d.secondary || d.difficulty || d.status?.length || d.primaryConcept;
+    }).length;
+    if (actual !== diff.normalizedDisagreementCount) throw new Error(`AB_DIFF batch ${batchNo} count is not computed from records`);
+    return new Map(records.map(record => [identityKey(record), record]));
+}
+
+function validateTaxonomyPath(finalDecision, labels, batchNo, ordinal) {
+    const d = finalDecision || {};
+    for (const [level, field] of [[1, 'L1Key'], [2, 'L2Key'], [3, 'L3Key']]) {
+        if (!d[field] || !labels.has(d[field]) || !d[`L${level}`]) throw new Error(`Mother Final hard path failure batch ${batchNo} ordinal ${ordinal}`);
+    }
+    if (d.L4Key) {
+        if (!labels.has(d.L4Key) || !d.L4) throw new Error(`Mother Final invalid L4 batch ${batchNo} ordinal ${ordinal}`);
+        const parts = d.L4Key.split('-')[1].split('.');
+        if (d.L1Key !== `L1-${parts[0]}` || d.L2Key !== `L2-${parts.slice(0, 2).join('.')}` || d.L3Key !== `L3-${parts.slice(0, 3).join('.')}`) throw new Error(`Mother Final parent violation batch ${batchNo} ordinal ${ordinal}`);
+        if (d.foundationDefectCandidate === true && !d.foundationDefectReason) throw new Error(`exact L4 marked as unexplained foundation gap batch ${batchNo} ordinal ${ordinal}`);
+    } else {
+        if (d.foundationDefectCandidate !== true || !d.foundationDefectReason) throw new Error(`L4 gap without FOUNDATION_DEFECT_CANDIDATE batch ${batchNo} ordinal ${ordinal}`);
+    }
+    if (!Number.isInteger(d.difficultyBucket) || d.difficultyBucket < 1 || d.difficultyBucket > 5) throw new Error(`Mother Final difficulty failure batch ${batchNo} ordinal ${ordinal}`);
+    if (!d.primaryConceptReason || !d.decisiveSolutionStep || !d.difficultyReason) throw new Error(`Mother Final evidence failure batch ${batchNo} ordinal ${ordinal}`);
+}
+
+function validateMotherFinal(packet, sourceRecords, batchNo, labels, requireDecisionArtifact) {
+    const acceptedStatus = requireDecisionArtifact
+        ? packet?.status === 'MOTHER_FINALIZED_AFTER_FULL_A_B_FREEZE'
+        : ['MOTHER_FINALIZED', 'MOTHER_FINALIZED_AFTER_FULL_A_B_FREEZE'].includes(packet?.status);
+    if (!packet || !acceptedStatus) throw new Error(`Mother Final status failure batch ${batchNo}`);
+    if (packet.sourceMotherDecision !== `M3_DIRECT_2H_BATCH_${batchNo}_MOTHER_DECISIONS.json` && requireDecisionArtifact) throw new Error(`Mother decision provenance failure batch ${batchNo}`);
+    const records = recordsOf(packet);
+    if (records.length !== sourceRecords.length || packet.finalizedCount !== records.length) throw new Error(`Mother Final count failure batch ${batchNo}`);
+    const sourceByKey = new Map(sourceRecords.map(record => [identityKey(record), record]));
+    const seen = new Set();
+    for (const record of records) {
+        const id = identityOf(record);
+        const key = identityKey(record);
+        const source = sourceByKey.get(key);
+        if (!source || seen.has(key) || (requireDecisionArtifact && id.questionUid !== source.questionUid)) throw new Error(`Mother Final identity failure batch ${batchNo} ${key}`);
+        validateTaxonomyPath(record.finalDecision, labels, batchNo, id.sourceOrdinal);
+        if (!record.motherAdjudication || typeof record.motherAdjudication !== 'string') throw new Error(`Mother adjudication provenance missing batch ${batchNo} ordinal ${id.sourceOrdinal}`);
+        if (requireDecisionArtifact) {
+            const evidence = record.motherEvidence;
+            if (!evidence?.sourceFieldsRead?.content || !evidence?.sourceFieldsRead?.choices || !evidence?.sourceFieldsRead?.answer || !evidence?.sourceFieldsRead?.solution) throw new Error(`Mother source evidence missing batch ${batchNo} ordinal ${id.sourceOrdinal}`);
+            if (evidence.sourceIdentity !== key) throw new Error(`Mother evidence identity mismatch batch ${batchNo} ordinal ${id.sourceOrdinal}`);
+            if (!evidence.abDiff || !evidence.frozenA || !evidence.frozenB) throw new Error(`Mother A/B provenance missing batch ${batchNo} ordinal ${id.sourceOrdinal}`);
+        }
+        seen.add(key);
+    }
+    return records;
 }
 
 function main() {
-    const labels = keyLabelMap(fs.readFileSync(path.join(root, 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-2.md'), 'utf8'));
+    const labels = parseLabels(fs.readFileSync(taxonomyPath, 'utf8'));
     const all = [];
     const batchSummaries = [];
     for (let n = 1; n <= 35; n += 1) {
         const batchNo = String(n).padStart(3, '0');
-        const source = read(path.join(dir, `DIRECT_2H_BATCH_${batchNo}.json`));
-        const sourceRecords = source.records;
-        let records;
-        if (n <= 28) {
-            const diff = read(path.join(dir, `M3_DIRECT_2H_BATCH_${batchNo}_AB_DIFF.json`));
-            const diffByKey = new Map(diff.records.map(record => [`${record.sourceArchiveFile}#${record.sourceOrdinal}`, record]));
-            const sourceByKey = new Map(sourceRecords.map(record => [identityKey(record), record]));
-            records = read(path.join(dir, `M3_DIRECT_2H_BATCH_${batchNo}_MOTHER_FINAL.json`)).records.map(record => {
-                const enriched = enrichExistingFinal(record, diffByKey.get(`${record.sourceArchiveFile}#${record.sourceOrdinal}`), batchNo, labels);
-                const src = sourceByKey.get(identityKey(enriched));
-                if (!src) throw new Error(`Mother/source identity mismatch batch ${batchNo} ordinal ${record.sourceOrdinal}`);
-                return { ...enriched, questionUid: src.questionUid, sourceArchiveFile: src.sourceArchiveFile, sourceOrdinal: src.sourceOrdinal };
-            });
-        } else {
-            const bRecords = recordsOf(read(path.join(dir, `B_DIRECT_2H_BATCH_${batchNo}.json`)));
-            const sourceByKey = new Map(sourceRecords.map(record => [identityKey(record), record]));
-            records = bRecords.map(record => {
-                const src = sourceByKey.get(identityKey(record));
-                if (!src) throw new Error(`B/source identity mismatch batch ${batchNo}`);
-                return fromB(record, src, labels, batchNo);
-            });
-        }
-        if (records.length !== sourceRecords.length || new Set(records.map(identityKey)).size !== records.length) throw new Error(`final coverage failure batch ${batchNo}`);
-        all.push(...records);
-        batchSummaries.push({ batchNo, count: records.length, hold: records.filter(record => record.finalDecision.hold).length, foundationDefectCandidate: records.filter(record => record.finalDecision.foundationDefectCandidate).length, conflict: records.filter(record => record.finalDecision.conflictStatus !== 'NONE').length });
+        const sourceRecords = validateSourcePacket(read(path.join(dir, `DIRECT_2H_BATCH_${batchNo}.json`)), batchNo);
+        const bMap = validateFrozenPacket(read(path.join(dir, `B_DIRECT_2H_BATCH_${batchNo}.json`)), sourceRecords, 'B', batchNo, labels);
+        validateFrozenPacket(read(path.join(dir, `A_DIRECT_2H_BATCH_${batchNo}.json`)), sourceRecords, 'A', batchNo, labels);
+        const diffMap = validateDiff(read(path.join(dir, `M3_DIRECT_2H_BATCH_${batchNo}_AB_DIFF.json`)), sourceRecords, batchNo);
+        const motherFile = path.join(dir, `M3_DIRECT_2H_BATCH_${batchNo}_MOTHER_FINAL.json`);
+        if (!fs.existsSync(motherFile)) throw new Error(`Mother Final missing batch ${batchNo}`);
+        const mother = read(motherFile);
+        const records = validateMotherFinal(mother, sourceRecords, batchNo, labels, n >= 29);
+        const sourceByKey = new Map(sourceRecords.map(record => [identityKey(record), record]));
+        const motherDecisionRef = fs.existsSync(path.join(dir, `M3_DIRECT_2H_BATCH_${batchNo}_MOTHER_DECISIONS.json`))
+            ? `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_${batchNo}_MOTHER_DECISIONS.json`
+            : `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_${batchNo}_MOTHER_FINAL.json`;
+        const normalized = records.map(record => {
+            const key = identityKey(record);
+            const source = sourceByKey.get(key);
+            return {
+                ...record,
+                batchNo,
+                questionUid: source.questionUid,
+                sourceArchiveFile: source.sourceArchiveFile,
+                sourceOrdinal: source.sourceOrdinal,
+                sourceQuestionNo: source.sourceQuestionNo,
+                sourceJsSha256: source.sourceJsSha256,
+                sourceFingerprint: source.sourceFingerprint,
+                sourceB: `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/B_DIRECT_2H_BATCH_${batchNo}.json`,
+                sourceABDiff: `archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_BATCH_${batchNo}_AB_DIFF.json`,
+                sourceMotherDecision: motherDecisionRef,
+                independentB: bMap.get(key),
+                abDiff: diffMap.get(key)
+            };
+        });
+        const keys = new Set(normalized.map(identityKey));
+        if (keys.size !== normalized.length) throw new Error(`duplicate final identity batch ${batchNo}`);
+        all.push(...normalized);
+        batchSummaries.push({
+            batchNo,
+            count: normalized.length,
+            normalizedDisagreementCount: [...diffMap.values()].filter(record => {
+                const d = record.normalizedDifferences || {};
+                return d.path?.length || d.secondary || d.difficulty || d.status?.length || d.primaryConcept;
+            }).length,
+            hold: normalized.filter(record => record.finalDecision.hold === true).length,
+            foundationDefectCandidate: normalized.filter(record => record.finalDecision.foundationDefectCandidate === true).length,
+            conflict: normalized.filter(record => record.finalDecision.conflictStatus && record.finalDecision.conflictStatus !== 'NONE').length,
+            sourceDefectCandidate: normalized.filter(record => record.finalDecision.sourceDefectCandidate === true).length
+        });
     }
     const ids = new Set(all.map(identityKey));
-    if (all.length !== 700 || ids.size !== 700) throw new Error(`2H final total failure ${all.length}/${ids.size}`);
-    const output = { schemaVersion: 'm3-direct-canonical-tagging-mother-final-2h-v1.1', status: 'MOTHER_FINALIZED_AFTER_FULL_A_B_FREEZE', targetGrade: 'MIDDLE3', semester: '2H', recordCount: all.length, finalizedCount: all.length, adjudicationMode: 'MOTHER_FULL_DIFF_AFTER_A_B_FREEZE', records: all, batchSummaries };
+    const uids = new Set(all.map(record => record.questionUid));
+    if (all.length !== 700 || ids.size !== 700 || uids.size !== 700) throw new Error(`2H final total failure ${all.length}/${ids.size}/${uids.size}`);
+    const output = {
+        schemaVersion: 'm3-direct-canonical-tagging-mother-final-2h-v1.2',
+        status: 'MOTHER_FINALIZED_AFTER_FULL_A_B_FREEZE',
+        targetGrade: 'MIDDLE3',
+        semester: '2H',
+        recordCount: all.length,
+        finalizedCount: all.length,
+        adjudicationMode: 'MOTHER_FULL_SOURCE_EVIDENCE_ADJUDICATION_AFTER_A_B_FREEZE',
+        records: all,
+        batchSummaries
+    };
     write(path.join(dir, 'M3_DIRECT_2H_FINAL.json'), output);
-    write(path.join(dir, 'M3_DIRECT_2H_MOTHER_DECISIONS.json'), { schemaVersion: 'm3-direct-canonical-tagging-mother-decisions-v1.1', status: 'MOTHER_DECISIONS_RECORDED', targetGrade: 'MIDDLE3', semester: '2H', recordCount: all.length, records: all.map(record => ({ questionUid: record.questionUid, sourceArchiveFile: record.sourceArchiveFile, sourceOrdinal: record.sourceOrdinal, path: record.finalDecision.L4Key ? [record.finalDecision.L1Key, record.finalDecision.L2Key, record.finalDecision.L3Key, record.finalDecision.L4Key] : null, primaryConcept: record.finalDecision.primaryConcept, primaryConceptReason: record.finalDecision.primaryConceptReason, decisiveSolutionStep: record.finalDecision.decisiveSolutionStep, difficultyBucket: record.finalDecision.difficultyBucket, difficultyReason: record.finalDecision.difficultyReason, secondaryConceptKeys: record.finalDecision.secondaryConceptKeys, foundationDefectReason: record.finalDecision.foundationDefectReason })) });
-    console.log(JSON.stringify({ output: path.relative(root, path.join(dir, 'M3_DIRECT_2H_FINAL.json')).replaceAll('\\', '/'), recordCount: all.length, unique: ids.size, hold: all.filter(record => record.finalDecision.hold).length, foundationDefectCandidate: all.filter(record => record.finalDecision.foundationDefectCandidate).length, conflict: all.filter(record => record.finalDecision.conflictStatus !== 'NONE').length }, null, 2));
+    write(path.join(dir, 'M3_DIRECT_2H_MOTHER_DECISIONS.json'), {
+        schemaVersion: 'm3-direct-canonical-tagging-mother-decisions-v1.2',
+        status: 'MOTHER_DECISIONS_RECORDED_AFTER_SOURCE_ADJUDICATION',
+        targetGrade: 'MIDDLE3',
+        semester: '2H',
+        recordCount: all.length,
+        records: all.map(record => ({
+            questionUid: record.questionUid,
+            sourceArchiveFile: record.sourceArchiveFile,
+            sourceOrdinal: record.sourceOrdinal,
+            batchNo: record.batchNo,
+            path: record.finalDecision.L4Key ? [record.finalDecision.L1Key, record.finalDecision.L2Key, record.finalDecision.L3Key, record.finalDecision.L4Key] : [record.finalDecision.L1Key, record.finalDecision.L2Key, record.finalDecision.L3Key],
+            primaryConcept: record.finalDecision.primaryConcept,
+            primaryConceptReason: record.finalDecision.primaryConceptReason,
+            decisiveSolutionStep: record.finalDecision.decisiveSolutionStep,
+            difficultyBucket: record.finalDecision.difficultyBucket,
+            difficultyReason: record.finalDecision.difficultyReason,
+            secondaryConceptKeys: record.finalDecision.secondaryConceptKeys,
+            foundationDefectCandidate: record.finalDecision.foundationDefectCandidate,
+            foundationDefectReason: record.finalDecision.foundationDefectReason,
+            motherAdjudication: record.motherAdjudication,
+            motherEvidence: record.motherEvidence,
+            sourceB: record.sourceB,
+            sourceABDiff: record.sourceABDiff
+        }))
+    });
+    console.log(JSON.stringify({ output: 'archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/M3_DIRECT_2H_FINAL.json', recordCount: all.length, uniqueIdentityCount: ids.size, uniqueQuestionUidCount: uids.size, hold: all.filter(record => record.finalDecision.hold === true).length, foundationDefectCandidate: all.filter(record => record.finalDecision.foundationDefectCandidate === true).length, conflict: all.filter(record => record.finalDecision.conflictStatus !== 'NONE').length }, null, 2));
 }
 
 main();
