@@ -113,6 +113,7 @@
     history: null,
     historyReady: false,
     targetVersion: 0,
+    finderIndex: new Map(),
     inspector: "summary",
     previewIndex: 0,
     outputMode: "exam",
@@ -660,28 +661,10 @@
       if (f.family && !exam.courseFamilies.includes(f.family)) return false;
       if (
         f.curriculumKey &&
-        !exam.curriculums.includes(f.curriculumKey) &&
-        !(exam.courseRanges || []).some((r) =>
-          String(r.courseCode).startsWith(
-            f.curriculumKey === "2022" ? "H22" : "H15",
-          ),
-        )
+        !C.finderMatches(exam, { curriculumKey: f.curriculumKey }, state.finderIndex)
       )
         return false;
-      if (
-        f.courseKey &&
-        !(exam.courseRanges || []).some(
-          (r) =>
-            r.standardCourse
-              .replace(/Ⅰ/g, "I")
-              .replace(/Ⅱ/g, "II")
-              .replace(/\s/g, "") ===
-            f.courseKey
-              .replace(/Ⅰ/g, "I")
-              .replace(/Ⅱ/g, "II")
-              .replace(/\s/g, ""),
-        )
-      )
+      if (f.courseKey && !C.finderMatches(exam, { courseKey: f.courseKey }, state.finderIndex))
         return false;
       return (
         !query ||
@@ -2010,6 +1993,11 @@
           }
           invalidate();
         } else {
+          if (["grade", "curriculumKey"].includes(el.dataset.filter))
+            Object.assign(
+              state.find,
+              C.reconcileFinderFilters(state.find, state.catalog.taxonomy),
+            );
           state.page = 0;
           urlState();
         }
@@ -2236,6 +2224,7 @@
         .then((r) => (r.ok ? r.json() : null))
         .catch(() => null);
       state.indexVersion = state.catalog.indexVersion;
+      state.finderIndex = C.buildFinderIndex(state.catalog);
       state.byUid = new Map(
         state.catalog.records
           .filter((r) => r.questionUid)
