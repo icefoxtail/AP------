@@ -113,10 +113,18 @@ export async function validateApprovedMixedQuestions(env, questions, input) {
   const data = await loadCatalog(env);
   if (data.indexVersion !== input.index_version)
     fail("catalog 버전이 변경되었습니다. 문제지를 다시 검증하세요.", 409);
+  const filters = input?.selection_filters;
   if (
-    !input.selection_filters?.grade ||
-    !input.selection_filters?.curriculumKey ||
-    !input.selection_filters?.courseKey
+    !filters ||
+    typeof filters !== "object" ||
+    Array.isArray(filters) ||
+    typeof filters.grade !== "string" ||
+    !filters.grade.trim() ||
+    !Array.isArray(filters.primaryPaths) ||
+    filters.primaryPaths.length === 0 ||
+    filters.primaryPaths.some(
+      (path) => typeof path !== "string" || !path.trim(),
+    )
   )
     fail("selection_filters required");
   const byUid = new Map(

@@ -225,8 +225,9 @@ try {
     index_version: catalog.indexVersion,
     selection_filters: {
       grade: base.sourceGrade,
-      curriculumKey: base.curriculumKey,
-      courseKey: base.courseKey,
+      primaryPaths: [
+        ...new Set(records.map((record) => core.pathKey(record, 4))),
+      ],
     },
     mixed_payload_json: {
       questions,
@@ -498,6 +499,12 @@ try {
     student_ids: ["student-b"],
     archive_file: "MIXED:archive2-fifty",
     question_count: 50,
+    selection_filters: {
+      grade: base.sourceGrade,
+      primaryPaths: [
+        ...new Set(fiftyRecords.map((record) => core.pathKey(record, 4))),
+      ],
+    },
     mixed_payload_json: {
       questions: fifty,
       meta: { questionUids: fifty.map((q) => q.questionUid) },
