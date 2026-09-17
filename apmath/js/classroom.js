@@ -2761,12 +2761,20 @@ async function saveClassRecord(cid, dateStr) {
         toast('기존 일지 확인 전에는 저장할 수 없습니다.', 'warn');
         return;
     }
-    const checks = document.querySelectorAll('.record-tb-check:checked');
+    syncClassProgressTextbookDraftsFromDom();
+    const modalState = state.ui?.classProgressModalState;
+    const textbookDrafts = modalState?.progressByTextbook || {};
+    const textbookBooks = Array.isArray(modalState?.books) ? modalState.books : [];
     const progresses = [];
-    checks.forEach(chk => {
-        const tbId = chk.value;
-        const progInput = document.getElementById(`progress_${tbId}`);
-        progresses.push({ textbook_id: tbId === 'fallback' ? '' : tbId, textbook_title_snapshot: chk.getAttribute('data-title'), progress_text: progInput ? progInput.value.trim() : '' });
+    textbookBooks.filter(tb => tb?.status === 'active').forEach(tb => {
+        const tbId = String(tb.id || '');
+        const draft = textbookDrafts[tbId];
+        if (!draft?.isChecked) return;
+        progresses.push({
+            textbook_id: tbId === 'fallback' ? '' : tbId,
+            textbook_title_snapshot: String(tb.title || ''),
+            progress_text: String(draft.progressText || '').trim()
+        });
     });
     const selectedItems = Array.from(document.querySelectorAll('.record-unit-check:checked')).map((checkbox, index) => ({
         curriculum_key: checkbox.getAttribute('data-curriculum-key') || '',
