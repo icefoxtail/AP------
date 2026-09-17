@@ -1,0 +1,194 @@
+# HIGH1 Direct Tagging Final-Gate Report
+
+생성일: 2026-09-17 (Asia/Seoul)
+
+범위: HIGH1 direct tagging 전체 source manifest 2,498문항 / 113개 JS source file
+
+상태: **Mother disagreement closure는 완료되었으나, production 반영 게이트는 fail-closed 상태**
+
+이 보고서는 현재 branch에 저장된 source manifest, A/B frozen packet, B validation, Mother ledger/pick, 그리고 final candidate merge artifact를 기준으로 작성했다. 최종 후보를 만들기 위해 source JS, source image, canonical master, production metadata를 수정하지 않았다. 이 보고서는 최종 metadata를 production에 반영했다는 뜻이 아니며, 별도 검수를 위한 branch checkpoint다.
+
+## 1. 제출 checkpoint
+
+- branch: `codex/metadata-foundation-h1`
+- 직전 pushed checkpoint: `07c341e5f06dba820c1811848c8b97c6475d0728`
+- 직전 checkpoint report: `HIGH1_DIRECT_TAGGING_MOTHER_CLOSURE_CHECKPOINT.md`
+- 이번 report와 final-candidate merge script/artifact는 이 branch의 다음 commit에 포함한다.
+
+## 2. 전체 closure 수치
+
+| 항목 | 수치 |
+|---|---:|
+| 전체 대상 문항 | 2,498 |
+| A 완료 | 2,498 |
+| B 완료 | 2,498 |
+| A/B 둘 다 완료 | 2,498 |
+| A/B 정규화 완전 일치 | 221 (8.85%) |
+| A/B 정규화 불일치 | 2,277 (91.15%) |
+| Mother가 최종 선택/판정한 불일치 | 2,277 (100.00%) |
+| Mother 미판정 불일치 | 0 |
+
+Mother decision 분포는 다음과 같다.
+
+| Mother decision | 문항 수 |
+|---|---:|
+| A 채택 | 1,670 |
+| B 채택 | 588 |
+| HOLD | 19 |
+| 합계 (불일치 2,277) | 2,277 |
+
+정확히 일치한 221건 중 2건은 기존 `AB_EQUAL` ledger record로 보존되었고, 219건은 `AB_EQUAL_AUTO`로 final candidate에 닫혔다. 따라서 final candidate의 전체 decision count는 `A 1,670 / B 588 / HOLD 19 / AB_EQUAL 2 / AB_EQUAL_AUTO 219`다.
+
+## 3. A/B field disagreement
+
+아래 값은 문항별 중복 집계가 허용되는 field-level count다.
+
+| 불일치 field | 문항 수 |
+|---|---:|
+| canonical L1~L4 | 1,594 |
+| primaryConcept | 1,950 |
+| secondaryConceptKeys | 1,133 |
+| difficultyBucket | 886 |
+| status | 797 |
+
+추가적인 저장값 기반 사유 유형은 다음과 같다. 분류는 서로 겹칠 수 있다.
+
+| 유형 | 문항 수 | 기준 |
+|---|---:|---|
+| difficulty만 다름 | 80 | `differingFields`가 `difficultyBucket` 하나 |
+| L4만 다름 | 26 | canonical L1~L3는 같고 L4만 다름 |
+| primary taxonomy field가 다름 | 1,950 | `primaryConcept` disagreement 포함 |
+| B UNKNOWN 운영 predicate | 687 | disagreement set 안에서 B의 unknown/null predicate |
+| B canonical path disagreement | 1,594 | canonical field disagreement |
+| A no-fit/defect vs B Direct | 224 | A defect/no-fit 계열, B `DIRECT_TAGGED` |
+| A Direct vs B no-fit/defect | 526 | A `DIRECT_TAGGED`, B defect/no-fit/conflict 계열 |
+| source/evidence 상태 포함 | 27 | A/B 중 HOLD, CONFLICT, EVIDENCE_INSUFFICIENT, SOURCE_DEFECT 계열 포함 |
+
+## 4. B 독립 packet 품질 지표
+
+아래 B 지표는 B packet을 `manifestUid`로 freeze한 뒤 raw field를 읽어 집계했다. `UNKNOWN`은 canonical L1~L4가 모두 unknown이거나 `primaryConcept`/`difficultyBucket`이 null 또는 unknown인 경우다. `generic/no-fit`은 이 predicate에 더해 explicit `CANONICAL_NO_FIT`, `FOUNDATION_DEFECT_CANDIDATE`, primary 부재, primary가 canonical L2/L3/L4 literal과 같은 경우를 합집합으로 센다.
+
+| B 지표 | 문항 수 | 전체 대비 |
+|---|---:|---:|
+| B `UNKNOWN` | 688 | 27.54% |
+| B `EVIDENCE_INSUFFICIENT` | 10 | 0.40% |
+| B `HOLD` | 17 | 0.68% |
+| B `CONFLICT` | 7 | 0.28% |
+| B explicit `CANONICAL_NO_FIT` | 1 | 0.04% |
+| B `FOUNDATION_DEFECT_CANDIDATE` | 713 | 28.54% |
+| B generic/no-fit 운영 합집합 | 2,268 | 90.79% |
+| B curriculumKey mismatch | 30 | 1.20% |
+| A Direct인데 B generic/no-fit | 1,854 | 74.22% |
+| A Direct인데 B UNKNOWN | 519 | 20.78% |
+| Mother가 B canonical path를 채택한 불일치 | 388 | 불일치의 17.04% |
+
+`B UNKNOWN`과 `generic/no-fit`은 B가 틀렸다고 자동 판정한 수가 아니다. packet에 저장된 상태와 literal field에 대한 운영상 위험범위다. 특히 B `FOUNDATION_DEFECT_CANDIDATE`는 source/question foundation 문제 후보를 뜻하므로 taxonomy 오판과 동일시하지 않는다.
+
+## 5. Batch 구간별 요약
+
+개별 문항의 batch, packet 파일, A/B 값, Mother ledger file은 `mother-final-candidate.json`의 각 record에 보존되어 있다. 아래는 그 record를 batch filename 기준으로 재집계한 구간 요약이다.
+
+| batch 구간 | 문항수 | A-B 일치 | 불일치 | B generic/no-fit | Mother A 채택 | Mother B 채택 | Mother 제3판정(HOLD) | 최종 HOLD·CONFLICT·EVIDENCE·AMBIGUOUS |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 001–009 | 225 | 12 | 213 | 87 | 63 | 150 | 0 | 1 |
+| 010–059 | 1,250 | 37 | 1,213 | 1,235 | 1,052 | 142 | 19 | 18 |
+| 060–093 | 1,023 | 172 | 851 | 946 | 555 | 296 | 0 | 0 |
+| 합계 | 2,498 | 221 | 2,277 | 2,268 | 1,670 | 588 | 19 | 19 |
+
+이는 batch 구간별 저장 artifact 분포다. 이 표만으로 B의 원인이나 모델 품질을 추론하지 않았다.
+
+## 6. Mother final candidate 상태
+
+최종 후보 파일은 Mother가 선택한 packet의 semantic value를 보존하며, A/B raw packet path와 Mother ledger file을 함께 남긴다.
+
+파일: `archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json`
+
+| final status | 문항 수 |
+|---|---:|
+| `DIRECT_TAGGED` | 2,169 |
+| `FOUNDATION_DEFECT_CANDIDATE` | 306 |
+| `AMBIGUOUS_PRIMARY` | 1 |
+| `EVIDENCE_INSUFFICIENT` | 13 |
+| `CONFLICT` | 5 |
+| `SOURCE_DEFECT_CANDIDATE` | 4 |
+| 합계 | 2,498 |
+
+Mother ledger closure 수치(`2,277/2,277`, unresolved `0`)와 final candidate record cardinality(`2,498`)는 닫혔다. 그러나 이것만으로 canonical master closure가 끝난 것은 아니다.
+
+## 7. Canonical/applicability gate
+
+final candidate의 L1~L4를 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json`의 exact hierarchy와 대조한 결과는 다음과 같다.
+
+| canonical state | 문항 수 |
+|---|---:|
+| `CANONICAL_PATH_MATCH` | 1,964 |
+| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 324 |
+| `CANONICAL_PATH_UNMATCHED` | 210 |
+
+`CANONICAL_PATH_UNMATCHED` 210건 때문에 merge script는 다음처럼 fail-closed다.
+
+```json
+{
+  "unresolvedDisagreementCount": 0,
+  "canonicalCounts": {
+    "CANONICAL_PATH_MATCH": 1964,
+    "EXPLICIT_NO_FIT_OR_UNKNOWN": 324,
+    "CANONICAL_PATH_UNMATCHED": 210
+  },
+  "readyForGate": false
+}
+```
+
+대표적인 unmatched raw path 유형은 다음과 같다.
+
+- `함수 | 무리함수 | 무리함수의 교점 | 무리함수의 교점` 22건
+- `함수 | 무리함수 | 무리함수의 정의역과 치역 | 그래프 위치` 17건
+- `다항식 | 다항식의 나눗셈 | 나머지정리 | 고차식 조건` 16건
+- `다항식 | 다항식의 나눗셈 | 다항식의 나눗셈 | 몫과 나머지` 11건
+- `함수 | 무리함수 | 무리함수의 정의역과 치역 | 정의역 조건` 8건
+- `집합과 명제 | 명제 | 명제와 조건 | 명제 변환` 8건
+- `경우의 수 | 순열과 조합 | 조합의 활용 | 선택 조건` 6건
+- `집합과 명제 | 명제 | 명제 변환 | 대우를 이용한 증명` 6건
+
+이 항목들은 canonical master에 존재하는 유사 label로 자동 치환하지 않았다. 예를 들어 `무리함수의 교점`은 master에서 `무리함수의 활용 → 무리함수의 교점`으로 표현되고, `다항식의 나눗셈`/`나머지정리`도 서로 다른 master hierarchy 후보가 존재한다. 따라서 exact path normalization은 별도 검수에서 문항 evidence를 확인한 뒤 수행해야 한다.
+
+## 8. Gate 및 검증 결과
+
+실행한 명령과 결과:
+
+```text
+node --test tests/metadata-foundation-gates.test.mjs \
+  tests/metadata-foundation-h1-full-rebuild.test.mjs \
+  tests/metadata-foundation-h1-pilot.test.mjs
+28 passed, 0 failed
+
+node archive/tools/intelligence/validate-h1-direct-b-packets.mjs
+expectedCount=2498
+validCoverageCount=2498
+missingCount=0
+```
+
+B validator의 raw audit mismatch/duplicate count는 각각 48/57로 남아 있다. 이들은 이전 invalid/audit-only packet의 흔적이며, validator가 선택한 replacement packet의 valid coverage는 2,498/2,498이다. audit trail을 삭제하지 않았다.
+
+`git diff --check`도 통과했다.
+
+## 9. 원본·production 불변성 범위
+
+이번 final candidate 단계에서 다음을 production에 반영하지 않았다.
+
+- HIGH1 source JS payload
+- HIGH1 source image/solution image
+- canonical master
+- production promotion of `mother-final-candidate.json`
+
+final candidate는 `_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/` 아래의 검수 artifact로만 저장된다. production metadata 반영은 canonical/applicability 210건과 별도 external inspection이 끝난 뒤의 후속 gate로 남긴다.
+
+## 10. 별도 검사자가 볼 핵심 지점
+
+1. `source_manifest.json`의 2,498 source identity와 A/B packet의 1:1 coverage.
+2. `mother-diff-manifest.json`의 2,277 disagreement과 `mother/` ledger/pick의 recordIndex closure.
+3. `mother-final-candidate.json`의 각 record에서 source fingerprint, A packet, B packet, Mother ledger file, final value의 연결.
+4. `CANONICAL_PATH_UNMATCHED` 210건의 source evidence 기반 exact canonical path.
+5. `readyForGate: false`를 유지한 상태에서 production metadata가 변경되지 않았는지.
+
+현재 branch는 Mother closure checkpoint로는 제출 가능하지만, canonical/applicability gate가 닫히기 전에는 production promotion 승인 상태가 아니다.
