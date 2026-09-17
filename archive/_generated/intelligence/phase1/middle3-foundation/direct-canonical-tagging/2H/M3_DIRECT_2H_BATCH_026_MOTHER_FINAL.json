@@ -480,22 +480,22 @@
       "finalDecision": {
         "L1Key": "L1-1",
         "L1": "삼각비",
-        "L2Key": "L2-1.2",
-        "L2": "삼각비의 활용",
-        "L3Key": "L3-1.2.1",
-        "L3": "평면도형",
-        "L4Key": "L4-1.2.1.1",
-        "L4": "삼각형의 높이·넓이",
-        "primaryConcept": "삼각형의 높이·넓이",
-        "primaryConceptReason": "내심의 각 이등분으로 A=30°를 복원하고 특수각 삼각비로 sin·cos·tan의 비를 계산한다.",
+        "L2Key": "L2-1.1",
+        "L2": "삼각비",
+        "L3Key": "L3-1.1.2",
+        "L3": "특수각의 삼각비",
+        "L4Key": "L4-1.1.2.2",
+        "L4": "특수각 계산",
+        "primaryConcept": "특수각의 삼각비",
+        "primaryConceptReason": "특수각의 삼각비 값을 이용하여 주어진 평면도형의 길이와 넓이를 계산하는 문항이다.",
         "rejectedAlternativeConcepts": [],
         "secondaryConceptKeys": [
           "L4-1.1.2.1"
         ],
-        "decisiveSolutionStep": "BIC의 내각합으로 B=60°, A=30°를 얻어 sin30:cos30:tan30=√3:3:2로 정리한다.",
-        "taxonomyReason": "내심은 각 복원 context이고 마지막은 특수각 값 계산이지만 canonical M3-2에서는 triangle-height/area보다 특수각 삼각비가 더 직접적이다.",
+        "decisiveSolutionStep": "특수각의 삼각비 값을 도형의 높이와 넓이 계산에 대입한다.",
+        "taxonomyReason": "도형의 외형보다 특수각의 삼각비 값이 계산을 결정하므로 특수각 계산 exact L4로 정렬한다.",
         "difficultyBucket": 3,
-        "difficultyReason": "내심 각 이등분과 직각삼각형의 각을 해석한 뒤 특수각 비를 만든다.",
+        "difficultyReason": "특수각의 삼각비 값을 평면도형 계산에 적용하는 기본~표준 직접 적용형이다.",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
         "status": "RESOLVED",
@@ -505,12 +505,17 @@
         "foundationDefectReason": "",
         "conflictStatus": "NONE",
         "sourceDefectCandidate": false,
-        "sourceDefectReason": ""
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-1.1.2.2",
+          "L4": "특수각 계산"
+        }
       },
-      "motherAdjudication": "A/B evidence was adjudicated by decisive solution strategy and canonical exact-path contract.",
+      "motherAdjudication": "Pinpoint source adjudication: updated to the confirmed canonical exact path; difficulty bucket 3.",
       "sourceFingerprint": "6407cd691015c9209cf1551fc7fc991be2c33e4619caad8bc86579e2d3dfb8a0",
-      "schemaNormalization": "IDENTITY_AND_PROVENANCE_WRAPPER_ONLY_NO_SEMANTIC_RECLASSIFICATION",
-      "normalizationNote": "sourceFingerprint bound from source tuple."
+      "schemaNormalization": "PINPOINT_METADATA_FOUNDATION_M3_2H_CONFIRMED_RECHECK",
+      "normalizationNote": "Only this confirmed pinpoint decision was updated; frozen source content, choices, answer, solution, and assets were not changed."
     },
     {
       "questionUid": "qid_v1_5d3ed32e4aa8d38ff3f13f914223f2dff58e31cde58394c450fe81b0ee26ef70",

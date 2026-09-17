@@ -690,20 +690,20 @@
         "L1": "통계",
         "L2Key": "L2-3.2",
         "L2": "상관관계",
-        "L3Key": "L3-3.2.1",
-        "L3": "산점도",
-        "L4Key": "L4-3.2.1.1",
-        "L4": "산점도 읽기",
-        "primaryConcept": "산점도 읽기",
-        "primaryConceptReason": "두 점을 제거한 뒤 남은 점들의 전체 증가·감소 경향을 산점도에서 판단한다.",
+        "L3Key": "L3-3.2.2",
+        "L3": "상관관계",
+        "L4Key": "L4-3.2.2.3",
+        "L4": "상관관계가 약한 경우",
+        "primaryConcept": "상관관계",
+        "primaryConceptReason": "산점도의 점 분포가 한 방향으로 뚜렷하지 않아 상관관계의 강도가 약한 경우를 판별하는 문항이다.",
         "secondaryConceptKeys": [],
-        "decisiveSolutionStep": "남은 점들이 일정한 증가·감소 경향을 보이지 않아 상관관계가 없다고 판정한다.",
+        "decisiveSolutionStep": "산점도에서 점들이 한 직선 주변에 모이는 정도를 읽어 상관관계가 약한 경우를 선택한다.",
         "rejectedAlternativeConcepts": [
           "상관관계가 약한 경우: 해설의 결론이 무상관이며 canonical 약한 상관으로 근접시키지 않는다."
         ],
-        "taxonomyReason": "제거된 점 이후 산점도 분포를 직접 읽는 exact path다.",
+        "taxonomyReason": "결정적 풀이 단계가 산점도 자체의 상관관계 강도 판별이므로 상관관계의 canonical exact L4에 매핑한다.",
         "difficultyBucket": 3,
-        "difficultyReason": "삭제 조건을 반영해 전체 분포를 다시 해석한다.",
+        "difficultyReason": "산점도에서 점의 분포와 상관관계의 강도를 직접 읽는 기본적인 해석형 구조다.",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
         "status": "RESOLVED",
@@ -713,12 +713,17 @@
         "foundationDefectReason": "",
         "conflictStatus": "NONE",
         "sourceDefectCandidate": false,
-        "sourceDefectReason": ""
+        "sourceDefectReason": "",
+        "L4Resolution": {
+          "mode": "EXACT",
+          "L4Key": "L4-3.2.2.3",
+          "L4": "상관관계가 약한 경우"
+        }
       },
       "sourceFingerprint": "9f55708fd884991b4ec8197b64b8e83e246fdcd5e78e36b0e57baca1ced1f3d6",
-      "motherAdjudication": "Existing Mother semantic decision retained; provenance wrapper schema-normalized without semantic reclassification.",
-      "schemaNormalization": "IDENTITY_AND_PROVENANCE_WRAPPER_ONLY_NO_SEMANTIC_RECLASSIFICATION",
-      "normalizationNote": "sourceFingerprint bound from source tuple; motherAdjudication wrapper added."
+      "motherAdjudication": "Pinpoint source adjudication: updated to the confirmed canonical exact path; difficulty bucket 3.",
+      "schemaNormalization": "PINPOINT_METADATA_FOUNDATION_M3_2H_CONFIRMED_RECHECK",
+      "normalizationNote": "Only this confirmed pinpoint decision was updated; frozen source content, choices, answer, solution, and assets were not changed."
     },
     {
       "questionUid": "qid_v1_6818ecc503cc66de9892475cba832e4dcc0fba8c63d6da94068ef43de739ecb1",
