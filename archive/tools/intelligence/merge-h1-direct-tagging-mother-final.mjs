@@ -410,6 +410,16 @@ for (let index = 0; index < sourceRecords.length; index++) {
   const canonicalRaw = { ...finalValue.canonical };
   const canonicalResolution = resolveCanonical(recordIndex, finalValue);
   const canonicalState = canonicalResolution.state;
+  let difficultyResolution = null;
+  if (finalValue.difficultyBucket == null && finalValue.status === 'DIRECT_TAGGED') {
+    const fallbackDifficulty = [av.difficultyBucket, bv.difficultyBucket]
+      .map(value => Number(value))
+      .find(value => Number.isInteger(value) && value >= 1 && value <= 5);
+    if (fallbackDifficulty !== undefined) {
+      finalValue.difficultyBucket = fallbackDifficulty;
+      difficultyResolution = 'Mother retained the source-grounded frozen packet difficulty because the selected packet omitted difficulty.';
+    }
+  }
   if (canonicalState === 'CANONICAL_PATH_UNMATCHED') errors.push(`CANONICAL_PATH_UNMATCHED:${recordIndex}`);
   if (!finalValue.status) errors.push(`FINAL_STATUS_MISSING:${recordIndex}`);
   decisionCounts[decision || 'UNSET'] = (decisionCounts[decision || 'UNSET'] || 0) + 1;
@@ -423,7 +433,7 @@ for (let index = 0; index < sourceRecords.length; index++) {
     b: { packetFile: b.file, value: bv },
     comparison: { abEqual, differingFields: diff?.differingFields || [] },
     mother: { decision, directRead, ledgerFile, reason },
-    final: { ...finalValue, canonical: canonicalResolution.canonical, canonicalRaw, canonicalState, canonicalResolution: canonicalResolution.reason }
+    final: { ...finalValue, canonical: canonicalResolution.canonical, canonicalRaw, canonicalState, canonicalResolution: canonicalResolution.reason, difficultyResolution }
   });
 }
 

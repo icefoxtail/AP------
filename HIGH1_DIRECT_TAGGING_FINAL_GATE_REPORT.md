@@ -97,7 +97,24 @@ Mother decision 분포는 다음과 같다.
 
 이는 batch 구간별 저장 artifact 분포다. 이 표만으로 B의 원인이나 모델 품질을 추론하지 않았다.
 
-## 6. Mother final candidate 상태
+## 6. Difficulty coverage
+
+난이도는 `difficultyBucket` 정수 1~5만 최종값으로 허용한다. 현재 Mother final 분포는 다음과 같다.
+
+| difficultyBucket | 문항 수 |
+|---:|---:|
+| 1단계 | 414 |
+| 2단계 | 495 |
+| 3단계 | 636 |
+| 4단계 | 640 |
+| 5단계 | 296 |
+| 미확정(null) | 17 |
+| 범위 밖 값 | 0 |
+| 합계 | 2,498 |
+
+따라서 1~5단계 bucket은 모두 존재하지만, 모든 문항의 난이도가 확정된 것은 아니다. 17건은 source payload 누락, source/solution 충돌, 선택지·조건 누락 등으로 Mother가 난이도를 억지로 만들지 않고 hold한 문항이다. 반대로 직접 태깅은 완료됐지만 선택된 B packet이 난이도를 비워 둔 3건은 A의 source-grounded frozen difficulty를 Mother가 계승해 보정했다.
+
+## 7. Mother final candidate 상태
 
 최종 후보 파일은 Mother가 선택한 packet의 semantic value를 보존하며, A/B raw packet path와 Mother ledger file을 함께 남긴다.
 
@@ -115,7 +132,7 @@ Mother decision 분포는 다음과 같다.
 
 Mother ledger closure 수치(`2,277/2,277`, unresolved `0`)와 final candidate record cardinality(`2,498`)가 닫혔다. 이후 Mother가 source·solution의 주된 풀이 원리를 다시 확인해 L1 completeness correction을 수행했고, canonical resolution도 raw path와 resolved path를 분리 보존한 상태로 2,498건 전체가 exact master match 또는 명시적 no-fit/unknown으로 닫혔다.
 
-## 7. Canonical/applicability gate
+## 8. Canonical/applicability gate
 
 final candidate의 L1~L4를 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json`의 exact hierarchy와 대조한 결과는 다음과 같다.
 
@@ -188,7 +205,7 @@ canonical resolution이 적용된 대표 raw path 유형은 다음과 같다.
 
 따라서 242건은 L1·L2·L3를 비워 둔 no-fit이 아니라, Mother L4 검수 결과를 보존한 명시적 L4 hold/no-fit이다.
 
-## 8. Gate 및 검증 결과
+## 9. Gate 및 검증 결과
 
 실행한 명령과 결과:
 
@@ -215,7 +232,7 @@ B validator의 raw audit mismatch/duplicate count는 각각 48/57로 남아 있�
 
 `git diff --check`도 통과했다.
 
-## 9. 원본·production 불변성 범위
+## 10. 원본·production 불변성 범위
 
 이번 final candidate 단계에서 다음을 production에 반영하지 않았다.
 
@@ -226,7 +243,7 @@ B validator의 raw audit mismatch/duplicate count는 각각 48/57로 남아 있�
 
 final candidate는 `_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/` 아래의 검수 artifact로만 저장된다. canonical/applicability candidate gate는 닫혔지만, production metadata 반영은 별도 external inspection과 promotion 승인 뒤의 후속 gate로 남긴다.
 
-## 10. 별도 검사자가 볼 핵심 지점
+## 11. 별도 검사자가 볼 핵심 지점
 
 1. `source_manifest.json`의 2,498 source identity와 A/B packet의 1:1 coverage.
 2. `mother-diff-manifest.json`의 2,277 disagreement과 `mother/` ledger/pick의 recordIndex closure.
