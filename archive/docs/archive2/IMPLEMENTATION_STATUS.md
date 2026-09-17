@@ -1,68 +1,61 @@
-# JS아카이브 2.0 Implementation Status
+# Archive 2.0 Implementation Status
 
-이 파일은 Phase 0 문서 봉인 시점의 초기 상태 기록이다. 계획 문서의 목표를
-구현 완료로 계산하지 않으며, 실제 근거는 `BASELINE.md`를 따른다.
+## 현재 상태
 
-## Current main HEAD
+**RC2 — 원본 출제·대상 snapshot·split recovery 및 학생 포털 연결 개선. Production rollout 전.**
 
-`91b8657e41098b5ab41c2bef1dbfb7ee1b292825`
+최신 검증 범위와 실제 사용 결과는 `RC2_REPORT.md`, 설계 근거는
+`ADR-005-RC2-DELIVERY-LIFECYCLE.md`에 기록한다. 아래 RC1 기준 설명은 함께 적용하되
+원본 저장·출력·부분 성공 처리는 ADR 005를 따른다.
 
-위 SHA는 2026-09-16 Phase 0 audit을 시작할 때의 최신 `main`/`origin/main`
-기준점이다. 문서 봉인 후 push된 최종 commit SHA는 작업 종료 보고서에 별도로
-기록한다.
+- 작업 브랜치: `codex/archive2-longterm-20260916`
+- 기반 main: `994ac4fd60c117e571ec79334e0d90b4f49bfa89`
+- 기존 장기 브랜치 commit `c95108dcb99e062ff7842d171c754fa4a88b21d3`와 main ancestry 보존.
+- main merge / production deploy / remote schema·data write: 수행하지 않음.
+- 최종 검증과 제한은 `RC1_REPORT.md`, 재현 및 운영 절차는 `OPERATIONS.md` 참조.
 
-## Current Phase
+## 구현된 제품
 
-**Phase 0 — canonical document seal + actual code/DB/API baseline audit**
+`workspace.html`의 기본 행동은 기출 선택 → 기존 반·학생 패널 → 원본 그대로 출제다.
+기존 전체 기능 진입점을 유지한다. 추가 기능으로 canonical 단원·개념·유형 구성, 5단계 난이도,
+문항 고정/재구성/교체/undo, 시리즈, 학생 history, draft 복원, 기존 출력 엔진을 연결한다.
+현재까지 확인한 최소 기능을 통합 작업공간으로 재설계했으며 중요한 결정은 ADR 001~004에 남겼다.
 
-## Phase 0 result
+디자인은 컴팩트한 행 목록, 문서 중심 미리보기, 목적별 도구 묶음, 차분한 타이포그래피와
+색을 사용한다. 모바일에서는 출력·출제 행동을 하단에 유지한다.
 
-**COMPLETE (audit/document scope)**
+## 서버 경계
 
-문서 정본 읽기, 실제 Archive/Worker/DB/API 구조 확인, qid 안정성 및 assignment
-question coverage 측정, legacy history 분류, 브라우저 회귀 baseline, 배포
-parity caveat 기록을 완료했다. Production feature code, migration, schema,
-API, UI는 변경하지 않았다.
+기존 assignment UUID / recipients − exclusions / exam_blueprints / PDF / OMR /
+wrong_answers를 재사용한다. 새 핵심 테이블은 assignment와 UID를 연결하는
+`class_exam_assignment_questions`다. 50문항 persistence, retry, 동시 등록 충돌,
+학생 OMR의 마지막 문제 번호→UID 연결을 실제 workerd/D1에서 확인했다.
 
-## completed
+새 endpoint는 `ARCHIVE2_ENABLED=true`와 migration·catalog 배포를 요구한다.
+정상 PDF 생성은 기존 Browser Rendering/R2 경로를 사용한다. 로컬 fixture는
+Browser binding이 없어 PDF 실패 및 저장 상태 보존/재시도를 검증했으며,
+production PDF 생성 성공을 주장하지 않는다.
 
-- `MASTERPLAN.md`, `CONTRACTS.md`, `TAXONOMY.md`, `STUDIO_PLAN.md` 전체를 읽고 Authority 관계를 고정했다.
-- `README.md`의 정확한 읽기 순서, Authority mapping, 기존 시스템 중복 생성 금지 원칙을 작성했다.
-- `BASELINE.md`의 15개 필수 감사 섹션을 작성했다.
-- 현재 local archive 462 exams / 11,226 questions와 qid 계산 결과 11,226 unique를 확인했다.
-- remote assignment 162 rows, recipients 970, exclusions 93, effective recipients 877을 확인했다.
-- normal/MIXED assignment expected 4,138문항 중 현재 UID 근거 3,407문항(82.3%)과 731 gap을 기록했다.
-- qid sidecar의 current h2 200문항 누락, remote blueprint 157 blank identity, legacy alias 272 occurrence를 기록했다.
-- pre-boundary recipient history 122 assignments를 `LEGACY_INFERRED`, delayed snapshot 1 assignment를 `UNRESOLVED`로 기록했다.
-- 정상 문제지/해설/정답, existing MIXED, single-source Unit Past, replacement/undo, school/year flow를 브라우저에서 확인했다.
-- Unit Past multi-source preview loader failure와 embedded header stale result을 regression baseline으로 남겼다.
-- canonical docs와 실제 remote uniqueness 차이를 근거 기반으로 `CONTRACTS.md`와 `STUDIO_PLAN.md`에 최소 caveat로 반영했다.
+## Metadata Foundation 소비
 
-## unresolved
+HARD Authority:
 
-- `class_exam_assignment_questions` table와 write/read/history query가 아직 없다.
-- assignment create 응답의 id가 client 후속 exclusion 흐름에 일관되게 전달되지 않는다.
-- 731 assignment question UID gap, 272 path alias, 157 blank blueprint identity, 7 legacy MIXED payload가 해결되지 않았다.
-- remote D1 archive-backed logical identity 9 duplicate groups와 partial unique index 부재가 남아 있다.
-- deployed `exam_sessions`/assessment snapshot schema와 source `schema.sql`/migration ledger 사이 drift가 남아 있다.
-- `assessment_result_items`에는 question UID가 없고, 96 orphan rows와 session/result coverage 차이가 있다.
-- Unit Past multi-source isolated loading과 header propagation이 production-ready가 아니다.
-- selected test 4건의 fixture/version/generated-artifact failure 및 Wrangler dry-run의 `@cloudflare/puppeteer` dependency blocker가 남아 있다.
-- true cold-cache/API performance budget은 아직 측정하지 않았다.
+- RPM Primary Taxonomy v1.0
+- difficultyBucket 운영규칙 v1.3
+- Metadata Contract v2
 
-## next recommended Phase
+원본 source/identity/approved metadata는 수정하지 않고 projection만 생성했다.
+현재 462 exams / 11,226문항 중 strict automatic은 1,475문항이다. main sidecar에
+남은 `reviewed_pass + BORDERLINE_REVIEW` 968건을 임의 승인하지 않는다.
+기존 64개 direct mapping 역시 canonical reviewed EXACT로 자동 승격하지 않는다.
+UNKNOWN, HOLD, source drift, applicability 제외는 별도 사유로 표시한다.
 
-**Phase 1 — assignment ↔ canonical questionUid bridge contract and read-only
-legacy reconciliation**
+## 검증 분리
 
-첫 단계는 migration candidate/report와 parity/idempotency fixture다. 그 결과가
-확정되기 전에는 student-facing history exclusion, series 무중복, 대량
-assignment write를 production rollout하지 않는다. 자세한 진입 조건은
-`BASELINE.md` §15를 따른다.
+자체 검증: critical source/metadata/selection/output/assignment/history/OMR 경계,
+실제 교사 흐름, JSON backup/recovery, 모바일 접근성, 관련 Node contract,
+Worker build/dry-run.
 
-## Last verified HEAD
-
-`91b8657e41098b5ab41c2bef1dbfb7ee1b292825`
-
-Phase 0 read-only audit 완료 시점에 검증한 기준 HEAD다. 최종 documentation-only
-commit과 remote parity는 작업 종료 시점의 최종 보고서에서 다시 확인한다.
+후속 검증: 사용자가 계획한 Luna Max 전체 legacy workflow 감사와 production
+migration·backfill·PDF/R2 pilot. Phase 0 당시의 기존 결함·배포 schema 차이와
+전체 감사 근거는 `BASELINE.md`에 보존한다.

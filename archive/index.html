@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<script src="archive-home.js"></script>
+<script src="archive-session.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS아카이브 | 수학 기출 통합 시스템</title>
@@ -1675,18 +1677,6 @@ function notifyArchiveQrApiFailure(status, context) {
     else if (typeof alert === 'function') alert(message);
 }
 
-function sanitizeApmathSessionForStorage(data) {
-    const safe = { ...(data || {}) };
-    delete safe.raw_password;
-    delete safe.password;
-    delete safe.pw;
-    return safe;
-}
-
-function saveApmathSession(data) {
-    localStorage.setItem('APMATH_SESSION', JSON.stringify(sanitizeApmathSessionForStorage(data)));
-}
-
 function isTeacherArchiveSession() {
     const session = getApmathSession();
     if (!session) return false;
@@ -2064,6 +2054,7 @@ async function init() {
     document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
     renderFeatured();
+    if (await window.openArchive2OriginalIssue?.()) return;
     await openPendingUnitPastAssignmentFromUrl();
 }
 
@@ -2699,19 +2690,24 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
         assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, gradeLabel),
         target_scope: options.target_scope || 'class'
     };
+    if(window.prepareArchive2OriginalAssignment && new URLSearchParams(location.search).has('archive2Issue'))
+        Object.assign(payload,await window.prepareArchive2OriginalAssignment(classRow,item,options));
     const res = await fetch(`${ARCHIVE_AP_API_BASE}/class-exam-assignments`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...authHeader },
+        headers: { 'Content-Type': 'application/json', ...authHeader,...(payload.contract_version?{'X-Archive2-Contract':payload.contract_version}:{}) },
         body: JSON.stringify(payload)
     });
-    if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    // A PDF failure may follow a successful assignment write. Apply the selected
+    // student exclusions to that saved assignment before reporting the failure.
+    if (!res.ok && !(res.status === 502 && data?.assignment?.id)) {
+        if(new URLSearchParams(location.search).has('archive2Issue'))throw new Error(data.error||'출제를 저장하지 못했습니다. 다시 시도해 주세요.');
         notifyArchiveQrApiFailure(res.status, 'class-exam-assignments');
         throw new Error(`assignment failed: ${res.status}`);
     }
-    const data = await res.json().catch(() => ({}));
-    if (data?.assignment?.pdf_status === 'failed') {
-        throw new Error(data.assignment.pdf_error || '시험지 PDF 생성 실패');
-    }
+    if (!res.ok || data?.assignment?.pdf_status === 'failed')
+        data.pdfFailure = data.assignment?.pdf_error || data.error || '시험지 PDF 생성 실패';
+    window.archive2OriginalReceipt?.(data);
     return data;
 }
 
@@ -3270,6 +3266,7 @@ function renderAssignTargetReviewView() {
 async function assignTargetSubmit() {
     const classIds = Object.keys(AssignTarget.classState).filter(id => AssignTarget.classState[id].checked);
     if (!classIds.length) return;
+    window.rememberArchive2OriginalTargets?.();
     if (!resolveExamQuestionCountForAssignment(AssignTarget.item)) {
         renderAssignTargetNotice('문항 수 확인이 필요합니다.');
         return;
@@ -3296,13 +3293,14 @@ async function assignTargetProcessOneClass(classId) {
     const st = AssignTarget.classState[classId];
     AssignTarget.progress[classId] = { status: 'pending' };
     try {
-        await registerIndexClassExamAssignment(st.row, AssignTarget.item, {
+        const registration = await registerIndexClassExamAssignment(st.row, AssignTarget.item, {
             assignmentBatchId: AssignTarget.assignmentBatchId,
             target_scope: AssignTarget.scope,
             gradeLabel: AssignTarget.grade,
-            qpp: AssignTarget.qpp
+            qpp: AssignTarget.qpp,
+            studentIds: st.studentIds ? [...st.studentIds] : (st.roster||[]).map(s=>s.id)
         });
-        if (st.studentIds) {
+        if (st.studentIds && !registration.saved) {
             const excludedIds = st.roster.filter(s => !st.studentIds.has(s.id)).map(s => s.id);
             if (excludedIds.length) {
                 const authHeader = getIndexAssignmentAuthHeader();
@@ -3311,6 +3309,7 @@ async function assignTargetProcessOneClass(classId) {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', ...authHeader },
                     body: JSON.stringify({
+                        assignment_id: registration?.assignment?.id || undefined,
                         class_id: classId,
                         student_ids: excludedIds,
                         exam_title: getIndexExamTitle(AssignTarget.item),
@@ -3322,6 +3321,7 @@ async function assignTargetProcessOneClass(classId) {
                 if (!res.ok || !data.success) throw new Error('exclude-students failed: ' + res.status);
             }
         }
+        if (registration.pdfFailure) throw new Error('출제 대상 저장 완료 · PDF 재시도 필요: ' + registration.pdfFailure);
         AssignTarget.progress[classId] = { status: 'success' };
     } catch(e) {
         console.warn('[assign target] class 처리 실패:', classId, e);
@@ -3335,7 +3335,7 @@ function renderAssignTargetProgressView() {
         const st = AssignTarget.classState[id];
         const p = AssignTarget.progress[id];
         const icon = p.status === 'success' ? '✔' : p.status === 'error' ? '✕' : '…';
-        return `<div class="assign-progress-row ${p.status}"><span class="icon">${icon}</span><span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — 등록 실패' : ''}</span></div>`;
+        return `<div class="assign-progress-row ${p.status}"><span class="icon">${icon}</span><span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : ''}</span></div>`;
     }).join('');
 
     const anyError = classIds.some(id => AssignTarget.progress[id].status === 'error');
@@ -3508,45 +3508,15 @@ function resetView() {
 
 // PWA(/apmath/) 안에서 열린 아카이브는 모바일에서 외부 브라우저로 떠 localStorage가
 // 공유되지 않는다. AP Math OS가 URL 해시로 넘긴 세션을 이 페이지 저장소에 복원한다.
-function restoreApmathSessionFromHash() {
-    const hash = window.location.hash || '';
-    const match = /[#&]apmsess=([^&]+)/.exec(hash);
-    if (!match) return false;
-    try {
-        const incoming = JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(match[1])))));
-        if (incoming && (incoming.session_token || incoming.login_id)) {
-            let existing = null;
-            try { existing = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null'); } catch (e) {}
-            // 이미 사용 가능한 세션 토큰이 있으면 덮어쓰지 않는다.
-            const session = {
-                ...(existing || {}),
-                ...incoming,
-                login_id: incoming.login_id || incoming.loginId || (existing && (existing.login_id || existing.loginId)) || '',
-                id: incoming.id || (existing && existing.id) || '',
-                name: incoming.name || (existing && existing.name) || '',
-                role: incoming.role || (existing && existing.role) || '',
-                session_token: incoming.session_token || (existing && existing.session_token) || '',
-                expires_at: incoming.expires_at || (existing && existing.expires_at) || '',
-                restored_from_archive_hash: true,
-                restored_at: new Date().toISOString()
-            };
-            saveApmathSession(session);
-            return true;
-        }
-    } catch (e) {
-        // 잘못된 페이로드는 무시한다.
-    } finally {
-        // 토큰이 주소창/히스토리에 남지 않도록 해시를 제거한다.
-        try {
-            history.replaceState(null, '', window.location.pathname + window.location.search);
-        } catch (e) {}
-    }
-    return false;
-}
 
 window.onload = function () {
     init();
 };
 </script>
+<script src="mixer-selector.js"></script>
+<script src="archive2-core.js"></script>
+<script src="archive2-source.js"></script>
+<script src="archive2-output.js"></script>
+<script src="archive2-entry.js?v=20260917-navigation"></script>
 </body>
 </html>

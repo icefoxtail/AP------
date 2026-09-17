@@ -40,52 +40,60 @@ assert.match(noAssignedBranch, /timetable_class_daily_records:\s*ttAllDailyRecor
 assert.match(noAssignedBranch, /timetable_class_daily_progress:\s*ttAllDailyProgress\.results/);
 assert.match(core, /timetable_class_daily_records: Array\.isArray\(data\.timetable_class_daily_records\)/);
 assert.match(core, /timetable_class_daily_progress: Array\.isArray\(data\.timetable_class_daily_progress\)/);
-assert.match(
-  timetable,
-  /db\.timetable_class_daily_records[\s\S]*db\.class_daily_records/,
-  'timetable should prefer the all-teacher record feed and retain the scoped fallback'
-);
-assert.match(
-  timetable,
-  /db\.timetable_class_daily_progress[\s\S]*db\.class_daily_progress/,
-  'timetable should prefer the all-teacher progress feed and retain the scoped fallback'
-);
+assert.match(timetable, /class_progress_snapshots/);
+assert.match(timetable, /class_progress_items/);
+assert.match(timetable, /if \(isTimetableMonthArchiveMode\(\)\) return null;/);
 
-const progressFunction = timetable.match(/function getTimetableRecentProgress\(classId\) \{[\s\S]*?\n\}/);
-assert.ok(progressFunction, 'getTimetableRecentProgress should remain available');
 const context = {
-  _getAllDb: () => ({
-    class_daily_records: [{ id: 'own-record', class_id: 'own-class', date: '2026-08-10' }],
-    class_daily_progress: [{ id: 'own-progress', record_id: 'own-record', class_id: 'own-class', progress_text: '담당 반 진도' }],
-    timetable_class_daily_records: [
-      { id: 'other-old', class_id: 'other-class', date: '2026-08-09' },
-      { id: 'other-latest', class_id: 'other-class', date: '2026-08-11' }
-    ],
-    timetable_class_daily_progress: [
-      { id: 'other-progress-old', record_id: 'other-old', class_id: 'other-class', progress_text: '이전 진도' },
-      { id: 'other-progress-latest', record_id: 'other-latest', class_id: 'other-class', textbook_title_snapshot: '수학책', progress_text: '최신 진도' }
-    ]
-  })
+  state: {
+    db: {
+      class_daily_records: [{ id: 'future-record', class_id: 'other-class', date: '2099-08-11', special_note: '미래 일지' }],
+      class_daily_progress: [{ id: 'old-progress', record_id: 'future-record', class_id: 'other-class', textbook_title_snapshot: '구 교재', progress_text: '구 진도' }],
+      class_progress_snapshots: [
+        { id: 'other-snapshot-old', class_id: 'other-class', effective_date: '2026-08-09', updated_at: '2026-08-09T01:00:00Z' },
+        { id: 'other-snapshot-latest', class_id: 'other-class', effective_date: '2026-08-11', updated_at: '2026-08-11T01:00:00Z' }
+      ],
+      class_progress_items: [
+        { id: 'other-item-old', snapshot_id: 'other-snapshot-old', class_id: 'other-class', curriculum_key: '2022', level_key: 'middle', course_key: 'M3-1', canonical_path_key: 'other-old-path', l1_snapshot: '이차방정식', l2_snapshot: '이차방정식의 풀이', sort_order: 0 },
+        { id: 'other-item-latest', snapshot_id: 'other-snapshot-latest', class_id: 'other-class', curriculum_key: '2022', level_key: 'middle', course_key: 'M3-1', canonical_path_key: 'other-latest-path', l1_snapshot: '이차함수', l2_snapshot: '이차함수의 그래프', sort_order: 0 }
+      ],
+      class_progress_taxonomy: [
+        { canonicalPathKey: 'other-old-path', curriculumKey: '2022', level: 'middle', courseKey: 'M3-1', courseLabel: '중3 과정 · 1학기', l1: '이차방정식', l2: '이차방정식의 풀이' },
+        { canonicalPathKey: 'other-latest-path', curriculumKey: '2022', level: 'middle', courseKey: 'M3-1', courseLabel: '중3 과정 · 1학기', l1: '이차함수', l2: '이차함수의 그래프' }
+      ]
+    },
+    ui: { timetableMonthArchive: { active: false, virtualDb: null } }
+  },
+  window: {},
+  document: {},
+  console,
+  Set,
+  Map,
+  Array,
+  Date,
+  String,
+  Number,
+  Object,
+  Math,
+  JSON
 };
-vm.runInNewContext(`${progressFunction[0]}; result = getTimetableRecentProgress('other-class');`, context);
-assert.equal(context.result.date, '2026-08-11');
-assert.equal(context.result.text, '수학책 최신 진도');
+vm.runInNewContext(timetable, context);
+const resolvedProgress = context.getTimetableRecentProgress('other-class');
+assert.equal(resolvedProgress.date, '2026-08-11');
+assert.match(resolvedProgress.text, /이차함수/);
+assert.doesNotMatch(resolvedProgress.text, /구 진도/);
 
-const fallbackContext = {
-  _getAllDb: () => ({
-    class_daily_records: [{ id: 'scoped-record', class_id: 'scoped-class', date: '2026-08-12' }],
-    class_daily_progress: [{
-      id: 'scoped-progress',
-      record_id: 'scoped-record',
-      class_id: 'scoped-class',
-      textbook_title_snapshot: '담당 교재',
-      progress_text: '담당 반 진도'
-    }]
-  })
-};
-vm.runInNewContext(`${progressFunction[0]}; result = getTimetableRecentProgress('scoped-class');`, fallbackContext);
-assert.equal(fallbackContext.result.date, '2026-08-12');
-assert.equal(fallbackContext.result.text, '담당 교재 담당 반 진도');
+context.state.ui.timetableMonthArchive = { active: true, virtualDb: {} };
+assert.equal(context.getTimetableRecentProgress('other-class'), null, 'historical archive must fail closed without progress snapshots');
+
+context.state.ui.timetableMonthArchive = { active: false, virtualDb: null };
+context.state.db.class_progress_snapshots = [];
+context.state.db.class_progress_items = [];
+context.state.db.class_daily_records = [{ id: 'legacy-record', class_id: 'other-class', date: '2026-08-11' }];
+context.state.db.class_daily_progress = [{ id: 'legacy-progress', record_id: 'legacy-record', class_id: 'other-class', textbook_title_snapshot: '수학책', progress_text: 'p.10~25' }];
+const legacyProgress = context.getTimetableRecentProgress('other-class');
+assert.equal(legacyProgress.legacy, true);
+assert.equal(legacyProgress.text, '수학책 p.10~25');
 
 const syncFunction = classroom.match(/function syncClassDailyRecordToState\(classId, dateStr, record, progressRows\) \{[\s\S]*?\n\}/);
 assert.ok(syncFunction, 'syncClassDailyRecordToState should remain available');

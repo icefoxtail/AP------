@@ -7,6 +7,25 @@
 >
 > v1.1 기준 실제 Worker/Archive 코드를 감사했다. 현재 canonical UID는 `qid_v1 = SHA256(normalizedSourceFile + "#" + sourceOrdinal)` 계열로 확인되었으며, assignment/recipient/exclusion/mixed payload/PDF/OMR은 이미 운영 구조가 존재한다. 이 문서는 그 구조를 재사용하고, 없는 부분만 additive하게 정의한다.
 
+## Metadata Foundation v2 Authority boundary
+
+이 문서는 Archive 2.0 제품·assignment·history contract를 정의하지만 문항
+metadata의 의미를 새로 만들지 않는다.
+
+- 문항 primary path `curriculumKey + courseKey + L1 + L2 + L3 + L4`:
+  `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`
+- difficulty 4-field:
+  `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`
+- metadata 저장·source fingerprint·builder/runtime parity:
+  `docs/rules/01_CANONICAL/JS아카이브_Metadata_Contract_v2.md`
+
+`standardUnitKey`/`subUnitKey`/`conceptClusterKey`/`problemTypeKey`/
+`templateKey`는 legacy bridge/evidence이며 L1/L2와 기계적으로 같지 않다.
+`level`은 historical compatibility다. Archive 2.0은 numeric
+`difficultyBucket`과 `difficultyConfidence`, `difficultyBoundaryFlag`,
+`legacyLevelCompatibility`를 native하게 소비하고,
+`difficultyBucket=UNKNOWN`과 `reviewStatus=HOLD`를 분리한다.
+
 ---
 
 # 0. Contract Priority
@@ -191,15 +210,19 @@ questionUid
 sourceFile
 sourceOrdinal
 sourceQuestionNo
-standardCourse
-standardUnitKey
-subUnitKey
-conceptClusterKey
-problemTypeKey
-templateKey
-difficultyBucket
+canonical metadata reference:
+  curriculumKey + courseKey + L1 + L2 + L3 + L4
+legacy bridge:
+  standardCourse / standardUnitKey / subUnitKey / conceptClusterKey /
+  problemTypeKey / templateKey
+difficulty reference:
+  difficultyBucket / difficultyConfidence / difficultyBoundaryFlag /
+  legacyLevelCompatibility
 tags[]
 ```
+
+전체 field requiredness, precedence, UNKNOWN/HOLD, write/read 및 runtime
+parity는 Metadata Contract v2를 복제하지 않고 그 문서를 참조한다.
 
 Release 1 additive 후보:
 
@@ -668,13 +691,21 @@ UNIQUE (assignment_id, question_uid)
 
 ```text
 History(S) =
-  assignment_questions.question_uid
-  WHERE S ∈ assignment_recipients
-    AND S ∉ assignment_exclusions
+  DISTINCT assignment_questions.question_uid
+  WHERE S ∈ effective assignment recipients
 ```
 
-현재 assignment row가 삭제되면 history에서도 제외된다.
-향후 assignment status가 도입되면 effective 상태만 포함한다.
+여기서 effective assignment recipient는 `recipients - exclusions`로 계산한다.
+학생 exposure의 최종 correctness Authority는 항상 `question_uid`다.
+`standard_unit_key`, difficulty, problem type 같은 assignment 당시 metadata는
+설명·진단·선택 후보의 snapshot이지만, history correctness를 결정하는 HARD
+identity filter가 아니다. 이후 metadata/unit 재분류가 일어나도 같은
+`question_uid` exposure는 history에서 유지한다.
+
+현재 assignment row가 삭제되면 history에서도 제외된다. 향후 assignment
+status가 도입되면 effective 상태만 포함한다. legacy coverage 상태는 UID 결과와
+함께 반환하며, `VERIFIED / LEGACY_INFERRED / UNRESOLVED`를 합치거나 숨기지
+않는다.
 
 ## 17.4 Scope
 
@@ -713,15 +744,28 @@ exclude = History(A) ∪ History(B) ∪ ...
 프론트가 과거 assignment의 `mixed_payload_json`을 전부 내려받아 직접 조합하지 않는다.
 Worker에서 batch query한다.
 
+논리 요청은 selected `studentIds`와 candidate `questionUids`를 받으며, 기존
+Worker wire naming에 맞춰 `student_ids`와 `candidate_question_uids`로 표현한다.
+
 개념 request:
 
 ```json
 {
   "student_ids": ["..."],
-  "unit_keys": ["..."],
+  "candidate_question_uids": ["qid_v1_..."],
   "history_mode": "all"
 }
 ```
+
+`candidate_question_uids`가 제공되면 서버는 각 selected student의 effective
+exposure UID set과 이 후보 set의 intersection을 계산한다. 후보 set 없이 전체
+history를 batch로 요청하는 모드도 허용하지만, 어느 경우에도
+`unit_keys`를 correctness predicate로 사용하지 않는다.
+
+기존 UI/filter 호환 때문에 `unit_keys`를 함께 보낼 수는 있다. 이 값은 query
+plan hint, 선택 조건 echo, shortage/coverage diagnostic으로만 사용하며, 현재
+또는 과거 metadata의 unit 값이 바뀌었다는 이유로 UID 결과를 제거하는 HARD
+filter가 될 수 없다.
 
 개념 response:
 
@@ -730,6 +774,7 @@ Worker에서 batch query한다.
   "students": {
     "student-id": {
       "question_uids": [],
+      "matched_candidate_question_uids": [],
       "coverage": {
         "verified": 0,
         "legacy_inferred": 0,
@@ -747,11 +792,20 @@ Worker에서 batch query한다.
 ```
 
 구현은 `recipients - exclusions JOIN assignment_questions`를 기본으로 한다.
+`question_uids`는 candidate가 전달된 경우 해당 UID intersection을, candidate가
+생략된 경우 full effective history UID set을 의미한다. `coverage`는 candidate
+filter 적용 전 effective history rows/UID 근거 상태를 포함하여 legacy 상태가
+후보 축소로 숨겨지지 않게 한다. `matched_candidate_question_uids`는 선택적으로
+명시적인 교집합 결과를 제공한다.
 
 성능/권한 원칙:
 
 - N+1 금지
 - `student_ids` batch query
+- exposure history를 먼저 UID set으로 계산한 뒤 `candidate_question_uids`와 교집합
+- `unit_keys`는 correctness를 자르는 HARD filter가 아님
+- metadata/unit 재분류와 무관하게 동일 questionUid exposure 유지
+- `VERIFIED / LEGACY_INFERRED / UNRESOLVED` coverage를 함께 반환
 - 기존 `canAccessStudentsBatch` 또는 동등한 teacher/admin 권한 검증 재사용
 - history target/policy가 같으면 프론트 메모리 cache 가능
 - UID format invalid row는 diagnostics에 포함하고 HARD history set에는 넣지 않음
@@ -969,6 +1023,10 @@ badge:
 ## Studio strict
 
 UNKNOWN은 기본 자동선택 제외.
+
+문항 taxonomy UNKNOWN과 `difficultyBucket=UNKNOWN`은 coverage 부족을
+표시하는 정상 상태다. legacy `level`을 numeric bucket으로 자동 추정하지
+않으며, 보류 문항은 `reviewStatus=HOLD`로 별도 표시한다.
 
 명시적 `[미분류 포함]` 사용 시 WARN.
 

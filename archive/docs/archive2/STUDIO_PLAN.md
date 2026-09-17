@@ -9,6 +9,21 @@
 
 > **v1.2 핵심 수정:** 학생 history는 별도 student×question exposure ledger를 새로 만드는 방식이 아니라, 기존 `class_exam_assignment_recipients - exclusions`와 신규 `class_exam_assignment_questions`를 JOIN해 계산한다. `mixed_payload_json`은 기존 content snapshot으로 승격하고, qid_v1 안정성 감사와 legacy history coverage를 P0로 올린다.
 
+## Metadata Foundation v2 소비 경계
+
+Studio는 제품 workflow와 UI/UX를 자유롭게 설계하되, 문항 데이터 의미는
+canonical 문서를 소비한다. 문항 primary filter는
+`curriculumKey + courseKey + L1 + L2 + L3 + L4`를 사용하고,
+`standardUnitKey`/`subUnitKey`를 L1/L2로 직접 치환하지 않는다. 난이도
+selector와 assignment snapshot은 `difficultyBucket` 1~5,
+`difficultyConfidence`, `difficultyBoundaryFlag`,
+`legacyLevelCompatibility`를 native하게 보존한다. 기존 `level=하|중|상`은
+historical display/compatibility이고, `difficultyBucket=UNKNOWN`은 숨기지
+않는 coverage 부족 상태다. 보류는 `reviewStatus=HOLD`로 분리한다.
+
+세부 의미는 RPM Primary Taxonomy v1.0, difficulty v1.3, Metadata Contract
+v2를 참조하며 이 Studio 계획서에서 field dictionary를 재정의하지 않는다.
+
 ---
 
 # 0. 이번 작업의 성격
@@ -179,6 +194,11 @@ History(studentId)
 해당 학생이 effective recipient인 assignment들의
 class_exam_assignment_questions.question_uid UNION
 ```
+
+학생 exposure의 최종 Authority는 `questionUid`다. `unitKey`, difficulty,
+problem type은 assignment 당시 metadata snapshot과 선택/진단 정보로만
+사용하며, metadata나 unit 재분류 후 history correctness를 자르는 HARD
+predicate로 사용하지 않는다.
 
 규칙:
 
@@ -689,10 +709,17 @@ Worker에 batch history query를 둔다.
 ```json
 {
   "student_ids": ["student-123"],
-  "unit_keys": ["H22-C2-01", "H22-C2-02"],
-  "mode": "all"
+  "candidate_question_uids": ["qid_v1_..."],
+  "history_mode": "all"
 }
 ```
+
+기존 Studio filter와의 호환을 위해 `unit_keys`를 함께 보낼 수 있지만, 이는
+query hint/diagnostic용 optional field일 뿐 history correctness의 HARD filter가
+아니다. 서버는 먼저 recipients−exclusions와 assignment-question bridge에서
+학생별 exposure UID set을 계산한 뒤 `candidate_question_uids`와 교집합을
+계산한다. `candidate_question_uids`를 생략하면 full history UID set을 batch로
+반환한다.
 
 개념 응답:
 
@@ -701,6 +728,7 @@ Worker에 batch history query를 둔다.
   "students": {
     "student-123": {
       "question_uids": ["qid_v1_..."],
+      "matched_candidate_question_uids": ["qid_v1_..."],
       "coverage": {
         "verified": 84,
         "legacy_inferred": 0,
@@ -714,6 +742,11 @@ Worker에 batch history query를 둔다.
 ```
 
 정확한 endpoint 이름은 Worker route 스타일에 맞춰 구현 시 확정한다.
+`question_uids`는 candidate가 주어진 경우 candidate와의 UID intersection,
+생략된 경우 full effective history UID set이다. `coverage`는 candidate filter
+전에 평가한 effective history rows/UID의 `VERIFIED / LEGACY_INFERRED /
+UNRESOLVED` 상태를 함께 반환하여 후보 축소로 legacy gap을 숨기지 않는다. query는
+selected studentIds를 batch로 처리하며 학생별 N+1 query를 금지한다.
 
 ## 10.4 대상 학생 선택 시점
 
@@ -1195,11 +1228,11 @@ UI 코드가 직접 후보를 이리저리 필터해서 quota를 맞추지 않�
 
 ```text
 [
-  { unitKey: 'H22-C2-01', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-02', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-03', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-04', difficultyBucket: '중', count: 10 },
-  { unitKey: 'H22-C2-05', difficultyBucket: '중', count: 10 }
+  { unitKey: 'H22-C2-01', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-02', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-03', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-04', difficultyBuckets: [2, 3], count: 10 },
+  { unitKey: 'H22-C2-05', difficultyBuckets: [2, 3], count: 10 }
 ]
 ```
 
@@ -1796,7 +1829,8 @@ Preview에서 본 문항과 실제 mixed output/학생 출제 문항이 동일.
 
 ## O. 난이도 metadata 변경 내성
 
-과거 출제 당시 `중`, 현재 metadata가 `상`으로 바뀐 같은 questionUid를 fixture로 둔다.
+과거 출제 당시 legacy `level=중`, 현재 metadata가
+`difficultyBucket=4`로 기록된 같은 questionUid를 fixture로 둔다.
 
 검증:
 

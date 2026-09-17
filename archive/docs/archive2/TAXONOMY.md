@@ -1,13 +1,36 @@
-# ARCHIVE 2.0 TAXONOMY v1.1
+# ARCHIVE 2.0 PRODUCT TAXONOMY v1.1
 ## Grade Authority · Curriculum · Course Family · Unit Crosswalk · Mixed Course · Search Index
 
 > 목적: JS아카이브에서 “어디에 저장되어 있는가”와 “사용자가 어떤 자료로 인식하고 찾아야 하는가”를 분리한다.
 >
-> 이 문서는 Finder, Studio, Mixer가 공통으로 사용해야 하는 Taxonomy 정본이다.
+> 이 문서는 Finder, Studio, Mixer가 공통으로 사용하는 **제품 browse taxonomy** 정본이다.
+> 문항 자체의 L1~L4 의미 taxonomy 정본은 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`이다.
 >
 > 가장 중요한 P0 원칙:
 >
 > **시험에 하위 학년 단원이 포함되어도 해당 시험의 학년을 하향 분류하지 않는다.**
+
+## 0.1 Metadata Foundation v2 Authority boundary
+
+이 문서는 sourceGrade, unitGrade, effectiveBrowseGrade, curriculum/course
+family, crosswalk, Finder browse semantics와 Studio source-grade fence를
+정의한다. 문항 primary path는 아래 전체 경로를 canonical 값으로 소비한다.
+
+```text
+curriculumKey + courseKey + L1 + L2 + L3 + L4
+```
+
+위 경로의 HARD Authority는 RPM Primary Taxonomy v1.0 canonical pack이다.
+기존 `standardUnitKey`, `subUnitKey`, `conceptClusterKey`,
+`problemTypeKey`, `templateKey`는 이 문서가 새 L1/L2로 치환하지 않는
+legacy bridge/evidence다. `difficultyBucket` 1~5와
+`difficultyConfidence`, `difficultyBoundaryFlag`,
+`legacyLevelCompatibility`는 difficulty v1.3 authority를, field 저장·읽기와
+runtime parity는 Metadata Contract v2를 따른다.
+
+미분류 문항은 `taxonomyStatus=UNKNOWN`, `difficultyBucket=UNKNOWN`으로
+처리하고, `reviewStatus=HOLD`를 별도로 보존한다. `UNKNOWN`을 legacy 값으로
+추정하거나 `level`을 numeric bucket으로 자동 변환하지 않는다.
 
 ---
 
@@ -139,12 +162,12 @@ actualCourse
 standardCourse
 courseFamily
 
-standardUnitKey
-subUnitKey
-conceptClusterKey
-problemTypeKey
-templateKey
-difficultyBucket
+legacyStandardUnitKey
+legacySubUnitKey
+legacyConceptClusterKey
+legacyProblemTypeKey
+legacyTemplateKey
+difficultyBucket  // canonical 1|2|3|4|5|UNKNOWN
 
 taxonomyStatus
 taxonomySource
@@ -679,7 +702,10 @@ templateKey
 difficultyBucket
 ```
 
-는 재사용한다.
+는 legacy bridge로 재사용한다. 이 field의 깊이를 canonical L1/L2로
+동일시하지 않으며, canonical L1~L4는 RPM Primary Taxonomy v1.0에서
+읽는다. Metadata Contract v2는 그 path의 저장·검증·runtime parity를
+정의한다.
 
 ---
 
@@ -790,6 +816,13 @@ query
 ```
 
 Finder의 `grade` UI는 `effectiveBrowseGrade`를 대상으로 한다.
+
+이 문서의 `unitKeys[]`는 Finder/Studio 후보 범위를 표현하는 selection field다.
+Student History correctness의 Authority가 아니다. History query는 canonical
+`questionUid` set을 기준으로 exposure와 candidate의 교집합을 계산하며,
+`unitKeys[]`는 필요할 때 query hint 또는 diagnostic으로만 전달한다. metadata나
+unit 재분류가 UID history에서 과거 exposure를 제거하는 HARD filter가 되어서는
+안 된다.
 
 ---
 
@@ -956,7 +989,7 @@ taxonomy logic이 바뀌면:
 
 # 31. Migration Strategy
 
-Taxonomy v1은 additive.
+Archive 2.0 product taxonomy fields are additive.
 
 ```text
 legacy DB
@@ -967,6 +1000,10 @@ new taxonomy fields
 기존 Finder/Mixer가 새 field를 몰라도 정상 동작해야 한다.
 
 새 Finder는 flag ON일 때만 사용.
+
+문항 canonical metadata의 의미·저장·runtime 도입은 이 문서의 별도
+taxonomy revision으로 복제하지 않고 RPM Primary v1.0, difficulty v1.3,
+Metadata Contract v2의 adoption gate를 따른다.
 
 ---
 

@@ -2805,39 +2805,100 @@ function getTimetableActiveTextbooks(classId) {
     return ['교재 미등록'];
 }
 
-function getTimetableRecentProgress(classId) {
-    var db = _getAllDb();
+function getTimetableLegacyDailyProgress(classId, queryDate, db) {
     var recordById = {};
-    var progressById = {};
     (db.timetable_class_daily_records || []).concat(db.class_daily_records || []).forEach(function(row) {
         if (row && row.id) recordById[String(row.id)] = row;
     });
+    var records = Object.keys(recordById).map(function(id) { return recordById[id]; })
+        .filter(function(row) {
+            return String(row.class_id) === String(classId) &&
+                String(row.date || '') <= String(queryDate || '');
+        })
+        .sort(function(a, b) {
+            return String(b.date || '').localeCompare(String(a.date || '')) ||
+                String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
+                String(b.id || '').localeCompare(String(a.id || ''));
+        });
+    var latest = records[0];
+    if (!latest) return null;
+
+    var progressById = {};
     (db.timetable_class_daily_progress || []).concat(db.class_daily_progress || []).forEach(function(row) {
         if (row && row.id) progressById[String(row.id)] = row;
     });
-    var recordSource = Object.keys(recordById).map(function(id) { return recordById[id]; });
-    var progressSource = Object.keys(progressById).map(function(id) { return progressById[id]; });
-    var records = recordSource
-        .filter(function(r) { return String(r.class_id) === String(classId); })
-        .sort(function(a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
+    var items = Object.keys(progressById).map(function(id) { return progressById[id]; })
+        .filter(function(row) { return String(row.record_id) === String(latest.id); })
+        .map(function(row) {
+            var textbook = String(row.textbook_title_snapshot || '').trim();
+            var progress = String(row.progress_text || '').trim().replace(/^\[단원선택\][^\n]*\n?/, '').trim();
+            return textbook && progress ? textbook + ' ' + progress : (textbook || progress);
+        })
+        .filter(Boolean);
+    return items.length ? { date: latest.date, text: items.join(' / '), legacy: true } : null;
+}
 
-    if (records.length === 0) return null;
+function getTimetableRecentProgress(classId) {
+    // 월별 historical archive에는 persistent progress snapshot이 포함되어 있지 않다.
+    // 현재 진도를 과거 시간표에 덮어쓰지 않도록 archive에서는 fail-closed 한다.
+    if (isTimetableMonthArchiveMode()) return null;
 
-    var latest = records[0];
-    var progresses = progressSource
-        .filter(function(p) { return String(p.record_id) === String(latest.id); });
+    var db = _getAllDb();
+    var queryDate = getTimetableTodayDateString();
+    var snapshots = (db.class_progress_snapshots || [])
+        .filter(function(snapshot) {
+            return String(snapshot.class_id) === String(classId) &&
+                String(snapshot.effective_date || '') <= String(queryDate || '');
+        })
+        .sort(function(a, b) {
+            return String(b.effective_date || '').localeCompare(String(a.effective_date || '')) ||
+                String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
+                String(b.id || '').localeCompare(String(a.id || ''));
+        });
 
-    if (progresses.length === 0) return null;
+    var latest = snapshots[0];
+    if (!latest) return getTimetableLegacyDailyProgress(classId, queryDate, db);
 
-    var items = progresses.map(function(p) {
-        var t = String(p.textbook_title_snapshot || '').trim();
-        var prog = String(p.progress_text || '').trim();
-        var cleanProg = prog.replace(/^\[단원선택\][^\n]*\n?/, '').trim();
-        if (t && cleanProg) return t + ' ' + cleanProg;
-        return t || cleanProg;
-    }).filter(Boolean);
+    var progressItems = (db.class_progress_items || [])
+        .filter(function(item) { return String(item.snapshot_id) === String(latest.id); })
+        .sort(function(a, b) {
+            return Number(a.sort_order || 0) - Number(b.sort_order || 0) ||
+                String(a.id || '').localeCompare(String(b.id || ''));
+        });
+    if (!progressItems.length) return null;
 
-    return items.length > 0 ? { date: latest.date, text: items.join(' / ') } : null;
+    var catalog = Array.isArray(db.class_progress_taxonomy) ? db.class_progress_taxonomy : [];
+    var catalogByPath = {};
+    catalog.forEach(function(item) {
+        if (item && item.canonicalPathKey) catalogByPath[String(item.canonicalPathKey)] = item;
+    });
+    var courseGroups = {};
+    progressItems.forEach(function(item) {
+        var pathKey = String(item.canonical_path_key || item.canonicalPathKey || '');
+        var catalogItem = catalogByPath[pathKey] || {};
+        var curriculumKey = String(item.curriculum_key || item.curriculumKey || catalogItem.curriculumKey || '');
+        var level = String(item.level_key || item.level || catalogItem.level || '');
+        var courseKey = String(item.course_key || item.courseKey || catalogItem.courseKey || '');
+        var groupKey = [curriculumKey, level, courseKey].join('|');
+        if (!courseGroups[groupKey]) {
+            courseGroups[groupKey] = {
+                label: String(catalogItem.courseLabel || courseKey || '과정'),
+                curriculumKey: curriculumKey,
+                items: []
+            };
+        }
+        var l1 = String(item.l1_snapshot || item.l1 || catalogItem.l1 || '').trim();
+        var l2 = String(item.l2_snapshot || item.l2 || catalogItem.l2 || '').trim();
+        var unitLabel = l1 && l2 && l1 !== l2 ? l1 + ' · ' + l2 : (l2 || l1);
+        if (unitLabel) courseGroups[groupKey].items.push(unitLabel);
+    });
+
+    var text = Object.keys(courseGroups).map(function(key) {
+        var group = courseGroups[key];
+        var units = Array.from(new Set(group.items));
+        return group.curriculumKey + ' 개정 ' + group.label + ': ' + units.join(', ');
+    }).filter(Boolean).join(' / ');
+    return text ? { date: latest.effective_date, text: text } : null;
 }
 
 // ────────────────────────────────────────────
