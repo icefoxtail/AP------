@@ -393,8 +393,29 @@
       localStorage.setItem(`APMATH_UNIT_PAST_ASSIGN_${paper.snapshotKey}`, JSON.stringify(pending));
       const url = new URL('index.html', window.location.href);
       url.searchParams.set('unitPastAssign', paper.snapshotKey); url.searchParams.set('qpp', getQpp());
-      window.location.href = appendSessionHash(url.toString());
+      if (readyShelf()) {
+        url.searchParams.set('archive2Embedded', '1');
+        openReadyAssignment(url, paper);
+      } else window.location.href = appendSessionHash(url.toString());
     } catch (error) { console.error(error); setStatus(error.message || '출제 준비에 실패했습니다.', true); alert(error.message || '출제 준비에 실패했습니다.'); }
+  }
+  function openReadyAssignment(url, paper) {
+    let dialog = document.getElementById('unit-ready-assignment');
+    if (!dialog) {
+      dialog = document.createElement('dialog');
+      dialog.id = 'unit-ready-assignment';
+      dialog.setAttribute('aria-labelledby', 'unit-ready-assignment-title');
+      const busy = () => Boolean(dialog.querySelector('iframe')?.contentWindow?.isArchive2OriginalBusy?.());
+      dialog.addEventListener('cancel', event => { if (busy()) event.preventDefault(); });
+      dialog.addEventListener('click', event => { if (event.target.closest('[data-close-ready-assignment]') && !busy()) dialog.close(); });
+      window.addEventListener('message', event => {
+        if (event.origin !== location.origin || event.source !== dialog.querySelector('iframe')?.contentWindow) return;
+        if (event.data?.type === 'archive2-original-close' && !busy()) dialog.close();
+      });
+      document.body.appendChild(dialog);
+    }
+    dialog.innerHTML = `<div class="unit-ready-assignment-heading"><div><h2 id="unit-ready-assignment-title">반·학생에게 출제</h2><p>${escapeHtml(paper.title)} · ${paper.count}문항</p></div><button type="button" class="unit-btn" data-close-ready-assignment>시험지로 돌아가기</button></div><iframe title="반·학생 출제 대상 선택" src="${escapeHtml(url.href)}"></iframe>`;
+    dialog.showModal();
   }
   function getDefaultFilterState(unit) {
     const params = new URLSearchParams(window.location.search);
@@ -992,7 +1013,7 @@
   function renderConfigStep(unit) {
     const root = document.getElementById('unit-content');
     if (readyShelf()) {
-      root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: "바로 쓰는 문제지", count: unit.count })}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>바로 쓰는 문제지</h2><p>기존 단원별 기출 문제지입니다. 시험지를 확인한 뒤 출력하거나 반·학생에게 출제하세요.</p></div><button class="unit-btn" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div><div class="unit-existing-list">${unit.papers.map(paper => `<div class="unit-paper-option"><div><button class="unit-btn ghost" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})">${escapeHtml(paper.title)}</button><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</small></div><button class="unit-btn primary" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})">시험지 확인 · 출제</button></div>`).join('')}</div></div></section>`;
+      root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: "바로 쓰는 문제지", count: unit.count })}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>바로 쓰는 문제지</h2><p>기존 단원별 기출 문제지입니다. 시험지를 확인한 뒤 출력하거나 반·학생에게 출제하세요.</p></div><button class="unit-btn" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div><div class="unit-existing-list">${unit.papers.map(paper => `<button type="button" class="unit-ready-paper" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})"><span class="unit-ready-number">${String(paper.index).padStart(2, '0')}</span><span class="unit-ready-info"><strong>${escapeHtml(paper.title)}</strong><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</small></span><span class="unit-ready-action">시험지 확인 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></button>`).join('')}</div></div></section>`;
       return;
     }
     const filter = state.filterState;
@@ -1434,7 +1455,7 @@
       const rows = units.map(unit => `<button class="unit-card${unit.count ? '' : ' is-empty'}${state.selectedUnitKey === unit.key ? ' is-active' : ''}" data-unit-key="${unit.key}" aria-pressed="${state.selectedUnitKey === unit.key ? 'true' : 'false'}" ${unit.count ? `onclick="UnitPastExams.renderDetail('${unit.key}')"` : 'disabled'}><span class="unit-card-no">${String(unit.order).padStart(2, '0')}</span><h3>${escapeHtml(unit.name)}</h3><span class="unit-card-meta"><span>${unit.count.toLocaleString()}문항</span><span>${unit.papers.length ? `${unit.papers.length}개 문제지` : '자료 없음'}</span></span></button>`).join('');
       return `<section class="unit-course"><div class="unit-course-head"><h3>${escapeHtml(course)}</h3><span>${count.toLocaleString()}문항</span></div><div class="unit-grid">${rows}</div></section>`;
     }).join('');
-    root.innerHTML = `<section class="unit-catalog"><div class="unit-catalog-head"><div><h2>단원을 선택하세요</h2><p>학년과 과목을 고른 뒤 만들 문제지의 단원을 선택합니다.</p></div><div class="unit-grade-tabs" role="tablist" aria-label="학년 선택">${grades}</div></div>${courses}</section>`;
+    root.innerHTML = `<section class="unit-catalog"><div class="unit-catalog-head"><div><h2>단원을 선택하세요</h2><p>${readyShelf() ? "학년을 고르면 단원별로 준비된 문제지가 표시됩니다." : "학년과 과목을 고른 뒤 만들 문제지의 단원을 선택합니다."}</p></div><div class="unit-grade-tabs" role="tablist" aria-label="학년 선택">${grades}</div></div>${courses}</section>`;
     const requestedUnit = new URLSearchParams(window.location.search).get('unit');
     if (!state.selectedUnitKey && requestedUnit && state.catalog.units.some(unit => unit.key === requestedUnit)) renderDetail(requestedUnit, { noScroll: true, restore: true });
   }

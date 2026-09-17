@@ -2,7 +2,7 @@
   const params = new URLSearchParams(location.search);
   const requested = params.get("archive2Issue");
   const embedded =
-    requested && params.get("archive2Embedded") === "1" && parent !== window;
+    (requested || params.get("unitPastAssign")) && params.get("archive2Embedded") === "1" && parent !== window;
   const O = window.Archive2Output;
   let originalSettings = null,
     originalQuestions = null,

@@ -82,7 +82,8 @@ test('Archive 2.0 ready shelf opens existing papers without the new-paper config
   const html = runtime.getElement('unit-content').innerHTML;
   assert.match(html, /바로 쓰는 문제지/);
   assert.match(html, /previewExistingPaper\('H22-C-01', 1\)/);
-  assert.match(html, /시험지 확인 · 출제/);
+  assert.match(html, /class="unit-ready-paper"/);
+  assert.match(html, /시험지 확인/);
   assert.doesNotMatch(html, /id="unit-quick-count"/);
   assert.match(runtime.getElement('unit-stepper').innerHTML, /시험지 확인/);
 });

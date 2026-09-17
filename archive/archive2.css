@@ -1453,3 +1453,10 @@ select {
 .material-switch { display:flex; gap:6px; margin-bottom:16px; }
 .material-switch [aria-pressed=true] { color:white; background:#203551; border-color:#203551; }
 .material-switch button { min-height:40px; }
+
+.assessment-entry { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 16px; margin:14px 0; border:1px solid var(--line); border-radius:8px; background:#fff; text-decoration:none; font-size:12px; }
+.assessment-entry > span:first-child { display:grid; gap:4px; }
+.assessment-entry small { color:var(--muted); font-size:12px; }
+.assessment-entry:hover { border-color:#9aabc2; background:#f5f8fb; }
+
+.material-nav[hidden] { display:none; }
