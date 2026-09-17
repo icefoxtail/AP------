@@ -554,6 +554,7 @@
       : null;
     return state.catalog.exams.filter((exam) => {
       if (
+        !O.matchesMaterial(exam, f.material) ||
         (f.grade && exam.effectiveBrowseGrade !== f.grade) ||
         (f.school && f.school !== exam.school) ||
         (f.yearFrom && exam.year < Number(f.yearFrom)) ||
@@ -597,12 +598,12 @@
       );
     });
   }
-  function openOriginalIssue(exam) {
+  function openOriginalIssue(exam, step = "review") {
     state.originalExam = exam;
     const stored = Number(
       localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4,
     );
-    const qpp = [4, 6].includes(stored) ? stored : 4;
+    const qpp = [4, 6, 8].includes(stored) ? stored : 4;
     const url = new URL("index.html", location.href);
     url.searchParams.set("archive2Issue", exam.file);
     url.searchParams.set("archive2Embedded", "1");
@@ -615,78 +616,91 @@
       qpp,
     });
     state.originalReceipts = [];
+    state.originalPreviewKey = "preview-" + crypto.randomUUID();
     showDialog(
       O.displayTitle(exam),
-      `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 원본 순서 그대로</span>${button("original-print", "문제지 확인")}<details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+      `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 수록 순서 그대로</span><div class="actions">${button("original-review", "시험지 확인", 'aria-pressed="true"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="false"')}</div><details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><section id="original-review"><div class="resultbar"><p class="muted">학생에게 나갈 시험지입니다. 출력 설정을 바꾸면 여기에 반영됩니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe></section><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
     );
     $("modal").classList.add("original-issue-dialog");
+    setOriginalStep(step);
+    updateOriginalPreview();
   }
   function originalIssueBusy() {
     return Boolean(
       $("original-issue-frame")?.contentWindow?.isArchive2OriginalBusy?.(),
     );
   }
+  function setOriginalStep(step) {
+    $("original-review").hidden = step !== "review";
+    $("original-issue-frame").hidden = step !== "targets";
+    document.querySelector('[data-action="original-review"]').setAttribute("aria-pressed", String(step === "review"));
+    document.querySelector('[data-action="original-targets"]').setAttribute("aria-pressed", String(step === "targets"));
+    $("modal").scrollTop = 0;
+  }
+  async function originalOutputUrl() {
+    const e = state.originalExam, s = state.originalSettings;
+    const saved = state.originalReceipts?.[0];
+    const key = saved?.key || state.originalPreviewKey;
+    if (!saved) {
+      const questions = await Source.load(e.file, new Map(state.catalog.sourceHashes).get(e.file));
+      const questionUids = state.catalog.records.filter(r => r.sourceFile === e.file)
+        .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)
+        .map(r => r.identityStatus === "VERIFIED" ? r.questionUid : null);
+      localStorage.setItem("archive2Original_" + key, JSON.stringify({ questions, meta: {
+        sourceKind: "archive2-original", sourceArchiveFile: e.file, questionUids,
+        identityTitle: e.identityTitle || e.file.split("/").pop().replace(/\.js$/, ""),
+        printHeaderOptions: s.header, qpp: s.qpp, includeQr: s.includeQr,
+      }}));
+    }
+    const url = O.applyUrl(new URL("engine.html", location.href), s);
+    url.searchParams.set("originalSnapshot", key);
+    url.searchParams.set("data", "exams/" + e.file);
+    url.searchParams.set("mode", "exam");
+    return url;
+  }
+  async function updateOriginalPreview() {
+    const token = state.originalPreviewToken = (state.originalPreviewToken || 0) + 1;
+    const frame = $("original-preview-frame");
+    if (!frame) return;
+    const status = $("original-preview-status");
+    status.textContent = "시험지를 불러오는 중…";
+    try {
+      const url = await originalOutputUrl();
+      if (token !== state.originalPreviewToken || !frame.isConnected) return;
+      url.searchParams.set("archive2Review", "1");
+      // Refresh after an output setting changes, even though snapshot identity stays stable.
+      url.searchParams.set("revision", String(token));
+      frame.onload = () => {
+        status.textContent = "출제할 문항과 출력 설정을 확인하세요.";
+        if (!$("original-review")?.hidden) $("modal").scrollTop = 0;
+      };
+      frame.src = url.href;
+    } catch (error) { status.textContent = "시험지를 표시하지 못했습니다: " + error.message; }
+  }
   async function originalPrint() {
     const popup = window.open("about:blank", "_blank");
     try {
-      const e = state.originalExam,
-        s = state.originalSettings;
-      const saved = state.originalReceipts?.[0];
-      let key = saved?.key;
-      if (!key) {
-        key = "preview-" + crypto.randomUUID();
-        const questions = await Source.load(
-          e.file,
-          new Map(state.catalog.sourceHashes).get(e.file),
-        );
-        const questionUids = state.catalog.records
-          .filter((r) => r.sourceFile === e.file)
-          .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)
-          .map((r) => (r.identityStatus === "VERIFIED" ? r.questionUid : null));
-        localStorage.setItem(
-          "archive2Original_" + key,
-          JSON.stringify({
-            questions,
-            meta: {
-              sourceKind: "archive2-original",
-              sourceArchiveFile: e.file,
-              questionUids,
-              identityTitle:
-                e.identityTitle || e.file.split("/").pop().replace(/\.js$/, ""),
-              printHeaderOptions: s.header,
-              qpp: s.qpp,
-              includeQr: s.includeQr,
-            },
-          }),
-        );
-      }
-      const u = O.applyUrl(new URL("engine.html", location.href), s);
-      u.searchParams.set("originalSnapshot", key);
-      u.searchParams.set("data", "exams/" + e.file);
-      u.searchParams.set("mode", "exam");
+      const url = await originalOutputUrl();
       if (!popup) throw new Error("팝업을 허용해 주세요.");
-      popup.location.href = u.href;
-    } catch (error) {
-      popup?.close();
-      throw error;
-    }
+      popup.location.href = url.href;
+    } catch (error) { popup?.close(); throw error; }
   }
   function renderFind() {
     const exams = findExams(),
       page = exams.slice(state.page * 18, (state.page + 1) * 18);
-    return `<div class="intro"><div><h1>기출 찾기</h1><p class="muted">기출을 누르면 원본 전체를 그대로 반·학생에게 출제합니다.</p></div>${button("go-compose", "문제지 만들기")}</div>
-      <section class="panel">${filterMarkup(state.find, "find")}</section>
-      <div class="resultbar"><strong>시험 ${exams.length.toLocaleString()}개</strong><span class="muted">원본 출제 · 문제지 · 해설 · 정답</span></div>
+    return `<div class="intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
+      <section class="panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav"><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label><a href="assessment/assessment-mvp.html">평가 보관함 <span class="muted">진단 · 단원 · 학기 평가</span> →</a></div><details class="finder-filters" ${matchMedia("(max-width: 600px)").matches ? "" : "open"}><summary>학년·학교·과목으로 좁히기</summary>${filterMarkup(state.find, "find")}</details></section>
+      <div class="resultbar"><strong>${state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
       <div class="exam-list">${page
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-issue" data-exam="${n}">${esc(e.year)} · ${esc(e.school || e.topic || e.subject)}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">원본 전체</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "원본 보기", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "시험지 확인", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
         })
         .join("")}</div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
-      ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 기출로 문제지 만들기")}</div></div>` : ""}`;
+      ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}`;
   }
   function renderScopes() {
     const scopes = scopeOptions(),
@@ -1141,7 +1155,7 @@
       qpp: paper.meta.qpp,
       includeQr: paper.meta.includeQr,
     });
-    if (preview) url.searchParams.set("preview", "1");
+    if (preview) url.searchParams.set("archive2Review", "1");
     return url.href;
   }
   async function updatePreview() {
@@ -1644,6 +1658,11 @@
       } else if (a === "page-prev") {
         state.page--;
         render();
+      } else if (a === "material") {
+        state.find.material = b.dataset.material;
+        state.page = 0;
+        urlState();
+        render();
       } else if (a === "page-next") {
         state.page++;
         render();
@@ -1655,15 +1674,13 @@
         invalidate();
         render();
       } else if (a === "source-issue") {
-        openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)]);
+        openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
       } else if (a === "original-print") {
         await originalPrint();
       } else if (a === "source-preview") {
-        const exam = state.catalog.exams[Number(b.dataset.exam)];
-        const url = new URL("engine.html", location.href);
-        url.searchParams.set("data", "exams/" + exam.file);
-        url.searchParams.set("mode", "exam");
-        window.open(url.href, "_blank");
+        openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "review");
+      } else if (a === "original-review" || a === "original-targets") {
+        setOriginalStep(a === "original-review" ? "review" : "targets");
       } else if (a === "sources-clear") {
         state.sources = [];
         invalidate();
@@ -2007,6 +2024,8 @@
       $("original-issue-frame")?.contentWindow?.setArchive2OriginalSettings?.(
         state.originalSettings,
       );
+      clearTimeout(previewTimer);
+      previewTimer = setTimeout(updateOriginalPreview, 450);
     } else {
       if (state.sealed || Parts.receipt(state.receipts, state.previewIndex))
         return;
@@ -2088,6 +2107,7 @@
       "axis",
       "query",
       "family",
+      "material",
     ])
       if (p.has(k)) state.find[k] = p.get(k);
     state.page = 0;

@@ -10,6 +10,11 @@
       .trim()
       .slice(0, n);
   function displayTitle(exam = {}) {
+    const kind = materialKind(exam);
+    const variant = /유사\s*(\d+)/.exec(exam.file || "");
+    if (kind === "unit") {
+      return [exam.grade, exam.semester ? exam.semester + "학기" : "", exam.topic || exam.subject, "단원평가", variant ? "유사 " + variant[1] : ""].filter(Boolean).join(" ");
+    }
     const year = String(exam.year || "").replace(/^(\d{2})$/, "20$1");
     const period =
       exam.examType === "mid"
@@ -24,10 +29,21 @@
         exam.grade,
         exam.semester ? exam.semester + "학기" : "",
         period,
+        kind === "similar" ? "유사문제" + (variant ? " " + variant[1] : "") : "",
       ]
         .filter(Boolean)
         .join(" ") || text(exam.topic || exam.subject || "수학 시험지", 80)
     );
+  }
+  // Browse labels only: source contentType and canonical metadata are unchanged.
+  function materialKind(exam = {}) {
+    if (exam.contentType === "단원평가") return "unit";
+    if ((exam.file || "").startsWith("similar/") || ["유형", "기출유사", "기출심화"].includes(exam.contentType)) return "similar";
+    return exam.contentType === "기출" ? "exam" : "other";
+  }
+  function matchesMaterial(exam, filter) {
+    if (!filter) return true;
+    return filter === "nonexam" ? materialKind(exam) !== "exam" : materialKind(exam) === filter;
   }
   function normalize(raw = {}, fallback = "수학 시험지") {
     return {
@@ -105,5 +121,5 @@
     url.searchParams.set("assignmentRegistered", "1");
     return url;
   }
-  return { displayTitle, normalize, settings, markup, read, applyUrl };
+  return { displayTitle, materialKind, matchesMaterial, normalize, settings, markup, read, applyUrl };
 });

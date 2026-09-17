@@ -169,10 +169,10 @@
     } catch {}
   };
   // Explicit pilot entry. Flag OFF leaves the existing Archive route unchanged.
-  if (params.get("archive2") !== "1") return;
+  if (embedded || (params.get("legacy") !== "1" && params.get("archive2") !== "1")) return;
   const link = document.createElement("a");
   link.href = "workspace.html";
-  link.textContent = "Archive 2.0 교사용 작업공간 열기";
+  link.textContent = "Archive 2.0으로 돌아가기";
   link.style.cssText =
     "display:block;padding:12px 20px;background:#203551;color:white;text-align:center;font-weight:700;text-decoration:none";
   document.body.prepend(link);

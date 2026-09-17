@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ko">
   <head>
+    <script src="archive-session.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Archive 2.0 · 교사용 작업공간</title>
@@ -17,11 +18,11 @@
     <header class="appbar">
       <a class="brand" href="workspace.html">JS 아카이브 <span>2.0</span></a>
       <nav aria-label="작업공간">
-        <button data-view="find" class="active">기출 찾기</button
+        <button data-view="find" class="active">기출·자료 찾기</button
         ><button data-view="compose">문제지 만들기</button
         ><button data-view="recent">출제 내역</button>
       </nav>
-      <a class="legacy" href="index.html">전체 기능</a>
+      <a class="legacy" href="index.html?legacy=1">전체 기능</a>
       <button class="legacy" data-view="health">자료 점검</button>
     </header>
     <div id="status" class="status" role="status" aria-live="polite">

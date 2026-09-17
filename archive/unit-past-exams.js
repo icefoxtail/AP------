@@ -1433,7 +1433,7 @@
   function renderSafeFallback(message) {
     const app = document.getElementById('unit-content');
     if (!app) return;
-    app.innerHTML = `<div class="unit-error unit-fallback"><strong>단원별 출제 도구를 불러오지 못했습니다.</strong><br>${escapeHtml(message || '일시적인 로딩 오류입니다.')}<div class="unit-fallback-actions"><a class="unit-btn" href="index.html">기존 아카이브 전체 문제지로 이동</a><a class="unit-btn" href="mixer.html">기존 믹서 출제로 이동</a></div></div>`;
+    app.innerHTML = `<div class="unit-error unit-fallback"><strong>단원별 출제 도구를 불러오지 못했습니다.</strong><br>${escapeHtml(message || '일시적인 로딩 오류입니다.')}<div class="unit-fallback-actions"><a class="unit-btn" href="index.html?legacy=1">기존 아카이브 전체 문제지로 이동</a><a class="unit-btn" href="mixer.html">기존 믹서 출제로 이동</a></div></div>`;
   }
   function selectProfile(profileId, options = {}) {
     if (!core.PROFILES[profileId] || state.busyKey) return;
