@@ -1,0 +1,2169 @@
+{
+  "schemaVersion": "m3-direct-canonical-tagging-b-result-v1",
+  "status": "B_INDEPENDENT_TAGGED_AND_FROZEN",
+  "targetGrade": "MIDDLE3",
+  "semester": "2H",
+  "batchNo": "022",
+  "sourceManifest": "archive/_generated/intelligence/phase1/middle3-foundation/direct-canonical-tagging/2H/DIRECT_2H_BATCH_022.json",
+  "canonicalAuthority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-2.md",
+  "recordCount": 20,
+  "results": [
+    {
+      "status": "B_DIRECT_FROZEN",
+      "sourceIndex": 0,
+      "questionUid": "qid_v1_f9720446a154d25ac47f73c25616dd039e7fd2a7408ddb56cc02d3169cc499c3",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceJsSha256": "dc8ddbf66b370dff9915d942c7010bfd7b4848301e8e0278e12bea94643ef0be",
+      "sourceFingerprint": "ab9d7ce1b367da44a8796c96cc0df1dcc157ec84c9ac8855646186a4f8f07441",
+      "identityCheck": {
+        "status": "PASS",
+        "questionUidPresent": true,
+        "questionUidUniqueWithinShard": true,
+        "sourceArchiveFilePresent": true,
+        "sourceOrdinalMatchesSourceQuestionNo": true,
+        "sourceJsSha256MatchesBatch": true,
+        "sourceFingerprintMatchesBatch": true,
+        "sourceEvidenceComplete": true
+      },
+      "curriculumKey": "2015",
+      "sourceEvidence": {
+        "content": "다음 중 두 변량 사이의 상관관계가 나머지 넷과 다른 하나는? (4점)",
+        "choices": [
+          "고도와 산소량",
+          "스마트폰 사용 시간과 수면 시간",
+          "산의 높이와 산 정상에서의 기온",
+          "전기 사용량과 전기 요금",
+          "흡연량과 기대 수명"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 두 변량이 함께 증가하는지, 한쪽이 증가할 때 다른 쪽이 감소하는지를 판단한다.\n조건 정리: ①, ②, ③, ⑤는 한 변량이 커질수록 다른 변량이 작아지는 경향이다.\n풀이 방향: 유일하게 양의 상관관계를 갖는 항목을 찾는다.\n정석 풀이: 고도와 산소량, 스마트폰 사용 시간과 수면 시간, 산의 높이와 정상 기온, 흡연량과 기대 수명은 대체로 음의 상관관계이다. 전기 사용량이 많아질수록 전기 요금은 대체로 증가하므로 ④만 양의 상관관계이다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        }
+      },
+      "canonicalDecision": {
+        "primaryCanonicalId": "L4-3.2.2.1",
+        "primaryCanonicalLabel": "양의 상관관계",
+        "supportingCanonicalIds": [
+          "L4-3.2.2.2"
+        ],
+        "supportingCanonicalLabels": [
+          "음의 상관관계"
+        ],
+        "decisionBasis": "독립 풀이에서 각 선택지의 두 변량이 함께 증가하는지 반대로 움직이는지를 비교했을 때, ①·②·③·⑤는 음의 상관관계이고 ④ 전기 사용량과 전기 요금만 양의 상관관계이다. 정답을 결정하는 전략은 유일한 양의 상관관계를 식별하는 것이므로 L4-3.2.2.1을 primary로 삼았다.",
+        "textualEvidence": "문항은 다섯 쌍의 변량 중 상관 방향이 다른 하나를 묻고, 독립 계산 결과 ④가 정답이다. 전기 사용량이 증가하면 전기 요금도 증가하는 반면 나머지 네 쌍은 한 변량 증가에 따라 다른 변량이 감소하는 경향이다.",
+        "visualEvidence": "image가 비어 있고 image·embedded image·embedded SVG·embedded table이 모두 없어 시각 자료는 필요하지 않다.",
+        "canonicalGap": false,
+        "foundationCandidate": false,
+        "nearestFallbackUsed": false,
+        "hold": false
+      },
+      "reviewEvidence": {
+        "decisionSteps": [
+          "원문과 5개 선택지를 직접 읽고 각 쌍의 변량 방향을 분류했다.",
+          "고도-산소량, 스마트폰 사용-수면, 산의 높이-정상 기온, 흡연량-기대 수명은 음의 상관관계로 판단했다.",
+          "전기 사용량-전기 요금은 함께 증가하므로 양의 상관관계이며 유일하게 다른 선택지다.",
+          "독립 결론 ④를 source answer와 대조했고, 산점도나 표가 없는 비시각 문항임을 확인했다."
+        ],
+        "primaryReason": "정답을 가르는 결정적 풀이가 양의 상관관계와 음의 상관관계를 비교하여 유일한 양의 사례를 찾는 것이므로, 표현 형식이 아니라 L4-3.2.2.1을 primary로 선택했다.",
+        "rejectedAlternatives": [
+          {
+            "canonicalId": "L4-3.2.1.1",
+            "label": "산점도 읽기",
+            "reason": "산점도나 좌표 자료를 읽는 문항이 아니므로 표현 수단을 primary로 올릴 근거가 없다."
+          },
+          {
+            "canonicalId": "L4-3.2.2.2",
+            "label": "음의 상관관계",
+            "reason": "네 선택지를 분류하는 보조 판정에는 쓰이지만, 질문의 목표인 유일하게 다른 선택지를 결정하는 primary는 양의 상관관계이다."
+          }
+        ],
+        "secondary": {
+          "canonicalIds": [
+            "L4-3.2.2.2"
+          ],
+          "labels": [
+            "음의 상관관계"
+          ],
+          "reason": "나머지 네 선택지가 음의 상관관계임을 대조 기준으로 사용했다."
+        },
+        "taxonomyReason": "M3-2의 통계-상관관계-상관관계 아래에 양의 상관관계 L4가 직접 존재하며, 문항의 decisive strategy와 정확히 일치한다. 시각 표현이나 가까운 다른 L4를 fallback으로 사용하지 않았다.",
+        "difficulty": {
+          "score": 2,
+          "reason": "계산이나 도형 해석 없이 다섯 일상 사례의 동반 증감 방향을 비교하는 직접 적용 문항이다."
+        },
+        "hold": false,
+        "foundationCandidate": false,
+        "conflict": false,
+        "sourceDefect": false,
+        "sourceDefectReason": null
+      }
+    },
+    {
+      "status": "B_DIRECT_FROZEN",
+      "sourceIndex": 1,
+      "questionUid": "qid_v1_99677195e76a6721beed9cd69f69396f239b8b7b900e7d8bc69a3c11ce6da263",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceJsSha256": "dc8ddbf66b370dff9915d942c7010bfd7b4848301e8e0278e12bea94643ef0be",
+      "sourceFingerprint": "4564f064ad9b8f5ecd056a01a5423b3c164cb7dc7a7fb2dfb765dfd0e9e27863",
+      "identityCheck": {
+        "status": "PASS",
+        "questionUidPresent": true,
+        "questionUidUniqueWithinShard": true,
+        "sourceArchiveFilePresent": true,
+        "sourceOrdinalMatchesSourceQuestionNo": true,
+        "sourceJsSha256MatchesBatch": true,
+        "sourceFingerprintMatchesBatch": true,
+        "sourceEvidenceComplete": true
+      },
+      "curriculumKey": "2015",
+      "sourceEvidence": {
+        "content": "아래 그림에서 네 점 $A,B,C,D$가 한 원 위에 있을 때, $\\angle x$의 크기를 구하시오. (5점)",
+        "choices": [],
+        "answer": "$37^\\circ$",
+        "solution": "[키포인트] 교차하는 두 현의 각과 원 밖에서 만나는 두 할선의 각을 차례로 이용한다.\n조건 정리: $\\angle ACB=23^\\circ$, $\\angle DEC=83^\\circ$이고 $A,B,C,D$는 한 원 위에 있다.\n풀이 방향: 먼저 호 $\\wideparen{AB}$와 호 $\\wideparen{DC}$의 크기를 구한 뒤 점 $P$에서의 바깥각을 계산한다.\n정석 풀이: $\\angle ACB=23^\\circ$이므로 호 $\\wideparen{AB}$의 크기는 $46^\\circ$이다. 원 안에서 두 현 $AC$, $BD$가 점 $E$에서 만나므로 $83^\\circ=\\dfrac12(\\wideparen{AB}+\\wideparen{DC})$이다. 따라서 $\\wideparen{DC}=166^\\circ-46^\\circ=120^\\circ$이다. 점 $P$에서 두 할선 $PAD$, $PBC$가 만나므로 $x=\\dfrac12(120^\\circ-46^\\circ)=37^\\circ$이다.\n따라서 구하는 값은 $37^\\circ$이다.",
+        "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/25_풍덕중_2학기_기말_중3_기출/q21.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        }
+      },
+      "canonicalDecision": {
+        "primaryCanonicalId": "L4-2.2.2.4",
+        "primaryCanonicalLabel": "복합 각 추론",
+        "supportingCanonicalIds": [
+          "L4-2.2.1.1"
+        ],
+        "supportingCanonicalLabels": [
+          "같은 호에 대한 원주각"
+        ],
+        "decisionBasis": "독립 풀이가 원주각에서 호 AB를 얻고, 원 안에서 교차하는 두 현의 각으로 호 DC를 얻은 다음, 원 밖에서 만나는 두 할선의 각으로 x를 계산하는 세 단계의 각 관계를 연결한다. 이 결합된 전략이 L4-2.2.2.4 복합 각 추론에 해당한다.",
+        "textualEvidence": "∠ACB=23°이므로 호 AB=46°이다. ∠DEC=83°는 교차하는 두 현이 보는 호 AB와 DC의 합의 절반이므로 호 DC=120°이다. P에서 두 할선이 만드는 외부각은 (120°-46°)/2=37°이므로 source answer 37°와 일치한다.",
+        "visualEvidence": "batch의 sourceEvidence.visualDependency를 직접 읽어 q21.png가 required=true이고 declared/exists/positiveBytes/linkedToSource가 모두 true임을 확인했다. 문제·해결에 필요한 도형 자산의 의존성은 충족되지만, shard 범위 제한에 따라 source asset bytes 자체는 열거나 처리하지 않았다.",
+        "canonicalGap": false,
+        "foundationCandidate": false,
+        "nearestFallbackUsed": false,
+        "hold": false
+      },
+      "reviewEvidence": {
+        "decisionSteps": [
+          "원문과 q21 도형을 직접 읽어 P의 외부각, E의 현 교차각, C의 원주각을 분리했다.",
+          "∠ACB=23°에서 같은 호 AB의 크기를 46°로 계산했다.",
+          "교차하는 현의 각 정리로 83°=(호 AB+호 DC)/2를 적용하여 호 DC=120°를 얻었다.",
+          "두 외부 할선의 각 정리로 x=(호 DC-호 AB)/2=37°를 계산하고 source answer와 대조했다.",
+          "batch의 required visual dependency가 충족됨을 확인했으며, 도형의 존재 자체가 아니라 결합된 각 추론을 primary로 삼았다. source asset bytes는 범위 제한상 열지 않았다."
+        ],
+        "primaryReason": "원주각, 현의 내부 교차각, 외부 할선각을 순차적으로 결합해야 x가 결정되므로 단일 원주각이나 내접사각형 경로보다 복합 각 추론이 decisive strategy다.",
+        "rejectedAlternatives": [
+          {
+            "canonicalId": "L4-2.2.2.1",
+            "label": "내접사각형의 각",
+            "reason": "네 점이 원 위에 있다는 사실은 사용되지만 맞은편 내각의 합 180°를 적용하는 문항이 아니다."
+          },
+          {
+            "canonicalId": "L4-2.2.1.2",
+            "label": "중심각과 원주각",
+            "reason": "중심각을 도입하지 않고 원주각-호, 현 교차각, 외부 할선각을 직접 연결한다."
+          }
+        ],
+        "secondary": {
+          "canonicalIds": [
+            "L4-2.2.1.1"
+          ],
+          "labels": [
+            "같은 호에 대한 원주각"
+          ],
+          "reason": "∠ACB에서 호 AB를 얻는 첫 단계에 같은 호에 대한 원주각 관계를 보조적으로 사용했다."
+        },
+        "taxonomyReason": "M3-2의 원주각-원주각의 활용 아래에 복합 각 추론 L4가 직접 있으며, q21의 내부 현 교차와 외부 할선 계산을 정확히 포괄한다. nearest fallback으로 내접사각형이나 중심각 path를 택하지 않았다.",
+        "difficulty": {
+          "score": 4,
+          "reason": "필수 도형에서 세 위치의 각 관계를 식별하고 호의 크기를 중간 계산한 뒤 내부각과 외부각 공식을 연결해야 한다."
+        },
+        "hold": false,
+        "foundationCandidate": false,
+        "conflict": false,
+        "sourceDefect": false,
+        "sourceDefectReason": null
+      }
+    },
+    {
+      "status": "B_DIRECT_FROZEN",
+      "sourceIndex": 2,
+      "questionUid": "qid_v1_7bd627185e3fd3f1eb66bb65506bafc751821fc044a10d7aab488a935263d73a",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceJsSha256": "dc8ddbf66b370dff9915d942c7010bfd7b4848301e8e0278e12bea94643ef0be",
+      "sourceFingerprint": "4ffd4a044f9c81371c05a175ba5a6cd318d084c7cc830df3de75fea0c85df545",
+      "identityCheck": {
+        "status": "PASS",
+        "questionUidPresent": true,
+        "questionUidUniqueWithinShard": true,
+        "sourceArchiveFilePresent": true,
+        "sourceOrdinalMatchesSourceQuestionNo": true,
+        "sourceJsSha256MatchesBatch": true,
+        "sourceFingerprintMatchesBatch": true,
+        "sourceEvidenceComplete": true
+      },
+      "curriculumKey": "2015",
+      "sourceEvidence": {
+        "content": "다음 그림에서 점 $P$는 두 현 $AC$, $BD$의 교점이다. $\\wideparen{AB}$의 길이가 원주의 $\\dfrac19$이고, $\\wideparen{AB}:\\wideparen{CD}=5:9$일 때, $\\angle x$의 크기를 구하시오. (6점)",
+        "choices": [],
+        "answer": "$56^\\circ$",
+        "solution": "[키포인트] 원 안에서 두 현이 만날 때 생기는 각은 그 각과 맞꼭지각이 보는 두 호의 크기의 합의 절반이다.\n조건 정리: 호 $\\wideparen{AB}$는 원주의 $\\dfrac19$이므로 호의 각도는 $360^\\circ\\times\\dfrac19=40^\\circ$이다.\n풀이 방향: 호의 길이비로 호 $\\wideparen{CD}$의 각도를 구한 뒤 교차하는 현의 각 공식을 적용한다.\n정석 풀이: $\\wideparen{AB}:\\wideparen{CD}=5:9$이므로 호 $\\wideparen{CD}$의 각도는 $40^\\circ\\times\\dfrac95=72^\\circ$이다. 따라서 $x=\\dfrac12(40^\\circ+72^\\circ)=56^\\circ$이다.\n따라서 구하는 값은 $56^\\circ$이다.",
+        "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/25_풍덕중_2학기_기말_중3_기출/q22.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        }
+      },
+      "canonicalDecision": {
+        "primaryCanonicalId": "L3-2.2.2",
+        "primaryCanonicalLabel": "원주각의 활용",
+        "supportingCanonicalIds": [],
+        "supportingCanonicalLabels": [],
+        "decisionBasis": "독립 풀이가 원주의 1/9에서 호 AB=40°를 구하고, 호의 비로 호 CD=72°를 구한 뒤, P에서 교차하는 두 현의 각 x=(40°+72°)/2=56°를 계산한다. 정답을 결정하는 exact strategy는 교차하는 두 현의 각 정리인데, M3-2에는 이를 전용으로 명명한 L4가 없으므로 정확한 L3-2.2.2 원주각의 활용에 canonical-gap foundation candidate로 고정했다.",
+        "textualEvidence": "문항의 원주 분수와 호 AB:CD=5:9를 사용하면 호 AB=360°×1/9=40°, 호 CD=40°×9/5=72°이다. q22 도형에서 AC와 BD가 P에서 교차하므로 x=(40°+72°)/2=56°이며 source answer와 일치한다.",
+        "visualEvidence": "batch의 sourceEvidence.visualDependency를 직접 읽어 q22.png가 required=true이고 declared/exists/positiveBytes/linkedToSource가 모두 true임을 확인했다. q22 도형 의존성은 충족되지만, shard 범위 제한에 따라 source asset bytes 자체는 열거나 처리하지 않았다.",
+        "canonicalGap": true,
+        "foundationCandidate": true,
+        "canonicalGapBasis": "교차하는 두 현의 각 정리가 M3-2의 L4 목록에 독립 항목으로 존재하지 않으므로 L3-2.2.2에서 foundation candidate로 보존한다.",
+        "nearestFallbackUsed": false,
+        "hold": false
+      },
+      "reviewEvidence": {
+        "decisionSteps": [
+          "원문과 batch의 required visual dependency를 직접 읽어 q22.png 의존성과 P가 두 현 AC, BD의 교점인 도형 전제를 확인했다. source asset bytes는 범위 제한상 열지 않았다.",
+          "호 AB의 길이가 원주의 1/9이므로 호 AB의 중심각 크기를 360°×1/9=40°로 계산했다.",
+          "호 AB:호 CD=5:9에서 호 CD=40°×9/5=72°를 계산했다.",
+          "교차하는 두 현의 각 정리로 x=(40°+72°)/2=56°를 얻고 source answer와 대조했다.",
+          "required image dependency가 충족됨을 확인했으며, 원의 존재만으로 다른 원주각 path를 선택하지 않았다."
+        ],
+        "primaryReason": "호의 분수·비를 각도로 변환한 뒤 현의 내부 교차각 공식을 적용하는 것이 정답을 결정하는 exact strategy다. 전용 L4가 없으므로 nearest fallback을 쓰지 않고 정확한 L3-2.2.2를 foundation candidate로 지정했다.",
+        "rejectedAlternatives": [
+          {
+            "canonicalId": "L4-2.2.1.1",
+            "label": "같은 호에 대한 원주각",
+            "reason": "주어진 각이 원주각이 아니고, 호의 수치화와 현 교차각을 직접 사용하므로 같은 호의 원주각 path가 결정 전략이 아니다."
+          },
+          {
+            "canonicalId": "L4-2.2.2.4",
+            "label": "복합 각 추론",
+            "reason": "문항은 호의 수치화와 교차하는 두 현의 각 정리를 결합하지만, 이 L4는 전용 교차현 정리 항목이 아니므로 nearest fallback으로 사용하지 않는다."
+          }
+        ],
+        "secondary": {
+          "canonicalIds": [],
+          "labels": [],
+          "reason": "호의 분수와 비는 교차현 각 풀이의 입력값이며, 전용 L4가 없는 gap을 다른 L4로 보조 태깅하지 않았다."
+        },
+        "taxonomyReason": "M3-2의 원주각-원주각의 활용 아래 L3-2.2.2가 문항의 원 관련 각 활용 범위를 정확히 담는다. 교차하는 두 현의 각 정리는 해당 L4 목록에 없으므로 canonical gap foundation candidate로 남기며, 복합 각 추론 등 nearest L4 fallback은 사용하지 않았다.",
+        "difficulty": {
+          "score": 3,
+          "reason": "호의 분수와 비를 순서대로 각도로 바꾼 뒤 한 번의 교차 현 공식에 대입하는 다단계 계산 문항이다."
+        },
+        "hold": false,
+        "foundationCandidate": true,
+        "canonicalGap": true,
+        "conflict": false,
+        "sourceDefect": false,
+        "sourceDefectReason": null
+      }
+    },
+    {
+      "status": "B_DIRECT_FROZEN",
+      "sourceIndex": 3,
+      "questionUid": "qid_v1_a347514155dac8d8fa1e94236610b8da9badc2ec8151f350725bf36dcd8ed3e7",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceJsSha256": "dc8ddbf66b370dff9915d942c7010bfd7b4848301e8e0278e12bea94643ef0be",
+      "sourceFingerprint": "8c374e7d9fc7ee726590db11091aa35f1938d343a599406c0f310173d35ccaa0",
+      "identityCheck": {
+        "status": "PASS",
+        "questionUidPresent": true,
+        "questionUidUniqueWithinShard": true,
+        "sourceArchiveFilePresent": true,
+        "sourceOrdinalMatchesSourceQuestionNo": true,
+        "sourceJsSha256MatchesBatch": true,
+        "sourceFingerprintMatchesBatch": true,
+        "sourceEvidenceComplete": true
+      },
+      "curriculumKey": "2015",
+      "sourceEvidence": {
+        "content": "다음 표는 $4$번의 쪽지 시험에서 두 학생 A, B가 받은 점수이다. 두 학생 A, B의 분산을 구하고, 점수가 더 고른 학생을 이유와 함께 설명하시오. (6점)<div class='question-table-wrap'><table class='question-table'><thead><tr><th>학생</th><th>1회</th><th>2회</th><th>3회</th><th>4회</th></tr></thead><tbody><tr><td>A</td><td>6</td><td>9</td><td>8</td><td>9</td></tr><tr><td>B</td><td>7</td><td>10</td><td>9</td><td>6</td></tr></tbody></table></div>",
+        "choices": [],
+        "answer": "A의 분산 $\\dfrac32$, B의 분산 $\\dfrac52$, 학생 A",
+        "solution": "[키포인트] 두 학생의 평균을 각각 구한 뒤 평균에서 떨어진 정도의 제곱을 평균하여 분산을 비교한다.\n조건 정리: A의 점수는 $6,9,8,9$, B의 점수는 $7,10,9,6$이다.\n풀이 방향: 평균과 제곱편차의 합을 학생별로 계산한다.\n정석 풀이: A의 평균은 $\\dfrac{6+9+8+9}{4}=8$이고, 분산은 $\\dfrac{(-2)^2+1^2+0^2+1^2}{4}=\\dfrac64=\\dfrac32$이다. B의 평균도 $\\dfrac{7+10+9+6}{4}=8$이고, 분산은 $\\dfrac{(-1)^2+2^2+1^2+(-2)^2}{4}=\\dfrac{10}{4}=\\dfrac52$이다. 분산이 작을수록 점수가 평균 주변에 더 고르게 모여 있으므로 A의 점수가 더 고르다.\n따라서 A의 분산은 $\\dfrac32$, B의 분산은 $\\dfrac52$이고, 점수가 더 고른 학생은 A이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": true,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": true
+        }
+      },
+      "canonicalDecision": {
+        "primaryCanonicalId": "L4-3.1.2.2",
+        "primaryCanonicalLabel": "분산",
+        "supportingCanonicalIds": [
+          "L4-3.1.3.1"
+        ],
+        "supportingCanonicalLabels": [
+          "평균과 산포도 비교"
+        ],
+        "decisionBasis": "독립 풀이에서 표의 두 자료의 평균을 각각 8로 구한 다음 제곱편차 평균으로 A의 분산 3/2와 B의 분산 5/2를 계산하고 작은 분산의 학생 A를 선택한다. 평균은 중간 계산이고 분산 비교가 goal을 결정하므로 분산을 primary로 삼았다.",
+        "textualEvidence": "embedded table의 A 자료는 6,9,8,9이고 B 자료는 7,10,9,6이다. 두 평균은 8이며 A의 제곱편차 합은 6, B는 10이므로 분산은 각각 3/2, 5/2이고 더 고른 학생은 A이다.",
+        "visualEvidence": "source content 안의 required HTML table을 직접 읽어 열 제목 학생·1회·2회·3회·4회와 두 행 A·B의 점수 6,9,8,9 및 7,10,9,6을 확인했다. 외부 이미지 없이 embeddedTable이 문제의 필수 표현이다.",
+        "canonicalGap": false,
+        "foundationCandidate": false,
+        "nearestFallbackUsed": false,
+        "hold": false
+      },
+      "reviewEvidence": {
+        "decisionSteps": [
+          "문항의 embedded HTML table을 직접 읽고 A=(6,9,8,9), B=(7,10,9,6)을 전사했다.",
+          "A와 B의 평균을 각각 8로 계산했다.",
+          "A의 제곱편차 평균은 ((-2)^2+1^2+0^2+1^2)/4=3/2로 계산했다.",
+          "B의 제곱편차 평균은 ((-1)^2+2^2+1^2+(-2)^2)/4=5/2로 계산했다.",
+          "분산이 작은 A가 더 고르다는 결론과 source answer를 대조했고, table required 상태를 확인했다."
+        ],
+        "primaryReason": "문항의 최종 목표는 두 자료의 산포를 수치로 구하고 비교하는 것이며, 평균은 분산 계산을 위한 중간값이다. 따라서 표라는 표현이 아니라 L4-3.1.2.2 분산이 primary다.",
+        "rejectedAlternatives": [
+          {
+            "canonicalId": "L4-3.1.1.1",
+            "label": "평균·중앙값·최빈값",
+            "reason": "평균은 두 분산을 계산하기 위한 중간 단계이고, 대표값 자체를 답으로 요구하지 않는다."
+          },
+          {
+            "canonicalId": "L4-3.1.2.3",
+            "label": "표준편차",
+            "reason": "분산의 제곱근인 표준편차를 구하지 않고 제곱편차의 평균인 분산을 직접 구한다."
+          }
+        ],
+        "secondary": {
+          "canonicalIds": [
+            "L4-3.1.3.1"
+          ],
+          "labels": [
+            "평균과 산포도 비교"
+          ],
+          "reason": "두 학생의 분산을 비교하여 점수가 더 고른 학생을 설명하는 비교 판단이 보조적으로 포함된다."
+        },
+        "taxonomyReason": "M3-2의 통계-대푯값과 산포도-산포도 아래에 분산 L4가 직접 있으며, source solution의 제곱편차 평균 계산과 정확히 일치한다. 표는 representation context이고 primary를 정하지 않는다.",
+        "difficulty": {
+          "score": 3,
+          "reason": "두 자료의 평균·편차·제곱·평균을 각각 계산한 뒤 분산의 크기를 비교해야 하는 서술형 산포 문항이다."
+        },
+        "hold": false,
+        "foundationCandidate": false,
+        "conflict": false,
+        "sourceDefect": false,
+        "sourceDefectReason": null
+      }
+    },
+    {
+      "status": "B_DIRECT_FROZEN",
+      "sourceIndex": 4,
+      "questionUid": "qid_v1_33f0f4d5df9b5bb6fb96e9c88f84335aeaccc8a288c3846a716851082cabd8ea",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "sourceJsSha256": "dc8ddbf66b370dff9915d942c7010bfd7b4848301e8e0278e12bea94643ef0be",
+      "sourceFingerprint": "8abdd3efcd769f5234fb59c9afe968fdef57596908b0bd0ed383149f725bc75c",
+      "identityCheck": {
+        "status": "PASS",
+        "questionUidPresent": true,
+        "questionUidUniqueWithinShard": true,
+        "sourceArchiveFilePresent": true,
+        "sourceOrdinalMatchesSourceQuestionNo": true,
+        "sourceJsSha256MatchesBatch": true,
+        "sourceFingerprintMatchesBatch": true,
+        "sourceEvidenceComplete": true
+      },
+      "curriculumKey": "2015",
+      "sourceEvidence": {
+        "content": "다음은 $15$대의 차량이 브레이크를 밟았을 때, 브레이크를 밟기 전 속력과 멈출 때까지의 이동 거리, 즉 제동 거리 사이의 관계를 나타낸 산점도이다. 차량 속력과 제동 거리 사이의 상관관계를 말하고, 그 이유를 설명하시오. (3점)",
+        "choices": [],
+        "answer": "양의 상관관계",
+        "solution": "[키포인트] 산점도의 점들이 전체적으로 어느 방향으로 늘어서 있는지 확인한다.\n조건 정리: 가로축은 차량 속력, 세로축은 제동 거리이다.\n풀이 방향: 속력이 커질 때 제동 거리가 어떻게 변하는지 산점도 전체의 경향을 본다.\n정석 풀이: 산점도의 점들은 왼쪽 아래에서 오른쪽 위 방향으로 분포한다. 즉 차량 속력이 증가할수록 제동 거리도 대체로 증가하는 경향이 있다.\n따라서 차량 속력과 제동 거리 사이에는 양의 상관관계가 있다.",
+        "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q24.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/25_풍덕중_2학기_기말_중3_기출/q24.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        }
+      },
+      "canonicalDecision": {
+        "primaryCanonicalId": "L4-3.2.2.1",
+        "primaryCanonicalLabel": "양의 상관관계",
+        "supportingCanonicalIds": [
+          "L4-3.2.1.1"
+        ],
+        "supportingCanonicalLabels": [
+          "산점도 읽기"
+        ],
+        "decisionBasis": "독립적으로 q24 산점도를 읽으면 차량 속력이 커질수록 제동 거리도 대체로 커지는 왼쪽 아래에서 오른쪽 위의 경향이다. 산점도 읽기는 관찰 수단이고, question goal과 decisive conclusion은 양의 상관관계이므로 L4-3.2.2.1을 primary로 삼았다.",
+        "textualEvidence": "문항은 가로축 차량 속력과 세로축 제동 거리의 상관관계를 묻는다. q24.png에서 점들이 전체적으로 증가 방향으로 배열되어 차량 속력 증가에 따라 제동 거리가 증가하므로 답은 양의 상관관계이다.",
+        "visualEvidence": "batch의 sourceEvidence.visualDependency를 직접 읽어 q24.png가 required=true이고 declared/exists/positiveBytes/linkedToSource가 모두 true임을 확인했다. source solution이 기술한 산점도 전체 경향은 왼쪽 아래에서 오른쪽 위이며, shard 범위 제한에 따라 source asset bytes 자체는 열거나 처리하지 않았다.",
+        "canonicalGap": false,
+        "foundationCandidate": false,
+        "nearestFallbackUsed": false,
+        "hold": false
+      },
+      "reviewEvidence": {
+        "decisionSteps": [
+          "원문과 batch의 visual dependency를 직접 읽어 q24가 차량 속력-제동 거리 산점도 의존 문항임을 확인했다.",
+          "독립 개념 점검으로 속력이 증가할수록 제동 거리가 증가하는 경향을 양의 상관관계로 판정했고, source solution의 왼쪽 아래→오른쪽 위 기술과 일치시켰다.",
+          "판정과 source answer를 대조하고, 산점도 읽기는 판단을 위한 representation context이며 primary는 양의 상관관계임을 기록했다. source asset bytes는 범위 제한상 열지 않았다."
+        ],
+        "primaryReason": "산점도는 방향을 관찰하는 표현 수단이고, 정답을 결정하는 수학적 개념은 두 변량이 함께 증가하는 양의 상관관계다.",
+        "rejectedAlternatives": [
+          {
+            "canonicalId": "L4-3.2.2.2",
+            "label": "음의 상관관계",
+            "reason": "점들이 오른쪽으로 갈수록 아래로 내려가지 않고 전체적으로 상승하므로 음의 상관관계가 아니다."
+          },
+          {
+            "canonicalId": "L4-3.2.2.3",
+            "label": "상관관계가 약한 경우",
+            "reason": "점의 산포가 있더라도 전체 증가 경향이 분명하고, 문항은 무방향·약한 상관을 묻지 않는다."
+          }
+        ],
+        "secondary": {
+          "canonicalIds": [
+            "L4-3.2.1.1"
+          ],
+          "labels": [
+            "산점도 읽기"
+          ],
+          "reason": "산점도의 전체 방향을 읽는 과정이 양의 상관관계 판정의 보조 근거다."
+        },
+        "taxonomyReason": "M3-2의 통계-상관관계-상관관계 아래 양의 상관관계 L4가 문항의 goal과 exact match다. 산점도 읽기는 supporting representation context로만 기록하고 primary를 바꾸지 않았다.",
+        "difficulty": {
+          "score": 2,
+          "reason": "축의 의미를 확인하고 산점도의 전체 방향을 읽어 상관 방향을 말하는 직접 해석 문항이다."
+        },
+        "hold": false,
+        "foundationCandidate": false,
+        "conflict": false,
+        "sourceDefect": false,
+        "sourceDefectReason": null
+      }
+    },
+    {
+      "arrayIndex": 5,
+      "sourceArrayIndex": 5,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_6a58d34800f401f5f6e01e6944d77daba2a98d963f47a538cd09dedea06b9c7d",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "8beb5dd82f722ac46fb4b688d0587dc09e837dc00560b46869a0552d5366735e",
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      },
+      "sourceEvidenceRead": {
+        "fieldsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "image",
+          "visualDependency",
+          "sharedMaterialDependency"
+        ],
+        "contentAnchor": "∠C=90°인 직각삼각형 ABC에서 cos A=3/4, AB=8 cm일 때 tan A의 값은?",
+        "choices": [
+          "√7/4",
+          "3√7/7",
+          "3/4",
+          "√7/3",
+          "4√7"
+        ],
+        "sourceAnswer": "④",
+        "sourceSolutionConclusion": "tan A=√7/3이므로 정답은 ④",
+        "solutionReadAndChecked": true,
+        "contentChoicesAnswerSolutionComplete": true,
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q08.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "CANONICAL_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.1",
+        "primaryCanonicalLabel": "직각삼각형의 변",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.1",
+            "label": "직각삼각형의 변"
+          }
+        ],
+        "representationContextOnly": "cosine ratio to side lengths, then tangent ratio",
+        "nearestFallbackUsed": false,
+        "evidenceDeficiency": false,
+        "hold": false
+      },
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "cos A=AC/AB=3/4 and AB=8 give AC=6. Then BC=√(8²−6²)=2√7, so tan A=BC/AC=2√7/6=√7/3.",
+        "recomputedAnswer": "④",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① √7/4 ≠ √7/3",
+          "② 3√7/7 ≠ √7/3",
+          "③ 3/4 ≠ √7/3",
+          "④ √7/3 = √7/3",
+          "⑤ 4√7 ≠ √7/3"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the source solution's AC=6, BC=2√7, and tan A=√7/3 agree with the independent derivation.",
+        "visualRequirementIndependentAudit": "PASS: the source manifest declares a required linked image with positive bytes.",
+        "evidenceSufficient": true,
+        "holdReason": null
+      }
+    },
+    {
+      "arrayIndex": 6,
+      "sourceArrayIndex": 6,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_fe451846427d635ab8dc8b4d529a24bad3ada9271b20cdc4b98427fbb5c9584a",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "c64d00e6e8cc354ffad4bc86831c012b7403c55ff656718e0a2e22321e029c78",
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      },
+      "sourceEvidenceRead": {
+        "fieldsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "image",
+          "visualDependency",
+          "sharedMaterialDependency"
+        ],
+        "contentAnchor": "∠C=90°, BC=6, AC=3인 직각삼각형 ABC에서 D는 BC 위에 있고 DE⊥AB이다. ∠BDE=x일 때 sin x tan x의 값은?",
+        "choices": [
+          "2√5/5",
+          "4√5/5",
+          "√5",
+          "1/2",
+          "2"
+        ],
+        "sourceAnswer": "②",
+        "sourceSolutionConclusion": "x=∠A, sin x tan x=4√5/5이므로 정답은 ②",
+        "solutionReadAndChecked": true,
+        "contentChoicesAnswerSolutionComplete": true,
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q09.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "CANONICAL_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.1",
+        "primaryCanonicalLabel": "직각삼각형의 변",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.1",
+            "label": "직각삼각형의 변"
+          }
+        ],
+        "representationContextOnly": "perpendicular construction creates a second right triangle with a corresponding acute angle",
+        "nearestFallbackUsed": false,
+        "evidenceDeficiency": false,
+        "hold": false
+      },
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "In right triangle BDE, x+B=90°, while in ABC, A+B=90°, so x=A. AB=√(6²+3²)=3√5, hence sin x=6/(3√5)=2√5/5 and tan x=6/3=2. Their product is 4√5/5.",
+        "recomputedAnswer": "②",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① 2√5/5 is sin x alone, not the product",
+          "② 4√5/5 equals sin x tan x",
+          "③ √5 ≠ 4√5/5",
+          "④ 1/2 ≠ 4√5/5",
+          "⑤ 2 is tan x alone, not the product"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the angle correspondence, AB=3√5, sin x=2√5/5, tan x=2, and product agree independently.",
+        "visualRequirementIndependentAudit": "PASS: the source manifest declares a required linked image with positive bytes.",
+        "evidenceSufficient": true,
+        "holdReason": null
+      }
+    },
+    {
+      "arrayIndex": 7,
+      "sourceArrayIndex": 7,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_f75a27ad85b4d180da6c0214a3f5342ab91121d55466b03cddafcc1f70ec6b35",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "c9d8c5c63245986036f6a5c1364b4fadb38eb9d73fe4c59c426f5022d282429b",
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      },
+      "sourceEvidenceRead": {
+        "fieldsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "image",
+          "visualDependency",
+          "sharedMaterialDependency"
+        ],
+        "contentAnchor": "AC=6, BC=12, ∠C=90°인 직각삼각형 ABC에서 CD⊥AB이고 ∠ACD=x, ∠DCB=y일 때 sin x+sin y의 값은?",
+        "choices": [
+          "√5/5",
+          "2√5/5",
+          "3√5/5",
+          "4√5/5",
+          "√5"
+        ],
+        "sourceAnswer": "③",
+        "sourceSolutionConclusion": "x=∠B, y=∠A이고 sin x+sin y=3√5/5이므로 정답은 ③",
+        "solutionReadAndChecked": true,
+        "contentChoicesAnswerSolutionComplete": true,
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q10.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "CANONICAL_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.1",
+        "primaryCanonicalLabel": "직각삼각형의 변",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.1",
+            "label": "직각삼각형의 변"
+          }
+        ],
+        "representationContextOnly": "altitude to the hypotenuse and corresponding-angle transfer",
+        "nearestFallbackUsed": false,
+        "evidenceDeficiency": false,
+        "hold": false
+      },
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "The altitude gives x=B and y=A. AB=√(6²+12²)=6√5. Therefore sin x=AC/AB=6/(6√5)=√5/5 and sin y=BC/AB=12/(6√5)=2√5/5. The sum is 3√5/5.",
+        "recomputedAnswer": "③",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① √5/5 is sin x alone",
+          "② 2√5/5 is sin y alone",
+          "③ 3√5/5 equals the sum",
+          "④ 4√5/5 is too large",
+          "⑤ √5 is too large"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the altitude angle correspondence and both sine values agree with the independent recomputation.",
+        "visualRequirementIndependentAudit": "PASS: the source manifest declares a required linked image with positive bytes.",
+        "evidenceSufficient": true,
+        "holdReason": null
+      }
+    },
+    {
+      "arrayIndex": 8,
+      "sourceArrayIndex": 8,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_92a45dfe873ad5a9a859e2df24653790be358e87b31b1fdf39353026ee87cbe3",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "c17c83b89b1c81988c23646ddf5b5803c60b350471b8c3e6f03d31d85ba0e873",
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceJsSha256Bound": false,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      },
+      "sourceEvidenceRead": {
+        "fieldsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "image",
+          "visualDependency",
+          "sharedMaterialDependency"
+        ],
+        "contentAnchor": "다음 중 계산의 결과가 옳은 것은?",
+        "choices": [
+          "cos60°−sin30° cos45°=(2−√2)/4",
+          "cos45°−sin30°+tan45°=(2+√2)/4",
+          "sin60°+cos30°=tan30°",
+          "tan0°+sin90°=0",
+          "(cos0° sin0°)+(cos90° sin90°)=2"
+        ],
+        "sourceAnswer": "①",
+        "sourceSolutionConclusion": "①만 좌변과 우변이 같으므로 정답은 ①",
+        "solutionReadAndChecked": true,
+        "contentChoicesAnswerSolutionComplete": true,
+        "requiredVisual": {
+          "required": false,
+          "sourceImagePath": "",
+          "manifestDeclared": false,
+          "manifestPositiveBytes": false,
+          "manifestLinkedToSource": false,
+          "evidenceStatus": "NOT_REQUIRED"
+        }
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "CANONICAL_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.2.2",
+        "primaryCanonicalLabel": "특수각 계산",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.2",
+            "label": "특수각의 삼각비"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.2.2",
+            "label": "특수각 계산"
+          }
+        ],
+        "representationContextOnly": "five-expression correctness comparison",
+        "nearestFallbackUsed": false,
+        "evidenceDeficiency": false,
+        "hold": false
+      },
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "① gives 1/2−(1/2)(√2/2)=(2−√2)/4. For ② the left side is (√2+1)/2, not (2+√2)/4. For ③ the left side is √3 while tan30°=√3/3. For ④ the left side is 1, and for ⑤ the left side is 0. Thus only ① is correct.",
+        "recomputedAnswer": "①",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① true: cos60°−sin30° cos45°=(2−√2)/4",
+          "② false: left side=(√2+1)/2",
+          "③ false: left side=√3, right side=√3/3",
+          "④ false: left side=1",
+          "⑤ false: left side=0"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: all five special-angle evaluations were recomputed and only choice ① matches.",
+        "visualRequirementIndependentAudit": "PASS: the source manifest explicitly marks visual dependency not required.",
+        "evidenceSufficient": true,
+        "holdReason": null
+      }
+    },
+    {
+      "arrayIndex": 9,
+      "sourceArrayIndex": 9,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_410374f66b4e556a33930c31fb5f22c87feab975a7fdf6b1a86c11d67e99dcee",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "1ffcf02bc92c265076be9ffe7060e382483428f9002934b51802b256dbceec5b",
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      },
+      "sourceEvidenceRead": {
+        "fieldsRead": [
+          "content",
+          "choices",
+          "answer",
+          "solution",
+          "image",
+          "visualDependency",
+          "sharedMaterialDependency"
+        ],
+        "contentAnchor": "AD⊥BC, ∠ABD=45°, ∠ACD=30°, AD=5 cm인 △ABC에 대하여 옳은 것을 모두 고른 것은?",
+        "choices": [
+          "ㄱ, ㄴ",
+          "ㄱ, ㄹ",
+          "ㄴ, ㄷ",
+          "ㄴ, ㄹ",
+          "ㄷ, ㄹ"
+        ],
+        "sourceAnswer": "①",
+        "sourceSolutionConclusion": "ㄱ과 ㄴ만 옳으므로 정답은 ①",
+        "solutionReadAndChecked": true,
+        "contentChoicesAnswerSolutionComplete": true,
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q12.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "CANONICAL_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.2",
+        "primaryCanonicalLabel": "각을 이용한 길이",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.2",
+            "label": "각을 이용한 길이"
+          }
+        ],
+        "representationContextOnly": "multi-statement truth evaluation after two right-triangle length calculations",
+        "nearestFallbackUsed": false,
+        "evidenceDeficiency": false,
+        "hold": false
+      },
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "Triangle ABD is right at D with angle B=45°, so BD=AD=5 and ㄱ is true. In right triangle ACD, tan30°=AD/DC gives DC=5√3, hence BC=5+5√3 and ㄴ is true. Also sin30°=AD/AC gives AC=10, not 10√3, so ㄷ is false. The area is 1/2·BC·AD=25(1+√3)/2, not 25√3/2, so ㄹ is false. Therefore only ㄱ and ㄴ are true.",
+        "recomputedAnswer": "①",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① true: ㄱ and ㄴ only",
+          "② false: ㄹ is false",
+          "③ false: ㄷ is false",
+          "④ false: ㄹ is false",
+          "⑤ false: ㄷ and ㄹ are false"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: BD=5, DC=5√3, AC=10, and the area check independently confirm that only ㄱ·ㄴ are correct.",
+        "visualRequirementIndependentAudit": "PASS: the source manifest declares a required linked image with positive bytes.",
+        "evidenceSufficient": true,
+        "holdReason": null
+      }
+    },
+    {
+      "arrayIndex": 10,
+      "sourceArrayIndex": 10,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_1e0b251bc85954b528ca320dc0b7f6c9e8a755fac3cde5fbb427cf911dc85677",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "10de78aa6ef6878f9cd1a23a811bb8a60e6ad5b62325ee73c1786a550076c866",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "10de78aa6ef6878f9cd1a23a811bb8a60e6ad5b62325ee73c1786a550076c866",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "반지름의 길이가 2인 사분원에서 ∠CAB=x일 때 DP의 길이를 나타낸 것은? (0°<x<90°)",
+        "choices": [
+          "2 sin x",
+          "2 tan x",
+          "1/2 cos x",
+          "1/2 sin x",
+          "1/2 tan x"
+        ],
+        "sourceAnswer": "②",
+        "sourceSolutionConclusion": "직각삼각형 ADP에서 AP=2가 인접변이고 DP가 맞은편 변이므로 DP=2 tan x, 정답은 ②",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q13.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 2,
+      "difficultyReason": "반지름을 한 변으로 하는 직각삼각형에서 탄젠트 관계를 한 번 적용하는 직접형이다. 그림의 일직선·수직 조건을 읽는 단계가 필요하지만 계산은 단순하다.",
+      "primaryCanonicalTag": "L4-1.1.3.2",
+      "primaryCanonicalLabel": "각을 이용한 길이",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.2",
+        "primaryCanonicalLabel": "각을 이용한 길이",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.2",
+            "label": "각을 이용한 길이"
+          }
+        ],
+        "representationContextOnly": "quarter-circle diagram interpreted as right triangle ADP",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "A,C,D are collinear and DP is perpendicular to AP, so triangle ADP is right at P. Since angle DAP=x, tan x=DP/AP=DP/2, hence DP=2 tan x.",
+        "recomputedAnswer": "②",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① 2 sin x does not equal the opposite-over-adjacent relation",
+          "② 2 tan x equals DP",
+          "③ 1/2 cos x is not the required length",
+          "④ 1/2 sin x is not the required length",
+          "⑤ 1/2 tan x uses the radius in the wrong direction"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the source conclusion follows from an independently reconstructed right triangle and the tangent definition.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 11,
+      "sourceArrayIndex": 11,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_0c96d768aacaee8c4b1b0d4053909d4267fd30875f566520e7e0dfcf6c638a60",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "42b3a6deee2533d3007a679d712fbc8ae297ecbebec3fae9e8b5653662a9e099",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "42b3a6deee2533d3007a679d712fbc8ae297ecbebec3fae9e8b5653662a9e099",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "삼각형의 세 내각의 비가 2:3:7이고 가장 작은 각이 A일 때 (tan A cos A+sin A)/cos A의 값은?",
+        "choices": [
+          "√3/3",
+          "√3/2",
+          "1",
+          "2√3/3",
+          "4√3/3"
+        ],
+        "sourceAnswer": "④",
+        "sourceSolutionConclusion": "A=30°이고 tan A cos A=sin A이므로 식은 2 tan30°=2√3/3, 정답은 ④",
+        "requiredVisual": {
+          "required": false,
+          "sourceImagePath": "",
+          "manifestDeclared": false,
+          "manifestPositiveBytes": false,
+          "manifestLinkedToSource": false,
+          "evidenceStatus": "NOT_REQUIRED"
+        }
+      },
+      "difficulty": 3,
+      "difficultyReason": "각의 비에서 30°를 먼저 도출한 뒤 삼각비의 관계식으로 식을 정리하고 특수각 값을 적용하는 2단계 계산이다.",
+      "primaryCanonicalTag": "L4-1.1.2.2",
+      "primaryCanonicalLabel": "특수각 계산",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.2.2",
+        "primaryCanonicalLabel": "특수각 계산",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.2",
+            "label": "특수각의 삼각비"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.2.2",
+            "label": "특수각 계산"
+          }
+        ],
+        "representationContextOnly": "single algebraic expression after angle-ratio reduction",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "The angle ratio sum is 12, so A=180°×2/12=30°. Since tan A cos A=sin A, the expression is 2 sin A/cos A=2 tan A=2 tan30°=2√3/3.",
+        "recomputedAnswer": "④",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① √3/3 is half of the target",
+          "② √3/2 does not equal 2√3/3",
+          "③ 1 does not equal 2√3/3",
+          "④ 2√3/3 equals the independently computed value",
+          "⑤ 4√3/3 is twice the target"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the angle-ratio reduction, identity, and special-angle evaluation independently reproduce choice ④.",
+        "visualRequirementIndependentAudit": "PASS: the source manifest explicitly marks visual dependency not required.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 12,
+      "sourceArrayIndex": 12,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_fbdeee5711b3cf1e18ac2cad7191837b07e015d3edd55af92bda1fc2b73c0c8c",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "c20dfe85b0213dcdb12f287bf653399cf6a10752bc4a8b2da7518623c70825ef",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "c20dfe85b0213dcdb12f287bf653399cf6a10752bc4a8b2da7518623c70825ef",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "∠C=90°, BC=12, ∠ABC=36°인 직각삼각형 ABC에서 AB=x, AC=y일 때 x,y를 나타내는 식은?",
+        "choices": [
+          "x=12 sin36°, y=12/cos36°",
+          "x=12/sin36°, y=12 cos36°",
+          "x=12 cos36°, y=12 sin36°",
+          "x=12/cos36°, y=12/tan36°",
+          "x=12/cos36°, y=12 tan36°"
+        ],
+        "sourceAnswer": "⑤",
+        "sourceSolutionConclusion": "cos36°=12/x 및 tan36°=y/12이므로 x=12/cos36°, y=12 tan36°, 정답은 ⑤",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q15.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 2,
+      "difficultyReason": "주어진 각을 기준으로 코사인과 탄젠트 비를 각각 세워 두 변을 표현하는 직접형이다. 별도의 수치 계산이나 경우 분기가 없다.",
+      "primaryCanonicalTag": "L4-1.1.3.2",
+      "primaryCanonicalLabel": "각을 이용한 길이",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.2",
+        "primaryCanonicalLabel": "각을 이용한 길이",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.2",
+            "label": "각을 이용한 길이"
+          }
+        ],
+        "representationContextOnly": "two-variable symbolic side representation in a right-triangle diagram",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "Relative to angle B, BC=12 is the adjacent leg and AB=x is the hypotenuse, so cos36°=12/x and x=12/cos36°. AC=y is the opposite leg, so tan36°=y/12 and y=12 tan36°.",
+        "recomputedAnswer": "⑤",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① x uses sine for the hypotenuse and y uses the wrong reciprocal relation",
+          "② x uses the wrong reciprocal and y uses cosine",
+          "③ x and y swap cosine/sine roles",
+          "④ x is correct but y=12/tan36° is incorrect",
+          "⑤ both x=12/cos36° and y=12 tan36° are correct"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: both symbolic side equations independently reproduce choice ⑤.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 13,
+      "sourceArrayIndex": 13,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_ed8c659723c152cd673b945ea1ee3f6cd440496d8b5d45972715b8817a436534",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "34c04d3b8bde5543eb6912d8fe50d7c4b077519633521ed966e30104f51a37bf",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "34c04d3b8bde5543eb6912d8fe50d7c4b077519633521ed966e30104f51a37bf",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "∠C=90°인 직각삼각형 ABC에서 ∠A와 AB=c를 알고 있을 때 옳은 명제만 모두 고르는 문제",
+        "choices": [
+          "ㄱ",
+          "ㄷ",
+          "ㄱ, ㄴ",
+          "ㄴ, ㄷ",
+          "ㄷ, ㄹ"
+        ],
+        "sourceAnswer": "②",
+        "sourceSolutionConclusion": "AC=c cos A, BC=c sin A이므로 ㄱ·ㄴ·ㄹ은 거짓이고 둘레 식 ㄷ만 참, 정답은 ②",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q16.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 3,
+      "difficultyReason": "빗변 c를 기준으로 두 직각변을 올바르게 표현한 뒤 네 명제를 각각 판정해야 한다. 특히 넓이의 c² 항까지 확인해야 하므로 단순 단일식보다 한 단계 높다.",
+      "primaryCanonicalTag": "L4-1.1.3.1",
+      "primaryCanonicalLabel": "직각삼각형의 변",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.1.3.1",
+        "primaryCanonicalLabel": "직각삼각형의 변",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.1.3",
+            "label": "삼각비와 길이"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.1.3.1",
+            "label": "직각삼각형의 변"
+          }
+        ],
+        "representationContextOnly": "multi-statement truth evaluation",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "Because AB=c is the hypotenuse, AC=c cos A and BC=c sin A. Thus ㄱ AC=c sin A is false and ㄴ BC=c tan A is false. The perimeter is c+c sin A+c cos A, so ㄷ is true. The area is 1/2·c cos A·c sin A=1/2 c² sin A cos A, not 1/2 c sin A, so ㄹ is false. Only ㄷ is true.",
+        "recomputedAnswer": "②",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① false: ㄱ is false",
+          "② true: ㄷ only",
+          "③ false: ㄱ and ㄴ are false",
+          "④ false: ㄴ is false",
+          "⑤ false: ㄹ is false"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: all four statements were checked from the side formulas and the area dimension, reproducing choice ②.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 14,
+      "sourceArrayIndex": 14,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_42d1f2f9e596cee800e9e27d3cf64d7b72aa538a304c27bcabd0c2ab55c8cb65",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "d3ff27f6deb4201fd8f30e2d36c67d3f33cde38e45ab8b686252cb83b99204c1",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "d3ff27f6deb4201fd8f30e2d36c67d3f33cde38e45ab8b686252cb83b99204c1",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "그림의 두 삼각형 ㄱ, ㄴ의 넓이를 옳게 연결한 것은?",
+        "choices": [
+          "ㄱ: 15/2, ㄴ: 3√2/2",
+          "ㄱ: 15/2, ㄴ: 3",
+          "ㄱ: 15√3/2, ㄴ: 3/2",
+          "ㄱ: 15√3/2, ㄴ: 3√2/2",
+          "ㄱ: 15√3/2, ㄴ: 3"
+        ],
+        "sourceAnswer": "⑤",
+        "sourceSolutionConclusion": "ㄱ의 넓이는 15√3/2, ㄴ의 넓이는 3이므로 정답은 ⑤",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q17.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 3,
+      "difficultyReason": "두 삼각형에 넓이 공식을 각각 적용하고 60°와 135°의 사인값을 처리해야 한다. 계산 구조는 직접적이지만 둔각 135°의 보조각 처리가 추가된다.",
+      "primaryCanonicalTag": "L4-1.2.1.1",
+      "primaryCanonicalLabel": "삼각형의 높이·넓이",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_STRATEGY",
+        "primaryCanonicalTag": "L4-1.2.1.1",
+        "primaryCanonicalLabel": "삼각형의 높이·넓이",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.2.1",
+            "label": "평면도형"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.2.1.1",
+            "label": "삼각형의 높이·넓이"
+          }
+        ],
+        "representationContextOnly": "diagram-based comparison of two triangle areas",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "For triangle ㄱ, area=1/2·5·6·sin60°=15√3/2. For triangle ㄴ, area=1/2·3·2√2·sin135°=3√2·(√2/2)=3. Therefore the ordered pair is (15√3/2, 3).",
+        "recomputedAnswer": "⑤",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① ㄱ is incorrect and ㄴ is incorrect",
+          "② ㄱ is incorrect",
+          "③ ㄴ is incorrect",
+          "④ ㄴ is incorrect",
+          "⑤ both ㄱ=15√3/2 and ㄴ=3 are correct"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: both triangle areas were recomputed from the supplied side lengths and included angles, reproducing choice ⑤.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 15,
+      "sourceArrayIndex": 15,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_92dd1bbb6dcd0eaadc7c0cf460b25e0408d219e0256beeb50a91840c087426bb",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "5f6a0c4b40f51f27a0e93a9031fd6d9898ea65bc46b8aed4ef67e34ce44b7e44",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "5f6a0c4b40f51f27a0e93a9031fd6d9898ea65bc46b8aed4ef67e34ce44b7e44",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "A에서 150 m 떨어진 C에서 A와 B를 바라본 각이 30°이고 AB⊥AC일 때 A와 B 사이의 거리",
+        "choices": [
+          "15√2",
+          "30√3",
+          "50√3",
+          "75",
+          "75√2"
+        ],
+        "sourceAnswer": "③",
+        "sourceSolutionConclusion": "tan30°=AB/150이므로 AB=50√3 m, 정답은 ③",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q18.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 2,
+      "difficultyReason": "직각삼각형에서 수평거리와 각이 주어져 탄젠트를 한 번 적용하는 측정형이다. 도형 조건 해석은 필요하지만 계산은 단순하다.",
+      "primaryCanonicalTag": "L4-1.2.2.1",
+      "primaryCanonicalLabel": "높이·거리",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_CONCEPT_STRATEGY",
+        "primaryCanonicalTag": "L4-1.2.2.1",
+        "primaryCanonicalLabel": "높이·거리",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.2.2",
+            "label": "측정 문제"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.2.2.1",
+            "label": "높이·거리"
+          }
+        ],
+        "representationContextOnly": "distance-measurement diagram represented as a right triangle",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "AC=150 m is adjacent to the 30° angle and AB is opposite. Thus tan30°=AB/AC, so AB=150·√3/3=50√3 m.",
+        "recomputedAnswer": "③",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① 15√2 is not 50√3",
+          "② 30√3 is not 50√3",
+          "③ 50√3 equals the independently computed distance",
+          "④ 75 is not 50√3",
+          "⑤ 75√2 is not 50√3"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the tangent computation independently reproduces choice ③.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 16,
+      "sourceArrayIndex": 16,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_a4106036235b3eef539123ae337e7b98be5da922e6fb49e50d3cee85f2ee45d6",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "2767f3fc04265801f800121c8479e65107627bbb42195020e79effd468c4a2a2",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "2767f3fc04265801f800121c8479e65107627bbb42195020e79effd468c4a2a2",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "평행사변형의 두 대각선 교점 O에서 BO=10 cm, CO=8 cm, 대각선 사이각 150°일 때 넓이",
+        "choices": [
+          "20",
+          "40",
+          "80",
+          "90",
+          "100"
+        ],
+        "sourceAnswer": "③",
+        "sourceSolutionConclusion": "BD=20, AC=16이고 넓이=1/2·20·16·sin150°=80 cm², 정답은 ③",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q19.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 3,
+      "difficultyReason": "대각선의 절반 길이에서 전체 대각선을 복원하고 둔각의 사인값을 사용해 넓이를 계산해야 하는 2단계 도형 넓이 문제다.",
+      "primaryCanonicalTag": "L4-1.2.1.2",
+      "primaryCanonicalLabel": "다각형의 길이·넓이",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_CONCEPT_STRATEGY",
+        "primaryCanonicalTag": "L4-1.2.1.2",
+        "primaryCanonicalLabel": "다각형의 길이·넓이",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.2.1",
+            "label": "평면도형"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.2.1.2",
+            "label": "다각형의 길이·넓이"
+          }
+        ],
+        "representationContextOnly": "parallelogram area from diagonals and their included angle",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "Parallelogram diagonals bisect each other, so BD=2·10=20 and AC=2·8=16. Its area is 1/2·BD·AC·sin150°=1/2·20·16·1/2=80 cm².",
+        "recomputedAnswer": "③",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① 20 is too small",
+          "② 40 is half of the correct area",
+          "③ 80 equals the independently computed area",
+          "④ 90 is not the computed area",
+          "⑤ 100 is not the computed area"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: diagonal bisection and the diagonal-area formula independently reproduce choice ③.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 17,
+      "sourceArrayIndex": 17,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_36d02c4141c7f8dcbd81037a782993cc17f31e098c85ebde395103d04df7c0e7",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "3a0705bd22b9dcf8d9915ce948e8b5a750801ce40704e190abccde2098fa45cd",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "3a0705bd22b9dcf8d9915ce948e8b5a750801ce40704e190abccde2098fa45cd",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "대각선 사이각 60°, AC=10 cm, BD=x cm, 사각형 넓이 50√3 cm²일 때 x",
+        "choices": [
+          "√3",
+          "5√3",
+          "10",
+          "20",
+          "24"
+        ],
+        "sourceAnswer": "④",
+        "sourceSolutionConclusion": "50√3=1/2·10·x·sin60°이므로 x=20, 정답은 ④",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q20.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 2,
+      "difficultyReason": "두 대각선과 사이각으로 세운 넓이 공식에 값을 대입해 일차방정식을 한 번 푸는 직접형이다.",
+      "primaryCanonicalTag": "L4-1.2.1.2",
+      "primaryCanonicalLabel": "다각형의 길이·넓이",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_CONCEPT_STRATEGY",
+        "primaryCanonicalTag": "L4-1.2.1.2",
+        "primaryCanonicalLabel": "다각형의 길이·넓이",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.2.1",
+            "label": "평면도형"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.2.1.2",
+            "label": "다각형의 길이·넓이"
+          }
+        ],
+        "representationContextOnly": "quadrilateral area formula converted to a one-variable equation",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "For a quadrilateral, area=1/2·AC·BD·sin60°=1/2·10·x·√3/2=(5√3/2)x. Equating this to 50√3 gives x=20.",
+        "recomputedAnswer": "④",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① √3 does not satisfy the area equation",
+          "② 5√3 does not satisfy the area equation",
+          "③ 10 gives area 25√3",
+          "④ 20 gives area 50√3",
+          "⑤ 24 gives an area larger than 50√3"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the diagonal-area equation independently reproduces choice ④.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 18,
+      "sourceArrayIndex": 18,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_b87d57ef04701290854e403f2ee6b9f5d7ed7621be3aec2619db7528cc876b97",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "edb08f07620b27f7455ed92f93ede207d2a4027ce4e4b2df081615387295e156",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "edb08f07620b27f7455ed92f93ede207d2a4027ce4e4b2df081615387295e156",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "건물에서 10 m 떨어진 곳의 올려본각 52°, 눈높이 1.7 m, tan52°=1.28일 때 건물 높이",
+        "choices": [
+          "6.2",
+          "7.2",
+          "9.1",
+          "12.8",
+          "14.5"
+        ],
+        "sourceAnswer": "⑤",
+        "sourceSolutionConclusion": "눈높이 위 높이=10·1.28=12.8 m, 전체 건물 높이=12.8+1.7=14.5 m, 정답은 ⑤",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q21.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 2,
+      "difficultyReason": "주어진 근삿값 tan52°를 수평거리와 곱한 뒤 눈높이를 더하는 직접적인 높이 측정 문제다.",
+      "primaryCanonicalTag": "L4-1.2.2.1",
+      "primaryCanonicalLabel": "높이·거리",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_CONCEPT_STRATEGY",
+        "primaryCanonicalTag": "L4-1.2.2.1",
+        "primaryCanonicalLabel": "높이·거리",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.2.2",
+            "label": "측정 문제"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.2.2.1",
+            "label": "높이·거리"
+          }
+        ],
+        "representationContextOnly": "building-height measurement with eye-height adjustment",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "The height above eye level is 10·tan52°=10·1.28=12.8 m. Adding the eye height gives 12.8+1.7=14.5 m.",
+        "recomputedAnswer": "⑤",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① 6.2 is not the total height",
+          "② 7.2 is not the total height",
+          "③ 9.1 is not the total height",
+          "④ 12.8 omits the eye height",
+          "⑤ 14.5 includes both the elevated segment and eye height"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the tangent estimate and eye-height adjustment independently reproduce choice ⑤.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    },
+    {
+      "arrayIndex": 19,
+      "sourceArrayIndex": 19,
+      "status": "B_DIRECT_FROZEN",
+      "questionUid": "qid_v1_b2459b7bdd888ac20deb5238711cdeab16bff250a9e5f9b580e615c38b2728a3",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+      "sourceFingerprint": "aface8e373e025a31e0d7a66ec367d1272be9a34cb68c3079c9d0027b2c686ce",
+      "source": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceJsSha256": "6c29fa09015b056e7c40e088473e50f890adee12c4f655deb82c1aff24104db5",
+        "sourceFingerprint": "aface8e373e025a31e0d7a66ec367d1272be9a34cb68c3079c9d0027b2c686ce",
+        "contentRead": true,
+        "choicesRead": true,
+        "answerRead": true,
+        "solutionRead": true,
+        "requiredVisualRead": true,
+        "contentAnchor": "한 변 3 cm인 정사각형을 꼭짓점 A 중심으로 30° 회전시켰을 때 두 정사각형이 겹치는 부분의 넓이",
+        "choices": [
+          "√2/2",
+          "√2",
+          "3√3/2",
+          "3√3",
+          "6√3"
+        ],
+        "sourceAnswer": "④",
+        "sourceSolutionConclusion": "겹치는 사각형을 두 삼각형으로 나누어 넓이를 합하면 3√3 cm², 정답은 ④",
+        "requiredVisual": {
+          "required": true,
+          "sourceImagePath": "assets/images/23_동산중_2학기_중간_중3_수학/q22.png",
+          "manifestDeclared": true,
+          "manifestPositiveBytes": true,
+          "manifestLinkedToSource": true,
+          "evidenceStatus": "PASS"
+        }
+      },
+      "difficulty": 4,
+      "difficultyReason": "회전된 두 정사각형의 겹친 영역을 도형으로 해석하고 교점을 기준으로 보조선을 사용해 두 삼각형 넓이로 분해해야 한다. 30°·60°의 삼각비와 두 영역의 합산이 함께 필요하다.",
+      "primaryCanonicalTag": "L4-1.2.3.1",
+      "primaryCanonicalLabel": "보조선 활용",
+      "taxonomy": {
+        "curriculum": "2015",
+        "level": "middle",
+        "scope": "M3-2",
+        "primaryBasis": "DECISIVE_CONCEPT_STRATEGY",
+        "primaryCanonicalTag": "L4-1.2.3.1",
+        "primaryCanonicalLabel": "보조선 활용",
+        "canonicalPath": [
+          {
+            "level": "L1",
+            "key": "L1-1",
+            "label": "삼각비"
+          },
+          {
+            "level": "L2",
+            "key": "L2-1.2",
+            "label": "삼각비의 활용"
+          },
+          {
+            "level": "L3",
+            "key": "L3-1.2.3",
+            "label": "복합도형"
+          },
+          {
+            "level": "L4",
+            "key": "L4-1.2.3.1",
+            "label": "보조선 활용"
+          }
+        ],
+        "representationContextOnly": "overlapping rotated-square region represented as two triangles",
+        "nearestFallbackUsed": false
+      },
+      "canonicalTagging": {
+        "status": "FOUNDATION_CANDIDATE",
+        "canonicalGapDisposition": "EVIDENCE_SUFFICIENT_GAP_FOUNDATION_CANDIDATE",
+        "taxonomyNodeStatus": "CANONICAL_DRAFT",
+        "evidenceDeficiency": false
+      },
+      "hold": false,
+      "holdStatus": "NOT_HELD",
+      "holdReason": null,
+      "foundation": true,
+      "foundationStatus": "FOUNDATION_CANDIDATE",
+      "conflict": false,
+      "conflictStatus": "NONE",
+      "conflictReason": null,
+      "independentEvidence": {
+        "solveMode": "BLIND_RECOMPUTATION_FROM_SOURCE_FIELDS",
+        "derivation": "Let X be the intersection of the original top side and the rotated side. The height of B′ above AD is 3 sin30°=3/2 and its projection along AD is 3 cos30°=3√3/2. Since B′C′ makes 60° with the top side, B′X horizontal distance=(3/2)/tan60°=√3/2, so DX=√3. Thus area(ADB′)=1/2·3·(3/2)=9√3/4 and area(DB′X)=1/2·√3·(3/2)=3√3/4. Their sum is 3√3.",
+        "recomputedAnswer": "④",
+        "answerAgreement": true,
+        "choiceAudit": [
+          "① √2/2 is not the overlap area",
+          "② √2 is not the overlap area",
+          "③ 3√3/2 is half of the correct overlap area",
+          "④ 3√3 equals the independently decomposed area",
+          "⑤ 6√3 is twice the correct overlap area"
+        ],
+        "sourceSolutionIndependentAudit": "PASS: the rotated-square overlap was independently decomposed into two triangles, reproducing choice ④.",
+        "visualRequirementIndependentAudit": "PASS: required source visual is declared, linked, and positive-byte according to the source manifest.",
+        "evidenceSufficient": true,
+        "solutionConflict": false
+      },
+      "identityCheck": {
+        "requestedIndex": true,
+        "ordinalAndQuestionNoAgree": true,
+        "sourceArchiveFileBound": true,
+        "sourceJsSha256Bound": true,
+        "sourceFingerprintBound": true,
+        "uniqueWithinShard": true
+      }
+    }
+  ]
+}

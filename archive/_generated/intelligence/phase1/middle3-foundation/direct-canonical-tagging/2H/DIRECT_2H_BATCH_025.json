@@ -1,0 +1,962 @@
+{
+  "schemaVersion": "m3-direct-canonical-tagging-source-manifest-v1",
+  "status": "SOURCE_ONLY_FOR_DIRECT_AGENT_TAGGING",
+  "targetGrade": "MIDDLE3",
+  "semester": "2H",
+  "scopeLabel": "2학기 삼각비·원의 성질·통계",
+  "sourceInventory": "archive/_generated/intelligence/phase1/middle3-foundation/M3_FRESH_INVENTORY.json",
+  "sourceInventoryDigest": "63d6961efd47b753b3c6cd8f0552ad31da97e2d0a675729e73cfd98f9af1d8d5",
+  "batchNo": "025",
+  "batchSize": 20,
+  "semanticFieldsExcluded": [
+    "currentStandardUnitKey",
+    "currentStandardUnit",
+    "currentSubUnitKey",
+    "currentSubUnit",
+    "currentConceptClusterKey",
+    "currentProblemTypeKey",
+    "currentTemplateKey",
+    "currentLevel",
+    "currentDifficultyBucket",
+    "reviewStatus",
+    "existingSidecar",
+    "queueId",
+    "queueExpectedTaxonomy"
+  ],
+  "records": [
+    {
+      "questionUid": "qid_v1_3790c11315df0ebacdd1eff21b1643595c1ea717d43243fae488870ce69fcf6b",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "sourceJsSha256": "1535269a8abd85de721cd7f5301e73062534ecb136ad61987cc1e0855e3280bd",
+      "sourceFingerprint": "92ca093b057db7440135706e6f942e671b236b23c7bcef456b0505b63ca5f93d",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "[서술형 4] 아래 그림과 같이 한 모서리의 길이가 $2$인 정육면체에서 선분 $AD$의 중점을 $M$이라고 하자. $\\angle FMG=x^\\circ$일 때, $\\sin x^\\circ$의 값[3점]을 구하는 과정[3점]을 서술하여라. [총 6점]",
+        "choices": [],
+        "answer": "$\\dfrac{4\\sqrt2}{9}$",
+        "solution": "[키포인트] 먼저 $FM=GM=3$을 구한 뒤, 이등변삼각형 $FMG$의 넓이를 두 가지 방법으로 나타낸다.\n조건 정리: 정육면체의 한 모서리는 $2$이고 $M$은 $AD$의 중점이므로 $AM=MD=1$이다.\n풀이 방향: 면의 대각선과 피타고라스 정리로 $FM$, $GM$을 구하고, $FG$를 밑변으로 한 넓이와 두 변 및 끼인각을 이용한 넓이를 같게 놓는다.\n정석 풀이: 정사각형 면의 대각선이므로 $AF=DG=2\\sqrt2$이다. $AM$은 면 $ABFE$에 수직이므로 $\\triangle FAM$은 $A$에서 직각이고, $FM^2=AF^2+AM^2=(2\\sqrt2)^2+1^2=9$이므로 $FM=3$이다. 같은 방법으로 $GM=3$이다. $N$을 $FG$의 중점이라 하면 이등변삼각형 $FMG$에서 $MN\\perp FG$이고 $FN=1$이다. 따라서 $MN=\\sqrt{FM^2-FN^2}=\\sqrt{9-1}=2\\sqrt2$이다. 그러므로 $\\triangle FMG$의 넓이는 $\\dfrac12\\times FG\\times MN=\\dfrac12\\times2\\times2\\sqrt2=2\\sqrt2$이다. 한편 두 변 $FM$, $GM$과 끼인각 $x^\\circ$를 이용하면 같은 넓이는 $\\dfrac12\\times3\\times3\\times\\sin x^\\circ=\\dfrac92\\sin x^\\circ$이다. 따라서 $\\dfrac92\\sin x^\\circ=2\\sqrt2$이므로 $\\sin x^\\circ=\\dfrac{4\\sqrt2}{9}$이다.\n따라서 구하는 값은 $\\dfrac{4\\sqrt2}{9}$이다.",
+        "image": "assets/images/23_왕운중_2학기_중간_중3_수학/q24.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_왕운중_2학기_중간_중3_수학/q24.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1aaa56aedf38eb0e78a60aed8bf950e1bd29fdc0abb0f74b67133ebbd851c2d0",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "aec6140d08ed9f7e142aebcfb361dba733a43e5b01bc7aeda8a6d2b6bee65561",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "각 $A$가 공통인 두 직각삼각형에 대하여 $\\overline{AB}=4$, $\\overline{BC}=3$일 때 $\\sin x\\times\\tan x$ 값으로 적절한 것은? [3점]",
+        "choices": [
+          "$\\dfrac45$",
+          "$\\dfrac35$",
+          "$\\dfrac{16}{15}$",
+          "$\\dfrac9{20}$",
+          "$\\dfrac{12}{25}$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 공통각 $A$를 가진 두 직각삼각형에서 각 $x$는 작은 직각삼각형의 $\\angle C$와 같다.\\n조건 정리: $\\overline{AB}=4$, $\\overline{BC}=3$이고 $\\angle B=90^\\circ$이다.\\n풀이 방향: 먼저 피타고라스 정리로 빗변 $AC$를 구한 뒤, 각 $x$에 대한 사인과 탄젠트를 구한다.\\n정석 풀이: $AC=\\sqrt{4^2+3^2}=5$이다. 각 $x=\\angle C$에 대하여 마주 보는 변은 $AB=4$, 이웃한 변은 $BC=3$, 빗변은 $AC=5$이다. 따라서 $\\sin x=\\dfrac45$, $\\tan x=\\dfrac43$이므로 $\\sin x\\tan x=\\dfrac45\\times\\dfrac43=\\dfrac{16}{15}$이다.\\n따라서 정답은 ③이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q1.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q1.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f986e90cb0aa6a725664045aba43a9ff2201df618521e5465b838fc015eb6361",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "d2024474f3743a00d22a7b1995fa5ca22d49ea823b2ced369488daec40e4e040",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\tan \\alpha=\\dfrac12$일 때 $x\\times y$ 값으로 적절한 것은? [3점]",
+        "choices": [
+          "$2\\sqrt5$",
+          "$4+2\\sqrt5$",
+          "$1+\\sqrt5$",
+          "$2+\\sqrt5$",
+          "$8\\sqrt5$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 탄젠트는 직각삼각형에서 높이를 밑변으로 나눈 값의 비이다.\\n조건 정리: $AC=2$, $BC=x$, $AB=y$이고 $\\angle C=90^\\circ$, $\\tan \\alpha=\\dfrac12$이다.\\n풀이 방향: 탄젠트로 $x$를 구하고 피타고라스 정리로 $y$를 구한다.\\n정석 풀이: $\\tan \\alpha=\\dfrac{AC}{BC}=\\dfrac2x=\\dfrac12$이므로 $x=4$이다. 이어서 $y=AB=\\sqrt{AC^2+BC^2}=\\sqrt{2^2+4^2}=2\\sqrt5$이다. 따라서 $xy=4\\times2\\sqrt5=8\\sqrt5$이다.\\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q2.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q2.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5eb8dbd83cafc680a355b2050a09acb6b2b25ebd6b4c2c84a8365b79acb944d2",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "837ff49eead2071dba616a946ecba849fc0c52bcfba7b283bc6c2d9b1a1c7e49",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\tan A=\\dfrac43$일 때 $\\cos A$값으로 적절한 것은? [3점]",
+        "choices": [
+          "$\\dfrac35$",
+          "$\\dfrac45$",
+          "$\\dfrac43$",
+          "$\\dfrac34$",
+          "$1$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] $\\tan A$가 주어지면 두 직각변의 비를 정하고 피타고라스 정리로 빗변의 비를 구한다.\\n조건 정리: $\\tan A=\\dfrac43$이므로 각 $A$의 맞은편 변과 이웃한 변의 비는 $4:3$이다.\\n풀이 방향: 두 직각변을 각각 $4k$, $3k$로 두고 빗변을 구한다.\\n정석 풀이: 빗변은 $\\sqrt{(4k)^2+(3k)^2}=5k$이다. 따라서 각 $A$에 이웃한 변은 $3k$, 빗변은 $5k$이므로 $\\cos A=\\dfrac{3k}{5k}=\\dfrac35$이다.\\n따라서 정답은 ①이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_919b96074ffe4ac6204cc9765b016b9c92418eced65b6bd8e35d72ea375fe51a",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "61e768c52aa38ceaaa97db284e1768b1bd7cb0a349889afb7fcbc7ca6b06a1db",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\angle A=90^\\circ$, $\\angle ACG=\\angle ABC$인 두 직각삼각형에 대하여 $\\cos x$값으로 적절한 것은? [3점]",
+        "choices": [
+          "$\\dfrac32$",
+          "$\\dfrac23$",
+          "$\\dfrac{2\\sqrt5}{5}$",
+          "$\\dfrac{\\sqrt5}{3}$",
+          "$\\dfrac{\\sqrt5}{2}$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 두 직각삼각형의 예각 관계를 이용하면 그림의 각 $x$를 큰 삼각형의 $\\angle ACB$와 연결할 수 있다.\\n조건 정리: $\\angle A=90^\\circ$, $\\angle ACG=\\angle ABC$, $AC=18$, $BC=27$이다.\\n풀이 방향: 삼각형 $ACG$와 $ABC$에서 서로 여각인 관계를 이용해 $x=\\angle ACB$임을 확인한다.\\n정석 풀이: 삼각형 $ACG$에서 $x+\\angle ACG=90^\\circ$이고, 삼각형 $ABC$에서 $\\angle ABC+\\angle ACB=90^\\circ$이다. $\\angle ACG=\\angle ABC$이므로 $x=\\angle ACB$이다. 따라서 $\\cos x=\\dfrac{AC}{BC}=\\dfrac{18}{27}=\\dfrac23$이다.\\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q4.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q4.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9d2409d65b0e6dd5a4f2b3e314baf4f331d7b137713c03673eed50f494bc7791",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "1e61944c0524ff1f3234723f804bdf61f59447d4a81d4baffc8de2ef3f27dc54",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$0^\\circ<x<90^\\circ$일 때 삼각비에 대한 설명으로 틀린 것은? [3점]",
+        "choices": [
+          "$x$값이 커지면 $\\sin x$값도 커진다.",
+          "$x$값이 커지면 $\\cos x$값은 작아진다.",
+          "$x$값이 $0^\\circ$에 가까워지면 $\\tan x$값도 $0$에 가까워진다.",
+          "$\\tan x$값은 $\\sqrt3$ 이상으로 커질 수 없다.",
+          "$\\sin x$, $\\cos x$값은 $1$보다 작다."
+        ],
+        "answer": "④",
+        "solution": "[키포인트] $0^\\circ<x<90^\\circ$에서 사인과 탄젠트는 증가하고 코사인은 감소한다.\\n조건 정리: $x$는 예각이다.\\n풀이 방향: 각 선택지를 예각의 삼각비 변화와 특수각 값에 대조한다.\\n정석 풀이: $x$가 커질수록 $\\sin x$와 $\\tan x$는 커지고 $\\cos x$는 작아진다. 또한 $\\tan60^\\circ=\\sqrt3$이고 $60^\\circ<x<90^\\circ$이면 $\\tan x>\\sqrt3$이다. 따라서 탄젠트가 $\\sqrt3$ 이상으로 커질 수 없다는 설명은 틀리다.\\n따라서 정답은 ④이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_afb7405379a870f39cd14d9ace9aa55ff5da0588d0f033a133985fe701b81e6a",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "25905ea8eb9d5d3fdf0ea1557f3429083aaa190995a178612b53e9d3e5176bbe",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "직각삼각형 $ABC$에 대하여 $A$에서 $BC$에 내린 수선의 발을 $D$, $D$에서 $AB$로 내린 수선의 발을 $E$라 할 때 $\\sin x$의 값으로 적절하지 않은 것은? [4점]",
+        "choices": [
+          "$\\dfrac{DE}{AD}$",
+          "$\\dfrac{DE}{BD}$",
+          "$\\dfrac{CD}{AC}$",
+          "$\\dfrac{AE}{AD}$",
+          "$\\dfrac{AC}{BC}$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 같은 각 $x$가 들어 있는 여러 직각삼각형에서 맞은편 변과 빗변을 정확히 구분한다.\\n조건 정리: $\\angle ABC=x$, $AD\\perp BC$, $DE\\perp AB$이다.\\n풀이 방향: 각 비가 어느 직각삼각형의 어떤 삼각비인지 하나씩 확인한다.\\n정석 풀이: 삼각형 $BDE$에서 $\\dfrac{DE}{BD}=\\sin x$이다. 삼각형 $ACD$는 삼각형 $ABC$와 닮으므로 $\\dfrac{CD}{AC}=\\sin x$이다. 또한 두 직선의 수직 관계에서 $\\angle EDA=x$이므로 삼각형 $ADE$에서 $\\dfrac{AE}{AD}=\\sin x$, $\\dfrac{DE}{AD}=\\cos x$이다. 큰 삼각형 $ABC$에서는 $\\dfrac{AC}{BC}=\\sin x$이다. 따라서 $\\sin x$가 아닌 것은 $\\dfrac{DE}{AD}$이다.\\n따라서 정답은 ①이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q6.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q6.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7e4c4f76abfe907ff6fad0c46b596d11534da80bc620ce0e70ae42c2d6d924cc",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "c98582d5fda6384e630e022da29a09c03add03e04bb01f61603d8bc87958ce99",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "반지름이 $2$인 사분원에 대하여 선분의 길이를 $\\angle x$의 삼각비로 나타낸 것으로 옳은 것은? [4점]",
+        "choices": [
+          "$\\overline{AB}=2\\sin x$",
+          "$\\overline{AB}=\\dfrac12\\sin x$",
+          "$\\overline{OB}=\\cos x$",
+          "$\\overline{OB}=\\dfrac12\\sin(90^\\circ-x)$",
+          "$\\overline{CD}=\\tan x$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 점 $A$는 반지름이 $2$인 사분원 위에 있으므로 $OA=2$이다.\\n조건 정리: 삼각형 $OAB$는 $\\angle B=90^\\circ$인 직각삼각형이고 $\\angle AOB=x$, $OA=2$이다.\\n풀이 방향: 각 $x$에 대한 사인과 코사인을 선분의 길이로 나타낸다.\\n정석 풀이: $\\sin x=\\dfrac{AB}{OA}=\\dfrac{AB}{2}$이므로 $AB=2\\sin x$이다. 또한 $OB=2\\cos x$이므로 ③과 ④는 맞지 않고, $OC=2$이므로 $CD=2\\tan x$여서 ⑤도 맞지 않는다.\\n따라서 정답은 ①이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q7.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q7.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b4e9852d2f58815037d4f04e8e35938c3883243b1e34f7f13918595101565c3c",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "de0cb6bc55bb026523f05d63c513da06cd69a8ee6f7bb62dd68f39d1e43050a8",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\dfrac{\\sin1^\\circ}{\\cos89^\\circ}\\times\\dfrac{\\sin2^\\circ}{\\cos88^\\circ}\\times\\tan44^\\circ\\times\\tan46^\\circ$의 값으로 적절한 것은? [4점]",
+        "choices": [
+          "$\\sqrt2$",
+          "$\\sqrt6$",
+          "$1$",
+          "$\\dfrac{\\sqrt2}{2}$",
+          "$\\sqrt3$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 서로 여각인 두 각의 사인과 코사인, 탄젠트의 관계를 이용한다.\\n조건 정리: $89^\\circ=90^\\circ-1^\\circ$, $88^\\circ=90^\\circ-2^\\circ$, $46^\\circ=90^\\circ-44^\\circ$이다.\\n풀이 방향: $\\sin x=\\cos(90^\\circ-x)$와 $\\tan x\\tan(90^\\circ-x)=1$을 적용한다.\\n정석 풀이: $\\cos89^\\circ=\\sin1^\\circ$, $\\cos88^\\circ=\\sin2^\\circ$이므로 앞의 두 분수는 각각 $1$이다. 또 $\\tan46^\\circ=\\dfrac1{\\tan44^\\circ}$이므로 $\\tan44^\\circ\\tan46^\\circ=1$이다. 따라서 전체 값은 $1$이다.\\n따라서 정답은 ③이다.",
+        "image": "",
+        "visualDependency": {
+          "hasImageField": false,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": false,
+            "path": "",
+            "exists": false,
+            "positiveBytes": false,
+            "linkedToSource": false
+          },
+          "required": false
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_088f18a8d4cb9c5c3b70025cb6ae49977a3b9698d8543bf839eac90ba14dd745",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "ba1bea93a1cffc233cc7bd1ddab0b544a9a22b581da9564e4c5f88f59f4ed78d",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\overline{BC}=10$, $\\angle ABC=60^\\circ$, $\\angle ACB=45^\\circ$인 삼각형 $ABC$의 높이 $\\overline{AH}$의 길이로 적절한 것은? [4점]",
+        "choices": [
+          "$10\\sqrt3$",
+          "$5\\sqrt3+5$",
+          "$5\\sqrt3-5$",
+          "$15-5\\sqrt3$",
+          "$10+\\sqrt3$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 높이 $AH$를 기준으로 두 직각삼각형을 나누어 밑변 $BH$와 $HC$를 $AH$로 나타낸다.\\n조건 정리: $BH+HC=BC=10$, $\\angle B=60^\\circ$, $\\angle C=45^\\circ$이다.\\n풀이 방향: $AH=h$로 두고 탄젠트를 이용해 $BH$, $HC$를 구한다.\\n정석 풀이: $\\tan60^\\circ=\\dfrac{AH}{BH}=\\sqrt3$이므로 $BH=\\dfrac{h}{\\sqrt3}$이다. 또한 $\\tan45^\\circ=\\dfrac{AH}{HC}=1$이므로 $HC=h$이다. 따라서 $\\dfrac{h}{\\sqrt3}+h=10$이고, $h=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5\\sqrt3(\\sqrt3-1)=15-5\\sqrt3$이다.\\n따라서 정답은 ④이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q9.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q9.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_596eb5a67f7de198f8062a2605bbd5afed283e807b0cdff1862cb61bd8f0cbda",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "f9e39214c4fbaeb294e3c2acca154ec6b2566dfa5ee7994d16d300bf0739a140",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "주어진 사분원의 반지름 $\\overline{OC}$와 이루는 각이 $x$인 $\\overline{OA}$, $\\overline{OD}$에 대하여 $\\tan x=\\dfrac34$일 때, 두 직각삼각형으로 만들어진 사다리꼴 $ABCD$의 넓이로 적절한 것은? [4점]",
+        "choices": [
+          "$48$",
+          "$108$",
+          "$60$",
+          "$72$",
+          "$54$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] $\\tan x=\\dfrac34$에서 $3:4:5$의 변의 비를 만들고, 사분원의 반지름이 $20$임을 이용한다.\\n조건 정리: $OA=OC=20$, $AB\\parallel CD$, $\\tan x=\\dfrac34$이다.\\n풀이 방향: 직각삼각형 $OAB$에서 $AB$, $OB$를 구하고, 직각삼각형 $OCD$에서 $CD$를 구한 뒤 사다리꼴 넓이를 계산한다.\\n정석 풀이: 삼각형 $OAB$에서 빗변 $OA=20$이고 변의 비가 $3:4:5$이므로 $AB=12$, $OB=16$이다. 따라서 $BC=OC-OB=20-16=4$이다. 삼각형 $OCD$에서는 $CD=OC\\tan x=20\\times\\dfrac34=15$이다. 그러므로 사다리꼴의 넓이는 $\\dfrac12(AB+CD)\\times BC=\\dfrac12(12+15)\\times4=54$이다.\\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q10.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q10.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_829ffa6e425a6e9aac06edd0b63e877f2646badd503227461e4ab326b7697d46",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "9ae7e416473f48ab28da270f9a15369282e37c4c015f42b5b6e50e2586a4c843",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\overline{BC}=a$, $\\angle BCA=x$, $\\angle BAC=y$인 직각삼각형에 대하여 $\\overline{AB}$, $\\overline{AC}$를 삼각비로 잘못 나타낸 것은? [4점]",
+        "choices": [
+          "$\\overline{AB}=a\\dfrac1{\\tan y}$",
+          "$\\overline{AC}=a\\cos x$",
+          "$\\overline{AC}=a\\dfrac1{\\cos x}$",
+          "$\\overline{AC}=a\\dfrac1{\\sin y}$",
+          "$\\overline{AB}=a\\tan x$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 주어진 변 $BC=a$를 기준으로 각 $x$, $y$의 삼각비를 각각 세운다.\\n조건 정리: $\\angle B=90^\\circ$, $BC=a$, $\\angle C=x$, $\\angle A=y$이다.\\n풀이 방향: 각 선택지의 식을 탄젠트, 사인, 코사인의 정의와 대조한다.\\n정석 풀이: $\\tan y=\\dfrac{BC}{AB}=\\dfrac{a}{AB}$이므로 $AB=a\\dfrac1{\\tan y}$이다. $\\cos x=\\dfrac{BC}{AC}=\\dfrac{a}{AC}$이므로 $AC=a\\dfrac1{\\cos x}$이다. 또한 $\\sin y=\\dfrac{BC}{AC}=\\dfrac{a}{AC}$이므로 $AC=a\\dfrac1{\\sin y}$이고, $\\tan x=\\dfrac{AB}{BC}=\\dfrac{AB}{a}$이므로 $AB=a\\tan x$이다. 따라서 $AC=a\\cos x$는 잘못된 식이다.\\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q11.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q11.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f267a46179b0b74d1907a495314f08cecc72fa79608ddb747213a778b62de3ad",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "574d7a6fade270007580cf45907735c00bfaad3e9e76b5c57c98d4bd9c7dc83f",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "점 $A$에서 선분 $BC$에 내린 수선 $AH$에 대하여 $\\angle CAH=\\angle ABC=a$, $\\tan a=\\dfrac12$일 때 삼각형 $ABC$의 둘레의 길이로 적절한 것은? [4점]",
+        "choices": [
+          "$35$",
+          "$15+9\\sqrt5$",
+          "$18+6\\sqrt5$",
+          "$38$",
+          "$40$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 같은 각 $a$가 들어 있는 두 직각삼각형에서 탄젠트로 밑변을 높이 $AH$에 연결한다.\\n조건 정리: $BC=15$, $AH\\perp BC$, $\\tan a=\\dfrac12$이다.\\n풀이 방향: $AH=h$로 두고 $BH$, $HC$, $AB$, $AC$를 차례로 구한다.\\n정석 풀이: 삼각형 $ABH$에서 $\\tan a=\\dfrac{AH}{BH}=\\dfrac12$이므로 $BH=2h$이다. 삼각형 $AHC$에서 $\\tan a=\\dfrac{HC}{AH}=\\dfrac12$이므로 $HC=\\dfrac h2$이다. 따라서 $2h+\\dfrac h2=15$이므로 $h=6$이다. 그러므로 $BH=12$, $HC=3$이고, $AB=\\sqrt{12^2+6^2}=6\\sqrt5$, $AC=\\sqrt{6^2+3^2}=3\\sqrt5$이다. 둘레는 $15+6\\sqrt5+3\\sqrt5=15+9\\sqrt5$이다.\\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q12.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q12.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c2f8b89b4e54fa22d893e1aa837c3f600e40d9d9496792ba21e4e9a5f95f15b3",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "78c3d59f33cffcdfc48fee088c8c978b189f9e97701fdd325b1972ebe8bc3f94",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "한 각이 $30^\\circ$, $45^\\circ$인 두 직각삼각형을 이용해 $\\cos15^\\circ$를 계산한 값으로 적절한 것은? [4점]",
+        "choices": [
+          "$3$",
+          "$2+\\sqrt3$",
+          "$\\dfrac{\\sqrt6+\\sqrt2}{4}$",
+          "$2-\\sqrt3$",
+          "$\\dfrac{\\sqrt6-\\sqrt2}{4}$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 두 직각삼각형의 길이를 구해 $15^\\circ$가 들어 있는 삼각형 $ADH$의 코사인을 계산한다.\\n조건 정리: 삼각형 $ACD$는 $C$에서 직각이고 $\\angle CAD=30^\\circ$, $CD=2$이다. 삼각형 $ABC$는 $B$에서 직각이고 $\\angle CAB=45^\\circ$이다.\\n풀이 방향: 먼저 $AD$, $AC$, $BC$를 구한 뒤 점 $D$의 높이 $DH$를 구한다.\\n정석 풀이: $30^\\circ$ 직각삼각형 $ACD$에서 $CD$는 빗변 $AD$의 절반이므로 $AD=4$, $AC=2\\sqrt3$이다. $45^\\circ$ 직각삼각형 $ABC$에서 $AB=BC=\\dfrac{AC}{\\sqrt2}=\\sqrt6$이다. 선분 $DC$는 $AC$에 수직이므로 수평선과 $45^\\circ$를 이루며, $D$는 $C$보다 $2\\sin45^\\circ=\\sqrt2$만큼 높다. 따라서 $DH=BC+\\sqrt2=\\sqrt6+\\sqrt2$이다. $\\angle DAH=30^\\circ+45^\\circ=75^\\circ$이므로 $\\angle ADH=15^\\circ$이다. 따라서 $\\cos15^\\circ=\\dfrac{DH}{AD}=\\dfrac{\\sqrt6+\\sqrt2}{4}$이다.\\n따라서 정답은 ③이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q13.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q13.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8f799089d90cef41eed76415fee672affd7875df99bc4f97535b0fdf80ed5163",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "e2b945cb413db96ce23a393d85bbc44c2b12d0cfa22e1d7c992bf055cc037e25",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음은 서장훈이 산의 정상을 올려다 본 각도를 측정한 것이다. 멀리 떨어진 곳에서 측정한 값이 $18^\\circ$이고, 산을 향하여 $500\\,\\mathrm{m}$를 걸어가서 측정한 값이 $37^\\circ$라 할 때, 산의 대략적 높이로 적절한 것은? (단, 서장훈의 눈은 지면에서 $2\\,\\mathrm{m}$ 떨어진 위치에 있고, $\\tan72^\\circ=3$, $\\tan37^\\circ=0.75$로 계산한다.) [4점]",
+        "choices": [
+          "$354\\,\\mathrm{m}$",
+          "$300\\,\\mathrm{m}$",
+          "$304\\,\\mathrm{m}$",
+          "$356\\,\\mathrm{m}$",
+          "$302\\,\\mathrm{m}$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 두 관측 지점에서 산 정상까지의 높이는 같으므로 두 탄젠트 식을 연결한다.\\n조건 정리: 가까운 지점에서 산까지의 수평 거리를 $x\\,\\mathrm{m}$, 눈높이보다 높은 부분을 $h\\,\\mathrm{m}$라 둔다.\\n풀이 방향: 가까운 지점의 $37^\\circ$와 먼 지점의 $18^\\circ$에 대해 각각 탄젠트 식을 세운다.\\n정석 풀이: 가까운 지점에서는 $\\tan37^\\circ=\\dfrac hx=0.75$이므로 $h=0.75x$이다. $\\tan72^\\circ=3$이고 $18^\\circ$와 $72^\\circ$는 여각이므로 $\\tan18^\\circ=\\dfrac13$이다. 먼 지점에서는 $\\dfrac{h}{x+500}=\\dfrac13$이므로 $h=\\dfrac{x+500}{3}$이다. 따라서 $0.75x=\\dfrac{x+500}{3}$이고 $x=400$, $h=300$이다. 산의 높이는 눈높이 $2\\,\\mathrm{m}$를 더한 $302\\,\\mathrm{m}$이다.\\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q14.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q14.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2c3f433ed633008a69e8803bcdeb508ef17b83d5d307a04ec2c598934344fba8",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "9a79f23349a3f424b5024e562beec2950cd6b805d74c17c8701729d5fb777259",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "다음은 호수공원을 가로지르는 다리를 만들기 위해 $B$지점에서 측량한 결과이다. $\\overline{AB}=450\\,\\mathrm{m}$, $\\overline{BC}=420\\,\\mathrm{m}$, $\\angle ABC=53^\\circ$일 때 $\\overline{AC}$의 대략적인 길이로 적절한 것은? (단, $\\cos53^\\circ=0.6$으로 계산한다.) [4점]",
+        "choices": [
+          "$360\\,\\mathrm{m}$",
+          "$370\\,\\mathrm{m}$",
+          "$300\\sqrt2\\,\\mathrm{m}$",
+          "$390\\,\\mathrm{m}$",
+          "$400\\,\\mathrm{m}$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 점 $A$에서 $BC$에 수선을 내려 두 직각삼각형으로 나누어 계산한다.\\n조건 정리: $AB=450$, $BC=420$, $\\angle ABC=53^\\circ$, $\\cos53^\\circ=0.6$이다.\\n풀이 방향: 수선의 발을 $H$라 하고 $BH$, $AH$, $HC$를 차례로 구한다.\\n정석 풀이: $BH=AB\\cos53^\\circ=450\\times0.6=270$이다. $\\sin53^\\circ=\\sqrt{1-0.6^2}=0.8$이므로 $AH=450\\times0.8=360$이다. 따라서 $HC=BC-BH=420-270=150$이다. 직각삼각형 $AHC$에서 $AC=\\sqrt{360^2+150^2}=\\sqrt{152100}=390$이다.\\n따라서 정답은 ④이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q15.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q15.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_934643f2f1a0267dceff561827bf4442393a4686adb8e04d06225826ebfb9b51",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "0fb463a2f0b62d9f773babf881bd78dd4156e1853f7b6f747790bd0c48b947d3",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\overline{AB}=\\overline{AC}$, $\\overline{BC}=4$, $\\angle BAC=36^\\circ$인 삼각형 $ABC$를 이용해 $\\cos72^\\circ$값을 계산한 것으로 적절한 것은? [힌트: 삼각형의 닮음] [5점]",
+        "choices": [
+          "$\\dfrac{1+\\sqrt5}{4}$",
+          "$2+\\sqrt3$",
+          "$\\sqrt2-1$",
+          "$\\sqrt2+1$",
+          "$\\dfrac{\\sqrt5-1}{4}$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 꼭짓각이 $36^\\circ$인 이등변삼각형 안에 닮은 삼각형을 만들어 같은 변의 비를 이용한다.\\n조건 정리: $AB=AC=x$, $BC=4$, $\\angle B=\\angle C=72^\\circ$이다.\\n풀이 방향: $AC$ 위에 점 $D$를 잡아 $\\angle CBD=36^\\circ$가 되게 하고 닮음비로 $x$를 구한다.\\n정석 풀이: $\\angle DBC=36^\\circ$, $\\angle BCD=72^\\circ$이므로 삼각형 $BCD$의 나머지 각도 $72^\\circ$이고 $BD=BC=4$이다. 또 $\\angle ABD=72^\\circ-36^\\circ=36^\\circ$이므로 삼각형 $ABD$에서 $AD=BD=4$이다. 따라서 $DC=x-4$이다. 삼각형 $ABC$와 $BCD$는 각이 각각 $36^\\circ,72^\\circ,72^\\circ$로 닮으므로 $\\dfrac{x}{4}=\\dfrac{4}{x-4}$이다. 즉 $x^2-4x-16=0$이고 양수인 해는 $x=2+2\\sqrt5$이다. $A$에서 $BC$에 내린 수선은 $BC$를 이등분하므로 반쪽 밑변은 $2$이다. 따라서 $\\cos72^\\circ=\\dfrac2x=\\dfrac1{1+\\sqrt5}=\\dfrac{\\sqrt5-1}{4}$이다.\\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1c3edd999db0ccf0a8cd56313b325b228c929ee70f91e1e7fe2ee30a9a633756",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "47f49b7065fba7dec96fd884f9aa9a4fc688a4df23b202899fd712cd69a730e2",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\angle A:\\angle B:\\angle C=3:5:4$, $\\overline{AB}=6$인 삼각형 $ABC$에 대하여 외접원의 반지름의 길이로 적절한 것은? [5점]",
+        "choices": [
+          "$2\\sqrt3$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$\\sqrt3$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 현 $AB$에 대한 원주각과 중심각의 관계를 이용해 반지름이 포함된 직각삼각형을 만든다.\\n조건 정리: 세 각의 비가 $3:5:4$이고 합이 $180^\\circ$이므로 $\\angle A=45^\\circ$, $\\angle B=75^\\circ$, $\\angle C=60^\\circ$이다.\\n풀이 방향: 외접원의 중심을 $O$라 하고 현 $AB$에 대한 중심각 $\\angle AOB$를 구한다.\\n정석 풀이: 같은 현 $AB$에 대한 중심각은 원주각의 두 배이므로 $\\angle AOB=2\\angle ACB=120^\\circ$이다. $O$에서 $AB$에 내린 수선의 발을 $M$이라 하면 $AM=BM=3$이고 $\\angle BOM=60^\\circ$이다. 반지름을 $R$이라 하면 $\\sin60^\\circ=\\dfrac{BM}{OB}=\\dfrac3R$이므로 $\\dfrac{\\sqrt3}{2}=\\dfrac3R$, 따라서 $R=2\\sqrt3$이다.\\n따라서 정답은 ①이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q17.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q17.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b7756906cb5b2b641338a82d94e19a50f69a39a308d70dc6e3c4a8a2611a503a",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "c64a73fae127a7452271e99e186428aa72971aad23f92fc8cbf7d9e53eb1b28b",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\angle B=\\angle C=30^\\circ$, $\\overline{AB}=2$인 삼각형 $ABC$에 대하여 내접원의 반지름의 길이로 적절한 것은? [5점]",
+        "choices": [
+          "$\\dfrac32$",
+          "$2\\sqrt3-3$",
+          "$4\\sqrt3-6$",
+          "$\\dfrac{5\\sqrt2+\\sqrt5}{3}$",
+          "$\\dfrac{5\\sqrt2-\\sqrt5}{3}$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 삼각형의 넓이를 한 번은 밑변과 높이로, 한 번은 내접원의 반지름과 세 변으로 나타낸다.\\n조건 정리: $\\angle B=\\angle C=30^\\circ$이므로 $AB=AC=2$이고 $\\angle A=120^\\circ$이다.\\n풀이 방향: 밑변 $BC$와 넓이를 구한 뒤 $\\dfrac12r(AB+BC+CA)$를 이용한다.\\n정석 풀이: $A$에서 $BC$에 수선을 내리면 높이는 $2\\sin30^\\circ=1$이고 밑변의 절반은 $2\\cos30^\\circ=\\sqrt3$이므로 $BC=2\\sqrt3$이다. 삼각형의 넓이는 $\\dfrac12\\times2\\sqrt3\\times1=\\sqrt3$이다. 내접원의 반지름을 $r$이라 하면 $\\sqrt3=\\dfrac12r(2+2+2\\sqrt3)=r(2+\\sqrt3)$이다. 따라서 $r=\\dfrac{\\sqrt3}{2+\\sqrt3}=2\\sqrt3-3$이다.\\n따라서 정답은 ②이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q18.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q18.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3a637d429dfa8f540788149d77b8e08eed182e7f76771047ffb06531b9b11f1a",
+      "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceJsSha256": "f37198575a5fa48748262063737a34155b9f932d181385f7ec294b9ff0782687",
+      "sourceFingerprint": "10f24f9e0fda1e3fd5284790c620e983dd508bd8c1e9364dd6592916b6963843",
+      "curriculumKey": "2015",
+      "curriculumResolution": {
+        "curriculum": "2015",
+        "method": "historical_source_register_guardrail",
+        "confidence": "medium",
+        "note": "source/DB has no curriculum field; RPM_M3_2022 source register is 2027 and latest fresh source year is before 2027"
+      },
+      "sourceEvidence": {
+        "content": "$\\overline{AB}=\\overline{AC}=5$, $\\angle CAB=a$인 삼각형 $ABC$에 대하여 $\\tan(a-90^\\circ)=\\dfrac34$일 때 $\\cos\\dfrac a2$값으로 적절한 것은? [힌트: 둔각 삼각형의 보조선, $a-90^\\circ$ 찾기] [5점]",
+        "choices": [
+          "$\\dfrac45$",
+          "$\\dfrac35$",
+          "$\\dfrac{\\sqrt5}{5}$",
+          "$2$",
+          "$\\dfrac{2\\sqrt5}{5}$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 둔각 $a$의 바깥쪽에 직각삼각형을 만들어 $3:4:5$의 비를 적용한 뒤 이등변삼각형을 반으로 나눈다.\\n조건 정리: $AB=AC=5$, $a>90^\\circ$, $\\tan(a-90^\\circ)=\\dfrac34$이다.\\n풀이 방향: $C$에서 직선 $AB$의 연장선에 수선을 내려 밑변 $BC$를 먼저 구한다.\\n정석 풀이: $C$에서 $BA$의 $A$ 바깥쪽 연장선에 내린 수선의 발을 $H$라 하자. $\\angle CAH=180^\\circ-a=90^\\circ-(a-90^\\circ)$이다. $\\tan(a-90^\\circ)=\\dfrac34$이므로 $3:4:5$의 비에서 $\\cos\\angle CAH=\\dfrac35$, $\\sin\\angle CAH=\\dfrac45$이다. 따라서 $AH=5\\times\\dfrac35=3$, $CH=5\\times\\dfrac45=4$이다. $HB=HA+AB=3+5=8$이므로 $BC=\\sqrt{8^2+4^2}=4\\sqrt5$이다. 이제 $A$에서 $BC$에 내린 수선은 이등변삼각형의 밑변을 이등분하므로 반쪽 밑변은 $2\\sqrt5$이다. 이 직각삼각형에서 높이는 $\\sqrt{5^2-(2\\sqrt5)^2}=\\sqrt5$이므로 $\\cos\\dfrac a2=\\dfrac{\\sqrt5}{5}$이다.\\n따라서 정답은 ③이다.",
+        "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q20.png",
+        "visualDependency": {
+          "hasImageField": true,
+          "embeddedImg": false,
+          "embeddedSvg": false,
+          "embeddedTable": false,
+          "asset": {
+            "declared": true,
+            "path": "assets/images/23_풍덕중_2학기_중간_중3_수학/q20.png",
+            "exists": true,
+            "positiveBytes": true,
+            "linkedToSource": true
+          },
+          "required": true
+        },
+        "sharedMaterialDependency": {
+          "present": false,
+          "explicitFields": [],
+          "contentCue": false
+        }
+      }
+    }
+  ]
+}
