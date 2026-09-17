@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "metadata-foundation-h1-direct-tagging-b-packet-v1",
+  "agentRole": "B_INDEPENDENT_TAGGER",
+  "packetType": "FROZEN_RECORD_REPLACEMENT",
+  "batchId": "batch-007",
+  "recordRange": {
+    "start": 142,
+    "end": 142
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "authorityStatus": "LOCKED"
+  },
+  "sourceManifest": {
+    "path": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "sha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09"
+  },
+  "records": [
+    {
+      "recordIndex": 142,
+      "manifestUid": "h1-direct-d425447272c7777167fe1c399a777820",
+      "questionUid": "h1-direct-d425447272c7777167fe1c399a777820",
+      "sourceArchiveFile": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 12,
+      "curriculumKey": "2015",
+      "sourceFingerprint": "a16a95237f9b19afa58b6305a7877356bc2e60b9073c8b5af1859bbc32cb81c3",
+      "contentFingerprint": "43c6f2d8d7d0f4db135785b8c6b9292b6c5a2cb70b45911a2fd6c6fff777dcf4",
+      "sourceEvidence": {
+        "content": "세 실수 $A,B,C$가 $A=\\dfrac{\\sqrt3+\\sqrt5}{2}$, $B=\\dfrac{3\\sqrt5-\\sqrt3}{3-1}$, $C=\\dfrac{2\\sqrt5+3\\sqrt3}{2+3}$일 때, 다음 중 대소 관계를 바르게 나타낸 것은? [4.4점]",
+        "choices": [
+          "$A&lt;B&lt;C$",
+          "$C&lt;A&lt;B$",
+          "$B&lt;C&lt;A$",
+          "$C&lt;B&lt;A$",
+          "$A&lt;C&lt;B$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트]\n각 수를 비교하기 쉬운 소수의 근삿값으로 바꾸어 대소를 판단한다.\n조건 정리\n$\\sqrt3\\approx1.732$, $\\sqrt5\\approx2.236$이다.\n풀이 과정\n$A=\\dfrac{\\sqrt3+\\sqrt5}{2}\\approx\\dfrac{1.732+2.236}{2}=1.984$이다.\n$B=\\dfrac{3\\sqrt5-\\sqrt3}{2}\\approx\\dfrac{3\\cdot2.236-1.732}{2}=\\dfrac{4.976}{2}=2.488$이다.\n$C=\\dfrac{2\\sqrt5+3\\sqrt3}{5}\\approx\\dfrac{2\\cdot2.236+3\\cdot1.732}{5}=\\dfrac{9.668}{5}=1.9336$이다.\n따라서 작은 것부터 나열하면\n$C&lt;A&lt;B$이다.\n결론\n따라서 정답은 ②이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "courseKey": "수학_상",
+      "L1": "UNKNOWN",
+      "L2": "UNKNOWN",
+      "L3": "UNKNOWN",
+      "L4": "UNKNOWN",
+      "primaryConcept": null,
+      "primaryConceptReason": "문항의 결정적 작업은 √3, √5를 근삿값으로 바꾸어 세 실수의 대소를 비교하는 것이며, 잠근 HIGH1 canonical의 2015 수학_상·수학_하·수학I·수학II·미적분·확률과통계·기하 경로에는 제곱근/실수의 대소 비교 개념이 없다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "세 표현에 같은 근삿값을 대입해 비교하는 단일 전략 문항으로, 조건 분기나 역방향 추론은 없다.",
+      "curriculumApplicability": "UNKNOWN",
+      "defaultSelectable": false,
+      "tagConfidence": "high",
+      "tagStatus": "FOUNDATION_DEFECT_CANDIDATE",
+      "reviewStatus": "FOUNDATION_DEFECT_CANDIDATE",
+      "status": "B_CHECKED",
+      "statusReason": "반복 가능한 출제 유형인 ‘제곱근을 포함한 실수의 대소 비교’가 실제 source content와 solution에 명시되어 있으나, canonical 검색에서 exact L1→L4 적합 경로를 찾지 못했다. 인접한 다항식·복소수·부등식 L4로 대체하지 않았다.",
+      "decisiveSolutionStep": "√3≈1.732, √5≈2.236을 대입하여 A≈1.984, B≈2.488, C≈1.9336을 얻고 C&lt;A&lt;B로 정렬한다.",
+      "rejectedAlternativeConcepts": [
+        {
+          "candidate": "2015/수학_상/방정식과 부등식/복소수",
+          "reason": "문항에는 허수 단위나 복소수 연산이 없고, 실수의 대소 비교만 수행한다."
+        },
+        {
+          "candidate": "2015/수학_상/방정식과 부등식/여러 가지 부등식",
+          "reason": "부등식의 해집합 또는 계수 조건을 구하는 문항이 아니라 세 수의 값 자체를 비교한다."
+        }
+      ],
+      "canonicalSearch": {
+        "searchBasis": "2015 HIGH1 locked canonical records, all available L1→L4 paths",
+        "exactFit": false,
+        "noFitRationale": "canonical MASTER에는 제곱근·실수 개념의 L3/L4가 없으므로 nearest-L4 assignment를 하지 않음",
+        "foundationDefectType": "REPEATABLE_SOURCE_GROUNDED_TYPE_MISSING_FROM_CANONICAL"
+      }
+    }
+  ],
+  "freeze": {
+    "frozen": true,
+    "frozenAt": "2026-09-17T00:00:00+09:00",
+    "sourceOnlyBlind": true,
+    "priorAAndBOldArtifactsRead": false
+  }
+}

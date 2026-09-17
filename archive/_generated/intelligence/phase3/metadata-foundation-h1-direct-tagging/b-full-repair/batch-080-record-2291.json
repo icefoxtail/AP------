@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "metadata-foundation-h1-direct-tagging-b-packet-v1",
+  "agentRole": "B_INDEPENDENT_TAGGER",
+  "packetType": "FROZEN_RECORD_REPLACEMENT",
+  "batchId": "batch-080",
+  "recordRange": {
+    "start": 2291,
+    "end": 2291
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "authorityStatus": "LOCKED"
+  },
+  "sourceManifest": {
+    "path": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "sha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09"
+  },
+  "records": [
+    {
+      "recordIndex": 2291,
+      "manifestUid": "h1-direct-8700b5aeb354fd89caf4b59e445031ee",
+      "questionUid": "h1-direct-8700b5aeb354fd89caf4b59e445031ee",
+      "sourceArchiveFile": "original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 13,
+      "curriculumKey": "2015",
+      "sourceFingerprint": "63e9761003bb67fabdcf1de47112a879aa5239cdc88ccd876f651333fdaaed90",
+      "contentFingerprint": "15ff433a8077c374b7239e7b79c3ea23ce193e60826099514a033faa8d3f4258",
+      "courseKey": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원과 직선",
+      "L4": "교점 개수",
+      "primaryConcept": "원과 직선",
+      "primaryConceptReason": "원점 중심의 원과 매개변수 m에 따른 직선의 교점이 서로 다른 두 개가 되도록 하는 조건을 원의 반지름과 원점에서 직선까지의 거리의 비교로 판정한다.",
+      "secondaryConceptKeys": ["점과 직선 사이의 거리"],
+      "difficultyBucket": 3,
+      "difficultyReason": "직선을 일반형으로 변환하고 점과 직선 사이의 거리 조건을 세운 뒤 제곱 및 이차부등식 인수분해로 m의 범위를 구한다.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "high",
+      "tagStatus": "PASS",
+      "reviewStatus": "reviewed_pass",
+      "status": "B_CHECKED",
+      "statusReason": "2015 수학_상 canonical의 도형의 방정식-원의 방정식-원과 직선-교점 개수 경로와 source content 및 solution의 거리 조건 풀이가 정확히 일치한다.",
+      "decisiveSolutionStep": "원점에서 직선까지의 거리 |3m-1|/√(m²+1)가 원의 반지름 √5보다 작아야 하므로 (3m-1)²<5(m²+1), 즉 (2m+1)(m-2)<0에서 -1/2<m<2를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        {
+          "candidate": "직선의 방정식",
+          "reason": "직선의 식을 세우는 변환은 보조 단계이고, 문항의 결정적 요구는 원과 직선의 교점 개수 조건이다."
+        },
+        {
+          "candidate": "원의 방정식",
+          "reason": "원의 중심과 반지름은 이미 x²+y²=5에서 직접 주어지며, 핵심은 원과 직선의 위치 관계 판정이다."
+        }
+      ],
+      "sourceEvidence": {
+        "content": "집합 $A=\\{(x,y)\\mid y=m(x+3)-1\\}$ ($m$은 실수)이고, 집합 $B=\\{(x,y)\\mid x^2+y^2=5\\}$일 때, $n(A\\cap B)=2$를 만족하는 $m$의 범위가 $a<m<b$이다. 이때 $a+b$의 값은? (단, $(x,y)$에서 $x,y$는 실수이고, $n(A)$는 집합 $A$의 원소의 개수이다.) [4.1점]",
+        "choices": [
+          "$-1$",
+          "$\\dfrac12$",
+          "$1$",
+          "$\\dfrac32$",
+          "$\\dfrac52$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 원과 직선이 서로 다른 두 점에서 만나려면 원의 중심에서 직선까지의 거리가 반지름보다 작아야 한다.\n조건 정리: 직선은 $y=m(x+3)-1$, 원은 $x^2+y^2=5$이다.\n풀이 방향: 직선을 일반형으로 바꾸고 원점과 직선 사이의 거리를 이용한다.\n정석 풀이: 직선을 일반형으로 나타내면\n$mx-y+3m-1=0$이다.\n원점에서 이 직선까지의 거리는\n$\\dfrac{|3m-1|}{\\sqrt{m^2+1}}$이고, 원의 반지름은 $\\sqrt5$이다.\n서로 다른 두 점에서 만나려면\n$\\dfrac{|3m-1|}{\\sqrt{m^2+1}}<\\sqrt5$이다.\n양변이 음수가 아니므로 제곱하여\n$(3m-1)^2<5(m^2+1)$,\n$4m^2-6m-4<0$,\n$(2m+1)(m-2)<0$을 얻는다.\n따라서 $-\\dfrac12<m<2$이므로 $a=-\\dfrac12$, $b=2$이고\n$a+b=\\dfrac32$이다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q13-solution.svg"
+      }
+    }
+  ],
+  "freeze": {
+    "frozen": true,
+    "frozenAt": "2026-09-17T00:00:00+09:00",
+    "sourceOnlyBlind": true,
+    "priorAAndBOldArtifactsRead": false
+  }
+}

@@ -1,0 +1,1326 @@
+{
+  "schemaVersion": "h1-direct-tagging-a-packet-v1",
+  "role": "A_PRIMARY_TAGGER",
+  "batchId": "batch-001",
+  "manifestRange": {
+    "zeroBasedStart": 0,
+    "zeroBasedEnd": 24,
+    "oneBasedStart": 1,
+    "oneBasedEnd": 25
+  },
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "sourceManifestSha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09",
+  "canonicalAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalAuthoritySha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfc8384c367bf",
+  "semanticPreGate": {
+    "status": "PASS",
+    "directReadCompleted": true,
+    "allowedInputs": [
+      "source manifest content",
+      "source manifest choices",
+      "source manifest answer",
+      "source manifest solution",
+      "needed source image",
+      "canonical taxonomy"
+    ],
+    "forbiddenInputsRead": false,
+    "forbiddenInputs": [
+      "existing metadata",
+      "old 626 staging",
+      "classifier output",
+      "old queues",
+      "legacy level",
+      "prior PASS/recheck",
+      "old comparison"
+    ],
+    "canonicalRevisionLocked": true
+  },
+  "packetStatus": "COMPLETE",
+  "records": [
+    {
+      "source": {
+        "manifestUid": "h1-direct-0b7f8d20d666e1eae0d89422817393a1",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 1,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "eace4ad3f250305621178ce0d9144931d59c51bc0382568d795b59e2d1b02d24",
+        "contentFingerprint": "0d29c508f08bb66e79132cd76f7f88d7ec2270e3f60b133d2af4299ef61e612c"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.4",
+          "label": "도형의 이동"
+        },
+        "L3": {
+          "id": "L3-3.4.2",
+          "label": "대칭이동"
+        },
+        "L4": {
+          "id": "L4-3.4.2.2",
+          "label": "직선에 대한 대칭"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|도형의 이동|대칭이동|직선에 대한 대칭",
+        "valid": true
+      },
+      "primaryConcept": "직선에 대한 대칭",
+      "primaryConceptReason": "y=x 대칭은 두 좌표를 교환하는 변환 자체가 정답을 결정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "좌표 교환을 바로 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-510b973e8067645a7828f612f02d2fa3",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "8078c24a7e439f070b9ed325413caceee886e41606138d9768f499644d4e3773",
+        "contentFingerprint": "4bac43f41b099046c750603acd9d8af15c764cc812f7c03a3a496ff8e2947ae1"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.5",
+          "label": "여러 가지 부등식"
+        },
+        "L3": {
+          "id": "L3-2.5.2",
+          "label": "이차부등식"
+        },
+        "L4": {
+          "id": "CANONICAL_NO_FIT",
+          "label": "절댓값 부등식(정식 L4 없음)"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|여러 가지 부등식|이차부등식|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "절댓값 부등식",
+      "primaryConceptReason": "|x-2|<2를 구간으로 변환한 뒤 자연수 해를 세는 절댓값 부등식이 핵심이다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "절댓값의 구간 변환과 자연수 개수 세기만 필요하다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit"
+      ],
+      "decisiveSolutionStep": "-2<x-2<2에서 0<x<4를 얻어 자연수 1,2,3을 센다.",
+      "rejectedAlternativeConcepts": [
+        "L3-2.5.2 이차부등식: 이차식 부등식이 아니며 절댓값의 구간 분할이 핵심이 아님",
+        "L3-2.5.3 절대부등식: 항상 참인 부등식 단원이어서 절댓값 부등식과 의미가 다름"
+      ],
+      "taxonomyReason": "수학_상 canonical의 여러 가지 부등식 아래 L4를 직접 검색했으나 절댓값 부등식 유형이 없다. 반복 가능한 핵심 유형이므로 nearest fallback 없이 foundation 후보로 남긴다.",
+      "statusReason": "L1~L3 경계는 확인되지만 정확한 절댓값 부등식 L4가 canonical에 없어 승격 보류."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-31bfaa715a09df555e0f45c1caeecd21",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "ed5604da670e41663e699c068800d2d3a203dd6a3505bdc42f9175285141496f",
+        "contentFingerprint": "d81086aec097362d99d10546a54048ad71c262090c0ff9dd527a86b545ba6ee2"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.1",
+          "label": "평면좌표"
+        },
+        "L3": {
+          "id": "L3-3.1.3",
+          "label": "삼각형의 무게중심"
+        },
+        "L4": {
+          "id": "L4-3.1.3.1",
+          "label": "좌표로 무게중심"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|평면좌표|삼각형의 무게중심|좌표로 무게중심",
+        "valid": true
+      },
+      "primaryConcept": "좌표로 무게중심",
+      "primaryConceptReason": "세 꼭짓점 좌표의 평균으로 무게중심을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "x·y 좌표 평균을 각각 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-150f51b2ffc10b605c5b5ffac2720f42",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 4,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "42eb11879e93df6c5c05c0057daf8237210c2a3b22bcb3ffafaaed8499a3f30f",
+        "contentFingerprint": "71fde7555dcb18811e44ecc5fe0fa32136bf82409cf617a58f801ae4dab4b0fd"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.2",
+          "label": "직선의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.2.3",
+          "label": "점과 직선 사이의 거리"
+        },
+        "L4": {
+          "id": "L4-3.2.3.1",
+          "label": "거리 공식"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|거리 공식",
+        "valid": true
+      },
+      "primaryConcept": "점과 직선 사이의 거리 공식",
+      "primaryConceptReason": "원점을 직선식에 대입하는 점-직선 거리 공식이 값을 직접 결정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "표준 공식에 원점과 계수를 대입한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-789356f8d7bc51b39d937164a2ac78f1",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 5,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "817bb01f28ab4c7f28b5e71117ca4eeddac2c7479af2dfde0ba95231497c2e89",
+        "contentFingerprint": "688069d1cff06a422e5acaf3f663951a16ba9579e0fd4bd1c0568a2e68f4178f"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.4",
+          "label": "여러 가지 방정식"
+        },
+        "L3": {
+          "id": "L3-2.4.2",
+          "label": "연립방정식"
+        },
+        "L4": {
+          "id": "L4-2.4.2.1",
+          "label": "이차식이 포함된 연립방정식"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|여러 가지 방정식|연립방정식|이차식이 포함된 연립방정식",
+        "valid": true
+      },
+      "primaryConcept": "이차식이 포함된 연립방정식",
+      "primaryConceptReason": "첫 식의 두 x값을 얻고 두 번째 식으로 y값을 검증하는 동시조건 처리가 핵심이다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "인수분해 후 각 x값에 대해 원 방정식을 대입한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-4ed84b911348c7ff6421febc2c2db24f",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 6,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "349654cc4a42d83debe0b8bffcc9f3694dafae420850fced09e865c48d775907",
+        "contentFingerprint": "2a791268eff699851341f2f25418217ac85d231afe97594a738973e205a3bb4c"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.3",
+          "label": "원의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.3.3",
+          "label": "원의 접선"
+        },
+        "L4": {
+          "id": "L4-3.3.3.1",
+          "label": "접점이 주어진 접선"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|원의 방정식|원의 접선|접점이 주어진 접선",
+        "valid": true
+      },
+      "primaryConcept": "접점이 주어진 접선",
+      "primaryConceptReason": "원 위의 접점 좌표를 접선 공식에 넣어 x절편을 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "접점형 접선 공식 적용 뒤 절편을 읽는다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-97b928815b63a313bf675ca50b4ccdbf",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "3ca5911bd7b5e225ae2f54bbeb142c9cd9708b32b069434e070ca4b20147de64",
+        "contentFingerprint": "60a26c9832bfe694c025d0de10c4f8495f5456eeb7120c8feede6889d1528836"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.4",
+          "label": "도형의 이동"
+        },
+        "L3": {
+          "id": "L3-3.4.2",
+          "label": "대칭이동"
+        },
+        "L4": {
+          "id": "L4-3.4.2.1",
+          "label": "x축·y축·원점 대칭"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|도형의 이동|대칭이동|x축·y축·원점 대칭",
+        "valid": true
+      },
+      "primaryConcept": "원점 대칭",
+      "primaryConceptReason": "완전제곱으로 원의 중심을 찾은 뒤 중심을 원점에 대칭시키는 변환이 핵심이다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|원의 방정식|원의 방정식|중심과 반지름"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "원의 중심 계산과 원점 대칭을 순서대로 적용한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "중심 (1,-2)를 원점 대칭하여 (-1,2)로 바꾼다.",
+      "rejectedAlternativeConcepts": [
+        "원의 방정식: 중심 계산은 전처리이고 질문을 결정하는 변환은 원점 대칭이다"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-55f238f42cea210b02f4db11bc0e1510",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 8,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "b981c48b10f45f7f3849ccdfde6ad78e170241edca5f9a4d16fd2359c07f5716",
+        "contentFingerprint": "0b3e0f0b4d7a7e8991ef09e281daba76e76a1379a6364886ed3b47e96000e226"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.1",
+          "label": "평면좌표"
+        },
+        "L3": {
+          "id": "L3-3.1.1",
+          "label": "두 점 사이의 거리"
+        },
+        "L4": {
+          "id": "L4-3.1.1.1",
+          "label": "거리 공식"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|평면좌표|두 점 사이의 거리|거리 공식",
+        "valid": true
+      },
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "x축 위 점을 두고 두 주어진 점까지의 거리 같음을 거리 제곱으로 식 세우는 문제가 핵심이다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "x축 조건과 등거리 조건을 하나의 일차식으로 정리한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-d4304ca6fd62ec63532127175f691497",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 9,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "b725755ef4cb2158c8026592ab3f6d16aaa7bd6d26950da34612ad6398a08a8e",
+        "contentFingerprint": "95afc29e35101509f3995666ac48a0785d1a65572e69b79744f0c2929ea5c593"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.2",
+          "label": "직선의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.2.1",
+          "label": "직선의 방정식"
+        },
+        "L4": {
+          "id": "L4-3.2.1.2",
+          "label": "두 점을 지나는 직선"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|직선의 방정식|직선의 방정식|두 점을 지나는 직선",
+        "valid": true
+      },
+      "primaryConcept": "두 점을 지나는 직선",
+      "primaryConceptReason": "넓이를 이등분하는 median의 끝점인 A와 BC의 중점을 잇는 직선의 기울기를 구한다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|평면좌표|선분의 내분·외분|내분점"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "대변의 중점을 먼저 찾고 두 점을 지나는 직선을 만든다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "BC 중점 (1,3)과 A(0,2)를 연결하여 m=1을 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "삼각형의 무게중심: median 성질만 사용하고 무게중심을 계산하지 않는다"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-0d645842f82cf4a9acba546466142215",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 10,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "b7aadb852edccb65b74ae8df8cffeea36251c811b9233f0a9f04d733397169d5",
+        "contentFingerprint": "90d028b8f72961a9984023a050ff27fab101c7ac38d85f55960f951c4965b0ae"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.1",
+          "label": "평면좌표"
+        },
+        "L3": {
+          "id": "L3-3.1.1",
+          "label": "두 점 사이의 거리"
+        },
+        "L4": {
+          "id": "L4-3.1.1.1",
+          "label": "거리 공식"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|평면좌표|두 점 사이의 거리|거리 공식",
+        "valid": true
+      },
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "두 고정점을 잇는 최단 직선거리로 PA+PB의 최솟값을 정하는 삼각부등식이 결정적이다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "거리식의 두 항을 선분 AB의 길이로 바꾸는 발상이 필요하다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "hidden_condition"
+      ],
+      "decisiveSolutionStep": "P가 A와 B를 잇는 선분 위에 있을 때 PA+PB=AB=√13이다.",
+      "rejectedAlternativeConcepts": [
+        "원의 방정식: 도형을 만들지 않고 거리합의 최솟값만 구한다"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-293854007307c2d69f1c1f7aa64b26a1",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 11,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "6aeea4bde4dd4d52795a519ef2219281eff92fdd394ea98c14747f3dda8abbe1",
+        "contentFingerprint": "c4ef723a687852d57ad262baeadc7d0390b785bddc5e57654218879791185383"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.3",
+          "label": "원의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.3.2",
+          "label": "원과 직선"
+        },
+        "L4": {
+          "id": "L4-3.3.2.2",
+          "label": "현의 길이"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|원의 방정식|원과 직선|현의 길이",
+        "valid": true
+      },
+      "primaryConcept": "현의 길이",
+      "primaryConceptReason": "중심에서 직선까지의 거리로 현의 반쪽을 구해 삼각형 넓이를 결정한다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|거리 공식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "점-직선 거리와 원의 반지름을 결합해 현과 높이를 함께 계산한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "중심에서 현까지 거리 3, 반지름 5이므로 AH=4, AB=8이고 넓이는 12이다.",
+      "rejectedAlternativeConcepts": [
+        "원과 직선의 교점 개수: 교점 수가 아니라 현의 길이와 넓이가 목표"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-cb3d0260c1a64e9f08761ebacb918a77",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 12,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "31a2f015f84a448a7acf6c1653a112cdff25a82d5e26b25f952e0267c3b4163f",
+        "contentFingerprint": "eb345031636cfd97480362f4c3a8bb994c45c3579a485b629cff5b7c70b684f5"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.3",
+          "label": "원의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.3.1",
+          "label": "원의 방정식"
+        },
+        "L4": {
+          "id": "CANONICAL_NO_FIT",
+          "label": "두 점까지 거리비의 자취(아폴로니우스 원)"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|원의 방정식|원의 방정식|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "두 점까지 거리비의 자취",
+      "primaryConceptReason": "PA:PB=1:2를 좌표식으로 바꾸어 아폴로니우스 원의 방정식과 넓이를 얻는 것이 결정적이다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|원의 방정식|원의 방정식|중심과 반지름"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "거리비를 제곱해 원의 방정식으로 정리하고 넓이까지 연결한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "4PA²=PB²를 전개해 (x-2)²+y²=4를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "중심과 반지름: 최종 원을 읽는 후속 단계이며 거리비 자취가 핵심",
+        "현의 길이: 두 점까지 거리비의 자취와 무관"
+      ],
+      "taxonomyReason": "원의 방정식 L3 아래 canonical L4를 직접 확인했지만 두 점까지 일정 거리비인 아폴로니우스 원 유형이 없다. 일반형에서 원 찾기로 밀어 넣지 않고 no-fit으로 둔다.",
+      "statusReason": "반복 가능한 거리비 자취 문제인데 정확한 canonical L4가 없어 foundation 후보."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-420cda7f4f2bf3d62e92d2fb34ea8952",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 13,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "9084f405b59834a89a8ecb29b2737528cfd30b42aed6b994642daab72116c8d0",
+        "contentFingerprint": "74f166253b8074cc25706960c5d3daa7dd66ba6b2cf4fe8724d4080180f5dccb"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.2",
+          "label": "직선의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.2.3",
+          "label": "점과 직선 사이의 거리"
+        },
+        "L4": {
+          "id": "L4-3.2.3.1",
+          "label": "거리 공식"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|거리 공식",
+        "valid": true
+      },
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "Q에서 OP에 내린 수선 길이를 점-직선 거리로 표현하는 것이 Q를 결정한다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|직선의 방정식|직선의 방정식|한 점과 기울기"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "선분 조건과 점-직선 거리를 결합한 뒤 PQ의 기울기와 절편을 계산한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept",
+        "hidden_condition"
+      ],
+      "decisiveSolutionStep": "Q=(a,0)에서 QH=4-a와 QI=3a/5를 같게 하여 a=5/2를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "두 점을 지나는 직선: 최종 계산 수단이지 Q를 정하는 핵심 조건은 거리"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-edf3ae58d5a0af9fda583321f535ab2d",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 14,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "e0e6ea3539e75ba3e5c3468d9ed5a96e435b1b4f0d81f9daed6ed498ed48a722",
+        "contentFingerprint": "c9e3e3eaf67c5dbee1989fe3479506b3e4470d93227063d50cdd9dad11c0e4a6"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.4",
+          "label": "도형의 이동"
+        },
+        "L3": {
+          "id": "L3-3.4.1",
+          "label": "평행이동"
+        },
+        "L4": {
+          "id": "L4-3.4.1.2",
+          "label": "원의 이동"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|도형의 이동|평행이동|원의 이동",
+        "valid": true
+      },
+      "primaryConcept": "원의 이동",
+      "primaryConceptReason": "두 포물선 꼭짓점의 대응으로 평행이동 벡터를 정하고 그 벡터로 원의 중심을 옮기는 과정이 매개변수 k를 결정한다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|원의 방정식|원의 접선|기울기가 주어진 접선"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "꼭짓점 대응, 원의 중심 이동, 두 접선 수직 조건을 연쇄적으로 결합한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "평행이동 후 중심 (k-2,-k)와 P(2,0)의 거리가 2√2인 조건에서 (k-2)²=0을 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "포물선과 직선: 포물선은 이동 벡터를 읽는 보조 표현이고 최종 대상은 이동한 원"
+      ],
+      "taxonomyReason": "원의 이동이 k를 직접 통제한다. 접선 수직은 보조 조건으로 secondary에 기록했다.",
+      "statusReason": "복합 고난도이지만 source와 solution이 완결되어 HOLD는 아님."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-4c10c08bc03e4e7c7accf0a13dd715cb",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 15,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "01392b6f075b2072d6463083519e76eb6ed0be1acda4457b61aca7ee7aa7f1ed",
+        "contentFingerprint": "03e1660f9043289e4c90f818cafe3a9e63af1c86a23ee5267bd176c4e288ac2d"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.5",
+          "label": "여러 가지 부등식"
+        },
+        "L3": {
+          "id": "L3-2.5.2",
+          "label": "이차부등식"
+        },
+        "L4": {
+          "id": "L4-2.5.2.2",
+          "label": "근의 위치와 해"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해",
+        "valid": true
+      },
+      "primaryConcept": "근의 위치와 해",
+      "primaryConceptReason": "두 이차부등식의 해 구간이 겹치지 않도록 근과 경계의 위치를 비교한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "인수분해 후 열린 구간과 닫힌 외부 구간의 비교를 매개변수 조건으로 바꾼다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "difficulty_4",
+        "hidden_condition",
+        "parameter_condition"
+      ],
+      "decisiveSolutionStep": "첫 해 (-a,4)와 둘째 해 x≤-7/2 또는 x≥a²가 모두 분리되도록 2≤a≤7/2를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "연립일차부등식: 두 식 모두 이차식이고 해 구간의 근 위치가 핵심"
+      ],
+      "taxonomyReason": "근의 위치와 해가 실제 공통해 부재 조건을 결정한다.",
+      "statusReason": "매개변수와 두 해 집합 비교가 필요하지만 식과 해설이 충분하다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-424b4bd7cd47d039bba3d1791c144eff",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 16,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "00f754b353ca275c2f410ff5a5d802716055a60c3fb1a7737d935ef8dcdc40ac",
+        "contentFingerprint": "bcc79d7e3171e0c3cafd06afe820e559af74e2aedcb25ace69b8c950528c2fcb"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "inspected source q16.png; two translated/reflected circles C1,C2 and x-axis placement confirmed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.4",
+          "label": "도형의 이동"
+        },
+        "L3": {
+          "id": "L3-3.4.1",
+          "label": "평행이동"
+        },
+        "L4": {
+          "id": "L4-3.4.1.2",
+          "label": "원의 이동"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|도형의 이동|평행이동|원의 이동",
+        "valid": true
+      },
+      "primaryConcept": "원의 이동",
+      "primaryConceptReason": "C1 중심을 평행이동·x축 대칭해 C2 중심을 정하고 두 원의 최단거리를 계산하는 전략이 전체 조건을 지배한다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|평면좌표|두 점 사이의 거리|거리 공식"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "두 원의 이동, 축까지의 extremum 조건, 중심거리와 반지름을 모두 연결해야 한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "image_dependent",
+        "difficulty_5",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "q16.png의 원 배치를 확인한 뒤 C1 중심 (-2,3), C2 중심 (2,-5), 중심거리 4√5에서 반지름 합 2를 빼 4√5-2를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "원의 방정식: 완전제곱은 중심 확인용이고 이동·최단거리 조건이 결정적",
+        "점과 직선 사이의 거리: x축 범위 extremum을 직접 다루지 않는다"
+      ],
+      "taxonomyReason": "실제 source image는 C1 위·C2 아래의 배치를 보강하지만, taxonomy는 도형의 이동이며 image 존재 자체를 HOLD 사유로 사용하지 않았다.",
+      "statusReason": "필요 source image를 실제 확인했고 content/solution과 일치하여 태깅 가능."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-2b35ff01015e69f5dd36c328d2a1021c",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 17,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "ae68067511ae96284cbf0a7e027ccf20a454db7e01b17e341fea5d5a01cdd55a",
+        "contentFingerprint": "016759f5cdf4683e750945652c1ec8cfffdd30da39713da1642ea0ea95a5c9eb"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.5",
+          "label": "여러 가지 부등식"
+        },
+        "L3": {
+          "id": "L3-2.5.2",
+          "label": "이차부등식"
+        },
+        "L4": {
+          "id": "L4-2.5.2.2",
+          "label": "근의 위치와 해"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해",
+        "valid": true
+      },
+      "primaryConcept": "근의 위치와 해",
+      "primaryConceptReason": "|f(x)-x|의 부호가 바뀌는 -1,3에서 구간을 나누고 각 이차부등식의 정수해 개수를 센다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|방정식과 부등식|여러 가지 방정식|방정식의 활용|근의 조건"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "절댓값 구간분할, 매개변수 p 비교, 정수해 개수 조건을 함께 처리한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "difficulty_5",
+        "piecewise_condition",
+        "parameter_condition"
+      ],
+      "decisiveSolutionStep": "p=-1/4는 5개로 탈락하고 p=-1/2에서 -2,-1,0,1,2,3의 6개가 된다.",
+      "rejectedAlternativeConcepts": [
+        "방정식의 활용-근의 조건: p를 고르는 최종 조건이 이차부등식 해 집합 비교에 있음"
+      ],
+      "taxonomyReason": "절댓값 자체보다 부호구간별 이차부등식의 근 위치와 정수해가 답을 결정한다.",
+      "statusReason": "해설의 두 구간 계산을 직접 대조해 6개 조건을 확인했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b2fd27170298cd3a490b7375d9ace680",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 18,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "caf2275b5ea37423ab2075eb49fc47f5c8264dfaa2d95530e3073f03b636fbfe",
+        "contentFingerprint": "22b7c42614be29f3f6485faad22898d4af4b4918b8358fe20fde63e5b7eadfb0"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.2",
+          "label": "이차방정식"
+        },
+        "L3": {
+          "id": "L3-2.2.1",
+          "label": "이차방정식의 근"
+        },
+        "L4": {
+          "id": "CANONICAL_NO_FIT",
+          "label": "두 근의 기준점 사이 위치 조건(정식 L4 없음)"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|이차방정식|이차방정식의 근|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "두 근의 위치 조건",
+      "primaryConceptReason": "두 근이 -1과 1을 사이에 두도록 f(-1), f(1)의 부호를 이용해 정수 a를 제한한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "근의 위치를 함수값 부호 조건으로 번역하고 정수 매개변수를 선별한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "parameter_condition"
+      ],
+      "decisiveSolutionStep": "위로 열린 포물선에서 f(-1)>0, f(1)<0을 세워 -3<a<-3/5를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "판별식: 실근의 존재가 아니라 두 근의 ±1 기준점에 대한 위치가 핵심",
+        "근의 합·곱: 근의 위치 부호 조건을 직접 표현하지 못함"
+      ],
+      "taxonomyReason": "이차방정식의 근 아래 판별식·근의 합곱은 있으나 두 근이 기준점 양쪽에 놓이는 반복 유형의 L4가 없다. nearest fallback을 거부한다.",
+      "statusReason": "반복 가능한 근 위치 유형의 canonical no-fit이 확인되어 foundation 후보."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-7032a0868ad0fca65a26dc016a6f84e2",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 19,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "55a2bc35407ce626c5289e9f2a19c0731c8f7d4762a180aff80d8b2be0dece86",
+        "contentFingerprint": "be587d9dee24a3e2a8f458773fed97f162d7d9721b6dcecaaf9494d9e6389d08"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.2",
+          "label": "직선의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.2.1",
+          "label": "직선의 방정식"
+        },
+        "L4": {
+          "id": "CANONICAL_NO_FIT",
+          "label": "삼각형 내심 좌표(정식 L4 없음)"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|직선의 방정식|직선의 방정식|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "삼각형 내심 좌표",
+      "primaryConceptReason": "세 직선으로 삼각형을 복원하고 변 길이를 가중치로 하여 내심을 계산하는 기하 중심 문제가 결정적이다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|직선의 방정식|직선의 방정식|두 점을 지나는 직선"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "세 교점, 세 변 길이, 내심의 가중평균을 순차적으로 계산한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "변 길이 BC, CA, AB를 맞은편 꼭짓점 좌표의 가중치로 사용해 (23/15,34/15)를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "두 점을 지나는 직선: 교점 계산의 보조 단계",
+        "점과 직선 사이 거리: 내심의 좌표를 완성하는 중심 공식이 핵심"
+      ],
+      "taxonomyReason": "수학_상 도형의 방정식 canonical을 확인했으나 삼각형 내심/변 길이 가중좌표 유형이 별도 L4로 없다. 직선 방정식으로 환원하는 것은 nearest fallback이므로 금지한다.",
+      "statusReason": "반복 가능한 내심 좌표 유형이 canonical에 없어 foundation 후보."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-97306ad6ecab79ebbff4692e245a25d2",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 20,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "745d78c9c25c05923caedf0c63c60a1094992d0d6bd53c52a31f580d0f3ccd6e",
+        "contentFingerprint": "8a5f3a21a8221f5a4626daad8bcc780626abb5822b8eed93e7aa2fcc16dcaa27"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.2",
+          "label": "직선의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.2.3",
+          "label": "점과 직선 사이의 거리"
+        },
+        "L4": {
+          "id": "L4-3.2.3.2",
+          "label": "도형의 넓이·최소거리"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|도형의 넓이·최소거리",
+        "valid": true
+      },
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "각의 이등분선과 반지름 7 원의 중심은 두 직선까지의 거리 조건으로 결정된다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|직선의 방정식|직선의 방정식|두 점을 지나는 직선"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "각의 이등분선 두 후보를 판별하고 거리 절댓값의 두 해 중 조건에 맞는 중심을 고른다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "difficulty_4",
+        "compound_concept",
+        "case_split"
+      ],
+      "decisiveSolutionStep": "두 직선까지 거리 같음에서 두 이등분선을 만들고 x절편 양수인 y=x-7을 선택한 뒤 t<0 해를 남긴다.",
+      "rejectedAlternativeConcepts": [
+        "원의 접선: 원의 존재 조건은 거리식으로 처리되지만 각 이등분선과 중심 선택이 전체 전략"
+      ],
+      "taxonomyReason": "중심과 두 직선의 거리 조건이 핵심이므로 최소거리형 L4로 기록하고 직선 방정식은 secondary로 분리했다.",
+      "statusReason": "두 후보 및 중심 부호 조건을 해설과 직접 대조해 단일 primary 가능."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-d71bfeda2d1be9c720a073e7872becd7",
+        "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 21,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "6e7e81b5fb104922a47686fac8b1b6ff06c27922fac615f8c3568974e5b65079",
+        "contentFingerprint": "d8d95da909bd5b919b80c0cdbf1b3700bd9782ad3ad4a660f39208873a5f80cd"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.2",
+          "label": "직선의 방정식"
+        },
+        "L3": {
+          "id": "L3-3.2.3",
+          "label": "점과 직선 사이의 거리"
+        },
+        "L4": {
+          "id": "L4-3.2.3.1",
+          "label": "거리 공식"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|거리 공식",
+        "valid": true
+      },
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "두 원의 반지름을 먼저 축·직선 접점 거리로 정하고 C2 중심의 가능한 x좌표를 거리 공식으로 구한다.",
+      "secondaryConceptKeys": [
+        "2015|high|수학_상|도형의 방정식|도형의 이동|대칭이동|x축·y축·원점 대칭"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "C1의 반지름 결정, x축 접점의 두 경우, 직선까지 거리의 절댓값 경우분기를 거친다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "difficulty_4",
+        "compound_concept",
+        "case_split"
+      ],
+      "decisiveSolutionStep": "r=2를 얻은 뒤 b=±2와 |a-2b+6|=2√5를 조합해 최댓값·최솟값을 취한다.",
+      "rejectedAlternativeConcepts": [
+        "원의 이동: 두 원이 직접 이동 관계가 아니라 같은 반지름과 접선 조건으로 중심을 찾는다"
+      ],
+      "taxonomyReason": "원의 중심을 직선에서 일정 거리로 정하는 거리 조건이 primary이고 축 접선·대칭 표현은 보조다.",
+      "statusReason": "네 경우를 모두 확인했고 극값 선택 근거가 해설에 명시되어 있어 HOLD 아님."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-6a17a87d85d1ea66935244a845b8106d",
+        "sourceArchiveFile": "original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 1,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "78254ba391a732c5011ecd4ad285a3ab7bc38a67f146db4ca98cb6e33f9ced57",
+        "contentFingerprint": "2e48d26e994f2f8e8f2220075f32542e85fc991a1d6bcd8ed20623f0c12f2381"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.5",
+          "label": "여러 가지 부등식"
+        },
+        "L3": {
+          "id": "L3-2.5.2",
+          "label": "이차부등식"
+        },
+        "L4": {
+          "id": "L4-2.5.2.2",
+          "label": "근의 위치와 해"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해",
+        "valid": true
+      },
+      "primaryConcept": "근의 위치와 해",
+      "primaryConceptReason": "해 구간의 양 끝을 이차방정식의 근으로 읽어 계수를 복원한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "두 근을 바로 식에 대입해 전개한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-419e77c0dc721b1785d4e31d48d4f4f7",
+        "sourceArchiveFile": "original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "154474f291b8ff0144258e99a76ebde6c1cb0e56472607d127c8430d243bb25d",
+        "contentFingerprint": "ba40d0b3f28edb81ff87b5ed27c587026d6e342e52ffa4b7c0179af5b876099b"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.4",
+          "label": "도형의 이동"
+        },
+        "L3": {
+          "id": "L3-3.4.1",
+          "label": "평행이동"
+        },
+        "L4": {
+          "id": "L4-3.4.1.1",
+          "label": "점·직선의 이동"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|도형의 이동|평행이동|점·직선의 이동",
+        "valid": true
+      },
+      "primaryConcept": "점·직선의 이동",
+      "primaryConceptReason": "직선의 평행이동 식을 세워 y축 교점 조건을 대입해 a를 정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "이동된 직선의 좌표 치환과 교점 대입이 필요하다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-ef949b388d3e8abcac1b24c6d1bd0648",
+        "sourceArchiveFile": "original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "2aea52661791cf1d4096651b227939011b20d65a2d682ae00a68b7ee219f4b79",
+        "contentFingerprint": "1253c2bac7c1b6238070778eca7a1d267f363ca1b26a63b9598d1ca7192f31f7"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-2",
+          "label": "방정식과 부등식"
+        },
+        "L2": {
+          "id": "L2-2.5",
+          "label": "여러 가지 부등식"
+        },
+        "L3": {
+          "id": "L3-2.5.3",
+          "label": "절대부등식"
+        },
+        "L4": {
+          "id": "CANONICAL_NO_FIT",
+          "label": "항상 성립하는 이차식 판별(정식 L4 없음)"
+        },
+        "canonicalPathKey": "2015|high|수학_상|방정식과 부등식|여러 가지 부등식|절대부등식|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "항상 성립하는 이차식 판별",
+      "primaryConceptReason": "각 명제를 제곱합으로 바꾸거나 0 반례를 찾아 전 실수에서의 부등식 성립 여부를 판정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "완전제곱과 제곱합 항등식을 이용해 네 명제를 각각 판정한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "ㄱ은 완전제곱+3/4, ㄹ은 세 제곱의 합으로 항상 성립하고 ㄴ·ㄷ은 반례가 있다.",
+      "rejectedAlternativeConcepts": [
+        "산술·기하평균: 해당 부등식을 사용하지 않음",
+        "코시형 기본: 코시 부등식 적용 문제가 아님"
+      ],
+      "taxonomyReason": "절대부등식 L3 아래 등록 L4가 AM-GM·코시형으로 한정되어 있어 제곱합에 의한 항상참 판별을 정확히 표현할 L4가 없다.",
+      "statusReason": "반복 가능한 항상성립 판별 유형의 canonical no-fit을 확인해 foundation 후보."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b54c8234313e947846be6b2308a97f61",
+        "sourceArchiveFile": "original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 4,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "ab527ae231046c1d044c9459e71a5f8367e2d3a3debbc8747fdd062766fab00a",
+        "contentFingerprint": "6c9a8ec2a9a183b5ae1a86c805ec5abc3b380b89e3abeb4b0aa7fbe9476d46a7"
+      },
+      "sourceRead": {
+        "content": true,
+        "choices": true,
+        "answer": true,
+        "solution": true,
+        "neededVisual": "not_needed"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": {
+          "id": "L1-3",
+          "label": "도형의 방정식"
+        },
+        "L2": {
+          "id": "L2-3.1",
+          "label": "평면좌표"
+        },
+        "L3": {
+          "id": "L3-3.1.3",
+          "label": "삼각형의 무게중심"
+        },
+        "L4": {
+          "id": "L4-3.1.3.1",
+          "label": "좌표로 무게중심"
+        },
+        "canonicalPathKey": "2015|high|수학_상|도형의 방정식|평면좌표|삼각형의 무게중심|좌표로 무게중심",
+        "valid": true
+      },
+      "primaryConcept": "좌표로 무게중심",
+      "primaryConceptReason": "무게중심 좌표 평균식에서 미지 꼭짓점 좌표를 역산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "x·y 평균식을 각각 일차식으로 풀면 된다.",
+      "status": "DIRECT_TAGGED"
+    }
+  ],
+  "packetFreeze": {
+    "frozen": true,
+    "frozenBy": "A_PRIMARY_TAGGER",
+    "semanticInputsAfterFreeze": "none",
+    "motherFinalization": "not_applicable_in_A_packet"
+  }
+}

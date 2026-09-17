@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "agentRole": "B_INDEPENDENT_TAGGER",
+  "packetType": "FROZEN_RECORD_REPLACEMENT",
+  "batchId": "batch-103-replacement-record-2291",
+  "recordIndex": 2291,
+  "manifestUid": "h1-direct-4d67b3a1967d7ab20ea2393845bd34c3",
+  "questionUid": "original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js#q12",
+  "sourceArchiveFile": "original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js",
+  "sourceOrdinal": 12,
+  "curriculumKey": "2015",
+  "sourceFingerprint": "9fe8b5464976d37ebb5ee988a6ce5d1e8ae29a3e96b8eb018893a8ec6f43181f",
+  "contentFingerprint": "8a43c93d5eb2acc5bc338c2d66ecd614e1998a72d5572b05d7925502f9cd58d1",
+  "sourceEvidence": {
+    "content": "함수 $f$가 $f\\left(\\dfrac{2-x}{3}\\right)=3x-6$일 때, $(f\\circ g)(x)=x$를 만족시키는 함수 $g(x)$에 대하여 $g(-3)$의 값은? [4점]",
+    "choices": [
+      "$\\dfrac13$",
+      "$\\dfrac23$",
+      "$1$",
+      "$\\dfrac43$",
+      "$\\dfrac53$"
+    ],
+    "answer": "①",
+    "solution": "[키포인트] 함수식의 입력 부분을 하나의 문자로 치환하면 $f$의 식을 직접 구할 수 있다.\n조건 정리: $f\\left(\\dfrac{2-x}{3}\\right)=3x-6$이고 $(f\\circ g)(x)=x$이다.\n풀이 방향: $f$를 구한 뒤 $g=f^{-1}$을 이용한다.\n정석 풀이: $t=\\dfrac{2-x}{3}$으로 놓으면 $x=2-3t$이다. 이를 오른쪽 식에 대입하면\n$f(t)=3(2-3t)-6=-9t$이다.\n따라서 $f(x)=-9x$이고, $(f\\circ g)(x)=x$이므로 $g(x)=f^{-1}(x)=-\\dfrac{x}{9}$이다.\n그러므로\n$g(-3)=-\\dfrac{-3}{9}=\\dfrac13$이다.\n따라서 정답은 ①이다.",
+    "image": "",
+    "solutionImage": ""
+  },
+  "courseKey": "수학_하",
+  "L1": "함수",
+  "L2": "함수",
+  "L3": "역함수",
+  "L4": "역함수 구하기",
+  "primaryConcept": "역함수",
+  "primaryConceptReason": "The condition (f∘g)(x)=x identifies g as the inverse function of f, and the solution explicitly computes f^{-1} and evaluates it.",
+  "secondaryConceptKeys": ["합성함수"],
+  "difficultyBucket": 4,
+  "difficultyReason": "Requires a substitution to recover the linear function f, then inverse-function reasoning and evaluation; it is more than a direct one-step computation but has no case split.",
+  "curriculumApplicability": "DEFAULT_SCOPE",
+  "defaultSelectable": true,
+  "tagConfidence": "high",
+  "tagStatus": "PASS",
+  "reviewStatus": "reviewed_pass",
+  "status": "B_CHECKED",
+  "statusReason": "Direct-source independent B tag; exact manifest identity and locked-canonical mapping verified.",
+  "decisiveSolutionStep": "Set t=(2-x)/3 so f(t)=-9t; therefore g=f^{-1} and g(-3)=1/3.",
+  "rejectedAlternativeConcepts": [
+    {
+      "candidate": "2015/수학_하/함수/합성함수/합성함수 계산",
+      "reason": "Composition appears in the condition, but the decisive requested operation is finding and evaluating the inverse function g=f^{-1}."
+    },
+    {
+      "candidate": "2015/수학_하/함수/함수의 성질/일대일함수",
+      "reason": "No independent one-to-one-function property is being classified; the question directly constructs the inverse of a recovered linear function."
+    }
+  ],
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "authorityStatus": "LOCKED",
+    "curriculum": "2015",
+    "scope": "수학_하",
+    "majorUnit": "함수",
+    "midUnit": "함수",
+    "concept": "역함수",
+    "problemType": "역함수 구하기",
+    "curriculumApplicability": "DEFAULT_SCOPE",
+    "defaultSelectable": true
+  },
+  "freeze": {
+    "frozen": true,
+    "frozenAt": "2026-09-17T00:00:00+09:00",
+    "sourceOnlyBlind": true,
+    "priorAAndBOldArtifactsRead": false
+  }
+}

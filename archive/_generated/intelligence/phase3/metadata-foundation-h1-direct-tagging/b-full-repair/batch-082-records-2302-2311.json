@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "metadata-foundation-h1-direct-tagging-b-packet-v1",
+  "agentRole": "B_INDEPENDENT_TAGGER",
+  "packetType": "FROZEN_BATCH",
+  "batchId": "batch-082",
+  "recordRange": { "start": 2302, "end": 2311 },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "authorityStatus": "LOCKED"
+  },
+  "sourceManifest": {
+    "path": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "sha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09"
+  },
+  "records": [
+    {
+      "recordIndex": 2302,
+      "manifestUid": "h1-direct-8ba7e1aa71f724eb187fb52e3e892154",
+      "questionUid": "h1-direct-8ba7e1aa71f724eb187fb52e3e892154",
+      "sourceArchiveFile": "original/high/h1/2mid/23_순천여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 23,
+      "curriculumKey": "2015",
+      "sourceFingerprint": "cc4271bca70d724d7da0fad468e800f15ad85daf25530e2d584ef19e7ad88224",
+      "contentFingerprint": "b053260c49b4697f27796044bd09ff5ef5a41ac77ea6051c11a74db2fa8f6cbc",
+      "courseKey": "수학_하",
+      "L1": "함수", "L2": "함수", "L3": "역함수", "L4": "그래프 대칭",
+      "primaryConcept": "역함수", "primaryConceptReason": "역함수와 원함수의 교점이 y=x 위에 있다는 성질로 f(x)=x의 두 해 조건을 구한다.",
+      "secondaryConceptKeys": [], "difficultyBucket": 4, "difficultyReason": "역함수의 교점 성질과 정의역 제한, 판별식 조건을 함께 적용한다.",
+      "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED",
+      "statusReason": "원함수의 정의역에서 증가성과 역함수 교점 조건을 source solution으로 확인했다.",
+      "decisiveSolutionStep": "x²-3x+k=0의 두 근이 모두 x≥1이고 서로 달라야 하므로 2≤k<9/4.",
+      "sourceEvidence": { "contentExcerpt": "정의역 x≥1인 f(x)=x²-2x+k와 역함수 그래프의 서로 다른 두 교점", "answer": "$2≤k<\\dfrac94$", "solutionExcerpt": "f(x)=x를 풀어 판별식과 작은 근의 정의역 조건을 결합" }
+    },
+    {
+      "recordIndex": 2303,
+      "manifestUid": "h1-direct-36b39f8fed3942370a8647cdd1a59194",
+      "questionUid": "h1-direct-36b39f8fed3942370a8647cdd1a59194",
+      "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 1, "curriculumKey": "2015",
+      "sourceFingerprint": "67bfc03d99d99d35c729052c1386c3d08fe4a8eef85fb3f376d26e33493d756e", "contentFingerprint": "aa3ee5dc39fbfd247e3172c16655def47e30bebc67c04df747e9047c655b534d",
+      "courseKey": "수학_하", "L1": "집합과 명제", "L2": "집합의 뜻과 포함 관계", "L3": "집합과 원소", "L4": "부분집합 판정",
+      "primaryConcept": "집합과 원소", "primaryConceptReason": "원소나열법으로 제시된 집합에서 원소 관계와 부분집합 관계를 판정한다.", "secondaryConceptKeys": [],
+      "difficultyBucket": 1, "difficultyReason": "집합의 원소와 부분집합의 기본 정의를 직접 적용한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED",
+      "statusReason": "A의 네 원소와 각 보기의 원소·부분집합 관계를 source solution으로 대조했다.", "decisiveSolutionStep": "{1,2}는 A의 원소이면서 1,2가 모두 A에 있어 부분집합이고, ④만 거짓이다.",
+      "sourceEvidence": { "contentExcerpt": "A={∅,1,2,{1,2}}의 원소·부분집합 관계", "answer": "④", "solutionExcerpt": "{1,2} 자체는 A의 원소이고 {1,2}⊂A도 성립" }
+    },
+    {
+      "recordIndex": 2304, "manifestUid": "h1-direct-1eb7da7f923dad75e562ed462df44295", "questionUid": "h1-direct-1eb7da7f923dad75e562ed462df44295", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 2, "curriculumKey": "2015", "sourceFingerprint": "edf093622df6b94b77b74037cea193ef7e35984a7adab154f831dceb9a551d7e", "contentFingerprint": "18e375777348f9c28b4ba5b6722c1c101809c0d2ace09d544c5e3be0b1dea4a5",
+      "courseKey": "수학_하", "L1": "함수", "L2": "함수", "L3": "함수의 뜻", "L4": "정의역·공역·치역", "primaryConcept": "함수의 뜻", "primaryConceptReason": "유한 정의역의 두 함수가 같다는 조건을 각 원소에서 비교한다.", "secondaryConceptKeys": [], "difficultyBucket": 1, "difficultyReason": "두 입력값에서 함수값을 대입해 a,b를 결정한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "x=0,1에서 f=g를 대입하는 source solution과 일치한다.", "decisiveSolutionStep": "b=1, a+b=2이므로 a=1, ab=1.", "sourceEvidence": { "contentExcerpt": "X={0,1}에서 f(x)=ax+b와 g(x)=x²+1의 함수값 일치", "answer": "①", "solutionExcerpt": "x=0과 x=1을 각각 대입" }
+    },
+    {
+      "recordIndex": 2305, "manifestUid": "h1-direct-40fcc04a990b8fed6c3634d428b69901", "questionUid": "h1-direct-40fcc04a990b8fed6c3634d428b69901", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 3, "curriculumKey": "2015", "sourceFingerprint": "71d0684cdba0b0d8cc326cb8b90ace2d55576b1c010dbe1c3f4c198c9d95b9fb", "contentFingerprint": "da1411cff270f2c9f57a33dfe42ddc78fb7a36ed0da037e24370e7ed6b98a01e",
+      "courseKey": "수학_상", "L1": "도형의 방정식", "L2": "도형의 이동", "L3": "평행이동", "L4": "점·직선의 이동", "primaryConcept": "평행이동", "primaryConceptReason": "점의 두 좌표에 평행이동 규칙을 직접 적용한다.", "secondaryConceptKeys": [], "difficultyBucket": 1, "difficultyReason": "x,y좌표를 각각 비교하는 기본 평행이동이다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "원본 JS의 q03 solution SVG와 좌표 계산을 확인했다.", "decisiveSolutionStep": "3+a=2, 5+2=b이므로 a+b=6.", "sourceEvidence": { "contentExcerpt": "(3,5)를 (x+a,y+2)로 이동해 (2,b)", "answer": "②", "solutionExcerpt": "좌표별 비교로 a=-1,b=7", "imageInspected": true, "imagePath": "archive/assets/images/23_팔마고_2학기_중간_고1_기출/q03-solution.svg" }
+    },
+    {
+      "recordIndex": 2306, "manifestUid": "h1-direct-be21a70223b601c6e88e388d751c9907", "questionUid": "h1-direct-be21a70223b601c6e88e388d751c9907", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 4, "curriculumKey": "2015", "sourceFingerprint": "2e0d444524e8ea8882c3cd2fcb4a5647e5bafd936b0cc9d9785934823ba92a6b", "contentFingerprint": "b6a08462e49438df79caf6f75854fcb8803c6697d7062daf183cd0d169150032",
+      "courseKey": "수학_하", "L1": "함수", "L2": "함수", "L3": "함수의 성질", "L4": "일대일함수·상수함수", "primaryConcept": "함수의 성질", "primaryConceptReason": "유한 집합에서 전체 함수, 일대일대응, 상수함수의 개수를 세어 합한다.", "secondaryConceptKeys": [], "difficultyBucket": 2, "difficultyReason": "3^3, 3!, 3을 각각 계산해 합산한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "세 함수 유형의 개수 정의와 source solution 계산을 확인했다.", "decisiveSolutionStep": "p=27,q=6,r=3이므로 p+q+r=36.", "sourceEvidence": { "contentExcerpt": "X={1,2,3}에서 X로의 함수·일대일대응·상수함수 개수", "answer": "④", "solutionExcerpt": "3^3+3!+3=36" }
+    },
+    {
+      "recordIndex": 2307, "manifestUid": "h1-direct-413ba6eb5e12973f1fd350ad69618498", "questionUid": "h1-direct-413ba6eb5e12973f1fd350ad69618498", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 5, "curriculumKey": "2015", "sourceFingerprint": "f1bf562f068b1854de40dd359ff26f20c8fc89c673f8b72de52322b8458ae397", "contentFingerprint": "958f65f98e57732a220a9098022f954198fe2fdacd14afa07769e7a3aa8c1d05",
+      "courseKey": "수학_하", "L1": "집합과 명제", "L2": "집합의 연산", "L3": "교집합과 합집합", "L4": "집합 연산", "primaryConcept": "교집합과 합집합", "primaryConceptReason": "A∩B가 {1,3}이 되도록 매개변수 a를 보기와 집합 원소로 검증한다.", "secondaryConceptKeys": [], "difficultyBucket": 2, "difficultyReason": "교집합 원소 조건을 대입하고 실제 집합을 확인한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "a=3에서 실제 A∩B={1,3}임을 source solution으로 검증했다.", "decisiveSolutionStep": "a²-2a=3의 보기 해 a=3을 대입하면 A={1,2,3}, B={1,3,4}.", "sourceEvidence": { "contentExcerpt": "A={1,2,a²-2a}, B={1,a,a+1}, A∩B={1,3}", "answer": "③", "solutionExcerpt": "a=3 대입 후 교집합 직접 확인" }
+    },
+    {
+      "recordIndex": 2308, "manifestUid": "h1-direct-4ed8b633dde34316376ceccbde0af046", "questionUid": "h1-direct-4ed8b633dde34316376ceccbde0af046", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 6, "curriculumKey": "2015", "sourceFingerprint": "7b099ed73b74ac992fcf3437417361da444476199b4b27fdb83ae44c679fd86f", "contentFingerprint": "42952ae050d973be85e92d7e7d9dd7d582fadd4972e903b85464ddda0523f60d",
+      "courseKey": "수학_하", "L1": "집합과 명제", "L2": "명제", "L3": "증명", "L4": "귀류법", "primaryConcept": "증명", "primaryConceptReason": "√2의 유리성 가정에서 서로소 조건과 짝수성의 모순을 만드는 귀류법이다.", "secondaryConceptKeys": ["역·이·대우"], "difficultyBucket": 2, "difficultyReason": "짝수성의 전달과 서로소 모순을 단계적으로 적용한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "원본 JS의 서로소·짝수·짝수 선택지와 source solution의 모순 전개를 확인했다.", "decisiveSolutionStep": "2p²=q²에서 q가 짝수이고 이어 p도 짝수여서 서로소에 모순.", "sourceEvidence": { "contentExcerpt": "√2=q/p의 무리수 증명에서 (가)(나)(다)", "answer": "⑤", "solutionExcerpt": "q와 p가 모두 짝수라는 모순" }
+    },
+    {
+      "recordIndex": 2309, "manifestUid": "h1-direct-a2b6944d1da30074885f0cc1ef8539db", "questionUid": "h1-direct-a2b6944d1da30074885f0cc1ef8539db", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 7, "curriculumKey": "2015", "sourceFingerprint": "7e0d1d0a47e76174757a8aca0019cafd22e0eae6baf1e2db36a83772bba3048d", "contentFingerprint": "8d009da06881d67731336ced59dc9c7b7bc92a6550688b716fb6969db7fa4013",
+      "courseKey": "수학_상", "L1": "방정식과 부등식", "L2": "이차방정식과 이차함수", "L3": "직선과 포물선", "L4": "접선 조건", "primaryConcept": "직선과 포물선", "primaryConceptReason": "평행이동한 직선과 포물선의 접점 조건을 중근 조건으로 판정한다.", "secondaryConceptKeys": ["평행이동"], "difficultyBucket": 3, "difficultyReason": "직선 이동식을 세운 뒤 포물선과의 연립식 판별식을 적용한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "원본 JS와 q07 solution SVG, 접선의 중근 계산을 확인했다.", "decisiveSolutionStep": "이동 직선 y=2x+a-5와 포물선의 연립이 x²+a-8=0이므로 a=8.", "sourceEvidence": { "contentExcerpt": "직선 y=2x-1을 (2,a)만큼 이동해 포물선에 접함", "answer": "④", "solutionExcerpt": "연립식의 판별식이 0", "imageInspected": true, "imagePath": "archive/assets/images/23_팔마고_2학기_중간_고1_기출/q07-solution.svg" }
+    },
+    {
+      "recordIndex": 2310, "manifestUid": "h1-direct-b050a8413ee6b7058884480731de06bf", "questionUid": "h1-direct-b050a8413ee6b7058884480731de06bf", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 8, "curriculumKey": "2015", "sourceFingerprint": "e2c445afb22c91a5a440fed59fbc521ba7a880448783d36bab4bbc8c20ed1411", "contentFingerprint": "a36f6f4b27433c6c888688a7fdfa76675c8917e2d48509cf5af609ee98c94202",
+      "courseKey": "수학_하", "L1": "집합과 명제", "L2": "명제", "L3": "역·이·대우", "L4": "대우를 이용한 증명", "primaryConcept": "역·이·대우", "primaryConceptReason": "명제의 대우를 세우고 n을 3k-1 또는 3k-2로 나누어 증명한다.", "secondaryConceptKeys": ["증명"], "difficultyBucket": 3, "difficultyReason": "대우 전환과 나머지별 경우분할, 제곱 전개를 함께 사용한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "원본 JS의 대우 문장과 q08 source solution 전개를 확인했다.", "decisiveSolutionStep": "n이 3의 배수가 아니면 3k-1 또는 3k-2이고 두 제곱 모두 나머지 1.", "sourceEvidence": { "contentExcerpt": "n²이 3의 배수이면 n도 3의 배수 명제의 대우 증명", "answer": "②", "solutionExcerpt": "3k-1, 3k-2의 두 경우 제곱" }
+    },
+    {
+      "recordIndex": 2311, "manifestUid": "h1-direct-f769d8c2f163eb5b683c15570d546ac2", "questionUid": "h1-direct-f769d8c2f163eb5b683c15570d546ac2", "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js", "sourceOrdinal": 9, "curriculumKey": "2015", "sourceFingerprint": "c1958b754ad8f04df18987aef1854b79a6c3cd6f01015a40abeddb488b7a85a4", "contentFingerprint": "b5b85dc17277e97f1a9187ba538d5da81b0e103ea29ba9a8acd960ba82e460e4",
+      "courseKey": "수학_상", "L1": "방정식과 부등식", "L2": "여러 가지 부등식", "L3": "이차부등식", "L4": "부등식의 활용", "primaryConcept": "이차부등식", "primaryConceptReason": "두 근을 갖는 집합 A와 |x|<√a 형태의 B 사이의 서로소·포함 조건을 이차부등식으로 해석한다.", "secondaryConceptKeys": ["집합과 원소"], "difficultyBucket": 3, "difficultyReason": "A={3,5}를 구한 뒤 경계값에서 a의 최댓값·최솟값을 각각 판단한다.", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true, "tagConfidence": "high", "tagStatus": "PASS", "reviewStatus": "reviewed_pass", "status": "B_CHECKED", "statusReason": "원본 JS의 두 집합 조건과 q09 source solution의 a≤9, a>25를 확인했다.", "decisiveSolutionStep": "A={3,5}, A∩B=∅에서 a≤9, A⊂B에서 a>25이므로 m+n=9+26=35.", "sourceEvidence": { "contentExcerpt": "A={x|x²-8x+15=0}, B={x|x²-a<0}의 서로소·포함 조건", "answer": "⑤", "solutionExcerpt": "B=(-√a,√a), m=9,n=26", "imageInspected": true, "imagePath": "archive/assets/images/23_팔마고_2학기_중간_고1_기출/q09-solution.svg" }
+    }
+  ],
+  "freeze": {
+    "frozen": true,
+    "frozenAt": "2026-09-17T00:00:00+09:00",
+    "sourceOnlyBlind": true,
+    "priorAAndBOldArtifactsRead": false
+  }
+}

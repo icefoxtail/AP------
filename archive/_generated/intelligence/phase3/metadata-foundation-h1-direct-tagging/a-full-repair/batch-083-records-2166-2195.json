@@ -1,0 +1,509 @@
+{
+  "packetSchema": "h1-direct-tagging-a-replacement-packet-v1",
+  "role": "A_PRIMARY_TAGGER_REPLACEMENT",
+  "batch": "batch-083",
+  "recordRange": {
+    "start": 2166,
+    "end": 2195,
+    "count": 30
+  },
+  "sourceAuthority": {
+    "manifest": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "manifestSha256": "705FFC944EA1A166C194832560AF7888A64D81BE3EEE7353092E174288CDCB09",
+    "canonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "canonicalMasterSha256": "0409C489F167211F961CC14811C204F2056511F4C029091FEDDFDC8384C367BF",
+    "denominator": 2498
+  },
+  "directRead": true,
+  "records": [
+    {
+      "record": 2166,
+      "manifestUid": "h1-direct-95a0ce8732d5e3615d5773cedd3030d0",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "증명",
+      "L4": "절대부등식 증명",
+      "primaryConcept": "증명",
+      "primaryConceptReason": "양변이 양수임을 먼저 확인하고 제곱의 차 a²/4>0을 보여 원래 부등식을 증명한다.",
+      "secondaryConceptKeys": [
+        "절대부등식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "양수 조건과 제곱 비교의 증명 순서를 지킨다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2167,
+      "manifestUid": "h1-direct-1ead054f3ec5beae01b856e48e15efa3",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "증명",
+      "L4": "귀류법",
+      "primaryConcept": "증명",
+      "primaryConceptReason": "3의 배수가 아닌 정수의 제곱 나머지를 먼저 보이고, √3=p/q 가정에서 p,q가 모두 3의 배수라는 모순을 만든다.",
+      "secondaryConceptKeys": [
+        "명제 변환"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "대우 증명과 기약분수 귀류를 연속 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2168,
+      "manifestUid": "h1-direct-519e0d4482133ebdbfb374fea6b52123",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "수와 집합의 층위를 구별해 ∈와 ⊂를 각각 실제 원소 목록과 대조한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 1,
+      "difficultyReason": "원소 관계 기호의 직접 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2169,
+      "manifestUid": "h1-direct-37706a49ed48b29db044b46d615f2125",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "명제와 조건",
+      "L4": "명제의 참·거짓",
+      "primaryConcept": "명제와 조건",
+      "primaryConceptReason": "결론 x-a≠0이 거짓인 x=a에서 전제도 거짓이어야 하므로 a를 이차방정식의 두 근으로 정한다.",
+      "secondaryConceptKeys": [
+        "이차방정식의 근"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "명제의 반례 조건을 근 조건으로 바꾸어 두 값을 찾는다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2170,
+      "manifestUid": "h1-direct-9305239cca6bc3a6b9ccbd8fab51b563",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "필요조건·충분조건",
+      "L4": "조건 관계",
+      "primaryConcept": "필요조건·충분조건",
+      "primaryConceptReason": "p의 진리집합 [-4,2]가 q의 열린 진리집합 (a-7,∞)에 포함되도록 끝점 -4의 조건을 비교한다.",
+      "secondaryConceptKeys": [
+        "이차부등식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "함의의 진리집합 포함과 열린구간 경계 조건을 연결한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2171,
+      "manifestUid": "h1-direct-e09332003a1cab6b50c1ce71cf05325f",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "정의역·공역·치역",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "f=g가 되는 정의역 원소를 삼차방정식의 서로 다른 세 근으로 보고 근과 계수의 관계로 abc를 구한다.",
+      "secondaryConceptKeys": [
+        "인수분해"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "유한 정의역에서 함수 동일 조건을 다항방정식의 세 근으로 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2172,
+      "manifestUid": "h1-direct-4404c957f1ffaf7aaf3d766938311332",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "항등함수·상수함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "항등함수 f(x)=x와 상수함수 g(x)=10의 값을 각각 사용해 f(10)+g(10)을 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "항등·상수 함수 정의를 직접 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2173,
+      "manifestUid": "h1-direct-55c4887a72d930eda373bcf780239196",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "정의역·공역·치역",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "정의역 0부터 5까지의 제곱 나머지를 중복 없이 모아 치역 원소의 합을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "유한 정의역의 함숫값과 치역을 직접 열거한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2174,
+      "manifestUid": "h1-direct-4fed81c60e6dbd85fbecfbdff8f9b4cc",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "교집합의 최댓값 min(14,12)과 합집합의 상한 24에서 얻는 최솟값 14+12-24를 비교한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "포함배제의 양끝 경계와 달성 가능한 배치를 함께 확인한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2175,
+      "manifestUid": "h1-direct-cf7e352f03f64cd57f46fd12fd599e54",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "명제와 조건",
+      "L4": "명제의 참·거짓",
+      "primaryConcept": "명제와 조건",
+      "primaryConceptReason": "A와 B의 진술은 참, C의 진술은 거짓이라는 조건과 과일별 한 명 조건을 결합해 대상을 확정한다.",
+      "secondaryConceptKeys": [
+        "필요조건·충분조건"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "자연어 조건문의 참거짓과 인원 제약을 함께 추론한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2176,
+      "manifestUid": "h1-direct-ff5cf49e673811cc5188127341e9646b",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합의 포함 관계",
+      "L4": "두 집합의 포함",
+      "primaryConcept": "집합의 포함 관계",
+      "primaryConceptReason": "q에서 B⊆A^c, r에서 C⊆B를 얻어 C⊆B⊆A^c로부터 항상 참인 교집합 관계를 고른다.",
+      "secondaryConceptKeys": [
+        "명제와 조건"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "전칭 조건을 포함 관계의 연쇄로 바꾸어 선택지를 판정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2177,
+      "manifestUid": "h1-direct-5052b83f6e794fe4078218cc236849be",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "서로 다른 세 정의역 원소에 서로 다른 공역 원소를 순서 있게 배정해 4·3·2를 곱한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "유한 일대일함수의 순열형 개수 계산이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2178,
+      "manifestUid": "h1-direct-5ca781fccba3211868389be5a95ce645",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "역함수 구하기",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "그래프의 대응 f(c)=b, f(d)=c, f(e)=d를 거꾸로 읽어 b에 역함수를 세 번 적용한다.",
+      "secondaryConceptKeys": [
+        "합성함수"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "그래프에서 역함수 대응을 연속으로 추적한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2179,
+      "manifestUid": "h1-direct-6a54cc2c1f1bc1ba6a6bddad9043a355",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "그래프 대칭",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "함수와 역함수 그래프가 y=x에 대칭인 두 합동 영역임을 이용해 한 삼각형 넓이를 두 배 한다.",
+      "secondaryConceptKeys": [
+        "삼각형의 넓이",
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "역함수 대칭성과 좌표 삼각형의 밑변·높이를 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2180,
+      "manifestUid": "h1-direct-ab94727e996117de7068bb76d99361c6",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "(g^{-1}∘f)^{-1}=f^{-1}∘g로 바꾸어 전체 식을 g∘f로 소거한다.",
+      "secondaryConceptKeys": [
+        "역함수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "합성 역함수의 순서 반전과 함수 소거를 연속 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2181,
+      "manifestUid": "h1-direct-1c9d4c13db6d0c0d0246bd6b0754cd39",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "복합 연산",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "A♥B가 대칭차의 여집합임을 해석해 원소별 동시 소속 조건과 A=B 조건을 확인한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "비표준 연산을 대칭차·여집합으로 환원해 명제별 계산과 경우 수를 검증한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2182,
+      "manifestUid": "h1-direct-9cc732c8c9821a9f795bbc157b75626a",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "필요조건·충분조건",
+      "L4": "조건 관계",
+      "primaryConcept": "필요조건·충분조건",
+      "primaryConceptReason": "각 보기에서 p→q를 부호·집합 포함으로 확인하고 q→p가 깨지는 반례를 찾는다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "수식 조건과 집합 조건의 충분·필요 방향을 각각 판정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2183,
+      "manifestUid": "h1-direct-9ab6648fbfc631ad5cca98fba1338b85",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "그래프에서 2→5→0→2와 3→1→4→3의 주기 3을 읽어 100회 반복을 한 번 적용으로 줄인다.",
+      "secondaryConceptKeys": [
+        "함수의 성질"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "두 순환의 주기와 반복 합성 지수의 나머지를 이용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2184,
+      "manifestUid": "h1-direct-918e7f6335799c59b37c0307e42ba93e",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "역함수 구하기",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "조각별 역함수 g를 구한 뒤 f(x)=0과 f(x)=g(x)를 각 구간 조건에 맞춰 풀어 모든 실근을 합한다.",
+      "secondaryConceptKeys": [
+        "함수의 성질"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "조각함수와 역함수의 식·구간을 동시에 점검한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2185,
+      "manifestUid": "h1-direct-4004f5dfdc84588c526eef77923055f2",
+      "canonicalScope": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "기본 원의 방정식",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "정수 격자점 x²+y²=5의 해를 부호와 좌표 순서별로 열거해 8개를 세고 자연수 집합 크기와 맞춘다.",
+      "secondaryConceptKeys": [
+        "집합과 원소"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "원 방정식의 정수해와 유한 집합 원소 수를 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2186,
+      "manifestUid": "h1-direct-e4e80bb89efff75859ad219a929aa63f",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "정의역·공역·치역",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "g∘f가 실수 전체의 항등함수가 되려면 g의 치역이 실수 전체여야 하므로 두 조각의 치역이 양쪽 반직선을 덮는 a를 찾는다.",
+      "secondaryConceptKeys": [
+        "항등함수·상수함수"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "역방향 합성 가능성을 전사 조건으로 바꾸고 계수 부호별 치역을 분기한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2187,
+      "manifestUid": "h1-direct-c6082ff3b3aa96f27741a8eeef57be56",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "여집합과 차집합",
+      "L4": "차집합",
+      "primaryConcept": "여집합과 차집합",
+      "primaryConceptReason": "A-B와 B-A의 원소는 각각 X에 반드시 들어가야 하고 양쪽에 공통으로 나타나는 나머지만 자유 선택한다.",
+      "secondaryConceptKeys": [
+        "부분집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "집합 등식의 양변 비대칭 원소를 고정한 뒤 자유 원소를 센다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2188,
+      "manifestUid": "h1-direct-c589cfcfbbc6c50f081dd2aea0803866",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "절대부등식",
+      "L4": "산술·기하평균",
+      "primaryConcept": "절대부등식",
+      "primaryConceptReason": "전개식을 25+12(t+1/t), t=ab>0으로 바꾸고 AM-GM 등호 t=1에서 최솟값을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "곱 변수 치환과 표준 AM-GM 최솟값 계산이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2189,
+      "manifestUid": "h1-direct-de3fb11c423d1677a97f7448cc03967e",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "그래프 대칭",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "증가함수와 역함수의 교점이 y=x 위의 고정점이라는 사실로 이차방정식의 두 근이 정의역에 들어갈 범위를 구한다.",
+      "secondaryConceptKeys": [
+        "이차방정식의 근"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "역함수 교점의 고정점 조건과 두 근의 정의역 제약을 함께 분석한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2190,
+      "manifestUid": "h1-direct-d0c57dd72089171b15ba1425c7a1933e",
+      "canonicalScope": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "평행이동",
+      "L4": "점·직선의 이동",
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "x좌표에 -1, y좌표에 3을 각각 더해 이동점을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "점 평행이동의 좌표 공식 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2191,
+      "manifestUid": "h1-direct-93c95c120715d58174061d88bdbd6c9f",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "역·이·대우",
+      "L4": "명제 변환",
+      "primaryConcept": "역·이·대우",
+      "primaryConceptReason": "p→¬q의 대우를 취해 q→¬p를 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "대우 변환의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2192,
+      "manifestUid": "h1-direct-08d9223e04dfa6ee5152fb5d9cc9b509",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "대응과 함수",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "각 그래프에 수직선을 대어 같은 x에 둘 이상의 y가 대응하는 세로선 그래프를 제외한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "함수 그래프의 수직선 판정법을 직접 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2193,
+      "manifestUid": "h1-direct-45d8ee3dfedd8d278633830312b85108",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "항등함수·상수함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "상수함수 f(x)=5의 정의로 20개 항을 모두 5로 두고 합한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "상수함수 정의의 반복 합산이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2194,
+      "manifestUid": "h1-direct-59258c0e80e945ba4c3f994e9e32d638",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "절대부등식",
+      "L4": "산술·기하평균",
+      "primaryConcept": "절대부등식",
+      "primaryConceptReason": "t=x+2>0으로 치환해 t+9/t-2에 AM-GM을 적용하고 등호 t=3을 확인한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "양수 치환과 표준 AM-GM 최솟값이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2195,
+      "manifestUid": "h1-direct-0a576afb57e694180594be3c12342557",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "f를 반복할 때마다 입력에 1이 더해져 f^n(x)=x+n임을 귀납적으로 확인한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "반복 합성의 규칙을 직접 일반화한다.",
+      "status": "DIRECT_TAGGED"
+    }
+  ]
+}

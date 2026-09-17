@@ -1,0 +1,17 @@
+{
+  "ledgerSchema":"h1-direct-tagging-a-replacement-progress-ledger-v1",
+  "role":"A_PRIMARY_TAGGER_REPLACEMENT",
+  "A_CHECKED":2498,
+  "denominator":2498,
+  "replacementRange":{"start":1151,"end":2498,"count":1348,"directRead":true},
+  "priorAFrozenArtifacts":{"start":1,"end":1150,"count":1150,"accounting":"preserved freeze artifacts only; not re-read as semantic input"},
+  "combinedAccounting":{"start":1,"end":2498,"count":2498,"formula":"1150 preserved prior-A freeze artifacts + 1348 independently source-read replacement records"},
+  "replacementPackets":{"firstBatch":"batch-047","lastBatch":"batch-093","packetCount":47,"recordCount":1348,"rangeCheck":"1151-2498 contiguous"},
+  "replacementStatusCounts":{"DIRECT_TAGGED":1266,"FOUNDATION_DEFECT_CANDIDATE":78,"SOURCE_DEFECT_CANDIDATE":4,"HOLD":0,"EVIDENCE_INSUFFICIENT":0},
+  "replacementRiskEvidenceAudit":{"requiredFields":"decisiveSolutionStep,rejectedAlternativeConcepts,taxonomyReason,statusReason","missing":0},
+  "replacementIdentityAudit":{"manifest":"archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json","manifestSha256":"705FFC944EA1A166C194832560AF7888A64D81BE3EEE7353092E174288CDCB09","records":1348,"uniqueRecords":1348,"missingRecords":0,"duplicateRecords":0,"uidMismatches":0},
+  "canonicalAuthority":{"path":"docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json","sha256":"0409C489F167211F961CC14811C204F2056511F4C029091FEDDFDC8384C367BF","authorityStatus":"LOCKED"},
+  "prohibitedInputsRead":"none; no B packets, old metadata, classifier, queues, old staging, prior PASS/recheck, comparisons, or prior A packets used as semantic inputs",
+  "reviewStatus":"A_READY_FOR_REVIEW",
+  "releaseTerminology":"not A_FINAL_PASS; not RELEASE_READY"
+}

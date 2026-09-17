@@ -1,0 +1,596 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "agentRole": "independent-direct-retagging",
+  "packetType": "B_FULL_REPAIR_REPLACEMENT",
+  "batchId": "batch-106-replacement-records-2482-2491",
+  "recordRange": {
+    "start": 2482,
+    "end": 2491,
+    "count": 10
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "sourceManifest": {
+    "path": "archive\\_generated\\intelligence\\phase3\\metadata-foundation-h1-direct-tagging\\source_manifest.json",
+    "positions": {
+      "start": 2482,
+      "end": 2491
+    }
+  },
+  "records": [
+    {
+      "recordIndex": 2482,
+      "manifestUid": "h1-direct-9aba87bd8f6d53fbca26277724dfe1e1",
+      "questionUid": "h1-direct-9aba87bd8f6d53fbca26277724dfe1e1",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 7,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "c8c99283e7914c7e577638e272c90c94c6507f5ef22e6fb0dfaeb54fd854b2cc",
+      "contentFingerprint": "1560976a890e4dd67fe78e141df1ff0b9183f8cb322d5c3a8046f4203ef58b84",
+      "sourceEvidence": {
+        "content": "평행한 두 직선 $2x-y+1=0$, $2x-y+k=0$ 사이의 거리가 $\\sqrt5$가 되도록 하는 모든 실수 $k$의 값의 곱은? [3.7점]",
+        "choices": [
+          "$12$",
+          "$24$",
+          "$-12$",
+          "$-24$",
+          "$-36$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 $2x-y+1=0$, $2x-y+k=0$은 평행하므로 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k-1|}{\\sqrt5}$이다.\n이 값이 $\\sqrt5$이므로 $|k-1|=5$이다. 따라서 $k=6$ 또는 $k=-4$이고, 두 값의 곱은 $-24$이다.\n\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "점과 직선 사이의 거리",
+      "L4": "거리 공식",
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "평행한 두 직선 사이의 거리를 직접 사용해 k의 두 값을 결정하고 곱을 구하는 문항으로 locked canonical master의 점과 직선 사이의 거리·거리 공식에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|거리 공식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 평행한 두 직선 사이의 거리를 이용해 k의 두 값을 구한다.\n두 직선 $2x-y+1=0$, $2x-y+k=0$은 평행하므로 거리는\n$\\dfrac{|k-1|}{\\sqrt{2^2+(-1)^2}}=\\dfrac{|k-1|}{\\sqrt5}$이다.\n이 값이 $\\sqrt5$이므로 $|k-1|=5$이다. 따라서 $k=6$ 또는 $k=-4$이고, 두 값의 곱은 $-24$이다.\n\n따라서 정답은 ④이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "직선의 방정식",
+        "concept": "점과 직선 사이의 거리",
+        "problemType": "거리 공식"
+      }
+    },
+    {
+      "recordIndex": 2483,
+      "manifestUid": "h1-direct-d389ed7bc00b52d3c19225212f8e1a61",
+      "questionUid": "h1-direct-d389ed7bc00b52d3c19225212f8e1a61",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 8,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "5da37cf8db084b9d2bb4ffdbcc092d7959d5ab7cd16718c1959ed7247c1b8e14",
+      "contentFingerprint": "fbf83b095654d1229673541a3a5647c4d809f6a1be0cb46803eb53670cab4513",
+      "sourceEvidence": {
+        "content": "다음 보기는 좌표평면 위의 점 $P(x_1,y_1)$과 점 $P$를 지나지 않는 직선 $l:ax+by+c=0$ ($a\\ne0$ 또는 $b\\ne0$) 사이의 거리를 구하는 과정 중 일부이다. 빈칸 ㄱ, ㄴ, ㄷ, ㄹ, ㅁ에 들어갈 내용으로 알맞은 것을 순서대로 쓴 것은? [3.8점]<br><br>$a\\ne0$, $b\\ne0$일 때, 점 $P$에서 직선 $l$에 내린 수선의 발 $H$의 좌표를 $(x_2,y_2)$라고 하면 직선 $PH$와 직선 $l$의 기울기는 각각 $\\dfrac{y_2-y_1}{x_2-x_1}$, $-\\dfrac ab$이고, 두 직선은 서로 수직이므로 기울기의 곱은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄱ</span>이다.<br>$\\dfrac{x_2-x_1}{a}=\\dfrac{y_2-y_1}{b}$이고, 이것을 $k$ ($k\\ne0$)로 놓으면 $x_2-x_1=ak$, $y_2-y_1=bk$이므로 $\\overline{PH}=\\sqrt{k^2(a^2+b^2)}$에서 $\\sqrt{k^2}$에 해당하는 값은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄴ</span>이다.<br>한편 점 $H(x_2,y_2)$는 직선 $l$ 위의 점이므로 $ax_2+by_2+c=0$이고, 이 식에 대입할 $x_2$, $y_2$는 각각 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄷ</span>, <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㄹ</span>이다. 이로부터 $k=-\\dfrac{ax_1+by_1+c}{a^2+b^2}$이고, 거리 공식의 분자에 들어갈 식은 <span style=\"display:inline-block;min-width:1.4em;padding:0 0.25em;border:1px solid #222;text-align:center;\">ㅁ</span>이다.",
+        "choices": [
+          "$(1,\\ |k|,\\ x_1+ak,\\ y_1+bk,\\ |ax_1+by_1+c|)$",
+          "$(-1,\\ |k|,\\ x_1+ak,\\ y_1+bk,\\ |ax_1+by_1+c|)$",
+          "$(-1,\\ k,\\ x_1+ak,\\ y_1+bk,\\ ax+by+c)$",
+          "$(1,\\ k,\\ x+ak,\\ y+bk,\\ ax+by+c)$",
+          "$(-1,\\ |k|,\\ x+ak,\\ y+bk,\\ |ax+by+c|)$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 수직인 두 직선의 기울기 관계와 수선의 발 좌표 표현을 차례로 연결한다.\n조건 정리: $PH$와 $l$은 수직이고, $x_2-x_1=ak$, $y_2-y_1=bk$로 둘 수 있다.\n풀이 방향: 빈칸마다 바로 앞 식에서 결정되는 값을 순서대로 확인한다.\n정석 풀이: 수직이므로 기울기의 곱은 $-1$이어서 ㄱ은 $-1$이다. $\\sqrt{k^2(a^2+b^2)}=|k|\\sqrt{a^2+b^2}$이므로 ㄴ은 $|k|$이다. 또 $x_2=x_1+ak$, $y_2=y_1+bk$이므로 ㄷ, ㄹ은 각각 $x_1+ak$, $y_1+bk$이다. 마지막으로 거리의 분자는 음수가 될 수 없으므로 ㅁ은 $|ax_1+by_1+c|$이다. 따라서 순서는 $(-1,|k|,x_1+ak,y_1+bk,|ax_1+by_1+c|)$이다.\n따라서 정답은 ②이다.",
+        "image": "assets/images/25_효천고_2학기_중간_고1_기출/q08.png",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg",
+        "neededVisual": {
+          "image": "assets/images/25_효천고_2학기_중간_고1_기출/q08.png",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "점과 직선 사이의 거리",
+      "L4": "거리 공식",
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "점과 직선 사이의 거리 공식 유도 과정에서 수직 기울기, 수선의 발 좌표, 절댓값 분자를 순서대로 판별하는 문항으로 locked canonical master에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|직선의 방정식|점과 직선 사이의 거리|거리 공식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 수직인 두 직선의 기울기 관계와 수선의 발 좌표 표현을 차례로 연결한다.\n조건 정리: $PH$와 $l$은 수직이고, $x_2-x_1=ak$, $y_2-y_1=bk$로 둘 수 있다.\n풀이 방향: 빈칸마다 바로 앞 식에서 결정되는 값을 순서대로 확인한다.\n정석 풀이: 수직이므로 기울기의 곱은 $-1$이어서 ㄱ은 $-1$이다. $\\sqrt{k^2(a^2+b^2)}=|k|\\sqrt{a^2+b^2}$이므로 ㄴ은 $|k|$이다. 또 $x_2=x_1+ak$, $y_2=y_1+bk$이므로 ㄷ, ㄹ은 각각 $x_1+ak$, $y_1+bk$이다. 마지막으로 거리의 분자는 음수가 될 수 없으므로 ㅁ은 $|ax_1+by_1+c|$이다. 따라서 순서는 $(-1,|k|,x_1+ak,y_1+bk,|ax_1+by_1+c|)$이다.\n따라서 정답은 ②이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "직선의 방정식",
+        "concept": "점과 직선 사이의 거리",
+        "problemType": "거리 공식"
+      }
+    },
+    {
+      "recordIndex": 2484,
+      "manifestUid": "h1-direct-b3bf662f9184c90dc6c257b90036ab9d",
+      "questionUid": "h1-direct-b3bf662f9184c90dc6c257b90036ab9d",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 9,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "1954467eedb94fd37906ffe8610e62e26bdf23ffdc76275f14efc4539dd7c602",
+      "contentFingerprint": "476f01f8ed3174e357fb1faa3ab74d31b59552034ff51ebbfcc1f1ddb577e28d",
+      "sourceEvidence": {
+        "content": "집합 $A=\\{\\varnothing,3,5,7,\\{7\\}\\}$에 대하여 다음 중 옳지 않은 것은? [3.8점]",
+        "choices": [
+          "$\\varnothing\\in A$",
+          "$\\varnothing\\subset A$",
+          "$\\{\\varnothing\\}\\subset A$",
+          "$\\{\\varnothing\\}\\in A$",
+          "$\\{7\\}\\in A$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 원소와 부분집합은 서로 다른 관계이므로 중괄호의 겹수를 정확히 구분한다.\n조건 정리: $A$의 원소는 $\\varnothing,3,5,7,\\{7\\}$이다.\n풀이 방향: 각 보기의 기호 $\\in$, $\\subset$을 따로 판정한다.\n정석 풀이: $\\varnothing\\in A$이고 공집합은 모든 집합의 부분집합이므로 ①, ②는 참이다. $\\varnothing$이 $A$의 원소이므로 $\\{\\varnothing\\}\\subset A$도 참이다. 또한 $\\{7\\}\\in A$이다. 그러나 $\\{\\varnothing\\}$ 자체는 $A$의 원소로 제시되지 않았으므로 $\\{\\varnothing\\}\\in A$는 거짓이다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "집합에 실제로 포함된 원소와 원소가 아닌 집합을 구분해 원소관계와 부분집합관계를 판정하는 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|집합과 명제|집합의 뜻과 포함 관계|집합과 원소|원소나열법·조건제시법"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 원소와 부분집합은 서로 다른 관계이므로 중괄호의 겹수를 정확히 구분한다.\n조건 정리: $A$의 원소는 $\\varnothing,3,5,7,\\{7\\}$이다.\n풀이 방향: 각 보기의 기호 $\\in$, $\\subset$을 따로 판정한다.\n정석 풀이: $\\varnothing\\in A$이고 공집합은 모든 집합의 부분집합이므로 ①, ②는 참이다. $\\varnothing$이 $A$의 원소이므로 $\\{\\varnothing\\}\\subset A$도 참이다. 또한 $\\{7\\}\\in A$이다. 그러나 $\\{\\varnothing\\}$ 자체는 $A$의 원소로 제시되지 않았으므로 $\\{\\varnothing\\}\\in A$는 거짓이다.\n따라서 정답은 ④이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 뜻과 포함 관계",
+        "concept": "집합과 원소",
+        "problemType": "원소나열법·조건제시법"
+      }
+    },
+    {
+      "recordIndex": 2485,
+      "manifestUid": "h1-direct-5220401d80b0efbf6090c57cd14ebe06",
+      "questionUid": "h1-direct-5220401d80b0efbf6090c57cd14ebe06",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 10,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "0f19254b67eb6d8ab953f8cfe1211d929ff548a64b8e95255766f591f03d9efb",
+      "contentFingerprint": "23df1e01e4712ebbcdad8d8d7aa281a887d58180cb6abe2c3a2c773e16e1e000",
+      "sourceEvidence": {
+        "content": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $A\\cap B=B$일 때, 다음 보기 중 항상 옳은 것만을 있는 대로 고른 것은? [3.9점]<br><br>ㄱ. $B\\subseteq A$<br>ㄴ. $B^c\\subset A^c$<br>ㄷ. $A\\cup B=A$<br>ㄹ. $A\\cap B^c\\ne\\varnothing$",
+        "choices": [
+          "ㄱ",
+          "ㄴ, ㄹ",
+          "ㄱ, ㄷ",
+          "ㄴ, ㄷ, ㄹ",
+          "ㄱ, ㄷ, ㄹ"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] $A\\cap B=B$는 바로 $B\\subseteq A$를 뜻한다.\n조건 정리: 포함관계가 정해지면 합집합과 여집합의 포함관계도 함께 결정된다.\n풀이 방향: ㄱ부터 ㄹ까지 반례 가능성까지 확인한다.\n정석 풀이: $B\\subseteq A$이므로 ㄱ은 참이고 $A\\cup B=A$이므로 ㄷ도 참이다. 여집합에서는 포함관계가 뒤집혀 $A^c\\subseteq B^c$이므로 ㄴ은 거짓이다. 또 $A=B$일 수 있는데, 이때 $A\\cap B^c=\\varnothing$이므로 ㄹ은 항상 참이 아니다. 따라서 항상 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q10-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q10-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합의 포함 관계",
+      "L4": "두 집합의 포함",
+      "primaryConcept": "집합의 포함 관계",
+      "primaryConceptReason": "A∩B=B에서 B⊆A를 읽고 합집합과 여집합의 포함관계를 판정하는 문항으로 locked canonical master에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|집합과 명제|집합의 뜻과 포함 관계|집합의 포함 관계|두 집합의 포함"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] $A\\cap B=B$는 바로 $B\\subseteq A$를 뜻한다.\n조건 정리: 포함관계가 정해지면 합집합과 여집합의 포함관계도 함께 결정된다.\n풀이 방향: ㄱ부터 ㄹ까지 반례 가능성까지 확인한다.\n정석 풀이: $B\\subseteq A$이므로 ㄱ은 참이고 $A\\cup B=A$이므로 ㄷ도 참이다. 여집합에서는 포함관계가 뒤집혀 $A^c\\subseteq B^c$이므로 ㄴ은 거짓이다. 또 $A=B$일 수 있는데, 이때 $A\\cap B^c=\\varnothing$이므로 ㄹ은 항상 참이 아니다. 따라서 항상 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ③이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 뜻과 포함 관계",
+        "concept": "집합의 포함 관계",
+        "problemType": "두 집합의 포함"
+      }
+    },
+    {
+      "recordIndex": 2486,
+      "manifestUid": "h1-direct-5f0eedd669a0c0f2aecd40a20ed3b761",
+      "questionUid": "h1-direct-5f0eedd669a0c0f2aecd40a20ed3b761",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 11,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "340f9788d115efc4820809614c80794441594d05b43cac4f8b519a3ba544c39c",
+      "contentFingerprint": "aabdb2e18d89c68a6e7df9e7398fa38cb66778ddb770c7e98635ccd2316e4047",
+      "sourceEvidence": {
+        "content": "중심이 점 $(a,a)$이고 반지름의 길이가 $\\dfrac13$인 원이 직선 $y=-x+3$과 만나도록 하는 $a$의 최댓값과 최솟값을 각각 $M$, $m$이라 할 때, $M+m$의 값은? (단, $a$는 상수) [4점]",
+        "choices": [
+          "$\\dfrac32$",
+          "$3$",
+          "$\\dfrac52$",
+          "$5$",
+          "$7$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 원과 직선이 만나거나 접하려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.\n조건 정리: 중심은 $C(a,a)$, 반지름은 $\\dfrac13$이고, 직선 $y=-x+3$은 $x+y-3=0$으로 쓸 수 있다.\n풀이 방향: 점과 직선 사이의 거리 공식으로 $a$의 범위를 구하고, 양 끝값을 더한다.\n정석 풀이: 중심 $C(a,a)$에서 직선 $x+y-3=0$까지의 거리는 $\\dfrac{|a+a-3|}{\\sqrt{1^2+1^2}}=\\dfrac{|2a-3|}{\\sqrt2}$이다. 원이 직선과 만나려면 $\\dfrac{|2a-3|}{\\sqrt2}\\le\\dfrac13$이므로 $|2a-3|\\le\\dfrac{\\sqrt2}{3}$이다. 따라서 $-\\dfrac{\\sqrt2}{3}\\le2a-3\\le\\dfrac{\\sqrt2}{3}$이고, $\\dfrac32-\\dfrac{\\sqrt2}{6}\\le a\\le\\dfrac32+\\dfrac{\\sqrt2}{6}$이다. 그러므로 $m=\\dfrac32-\\dfrac{\\sqrt2}{6}$, $M=\\dfrac32+\\dfrac{\\sqrt2}{6}$이며 $M+m=3$이다.\n그림의 두 경계 위치에서는 중심에서 직선까지의 거리가 반지름과 같아 원이 직선에 접한다.\n따라서 정답은 ②이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원과 직선",
+      "L4": "교점 개수",
+      "primaryConcept": "원과 직선",
+      "primaryConceptReason": "원의 중심과 반지름 및 중심에서 직선까지의 거리를 비교해 교점 개수를 판정하는 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|원의 방정식|원과 직선|교점 개수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 원과 직선이 만나거나 접하려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.\n조건 정리: 중심은 $C(a,a)$, 반지름은 $\\dfrac13$이고, 직선 $y=-x+3$은 $x+y-3=0$으로 쓸 수 있다.\n풀이 방향: 점과 직선 사이의 거리 공식으로 $a$의 범위를 구하고, 양 끝값을 더한다.\n정석 풀이: 중심 $C(a,a)$에서 직선 $x+y-3=0$까지의 거리는 $\\dfrac{|a+a-3|}{\\sqrt{1^2+1^2}}=\\dfrac{|2a-3|}{\\sqrt2}$이다. 원이 직선과 만나려면 $\\dfrac{|2a-3|}{\\sqrt2}\\le\\dfrac13$이므로 $|2a-3|\\le\\dfrac{\\sqrt2}{3}$이다. 따라서 $-\\dfrac{\\sqrt2}{3}\\le2a-3\\le\\dfrac{\\sqrt2}{3}$이고, $\\dfrac32-\\dfrac{\\sqrt2}{6}\\le a\\le\\dfrac32+\\dfrac{\\sqrt2}{6}$이다. 그러므로 $m=\\dfrac32-\\dfrac{\\sqrt2}{6}$, $M=\\dfrac32+\\dfrac{\\sqrt2}{6}$이며 $M+m=3$이다.\n그림의 두 경계 위치에서는 중심에서 직선까지의 거리가 반지름과 같아 원이 직선에 접한다.\n따라서 정답은 ②이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원과 직선",
+        "problemType": "교점 개수"
+      }
+    },
+    {
+      "recordIndex": 2487,
+      "manifestUid": "h1-direct-f1fd143ed62340a01cd64c64873272f4",
+      "questionUid": "h1-direct-f1fd143ed62340a01cd64c64873272f4",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 12,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "9846363d0b028d09dd30db469fcb4d8d86bdb6cef04aa2370165a6d7a7b3641c",
+      "contentFingerprint": "3316d6ffe44533fc192016f17cc2e312c31e8ee93f77beb0d8522ea0d63a5813",
+      "sourceEvidence": {
+        "content": "포물선 $y=x^2+6x+13$을 원점에 대하여 대칭이동한 후, $y$축의 방향으로 $a$만큼 평행이동한 포물선이 $x$축과 점 $(b,0)$에서 접할 때, $a-b$의 값은? (단, $a,b$는 상수) [4.1점]",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 원점 대칭은 $(x,y)$를 $(-x,-y)$로 바꾸고, 평행이동은 꼭짓점 좌표를 옮긴다.\n조건 정리: 원래 포물선은 $y=(x+3)^2+4$이다.\n풀이 방향: 원점 대칭 후 $y$축 방향 이동을 적용하고, $x$축에 접하는 조건을 꼭짓점으로 판단한다.\n정석 풀이: 원점 대칭 후 그래프는 $y=-(x-3)^2-4$이다. 이를 위로 $a$만큼 이동하면 $y=-(x-3)^2-4+a$이다. $x$축과 접하려면 꼭짓점의 $y$좌표가 $0$이어야 하므로 $a=4$이고 접점은 $(3,0)$이어서 $b=3$이다. 따라서 $a-b=1$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q12-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q12-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "대칭이동",
+      "L4": "x축·y축·원점 대칭",
+      "primaryConcept": "대칭이동",
+      "primaryConceptReason": "원점 대칭으로 포물선을 변환한 뒤 y축 평행이동과 x축 접 조건을 적용하는 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|도형의 이동|대칭이동|x축·y축·원점 대칭"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 원점 대칭은 $(x,y)$를 $(-x,-y)$로 바꾸고, 평행이동은 꼭짓점 좌표를 옮긴다.\n조건 정리: 원래 포물선은 $y=(x+3)^2+4$이다.\n풀이 방향: 원점 대칭 후 $y$축 방향 이동을 적용하고, $x$축에 접하는 조건을 꼭짓점으로 판단한다.\n정석 풀이: 원점 대칭 후 그래프는 $y=-(x-3)^2-4$이다. 이를 위로 $a$만큼 이동하면 $y=-(x-3)^2-4+a$이다. $x$축과 접하려면 꼭짓점의 $y$좌표가 $0$이어야 하므로 $a=4$이고 접점은 $(3,0)$이어서 $b=3$이다. 따라서 $a-b=1$이다.\n따라서 정답은 ①이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "도형의 이동",
+        "concept": "대칭이동",
+        "problemType": "x축·y축·원점 대칭"
+      }
+    },
+    {
+      "recordIndex": 2488,
+      "manifestUid": "h1-direct-42b9556639232426ce20efa2325f2d6c",
+      "questionUid": "h1-direct-42b9556639232426ce20efa2325f2d6c",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 13,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "fdb7f7149cfe8b504bcccdf75002d642021e65f0d14c8cbca2cc33124bbf5090",
+      "contentFingerprint": "afcba81ae108e3a543000152be63e3a91b45b0503f747bc7bec228e1b46cf444",
+      "sourceEvidence": {
+        "content": "두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 아래 그림과 같을 때, 다음 중 옳은 것은? [4.3점]",
+        "choices": [
+          "$g(x,y)=f(x-7,-y+2)$",
+          "$g(x,y)=f(x+7,-y-2)$",
+          "$g(x,y)=f(-x+7,y+2)$",
+          "$g(x,y)=f(-x-7,y+2)$",
+          "$g(x,y)=f(x+7,-y+2)$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 방정식의 변수 치환은 실제 도형의 좌표 이동과 반대 방향으로 읽는다.\n조건 정리: 그림에서 $f$의 점 $(2,2)$는 $g$의 점 $(-5,0)$으로, $(5,7)$은 $(-2,-5)$로 이동한다.\n풀이 방향: 원래 좌표 $(u,v)$와 이동 후 좌표 $(x,y)$의 관계를 구한 뒤 $f$의 입력으로 바꾼다.\n정석 풀이: 두 대응에서 공통으로 $x=u-7$, $y=2-v$이다. 따라서 $u=x+7$, $v=-y+2$이다. 이동 후 도형의 방정식은 원래 방정식에 이 값을 넣은 $g(x,y)=f(x+7,-y+2)$이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/25_효천고_2학기_중간_고1_기출/q13.png",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q13-solution.svg",
+        "neededVisual": {
+          "image": "assets/images/25_효천고_2학기_중간_고1_기출/q13.png",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q13-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "이동의 합성",
+      "L4": "연속 이동",
+      "primaryConcept": "이동의 합성",
+      "primaryConceptReason": "도형의 평행이동과 y방향 반사를 변수 치환으로 함께 해석해 두 방정식의 관계를 찾는 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|도형의 이동|이동의 합성|연속 이동"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 방정식의 변수 치환은 실제 도형의 좌표 이동과 반대 방향으로 읽는다.\n조건 정리: 그림에서 $f$의 점 $(2,2)$는 $g$의 점 $(-5,0)$으로, $(5,7)$은 $(-2,-5)$로 이동한다.\n풀이 방향: 원래 좌표 $(u,v)$와 이동 후 좌표 $(x,y)$의 관계를 구한 뒤 $f$의 입력으로 바꾼다.\n정석 풀이: 두 대응에서 공통으로 $x=u-7$, $y=2-v$이다. 따라서 $u=x+7$, $v=-y+2$이다. 이동 후 도형의 방정식은 원래 방정식에 이 값을 넣은 $g(x,y)=f(x+7,-y+2)$이다.\n따라서 정답은 ⑤이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "도형의 이동",
+        "concept": "이동의 합성",
+        "problemType": "연속 이동"
+      }
+    },
+    {
+      "recordIndex": 2489,
+      "manifestUid": "h1-direct-12c228c87c1e15022918bdaa477a54f6",
+      "questionUid": "h1-direct-12c228c87c1e15022918bdaa477a54f6",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 14,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "fa341b0ea6f57edc1116faf3d2a25b8fbc2aa828afb1ecaefd8755d755e2dd71",
+      "contentFingerprint": "2ddd764e2909633b64f0226ddad39cd13de90c69a26b68d4452c262e304cadc9",
+      "sourceEvidence": {
+        "content": "그림과 같이 좌표평면 위의 점 $A(-1,2)$, $B(-3,0)$, $C(2,-1)$을 세 꼭짓점으로 하는 삼각형 $ABC$가 있다. 삼각형 $ABC$의 내심을 점 $I$라 할 때, 직선 $AI$와 선분 $BC$의 교점의 좌표는? [4.4점]",
+        "choices": [
+          "$\\left(-\\dfrac32,-\\dfrac37\\right)$",
+          "$\\left(-1,\\dfrac25\\right)$",
+          "$\\left(-\\dfrac67,-\\dfrac37\\right)$",
+          "$\\left(-1,-\\dfrac25\\right)$",
+          "$\\left(-\\dfrac43,-\\dfrac13\\right)$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 내심에서 꼭짓점으로 그은 선은 그 꼭짓점의 각을 이등분한다.\n조건 정리: $AB=2\\sqrt2$, $AC=3\\sqrt2$이므로 각의 이등분선이 $BC$를 나누는 비는 $2:3$이다.\n풀이 방향: 교점을 $D$라 하고 $BD:DC=2:3$을 얻은 뒤, 내분공식을 x좌표와 y좌표에 각각 적용한다.\n정석 풀이: $BD:DC=AB:AC=2:3$이다. 따라서\n$x_D=\\dfrac{3(-3)+2(2)}5=-1$,\n$y_D=\\dfrac{3(0)+2(-1)}5=-\\dfrac25$이다.\n그러므로 $D=(-1,-\\dfrac25)$이고 정답은 ④이다.",
+        "image": "assets/images/25_효천고_2학기_중간_고1_기출/q14.png",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q14-solution.svg",
+        "neededVisual": {
+          "image": "assets/images/25_효천고_2학기_중간_고1_기출/q14.png",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q14-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "내심의 각의 이등분선과 각의 이등분선 정리를 이용해 BC를 2:3으로 내분한 점의 좌표를 구하는 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|평면좌표|선분의 내분·외분|내분점"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 내심에서 꼭짓점으로 그은 선은 그 꼭짓점의 각을 이등분한다.\n조건 정리: $AB=2\\sqrt2$, $AC=3\\sqrt2$이므로 각의 이등분선이 $BC$를 나누는 비는 $2:3$이다.\n풀이 방향: 교점을 $D$라 하고 $BD:DC=2:3$을 얻은 뒤, 내분공식을 x좌표와 y좌표에 각각 적용한다.\n정석 풀이: $BD:DC=AB:AC=2:3$이다. 따라서\n$x_D=\\dfrac{3(-3)+2(2)}5=-1$,\n$y_D=\\dfrac{3(0)+2(-1)}5=-\\dfrac25$이다.\n그러므로 $D=(-1,-\\dfrac25)$이고 정답은 ④이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표",
+        "concept": "선분의 내분·외분",
+        "problemType": "내분점"
+      }
+    },
+    {
+      "recordIndex": 2490,
+      "manifestUid": "h1-direct-4770588cdd107cf2441e645660f53a05",
+      "questionUid": "h1-direct-4770588cdd107cf2441e645660f53a05",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 15,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "8a88da89f01bb1d38da9e153bbd4756bff1050d65b9d749f31a1297684e9aacc",
+      "contentFingerprint": "77e75199bd26e8f3125ca93d3028934dccf5196301403ac4d62a29f86955ef44",
+      "sourceEvidence": {
+        "content": "성선이네 반 학생 $25$명을 대상으로 두 선택 과목 $A$, $B$에 대한 선호도를 조사한 결과 과목 $A$를 선호하는 학생이 $12$명, 과목 $B$를 선호하는 학생이 $17$명이었다. 두 과목을 모두 선호하는 학생이 $x$명일 때, $x$의 최댓값을 $a$, 최솟값을 $b$라 할 때 $a-b$의 값은? [4.4점]",
+        "choices": [
+          "$7$",
+          "$8$",
+          "$9$",
+          "$10$",
+          "$11$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 두 집합의 교집합 크기는 작은 집합의 크기보다 클 수 없고, 합집합 크기는 전체 인원보다 클 수 없다.\n조건 정리: $n(A)=12$, $n(B)=17$, 전체 인원은 $25$, $n(A\\cap B)=x$이다.\n풀이 방향: 교집합의 최댓값과 최솟값을 각각 독립적으로 구한다.\n정석 풀이: 최댓값은 작은 집합의 크기인 $12$이다. 또 $n(A\\cup B)=12+17-x\\le25$이므로 $x\\ge4$여서 최솟값은 $4$이다. 따라서 $a-b=12-4=8$이다.\n따라서 정답은 ②이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "두 집합의 교집합 최댓값과 포함배제 원리로 최솟값을 구해 차이를 계산하는 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|집합과 명제|집합의 연산|교집합과 합집합|원소 개수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 두 집합의 교집합 크기는 작은 집합의 크기보다 클 수 없고, 합집합 크기는 전체 인원보다 클 수 없다.\n조건 정리: $n(A)=12$, $n(B)=17$, 전체 인원은 $25$, $n(A\\cap B)=x$이다.\n풀이 방향: 교집합의 최댓값과 최솟값을 각각 독립적으로 구한다.\n정석 풀이: 최댓값은 작은 집합의 크기인 $12$이다. 또 $n(A\\cup B)=12+17-x\\le25$이므로 $x\\ge4$여서 최솟값은 $4$이다. 따라서 $a-b=12-4=8$이다.\n따라서 정답은 ②이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 연산",
+        "concept": "교집합과 합집합",
+        "problemType": "원소 개수"
+      }
+    },
+    {
+      "recordIndex": 2491,
+      "manifestUid": "h1-direct-8ab999e10a2a840b21710ef8d4349a94",
+      "questionUid": "h1-direct-8ab999e10a2a840b21710ef8d4349a94",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 16,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "d17da2d30256b3931dd76c2674fc6a6bc2db464fe5af0ea25436a4beabb10de9",
+      "contentFingerprint": "4d9c55356c34e79f980079e9232deeb112b09b14d10922b6a19f968d0f48b5a2",
+      "sourceEvidence": {
+        "content": "전체집합 $U=\\{1,2,3,\\ldots,15\\}$의 세 부분집합 $A$, $B$, $C$에 대해 $A=\\{1,2,4,7,8\\}$, $B=\\{3,4,5,7,9\\}$, $C=\\{4,7,10,12,13\\}$일 때, $(A\\cap B^c)\\cup(A\\cap C^c)$의 모든 원소의 합은? [4.5점]",
+        "choices": [
+          "$8$",
+          "$9$",
+          "$10$",
+          "$11$",
+          "$12$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 두 차집합의 합집합은 $A$에서 $B$와 $C$에 공통으로 속하는 원소를 제외한 집합이다.\n조건 정리: $B\\cap C=\\{4,7\\}$이고 $A=\\{1,2,4,7,8\\}$이다.\n풀이 방향: 집합의 연산 법칙으로 식을 간단히 한 뒤 원소를 직접 구한다.\n정석 풀이: $(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A\\cap(B\\cap C)^c$이다. 따라서 $A$에서 $4,7$을 제외한 집합은 $\\{1,2,8\\}$이고, 원소의 합은 $1+2+8=11$이다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "복합 연산",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "드모르간 법칙으로 두 차집합의 합집합을 정리한 뒤 원소의 합을 구하는 복합 집합 연산 문항으로 locked canonical master에 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|집합과 명제|집합의 연산|집합의 연산법칙|복합 연산"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "[키포인트] 두 차집합의 합집합은 $A$에서 $B$와 $C$에 공통으로 속하는 원소를 제외한 집합이다.\n조건 정리: $B\\cap C=\\{4,7\\}$이고 $A=\\{1,2,4,7,8\\}$이다.\n풀이 방향: 집합의 연산 법칙으로 식을 간단히 한 뒤 원소를 직접 구한다.\n정석 풀이: $(A\\cap B^c)\\cup(A\\cap C^c)=A\\cap(B^c\\cup C^c)=A\\cap(B\\cap C)^c$이다. 따라서 $A$에서 $4,7$을 제외한 집합은 $\\{1,2,8\\}$이고, 원소의 합은 $1+2+8=11$이다.\n따라서 정답은 ④이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 연산",
+        "concept": "집합의 연산법칙",
+        "problemType": "복합 연산"
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "packetRole": "B_INDEPENDENT_DIRECT_TAGGING_REPAIR",
+  "packetStatus": "FROZEN",
+  "frozen": true,
+  "recordRange": { "start": 2452, "end": 2461, "count": 10 },
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "sourceManifestSha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09",
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "records": [
+    {
+      "recordIndex": 2452,
+      "manifestUid": "h1-direct-98932d432135b2c24a5214f2bdfeba8c",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js", "sourceOrdinal": 20, "curriculumKey": "2022", "sourceFingerprint": "2d6edb4cf5d8428035fd0a2b6818fd92fba28105ed9aab34a988f134def1ede6", "contentFingerprint": "ffa43656541c94346acf90105e3b9e33161180d33fe8aaf34e836ef12ab8e69b" },
+      "sourceEvidence": { "content": "오른쪽 도형 $ABCDEF$의 넓이를 이등분하고, 점 $A$를 지나는 직선의 방정식을 $ax+by+c=0$의 꼴로 구하고, 그 과정을 서술하시오.", "choices": [], "answer": "$3x+5y-15=0$", "solution": "도형은 0≤x≤5, 0≤y≤4인 직사각형과 -5≤x≤0, 0≤y≤1인 직사각형의 합이다. 전체 넓이는 25이고 절반은 25/2이다. 점 A(5,0)와 y축의 (0,t)를 잇는 직선 아래쪽 넓이는 5+5t/2이므로 t=3, 직선은 y=-3x/5+3, 즉 3x+5y-15=0이다.", "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20.png", "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20-solution.svg", "visualRead": "직사각형 합성 도형 ABCDEF와 좌표축을 직접 확인" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "도형의 방정식", "L2": "직선의 방정식", "L3": "점과 직선 사이의 거리", "L4": "도형의 넓이·최소거리", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "도형의 넓이를 좌표 직선으로 이등분", "primaryConceptKey": "L3-1.2.3", "secondaryConceptKeys": ["L3-1.1.3"], "difficultyBucket": 4, "difficultyReason": "합성 도형의 전체·절반 넓이를 계산하고 미지의 절편을 정해 직선식을 구성하는 다단계 풀이이다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2453,
+      "manifestUid": "h1-direct-4d53d33d38add18a552574ece8792814",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js", "sourceOrdinal": 21, "curriculumKey": "2022", "sourceFingerprint": "8d9aba1650099558a7f98619e8935eddf47f04dff662c4de45d83ce986acb791", "contentFingerprint": "d2370a8ff122de0bd4fdd9c402896a1c4c959ef1d0eec59078fe996637bfd862" },
+      "sourceEvidence": { "content": "점 $A(2,4)$에서 원 $x^2+y^2=2$에 접선을 그었을 때 생기는 접점을 각각 $P$, $Q$라 할 때, 삼각형 $APQ$의 넓이를 구하고, 그 과정을 서술하시오.", "choices": [], "answer": "$\\dfrac{27}{5}$", "solution": "원의 중심 O에서 접촉현 PQ까지의 거리는 1/√5이다. 반현 길이는 √(2-1/5)=3/√5이므로 PQ=6/√5이다. A에서 PQ까지의 거리는 9/√5이고 삼각형 넓이는 1/2·(6/√5)·(9/√5)=27/5이다.", "image": "", "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q21-solution.svg", "visualRead": "문제 image 없음; 연결된 해설 SVG 경로 확인" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "도형의 방정식", "L2": "원의 방정식", "L3": "원의 접선", "L4": "접점이 주어진 접선", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "원의 접촉현과 삼각형 넓이", "primaryConceptKey": "L3-1.3.3", "secondaryConceptKeys": ["L3-1.3.2"], "difficultyBucket": 4, "difficultyReason": "접촉현의 방정식·중심에서 현까지의 거리·삼각형 높이를 연쇄적으로 사용한다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2454,
+      "manifestUid": "h1-direct-38e219e835c488dbf65537fdb95b2600",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 1, "curriculumKey": "2022", "sourceFingerprint": "dce9634018a0bb45158698939e61262483730419b8dbeeefbdff1d1d5a60b912", "contentFingerprint": "93d8204025e5329a2df252b418a8498fa9bdd27685dc88f6700d2bc2407551af" },
+      "sourceEvidence": { "content": "집합 $A=\\{1,2,\\{1\\}\\}$일 때 다음 중 옳지 않은 것은? [4.0점]", "choices": ["$1\\in A$", "$1\\subset A$", "$\\{1\\}\\in A$", "$\\{1\\}\\subset A$", "$\\{\\{1\\}\\}\\subset A$"], "answer": "②", "solution": "A의 원소는 1, 2, {1}이다. 1은 집합이 아니므로 1⊂A라고 쓸 수 없어 ②가 거짓이고, 나머지는 참이다.", "image": "", "solutionImage": "" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 뜻과 포함 관계", "L3": "부분집합", "L4": "부분집합 판정", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "원소와 부분집합 기호 구분", "primaryConceptKey": "L3-2.1.2", "secondaryConceptKeys": ["L3-2.1.1"], "difficultyBucket": 1, "difficultyReason": "원소 관계와 부분집합 관계를 직접 판정하는 기본 개념 문항이다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2455,
+      "manifestUid": "h1-direct-9d21133e3044246d8ce77084dd749e04",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 2, "curriculumKey": "2022", "sourceFingerprint": "70c1076f64f9628b46a0fc754a704145c34799b968efc5e3c3d8f11842175852", "contentFingerprint": "6a5d100476a6b4fd5cd67a40051d4617214d076433166163913cb941872f4ac7" },
+      "sourceEvidence": { "content": "다음 중 함수의 그래프가 될 수 없는 것은? [4.1점]", "choices": [], "answer": "②", "solution": "수직선 판정법에 따르면 하나의 x값에 두 y값이 대응하면 함수의 그래프가 아니다. ②의 원은 여러 x에서 수직선과 두 점에서 만나므로 함수가 될 수 없다.", "image": "assets/images/25_제일고_2학기_중간_고1_기출/q02.png", "solutionImage": "", "visualRead": "②는 원, ①·③·④·⑤는 수직선 판정에 적합한 그래프" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "함수", "L2": "함수", "L3": "함수의 뜻", "L4": "대응과 함수", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "수직선 판정법으로 함수 그래프 판정", "primaryConceptKey": "L3-3.1.1", "secondaryConceptKeys": [], "difficultyBucket": 1, "difficultyReason": "다섯 그림에 수직선 판정법을 적용하는 단일 기준 판정이다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2456,
+      "manifestUid": "h1-direct-78ec156923d39a6264064df1ef641c5b",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 3, "curriculumKey": "2022", "sourceFingerprint": "254d02b8879a6b6813f8b78f0ebebb477be97f6049603c6106c4b6c23cbaeb89", "contentFingerprint": "1c747d95a6c73b822c2b4877830e9671ff08508c34a5b05b368339af645a6c68" },
+      "sourceEvidence": { "content": "집합 $\\{a,b,c,d,e,f\\}$의 부분집합 중 $a$, $b$를 모두 포함하지 않은 진부분집합의 개수는? [4.2점]", "choices": ["14", "15", "16", "17", "18"], "answer": "③", "solution": "a,b를 제외한 c,d,e,f의 포함 여부가 각각 두 가지이므로 부분집합 수는 2^4=16이고 모두 진부분집합이다.", "image": "", "solutionImage": "" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 뜻과 포함 관계", "L3": "부분집합", "L4": "부분집합의 개수", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "제한된 원소를 제외한 부분집합 개수", "primaryConceptKey": "L3-2.1.2", "secondaryConceptKeys": [], "difficultyBucket": 2, "difficultyReason": "포함 금지 조건을 네 원소의 독립적인 선택으로 바꾸어 2^4를 계산한다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2457,
+      "manifestUid": "h1-direct-3865344a44d4407fd851e8eab1c49db4",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 4, "curriculumKey": "2022", "sourceFingerprint": "f5700b506a983dd18b560b409a93551b9cf122fbc077dad2e4ded2d72d31d9d0", "contentFingerprint": "a7c1090ac827fcaa7178bfd24182c2bace193850ca1720afbce843a4f2b674a3" },
+      "sourceEvidence": { "content": "다음 보기의 집합이 나타내는 영역이 다른 하나는? [4.3점]", "choices": ["$(X-Y)\\cap Z^C$", "$X\\cap(Y\\cup Z)^C$", "$(X\\cap Y^C)\\cap Z^C$", "$X-(Y\\cup Z)$", "$X\\cap(Y^C\\cup Z)$"], "answer": "⑤", "solution": "①~④는 모두 X∩Y^C∩Z^C로 같고, ⑤는 X∩(Y^C∪Z)로 다르다.", "image": "", "solutionImage": "" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 연산", "L3": "집합의 연산법칙", "L4": "복합 연산", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "차집합·여집합·교집합의 동치 변형", "primaryConceptKey": "L3-2.2.3", "secondaryConceptKeys": ["L3-2.2.2"], "difficultyBucket": 2, "difficultyReason": "네 식을 드모르간 법칙과 차집합 정의로 같은 꼴에 모으는 표준 변형 문제이다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2458,
+      "manifestUid": "h1-direct-bdcea2670c17e50a4b4dd1fc97c60ffc",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 5, "curriculumKey": "2022", "sourceFingerprint": "140a3da0ee763574217fd37d6b7b8d1d3b326a0f0dd9bae1ca28171cea720fc5", "contentFingerprint": "3b2ad5d9f066b5db210d13f520d87b3d311bfa761135a8ad7c0c903a3f64f5c5" },
+      "sourceEvidence": { "content": "전체집합 U의 부분집합 A,B에 대하여 보기의 성질 중 옳은 것만을 있는 대로 고른 것은?", "choices": ["ㄱ, ㄴ", "ㄱ, ㄷ", "ㄱ, ㄹ", "ㄴ, ㄷ", "ㄴ, ㄹ"], "answer": "④", "solution": "ㄱ은 차집합 정의와 달라 거짓, ㄴ은 흡수법칙으로 참, ㄷ은 드모르간 법칙으로 참, ㄹ은 일반적으로 성립하지 않는다. 따라서 ㄴ, ㄷ인 ④이다.", "image": "", "solutionImage": "" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 연산", "L3": "집합의 연산법칙", "L4": "복합 연산", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "집합 연산법칙의 참·거짓 판정", "primaryConceptKey": "L3-2.2.3", "secondaryConceptKeys": ["L3-2.2.2"], "difficultyBucket": 3, "difficultyReason": "차집합, 흡수법칙, 드모르간 법칙, 포함 조건을 네 명제로 개별 검토한다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2459,
+      "manifestUid": "h1-direct-17dcd17de5f3fecd9185ed3e896ed26b",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 6, "curriculumKey": "2022", "sourceFingerprint": "a1500182af1f6d2bd2aa01f03ef4640c33e923c5fc9c43cbbdb2558272f3da77", "contentFingerprint": "7682fff2ab04dd5a6e78b0c831afe5ff5b847e239b7fca7d3bb65512645a35c3" },
+      "sourceEvidence": { "content": "전체집합 U의 부분집합 A,B에 대하여 n(U)=30, n(A)=20, n(B)=15일 때 n(A^C∪B^C)의 최댓값은?", "choices": ["5", "10", "15", "20", "25"], "answer": "⑤", "solution": "A^C∪B^C=(A∩B)^C이므로 값은 30-n(A∩B)이다. n(A∩B)의 최솟값은 20+15-30=5이므로 최댓값은 25이다.", "image": "", "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q06-solution.svg", "visualRead": "연결된 해설 SVG 경로 확인" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 연산", "L3": "집합의 연산법칙", "L4": "드모르간 법칙", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "드모르간 법칙과 교집합 최솟값", "primaryConceptKey": "L3-2.2.3", "secondaryConceptKeys": ["L3-2.2.1"], "difficultyBucket": 3, "difficultyReason": "여집합 변환 뒤 포함배제 하한을 이용해 최댓값을 구하는 두 단계 문제이다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2460,
+      "manifestUid": "h1-direct-6b4879890fc4e6acb3606834b9bde7c9",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 7, "curriculumKey": "2022", "sourceFingerprint": "805ae892a389df2db9601f86acb62642c15a11a887eb7d3d8baa4f70642b8407", "contentFingerprint": "bfcfd380e697215671e2bbf8a3cd46465c2c30b83839ae926fa9eb114d53c3cd" },
+      "sourceEvidence": { "content": "집합 A={1,2,3,4,5,6}의 부분집합 중 원소의 개수가 3개인 모든 부분집합의 모든 원소들의 총합은?", "choices": ["210", "220", "230", "240", "250"], "answer": "①", "solution": "각 원소는 나머지 다섯 원소 중 두 개를 고르는 5C2=10개 부분집합에 포함된다. 전체 합은 (1+2+3+4+5+6)×10=210이다.", "image": "", "solutionImage": "" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 뜻과 포함 관계", "L3": "부분집합", "L4": "부분집합의 개수", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "부분집합별 원소 등장 횟수 세기", "primaryConceptKey": "L3-2.1.2", "secondaryConceptKeys": ["L3-2.2.1"], "difficultyBucket": 3, "difficultyReason": "부분집합을 직접 나열하지 않고 고정 원소의 등장 횟수로 총합을 세는 조합적 전략이 필요하다.", "status": "B_CHECKED"
+    },
+    {
+      "recordIndex": 2461,
+      "manifestUid": "h1-direct-7ba9545afc48794f89af8ca6d33aebe2",
+      "source": { "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js", "sourceOrdinal": 8, "curriculumKey": "2022", "sourceFingerprint": "943cc29a9de63680755e88d563078862241f9f2b42c6793a6aabd7a4e5c1d66e", "contentFingerprint": "de4604a8bc960b7f748341650b310eb45fbb937b0e1a9df8c2c3666d822d14e2" },
+      "sourceEvidence": { "content": "전체집합 U={1,2,3,4,5}의 두 부분집합 A,B가 (가) A의 모든 원소는 소수이다. (나) A,B는 서로소이다. (다) n(A∪B)=5, n(B)=3을 만족시킬 때 B의 모든 원소의 합의 최댓값은?", "choices": ["8", "9", "10", "11", "12"], "answer": "③", "solution": "A와 B가 서로소이고 합집합이 U이며 B의 원소가 세 개이므로 A는 두 원소이다. A를 소수 두 개로 고를 때 B의 합을 최대화하려면 A={2,3}, B={1,4,5}로 두어 합 10을 얻는다.", "image": "", "solutionImage": "" },
+      "canonical": { "curriculumKey": "2022", "level": "high", "scope": "공통수학2", "L1": "집합과 명제", "L2": "집합의 뜻과 포함 관계", "L3": "집합의 포함 관계", "L4": "매개변수 조건", "L1Status": "RPM_VERIFIED", "L2Status": "RPM_VERIFIED", "L3Status": "CANONICAL_DRAFT", "L4Status": "CANONICAL_DRAFT", "curriculumApplicability": "DEFAULT_SCOPE", "defaultSelectable": true },
+      "primaryConcept": "서로소·합집합 조건에 따른 집합 선택 최적화", "primaryConceptKey": "L3-2.1.3", "secondaryConceptKeys": ["L3-2.1.2"], "difficultyBucket": 3, "difficultyReason": "합집합·서로소 조건으로 A와 B의 크기를 결정한 뒤 소수 조건과 최댓값을 함께 검토한다.", "status": "B_CHECKED"
+    }
+  ]
+}

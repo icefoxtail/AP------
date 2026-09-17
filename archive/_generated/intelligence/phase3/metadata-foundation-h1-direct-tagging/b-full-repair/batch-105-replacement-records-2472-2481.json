@@ -1,0 +1,592 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "agentRole": "independent-direct-retagging",
+  "packetType": "B_FULL_REPAIR_REPLACEMENT",
+  "batchId": "batch-105-replacement-records-2472-2481",
+  "recordRange": {
+    "start": 2472,
+    "end": 2481,
+    "count": 10
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "sourceManifest": {
+    "path": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "positions": {
+      "start": 2472,
+      "end": 2481
+    }
+  },
+  "records": [
+    {
+      "recordIndex": 2472,
+      "manifestUid": "h1-direct-a37fbcd45ec51c83380b850a98dfe84b",
+      "questionUid": "h1-direct-a37fbcd45ec51c83380b850a98dfe84b",
+      "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 19,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "d6e57f682646b02c6c1db0bae117233e85a296c3232461c27776ad185b4750ea",
+      "contentFingerprint": "e0080d5be59248202578545579b62583356735916d1559a99422c4c3a60c624a",
+      "sourceEvidence": {
+        "content": "1. 집합 $X=\\{1,2,3\\}$에서 집합 $Y=\\{1,2,3\\}$로의 함수 중에서 상수함수의 개수를 $a$, 항등함수의 개수를 $b$, 일대일대응의 개수를 $c$라 할 때, $a+b+c$의 값을 구하는 과정을 서술하시오. [4점]",
+        "choices": [],
+        "answer": "$10$",
+        "solution": "[키포인트] 상수함수, 항등함수, 일대일대응의 개수를 각각 구한다.\n조건 정리: 정의역과 공역의 원소 수는 모두 $3$이다.\n풀이 방향: 세 종류의 함수 개수를 독립적으로 계산한 뒤 더한다.\n정석 풀이: 상수함수는 세 정의역 원소의 함숫값이 모두 같은 경우이므로 공역의 한 원소를 고르는 $3$가지가 있다. 항등함수는 각 원소를 자기 자신으로 보내는 함수 하나뿐이므로 $1$가지이다. 일대일대응은 공역의 세 원소를 정의역의 세 원소에 순서 있게 대응시키는 경우이므로 $3!=6$가지이다. 따라서 $a+b+c=3+1+6=10$이다.\n따라서 구하는 값은 $10$이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "항등함수·상수함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|함수|함수|함수의 성질|함수의 성질"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: 상수함수는 세 정의역 원소의 함숫값이 모두 같은 경우이므로 공역의 한 원소를 고르는 $3$가지가 있다. 항등함수는 각 원소를 자기 자신으로 보내는 함수 하나뿐이므로 $1$가지이다. 일대일대응은 공역의 세 원소를 정의역의 세 원소에 순서 있게 대응시키는 경우이므로 $3!=6$가지이다. 따라서 $a+b+c=3+1+6=10$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "concept": "함수의 성질",
+        "problemType": "함수의 성질"
+      }
+    },
+    {
+      "recordIndex": 2473,
+      "manifestUid": "h1-direct-09bfacb32b07821bfd945af7e4853b52",
+      "questionUid": "h1-direct-09bfacb32b07821bfd945af7e4853b52",
+      "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 20,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "5419f52c4d12919907d4f966e4d8c3b96315395dc0a2b4217721ee57a87f6a97",
+      "contentFingerprint": "b6c04cbec49b9401ed598c8df228119e61235c57067ca392e6d8363a644731e4",
+      "sourceEvidence": {
+        "content": "2. 두 점 $A(1,3)$, $B(3,6)$의 두 점 사이의 거리를 구하고, 선분 $AB$를 $2:1$로 내분하는 점 $P$의 좌표를 구하시오. [4점]",
+        "choices": [],
+        "answer": "두 점 사이의 거리: $\\sqrt{13}$, $P\\left(\\dfrac73,5\\right)$",
+        "solution": "[키포인트] 거리 공식과 내분점 공식을 차례로 적용한다.\n조건 정리: $A(1,3)$, $B(3,6)$이고 $AP:PB=2:1$이다.\n풀이 방향: 먼저 $AB$를 구하고, 내분점은 반대편 비를 좌표에 곱하여 더한다.\n정석 풀이: $AB=\\sqrt{(3-1)^2+(6-3)^2}=\\sqrt{4+9}=\\sqrt{13}$이다. $AP:PB=2:1$이므로 $P=\\left(\\dfrac{1\\cdot1+2\\cdot3}{3},\\dfrac{1\\cdot3+2\\cdot6}{3}\\right)=\\left(\\dfrac73,5\\right)$이다.\n따라서 두 점 사이의 거리는 $\\sqrt{13}$이고, $P\\left(\\dfrac73,5\\right)$이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q20-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q20-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "내분점",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|평면좌표|두 점 사이의 거리|두 점 사이의 거리"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $AB=\\sqrt{(3-1)^2+(6-3)^2}=\\sqrt{4+9}=\\sqrt{13}$이다. $AP:PB=2:1$이므로 $P=\\left(\\dfrac{1\\cdot1+2\\cdot3}{3},\\dfrac{1\\cdot3+2\\cdot6}{3}\\right)=\\left(\\dfrac73,5\\right)$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표",
+        "concept": "두 점 사이의 거리",
+        "problemType": "두 점 사이의 거리"
+      }
+    },
+    {
+      "recordIndex": 2474,
+      "manifestUid": "h1-direct-6600ac353714d5dcfa13d5e28fb083d8",
+      "questionUid": "h1-direct-6600ac353714d5dcfa13d5e28fb083d8",
+      "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 21,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "a3ed845035dd31e96024d8ddcee4a27e65fb15b213b8e09a563a832727ffc26e",
+      "contentFingerprint": "2782c4888699f0c3da638f11eb72f67236349cae13165c89f457ea52401c85e1",
+      "sourceEvidence": {
+        "content": "3. 전체집합 $U$는 $10$ 이하의 자연수 전체의 집합이고, $P$는 $10$ 이하의 소수 전체의 집합이다. $n(X-P)\\cdot n(X\\cup P^C)=14$를 만족시키는 $U$의 부분집합 $X$의 개수를 구하는 과정을 서술하시오. [6점]",
+        "choices": [],
+        "answer": "$60$",
+        "solution": "[키포인트] $X$를 $P$에 속하는 부분과 $P^C$에 속하는 부분으로 나누어 원소 수를 나타낸다.\n조건 정리: $P=\\{2,3,5,7\\}$이고 $P^C=\\{1,4,6,8,9,10\\}$이다.\n풀이 방향: $a=n(X\\cap P^C)$, $b=n(X\\cap P)$로 두고 주어진 식을 정리한다.\n정석 풀이: $X-P=X\\cap P^C$이므로 $n(X-P)=a$이다. 또한 $X\\cup P^C$는 $P^C$의 여섯 원소와 $X\\cap P$의 $b$개 원소로 이루어지므로 $n(X\\cup P^C)=6+b$이다. 따라서 $a(6+b)=14$이다. $0\\le a\\le6$, $0\\le b\\le4$이므로 가능한 경우는 $a=2$, $b=1$뿐이다. $P^C$의 여섯 원소 중 두 원소를 고르는 방법은 ${}_6C_2=15$가지이고, $P$의 네 원소 중 한 원소를 고르는 방법은 ${}_4C_1=4$가지이다. 따라서 $X$의 개수는 $15\\times4=60$이다.\n따라서 구하는 값은 $60$이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "여집합과 차집합",
+      "L4": "여집합·차집합",
+      "primaryConcept": "여집합과 차집합",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|집합과 명제|집합의 연산|여집합과 차집합|여집합과 차집합"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $X-P=X\\cap P^C$이므로 $n(X-P)=a$이다. 또한 $X\\cup P^C$는 $P^C$의 여섯 원소와 $X\\cap P$의 $b$개 원소로 이루어지므로 $n(X\\cup P^C)=6+b$이다. 따라서 $a(6+b)=14$이다. $0\\le a\\le6$, $0\\le b\\le4$이므로 가능한 경우는 $a=2$, $b=1$뿐이다. $P^C$의 여섯 원소 중 두 원소를 고르는 방법은 ${}_6C_2=15$가지이고, $P$의 네 원소 중 한 원소를 고르는 방법은 ${}_4C_1=4$가지이다. 따라서 $X$의 개수는 $15\\times4=60$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 연산",
+        "concept": "여집합과 차집합",
+        "problemType": "여집합과 차집합"
+      }
+    },
+    {
+      "recordIndex": 2475,
+      "manifestUid": "h1-direct-6936fd112cfc197b2d5219d7709c229f",
+      "questionUid": "h1-direct-6936fd112cfc197b2d5219d7709c229f",
+      "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 22,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "02d8b147c19522a6ebd57ea8280853b1824085ad01c65971476a65c5483bed0d",
+      "contentFingerprint": "18167084de0717cf605029ae4cc69ff891e42fc5e70b8d2d1a38a8f595e066da",
+      "sourceEvidence": {
+        "content": "4. 원 $(x-3)^2+(y-4)^2=16$ 위의 임의의 점 $P$에 대하여 $\\overline{OP}$의 거리가 정수가 되는 점 $P$의 개수를 구하시오. (이때, 점 $O$는 원점이다.) [6점]",
+        "choices": [],
+        "answer": "$16$",
+        "solution": "[키포인트] 원점에서 점 $P$까지의 거리를 반지름으로 하는 원과 주어진 원의 교점 개수를 센다.\n조건 정리: 주어진 원의 중심은 $C(3,4)$이고 $OC=5$, 반지름은 $4$이다.\n풀이 방향: $OP=d$라 두고 두 원이 만나는 정수 $d$의 범위와 교점 개수를 조사한다.\n정석 풀이: 점 $P$가 주어진 원 위를 움직일 때 $OP$의 최솟값은 $5-4=1$, 최댓값은 $5+4=9$이다. 따라서 가능한 정수 $d$는 $1,2,\\ldots,9$이다. $d=1$일 때 두 원은 외접하여 한 점에서 만나고, $d=9$일 때 두 원은 내접하여 한 점에서 만난다. $2\\le d\\le8$인 일곱 정수에 대해서는 $|5-4|\\lt d\\lt5+4$이므로 두 원이 서로 다른 두 점에서 만난다. 따라서 점 $P$의 개수는 $1+7\\times2+1=16$이다.\n\n계산/도식 확인: $OP=d$인 점 $P$는 중심이 $O$이고 반지름이 $d$인 원과 주어진 원의 교점이다. 두 중심 사이의 거리는 $OC=5$, 주어진 원의 반지름은 $4$이므로 교점이 생기는 조건은 $|5-4|\\le d\\le5+4$, 즉 $1\\le d\\le9$이다. 경계값 $d=1,9$에서는 두 원이 각각 외접·내접하여 한 점에서 만나고, 내부의 일곱 정수 $d=2,3,4,5,6,7,8$에서는 두 점씩 만난다. 따라서 서로 다른 점의 개수는 $1+7\\times2+1=16$이다.\n따라서 구하는 값은 $16$이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q22-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q22-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "두 원",
+      "L4": "원과 원의 교점",
+      "primaryConcept": "두 원",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|원의 방정식|두 원|두 원"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: 점 $P$가 주어진 원 위를 움직일 때 $OP$의 최솟값은 $5-4=1$, 최댓값은 $5+4=9$이다. 따라서 가능한 정수 $d$는 $1,2,\\ldots,9$이다. $d=1$일 때 두 원은 외접하여 한 점에서 만나고, $d=9$일 때 두 원은 내접하여 한 점에서 만난다. $2\\le d\\le8$인 일곱 정수에 대해서는 $|5-4|\\lt d\\lt5+4$이므로 두 원이 서로 다른 두 점에서 만난다. 따라서 점 $P$의 개수는 $1+7\\times2+1=16$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "두 원",
+        "problemType": "두 원"
+      }
+    },
+    {
+      "recordIndex": 2476,
+      "manifestUid": "h1-direct-8316a99f7186a54d81bd97b990841c95",
+      "questionUid": "h1-direct-8316a99f7186a54d81bd97b990841c95",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 1,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "80af810756bab4e8915828187c49d687263afc13458682df691add99864c543e",
+      "contentFingerprint": "f1a56fc8f323db864698aa71723385c4a82812cedea20d8c7b0650169ec45ec9",
+      "sourceEvidence": {
+        "content": "좌표평면 위의 두 점 $A(-2,5)$, $B(3,0)$이 있다. 두 점 $A$, $B$ 사이의 거리는? [3.1점]",
+        "choices": [
+          "$2\\sqrt5$",
+          "$5$",
+          "$5\\sqrt2$",
+          "$10$",
+          "$10\\sqrt2$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 두 점 사이의 거리는 가로 변화량과 세로 변화량으로 만든 직각삼각형의 빗변이다.\n조건 정리: $A(-2,5)$, $B(3,0)$이므로 $x$좌표의 차와 $y$좌표의 차는 각각 $5$, $-5$이다.\n풀이 방향: 두 점 사이의 거리 공식을 직접 적용한다.\n정석 풀이: $\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}=\\sqrt{25+25}=\\sqrt{50}=5\\sqrt2$이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "거리 공식",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|평면좌표|두 점 사이의 거리|두 점 사이의 거리"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $\\overline{AB}=\\sqrt{(3-(-2))^2+(0-5)^2}=\\sqrt{25+25}=\\sqrt{50}=5\\sqrt2$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "평면좌표",
+        "concept": "두 점 사이의 거리",
+        "problemType": "두 점 사이의 거리"
+      }
+    },
+    {
+      "recordIndex": 2477,
+      "manifestUid": "h1-direct-59c380b1cc7762269bd5284b99bba267",
+      "questionUid": "h1-direct-59c380b1cc7762269bd5284b99bba267",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 2,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "22d9e8371bb159927c7be91d537efb7ba10d547ca91d04ae2042557325c1417d",
+      "contentFingerprint": "b9db842bb5953685b0413230efdfbe57f2391500ccf5330b8d02f5c1308ad636",
+      "sourceEvidence": {
+        "content": "두 직선 $x+3y+2=0$, $kx-2y-1=0$이 서로 수직일 때, 실수 $k$의 값은? [3.1점]",
+        "choices": [
+          "$6$",
+          "$8$",
+          "$10$",
+          "$12$",
+          "$14$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 두 직선이 수직이면 두 기울기의 곱이 $-1$이다.\n조건 정리: 첫째 직선의 기울기는 $-\\dfrac13$, 둘째 직선의 기울기는 $\\dfrac{k}{2}$이다.\n풀이 방향: 수직 조건을 식으로 세워 $k$를 구한다.\n정석 풀이: $-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이므로 $-k=-6$, 따라서 $k=6$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "수직",
+      "primaryConcept": "두 직선의 위치 관계",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|직선의 방정식|두 직선의 위치 관계|두 직선의 위치 관계"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $-\\dfrac13\\cdot\\dfrac{k}{2}=-1$이므로 $-k=-6$, 따라서 $k=6$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "직선의 방정식",
+        "concept": "두 직선의 위치 관계",
+        "problemType": "두 직선의 위치 관계"
+      }
+    },
+    {
+      "recordIndex": 2478,
+      "manifestUid": "h1-direct-563da8f79e0f3190e6ccbf815c7bdd3b",
+      "questionUid": "h1-direct-563da8f79e0f3190e6ccbf815c7bdd3b",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 3,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "93f89cdd3cfa7e88fc8034575b3f866d1fa0a61ccc928910c633e8229b6dfdfe",
+      "contentFingerprint": "c4c4fb19192b8a13754ca00abfac038592e87d068efae0664afad9cd552dc3be",
+      "sourceEvidence": {
+        "content": "원의 방정식 $x^2+y^2+2x-6y+6=0$의 중심 좌표와 반지름의 길이를 순서대로 올바르게 쓴 것은? [3.2점]",
+        "choices": [
+          "$(-1,3),\\ 2$",
+          "$(-1,3),\\ 4$",
+          "$(1,-3),\\ 2$",
+          "$(1,-3),\\ 4$",
+          "$(1,3),\\ 4$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] $x$, $y$에 관한 항을 완전제곱식으로 만들면 원의 중심과 반지름을 중심형에서 바로 읽을 수 있다.\n조건 정리: $x^2+2x=(x+1)^2-1$, $y^2-6y=(y-3)^2-9$이다.\n풀이 방향: 상수항까지 함께 정리한 뒤, 우변을 반지름의 제곱으로 읽는다.\n정석 풀이: 주어진 식에 완전제곱식을 대입하면 $(x+1)^2-1+(y-3)^2-9+6=0$이다. 따라서 $(x+1)^2+(y-3)^2=4=2^2$이다. 중심형 $(x-a)^2+(y-b)^2=r^2$와 비교하면 $a=-1$, $b=3$, $r=2$이다.\n아래 그림에서 중심 $C(-1,3)$에서 원 위의 점 $(1,3)$까지의 거리가 실제로 $2$임을 확인할 수 있다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "중심과 반지름",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|원의 방정식|원의 방정식|원의 방정식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: 주어진 식에 완전제곱식을 대입하면 $(x+1)^2-1+(y-3)^2-9+6=0$이다. 따라서 $(x+1)^2+(y-3)^2=4=2^2$이다. 중심형 $(x-a)^2+(y-b)^2=r^2$와 비교하면 $a=-1$, $b=3$, $r=2$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원의 방정식",
+        "problemType": "원의 방정식"
+      }
+    },
+    {
+      "recordIndex": 2479,
+      "manifestUid": "h1-direct-af2fed61c52df4d92efc343b0bf5f1c6",
+      "questionUid": "h1-direct-af2fed61c52df4d92efc343b0bf5f1c6",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 4,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "e0889a4d547a4d82cec4ab47f12b66ffd6e98346bfd7f04c2687c05687f553a8",
+      "contentFingerprint": "57c2503a53275a32870dd15753977dad75e4ffc9aa03aa0871e361384781f954",
+      "sourceEvidence": {
+        "content": "원 $x^2+y^2=5$에 접하고 기울기가 $1$인 두 직선이 $y$축과 만나는 점을 각각 $A$, $B$라 할 때, $\\overline{AB}$의 길이는? [3.4점]",
+        "choices": [
+          "$\\sqrt2$",
+          "$\\sqrt5$",
+          "$\\sqrt{10}$",
+          "$2\\sqrt5$",
+          "$2\\sqrt{10}$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 원에 접하는 직선은 중심에서 그 직선까지의 거리가 반지름과 같다.\n조건 정리: 기울기가 $1$인 모든 직선은 $y=x+b$, 즉 $x-y+b=0$으로 나타낼 수 있다. 원 $x^2+y^2=5$의 중심은 $O(0,0)$이고 반지름은 $\\sqrt5$이다.\n풀이 방향: 원점에서 직선까지의 거리를 $\\sqrt5$와 같게 두어 $b$의 두 값을 구한다.\n정석 풀이: $O$에서 $x-y+b=0$까지의 거리는 $\\dfrac{|b|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{|b|}{\\sqrt2}$이다. 접선 조건에서 $\\dfrac{|b|}{\\sqrt2}=\\sqrt5$이므로 $|b|=\\sqrt{10}$이다. 따라서 두 직선은 $y=x+\\sqrt{10}$, $y=x-\\sqrt{10}$이고, $y$축과 만나는 점은 $A(0,\\sqrt{10})$, $B(0,-\\sqrt{10})$이다. 두 점은 같은 $y$축 위에 있으므로 $\\overline{AB}=\\sqrt{10}-(-\\sqrt{10})=2\\sqrt{10}$이다.\n따라서 정답은 ⑤이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|원의 방정식|원의 접선|원의 접선"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $O$에서 $x-y+b=0$까지의 거리는 $\\dfrac{|b|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{|b|}{\\sqrt2}$이다. 접선 조건에서 $\\dfrac{|b|}{\\sqrt2}=\\sqrt5$이므로 $|b|=\\sqrt{10}$이다. 따라서 두 직선은 $y=x+\\sqrt{10}$, $y=x-\\sqrt{10}$이고, $y$축과 만나는 점은 $A(0,\\sqrt{10})$, $B(0,-\\sqrt{10})$이다. 두 점은 같은 $y$축 위에 있으므로 $\\overline{AB}=\\sqrt{10}-(-\\sqrt{10})=2\\sqrt{10}$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "원의 접선",
+        "problemType": "원의 접선"
+      }
+    },
+    {
+      "recordIndex": 2480,
+      "manifestUid": "h1-direct-d3b3d8c7af871cc6404352568a880098",
+      "questionUid": "h1-direct-d3b3d8c7af871cc6404352568a880098",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 5,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "680da009d2a034d1d6397ac88c2bc333141bd2316f11d7a330a9fd2776310c07",
+      "contentFingerprint": "8dd1091a57522f80ac16999a95febc2caa3ae67c367caea38aebbd68aaf1d375",
+      "sourceEvidence": {
+        "content": "두 집합 $A=\\{3,\\ 2a,\\ b-4\\}$, $B=\\{3a,\\ 4,\\ 2\\}$에 대하여 $A=B$일 때, $a+b$의 값은? (단, $a,b$는 상수) [3.4점]",
+        "choices": [
+          "$9$",
+          "$10$",
+          "$11$",
+          "$12$",
+          "$13$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 두 집합이 같으려면 중복을 제외한 원소가 정확히 일치해야 한다.\n조건 정리: $A=\\{3,2a,b-4\\}$, $B=\\{3a,4,2\\}$이다.\n풀이 방향: $B$의 고정 원소 $4$와 $2$가 $A$에서 어떻게 만들어지는지 경우를 확인한다.\n정석 풀이: $B$의 원소 $4$는 $A$의 고정 원소 $3$이 될 수 없으므로 $2a=4$ 또는 $b-4=4$이다. $2a=4$이면 $a=2$이고 $B=\\{6,4,2\\}$에 $3$이 없어 불가능하다. 따라서 $b-4=4$, $b=8$이다. 이어서 $\\{3,2a\\}=\\{3a,2\\}$를 비교하면 $a=1$이다. 그러므로 $a+b=1+8=9$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": "",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": ""
+        }
+      },
+      "courseKey": "2022",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합의 포함 관계",
+      "L4": "매개변수 조건",
+      "primaryConcept": "집합의 포함 관계",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|집합과 명제|집합의 뜻과 포함 관계|집합의 포함 관계|매개변수 조건"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $B$의 원소 $4$는 $A$의 고정 원소 $3$이 될 수 없으므로 $2a=4$ 또는 $b-4=4$이다. $2a=4$이면 $a=2$이고 $B=\\{6,4,2\\}$에 $3$이 없어 불가능하다. 따라서 $b-4=4$, $b=8$이다. 이어서 $\\{3,2a\\}=\\{3a,2\\}$를 비교하면 $a=1$이다. 그러므로 $a+b=1+8=9$이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 뜻과 포함 관계",
+        "concept": "집합의 포함 관계",
+        "problemType": "매개변수 조건"
+      }
+    },
+    {
+      "recordIndex": 2481,
+      "manifestUid": "h1-direct-9e736813cfc4a688e67b20d2155130fd",
+      "questionUid": "h1-direct-9e736813cfc4a688e67b20d2155130fd",
+      "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 6,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "97a253ca5770e154c1bcc6d9d0ad7b5f28048b4167ebecf882009dfd1a4d841d",
+      "contentFingerprint": "59649ac1a017bc63cfbd5a4b39ba1618602274733e8890063cad6b0e9affa9b0",
+      "sourceEvidence": {
+        "content": "방정식 $x^2+y^2-kx+2y+2k+1=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$의 값의 범위는? [3.5점]",
+        "choices": [
+          "$1<k<8$",
+          "$0<k<4$",
+          "$k<0$ 또는 $k>8$",
+          "$k<1$ 또는 $k>8$",
+          "$k<0$ 또는 $k>4$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 중심형의 우변은 반지름의 제곱 $r^2$이므로, 실제 원이 되려면 반드시 $r^2>0$이어야 한다.\n조건 정리: $r^2=0$이면 원이 아니라 한 점만 남고, $r^2<0$이면 좌표평면 위에 나타나는 점이 없다.\n풀이 방향: 완전제곱식으로 바꾸어 $r^2$를 구한 뒤, 그 부호를 판단한다.\n정석 풀이: $x^2-kx+y^2+2y+2k+1=0$에서 $x$와 $y$에 대해 완전제곱식을 만들면 $\\left(x-\\dfrac{k}{2}\\right)^2+(y+1)^2=\\dfrac{k^2}{4}-2k=\\dfrac{k(k-8)}4$이다. 따라서 반지름의 제곱은 $r^2=\\dfrac{k(k-8)}4$이다. 실제 원이 되려면 $k(k-8)>0$이어야 한다. 두 경계값 $0$, $8$을 기준으로 부호를 보면 $k<0$ 또는 $k>8$에서만 양수이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg",
+        "neededVisual": {
+          "image": "",
+          "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q06-solution.svg"
+        }
+      },
+      "courseKey": "2022",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "두 원",
+      "L4": "두 원의 위치 관계",
+      "primaryConcept": "두 원",
+      "primaryConceptReason": "독립적으로 source content/solution을 읽고 locked canonical master의 concept/problemType에 직접 대조했다.",
+      "secondaryConceptKeys": [
+        "공통수학2|도형의 방정식|원의 방정식|두 원|두 원"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "독립 source read에 따른 문항 구조·조건 해석·계산 및 서술 부담 판정.",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "tagConfidence": "HIGH",
+      "tagStatus": "DIRECT_TAGGED",
+      "reviewStatus": "DIRECT_TAGGED",
+      "status": "B_CHECKED",
+      "statusReason": "source-direct read와 locked canonical master 대조 완료.",
+      "decisiveSolutionStep": "정석 풀이: $x^2-kx+y^2+2y+2k+1=0$에서 $x$와 $y$에 대해 완전제곱식을 만들면 $\\left(x-\\dfrac{k}{2}\\right)^2+(y+1)^2=\\dfrac{k^2}{4}-2k=\\dfrac{k(k-8)}4$이다. 따라서 반지름의 제곱은 $r^2=\\dfrac{k(k-8)}4$이다. 실제 원이 되려면 $k(k-8)>0$이어야 한다. 두 경계값 $0$, $8$을 기준으로 부호를 보면 $k<0$ 또는 $k>8$에서만 양수이다.",
+      "rejectedAlternativeConcepts": [],
+      "canonicalSearch": {
+        "authority": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "scope": "공통수학2",
+        "majorUnit": "도형의 방정식",
+        "midUnit": "원의 방정식",
+        "concept": "두 원",
+        "problemType": "두 원"
+      }
+    }
+  ],
+  "freeze": {
+    "frozen": true,
+    "exactManifestPositions": [
+      2472,
+      2473,
+      2474,
+      2475,
+      2476,
+      2477,
+      2478,
+      2479,
+      2480,
+      2481
+    ],
+    "semanticAuthorityExcludes": [
+      "batch-100-records-2472-2481.json",
+      "A packets",
+      "prior semantic tags"
+    ]
+  }
+}

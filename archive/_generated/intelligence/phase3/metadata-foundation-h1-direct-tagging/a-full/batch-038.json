@@ -1,0 +1,866 @@
+{
+  "schemaVersion": "h1-direct-tagging-a-packet-v1",
+  "role": "A_PRIMARY_TAGGER",
+  "batchId": "batch-038",
+  "manifestRange": {
+    "zeroBasedStart": 925,
+    "zeroBasedEnd": 949,
+    "oneBasedStart": 926,
+    "oneBasedEnd": 950
+  },
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "sourceManifestSha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09",
+  "canonicalAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalAuthoritySha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfc8384c367bf",
+  "semanticPreGate": {
+    "status": "PASS",
+    "directReadCompleted": true,
+    "allowedInputs": [
+      "source_manifest.content",
+      "source_manifest.choices",
+      "source_manifest.answer",
+      "source_manifest.solution",
+      "source_manifest.image",
+      "source_manifest.solutionImage",
+      "canonical authority"
+    ],
+    "forbiddenInputsRead": false,
+    "canonicalRevisionLocked": true
+  },
+  "packetStatus": "COMPLETE",
+  "records": [
+    {
+      "source": {
+        "manifestUid": "h1-direct-b2d23aa5df57807e9a97b260caffcf3a",
+        "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 6,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "fddc7b3daa4788891ed014c1b84b8b7cf4fdd2a38243f28c4a5392184925ab06",
+        "contentFingerprint": "046fcedfcfdde41af237f462b76f3a175ad47f40449415b15b47e60c248f130f"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "직선과 포물선",
+        "L4": "접선 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|직선과 포물선|접선 조건",
+        "valid": true
+      },
+      "primaryConcept": "포물선 접선 두 기울기",
+      "primaryConceptReason": "(-1,3)을 지나는 직선과 포물선의 접선 조건에서 기울기 이차식의 두 근 합을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "접선 판별식과 근의 합이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-56895e558f5718d88f9e4bd396feeb5f",
+        "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "1bc88f19ad74d5365355f1555ffa9e63eb5a0f75bf7f63b085d9c2a3c24e80d9",
+        "contentFingerprint": "b764e35e8cc0861b9a898642fae5f3b72eaf03f7c73c5904fa670497c7571415"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "이차식이 포함된 연립방정식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|이차식이 포함된 연립방정식",
+        "valid": true
+      },
+      "primaryConcept": "이차식 연립방정식의 최댓값",
+      "primaryConceptReason": "첫 식을 (2x+y)(x-y)=0으로 분기하고 x²+y²=20에 대입해 x+2y를 비교한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|대칭식 활용"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "이차식 인수분해 두 경우와 값 비교다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b6d649209ea7f09165ac3bcf9b58581f",
+        "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 8,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "9c298b7d303799e5568620f689ac4a791c559a977547131f2f63974d15b014ad",
+        "contentFingerprint": "0c53cda0a2eab57cf6dbfbe335ba6644f704e182817e753ec66f8b3cec579ef9"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "복합 나머지와 인수 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|복합 나머지와 인수 조건",
+        "valid": false
+      },
+      "primaryConcept": "복합 나머지·인수 조건",
+      "primaryConceptReason": "f=(x+2)Q-4, Q(3)=3으로 f(3),f(-2)를 구해 이차 나머지 R(1)을 결정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 단계 나눗셈과 복합 인자 나머지를 연결한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "f(3)=11,f(-2)=-4, R=3x+2, R(1)=5이다.",
+      "rejectedAlternativeConcepts": [
+        "나머지 정리: 두 나눗셈 조건을 결합하는 별도 core다"
+      ],
+      "taxonomyReason": "복합 인자 나머지와 선행 몫 조건 L4가 canonical에 없다.",
+      "statusReason": "반복 가능한 composite-remainder core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-3af378ed7dfe9fe2591329e27f3e3a57",
+        "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 9,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "b372bc17d3bbc0218c26f14deab8ffb65096213123dc029b254511b4c385efbb",
+        "contentFingerprint": "6967c15f40b49eda5aa85d558784039f83e5463c785c874e5b0ffa0ec113a557"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "방정식과 이차함수",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "근 조건 함수 구성",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|방정식과 이차함수|CANONICAL_NO_FIT|근 조건 함수 구성",
+        "valid": false
+      },
+      "primaryConcept": "근에서 함숫값 1인 이차식 구성",
+      "primaryConceptReason": "f(x)-1이 α,β를 근으로 갖도록 원래 이차방정식과 일치시켜 f(2)=6을 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "근 조건과 이차식 구성이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit"
+      ],
+      "decisiveSolutionStep": "f(x)-1=x²-2x+5, f=x²-2x+6, f(2)=6이다.",
+      "rejectedAlternativeConcepts": [
+        "근으로 방정식 구성: 함수값 이동 조건을 결합한 별도 core다"
+      ],
+      "taxonomyReason": "근에서 일정한 함숫값을 갖는 이차식 구성 L4가 없다.",
+      "statusReason": "반복 가능한 function-from-root-values core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b89b39ef15b0ea72e49e7e2ffa532eb4",
+        "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 10,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "984562a4518abf215d89b38b6d299ab0bd64ab101ad0c09c4bb85a1fab59d997",
+        "contentFingerprint": "00dcbccfc4f2b9dd587503b4ac1619ab2eeb3c9170aea254f15d7abfb4ae46d3"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "다항식 합성 나머지",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|다항식 합성 나머지",
+        "valid": false
+      },
+      "primaryConcept": "f(x²)의 다항식 나머지",
+      "primaryConceptReason": "f=(x+2)(x-k)와 f(x²)를 f(x)로 나눈 나머지 조건에서 f(4)=-18,k=7을 정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "합성 다항식 나머지와 인수 조건을 연결한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "x=-2 대입으로 f(4)=-18, f(4)=6(4-k)에서 k=7, f(2)=-20이다.",
+      "rejectedAlternativeConcepts": [
+        "인수분해형: 합성 다항식의 나머지 조건이 핵심이다"
+      ],
+      "taxonomyReason": "합성 다항식에 대한 나머지 조건 L4가 canonical에 없다.",
+      "statusReason": "반복 가능한 composed-remainder core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-eccb09c3f707f1641f864f9dc1fab724",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 11,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "b07d3cc177ff3af6bf9460ed33bd18bb45ed6475358c2d0083507875ed3cea15",
+        "contentFingerprint": "553ef1d66c5c7396d0770f3e5288769afca71d64f32bf84bf9dc8e97baec90ff"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "방정식과 이차함수",
+        "L3": "그래프와 근",
+        "L4": "판별식과 위치",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|방정식과 이차함수|그래프와 근|판별식과 위치",
+        "valid": true
+      },
+      "primaryConcept": "그래프 근으로 두 함수 방정식 풀이",
+      "primaryConceptReason": "q11.svg의 f,g 식을 읽어 f=2g의 두 근을 구하고 α-β를 계산한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수1|방정식과 부등식|이차방정식|근과 계수의 관계|근의 합·곱"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 그래프의 근·식 복원과 새 교점 방정식을 결합한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "image_dependent",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "SVG의 f=x²-x-2,g=-x²-2x+8에서 f=2g는 (x+3)(x-2)=0, 차 5이다.",
+      "rejectedAlternativeConcepts": [
+        "근과 계수의 관계: 그래프 식 복원이 먼저이고 교점 차는 후속이다"
+      ],
+      "taxonomyReason": "그래프의 근과 상대 위치를 읽어 이차방정식 교점을 구하는 유형이다.",
+      "statusReason": "q11.svg의 data-equation과 표시된 근을 직접 확인했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b7969c1be96032aa33b14559233211fc",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 12,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "f9fa2e84887209a1848cbae5655aedc557acd74210c47162cfb0f930b3f2d79c",
+        "contentFingerprint": "ffe28e4f966dddd410a5f5e99f58bd6231cfd1b40b0c3f8ae7c738ae05c9addf"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "이동기준 다항식 계수",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|이동기준 다항식 계수",
+        "valid": false
+      },
+      "primaryConcept": "이동기준 다항식 계수 추출",
+      "primaryConceptReason": "x=2 기준 조립제법을 세 번 적용해 a=1,b=2,c=-1,d=-7을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "shifted-basis 연속 나눗셈이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "ab+cd=1·2+(-1)(-7)=9이다.",
+      "rejectedAlternativeConcepts": [
+        "나머지 정리: 기준 이동 계수 전체를 추출한다"
+      ],
+      "taxonomyReason": "shifted-basis synthetic-division coefficient L4가 HIGH1 canonical에 없다.",
+      "statusReason": "반복 가능한 shifted-coefficient core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-e114a58fd47d59cc39d25185a391617c",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 13,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "4b01bce186b0c1046b147ff92e6fb4095412d2b6b7866b930b77a79cd16dd6b9",
+        "contentFingerprint": "81d08280bfe6f0d28464fc29528b2e658240a45e7dbe1b44cd224aff48ed74b4"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "L3": "복소수의 연산",
+        "L4": "켤레복소수",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|복소수|복소수의 연산|켤레복소수",
+        "valid": true
+      },
+      "primaryConcept": "켤레합·곱으로 복소수 곱 계산",
+      "primaryConceptReason": "켤레 조건에서 z1+z2,z1z2를 복원한 뒤 (2z1-3)(2z2-3)을 전개한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "켤레 변환과 복소수 대칭식 전개다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-5e84b1148b59725d6e4a12b8ed61bb14",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 14,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "064ce18bcf664353e5678a89df6102581d15a487419b01d112fffd1c0a25f796",
+        "contentFingerprint": "42e72d73827a56378e7ff04001bb868f6624c82c1ecc89ccecc35ac7ebb00fd4"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "L3": "복소수 근",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|복소수|복소수 근|CANONICAL_NO_FIT|삼차 단위원 보기 판정",
+        "valid": false
+      },
+      "primaryConcept": "삼차 단위원 켤레·주기 명제",
+      "primaryConceptReason": "ω³=1과 켤레 관계로 세 보기를 검증한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|복소수|복소수의 연산|켤레복소수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "켤레·주기·지수조건을 세 보기에서 함께 판정한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "ㄱ·ㄴ·ㄷ 모두 참이다.",
+      "rejectedAlternativeConcepts": [
+        "켤레복소수: 삼차 단위원 주기 명제의 별도 core다"
+      ],
+      "taxonomyReason": "삼차 단위원의 복합 보기 판정 L4가 canonical에 없다.",
+      "statusReason": "반복 가능한 root-of-unity statement-check core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-91644f20ac71a305bdb493ce8470373f",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 15,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "312635e56b58576eaca6f56884fd8e309a9529cb2a0063e195e29e3925220351",
+        "contentFingerprint": "1858093abf31ddec6152bcfad4fcc2b00d0a14044865dad38aa1fadcddd5f737"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "다항식 나눗셈 과정",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|다항식 나눗셈 과정",
+        "valid": false
+      },
+      "primaryConcept": "다항식 장제법 중간값",
+      "primaryConceptReason": "세로셈에서 몫 상수항 2, 중간식 2x, 나머지 8x+7을 읽어 합한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "장제법 단계 추적이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "(가)+(나)+(다)=2+2x+8x+7=10x+9이다.",
+      "rejectedAlternativeConcepts": [
+        "인수분해형: 다항식 나눗셈 과정 자체가 핵심이다"
+      ],
+      "taxonomyReason": "다항식 장제법 중간 과정 L4가 HIGH1 canonical에 없다.",
+      "statusReason": "반복 가능한 polynomial-division-step core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-84a3b2964170857b18b78d51ed9141d7",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 16,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "53406e97f22294bf751575526742c18ca53fbd1e3496661292f265f5348b0921",
+        "contentFingerprint": "549133f331f6358b7615c924757836a1942afaf1849f881651c639df3d5748c5"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "연립일차부등식",
+        "L4": "정수해",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|연립일차부등식|정수해",
+        "valid": true
+      },
+      "primaryConcept": "정수해 개수 매개범위",
+      "primaryConceptReason": "x>1과 x≤(-2a-1)/3에 정확히 2개 정수가 들어가도록 a를 제한한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "정수 경계와 매개변수 범위를 비교한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-d8c9ac31e83abc5f850b45288d38f2c4",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 17,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "c4945ac3667da018ca5f4ec54c5d9385092a0ccb144343e299852c9d78bdf894",
+        "contentFingerprint": "a00558fe767f83c0e9cd44a5dd2d59887eea255c67a317f6b338a915201c47af"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "L3": "이차방정식의 근",
+        "L4": "판별식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식|이차방정식의 근|판별식",
+        "valid": true
+      },
+      "primaryConcept": "실근 존재 판별식 범위",
+      "primaryConceptReason": "D/4=(1-k)²-(k²+3)≥0을 풀어 k≤-1을 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "판별식 부등식이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-5e85377e3fb6be51904c114d3b0c2340",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 18,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "99936a7174fc14c427a9d33899b8ebbde6882b0b36647eb5142b45cfd60d177e",
+        "contentFingerprint": "de5ca5a9c5b686de9cf90df251390f35c480abe3890998fd217109705498bc1a"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "L3": "복소수 근",
+        "L4": "계수 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|복소수|복소수 근|계수 조건",
+        "valid": true
+      },
+      "primaryConcept": "실계수 삼차식의 켤레근 관계",
+      "primaryConceptReason": "1+i와 1-i를 켤레근으로 두고 세 근의 계수 관계로 a,b,c,d를 계산한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수1|방정식과 부등식|이차방정식|근과 계수의 관계|근의 합·곱"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "켤레근과 삼차 Vieta 관계를 결합한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-51decba190f0d425b29d7a0d5ea57be5",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 19,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "750b94f85f7773c29fc766f0c4fc4b12e6b16985855247f371796b958c5c17f8",
+        "contentFingerprint": "634ea33f3f815eda8c2dde22bb22f6747e0bac383426e971f8a6d48146ca259f"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "L3": "복소수 근",
+        "L4": "CONFLICT",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|복소수|복소수 근|CONFLICT|음수 근호 해석",
+        "valid": false
+      },
+      "primaryConcept": "음수 근호와 복소수 근 관계",
+      "primaryConceptReason": "두 근이 음수인 상황에서 √α√β 부호를 해석해 k²=-20을 얻는 source solution과 학교 답을 비교한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수1|방정식과 부등식|이차방정식|근과 계수의 관계|근의 합·곱"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "음수 근호의 정의·복소수 확장과 근의 합·곱을 결합하며 source 내 정답 충돌이 있다.",
+      "status": "CONFLICT",
+      "riskFlags": [
+        "choice_conflict",
+        "source_solution_conflict",
+        "difficulty_5"
+      ],
+      "decisiveSolutionStep": "source solution은 두 근 음수에서 k²=-20을 제시하지만 학교 답 0을 함께 명시해 해석·출제의 충돌을 해소해야 한다.",
+      "rejectedAlternativeConcepts": [
+        "근의 합·곱 단독: 음수 제곱근 해석이 결과를 바꾼다"
+      ],
+      "taxonomyReason": "source의 복소수 확장과 원문 답안 충돌 때문에 canonical primary는 복소수 근 계열로만 한정하고 CONFLICT로 보류한다.",
+      "statusReason": "source solution이 수학적 참값 -20과 학교 답 0의 출제 오류를 동시에 기록했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-eea505c5d71d7151a142f1c3a4ae5c1b",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 20,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "601aa0224f5412659a69f7952238b64f8ff4e105a893814d114cfbdb5a8f8423",
+        "contentFingerprint": "9bcea58e5529d7d2e8b8c9e335e55ff924bbefa97a68d8ac985e0fb47e68bc94"
+      },
+      "canonical": {
+        "scope": "공통수학2",
+        "L1": "도형의 방정식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "삼각형 내접 직사각형 넓이",
+        "canonicalPathKey": "2022|high|공통수학2|CANONICAL_NO_FIT|CANONICAL_NO_FIT|삼각형 내접 직사각형 넓이",
+        "valid": false
+      },
+      "primaryConcept": "삼각형 내접 직사각형 넓이 최댓값",
+      "primaryConceptReason": "삼각형 닮음으로 직사각형 높이를 6-0.6x로 두고 넓이의 꼭짓점 최대를 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "닮음과 이차함수 넓이 최댓값을 결합한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "S=-0.6(x-5)²+15에서 RQ=5, 넓이 15이다.",
+      "rejectedAlternativeConcepts": [
+        "구간 최대·최소: 삼각형 내접 직사각형 응용 L4가 없다"
+      ],
+      "taxonomyReason": "삼각형 내접 직사각형 넓이 최적화 L4가 canonical에 없다.",
+      "statusReason": "반복 가능한 inscribed-rectangle core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-37dc9167c8ea25226b5db27f53e10dd7",
+        "sourceArchiveFile": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "sourceOrdinal": 21,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "ef8c4dcf80b303b4b97182c8de96c2cd6910b3b8983a94bf2514caa695fcd973",
+        "contentFingerprint": "0b55421998e2c6ed503585fd114375d864bc2a88d7fa51237207e46d426842ee"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "복소수",
+        "L3": "복소수 근",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|복소수|복소수 근|CANONICAL_NO_FIT|복소수 거듭제곱 가중부분합",
+        "valid": false
+      },
+      "primaryConcept": "복소수 거듭제곱 가중 부분합",
+      "primaryConceptReason": "z³=-i의 주기와 홀수항만 남는 f(n)을 분석해 f(k)f(k+2)=360을 푼다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|복소수|i의 거듭제곱|주기성"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "복소수 주기, 가중 부분합, 두 인접 자연수 조건을 연쇄한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_5",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "f(k)f(k+2)=360에서 k=17,18, 합 35를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "i의 거듭제곱 주기성: z³ 기반 가중합의 별도 core다"
+      ],
+      "taxonomyReason": "복소수 거듭제곱의 가중 부분합 L4가 canonical에 없다.",
+      "statusReason": "반복 가능한 weighted complex-partial-sum core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-c2de69bac2fad895eb4b910ef621cca1",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 1,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "da867cf8e5b2e9e4620d07509a9488b391f9dc853e32d253378e782e4be32641",
+        "contentFingerprint": "544450e61f9bdc46760a23a25227e83ab7c57c5576aa220e35684a93a81cb9c6"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "L3": "근과 계수의 관계",
+        "L4": "근의 합·곱",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식|근과 계수의 관계|근의 합·곱",
+        "valid": true
+      },
+      "primaryConcept": "허근의 제곱합",
+      "primaryConceptReason": "α+β=2,αβ=2를 α²+β²에 대입해 0을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "Vieta 대칭식이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-2adc2e67c5c5431bc81954fb90b2aafa",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "da601eed11116aa23734bf29cfc23454bcfa02c46eea05130b74eebe38c905d1",
+        "contentFingerprint": "3c341eadf984d17b3c8117a00e60f090008f8ab885238253236e8934d6cb94a5"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "다항식 전개 특정계수",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|다항식 전개 특정계수",
+        "valid": false
+      },
+      "primaryConcept": "곱의 전개에서 x³ 계수",
+      "primaryConceptReason": "(2x+1)³에서 x³을 만드는 두 곱만 골라 -4를 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "특정 차수 기여항 계산이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "-16+12=-4이다.",
+      "rejectedAlternativeConcepts": [
+        "합·곱의 법칙: 조합적 선택이 아닌 다항식 전개 계수다"
+      ],
+      "taxonomyReason": "다항식 전개 특정계수 L4가 HIGH1 canonical에 없다.",
+      "statusReason": "반복 가능한 polynomial-coefficient extraction core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-c0132a38f3a6a0029ffd97dd971933a2",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "5aad31064eec54489b511fecace82d4262ab9fe2227cc56b56c8ca666a171b01",
+        "contentFingerprint": "afcef5b240471bf40252d56a228b3bf51f04f75e2829eb7357046c7d1aac535e"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "대칭식의 세제곱합",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|대칭식의 세제곱합",
+        "valid": false
+      },
+      "primaryConcept": "합과 세제곱합에서 곱 추출",
+      "primaryConceptReason": "a+b=4,a³+b³=28을 세제곱합 공식에 넣어 ab=3을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "세제곱 합 공식이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "28=64-12ab에서 ab=3이다.",
+      "rejectedAlternativeConcepts": [
+        "근과 계수의 관계: 두 변수 대칭식이며 방정식 근이 아니다"
+      ],
+      "taxonomyReason": "두 변수 세제곱합 대칭식 L4가 HIGH1 canonical에 없다.",
+      "statusReason": "반복 가능한 symmetric-cubic-sum core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-56b7465d435eae2f78c7a01e6ba88a5f",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 4,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "7b939888bbd7c08159d315e1808c6cac81f071f62dafb93903d51ce4775b6745",
+        "contentFingerprint": "d4fcd963518d96ffce44a3a82bfcaea5bbd066703f7038b2307d39409e4e6826"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "L3": "이차방정식의 근",
+        "L4": "판별식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식|이차방정식의 근|판별식",
+        "valid": true
+      },
+      "primaryConcept": "중근 조건의 음의 정수 선택",
+      "primaryConceptReason": "D=0에서 k=1,-7을 얻고 음의 정수 k=-7을 선택한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "판별식과 조건 필터다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-9d997252d6b40c06ba5b0e7899faa30f",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 5,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "dfc72235671e803b47599f0180734d235b2724468bb6ee7cb9cd4a442ed030b3",
+        "contentFingerprint": "799a3eee507cee846ad44c42658d6731a1d4b34b31ea382a38cd9085baec5122"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "다항식 나머지·몫 추출",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|다항식 나머지·몫 추출",
+        "valid": false
+      },
+      "primaryConcept": "다항식 나눗셈 몫의 나머지",
+      "primaryConceptReason": "나머지 조건으로 a,b를 구하고 x=2 대입해 Q(2)=12를 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "나머지정리와 나눗셈 항등식이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "a=1,b=-2, x=2 대입으로 3Q(2)=36, Q(2)=12이다.",
+      "rejectedAlternativeConcepts": [
+        "인수분해형: 몫의 특정값을 구하는 나눗셈 core다"
+      ],
+      "taxonomyReason": "다항식 몫의 특정값 추출 L4가 HIGH1 canonical에 없다.",
+      "statusReason": "반복 가능한 quotient-evaluation core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-38bb2f564050a46448506eef3858d8f2",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 6,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "0ef2a6d141464d6af8c75736ce65e395298143969f0c1ded2f4bb294ca98c880",
+        "contentFingerprint": "4de203c8e515a342d28096029316a4f50e3487f9e7f9234855d10a2a654c68de"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "다항식 계수 부분합",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|다항식 계수 부분합",
+        "valid": false
+      },
+      "primaryConcept": "짝수차 계수 합 추출",
+      "primaryConceptReason": "P(1),P(-1)을 더해 (x-1)^8의 짝수차 계수합 128을 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "특수값 대입으로 계수 부분합을 추출한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "P(1)=0,P(-1)=256에서 짝수차 합=128이다.",
+      "rejectedAlternativeConcepts": [
+        "다항식 전개: 전개 없이 값 대입으로 계수합을 구한다"
+      ],
+      "taxonomyReason": "다항식 계수 부분합 추출 L4가 HIGH1 canonical에 없다.",
+      "statusReason": "반복 가능한 coefficient-subsum core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-358b0f7433b7f3905b620375fcf22120",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "bd86de3dbab001bcf7ab547b70aa442e7074cb78225fd2f4514b87840e7c0f7b",
+        "contentFingerprint": "f0062ed429ab06fb3b0106103f9c24f0f3fcb5f3713cc48c570369942c074077"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "근호·절댓값 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|CANONICAL_NO_FIT|근호·절댓값 조건",
+        "valid": false
+      },
+      "primaryConcept": "근호식 조건과 절댓값 항등식",
+      "primaryConceptReason": "근호의 정의역으로 x≤-3을 정한 뒤 절댓값 합을 -2x+3으로 비교한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "근호 정의역과 절댓값 구간을 결합한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "x≤-3에서 |x-6|+|x+3|=-2x+3, b-a=5이다.",
+      "rejectedAlternativeConcepts": [
+        "절댓값 부등식: 등식의 정의역 제한과 절댓값 항등식 결합이다"
+      ],
+      "taxonomyReason": "근호 정의역과 절댓값 항등식의 결합 L4가 없다.",
+      "statusReason": "반복 가능한 radical-domain absolute core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-f265242a3ee6e26d0fb5d3c184bea489",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 8,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "f2c79e24889d153c0020fb6e6876152614adb65942abeeec2880438be7ce85be",
+        "contentFingerprint": "202063ad181cf98a2ad38d0bc9c4cc02e3ee0dca15535b3d08fd00df95d85fef"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|최대·최소|구간 최대·최소",
+        "valid": true
+      },
+      "primaryConcept": "직선 제약 이차식 극값",
+      "primaryConceptReason": "y=2x-4를 대입해 2(x-1)²-2의 구간 최소·최대를 구한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학2|도형의 방정식|직선의 방정식|한 점과 기울기"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "직선 제약과 제한구간 이차함수 극값이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-f17059bdf5e0c3b62f55ad859628b311",
+        "sourceArchiveFile": "original/high/h1/1mid/24_효천고_1학기_기말_고1_기출.js",
+        "sourceOrdinal": 9,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "4b09cf205105ad147d433798c292ad574e0e70602fb2f0f1266ce9f445c6a910",
+        "contentFingerprint": "4ebeea47740c3e47025ae606355b045cce927e841ac6290848c7abc4fc8e5faa"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "CANONICAL_NO_FIT",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "다변수 다항식 인수분해 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|CANONICAL_NO_FIT|CANONICAL_NO_FIT|다변수 다항식 인수분해 조건",
+        "valid": false
+      },
+      "primaryConcept": "다변수 이차식 선형인수 조건",
+      "primaryConceptReason": "x에 대한 판별식이 y의 완전제곱이 되도록 k=-4를 정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "다변수 인수분해와 판별식의 판별식을 결합한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "parameter_condition",
+        "curriculum_scope_boundary"
+      ],
+      "decisiveSolutionStep": "D_x=9y²-(2k+20)y+k²-12, D_y=0에서 k=-4이다.",
+      "rejectedAlternativeConcepts": [
+        "인수분해형: 다변수 선형인수 조건의 별도 core다"
+      ],
+      "taxonomyReason": "다변수 이차식이 두 선형식으로 분해되는 계수 조건 L4가 없다.",
+      "statusReason": "반복 가능한 multivariable-factor-condition core를 직접 확인한 no-fit이다."
+    }
+  ],
+  "packetFreeze": {
+    "frozen": true,
+    "frozenBy": "A_PRIMARY_TAGGER",
+    "semanticInputsAfterFreeze": "none",
+    "motherFinalization": "not_applicable_in_A_packet"
+  }
+}

@@ -1,0 +1,523 @@
+{
+  "packetSchema": "h1-direct-tagging-a-replacement-packet-v1",
+  "role": "A_PRIMARY_TAGGER_REPLACEMENT",
+  "batch": "batch-087",
+  "recordRange": {
+    "start": 2286,
+    "end": 2315,
+    "count": 30
+  },
+  "sourceAuthority": {
+    "manifest": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "manifestSha256": "705FFC944EA1A166C194832560AF7888A64D81BE3EEE7353092E174288CDCB09",
+    "canonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "canonicalMasterSha256": "0409C489F167211F961CC14811C204F2056511F4C029091FEDDFDC8384C367BF",
+    "denominator": 2498
+  },
+  "directRead": true,
+  "records": [
+    {
+      "record": 2286,
+      "manifestUid": "h1-direct-a237aa58be3270c16fa2a668cd861fd3",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "필요조건·충분조건",
+      "L4": "조건 관계",
+      "primaryConcept": "필요조건·충분조건",
+      "primaryConceptReason": "집합식을 Q∪P^c=U로 단순화해 P⊆Q를 얻고 p→q를 판정한다.",
+      "secondaryConceptKeys": [
+        "집합의 연산법칙"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "복합 집합식을 진리집합 포함 관계로 바꾼다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2287,
+      "manifestUid": "h1-direct-215d455465ac55589f07350d2fa28e5c",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "필요조건·충분조건",
+      "L4": "조건 관계",
+      "primaryConcept": "필요조건·충분조건",
+      "primaryConceptReason": "¬p의 닫힌구간 [a-2,a+2]가 q의 열린구간 (-4,5)에 포함되도록 양 끝의 엄격한 부등식을 세운다.",
+      "secondaryConceptKeys": [
+        "이차부등식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "절댓값 진리집합과 이차부등식 해구간의 포함 조건을 비교한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2288,
+      "manifestUid": "h1-direct-bfae1df4c3a0fe2b430ecaac3f9bc95e",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "증명",
+      "L4": "대우를 이용한 증명",
+      "primaryConcept": "증명",
+      "primaryConceptReason": "결론의 부정을 x>1∧y>1로 만들고 xy+1-(x+y)=(x-1)(y-1)>0을 확인한다.",
+      "secondaryConceptKeys": [
+        "명제 변환"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "대우의 논리 부정과 인수분해 부호를 함께 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2289,
+      "manifestUid": "h1-direct-e81f70a42725957ccf7ef5d9fdf93d2e",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "이차부등식",
+      "L4": "근의 위치와 해",
+      "primaryConcept": "이차부등식",
+      "primaryConceptReason": "A=[-5,3], 합집합 전체 및 교집합 (-1,3]로 B의 양의 해구간을 정해 이차식의 두 근을 읽는다.",
+      "secondaryConceptKeys": [
+        "집합의 연산"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 이차부등식 해집합의 합집합·교집합을 역으로 복원한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2290,
+      "manifestUid": "h1-direct-a461182ecbb2b2888f9bb1a5546c96dc",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식",
+      "L3": "이차방정식의 근",
+      "L4": "판별식",
+      "primaryConcept": "이차방정식의 근",
+      "primaryConceptReason": "판별식 -3a²+12a+36≥0을 풀어 정수 a의 최솟값을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "실근 조건을 판별식 부등식으로 바꾼다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2291,
+      "manifestUid": "h1-direct-4d67b3a1967d7ab20ea2393845bd34c3",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "역함수 구하기",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "입력 치환으로 f(x)=-9x를 복원하고 f∘g=항등함수에서 g=f^{-1}을 구한다.",
+      "secondaryConceptKeys": [
+        "항등함수·상수함수"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "함수식 치환과 역함수 관계를 연속 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2292,
+      "manifestUid": "h1-direct-8700b5aeb354fd89caf4b59e445031ee",
+      "canonicalScope": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "두 원",
+      "L4": "두 원의 위치 관계",
+      "primaryConcept": "두 원",
+      "primaryConceptReason": "원점에서 매개변수 직선까지의 거리가 √5보다 작도록 하여 원과 직선이 두 점에서 만나게 한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "거리 조건을 매개변수 이차부등식으로 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2293,
+      "manifestUid": "h1-direct-24e24bd86b8f559d080dcc68baf4b4d0",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "X⊆B4를 얻고 B4 중 3의 배수 12,24 중 적어도 하나를 포함하는 부분집합 수를 보완으로 센다.",
+      "secondaryConceptKeys": [
+        "부분집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "배수 집합의 교집합과 부분집합 개수 보완을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2294,
+      "manifestUid": "h1-direct-da8f3433609574a73af4305306a4b0db",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "필요조건·충분조건",
+      "L4": "조건 관계",
+      "primaryConcept": "필요조건·충분조건",
+      "primaryConceptReason": "p 필요조건 q에서 Q⊆P, r 충분조건 ¬p에서 R⊆P^c를 얻어 네 선택지를 집합 포함으로 판정한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "필요·충분 방향을 서로 다른 진리집합 포함으로 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2295,
+      "manifestUid": "h1-direct-4279c2aee599af9311a8d1cbab79c409",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "부등식의 활용",
+      "L4": "최대·최소",
+      "primaryConcept": "부등식의 활용",
+      "primaryConceptReason": "AP+BP=AB를 이용해 합이 3√5로 일정한 두 양의 길이의 곱을 AM-GM으로 최대화한다.",
+      "secondaryConceptKeys": [
+        "두 점 사이의 거리"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "선분 길이 고정과 곱 최대의 등호 조건을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2296,
+      "manifestUid": "h1-direct-c7a25de1a68785e8dbc44d8c47e1b8f1",
+      "canonicalScope": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "세 내분점 P,Q,R을 구해 PQ⊥QR임을 확인하고 PR을 외접원의 지름으로 사용한다.",
+      "secondaryConceptKeys": [
+        "두 점 사이의 거리"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "내분 좌표·수직 관계·외접원 넓이를 연결한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2297,
+      "manifestUid": "h1-direct-e36b644dd840d293c9d0cb698e42bacc",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "소수 집합의 3-순환과 {1,4}의 2-순환을 고정점 금지·전단사 조건에서 결정하고 99회 반복을 줄인다.",
+      "secondaryConceptKeys": [
+        "합성함수"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "부분집합 보존 조건과 순환 분해를 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2298,
+      "manifestUid": "h1-direct-3e81764e9e14546718893916aa0ccd60",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "L3": "최대·최소",
+      "L4": "조건식 활용",
+      "primaryConcept": "최대·최소",
+      "primaryConceptReason": "f=x(x-4)를 복원하고 t=f(x)의 최솟값 -4에서 원상 개수가 1개가 되는 f(t)=k의 두 근을 배치한다.",
+      "secondaryConceptKeys": [
+        "합성함수",
+        "그래프와 근"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "합성 방정식의 중간값 원상 개수를 분기해 k를 결정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2299,
+      "manifestUid": "h1-direct-6a72df96fd00fae905da41e49e4f6edb",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "B={5,10,15}를 구한 뒤 A_k의 약수 후보 중 B^c에 남는 1,2,4의 가능 조건을 k별로 센다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "정수 방정식 조건으로 후보 원소와 매개변수 범위를 단계별로 제한한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2300,
+      "manifestUid": "h1-direct-c4e88598b9d50da7c4799b40e5ca9613",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "교집합의 최댓값 min(17,22)과 합집합 상한 30에서 얻는 최솟값 17+22-30을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "두 집합 교집합의 양끝값을 포함배제로 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2301,
+      "manifestUid": "h1-direct-1c876a20a5f906b8e0f29c3cb5ac9e80",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "역·이·대우",
+      "L4": "명제 변환",
+      "primaryConcept": "역·이·대우",
+      "primaryConceptReason": "존재명제의 부정을 전칭 비양수 조건으로 바꾸고 계수 a-1의 부호별 최대값을 분석한다.",
+      "secondaryConceptKeys": [
+        "최대·최소"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "양화사 부정과 매개변수 이차함수의 전구간 부호를 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2302,
+      "manifestUid": "h1-direct-8ba7e1aa71f724eb187fb52e3e892154",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "그래프 대칭",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "증가함수와 역함수 교점이 y=x 위의 고정점이므로 x²-3x+k=0의 두 근이 정의역에 들어갈 범위를 구한다.",
+      "secondaryConceptKeys": [
+        "이차방정식의 근"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "역함수 교점·판별식·정의역 끝점 조건을 함께 분석한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2303,
+      "manifestUid": "h1-direct-36b39f8fed3942370a8647cdd1a59194",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "∈와 ⊂의 차이로 {1,2}의 원소성·부분집합성을 각각 판정한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 1,
+      "difficultyReason": "중첩 집합 기호의 직접 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2304,
+      "manifestUid": "h1-direct-1eb7da7f923dad75e562ed462df44295",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "정의역·공역·치역",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "정의역 0,1에서 f=g를 각각 대입해 a,b를 결정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "유한 정의역의 함수 동일 조건을 두 번 대입한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2305,
+      "manifestUid": "h1-direct-40fcc04a990b8fed6c3634d428b69901",
+      "canonicalScope": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "평행이동",
+      "L4": "점·직선의 이동",
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "(x,y)→(x+a,y+2)에서 도착점 좌표를 비교해 a=-1,b=7을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "좌표별 이동량 비교다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2306,
+      "manifestUid": "h1-direct-be21a70223b601c6e88e388d751c9907",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "3원소에서 전체 함수 3^3, 전단사 3!, 상수함수 3의 개수를 합한다.",
+      "secondaryConceptKeys": [
+        "항등함수·상수함수"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "유한 함수 유형별 개수 공식이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2307,
+      "manifestUid": "h1-direct-413ba6eb5e12973f1fd350ad69618498",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "집합 연산",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "교집합에 3이 들어가도록 a²-2a=3의 후보를 구하고 A∩B를 재검증한다.",
+      "secondaryConceptKeys": [
+        "이차방정식의 근"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "집합 교집합 조건을 매개변수 방정식으로 바꾼다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2308,
+      "manifestUid": "h1-direct-4ed8b633dde34316376ceccbde0af046",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "증명",
+      "L4": "귀류법",
+      "primaryConcept": "증명",
+      "primaryConceptReason": "√2=q/p를 서로소 양의 정수로 가정해 q,p가 모두 짝수라는 모순을 만든다.",
+      "secondaryConceptKeys": [
+        "명제 변환"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "무리수 귀류 증명의 표준 짝수성 반복이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2309,
+      "manifestUid": "h1-direct-a2b6944d1da30074885f0cc1ef8539db",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "L3": "그래프와 근",
+      "L4": "직선과 포물선",
+      "primaryConcept": "그래프와 근",
+      "primaryConceptReason": "이동 직선 y=2x+a-5와 포물선을 연립해 접선 조건 판별식 0으로 a=8을 구한다.",
+      "secondaryConceptKeys": [
+        "도형의 이동"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "평행이동 식과 포물선 접점의 중근 조건을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2310,
+      "manifestUid": "h1-direct-b050a8413ee6b7058884480731de06bf",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "증명",
+      "L4": "대우를 이용한 증명",
+      "primaryConcept": "증명",
+      "primaryConceptReason": "대우에서 3의 배수가 아닌 n을 3k-1,3k-2로 나누고 두 제곱의 나머지가 1임을 전개한다.",
+      "secondaryConceptKeys": [
+        "명제 변환"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "대우 증명과 두 나머지 경우 전개다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2311,
+      "manifestUid": "h1-direct-f769d8c2f163eb5b683c15570d546ac2",
+      "canonicalScope": "수학_하",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "이차부등식",
+      "L4": "근의 위치와 해",
+      "primaryConcept": "이차부등식",
+      "primaryConceptReason": "A={3,5}, B=(-√a,√a)로 바꾸어 서로소와 포함 조건의 경계 a≤9, a>25를 비교한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "이차식 해집합을 열린구간으로 바꾸고 두 집합 관계를 판정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2312,
+      "manifestUid": "h1-direct-7153b51c94011118317e5242733cc5e4",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "2→4→8→6→2의 주기 4를 읽어 f^100(2)=2를 구한다.",
+      "secondaryConceptKeys": [
+        "함수의 성질"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "나머지 함수의 유한 순환과 반복 합성이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2313,
+      "manifestUid": "h1-direct-d43295c005ac41dc9c97b22f173d829e",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "여집합과 차집합",
+      "L4": "차집합",
+      "primaryConcept": "여집합과 차집합",
+      "primaryConceptReason": "n(B-A)=n(B)-n(A∩B)에서 교집합의 양끝값을 사용해 차집합의 최대·최소를 구한다.",
+      "secondaryConceptKeys": [
+        "교집합과 합집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "차집합을 교집합 범위 문제로 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2314,
+      "manifestUid": "h1-direct-af15d5c484a41e6cec416e7a00ac8bf0",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "명제",
+      "L3": "필요조건·충분조건",
+      "L4": "조건 관계",
+      "primaryConcept": "필요조건·충분조건",
+      "primaryConceptReason": "주어진 화살표와 대우를 연결해 r→t→p→q→r의 순환을 만들고 p,q,t만 r과 동치임을 센다.",
+      "secondaryConceptKeys": [
+        "명제 변환"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "필요·충분 조건과 대우를 긴 함의 사슬로 연결한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2315,
+      "manifestUid": "h1-direct-cc9a9d22f610e28566309ce03b613162",
+      "canonicalScope": "수학_상",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "도형의 변 길이",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "A를 직선 y=-2x-1에 대칭한 A1을 구해 AP+BP를 A1B 직선거리로 바꾼다.",
+      "secondaryConceptKeys": [
+        "대칭이동"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "반사법과 삼각부등식으로 최단거리를 구한다.",
+      "status": "DIRECT_TAGGED"
+    }
+  ]
+}

@@ -1,0 +1,520 @@
+{
+  "packetSchema": "h1-direct-tagging-a-replacement-packet-v1",
+  "role": "A_PRIMARY_TAGGER_REPLACEMENT",
+  "batch": "batch-091",
+  "recordRange": {
+    "start": 2406,
+    "end": 2435,
+    "count": 30
+  },
+  "sourceAuthority": {
+    "manifest": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "manifestSha256": "705FFC944EA1A166C194832560AF7888A64D81BE3EEE7353092E174288CDCB09",
+    "canonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "canonicalMasterSha256": "0409C489F167211F961CC14811C204F2056511F4C029091FEDDFDC8384C367BF",
+    "denominator": 2498
+  },
+  "directRead": true,
+  "records": [
+    {
+      "record": 2406,
+      "manifestUid": "h1-direct-43b0e326c4eca737caaf1a7ac599d5a2",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "3을 고정 포함한 소수 부분집합 중 원소합이 5보다 큰 소수가 되는 최소 합을 직접 비교한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "유한 소수 집합의 부분집합 합 조건을 후보별로 배제한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2407,
+      "manifestUid": "h1-direct-7957e9829210491ccb5877ee6b0201cc",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "도형의 넓이·최소거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "도형의 넓이·최소거리",
+      "primaryConceptReason": "대칭 조건으로 A,B를 정하고 AB와 두 직선의 교점 D,E를 구해 △ODE의 외접원을 계산한다.",
+      "secondaryConceptKeys": [
+        "원의 방정식"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "대칭·거리·직선 교점·외접원 방정식을 연쇄 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2408,
+      "manifestUid": "h1-direct-ff51a2636a1561475524c76c1c309951",
+      "canonicalScope": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "L3": "이차방정식의 근",
+      "L4": "근의 위치와 조건",
+      "primaryConcept": "이차방정식의 근",
+      "primaryConceptReason": "A,B를 각각 두 이차방정식의 실근 집합으로 보고 원소 수별 경우를 나누어 n(A∪B)=2를 맞춘다.",
+      "secondaryConceptKeys": [
+        "집합의 연산"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "판별식·근의 합과 곱·집합 중복을 함께 분기한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2409,
+      "manifestUid": "h1-direct-3b9da4e442cc5a3b0efc7812c0bfa4c8",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "축 접하는 두 원의 중심을 (r,r)로 두고 직선과의 거리 조건으로 작은·큰 반지름을 구한 뒤 접점 사각형 넓이를 계산한다.",
+      "secondaryConceptKeys": [
+        "도형의 넓이·최소거리"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "두 원의 접선 조건·수선 발·좌표 넓이를 모두 사용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2410,
+      "manifestUid": "h1-direct-06c4ccd262e51806e2cbd6dc843b7068",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "15의 양의 약수 1,3,5,15를 나열해 원소 수를 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "약수 집합 직접 열거다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2411,
+      "manifestUid": "h1-direct-e6181ac52dd831df2af9cb34a7324071",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "공집합 자체와 공집합을 원소로 가진 {∅}를 구별해 부분집합이 아닌 보기를 찾는다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "중첩 집합과 부분집합 관계의 직접 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2412,
+      "manifestUid": "h1-direct-5c7924ec484023756476346e630e597d",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "평행사변형 대각선의 중점 일치로 C=(1,-3)을 구하고 ab를 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "대각선 중점과 좌표 비교다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2413,
+      "manifestUid": "h1-direct-9a56136a607c731a97d6ede9fd1a9f6c",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "집합 연산",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "교집합이 {4}가 되도록 a=7을 정하고 B-A의 남은 원소 합을 구한다.",
+      "secondaryConceptKeys": [
+        "집합과 원소"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "매개변수 집합의 교집합 조건을 직접 검증한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2414,
+      "manifestUid": "h1-direct-45b3224c257310f2d92e77c503439c1d",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "부분집합",
+      "L4": "부분집합의 개수",
+      "primaryConcept": "부분집합",
+      "primaryConceptReason": "8의 약수 네 원소 집합의 부분집합 16개에서 자기 자신을 제외한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "진부분집합 공식의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2415,
+      "manifestUid": "h1-direct-dc0832816147053810b78020d1911f23",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "평행",
+      "primaryConcept": "두 직선의 위치 관계",
+      "primaryConceptReason": "평행선 거리 공식으로 |k-3|/√2=4√2를 세워 두 k를 구한다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "평행선 거리의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2416,
+      "manifestUid": "h1-direct-3648d9c122d0d70723bf7e277aa9871d",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "중심에서 직선까지의 거리보다 큰 자연수 반지름 조건으로 두 교점의 최소 r을 정한다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "원·직선 교점 수를 거리의 엄격한 부등식으로 판정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2417,
+      "manifestUid": "h1-direct-c5307b8fed7affeb71c56ab4b4bc2eea",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "평행이동",
+      "L4": "점·직선의 이동",
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "이동된 직선의 기울기를 수직 조건으로 정하고 x축 교점 (2,0)을 대입한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "직선 변환·수직·교점 조건을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2418,
+      "manifestUid": "h1-direct-b68d6c26fe635dd7eae64416319cbbc8",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "기본 원의 방정식",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "축에 동시에 접하는 중심 (±r,±r) 네 경우에 점 (2,-1)을 대입해 양의 반지름 1,5를 남긴다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "사분면별 중심 후보를 모두 검사한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2419,
+      "manifestUid": "h1-direct-c09b25f13242b61ebc2723d92c51066e",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "현의 길이",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "중심에서 직선까지 거리와 반지름으로 두 교점이 만드는 현의 길이를 계산한다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "현의 중점 직각삼각형을 직접 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2420,
+      "manifestUid": "h1-direct-b53c193fa771dbc1f8e2795db5d5051a",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "드모르간 법칙",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "색칠 영역 A-(B∩C)를 차집합·드모르간 법칙으로 변환해 (A-B)∪(A-C)와 일치시킨다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "벤다이어그램과 집합식 변환을 대조한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2421,
+      "manifestUid": "h1-direct-90a565124789a4cb8d86a22e59ed80f7",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "도형의 넓이·최소거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "도형의 넓이·최소거리",
+      "primaryConceptReason": "원점-직선 거리의 제곱을 완전제곱으로 최대화한 직선의 절편으로 삼각형 넓이를 구한다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "매개변수 거리 최댓값과 절편 넓이를 연결한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2422,
+      "manifestUid": "h1-direct-b0cb9e0784e50f64dd6e7d2ed90061bb",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "여집합과 차집합",
+      "L4": "차집합",
+      "primaryConcept": "여집합과 차집합",
+      "primaryConceptReason": "차집합을 교집합·여집합으로 바꾸어 ㄱ,ㄷ은 참이고 ㄴ은 반례로 거짓임을 확인한다.",
+      "secondaryConceptKeys": [
+        "집합의 연산법칙"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "동치 집합식과 반례를 함께 검토한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2423,
+      "manifestUid": "h1-direct-4ec539662e4fd6a5248f6a88a507a30c",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 포함 관계",
+      "L4": "두 집합의 포함",
+      "primaryConcept": "집합의 포함 관계",
+      "primaryConceptReason": "배수 집합 포함을 배수성으로 바꾸어 n=10,20만 남긴다.",
+      "secondaryConceptKeys": [
+        "교집합과 합집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "배수 집합의 교집합·포함 방향을 수의 배수 조건으로 해석한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2424,
+      "manifestUid": "h1-direct-b596e6fc663f4e636aac3ae332a01595",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "평행이동",
+      "L4": "원의 이동",
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "원 중심을 이동한 뒤 x축과 y=x에 동시에 접하는 거리 조건을 두 절댓값 방정식으로 세운다.",
+      "secondaryConceptKeys": [
+        "원의 방정식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "중심 이동과 두 접선 조건의 부호 경우를 비교한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2425,
+      "manifestUid": "h1-direct-23f4af059bbca60a0b3642be2ad39a54",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "두 원",
+      "L4": "공통현·공통접선 조건",
+      "primaryConcept": "두 원",
+      "primaryConceptReason": "직각삼각형 외접원 C2를 구하고 두 같은 반지름 원의 중심거리로 공통현 길이를 계산한다.",
+      "secondaryConceptKeys": [
+        "현의 길이"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "직각 외접원·두 원 교점·공통현의 직각삼각형을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2426,
+      "manifestUid": "h1-direct-aa540d4ef32bf9713370813b8f91a668",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "접점에서 반지름과 접선이 수직인 조건으로 두 접점의 공통 x좌표를 구한다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "접점 좌표와 직선 기울기 관계를 연립한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2427,
+      "manifestUid": "h1-direct-1dabe83aa237d38105a50d85ba70401f",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "도형의 넓이·최소거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "무게중심으로 A 좌표의 선형식을 만들고 BC까지의 거리 분자를 21로 소거한다.",
+      "secondaryConceptKeys": [
+        "선분의 내분·외분"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "무게중심·직선 포함·점직선 거리를 연결한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2428,
+      "manifestUid": "h1-direct-1da8ffcbefa5371c4036906957d7b065",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "기본 원의 방정식",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "직선 y=mx의 교점 매개변수 두 근의 곱을 구해 원점까지 두 거리의 곱을 16으로 만든다.",
+      "secondaryConceptKeys": [
+        "이차방정식의 근"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "원-직선 교점을 매개변수화하고 근과 계수 관계를 거리 곱으로 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2429,
+      "manifestUid": "h1-direct-3758b76262c6626e1b98e04b4516ddc1",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "부분집합",
+      "L4": "부분집합의 개수",
+      "primaryConcept": "부분집합",
+      "primaryConceptReason": "X⊆A와 A∩B⊆X로 네 고정 원소를 포함한 부분집합 16개에서 X=A 하나를 제외한다.",
+      "secondaryConceptKeys": [
+        "집합의 연산"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "집합 등식을 포함 관계로 바꾼 뒤 제외 조건을 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2430,
+      "manifestUid": "h1-direct-db280730011cd877038d0b583e33f21a",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "점과 직선 사이의 거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "수선의 기울기 -1로 발 H를 구하고 점직선 거리 c를 더한다.",
+      "secondaryConceptKeys": [
+        "두 직선의 위치 관계"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "수직선 교점과 점직선 거리 공식을 함께 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2431,
+      "manifestUid": "h1-direct-77c0363b0366560b3bab7a9a326963df",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "축 접촉과 중심-직선 거리 조건으로 한 접선의 기울기 m=-21/20을 구한다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "원 중심·반지름과 외부점 직선의 접선 조건을 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2432,
+      "manifestUid": "h1-direct-4bd9669574cd05c78f23ec5d88699716",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "두 집합의 선택자 수와 한 집합만 선택한 수의 상한으로 교집합 범위를 정해 합집합의 양끝값을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "교집합 변수와 단독 선택자 제약을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2433,
+      "manifestUid": "h1-direct-ff20c97974db6f6134c39f8b7e2af8cc",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "B={-1,0,1}을 구하고 수 2가 A의 원소이지 부분집합이 아님을 구별한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 1,
+      "difficultyReason": "원소·부분집합 기호의 직접 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2434,
+      "manifestUid": "h1-direct-3705de271ea24f274dcae1784e231872",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "도형의 변 길이",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "거리 조건을 이차방정식으로 바꾸고 두 a의 합을 근과 계수로 구한다.",
+      "secondaryConceptKeys": [
+        "이차방정식의 근"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "좌표 거리와 이차방정식 근의 합을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2435,
+      "manifestUid": "h1-direct-5a90e69901f490f5ad634738f8a9fce0",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "도형의 변 길이",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "세 변 길이 제곱을 비교해 AB=AC이고 BC²=AB²+AC²임을 확인한다.",
+      "secondaryConceptKeys": [
+        "두 직선의 위치 관계"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "거리 제곱과 피타고라스 관계로 삼각형 유형을 판정한다.",
+      "status": "DIRECT_TAGGED"
+    }
+  ]
+}

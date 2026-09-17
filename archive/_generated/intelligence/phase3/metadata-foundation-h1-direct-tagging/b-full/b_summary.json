@@ -1,0 +1,43 @@
+{
+  "schemaVersion":"metadata-foundation-h1-direct-tagging-b-summary-v1",
+  "packetRole":"B_INDEPENDENT_TAGGER",
+  "scope":"HIGH1_ONLY",
+  "targetBranch":"original/high/h1",
+  "startSha":"994ac4fd60c117e571ec79334e0d90b4f49bfa89",
+  "sourceManifestPath":"archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "sourceManifestSha256":"705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09",
+  "canonicalAuthorityPath":"docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalAuthoritySha256":"0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+  "expectedDenominator":2498,
+  "bChecked":225,
+  "frozenRecords":225,
+  "unprocessedRecords":2273,
+  "unprocessedRanges":[[226,2498]],
+  "packetCount":9,
+  "statusCounts":{"DIRECT_TAGGED":156,"FOUNDATION_DEFECT_CANDIDATE":66,"AMBIGUOUS_PRIMARY":3,"HOLD":0,"EVIDENCE_INSUFFICIENT":0,"CONFLICT":0,"SOURCE_DEFECT_CANDIDATE":0,"TAXONOMY_CANONICAL_DEFECT":0},
+  "aChecked":0,
+  "motherFinalized":0,
+  "aArtifactsRead":false,
+  "prohibitedPriorArtifactsRead":false,
+  "classifierOrDifficultyEngineUsed":false,
+  "mechanicalAudit":{"identityMismatch":0,"duplicateManifestUid":0,"canonicalShapeDefect":1,"sourceMutation":0,"productionMutation":0},
+  "artifactPaths":[
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-001.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-002.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-003.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-004.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-005.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-006.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-007.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-008.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/batch-009.json",
+    "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/b-full/progress-ledger.json"
+  ],
+  "blockers":[
+    {"code":"B_EVIDENCE_INSUFFICIENT","range":[226,2498],"count":2273,"reason":"These live source records were not directly read, semantically tagged, and frozen in this run."},
+    {"code":"PACKET_SCHEMA_DEFECT","range":[142,142],"count":1,"reason":"Batch 007 record 142 has a malformed canonical object shape and must be corrected before any packet-level closure claim."}
+  ],
+  "finalVerdict":"B_EVIDENCE_INSUFFICIENT",
+  "releaseState":"NOT_RELEASE_READY",
+  "neverClaimed":"B_FINAL_PASS / RELEASE_READY"
+}

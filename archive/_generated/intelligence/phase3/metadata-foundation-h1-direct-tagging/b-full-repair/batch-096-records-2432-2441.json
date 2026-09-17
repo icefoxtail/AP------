@@ -1,0 +1,422 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "packetRole": "B",
+  "taggerIndependence": "INDEPENDENT_B",
+  "frozen": true,
+  "recordIndexRange": [
+    2432,
+    2441
+  ],
+  "recordCount": 10,
+  "sourceManifest": {
+    "path": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "schemaVersion": "metadata-foundation-h1-direct-tagging-source-manifest-v1",
+    "sha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09"
+  },
+  "canonicalMaster": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "records": [
+    {
+      "recordIndex": 2432,
+      "manifestUid": "h1-direct-4bd9669574cd05c78f23ec5d88699716",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 23,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "a09b391129462181b7b5c0a50c45f763db258c0f29e419ddbab3c03db7b8330f",
+      "contentFingerprint": "59467a04650b1badb6c353d25617a190d33e0a39d7c80a784a4f65e143285c18",
+      "sourceEvidence": {
+        "content": "서답형 6. (서술형)<br>어느 고등학교에서 두 선택 과목 $A$, $B$를 선택한 학생 수를 조사하였다. 조사 결과가 다음과 같을 때, $A$ 또는 $B$를 선택한 학생 수의 최댓값과 최솟값의 합을 구하는 풀이과정과 답을 서술하시오. [부분 점수 있음, 7점]<br><br>(가) $A$를 선택한 학생 수는 $25$명이다.<br>(나) $B$를 선택한 학생 수는 $18$명이다.<br>(다) $A$만 선택하거나 $B$만 선택한 학생 수는 $31$명 이하이다.",
+        "choices": [],
+        "answer": "$62$",
+        "solution": "두 과목을 모두 선택한 학생 수를 $x$명이라 하자. 한 과목만 선택한 학생 수는\n$(25-x)+(18-x)=43-2x$이므로 $43-2x\\le31$에서 $x\\ge6$이다. 또한 $0\\le x\\le18$이다.\n$A$ 또는 $B$를 선택한 학생 수는 $25+18-x=43-x$이다. 이 값은 $x=6$일 때 최대 $37$, $x=18$일 때 최소 $25$이다.\n따라서 최댓값과 최솟값의 합은 $37+25=62$이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-집합과 명제",
+        "standardUnit": "집합과 명제",
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "교집합과 합집합",
+        "L4": "원소 개수",
+        "primaryConcept": "교집합과 합집합",
+        "secondaryConcepts": [
+          "집합의 연산법칙"
+        ],
+        "difficultyBucket": 3,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2433,
+      "manifestUid": "h1-direct-ff20c97974db6f6134c39f8b7e2af8cc",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 1,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "0fece35dc8c96534dd4d4fc0094a7e966ee40e3c145a0a618727a10d56d0e22c",
+      "contentFingerprint": "3814c2af078315a12aa95d990f2799e1fe0c572bad45566776b6343ce8f6d596",
+      "sourceEvidence": {
+        "content": "두 집합 $A=\\{1,2,3\\}$, $B=\\{x\\mid x$는 $|x|\\lt2$인 정수$\\}$에 대하여 다음 중 옳은 것은?",
+        "choices": [
+          "$2\\subset A$",
+          "$2\\subset B$",
+          "$2\\in A$",
+          "$2\\in B$",
+          "$\\{-1,1\\}\\in B$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 원소와 부분집합의 기호를 구분한다.\\n$A$의 원소는 $1,2,3$이고, $|x|\\lt2$인 정수는 $-1,0,1$이므로 $B=\\{-1,0,1\\}$이다.\\n$2$는 집합 $A$의 원소이므로 $2\\in A$가 옳다. 나머지 보기에서는 수를 부분집합으로 나타내거나, $B$에 없는 원소를 포함시켰다.\\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-집합과 명제",
+        "standardUnit": "집합과 명제",
+        "L1": "집합과 명제",
+        "L2": "집합의 뜻과 포함 관계",
+        "L3": "집합과 원소",
+        "L4": "원소나열법·조건제시법",
+        "primaryConcept": "집합과 원소",
+        "secondaryConcepts": [
+          "부분집합"
+        ],
+        "difficultyBucket": 1,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2434,
+      "manifestUid": "h1-direct-3705de271ea24f274dcae1784e231872",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 2,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "aae0544260677f7e1cc308597fdc3e9808fd989b35bad0092a468f36c899f544",
+      "contentFingerprint": "cb550acd900567f2954d037385ac084a3fd342b9e291f87f9eb012f7da594533",
+      "sourceEvidence": {
+        "content": "두 점 $A(a,3)$, $B(1,1-a)$에 대하여 $\\overline{AB}=\\sqrt{10}$을 만족시키는 모든 $a$의 합은?",
+        "choices": [
+          "$-3$",
+          "$-1$",
+          "$1$",
+          "$3$",
+          "$5$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 두 점 사이의 거리 공식을 적용한 뒤 이차방정식의 두 근의 합을 구한다.\\n거리 조건에서 $(a-1)^2+\\{3-(1-a)\\}^2=10$이다.\\n따라서 $(a-1)^2+(a+2)^2=10$, 즉 $2a^2+2a-5=0$이다.\\n이 방정식의 두 근의 합은 $-\\dfrac{2}{2}=-1$이다.\\n따라서 정답은 ②이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-도형의 방정식",
+        "standardUnit": "도형의 방정식",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "두 점 사이의 거리",
+        "L4": "거리 공식",
+        "primaryConcept": "두 점 사이의 거리",
+        "secondaryConcepts": [
+          "이차방정식의 근"
+        ],
+        "difficultyBucket": 2,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2435,
+      "manifestUid": "h1-direct-5a90e69901f490f5ad634738f8a9fce0",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 3,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "1343a5b482b3f2f89652e5a3abf7ca68d0e8f2a39ae9b4e5c2f7d9e8277aad97",
+      "contentFingerprint": "7deebaae551f7abf8768951e95126072f5d08a9fe1ab06c05d50ddfe79ee598f",
+      "sourceEvidence": {
+        "content": "세 점 $A(0,1)$, $B(-5,-2)$, $C(3,-4)$를 꼭짓점으로 하는 $\\triangle ABC$는 어떤 삼각형인가?",
+        "choices": [
+          "정삼각형",
+          "둔각삼각형",
+          "$\\overline{AB}=\\overline{BC}$인 이등변삼각형",
+          "$\\angle A=90^\\circ$인 직각이등변삼각형",
+          "$\\angle B=90^\\circ$인 직각이등변삼각형"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 세 변의 길이의 제곱을 비교하면 삼각형의 종류를 판정할 수 있다.\\n$AB^2=(-5)^2+(-3)^2=34$, $AC^2=3^2+(-5)^2=34$이다.\\n또한 $BC^2=8^2+(-2)^2=68=AB^2+AC^2$이다.\\n따라서 $AB=AC$이고 $\\angle A=90^\\circ$이므로 직각이등변삼각형이다.\\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-도형의 방정식",
+        "standardUnit": "도형의 방정식",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "두 점 사이의 거리",
+        "L4": "도형의 변 길이",
+        "primaryConcept": "두 점 사이의 거리",
+        "secondaryConcepts": [
+          "좌표 도형 활용"
+        ],
+        "difficultyBucket": 2,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2436,
+      "manifestUid": "h1-direct-d3b5683c1690eaca64cfee9029fcafd0",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 4,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "dac56699565c796249e69be4783e3bcfdc10526fdb34db9e42e4686a16a2093b",
+      "contentFingerprint": "3f90d2ca79cc95064bb914b0459ad49686f246b53705cd99c90dec0da4ab1aaf",
+      "sourceEvidence": {
+        "content": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여, 다음 중 옳은 것은?",
+        "choices": [
+          "$A\\cap(A\\cup B)=A$",
+          "$B\\cup(A\\cap B)=A$",
+          "$A^C\\cap B^C=A\\cup B$",
+          "$A^C\\cap B=A-B$",
+          "$(A\\cap B)-(A\\cup B)=(A-B)\\cup(B-A)$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 집합의 흡수법칙을 사용한다.\\n$A$의 모든 원소는 $A\\cup B$에도 속하므로 $A\\cap(A\\cup B)=A$이다.\\n②는 일반적으로 $B$, ③은 드모르간 법칙에 의해 $(A\\cup B)^C$, ④는 $B-A$, ⑤의 왼쪽은 공집합이므로 항상 성립하지 않는다.\\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-집합과 명제",
+        "standardUnit": "집합과 명제",
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "집합의 연산법칙",
+        "L4": "복합 연산",
+        "primaryConcept": "집합의 연산법칙",
+        "secondaryConcepts": [
+          "교집합과 합집합"
+        ],
+        "difficultyBucket": 1,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2437,
+      "manifestUid": "h1-direct-7b4ac9b0c21ccfd4ee7de572c79d050f",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 5,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "d7fb347bc953237490c0ca169c6cc6cbf18dee11962298df7effb9350be7d2c8",
+      "contentFingerprint": "a54b38f4d2f943d3afe671ef73557a913fec712de3ac194751690a35df85fc65",
+      "sourceEvidence": {
+        "content": "전체집합 $U$의 두 부분집합 $A$와 $B$에 대하여 $n(U)=45$, $n(A)=25$, $n(B)=17$, $n(A\\cap B)=8$일 때, $n(A^C\\cap B^C)$의 값은?",
+        "choices": [
+          "$7$",
+          "$8$",
+          "$9$",
+          "$10$",
+          "$11$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] $A^C\\cap B^C=(A\\cup B)^C$를 이용한다.\\n$n(A\\cup B)=25+17-8=34$이다.\\n따라서 $n(A^C\\cap B^C)=45-34=11$이다.\\n따라서 정답은 ⑤이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-집합과 명제",
+        "standardUnit": "집합과 명제",
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "여집합과 차집합",
+        "L4": "원소 개수",
+        "primaryConcept": "여집합과 차집합",
+        "secondaryConcepts": [
+          "교집합과 합집합",
+          "집합의 연산법칙"
+        ],
+        "difficultyBucket": 2,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2438,
+      "manifestUid": "h1-direct-805c738b9626f9f37f9b7d7090d1feba",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 6,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "93516d1d0e604e066ed4503b0cce265884fcd0072bd03326269109bfc04c0318",
+      "contentFingerprint": "156816238aad47f6766365b06d74d4a71ea504ed940a7514ea5f43b131e2aaf3",
+      "sourceEvidence": {
+        "content": "좌표평면 위의 두 점 $A(5,3)$, $B(8,2)$와 직선 $y=x$ 위를 움직이는 점 $P$에 대하여 $\\overline{PA}+\\overline{PB}$의 최솟값은?",
+        "choices": [
+          "$4\\sqrt2$",
+          "$\\sqrt{33}$",
+          "$\\sqrt{34}$",
+          "$\\sqrt{35}$",
+          "$6$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 직선 $y=x$에 대한 대칭이동으로 꺾인 거리의 합을 직선거리로 바꾼다.\\n점 $A(5,3)$을 직선 $y=x$에 대하여 대칭이동한 점을 $A'(3,5)$라 하자. $P$가 $y=x$ 위에 있으므로 $PA=PA'$이다.\\n따라서 $PA+PB=PA'+PB$이고, 이는 $A'$, $P$, $B$가 한 직선 위에 있을 때 최소이다.\\n최솟값은 $A'B=\\sqrt{(8-3)^2+(2-5)^2}=\\sqrt{34}$이다.\\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q06-solution.svg"
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-도형의 방정식",
+        "standardUnit": "도형의 방정식",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "두 점 사이의 거리",
+        "L4": "거리 공식",
+        "primaryConcept": "두 점 사이의 거리",
+        "secondaryConcepts": [
+          "대칭이동"
+        ],
+        "difficultyBucket": 3,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2439,
+      "manifestUid": "h1-direct-87034a4d5286041e17457aadf2d25c90",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 7,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "337a46f24737738e79c76b3fe0fb4ea4aaf9ff678344ff8ed7fee195d32a31ea",
+      "contentFingerprint": "1284b156fa48b95b19ab0f2acd9af0c56899dd90d9c7b1dd539e90c4844e298a",
+      "sourceEvidence": {
+        "content": "직선 $x-2y=9$를 직선 $y=x$에 대하여 대칭이동한 도형이 원 $(x-3)^2+(y+5)^2=k^2$에 접할 때, 실수 $k$의 값은?",
+        "choices": [
+          "$\\sqrt3$",
+          "$\\sqrt5$",
+          "$2\\sqrt3$",
+          "$3\\sqrt5$",
+          "$\\pm4\\sqrt5$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 직선을 대칭이동한 뒤, 중심에서 대칭 직선까지의 거리를 원의 반지름과 비교한다.\n\n직선 $x-2y=9$를 직선 $y=x$에 대하여 대칭이동하면 $x$와 $y$가 서로 바뀌므로\n$y-2x=9$, 즉 $2x-y+9=0$이다.\n\n원의 중심은 $(3,-5)$이다. 중심에서 이 직선까지의 거리는\n$\\dfrac{|2\\cdot3-(-5)+9|}{\\sqrt{2^2+(-1)^2}} =\\dfrac{20}{\\sqrt5}=4\\sqrt5$이다.\n\n원의 방정식이 $(x-3)^2+(y+5)^2=k^2$이므로 반지름은 $|k|$이다. 접하려면\n$|k|=4\\sqrt5$이어야 하므로\n$k=4\\sqrt5$ 또는 $k=-4\\sqrt5$이다.\n\n따라서 가능한 값은 ⑤의 $\\pm4\\sqrt5$이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q07-solution.svg"
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-도형의 방정식",
+        "standardUnit": "도형의 방정식",
+        "L1": "도형의 방정식",
+        "L2": "도형의 이동",
+        "L3": "대칭이동",
+        "L4": "직선에 대한 대칭",
+        "primaryConcept": "대칭이동",
+        "secondaryConcepts": [
+          "원과 직선",
+          "점과 직선 사이의 거리"
+        ],
+        "difficultyBucket": 3,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2440,
+      "manifestUid": "h1-direct-427b3cc67c32a212ff10fdb6193e5de7",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 8,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "2c97e9ec01a43414e68e3706a72c590ccccd00d9b6071081ceabcb408b2f423c",
+      "contentFingerprint": "95e7200c69f4f77817d40bbbba2d30fc310483a4479c55113405e86f76e4df6c",
+      "sourceEvidence": {
+        "content": "아래 그림과 같이 $\\overline{AB}=8m$, $\\overline{AC}=4m$, $\\overline{BC}=4\\sqrt3m$일 때, 선분 $AB$를 $3:1$로 내분하는 점을 $P$라 하면 선분 $CP$의 길이는?",
+        "choices": [
+          "$\\sqrt5$",
+          "$3\\sqrt5$",
+          "$\\sqrt7$",
+          "$2\\sqrt7$",
+          "$3\\sqrt7$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 좌표를 설정하고 내분점의 좌표를 구한다.\\n$A=(0,0)$, $B=(8,0)$으로 두고 $C=(u,v)$라 하자. $AC=4$, $BC=4\\sqrt3$이므로 $u^2+v^2=16$, $(u-8)^2+v^2=48$이다.\\n두 식을 빼면 $-16u+64=32$이므로 $u=2$, 따라서 $v^2=12$이다.\\n$AP:PB=3:1$이므로 $P=(6,0)$이다. 따라서 $CP^2=(6-2)^2+v^2=16+12=28$이다.\\n그러므로 $CP=2\\sqrt7m$이다.\\n따라서 정답은 ④이다.",
+        "image": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q8.png",
+        "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q08-solution.svg",
+        "visualInspection": "Directly inspected the referenced source diagram: triangle ABC with AB=8m, AC=4m, BC=4√3m and P on AB."
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-도형의 방정식",
+        "standardUnit": "도형의 방정식",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "선분의 내분·외분",
+        "L4": "내분점",
+        "primaryConcept": "선분의 내분·외분",
+        "secondaryConcepts": [
+          "두 점 사이의 거리",
+          "도형의 변 길이"
+        ],
+        "difficultyBucket": 3,
+        "status": "TAGGED"
+      }
+    },
+    {
+      "recordIndex": 2441,
+      "manifestUid": "h1-direct-fa7c1d8267b6b418cb21f91c9ef85dc0",
+      "sourceArchiveFile": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "sourceOrdinal": 9,
+      "curriculumKey": "2022",
+      "sourceFingerprint": "332238b0f299a7886b14b02db86d0365835fa7732775a1bce1219253cb9cb7f1",
+      "contentFingerprint": "0cbd97012d355e8549fafaabdf8fab63d4568f9813dfb65db473139f19cad4f7",
+      "sourceEvidence": {
+        "content": "삼각형 $ABC$에서 변 $BC$의 중점 $M$의 좌표는 $(3,7)$, 삼각형 $ABC$의 무게중심 $G$의 좌표는 $(6,4)$이다. 점 $A$의 좌표 $(a,b)$는?",
+        "choices": [
+          "$(12,-2)$",
+          "$(12,-1)$",
+          "$(12,0)$",
+          "$(12,1)$",
+          "$(12,2)$"
+        ],
+        "answer": "①",
+        "solution": "삼각형의 무게중심은 꼭짓점 $A$와 변 $BC$의 중점 $M$을 잇는 중선 위에 있고, $AG:GM=2:1$이다. 따라서 점 $G$는 선분 $AM$을 $2:1$로 내분한다.\n\n$x$좌표에 내분공식을 적용하면\n$6=\\dfrac{x_A+2\\cdot3}{3}$이므로 $x_A=12$이다.\n$y$좌표에 내분공식을 적용하면\n$4=\\dfrac{y_A+2\\cdot7}{3}$이므로 $y_A=-2$이다.\n\n따라서 점 $A$의 좌표는 $(12,-2)$이고 정답은 ①이다.",
+        "image": "",
+        "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_공통수학2/q09-solution.svg"
+      },
+      "classification": {
+        "level": "high",
+        "category": "수학",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "2022-high-공통수학2-도형의 방정식",
+        "standardUnit": "도형의 방정식",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "삼각형의 무게중심",
+        "L4": "좌표로 무게중심",
+        "primaryConcept": "삼각형의 무게중심",
+        "secondaryConcepts": [
+          "선분의 내분·외분"
+        ],
+        "difficultyBucket": 2,
+        "status": "TAGGED"
+      }
+    }
+  ]
+}

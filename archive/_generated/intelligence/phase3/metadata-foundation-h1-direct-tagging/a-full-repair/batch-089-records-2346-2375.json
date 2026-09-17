@@ -1,0 +1,524 @@
+{
+  "packetSchema": "h1-direct-tagging-a-replacement-packet-v1",
+  "role": "A_PRIMARY_TAGGER_REPLACEMENT",
+  "batch": "batch-089",
+  "recordRange": {
+    "start": 2346,
+    "end": 2375,
+    "count": 30
+  },
+  "sourceAuthority": {
+    "manifest": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "manifestSha256": "705FFC944EA1A166C194832560AF7888A64D81BE3EEE7353092E174288CDCB09",
+    "canonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "canonicalMasterSha256": "0409C489F167211F961CC14811C204F2056511F4C029091FEDDFDC8384C367BF",
+    "denominator": 2498
+  },
+  "directRead": true,
+  "records": [
+    {
+      "record": 2346,
+      "manifestUid": "h1-direct-eb6818dad77c9a68562fc89d300fe4dc",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "B의 원소가 수 3과 집합 {1}임을 구별해 {1,3}⊂B가 아님을 판정한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "중첩 집합의 원소·부분집합 층위를 구별한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2347,
+      "manifestUid": "h1-direct-74484b0ea0ee02ac32a3c052941c4173",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "복합 연산",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "공집합·전체집합·여집합·흡수법칙을 대조해 A∩(A∪B)=A가 아닌 보기만 고른다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "기본 집합 항등식의 직접 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2348,
+      "manifestUid": "h1-direct-241a907bde031f567245e113eb7ff5e2",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 포함 관계",
+      "L4": "두 집합의 포함",
+      "primaryConcept": "집합의 포함 관계",
+      "primaryConceptReason": "각 식을 여집합·합집합·교집합으로 변환해 ①만 B⊆A이고 나머지는 A⊆B임을 비교한다.",
+      "secondaryConceptKeys": [
+        "집합의 연산법칙"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "다섯 가지 집합 표현을 동일 포함 관계로 정규화한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2349,
+      "manifestUid": "h1-direct-e551f0a0a7a06f915849e1ff6ad6464c",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "드모르간 법칙으로 A∩B의 크기 2를 구한 뒤 포함배제로 A∪B를 계산한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "여집합 합집합과 포함배제를 연속 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2350,
+      "manifestUid": "h1-direct-9f1a220903a814a3cd444e8122b4b9a6",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "이차부등식",
+      "L4": "근의 위치와 해",
+      "primaryConcept": "이차부등식",
+      "primaryConceptReason": "두 이차부등식의 해구간을 구해 교집합의 정수 -2<x≤2를 합산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "인수분해와 구간 교집합의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2351,
+      "manifestUid": "h1-direct-0b29e8a7f4731caa1fd945d83e1daaa7",
+      "canonicalScope": "CANONICAL_NO_FIT",
+      "L1": "CANONICAL_NO_FIT",
+      "L2": "CANONICAL_NO_FIT",
+      "L3": "CANONICAL_NO_FIT",
+      "L4": "CANONICAL_NO_FIT",
+      "primaryConcept": "절댓값 부등식의 구간 해",
+      "primaryConceptReason": "절댓값 안의 두 영점을 기준으로 세 구간을 나누어 -2≤x≤2의 정수 해를 얻는다.",
+      "secondaryConceptKeys": [
+        "절대부등식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 절댓값의 꺾임점을 기준으로 부호를 분기한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "decisiveSolutionStep": "x=1/2,1을 기준으로 절댓값을 제거하고 세 구간의 해를 합친다.",
+      "rejectedAlternativeConcepts": [
+        "이차부등식",
+        "절대부등식"
+      ],
+      "taxonomyReason": "잠금된 HIGH1 canonical master에는 두 절댓값 차의 구간별 부등식 해를 독립적으로 수용하는 정확한 L4가 없다.",
+      "statusReason": "정답은 직접 결정되지만 이차부등식이나 절대부등식으로 축약하면 절댓값 분기 핵심이 손실되어 보류한다."
+    },
+    {
+      "record": 2352,
+      "manifestUid": "h1-direct-e00feeb56f4c29ef4131c8c48a45edca",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "여집합과 차집합",
+      "L4": "차집합",
+      "primaryConcept": "여집합과 차집합",
+      "primaryConceptReason": "U={1,2,4}, A={2,4}에서 A-X가 정확히 한 원소가 되도록 2,4 중 하나를 고르고 1은 자유 선택한다.",
+      "secondaryConceptKeys": [
+        "부분집합"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "차집합 원소 수와 자유 원소 선택을 분리한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2353,
+      "manifestUid": "h1-direct-cc6f9fbb1a230fd963b9934425ef741c",
+      "canonicalScope": "수학_상",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 부등식",
+      "L3": "이차부등식",
+      "L4": "근의 위치와 해",
+      "primaryConcept": "이차부등식",
+      "primaryConceptReason": "판별식으로 해의 존재를 보장하고 두 근이 (0,5) 안에 놓이도록 k의 정수 범위를 구한다.",
+      "secondaryConceptKeys": [
+        "명제와 조건"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "근의 부호·상한과 매개변수 정수 조건을 함께 판정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2354,
+      "manifestUid": "h1-direct-3b54370fba1c07d916ebc69a75d11a85",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "복합 연산",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "여집합 합의 보완, 서로소 합집합의 합 성질, 서로 다른 집합의 같은 합 반례를 각각 확인한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "집합에 정의한 원소합 함수의 연산 성질을 검증한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2355,
+      "manifestUid": "h1-direct-23defeffaa5ed76dc12029c0b4419729",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "정의역·공역·치역",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "각 정의역 원소가 계산식으로 공역 Y 안에 대응하는지 확인해 k(x)=[x]+1만 함수가 됨을 판정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "함수의 공역 포함 조건을 보기별로 검사한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2356,
+      "manifestUid": "h1-direct-9067a64e0ad1dbc7b110ac5fad2bd770",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "f(3)=5를 고정하고 5보다 큰 값에서 순서 있게 두 개, 작은 값에서 순열 두 개를 배정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "일대일 조건과 값의 대소 분할을 조합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2357,
+      "manifestUid": "h1-direct-2a727eb7fcd0d3142f2692b4c1efeabe",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "f(1)=2, f²(1)=1의 2주기를 찾아 반복 합의 홀짝별 식을 세운다.",
+      "secondaryConceptKeys": [
+        "함수의 성질"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "반복 합성의 주기와 항의 개수를 함께 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2358,
+      "manifestUid": "h1-direct-d1ccdbf7e20e1018cbf49a741232064f",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "그래프에서 f(d)=c,f(c)=b,f(e)=d,g(c)=d,g(d)=e를 읽어 각 선택지의 안쪽 함수부터 계산한다.",
+      "secondaryConceptKeys": [
+        "역함수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 그래프의 대응과 합성·역함수 값을 혼합 검증한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2359,
+      "manifestUid": "h1-direct-af4bd0b9b949803f1401e1a75d5a30f1",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "항등함수·상수함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "f(x)=x의 해 {-1,2}를 구하고 그 비공집합 부분집합을 세어 항등함수 정의역을 만든다.",
+      "secondaryConceptKeys": [
+        "부분집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "항등 조건의 다항방정식과 부분집합 개수를 연결한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2360,
+      "manifestUid": "h1-direct-ac12ed3bc4cb34a1c6d560a9dc4a8f2c",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "공통 합성 g∘h를 t=2x-3으로 치환해 f(t)=2t+7을 복원하고 역함수 값을 푼다.",
+      "secondaryConceptKeys": [
+        "역함수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 합성식의 공통 입력과 역함수 원상 계산을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2361,
+      "manifestUid": "h1-direct-fa3bbbc191e85b2ef7c046943b97fcac",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "합성함수",
+      "L4": "합성함수 계산",
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "||x-2|-2|=1을 두 절댓값 조건으로 나누어 네 원상을 구하고 곱한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "합성된 절댓값 방정식을 단계별로 분해한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2362,
+      "manifestUid": "h1-direct-3e20b7a6b1f61c5f2a326dc8b8caf820",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "양수 구간의 제곱 합성과 음수 구간의 항등 대응을 직접 계산하고 역함수 교점의 겹침을 판정한다.",
+      "secondaryConceptKeys": [
+        "역함수",
+        "합성함수"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "조각함수의 합성·역함수·그래프 교점을 한 번에 검증한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2363,
+      "manifestUid": "h1-direct-43a1130c39b62d3e737885dd21d84dcf",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "일대일대응이 존재하려면 |A|=|B|인 k별 부분집합 순서쌍을 조합해 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "전단사 존재 조건과 부분집합 선택을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2364,
+      "manifestUid": "h1-direct-becf11cee255a5075fa6539b40700565",
+      "canonicalScope": "수학_하",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "전체에서 미신청자를 빼 합집합 11을 구하고 포함배제로 양쪽 신청자 3, 수학만 5를 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "합집합과 교집합의 직접 계산이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2365,
+      "manifestUid": "h1-direct-a95b420c5e87867bdfee62962b784322",
+      "canonicalScope": "CANONICAL_NO_FIT",
+      "L1": "CANONICAL_NO_FIT",
+      "L2": "CANONICAL_NO_FIT",
+      "L3": "CANONICAL_NO_FIT",
+      "L4": "CANONICAL_NO_FIT",
+      "primaryConcept": "바닥함수 포함 부등식",
+      "primaryConceptReason": "[x]의 값이 일정한 구간을 나누어 x²-[x]-2≤0의 해를 구한다.",
+      "secondaryConceptKeys": [
+        "이차부등식"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "바닥함수의 불연속 정수구간과 이차부등식을 함께 처리한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "decisiveSolutionStep": "-1≤x≤2로 먼저 제한한 뒤 [-1,0),[0,1),[1,2),x=2에서 [x]를 각각 대입한다.",
+      "rejectedAlternativeConcepts": [
+        "이차부등식",
+        "함수의 성질"
+      ],
+      "taxonomyReason": "잠금된 HIGH1 canonical master에는 바닥함수 [x]를 포함한 구간별 부등식을 수용하는 정확한 L4가 없다.",
+      "statusReason": "해는 직접 결정되지만 이차부등식 leaf로 강제하면 바닥함수의 핵심 불연속 구조가 사라져 보류한다."
+    },
+    {
+      "record": 2366,
+      "manifestUid": "h1-direct-5ca37c36f8fb329a14fe9e198d60b228",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수",
+      "L4": "역함수 구하기",
+      "primaryConcept": "역함수",
+      "primaryConceptReason": "합성 역함수의 순서를 뒤집어 전체를 g∘f=-6x+11로 단순화하고 역함수를 구한다.",
+      "secondaryConceptKeys": [
+        "합성함수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "중첩 합성 역함수의 소거와 일차 역변환을 연속 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2367,
+      "manifestUid": "h1-direct-be3f0d59886b4039c49d972c972cd6e0",
+      "canonicalScope": "수학_하",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "두 조각 이차함수의 단조성·치역 경계를 맞춰 일대일대응을 만들고 a+b의 상한을 구한다.",
+      "secondaryConceptKeys": [
+        "역함수",
+        "최대·최소"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "서로 반대 방향의 조각 치역을 빈틈없이 이어 매개변수 최댓값을 정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2368,
+      "manifestUid": "h1-direct-4fbbea123b52003580f02a9024d8dde4",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "2:1 내분점 공식으로 P=(2,7)을 구해 좌표합을 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "내분점 좌표 공식의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2369,
+      "manifestUid": "h1-direct-61d0fc3e45602d4428fe373e77085e97",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "평행",
+      "primaryConcept": "두 직선의 위치 관계",
+      "primaryConceptReason": "평행 직선의 기울기 a=2를 고정하고 점 (1,7)로 절편 b=5를 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "기울기·절편 비교의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2370,
+      "manifestUid": "h1-direct-649f31280d0dab2e45d4da7fd0dfb16c",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "기본 원의 방정식",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "식을 (x-2)^2+y^2=6으로 완전제곱해 중심 (2,0)을 읽는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "원 표준형 변환이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2371,
+      "manifestUid": "h1-direct-2067dcc66e60051801ea85c77e5ba05e",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "기울기 3 직선과 원점 사이 거리를 반지름 √10과 같게 해 k=±10을 얻는다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "원 중심-직선 거리의 접선 조건을 양쪽 위치에 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2372,
+      "manifestUid": "h1-direct-b57d7976acdcec864b437f4ca506dbb6",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "평행이동",
+      "L4": "원의 이동",
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "원 중심 (-5,5)에 이동량 (3,-2)를 더하고 반지름 1을 보존한다.",
+      "secondaryConceptKeys": [
+        "원의 방정식"
+      ],
+      "difficultyBucket": 1,
+      "difficultyReason": "원 평행이동의 중심·반지름 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2373,
+      "manifestUid": "h1-direct-90ba58a391ac15ff75abe8c2ec7845f9",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "대칭이동",
+      "L4": "x축·y축·원점 대칭",
+      "primaryConcept": "대칭이동",
+      "primaryConceptReason": "(5,1)을 (a,-3) 이동한 뒤 y=x 대칭으로 좌표를 교환해 (b,7) 조건을 푼다.",
+      "secondaryConceptKeys": [
+        "평행이동"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "평행이동과 y=x 대칭의 순차 좌표변환이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2374,
+      "manifestUid": "h1-direct-f61b4a4b1556239bab26f4422dc176f1",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "도형의 변 길이",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "AP=BP를 거리 제곱 방정식으로 만들고 P가 직선 위라는 조건과 연립한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "등거리 자취와 주어진 직선의 교점을 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2375,
+      "manifestUid": "h1-direct-caf2ea2881399ca27341b962451c1f79",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "기본 원의 방정식",
+      "primaryConcept": "원의 방정식",
+      "primaryConceptReason": "식을 (x-2k)^2+(y-3)^2=3k^2+4로 바꾸고 반지름≤5인 자연수 k를 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "매개변수 원의 표준형과 반지름 부등식을 연결한다.",
+      "status": "DIRECT_TAGGED"
+    }
+  ]
+}

@@ -1,0 +1,510 @@
+{
+  "packetSchema": "h1-direct-tagging-a-replacement-packet-v1",
+  "role": "A_PRIMARY_TAGGER_REPLACEMENT",
+  "batch": "batch-092",
+  "recordRange": {
+    "start": 2436,
+    "end": 2465,
+    "count": 30
+  },
+  "sourceAuthority": {
+    "manifest": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+    "manifestSha256": "705FFC944EA1A166C194832560AF7888A64D81BE3EEE7353092E174288CDCB09",
+    "canonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "canonicalMasterSha256": "0409C489F167211F961CC14811C204F2056511F4C029091FEDDFDC8384C367BF",
+    "denominator": 2498
+  },
+  "directRead": true,
+  "records": [
+    {
+      "record": 2436,
+      "manifestUid": "h1-direct-d3b5683c1690eaca64cfee9029fcafd0",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "흡수법칙",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "흡수법칙 A∩(A∪B)=A를 적용해 보기의 항상 참 식을 판정한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "기본 집합 항등식의 직접 대조다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2437,
+  "manifestUid": "h1-direct-7b4ac9b0c21ccfd4ee7de572c79d050f",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "드모르간 법칙으로 A^c∩B^c를 합집합 여집합으로 바꾸고 포함배제로 계산한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "합집합 원소 수와 전체 보완을 직접 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2438,
+      "manifestUid": "h1-direct-805c738b9626f9f37f9b7d7090d1feba",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "도형의 변 길이",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "A를 y=x에 대칭한 A'와 B를 잇는 직선거리로 PA+PB의 최솟값을 구한다.",
+      "secondaryConceptKeys": [
+        "대칭이동"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "반사법과 두 점 거리의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2439,
+      "manifestUid": "h1-direct-87034a4d5286041e17457aadf2d25c90",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "대칭이동",
+      "L4": "x축·y축·원점 대칭",
+      "primaryConcept": "대칭이동",
+      "primaryConceptReason": "직선을 y=x 대칭해 식을 바꾸고 원 중심에서의 거리를 반지름 |k|와 같게 둔다.",
+      "secondaryConceptKeys": [
+        "원의 접선"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "좌표 대칭과 원-직선 접선 조건을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2440,
+      "manifestUid": "h1-direct-427b3cc67c32a212ff10fdb6193e5de7",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "두 거리 조건으로 C 좌표를 정하고 AB의 3:1 내분점 P와 CP를 계산한다.",
+      "secondaryConceptKeys": [
+        "두 점 사이의 거리"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "좌표 설정·거리 연립·내분점·거리 계산을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2441,
+      "manifestUid": "h1-direct-fa7c1d8267b6b418cb21f91c9ef85dc0",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "무게중심 G가 중선 AM을 2:1로 나누는 내분점임을 이용해 A 좌표를 복원한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "무게중심·내분 공식의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2442,
+      "manifestUid": "h1-direct-99855351817a134d5ed6f9c2876f6305",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "평행",
+      "primaryConcept": "두 직선의 위치 관계",
+      "primaryConceptReason": "첫 직선의 평행 조건으로 a=6을 정하고 세 번째 직선과의 수직 기울기 조건으로 b=-3/2를 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "평행·수직 기울기 관계를 각각 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2443,
+      "manifestUid": "h1-direct-6c65ebf444ec9adcc3bd54f98c82cf71",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 포함 관계",
+      "L4": "두 집합의 포함",
+      "primaryConcept": "집합의 포함 관계",
+      "primaryConceptReason": "A∪X=A에서 X⊆A, B∩X=∅에서 B 원소 제외를 얻어 X⊆A-B의 부분집합 수를 센다.",
+      "secondaryConceptKeys": [
+        "부분집합"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "집합 등식을 필수·금지 원소 조건으로 바꾼다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2444,
+      "manifestUid": "h1-direct-a95149693dcf3656ef5273fe51167bba",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "점과 직선 사이의 거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "BC의 기울기와 수선의 교점 M을 구해 4ab를 계산한다.",
+      "secondaryConceptKeys": [
+        "두 직선의 위치 관계"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "수직 직선 교점 좌표의 직접 계산이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2445,
+      "manifestUid": "h1-direct-090e94129a048adeb60268600924976e",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "점과 직선 사이의 거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "점과 직선 사이의 거리",
+      "primaryConceptReason": "직선 ax+by+c=0의 기울기와 수직선 기울기를 비교하고 두 점 거리 공식을 선택한다.",
+      "secondaryConceptKeys": [
+        "두 직선의 위치 관계"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "수직 기울기와 거리 공식의 개념 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2446,
+      "manifestUid": "h1-direct-200d92bc0556f5f3ee9c95db7d7389e8",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "중심에서 직선까지 거리 4와 반지름 2를 이용해 원 위 점에서 가능한 직선 거리별 교점 수를 센다.",
+      "secondaryConceptKeys": [
+        "점과 직선 사이의 거리"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "거리 범위의 끝 접점과 내부 평행선의 두 교점을 모두 세어야 한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2447,
+      "manifestUid": "h1-direct-3022a77a57137e8b5b6fd4bd3ce7c2f9",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "평행이동",
+      "L4": "점·직선의 이동",
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "원 중심 이동량을 읽어 같은 변환을 직선에 적용하고 평행선 거리를 계산한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "도형 이동과 평행선 거리 공식을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2448,
+      "manifestUid": "h1-direct-8c45ff109f599edc7c519c60cf5bab9e",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "'아니거나'의 여집합인 3의 배수이면서 5로 나눈 나머지 3인 수를 세어 100에서 뺀다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "논리 부정과 배수·나머지 조건의 교집합을 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2449,
+      "manifestUid": "h1-direct-839f16ec4f228dcb490ac574fa614e6f",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "두 원",
+      "L4": "공통현·공통접선 조건",
+      "primaryConcept": "두 원",
+      "primaryConceptReason": "두 원의 방정식을 빼 공통현 직선을 만들고 주어진 직선과 계수 비교한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "두 원 교점의 공통현 조건을 선형식 비교로 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2450,
+      "manifestUid": "h1-direct-5fb3f6199a29f2dac01d48480a710517",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "대칭이동",
+      "L4": "직선에 대한 대칭",
+      "primaryConcept": "대칭이동",
+      "primaryConceptReason": "점과 직선의 대칭 공식으로 (-2,1)의 대칭점 (1,0)을 구한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "점-직선 대칭 좌표 공식의 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2451,
+      "manifestUid": "h1-direct-f0979c876710beacc1433d68476308ba",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "교점과 위치",
+      "primaryConcept": "두 직선의 위치 관계",
+      "primaryConceptReason": "m의 부호별 제1사분면 교점 존재를 분석해 y=-mx+3m-2가 x>0,y>0을 만들지 않는 범위를 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "직선의 기울기·절편과 사분면 조건을 함께 판정한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2452,
+      "manifestUid": "h1-direct-98932d432135b2c24a5214f2bdfeba8c",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "도형의 넓이·최소거리",
+      "L4": "도형의 넓이·최소거리",
+      "primaryConcept": "도형의 넓이·최소거리",
+      "primaryConceptReason": "직사각형 두 개로 도형 넓이를 분해하고 A를 지나는 절반 넓이 직선의 절편을 정한다.",
+      "secondaryConceptKeys": [
+        "직선의 방정식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "복합 도형 넓이와 직선 절편을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2453,
+      "manifestUid": "h1-direct-4d53d33d38add18a552574ece8792814",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "기울기가 주어진 접선",
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "외부점 접촉현 PQ의 식·반현 길이·점 A까지 높이를 이용해 △APQ 넓이를 구한다.",
+      "secondaryConceptKeys": [
+        "삼각형의 넓이"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "접촉현과 현 길이·거리·넓이를 연쇄 계산한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2454,
+      "manifestUid": "h1-direct-38e219e835c488dbf65537fdb95b2600",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "집합과 원소",
+      "L4": "원소나열법·조건제시법",
+      "primaryConcept": "집합과 원소",
+      "primaryConceptReason": "수 1과 집합 {1}, 그리고 이들을 원소로 하는 중첩 집합의 ∈·⊂ 관계를 구별한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "중첩 집합 기호 판정이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2455,
+      "manifestUid": "h1-direct-9d21133e3044246d8ce77084dd749e04",
+      "canonicalScope": "공통수학2",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 뜻",
+      "L4": "대응과 함수",
+      "primaryConcept": "함수의 뜻",
+      "primaryConceptReason": "수직선 판정으로 원 그래프만 한 x에 두 y를 가져 함수 그래프가 될 수 없음을 확인한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "그래프 함수 판정의 직접 적용이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2456,
+      "manifestUid": "h1-direct-78ec156923d39a6264064df1ef641c5b",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "부분집합",
+      "L4": "부분집합의 개수",
+      "primaryConcept": "부분집합",
+      "primaryConceptReason": "a,b를 제외하고 c,d,e,f 네 원소의 포함 여부만 자유롭게 정해 진부분집합 2^4개를 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "고정 제외 원소를 둔 부분집합 개수다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2457,
+      "manifestUid": "h1-direct-3865344a44d4407fd851e8eab1c49db4",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "드모르간 법칙",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "차집합과 드모르간 법칙으로 ①~④를 X∩Y^c∩Z^c로 통일하고 ⑤만 다른 식임을 확인한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "복합 집합식을 동일한 교집합 형태로 정규화한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2458,
+      "manifestUid": "h1-direct-bdcea2670c17e50a4b4dd1fc97c60ffc",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "집합의 연산법칙",
+      "L4": "드모르간 법칙",
+      "primaryConcept": "집합의 연산법칙",
+      "primaryConceptReason": "차집합·흡수법칙·드모르간 법칙을 적용해 ㄴ,ㄷ만 참임을 판정한다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "네 기본 집합 항등식을 각각 변환한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2459,
+      "manifestUid": "h1-direct-17dcd17de5f3fecd9185ed3e896ed26b",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "A^c∪B^c=(A∩B)^c로 바꾸고 교집합 최소 5에서 합집합 여집합 최대 25를 얻는다.",
+      "secondaryConceptKeys": [
+        "여집합과 차집합"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "포함배제의 교집합 경계와 드모르간을 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2460,
+      "manifestUid": "h1-direct-6b4879890fc4e6acb3606834b9bde7c9",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 뜻과 포함 관계",
+      "L3": "부분집합",
+      "L4": "부분집합의 개수",
+      "primaryConcept": "부분집합",
+      "primaryConceptReason": "특정 원소 하나가 3원소 부분집합에 포함되는 횟수 C(5,2)=10을 전체 원소합에 곱한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "부분집합 조합 수와 원소별 중복 등장 횟수를 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2461,
+      "manifestUid": "h1-direct-7ba9545afc48794f89af8ca6d33aebe2",
+      "canonicalScope": "공통수학2",
+      "L1": "집합과 명제",
+      "L2": "집합의 연산",
+      "L3": "교집합과 합집합",
+      "L4": "원소 개수",
+      "primaryConcept": "교집합과 합집합",
+      "primaryConceptReason": "A,B가 U를 분할하고 A가 소수 원소만 갖도록 가능한 A의 두 원소를 비교해 B 합을 최대화한다.",
+      "secondaryConceptKeys": [
+        "집합의 포함 관계"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "서로소·합집합 전체 조건과 원소 성질을 조합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2462,
+      "manifestUid": "h1-direct-3ebf2cafe585f5894dd5e9f1071d5b06",
+      "canonicalScope": "공통수학2",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "함수의 성질",
+      "L4": "일대일함수",
+      "primaryConcept": "함수의 성질",
+      "primaryConceptReason": "f(3)=4를 고정하고 1,2,3 중 두 값을 증가 순서로 선택한 뒤 f(4)를 5,6 중 고른다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "증가 조건과 함수값 선택 조합이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2463,
+      "manifestUid": "h1-direct-f2d681843abc5c808ad51299449906b1",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "두 점 사이의 거리",
+      "L4": "도형의 변 길이",
+      "primaryConcept": "두 점 사이의 거리",
+      "primaryConceptReason": "세 변의 길이 제곱을 비교해 BC=CA인 이등변삼각형을 판정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "좌표 거리 제곱의 직접 비교다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2464,
+      "manifestUid": "h1-direct-e5327e97d57c078623b45e2d2e1be242",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "평면좌표",
+      "L3": "선분의 내분·외분",
+      "L4": "내분점",
+      "primaryConcept": "선분의 내분·외분",
+      "primaryConceptReason": "ABC의 무게중심이 원점이라는 합 조건으로 B+C를 구해 △OBC 무게중심을 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "두 무게중심 좌표식을 연쇄 적용한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "record": 2465,
+      "manifestUid": "h1-direct-05d9a725108d3a7af1502c15a390ec45",
+      "canonicalScope": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "평행",
+      "primaryConcept": "두 직선의 위치 관계",
+      "primaryConceptReason": "그림에서 원래 직선의 기울기와 절편 부호를 읽어 새 직선의 기울기·절편 부호를 판정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "일반형 직선의 계수 부호와 그래프 위치를 연결한다.",
+      "status": "DIRECT_TAGGED"
+    }
+  ]
+}

@@ -1,0 +1,542 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "packetStatus": "FROZEN",
+  "tagger": "B",
+  "independentRead": true,
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "globalRecordRange": {
+    "start": 2322,
+    "end": 2331,
+    "count": 10
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "records": [
+    {
+      "manifestUid": "h1-direct-f6f374770a5d0e7f88c19286ed3a89ce",
+      "globalRecord": 2322,
+      "source": {
+        "manifestUid": "h1-direct-f6f374770a5d0e7f88c19286ed3a89ce",
+        "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 20,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "bf3c65eb8f442dbac601303d3c26557ed867a1734d33834b115ad7dca46688cb",
+        "contentFingerprint": "2d8fb5422d71d29662a2d8a6170efd2fd182d9bb58dd975b3ce02acdf0675cbe"
+      },
+      "sourceEvidence": {
+        "content": "[서술형 2] 원 $x^2+y^2-2x-6y+6=0$을 직선 $ax+by-6=0$에 대하여 대칭이동한 원의 방정식이 $x^2+y^2-10x+6y+c=0$일 때, 상수 $a,b,c$의 값을 구하는 과정을 서술하시오. [6점]",
+        "choices": [],
+        "answer": "$a=2$, $b=-3$, $c=30$",
+        "solution": "원 $x^2+y^2-2x-6y+6=0$을 완전제곱식으로 정리하면\n$(x-1)^2+(y-3)^2=4$이다. 따라서 중심은 $(1,3)$, 반지름은 $2$이다.\n\n대칭이동한 원의 방정식에서 중심은 $(5,-3)$이다. 두 중심을 잇는 선분의 중점은 $(3,0)$이고, 중심을 잇는 직선의 기울기는\n$\\dfrac{-3-3}{5-1}=-\\dfrac32$이다. 따라서 대칭축의 기울기는 $\\dfrac23$이고, 중점 $(3,0)$을 지나므로\n$y=\\dfrac23(x-3)$, 즉 $2x-3y-6=0$이다.\n\n두 번째 원 $x^2+y^2-10x+6y+c=0$을 정리하면\n$(x-5)^2+(y+3)^2=34-c$이다. 반지름이 원래 원과 같은 $2$이므로\n$34-c=4$에서 $c=30$이다.\n\n따라서 $a=2$, $b=-3$, $c=30$이다.",
+        "image": "",
+        "solutionImage": "assets/images/23_팔마고_2학기_중간_고1_기출/q20-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "도형의 이동",
+        "L4": "대칭이동"
+      },
+      "primaryConcept": {
+        "key": "대칭이동",
+        "path": [
+          "도형의 방정식",
+          "원의 방정식",
+          "도형의 이동",
+          "대칭이동"
+        ],
+        "reason": "원 중심의 대칭이동과 대칭축 복원을 함께 수행하는 서술형"
+      },
+      "secondaryConceptKeys": [
+        "원의 방정식"
+      ],
+      "difficultyBucket": 5,
+      "difficultyEvidence": {
+        "reason": "원 중심의 대칭이동과 대칭축 복원을 함께 수행하는 서술형",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-f8ce9f5eb0667afd6441a5ce19a1b30c",
+      "globalRecord": 2323,
+      "source": {
+        "manifestUid": "h1-direct-f8ce9f5eb0667afd6441a5ce19a1b30c",
+        "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 21,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "29670f8176f23839cc7dc973ca2f3a3debafdb910d1202d6bb900841377f575a",
+        "contentFingerprint": "245258fc79d033dcb0515a181e1c51d8378e8d768d77276a84fc04079bde5f02"
+      },
+      "sourceEvidence": {
+        "content": "[서술형 3] $a>0$, $b>0$일 때, 부등식 $\\sqrt{ab}\\ge\\dfrac{2ab}{a+b}$가 성립함을 증명하시오. [4점]",
+        "choices": [],
+        "answer": "증명",
+        "solution": "$a>0$, $b>0$이므로 $a+b>0$이고 $\\sqrt{ab}>0$이다. 주어진 부등식의 양변에 $a+b$를 곱하고 $\\sqrt{ab}$로 나누면 $a+b\\ge2\\sqrt{ab}$와 같은 부등식이 된다. 그런데 $(\\sqrt a-\\sqrt b)^2\\ge0$을 전개하면 $a+b-2\\sqrt{ab}\\ge0$, 즉 $a+b\\ge2\\sqrt{ab}$이다. 따라서 $\\sqrt{ab}\\ge\\dfrac{2ab}{a+b}$가 성립하며, 등호는 $a=b$일 때 성립한다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "증명",
+        "L4": "증명"
+      },
+      "primaryConcept": {
+        "key": "증명",
+        "path": [
+          "집합과 명제",
+          "명제",
+          "증명",
+          "증명"
+        ],
+        "reason": "양의 조건을 보존하며 AM-GM 등가변형으로 부등식을 증명"
+      },
+      "secondaryConceptKeys": [
+        "절대부등식"
+      ],
+      "difficultyBucket": 3,
+      "difficultyEvidence": {
+        "reason": "양의 조건을 보존하며 AM-GM 등가변형으로 부등식을 증명",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-939a9364c754ad218c1f9c520dbfec23",
+      "globalRecord": 2324,
+      "source": {
+        "manifestUid": "h1-direct-939a9364c754ad218c1f9c520dbfec23",
+        "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 22,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "7c283112cb539a8b5c16e62814d017d9fe74c43258a7d8121a953bba51d3edc8",
+        "contentFingerprint": "932d79c76eb07193facaf27d0aded1116e0ca16e0bbc6cc525077ec1106b09d0"
+      },
+      "sourceEvidence": {
+        "content": "[서술형 4] 원 $x^2+y^2=5$ 위의 임의의 점 $P(x,y)$에 대하여 $x+2y$의 값을 $k$라고 하자.\n(1) 부등식 $(a^2+b^2)(x^2+y^2)\\ge(ax+by)^2$을 사용하여 $k$의 최댓값과 최솟값을 구하시오. [3점]\n(2) $x>0$, $y>0$일 때, $\\dfrac{x+y}{2}\\ge\\sqrt{xy}$를 사용하여 $k$의 최댓값과 최솟값을 구하시오. [3점]",
+        "choices": [],
+        "answer": "(1) 최댓값 $5$, 최솟값 $-5$ (2) 최댓값 $5$, 최솟값은 존재하지 않음",
+        "solution": "(1) 주어진 부등식에서 $a=1$, $b=2$로 놓으면 $(1^2+2^2)(x^2+y^2)\\ge(x+2y)^2$이다. $x^2+y^2=5$이므로 $25\\ge k^2$, 즉 $-5\\le k\\le5$이다. $(x,y)=(1,2)$일 때 $k=5$, $(x,y)=(-1,-2)$일 때 $k=-5$이므로 최댓값은 $5$, 최솟값은 $-5$이다.\n(2) $x,y>0$에서 산술평균과 기하평균의 관계를 $4x^2$과 $y^2$에 적용하면 $4x^2+y^2\\ge4xy$이다. 따라서 $25-k^2=5(x^2+y^2)-(x+2y)^2=4x^2+y^2-4xy\\ge0$이므로 $k\\le5$이고, $y=2x$일 때 등호가 성립한다. $x^2+y^2=5$와 함께 풀면 $(x,y)=(1,2)$이므로 최댓값은 $5$이다. 한편 $k^2-5=(x+2y)^2-(x^2+y^2)=4xy+3y^2>0$이므로 항상 $k>\\sqrt5$이다. $y$를 $0$보다 큰 값으로 점점 작게 잡으면 원 위에서 $x$는 $\\sqrt5$에 가까워지고 $k$도 $\\sqrt5$에 한없이 가까워지지만, $y=0$은 허용되지 않는다. 따라서 최솟값은 존재하지 않는다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 방정식",
+        "L4": "원의 방정식"
+      },
+      "primaryConcept": {
+        "key": "원의 방정식",
+        "path": [
+          "도형의 방정식",
+          "원의 방정식",
+          "원의 방정식",
+          "원의 방정식"
+        ],
+        "reason": "원 위 선형식의 범위를 두 부등식 방법으로 검증"
+      },
+      "secondaryConceptKeys": [
+        "절대부등식"
+      ],
+      "difficultyBucket": 4,
+      "difficultyEvidence": {
+        "reason": "원 위 선형식의 범위를 두 부등식 방법으로 검증",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-09a3d43a0e72f599a51de61ae140d710",
+      "globalRecord": 2325,
+      "source": {
+        "manifestUid": "h1-direct-09a3d43a0e72f599a51de61ae140d710",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 1,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "971391265610a17fb3876dc39aeaa778192b140562f60b741ffcd31457ac2817",
+        "contentFingerprint": "f0be14231996abb3251cf966e614eaf79f490ad2919c1832cf8846573d272b7f"
+      },
+      "sourceEvidence": {
+        "content": "점 $(1,2)$를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 점의 좌표는? [3.8점]",
+        "choices": [
+          "$(1,2)$",
+          "$(1,5)$",
+          "$(2,1)$",
+          "$(3,2)$",
+          "$(3,5)$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 평행이동에서는 각 좌표에 이동한 방향과 크기를 그대로 더한다.\n조건 정리: $x$축의 양의 방향으로 $2$, $y$축의 양의 방향으로 $3$만큼 이동한다.\n풀이 방향: 점 $(1,2)$의 $x$좌표와 $y$좌표에 각각 이동량을 더한다.\n정석 풀이: 이동한 점의 좌표는 $(1+2,\\,2+3)=(3,5)$이다.\n따라서 정답은 ⑤이다.",
+        "image": "",
+        "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q01-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "도형의 방정식",
+        "L2": "도형의 이동",
+        "L3": "도형의 이동",
+        "L4": "평행이동"
+      },
+      "primaryConcept": {
+        "key": "평행이동",
+        "path": [
+          "도형의 방정식",
+          "도형의 이동",
+          "도형의 이동",
+          "평행이동"
+        ],
+        "reason": "좌표별 평행이동량을 직접 적용"
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyEvidence": {
+        "reason": "좌표별 평행이동량을 직접 적용",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-c720f5dee0dcfa6cb13a2db812a8398a",
+      "globalRecord": 2326,
+      "source": {
+        "manifestUid": "h1-direct-c720f5dee0dcfa6cb13a2db812a8398a",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "85628508ad740a9fa6414b796945bf81be2d3542f048d1faa92de3457d927c9d",
+        "contentFingerprint": "cdc2c15192ab59b7d4e900e6525cffd229bbc9e7fa20888b0ff4c425aeb07313"
+      },
+      "sourceEvidence": {
+        "content": "두 집합 $A=\\{2,3,4,5\\}$, $B=\\{1,2,3,6\\}$일 때, $n(A\\cap B)$의 값은? [3.8점]",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] 교집합은 두 집합에 공통으로 들어 있는 원소만 모은 집합이다.\n조건 정리: $A=\\{2,3,4,5\\}$, $B=\\{1,2,3,6\\}$이다.\n풀이 방향: 두 집합에 동시에 들어 있는 원소를 찾은 뒤 그 개수를 센다.\n정석 풀이: 공통 원소는 $2,3$이므로 $A\\cap B=\\{2,3\\}$이다. 따라서 $n(A\\cap B)=2$이다.\n따라서 정답은 ②이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "집합의 연산",
+        "L4": "교집합과 합집합"
+      },
+      "primaryConcept": {
+        "key": "교집합과 합집합",
+        "path": [
+          "집합과 명제",
+          "집합의 연산",
+          "집합의 연산",
+          "교집합과 합집합"
+        ],
+        "reason": "두 유한집합의 공통 원소를 세는 직접 계산"
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyEvidence": {
+        "reason": "두 유한집합의 공통 원소를 세는 직접 계산",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-d68404c982bae8db111ec929db431f0c",
+      "globalRecord": 2327,
+      "source": {
+        "manifestUid": "h1-direct-d68404c982bae8db111ec929db431f0c",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "f16a8f09231e5b52ebab2e6aa89a0ffa759185bcfb2e2bddadf9fed3565b132b",
+        "contentFingerprint": "128cc9e67e6011f4fb74e2c2e0cc288c5941aeb600a1c542468dfe1784affd9a"
+      },
+      "sourceEvidence": {
+        "content": "전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 집합 사이의 포함관계가 오른쪽 벤다이어그램과 같을 때, 다음 중 항상 옳은 것은? [3.8점]",
+        "choices": [
+          "$A\\subset B$",
+          "$B\\subset A$",
+          "$A=B$",
+          "$A\\subset B^C$",
+          "$A\\cap B=\\varnothing$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 벤다이어그램에서 한 집합이 다른 집합의 안쪽에 놓이면 부분집합 관계이다.\n조건 정리: 그림에서 집합 $A$를 나타내는 곡선 전체가 집합 $B$를 나타내는 곡선의 안쪽에 있다.\n풀이 방향: 그림의 안쪽 집합과 바깥쪽 집합을 확인한다.\n정석 풀이: $A$의 모든 원소는 $B$에도 속하므로 $A\\subset B$이다. 나머지 보기들은 그림에서 항상 성립하지 않는다.\n따라서 정답은 ①이다.",
+        "image": "assets/images/24_금당고_2학기_중간_고1_기출/q03.png",
+        "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q03-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "집합의 뜻과 포함 관계",
+        "L3": "집합의 뜻과 포함 관계",
+        "L4": "집합의 포함 관계"
+      },
+      "primaryConcept": {
+        "key": "집합의 포함 관계",
+        "path": [
+          "집합과 명제",
+          "집합의 뜻과 포함 관계",
+          "집합의 뜻과 포함 관계",
+          "집합의 포함 관계"
+        ],
+        "reason": "벤다이어그램의 내부 포함을 부분집합 관계로 판정"
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyEvidence": {
+        "reason": "벤다이어그램의 내부 포함을 부분집합 관계로 판정",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-7353c21635301b15a0ab40fa92356333",
+      "globalRecord": 2328,
+      "source": {
+        "manifestUid": "h1-direct-7353c21635301b15a0ab40fa92356333",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 4,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "a5958326b996a66375368488227168c6d8574589ff461e7df45740af999dce19",
+        "contentFingerprint": "8650980669213130730a88cb858903190702082650b6368dca3e43e4d4ffb85f"
+      },
+      "sourceEvidence": {
+        "content": "함수 $f(x+1)=x+2$일 때, $f(2)$의 값은? [3.8점]",
+        "choices": [
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$",
+          "$6$"
+        ],
+        "answer": "②",
+        "solution": "[키포인트] $f(2)$를 구하려면 입력 부분 $x+1$이 $2$가 되도록 $x$를 정한다.\n조건 정리: 모든 $x$에 대하여 $f(x+1)=x+2$이다.\n풀이 방향: $x+1=2$를 먼저 풀고 그 값을 오른쪽 식에 대입한다.\n정석 풀이: $x+1=2$에서 $x=1$이다. 따라서 $f(2)=1+2=3$이다.\n따라서 정답은 ②이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수",
+        "L4": "함수의 뜻"
+      },
+      "primaryConcept": {
+        "key": "함수의 뜻",
+        "path": [
+          "함수",
+          "함수",
+          "함수",
+          "함수의 뜻"
+        ],
+        "reason": "함수식의 입력을 맞춰 대입하는 기본 변환"
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "함수식의 입력을 맞춰 대입하는 기본 변환",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-51a00cbb3404478b559dc92c5fd1859d",
+      "globalRecord": 2329,
+      "source": {
+        "manifestUid": "h1-direct-51a00cbb3404478b559dc92c5fd1859d",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 5,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "e685365d1933b913c9f23998b9d22e117b52fd9827dc1e090851b6d5ce0d23be",
+        "contentFingerprint": "50cc7f4c5dfb814c5e6a1067af2084a79caf1e0cc7eb44ee370bb5518860dff0"
+      },
+      "sourceEvidence": {
+        "content": "다음 중 집합이 아닌 것은? [3.8점]",
+        "choices": [
+          "영어 알파벳 소문자의 모임",
+          "$3$보다 작은 자연수의 모임",
+          "$0$에 가까운 수의 모임",
+          "우리나라에 나타나는 사계절의 모임",
+          "$10$의 양의 약수의 모임"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 집합은 어떤 대상이 원소인지 아닌지를 분명하게 판정할 수 있어야 한다.\n조건 정리: 보기의 모임마다 소속 기준이 객관적으로 정해지는지 확인한다.\n풀이 방향: 기준이 사람마다 달라질 수 있는 표현을 찾는다.\n정석 풀이: 영어 알파벳 소문자, $3$보다 작은 자연수, 사계절, $10$의 양의 약수는 원소가 명확하다. 그러나 ‘$0$에 가까운 수’는 어느 범위까지를 가깝다고 할지 정해져 있지 않아 원소를 분명히 판정할 수 없다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "집합의 뜻과 포함 관계",
+        "L3": "집합의 뜻과 포함 관계",
+        "L4": "집합과 원소"
+      },
+      "primaryConcept": {
+        "key": "집합과 원소",
+        "path": [
+          "집합과 명제",
+          "집합의 뜻과 포함 관계",
+          "집합의 뜻과 포함 관계",
+          "집합과 원소"
+        ],
+        "reason": "원소 소속의 명확성으로 집합 여부를 판정"
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "원소 소속의 명확성으로 집합 여부를 판정",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-dd5983ebffb0dd84bad53f256489d0ff",
+      "globalRecord": 2330,
+      "source": {
+        "manifestUid": "h1-direct-dd5983ebffb0dd84bad53f256489d0ff",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 6,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "80407650cfade273b349eee72152fd484ddd824102d7afb6447e7a31f3b6455f",
+        "contentFingerprint": "64ad4198b3d3be4e699ba357b281389eef295d506c97aa9e233c079f38c91e24"
+      },
+      "sourceEvidence": {
+        "content": "다음 중 일대일함수는? [3.8점]",
+        "choices": [
+          "$y=x+2$",
+          "$y=x^2$",
+          "$x^2+y^2=4$",
+          "$y=4$",
+          "$y=|x|$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] 일대일함수는 서로 다른 두 입력에 서로 다른 함숫값이 대응해야 한다.\n조건 정리: 각 보기를 실수 전체에서 정의된 관계로 본다.\n풀이 방향: 함수 여부를 먼저 확인하고, 함수인 경우 같은 함숫값을 갖는 서로 다른 입력이 있는지 본다.\n정석 풀이: ① $y=x+2$는 $x_1\\ne x_2$이면 $x_1+2\\ne x_2+2$이므로 일대일함수이다. ② $y=x^2$와 ⑤ $y=|x|$는 $x$와 $-x$의 함숫값이 같다. ③ $x^2+y^2=4$는 하나의 $x$에 두 $y$가 대응할 수 있어 함수가 아니다. ④ $y=4$는 모든 입력의 함숫값이 같아 일대일함수가 아니다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수",
+        "L4": "함수의 성질"
+      },
+      "primaryConcept": {
+        "key": "함수의 성질",
+        "path": [
+          "함수",
+          "함수",
+          "함수",
+          "함수의 성질"
+        ],
+        "reason": "함수 여부와 일대일성 조건을 보기별로 판별"
+      },
+      "secondaryConceptKeys": [
+        "함수의 뜻"
+      ],
+      "difficultyBucket": 3,
+      "difficultyEvidence": {
+        "reason": "함수 여부와 일대일성 조건을 보기별로 판별",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-8ab16dd86add7a1e8633aa5e72159168",
+      "globalRecord": 2331,
+      "source": {
+        "manifestUid": "h1-direct-8ab16dd86add7a1e8633aa5e72159168",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "a111ed010255f43fef227ea51125989d659a69d2cf47fc97f22b8e154e35c3eb",
+        "contentFingerprint": "5ec92fe93821e504f330ef65753bd02d35f2fc371f539cc8f1fa3d811571f7c1"
+      },
+      "sourceEvidence": {
+        "content": "명제 $\\sim p\\Rightarrow q$가 참일 때, 항상 참인 명제는? [4점]",
+        "choices": [
+          "$\\sim p\\Rightarrow\\sim q$",
+          "$p\\Rightarrow q$",
+          "$q\\Rightarrow\\sim p$",
+          "$\\sim q\\Rightarrow\\sim p$",
+          "$\\sim q\\Rightarrow p$"
+        ],
+        "answer": "⑤",
+        "solution": "[키포인트] 참인 명제는 그 대우도 항상 참이다.\n조건 정리: 주어진 명제는 $\\sim p\\Rightarrow q$이다.\n풀이 방향: 가정과 결론을 서로 바꾸고 각각 부정하여 대우를 만든다.\n정석 풀이: $\\sim p\\Rightarrow q$의 대우는 $\\sim q\\Rightarrow\\sim(\\sim p)$이다. 이중 부정을 없애면 $\\sim q\\Rightarrow p$가 된다. 원래 명제와 대우는 항상 같은 참·거짓을 가지므로 이 명제는 참이다.\n따라서 정답은 ⑤이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "명제",
+        "L4": "역·이·대우"
+      },
+      "primaryConcept": {
+        "key": "역·이·대우",
+        "path": [
+          "집합과 명제",
+          "명제",
+          "명제",
+          "역·이·대우"
+        ],
+        "reason": "주어진 명제의 대우를 구성해 항상 참인 명제를 선택"
+      },
+      "secondaryConceptKeys": [
+        "명제와 조건"
+      ],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "주어진 명제의 대우를 구성해 항상 참인 명제를 선택",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "READY",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    }
+  ]
+}

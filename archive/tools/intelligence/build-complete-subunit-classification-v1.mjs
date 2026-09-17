@@ -3,9 +3,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { loadCanonicalRpmMaster } from './metadata-foundation-gates.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '../..');
+const repoRoot = path.resolve(archiveDir, '..');
 const classificationPath = path.join(archiveDir, '_generated/intelligence/phase3/fallback-safety-audit/archive-hierarchical-classification-with-fallback-overlay-v1.json');
 const coverageDir = path.join(archiveDir, '_generated/intelligence/phase3/coverage-queue');
 const masterPath = path.join(archiveDir, 'data/master_tables/js_archive_tag_master.json');
@@ -17,6 +19,13 @@ const taxonomyPath = path.join(outputDir, 'archive-complete-subunit-taxonomy-v1.
 const summaryPath = path.join(outputDir, 'archive-complete-subunit-classification-v1.summary.md');
 
 const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
+const sourceFingerprint = question => sha256(JSON.stringify({
+  content: question?.content ?? null,
+  choices: Array.isArray(question?.choices) ? question.choices : null,
+  answer: question?.answer ?? null,
+  solution: question?.solution ?? null,
+  image: question?.image ?? null
+}));
 const readJson = filePath => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 const normalize = value => String(value ?? '').toLowerCase().replace(/\s+/g, '').replace(/[·ㆍ,，.。:：()（）[\]{}<>「」『』]/g, '');
 const safeKey = value => String(value || 'UNMAPPED').replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '').toUpperCase() || 'UNMAPPED';
@@ -424,7 +433,7 @@ function scoreDefinition(definition, question, text, candidateKey, focusedKey) {
   return { score, matched: [...new Set(matched)] };
 }
 
-function classifyRecord(record, question, definitions, candidate) {
+export function classifyRecord(record, question, definitions, candidate) {
   const existingKey = question?.subUnitKey || '';
   const sourceStandardUnitKey = question?.standardUnitKey || record.standardUnitKey || '';
   const sourceStandardUnit = question?.standardUnit || record.standardUnit || '';
@@ -437,12 +446,14 @@ function classifyRecord(record, question, definitions, candidate) {
     const existingLabel = question.subUnit || existingDefinition?.label || existingKey;
     const confidenceValues = new Set(['existing_preserved', 'candidate_evidence', 'category_or_cue_inferred', 'rule_inferred']);
     const depthValues = new Set(['complete_candidate', 'complete_category', 'complete_documented', 'complete_rule']);
-    const existingConfidence = confidenceValues.has(question.subUnitConfidence) ? question.subUnitConfidence : 'existing_preserved';
+    const existingConfidence = 'existing_preserved';
     const existingDepth = depthValues.has(question.subUnitClassificationDepth) ? question.subUnitClassificationDepth : 'complete_documented';
     return {
       questionUid: record.questionUid,
       sourceArchiveFile: record.sourceArchiveFile,
       sourceOrdinal: record.sourceOrdinal,
+      sourceFingerprint: sourceFingerprint(question),
+      contentFingerprint: sha256(JSON.stringify({ content: question?.content ?? null, choices: Array.isArray(question?.choices) ? question.choices : null, image: question?.image ?? null })),
       standardUnitKey: sourceStandardUnitKey,
       standardUnit: sourceStandardUnit,
       inferredStandardUnitKey: sourceStandardUnitKey,
@@ -455,6 +466,7 @@ function classifyRecord(record, question, definitions, candidate) {
         confidence: existingConfidence,
         classificationDepth: existingDepth,
         uncertainty: false,
+        semanticVerificationStatus: 'PRESERVED_SOURCE_UNVERIFIED',
         evidence: {
           matchedCues: [],
           score: 0,
@@ -477,15 +489,46 @@ function classifyRecord(record, question, definitions, candidate) {
   const candidates = definitions.filter(definition => definition.standardUnitKey === inferredStandardUnitKey && !isLegacyApplicationSubUnitKey(definition.key));
   // Unscoped definitions are reserved for genuinely unmapped standard units;
   // they must not compete with an otherwise valid unit's own taxonomy.
-  const available = candidates.length
-    ? candidates
-    : (inferredStandardUnitKey ? definitions.filter(definition => definition.standardUnitKey === '') : definitions);
+  // A missing canonical definition is a foundation defect, not permission to
+  // search every legacy definition or invent a generic L4/default.
+  const available = candidates;
   const focusedKey = focusedSubUnitKey(inferredStandardUnitKey, question);
   const scored = available.map(definition => ({ definition, ...scoreDefinition(definition, question, text, candidateKey, focusedKey) }))
     .sort((a, b) => b.score - a.score || a.definition.key.localeCompare(b.definition.key, 'en'));
   const winner = scored[0];
   const runnerUp = scored[1];
-  if (!winner) throw new Error(`no subunit definitions available for ${record.questionUid}`);
+  if (!winner || winner.score <= 0) {
+    return {
+      questionUid: record.questionUid,
+      sourceArchiveFile: record.sourceArchiveFile,
+      sourceOrdinal: record.sourceOrdinal,
+      sourceFingerprint: sourceFingerprint(question),
+      contentFingerprint: sha256(JSON.stringify({ content: question?.content ?? null, choices: Array.isArray(question?.choices) ? question.choices : null, image: question?.image ?? null })),
+      standardUnitKey: sourceStandardUnitKey,
+      standardUnit: sourceStandardUnit,
+      inferredStandardUnitKey,
+      classification: {
+        subUnitKey: '',
+        subUnit: '',
+        conceptClusterKey: '',
+        problemTypeKey: '',
+        templateKey: '',
+        confidence: 'low',
+        classificationDepth: 'no_fit',
+        uncertainty: true,
+        status: 'FOUNDATION_DEFECT_CANDIDATE',
+        holdEvidence: {
+          reason: 'no canonical subunit cue fit',
+          missingEvidence: ['canonical_subunit_fit'],
+          sourceStandardUnitKey,
+          inferredStandardUnitKey,
+          candidatesConsidered: available.map(definition => definition.key)
+        },
+        evidence: { matchedCues: [], score: winner?.score ?? 0, runnerUpSubUnitKey: runnerUp?.definition.key || '', runnerUpScore: runnerUp?.score ?? 0, margin: 0 },
+        productionWriteAllowed: false
+      }
+    };
+  }
   const explicitCandidate = Boolean(candidateKey && winner.definition.key === candidateKey);
   const margin = winner.score - (runnerUp?.score ?? 0);
   let confidence;
@@ -508,6 +551,8 @@ function classifyRecord(record, question, definitions, candidate) {
     questionUid: record.questionUid,
     sourceArchiveFile: record.sourceArchiveFile,
     sourceOrdinal: record.sourceOrdinal,
+    sourceFingerprint: sourceFingerprint(question),
+    contentFingerprint: sha256(JSON.stringify({ content: question?.content ?? null, choices: Array.isArray(question?.choices) ? question.choices : null, image: question?.image ?? null })),
     standardUnitKey: sourceStandardUnitKey,
     standardUnit: sourceStandardUnit,
     inferredStandardUnitKey,
@@ -549,6 +594,7 @@ function countBy(records, selector) {
 }
 
 export function buildCompleteSubunitClassificationV1() {
+  const canonical = loadCanonicalRpmMaster(repoRoot);
   const sourceClassification = readJson(classificationPath);
   const coverageRecords = [...loadCoverageCandidates().values()];
   const questions = loadSourceQuestions(sourceClassification.records);
@@ -557,17 +603,18 @@ export function buildCompleteSubunitClassificationV1() {
   const candidateByUid = loadCoverageCandidates();
   const records = sourceClassification.records.map(record => classifyRecord(record, questions.get(record.questionUid), definitions, candidateByUid.get(record.questionUid)));
   const emptySubUnitKeys = records.filter(record => !record.classification.subUnitKey);
-  const unknownKeys = records.filter(record => !definitionByKey.has(record.classification.subUnitKey));
+  const unknownKeys = records.filter(record => record.classification.subUnitKey && !definitionByKey.has(record.classification.subUnitKey));
   const uniqueIds = new Set(records.map(record => record.questionUid));
     if (records.length !== sourceClassification.records.length) {
         throw new Error(`classification record count changed during rebuild: source=${sourceClassification.records.length}, output=${records.length}`);
     }
   if (uniqueIds.size !== records.length) throw new Error(`questionUid duplicates: ${records.length - uniqueIds.size}`);
-  if (emptySubUnitKeys.length) throw new Error(`empty subUnitKey values: ${emptySubUnitKeys.length}`);
   if (unknownKeys.length) throw new Error(`taxonomy key gaps: ${unknownKeys.length}`);
   const stable = {
     schemaVersion: 'archive-complete-subunit-classification-v1',
-    productionWriteAllowed: false,
+    productionWriteAllowed: emptySubUnitKeys.length === 0 && records.length > 0 && records.every(record => record.classification.semanticVerificationStatus === 'INDEPENDENT_SEMANTIC_VERIFIED' && record.classification.evidence?.independentRecheckEvidence === true),
+    status: emptySubUnitKeys.length ? 'HOLD' : 'READY_FOR_REVIEW',
+    canonicalRpmMaster: { path: canonical.path, sha256: canonical.sha256, authorityVersion: canonical.master.authorityVersion },
     sourceWrites: { master: false, originalJs: false, database: false, questionIndex: false, commit: false, push: false },
     sourceClassificationDigest: sourceClassification.digest,
     taxonomyDigest: sha256(JSON.stringify(definitions)),
@@ -583,7 +630,7 @@ export function buildCompleteSubunitClassificationV1() {
     },
     gates: {
       allRecordsHaveSubUnitKey: emptySubUnitKeys.length === 0,
-      allSubUnitKeysInTaxonomy: unknownKeys.length === 0,
+      allSubUnitKeysInTaxonomy: emptySubUnitKeys.length === 0 && unknownKeys.length === 0,
       identityUnique: uniqueIds.size === records.length,
       sourceQuestionJoinComplete: questions.size === records.length,
       productionWrites: false

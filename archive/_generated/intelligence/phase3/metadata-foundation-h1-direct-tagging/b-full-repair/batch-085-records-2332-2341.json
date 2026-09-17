@@ -1,0 +1,545 @@
+{
+  "schemaVersion": "h1-direct-tagging-repair-packet-v1",
+  "packetStatus": "FROZEN",
+  "tagger": "B",
+  "independentRead": true,
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "globalRecordRange": {
+    "start": 2332,
+    "end": 2341,
+    "count": 10
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "records": [
+    {
+      "manifestUid": "h1-direct-2284f2aa0e5307f5e1a4a91cdaa8f117",
+      "globalRecord": 2332,
+      "source": {
+        "manifestUid": "h1-direct-2284f2aa0e5307f5e1a4a91cdaa8f117",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 8,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "97ad5c4f2248e93c89150ad3798d2ac30853f6fbdd76f741644ac30a45818811",
+        "contentFingerprint": "db4275fa2caac8a7f6ecf48ccf5c1611210d4cf7bfe84ba7720394e7144984b9"
+      },
+      "sourceEvidence": {
+        "content": "실수 $a$, $b$에 대하여 $a>0$, $b>0$일 때, $(a+b)\\left(\\dfrac2a+\\dfrac2b\\right)$의 최솟값은? [4점]",
+        "choices": [
+          "$5$",
+          "$6$",
+          "$7$",
+          "$8$",
+          "$9$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 식을 전개한 뒤 $\\dfrac{a}{b}+\\dfrac{b}{a}\\ge2$를 이용한다.\n조건 정리: $a>0$, $b>0$이므로 $\\dfrac{a}{b}$와 $\\dfrac{b}{a}$는 모두 양수이다.\n풀이 방향: 곱을 전개하여 두 비의 합이 나타나게 한다.\n정석 풀이: $(a+b)\\left(\\dfrac2a+\\dfrac2b\\right)=2+\\dfrac{2a}{b}+\\dfrac{2b}{a}+2=4+2\\left(\\dfrac{a}{b}+\\dfrac{b}{a}\\right)$이다. $(a-b)^2\\ge0$에서 $a^2+b^2\\ge2ab$이므로 $\\dfrac{a}{b}+\\dfrac{b}{a}\\ge2$이다. 따라서 주어진 식은 $4+2\\cdot2=8$ 이상이고, $a=b$일 때 $8$이 된다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "절대부등식",
+        "L4": "산술·기하평균"
+      },
+      "primaryConcept": {
+        "key": "절대부등식",
+        "path": [
+          "방정식과 부등식",
+          "여러 가지 부등식",
+          "절대부등식",
+          "산술·기하평균"
+        ],
+        "reason": "양의 조건에서 식을 전개하고 산술·기하평균 부등식으로 최솟값과 등호 조건을 판단한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "양의 조건에서 식을 전개하고 산술·기하평균 부등식으로 최솟값과 등호 조건을 판단한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-ab3418c4bb5fe82634aaf1f8aab41ef7",
+      "globalRecord": 2333,
+      "source": {
+        "manifestUid": "h1-direct-ab3418c4bb5fe82634aaf1f8aab41ef7",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 9,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "b220b741dcb914db967074d4c3dba4a8beecb4aa4deecad3e31af2e89916550b",
+        "contentFingerprint": "1877b0ba9aa182c8f37d1492f62fed9580d02917d31717eddc63762a65dce3e2"
+      },
+      "sourceEvidence": {
+        "content": "$y=2x+k$를 $x$축의 방향으로 $1$만큼, $y$축의 방향으로 $-2$만큼 평행이동한 직선이 점 $(3,1)$을 지날 때, 상수 $k$의 값은? [4.2점]",
+        "choices": [
+          "$-9$",
+          "$-5$",
+          "$-1$",
+          "$3$",
+          "$7$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 그래프를 오른쪽으로 $1$, 아래로 $2$만큼 옮기면 식의 $x$에는 $x-1$을 넣고 전체에서 $2$를 뺀다.\n조건 정리: 원래 직선은 $y=2x+k$이다.\n풀이 방향: 평행이동한 직선의 방정식을 만든 뒤 점 $(3,1)$을 대입한다.\n정석 풀이: 평행이동한 직선은 $y=2(x-1)+k-2=2x+k-4$이다. 이 직선이 $(3,1)$을 지나므로 $1=2\\cdot3+k-4$이다. 따라서 $1=2+k$이고 $k=-1$이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q09-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": "도형의 방정식",
+        "L2": "도형의 이동",
+        "L3": "평행이동",
+        "L4": "점·직선의 이동"
+      },
+      "primaryConcept": {
+        "key": "평행이동",
+        "path": [
+          "도형의 방정식",
+          "도형의 이동",
+          "평행이동",
+          "점·직선의 이동"
+        ],
+        "reason": "직선의 x축·y축 평행이동을 식에 반영하고 한 점을 대입한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyEvidence": {
+        "reason": "직선의 x축·y축 평행이동을 식에 반영하고 한 점을 대입한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-bfdddcfc8a12db5b69d561ee546bdd19",
+      "globalRecord": 2334,
+      "source": {
+        "manifestUid": "h1-direct-bfdddcfc8a12db5b69d561ee546bdd19",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 10,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "8977450b7842c483e5dad7bcde3048cb9c6d8e4103ca076e3c71de93f86ce0e3",
+        "contentFingerprint": "1dd07809c7cdb839c103c254086228b7a90a748918e979c074bf0364124b7fc0"
+      },
+      "sourceEvidence": {
+        "content": "전체집합 $U$에 대하여 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라고 하자. $\\sim p\\Rightarrow\\sim q$일 때, 다음 중 항상 옳은 것은? [4.2점]",
+        "choices": [
+          "$P\\subset Q$",
+          "$P-Q=P$",
+          "$Q-P=Q$",
+          "$P\\cap Q=Q$",
+          "$Q^C\\subset P^C$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 조건의 명제가 참이면 두 진리집합 사이에 포함관계가 생긴다.\n조건 정리: $\\sim p$의 진리집합은 $P^C$, $\\sim q$의 진리집합은 $Q^C$이다.\n풀이 방향: 명제 $\\sim p\\Rightarrow\\sim q$를 진리집합의 포함관계로 바꾼다.\n정석 풀이: 명제가 참이므로 $P^C\\subset Q^C$이다. 여집합을 취하면 포함관계의 방향이 바뀌어 $Q\\subset P$이다. 따라서 $P\\cap Q=Q$가 항상 성립한다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "명제와 조건",
+        "L4": "진리집합"
+      },
+      "primaryConcept": {
+        "key": "명제와 조건",
+        "path": [
+          "집합과 명제",
+          "명제",
+          "명제와 조건",
+          "진리집합"
+        ],
+        "reason": "조건명제의 진리집합 포함관계를 대우와 여집합으로 변환한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "조건명제의 진리집합 포함관계를 대우와 여집합으로 변환한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-069388fecc9cbc0c11ddf7ddfbf3e72e",
+      "globalRecord": 2335,
+      "source": {
+        "manifestUid": "h1-direct-069388fecc9cbc0c11ddf7ddfbf3e72e",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 11,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "509ab3825e7d835ee18a433eb7f08ccfeef2169b5df7545661b9ebdaf830a6f3",
+        "contentFingerprint": "94c5d32196ca795bd37694ed7d9398d46f216f00474a49a9dae247f831eec455"
+      },
+      "sourceEvidence": {
+        "content": "전체집합 $U$의 공집합이 아닌 두 부분집합 $A$, $B$에 대하여 $A\\cup(A^C\\cap B)=A$일 때, 다음 중 항상 성립하는 것은? [4.2점]",
+        "choices": [
+          "$A=B$",
+          "$A\\cup B=U$",
+          "$A\\cap B=A$",
+          "$B-A=\\varnothing$",
+          "$A\\cap B=\\varnothing$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 분배법칙으로 왼쪽 집합을 간단히 정리한다.\n조건 정리: $A\\cup(A^C\\cap B)=A$이다.\n풀이 방향: $X\\cup(Y\\cap Z)=(X\\cup Y)\\cap(X\\cup Z)$를 적용한다.\n정석 풀이: $A\\cup(A^C\\cap B)=(A\\cup A^C)\\cap(A\\cup B)=U\\cap(A\\cup B)=A\\cup B$이다. 따라서 조건은 $A\\cup B=A$가 되고, 이는 $B\\subset A$를 뜻한다. 그러므로 $B-A=\\varnothing$이다.\n따라서 정답은 ④이다.",
+        "image": "",
+        "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q11-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "집합의 연산법칙",
+        "L4": "복합 연산"
+      },
+      "primaryConcept": {
+        "key": "집합의 연산법칙",
+        "path": [
+          "집합과 명제",
+          "집합의 연산",
+          "집합의 연산법칙",
+          "복합 연산"
+        ],
+        "reason": "분배법칙과 여집합을 이용해 복합 집합식을 단순화한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "분배법칙과 여집합을 이용해 복합 집합식을 단순화한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-0d121b6b91621b9197b4e248ebd50c99",
+      "globalRecord": 2336,
+      "source": {
+        "manifestUid": "h1-direct-0d121b6b91621b9197b4e248ebd50c99",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 12,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "5ae60fa459b695e21dd7af5fb62144c3d01f7bc1f5a284490cfa13191c258776",
+        "contentFingerprint": "db4062316874aa87838f111e0683dd9edccb910a070b04272a1e8cf553159fc7"
+      },
+      "sourceEvidence": {
+        "content": "세 함수 $f$, $g$, $h$가 $f(x)=-x+1$, $g(x)=3x-2$, $(h\\circ g)(x)=f(x)$를 만족시킬 때, $h(2)$의 값은? [4.2점]",
+        "choices": [
+          "$-\\dfrac13$",
+          "$-\\dfrac12$",
+          "$-1$",
+          "$0$",
+          "$1$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] $h(2)$를 구하려면 먼저 $g(x)=2$가 되는 입력을 찾는다.\n조건 정리: $(h\\circ g)(x)=h(g(x))=f(x)$이고, $f(x)=-x+1$, $g(x)=3x-2$이다.\n풀이 방향: $g(x)=2$를 만족하는 $x$에서 $h(g(x))=f(x)$를 이용한다.\n정석 풀이: $3x-2=2$에서 $x=\\dfrac43$이다. 따라서 $h(2)=h\\left(g\\left(\\dfrac43\\right)\\right)=f\\left(\\dfrac43\\right)=-\\dfrac43+1=-\\dfrac13$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
+      },
+      "primaryConcept": {
+        "key": "합성함수",
+        "path": [
+          "함수",
+          "함수",
+          "합성함수",
+          "합성함수 계산"
+        ],
+        "reason": "합성함수의 입력을 역으로 정해 주어진 함수값을 계산한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyEvidence": {
+        "reason": "합성함수의 입력을 역으로 정해 주어진 함수값을 계산한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-47c776793cfab76f9679d434d24c5299",
+      "globalRecord": 2337,
+      "source": {
+        "manifestUid": "h1-direct-47c776793cfab76f9679d434d24c5299",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 13,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "d829d44ad72d2140e89f115e9e0f978a0b284c5f58f6fc91696c48276e6a60d4",
+        "contentFingerprint": "dc40da6e8c272d616570291888aefcb41818943d9819df0efe1272cfa54421c8"
+      },
+      "sourceEvidence": {
+        "content": "세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 할 때, $P=\\{1,a\\}$, $Q=\\{2,b,b+1\\}$, $R=\\{0,c,2c,3c\\}$이다. $p$는 $q$이기 위한 충분조건이고, $r$은 $q$이기 위한 필요조건이라 할 때, 서로 다른 실수 $a$, $b$, $c$에 대하여 $a+b+c$의 값은? [4.4점]",
+        "choices": [
+          "$1$",
+          "$2$",
+          "$3$",
+          "$4$",
+          "$5$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 충분조건과 필요조건을 진리집합의 포함관계로 바꾸고 가능한 경우를 빠짐없이 확인한다.\n조건 정리: $p$가 $q$이기 위한 충분조건이므로 $P\\subset Q$이고, $r$이 $q$이기 위한 필요조건이므로 $Q\\subset R$이다. 따라서 $P\\subset Q\\subset R$이다.\n풀이 방향: $1\\in P$이므로 $1\\in Q$가 되게 하는 $b$를 나누어 조사한다.\n정석 풀이: $Q=\\{2,b,b+1\\}$에 $1$이 들어가려면 $b=0$ 또는 $b=1$이다. $b=1$이면 $Q=\\{1,2\\}$이고, 서로 다른 조건 때문에 $a=2$이다. 이때 $R$이 $1,2$를 모두 포함하려면 $c=1$이어야 하지만 $b=c$가 되어 조건에 어긋난다. 따라서 $b=0$이다. 그러면 $Q=\\{0,1,2\\}$이다. $P=\\{1,a\\}\\subset Q$이고 $a,b,c$가 서로 달라야 하므로 최종적으로 $a=2$가 되어야 한다. 또한 $Q\\subset R=\\{0,c,2c,3c\\}$에서 $0,1,2$를 모두 포함하려면 $c=1$이다. 실제로 $(a,b,c)=(2,0,1)$은 모든 조건을 만족한다. 따라서 $a+b+c=2+0+1=3$이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "명제",
+        "L3": "필요조건·충분조건",
+        "L4": "조건 관계"
+      },
+      "primaryConcept": {
+        "key": "필요조건·충분조건",
+        "path": [
+          "집합과 명제",
+          "명제",
+          "필요조건·충분조건",
+          "조건 관계"
+        ],
+        "reason": "충분조건·필요조건을 진리집합의 연쇄 포함관계로 바꾸고 매개변수 경우를 배제한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyEvidence": {
+        "reason": "충분조건·필요조건을 진리집합의 연쇄 포함관계로 바꾸고 매개변수 경우를 배제한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-c2de50a42595a67ad2485dcf496b1618",
+      "globalRecord": 2338,
+      "source": {
+        "manifestUid": "h1-direct-c2de50a42595a67ad2485dcf496b1618",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 14,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "8e6f5567102b7341887acc0bf06291456e4dbd372d6a27b86048dfe8fc8b0cf4",
+        "contentFingerprint": "7ef3fe1415caefa36362afcef14937e1ad3faf33002ab4b98cb4baa0a3e40c2e"
+      },
+      "sourceEvidence": {
+        "content": "우리 학교 학생 228명을 대상으로 지난 토요일과 일요일에 야구 경기를 시청한 학생 수를 조사하였다. 토요일에 경기를 시청한 학생은 일요일에 경기를 시청한 학생보다 20명 많았고, 어느 날에도 경기를 시청하지 않은 학생은 적어도 하나 이상의 경기를 시청한 학생보다 172명이 적었다. 토요일에만 경기를 시청한 학생 수의 최댓값은? [4.4점]",
+        "choices": [
+          "$90$",
+          "$100$",
+          "$110$",
+          "$120$",
+          "$130$"
+        ],
+        "answer": "③",
+        "solution": "[키포인트] 적어도 하루 시청한 학생 수를 먼저 구한 뒤 교집합이 음수가 될 수 없다는 조건을 이용한다.\n조건 정리: 전체는 $228$명이고, 적어도 하루 시청한 학생 수와 어느 날도 시청하지 않은 학생 수의 차는 $172$명이다.\n풀이 방향: 합과 차로 합집합의 크기를 구하고, 토요일과 일요일 시청자 수를 문자로 둔다.\n정석 풀이: 적어도 하루 시청한 학생 수를 $u$, 어느 날도 시청하지 않은 학생 수를 $v$라 하면 $u+v=228$, $u-v=172$이다. 두 식을 더하면 $2u=400$이므로 $u=200$이다. 일요일 시청자 수를 $t$라 하면 토요일 시청자 수는 $t+20$이다. 두 날 모두 시청한 학생 수를 $i$라 하면 $(t+20)+t-i=200$이므로 $i=2t-180$이다. $i\\ge0$이므로 $t\\ge90$이다. 토요일에만 시청한 학생 수는 $(t+20)-i=200-t$이므로 $t$가 가장 작은 $90$일 때 최대가 되고, 그 값은 $110$이다.\n따라서 정답은 ③이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "집합의 연산",
+        "L3": "교집합과 합집합",
+        "L4": "원소 개수"
+      },
+      "primaryConcept": {
+        "key": "교집합과 합집합",
+        "path": [
+          "집합과 명제",
+          "집합의 연산",
+          "교집합과 합집합",
+          "원소 개수"
+        ],
+        "reason": "합집합의 크기를 먼저 구하고 포함배제와 음이 아닌 교집합 조건으로 최댓값을 결정한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyEvidence": {
+        "reason": "합집합의 크기를 먼저 구하고 포함배제와 음이 아닌 교집합 조건으로 최댓값을 결정한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-41d29a59a8bc0ea0dd3f6b0c3dfa3891",
+      "globalRecord": 2339,
+      "source": {
+        "manifestUid": "h1-direct-41d29a59a8bc0ea0dd3f6b0c3dfa3891",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 15,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "7c7bafb66be04fd06c4a8bdcf0031b3328f00f74b8d8addcf11525da06723381",
+        "contentFingerprint": "dd64b5be39241be9c8b7ba279f510b3d5492ac71ac1551bd568fd1a2c1997fef"
+      },
+      "sourceEvidence": {
+        "content": "좌표평면에서 방정식 $f(x,y)=0$이 나타내는 도형이 그림과 같을 때, 방정식 $f(y+1,-x-3)=0$이 나타내는 도형은? [4.4점]",
+        "choices": [],
+        "answer": "⑤",
+        "solution": "[키포인트] 새 식의 두 입력을 원래 좌표로 놓고, 원래 도형의 꼭짓점이 어디로 이동하는지 계산한다.\n조건 정리: 원래 도형의 꼭짓점은 $(1,-3)$, $(4,-3)$, $(4,0)$이다.\n풀이 방향: $u=y+1$, $v=-x-3$으로 놓아 원래 좌표 $(u,v)$와 새 좌표 $(x,y)$의 관계를 구한다.\n정석 풀이: $u=y+1$, $v=-x-3$에서 $x=-v-3$, $y=u-1$이다. 따라서 원래 점 $(u,v)$는 새 좌표 $(-v-3,\\,u-1)$로 옮겨진다. $(1,-3)$은 $(0,0)$으로, $(4,-3)$은 $(0,3)$으로, $(4,0)$은 $(-3,3)$으로 옮겨진다. 그러므로 새 도형은 제2사분면에 있고 꼭짓점이 $(0,0)$, $(0,3)$, $(-3,3)$인 삼각형이다.\n따라서 정답은 ⑤이다.",
+        "image": "assets/images/24_금당고_2학기_중간_고1_기출/q15.png",
+        "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q15-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": "도형의 방정식",
+        "L2": "도형의 이동",
+        "L3": "이동의 합성",
+        "L4": "연속 이동"
+      },
+      "primaryConcept": {
+        "key": "이동의 합성",
+        "path": [
+          "도형의 방정식",
+          "도형의 이동",
+          "이동의 합성",
+          "연속 이동"
+        ],
+        "reason": "좌표 치환으로 원래 도형의 꼭짓점을 새 좌표로 옮겨 회전·이동이 합성된 도형을 판별한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyEvidence": {
+        "reason": "좌표 치환으로 원래 도형의 꼭짓점을 새 좌표로 옮겨 회전·이동이 합성된 도형을 판별한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-6de49b79797ca48ed21faccd2728085c",
+      "globalRecord": 2340,
+      "source": {
+        "manifestUid": "h1-direct-6de49b79797ca48ed21faccd2728085c",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 16,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "78174ccea967f8009c0f732f06cbc0377d6053699cf90756c7d559885d182a90",
+        "contentFingerprint": "3902a19e1a65dbefdd6ceb247fbd4de4381a010c8f20da7bdbb3c9aa06f3ffa2"
+      },
+      "sourceEvidence": {
+        "content": "그림과 같은 사각형 $ABCD$에서 삼각형 $OAB$, 삼각형 $OCD$의 넓이를 각각 $16$, $9$라 할 때, 사각형 $ABCD$의 넓이의 최솟값은? [4.6점]",
+        "choices": [
+          "$36$",
+          "$40$",
+          "$45$",
+          "$49$",
+          "$50$"
+        ],
+        "answer": "④",
+        "solution": "[키포인트] 대각선의 교점 주위 네 삼각형에서는 서로 마주 보는 두 넓이의 곱이 같다.\n조건 정리: $[OAB]=16$, $[OCD]=9$이고, 나머지 두 삼각형의 넓이를 $[OBC]=x$, $[ODA]=y$라 하자.\n풀이 방향: 같은 높이를 갖는 삼각형의 넓이비로 $xy$를 구한 뒤 $x+y$의 최솟값을 구한다.\n정석 풀이: 삼각형 $OAB$와 $OBC$는 꼭짓점 $B$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{x}{16}=\\dfrac{OC}{OA}$이다. 삼각형 $ODA$와 $OCD$는 꼭짓점 $D$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{9}{y}=\\dfrac{OC}{OA}$이다. 따라서 $\\dfrac{x}{16}=\\dfrac9y$이고 $xy=144$이다. 사각형의 넓이는 $16+9+x+y=25+x+y$이다. $(x-y)^2\\ge0$에서 $x+y\\ge2\\sqrt{xy}=24$이므로 전체 넓이는 $49$ 이상이다. $x=y=12$일 때 등호가 성립할 수 있으므로 최솟값은 $49$이다.\n따라서 정답은 ④이다.",
+        "image": "assets/images/24_금당고_2학기_중간_고1_기출/q16.png",
+        "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q16-solution.svg"
+      },
+      "canonical": {
+        "scope": "수학_상",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "삼각형의 무게중심",
+        "L4": "좌표 도형 활용"
+      },
+      "primaryConcept": {
+        "key": "삼각형의 무게중심",
+        "path": [
+          "도형의 방정식",
+          "평면좌표",
+          "삼각형의 무게중심",
+          "좌표 도형 활용"
+        ],
+        "reason": "대각선 교점이 만드는 네 삼각형의 넓이비를 이용해 마주 보는 넓이의 곱을 고정하고 합의 최솟값을 구한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyEvidence": {
+        "reason": "대각선 교점이 만드는 네 삼각형의 넓이비를 이용해 마주 보는 넓이의 곱을 고정하고 합의 최솟값을 구한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    },
+    {
+      "manifestUid": "h1-direct-5800e5acb73c0cf2e383081ebb413034",
+      "globalRecord": 2341,
+      "source": {
+        "manifestUid": "h1-direct-5800e5acb73c0cf2e383081ebb413034",
+        "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+        "sourceOrdinal": 17,
+        "curriculumKey": "2015",
+        "sourceFingerprint": "2209c79a2f97088dbd2b3574784f264019a5e1d046a3340e825537c562e159c6",
+        "contentFingerprint": "ec6f4dbbb00d086961fddd27cbf3e291311e546907f203531e33ed8be2ff8224"
+      },
+      "sourceEvidence": {
+        "content": "$1$보다 큰 자연수 $k$에 대하여 전체집합 $U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{x\\mid x$는 $k$ 이하의 홀수$\\}$, $B=\\{x\\mid x$는 $k$의 약수$\\}$가 $n(A)\\times n((A\\cup B)^C)=15$를 만족시킨다. 집합 $(A\\cup B)^C$의 모든 원소의 합은? [4.6점]",
+        "choices": [
+          "$18$",
+          "$16$",
+          "$14$",
+          "$12$",
+          "$10$"
+        ],
+        "answer": "①",
+        "solution": "[키포인트] $A$의 원소 수가 $15$의 약수여야 한다는 점을 이용해 가능한 $k$를 좁힌다.\n조건 정리: $A$는 $k$ 이하의 홀수의 집합이고, $(A\\cup B)^C$는 $k$ 이하의 자연수 중 홀수도 아니고 $k$의 약수도 아닌 수의 집합이다.\n풀이 방향: $n(A)\\times n((A\\cup B)^C)=15$에서 가능한 $n(A)$를 조사한다.\n정석 풀이: $n(A)$는 $15$의 양의 약수인 $1,3,5,15$ 중 하나이다. $n(A)=1$이면 $k=2$이고 여집합의 원소가 없어 곱이 $15$가 아니다. $n(A)=3$이면 $k=5$ 또는 $6$인데 여집합의 원소 수는 각각 $2$, $1$이므로 곱은 $6$ 또는 $3$이다. $n(A)=5$이면 $k=9$ 또는 $10$이다. $k=9$에서는 여집합이 $\\{2,4,6,8\\}$로 $4$개여서 곱이 $20$이다. $k=10$에서는 $A=\\{1,3,5,7,9\\}$, $B=\\{1,2,5,10\\}$이고 $(A\\cup B)^C=\\{4,6,8\\}$로 $3$개이므로 곱이 $15$이다. $n(A)=15$이면 $k=29$ 또는 $30$이고 여집합의 원소가 하나보다 많아 곱이 $15$가 될 수 없다. 따라서 $k=10$이고 여집합 원소의 합은 $4+6+8=18$이다.\n따라서 정답은 ①이다.",
+        "image": "",
+        "solutionImage": ""
+      },
+      "canonical": {
+        "scope": "수학_하",
+        "L1": "집합과 명제",
+        "L2": "집합의 뜻과 포함 관계",
+        "L3": "집합과 원소",
+        "L4": "유한집합 원소 개수"
+      },
+      "primaryConcept": {
+        "key": "집합과 원소",
+        "path": [
+          "집합과 명제",
+          "집합의 뜻과 포함 관계",
+          "집합과 원소",
+          "유한집합 원소 개수"
+        ],
+        "reason": "홀수 집합과 약수 집합의 합집합 여집합 원소 수 조건으로 k를 유한하게 추려 원소의 합을 계산한다."
+      },
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyEvidence": {
+        "reason": "홀수 집합과 약수 집합의 합집합 여집합 원소 수 조건으로 k를 유한하게 추려 원소의 합을 계산한다.",
+        "sourceBased": true
+      },
+      "status": "B_CHECKED",
+      "reviewStatus": "reviewed_pass",
+      "tagStatus": "DIRECT_TAGGED",
+      "sourceMetadataVerification": "INDEPENDENT_SEMANTIC_VERIFIED"
+    }
+  ]
+}
+

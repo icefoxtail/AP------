@@ -1,0 +1,647 @@
+{
+  "schemaVersion": "h1-direct-tagging-a-packet-v1",
+  "role": "A_PRIMARY_TAGGER",
+  "batchId": "batch-022",
+  "manifestRange": {
+    "zeroBasedStart": 525,
+    "zeroBasedEnd": 549,
+    "oneBasedStart": 526,
+    "oneBasedEnd": 550
+  },
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "sourceManifestSha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09",
+  "canonicalAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalAuthoritySha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfc8384c367bf",
+  "semanticPreGate": {
+    "status": "PASS",
+    "directReadCompleted": true,
+    "allowedInputs": [
+      "source_manifest.content",
+      "source_manifest.choices",
+      "source_manifest.answer",
+      "source_manifest.solution",
+      "source_manifest.image",
+      "source_manifest.solutionImage",
+      "canonical authority"
+    ],
+    "forbiddenInputsRead": false,
+    "canonicalRevisionLocked": true
+  },
+  "packetStatus": "COMPLETE",
+  "records": [
+    {
+      "source": {
+        "manifestUid": "h1-direct-9096369e42de47eb57ca635e248d0406",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "c6e38a12f13157b15779ad9c54b2574a8c3a74519a988359d3345e887a60d112",
+        "contentFingerprint": "81012d4148ac452c5e5f128de91c476580cc89c790a7d4190fbc119c5baef136"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식",
+        "L4": "근의 위치와 해",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해",
+        "valid": true
+      },
+      "primaryConcept": "이차부등식의 정수해 개수",
+      "primaryConceptReason": "x²-7x+10을 인수분해해 2<x<5의 정수 3,4를 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "인수분해와 열린 구간의 정수 열거만 필요하다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-6be3ae2b7dea15ce88a18fc2d3152bf6",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "6ce3006b76017243d485e8d6ea75977f98c71b48ce7b2bf71fb2e392ee48ba25",
+        "contentFingerprint": "c64c5c2dfc9a0ae229d8a04ed8bd03a031ba90f99411d25b7583bddedab4d5af"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "합·곱의 법칙",
+        "L4": "경우를 나누어 세기",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|합·곱의 법칙|경우를 나누어 세기",
+        "valid": true
+      },
+      "primaryConcept": "두 주사위 눈 차 4 이상 경우 분할",
+      "primaryConceptReason": "절댓값 차가 4와 5인 배타적 경우의 순서쌍을 세어 더한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "가능한 차를 두 경우로 나눠 순서쌍을 열거한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-373292030f12f5550fdb6ef451cafffb",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 4,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "089c977298821083a0c69ac39eec40cdd5710154b8084a40eccb60373da8b27c",
+        "contentFingerprint": "d1323e75066fe982507492a4c91689d72a55dddd544e2021f5ff5d225b106d82"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|순열|일렬 배열",
+        "valid": true
+      },
+      "primaryConcept": "nPn과 팩토리얼",
+      "primaryConceptReason": "n개의 대상을 모두 배열하는 순열 nPn=n!을 적용해 n=6을 얻는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "순열 정의와 6!=720의 확인이다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-0e015a563b0797fe927a71f025d2d9ba",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 5,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "dcf6bd64f9a2d577faee168faf5465f0faf8597e5c449f8ac5f2e8de3a770b63",
+        "contentFingerprint": "2766682e6d276dffb340752eb4ace11404ae9b1d8710e4dc9e7fe587882cc6c7"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 뜻",
+        "L4": "같은 행렬",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 뜻|같은 행렬",
+        "valid": true
+      },
+      "primaryConcept": "같은 행렬의 대응 성분",
+      "primaryConceptReason": "A=B에서 대응하는 대각 성분 x=-2,y=2를 읽어 합을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "같은 행렬의 성분 비교만 필요하다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-432f40a1fb56ac5bc725e552e2695d21",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 6,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "b1349dfe424eddef1c60e2e0b417a556c5202e7db1b243552e889a9251bad2be",
+        "contentFingerprint": "863bd6e03f17412ac065499f43669f097161716da29212b36094595c51f4a4bb"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 연산",
+        "L4": "덧셈·뺄셈·실수배",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 연산|덧셈·뺄셈·실수배",
+        "valid": true
+      },
+      "primaryConcept": "행렬의 실수배",
+      "primaryConceptReason": "3×2 행렬의 모든 성분에 -2를 곱해 -2A를 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "각 성분에 동일한 실수를 곱한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-0338aa3027352d1e280cccb9649bf68b",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "c84190af1658aa80b0f4bfb6a5d044b88b0f74ff62266c73b0fea78233d13eff",
+        "contentFingerprint": "277885a8181db34c92682738556140699c2acf66b23c299eeee38f798499441c"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "절댓값 부등식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|CANONICAL_NO_FIT|절댓값 부등식",
+        "valid": false
+      },
+      "primaryConcept": "절댓값 부등식과 정수해 개수",
+      "primaryConceptReason": "|2x-1|≥3의 두 구간과 0≤x<a를 교집합해 정수 6개 조건을 만든다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "절댓값 부등식의 바깥 해와 매개 상한의 정수 경계를 결합한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "piecewise_condition"
+      ],
+      "decisiveSolutionStep": "x≤-1 또는 x≥2와 0≤x<a의 교집합은 2≤x<a이고 2,3,4,5,6,7을 포함하려면 7<a≤8이다.",
+      "rejectedAlternativeConcepts": [
+        "절대부등식: canonical L4는 산술·기하평균·코시형이며 절댓값 구간해가 아니다"
+      ],
+      "taxonomyReason": "절댓값 부등식의 구간분할·정수 개수 L4가 canonical에 없다.",
+      "statusReason": "반복 가능한 절댓값 부등식 core를 source와 직접 검증한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-f7dec04d16259b22721e1554e7fd3ebb",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 8,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "f6d310e09710991389dd0ba874b7b53d526f11b79c2b53db0ba89a37e4f1b365",
+        "contentFingerprint": "1b37412597d0057fe56d8bf5e3fedbc1049b38a1d4fc28835e40f48e74eed292"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "부등식의 활용",
+        "L4": "계수 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|부등식의 활용|계수 조건",
+        "valid": true
+      },
+      "primaryConcept": "전구간 연립부등식의 매개변수 조건",
+      "primaryConceptReason": "연쇄 부등식을 두 식으로 분리해 각각 전구간 성립 조건을 얻고 a의 범위를 교집합한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|최대·최소|조건식 활용"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "일차 소거와 이차식의 판별식 조건을 동시에 만족시킨다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "1≤-a로 a≤-1, x²-2x+a+5≥0 전구간으로 a≥-4를 얻어 [-4,-1]의 곱 4를 구한다.",
+      "rejectedAlternativeConcepts": [
+        "최대·최소: 극값 계산이 아니라 모든 실수에서 성립하는 계수 조건이다"
+      ],
+      "taxonomyReason": "모든 실수 x 조건에 대한 매개변수 계수 제한이 primary다.",
+      "statusReason": "두 부등식의 전구간 조건과 범위를 직접 확인했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-e71782c9f170833e339f095b56b5e344",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 9,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "8d47727ba697040b8000ad502472746db992bbc694cf3bb1482a28bd8d25b07c",
+        "contentFingerprint": "f5ed781476cf3829a022b889bcfae2b933b15e7c551ab990515d305379acfb6a"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식",
+        "L3": "근과 계수의 관계",
+        "L4": "근의 합·곱",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식|근과 계수의 관계|근의 합·곱",
+        "valid": true
+      },
+      "primaryConcept": "주어진 근으로 계수 복원 후 정수해",
+      "primaryConceptReason": "해 구간의 경계 -1,4를 근으로 읽어 a,b를 복원하고 두 번째 이차부등식의 정수를 센다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "근과 계수 관계로 매개변수를 복원한 뒤 새 부등식을 푼다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "(x+1)(x-4)에서 a=7,b=-3을 얻어 -3x²+7x+6≥0의 정수 0,1,2,3을 합한다.",
+      "rejectedAlternativeConcepts": [
+        "이차부등식: 두 번째 계산은 보조이고 주어진 해 경계에서 계수를 복원하는 것이 핵심이다"
+      ],
+      "taxonomyReason": "첫 조건이 근과 계수 관계를 통해 두 매개변수를 결정한다.",
+      "statusReason": "source의 경계근 비교와 정수해 합을 직접 검산했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-5ccbc45a9bac5c68a75ee89a051f0f09",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 10,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "e0382bbe482d6ca93f1a18e06ec2590aa1803fefd41feac9cf33618003238c30",
+        "contentFingerprint": "e64e0972b2eb35ea401117952e914d5c89017f6532f7fac3080bf95fa463c74a"
+      },
+      "canonical": {
+        "scope": "공통수학2",
+        "L1": "도형의 방정식",
+        "L2": "평면좌표",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "삼각형 예각 조건",
+        "canonicalPathKey": "2022|high|공통수학2|도형의 방정식|평면좌표|CANONICAL_NO_FIT|삼각형 예각 조건",
+        "valid": false
+      },
+      "primaryConcept": "변 길이식으로 예각삼각형 조건",
+      "primaryConceptReason": "세 변의 양수·삼각형 결정 조건과 가장 긴 변의 제곱 부등식을 함께 적용한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "변의 순서와 삼각형 조건을 먼저 확정한 뒤 예각 판정 부등식을 푼다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4",
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "4x+1을 최장변으로 두고 x>1과 x>4를 교집합해 x>4를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "이차부등식: 제곱 부등식은 삼각형의 기하 조건을 판정하는 도구다"
+      ],
+      "taxonomyReason": "도형의 방정식 canonical에 변 길이식의 예각삼각형 판정 L4가 없다.",
+      "statusReason": "반복 가능한 side-inequality acute-triangle core를 직접 확인한 no-fit이다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-c5c0010c02258a2d30ee363a291f502d",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 11,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "01c6ef8e73a45bb924cba825caeb50586c07a8d978d7986c22c96d73a6cc9585",
+        "contentFingerprint": "2311cde6fdbab22611f83fdb4de923d74af9b6db2cd5fa6cd9b76c7f20b6188c"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|순열|특정 조건 배열",
+        "valid": true
+      },
+      "primaryConcept": "양끝 여학생 배열과 n 결정",
+      "primaryConceptReason": "양끝에 설 여학생 2명을 순열로 배치하고 가운데 n+2명을 배열해 1440 조건을 푼다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "4P2와 (n+2)!의 곱을 1440과 비교한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-3e8568f8e89a55e24ef5d53b2b60ac4f",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 12,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "fe658cb54c483f6547a05d3ae768dc034ef9866894bf9d5fe722f8d2cec0cfa4",
+        "contentFingerprint": "bccdcdff684e017989e0cc6dc733c92960cdc3a114cb92ac53d9d84c06d8dcc9"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "특정 조건 배열",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|순열|특정 조건 배열",
+        "valid": true
+      },
+      "primaryConcept": "사전식 순열의 순위",
+      "primaryConceptReason": "stone보다 앞서는 첫 문자·둘째 문자 블록의 순열 수를 누적해 96번째를 찾는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "사전식 블록을 4!,3!,2!로 나누어 누적한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-33779b05671353b8d329bbc091f2b87a",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 13,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "a1611dc1e0401e1408587861c77b008400b94ce981970e4d4666f2d895d6696b",
+        "contentFingerprint": "91930f97e8aeb1b3a78ed65860caac6727e731fba386b736cf3fba9981d53cfb"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "조합",
+        "L3": "조합의 뜻과 계산",
+        "L4": "조합 계산",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|조합|조합의 뜻과 계산|조합 계산",
+        "valid": true
+      },
+      "primaryConcept": "조합 대칭성으로 순서쌍 수 결정",
+      "primaryConceptReason": "x<y이면 C(n,x)=C(n,y)의 대칭으로 x+y=n을 얻고 정확히 한 쌍인 n=3,4를 찾는다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "조합 대칭성과 자연수의 분할 개수를 결합한다.",
+      "status": "DIRECT_TAGGED"
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-3628ecb8503ae7158bfed0a6c94ae24c",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 14,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "38642e0ec8a92d64989c0a48456386c75c8bb71433a4d535e20e92bf8cba8313",
+        "contentFingerprint": "a1a82d6b522372fa8d97bec526aeb345b126919cf3110cda4a98be91fe844c6e"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 연산",
+        "L4": "행렬의 곱셈",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 연산|행렬의 곱셈",
+        "valid": true
+      },
+      "primaryConcept": "이익 계산 행렬곱",
+      "primaryConceptReason": "원가·판매가 행렬과 상·하반기 판매량 행렬의 하반기 열을 곱해 d-b로 이익을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "표의 행·열 의미를 행렬곱 성분과 연결해 해석한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "table_dependent"
+      ],
+      "decisiveSolutionStep": "PQ의 (1,2)=하반기 원가 총합 b, (2,2)=하반기 판매액 총합 d이므로 이익은 d-b이다.",
+      "rejectedAlternativeConcepts": [
+        "행렬의 뜻: 단순 성분 읽기가 아니라 가격·수량의 곱셈 해석이 핵심이다"
+      ],
+      "taxonomyReason": "문항이 명시한 계산과 해석은 행렬곱에 직접 대응한다.",
+      "statusReason": "두 표와 P,Q의 열 의미를 직접 대조했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-07159aa634e59c3a068b7d0f4042c2aa",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 15,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "72e2e3bb33dc5358dfdd8b47970b9d75d9902ff65f9ccca8581b921345808c8d",
+        "contentFingerprint": "0e7c66c257703439af03ba543d3eb14c5ad0263f1ae508a2e11c0a9441b32776"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 연산",
+        "L4": "행렬의 곱셈",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 연산|행렬의 곱셈",
+        "valid": true
+      },
+      "primaryConcept": "행렬 등식에서 대칭식 추출",
+      "primaryConceptReason": "행렬곱과 우변 합을 계산해 x+y=-5, x²+y²=17을 얻고 x<y로 값을 결정한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|이차방정식|근과 계수의 관계|근의 합·곱"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "행렬곱 성분 비교 뒤 두 변수의 근과 계수 관계를 연결한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "x+y=-5, x²+y²=17에서 xy=4, {x,y}={-4,-1}; x<y로 -2x+3y=5이다.",
+      "rejectedAlternativeConcepts": [
+        "근의 합·곱: 최종 변수 결정 도구이고 source 구조는 행렬 등식이다"
+      ],
+      "taxonomyReason": "식의 출발 구조와 핵심 전개는 행렬곱 및 대응 성분 비교다.",
+      "statusReason": "좌우 행렬을 직접 곱·합해 solution의 x,y를 재검증했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-ce4473930fff1595492ef6dfc295f657",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 16,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "6f660964464005b699655808acc55bdc826bde816701acf86960792c95654c1b",
+        "contentFingerprint": "ce6f4f3f13409af2e32438211c41eaf5e561983d2a063f364d717cfe18f1c885"
+      },
+      "canonical": {"scope":"공통수학1","L1":"방정식과 부등식","L2":"여러 가지 부등식","L3":"부등식의 활용","L4":"계수 조건","canonicalPathKey":"2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|부등식의 활용|계수 조건","valid":true},
+      "primaryConcept":"반직선 해를 만드는 매개변수 조건",
+      "primaryConceptReason":"a=-1/3을 대입해 두 부등식의 교집합이 x<p 꼴이 되도록 b를 정하고 경계를 계산한다.",
+      "secondaryConceptKeys":["2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해"],
+      "difficultyBucket":5,
+      "difficultyReason":"이차부등식의 바깥 해와 일차부등식의 교집합 형태를 역으로 제한한다.",
+      "status":"DIRECT_TAGGED",
+      "riskFlags":["parameter_condition","difficulty_5","compound_concept"],
+      "decisiveSolutionStep":"두 번째 식의 이차항을 0으로 만드는 b=1/3을 얻고 x²-3>0과 x<1/3의 교집합 x<-√3에서 p=-√3을 얻는다.",
+      "rejectedAlternativeConcepts":["연립일차부등식: 첫 식은 이차부등식이며 차수 소거 조건이 핵심이다"],
+      "taxonomyReason":"매개변수로 부등식의 해 형태를 지정하는 계수 조건 유형이다.",
+      "statusReason":"source의 b 결정과 두 해집합 교집합을 직접 검산했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-ce0e0b7c6ac56889e8700fa163c59146",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 17,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "854618d894947eff899a9d9e9f1e5e495fbb2e29c6dc6a0e69406ddf4c35ac2a",
+        "contentFingerprint": "9f78ce1093bcd6b70270a09415225c73b5ee8c9123e94913c12da7d1c0d6ba00"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|순열|CANONICAL_NO_FIT|완전순열",
+        "valid": false
+      },
+      "primaryConcept": "완전순열과 고정점 2개",
+      "primaryConceptReason": "6명 중 고정점 2명을 선택하고 남은 4명의 교란순열 D4=9를 곱한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|경우의 수|조합|조합의 뜻과 계산|조합 계산"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "고정점 선택과 4개 완전순열을 결합한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4"
+      ],
+      "decisiveSolutionStep": "C(6,2)·D4=15·9=135이다.",
+      "rejectedAlternativeConcepts": [
+        "특정 조건 배열: 완전순열이라는 별도 반복 core를 특정하지 못한다"
+      ],
+      "taxonomyReason": "순열 canonical에는 일렬·특정 조건 배열은 있으나 derangement/완전순열 L4가 없다.",
+      "statusReason": "반복 가능한 derangement core를 직접 계산한 canonical no-fit이다."
+    },
+    {"source":{"manifestUid":"h1-direct-eed945a85d2ea6d3073bb4d4d31a2e5d","sourceArchiveFile":"original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js","sourceOrdinal":18,"curriculumKey":"2022","sourceFingerprint":"b9379f6b62dc686fcf26eadcc6bbab5af35a88fcb0f9992278d5c0544ea5149b","contentFingerprint":"71b7aa1b6b12b22ecb7d2c6dd2fdcfe6f2b34553566ca39c7f7bcfff147728de"},"canonical":{"scope":"공통수학1","L1":"경우의 수","L2":"조합","L3":"CANONICAL_NO_FIT","L4":"계단형 격자 직사각형 수","canonicalPathKey":"2022|high|공통수학1|경우의 수|조합|CANONICAL_NO_FIT|계단형 격자 직사각형 수","valid":false},"primaryConcept":"계단형 도형의 비정사각형 직사각형 수","primaryConceptReason":"q18.png의 계단형 10칸을 포함-배제로 나눠 전체 직사각형에서 정사각형을 뺀다.","secondaryConceptKeys":[],"difficultyBucket":5,"difficultyReason":"불규칙 격자 도형의 영역 분할·포함배제와 정사각형 중복 제거를 결합한다.","status":"FOUNDATION_DEFECT_CANDIDATE","riskFlags":["canonical_no_fit","image_dependent","difficulty_5"],"decisiveSolutionStep":"세 영역 포함배제로 전체 36개, 정사각형 13개를 얻어 23개를 계산한다.","rejectedAlternativeConcepts":["조합 계산: 선·영역 선택은 도구이며 계단형 도형의 직사각형 열거 L4가 없다"],"taxonomyReason":"canonical 경우의 수에 불규칙 격자에서 직사각형을 세는 L4가 없다.","statusReason":"q18.png의 2·3·5 계단 구조와 solution 계산을 직접 확인한 no-fit이다."},
+    {"source":{"manifestUid":"h1-direct-001d995fe5041ccc8fec7a28e23f9444","sourceArchiveFile":"original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js","sourceOrdinal":19,"curriculumKey":"2022","sourceFingerprint":"3caca9ed97f8d6119a98f2e73bb455ea104d23ab524249881dfacaa5f5e0977d","contentFingerprint":"15535cd23d32ba12dc770aecbd61c31be01e68ee3ed7cc3407f5adb674f7842f"},"canonical":{"scope":"공통수학1","L1":"행렬","L2":"행렬","L3":"CANONICAL_NO_FIT","L4":"행렬·복소수 대응 거듭제곱","canonicalPathKey":"2022|high|공통수학1|행렬|행렬|CANONICAL_NO_FIT|행렬·복소수 대응 거듭제곱","valid":false},"primaryConcept":"행렬을 복소수로 대응한 고차 거듭제곱","primaryConceptReason":"특수한 2×2 행렬을 복소수로 대응해 100·200제곱의 주기성을 계산한다.","secondaryConceptKeys":["2022|high|공통수학1|방정식과 부등식|복소수|복소수의 연산|켤레복소수"],"difficultyBucket":5,"difficultyReason":"행렬-복소수 동형 대응과 복소수 거듭제곱 주기를 연쇄한다.","status":"FOUNDATION_DEFECT_CANDIDATE","riskFlags":["canonical_no_fit","difficulty_5","compound_concept"],"decisiveSolutionStep":"X-J,Y를 복소수 w,v로 옮겨 w³=-i,v³=i를 이용해 곱이 1, 대응 행렬 성분합 2를 얻는다.","rejectedAlternativeConcepts":["행렬의 곱셈: 보기의 대응 규칙은 도구이고 행렬·복소수 혼합 거듭제곱 유형은 없다"],"taxonomyReason":"행렬 canonical과 복소수 canonical 어느 쪽에도 두 체계의 대응을 이용한 고차 거듭제곱 L4가 없다.","statusReason":"source의 대응표와 거듭제곱 계산을 직접 검산한 반복 가능한 no-fit이다."},
+    {"source":{"manifestUid":"h1-direct-3e7641b40cd484cb3debf673c554019b","sourceArchiveFile":"original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js","sourceOrdinal":20,"curriculumKey":"2022","sourceFingerprint":"f0dbd73682a7e543a1437eeab60b599c66919148c35dac5b0025bb216ea76eb0","contentFingerprint":"81428f7aa529230cd1802c8bf937931c205a29a409594ad6f66bc1d61400bed3"},"canonical":{"scope":"공통수학1","L1":"방정식과 부등식","L2":"여러 가지 부등식","L3":"부등식의 활용","L4":"계수 조건","canonicalPathKey":"2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|부등식의 활용|계수 조건","valid":true},"primaryConcept":"이차부등식 판별식 계수 조건","primaryConceptReason":"판별식 D(k)를 구하고 부등식의 해가 한 개·전 실수라는 부호 조건을 나눠 k를 결정한다.","secondaryConceptKeys":["2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|그래프와 근|판별식과 위치"],"difficultyBucket":3,"difficultyReason":"같은 이차식에 대해 D=0과 D≤0을 각각 적용한다.","status":"DIRECT_TAGGED","riskFlags":["parameter_condition","compound_concept"],"decisiveSolutionStep":"D/4=4(k+2)(k-1)에서 (2)는 k=-2,1, (3)은 -2≤k≤1을 얻는다.","rejectedAlternativeConcepts":["그래프와 근: 판별식 해석은 보조이고 최종은 부등식 계수 조건이다"],"taxonomyReason":"매개변수에 따른 이차부등식의 해 형태를 판별식으로 제한한다.","statusReason":"세 소문항의 판별식과 부호 조건을 직접 확인했다."},
+    {"source":{"manifestUid":"h1-direct-de482e58b7e70f8773abc697eb41ef39","sourceArchiveFile":"original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js","sourceOrdinal":21,"curriculumKey":"2022","sourceFingerprint":"9ffbe7609e16026c036e235dbd287409a2ae3212844c1cfbd68edd91e035f9c8","contentFingerprint":"1bef875571a3e76aaa5466902b354d62fabb4e7359c6a1279a2046710052773e"},"canonical":{"scope":"공통수학1","L1":"방정식과 부등식","L2":"여러 가지 부등식","L3":"CANONICAL_NO_FIT","L4":"절댓값 부등식","canonicalPathKey":"2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|CANONICAL_NO_FIT|절댓값 부등식","valid":false},"primaryConcept":"절댓값 합 부등식의 구간해","primaryConceptReason":"절댓값 기준점 -1과 2에서 세 구간으로 나누어 바깥쪽 해를 구한다.","secondaryConceptKeys":[],"difficultyBucket":3,"difficultyReason":"두 절댓값 항의 부호분할과 구간 교집합만 필요하다.","status":"FOUNDATION_DEFECT_CANDIDATE","riskFlags":["canonical_no_fit","piecewise_condition"],"decisiveSolutionStep":"x<-1, -1≤x<2, x≥2를 나눠 x≤-3 또는 x≥3을 얻는다.","rejectedAlternativeConcepts":["절대부등식: canonical L4의 평균·코시형과 다른 절댓값 합 구간해다"],"taxonomyReason":"절댓값 합 부등식의 구간분할 L4가 canonical에 없다.","statusReason":"반복 가능한 absolute-sum inequality core를 직접 확인한 no-fit이다."},
+    {"source":{"manifestUid":"h1-direct-e6b6090ff8a5d556edf1f4b53c484afe","sourceArchiveFile":"original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js","sourceOrdinal":22,"curriculumKey":"2022","sourceFingerprint":"62261d874d8c36bc75305142854a531c4193c9773ae948291c0e730d751f5a86","contentFingerprint":"592f1da8d9067c604bf70c7bf0437501ae6fbddc4c98065062d1b99e3f1fe433"},"canonical":{"scope":"공통수학1","L1":"경우의 수","L2":"조합","L3":"조합의 뜻과 계산","L4":"순열과 조합 구별","canonicalPathKey":"2022|high|공통수학1|경우의 수|조합|조합의 뜻과 계산|순열과 조합 구별","valid":true},"primaryConcept":"서로 다른 공의 상자 배치와 순열·조합 구별","primaryConceptReason":"서로 다른 공은 6P3, 같은 공은 상자 6C3으로 세어 순서 고려 여부를 비교한다.","secondaryConceptKeys":["2022|high|공통수학1|경우의 수|경우의 수와 순열|순열|일렬 배열"],"difficultyBucket":3,"difficultyReason":"동일한 상자 조건에서 대상의 구별 여부에 따른 두 계산을 비교한다.","status":"DIRECT_TAGGED","riskFlags":["compound_concept"]},
+    {
+      "source": {
+        "manifestUid": "h1-direct-eab8d8bf997b1e774b0ad4b006985814",
+        "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 23,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "79cca7b16ad1a771048a1337ccc86e4026901840b018fde055fee8d7c1850b73",
+        "contentFingerprint": "3ffb469d8803d10cfa720dfbea026105d37b7ad6b84177c63dae3c0dc8ea41ab"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 성질",
+        "L4": "조건을 만족하는 행렬",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 성질|조건을 만족하는 행렬",
+        "valid": true
+      },
+      "primaryConcept": "행렬 다항식 계산",
+      "primaryConceptReason": "A²,A³을 직접 구해 A³+2A²-A+E의 각 성분을 합산한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|행렬|행렬|행렬의 연산|행렬의 곱셈"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "행렬 거듭제곱 두 단계와 선형결합을 순서대로 계산한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "A²=[[1,8],[0,9]], A³=[[1,26],[0,27]]을 대입해 B=[[3,40],[0,43]]을 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "행렬의 곱셈: 반복 곱은 도구이고 다항식 조건의 결과 계산이 primary다"
+      ],
+      "taxonomyReason": "고정된 행렬 다항식의 값을 계산하는 조건형 행렬 문제로 직접 대응했다.",
+      "statusReason": "source의 A²,A³와 B 성분을 직접 재계산했다."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-e8a3c3a9903e8a0d28d3c687b0e175a6",
+        "sourceArchiveFile": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 1,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "5ce19938805dcb1b2c182d3ad3996d473caccb3523008239fdc0bc88822bca1b",
+        "contentFingerprint": "674ae91757e552e99c18f4d888773326d2ca195fddae30ed89c058111361d0cb"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "직선과 포물선",
+        "L4": "접선 조건",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|직선과 포물선|접선 조건",
+        "valid": true
+      },
+      "primaryConcept": "포물선의 x축 접선 매개값",
+      "primaryConceptReason": "이차함수의 x축 접선은 방정식의 중근 조건이므로 판별식 D=0을 푼다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "판별식이 0인 두 매개값을 합한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-f32d26daa791cc15128b80149d7f3228",
+        "sourceArchiveFile": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "48965a430d84c651003e2e515a05cd3b28b4f9fdeb42b2d2529521aeb632b70c",
+        "contentFingerprint": "a5451554f2a400dded5902c1e6bac8741fce49fa54e470941e49431d22ec14c4"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "삼차·사차방정식",
+        "L4": "인수분해형",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|삼차·사차방정식|인수분해형",
+        "valid": true
+      },
+      "primaryConcept": "삼차방정식의 서로 다른 세 실근 조건",
+      "primaryConceptReason": "x를 인수로 분리하고 남은 이차식의 판별식이 양수인 자연수 m을 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "인수분해와 판별식 조건 m>3 후 10 이하 개수를 센다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-a35388e288af943594f9451a9c0124bc",
+        "sourceArchiveFile": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "b77fb3ff146b83ec6af9215ff8d765b84e8a0945a6adb8f9d584ff5abd1bad74",
+        "contentFingerprint": "9233f2859867f05f10afe58675dd02178cab9fd95ef904df8293308f3399e585"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "이차식이 포함된 연립방정식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|이차식이 포함된 연립방정식",
+        "valid": true
+      },
+      "primaryConcept": "이차식 연립방정식의 부호 조건",
+      "primaryConceptReason": "첫 식을 두 일차식의 곱으로 분해하고 xy<0인 관계식만 선택해 두 번째 식에 대입한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|대칭식 활용"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "이차식 인수분해, 부호에 따른 관계 선택, 대입을 연결한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "compound_concept"
+      ],
+      "decisiveSolutionStep": "(2x-y)(x+2y)=0 중 부호가 다른 x=-2y만 남겨 x y=-2를 얻는다.",
+      "rejectedAlternativeConcepts": [
+        "대칭식 활용: 두 번째 식은 보조이고 첫 식의 인수분해와 부호 선택이 결정적이다"
+      ],
+      "taxonomyReason": "두 이차식 연립에서 한 식을 선형 관계로 분리해 해를 찾는 canonical 유형이다.",
+      "statusReason": "source solution의 두 인수와 부호 배제를 직접 확인했다."
+    }
+  ],
+  "packetFreeze": {
+    "frozen": true,
+    "frozenBy": "A_PRIMARY_TAGGER",
+    "semanticInputsAfterFreeze": "none",
+    "motherFinalization": "not_applicable_in_A_packet"
+  }
+}

@@ -1,0 +1,782 @@
+{
+  "schemaVersion": "h1-direct-tagging-a-packet-v1",
+  "role": "A_PRIMARY_TAGGER",
+  "batchId": "batch-016",
+  "manifestRange": {
+    "zeroBasedStart": 375,
+    "zeroBasedEnd": 399,
+    "oneBasedStart": 376,
+    "oneBasedEnd": 400
+  },
+  "sourceManifestPath": "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/source_manifest.json",
+  "sourceManifestSha256": "705ffc944ea1a166c194832560af7888a64d81be3eee7353092e174288cdcb09",
+  "canonicalAuthorityPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+  "canonicalAuthoritySha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfc8384c367bf",
+  "semanticPreGate": {
+    "status": "PASS",
+    "directReadCompleted": true,
+    "allowedInputs": [
+      "source manifest content",
+      "source manifest choices",
+      "source manifest answer",
+      "source manifest solution",
+      "needed source image",
+      "canonical taxonomy"
+    ],
+    "forbiddenInputsRead": false,
+    "canonicalRevisionLocked": true
+  },
+  "packetStatus": "COMPLETE",
+  "records": [
+    {
+      "source": {
+        "manifestUid": "h1-direct-3fea7d6aed2917f1a8559fce6bdd9b57",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "addf76c92a4283167a08f25d0c5c781f090259fe5358626d328ae5964cfa334d",
+        "contentFingerprint": "e8875348f477c0205ade5724f78f7cfeb2e18efaf05bffe03f78c847db18cf73"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 연산",
+        "L4": "덧셈·뺄셈·실수배",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 연산|덧셈·뺄셈·실수배",
+        "valid": true
+      },
+      "primaryConcept": "행렬의 일차방정식",
+      "primaryConceptReason": "미지 행렬을 한쪽으로 모아 2A+B를 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "행렬의 뺄셈과 실수배다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b95b3deb6aa1da0663a0748e1821a617",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 8,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "15ac6d69fc69c481b3fc9bd27ef37b8be579ded7969a2daded14aa46cc8ad2be",
+        "contentFingerprint": "51da87988e94be77a5bbb665d05026c9f03fb9a210d7c4b9b3829a05c5b30c97"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식",
+        "L4": "근의 위치와 해",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해",
+        "valid": true
+      },
+      "primaryConcept": "이차부등식의 해",
+      "primaryConceptReason": "f(x+1)을 전개해 두 근 사이의 정수해를 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "치환 전개와 인수분해다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-eefe488434459457c1fcee84b829029c",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 9,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "575d0c3ec97dee04d9c94be44c9844daaa24dc4d7eee30ccd241b3461d430c4c",
+        "contentFingerprint": "bee3c3a94617e9b84dc559ec5a95fdcd55bbde137cb34fed01f16ebd14d80d04"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "그래프와 근",
+        "L4": "판별식과 위치",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|그래프와 근|판별식과 위치",
+        "valid": true
+      },
+      "primaryConcept": "근의 위치와 꼭짓점",
+      "primaryConceptReason": "한 근 1과 근의 평균 -2로 다른 근을 정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "근의 평균과 한 근 대입이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-a5d4d3222e05ba135292b2f2fffa280d",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 10,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "77a2471293c124573540bbb650f413efee07444583c6cd139313e295cac0553e",
+        "contentFingerprint": "70123010bb7b1c952aeeb6e14167a1df334c1c7c2137666b244ebaa79c5591a0"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "대칭식 활용",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|대칭식 활용",
+        "valid": true
+      },
+      "primaryConcept": "대칭식 활용",
+      "primaryConceptReason": "x+y와 xy를 이용해 중근 조건을 만든다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "대칭식과 판별식이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-cf1e63ca575e2bb4d842eec930da8acd",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 11,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "cb03fd6bde1e8547a184f383ed2f048200b89ed4f9ee88aa6824180aaa126ab7",
+        "contentFingerprint": "0b2a68bbad38f65e8ff615972e39482d538bbb364fbc15b273a37223f94a5795"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "합·곱의 법칙",
+        "L4": "경우를 나누어 세기",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|합·곱의 법칙|경우를 나누어 세기",
+        "valid": true
+      },
+      "primaryConcept": "경우를 나누어 세기",
+      "primaryConceptReason": "B,C를 거치는 네 경로를 분리해 추가 도로 수 방정식을 세운다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "경로 경우분기와 곱의 법칙이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022",
+        "case_split"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-0e4af50bf404bacde7eee4aa3d9f69f4",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 12,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "4261145df5339be2cb0567fbc3742edd099f20b89bae28f7b4e17dea85c10345",
+        "contentFingerprint": "24e22e248926dcda967835f05ab50e7eb5e32bfdca3654655e043912ab3a4e8a"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 뜻",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 뜻|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "행렬의 전치",
+      "primaryConceptReason": "b_ij=a_ji로 행과 열을 바꿔 B를 만든다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "성분 대입과 전치다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "행렬 canonical에 전치 행렬이라는 반복 유형 L4가 없다.",
+      "statusReason": "정확한 matrix transpose no-fit."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-90785a0fbcd1e3b01694bd90a7db7f19",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 13,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "d0ddcf3092fca5b3278bd214230a9d3d467c748a348b942e87859c9e5e9da6e9",
+        "contentFingerprint": "38c9ecb1926cc07ca4aca388d2b233653c406c51c5f82e9bab86e490979e78b6"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 이차방정식과 이차함수|최대·최소|구간 최대·최소",
+        "valid": true
+      },
+      "primaryConcept": "구간 최대·최소",
+      "primaryConceptReason": "꼭짓점 최솟값과 끝점 최댓값의 합으로 k를 정한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "구간 극값 비교다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-133e7576b14f3d7653ec809ed0fdc76d",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 14,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "060cd35e8c67e7e80c8f3710b0beca135a6b7bb89c41708d172fb0ee044e6fc5",
+        "contentFingerprint": "c30cb446fa4a4812a13e22bd5eb74e6ab81af065348198aad6d37017435d8a59"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "대칭식 활용",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|대칭식 활용",
+        "valid": true
+      },
+      "primaryConcept": "대칭식 활용",
+      "primaryConceptReason": "xy=4로 x+y를 구하고 두 근의 네제곱합을 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "대칭식과 근의 관계다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-dad3ba6197ec6bc34802e5b7eb28714d",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 15,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "9a76c452b0c8a7f0b0626d628edd480b58e042f7731105e66191afa22e06ab7d",
+        "contentFingerprint": "8127d368abca2451d9a519320ce5c69c1c0e6bef125d06d93b50d65539da04fc"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "합·곱의 법칙",
+        "L4": "경우를 나누어 세기",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|합·곱의 법칙|경우를 나누어 세기",
+        "valid": true
+      },
+      "primaryConcept": "경우를 나누어 세기",
+      "primaryConceptReason": "홀수 개수의 짝수성에 따라 세 자리 수를 두 경우로 나눈다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|경우의 수|순열과 조합|조합|선택"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "홀짝 경우분기와 조합·순열을 곱한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022",
+        "case_split"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-5ecbe7dd8bc68bb63d2c9744570841f3",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 16,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "b2796ce5734adaed9035ba9b2cc6833dc40b09c6c1761517bebabcf90faedf26",
+        "contentFingerprint": "b5a5b749e6d1bd2d7734a21fb62ec323be40988be1cba8fb35f96719a4d1fe8c"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 성질",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 성질|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "행렬 거듭제곱 주기",
+      "primaryConceptReason": "A²=A-E에서 a를 정하고 A⁶=E 주기를 이용한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "행렬 관계식과 거듭제곱 주기를 결합한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_4",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "행렬 canonical에 거듭제곱 주기 유형 L4가 없다.",
+      "statusReason": "반복 가능한 matrix-power 유형 no-fit."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-7cbc4b1640bcde2eaa2217408c2000a6",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 17,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "0fd90079ffac2ead4a4abfaf32efac3760ec8af92d3b87074c5dc883c5e59469",
+        "contentFingerprint": "63de6833747310b4246c3d7283ec9d67cc48b8c3d7e0f6896cecf44a452735d9"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "절댓값 부등식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|CANONICAL_NO_FIT|절댓값 부등식",
+        "valid": false
+      },
+      "primaryConcept": "절댓값 부등식과 동일 해",
+      "primaryConceptReason": "절댓값 합의 해구간을 구해 같은 이차부등식을 구성한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "절댓값 구간과 이차근 구간을 맞춘다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "절댓값 부등식 L4가 없다.",
+      "statusReason": "반복 가능한 no-fit."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-efc80499656d5a5698b9a88f7e41990d",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 18,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "69532638c4557df33f19af27cdaf85cc8e68336edeed52b11b884d63f5a57e27",
+        "contentFingerprint": "bad6121b9776d3f547754ab07977252509ecd423be0aa7d47cdce32590fd48cc"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "두 포물선 평행선 넓이비",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|CANONICAL_NO_FIT|두 포물선 평행선 넓이비",
+        "valid": false
+      },
+      "primaryConcept": "포물선 교점과 평행선 넓이비",
+      "primaryConceptReason": "두 교점을 구한 뒤 수평선으로 만든 C,D와 두 삼각형 넓이비를 비교한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|직선과 포물선|교점 개수"
+      ],
+      "difficultyBucket": 5,
+      "difficultyReason": "두 포물선 교점, 평행선 보조점, 좌표 넓이를 연쇄한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_5",
+        "compound_concept"
+      ],
+      "taxonomyReason": "포물선 교점과 수평선으로 만든 넓이비 전용 L4가 없다.",
+      "statusReason": "반복 가능한 no-fit."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-551b482deea0ed2a10308111ed733ba8",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 19,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "79b3f0c46c0c3dfad8813771cd82302f8474d272fcbc2504ae6d9f897302570e",
+        "contentFingerprint": "57d18e6390614a0bf1b45c85feab4b4dee7a48d9e9a262a713eec9e719e9cd30"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "연립일차부등식",
+        "L4": "정수해",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|연립일차부등식|정수해",
+        "valid": true
+      },
+      "primaryConcept": "연립일차부등식 정수해 합 조건",
+      "primaryConceptReason": "정수해 연속집합의 합을 -3으로 맞춰 a의 정수 범위를 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "정수 경계와 매개변수 합 조건을 역산한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022",
+        "difficulty_4",
+        "parameter_condition"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-a9087c1259ff45d4ecd9ece722de1c10",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 20,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "37a3f07ad45028af1e41c70f41624ffa5033a1a6ec7761797b4fc186678b7d67",
+        "contentFingerprint": "c2fb20bca349b60f5fd7d654c04e83e775649a8587700a1f36c417e467d667a6"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "이차방정식과 이차함수",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|이차방정식과 이차함수|최대·최소|구간 최대·최소",
+        "valid": true
+      },
+      "primaryConcept": "두 그래프 사이 거리 최댓값",
+      "primaryConceptReason": "두 함수의 수직 차를 이차식으로 만들어 구간 최댓값을 구한다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 이차방정식과 이차함수|직선과 포물선|교점 개수"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "교점으로 범위를 정하고 세로 거리 이차식의 꼭짓점을 계산한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022",
+        "difficulty_4"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-73e54cbaf648061f24a78d0712839470",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 21,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "652dbe7462827d0cc6193793aae6e1e2ce6153b6203697eea4308f2b722da2ff",
+        "contentFingerprint": "43068309ff56779b6c36381efd7be2f3c9dd94dcc37d74878446256254bc7d8c"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "다항식",
+        "L2": "항등식과 나머지정리",
+        "L3": "나머지정리",
+        "L4": "일차식으로 나눈 나머지",
+        "canonicalPathKey": "2022|high|공통수학1|다항식|항등식과 나머지정리|나머지정리|일차식으로 나눈 나머지",
+        "valid": true
+      },
+      "primaryConcept": "나머지정리",
+      "primaryConceptReason": "f(2)=0과 f(-2)=4로 p,q를 구한 뒤 세 근의 곱을 읽는다.",
+      "secondaryConceptKeys": [
+        "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|삼차·사차방정식|인수분해형"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "두 나머지 조건과 삼차 근 곱 관계다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-e8cd691f1a17d88f0b9c994a0330a9fc",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 22,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "1eeac31c9ae6a2792de3cda4705d0fc79c102fc7c54b61722aa18d030b57528f",
+        "contentFingerprint": "c50ddabe7ea1226cbb43bb5c8aa4101efe2fd876235066421f5998d38c660637"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "이차부등식",
+        "L4": "근의 위치와 해",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|이차부등식|근의 위치와 해",
+        "valid": true
+      },
+      "primaryConcept": "근의 위치와 해",
+      "primaryConceptReason": "첫 부등식의 외부해와 두 번째 닫힌 해의 교집합을 맞춘다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "매개변수 근 위치와 열린·닫힌 경계를 비교한다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022",
+        "difficulty_4"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-a45f4b36c986a16433e807f93e53c6df",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 23,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "78a7ba421c74e3b6f22f11d58fae02332ee79b45f441eb592622b0f356c2590b",
+        "contentFingerprint": "2f6bcb550adea15219ed6fd345cc13d335378f45b95156608b2d0e6c495779f9"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "순열과 조합",
+        "L3": "조합의 활용",
+        "L4": "선택 조건",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|순열과 조합|조합의 활용|선택 조건",
+        "valid": true
+      },
+      "primaryConcept": "조합의 선택 조건",
+      "primaryConceptReason": "장화·구두 선택과 필수 신발 포함 선택을 각각 조합으로 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "조합 두 식의 차다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-2ec09cbd4cdd10484b0a6f89006f4633",
+        "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 24,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "17d2bb4d2a4c4e557070c74739548506772301cef2f86096f4a663c8b2485603",
+        "contentFingerprint": "179388e9de1660fa658d184248265fce183e52b803a810aa4e4f2ccacbacc6a0"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 성질",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 성질|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "행렬 다항식 관계",
+      "primaryConceptReason": "A²-A+E=O와 한 벡터의 상을 이용해 목표 벡터의 상을 표현한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 5,
+      "difficultyReason": "행렬 관계식과 벡터 선형결합을 연결한다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "difficulty_5",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "행렬 canonical에 행렬 다항식 관계·벡터작용 유형이 없다.",
+      "statusReason": "반복 가능한 no-fit."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-ef0918e04639ade6047534d1abdacb68",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 1,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "d1c1a03cda64b12452637fa5b2277e4cb913d44bdd4337b6ffd20cf6c0292c60",
+        "contentFingerprint": "712f43e01f8843322bd59fe568edfcaf75b56b3ea499f709ec380fa19ea5473d"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 뜻",
+        "L4": "행·열·성분",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 뜻|행·열·성분",
+        "valid": true
+      },
+      "primaryConcept": "행렬 성분 합",
+      "primaryConceptReason": "정의된 네 성분을 직접 계산해 합한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "성분 대입이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-72529959dcd9ed7263aa26455ce029fa",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 2,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "6e3a0ac69267bd088cdf0b318f7db0d74f3c2285fdf22786dcbf251715a3846e",
+        "contentFingerprint": "a490db67a73d1f31e554068cf6d4c74882f9c2c8e281aa3f67c8bd4c4c62474e"
+      },
+      "canonical": {
+        "scope": "UNRESOLVED",
+        "L1": "UNKNOWN",
+        "L2": "UNKNOWN",
+        "L3": "UNKNOWN",
+        "L4": "UNKNOWN",
+        "canonicalPathKey": "UNRESOLVED|약수의 개수",
+        "valid": false
+      },
+      "primaryConcept": "자연수 약수의 개수",
+      "primaryConceptReason": "300의 소인수 지수로 약수 개수를 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "소인수분해와 지수 공식은 단순하지만 고1 잠금 canonical 범위에 해당 유형이 없다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "source_unit_divergence",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "HIGH1 canonical 전체를 검색했으나 자연수 소인수분해·약수 개수 L1~L4가 없어 고등 경로에 배정할 수 없다.",
+      "statusReason": "source question is middle-school number theory inside HIGH1 source scope; identity is clear but taxonomy fit is not."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-32c165b4c66714b862c79022b06e02ba",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 3,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "1c3b11b39d801dc1f294ef86a28eba98f81194ec253a04e08ebd99c7fe52efb5",
+        "contentFingerprint": "74f3e62bc6c502384894af389032ccba8153f7074320fa5a27992aa620c87a68"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "연립방정식",
+        "L4": "대칭식 활용",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|연립방정식|대칭식 활용",
+        "valid": true
+      },
+      "primaryConcept": "대칭식 활용",
+      "primaryConceptReason": "x(x+y)=7과 x+y=1로 x,y를 바로 복원한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "인수분해와 대칭식 대입이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-5908e1cd8eeca26e604c74b380414cd5",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 4,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "bf96b5e5c6da604a49a68170766c2a1b0ace91aa5bfa73a8b82c9a00cdf955f4",
+        "contentFingerprint": "bbd36254a467b7d421127f3a9579ce913527bb2ea12b7e59b2d33b8bd2513235"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "CANONICAL_NO_FIT",
+        "L4": "절댓값 부등식",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 부등식|CANONICAL_NO_FIT|절댓값 부등식",
+        "valid": false
+      },
+      "primaryConcept": "절댓값 부등식",
+      "primaryConceptReason": "절댓값을 이중부등식으로 바꿔 정수 개수를 센다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "기본 변환이다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "절댓값 부등식 L4가 없다.",
+      "statusReason": "반복 가능한 no-fit."
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-273848155580fc8aa937658de3a4edaf",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 5,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "fe744a0eb4b9333f3c14cf2db6c5817b0f65636076ba3c63efb39be082c39f03",
+        "contentFingerprint": "a0972a875feb38d355cd6e14fd69ce907544a7bd898c395784483ee09935833c"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "경우의 수",
+        "L2": "경우의 수와 순열",
+        "L3": "순열",
+        "L4": "일렬 배열",
+        "canonicalPathKey": "2022|high|공통수학1|경우의 수|경우의 수와 순열|순열|일렬 배열",
+        "valid": true
+      },
+      "primaryConcept": "순열",
+      "primaryConceptReason": "8P2를 공식으로 계산한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "순열 공식이다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-2a02cbe32024c9aad7afbcdb79176161",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 6,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "ad860cb594d5410597bda0c202087093e4bce44fec6174bda179e1417e169674",
+        "contentFingerprint": "f306a24d824b259df995cae594a4ad59fd844ac8c0239ff54e8cfa6b73123b30"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "행렬",
+        "L2": "행렬",
+        "L3": "행렬의 뜻",
+        "L4": "같은 행렬",
+        "canonicalPathKey": "2022|high|공통수학1|행렬|행렬|행렬의 뜻|같은 행렬",
+        "valid": true
+      },
+      "primaryConcept": "같은 행렬의 성분 비교",
+      "primaryConceptReason": "대응 성분을 비교해 x,y와 합을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "성분 비교다.",
+      "status": "DIRECT_TAGGED",
+      "riskFlags": [
+        "curriculum_2022"
+      ]
+    },
+    {
+      "source": {
+        "manifestUid": "h1-direct-b9e801f580e8a441b310e3a428a63c4d",
+        "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+        "sourceOrdinal": 7,
+        "curriculumKey": "2022",
+        "sourceFingerprint": "e6f8376c4af739d0d89fcde80e628bb4988aea3bb6e5dba19f250037b990f3af",
+        "contentFingerprint": "c273ea9cc0b5520cf713e00114e472897333de1fed0103c66e0fc775bfca994c"
+      },
+      "canonical": {
+        "scope": "공통수학1",
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 방정식",
+        "L3": "삼차·사차방정식",
+        "L4": "CANONICAL_NO_FIT",
+        "canonicalPathKey": "2022|high|공통수학1|방정식과 부등식|여러 가지 방정식|삼차·사차방정식|CANONICAL_NO_FIT",
+        "valid": false
+      },
+      "primaryConcept": "삼차방정식 근의 관계",
+      "primaryConceptReason": "근 2 대입으로 a를 찾고 세 근의 합에서 나머지 합을 구한다.",
+      "secondaryConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "근 대입과 Vieta다.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "riskFlags": [
+        "canonical_no_fit",
+        "curriculum_2022"
+      ],
+      "taxonomyReason": "삼차방정식 근의 합 L4가 없다.",
+      "statusReason": "반복 가능한 no-fit."
+    }
+  ],
+  "packetFreeze": {
+    "frozen": true,
+    "frozenBy": "A_PRIMARY_TAGGER",
+    "semanticInputsAfterFreeze": "none",
+    "motherFinalization": "not_applicable_in_A_packet"
+  }
+}
