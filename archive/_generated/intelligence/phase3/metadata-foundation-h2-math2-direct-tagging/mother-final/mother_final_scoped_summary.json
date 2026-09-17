@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "metadata-foundation-h2-math2-direct-tagging-mother-summary-v1",
+  "artifactRole": "MOTHER_FINAL_SCOPED_SUMMARY",
+  "summaryStatus": "SEALED",
+  "targetGrade": "고2",
+  "curriculumScope": "수학II",
+  "orderedScope": [
+    {
+      "order": 1,
+      "scopeKey": "L2-1.1",
+      "label": "함수의 극한"
+    },
+    {
+      "order": 2,
+      "scopeKey": "L2-1.2",
+      "label": "함수의 연속"
+    },
+    {
+      "order": 3,
+      "scopeKey": "L1-2",
+      "label": "미분"
+    }
+  ],
+  "stopAfter": "L1-2 differentiation",
+  "sourceManifestSha256": "0ef72c3659cd0ec0d1acb81070dcadc403e8322bfa9f757e197c9684cef8938e",
+  "sourceIdentityDenominator": 631,
+  "includedRecordCount": 504,
+  "excludedIntegralRecordCount": 127,
+  "scopeCounts": {
+    "L2-1.1": 104,
+    "L2-1.2": 80,
+    "L1-2": 320
+  },
+  "aBComparison": {
+    "fieldCounts": {
+      "L1Key": 103,
+      "L2Key": 186,
+      "L3Key": 243,
+      "L4Key": 294,
+      "L4": 293,
+      "difficultyBucket": 191,
+      "status": 15
+    },
+    "agreement": 208,
+    "disagreement": 372,
+    "missingA": 51,
+    "missingB": 0,
+    "excludedIntegral": 127
+  },
+  "motherAdjudicationCounts": {
+    "A_B_AGREEMENT": 148,
+    "A_B_DISAGREEMENT": 274,
+    "A_ONLY": 0,
+    "B_ONLY": 37,
+    "SOURCE_BOUNDARY_REPAIR": 45,
+    "FALLBACK_PATH": 45
+  },
+  "identityChecks": {
+    "sourceIdentityCount": 631,
+    "finalIdentityCount": 504,
+    "excludedIdentityCount": 127,
+    "overlapCount": 0,
+    "closure": "PASS"
+  },
+  "canonicalAuthority": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf",
+    "authorityStatus": "LOCKED",
+    "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
+  },
+  "sourceChecks": {
+    "liveSourceRows": 631,
+    "includedRows": 504,
+    "excludedRows": 127,
+    "sourceLoadErrors": 0,
+    "sourceFingerprintBinding": "PASS",
+    "sourceImmutability": "PASS",
+    "productionMutation": "NONE"
+  },
+  "productionWriteAllowed": false,
+  "finalReleaseAllowed": false,
+  "integralUnitsFinalized": false,
+  "finalVerdict": "MOTHER_FINAL_CONDITIONAL_L4_GAP"
+}
