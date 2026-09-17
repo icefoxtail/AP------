@@ -39,6 +39,37 @@
   const badge = (label, type = "") =>
     `<span class="badge ${type}">${esc(label)}</span>`;
   const unique = (values) => [...new Set(values.filter(Boolean))];
+  const courseGrades = Object.freeze({
+    "공통수학1": "고1",
+    "공통수학2": "고1",
+    "수학(상)": "고1",
+    "수학(하)": "고1",
+    대수: "고2",
+    수학I: "고2",
+    "확률과통계": "고2",
+    미적분: "고3",
+    "미적분I": "고3",
+    "미적분II": "고3",
+    수학II: "고3",
+    기하: "고3",
+    "기하와 벡터": "고3",
+  });
+  const courseGrade = (courseKey) => {
+    const middle = String(courseKey || "").match(/^M([123])-[12]$/);
+    return middle ? `중${middle[1]}` : courseGrades[courseKey] || "";
+  };
+  const scopeText = (value) =>
+    String(value ?? "")
+      .normalize("NFC")
+      .replace(/\s+/g, "")
+      .replace(/[·・ㆍ]/g, "");
+  const taxonomyRowsForFilters = (filters) =>
+    state.catalog.taxonomy.filter(
+      (r) =>
+        (!filters.grade || courseGrade(r.courseKey) === filters.grade) &&
+        (!filters.curriculumKey || r.curriculumKey === filters.curriculumKey) &&
+        (!filters.courseKey || r.courseKey === filters.courseKey),
+    );
   const state = {
     catalog: null,
     byUid: new Map(),
@@ -47,7 +78,7 @@
     page: 0,
     find: { grade: "고1" },
     sources: [],
-    filters: { grade: "고1", curriculumKey: "2022", courseKey: "공통수학1" },
+    filters: { grade: "고1" },
     scopes: [],
     distribution: "equal",
     count: 10,
@@ -344,27 +375,92 @@
     for (const r of pool)
       if (C.eligibility(r, state).ok && !excluded.has(r.questionUid))
         counts.set(C.pathKey(r, 4), (counts.get(C.pathKey(r, 4)) || 0) + 1);
-    const map = new Map();
-    state.catalog.taxonomy
-      .filter(
-        (r) =>
-          r.curriculumKey === state.filters.curriculumKey &&
-          r.courseKey === state.filters.courseKey,
-      )
-      .forEach((r) => {
-        const key = C.pathKey(r, 4);
-        if (!map.has(key))
-          map.set(key, {
-            key,
-            L1: r.L1,
-            L2: r.L2,
-            count: counts.get(key) || 0,
-          });
-      });
-    return [...map.values()];
+    const units = new Map();
+    for (const r of taxonomyRowsForFilters(state.filters)) {
+      const key = [
+        r.curriculumKey,
+        r.courseKey,
+        scopeText(r.L1),
+        scopeText(r.L2),
+      ].join("|");
+      if (!units.has(key))
+        units.set(key, {
+          curriculumKey: r.curriculumKey,
+          courseKey: r.courseKey,
+          L1: r.L1,
+          L2: r.L2,
+          rows: [],
+        });
+      units.get(key).rows.push(r);
+    }
+    const semanticGroups = new Map();
+    for (const unit of units.values()) {
+      const children = unique(
+        unit.rows.map((r) => `${scopeText(r.L3)}|${scopeText(r.L4)}`),
+      ).sort();
+      const key = [scopeText(unit.L1), scopeText(unit.L2), ...children].join(
+        "|",
+      );
+      if (!semanticGroups.has(key)) semanticGroups.set(key, []);
+      semanticGroups.get(key).push({ ...unit, children });
+    }
+    const groups = [];
+    for (const candidates of semanticGroups.values()) {
+      const curricula = new Set(candidates.map((unit) => unit.curriculumKey));
+      const mergeable =
+        !state.filters.curriculumKey &&
+        curricula.has("2015") &&
+        curricula.has("2022") &&
+        candidates.length === 2;
+      if (mergeable) {
+        const first = candidates[0];
+        groups.push({
+          curriculumKey: "all",
+          courseKey: "all",
+          L1: first.L1,
+          L2: first.L2,
+          rows: candidates.flatMap((unit) => unit.rows),
+        });
+      } else {
+        groups.push(...candidates);
+      }
+    }
+    const displayKeys = new Map();
+    for (const group of groups) {
+      const key = scopeText(group.L1) + "|" + scopeText(group.L2);
+      displayKeys.set(key, (displayKeys.get(key) || 0) + 1);
+    }
+    return groups.map((group, index) => {
+      const paths = unique(group.rows.map((r) => C.pathKey(r, 4)));
+      const displayKey = scopeText(group.L1) + "|" + scopeText(group.L2);
+      const suffix =
+        displayKeys.get(displayKey) > 1
+          ? ` · ${group.curriculumKey === "all" ? "통합" : group.curriculumKey}`
+          : "";
+      return {
+        key: `scope-${index}-${scopeText(group.L1)}-${scopeText(group.L2)}-${group.curriculumKey}`,
+        L1: group.L1,
+        L2: group.L2,
+        label: `${group.L2}${suffix}`,
+        paths,
+        count: paths.reduce((sum, path) => sum + (counts.get(path) || 0), 0),
+      };
+    });
+  }
+  function scopeIsSelected(scope) {
+    return (
+      state.scopes.includes(scope.key) ||
+      scope.paths.some((path) => state.scopes.includes(path))
+    );
+  }
+  function selectedScopeOptions() {
+    return scopeOptions().filter(scopeIsSelected);
+  }
+  function selectedScopePaths() {
+    return unique(selectedScopeOptions().flatMap((scope) => scope.paths));
   }
   function planRows() {
-    const scopes = scopeOptions().filter((s) => state.scopes.includes(s.key));
+    const scopes = selectedScopeOptions();
     if (state.distribution === "pool")
       return scopes.length
         ? [
@@ -372,15 +468,16 @@
               id: "pool",
               count: Number(state.count),
               difficultyBuckets: state.buckets,
+              paths: selectedScopePaths(),
             },
           ]
         : [];
     return scopes
       .map((s) => ({
         id: s.key,
-        path: s.key,
+        paths: s.paths,
         depth: 4,
-        label: s.L2,
+        label: s.label,
         count:
           state.distribution === "all"
             ? state.catalog.records.filter(
@@ -388,8 +485,8 @@
                   C.matches(r, {
                     ...state.filters,
                     sourceFiles: state.sources,
+                    primaryPaths: s.paths,
                   }) &&
-                  C.pathKey(r, 4) === s.key &&
                   state.buckets.includes(r.difficultyBucket) &&
                   C.eligibility(r, state).ok &&
                   !C.composeExclusions(context()).union.has(r.questionUid),
@@ -407,8 +504,9 @@
       .filter((r) => r.count > 0 || state.distribution !== "all");
   }
   function pool() {
+    const paths = selectedScopePaths();
     return state.catalog.records.filter(
-      (r) => !state.scopes.length || state.scopes.includes(C.pathKey(r, 4)),
+      (r) => !paths.length || paths.includes(C.pathKey(r, 4)),
     );
   }
   function request(useFrozen = false) {
@@ -416,7 +514,7 @@
       filters: {
         ...state.filters,
         sourceFiles: state.sources,
-        primaryPaths: state.scopes,
+        primaryPaths: selectedScopePaths(),
       },
       rows: useFrozen ? state.rows : planRows(),
       pins: state.selected
@@ -485,16 +583,12 @@
         ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
         : value;
     const courses = unique(
-      state.catalog.taxonomy
-        .filter(
-          (r) =>
-            !filters.curriculumKey || r.curriculumKey === filters.curriculumKey,
-        )
+      taxonomyRowsForFilters({ ...filters, courseKey: "" })
         .map((r) => r.courseKey),
     ).map((value) => ({ value, label: courseLabel(value) }));
     return `<div class="filters"><label>학년<select data-filter="grade" data-group="${prefix}">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, compose ? null : "전체 학년")}</select></label>
-      <label>교육과정<select data-filter="curriculumKey" data-group="${prefix}">${options(["2015", "2022"], filters.curriculumKey, compose ? "교육과정 선택" : "전체 교육과정")}</select></label>
-      <label>과목<select data-filter="courseKey" data-group="${prefix}">${options(courses, filters.courseKey, compose ? "과목 선택" : "전체 과목")}</select></label>
+      <label>교육과정<select data-filter="curriculumKey" data-group="${prefix}">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>
+      <label>과목<select data-filter="courseKey" data-group="${prefix}">${options(courses, filters.courseKey, "전체 과목")}</select></label>
       <label>학교<select data-filter="school" data-group="${prefix}">${options(
         unique(
           state.catalog.exams
@@ -709,13 +803,13 @@
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1));
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">숫자는 현재 조건과 이력을 반영한 검수 문항 수입니다. 단원을 골라 한 번에 만들 수 있습니다.</p>
+      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 현재 조건과 이력을 반영한 검수 문항 수입니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
-        scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.L2 })),
+        scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
         0,
         null,
       )}</select></label><label>범위 끝<select id="scope-end">${options(
-        scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.L2 })),
+        scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
         Math.max(0, scopes.length - 1),
         null,
       )}</select></label>${button("scope-range", "연속 범위 선택")}</div>
@@ -726,7 +820,7 @@
               .filter((s) => s.L1 === g)
               .map(
                 (s) =>
-                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${state.scopes.includes(s.key) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.L2)}</label><small>${s.count}문항</small></div>`,
+                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`,
               )
               .join("")}</div>`,
         )
@@ -736,7 +830,11 @@
     return `<div class="bucket-set" aria-label="5단계 난이도">${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
   }
   function renderComposition() {
-    const selectionFilters = { ...state.filters, sourceFiles: state.sources };
+    const selectionFilters = {
+      ...state.filters,
+      sourceFiles: state.sources,
+      primaryPaths: selectedScopePaths(),
+    };
     const rows = planRows(),
       total = rows.reduce((n, r) => n + r.count, 0);
     const excluded = C.composeExclusions(context()).union;
@@ -752,11 +850,9 @@
         available: candidates.filter((r) => C.rowMatches(r, row)).length,
       }))
       .filter((item) => item.available < item.row.count);
-    const concepts = state.catalog.taxonomy.filter(
-      (r) =>
-        r.curriculumKey === state.filters.curriculumKey &&
-        r.courseKey === state.filters.courseKey &&
-        (!state.scopes.length || state.scopes.includes(C.pathKey(r, 4))),
+    const selectedPaths = new Set(selectedScopePaths());
+    const concepts = taxonomyRowsForFilters(state.filters).filter(
+      (r) => !selectedPaths.size || selectedPaths.has(C.pathKey(r, 4)),
     );
     return `<section class="panel"><h2>출제 범위 · 문항 수</h2><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
       [
@@ -776,7 +872,7 @@
   function renderInspector() {
     const r = state.selected.length ? review() : null;
     const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
-      <div class="summary-line"><span>선택 범위</span><strong>${state.scopes.length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
+      <div class="summary-line"><span>선택 범위</span><strong>${selectedScopeOptions().length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
     const targeting = `<h3>출제 대상 · 중복 방지</h3><p>${esc(state.studentLabels.join(" · ") || "학생을 선택하면 과거 출제 문항을 제외합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
@@ -1261,7 +1357,7 @@
     const selectionFilters = {
       ...state.filters,
       sourceFiles: state.sources,
-      primaryPaths: state.scopes,
+      primaryPaths: selectedScopePaths(),
     };
     replacementIndex = index;
     const current = state.selected[index],
@@ -1904,6 +2000,11 @@
             state.scopes = [];
             delete state.filters.L3;
             delete state.filters.L4;
+            if (el.dataset.filter === "grade") {
+              state.filters.curriculumKey = "";
+              state.filters.courseKey = "";
+              state.filters.school = "";
+            }
             if (el.dataset.filter === "curriculumKey")
               state.filters.courseKey = "";
           }
@@ -1914,9 +2015,16 @@
         }
         render();
       } else if (el.dataset.scope) {
+        const scope = scopeOptions().find((item) => item.key === el.dataset.scope);
+        const legacyPaths = scope?.paths || [];
         state.scopes = el.checked
-          ? [...state.scopes, el.dataset.scope]
-          : state.scopes.filter((x) => x !== el.dataset.scope);
+          ? [
+              ...state.scopes.filter((x) => !legacyPaths.includes(x)),
+              el.dataset.scope,
+            ]
+          : state.scopes.filter(
+              (x) => x !== el.dataset.scope && !legacyPaths.includes(x),
+            );
         invalidate();
         render();
       } else if (el.id === "distribution" || el.id === "count") {

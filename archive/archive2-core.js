@@ -178,20 +178,18 @@
     return { sets, union };
   }
   function rowMatches(record, row) {
+    const pathsMatch = row.paths?.length
+      ? row.paths.includes(pathKey(record, row.depth || 4))
+      : !row.path || pathKey(record, row.depth || 4) === row.path;
     return (
-      (!row.path || pathKey(record, row.depth || 4) === row.path) &&
+      pathsMatch &&
       (!row.difficultyBuckets?.length ||
         row.difficultyBuckets.includes(record.difficultyBucket))
     );
   }
   function validatePlan(request) {
     const errors = [];
-    if (
-      !request.filters?.grade ||
-      !request.filters?.curriculumKey ||
-      !request.filters?.courseKey
-    )
-      errors.push("학년·교육과정·과목을 선택하세요.");
+    if (!request.filters?.grade) errors.push("학년을 선택하세요.");
     for (const key of ["yearFrom", "yearTo"])
       if (
         request.filters?.[key] &&

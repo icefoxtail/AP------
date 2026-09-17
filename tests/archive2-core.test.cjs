@@ -83,6 +83,15 @@ test("canonical path scope and source grade remain hard filters", () => {
     core.pathKey({ ...base, curriculumKey: "2022" }),
   );
 });
+test("grade-only plans accept a merged set of canonical paths", () => {
+  const paths = [core.pathKey(base, 4), core.pathKey({ ...base, curriculumKey: "2015" }, 4)];
+  const req = {
+    filters: { grade: base.sourceGrade, primaryPaths: paths },
+    rows: [{ id: "merged", count: 1, paths }],
+  };
+  assert.deepEqual(core.validatePlan(req), []);
+  assert.equal(core.rowMatches(base, req.rows[0]), true);
+});
 test("newest eligible years fill each row first, independent of input order and seed", () => {
   const pool = [2021, 2025, 2026, 2025, 2026, undefined].map((year, i) => ({ ...record(i + 1), year }));
   for (const seed of ['one', 'two', 'three']) {
