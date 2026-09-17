@@ -4,7 +4,7 @@
 
 범위: HIGH1 direct tagging 전체 source manifest 2,498문항 / 113개 JS source file
 
-상태: **Mother disagreement closure는 완료되었으나, production 반영 게이트는 fail-closed 상태**
+상태: **Mother disagreement closure와 canonical/applicability candidate gate는 완료되었고, production promotion만 별도 승인 대기 상태**
 
 이 보고서는 현재 branch에 저장된 source manifest, A/B frozen packet, B validation, Mother ledger/pick, 그리고 final candidate merge artifact를 기준으로 작성했다. 최종 후보를 만들기 위해 source JS, source image, canonical master, production metadata를 수정하지 않았다. 이 보고서는 최종 metadata를 production에 반영했다는 뜻이 아니며, 별도 검수를 위한 branch checkpoint다.
 
@@ -113,7 +113,7 @@ Mother decision 분포는 다음과 같다.
 | `SOURCE_DEFECT_CANDIDATE` | 4 |
 | 합계 | 2,498 |
 
-Mother ledger closure 수치(`2,277/2,277`, unresolved `0`)와 final candidate record cardinality(`2,498`)는 닫혔다. 그러나 이것만으로 canonical master closure가 끝난 것은 아니다.
+Mother ledger closure 수치(`2,277/2,277`, unresolved `0`)와 final candidate record cardinality(`2,498`)가 닫혔다. canonical resolution도 raw path와 resolved path를 분리 보존한 상태로 2,498건 전체가 exact master match 또는 명시적 no-fit/unknown으로 닫혔다.
 
 ## 7. Canonical/applicability gate
 
@@ -121,36 +121,37 @@ final candidate의 L1~L4를 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/0
 
 | canonical state | 문항 수 |
 |---|---:|
-| `CANONICAL_PATH_MATCH` | 1,964 |
-| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 324 |
-| `CANONICAL_PATH_UNMATCHED` | 210 |
+| `CANONICAL_PATH_MATCH` | 2,171 |
+| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 327 |
+| `CANONICAL_PATH_UNMATCHED` | 0 |
 
-`CANONICAL_PATH_UNMATCHED` 210건 때문에 merge script는 다음처럼 fail-closed다.
+최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 207건은 raw path와 exact master path가 달라졌으며, 그중 178건은 반복되는 taxonomy label alias, 29건은 source evidence를 확인한 문항별 Mother resolution이다. master에 exact leaf가 없는 327건은 `EXPLICIT_NO_FIT_OR_UNKNOWN`으로 명시적으로 닫았다.
 
 ```json
 {
   "unresolvedDisagreementCount": 0,
   "canonicalCounts": {
-    "CANONICAL_PATH_MATCH": 1964,
-    "EXPLICIT_NO_FIT_OR_UNKNOWN": 324,
-    "CANONICAL_PATH_UNMATCHED": 210
+    "CANONICAL_PATH_MATCH": 2171,
+    "EXPLICIT_NO_FIT_OR_UNKNOWN": 327,
+    "CANONICAL_PATH_UNMATCHED": 0
   },
-  "readyForGate": false
+  "errorCount": 0,
+  "readyForGate": true
 }
 ```
 
-대표적인 unmatched raw path 유형은 다음과 같다.
+canonical resolution이 적용된 대표 raw path 유형은 다음과 같다.
 
-- `함수 | 무리함수 | 무리함수의 교점 | 무리함수의 교점` 22건
-- `함수 | 무리함수 | 무리함수의 정의역과 치역 | 그래프 위치` 17건
-- `다항식 | 다항식의 나눗셈 | 나머지정리 | 고차식 조건` 16건
-- `다항식 | 다항식의 나눗셈 | 다항식의 나눗셈 | 몫과 나머지` 11건
-- `함수 | 무리함수 | 무리함수의 정의역과 치역 | 정의역 조건` 8건
-- `집합과 명제 | 명제 | 명제와 조건 | 명제 변환` 8건
-- `경우의 수 | 순열과 조합 | 조합의 활용 | 선택 조건` 6건
-- `집합과 명제 | 명제 | 명제 변환 | 대우를 이용한 증명` 6건
+- `함수 | 무리함수 | 무리함수의 교점 | 무리함수의 교점` 22건 → `함수 | 무리함수 | 무리함수의 활용 | 무리함수의 교점`
+- `함수 | 무리함수 | 무리함수의 정의역과 치역 | 그래프 위치` 17건 → `함수 | 무리함수 | 정의역과 치역 | 그래프 위치`
+- `다항식 | 다항식의 나눗셈 | 나머지정리 | 고차식 조건` 16건 → `다항식 | 항등식과 나머지정리 | 나머지정리 | 고차식 조건`
+- `다항식 | 다항식의 나눗셈 | 다항식의 나눗셈 | 몫과 나머지` 11건 → `다항식 | 다항식의 연산 | 다항식의 나눗셈 | 몫과 나머지`
+- `함수 | 무리함수 | 무리함수의 정의역과 치역 | 정의역 조건` 8건 → `함수 | 무리함수 | 정의역과 치역 | 정의역 조건`
+- `집합과 명제 | 명제 | 명제와 조건 | 명제 변환` 8건 → `집합과 명제 | 명제 | 역·이·대우 | 명제 변환`
+- `경우의 수 | 순열과 조합 | 조합의 활용 | 선택 조건` 6건 → `경우의 수 | 조합 | 조합의 활용 | 선택 조건`
+- `집합과 명제 | 명제 | 명제 변환 | 대우를 이용한 증명` 6건 → `집합과 명제 | 명제 | 역·이·대우 | 대우를 이용한 증명`
 
-이 항목들은 canonical master에 존재하는 유사 label로 자동 치환하지 않았다. 예를 들어 `무리함수의 교점`은 master에서 `무리함수의 활용 → 무리함수의 교점`으로 표현되고, `다항식의 나눗셈`/`나머지정리`도 서로 다른 master hierarchy 후보가 존재한다. 따라서 exact path normalization은 별도 검수에서 문항 evidence를 확인한 뒤 수행해야 한다.
+이 resolution은 기존 A/B packet을 재작성하지 않는다. 예를 들어 `무리함수의 교점`은 master의 `무리함수의 활용 → 무리함수의 교점`으로, `다항식의 나눗셈`/`나머지정리`는 master의 `항등식과 나머지정리 → 나머지정리`로 연결된다. exact leaf가 없는 대표 사례인 경로합 최솟값, solid-geometry sphere volume, 흡수법칙, 일부 절댓값·정수해 generic leaf는 다른 problemType으로 강제하지 않고 `EXPLICIT_NO_FIT_OR_UNKNOWN`으로 남겼다.
 
 ## 8. Gate 및 검증 결과
 
@@ -166,6 +167,13 @@ node archive/tools/intelligence/validate-h1-direct-b-packets.mjs
 expectedCount=2498
 validCoverageCount=2498
 missingCount=0
+
+node archive/tools/intelligence/merge-h1-direct-tagging-mother-final.mjs
+expectedCount=2498
+finalizedDisagreementCount=2277
+unresolvedDisagreementCount=0
+errorCount=0
+readyForGate=true
 ```
 
 B validator의 raw audit mismatch/duplicate count는 각각 48/57로 남아 있다. 이들은 이전 invalid/audit-only packet의 흔적이며, validator가 선택한 replacement packet의 valid coverage는 2,498/2,498이다. audit trail을 삭제하지 않았다.
@@ -181,14 +189,14 @@ B validator의 raw audit mismatch/duplicate count는 각각 48/57로 남아 있�
 - canonical master
 - production promotion of `mother-final-candidate.json`
 
-final candidate는 `_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/` 아래의 검수 artifact로만 저장된다. production metadata 반영은 canonical/applicability 210건과 별도 external inspection이 끝난 뒤의 후속 gate로 남긴다.
+final candidate는 `_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/` 아래의 검수 artifact로만 저장된다. canonical/applicability candidate gate는 닫혔지만, production metadata 반영은 별도 external inspection과 promotion 승인 뒤의 후속 gate로 남긴다.
 
 ## 10. 별도 검사자가 볼 핵심 지점
 
 1. `source_manifest.json`의 2,498 source identity와 A/B packet의 1:1 coverage.
 2. `mother-diff-manifest.json`의 2,277 disagreement과 `mother/` ledger/pick의 recordIndex closure.
 3. `mother-final-candidate.json`의 각 record에서 source fingerprint, A packet, B packet, Mother ledger file, final value의 연결.
-4. `CANONICAL_PATH_UNMATCHED` 210건의 source evidence 기반 exact canonical path.
-5. `readyForGate: false`를 유지한 상태에서 production metadata가 변경되지 않았는지.
+4. `final.canonicalRaw`와 `final.canonical`의 resolution reason이 source/Mother evidence에 부합하는지.
+5. `readyForGate: true`가 production promotion 승인으로 오용되지 않았는지.
 
-현재 branch는 Mother closure checkpoint로는 제출 가능하지만, canonical/applicability gate가 닫히기 전에는 production promotion 승인 상태가 아니다.
+현재 branch는 Mother closure와 canonical/applicability candidate 검수용으로 제출 가능하지만, production promotion 승인 상태는 아니다.
