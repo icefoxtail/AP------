@@ -48,6 +48,11 @@
       .replace(/\s+/g, "");
   const gradeRank = (grade) =>
     ({ 중1: 1, 중2: 2, 중3: 3, 고1: 4, 고2: 5, 고3: 6 })[grade] || 0;
+  const sourceYear = (record) => {
+    const year = Number(record.year);
+    return Number.isInteger(year) && year >= 1900 && year <= 2100 ? year : 0;
+  };
+  const compareNewest = (a, b) => sourceYear(b) - sourceYear(a);
   function taxonomyPaths(master) {
     const paths = [];
     for (const row of master.records || [])
@@ -128,9 +133,9 @@
     )
       return false;
     if (filters.school && record.school !== filters.school) return false;
-    if (filters.yearFrom && Number(record.year) < Number(filters.yearFrom))
+    if (filters.yearFrom && sourceYear(record) < Number(filters.yearFrom))
       return false;
-    if (filters.yearTo && Number(record.year) > Number(filters.yearTo))
+    if (filters.yearTo && (!sourceYear(record) || sourceYear(record) > Number(filters.yearTo)))
       return false;
     if (filters.axis && record.examAxis !== filters.axis) return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
@@ -283,21 +288,27 @@
       const pool = candidates.filter(
         (record) => !used.has(record.questionUid) && rowMatches(record, row),
       );
-      const selection = selector.selectCandidates(
-        pool,
-        { count },
-        { selectionSeed: request.seed || VERSION },
-      );
-      for (const record of selection.selected) {
-        selected.push({ ...record, rowId: row.id });
-        used.add(record.questionUid);
-        result.selected++;
+      // Recency is a priority after hard scope/quality/history gates. Preserve
+      // the existing seeded selection within each year; unknown years go last.
+      for (const year of [...new Set(pool.map(sourceYear))].sort((a, b) => b - a)) {
+        const remaining = row.count - result.selected;
+        if (!remaining) break;
+        const selection = selector.selectCandidates(
+          pool.filter((record) => sourceYear(record) === year),
+          { count: remaining },
+          { selectionSeed: request.seed || VERSION },
+        );
+        for (const record of selection.selected) {
+          selected.push({ ...record, rowId: row.id });
+          used.add(record.questionUid);
+          result.selected++;
+        }
       }
     }
     selected.sort(
       (a, b) =>
         rows.findIndex((r) => r.id === a.rowId) -
-        rows.findIndex((r) => r.id === b.rowId),
+        rows.findIndex((r) => r.id === b.rowId) || compareNewest(a, b),
     );
     const shortages = rowResults
       .filter((r) => r.selected < r.requested)
@@ -393,6 +404,8 @@
     normalizeFile,
     normalizeSearch,
     gradeRank,
+    sourceYear,
+    compareNewest,
     taxonomyPaths,
     eligibility,
     matches,

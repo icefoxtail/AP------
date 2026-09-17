@@ -416,13 +416,17 @@
   }
 
   function compareRecords(a, b) {
+    const yearDiff = compareNewestYear(a, b);
+    if (yearDiff) return yearDiff;
     const periodOrder = { '1mid': 1, '1final': 2, '2mid': 3, '2final': 4 };
     const periodDiff = (periodOrder[getPeriod(a.sourceFile)] || 99) - (periodOrder[getPeriod(b.sourceFile)] || 99);
     if (periodDiff) return periodDiff;
-    const yearDiff = getYear(a) - getYear(b);
-    if (yearDiff) return yearDiff;
     const fileDiff = compareText(normalizePath(a.sourceFile), normalizePath(b.sourceFile));
     return fileDiff || getQuestionNo(a) - getQuestionNo(b);
+  }
+  function compareNewestYear(a, b) {
+    const rank = record => isValidExamYear(getYear(record)) ? getYear(record) : 0;
+    return rank(b) - rank(a);
   }
 
   function getCollectionUnitKey(record) {
@@ -848,6 +852,8 @@
 
   function sortForSelection(records, seed) {
     return [...records].sort((a, b) => {
+      const yearDiff = compareNewestYear(a, b);
+      if (yearDiff) return yearDiff;
       const scoreDiff = compareText(stableSelectionScore(a, seed), stableSelectionScore(b, seed));
       return scoreDiff || compareRecords(a, b);
     });

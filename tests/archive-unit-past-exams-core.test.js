@@ -30,6 +30,22 @@ function fixtureRecord(overrides = {}) {
   };
 }
 
+test('전체 단원 기출과 바로 쓰는 문제지는 연도를 학기보다 우선해 최신순으로 준비한다', () => {
+  const records = [2021, 2025, 2026, 2025].map((year, i) => fixtureRecord({
+    sourceFile: `original/high/h2/${i === 2 ? '2final' : '1mid'}/${year}_school.js`,
+    examYear: year, id: i + 1, sourceOrdinal: i + 1, question_uid: `year-${i}`,
+    subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중'
+  }));
+  const catalog = core.buildCatalog(records, { profileId: 'h2' });
+  assert.deepEqual(catalog.units.find(unit => unit.count).papers.flatMap(paper => paper.records.map(core.getExamYear)), [2026, 2025, 2025, 2021]);
+  for (const seed of ['first', 'second']) {
+    const result = core.selectRecords(records, { count: 2, seed });
+    assert.deepEqual(result.selected.map(core.getExamYear), [2026, 2025]);
+  }
+  const unknown = fixtureRecord({sourceFile:'original/high/h2/1mid/unknown.js'});
+  assert.ok(core.compareRecords(unknown, records[0]) > 0);
+});
+
 test('구형 기말·중간 경로는 파일명의 학기로 현재 아카이브 경로를 복구한다', () => {
   const finalPath = 'original/high/h2/final/25_제일고_2학기_기말_고2_수학II.js';
   assert.deepEqual(core.getSourceFileCandidates(finalPath), [

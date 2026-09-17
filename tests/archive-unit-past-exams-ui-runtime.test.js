@@ -75,6 +75,18 @@ function createRuntime() {
   return { window, document, history, elements, difficultyInputs, cards, getElement, setUrl, get url() { return currentUrl.toString(); } };
 }
 
+test('Archive 2.0 ready shelf opens existing papers without the new-paper configuration form', () => {
+  const runtime = createRuntime();
+  runtime.setUrl('http://unit.test/archive/unit-past-exams.html?ready=1&grade=h1&unit=H22-C-01');
+  runtime.window.UnitPastExams.selectProfile('h1');
+  const html = runtime.getElement('unit-content').innerHTML;
+  assert.match(html, /바로 쓰는 문제지/);
+  assert.match(html, /previewExistingPaper\('H22-C-01', 1\)/);
+  assert.match(html, /시험지 확인 · 출제/);
+  assert.doesNotMatch(html, /id="unit-quick-count"/);
+  assert.match(runtime.getElement('unit-stepper').innerHTML, /시험지 확인/);
+});
+
 test('실제 UI 모듈 실행으로 같은 단원 popstate가 URL 상태를 다시 그린다', () => {
   const runtime = createRuntime();
   runtime.window.UnitPastExams.selectProfile('h1');
