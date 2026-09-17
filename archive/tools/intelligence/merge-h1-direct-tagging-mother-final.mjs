@@ -117,6 +117,41 @@ const canonicalOverrides = {
   2497: { path: ['도형의 방정식', '원의 방정식', '원의 방정식', '중심과 반지름'], reason: 'The source constructs circles tangent to both coordinate axes by determining their centers and radii.' },
   1703: { path: ['함수', '함수', '역함수', '그래프 대칭'], reason: 'The source intersects a line with the inverse graph and uses the reflection relation.' },
   1826: { path: ['함수', '함수', '역함수', '그래프 대칭'], reason: 'The source uses the intersection of a radical graph and its inverse graph.' },
+  54: { path: ['집합과 명제', '명제', '명제와 조건', '명제의 참·거짓'], reason: 'The source asks which propositions are true; the three statements are secondary subject cues, not three primary taxonomy assignments.' },
+  395: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source directly asks for the number of divisors of 300.' },
+  460: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source directly asks for the number of divisors of 50.' },
+  788: { partial: ['방정식과 부등식', '이차방정식', '근과 계수의 관계'], reason: 'The surviving prompt explicitly names a relation between roots of two quadratic equations; the omitted equations prevent an L4/final semantic lock, but not the primary L1-L3.' },
+  789: { path: ['방정식과 부등식', '이차방정식과 이차함수', '최대·최소', '구간 최대·최소'], reason: 'The surviving prompt explicitly asks for a constrained quadratic-function minimum; the omitted function/interval keeps the evidence status held but the primary path is clear.' },
+  893: { partial: ['방정식과 부등식', '복소수', '복소수의 연산'], reason: 'The surviving condition uses z and its conjugate; missing definitions prevent the final result, but the complex-number primary is clear.' },
+  895: { partial: ['도형의 방정식', '평면좌표', '도형의 넓이·최소거리'], reason: 'The surviving prompt is a coordinate/parabola triangle-area problem; omitted defining data prevents the final leaf, not the geometry primary.' },
+  898: { partial: ['방정식과 부등식', '이차방정식과 이차함수', '최대·최소'], reason: 'The surviving prompt explicitly asks for an extremum on a restricted interval; omitted definitions prevent the final lock.' },
+  920: { path: ['다항식', '인수분해', '인수분해의 활용', '조건식'], reason: 'The source is a factorization-with-conditions problem; the source/solution contradiction remains a CONFLICT, but the primary polynomial factorization path is clear.' },
+  939: { path: ['방정식과 부등식', '이차방정식', '근과 계수의 관계', '근의 합·곱'], reason: 'The source explicitly asks for the sum and product of the roots before a derived radical expression; the answer conflict is retained separately.' },
+  1033: { path: ['다항식', '다항식의 연산', '다항식의 나눗셈', '몫과 나머지'], reason: 'The source names synthetic/division output and asks for coefficients from polynomial division; missing polynomials keep evidence held.' },
+  1047: { path: ['행렬', '행렬', '행렬의 성질', '조건을 만족하는 행렬'], reason: 'The surviving prompt explicitly refers to a matrix-equality condition; omitted matrix context keeps evidence held.' },
+  1048: { partial: ['다항식', '인수분해', '인수분해의 활용'], reason: 'The source is a polynomial factorization condition involving P,Q and a square; omitted conditions prevent the exact leaf.' },
+  1050: { path: ['도형의 방정식', '원의 방정식', '원과 직선', '현의 길이'], reason: 'The source uses a circle diameter/chord intersection and asks for a quadratic built from the chord segments; the geometry primary is circle-chord.' },
+  1059: { partial: ['소인수분해', 'CANONICAL_NO_FIT', '모듈러 산술'], reason: 'The source is modular arithmetic, not the remainder theorem; retain a number-theory primary while marking the missing current L2-L4 taxonomy.' },
+  1063: { partial: ['실수와 그 연산', '제곱근과 실수', '무리수와 실수'], reason: 'The source is a square-root sign/domain condition; the current L4 does not represent this exact branch convention.' },
+  1100: { path: ['다항식', '인수분해', '인수분해 공식', '제곱식'], reason: 'The source asks which factorization identity is incorrect; missing answer choices keep evidence held but the primary factorization path is explicit.' },
+  1115: { path: ['다항식', '항등식과 나머지정리', '나머지정리', '고차식 조건'], reason: 'The source derives a cubic remainder from symmetric constraints and division by x+1; the cubic condition is the primary method.' },
+  1136: { partial: ['함수', '함수', '함수의 성질'], reason: 'The source is a piecewise-function intersection/endpoint problem; the exact piecewise leaf is absent but the function primary is clear.' },
+  1145: { partial: ['소인수분해', 'CANONICAL_NO_FIT', '모듈러 산술'], reason: 'The source asks a modular remainder, not a polynomial remainder; retain the number-theory primary and do not mislabel it as the remainder theorem.' },
+  1164: { path: ['방정식과 부등식', '복소수', '복소수의 연산', '사칙연산'], reason: 'The source is direct complex-number arithmetic; missing answer choices are a source defect, not an absent L1.' },
+  1265: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source directly asks for the number of positive divisors of 150.' },
+  1300: { path: ['경우의 수', '조합', '분할·분배', '조합을 이용한 경우의 수'], reason: 'The source partitions all elements into subsets under a condition; the decisive method is partition/distribution counting.' },
+  1323: { path: ['경우의 수', '조합', '조합의 활용', '선택 조건'], reason: 'The source counts fixed-size selections under parity/divisibility conditions.' },
+  1377: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source directly asks for the number of positive divisors of 360.' },
+  1441: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source counts divisor subsets by parity and divisibility after prime factorization.' },
+  1657: { partial: ['소인수분해', 'CANONICAL_NO_FIT', '모듈러 산술'], reason: 'The source counts residue classes modulo 7; the number-theory primary is clear but the current L2-L4 master leaf is absent.' },
+  1704: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source directly asks for the number of positive divisors of 120.' },
+  1871: { partial: ['집합과 명제', '집합의 연산', '집합의 연산법칙'], reason: 'The source defines a subset closed under a binary operation; the set-operation-law primary is clear even though multiplication-closure is not an exact L4.' },
+  1920: { path: ['집합과 명제', '집합의 뜻과 포함 관계', '부분집합', '부분집합의 개수'], reason: 'The source counts fixed-size subsets satisfying closure conditions; the decisive primary is subset counting.' },
+  2023: { path: ['소인수분해', '소인수분해', '약수의 개수', '소인수분해를 이용한 약수의 개수'], reason: 'The source defines a divisor-count function and sums its values.' },
+  2071: { partial: ['함수', '함수', '함수의 성질'], reason: 'The source defines a function on natural numbers by prime and multiplicative/additive conditions; the function property is primary even though the number-theory leaf is absent.' },
+  2091: { partial: ['소인수분해', 'CANONICAL_NO_FIT', '모듈러 산술'], reason: 'The source is a last-digit periodicity problem; retain the number-theory primary rather than leaving L1 UNKNOWN.' },
+  2250: { path: ['집합과 명제', '집합의 연산', '집합의 연산법칙', '복합 연산'], reason: 'The source counts families closed under union and intersection; this is a set-operation-law/composite-operation problem.' },
+  2365: { path: ['방정식과 부등식', '여러 가지 부등식', '이차부등식', '근의 위치와 해'], reason: 'The source solves a quadratic inequality with a floor-function condition; the quadratic-inequality interval method is primary.' },
 };
 
 function pathLabels(values) {
@@ -131,6 +166,10 @@ function resolveCanonical(recordIndex, value) {
     const canonical = pathLabels(override.path);
     if (!masterKeys.has(canonicalKey(canonical))) return { canonical: raw, state: 'CANONICAL_PATH_UNMATCHED', reason: `Override path is not in canonical master: ${canonicalKey(canonical)}` };
     return { canonical, state: 'CANONICAL_PATH_MATCH', reason: override.reason };
+  }
+  if (override?.partial) {
+    const canonical = { L1: override.partial[0], L2: override.partial[1], L3: override.partial[2], L4: 'CANONICAL_NO_FIT' };
+    return { canonical, state: 'EXPLICIT_NO_FIT_OR_UNKNOWN', reason: override.reason };
   }
 
   const labels = { ...raw };

@@ -113,7 +113,7 @@ Mother decision 분포는 다음과 같다.
 | `SOURCE_DEFECT_CANDIDATE` | 4 |
 | 합계 | 2,498 |
 
-Mother ledger closure 수치(`2,277/2,277`, unresolved `0`)와 final candidate record cardinality(`2,498`)가 닫혔다. canonical resolution도 raw path와 resolved path를 분리 보존한 상태로 2,498건 전체가 exact master match 또는 명시적 no-fit/unknown으로 닫혔다.
+Mother ledger closure 수치(`2,277/2,277`, unresolved `0`)와 final candidate record cardinality(`2,498`)가 닫혔다. 이후 Mother가 source·solution의 주된 풀이 원리를 다시 확인해 L1 completeness correction을 수행했고, canonical resolution도 raw path와 resolved path를 분리 보존한 상태로 2,498건 전체가 exact master match 또는 명시적 no-fit/unknown으로 닫혔다.
 
 ## 7. Canonical/applicability gate
 
@@ -121,18 +121,18 @@ final candidate의 L1~L4를 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/0
 
 | canonical state | 문항 수 |
 |---|---:|
-| `CANONICAL_PATH_MATCH` | 2,171 |
-| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 327 |
+| `CANONICAL_PATH_MATCH` | 2,193 |
+| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 305 |
 | `CANONICAL_PATH_UNMATCHED` | 0 |
 
-최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 207건은 raw path와 exact master path가 달라졌으며, 그중 178건은 반복되는 taxonomy label alias, 29건은 source evidence를 확인한 문항별 Mother resolution이다. master에 exact leaf가 없는 327건은 `EXPLICIT_NO_FIT_OR_UNKNOWN`으로 명시적으로 닫았다.
+최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 242건은 raw path와 resolved path가 달라졌으며, 그중 229건은 exact master path로, 13건은 L1~L3 primary를 복원한 partial/no-fit path로 정리했다. 현재 `EXPLICIT_NO_FIT_OR_UNKNOWN`은 305건이며, exact unmatched는 0건이다.
 
 ```json
 {
   "unresolvedDisagreementCount": 0,
   "canonicalCounts": {
-    "CANONICAL_PATH_MATCH": 2171,
-    "EXPLICIT_NO_FIT_OR_UNKNOWN": 327,
+    "CANONICAL_PATH_MATCH": 2193,
+    "EXPLICIT_NO_FIT_OR_UNKNOWN": 305,
     "CANONICAL_PATH_UNMATCHED": 0
   },
   "errorCount": 0,
@@ -152,6 +152,19 @@ canonical resolution이 적용된 대표 raw path 유형은 다음과 같다.
 - `집합과 명제 | 명제 | 명제 변환 | 대우를 이용한 증명` 6건 → `집합과 명제 | 명제 | 역·이·대우 | 대우를 이용한 증명`
 
 이 resolution은 기존 A/B packet을 재작성하지 않는다. 예를 들어 `무리함수의 교점`은 master의 `무리함수의 활용 → 무리함수의 교점`으로, `다항식의 나눗셈`/`나머지정리`는 master의 `항등식과 나머지정리 → 나머지정리`로 연결된다. exact leaf가 없는 대표 사례인 경로합 최솟값, solid-geometry sphere volume, 흡수법칙, 일부 절댓값·정수해 generic leaf는 다른 problemType으로 강제하지 않고 `EXPLICIT_NO_FIT_OR_UNKNOWN`으로 남겼다.
+
+### L1 completeness correction
+
+초기 candidate에서 L1이 `UNKNOWN` 또는 `CANONICAL_NO_FIT`으로 남았던 35건을 Mother가 source content, choices, answer, solution의 주된 풀이법 기준으로 다시 읽었다.
+
+| 보정 결과 | 문항 수 |
+|---|---:|
+| exact master path로 복원 | 22 |
+| L1~L3 primary를 복원하고 L4만 no-fit으로 보존 | 13 |
+| 최종 candidate에서 master가 인식하는 L1 | 2,498 / 2,498 |
+| L1 미인식 final record | 0 |
+
+따라서 현재 no-fit은 L1 자체를 포기한 상태가 아니다. L1~L3를 결정할 수 있는 문항은 primary를 보존하고, source 결함·다중 primary·현재 master에 없는 L4만 별도 상태로 남긴다.
 
 ## 8. Gate 및 검증 결과
 
