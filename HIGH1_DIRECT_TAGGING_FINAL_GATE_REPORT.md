@@ -121,18 +121,18 @@ final candidate의 L1~L4를 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/0
 
 | canonical state | 문항 수 |
 |---|---:|
-| `CANONICAL_PATH_MATCH` | 2,193 |
-| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 305 |
+| `CANONICAL_PATH_MATCH` | 2,227 |
+| `EXPLICIT_NO_FIT_OR_UNKNOWN` | 271 |
 | `CANONICAL_PATH_UNMATCHED` | 0 |
 
-최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 242건은 raw path와 resolved path가 달라졌으며, 그중 229건은 exact master path로, 13건은 L1~L3 primary를 복원한 partial/no-fit path로 정리했다. 현재 `EXPLICIT_NO_FIT_OR_UNKNOWN`은 305건이며, exact unmatched는 0건이다.
+최종 merge script는 Mother-level canonical resolution을 수행한다. 기존 raw canonical을 임의로 버리지 않고 `final.canonicalRaw`로 보존한다. 전체 412건은 raw path와 resolved path가 달라졌으며, 그중 263건은 exact master path로, 149건은 L1~L3 primary를 복원한 partial/no-fit path로 정리했다. 현재 `EXPLICIT_NO_FIT_OR_UNKNOWN`은 271건이며, exact unmatched는 0건이다.
 
 ```json
 {
   "unresolvedDisagreementCount": 0,
   "canonicalCounts": {
-    "CANONICAL_PATH_MATCH": 2193,
-    "EXPLICIT_NO_FIT_OR_UNKNOWN": 305,
+    "CANONICAL_PATH_MATCH": 2227,
+    "EXPLICIT_NO_FIT_OR_UNKNOWN": 271,
     "CANONICAL_PATH_UNMATCHED": 0
   },
   "errorCount": 0,
@@ -164,7 +164,19 @@ canonical resolution이 적용된 대표 raw path 유형은 다음과 같다.
 | 최종 candidate에서 master가 인식하는 L1 | 2,498 / 2,498 |
 | L1 미인식 final record | 0 |
 
-따라서 현재 no-fit은 L1 자체를 포기한 상태가 아니다. L1~L3를 결정할 수 있는 문항은 primary를 보존하고, source 결함·다중 primary·현재 master에 없는 L4만 별도 상태로 남긴다.
+### L2/L3 completeness correction
+
+같은 Mother 방식으로 L2와 L3도 source content, answer, solution에서 실제 주된 방법과 조건을 다시 확인했다. 예를 들어 약수 문제는 `소인수분해 → 약수의 개수`, 구멍을 뚫은 원기둥 문제는 `입체도형 → 겉넓이와 부피 → 복합입체도형`, 모듈러 나머지 문제는 해설이 실제로 사용한 나머지정리 또는 주기·나누어떨어짐 방법에 맞춰 보정했다.
+
+| primary completeness | 문항 수 |
+|---|---:|
+| L1 recognized | 2,498 / 2,498 |
+| L2 recognized | 2,498 / 2,498 |
+| L3 recognized | 2,498 / 2,498 |
+| L4 exact master match | 2,227 |
+| L4 no-fit/evidence hold | 271 |
+
+따라서 현재 no-fit은 L1·L2·L3를 포기한 상태가 아니다. 현재 남은 271건은 primary hierarchy를 채운 뒤에도 L4 leaf가 없거나 source/evidence 상태 때문에 L4를 확정하지 않은 문항이다.
 
 ## 8. Gate 및 검증 결과
 

@@ -33,8 +33,8 @@ test('HIGH1 Mother final candidate closes identity, Mother, and canonical gates'
   assert.equal(candidate.unresolvedDisagreementCount, 0);
   assert.equal(candidate.errors.length, 0);
   assert.equal(candidate.readyForGate, true);
-  assert.equal(candidate.canonicalCounts.CANONICAL_PATH_MATCH, 2193);
-  assert.equal(candidate.canonicalCounts.EXPLICIT_NO_FIT_OR_UNKNOWN, 305);
+  assert.equal(candidate.canonicalCounts.CANONICAL_PATH_MATCH, 2227);
+  assert.equal(candidate.canonicalCounts.EXPLICIT_NO_FIT_OR_UNKNOWN, 271);
   assert.equal(candidate.canonicalCounts.CANONICAL_PATH_UNMATCHED || 0, 0);
   assert.equal(candidate.records.length, 2498);
   assert.equal(new Set(candidate.records.map(record => record.recordIndex)).size, 2498);
@@ -50,8 +50,18 @@ test('every final canonical match resolves to the current RPM master', () => {
 
 test('every final record has a recognized primary L1, including explicit no-fit records', () => {
   const primaryL1 = new Set((master.records || []).map(record => record.majorUnit));
+  const primaryL2 = new Set();
+  const primaryL3 = new Set();
+  for (const record of master.records || []) {
+    for (const concept of record.concepts || []) {
+      primaryL2.add([record.majorUnit, record.midUnit].join('|'));
+      primaryL3.add([record.majorUnit, record.midUnit, concept.concept].join('|'));
+    }
+  }
   for (const record of candidate.records) {
     assert.ok(primaryL1.has(record.final.canonical.L1), `record ${record.recordIndex} has no recognized L1`);
+    assert.ok(primaryL2.has([record.final.canonical.L1, record.final.canonical.L2].join('|')), `record ${record.recordIndex} has no recognized L2`);
+    assert.ok(primaryL3.has([record.final.canonical.L1, record.final.canonical.L2, record.final.canonical.L3].join('|')), `record ${record.recordIndex} has no recognized L3`);
   }
 });
 
