@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "metadata-foundation-h2-math2-direct-tagging-mother-summary-v1",
+  "schemaVersion": "metadata-foundation-h2-math2-direct-tagging-mother-summary-v2",
   "artifactRole": "MOTHER_FINAL_SCOPED_SUMMARY",
   "summaryStatus": "SEALED",
   "targetGrade": "고2",
@@ -55,6 +55,12 @@
     "SOURCE_BOUNDARY_REPAIR": 45,
     "FALLBACK_PATH": 45
   },
+  "decisionTypeCounts": {
+    "MOTHER_DETERMINISTIC_RECONCILIATION": 236,
+    "MOTHER_MANUAL_NEW_CANONICAL_PATH": 45,
+    "MOTHER_MANUAL_B": 180,
+    "MOTHER_MANUAL_A": 43
+  },
   "identityChecks": {
     "sourceIdentityCount": 631,
     "finalIdentityCount": 504,
@@ -68,14 +74,60 @@
     "authorityStatus": "LOCKED",
     "authorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0"
   },
+  "canonicalChecks": {
+    "authorityFileExists": true,
+    "authorityShaMatchesManifest": true,
+    "authorityLocked": true,
+    "compiledMasterShaMatchesManifest": true,
+    "ruleManifestShaMatchesManifest": true,
+    "hierarchyValid": true,
+    "keySchemaValid": true,
+    "sourceBindingValid": true,
+    "sourceImmutability": true,
+    "protectedDiffEmpty": true,
+    "assetDiffEmpty": true,
+    "dbQuestionIndexDiffEmpty": true,
+    "orderedScopeValid": true
+  },
   "sourceChecks": {
     "liveSourceRows": 631,
     "includedRows": 504,
     "excludedRows": 127,
     "sourceLoadErrors": 0,
+    "sourceFileHashMismatchCount": 0,
     "sourceFingerprintBinding": "PASS",
+    "sourceIdentityBinding": "PASS",
     "sourceImmutability": "PASS",
     "productionMutation": "NONE"
+  },
+  "gateCounts": {
+    "l4GapCount": 7,
+    "l4GapUids": [
+      "h2-math2-direct-460466aee383f4ddc010b226afeda055",
+      "h2-math2-direct-6e3eda0647f916393ee6db723625c718",
+      "h2-math2-direct-15f92884572a441d640dbd7f858c464e",
+      "h2-math2-direct-3ddd1219c8a04e649b9e9db4931b0460",
+      "h2-math2-direct-e2f71676decbd1cc02e6ef8fc2d0f77c",
+      "h2-math2-direct-b72479f51f4eddf625e584ef14e179bb",
+      "h2-math2-direct-593e0d11fe74cb9e6b5eac393657fe5e"
+    ],
+    "invalidDifficultyCount": 0,
+    "invalidDifficultyUids": [],
+    "unresolvedAdjudicationCount": 0,
+    "unresolvedAdjudicationUids": [],
+    "sourceBindingFailureCount": 0,
+    "sourceBindingFailureUids": [],
+    "canonicalInvalidCount": 0,
+    "canonicalInvalidUids": [],
+    "invalidKeyCount": 0,
+    "invalidKeyUids": [],
+    "protectedDiffCount": 0,
+    "protectedDiff": [],
+    "assetDiffCount": 0,
+    "assetDiff": [],
+    "dbQuestionIndexDiffCount": 0,
+    "dbQuestionIndexDiff": [],
+    "fallbackUniqueUidCount": 45
   },
   "productionWriteAllowed": false,
   "finalReleaseAllowed": false,

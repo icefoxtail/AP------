@@ -1,0 +1,320 @@
+{
+  "schemaVersion": "metadata-foundation-h2-math2-direct-tagging-l4-gap-ledger-v2",
+  "artifactRole": "L4_GAP_LEDGER",
+  "sourceManifestSha256": "0ef72c3659cd0ec0d1acb81070dcadc403e8322bfa9f757e197c9684cef8938e",
+  "count": 7,
+  "uids": [
+    "h2-math2-direct-460466aee383f4ddc010b226afeda055",
+    "h2-math2-direct-6e3eda0647f916393ee6db723625c718",
+    "h2-math2-direct-15f92884572a441d640dbd7f858c464e",
+    "h2-math2-direct-3ddd1219c8a04e649b9e9db4931b0460",
+    "h2-math2-direct-e2f71676decbd1cc02e6ef8fc2d0f77c",
+    "h2-math2-direct-b72479f51f4eddf625e584ef14e179bb",
+    "h2-math2-direct-593e0d11fe74cb9e6b5eac393657fe5e"
+  ],
+  "records": [
+    {
+      "stableUid": "h2-math2-direct-460466aee383f4ddc010b226afeda055",
+      "sourceArchiveFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "L1": "함수의 극한과 연속",
+      "L2": "함수의 극한",
+      "L3": "함수의 극한",
+      "candidateL4Leaves": [
+        {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.2"
+          ],
+          "label": "극한값 계산",
+          "reason": "최종 계산은 유리화된 극한값 계산이지만 역함수 자체를 표현하지 못한다."
+        },
+        {
+          "path": [
+            "L1-3",
+            "L2-3.3",
+            "L3-3.3.1",
+            "L4-3.3.1.2"
+          ],
+          "label": "두 곡선 사이",
+          "reason": "역함수 관계는 있으나 넓이 문제가 아니므로 직접 적용할 수 없다."
+        }
+      ],
+      "rejectedExistingL4": [
+        {
+          "path": [
+            "L1-1",
+            "L2-1.1",
+            "L3-1.1.1",
+            "L4-1.1.1.2"
+          ],
+          "label": "극한값 계산",
+          "reason": "역함수 개념을 담지 못하는 downstream 계산 leaf다."
+        },
+        {
+          "path": [
+            "L1-3",
+            "L2-3.3",
+            "L3-3.3.1",
+            "L4-3.3.1.2"
+          ],
+          "label": "두 곡선 사이",
+          "reason": "source가 넓이를 묻지 않는다."
+        }
+      ],
+      "l4GapReason": "2015 수학II locked canonical taxonomy에는 역함수 극한을 직접 표현하는 L4가 없다.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    },
+    {
+      "stableUid": "h2-math2-direct-6e3eda0647f916393ee6db723625c718",
+      "sourceArchiveFile": "original/high/h2/2mid/22_순천고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "L1": "함수의 극한과 연속",
+      "L2": "함수의 연속",
+      "L3": "연속 조건",
+      "candidateL4Leaves": [
+        {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.2",
+            "L4-1.2.2.2"
+          ],
+          "label": "구간별 함수",
+          "reason": "piecewise continuity supports the calculation but is not the decisive inverse-graph concept"
+        },
+        {
+          "path": [
+            "L1-3",
+            "L2-3.3",
+            "L3-3.3.1",
+            "L4-3.3.1.2"
+          ],
+          "label": "두 곡선 사이",
+          "reason": "two graph representations occur but the task is intersection reconstruction"
+        }
+      ],
+      "rejectedExistingL4": [
+        {
+          "path": [
+            "L1-1",
+            "L2-1.2",
+            "L3-1.2.1",
+            "L4-1.2.1.1"
+          ],
+          "reason": "continuity is supporting only"
+        },
+        {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "reason": "no derivative drives the answer"
+        }
+      ],
+      "l4GapReason": "No inverse-function graph fixed-point/intersection leaf in locked 2015 수학II taxonomy.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    },
+    {
+      "stableUid": "h2-math2-direct-15f92884572a441d640dbd7f858c464e",
+      "sourceArchiveFile": "original/high/h2/2mid/23_순천고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "L1": "함수의 극한과 연속",
+      "L2": "함수의 연속",
+      "L3": "연속의 뜻",
+      "candidateL4Leaves": [
+        "L4-1.2.1.1",
+        "L4-1.2.2.2"
+      ],
+      "rejectedExistingL4": [
+        {
+          "key": "L4-1.2.1.1",
+          "reason": "한 점 연속은 일부 조건만 나타내고 역함수 대칭이 핵심이다."
+        },
+        {
+          "key": "L4-1.2.2.2",
+          "reason": "구간별 함수는 조각식만 표현하고 역함수 존재를 보존하지 못한다."
+        }
+      ],
+      "l4GapReason": "source concept inverse-function existence and graph symmetry is absent as an exact L4 in locked 2015 수학II taxonomy.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    },
+    {
+      "stableUid": "h2-math2-direct-3ddd1219c8a04e649b9e9db4931b0460",
+      "sourceArchiveFile": "original/high/h2/2mid/25_매산여고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "L1": "함수의 극한과 연속",
+      "L2": "함수의 연속",
+      "L3": "연속 조건",
+      "candidateL4Leaves": [
+        "L4-1.2.1.1",
+        "L4-1.2.2.2"
+      ],
+      "rejectedExistingL4": [
+        {
+          "key": "L4-1.2.1.1",
+          "reason": "연속은 전제이고 역함수 교점 대칭·단조성이 결정 전략이다."
+        },
+        {
+          "key": "L4-1.2.2.2",
+          "reason": "구간별 함수는 조각 표현만 나타내며 역함수 대응을 보존하지 못한다."
+        }
+      ],
+      "l4GapReason": "source concept inverse function is present, but exact inverse-function L4 is absent from locked 2015 수학II taxonomy.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    },
+    {
+      "stableUid": "h2-math2-direct-e2f71676decbd1cc02e6ef8fc2d0f77c",
+      "sourceArchiveFile": "original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "L1": "함수의 극한과 연속",
+      "L2": "함수의 연속",
+      "L3": "연속의 뜻",
+      "candidateL4Leaves": [
+        "L4-1.2.1.1",
+        "L4-1.2.2.2"
+      ],
+      "rejectedExistingL4": [
+        {
+          "key": "L4-1.2.1.1",
+          "reason": "연속은 전제이고 역함수 교점 대응이 결정 전략이다."
+        },
+        {
+          "key": "L4-1.2.2.2",
+          "reason": "구간별 함수는 조각 표현만 보존하며 역함수 존재를 표현하지 못한다."
+        }
+      ],
+      "l4GapReason": "source concept inverse function is present, but exact inverse-function L4 is absent from locked 2015 수학II taxonomy.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    },
+    {
+      "stableUid": "h2-math2-direct-b72479f51f4eddf625e584ef14e179bb",
+      "sourceArchiveFile": "original/high/h2/2mid/22_팔마고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "L1": "미분",
+      "L2": "미분계수와 도함수",
+      "L3": "도함수",
+      "candidateL4Leaves": [
+        {
+          "path": [
+            "L1-2",
+            "L2-2.4",
+            "L3-2.4.1",
+            "L4-2.4.1.2"
+          ],
+          "label": "부등식 증명",
+          "reason": "inequalities drive the proof but not a minimum-bound form"
+        },
+        {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "label": "도함수 계산",
+          "reason": "derivative is downstream"
+        }
+      ],
+      "rejectedExistingL4": [
+        {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "reason": "not standalone derivative calculation"
+        },
+        {
+          "path": [
+            "L1-2",
+            "L2-2.4",
+            "L3-2.4.1",
+            "L4-2.4.1.2"
+          ],
+          "reason": "not standard inequality minimum proof"
+        }
+      ],
+      "l4GapReason": "No function-inequality equality-rigidity leaf in locked taxonomy.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    },
+    {
+      "stableUid": "h2-math2-direct-593e0d11fe74cb9e6b5eac393657fe5e",
+      "sourceArchiveFile": "original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "L1": "미분",
+      "L2": "도함수의 활용(3)",
+      "L3": "방정식과 부등식",
+      "candidateL4Leaves": [
+        {
+          "path": [
+            "L1-2",
+            "L2-2.4",
+            "L3-2.4.1",
+            "L4-2.4.1.1"
+          ],
+          "label": "근의 개수",
+          "reason": "multiple root is a root-structure condition"
+        },
+        {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "label": "도함수 계산",
+          "reason": "derivative equality is supporting"
+        }
+      ],
+      "rejectedExistingL4": [
+        {
+          "path": [
+            "L1-2",
+            "L2-2.1",
+            "L3-2.1.2",
+            "L4-2.1.2.2"
+          ],
+          "reason": "not a plain derivative-value computation"
+        },
+        {
+          "path": [
+            "L1-2",
+            "L2-2.4",
+            "L3-2.4.1",
+            "L4-2.4.1.2"
+          ],
+          "reason": "no inequality proof"
+        }
+      ],
+      "l4GapReason": "No exact double-root/multiplicity L4 in locked 2015 수학II taxonomy.",
+      "status": "RESOLVED_WITH_L4_GAP",
+      "L4Key": null,
+      "L4": null
+    }
+  ]
+}
