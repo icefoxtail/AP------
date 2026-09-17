@@ -45,7 +45,6 @@ assert(
 
 assert(
   studentPortal.includes("if (!archiveFile.startsWith('MIXED:')) return true;") &&
-    studentPortal.includes("if (!archiveFile.startsWith('MIXED:')) return !!archiveFile;") &&
     studentPortal.includes('mixed_payload_json') &&
     studentPortal.includes('function restoreMixedOmrPayload') &&
     studentPortal.includes('function openOmrReview') &&
@@ -82,6 +81,9 @@ assert.strictEqual(
   'mixed exams with a saved question snapshot must restore successfully'
 );
 assert.strictEqual(stored.has('mixedQuestions_sample-key'), true, 'mixed questions should be stored before opening the engine');
+const originalSnapshot={questions:[{id:1,content:'원본 문항'}],meta:{sourceKind:'archive2-original',sourceArchiveFile:'sample.js',questionUids:['canonical-original']}};
+assert.strictEqual(context.restoreMixedOmrPayload({assignment_id:'original-assignment',archive_file:'exams/sample.js',mixed_payload_json:JSON.stringify(originalSnapshot)}),true);
+assert.deepStrictEqual(JSON.parse(stored.get('archive2Original_original-original-assignment')),originalSnapshot,'Archive 2.0 originals must restore the issued content and identity before opening the same engine');
 assert.strictEqual(
   context.restoreMixedOmrPayload({ archive_file: 'MIXED:empty', mixed_payload_json: '' }),
   false,

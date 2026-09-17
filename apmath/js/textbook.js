@@ -3,6 +3,14 @@
  * Split from dashboard.js.
  */
 
+function resumeClassProgressAfterInlineTextbookAction(context) {
+    if (!context?.classId || typeof openClassRecordModal !== 'function') return false;
+    if (!state.ui) state.ui = {};
+    state.ui.classProgressInlineTextbookAction = null;
+    openClassRecordModal(context.classId, context.date);
+    return true;
+}
+
 function renderTextbookManageList() {
     const listRoot = document.getElementById('tb-manage-list');
     if (!listRoot) return;
@@ -122,6 +130,7 @@ async function handleAddTextbook() {
         if (r?.success) {
             toast('교재가 등록되었습니다.', 'success');
             await loadData();
+            if (resumeClassProgressAfterInlineTextbookAction(state.ui?.classProgressInlineTextbookAction)) return;
             returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
@@ -189,6 +198,7 @@ async function handlePatchTextbook(tbId, isStatusChange, targetStatus = 'active'
         if (r?.success) {
             toast(isStatusChange ? '교재 상태가 변경되었습니다.' : '교재 정보가 수정되었습니다.', 'success');
             await loadData();
+            if (resumeClassProgressAfterInlineTextbookAction(state.ui?.classProgressInlineTextbookAction)) return;
             returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }
@@ -209,6 +219,7 @@ async function handleDeleteTextbook(tbId) {
         if (r?.success) {
             toast('교재가 삭제되었습니다.', 'info');
             await loadData();
+            if (resumeClassProgressAfterInlineTextbookAction(state.ui?.classProgressInlineTextbookAction)) return;
             returnToPreviousManagementView('dashboard', returnCtx);
             return;
         }

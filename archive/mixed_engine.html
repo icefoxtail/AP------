@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script src="archive2-review.js"></script>
+    <link rel="stylesheet" href="archive2-review.css">
+    <script>
+        // Studio owns ordering/header/layout. Keep the existing renderer and print
+        // actions, but do not expose a second editor for a Studio snapshot.
+        if (new URLSearchParams(location.search).get('studio') === '1') {
+            document.documentElement.classList.add('archive2-output');
+            if (new URLSearchParams(location.search).get('preview') === '1') document.documentElement.classList.add('archive2-preview');
+        }
+    </script>
+    <style>
+        html.archive2-output .qpp-selector,
+        html.archive2-output .print-header-editor-wrap,
+        html.archive2-output button[onclick="shuffleData()"],
+        html.archive2-output .qr-output-wrap { display: none !important; }
+        html.archive2-preview #mode-ctrl { display: none !important; }
+        html.archive2-preview body { background: #eef0f3 !important; background-image: none !important; padding-top: 10px !important; }
+        html.archive2-preview #print-area { margin-top: 0 !important; }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS아카이브 | 믹서 출력 (Rulebook v1.9 + Image Field Final)</title>
@@ -612,6 +631,7 @@ function appendHeaderFill(metaWrap, label, scoreSuffix = '') {
 
 function buildQrTargetUrl() {
     const url = new URL(buildContext?.input.url || window.location.href);
+    if(url.searchParams.get('portalQr')==='1'){const portal=new URL('../apmath/student/index.html',url);portal.searchParams.set('omr','1');if(url.searchParams.has('assignmentId'))portal.searchParams.set('assignment_id',url.searchParams.get('assignmentId'));return portal.href;}
     url.searchParams.set('mode', 'sol');
     url.searchParams.set('qr', '1');
     url.searchParams.set('key', AppState.key);
@@ -718,7 +738,8 @@ function injectQrToLastExamPage(area) {
 
     const qrWrap = document.createElement('div');
     qrWrap.className = 'page-qr';
-    qrWrap.innerHTML = `<div class="page-qr-label">${QR_PATCH.label}</div><canvas></canvas>`;
+    qrWrap.dataset.qrTarget=buildQrTargetUrl();
+    qrWrap.innerHTML = `<div class="page-qr-label">${new URLSearchParams(location.search).get('portalQr')==='1'?'학생 포털':QR_PATCH.label}</div><canvas></canvas>`;
 
     targetPage.appendChild(qrWrap);
 

@@ -2,6 +2,7 @@ import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
+import { handleArchive2 } from './archive2.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -234,7 +235,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
   if (!file || file.startsWith('MIXED:') || /^https?:\/\//i.test(file)) return;
   try {
     const url = EXAM_ARCHIVE_BASE_URL + file.split('/').map(encodeURIComponent).join('/');
-    const res = await fetch(url);
+    const res = env.ARCHIVE2_ASSETS ? await env.ARCHIVE2_ASSETS.fetch(url) : await fetch(url);
     if (!res.ok) return;
     const jsText = await res.text();
     const bank = extractQuestionBankFromArchiveText(jsText);
@@ -1014,6 +1015,10 @@ export async function handleExams(request, env, teacher, path, url) {
       const d = await request.json();
       if (!d.archive_file) return jsonResponse({ error: 'archive_file required' }, 400);
       if (!Array.isArray(d.items)) return jsonResponse({ error: 'items must be an array' }, 400);
+      if (String(d.archive_file).startsWith('MIXED:archive2-')) {
+        const frozen = await env.DB.prepare('SELECT * FROM class_exam_assignments WHERE archive_file = ? LIMIT 1').bind(d.archive_file).first();
+        if (frozen?.archive2_write_key) return jsonResponse({ error: 'Archive 2.0 확정 문항 blueprint는 배부 snapshot과 함께 동결됩니다.' }, 409);
+      }
 
       const blueprintColumns = await getTableColumnSet(env, 'exam_blueprints');
       const blueprintMetaColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_META_COLUMNS);
@@ -1276,6 +1281,31 @@ export async function handleExams(request, env, teacher, path, url) {
   }
 
   if (resource === 'class-exam-assignments') {
+    if(method==='POST'&&!id){
+      if(request.headers.get('X-Archive2-Contract')==='archive2-v1'){
+        const currentTeacher=await requireTeacher(request,env,teacher);
+        if(!currentTeacher)return jsonResponse({error:'Unauthorized'},401);
+        return handleArchive2(request,env,currentTeacher,'original',{buildArchiveQuestionMetadata,buildArchiveMetadataHash});
+      }
+    }
+    if (id === 'studio' || id === 'question-history') {
+      const currentTeacher = await requireTeacher(request, env, teacher);
+      if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+      return handleArchive2(request, env, currentTeacher, id, { buildArchiveQuestionMetadata, buildArchiveMetadataHash });
+    }
+    if(method==='GET'&&id&&path[3]==='status'){
+      const currentTeacher=await requireTeacher(request,env,teacher);
+      if(!currentTeacher)return jsonResponse({error:'Unauthorized'},401);
+      const assignment=await loadClassExamAssignmentById(env,id);
+      if(!assignment)return jsonResponse({error:'출제 내역을 찾을 수 없습니다.'},404);
+      if(!(await canAccessClass(currentTeacher,assignment.class_id,env)))return jsonResponse({error:'Forbidden'},403);
+      const students=(await env.DB.prepare(`SELECT r.student_id,s.name,CASE WHEN x.student_id IS NULL THEN 0 ELSE 1 END excluded,
+        (SELECT e.id FROM exam_sessions e WHERE e.student_id=r.student_id AND e.assignment_id=r.assignment_id ORDER BY e.updated_at DESC LIMIT 1) session_id
+        FROM class_exam_assignment_recipients r JOIN students s ON s.id=r.student_id
+        LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+        WHERE r.assignment_id=? ORDER BY s.name`).bind(id).all()).results;
+      return jsonResponse({success:true,assignment,students});
+    }
     if ((method === 'GET' || method === 'POST') && id && path[3] === 'pdf') {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
@@ -1522,6 +1552,9 @@ export async function handleExams(request, env, teacher, path, url) {
       }
 
       if (existing?.id) {
+        if (existing.archive2_write_key) {
+          return jsonResponse({ success: false, error: 'Archive 2.0의 확정 배부는 원본을 변경할 수 없습니다. 새 문제지로 출제하세요.', assignment_id: existing.id }, 409);
+        }
         await env.DB.prepare(`
           UPDATE class_exam_assignments
           SET ${updateSets.join(',\n              ')}
@@ -1645,7 +1678,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const exclusions = await loadClassAssignmentExclusions(env, assignments.map(a => a.id));
       // 이 시험이 배정된 시점에 blueprint 동기화가 안 됐던 옛 데이터를 소급 채운다.
       // 이후 요청은 archive metadata revision/hash가 같을 때만 빠르게 스킵된다.
-      const archiveFilesToSync = [...new Set(assignments.map(a => a.archive_file).filter(Boolean))];
+      const archiveFilesToSync = [...new Set(assignments.filter(a=>!a.archive2_write_key).map(a => a.archive_file).filter(Boolean))];
       await Promise.all(archiveFilesToSync.map(file => syncExamBlueprintsFromArchive(env, file)));
       return jsonResponse({ success: true, assignments, exclusions });
     }

@@ -21,7 +21,7 @@ import { handleTeachers } from './routes/teachers.js';
 import { handleAttendanceHomework } from './routes/attendance-homework.js';
 import { handleExams } from './routes/exams.js';
 import { autoCompleteExpiredOperationMemos, handleOperations } from './routes/operations.js';
-import { handleClassDaily } from './routes/class-daily.js';
+import { getClassProgressInitialData, handleClassDaily } from './routes/class-daily.js';
 import { handleStudentPortal } from './routes/student-portal.js';
 import { handleReportsAi } from './routes/reports-ai.js';
 import { handleCheckOmr } from './routes/check-omr.js';
@@ -39,8 +39,8 @@ const DEFAULT_ALLOWED_ORIGINS = ['https://icefoxtail.github.io'];
 const headers = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': DEFAULT_ALLOWED_ORIGINS[0],
-  'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token'
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Student-Token, X-Archive2-Contract'
 };
 
 // 요청 Origin이 허용 목록(env.ALLOWED_ORIGINS 콤마 구분 또는 기본값) 또는 localhost일 때만 해당 Origin을 반환한다.
@@ -3357,6 +3357,11 @@ async function handleApiRequest(request, env) {
           let ttAllDailyRecords = { results: [] };
           let ttAllDailyProgress = { results: [] };
           const foundationData = await loadFoundationInitialData(env, teacher);
+          const classProgressInitialData = await getClassProgressInitialData(
+            env,
+            teacher,
+            todayKstDateString()
+          );
           [ttAllDailyRecords, ttAllDailyProgress] = await Promise.all([
             env.DB.prepare(`
               SELECT id, class_id, date
@@ -3479,6 +3484,7 @@ async function handleApiRequest(request, env) {
                 report_exam_cohort_stats: [],
                 exam_question_reviews: [],
                 exam_analysis_meta: [],
+                ...classProgressInitialData,
                 ...foundationData
               }), { headers });
             }
@@ -3567,6 +3573,7 @@ async function handleApiRequest(request, env) {
             report_exam_cohort_stats: reportExamCohortStats,
             exam_question_reviews: examQuestionReviews.results || [],
             exam_analysis_meta: examAnalysisMeta.results || [],
+            ...classProgressInitialData,
             ...foundationData
           }), { headers });
         }
@@ -3640,7 +3647,9 @@ async function handleApiRequest(request, env) {
         if (
           resource === 'class-textbooks' ||
           resource === 'class-daily-records' ||
-          resource === 'class-daily-progress'
+          resource === 'class-daily-progress' ||
+          resource === 'class-progress' ||
+          resource === 'class-progress-taxonomy'
         ) {
           const teacher = await verifyAuth(request, env);
           const routed = await handleClassDaily(request, env, teacher, path, url);
