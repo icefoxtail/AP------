@@ -14,6 +14,7 @@ const canonicalPath = path.join(
 const canonical = JSON.parse(fs.readFileSync(canonicalPath, 'utf8'));
 const route = fs.readFileSync(path.join(repoRoot, 'apmath/worker-backup/worker/routes/class-daily.js'), 'utf8');
 const classroom = fs.readFileSync(path.join(repoRoot, 'apmath/js/classroom.js'), 'utf8');
+const generator = fs.readFileSync(path.join(repoRoot, 'apmath/worker-backup/worker/scripts/build-class-progress-taxonomy.mjs'), 'utf8');
 const core = fs.readFileSync(path.join(repoRoot, 'apmath/js/core.js'), 'utf8');
 const timetable = fs.readFileSync(path.join(repoRoot, 'apmath/js/timetable.js'), 'utf8');
 const migration = fs.readFileSync(path.join(repoRoot, 'apmath/worker-backup/worker/migrations/20260917_class_persistent_progress.sql'), 'utf8');
@@ -33,11 +34,12 @@ function canonicalPathKey(record) {
 
 const canonicalPaths = canonical.records
   .filter(record => record && record.defaultSelectable !== false)
-  .map(canonicalPathKey)
-  .sort();
-const projectedPaths = CLASS_PROGRESS_TAXONOMY.map(item => item.canonicalPathKey).sort();
-assert.deepEqual(projectedPaths, canonicalPaths, 'projection must cover the canonical L1/L2 paths exactly');
+  .map(canonicalPathKey);
+const projectedPaths = CLASS_PROGRESS_TAXONOMY.map(item => item.canonicalPathKey);
+assert.deepEqual(projectedPaths, canonicalPaths, 'projection must preserve the canonical L1/L2 path order exactly');
 assert.equal(new Set(projectedPaths).size, projectedPaths.length, 'projection paths must be unique');
+assert.doesNotMatch(generator, /records\.sort\(/, 'generator must preserve canonical source order');
+assert.doesNotMatch(classroom, /group\.items\.sort\(/, 'runtime must preserve generated taxonomy order within each course');
 
 assert.match(route, /class_progress_snapshots/);
 assert.match(route, /class_progress_items/);
