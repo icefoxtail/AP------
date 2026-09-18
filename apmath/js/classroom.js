@@ -2384,7 +2384,7 @@ function renderClassProgressTextbookDetail(book) {
                 <span>${apEscapeHtml(meta.date || '')}${gradeKey ? ` · ${apEscapeHtml(gradeKey)} 추천` : ''}</span>
             </div>
             ${renderClassProgressCourseAddControl()}
-            <div id="record-progress-course-panels">${panels || '<div class="apms-empty">등록된 과정이 없습니다. 과정 추가를 눌러 선택하세요.</div>'}</div>
+            <div id="record-progress-course-panels">${panels || '<div class="apms-empty ap-class-progress-course-empty">등록된 과정이 없습니다. 과정 추가를 눌러 선택하세요.</div>'}</div>
         </section>
     </div>`;
 }
@@ -2552,6 +2552,7 @@ function addClassProgressCourseFromSelect() {
     const group = state.ui.classProgressModalGroups.find(item => item.key === key);
     if (!group) return;
     if (Array.from(root.querySelectorAll('[data-progress-group]')).some(node => node.getAttribute('data-progress-group') === key)) return;
+    root.querySelector('.ap-class-progress-course-empty')?.remove();
     root.insertAdjacentHTML('beforeend', renderClassProgressCoursePanel(group, []));
     const modalState = getClassProgressModalState();
     if (!Array.isArray(modalState.activeGroupKeys)) modalState.activeGroupKeys = [];
