@@ -30,6 +30,12 @@ function renderTextbookInlineAddForm(options = {}) {
     const date = String(options.date || new Date().toLocaleDateString('sv-SE'));
     const formId = options.formId ? ` id="${apEscapeHtml(String(options.formId))}"` : '';
     const title = String(options.title || '');
+    const inputIds = {
+        classId: 'new-tb-class',
+        title: 'new-tb-title',
+        startDate: 'new-tb-start',
+        ...(options.inputIds || {})
+    };
     const submitAction = options.submitAction || 'submitClassProgressTextbookAdd()';
     const cancelAction = options.cancelAction || 'cancelClassProgressTextbookInlineAction()';
     const submitLabel = String(options.submitLabel || '저장');
@@ -42,11 +48,11 @@ function renderTextbookInlineAddForm(options = {}) {
             <strong>새 교재 등록</strong>
             <button type="button" class="btn apms-button apms-button--quiet" onclick="${cancelAction}">취소</button>
         </div>
-        <input type="hidden" id="new-tb-class" value="${apEscapeHtml(classId)}">
-        <input type="text" id="new-tb-title" class="cls-input" value="${apEscapeHtml(title)}" placeholder="교재명 (예: 개념원리 중1-1)">
+        <input type="hidden" id="${apEscapeHtml(String(inputIds.classId))}" value="${apEscapeHtml(classId)}">
+        <input type="text" id="${apEscapeHtml(String(inputIds.title))}" class="cls-input" value="${apEscapeHtml(title)}" placeholder="교재명 (예: 개념원리 중1-1)">
         <div class="ap-class-progress-inline-form__row">
-            <label for="new-tb-start">시작일</label>
-            <input type="date" id="new-tb-start" class="cls-input" value="${apEscapeHtml(date)}">
+            <label for="${apEscapeHtml(String(inputIds.startDate))}">시작일</label>
+            <input type="date" id="${apEscapeHtml(String(inputIds.startDate))}" class="cls-input" value="${apEscapeHtml(date)}">
         </div>
         ${submitHtml}
     </div>`;
@@ -401,11 +407,17 @@ function openAddTextbookModal() {
     `);
 }
 
-async function handleAddTextbook() {
+async function handleAddTextbook(options = {}) {
     const returnCtx = state.ui.modalReturnView || { type: 'textbookManage', parentReturn: state.ui.textbookReturnView || { type: 'dashboard' } };
-    const cid = document.getElementById('new-tb-class')?.value || '';
-    const title = document.getElementById('new-tb-title')?.value.trim() || '';
-    const startDate = document.getElementById('new-tb-start')?.value || '';
+    const inputIds = {
+        classId: 'new-tb-class',
+        title: 'new-tb-title',
+        startDate: 'new-tb-start',
+        ...(options.inputIds || {})
+    };
+    const cid = document.getElementById(inputIds.classId)?.value || '';
+    const title = document.getElementById(inputIds.title)?.value.trim() || '';
+    const startDate = document.getElementById(inputIds.startDate)?.value || '';
 
     if (!cid || !title) return toast('반과 교재명을 모두 입력하세요.', 'warn');
 
