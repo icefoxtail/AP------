@@ -154,6 +154,35 @@ test('existing saved 2015 course panels remain visible when the new picker exclu
     assert.doesNotMatch(detail, /추천/);
 });
 
+test('empty textbook state still renders the course picker and course panel area', () => {
+    const context = makeContext('중1');
+    const modalState = context.state.ui.classProgressModalState;
+    modalState.books = [];
+    modalState.selectedTextbookId = '';
+    modalState.courseAddOpen = false;
+
+    const detail = context.renderClassProgressTextbookDetail(null);
+
+    assert.match(detail, /등록된 교재가 없습니다/);
+    assert.match(detail, /toggleClassProgressCourseAdd\(\)/);
+    assert.match(detail, /record-progress-course-panels/);
+});
+
+test('left and integrated textbook forms use distinct input IDs', () => {
+    const context = makeContext('고1');
+    context.state.ui.classProgressModalState.courseAddNewTextbookOpen = true;
+    const combinedHtml = context.renderClassProgressInlineAddForm()
+        + context.renderClassProgressCourseAddControl();
+
+    for (const id of ['new-tb-class', 'new-tb-title', 'new-tb-start']) {
+        const occurrences = Array.from(combinedHtml.matchAll(new RegExp(`id="${id}"`, 'g'))).length;
+        assert.equal(occurrences, 1, `${id} must be unique across the two forms`);
+    }
+    for (const id of ['class-progress-course-new-tb-class', 'class-progress-course-new-tb-title', 'class-progress-course-new-tb-start']) {
+        assert.equal(combinedHtml.includes(`id="${id}"`), true, `${id} must identify the integrated form input`);
+    }
+});
+
 test('applying a selected course and active books adds a course card and collapses the picker', () => {
     const context = makeContext('중1');
     const modalState = context.state.ui.classProgressModalState;
@@ -191,9 +220,12 @@ test('inline textbook registration reuses handleAddTextbook and carries the appl
     modalState.courseAddSelectedGroupKey = key;
     context._courseBookCheckboxes = [{ value: 'book-a' }];
     modalState.courseAddNewTextbookOpen = true;
-    context._elements.set('new-tb-class', { value: 'class-1' });
-    context._elements.set('new-tb-title', { value: '개념원리 공통수학2' });
-    context._elements.set('new-tb-start', { value: '2026-09-17' });
+    context._elements.set('new-tb-class', { value: 'left-class' });
+    context._elements.set('new-tb-title', { value: '왼쪽 기존 교재 폼 값' });
+    context._elements.set('new-tb-start', { value: '2026-01-01' });
+    context._elements.set('class-progress-course-new-tb-class', { value: 'class-1' });
+    context._elements.set('class-progress-course-new-tb-title', { value: '개념원리 공통수학2' });
+    context._elements.set('class-progress-course-new-tb-start', { value: '2026-09-17' });
     context.state.db.class_textbooks = [];
     context.state.ui.modalReturnView = { type: 'classDetail', classId: 'class-1' };
     context.api = {
