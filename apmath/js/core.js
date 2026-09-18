@@ -115,7 +115,9 @@ let state = {
         selectedTimetableVersionId: null,
         selectedTimetableVersion: null,
         selectedTimetableVersionSlots: [],
-        timetableDraftPreviewResult: null
+        timetableDraftPreviewResult: null,
+        classProgressPhaseCache: {},
+        classProgressPhaseInitialDataInvalid: {}
     },
     db: { 
         students: [], classes: [], class_students: [], attendance: [], homework: [], 
@@ -123,7 +125,7 @@ let state = {
         consultations: [], operation_memos: [], exam_schedules: [], academy_schedules: [], school_exam_records: [], journals: [],
         class_textbooks: [], class_daily_records: [], class_daily_progress: [],
         class_progress_date: '', class_progress_taxonomy_version: '', class_progress_taxonomy: [],
-        class_progress_snapshots: [], class_progress_items: [], timetable_classes: [],
+        class_progress_snapshots: [], class_progress_items: [], class_progress_phases: [], timetable_classes: [],
         timetable_class_students: [], timetable_students: [], timetable_class_textbooks: [],
         timetable_class_daily_records: [], timetable_class_daily_progress: [],
         parent_contacts: [], message_logs: [], student_status_history: [], class_transfer_history: [],
@@ -834,6 +836,7 @@ async function loadData(isInitial = false) {
         class_progress_taxonomy: Array.isArray(data.class_progress_taxonomy) ? data.class_progress_taxonomy : [],
         class_progress_snapshots: Array.isArray(data.class_progress_snapshots) ? data.class_progress_snapshots : [],
         class_progress_items: Array.isArray(data.class_progress_items) ? data.class_progress_items : [],
+        class_progress_phases: Array.isArray(data.class_progress_phases) ? data.class_progress_phases : [],
         students: normalizeStudentRows(data.students),
         class_students: Array.isArray(data.class_students) ? data.class_students : [],
         attendance: Array.isArray(data.attendance) ? data.attendance : [],
@@ -867,6 +870,8 @@ async function loadData(isInitial = false) {
     if (state.ui) {
         state.ui.classProgressCache = {};
         state.ui.classDailyRecordCache = {};
+        state.ui.classProgressPhaseCache = {};
+        state.ui.classProgressPhaseInitialDataInvalid = {};
     }
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();
@@ -905,6 +910,7 @@ async function refreshDataOnly() {
         class_progress_taxonomy: Array.isArray(data.class_progress_taxonomy) ? data.class_progress_taxonomy : (state.db.class_progress_taxonomy || []),
         class_progress_snapshots: Array.isArray(data.class_progress_snapshots) ? data.class_progress_snapshots : (state.db.class_progress_snapshots || []),
         class_progress_items: Array.isArray(data.class_progress_items) ? data.class_progress_items : (state.db.class_progress_items || []),
+        class_progress_phases: Array.isArray(data.class_progress_phases) ? data.class_progress_phases : (state.db.class_progress_phases || []),
         attendance: Array.isArray(data.attendance) ? data.attendance : [], 
         homework: Array.isArray(data.homework) ? data.homework : [], 
         exam_sessions: Array.isArray(data.exam_sessions) ? data.exam_sessions : [], 
@@ -934,6 +940,8 @@ async function refreshDataOnly() {
     if (state.ui) {
         state.ui.classProgressCache = {};
         state.ui.classDailyRecordCache = {};
+        state.ui.classProgressPhaseCache = {};
+        state.ui.classProgressPhaseInitialDataInvalid = {};
     }
     apmsInvalidateDataIndexes();
     apmsGetDataIndexes();

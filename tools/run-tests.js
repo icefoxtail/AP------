@@ -36,6 +36,30 @@ const requiredCommands = [
   {
     label: 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs',
     args: ['--test', 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs']
+  },
+  {
+    label: 'tests/apmath-class-progress-api.test.mjs',
+    args: ['--test', 'tests/apmath-class-progress-api.test.mjs']
+  },
+  {
+    label: 'tests/apmath-class-progress-contract.test.mjs',
+    args: ['--test', 'tests/apmath-class-progress-contract.test.mjs']
+  },
+  {
+    label: 'tests/apmath-class-progress-course-picker.test.mjs',
+    args: ['--test', 'tests/apmath-class-progress-course-picker.test.mjs']
+  },
+  {
+    label: 'tests/apmath-class-progress-phase-api.test.mjs',
+    args: ['--test', 'tests/apmath-class-progress-phase-api.test.mjs']
+  },
+  {
+    label: 'tests/apmath-class-progress-phase-migration.test.mjs',
+    args: ['--test', 'tests/apmath-class-progress-phase-migration.test.mjs']
+  },
+  {
+    label: 'tests/apmath-class-progress-phase.test.mjs',
+    args: ['--test', 'tests/apmath-class-progress-phase.test.mjs']
   }
 ];
 

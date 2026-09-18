@@ -2175,6 +2175,138 @@ function getClassProgressModalState() {
     return state.ui.classProgressModalState;
 }
 
+const CLASS_PROGRESS_PHASE_OPTIONS = Object.freeze([
+    { key: 'regular', label: '정규 진도' },
+    { key: 'semester1_midterm', label: '1학기 중간고사 대비' },
+    { key: 'semester1_final', label: '1학기 기말고사 대비' },
+    { key: 'semester2_midterm', label: '2학기 중간고사 대비' },
+    { key: 'semester2_final', label: '2학기 기말고사 대비' }
+]);
+const CLASS_PROGRESS_PHASE_KEYS = new Set(CLASS_PROGRESS_PHASE_OPTIONS.map(option => option.key));
+
+function normalizeClassProgressPhase(value) {
+    const phase = String(value || '').trim();
+    return CLASS_PROGRESS_PHASE_KEYS.has(phase) ? phase : 'regular';
+}
+
+function getClassProgressPhaseCache() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classProgressPhaseCache) state.ui.classProgressPhaseCache = {};
+    return state.ui.classProgressPhaseCache;
+}
+
+function getClassProgressPhaseInitialDataInvalidMap() {
+    if (!state.ui) state.ui = {};
+    if (!state.ui.classProgressPhaseInitialDataInvalid) state.ui.classProgressPhaseInitialDataInvalid = {};
+    return state.ui.classProgressPhaseInitialDataInvalid;
+}
+
+async function loadClassProgressPhaseForDate(classId, date) {
+    const cid = String(classId || '').trim();
+    const requestedDate = normalizeClassroomDate(date);
+    if (!cid || !requestedDate) return { phase: 'regular', effectiveDate: null, loadFailed: true };
+
+    const cache = getClassProgressPhaseCache();
+    const cacheKey = `${cid}|${requestedDate}`;
+    if (Object.prototype.hasOwnProperty.call(cache, cacheKey)) return { ...cache[cacheKey] };
+
+    const currentDate = String(state.db?.class_progress_date || '');
+    const invalidInitialData = getClassProgressPhaseInitialDataInvalidMap();
+    if (requestedDate === currentDate && !invalidInitialData[cid]) {
+        const initialRow = (Array.isArray(state.db?.class_progress_phases) ? state.db.class_progress_phases : [])
+            .find(row => String(row?.class_id || '') === cid);
+        if (initialRow) {
+            const result = {
+                phase: normalizeClassProgressPhase(initialRow.phase),
+                effectiveDate: initialRow.effective_date || null,
+                loadFailed: false
+            };
+            cache[cacheKey] = result;
+            return { ...result };
+        }
+    }
+
+    try {
+        const response = await api.get(`class-progress-phase?class_id=${encodeURIComponent(cid)}&date=${encodeURIComponent(requestedDate)}`);
+        if (!response || response.error || response.success === false) {
+            throw new Error(response?.message || response?.error || 'phase lookup failed');
+        }
+        const result = {
+            phase: normalizeClassProgressPhase(response.phase),
+            effectiveDate: response.effective_date || null,
+            loadFailed: false
+        };
+        cache[cacheKey] = result;
+        return { ...result };
+    } catch (error) {
+        console.error('[loadClassProgressPhaseForDate] failed:', error);
+        return { phase: 'regular', effectiveDate: null, loadFailed: true };
+    }
+}
+
+function setClassProgressPhaseSelection(phase) {
+    const modalState = getClassProgressModalState();
+    const selectedPhase = normalizeClassProgressPhase(phase);
+    modalState.selectedPhase = selectedPhase;
+    const meta = state.ui?.classProgressModalMeta;
+    if (meta && String(meta.classId || '') === String(modalState.classId || '')
+        && String(meta.date || '') === String(modalState.date || '')) {
+        meta.selectedPhase = selectedPhase;
+    }
+}
+
+function syncClassProgressPhaseDraftFromDom() {
+    const select = document.getElementById('record-progress-phase-select');
+    if (select) setClassProgressPhaseSelection(select.value);
+}
+
+function syncClassProgressPhaseToState(classId, effectiveDate, response = {}) {
+    const cid = String(classId || '').trim();
+    const date = normalizeClassroomDate(effectiveDate);
+    if (!cid || !date) return false;
+
+    const phase = normalizeClassProgressPhase(response.phase);
+    const row = {
+        id: response.id || null,
+        class_id: cid,
+        effective_date: response.effective_date || date,
+        phase,
+        updated_by_teacher_id: response.updated_by_teacher_id || null,
+        updated_by_teacher_name: response.updated_by_teacher_name || null,
+        created_at: response.created_at || null,
+        updated_at: response.updated_at || null
+    };
+    const cache = getClassProgressPhaseCache();
+    const cachePrefix = `${cid}|`;
+    Object.keys(cache).forEach(cacheKey => {
+        if (!cacheKey.startsWith(cachePrefix)) return;
+        const cachedDate = cacheKey.slice(cachePrefix.length);
+        if (cachedDate >= date) delete cache[cacheKey];
+    });
+    cache[`${cid}|${date}`] = {
+        phase,
+        effectiveDate: row.effective_date,
+        loadFailed: false
+    };
+
+    const currentDate = String(state.db?.class_progress_date || '');
+    const invalidInitialData = getClassProgressPhaseInitialDataInvalidMap();
+    if (date === currentDate) {
+        const rows = Array.isArray(state.db.class_progress_phases)
+            ? state.db.class_progress_phases.slice()
+            : [];
+        const existingIndex = rows.findIndex(item => String(item?.class_id || '') === cid);
+        if (existingIndex >= 0) rows[existingIndex] = row;
+        else rows.push(row);
+        state.db.class_progress_phases = rows;
+        delete invalidInitialData[cid];
+    } else if (currentDate && date < currentDate) {
+        // Editing history can change the current as-of phase, so bypass the initial-data row next time.
+        invalidInitialData[cid] = true;
+    }
+    return true;
+}
+
 function getClassProgressStatusLabel(status) {
     if (status === 'complete') return '완료';
     if (status === 'current') return '현재';
@@ -2404,6 +2536,7 @@ function renderClassProgressTextbookDetail(book) {
                 <div class="ap-class-progress-detail-head__title">등록된 교재가 없습니다</div>
                 <div class="ap-class-progress-detail-head__meta">과정과 교재를 함께 추가할 수 있습니다.</div>
             </div>`;
+    const courseAddHtml = renderClassProgressCourseAddControl();
 
     return `<div class="ap-class-progress-detail-inner" data-selected-textbook-id="${apEscapeHtml(selectedId)}">
         <div class="ap-class-progress-detail-head">
@@ -2412,19 +2545,37 @@ function renderClassProgressTextbookDetail(book) {
         ${book ? `<div class="ap-class-progress-detail-progress">${progressHtml}</div>` : ''}
         <section class="ap-class-progress-canonical">
             <div class="ap-class-progress-section-head">
-                <h3>현재 수업 진도</h3>
-                <span>${apEscapeHtml(meta.date || '')}${meta.gradeKey ? ` · ${apEscapeHtml(String(meta.gradeKey))}` : ''}</span>
+                <div class="ap-class-progress-section-head__copy">
+                    <h3>현재 수업 진도</h3>
+                    <span>${apEscapeHtml(meta.date || '')}${meta.gradeKey ? ` · ${apEscapeHtml(String(meta.gradeKey))}` : ''}</span>
+                </div>
+                <div class="ap-class-progress-section-actions">
+                    ${renderClassProgressPhaseSelect()}
+                    ${modalState.courseAddOpen ? '' : courseAddHtml}
+                </div>
             </div>
-            ${renderClassProgressCourseAddControl()}
+            ${modalState.courseAddOpen ? courseAddHtml : ''}
             <div id="record-progress-course-panels">${panels || '<div class="apms-empty ap-class-progress-course-empty">등록된 과정이 없습니다. 과정 추가를 눌러 선택하세요.</div>'}</div>
         </section>
     </div>`;
 }
 
+function renderClassProgressPhaseSelect() {
+    const modalState = getClassProgressModalState();
+    const disabled = modalState.phaseLoadFailed || state.ui?.classProgressModalMeta?.phaseLoadFailed;
+    const selected = normalizeClassProgressPhase(
+        modalState.selectedPhase ?? state.ui?.classProgressModalMeta?.selectedPhase
+    );
+    const options = CLASS_PROGRESS_PHASE_OPTIONS.map(option =>
+        `<option value="${option.key}"${option.key === selected ? ' selected' : ''}>${option.label}</option>`
+    ).join('');
+    return `<select id="record-progress-phase-select" class="cls-input ap-class-progress-phase-select" aria-label="수업 상태"${disabled ? ' disabled' : ''} onchange="setClassProgressPhaseSelection(this.value)">${options}</select>`;
+}
+
 function renderClassProgressCourseAddControl() {
     const modalState = getClassProgressModalState();
     if (!modalState.courseAddOpen) {
-        return `<div class="ap-class-progress-course-add" id="record-progress-course-add">
+        return `<div class="ap-class-progress-course-add ap-class-progress-course-add--compact" id="record-progress-course-add">
             <button type="button" class="btn apms-button apms-button--quiet" aria-expanded="false" aria-controls="record-progress-course-select" onclick="toggleClassProgressCourseAdd()">과정 추가</button>
         </div>`;
     }
@@ -2504,11 +2655,21 @@ function selectClassProgressTextbook(textbookId) {
     if (detail) detail.innerHTML = renderClassProgressTextbookDetail(book);
 }
 
+function rerenderClassProgressTextbookDetail() {
+    const modalState = getClassProgressModalState();
+    const selectedBook = (Array.isArray(modalState.books) ? modalState.books : [])
+        .find(item => String(item?.id || '') === String(modalState.selectedTextbookId || '')) || null;
+    const detail = document.getElementById('record-progress-detail');
+    if (detail) detail.innerHTML = renderClassProgressTextbookDetail(selectedBook);
+}
+
 function toggleClassProgressCourseAdd() {
     const modalState = getClassProgressModalState();
+    syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressPhaseDraftFromDom();
+    syncClassProgressCourseAddDraftFromDom();
     modalState.courseAddOpen = !modalState.courseAddOpen;
-    const control = document.getElementById('record-progress-course-add');
-    if (control) control.outerHTML = renderClassProgressCourseAddControl();
+    rerenderClassProgressTextbookDetail();
 }
 
 function syncClassProgressCourseAddDraftFromDom() {
@@ -2569,6 +2730,8 @@ function cancelClassProgressInlineNewTextbook() {
 
 function cancelClassProgressCourseAdd() {
     const modalState = getClassProgressModalState();
+    syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressPhaseDraftFromDom();
     modalState.courseAddOpen = false;
     modalState.courseAddShowAll = false;
     modalState.courseAddSelectedGroupKey = '';
@@ -2576,8 +2739,7 @@ function cancelClassProgressCourseAdd() {
     modalState.courseAddNewTextbookOpen = false;
     modalState.courseAddNewTextbookTitle = '';
     modalState.courseAddNewTextbookStartDate = String(modalState.date || getClassroomOperationDate());
-    const control = document.getElementById('record-progress-course-add');
-    if (control) control.outerHTML = renderClassProgressCourseAddControl();
+    rerenderClassProgressTextbookDetail();
 }
 
 function applyClassProgressCourseAndTextbooks() {
@@ -2840,9 +3002,10 @@ async function openClassRecordModal(cid, requestedDate) {
     state.ui.classProgressModalRequestId = requestId;
 
     showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
-    const [resolvedProgress, dailyState] = await Promise.all([
+    const [resolvedProgress, dailyState, phaseState] = await Promise.all([
         loadClassProgressForDate(cid, todayStr),
-        loadClassDailyRecordForDate(cid, todayStr)
+        loadClassDailyRecordForDate(cid, todayStr),
+        loadClassProgressPhaseForDate(cid, todayStr)
     ]);
     if (Number(state.ui.classProgressModalRequestId || 0) !== requestId) return;
     const allTextbooks = state.db.class_textbooks || [];
@@ -2902,6 +3065,9 @@ async function openClassRecordModal(cid, requestedDate) {
         hasStructuredSnapshot: !!resolvedProgress.snapshot,
         previousNote: prevNote,
         dailyLoadFailed: !!dailyState.loadFailed,
+        loadedPhase: phaseState.phase,
+        selectedPhase: phaseState.phase,
+        phaseLoadFailed: !!phaseState.loadFailed,
         gradeKey
     };
 
@@ -2926,6 +3092,9 @@ async function openClassRecordModal(cid, requestedDate) {
         groups,
         savedPaths,
         activeGroupKeys: Array.from(activeKeys),
+        loadedPhase: phaseState.phase,
+        selectedPhase: phaseState.phase,
+        phaseLoadFailed: !!phaseState.loadFailed,
         courseAddOpen: false,
         courseAddShowAll: false,
         courseAddSelectedGroupKey: '',
@@ -2943,6 +3112,9 @@ async function openClassRecordModal(cid, requestedDate) {
     const dailyLoadWarning = dailyState.loadFailed
         ? '<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:rgba(var(--warning-rgb),0.10);border:1px solid rgba(var(--warning-rgb),0.22);font-size:12px;line-height:1.5;color:var(--warning);">기존 일지 원본을 확인하지 못해 저장을 잠시 막았습니다. 네트워크를 확인한 뒤 다시 열어주세요.</div>'
         : '';
+    const phaseLoadWarning = phaseState.loadFailed
+        ? '<div style="margin-bottom:14px;padding:10px 12px;border-radius:12px;background:rgba(var(--warning-rgb),0.10);border:1px solid rgba(var(--warning-rgb),0.22);font-size:12px;line-height:1.5;color:var(--warning);">수업 상태를 불러오지 못했습니다. 네트워크를 확인한 뒤 다시 열어주세요.</div>'
+        : '';
     const selectedBookHtml = renderClassProgressTextbookDetail(selectedTextbook);
     showModal('진도관리', `<div class="ap-class-progress-modal">
             <div class="ap-class-progress-context">
@@ -2954,6 +3126,7 @@ async function openClassRecordModal(cid, requestedDate) {
             </div>
             ${legacyHtml}
             ${dailyLoadWarning}
+            ${phaseLoadWarning}
             <div class="ap-class-progress-layout">
                 <aside class="apms-card ap-class-progress-books">
                     <div class="ap-class-progress-panel-head">
@@ -3036,6 +3209,7 @@ async function saveClassRecord(cid, dateStr) {
         return;
     }
     syncClassProgressTextbookDraftsFromDom();
+    syncClassProgressPhaseDraftFromDom();
     const modalState = state.ui?.classProgressModalState;
     const textbookDrafts = modalState?.progressByTextbook || {};
     const textbookBooks = Array.isArray(modalState?.books) ? modalState.books : [];
@@ -3060,6 +3234,8 @@ async function saveClassRecord(cid, dateStr) {
         sort_order: index
     }));
     const meta = state.ui?.classProgressModalMeta;
+    const loadedPhase = normalizeClassProgressPhase(meta?.loadedPhase ?? modalState?.loadedPhase);
+    const selectedPhase = normalizeClassProgressPhase(modalState?.selectedPhase ?? meta?.selectedPhase ?? loadedPhase);
     const noteText = document.getElementById('record-special-note')?.value.trim() || '';
     const preservedLegacyLine = meta && String(meta.classId) === String(cid) && String(meta.date) === String(dateStr)
         ? String(meta.legacyLine || '')
@@ -3078,24 +3254,46 @@ async function saveClassRecord(cid, dateStr) {
             const hasStructuredSnapshot = meta && String(meta.classId) === String(cid) && String(meta.date) === String(dateStr)
                 ? !!meta.hasStructuredSnapshot
                 : !!getClassProgressSnapshotForDate(cid, dateStr).snapshot;
-            if (!hasStructuredSnapshot && selectedItems.length === 0) {
-                toast('저장 완료', 'success');
-                closeModal(true);
-                if (document.getElementById('timetable-root') && typeof renderTimetable === 'function') renderTimetable();
-                return;
+            const shouldSaveCanonicalProgress = hasStructuredSnapshot || selectedItems.length > 0;
+            if (shouldSaveCanonicalProgress) {
+                const progressResponse = await api.post('class-progress', {
+                    class_id: cid,
+                    effective_date: dateStr,
+                    items: selectedItems
+                });
+                if (!progressResponse?.success || !progressResponse.snapshot) {
+                    toast('일지는 저장됐지만 지속형 진도 저장에 실패했습니다. 다시 시도해주세요.', 'warn');
+                    return;
+                }
+
+                syncClassProgressToState(cid, dateStr, progressResponse.snapshot, progressResponse.items);
             }
 
-            const progressResponse = await api.post('class-progress', {
-                class_id: cid,
-                effective_date: dateStr,
-                items: selectedItems
-            });
-            if (!progressResponse?.success || !progressResponse.snapshot) {
-                toast('일지는 저장됐지만 지속형 진도 저장에 실패했습니다. 다시 시도해주세요.', 'warn');
-                return;
+            if (selectedPhase !== loadedPhase) {
+                if (meta?.phaseLoadFailed) {
+                    toast('일지/진도는 저장됐지만 수업 상태를 불러오지 못해 변경은 저장되지 않았습니다. 다시 시도해주세요.', 'warn');
+                    return;
+                }
+                let phaseResponse;
+                try {
+                    phaseResponse = await api.post('class-progress-phase', {
+                        class_id: cid,
+                        effective_date: dateStr,
+                        phase: selectedPhase
+                    });
+                } catch (error) {
+                    console.error('[saveClassProgressPhase] failed:', error);
+                    toast('일지/진도는 저장됐지만 수업 상태 저장에 실패했습니다. 다시 시도해주세요.', 'warn');
+                    return;
+                }
+
+                if (!phaseResponse?.success || normalizeClassProgressPhase(phaseResponse.phase) !== selectedPhase) {
+                    toast('일지/진도는 저장됐지만 수업 상태 저장에 실패했습니다. 다시 시도해주세요.', 'warn');
+                    return;
+                }
+                syncClassProgressPhaseToState(cid, dateStr, phaseResponse);
             }
 
-            syncClassProgressToState(cid, dateStr, progressResponse.snapshot, progressResponse.items);
             toast('저장 완료', 'success');
             closeModal(true);
             if (document.getElementById('timetable-root') && typeof renderTimetable === 'function') renderTimetable();

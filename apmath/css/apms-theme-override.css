@@ -1656,6 +1656,66 @@ body.dark .omr-card {
   }
 }
 
+.ap-class-progress-section-head {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ap-class-progress-section-head__copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.ap-class-progress-section-actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.ap-class-progress-phase-select {
+  flex: 0 1 190px;
+  width: auto;
+  min-width: 155px;
+  min-height: 34px;
+  padding: 7px 9px;
+  font-size: 11px;
+}
+
+.ap-class-progress-course-add--compact {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.ap-class-progress-course-add--compact .apms-button {
+  min-height: 34px;
+  padding: 7px 10px;
+  font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  .ap-class-progress-section-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ap-class-progress-section-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .ap-class-progress-phase-select {
+    flex: 1 1 160px;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
 /* Global textbook management uses the compact progress-management language without
    changing the class-progress modal shell or its save flow. */
 #modal-content:has(.ap-global-textbook-manage) {
