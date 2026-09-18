@@ -193,6 +193,11 @@ const saveContext = {
   },
   syncClassDailyRecordToState: () => true,
   syncClassProgressToState: () => {},
+  syncClassProgressTextbookDraftsFromDom: () => {},
+  syncClassProgressPhaseDraftFromDom: () => {},
+  normalizeClassProgressPhase: value => [
+    'regular', 'semester1_midterm', 'semester1_final', 'semester2_midterm', 'semester2_final'
+  ].includes(value) ? value : 'regular',
   getClassProgressSnapshotForDate: () => ({ snapshot: null }),
   getTeacherNameForUI: () => '교사',
   toast: () => {},
