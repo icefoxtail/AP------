@@ -2354,7 +2354,6 @@ function renderClassProgressTextbookDetail(book) {
     const gradeKey = String(meta.gradeKey || '');
     const activeKeys = new Set(Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : []);
     const selectedId = String(book?.id || '');
-    const options = groups.map(group => `<option value="${apEscapeHtml(group.key)}"${activeKeys.has(group.key) ? ' disabled' : ''}>${apEscapeHtml(getClassProgressCourseOptionLabel(group))}${group.key === modalState.recommendedGroupKey ? ' · 기본 추천' : ''}</option>`).join('');
     const panels = groups.filter(group => activeKeys.has(group.key)).map(group => renderClassProgressCoursePanel(group, savedPaths)).join('');
     const status = getClassProgressTextbookStatus(book);
     const statusLabel = status === 'complete' ? '완료' : '진행 중';
@@ -2384,14 +2383,28 @@ function renderClassProgressTextbookDetail(book) {
                 <h3>현재 수업 진도</h3>
                 <span>${apEscapeHtml(meta.date || '')}${gradeKey ? ` · ${apEscapeHtml(gradeKey)} 추천` : ''}</span>
             </div>
-            <div class="ap-class-progress-course-add">
-                <select id="record-progress-course-select" class="cls-input" aria-label="과정 추가">
-                    <option value="">과정 추가…</option>${options}
-                </select>
-                <button type="button" class="btn apms-button apms-button--quiet" onclick="addClassProgressCourseFromSelect()">추가</button>
-            </div>
-            <div id="record-progress-course-panels">${panels || '<div class="apms-empty">canonical 과정 목록을 불러오지 못했습니다.</div>'}</div>
+            ${renderClassProgressCourseAddControl()}
+            <div id="record-progress-course-panels">${panels || '<div class="apms-empty">등록된 과정이 없습니다. 과정 추가를 눌러 선택하세요.</div>'}</div>
         </section>
+    </div>`;
+}
+
+function renderClassProgressCourseAddControl() {
+    const modalState = getClassProgressModalState();
+    if (!modalState.courseAddOpen) {
+        return `<div class="ap-class-progress-course-add" id="record-progress-course-add">
+            <button type="button" class="btn apms-button apms-button--quiet" aria-expanded="false" aria-controls="record-progress-course-select" onclick="toggleClassProgressCourseAdd()">과정 추가</button>
+        </div>`;
+    }
+
+    const groups = Array.isArray(modalState.groups) ? modalState.groups : [];
+    const activeKeys = new Set(Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : []);
+    const options = groups.map(group => `<option value="${apEscapeHtml(group.key)}"${activeKeys.has(group.key) ? ' disabled' : ''}>${apEscapeHtml(getClassProgressCourseOptionLabel(group))}${group.key === modalState.recommendedGroupKey ? ' · 기본 추천' : ''}</option>`).join('');
+    return `<div class="ap-class-progress-course-add" id="record-progress-course-add">
+        <select id="record-progress-course-select" class="cls-input" aria-label="과정 추가">
+            <option value="">과정 추가…</option>${options}
+        </select>
+        <button type="button" class="btn apms-button apms-button--quiet" onclick="addClassProgressCourseFromSelect()">추가</button>
     </div>`;
 }
 
@@ -2404,9 +2417,17 @@ function selectClassProgressTextbook(textbookId) {
     if (completedPanel) modalState.completedBooksOpen = !!completedPanel.open;
     syncClassProgressTextbookDraftsFromDom();
     modalState.selectedTextbookId = selectedId;
+    modalState.courseAddOpen = false;
     renderClassProgressTextbookPanelInPlace(false);
     const detail = document.getElementById('record-progress-detail');
     if (detail) detail.innerHTML = renderClassProgressTextbookDetail(book);
+}
+
+function toggleClassProgressCourseAdd() {
+    const modalState = getClassProgressModalState();
+    modalState.courseAddOpen = !modalState.courseAddOpen;
+    const control = document.getElementById('record-progress-course-add');
+    if (control) control.outerHTML = renderClassProgressCourseAddControl();
 }
 
 function openClassProgressTextbookAdd(cid) {
@@ -2538,6 +2559,9 @@ function addClassProgressCourseFromSelect() {
     const option = Array.from(select.options).find(item => item.value === key);
     if (option) option.disabled = true;
     select.value = '';
+    modalState.courseAddOpen = false;
+    const addControl = document.getElementById('record-progress-course-add');
+    if (addControl) addControl.outerHTML = renderClassProgressCourseAddControl();
 }
 
 async function openClassRecordModal(cid, requestedDate) {
@@ -2604,9 +2628,6 @@ async function openClassRecordModal(cid, requestedDate) {
     const savedGroupKeys = new Set(savedItems.map(getClassProgressItemGroupKey).filter(Boolean));
     const gradeKey = _getClassGradeKey(cls);
     const recommendedGroup = groups.find(group => group.gradeKey === gradeKey) || groups[0] || null;
-    if (!savedGroupKeys.size) {
-        if (recommendedGroup) savedGroupKeys.add(recommendedGroup.key);
-    }
     const activeGroups = groups.filter(group => savedGroupKeys.has(group.key));
     if (!state.ui) state.ui = {};
     state.ui.classProgressModalGroups = groups;
@@ -2635,6 +2656,7 @@ async function openClassRecordModal(cid, requestedDate) {
         savedPaths,
         activeGroupKeys: Array.from(activeKeys),
         recommendedGroupKey: recommendedGroup?.key || '',
+        courseAddOpen: false,
         inlineAddOpen: false,
         manageMode: false,
         completedBooksOpen: false
