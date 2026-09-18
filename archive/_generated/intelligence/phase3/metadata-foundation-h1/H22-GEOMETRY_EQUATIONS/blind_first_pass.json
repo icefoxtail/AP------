@@ -1096,5 +1096,13 @@
       "solution": "[키포인트] 먼저 C가 A와 B 사이에 있는 경우와 AB 밖에 있는 경우를 나누어 점의 순서와 거리를 세운다.\n조건 정리: $2\\overline{BC}=3\\overline{AC}$이므로 $AC:BC=2:3$이다.\n\n경우 1. C가 A와 B 사이에 있는 경우\n점의 순서는 $A-C_1-B$이다. $AC_1:C_1B=2:3$이므로 C₁은 선분 AB를 2:3으로 내분한다. 좌표별 내분공식으로\n$x_{C_1}=\\dfrac{3(-8)+2(2)}5=-4$,\n$y_{C_1}=\\dfrac{3(-6)+2(9)}5=0$이다. 따라서 $C_1=(-4,0)$이다.\n\n경우 2. C가 AB 밖에 있는 경우\n$BC>AC$이므로 가능한 점의 순서는 $C_2-A-B$이다. $AB=d$, $AC_2=x$라 하면 $BC_2=x+d$이다. 따라서 $2(x+d)=3x$이므로 $x=2d$이다. 즉 A에서 B의 반대 방향으로 AB의 2배만큼 이동한다.\n\nA(-8,-6)에서 B(2,9)로 갈 때 x좌표는 10 증가하고 y좌표는 15 증가한다. 반대 방향으로 2배 이동하면 x좌표는 $-8-20=-28$, y좌표는 $-6-30=-36$이다. 따라서 $C_2=(-28,-36)$이다.\n\n그러므로 구하는 점은 $C=(-4,0),(-28,-36)$이다.",
       "image": ""
     }
-  ]
+  ],
+  "focusedReviewSupersession": {
+    "sourceCohortCount": 21,
+    "scopeL2": "평면좌표",
+    "uidSetSha": "91a421e2f32b35b383c09d1d1455da7eecb770bffc03c7ab0e31971c8f02dea8",
+    "ledgerSha": "b523440772290d53540392f339c5998267f3a9c9c0956a78ed7448eee8547578",
+    "authoritativeLedger": "plane_coordinates_blind_first_pass.json",
+    "legacyFieldsRevealed": false
+  }
 }

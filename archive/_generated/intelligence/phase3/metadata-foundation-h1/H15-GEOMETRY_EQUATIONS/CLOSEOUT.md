@@ -1,6 +1,6 @@
 # L1 Closeout — 2015 고1 도형의 방정식
 
-상태: **PASS / CLOSED**  
+상태: **FOCUSED REVIEW APPLIED / 2 EXPLICIT HOLDS**
 Queue: `H15-GEOMETRY_EQUATIONS`  
 curriculum/course: `2015 / 수학(상)`  
 legacy key: `H15-SA-09`  
@@ -79,3 +79,24 @@ Machine receipts:
 이 L1의 metadata는 `archive/data/question_metadata.json`에 sidecar로
 적용했고, `archive/question-meta.js` runtime merge field list가 v2 fields를
 읽도록 보강했다. source exam JS는 수정하지 않았다.
+
+
+## Focused plane-coordinate re-review — 2026-09-18
+
+- Source cohort denominator retained: 38 records; UID cardinality unchanged.
+- Difficulty bucket changes against main HEAD: 13; first-pass bucket counts: {"1":11,"2":13,"3":11,"4":3,"5":0}.
+- Problem images opened and checked: 4/4.
+- Foundation defect candidates and explicit HOLDs: 2.
+- Source JS and problem/visual payload mutations: 0.
+- Targeted validator: PASS with explicit holds; see plane_coordinates_validation.json.
+- Scoped first-pass freeze: plane_coordinates_first_pass_freeze.json; legacy comparison was recorded after the freeze.
+
+## Focused plane-coordinate re-review — 2026-09-18
+
+- Source cohort denominator retained: 38 records; UID cardinality unchanged.
+- Difficulty bucket changes against main HEAD: 13; first-pass bucket counts: {"1":11,"2":13,"3":11,"4":3,"5":0}.
+- Problem images opened and checked: 4/4.
+- Foundation defect candidates and explicit HOLDs: 2.
+- Source JS and problem/visual payload mutations: 0.
+- Targeted validator: PASS with explicit holds; see plane_coordinates_validation.json.
+- Scoped first-pass freeze: plane_coordinates_first_pass_freeze.json; legacy comparison was recorded after the freeze.
