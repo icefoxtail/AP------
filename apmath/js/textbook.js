@@ -28,21 +28,27 @@ function isGlobalTextbookManageActive() {
 function renderTextbookInlineAddForm(options = {}) {
     const classId = String(options.classId || '');
     const date = String(options.date || new Date().toLocaleDateString('sv-SE'));
+    const formId = options.formId ? ` id="${apEscapeHtml(String(options.formId))}"` : '';
+    const title = String(options.title || '');
     const submitAction = options.submitAction || 'submitClassProgressTextbookAdd()';
     const cancelAction = options.cancelAction || 'cancelClassProgressTextbookInlineAction()';
+    const submitLabel = String(options.submitLabel || '저장');
+    const submitHtml = options.showSubmit === false
+        ? ''
+        : `<button type="button" class="btn apms-button apms-button--primary btn-primary" onclick="${submitAction}">${apEscapeHtml(submitLabel)}</button>`;
 
-    return `<div class="ap-class-progress-inline-form">
+    return `<div class="ap-class-progress-inline-form"${formId}>
         <div class="ap-class-progress-inline-form__head">
             <strong>새 교재 등록</strong>
             <button type="button" class="btn apms-button apms-button--quiet" onclick="${cancelAction}">취소</button>
         </div>
         <input type="hidden" id="new-tb-class" value="${apEscapeHtml(classId)}">
-        <input type="text" id="new-tb-title" class="cls-input" placeholder="교재명 (예: 개념원리 중1-1)">
+        <input type="text" id="new-tb-title" class="cls-input" value="${apEscapeHtml(title)}" placeholder="교재명 (예: 개념원리 중1-1)">
         <div class="ap-class-progress-inline-form__row">
             <label for="new-tb-start">시작일</label>
             <input type="date" id="new-tb-start" class="cls-input" value="${apEscapeHtml(date)}">
         </div>
-        <button type="button" class="btn apms-button apms-button--primary btn-primary" onclick="${submitAction}">저장</button>
+        ${submitHtml}
     </div>`;
 }
 
@@ -278,6 +284,12 @@ function submitGlobalTextbookDelete(tbId) {
 function resumeClassProgressAfterInlineTextbookAction(context) {
     if (!context?.classId || typeof openClassRecordModal !== 'function') return false;
     if (!state.ui) state.ui = {};
+    if (context.courseApplyDraft) {
+        state.ui.pendingClassProgressCourseApply = {
+            ...context.courseApplyDraft,
+            addedTextbookId: String(context.addedTextbookId || context.courseApplyDraft.addedTextbookId || '')
+        };
+    }
     state.ui.classProgressInlineTextbookAction = null;
     openClassRecordModal(context.classId, context.date);
     return true;
@@ -400,6 +412,10 @@ async function handleAddTextbook() {
     try {
         const r = await api.post('class-textbooks', { class_id: cid, title: title, start_date: startDate });
         if (r?.success) {
+            const inlineAction = state.ui?.classProgressInlineTextbookAction;
+            if (inlineAction?.courseApplyDraft) {
+                inlineAction.addedTextbookId = String(r.item?.id || r.textbook?.id || r.id || '');
+            }
             toast('교재가 등록되었습니다.', 'success');
             await loadData();
             if (resumeClassProgressAfterInlineTextbookAction(state.ui?.classProgressInlineTextbookAction)) return;

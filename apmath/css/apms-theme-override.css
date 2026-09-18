@@ -1360,6 +1360,82 @@ body.dark .omr-card {
   font-size: 12px;
 }
 
+.ap-class-progress-course-add--panel {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: 9px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--ap-ui-radius-card, 6px);
+  background: var(--surface-2);
+}
+
+.ap-class-progress-course-add__field,
+.ap-class-progress-course-add__books {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.ap-class-progress-course-add__field > label,
+.ap-class-progress-course-add__books > strong {
+  color: var(--text-soft);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ap-class-progress-course-add--panel select {
+  width: 100%;
+  min-width: 0;
+}
+
+.ap-class-progress-course-add__book-list {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.ap-class-progress-course-book-option {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--ap-ui-radius-card, 6px);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.ap-class-progress-course-book-option input {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.ap-class-progress-course-add__secondary-actions,
+.ap-class-progress-course-add__actions {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.ap-class-progress-course-add__actions {
+  justify-content: flex-end;
+  padding-top: 2px;
+}
+
+#class-progress-course-textbook-inline {
+  min-width: 0;
+}
+
 #record-progress-course-panels {
   min-height: 0;
   flex: 1 1 auto;
@@ -1788,6 +1864,22 @@ body.dark .omr-card {
 
   .ap-class-progress-panel-actions .apms-button {
     flex: 1 1 0;
+  }
+
+  .ap-class-progress-course-add--panel {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .ap-class-progress-course-add__secondary-actions > .apms-button,
+  .ap-class-progress-course-add__actions > .apms-button {
+    flex: 1 1 120px;
+    min-width: 0;
+  }
+
+  .ap-class-progress-course-book-option {
+    overflow-wrap: anywhere;
   }
 
   .ap-class-progress-course > summary,
