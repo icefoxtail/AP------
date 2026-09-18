@@ -2139,6 +2139,34 @@ function getClassProgressCourseOptionLabel(group) {
     return `${group.curriculumKey} 개정 · ${group.courseLabel}`;
 }
 
+function getClassProgressSemesterKey(dateStr) {
+    const normalizedDate = normalizeClassroomDate(dateStr);
+    const monthDay = normalizedDate.slice(5);
+    if (monthDay >= '01-01' && monthDay <= '08-14') return '1';
+    if (monthDay >= '08-15' && monthDay <= '12-31') return '2';
+    return '';
+}
+
+function getClassProgressRecommendedCourseKey(gradeKey, dateStr) {
+    const semesterKey = getClassProgressSemesterKey(dateStr);
+    if (!semesterKey) return '';
+    const courseMap = {
+        중1: { '1': 'M1-1', '2': 'M1-2' },
+        중2: { '1': 'M2-1', '2': 'M2-2' },
+        중3: { '1': 'M3-1', '2': 'M3-2' },
+        고1: { '1': '공통수학1', '2': '공통수학2' }
+    };
+    return courseMap[String(gradeKey || '')]?.[semesterKey] || '';
+}
+
+function getClassProgressRecommendedGroup(groups, gradeKey, dateStr) {
+    const recommendedCourseKey = getClassProgressRecommendedCourseKey(gradeKey, dateStr);
+    if (!recommendedCourseKey) return null;
+    return (Array.isArray(groups) ? groups : []).find(group =>
+        group.curriculumKey === '2022' && group.courseKey === recommendedCourseKey
+    ) || null;
+}
+
 function classProgressJsArg(value) {
     if (typeof apJsArg === 'function') return apJsArg(value);
     return `'${apEscapeHtml(String(value ?? '')).replace(/'/g, '&#39;')}'`;
@@ -2397,7 +2425,8 @@ function renderClassProgressCourseAddControl() {
         </div>`;
     }
 
-    const groups = Array.isArray(modalState.groups) ? modalState.groups : [];
+    const groups = (Array.isArray(modalState.groups) ? modalState.groups : [])
+        .filter(group => group.curriculumKey === '2022');
     const activeKeys = new Set(Array.isArray(modalState.activeGroupKeys) ? modalState.activeGroupKeys : []);
     const options = groups.map(group => `<option value="${apEscapeHtml(group.key)}"${activeKeys.has(group.key) ? ' disabled' : ''}>${apEscapeHtml(getClassProgressCourseOptionLabel(group))}${group.key === modalState.recommendedGroupKey ? ' · 기본 추천' : ''}</option>`).join('');
     return `<div class="ap-class-progress-course-add" id="record-progress-course-add">
@@ -2628,7 +2657,7 @@ async function openClassRecordModal(cid, requestedDate) {
     const groups = getClassProgressCourseGroups();
     const savedGroupKeys = new Set(savedItems.map(getClassProgressItemGroupKey).filter(Boolean));
     const gradeKey = _getClassGradeKey(cls);
-    const recommendedGroup = groups.find(group => group.gradeKey === gradeKey) || groups[0] || null;
+    const recommendedGroup = getClassProgressRecommendedGroup(groups, gradeKey, todayStr);
     const activeGroups = groups.filter(group => savedGroupKeys.has(group.key));
     if (!state.ui) state.ui = {};
     state.ui.classProgressModalGroups = groups;
