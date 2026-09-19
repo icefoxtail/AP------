@@ -54,6 +54,35 @@
       .replace(/Ⅰ/g, "I")
       .replace(/Ⅱ/g, "II")
       .replace(/\s+/g, "");
+  const HIGH_SEMANTIC_SUBJECTS = Object.freeze([
+    Object.freeze({ value: "ALGEBRA", label: "대수", courseKeys: Object.freeze(["대수", "수학I"]) }),
+    Object.freeze({ value: "CALCULUS", label: "미적분Ⅰ", courseKeys: Object.freeze(["미적분I", "수학II"]) }),
+    Object.freeze({ value: "PROB_STATS", label: "확률과 통계", courseKeys: Object.freeze(["확률과통계"]) }),
+    Object.freeze({ value: "CALCULUS_ADVANCED", label: "미적분Ⅱ", courseKeys: Object.freeze(["미적분II", "미적분"]) }),
+    Object.freeze({ value: "GEOMETRY", label: "기하", courseKeys: Object.freeze(["기하", "기하와 벡터"]) }),
+  ]);
+  const isHighSemanticSubjectGrade = (grade) =>
+    ["고2", "고3"].includes(text(grade));
+  const highSemanticSubjectOptions = () =>
+    HIGH_SEMANTIC_SUBJECTS.map(({ value, label }) => ({ value, label }));
+  const highSemanticSubjectForCourseKey = (courseKey) => {
+    const identity = normalizeCourseIdentity(courseKey);
+    return (
+      HIGH_SEMANTIC_SUBJECTS.find((subject) =>
+        subject.courseKeys.some(
+          (key) => normalizeCourseIdentity(key) === identity,
+        ),
+      )?.value || ""
+    );
+  };
+  const highSemanticSubjectCourseKeys = (subjectValue) => {
+    const subject = HIGH_SEMANTIC_SUBJECTS.find(
+      (item) => item.value === text(subjectValue),
+    );
+    return new Set(
+      (subject?.courseKeys || []).map((key) => normalizeCourseIdentity(key)),
+    );
+  };
   const finderCourseGrades = Object.freeze({
     공통수학1: "고1",
     공통수학2: "고1",
@@ -130,8 +159,33 @@
   }
   function reconcileFinderFilters(filters = {}, taxonomy = []) {
     const next = { ...filters };
-    if (next.courseKey && !finderCourseKeys(taxonomy, next).has(next.courseKey))
-      next.courseKey = "";
+    if (isHighSemanticSubjectGrade(next.grade)) {
+      if (
+        !next.semanticSubject &&
+        HIGH_SEMANTIC_SUBJECTS.some(
+          (subject) => subject.value === next.family,
+        )
+      )
+        next.semanticSubject = next.family;
+      if (!next.semanticSubject && next.courseKey) {
+        next.semanticSubject = highSemanticSubjectForCourseKey(next.courseKey);
+      }
+      if (
+        next.semanticSubject &&
+        !HIGH_SEMANTIC_SUBJECTS.some(
+          (subject) => subject.value === next.semanticSubject,
+        )
+      )
+        next.semanticSubject = "";
+      if (next.semanticSubject) {
+        next.courseKey = "";
+        next.family = "";
+      }
+    } else {
+      next.semanticSubject = "";
+      if (next.courseKey && !finderCourseKeys(taxonomy, next).has(next.courseKey))
+        next.courseKey = "";
+    }
     return next;
   }
   function finderCourseCodeCurriculum(courseCode) {
@@ -203,10 +257,18 @@
   }
   function finderMatches(exam, filters = {}, index = new Map()) {
     const identity = index.get(normalizeFile(exam?.file));
+    const semanticMatch =
+      !filters.semanticSubject ||
+      [...(identity?.courseKeys || [])].some(
+        (courseKey) =>
+          highSemanticSubjectForCourseKey(courseKey) ===
+          filters.semanticSubject,
+      );
     return (
       (!filters.curriculumKey ||
         identity?.curriculumKeys?.has(filters.curriculumKey)) &&
-      (!filters.courseKey || identity?.courseKeys?.has(filters.courseKey))
+      (!filters.courseKey || identity?.courseKeys?.has(filters.courseKey)) &&
+      semanticMatch
     );
   }
   const sourceYear = (record) => {
@@ -299,10 +361,18 @@
     if (filters.yearTo && (!sourceYear(record) || sourceYear(record) > Number(filters.yearTo)))
       return false;
     if (filters.axis && record.examAxis !== filters.axis) return false;
+    if (
+      filters.semanticSubject &&
+      highSemanticSubjectForCourseKey(record.courseKey) !==
+        filters.semanticSubject
+    )
+      return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
       return false;
-    for (const field of PATH_FIELDS)
+    for (const field of PATH_FIELDS) {
+      if (field === "courseKey" && filters.semanticSubject) continue;
       if (filters[field] && record[field] !== filters[field]) return false;
+    }
     if (
       filters.difficultyBuckets?.length &&
       !filters.difficultyBuckets.includes(record.difficultyBucket)
@@ -564,6 +634,11 @@
     normalizeSearch,
     gradeRank,
     normalizeCourseIdentity,
+    HIGH_SEMANTIC_SUBJECTS,
+    isHighSemanticSubjectGrade,
+    highSemanticSubjectOptions,
+    highSemanticSubjectForCourseKey,
+    highSemanticSubjectCourseKeys,
     finderCourseGrade,
     middleCurriculumFromYear,
     finderCourseKeys,
