@@ -1143,7 +1143,7 @@
           available: candidates.filter((record) => C.rowMatches(record, row)).length,
         }))
         .filter((item) => item.available < item.row.count),
-      quickDisabled = !rows.length || state.busy || state.sealed || shortages.length,
+      quickDisabled = !state.filters.courseKey || !rows.length || state.busy || state.sealed || shortages.length,
       scopeLabel = selectedScopes.length === 1
         ? selectedScopes[0].label
         : selectedScopes.length > 1
@@ -1157,13 +1157,15 @@
         state.buckets.join(",") !== "2,3" ||
         selectedScopes.length > 1;
 
-    const rangeOptions = [
-      `<option value="">${selectedScopes.length > 1 ? esc(scopeLabel) : "범위 선택"}</option>`,
-      ...scopes.map(
-        (scope) =>
-          `<option value="${esc(scope.key)}"${quickScope === scope.key ? " selected" : ""}>${esc(scope.L1)} · ${esc(scope.label)}</option>`,
-      ),
-    ].join("");
+    const rangeOptions = state.filters.courseKey
+      ? [
+          `<option value="">${selectedScopes.length > 1 ? esc(scopeLabel) : "범위 선택"}</option>`,
+          ...scopes.map(
+            (scope) =>
+              `<option value="${esc(scope.key)}"${quickScope === scope.key ? " selected" : ""}>${esc(scope.L1)} · ${esc(scope.label)}</option>`,
+          ),
+        ].join("")
+      : '<option value="">과정을 먼저 선택하세요</option>';
 
     const paperPreview = `<div class="classic-create-paper" aria-hidden="true">
       <span class="classic-create-paper-title">${esc(state.header?.title || state.title)}</span>
@@ -1193,7 +1195,7 @@
         </div>
         <div class="classic-compose-step">
           <label class="classic-compose-label" for="classic-compose-scope">범위</label>
-          <select id="classic-compose-scope">${rangeOptions}</select>
+          <select id="classic-compose-scope" ${state.filters.courseKey ? "" : "disabled"}>${rangeOptions}</select>
         </div>
         <div class="classic-compose-step">
           <label class="classic-compose-label" for="classic-compose-count">문항 수</label>
