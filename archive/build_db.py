@@ -1864,8 +1864,8 @@ def run_archive_build_pipeline():
     # Archive 2.0. Missing global classification is allowed only when an
     # explicit exam-meta source row exists.
     run_pipeline_command(
-        "Approved question metadata 빌드",
-        [node, intelligence / "build-approved-question-metadata-v1.mjs"],
+        "Approved question metadata 증분 동기화",
+        [node, intelligence / "sync-approved-question-metadata-v1.mjs"],
         repo_root,
     )
 
