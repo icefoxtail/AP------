@@ -52,3 +52,13 @@
 ```
 
 `python archive/build_db.py` 원클릭 파이프라인이 DB → UID → 이 메타 ingest → approved metadata → question-index → Archive2 catalog → Meta Foundation 검증 순서로 처리한다.
+
+## 신규 시험 강제 규칙
+
+이 기능 도입 이전부터 존재했지만 아직 canonical identity에 들어오지 않은 파일만
+`legacy-unmanaged-source-files.json`에 고정 기준선으로 남긴다.
+
+기준선에 없는 새 시험 JS는 대응하는 `.meta.json`이 없으면
+`sync-question-identity-map-v1.mjs` 단계에서 fail-closed 한다.
+즉 앞으로는 새 JS만 추가하고 메타를 빼먹은 상태로 원클릭 빌드를 PASS할 수 없다.
+이 legacy 기준선은 빌드가 자동으로 늘리지 않는다.
