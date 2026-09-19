@@ -87,6 +87,7 @@ function readSourceQuestionMap(identity) {
 
 function readReviewedPassOverrides() {
     const overrides = new Map();
+    if (!fs.existsSync(reviewDir)) return overrides;
     for (const file of fs.readdirSync(reviewDir).filter(name => name.endsWith('.json'))) {
         const report = JSON.parse(fs.readFileSync(path.join(reviewDir, file), 'utf8'));
         for (const item of report.reviews || []) {
@@ -142,7 +143,7 @@ function readCanonicalSubUnitLabels() {
 
 function buildMetadata() {
     const identityRaw = fs.readFileSync(identityPath, 'utf8');
-    const classificationRaw = fs.readFileSync(classificationPath, 'utf8');
+    const classificationRaw = fs.existsSync(classificationPath) ? fs.readFileSync(classificationPath, 'utf8') : '{"records":[]}';
     const identity = JSON.parse(identityRaw);
     const classification = JSON.parse(classificationRaw);
     // Rebuilding the current sidecar must not erase previously approved
@@ -168,6 +169,7 @@ function buildMetadata() {
 
     for (const identityRecord of identity.records) {
         const uid = identityRecord.questionUid;
+        const previousSeed = previousByUid.get(uid);
         // Test fixtures remain in the identity/runtime regression corpus but
         // are intentionally outside the production classification snapshot.
         // Keep them in the sidecar with explicit empty metadata; a missing
@@ -186,9 +188,21 @@ function buildMetadata() {
                         confidence: 'exam_meta_source'
                     }
                 }
-                : normalizeFile(identityRecord.sourceArchiveFile).startsWith('test-fixtures/')
-                    ? { standardUnitKey: '', standardUnit: '', classification: {} }
-                    : null
+                : previousSeed
+                    ? {
+                        standardUnitKey: previousSeed.standardUnitKey || '',
+                        standardUnit: previousSeed.standardUnit || '',
+                        standardCourse: previousSeed.standardCourse || '',
+                        classification: {
+                            subUnitKey: previousSeed.subUnitKey || '',
+                            subUnit: previousSeed.subUnit || '',
+                            conceptClusterKey: previousSeed.conceptClusterKey || '',
+                            confidence: previousSeed.tagConfidence || 'carry_forward'
+                        }
+                    }
+                    : normalizeFile(identityRecord.sourceArchiveFile).startsWith('test-fixtures/')
+                        ? { standardUnitKey: '', standardUnit: '', classification: {} }
+                        : null
         );
         const question = sourceQuestions.get(uid);
         if (!classified || !question) throw new Error(`metadata join failed: ${uid}`);
@@ -199,7 +213,7 @@ function buildMetadata() {
             throw new Error(`duplicate semantic approval sources for UID: ${uid}`);
         }
         const sourceFingerprint = makeSourceFingerprint(question);
-        const previous = previousByUid.get(uid);
+        const previous = previousSeed;
         const previousMatchesSource = Boolean(previous && previous.sourceFingerprint === sourceFingerprint);
         const carryForward = previousMatchesSource ? previous : null;
         if (identityRecord.sourceFingerprint && identityRecord.sourceFingerprint !== sourceFingerprint) {
@@ -325,7 +339,7 @@ function buildMetadata() {
         },
         sourceDigests: {
             identityMap: sha256(identityRaw),
-            completeClassification: sha256(classificationRaw),
+            completeClassification: fs.existsSync(classificationPath) ? sha256(classificationRaw) : '',
             tagMaster: sha256(fs.readFileSync(tagMasterPath, 'utf8')),
             examMetaOverrides: fs.existsSync(examMetaOverridePath) ? (JSON.parse(fs.readFileSync(examMetaOverridePath, 'utf8')).digest || sha256(fs.readFileSync(examMetaOverridePath, 'utf8'))) : ''
         },
