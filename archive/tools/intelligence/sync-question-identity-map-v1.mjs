@@ -118,12 +118,8 @@ function main(){
         if(old.contentFingerprint && old.contentFingerprint!==cf){
           throw new Error('existing source content changed at '+key+'; run migrate-question-identity-map-v1.mjs');
         }
-        if(old.sourceFingerprint!==sf || old.sourceQuestionNo!==qno || old.contentFingerprint!==cf){
-          old.sourceFingerprint=sf; old.contentFingerprint=cf; old.sourceQuestionNo=qno;
-          old.legacyQKey=sourceFile+'_'+String(qno);
-          old.legacyOrdinalQuestionUid=old.legacyOrdinalQuestionUid || ordinalUid(sourceFile,ordinal);
-          updatedFingerprints += 1;
-        }
+        // Existing identity records are immutable here. This synchronizer only
+        // mints identities for brand-new, meta-backed exam files.
         continue;
       }
       if(existingFiles.has(sourceFile)) throw new Error('identity ordinal gap in existing source: '+key);
