@@ -1,7 +1,7 @@
 {
   "schemaVersion": "meta-foundation-pack-promotion-receipt-v1",
   "packId": "GEOMETRY_EQUATIONS",
-  "packVersion": "1.0.0",
+  "packVersion": "1.0.2",
   "promotionDate": "2026-09-19",
   "status": "CANONICAL_PROMOTED",
   "basis": {
@@ -163,7 +163,10 @@
     "registeredCrossConcept": true,
     "registeredCondition": true,
     "aliasCollisionZero": true,
-    "productionJsMutation": false
+    "productionJsMutation": false,
+    "duplicateCanonicalKeyZero": true,
+    "runtimeRecordCountMatches": true,
+    "foundationMappingUnchanged": true
   },
   "promotionScope": [
     "Foundation rules canonical document",
@@ -172,5 +175,41 @@
     "condition core registry",
     "compiled Foundation derived artifacts",
     "promotion evidence"
-  ]
+  ],
+  "postPromotionRevalidation": {
+    "reason": "ALIAS_ROLE_COLLISION_FIX",
+    "baseMain": "463b7ca157c047bead45563fa8f677dbc050eaa5",
+    "canonicalPackVersion": "1.0.2",
+    "aliasDisambiguations": [
+      {
+        "canonicalKey": "CC_TRIANGLE_CENTROID",
+        "canonicalKind": "crossConcept",
+        "beforeAlias": "무게중심",
+        "afterAlias": "삼각형의 무게중심 개념",
+        "preservedProblemTypeKey": "PT_COORD_CENTROID",
+        "preservedProblemTypeAlias": "무게중심"
+      },
+      {
+        "canonicalKey": "CC_MIDPOINT",
+        "canonicalKind": "crossConcept",
+        "beforeAlias": "중점",
+        "afterAlias": "선분의 중점 개념",
+        "preservedProblemTypeKey": "PT_COORD_MIDPOINT",
+        "preservedProblemTypeAlias": "중점"
+      }
+    ],
+    "counts": {
+      "aliasCollisionCount": 0,
+      "duplicateCanonicalKeyCount": 0,
+      "brokenL4ParentCount": 0,
+      "brokenL2L3BindingCount": 0,
+      "unregisteredL3Count": 0,
+      "unregisteredL4Count": 0,
+      "unregisteredCrossConceptCount": 0,
+      "unregisteredConditionCount": 0,
+      "foundationAssignmentCount": 400,
+      "runtimeRecordCount": 400,
+      "mappingMutationCount": 0
+    }
+  }
 }
