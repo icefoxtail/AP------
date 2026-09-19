@@ -31,8 +31,99 @@ jobs:
           node --check archive/tools/intelligence/sync-approved-question-metadata-v1.mjs
           node --check archive/tools/build-archive2-catalog.mjs
 
+      - name: Create positive one-click fixture
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const crypto = require('crypto');
+          const sourceFile = 'original/high/h1/2final/26_테스트고_2학기_기말_고1_공통수학2.js';
+          const question = {
+            id: 1,
+            content: '다음 대응이 함수인지 판단하시오.',
+            choices: ['함수이다.', '함수가 아니다.'],
+            answer: '①',
+            solution: '정의역의 각 원소에 함숫값이 하나씩 대응하므로 함수이다.',
+            level: '하',
+            standardCourse: '공통수학2',
+            standardUnitKey: 'H22-C2-07',
+            standardUnit: '함수',
+            subUnitKey: 'H22-C2-07-FUNCTION_BASIC',
+            subUnit: '함수의 뜻과 그래프'
+          };
+          const examPath = path.join('archive/exams', sourceFile);
+          fs.mkdirSync(path.dirname(examPath), { recursive: true });
+          fs.writeFileSync(
+            examPath,
+            'window.examTitle = "26 테스트고 2학기 기말 고1 공통수학2";\nwindow.questions = ' + JSON.stringify([question], null, 2) + ';\n',
+            'utf8'
+          );
+          const sourceFingerprint = crypto.createHash('sha256').update(JSON.stringify({
+            content: question.content ?? null,
+            choices: Array.isArray(question.choices) ? question.choices : null,
+            answer: question.answer ?? null,
+            solution: question.solution ?? null,
+            image: question.image ?? null
+          })).digest('hex');
+          const meta = {
+            schemaVersion: 'archive-exam-meta-source-v1',
+            sourceArchiveFile: sourceFile,
+            reviewStatus: 'APPROVED',
+            questions: [{
+              sourceOrdinal: 1,
+              sourceQuestionNo: 1,
+              sourceFingerprint,
+              standardUnitKey: 'H22-C2-07',
+              subUnitKey: 'H22-C2-07-FUNCTION_BASIC',
+              problemTypeKey: 'PT_FUNCTION_DEFINITION_JUDGMENT',
+              templateKey: 'TPL_FUNCTION_JUDGMENT_MAPPING',
+              difficultyBucket: 2,
+              difficultyConfidence: 'high',
+              difficultyBoundaryFlag: 'NONE',
+              legacyLevelCompatibility: 'NORMAL',
+              crossConceptKeys: [],
+              conditionKeys: [],
+              integrationPattern: 'DIRECT',
+              reviewStatus: 'APPROVED'
+            }]
+          };
+          const metaPath = 'archive/data/exam-meta-source/_validation/positive.meta.json';
+          fs.mkdirSync(path.dirname(metaPath), { recursive: true });
+          fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + '\n', 'utf8');
+          NODE
+
       - name: Run one-click archive pipeline
         run: python archive/build_db.py
+
+      - name: Verify positive metadata propagation
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const core = require('./archive/archive2-core.js');
+          const sourceFile = 'original/high/h1/2final/26_테스트고_2학기_기말_고1_공통수학2.js';
+          const ingest = JSON.parse(fs.readFileSync('archive/_generated/intelligence/meta-ingest/exam-meta-overrides.json', 'utf8'));
+          if (ingest.counts.approved !== 1 || ingest.counts.hardFailures !== 0) throw new Error('exam meta ingest did not approve exactly one fixture record');
+          const metadata = JSON.parse(fs.readFileSync('archive/data/question_metadata.json', 'utf8'));
+          const meta = metadata.records.find(r => r.sourceArchiveFile === sourceFile);
+          if (!meta) throw new Error('approved metadata fixture record missing');
+          if (meta.problemTypeKey !== 'PT_FUNCTION_DEFINITION_JUDGMENT') throw new Error('problemTypeKey propagation failed');
+          if (meta.templateKey !== 'TPL_FUNCTION_JUDGMENT_MAPPING') throw new Error('templateKey propagation failed');
+          if (meta.reviewStatus !== 'reviewed_pass') throw new Error('reviewStatus propagation failed');
+          const packed = JSON.parse(fs.readFileSync('archive/data/archive2-catalog.json', 'utf8'));
+          const catalog = core.decodeCatalog(packed);
+          const record = catalog.records.find(r => r.sourceFile === sourceFile);
+          if (!record) throw new Error('Archive2 fixture record missing');
+          if (record.taxonomyStatus !== 'CONFIRMED') throw new Error('Foundation taxonomy confirmation failed');
+          if (record.problemTypeKey !== meta.problemTypeKey || record.templateKey !== meta.templateKey) throw new Error('Archive2 semantic key propagation failed');
+          if (record.automatic !== true) throw new Error('fixture record is not automatic-eligible');
+          console.log(JSON.stringify({
+            questionUid: record.questionUid,
+            taxonomyStatus: record.taxonomyStatus,
+            problemTypeKey: record.problemTypeKey,
+            templateKey: record.templateKey,
+            automatic: record.automatic
+          }, null, 2));
+          NODE
 
       - name: Diff sanity
         run: |
