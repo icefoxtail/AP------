@@ -67,13 +67,29 @@
       .normalize("NFC")
       .replace(/\s+/g, "")
       .replace(/[·・ㆍ]/g, "");
-  const taxonomyRowsForFilters = (filters) =>
-    state.catalog.taxonomy.filter(
-      (r) =>
-        (!filters.grade || courseGrade(r.courseKey, r.curriculumKey) === filters.grade) &&
+  const taxonomyRowsForFilters = (filters) => {
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    if (highSemantic && !filters.semanticSubject) return [];
+    return state.catalog.taxonomy.filter((r) => {
+      const semanticMatch =
+        !filters.semanticSubject ||
+        C.highSemanticSubjectForCourseKey?.(r.courseKey) ===
+          filters.semanticSubject;
+      const gradeMatch =
+        highSemantic && filters.semanticSubject
+          ? true
+          : !filters.grade ||
+            courseGrade(r.courseKey, r.curriculumKey) === filters.grade;
+      return (
+        gradeMatch &&
+        semanticMatch &&
         (!filters.curriculumKey || r.curriculumKey === filters.curriculumKey) &&
-        (!filters.courseKey || r.courseKey === filters.courseKey),
-    );
+        (!filters.courseKey ||
+          filters.semanticSubject ||
+          r.courseKey === filters.courseKey)
+      );
+    });
+  };
   const state = {
     catalog: null,
     byUid: new Map(),
@@ -578,13 +594,19 @@
       /^M([123])-([12])$/.test(value)
         ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
         : value;
-    const courses = unique(
-      taxonomyRowsForFilters({ ...filters, courseKey: "" })
-        .map((r) => r.courseKey),
-    ).map((value) => ({ value, label: courseLabel(value) }));
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    const courses = highSemantic
+      ? C.highSemanticSubjectOptions()
+      : unique(
+          taxonomyRowsForFilters({ ...filters, courseKey: "" })
+            .map((r) => r.courseKey),
+        ).map((value) => ({ value, label: courseLabel(value) }));
+    const courseField = highSemantic
+      ? `<label>과목<select data-filter="semanticSubject" data-group="${prefix}">${options(courses, filters.semanticSubject, "과목 선택")}</select></label>`
+      : `<label>과목<select data-filter="courseKey" data-group="${prefix}">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
     return `<div class="filters"><label>학년<select data-filter="grade" data-group="${prefix}">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, compose ? null : "전체 학년")}</select></label>
       <label>교육과정<select data-filter="curriculumKey" data-group="${prefix}">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>
-      <label>과목<select data-filter="courseKey" data-group="${prefix}">${options(courses, filters.courseKey, "전체 과목")}</select></label>
+      ${courseField}
       <label>학교<select data-filter="school" data-group="${prefix}">${options(
         unique(
           state.catalog.exams
@@ -599,7 +621,7 @@
       <label>시작 연도<input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="${prefix}" value="${esc(filters.yearFrom || "")}" placeholder="전체"></label>
       <label>끝 연도<input type="number" min="2000" max="2100" data-filter="yearTo" data-group="${prefix}" value="${esc(filters.yearTo || "")}" placeholder="전체"></label>
       ${
-        !compose
+        !compose && !highSemantic
           ? `<label>과목 계열<select data-filter="family" data-group="find">${options(
               [
                 { value: "COMMON_1", label: "공통수학1 계열" },
@@ -654,6 +676,15 @@
       if (f.axis && `${exam.semester}-${exam.examType}` !== f.axis)
         return false;
       if (f.family && !exam.courseFamilies.includes(f.family)) return false;
+      if (
+        f.semanticSubject &&
+        !C.finderMatches(
+          exam,
+          { semanticSubject: f.semanticSubject },
+          state.finderIndex,
+        )
+      )
+        return false;
       if (
         f.curriculumKey &&
         !C.finderMatches(exam, { curriculumKey: f.curriculumKey }, state.finderIndex)
@@ -778,6 +809,11 @@
       ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}`;
   }
   function renderScopes() {
+    if (
+      C.isHighSemanticSubjectGrade?.(state.filters.grade) &&
+      !state.filters.semanticSubject
+    )
+      return `<div class="resultbar"><h2>출제 범위</h2></div><p class="muted">고2·고3은 과목을 먼저 선택하면 해당 과목의 2015·2022 범위를 하나로 묶어 보여줍니다.</p>`;
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1));
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
@@ -1988,7 +2024,9 @@
         if (el.dataset.group === "compose") {
           if (el.dataset.filter === "L3") delete state.filters.L4;
           if (
-            ["grade", "curriculumKey", "courseKey"].includes(el.dataset.filter)
+            ["grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
+              el.dataset.filter,
+            )
           ) {
             state.scopes = [];
             delete state.filters.L3;
@@ -1996,14 +2034,29 @@
             if (el.dataset.filter === "grade") {
               state.filters.curriculumKey = "";
               state.filters.courseKey = "";
+              state.filters.semanticSubject = "";
               state.filters.school = "";
             }
             if (el.dataset.filter === "curriculumKey")
               state.filters.courseKey = "";
+            if (el.dataset.filter === "semanticSubject")
+              state.filters.courseKey = "";
           }
           invalidate();
         } else {
-          if (["grade", "curriculumKey"].includes(el.dataset.filter))
+          if (el.dataset.filter === "grade") {
+            state.find.semanticSubject = "";
+            state.find.family = "";
+          }
+          if (el.dataset.filter === "semanticSubject") {
+            state.find.courseKey = "";
+            state.find.family = "";
+          }
+          if (
+            ["grade", "curriculumKey", "semanticSubject"].includes(
+              el.dataset.filter,
+            )
+          )
             Object.assign(
               state.find,
               C.reconcileFinderFilters(state.find, state.catalog.taxonomy),
@@ -2210,6 +2263,7 @@
       "grade",
       "curriculumKey",
       "courseKey",
+      "semanticSubject",
       "school",
       "yearFrom",
       "yearTo",
