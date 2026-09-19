@@ -3007,3 +3007,62 @@ body[data-archive-view="home"] #status:not(.error) {
     padding: 0 !important;
   }
 }
+
+
+/* =========================================================
+   Classic v7 — effective typography normalization
+   Keep UI reading text at a practical teacher-facing size.
+   Tiny text inside paper thumbnails is intentionally excluded.
+   ========================================================= */
+body.archive2-classic-shell label {
+  font-size: 12.5px;
+  font-weight: 700;
+}
+body.archive2-classic-shell .badge {
+  padding: 3px 6px;
+  border-radius: var(--classic-r-s);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+body.archive2-classic-shell .callout {
+  padding: 10px 11px;
+  border-left-width: 2px;
+  border-radius: var(--classic-r-m);
+  font-size: 12px;
+  line-height: 1.55;
+}
+body.archive2-classic-shell .paper-count,
+body.archive2-classic-shell .paper-row .description,
+body.archive2-classic-shell .scope-item small,
+body.archive2-classic-shell .original-output .header-fields > p,
+body.archive2-classic-shell .classic-detail-output-settings .header-fields > p {
+  font-size: 12px;
+}
+body.archive2-classic-shell .part-select {
+  font-size: 12px;
+}
+body.archive2-classic-shell .paper-row > strong,
+body.archive2-classic-shell .summary-line {
+  font-size: 12px;
+}
+body.archive2-classic-shell .candidate .muted {
+  font-size: 12px;
+}
+body.archive2-classic-shell .classic-ready-info-grid span {
+  font-size: 11.5px;
+}
+body.archive2-classic-shell .classic-ready-secondary-actions button {
+  min-height: 38px;
+  font-size: 12px;
+}
+body.archive2-classic-shell .classic-compose-advanced > summary span {
+  font-size: 11.5px;
+}
+@media (max-width: 900px) {
+  body.archive2-classic-shell label {
+    font-size: 12px;
+  }
+  body.archive2-classic-shell .classic-home-shortcut strong {
+    font-size: 11.5px;
+  }
+}
