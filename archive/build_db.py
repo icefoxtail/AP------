@@ -3,6 +3,7 @@ import re
 import json
 import sys
 import io
+import subprocess
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
@@ -1809,5 +1810,114 @@ def build_engine_db():
             print("  -", x)
 
 
-if __name__ == "__main__":
+def run_pipeline_command(label, command, cwd):
+    print(f"\n▶ {label}")
+    print("  $", " ".join(str(part) for part in command))
+    subprocess.run(
+        [str(part) for part in command],
+        cwd=str(cwd),
+        check=True,
+    )
+    print(f"✅ {label}")
+
+
+def run_archive_build_pipeline():
+    archive_dir, _, _ = resolve_project_paths()
+    repo_root = archive_dir.parent
+
+    print("============================================================")
+    print(" Archive 원클릭 빌드: DB → UID → META → INDEX → CATALOG → FOUNDATION")
+    print("============================================================")
+
+    # 1) Existing DB builder remains the source inventory authority.
     build_engine_db()
+
+    node = "node"
+    intelligence = archive_dir / "tools" / "intelligence"
+    meta_foundation = archive_dir / "tools" / "meta-foundation"
+
+    # 2) Preserve every existing UID and only mint identities for genuinely
+    # new exam files. Existing-question insertion/reorder stays fail-closed.
+    run_pipeline_command(
+        "문항 UID 증분 동기화",
+        [node, intelligence / "sync-question-identity-map-v1.mjs"],
+        repo_root,
+    )
+
+    # 3) Refresh canonical/compiled Foundation before validating per-exam
+    # semantic keys. Canonical promotion itself is still a separate approval.
+    run_pipeline_command(
+        "Meta Foundation compiled 갱신/검증",
+        [node, meta_foundation / "compile-meta-foundation.mjs", "--write", "--check"],
+        repo_root,
+    )
+
+    # 4) Join JS-time per-exam metadata to the canonical UID and split
+    # approved rows from REVIEW/CANDIDATE holds.
+    run_pipeline_command(
+        "시험지별 META INGEST",
+        [node, intelligence / "ingest-exam-meta-source.mjs"],
+        repo_root,
+    )
+
+    # 5) Materialize the approved sidecar consumed by both legacy Archive and
+    # Archive 2.0. Missing global classification is allowed only when an
+    # explicit exam-meta source row exists.
+    run_pipeline_command(
+        "Approved question metadata 빌드",
+        [node, intelligence / "build-approved-question-metadata-v1.mjs"],
+        repo_root,
+    )
+
+    run_pipeline_command(
+        "Question index 빌드",
+        [node, archive_dir / "tools" / "build-question-index.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 catalog 빌드",
+        [node, archive_dir / "tools" / "build-archive2-catalog.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 crosswalk inventory 빌드",
+        [node, archive_dir / "tools" / "build-archive2-crosswalk-inventory.mjs"],
+        repo_root,
+    )
+
+    # Runtime auto-builder is a separate Meta Foundation capability. Once it
+    # exists, the same one-click command automatically includes it; until
+    # then the already-installed runtime overlays remain untouched.
+    runtime_builder = meta_foundation / "build-meta-foundation-runtime.mjs"
+    if runtime_builder.exists():
+        run_pipeline_command(
+            "Meta Foundation runtime/manifest 갱신",
+            [node, runtime_builder, "--write", "--check"],
+            repo_root,
+        )
+    else:
+        print("\nℹ️ Meta Foundation 공통 runtime builder가 아직 없어 기존 runtime overlay를 유지합니다.")
+
+    # Final deterministic checks. These do not mutate source exam JS.
+    run_pipeline_command(
+        "Archive 2.0 catalog 최종 parity",
+        [node, archive_dir / "tools" / "build-archive2-catalog.mjs", "--check"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Meta Foundation 최종 compile gate",
+        [node, meta_foundation / "compile-meta-foundation.mjs", "--check"],
+        repo_root,
+    )
+
+    print("\n✅ ARCHIVE ONE-CLICK BUILD PASS")
+    print("   - production 시험 JS 자동 수정: 없음")
+    print("   - 신규/애매 Meta Foundation key 자동 승격: 없음")
+    print("   - REVIEW_REQUIRED / CANDIDATE_REQUIRED는 review queue에 유지")
+
+
+if __name__ == "__main__":
+    if "--db-only" in sys.argv:
+        build_engine_db()
+    else:
+        run_archive_build_pipeline()
