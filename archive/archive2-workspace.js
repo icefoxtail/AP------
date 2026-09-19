@@ -698,10 +698,55 @@
   }
   function openOriginalIssue(exam, step = "review") {
     const url = prepareOriginalIssue(exam);
-    showDialog(
-      O.displayTitle(exam),
-      `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 수록 순서 그대로</span><div class="actions">${button("original-review", "시험지 확인", 'aria-pressed="true"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="false"')}</div><details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><section id="original-review"><div class="resultbar"><p class="muted">학생에게 나갈 시험지입니다. 출력 설정을 바꾸면 여기에 반영됩니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe></section><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
-    );
+    const examIndex = state.catalog.exams.indexOf(exam);
+    const title = O.displayTitle(exam);
+    const course =
+      exam.primaryStandardCourse ||
+      unique((exam.courseRanges || []).map((r) => r.standardCourse)).join(" · ") ||
+      exam.subject ||
+      "";
+    $("modal").classList.remove("original-issue-dialog");
+    $("modal-body").innerHTML =
+      `<div class="classic-detail-backrow">${button("close-dialog", "‹ 목록", 'class="classic-detail-back"')}</div>
+      <div class="classic-detail-titlebar">
+        <div><h2 id="modal-title">${esc(title)}</h2><p>${esc(exam.grade || "")}${course ? " · " + esc(course) : ""} · ${exam.qCount}문항</p></div>
+        <div class="classic-detail-top-actions">
+          ${button("original-review", "시험지 보기", 'class="classic-original-review-return" aria-pressed="true"')}
+          ${button("original-print", "출력", 'class="primary"')}
+          ${button("original-targets", "학생 출제", 'aria-pressed="false"')}
+        </div>
+      </div>
+      <div id="original-receipts"></div>
+      <div class="classic-detail-layout">
+        <section id="original-review" class="classic-detail-stage">
+          <div id="original-preview-status" role="status">시험지를 불러오는 중…</div>
+          <iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe>
+        </section>
+        <aside class="classic-detail-side">
+          <section class="classic-detail-side-card">
+            <h3>바로 사용</h3>
+            <div class="classic-detail-side-actions">
+              ${button("original-print", "출력", 'class="primary"')}
+              ${button("original-targets", "학생 출제")}
+            </div>
+          </section>
+          <section class="classic-detail-side-card">
+            <h3>필요할 때</h3>
+            <div class="classic-detail-soft-actions">
+              ${button("original-settings", "출력 설정")}
+              ${button("source-toggle", state.sources.includes(exam.file) ? "문항 선택 해제" : "이 시험지에서 문항 선택", `data-exam="${examIndex}"`)}
+            </div>
+            <details class="original-output classic-detail-output-settings"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details>
+          </section>
+        </aside>
+        <iframe id="original-issue-frame" class="classic-detail-target-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>
+      </div>
+      <div class="classic-detail-mobile-actions">
+        ${button("original-print", "출력", 'class="print-action"')}
+        ${button("original-targets", "학생 출제", 'class="primary assign-action"')}
+        ${button("original-settings", "···", 'class="classic-detail-more" aria-label="더보기"')}
+      </div>`;
+    if (!$("modal").open) $("modal").showModal();
     $("modal").classList.add("original-issue-dialog");
     setOriginalStep(step);
   }
@@ -713,11 +758,18 @@
   function setOriginalStep(step) {
     $("original-review").hidden = step !== "review";
     $("original-issue-frame").hidden = step !== "targets";
-    document.querySelector('[data-action="original-review"]').setAttribute("aria-pressed", String(step === "review"));
-    document.querySelector('[data-action="original-targets"]').setAttribute("aria-pressed", String(step === "targets"));
+    $("modal").classList.toggle("is-targeting", step === "targets");
+    document
+      .querySelectorAll('[data-action="original-review"]')
+      .forEach((control) =>
+        control.setAttribute("aria-pressed", String(step === "review")),
+      );
+    document
+      .querySelectorAll('[data-action="original-targets"]')
+      .forEach((control) =>
+        control.setAttribute("aria-pressed", String(step === "targets")),
+      );
     $("modal").scrollTop = 0;
-    // Equal-slot layout requires measurable width. A hidden iframe cannot
-    // render; refresh only after the review panel becomes visible.
     if (step === "review") updateOriginalPreview();
   }
   async function originalOutputUrl() {
@@ -1894,6 +1946,12 @@
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "review");
       } else if (a === "original-review" || a === "original-targets") {
         setOriginalStep(a === "original-review" ? "review" : "targets");
+      } else if (a === "original-settings") {
+        const settings = $("modal")?.querySelector(".classic-detail-output-settings");
+        if (settings) {
+          settings.open = true;
+          settings.scrollIntoView({ block: "nearest" });
+        }
       } else if (a === "sources-clear") {
         state.sources = [];
         invalidate();
