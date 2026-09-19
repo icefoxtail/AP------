@@ -54,7 +54,7 @@ function main(){
   const conceptKeys=new Set((concepts.concepts||[]).map(x=>x.conceptKey));
   const conditionKeys=new Set((conditions.conditions||[]).map(x=>x.conditionKey));
   const bindingRows=bindings.bindings||[];
-  const records=[],queue=[],hardFailures=[],seenSource=new Set();
+  const records=[],queue=[],hardFailures=[],seenSource=new Set(),metaSourceFiles=new Set();
   const allowedStatuses=new Set(['APPROVED','REVIEW_REQUIRED','CANDIDATE_REQUIRED']);
 
   for(const file of walk(sourceRoot)){
@@ -62,6 +62,7 @@ function main(){
     try{ doc=JSON.parse(fs.readFileSync(file,'utf8')); }catch(error){hardFailures.push({file:path.relative(repoRoot,file).replaceAll('\\','/'),reason:'invalid_json',error:error.message});continue;}
     const reviewSource=path.relative(repoRoot,file).replaceAll('\\','/');
     const sourceFile=normalizeFile(doc.sourceArchiveFile);
+    metaSourceFiles.add(sourceFile);
     const defaultStatus=text(doc.reviewStatus||'REVIEW_REQUIRED').toUpperCase();
     if(doc.schemaVersion!=='archive-exam-meta-source-v1'||!sourceFile||!Array.isArray(doc.questions)||!allowedStatuses.has(defaultStatus)){
       hardFailures.push({file:reviewSource,reason:'invalid_document_header'});continue;
@@ -140,10 +141,17 @@ function main(){
     for(let i=1;i<=questions.length;i++) if(!ordinals.has(i)) hardFailures.push({file:reviewSource,sourceArchiveFile:sourceFile,reason:'missing_sourceOrdinal',sourceOrdinal:i});
   }
 
+  for(const sourceFile of identity.incrementalSync?.newSourceFiles || []){
+    if(!metaSourceFiles.has(normalizeFile(sourceFile))) {
+      hardFailures.push({sourceArchiveFile:normalizeFile(sourceFile),reason:'new_exam_meta_missing'});
+    }
+  }
+
   records.sort((a,b)=>a.sourceArchiveFile.localeCompare(b.sourceArchiveFile,'en')||a.sourceOrdinal-b.sourceOrdinal);
   queue.sort((a,b)=>a.sourceArchiveFile.localeCompare(b.sourceArchiveFile,'en')||a.sourceOrdinal-b.sourceOrdinal);
-  const report={schemaVersion:'archive-exam-meta-ingest-v1',generatedAt:new Date().toISOString(),counts:{metaFiles:walk(sourceRoot).length,records:records.length,approved:records.filter(x=>x.disposition==='reviewed_pass').length,reviewQueue:queue.length,hardFailures:hardFailures.length},records,hardFailures};
-  const review={schemaVersion:'archive-exam-meta-review-queue-v1',generatedAt:report.generatedAt,count:queue.length,records:queue};
+  const stableReport={schemaVersion:'archive-exam-meta-ingest-v1',counts:{metaFiles:walk(sourceRoot).length,records:records.length,approved:records.filter(x=>x.disposition==='reviewed_pass').length,reviewQueue:queue.length,hardFailures:hardFailures.length},records,hardFailures};
+  const report={...stableReport,generatedAt:new Date().toISOString(),digest:sha256(JSON.stringify(stableReport))};
+  const review={schemaVersion:'archive-exam-meta-review-queue-v1',generatedAt:report.generatedAt,count:queue.length,records:queue,digest:sha256(JSON.stringify(queue))};
   fs.mkdirSync(outputDir,{recursive:true});
   fs.writeFileSync(overridePath,JSON.stringify(report,null,2)+'\n','utf8');
   fs.writeFileSync(queuePath,JSON.stringify(review,null,2)+'\n','utf8');
