@@ -1,7 +1,7 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.0.1",
   "status": "ACTIVE",
   "conceptCount": 18,
   "concepts": [
@@ -69,12 +69,16 @@
         "원 방정식"
       ],
       "supportingQuestionUids": [
-        "qid_v1_97306ad6ecab79ebbff4692e245a25d251dfb08d5ad965723e40678e8968ad2d"
+        "qid_v1_97306ad6ecab79ebbff4692e245a25d251dfb08d5ad965723e40678e8968ad2d",
+        "qid_v1_909b5a10036f1ea3c78d340a544a67f332597f2afb1162f890f4ed1ca92eaadd",
+        "qid_v1_939a9364c754ad218c1f9c520dbfec23fbc81bfcee71a845ba30c98578c2cb1e",
+        "qid_v1_e94d6ec39e6960d43b4cba6f78f6402117b02363b3bf6d5e8908e122f8ab35d9"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 4,
       "sourceUnits": [
         "LINE_EQUATION",
-        "PLANE_COORDINATE"
+        "PLANE_COORDINATE",
+        "PROPOSITION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
@@ -100,13 +104,28 @@
               "term": "원의 방정식"
             }
           ]
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_909b5a10036f1ea3c78d340a544a67f332597f2afb1162f890f4ed1ca92eaadd",
+              "qid_v1_939a9364c754ad218c1f9c520dbfec23fbc81bfcee71a845ba30c98578c2cb1e",
+              "qid_v1_e94d6ec39e6960d43b4cba6f78f6402117b02363b3bf6d5e8908e122f8ab35d9"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
-        "PT_LINE_ANGLE_BISECTOR"
+        "PT_LINE_ANGLE_BISECTOR",
+        "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "PT_PROPOSITION_JUDGMENT"
       ],
       "curriculumRefs": [
-        "2015:수학(상):H15-SA-10"
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(하):H15-SB-02"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     },
@@ -755,13 +774,15 @@
         "qid_v1_d71bfeda2d1be9c720a073e7872becd7892647a0a9b7dd563d369f7626e620c9",
         "qid_v1_ef4f28d04d47c135b04093ed13e6ac9239077d690fb47a8a70b9b3eb2bdc5b73",
         "qid_v1_efa6eb16fddb16fb3c572d37fe5f24486f91e85dd7ad7f83c974a905de838d2e",
-        "qid_v1_f3ec1529e55a216dd7c0f9aa7756376f5d05ee95a9b87e61bf9b589a399cec8a"
+        "qid_v1_f3ec1529e55a216dd7c0f9aa7756376f5d05ee95a9b87e61bf9b589a399cec8a",
+        "qid_v1_909b5a10036f1ea3c78d340a544a67f332597f2afb1162f890f4ed1ca92eaadd"
       ],
-      "supportingItemCount": 33,
+      "supportingItemCount": 34,
       "sourceUnits": [
         "CIRCLE_EQUATION",
         "FIGURE_TRANSFORM",
-        "LINE_EQUATION"
+        "LINE_EQUATION",
+        "PROPOSITION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
@@ -782,6 +803,16 @@
         {
           "sourceUnit": "FIGURE_TRANSFORM",
           "evidence": "Foundation Pilot seed / 직선의 방정식 표준 용어"
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_909b5a10036f1ea3c78d340a544a67f332597f2afb1162f890f4ed1ca92eaadd"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
@@ -796,14 +827,16 @@
         "PT_MOVE_LINE_REFLECTION",
         "PT_MOVE_LINE_TRANSLATION",
         "PT_MOVE_POINT_REFLECTION",
-        "PT_TWO_CIRCLES"
+        "PT_TWO_CIRCLES",
+        "PT_PROPOSITION_JUDGMENT"
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-10",
         "2015:수학(상):H15-SA-11",
         "2015:수학(상):H15-SA-12",
         "2022:공통수학2:H22-C2-03",
-        "2022:공통수학2:H22-C2-04"
+        "2022:공통수학2:H22-C2-04",
+        "2015:수학(하):H15-SB-02"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     },
@@ -819,12 +852,14 @@
         "qid_v1_3da50747618288f61b900079752fb33ba847fdfc7012b54e6364bc63bc904df4",
         "qid_v1_41d0a7982daa357ec0fa8bc76ca4a09b07d6651149c28285a6e519ed2e7ce9fa",
         "qid_v1_7957e9829210491ccb5877ee6b0201cc70a480a4854e477eba7458f098db1c5d",
-        "qid_v1_c8d8e1346f53bf8cd8a47684242e46f2db1cd1068f33e32f1c5b4cbaf2eb12a5"
+        "qid_v1_c8d8e1346f53bf8cd8a47684242e46f2db1cd1068f33e32f1c5b4cbaf2eb12a5",
+        "qid_v1_325876b620dfb022e748db31cf3193d4c09413c49b122f32eff867e9b7d97d4c"
       ],
-      "supportingItemCount": 7,
+      "supportingItemCount": 8,
       "sourceUnits": [
         "CIRCLE_EQUATION",
-        "PLANE_COORDINATE"
+        "PLANE_COORDINATE",
+        "PROPOSITION"
       ],
       "legacyKeys": [
         "CC_SYMMETRY"
@@ -839,18 +874,30 @@
             "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
             "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
           }
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_325876b620dfb022e748db31cf3193d4c09413c49b122f32eff867e9b7d97d4c"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
         "PT_CIRCLE_EQUATION",
         "PT_CIRCLE_LINE_RELATION",
         "PT_COORD_SECTION",
-        "PT_TWO_CIRCLES"
+        "PT_TWO_CIRCLES",
+        "PT_PROPOSITION_JUDGMENT"
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-09",
         "2015:수학(상):H15-SA-11",
-        "2022:공통수학2:H22-C2-03"
+        "2022:공통수학2:H22-C2-03",
+        "2015:수학(하):H15-SB-02"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     },

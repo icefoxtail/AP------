@@ -1,7 +1,7 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.0.1",
   "status": "ACTIVE",
   "conceptCount": 16,
   "concepts": [
@@ -74,11 +74,13 @@
       "definition": "삼각형·영역 등 도형의 넓이를 계산하거나 조건에 사용하는 개념.",
       "aliases": [],
       "supportingQuestionUids": [
-        "qid_v1_7a2c037ec05170de7878bd4247877d2461dd1b98c9dade8f6948d626044216a1"
+        "qid_v1_7a2c037ec05170de7878bd4247877d2461dd1b98c9dade8f6948d626044216a1",
+        "qid_v1_7d64880a2ffc3cceed2953f4d47381f9b588d3a9999462f53cd5dcecfb7886b3"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 2,
       "sourceUnits": [
-        "FIGURE_TRANSFORM"
+        "FIGURE_TRANSFORM",
+        "PROPOSITION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
@@ -86,13 +88,25 @@
         {
           "sourceUnit": "FIGURE_TRANSFORM",
           "evidence": "교과서 표준 용어 후보"
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_7d64880a2ffc3cceed2953f4d47381f9b588d3a9999462f53cd5dcecfb7886b3"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
-        "PT_MOVE_COMPOSITE"
+        "PT_MOVE_COMPOSITE",
+        "PT_ABSOLUTE_INEQUALITY_PROOF"
       ],
       "curriculumRefs": [
-        "2015:수학(상):H15-SA-12"
+        "2015:수학(상):H15-SA-12",
+        "2015:수학(하):H15-SB-02"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
@@ -426,14 +440,16 @@
         "qid_v1_d8694c5a71d41abb320387c806e52dfc671b10d5faec2cd03a1f3b072aef4d84",
         "qid_v1_ef4f28d04d47c135b04093ed13e6ac9239077d690fb47a8a70b9b3eb2bdc5b73",
         "qid_v1_f18e4173995d1bdeaf83f956ff26cb49eb13a560828eb55585bdb1e041553716",
-        "qid_v1_f8f733c11604d641e07a8e37f03df4947b0e864395aee187c2e01ebb98a5813a"
+        "qid_v1_f8f733c11604d641e07a8e37f03df4947b0e864395aee187c2e01ebb98a5813a",
+        "qid_v1_1a9d60400a9432e1342b658102d2125eaca358194f17d5edbbf800ea95d699d3"
       ],
-      "supportingItemCount": 34,
+      "supportingItemCount": 35,
       "sourceUnits": [
         "CIRCLE_EQUATION",
         "FIGURE_TRANSFORM",
         "LINE_EQUATION",
-        "PLANE_COORDINATE"
+        "PLANE_COORDINATE",
+        "PROPOSITION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
@@ -462,6 +478,16 @@
         {
           "sourceUnit": "FIGURE_TRANSFORM",
           "evidence": "Foundation Pilot seed / 교과서 표준 용어"
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_1a9d60400a9432e1342b658102d2125eaca358194f17d5edbbf800ea95d699d3"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
@@ -476,7 +502,8 @@
         "PT_MOVE_FOLDING_REFLECTION",
         "PT_MOVE_POINT_REFLECTION",
         "PT_PERPENDICULAR_FOOT_ALTITUDE",
-        "PT_TWO_CIRCLES"
+        "PT_TWO_CIRCLES",
+        "PT_ABSOLUTE_INEQUALITY_EXTREMUM"
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-09",
@@ -486,7 +513,8 @@
         "2022:공통수학2:H22-C2-01",
         "2022:공통수학2:H22-C2-02",
         "2022:공통수학2:H22-C2-03",
-        "2022:공통수학2:H22-C2-04"
+        "2022:공통수학2:H22-C2-04",
+        "2015:수학(하):H15-SB-02"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
@@ -568,11 +596,13 @@
       "supportingQuestionUids": [
         "qid_v1_0d645842f82cf4a9acba546466142215ca2cfe3e2072f1e26eb10e11d7d131f3",
         "qid_v1_3a9f3be3978029800641dcf24023685bade376adb0e158ee763f11a4dfac35fd",
-        "qid_v1_f5e96950546c189c3cb8e596613dbd63b6113352d6412683ad803c1516fc734e"
+        "qid_v1_f5e96950546c189c3cb8e596613dbd63b6113352d6412683ad803c1516fc734e",
+        "qid_v1_039606aa64c6d557be981e80400c90990c157340fdde6c5bec9ad3424e783336"
       ],
-      "supportingItemCount": 3,
+      "supportingItemCount": 4,
       "sourceUnits": [
-        "PLANE_COORDINATE"
+        "PLANE_COORDINATE",
+        "PROPOSITION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
@@ -585,13 +615,25 @@
             "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
             "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
           }
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_039606aa64c6d557be981e80400c90990c157340fdde6c5bec9ad3424e783336"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
-        "PT_COORD_DISTANCE_OPTIMIZATION"
+        "PT_COORD_DISTANCE_OPTIMIZATION",
+        "PT_ABSOLUTE_INEQUALITY_PROOF"
       ],
       "curriculumRefs": [
-        "2015:수학(상):H15-SA-09"
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(하):H15-SB-02"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }

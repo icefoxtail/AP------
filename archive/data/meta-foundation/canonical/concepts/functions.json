@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.1.0",
   "status": "ACTIVE",
-  "conceptCount": 4,
+  "conceptCount": 6,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -95,12 +95,20 @@
       "supportingQuestionUids": [
         "qid_v1_603b917cf3c4a678f353cbc474185a7455eb56b43996a1c138765f8f45acd48d",
         "qid_v1_65b1e4cbc70c5444aca2e0b2faa1238caf44a5ec89d6b089430a1c4c35af0378",
-        "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd"
+        "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd",
+        "qid_v1_1c876a20a5f906b8e0f29c3cb5ac9e803d4bee39222eabfd21973c30bf962fa9",
+        "qid_v1_479164359ea2376fc6b0dfbf3ac5144e3e44d97c7467956d944608b51a6d53c6",
+        "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953",
+        "qid_v1_ad87ae990aadc922029120c4adc8bceeb9e2db6393aae2917271f0971d6e3708",
+        "qid_v1_baef3646e5efd3927bcf1699f2fe2eaf89e57ed4a7d2ca668206032a8ebde7a0",
+        "qid_v1_c6c555c33d5bd01b892722d1f60c1fdbb5f5f324a21215df8cb6d2b00c465ae7",
+        "qid_v1_ec48277fa98127de616b2b8daaa544bb92b7471550d567dde2b5dabd1e9467e9"
       ],
-      "supportingItemCount": 3,
+      "supportingItemCount": 10,
       "sourceUnits": [
         "CIRCLE_EQUATION",
-        "LINE_EQUATION"
+        "LINE_EQUATION",
+        "PROPOSITION"
       ],
       "legacyKeys": [],
       "status": "ACTIVE",
@@ -117,15 +125,36 @@
               "taxonomyRef": "H15-SA-13"
             }
           ]
+        },
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_1c876a20a5f906b8e0f29c3cb5ac9e803d4bee39222eabfd21973c30bf962fa9",
+              "qid_v1_479164359ea2376fc6b0dfbf3ac5144e3e44d97c7467956d944608b51a6d53c6",
+              "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953",
+              "qid_v1_ad87ae990aadc922029120c4adc8bceeb9e2db6393aae2917271f0971d6e3708",
+              "qid_v1_baef3646e5efd3927bcf1699f2fe2eaf89e57ed4a7d2ca668206032a8ebde7a0",
+              "qid_v1_c6c555c33d5bd01b892722d1f60c1fdbb5f5f324a21215df8cb6d2b00c465ae7",
+              "qid_v1_ec48277fa98127de616b2b8daaa544bb92b7471550d567dde2b5dabd1e9467e9"
+            ]
+          }
         }
       ],
       "taxonomyRefs": [
         "PT_CIRCLE_EQUATION",
-        "PT_POINT_LINE_DISTANCE"
+        "PT_POINT_LINE_DISTANCE",
+        "PT_PROPOSITION_JUDGMENT",
+        "PT_PROPOSITION_PARAMETER_CONDITION",
+        "PT_QUANTIFIER_NEGATION"
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-10",
-        "2015:수학(상):H15-SA-11"
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(하):H15-SB-02",
+        "2022:공통수학2:H22-C2-06"
       ],
       "ownerConceptShard": "FUNCTIONS"
     },
@@ -159,6 +188,76 @@
         "2022:공통수학2:H22-C2-04"
       ],
       "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_COMPOSITION",
+      "canonicalLabelKo": "합성함수",
+      "definition": "두 함수의 대응을 연속하여 적용해 합성함수의 값이나 관계를 해석하는 개념.",
+      "aliases": [
+        "함수의 합성"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_325876b620dfb022e748db31cf3193d4c09413c49b122f32eff867e9b7d97d4c"
+      ],
+      "sourceUnits": [
+        "PROPOSITION"
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS",
+      "supportingItemCount": 1,
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_325876b620dfb022e748db31cf3193d4c09413c49b122f32eff867e9b7d97d4c"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION",
+      "canonicalLabelKo": "유리함수",
+      "definition": "다항식의 비로 나타나는 함수의 정의역·식·그래프 성질을 이용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_325876b620dfb022e748db31cf3193d4c09413c49b122f32eff867e9b7d97d4c"
+      ],
+      "sourceUnits": [
+        "PROPOSITION"
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS",
+      "supportingItemCount": 1,
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "SETS_PROPOSITIONS",
+          "evidence": {
+            "evidenceType": "INDEPENDENT_REVIEWED_PACK_EVIDENCE",
+            "sourceTitle": "SETS_PROPOSITIONS integrated candidate + independent review",
+            "supportingQuestionUids": [
+              "qid_v1_325876b620dfb022e748db31cf3193d4c09413c49b122f32eff867e9b7d97d4c"
+            ]
+          }
+        }
+      ]
     }
   ]
 }

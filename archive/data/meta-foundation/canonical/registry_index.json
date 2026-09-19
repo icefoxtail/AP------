@@ -4,6 +4,11 @@
   "activePacks": [
     {
       "id": "GEOMETRY_EQUATIONS",
+      "version": "1.0.1",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "SETS_PROPOSITIONS",
       "version": "1.0.0",
       "status": "ACTIVE"
     }
@@ -11,15 +16,15 @@
   "activeConceptShards": [
     {
       "id": "ALGEBRA",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "ACTIVE",
-      "conceptCount": 7
+      "conceptCount": 11
     },
     {
       "id": "FUNCTIONS",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "ACTIVE",
-      "conceptCount": 4
+      "conceptCount": 6
     },
     {
       "id": "LOGIC_SET",
@@ -29,15 +34,27 @@
     },
     {
       "id": "COORDINATE_GEOMETRY",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "status": "ACTIVE",
       "conceptCount": 18
     },
     {
       "id": "PLANE_GEOMETRY",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "status": "ACTIVE",
       "conceptCount": 16
+    },
+    {
+      "id": "COUNTING",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "conceptCount": 1
+    },
+    {
+      "id": "NUMBER_THEORY",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "conceptCount": 3
     }
   ],
   "conditionRegistry": {
@@ -48,18 +65,23 @@
   "canonicalSources": [
     {
       "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
-      "sizeBytes": 11537,
-      "sha256": "a9def427b24e8d0d79534b661c1c50e89dcf747b276aa8de5a16b82a89d72ae9"
+      "sizeBytes": 25604,
+      "sha256": "fb426b09105937472ad8bfd01f4b419704b626777f128cd8d3d0c2ec5a00bbde"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
-      "sizeBytes": 37796,
-      "sha256": "12c557035b0659a98d8b2b19306963364388690704480e9c4b4e21d1ed1cdcbb"
+      "sizeBytes": 39920,
+      "sha256": "b680ed5c9394e4e09b443ccd4479aa25c73ca6292cffc938e310c92fd7375289"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/counting.json",
+      "sizeBytes": 2331,
+      "sha256": "127c155a6f10e87b4bb2f05d9c956d2a5648af62f0f414965693fbba1405091e"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
-      "sizeBytes": 5624,
-      "sha256": "9e5a92a6bf03c515ca879384d9735aa8224b6340617a65d03065aba09c22feb1"
+      "sizeBytes": 9637,
+      "sha256": "ed1bdae1be1fa3c70a188f51ee75564c6c0c559b6afa9ea6771e854e08c4b043"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/logic-set.json",
@@ -67,9 +89,14 @@
       "sha256": "1a6bb2df4784915d0df28ff5e3dd02f5b03ac7a28cb4ad36785e74af1df3e73e"
     },
     {
+      "path": "archive/data/meta-foundation/canonical/concepts/number-theory.json",
+      "sizeBytes": 9229,
+      "sha256": "0e9908abf884359de8d90737995c8f5511059d55982c94b8625fa5aa3914fe67"
+    },
+    {
       "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
-      "sizeBytes": 22780,
-      "sha256": "84569a2856f1aa7cf8fbff2f3845fac04e85894ed38764cdd3e2a4c4e1d598e6"
+      "sizeBytes": 24535,
+      "sha256": "675e41202f59344538b20a4bbcda557de0c57416232a29cad30ff4890020e18f"
     },
     {
       "path": "archive/data/meta-foundation/canonical/condition_registry.json",
@@ -83,8 +110,8 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/aliases.json",
-      "sizeBytes": 26589,
-      "sha256": "6ca02611d779ca0027bed7168ef4648bf351ab06c226c3f81efe633e6cb23e32"
+      "sizeBytes": 26381,
+      "sha256": "c734d1dc5f87f337965ba23e05aaa13420dc7d72b39c8b0e72f12a1ba6460ef5"
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
@@ -93,25 +120,45 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/pack.json",
-      "sizeBytes": 1144,
-      "sha256": "563c1e97b11fafcd3e52280b58bcc1409995aac77f1484539329e81e38fc0ed1"
+      "sizeBytes": 1235,
+      "sha256": "47a0ebf935da81dc6be16aa0de24794cba110b61052d660cff6961a096b5e5a0"
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
       "sizeBytes": 172398,
       "sha256": "584370154cd8e31377b41eaaf814a4931bd961191b8440a2fdb8ac7d298c0458"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/aliases.json",
+      "sizeBytes": 2086,
+      "sha256": "8eaf72d877a8b560455ef948c7229faf0a6c3de841ab9d962edb513259f3422a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/bindings.json",
+      "sizeBytes": 70047,
+      "sha256": "bdfe29835f905827905dc8325ff08f0f44d824c4af4ea1bacdcd1a492081a131"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/pack.json",
+      "sizeBytes": 1340,
+      "sha256": "d33c2a86da9dc9fd70a367d5778b51e89ffbb159f7793127910e2f12b5dc95c2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/sets-propositions/taxonomy.json",
+      "sizeBytes": 135756,
+      "sha256": "cadd4e0fcf8337725503ba31622ae5b8d5b3decf267627a3e1c9d69f8cbac834"
     }
   ],
   "compiledArtifacts": [
     {
       "path": "archive/data/meta-foundation/compiled/aliases.json",
-      "sizeBytes": 26649,
-      "sha256": "9b8d20344eb55f15b3e4fdb5c71c9ec98d07d5e07c1ab8ae636d70d0569ef4a6"
+      "sizeBytes": 30334,
+      "sha256": "7688ab903ed75ecaa22b2f72381d687e7248d0dd5b41b79bd2da88c729bc9d50"
     },
     {
       "path": "archive/data/meta-foundation/compiled/concept_registry.json",
-      "sizeBytes": 80066,
-      "sha256": "937e2390aff3ec1e42db33fb374c2d4612a669552a94c0d75712fb3744cf06c5"
+      "sizeBytes": 113423,
+      "sha256": "dcf6a8e0746d5632c320ff3fa70fc9ecbf4d70c758816012be19b5a3413a0ce2"
     },
     {
       "path": "archive/data/meta-foundation/compiled/condition_registry.json",
@@ -120,18 +167,18 @@
     },
     {
       "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-      "sizeBytes": 60691,
-      "sha256": "d6375d2f83daf810c6830a7d5ba2b09a7ad84acb20b488369c0c0e99e13325eb"
+      "sizeBytes": 130456,
+      "sha256": "74837743999d8cf2f6571cfcf08363f3fbeade0e03d7a8bd2361b812cdc708e1"
     },
     {
       "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
-      "sizeBytes": 608,
-      "sha256": "6c514d7589d781fc7fd3cf92bf9acc913a286283cc4331f0338f8d390194c737"
+      "sizeBytes": 710,
+      "sha256": "019bc21c4c8b45af842daf10960e8f8b73d27f2a5609c237d0748ce46e689c25"
     },
     {
       "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-      "sizeBytes": 171975,
-      "sha256": "25562bf50877208064e605e041c3921bcace7d22dec188a7ef6bb00810621625"
+      "sizeBytes": 307397,
+      "sha256": "a25540ce0d87125d907a6e882a1d5fc1eaa39315608a905b9cdda9d088f76d68"
     }
   ],
   "compiledIsReadOnly": true
