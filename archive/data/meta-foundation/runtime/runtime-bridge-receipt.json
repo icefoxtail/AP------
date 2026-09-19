@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v1",
+  "status": "PASS_PRECOMMIT",
+  "baseMain": "4dad8f00095b2de766f93ecfa059477be6f6b720",
+  "runtimeVersion": "GEOMETRY_EQUATIONS@1.0.0/runtime-bridge-v1",
+  "checked": {
+    "canonicalAssignmentRecords": 400,
+    "canonicalStructuralErrors": 0,
+    "archive2CatalogJoin": 400,
+    "questionMetadataJoin": 400,
+    "sourceIdentityVerified": 400,
+    "sourceFingerprintVerified": 400,
+    "classificationOverlayMatch": 400,
+    "taxonomyDuplicatePaths": 0,
+    "defaultSelectable": 399,
+    "automaticEligible": 398,
+    "supplementaryBlocked": 1,
+    "sourceDifficultyHoldBlocked": 1,
+    "uniqueSourceFiles": 41
+  },
+  "blockedItems": [
+    {
+      "reason": "SUPPLEMENTARY_OUTSIDE_CORE",
+      "count": 1
+    },
+    {
+      "reason": "SOURCE_DIFFICULTY_HOLD",
+      "count": 1,
+      "questionUid": "qid_v1_3abe4b37e32e15bd8ccd81382b327c1e6cabdfa8f91e9fcf757479900b167d08"
+    }
+  ],
+  "invariants": [
+    "No production exam JS modified by runtime bridge.",
+    "Legacy difficulty value is preserved in question-meta compatibility overlay.",
+    "Archive 2.0 receives canonical difficultyBucket 1..5 directly from the active Foundation pack.",
+    "Legacy taxonomy remains active outside GEOMETRY_EQUATIONS owned scopes.",
+    "Existing Archive2 taxonomyVersion remains unchanged for draft compatibility."
+  ]
+}

@@ -2236,6 +2236,9 @@
       });
       if (!response.ok) throw new Error("문항 목록을 불러오지 못했습니다");
       state.catalog = C.decodeCatalog(await response.json());
+      if (window.applyArchiveMetaFoundationCatalog) {
+        state.catalog = await window.applyArchiveMetaFoundationCatalog(state.catalog);
+      }
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )
