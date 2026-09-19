@@ -21,8 +21,16 @@ assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveF
 assert.strictEqual(runtime.records.filter((r) => r.catalogIdentityRepairVerified === true).length, 3);
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 186);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 85);
-assert.strictEqual(runtime.counts.difficultyDeferred, 104);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, 189);
+assert.strictEqual(runtime.counts.difficultyDeferred, 0);
+const limitRows = runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01");
+const limitDistribution = Object.fromEntries([1,2,3,4,5].map((bucket) => [bucket, limitRows.filter((r) => r.difficultyBucket === bucket).length]));
+assert.deepStrictEqual(limitDistribution, { 1: 24, 2: 24, 3: 32, 4: 21, 5: 3 });
+assert.strictEqual(limitRows.filter((r) => r.metaFoundationDifficultyStatus === "FRESH_BLIND_RECHECK_PASS").length, 104);
+assert.strictEqual(limitRows.filter((r) => ["high","medium","low"].includes(r.difficultyConfidence)).length, 104);
+assert.strictEqual(limitRows.filter((r) => ["NONE","B12","B23","B34","B45"].includes(r.difficultyBoundaryFlag)).length, 104);
+assert.strictEqual(limitRows.filter((r) => ["NORMAL","BORDERLINE_ACCEPTABLE","STRONG_CONFLICT"].includes(r.legacyLevelCompatibility)).length, 104);
+assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.0.0/runtime-bridge-v2");
 
 const bySource = new Map(catalog.records.map((r) => [sourceKey(r.sourceFile, r.sourceOrdinal), r]));
 let direct = 0;
@@ -60,9 +68,8 @@ for (const overlay of runtime.records) {
   };
   const gate = C.eligibility(merged);
   if (overlay.standardUnitKey === "H15-M2-01") {
-    assert.strictEqual(gate.ok, false);
-    assert(gate.reasons.includes("difficulty"));
-    if (gate.ok) eligibleLimit += 1;
+    assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
+    eligibleLimit += 1;
   } else {
     assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
     eligibleContinuity += 1;
@@ -71,7 +78,7 @@ for (const overlay of runtime.records) {
 
 assert.strictEqual(direct, 186);
 assert.strictEqual(repaired, 3);
-assert.strictEqual(eligibleLimit, 0);
+assert.strictEqual(eligibleLimit, 104);
 assert.strictEqual(eligibleContinuity, 85);
 
 assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
@@ -102,7 +109,7 @@ assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1463);
 assert.strictEqual(receipt.checked.combinedUniqueUid, 1463);
 assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1463);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 189);
-assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 85);
+assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 189);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
 
 console.log("PASS MathII limit/continuity Archive2 runtime bridge");
