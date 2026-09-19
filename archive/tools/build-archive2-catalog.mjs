@@ -42,7 +42,7 @@ function foundationNode(meta) {
     L2: meta.L2 || binding.subUnitLabelKo || meta.subUnit || "",
     L3: meta.L3 || problemType.canonicalLabelKo || "",
     L4: meta.L4 || template.canonicalLabelKo || "",
-    curriculumApplicability: binding.curriculumApplicability || meta.curriculumApplicability || "DEFAULT_SCOPE",
+    curriculumApplicability: binding.curriculumApplicability === "CORE" || !binding.curriculumApplicability ? "DEFAULT_SCOPE" : binding.curriculumApplicability,
     defaultSelectable: binding.defaultSelectable === true
   };
 }
