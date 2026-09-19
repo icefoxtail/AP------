@@ -12,6 +12,7 @@ const examsDir = path.join(archiveDir, 'exams');
 const dbPath = path.join(archiveDir, 'db.js');
 const identityPath = path.join(archiveDir, 'data', 'question_identity_map.json');
 const examMetaRoot = path.join(archiveDir, 'data', 'exam-meta-source');
+const legacyUnmanagedPath = path.join(examMetaRoot, 'legacy-unmanaged-source-files.json');
 
 const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 const normalizeFile = value => String(value || '').normalize('NFC').replace(/\\/g, '/').replace(/^exams\//, '').replace(/^\/+/, '').trim();
@@ -28,6 +29,12 @@ function walkMetaFiles(dir) {
     else if (entry.isFile() && entry.name.endsWith('.meta.json') && entry.name !== 'exam-meta-source.schema.json') out.push(full);
   }
   return out;
+}
+
+function legacyUnmanagedSourceFiles() {
+  if (!fs.existsSync(legacyUnmanagedPath)) return new Set();
+  const data = JSON.parse(fs.readFileSync(legacyUnmanagedPath, 'utf8'));
+  return new Set((data.sourceFiles || []).map(normalizeFile).filter(Boolean));
 }
 
 function managedMetaSourceFiles() {
@@ -96,6 +103,7 @@ function main(){
   let newFiles=0,newRecords=0,updatedFingerprints=0;
   const newSourceFiles=[], unmanagedMissingFiles=[];
   const metaManagedFiles = managedMetaSourceFiles();
+  const legacyUnmanagedFiles = legacyUnmanagedSourceFiles();
 
   for(const sourceFile of readDbFiles()){
     const full=path.join(examsDir,sourceFile);
@@ -103,8 +111,11 @@ function main(){
     const questions=runJs(full,fs.readFileSync(full,'utf8'));
     const prior=records.filter(r=>r.sourceArchiveFile===sourceFile);
     if(!prior.length && !metaManagedFiles.has(sourceFile)) {
-      unmanagedMissingFiles.push(sourceFile);
-      continue;
+      if (legacyUnmanagedFiles.has(sourceFile)) {
+        unmanagedMissingFiles.push(sourceFile);
+        continue;
+      }
+      throw new Error('new archive exam is missing required .meta.json sidecar: ' + sourceFile);
     }
     if(prior.length && prior.length!==questions.length){
       throw new Error('existing source cardinality changed; run migrate-question-identity-map-v1.mjs: '+sourceFile+' '+prior.length+' -> '+questions.length);
