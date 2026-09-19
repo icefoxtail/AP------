@@ -17,7 +17,6 @@ const repoRoot = path.resolve(archiveDir, '..');
 const identityPath = path.join(archiveDir, 'data', 'question_identity_map.json');
 const classificationPath = path.join(archiveDir, '_generated', 'intelligence', 'phase3', 'complete-subunit-classification', 'archive-complete-subunit-classification-v1.json');
 const reviewDir = path.join(archiveDir, '_generated', 'intelligence', 'phase1', 'pilot', 'review');
-const examMetaOverridePath = path.join(archiveDir, '_generated', 'intelligence', 'meta-ingest', 'exam-meta-overrides.json');
 const outputJsonPath = path.join(archiveDir, 'data', 'question_metadata.json');
 const outputRuntimePath = path.join(archiveDir, 'question-meta.js');
 const tagMasterPath = path.join(archiveDir, 'data', 'master_tables', 'js_archive_tag_master.json');
@@ -87,7 +86,6 @@ function readSourceQuestionMap(identity) {
 
 function readReviewedPassOverrides() {
     const overrides = new Map();
-    if (!fs.existsSync(reviewDir)) return overrides;
     for (const file of fs.readdirSync(reviewDir).filter(name => name.endsWith('.json'))) {
         const report = JSON.parse(fs.readFileSync(path.join(reviewDir, file), 'utf8'));
         for (const item of report.reviews || []) {
@@ -104,18 +102,6 @@ function readReviewedPassOverrides() {
                 reviewSource: `archive/_generated/intelligence/phase1/pilot/review/${file}`
             });
         }
-    }
-    return overrides;
-}
-
-function readExamMetaOverrides() {
-    if (!fs.existsSync(examMetaOverridePath)) return new Map();
-    const report = JSON.parse(fs.readFileSync(examMetaOverridePath, 'utf8'));
-    const overrides = new Map();
-    for (const row of report.records || []) {
-        if (!row?.questionUid) continue;
-        if (overrides.has(row.questionUid)) throw new Error(`duplicate exam-meta UID: ${row.questionUid}`);
-        overrides.set(row.questionUid, row);
     }
     return overrides;
 }
@@ -143,7 +129,7 @@ function readCanonicalSubUnitLabels() {
 
 function buildMetadata() {
     const identityRaw = fs.readFileSync(identityPath, 'utf8');
-    const classificationRaw = fs.existsSync(classificationPath) ? fs.readFileSync(classificationPath, 'utf8') : '{"records":[]}';
+    const classificationRaw = fs.readFileSync(classificationPath, 'utf8');
     const identity = JSON.parse(identityRaw);
     const classification = JSON.parse(classificationRaw);
     // Rebuilding the current sidecar must not erase previously approved
@@ -160,7 +146,6 @@ function buildMetadata() {
     const canonicalSubUnitLabels = readCanonicalSubUnitLabels();
     const classificationByUid = new Map(classification.records.map(record => [record.questionUid, record]));
     const reviewedPass = readReviewedPassOverrides();
-    const examMetaByUid = readExamMetaOverrides();
     const records = [];
     const sourceByKey = new Map();
     const sourceFingerprintFailures = [];
@@ -169,51 +154,21 @@ function buildMetadata() {
 
     for (const identityRecord of identity.records) {
         const uid = identityRecord.questionUid;
-        const previousSeed = previousByUid.get(uid);
         // Test fixtures remain in the identity/runtime regression corpus but
         // are intentionally outside the production classification snapshot.
         // Keep them in the sidecar with explicit empty metadata; a missing
         // classification for a real archive question must still block build.
-        const examMeta = examMetaByUid.get(uid);
         const classified = classificationByUid.get(uid) || (
-            examMeta
-                ? {
-                    standardUnitKey: examMeta.standardUnitKey || '',
-                    standardUnit: examMeta.standardUnit || '',
-                    standardCourse: examMeta.standardCourse || '',
-                    classification: {
-                        subUnitKey: examMeta.subUnitKey || '',
-                        subUnit: examMeta.subUnit || '',
-                        conceptClusterKey: examMeta.conceptClusterKey || '',
-                        confidence: 'exam_meta_source'
-                    }
-                }
-                : previousSeed
-                    ? {
-                        standardUnitKey: previousSeed.standardUnitKey || '',
-                        standardUnit: previousSeed.standardUnit || '',
-                        standardCourse: previousSeed.standardCourse || '',
-                        classification: {
-                            subUnitKey: previousSeed.subUnitKey || '',
-                            subUnit: previousSeed.subUnit || '',
-                            conceptClusterKey: previousSeed.conceptClusterKey || '',
-                            confidence: previousSeed.tagConfidence || 'carry_forward'
-                        }
-                    }
-                    : normalizeFile(identityRecord.sourceArchiveFile).startsWith('test-fixtures/')
-                        ? { standardUnitKey: '', standardUnit: '', classification: {} }
-                        : null
+            normalizeFile(identityRecord.sourceArchiveFile).startsWith('test-fixtures/')
+                ? { standardUnitKey: '', standardUnit: '', classification: {} }
+                : null
         );
         const question = sourceQuestions.get(uid);
         if (!classified || !question) throw new Error(`metadata join failed: ${uid}`);
         const classificationData = classified.classification || {};
-        const pilotReviewed = reviewedPass.get(uid);
-        const reviewed = examMeta?.disposition === 'reviewed_pass' ? examMeta : pilotReviewed;
-        if (pilotReviewed && examMeta?.disposition === 'reviewed_pass') {
-            throw new Error(`duplicate semantic approval sources for UID: ${uid}`);
-        }
+        const reviewed = reviewedPass.get(uid);
         const sourceFingerprint = makeSourceFingerprint(question);
-        const previous = previousSeed;
+        const previous = previousByUid.get(uid);
         const previousMatchesSource = Boolean(previous && previous.sourceFingerprint === sourceFingerprint);
         const carryForward = previousMatchesSource ? previous : null;
         if (identityRecord.sourceFingerprint && identityRecord.sourceFingerprint !== sourceFingerprint) {
@@ -225,15 +180,15 @@ function buildMetadata() {
                 currentFingerprint: sourceFingerprint
             });
         }
-        const standardUnitKey = pick(question.standardUnitKey, reviewed?.standardUnitKey, examMeta?.standardUnitKey, classified.standardUnitKey);
-        const standardUnit = pick(question.standardUnit, reviewed?.standardUnit, examMeta?.standardUnit, classified.standardUnit);
-        const standardCourse = pick(question.standardCourse, question.course, reviewed?.standardCourse, examMeta?.standardCourse, classified.standardCourse);
+        const standardUnitKey = pick(question.standardUnitKey, classified.standardUnitKey);
+        const standardUnit = pick(question.standardUnit, classified.standardUnit);
+        const standardCourse = pick(question.standardCourse, question.course, classified.standardCourse);
         const sourceSubUnitKey = pick(question.subUnitKey, question.sub_unit_key);
         const sourceSubUnit = pick(question.subUnit, question.sub_unit);
         const classifiedSubUnitKey = pick(classificationData.subUnitKey);
         const classifiedSubUnit = pick(classificationData.subUnit);
-        const reviewedSubUnitKey = pick(reviewed?.subUnitKey, examMeta?.subUnitKey);
-        const reviewedSubUnit = pick(reviewed?.subUnit, examMeta?.subUnit);
+        const reviewedSubUnitKey = pick(reviewed?.subUnitKey);
+        const reviewedSubUnit = pick(reviewed?.subUnit);
         if (sourceSubUnitKey && classifiedSubUnitKey && sourceSubUnitKey !== classifiedSubUnitKey) {
             sourceClassificationConflicts.push({ questionUid: uid, field: 'subUnitKey', source: sourceSubUnitKey, classification: classifiedSubUnitKey });
         }
@@ -250,11 +205,11 @@ function buildMetadata() {
         // may fill a blank, but may never overwrite production.
         const subUnitKey = pick(sourceSubUnitKey, reviewedSubUnitKey, classifiedSubUnitKey);
         const subUnit = pick(sourceSubUnit, reviewedSubUnit, classifiedSubUnit);
-        const conceptClusterKey = pick(question.conceptClusterKey, reviewed?.conceptClusterKey, examMeta?.conceptClusterKey, carryForward?.conceptClusterKey, classificationData.conceptClusterKey);
+        const conceptClusterKey = pick(question.conceptClusterKey, reviewed?.conceptClusterKey, carryForward?.conceptClusterKey, classificationData.conceptClusterKey);
         const problemTypeKey = pick(reviewed?.problemTypeKey, question.problemTypeKey, question.typeKey, carryForward?.problemTypeKey);
         const templateKey = pick(reviewed?.templateKey, question.templateKey, carryForward?.templateKey);
-        const difficultyBucket = pick(question.difficultyBucket, question.difficulty, question.level, reviewed?.difficultyBucket, examMeta?.difficultyBucket, carryForward?.difficultyBucket);
-        const semanticallyReviewed = Boolean(reviewed && reviewed.disposition === 'reviewed_pass' || reviewed && (reviewed.problemTypeKey || reviewed.templateKey || reviewed.conceptClusterKey));
+        const difficultyBucket = pick(question.difficultyBucket, question.difficulty, question.level, reviewed?.difficultyBucket, carryForward?.difficultyBucket);
+        const semanticallyReviewed = Boolean(reviewed && (reviewed.problemTypeKey || reviewed.templateKey || reviewed.conceptClusterKey));
         const derivedFieldStatus = {
             standardUnit: 'approved_source',
             subUnit: sourceSubUnitKey || sourceSubUnit ? 'approved_source' : (reviewedSubUnitKey || reviewedSubUnit ? 'approved_semantic_review' : 'approved_classification'),
@@ -274,31 +229,28 @@ function buildMetadata() {
             standardCourse,
             standardUnitKey,
             standardUnit,
-            ...(pick(reviewed?.curriculumKey, carryForward?.curriculumKey) ? { curriculumKey: pick(reviewed?.curriculumKey, carryForward?.curriculumKey) } : {}),
-            ...(pick(reviewed?.courseKey, carryForward?.courseKey) ? { courseKey: pick(reviewed?.courseKey, carryForward?.courseKey) } : {}),
-            ...(pick(reviewed?.L1, carryForward?.L1) ? { L1: pick(reviewed?.L1, carryForward?.L1) } : {}),
-            ...(pick(reviewed?.L2, carryForward?.L2) ? { L2: pick(reviewed?.L2, carryForward?.L2) } : {}),
-            ...(pick(reviewed?.L3, carryForward?.L3) ? { L3: pick(reviewed?.L3, carryForward?.L3) } : {}),
-            ...(pick(reviewed?.L4, carryForward?.L4) ? { L4: pick(reviewed?.L4, carryForward?.L4) } : {}),
-            ...(Array.isArray(reviewed?.crossConceptKeys) ? { crossConceptKeys: reviewed.crossConceptKeys } : Array.isArray(carryForward?.crossConceptKeys) ? { crossConceptKeys: carryForward.crossConceptKeys } : {}),
-            ...(Array.isArray(reviewed?.secondaryConceptKeys) ? { secondaryConceptKeys: reviewed.secondaryConceptKeys } : Array.isArray(carryForward?.secondaryConceptKeys) ? { secondaryConceptKeys: carryForward.secondaryConceptKeys } : {}),
-            ...(Array.isArray(reviewed?.conditionKeys) ? { conditionKeys: reviewed.conditionKeys } : Array.isArray(carryForward?.conditionKeys) ? { conditionKeys: carryForward.conditionKeys } : {}),
-            ...(pick(reviewed?.integrationPattern, carryForward?.integrationPattern) ? { integrationPattern: pick(reviewed?.integrationPattern, carryForward?.integrationPattern) } : {}),
-            ...(pick(reviewed?.curriculumApplicability, carryForward?.curriculumApplicability) ? { curriculumApplicability: pick(reviewed?.curriculumApplicability, carryForward?.curriculumApplicability) } : {}),
-            ...(reviewed?.defaultSelectable !== undefined ? { defaultSelectable: reviewed.defaultSelectable } : carryForward?.defaultSelectable !== undefined ? { defaultSelectable: carryForward.defaultSelectable } : {}),
+            ...(carryForward?.curriculumKey ? { curriculumKey: carryForward.curriculumKey } : {}),
+            ...(carryForward?.courseKey ? { courseKey: carryForward.courseKey } : {}),
+            ...(carryForward?.L1 ? { L1: carryForward.L1 } : {}),
+            ...(carryForward?.L2 ? { L2: carryForward.L2 } : {}),
+            ...(carryForward?.L3 ? { L3: carryForward.L3 } : {}),
+            ...(carryForward?.L4 ? { L4: carryForward.L4 } : {}),
+            ...(Array.isArray(carryForward?.secondaryConceptKeys) ? { secondaryConceptKeys: carryForward.secondaryConceptKeys } : {}),
+            ...(carryForward?.curriculumApplicability ? { curriculumApplicability: carryForward.curriculumApplicability } : {}),
+            ...(carryForward?.defaultSelectable !== undefined ? { defaultSelectable: carryForward.defaultSelectable } : {}),
             subUnitKey,
             subUnit,
             conceptClusterKey,
             problemTypeKey,
             templateKey,
             difficultyBucket,
-            ...(pick(reviewed?.difficultyConfidence, examMeta?.difficultyConfidence, carryForward?.difficultyConfidence) ? { difficultyConfidence: pick(reviewed?.difficultyConfidence, examMeta?.difficultyConfidence, carryForward?.difficultyConfidence) } : {}),
-            ...(pick(reviewed?.difficultyBoundaryFlag, examMeta?.difficultyBoundaryFlag, carryForward?.difficultyBoundaryFlag) ? { difficultyBoundaryFlag: pick(reviewed?.difficultyBoundaryFlag, examMeta?.difficultyBoundaryFlag, carryForward?.difficultyBoundaryFlag) } : {}),
-            ...(pick(reviewed?.legacyLevelCompatibility, examMeta?.legacyLevelCompatibility, carryForward?.legacyLevelCompatibility) ? { legacyLevelCompatibility: pick(reviewed?.legacyLevelCompatibility, examMeta?.legacyLevelCompatibility, carryForward?.legacyLevelCompatibility) } : {}),
+            ...(carryForward?.difficultyConfidence ? { difficultyConfidence: carryForward.difficultyConfidence } : {}),
+            ...(carryForward?.difficultyBoundaryFlag ? { difficultyBoundaryFlag: carryForward.difficultyBoundaryFlag } : {}),
+            ...(carryForward?.legacyLevelCompatibility ? { legacyLevelCompatibility: carryForward.legacyLevelCompatibility } : {}),
             tagConfidence: carryForward?.tagConfidence && !reviewed ? carryForward.tagConfidence : (semanticallyReviewed ? 'high' : String(classificationData.confidence || 'rule_inferred')),
             tagStatus: carryForward?.tagStatus && !reviewed ? carryForward.tagStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_subunit_concept_partial'),
-            ...(pick(reviewed?.reviewStatus, examMeta?.reviewStatus, carryForward?.reviewStatus) ? { reviewStatus: pick(reviewed?.reviewStatus, examMeta?.reviewStatus, carryForward?.reviewStatus) } : {}),
-            metadataStatus: reviewed?.metadataStatus || (carryForward?.metadataStatus && !reviewed ? carryForward.metadataStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_partial_with_explicit_holds')),
+            ...(carryForward?.reviewStatus ? { reviewStatus: carryForward.reviewStatus } : {}),
+            metadataStatus: carryForward?.metadataStatus && !reviewed ? carryForward.metadataStatus : (semanticallyReviewed ? 'approved_semantic_review' : 'approved_partial_with_explicit_holds'),
             fieldStatus,
             metadataRevision: revision,
             approvalEvidence: carryForward?.approvalEvidence && !reviewed
@@ -316,7 +268,7 @@ function buildMetadata() {
         records: records.length,
         uidUnique: new Set(records.map(record => record.questionUid)).size === records.length,
         sourceJoinUnique: sourceByKey.size === records.length,
-        semanticallyReviewed: records.filter(record => record.reviewStatus === 'reviewed_pass' || record.metadataStatus === 'approved_semantic_review' || record.metadataStatus === 'approved_exam_meta_source').length,
+        semanticallyReviewed: records.filter(record => record.metadataStatus === 'approved_semantic_review').length,
         explicitProblemTypeHolds: records.filter(record => record.fieldStatus.problemType === 'manual_review_pending').length,
         explicitTemplateHolds: records.filter(record => record.fieldStatus.template === 'manual_review_pending').length,
         explicitDifficultyHolds: records.filter(record => record.fieldStatus.difficulty === 'manual_review_pending').length
@@ -339,9 +291,8 @@ function buildMetadata() {
         },
         sourceDigests: {
             identityMap: sha256(identityRaw),
-            completeClassification: fs.existsSync(classificationPath) ? sha256(classificationRaw) : '',
-            tagMaster: sha256(fs.readFileSync(tagMasterPath, 'utf8')),
-            examMetaOverrides: fs.existsSync(examMetaOverridePath) ? (JSON.parse(fs.readFileSync(examMetaOverridePath, 'utf8')).digest || sha256(fs.readFileSync(examMetaOverridePath, 'utf8'))) : ''
+            completeClassification: sha256(classificationRaw),
+            tagMaster: sha256(fs.readFileSync(tagMasterPath, 'utf8'))
         },
         canonicalSubUnitLabels,
         consistency: {
@@ -350,7 +301,7 @@ function buildMetadata() {
             staleReviewedConflicts: staleReviewedConflicts.length,
             productionValuesWinOnMerge: true
         },
-        reviewedPassCount: reviewedPass.size + [...examMetaByUid.values()].filter(row => row.disposition === 'reviewed_pass').length,
+        reviewedPassCount: reviewedPass.size,
         counts,
         records
     };
@@ -390,7 +341,7 @@ function runtimeSource(report) {
     if (!meta) return q;
     const merged = { ...q };
     const conflicts = {};
-    for (const field of ['curriculumKey','courseKey','L1','L2','L3','L4','secondaryConceptKeys','crossConceptKeys','conditionKeys','integrationPattern','curriculumApplicability','defaultSelectable','standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','conceptClusterKey','problemTypeKey','templateKey','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','tagConfidence','tagStatus','reviewStatus','metadataStatus','metadataRevision']) {
+    for (const field of ['curriculumKey','courseKey','L1','L2','L3','L4','secondaryConceptKeys','curriculumApplicability','defaultSelectable','standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','conceptClusterKey','problemTypeKey','templateKey','difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility','tagConfidence','tagStatus','reviewStatus','metadataStatus','metadataRevision']) {
       const sourceValue = merged[field];
       const metadataValue = meta[field];
       const sourceText = sourceValue === undefined || sourceValue === null ? '' : String(sourceValue).trim();
