@@ -68,6 +68,7 @@ function main(){
   const existingFiles=new Set(records.map(r=>r.sourceArchiveFile));
   const usedUids=new Set(records.map(r=>r.questionUid));
   let newFiles=0,newRecords=0,updatedFingerprints=0;
+  const newSourceFiles=[];
 
   for(const sourceFile of readDbFiles()){
     const full=path.join(examsDir,sourceFile);
@@ -77,7 +78,7 @@ function main(){
     if(prior.length && prior.length!==questions.length){
       throw new Error('existing source cardinality changed; run migrate-question-identity-map-v1.mjs: '+sourceFile+' '+prior.length+' -> '+questions.length);
     }
-    if(!prior.length) newFiles += 1;
+    if(!prior.length){ newFiles += 1; newSourceFiles.push(sourceFile); }
     for(let i=0;i<questions.length;i++){
       const ordinal=i+1, q=questions[i], key=sourceFile+'#'+ordinal;
       const sf=sourceFingerprint(q), cf=contentFingerprint(q), qno=String(q?.id ?? '');
@@ -109,17 +110,17 @@ function main(){
   next.records=records;
   next.lookup=lookup;
   next.stats={...(current.stats||{}),examFileCount:new Set(records.map(r=>r.sourceArchiveFile)).size,sourceQuestionCount:records.length,uniqueQuestionUidCount:new Set(records.map(r=>r.questionUid)).size,duplicateQuestionUidCount:records.length-new Set(records.map(r=>r.questionUid)).size,failures:0};
-  next.incrementalSync={schemaVersion:'question-identity-incremental-sync-v1',sourceCommit:execFileSync('git',['-C',repoRoot,'rev-parse','HEAD']).toString('utf8').trim(),newFiles,newRecords,updatedFingerprints};
+  next.incrementalSync={schemaVersion:'question-identity-incremental-sync-v1',sourceCommit:execFileSync('git',['-C',repoRoot,'rev-parse','HEAD']).toString('utf8').trim(),newFiles,newRecords,updatedFingerprints,newSourceFiles};
   next.generatedAt=new Date().toISOString();
   delete next.identityDigest;
   const stable={...next}; delete stable.generatedAt;
   next.identityDigest=sha256(JSON.stringify(stable));
 
   if(JSON.stringify(next.records)===JSON.stringify(current.records||[]) && newFiles===0 && updatedFingerprints===0){
-    console.log(JSON.stringify({status:'NO_CHANGE',records:records.length,newFiles:0,newRecords:0,updatedFingerprints:0},null,2));
+    console.log(JSON.stringify({status:'NO_CHANGE',records:records.length,newFiles:0,newRecords:0,updatedFingerprints:0,newSourceFiles:current.incrementalSync?.newSourceFiles||[]},null,2));
     return;
   }
   fs.writeFileSync(identityPath,JSON.stringify(next,null,2)+'\n','utf8');
-  console.log(JSON.stringify({status:'UPDATED',records:records.length,newFiles,newRecords,updatedFingerprints,identityDigest:next.identityDigest},null,2));
+  console.log(JSON.stringify({status:'UPDATED',records:records.length,newFiles,newRecords,updatedFingerprints,newSourceFiles,identityDigest:next.identityDigest},null,2));
 }
 main();
