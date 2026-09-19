@@ -160,6 +160,13 @@
   function reconcileFinderFilters(filters = {}, taxonomy = []) {
     const next = { ...filters };
     if (isHighSemanticSubjectGrade(next.grade)) {
+      if (
+        !next.semanticSubject &&
+        HIGH_SEMANTIC_SUBJECTS.some(
+          (subject) => subject.value === next.family,
+        )
+      )
+        next.semanticSubject = next.family;
       if (!next.semanticSubject && next.courseKey) {
         next.semanticSubject = highSemanticSubjectForCourseKey(next.courseKey);
       }
@@ -170,7 +177,10 @@
         )
       )
         next.semanticSubject = "";
-      if (next.semanticSubject) next.courseKey = "";
+      if (next.semanticSubject) {
+        next.courseKey = "";
+        next.family = "";
+      }
     } else {
       next.semanticSubject = "";
       if (next.courseKey && !finderCourseKeys(taxonomy, next).has(next.courseKey))
