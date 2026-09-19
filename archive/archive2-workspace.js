@@ -78,8 +78,7 @@
     catalog: null,
     byUid: new Map(),
     busy: false,
-    view: "home",
-    recentTab: "drafts",
+    view: "find",
     page: 0,
     find: { grade: "고1" },
     sources: [],
@@ -671,7 +670,7 @@
       );
     }).sort(C.compareNewest);
   }
-  function prepareOriginalIssue(exam) {
+  function openOriginalIssue(exam, step = "review") {
     state.originalExam = exam;
     const stored = Number(
       localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4,
@@ -690,59 +689,10 @@
     });
     state.originalReceipts = [];
     state.originalPreviewKey = "preview-" + crypto.randomUUID();
-    return url;
-  }
-  function openOriginalIssue(exam, step = "review") {
-    const url = prepareOriginalIssue(exam);
-    const examIndex = state.catalog.exams.indexOf(exam);
-    const title = O.displayTitle(exam);
-    const course =
-      exam.primaryStandardCourse ||
-      unique((exam.courseRanges || []).map((r) => r.standardCourse)).join(" · ") ||
-      exam.subject ||
-      "";
-    $("modal").classList.remove("original-issue-dialog");
-    $("modal-body").innerHTML =
-      `<div class="classic-detail-backrow">${button("close-dialog", "‹ 목록", 'class="classic-detail-back"')}</div>
-      <div class="classic-detail-titlebar">
-        <div><h2 id="modal-title">${esc(title)}</h2><p>${esc(exam.grade || "")}${course ? " · " + esc(course) : ""} · ${exam.qCount}문항</p></div>
-        <div class="classic-detail-top-actions">
-          ${button("original-review", "시험지 보기", 'class="classic-original-review-return" aria-pressed="true"')}
-          ${button("original-print", "출력", 'class="primary"')}
-          ${button("original-targets", "학생 출제", 'aria-pressed="false"')}
-        </div>
-      </div>
-      <div id="original-receipts"></div>
-      <div class="classic-detail-layout">
-        <section id="original-review" class="classic-detail-stage">
-          <div id="original-preview-status" role="status">시험지를 불러오는 중…</div>
-          <iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe>
-        </section>
-        <aside class="classic-detail-side">
-          <section class="classic-detail-side-card">
-            <h3>바로 사용</h3>
-            <div class="classic-detail-side-actions">
-              ${button("original-print", "출력", 'class="primary"')}
-              ${button("original-targets", "학생 출제")}
-            </div>
-          </section>
-          <section class="classic-detail-side-card">
-            <h3>필요할 때</h3>
-            <div class="classic-detail-soft-actions">
-              ${button("original-settings", "출력 설정")}
-              ${button("source-toggle", state.sources.includes(exam.file) ? "문항 선택 해제" : "이 시험지에서 문항 선택", `data-exam="${examIndex}"`)}
-            </div>
-            <details class="original-output classic-detail-output-settings"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details>
-          </section>
-        </aside>
-        <iframe id="original-issue-frame" class="classic-detail-target-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>
-      </div>
-      <div class="classic-detail-mobile-actions">
-        ${button("original-print", "출력", 'class="print-action"')}
-        ${button("original-targets", "학생 출제", 'class="primary assign-action"')}
-        ${button("original-settings", "···", 'class="classic-detail-more" aria-label="더보기"')}
-      </div>`;
-    if (!$("modal").open) $("modal").showModal();
+    showDialog(
+      O.displayTitle(exam),
+      `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 수록 순서 그대로</span><div class="actions">${button("original-review", "시험지 확인", 'aria-pressed="true"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="false"')}</div><details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><section id="original-review"><div class="resultbar"><p class="muted">학생에게 나갈 시험지입니다. 출력 설정을 바꾸면 여기에 반영됩니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe></section><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
+    );
     $("modal").classList.add("original-issue-dialog");
     setOriginalStep(step);
   }
@@ -754,18 +704,11 @@
   function setOriginalStep(step) {
     $("original-review").hidden = step !== "review";
     $("original-issue-frame").hidden = step !== "targets";
-    $("modal").classList.toggle("is-targeting", step === "targets");
-    document
-      .querySelectorAll('[data-action="original-review"]')
-      .forEach((control) =>
-        control.setAttribute("aria-pressed", String(step === "review")),
-      );
-    document
-      .querySelectorAll('[data-action="original-targets"]')
-      .forEach((control) =>
-        control.setAttribute("aria-pressed", String(step === "targets")),
-      );
+    document.querySelector('[data-action="original-review"]').setAttribute("aria-pressed", String(step === "review"));
+    document.querySelector('[data-action="original-targets"]').setAttribute("aria-pressed", String(step === "targets"));
     $("modal").scrollTop = 0;
+    // Equal-slot layout requires measurable width. A hidden iframe cannot
+    // render; refresh only after the review panel becomes visible.
     if (step === "review") updateOriginalPreview();
   }
   async function originalOutputUrl() {
@@ -816,110 +759,21 @@
       popup.location.href = url.href;
     } catch (error) { popup?.close(); throw error; }
   }
-  function renderHome() {
-    const recent = drafts().slice(0, 4);
-    const activeGrade = state.find.grade || "고1";
-    const grades = ["고1","고2","고3","중1","중2","중3"];
-    const unitGradeId = ({ 고1: "h1", 고2: "h2", 중1: "m1", 중2: "m2", 중3: "m3" })[activeGrade] || "";
-    const readyUnitHref = "unit-past-exams.html?ready=1" + (unitGradeId ? "&grade=" + encodeURIComponent(unitGradeId) : "");
-    const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
-    const paper = (title, count) => `<span class="classic-home-paper"><span class="classic-home-paper-title">${esc(title)}</span><span class="classic-home-paper-count">${Number(count || 0)}문항</span><i></i><i></i><i></i><b></b></span>`;
-    const recentCards = recent.length
-      ? recent.map((d, i) => {
-          const title = d.header?.title || d.title || "문제지";
-          const count = d.selected?.length || 0;
-          const updated = d.updatedAt ? new Date(d.updatedAt).toLocaleDateString("ko-KR", { month:"numeric", day:"numeric" }) : "";
-          return `<article class="classic-home-recent-card k-mine">
-            <button class="classic-home-recent-paper" data-action="restore" data-draft="${i}" aria-label="${esc(title)} 열기">${paper(title,count)}</button>
-            <div class="classic-home-recent-body">
-              <button class="classic-home-recent-title" data-action="restore" data-draft="${i}">${esc(title)}</button>
-              <p>${count}문항${updated ? " · " + esc(updated) : ""}</p>
-              <button class="classic-home-recent-open" data-action="restore" data-draft="${i}">이어하기</button>
-            </div>
-          </article>`;
-        }).join("")
-      : `<div class="classic-home-empty"><strong>최근 사용이 없습니다</strong><span>기출을 찾거나 새 문제지를 만들어 보세요.</span></div>`;
-    return `<section class="classic-home">
-      <div class="classic-home-top">
-        <h1>시험지 찾기</h1>
-        <form id="classic-home-search" class="classic-home-search" role="search">
-          <span>${searchIcon}</span>
-          <input id="classic-home-query" value="${esc(state.find.query || "")}" placeholder="학교명 · 시험명 · 단원 검색" aria-label="시험지 검색">
-        </form>
-        <div class="classic-home-grades" aria-label="학년">
-          ${grades.map(g => `<button data-action="home-grade" data-grade="${g}" aria-pressed="${g === activeGrade}">${g}</button>`).join("")}
-        </div>
-      </div>
-      <div class="classic-home-shortcuts">
-        <button class="classic-home-shortcut k-past" data-view="find"><span class="classic-shortcut-mark"></span><strong>기출·자료</strong></button>
-        ${unitGradeId
-          ? `<a class="classic-home-shortcut k-five" href="${readyUnitHref}"><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></a>`
-          : '<button class="classic-home-shortcut k-five" type="button" disabled><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></button>'}
-        <a class="classic-home-shortcut k-unit" href="assessment/assessment-mvp.html"><span class="classic-shortcut-mark"></span><strong>단원평가</strong></a>
-        <button class="classic-home-shortcut classic-home-shortcut-make" data-action="go-compose"><span class="classic-shortcut-file">＋</span><strong>문제지 만들기</strong></button>
-      </div>
-      <section class="classic-home-recent">
-        <div class="classic-home-section-head"><h2>최근 사용</h2><div class="classic-home-section-switch"><button class="active" type="button">최근</button><button data-view="recent">내 시험지</button></div></div>
-        <div class="classic-home-recent-grid">${recentCards}</div>
-      </section>
-    </section>`;
-  }
-
   function renderFind() {
     const exams = findExams(),
-      page = exams.slice(state.page * 18, (state.page + 1) * 18),
-      grades = ["고1","고2","고3","중1","중2","중3"],
-      courseLabel = (value) =>
-        /^M([123])-([12])$/.test(value)
-          ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
-          : value,
-      courses = unique(
-        taxonomyRowsForFilters({ ...state.find, courseKey: "" }).map((r) => r.courseKey),
-      ).map((value) => ({ value, label: courseLabel(value) }));
-    const paperThumb = (title) =>
-      `<span class="classic-paper-thumb" aria-hidden="true"><span></span><i></i><i></i><i></i><b></b></span><span class="visually-hidden">${esc(title)} 시험지 보기</span>`;
-    const kindClass = (exam) => {
-      const kind = O.materialKind(exam);
-      return kind === "unit" ? "k-unit" : kind === "exam" ? "k-past" : "k-other";
-    };
-    return `<div class="intro classic-find-intro"><div><h1>기출·자료</h1><p class="muted">학년과 과정으로 바로 찾습니다.</p></div></div>
-      <div class="route-search classic-route-search"><span class="classic-route-search-icon" aria-hidden="true">⌕</span><input class="search-input" data-filter="query" data-group="find" value="${esc(state.find.query || "")}" placeholder="학교 · 시험명 · 단원 검색" aria-label="기출 검색"></div>
-      <div class="classic-find-controls">
-        <div class="chips classic-grade-chips" aria-label="학년">${grades.map((grade) => `<button data-action="find-grade" data-grade="${grade}" class="chip" aria-pressed="${state.find.grade === grade}">${grade}</button>`).join("")}</div>
-        <label class="classic-course-filter"><span class="visually-hidden">과목</span><select data-filter="courseKey" data-group="find">${options(courses, state.find.courseKey, "과목 전체")}</select></label>
-        <details class="classic-finder-more">
-          <summary>필터</summary>
-          <div class="classic-finder-popover">
-            <label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label>
-            <div class="classic-finder-advanced">${filterMarkup(state.find, "find")}</div>
-          </div>
-        </details>
-      </div>
-      ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>준비된 평가 시험지</small></span><span>보기 →</span></a>' : ""}
-      <p class="list-count">${state.find.grade || "전체"} ${state.find.material && state.find.material !== "exam" ? "자료" : "기출"} <strong>${exams.length.toLocaleString()}</strong>건</p>
-      <div class="exam-list classic-exam-list">${page.map((e) => {
-        const n = state.catalog.exams.indexOf(e),
-          selected = state.sources.includes(e.file),
-          title = O.displayTitle(e),
-          course = e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject || "",
-          kindLabel = e.contentType || (O.materialKind(e) === "exam" ? "기출" : "자료");
-        return `<article class="exam classic-exam-row ${kindClass(e)} ${selected ? "selected" : ""}">
-          <span class="classic-kind-bar" aria-hidden="true"></span>
-          <button class="exam-thumb-button" data-action="source-preview" data-exam="${n}" aria-label="${esc(title)} 시험지 보기">${paperThumb(title)}</button>
-          <div class="exam-main">
-            <h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(title)}</button></h2>
-            <div class="classic-exam-meta"><span class="classic-kind-tag">${esc(kindLabel)}</span><span>${esc(e.grade)}</span><span>·</span><span>${esc(course)}</span>${e.gradeConflict ? '<span class="badge warn">학년 충돌</span>' : ""}</div>
-          </div>
-          <div class="exam-count"><strong>${e.qCount}</strong><span>문항</span></div>
-          <div class="exam-date">${esc(e.year || "")}</div>
-          <div class="actions classic-exam-actions">
-            ${button("source-print", "출력", `data-exam="${n}" class="small print-action"`)}
-            ${button("source-issue", "출제", `data-exam="${n}" class="small assign-action"`)}
-            ${button("source-more", "···", `data-exam="${n}" class="small classic-more-button" aria-label="더보기"`)}
-          </div>
-        </article>`;
-      }).join("")}</div>
-      ${!exams.length ? '<div class="empty"><strong>조건에 맞는 자료가 없습니다</strong><p>검색어나 학년을 바꿔보세요.</p></div>' : ""}
+      page = exams.slice(state.page * 18, (state.page + 1) * 18);
+    return `<div class="intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
+      <section class="panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div><details class="finder-filters" ${matchMedia("(max-width: 600px)").matches ? "" : "open"}><summary>학년·학교·과목으로 좁히기</summary>${filterMarkup(state.find, "find")}</details></section>
+      ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기 →</span></a>' : ""}
+      <div class="resultbar"><strong>${state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
+      <div class="exam-list">${page
+        .map((e) => {
+          const n = state.catalog.exams.indexOf(e),
+            selected = state.sources.includes(e.file);
+          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "시험지 확인", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+        })
+        .join("")}</div>
+      ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
       ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}`;
   }
@@ -994,58 +848,45 @@
       <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
   function renderInspector() {
-    const r = state.selected.length ? review() : null,
-      blocked = r?.status === "HARD_BLOCK" || (r?.warnings.length && !state.ackWarnings),
-      selectedTargetText = state.studentLabels.join(" · "),
-      assignLabel = state.receipts.length && !state.sealed
-        ? "남은 문제지 출제"
-        : state.receipts.some((receipt) => !receipt.ready)
-          ? "PDF 다시 준비"
-          : state.studentIds.length
-            ? `${state.studentIds.length}명에게 출제`
-            : "학생 출제";
-
-    const gateNotice = !r
-      ? ""
-      : r.status === "PASS"
-        ? `<p class="classic-ready-pass">검증 완료 · ${r.metrics.uniqueUidCount}문항</p>`
-        : `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : ""}"><strong>${r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 확인 필요"}</strong>${[...r.hardFailures, ...r.warnings].map((message) => `<div>${esc(message)}</div>`).join("")}</div>
-          ${r.warnings.length ? `<label class="check classic-ready-ack"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
-
+    const r = state.selected.length ? review() : null;
+    const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
+      <div class="summary-line"><span>선택 범위</span><strong>${selectedScopeOptions().length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
+      ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
+      ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
     const historyOverlapCount = state.history?.union_question_uids?.length || 0;
     const historyNotice = !state.studentIds.length
       ? ""
       : state.historyMode === "off"
-        ? ""
+        ? '<div class="callout">이전 출제 문항 확인을 사용하지 않습니다. 생성된 시험지는 그대로 출제할 수 있습니다.</div>'
         : state.historyError
           ? `<div class="callout">이력 확인 실패: ${esc(state.historyError)}<br>확인 결과와 관계없이 이 시험지는 출제할 수 있습니다.</div>`
           : !state.historyReady
-            ? '<div class="callout">이전 출제 이력을 확인하고 있습니다.</div>'
-            : `<div class="callout">이전 출제와 겹치는 문항 <strong>${historyOverlapCount}개</strong> · 참고 정보</div>`;
-
-    const targeting = `<div class="classic-ready-setting-head"><h3>출제 대상</h3>${button("inspector", "닫기", 'data-tab="summary" class="small"')}</div>
-      <p class="classic-ready-target-names">${esc(selectedTargetText || "학생을 선택하세요.")}</p>
-      <div class="actions">${button("targets", state.studentIds.length ? "학생 다시 선택" : "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
-      <details class="classic-ready-history">
-        <summary>이전 출제 확인</summary>
-        <label>범위<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
+            ? '<div class="callout">이전 출제 이력을 확인하고 있습니다. 확인 중에도 출제할 수 있습니다.</div>'
+            : `<div class="callout">현재 시험지 중 이전 출제와 겹치는 문항 <strong>${historyOverlapCount}개</strong><br>참고 정보이며 출제를 차단하지 않습니다.</div>`;
+    const targeting = `<h3>출제 대상</h3><p>${esc(state.studentLabels.join(" · ") || "문제지를 만든 뒤 학생을 선택해 출제합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
+      <details style="margin-top:12px">
+        <summary>고급 설정</summary>
+        <label style="margin-top:12px">이전 출제 문항 확인<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
           [
             { value: "off", label: "확인 안 함" },
             { value: "all", label: "전체 이력 확인" },
             { value: "90", label: "최근 90일 확인" },
             { value: "30", label: "최근 30일 확인" },
           ],
-          state.historyMode === "recent" ? String(state.recentDays) : state.historyMode,
+          state.historyMode === "recent"
+            ? String(state.recentDays)
+            : state.historyMode,
           null,
         )}</select></label>
-        ${state.studentIds.length && state.historyMode !== "off" ? button("history-refresh", "다시 확인", 'class="small"') : ""}
+        ${state.studentIds.length && state.historyMode !== "off" ? button("history-refresh", "이력 다시 확인", 'class="small"') : ""}
       </details>
       ${historyNotice}`;
-
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
       frozenPaper = frozen && frozenPaperCache.get(frozen.key);
-    const header = `<div class="classic-ready-setting-head"><h3>출력 설정</h3>${button("inspector", "닫기", 'data-tab="summary" class="small"')}</div>` +
-      (frozen ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다.</p>' : "") +
+    const header =
+      (frozen
+        ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다. 수정할 문제지를 먼저 선택하세요.</p>'
+        : "") +
       O.markup(
         frozenPaper
           ? {
@@ -1057,46 +898,23 @@
         "studio",
         Boolean(frozen) || state.sealed,
       );
-
-    const info = `<div class="classic-ready-info-grid">
-      <div><span>문항</span><strong>${state.selected.length}</strong></div>
-      <div><span>범위</span><strong>${selectedScopeOptions().length}</strong></div>
-      <div><span>고정</span><strong>${state.pins.length}</strong></div>
-    </div>`;
-
-    const assignmentAction = state.studentIds.length
-      ? button("assign", assignLabel, `class="primary" ${blocked ? "disabled" : ""}`)
-      : button("targets", "학생 출제", 'class="classic-ready-assign-start"');
-
-    return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}">
-      <section class="panel classic-ready-use">
-        ${button("close-inspector", "닫기", 'class="mobile-sheet-close"')}
-        <h3>바로 사용</h3>
-        <div class="classic-ready-actions">
-          ${button("print", "출력", `${blocked ? "disabled" : ""}`)}
-          ${assignmentAction}
-        </div>
-        ${selectedTargetText ? `<p class="classic-ready-selected-target">${esc(selectedTargetText)}</p>` : ""}
-        ${gateNotice}
-      </section>
-      <section class="panel classic-ready-more">
-        <h3>필요할 때</h3>
-        <div class="classic-ready-soft-actions">
-          ${button("inspector", "학생 · 출제 설정", `data-tab="targets" class="${state.inspector === "targets" ? "active" : ""}"`)}
-          ${button("inspector", "출력 설정", `data-tab="header" class="${state.inspector === "header" ? "active" : ""}"`)}
-        </div>
-        ${state.inspector === "targets" ? `<div class="classic-ready-setting-panel">${targeting}</div>` : state.inspector === "header" ? `<div class="classic-ready-setting-panel">${header}</div>` : ""}
-        <details class="classic-ready-info">
-          <summary>시험지 정보</summary>
-          ${info}
-        </details>
-        <div class="classic-ready-secondary-actions">
-          ${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}
-          ${button("backup", "작업 파일 저장", 'class="small"')}
-        </div>
-        ${renderDeliveryProgress()}
-      </section>
-    </aside>`;
+    return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}"><section class="panel">${button("close-inspector", "설정 닫기", 'class="mobile-sheet-close"')}<div class="tabs" role="tablist">${[
+      ["summary", "출제 확인"],
+      ["targets", "대상"],
+      ["header", "출력 설정"],
+    ]
+      .map(([k, l]) =>
+        button(
+          "inspector",
+          l,
+          `data-tab="${k}" role="tab" aria-selected="${state.inspector === k}" class="${state.inspector === k ? "active" : ""}"`,
+        ),
+      )
+      .join(
+        "",
+      )}</div><div>${state.inspector === "header" ? header : state.inspector === "targets" ? targeting : summary + `<hr style="border:0;border-top:1px solid var(--line);margin:18px 0">` + targeting}</div>
+      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "일반 출력", `class="primary" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 다시 준비" : "학생에게 출제", `${!state.studentIds.length || r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>${state.sealed ? '<p class="callout">확정된 회차입니다. 다음 회차에서 새 문제지를 만드세요.</p>' : ""}<div class="actions" style="margin-top:12px">${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}${button("backup", "작업 파일 저장", 'class="small"')}</div>` : ""}
+      ${renderDeliveryProgress()}</section></aside>`;
   }
   function renderDeliveryProgress() {
     if (!state.receipts.length && !state.failedPart) return "";
@@ -1152,241 +970,21 @@
   function renderMobileActions() {
     if (!state.selected.length) return "";
     const r = review(),
-      blocked = r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings),
-      assignLabel = state.receipts.length && !state.sealed
-        ? "남은 문제지 출제"
-        : state.receipts.some((receipt) => !receipt.ready)
-          ? "PDF 재시도"
-          : "학생 출제",
-      assignAction = state.studentIds.length
-        ? button("assign", assignLabel, `class="primary assign-action" ${blocked ? "disabled" : ""}`)
-        : button("targets", "학생 출제", 'class="primary assign-action"');
-    return `<div class="mobile-actions classic-mobile-ready-actions">
-      ${button("print", "출력", `class="print-action" ${blocked ? "disabled" : ""}`)}
-      ${assignAction}
-      ${button("mobile-inspector", "···", 'class="classic-mobile-more" aria-label="설정 더보기"')}
-    </div>`;
+      blocked =
+        r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings);
+    return `<div class="mobile-actions">${button("mobile-inspector", "출력·출제 설정")}${button("print", "일반 출력", `class="primary" ${blocked ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 재시도" : "학생 출제", blocked || !state.studentIds.length ? "disabled" : "")}</div>`;
   }
-  function renderComposeStart() {
-    const scopes = scopeOptions(),
-      selectedScopes = selectedScopeOptions(),
-      quickScope = selectedScopes.length === 1 ? selectedScopes[0].key : "",
-      courseLabel = (value) =>
-        /^M([123])-([12])$/.test(value)
-          ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
-          : value,
-      courses = unique(
-        taxonomyRowsForFilters({ ...state.filters, courseKey: "" }).map((r) => r.courseKey),
-      ).map((value) => ({ value, label: courseLabel(value) })),
-      rows = planRows(),
-      total = rows.reduce((sum, row) => sum + row.count, 0),
-      selectionFilters = {
-        ...state.filters,
-        sourceFiles: state.sources,
-        primaryPaths: selectedScopePaths(),
-      },
-      excluded = C.composeExclusions(context()).union,
-      candidates = pool().filter(
-        (record) =>
-          C.matches(record, selectionFilters) &&
-          C.eligibility(record).ok &&
-          !excluded.has(record.questionUid),
-      ),
-      shortages = rows
-        .map((row) => ({
-          row,
-          available: candidates.filter((record) => C.rowMatches(record, row)).length,
-        }))
-        .filter((item) => item.available < item.row.count),
-      quickDisabled =
-        !state.filters.courseKey ||
-        !rows.length ||
-        state.busy ||
-        state.sealed ||
-        shortages.length,
-      scopeLabel =
-        selectedScopes.length === 1
-          ? selectedScopes[0].label
-          : selectedScopes.length > 1
-            ? `${selectedScopes.length}개 범위`
-            : "범위 선택",
-      courseText = state.filters.courseKey
-        ? courseLabel(state.filters.courseKey)
-        : "과정 선택",
-      previewCount = total || Number(state.count) || 0,
-      advancedActive =
-        state.distribution !== "equal" ||
-        Boolean(
-          state.filters.curriculumKey ||
-            state.filters.school ||
-            state.filters.yearFrom ||
-            state.filters.yearTo ||
-            state.filters.L3 ||
-            state.filters.L4,
-        ) ||
-        state.buckets.join(",") !== "2,3" ||
-        selectedScopes.length > 1;
-
-    const rangeOptions = state.filters.courseKey
-      ? [
-          `<option value="">${selectedScopes.length > 1 ? esc(scopeLabel) : "범위 선택"}</option>`,
-          ...scopes.map(
-            (scope) =>
-              `<option value="${esc(scope.key)}"${quickScope === scope.key ? " selected" : ""}>${esc(scope.L1)} · ${esc(scope.label)}</option>`,
-          ),
-        ].join("")
-      : '<option value="">과정을 먼저 선택하세요</option>';
-
-    const paperPreview = `<div class="classic-create-paper" aria-hidden="true">
-      <span class="classic-create-paper-title">${esc(state.header?.title || state.title)}</span>
-      <span class="classic-create-paper-meta">${esc(courseText)} · ${previewCount}문항</span>
-      <i></i><i></i><i></i><i></i><b></b>
-    </div>`;
-
-    return `<div class="intro classic-compose-intro">
-      <div><h1>문제지 만들기</h1><p class="muted">필요한 것만 고르면 바로 만듭니다.</p></div>
-    </div>
-    <div class="classic-compose-layout">
-      <section class="panel classic-compose-form">
-        <h2>빠른 제작</h2>
-
-        <div class="classic-compose-step">
-          <span class="classic-compose-label">학년</span>
-          <div class="classic-compose-grade" aria-label="학년">
-            ${["고1","고2","고3","중1","중2","중3"].map((grade) =>
-              `<button data-action="compose-grade" data-grade="${grade}" aria-pressed="${state.filters.grade === grade}">${grade}</button>`
-            ).join("")}
-          </div>
-        </div>
-
-        <div class="classic-compose-step">
-          <label class="classic-compose-label" for="classic-compose-course">과정</label>
-          <select id="classic-compose-course" data-filter="courseKey" data-group="compose">
-            ${options(courses, state.filters.courseKey, "과정 선택")}
-          </select>
-        </div>
-
-        <div class="classic-compose-step">
-          <label class="classic-compose-label" for="classic-compose-scope">범위</label>
-          <select id="classic-compose-scope" ${state.filters.courseKey ? "" : "disabled"}>${rangeOptions}</select>
-        </div>
-
-        <div class="classic-compose-step">
-          <label class="classic-compose-label" for="classic-compose-count">문항 수</label>
-          <div class="classic-compose-count-row">
-            <input id="classic-compose-count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" ? "disabled" : ""}>
-            <div class="classic-count-presets">
-              ${[10,20,24].map((count) =>
-                `<button type="button" data-action="compose-count" data-count="${count}" aria-pressed="${Number(state.count) === count && state.distribution !== "all"}">${count}</button>`
-              ).join("")}
-            </div>
-          </div>
-        </div>
-
-        ${state.sources.length ? `<div class="classic-compose-source"><strong>선택한 기출 ${state.sources.length}개</strong><span>이 자료 안에서 문제를 고릅니다.</span>${button("sources-clear", "해제", 'class="small"')}</div>` : ""}
-
-        <details class="classic-compose-advanced"${advancedActive ? " open" : ""}>
-          <summary>상세 설정${advancedActive ? '<span>적용 중</span>' : ""}</summary>
-          <div class="classic-compose-advanced-body">
-            <div class="classic-compose-advanced-filters">${filterMarkup(state.filters, "compose", true)}</div>
-            ${renderScopes()}
-            ${renderComposition()}
-          </div>
-        </details>
-
-        ${shortages.length ? `<p class="classic-compose-shortage">현재 조건에서는 ${shortages.reduce((sum, item) => sum + item.row.count - item.available, 0)}문항이 부족합니다. 상세 설정에서 조건을 조정하세요.</p>` : ""}
-        ${button("generate", "문제지 만들기", `class="primary classic-compose-make" ${quickDisabled ? "disabled" : ""}`)}
-      </section>
-
-      <aside class="panel classic-compose-preview">
-        <h3>미리보기</h3>
-        <div class="classic-create-preview-card">
-          ${paperPreview}
-          <div><strong>${esc(state.header?.title || state.title)}</strong><p>${esc(state.filters.grade || "")} · ${esc(courseText)}<br>${esc(scopeLabel)} · ${previewCount}문항</p></div>
-        </div>
-        <dl class="classic-create-summary">
-          <div><dt>범위</dt><dd>${esc(scopeLabel)}</dd></div>
-          <div><dt>구성</dt><dd>${advancedActive ? "상세 설정" : "자동"}</dd></div>
-          ${state.sources.length ? `<div><dt>출처</dt><dd>선택 기출 ${state.sources.length}개</dd></div>` : ""}
-        </dl>
-      </aside>
-    </div>`;
-  }
-
   function renderCompose() {
-    if (!state.selected.length) return renderComposeStart();
-    return `<div class="intro classic-compose-ready-intro">
-      <div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.selected.length}문항 · 시험지를 확인하고 필요한 문항만 바꿀 수 있습니다.</p></div>
-      <div class="actions classic-compose-ready-tools">${button("new-draft", "새 문제지")}${button("backup", "작업 저장", 'class="small"')}${button("import", "불러오기", 'class="small"')}</div>
-    </div>
-    <div class="workspace classic-compose-ready-workspace">
-      <div>
-        <details class="panel plan-panel classic-compose-plan"><summary>범위 · 구성 설정 ${state.sealed ? "(확정)" : ""}</summary>
-          ${filterMarkup(state.filters, "compose", true)}
-          ${renderScopes()}
-          ${renderComposition()}
-        </details>
-        ${renderPaper()}
-      </div>
-      ${renderInspector()}
-    </div>
-    ${renderMobileActions()}`;
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 파일 저장")}${button("import", "백업 불러오기")}</div></div>
+    <div class="workspace"><div>${!state.selected.length ? `<section class="panel">${filterMarkup(state.filters, "compose", true)}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}${renderScopes()}</section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", true)}${renderScopes()}${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function renderRecent() {
-    const list = drafts(),
-      draftsActive = state.recentTab !== "assignments";
-    const paperThumb = (title, count) =>
-      `<span class="classic-mine-paper" aria-hidden="true"><span>${esc(title)}</span><small>${Number(count || 0)}문항</small><i></i><i></i><b></b></span>`;
-
-    const draftRows = list.length
-      ? list.map((draft, i) => {
-          const title = draft.header?.title || draft.title || "문제지",
-            count = draft.selected?.length || 0,
-            updated = draft.updatedAt ? new Date(draft.updatedAt).toLocaleString("ko-KR", { month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit" }) : "";
-          return `<article class="classic-mine-row">
-            <button class="classic-mine-thumb" data-action="restore" data-draft="${i}" aria-label="${esc(title)} 열기">${paperThumb(title,count)}</button>
-            <div class="classic-mine-main">
-              <button class="classic-mine-title" data-action="restore" data-draft="${i}">${esc(title)}</button>
-              <p>${count}문항 · ${draft.round || 1}차${updated ? " · " + esc(updated) : ""}</p>
-            </div>
-            <div class="classic-mine-actions">
-              ${button("restore", "열기", `data-draft="${i}" class="small"`)}
-              <details class="classic-mine-more"><summary aria-label="더보기">···</summary><div>${button("delete-draft", "삭제", `data-draft="${i}" class="danger small"`)}</div></details>
-            </div>
-          </article>`;
-        }).join("")
-      : '<div class="classic-mine-empty"><strong>만든 시험지가 없습니다</strong><span>문제지 만들기에서 새 시험지를 만들 수 있습니다.</span></div>';
-
-    const assignmentRows = (state.recentAssignments || []).length
-      ? state.recentAssignments.map((assignment) => `<article class="classic-mine-row">
-          <div class="classic-mine-thumb classic-mine-thumb-static">${paperThumb(assignment.exam_title,assignment.question_count)}</div>
-          <div class="classic-mine-main">
-            <strong class="classic-mine-title-static">${esc(assignment.exam_title)}</strong>
-            <p>${esc(assignment.exam_date)} · ${assignment.question_count}문항 · ${assignment.pdf_status === "ready" ? "PDF 준비 완료" : "출제 저장됨"}</p>
-          </div>
-          <div class="classic-mine-actions">${button("assignment-status", "열기", `data-assignment="${assignment.id}" class="small"`)}</div>
-        </article>`).join("")
-      : '<div class="classic-mine-empty"><strong>출제한 시험지가 없습니다</strong><span>반을 선택하면 기존 출제 내역을 확인할 수 있습니다.</span></div>';
-
-    return `<div class="intro classic-mine-intro">
-      <div><h1>내 시험지</h1><p class="muted">만든 시험지와 학생에게 출제한 시험지.</p></div>
-      <div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "불러오기", 'class="small"')}</div>
-    </div>
-    <div class="classic-mine-tabs" role="tablist">
-      <button data-action="recent-tab" data-tab="drafts" role="tab" aria-selected="${draftsActive}" class="${draftsActive ? "active" : ""}">만든 시험지</button>
-      <button data-action="recent-tab" data-tab="assignments" role="tab" aria-selected="${!draftsActive}" class="${!draftsActive ? "active" : ""}">학생 출제</button>
-    </div>
-    ${draftsActive
-      ? `<section class="classic-mine-list">${draftRows}</section>`
-      : `<section class="classic-mine-assignments">
-          <div class="classic-mine-classbar"><label>반<select id="recent-class">${options(
-            classRows.map((c) => ({ value: c.id, label: c.name })),
-            state.recentClassId,
-            "반 선택",
-          )}</select></label></div>
-          <div class="classic-mine-list">${assignmentRows}</div>
-        </section>`
-    }`;
+    const list = drafts();
+    return `<div class="intro"><div><h1>최근 출제 · 작업</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div><section class="panel"><h2>최근 출제</h2><label>반<select id="recent-class">${options(
+      classRows.map((c) => ({ value: c.id, label: c.name })),
+      state.recentClassId,
+      "반 선택",
+    )}</select></label><div id="recent-assignments">${recentAssignmentMarkup()}</div></section><section class="panel"><h2>만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="recent-row"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</section>`;
   }
   function recentAssignmentMarkup() {
     return (
@@ -1513,7 +1111,6 @@
   }
   function render() {
     if (!state.catalog) return;
-    document.body.dataset.archiveView = state.view;
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
     document.querySelectorAll("[data-view]").forEach((b) => {
@@ -1524,11 +1121,9 @@
       );
     });
     $("content").innerHTML =
-      state.view === "home"
-        ? renderHome()
-        : state.view === "find"
-          ? renderFind()
-          : state.view === "recent"
+      state.view === "find"
+        ? renderFind()
+        : state.view === "recent"
           ? renderRecent()
           : state.view === "health"
             ? renderHealth()
@@ -2049,8 +1644,6 @@
     if (state.view === "find")
       for (const [k, v] of Object.entries(state.find))
         if (v) url.searchParams.set(k, v);
-    if (state.view === "home" && state.find.grade)
-      url.searchParams.set("grade", state.find.grade);
     history.pushState(null, "", url);
   }
   function newDraft() {
@@ -2082,16 +1675,6 @@
     render();
     scheduleSave();
   }
-  document.addEventListener("submit", (event) => {
-    if (event.target?.id !== "classic-home-search") return;
-    event.preventDefault();
-    state.find.query = $("classic-home-query")?.value?.trim() || "";
-    state.page = 0;
-    state.view = "find";
-    urlState();
-    render();
-  });
-
   document.addEventListener("click", async (event) => {
     const b = event.target.closest("button");
     if (!b || b.disabled || state.busy) return;
@@ -2104,12 +1687,6 @@
         return;
       }
       const a = b.dataset.action;
-      if (a === "recent-tab") {
-        state.recentTab = b.dataset.tab === "assignments" ? "assignments" : "drafts";
-        if (state.recentTab === "assignments" && !classRows.length) await loadRecent();
-        else render();
-        return;
-      }
       if (a === "assignment-status") {
         await assignmentStatus(b.dataset.assignment);
         return;
@@ -2165,61 +1742,9 @@
       }
       if (a === "close-dialog") {
         if (!originalIssueBusy()) $("modal").close();
-      } else if (a === "home-grade") {
-        state.find = C.reconcileFinderFilters(
-          { ...state.find, grade: b.dataset.grade },
-          state.catalog.taxonomy,
-        );
-        state.page = 0;
-        const homeUrl = new URL(location.href);
-        homeUrl.search = "";
-        homeUrl.searchParams.set("view", "home");
-        homeUrl.searchParams.set("grade", state.find.grade);
-        history.replaceState(null, "", homeUrl);
-        render();
-      } else if (a === "find-grade") {
-        state.find = C.reconcileFinderFilters(
-          { ...state.find, grade: b.dataset.grade, school: "" },
-          state.catalog.taxonomy,
-        );
-        state.page = 0;
-        urlState();
-        render();
-      } else if (a === "compose-grade") {
-        if (state.sealed) return;
-        state.filters = C.reconcileFinderFilters(
-          { ...state.filters, grade: b.dataset.grade, curriculumKey: "", courseKey: "", school: "" },
-          state.catalog.taxonomy,
-        );
-        delete state.filters.L3;
-        delete state.filters.L4;
-        state.scopes = [];
-        invalidate();
-        render();
-      } else if (a === "compose-count") {
-        if (state.sealed) return;
-        state.distribution = state.distribution === "all" ? "equal" : state.distribution;
-        state.count = Number(b.dataset.count);
-        state.rows = [];
-        state.selected = [];
-        state.prepared = [];
-        scheduleSave();
-        render();
       } else if (a === "go-compose") {
-        const nextGrade = state.find.grade || state.filters.grade;
-        if (nextGrade && nextGrade !== state.filters.grade) {
-          state.filters = C.reconcileFinderFilters(
-            { ...state.filters, grade: nextGrade, curriculumKey: "", courseKey: "", school: "" },
-            state.catalog.taxonomy,
-          );
-          delete state.filters.L3;
-          delete state.filters.L4;
-          state.scopes = [];
-          invalidate();
-        } else if (nextGrade) {
-          state.filters.grade = nextGrade;
-        }
         state.view = "compose";
+        if (state.find.grade) state.filters.grade = state.find.grade;
         urlState();
         render();
       } else if (a === "page-prev") {
@@ -2234,40 +1759,20 @@
         state.page++;
         render();
       } else if (a === "source-toggle") {
-        if ($("modal")?.open) $("modal").close();
         const f = state.catalog.exams[Number(b.dataset.exam)].file;
         state.sources = state.sources.includes(f)
           ? state.sources.filter((x) => x !== f)
           : [...state.sources, f];
         invalidate();
         render();
-      } else if (a === "source-print") {
-        const exam = state.catalog.exams[Number(b.dataset.exam)];
-        prepareOriginalIssue(exam);
-        await originalPrint();
-      } else if (a === "source-more") {
-        const examIndex = Number(b.dataset.exam);
-        const exam = state.catalog.exams[examIndex];
-        const selected = state.sources.includes(exam.file);
-        showDialog(
-          O.displayTitle(exam),
-          `<div class="classic-more-menu">${button("source-preview", "시험지 보기", `data-exam="${examIndex}"`)}${button("source-toggle", selected ? "문항 선택 해제" : "문항 선택", `data-exam="${examIndex}"`)}</div>`,
-        );
       } else if (a === "source-issue") {
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
       } else if (a === "original-print") {
         await originalPrint();
       } else if (a === "source-preview") {
-        if ($("modal")?.open) $("modal").close();
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "review");
       } else if (a === "original-review" || a === "original-targets") {
         setOriginalStep(a === "original-review" ? "review" : "targets");
-      } else if (a === "original-settings") {
-        const settings = $("modal")?.querySelector(".classic-detail-output-settings");
-        if (settings) {
-          settings.open = true;
-          settings.scrollIntoView({ block: "nearest" });
-        }
       } else if (a === "sources-clear") {
         state.sources = [];
         invalidate();
@@ -2472,28 +1977,6 @@
         throw new Error(
           "출제한 문제지는 보존됩니다. 남은 문제지의 문항을 수정해 주세요.",
         );
-      }
-      if (el.id === "classic-compose-scope") {
-        if (state.sealed) return;
-        state.scopes = el.value ? [el.value] : [];
-        invalidate();
-        render();
-        return;
-      }
-      if (el.id === "classic-compose-count") {
-        if (state.sealed) return;
-        const count = Number(el.value);
-        if (!Number.isInteger(count) || count < 1 || count > 400) {
-          throw new Error("문항 수는 1~400 사이로 입력하세요.");
-        }
-        state.distribution = state.distribution === "all" ? "equal" : state.distribution;
-        state.count = count;
-        state.rows = [];
-        state.selected = [];
-        state.prepared = [];
-        scheduleSave();
-        render();
-        return;
       }
       if (el.dataset.filter) {
         if (state.sealed && el.dataset.group === "compose") {
@@ -2719,10 +2202,10 @@
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
-    state.view = ["home", "find", "compose", "recent", "health"].includes(p.get("view"))
+    state.view = ["find", "compose", "recent", "health"].includes(p.get("view"))
       ? p.get("view")
-      : "home";
-    state.find = { grade: "고1" };
+      : "find";
+    state.find = {};
     for (const k of [
       "grade",
       "curriculumKey",
