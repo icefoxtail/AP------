@@ -1,0 +1,2073 @@
+{
+  "schemaVersion": "meta-foundation-compiled-concept-registry-v1",
+  "status": "DERIVED_READ_ONLY",
+  "sourceShards": [
+    {
+      "shardId": "ALGEBRA",
+      "version": "1.0.0",
+      "conceptCount": 7
+    },
+    {
+      "shardId": "FUNCTIONS",
+      "version": "1.0.0",
+      "conceptCount": 4
+    },
+    {
+      "shardId": "LOGIC_SET",
+      "version": "1.0.0",
+      "conceptCount": 3
+    },
+    {
+      "shardId": "COORDINATE_GEOMETRY",
+      "version": "1.0.0",
+      "conceptCount": 18
+    },
+    {
+      "shardId": "PLANE_GEOMETRY",
+      "version": "1.0.0",
+      "conceptCount": 16
+    }
+  ],
+  "conceptCount": 48,
+  "concepts": [
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
+      "canonicalLabelKo": "절댓값을 포함한 방정식",
+      "definition": "절댓값을 포함한 방정식을 부호 또는 경우에 따라 나누어 해를 구하는 개념.",
+      "aliases": [
+        "절댓값식",
+        "절댓값 방정식"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_52c6003d7a3c5ba34ff2d7e58d3b0e472242c1d8d03256eb071d48b4432061db"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "절댓값을 포함한 방정식",
+              "relation": "공식 성취기준 용어라고 단정하지 않음"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_POINT_LINE_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
+      "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
+      "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
+      "aliases": [
+        "절댓값 그래프",
+        "절댓값 함수의 그래프"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0aaf7b07e325554d90511974b098ef3ed54be960c248a2a0356f9d96bdd05092",
+        "qid_v1_5f9b7724d2648e4d2cc64fbd371d1beeb57d8384cac1b1116d71ec8d9a09e86d"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "절댓값 기호가 포함된 함수의 그래프",
+              "relation": "공식 성취기준 용어라고 단정하지 않음"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_LINE_INTERSECTION_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_AM_GM",
+      "canonicalLabelKo": "산술평균과 기하평균의 관계",
+      "definition": "양수에 대하여 산술평균과 기하평균의 관계를 이용해 합·곱 형태 식의 최솟값 또는 최댓값을 판단하는 개념.",
+      "aliases": [
+        "산술기하평균",
+        "AM-GM",
+        "산술·기하평균"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_10c3debe9a5749b7470a56b58770bcde00170bf8f1142ad7ec340b5029e24f1e",
+        "qid_v1_4279c2aee599af9311a8d1cbab79c409efbd2fd65519a9b07e101fa9cb40e658",
+        "qid_v1_84edaca43ae1f8b18f1ca229dcdaeb3ae671c39d752496a08435b834212dc939"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_ARITHMETIC_GEOMETRIC_MEAN"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK_CANDIDATE",
+            "evidence": "supporting solution에서 해당 표현이 직접 사용되는 고등학교 부등식 풀이 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "산술평균과 기하평균의 관계",
+              "relation": "공식 성취기준 용어라고 단정하지 않음"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_DISTANCE_OPTIMIZATION",
+        "PT_INTERCEPT_OPTIMIZATION",
+        "PT_MOVE_GRAPH_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ANGLE_BISECTOR",
+      "canonicalLabelKo": "각의 이등분선",
+      "definition": "각의 이등분선이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6a9797111d98876b278c493f186e497d827a31453bf080fe7b679a1a93da2169"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ANGLE_BISECTOR_THEOREM",
+      "canonicalLabelKo": "각의 이등분선 정리",
+      "definition": "삼각형의 각의 이등분선이 마주 보는 변을 양 옆 변의 길이의 비로 나누는 성질을 사용한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0d90bed626ea975cabaa59477a8fdfd6f982ab3e95304fdb9c488aca7181b94f",
+        "qid_v1_12c228c87c1e15022918bdaa477a54f6bcffa031d9c748489793fdef56db3cd1",
+        "qid_v1_66b9c47bd1b9d20ca7e6ea5160ac9674924d8b0cb067063603b4bb86278f70a1",
+        "qid_v1_807ad4b81d4646dd8025cb7c452239167cb145025482cf3e65f81c000513e279",
+        "qid_v1_fc7b2b536a9a04668ebf60d56757a4feed32b010a5edbf0a1da4343e02c0de87"
+      ],
+      "supportingItemCount": 5,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "supporting solution에서 정확한 용어가 반복 확인됨.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_CENTROID",
+        "PT_COORD_EQUIDISTANT",
+        "PT_COORD_SECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2022:공통수학2:H22-C2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_AREA",
+      "canonicalLabelKo": "도형의 넓이",
+      "definition": "삼각형·영역 등 도형의 넓이를 계산하거나 조건에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7a2c037ec05170de7878bd4247877d2461dd1b98c9dade8f6948d626044216a1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_COMPOSITE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
+      "canonicalLabelKo": "원의 중심과 반지름",
+      "definition": "원의 방정식에서 중심과 반지름을 구하여 이동·거리·접선 조건에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0acb91673f43cfaaa06840e90f8f7f5f56106e27e84bcb8b638e03bdd0fb9746",
+        "qid_v1_15c9cbaf47ebb4f3e8555e8c1abbd6c02a6eef033bbda43cb0647920914b8364",
+        "qid_v1_1e0c28d49227938852652872e217220707208e6acbe8b463412513d06d98ca3a",
+        "qid_v1_3022a77a57137e8b5b6fd4bd3ce7c2f97eee4fca3a83356a78111886868b5b03",
+        "qid_v1_424b4bd7cd47d039bba3d1791c144eff5e11296ee097acf94fd5d9a835b84cfd",
+        "qid_v1_4d402b5facc86bfe55faf4e9ccd8aa9e9fd4fa5c9d3ffb94e801b51915dba4a1",
+        "qid_v1_4f41ae72948658ad565ba185e479950b34c800a0cdd0ccc740aee7b83dbf3847",
+        "qid_v1_505850fffc246abf1c614fa0ce4b1d25ef0370cc47ef42a5e4de32cfb057ffce",
+        "qid_v1_5ad7f7d6a269365c7f57adac8fee65624e6cc30bf942cc858caa7f694673373c",
+        "qid_v1_6a1010cc752fff6200644c4c802b2919316096a4f7ecca1443e052cf936a1eff",
+        "qid_v1_75ed555c0cdd23e5ef80bf40e942afec65eefe62c98ba8b5d3dff1358a18e264",
+        "qid_v1_97b928815b63a313bf675ca50b4ccdbf9fe53df3032263b6ea2899a85264ba37",
+        "qid_v1_97eea37c9a0fc7126d529dc41a9c83f3650cd448fe2214dfd2788b99bc402a56",
+        "qid_v1_acc9125b02d38b52338264d2c62b2e7ccdfa2eadee0a2e34984b4b02794a8e31",
+        "qid_v1_b57d7976acdcec864b437f4ca506dbb6a04af00f332475878d9a360ea18565f0",
+        "qid_v1_b596e6fc663f4e636aac3ae332a01595b9546546605e0c2fd2bcf8cf87027788",
+        "qid_v1_bdd11b0c1ae312d16659084805fa64a64e135284325aa0d1263d9f04c6c7eac6",
+        "qid_v1_cad3f325860aca4f985b660e7becdabdcdc4b4ead08cac989e2112f5beb0e655",
+        "qid_v1_d0a5a546d9cdf2ea98effc83dee4de182bd647b73fa671a0793311c40d53f100",
+        "qid_v1_d3ddda497a3f616c82408f637855dc57fdcc104be76cfdd29c3cd9e6a8c2a1c2",
+        "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5",
+        "qid_v1_edf3ae58d5a0af9fda583321f535ab2db5c6a88bee8cc86232255b313c497574",
+        "qid_v1_efa6eb16fddb16fb3c572d37fe5f24486f91e85dd7ad7f83c974a905de838d2e"
+      ],
+      "supportingItemCount": 23,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 원의 방정식 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_CIRCLE_REFLECTION",
+        "PT_MOVE_CIRCLE_TRANSLATION",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_GRAPH_TRANSLATION",
+        "PT_MOVE_LINE_TRANSLATION",
+        "PT_MOVE_POINT_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_EQUATION",
+      "canonicalLabelKo": "원의 방정식",
+      "definition": "원의 중심과 반지름으로 원의 방정식을 결정하는 개념.",
+      "aliases": [
+        "원 방정식"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_97306ad6ecab79ebbff4692e245a25d251dfb08d5ad965723e40678e8968ad2d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-11, H22-C2-03의 정확한 표준단원명.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "OFFICIAL_PUBLIC_EDUCATION_MATERIAL_TERM",
+              "curriculum": "2022",
+              "course": "공통수학2",
+              "sourceTitle": "2022 개정 교육과정에 따른 최소 성취수준 보장지도 자료(공통수학2)",
+              "sourceLocator": "[10공수2-01] 도형의 방정식",
+              "term": "원의 방정식"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LINE_ANGLE_BISECTOR"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_POSITION_RELATION",
+      "canonicalLabelKo": "두 원의 위치 관계",
+      "definition": "두 원의 중심거리와 반지름을 이용하여 교점·접촉 관계를 판정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6a1010cc752fff6200644c4c802b2919316096a4f7ecca1443e052cf936a1eff"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "원의 방정식 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_CIRCLE_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_TANGENCY",
+      "canonicalLabelKo": "원과 직선의 위치 관계",
+      "definition": "원과 직선의 위치 관계 중 접하는 경우를 중심에서 직선까지의 거리와 반지름의 관계로 판단하는 개념.",
+      "aliases": [
+        "원과 직선의 접선",
+        "접함 조건",
+        "원과 직선의 접함"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_97306ad6ecab79ebbff4692e245a25d251dfb08d5ad965723e40678e8968ad2d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "OFFICIAL_PUBLIC_EDUCATION_MATERIAL_TERM",
+              "curriculum": "2022",
+              "course": "공통수학2",
+              "sourceTitle": "2022 개정 교육과정에 따른 최소 성취수준 보장지도 자료(공통수학2)",
+              "sourceLocator": "[10공수2-01] 도형의 방정식",
+              "term": "원과 직선의 위치 관계",
+              "relation": "접하는 경우를 이 concept의 실제 사용 경계로 제한"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LINE_ANGLE_BISECTOR"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCUMCIRCLE",
+      "canonicalLabelKo": "외접원",
+      "definition": "외접원이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_23f4af059bbca60a0b3642be2ad39a54294055d7d9c3c00e05a3672697b11a1f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_TWO_CIRCLES"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_COMMON_TANGENT",
+      "canonicalLabelKo": "두 원의 공통접선",
+      "definition": "두 원에 동시에 접하는 직선을 다루는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_29c46aaf6390455bc6e83a4ace0dea945b0e101724dc49a678fb973334f80203"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "원의 방정식 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_CIRCLE_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_COMPLETE_SQUARE",
+      "canonicalLabelKo": "완전제곱식",
+      "definition": "이차식을 완전제곱꼴로 정리하여 중심·꼭짓점 등을 구하는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f8cc6a86f8ecbdfaf7a4752a5026e38b847c12b516150c334233660e3faed50b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_LINE_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COUNTEREXAMPLE",
+      "canonicalLabelKo": "반례",
+      "definition": "반례이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5d50ba4d0dcf01793ddc67dcd565b907d73c489bdfd16dd87cbd93a2c0d57e6b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_DIAMETER",
+      "canonicalLabelKo": "지름",
+      "definition": "지름이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b10cb4d1948add6ec2e160746039bf2d674c51f436bd770d1ad3c62022066526"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT",
+      "canonicalLabelKo": "판별식",
+      "definition": "이차방정식의 실근 개수·중근·접함 여부를 판정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0607d24785e66f07eef81e780c3c74264b88ba384a8592159dcd931f1a2296e0",
+        "qid_v1_3450cc12f164e7724e42842daad6e9d21e2ec9df001eb62ee4c56cc58db3182f",
+        "qid_v1_5d442a667dddb4c43def64c0606e0ac1a05c75efb742f93284fe6603f917c77f",
+        "qid_v1_a2b6944d1da30074885f0cc1ef8539db896b0b29834a74ab6443604f5cd2d321",
+        "qid_v1_b9c9cad033aa5452420d31bd021ae449b5d9dbdf3b34618a655bc6644fa7c54c",
+        "qid_v1_d78b001aaecc9717af2222109108dc26792cf059c7bfd90e2e75332db69ac117",
+        "qid_v1_dc8b0dd131c948251f08f77e61ab71f7e734c678a81cba10ecb56dd44cbb6e1f",
+        "qid_v1_f12f6bbec57f051576fc6141470a1e343f7526adba2eb7b050486e276463121b"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 이차방정식 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_GRAPH_REFLECTION",
+        "PT_MOVE_LINE_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DISTANCE_TWO_POINTS",
+      "canonicalLabelKo": "두 점 사이의 거리",
+      "definition": "두 점 좌표로 변 길이 또는 거리값을 계산하는 개념.",
+      "aliases": [
+        "두 점 거리"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0303fcdceaa62c455ce285e18e3a640b0c158dcf0d8120bec99225a5c3f53029",
+        "qid_v1_09bfacb32b07821bfd945af7e4853b52586e19d1fc823d83a993c6ac62115915",
+        "qid_v1_0d90bed626ea975cabaa59477a8fdfd6f982ab3e95304fdb9c488aca7181b94f",
+        "qid_v1_12c228c87c1e15022918bdaa477a54f6bcffa031d9c748489793fdef56db3cd1",
+        "qid_v1_1bafffd2f3dfc630cd2a36aecaf37c7916c54aa982340fadbd421f4dc82e5b18",
+        "qid_v1_1ca57382480f2c2061fa5ac70a3b96587e08d06ee8bcbeeeea89e38df75e7e50",
+        "qid_v1_2006962e93914c1417b1250fd0ffe9dace46fa8ed45d9bc1196664b38b20f0db",
+        "qid_v1_2d324b63161761d876a58767cbd013f6238747235bb02c0e3a42136dbb1c6f1c",
+        "qid_v1_377ab047fc7a4fe97cea561ac04ec9410830e699c80ddfc063eac903d150d1a1",
+        "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25",
+        "qid_v1_424b4bd7cd47d039bba3d1791c144eff5e11296ee097acf94fd5d9a835b84cfd",
+        "qid_v1_427b3cc67c32a212ff10fdb6193e5de70847dfff4c2e4537f86495843c37884f",
+        "qid_v1_458a1e0657ead69e5d853f4067b4b74222a08d8803b5e83f8a22f628e6f02a38",
+        "qid_v1_4adaf865112d2b3b327a18e38bbd13e87b97ff7dd2148266745aa882501ea493",
+        "qid_v1_4b208fc31ded7804235d384c7e7ce0bc83a81487cc1e2281bf79eede0748d520",
+        "qid_v1_4f41ae72948658ad565ba185e479950b34c800a0cdd0ccc740aee7b83dbf3847",
+        "qid_v1_50a1254f692780935186c7defc4267ef94060ae1560918c5c0c569f94d7f2613",
+        "qid_v1_5609e688135587652236f3e084ca2953bd46a76490e63008447db97bc4cc5f9d",
+        "qid_v1_66b9c47bd1b9d20ca7e6ea5160ac9674924d8b0cb067063603b4bb86278f70a1",
+        "qid_v1_6e4e1716bf7d009fe715f2f5edc64e9730953cff525ec51d43a4aedbcda6e4b8",
+        "qid_v1_7019ac88dc8af81221200d5736572716bbbb8eeeb556d09c81ab3ffdbb611898",
+        "qid_v1_775b536deac15216fa4664beef4dddf976dfe8bc8ebfbca9c489b3e6abcd2a75",
+        "qid_v1_79fb1dd04f41a18af0e3c1d33e8b5985449da22b8d2e5e45295f66d850532864",
+        "qid_v1_7c0426986e3aa057f18dfdbfc88e65120790ee9fb247d26cc0ee53f0794bac8b",
+        "qid_v1_805c738b9626f9f37f9b7d7090d1febaaf1b8cf88b6a7195b9d6201c7c859f72",
+        "qid_v1_8d919556ac89cd7624bd00541df458ab788cefabb07a22467c2a13f8a8585709",
+        "qid_v1_ab9354f7e3e24e80b48b3cd71cc190bd695ac4c94965863989eea41c5b966b83",
+        "qid_v1_b39f0a8ac3502cbac634c8279d31f9208a44e27725f2fb781c73291711a1821e",
+        "qid_v1_bb8c9938418270a7d6a1c08bd2489db4e61bc503221492e173a6a7f6a5e0578a",
+        "qid_v1_cad3f325860aca4f985b660e7becdabdcdc4b4ead08cac989e2112f5beb0e655",
+        "qid_v1_cb3d0260c1a64e9f08761ebacb918a77f3245c1413f6da87e51f09d483c88b0f",
+        "qid_v1_cc6aa4dfa392254542ce1615d9d635273455d783c603a79b03a39a71bc61703d",
+        "qid_v1_cc9a9d22f610e28566309ce03b6131627e42af358f01c16efdd8c2677b0a862e",
+        "qid_v1_d1834ff6e33dfc647a3f7ea5e8e3eabe1ff15edd3250b5f0283b9d49d9cbb722",
+        "qid_v1_d45566005be9460a8b92bf1f8e38f4b5d5ce6a8517f68df303460c97644dbd30",
+        "qid_v1_de178743a39499a3f5770599fc1d1fbccf5ab35a02abd0861125d1caa0006cf7",
+        "qid_v1_e72428f49edd7ae0e2a368c575a7be76fcf9bfcc177d8558b6998b0055c851c9",
+        "qid_v1_eb4f3a8d3c3f288536192177154d0862a252bc3a6440bd5202f7229d39cf4859",
+        "qid_v1_f7cd5749a2556d3044584f0e13c59eaf414c7f883a5d1c9c0e2bf375abcaf93b",
+        "qid_v1_fc11c869c6b7a3e3fe93f651d26c482557eea26c97328e8da33a3df6d00a1805",
+        "qid_v1_fc7b2b536a9a04668ebf60d56757a4feed32b010a5edbf0a1da4343e02c0de87"
+      ],
+      "supportingItemCount": 41,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_TWO_POINT_DISTANCE"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL+TEXTBOOK",
+            "evidence": "평면좌표 표준 용어이며 supporting solution에서 거리 공식이 반복 확인됨.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015/2022",
+              "course": "수학(상)/공통수학2",
+              "term": "두 점 사이의 거리"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 평면좌표 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_COORD_CENTROID",
+        "PT_COORD_EQUIDISTANT",
+        "PT_COORD_FIGURE_PROPERTIES",
+        "PT_COORD_MIDPOINT",
+        "PT_COORD_SECTION",
+        "PT_LINE_DISTANCE_EXTREMUM",
+        "PT_MOVE_CIRCLE_REFLECTION",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_MOVE_REFLECTION_SHORTEST"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-03",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_EXTERNAL_DIVISION",
+      "canonicalLabelKo": "선분의 외분",
+      "definition": "주어진 비로 선분을 외분하는 점의 좌표를 구하는 개념.",
+      "aliases": [
+        "외분점",
+        "선분의 외분점"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_9f3f8480d5d3a1e56d1dc4b15ec55ed5b64301a642da7c92e35c2f2fdfa0cb2b",
+        "qid_v1_bf25434ccf18bc93891b12b91b0d9a8088635c0d1f331df6dd986ca4e18d7b46",
+        "qid_v1_fae28e898bb4027cd1df44826b9f37fd512489ba9bbf4b2b1182b32a84a49027"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_EXTERNAL_DIVISION_POINT"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "평면좌표 교과서의 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "선분의 외분점",
+              "relation": "2015 과정 supporting 문항에서만 사용"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_COORD_CENTROID",
+        "PT_LINE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_ANGLE",
+      "canonicalLabelKo": "원주각",
+      "definition": "원주각이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_07fec671a7a83ed559419dc7e2b3fbdc66669870e59d38c6900010987799d558",
+        "qid_v1_2ac6eacae710586d5ed0e0cf5537097771669e8ccd44d1d02206bf332b0309e6",
+        "qid_v1_69c5f85ff7b49c1d3879f503a29e4dea7d6e040481d59591181af3d7adef42fe"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INTERNAL_DIVISION",
+      "canonicalLabelKo": "선분의 내분",
+      "definition": "주어진 비로 선분을 내분하는 점의 좌표를 구하는 개념.",
+      "aliases": [
+        "내분점",
+        "선분의 내분점"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_21624626e2bb9bc7693873e38469182efc6558ce0834fe61ff7c50d1bff53d8b",
+        "qid_v1_31094438764cc4bf5a49b84c8a0e0fd1b0b4be2b4c182e6f1d9399b10941c428",
+        "qid_v1_35583d47fb5734c66881a9e8ac018ede973588a4e2a9c08f2122e065ac358834",
+        "qid_v1_807ad4b81d4646dd8025cb7c452239167cb145025482cf3e65f81c000513e279",
+        "qid_v1_85112ba102de21df92ceb2dc415b8bb4c4c7fbcde121508939b8998442fd813e",
+        "qid_v1_988d3f33c93ec46d880cb199c86650d96631caee5e8b7f6307a32222f9ea3696",
+        "qid_v1_bd8e474306264a4975b32f2ccdb04b1dd0e08a02f2f7823315a0b8ba225aa038",
+        "qid_v1_c7a25de1a68785e8dbc44d8c47e1b8f183f3637b34d34d022c067d0af5156789"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_INTERNAL_DIVISION_POINT"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "평면좌표 교과서의 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "OFFICIAL_PUBLIC_EDUCATION_MATERIAL_TERM",
+              "curriculum": "2022",
+              "course": "공통수학2",
+              "sourceTitle": "2022 개정 교육과정에 따른 최소 성취수준 보장지도 자료(공통수학2)",
+              "sourceLocator": "[10공수2-01] 도형의 방정식",
+              "term": "선분의 내분",
+              "relation": "문항 적용 단위는 내분점의 좌표"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 평면좌표 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_COORD_CENTROID",
+        "PT_COORD_TRIANGLE_AREA",
+        "PT_LINE_EQUATION",
+        "PT_MOVE_FOLDING_REFLECTION",
+        "PT_MOVE_POINT_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_LINE_EQUATION",
+      "canonicalLabelKo": "직선의 방정식",
+      "definition": "직선의 방정식을 세우거나 직선 위 조건을 primary 밖의 보조 단계로 사용한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1e2b3a3d1f55b9e03253ba354fbc0f217bd8758adbf907b8cc9efe0d5c7dbea1",
+        "qid_v1_2a8e04709fdabe794ae45bd165679b2b514bf3d25dcfe485c5ecb37449d29e44",
+        "qid_v1_4ec7cd798e4119ab088fd43252d0a783ce59757477f1209e26e909d97408761c",
+        "qid_v1_c714107d0e3d49f83bd04e844d4b1639eb35a8edf18cd59c028fd4937bf2207f",
+        "qid_v1_dccb083387df8d64a7c5899ea23f7100d190323189f21f3b6243077a1ddcb1cd",
+        "qid_v1_f61b4a4b1556239bab26f4422dc176f18dcf5c23354f1f2264f4b61d9d566216"
+      ],
+      "supportingItemCount": 6,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-10, H22-C2-02의 정확한 표준단원명.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_EQUIDISTANT",
+        "PT_COORD_SECTION",
+        "PT_COORD_TRIANGLE_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2022:공통수학2:H22-C2-01"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_LINE_INTERSECTION",
+      "canonicalLabelKo": "두 직선의 교점",
+      "definition": "두 직선의 방정식을 연립하여 교점을 구하거나 교점 조건을 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_10c3debe9a5749b7470a56b58770bcde00170bf8f1142ad7ec340b5029e24f1e",
+        "qid_v1_304c2650897ba1f0a84816b80b75b17cc88c01fbb4fde67732626d8c766f0d37",
+        "qid_v1_3abe4b37e32e15bd8ccd81382b327c1e6cabdfa8f91e9fcf757479900b167d08",
+        "qid_v1_419e77c0dc721b1785d4e31d48d4f4f744edef7c6cd0558146e0772370138444",
+        "qid_v1_50a1254f692780935186c7defc4267ef94060ae1560918c5c0c569f94d7f2613",
+        "qid_v1_921ad117e0afd6a1143e8ed824f4f81c2154cdc7ac0a20235902efa7f625ef61",
+        "qid_v1_c5307b8fed7affeb71c56ab4b4bc2eeaaf50266ee932e5e5e15b22a415583489",
+        "qid_v1_e72428f49edd7ae0e2a368c575a7be76fcf9bfcc177d8558b6998b0055c851c9",
+        "qid_v1_e82f96e7b97f32e92b6888ab5c2bda42cb06089270bb59bab43c23c8a490efa6"
+      ],
+      "supportingItemCount": 9,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_GRAPH_REFLECTION",
+        "PT_MOVE_LINE_TRANSLATION",
+        "PT_MOVE_REFLECTION_SHORTEST"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_MIDPOINT",
+      "canonicalLabelKo": "선분의 중점",
+      "definition": "다른 primary를 해결하기 위한 보조 단계로 중점 좌표나 중점 성질을 사용한다.",
+      "aliases": [
+        "중점"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_35583d47fb5734c66881a9e8ac018ede973588a4e2a9c08f2122e065ac358834",
+        "qid_v1_377ab047fc7a4fe97cea561ac04ec9410830e699c80ddfc063eac903d150d1a1",
+        "qid_v1_4479f1f43c5538247ed92940d0ae06a8392d048297e0b90847832b95463b8c91",
+        "qid_v1_458a1e0657ead69e5d853f4067b4b74222a08d8803b5e83f8a22f628e6f02a38",
+        "qid_v1_7019ac88dc8af81221200d5736572716bbbb8eeeb556d09c81ab3ffdbb611898",
+        "qid_v1_7c0426986e3aa057f18dfdbfc88e65120790ee9fb247d26cc0ee53f0794bac8b",
+        "qid_v1_f6f374770a5d0e7f88c19286ed3a89ce080e8329d8d8e1a40df9bad89af422e5",
+        "qid_v1_fa7c1d8267b6b418cb21f91c9ef85dc09d14f52cab5f2476684716e39abfa11f"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "평면좌표 교과서의 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 평면좌표 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_COORD_CENTROID",
+        "PT_COORD_SECTION",
+        "PT_COORD_TRIANGLE_AREA",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_MOVE_REFLECTION_AXIS"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-01"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARALLELOGRAM_PROPERTIES",
+      "canonicalLabelKo": "평행사변형의 성질",
+      "definition": "평행사변형의 두 대각선이 서로를 이등분하는 성질을 사용한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3e23a00c1959dd288cd837c3b168413c8fccbb6aabff9194e0e6e01411eec2cd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL+TEXTBOOK",
+            "evidence": "마스터 M2-05 사각형의 성질 계열 및 supporting solution의 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_CENTROID"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARALLEL_LINES",
+      "canonicalLabelKo": "평행",
+      "definition": "두 직선의 평행 조건을 이용해 기울기나 좌표 관계를 정한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1e2b3a3d1f55b9e03253ba354fbc0f217bd8758adbf907b8cc9efe0d5c7dbea1",
+        "qid_v1_8a0619eb7e1f19b5d322f7cc2c73915fc996bfa0ab2f28c3d0b1d4906ec79990",
+        "qid_v1_e322bfa20e99433c8b47e138d4c66e35f430c94ed847d8ba3f41bb77e92a71fc"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_PARALLEL"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "직선의 위치 관계에서 사용하는 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_COORD_TRIANGLE_AREA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARALLEL_LINE_DISTANCE",
+      "canonicalLabelKo": "평행한 두 직선 사이의 거리",
+      "definition": "평행한 두 직선 사이의 거리를 구하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3022a77a57137e8b5b6fd4bd3ce7c2f97eee4fca3a83356a78111886868b5b03"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "직선의 방정식 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_LINE_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PERPENDICULAR",
+      "canonicalLabelKo": "수직",
+      "definition": "기울기 등으로 두 직선의 수직 관계를 사용하는 개념.",
+      "aliases": [
+        "두 직선의 수직"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
+        "qid_v1_1efb2f41b9894a1499eaec7fb1bdac6e7ad35572108a075a1e15d42b5d906776",
+        "qid_v1_304c2650897ba1f0a84816b80b75b17cc88c01fbb4fde67732626d8c766f0d37",
+        "qid_v1_3bdd276c5696826f66e70ae86532c701a17e34d124f20871f469814dfb7b463d",
+        "qid_v1_4479f1f43c5538247ed92940d0ae06a8392d048297e0b90847832b95463b8c91",
+        "qid_v1_4968bf7d2d0aff322c8698c2728b621d07bde9af3a181fc7cda4f93884821c72",
+        "qid_v1_77c0363b0366560b3bab7a9a326963df170f692ed7313aee4432ffdc9a3e774d",
+        "qid_v1_7867b21d27d521bc7769b302ef521094a5fe04c9df7297e8da65a40fa577df47",
+        "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd",
+        "qid_v1_c5307b8fed7affeb71c56ab4b4bc2eeaaf50266ee932e5e5e15b22a415583489",
+        "qid_v1_cc9a9d22f610e28566309ce03b6131627e42af358f01c16efdd8c2677b0a862e",
+        "qid_v1_f6f374770a5d0e7f88c19286ed3a89ce080e8329d8d8e1a40df9bad89af422e5"
+      ],
+      "supportingItemCount": 12,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 직선의 방정식 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_MOVE_LINE_TRANSLATION",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_MOVE_REFLECTION_AXIS",
+        "PT_MOVE_REFLECTION_SHORTEST"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-03",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PERPENDICULAR_BISECTOR",
+      "canonicalLabelKo": "선분의 수직이등분선",
+      "definition": "두 점에서 같은 거리에 있는 점의 자취로서 수직이등분선을 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f7cd5749a2556d3044584f0e13c59eaf414c7f883a5d1c9c0e2bf375abcaf93b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_POINT_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POINT_LINE_DISTANCE",
+      "canonicalLabelKo": "점과 직선 사이의 거리",
+      "definition": "Primary가 직선 방정식·직선군일 때 후속 decisive step에서 점-직선 거리 공식을 사용.",
+      "aliases": [
+        "점-직선 거리",
+        "점과 직선의 거리"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0526f952c7b13ef6ccb6421905531268dfc2ea5651ef348c262e16f6a4e9ca4b",
+        "qid_v1_07bc2249e398e0b1816140cf5ef7b59b3d7d3f929a9b5bf67ff2f2c386259c9c",
+        "qid_v1_140c246d8642e9415e666a7bda6464375d0ae7834f97ab6b41316f59eae0d1f7",
+        "qid_v1_1569c53ef8abc937de86d9ece5bac0d7d199b8d7f4127e38bf21cd0c817d46f0",
+        "qid_v1_1e0c28d49227938852652872e217220707208e6acbe8b463412513d06d98ca3a",
+        "qid_v1_200d92bc0556f5f3ee9c95db7d7389e8116e05cb4a01cfb519ff35379ae63500",
+        "qid_v1_293854007307c2d69f1c1f7aa64b26a1311d47251dcb5ab9eea8a4486241204b",
+        "qid_v1_29c46aaf6390455bc6e83a4ace0dea945b0e101724dc49a678fb973334f80203",
+        "qid_v1_3b9da4e442cc5a3b0efc7812c0bfa4c8080345939502a5f130a84396a62b7383",
+        "qid_v1_3bb3fabb8e59d032f928e8247159ef4dc86cc1662e2ecb16762730b3ace6dfa2",
+        "qid_v1_4055d5138d840657f5c92f57f8cb397369a6158315b5fbb8f6c709d37d1b3125",
+        "qid_v1_420cda7f4f2bf3d62e92d2fb34ea89521a5aff15ce139fda90130b61516fc737",
+        "qid_v1_423d2436c2acf36d107de95f4f5eb72ad6fb9c1483035c97f5c0378db538ec56",
+        "qid_v1_4846779a566947ac2e51d606c3991aa5f535db1ddaab67225e78acdd8cd57aff",
+        "qid_v1_4968bf7d2d0aff322c8698c2728b621d07bde9af3a181fc7cda4f93884821c72",
+        "qid_v1_4e064599a5c4a99b561b10d5571423e1e8edb4e0968fda945dd44b7e577696bf",
+        "qid_v1_525f14697f5e466cce629bfb1e7c59c46bb5b25564bd6f479318ab19db79a271",
+        "qid_v1_5f0eedd669a0c0f2aecd40a20ed3b761ac21c70d41ac0a2d485f74d0f74532b8",
+        "qid_v1_5fb3f6199a29f2dac01d48480a7105178ac0a9d77a410e5681d7d5a438a88ea1",
+        "qid_v1_6261b1b0593637c06899ba575d88472705878be0464d3b9b7877d4c61775de7a",
+        "qid_v1_68101d8b3835f00f8720fc730b6eb740fba7419d0cb46928e2906f276c56e855",
+        "qid_v1_7386fa1c3cd3db04e7647f722fc91010cb0efd928050ce9a4a8cb9ba1d0e0c88",
+        "qid_v1_7c05eab752dc5b4465fe1fad718e3cc4c62363f703a01321cd49a37cc275d84a",
+        "qid_v1_87034a4d5286041e17457aadf2d25c905d9b7a4987d0a5dd00cea668c839081d",
+        "qid_v1_98acc7cc47ec863a1cdd0f4a3f9aaa8ef5c9f2eb78279eb3bc393922650529cf",
+        "qid_v1_ae6c7fc4a5068de8de5a6933695b388a704b7d358feabe3736d12d1a9f7473e8",
+        "qid_v1_b596e6fc663f4e636aac3ae332a01595b9546546605e0c2fd2bcf8cf87027788",
+        "qid_v1_c09b25f13242b61ebc2723d92c51066e85c6eca69f32a08a509a6657229a7ff7",
+        "qid_v1_c2696f2bcdc98ac2cdb6a30feb6aad5847860a5c965a795d48aff0321f2ec759",
+        "qid_v1_d71bfeda2d1be9c720a073e7872becd7892647a0a9b7dd563d369f7626e620c9",
+        "qid_v1_ef4f28d04d47c135b04093ed13e6ac9239077d690fb47a8a70b9b3eb2bdc5b73",
+        "qid_v1_efa6eb16fddb16fb3c572d37fe5f24486f91e85dd7ad7f83c974a905de838d2e",
+        "qid_v1_f3ec1529e55a216dd7c0f9aa7756376f5d05ee95a9b87e61bf9b589a399cec8a"
+      ],
+      "supportingItemCount": 33,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "OFFICIAL_PUBLIC_EDUCATION_MATERIAL_TERM",
+              "curriculum": "2022",
+              "course": "공통수학2",
+              "sourceTitle": "2022 개정 교육과정에 따른 최소 성취수준 보장지도 자료(공통수학2)",
+              "sourceLocator": "[10공수2-01] 도형의 방정식",
+              "term": "점과 직선 사이의 거리"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 직선의 방정식 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_LINE_EQUATION",
+        "PT_LINE_FAMILY_COMMON_POINT",
+        "PT_MOVE_CIRCLE_REFLECTION",
+        "PT_MOVE_CIRCLE_TRANSLATION",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_LINE_REFLECTION",
+        "PT_MOVE_LINE_TRANSLATION",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_TWO_CIRCLES"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-03",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PROPOSITION",
+      "canonicalLabelKo": "명제",
+      "definition": "명제이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_140c246d8642e9415e666a7bda6464375d0ae7834f97ab6b41316f59eae0d1f7",
+        "qid_v1_ab6bb658269e231bfec16e35c4c23bf0767e927f1b9a0d2815381f20d16f443c"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_PYTHAGOREAN",
+      "canonicalLabelKo": "피타고라스 정리",
+      "definition": "직각삼각형에서 세 변의 길이 관계를 이용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0c2f7b7e8280df7830ce24c2bfab514f8d7a05ee1d5651084518e02006fb598b",
+        "qid_v1_10ea42b0df6fd497b095cbe6c1310b462a7ef0898b36123815d28585dc50dc94",
+        "qid_v1_c01daad8efa52f93c6d8bc87f8d663c63e188ebdb8f08aa98b477c2b3dcfcb60",
+        "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3",
+        "qid_v1_df7e2e5cc10a20462c72e862d45bd4bf4006b02919286003b473cdc80d891ac5"
+      ],
+      "supportingItemCount": 5,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "최신 master 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT",
+        "PT_MOVE_FOLDING_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EQUATION",
+      "canonicalLabelKo": "이차방정식",
+      "definition": "매개변수 조건에서 이차방정식의 근을 구하거나 근의 존재를 판정하는 개념.",
+      "aliases": [
+        "이차방정식의 풀이"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2ca1866bb5552cc0e17d3bb5d4a296169d806fd4bdc90fed1d5527b242e2e055",
+        "qid_v1_3705de271ea24f274dcae1784e231872164be02133e2b4b2e61143da8496c2d5",
+        "qid_v1_5dfeacb52fd2e7f900b78e843137b9cf9a5f2e93b1d08ed13a3f4c3ddff7029e",
+        "qid_v1_622186fc515015b95bc383606f368f9fa9807b69d79e6864667fe55497d481ba",
+        "qid_v1_99e6d5622686609879302369ed52b6c45852f1991fe1204f724541c6aa909354",
+        "qid_v1_9e736813cfc4a688e67b20d2155130fd4073e088003d013f9ca2efd4f8426913",
+        "qid_v1_a8ce430d3bf76890c92abe7fecec2dfbb636c6d1a2fbdf13759f4f0ed18bdfbb"
+      ],
+      "supportingItemCount": 7,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-05 및 H22-C 계열의 정규화 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "PROJECT_CANONICAL_MASTER_TERM",
+              "sourceTitle": "JS아카이브_표준단원키_마스터테이블",
+              "curriculum": "2015/2022",
+              "course": "수학(상)/공통수학1",
+              "term": "이차방정식"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_COORD_DISTANCE",
+        "PT_LINE_FAMILY_COMMON_POINT",
+        "PT_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-02",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMUM",
+      "canonicalLabelKo": "이차함수의 최댓값·최솟값",
+      "definition": "이차식 또는 이차함수로 바꾼 뒤 최댓값·최솟값을 구한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_bd1521b1e905cb05a9b9c2277d697329b7d5818123480d36b70134f64edf32bc",
+        "qid_v1_ce32a03689e86abad1b07aba904d15a27cb05e499a4e5629a967eee11be2724b",
+        "qid_v1_e6a7d13367b305f1a428500caff8173a25215b1e2bb8fe72b963b0e20122ddf6",
+        "qid_v1_e8d5bf3deb8315e4a75465f99447f1f442c4bedc73ee0e6b36db03a91688f5c6"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL+TEXTBOOK",
+            "evidence": "마스터의 이차함수/이차함수 활용 계열과 교과서 표준 표현.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_DISTANCE_OPTIMIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FUNCTION",
+      "canonicalLabelKo": "이차함수",
+      "definition": "포물선의 식 또는 이차식의 그래프·최대최소 성질을 사용하는 개념.",
+      "aliases": [
+        "이차함수 그래프"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_603b917cf3c4a678f353cbc474185a7455eb56b43996a1c138765f8f45acd48d",
+        "qid_v1_65b1e4cbc70c5444aca2e0b2faa1238caf44a5ec89d6b089430a1c4c35af0378",
+        "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "PROJECT_CANONICAL_MASTER_TERM",
+              "sourceTitle": "JS아카이브_표준단원키_마스터테이블",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "이차함수",
+              "taxonomyRef": "H15-SA-13"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_POINT_LINE_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_REFLECTION",
+      "canonicalLabelKo": "대칭이동",
+      "definition": "점 또는 도형의 대칭이동을 primary 밖의 보조 단계로 사용한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_047ad035972e00c097cd3b09efa782f88dd837687bff8d56880083479237c0f6",
+        "qid_v1_29c2bcfd6b1c750fedcfef604cc0428a96119d038c6c7466e24b140be88f8882",
+        "qid_v1_3b3893e042c19a032fb618b434cc0a168cd47c3397472371bdca864708976304",
+        "qid_v1_3da50747618288f61b900079752fb33ba847fdfc7012b54e6364bc63bc904df4",
+        "qid_v1_41d0a7982daa357ec0fa8bc76ca4a09b07d6651149c28285a6e519ed2e7ce9fa",
+        "qid_v1_7957e9829210491ccb5877ee6b0201cc70a480a4854e477eba7458f098db1c5d",
+        "qid_v1_c8d8e1346f53bf8cd8a47684242e46f2db1cd1068f33e32f1c5b4cbaf2eb12a5"
+      ],
+      "supportingItemCount": 7,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_SYMMETRY"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-12/H22-C2-04 도형의 이동 계열 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_COORD_SECTION",
+        "PT_TWO_CIRCLES"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-11",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RIGHT_TRIANGLE",
+      "canonicalLabelKo": "직각삼각형",
+      "definition": "직각삼각형이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_363c98e4a9f3f7e9b1be969f929664a90d2f735c4af32f61cf388db7cd07290b",
+        "qid_v1_ab6bb658269e231bfec16e35c4c23bf0767e927f1b9a0d2815381f20d16f443c"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RIGHT_TRIANGLE_CRITERION",
+      "canonicalLabelKo": "피타고라스 정리의 역",
+      "definition": "세 변의 길이의 제곱을 비교하여 직각삼각형임을 판정한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5a90e69901f490f5ad634738f8a9fce0439a765ca224e559bbba753934316e14"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "중학교 피타고라스 정리 단원의 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ROOTS_COEFFICIENTS",
+      "canonicalLabelKo": "이차방정식의 근과 계수의 관계",
+      "definition": "이차방정식의 두 근의 합·곱 관계를 primary 밖에서 사용한다.",
+      "aliases": [
+        "근과 계수의 관계"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0f69ee6c0fab1b7663b7cdf12026634e7c000f994a244efdb40cb6551b63359b",
+        "qid_v1_1da8ffcbefa5371c4036906957d7b0659d02fcadc18ccfb3417c11d853e1866b",
+        "qid_v1_1efb2f41b9894a1499eaec7fb1bdac6e7ad35572108a075a1e15d42b5d906776",
+        "qid_v1_300f7816d6f5c17498d71a9b364d753531ebb9baf9aa8b20a58ff142f6255fe8",
+        "qid_v1_3705de271ea24f274dcae1784e231872164be02133e2b4b2e61143da8496c2d5",
+        "qid_v1_83e46fa862f2c22541a442f4070d167c9031d84a0c129e409c6d1c208ebcd11f",
+        "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+        "qid_v1_f0cdf7dac099bfbfb3643b35c86a4aff2188d4444839c641bf8e10faac3aef84"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-06 이차방정식의 근과 계수에 근거.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_COORD_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SET_CARDINALITY",
+      "canonicalLabelKo": "집합의 원소의 개수",
+      "definition": "집합의 원소의 개수이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c8d8e1346f53bf8cd8a47684242e46f2db1cd1068f33e32f1c5b4cbaf2eb12a5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SIMULTANEOUS_EQUATION",
+      "canonicalLabelKo": "연립방정식",
+      "definition": "둘 이상의 방정식을 함께 풀어 미지수를 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_acc9125b02d38b52338264d2c62b2e7ccdfa2eadee0a2e34984b4b02794a8e31"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 교과서 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_CIRCLE_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SLOPE",
+      "canonicalLabelKo": "직선의 기울기",
+      "definition": "두 점 또는 직선의 방정식에서 기울기를 구하고 활용하는 개념.",
+      "aliases": [
+        "기울기"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_64a5b5635d4881fbba890e91521af90b5226a4627ad2e62e8c722df412dbe168",
+        "qid_v1_7c0426986e3aa057f18dfdbfc88e65120790ee9fb247d26cc0ee53f0794bac8b",
+        "qid_v1_8700b5aeb354fd89caf4b59e445031ee73bbefda9aa7c7caa2e1369a0d034763"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 직선의 방정식 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_TWO_CIRCLES"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SQUARE",
+      "canonicalLabelKo": "정사각형",
+      "definition": "정사각형이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c6a6bf1d7fe3b420a9efe8e367542d5d15a6cb1912350adca4ab12d4329ea19c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TANGENCY",
+      "canonicalLabelKo": "접선",
+      "definition": "직선과 원 또는 그래프의 접함 조건을 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0acb91673f43cfaaa06840e90f8f7f5f56106e27e84bcb8b638e03bdd0fb9746",
+        "qid_v1_1e0c28d49227938852652872e217220707208e6acbe8b463412513d06d98ca3a",
+        "qid_v1_505850fffc246abf1c614fa0ce4b1d25ef0370cc47ef42a5e4de32cfb057ffce",
+        "qid_v1_87034a4d5286041e17457aadf2d25c905d9b7a4987d0a5dd00cea668c839081d",
+        "qid_v1_a2b6944d1da30074885f0cc1ef8539db896b0b29834a74ab6443604f5cd2d321",
+        "qid_v1_b596e6fc663f4e636aac3ae332a01595b9546546605e0c2fd2bcf8cf87027788",
+        "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5",
+        "qid_v1_edf3ae58d5a0af9fda583321f535ab2db5c6a88bee8cc86232255b313c497574",
+        "qid_v1_f1fd143ed62340a01cd64c64873272f4aeba64856faed891eba46f7a17cd16f2"
+      ],
+      "supportingItemCount": 9,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 교과서 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_CIRCLE_REFLECTION",
+        "PT_MOVE_CIRCLE_TRANSLATION",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_LINE_REFLECTION",
+        "PT_MOVE_LINE_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRANSLATION",
+      "canonicalLabelKo": "평행이동",
+      "definition": "평행이동이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3da50747618288f61b900079752fb33ba847fdfc7012b54e6364bc63bc904df4",
+        "qid_v1_634c975fd831f8ca5cc0f83c25e63ddc96a2e3df3bec71ade1bab80069931675",
+        "qid_v1_6f8ac07756249bc3a996637787aca017643d87f83ffed69b32ce068e9aae7ce9",
+        "qid_v1_b258331b27351886e43f6dd6a446f56656b3c1e2cf56ae6f04e5c8b2ac74d28b"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "CIRCLE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_TWO_CIRCLES"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_AREA",
+      "canonicalLabelKo": "삼각형의 넓이",
+      "definition": "밑변과 높이 또는 좌표를 이용하여 삼각형의 넓이를 구하는 개념.",
+      "aliases": [
+        "삼각형 넓이"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0526f952c7b13ef6ccb6421905531268dfc2ea5651ef348c262e16f6a4e9ca4b",
+        "qid_v1_0805ae84c3e5172d1cb0a15052fdbdf1721d27368cbac8b2fa56b9036d66dc62",
+        "qid_v1_1112cba4630914cee5e7bc68d03ea93b0485c02f6a95b1586bf0711e37f70a07",
+        "qid_v1_112510787049b446f715c9de67236cd9bd059c243eee742430bc5e33a8c23e03",
+        "qid_v1_1b35dc663ac244483e5a43e37c9007e9ca8a0ac0a82d91fcea00e288bf24ac0e",
+        "qid_v1_29171910470c6a5e841f8c6b67c20cb135f649ac53296ac892d467395bd2e051",
+        "qid_v1_293854007307c2d69f1c1f7aa64b26a1311d47251dcb5ab9eea8a4486241204b",
+        "qid_v1_29507af1f3906e000d933db91b26bae14089dd35303ff3a6230cbfa3cb404749",
+        "qid_v1_3448a94931b7dac3f99e5e359e2e28ef344ae03204e5a47da7483d141b614410",
+        "qid_v1_35eaba599a897f5b789da435420f3c58d936a2c19a8fc2f38f62cb0485b9a2a0",
+        "qid_v1_363c98e4a9f3f7e9b1be969f929664a90d2f735c4af32f61cf388db7cd07290b",
+        "qid_v1_37e097d41e54a934fbf42204fdb49c20564080760bf877527275e2fcce2af2c8",
+        "qid_v1_3b9da4e442cc5a3b0efc7812c0bfa4c8080345939502a5f130a84396a62b7383",
+        "qid_v1_4d53d33d38add18a552574ece87928147154cba41357234e44e1f3be6ff52e47",
+        "qid_v1_598536c5ccdf614048f6560b28642782afde98585f94f868b94bbeed855693a2",
+        "qid_v1_68101d8b3835f00f8720fc730b6eb740fba7419d0cb46928e2906f276c56e855",
+        "qid_v1_6a9797111d98876b278c493f186e497d827a31453bf080fe7b679a1a93da2169",
+        "qid_v1_6b0c57c239e78046cb7d7738a76d6e3513bfbf7ca82d915d3346e6aee907b9e0",
+        "qid_v1_702aad912dc65d345d0eb348dabc87f8501c81033ceb01429fe0a9a1aa38e524",
+        "qid_v1_731546a00cbcc181ebe1101d0df5ba06e576b97682f7b9d0db1f3edf4680d604",
+        "qid_v1_7cabe3d419d5ac72199a5bf59d44072c0e4f57bd7f88cd1ba3e7a77f7cea6339",
+        "qid_v1_8506876d2e28e1312883af8ce919a9f8732fac0fa400c4c7f724bdb4b9db1bb5",
+        "qid_v1_85389d82c137685840d62153ce084759a0e799f9ac08857bd6e88e00d24f72f3",
+        "qid_v1_90a565124789a4cb8d86a22e59ed80f741d6a20d8c6749671a7495e9e09d2c64",
+        "qid_v1_98ca0a2920e97e0f75874146d90b5a8c64f6d5503c19524a4a0d4f3e9d6ed953",
+        "qid_v1_a82493d13fb0c371620017becc4660a805bdf1a2b0360603f52cfe11f7d596a5",
+        "qid_v1_c4c5080ce1a508c5b9a321c8b4721ff9c85bd0f1251bb0119fe93d99a8dc1d57",
+        "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3",
+        "qid_v1_c714107d0e3d49f83bd04e844d4b1639eb35a8edf18cd59c028fd4937bf2207f",
+        "qid_v1_d78b001aaecc9717af2222109108dc26792cf059c7bfd90e2e75332db69ac117",
+        "qid_v1_d8694c5a71d41abb320387c806e52dfc671b10d5faec2cd03a1f3b072aef4d84",
+        "qid_v1_ef4f28d04d47c135b04093ed13e6ac9239077d690fb47a8a70b9b3eb2bdc5b73",
+        "qid_v1_f18e4173995d1bdeaf83f956ff26cb49eb13a560828eb55585bdb1e041553716",
+        "qid_v1_f8f733c11604d641e07a8e37f03df4947b0e864395aee187c2e01ebb98a5813a"
+      ],
+      "supportingItemCount": 34,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "중·고등학교 도형 단원의 표준 용어이며 supporting solution에서 직접 사용됨.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "중학교/고등학교 공통",
+              "course": "기하·좌표 활용",
+              "term": "삼각형의 넓이"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 교과서 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_COORD_SECTION",
+        "PT_LINE_ANGLE_BISECTOR",
+        "PT_LINE_DISTANCE_EXTREMUM",
+        "PT_LINE_FAMILY_COMMON_POINT",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_FOLDING_REFLECTION",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_PERPENDICULAR_FOOT_ALTITUDE",
+        "PT_TWO_CIRCLES"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-02",
+        "2022:공통수학2:H22-C2-03",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_CENTROID",
+      "canonicalLabelKo": "삼각형의 무게중심",
+      "definition": "세 꼭짓점 좌표와 무게중심 좌표의 관계를 사용하는 개념.",
+      "aliases": [
+        "무게중심"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_1b35dc663ac244483e5a43e37c9007e9ca8a0ac0a82d91fcea00e288bf24ac0e",
+        "qid_v1_1d8c71ec12f45dab5914762bee634aa9ce5800a3ec2a23e58cede55fab32f083",
+        "qid_v1_1dabe83aa237d38105a50d85ba70401feff7690514776d0934586ddd0856128c",
+        "qid_v1_894e9990510783b1cc85436016cb77515eec2d7cadcc7dd2dc07fc75afa4e369",
+        "qid_v1_988d3f33c93ec46d880cb199c86650d96631caee5e8b7f6307a32222f9ea3696",
+        "qid_v1_e538a587965dedb8c32235009b1baf38fefb22b20ce5ec26c8477513d5c4f25a"
+      ],
+      "supportingItemCount": 6,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_CENTROID"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL+TEXTBOOK",
+            "evidence": "마스터의 삼각형의 좌표와 무게중심 및 supporting solution의 정확한 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "PROJECT_CANONICAL_MASTER_TERM",
+              "sourceTitle": "JS아카이브_표준단원키_마스터테이블",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "삼각형의 무게중심",
+              "taxonomyRef": "H15-SA-09-TRIANGLE_CENTROID_AREA"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_COORD_DISTANCE_OPTIMIZATION",
+        "PT_MOVE_POINT_REFLECTION",
+        "PT_POINT_LINE_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-02",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_INEQUALITY",
+      "canonicalLabelKo": "삼각부등식",
+      "definition": "두 거리의 합을 직선거리와 비교하는 삼각부등식을 사용한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0d645842f82cf4a9acba546466142215ca2cfe3e2072f1e26eb10e11d7d131f3",
+        "qid_v1_3a9f3be3978029800641dcf24023685bade376adb0e158ee763f11a4dfac35fd",
+        "qid_v1_f5e96950546c189c3cb8e596613dbd63b6113352d6412683ad803c1516fc734e"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK",
+            "evidence": "거리합 최솟값 supporting solution의 표준 기하 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_DISTANCE_OPTIMIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_VERTEX",
+      "canonicalLabelKo": "이차함수의 꼭짓점",
+      "definition": "이차함수의 꼭짓점 좌표를 구하고 그래프 이동에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e82759ea5a0b7f4f95ca6cceed41efd5486c8f7974b908dd8cbf1450acf662f1",
+        "qid_v1_f1fd143ed62340a01cd64c64873272f4aeba64856faed891eba46f7a17cd16f2"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_GRAPH_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    }
+  ]
+}

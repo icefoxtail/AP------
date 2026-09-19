@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "meta-foundation-concept-shard-v1",
+  "shardId": "ALGEBRA",
+  "shardVersion": "1.0.0",
+  "status": "ACTIVE",
+  "conceptCount": 7,
+  "concepts": [
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
+      "canonicalLabelKo": "절댓값을 포함한 방정식",
+      "definition": "절댓값을 포함한 방정식을 부호 또는 경우에 따라 나누어 해를 구하는 개념.",
+      "aliases": [
+        "절댓값식",
+        "절댓값 방정식"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_52c6003d7a3c5ba34ff2d7e58d3b0e472242c1d8d03256eb071d48b4432061db"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "절댓값을 포함한 방정식",
+              "relation": "공식 성취기준 용어라고 단정하지 않음"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_POINT_LINE_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_AM_GM",
+      "canonicalLabelKo": "산술평균과 기하평균의 관계",
+      "definition": "양수에 대하여 산술평균과 기하평균의 관계를 이용해 합·곱 형태 식의 최솟값 또는 최댓값을 판단하는 개념.",
+      "aliases": [
+        "산술기하평균",
+        "AM-GM",
+        "산술·기하평균"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_10c3debe9a5749b7470a56b58770bcde00170bf8f1142ad7ec340b5029e24f1e",
+        "qid_v1_4279c2aee599af9311a8d1cbab79c409efbd2fd65519a9b07e101fa9cb40e658",
+        "qid_v1_84edaca43ae1f8b18f1ca229dcdaeb3ae671c39d752496a08435b834212dc939"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [
+        "CC_ARITHMETIC_GEOMETRIC_MEAN"
+      ],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "TEXTBOOK_CANDIDATE",
+            "evidence": "supporting solution에서 해당 표현이 직접 사용되는 고등학교 부등식 풀이 표준 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "산술평균과 기하평균의 관계",
+              "relation": "공식 성취기준 용어라고 단정하지 않음"
+            }
+          ]
+        },
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_DISTANCE_OPTIMIZATION",
+        "PT_INTERCEPT_OPTIMIZATION",
+        "PT_MOVE_GRAPH_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLETE_SQUARE",
+      "canonicalLabelKo": "완전제곱식",
+      "definition": "이차식을 완전제곱꼴로 정리하여 중심·꼭짓점 등을 구하는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f8cc6a86f8ecbdfaf7a4752a5026e38b847c12b516150c334233660e3faed50b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_LINE_REFLECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT",
+      "canonicalLabelKo": "판별식",
+      "definition": "이차방정식의 실근 개수·중근·접함 여부를 판정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0607d24785e66f07eef81e780c3c74264b88ba384a8592159dcd931f1a2296e0",
+        "qid_v1_3450cc12f164e7724e42842daad6e9d21e2ec9df001eb62ee4c56cc58db3182f",
+        "qid_v1_5d442a667dddb4c43def64c0606e0ac1a05c75efb742f93284fe6603f917c77f",
+        "qid_v1_a2b6944d1da30074885f0cc1ef8539db896b0b29834a74ab6443604f5cd2d321",
+        "qid_v1_b9c9cad033aa5452420d31bd021ae449b5d9dbdf3b34618a655bc6644fa7c54c",
+        "qid_v1_d78b001aaecc9717af2222109108dc26792cf059c7bfd90e2e75332db69ac117",
+        "qid_v1_dc8b0dd131c948251f08f77e61ab71f7e734c678a81cba10ecb56dd44cbb6e1f",
+        "qid_v1_f12f6bbec57f051576fc6141470a1e343f7526adba2eb7b050486e276463121b"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 이차방정식 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT",
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_GRAPH_REFLECTION",
+        "PT_MOVE_LINE_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EQUATION",
+      "canonicalLabelKo": "이차방정식",
+      "definition": "매개변수 조건에서 이차방정식의 근을 구하거나 근의 존재를 판정하는 개념.",
+      "aliases": [
+        "이차방정식의 풀이"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_2ca1866bb5552cc0e17d3bb5d4a296169d806fd4bdc90fed1d5527b242e2e055",
+        "qid_v1_3705de271ea24f274dcae1784e231872164be02133e2b4b2e61143da8496c2d5",
+        "qid_v1_5dfeacb52fd2e7f900b78e843137b9cf9a5f2e93b1d08ed13a3f4c3ddff7029e",
+        "qid_v1_622186fc515015b95bc383606f368f9fa9807b69d79e6864667fe55497d481ba",
+        "qid_v1_99e6d5622686609879302369ed52b6c45852f1991fe1204f724541c6aa909354",
+        "qid_v1_9e736813cfc4a688e67b20d2155130fd4073e088003d013f9ca2efd4f8426913",
+        "qid_v1_a8ce430d3bf76890c92abe7fecec2dfbb636c6d1a2fbdf13759f4f0ed18bdfbb"
+      ],
+      "supportingItemCount": 7,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-05 및 H22-C 계열의 정규화 용어.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        },
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "PROJECT_CANONICAL_MASTER_TERM",
+              "sourceTitle": "JS아카이브_표준단원키_마스터테이블",
+              "curriculum": "2015/2022",
+              "course": "수학(상)/공통수학1",
+              "term": "이차방정식"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_COORD_DISTANCE",
+        "PT_LINE_FAMILY_COMMON_POINT",
+        "PT_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09",
+        "2015:수학(상):H15-SA-10",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-02",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ROOTS_COEFFICIENTS",
+      "canonicalLabelKo": "이차방정식의 근과 계수의 관계",
+      "definition": "이차방정식의 두 근의 합·곱 관계를 primary 밖에서 사용한다.",
+      "aliases": [
+        "근과 계수의 관계"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0f69ee6c0fab1b7663b7cdf12026634e7c000f994a244efdb40cb6551b63359b",
+        "qid_v1_1da8ffcbefa5371c4036906957d7b0659d02fcadc18ccfb3417c11d853e1866b",
+        "qid_v1_1efb2f41b9894a1499eaec7fb1bdac6e7ad35572108a075a1e15d42b5d906776",
+        "qid_v1_300f7816d6f5c17498d71a9b364d753531ebb9baf9aa8b20a58ff142f6255fe8",
+        "qid_v1_3705de271ea24f274dcae1784e231872164be02133e2b4b2e61143da8496c2d5",
+        "qid_v1_83e46fa862f2c22541a442f4070d167c9031d84a0c129e409c6d1c208ebcd11f",
+        "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+        "qid_v1_f0cdf7dac099bfbfb3643b35c86a4aff2188d4444839c641bf8e10faac3aef84"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL",
+            "evidence": "마스터 H15-SA-06 이차방정식의 근과 계수에 근거.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_CIRCLE_TANGENT",
+        "PT_COORD_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-11",
+        "2022:공통수학2:H22-C2-01",
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SIMULTANEOUS_EQUATION",
+      "canonicalLabelKo": "연립방정식",
+      "definition": "둘 이상의 방정식을 함께 풀어 미지수를 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_acc9125b02d38b52338264d2c62b2e7ccdfa2eadee0a2e34984b4b02794a8e31"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "Foundation Pilot seed / 교과서 표준 용어"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_CIRCLE_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    }
+  ]
+}

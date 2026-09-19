@@ -1,6 +1,6 @@
 # rules source pack manifest
 
-created: 2026-09-04T00:00:00+09:00
+created: 2026-09-19T09:21:00+09:00
 scope: current operational rules under `docs/rules/` excluding `05_DESIGN/` and `90_ARCHIVE/`
 excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical rule versions under `90_ARCHIVE/`
 
@@ -8,9 +8,10 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 12811 bytes | sha256 d48270711eac540c6317614dcfeee0e7cf209eead6531749d145ed5e9801790a
+- 00_RULES_INDEX.md | 12252 bytes | sha256 4f3a21f67bd25e4e7efc377f34befbb7435932e44772dac43adfaecb0ae12c59
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 15913 bytes | sha256 f09fa22faa57ebdf5d4103384b23352320048d9f8d431db944e76e64ccbf2385
+- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 41036 bytes | sha256 1905ef435962e2eb080a08ef7f18a0c18b005e1321aa60ef16abda04e5b55151
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 69774 bytes | sha256 44761558675f0bb7600befe498ae06ad87818fe754c1607be85a40f333d0c8f9
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 93995 bytes | sha256 63fda56d595807e517047aafce02901d114c04e1986193a2c86121458fa37291
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37263 bytes | sha256 507b5de4838abf310dec40e66ab1036e4c968408b436a8e4648db6dd2c186f63
