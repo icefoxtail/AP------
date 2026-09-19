@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "geometry-equations-aliases-v1",
+  "schemaVersion": "meta-foundation-compiled-aliases-v1",
   "status": "DERIVED_READ_ONLY",
-  "aliasCount": 126,
+  "aliasCount": 144,
   "aliases": [
     {
       "alias": "0이 아님",
@@ -41,13 +41,6 @@
     {
       "alias": "음의 값 조건",
       "canonicalKey": "COND_NEGATIVE",
-      "canonicalKind": "condition",
-      "source": "GLOBAL_CONDITION_MERGE",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "정수·자연수 조건",
-      "canonicalKey": "COND_INTEGER_OR_NATURAL",
       "canonicalKind": "condition",
       "source": "GLOBAL_CONDITION_MERGE",
       "status": "ACTIVE"
@@ -884,6 +877,139 @@
       "canonicalKind": "template",
       "source": "LINE_ALIAS_REGISTRY",
       "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 원소합과 집계",
+      "canonicalKey": "PT_SET_AGGREGATE",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 원소 수와 포함배제",
+      "canonicalKey": "PT_SET_CARDINALITY",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "조건을 만족하는 집합의 구성",
+      "canonicalKey": "PT_SET_CONSTRUCTION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 뜻과 판정",
+      "canonicalKey": "PT_SET_DEFINITION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "원소와 부분집합의 관계",
+      "canonicalKey": "PT_SET_ELEMENT_RELATION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 최대·최소와 경계",
+      "canonicalKey": "PT_SET_EXTREMUM",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 직접 연산",
+      "canonicalKey": "PT_SET_OPERATION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "벤다이어그램과 집합식",
+      "canonicalKey": "PT_SET_REGION_EXPRESSION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "부분집합 판정",
+      "canonicalKey": "PT_SUBSET_JUDGMENT",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "절댓값을 포함한 부등식",
+      "canonicalKey": "CC_INEQUALITY_ABSOLUTE_VALUE",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "코시-슈바르츠 부등식",
+      "canonicalKey": "CC_INEQUALITY_CAUCHY_SCHWARZ",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "Cauchy-Schwarz",
+      "canonicalKey": "CC_INEQUALITY_CAUCHY_SCHWARZ",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "유리부등식",
+      "canonicalKey": "CC_INEQUALITY_RATIONAL",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "함수의 합성",
+      "canonicalKey": "CC_FUNCTION_COMPOSITION",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "경우의 수",
+      "canonicalKey": "CC_COMBINATORICS_COUNTING",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "약수·배수",
+      "canonicalKey": "CC_NUMBER_DIVISOR_MULTIPLE",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "홀짝",
+      "canonicalKey": "CC_NUMBER_PARITY",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "소수와 서로소",
+      "canonicalKey": "CC_NUMBER_PRIME_COPRIME",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "소수·서로소",
+      "canonicalKey": "CC_NUMBER_PRIME_COPRIME",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
     }
   ],
   "collisionCount": 0,
@@ -895,8 +1021,8 @@
       "to": "TM_CIRCLE_INTERSECTION_COUNT"
     }
   ],
-  "ownerPack": "GEOMETRY_EQUATIONS",
   "sourcePacks": [
-    "GEOMETRY_EQUATIONS"
+    "GEOMETRY_EQUATIONS",
+    "SETS_PROPOSITIONS"
   ]
 }
