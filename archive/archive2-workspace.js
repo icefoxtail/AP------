@@ -69,7 +69,15 @@
       .replace(/[·・ㆍ]/g, "");
   const taxonomyRowsForFilters = (filters) => {
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
-    if (highSemantic && !filters.semanticSubject) return [];
+    if (
+      highSemantic &&
+      (!filters.semanticSubject ||
+        C.highSemanticSubjectAllowed?.(
+          filters.grade,
+          filters.semanticSubject,
+        ) === false)
+    )
+      return [];
     return state.catalog.taxonomy.filter((r) => {
       const semanticMatch =
         !filters.semanticSubject ||
@@ -602,7 +610,7 @@
         : value;
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
     const courses = highSemantic
-      ? C.highSemanticSubjectOptions()
+      ? C.highSemanticSubjectOptions(filters.grade)
       : unique(
           taxonomyRowsForFilters({ ...filters, courseKey: "" })
             .map((r) => r.courseKey),
@@ -656,6 +664,11 @@
   }
   function findExams() {
     const f = state.find;
+    if (
+      C.isHighSemanticSubjectGrade?.(f.grade) &&
+      !f.semanticSubject
+    )
+      return [];
     const query = C.normalizeSearch(f.query || "");
     const matchingSources = query
       ? new Set(
@@ -797,7 +810,10 @@
     } catch (error) { popup?.close(); throw error; }
   }
   function renderFind() {
-    const exams = findExams(),
+    const waitingForHighSubject =
+        C.isHighSemanticSubjectGrade?.(state.find.grade) &&
+        !state.find.semanticSubject,
+      exams = findExams(),
       page = exams.slice(state.page * 18, (state.page + 1) * 18);
     return `<div class="intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
       <section class="panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div><details class="finder-filters" ${matchMedia("(max-width: 600px)").matches ? "" : "open"}><summary>학년·학교·과목으로 좁히기</summary>${filterMarkup(state.find, "find")}</details></section>
@@ -810,7 +826,7 @@
           return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "시험지 확인", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
         })
         .join("")}</div>
-      ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
+      ${waitingForHighSubject ? '<div class="empty">고2·고3은 과목을 먼저 선택하세요. 신·구 교육과정의 대응 과목은 하나의 공통 과목으로 묶어 보여줍니다.</div>' : !exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
       ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}`;
   }
