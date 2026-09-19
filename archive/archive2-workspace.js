@@ -331,6 +331,12 @@
     );
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
+    if (C.isHighSemanticSubjectGrade?.(state.filters.grade)) {
+      state.filters = C.reconcileFinderFilters(
+        state.filters,
+        state.catalog.taxonomy,
+      );
+    }
     state.selected = data.selected.map((r) => ({
       ...state.byUid.get(r.questionUid),
       rowId: r.rowId,
@@ -1781,6 +1787,16 @@
       } else if (a === "go-compose") {
         state.view = "compose";
         if (state.find.grade) state.filters.grade = state.find.grade;
+        if (C.isHighSemanticSubjectGrade?.(state.find.grade)) {
+          state.filters.semanticSubject = state.find.semanticSubject || "";
+          state.filters.courseKey = "";
+        } else {
+          state.filters.semanticSubject = "";
+          if (state.find.courseKey) state.filters.courseKey = state.find.courseKey;
+        }
+        state.scopes = [];
+        delete state.filters.L3;
+        delete state.filters.L4;
         urlState();
         render();
       } else if (a === "page-prev") {
