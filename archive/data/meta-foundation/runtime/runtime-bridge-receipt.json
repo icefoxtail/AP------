@@ -1,79 +1,45 @@
 {
-  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v3",
-  "status": "PASS_FUNCTIONS_GRAPHS_CATALOG_JOIN",
-  "baseMain": "256c9de27d1b76190f30d28332690114ef35029a",
+  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v4",
+  "status": "PASS_FUNCTIONS_GRAPHS_520_CATALOG_JOIN",
+  "baseMain": "17a8ada69a81e150c6b6ac5bacf24422d358285b",
   "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v2",
   "checked": {
     "geometryRecords": 400,
-    "setsPropositionsCanonicalInScopeRecords": 363,
     "setsPropositionsRuntimeRecords": 354,
-    "setsPropositionsCatalogUnregisteredExcluded": 9,
-    "setsPropositionsOutOfScopeExcluded": 7,
     "functionsGraphsCanonicalAssignments": 520,
-    "functionsGraphsRuntimeRecords": 510,
-    "functionsGraphsCatalogUnregisteredExcluded": 10,
-    "functionsGraphsCatalogJoin": 510,
+    "functionsGraphsRuntimeRecords": 520,
+    "functionsGraphsExistingCatalogJoin": 510,
+    "functionsGraphsSupplementalCatalogJoin": 10,
+    "functionsGraphsCatalogJoin": 520,
     "functionsGraphsCatalogJoinMismatch": 0,
-    "functionsGraphsAutomaticEligibleExpected": 316,
-    "combinedRuntimeRecords": 1264,
-    "combinedUniqueUid": 1264,
-    "combinedUniqueSourceIdentity": 1264,
-    "runtimeCatalogJoin": 1264,
-    "runtimeCatalogJoinMismatch": 0,
+    "combinedRuntimeRecords": 1274,
+    "combinedUniqueUid": 1274,
+    "combinedRuntimeCatalogJoin": 1274,
+    "combinedRuntimeCatalogJoinMismatch": 0,
     "productionExamJsMutation": 0
   },
   "archive2JoinContract": {
-    "identityAuthority": "archive/data/question_identity_map.json + archive/data/archive2-catalog.json",
+    "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity",
     "catalogBuilder": "archive/tools/build-archive2-catalog.mjs",
     "joinKey": "questionUid with sourceFile#sourceOrdinal parity",
     "browserRuntimeGate": "applyArchiveMetaFoundationCatalog requires joined === runtime.counts.records",
-    "expectedRuntimeJoin": 1264
+    "expectedRuntimeJoin": 1274
   },
   "invariants": [
     "No production exam JS modified.",
-    "FUNCTIONS_GRAPHS canonical assignments remain 520; runtime excludes only identities absent from the current Archive2 catalog.",
-    "The 10 excluded FUNCTIONS_GRAPHS items all belong to original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js, which is absent from current db.js/question_identity_map/catalog.",
-    "GEOMETRY_EQUATIONS runtime remains 400 assignments.",
-    "SETS_PROPOSITIONS runtime remains 354 catalog-joinable assignments.",
-    "Archive 2.0 multi-pack fail-closed join is 1264/1264."
+    "2020 Maesan H1 second-semester midterm is registered in archive/db.js.",
+    "FUNCTIONS_GRAPHS retains all 520 canonical assignments.",
+    "510 FUNCTIONS_GRAPHS items join the static Archive2 catalog directly.",
+    "The 10 previously unregistered Maesan function items join through the runtime catalog supplemental path after DB registration.",
+    "FUNCTIONS_GRAPHS catalog join is 520/520 with sourceFile#sourceOrdinal mismatch 0.",
+    "Combined active Meta Foundation runtime join is 1274/1274."
   ],
   "catalogUnregisteredExclusions": {
-    "SETS_PROPOSITIONS": {
-      "reason": "SOURCE_NOT_REGISTERED_IN_ARCHIVE2_CATALOG",
-      "count": 9,
-      "sourceFiles": [
-        "original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js"
-      ],
-      "questionUids": [
-        "qid_v1_15e621c42fb988cb018ddd8253b6bf7edd43fff1d22f1c84af7b5c8b82a2a3ba",
-        "qid_v1_623f00ed428e0ed9012a93cc7dd41f0b40a374010790f707067358d7a682cc2a",
-        "qid_v1_812277a8ca1aa7d3efc3eaf3edd84ada828cee4df54fc1a74b9eee79031f8984",
-        "qid_v1_0a8baec5442d989059a29517bea811f4f6f7e45911dade48a2d7ed42104b4577",
-        "qid_v1_4b9e934ca4a68d8fca10e52af37423ba9b20dc9c7b0148f6b5944457d253ff18",
-        "qid_v1_71acff8f850132a32fc0804bf60fc4d75f1b2c83d3efc9bcd4135dcc5543675b",
-        "qid_v1_1d7cd765137cad0c849d8ae728b0e0bd48adc1d41f0f54f78f5a82a6957cb396",
-        "qid_v1_909b5a10036f1ea3c78d340a544a67f332597f2afb1162f890f4ed1ca92eaadd",
-        "qid_v1_9436f4bc79fc5eea69dba7a8ddb40fd28b6ab1b6a2637cd634c56c8a90a44667"
-      ]
-    },
     "FUNCTIONS_GRAPHS": {
-      "reason": "SOURCE_NOT_REGISTERED_IN_ARCHIVE2_CATALOG",
-      "count": 10,
-      "sourceFiles": [
-        "original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js"
-      ],
-      "questionUids": [
-        "qid_v1_b7a7f1b8820e2b28da71cec1b1be17399e147cc104b24a63c2e1c67edb4f6185",
-        "qid_v1_44f28162ae84096a6b38a0cc8ea443984c041f9a0a7bd17aa839be413e7f409b",
-        "qid_v1_e4f8695e8d36958ddac15c243fd14a5a784357a6f1cabc3f6b6d8e558473c593",
-        "qid_v1_cfea07da6f5b0e7c15f96a2fd16b5b5434e4694b206721713c70e40e24abcd9d",
-        "qid_v1_53af86c5097f2cfca1a034fc872227febf349042b5880500717a1421266efe7c",
-        "qid_v1_468059daee150aad7ca3376ef2a077c0a56957b7899af4d041c59cbb4d9e2d4b",
-        "qid_v1_e599d8075bdecc8c60c27028d95ce0f8cf1dc62bb8ab13531ad2dd315d4962df",
-        "qid_v1_0714a9edf362151e8d5c29ec0de4f66e202aac879d090774c666bc3b7bbdcebb",
-        "qid_v1_34dd07e9ccc59cc13f4aa52de80243c50966f46c0c6286a78b11e469a39d1cbf",
-        "qid_v1_55e152134d44354b78b3650a1fee0045a708d14ec25b11ccc57307565a9290f6"
-      ]
+      "reason": "NONE_AFTER_DB_REGISTRATION",
+      "count": 0,
+      "sourceFiles": [],
+      "questionUids": []
     }
   }
 }
