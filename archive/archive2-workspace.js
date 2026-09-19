@@ -986,45 +986,58 @@
       <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
   function renderInspector() {
-    const r = state.selected.length ? review() : null;
-    const summary = `<h2>${state.round}차 테스트</h2><div class="summary-number">${state.selected.length}<small class="muted" style="font-size:14px"> 문항</small></div>
-      <div class="summary-line"><span>선택 범위</span><strong>${selectedScopeOptions().length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
-      ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
-      ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
+    const r = state.selected.length ? review() : null,
+      blocked = r?.status === "HARD_BLOCK" || (r?.warnings.length && !state.ackWarnings),
+      selectedTargetText = state.studentLabels.join(" · "),
+      assignLabel = state.receipts.length && !state.sealed
+        ? "남은 문제지 출제"
+        : state.receipts.some((receipt) => !receipt.ready)
+          ? "PDF 다시 준비"
+          : state.studentIds.length
+            ? `${state.studentIds.length}명에게 출제`
+            : "학생 출제";
+
+    const gateNotice = !r
+      ? ""
+      : r.status === "PASS"
+        ? `<p class="classic-ready-pass">검증 완료 · ${r.metrics.uniqueUidCount}문항</p>`
+        : `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : ""}"><strong>${r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 확인 필요"}</strong>${[...r.hardFailures, ...r.warnings].map((message) => `<div>${esc(message)}</div>`).join("")}</div>
+          ${r.warnings.length ? `<label class="check classic-ready-ack"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
+
     const historyOverlapCount = state.history?.union_question_uids?.length || 0;
     const historyNotice = !state.studentIds.length
       ? ""
       : state.historyMode === "off"
-        ? '<div class="callout">이전 출제 문항 확인을 사용하지 않습니다. 생성된 시험지는 그대로 출제할 수 있습니다.</div>'
+        ? ""
         : state.historyError
           ? `<div class="callout">이력 확인 실패: ${esc(state.historyError)}<br>확인 결과와 관계없이 이 시험지는 출제할 수 있습니다.</div>`
           : !state.historyReady
-            ? '<div class="callout">이전 출제 이력을 확인하고 있습니다. 확인 중에도 출제할 수 있습니다.</div>'
-            : `<div class="callout">현재 시험지 중 이전 출제와 겹치는 문항 <strong>${historyOverlapCount}개</strong><br>참고 정보이며 출제를 차단하지 않습니다.</div>`;
-    const targeting = `<h3>출제 대상</h3><p>${esc(state.studentLabels.join(" · ") || "문제지를 만든 뒤 학생을 선택해 출제합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
-      <details style="margin-top:12px">
-        <summary>고급 설정</summary>
-        <label style="margin-top:12px">이전 출제 문항 확인<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
+            ? '<div class="callout">이전 출제 이력을 확인하고 있습니다.</div>'
+            : `<div class="callout">이전 출제와 겹치는 문항 <strong>${historyOverlapCount}개</strong> · 참고 정보</div>`;
+
+    const targeting = `<div class="classic-ready-setting-head"><h3>출제 대상</h3>${button("inspector", "닫기", 'data-tab="summary" class="small"')}</div>
+      <p class="classic-ready-target-names">${esc(selectedTargetText || "학생을 선택하세요.")}</p>
+      <div class="actions">${button("targets", state.studentIds.length ? "학생 다시 선택" : "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
+      <details class="classic-ready-history">
+        <summary>이전 출제 확인</summary>
+        <label>범위<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
           [
             { value: "off", label: "확인 안 함" },
             { value: "all", label: "전체 이력 확인" },
             { value: "90", label: "최근 90일 확인" },
             { value: "30", label: "최근 30일 확인" },
           ],
-          state.historyMode === "recent"
-            ? String(state.recentDays)
-            : state.historyMode,
+          state.historyMode === "recent" ? String(state.recentDays) : state.historyMode,
           null,
         )}</select></label>
-        ${state.studentIds.length && state.historyMode !== "off" ? button("history-refresh", "이력 다시 확인", 'class="small"') : ""}
+        ${state.studentIds.length && state.historyMode !== "off" ? button("history-refresh", "다시 확인", 'class="small"') : ""}
       </details>
       ${historyNotice}`;
+
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
       frozenPaper = frozen && frozenPaperCache.get(frozen.key);
-    const header =
-      (frozen
-        ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다. 수정할 문제지를 먼저 선택하세요.</p>'
-        : "") +
+    const header = `<div class="classic-ready-setting-head"><h3>출력 설정</h3>${button("inspector", "닫기", 'data-tab="summary" class="small"')}</div>` +
+      (frozen ? '<p class="callout">이미 출제한 문제지의 출력 설정입니다.</p>' : "") +
       O.markup(
         frozenPaper
           ? {
@@ -1036,23 +1049,46 @@
         "studio",
         Boolean(frozen) || state.sealed,
       );
-    return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}"><section class="panel">${button("close-inspector", "설정 닫기", 'class="mobile-sheet-close"')}<div class="tabs" role="tablist">${[
-      ["summary", "출제 확인"],
-      ["targets", "대상"],
-      ["header", "출력 설정"],
-    ]
-      .map(([k, l]) =>
-        button(
-          "inspector",
-          l,
-          `data-tab="${k}" role="tab" aria-selected="${state.inspector === k}" class="${state.inspector === k ? "active" : ""}"`,
-        ),
-      )
-      .join(
-        "",
-      )}</div><div>${state.inspector === "header" ? header : state.inspector === "targets" ? targeting : summary + `<hr style="border:0;border-top:1px solid var(--line);margin:18px 0">` + targeting}</div>
-      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "일반 출력", `class="primary" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 다시 준비" : "학생에게 출제", `${!state.studentIds.length || r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>${state.sealed ? '<p class="callout">확정된 회차입니다. 다음 회차에서 새 문제지를 만드세요.</p>' : ""}<div class="actions" style="margin-top:12px">${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}${button("backup", "작업 파일 저장", 'class="small"')}</div>` : ""}
-      ${renderDeliveryProgress()}</section></aside>`;
+
+    const info = `<div class="classic-ready-info-grid">
+      <div><span>문항</span><strong>${state.selected.length}</strong></div>
+      <div><span>범위</span><strong>${selectedScopeOptions().length}</strong></div>
+      <div><span>고정</span><strong>${state.pins.length}</strong></div>
+    </div>`;
+
+    const assignmentAction = state.studentIds.length
+      ? button("assign", assignLabel, `class="primary" ${blocked ? "disabled" : ""}`)
+      : button("targets", "학생 출제", 'class="classic-ready-assign-start"');
+
+    return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}">
+      <section class="panel classic-ready-use">
+        ${button("close-inspector", "닫기", 'class="mobile-sheet-close"')}
+        <h3>바로 사용</h3>
+        <div class="classic-ready-actions">
+          ${button("print", "출력", `${blocked ? "disabled" : ""}`)}
+          ${assignmentAction}
+        </div>
+        ${selectedTargetText ? `<p class="classic-ready-selected-target">${esc(selectedTargetText)}</p>` : ""}
+        ${gateNotice}
+      </section>
+      <section class="panel classic-ready-more">
+        <h3>필요할 때</h3>
+        <div class="classic-ready-soft-actions">
+          ${button("inspector", "학생 · 출제 설정", `data-tab="targets" class="${state.inspector === "targets" ? "active" : ""}"`)}
+          ${button("inspector", "출력 설정", `data-tab="header" class="${state.inspector === "header" ? "active" : ""}"`)}
+        </div>
+        ${state.inspector === "targets" ? `<div class="classic-ready-setting-panel">${targeting}</div>` : state.inspector === "header" ? `<div class="classic-ready-setting-panel">${header}</div>` : ""}
+        <details class="classic-ready-info">
+          <summary>시험지 정보</summary>
+          ${info}
+        </details>
+        <div class="classic-ready-secondary-actions">
+          ${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}
+          ${button("backup", "작업 파일 저장", 'class="small"')}
+        </div>
+        ${renderDeliveryProgress()}
+      </section>
+    </aside>`;
   }
   function renderDeliveryProgress() {
     if (!state.receipts.length && !state.failedPart) return "";
@@ -1108,133 +1144,21 @@
   function renderMobileActions() {
     if (!state.selected.length) return "";
     const r = review(),
-      blocked =
-        r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings);
-    return `<div class="mobile-actions">${button("mobile-inspector", "출력·출제 설정")}${button("print", "일반 출력", `class="primary" ${blocked ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 재시도" : "학생 출제", blocked || !state.studentIds.length ? "disabled" : "")}</div>`;
-  }
-  function renderComposeStart() {
-    const scopes = scopeOptions(),
-      selectedScopes = selectedScopeOptions(),
-      quickScope = selectedScopes.length === 1 ? selectedScopes[0].key : "",
-      courseLabel = (value) =>
-        /^M([123])-([12])$/.test(value)
-          ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
-          : value,
-      courses = unique(
-        taxonomyRowsForFilters({ ...state.filters, courseKey: "" }).map((r) => r.courseKey),
-      ).map((value) => ({ value, label: courseLabel(value) })),
-      rows = planRows(),
-      total = rows.reduce((sum, row) => sum + row.count, 0),
-      selectionFilters = {
-        ...state.filters,
-        sourceFiles: state.sources,
-        primaryPaths: selectedScopePaths(),
-      },
-      excluded = C.composeExclusions(context()).union,
-      candidates = pool().filter(
-        (record) =>
-          C.matches(record, selectionFilters) &&
-          C.eligibility(record).ok &&
-          !excluded.has(record.questionUid),
-      ),
-      shortages = rows
-        .map((row) => ({
-          row,
-          available: candidates.filter((record) => C.rowMatches(record, row)).length,
-        }))
-        .filter((item) => item.available < item.row.count),
-      quickDisabled = !state.filters.courseKey || !rows.length || state.busy || state.sealed || shortages.length,
-      scopeLabel = selectedScopes.length === 1
-        ? selectedScopes[0].label
-        : selectedScopes.length > 1
-          ? `${selectedScopes.length}개 범위`
-          : "범위 선택",
-      courseText = state.filters.courseKey ? courseLabel(state.filters.courseKey) : "과정 선택",
-      previewCount = total || Number(state.count) || 0,
-      advancedActive =
-        state.distribution !== "equal" ||
-        Boolean(state.filters.curriculumKey || state.filters.school || state.filters.yearFrom || state.filters.yearTo || state.filters.L3 || state.filters.L4) ||
-        state.buckets.join(",") !== "2,3" ||
-        selectedScopes.length > 1;
-
-    const rangeOptions = state.filters.courseKey
-      ? [
-          `<option value="">${selectedScopes.length > 1 ? esc(scopeLabel) : "범위 선택"}</option>`,
-          ...scopes.map(
-            (scope) =>
-              `<option value="${esc(scope.key)}"${quickScope === scope.key ? " selected" : ""}>${esc(scope.L1)} · ${esc(scope.label)}</option>`,
-          ),
-        ].join("")
-      : '<option value="">과정을 먼저 선택하세요</option>';
-
-    const paperPreview = `<div class="classic-create-paper" aria-hidden="true">
-      <span class="classic-create-paper-title">${esc(state.header?.title || state.title)}</span>
-      <span class="classic-create-paper-meta">${esc(courseText)} · ${previewCount}문항</span>
-      <i></i><i></i><i></i><i></i><b></b>
-    </div>`;
-
-    return `<div class="intro classic-compose-intro">
-      <div><h1>문제지 만들기</h1><p class="muted">필요한 것만 고르면 바로 만듭니다.</p></div>
-    </div>
-    <div class="classic-compose-layout">
-      <section class="panel classic-compose-form">
-        <h2>빠른 제작</h2>
-        <div class="classic-compose-step">
-          <span class="classic-compose-label">학년</span>
-          <div class="classic-compose-grade" aria-label="학년">
-            ${["고1","고2","고3","중1","중2","중3"].map((grade) =>
-              `<button data-action="compose-grade" data-grade="${grade}" aria-pressed="${state.filters.grade === grade}">${grade}</button>`
-            ).join("")}
-          </div>
-        </div>
-        <div class="classic-compose-step">
-          <label class="classic-compose-label" for="classic-compose-course">과정</label>
-          <select id="classic-compose-course" data-filter="courseKey" data-group="compose">
-            ${options(courses, state.filters.courseKey, "과정 선택")}
-          </select>
-        </div>
-        <div class="classic-compose-step">
-          <label class="classic-compose-label" for="classic-compose-scope">범위</label>
-          <select id="classic-compose-scope" ${state.filters.courseKey ? "" : "disabled"}>${rangeOptions}</select>
-        </div>
-        <div class="classic-compose-step">
-          <label class="classic-compose-label" for="classic-compose-count">문항 수</label>
-          <div class="classic-compose-count-row">
-            <input id="classic-compose-count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" ? "disabled" : ""}>
-            <div class="classic-count-presets">
-              ${[10,20,24].map((count) =>
-                `<button type="button" data-action="compose-count" data-count="${count}" aria-pressed="${Number(state.count) === count && state.distribution !== "all"}">${count}</button>`
-              ).join("")}
-            </div>
-          </div>
-        </div>
-        ${state.sources.length ? `<div class="classic-compose-source"><strong>선택한 기출 ${state.sources.length}개</strong><span>이 자료 안에서 문제를 고릅니다.</span>${button("sources-clear", "해제", 'class="small"')}</div>` : ""}
-        <details class="classic-compose-advanced"${advancedActive ? " open" : ""}>
-          <summary>상세 설정${advancedActive ? '<span>적용 중</span>' : ""}</summary>
-          <div class="classic-compose-advanced-body">
-            <div class="classic-compose-advanced-filters">${filterMarkup(state.filters, "compose", true)}</div>
-            ${renderScopes()}
-            ${renderComposition()}
-          </div>
-        </details>
-        ${shortages.length ? `<p class="classic-compose-shortage">현재 조건에서는 ${shortages.reduce((sum, item) => sum + item.row.count - item.available, 0)}문항이 부족합니다. 상세 설정에서 조건을 조정하세요.</p>` : ""}
-        ${button("generate", "문제지 만들기", `class="primary classic-compose-make" ${quickDisabled ? "disabled" : ""}`)}
-      </section>
-      <aside class="panel classic-compose-preview">
-        <h3>미리보기</h3>
-        <div class="classic-create-preview-card">
-          ${paperPreview}
-          <div><strong>${esc(state.header?.title || state.title)}</strong><p>${esc(state.filters.grade || "")} · ${esc(courseText)}<br>${esc(scopeLabel)} · ${previewCount}문항</p></div>
-        </div>
-        <dl class="classic-create-summary">
-          <div><dt>범위</dt><dd>${esc(scopeLabel)}</dd></div>
-          <div><dt>구성</dt><dd>${advancedActive ? "상세 설정" : "자동"}</dd></div>
-          ${state.sources.length ? `<div><dt>출처</dt><dd>선택 기출 ${state.sources.length}개</dd></div>` : ""}
-        </dl>
-      </aside>
+      blocked = r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings),
+      assignLabel = state.receipts.length && !state.sealed
+        ? "남은 문제지 출제"
+        : state.receipts.some((receipt) => !receipt.ready)
+          ? "PDF 재시도"
+          : "학생 출제",
+      assignAction = state.studentIds.length
+        ? button("assign", assignLabel, `class="primary assign-action" ${blocked ? "disabled" : ""}`)
+        : button("targets", "학생 출제", 'class="primary assign-action"');
+    return `<div class="mobile-actions classic-mobile-ready-actions">
+      ${button("print", "출력", `class="print-action" ${blocked ? "disabled" : ""}`)}
+      ${assignAction}
+      ${button("mobile-inspector", "···", 'class="classic-mobile-more" aria-label="설정 더보기"')}
     </div>`;
   }
-
   function renderCompose() {
     if (!state.selected.length) return renderComposeStart();
     return `<div class="intro classic-compose-ready-intro">
