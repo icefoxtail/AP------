@@ -675,7 +675,7 @@
       );
     }).sort(C.compareNewest);
   }
-  function openOriginalIssue(exam, step = "review") {
+  function prepareOriginalIssue(exam) {
     state.originalExam = exam;
     const stored = Number(
       localStorage.getItem("APMATH_ARCHIVE2_ORIGINAL_QPP") || 4,
@@ -694,6 +694,10 @@
     });
     state.originalReceipts = [];
     state.originalPreviewKey = "preview-" + crypto.randomUUID();
+    return url;
+  }
+  function openOriginalIssue(exam, step = "review") {
+    const url = prepareOriginalIssue(exam);
     showDialog(
       O.displayTitle(exam),
       `<div class="original-issue-toolbar"><span>${exam.qCount}문항 · 수록 순서 그대로</span><div class="actions">${button("original-review", "시험지 확인", 'aria-pressed="true"')}${button("original-targets", "반·학생 선택", 'class="primary" aria-pressed="false"')}</div><details class="original-output"><summary>출력 설정</summary>${O.markup(state.originalSettings, "original")}</details></div><div id="original-receipts"></div><section id="original-review"><div class="resultbar"><p class="muted">학생에게 나갈 시험지입니다. 출력 설정을 바꾸면 여기에 반영됩니다.</p>${button("original-print", "새 창·출력", 'class="small"')}</div><div id="original-preview-status" role="status">시험지를 불러오는 중…</div><iframe id="original-preview-frame" title="학생에게 나갈 시험지"></iframe></section><iframe id="original-issue-frame" title="원본 기출 반·학생 출제" src="${esc(url.href)}"></iframe>`,
@@ -767,15 +771,34 @@
   function renderFind() {
     const exams = findExams(),
       page = exams.slice(state.page * 18, (state.page + 1) * 18);
-    return `<div class="intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
-      <section class="panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div><details class="finder-filters" ${matchMedia("(max-width: 600px)").matches ? "" : "open"}><summary>학년·학교·과목으로 좁히기</summary>${filterMarkup(state.find, "find")}</details></section>
+    const paperThumb = (title) =>
+      `<span class="classic-paper-thumb" aria-hidden="true"><span></span><i></i><i></i><i></i><b></b></span><span class="visually-hidden">${esc(title)} 시험지 보기</span>`;
+    return `<div class="intro classic-find-intro"><div><h1>기출·자료</h1><p class="muted">필요한 시험지를 찾고 바로 출력하거나 학생에게 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
+      <section class="panel classic-finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div><details class="finder-filters" ${matchMedia("(max-width: 700px)").matches ? "" : "open"}><summary>학년·학교·과목으로 좁히기</summary>${filterMarkup(state.find, "find")}</details></section>
       ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기 →</span></a>' : ""}
-      <div class="resultbar"><strong>${state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
-      <div class="exam-list">${page
+      <div class="resultbar classic-resultbar"><strong>${state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong></div>
+      <div class="exam-list classic-exam-list">${page
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
-            selected = state.sources.includes(e.file);
-          return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "시험지 확인", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
+            selected = state.sources.includes(e.file),
+            title = O.displayTitle(e),
+            course = e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject || "",
+            period = `${e.semester || ""}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}`.trim();
+          return `<article class="exam classic-exam-row ${selected ? "selected" : ""}">
+            <button class="exam-thumb-button" data-action="source-preview" data-exam="${n}" aria-label="${esc(title)} 시험지 보기">${paperThumb(title)}</button>
+            <div class="exam-main">
+              <h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(title)}</button></h2>
+              <div class="classic-exam-meta">${badge(e.contentType)}<span>${esc(e.grade)}</span><span>${esc(course)}</span>${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div>
+              <p class="range">${esc(period)}${(e.courseRanges || []).length ? " · " + esc((e.courseRanges || []).map((r) => r.rangeStartUnit || r.standardCourse || "").filter(Boolean).slice(0,2).join(" ~ ")) : ""}</p>
+            </div>
+            <div class="exam-count"><strong>${e.qCount}<small>문항</small></strong></div>
+            <div class="exam-date">${esc(e.year || "")}</div>
+            <div class="actions classic-exam-actions">
+              ${button("source-print", "출력", `data-exam="${n}" class="small primary"`)}
+              ${button("source-issue", "학생 출제", `data-exam="${n}" class="small"`)}
+              ${button("source-more", "···", `data-exam="${n}" class="small classic-more-button" aria-label="더보기"`)}
+            </div>
+          </article>`;
         })
         .join("")}</div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
@@ -1749,17 +1772,31 @@
         state.page++;
         render();
       } else if (a === "source-toggle") {
+        if ($("modal")?.open) $("modal").close();
         const f = state.catalog.exams[Number(b.dataset.exam)].file;
         state.sources = state.sources.includes(f)
           ? state.sources.filter((x) => x !== f)
           : [...state.sources, f];
         invalidate();
         render();
+      } else if (a === "source-print") {
+        const exam = state.catalog.exams[Number(b.dataset.exam)];
+        prepareOriginalIssue(exam);
+        await originalPrint();
+      } else if (a === "source-more") {
+        const examIndex = Number(b.dataset.exam);
+        const exam = state.catalog.exams[examIndex];
+        const selected = state.sources.includes(exam.file);
+        showDialog(
+          O.displayTitle(exam),
+          `<div class="classic-more-menu">${button("source-preview", "시험지 보기", `data-exam="${examIndex}"`)}${button("source-toggle", selected ? "문항 선택 해제" : "문항 선택", `data-exam="${examIndex}"`)}</div>`,
+        );
       } else if (a === "source-issue") {
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "targets");
       } else if (a === "original-print") {
         await originalPrint();
       } else if (a === "source-preview") {
+        if ($("modal")?.open) $("modal").close();
         openOriginalIssue(state.catalog.exams[Number(b.dataset.exam)], "review");
       } else if (a === "original-review" || a === "original-targets") {
         setOriginalStep(a === "original-review" ? "review" : "targets");

@@ -11,6 +11,7 @@
       host.remove();
       return;
     }
+    document.body.classList.add('archive2-classic-shell');
     host.className = 'archive-navigation';
     host.innerHTML = api.markup(mode);
     host.hidden = false;
@@ -21,7 +22,7 @@
     ['find', '기출·자료', 'workspace.html?view=find'],
     ['unit', '단원별 기출', 'unit-past-exams.html?ready=1'],
     ['compose', '문제지 만들기', 'workspace.html?view=compose'],
-    ['recent', '출제 내역', 'workspace.html?view=recent'],
+    ['recent', '내 시험지', 'workspace.html?view=recent'],
   ];
   function markup(mode) {
     const active = mode === 'unit' ? 'unit' : 'find';

@@ -71,3 +71,150 @@
   #unit-ready-assignment { padding:12px; }
   .unit-ready-assignment-heading { align-items:flex-start; flex-direction:column; }
 }
+
+
+/* Archive 2.0 Classic v7 — phase 2 shell
+   Same routes and owners; only information architecture and placement change. */
+@media (min-width: 701px) {
+  body.archive2-classic-shell { padding-left: 218px; }
+  .archive-navigation {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 50;
+    width: 218px;
+    min-height: 100vh;
+    padding: 16px 10px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: #fff;
+    border: 0;
+    border-right: 1px solid #dde2e8;
+    color: #151d29;
+  }
+  .archive-navigation-brand {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 9px 11px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+  }
+  .archive-navigation-brand span {
+    margin-left: 5px;
+    color: #697687;
+    font-size: 10px;
+    font-weight: 500;
+    vertical-align: baseline;
+  }
+  .archive-navigation-tasks {
+    display: grid;
+    flex: 0 0 auto;
+    gap: 2px;
+    margin-top: 8px;
+  }
+  .archive-navigation-tasks > :is(a,button) {
+    width: 100%;
+    min-height: 42px;
+    justify-content: flex-start;
+    padding: 0 11px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #44505f;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .archive-navigation-tasks > :is(a,button):hover {
+    background: #f7f8fa;
+    color: #1d3557;
+  }
+  .archive-navigation-tasks > [aria-current="page"],
+  .archive-navigation-tasks > .active {
+    background: #e9eff6;
+    color: #1d3557;
+  }
+  .archive-navigation-tools {
+    display: grid;
+    gap: 2px;
+    margin: auto 0 0;
+    padding-top: 10px;
+    border-top: 1px solid #eceff3;
+  }
+  .archive-navigation-tools > :is(a,button) {
+    width: 100%;
+    min-height: 36px;
+    justify-content: flex-start;
+    padding: 0 9px;
+    color: #697687;
+    font-size: 11.5px;
+    text-decoration: none;
+  }
+  .archive-navigation-tools > :is(a,button):hover {
+    color: #1d3557;
+    text-decoration: none;
+  }
+}
+@media (max-width: 700px) {
+  body.archive2-classic-shell {
+    padding-left: 0;
+    padding-bottom: 72px;
+  }
+  .archive-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    min-height: 54px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    border: 0;
+    border-bottom: 1px solid #dde2e8;
+  }
+  .archive-navigation-brand {
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+  }
+  .archive-navigation-brand span { color: #697687; font-size: 10px; }
+  .archive-navigation-tools { display: none; }
+  .archive-navigation-tasks {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 4px;
+    min-height: 66px;
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid #dde2e8;
+  }
+  .archive-navigation-tasks > :is(a,button) {
+    min-width: 0;
+    min-height: 52px;
+    padding: 0 3px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #697687;
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+  .archive-navigation-tasks > [aria-current="page"],
+  .archive-navigation-tasks > .active {
+    background: #e9eff6;
+    color: #1d3557;
+  }
+}
