@@ -55,16 +55,30 @@
       .replace(/Ⅱ/g, "II")
       .replace(/\s+/g, "");
   const HIGH_SEMANTIC_SUBJECTS = Object.freeze([
-    Object.freeze({ value: "ALGEBRA", label: "대수", courseKeys: Object.freeze(["대수", "수학I"]) }),
-    Object.freeze({ value: "CALCULUS", label: "미적분Ⅰ", courseKeys: Object.freeze(["미적분I", "수학II"]) }),
-    Object.freeze({ value: "PROB_STATS", label: "확률과 통계", courseKeys: Object.freeze(["확률과통계"]) }),
-    Object.freeze({ value: "CALCULUS_ADVANCED", label: "미적분Ⅱ", courseKeys: Object.freeze(["미적분II", "미적분"]) }),
-    Object.freeze({ value: "GEOMETRY", label: "기하", courseKeys: Object.freeze(["기하", "기하와 벡터"]) }),
+    Object.freeze({ value: "ALGEBRA", label: "대수", grades: Object.freeze(["고2"]), courseKeys: Object.freeze(["대수", "수학I"]) }),
+    Object.freeze({ value: "CALCULUS", label: "미적분Ⅰ", grades: Object.freeze(["고2"]), courseKeys: Object.freeze(["미적분I", "수학II"]) }),
+    Object.freeze({ value: "PROB_STATS", label: "확률과 통계", grades: Object.freeze(["고2"]), courseKeys: Object.freeze(["확률과통계"]) }),
+    Object.freeze({ value: "CALCULUS_ADVANCED", label: "미적분Ⅱ", grades: Object.freeze(["고3"]), courseKeys: Object.freeze(["미적분II", "미적분"]) }),
+    Object.freeze({ value: "GEOMETRY", label: "기하", grades: Object.freeze(["고3"]), courseKeys: Object.freeze(["기하", "기하와 벡터"]) }),
   ]);
   const isHighSemanticSubjectGrade = (grade) =>
     ["고2", "고3"].includes(text(grade));
-  const highSemanticSubjectOptions = () =>
-    HIGH_SEMANTIC_SUBJECTS.map(({ value, label }) => ({ value, label }));
+  const highSemanticSubjectAllowed = (grade, subjectValue) => {
+    const subject = HIGH_SEMANTIC_SUBJECTS.find(
+      (item) => item.value === text(subjectValue),
+    );
+    return Boolean(
+      subject &&
+        (!isHighSemanticSubjectGrade(grade) ||
+          subject.grades.includes(text(grade))),
+    );
+  };
+  const highSemanticSubjectOptions = (grade = "") =>
+    HIGH_SEMANTIC_SUBJECTS.filter(
+      (subject) =>
+        !isHighSemanticSubjectGrade(grade) ||
+        subject.grades.includes(text(grade)),
+    ).map(({ value, label }) => ({ value, label }));
   const highSemanticSubjectForCourseKey = (courseKey) => {
     const identity = normalizeCourseIdentity(courseKey);
     return (
@@ -172,9 +186,7 @@
       }
       if (
         next.semanticSubject &&
-        !HIGH_SEMANTIC_SUBJECTS.some(
-          (subject) => subject.value === next.semanticSubject,
-        )
+        !highSemanticSubjectAllowed(next.grade, next.semanticSubject)
       )
         next.semanticSubject = "";
       if (next.semanticSubject) {
@@ -636,6 +648,7 @@
     normalizeCourseIdentity,
     HIGH_SEMANTIC_SUBJECTS,
     isHighSemanticSubjectGrade,
+    highSemanticSubjectAllowed,
     highSemanticSubjectOptions,
     highSemanticSubjectForCourseKey,
     highSemanticSubjectCourseKeys,
