@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "function-limit-continuity-promotion-review-v1",
+  "status": "PASS_READY_FOR_CANONICAL_PROMOTION",
+  "packId": "FUNCTION_LIMIT_CONTINUITY",
+  "packVersion": "1.0.0",
+  "basisMainSha": "8269189d9b121459da62278e5c506d874a74562e",
+  "branch": "codex/metadata-foundation-h2-math2-continuity",
+  "parentCommit": "a9108f4d01928a77cc14b96088dc888fe84d9af4",
+  "denominators": {
+    "limit": 104,
+    "continuity": 85,
+    "total": 189,
+    "uniqueQuestionUids": 189,
+    "scopeOverlap": 0
+  },
+  "identityBinding": {
+    "identityAlgorithm": "qid_v1",
+    "existingIdentityMapDirectMatches": 186,
+    "deterministicRegenerationAfterSourceRefresh": 3,
+    "unresolved": 0
+  },
+  "semanticReconciliation": {
+    "candidateLimitProblemTypesBeforeRegistry": 16,
+    "promotedLimitProblemTypes": 15,
+    "decision": {
+      "action": "MERGE_SEMANTIC_PARENT",
+      "from": [
+        "PT_LIMIT_GEOMETRY_APPLICATION",
+        "PT_INFINITY_GEOMETRY_APPLICATION"
+      ],
+      "to": "PT_LIMIT_GEOMETRY_APPLICATION",
+      "template": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "reason": "Meta Foundation L4 has exactly one parentProblemTypeKey; finite/infinite primary-taxonomy placement does not change the shared geometry-parameterization problem strategy."
+    },
+    "continuityNewProblemTypes": 6,
+    "continuityNewTemplates": 18,
+    "continuityCrossPackProblemTypeRefs": [
+      "PT_FUNCTION_EXTREMUM",
+      "PT_INVERSE_GRAPH",
+      "PT_ONE_TO_ONE_BIJECTION",
+      "PT_ITERATED_COMPOSITION"
+    ],
+    "continuityCrossPackTemplateRefs": [
+      "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "TPL_INVERSE_GRAPH_INTERSECTION",
+      "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "TPL_ITERATION_RULE"
+    ]
+  },
+  "difficulty": {
+    "limitCanonicalExport": "BLOCKED_PENDING_FRESH_BLIND_RECHECK",
+    "continuityCanonicalEvidence": "REVIEWED_STAGE6",
+    "taxonomyPromotionDependsOnLimitDifficultyExport": false
+  },
+  "gates": {
+    "denominatorClosure": true,
+    "uidUnique": true,
+    "newCanonicalKeyDuplicateZero": true,
+    "aliasCollisionZero": true,
+    "templateSingleParent": true,
+    "assignmentTemplateParentParity": true,
+    "bindingCoverageZeroGap": true,
+    "crossConceptRegistered": true,
+    "conditionRegistered": true,
+    "crossPackRedefinitionZero": true,
+    "productionJsMutationZero": true
+  },
+  "result": "PASS"
+}
