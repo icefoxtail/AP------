@@ -1,0 +1,883 @@
+{
+  "project": "H2 MathII Continuity Foundation",
+  "stage": 4,
+  "status": "L4_CANDIDATE_DESIGN_COMPLETE",
+  "branch": "codex/metadata-foundation-h2-math2-continuity",
+  "basedOnStage3Commit": "d97c7e37ba5e842c9472c61c415415e7f6395c3d",
+  "denominatorTotal": 85,
+  "authority": {
+    "schema": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+    "taxonomyRegistry": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+    "taxonomyRegistryBlobSha": "35e14b02108f932e95cb9b6da59c63235487ed00"
+  },
+  "rulesApplied": [
+    "L4 is created only when the decisive-step order is materially different inside the same L3.",
+    "Coefficient, number, representation, difficulty, and cross-concept differences alone do not create a new L4.",
+    "Existing ACTIVE templates are reused when their parent L3 and semantic skeleton match.",
+    "Candidate labels use school-math terminology; internal analysis language is kept in internalSkeleton.",
+    "No candidate template is promoted to canonical or written to production in Stage 4."
+  ],
+  "proposedTemplates": [
+    {
+      "templateKey": "TPL_CONTINUITY_DISCONTINUITY_POINTS",
+      "parentProblemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "canonicalLabelKo": "불연속점 찾기",
+      "definition": "식이나 그래프를 이용하여 함수가 불연속인 점을 찾거나 그 개수를 구하는 출제 템플릿.",
+      "internalSkeleton": "불연속 후보점 확인 → 좌우극한·함숫값 비교 → 불연속점 집계",
+      "supportingSequences": [
+        1,
+        26
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+      "parentProblemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "canonicalLabelKo": "한 점에서 연속 여부 판정",
+      "definition": "주어진 함수가 특정 점에서 연속인지 정의역·좌우극한·함숫값을 확인하여 판정하는 출제 템플릿.",
+      "internalSkeleton": "정의 여부 확인 → 좌우극한 확인 → 극한값과 함숫값 비교",
+      "supportingSequences": [
+        8
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "0/0꼴에서 함수의 연속 조건",
+      "definition": "분모와 분자가 함께 0이 되는 점에서 약분·인수분해·유리화 후 극한값을 정해진 함숫값과 같게 하여 계수를 결정하는 출제 템플릿.",
+      "internalSkeleton": "0/0 조건 강제 → 약분·유리화 → 극한값 계산 → 함숫값과 일치",
+      "supportingSequences": [
+        7,
+        9,
+        13,
+        27,
+        31,
+        34,
+        39,
+        43,
+        45,
+        53
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "구간별 함수의 경계에서 연속 조건",
+      "definition": "구간별로 정의된 함수의 경계점에서 좌극한·우극한·함숫값을 일치시켜 계수나 함수식을 결정하는 출제 템플릿.",
+      "internalSkeleton": "실제 경계점 확정 → 각 조각의 경계값 계산 → 좌우극한·함숫값 일치",
+      "supportingSequences": [
+        3,
+        12,
+        17,
+        25,
+        54,
+        68,
+        73,
+        79,
+        82
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "곱함수가 연속이 되기 위한 조건",
+      "definition": "한 인수의 점프 불연속을 다른 인수의 영점으로 상쇄하여 곱함수가 연속이 되도록 조건을 정하는 출제 템플릿.",
+      "internalSkeleton": "점프 위치 확인 → 곱의 좌우극한 비교 → 상대 인수의 영점 조건 설정",
+      "supportingSequences": [
+        19,
+        20,
+        56,
+        59,
+        67,
+        70,
+        74
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "영점의 중복도를 이용한 연속 조건",
+      "definition": "극이나 고차 영점을 가진 식을 곱하거나 나눌 때 필요한 영점의 중복도를 맞추어 함수가 연속이 되도록 하는 출제 템플릿.",
+      "internalSkeleton": "분모·극의 차수 확인 → 필요한 분자·보정인수 영점 차수 결정 → 약분 후 극한과 함숫값 확인",
+      "supportingSequences": [
+        49,
+        55,
+        61,
+        77
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "분모가 0이 되지 않는 조건",
+      "definition": "유리식 또는 근호가 포함된 분모가 정의역 전체에서 0이 되지 않도록 방정식의 실근·판별식 조건을 정해 전구간 연속성을 확보하는 출제 템플릿.",
+      "internalSkeleton": "분모 0 조건 해석 → 실근 존재 여부를 판별식·영점 구조로 변환 → 매개변수 범위 결정",
+      "supportingSequences": [
+        32,
+        35,
+        58,
+        63,
+        85
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_CONDITION",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "합성함수가 연속이 되기 위한 조건",
+      "definition": "바깥 함수의 불연속값과 안쪽 함수의 도착값 또는 원상을 분석하여 합성함수가 연속이 되도록 조건을 정하는 출제 템플릿.",
+      "internalSkeleton": "바깥 함수의 불연속 입력 확인 → 안쪽 함수의 접근값·원상 분석 → 불연속 입력 회피 또는 좌우 출력 일치",
+      "supportingSequences": [
+        30,
+        42
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "연속인 함수의 식 결정",
+      "definition": "점별로 가능한 여러 함수식 중에서 교점에서만 식을 바꿀 수 있다는 연속성 조건을 이용해 전 구간의 함수식을 결정하는 출제 템플릿.",
+      "internalSkeleton": "가능한 함수식 후보 분리 → 후보식 교점 계산 → 연속 가능한 전환만 허용 → 전역 함수 결정",
+      "supportingSequences": [
+        21,
+        84
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_LIMIT_EXISTENCE_FUNCTION_DETERMINE",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "극한의 존재 조건으로 함수 결정",
+      "definition": "특정 극한의 존재 또는 불존재 조건이 성립하는 매개변수 집합을 이용하여 연속함수의 영점이나 계수를 결정하는 출제 템플릿.",
+      "internalSkeleton": "특수 극한 정리 → 존재·불존재 조건을 함수값·영점 조건으로 변환 → 연속 조건과 결합해 함수 결정",
+      "supportingSequences": [
+        16
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "parentProblemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "canonicalLabelKo": "함수의 연산과 합성에서 연속성 판정",
+      "definition": "합·차·곱·절댓값·합성 등으로 만든 함수가 특정 점에서 연속인지 좌우극한과 함숫값을 비교하여 판정하는 출제 템플릿.",
+      "internalSkeleton": "원함수의 특이점 확인 → 연산·합성 후 좌우값 계산 → 연속성 판정",
+      "supportingSequences": [
+        4,
+        23,
+        41,
+        64,
+        66,
+        80
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+      "parentProblemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "canonicalLabelKo": "절댓값·제곱한 함수의 연속성",
+      "definition": "불연속인 함수에 절댓값이나 제곱을 적용했을 때 서로 다른 좌우값이 같은 값으로 바뀌는지를 이용해 연속성을 판정하는 출제 템플릿.",
+      "internalSkeleton": "원함수의 좌우값 확인 → 절댓값·제곱 변환 → 변환된 좌우값·함숫값 비교",
+      "supportingSequences": [
+        57,
+        65
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_REVERSE_INFERENCE",
+      "parentProblemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "canonicalLabelKo": "합·곱의 연속성으로 함수의 연속성 판단",
+      "definition": "두 함수의 합이나 곱이 연속이라는 조건과 한 함수의 연속·비영 조건을 이용하여 다른 함수의 연속성을 역으로 판정하는 출제 템플릿.",
+      "internalSkeleton": "기준 함수의 연속·비영 확인 → 다른 함수를 합·곱식에서 분리 → 연속함수의 사칙연산 적용",
+      "supportingSequences": [
+        38
+      ]
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_DISCONTINUITY",
+      "parentProblemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "canonicalLabelKo": "합성함수의 불연속점 찾기",
+      "definition": "안쪽 함수의 값이 바깥 함수의 불연속 입력을 지나는 위치를 추적하여 합성함수의 불연속점을 찾는 출제 템플릿.",
+      "internalSkeleton": "바깥 함수의 불연속 입력 확인 → 안쪽 함수의 값 구간·점프 분석 → 불연속 입력의 원상 추적",
+      "supportingSequences": [
+        37
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "parentProblemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "canonicalLabelKo": "실근·교점 개수 함수의 불연속점 찾기",
+      "definition": "매개변수에 따른 실근 수 또는 교점 수를 구간별로 정리하여 개수 함수의 값이 바뀌는 불연속점을 찾는 출제 템플릿.",
+      "internalSkeleton": "매개변수별 해·교점 개수 분류 → 값이 바뀌는 임계값 추출 → 불연속점 판정",
+      "supportingSequences": [
+        15,
+        24,
+        72
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "parentProblemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "canonicalLabelKo": "개수 함수와 곱함수의 연속 조건",
+      "definition": "실근·교점 개수 함수의 점프 위치를 찾아 다른 함수의 영점을 그 위치에 배치하여 곱함수가 연속이 되도록 하는 출제 템플릿.",
+      "internalSkeleton": "개수 함수의 점프점 계산 → 보정함수의 영점 조건 설정 → 계수·함수 결정",
+      "supportingSequences": [
+        2,
+        5,
+        36,
+        75,
+        76,
+        83
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_FUNCTION_COMPOSITE_JUDGMENT",
+      "parentProblemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "canonicalLabelKo": "실근 개수 함수의 합성과 연속성",
+      "definition": "실근 개수로 정의된 계단함수를 다시 합성하거나 곱하여 생기는 불연속 구조와 연속 가능성을 판정하는 출제 템플릿.",
+      "internalSkeleton": "실근 개수 함수 구간화 → 합성함수의 값·점프 계산 → 연속·불연속 및 보정 가능성 판정",
+      "supportingSequences": [
+        11
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_FUNCTION_ONE_SIDED_CONDITION",
+      "parentProblemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "canonicalLabelKo": "실근 개수 함수의 좌우극한 조건",
+      "definition": "특정 매개변수의 좌우에서 실근 개수가 어떻게 변하는지를 이용하여 원래 함수의 계수나 그래프 구조를 결정하는 출제 템플릿.",
+      "internalSkeleton": "지정 매개변수 양쪽의 해 개수 조건 해석 → 각 가지의 교점 수 변화 분석 → 원함수 계수 결정",
+      "supportingSequences": [
+        44
+      ]
+    },
+    {
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "parentProblemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "canonicalLabelKo": "사잇값 정리로 실근이 있는 구간 찾기",
+      "definition": "연속인 함수의 구간 양 끝값 부호를 비교하여 방정식의 실근이 존재하는 구간을 찾는 출제 템플릿.",
+      "internalSkeleton": "연속 보조함수 설정 → 후보 구간 끝값 계산 → 부호 변화 구간 선택",
+      "supportingSequences": [
+        18,
+        40,
+        71
+      ]
+    },
+    {
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "parentProblemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "canonicalLabelKo": "사잇값 정리로 최소 실근 개수 구하기",
+      "definition": "여러 점에서의 함수값 부호를 이용하여 서로 겹치지 않는 구간마다 실근을 보장하고 최소 실근 개수를 구하는 출제 템플릿.",
+      "internalSkeleton": "보조함수 설정 → 표본점 부호표 작성 → 독립 부호변화 구간 수 집계",
+      "supportingSequences": [
+        10,
+        14,
+        22,
+        29,
+        47
+      ]
+    },
+    {
+      "templateKey": "TPL_IVT_SYMMETRY_ROOT_COUNT",
+      "parentProblemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "canonicalLabelKo": "대칭성을 이용한 최소 실근 개수",
+      "definition": "사잇값 정리로 한쪽 구간의 실근을 확보한 뒤 홀함수 등의 대칭성을 이용하여 대응하는 실근을 추가로 보장하는 출제 템플릿.",
+      "internalSkeleton": "한쪽 구간에서 부호변화 근 확보 → 대칭성 적용 → 대칭근과 고정근 집계",
+      "supportingSequences": [
+        52,
+        81
+      ]
+    },
+    {
+      "templateKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+      "parentProblemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "canonicalLabelKo": "특수한 함수값을 이용한 실근 존재",
+      "definition": "함수식의 구조나 끝점 부근의 극한 정보를 이용해 특정 지점의 부호를 결정하고 사잇값 정리로 추가 실근의 존재를 보장하는 출제 템플릿.",
+      "internalSkeleton": "구조적 식변형·국소 극한으로 부호 확보 → 구간 양끝 부호 비교 → 실근 존재 보장",
+      "supportingSequences": [
+        33,
+        62
+      ]
+    },
+    {
+      "templateKey": "TPL_IVT_VALUE_CROSSING",
+      "parentProblemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "canonicalLabelKo": "연속적인 변화에서 특정 값의 통과 횟수",
+      "definition": "시간에 따라 연속적으로 변하는 양이 두 기준값 사이를 오갈 때 사잇값 정리를 이용하여 특정 값을 지나는 최소 횟수를 구하는 출제 템플릿.",
+      "internalSkeleton": "시간 구간 분리 → 각 구간의 양끝값 확인 → 목표값 통과를 구간별로 보장",
+      "supportingSequences": [
+        51
+      ]
+    },
+    {
+      "templateKey": "TPL_CONT_DIFF_GRAPH_JUDGMENT",
+      "parentProblemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "canonicalLabelKo": "그래프에서 연속성과 미분가능성 판정",
+      "definition": "그래프에서 극한 존재·함숫값 일치·뾰족점 여부를 순서대로 확인하여 연속성과 미분가능성을 판정하는 출제 템플릿.",
+      "internalSkeleton": "좌우극한 판정 → 연속성 판정 → 좌우기울기·뾰족점 판정",
+      "supportingSequences": [
+        48
+      ]
+    },
+    {
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "parentProblemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "canonicalLabelKo": "정의로 연속성과 미분가능성 조사",
+      "definition": "연속의 정의와 미분계수의 정의를 직접 사용하여 같은 점에서 연속임과 미분가능 또는 미분불가능을 증명하는 출제 템플릿.",
+      "internalSkeleton": "극한=함숫값 확인 → 차분몫 작성 → 좌우미분계수 비교",
+      "supportingSequences": [
+        50,
+        69
+      ]
+    }
+  ],
+  "reusedTemplates": [
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "구간 끝점과 함수의 최댓값·최솟값",
+      "supportingSequences": [
+        28,
+        46
+      ],
+      "reason": "두 문항 모두 닫힌구간의 함수값 후보를 비교하여 최댓값·최솟값을 구하며, 연속 조건은 보조 조건이다."
+    },
+    {
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "parentProblemTypeKey": "PT_INVERSE_GRAPH",
+      "canonicalLabelKo": "함수와 역함수의 교점·접점",
+      "supportingSequences": [
+        6,
+        78
+      ],
+      "reason": "두 문항 모두 함수와 역함수의 교점 조건을 고정점 또는 순환 관계로 해석하는 기존 ACTIVE 템플릿과 일치한다."
+    },
+    {
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "parentProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "canonicalLabelKo": "조각함수의 치역을 이어 일대일대응 만들기",
+      "supportingSequences": [
+        60
+      ],
+      "reason": "조각함수의 경계 연속과 치역 연결을 이용해 전역 일대일성을 확보하는 기존 ACTIVE 템플릿과 일치한다."
+    }
+  ],
+  "assignment": [
+    {
+      "seq": 1,
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_DISCONTINUITY_POINTS",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 2,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 3,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 4,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 5,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 6,
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "disposition": "REUSE_ACTIVE"
+    },
+    {
+      "seq": 7,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 8,
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 9,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 10,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 11,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_COMPOSITE_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 12,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 13,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 14,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 15,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 16,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_LIMIT_EXISTENCE_FUNCTION_DETERMINE",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 17,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 18,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 19,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 20,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 21,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 22,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 23,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 24,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 25,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 26,
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_DISCONTINUITY_POINTS",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 27,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 28,
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "disposition": "REUSE_ACTIVE"
+    },
+    {
+      "seq": 29,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 30,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_CONDITION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 31,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 32,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 33,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 34,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 35,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 36,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 37,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_DISCONTINUITY",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 38,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_REVERSE_INFERENCE",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 39,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 40,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 41,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 42,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_COMPOSITION_CONDITION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 43,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 44,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ONE_SIDED_CONDITION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 45,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 46,
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "disposition": "REUSE_ACTIVE"
+    },
+    {
+      "seq": 47,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 48,
+      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "templateKey": "TPL_CONT_DIFF_GRAPH_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 49,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 50,
+      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 51,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_VALUE_CROSSING",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 52,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_SYMMETRY_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 53,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 54,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 55,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 56,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 57,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 58,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 59,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 60,
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "disposition": "REUSE_ACTIVE"
+    },
+    {
+      "seq": 61,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 62,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 63,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 64,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 65,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 66,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 67,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 68,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 69,
+      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 70,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 71,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_ROOT_INTERVAL",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 72,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 73,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 74,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 75,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 76,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 77,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 78,
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "disposition": "REUSE_ACTIVE"
+    },
+    {
+      "seq": 79,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 80,
+      "problemTypeKey": "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 81,
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_SYMMETRY_ROOT_COUNT",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 82,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 83,
+      "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 84,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+      "disposition": "NEW_L4_CANDIDATE"
+    },
+    {
+      "seq": 85,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "disposition": "NEW_L4_CANDIDATE"
+    }
+  ],
+  "validation": {
+    "proposedTemplateCount": 25,
+    "reusedActiveTemplateCount": 3,
+    "totalTemplatesUsed": 28,
+    "exactKeyCollisions": [],
+    "assignedCount": 85,
+    "uniqueSequenceCount": 85,
+    "missingSequences": [],
+    "duplicateSequences": [],
+    "parentMismatchCount": 0,
+    "canonicalRegistryMutated": false,
+    "productionJsMutated": false
+  }
+}
