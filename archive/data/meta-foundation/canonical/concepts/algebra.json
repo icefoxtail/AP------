@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.1.0",
+  "shardVersion": "1.2.0",
   "status": "ACTIVE",
-  "conceptCount": 11,
+  "conceptCount": 12,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -598,6 +598,42 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_CUBIC_EQUATION",
+      "canonicalLabelKo": "삼차방정식",
+      "definition": "삼차방정식을 인수분해하거나 근의 관계를 이용해 함수 조건을 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e09332003a1cab6b50c1ce71cf05325fe9685ade8ed688aaf357d8fbcfff14bd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FUNCTIONS_GRAPHS"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FUNCTIONS_GRAPHS",
+          "evidence": [
+            {
+              "evidenceType": "FUNCTIONS_GRAPHS_4_1_SEMANTIC_FREEZE",
+              "basisMainSha": "32ab15331647a85225b59519a2ceda28ed892714",
+              "supportingReviewIndexes": [
+                215
+              ]
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_EQUALITY"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
     }
   ]
 }
