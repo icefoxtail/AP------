@@ -1001,7 +1001,16 @@
   }
 
   function renderExistingPaperCompact(paper, unit) {
-    return `<div class="unit-paper-option"><div><strong>${escapeHtml(paper.title)}</strong><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</small></div><div class="unit-action-buttons"><button type="button" class="unit-btn" onclick="UnitPastExams.printPaper('${unit.key}', ${paper.index}, this)"><i class="fa-solid fa-print" aria-hidden="true"></i>일반 출력</button><button type="button" class="unit-btn primary" onclick="UnitPastExams.assignPaper('${unit.key}', ${paper.index}, this)">학생 출제</button></div></div>`;
+    return `<article class="unit-paper-option">
+      <button type="button" class="unit-paper-open" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})" aria-label="${escapeHtml(paper.title)} 시험지 보기">
+        <span class="unit-ready-number">${String(paper.index).padStart(2, '0')}</span>
+        <span class="unit-ready-info"><strong>${escapeHtml(paper.title)}</strong><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</small></span>
+      </button>
+      <div class="unit-action-buttons unit-paper-actions">
+        <button type="button" class="unit-btn unit-ready-print" onclick="UnitPastExams.printPaper('${unit.key}', ${paper.index}, this)"><i class="fa-solid fa-print" aria-hidden="true"></i>출력</button>
+        <button type="button" class="unit-btn unit-ready-assign" onclick="UnitPastExams.assignPaper('${unit.key}', ${paper.index}, this)">학생 출제</button>
+      </div>
+    </article>`;
   }
 
   function renderSourceStep(unit) {
@@ -1013,7 +1022,7 @@
   function renderConfigStep(unit) {
     const root = document.getElementById('unit-content');
     if (readyShelf()) {
-      root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: "바로 쓰는 문제지", count: unit.count })}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>바로 쓰는 문제지</h2><p>기존 단원별 기출 문제지입니다. 시험지를 확인한 뒤 출력하거나 반·학생에게 출제하세요.</p></div><button class="unit-btn" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div><div class="unit-existing-list">${unit.papers.map(paper => `<button type="button" class="unit-ready-paper" onclick="UnitPastExams.previewExistingPaper('${unit.key}', ${paper.index})"><span class="unit-ready-number">${String(paper.index).padStart(2, '0')}</span><span class="unit-ready-info"><strong>${escapeHtml(paper.title)}</strong><small>${paper.count}문항 · 원본 시험지 ${paper.sourceCount}개</small></span><span class="unit-ready-action">시험지 확인 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></button>`).join('')}</div></div></section>`;
+      root.innerHTML = `<section class="unit-workflow">${renderContextStrip(unit, { preset: "바로 쓰는 문제지", count: unit.count })}<div class="unit-step-panel"><div class="unit-step-heading"><div><h2>바로 쓰는 문제지</h2><p>필요한 문제지를 바로 열고, 출력하거나 학생에게 출제합니다.</p></div><button class="unit-btn" onclick="UnitPastExams.goToStep(1)">단원 변경</button></div><div class="unit-existing-list unit-ready-list">${unit.papers.map(paper => renderExistingPaperCompact(paper, unit)).join('')}</div></div></section>`;
       return;
     }
     const filter = state.filterState;
@@ -1455,7 +1464,7 @@
       const rows = units.map(unit => `<button class="unit-card${unit.count ? '' : ' is-empty'}${state.selectedUnitKey === unit.key ? ' is-active' : ''}" data-unit-key="${unit.key}" aria-pressed="${state.selectedUnitKey === unit.key ? 'true' : 'false'}" ${unit.count ? `onclick="UnitPastExams.renderDetail('${unit.key}')"` : 'disabled'}><span class="unit-card-no">${String(unit.order).padStart(2, '0')}</span><h3>${escapeHtml(unit.name)}</h3><span class="unit-card-meta"><span>${unit.count.toLocaleString()}문항</span><span>${unit.papers.length ? `${unit.papers.length}개 문제지` : '자료 없음'}</span></span></button>`).join('');
       return `<section class="unit-course"><div class="unit-course-head"><h3>${escapeHtml(course)}</h3><span>${count.toLocaleString()}문항</span></div><div class="unit-grid">${rows}</div></section>`;
     }).join('');
-    root.innerHTML = `<section class="unit-catalog"><div class="unit-catalog-head"><div><h2>단원을 선택하세요</h2><p>${readyShelf() ? "학년을 고르면 단원별로 준비된 문제지가 표시됩니다." : "학년과 과목을 고른 뒤 만들 문제지의 단원을 선택합니다."}</p></div><div class="unit-grade-tabs" role="tablist" aria-label="학년 선택">${grades}</div></div>${courses}</section>`;
+    root.innerHTML = `<section class="unit-catalog"><div class="unit-catalog-head"><div><h2>단원을 선택하세요</h2><p>${readyShelf() ? "학년과 단원을 고르면 준비된 문제지를 바로 사용할 수 있습니다." : "학년과 과목을 고른 뒤 만들 문제지의 단원을 선택합니다."}</p></div><div class="unit-grade-tabs" role="tablist" aria-label="학년 선택">${grades}</div></div>${courses}</section>`;
     const requestedUnit = new URLSearchParams(window.location.search).get('unit');
     if (!state.selectedUnitKey && requestedUnit && state.catalog.units.some(unit => unit.key === requestedUnit)) renderDetail(requestedUnit, { noScroll: true, restore: true });
   }
