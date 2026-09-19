@@ -2043,6 +2043,8 @@
     if (state.view === "find")
       for (const [k, v] of Object.entries(state.find))
         if (v) url.searchParams.set(k, v);
+    if (state.view === "home" && state.find.grade)
+      url.searchParams.set("grade", state.find.grade);
     history.pushState(null, "", url);
   }
   function newDraft() {
@@ -2163,6 +2165,11 @@
           state.catalog.taxonomy,
         );
         state.page = 0;
+        const homeUrl = new URL(location.href);
+        homeUrl.search = "";
+        homeUrl.searchParams.set("view", "home");
+        homeUrl.searchParams.set("grade", state.find.grade);
+        history.replaceState(null, "", homeUrl);
         render();
       } else if (a === "find-grade") {
         state.find = C.reconcileFinderFilters(
