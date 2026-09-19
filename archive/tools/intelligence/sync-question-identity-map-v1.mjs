@@ -11,12 +11,38 @@ const repoRoot = path.resolve(archiveDir, '..');
 const examsDir = path.join(archiveDir, 'exams');
 const dbPath = path.join(archiveDir, 'db.js');
 const identityPath = path.join(archiveDir, 'data', 'question_identity_map.json');
+const examMetaRoot = path.join(archiveDir, 'data', 'exam-meta-source');
 
 const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 const normalizeFile = value => String(value || '').normalize('NFC').replace(/\\/g, '/').replace(/^exams\//, '').replace(/^\/+/, '').trim();
 const sourceFingerprint = q => sha256(JSON.stringify({content:q?.content??null,choices:Array.isArray(q?.choices)?q.choices:null,answer:q?.answer??null,solution:q?.solution??null,image:q?.image??null}));
 const contentFingerprint = q => sha256(JSON.stringify({content:q?.content??null,choices:Array.isArray(q?.choices)?q.choices:null,image:q?.image??null}));
 const ordinalUid = (file, ordinal) => 'qid_v1_' + sha256(normalizeFile(file) + '#' + Number(ordinal));
+
+function walkMetaFiles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walkMetaFiles(full));
+    else if (entry.isFile() && entry.name.endsWith('.meta.json') && entry.name !== 'exam-meta-source.schema.json') out.push(full);
+  }
+  return out;
+}
+
+function managedMetaSourceFiles() {
+  const files = new Set();
+  for (const file of walkMetaFiles(examMetaRoot)) {
+    try {
+      const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+      const sourceFile = normalizeFile(doc.sourceArchiveFile);
+      if (sourceFile) files.add(sourceFile);
+    } catch {
+      // ingest-exam-meta-source.mjs reports the structural error later.
+    }
+  }
+  return files;
+}
 
 function runJs(file, code) {
   const ctx = { window:{}, console:{log(){},warn(){},error(){}} };
@@ -68,20 +94,25 @@ function main(){
   const existingFiles=new Set(records.map(r=>r.sourceArchiveFile));
   const usedUids=new Set(records.map(r=>r.questionUid));
   let newFiles=0,newRecords=0,updatedFingerprints=0;
-  const newSourceFiles=[];
+  const newSourceFiles=[], unmanagedMissingFiles=[];
+  const metaManagedFiles = managedMetaSourceFiles();
 
   for(const sourceFile of readDbFiles()){
     const full=path.join(examsDir,sourceFile);
     if(!fs.existsSync(full)) throw new Error('db source missing: '+sourceFile);
     const questions=runJs(full,fs.readFileSync(full,'utf8'));
     const prior=records.filter(r=>r.sourceArchiveFile===sourceFile);
+    if(!prior.length && !metaManagedFiles.has(sourceFile)) {
+      unmanagedMissingFiles.push(sourceFile);
+      continue;
+    }
     if(prior.length && prior.length!==questions.length){
       throw new Error('existing source cardinality changed; run migrate-question-identity-map-v1.mjs: '+sourceFile+' '+prior.length+' -> '+questions.length);
     }
     if(!prior.length){ newFiles += 1; newSourceFiles.push(sourceFile); }
     for(let i=0;i<questions.length;i++){
       const ordinal=i+1, q=questions[i], key=sourceFile+'#'+ordinal;
-      const sf=sourceFingerprint(q), cf=contentFingerprint(q), qno=String(q?.id ?? '');
+      const sf=sourceFingerprint(q), cf=contentFingerprint(q), qno=(q?.id ?? '');
       const old=bySourceOrdinal.get(key);
       if(old){
         if(old.contentFingerprint && old.contentFingerprint!==cf){
@@ -89,7 +120,7 @@ function main(){
         }
         if(old.sourceFingerprint!==sf || old.sourceQuestionNo!==qno || old.contentFingerprint!==cf){
           old.sourceFingerprint=sf; old.contentFingerprint=cf; old.sourceQuestionNo=qno;
-          old.legacyQKey=sourceFile+'_'+qno;
+          old.legacyQKey=sourceFile+'_'+String(qno);
           old.legacyOrdinalQuestionUid=old.legacyOrdinalQuestionUid || ordinalUid(sourceFile,ordinal);
           updatedFingerprints += 1;
         }
@@ -99,7 +130,7 @@ function main(){
       const uid=ordinalUid(sourceFile,ordinal);
       if(usedUids.has(uid)) throw new Error('questionUid collision: '+uid);
       usedUids.add(uid);
-      const row={questionUid:uid,legacyOrdinalQuestionUid:uid,legacyQKey:sourceFile+'_'+qno,sourceArchiveFile:sourceFile,sourceOrdinal:ordinal,sourceQuestionNo:qno,sourceFingerprint:sf,contentFingerprint:cf};
+      const row={questionUid:uid,legacyOrdinalQuestionUid:uid,legacyQKey:sourceFile+'_'+String(qno),sourceArchiveFile:sourceFile,sourceOrdinal:ordinal,sourceQuestionNo:qno,sourceFingerprint:sf,contentFingerprint:cf};
       records.push(row); bySourceOrdinal.set(key,row); newRecords += 1;
     }
   }
@@ -110,17 +141,17 @@ function main(){
   next.records=records;
   next.lookup=lookup;
   next.stats={...(current.stats||{}),examFileCount:new Set(records.map(r=>r.sourceArchiveFile)).size,sourceQuestionCount:records.length,uniqueQuestionUidCount:new Set(records.map(r=>r.questionUid)).size,duplicateQuestionUidCount:records.length-new Set(records.map(r=>r.questionUid)).size,failures:0};
-  next.incrementalSync={schemaVersion:'question-identity-incremental-sync-v1',sourceCommit:execFileSync('git',['-C',repoRoot,'rev-parse','HEAD']).toString('utf8').trim(),newFiles,newRecords,updatedFingerprints,newSourceFiles};
+  next.incrementalSync={schemaVersion:'question-identity-incremental-sync-v1',sourceCommit:execFileSync('git',['-C',repoRoot,'rev-parse','HEAD']).toString('utf8').trim(),newFiles,newRecords,updatedFingerprints,newSourceFiles,unmanagedMissingFiles};
   next.generatedAt=new Date().toISOString();
   delete next.identityDigest;
   const stable={...next}; delete stable.generatedAt;
   next.identityDigest=sha256(JSON.stringify(stable));
 
   if(JSON.stringify(next.records)===JSON.stringify(current.records||[]) && newFiles===0 && updatedFingerprints===0){
-    console.log(JSON.stringify({status:'NO_CHANGE',records:records.length,newFiles:0,newRecords:0,updatedFingerprints:0,newSourceFiles:current.incrementalSync?.newSourceFiles||[]},null,2));
+    console.log(JSON.stringify({status:'NO_CHANGE',records:records.length,newFiles:0,newRecords:0,updatedFingerprints:0,newSourceFiles:[],unmanagedMissingFiles},null,2));
     return;
   }
   fs.writeFileSync(identityPath,JSON.stringify(next,null,2)+'\n','utf8');
-  console.log(JSON.stringify({status:'UPDATED',records:records.length,newFiles,newRecords,updatedFingerprints,newSourceFiles,identityDigest:next.identityDigest},null,2));
+  console.log(JSON.stringify({status:'UPDATED',records:records.length,newFiles,newRecords,updatedFingerprints,newSourceFiles,unmanagedMissingFiles,identityDigest:next.identityDigest},null,2));
 }
 main();
