@@ -327,7 +327,7 @@ function buildMetadata() {
             identityMap: sha256(identityRaw),
             completeClassification: sha256(classificationRaw),
             tagMaster: sha256(fs.readFileSync(tagMasterPath, 'utf8')),
-            examMetaOverrides: fs.existsSync(examMetaOverridePath) ? sha256(fs.readFileSync(examMetaOverridePath, 'utf8')) : ''
+            examMetaOverrides: fs.existsSync(examMetaOverridePath) ? (JSON.parse(fs.readFileSync(examMetaOverridePath, 'utf8')).digest || sha256(fs.readFileSync(examMetaOverridePath, 'utf8'))) : ''
         },
         canonicalSubUnitLabels,
         consistency: {
