@@ -1,6 +1,7 @@
 # rules source pack manifest
 
 created: 2026-09-19T09:21:00+09:00
+updated: 2026-09-20
 scope: current operational rules under `docs/rules/` excluding `05_DESIGN/` and `90_ARCHIVE/`
 excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical rule versions under `90_ARCHIVE/`
 
@@ -8,7 +9,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 12252 bytes | sha256 4f3a21f67bd25e4e7efc377f34befbb7435932e44772dac43adfaecb0ae12c59
+- 00_RULES_INDEX.md | 13129 bytes | sha256 c987d307b1457d1f38217cbea18e091ae4b9a11d04edc471c44afde9c2972afc
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 15913 bytes | sha256 f09fa22faa57ebdf5d4103384b23352320048d9f8d431db944e76e64ccbf2385
 - 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 41036 bytes | sha256 1905ef435962e2eb080a08ef7f18a0c18b005e1321aa60ef16abda04e5b55151
@@ -16,6 +17,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 93995 bytes | sha256 63fda56d595807e517047aafce02901d114c04e1986193a2c86121458fa37291
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37263 bytes | sha256 507b5de4838abf310dec40e66ab1036e4c968408b436a8e4648db6dd2c186f63
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
+- 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17457 bytes | sha256 690f97387494b77ec24d1e42662a86df863df58e1ba7863b63fc1a3500158926
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 129764 bytes | sha256 b31e797eb60a3d998314b386926cf8af715f8cea43631190ff27fc4164eea496
 - 02_PIPELINES/문제해설추출.md | 27787 bytes | sha256 48311d92f4ad2cf72749a1b9c940f3bb8afca2a22198a6a33fcef91791a59049
