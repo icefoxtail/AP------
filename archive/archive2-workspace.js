@@ -396,24 +396,16 @@
     }
     const semanticGroups = new Map();
     for (const unit of units.values()) {
-      const children = unique(
-        unit.rows.map((r) => `${scopeText(r.L3)}|${scopeText(r.L4)}`),
-      ).sort();
-      const key = [scopeText(unit.L1), scopeText(unit.L2), ...children].join(
-        "|",
-      );
+      const semanticKey = [scopeText(unit.L1), scopeText(unit.L2)].join("|");
+      const key = state.filters.curriculumKey
+        ? [unit.curriculumKey, unit.courseKey, semanticKey].join("|")
+        : semanticKey;
       if (!semanticGroups.has(key)) semanticGroups.set(key, []);
-      semanticGroups.get(key).push({ ...unit, children });
+      semanticGroups.get(key).push(unit);
     }
     const groups = [];
     for (const candidates of semanticGroups.values()) {
-      const curricula = new Set(candidates.map((unit) => unit.curriculumKey));
-      const mergeable =
-        !state.filters.curriculumKey &&
-        curricula.has("2015") &&
-        curricula.has("2022") &&
-        candidates.length === 2;
-      if (mergeable) {
+      if (!state.filters.curriculumKey && candidates.length > 1) {
         const first = candidates[0];
         groups.push({
           curriculumKey: "all",
