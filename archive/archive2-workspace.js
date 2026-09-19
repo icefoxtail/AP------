@@ -75,6 +75,7 @@
     byUid: new Map(),
     busy: false,
     view: "home",
+    recentTab: "drafts",
     page: 0,
     find: { grade: "고1" },
     sources: [],
@@ -1252,12 +1253,60 @@
     ${renderMobileActions()}`;
   }
   function renderRecent() {
-    const list = drafts();
-    return `<div class="intro"><div><h1>최근 출제 · 작업</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div><section class="panel"><h2>최근 출제</h2><label>반<select id="recent-class">${options(
-      classRows.map((c) => ({ value: c.id, label: c.name })),
-      state.recentClassId,
-      "반 선택",
-    )}</select></label><div id="recent-assignments">${recentAssignmentMarkup()}</div></section><section class="panel"><h2>만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="recent-row"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</section>`;
+    const list = drafts(),
+      draftsActive = state.recentTab !== "assignments";
+    const paperThumb = (title, count) =>
+      `<span class="classic-mine-paper" aria-hidden="true"><span>${esc(title)}</span><small>${Number(count || 0)}문항</small><i></i><i></i><b></b></span>`;
+
+    const draftRows = list.length
+      ? list.map((draft, i) => {
+          const title = draft.header?.title || draft.title || "문제지",
+            count = draft.selected?.length || 0,
+            updated = draft.updatedAt ? new Date(draft.updatedAt).toLocaleString("ko-KR", { month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit" }) : "";
+          return `<article class="classic-mine-row">
+            <button class="classic-mine-thumb" data-action="restore" data-draft="${i}" aria-label="${esc(title)} 열기">${paperThumb(title,count)}</button>
+            <div class="classic-mine-main">
+              <button class="classic-mine-title" data-action="restore" data-draft="${i}">${esc(title)}</button>
+              <p>${count}문항 · ${draft.round || 1}차${updated ? " · " + esc(updated) : ""}</p>
+            </div>
+            <div class="classic-mine-actions">
+              ${button("restore", "열기", `data-draft="${i}" class="small"`)}
+              <details class="classic-mine-more"><summary aria-label="더보기">···</summary><div>${button("delete-draft", "삭제", `data-draft="${i}" class="danger small"`)}</div></details>
+            </div>
+          </article>`;
+        }).join("")
+      : '<div class="classic-mine-empty"><strong>만든 시험지가 없습니다</strong><span>문제지 만들기에서 새 시험지를 만들 수 있습니다.</span></div>';
+
+    const assignmentRows = (state.recentAssignments || []).length
+      ? state.recentAssignments.map((assignment) => `<article class="classic-mine-row">
+          <div class="classic-mine-thumb classic-mine-thumb-static">${paperThumb(assignment.exam_title,assignment.question_count)}</div>
+          <div class="classic-mine-main">
+            <strong class="classic-mine-title-static">${esc(assignment.exam_title)}</strong>
+            <p>${esc(assignment.exam_date)} · ${assignment.question_count}문항 · ${assignment.pdf_status === "ready" ? "PDF 준비 완료" : "출제 저장됨"}</p>
+          </div>
+          <div class="classic-mine-actions">${button("assignment-status", "열기", `data-assignment="${assignment.id}" class="small"`)}</div>
+        </article>`).join("")
+      : '<div class="classic-mine-empty"><strong>출제한 시험지가 없습니다</strong><span>반을 선택하면 기존 출제 내역을 확인할 수 있습니다.</span></div>';
+
+    return `<div class="intro classic-mine-intro">
+      <div><h1>내 시험지</h1><p class="muted">만든 시험지와 학생에게 출제한 시험지.</p></div>
+      <div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "불러오기", 'class="small"')}</div>
+    </div>
+    <div class="classic-mine-tabs" role="tablist">
+      <button data-action="recent-tab" data-tab="drafts" role="tab" aria-selected="${draftsActive}" class="${draftsActive ? "active" : ""}">만든 시험지</button>
+      <button data-action="recent-tab" data-tab="assignments" role="tab" aria-selected="${!draftsActive}" class="${!draftsActive ? "active" : ""}">학생 출제</button>
+    </div>
+    ${draftsActive
+      ? `<section class="classic-mine-list">${draftRows}</section>`
+      : `<section class="classic-mine-assignments">
+          <div class="classic-mine-classbar"><label>반<select id="recent-class">${options(
+            classRows.map((c) => ({ value: c.id, label: c.name })),
+            state.recentClassId,
+            "반 선택",
+          )}</select></label></div>
+          <div class="classic-mine-list">${assignmentRows}</div>
+        </section>`
+    }`;
   }
   function recentAssignmentMarkup() {
     return (
@@ -1973,6 +2022,12 @@
         return;
       }
       const a = b.dataset.action;
+      if (a === "recent-tab") {
+        state.recentTab = b.dataset.tab === "assignments" ? "assignments" : "drafts";
+        if (state.recentTab === "assignments" && !classRows.length) await loadRecent();
+        else render();
+        return;
+      }
       if (a === "assignment-status") {
         await assignmentStatus(b.dataset.assignment);
         return;

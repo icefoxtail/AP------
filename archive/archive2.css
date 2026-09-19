@@ -2510,3 +2510,285 @@ body[data-archive-view="home"] #status:not(.error) {
     order: 1;
   }
 }
+
+
+/* =========================================================
+   Archive 2.0 Classic v7 — My papers
+   ========================================================= */
+.classic-mine-intro {
+  margin-bottom: 14px;
+  align-items: flex-end;
+}
+.classic-mine-intro h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+}
+.classic-mine-intro p {
+  margin-top: 5px;
+  color: var(--classic-ink-3);
+  font-size: 13px;
+}
+.classic-mine-tabs {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--classic-line);
+}
+.classic-mine-tabs button {
+  min-height: 40px;
+  padding: 0 2px 10px;
+  border: 0;
+  border-radius: 0 !important;
+  background: transparent;
+  color: var(--classic-ink-3);
+  font-size: 13.5px;
+  font-weight: 700;
+}
+.classic-mine-tabs button.active {
+  color: var(--classic-ink);
+  box-shadow: inset 0 -2px 0 var(--classic-brand);
+}
+.classic-mine-list {
+  overflow: hidden;
+  border: 1px solid var(--classic-line);
+  border-radius: var(--classic-r-l);
+  background: #fff;
+  box-shadow: var(--classic-e-1);
+}
+.classic-mine-row {
+  min-height: 76px;
+  padding: 9px 12px;
+  display: grid;
+  grid-template-columns: 52px minmax(0,1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid var(--classic-line-soft);
+  background: #fff;
+}
+.classic-mine-row:last-child {
+  border-bottom: 0;
+}
+.classic-mine-row:hover {
+  background: var(--classic-paper-2);
+}
+.classic-mine-thumb {
+  width: 52px;
+  height: 58px;
+  min-height: 58px !important;
+  padding: 0 !important;
+  display: grid;
+  place-items: center;
+  border: 0 !important;
+  background: transparent !important;
+}
+.classic-mine-thumb-static {
+  cursor: default;
+}
+.classic-mine-paper {
+  width: 38px;
+  height: 52px;
+  padding: 5px 4px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--classic-line);
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: var(--classic-e-1);
+}
+.classic-mine-paper > span {
+  max-height: 11px;
+  overflow: hidden;
+  font-size: 4.8px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-align: center;
+}
+.classic-mine-paper > small {
+  margin: 2px 0 3px;
+  color: #9aa3af;
+  font-size: 4.5px;
+  text-align: center;
+}
+.classic-mine-paper > i {
+  height: 2px;
+  margin: 2px 0;
+  border-radius: 1px;
+  background: #dbe0e6;
+}
+.classic-mine-paper > i:nth-of-type(2) {
+  width: 68%;
+}
+.classic-mine-paper > b {
+  flex: 1;
+  margin-top: 3px;
+  border: 1px solid #e7eaee;
+}
+.classic-mine-main {
+  min-width: 0;
+}
+.classic-mine-title {
+  max-width: 100%;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  overflow: hidden;
+  color: var(--classic-ink);
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.classic-mine-title:hover {
+  color: var(--classic-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.classic-mine-title-static {
+  display: block;
+  overflow: hidden;
+  color: var(--classic-ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.classic-mine-main p {
+  margin: 4px 0 0;
+  color: var(--classic-ink-3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.classic-mine-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.classic-mine-actions > button {
+  min-height: 36px;
+}
+.classic-mine-more {
+  position: relative;
+}
+.classic-mine-more > summary {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--classic-line);
+  border-radius: var(--classic-r-m);
+  background: #fff;
+  color: var(--classic-ink-2);
+  cursor: pointer;
+  list-style: none;
+}
+.classic-mine-more > summary::-webkit-details-marker {
+  display: none;
+}
+.classic-mine-more > div {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  z-index: 8;
+  min-width: 90px;
+  padding: 5px;
+  border: 1px solid var(--classic-line);
+  border-radius: var(--classic-r-m);
+  background: #fff;
+  box-shadow: var(--classic-e-2);
+}
+.classic-mine-more > div button {
+  width: 100%;
+  min-height: 36px;
+}
+.classic-mine-classbar {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+.classic-mine-classbar label {
+  width: 220px;
+}
+.classic-mine-classbar select {
+  min-height: 38px;
+}
+.classic-mine-empty {
+  min-height: 150px;
+  padding: 26px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 5px;
+  color: var(--classic-ink-3);
+  text-align: center;
+}
+.classic-mine-empty strong {
+  color: var(--classic-ink);
+  font-size: 14px;
+}
+.classic-mine-empty span {
+  font-size: 12.5px;
+}
+
+@media (max-width: 900px) {
+  .classic-mine-intro {
+    display: flex;
+    align-items: center;
+  }
+  .classic-mine-intro h1 {
+    font-size: 21px;
+  }
+  .classic-mine-intro p {
+    font-size: 12.5px;
+  }
+  .classic-mine-intro .actions {
+    margin: 0 0 0 auto;
+  }
+  .classic-mine-intro .actions button:not(.primary) {
+    display: none;
+  }
+  .classic-mine-intro .actions .primary {
+    min-height: 40px;
+    padding-inline: 11px;
+  }
+  .classic-mine-tabs {
+    margin-bottom: 10px;
+  }
+  .classic-mine-tabs button {
+    min-height: 44px;
+    flex: 1;
+  }
+  .classic-mine-row {
+    grid-template-columns: 48px minmax(0,1fr) auto;
+    min-height: 72px;
+    gap: 10px;
+    padding: 9px 10px;
+  }
+  .classic-mine-thumb {
+    width: 48px;
+    height: 56px;
+    min-height: 56px !important;
+  }
+  .classic-mine-main p {
+    font-size: 11.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .classic-mine-actions > button {
+    min-height: 40px;
+    padding-inline: 10px;
+  }
+  .classic-mine-more {
+    display: none;
+  }
+  .classic-mine-classbar {
+    justify-content: stretch;
+  }
+  .classic-mine-classbar label {
+    width: 100%;
+  }
+}
