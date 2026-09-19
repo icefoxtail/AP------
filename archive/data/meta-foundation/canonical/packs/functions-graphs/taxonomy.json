@@ -1,0 +1,3878 @@
+{
+  "schemaVersion": "functions-graphs-taxonomy-pack-v1",
+  "status": "ACTIVE",
+  "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
+  "semanticRegistrySharedAcrossCurricula": true,
+  "problemTypeCount": 29,
+  "templateCount": 100,
+  "problemTypes": [
+    {
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "canonicalLabelKo": "합성함수의 그래프와 치역",
+      "definition": "합성함수의 그래프·치역·교점·넓이·최댓값과 최솟값을 분석하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_COMPOSITE_EXTREMUM",
+        "PT_COMPOSITE_GRAPH_ANALYSIS",
+        "PT_COMPOSITION_RANGE"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_f731234ab6ab4361b550360d85087c2145dd64fdf3651e3676db8b57bc346053",
+        "qid_v1_bd85bded2f7bc81f43a8a0b2fcbf5fc2d8e373484f42dda4810f9405b8f812c8",
+        "qid_v1_544d54009022146d3c5d623a2927a3dc396e6a6284e3f6dcb49dffd6f981c6ad",
+        "qid_v1_55e152134d44354b78b3650a1fee0045a708d14ec25b11ccc57307565a9290f6",
+        "qid_v1_96e0df1cec83278cbb4ab8a02c968fa89bc568b08445070b498e88ab493de545",
+        "qid_v1_c6f02529625c32e858d2db7fee94bd37a83cf9bc917be582a61e69d88870e37e",
+        "qid_v1_d3cbc2f3766036e010ef1f92fe0df96631fde9ceb4d5ca7dfbed428ece5d74c0",
+        "qid_v1_4e5822b96a047fe4ba5f8573a4064e6ead9a33c93dd82c3ccd66fd939a0f857a",
+        "qid_v1_691a6152f9ac6386910d9c4599141c3387dfa75b8a509507d107bddd813e4589",
+        "qid_v1_c833a22742c99df9c309f1f712a5ab18fca3124505f42c182a98437f303f36f0",
+        "qid_v1_491505a6336c8222f00020f8e7a7d1c161a48485d78200fa013bc6c02d9f5720",
+        "qid_v1_d4f1a92208816b516820f926746e23312693f501e9c00c8dcff17ea60bb8ed55"
+      ],
+      "internalDescription": "합성함수의 그래프·치역·교점·넓이·최댓값과 최솟값을 분석하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_COMPOSITION_EQUATION",
+      "canonicalLabelKo": "합성함수 방정식과 부등식",
+      "definition": "합성함수가 포함된 방정식·부등식·실근 개수 조건을 해결하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_COMPOSITION_EQUATION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 13,
+      "supportingQuestionUids": [
+        "qid_v1_0714a9edf362151e8d5c29ec0de4f66e202aac879d090774c666bc3b7bbdcebb",
+        "qid_v1_68bfa07407ffb9470a91599365a90298a9dccd4a3969c5245e4834a0358f1b6e",
+        "qid_v1_1ee3e99ff05c5d3bb883fdc1f867bff21192c5e5558c9957906ca193f06c23cb",
+        "qid_v1_505ed0f0bc35e83f02547181f477b6f1591781f0cb718627528187f03500f8b6",
+        "qid_v1_d5d93457bc55cc5f0a7245683b9a81ec03e7991354c47db7c99e905d0782b6b7",
+        "qid_v1_9702b8c76fa41553cfa1e9036f84b39f8c823ccd91ca24885ac89b63ed38f52e",
+        "qid_v1_7f6ac005cb0c482fba6c7df08ac893b3aa1dbb4165e773002add80468170b94d",
+        "qid_v1_4a4705bf71e4073073148726aa93c733f79f40e2aa7413eda8fedf5909c8a8e3",
+        "qid_v1_c58b3816861b22d76d415a19959cde8e132e39e7124a6cf0f0a117d6996dac91",
+        "qid_v1_39dbdd45e0f1e12414fcd5e4f8c155c2db1411928f225ae44c29b9ba3b5fdb5d",
+        "qid_v1_3e81764e9e14546718893916aa0ccd60fc4da90f86645c8a207b56a819bc2b88",
+        "qid_v1_fa3bbbc191e85b2ef7c046943b97fcac4e16a526a9956f782017c65a5a456baf",
+        "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+      ],
+      "internalDescription": "합성함수가 포함된 방정식·부등식·실근 개수 조건을 해결하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "canonicalLabelKo": "합성함수의 계산",
+      "definition": "합성 순서를 따라 합성함수의 값 또는 역함수가 포함된 합성값을 계산하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_COMPOSITION_EVALUATION",
+        "PT_COMPOSITION_INVERSE_EVALUATION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 29,
+      "supportingQuestionUids": [
+        "qid_v1_257441a75c1fc9810d0b30e0baac8a44195fddddb32e0d6ec01c6c4d9f9677c6",
+        "qid_v1_b41f78207b5d42581b5b81bce5dca943d43e821682e9ccc4be36ae5eb3c39fab",
+        "qid_v1_bf695cd7b5535f4b5fd0ad4e0a238d268787b3e624b66acd4940641dea04eaa4",
+        "qid_v1_7a6736fd913fb5da73bb010024d3fb272dbbde78aae0f4e3e8c054aea1009100",
+        "qid_v1_545698b27c510148244e5b02695d11caf760131e8812cfada16f7e904d599a0c",
+        "qid_v1_20e737887dba93f0c9ae5fd90e364588d3c766dd297fd6bce8e651dc691b4778",
+        "qid_v1_f119f4d90e9329f0703a2ffda38d6e0c79edb5e8cfe8f36c1c323b8bd2aa0be0",
+        "qid_v1_d34c8250ad9178a8315778eca1b00556e5767a8b47ad6d9c8f1d349e1ca702f0",
+        "qid_v1_db28f55845c24a2a882107fe5ffb9c15c5c5398a6fda2f095bff8c8e4ac549be",
+        "qid_v1_9c44778f664b9a3724c3eec3d442acd555bddbd2efb0f849af414e589ea6668a",
+        "qid_v1_82e13ac0eebf8e02aa33f9baa575b79ed6acb22c4506300f4a395d189ba82894",
+        "qid_v1_a30a1a31861336e12b1b5399cb8c795bc7002a394b09e1cdc14a4c0266cdeff4",
+        "qid_v1_b7a7f1b8820e2b28da71cec1b1be17399e147cc104b24a63c2e1c67edb4f6185",
+        "qid_v1_e4f8695e8d36958ddac15c243fd14a5a784357a6f1cabc3f6b6d8e558473c593",
+        "qid_v1_b426aefed8d368dc579c2e752c14328e48c52ba709b063956b2c86d5272f86cf",
+        "qid_v1_eff677bb7030499f7fdc355b04599b299d96da63f22278014d899077c7dc36bb",
+        "qid_v1_a5fd99893d064421a3ef774f1080085ca7c4c1389242f8183a41941e75b09c41",
+        "qid_v1_e0e6d80efe0c4212e1e81cd45f6790ffcb4ca037f1e2db94e634a18574b75241",
+        "qid_v1_13e8446a41ade1947e1cfdcafdb45d3eff9b10e4cfb3a10e6053eeabbeb960b4",
+        "qid_v1_3cf5838640cef4ffc32ac30c3af9462328c5f653fc6f039231b4f0120b4ecdb5",
+        "qid_v1_5ca781fccba3211868389be5a95ce645875edffb1ee8f4e63d55e7a832a14492",
+        "qid_v1_a282b30124dbb83e2413fc25c0bd825a89544e42c89454261ff323dbb0573022",
+        "qid_v1_54662cf739eec0879fa5192e1d5d24a2628cdef08d3dadd4d9545bafead27f8f",
+        "qid_v1_0237b4a53870f00c9a013af45e35dd7971ba5f565cd01b3033b78bfa6b26c4fe",
+        "qid_v1_7726ff0240eebe3f169a7d561d14e55c39e39baa4208229899de21c5cba95753",
+        "qid_v1_01eeaa3d642bb7d576d6b811d6dae0a1c47f1be0ffa754453aeda7f53e47fb9b",
+        "qid_v1_dc6b77d19163ba2eacf184a48ef6eb3290cec51a6a68711d5df7c8c79c778621",
+        "qid_v1_2888ac2eddff22a7488756f79981879e101d59efd744e6efd820f36e2cb7d3e7",
+        "qid_v1_935c1206ab9ee2ebeaaf5d49572619a33844dc487b0b96e29b4c364508c45f37"
+      ],
+      "internalDescription": "합성 순서를 따라 합성함수의 값 또는 역함수가 포함된 합성값을 계산하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "canonicalLabelKo": "합성함수의 성질",
+      "definition": "합성함수의 교환성·닫힘 등 합성 자체의 대수적 성질을 분석하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_COMPOSITION_STRUCTURE"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_745f4e2587373a6a054e0d0d0bf9c66bd61ab5d59ccb7cb2675826fb06002510",
+        "qid_v1_b91e87535b96dd5a83dbfab1985a01d71deaac2ff8b94e051c4b0c92e5a4c1f9",
+        "qid_v1_00d574b953293978a61d8e0481857da0ca79aafe4c65fbb161ffa760ec4eb2da",
+        "qid_v1_e9ff4cd9e4bf67d0e6b8cde3ded63f69fd699f9c6dec4fa42a683a3093f45dae",
+        "qid_v1_f0656cf418ef786bc3ecc16af6f758ba7988df917f627451e612c37b726b1004",
+        "qid_v1_e42581fa364eeddc58d9d2651f4f662de605c7df35bcf4b296f08b5e772b7436"
+      ],
+      "internalDescription": "합성함수의 교환성·닫힘 등 합성 자체의 대수적 성질을 분석하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "canonicalLabelKo": "정의역·공역·치역",
+      "definition": "정의역·공역·치역을 판정하거나, 치역이 공역 전체와 일치하기 위한 조건을 다루는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTION_RANGE_ANALYSIS",
+        "PT_SURJECTIVITY_CONDITION",
+        "domain_range"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 17,
+      "supportingQuestionUids": [
+        "qid_v1_08ffe434629c584cb3411ba95c12af2bd97b63ada2d2ca3a191025dad9f244c9",
+        "qid_v1_03e2d1b84d101dd85718f19b06a9b38ee6cd54fe2e5c740e98a982f41694d6a8",
+        "qid_v1_076d9c111bf1b45c3cc590a4c3f974fb5f2f100653d41c4587b1d0cc9ff9379f",
+        "qid_v1_e23435de0af12e0e4c26581fd91fed4b85ff7a4c88f16a82d8f5fa25f6842deb",
+        "qid_v1_55c4887a72d930eda373bcf7802391960c29b4a69f6f581d40795706daa094c2",
+        "qid_v1_e4e80bb89efff75859ad219a929aa63f6de33efcf57a3af1c0d85e2767229ace",
+        "qid_v1_ae2db8a0d398c4468228e75c23b6da56da33538e5d5a0a8236949db66dbcabd1",
+        "qid_v1_344ea01b2ba10863d1f0f9fda681a8737455ff8738b86caa58c7b0493ee4db4c",
+        "qid_v1_77c98a83785ce9e3baf04cc9cc2d9a1315e522ac115b21b92334eba35fc9ce87",
+        "qid_v1_abd53e89a1baf01e3e79fc5863cd22a068303ace738847cb09ea4b5cac2fecc7",
+        "qid_v1_e88a7e61d616cf5448d4424c133991c4d51874e030b1037abae3a5f64a980182",
+        "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78",
+        "qid_v1_a7e550bab48ae95168128caa38c26192fe4162e177fb713117343b097d801354",
+        "qid_v1_6f76d81b6acb28421ef2a6eb282a7f878e797e3d15a525bc7bba8f7b1951c9b3",
+        "qid_v1_fc867be63c41606401b45c304421ff35cb086b5e27f9de90c909dd59530eb1e2",
+        "qid_v1_d6469699a236d942ae1318ed7b1f24aeff0e5c9dd6715b4893f99e4011a7f863",
+        "qid_v1_438c05bb435a0b7b15f8fa7e6cb4daa78df2c62d8075f49b50311cbdc1ba3c6f"
+      ],
+      "internalDescription": "정의역·공역·치역을 판정하거나, 치역이 공역 전체와 일치하기 위한 조건을 다루는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FINITE_BIJECTION",
+      "canonicalLabelKo": "유한집합의 일대일대응",
+      "definition": "유한집합에서 하나 이상의 일대일대응을 조건에 따라 완성하고 함수값을 추론하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_BIJECTION_FINITE_CONSTRAINT"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 16,
+      "supportingQuestionUids": [
+        "qid_v1_c43d562f959d0be43b94961c4b3b8b69484a3fdaa2b87e53bb7e2a3bed5f371b",
+        "qid_v1_64b6aaf43edc7d912b684d754d29fd28c7f769489b6948502eb8ef83d603285f",
+        "qid_v1_f29e619b9b3893f55bb0139ccc5d1777e3f7da766c0af10560c2b1b2554f6a71",
+        "qid_v1_31d9d86ab8993be1b43826b2b87c07ea48456188fc6bbe7e2f0a6e77c0b24200",
+        "qid_v1_88656883a81321daef5a931d913e88b240adf1049450cd40912ca21b9f6fa528",
+        "qid_v1_553149c07e65926ff1b13503f8fe5bafa868890f9dab9402c8599cfa3041c68c",
+        "qid_v1_75c5f4e9b3d5e66f09f12410e6cb06463d9f132aa7bca1e4e67895199824b9fa",
+        "qid_v1_bae9870ec008fd67605540bca3a1690d9eafe7e92c81c4de207ce9020ef2157e",
+        "qid_v1_60fd48203c02382fa9c4850400c98956c11a5c1234813bf21cca147b16b99869",
+        "qid_v1_258c6788d267b320845c1e21174eec6c9449004265b50d9c6cdb9b5a7169c57c",
+        "qid_v1_056f81a6b738d90ec9a933b964c30ef4395092a29d351c0de8557d8ceab22356",
+        "qid_v1_8bbe3131a614f8a2375233bffc4b2ef949d6f73e082a19a690ed283f1156509f",
+        "qid_v1_ff9763d664750ea5d2f8bf553ef8e5f91e8144f0871df9945d4ab3a120df41cc",
+        "qid_v1_f32ddd4a67fa78e717e95e83f4764cfe4519407aba33d96ce8e1a70b295f18b7",
+        "qid_v1_410e608ca681f4d93aae50be9f26695087425177d08e2f806ab48b3ae5d9653f",
+        "qid_v1_58d0ace91f7b508bc009fe65ced90ee29a30087180a4777f09a5b618e88b237e"
+      ],
+      "internalDescription": "유한집합에서 하나 이상의 일대일대응을 조건에 따라 완성하고 함수값을 추론하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "canonicalLabelKo": "함수방정식",
+      "definition": "모든 입력에 대해 성립하는 함수 관계식에 값을 대입·치환하여 새로운 관계나 함수값을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTIONAL_EQUATION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_9afbe7bbc52dd441a33e0dc601c5fb402272d3348b74e42bbd6f09404d70af8f",
+        "qid_v1_318ead8395a1055fccd1537392798d366628956eb21e199db637a42be6e90419",
+        "qid_v1_3a95090e00bfda8bb2be20829c4cc54dcf861ef4dea3d46dd459f803b931d4b9",
+        "qid_v1_fa6d9219159bfc1342f7b405a374dc39d2048d4eb6b40dd852b8a64113153b79",
+        "qid_v1_7a1ec72b55743d4e449737ed777f15fb30819a8c5406434f3fb69023c8533ae4",
+        "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3",
+        "qid_v1_7b7c47bf47c9f4b7033e22d78553d7b5a1c0c627ab6e4e7349805bf3959f06df"
+      ],
+      "internalDescription": "모든 입력에 대해 성립하는 함수 관계식에 값을 대입·치환하여 새로운 관계나 함수값을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "canonicalLabelKo": "함수의 개수",
+      "definition": "주어진 조건을 만족하는 함수 또는 특정 종류의 함수 개수를 세는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_BIJECTION_FINITE_CONSTRAINT",
+        "PT_FUNCTION_COUNTING",
+        "PT_FUNCTION_TYPE_COUNTING",
+        "PT_MONOTONE_FUNCTION_COUNTING",
+        "PT_SURJECTION_COUNTING"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 27,
+      "supportingQuestionUids": [
+        "qid_v1_79e2d1ba46a548615e975281d3d36ef2ab387c299b29b4e4fb9d541867a7a2ec",
+        "qid_v1_df264ccc5cf88c4a37c3265e1913c7ec9171315a34493022062061b206803ce8",
+        "qid_v1_0ee8ff018156ed0b56504e4d38125243462833f1cc4ebe36f0aa473b8dde9a78",
+        "qid_v1_0fd39837e338093f56bd7115ee5c1c93506f29ad9ab56ad6a00a3630ba4e17be",
+        "qid_v1_339fafe360a6c6ff8e24025fb9d29656946bc859d6ba6d9ef1f9cb1e2fae1632",
+        "qid_v1_8716c67f7ded642accad9ba43fd48fb8551871b729147610a2e9441462cc80b2",
+        "qid_v1_d541e2b05cd1b011832f0536ec88d1a3aa0d5aeb892a714aaab1ada6fabd297e",
+        "qid_v1_21e3ea74d7de3776e1481fbae093363ca1edd303d8235717751edd2f9e539207",
+        "qid_v1_948a489a2aa99567cc9dc26164478eb6265aebc96fdf5454f74afb7731318946",
+        "qid_v1_c107fb038a05b3ed2b171ad04a50a6d60aa1bf4f8d27a8b4c05f12fbd14e45c4",
+        "qid_v1_9cd5019837349e602a91100073a1ff1709ccc0f4ad4b5d70b16aee85c53c9c0b",
+        "qid_v1_ec1e0e41b4b5608ec4c8bf031750a75ea07b531d638dddb79019642deba1058d",
+        "qid_v1_d22a84ba0ec3c5399788049d5e61924c39f5a7735baa1819a6194ff967c1ee39",
+        "qid_v1_56e9f9d76c07d8044ba5624925c233bf01fee46585af20448ea6ee64694e9a04",
+        "qid_v1_0f86193baaa7e7cea6035d34a6de87933b349f16066735633d2a8f0a7a0aeaf7",
+        "qid_v1_e2b22ff625b87f4098d09c69efa3f4978e3f6c2e18ce65e0a6ea7d377a4467af",
+        "qid_v1_f5b9880599388b1731dfa757f3f8b3afcf943a8637463ca9c006deff6657072a",
+        "qid_v1_69f6fc12c1ce3d35ca8221a556c2f60d43a138c25143366124c1878aa296a300",
+        "qid_v1_dfd3fd6b5ff1e71492e419ce7f02cbe01dd14715372a2465c787b80d01d25a3f",
+        "qid_v1_5052b83f6e794fe4078218cc236849be6c7486f2e0a80c856e9c82c90e0fac9e",
+        "qid_v1_be21a70223b601c6e88e388d751c9907817461b05d69867b857907fe6ecc5e3a",
+        "qid_v1_9067a64e0ad1dbc7b110ac5fad2bd770c05aa97cddf88e99b37a6fa7ac503202",
+        "qid_v1_af4bd0b9b949803f1401e1a75d5a30f153197ff1fa7e26dcff69d31008e9f017",
+        "qid_v1_43a1130c39b62d3e737885dd21d84dcfe4cc16d58dea2779e6277cb33050364d",
+        "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+        "qid_v1_3ebf2cafe585f5894dd5e9f1071d5b0685fecf6db74f097ae5f59d29fc9a0897",
+        "qid_v1_a37fbcd45ec51c83380b850a98dfe84bac159b882786199509d207fb3b6161fa"
+      ],
+      "internalDescription": "주어진 조건을 만족하는 함수 또는 특정 종류의 함수 개수를 세는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+      "canonicalLabelKo": "함수의 뜻과 판정",
+      "definition": "함수의 정의에 따라 대응 또는 그래프가 함수인지 판정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTION_BASIC_GRAPH_JUDGMENT",
+        "PT_FUNCTION_BASIC_JUDGMENT",
+        "PT_FUNCTION_RANGE_ANALYSIS"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 11,
+      "supportingQuestionUids": [
+        "qid_v1_5fd230035afe3877b5a65029c86413f2c6d133a4d7d290425ea797456e386419",
+        "qid_v1_9ca620c34926f2ca92c8623e4146ce6b5a6e50d00be95cb494f9efff33502707",
+        "qid_v1_fa5ce27430612ff10e5f6b59b98b22b8d0b6e296acc7760b8644b52f57a26a34",
+        "qid_v1_091509e6a97d19819c504ca1c12cc300f003b317d9356e23938c0c7a5bf2d718",
+        "qid_v1_4ae4db61dda2564d763721c066779b8a88bea87e1a8cde8529188bb2df6f84c3",
+        "qid_v1_88ffebb7ae3d834ac1088bc8c696e9af3e318885d25926cba5e984a651f59f9f",
+        "qid_v1_bd7b51d0908c648640e19050237d31fa69cae21ce21c90cdd921d0b6d652c8d6",
+        "qid_v1_08d9223e04dfa6ee5152fb5d9cc9b5096fbb4a858265cba38cbaa7e14c9a8b5a",
+        "qid_v1_23defeffaa5ed76dc12029c0b4419729f705e071802cfd85ed280bcfba5dae4b",
+        "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0",
+        "qid_v1_9d21133e3044246d8ce77084dd749e04b3823486552883f37b89935f6ec75382"
+      ],
+      "internalDescription": "함수의 정의에 따라 대응 또는 그래프가 함수인지 판정하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_EQUALITY",
+      "canonicalLabelKo": "서로 같은 함수",
+      "definition": "같은 정의역에서 두 함수가 서로 같기 위한 조건이나 가능한 정의역을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTION_EQUALITY_CONDITION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 8,
+      "supportingQuestionUids": [
+        "qid_v1_b083945accd03d64dfdf4cb62be3d25baf4b89109ff4118a8159f6e79500ea22",
+        "qid_v1_8f115457ab0b984f7fc273676b159161a6f71efe68094090fa239268d832e479",
+        "qid_v1_1d6b96853e2077702ee830f94d623b4eca3b799388e3ce599f222ff34086331c",
+        "qid_v1_eaf545bedc7da67fbc08ddde73643695b94f487cb877e5cc2349258b63c75564",
+        "qid_v1_32109754691674334afd04529aa930b6836787a1f21bf337ae71205f2b5f94ff",
+        "qid_v1_e09332003a1cab6b50c1ce71cf05325fe9685ade8ed688aaf357d8fbcfff14bd",
+        "qid_v1_1eb7da7f923dad75e562ed462df44295a9398173b23c7e4c1beb74da7b001b59",
+        "qid_v1_054817e96b027bf35381db41e77883cb22c4debb6e627180e130216d49c2c36d"
+      ],
+      "internalDescription": "같은 정의역에서 두 함수가 서로 같기 위한 조건이나 가능한 정의역을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "함수의 최댓값·최솟값",
+      "definition": "함수의 값, 거리·넓이·둘레 또는 매개변수 조건에서 최댓값·최솟값을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 25,
+      "mergedFromRawProblemTypes": [
+        "OUT",
+        "extremum"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a526bfca1b2fca0635348946c2c3dd967eea032a8ca7efbc5d2ba29c435e4d54",
+        "qid_v1_f94e361b6dcb29316399b73c2b8e2efa0a534c0d4408419842edb71c7c13d88f",
+        "qid_v1_bb5eb3b6c5c9097a0801b1ad0f3ca1befdddf9d869c338a8dadd5d0975b24c3a",
+        "qid_v1_09f96fe2f80f16dfa7944ecce906317e726cf073d7cc9fbce0c60ad241d9b461",
+        "qid_v1_ceb348a6f12ae1d9be955be79600f816ef84c5d6516c83b35a9d80134ed20448",
+        "qid_v1_6a0e0d0dd1e88ae839d2b4df941a03fa3bebf25babccf8dcd488fa4bccc3692f",
+        "qid_v1_ef530268701fa588d278ba894b3e62ca0af1777f197ea2cccac71666a09db681",
+        "qid_v1_4d8127d06293a63ae92a6981240992c8d6f85ffcd3dd3d2ac8180d59adb1dafc",
+        "qid_v1_cd22ffa589e2eaec25b40bfc7bd625185dd31cb14d5b48f2475836d701b88573",
+        "qid_v1_272de1067b5fa0e27a14e6bef4c409f142daf014d580ff4a2137c4078e0d6332",
+        "qid_v1_a4682ef37bbf50941ed540d74f18c0f47369646e56b3cf30c28269dc7035f0b6",
+        "qid_v1_5bdcc2492f586d7d94e83e3092e7b595ad54a17c2afb41daad67c24792696fc1",
+        "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b",
+        "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442",
+        "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+        "qid_v1_9846d5fa3d7dd8d6e25fb0f336383b298e7772148b370fd6273a811ebe2877d3",
+        "qid_v1_a43d10ae6712d8b5f53b85f168894dbab85f01bf37d4f8db3b1f73d356015ac6",
+        "qid_v1_87b2f4abff17e0bf08726902af7ac65b4f0b8809a746f587fc67fa7f2d7483e8",
+        "qid_v1_3ed615f7b073e04f8651c729afbdf3789a8b0807914d31beb2d960619f5a18bd",
+        "qid_v1_cd9470be46df0cf7c2704d43295884cc4bfd183eb29d41b58493bfaf56b0386b",
+        "qid_v1_57108aa0ded87565e6dbe54348b57a178c26810ab85d6e9a6c7fd277d8761741",
+        "qid_v1_d02a18c8ec6cbc9de40160b3368079ddcc9fbfb5abfcaa0f786b05133da3fa78",
+        "qid_v1_34b44884347051cf12fece2f41074f33a77b42133a1a8a57f811a8b40518e7ee",
+        "qid_v1_f783f7feed6ce7535dd579aa6058766d0b10f75c0a7b4e6da81897f447785e4f",
+        "qid_v1_6f439f2026da94f0b64237ba3eedb4f7f6ad07fe1bddc9071f5e69aa0acb4408"
+      ],
+      "internalDescription": "함수의 값, 거리·넓이·둘레 또는 매개변수 조건에서 최댓값·최솟값을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "함수 그래프와 도형",
+      "definition": "함수 그래프와 점·선·거리·넓이·격자점 등 도형적 관계를 함께 분석하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 27,
+      "mergedFromRawProblemTypes": [
+        "graph_geometry",
+        "locus"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_063f363ab29a6d3b1f27db49bdbd30558416f9a8e2704bd4cf96009419305568",
+        "qid_v1_6dabd8cdbccc3f7f08dd25158edf688a0408df7118423ddf6b701c04289b2b94",
+        "qid_v1_80efa454afa2c15cf9dc8a2a09525921fe210e706fd683ab567999df71012b14",
+        "qid_v1_1bfdeacba1eb5ec9adb63df90e8489378c5d34a92d044ee6d9bb71b1baf06081",
+        "qid_v1_6f83e52fa8459989438773e657921965815edb73f3b92b98a4cad2372989124a",
+        "qid_v1_e717a2f8fa88f4fa65148bcfea05e11b644f1be8cbb2d38160f62c94c8710945",
+        "qid_v1_5f47436c9923c4d7251fe875438c467836a6111e3018f3565d6276a40cf0e191",
+        "qid_v1_761473ef6050092868c30307a128f5cbd7953e1f825763ae69658f05fbdb14e3",
+        "qid_v1_6c2482faadead5125f3c6b87b650098472bd02cab45bd01d702c40a6897f283d",
+        "qid_v1_71dc6f6a58b21c7767575dcbac3311aa26fe23befc5316aa21f316ed97af26ed",
+        "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39",
+        "qid_v1_a78a2a33d91ef72da4a0ded6a838c32b3c9276b637182deb2cb2abc9e055fe3a",
+        "qid_v1_4c40c075e99ab37b0326baac86ffc291c39fb5bd4de91e9ca31a1f2608abe52a",
+        "qid_v1_52ebdbd3965d281730f359ac3c23f97e5ad57de2e1dda4d1b5443c736d210e3d",
+        "qid_v1_92aa9a7ceaf12dcb0fff4cf432a5706098b7d8c31c4ab1cedd39981231db0190",
+        "qid_v1_d0ce181c779079393343704c6ffe50c737df88f33c4f19a354bbf5d33b617451",
+        "qid_v1_69430b28fd6db0c1e5cf2c1d46a32e05134f29fb499fbfd0acc33aca24bcca09",
+        "qid_v1_74781d1cf2d58d8558e675ac256be79717b54e6a7dbbea80bbb651fe50c6d9b8",
+        "qid_v1_d32a5fbf26fad65a922567443fb4003a1e411ad85d8cae53cb1271ec02e0c94a",
+        "qid_v1_8c7d7042859b5d2b3297a38c0f3e1e0a5c421e41732c9afa4fa2d42cf230d684",
+        "qid_v1_47b9bcbeb6cb454096e685ffc7863e6145f996edb0d0290a544a927df38e9922",
+        "qid_v1_be1a3a88a92ef1f91294fa6783881109478ef52140a1c9b7f198523e79a1dceb",
+        "qid_v1_feed316bbcca73c6e72a26630b882a96ec2abe9d21d1ea37eb87ecf17439a5d8",
+        "qid_v1_45670e40de22085d679fe2f36889c701305b3751807746da8211ccdd3720ac4a",
+        "qid_v1_5ad65111d03f342559056b026042125bd4ef88b6b2c1b9810e1a6391f5effb87",
+        "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57",
+        "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+      ],
+      "internalDescription": "함수 그래프와 점·선·거리·넓이·격자점 등 도형적 관계를 함께 분석하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "함수 그래프의 교점",
+      "definition": "두 함수 또는 함수와 직선·절댓값 그래프의 교점 개수·위치·접함 조건을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 37,
+      "mergedFromRawProblemTypes": [
+        "graph_intersection",
+        "intersection"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_56d56c1538fe8bb51cea68e13ebb2a90413f9363fc7c69df62a72139f672400b",
+        "qid_v1_aa8a42357c200047d160a84c1bdd34fcc7c064c1ef1f57bf635fcaaf70f7dc2b",
+        "qid_v1_91c517905a2542cecab75c9f746822e033c2e00c94a25850f11536d2f7367823",
+        "qid_v1_f5151588197b9c81026412921cd9c4f58e4f5e992cc67ceec4199d532355e83c",
+        "qid_v1_9908b504105d14ee3429f21379e77449fc17e7aa59e86ce13870eebc2e13ff64",
+        "qid_v1_8923adf710cb5aa7d8da7c9e144d9613ca62cef5970107d3e66eb94ff0e9d272",
+        "qid_v1_809a57f5ec788e439d37e4080b86b9e60096e9d7fc436bb6451b3a8e33349c1d",
+        "qid_v1_f18bf25541032ddb6ed4d731bc82b7f52c7a6cffe227be39fcdd6db00544cdfc",
+        "qid_v1_98d5887404c6d43bfa9acd008416811e2c7277659df77c17f7f7330bebe047f9",
+        "qid_v1_c3fd7e9b90e9fcb0f190e68f3be8f092c43cb3ce1db8581bbc3a1a0110e5e040",
+        "qid_v1_bc4962309d80e3fb33aaa1937002475205c26f47661d4495f78c85174b5c4423",
+        "qid_v1_5ffc3b59f7d72cf0d6924d8f8d539ef1041ee9cb642333770b62d5dc68554e99",
+        "qid_v1_7e4dd57411f88f118ab8ddedb4a897db453204006f4364aa7ae5667d17e0630c",
+        "qid_v1_e922ec6068b42b1459f2092b931ec5e903f5f3bc1064d9d3409fdf7f3f0a01d2",
+        "qid_v1_0a51506e850412a5ccd66fe96fc335df6dd7e81c211daf014ea1735b2d008427",
+        "qid_v1_59eba9a695959d523df806593f1c9e0eb0403226e2c9c6631d6fa8a92978b03a",
+        "qid_v1_32b0adb0c4c0e31c3ae9cf9e73385f80ea7e0c872932903870dac9c76d3e0bb0",
+        "qid_v1_26cf1fd39968e74cc5a3a47e21e456b8b782397ad536284e41cb2fef80e77238",
+        "qid_v1_7810b1dea92b591cfe1c01bc52f84c9574a12ade27bbb002c24fa2878f858846",
+        "qid_v1_63f17dcb4c34583b794203fc9792dd22a01dca79be4997c1ffd11c205a8eb8ea",
+        "qid_v1_dfbb913abebfcd1d5a65c8da0ae4a453d4c2b067185adc88f983b8d7629f502a",
+        "qid_v1_aa2003e772b1e00539b0173e4bb7ca9b4bc862c690f1eabeaf7a430d343703db",
+        "qid_v1_69c9b7f4ab92e8a74d574404b545d170117d4743a7f8c81550aacc6b03d8eff8",
+        "qid_v1_3bf0e60400794d7b1e7008a0e11cb7688e2ad7802d4cfa95d68432aa254e4e1f",
+        "qid_v1_61796715780969590152c6331a7dde6152fffc9464bf0151f12517bff23f69ce",
+        "qid_v1_b8519b483ee1c29f5b7a13e0e38dabefcb16067317b22af15356c5e762dc49d3",
+        "qid_v1_be50846190e705cae640bc7e2023f28a3d842a97ee74ba7bf7a410c6bfafb05f",
+        "qid_v1_43a4543a45324147aa30ba7e061013e627cce93b9468bfcb80826812132e7486",
+        "qid_v1_2880c7c588583b37f38abe9c8f6ff615b2ee090b636c22a0fc8c23801a1f483c",
+        "qid_v1_9db041da56aeaa1be628f44c16b70f25183261308c8be6fc3b88ff78de99f79d",
+        "qid_v1_29d0d9c03f405db8e02ef765dff76dd43ee71dc5f1ee9f67ba5a827047480a43",
+        "qid_v1_d3c566364fdf764f8da273d555595067d57d2f1e99128a59f02f357ed4707523",
+        "qid_v1_014cdcb008a92bf94d4c3365f3df571c78581f3ac79f446684f8f200bb76154f",
+        "qid_v1_21f276e0a8be672251f001de6528fbfe01a7bd48f1f29eac59178eb0214dbf85",
+        "qid_v1_aecda0ef62a2c4911712aaf991651f5af9e0a918ed76bac0cef4dd54d3c6a6d9",
+        "qid_v1_dddd3bf34a29b84fbd74e92472bf0fd348b9eb71137a11eacaa80ee3af70c5bb",
+        "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981"
+      ],
+      "internalDescription": "두 함수 또는 함수와 직선·절댓값 그래프의 교점 개수·위치·접함 조건을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "canonicalLabelKo": "함수 그래프의 성질",
+      "definition": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 21,
+      "mergedFromRawProblemTypes": [
+        "graph_properties"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_5228c3e4bed7588c882ca01d6ae3b35500df60c852d511ec880dc8f4889dd3f2",
+        "qid_v1_5dc64bb6aacc793aec79a41fb6c967d40417779a63836bc5774faaeb760732d9",
+        "qid_v1_f83eff1c60ccc04477e952fdfa6ddac3be3e1ae00c8fc3f43a70cbbbb0bd3233",
+        "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
+        "qid_v1_2ff6f060ff108dfb568e20c99d876ff281094898bc885c2d493bfb812bb4aa84",
+        "qid_v1_2fcfcd64b440f58f94fb422fcd067e06a3003c6dbdb0de65e0533d9846afb9fd",
+        "qid_v1_72f9de661d1dd39b80cfce5be534af73dda4ed9576b469f484ed9d9ce9699724",
+        "qid_v1_9f6182bf0330a936b69c8dea502f031f32adf5959f52b6523f0f3e7d02b3cfb0",
+        "qid_v1_829285b1f5bd5829cd736f6cf5e96cda4191a033383f234da826d8a032b3870c",
+        "qid_v1_65d684622f990caef1a9db87b47b62d21d093678fd4daedcf75256117e710feb",
+        "qid_v1_3797d9d5d5120a0e3befce5fe40d9302153abbec5492f59533f944f8d0fbfb61",
+        "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+        "qid_v1_882a11f43235a0c863d874f9bd052c92a7cdfeb2a5a01b64737da95c0228554f",
+        "qid_v1_bfbdb60f39353fd14ee0aed22ca77b86ea1e83b7e2abd730dae8ac15b1c45936",
+        "qid_v1_790a666e86068dcbb8487339f1542d18ce76b20f9bf783abf0b0db0a0d29279f",
+        "qid_v1_3485b41a0a1c7de8306936e49b6d5b8f8715299c7108c5b809ac46b898d6c0d6",
+        "qid_v1_400f8d76319fffe7799777dead24a13d2f0ce7a0400cc2ab78089e128dd9aad1",
+        "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
+        "qid_v1_d748926a1749c0f73b6afac6a0c8351e043ac0fe42818aa386a5c79ea5d5f995",
+        "qid_v1_19c72f96f6917bb4c760567882d324efb72d76a32b30fb2231b0e15b4e37d3a4",
+        "qid_v1_cd8a53f1aca588b454d415aaa9e973fa8c1de39b9176fd3b070b61a762df9ee0"
+      ],
+      "internalDescription": "대칭성·위치관계·그래프의 형태 등 함수 그래프의 성질을 판정하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "canonicalLabelKo": "함수 그래프와 사분면",
+      "definition": "함수 그래프가 지나는 사분면 또는 다른 함수와의 사분면 관계를 판정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 17,
+      "mergedFromRawProblemTypes": [
+        "quadrant"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_1e67fc4c6385f4227351ef86f320228ffe0648b2d6201dd21289b4139e5da821",
+        "qid_v1_45a5508a02a880f78117be5d1eb1311987c2433abda22e92a415339a414d0da9",
+        "qid_v1_0ea99e992b8acf16137b16940e8e184006fb101c7dbc7710d59ae7cac125e218",
+        "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b",
+        "qid_v1_e446bf1c77c3c17d221c82a89a1ac803b3273361639ca73325ae05a0adc4bbd2",
+        "qid_v1_149265df167ef5a3dab46d6cfd5990c0324e4ffed30f865e3ef6791a1d8119f7",
+        "qid_v1_4687891178dea50764a0f04fa9b3fc7507e66f6ba5cd492bac747abe828b95fa",
+        "qid_v1_0d968e1538b39c6913141ffe2b08c5231ecfe29825a10405081539aa0b721588",
+        "qid_v1_66e2068666781d79b7095013fd64c51af15e40e2c6af68de655a764c071c3676",
+        "qid_v1_4e4d23ee6a285d23402ef5375d1ee3e40b059c2e559fa30bafe6e7ba541fd561",
+        "qid_v1_61af016ec937c0049b6942a80e6a2df1b0ce4230da59a3c18533beee45acb4b6",
+        "qid_v1_0e658236809fd00236d0398a2422e2c5bbf6f1ed85e45b54b2489d2b00d0e421",
+        "qid_v1_5d6466d9df531e636b46fbb991f43780a682bd043aa61000fd5fe77938edc0f1",
+        "qid_v1_17e53e3d927b322d527cad6523dc01f8913ab32524449337402a28afaa7f14d6",
+        "qid_v1_11b2a06ff278378100d7bb26cca766d421f3804d5ed1a899137669f7108bdf6a",
+        "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+        "qid_v1_dad69d14db34db31a969a108e198f536dc415158419062472a2761399027a98a"
+      ],
+      "internalDescription": "함수 그래프가 지나는 사분면 또는 다른 함수와의 사분면 관계를 판정하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "canonicalLabelKo": "함수 그래프의 변환",
+      "definition": "평행이동·대칭이동으로 함수 그래프 사이의 관계를 해석하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 9,
+      "mergedFromRawProblemTypes": [
+        "graph_transform"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a64925cc01f117ede14ab99b5d4cb21cfcc89a08bab195385c309d0c5151d480",
+        "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011",
+        "qid_v1_60892d4fd250db48f02dfda8e92b5f008dba31e00f6cb43c35ebdd77879a4703",
+        "qid_v1_da8ce2f323ccd341283ed87c27036706f55a6295228fb0b428975bcc208546cb",
+        "qid_v1_c007ba347df82877b2cc58a6c077bd0267e9464fbcec35ac6d3c740689b0aa41",
+        "qid_v1_c08214e82b8024a29bb9bb72745b63d20a18ae44caf37bf14e52e37093a63e18",
+        "qid_v1_22200f68b07a34a399111475c34cf8efd5893b63cac385ba2de3784407974efa",
+        "qid_v1_4ef90fba11c249cf136cbf5f23f869e6d0f196f4eae980d0abb609b9d749108b",
+        "qid_v1_4ab7dada59cb681873619428366a8fb29c41fc78ecdb00c76da88ca9cfbe14ff"
+      ],
+      "internalDescription": "평행이동·대칭이동으로 함수 그래프 사이의 관계를 해석하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "canonicalLabelKo": "함수식 구하기",
+      "definition": "합성관계나 입력 치환 등으로 미지 함수의 식 또는 필요한 함수값을 복원하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTION_EQUALITY_CONDITION",
+        "PT_FUNCTION_RELATION_RECOVERY",
+        "func_det",
+        "function_det"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 25,
+      "supportingQuestionUids": [
+        "qid_v1_4e13c2e597d68c582e028397e0df40980c80ab21563556a6b1b64032fee58d00",
+        "qid_v1_1ee532de31960998ea7b2ed457ecd71c3cf4622ccdb2df84ba465e5543459f34",
+        "qid_v1_a5c57946534aad8bc92d77b91ac3e6b3681126a80fb32e7d829055cc7c712d99",
+        "qid_v1_d370167261b8ef429787b9d0c30e062cebc58530d5620cd7ec5b0aec5f7ef588",
+        "qid_v1_1631ea72ae149ac201fc551885fb18b7cac74b0598c8a90b50de6c8019bf6f3f",
+        "qid_v1_4d67b3a1967d7ab20ea2393845bd34c33837c77b0029688d0864a670d24849c5",
+        "qid_v1_0d121b6b91621b9197b4e248ebd50c99c0fa5d4cdbb4ab5cc0b5687ce57e3aa6",
+        "qid_v1_ac12ed3bc4cb34a1c6d560a9dc4a8f2c11fc483d530bfdb60fa4a5fad867eb7b",
+        "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad",
+        "qid_v1_d7286b88b173eba107aa51b7bc036f33bde8a1fd0aef5728242034fff18beeee",
+        "qid_v1_51f0609879f3d1788131b555ae07e9dc3aca960d3477aa83beec17832f1f9a5f",
+        "qid_v1_56d949371bebe26b4e8539150b34cf0672072764e23d2491b53c3336f9187d97",
+        "qid_v1_7a7b7527f4e8c254d3c978d1ad7a60ba1bb3b9df621716211577596b9e43f18a",
+        "qid_v1_0e8782016b00f03d4cfef5f4e770a64141fb37c78d6cb0f5c71fcffab2bb928b",
+        "qid_v1_0ff60964b395146933368e6058da566e00879bf66f671980d6a83b6f59a26e0b",
+        "qid_v1_190a296ab0e92395c81f36775e2ed0ee1a400b37fd5d7dc5c4640b418603ae17",
+        "qid_v1_09e546ba4d730899a821410f1ac9ae12630bd472f0761bc0c1cbb8b0b7e3552f",
+        "qid_v1_8a01638c95315a10a28956b1b0570b512d02e5276f5cb621dfcabe47e2ec1b64",
+        "qid_v1_62fe17e4a415a25a64de6ceaec5247d83d59a93b6f21f4bef649f488f4edba42",
+        "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84",
+        "qid_v1_72b1fae9c4ca7f4322ee0bb577b45a18956e6ac00f6a8fb70596a15caa39cf2b",
+        "qid_v1_96a12c43adec27d4d9c1e1f0a6a985bf45ce8dc1dec5d2b2f82e2aeb21ff36cd",
+        "qid_v1_7dae3a707c16ad23e9568cf7c9930dd616825b568a53395954ad6140833d47ec",
+        "qid_v1_469169e35532a0e39bfafd22e397baa831d362e2ffbce027570d75f67f80b9c4",
+        "qid_v1_88463e8391870792b644670bfcb5ba2ee3e9051e463f2cd91374e26775417f2b"
+      ],
+      "internalDescription": "합성관계나 입력 치환 등으로 미지 함수의 식 또는 필요한 함수값을 복원하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "canonicalLabelKo": "함숫값 계산",
+      "definition": "주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTION_VALUE_EVALUATION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_387ad691f81218198cb3be38998450e638a808907e103f51fba670a3c8fc766d",
+        "qid_v1_edff063a52aacd5cc09fb7850742b02ba1859a98207a9f89c05c6727fd1e021e",
+        "qid_v1_7353c21635301b15a0ab40fa92356333117e7a9009b37590a91b8b68b189bb98"
+      ],
+      "internalDescription": "주어진 함수식·대응·조각조건에서 특정 입력의 함숫값을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "canonicalLabelKo": "역함수와 합성함수",
+      "definition": "합성함수의 역함수 공식과 항등관계를 이용해 합성식을 정리하거나 값을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_COMPOSITION_INVERSE_EVALUATION",
+        "PT_INVERSE_COMPOSITION_IDENTITY"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 22,
+      "supportingQuestionUids": [
+        "qid_v1_8d3b97e78f030ac6c51bdb37efdb4c2ff296ed3222ba82406fc1591509216421",
+        "qid_v1_1c80d62daea384c3a078cf48f453d52ce837eb3b11aadee506c6e7b2e9dce4fb",
+        "qid_v1_ccc5063235ae626d0abc574e5ae284bfd58f66ca1e3d75166d11a121e3ba4b27",
+        "qid_v1_b0cf386d2dcab181c8217add6aee0253e278d04ab2cc6a377d0bb8ccd01e02a1",
+        "qid_v1_1c6dfef14512ffffcee2f5e01fd248bdbc645fca0839692dbaaed100553b5148",
+        "qid_v1_8c41db6b3eb658c4d68d74a2457ab0aebfaf8b5e1229dac2fb98a59ce860b9c6",
+        "qid_v1_0029eb06138a5c31a486ad49736e52ffc208f31871b2cdc2c2f14e0863ad1b6c",
+        "qid_v1_5a355f4e778a261ea85f43b6ac014cf8fd935a347e4eb2edd799a8c37d21c8cb",
+        "qid_v1_b7420de071f1ba2cc2966bb43a1d7ff8518966e40a862bf29ce4b14fa923b1c2",
+        "qid_v1_cb58bedab714a51ea6053b2e204e9b5fe2aec5761b5769660b79455bb4304aeb",
+        "qid_v1_faa1accb45844e1cdccd618ce28146f0bcc0a79ad56053928f3b155b71ade2df",
+        "qid_v1_f04b00d52a587200c25b6f46e090f96850433ab3a74ab5e99fafa833eb55b6f3",
+        "qid_v1_c0ede25da9cbc2be45f5c1beea2bd0ad1ac2a8f335c79bdd7a1672b0d5a2956d",
+        "qid_v1_dd2d24c0afcbe8792125e660c55c206116ad98bc81d168d7d021dcdeaaa947ca",
+        "qid_v1_c6266a888c05c4faab50d7bdd5a49fee2db89cbdb61381ebdb7165ab7c2cbd99",
+        "qid_v1_6cf60b90c4f51d956e2d7ab480626aae025ec0b92a8355c26ccfd845511180f1",
+        "qid_v1_ab94727e996117de7068bb76d99361c6119bca19c05ce5bc2d1b24c6b7c69e9d",
+        "qid_v1_886896af38862e8c955bca654306b9d1fc254770eeccd111d9a411f25d6cc6c8",
+        "qid_v1_e85e6dec78f77a8ae256c3bb2c0cdf9ba72325d4d8e2113d6563c78eda18fb2a",
+        "qid_v1_5ca37c36f8fb329a14fe9e198d60b228c24ad4eb9595ed70d03efe0c4bfcfa2e",
+        "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5",
+        "qid_v1_d51c95367e8902c0e59fed185babb77c240f0355b387e934373e9f6151bff8eb"
+      ],
+      "internalDescription": "합성함수의 역함수 공식과 항등관계를 이용해 합성식을 정리하거나 값을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "canonicalLabelKo": "역함수의 그래프",
+      "definition": "y=x 대칭을 이용해 함수와 역함수 그래프의 교점·접점·거리·넓이를 다루는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_INVERSE_GRAPH_GEOMETRY",
+        "PT_INVERSE_GRAPH_INTERSECTION",
+        "inverse"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 32,
+      "supportingQuestionUids": [
+        "qid_v1_f7857e81170141842af083ee12d07a264552573b13b46e36382e7f252e394ddd",
+        "qid_v1_0f4a0717da88662713dab3143c06d903eef04a6a4d0a4cecbb45abee96a8c520",
+        "qid_v1_14cb1da0f688f872fb673d993560cbda973723295c85b888ac64d0dae1d1b93b",
+        "qid_v1_8e3717742991e91165038de17a707c9e5e12e776504d57ca0157de2362378a1f",
+        "qid_v1_f5b0d6e41345437442261b3bc9870fe28ad3159209342132bbb7a1732943b244",
+        "qid_v1_aeeeab1f99cd912835e5a58f1ae69cca316c99c71bd5861af1e54d1d5ba4729c",
+        "qid_v1_a9e5a7593831541893febbdeae23eccc8a7f52cb1ad4905b01de23fec29890df",
+        "qid_v1_aa8d75b842c2387ffd9ac5f0cbb5179bb5f597f090d91ff387a72ac7e7194222",
+        "qid_v1_a7569175997e1534cc339bdead81eae8c32d4d456a5bbba9ba6001eae5fbe390",
+        "qid_v1_6360d509e9d0550bb88e8956ee955c1ae3c97f24b3d3c7fe375f44aa4c58f0a1",
+        "qid_v1_ebf7fe78aab7edc3a3f02fa74d780cd252fb1e4f8ed2eb3a9f7caab25fbf2700",
+        "qid_v1_6a54cc2c1f1bc1ba6a6bddad9043a35547acf02415d938f0a27049b145d93427",
+        "qid_v1_de3fb11c423d1677a97f7448cc03967e1610a0effed3f7d6b47cebe3664d4066",
+        "qid_v1_090256e289be78b61465b525755ab28bcb7e3edb7c556e59510a83d2cea3ba71",
+        "qid_v1_8ba7e1aa71f724eb187fb52e3e89215494b5b4331d73e38eda31b23c6cb70e48",
+        "qid_v1_26d6391918689b1a8e8b8f8a335d007e3f4b868229749b41299252ac10dffc50",
+        "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a",
+        "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7",
+        "qid_v1_d570b59e309a32bed77776f5a7dabece82abf08717f24c9c4f182a635fa17383",
+        "qid_v1_b46684e915146f6043580c0404da050aee5fed9c2c6e94dd262825b39e2fb507",
+        "qid_v1_d3dbe11372883afdee62637cb41b0cf395ec4312bc072fadc96287283b5fb8d2",
+        "qid_v1_abd2bce4713a8435b1c040a449dc239a773ce10d0a5e2e40a3ce7e4cf88978ae",
+        "qid_v1_2233868c1dd918ffb4834a9216f666f6f20ced6047e48bb3bd2dc56a82ab5ba4",
+        "qid_v1_7eedfea68950d7d6ed80b51374e3c675b0850040a4fc04b919ba11e5318d8c4f",
+        "qid_v1_4d8cdc865a521645419b93541f6b2b67cc1e07930a03da7add943f94923e206a",
+        "qid_v1_193d36325a80b264e646e1699a243a363cf6ebd4d82bb08265a9bd53b7b484eb",
+        "qid_v1_78c6ad399c9631e184e5b0b3954a12b18d81f2673ff05a06722f4912cd2cad80",
+        "qid_v1_df13965a966dfc3a49e20127b5838ecbf897452439696fc5259d3f6df0e66ec6",
+        "qid_v1_d3040d37d6d96b742c588fd3e4b687b65518b0ca4887cfd93d4fb6ab5de96bf5",
+        "qid_v1_9f871e0c1a51e4882bfd1740340ebc607c42e74be834ddf866935c9a45a749a1",
+        "qid_v1_82f8d481cae79ccaf29cf3374d50d37ae206ab29853052f8d96e947032c3966f",
+        "qid_v1_3478503a8f2463676a956f67c6e300a1b4d3aa007babde569c866a0497964e9c"
+      ],
+      "internalDescription": "y=x 대칭을 이용해 함수와 역함수 그래프의 교점·접점·거리·넓이를 다루는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "canonicalLabelKo": "역함수의 성질",
+      "definition": "자기역함수 등 역함수의 성질을 판정하거나 함수와 역함수가 함께 들어간 방정식을 해결하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_INVERSE_EQUATION",
+        "PT_INVERSE_PROPERTY_JUDGMENT",
+        "inverse"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_2e7b47756cce0fdf84a010e6da6ce8762918f4774c1a87218885aeaadd10bdea",
+        "qid_v1_918e7f6335799c59b37c0307e42ba93e701308d5fa04f868283787dd6e4c88d8",
+        "qid_v1_d1ccdbf7e20e1018cbf49a741232064f93da2a385526fa61be9f2cc65e004d49",
+        "qid_v1_3e20b7a6b1f61c5f2a326dc8b8caf820f49f34ed955a3c46daa1818516e0a0c2",
+        "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985",
+        "qid_v1_963a324fa9609c2ee69227752a7c7abdbecac49739ec0716b47e2f07b30d86ae",
+        "qid_v1_ad2ba3cdb0fea5f5a57f352f38f1b845dd3a11a97e0216bc3be1678029cb1d26"
+      ],
+      "internalDescription": "자기역함수 등 역함수의 성질을 판정하거나 함수와 역함수가 함께 들어간 방정식을 해결하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "canonicalLabelKo": "역함수 구하기와 함수값",
+      "definition": "역함수의 식을 구하거나 역함숫값을 계산하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_INVERSE_VALUE",
+        "inverse"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 30,
+      "supportingQuestionUids": [
+        "qid_v1_ffa106018f49828255f49445f7c92be24c1e11208b611a0f01a5bd19700e49c7",
+        "qid_v1_12ebd0c9ee86af92a520d840cf5791aca10c3db57288bd050b2e810125478ab8",
+        "qid_v1_e920839f1c58c91d0d783cf102bdff51fbfa13dbe6706881a8bf152aba59b81d",
+        "qid_v1_e3a771b3c6812ddb82c6aca1656749652032c9f0cf22792da2a59713d4053c02",
+        "qid_v1_0a6423aadca9242d5d2acd59e18c76cc0bfb91e8822ea7826aed79de7296747e",
+        "qid_v1_7d135b7e7f0a9dead3acc7d3b99f7eb49acde81785821db584b8001065cecb55",
+        "qid_v1_1fe9cc3ebdb0f3ce0bed93417493366024da3d50d2e16f432555eb2a7dc15b7e",
+        "qid_v1_3f5800e2dbf24cb4ea68f4185cfedfc60d1cdd71b26983ce0c5b756b63cfe41e",
+        "qid_v1_1f012d398b8c9e4217338112221922eb9601c24b28e12ce79497f1cce85356d9",
+        "qid_v1_2e3ddad7e708af4cc23f79b39ca6ab41bcfe00a6c10cfad5d0aa75eedabea962",
+        "qid_v1_c46484cbfa38704827247fc10f3a5f87ae981771b3ec58c5a4930c5eb87201f9",
+        "qid_v1_12c36cf170d71ca18f9dde4be1eb4ca5fa5bb6313be872400a29ade202c1fb3c",
+        "qid_v1_43709196cd8d24fa483353da3c22626eaa0067e0af5fbece13b34a10c4e128ba",
+        "qid_v1_a96d362f0f63719f68bceaa1a34f4206604725dd6c3c2b4ca6c1f7a421175828",
+        "qid_v1_8e9d12b8d57e05523dd5761ae2be06fb949c5380cad3f9997d86723d445583d9",
+        "qid_v1_c0801dff75a213302c13c3498e985bcf555797f8145ffef007979e3682a2bb07",
+        "qid_v1_65c1c2b86691587b7bf088ca38e15590a9be8b649058465e2f8c0293c07e2df8",
+        "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+        "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869",
+        "qid_v1_013a373e6a7236edc5563aa3906f296223b53863793ba74d2bb804543b81289b",
+        "qid_v1_11108948e809b0454b61369135005f82a2bdd10855d3bd0012df91ea8bf49994",
+        "qid_v1_cb5b450bff320f8b4dac9e9d1ada15087e1d7615467c7f10b8504e5b6e55795f",
+        "qid_v1_a5874d4f9399b74b8ed13c5ce7289b931a1a9b8c9fdafc02da27ab7de3ac833f",
+        "qid_v1_06e84faae49eab2b2968638a684d1c5ce5d7cc009144be16d4d3204399862f7c",
+        "qid_v1_3c7809faf95dd6c6b6009ecc6ea4a7d3b5aadf599b66e5bc0b0588b188e2ba3d",
+        "qid_v1_cd903025c75ceb148ae6337558c0e47e125f24bc7e2bc0aa6d0dcdd4490d3f98",
+        "qid_v1_486dc4ace38636e45d83000bfa641c1049512191493bf4ac2a14e00b925852bc",
+        "qid_v1_f17492da7e0235ab58e18f10ef9a83e408c003fffbaa5a6dc431a35bd1b1caa5",
+        "qid_v1_04cd46cffa27f89b66d70f315d2aa513cc3a536737b81511653e52361a063a98",
+        "qid_v1_5e25689a66b2d91d2c13cd7371026d7427724025160433cba6924aed0e327749"
+      ],
+      "internalDescription": "역함수의 식을 구하거나 역함숫값을 계산하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "canonicalLabelKo": "반복합성",
+      "definition": "f^n과 같은 반복합성의 규칙·주기·고정점·원상 구조를 이용하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_COMPOSITION_FIXED_POINT",
+        "PT_ITERATED_COMPOSITION",
+        "iteration"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 34,
+      "supportingQuestionUids": [
+        "qid_v1_15706e188849f064e39069d7364f81867eea3e291038e7901aba5a4de0afd815",
+        "qid_v1_eb31d33774e2832a90fa91c3aacde35df56d3b770385b606559fbcdd3f4c6ffe",
+        "qid_v1_d677c1c5ae031e805f0046609033022ecef143d51349a132cb0bf6425a89f185",
+        "qid_v1_3481f583e47fa5ff295a69cd20436263915710237aab376824f5c610369041a6",
+        "qid_v1_6e7f58daa5bfcffc647f688c177a8e6dfc7bccf0291ffef74850b0cf76c39c34",
+        "qid_v1_b1cfe70fd50496138f07c95127e8f6f6ce5954282af8d6cc22cd332aa0e6bf34",
+        "qid_v1_06e3fd3fc676a9d9692beb96823d640564c526c458ccd64ea4ab0ea36e76e1c7",
+        "qid_v1_dcee119b89b692ec482a23ce24cf3ba876c66276e1a23ab7893b9fc2e1598e44",
+        "qid_v1_53af86c5097f2cfca1a034fc872227febf349042b5880500717a1421266efe7c",
+        "qid_v1_468059daee150aad7ca3376ef2a077c0a56957b7899af4d041c59cbb4d9e2d4b",
+        "qid_v1_34dd07e9ccc59cc13f4aa52de80243c50966f46c0c6286a78b11e469a39d1cbf",
+        "qid_v1_452de71fe605f9acd51fb61128f8ee63e030b183a54779f3b1c6e86f049c6cee",
+        "qid_v1_89550ce8502907e2acd72f7f2a58137f3f9b2c47889ddb3fe8c31ca0a7ba13dd",
+        "qid_v1_4afc54f84c1eb6a01a1de7384a9a136dc2ed2c358329548246c83ac697b41c91",
+        "qid_v1_758e03df7bac2fe1fbf8549c637ae335e93989846d7f000b8acf738524c10780",
+        "qid_v1_04c43633b1fa368854e515ad905705d84c7d3fd70e2330e627dc2e5271e75a11",
+        "qid_v1_74fc73e86dec13d814f74cfb3014aaf6205e1e0dd0d2863619ff921b6acd1387",
+        "qid_v1_03687c62b3dfe8bc238a6f47b7cc54f0c01f24f934ebd65d5315426578425a62",
+        "qid_v1_7e4e443637b486887b38f3710f191ab6bb4683f1c8eb60890488ef28f6beef0f",
+        "qid_v1_2c8ac109a3d6930343cdcc9d5458780d5ff6ad7d7ad1ede6e24e2e4f50789824",
+        "qid_v1_9ab6648fbfc631ad5cca98fba1338b851fc29bfac8f333fd2436298cf0f7a558",
+        "qid_v1_0a576afb57e694180594be3c1234255789ae833df9c1e6094b8c746a7866ce15",
+        "qid_v1_22058a77f6a62ee13436e091b54b1744576411508b457fb946700e393fdf6ab8",
+        "qid_v1_e36b644dd840d293c9d0cb698e42bacc8f1618850b88bc557357c71bc4d7ee19",
+        "qid_v1_7153b51c94011118317e5242733cc5e44e3c16b7bf2cc000cd09a62700f29832",
+        "qid_v1_2a727eb7fcd0d3142f2692b4c1efeabeaa3a785ccccb9e269da4efb309639482",
+        "qid_v1_5c0bd4d6080d2ffe8dd05d23b804f3c80827bbb899e0161f86e393f2cdf08889",
+        "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e",
+        "qid_v1_0c5045bdb94529f7caae5f3691afb3d3f97907bc016a69bee35edec2fcd73fdd",
+        "qid_v1_de040ad6dbae88a03058776a1c86a6fadba7a42d841088168dabe40abd4f8f24",
+        "qid_v1_f754a75edb48743f54d236ebce8e9a3bcd79dce2cffdc77030987ef5ef56c89d",
+        "qid_v1_c198ded45380234401918081940760555b8ecbb7edec805563dee564841333e2",
+        "qid_v1_1cf1a2eadc8f283d272555fb6167363f3846baa375b2743f6c1c3e591106c237",
+        "qid_v1_f67797c6630a9dbd987f0e4875057e4df3d913c657c0f7d0562efb2bcc2ad39d"
+      ],
+      "internalDescription": "f^n과 같은 반복합성의 규칙·주기·고정점·원상 구조를 이용하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "canonicalLabelKo": "일대일함수와 일대일대응",
+      "definition": "일대일함수·일대일대응 여부 또는 이를 만족시키는 정의역·치역·매개변수 조건을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_BIJECTION_PIECEWISE_RANGE",
+        "PT_INVERSE_EXISTENCE_CONDITION",
+        "PT_ONE_TO_ONE_JUDGMENT",
+        "one_to_one"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 35,
+      "supportingQuestionUids": [
+        "qid_v1_42717daea1d0dd7307597a6fa6b1f6c82b9575cd1592d11a043a07339f00e448",
+        "qid_v1_16ff13c7c97ef1d86b011191020c2194e5b52aeb056b83e660aaef49f62b6cae",
+        "qid_v1_b9aa5f6c70f90a6211fa83914ccce369f224353382708e01b15e82b83774cd09",
+        "qid_v1_b083d49f31dfca015df6de1e700a36458a0086fad2dceef4faadd09a4c47595c",
+        "qid_v1_4a821724d6cb57879cef97b70e81b4613aadd83e3e223d6d7e369cc0d1200e15",
+        "qid_v1_da748b06acd54020aa9aff23c9177fe71f92d062ea08a97c28e5931b0bd24c52",
+        "qid_v1_52c0a4acbe67b7824a363b1f5ce99646d857497d9dde4eb56dabd178edfe67cd",
+        "qid_v1_75ab496f366b5f5416fb2f44abbda3b82201621a50217b5e1d528de09e6e141b",
+        "qid_v1_76063236bd0b62d78a1e69d8ae1db044e615e063199c6491fe391e5a0bc95102",
+        "qid_v1_c81f4d939194fc2977007704d5845c61eb1fe905d74b7d323ec6ab64594f82ea",
+        "qid_v1_1ec420fd038157665bac943230a6b0a7f30fdcf3ebe50d8be32c713bba9ae104",
+        "qid_v1_e717157a35394853fd0918786ee215806335bd6b99a98a276b1fbd3c82666a33",
+        "qid_v1_44f28162ae84096a6b38a0cc8ea443984c041f9a0a7bd17aa839be413e7f409b",
+        "qid_v1_cfea07da6f5b0e7c15f96a2fd16b5b5434e4694b206721713c70e40e24abcd9d",
+        "qid_v1_dfc5231aa2f6aed9cf496b294a09335404452496ce90376d8e8ac09b023064a3",
+        "qid_v1_d8dc2313934a7528c606d769d2a47624a2516613ad30debd18384cd129ec8ec3",
+        "qid_v1_41d7acc38c39310454fd3d7e39bde65faefd9e7bd19f098aac43d6d6cd6bcec4",
+        "qid_v1_412da83ac449a6419e935154eeac0474c2482c4eab3bb0d58950dd17dbd8009f",
+        "qid_v1_996c1290318dffb9e73a06688e8b1e25c2888b78a19519302a8e240fcb1cee5f",
+        "qid_v1_72b0e9c2227f0f777b9917af314d207718e6154b166d034498f3ab4be9cfb6e5",
+        "qid_v1_29ddf3fe2132720523cf52ed9d3ddf6790b114ea9c2fab748caa795a2c356879",
+        "qid_v1_ae7edd0a077bc55bfd3c82dc51ae2344363fc6bd478e6db0205aa7c89b0e9a08",
+        "qid_v1_57ece4f3b94d07b2ca218a0dbf19cad664d02bda814f21d885be724dadd99c3f",
+        "qid_v1_5be687beb5856b9944bda162d86e93705db77dfceff43e0a4339ba82caf2f5bf",
+        "qid_v1_a2d115ff3f09b712f263a601ae4197818b25575dce7cf2e8483a22f1ce3f6746",
+        "qid_v1_9636d68e1db5f54ee7b8ca1b07c45ead800a95b960de8ecc07fbf90fd816c86e",
+        "qid_v1_dd5983ebffb0dd84bad53f256489d0ffc738f7d71f0a5a19ca676bd796e18cd7",
+        "qid_v1_be3f0d59886b4039c49d972c972cd6e0ef394e68a2a9749c0d43d90c5c0e33ca",
+        "qid_v1_1484bf77d7c260ddea773d832de1912cd4065d0fe35bdf02c1212d7d71de6fca",
+        "qid_v1_aaf6f76c02f6719ce1bb877781a99b0af1ecd78d42a741873f6f75e902ef5a3c",
+        "qid_v1_dc1bd74a6da4692d69874ceca5709a15f4c52b4dccd557de9e622dc90cdf6b0c",
+        "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
+        "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+        "qid_v1_aacd74a75c2ec98ac2ac29a04c1b5321105f3c870c611ef4d99bc77f05f7f6e2",
+        "qid_v1_a84762d677f1003e5dddace605d252c3dba03eb2ab5d9daeacbbb03f6f4f3e3d"
+      ],
+      "internalDescription": "일대일함수·일대일대응 여부 또는 이를 만족시키는 정의역·치역·매개변수 조건을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "canonicalLabelKo": "무리식의 계산",
+      "definition": "근호가 포함된 식을 정리하거나 실수 조건과 가능한 값의 범위를 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "mergedFromRawProblemTypes": [
+        "expr_application",
+        "expr_calc",
+        "expr_real"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b64eca1f09dd5c0ed4a157e2fb3169aff9ed82f82eab474e0d75326053fb23d2",
+        "qid_v1_6f4551008daf3d1a8dbc766d45f29043da904bd9478f9a4c9298138d82bdfa98",
+        "qid_v1_58dea249244b72af85b24c3f3cf3ffeeb0abe346f50a0afa6ba673a62a01fe22",
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
+        "qid_v1_ab0c9ec3c48b69a7702650a99e6aaf6c3090661b379d0a70dcf90ec8830fa190",
+        "qid_v1_074bd71ece4bf006b2e2d2b83fdb7f8f72fc2941f7590b70ae86e8bd3a6ca2fc",
+        "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9"
+      ],
+      "internalDescription": "근호가 포함된 식을 정리하거나 실수 조건과 가능한 값의 범위를 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "canonicalLabelKo": "유리함수의 점근선",
+      "definition": "유리함수의 수직·수평 점근선을 구하거나 점근선과 관련된 매개변수·도형 관계를 이용하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 11,
+      "mergedFromRawProblemTypes": [
+        "OUT",
+        "asymptote"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_9c839061ad02be7653ddb7b4e141a860b879e383b715b209c25b154a39404f4c",
+        "qid_v1_782cd02bffbed66f2719ef2a5f3c07c0b5c623942263c31d85fc8365b90c8193",
+        "qid_v1_294899c717bb3497656faa6a8162c497d0693d0cd88f7f6087b89cabdda7a3b9",
+        "qid_v1_b7d8cf2e87029438d85dddadc762bb019451f69e32ac2c2c9c2479a06e3738cd",
+        "qid_v1_d1d0d5f5731dc7a6a2eedd8f91af5925d242cee7d3db65619c86c1d2ff82e688",
+        "qid_v1_aecd3cb11b9938292402d2386f3870941cae184cfcd43a26d5a53e8d7208f8e6",
+        "qid_v1_5f456a221fd462059bdf0c73f52425f4e7cc105d96d6155fbeca60174c73808d",
+        "qid_v1_4b7783b72eaa873cb30cc866f1f65072e3fd7e230adda0ff31ce6e14b8c5917e",
+        "qid_v1_a57d9f726d23fc1560e3c93cae19aff98de79b009f3d700821953993a0584435",
+        "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+        "qid_v1_1aeabf3ae53dcd416e9b14d0a826bbd8fb8686c7b206f47cbf17e1a449102f9e"
+      ],
+      "internalDescription": "유리함수의 수직·수평 점근선을 구하거나 점근선과 관련된 매개변수·도형 관계를 이용하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "canonicalLabelKo": "유리식의 계산",
+      "definition": "유리식을 통분·약분·부분분수·망원합 등으로 정리하고 값을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "status": "ACTIVE",
+      "supportingItemCount": 16,
+      "mergedFromRawProblemTypes": [
+        "definition",
+        "expr_calc"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a64e5579217a895cada11788d4cd4b14b1b33a570dfaac13c765abee20a69251",
+        "qid_v1_debfe4fdeaaae01dc94de24a0526a258e14d42e73b9894f71911f63fb0d9623e",
+        "qid_v1_989c1678a9b5692921dcc5797751b36818fb2e40561fa723098bd2550972d44c",
+        "qid_v1_b79680dcad6e2bdc6ad0c2d61f2ed0a7ce08ffbb8e04567996fd7b76db1461d0",
+        "qid_v1_9d35ccac5fb9365dda3c7e8ab5c4b6b91d659d04fb8b9cfd88412ad53922ac28",
+        "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc",
+        "qid_v1_cf2362b039424ee9af2e7f6c6bf8d2f0cf3ec9fbe25c2239bc53581809d4124f",
+        "qid_v1_c778d3e5accca408de377f0a21886949eab5605fda527176d310b5b9df8e3560",
+        "qid_v1_59e06dc4efbd8f9bb2ed0149089e12fbf4ccee7e8bfb247cbef834787e3a03d9",
+        "qid_v1_b1ecca715af06e02aafef2bb1201fe49f12732eea4930798f222bb8004532f56",
+        "qid_v1_05d18549109720586dd05f7467d33e7f99cc801b341c5e984a210db33f0c4f55",
+        "qid_v1_06af3bf0fd2b7aaf17b124d10acc6cb367dadcfede73bb6d841a2ecc52da61c5",
+        "qid_v1_c8cd63d36801f8e8310e19d13644946ba3b5e3cc2a27fb80f40a79e8393b2df1",
+        "qid_v1_2d47742a5a6d83a701b34f39de5a476cf4e81ac0f175bef5a448dc865e15e25b",
+        "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
+        "qid_v1_51b8343265a7bbe6758c74b64ed6265ce6e72a4cb300e8fde09614ae6b1c4ab9"
+      ],
+      "internalDescription": "유리식을 통분·약분·부분분수·망원합 등으로 정리하고 값을 구하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_RECURSIVE_FUNCTION",
+      "canonicalLabelKo": "재귀적으로 정의된 함수",
+      "definition": "다른 함수값을 다시 입력으로 사용하는 재귀적 정의를 반복 적용하여 함수값의 패턴을 찾는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_RECURSIVE_FUNCTION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_edc71d1bac328b6dabfbc3edd2288bc6b48d75170fb981114040af0cf7215365",
+        "qid_v1_aff259e5befcab07f1e7be43161a2249d7bccc0eb4c5fccc8a7842cef452dc74"
+      ],
+      "internalDescription": "다른 함수값을 다시 입력으로 사용하는 재귀적 정의를 반복 적용하여 함수값의 패턴을 찾는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+      "canonicalLabelKo": "여러 가지 함수의 성질",
+      "definition": "항등함수·상수함수 등 여러 가지 함수의 성질을 이용해 함수값이나 조건을 결정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawProblemTypes": [
+        "PT_FUNCTION_TYPE_RELATION"
+      ],
+      "status": "ACTIVE",
+      "supportingItemCount": 14,
+      "supportingQuestionUids": [
+        "qid_v1_e7688300f155b626da6da9993f2720bff5fe4680d7bf4c5dd7d258d55549c957",
+        "qid_v1_e599d8075bdecc8c60c27028d95ce0f8cf1dc62bb8ab13531ad2dd315d4962df",
+        "qid_v1_32291e5f4ef9749a55b45800e0295ebdd4c3113cfa5efe80aedc6a7d39a42a28",
+        "qid_v1_c50214dc96a53027adda6a222bf3ba4e197763fbd7e7718639082b29e89798b1",
+        "qid_v1_9f2b3461db91f850d1988995e7660135a5c967e9da15b972332c20cccbeef4b7",
+        "qid_v1_bdcc7eae0a403dd0bea3e25ba367e5b304464cc140fd473ec9f996575c1153f2",
+        "qid_v1_e7d13d509d11dc8c59d928c8b7b6650f5ae8df1b70a40054d633c61bc334bcd5",
+        "qid_v1_4404c957f1ffaf7aaf3d7669383113326869768dd71603cc694c0ba290c0d0eb",
+        "qid_v1_45d8ee3dfedd8d278633830312b85108701dc53d0767f7354c094e24e617d238",
+        "qid_v1_b934ef7a67f9cf6b218ed042ec3b09617d40b4bff60fe29e7d08084814100f82",
+        "qid_v1_abc1cd3225f35eaf1aa2a496b95f296a7c39639b32e281ac74cb3b766948dc1c",
+        "qid_v1_18b55449dad8733664974a4477bf9ba2127b195fae84937a4f3a18bd7eee36c4",
+        "qid_v1_3c0a5225677db511c33a3cf0fc10ce334a81bb6adef3267863db5ae9043dfc28",
+        "qid_v1_29555484189fa35b758b89051021ff81efacec55f4ca61855c063c95c3375825"
+      ],
+      "internalDescription": "항등함수·상수함수 등 여러 가지 함수의 성질을 이용해 함수값이나 조건을 결정하는 문제 유형.",
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    }
+  ],
+  "templates": [
+    {
+      "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+      "canonicalLabelKo": "절댓값 함수의 일대일 조건",
+      "definition": "`일대일함수와 일대일대응` 안에서 '절댓값 함수의 일대일 조건'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "절댓값 함수의 일대일 조건",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_ABSOLUTE_LINEAR_SLOPE_SIGN_INJECTIVE",
+        "TPL_ABSOLUTE_VALUE_MONOTONICITY_INVERSE_EXISTENCE",
+        "TPL_ABSOLUTE_VALUE_PIECEWISE_BIJECTION_RANGE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_ABSOLUTE_VALUE_INJECTIVITY"
+      ],
+      "parentProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_16ff13c7c97ef1d86b011191020c2194e5b52aeb056b83e660aaef49f62b6cae",
+        "qid_v1_76063236bd0b62d78a1e69d8ae1db044e615e063199c6491fe391e5a0bc95102",
+        "qid_v1_29ddf3fe2132720523cf52ed9d3ddf6790b114ea9c2fab748caa795a2c356879"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+      "canonicalLabelKo": "일차함수의 구간 일대일대응",
+      "definition": "`일대일함수와 일대일대응` 안에서 '일차함수의 구간 일대일대응'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "일차함수의 구간 일대일대응",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_DECREASING_AFFINE_INTERVAL_BIJECTION",
+        "TPL_HALF_LINE_AFFINE_SELF_BIJECTION",
+        "TPL_INTERVAL_AFFINE_BIJECTION_ENDPOINT_MATCH",
+        "TPL_INTERVAL_TO_INTERVAL_AFFINE_BIJECTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_AFFINE_INTERVAL_BIJECTION"
+      ],
+      "parentProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_c81f4d939194fc2977007704d5845c61eb1fe905d74b7d323ec6ab64594f82ea",
+        "qid_v1_5be687beb5856b9944bda162d86e93705db77dfceff43e0a4339ba82caf2f5bf",
+        "qid_v1_9636d68e1db5f54ee7b8ca1b07c45ead800a95b960de8ecc07fbf90fd816c86e",
+        "qid_v1_aaf6f76c02f6719ce1bb877781a99b0af1ecd78d42a741873f6f75e902ef5a3c"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+      "canonicalLabelKo": "함수·일대일대응·상수함수 등의 개수",
+      "definition": "`함수의 개수` 안에서 '함수·일대일대응·상수함수 등의 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수·일대일대응·상수함수 등의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_BIJECTION_CARDINALITY_AND_COUNT",
+        "TPL_CONSTANT_IDENTITY_BIJECTION_COUNT",
+        "TPL_FUNCTION_BIJECTION_CONSTANT_COUNT",
+        "TPL_FUNCTION_TYPE_COUNT_TOTAL"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_BASIC_FUNCTION_TYPE_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_COUNTING",
+      "status": "ACTIVE",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_ec1e0e41b4b5608ec4c8bf031750a75ea07b531d638dddb79019642deba1058d",
+        "qid_v1_56e9f9d76c07d8044ba5624925c233bf01fee46585af20448ea6ee64694e9a04",
+        "qid_v1_69f6fc12c1ce3d35ca8221a556c2f60d43a138c25143366124c1878aa296a300",
+        "qid_v1_be21a70223b601c6e88e388d751c9907817461b05d69867b857907fe6ecc5e3a",
+        "qid_v1_a37fbcd45ec51c83380b850a98dfe84bac159b882786199509d207fb3b6161fa"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "canonicalLabelKo": "일대일함수·일대일대응의 판정과 조건",
+      "definition": "유한집합 또는 주어진 함수에서 함수값의 중복과 치역 조건을 확인하여 일대일함수·일대일대응 여부 또는 매개변수 조건을 결정하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "서로 다른 입력의 함수값 중복 여부와 치역을 확인해 일대일 조건을 판정한다.",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_INJECTIVE_PARAMETER_COUNT",
+        "TPL_BIJECTION_FUNCTION_CHOICE_REAL_DOMAIN",
+        "TPL_BIJECTION_GRAPH_CHOICE",
+        "TPL_FINITE_DOMAIN_INJECTIVE_CHOICE",
+        "TPL_INJECTIVE_FUNCTION_CHOICE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_BIJECTION_DIRECT_JUDGMENT",
+        "TPL_FINITE_DOMAIN_INJECTIVITY"
+      ],
+      "parentProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_b083d49f31dfca015df6de1e700a36458a0086fad2dceef4faadd09a4c47595c",
+        "qid_v1_44f28162ae84096a6b38a0cc8ea443984c041f9a0a7bd17aa839be413e7f409b",
+        "qid_v1_d8dc2313934a7528c606d769d2a47624a2516613ad30debd18384cd129ec8ec3",
+        "qid_v1_a2d115ff3f09b712f263a601ae4197818b25575dce7cf2e8483a22f1ce3f6746",
+        "qid_v1_dd5983ebffb0dd84bad53f256489d0ffc738f7d71f0a5a19ca676bd796e18cd7",
+        "qid_v1_a84762d677f1003e5dddace605d252c3dba03eb2ab5d9daeacbbb03f6f4f3e3d"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITE_EXTREMUM",
+      "canonicalLabelKo": "합성함수의 최댓값·최솟값",
+      "definition": "`합성함수의 그래프와 치역` 안에서 '합성함수의 최댓값·최솟값'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMPOSITE_EXPRESSION_EXTREMUM_ABSOLUTE_VALUE",
+        "TPL_COMPOSITE_MONOTONICITY_ENDPOINT_EXTREMUM",
+        "TPL_INNER_RANGE_OUTER_QUADRATIC_MINIMUM"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITE_EXTREMUM"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_bd85bded2f7bc81f43a8a0b2fcbf5fc2d8e373484f42dda4810f9405b8f812c8",
+        "qid_v1_544d54009022146d3c5d623a2927a3dc396e6a6284e3f6dcb49dffd6f981c6ad",
+        "qid_v1_c833a22742c99df9c309f1f712a5ab18fca3124505f42c182a98437f303f36f0"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "canonicalLabelKo": "합성함수의 구간별 그래프 분석",
+      "definition": "`합성함수의 그래프와 치역` 안에서 '합성함수의 구간별 그래프 분석'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수의 구간별 그래프 분석",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMPOSITE_GRAPH_AREA",
+        "TPL_COMPOSITE_GRAPH_AREA_AND_INTERSECTION_COUNT",
+        "TPL_COMPOSITE_GRAPH_FIXED_POINT_COUNT",
+        "TPL_COMPOSITE_GRAPH_UNIQUE_INTERSECTION_PARAMETER",
+        "TPL_COMPOSITE_PIECEWISE_GRAPH_INTERSECTION",
+        "TPL_PIECEWISE_COMPOSITE_GRAPH_AREA",
+        "TPL_PIECEWISE_DOUBLE_COMPOSITION_CONSTRUCTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_55e152134d44354b78b3650a1fee0045a708d14ec25b11ccc57307565a9290f6",
+        "qid_v1_96e0df1cec83278cbb4ab8a02c968fa89bc568b08445070b498e88ab493de545",
+        "qid_v1_d3cbc2f3766036e010ef1f92fe0df96631fde9ceb4d5ca7dfbed428ece5d74c0",
+        "qid_v1_4e5822b96a047fe4ba5f8573a4064e6ead9a33c93dd82c3ccd66fd939a0f857a",
+        "qid_v1_691a6152f9ac6386910d9c4599141c3387dfa75b8a509507d107bddd813e4589",
+        "qid_v1_491505a6336c8222f00020f8e7a7d1c161a48485d78200fa013bc6c02d9f5720",
+        "qid_v1_d4f1a92208816b516820f926746e23312693f501e9c00c8dcff17ea60bb8ed55"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITE_RANGE",
+      "canonicalLabelKo": "합성함수의 치역",
+      "definition": "`합성함수의 그래프와 치역` 안에서 '합성함수의 치역'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수의 치역",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMPOSITE_RANGE_NATURAL_COUNT_PARAMETER",
+        "TPL_TWO_VALUE_FUNCTION_DOUBLE_COMPOSITION_RANGE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITE_RANGE"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_f731234ab6ab4361b550360d85087c2145dd64fdf3651e3676db8b57bc346053",
+        "qid_v1_c6f02529625c32e858d2db7fee94bd37a83cf9bc917be582a61e69d88870e37e"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+      "canonicalLabelKo": "합성함수 방정식 풀기",
+      "definition": "`합성함수 방정식과 부등식` 안에서 '합성함수 방정식 풀기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수 방정식 풀기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_ABSOLUTE_DOUBLE_COMPOSITION_EQUATION",
+        "TPL_COMPOSITION_EQUATION_INTERMEDIATE_VALUE_PREIMAGE",
+        "TPL_COMPOSITION_EQUATION_SUBSTITUTE_ABSOLUTE_VALUE",
+        "TPL_COMPOSITION_TARGET_PREIMAGE_BRANCHES",
+        "TPL_GEOMETRICALLY_DEFINED_FUNCTION_DOUBLE_COMPOSITION",
+        "TPL_PIECEWISE_COMPOSITION_PARAMETER_EQUATION",
+        "TPL_QUADRATIC_DOUBLE_COMPOSITION_ZERO_PREIMAGE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_EQUATION_SOLVE"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EQUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_d5d93457bc55cc5f0a7245683b9a81ec03e7991354c47db7c99e905d0782b6b7",
+        "qid_v1_7f6ac005cb0c482fba6c7df08ac893b3aa1dbb4165e773002add80468170b94d",
+        "qid_v1_4a4705bf71e4073073148726aa93c733f79f40e2aa7413eda8fedf5909c8a8e3",
+        "qid_v1_c58b3816861b22d76d415a19959cde8e132e39e7124a6cf0f0a117d6996dac91",
+        "qid_v1_39dbdd45e0f1e12414fcd5e4f8c155c2db1411928f225ae44c29b9ba3b5fdb5d",
+        "qid_v1_fa3bbbc191e85b2ef7c046943b97fcac4e16a526a9956f782017c65a5a456baf",
+        "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+      "canonicalLabelKo": "그래프에서 합성함숫값 역추적",
+      "definition": "`합성함수의 계산` 안에서 '그래프에서 합성함숫값 역추적'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프에서 합성함숫값 역추적",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_GRAPH_COMPOSITION_EQUATION_PREIMAGE",
+        "TPL_GRAPH_DOUBLE_COMPOSITION_TARGET",
+        "TPL_GRAPH_DOUBLE_COMPOSITION_VALUE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_GRAPH_TRACE_VALUE"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_db28f55845c24a2a882107fe5ffb9c15c5c5398a6fda2f095bff8c8e4ac549be",
+        "qid_v1_82e13ac0eebf8e02aa33f9baa575b79ed6acb22c4506300f4a395d189ba82894",
+        "qid_v1_7726ff0240eebe3f169a7d561d14e55c39e39baa4208229899de21c5cba95753"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_INEQUALITY",
+      "canonicalLabelKo": "합성함수 부등식 풀기",
+      "definition": "`합성함수 방정식과 부등식` 안에서 '합성함수 부등식 풀기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수 부등식 풀기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMPOSITE_NONNEGATIVE_BY_INNER_RANGE",
+        "TPL_DOUBLE_COMPOSITION_INEQUALITY_SIMPLIFY",
+        "TPL_GRAPH_DOUBLE_COMPOSITION_INEQUALITY"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_INEQUALITY"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EQUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_0714a9edf362151e8d5c29ec0de4f66e202aac879d090774c666bc3b7bbdcebb",
+        "qid_v1_68bfa07407ffb9470a91599365a90298a9dccd4a3969c5245e4834a0358f1b6e",
+        "qid_v1_9702b8c76fa41553cfa1e9036f84b39f8c823ccd91ca24885ac89b63ed38f52e"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+      "canonicalLabelKo": "합성함수의 관계 조건",
+      "definition": "합성함수의 교환 관계 또는 합성 후 함수 사이의 관계 조건을 이용해 함수나 매개변수를 결정하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수 사이의 관계식을 세우고 모든 입력에서 성립하도록 조건을 비교한다.",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_LINEAR_FUNCTION_COMPOSITION_CLOSURE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_CLOSURE",
+        "TPL_COMPOSITION_COMMUTATIVE"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_745f4e2587373a6a054e0d0d0bf9c66bd61ab5d59ccb7cb2675826fb06002510",
+        "qid_v1_b91e87535b96dd5a83dbfab1985a01d71deaac2ff8b94e051c4b0c92e5a4c1f9",
+        "qid_v1_00d574b953293978a61d8e0481857da0ca79aafe4c65fbb161ffa760ec4eb2da",
+        "qid_v1_e9ff4cd9e4bf67d0e6b8cde3ded63f69fd699f9c6dec4fa42a683a3093f45dae",
+        "qid_v1_f0656cf418ef786bc3ecc16af6f758ba7988df917f627451e612c37b726b1004",
+        "qid_v1_e42581fa364eeddc58d9d2651f4f662de605c7df35bcf4b296f08b5e772b7436"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_ROOT_COUNT_PARAMETER",
+      "canonicalLabelKo": "합성함수 방정식의 실근 개수와 매개변수",
+      "definition": "`합성함수 방정식과 부등식` 안에서 '합성함수 방정식의 실근 개수와 매개변수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수 방정식의 실근 개수와 매개변수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_FLOOR_ABSOLUTE_COMPOSITE_ROOT_COUNT_PARAMETER",
+        "TPL_PIECEWISE_OUTER_QUADRATIC_INNER_THREE_ROOTS",
+        "TPL_QUADRATIC_DOUBLE_COMPOSITION_ROOT_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_ROOT_COUNT_PARAMETER"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EQUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_1ee3e99ff05c5d3bb883fdc1f867bff21192c5e5558c9957906ca193f06c23cb",
+        "qid_v1_505ed0f0bc35e83f02547181f477b6f1591781f0cb718627528187f03500f8b6",
+        "qid_v1_3e81764e9e14546718893916aa0ccd60fc4da90f86645c8a207b56a819bc2b88"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "canonicalLabelKo": "합성함숫값 직접 계산",
+      "definition": "`합성함수의 계산` 안에서 '합성함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함숫값 직접 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMPOSITION_ASSOCIATIVITY_VALUE",
+        "TPL_COMPOSITION_VALUE_EQUATION_LINEAR",
+        "TPL_DIRECT_COMPOSITION_VALUE",
+        "TPL_DIRECT_TWO_COMPOSITION_VALUES"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_VALUE_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 11,
+      "supportingQuestionUids": [
+        "qid_v1_b41f78207b5d42581b5b81bce5dca943d43e821682e9ccc4be36ae5eb3c39fab",
+        "qid_v1_f119f4d90e9329f0703a2ffda38d6e0c79edb5e8cfe8f36c1c323b8bd2aa0be0",
+        "qid_v1_9c44778f664b9a3724c3eec3d442acd555bddbd2efb0f849af414e589ea6668a",
+        "qid_v1_a30a1a31861336e12b1b5399cb8c795bc7002a394b09e1cdc14a4c0266cdeff4",
+        "qid_v1_b426aefed8d368dc579c2e752c14328e48c52ba709b063956b2c86d5272f86cf",
+        "qid_v1_eff677bb7030499f7fdc355b04599b299d96da63f22278014d899077c7dc36bb",
+        "qid_v1_e0e6d80efe0c4212e1e81cd45f6790ffcb4ca037f1e2db94e634a18574b75241",
+        "qid_v1_13e8446a41ade1947e1cfdcafdb45d3eff9b10e4cfb3a10e6053eeabbeb960b4",
+        "qid_v1_3cf5838640cef4ffc32ac30c3af9462328c5f653fc6f039231b4f0120b4ecdb5",
+        "qid_v1_54662cf739eec0879fa5192e1d5d24a2628cdef08d3dadd4d9545bafead27f8f",
+        "qid_v1_2888ac2eddff22a7488756f79981879e101d59efd744e6efd820f36e2cb7d3e7"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+      "canonicalLabelKo": "대응도에서 합성함숫값 계산",
+      "definition": "`합성함수의 계산` 안에서 '대응도에서 합성함숫값 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "대응도에서 합성함숫값 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_MAPPING_COMPOSITION_VALUE",
+        "TPL_MAPPING_DOUBLE_COMPOSITION_VALUE",
+        "TPL_MAPPING_TWO_COMPOSITION_VALUES"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_VALUE_MAPPING"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_b7a7f1b8820e2b28da71cec1b1be17399e147cc104b24a63c2e1c67edb4f6185",
+        "qid_v1_a282b30124dbb83e2413fc25c0bd825a89544e42c89454261ff323dbb0573022",
+        "qid_v1_0237b4a53870f00c9a013af45e35dd7971ba5f565cd01b3033b78bfa6b26c4fe",
+        "qid_v1_01eeaa3d642bb7d576d6b811d6dae0a1c47f1be0ffa754453aeda7f53e47fb9b",
+        "qid_v1_dc6b77d19163ba2eacf184a48ef6eb3290cec51a6a68711d5df7c8c79c778621"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
+      "canonicalLabelKo": "역함수가 포함된 합성함숫값 계산",
+      "definition": "`합성함수의 계산` 안에서 '역함수가 포함된 합성함숫값 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함수가 포함된 합성함숫값 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMPOSED_FUNCTION_INVERSE_FROM_MAPPING",
+        "TPL_COMPOSED_MAPPING_INVERSE_VALUE",
+        "TPL_COMPOSITE_INVERSE_NESTED_LINEAR_VALUE",
+        "TPL_COMPOSITE_INVERSE_NESTED_VALUE",
+        "TPL_INVERSE_AND_COMPOSITION_NESTED_VALUE",
+        "TPL_INVERSE_INPUT_GRAPH_TRACE",
+        "TPL_INVERSE_THEN_COMPOSITION_DIRECT_VALUE",
+        "TPL_LINEAR_FUNCTION_WITH_INVERSE_COMPOSITION_PARAMETER",
+        "TPL_MAPPING_MIXED_COMPOSITION_INVERSE_VALUE",
+        "TPL_REPEATED_INVERSE_GRAPH_TRACE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_COMPOSITION_WITH_INVERSE_VALUE"
+      ],
+      "parentProblemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 10,
+      "supportingQuestionUids": [
+        "qid_v1_257441a75c1fc9810d0b30e0baac8a44195fddddb32e0d6ec01c6c4d9f9677c6",
+        "qid_v1_bf695cd7b5535f4b5fd0ad4e0a238d268787b3e624b66acd4940641dea04eaa4",
+        "qid_v1_7a6736fd913fb5da73bb010024d3fb272dbbde78aae0f4e3e8c054aea1009100",
+        "qid_v1_545698b27c510148244e5b02695d11caf760131e8812cfada16f7e904d599a0c",
+        "qid_v1_20e737887dba93f0c9ae5fd90e364588d3c766dd297fd6bce8e651dc691b4778",
+        "qid_v1_d34c8250ad9178a8315778eca1b00556e5767a8b47ad6d9c8f1d349e1ca702f0",
+        "qid_v1_e4f8695e8d36958ddac15c243fd14a5a784357a6f1cabc3f6b6d8e558473c593",
+        "qid_v1_a5fd99893d064421a3ef774f1080085ca7c4c1389242f8183a41941e75b09c41",
+        "qid_v1_5ca781fccba3211868389be5a95ce645875edffb1ee8f4e63d55e7a832a14492",
+        "qid_v1_935c1206ab9ee2ebeaaf5d49572619a33844dc487b0b96e29b4c364508c45f37"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_CONSTANT_FUNCTION_PREIMAGE",
+      "canonicalLabelKo": "상수함수가 되기 위한 같은 함수값의 개수",
+      "definition": "`여러 가지 함수의 성질` 안에서 '상수함수가 되기 위한 같은 함수값의 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "상수함수가 되기 위한 같은 함수값의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_CONSTANT_FUNCTION_PREIMAGE_MULTIPLICITY_RANGE_VALUE",
+        "TPL_CONSTANT_FUNCTION_THREE_PREIMAGES_MAX_VALUE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_CONSTANT_FUNCTION_PREIMAGE"
+      ],
+      "parentProblemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_3c0a5225677db511c33a3cf0fc10ce334a81bb6adef3267863db5ae9043dfc28",
+        "qid_v1_29555484189fa35b758b89051021ff81efacec55f4ca61855c063c95c3375825"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "canonicalLabelKo": "조건을 만족하는 함수의 개수",
+      "definition": "`함수의 개수` 안에서 '조건을 만족하는 함수의 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "조건을 만족하는 함수의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_BIJECTION_DOMAIN_SUBSET_BY_RESIDUE_CLASSES",
+        "TPL_EVEN_FUNCTION_COUNT_FINITE_DOMAIN",
+        "TPL_FUNCTION_COUNT_PAIRWISE_PRODUCT_AND_RANGE_SIZE",
+        "TPL_IMAGE_STABILITY_AND_DERANGEMENT_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_CONSTRAINED_FUNCTION_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_COUNTING",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_21e3ea74d7de3776e1481fbae093363ca1edd303d8235717751edd2f9e539207",
+        "qid_v1_9cd5019837349e602a91100073a1ff1709ccc0f4ad4b5d70b16aee85c53c9c0b",
+        "qid_v1_d22a84ba0ec3c5399788049d5e61924c39f5a7735baa1819a6194ff967c1ee39",
+        "qid_v1_dfd3fd6b5ff1e71492e419ce7f02cbe01dd14715372a2465c787b80d01d25a3f"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+      "canonicalLabelKo": "정의역·공역·치역의 판정과 조건",
+      "definition": "정의역·공역·치역을 판정하거나 함수가 주어진 정의역에서 공역으로 잘 정의되기 위한 치역 조건을 구하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "정의역에서 얻는 함수값의 범위를 공역과 비교한다.",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_MAPPING_DOMAIN_CODOMAIN_RANGE_INVERSE_JUDGMENT",
+        "TPL_MAPPING_DOMAIN_CODOMAIN_RANGE_JUDGMENT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_DOMAIN_CODOMAIN_RANGE_JUDGMENT",
+        "TPL_SELF_MAP_RANGE_CONDITION"
+      ],
+      "parentProblemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_08ffe434629c584cb3411ba95c12af2bd97b63ada2d2ca3a191025dad9f244c9",
+        "qid_v1_ae2db8a0d398c4468228e75c23b6da56da33538e5d5a0a8236949db66dbcabd1",
+        "qid_v1_344ea01b2ba10863d1f0f9fda681a8737455ff8738b86caa58c7b0493ee4db4c"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION",
+      "canonicalLabelKo": "두 함수가 같아지는 정의역 구하기",
+      "definition": "`서로 같은 함수` 안에서 '두 함수가 같아지는 정의역 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "두 함수가 같아지는 정의역 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_EQUAL_FUNCTION_DOMAIN_NONEMPTY_SUBSET_COUNT",
+        "TPL_EQUAL_FUNCTION_DOMAIN_ROOTS_VIETA",
+        "TPL_EQUAL_FUNCTION_DOMAIN_SET_SELECTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_EQUALITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_8f115457ab0b984f7fc273676b159161a6f71efe68094090fa239268d832e479",
+        "qid_v1_32109754691674334afd04529aa930b6836787a1f21bf337ae71205f2b5f94ff",
+        "qid_v1_e09332003a1cab6b50c1ce71cf05325fe9685ade8ed688aaf357d8fbcfff14bd"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN",
+      "canonicalLabelKo": "유한 정의역에서 두 함수가 같은 조건",
+      "definition": "`서로 같은 함수` 안에서 '유한 정의역에서 두 함수가 같은 조건'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "유한 정의역에서 두 함수가 같은 조건",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_EQUAL_FUNCTION_FINITE_DOMAIN_COEFFICIENT",
+        "TPL_EQUAL_FUNCTION_FINITE_DOMAIN_PARAMETER"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_EQUAL_FUNCTION_FINITE_DOMAIN"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_EQUALITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_b083945accd03d64dfdf4cb62be3d25baf4b89109ff4118a8159f6e79500ea22",
+        "qid_v1_1d6b96853e2077702ee830f94d623b4eca3b799388e3ce599f222ff34086331c",
+        "qid_v1_eaf545bedc7da67fbc08ddde73643695b94f487cb877e5cc2349258b63c75564",
+        "qid_v1_1eb7da7f923dad75e562ed462df44295a9398173b23c7e4c1beb74da7b001b59",
+        "qid_v1_054817e96b027bf35381db41e77883cb22c4debb6e627180e130216d49c2c36d"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+      "canonicalLabelKo": "합성함수 조건으로 일대일대응 결정",
+      "definition": "`유한집합의 일대일대응` 안에서 '합성함수 조건으로 일대일대응 결정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수 조건으로 일대일대응 결정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_BIJECTION_PARTIAL_VALUES_COMPOSITION_MAX",
+        "TPL_PERMUTATION_COMPOSITION_INVERSE_CONSTRAINT",
+        "TPL_PERMUTATION_ITERATION_CONSTRAINT",
+        "TPL_TRIPLE_COMPOSITION_FORCES_BIJECTIONS",
+        "TPL_TWO_BIJECTIONS_COMPOSITION_EQUALITY_AND_INVERSES",
+        "TPL_TWO_BIJECTIONS_PARTIAL_VALUES_COMPOSITION_DEDUCTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION"
+      ],
+      "parentProblemTypeKey": "PT_FINITE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_c43d562f959d0be43b94961c4b3b8b69484a3fdaa2b87e53bb7e2a3bed5f371b",
+        "qid_v1_f29e619b9b3893f55bb0139ccc5d1777e3f7da766c0af10560c2b1b2554f6a71",
+        "qid_v1_75c5f4e9b3d5e66f09f12410e6cb06463d9f132aa7bca1e4e67895199824b9fa",
+        "qid_v1_bae9870ec008fd67605540bca3a1690d9eafe7e92c81c4de207ce9020ef2157e",
+        "qid_v1_f32ddd4a67fa78e717e95e83f4764cfe4519407aba33d96ce8e1a70b295f18b7",
+        "qid_v1_58d0ace91f7b508bc009fe65ced90ee29a30087180a4777f09a5b618e88b237e"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FINITE_BIJECTION_DIRECT_DEDUCTION",
+      "canonicalLabelKo": "주어진 함수값으로 일대일대응 결정",
+      "definition": "`유한집합의 일대일대응` 안에서 '주어진 함수값으로 일대일대응 결정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "주어진 함수값으로 일대일대응 결정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_BIJECTION_ADJACENT_RELATION_INEQUALITY",
+        "TPL_DEFINED_BY_MAX_BIJECTION_DEDUCTION",
+        "TPL_FINITE_BIJECTION_DIFFERENCE_DEDUCTION",
+        "TPL_FINITE_BIJECTION_MISSING_VALUES_PARAMETER",
+        "TPL_TWO_BIJECTIONS_COMPOSITION_VALUE_DEDUCTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FINITE_BIJECTION_DIRECT_DEDUCTION"
+      ],
+      "parentProblemTypeKey": "PT_FINITE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_64b6aaf43edc7d912b684d754d29fd28c7f769489b6948502eb8ef83d603285f",
+        "qid_v1_258c6788d267b320845c1e21174eec6c9449004265b50d9c6cdb9b5a7169c57c",
+        "qid_v1_8bbe3131a614f8a2375233bffc4b2ef949d6f73e082a19a690ed283f1156509f",
+        "qid_v1_ff9763d664750ea5d2f8bf553ef8e5f91e8144f0871df9945d4ab3a120df41cc",
+        "qid_v1_410e608ca681f4d93aae50be9f26695087425177d08e2f806ab48b3ae5d9653f"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FINITE_BIJECTION_INVERSE_DEDUCTION",
+      "canonicalLabelKo": "역함수 조건으로 일대일대응 결정",
+      "definition": "`유한집합의 일대일대응` 안에서 '역함수 조건으로 일대일대응 결정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함수 조건으로 일대일대응 결정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_FINITE_BIJECTION_COMPOSITION_INVERSE_SIGN",
+        "TPL_SELF_INVERSE_PERMUTATION_CONSTRAINT",
+        "TPL_THREE_PERMUTATIONS_INVERSE_COMPOSITION_IDENTITY"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FINITE_BIJECTION_INVERSE_DEDUCTION"
+      ],
+      "parentProblemTypeKey": "PT_FINITE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_31d9d86ab8993be1b43826b2b87c07ea48456188fc6bbe7e2f0a6e77c0b24200",
+        "qid_v1_553149c07e65926ff1b13503f8fe5bafa868890f9dab9402c8599cfa3041c68c",
+        "qid_v1_60fd48203c02382fa9c4850400c98956c11a5c1234813bf21cca147b16b99869"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+      "canonicalLabelKo": "가법형 함수방정식",
+      "definition": "`함수방정식` 안에서 '가법형 함수방정식'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "가법형 함수방정식",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_ADDITIVE_FUNCTION_INTEGER_MULTIPLE_VALUES",
+        "TPL_ADDITIVE_QUADRATIC_TERM_SYMMETRIC_SUM"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTIONAL_EQUATION_ADDITIVE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_a2e9aac133cfb8ba1cdb52fa19ae3f3f689d36b8fb76b7a539710e82291898d3",
+        "qid_v1_7b7c47bf47c9f4b7033e22d78553d7b5a1c0c627ab6e4e7349805bf3959f06df"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE",
+      "canonicalLabelKo": "곱셈형 함수방정식",
+      "definition": "`함수방정식` 안에서 '곱셈형 함수방정식'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "곱셈형 함수방정식",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_MULTIPLICATIVE_ARGUMENT_PRIME_FACTORIZATION",
+        "TPL_MULTIPLICATIVE_CAUCHY_SPECIAL_VALUES",
+        "TPL_MULTIPLICATIVE_FUNCTION_TO_INVERSE_ADDITIVE_RULE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_9afbe7bbc52dd441a33e0dc601c5fb402272d3348b74e42bbd6f09404d70af8f",
+        "qid_v1_3a95090e00bfda8bb2be20829c4cc54dcf861ef4dea3d46dd459f803b931d4b9",
+        "qid_v1_7a1ec72b55743d4e449737ed777f15fb30819a8c5406434f3fb69023c8533ae4"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+      "canonicalLabelKo": "대입으로 대칭·배수 관계 구하기",
+      "definition": "`함수방정식` 안에서 '대입으로 대칭·배수 관계 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "대입으로 대칭·배수 관계 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_FUNCTIONAL_EQUATION_SYMMETRY_SCALING",
+        "TPL_TWO_ARGUMENT_REFLECTION_LINEAR_SYSTEM"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTIONAL_EQUATION_SYMMETRY"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_318ead8395a1055fccd1537392798d366628956eb21e199db637a42be6e90419",
+        "qid_v1_fa6d9219159bfc1342f7b405a374dc39d2048d4eb6b40dd852b8a64113153b79"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "canonicalLabelKo": "정의역·치역 직접 구하기",
+      "definition": "`정의역·공역·치역` 안에서 '정의역·치역 직접 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "정의역·치역 직접 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_DOMAIN_RANGE_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_DOMAIN_DIRECT",
+        "TM_IRRATIONAL_DOMAIN_RANGE_DIRECT",
+        "TM_IRRATIONAL_EXPRESSION_REAL_VALUE_RANGE",
+        "TM_IRRATIONAL_RANGE_DIRECT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_77c98a83785ce9e3baf04cc9cc2d9a1315e522ac115b21b92334eba35fc9ce87",
+        "qid_v1_abd53e89a1baf01e3e79fc5863cd22a068303ace738847cb09ea4b5cac2fecc7",
+        "qid_v1_be693dc543925342b4a61e103247330dce1805ee765ef3fdb8716856688a5b78",
+        "qid_v1_a7e550bab48ae95168128caa38c26192fe4162e177fb713117343b097d801354",
+        "qid_v1_6f76d81b6acb28421ef2a6eb282a7f878e797e3d15a525bc7bba8f7b1951c9b3",
+        "qid_v1_fc867be63c41606401b45c304421ff35cb086b5e27f9de90c909dd59530eb1e2",
+        "qid_v1_438c05bb435a0b7b15f8fa7e6cb4daa78df2c62d8075f49b50311cbdc1ba3c6f"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
+      "canonicalLabelKo": "정의역·치역에서 최댓값·최솟값 구하기",
+      "definition": "`정의역·공역·치역` 안에서 '정의역·치역에서 최댓값·최솟값 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "정의역·치역에서 최댓값·최솟값 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM"
+      ],
+      "parentProblemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_DOMAIN_RANGE_PARAMETER_EXTREMUM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_d6469699a236d942ae1318ed7b1f24aeff0e5c9dd6715b4893f99e4011a7f863"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+      "canonicalLabelKo": "정의역·치역의 매개변수 조건",
+      "definition": "`정의역·공역·치역` 안에서 '정의역·치역의 매개변수 조건'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "정의역·치역의 매개변수 조건",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER"
+      ],
+      "parentProblemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_DOMAIN_POINT_TO_RANGE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_e88a7e61d616cf5448d4424c133991c4d51874e030b1037abae3a5f64a980182"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+      "canonicalLabelKo": "범위 조건으로 계수의 최댓값·최솟값 구하기",
+      "definition": "`함수의 최댓값·최솟값` 안에서 '범위 조건으로 계수의 최댓값·최솟값 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "범위 조건으로 계수의 최댓값·최솟값 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_INTERVAL_BOUND_COEFFICIENT_EXTREMUM",
+        "TM_RATIONAL_INTERVAL_BOUND_COEFFICIENT_EXTREMUM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_09f96fe2f80f16dfa7944ecce906317e726cf073d7cc9fbce0c60ad241d9b461",
+        "qid_v1_ceb348a6f12ae1d9be955be79600f816ef84c5d6516c83b35a9d80134ed20448",
+        "qid_v1_6f439f2026da94f0b64237ba3eedb4f7f6ad07fe1bddc9071f5e69aa0acb4408"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "canonicalLabelKo": "거리·넓이·둘레의 최댓값·최솟값",
+      "definition": "`함수의 최댓값·최솟값` 안에서 '거리·넓이·둘레의 최댓값·최솟값'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "거리·넓이·둘레의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "status": "ACTIVE",
+      "supportingItemCount": 8,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_ASYMPTOTE_RECTANGLE_PERIMETER_MINIMUM",
+        "TM_RATIONAL_AXIS_DISTANCE_SUM_MINIMUM",
+        "TM_RATIONAL_PIECEWISE_TRIANGLE_AREA_MINIMUM",
+        "TM_RATIONAL_POINT_LINE_DISTANCE_MAXIMUM",
+        "TM_RATIONAL_RIGHT_TRIANGLE_AREA_MINIMUM_AMGM",
+        "TM_RATIONAL_TRIANGLE_AREA_AMGM",
+        "TM_RATIONAL_TRIANGLE_AREA_MINIMUM_LINE_DISTANCE",
+        "TM_RATIONAL_VERTICAL_DISTANCE_MINIMUM_AMGM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a526bfca1b2fca0635348946c2c3dd967eea032a8ca7efbc5d2ba29c435e4d54",
+        "qid_v1_bb5eb3b6c5c9097a0801b1ad0f3ca1befdddf9d869c338a8dadd5d0975b24c3a",
+        "qid_v1_6a0e0d0dd1e88ae839d2b4df941a03fa3bebf25babccf8dcd488fa4bccc3692f",
+        "qid_v1_ef530268701fa588d278ba894b3e62ca0af1777f197ea2cccac71666a09db681",
+        "qid_v1_272de1067b5fa0e27a14e6bef4c409f142daf014d580ff4a2137c4078e0d6332",
+        "qid_v1_a4682ef37bbf50941ed540d74f18c0f47369646e56b3cf30c28269dc7035f0b6",
+        "qid_v1_5bdcc2492f586d7d94e83e3092e7b595ad54a17c2afb41daad67c24792696fc1",
+        "qid_v1_9846d5fa3d7dd8d6e25fb0f336383b298e7772148b370fd6273a811ebe2877d3"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "canonicalLabelKo": "구간 끝점과 함수의 최댓값·최솟값",
+      "definition": "`함수의 최댓값·최솟값` 안에서 '구간 끝점과 함수의 최댓값·최솟값'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "구간 끝점과 함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "status": "ACTIVE",
+      "supportingItemCount": 11,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_INTERVAL_ENDPOINT_MAXMIN",
+        "TM_IRRATIONAL_INTERVAL_ENDPOINT_MAXMIN_PARAMETER",
+        "TM_IRRATIONAL_PARAMETER_INTERVAL_MAXMIN",
+        "TM_RATIONAL_ASYMPTOTE_DETERMINE_INTERVAL_MAXMIN",
+        "TM_RATIONAL_PARAMETER_INTERVAL_MAXIMUM",
+        "TM_RATIONAL_PARAMETER_INTERVAL_MAXMIN",
+        "TM_RATIONAL_PARAMETER_INTERVAL_MINIMUM",
+        "TM_RATIONAL_SUBSTITUTION_MAXIMUM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_f94e361b6dcb29316399b73c2b8e2efa0a534c0d4408419842edb71c7c13d88f",
+        "qid_v1_4d8127d06293a63ae92a6981240992c8d6f85ffcd3dd3d2ac8180d59adb1dafc",
+        "qid_v1_cd22ffa589e2eaec25b40bfc7bd625185dd31cb14d5b48f2475836d701b88573",
+        "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b",
+        "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442",
+        "qid_v1_a43d10ae6712d8b5f53b85f168894dbab85f01bf37d4f8db3b1f73d356015ac6",
+        "qid_v1_87b2f4abff17e0bf08726902af7ac65b4f0b8809a746f587fc67fa7f2d7483e8",
+        "qid_v1_3ed615f7b073e04f8651c729afbdf3789a8b0807914d31beb2d960619f5a18bd",
+        "qid_v1_cd9470be46df0cf7c2704d43295884cc4bfd183eb29d41b58493bfaf56b0386b",
+        "qid_v1_57108aa0ded87565e6dbe54348b57a178c26810ab85d6e9a6c7fd277d8761741",
+        "qid_v1_34b44884347051cf12fece2f41074f33a77b42133a1a8a57f811a8b40518e7ee"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "canonicalLabelKo": "매개변수 함수의 최댓값·최솟값",
+      "definition": "`함수의 최댓값·최솟값` 안에서 '매개변수 함수의 최댓값·최솟값'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "매개변수 함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_MINIMUM_DIRECT_ENDPOINT",
+        "TM_IRRATIONAL_PARAMETERS_FROM_RATIONAL_GRAPH_INTERVAL_MAXMIN",
+        "TM_RATIONAL_WORD_MODEL_INTERVAL_MAXMIN"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+        "qid_v1_d02a18c8ec6cbc9de40160b3368079ddcc9fbfb5abfcaa0f786b05133da3fa78",
+        "qid_v1_f783f7feed6ce7535dd579aa6058766d0b10f75c0a7b4e6da81897f447785e4f"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+      "canonicalLabelKo": "점근선과 한 점으로 함수식 구하기",
+      "definition": "`함수식 구하기` 안에서 '점근선과 한 점으로 함수식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "점근선과 한 점으로 함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_RECOVERY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_FUNCTION_FROM_ASYMPTOTES_AND_POINT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_62fe17e4a415a25a64de6ceaec5247d83d59a93b6f21f4bef649f488f4edba42"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+      "canonicalLabelKo": "그래프의 특징으로 함수식 구하기",
+      "definition": "`함수식 구하기` 안에서 '그래프의 특징으로 함수식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프의 특징으로 함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_FORM_FROM_GRAPH"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_RECOVERY",
+      "status": "ACTIVE",
+      "supportingItemCount": 9,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_FUNCTION_FROM_GRAPH_FEATURES",
+        "TM_IRRATIONAL_PARAMETER_SIGNS_FROM_GRAPH",
+        "TM_RATIONAL_FUNCTION_FROM_CENTER_AND_INTERVAL_EXTREMUM",
+        "TM_RATIONAL_FUNCTION_FROM_GRAPH_FEATURES"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_d7286b88b173eba107aa51b7bc036f33bde8a1fd0aef5728242034fff18beeee",
+        "qid_v1_51f0609879f3d1788131b555ae07e9dc3aca960d3477aa83beec17832f1f9a5f",
+        "qid_v1_7a7b7527f4e8c254d3c978d1ad7a60ba1bb3b9df621716211577596b9e43f18a",
+        "qid_v1_0e8782016b00f03d4cfef5f4e770a64141fb37c78d6cb0f5c71fcffab2bb928b",
+        "qid_v1_190a296ab0e92395c81f36775e2ed0ee1a400b37fd5d7dc5c4640b418603ae17",
+        "qid_v1_09e546ba4d730899a821410f1ac9ae12630bd472f0761bc0c1cbb8b0b7e3552f",
+        "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84",
+        "qid_v1_72b1fae9c4ca7f4322ee0bb577b45a18956e6ac00f6a8fb70596a15caa39cf2b",
+        "qid_v1_88463e8391870792b644670bfcb5ba2ee3e9051e463f2cd91374e26775417f2b"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE",
+      "canonicalLabelKo": "점·함숫값 조건으로 함수식 구하기",
+      "definition": "`함수식 구하기` 안에서 '점·함숫값 조건으로 함수식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "점·함숫값 조건으로 함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_FORM_FROM_POINT_VALUE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_RECOVERY",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_FUNCTION_FROM_ENDPOINT_AND_INTERCEPT",
+        "TM_IRRATIONAL_PARAMETER_FROM_FUNCTION_VALUE",
+        "TM_RATIONAL_FUNCTION_FROM_CENTER_AND_POINT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0ff60964b395146933368e6058da566e00879bf66f671980d6a83b6f59a26e0b",
+        "qid_v1_96a12c43adec27d4d9c1e1f0a6a985bf45ce8dc1dec5d2b2f82e2aeb21ff36cd",
+        "qid_v1_7dae3a707c16ad23e9568cf7c9930dd616825b568a53395954ad6140833d47ec",
+        "qid_v1_469169e35532a0e39bfafd22e397baa831d362e2ffbce027570d75f67f80b9c4"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY",
+      "canonicalLabelKo": "함수 관계·대칭 조건으로 함수식 구하기",
+      "definition": "`함수식 구하기` 안에서 '함수 관계·대칭 조건으로 함수식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수 관계·대칭 조건으로 함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_RECOVERY",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_FUNCTION_FROM_FUNCTIONAL_SYMMETRY",
+        "TM_RATIONAL_FUNCTION_FROM_SYMMETRY_AND_INVERSE_POINT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_56d949371bebe26b4e8539150b34cf0672072764e23d2491b53c3336f9187d97",
+        "qid_v1_8a01638c95315a10a28956b1b0570b512d02e5276f5cb621dfcabe47e2ec1b64"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "canonicalLabelKo": "그래프의 도형 관계에서 식 유도하기",
+      "definition": "`함수 그래프와 도형` 안에서 '그래프의 도형 관계에서 식 유도하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프의 도형 관계에서 식 유도하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_GEOMETRY_DERIVED_GRAPH_SHAPE",
+        "TM_RATIONAL_LOCUS_DISTANCE_SUM_HYPERBOLA"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_e717a2f8fa88f4fa65148bcfea05e11b644f1be8cbb2d38160f62c94c8710945",
+        "qid_v1_69430b28fd6db0c1e5cf2c1d46a32e05134f29fb499fbfd0acc33aca24bcca09"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+      "canonicalLabelKo": "그래프 위 점의 거리·길이 구하기",
+      "definition": "`함수 그래프와 도형` 안에서 '그래프 위 점의 거리·길이 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프 위 점의 거리·길이 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 11,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_SECANT_SLOPE_FROM_FUNCTION_POINTS",
+        "TM_IRRATIONAL_THREE_CURVES_LINE_SEGMENT_RATIO",
+        "TM_IRRATIONAL_TWO_CURVES_SQUARE_GEOMETRY",
+        "TM_IRRATIONAL_VERTICAL_DISTANCE_TELESCOPING_SUM",
+        "TM_RATIONAL_CENTERED_CIRCLE_INTERSECTION_COUNT",
+        "TM_RATIONAL_CIRCLE_INTERSECTION_DISTANCE",
+        "TM_RATIONAL_DOUBLE_TANGENT_CIRCLE",
+        "TM_RATIONAL_INTERCEPT_CENTER_COLLINEAR",
+        "TM_RATIONAL_INTERSECTION_RIGHT_ANGLE_DISTANCE",
+        "TM_RATIONAL_VERTICAL_DISTANCE_TELESCOPING_SUM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_80efa454afa2c15cf9dc8a2a09525921fe210e706fd683ab567999df71012b14",
+        "qid_v1_1bfdeacba1eb5ec9adb63df90e8489378c5d34a92d044ee6d9bb71b1baf06081",
+        "qid_v1_5f47436c9923c4d7251fe875438c467836a6111e3018f3565d6276a40cf0e191",
+        "qid_v1_6c2482faadead5125f3c6b87b650098472bd02cab45bd01d702c40a6897f283d",
+        "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39",
+        "qid_v1_a78a2a33d91ef72da4a0ded6a838c32b3c9276b637182deb2cb2abc9e055fe3a",
+        "qid_v1_92aa9a7ceaf12dcb0fff4cf432a5706098b7d8c31c4ab1cedd39981231db0190",
+        "qid_v1_74781d1cf2d58d8558e675ac256be79717b54e6a7dbbea80bbb651fe50c6d9b8",
+        "qid_v1_feed316bbcca73c6e72a26630b882a96ec2abe9d21d1ea37eb87ecf17439a5d8",
+        "qid_v1_45670e40de22085d679fe2f36889c701305b3751807746da8211ccdd3720ac4a",
+        "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+      "canonicalLabelKo": "그래프와 격자점 관계",
+      "definition": "`함수 그래프와 도형` 안에서 '그래프와 격자점 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프와 격자점 관계",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_MIXED_GRAPH_REGION_LATTICE_COUNT",
+        "TM_IRRATIONAL_REGION_INTEGER_LATTICE_POINT_COUNT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_52ebdbd3965d281730f359ac3c23f97e5ad57de2e1dda4d1b5443c736d210e3d",
+        "qid_v1_47b9bcbeb6cb454096e685ffc7863e6145f996edb0d0290a544a927df38e9922"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "canonicalLabelKo": "함수 그래프의 성질 판정",
+      "definition": "`함수 그래프의 성질` 안에서 '함수 그래프의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수 그래프의 성질 판정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 18,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_GRAPH_MULTI_PROPERTY_JUDGMENT",
+        "TM_IRRATIONAL_GRAPH_MULTI_PROPERTY_PARAMETER_SIGN",
+        "TM_IRRATIONAL_GRAPH_SINGLE_CORRECT_PROPERTY",
+        "TM_IRRATIONAL_GRAPH_SINGLE_INCORRECT_PROPERTY",
+        "TM_RATIONAL_BASIC_PROPERTY_JUDGMENT",
+        "TM_RATIONAL_GRAPH_MULTI_PROPERTY_JUDGMENT",
+        "TM_RATIONAL_GRAPH_SINGLE_CORRECT_PROPERTY",
+        "TM_RATIONAL_GRAPH_SINGLE_INCORRECT_PROPERTY"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_5dc64bb6aacc793aec79a41fb6c967d40417779a63836bc5774faaeb760732d9",
+        "qid_v1_f83eff1c60ccc04477e952fdfa6ddac3be3e1ae00c8fc3f43a70cbbbb0bd3233",
+        "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
+        "qid_v1_2ff6f060ff108dfb568e20c99d876ff281094898bc885c2d493bfb812bb4aa84",
+        "qid_v1_2fcfcd64b440f58f94fb422fcd067e06a3003c6dbdb0de65e0533d9846afb9fd",
+        "qid_v1_9f6182bf0330a936b69c8dea502f031f32adf5959f52b6523f0f3e7d02b3cfb0",
+        "qid_v1_829285b1f5bd5829cd736f6cf5e96cda4191a033383f234da826d8a032b3870c",
+        "qid_v1_65d684622f990caef1a9db87b47b62d21d093678fd4daedcf75256117e710feb",
+        "qid_v1_3797d9d5d5120a0e3befce5fe40d9302153abbec5492f59533f944f8d0fbfb61",
+        "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+        "qid_v1_bfbdb60f39353fd14ee0aed22ca77b86ea1e83b7e2abd730dae8ac15b1c45936",
+        "qid_v1_790a666e86068dcbb8487339f1542d18ce76b20f9bf783abf0b0db0a0d29279f",
+        "qid_v1_3485b41a0a1c7de8306936e49b6d5b8f8715299c7108c5b809ac46b898d6c0d6",
+        "qid_v1_400f8d76319fffe7799777dead24a13d2f0ce7a0400cc2ab78089e128dd9aad1",
+        "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
+        "qid_v1_d748926a1749c0f73b6afac6a0c8351e043ac0fe42818aa386a5c79ea5d5f995",
+        "qid_v1_19c72f96f6917bb4c760567882d324efb72d76a32b30fb2231b0e15b4e37d3a4",
+        "qid_v1_cd8a53f1aca588b454d415aaa9e973fa8c1de39b9176fd3b070b61a762df9ee0"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+      "canonicalLabelKo": "함수 그래프의 대칭성",
+      "definition": "`함수 그래프의 성질` 안에서 '함수 그래프의 대칭성'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수 그래프의 대칭성",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_SYMMETRY"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_SYMMETRY_AXES"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_72f9de661d1dd39b80cfce5be534af73dda4ed9576b469f484ed9d9ce9699724",
+        "qid_v1_882a11f43235a0c863d874f9bd052c92a7cdfeb2a5a01b64737da95c0228554f"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "canonicalLabelKo": "함수 그래프의 평행이동",
+      "definition": "`함수 그래프의 변환` 안에서 '함수 그래프의 평행이동'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수 그래프의 평행이동",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_TRANSLATION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_TRANSLATION_DIRECT",
+        "TM_IRRATIONAL_TRANSLATION_EQUIVALENCE",
+        "TM_IRRATIONAL_TRANSLATION_PARAMETERS",
+        "TM_RATIONAL_ASYMPTOTE_AND_TRANSLATION_COEFFICIENT",
+        "TM_RATIONAL_TRANSLATED_CENTER_ON_ORIGINAL",
+        "TM_RATIONAL_TRANSLATION_EQUIVALENCE_SELECTION",
+        "TM_RATIONAL_TRANSLATION_PARAMETERS"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a64925cc01f117ede14ab99b5d4cb21cfcc89a08bab195385c309d0c5151d480",
+        "qid_v1_ce5e842996658e75f2a6ed4c3f744920c003773815af944c2065e8c5861e5011",
+        "qid_v1_60892d4fd250db48f02dfda8e92b5f008dba31e00f6cb43c35ebdd77879a4703",
+        "qid_v1_da8ce2f323ccd341283ed87c27036706f55a6295228fb0b428975bcc208546cb",
+        "qid_v1_c007ba347df82877b2cc58a6c077bd0267e9464fbcec35ac6d3c740689b0aa41",
+        "qid_v1_c08214e82b8024a29bb9bb72745b63d20a18ae44caf37bf14e52e37093a63e18",
+        "qid_v1_4ef90fba11c249cf136cbf5f23f869e6d0f196f4eae980d0abb609b9d749108b"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+      "canonicalLabelKo": "함수 그래프의 평행이동과 대칭이동",
+      "definition": "`함수 그래프의 변환` 안에서 '함수 그래프의 평행이동과 대칭이동'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수 그래프의 평행이동과 대칭이동",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_TRANSLATION_REFLECTION_PARAMETERS",
+        "TM_IRRATIONAL_TRANSLATION_REFLECTION_POINT_PARAMETER"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_22200f68b07a34a399111475c34cf8efd5893b63cac385ba2de3784407974efa",
+        "qid_v1_4ab7dada59cb681873619428366a8fb29c41fc78ecdb00c76da88ca9cfbe14ff"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "canonicalLabelKo": "절댓값·조각함수 그래프의 교점",
+      "definition": "`함수 그래프의 교점` 안에서 '절댓값·조각함수 그래프의 교점'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "절댓값·조각함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_ABSOLUTE_GRAPH_LINE_TWO_INTERSECTIONS_MIN_PARAMETER",
+        "TM_IRRATIONAL_ABSOLUTE_PIECEWISE_HORIZONTAL_INTERSECTION_COUNT",
+        "TM_IRRATIONAL_ABSOLUTE_RADICAND_LINE_NO_INTERSECTION_RANGE",
+        "TM_IRRATIONAL_ABSOLUTE_RADICAND_LINE_THREE_INTERSECTIONS",
+        "TM_IRRATIONAL_PIECEWISE_LINE_FOUR_INTERSECTIONS",
+        "TM_RATIONAL_ABSOLUTE_GRAPH_HORIZONTAL_INTERSECTION_COUNT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_bc4962309d80e3fb33aaa1937002475205c26f47661d4495f78c85174b5c4423",
+        "qid_v1_7e4dd57411f88f118ab8ddedb4a897db453204006f4364aa7ae5667d17e0630c",
+        "qid_v1_26cf1fd39968e74cc5a3a47e21e456b8b782397ad536284e41cb2fef80e77238",
+        "qid_v1_014cdcb008a92bf94d4c3365f3df571c78581f3ac79f446684f8f200bb76154f",
+        "qid_v1_aecda0ef62a2c4911712aaf991651f5af9e0a918ed76bac0cef4dd54d3c6a6d9",
+        "qid_v1_dddd3bf34a29b84fbd74e92472bf0fd348b9eb71137a11eacaa80ee3af70c5bb"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+      "canonicalLabelKo": "교점의 거리·비 조건",
+      "definition": "`함수 그래프의 교점` 안에서 '교점의 거리·비 조건'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "교점의 거리·비 조건",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_LINE_INTERSECTION_SEGMENT_RATIO",
+        "TM_RATIONAL_LINE_INTERSECTION_DISTANCE_MINIMUM",
+        "TM_RATIONAL_SYMMETRY_AXIS_INTERSECTION_DISTANCE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_c3fd7e9b90e9fcb0f190e68f3be8f092c43cb3ce1db8581bbc3a1a0110e5e040",
+        "qid_v1_5ffc3b59f7d72cf0d6924d8f8d539ef1041ee9cb642333770b62d5dc68554e99",
+        "qid_v1_e922ec6068b42b1459f2092b931ec5e903f5f3bc1064d9d3409fdf7f3f0a01d2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+      "canonicalLabelKo": "접함 조건으로 교점 하나 만들기",
+      "definition": "`함수 그래프의 교점` 안에서 '접함 조건으로 교점 하나 만들기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "접함 조건으로 교점 하나 만들기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_LINE_SINGLE_INTERSECTION_PARAMETER_MINIMUM",
+        "TM_IRRATIONAL_LINE_SINGLE_INTERSECTION_PARAMETER_SET",
+        "TM_IRRATIONAL_RATIONAL_GRAPH_SINGLE_INTERSECTION_INTERVAL_PARAMETER",
+        "TM_IRRATIONAL_RATIONAL_GRAPH_SINGLE_INTERSECTION_PARAMETER_RANGE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_32b0adb0c4c0e31c3ae9cf9e73385f80ea7e0c872932903870dac9c76d3e0bb0",
+        "qid_v1_61796715780969590152c6331a7dde6152fffc9464bf0151f12517bff23f69ce",
+        "qid_v1_9db041da56aeaa1be628f44c16b70f25183261308c8be6fc3b88ff78de99f79d",
+        "qid_v1_29d0d9c03f405db8e02ef765dff76dd43ee71dc5f1ee9f67ba5a827047480a43"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "canonicalLabelKo": "두 함수 그래프의 교점",
+      "definition": "`함수 그래프의 교점` 안에서 '두 함수 그래프의 교점'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "두 함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_RATIONAL_GRAPH_TWO_INTERSECTIONS_PARAMETER_RANGE",
+        "TM_IRRATIONAL_TWO_CURVES_INTERSECTION_PARAMETER_MAXIMUM"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_7810b1dea92b591cfe1c01bc52f84c9574a12ade27bbb002c24fa2878f858846",
+        "qid_v1_dfbb913abebfcd1d5a65c8da0ae4a453d4c2b067185adc88f983b8d7629f502a",
+        "qid_v1_43a4543a45324147aa30ba7e061013e627cce93b9468bfcb80826812132e7486"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "canonicalLabelKo": "함수와 역함수가 포함된 방정식",
+      "definition": "`역함수의 성질` 안에서 '함수와 역함수가 포함된 방정식'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수와 역함수가 포함된 방정식",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_PIECEWISE_FUNCTION_AND_INVERSE_EQUATION",
+        "TPL_PIECEWISE_FUNCTION_INVERSE_EQUATION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_INVERSE_EQUATION"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_918e7f6335799c59b37c0307e42ba93e701308d5fa04f868283787dd6e4c88d8",
+        "qid_v1_963a324fa9609c2ee69227752a7c7abdbecac49739ec0716b47e2f07b30d86ae"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_JUDGMENT_GRAPH",
+      "canonicalLabelKo": "함수의 그래프 판정",
+      "definition": "`함수의 뜻과 판정` 안에서 '함수의 그래프 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수의 그래프 판정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_REAL_DOMAIN_GRAPH_FUNCTION_SELECTION",
+        "TPL_VERTICAL_LINE_TEST_GRAPH_CHOICE",
+        "TPL_VERTICAL_LINE_TEST_MULTIPLE_GRAPH_SELECTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_JUDGMENT_GRAPH"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+      "status": "ACTIVE",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_5fd230035afe3877b5a65029c86413f2c6d133a4d7d290425ea797456e386419",
+        "qid_v1_091509e6a97d19819c504ca1c12cc300f003b317d9356e23938c0c7a5bf2d718",
+        "qid_v1_88ffebb7ae3d834ac1088bc8c696e9af3e318885d25926cba5e984a651f59f9f",
+        "qid_v1_bd7b51d0908c648640e19050237d31fa69cae21ce21c90cdd921d0b6d652c8d6",
+        "qid_v1_08d9223e04dfa6ee5152fb5d9cc9b5096fbb4a858265cba38cbaa7e14c9a8b5a",
+        "qid_v1_7e8fc96a12adc7c06edb04eb08eefbe019f231b886928d05b4c55e27b8fb08b0",
+        "qid_v1_9d21133e3044246d8ce77084dd749e04b3823486552883f37b89935f6ec75382"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+      "canonicalLabelKo": "대응이 함수인지 판정",
+      "definition": "`함수의 뜻과 판정` 안에서 '대응이 함수인지 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "대응이 함수인지 판정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_FINITE_DOMAIN_CODOMAIN_FUNCTION_CHOICE",
+        "TPL_FINITE_DOMAIN_CODOMAIN_FUNCTION_VALIDITY",
+        "TPL_MAPPING_DIAGRAM_FUNCTION_JUDGMENT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_JUDGMENT_MAPPING"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_9ca620c34926f2ca92c8623e4146ce6b5a6e50d00be95cb494f9efff33502707",
+        "qid_v1_fa5ce27430612ff10e5f6b59b98b22b8d0b6e296acc7760b8644b52f57a26a34",
+        "qid_v1_4ae4db61dda2564d763721c066779b8a88bea87e1a8cde8529188bb2df6f84c3",
+        "qid_v1_23defeffaa5ed76dc12029c0b4419729f705e071802cfd85ed280bcfba5dae4b"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+      "canonicalLabelKo": "함수 그래프가 지나는 사분면",
+      "definition": "`함수 그래프와 사분면` 안에서 '함수 그래프가 지나는 사분면'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수 그래프가 지나는 사분면",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_QUADRANT_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_QUADRANT_DIRECT",
+        "TM_RATIONAL_QUADRANT_DIRECT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_61af016ec937c0049b6942a80e6a2df1b0ce4230da59a3c18533beee45acb4b6",
+        "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+      "canonicalLabelKo": "다른 함수와 비교한 사분면 관계",
+      "definition": "`함수 그래프와 사분면` 안에서 '다른 함수와 비교한 사분면 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "다른 함수와 비교한 사분면 관계",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_QUADRANT_FROM_RATIONAL_GRAPH_PARAMETERS",
+        "TM_IRRATIONAL_QUADRANT_FROM_RATIONAL_GRAPH_PARAMETER_EXTREMUM",
+        "TM_IRRATIONAL_QUADRANT_FROM_RATIONAL_GRAPH_SIGNS",
+        "TM_RATIONAL_QUADRANTS_FROM_PARAMETER_SIGNS"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b",
+        "qid_v1_0e658236809fd00236d0398a2422e2c5bbf6f1ed85e45b54b2489d2b00d0e421",
+        "qid_v1_5d6466d9df531e636b46fbb991f43780a682bd043aa61000fd5fe77938edc0f1",
+        "qid_v1_17e53e3d927b322d527cad6523dc01f8913ab32524449337402a28afaa7f14d6",
+        "qid_v1_11b2a06ff278378100d7bb26cca766d421f3804d5ed1a899137669f7108bdf6a",
+        "qid_v1_dad69d14db34db31a969a108e198f536dc415158419062472a2761399027a98a"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "canonicalLabelKo": "매개변수에 따른 사분면 조건",
+      "definition": "`함수 그래프와 사분면` 안에서 '매개변수에 따른 사분면 조건'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "매개변수에 따른 사분면 조건",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_QUADRANT_PARAMETER"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "status": "ACTIVE",
+      "supportingItemCount": 9,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_ALL_QUADRANTS_INTEGER_MIN",
+        "TM_RATIONAL_ALL_QUADRANTS_NATURAL_MIN",
+        "TM_RATIONAL_ALL_QUADRANTS_PARAMETER_RANGE",
+        "TM_RATIONAL_ALL_QUADRANTS_PARAMETER_SELECTION",
+        "TM_RATIONAL_QUADRANT_COUNT_PARAMETER_SUM",
+        "TM_RATIONAL_QUADRANT_EXCLUSION_NATURAL_COUNT",
+        "TM_RATIONAL_TWO_GRAPH_QUADRANT_INTEGER_RANGE",
+        "TM_RATIONAL_TWO_GRAPH_QUADRANT_PARAMETER_RANGE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_1e67fc4c6385f4227351ef86f320228ffe0648b2d6201dd21289b4139e5da821",
+        "qid_v1_45a5508a02a880f78117be5d1eb1311987c2433abda22e92a415339a414d0da9",
+        "qid_v1_0ea99e992b8acf16137b16940e8e184006fb101c7dbc7710d59ae7cac125e218",
+        "qid_v1_e446bf1c77c3c17d221c82a89a1ac803b3273361639ca73325ae05a0adc4bbd2",
+        "qid_v1_149265df167ef5a3dab46d6cfd5990c0324e4ffed30f865e3ef6791a1d8119f7",
+        "qid_v1_4687891178dea50764a0f04fa9b3fc7507e66f6ba5cd492bac747abe828b95fa",
+        "qid_v1_0d968e1538b39c6913141ffe2b08c5231ecfe29825a10405081539aa0b721588",
+        "qid_v1_66e2068666781d79b7095013fd64c51af15e40e2c6af68de655a764c071c3676",
+        "qid_v1_4e4d23ee6a285d23402ef5375d1ee3e40b059c2e559fa30bafe6e7ba541fd561"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "canonicalLabelKo": "함숫값 직접 계산",
+      "definition": "`함숫값 계산` 안에서 '함숫값 직접 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함숫값 직접 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_MAPPING_DIRECT_FUNCTION_VALUE",
+        "TPL_PIECEWISE_DIRECT_FUNCTION_VALUES",
+        "TPL_SHIFTED_INPUT_DIRECT_VALUE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_FUNCTION_VALUE_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_VALUE",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_387ad691f81218198cb3be38998450e638a808907e103f51fba670a3c8fc766d",
+        "qid_v1_edff063a52aacd5cc09fb7850742b02ba1859a98207a9f89c05c6727fd1e021e",
+        "qid_v1_7353c21635301b15a0ab40fa92356333117e7a9009b37590a91b8b68b189bb98"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "canonicalLabelKo": "그래프와 직선으로 둘러싸인 넓이",
+      "definition": "`함수 그래프의 활용` 안에서 '그래프와 직선으로 둘러싸인 넓이'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프와 직선으로 둘러싸인 넓이",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_TANGENT_TRIANGLE_AREA_PARAMETER",
+        "TM_IRRATIONAL_TRANSLATED_CURVES_ENCLOSED_AREA",
+        "TM_IRRATIONAL_TRANSLATED_CURVES_LINE_AXIS_ENCLOSED_AREA",
+        "TM_IRRATIONAL_TWO_CURVES_ENCLOSED_AREA",
+        "TM_IRRATIONAL_TWO_CURVES_ENCLOSED_AREA_SYMMETRY",
+        "TM_IRRATIONAL_TWO_CURVES_RIGHT_TRIANGLE_AREA",
+        "TM_IRRATIONAL_TWO_CURVES_TRAPEZOID_AREA",
+        "TM_RATIONAL_LINE_INTERSECTION_TRIANGLE_AREA",
+        "TM_RATIONAL_RECIPROCAL_GRAPH_RIGHT_TRIANGLE_AREA",
+        "TM_RATIONAL_TRANSLATED_CURVES_ENCLOSED_AREA",
+        "TPL_GRAPH_AREA_BY_ROTATIONAL_SYMMETRY",
+        "TPL_GRAPH_AREA_BY_SYMMETRY"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_GRAPH_AREA_BY_SYMMETRY"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_063f363ab29a6d3b1f27db49bdbd30558416f9a8e2704bd4cf96009419305568",
+        "qid_v1_6dabd8cdbccc3f7f08dd25158edf688a0408df7118423ddf6b701c04289b2b94",
+        "qid_v1_6f83e52fa8459989438773e657921965815edb73f3b92b98a4cad2372989124a",
+        "qid_v1_761473ef6050092868c30307a128f5cbd7953e1f825763ae69658f05fbdb14e3",
+        "qid_v1_71dc6f6a58b21c7767575dcbac3311aa26fe23befc5316aa21f316ed97af26ed",
+        "qid_v1_4c40c075e99ab37b0326baac86ffc291c39fb5bd4de91e9ca31a1f2608abe52a",
+        "qid_v1_d0ce181c779079393343704c6ffe50c737df88f33c4f19a354bbf5d33b617451",
+        "qid_v1_d32a5fbf26fad65a922567443fb4003a1e411ad85d8cae53cb1271ec02e0c94a",
+        "qid_v1_8c7d7042859b5d2b3297a38c0f3e1e0a5c421e41732c9afa4fa2d42cf230d684",
+        "qid_v1_be1a3a88a92ef1f91294fa6783881109478ef52140a1c9b7f198523e79a1dceb",
+        "qid_v1_5ad65111d03f342559056b026042125bd4ef88b6b2c1b9810e1a6391f5effb87",
+        "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "canonicalLabelKo": "그래프의 교점 개수",
+      "definition": "`함수 그래프의 활용` 안에서 '그래프의 교점 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프의 교점 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_FIRST_QUADRANT_LINE_INTERSECTION_PARAMETER",
+        "TM_IRRATIONAL_INTERSECTION_COUNT_PARAMETER_VALUES",
+        "TM_IRRATIONAL_LINE_INTERSECTION_COUNT_BY_PARAMETER",
+        "TM_IRRATIONAL_LINE_INTERSECTION_PARAMETER_MINIMUM",
+        "TM_IRRATIONAL_LINE_INTERSECTION_PARAMETER_RANGE",
+        "TM_IRRATIONAL_LINE_TWO_INTERSECTIONS_PARAMETER_RANGE",
+        "TM_IRRATIONAL_LINE_TWO_INTERSECTIONS_VALUE_SELECTION",
+        "TM_IRRATIONAL_RATIONAL_EQUATION_ROOT_COUNT_INTEGER_PARAMETER",
+        "TM_RATIONAL_CIRCLE_INTERSECTION_ROOT_RATIO",
+        "TM_RATIONAL_LINE_INTERSECTION_TRIANGLE_AREA",
+        "TM_RATIONAL_LINE_NO_INTERSECTION_DISCRIMINANT",
+        "TPL_EVEN_QUADRATIC_INTEGER_LEVEL_POINT_COUNT",
+        "TPL_HORIZONTAL_LINE_INTERSECTION_COUNT_PARAMETER",
+        "TPL_MOVING_LINE_INTERSECTION_COUNT_FUNCTION",
+        "TPL_ROOT_COUNT_FUNCTION_WITH_PIECEWISE_RANGE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_GRAPH_INTERSECTION_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 19,
+      "supportingQuestionUids": [
+        "qid_v1_aa8a42357c200047d160a84c1bdd34fcc7c064c1ef1f57bf635fcaaf70f7dc2b",
+        "qid_v1_91c517905a2542cecab75c9f746822e033c2e00c94a25850f11536d2f7367823",
+        "qid_v1_9908b504105d14ee3429f21379e77449fc17e7aa59e86ce13870eebc2e13ff64",
+        "qid_v1_8923adf710cb5aa7d8da7c9e144d9613ca62cef5970107d3e66eb94ff0e9d272",
+        "qid_v1_809a57f5ec788e439d37e4080b86b9e60096e9d7fc436bb6451b3a8e33349c1d",
+        "qid_v1_f18bf25541032ddb6ed4d731bc82b7f52c7a6cffe227be39fcdd6db00544cdfc",
+        "qid_v1_98d5887404c6d43bfa9acd008416811e2c7277659df77c17f7f7330bebe047f9",
+        "qid_v1_0a51506e850412a5ccd66fe96fc335df6dd7e81c211daf014ea1735b2d008427",
+        "qid_v1_59eba9a695959d523df806593f1c9e0eb0403226e2c9c6631d6fa8a92978b03a",
+        "qid_v1_63f17dcb4c34583b794203fc9792dd22a01dca79be4997c1ffd11c205a8eb8ea",
+        "qid_v1_aa2003e772b1e00539b0173e4bb7ca9b4bc862c690f1eabeaf7a430d343703db",
+        "qid_v1_69c9b7f4ab92e8a74d574404b545d170117d4743a7f8c81550aacc6b03d8eff8",
+        "qid_v1_3bf0e60400794d7b1e7008a0e11cb7688e2ad7802d4cfa95d68432aa254e4e1f",
+        "qid_v1_b8519b483ee1c29f5b7a13e0e38dabefcb16067317b22af15356c5e762dc49d3",
+        "qid_v1_be50846190e705cae640bc7e2023f28a3d842a97ee74ba7bf7a410c6bfafb05f",
+        "qid_v1_2880c7c588583b37f38abe9c8f6ff615b2ee090b636c22a0fc8c23801a1f483c",
+        "qid_v1_d3c566364fdf764f8da273d555595067d57d2f1e99128a59f02f357ed4707523",
+        "qid_v1_21f276e0a8be672251f001de6528fbfe01a7bd48f1f29eac59178eb0214dbf85",
+        "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+      "canonicalLabelKo": "그래프의 대소 관계",
+      "definition": "`함수 그래프의 활용` 안에서 '그래프의 대소 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프의 대소 관계",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_GRAPH_THREE_FUNCTION_ORDER_INTERVAL"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_GRAPH_ORDER_INTERVAL"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_5228c3e4bed7588c882ca01d6ae3b35500df60c852d511ec880dc8f4889dd3f2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+      "canonicalLabelKo": "항등함수가 되는 정의역의 개수",
+      "definition": "`함수의 개수` 안에서 '항등함수가 되는 정의역의 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "항등함수가 되는 정의역의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_IDENTITY_FUNCTION_DOMAIN_SUBSET_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_IDENTITY_DOMAIN_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_COUNTING",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_f5b9880599388b1731dfa757f3f8b3afcf943a8637463ca9c006deff6657072a",
+        "qid_v1_af4bd0b9b949803f1401e1a75d5a30f153197ff1fa7e26dcff69d31008e9f017"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+      "canonicalLabelKo": "일대일함수·일대일대응의 개수",
+      "definition": "`함수의 개수` 안에서 '일대일함수·일대일대응의 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "일대일함수·일대일대응의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_BIJECTION_EXISTENCE_SUBSET_PAIR_COUNT",
+        "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+        "TPL_INJECTIVE_FUNCTION_COUNT_PERMUTATION",
+        "TPL_MULTIPART_FUNCTION_COUNT_MIXED_CONDITIONS",
+        "TPL_PERMUTATION_ADJACENT_DIFFERENCE_COUNT",
+        "TPL_PERMUTATION_DISTANCE_CONSTRAINT_COUNT",
+        "TPL_PERMUTATION_INVOLUTION_AND_DIFFERENCE_COUNT",
+        "TPL_PERMUTATION_POINT_INVOLUTION_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INJECTIVE_BIJECTION_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_COUNTING",
+      "status": "ACTIVE",
+      "supportingItemCount": 8,
+      "supportingQuestionUids": [
+        "qid_v1_79e2d1ba46a548615e975281d3d36ef2ab387c299b29b4e4fb9d541867a7a2ec",
+        "qid_v1_df264ccc5cf88c4a37c3265e1913c7ec9171315a34493022062061b206803ce8",
+        "qid_v1_0ee8ff018156ed0b56504e4d38125243462833f1cc4ebe36f0aa473b8dde9a78",
+        "qid_v1_948a489a2aa99567cc9dc26164478eb6265aebc96fdf5454f74afb7731318946",
+        "qid_v1_c107fb038a05b3ed2b171ad04a50a6d60aa1bf4f8d27a8b4c05f12fbd14e45c4",
+        "qid_v1_e2b22ff625b87f4098d09c69efa3f4978e3f6c2e18ce65e0a6ea7d377a4467af",
+        "qid_v1_5052b83f6e794fe4078218cc236849be6c7486f2e0a80c856e9c82c90e0fac9e",
+        "qid_v1_43a1130c39b62d3e737885dd21d84dcfe4cc16d58dea2779e6277cb33050364d"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_AFFINE_INPUT",
+      "canonicalLabelKo": "f(ax+b)의 역함수",
+      "definition": "`역함수 구하기와 함수값` 안에서 'f(ax+b)의 역함수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "f(ax+b)의 역함수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_INVERSE_OF_AFFINE_INPUT_TRANSFORM"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_AFFINE_INPUT"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_VALUE",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_0a6423aadca9242d5d2acd59e18c76cc0bfb91e8822ea7826aed79de7296747e",
+        "qid_v1_43709196cd8d24fa483353da3c22626eaa0067e0af5fbece13b34a10c4e128ba",
+        "qid_v1_8e9d12b8d57e05523dd5761ae2be06fb949c5380cad3f9997d86723d445583d9"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA",
+      "canonicalLabelKo": "합성함수의 역함수 공식",
+      "definition": "`역함수와 합성함수` 안에서 '합성함수의 역함수 공식'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성함수의 역함수 공식",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_INVERSE_COMPOSITION_CANCELLATION",
+        "TPL_INVERSE_IDENTITY_GRAPH_TRACE",
+        "TPL_INVERSE_OF_COMPOSITION_FORMULA_COMPARISON",
+        "TPL_INVERSE_OF_COMPOSITION_FROM_GRAPH",
+        "TPL_INVERSE_OF_COMPOSITION_GRAPH_TRACE",
+        "TPL_NESTED_COMPOSITION_INVERSE_FUNCTION_FORM",
+        "TPL_NESTED_INVERSE_COMPOSITION_GRAPH_TRACE",
+        "TPL_NESTED_INVERSE_COMPOSITION_SIMPLIFY"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_COMPOSITION_FORMULA"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 10,
+      "supportingQuestionUids": [
+        "qid_v1_1c80d62daea384c3a078cf48f453d52ce837eb3b11aadee506c6e7b2e9dce4fb",
+        "qid_v1_ccc5063235ae626d0abc574e5ae284bfd58f66ca1e3d75166d11a121e3ba4b27",
+        "qid_v1_8c41db6b3eb658c4d68d74a2457ab0aebfaf8b5e1229dac2fb98a59ce860b9c6",
+        "qid_v1_cb58bedab714a51ea6053b2e204e9b5fe2aec5761b5769660b79455bb4304aeb",
+        "qid_v1_faa1accb45844e1cdccd618ce28146f0bcc0a79ad56053928f3b155b71ade2df",
+        "qid_v1_f04b00d52a587200c25b6f46e090f96850433ab3a74ab5e99fafa833eb55b6f3",
+        "qid_v1_dd2d24c0afcbe8792125e660c55c206116ad98bc81d168d7d021dcdeaaa947ca",
+        "qid_v1_c6266a888c05c4faab50d7bdd5a49fee2db89cbdb61381ebdb7165ab7c2cbd99",
+        "qid_v1_ab94727e996117de7068bb76d99361c6119bca19c05ce5bc2d1b24c6b7c69e9d",
+        "qid_v1_5ca37c36f8fb329a14fe9e198d60b228c24ad4eb9595ed70d03efe0c4bfcfa2e"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "canonicalLabelKo": "역함수와 합성함수의 값 계산",
+      "definition": "`역함수와 합성함수` 안에서 '역함수와 합성함수의 값 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함수와 합성함수의 값 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_DOUBLE_INVERSE_TO_DOUBLE_COMPOSITION",
+        "TPL_INVERSE_FUNCTION_THEN_UNKNOWN_COMPOSITION_RECOVERY",
+        "TPL_INVERSE_OF_COMPOSITE_VALUE",
+        "TPL_INVERSE_RELATION_APPLY_ORIGINAL_FUNCTION",
+        "TPL_INVOLUTION_PARAMETER_THEN_INVERSE_VALUE",
+        "TPL_TWO_INVERSE_COMPOSITIONS_PARAMETER"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_COMPOSITION_VALUE"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_8d3b97e78f030ac6c51bdb37efdb4c2ff296ed3222ba82406fc1591509216421",
+        "qid_v1_b0cf386d2dcab181c8217add6aee0253e278d04ab2cc6a377d0bb8ccd01e02a1",
+        "qid_v1_1c6dfef14512ffffcee2f5e01fd248bdbc645fca0839692dbaaed100553b5148",
+        "qid_v1_5a355f4e778a261ea85f43b6ac014cf8fd935a347e4eb2edd799a8c37d21c8cb",
+        "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5",
+        "qid_v1_d51c95367e8902c0e59fed185babb77c240f0355b387e934373e9f6151bff8eb"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_CONJUGATION",
+      "canonicalLabelKo": "f⁻¹∘g∘f 형태의 합성",
+      "definition": "`역함수와 합성함수` 안에서 'f⁻¹∘g∘f 형태의 합성'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "f⁻¹∘g∘f 형태의 합성",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_CONJUGATION_VALUE_PIECEWISE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_CONJUGATION"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_b7420de071f1ba2cc2966bb43a1d7ff8518966e40a862bf29ce4b14fa923b1c2",
+        "qid_v1_c0ede25da9cbc2be45f5c1beea2bd0ad1ac2a8f335c79bdd7a1672b0d5a2956d"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "canonicalLabelKo": "역함수 식 구하기",
+      "definition": "`역함수 구하기와 함수값` 안에서 '역함수 식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함수 식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_INVERSE_FIXED_POINT_PARAMETER_VALUE",
+        "TM_IRRATIONAL_INVERSE_FORMULA_DIRECT_DOMAIN",
+        "TM_IRRATIONAL_INVERSE_FORMULA_FROM_POINT_CONDITION",
+        "TM_IRRATIONAL_PARAMETERS_FROM_RATIONAL_GRAPH_DOMAIN_RANGE_INVERSE",
+        "TM_RATIONAL_INVERSE_FORMULA_DIRECT",
+        "TM_RATIONAL_INVERSE_FORMULA_DOMAIN_RANGE",
+        "TM_RATIONAL_INVERSE_VALUE_FROM_ASYMPTOTES",
+        "TPL_LINEAR_INVERSE_COEFFICIENT_MATCH",
+        "TPL_LINEAR_INVERSE_FORM_DIRECT",
+        "TPL_SELF_INVERSE_LINEAR_DIRECT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_FUNCTION_FORM"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_VALUE",
+      "status": "ACTIVE",
+      "supportingItemCount": 11,
+      "supportingQuestionUids": [
+        "qid_v1_e920839f1c58c91d0d783cf102bdff51fbfa13dbe6706881a8bf152aba59b81d",
+        "qid_v1_7d135b7e7f0a9dead3acc7d3b99f7eb49acde81785821db584b8001065cecb55",
+        "qid_v1_2e3ddad7e708af4cc23f79b39ca6ab41bcfe00a6c10cfad5d0aa75eedabea962",
+        "qid_v1_cb5b450bff320f8b4dac9e9d1ada15087e1d7615467c7f10b8504e5b6e55795f",
+        "qid_v1_a5874d4f9399b74b8ed13c5ce7289b931a1a9b8c9fdafc02da27ab7de3ac833f",
+        "qid_v1_06e84faae49eab2b2968638a684d1c5ce5d7cc009144be16d4d3204399862f7c",
+        "qid_v1_3c7809faf95dd6c6b6009ecc6ea4a7d3b5aadf599b66e5bc0b0588b188e2ba3d",
+        "qid_v1_cd903025c75ceb148ae6337558c0e47e125f24bc7e2bc0aa6d0dcdd4490d3f98",
+        "qid_v1_486dc4ace38636e45d83000bfa641c1049512191493bf4ac2a14e00b925852bc",
+        "qid_v1_04cd46cffa27f89b66d70f315d2aa513cc3a536737b81511653e52361a063a98",
+        "qid_v1_5e25689a66b2d91d2c13cd7371026d7427724025160433cba6924aed0e327749"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "역함수 그래프의 대칭을 이용한 거리·넓이",
+      "definition": "`역함수의 그래프` 안에서 '역함수 그래프의 대칭을 이용한 거리·넓이'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함수 그래프의 대칭을 이용한 거리·넓이",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_INVERSE_CIRCLE_CHORD_SLOPE_SYMMETRY",
+        "TM_IRRATIONAL_INVERSE_GRAPH_INTERSECTION_DISTANCE",
+        "TM_IRRATIONAL_INVERSE_GRAPH_TRIANGLE_AREA",
+        "TM_IRRATIONAL_INVERSE_INTERSECTION_DISTANCE_SLOPE",
+        "TM_IRRATIONAL_INVERSE_TRIANGLE_INTERSECTION_PARAMETER_MAXIMUM",
+        "TM_RATIONAL_INVERSE_CENTER_DISTANCE",
+        "TM_RATIONAL_SELF_INVERSE_FIXED_POINT_DISTANCE",
+        "TPL_INVERSE_GRAPH_ENCLOSED_AREA",
+        "TPL_INVERSE_GRAPH_ENCLOSED_AREA_PIECEWISE",
+        "TPL_INVERSE_GRAPH_INTERCEPT_AREA",
+        "TPL_INVERSE_SHIFTED_LINE_TRIANGLE_AREA",
+        "TPL_INVERSE_SYMMETRIC_POINTS_DISTANCE_MIN_AREA",
+        "TPL_INVERSE_SYMMETRIC_POINTS_TRIANGLE_AREA",
+        "TPL_INVERSE_SYMMETRY_TRIANGLE_AREA"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_GRAPH_GEOMETRY"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_GRAPH",
+      "status": "ACTIVE",
+      "supportingItemCount": 15,
+      "supportingQuestionUids": [
+        "qid_v1_f7857e81170141842af083ee12d07a264552573b13b46e36382e7f252e394ddd",
+        "qid_v1_14cb1da0f688f872fb673d993560cbda973723295c85b888ac64d0dae1d1b93b",
+        "qid_v1_aeeeab1f99cd912835e5a58f1ae69cca316c99c71bd5861af1e54d1d5ba4729c",
+        "qid_v1_a9e5a7593831541893febbdeae23eccc8a7f52cb1ad4905b01de23fec29890df",
+        "qid_v1_6360d509e9d0550bb88e8956ee955c1ae3c97f24b3d3c7fe375f44aa4c58f0a1",
+        "qid_v1_6a54cc2c1f1bc1ba6a6bddad9043a35547acf02415d938f0a27049b145d93427",
+        "qid_v1_090256e289be78b61465b525755ab28bcb7e3edb7c556e59510a83d2cea3ba71",
+        "qid_v1_abd2bce4713a8435b1c040a449dc239a773ce10d0a5e2e40a3ce7e4cf88978ae",
+        "qid_v1_2233868c1dd918ffb4834a9216f666f6f20ced6047e48bb3bd2dc56a82ab5ba4",
+        "qid_v1_4d8cdc865a521645419b93541f6b2b67cc1e07930a03da7add943f94923e206a",
+        "qid_v1_193d36325a80b264e646e1699a243a363cf6ebd4d82bb08265a9bd53b7b484eb",
+        "qid_v1_78c6ad399c9631e184e5b0b3954a12b18d81f2673ff05a06722f4912cd2cad80",
+        "qid_v1_df13965a966dfc3a49e20127b5838ecbf897452439696fc5259d3f6df0e66ec6",
+        "qid_v1_9f871e0c1a51e4882bfd1740340ebc607c42e74be834ddf866935c9a45a749a1",
+        "qid_v1_3478503a8f2463676a956f67c6e300a1b4d3aa007babde569c866a0497964e9c"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "함수와 역함수의 교점·접점",
+      "definition": "`역함수의 그래프` 안에서 '함수와 역함수의 교점·접점'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "함수와 역함수의 교점·접점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_FUNCTION_INVERSE_ENVELOPE_INTERSECTION_COUNT",
+        "TM_IRRATIONAL_INVERSE_FROM_GRAPH",
+        "TM_IRRATIONAL_INVERSE_GRAPH_TANGENCY",
+        "TM_RATIONAL_INVERSE_FROM_GRAPH",
+        "TM_RATIONAL_INVERSE_GRAPH_TRANSLATION",
+        "TPL_COMMON_POINT_COORDINATE_SWAP",
+        "TPL_INVERSE_GRAPH_TANGENCY_DISCRIMINANT",
+        "TPL_INVERSE_GRAPH_TWO_FIXED_POINTS_PARAMETER_RANGE",
+        "TPL_INVERSE_GRAPH_TWO_INTERSECTIONS_INTEGER_PARAMETER",
+        "TPL_INVERSE_INTERSECTION_BY_FIXED_POINT",
+        "TPL_INVERSE_INTERSECTION_DISTANCE",
+        "TPL_INVERSE_INTERSECTION_FIXED_POINT_SUM",
+        "TPL_INVERSE_TWO_FIXED_POINTS_NATURAL_PARAMETER_COUNT",
+        "TPL_INVERSE_TWO_FIXED_POINTS_PARAMETER_RANGE",
+        "TPL_RADICAL_INVERSE_GRAPH_FIXED_POINT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_GRAPH_INTERSECTION"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_GRAPH",
+      "status": "ACTIVE",
+      "supportingItemCount": 17,
+      "supportingQuestionUids": [
+        "qid_v1_0f4a0717da88662713dab3143c06d903eef04a6a4d0a4cecbb45abee96a8c520",
+        "qid_v1_8e3717742991e91165038de17a707c9e5e12e776504d57ca0157de2362378a1f",
+        "qid_v1_f5b0d6e41345437442261b3bc9870fe28ad3159209342132bbb7a1732943b244",
+        "qid_v1_aa8d75b842c2387ffd9ac5f0cbb5179bb5f597f090d91ff387a72ac7e7194222",
+        "qid_v1_a7569175997e1534cc339bdead81eae8c32d4d456a5bbba9ba6001eae5fbe390",
+        "qid_v1_ebf7fe78aab7edc3a3f02fa74d780cd252fb1e4f8ed2eb3a9f7caab25fbf2700",
+        "qid_v1_de3fb11c423d1677a97f7448cc03967e1610a0effed3f7d6b47cebe3664d4066",
+        "qid_v1_8ba7e1aa71f724eb187fb52e3e89215494b5b4331d73e38eda31b23c6cb70e48",
+        "qid_v1_26d6391918689b1a8e8b8f8a335d007e3f4b868229749b41299252ac10dffc50",
+        "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a",
+        "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7",
+        "qid_v1_d570b59e309a32bed77776f5a7dabece82abf08717f24c9c4f182a635fa17383",
+        "qid_v1_b46684e915146f6043580c0404da050aee5fed9c2c6e94dd262825b39e2fb507",
+        "qid_v1_d3dbe11372883afdee62637cb41b0cf395ec4312bc072fadc96287283b5fb8d2",
+        "qid_v1_7eedfea68950d7d6ed80b51374e3c675b0850040a4fc04b919ba11e5318d8c4f",
+        "qid_v1_d3040d37d6d96b742c588fd3e4b687b65518b0ca4887cfd93d4fb6ab5de96bf5",
+        "qid_v1_82f8d481cae79ccaf29cf3374d50d37ae206ab29853052f8d96e947032c3966f"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_IDENTITY_RELATION",
+      "canonicalLabelKo": "f∘f⁻¹과 항등함수 관계",
+      "definition": "`역함수와 합성함수` 안에서 'f∘f⁻¹과 항등함수 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "f∘f⁻¹과 항등함수 관계",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_LEFT_INVERSE_PIECEWISE_VALUE",
+        "TPL_LEFT_INVERSE_VALUE_RECOVERY",
+        "TPL_MAPPING_MIXED_COMPOSITION_INVERSE_IDENTITY",
+        "TPL_SELF_INVERSE_LINEAR_COEFFICIENT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_IDENTITY_RELATION"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_0029eb06138a5c31a486ad49736e52ffc208f31871b2cdc2c2f14e0863ad1b6c",
+        "qid_v1_6cf60b90c4f51d956e2d7ab480626aae025ec0b92a8355c26ccfd845511180f1",
+        "qid_v1_886896af38862e8c955bca654306b9d1fc254770eeccd111d9a411f25d6cc6c8",
+        "qid_v1_e85e6dec78f77a8ae256c3bb2c0cdf9ba72325d4d8e2113d6563c78eda18fb2a"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+      "canonicalLabelKo": "역함수의 성질 판정",
+      "definition": "`역함수의 성질` 안에서 '역함수의 성질 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함수의 성질 판정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_INVERSE_FROM_COMPOSITION_IDENTITY",
+        "TPL_GRAPH_COMPOSITION_INVERSE_MULTI_STATEMENT",
+        "TPL_INVERSE_PROPERTY_MULTI_STATEMENT",
+        "TPL_PIECEWISE_SELF_INVERSE_COMPOSITION_STATEMENTS",
+        "TPL_SELF_INVERSE_RATIONAL_MULTI_STATEMENT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_PROPERTY_JUDGMENT"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_2e7b47756cce0fdf84a010e6da6ce8762918f4774c1a87218885aeaadd10bdea",
+        "qid_v1_d1ccdbf7e20e1018cbf49a741232064f93da2a385526fa61be9f2cc65e004d49",
+        "qid_v1_3e20b7a6b1f61c5f2a326dc8b8caf820f49f34ed955a3c46daa1818516e0a0c2",
+        "qid_v1_cbcbb1d3488286a391a8387d4d050f788da9339e9a91f7755b8fd50970080985",
+        "qid_v1_ad2ba3cdb0fea5f5a57f352f38f1b845dd3a11a97e0216bc3be1678029cb1d26"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "canonicalLabelKo": "역함숫값 직접 구하기",
+      "definition": "`역함수 구하기와 함수값` 안에서 '역함숫값 직접 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "역함숫값 직접 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_INVERSE_VALUE_PARAMETER_DIRECT",
+        "TPL_LINEAR_FUNCTION_INVERSE_CONDITION_COEFFICIENT",
+        "TPL_LINEAR_INVERSE_CONDITION_AND_VALUE",
+        "TPL_LINEAR_INVERSE_CONDITION_COEFFICIENT",
+        "TPL_LINEAR_INVERSE_VALUE_AFTER_PARAMETER",
+        "TPL_LINEAR_INVERSE_VALUE_DIRECT",
+        "TPL_LINEAR_INVERSE_VALUE_PARAMETER_DIRECT",
+        "TPL_PIECEWISE_INVERSE_VALUE_RELATION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_VALUE_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_VALUE",
+      "status": "ACTIVE",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_ffa106018f49828255f49445f7c92be24c1e11208b611a0f01a5bd19700e49c7",
+        "qid_v1_e3a771b3c6812ddb82c6aca1656749652032c9f0cf22792da2a59713d4053c02",
+        "qid_v1_1fe9cc3ebdb0f3ce0bed93417493366024da3d50d2e16f432555eb2a7dc15b7e",
+        "qid_v1_3f5800e2dbf24cb4ea68f4185cfedfc60d1cdd71b26983ce0c5b756b63cfe41e",
+        "qid_v1_1f012d398b8c9e4217338112221922eb9601c24b28e12ce79497f1cce85356d9",
+        "qid_v1_c46484cbfa38704827247fc10f3a5f87ae981771b3ec58c5a4930c5eb87201f9",
+        "qid_v1_12c36cf170d71ca18f9dde4be1eb4ca5fa5bb6313be872400a29ade202c1fb3c",
+        "qid_v1_a96d362f0f63719f68bceaa1a34f4206604725dd6c3c2b4ca6c1f7a421175828",
+        "qid_v1_c0801dff75a213302c13c3498e985bcf555797f8145ffef007979e3682a2bb07",
+        "qid_v1_65c1c2b86691587b7bf088ca38e15590a9be8b649058465e2f8c0293c07e2df8",
+        "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869",
+        "qid_v1_11108948e809b0454b61369135005f82a2bdd10855d3bd0012df91ea8bf49994"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+      "canonicalLabelKo": "그래프·대응도에서 역함숫값 읽기",
+      "definition": "`역함수 구하기와 함수값` 안에서 '그래프·대응도에서 역함숫값 읽기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "그래프·대응도에서 역함숫값 읽기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_INVERSE_POINT_CORRESPONDENCE",
+        "TPL_GRAPH_FUNCTION_AND_INVERSE_VALUES",
+        "TPL_MAPPING_FUNCTION_AND_INVERSE_VALUE",
+        "TPL_MAPPING_INVERSE_AND_FUNCTION_VALUES"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_INVERSE_VALUE_GRAPH_MAPPING"
+      ],
+      "parentProblemTypeKey": "PT_INVERSE_VALUE",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_12ebd0c9ee86af92a520d840cf5791aca10c3db57288bd050b2e810125478ab8",
+        "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+        "qid_v1_013a373e6a7236edc5563aa3906f296223b53863793ba74d2bb804543b81289b",
+        "qid_v1_f17492da7e0235ab58e18f10ef9a83e408c003fffbaa5a6dc431a35bd1b1caa5"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_ITERATION_EQUATION_GRAPH",
+      "canonicalLabelKo": "여러 번 합성한 함수의 방정식·그래프",
+      "definition": "`반복합성` 안에서 '여러 번 합성한 함수의 방정식·그래프'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "여러 번 합성한 함수의 방정식·그래프",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_ABSOLUTE_ITERATION_GRAPH_LENGTH",
+        "TPL_TRIPLE_COMPOSITION_PREIMAGE_TREE_COUNT",
+        "TPL_TRIPLE_ITERATION_FIXED_POINT_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_ITERATION_EQUATION_GRAPH"
+      ],
+      "parentProblemTypeKey": "PT_ITERATED_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_89550ce8502907e2acd72f7f2a58137f3f9b2c47889ddb3fe8c31ca0a7ba13dd",
+        "qid_v1_4afc54f84c1eb6a01a1de7384a9a136dc2ed2c358329548246c83ac697b41c91",
+        "qid_v1_de040ad6dbae88a03058776a1c86a6fadba7a42d841088168dabe40abd4f8f24"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_ITERATION_FIXED_POINT_PREIMAGE",
+      "canonicalLabelKo": "f∘f=f의 고정점과 원상",
+      "definition": "`반복합성` 안에서 'f∘f=f의 고정점과 원상'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "f∘f=f의 고정점과 원상",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_ABSOLUTE_IDEMPOTENT_PREIMAGE",
+        "TPL_COMPOSITION_IDEMPOTENT_PREIMAGE",
+        "TPL_IDEMPOTENT_COMPOSITION_PREIMAGE",
+        "TPL_ITERATED_COMPOSITION_UNIQUE_FIXED_POINT_PARAMETER",
+        "TPL_PIECEWISE_IDEMPOTENT_PARAMETER"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_ITERATION_FIXED_POINT_PREIMAGE"
+      ],
+      "parentProblemTypeKey": "PT_ITERATED_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_15706e188849f064e39069d7364f81867eea3e291038e7901aba5a4de0afd815",
+        "qid_v1_d677c1c5ae031e805f0046609033022ecef143d51349a132cb0bf6425a89f185",
+        "qid_v1_3481f583e47fa5ff295a69cd20436263915710237aab376824f5c610369041a6",
+        "qid_v1_468059daee150aad7ca3376ef2a077c0a56957b7899af4d041c59cbb4d9e2d4b",
+        "qid_v1_04c43633b1fa368854e515ad905705d84c7d3fd70e2330e627dc2e5271e75a11"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_ITERATION_IDENTITY_ORDER",
+      "canonicalLabelKo": "fⁿ=I인 반복합성",
+      "definition": "`반복합성` 안에서 'fⁿ=I인 반복합성'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "fⁿ=I인 반복합성",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_FINITE_INVOLUTION_COUNT",
+        "TPL_FINITE_PERMUTATION_ORDER_THREE",
+        "TPL_INVOLUTION_ALTERNATING_SUM_INDEX",
+        "TPL_INVOLUTION_COUNT_FINITE_SET"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_ITERATION_IDENTITY_ORDER"
+      ],
+      "parentProblemTypeKey": "PT_ITERATED_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_6e7f58daa5bfcffc647f688c177a8e6dfc7bccf0291ffef74850b0cf76c39c34",
+        "qid_v1_53af86c5097f2cfca1a034fc872227febf349042b5880500717a1421266efe7c",
+        "qid_v1_758e03df7bac2fe1fbf8549c637ae335e93989846d7f000b8acf738524c10780",
+        "qid_v1_2a727eb7fcd0d3142f2692b4c1efeabeaa3a785ccccb9e269da4efb309639482"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "canonicalLabelKo": "반복합성의 주기",
+      "definition": "`반복합성` 안에서 '반복합성의 주기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "반복합성의 주기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_ITERATION_INVOLUTION_VALUE",
+        "TM_RATIONAL_ITERATION_PERIODIC_FORM",
+        "TM_RATIONAL_ITERATION_PERIODIC_SUM",
+        "TPL_FINITE_CYCLE_LARGE_EXPONENT_DIFFERENCE",
+        "TPL_FINITE_CYCLE_TWO_INPUT_LARGE_EXPONENT",
+        "TPL_GRAPH_FINITE_CYCLE_LARGE_EXPONENT",
+        "TPL_GRAPH_MULTIPLE_CYCLES_LARGE_EXPONENT",
+        "TPL_INVERSE_MAPPING_CYCLE_LARGE_EXPONENT",
+        "TPL_INVERSE_PIECEWISE_ITERATION_PERIOD",
+        "TPL_MODULAR_CYCLE_LARGE_EXPONENT",
+        "TPL_MODULAR_EVENTUAL_CYCLE_ITERATION",
+        "TPL_MODULAR_FIXED_POINT_ITERATION",
+        "TPL_PERMUTATION_CYCLE_BY_PRIME_SUBSET",
+        "TPL_RATIONAL_ITERATION_PERIOD",
+        "TPL_RATIONAL_ITERATION_PERIOD_POINT_COORDINATE",
+        "TPL_RECURSIVE_COMPOSITION_SEQUENCE_PERIOD"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_ITERATION_PERIOD"
+      ],
+      "parentProblemTypeKey": "PT_ITERATED_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 18,
+      "supportingQuestionUids": [
+        "qid_v1_eb31d33774e2832a90fa91c3aacde35df56d3b770385b606559fbcdd3f4c6ffe",
+        "qid_v1_b1cfe70fd50496138f07c95127e8f6f6ce5954282af8d6cc22cd332aa0e6bf34",
+        "qid_v1_dcee119b89b692ec482a23ce24cf3ba876c66276e1a23ab7893b9fc2e1598e44",
+        "qid_v1_34dd07e9ccc59cc13f4aa52de80243c50966f46c0c6286a78b11e469a39d1cbf",
+        "qid_v1_452de71fe605f9acd51fb61128f8ee63e030b183a54779f3b1c6e86f049c6cee",
+        "qid_v1_74fc73e86dec13d814f74cfb3014aaf6205e1e0dd0d2863619ff921b6acd1387",
+        "qid_v1_03687c62b3dfe8bc238a6f47b7cc54f0c01f24f934ebd65d5315426578425a62",
+        "qid_v1_7e4e443637b486887b38f3710f191ab6bb4683f1c8eb60890488ef28f6beef0f",
+        "qid_v1_2c8ac109a3d6930343cdcc9d5458780d5ff6ad7d7ad1ede6e24e2e4f50789824",
+        "qid_v1_9ab6648fbfc631ad5cca98fba1338b851fc29bfac8f333fd2436298cf0f7a558",
+        "qid_v1_22058a77f6a62ee13436e091b54b1744576411508b457fb946700e393fdf6ab8",
+        "qid_v1_e36b644dd840d293c9d0cb698e42bacc8f1618850b88bc557357c71bc4d7ee19",
+        "qid_v1_7153b51c94011118317e5242733cc5e44e3c16b7bf2cc000cd09a62700f29832",
+        "qid_v1_5c0bd4d6080d2ffe8dd05d23b804f3c80827bbb899e0161f86e393f2cdf08889",
+        "qid_v1_0c5045bdb94529f7caae5f3691afb3d3f97907bc016a69bee35edec2fcd73fdd",
+        "qid_v1_f754a75edb48743f54d236ebce8e9a3bcd79dce2cffdc77030987ef5ef56c89d",
+        "qid_v1_1cf1a2eadc8f283d272555fb6167363f3846baa375b2743f6c1c3e591106c237",
+        "qid_v1_f67797c6630a9dbd987f0e4875057e4df3d913c657c0f7d0562efb2bcc2ad39d"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_ITERATION_RULE",
+      "canonicalLabelKo": "반복합성의 규칙",
+      "definition": "`반복합성` 안에서 '반복합성의 규칙'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "반복합성의 규칙",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_ITERATION_GENERAL_FORM",
+        "TPL_LINEAR_SCALING_ITERATION",
+        "TPL_LINEAR_TRANSLATION_ITERATION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_ITERATION_RULE"
+      ],
+      "parentProblemTypeKey": "PT_ITERATED_COMPOSITION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_06e3fd3fc676a9d9692beb96823d640564c526c458ccd64ea4ab0ea36e76e1c7",
+        "qid_v1_0a576afb57e694180594be3c1234255789ae833df9c1e6094b8c746a7866ce15",
+        "qid_v1_c9d5ebc705de0fd149b686c859a8c9f0078f853425ac590bc2902e6ad588253e",
+        "qid_v1_c198ded45380234401918081940760555b8ecbb7edec805563dee564841333e2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+      "canonicalLabelKo": "증가·감소 조건이 있는 함수의 개수",
+      "definition": "`함수의 개수` 안에서 '증가·감소 조건이 있는 함수의 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "증가·감소 조건이 있는 함수의 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_BIJECTION_WITH_MONOTONE_TAIL_COUNT",
+        "TPL_INCREASING_FUNCTION_COUNT_FIXED_VALUE",
+        "TPL_INJECTIVE_FUNCTION_COUNT_WITH_ORDER_SPLIT",
+        "TPL_MONOTONE_FUNCTION_COUNT_FIXED_MIDDLE_VALUE",
+        "TPL_MONOTONE_FUNCTION_COUNT_FIXED_VALUE",
+        "TPL_MULTIPART_MONOTONE_AND_INJECTIVE_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_MONOTONE_FUNCTION_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_COUNTING",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_0fd39837e338093f56bd7115ee5c1c93506f29ad9ab56ad6a00a3630ba4e17be",
+        "qid_v1_d541e2b05cd1b011832f0536ec88d1a3aa0d5aeb892a714aaab1ada6fabd297e",
+        "qid_v1_0f86193baaa7e7cea6035d34a6de87933b349f16066735633d2a8f0a7a0aeaf7",
+        "qid_v1_9067a64e0ad1dbc7b110ac5fad2bd770c05aa97cddf88e99b37a6fa7ac503202",
+        "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+        "qid_v1_3ebf2cafe585f5894dd5e9f1071d5b0685fecf6db74f097ae5f59d29fc9a0897"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
+      "canonicalLabelKo": "여러 일대일대응의 관계로 함수값 결정",
+      "definition": "`유한집합의 일대일대응` 안에서 '여러 일대일대응의 관계로 함수값 결정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "여러 일대일대응의 관계로 함수값 결정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_THREE_BIJECTIONS_MULTI_CONDITION_COMPOSITION",
+        "TPL_TWO_BIJECTIONS_INVERSE_VALUE_CASE_MINIMUM"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_MULTIPLE_BIJECTIONS_DEDUCTION"
+      ],
+      "parentProblemTypeKey": "PT_FINITE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_88656883a81321daef5a931d913e88b240adf1049450cd40912ca21b9f6fa528",
+        "qid_v1_056f81a6b738d90ec9a933b964c30ef4395092a29d351c0de8557d8ceab22356"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+      "canonicalLabelKo": "대칭·주기 그래프의 교점 개수",
+      "definition": "`함수 그래프의 활용` 안에서 '대칭·주기 그래프의 교점 개수'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "대칭·주기 그래프의 교점 개수",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_EVEN_PERIODIC_EXTENSION_INTERSECTION_COUNT",
+        "TPL_PERIODIC_ODD_GRAPH_LINE_ROOT_COUNT"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_PERIODIC_SYMMETRY_INTERSECTION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_56d56c1538fe8bb51cea68e13ebb2a90413f9363fc7c69df62a72139f672400b",
+        "qid_v1_f5151588197b9c81026412921cd9c4f58e4f5e992cc67ceec4199d532355e83c"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "canonicalLabelKo": "조각함수의 치역을 이어 일대일대응 만들기",
+      "definition": "`일대일함수와 일대일대응` 안에서 '조각함수의 치역을 이어 일대일대응 만들기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "조각함수의 치역을 이어 일대일대응 만들기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_AFFINE_QUADRATIC_PIECEWISE_BIJECTION_MIN_BOUNDARY",
+        "TPL_LINEAR_QUADRATIC_PIECEWISE_BIJECTION_MIN_COEFFICIENT",
+        "TPL_PIECEWISE_BIJECTION_FULL_RANGE",
+        "TPL_PIECEWISE_BIJECTION_RANGE_STITCH",
+        "TPL_PIECEWISE_LINEAR_BIJECTION_INTEGER_PARAMETER",
+        "TPL_PIECEWISE_LINEAR_BIJECTION_RANGE",
+        "TPL_PIECEWISE_QUADRATIC_ABSOLUTE_BIJECTION_RANGE",
+        "TPL_PIECEWISE_QUADRATIC_BIJECTION_PARAMETER",
+        "TPL_PIECEWISE_QUADRATIC_LINEAR_BIJECTION_RANGE",
+        "TPL_PIECEWISE_RANGE_SEPARATION_INJECTIVE_PARAMETER",
+        "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+        "TPL_PIECEWISE_RANGE_STITCH_INJECTIVE",
+        "TPL_QUADRATIC_LINEAR_PIECEWISE_BIJECTION_INTEGER_MIN",
+        "TPL_TWO_LINEAR_PIECES_BIJECTION_INTEGER_MINIMUM",
+        "TPL_TWO_QUADRATIC_PIECES_BIJECTION_EXTREMUM"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_PIECEWISE_RANGE_STITCH_BIJECTION"
+      ],
+      "parentProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 16,
+      "supportingQuestionUids": [
+        "qid_v1_42717daea1d0dd7307597a6fa6b1f6c82b9575cd1592d11a043a07339f00e448",
+        "qid_v1_b9aa5f6c70f90a6211fa83914ccce369f224353382708e01b15e82b83774cd09",
+        "qid_v1_4a821724d6cb57879cef97b70e81b4613aadd83e3e223d6d7e369cc0d1200e15",
+        "qid_v1_da748b06acd54020aa9aff23c9177fe71f92d062ea08a97c28e5931b0bd24c52",
+        "qid_v1_52c0a4acbe67b7824a363b1f5ce99646d857497d9dde4eb56dabd178edfe67cd",
+        "qid_v1_75ab496f366b5f5416fb2f44abbda3b82201621a50217b5e1d528de09e6e141b",
+        "qid_v1_1ec420fd038157665bac943230a6b0a7f30fdcf3ebe50d8be32c713bba9ae104",
+        "qid_v1_e717157a35394853fd0918786ee215806335bd6b99a98a276b1fbd3c82666a33",
+        "qid_v1_996c1290318dffb9e73a06688e8b1e25c2888b78a19519302a8e240fcb1cee5f",
+        "qid_v1_72b0e9c2227f0f777b9917af314d207718e6154b166d034498f3ab4be9cfb6e5",
+        "qid_v1_57ece4f3b94d07b2ca218a0dbf19cad664d02bda814f21d885be724dadd99c3f",
+        "qid_v1_be3f0d59886b4039c49d972c972cd6e0ef394e68a2a9749c0d43d90c5c0e33ca",
+        "qid_v1_1484bf77d7c260ddea773d832de1912cd4065d0fe35bdf02c1212d7d71de6fca",
+        "qid_v1_dc1bd74a6da4692d69874ceca5709a15f4c52b4dccd557de9e622dc90cdf6b0c",
+        "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
+        "qid_v1_aacd74a75c2ec98ac2ac29a04c1b5321105f3c870c611ef4d99bc77f05f7f6e2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+      "canonicalLabelKo": "이차함수의 정의역 제한과 일대일대응",
+      "definition": "`일대일함수와 일대일대응` 안에서 '이차함수의 정의역 제한과 일대일대응'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "이차함수의 정의역 제한과 일대일대응",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_QUADRATIC_DOMAIN_CODOMAIN_BIJECTION_CHOICE",
+        "TPL_QUADRATIC_HALF_LINE_SELF_BIJECTION",
+        "TPL_QUADRATIC_INTERVAL_BIJECTION_ENDPOINT_MATCH",
+        "TPL_QUADRATIC_INTERVAL_RANGE_AND_BIJECTION",
+        "TPL_QUADRATIC_INTERVAL_SELF_BIJECTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_QUADRATIC_DOMAIN_BIJECTION"
+      ],
+      "parentProblemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_cfea07da6f5b0e7c15f96a2fd16b5b5434e4694b206721713c70e40e24abcd9d",
+        "qid_v1_dfc5231aa2f6aed9cf496b294a09335404452496ce90376d8e8ac09b023064a3",
+        "qid_v1_41d7acc38c39310454fd3d7e39bde65faefd9e7bd19f098aac43d6d6cd6bcec4",
+        "qid_v1_412da83ac449a6419e935154eeac0474c2482c4eab3bb0d58950dd17dbd8009f",
+        "qid_v1_ae7edd0a077bc55bfd3c82dc51ae2344363fc6bd478e6db0205aa7c89b0e9a08",
+        "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RADICAL_EXPRESSION_APPLICATION",
+      "canonicalLabelKo": "무리식의 활용",
+      "definition": "`무리식의 계산` 안에서 '무리식의 활용'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "무리식의 활용",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RADICAL_EXPRESSION_APPLICATION"
+      ],
+      "parentProblemTypeKey": "PT_RADICAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_RADICAL_MODEL_RATIO"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_58dea249244b72af85b24c3f3cf3ffeeb0abe346f50a0afa6ba673a62a01fe22"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "canonicalLabelKo": "무리식 간단히 하기",
+      "definition": "`무리식의 계산` 안에서 '무리식 간단히 하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "무리식 간단히 하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RADICAL_EXPRESSION_SIMPLIFY"
+      ],
+      "parentProblemTypeKey": "PT_RADICAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_EXPRESSION_CONJUGATE_DIFFERENCE",
+        "TM_IRRATIONAL_EXPRESSION_RATIONALIZE_COMBINE",
+        "TM_IRRATIONAL_EXPRESSION_VALUE_SIMPLIFY"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_6f4551008daf3d1a8dbc766d45f29043da904bd9478f9a4c9298138d82bdfa98",
+        "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
+        "qid_v1_ab0c9ec3c48b69a7702650a99e6aaf6c3090661b379d0a70dcf90ec8830fa190"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+      "canonicalLabelKo": "무리식이 실수가 되는 범위",
+      "definition": "`무리식의 계산` 안에서 '무리식이 실수가 되는 범위'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "무리식이 실수가 되는 범위",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RADICAL_REAL_VALUE_RANGE"
+      ],
+      "parentProblemTypeKey": "PT_RADICAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "mergedFromRawTemplates": [
+        "TM_IRRATIONAL_EXPRESSION_REAL_VALUE_INTEGER_COUNT",
+        "TM_IRRATIONAL_EXPRESSION_REAL_VALUE_RANGE"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b64eca1f09dd5c0ed4a157e2fb3169aff9ed82f82eab474e0d75326053fb23d2",
+        "qid_v1_074bd71ece4bf006b2e2d2b83fdb7f8f72fc2941f7590b70ae86e8bd3a6ca2fc",
+        "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RANGE_ENUMERATION",
+      "canonicalLabelKo": "치역 구하기",
+      "definition": "`정의역·공역·치역과 전사함수` 안에서 '치역 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "치역 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_FINITE_DOMAIN_RANGE_ENUMERATION",
+        "TPL_MODULAR_LAST_DIGIT_IMAGE_ENUMERATION",
+        "TPL_MODULAR_RESIDUE_IMAGE_ENUMERATION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_RANGE_ENUMERATION"
+      ],
+      "parentProblemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_03e2d1b84d101dd85718f19b06a9b38ee6cd54fe2e5c740e98a982f41694d6a8",
+        "qid_v1_076d9c111bf1b45c3cc590a4c3f974fb5f2f100653d41c4587b1d0cc9ff9379f",
+        "qid_v1_55c4887a72d930eda373bcf7802391960c29b4a69f6f581d40795706daa094c2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "canonicalLabelKo": "유리함수의 점근선 직접 구하기",
+      "definition": "`유리함수의 점근선` 안에서 '유리함수의 점근선 직접 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "유리함수의 점근선 직접 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_ASYMPTOTE_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "status": "ACTIVE",
+      "supportingItemCount": 8,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_ASYMPTOTE_DIRECT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_782cd02bffbed66f2719ef2a5f3c07c0b5c623942263c31d85fc8365b90c8193",
+        "qid_v1_b7d8cf2e87029438d85dddadc762bb019451f69e32ac2c2c9c2479a06e3738cd",
+        "qid_v1_d1d0d5f5731dc7a6a2eedd8f91af5925d242cee7d3db65619c86c1d2ff82e688",
+        "qid_v1_aecd3cb11b9938292402d2386f3870941cae184cfcd43a26d5a53e8d7208f8e6",
+        "qid_v1_5f456a221fd462059bdf0c73f52425f4e7cc105d96d6155fbeca60174c73808d",
+        "qid_v1_4b7783b72eaa873cb30cc866f1f65072e3fd7e230adda0ff31ce6e14b8c5917e",
+        "qid_v1_a57d9f726d23fc1560e3c93cae19aff98de79b009f3d700821953993a0584435",
+        "qid_v1_1aeabf3ae53dcd416e9b14d0a826bbd8fb8686c7b206f47cbf17e1a449102f9e"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+      "canonicalLabelKo": "점근선과 도형 관계",
+      "definition": "`유리함수의 점근선` 안에서 '점근선과 도형 관계'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "점근선과 도형 관계",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_ASYMPTOTE_GEOMETRY"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_TWO_FUNCTION_ASYMPTOTE_RECTANGLE_AREA"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_MODEL",
+      "canonicalLabelKo": "모델 관계에서 점근선 조건 이용하기",
+      "definition": "`유리함수의 점근선` 안에서 '모델 관계에서 점근선 조건 이용하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "모델 관계에서 점근선 조건 이용하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_ASYMPTOTE_MODEL"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_ASYMPTOTE_FROM_MODEL_RELATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_9c839061ad02be7653ddb7b4e141a860b879e383b715b209c25b154a39404f4c",
+        "qid_v1_294899c717bb3497656faa6a8162c497d0693d0cd88f7f6087b89cabdda7a3b9"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_EXPRESSION_IDENTIFICATION",
+      "canonicalLabelKo": "유리식 판정",
+      "definition": "`유리식의 계산` 안에서 '유리식 판정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "유리식 판정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_EXPRESSION_IDENTIFICATION"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_EXPRESSION_IDENTIFICATION",
+        "TM_RATIONAL_FUNCTION_IDENTIFICATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b1ecca715af06e02aafef2bb1201fe49f12732eea4930798f222bb8004532f56",
+        "qid_v1_c8cd63d36801f8e8310e19d13644946ba3b5e3cc2a27fb80f40a79e8393b2df1"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "canonicalLabelKo": "유리식 간단히 하기",
+      "definition": "`유리식의 계산` 안에서 '유리식 간단히 하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "유리식 간단히 하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_EXPRESSION_SIMPLIFY"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_EXPRESSION_COMBINE",
+        "TM_RATIONAL_EXPRESSION_ERROR_JUDGMENT",
+        "TM_RATIONAL_EXPRESSION_SIMPLIFY",
+        "TM_RATIONAL_EXPRESSION_SIMPLIFY_PRODUCT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a64e5579217a895cada11788d4cd4b14b1b33a570dfaac13c765abee20a69251",
+        "qid_v1_debfe4fdeaaae01dc94de24a0526a258e14d42e73b9894f71911f63fb0d9623e",
+        "qid_v1_06af3bf0fd2b7aaf17b124d10acc6cb367dadcfede73bb6d841a2ecc52da61c5",
+        "qid_v1_51b8343265a7bbe6758c74b64ed6265ce6e72a4cb300e8fde09614ae6b1c4ab9"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_NESTED_FRACTION",
+      "canonicalLabelKo": "복분수형 유리식 정리",
+      "definition": "`유리식의 계산` 안에서 '복분수형 유리식 정리'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "복분수형 유리식 정리",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_NESTED_FRACTION"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_EXPRESSION_SIMPLIFY_COMPLEX_FRACTION",
+        "TM_RATIONAL_EXPRESSION_SIMPLIFY_NESTED_FRACTION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_05d18549109720586dd05f7467d33e7f99cc801b341c5e984a210db33f0c4f55",
+        "qid_v1_2d47742a5a6d83a701b34f39de5a476cf4e81ac0f175bef5a448dc865e15e25b"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_PARTIAL_FRACTION",
+      "canonicalLabelKo": "부분분수로 유리식 정리",
+      "definition": "`유리식의 계산` 안에서 '부분분수로 유리식 정리'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "부분분수로 유리식 정리",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_PARTIAL_FRACTION"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_PARTIAL_FRACTION_COEFFICIENT"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_989c1678a9b5692921dcc5797751b36818fb2e40561fa723098bd2550972d44c",
+        "qid_v1_9d35ccac5fb9365dda3c7e8ab5c4b6b91d659d04fb8b9cfd88412ad53922ac28",
+        "qid_v1_bb25cf52912181349749d3b105270746cdb7b3c26b52579e137efe3ac0ebf5cc",
+        "qid_v1_59e06dc4efbd8f9bb2ed0149089e12fbf4ccee7e8bfb247cbef834787e3a03d9"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+      "canonicalLabelKo": "유리식의 망원합",
+      "definition": "`유리식의 계산` 안에서 '유리식의 망원합'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "유리식의 망원합",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromTemplateKeys": [
+        "TPL_RATIONAL_TELESCOPING_SUM"
+      ],
+      "parentProblemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "mergedFromRawTemplates": [
+        "TM_RATIONAL_TELESCOPING_SUM",
+        "TM_RATIONAL_TELESCOPING_SUM_BASIC",
+        "TM_RATIONAL_TELESCOPING_SUM_GENERAL"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_b79680dcad6e2bdc6ad0c2d61f2ed0a7ce08ffbb8e04567996fd7b76db1461d0",
+        "qid_v1_cf2362b039424ee9af2e7f6c6bf8d2f0cf3ec9fbe25c2239bc53581809d4124f",
+        "qid_v1_c778d3e5accca408de377f0a21886949eab5605fda527176d310b5b9df8e3560",
+        "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+      "canonicalLabelKo": "입력 치환으로 함수식 구하기",
+      "definition": "`함수식 구하기` 안에서 '입력 치환으로 함수식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "입력 치환으로 함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_INPUT_AFFINE_SUBSTITUTION_RECOVER_FUNCTION_EXTREMUM",
+        "TPL_RECOVER_FUNCTION_THEN_INVERSE_FROM_IDENTITY",
+        "TPL_RECOVER_LINEAR_FUNCTION_FROM_AFFINE_INPUT_THEN_INVERSE"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_RECOVERY",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_1ee532de31960998ea7b2ed457ecd71c3cf4622ccdb2df84ba465e5543459f34",
+        "qid_v1_4d67b3a1967d7ab20ea2393845bd34c33837c77b0029688d0864a670d24849c5",
+        "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+      "canonicalLabelKo": "합성관계에서 함수식 구하기",
+      "definition": "`함수식 구하기` 안에서 '합성관계에서 함수식 구하기'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "합성관계에서 함수식 구하기",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_COMMON_COMPOSITE_RECOVER_FUNCTION_AND_INVERSE_VALUE",
+        "TPL_COMPOSITION_COEFFICIENT_MATCH_THEN_INVERSE_VALUE",
+        "TPL_COMPOSITION_EQUATION_AND_RECOVER_OUTER_FUNCTION",
+        "TPL_RECOVER_INNER_FUNCTION_FROM_COMPOSITION",
+        "TPL_RECOVER_OUTER_FUNCTION_FROM_COMPOSITION_SHIFT",
+        "TPL_RECOVER_OUTER_FUNCTION_VALUE_FROM_COMPOSITION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_RECOVER_FUNCTION_FROM_COMPOSITION"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_RECOVERY",
+      "status": "ACTIVE",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_4e13c2e597d68c582e028397e0df40980c80ab21563556a6b1b64032fee58d00",
+        "qid_v1_a5c57946534aad8bc92d77b91ac3e6b3681126a80fb32e7d829055cc7c712d99",
+        "qid_v1_d370167261b8ef429787b9d0c30e062cebc58530d5620cd7ec5b0aec5f7ef588",
+        "qid_v1_1631ea72ae149ac201fc551885fb18b7cac74b0598c8a90b50de6c8019bf6f3f",
+        "qid_v1_0d121b6b91621b9197b4e248ebd50c99c0fa5d4cdbb4ab5cc0b5687ce57e3aa6",
+        "qid_v1_ac12ed3bc4cb34a1c6d560a9dc4a8f2c11fc483d530bfdb60fa4a5fad867eb7b"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_RECURSIVE_FUNCTION_VALUES",
+      "canonicalLabelKo": "재귀식으로 함수값 반복 계산",
+      "definition": "`재귀적으로 정의된 함수` 안에서 '재귀식으로 함수값 반복 계산'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "재귀식으로 함수값 반복 계산",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_RECURSIVE_NESTED_FUNCTION_PATTERN",
+        "TPL_RECURSIVE_NESTED_FUNCTION_PERIODIC_PATTERN"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_RECURSIVE_FUNCTION_VALUES"
+      ],
+      "parentProblemTypeKey": "PT_RECURSIVE_FUNCTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_edc71d1bac328b6dabfbc3edd2288bc6b48d75170fb981114040af0cf7215365",
+        "qid_v1_aff259e5befcab07f1e7be43161a2249d7bccc0eb4c5fccc8a7842cef452dc74"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_SPECIAL_FUNCTION_DIRECT",
+      "canonicalLabelKo": "항등함수·상수함수 직접 적용",
+      "definition": "`여러 가지 함수의 성질` 안에서 '항등함수·상수함수 직접 적용'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "항등함수·상수함수 직접 적용",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_CONSTANT_FUNCTION_REPEATED_SUM",
+        "TPL_IDENTITY_CONSTANT_DIRECT_VALUE",
+        "TPL_IDENTITY_FUNCTION_CHOICE_FINITE_DOMAIN"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_SPECIAL_FUNCTION_DIRECT"
+      ],
+      "parentProblemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_4404c957f1ffaf7aaf3d7669383113326869768dd71603cc694c0ba290c0d0eb",
+        "qid_v1_45d8ee3dfedd8d278633830312b85108701dc53d0767f7354c094e24e617d238",
+        "qid_v1_abc1cd3225f35eaf1aa2a496b95f296a7c39639b32e281ac74cb3b766948dc1c",
+        "qid_v1_18b55449dad8733664974a4477bf9ba2127b195fae84937a4f3a18bd7eee36c4"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_SPECIAL_FUNCTION_RELATION",
+      "canonicalLabelKo": "여러 가지 함수의 성질로 함수값 결정",
+      "definition": "`여러 가지 함수의 성질` 안에서 '여러 가지 함수의 성질로 함수값 결정'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "여러 가지 함수의 성질로 함수값 결정",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_CONSTANT_IDENTITY_BIJECTION_DEDUCTION",
+        "TPL_IDENTITY_CONSTANT_BIJECTION_VALUE_DEDUCTION",
+        "TPL_IDENTITY_CONSTANT_DERANGEMENT_BIJECTION_DEDUCTION",
+        "TPL_IDENTITY_INJECTIVE_INVERSE_COMPOSITION_VALUE",
+        "TPL_THREE_FUNCTION_TYPES_CONDITION_DEDUCTION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_SPECIAL_FUNCTION_RELATION"
+      ],
+      "parentProblemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+      "status": "ACTIVE",
+      "supportingItemCount": 8,
+      "supportingQuestionUids": [
+        "qid_v1_e7688300f155b626da6da9993f2720bff5fe4680d7bf4c5dd7d258d55549c957",
+        "qid_v1_e599d8075bdecc8c60c27028d95ce0f8cf1dc62bb8ab13531ad2dd315d4962df",
+        "qid_v1_32291e5f4ef9749a55b45800e0295ebdd4c3113cfa5efe80aedc6a7d39a42a28",
+        "qid_v1_c50214dc96a53027adda6a222bf3ba4e197763fbd7e7718639082b29e89798b1",
+        "qid_v1_9f2b3461db91f850d1988995e7660135a5c967e9da15b972332c20cccbeef4b7",
+        "qid_v1_bdcc7eae0a403dd0bea3e25ba367e5b304464cc140fd473ec9f996575c1153f2",
+        "qid_v1_e7d13d509d11dc8c59d928c8b7b6650f5ae8df1b70a40054d633c61bc334bcd5",
+        "qid_v1_b934ef7a67f9cf6b218ed042ec3b09617d40b4bff60fe29e7d08084814100f82"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_SURJECTION_COUNT",
+      "canonicalLabelKo": "치역과 공역이 같은 함수의 개수",
+      "definition": "치역이 공역 전체와 같아지는 함수의 개수를 세는 유형.",
+      "aliases": [],
+      "internalSkeleton": "공역의 모든 값을 적어도 한 번 사용하도록 함수의 개수를 센다.",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_SURJECTION_COUNT_INCLUSION_EXCLUSION"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_SURJECTION_COUNT"
+      ],
+      "parentProblemTypeKey": "PT_FUNCTION_COUNTING",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_339fafe360a6c6ff8e24025fb9d29656946bc859d6ba6d9ef1f9cb1e2fae1632",
+        "qid_v1_8716c67f7ded642accad9ba43fd48fb8551871b729147610a2e9441462cc80b2"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    },
+    {
+      "templateKey": "TPL_SURJECTIVITY_CONDITION",
+      "canonicalLabelKo": "공역과 치역이 일치하는 조건",
+      "definition": "`정의역·공역·치역과 전사함수` 안에서 '공역과 치역이 일치하는 조건'을 핵심 풀이 골격으로 사용하는 유형.",
+      "aliases": [],
+      "internalSkeleton": "공역과 치역이 일치하는 조건",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "mergedFromRawTemplates": [
+        "TPL_PIECEWISE_LINEAR_SURJECTIVE_NOT_INJECTIVE",
+        "TPL_RIGHT_INVERSE_EXISTENCE_BY_SURJECTIVITY"
+      ],
+      "mergedFromTemplateKeys": [
+        "TPL_SURJECTIVITY_CONDITION"
+      ],
+      "parentProblemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_e23435de0af12e0e4c26581fd91fed4b85ff7a4c88f16a82d8f5fa25f6842deb",
+        "qid_v1_e4e80bb89efff75859ad219a929aa63f6de33efcf57a3af1c0d85e2767229ace"
+      ],
+      "sourceUnit": "FUNCTIONS_GRAPHS"
+    }
+  ],
+  "foundationPack": "FUNCTIONS_GRAPHS",
+  "ownerPack": "FUNCTIONS_GRAPHS"
+}
