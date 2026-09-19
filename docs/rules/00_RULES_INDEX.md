@@ -2,6 +2,16 @@
 
 이 문서는 `docs/rules/`의 단일 진입점이다. 규칙 원문을 무리하게 한 파일에 복사하지 않고, 기준 원본·작업 프로토콜·검수 프로토콜·특수 규정·역사 문서를 역할별로 분리한다.
 
+## 0. GPT 저장소 작업 선행 규칙
+
+GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation·runtime 연결 작업을 수행할 때는
+**다른 작업 규칙을 읽기 전에**
+`02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md`를 먼저 적용한다.
+
+기본 실행 방식은 `최신 main 고정 → repo 밖 격리 작업공간에서 완결 → 최신 main 재확인 → 최종본만 1회 Git 반영`이다.
+GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
+branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
+
 ## 1. 현재 읽기 순서
 
 ### 신규 JS 추출·변환
@@ -19,6 +29,8 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 
 - 품질·독립검수·동일 final artifact SHA·실렌더·release/seal은
   `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`가 정본이다.
+- GPT의 기본 작업공간·branch 기본값·최종 Git 적용 방식은
+  `02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md`가 공통 실행 정본이다.
 - pipeline schema·evidence·closure 연결은
   `02_PIPELINES/공통파이프라인_실행계약_v1.md`와 `archive/tools/pipeline-core/`가 담당한다.
 - agent/provider 실행 수·동시성·phase isolation·freeze·launch/recheck·retry/fallback 및
