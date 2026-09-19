@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "meta-foundation-concept-shard-v1",
+  "shardId": "FUNCTIONS",
+  "shardVersion": "1.0.0",
+  "status": "ACTIVE",
+  "conceptCount": 4,
+  "concepts": [
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
+      "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
+      "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
+      "aliases": [
+        "절댓값 그래프",
+        "절댓값 함수의 그래프"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0aaf7b07e325554d90511974b098ef3ed54be960c248a2a0356f9d96bdd05092",
+        "qid_v1_5f9b7724d2648e4d2cc64fbd371d1beeb57d8384cac1b1116d71ec8d9a09e86d"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "TEXTBOOK_STANDARD_TERM",
+              "sourceTitle": "고등학교 수학 교과서·문제집에서 통용되는 표준 표현",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "절댓값 기호가 포함된 함수의 그래프",
+              "relation": "공식 성취기준 용어라고 단정하지 않음"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION",
+        "PT_LINE_INTERSECTION_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMUM",
+      "canonicalLabelKo": "이차함수의 최댓값·최솟값",
+      "definition": "이차식 또는 이차함수로 바꾼 뒤 최댓값·최솟값을 구한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_bd1521b1e905cb05a9b9c2277d697329b7d5818123480d36b70134f64edf32bc",
+        "qid_v1_ce32a03689e86abad1b07aba904d15a27cb05e499a4e5629a967eee11be2724b",
+        "qid_v1_e6a7d13367b305f1a428500caff8173a25215b1e2bb8fe72b963b0e20122ddf6",
+        "qid_v1_e8d5bf3deb8315e4a75465f99447f1f442c4bedc73ee0e6b36db03a91688f5c6"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "PLANE_COORDINATE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "PLANE_COORDINATE",
+          "evidence": {
+            "evidenceType": "LOCAL_CANONICAL+TEXTBOOK",
+            "evidence": "마스터의 이차함수/이차함수 활용 계열과 교과서 표준 표현.",
+            "authority2015": "교육부 고시 제2015-74호, 수학과 교육과정 [별책 8]",
+            "authority2022": "교육부 고시 제2022-33호, 수학과 교육과정 [별책 8]"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COORD_DISTANCE_OPTIMIZATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-09"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FUNCTION",
+      "canonicalLabelKo": "이차함수",
+      "definition": "포물선의 식 또는 이차식의 그래프·최대최소 성질을 사용하는 개념.",
+      "aliases": [
+        "이차함수 그래프"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_603b917cf3c4a678f353cbc474185a7455eb56b43996a1c138765f8f45acd48d",
+        "qid_v1_65b1e4cbc70c5444aca2e0b2faa1238caf44a5ec89d6b089430a1c4c35af0378",
+        "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "CIRCLE_EQUATION",
+        "LINE_EQUATION"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LINE_EQUATION",
+          "evidence": [
+            {
+              "evidenceType": "PROJECT_CANONICAL_MASTER_TERM",
+              "sourceTitle": "JS아카이브_표준단원키_마스터테이블",
+              "curriculum": "2015",
+              "course": "수학(상)",
+              "term": "이차함수",
+              "taxonomyRef": "H15-SA-13"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_EQUATION",
+        "PT_POINT_LINE_DISTANCE"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-10",
+        "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_VERTEX",
+      "canonicalLabelKo": "이차함수의 꼭짓점",
+      "definition": "이차함수의 꼭짓점 좌표를 구하고 그래프 이동에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e82759ea5a0b7f4f95ca6cceed41efd5486c8f7974b908dd8cbf1450acf662f1",
+        "qid_v1_f1fd143ed62340a01cd64c64873272f4aeba64856faed891eba46f7a17cd16f2"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "FIGURE_TRANSFORM"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FIGURE_TRANSFORM",
+          "evidence": "교과서 표준 용어 후보"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_COMPOSITE",
+        "PT_MOVE_GRAPH_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-12",
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    }
+  ]
+}

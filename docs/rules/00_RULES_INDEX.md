@@ -6,24 +6,12 @@
 
 ### 신규 JS 추출·변환
 
-기출 원본 작업은 `02_PIPELINES/Past_Exam_V3_COMPLETE.md`의 시작 HARD GATE를 적용한다.
-RULE PREFLIGHT 후 최신 main의 정상 production JS 2~3개 전체 정독,
-REFERENCE_SAMPLE_LOCK/PRODUCTION_QUALITY_PROFILE 동결, 기존 target JS 확인을
-마친 뒤 source inventory·정확 추출·해설 작성을 시작한다. 샘플은 품질 기준이며
-target PDF의 source truth를 대신하지 않는다. V3 completion은 typed 해설 품질,
-전 문항 visual benefit, core v2 전체 시험 closure까지 연결한다.
-
 모든 신규·변환 작업의 독립검수·봉인·실렌더 공통 기준은
 `02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`를 함께 적용한다.
 
 여러 실행기의 공통 schema·생성 witness·최종 집계 연결은
 `02_PIPELINES/공통파이프라인_실행계약_v1.md`와 `archive/tools/pipeline-core/`를 적용한다.
 추출/초안 완료와 실제 문항 품질 PASS는 서로 다른 상태다.
-
-모든 archive/pipeline 실행의 생성 evidence·검수·runtime 산출물 Git 경계는
-`02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md`를 적용한다. 이 문서는
-파일 확장자가 아니라 generated workspace를 ignore하고, production JS·이미지·SVG
-신규 추가 가능성과 기존 참조 asset의 Git 추적 가능성을 함께 검사한다.
 
 ### JS아카이브 공통 권위 구조
 
@@ -36,6 +24,9 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - agent/provider 실행 수·동시성·phase isolation·freeze·launch/recheck·retry/fallback 및
   provider 실행은 [`AGENT_BUDGET.md`](../../archive/tools/pipeline-core/AGENT_BUDGET.md)가
   유일한 실행 정본이다.
+- L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지하고,
+  L3/L4/CrossConcept/Condition/alias/curriculum binding의 정의·승격·검증 authority는
+  `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`가 정본이다.
 
 이 실행 권위는 신규 기출 JS 추출·변환, 기존 JS 정리·업그레이드, 해설 생성·업그레이드,
 visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출시·봉인에 공통 적용한다.
@@ -44,17 +35,17 @@ visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출
 agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
-   - `01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`는 difficultyBucket 1~5의 단계·경계·검수·자동사용 gate 단일 authority다.
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
 3. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
 4. `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
-4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-6. `02_PIPELINES/문제해설추출.md`
-7. 필요 시 `02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md` 또는 `02_PIPELINES/JS_변환_프롬프트.md`
-8. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
-9. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
-10. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
+5. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+6. `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
+7. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+8. `02_PIPELINES/문제해설추출.md`
+9. 필요 시 `02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md` 또는 `02_PIPELINES/JS_변환_프롬프트.md`
+10. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
+11. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
+12. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 
 ### 기존 JS 해설 업그레이드
 
@@ -63,9 +54,8 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0
-3. `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`
-   (상태 `QUALIFICATION_READY`, 전역 `ADOPTED` 아님; `UNIT_OVERLAY` 대체 아님; 명시적 path/version/raw SHA pin 시에만 활성화)
-4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+3. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+4. L3/L4/CrossConcept/Condition 메타를 생성·수정·검수하는 작업이면 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
 5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
 6. `02_PIPELINES/해설프로토콜.md`
 7. `02_PIPELINES/JS_문항품질_업그레이드.md`
@@ -83,9 +73,8 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 7. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 8. `03_REVIEW/무결성검수.md`
 9. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
-10. `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md` (상태 `QUALIFICATION_READY`, 전역 `ADOPTED` 아님; `UNIT_OVERLAY` 대체 아님; 명시적 path/version/raw SHA pin 시에만 활성화)
-11. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
-12. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
+10. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+11. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
 
 ## 2. 디렉터리별 역할
 
@@ -100,10 +89,16 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 `02_PIPELINES/코드검사실_…통합운영프로토콜…`은 시험지 작업 전체를 조율하는 상위 운영 기준이다. 개별 추출·해설·수정 문서는 이 통합 기준의 세부 실행 모듈로 본다.
 
-`05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md`는 원본 불변
-source-defect recovery의 설계 후보 문서다. 현재는 `DESIGN_CANDIDATE /
-NOT_YET_OPERATIVE`이므로 `MANIFEST.md`의 운영 rule pack에는 포함하지 않으며,
-구현 기준 사본은 `alive/05_DESIGN/`에 보존한다.
+Meta Foundation은 규칙 문서와 실제 canonical data를 분리한다.
+
+- 운영규칙 정본: `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
+- 실제 Meta Foundation 데이터 정본: `../../archive/data/meta-foundation/canonical/`
+- 대단원별 L3/L4 정본: `../../archive/data/meta-foundation/canonical/packs/`
+- 공용 CrossConcept 정본: `../../archive/data/meta-foundation/canonical/concepts/`
+- 전역 compiled 결과: `../../archive/data/meta-foundation/compiled/` — 기계 생성 파생본이며 직접 수정 금지
+- runtime 통계·usage·audit: `../../archive/data/meta-foundation/runtime/`
+
+Meta Foundation의 `Pack / Shard / Compiled / Ownership` 세부 계약은 Foundation 운영규칙 v1만 authoritative source로 사용한다.
 
 좌표·점·직선·교점 등 수학적 SVG의 제작자는 `04_VISUAL/도형추출.md`의 EXPECTED FACT·좌표 모델
 준비를, 독립검수자는 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`의 v1.2 최소
@@ -119,34 +114,26 @@ coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geomet
 - `internal-review-live.html`: 사용 가능한 경우 별도 확인, 없으면 `NOT_APPLICABLE` 또는 `NOT_TESTED` 사유 기록
 - 실제 증거: `reports/browser_render_check.md` 또는 동등한 캡처·출력물·렌더 로그
 
-## 3-2. Source Defect Auto-Recovery v1.2 design routing
-
-source defect 자동복구의 설계 기준은 저장소의
-`alive/05_DESIGN/ALIVE_SOURCE_DEFECT_AUTORECOVERY_RULEBOOK_v1.2.md`를
-참조한다. 현재 상태는 `DESIGN_CANDIDATE / NOT_YET_OPERATIVE`이며, 이 문서가
-canonical/production 기본값을 자동으로 바꾸지는 않는다.
-
-구현에서 `SOURCE_FIDELITY_RESTORATION`, 기존 명시 승인 경로인
-`APPROVED_SOURCE_REPAIR`, 원본을 보존하는 `DERIVED_SOURCE_RECOVERY`를
-분리한다. derived replacement가 final target을 승계하려면 Common Protocol의
-`DERIVED_REPLACEMENT_VERIFIED` 1:1 lineage, authority/adoption, initial
-denominator parity, quality closure 및 기존 final seal을 모두 통과해야 한다.
-
 ## 3. 기준 원본
 
-현재 신규 작업의 기준은 다음 세 문서와 compiled master의 조합이다.
+현재 신규 작업의 기준은 다음 canonical 문서와 canonical data의 조합이다.
 
 - `01_CANONICAL/JS아카이브룰북_v2.6.md`
 - `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 - `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+- `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
 - `04_VISUAL/도형추출.md` v3.0 (그래프·도형·hybrid 세부 수치와 출판 gate의 canonical source)
 - `archive/data/master_tables/js_archive_tag_master.json`
+- `archive/data/meta-foundation/canonical/`의 ACTIVE Pack / Concept Shard / Condition Registry
 
-마스터 테이블은 데이터 계약이고, 룰북·운영규칙은 그 데이터를 사용하는 정책 계약이므로 하나의 거대 문서로 합치지 않는다.
+L1/L2의 실제 key와 parent는 기존 master가 정본이고, L3/L4/CrossConcept/Condition/alias/curriculum binding은 Meta Foundation canonical data가 정본이다.
+`archive/data/meta-foundation/compiled/`는 ACTIVE canonical source를 합친 read-only 파생본이므로 사람이 직접 수정하지 않는다.
+마스터 테이블과 Meta Foundation data는 데이터 계약이고, 룰북·운영규칙은 그 데이터를 사용하는 정책 계약이므로 하나의 거대 문서로 합치지 않는다.
 
 ## 4. 중복 규칙을 읽는 방법
 
 추출, 해설, 품질개선 문서에는 공통적으로 수식·solution·SVG·기존 production 보호 규칙이 나타날 수 있다. 범위·보호 필드와 데이터 계약은 canonical 룰북, 독립 검수·동일 SHA·coverage·release/seal HARD gate는 Common Protocol, pipeline schema·evidence·closure 연결은 `공통파이프라인_실행계약_v1.md`와 pipeline-core, agent/provider 실행 토폴로지는 [`AGENT_BUDGET.md`](../../archive/tools/pipeline-core/AGENT_BUDGET.md)를 기준으로 한다. 작업별 pipeline과 review는 이 권위 관계를 약화할 수 없다. 배치 크기와 revision의 현재 세부 기준은 적응형 배치 문서다. 그래프 style token·sampling·출판 수치와 geometry stroke·indicator·hatching·3D·hybrid 규칙은 `04_VISUAL/도형추출.md` v3.0만 authoritative source로 사용한다.
+L3/L4/CrossConcept/Condition/alias/curriculum binding 및 Pack/Shard/Compiled/Ownership 충돌은 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`를 우선한다.
 
 ### 4-1. 충돌 방지 고정 규칙
 
