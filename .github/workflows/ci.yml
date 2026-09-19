@@ -56,6 +56,7 @@ jobs:
         run: node tools/run-tests.js
 
       - name: Meta Foundation compile gate
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
@@ -133,6 +134,7 @@ jobs:
           NODE
 
       - name: Upload Meta Foundation compile outputs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: functions-graphs-4-2-compiled
