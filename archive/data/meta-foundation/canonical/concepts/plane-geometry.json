@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.0.2",
+  "shardVersion": "1.1.0",
   "status": "ACTIVE",
-  "conceptCount": 16,
+  "conceptCount": 17,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -634,6 +634,42 @@
       "curriculumRefs": [
         "2015:수학(상):H15-SA-09",
         "2015:수학(하):H15-SB-02"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_REGULAR_HEXAGON",
+      "canonicalLabelKo": "정육각형의 성질",
+      "definition": "정육각형의 변·높이·대칭 구조를 이용해 길이 또는 넓이를 구하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4a4705bf71e4073073148726aa93c733f79f40e2aa7413eda8fedf5909c8a8e3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FUNCTIONS_GRAPHS"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FUNCTIONS_GRAPHS",
+          "evidence": [
+            {
+              "evidenceType": "FUNCTIONS_GRAPHS_4_1_SEMANTIC_FREEZE",
+              "basisMainSha": "32ab15331647a85225b59519a2ceda28ed892714",
+              "supportingReviewIndexes": [
+                189
+              ]
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITION_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-03"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }
