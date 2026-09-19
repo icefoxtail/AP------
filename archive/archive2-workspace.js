@@ -1111,9 +1111,145 @@
         r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings);
     return `<div class="mobile-actions">${button("mobile-inspector", "출력·출제 설정")}${button("print", "일반 출력", `class="primary" ${blocked ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 재시도" : "학생 출제", blocked || !state.studentIds.length ? "disabled" : "")}</div>`;
   }
+  function renderComposeStart() {
+    const scopes = scopeOptions(),
+      selectedScopes = selectedScopeOptions(),
+      quickScope = selectedScopes.length === 1 ? selectedScopes[0].key : "",
+      courseLabel = (value) =>
+        /^M([123])-([12])$/.test(value)
+          ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
+          : value,
+      courses = unique(
+        taxonomyRowsForFilters({ ...state.filters, courseKey: "" }).map((r) => r.courseKey),
+      ).map((value) => ({ value, label: courseLabel(value) })),
+      rows = planRows(),
+      total = rows.reduce((sum, row) => sum + row.count, 0),
+      selectionFilters = {
+        ...state.filters,
+        sourceFiles: state.sources,
+        primaryPaths: selectedScopePaths(),
+      },
+      excluded = C.composeExclusions(context()).union,
+      candidates = pool().filter(
+        (record) =>
+          C.matches(record, selectionFilters) &&
+          C.eligibility(record).ok &&
+          !excluded.has(record.questionUid),
+      ),
+      shortages = rows
+        .map((row) => ({
+          row,
+          available: candidates.filter((record) => C.rowMatches(record, row)).length,
+        }))
+        .filter((item) => item.available < item.row.count),
+      quickDisabled = !rows.length || state.busy || state.sealed || shortages.length,
+      scopeLabel = selectedScopes.length === 1
+        ? selectedScopes[0].label
+        : selectedScopes.length > 1
+          ? `${selectedScopes.length}개 범위`
+          : "범위 선택",
+      courseText = state.filters.courseKey ? courseLabel(state.filters.courseKey) : "과정 선택",
+      previewCount = total || Number(state.count) || 0,
+      advancedActive =
+        state.distribution !== "equal" ||
+        Boolean(state.filters.curriculumKey || state.filters.school || state.filters.yearFrom || state.filters.yearTo || state.filters.L3 || state.filters.L4) ||
+        state.buckets.join(",") !== "2,3" ||
+        selectedScopes.length > 1;
+
+    const rangeOptions = [
+      `<option value="">${selectedScopes.length > 1 ? esc(scopeLabel) : "범위 선택"}</option>`,
+      ...scopes.map(
+        (scope) =>
+          `<option value="${esc(scope.key)}"${quickScope === scope.key ? " selected" : ""}>${esc(scope.L1)} · ${esc(scope.label)}</option>`,
+      ),
+    ].join("");
+
+    const paperPreview = `<div class="classic-create-paper" aria-hidden="true">
+      <span class="classic-create-paper-title">${esc(state.header?.title || state.title)}</span>
+      <span class="classic-create-paper-meta">${esc(courseText)} · ${previewCount}문항</span>
+      <i></i><i></i><i></i><i></i><b></b>
+    </div>`;
+
+    return `<div class="intro classic-compose-intro">
+      <div><h1>문제지 만들기</h1><p class="muted">필요한 것만 고르면 바로 만듭니다.</p></div>
+    </div>
+    <div class="classic-compose-layout">
+      <section class="panel classic-compose-form">
+        <h2>빠른 제작</h2>
+        <div class="classic-compose-step">
+          <span class="classic-compose-label">학년</span>
+          <div class="classic-compose-grade" aria-label="학년">
+            ${["고1","고2","고3","중1","중2","중3"].map((grade) =>
+              `<button data-action="compose-grade" data-grade="${grade}" aria-pressed="${state.filters.grade === grade}">${grade}</button>`
+            ).join("")}
+          </div>
+        </div>
+        <div class="classic-compose-step">
+          <label class="classic-compose-label" for="classic-compose-course">과정</label>
+          <select id="classic-compose-course" data-filter="courseKey" data-group="compose">
+            ${options(courses, state.filters.courseKey, "과정 선택")}
+          </select>
+        </div>
+        <div class="classic-compose-step">
+          <label class="classic-compose-label" for="classic-compose-scope">범위</label>
+          <select id="classic-compose-scope">${rangeOptions}</select>
+        </div>
+        <div class="classic-compose-step">
+          <label class="classic-compose-label" for="classic-compose-count">문항 수</label>
+          <div class="classic-compose-count-row">
+            <input id="classic-compose-count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" ? "disabled" : ""}>
+            <div class="classic-count-presets">
+              ${[10,20,24].map((count) =>
+                `<button type="button" data-action="compose-count" data-count="${count}" aria-pressed="${Number(state.count) === count && state.distribution !== "all"}">${count}</button>`
+              ).join("")}
+            </div>
+          </div>
+        </div>
+        ${state.sources.length ? `<div class="classic-compose-source"><strong>선택한 기출 ${state.sources.length}개</strong><span>이 자료 안에서 문제를 고릅니다.</span>${button("sources-clear", "해제", 'class="small"')}</div>` : ""}
+        <details class="classic-compose-advanced"${advancedActive ? " open" : ""}>
+          <summary>상세 설정${advancedActive ? '<span>적용 중</span>' : ""}</summary>
+          <div class="classic-compose-advanced-body">
+            <div class="classic-compose-advanced-filters">${filterMarkup(state.filters, "compose", true)}</div>
+            ${renderScopes()}
+            ${renderComposition()}
+          </div>
+        </details>
+        ${shortages.length ? `<p class="classic-compose-shortage">현재 조건에서는 ${shortages.reduce((sum, item) => sum + item.row.count - item.available, 0)}문항이 부족합니다. 상세 설정에서 조건을 조정하세요.</p>` : ""}
+        ${button("generate", "문제지 만들기", `class="primary classic-compose-make" ${quickDisabled ? "disabled" : ""}`)}
+      </section>
+      <aside class="panel classic-compose-preview">
+        <h3>미리보기</h3>
+        <div class="classic-create-preview-card">
+          ${paperPreview}
+          <div><strong>${esc(state.header?.title || state.title)}</strong><p>${esc(state.filters.grade || "")} · ${esc(courseText)}<br>${esc(scopeLabel)} · ${previewCount}문항</p></div>
+        </div>
+        <dl class="classic-create-summary">
+          <div><dt>범위</dt><dd>${esc(scopeLabel)}</dd></div>
+          <div><dt>구성</dt><dd>${advancedActive ? "상세 설정" : "자동"}</dd></div>
+          ${state.sources.length ? `<div><dt>출처</dt><dd>선택 기출 ${state.sources.length}개</dd></div>` : ""}
+        </dl>
+      </aside>
+    </div>`;
+  }
+
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 파일 저장")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace"><div>${!state.selected.length ? `<section class="panel">${filterMarkup(state.filters, "compose", true)}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}${renderScopes()}</section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", true)}${renderScopes()}${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    if (!state.selected.length) return renderComposeStart();
+    return `<div class="intro classic-compose-ready-intro">
+      <div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">${state.selected.length}문항 · 시험지를 확인하고 필요한 문항만 바꿀 수 있습니다.</p></div>
+      <div class="actions classic-compose-ready-tools">${button("new-draft", "새 문제지")}${button("backup", "작업 저장", 'class="small"')}${button("import", "불러오기", 'class="small"')}</div>
+    </div>
+    <div class="workspace classic-compose-ready-workspace">
+      <div>
+        <details class="panel plan-panel classic-compose-plan"><summary>범위 · 구성 설정 ${state.sealed ? "(확정)" : ""}</summary>
+          ${filterMarkup(state.filters, "compose", true)}
+          ${renderScopes()}
+          ${renderComposition()}
+        </details>
+        ${renderPaper()}
+      </div>
+      ${renderInspector()}
+    </div>
+    ${renderMobileActions()}`;
   }
   function renderRecent() {
     const list = drafts();
@@ -1907,6 +2043,26 @@
         state.page = 0;
         urlState();
         render();
+      } else if (a === "compose-grade") {
+        if (state.sealed) return;
+        state.filters = C.reconcileFinderFilters(
+          { ...state.filters, grade: b.dataset.grade, curriculumKey: "", courseKey: "", school: "" },
+          state.catalog.taxonomy,
+        );
+        delete state.filters.L3;
+        delete state.filters.L4;
+        state.scopes = [];
+        invalidate();
+        render();
+      } else if (a === "compose-count") {
+        if (state.sealed) return;
+        state.distribution = state.distribution === "all" ? "equal" : state.distribution;
+        state.count = Number(b.dataset.count);
+        state.rows = [];
+        state.selected = [];
+        state.prepared = [];
+        scheduleSave();
+        render();
       } else if (a === "go-compose") {
         state.view = "compose";
         if (state.find.grade) state.filters.grade = state.find.grade;
@@ -2162,6 +2318,28 @@
         throw new Error(
           "출제한 문제지는 보존됩니다. 남은 문제지의 문항을 수정해 주세요.",
         );
+      }
+      if (el.id === "classic-compose-scope") {
+        if (state.sealed) return;
+        state.scopes = el.value ? [el.value] : [];
+        invalidate();
+        render();
+        return;
+      }
+      if (el.id === "classic-compose-count") {
+        if (state.sealed) return;
+        const count = Number(el.value);
+        if (!Number.isInteger(count) || count < 1 || count > 400) {
+          throw new Error("문항 수는 1~400 사이로 입력하세요.");
+        }
+        state.distribution = state.distribution === "all" ? "equal" : state.distribution;
+        state.count = count;
+        state.rows = [];
+        state.selected = [];
+        state.prepared = [];
+        scheduleSave();
+        render();
+        return;
       }
       if (el.dataset.filter) {
         if (state.sealed && el.dataset.group === "compose") {
