@@ -162,3 +162,20 @@
   #unit-ready-assignment { padding:12px; }
   .unit-ready-assignment-heading { align-items:flex-start; flex-direction:column; }
 }
+
+
+/* Classic v7 — visual QA fixes from 1440 / 390 render pass */
+@media (min-width: 901px) {
+  /* Home owns its search field, so an empty global top bar wastes the strongest vertical space. */
+  body[data-archive-view="home"] {
+    padding-top: 0;
+  }
+  body[data-archive-view="home"] .archive-navigation-topbar {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .archive-navigation-tasks > :is(a,button) {
+    font-size: 10.5px;
+  }
+}

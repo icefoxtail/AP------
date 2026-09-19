@@ -3066,3 +3066,24 @@ body.archive2-classic-shell .classic-compose-advanced > summary span {
     font-size: 11.5px;
   }
 }
+
+
+/* =========================================================
+   Classic v7 — visual QA fixes from 1440 / 390 render pass
+   ========================================================= */
+@media (min-width: 901px) {
+  /* Detail already has persistent actions at right; do not duplicate them above the paper. */
+  .original-issue-dialog:not(.is-targeting) .classic-detail-top-actions {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  /* Completed-paper actions sit above the persistent 5-tab navigation. */
+  body.archive2-classic-shell .mobile-actions {
+    bottom: calc(var(--archive-mobile-nav, 66px) + env(safe-area-inset-bottom));
+    z-index: 65;
+  }
+  body[data-archive-view="compose"] main {
+    padding-bottom: 112px;
+  }
+}
