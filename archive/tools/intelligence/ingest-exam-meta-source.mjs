@@ -126,7 +126,8 @@ function main(){
         Object.assign(record,{
           curriculumKey:String(binding.curriculum),courseKey:standardCourse,L1:standardUnit,L2:subUnit,L3:text(pt.canonicalLabelKo),L4:text(tpl.canonicalLabelKo),
           problemTypeKey,templateKey,crossConceptKeys,secondaryConceptKeys:crossConceptKeys,conditionKeys:conditionList,
-          integrationPattern:text(raw.integrationPattern),curriculumApplicability:text(binding.curriculumApplicability||'DEFAULT_SCOPE'),
+          integrationPattern:text(raw.integrationPattern),metaFoundationCurriculumApplicability:text(binding.curriculumApplicability||'CORE'),
+          curriculumApplicability:binding.curriculumApplicability==='CORE'||!binding.curriculumApplicability?'DEFAULT_SCOPE':text(binding.curriculumApplicability),
           defaultSelectable:binding.defaultSelectable===true,tagConfidence:'high',tagStatus:'approved_semantic_review',
           metadataStatus:'approved_exam_meta_source'
         });
