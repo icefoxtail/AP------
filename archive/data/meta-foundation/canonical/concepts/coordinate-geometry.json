@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.0.2",
+  "shardVersion": "1.1.0",
   "status": "ACTIVE",
-  "conceptCount": 18,
+  "conceptCount": 19,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -962,6 +962,44 @@
       ],
       "curriculumRefs": [
         "2015:수학(상):H15-SA-11"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_LATTICE_POINT_COUNTING",
+      "canonicalLabelKo": "격자점의 개수",
+      "definition": "좌표평면의 영역과 함수 그래프를 이용해 조건을 만족하는 격자점의 개수를 세는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_52ebdbd3965d281730f359ac3c23f97e5ad57de2e1dda4d1b5443c736d210e3d",
+        "qid_v1_47b9bcbeb6cb454096e685ffc7863e6145f996edb0d0290a544a927df38e9922"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "FUNCTIONS_GRAPHS"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FUNCTIONS_GRAPHS",
+          "evidence": [
+            {
+              "evidenceType": "FUNCTIONS_GRAPHS_4_1_SEMANTIC_FREEZE",
+              "basisMainSha": "32ab15331647a85225b59519a2ceda28ed892714",
+              "supportingReviewIndexes": [
+                454,
+                493
+              ]
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-05"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     }

@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.1.0",
+  "shardVersion": "1.2.0",
   "status": "ACTIVE",
-  "conceptCount": 6,
+  "conceptCount": 7,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -258,6 +258,72 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_FUNCTION",
+      "canonicalLabelKo": "무리함수",
+      "definition": "무리함수의 정의역·치역·그래프 또는 역함수 구조가 primary taxonomy 밖의 결정적 풀이 단계로 필요한 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_42717daea1d0dd7307597a6fa6b1f6c82b9575cd1592d11a043a07339f00e448",
+        "qid_v1_b9aa5f6c70f90a6211fa83914ccce369f224353382708e01b15e82b83774cd09",
+        "qid_v1_4a821724d6cb57879cef97b70e81b4613aadd83e3e223d6d7e369cc0d1200e15",
+        "qid_v1_544d54009022146d3c5d623a2927a3dc396e6a6284e3f6dcb49dffd6f981c6ad",
+        "qid_v1_da748b06acd54020aa9aff23c9177fe71f92d062ea08a97c28e5931b0bd24c52",
+        "qid_v1_52c0a4acbe67b7824a363b1f5ce99646d857497d9dde4eb56dabd178edfe67cd",
+        "qid_v1_2e7b47756cce0fdf84a010e6da6ce8762918f4774c1a87218885aeaadd10bdea",
+        "qid_v1_1c6dfef14512ffffcee2f5e01fd248bdbc645fca0839692dbaaed100553b5148",
+        "qid_v1_aa8a42357c200047d160a84c1bdd34fcc7c064c1ef1f57bf635fcaaf70f7dc2b",
+        "qid_v1_91c517905a2542cecab75c9f746822e033c2e00c94a25850f11536d2f7367823",
+        "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7",
+        "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b"
+      ],
+      "supportingItemCount": 12,
+      "sourceUnits": [
+        "FUNCTIONS_GRAPHS"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FUNCTIONS_GRAPHS",
+          "evidence": [
+            {
+              "evidenceType": "FUNCTIONS_GRAPHS_4_1_SEMANTIC_FREEZE",
+              "basisMainSha": "32ab15331647a85225b59519a2ceda28ed892714",
+              "supportingReviewIndexes": [
+                16,
+                23,
+                37,
+                46,
+                47,
+                50,
+                51,
+                56,
+                77,
+                84,
+                290,
+                372
+              ]
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "PT_FUNCTION_GRAPH_INTERSECTION",
+        "PT_FUNCTION_GRAPH_QUADRANT",
+        "PT_INVERSE_COMPOSITION",
+        "PT_INVERSE_GRAPH",
+        "PT_INVERSE_PROPERTIES",
+        "PT_ONE_TO_ONE_BIJECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-03",
+        "2015:수학(하):H15-SB-04",
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
     }
   ]
 }
