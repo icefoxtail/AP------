@@ -55,7 +55,7 @@ jobs:
           fs.mkdirSync(path.dirname(examPath), { recursive: true });
           fs.writeFileSync(
             examPath,
-            'window.examTitle = "26 테스트고 2학기 기말 고1 공통수학2";\nwindow.questions = ' + JSON.stringify([question], null, 2) + ';\n',
+            'window.examTitle = "26_테스트고_2학기_기말_고1_공통수학2";\nwindow.questionBank = ' + JSON.stringify([question], null, 2) + ';\n',
             'utf8'
           );
           const sourceFingerprint = crypto.createHash('sha256').update(JSON.stringify({
