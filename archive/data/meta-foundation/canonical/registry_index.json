@@ -11,20 +11,25 @@
       "id": "SETS_PROPOSITIONS",
       "version": "1.0.0",
       "status": "ACTIVE"
+    },
+    {
+      "id": "FUNCTIONS_GRAPHS",
+      "version": "1.0.0",
+      "status": "ACTIVE"
     }
   ],
   "activeConceptShards": [
     {
       "id": "ALGEBRA",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "ACTIVE",
-      "conceptCount": 11
+      "conceptCount": 12
     },
     {
       "id": "FUNCTIONS",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "status": "ACTIVE",
-      "conceptCount": 6
+      "conceptCount": 7
     },
     {
       "id": "LOGIC_SET",
@@ -34,15 +39,15 @@
     },
     {
       "id": "COORDINATE_GEOMETRY",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "status": "ACTIVE",
-      "conceptCount": 18
+      "conceptCount": 19
     },
     {
       "id": "PLANE_GEOMETRY",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "status": "ACTIVE",
-      "conceptCount": 16
+      "conceptCount": 17
     },
     {
       "id": "COUNTING",
@@ -52,9 +57,9 @@
     },
     {
       "id": "NUMBER_THEORY",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "ACTIVE",
-      "conceptCount": 3
+      "conceptCount": 4
     }
   ],
   "conditionRegistry": {
@@ -65,13 +70,13 @@
   "canonicalSources": [
     {
       "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
-      "sizeBytes": 25604,
-      "sha256": "fb426b09105937472ad8bfd01f4b419704b626777f128cd8d3d0c2ec5a00bbde"
+      "sizeBytes": 26682,
+      "sha256": "515eb1bd2c77821825bb96a8a21203cefcad87cbbb969414482560a456e142a4"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
-      "sizeBytes": 39937,
-      "sha256": "f438cdfc835a4dde7dbd1217c9d5a6bc09937aed35082faf144aa546cd931a92"
+      "sizeBytes": 41160,
+      "sha256": "28378f642d085d30dabffb13176b998b56617188978acfe3f822d6da2eb1b531"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/counting.json",
@@ -80,8 +85,8 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
-      "sizeBytes": 9637,
-      "sha256": "ed1bdae1be1fa3c70a188f51ee75564c6c0c559b6afa9ea6771e854e08c4b043"
+      "sizeBytes": 12184,
+      "sha256": "1e8a4e1de3a49bce618a8a86aac13987341e8139b389882d6b5cf3156e77e8c6"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/logic-set.json",
@@ -90,13 +95,13 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/number-theory.json",
-      "sizeBytes": 9229,
-      "sha256": "0e9908abf884359de8d90737995c8f5511059d55982c94b8625fa5aa3914fe67"
+      "sizeBytes": 10314,
+      "sha256": "47b6c805ae13556f9dea7e58e52915d1a6a8b251d9ae78c7a3733ef642fd193d"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
-      "sizeBytes": 24555,
-      "sha256": "73de7d2be0b01d6b518138c85fbba55b15ed8cc07f7e21cf0db6b646d4db41dd"
+      "sizeBytes": 25643,
+      "sha256": "a317dddaf1c3b0b5a6f74e34ff6e05455ba659ade46bf718208c10526c9946ef"
     },
     {
       "path": "archive/data/meta-foundation/canonical/condition_registry.json",
@@ -107,6 +112,26 @@
       "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
       "sizeBytes": 879,
       "sha256": "72cc1f7be577667c2f166183017041ae2eeeaff74a8ef3167a64ed1380c6325e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/aliases.json",
+      "sizeBytes": 303,
+      "sha256": "a0e69ab0e7b3825763272f086dccdb86ef2cd0730552acf91529092c884d3fd8"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "sizeBytes": 91916,
+      "sha256": "45ac0e21f57acb6b412e529cedc4669a6b395ebf3285972a197158be0ceb6e09"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "sizeBytes": 1107,
+      "sha256": "07c08db18105e27b971de230851b3cbf5213699e1481575681cfc7d8b793e97a"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "sizeBytes": 204837,
+      "sha256": "c47a1af59ff24572ae1474d493c4071448768674470ba03f5e86b1fdc63c4e5b"
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/aliases.json",
@@ -152,13 +177,13 @@
   "compiledArtifacts": [
     {
       "path": "archive/data/meta-foundation/compiled/aliases.json",
-      "sizeBytes": 30371,
-      "sha256": "1678ea5314384fc66768ec0e7feb2f625d898f277c83d679faad2e6eb17e9003"
+      "sizeBytes": 30395,
+      "sha256": "ba4fcc2f5a907c8b7fc8616399c9bd4f5119332a8d0d487488174763986c7778"
     },
     {
       "path": "archive/data/meta-foundation/compiled/concept_registry.json",
-      "sizeBytes": 113460,
-      "sha256": "ab51e87289b0aa094675db87ab5111f103f14a673233bff6c6a51c4306f54ad1"
+      "sizeBytes": 120481,
+      "sha256": "55d2b6830aace886921a89f1b3b6a13c5550e7f4a0ae69583767335f13677be0"
     },
     {
       "path": "archive/data/meta-foundation/compiled/condition_registry.json",
@@ -167,18 +192,18 @@
     },
     {
       "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-      "sizeBytes": 130456,
-      "sha256": "74837743999d8cf2f6571cfcf08363f3fbeade0e03d7a8bd2361b812cdc708e1"
+      "sizeBytes": 222120,
+      "sha256": "20b469d8d4a1275165b23196f5b0b969b0571c009686f69ac032184d9a4ca156"
     },
     {
       "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
-      "sizeBytes": 710,
-      "sha256": "9072b7da484e8f6116683e19c2075fd1ef015a03d8658aed13787f822a30d20e"
+      "sizeBytes": 742,
+      "sha256": "e531c7945f83902ba60eceb0dfef1836cd1a6a3d1ac64a70c44b4df2893d4d51"
     },
     {
       "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-      "sizeBytes": 307397,
-      "sha256": "e1e14be11ac9a483b58891349ee4368dd7b4b54b274e62529925820c41da222b"
+      "sizeBytes": 511927,
+      "sha256": "51a6909b796dd733420722d9af388e38350b1d9b42fa82059b7d17559bb3f7d6"
     }
   ],
   "compiledIsReadOnly": true
