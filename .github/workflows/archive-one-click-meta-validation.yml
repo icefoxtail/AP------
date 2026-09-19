@@ -125,6 +125,46 @@ jobs:
           }, null, 2));
           NODE
 
+      - name: Verify missing-meta exam is blocked
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const sourceFile = 'original/high/h1/2final/26_메타없는고_2학기_기말_고1_공통수학2.js';
+          const question = {
+            id: 1,
+            content: '함수의 정의를 확인하시오.',
+            choices: ['참', '거짓'],
+            answer: '①',
+            solution: '정의에 따라 참이다.',
+            level: '하',
+            standardCourse: '공통수학2',
+            standardUnitKey: 'H22-C2-07',
+            standardUnit: '함수',
+            subUnitKey: 'H22-C2-07-FUNCTION_BASIC',
+            subUnit: '함수의 뜻과 그래프'
+          };
+          const examPath = path.join('archive/exams', sourceFile);
+          fs.mkdirSync(path.dirname(examPath), { recursive: true });
+          fs.writeFileSync(
+            examPath,
+            'window.examTitle = "26_메타없는고_2학기_기말_고1_공통수학2";\nwindow.questionBank = ' + JSON.stringify([question], null, 2) + ';\n',
+            'utf8'
+          );
+          NODE
+          python archive/build_db.py --db-only
+          set +e
+          node archive/tools/intelligence/sync-question-identity-map-v1.mjs > /tmp/missing-meta.log 2>&1
+          code=$?
+          set -e
+          cat /tmp/missing-meta.log
+          if [ "$code" -eq 0 ]; then
+            echo "ERROR: missing-meta new exam unexpectedly passed identity sync"
+            exit 1
+          fi
+          grep -q "missing required .meta.json sidecar" /tmp/missing-meta.log
+          echo "PASS: new exam without .meta.json was blocked"
+
       - name: Diff sanity
         run: |
           git diff --check
