@@ -1,6 +1,9 @@
 (function () {
   "use strict";
-  const RUNTIME_URL = "data/meta-foundation/runtime/geometry-equations-v1.json";
+  const RUNTIME_URLS = [
+    "data/meta-foundation/runtime/geometry-equations-v1.json",
+    "data/meta-foundation/runtime/sets-propositions-v1.json"
+  ];
   const FOUNDATION_OVERRIDE_FIELDS = [
     "curriculumKey","courseKey","L1","L2","L3","L4",
     "standardCourse","standardUnitKey","standardUnit","standardUnitOrder",
@@ -68,7 +71,8 @@
         runtimeVersion: runtime.runtimeVersion,
         packId: runtime.packId,
         packVersion: runtime.packVersion,
-        counts: runtime.counts
+        counts: runtime.counts,
+        packs: runtime.packs || []
       }
     };
     window.getArchiveQuestionMetadata = function (ref) {
@@ -167,20 +171,77 @@
   const baseReady = window.__ARCHIVE_METADATA_READY__;
   const baseGet = window.getArchiveQuestionMetadata;
   const baseMerge = window.mergeArchiveQuestionMetadata;
-  const runtimeReady = fetch(new URL(RUNTIME_URL, document.baseURI), { cache: "no-cache" })
-    .then(response => {
-      if (!response.ok) throw new Error("Meta Foundation runtime HTTP " + response.status);
-      return response.json();
-    })
-    .then(data => {
-      if (!data || data.status !== "ACTIVE" || !Array.isArray(data.records)) throw new Error("Meta Foundation runtime invalid");
-      runtime = data;
-      overlayByUid = new Map(data.records.map(record => [record.questionUid, record]));
-      overlayBySource = new Map(data.records.map(record => [normalizeFile(record.sourceArchiveFile) + "#" + Number(record.sourceOrdinal), record]));
-      if (overlayByUid.size !== data.records.length || overlayBySource.size !== data.records.length) throw new Error("Meta Foundation runtime duplicate join key");
-      window.ARCHIVE_META_FOUNDATION_RUNTIME = data;
-      return data;
-    });
+  const runtimeReady = Promise.all(
+    RUNTIME_URLS.map(runtimeUrl =>
+      fetch(new URL(runtimeUrl, document.baseURI), { cache: "no-cache" })
+        .then(response => {
+          if (!response.ok) throw new Error("Meta Foundation runtime HTTP " + response.status + ": " + runtimeUrl);
+          return response.json();
+        })
+        .then(data => {
+          if (!data || data.status !== "ACTIVE" || !Array.isArray(data.records)) {
+            throw new Error("Meta Foundation runtime invalid: " + runtimeUrl);
+          }
+          return data;
+        })
+    )
+  ).then(packs => {
+    const uniqueRows = (rows, fields) => {
+      const seen = new Set();
+      return rows.filter(row => {
+        const key = fields.map(field => String(row[field] ?? "")).join("|");
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    };
+    const records = packs.flatMap(pack => pack.records || []);
+    const taxonomyRows = uniqueRows(
+      packs.flatMap(pack => pack.taxonomyRows || []),
+      ["curriculumKey","courseKey","L1","L2","problemTypeKey","templateKey"]
+    );
+    const ownedScopes = uniqueRows(
+      packs.flatMap(pack => pack.ownedScopes || []),
+      ["curriculumKey","courseKey","L1","L2"]
+    );
+    const byUid = new Map(records.map(record => [record.questionUid, record]));
+    const bySource = new Map(records.map(record => [
+      normalizeFile(record.sourceArchiveFile) + "#" + Number(record.sourceOrdinal),
+      record
+    ]));
+    if (byUid.size !== records.length || bySource.size !== records.length) {
+      throw new Error("Meta Foundation multi-pack duplicate join key");
+    }
+    runtime = {
+      schemaVersion: "meta-foundation-runtime-overlay-bundle-v1",
+      status: "ACTIVE",
+      runtimeVersion: "META_FOUNDATION_MULTI/runtime-bridge-v2:" + packs.map(pack => pack.runtimeVersion).join("+"),
+      packId: "MULTI_PACK",
+      packVersion: packs.map(pack => pack.packId + "@" + pack.packVersion).join("+"),
+      packs: packs.map(pack => ({
+        packId: pack.packId,
+        packVersion: pack.packVersion,
+        runtimeVersion: pack.runtimeVersion,
+        counts: pack.counts
+      })),
+      records,
+      taxonomyRows,
+      ownedScopes,
+      counts: {
+        records: records.length,
+        taxonomyRows: taxonomyRows.length,
+        defaultSelectable: packs.reduce((sum, pack) => sum + Number(pack.counts?.defaultSelectable || 0), 0),
+        supplementary: packs.reduce((sum, pack) => sum + Number(pack.counts?.supplementary || 0), 0),
+        automaticEligibleExpected: packs.reduce((sum, pack) => sum + Number(pack.counts?.automaticEligibleExpected || 0), 0),
+        sourceHold: packs.reduce((sum, pack) => sum + Number(pack.counts?.sourceHold || 0), 0)
+      }
+    };
+    overlayByUid = byUid;
+    overlayBySource = bySource;
+    window.ARCHIVE_META_FOUNDATION_RUNTIMES = packs;
+    window.ARCHIVE_META_FOUNDATION_RUNTIME = runtime;
+    return runtime;
+  });
   window.__META_FOUNDATION_RUNTIME_READY__ = runtimeReady;
 
   if (baseReady && typeof baseReady.then === "function") {
