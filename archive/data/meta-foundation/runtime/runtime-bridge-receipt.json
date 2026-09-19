@@ -13,14 +13,16 @@
     "limitContinuitySourceIdentityRepairJoin": 3,
     "limitContinuityCatalogJoin": 189,
     "limitContinuityCatalogJoinMismatch": 0,
-    "limitContinuityDifficultyDeferred": 104,
-    "limitContinuityAutomaticEligibleExpected": 85,
+    "limitContinuityDifficultyDeferred": 0,
+    "limitContinuityAutomaticEligibleExpected": 189,
     "combinedRuntimeRecords": 1463,
     "combinedUniqueUid": 1463,
     "combinedUniqueSourceIdentity": 1463,
     "combinedRuntimeCatalogJoin": 1463,
     "combinedRuntimeCatalogJoinMismatch": 0,
-    "productionExamJsMutation": 0
+    "productionExamJsMutation": 0,
+    "limitContinuityDifficultyReviewed": 104,
+    "limitContinuityRuntimeVersion": "LIMIT_CONTINUITY@1.0.0/runtime-bridge-v2"
   },
   "archive2JoinContract": {
     "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
@@ -35,9 +37,8 @@
     "186 LIMIT_CONTINUITY items join the static Archive2 catalog by canonical questionUid.",
     "3 catalog rows with unresolved UID are repaired in place only by exact sourceFile#sourceOrdinal parity backed by promotion evidence.",
     "All 19 source exam files are already registered in archive/db.js.",
-    "Continuity 85 items are automatic-eligible after runtime overlay.",
-    "Limit 104 items remain blocked from automatic generation until the required fresh blind difficulty recheck; taxonomy/runtime exposure does not bypass that gate.",
     "Combined active Meta Foundation runtime join is 1463/1463.",
-    "Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."
+    "Archive2 Finder and Compose grade routing treat 2015 수학II as 고2.",
+    "All 104 limit items and 85 continuity items are automatic-eligible after reviewed difficulty metadata is applied."
   ]
 }
