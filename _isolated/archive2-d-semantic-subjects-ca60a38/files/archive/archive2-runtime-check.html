@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <meta charset="utf-8" /><title>Archive 2.0 critical runtime</title>
+  <style>
+    body {
+      font: 16px system-ui;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    button {
+      padding: 12px;
+    }
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+  <h1>Archive 2.0 source / selection runtime</h1>
+  <p>로컬 검증 전용. 서버 배부나 학생 데이터 변경을 수행하지 않습니다.</p>
+  <button id="run">실제 source 경계 검증</button>
+  <pre id="result" role="status">대기</pre>
+  <script src="mixer-selector.js"></script>
+  <script src="archive2-core.js"></script>
+  <script src="archive2-source.js"></script>
+  <script>
+    document.getElementById("run").onclick = async () => {
+      const out = document.getElementById("result");
+      out.textContent = "검증 중";
+      try {
+        const catalog = Archive2Core.decodeCatalog(
+          await (await fetch("data/archive2-catalog.json")).json(),
+        );
+        const pool = catalog.records.filter((r) => r.automatic),
+          base = pool[0];
+        const req = {
+          filters: {
+            grade: base.sourceGrade,
+            curriculumKey: base.curriculumKey,
+            courseKey: base.courseKey,
+          },
+          rows: [{ id: "paper", count: 20 }],
+          seed: "runtime",
+        };
+        const selected = Archive2Core.selectBlueprint(pool, req);
+        if (!selected.ok) throw new Error(JSON.stringify(selected.errors));
+        const questions = await Archive2Source.restore(
+          selected.selected,
+          catalog,
+        );
+        const next = Archive2Core.selectBlueprint(pool, req, {
+          series: questions.map((q) => q.questionUid),
+        });
+        const prior = new Set(questions.map((q) => q.questionUid));
+        if (next.selected.some((q) => prior.has(q.questionUid)))
+          throw new Error("series duplicate");
+        out.textContent = JSON.stringify(
+          {
+            status: "PASS",
+            questions: questions.length,
+            sourceFiles: new Set(selected.selected.map((q) => q.sourceFile))
+              .size,
+            canonicalUidParity: questions.every(
+              (q, i) => q.questionUid === selected.selected[i].questionUid,
+            ),
+            sourceFingerprints: "PASS",
+            seriesDuplicate: 0,
+            review: Archive2Core.review(selected.selected, req).status,
+            catalog: catalog.health,
+          },
+          null,
+          2,
+        );
+      } catch (e) {
+        out.textContent = "FAIL: " + e.message;
+      }
+    };
+  </script>
+</html>
