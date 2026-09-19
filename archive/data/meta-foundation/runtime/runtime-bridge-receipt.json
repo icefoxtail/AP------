@@ -1,39 +1,37 @@
 {
-  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v1",
-  "status": "PASS_PRECOMMIT",
-  "baseMain": "4dad8f00095b2de766f93ecfa059477be6f6b720",
-  "runtimeVersion": "GEOMETRY_EQUATIONS@1.0.0/runtime-bridge-v1",
+  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v2",
+  "status": "PASS_RUNTIME_WIRING_PRECOMMIT",
+  "baseMain": "954c55db604fcc6eac38abc91f9da1afabbac77c",
+  "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v2",
   "checked": {
-    "canonicalAssignmentRecords": 400,
-    "canonicalStructuralErrors": 0,
-    "archive2CatalogJoin": 400,
-    "questionMetadataJoin": 400,
-    "sourceIdentityVerified": 400,
-    "sourceFingerprintVerified": 400,
-    "classificationOverlayMatch": 400,
-    "taxonomyDuplicatePaths": 0,
-    "defaultSelectable": 399,
-    "automaticEligible": 398,
-    "supplementaryBlocked": 1,
-    "sourceDifficultyHoldBlocked": 1,
-    "uniqueSourceFiles": 41
+    "geometryRecords": 400,
+    "setsPropositionsSourceCandidates": 370,
+    "setsPropositionsInScopeRecords": 363,
+    "setsPropositionsOutOfScopeExcluded": 7,
+    "setsPropositionsCurrentIdentityJoin": 363,
+    "setsPropositionsCanonicalTaxonomyJoin": 363,
+    "setsPropositionsRegisteredCrossConceptAndCondition": 363,
+    "setsPropositionsUniqueUid": 363,
+    "setsPropositionsUniqueSourceIdentity": 363,
+    "geometryNonVersionMutation": 0,
+    "combinedRuntimeRecords": 763,
+    "combinedUniqueUid": 763,
+    "combinedUniqueSourceIdentity": 763,
+    "ownedScopes": 4,
+    "setsPropositionsTaxonomyRows": 131
   },
-  "blockedItems": [
-    {
-      "reason": "SUPPLEMENTARY_OUTSIDE_CORE",
-      "count": 1
-    },
-    {
-      "reason": "SOURCE_DIFFICULTY_HOLD",
-      "count": 1,
-      "questionUid": "qid_v1_3abe4b37e32e15bd8ccd81382b327c1e6cabdfa8f91e9fcf757479900b167d08"
-    }
-  ],
+  "archive2JoinContract": {
+    "identityAuthority": "archive/data/question_identity_map.json via current metadata candidates",
+    "catalogBuilder": "archive/tools/build-archive2-catalog.mjs",
+    "joinKey": "questionUid with sourceFile#sourceOrdinal parity",
+    "browserRuntimeGate": "applyArchiveMetaFoundationCatalog requires joined === runtime.counts.records",
+    "expectedRuntimeJoin": 763
+  },
   "invariants": [
-    "No production exam JS modified by runtime bridge.",
-    "Legacy difficulty value is preserved in question-meta compatibility overlay.",
-    "Archive 2.0 receives canonical difficultyBucket 1..5 directly from the active Foundation pack.",
-    "Legacy taxonomy remains active outside GEOMETRY_EQUATIONS owned scopes.",
-    "Existing Archive2 taxonomyVersion remains unchanged for draft compatibility."
+    "No production exam JS modified.",
+    "GEOMETRY_EQUATIONS 400 assignments preserved; only runtime pack version metadata aligned to canonical 1.0.1.",
+    "SETS_PROPOSITIONS contains only the 363 independently reviewed IN_SCOPE items.",
+    "The 7 OUT_OF_SCOPE items are not overlaid.",
+    "Archive 2.0 loads both active runtime payloads through one fail-closed multi-pack bridge."
   ]
 }
