@@ -118,7 +118,9 @@
   function applyCatalogOverlay(catalog) {
     if (!catalog || !Array.isArray(catalog.records)) throw new Error("Archive 2.0 catalog unavailable");
     let joined = 0;
+    const seenCatalogUids = new Set();
     const nextRecords = catalog.records.map(base => {
+      if (base && base.questionUid) seenCatalogUids.add(base.questionUid);
       const overlay = overlayByUid.get(base.questionUid);
       if (!overlay) return base;
       if (normalizeFile(base.sourceFile) !== normalizeFile(overlay.sourceArchiveFile) || Number(base.sourceOrdinal) !== Number(overlay.sourceOrdinal)) {
@@ -143,6 +145,21 @@
         reviewStatus: "reviewed_pass"
       };
     });
+    for (const overlay of runtime.records || []) {
+      if (seenCatalogUids.has(overlay.questionUid) || !overlay.catalogSeed) continue;
+      const seed = overlay.catalogSeed;
+      joined += 1;
+      nextRecords.push({
+        ...seed,
+        ...overlay,
+        sourceFile: seed.sourceFile || overlay.sourceArchiveFile,
+        sourceOrdinal: Number(seed.sourceOrdinal || overlay.sourceOrdinal),
+        sourceQuestionNo: seed.sourceQuestionNo || overlay.sourceQuestionNo,
+        taxonomyStatus: "CONFIRMED",
+        metadataConflicts: [],
+        reviewStatus: "reviewed_pass"
+      });
+    }
     if (joined !== Number(runtime.counts && runtime.counts.records)) {
       throw new Error("Meta Foundation catalog join incomplete: " + joined + "/" + runtime.counts.records);
     }
