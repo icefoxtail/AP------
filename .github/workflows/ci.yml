@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-permissions:
-  contents: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -57,75 +54,3 @@ jobs:
 
       - name: Run tests
         run: node tools/run-tests.js
-
-  meta_foundation_stage:
-    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'meta-functions-graphs-4-2-20260919' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout head branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Compile Meta Foundation
-        shell: bash
-        run: |
-          set -euo pipefail
-          node archive/tools/meta-foundation/compile-meta-foundation.mjs --write --check
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          const read = p => JSON.parse(fs.readFileSync(p, 'utf8'));
-          const assignments = read('archive/data/meta-foundation/evidence/functions-graphs/v1/item_metadata_assignments_520.json');
-          const taxonomy = read('archive/data/meta-foundation/compiled/taxonomy_registry.json');
-          const concepts = read('archive/data/meta-foundation/compiled/concept_registry.json');
-          const conditions = read('archive/data/meta-foundation/compiled/condition_registry.json');
-          const bindings = read('archive/data/meta-foundation/compiled/curriculum_bindings.json');
-          const aliases = read('archive/data/meta-foundation/compiled/aliases.json');
-          const pt = new Set(taxonomy.problemTypes.map(x => x.problemTypeKey));
-          const tpl = new Map(taxonomy.templates.map(x => [x.templateKey, x]));
-          const cc = new Set(concepts.concepts.map(x => x.conceptKey));
-          const cond = new Set(conditions.conditions.map(x => x.conditionKey));
-          const bind = new Set(bindings.bindings.map(x => [x.curriculum,x.standardUnitKey,x.subUnitKey,x.problemTypeKey].join('\0')));
-          const uid = new Set();
-          const counts = {assignmentCount:assignments.records.length,duplicateUidCount:0,unregisteredL3Count:0,unregisteredL4Count:0,brokenL4ParentCount:0,brokenL2L3BindingCount:0,unregisteredCrossConceptCount:0,unregisteredConditionCount:0,aliasCollisionCount:aliases.collisionCount,duplicateCanonicalKeyCount:0};
-          const allKeys=[...taxonomy.problemTypes.map(x=>x.problemTypeKey),...taxonomy.templates.map(x=>x.templateKey),...concepts.concepts.map(x=>x.conceptKey),...conditions.conditions.map(x=>x.conditionKey)];
-          counts.duplicateCanonicalKeyCount=allKeys.length-new Set(allKeys).size;
-          for(const r of assignments.records){
-            if(uid.has(r.questionUid))counts.duplicateUidCount++; uid.add(r.questionUid);
-            if(!pt.has(r.problemTypeKey))counts.unregisteredL3Count++;
-            const t=tpl.get(r.templateKey); if(!t)counts.unregisteredL4Count++; else if(t.parentProblemTypeKey!==r.problemTypeKey)counts.brokenL4ParentCount++;
-            if(!bind.has([r.curriculum,r.standardUnitKey,r.subUnitKey,r.problemTypeKey].join('\0')))counts.brokenL2L3BindingCount++;
-            for(const k of r.crossConceptKeys||[])if(!cc.has(k))counts.unregisteredCrossConceptCount++;
-            for(const k of r.conditionKeys||[])if(!cond.has(k))counts.unregisteredConditionCount++;
-          }
-          const failures=[]; if(counts.assignmentCount!==520)failures.push('assignmentCount='+counts.assignmentCount);
-          for(const [k,v] of Object.entries(counts))if(k!=='assignmentCount'&&v!==0)failures.push(k+'='+v);
-          const audit={schemaVersion:'functions-graphs-global-integrity-audit-v1',status:failures.length?'FAIL':'PASS',packId:'FUNCTIONS_GRAPHS',packVersion:'1.0.0',counts,compiledCounts:{problemTypes:taxonomy.problemTypeCount,templates:taxonomy.templateCount,crossConcepts:concepts.conceptCount,conditions:conditions.conditionCount,bindings:bindings.bindingCount,aliases:aliases.aliasCount},failures};
-          fs.writeFileSync('archive/data/meta-foundation/evidence/functions-graphs/v1/global_integrity_audit.json',JSON.stringify(audit,null,2)+'\n');
-          console.log(JSON.stringify(audit));
-          if(failures.length)process.exit(1);
-          NODE
-
-      - name: Commit exact generated outputs
-        shell: bash
-        run: |
-          set -euo pipefail
-          git fetch --no-tags origin main
-          git checkout origin/main -- .github/workflows/ci.yml
-          git add             .github/workflows/ci.yml             archive/data/meta-foundation/canonical/registry_index.json             archive/data/meta-foundation/compiled/aliases.json             archive/data/meta-foundation/compiled/concept_registry.json             archive/data/meta-foundation/compiled/condition_registry.json             archive/data/meta-foundation/compiled/curriculum_bindings.json             archive/data/meta-foundation/compiled/meta_foundation_compiled.json             archive/data/meta-foundation/compiled/taxonomy_registry.json             archive/data/meta-foundation/evidence/functions-graphs/v1/global_integrity_audit.json             archive/data/meta-foundation/evidence/geometry-equations/v1/global_integrity_audit.json             archive/data/meta-foundation/evidence/geometry-equations/v1/promotion_receipt.json             archive/data/meta-foundation/runtime/geometry-equations-v1.json
-          if git diff --cached --quiet; then
-            echo "No generated diff to commit"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "build(meta-foundation): compile functions graphs [skip ci]"
-          git push origin HEAD:"${GITHUB_HEAD_REF}"
-
