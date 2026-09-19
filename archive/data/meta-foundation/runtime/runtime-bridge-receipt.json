@@ -1,37 +1,52 @@
 {
   "schemaVersion": "meta-foundation-runtime-bridge-receipt-v2",
-  "status": "PASS_RUNTIME_WIRING_PRECOMMIT",
-  "baseMain": "463b7ca157c047bead45563fa8f677dbc050eaa5",
+  "status": "PASS_RUNTIME_WIRING_REGRESSION_FIX",
+  "baseMain": "bd581926da9d35fee68e8c9d04341c287cca2715",
   "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v2",
   "checked": {
     "geometryRecords": 400,
-    "setsPropositionsSourceCandidates": 370,
-    "setsPropositionsInScopeRecords": 363,
+    "setsPropositionsCanonicalInScopeRecords": 363,
+    "setsPropositionsRuntimeRecords": 354,
+    "setsPropositionsCatalogUnregisteredExcluded": 9,
     "setsPropositionsOutOfScopeExcluded": 7,
-    "setsPropositionsCurrentIdentityJoin": 363,
-    "setsPropositionsCanonicalTaxonomyJoin": 363,
-    "setsPropositionsRegisteredCrossConceptAndCondition": 363,
-    "setsPropositionsUniqueUid": 363,
-    "setsPropositionsUniqueSourceIdentity": 363,
-    "geometryNonVersionMutation": 0,
-    "combinedRuntimeRecords": 763,
-    "combinedUniqueUid": 763,
-    "combinedUniqueSourceIdentity": 763,
-    "ownedScopes": 4,
-    "setsPropositionsTaxonomyRows": 131
+    "combinedRuntimeRecords": 754,
+    "combinedUniqueUid": 754,
+    "combinedUniqueSourceIdentity": 754,
+    "runtimeCatalogJoin": 754,
+    "runtimeCatalogJoinMismatch": 0,
+    "geometryNonVersionMutation": 0
   },
   "archive2JoinContract": {
-    "identityAuthority": "archive/data/question_identity_map.json via current metadata candidates",
+    "identityAuthority": "archive/data/question_identity_map.json + archive/data/archive2-catalog.json",
     "catalogBuilder": "archive/tools/build-archive2-catalog.mjs",
     "joinKey": "questionUid with sourceFile#sourceOrdinal parity",
     "browserRuntimeGate": "applyArchiveMetaFoundationCatalog requires joined === runtime.counts.records",
-    "expectedRuntimeJoin": 763
+    "expectedRuntimeJoin": 754
   },
   "invariants": [
     "No production exam JS modified.",
-    "GEOMETRY_EQUATIONS 400 assignments preserved; only runtime pack version metadata aligned to canonical 1.0.2 after alias-role correction.",
-    "SETS_PROPOSITIONS contains only the 363 independently reviewed IN_SCOPE items.",
-    "The 7 OUT_OF_SCOPE items are not overlaid.",
-    "Archive 2.0 loads both active runtime payloads through one fail-closed multi-pack bridge."
-  ]
+    "No canonical SETS_PROPOSITIONS pack/evidence record removed; canonical IN_SCOPE count remains 363.",
+    "Runtime projection includes only records currently restorable through Archive2 catalog identity.",
+    "The 9 items from 20_매산고_2학기_중간_고1_기출.js remain canonical but are excluded from runtime until that source is registered in Archive2.",
+    "GEOMETRY_EQUATIONS runtime remains 400 assignments.",
+    "Archive 2.0 multi-pack fail-closed join is restored at 754/754."
+  ],
+  "catalogUnregisteredExclusions": {
+    "reason": "SOURCE_NOT_REGISTERED_IN_ARCHIVE2_CATALOG",
+    "count": 9,
+    "sourceFiles": [
+      "original/high/h1/2mid/20_매산고_2학기_중간_고1_기출.js"
+    ],
+    "questionUids": [
+      "qid_v1_15e621c42fb988cb018ddd8253b6bf7edd43fff1d22f1c84af7b5c8b82a2a3ba",
+      "qid_v1_623f00ed428e0ed9012a93cc7dd41f0b40a374010790f707067358d7a682cc2a",
+      "qid_v1_812277a8ca1aa7d3efc3eaf3edd84ada828cee4df54fc1a74b9eee79031f8984",
+      "qid_v1_0a8baec5442d989059a29517bea811f4f6f7e45911dade48a2d7ed42104b4577",
+      "qid_v1_4b9e934ca4a68d8fca10e52af37423ba9b20dc9c7b0148f6b5944457d253ff18",
+      "qid_v1_71acff8f850132a32fc0804bf60fc4d75f1b2c83d3efc9bcd4135dcc5543675b",
+      "qid_v1_1d7cd765137cad0c849d8ae728b0e0bd48adc1d41f0f54f78f5a82a6957cb396",
+      "qid_v1_909b5a10036f1ea3c78d340a544a67f332597f2afb1162f890f4ed1ca92eaadd",
+      "qid_v1_9436f4bc79fc5eea69dba7a8ddb40fd28b6ab1b6a2637cd634c56c8a90a44667"
+    ]
+  }
 }
