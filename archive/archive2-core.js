@@ -69,11 +69,15 @@
     기하: "고3",
     "기하와 벡터": "고3",
   });
-  const finderCourseGrade = (courseKey) => {
+  const finderCourseGrade = (courseKey, curriculumKey = "") => {
     const middle = text(courseKey).match(/^M([123])-[12]$/);
-    return middle
-      ? `중${middle[1]}`
-      : finderCourseGrades[courseKey] || "";
+    if (middle) return `중${middle[1]}`;
+    if (
+      text(curriculumKey) === "2015" &&
+      normalizeCourseIdentity(courseKey) === "수학II"
+    )
+      return "고2";
+    return finderCourseGrades[courseKey] || "";
   };
   const middleCourseRange = (range) => {
     const startKey = text(range?.rangeStartUnitKey),
@@ -117,7 +121,7 @@
       (taxonomy || [])
         .filter(
           (row) =>
-            (!filters.grade || finderCourseGrade(row.courseKey) === filters.grade) &&
+            (!filters.grade || finderCourseGrade(row.courseKey, row.curriculumKey) === filters.grade) &&
             (!filters.curriculumKey || row.curriculumKey === filters.curriculumKey),
         )
         .map((row) => row.courseKey)

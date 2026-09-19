@@ -1,45 +1,43 @@
 {
-  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v4",
-  "status": "PASS_FUNCTIONS_GRAPHS_520_CATALOG_JOIN",
-  "baseMain": "17a8ada69a81e150c6b6ac5bacf24422d358285b",
-  "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v2",
+  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v5",
+  "status": "PASS_LIMIT_CONTINUITY_189_CATALOG_JOIN",
+  "baseMain": "90dfdb7e0f5747d1aedde5cb0b5f60841da033e8",
+  "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v3",
   "checked": {
     "geometryRecords": 400,
     "setsPropositionsRuntimeRecords": 354,
-    "functionsGraphsCanonicalAssignments": 520,
     "functionsGraphsRuntimeRecords": 520,
-    "functionsGraphsExistingCatalogJoin": 510,
-    "functionsGraphsSupplementalCatalogJoin": 10,
-    "functionsGraphsCatalogJoin": 520,
-    "functionsGraphsCatalogJoinMismatch": 0,
-    "combinedRuntimeRecords": 1274,
-    "combinedUniqueUid": 1274,
-    "combinedRuntimeCatalogJoin": 1274,
+    "limitContinuityCanonicalAssignments": 189,
+    "limitContinuityRuntimeRecords": 189,
+    "limitContinuityExistingCatalogUidJoin": 186,
+    "limitContinuitySourceIdentityRepairJoin": 3,
+    "limitContinuityCatalogJoin": 189,
+    "limitContinuityCatalogJoinMismatch": 0,
+    "limitContinuityDifficultyDeferred": 104,
+    "limitContinuityAutomaticEligibleExpected": 85,
+    "combinedRuntimeRecords": 1463,
+    "combinedUniqueUid": 1463,
+    "combinedUniqueSourceIdentity": 1463,
+    "combinedRuntimeCatalogJoin": 1463,
     "combinedRuntimeCatalogJoinMismatch": 0,
     "productionExamJsMutation": 0
   },
   "archive2JoinContract": {
-    "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity",
+    "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
     "catalogBuilder": "archive/tools/build-archive2-catalog.mjs",
-    "joinKey": "questionUid with sourceFile#sourceOrdinal parity",
+    "joinKey": "questionUid, with fail-closed sourceFile#sourceOrdinal fallback for reviewed identity repair",
     "browserRuntimeGate": "applyArchiveMetaFoundationCatalog requires joined === runtime.counts.records",
-    "expectedRuntimeJoin": 1274
+    "expectedRuntimeJoin": 1463
   },
   "invariants": [
     "No production exam JS modified.",
-    "2020 Maesan H1 second-semester midterm is registered in archive/db.js.",
-    "FUNCTIONS_GRAPHS retains all 520 canonical assignments.",
-    "510 FUNCTIONS_GRAPHS items join the static Archive2 catalog directly.",
-    "The 10 previously unregistered Maesan function items join through the runtime catalog supplemental path after DB registration.",
-    "FUNCTIONS_GRAPHS catalog join is 520/520 with sourceFile#sourceOrdinal mismatch 0.",
-    "Combined active Meta Foundation runtime join is 1274/1274."
-  ],
-  "catalogUnregisteredExclusions": {
-    "FUNCTIONS_GRAPHS": {
-      "reason": "NONE_AFTER_DB_REGISTRATION",
-      "count": 0,
-      "sourceFiles": [],
-      "questionUids": []
-    }
-  }
+    "LIMIT_CONTINUITY retains all 189 canonical assignments.",
+    "186 LIMIT_CONTINUITY items join the static Archive2 catalog by canonical questionUid.",
+    "3 catalog rows with unresolved UID are repaired in place only by exact sourceFile#sourceOrdinal parity backed by promotion evidence.",
+    "All 19 source exam files are already registered in archive/db.js.",
+    "Continuity 85 items are automatic-eligible after runtime overlay.",
+    "Limit 104 items remain blocked from automatic generation until the required fresh blind difficulty recheck; taxonomy/runtime exposure does not bypass that gate.",
+    "Combined active Meta Foundation runtime join is 1463/1463.",
+    "Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."
+  ]
 }
