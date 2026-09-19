@@ -108,10 +108,11 @@
     studentIds: [],
     classId: "",
     studentLabels: [],
-    historyMode: "all",
+    historyMode: "off",
     recentDays: 90,
     history: null,
     historyReady: false,
+    historyError: "",
     targetVersion: 0,
     finderIndex: new Map(),
     inspector: "summary",
@@ -340,7 +341,7 @@
     render();
     status(
       data.indexVersion === state.catalog.indexVersion
-        ? "이전 작업을 복원했습니다. 학생 이력은 새로 확인합니다."
+        ? "이전 작업을 복원했습니다. 이전 출제 확인은 필요할 때 고급 설정에서 실행할 수 있습니다."
         : "문항 목록이 갱신되었습니다. 다시 만들기한 뒤 출력하세요.",
       data.indexVersion !== state.catalog.indexVersion,
     );
@@ -363,8 +364,8 @@
   function context() {
     return {
       series: state.rounds.flatMap((r) => r.questionUids),
-      student: state.history?.union_question_uids || [],
-      coverage: state.history?.coverage,
+      student: [],
+      coverage: null,
     };
   }
   function scopeOptions() {
@@ -514,12 +515,6 @@
         .filter((r) => state.pins.includes(r.questionUid))
         .map((r) => ({ questionUid: r.questionUid, rowId: r.rowId })),
       seed: state.seed,
-      targetStudentIds: state.studentIds,
-      historyMode: state.historyMode,
-      historyReady:
-        state.historyReady ||
-        !state.studentIds.length ||
-        state.historyMode === "off",
     };
   }
   function review() {
@@ -538,36 +533,40 @@
     return result;
   }
   async function refreshHistory() {
-    const prior = JSON.stringify(state.history),
-      priorAck = state.ackWarnings;
     const token = ++state.targetVersion;
     state.historyReady = false;
     state.history = null;
-    state.ackWarnings = false;
+    state.historyError = "";
     if (!state.studentIds.length || state.historyMode === "off") {
       state.historyReady = true;
       render();
       return;
     }
-    status("선택 학생의 출제 이력을 확인하고 있습니다.");
+    const candidateQuestionUids = unique(
+      state.selected.map((record) => record.questionUid),
+    );
+    status("현재 시험지와 이전 출제 이력을 확인하고 있습니다.");
     try {
       const result = await api("/class-exam-assignments/question-history", {
         student_ids: state.studentIds,
+        candidate_question_uids: candidateQuestionUids,
         history_mode: state.historyMode,
         recent_days: state.recentDays,
       });
       if (token !== state.targetVersion) return;
       state.history = result;
       state.historyReady = true;
-      state.ackWarnings = prior === JSON.stringify(result) && priorAck;
+      state.historyError = "";
       render();
       status(
-        `과거 사용 ${result.union_question_uids.length}문항을 제외합니다.`,
+        `현재 시험지 중 이전 출제와 겹치는 문항 ${result.union_question_uids.length}개를 확인했습니다.`,
       );
     } catch (e) {
       if (token !== state.targetVersion) return;
+      state.historyError = e.message || "이전 출제 이력을 확인하지 못했습니다.";
+      state.historyReady = false;
       render();
-      status(e.message, true);
+      status("이전 출제 이력을 확인하지 못했습니다. 시험지는 그대로 출제할 수 있습니다.");
     }
   }
   function filterMarkup(filters, prefix, compose = false) {
@@ -778,7 +777,7 @@
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1));
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 현재 조건과 이력을 반영한 검수 문항 수입니다.</p>
+      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 현재 출제 조건을 반영한 검수 문항 수입니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
         0,
@@ -842,7 +841,7 @@
       <details style="margin-top:15px"><summary>개념·유형으로 더 좁히기</summary><div class="filters" style="margin-top:12px"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.map((r) => r.L3)), state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.filter((r) => !state.filters.L3 || r.L3 === state.filters.L3).map((r) => r.L4)), state.filters.L4, "전체 유형")}</select></label></div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
-      <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·학생 이력 조건은 그대로 지킵니다.</p></section>`;
+      <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
   function renderInspector() {
     const r = state.selected.length ? review() : null;
@@ -850,20 +849,34 @@
       <div class="summary-line"><span>선택 범위</span><strong>${selectedScopeOptions().length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
-    const targeting = `<h3>출제 대상 · 중복 방지</h3><p>${esc(state.studentLabels.join(" · ") || "학생을 선택하면 과거 출제 문항을 제외합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
-      <label style="margin-top:12px">학생 이력 범위<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
-        [
-          { value: "all", label: "전체 이력" },
-          { value: "90", label: "최근 90일" },
-          { value: "30", label: "최근 30일" },
-          { value: "off", label: "이력 제외 사용 안 함" },
-        ],
-        state.historyMode === "recent"
-          ? String(state.recentDays)
-          : state.historyMode,
-        null,
-      )}</select></label>
-      ${state.studentIds.length ? `<div class="callout">${state.receipts.length ? `${state.receipts.length} / ${Math.ceil(state.selected.length / 50)}개 문제지가 저장됐습니다. 아래에서 각각 확인하세요.` : state.historyMode === "off" ? "이전 출제 문항 재사용을 허용한 상태입니다." : !state.historyReady ? "이력을 확인하지 못했습니다. 문제지 만들기·출제가 차단됩니다." : `과거 사용 ${state.history?.union_question_uids.length || 0}문항 제외<br>확정 ${state.history?.coverage.verified || 0} · 추정 ${state.history?.coverage.legacy_inferred || 0} · 미복원 ${state.history?.coverage.unresolved || 0}`}</div>${button("history-refresh", "이력 다시 확인", 'class="small"')}` : ""}`;
+    const historyOverlapCount = state.history?.union_question_uids?.length || 0;
+    const historyNotice = !state.studentIds.length
+      ? ""
+      : state.historyMode === "off"
+        ? '<div class="callout">이전 출제 문항 확인을 사용하지 않습니다. 생성된 시험지는 그대로 출제할 수 있습니다.</div>'
+        : state.historyError
+          ? `<div class="callout">이력 확인 실패: ${esc(state.historyError)}<br>확인 결과와 관계없이 이 시험지는 출제할 수 있습니다.</div>`
+          : !state.historyReady
+            ? '<div class="callout">이전 출제 이력을 확인하고 있습니다. 확인 중에도 출제할 수 있습니다.</div>'
+            : `<div class="callout">현재 시험지 중 이전 출제와 겹치는 문항 <strong>${historyOverlapCount}개</strong><br>참고 정보이며 출제를 차단하지 않습니다.</div>`;
+    const targeting = `<h3>출제 대상</h3><p>${esc(state.studentLabels.join(" · ") || "문제지를 만든 뒤 학생을 선택해 출제합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
+      <details style="margin-top:12px">
+        <summary>고급 설정</summary>
+        <label style="margin-top:12px">이전 출제 문항 확인<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
+          [
+            { value: "off", label: "확인 안 함" },
+            { value: "all", label: "전체 이력 확인" },
+            { value: "90", label: "최근 90일 확인" },
+            { value: "30", label: "최근 30일 확인" },
+          ],
+          state.historyMode === "recent"
+            ? String(state.recentDays)
+            : state.historyMode,
+          null,
+        )}</select></label>
+        ${state.studentIds.length && state.historyMode !== "off" ? button("history-refresh", "이력 다시 확인", 'class="small"') : ""}
+      </details>
+      ${historyNotice}`;
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
       frozenPaper = frozen && frozenPaperCache.get(frozen.key);
     const header =
@@ -1393,9 +1406,7 @@
     save();
   }
   async function finalGate() {
-    if (state.studentIds.length && state.historyMode !== "off" && !state.sealed)
-      await refreshHistory();
-    // A committed immutable paper may retry its own PDF without excluding itself.
+    // Student history is advisory only. A committed immutable paper may retry its own PDF without excluding itself.
     const ctx = ownHistoryContext();
     const req = request(true);
     if (state.sealed) req.historyReady = true;
@@ -1508,9 +1519,7 @@
           archive_file: "MIXED:" + paper.key,
           subject: state.filters.courseKey,
           pdf_qpp: paper.meta.qpp,
-          history_mode: state.historyMode,
-          recent_days: state.recentDays,
-          acknowledge_incomplete_history: state.ackWarnings,
+          history_mode: "off",
           mixed_payload_json: { questions: paper.questions, meta: paper.meta },
         };
         let data;
@@ -1649,6 +1658,11 @@
       receipts: [],
       failedPart: null,
       includeQr: false,
+      historyMode: "off",
+      recentDays: 90,
+      history: null,
+      historyReady: true,
+      historyError: "",
       ackWarnings: false,
       previewIndex: 0,
       indexVersion: state.catalog.indexVersion,
