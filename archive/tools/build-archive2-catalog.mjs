@@ -18,6 +18,34 @@ const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
+const foundationTaxonomy = JSON.parse(read("archive/data/meta-foundation/compiled/taxonomy_registry.json"));
+const foundationBindings = JSON.parse(read("archive/data/meta-foundation/compiled/curriculum_bindings.json"));
+const foundationProblemTypes = new Map((foundationTaxonomy.problemTypes || []).map((row) => [row.problemTypeKey, row]));
+const foundationTemplates = new Map((foundationTaxonomy.templates || []).map((row) => [row.templateKey, row]));
+
+function foundationNode(meta) {
+  if (!meta?.problemTypeKey || !meta?.templateKey || !meta?.standardUnitKey || !meta?.subUnitKey) return null;
+  const problemType = foundationProblemTypes.get(meta.problemTypeKey);
+  const template = foundationTemplates.get(meta.templateKey);
+  if (!problemType || !template || template.parentProblemTypeKey !== meta.problemTypeKey) return null;
+  const binding = (foundationBindings.bindings || []).find((row) =>
+    row.problemTypeKey === meta.problemTypeKey &&
+    row.standardUnitKey === meta.standardUnitKey &&
+    row.subUnitKey === meta.subUnitKey &&
+    (!meta.curriculumKey || String(row.curriculum) === String(meta.curriculumKey))
+  );
+  if (!binding) return null;
+  return {
+    curriculumKey: String(binding.curriculum || meta.curriculumKey || ""),
+    courseKey: binding.standardCourse || meta.courseKey || "",
+    L1: meta.L1 || meta.standardUnit || "",
+    L2: meta.L2 || binding.subUnitLabelKo || meta.subUnit || "",
+    L3: meta.L3 || problemType.canonicalLabelKo || "",
+    L4: meta.L4 || template.canonicalLabelKo || "",
+    curriculumApplicability: binding.curriculumApplicability || meta.curriculumApplicability || "DEFAULT_SCOPE",
+    defaultSelectable: binding.defaultSelectable === true
+  };
+}
 const metaByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
 const identityBySource = new Map(
   identity.records.map((r) => [
@@ -111,7 +139,7 @@ for (const exam of exams) {
       meta &&
       core.normalizeFile(meta.sourceArchiveFile) === file &&
       meta.sourceOrdinal === ordinal;
-    const node = validJoin && paths.get(core.pathKey(meta));
+    const node = validJoin && (paths.get(core.pathKey(meta)) || foundationNode(meta));
     const metadataConflicts = [];
     const semantic = {};
     for (const field of core.META_FIELDS) {
