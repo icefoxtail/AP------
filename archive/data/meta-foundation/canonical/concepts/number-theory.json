@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.1.0",
   "status": "ACTIVE",
-  "conceptCount": 3,
+  "conceptCount": 4,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -187,6 +187,42 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION",
+      "canonicalLabelKo": "소인수분해",
+      "definition": "자연수를 소인수분해하여 함수 관계식 또는 함수값 계산에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9afbe7bbc52dd441a33e0dc601c5fb402272d3348b74e42bbd6f09404d70af8f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "FUNCTIONS_GRAPHS"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "FUNCTIONS_GRAPHS",
+          "evidence": [
+            {
+              "evidenceType": "FUNCTIONS_GRAPHS_4_1_SEMANTIC_FREEZE",
+              "basisMainSha": "32ab15331647a85225b59519a2ceda28ed892714",
+              "supportingReviewIndexes": [
+                175
+              ]
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTIONAL_EQUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(하):H15-SB-03"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
     }
   ]
 }
