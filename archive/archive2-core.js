@@ -14,7 +14,18 @@
   const PATH_FIELDS = ["curriculumKey", "courseKey", "L1", "L2", "L3", "L4"];
   const META_FIELDS = [
     ...PATH_FIELDS,
+    "standardCourse",
+    "standardUnitKey",
+    "standardUnit",
+    "subUnitKey",
+    "subUnit",
+    "conceptClusterKey",
+    "problemTypeKey",
+    "templateKey",
+    "crossConceptKeys",
     "secondaryConceptKeys",
+    "conditionKeys",
+    "integrationPattern",
     "curriculumApplicability",
     "defaultSelectable",
     "difficultyBucket",
