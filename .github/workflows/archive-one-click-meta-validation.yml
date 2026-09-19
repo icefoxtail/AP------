@@ -1,0 +1,41 @@
+name: Archive One Click Meta Validation
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Syntax
+        run: |
+          set -euo pipefail
+          python -m py_compile archive/build_db.py
+          node --check archive/tools/intelligence/sync-question-identity-map-v1.mjs
+          node --check archive/tools/intelligence/ingest-exam-meta-source.mjs
+          node --check archive/tools/intelligence/build-approved-question-metadata-v1.mjs
+          node --check archive/tools/build-archive2-catalog.mjs
+
+      - name: Run one-click archive pipeline
+        run: python archive/build_db.py
+
+      - name: Diff sanity
+        run: |
+          git diff --check
+          echo "--- GENERATED CHANGES AFTER PIPELINE ---"
+          git status --short
