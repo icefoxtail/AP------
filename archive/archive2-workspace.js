@@ -74,7 +74,7 @@
     catalog: null,
     byUid: new Map(),
     busy: false,
-    view: "find",
+    view: "home",
     page: 0,
     find: { grade: "고1" },
     sources: [],
@@ -768,6 +768,51 @@
       popup.location.href = url.href;
     } catch (error) { popup?.close(); throw error; }
   }
+  function renderHome() {
+    const recent = drafts().slice(0, 4);
+    const activeGrade = state.find.grade || "고1";
+    const grades = ["고1","고2","고3","중1","중2","중3"];
+    const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
+    const paper = (title, count) => `<span class="classic-home-paper"><span class="classic-home-paper-title">${esc(title)}</span><span class="classic-home-paper-count">${Number(count || 0)}문항</span><i></i><i></i><i></i><b></b></span>`;
+    const recentCards = recent.length
+      ? recent.map((d, i) => {
+          const title = d.header?.title || d.title || "문제지";
+          const count = d.selected?.length || 0;
+          const updated = d.updatedAt ? new Date(d.updatedAt).toLocaleDateString("ko-KR", { month:"numeric", day:"numeric" }) : "";
+          return `<article class="classic-home-recent-card">
+            <button class="classic-home-recent-paper" data-action="restore" data-draft="${i}" aria-label="${esc(title)} 열기">${paper(title,count)}</button>
+            <div class="classic-home-recent-body">
+              <button class="classic-home-recent-title" data-action="restore" data-draft="${i}">${esc(title)}</button>
+              <p>${count}문항${updated ? " · " + esc(updated) : ""}</p>
+              <button class="classic-home-recent-open" data-action="restore" data-draft="${i}">이어하기</button>
+            </div>
+          </article>`;
+        }).join("")
+      : `<div class="classic-home-empty"><strong>최근 작업이 없습니다</strong><span>기출을 찾거나 새 문제지를 만들어 보세요.</span></div>`;
+    return `<section class="classic-home">
+      <div class="classic-home-top">
+        <h1>시험지 찾기</h1>
+        <form id="classic-home-search" class="classic-home-search" role="search">
+          <span>${searchIcon}</span>
+          <input id="classic-home-query" value="${esc(state.find.query || "")}" placeholder="학교명 · 시험명 · 단원 검색" aria-label="시험지 검색">
+        </form>
+        <div class="classic-home-grades" aria-label="학년">
+          ${grades.map(g => `<button data-action="home-grade" data-grade="${g}" aria-pressed="${g === activeGrade}">${g}</button>`).join("")}
+        </div>
+      </div>
+      <div class="classic-home-shortcuts">
+        <button class="classic-home-shortcut k-past" data-view="find"><span class="classic-shortcut-mark"></span><strong>기출·자료</strong></button>
+        <a class="classic-home-shortcut k-five" href="unit-past-exams.html?ready=1"><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></a>
+        <a class="classic-home-shortcut k-unit" href="assessment/assessment-mvp.html"><span class="classic-shortcut-mark"></span><strong>단원평가</strong></a>
+        <button class="classic-home-shortcut classic-home-shortcut-make" data-view="compose"><span class="classic-shortcut-file">＋</span><strong>문제지 만들기</strong></button>
+      </div>
+      <section class="classic-home-recent">
+        <div class="classic-home-section-head"><h2>최근 작업</h2><button data-view="recent">내 시험지</button></div>
+        <div class="classic-home-recent-grid">${recentCards}</div>
+      </section>
+    </section>`;
+  }
+
   function renderFind() {
     const exams = findExams(),
       page = exams.slice(state.page * 18, (state.page + 1) * 18);
@@ -1125,6 +1170,7 @@
   }
   function render() {
     if (!state.catalog) return;
+    document.body.dataset.archiveView = state.view;
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
     document.querySelectorAll("[data-view]").forEach((b) => {
@@ -1135,9 +1181,11 @@
       );
     });
     $("content").innerHTML =
-      state.view === "find"
-        ? renderFind()
-        : state.view === "recent"
+      state.view === "home"
+        ? renderHome()
+        : state.view === "find"
+          ? renderFind()
+          : state.view === "recent"
           ? renderRecent()
           : state.view === "health"
             ? renderHealth()
@@ -1688,6 +1736,16 @@
     render();
     scheduleSave();
   }
+  document.addEventListener("submit", (event) => {
+    if (event.target?.id !== "classic-home-search") return;
+    event.preventDefault();
+    state.find.query = $("classic-home-query")?.value?.trim() || "";
+    state.page = 0;
+    state.view = "find";
+    urlState();
+    render();
+  });
+
   document.addEventListener("click", async (event) => {
     const b = event.target.closest("button");
     if (!b || b.disabled || state.busy) return;
@@ -1755,6 +1813,13 @@
       }
       if (a === "close-dialog") {
         if (!originalIssueBusy()) $("modal").close();
+      } else if (a === "home-grade") {
+        state.find = C.reconcileFinderFilters(
+          { ...state.find, grade: b.dataset.grade },
+          state.catalog.taxonomy,
+        );
+        state.page = 0;
+        render();
       } else if (a === "go-compose") {
         state.view = "compose";
         if (state.find.grade) state.filters.grade = state.find.grade;
@@ -2229,10 +2294,10 @@
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
-    state.view = ["find", "compose", "recent", "health"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "recent", "health"].includes(p.get("view"))
       ? p.get("view")
-      : "find";
-    state.find = {};
+      : "home";
+    state.find = { grade: "고1" };
     for (const k of [
       "grade",
       "curriculumKey",
