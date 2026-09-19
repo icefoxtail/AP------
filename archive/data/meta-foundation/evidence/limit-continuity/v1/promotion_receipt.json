@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "limit-continuity-promotion-receipt-v1",
+  "status": "PROMOTED_CANONICAL",
+  "packId": "LIMIT_CONTINUITY",
+  "packVersion": "1.0.0",
+  "sourceEvidence": {
+    "limitStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-limit/STAGE6_FINAL_FOUNDATION.json",
+    "continuityStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-continuity/STAGE6_FINAL_FOUNDATION.json",
+    "mergeNormalization": "archive/_generated/intelligence/meta-foundation/h2-math2-merge/STAGE7_MERGE_NORMALIZATION.json",
+    "itemAssignments": "archive/data/meta-foundation/evidence/limit-continuity/v1/item_metadata_assignments_189.json"
+  },
+  "gates": {
+    "denominatorClosure": true,
+    "ownershipUnique": true,
+    "aliasCollisionZero": true,
+    "duplicateCanonicalKeyZero": true,
+    "templateParentValid": true,
+    "bindingValid": true,
+    "globalCompilePass": true,
+    "productionJsMutationZero": true
+  },
+  "promotion": {
+    "canonicalPackPath": "archive/data/meta-foundation/canonical/packs/limit-continuity",
+    "registryIndexUpdated": true,
+    "compiledArtifactsUpdated": [
+      "aliases.json",
+      "curriculum_bindings.json",
+      "taxonomy_registry.json",
+      "meta_foundation_compiled.json"
+    ],
+    "conceptRegistryChanged": false,
+    "conditionRegistryChanged": false,
+    "productionJsChanged": false
+  },
+  "difficulty": {
+    "limit": "DEFERRED_PENDING_FRESH_BLIND_RECHECK",
+    "continuity": "REVIEWED",
+    "taxonomyPromotionIndependent": true
+  }
+}

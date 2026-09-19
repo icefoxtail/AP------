@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "limit-continuity-global-integrity-audit-v1",
+  "status": "PASS",
+  "packId": "LIMIT_CONTINUITY",
+  "packVersion": "1.0.0",
+  "counts": {
+    "itemEvidenceCount": 189,
+    "limitItemCount": 104,
+    "continuityItemCount": 85,
+    "ownedProblemTypeCount": 21,
+    "ownedTemplateCount": 36,
+    "bindingCount": 25,
+    "duplicateCanonicalKeyCount": 0,
+    "aliasCollisionCount": 0,
+    "brokenL4ParentCount": 0,
+    "brokenCanonicalBindingCount": 0,
+    "unregisteredCrossConceptCount": 0,
+    "unregisteredConditionCount": 0,
+    "sourceOverlapCount": 0,
+    "productionJsMutationCount": 0
+  },
+  "gates": {
+    "denominator189": true,
+    "uniqueUid189": true,
+    "canonicalKeyDuplicateZero": true,
+    "aliasCollisionZero": true,
+    "l4ParentZero": true,
+    "bindingTargetValid": true,
+    "crossConceptRegistryValid": true,
+    "conditionRegistryValid": true,
+    "productionJsUnchanged": true,
+    "compiledDerivedFromCanonical": true
+  },
+  "notes": [
+    "Limit difficulty remains deferred for 104 items pending fresh blind recheck; this does not alter taxonomy promotion.",
+    "Compiled artifacts regenerated from ACTIVE canonical packs with LIMIT_CONTINUITY appended; concept and condition compiled artifacts remain byte-unchanged."
+  ]
+}
