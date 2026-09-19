@@ -816,6 +816,8 @@
     const recent = drafts().slice(0, 4);
     const activeGrade = state.find.grade || "고1";
     const grades = ["고1","고2","고3","중1","중2","중3"];
+    const unitGradeId = ({ 고1: "h1", 고2: "h2", 중1: "m1", 중2: "m2", 중3: "m3" })[activeGrade] || "";
+    const readyUnitHref = "unit-past-exams.html?ready=1" + (unitGradeId ? "&grade=" + encodeURIComponent(unitGradeId) : "");
     const searchIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>';
     const paper = (title, count) => `<span class="classic-home-paper"><span class="classic-home-paper-title">${esc(title)}</span><span class="classic-home-paper-count">${Number(count || 0)}문항</span><i></i><i></i><i></i><b></b></span>`;
     const recentCards = recent.length
@@ -846,9 +848,9 @@
       </div>
       <div class="classic-home-shortcuts">
         <button class="classic-home-shortcut k-past" data-view="find"><span class="classic-shortcut-mark"></span><strong>기출·자료</strong></button>
-        <a class="classic-home-shortcut k-five" href="unit-past-exams.html?ready=1"><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></a>
+        <a class="classic-home-shortcut k-five" href="${readyUnitHref}"><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></a>
         <a class="classic-home-shortcut k-unit" href="assessment/assessment-mvp.html"><span class="classic-shortcut-mark"></span><strong>단원평가</strong></a>
-        <button class="classic-home-shortcut classic-home-shortcut-make" data-view="compose"><span class="classic-shortcut-file">＋</span><strong>문제지 만들기</strong></button>
+        <button class="classic-home-shortcut classic-home-shortcut-make" data-action="go-compose"><span class="classic-shortcut-file">＋</span><strong>문제지 만들기</strong></button>
       </div>
       <section class="classic-home-recent">
         <div class="classic-home-section-head"><h2>최근 사용</h2><div class="classic-home-section-switch"><button class="active" type="button">최근</button><button data-view="recent">내 시험지</button></div></div>
@@ -2191,8 +2193,20 @@
         scheduleSave();
         render();
       } else if (a === "go-compose") {
+        const nextGrade = state.find.grade || state.filters.grade;
+        if (nextGrade && nextGrade !== state.filters.grade) {
+          state.filters = C.reconcileFinderFilters(
+            { ...state.filters, grade: nextGrade, curriculumKey: "", courseKey: "", school: "" },
+            state.catalog.taxonomy,
+          );
+          delete state.filters.L3;
+          delete state.filters.L4;
+          state.scopes = [];
+          invalidate();
+        } else if (nextGrade) {
+          state.filters.grade = nextGrade;
+        }
         state.view = "compose";
-        if (state.find.grade) state.filters.grade = state.find.grade;
         urlState();
         render();
       } else if (a === "page-prev") {
