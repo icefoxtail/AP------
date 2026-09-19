@@ -1,1 +1,0 @@
-ALTER TABLE classes ADD COLUMN schedule_days TEXT;
