@@ -3,7 +3,8 @@
   const RUNTIME_URLS = [
     "data/meta-foundation/runtime/geometry-equations-v1.json",
     "data/meta-foundation/runtime/sets-propositions-v1.json",
-    "data/meta-foundation/runtime/functions-graphs-v1.json"
+    "data/meta-foundation/runtime/functions-graphs-v1.json",
+    "data/meta-foundation/runtime/limit-continuity-v1.json"
   ];
   const FOUNDATION_OVERRIDE_FIELDS = [
     "curriculumKey","courseKey","L1","L2","L3","L4",
@@ -121,7 +122,14 @@
     const seenCatalogUids = new Set();
     const nextRecords = catalog.records.map(base => {
       if (base && base.questionUid) seenCatalogUids.add(base.questionUid);
-      const overlay = overlayByUid.get(base.questionUid);
+      const sourceKey = normalizeFile(base.sourceFile) + "#" + Number(base.sourceOrdinal);
+      const directOverlay = overlayByUid.get(base.questionUid);
+      const sourceOverlay = overlayBySource.get(sourceKey);
+      if (directOverlay && sourceOverlay && directOverlay.questionUid !== sourceOverlay.questionUid) {
+        throw new Error("Meta Foundation catalog UID/source join conflict: " + base.questionUid);
+      }
+      const identityRepair = !directOverlay && sourceOverlay?.catalogIdentityRepairVerified === true;
+      const overlay = directOverlay || (identityRepair ? sourceOverlay : null);
       if (!overlay) return base;
       if (normalizeFile(base.sourceFile) !== normalizeFile(overlay.sourceArchiveFile) || Number(base.sourceOrdinal) !== Number(overlay.sourceOrdinal)) {
         throw new Error("Meta Foundation source join mismatch: " + overlay.questionUid);
@@ -134,8 +142,8 @@
         sourceOrdinal: base.sourceOrdinal,
         sourceQuestionNo: base.sourceQuestionNo,
         effectiveBrowseGrade: base.effectiveBrowseGrade,
-        identityStatus: base.identityStatus,
-        sourceStatus: base.sourceStatus,
+        identityStatus: identityRepair ? "VERIFIED" : base.identityStatus,
+        sourceStatus: identityRepair ? "VERIFIED" : base.sourceStatus,
         sourceFingerprint: base.sourceFingerprint,
         rawQuestionHash: base.rawQuestionHash,
         approvedSourceFingerprint: base.approvedSourceFingerprint,
@@ -233,7 +241,7 @@
     runtime = {
       schemaVersion: "meta-foundation-runtime-overlay-bundle-v1",
       status: "ACTIVE",
-      runtimeVersion: "META_FOUNDATION_MULTI/runtime-bridge-v2:" + packs.map(pack => pack.runtimeVersion).join("+"),
+      runtimeVersion: "META_FOUNDATION_MULTI/runtime-bridge-v3:" + packs.map(pack => pack.runtimeVersion).join("+"),
       packId: "MULTI_PACK",
       packVersion: packs.map(pack => pack.packId + "@" + pack.packVersion).join("+"),
       packs: packs.map(pack => ({

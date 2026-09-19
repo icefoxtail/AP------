@@ -54,7 +54,11 @@
     기하: "고3",
     "기하와 벡터": "고3",
   });
-  const courseGrade = (courseKey) => {
+  const courseGrade = (courseKey, curriculumKey = "") => {
+    if (typeof C.finderCourseGrade === "function") {
+      const shared = C.finderCourseGrade(courseKey, curriculumKey);
+      if (shared) return shared;
+    }
     const middle = String(courseKey || "").match(/^M([123])-[12]$/);
     return middle ? `중${middle[1]}` : courseGrades[courseKey] || "";
   };
@@ -66,7 +70,7 @@
   const taxonomyRowsForFilters = (filters) =>
     state.catalog.taxonomy.filter(
       (r) =>
-        (!filters.grade || courseGrade(r.courseKey) === filters.grade) &&
+        (!filters.grade || courseGrade(r.courseKey, r.curriculumKey) === filters.grade) &&
         (!filters.curriculumKey || r.curriculumKey === filters.curriculumKey) &&
         (!filters.courseKey || r.courseKey === filters.courseKey),
     );
