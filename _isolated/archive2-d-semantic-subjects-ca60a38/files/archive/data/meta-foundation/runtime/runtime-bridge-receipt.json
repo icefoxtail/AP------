@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v5",
+  "status": "PASS_LIMIT_CONTINUITY_189_CATALOG_JOIN",
+  "baseMain": "90dfdb7e0f5747d1aedde5cb0b5f60841da033e8",
+  "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v3",
+  "checked": {
+    "geometryRecords": 400,
+    "setsPropositionsRuntimeRecords": 354,
+    "functionsGraphsRuntimeRecords": 520,
+    "limitContinuityCanonicalAssignments": 189,
+    "limitContinuityRuntimeRecords": 189,
+    "limitContinuityExistingCatalogUidJoin": 186,
+    "limitContinuitySourceIdentityRepairJoin": 3,
+    "limitContinuityCatalogJoin": 189,
+    "limitContinuityCatalogJoinMismatch": 0,
+    "limitContinuityDifficultyDeferred": 0,
+    "limitContinuityAutomaticEligibleExpected": 189,
+    "combinedRuntimeRecords": 1463,
+    "combinedUniqueUid": 1463,
+    "combinedUniqueSourceIdentity": 1463,
+    "combinedRuntimeCatalogJoin": 1463,
+    "combinedRuntimeCatalogJoinMismatch": 0,
+    "productionExamJsMutation": 0,
+    "limitContinuityDifficultyReviewed": 104,
+    "limitContinuityRuntimeVersion": "LIMIT_CONTINUITY@1.0.0/runtime-bridge-v2"
+  },
+  "archive2JoinContract": {
+    "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
+    "catalogBuilder": "archive/tools/build-archive2-catalog.mjs",
+    "joinKey": "questionUid, with fail-closed sourceFile#sourceOrdinal fallback for reviewed identity repair",
+    "browserRuntimeGate": "applyArchiveMetaFoundationCatalog requires joined === runtime.counts.records",
+    "expectedRuntimeJoin": 1463
+  },
+  "invariants": [
+    "No production exam JS modified.",
+    "LIMIT_CONTINUITY retains all 189 canonical assignments.",
+    "186 LIMIT_CONTINUITY items join the static Archive2 catalog by canonical questionUid.",
+    "3 catalog rows with unresolved UID are repaired in place only by exact sourceFile#sourceOrdinal parity backed by promotion evidence.",
+    "All 19 source exam files are already registered in archive/db.js.",
+    "Combined active Meta Foundation runtime join is 1463/1463.",
+    "Archive2 Finder and Compose grade routing treat 2015 수학II as 고2.",
+    "All 104 limit items and 85 continuity items are automatic-eligible after reviewed difficulty metadata is applied."
+  ]
+}

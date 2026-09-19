@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="archive-session.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Archive 2.0 · 교사용 작업공간</title>
+    <link rel="stylesheet" href="archive2.css?v=20260917-navigation" />
+    <link rel="stylesheet" href="archive2-navigation.css" />
+    <script defer src="archive2-navigation.js"></script>
+    <script defer src="mixer-selector.js"></script>
+    <script defer src="archive2-core.js?v=20260920-semantic-subjects-d2"></script>
+    <script defer src="archive2-source.js"></script>
+    <script defer src="archive2-output.js"></script>
+    <script defer src="archive2-papers.js"></script>
+    <script defer src="meta-foundation-runtime.js?v=20260919-mf-runtime-v1"></script>
+    <script defer src="archive2-workspace.js?v=20260920-semantic-subjects-d2"></script>
+  </head>
+  <body>
+    <a class="skip" href="#content">본문으로 이동</a>
+    <header data-archive-navigation="workspace"></header>
+    <div id="status" class="status" role="status" aria-live="polite">
+      문항 목록을 준비하고 있습니다.
+    </div>
+    <main id="content" tabindex="-1">
+      <div class="loading">아카이브를 불러오는 중…</div>
+    </main>
+    <dialog id="modal" aria-labelledby="modal-title">
+      <div id="modal-body"></div>
+      <button class="dialog-close" data-action="close-dialog">닫기</button>
+    </dialog>
+    <input
+      id="import-file"
+      type="file"
+      accept="application/json,.json"
+      hidden
+    />
+  </body>
+</html>
