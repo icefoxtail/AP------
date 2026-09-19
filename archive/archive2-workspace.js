@@ -848,7 +848,9 @@
       </div>
       <div class="classic-home-shortcuts">
         <button class="classic-home-shortcut k-past" data-view="find"><span class="classic-shortcut-mark"></span><strong>기출·자료</strong></button>
-        <a class="classic-home-shortcut k-five" href="${readyUnitHref}"><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></a>
+        ${unitGradeId
+          ? `<a class="classic-home-shortcut k-five" href="${readyUnitHref}"><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></a>`
+          : '<button class="classic-home-shortcut k-five" type="button" disabled><span class="classic-shortcut-mark"></span><strong>5분 테스트</strong></button>'}
         <a class="classic-home-shortcut k-unit" href="assessment/assessment-mvp.html"><span class="classic-shortcut-mark"></span><strong>단원평가</strong></a>
         <button class="classic-home-shortcut classic-home-shortcut-make" data-action="go-compose"><span class="classic-shortcut-file">＋</span><strong>문제지 만들기</strong></button>
       </div>
