@@ -8,7 +8,7 @@
     "itemEvidenceCount": 320,
     "ownedProblemTypeCount": 13,
     "ownedTemplateCount": 27,
-    "bindingCount": 29,
+    "bindingCount": 30,
     "duplicateCanonicalKeyCount": 0,
     "aliasCollisionCount": 0,
     "brokenL4ParentCount": 0,
@@ -28,7 +28,9 @@
     "catalogSourceIdentityRepairJoin": 79,
     "catalogJoinMismatchCount": 0,
     "sourceHoldCount": 11,
-    "automaticEligibleExpected": 309
+    "automaticEligibleExpected": 309,
+    "crossPackPrimaryOwnershipResolvedCount": 14,
+    "postPromotionClassificationCorrectionCount": 1
   },
   "gates": {
     "denominator320": true,
@@ -45,12 +47,15 @@
     "catalogJoin320": true,
     "identityFormulaVerified320": true,
     "archive2EligibilityExpected309": true,
-    "sourceHoldFailClosed": true
+    "sourceHoldFailClosed": true,
+    "crossPackPrimaryOwnershipUnique": true
   },
   "notes": [
     "320/320 Archive2 catalog source rows verified.",
     "241 records join by existing canonical questionUid; 79 legacy catalog rows with blank UID use the reviewed exact source-identity repair contract.",
     "11 direct-UID rows retain pre-existing source fingerprint HOLD and remain fail-closed.",
-    "No production exam JS modified."
+    "No production exam JS modified.",
+    "14 cross-pack duplicate source identities resolved to DERIVATIVE primary ownership; earlier pack evidence is preserved but excluded from active runtime.",
+    "24 조대부고 q18 corrected to PT_CONTINUITY_DIFFERENTIABILITY / TPL_CONT_DIFF_DEFINITION_PROOF under H15-M2-03-DERIVATIVE_DEFINITION."
   ]
 }
