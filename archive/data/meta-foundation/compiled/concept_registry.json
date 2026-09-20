@@ -4,8 +4,8 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.2.0",
-      "conceptCount": 12
+      "version": "1.3.0",
+      "conceptCount": 14
     },
     {
       "shardId": "FUNCTIONS",
@@ -24,8 +24,8 @@
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.2.0",
-      "conceptCount": 18
+      "version": "1.3.0",
+      "conceptCount": 19
     },
     {
       "shardId": "COUNTING",
@@ -36,9 +36,24 @@
       "shardId": "NUMBER_THEORY",
       "version": "1.1.0",
       "conceptCount": 4
+    },
+    {
+      "shardId": "CALCULUS",
+      "version": "1.0.0",
+      "conceptCount": 3
+    },
+    {
+      "shardId": "TRIGONOMETRY",
+      "version": "1.0.0",
+      "conceptCount": 1
+    },
+    {
+      "shardId": "SEQUENCES",
+      "version": "1.0.0",
+      "conceptCount": 1
     }
   ],
-  "conceptCount": 77,
+  "conceptCount": 85,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -667,6 +682,102 @@
       ],
       "curriculumRefs": [
         "2015:수학(하):H15-SB-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_FACTORIZATION",
+      "canonicalLabelKo": "다항식의 인수분해",
+      "definition": "다항식의 근·중근·곱구조를 인수분해하여 함수·도함수·방정식의 구조를 분석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9832f6ea861509f54e1f9367b26b5fbf44f3b8b8b3b8a26f7f92ba5a42dd3de9",
+        "qid_v1_bfe380ea07d8745e155823bce4295952fc09e9f052e847a5f75a4ff0e9622d2a",
+        "qid_v1_7c730786244591446af3d3b1b38167164c829a03b96f5d2db5eed6b5158bbffa",
+        "qid_v1_440757eb6512e595f783192b8cd8a22e6174eb51fbbdfd6e3cc92fd692c2608d",
+        "qid_v1_59f88a2ccc580ae95786a388218c0d69376719f7a9375e08b3ad480eff2dfc0d",
+        "qid_v1_4787821e4c8cb8a85ea7f47976557f03f9543dfa20744587858c0a713bed1be2",
+        "qid_v1_a008cd32e71fdb49e4eb9a177856a0b7a984d63051daf70abfb135e8ad403f47",
+        "qid_v1_e74349be7994bdfbf134b7281c3b811e7d7dd5442dc027f353c63437fbda0a23",
+        "qid_v1_593e0d11fe74cb9e6b5eac393657fe5e117882768bf831e62a2deca16f4eab0f",
+        "qid_v1_d10134da0822841cf3934aaa2e2529164b3b1667e80b6ee4be08149d0fe0f870",
+        "qid_v1_eaf119753935e52b4135c8c0490e7ddb0ae18325b40b6fbb78a330eeac520279",
+        "qid_v1_529857075b99b9ceb06a10421aef2279457a2b084e2dad1f8124095a36496c2c",
+        "qid_v1_bf5fe7ba69631f93fb1a50532fc7627255a22acbe50496cf7f4312263b1c2025",
+        "qid_v1_c5fd4974f331e5b1d1d5fd17d44e421b6ef415b928c5e63404cecf9e7f308de6"
+      ],
+      "supportingItemCount": 14,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 14,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_DEFINITION",
+        "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "PT_DIFFERENTIABILITY_CONDITION",
+        "PT_TANGENT_DERIVATIVE"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-03",
+        "2015:수학II:H15-M2-04",
+        "2015:수학II:H15-M2-05",
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISION",
+      "canonicalLabelKo": "다항식의 나눗셈",
+      "definition": "다항식의 나눗셈 항등식, 몫과 나머지, 제곱인수 나눗셈의 함수값·도함수 관계를 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_18a9b34f79d1d2b5ce0530a1f958d373ccb64b5c33e8574f23fd4139a5ae593b",
+        "qid_v1_39fa2576d7fc758cea78e8f247ce0beb8d39851dc39c22d98f298723a6128a9c",
+        "qid_v1_e6215157f018fb89ba873eda2755cd9a579aa81dd05558b8e418f751a2d7d6e4"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 3,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "PT_DERIVATIVE_RULE_EVALUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-04"
       ],
       "ownerConceptShard": "ALGEBRA"
     },
@@ -3165,6 +3276,44 @@
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_SIMILARITY",
+      "canonicalLabelKo": "닮음",
+      "definition": "평면 또는 입체도형의 닮음비를 이용하여 길이·단면·높이 관계를 변수식으로 만드는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_79f017573b58586e6de91588deecfbae7d5b71ae24c557b6e70ecccd49d2cd7b",
+        "qid_v1_cbda8fec03d42984372f211472596a49b46a7f88493633c0c266c5f268d8a473"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 2,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_MAX_MIN"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
       "canonicalLabelKo": "순열과 조합을 이용한 경우의 수",
       "definition": "집합의 원소 선택·배열·분할을 순열, 조합, 곱의 법칙 등으로 세는 개념.",
@@ -3432,6 +3581,217 @@
         "2015:수학(하):H15-SB-03"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_INDEFINITE_INTEGRAL",
+      "canonicalLabelKo": "부정적분",
+      "definition": "도함수 또는 피적분함수 관계를 역으로 사용하여 원함수를 복원하거나 함수값을 결정하는 적분 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2913676e3467147223156e711665db960821a46c164a85e5b9bc5057e2eb8897",
+        "qid_v1_06b1833dd26301a6b33d99b360dd6abb9a920d0c0f8fc7afba4c3b58c1e1155a",
+        "qid_v1_440757eb6512e595f783192b8cd8a22e6174eb51fbbdfd6e3cc92fd692c2608d",
+        "qid_v1_e96deee7299261cc63ef83fce63eee779df138937064655acbf38ae055af9663",
+        "qid_v1_ba16be3de7bcc5279f6f100ab1d9d692c333fc79552421698f8b6b19f0cfcbbd",
+        "qid_v1_fd372b1b97731ebb08497e2d23972c6c42b3d3635c603a05e35779d247f54501",
+        "qid_v1_59f88a2ccc580ae95786a388218c0d69376719f7a9375e08b3ad480eff2dfc0d",
+        "qid_v1_5e915b7849396634d8fc959c483307a30962187b65d8e45dc2b17bcfffe1c45f"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 8,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_DEFINITION",
+        "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "PT_DERIVATIVE_GRAPH_ANALYSIS",
+        "PT_DERIVATIVE_MOTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-03",
+        "2015:수학II:H15-M2-04",
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "CALCULUS"
+    },
+    {
+      "conceptKey": "CC_DEFINITE_INTEGRAL",
+      "canonicalLabelKo": "정적분",
+      "definition": "도함수의 정적분을 함수값 변화량으로 해석하거나 적분으로 정의된 함수를 미분하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6b4fa8ad2951c4c75b22dee24ecd070b35de6e29405fd94d5357b7651ce0aa06",
+        "qid_v1_402c3bae16d59991216af6deda969ba9ee704b3e9cdbc6cd4ebafdcc67f21263",
+        "qid_v1_21eddbe5ce849ed4ccb62276152d72206ecb096497dc8120d07c8e46f6bd983f",
+        "qid_v1_6936a124ad9deb58df4f91a8fd9f5fbe2fe9b97dca2b93ffa1dcc3ab4cc37f57",
+        "qid_v1_8aa74043f9353b7c2936e98219f0278616eb89980bbd6a4a8f8a74ba6cbd4f61",
+        "qid_v1_98997fc47253e85babfccdc0a656309a91486f13e2ba715e75e0c4c369663f38",
+        "qid_v1_1efce69694f5a2cb33326b41bad760144ef47df60f8736f6f882422c878834d8",
+        "qid_v1_202b50d7df2c796ad43d641106997b460c9422f132c99b0371d7a99d5519727d"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 8,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "PT_DERIVATIVE_EXTREMA",
+        "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "PT_DERIVATIVE_GRAPH_ANALYSIS",
+        "PT_DERIVATIVE_MAX_MIN",
+        "PT_TANGENT_DERIVATIVE"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-04",
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "CALCULUS"
+    },
+    {
+      "conceptKey": "CC_INTERMEDIATE_VALUE_THEOREM",
+      "canonicalLabelKo": "사잇값 정리",
+      "definition": "연속함수의 값이 구간 끝값 사이의 모든 값을 지나간다는 성질을 이용하여 특정 값 또는 실근의 존재를 보장하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6edfdf39afb5865eb2f48f936186cf73a1a33285691095b73a1ba299e64249d8",
+        "qid_v1_65b4b2d4b29aee593d6dcb18e4f0a434ef10cee6a78f5b5a23670e1ec70e8895"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 2,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_RATE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "CALCULUS"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_TANGENT",
+      "canonicalLabelKo": "삼각함수의 탄젠트",
+      "definition": "직선이 x축의 양의 방향과 이루는 각에서 탄젠트값으로 기울기를 구하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f13e7796741798fd4bfa17e9a3468e4a4178a6ccb773aa85134a5d22d077c9df"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 1,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_DEFINITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-03"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_SEQUENCE",
+      "canonicalLabelKo": "등비수열",
+      "definition": "연속한 항의 일정한 비 또는 세 항의 가운데항 제곱과 양끝항의 곱 관계를 사용하는 수열 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_193e5942d7f103bd11d588db22a44f6156addc79c5359ea07fc47c40cd5a5554"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 1,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TANGENT_DERIVATIVE"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-05"
+      ],
+      "ownerConceptShard": "SEQUENCES"
     }
   ]
 }

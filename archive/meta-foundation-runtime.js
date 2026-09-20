@@ -5,7 +5,8 @@
     "data/meta-foundation/runtime/sets-propositions-v1.json",
     "data/meta-foundation/runtime/functions-graphs-v1.json",
     "data/meta-foundation/runtime/limit-continuity-v1.json",
-    "data/meta-foundation/runtime/integral-calculus-v1.json"
+    "data/meta-foundation/runtime/integral-calculus-v1.json",
+    "data/meta-foundation/runtime/derivative-v1.json"
   ];
   const FOUNDATION_OVERRIDE_FIELDS = [
     "curriculumKey","courseKey","L1","L2","L3","L4",
