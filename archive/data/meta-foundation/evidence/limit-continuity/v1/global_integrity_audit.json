@@ -2,14 +2,14 @@
   "schemaVersion": "limit-continuity-global-integrity-audit-v1",
   "status": "PASS",
   "packId": "LIMIT_CONTINUITY",
-  "packVersion": "1.0.1",
+  "packVersion": "1.1.0",
   "counts": {
     "itemEvidenceCount": 189,
     "limitItemCount": 104,
     "continuityItemCount": 85,
-    "ownedProblemTypeCount": 21,
-    "ownedTemplateCount": 36,
-    "bindingCount": 25,
+    "ownedProblemTypeCount": 7,
+    "ownedTemplateCount": 29,
+    "bindingCount": 11,
     "duplicateCanonicalKeyCount": 0,
     "aliasCollisionCount": 0,
     "brokenL4ParentCount": 0,
@@ -23,7 +23,12 @@
     "limitDifficultyStrongConflictReviewedCount": 1,
     "semanticLabelChangeCount": 24,
     "crossConceptChangedQuestionCount": 48,
-    "newCrossConceptPromotionCount": 6
+    "newCrossConceptPromotionCount": 9,
+    "taxonomyCompressionChangedPrimaryCount": 109,
+    "taxonomyCompressionL3ChangedCount": 90,
+    "taxonomyCompressionL4ChangedCount": 37,
+    "taxonomyCompressionCrossConceptReferenceAddCount": 35,
+    "runtimeTaxonomyRowCount": 33
   },
   "gates": {
     "denominator189": true,
@@ -37,10 +42,14 @@
     "productionJsUnchanged": true,
     "compiledDerivedFromCanonical": true,
     "limitDifficultyReviewComplete": true,
-    "semanticTerminologyReviewComplete": true
+    "semanticTerminologyReviewComplete": true,
+    "taxonomyCompressionMigrationComplete": true,
+    "assignmentRuntimeParityZero": true,
+    "runtimeTaxonomyRows33": true
   },
   "notes": [
     "Limit difficulty fresh blind-first-pass review completed for 104/104 items; legacy comparison and same-template outlier review completed after freeze.",
-    "v1.0.1 educational terminology and CrossConcept revalidation completed on 189/189 assignments; 6 evidence-backed CrossConcept keys promoted to canonical shards."
+    "v1.0.1 educational terminology and CrossConcept revalidation completed on 189/189 assignments; 6 evidence-backed CrossConcept keys promoted to canonical shards.",
+    "v1.1.0 taxonomy compression completed for 189/189 items: owned L3 21→7, owned L4 36→29, assignment/runtime parity PASS, production exam JS unchanged."
   ]
 }

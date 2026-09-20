@@ -2,7 +2,7 @@
   "schemaVersion": "limit-continuity-promotion-receipt-v1",
   "status": "PROMOTED_CANONICAL",
   "packId": "LIMIT_CONTINUITY",
-  "packVersion": "1.0.1",
+  "packVersion": "1.1.0",
   "sourceEvidence": {
     "limitStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-limit/STAGE6_FINAL_FOUNDATION.json",
     "continuityStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-continuity/STAGE6_FINAL_FOUNDATION.json",
@@ -26,7 +26,8 @@
       "aliases.json",
       "concept_registry.json",
       "taxonomy_registry.json",
-      "meta_foundation_compiled.json"
+      "meta_foundation_compiled.json",
+      "curriculum_bindings.json"
     ],
     "conceptRegistryChanged": true,
     "conditionRegistryChanged": false,
@@ -42,7 +43,7 @@
     },
     "taxonomyCompressionPreparation": {
       "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
-      "stage": "6-C_REBASED",
+      "stage": "6-D_COMPLETE",
       "promotedCrossConceptKeys": [
         "CC_ZERO_MULTIPLICITY",
         "CC_RADICAL_EXPRESSION",
@@ -62,15 +63,16 @@
         "FUNCTIONS": "1.5.0"
       },
       "taxonomyChanged": true,
-      "itemAssignmentsChanged": false,
+      "itemAssignmentsChanged": true,
       "l3Compression": {
         "ownedBefore": 21,
         "ownedAfter": 7,
-        "actualProjectedAfter": 11
+        "actualAfter": 11
       },
       "l4Compression": {
         "ownedBefore": 36,
         "ownedAfter": 29,
+        "actualAfter": 33,
         "newTemplateKeys": [
           "TPL_LIMIT_DIRECTIONAL_APPROACH",
           "TPL_CONTINUITY_FACTOR_CONDITION"
@@ -91,8 +93,29 @@
         "before": 25,
         "after": 11
       },
-      "pendingStages": [
-        "6-D_ASSIGNMENT_MIGRATION_AND_GLOBAL_RECOMPILE"
+      "pendingStages": [],
+      "productionJsChanged": false,
+      "migrationLedger": "archive/data/meta-foundation/evidence/limit-continuity/v1/taxonomy_compression_migration_ledger_189.json",
+      "assignmentMigrationCount": 189,
+      "changedPrimaryCount": 109,
+      "crossConceptReferenceAddCount": 35
+    },
+    "taxonomyCompression": {
+      "status": "PASS",
+      "packVersion": "1.1.0",
+      "ownedProblemTypes": 7,
+      "ownedTemplates": 29,
+      "actualProblemTypes": 11,
+      "actualTemplates": 33,
+      "itemAssignments": 189,
+      "assignmentRuntimeParity": "PASS",
+      "newCanonicalCrossConceptKeys": [
+        "CC_ZERO_MULTIPLICITY",
+        "CC_RADICAL_EXPRESSION",
+        "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+      ],
+      "reusedCanonicalCrossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
       ],
       "productionJsChanged": false
     }
