@@ -8325,9 +8325,12 @@
       "sourceQuestionNo": "22",
       "standardUnitKey": "H15-M2-03",
       "subUnitKey": "H15-M2-03-DERIVATIVE",
-      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
       "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH",
+        "CC_DIFFERENTIABILITY"
+      ],
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "curriculumApplicability": "CORE",
@@ -9354,9 +9357,11 @@
       "sourceQuestionNo": "14",
       "standardUnitKey": "H15-M2-03",
       "subUnitKey": "H15-M2-03-DERIVATIVE",
-      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
-      "templateKey": "TPL_CONT_DIFF_GRAPH_JUDGMENT",
-      "crossConceptKeys": [],
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+      "crossConceptKeys": [
+        "CC_DIFFERENTIABILITY"
+      ],
       "conditionKeys": [
         "COND_RANGE"
       ],
@@ -9368,7 +9373,7 @@
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "STRONG_CONFLICT",
       "ownershipDisposition": "REFERENCE_EXISTING_CANONICAL",
-      "basisNote": "그래프에서 불연속점·꺾임·수평구간을 읽어 연속성과 미분가능성 판정",
+      "basisNote": "그래프에서 불연속점·꺾임·수평구간을 읽어 연속성을 판정하고 미분가능성은 CrossConcept로 보존",
       "curriculum": "2015",
       "standardCourse": "수학II",
       "reviewStatus": "reviewed_pass",
@@ -9836,10 +9841,11 @@
       "sourceQuestionNo": "18",
       "standardUnitKey": "H15-M2-03",
       "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
-      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
       "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
       "crossConceptKeys": [
-        "CC_ABSOLUTE_VALUE_GRAPH"
+        "CC_ABSOLUTE_VALUE_GRAPH",
+        "CC_DIFFERENTIABILITY"
       ],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
