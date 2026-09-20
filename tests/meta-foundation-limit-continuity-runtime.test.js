@@ -30,7 +30,21 @@ assert.strictEqual(limitRows.filter((r) => r.metaFoundationDifficultyStatus === 
 assert.strictEqual(limitRows.filter((r) => ["high","medium","low"].includes(r.difficultyConfidence)).length, 104);
 assert.strictEqual(limitRows.filter((r) => ["NONE","B12","B23","B34","B45"].includes(r.difficultyBoundaryFlag)).length, 104);
 assert.strictEqual(limitRows.filter((r) => ["NORMAL","BORDERLINE_ACCEPTABLE","STRONG_CONFLICT"].includes(r.legacyLevelCompatibility)).length, 104);
-assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.0.0/runtime-bridge-v2");
+assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.0.1/runtime-bridge-v3");
+
+
+const compiledTaxonomy = readJson("archive/data/meta-foundation/compiled/taxonomy_registry.json");
+const compiledConcepts = readJson("archive/data/meta-foundation/compiled/concept_registry.json");
+const ptLabels = new Map(compiledTaxonomy.problemTypes.map((r) => [r.problemTypeKey, r.canonicalLabelKo]));
+const tplLabels = new Map(compiledTaxonomy.templates.map((r) => [r.templateKey, r.canonicalLabelKo]));
+assert.strictEqual(ptLabels.get("PT_LIMIT_ORDER_SQUEEZE"), "함수의 극한의 대소 관계");
+assert.strictEqual(tplLabels.get("TPL_LIMIT_SQUEEZE"), "함수의 대소 관계를 이용한 극한값 계산");
+assert.strictEqual(tplLabels.get("TPL_PIECEWISE_RANGE_STITCH_BIJECTION"), "조각함수의 일대일대응 조건");
+for (const key of ["CC_ABSOLUTE_VALUE_FUNCTION","CC_GREATEST_INTEGER_FUNCTION","CC_INVERSE_FUNCTION","CC_DERIVATIVE_VALUE","CC_DIFFERENTIABILITY","CC_SINE_LAW"]) {
+  assert(compiledConcepts.concepts.some((r) => r.conceptKey === key && r.status === "ACTIVE"), key);
+}
+const activeConceptKeys = new Set(compiledConcepts.concepts.filter((r) => r.status === "ACTIVE").map((r) => r.conceptKey));
+assert.strictEqual(runtime.records.filter((r) => (r.crossConceptKeys || []).some((key) => !activeConceptKeys.has(key))).length, 0);
 
 const bySource = new Map(catalog.records.map((r) => [sourceKey(r.sourceFile, r.sourceOrdinal), r]));
 let direct = 0;

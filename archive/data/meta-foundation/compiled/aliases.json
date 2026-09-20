@@ -1,7 +1,7 @@
 {
   "schemaVersion": "meta-foundation-compiled-aliases-v1",
   "status": "DERIVED_READ_ONLY",
-  "aliasCount": 144,
+  "aliasCount": 173,
   "aliases": [
     {
       "alias": "0이 아님",
@@ -879,69 +879,6 @@
       "status": "ACTIVE"
     },
     {
-      "alias": "집합의 원소합과 집계",
-      "canonicalKey": "PT_SET_AGGREGATE",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "집합의 원소 수와 포함배제",
-      "canonicalKey": "PT_SET_CARDINALITY",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "조건을 만족하는 집합의 구성",
-      "canonicalKey": "PT_SET_CONSTRUCTION",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "집합의 뜻과 판정",
-      "canonicalKey": "PT_SET_DEFINITION",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "원소와 부분집합의 관계",
-      "canonicalKey": "PT_SET_ELEMENT_RELATION",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "집합의 최대·최소와 경계",
-      "canonicalKey": "PT_SET_EXTREMUM",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "집합의 직접 연산",
-      "canonicalKey": "PT_SET_OPERATION",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "벤다이어그램과 집합식",
-      "canonicalKey": "PT_SET_REGION_EXPRESSION",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
-      "alias": "부분집합 판정",
-      "canonicalKey": "PT_SUBSET_JUDGMENT",
-      "canonicalKind": "problemType",
-      "source": "PACK_TAXONOMY_ALIAS",
-      "status": "ACTIVE"
-    },
-    {
       "alias": "절댓값을 포함한 부등식",
       "canonicalKey": "CC_INEQUALITY_ABSOLUTE_VALUE",
       "canonicalKind": "crossConcept",
@@ -1009,6 +946,272 @@
       "canonicalKey": "CC_NUMBER_PRIME_COPRIME",
       "canonicalKind": "crossConcept",
       "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "절댓값 함수",
+      "canonicalKey": "CC_ABSOLUTE_VALUE_FUNCTION",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "가우스 기호",
+      "canonicalKey": "CC_GREATEST_INTEGER_FUNCTION",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "함수의 역함수",
+      "canonicalKey": "CC_INVERSE_FUNCTION",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "사인 법칙",
+      "canonicalKey": "CC_SINE_LAW",
+      "canonicalKind": "crossConcept",
+      "source": "CONCEPT_SHARD_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 원소합과 집계",
+      "canonicalKey": "PT_SET_AGGREGATE",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 원소 수와 포함배제",
+      "canonicalKey": "PT_SET_CARDINALITY",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "조건을 만족하는 집합의 구성",
+      "canonicalKey": "PT_SET_CONSTRUCTION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 뜻과 판정",
+      "canonicalKey": "PT_SET_DEFINITION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "원소와 부분집합의 관계",
+      "canonicalKey": "PT_SET_ELEMENT_RELATION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 최대·최소와 경계",
+      "canonicalKey": "PT_SET_EXTREMUM",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "집합의 직접 연산",
+      "canonicalKey": "PT_SET_OPERATION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "벤다이어그램과 집합식",
+      "canonicalKey": "PT_SET_REGION_EXPRESSION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "부분집합 판정",
+      "canonicalKey": "PT_SUBSET_JUDGMENT",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "유한한 점에서 극한값 계산",
+      "canonicalKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "합성·변환함수의 극한",
+      "canonicalKey": "PT_LIMIT_COMPOSITION_TRANSFORM",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "그래프에서 극한 해석",
+      "canonicalKey": "PT_LIMIT_GRAPH_INTERPRETATION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "극한 명제 판정과 반례",
+      "canonicalKey": "PT_LIMIT_STATEMENT_LOGIC",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "대소 관계와 조임정리",
+      "canonicalKey": "PT_LIMIT_ORDER_SQUEEZE",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "영점의 중복도와 극한",
+      "canonicalKey": "PT_LIMIT_ZERO_MULTIPLICITY",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "무한대에서의 점근관계",
+      "canonicalKey": "PT_INFINITY_ASYMPTOTIC_RELATION",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "실근·교점 개수 함수의 연속성",
+      "canonicalKey": "PT_COUNT_FUNCTION_CONTINUITY",
+      "canonicalKind": "problemType",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "조각함수의 치역을 이어 일대일대응 만들기",
+      "canonicalKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "극한 명제의 반례 구성",
+      "canonicalKey": "TPL_LIMIT_STATEMENT_COUNTEREXAMPLE",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "합성·변환 입력 방향 추적",
+      "canonicalKey": "TPL_LIMIT_COMPOSITION_DIRECTION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "극한 조건으로 다항함수 복원",
+      "canonicalKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "직접 대입형 극한",
+      "canonicalKey": "TPL_LIMIT_DIRECT_SUBSTITUTION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "그래프의 접근 방향 읽기",
+      "canonicalKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "조임정리 적용",
+      "canonicalKey": "TPL_LIMIT_SQUEEZE",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "점근적 선형관계 추출",
+      "canonicalKey": "TPL_LIMIT_ASYMPTOTIC_RELATION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "영점 차수 맞추기",
+      "canonicalKey": "TPL_LIMIT_ZERO_MULTIPLICITY",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "도형량의 매개변수화",
+      "canonicalKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "구간별 함수의 경계에서 연속 조건",
+      "canonicalKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "영점의 중복도를 이용한 연속 조건",
+      "canonicalKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "함수의 연산과 합성에서 연속성 판정",
+      "canonicalKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "실근·교점 개수 함수의 불연속 구조",
+      "canonicalKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "개수 함수와 곱함수의 연속 조건",
+      "canonicalKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "특수한 함수값을 이용한 실근 존재",
+      "canonicalKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
+      "status": "ACTIVE"
+    },
+    {
+      "alias": "정의로 연속성과 미분가능성 조사",
+      "canonicalKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "canonicalKind": "template",
+      "source": "PACK_TAXONOMY_ALIAS",
       "status": "ACTIVE"
     }
   ],

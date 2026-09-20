@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.1.0",
+  "shardVersion": "1.2.0",
   "status": "ACTIVE",
-  "conceptCount": 17,
+  "conceptCount": 18,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -670,6 +670,39 @@
       ],
       "curriculumRefs": [
         "2015:수학(하):H15-SB-03"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SINE_LAW",
+      "canonicalLabelKo": "사인법칙",
+      "definition": "삼각형에서 변의 길이와 대응하는 각의 사인값의 관계를 이용하고, 필요하면 외접원의 지름과 연결하는 개념.",
+      "aliases": [
+        "사인 법칙"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_3fca994c553980d6cc71365fa84b17ab6a3f4c31b0b77f5f62ec686f715e15dd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_GEOMETRY_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }

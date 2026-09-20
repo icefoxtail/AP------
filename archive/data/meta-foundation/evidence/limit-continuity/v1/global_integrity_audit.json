@@ -2,7 +2,7 @@
   "schemaVersion": "limit-continuity-global-integrity-audit-v1",
   "status": "PASS",
   "packId": "LIMIT_CONTINUITY",
-  "packVersion": "1.0.0",
+  "packVersion": "1.0.1",
   "counts": {
     "itemEvidenceCount": 189,
     "limitItemCount": 104,
@@ -20,7 +20,10 @@
     "productionJsMutationCount": 0,
     "limitDifficultyReviewedCount": 104,
     "limitDifficultyDeferredCount": 0,
-    "limitDifficultyStrongConflictReviewedCount": 1
+    "limitDifficultyStrongConflictReviewedCount": 1,
+    "semanticLabelChangeCount": 24,
+    "crossConceptChangedQuestionCount": 48,
+    "newCrossConceptPromotionCount": 6
   },
   "gates": {
     "denominator189": true,
@@ -33,10 +36,11 @@
     "conditionRegistryValid": true,
     "productionJsUnchanged": true,
     "compiledDerivedFromCanonical": true,
-    "limitDifficultyReviewComplete": true
+    "limitDifficultyReviewComplete": true,
+    "semanticTerminologyReviewComplete": true
   },
   "notes": [
-    "Compiled artifacts regenerated from ACTIVE canonical packs with LIMIT_CONTINUITY appended; concept and condition compiled artifacts remain byte-unchanged.",
-    "Limit difficulty fresh blind-first-pass review completed for 104/104 items; legacy comparison and same-template outlier review completed after freeze."
+    "Limit difficulty fresh blind-first-pass review completed for 104/104 items; legacy comparison and same-template outlier review completed after freeze.",
+    "v1.0.1 educational terminology and CrossConcept revalidation completed on 189/189 assignments; 6 evidence-backed CrossConcept keys promoted to canonical shards."
   ]
 }
