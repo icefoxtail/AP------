@@ -20,14 +20,14 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17795 bytes | sha256 efa2cc23237b12ffa2508d998dfb78612738359e8c1bca11cf97513f03d609a5
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 130796 bytes | sha256 5fbe4daf2a8fb7a70602dee2a9849ba0285b2030b3b9d0a10783b573debd150b
-- 02_PIPELINES/문제해설추출.md | 28726 bytes | sha256 2cac746f180a86075b75c91e5e4e58a3725c104d1a804b62311515a84eeb9000
+- 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140
 - 02_PIPELINES/수정프로토콜.md | 31393 bytes | sha256 ac8830d39aa3e17134b40c9ee5e423ed5d97e635336fe437fb52075def667622
 - 02_PIPELINES/작업방식_적응형배치루프_v1.md | 9468 bytes | sha256 ce4166be64d437a98eebcacbb728e6625dd4ba6472f0d6d20295767265c71685
 - 02_PIPELINES/수정후보고프로토콜.md | 880 bytes | sha256 bbdd866d15e6dc7e03ee265cf3b02571f6ef3ed4a15c03ebacb816d3311cbc4f
 - 02_PIPELINES/작업방식_5문항배치루프_필수.md | 5586 bytes | sha256 03ff3af80c2ce350181a142377955cc6657fa7f2d419c7461c6a09e7b1013858
 - 02_PIPELINES/해설프로토콜.md | 41275 bytes | sha256 ca3f19a1562422dea9ebce6321b0f369e2bd535b0492901278ff23255652cd5c
 - 02_PIPELINES/JS_문항품질_업그레이드.md | 21340 bytes | sha256 2bb2b2ca2e860948f33866b6dccd6700e0848ef05388135afcf79a13f3866435
-- 02_PIPELINES/JS_변환_프롬프트.md | 11129 bytes | sha256 94b1e48770825592615bca22c407a8ca54fdb752c42c5506ce4f3312a6df6ccd
+- 02_PIPELINES/JS_변환_프롬프트.md | 11131 bytes | sha256 bcd93c977920a7b5c70f8c9433cde1cbe8a14de2a362fd566865a63aa36285eb
 - 03_REVIEW/무결성검수.md | 48114 bytes | sha256 b9fe074f85eec129641a21cc73e9fea0326689db8b053fa1fa8aaed20b6b9cf9
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 7420 bytes | sha256 dfb942f5b68446948c396305f547e0a39ba6c0776790f1d89f15ee28af0f9487
 - 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 9261 bytes | sha256 8cf54ade0b9af3dff611928d8439c3cd5db972524482f463153a1635d73e7126
