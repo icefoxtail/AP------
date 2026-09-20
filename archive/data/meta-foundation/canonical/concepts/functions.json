@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.4.0",
+  "shardVersion": "1.5.0",
   "status": "ACTIVE",
-  "conceptCount": 20,
+  "conceptCount": 21,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -628,17 +628,24 @@
       "taxonomyRefs": [
         "PT_AREA_BY_DEFINITE_INTEGRAL",
         "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
-        "PT_DEFINITE_INTEGRAL_OPERATION"
+        "PT_DEFINITE_INTEGRAL_OPERATION",
+        "PT_LIMIT_VALUE_CALC",
+        "PT_INTERMEDIATE_VALUE_APPLICATION"
       ],
       "supportingQuestionUids": [
         "qid_v1_073a46f98e5c8a07e8829025b822000571d866b63d924a691e9fffa6eb428385",
         "qid_v1_90bf289a388c025327642a2d317aeb2965ab88a11d6350913e8d90ea178ba464",
         "qid_v1_0e84f26ddb2c9a7075a02923f76c55e398ae9b39050a20661244310819ab9049",
-        "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2"
+        "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2",
+        "qid_v1_16d973f0ef5edcac9c8ae03928f4a22122c95e0061d12fe1a443e513067c2d5f",
+        "qid_v1_8dbfca06d52cbb516d96cf2ade72e607498b5cf4cd184b359bd7aba8b04cb1e4",
+        "qid_v1_3319c998b07b1c0a86b3022039fa3fd62cf6824c7d8984ad4500099d0c40ae6c",
+        "qid_v1_ece6b79475de1df60ad290538f6ef19723d3bcca8aac2d3d0d40cc1cec7c9ae8"
       ],
-      "supportingItemCount": 4,
+      "supportingItemCount": 8,
       "sourceUnits": [
-        "MATH2_INTEGRAL"
+        "MATH2_INTEGRAL",
+        "LIMIT_CONTINUITY"
       ],
       "status": "ACTIVE",
       "ownerConceptShard": "FUNCTIONS",
@@ -647,7 +654,17 @@
           "sourceUnit": "MATH2_INTEGRAL",
           "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
           "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        },
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
         }
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01",
+        "2015:수학II:H15-M2-02"
       ]
     },
     {
@@ -728,6 +745,47 @@
           "evidenceType": "TAXONOMY_REDUCTION_REAUDIT_v1.2"
         }
       ]
+    },
+    {
+      "conceptKey": "CC_ROOT_INTERSECTION_COUNT_FUNCTION",
+      "canonicalLabelKo": "실근·교점 개수 함수",
+      "definition": "실수 매개변수에 따라 방정식의 서로 다른 실근 수 또는 두 그래프의 교점 수를 함수로 정의하고 그 값의 변화·점프 구조를 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_66b26192374edaecffb192c122fde29ced7de862ff041724cf0d9fc9c137d1a0",
+        "qid_v1_3f13edaf6645928daa48b72d3cc56b7f24d639197ab8a32572c3b1a40fd5bbae",
+        "qid_v1_e83662470981dcfabc7fb50940dccc559b10adbb8644e58ef90edb5cfaccea1d",
+        "qid_v1_f5c71cea7404cfad041c09b706c2e25a0348f3fe5da71a8f83c68cf6ba888e2a",
+        "qid_v1_41d01908b3beba70b70322e2007ca8addbcdf71a9de41a29ca5caa1460693c17",
+        "qid_v1_636f25ec6a74e8dc56d62a28caddfb4cb48932f572d15ab7f9c2932aef8ef0de",
+        "qid_v1_5e88294f4c546a36498878e2de5cff4f6d4b69d035753b9bcd9175d9941287f0",
+        "qid_v1_4cfdf2bcd17076d09f5ed325635987abf03c0bcf4c78ee5ae2ed7febd7b73bdd",
+        "qid_v1_9ef42fbe5e6ded863f9101a39c5201f2521d7587625f004bd232f76a0c0ef9ab",
+        "qid_v1_61c458316572f2c9d9e1f3ac6600c96d61daeaa2b6c3a806e67b2009267a0787",
+        "qid_v1_f455c29201b687ee135e33a07ad9d39b1c4696aede6e73971a284ba6329ee92a"
+      ],
+      "supportingItemCount": 11,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONTINUITY_JUDGMENT",
+        "PT_CONTINUITY_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
     }
   ]
 }
