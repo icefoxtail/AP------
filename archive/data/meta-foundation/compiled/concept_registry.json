@@ -4,13 +4,13 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.2.0",
-      "conceptCount": 12
+      "version": "1.3.0",
+      "conceptCount": 14
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.4.0",
-      "conceptCount": 20
+      "version": "1.5.0",
+      "conceptCount": 21
     },
     {
       "shardId": "LOGIC_SET",
@@ -38,7 +38,7 @@
       "conceptCount": 4
     }
   ],
-  "conceptCount": 77,
+  "conceptCount": 80,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -671,6 +671,77 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_ZERO_MULTIPLICITY",
+      "canonicalLabelKo": "영점의 중복도",
+      "definition": "분자·분모 또는 곱의 인수가 갖는 영점의 차수·중복도를 비교하여 극한의 존재나 연속 조건을 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a60b2787dd6dd4080768c578057741285565191c634660bded8283f42e9412b0",
+        "qid_v1_08d6110db8e226ebc375227a6dcf5889017d08d4d0fc2741cd3adaf34a8ce365",
+        "qid_v1_38eaf895cb27c4dae59a9ec143a492a9639f22847b39e343b58dc65332543c5f",
+        "qid_v1_e4fcd1c7dde293fd7107bbe619e62e5507cb40dd0a5de001fad6c76a02cd95f4",
+        "qid_v1_54b0534116b2765bf3079d44e8cafb09dc51a021900d9dbdd52ce372eba95970",
+        "qid_v1_734e04deaf805366aba6eea8f37626a7ae07a8b1c9774132c06a0c729ff8a3b6",
+        "qid_v1_03aa6e6ba123f7173f29f4192cb918c747153269fc314ea1a6a42280e4407de4",
+        "qid_v1_b8124441b9300b2438205a16b6d6cfed4a9de718c13f6e7c7d732f241f7784b6",
+        "qid_v1_5eb3870e4a9059cb3481f7a1407762e96faff71f790f4e7ec91084f0f569fe3e",
+        "qid_v1_14c1d0b15b32a4780cb4066d1bef468209b64a9b6e0e91579339e8d6a7c2441b"
+      ],
+      "supportingItemCount": 10,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_PARAMETER_DETERMINATION",
+        "PT_CONTINUITY_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01",
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_EXPRESSION",
+      "canonicalLabelKo": "근호식의 변형",
+      "definition": "근호식에서 지배항 분리, 부호 처리, 유리화 등의 변형을 통해 식의 값을 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e7490e1ce95a9e25993108b97dc7298cb283a0dfcd190bcb151fdafaeb6d93b1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_VALUE_CALC"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -1293,17 +1364,24 @@
       "taxonomyRefs": [
         "PT_AREA_BY_DEFINITE_INTEGRAL",
         "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
-        "PT_DEFINITE_INTEGRAL_OPERATION"
+        "PT_DEFINITE_INTEGRAL_OPERATION",
+        "PT_LIMIT_VALUE_CALC",
+        "PT_INTERMEDIATE_VALUE_APPLICATION"
       ],
       "supportingQuestionUids": [
         "qid_v1_073a46f98e5c8a07e8829025b822000571d866b63d924a691e9fffa6eb428385",
         "qid_v1_90bf289a388c025327642a2d317aeb2965ab88a11d6350913e8d90ea178ba464",
         "qid_v1_0e84f26ddb2c9a7075a02923f76c55e398ae9b39050a20661244310819ab9049",
-        "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2"
+        "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2",
+        "qid_v1_16d973f0ef5edcac9c8ae03928f4a22122c95e0061d12fe1a443e513067c2d5f",
+        "qid_v1_8dbfca06d52cbb516d96cf2ade72e607498b5cf4cd184b359bd7aba8b04cb1e4",
+        "qid_v1_3319c998b07b1c0a86b3022039fa3fd62cf6824c7d8984ad4500099d0c40ae6c",
+        "qid_v1_ece6b79475de1df60ad290538f6ef19723d3bcca8aac2d3d0d40cc1cec7c9ae8"
       ],
-      "supportingItemCount": 4,
+      "supportingItemCount": 8,
       "sourceUnits": [
-        "MATH2_INTEGRAL"
+        "MATH2_INTEGRAL",
+        "LIMIT_CONTINUITY"
       ],
       "status": "ACTIVE",
       "ownerConceptShard": "FUNCTIONS",
@@ -1312,7 +1390,17 @@
           "sourceUnit": "MATH2_INTEGRAL",
           "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
           "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        },
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
         }
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01",
+        "2015:수학II:H15-M2-02"
       ]
     },
     {
@@ -1393,6 +1481,47 @@
           "evidenceType": "TAXONOMY_REDUCTION_REAUDIT_v1.2"
         }
       ]
+    },
+    {
+      "conceptKey": "CC_ROOT_INTERSECTION_COUNT_FUNCTION",
+      "canonicalLabelKo": "실근·교점 개수 함수",
+      "definition": "실수 매개변수에 따라 방정식의 서로 다른 실근 수 또는 두 그래프의 교점 수를 함수로 정의하고 그 값의 변화·점프 구조를 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_66b26192374edaecffb192c122fde29ced7de862ff041724cf0d9fc9c137d1a0",
+        "qid_v1_3f13edaf6645928daa48b72d3cc56b7f24d639197ab8a32572c3b1a40fd5bbae",
+        "qid_v1_e83662470981dcfabc7fb50940dccc559b10adbb8644e58ef90edb5cfaccea1d",
+        "qid_v1_f5c71cea7404cfad041c09b706c2e25a0348f3fe5da71a8f83c68cf6ba888e2a",
+        "qid_v1_41d01908b3beba70b70322e2007ca8addbcdf71a9de41a29ca5caa1460693c17",
+        "qid_v1_636f25ec6a74e8dc56d62a28caddfb4cb48932f572d15ab7f9c2932aef8ef0de",
+        "qid_v1_5e88294f4c546a36498878e2de5cff4f6d4b69d035753b9bcd9175d9941287f0",
+        "qid_v1_4cfdf2bcd17076d09f5ed325635987abf03c0bcf4c78ee5ae2ed7febd7b73bdd",
+        "qid_v1_9ef42fbe5e6ded863f9101a39c5201f2521d7587625f004bd232f76a0c0ef9ab",
+        "qid_v1_61c458316572f2c9d9e1f3ac6600c96d61daeaa2b6c3a806e67b2009267a0787",
+        "qid_v1_f455c29201b687ee135e33a07ad9d39b1c4696aede6e73971a284ba6329ee92a"
+      ],
+      "supportingItemCount": 11,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONTINUITY_JUDGMENT",
+        "PT_CONTINUITY_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
     },
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
