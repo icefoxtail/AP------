@@ -13,15 +13,15 @@ const receipt = readJson("archive/data/meta-foundation/runtime/runtime-bridge-re
 const catalog = C.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
 
 assert.strictEqual(runtime.packId, "LIMIT_CONTINUITY");
-assert.strictEqual(runtime.records.length, 189);
+assert.strictEqual(runtime.records.length, 184);
 assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01").length, 104);
-assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-02").length, 85);
-assert.strictEqual(new Set(runtime.records.map((r) => r.questionUid)).size, 189);
-assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 189);
+assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-02").length, 80);
+assert.strictEqual(new Set(runtime.records.map((r) => r.questionUid)).size, 184);
+assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 184);
 assert.strictEqual(runtime.records.filter((r) => r.catalogIdentityRepairVerified === true).length, 3);
-assert.strictEqual(runtime.counts.catalogUidDirectJoin, 186);
+assert.strictEqual(runtime.counts.catalogUidDirectJoin, 181);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 189);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, 184);
 assert.strictEqual(runtime.counts.difficultyDeferred, 0);
 const limitRows = runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01");
 const limitDistribution = Object.fromEntries([1,2,3,4,5].map((bucket) => [bucket, limitRows.filter((r) => r.difficultyBucket === bucket).length]));
@@ -30,7 +30,7 @@ assert.strictEqual(limitRows.filter((r) => r.metaFoundationDifficultyStatus === 
 assert.strictEqual(limitRows.filter((r) => ["high","medium","low"].includes(r.difficultyConfidence)).length, 104);
 assert.strictEqual(limitRows.filter((r) => ["NONE","B12","B23","B34","B45"].includes(r.difficultyBoundaryFlag)).length, 104);
 assert.strictEqual(limitRows.filter((r) => ["NORMAL","BORDERLINE_ACCEPTABLE","STRONG_CONFLICT"].includes(r.legacyLevelCompatibility)).length, 104);
-assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.0.1/runtime-bridge-v3");
+assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.0.1/runtime-bridge-v4");
 
 
 const compiledTaxonomy = readJson("archive/data/meta-foundation/compiled/taxonomy_registry.json");
@@ -90,10 +90,10 @@ for (const overlay of runtime.records) {
   }
 }
 
-assert.strictEqual(direct, 186);
+assert.strictEqual(direct, 181);
 assert.strictEqual(repaired, 3);
 assert.strictEqual(eligibleLimit, 104);
-assert.strictEqual(eligibleContinuity, 85);
+assert.strictEqual(eligibleContinuity, 80);
 
 assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
@@ -112,18 +112,20 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/sets-propositions-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/functions-graphs-v1.json").records,
-  ...runtime.records
+  ...runtime.records,
+  ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
+  ...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records
 ];
-assert.strictEqual(combined.length, 1463);
-assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1463);
-assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1463);
+assert.strictEqual(combined.length, 1904);
+assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1904);
+assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1904);
 
-assert.strictEqual(receipt.status, "PASS_INTEGRAL_CALCULUS_135_CATALOG_JOIN");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1598);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 1598);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1598);
-assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 189);
-assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 189);
+assert.strictEqual(receipt.status, "PASS_CROSS_PACK_PRIMARY_OWNERSHIP_1904_UNIQUE");
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1904);
+assert.strictEqual(receipt.checked.combinedUniqueUid, 1904);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1904);
+assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 184);
+assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 184);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
 
 console.log("PASS MathII limit/continuity Archive2 runtime bridge");

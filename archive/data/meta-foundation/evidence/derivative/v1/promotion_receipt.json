@@ -17,7 +17,8 @@
     "bindingValid": true,
     "globalCompilePass": true,
     "runtimeCatalogJoin320": true,
-    "productionJsMutationZero": true
+    "productionJsMutationZero": true,
+    "crossPackPrimaryOwnershipUnique": true
   },
   "promotion": {
     "canonicalPackPath": "archive/data/meta-foundation/canonical/packs/derivative",
@@ -67,7 +68,25 @@
     "productionJsChanged": false,
     "catalogUidDirectJoin": 241,
     "catalogSourceIdentityRepairJoin": 79,
-    "catalogDirectSourceHoldCount": 11
+    "catalogDirectSourceHoldCount": 11,
+    "postPromotionOwnershipCorrection": {
+      "status": "PASS",
+      "resolvedDuplicateQuestionCount": 14,
+      "primaryPack": "DERIVATIVE",
+      "supersededActiveRuntimeByPack": {
+        "LIMIT_CONTINUITY": 5,
+        "INTEGRAL_CALCULUS": 9
+      },
+      "historicalEvidencePreserved": true,
+      "productionJsChanged": false,
+      "classificationCorrection": {
+        "questionUid": "qid_v1_9e2e2da38b13f9a09e63058e85dc8fdc53455e898057a31193cd70ce6b7c629b",
+        "source": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js#18",
+        "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+        "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+        "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION"
+      }
+    }
   },
   "difficulty": {
     "status": "DIFFICULTY_LOCKED",
