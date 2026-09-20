@@ -9,8 +9,8 @@
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.2.0",
-      "conceptCount": 7
+      "version": "1.3.0",
+      "conceptCount": 12
     },
     {
       "shardId": "LOGIC_SET",
@@ -24,8 +24,8 @@
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.1.0",
-      "conceptCount": 17
+      "version": "1.2.0",
+      "conceptCount": 18
     },
     {
       "shardId": "COUNTING",
@@ -38,7 +38,7 @@
       "conceptCount": 4
     }
   ],
-  "conceptCount": 63,
+  "conceptCount": 69,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -2995,6 +2995,210 @@
         "2015:수학(하):H15-SB-03"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_FUNCTION",
+      "canonicalLabelKo": "절댓값이 포함된 함수",
+      "definition": "절댓값 기호가 포함된 함수식을 접근 방향 또는 부호에 따라 나누어 해석하는 개념.",
+      "aliases": [
+        "절댓값 함수"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a4053b765d3069c2a9f40f6d3b46b252587c2f8105428d1215db523e1e615d7a",
+        "qid_v1_b44da6c4620a2cc30938e8b40caa3390e9b28a1897d5693eb8fc2987ea125ff9",
+        "qid_v1_96a0d8681c730bcb0d836a2345330c07840f228471fdc40447474816ad60ee98",
+        "qid_v1_545f92be35db60c0f81912fb82cc0b20eb2f40bb76d59089c75f5f031c866db4"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_EXISTENCE",
+        "PT_INFINITY_POLY_RATIONAL",
+        "PT_ONE_SIDED_LIMIT"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GREATEST_INTEGER_FUNCTION",
+      "canonicalLabelKo": "최대정수함수",
+      "definition": "주어진 실수보다 크지 않은 최대의 정수를 대응시키는 함수와 그 값을 해석하는 개념.",
+      "aliases": [
+        "가우스 기호"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a4053b765d3069c2a9f40f6d3b46b252587c2f8105428d1215db523e1e615d7a",
+        "qid_v1_15f92884572a441d640dbd7f858c464e36c5bff4654d00c25e7aa5808d89ce8d"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_EXISTENCE",
+        "PT_ITERATED_COMPOSITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01",
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INVERSE_FUNCTION",
+      "canonicalLabelKo": "역함수",
+      "definition": "주어진 함수의 대응을 거꾸로 하여 역함수의 식이나 값을 구하고 사용하는 개념.",
+      "aliases": [
+        "함수의 역함수"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_460466aee383f4ddc010b226afeda055347c078a0ffe035220ac5c5a7f932c0a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_VALUE_CALC"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_DERIVATIVE_VALUE",
+      "canonicalLabelKo": "미분계수",
+      "definition": "한 점에서의 미분계수 값을 함수 조건이나 미지수 결정에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_267459e8a4d6f9246cc91c5810cb0e407adc7f160b819ca5efd7602eb0ff9bd0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_PARAMETER_DETERMINATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_DIFFERENTIABILITY",
+      "canonicalLabelKo": "미분가능성",
+      "definition": "함수가 한 점에서 미분 가능한지 여부와 좌우 미분계수의 일치를 판단하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_57a80130457683b8fd05a66ddfba0c832be3ca5bbfc432a50f3549f60b04f3d0",
+        "qid_v1_3f1daeab5a911cad3a3ae8c25f4a67e4fc11af4d861df0cacc6ca2de1927e43c"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+        "PT_CONTINUITY_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_SINE_LAW",
+      "canonicalLabelKo": "사인법칙",
+      "definition": "삼각형에서 변의 길이와 대응하는 각의 사인값의 관계를 이용하고, 필요하면 외접원의 지름과 연결하는 개념.",
+      "aliases": [
+        "사인 법칙"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_3fca994c553980d6cc71365fa84b17ab6a3f4c31b0b77f5f62ec686f715e15dd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_GEOMETRY_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
     }
   ]
 }

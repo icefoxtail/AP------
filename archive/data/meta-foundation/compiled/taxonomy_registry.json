@@ -12,11 +12,11 @@
     },
     {
       "packId": "FUNCTIONS_GRAPHS",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
       "packId": "LIMIT_CONTINUITY",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ],
   "problemTypeCount": 110,
@@ -2690,9 +2690,11 @@
     },
     {
       "problemTypeKey": "PT_LIMIT_VALUE_CALC",
-      "canonicalLabelKo": "유한한 점에서 극한값 계산",
+      "canonicalLabelKo": "함수의 극한값 계산",
       "definition": "대입·인수분해·유리화 등 표준 변형을 사용하여 유한한 점에서 함수의 극한값을 계산하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "유한한 점에서 극한값 계산"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_LIMIT_VALUE_CALC"
@@ -2743,9 +2745,11 @@
     },
     {
       "problemTypeKey": "PT_LIMIT_COMPOSITION_TRANSFORM",
-      "canonicalLabelKo": "합성·변환함수의 극한",
+      "canonicalLabelKo": "합성함수의 극한",
       "definition": "합성, 절댓값, 평행이동 등 입력·출력 변환에 따른 접근 방향을 추적하여 극한을 구하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "합성·변환함수의 극한"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_LIMIT_COMPOSITION_TRANSFORM"
@@ -2765,9 +2769,11 @@
     },
     {
       "problemTypeKey": "PT_LIMIT_GRAPH_INTERPRETATION",
-      "canonicalLabelKo": "그래프에서 극한 해석",
+      "canonicalLabelKo": "그래프를 이용한 함수의 극한",
       "definition": "함수의 그래프에서 접근 방향과 좌우 거동을 읽어 극한값을 구하거나 비교하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "그래프에서 극한 해석"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_LIMIT_GRAPH_INTERPRETATION"
@@ -2861,9 +2867,11 @@
     },
     {
       "problemTypeKey": "PT_LIMIT_STATEMENT_LOGIC",
-      "canonicalLabelKo": "극한 명제 판정과 반례",
+      "canonicalLabelKo": "함수의 극한에 대한 참·거짓",
       "definition": "극한의 성질에 관한 명제의 참·거짓을 판정하거나 반례를 구성하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "극한 명제 판정과 반례"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_LIMIT_STATEMENT_LOGIC"
@@ -2883,9 +2891,11 @@
     },
     {
       "problemTypeKey": "PT_LIMIT_ORDER_SQUEEZE",
-      "canonicalLabelKo": "대소 관계와 조임정리",
+      "canonicalLabelKo": "함수의 극한의 대소 관계",
       "definition": "함수 사이의 대소 관계를 정리하고 조임정리를 적용하여 극한값을 결정하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "대소 관계와 조임정리"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_LIMIT_ORDER_SQUEEZE"
@@ -2937,9 +2947,11 @@
     },
     {
       "problemTypeKey": "PT_LIMIT_ZERO_MULTIPLICITY",
-      "canonicalLabelKo": "영점의 중복도와 극한",
+      "canonicalLabelKo": "극한의 존재와 인수 조건",
       "definition": "유한한 극한의 존재를 위해 분자·분모의 영점 차수 또는 중복도를 비교하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "영점의 중복도와 극한"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_LIMIT_ZERO_MULTIPLICITY"
@@ -2996,9 +3008,11 @@
     },
     {
       "problemTypeKey": "PT_INFINITY_ASYMPTOTIC_RELATION",
-      "canonicalLabelKo": "무한대에서의 점근관계",
+      "canonicalLabelKo": "무한대에서 두 함수의 관계",
       "definition": "두 함수의 차·비 또는 선형 결합의 무한대 거동을 이용하여 점근적 관계와 극한을 결정하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "무한대에서의 점근관계"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_INFINITY_ASYMPTOTIC_RELATION"
@@ -3116,9 +3130,11 @@
     },
     {
       "problemTypeKey": "PT_COUNT_FUNCTION_CONTINUITY",
-      "canonicalLabelKo": "실근·교점 개수 함수의 연속성",
+      "canonicalLabelKo": "실근·교점의 개수와 연속성",
       "definition": "매개변수에 따른 방정식의 실근 수 또는 그래프의 교점 수를 함수로 정의하고 그 함수의 점프·불연속점 또는 연속화 조건을 분석하는 문제 유형.",
-      "aliases": [],
+      "aliases": [
+        "실근·교점 개수 함수의 연속성"
+      ],
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromRawProblemTypes": [
         "PT_COUNT_FUNCTION_CONTINUITY"
@@ -9428,9 +9444,11 @@
     },
     {
       "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
-      "canonicalLabelKo": "조각함수의 치역을 이어 일대일대응 만들기",
+      "canonicalLabelKo": "조각함수의 일대일대응 조건",
       "definition": "`일대일함수와 일대일대응` 안에서 '조각함수의 치역을 이어 일대일대응 만들기'을 핵심 풀이 골격으로 사용하는 유형.",
-      "aliases": [],
+      "aliases": [
+        "조각함수의 치역을 이어 일대일대응 만들기"
+      ],
       "internalSkeleton": "조각함수의 치역을 이어 일대일대응 만들기",
       "ownerPack": "FUNCTIONS_GRAPHS",
       "mergedFromRawTemplates": [
@@ -10062,9 +10080,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_STATEMENT_COUNTEREXAMPLE",
-      "canonicalLabelKo": "극한 명제의 반례 구성",
+      "canonicalLabelKo": "함수의 극한에 대한 참·거짓 판정",
       "definition": "명제의 조건을 만족하지만 결론이 깨지는 함수를 구성하거나 성질을 적용해 참·거짓을 판정한다.",
-      "aliases": [],
+      "aliases": [
+        "극한 명제의 반례 구성"
+      ],
       "internalSkeleton": "명제의 조건을 만족하지만 결론이 깨지는 함수를 구성하거나 성질을 적용해 참·거짓을 판정한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10085,9 +10105,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_COMPOSITION_DIRECTION",
-      "canonicalLabelKo": "합성·변환 입력 방향 추적",
+      "canonicalLabelKo": "합성함수에서 접근 방향을 고려한 극한",
       "definition": "안쪽 함수나 변환된 입력이 기준점의 어느 쪽으로 접근하는지 추적해 바깥 함수의 극한을 읽는다.",
-      "aliases": [],
+      "aliases": [
+        "합성·변환 입력 방향 추적"
+      ],
       "internalSkeleton": "안쪽 함수나 변환된 입력이 기준점의 어느 쪽으로 접근하는지 추적해 바깥 함수의 극한을 읽는다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10108,9 +10130,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
-      "canonicalLabelKo": "극한 조건으로 다항함수 복원",
+      "canonicalLabelKo": "극한 조건으로 다항함수 구하기",
       "definition": "무한대 차수 조건과 유한점의 영점·비 조건을 결합해 다항함수의 계수를 복원한다.",
-      "aliases": [],
+      "aliases": [
+        "극한 조건으로 다항함수 복원"
+      ],
       "internalSkeleton": "무한대 차수 조건과 유한점의 영점·비 조건을 결합해 다항함수의 계수를 복원한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10137,9 +10161,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_DIRECT_SUBSTITUTION",
-      "canonicalLabelKo": "직접 대입형 극한",
+      "canonicalLabelKo": "직접 대입으로 극한값 구하기",
       "definition": "연속인 식에 기준값을 직접 대입하여 극한값을 구한다.",
-      "aliases": [],
+      "aliases": [
+        "직접 대입형 극한"
+      ],
       "internalSkeleton": "연속인 식에 기준값을 직접 대입하여 극한값을 구한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10200,9 +10226,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
-      "canonicalLabelKo": "그래프의 접근 방향 읽기",
+      "canonicalLabelKo": "그래프에서 좌극한·우극한 구하기",
       "definition": "그래프에서 기준점의 왼쪽·오른쪽 접근값과 변환된 입력 방향을 읽어 극한을 구한다.",
-      "aliases": [],
+      "aliases": [
+        "그래프의 접근 방향 읽기"
+      ],
       "internalSkeleton": "그래프에서 기준점의 왼쪽·오른쪽 접근값과 변환된 입력 방향을 읽어 극한을 구한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10225,9 +10253,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_SQUEEZE",
-      "canonicalLabelKo": "조임정리 적용",
+      "canonicalLabelKo": "함수의 대소 관계를 이용한 극한값 계산",
       "definition": "상한·하한 함수의 극한을 일치시켜 사이 함수의 극한을 결정한다.",
-      "aliases": [],
+      "aliases": [
+        "조임정리 적용"
+      ],
       "internalSkeleton": "상한·하한 함수의 극한을 일치시켜 사이 함수의 극한을 결정한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10252,9 +10282,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_ASYMPTOTIC_RELATION",
-      "canonicalLabelKo": "점근적 선형관계 추출",
+      "canonicalLabelKo": "두 함수의 관계를 이용한 무한대 극한",
       "definition": "무한대에서 유한하게 남는 차 또는 선형 결합을 이용해 함수들 사이의 주도항 관계를 추출한다.",
-      "aliases": [],
+      "aliases": [
+        "점근적 선형관계 추출"
+      ],
       "internalSkeleton": "무한대에서 유한하게 남는 차 또는 선형 결합을 이용해 함수들 사이의 주도항 관계를 추출한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10301,9 +10333,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_ZERO_MULTIPLICITY",
-      "canonicalLabelKo": "영점 차수 맞추기",
+      "canonicalLabelKo": "극한이 존재하기 위한 인수 조건",
       "definition": "유한한 극한이 존재하도록 분자와 분모의 영점 차수·중복도를 맞춘다.",
-      "aliases": [],
+      "aliases": [
+        "영점 차수 맞추기"
+      ],
       "internalSkeleton": "유한한 극한이 존재하도록 분자와 분모의 영점 차수·중복도를 맞춘다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10344,9 +10378,11 @@
     },
     {
       "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
-      "canonicalLabelKo": "도형량의 매개변수화",
+      "canonicalLabelKo": "도형의 조건을 식으로 나타내어 극한 구하기",
       "definition": "도형의 길이·좌표·넓이를 접근 매개변수의 식으로 나타낸 뒤 그 식의 극한을 계산한다.",
-      "aliases": [],
+      "aliases": [
+        "도형량의 매개변수화"
+      ],
       "internalSkeleton": "도형의 길이·좌표·넓이를 접근 매개변수의 식으로 나타낸 뒤 그 식의 극한을 계산한다.",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10436,9 +10472,11 @@
     },
     {
       "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
-      "canonicalLabelKo": "구간별 함수의 경계에서 연속 조건",
+      "canonicalLabelKo": "구간별로 정의된 함수의 연속 조건",
       "definition": "구간별로 정의된 함수의 경계점에서 좌극한·우극한·함숫값을 일치시켜 계수나 함수식을 결정한다.",
-      "aliases": [],
+      "aliases": [
+        "구간별 함수의 경계에서 연속 조건"
+      ],
       "internalSkeleton": "경계점 확정 → 각 조각의 경계값 → 좌우값 일치",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10485,9 +10523,11 @@
     },
     {
       "templateKey": "TPL_CONTINUITY_ZERO_MULTIPLICITY",
-      "canonicalLabelKo": "영점의 중복도를 이용한 연속 조건",
+      "canonicalLabelKo": "인수의 차수를 이용한 연속 조건",
       "definition": "극이나 고차 영점이 있는 식에서 필요한 영점의 중복도를 맞추어 극한의 존재 또는 함수의 연속성을 확보한다.",
-      "aliases": [],
+      "aliases": [
+        "영점의 중복도를 이용한 연속 조건"
+      ],
       "internalSkeleton": "특이점 차수 확인 → 필요한 영점 차수 결정 → 약분·극한 확인",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10567,9 +10607,11 @@
     },
     {
       "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
-      "canonicalLabelKo": "함수의 연산과 합성에서 연속성 판정",
+      "canonicalLabelKo": "함수의 연산과 합성함수의 연속성",
       "definition": "합·차·곱·합성 등으로 만든 함수의 좌우극한과 함숫값을 비교하거나 연속함수의 사칙연산 성질을 이용해 연속성을 판정한다.",
-      "aliases": [],
+      "aliases": [
+        "함수의 연산과 합성에서 연속성 판정"
+      ],
       "internalSkeleton": "원함수 조건 확인 → 연산·합성 후 관계 계산 → 연속성 판정",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10611,9 +10653,11 @@
     },
     {
       "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
-      "canonicalLabelKo": "실근·교점 개수 함수의 불연속 구조",
+      "canonicalLabelKo": "실근·교점의 개수가 바뀌는 점 찾기",
       "definition": "매개변수에 따른 실근 수 또는 교점 수를 구간별로 정리하여 값이 바뀌는 임계점이나 그 주변의 좌우 개수 구조를 분석한다.",
-      "aliases": [],
+      "aliases": [
+        "실근·교점 개수 함수의 불연속 구조"
+      ],
       "internalSkeleton": "매개변수별 개수 분류 → 임계값·좌우 구조 추출 → 불연속 분석",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10632,9 +10676,11 @@
     },
     {
       "templateKey": "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
-      "canonicalLabelKo": "개수 함수와 곱함수의 연속 조건",
+      "canonicalLabelKo": "실근·교점의 개수와 곱함수의 연속 조건",
       "definition": "실근·교점 개수 함수의 점프 위치를 찾아 다른 함수의 영점을 그 위치에 배치하여 곱함수의 연속 가능성을 판단하거나 계수를 결정한다.",
-      "aliases": [],
+      "aliases": [
+        "개수 함수와 곱함수의 연속 조건"
+      ],
       "internalSkeleton": "개수 함수 점프점 → 보정함수 영점 조건 → 연속 가능성·계수 결정",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10718,9 +10764,11 @@
     },
     {
       "templateKey": "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
-      "canonicalLabelKo": "특수한 함수값을 이용한 실근 존재",
+      "canonicalLabelKo": "함수값의 부호를 이용한 실근 존재",
       "definition": "함수식의 구조나 끝점 부근의 극한 정보로 특정 지점의 부호를 정하고 사잇값 정리로 추가 실근의 존재를 보장한다.",
-      "aliases": [],
+      "aliases": [
+        "특수한 함수값을 이용한 실근 존재"
+      ],
       "internalSkeleton": "구조적 변형·국소정보 → 부호 확보 → 실근 존재 보장",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [
@@ -10756,9 +10804,11 @@
     },
     {
       "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
-      "canonicalLabelKo": "정의로 연속성과 미분가능성 조사",
+      "canonicalLabelKo": "정의에 따른 연속성과 미분가능성 판정",
       "definition": "연속의 정의와 미분계수의 정의를 직접 사용하여 같은 점에서 연속임과 미분가능 또는 미분불가능을 증명한다.",
-      "aliases": [],
+      "aliases": [
+        "정의로 연속성과 미분가능성 조사"
+      ],
       "internalSkeleton": "극한=함숫값 → 차분몫 → 좌우미분계수 비교",
       "ownerPack": "LIMIT_CONTINUITY",
       "mergedFromTemplateKeys": [

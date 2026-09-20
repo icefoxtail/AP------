@@ -2,7 +2,7 @@
   "schemaVersion": "limit-continuity-promotion-receipt-v1",
   "status": "PROMOTED_CANONICAL",
   "packId": "LIMIT_CONTINUITY",
-  "packVersion": "1.0.0",
+  "packVersion": "1.0.1",
   "sourceEvidence": {
     "limitStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-limit/STAGE6_FINAL_FOUNDATION.json",
     "continuityStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-continuity/STAGE6_FINAL_FOUNDATION.json",
@@ -24,13 +24,22 @@
     "registryIndexUpdated": true,
     "compiledArtifactsUpdated": [
       "aliases.json",
-      "curriculum_bindings.json",
+      "concept_registry.json",
       "taxonomy_registry.json",
       "meta_foundation_compiled.json"
     ],
-    "conceptRegistryChanged": false,
+    "conceptRegistryChanged": true,
     "conditionRegistryChanged": false,
-    "productionJsChanged": false
+    "productionJsChanged": false,
+    "semanticCorrection": {
+      "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf",
+      "problemTypeLabelChanges": 8,
+      "ownedTemplateLabelChanges": 16,
+      "inheritedTemplateLabelChanges": 1,
+      "crossConceptChangedQuestionCount": 48,
+      "newCanonicalCrossConceptKeys": 6,
+      "productionJsChanged": false
+    }
   },
   "difficulty": {
     "limit": "FRESH_BLIND_RECHECK_PASS",
