@@ -17,7 +17,7 @@ assert.strictEqual(runtime.records.length, 184);
 assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01").length, 104);
 assert.strictEqual(runtime.records.filter((r) => r.standardUnitKey === "H15-M2-02").length, 80);
 assert.strictEqual(new Set(runtime.records.map((r) => r.questionUid)).size, 184);
-assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 189);
+assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 184);
 assert.strictEqual(runtime.records.filter((r) => r.catalogIdentityRepairVerified === true).length, 3);
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 181);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
@@ -90,7 +90,7 @@ for (const overlay of runtime.records) {
   }
 }
 
-assert.strictEqual(direct, 186);
+assert.strictEqual(direct, 181);
 assert.strictEqual(repaired, 3);
 assert.strictEqual(eligibleLimit, 104);
 assert.strictEqual(eligibleContinuity, 80);
