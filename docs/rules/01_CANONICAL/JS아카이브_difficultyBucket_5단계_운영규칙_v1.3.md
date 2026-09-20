@@ -6,6 +6,8 @@
 적용 대상: 기존 기출 JS 메타데이터 고도화 / 신규 candidate·production metadata / 향후 Archive 2.0 검색·자동출제·유사문제 난이도 조절  
 비적용 대상: 문제 본문·보기·정답·해설·이미지 수정
 
+> **Meta Foundation 동기화(2026-09-20):** `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`, L3/L4 구조는 난이도 판정 evidence로 사용할 수 있으나 이 문서의 bucket 정의·경계·blind 판정 authority를 대체하지 않는다. 신규 JS의 `difficultyBucket`, `difficultyConfidence`, `difficultyBoundaryFlag`, `legacyLevelCompatibility`은 본 문서 기준으로 생성·검증한다.
+
 
 ## v1.3 수정 요약
 

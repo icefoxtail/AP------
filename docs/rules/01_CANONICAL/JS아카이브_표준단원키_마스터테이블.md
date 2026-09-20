@@ -8,13 +8,15 @@
 > **운영 기준 v1 (2026-08-22):** 신규 아카이브 JS는 `subUnitKey`, `subUnit`, `subUnitConfidence`, `subUnitClassificationDepth`를 필수로 가진다. 세부단원 운영 절차와 legacy 예외는 `docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`를 따른다.
 >
 > 도구용 compiled master: `archive/data/master_tables/js_archive_tag_master.json` · schema: `archive/data/master_tables/js_archive_tag_master.schema.json` · sample: `archive/data/master_tables/js_archive_tag_master.sample.json`
+>
+> **Meta Foundation 동기화(2026-09-20):** 이 문서는 L1/L2(`standardUnitKey`, `subUnitKey`)의 canonical authority다. L3/L4(`problemTypeKey`, `templateKey`)와 CrossConcept/Condition/alias/curriculum binding의 canonical authority는 `JS아카이브_문항메타_파운데이션_운영규칙_v1.md`와 `archive/data/meta-foundation/canonical/`이다. 아래의 problemType/template 표는 legacy compatibility·초기 예시이며 신규 canonical key의 등록처가 아니다.
 
 ---
 
 ## 최상위 원칙
 
-- 이 문서는 JS아카이브의 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 작성 기준 원본이며, 유사문제용 확장 태그의 최상위 기준 원본이다.
-- 새 문항 생성, 기존 문항 수정, db 생성, mixer 필터 기준은 이 문서를 우선한다.
+- 이 문서는 JS아카이브의 `standardCourse`, `standardUnitKey`, `standardUnit`, `standardUnitOrder` 및 L2 `subUnitKey` parent/label 작성 기준 원본이다. L3/L4·CrossConcept·Condition의 최상위 기준은 Meta Foundation v1로 분리한다.
+- 새 문항의 L1/L2 매핑, 기존 L1/L2 수정, db·필터의 표준단원 기준은 이 문서를 우선한다. L3/L4 및 관계 메타는 해당 Foundation authority를 우선한다.
 - `subUnitKey`는 이 문서에 등록된 공식 자식 키만 신규 production JS에 사용할 수 있다.
 - `subUnit`은 해당 master row의 표시명과 일치해야 한다.
 - `RAW-*`, `RRAW-*`, `UNMAPPED-*`는 정식 master 키가 아니며 예외 report에서만 유지한다.
@@ -90,11 +92,11 @@ templateKey: LINEAR_FUNCTION_TWO_POINTS
 
 ### 신규 키 추가 원칙
 
-- 마스터 테이블에 없는 키를 최종 JS에 바로 넣지 않는다.
-- 자동 태깅 중 새 키가 필요하면 `PROPOSED-` 접두 또는 `manual_review` 상태로 분리한다.
-- 신규 키는 먼저 이 마스터 테이블에 추가한 뒤 사용한다.
-- 문제 원문을 읽고 유형을 판단할 수 있더라도, 신뢰도가 낮으면 확정하지 않는다.
-- 하나의 문항이 여러 유형에 걸치면 대표 `problemTypeKey` 하나와 보조 `tags`를 병행하되, 자동 추천에는 대표 키만 사용한다.
+- 새 `standardUnitKey` 또는 `subUnitKey`가 필요하면 이 마스터와 compiled master에 먼저 정식 등록한 뒤 사용한다.
+- 새 `problemTypeKey`, `templateKey`, CrossConcept, Condition이 필요하면 이 마스터에 임의 추가하지 않는다.
+- L3/L4/CrossConcept/Condition 신규 항목은 Meta Foundation candidate proposal → evidence review → canonical promotion 절차를 따른다.
+- Foundation에 없는 key를 production canonical field에 직접 기록하지 않는다.
+- 아래 problemType/template 표는 초기 예시·legacy compatibility 참고이며 현재 canonical registry를 대체하지 않는다.
 
 ---
 

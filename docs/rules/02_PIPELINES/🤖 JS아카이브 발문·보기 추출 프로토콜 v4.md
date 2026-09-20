@@ -7,6 +7,7 @@ Full Page First · Question Crop Optional · CONTENT_CHOICES_ONLY
 > **세부단원 운영 동기화(2026-08-22):** 이 content/choices 전용 프로토콜은 기존 메타데이터를
 > 보존하되 신규 archive JS를 production으로 승격할 때
 > `docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`의 네 필드와 master 검증을 별도 게이트로 수행한다.
+> 신규 JS production 승격에서는 이어서 `docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`의 L3/L4·CrossConcept·Condition·IntegrationPattern gate와 difficulty v1.3 gate도 별도로 통과해야 한다. CONTENT_CHOICES_ONLY 작업 자체는 이 메타를 임의 수정하지 않는다.
 
 이번 프로토콜의 목적
 

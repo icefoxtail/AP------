@@ -23,9 +23,10 @@
 11. standardCourse는 절대 고정값으로 넣지 않는다.
 12. 문항별 실제 단원에 맞게 standardCourse / standardUnitKey / standardUnit / standardUnitOrder를 매핑한다.
 13. 신규 아카이브 편입용 파일은 master 검증 후 subUnitKey / subUnit / subUnitConfidence / subUnitClassificationDepth를 함께 기록한다.
-14. 단원 매핑이 불확실하면 임의 추측하지 말고 candidate review 상태와 sidecar report로 보류한다.
-15. content, choices, answer는 입력 원문 기준 100% 동일성을 우선한다.
-16. 수학적으로 다시 고치거나 정답을 바꾸지 않는다.
+14. 신규 JS는 Meta Foundation v1 gate에 따라 problemTypeKey / templateKey / crossConceptKeys / conditionKeys / integrationPattern과 difficulty v1.3의 4개 canonical difficulty 필드도 함께 생성·검증한다.
+15. L3/L4/CrossConcept/Condition이 canonical에 없거나 단원 매핑이 불확실하면 임의 key를 production에 넣지 말고 candidate review 상태와 sidecar report로 보류한다.
+16. content, choices, answer는 입력 원문 기준 100% 동일성을 우선한다.
+17. 수학적으로 다시 고치거나 정답을 바꾸지 않는다.
 
 ==================================================
 1. 출력 스키마
@@ -56,7 +57,16 @@ image는 PNG 자산 경로가 입력된 경우에만 선택적으로 추가한�
   subUnitKey: "",
   subUnit: "",
   subUnitConfidence: "",
-  subUnitClassificationDepth: ""
+  subUnitClassificationDepth: "",
+  problemTypeKey: "",
+  templateKey: "",
+  crossConceptKeys: [],
+  conditionKeys: []
+  integrationPattern: "NONE",
+  difficultyBucket: "UNKNOWN",
+  difficultyConfidence: "UNKNOWN",
+  difficultyBoundaryFlag: "UNKNOWN",
+  legacyLevelCompatibility: "UNKNOWN"
 }
 
 ==================================================
@@ -216,7 +226,16 @@ window.questionBank = [
   subUnitKey: "",
   subUnit: "",
   subUnitConfidence: "",
-  subUnitClassificationDepth: ""
+  subUnitClassificationDepth: "",
+  problemTypeKey: "",
+  templateKey: "",
+  crossConceptKeys: [],
+  conditionKeys: []
+  integrationPattern: "NONE",
+  difficultyBucket: "UNKNOWN",
+  difficultyConfidence: "UNKNOWN",
+  difficultyBoundaryFlag: "UNKNOWN",
+  legacyLevelCompatibility: "UNKNOWN"
   }
 ];
 

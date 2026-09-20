@@ -1,3 +1,11 @@
+# SUPERSEDED / HISTORICAL NOTICE
+
+2026-09-20 운영 정리: 아래 문서는 2026-09-16 시점의 Metadata Foundation v2 저장 계약 기록이다. 2026-09-19 채택된 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`가 현재 L3/L4/CrossConcept/Condition/alias/curriculum binding의 canonical authority이므로, 아래 문서의 L1~L4 의미·taxonomy authority는 현재 운영 판정에 사용하지 않는다.
+
+역사적 설계·migration 기록 보존 목적으로만 유지한다.
+
+---
+
 # JS아카이브 Metadata Contract v2
 
 상태: **LOCKED**  
