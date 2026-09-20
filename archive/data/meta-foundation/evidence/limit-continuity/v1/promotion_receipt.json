@@ -2,7 +2,7 @@
   "schemaVersion": "limit-continuity-promotion-receipt-v1",
   "status": "PROMOTED_CANONICAL",
   "packId": "LIMIT_CONTINUITY",
-  "packVersion": "1.0.1",
+  "packVersion": "1.1.0",
   "sourceEvidence": {
     "limitStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-limit/STAGE6_FINAL_FOUNDATION.json",
     "continuityStage6": "archive/_generated/intelligence/meta-foundation/h2-math2-continuity/STAGE6_FINAL_FOUNDATION.json",
@@ -26,7 +26,8 @@
       "aliases.json",
       "concept_registry.json",
       "taxonomy_registry.json",
-      "meta_foundation_compiled.json"
+      "meta_foundation_compiled.json",
+      "curriculum_bindings.json"
     ],
     "conceptRegistryChanged": true,
     "conditionRegistryChanged": false,
@@ -39,6 +40,89 @@
       "crossConceptChangedQuestionCount": 48,
       "newCanonicalCrossConceptKeys": 6,
       "productionJsChanged": false
+    },
+    "taxonomyCompressionPreparation": {
+      "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+      "stage": "6-D_COMPLETE",
+      "promotedCrossConceptKeys": [
+        "CC_ZERO_MULTIPLICITY",
+        "CC_RADICAL_EXPRESSION",
+        "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+      ],
+      "reusedCanonicalCrossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "supportingItemCounts": {
+        "CC_ZERO_MULTIPLICITY": 10,
+        "CC_RADICAL_EXPRESSION": 1,
+        "CC_ROOT_INTERSECTION_COUNT_FUNCTION": 11,
+        "CC_FUNCTION_SYMMETRY": 4
+      },
+      "canonicalShardVersions": {
+        "ALGEBRA": "1.3.0",
+        "FUNCTIONS": "1.5.0"
+      },
+      "taxonomyChanged": true,
+      "itemAssignmentsChanged": true,
+      "l3Compression": {
+        "ownedBefore": 21,
+        "ownedAfter": 7,
+        "actualAfter": 11
+      },
+      "l4Compression": {
+        "ownedBefore": 36,
+        "ownedAfter": 29,
+        "actualAfter": 33,
+        "newTemplateKeys": [
+          "TPL_LIMIT_DIRECTIONAL_APPROACH",
+          "TPL_CONTINUITY_FACTOR_CONDITION"
+        ],
+        "retiredTemplateKeys": [
+          "TPL_LIMIT_INFINITY_RADICAL",
+          "TPL_CONT_DIFF_GRAPH_JUDGMENT",
+          "TPL_COUNT_FUNCTION_ZERO_CANCELLATION",
+          "TPL_IVT_STRUCTURAL_ROOT_EXISTENCE",
+          "TPL_IVT_SYMMETRY_ROOT_COUNT",
+          "TPL_LIMIT_ONE_SIDED_CASE",
+          "TPL_LIMIT_COMPOSITION_DIRECTION",
+          "TPL_CONTINUITY_ZERO_OVER_ZERO_VALUE_MATCH",
+          "TPL_CONTINUITY_ZERO_MULTIPLICITY"
+        ]
+      },
+      "bindingCompression": {
+        "before": 25,
+        "after": 11
+      },
+      "pendingStages": [],
+      "productionJsChanged": false,
+      "migrationLedger": "archive/data/meta-foundation/evidence/limit-continuity/v1/taxonomy_compression_migration_ledger_189.json",
+      "assignmentMigrationCount": 189,
+      "changedPrimaryCount": 109,
+      "crossConceptReferenceAddCount": 35,
+      "activeRuntimeRecords": 184,
+      "crossPackPrimaryOwnershipExcluded": 5
+    },
+    "taxonomyCompression": {
+      "status": "PASS",
+      "packVersion": "1.1.0",
+      "ownedProblemTypes": 7,
+      "ownedTemplates": 29,
+      "actualProblemTypes": 11,
+      "actualTemplates": 33,
+      "itemAssignments": 189,
+      "assignmentRuntimeParity": "PASS",
+      "newCanonicalCrossConceptKeys": [
+        "CC_ZERO_MULTIPLICITY",
+        "CC_RADICAL_EXPRESSION",
+        "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+      ],
+      "reusedCanonicalCrossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "productionJsChanged": false,
+      "activeRuntimeRecords": 184,
+      "crossPackPrimaryOwnershipExcluded": 5,
+      "historicalAssignmentsRetained": 189
     }
   },
   "difficulty": {
@@ -47,7 +131,7 @@
     "taxonomyPromotionIndependent": true,
     "evidence": "archive/data/meta-foundation/evidence/limit-continuity/v1/item_metadata_assignments_189.json#difficultyReview",
     "reviewedLimitRecords": 104,
-    "automaticEligibleExpected": 189,
+    "automaticEligibleExpected": 184,
     "distribution": {
       "1": 24,
       "2": 24,

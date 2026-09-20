@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.3.0",
+  "shardVersion": "1.4.0",
   "status": "ACTIVE",
-  "conceptCount": 14,
+  "conceptCount": 16,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -728,6 +728,77 @@
       ],
       "curriculumRefs": [
         "2015:수학II:H15-M2-04"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ZERO_MULTIPLICITY",
+      "canonicalLabelKo": "영점의 중복도",
+      "definition": "분자·분모 또는 곱의 인수가 갖는 영점의 차수·중복도를 비교하여 극한의 존재나 연속 조건을 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a60b2787dd6dd4080768c578057741285565191c634660bded8283f42e9412b0",
+        "qid_v1_08d6110db8e226ebc375227a6dcf5889017d08d4d0fc2741cd3adaf34a8ce365",
+        "qid_v1_38eaf895cb27c4dae59a9ec143a492a9639f22847b39e343b58dc65332543c5f",
+        "qid_v1_e4fcd1c7dde293fd7107bbe619e62e5507cb40dd0a5de001fad6c76a02cd95f4",
+        "qid_v1_54b0534116b2765bf3079d44e8cafb09dc51a021900d9dbdd52ce372eba95970",
+        "qid_v1_734e04deaf805366aba6eea8f37626a7ae07a8b1c9774132c06a0c729ff8a3b6",
+        "qid_v1_03aa6e6ba123f7173f29f4192cb918c747153269fc314ea1a6a42280e4407de4",
+        "qid_v1_b8124441b9300b2438205a16b6d6cfed4a9de718c13f6e7c7d732f241f7784b6",
+        "qid_v1_5eb3870e4a9059cb3481f7a1407762e96faff71f790f4e7ec91084f0f569fe3e",
+        "qid_v1_14c1d0b15b32a4780cb4066d1bef468209b64a9b6e0e91579339e8d6a7c2441b"
+      ],
+      "supportingItemCount": 10,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_PARAMETER_DETERMINATION",
+        "PT_CONTINUITY_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01",
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_EXPRESSION",
+      "canonicalLabelKo": "근호식의 변형",
+      "definition": "근호식에서 지배항 분리, 부호 처리, 유리화 등의 변형을 통해 식의 값을 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e7490e1ce95a9e25993108b97dc7298cb283a0dfcd190bcb151fdafaeb6d93b1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidenceType": "TAXONOMY_COMPRESSION_CROSSCONCEPT_REVIEW",
+          "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+          "reviewStage": "6-A_REBASE"
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_VALUE_CALC"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
       ],
       "ownerConceptShard": "ALGEBRA"
     }
