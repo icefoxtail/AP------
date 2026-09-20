@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "integral-calculus-global-integrity-audit-v1",
+  "status": "PASS",
+  "packId": "INTEGRAL_CALCULUS",
+  "packVersion": "1.0.0",
+  "basisMainSha": "86a7bd4c7fc461a692e27e17f2740640778248d4",
+  "counts": {
+    "itemEvidenceCount": 135,
+    "ownedProblemTypeCount": 5,
+    "ownedTemplateCount": 15,
+    "bindingCount": 5,
+    "duplicateCanonicalKeyCount": 0,
+    "aliasCollisionCount": 0,
+    "brokenL4ParentCount": 0,
+    "brokenCanonicalBindingCount": 0,
+    "unregisteredCrossConceptCount": 0,
+    "unregisteredConditionCount": 0,
+    "sourceOverlapCount": 0,
+    "productionJsMutationCount": 0,
+    "difficultyReviewedCount": 135,
+    "difficultyDeferredCount": 0,
+    "crossConceptReferencedQuestionCount": 48,
+    "crossConceptReferenceCount": 63,
+    "newCrossConceptPromotionCount": 8,
+    "reusedCanonicalCrossConceptCount": 4
+  },
+  "gates": {
+    "denominator135": true,
+    "uniqueUid135": true,
+    "uniqueSourceIdentity135": true,
+    "canonicalKeyDuplicateZero": true,
+    "aliasCollisionZero": true,
+    "l4ParentZero": true,
+    "bindingTargetValid": true,
+    "crossConceptRegistryValid": true,
+    "conditionRegistryValid": true,
+    "productionJsUnchanged": true,
+    "difficultyReviewComplete": true,
+    "latestMainRebaseComplete": true,
+    "archive2EligibilityExpected134": true
+  },
+  "notes": [
+    "Identity/catalog source files were unchanged from the prior validated baseline to latest main; all 12 source exam files remain registered in archive/db.js.",
+    "Full current question_identity_map/question_metadata reparse is deferred to Stage6-B CI/runtime tests because connector responses exceed parse limits."
+  ]
+}

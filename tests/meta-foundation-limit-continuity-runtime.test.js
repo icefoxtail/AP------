@@ -9,6 +9,7 @@ const readText = (p) => fs.readFileSync(path.join(root, p), "utf8");
 const sourceKey = (file, ordinal) => C.normalizeFile(file) + "#" + Number(ordinal);
 
 const runtime = readJson("archive/data/meta-foundation/runtime/limit-continuity-v1.json");
+const integral = readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json");
 const receipt = readJson("archive/data/meta-foundation/runtime/runtime-bridge-receipt.json");
 const catalog = C.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
 
@@ -112,16 +113,17 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/sets-propositions-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/functions-graphs-v1.json").records,
-  ...runtime.records
+  ...runtime.records,
+  ...integral.records
 ];
-assert.strictEqual(combined.length, 1463);
-assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1463);
-assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1463);
+assert.strictEqual(combined.length, 1598);
+assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1598);
+assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1598);
 
-assert.strictEqual(receipt.status, "PASS_LIMIT_CONTINUITY_189_CATALOG_JOIN");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1463);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 1463);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1463);
+assert.strictEqual(receipt.status, "PASS_INTEGRAL_CALCULUS_135_CATALOG_JOIN");
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1598);
+assert.strictEqual(receipt.checked.combinedUniqueUid, 1598);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1598);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 189);
 assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 189);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
