@@ -61,7 +61,7 @@ image는 PNG 자산 경로가 입력된 경우에만 선택적으로 추가한�
   problemTypeKey: "",
   templateKey: "",
   crossConceptKeys: [],
-  conditionKeys: []
+  conditionKeys: [],
   integrationPattern: "NONE",
   difficultyBucket: "UNKNOWN",
   difficultyConfidence: "UNKNOWN",
@@ -230,7 +230,7 @@ window.questionBank = [
   problemTypeKey: "",
   templateKey: "",
   crossConceptKeys: [],
-  conditionKeys: []
+  conditionKeys: [],
   integrationPattern: "NONE",
   difficultyBucket: "UNKNOWN",
   difficultyConfidence: "UNKNOWN",
