@@ -118,10 +118,10 @@ assert.strictEqual(combined.length, 1463);
 assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1463);
 assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1463);
 
-assert.strictEqual(receipt.status, "PASS_LIMIT_CONTINUITY_189_CATALOG_JOIN");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1463);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 1463);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1463);
+assert.strictEqual(receipt.status, "PASS_INTEGRAL_CALCULUS_135_CATALOG_JOIN");
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1598);
+assert.strictEqual(receipt.checked.combinedUniqueUid, 1598);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1598);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 189);
 assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 189);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));

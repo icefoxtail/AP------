@@ -9,8 +9,8 @@
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.3.0",
-      "conceptCount": 12
+      "version": "1.4.0",
+      "conceptCount": 20
     },
     {
       "shardId": "LOGIC_SET",
@@ -38,7 +38,7 @@
       "conceptCount": 4
     }
   ],
-  "conceptCount": 69,
+  "conceptCount": 77,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -989,6 +989,410 @@
         "2022:공통수학2:H22-C2-07"
       ],
       "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_FUNCTION",
+      "canonicalLabelKo": "절댓값이 포함된 함수",
+      "definition": "절댓값 기호가 포함된 함수식을 접근 방향 또는 부호에 따라 나누어 해석하는 개념.",
+      "aliases": [
+        "절댓값 함수"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a4053b765d3069c2a9f40f6d3b46b252587c2f8105428d1215db523e1e615d7a",
+        "qid_v1_b44da6c4620a2cc30938e8b40caa3390e9b28a1897d5693eb8fc2987ea125ff9",
+        "qid_v1_96a0d8681c730bcb0d836a2345330c07840f228471fdc40447474816ad60ee98",
+        "qid_v1_545f92be35db60c0f81912fb82cc0b20eb2f40bb76d59089c75f5f031c866db4"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_EXISTENCE",
+        "PT_INFINITY_POLY_RATIONAL",
+        "PT_ONE_SIDED_LIMIT"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GREATEST_INTEGER_FUNCTION",
+      "canonicalLabelKo": "최대정수함수",
+      "definition": "주어진 실수보다 크지 않은 최대의 정수를 대응시키는 함수와 그 값을 해석하는 개념.",
+      "aliases": [
+        "가우스 기호"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_a4053b765d3069c2a9f40f6d3b46b252587c2f8105428d1215db523e1e615d7a",
+        "qid_v1_15f92884572a441d640dbd7f858c464e36c5bff4654d00c25e7aa5808d89ce8d"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_EXISTENCE",
+        "PT_ITERATED_COMPOSITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01",
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INVERSE_FUNCTION",
+      "canonicalLabelKo": "역함수",
+      "definition": "주어진 함수의 대응을 거꾸로 하여 역함수의 식이나 값을 구하고 사용하는 개념.",
+      "aliases": [
+        "함수의 역함수"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_460466aee383f4ddc010b226afeda055347c078a0ffe035220ac5c5a7f932c0a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_VALUE_CALC"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_DERIVATIVE_VALUE",
+      "canonicalLabelKo": "미분계수",
+      "definition": "한 점에서의 미분계수 값을 함수 조건이나 미지수 결정에 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_267459e8a4d6f9246cc91c5810cb0e407adc7f160b819ca5efd7602eb0ff9bd0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_PARAMETER_DETERMINATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_DIFFERENTIABILITY",
+      "canonicalLabelKo": "미분가능성",
+      "definition": "함수가 한 점에서 미분 가능한지 여부와 좌우 미분계수의 일치를 판단하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_57a80130457683b8fd05a66ddfba0c832be3ca5bbfc432a50f3549f60b04f3d0",
+        "qid_v1_3f1daeab5a911cad3a3ae8c25f4a67e4fc11af4d861df0cacc6ca2de1927e43c"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONTINUOUS_FUNCTION_PROPERTIES",
+        "PT_CONTINUITY_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-02"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTIONAL_EQUATION",
+      "canonicalLabelKo": "함수방정식",
+      "definition": "함수방정식의 관계를 이용해 함수 또는 도함수의 식을 결정한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_e7f5a3daa103150d3a89a9fafb1eee7c7ad1c2b63e192f32a06820c461129ef9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
+          "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FUNCTION_CONTINUITY",
+      "canonicalLabelKo": "함수의 연속",
+      "definition": "Primary taxonomy 밖의 결정적 보조 단계에서 함수의 연속성을 이용해 계수·함수값·부호 조건을 확정한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_6b4fa8ad2951c4c75b22dee24ecd070b35de6e29405fd94d5357b7651ce0aa06",
+        "qid_v1_855af78ad3d34e0fa67502995685b50fc4f000e8d26961a2127e6d1e655f00c7",
+        "qid_v1_57d187e698f1c0934f5f33ad9022ddd6a5cf4c326ae9213d427930bbeeb43d20"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
+          "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FUNCTION_EXTREMA",
+      "canonicalLabelKo": "함수의 극대와 극소",
+      "definition": "Primary taxonomy 밖의 결정적 보조 단계에서 함수의 극대·극소 조건을 이용해 매개변수나 가능한 범위를 결정한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "PT_DEFINITE_INTEGRAL_OPERATION",
+        "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "PT_MOTION_BY_INTEGRAL"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_0a6a5b9dcdd4ea988876c89cc3258fcb5aba7aaf273e61c58a318e4f86051399",
+        "qid_v1_fcdcb2096cd814fc5f7e045347e9518358e6724d305bfc9da5e5b9f1b01d2c17",
+        "qid_v1_5442c67e94fe04fc59d1e08b8389acdb259afe85fddfe87e0b1b80ed007d017e",
+        "qid_v1_6936a124ad9deb58df4f91a8fd9f5fbe2fe9b97dca2b93ffa1dcc3ab4cc37f57",
+        "qid_v1_c3c3badc2247b3461f195ea538f4b591b1d4458f3dad8e863e5f2e7060e35225",
+        "qid_v1_5575aec56e67064e909296e4715e6aa964deb745239d87cf50986234c1c6dd58",
+        "qid_v1_8aa74043f9353b7c2936e98219f0278616eb89980bbd6a4a8f8a74ba6cbd4f61",
+        "qid_v1_98997fc47253e85babfccdc0a656309a91486f13e2ba715e75e0c4c369663f38",
+        "qid_v1_ca955b0a668cc076488f92a00c565d02f219f10542b4eba49b3592298c1b9284",
+        "qid_v1_69c03ede7eb252d4028e274aa7bc5d5f0190eeeda5190300345a16887b0ed875",
+        "qid_v1_922bea2ef57db863340202db4ef9beb09fa3257a74766980c3484d495fa4fa80",
+        "qid_v1_fd372b1b97731ebb08497e2d23972c6c42b3d3635c603a05e35779d247f54501",
+        "qid_v1_c0e0bbe1bccefdf25af668b8ded54844a09bc0f16c6531d68f479c43b0a9f92c",
+        "qid_v1_5b03c8b1175889ff2358d0891b50862c8521f2b7e0133aab586f97f4025ab67d",
+        "qid_v1_e747a46bd393d96d25aedb0f6d98a2681bb3a9da1e2d3bd75bd799cb49c7c41c"
+      ],
+      "supportingItemCount": 15,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
+          "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FUNCTION_LIMIT",
+      "canonicalLabelKo": "함수의 극한",
+      "definition": "Primary taxonomy 밖의 결정적 보조 단계에서 함수의 극한을 이용해 필요한 함수값·적분값·계수 조건을 결정한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "PT_DEFINITE_INTEGRAL_OPERATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_bbadfa499d9ab2c26f427c9b034fd2efaf0b244e95dbb9b58165f053901b7023",
+        "qid_v1_80e18ae6b68ab194e5191a3facabba9ae2345c977c95e8edb0db9d0d9a6d3fbd"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
+          "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FUNCTION_SYMMETRY",
+      "canonicalLabelKo": "함수의 대칭성",
+      "definition": "원점·직선 등에 대한 함수 그래프의 대칭성이나 홀함수 성질을 이용해 함수식을 결정한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "PT_DEFINITE_INTEGRAL_OPERATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_073a46f98e5c8a07e8829025b822000571d866b63d924a691e9fffa6eb428385",
+        "qid_v1_90bf289a388c025327642a2d317aeb2965ab88a11d6350913e8d90ea178ba464",
+        "qid_v1_0e84f26ddb2c9a7075a02923f76c55e398ae9b39050a20661244310819ab9049",
+        "qid_v1_2af743de8f68d3cb2b63c1695cb3de2afabe475ee0076d91613b6e75a10a99a2"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
+          "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_ONE_TO_ONE_FUNCTION",
+      "canonicalLabelKo": "일대일함수",
+      "definition": "일대일함수의 성질을 이용해 도함수의 부호나 근의 중복 구조를 제한한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_202b50d7df2c796ad43d641106997b460c9422f132c99b0371d7a99d5519727d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "STAGE2_FULL_ITEM_REAUDIT",
+          "BASE_MAIN_SHA": "3714605ff766dabcb5b6495d06a28b8b48f6ac85"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_PERIODIC_FUNCTION",
+      "canonicalLabelKo": "주기함수",
+      "definition": "함수의 주기성을 이용하여 구간을 이동·반복하거나 정적분 구간을 줄인다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_DEFINITE_INTEGRAL_OPERATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_35b5cc0876fa7500b673f7460aa0390b2dee0eee3aa926d9dcbe2d2dfc972008",
+        "qid_v1_5707c65263f67e14c5dbef91de27db84869f92a7be2e77b8c01275a6dc0838a9",
+        "qid_v1_afedcda7d8992a961689b699996df1f2ff638dca9eaff7f7ab4691f84f66db33"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "TAXONOMY_REDUCTION_REAUDIT_v1.2"
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FUNCTION_MONOTONICITY",
+      "canonicalLabelKo": "함수의 증가와 감소",
+      "definition": "도함수 또는 함수값의 변화를 이용해 증가·감소 구간이나 단조성을 결정적 보조 단계로 사용한다.",
+      "aliases": [],
+      "taxonomyRefs": [
+        "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "PT_DEFINITE_INTEGRAL_OPERATION"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_5442c67e94fe04fc59d1e08b8389acdb259afe85fddfe87e0b1b80ed007d017e",
+        "qid_v1_2e475de03d362e539bc716c28c6024e8bc616ebbb33f585692455235fcf8e9db",
+        "qid_v1_e747a46bd393d96d25aedb0f6d98a2681bb3a9da1e2d3bd75bd799cb49c7c41c"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "MATH2_INTEGRAL"
+      ],
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_INTEGRAL",
+          "evidenceType": "TAXONOMY_REDUCTION_REAUDIT_v1.2"
+        }
+      ]
     },
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -2728,6 +3132,39 @@
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_SINE_LAW",
+      "canonicalLabelKo": "사인법칙",
+      "definition": "삼각형에서 변의 길이와 대응하는 각의 사인값의 관계를 이용하고, 필요하면 외접원의 지름과 연결하는 개념.",
+      "aliases": [
+        "사인 법칙"
+      ],
+      "supportingQuestionUids": [
+        "qid_v1_3fca994c553980d6cc71365fa84b17ab6a3f4c31b0b77f5f62ec686f715e15dd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "LIMIT_CONTINUITY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "LIMIT_CONTINUITY",
+          "evidence": {
+            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
+            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LIMIT_GEOMETRY_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-01"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
       "canonicalLabelKo": "순열과 조합을 이용한 경우의 수",
       "definition": "집합의 원소 선택·배열·분할을 순열, 조합, 곱의 법칙 등으로 세는 개념.",
@@ -2995,210 +3432,6 @@
         "2015:수학(하):H15-SB-03"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
-    },
-    {
-      "conceptKey": "CC_ABSOLUTE_VALUE_FUNCTION",
-      "canonicalLabelKo": "절댓값이 포함된 함수",
-      "definition": "절댓값 기호가 포함된 함수식을 접근 방향 또는 부호에 따라 나누어 해석하는 개념.",
-      "aliases": [
-        "절댓값 함수"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_a4053b765d3069c2a9f40f6d3b46b252587c2f8105428d1215db523e1e615d7a",
-        "qid_v1_b44da6c4620a2cc30938e8b40caa3390e9b28a1897d5693eb8fc2987ea125ff9",
-        "qid_v1_96a0d8681c730bcb0d836a2345330c07840f228471fdc40447474816ad60ee98",
-        "qid_v1_545f92be35db60c0f81912fb82cc0b20eb2f40bb76d59089c75f5f031c866db4"
-      ],
-      "supportingItemCount": 4,
-      "sourceUnits": [
-        "LIMIT_CONTINUITY"
-      ],
-      "legacyKeys": [],
-      "status": "ACTIVE",
-      "evidenceProvenance": [
-        {
-          "sourceUnit": "LIMIT_CONTINUITY",
-          "evidence": {
-            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
-            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
-          }
-        }
-      ],
-      "taxonomyRefs": [
-        "PT_LIMIT_EXISTENCE",
-        "PT_INFINITY_POLY_RATIONAL",
-        "PT_ONE_SIDED_LIMIT"
-      ],
-      "curriculumRefs": [
-        "2015:수학II:H15-M2-01"
-      ],
-      "ownerConceptShard": "FUNCTIONS"
-    },
-    {
-      "conceptKey": "CC_GREATEST_INTEGER_FUNCTION",
-      "canonicalLabelKo": "최대정수함수",
-      "definition": "주어진 실수보다 크지 않은 최대의 정수를 대응시키는 함수와 그 값을 해석하는 개념.",
-      "aliases": [
-        "가우스 기호"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_a4053b765d3069c2a9f40f6d3b46b252587c2f8105428d1215db523e1e615d7a",
-        "qid_v1_15f92884572a441d640dbd7f858c464e36c5bff4654d00c25e7aa5808d89ce8d"
-      ],
-      "supportingItemCount": 2,
-      "sourceUnits": [
-        "LIMIT_CONTINUITY"
-      ],
-      "legacyKeys": [],
-      "status": "ACTIVE",
-      "evidenceProvenance": [
-        {
-          "sourceUnit": "LIMIT_CONTINUITY",
-          "evidence": {
-            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
-            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
-          }
-        }
-      ],
-      "taxonomyRefs": [
-        "PT_LIMIT_EXISTENCE",
-        "PT_ITERATED_COMPOSITION"
-      ],
-      "curriculumRefs": [
-        "2015:수학II:H15-M2-01",
-        "2015:수학II:H15-M2-02"
-      ],
-      "ownerConceptShard": "FUNCTIONS"
-    },
-    {
-      "conceptKey": "CC_INVERSE_FUNCTION",
-      "canonicalLabelKo": "역함수",
-      "definition": "주어진 함수의 대응을 거꾸로 하여 역함수의 식이나 값을 구하고 사용하는 개념.",
-      "aliases": [
-        "함수의 역함수"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_460466aee383f4ddc010b226afeda055347c078a0ffe035220ac5c5a7f932c0a"
-      ],
-      "supportingItemCount": 1,
-      "sourceUnits": [
-        "LIMIT_CONTINUITY"
-      ],
-      "legacyKeys": [],
-      "status": "ACTIVE",
-      "evidenceProvenance": [
-        {
-          "sourceUnit": "LIMIT_CONTINUITY",
-          "evidence": {
-            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
-            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
-          }
-        }
-      ],
-      "taxonomyRefs": [
-        "PT_LIMIT_VALUE_CALC"
-      ],
-      "curriculumRefs": [
-        "2015:수학II:H15-M2-01"
-      ],
-      "ownerConceptShard": "FUNCTIONS"
-    },
-    {
-      "conceptKey": "CC_DERIVATIVE_VALUE",
-      "canonicalLabelKo": "미분계수",
-      "definition": "한 점에서의 미분계수 값을 함수 조건이나 미지수 결정에 사용하는 개념.",
-      "aliases": [],
-      "supportingQuestionUids": [
-        "qid_v1_267459e8a4d6f9246cc91c5810cb0e407adc7f160b819ca5efd7602eb0ff9bd0"
-      ],
-      "supportingItemCount": 1,
-      "sourceUnits": [
-        "LIMIT_CONTINUITY"
-      ],
-      "legacyKeys": [],
-      "status": "ACTIVE",
-      "evidenceProvenance": [
-        {
-          "sourceUnit": "LIMIT_CONTINUITY",
-          "evidence": {
-            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
-            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
-          }
-        }
-      ],
-      "taxonomyRefs": [
-        "PT_LIMIT_PARAMETER_DETERMINATION"
-      ],
-      "curriculumRefs": [
-        "2015:수학II:H15-M2-01"
-      ],
-      "ownerConceptShard": "FUNCTIONS"
-    },
-    {
-      "conceptKey": "CC_DIFFERENTIABILITY",
-      "canonicalLabelKo": "미분가능성",
-      "definition": "함수가 한 점에서 미분 가능한지 여부와 좌우 미분계수의 일치를 판단하는 개념.",
-      "aliases": [],
-      "supportingQuestionUids": [
-        "qid_v1_57a80130457683b8fd05a66ddfba0c832be3ca5bbfc432a50f3549f60b04f3d0",
-        "qid_v1_3f1daeab5a911cad3a3ae8c25f4a67e4fc11af4d861df0cacc6ca2de1927e43c"
-      ],
-      "supportingItemCount": 2,
-      "sourceUnits": [
-        "LIMIT_CONTINUITY"
-      ],
-      "legacyKeys": [],
-      "status": "ACTIVE",
-      "evidenceProvenance": [
-        {
-          "sourceUnit": "LIMIT_CONTINUITY",
-          "evidence": {
-            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
-            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
-          }
-        }
-      ],
-      "taxonomyRefs": [
-        "PT_CONTINUOUS_FUNCTION_PROPERTIES",
-        "PT_CONTINUITY_CONDITION"
-      ],
-      "curriculumRefs": [
-        "2015:수학II:H15-M2-02"
-      ],
-      "ownerConceptShard": "FUNCTIONS"
-    },
-    {
-      "conceptKey": "CC_SINE_LAW",
-      "canonicalLabelKo": "사인법칙",
-      "definition": "삼각형에서 변의 길이와 대응하는 각의 사인값의 관계를 이용하고, 필요하면 외접원의 지름과 연결하는 개념.",
-      "aliases": [
-        "사인 법칙"
-      ],
-      "supportingQuestionUids": [
-        "qid_v1_3fca994c553980d6cc71365fa84b17ab6a3f4c31b0b77f5f62ec686f715e15dd"
-      ],
-      "supportingItemCount": 1,
-      "sourceUnits": [
-        "LIMIT_CONTINUITY"
-      ],
-      "legacyKeys": [],
-      "status": "ACTIVE",
-      "evidenceProvenance": [
-        {
-          "sourceUnit": "LIMIT_CONTINUITY",
-          "evidence": {
-            "evidenceType": "SEMANTIC_CROSSCONCEPT_REVIEW",
-            "basisMainSha": "ca60a38b1cb773bb946b671979061e9e09197daf"
-          }
-        }
-      ],
-      "taxonomyRefs": [
-        "PT_LIMIT_GEOMETRY_APPLICATION"
-      ],
-      "curriculumRefs": [
-        "2015:수학II:H15-M2-01"
-      ],
-      "ownerConceptShard": "PLANE_GEOMETRY"
     }
   ]
 }
