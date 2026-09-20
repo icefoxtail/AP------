@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "derivative-promotion-receipt-v1",
+  "status": "PROMOTED_CANONICAL",
+  "packId": "DERIVATIVE",
+  "packVersion": "1.0.0",
+  "basisMainSha": "5f7942a9883d3673462a6b3d1f1f8cf99a102965",
+  "sourceEvidence": {
+    "itemAssignments": "archive/data/meta-foundation/evidence/derivative/v1/item_metadata_assignments_320.json",
+    "globalAudit": "archive/data/meta-foundation/evidence/derivative/v1/global_integrity_audit.json"
+  },
+  "gates": {
+    "denominatorClosure": true,
+    "ownershipUnique": true,
+    "aliasCollisionZero": true,
+    "duplicateCanonicalKeyZero": true,
+    "templateParentValid": true,
+    "bindingValid": true,
+    "globalCompilePass": true,
+    "runtimeCatalogJoin320": true,
+    "productionJsMutationZero": true
+  },
+  "promotion": {
+    "canonicalPackPath": "archive/data/meta-foundation/canonical/packs/derivative",
+    "registryIndexUpdated": true,
+    "conceptShardChanges": [
+      "ALGEBRA@1.2.0->1.3.0",
+      "PLANE_GEOMETRY@1.2.0->1.3.0",
+      "CALCULUS@1.0.0(new)",
+      "TRIGONOMETRY@1.0.0(new)",
+      "SEQUENCES@1.0.0(new)"
+    ],
+    "newCanonicalCrossConceptKeys": [
+      "CC_DEFINITE_INTEGRAL",
+      "CC_GEOMETRIC_SEQUENCE",
+      "CC_INDEFINITE_INTEGRAL",
+      "CC_INTERMEDIATE_VALUE_THEOREM",
+      "CC_POLYNOMIAL_DIVISION",
+      "CC_POLYNOMIAL_FACTORIZATION",
+      "CC_SIMILARITY",
+      "CC_TRIGONOMETRIC_TANGENT"
+    ],
+    "reusedCanonicalCrossConcepts": [
+      "CC_ABSOLUTE_VALUE_EQUATION",
+      "CC_ABSOLUTE_VALUE_GRAPH",
+      "CC_AM_GM",
+      "CC_AREA",
+      "CC_COUNTEREXAMPLE",
+      "CC_CUBIC_EQUATION",
+      "CC_DISCRIMINANT",
+      "CC_DISTANCE_TWO_POINTS",
+      "CC_EXTERNAL_DIVISION",
+      "CC_FUNCTIONAL_EQUATION",
+      "CC_FUNCTION_COMPOSITION",
+      "CC_FUNCTION_LIMIT",
+      "CC_FUNCTION_SYMMETRY",
+      "CC_INVERSE_FUNCTION",
+      "CC_LINE_EQUATION",
+      "CC_PARALLEL_LINES",
+      "CC_PERPENDICULAR",
+      "CC_POINT_LINE_DISTANCE",
+      "CC_QUADRATIC_FUNCTION",
+      "CC_RATIONAL_FUNCTION",
+      "CC_ROOTS_COEFFICIENTS",
+      "CC_TANGENCY",
+      "CC_TRIANGLE_AREA"
+    ],
+    "productionJsChanged": false,
+    "catalogUidDirectJoin": 241,
+    "catalogSourceIdentityRepairJoin": 79,
+    "catalogDirectSourceHoldCount": 11
+  },
+  "difficulty": {
+    "status": "DIFFICULTY_LOCKED",
+    "reviewedRecords": 320,
+    "automaticEligibleExpected": 309,
+    "distribution": {
+      "1": 56,
+      "2": 91,
+      "3": 87,
+      "4": 59,
+      "5": 27
+    }
+  }
+}

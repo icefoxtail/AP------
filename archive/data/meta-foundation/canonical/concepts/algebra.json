@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.2.0",
+  "shardVersion": "1.3.0",
   "status": "ACTIVE",
-  "conceptCount": 12,
+  "conceptCount": 14,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -632,6 +632,102 @@
       ],
       "curriculumRefs": [
         "2015:수학(하):H15-SB-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_FACTORIZATION",
+      "canonicalLabelKo": "다항식의 인수분해",
+      "definition": "다항식의 근·중근·곱구조를 인수분해하여 함수·도함수·방정식의 구조를 분석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9832f6ea861509f54e1f9367b26b5fbf44f3b8b8b3b8a26f7f92ba5a42dd3de9",
+        "qid_v1_bfe380ea07d8745e155823bce4295952fc09e9f052e847a5f75a4ff0e9622d2a",
+        "qid_v1_7c730786244591446af3d3b1b38167164c829a03b96f5d2db5eed6b5158bbffa",
+        "qid_v1_440757eb6512e595f783192b8cd8a22e6174eb51fbbdfd6e3cc92fd692c2608d",
+        "qid_v1_59f88a2ccc580ae95786a388218c0d69376719f7a9375e08b3ad480eff2dfc0d",
+        "qid_v1_4787821e4c8cb8a85ea7f47976557f03f9543dfa20744587858c0a713bed1be2",
+        "qid_v1_a008cd32e71fdb49e4eb9a177856a0b7a984d63051daf70abfb135e8ad403f47",
+        "qid_v1_e74349be7994bdfbf134b7281c3b811e7d7dd5442dc027f353c63437fbda0a23",
+        "qid_v1_593e0d11fe74cb9e6b5eac393657fe5e117882768bf831e62a2deca16f4eab0f",
+        "qid_v1_d10134da0822841cf3934aaa2e2529164b3b1667e80b6ee4be08149d0fe0f870",
+        "qid_v1_eaf119753935e52b4135c8c0490e7ddb0ae18325b40b6fbb78a330eeac520279",
+        "qid_v1_529857075b99b9ceb06a10421aef2279457a2b084e2dad1f8124095a36496c2c",
+        "qid_v1_bf5fe7ba69631f93fb1a50532fc7627255a22acbe50496cf7f4312263b1c2025",
+        "qid_v1_c5fd4974f331e5b1d1d5fd17d44e421b6ef415b928c5e63404cecf9e7f308de6"
+      ],
+      "supportingItemCount": 14,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 14,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_DEFINITION",
+        "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "PT_DIFFERENTIABILITY_CONDITION",
+        "PT_TANGENT_DERIVATIVE"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-03",
+        "2015:수학II:H15-M2-04",
+        "2015:수학II:H15-M2-05",
+        "2015:수학II:H15-M2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISION",
+      "canonicalLabelKo": "다항식의 나눗셈",
+      "definition": "다항식의 나눗셈 항등식, 몫과 나머지, 제곱인수 나눗셈의 함수값·도함수 관계를 사용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_18a9b34f79d1d2b5ce0530a1f958d373ccb64b5c33e8574f23fd4139a5ae593b",
+        "qid_v1_39fa2576d7fc758cea78e8f247ce0beb8d39851dc39c22d98f298723a6128a9c",
+        "qid_v1_e6215157f018fb89ba873eda2755cd9a579aa81dd05558b8e418f751a2d7d6e4"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "MATH2_DERIVATIVE"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "MATH2_DERIVATIVE",
+          "evidence": [
+            {
+              "evidenceType": "QUESTION_SET_REVIEW",
+              "sourceTitle": "MathII derivative 320-item Stage2 full source review",
+              "curriculum": "2015",
+              "course": "수학II",
+              "itemCount": 3,
+              "relation": "Primary L1-L4 outside decisive concept verified item-by-item"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+        "PT_DERIVATIVE_RULE_EVALUATION"
+      ],
+      "curriculumRefs": [
+        "2015:수학II:H15-M2-04"
       ],
       "ownerConceptShard": "ALGEBRA"
     }
