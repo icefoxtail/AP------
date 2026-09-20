@@ -1,7 +1,7 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "DERIVATIVE@1.0.0/runtime-bridge-v2",
+  "runtimeVersion": "DERIVATIVE@1.0.0/runtime-bridge-v3",
   "packId": "DERIVATIVE",
   "packVersion": "1.0.0",
   "generatedFrom": {
@@ -10076,13 +10076,16 @@
       "standardUnit": "미분계수",
       "standardUnitOrder": 3,
       "subUnitKey": "H15-M2-03-DERIVATIVE",
-      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
       "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
       "L1": "미분",
       "L2": "미분계수",
-      "L3": "연속성과 미분가능성",
-      "L4": "정의로 연속성과 미분가능성 조사",
-      "crossConceptKeys": [],
+      "L3": "연속과 불연속의 판정",
+      "L4": "정의에 따른 연속성과 미분가능성 판정",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH",
+        "CC_DIFFERENTIABILITY"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
@@ -11225,13 +11228,15 @@
       "standardUnit": "미분계수",
       "standardUnitOrder": 3,
       "subUnitKey": "H15-M2-03-DERIVATIVE",
-      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
-      "templateKey": "TPL_CONT_DIFF_GRAPH_JUDGMENT",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
       "L1": "미분",
       "L2": "미분계수",
-      "L3": "연속성과 미분가능성",
-      "L4": "그래프에서 연속성과 미분가능성 판정",
-      "crossConceptKeys": [],
+      "L3": "연속과 불연속의 판정",
+      "L4": "연속·불연속 판정",
+      "crossConceptKeys": [
+        "CC_DIFFERENTIABILITY"
+      ],
       "secondaryConceptKeys": [],
       "conditionKeys": [
         "COND_RANGE"
@@ -11763,14 +11768,15 @@
       "standardUnit": "미분계수",
       "standardUnitOrder": 3,
       "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
-      "problemTypeKey": "PT_CONTINUITY_DIFFERENTIABILITY",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
       "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
       "L1": "미분",
       "L2": "미분계수",
-      "L3": "연속성과 미분가능성",
+      "L3": "연속과 불연속의 판정",
       "L4": "정의에 따른 연속성과 미분가능성 판정",
       "crossConceptKeys": [
-        "CC_ABSOLUTE_VALUE_GRAPH"
+        "CC_ABSOLUTE_VALUE_GRAPH",
+        "CC_DIFFERENTIABILITY"
       ],
       "secondaryConceptKeys": [],
       "conditionKeys": [],

@@ -23,6 +23,9 @@ assert.strictEqual(runtime.counts.catalogUidDirectJoin, 181);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
 assert.strictEqual(runtime.counts.automaticEligibleExpected, 184);
 assert.strictEqual(runtime.counts.difficultyDeferred, 0);
+assert.strictEqual(runtime.taxonomyRows.length, 33);
+assert.strictEqual(new Set(runtime.records.map((r) => r.problemTypeKey)).size, 10);
+assert.strictEqual(new Set(runtime.records.map((r) => r.templateKey)).size, 31);
 const limitRows = runtime.records.filter((r) => r.standardUnitKey === "H15-M2-01");
 const limitDistribution = Object.fromEntries([1,2,3,4,5].map((bucket) => [bucket, limitRows.filter((r) => r.difficultyBucket === bucket).length]));
 assert.deepStrictEqual(limitDistribution, { 1: 24, 2: 24, 3: 32, 4: 21, 5: 3 });
@@ -30,17 +33,18 @@ assert.strictEqual(limitRows.filter((r) => r.metaFoundationDifficultyStatus === 
 assert.strictEqual(limitRows.filter((r) => ["high","medium","low"].includes(r.difficultyConfidence)).length, 104);
 assert.strictEqual(limitRows.filter((r) => ["NONE","B12","B23","B34","B45"].includes(r.difficultyBoundaryFlag)).length, 104);
 assert.strictEqual(limitRows.filter((r) => ["NORMAL","BORDERLINE_ACCEPTABLE","STRONG_CONFLICT"].includes(r.legacyLevelCompatibility)).length, 104);
-assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.0.1/runtime-bridge-v4");
+assert.strictEqual(runtime.runtimeVersion, "LIMIT_CONTINUITY@1.1.0/runtime-bridge-v4");
 
 
 const compiledTaxonomy = readJson("archive/data/meta-foundation/compiled/taxonomy_registry.json");
 const compiledConcepts = readJson("archive/data/meta-foundation/compiled/concept_registry.json");
 const ptLabels = new Map(compiledTaxonomy.problemTypes.map((r) => [r.problemTypeKey, r.canonicalLabelKo]));
 const tplLabels = new Map(compiledTaxonomy.templates.map((r) => [r.templateKey, r.canonicalLabelKo]));
-assert.strictEqual(ptLabels.get("PT_LIMIT_ORDER_SQUEEZE"), "함수의 극한의 대소 관계");
+assert.strictEqual(ptLabels.has("PT_LIMIT_ORDER_SQUEEZE"), false);
+assert.strictEqual(ptLabels.get("PT_LIMIT_VALUE_CALC"), "함수의 극한값 계산");
 assert.strictEqual(tplLabels.get("TPL_LIMIT_SQUEEZE"), "함수의 대소 관계를 이용한 극한값 계산");
 assert.strictEqual(tplLabels.get("TPL_PIECEWISE_RANGE_STITCH_BIJECTION"), "조각함수의 일대일대응 조건");
-for (const key of ["CC_ABSOLUTE_VALUE_FUNCTION","CC_GREATEST_INTEGER_FUNCTION","CC_INVERSE_FUNCTION","CC_DERIVATIVE_VALUE","CC_DIFFERENTIABILITY","CC_SINE_LAW"]) {
+for (const key of ["CC_ABSOLUTE_VALUE_FUNCTION","CC_GREATEST_INTEGER_FUNCTION","CC_INVERSE_FUNCTION","CC_DERIVATIVE_VALUE","CC_DIFFERENTIABILITY","CC_SINE_LAW","CC_ZERO_MULTIPLICITY","CC_RADICAL_EXPRESSION","CC_ROOT_INTERSECTION_COUNT_FUNCTION","CC_FUNCTION_SYMMETRY"]) {
   assert(compiledConcepts.concepts.some((r) => r.conceptKey === key && r.status === "ACTIVE"), key);
 }
 const activeConceptKeys = new Set(compiledConcepts.concepts.filter((r) => r.status === "ACTIVE").map((r) => r.conceptKey));

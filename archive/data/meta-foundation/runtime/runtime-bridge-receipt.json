@@ -22,10 +22,10 @@
     "combinedRuntimeCatalogJoinMismatch": 0,
     "productionExamJsMutation": 0,
     "limitContinuityDifficultyReviewed": 104,
-    "limitContinuityRuntimeVersion": "LIMIT_CONTINUITY@1.0.1/runtime-bridge-v4",
+    "limitContinuityRuntimeVersion": "LIMIT_CONTINUITY@1.1.0/runtime-bridge-v4",
     "functionsGraphsRuntimeVersion": "FUNCTIONS_GRAPHS@1.0.1/runtime-bridge-v2",
     "semanticCrossConceptRevalidatedQuestionCount": 48,
-    "newCanonicalCrossConceptCount": 6,
+    "newCanonicalCrossConceptCount": 9,
     "integralCalculusCanonicalAssignments": 135,
     "integralCalculusRuntimeRecords": 126,
     "integralCalculusExistingCatalogUidJoin": 53,
@@ -50,7 +50,7 @@
     "derivativeDifficultyDeferred": 0,
     "derivativeAutomaticEligibleExpected": 309,
     "derivativeDifficultyReviewed": 320,
-    "derivativeRuntimeVersion": "DERIVATIVE@1.0.0/runtime-bridge-v2",
+    "derivativeRuntimeVersion": "DERIVATIVE@1.0.0/runtime-bridge-v3",
     "derivativeCrossConceptReferenceCount": 160,
     "derivativeNewCanonicalCrossConceptCount": 8,
     "derivativeReusedCanonicalCrossConceptCount": 23,
@@ -58,7 +58,14 @@
     "crossPackPrimaryOwnershipResolved": 14,
     "crossPackDuplicateUidCount": 0,
     "crossPackDuplicateSourceIdentityCount": 0,
-    "derivativePostPromotionClassificationCorrection": 1
+    "derivativePostPromotionClassificationCorrection": 1,
+    "limitContinuityCompressionOwnedProblemTypes": 7,
+    "limitContinuityCompressionOwnedTemplates": 29,
+    "limitContinuityCompressionActualProblemTypes": 10,
+    "limitContinuityCompressionActualTemplates": 31,
+    "limitContinuityCompressionChangedPrimary": 109,
+    "limitContinuityCompressionCrossConceptReferenceAdds": 35,
+    "limitContinuityCompressionDerivativeReferenceMigrations": 3
   },
   "archive2JoinContract": {
     "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
@@ -73,7 +80,6 @@
     "3 catalog rows with unresolved UID are repaired in place only by exact sourceFile#sourceOrdinal parity backed by promotion evidence.",
     "All 19 source exam files are already registered in archive/db.js.",
     "Archive2 Finder and Compose grade routing treat 2015 수학II as 고2.",
-    "LIMIT_CONTINUITY v1.0.1 semantic terminology and CrossConcept mappings are assignment/runtime-parity clean; production exam JS remains unchanged.",
     "INTEGRAL_CALCULUS retains all 135 canonical assignments.",
     "DERIVATIVE retains all 320 canonical assignments.",
     "241 DERIVATIVE items join the static Archive2 catalog by canonical questionUid; 79 reviewed legacy rows are repaired only by exact sourceFile#sourceOrdinal parity and verified qid_v1 formula.",
@@ -82,6 +88,8 @@
     "181 active LIMIT_CONTINUITY rows join directly and 3 via reviewed source identity repair after 5 derivative-primary overlaps are excluded.",
     "53 active INTEGRAL_CALCULUS rows join directly and 73 via reviewed source identity repair after 9 derivative-primary overlaps are excluded.",
     "DERIVATIVE is the single active primary owner for all 14 resolved cross-pack overlaps.",
-    "Combined active Meta Foundation runtime join is 1904/1904 with duplicate UID/source identity 0."
+    "Combined active Meta Foundation runtime join is 1904/1904 with duplicate UID/source identity 0.",
+    "LIMIT_CONTINUITY v1.1.0 taxonomy compression is active after cross-pack ownership resolution: owned L3 7, owned L4 29, 184 active runtime rows, 189 historical assignments retained, production exam JS unchanged.",
+    "Three DERIVATIVE records that referenced retired LIMIT_CONTINUITY L3/L4 keys were migrated to PT_CONTINUITY_JUDGMENT and surviving compressed templates without changing source questions."
   ]
 }
