@@ -40,7 +40,8 @@ const compiledTaxonomy = readJson("archive/data/meta-foundation/compiled/taxonom
 const compiledConcepts = readJson("archive/data/meta-foundation/compiled/concept_registry.json");
 const ptLabels = new Map(compiledTaxonomy.problemTypes.map((r) => [r.problemTypeKey, r.canonicalLabelKo]));
 const tplLabels = new Map(compiledTaxonomy.templates.map((r) => [r.templateKey, r.canonicalLabelKo]));
-assert.strictEqual(ptLabels.has("PT_LIMIT_ORDER_SQUEEZE"), false);\nassert.strictEqual(ptLabels.get("PT_LIMIT_VALUE_CALC"), "함수의 극한값 계산");
+assert.strictEqual(ptLabels.has("PT_LIMIT_ORDER_SQUEEZE"), false);
+assert.strictEqual(ptLabels.get("PT_LIMIT_VALUE_CALC"), "함수의 극한값 계산");
 assert.strictEqual(tplLabels.get("TPL_LIMIT_SQUEEZE"), "함수의 대소 관계를 이용한 극한값 계산");
 assert.strictEqual(tplLabels.get("TPL_PIECEWISE_RANGE_STITCH_BIJECTION"), "조각함수의 일대일대응 조건");
 for (const key of ["CC_ABSOLUTE_VALUE_FUNCTION","CC_GREATEST_INTEGER_FUNCTION","CC_INVERSE_FUNCTION","CC_DERIVATIVE_VALUE","CC_DIFFERENTIABILITY","CC_SINE_LAW","CC_ZERO_MULTIPLICITY","CC_RADICAL_EXPRESSION","CC_ROOT_INTERSECTION_COUNT_FUNCTION","CC_FUNCTION_SYMMETRY"]) {
