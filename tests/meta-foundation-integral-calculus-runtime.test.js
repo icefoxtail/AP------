@@ -9,15 +9,15 @@ const runtime = readJson("archive/data/meta-foundation/runtime/integral-calculus
 const receipt = readJson("archive/data/meta-foundation/runtime/runtime-bridge-receipt.json");
 const catalog = C.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
 assert.strictEqual(runtime.packId,"INTEGRAL_CALCULUS");
-assert.strictEqual(runtime.records.length,135);
+assert.strictEqual(runtime.records.length,126);
 assert.strictEqual(runtime.taxonomyRows.length,15);
-assert.strictEqual(runtime.counts.catalogUidDirectJoin,55);
-assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin,80);
+assert.strictEqual(runtime.counts.catalogUidDirectJoin,53);
+assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin,73);
 assert.strictEqual(runtime.counts.defaultSelectable,134);
 assert.strictEqual(runtime.counts.supplementary,1);
-assert.strictEqual(new Set(runtime.records.map(r=>r.questionUid)).size,135);
+assert.strictEqual(new Set(runtime.records.map(r=>r.questionUid)).size,126);
 assert.strictEqual(new Set(runtime.records.map(r=>sourceKey(r.sourceArchiveFile,r.sourceOrdinal))).size,135);
-assert.strictEqual(runtime.records.filter(r=>r.catalogIdentityRepairVerified===true).length,80);
+assert.strictEqual(runtime.records.filter(r=>r.catalogIdentityRepairVerified===true).length,73);
 const bySource = new Map(catalog.records.map(r=>[sourceKey(r.sourceFile,r.sourceOrdinal),r]));
 let direct=0,repaired=0,eligible=0,supplementary=0,sourceHold=0;
 for(const overlay of runtime.records){
@@ -29,14 +29,14 @@ for(const overlay of runtime.records){
   const gate=C.eligibility(merged);
   if(!repair && base.sourceStatus!=="VERIFIED"){assert.strictEqual(gate.ok,false);assert(gate.reasons.includes("source"));sourceHold++;} else if(overlay.curriculumApplicability==="SUPPLEMENTARY_OUTSIDE_CORE"){assert.strictEqual(gate.ok,false);assert(gate.reasons.includes("applicability"));supplementary++;} else {assert.strictEqual(gate.ok,true,overlay.questionUid+": "+gate.reasons.join(","));eligible++;}
 }
-assert.strictEqual(direct,55);assert.strictEqual(repaired,80);assert.strictEqual(eligible,133);assert.strictEqual(supplementary,1);assert.strictEqual(sourceHold,1);
-const combined=[...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,...readJson("archive/data/meta-foundation/runtime/sets-propositions-v1.json").records,...readJson("archive/data/meta-foundation/runtime/functions-graphs-v1.json").records,...readJson("archive/data/meta-foundation/runtime/limit-continuity-v1.json").records,...runtime.records];
-assert.strictEqual(combined.length,1598);
-assert.strictEqual(new Set(combined.map(r=>r.questionUid)).size,1598);
-assert.strictEqual(new Set(combined.map(r=>sourceKey(r.sourceArchiveFile,r.sourceOrdinal))).size,1598);
-assert.strictEqual(receipt.checked.combinedRuntimeRecords,1598);
-assert.strictEqual(receipt.checked.combinedUniqueUid,1598);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity,1598);
-assert.strictEqual(receipt.checked.integralCalculusRuntimeRecords,135);
-assert.strictEqual(receipt.checked.integralCalculusAutomaticEligibleExpected,133);
+assert.strictEqual(direct,53);assert.strictEqual(repaired,73);assert.strictEqual(eligible,124);assert.strictEqual(supplementary,1);assert.strictEqual(sourceHold,1);
+const combined=[...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,...readJson("archive/data/meta-foundation/runtime/sets-propositions-v1.json").records,...readJson("archive/data/meta-foundation/runtime/functions-graphs-v1.json").records,...readJson("archive/data/meta-foundation/runtime/limit-continuity-v1.json").records,...runtime.records,...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records];
+assert.strictEqual(combined.length,1904);
+assert.strictEqual(new Set(combined.map(r=>r.questionUid)).size,1904);
+assert.strictEqual(new Set(combined.map(r=>sourceKey(r.sourceArchiveFile,r.sourceOrdinal))).size,1904);
+assert.strictEqual(receipt.checked.combinedRuntimeRecords,1904);
+assert.strictEqual(receipt.checked.combinedUniqueUid,1904);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity,1904);
+assert.strictEqual(receipt.checked.integralCalculusRuntimeRecords,126);
+assert.strictEqual(receipt.checked.integralCalculusAutomaticEligibleExpected,124);
 console.log("PASS MathII integral Archive2 runtime bridge");
