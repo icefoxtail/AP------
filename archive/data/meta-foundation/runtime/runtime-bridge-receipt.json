@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v5",
-  "status": "PASS_LIMIT_CONTINUITY_189_CATALOG_JOIN",
-  "baseMain": "90dfdb7e0f5747d1aedde5cb0b5f60841da033e8",
+  "schemaVersion": "meta-foundation-runtime-bridge-receipt-v6",
+  "status": "PASS_INTEGRAL_CALCULUS_135_CATALOG_JOIN",
+  "baseMain": "86a7bd4c7fc461a692e27e17f2740640778248d4",
   "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v3",
   "checked": {
     "geometryRecords": 400,
@@ -15,24 +15,33 @@
     "limitContinuityCatalogJoinMismatch": 0,
     "limitContinuityDifficultyDeferred": 0,
     "limitContinuityAutomaticEligibleExpected": 189,
-    "combinedRuntimeRecords": 1463,
-    "combinedUniqueUid": 1463,
-    "combinedUniqueSourceIdentity": 1463,
-    "combinedRuntimeCatalogJoin": 1463,
+    "combinedRuntimeRecords": 1598,
+    "combinedUniqueUid": 1598,
+    "combinedUniqueSourceIdentity": 1598,
+    "combinedRuntimeCatalogJoin": 1598,
     "combinedRuntimeCatalogJoinMismatch": 0,
     "productionExamJsMutation": 0,
     "limitContinuityDifficultyReviewed": 104,
     "limitContinuityRuntimeVersion": "LIMIT_CONTINUITY@1.0.1/runtime-bridge-v3",
     "functionsGraphsRuntimeVersion": "FUNCTIONS_GRAPHS@1.0.1/runtime-bridge-v2",
     "semanticCrossConceptRevalidatedQuestionCount": 48,
-    "newCanonicalCrossConceptCount": 6
+    "newCanonicalCrossConceptCount": 6,
+    "integralCalculusCanonicalAssignments": 135,
+    "integralCalculusRuntimeRecords": 135,
+    "integralCalculusCatalogJoin": 135,
+    "integralCalculusCatalogJoinMismatch": 0,
+    "integralCalculusAutomaticEligibleExpected": 134,
+    "integralCalculusSupplementary": 1,
+    "integralCalculusDifficultyReviewed": 135,
+    "integralCalculusRuntimeVersion": "INTEGRAL_CALCULUS@1.0.0/runtime-bridge-v1",
+    "newIntegralCanonicalCrossConceptCount": 8
   },
   "archive2JoinContract": {
     "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
     "catalogBuilder": "archive/tools/build-archive2-catalog.mjs",
     "joinKey": "questionUid, with fail-closed sourceFile#sourceOrdinal fallback for reviewed identity repair",
     "browserRuntimeGate": "applyArchiveMetaFoundationCatalog requires joined === runtime.counts.records",
-    "expectedRuntimeJoin": 1463
+    "expectedRuntimeJoin": 1598
   },
   "invariants": [
     "No production exam JS modified.",
@@ -43,6 +52,9 @@
     "Combined active Meta Foundation runtime join is 1463/1463.",
     "Archive2 Finder and Compose grade routing treat 2015 수학II as 고2.",
     "All 104 limit items and 85 continuity items are automatic-eligible after reviewed difficulty metadata is applied.",
-    "LIMIT_CONTINUITY v1.0.1 semantic terminology and CrossConcept mappings are assignment/runtime-parity clean; production exam JS remains unchanged."
+    "LIMIT_CONTINUITY v1.0.1 semantic terminology and CrossConcept mappings are assignment/runtime-parity clean; production exam JS remains unchanged.",
+    "INTEGRAL_CALCULUS retains all 135 reviewed canonical assignments.",
+    "134 INTEGRAL_CALCULUS items are default automatic-eligible; 23 팔마고 q7 is supplementary outside core.",
+    "Combined active Meta Foundation runtime join is 1598/1598."
   ]
 }
