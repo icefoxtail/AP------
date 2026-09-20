@@ -119,7 +119,7 @@ AND GRAPH_RENDER_PASS
 
 ### 확장 메타데이터 필드
 
-아래 필드는 기존 legacy JS에서는 선택 확장 필드였지만, **신규 candidate·production JS에서는 세부단원 4개 필드를 필수로 승격**한다. 나머지 유사문제 확장 필드는 승인된 경우에만 추가한다.
+신규 candidate·production JS는 세부단원 4개 필드를 항상 포함한다. 또한 Meta Foundation v1의 신규 JS metadata gate를 적용하여 L3/L4·CrossConcept·Condition·IntegrationPattern과 difficulty v1.3의 4개 canonical difficulty 필드를 함께 생성·검증한다. 상세 정의는 각 authority 문서에 두며 이 룰북에 복제하지 않는다.
 
 ```js
 {
@@ -127,10 +127,20 @@ AND GRAPH_RENDER_PASS
   subUnit: "",
   subUnitConfidence: "",
   subUnitClassificationDepth: "",
+
   conceptClusterKey: "",
+
   problemTypeKey: "",
   templateKey: "",
-  difficultyBucket: "",
+  crossConceptKeys: [],
+  conditionKeys: [],
+  integrationPattern: "NONE",
+
+  difficultyBucket: "UNKNOWN",
+  difficultyConfidence: "UNKNOWN",
+  difficultyBoundaryFlag: "UNKNOWN",
+  legacyLevelCompatibility: "UNKNOWN",
+
   tagConfidence: "",
   tagStatus: "",
   sourceType: "",
@@ -141,7 +151,7 @@ AND GRAPH_RENDER_PASS
 }
 ```
 
-신규 파일의 `subUnitKey`는 `docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`와 compiled JSON master에 존재해야 하며, `subUnit`·parent `standardUnitKey`와 일치해야 한다. `standardUnitKey`는 canonical standard-unit table 키 또는 taxonomy 확장표·compiled master에 부모로 문서화된 extension 키만 허용한다. `RAW-*`, `RRAW-*`, `UNMAPPED-*`는 정식 키가 아니라 예외 report에서만 유지한다.
+신규 파일의 L1/L2는 표준단원키 마스터·compiled master·세부단원 운영규칙과 일치해야 한다. L3/L4/CrossConcept/Condition/alias/curriculum binding은 Meta Foundation의 ACTIVE canonical Pack/Shard와 binding을 직접 검증한다. 미등록·deprecated·candidate key는 production canonical field에 넣지 않는다.
 
 ### 기본 필드와 확장 필드의 관계
 
@@ -218,16 +228,14 @@ tagStatus:
 - 같은 문항 또는 거의 같은 문항 중복 출제 방지
 - `auto_low`, `manual_review`, `reviewed_fail` 태그 문항은 자동 구성에서 제외
 
-### 확장 태그 마스터테이블 우선 원칙
+### 확장 태그 authority 분리 원칙
 
-`subUnitKey`, `subUnit`, `subUnitConfidence`, `subUnitClassificationDepth`, `conceptClusterKey`, `problemTypeKey`, `templateKey`는 `docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`와 `JS아카이브_세부단원_운영규칙_v1.md`를 기준으로 한다.
-
-- 룰북은 운영 원칙을 정의한다.
-- 실제 키 명명, 세부 단원, 유형, 템플릿 기준은 마스터 테이블을 따른다.
-- 룰북과 마스터 테이블이 충돌할 경우, 키 명명과 단원/유형 정의는 마스터 테이블을 우선한다.
-- 마스터 테이블에 없는 키를 자동 생성해 최종 반영하지 않는다.
-- 신규 키가 필요하면 `PROPOSED-` 또는 `manual_review` 상태로 분리한 뒤 마스터 테이블에 먼저 편입한다.
-
+- L1/L2(`standardUnitKey`, `subUnitKey`와 라벨·parent)는 `JS아카이브_표준단원키_마스터테이블.md`, compiled master, `JS아카이브_세부단원_운영규칙_v1.md`를 따른다.
+- L3/L4(`problemTypeKey`, `templateKey`)와 `crossConceptKeys`, `conditionKeys`, `integrationPattern`, alias, curriculum/L2↔L3 binding은 `JS아카이브_문항메타_파운데이션_운영규칙_v1.md`와 `archive/data/meta-foundation/canonical/`의 ACTIVE source를 따른다.
+- `difficultyBucket`, `difficultyConfidence`, `difficultyBoundaryFlag`, `legacyLevelCompatibility`의 정의·경계·판정은 `JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 따른다.
+- `conceptClusterKey`는 grouping/legacy compatibility 목적의 승인 확장 필드이며 Primary Taxonomy level로 사용하지 않는다.
+- 새 L3/L4/CrossConcept/Condition이 필요하면 표준단원 마스터에 임의 추가하지 않고 Foundation candidate proposal → evidence review → canonical promotion 절차를 따른다.
+- 룰북과 각 세부 authority가 충돌하면 해당 메타 축을 소유하는 canonical authority를 우선한다.
 
 ## 0-3. 문서 체계
 

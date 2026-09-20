@@ -357,7 +357,7 @@ IDENTITY LOCK 전에는 최종 ZIP을 만들지 않는다.
 | R3 | solution 실렌더 | 실제 해설 화면에서 전 문항·수식·시각자료 확인 |
 | R4 | answer 실렌더 | 실제 정답 화면에서 순서·표기·문항 수 확인 |
 | R5 | 2차 수학 검수 | 독립 풀이·정답 유일성·answer↔solution 대조 |
-| R6 | 3차 메타 검수 | 단원·세부단원·난이도·태그·배치 메타 대조 |
+| R6 | 3차 메타 검수 | L1/L2·L3/L4·CrossConcept·Condition·IntegrationPattern·난이도·태그·배치 메타 대조 |
 | R7 | 수정 및 재검 진입 | 수정이 있으면 allowlist/diff lock과 PRE-RECHECK LINT 적용 |
 | R8 | 최종 재렌더 | 최종 ZIP 추출본에서 exam·solution·answer를 다시 전부 확인 |
 | R9 | 최종 판정 | 구조·수학·메타·에셋·패키지·최종 실렌더를 함께 판정 |
@@ -722,7 +722,16 @@ sourceSolutionEntry,candidateVariantClass,preprocessingLayer,coreDecisionDelta
   subUnitKey,
   subUnit,
   subUnitConfidence,
-  subUnitClassificationDepth
+  subUnitClassificationDepth,
+  problemTypeKey,
+  templateKey,
+  crossConceptKeys,
+  conditionKeys,
+  integrationPattern,
+  difficultyBucket,
+  difficultyConfidence,
+  difficultyBoundaryFlag,
+  legacyLevelCompatibility
 }
 ```
 
@@ -1000,6 +1009,10 @@ standardUnitOrder
 `existing_preserved`, `candidate_evidence`, `category_or_cue_inferred`, `rule_inferred`,
 depth는 `complete_candidate`, `complete_category`, `complete_documented`, `complete_rule`이다.
 RAW/RRAW/UNMAPPED와 legacy 누락은 report 예외로 격리하며, 이 게이트는 원문·정답·해설을 수정하지 않는다.
+
+Foundation v1 적용 신규 JS는 `problemTypeKey`, `templateKey`, `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`을 함께 생성·검증한다. L3/L4/CrossConcept/Condition/alias/curriculum binding의 authority는 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`와 ACTIVE canonical Pack/Shard다. difficulty 4-field는 `JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 따른다.
+
+신규 production 입고 전에는 최소 다음을 fail-closed로 확인한다: ACTIVE L3, L2↔L3 binding, ACTIVE L4와 parent, CrossConcept/Condition 전부 ACTIVE, 중복·alias 0, canonical IntegrationPattern, candidate/deprecated/unregistered key 0. 미등록 항목은 production에 넣지 않고 Foundation candidate proposal/evidence로 분리한다.
 
 분류는 발문 단어가 아니라 **핵심 풀이 도구**를 기준으로 한다.
 

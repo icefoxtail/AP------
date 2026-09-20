@@ -19,6 +19,11 @@
 
 구 파일명 `# JS아카이브 표준단원키 마스터 테이블.md`는 legacy 문서다. 신규 작업은 underscore 파일명만 사용한다.
 
+## 1-1. Meta Foundation 경계
+
+이 문서는 L1/L2 중 `subUnitKey` 계층의 key·parent·label authority를 담당한다. L3/L4/CrossConcept/Condition/alias/curriculum binding의 정의·승격·검증은 `JS아카이브_문항메타_파운데이션_운영규칙_v1.md`가 담당하며, difficulty 4-field의 정의·경계는 `JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`가 담당한다.
+
+신규 JS는 이 문서의 세부단원 4개 필드와 별도로 Foundation 신규 JS metadata gate를 통과해야 한다. 이 문서가 L3/L4 key를 새로 만들거나 Foundation candidate를 canonical로 승격하지 않는다.
 ## 2. 신규 JS 문항 필수 스키마
 
 신규 candidate 및 production 문항은 기존 기본 필드와 세부단원 필드를 모두 가진다.
@@ -56,7 +61,7 @@
 - `wide: false`
 - 판단이 보류된 세부단원은 빈 값을 임의로 채우지 말고 candidate report와 review 상태로 남긴다.
 
-`conceptClusterKey`, `problemTypeKey`, `templateKey`, `difficultyBucket` 및 provenance·review 상태 필드는 별도 승인된 확장 필드다. 신규 JS에 넣을 때는 master 등록 여부와 사용 목적을 함께 확인한다.
+`conceptClusterKey`와 provenance·review 상태는 호환·운영 목적의 확장 필드다. `problemTypeKey`, `templateKey`, `crossConceptKeys`, `conditionKeys`, `integrationPattern`은 Meta Foundation v1의 신규 JS gate를 따르며, 신규 production에서 사용하는 값은 현재 ACTIVE canonical registry와 binding에 존재해야 한다.
 
 `difficultyBucket` 1~5의 상세 authority는 `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 따른다. 기존 세부단원·level 규칙은 이 참조로 대체하지 않는다.
 

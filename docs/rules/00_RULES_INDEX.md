@@ -156,6 +156,8 @@ L3/L4/CrossConcept/Condition/alias/curriculum binding 및 Pack/Shard/Compiled/Ow
 
 `90_ARCHIVE/`의 문서는 삭제하지 않고 당시의 설계·판정 근거로 보존한다. 현재 작업의 규칙으로 자동 적용하지 않는다. 특히 `DRAFT`, `LEGACY snapshot`, `v1.0` 문서는 새 작업 기준이 아니다.
 
+- `90_ARCHIVE/JS아카이브_Metadata_Contract_v2_SUPERSEDED_20260919.md`는 2026-09-16 시점의 저장계약 기록이다. 2026-09-19 Meta Foundation v1 채택으로 L3/L4·CrossConcept·Condition·alias·curriculum binding authority가 대체되었으므로 현재 운영 판정에 사용하지 않는다.
+
 ## 6. 무결성 관리
 
 `MANIFEST.md`는 이 디렉터리의 현재 운영 문서 목록과 SHA-256을 기록한다. 문서 이동·통합 후에는 누락 파일, 오래된 경로, 해시 불일치를 확인하고 manifest를 다시 생성한다.
