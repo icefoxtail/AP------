@@ -1,6 +1,6 @@
 {
   "schemaVersion": "middle-geometry-candidate-integrity-audit-v1",
-  "status": "PASS_WITH_ENGINE_CAPABILITY_BLOCK_AND_GPT_REVIEW_PENDING",
+  "status": "CANDIDATE_VALIDATION_ONLY_REVIEW_PENDING_FAIL_CLOSED",
   "baseMainSha": "843d26d60780ae1502dd53d75c8f2b064b98174f",
   "branch": "codex/meta-foundation/middle-geometry",
   "denominator": {
@@ -29,6 +29,9 @@
     "compiledProductionMutation": false,
     "runtimeProductionMutation": false,
     "difficultyBlindOrderRecorded": true,
+    "heuristicDifficultyFailClosed": true,
+    "relationalMetadataFailClosed": true,
+    "l4SuggestionFailClosed": true,
     "independentGptReview": "PENDING_EXTERNAL_REVIEW"
   },
   "l3Usage": {
@@ -106,10 +109,11 @@
     }
   ],
   "candidateL4Count": 36,
+  "reviewTargetCount": 913,
   "engineCapability": {
     "status": "ENGINE_CAPABILITY_BLOCK",
     "reason": "Current compile-meta-foundation.mjs is GEOMETRY_EQUATIONS/400 hard-coded; no middle-geometry canonical promotion or runtime compile was attempted."
   },
   "nextGate": "GPT independent branch review, then pack-generic compiler/runtime/Archive2 integration or explicit approved block",
-  "integrityDigest": "01ad831e4bca3ab060133ffb60ae85f3a242007e623864cce4c07d665e4e0fa6"
+  "integrityDigest": "d0eebe09505140c739aa5d65ac69edd3912a946419a2bc04268c3d152d2dc817"
 }

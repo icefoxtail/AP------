@@ -131,6 +131,11 @@ function getWorkingSubUnit(sourceArchiveFile, sourceOrdinal, current) {
     return current;
 }
 
+function getWorkingStandardUnitKey(workingSubUnitKey, sourceStandardUnitKey) {
+    const match = text(workingSubUnitKey).match(/^(M\d-\d+)/);
+    return match ? match[1] : sourceStandardUnitKey;
+}
+
 function triangleL3(tuple, question, handoff) {
     if (M2_ROUTE_OUT.has(tuple)) return null;
     if (M2_CENTROID.has(tuple)) return 'PT_COORD_CENTROID';
@@ -236,7 +241,7 @@ function l4Decision(question, problemTypeKey) {
     const active = canonicalTemplateFor(question, problemTypeKey);
     if (active) return { templateKey: active, status: 'REUSE_ACTIVE', action: 'REUSE', reason: 'Existing canonical L4 semantic fit; no new template created' };
     const candidate = candidateTemplateKey(problemTypeKey, question);
-    return { templateKey: candidate, status: 'CANDIDATE', action: 'CANDIDATE_ONLY', reason: 'Candidate L4 kept below canonical promotion; numeric/wording variants compressed' };
+    return { templateKey: candidate, status: 'CANDIDATE_SUGGESTION', action: 'CANDIDATE_SUGGEST_ONLY', reason: 'Candidate L4 suggestion only; decisive skeleton still requires semantic review; numeric/wording variants compressed' };
 }
 
 function crossConcepts(question, problemTypeKey) {
@@ -303,11 +308,15 @@ function difficulty(question, problemTypeKey, l4Key, cross, condition, integrati
     else if (steps <= 3 && cross.length <= 1 && condition.length === 0) bucket = 2;
     else if (steps >= 5 || cross.length >= 2 || integration.key !== 'NONE') bucket = 4;
     const confidence = solution.length > 100 && !/그림/.test(content) ? 'high' : 'medium';
-    const boundary = 'NONE';
     const expected = bucket <= 1 ? '하' : bucket <= 3 ? '중' : '상';
     const legacy = text(question.level);
     const compatibility = legacy === expected ? 'NORMAL' : Math.abs((legacy === '하' ? 1 : legacy === '중' ? 2.5 : 4.5) - bucket) <= 1 ? 'BORDERLINE_REVIEW' : 'STRONG_CONFLICT';
-    return { bucket, confidence, boundary, compatibility, status: compatibility === 'BORDERLINE_REVIEW' || compatibility === 'STRONG_CONFLICT' ? 'independent_recheck_required' : 'reviewed_pass', reason: `blind structure: steps=${steps}; application=${application}; cross=${cross.length}; conditions=${condition.length}; integration=${integration.key}; insight=${insight}` };
+    const boundary = compatibility === 'NORMAL'
+        ? 'NONE'
+        : compatibility === 'BORDERLINE_REVIEW'
+            ? (bucket <= 2 ? 'B12' : bucket <= 4 ? 'B34' : 'B45')
+            : 'UNKNOWN';
+    return { bucket, confidence, boundary, compatibility, status: 'PENDING_INDEPENDENT_REVIEW', heuristicCandidate: true, reason: `heuristic candidate only; blind structure: steps=${steps}; application=${application}; cross=${cross.length}; conditions=${condition.length}; integration=${integration.key}; insight=${insight}` };
 }
 
 function loadCanonical() {
@@ -349,6 +358,8 @@ function collect() {
                 if (!target) return;
                 const identityRecord = byTuple.get(tuple);
                 if (!identityRecord) throw new Error(`identity missing for ${tuple}`);
+                const sourceStandardUnitKey = text(question.standardUnitKey) || (grade === 'm2' ? 'M2-05' : current.startsWith('M3-05') ? 'M3-05' : 'M3-06');
+                const workingSubUnitKey = getWorkingSubUnit(sourceArchiveFile, question.id, current);
                 source.push({
                     grade: grade.toUpperCase(),
                     sourceArchiveFile,
@@ -358,11 +369,14 @@ function collect() {
                     sourceFingerprint: sourceFingerprint(question),
                     curriculum: '2015',
                     standardCourse: grade === 'm2' ? '중2 수학' : '중3 수학',
-                    standardUnitKey: text(question.standardUnitKey) || (grade === 'm2' ? 'M2-05' : current.startsWith('M3-05') ? 'M3-05' : 'M3-06'),
+                    standardUnitKey: sourceStandardUnitKey,
                     standardUnit: text(question.standardUnit) || (grade === 'm2' ? '도형의 성질' : current.startsWith('M3-05') ? '삼각비' : '원의 성질'),
+                    sourceStandardUnitKey,
                     sourceSubUnitKey: current,
-                    workingSubUnitKey: getWorkingSubUnit(sourceArchiveFile, question.id, current),
+                    workingStandardUnitKey: getWorkingStandardUnitKey(workingSubUnitKey, sourceStandardUnitKey),
+                    workingSubUnitKey,
                     legacyLevel: text(question.level),
+                    visualRisk: Boolean(question.image) || /<svg|<Figure|그림/.test(text(question.content)),
                     contentSnippet: compact(question.content),
                     solutionSnippet: compact(question.solution),
                     _question: question,
@@ -391,6 +405,43 @@ function subsetSummary(records) {
     };
 }
 
+function buildReviewTargets(records, candidateL4Usage) {
+    const triggers = new Map();
+    const add = (record, reason) => {
+        const reasons = triggers.get(record.questionUid) || new Set();
+        reasons.add(reason);
+        triggers.set(record.questionUid, reasons);
+    };
+    const groups = new Map();
+    for (const record of records) {
+        if (!record.problemTypeKey || record.difficultyBucket === 'UNKNOWN') continue;
+        const key = `${record.problemTypeKey}|${record.templateKey || '(none)'}`;
+        const group = groups.get(key) || [];
+        group.push(record);
+        groups.set(key, group);
+    }
+    for (const record of records) {
+        if (record.l3Status === 'OUT_OF_SCOPE') add(record, 'route_out_or_source_hold');
+        if (record.difficultyBoundaryFlag !== 'NONE') add(record, 'difficulty_boundary_or_unresolved');
+        if (record.difficultyConfidence === 'low') add(record, 'low_confidence');
+        if (record.legacyLevelCompatibility === 'STRONG_CONFLICT') add(record, 'strong_legacy_conflict');
+        if (record.legacyLevelCompatibility === 'BORDERLINE_REVIEW' || record.legacyLevelCompatibility === 'BORDERLINE_ACCEPTABLE') add(record, 'legacy_borderline_mismatch');
+        if (record.visualRisk) add(record, 'visual_or_direct_source_high_risk');
+        if (record.evidence.sourceDefectOrRoute) add(record, 'source_or_solution_defect');
+        if (record.templateKey && record.l4Status === 'CANDIDATE_SUGGESTION' && candidateL4Usage[record.templateKey] <= 1) add(record, 'semantic_outlier_or_singleton_l4_suggestion');
+    }
+    for (const group of groups.values()) {
+        const numeric = group.filter(record => Number.isInteger(record.difficultyBucket));
+        if (numeric.length < 2) continue;
+        const buckets = numeric.map(record => record.difficultyBucket);
+        const min = Math.min(...buckets);
+        const max = Math.max(...buckets);
+        if (max - min < 2) continue;
+        for (const record of numeric.filter(item => item.difficultyBucket === min || item.difficultyBucket === max)) add(record, 'same_type_difficulty_span_endpoint');
+    }
+    return [...triggers.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([questionUid, reasons]) => ({ questionUid, triggerReasons: [...reasons].sort() }));
+}
+
 function build() {
     const canonical = loadCanonical();
     const handoff = JSON.parse(fs.readFileSync(handoffPath, 'utf8'));
@@ -406,6 +457,7 @@ function build() {
         const diff = difficulty(question, l3.problemTypeKey, l4.templateKey, cross, condition, join);
         const activeL3Owner = l3.problemTypeKey ? canonical.activeL3.get(l3.problemTypeKey) : null;
         const activeL4 = l4.templateKey ? canonical.activeL4.has(l4.templateKey) : false;
+        const mapped = Boolean(l3.problemTypeKey);
         const record = {
             questionUid: item.questionUid,
             grade: item.grade,
@@ -413,11 +465,14 @@ function build() {
             sourceOrdinal: item.sourceOrdinal,
             sourceQuestionNo: item.sourceQuestionNo,
             sourceFingerprint: item.sourceFingerprint,
+            visualRisk: item.visualRisk,
             curriculum: item.curriculum,
             standardCourse: item.standardCourse,
             standardUnitKey: item.standardUnitKey,
             standardUnit: item.standardUnit,
+            sourceStandardUnitKey: item.sourceStandardUnitKey,
             sourceSubUnitKey: item.sourceSubUnitKey,
+            workingStandardUnitKey: item.workingStandardUnitKey,
             workingSubUnitKey: item.workingSubUnitKey,
             legacyLevel: item.legacyLevel,
             problemTypeKey: l3.problemTypeKey,
@@ -427,16 +482,20 @@ function build() {
             templateKey: l4.templateKey,
             l4Status: activeL4 ? 'REUSE_ACTIVE' : l4.status,
             l4Action: l4.action,
+            l4ReviewStatus: mapped ? 'PENDING_SEMANTIC_REVIEW' : 'NOT_APPLICABLE',
             crossConceptKeys: cross.map(item => item.key),
             conditionKeys: condition.map(item => item.key),
             integrationPattern: join.key,
+            relationalMetadataStatus: mapped ? 'PENDING_SEMANTIC_REVIEW' : 'NOT_APPLICABLE',
             difficultyBucket: diff.bucket,
             difficultyConfidence: diff.confidence,
             difficultyBoundaryFlag: diff.boundary,
             legacyLevelCompatibility: diff.compatibility,
             reviewStatus: diff.status,
+            heuristicCandidate: diff.heuristicCandidate === true,
+            eligibilityStatus: mapped ? 'PENDING_INDEPENDENT_REVIEW' : 'OUT_OF_SCOPE_HOLD',
             curriculumApplicability: l3.status === 'OUT_OF_SCOPE' ? 'SUPPLEMENTARY_OUTSIDE_CORE' : 'CORE',
-            defaultSelectable: l3.status !== 'OUT_OF_SCOPE',
+            defaultSelectable: false,
             evidence: {
                 sourceFreshness: 'current source JS content + choices + answer + solution read; legacy metadata is comparison only',
                 contentCue: item.contentSnippet,
@@ -444,8 +503,10 @@ function build() {
                 l3Decision: l3.reason,
                 l3CanonicalReuse: activeL3Owner ? `ACTIVE owner ${activeL3Owner}` : 'candidate-only; no production canonical promotion',
                 l4Decision: l4.reason,
+                l4Status: mapped ? 'candidate suggestion only; decisive skeleton not independently reviewed' : 'not applicable',
                 relationalDecision: [...cross.map(item => item.reason), ...condition.map(item => item.reason), join.reason],
                 difficultyBlindReason: diff.reason,
+                difficultyStatus: mapped ? 'heuristic candidate evidence; independent review required' : 'route-out hold',
                 legacyCompareAfterBlind: true,
                 sourceDefectOrRoute: M2_ROUTE_OUT.get(`${item.sourceArchiveFile}#${item.sourceOrdinal}`) || null
             }
@@ -458,8 +519,9 @@ function build() {
     const candidateL4Usage = {};
     for (const record of records) {
         if (record.l3Status === 'CANDIDATE') candidateL3Usage[record.problemTypeKey] = (candidateL3Usage[record.problemTypeKey] || 0) + 1;
-        if (record.l4Status === 'CANDIDATE') candidateL4Usage[record.templateKey] = (candidateL4Usage[record.templateKey] || 0) + 1;
+        if (record.l4Status === 'CANDIDATE_SUGGESTION') candidateL4Usage[record.templateKey] = (candidateL4Usage[record.templateKey] || 0) + 1;
     }
+    const reviewTargets = buildReviewTargets(records, candidateL4Usage);
     const newL3 = Object.entries(NEW_L3).filter(([key]) => candidateL3Usage[key]).map(([key, [label, definition]]) => ({
         problemTypeKey: key,
         canonicalLabelKo: label,
@@ -485,16 +547,19 @@ function build() {
         action: 'ADD',
         promotionStatus: 'REVIEW_REQUIRED'
     }));
-    const bindings = [...new Set(records.filter(record => record.problemTypeKey).map(record => [record.curriculum, record.standardCourse, record.standardUnitKey, record.workingSubUnitKey, record.problemTypeKey].join('|')))]
+    const bindings = [...new Set(records.filter(record => record.problemTypeKey).map(record => [record.curriculum, record.standardCourse, record.workingStandardUnitKey, record.workingSubUnitKey, record.problemTypeKey].join('|')))]
         .map(key => { const [curriculum, standardCourse, standardUnitKey, subUnitKey, problemTypeKey] = key.split('|'); return { curriculum, standardCourse, standardUnitKey, subUnitKey, problemTypeKey, status: 'CANDIDATE', ownerPack: 'MIDDLE_GEOMETRY' }; });
     const ledger = {
         schemaVersion: 'middle-geometry-item-level-assignment-v1',
-        status: 'CANDIDATE_FREEZE_PENDING_GPT_INDEPENDENT_REVIEW',
+        status: 'CANDIDATE_REVIEW_PENDING_FAIL_CLOSED',
         packId: 'MIDDLE_GEOMETRY',
         baseMainSha,
         branch: 'codex/meta-foundation/middle-geometry',
         denominator: { total: 928, m2: 402, m3: 526, uidMissing: 0, uidDuplicate: 928 - byUid.size, sourceDuplicate: 928 - bySource.size },
         stage: { m2: 'M2_ITEM_LEDGER_MATERIALIZED_FROM_FROZEN_SEMANTICS', m3: 'STAGE_2_L3_FRESH_ASSIGNMENT' },
+        reviewManifestStatus: 'REVIEW_PENDING',
+        reviewTargetCount: reviewTargets.length,
+        reviewTargets,
         records,
         summary: {
             l3Usage: Object.fromEntries(Object.entries(records.reduce((out, record) => { const key = record.problemTypeKey || 'OUT_OF_SCOPE'; out[key] = (out[key] || 0) + 1; return out; }, {})).sort(([a], [b]) => a.localeCompare(b))),
@@ -521,7 +586,7 @@ function build() {
     fs.writeFileSync(path.join(evidenceDir, 'm3_stage2_l3_fresh_assignment_526.json'), JSON.stringify({ ...ledger, records: m3Records, denominator: { total: 526, assigned: m3Records.filter(record => record.problemTypeKey).length, hold: m3Records.filter(record => !record.problemTypeKey).length }, summary: subsetSummary(m3Records) }, null, 2) + '\n');
     const audit = {
         schemaVersion: 'middle-geometry-candidate-integrity-audit-v1',
-        status: 'PASS_WITH_ENGINE_CAPABILITY_BLOCK_AND_GPT_REVIEW_PENDING',
+        status: 'CANDIDATE_VALIDATION_ONLY_REVIEW_PENDING_FAIL_CLOSED',
         baseMainSha,
         branch: 'codex/meta-foundation/middle-geometry',
         denominator: ledger.denominator,
@@ -543,18 +608,22 @@ function build() {
             compiledProductionMutation: false,
             runtimeProductionMutation: false,
             difficultyBlindOrderRecorded: records.every(record => record.problemTypeKey ? record.evidence.legacyCompareAfterBlind === true : true),
+            heuristicDifficultyFailClosed: records.filter(record => record.problemTypeKey).every(record => record.reviewStatus === 'PENDING_INDEPENDENT_REVIEW' && record.defaultSelectable === false),
+            relationalMetadataFailClosed: records.filter(record => record.problemTypeKey).every(record => record.relationalMetadataStatus === 'PENDING_SEMANTIC_REVIEW'),
+            l4SuggestionFailClosed: records.filter(record => record.problemTypeKey && record.l4Status === 'CANDIDATE_SUGGESTION').every(record => record.l4ReviewStatus === 'PENDING_SEMANTIC_REVIEW'),
             independentGptReview: 'PENDING_EXTERNAL_REVIEW'
         },
         l3Usage: ledger.summary.l3Usage,
         workingSubUnitUsage: ledger.summary.workingSubUnitUsage,
         candidateL3: newL3.map(item => ({ key: item.problemTypeKey, usage: item.supportingItemCount })),
         candidateL4Count: candidateTemplates.length,
+        reviewTargetCount: reviewTargets.length,
         engineCapability: { status: 'ENGINE_CAPABILITY_BLOCK', reason: 'Current compile-meta-foundation.mjs is GEOMETRY_EQUATIONS/400 hard-coded; no middle-geometry canonical promotion or runtime compile was attempted.' },
         nextGate: 'GPT independent branch review, then pack-generic compiler/runtime/Archive2 integration or explicit approved block'
     };
     audit.integrityDigest = sha256(JSON.stringify({ ledgerHash: sha256(JSON.stringify(records)), audit: { ...audit, integrityDigest: undefined } }));
     fs.writeFileSync(path.join(evidenceDir, 'global_integrity_audit.json'), JSON.stringify(audit, null, 2) + '\n');
-    fs.writeFileSync(path.join(evidenceDir, 'review_manifest.json'), JSON.stringify({ schemaVersion: 'middle-geometry-review-manifest-v1', status: 'PENDING_GPT_INDEPENDENT_REVIEW', requiredChecks: ['full main...branch diff', 'M2 402 semantic parity', 'M3 526 source identity coverage', 'L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty consistency', 'candidate ownership and collision gates', 'engine capability and runtime/Archive2 closure'], generatedArtifacts: ['item_level_assignment_928.json', 'm2_item_level_l3_ledger_402.json', 'm3_stage2_l3_fresh_assignment_526.json', 'global_integrity_audit.json'] }, null, 2) + '\n');
+    fs.writeFileSync(path.join(evidenceDir, 'review_manifest.json'), JSON.stringify({ schemaVersion: 'middle-geometry-review-manifest-v1', status: 'PENDING_GPT_INDEPENDENT_REVIEW', targetCount: reviewTargets.length, targets: reviewTargets, requiredChecks: ['full main...branch diff', 'M2 402 semantic parity', 'M3 526 source identity coverage', 'L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty consistency', 'candidate ownership and collision gates', 'engine capability and runtime/Archive2 closure'], generatedArtifacts: ['item_level_assignment_928.json', 'm2_item_level_l3_ledger_402.json', 'm3_stage2_l3_fresh_assignment_526.json', 'global_integrity_audit.json'] }, null, 2) + '\n');
     console.log(JSON.stringify({ outputDir, evidenceDir, records: records.length, m2: records.filter(record => record.grade === 'M2').length, m3: records.filter(record => record.grade === 'M3').length, l3Usage: ledger.summary.l3Usage, routeOut: ledger.summary.routeOutCount, candidateL3: newL3.length, candidateL4: candidateTemplates.length, auditStatus: audit.status, engine: audit.engineCapability.status }, null, 2));
 }
 
