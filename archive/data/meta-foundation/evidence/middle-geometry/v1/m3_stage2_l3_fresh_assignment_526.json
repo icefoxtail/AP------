@@ -7577,12 +7577,12 @@
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -7600,8 +7600,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M2_M3_MIXED_001_025",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "같은 중심거리의 현이 같은 길이임을 이용해 이등변삼각형 밑각을 구한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_06d1c119958a8020344d487fc5506fe4569b6fac1c2b9a9592c9658613b8af9f",
@@ -46939,9 +46958,9 @@
     "schemaVersion": "middle-geometry-blind-review-progress-v1",
     "status": "BLIND_REVIEW_IN_PROGRESS",
     "denominator": 923,
-    "reviewedCount": 484,
-    "remainingCount": 439,
-    "batchCount": 20,
+    "reviewedCount": 509,
+    "remainingCount": 414,
+    "batchCount": 21,
     "batches": [
       {
         "batchId": "M3_TRIG_001_025",
@@ -47061,6 +47080,12 @@
         "batchId": "M3_CIRCLE_276_284",
         "file": "difficulty_blind_batch_20_m3_circle_276_284.json",
         "count": 9,
+        "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+      },
+      {
+        "batchId": "M2_M3_MIXED_001_025",
+        "file": "difficulty_blind_batch_21_m2_m3_mixed_001_025.json",
+        "count": 25,
         "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
       }
     ],
