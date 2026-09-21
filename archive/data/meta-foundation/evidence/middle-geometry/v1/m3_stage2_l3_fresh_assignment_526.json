@@ -42136,13 +42136,13 @@
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -42163,8 +42163,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M2_M3_MIXED_376_400",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "직각삼각형의 나머지 변, 넓이·반둘레, 내접원 반지름을 차례로 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_dda144a88b0d2464c2a75a16dad3cd548ff789565eea548bf5072e06b0911463",
@@ -47623,9 +47642,9 @@
     "schemaVersion": "middle-geometry-blind-review-progress-v1",
     "status": "BLIND_REVIEW_IN_PROGRESS",
     "denominator": 923,
-    "reviewedCount": 844,
-    "remainingCount": 79,
-    "batchCount": 35,
+    "reviewedCount": 869,
+    "remainingCount": 54,
+    "batchCount": 36,
     "batches": [
       {
         "batchId": "M3_TRIG_001_025",
@@ -47834,6 +47853,12 @@
       {
         "batchId": "M2_M3_MIXED_351_375",
         "file": "difficulty_blind_batch_35_m2_m3_mixed_351_375.json",
+        "count": 25,
+        "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+      },
+      {
+        "batchId": "M2_M3_MIXED_376_400",
+        "file": "difficulty_blind_batch_36_m2_m3_mixed_376_400.json",
         "count": 25,
         "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
       }
