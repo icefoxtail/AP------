@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "middle-geometry-candidate-integrity-audit-v1",
+  "status": "PASS_WITH_ENGINE_CAPABILITY_BLOCK_AND_GPT_REVIEW_PENDING",
+  "baseMainSha": "843d26d60780ae1502dd53d75c8f2b064b98174f",
+  "branch": "codex/meta-foundation/middle-geometry",
+  "denominator": {
+    "total": 928,
+    "m2": 402,
+    "m3": 526,
+    "uidMissing": 0,
+    "uidDuplicate": 0,
+    "sourceDuplicate": 0
+  },
+  "checks": {
+    "denominatorExact": true,
+    "m2Exact": true,
+    "m3Exact": true,
+    "uniqueUid": true,
+    "uniqueSourceIdentity": true,
+    "m2RouteOutExact": true,
+    "forbiddenTriangleAreaRatioAbsent": true,
+    "candidateL3KeyCollision": false,
+    "candidateL4KeyCollision": false,
+    "unregisteredCrossConcept": [],
+    "unregisteredCondition": [],
+    "sourceFingerprintPresence": true,
+    "sourceProductionMutation": false,
+    "canonicalProductionMutation": false,
+    "compiledProductionMutation": false,
+    "runtimeProductionMutation": false,
+    "difficultyBlindOrderRecorded": true,
+    "independentGptReview": "PENDING_EXTERNAL_REVIEW"
+  },
+  "l3Usage": {
+    "OUT_OF_SCOPE": 5,
+    "PT_CIRCLE_ANGLE_RELATIONS": 116,
+    "PT_CIRCLE_LINE_RELATION": 54,
+    "PT_CIRCLE_TANGENT": 114,
+    "PT_COORD_CENTROID": 3,
+    "PT_ISOSCELES_TRIANGLE": 24,
+    "PT_PARALLEL_SEGMENT_RATIO": 41,
+    "PT_QUADRILATERAL_PROPERTIES": 104,
+    "PT_RIGHT_TRIANGLE_CONGRUENCE": 29,
+    "PT_SIMILAR_FIGURES": 67,
+    "PT_TRIANGLE_ANGLE_BISECTOR": 21,
+    "PT_TRIANGLE_CENTERS": 101,
+    "PT_TRIANGLE_SIMILARITY": 30,
+    "PT_TRIG_RATIO": 112,
+    "PT_TRIG_RATIO_APPLICATION": 94,
+    "PT_TWO_CIRCLES": 13
+  },
+  "workingSubUnitUsage": {
+    "M2-05-QUADRILATERAL_PROPERTIES": 101,
+    "M2-05-TRIANGLE_PROPERTIES": 163,
+    "M2-06-PARALLEL_LENGTH_RATIO": 41,
+    "M2-06-SIMILAR_FIGURE": 97,
+    "M3-05-TRIG_RATIO": 148,
+    "M3-05-TRIG_RATIO_APPLICATION": 58,
+    "M3-06-CIRCLE_INSCRIBED_ANGLE": 187,
+    "M3-06-CIRCLE_LINE": 133
+  },
+  "candidateL3": [
+    {
+      "key": "PT_ISOSCELES_TRIANGLE",
+      "usage": 24
+    },
+    {
+      "key": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "usage": 29
+    },
+    {
+      "key": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "usage": 21
+    },
+    {
+      "key": "PT_TRIANGLE_CENTERS",
+      "usage": 101
+    },
+    {
+      "key": "PT_QUADRILATERAL_PROPERTIES",
+      "usage": 104
+    },
+    {
+      "key": "PT_SIMILAR_FIGURES",
+      "usage": 67
+    },
+    {
+      "key": "PT_TRIANGLE_SIMILARITY",
+      "usage": 30
+    },
+    {
+      "key": "PT_PARALLEL_SEGMENT_RATIO",
+      "usage": 41
+    },
+    {
+      "key": "PT_TRIG_RATIO",
+      "usage": 112
+    },
+    {
+      "key": "PT_TRIG_RATIO_APPLICATION",
+      "usage": 94
+    },
+    {
+      "key": "PT_CIRCLE_ANGLE_RELATIONS",
+      "usage": 116
+    }
+  ],
+  "candidateL4Count": 36,
+  "engineCapability": {
+    "status": "ENGINE_CAPABILITY_BLOCK",
+    "reason": "Current compile-meta-foundation.mjs is GEOMETRY_EQUATIONS/400 hard-coded; no middle-geometry canonical promotion or runtime compile was attempted."
+  },
+  "nextGate": "GPT independent branch review, then pack-generic compiler/runtime/Archive2 integration or explicit approved block",
+  "integrityDigest": "01ad831e4bca3ab060133ffb60ae85f3a242007e623864cce4c07d665e4e0fa6"
+}
