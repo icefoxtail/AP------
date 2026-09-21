@@ -372,7 +372,11 @@ Checkpoint는 **멈춤 지점이 아니다.**
 - actual ledger/evidence 저장
 - `git status`/변경 파일/denominator/gate 확인
 - checkpoint commit
-- 다음 stage 자동 진행
+- **처음 받은 original GOAL과 DONE 조건을 다시 확인**
+- 현재 완료 checkpoint와 남은 stage를 대조
+- 다음 미완료 stage로 자동 진행
+
+checkpoint commit 이후에는 새 작업으로 재해석하거나 범위를 임의로 바꾸지 않는다. **항상 original GOAL을 기준으로 남은 단계만 이어서 수행하고, DONE 조건 충족 또는 실제 HARD BLOCKER까지 계속 진행한다.**
 
 의미 없는 소량 commit, scratch/backup/temp artifact commit 금지.
 
