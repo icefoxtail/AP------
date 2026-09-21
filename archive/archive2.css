@@ -7,6 +7,7 @@
   --accent: #de683c;
   --danger: #a3313e;
   --radius: 10px;
+  --archive2-focus: #c96b1f;
   font-family: Inter, Pretendard, "Noto Sans KR", system-ui, sans-serif;
   color: var(--ink);
   background: var(--bg);
@@ -102,8 +103,8 @@ label.check {
   color: var(--ink);
 }
 :focus-visible {
-  outline: 3px solid #e59144;
-  outline-offset: 3px;
+  outline: 3px solid var(--archive2-focus);
+  outline-offset: 2px;
 }
 .skip {
   position: fixed;
@@ -1070,20 +1071,20 @@ button.small {
     padding: 5px 16px;
   }
   main {
-    padding: 16px 14px 84px;
+    padding: 16px 14px calc(84px + var(--archive2-mobile-bottom-nav-offset, 0px));
   }
   .mobile-actions {
     display: flex;
     gap: 8px;
     position: fixed;
-    bottom: 0;
+    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
     left: 0;
     right: 0;
     z-index: 15;
     background: #fffffff5;
     border-top: 1px solid var(--line);
     padding: 10px 14px;
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    padding-bottom: 10px;
   }
   .mobile-actions button {
     flex: 1;
@@ -1286,7 +1287,7 @@ select {
 @media (max-width: 700px) {
   .inspector.mobile-open {
     position: fixed;
-    inset: auto 8px 72px;
+    inset: auto 8px calc(72px + var(--archive2-mobile-bottom-nav-offset, 0px));
     max-height: 72vh;
     overflow: auto;
     z-index: 40;
@@ -1925,7 +1926,7 @@ select {
     z-index: 30;
     min-height: 80px;
     margin: 0;
-    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    padding: 6px 8px;
     border: 1px solid #d0d5dd;
     border-radius: 10px 10px 0 0;
     background: #fff;
@@ -1953,8 +1954,188 @@ select {
   }
   .finder-surface:has(.finder-selection-bar) {
     padding-bottom: calc(
-      104px + var(--archive2-mobile-bottom-nav-offset, 0px) +
-        env(safe-area-inset-bottom)
+      104px + var(--archive2-mobile-bottom-nav-offset, 0px)
     );
   }
 }
+
+/* Archive 2.0 Home — minimal start surface */
+body[data-archive-view="home"] .status:not(.error) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.archive-home {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+.archive-home-heading {
+  margin: 0 0 16px;
+}
+.archive-home-heading h1 {
+  margin: 0;
+  font-size: 25px;
+}
+.archive-home-start {
+  padding: 18px;
+}
+.archive-home-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 8px;
+  margin: 0;
+}
+.archive-home-search-box {
+  min-width: 0;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid #cbd3dd;
+  border-radius: 8px;
+  background: #fff;
+  color: #475467;
+  overflow: hidden;
+}
+.archive-home-search-box:focus-within {
+  outline: 3px solid var(--archive2-focus);
+  outline-offset: 2px;
+}
+.archive-home-search-box > span {
+  width: 40px;
+  flex: none;
+  text-align: center;
+  font-size: 18px;
+  color: #667085;
+}
+.archive-home-search-box input {
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
+  padding: 0 12px 0 0;
+  background: transparent;
+  color: #172033;
+  font-size: 14px;
+  outline: 0;
+}
+.archive-home-search-box input:focus-visible {
+  outline: 0;
+}
+.archive-home-search-submit {
+  min-width: 64px;
+  min-height: 44px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+.archive-home-grades {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 12px;
+}
+.archive-home-grades button {
+  min-width: 0;
+  min-height: 42px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+.archive-home-drafts-section {
+  margin-top: 18px;
+}
+.archive-home-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.archive-home-section-head h2 {
+  margin: 0;
+}
+.archive-home-drafts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.archive-home-draft {
+  min-width: 0;
+  min-height: 118px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  background: #fff;
+}
+.archive-home-draft h3 {
+  margin: 0;
+  color: #172033;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.archive-home-draft p {
+  margin: 7px 0 0;
+  color: #475467;
+  font-size: 12px;
+}
+.archive-home-draft button {
+  min-height: 36px;
+  padding: 7px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.archive-home-empty {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1240px) {
+  .archive-home-drafts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 960px) {
+  .archive-home {
+    width: 100%;
+  }
+  .archive-home-heading {
+    margin-bottom: 10px;
+  }
+  .archive-home-heading h1 {
+    font-size: 22px;
+  }
+  .archive-home-start {
+    padding: 12px;
+  }
+  .archive-home-grades {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .archive-home-grades button {
+    min-height: 44px;
+  }
+  .archive-home-drafts-section {
+    margin-top: 14px;
+  }
+  .archive-home-drafts {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .archive-home-draft {
+    min-height: 0;
+    padding: 13px;
+    align-items: center;
+  }
+  .archive-home-draft button {
+    min-height: 44px;
+  }
+}
+
