@@ -16162,11 +16162,11 @@
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -16187,8 +16187,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M2_M3_MIXED_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "두 동심원에서 현·중심거리·반지름을 연쇄 복원해 원 넓이 차를 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_4842e885e7118aab2ee214e40955ce81ace75dcb9947013fdff469a304867033",
@@ -47167,9 +47186,9 @@
     "schemaVersion": "middle-geometry-blind-review-progress-v1",
     "status": "BLIND_REVIEW_IN_PROGRESS",
     "denominator": 923,
-    "reviewedCount": 584,
-    "remainingCount": 339,
-    "batchCount": 24,
+    "reviewedCount": 598,
+    "remainingCount": 325,
+    "batchCount": 25,
     "batches": [
       {
         "batchId": "M3_TRIG_001_025",
@@ -47313,6 +47332,12 @@
         "batchId": "M2_M3_MIXED_076_100",
         "file": "difficulty_blind_batch_24_m2_m3_mixed_076_100.json",
         "count": 25,
+        "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+      },
+      {
+        "batchId": "M2_M3_MIXED_101_125",
+        "file": "difficulty_blind_batch_25_m2_m3_mixed_101_125.json",
+        "count": 14,
         "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
       }
     ],
