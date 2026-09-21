@@ -1,6 +1,6 @@
 # Middle Geometry Stage 2 L3 Fresh Assignment — 2026-09-21
 
-- status: `CANDIDATE_FREEZE_PENDING_GPT_INDEPENDENT_REVIEW`
+- status: `CANDIDATE_REVIEW_PENDING_FAIL_CLOSED`
 - base main: `843d26d60780ae1502dd53d75c8f2b064b98174f`
 - branch: `codex/meta-foundation/middle-geometry`
 - production JS mutation: `0`
@@ -65,11 +65,13 @@ The 13 M3 candidate/existing L3 axes are not 13 new canonical definitions: the t
 
 ## L4 and relational metadata
 
-- candidate L4 templates: **36**
+- candidate L4 templates: **36 suggestions**
 - existing ACTIVE L4 reuse is used where the geometry-equations definition is an exact semantic fit (`TM_CIRCLE_*`, `TM_TANGENT_*`, `TM_TWO_CIRCLES_*`, and centroid templates).
 - numeric, wording, proof-format, and difficulty-only variants are kept inside candidate evidence rather than promoted to separate canonical L4 keys.
-- CrossConcept and Condition assignments are item-level and conservative; primary taxonomy concepts are not duplicated as CrossConcepts.
-- difficulty fields are blind-first candidate evidence; legacy comparison is recorded only after the candidate bucket.
+- CrossConcept and Condition assignments are item-level candidate suggestions; primary taxonomy concepts are not duplicated as CrossConcepts.
+- IntegrationPattern is also candidate evidence and remains pending semantic review.
+- No L4/CrossConcept/Condition/IntegrationPattern result is promotion-ready.
+- difficulty fields are heuristic candidate evidence only; no mapped item is `reviewed_pass` or automatic-eligibility eligible.
 
 ## Gates
 
@@ -78,10 +80,16 @@ The 13 M3 candidate/existing L3 axes are not 13 new canonical definitions: the t
 - M3 working L2 parity: `PASS`
 - candidate L3 key collision against ACTIVE canonical: `0`
 - candidate L4 key collision against ACTIVE canonical: `0`
+- L1→L2 parent mismatch: `0`
+- candidate binding parent mismatch: `0`
+- pack owned-domain violation: `0`
+- source/working metadata confusion: `0`
+- actual alias audit: `EXECUTED`, lookup entries `134`, collision count `0`
 - unregistered CrossConcept / Condition references: `0`
 - source / canonical / compiled / runtime mutation: `0`
 - current compiler/runtime capability: `ENGINE_CAPABILITY_BLOCK` — `compile-meta-foundation.mjs` is still hard-coded to `GEOMETRY_EQUATIONS`/400, so no middle-geometry canonical promotion or runtime claim was made.
 - GPT independent branch review: `PENDING_EXTERNAL_REVIEW`
+- independent recheck trigger union: **913** UID targets
 
 ## Artifacts
 
