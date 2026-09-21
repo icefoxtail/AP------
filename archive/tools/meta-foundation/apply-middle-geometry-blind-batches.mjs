@@ -29,6 +29,8 @@ function apply() {
             if (seen.has(decision.questionUid)) throw new Error(`duplicate blind decision across batches: ${decision.questionUid}`);
             const record = byUid.get(decision.questionUid);
             if (!record) throw new Error(`blind decision UID not in ledger: ${decision.questionUid}`);
+            const expectedSource = `${record.sourceArchiveFile}#${record.sourceOrdinal}`;
+            if (decision.source !== expectedSource) throw new Error(`blind decision source mismatch for ${decision.questionUid}: ${decision.source} != ${expectedSource}`);
             if (!record.problemTypeKey) throw new Error(`route-out cannot receive mapped blind decision: ${decision.questionUid}`);
             seen.add(decision.questionUid);
             record.difficultyBucket = decision.difficultyBucket;
@@ -82,4 +84,3 @@ function apply() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url))) apply();
-
