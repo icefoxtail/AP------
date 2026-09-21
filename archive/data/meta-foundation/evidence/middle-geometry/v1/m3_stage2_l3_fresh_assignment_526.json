@@ -38170,11 +38170,11 @@
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -38193,8 +38193,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M2_M3_MIXED_326_350",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "서로 수직인 두 직선이 만드는 각을 원래 예각으로 치환하고 피타고라스로 코사인을 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_c1d77426ac2e7e632abcc52d04d7ff5f890bd9300c37b2f23d8e2fc8abe7ffa0",
@@ -38770,13 +38789,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -38797,8 +38816,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M2_M3_MIXED_326_350",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "접어 만든 현의 중심거리 조건을 반현 직각삼각형에 넣어 반지름에 대한 방정식을 푼다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_c50d6b573fa518ccbfca333378e99c0ae61b538d165091f7c1c2e8895cd9b08b",
@@ -47566,9 +47604,9 @@
     "schemaVersion": "middle-geometry-blind-review-progress-v1",
     "status": "BLIND_REVIEW_IN_PROGRESS",
     "denominator": 923,
-    "reviewedCount": 794,
-    "remainingCount": 129,
-    "batchCount": 33,
+    "reviewedCount": 819,
+    "remainingCount": 104,
+    "batchCount": 34,
     "batches": [
       {
         "batchId": "M3_TRIG_001_025",
@@ -47765,6 +47803,12 @@
       {
         "batchId": "M2_M3_MIXED_301_325",
         "file": "difficulty_blind_batch_33_m2_m3_mixed_301_325.json",
+        "count": 25,
+        "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+      },
+      {
+        "batchId": "M2_M3_MIXED_326_350",
+        "file": "difficulty_blind_batch_34_m2_m3_mixed_326_350.json",
         "count": 25,
         "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
       }
