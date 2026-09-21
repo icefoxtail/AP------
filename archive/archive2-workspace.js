@@ -654,6 +654,170 @@
         "전체 시험",
       )}</select></label></div>`;
   }
+
+  function finderCourseOptions(filters) {
+    const courseLabel = (value) =>
+      /^M([123])-([12])$/.test(value)
+        ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
+        : value;
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    return highSemantic
+      ? C.highSemanticSubjectOptions()
+      : unique(
+          taxonomyRowsForFilters({ ...filters, courseKey: "" })
+            .map((r) => r.courseKey),
+        ).map((value) => ({ value, label: courseLabel(value) }));
+  }
+  function finderUpstreamMatch(exam, filters) {
+    if (!O.matchesMaterial(exam, filters.material)) return false;
+    if (filters.grade && exam.effectiveBrowseGrade !== filters.grade) return false;
+    if (
+      filters.curriculumKey &&
+      !C.finderMatches(
+        exam,
+        { curriculumKey: filters.curriculumKey },
+        state.finderIndex,
+      )
+    )
+      return false;
+    if (
+      filters.semanticSubject &&
+      !C.finderMatches(
+        exam,
+        { semanticSubject: filters.semanticSubject },
+        state.finderIndex,
+      )
+    )
+      return false;
+    if (
+      filters.courseKey &&
+      !C.finderMatches(
+        exam,
+        { courseKey: filters.courseKey },
+        state.finderIndex,
+      )
+    )
+      return false;
+    return true;
+  }
+  function finderSchoolValues(filters = state.find) {
+    return unique(
+      state.catalog.exams
+        .filter((exam) => finderUpstreamMatch(exam, filters))
+        .map((exam) => exam.school),
+    ).sort((a, b) => a.localeCompare(b, "ko"));
+  }
+  function reconcileFinderSchool(filters = state.find) {
+    const schools = finderSchoolValues(filters);
+    if (filters.school && !schools.includes(filters.school))
+      filters.school = "";
+    return filters;
+  }
+  function finderFamilyLabel(value) {
+    return (
+      {
+        COMMON_1: "공통수학1 계열",
+        COMMON_2: "공통수학2 계열",
+        ALGEBRA: "대수 계열",
+        CALCULUS: "미적분 기초 계열",
+        CALCULUS_ADVANCED: "미적분 심화 계열",
+        PROB_STATS: "확률과통계",
+        GEOMETRY: "기하",
+      }[value] || value
+    );
+  }
+  function finderAxisLabel(value) {
+    return (
+      {
+        "1-mid": "1학기 중간",
+        "1-final": "1학기 기말",
+        "2-mid": "2학기 중간",
+        "2-final": "2학기 기말",
+      }[value] || value
+    );
+  }
+  function finderResettable(filters = state.find) {
+    return Boolean(
+      filters.curriculumKey ||
+        filters.courseKey ||
+        filters.semanticSubject ||
+        filters.school ||
+        filters.axis ||
+        filters.yearFrom ||
+        filters.yearTo ||
+        filters.family ||
+        filters.query,
+    );
+  }
+  function finderSearchMarkup(filters) {
+    return `<div class="finder-search-zone"><div class="finder-search-row"><label class="finder-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="finder-query" value="${esc(filters.query || "")}" placeholder="학교명, 과목, 단원으로 검색"></label>${button("finder-search", "검색", 'class="primary finder-search-submit"')}</div></div>`;
+  }
+  function finderActiveMarkup(filters) {
+    const active = [
+      ["학교", filters.school],
+      ["시험", filters.axis ? finderAxisLabel(filters.axis) : ""],
+      [
+        "연도",
+        filters.yearFrom || filters.yearTo
+          ? `${filters.yearFrom || "…"}~${filters.yearTo || "…"}`
+          : "",
+      ],
+      ["과목 계열", filters.family ? finderFamilyLabel(filters.family) : ""],
+    ].filter(([, value]) => value);
+    return `<div class="finder-active-zone"><div class="finder-active-row">${active
+      .map(
+        ([label, value]) =>
+          `<span class="finder-chip">${esc(label)} ${esc(value)}</span>`,
+      )
+      .join("")}</div>${
+      finderResettable(filters)
+        ? button(
+            "finder-reset",
+            "검색 조건 지우기",
+            'class="finder-reset-action"',
+          )
+        : ""
+    }</div>`;
+  }
+  function finderPrimaryFilterMarkup(filters) {
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    const courses = finderCourseOptions(filters);
+    const courseField = highSemantic
+      ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, "과목 선택")}</select></label>`
+      : `<label class="finder-field finder-course"><span>과목</span><select data-filter="courseKey" data-group="find">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
+    return `<div class="finder-filter-core"><label class="finder-field"><span>학년</span><select data-filter="grade" data-group="find">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, "전체 학년")}</select></label><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${courseField}</div>`;
+  }
+  function finderDetailFilterMarkup(filters) {
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    const schools = finderSchoolValues(filters);
+    return `<div class="finder-filter-detail"><label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field"><span>시험 시기</span><select data-filter="axis" data-group="find">${options(
+      [
+        { value: "1-mid", label: "1학기 중간" },
+        { value: "1-final", label: "1학기 기말" },
+        { value: "2-mid", label: "2학기 중간" },
+        { value: "2-final", label: "2학기 기말" },
+      ],
+      filters.axis,
+      "전체 시험",
+    )}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${
+      highSemantic
+        ? ""
+        : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
+            [
+              { value: "COMMON_1", label: "공통수학1 계열" },
+              { value: "COMMON_2", label: "공통수학2 계열" },
+              { value: "ALGEBRA", label: "대수 계열" },
+              { value: "CALCULUS", label: "미적분 기초 계열" },
+              { value: "CALCULUS_ADVANCED", label: "미적분 심화 계열" },
+              { value: "PROB_STATS", label: "확률과통계" },
+              { value: "GEOMETRY", label: "기하" },
+            ],
+            filters.family,
+            "전체 계열",
+          )}</select></label>`
+    }</div>`;
+  }
+
   function findExams() {
     const f = state.find;
     const query = C.normalizeSearch(f.query || "");
@@ -796,24 +960,28 @@
       popup.location.href = url.href;
     } catch (error) { popup?.close(); throw error; }
   }
+
   function renderFind() {
+    reconcileFinderSchool(state.find);
     const exams = findExams(),
-      page = exams.slice(state.page * 18, (state.page + 1) * 18);
-    return `<div class="intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
-      <section class="panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div><details class="finder-filters" ${matchMedia("(max-width: 600px)").matches ? "" : "open"}><summary>학년·학교·과목으로 좁히기</summary>${filterMarkup(state.find, "find")}</details></section>
+      page = exams.slice(state.page * 18, (state.page + 1) * 18),
+      detailOpen = matchMedia("(max-width: 700px)").matches ? "" : " open";
+    return `<div class="finder-surface"><div class="intro finder-intro"><div><h1>기출·자료 찾기</h1><p class="muted">제목을 눌러 시험지를 확인하고, 반·학생을 골라 출제하세요.</p></div>${button("go-compose", "문제지 만들기")}</div>
+      <section class="panel finder-panel"><div class="material-switch" aria-label="찾을 시험지 종류">${[["exam","학교 기출"],["nonexam","기출 외 시험지"],["","전체"]].map(([value,label]) => button("material",label,`data-material="${value}" aria-pressed="${value === "nonexam" ? !!state.find.material && state.find.material !== "exam" : (state.find.material || "") === value}"`)).join("")}</div><div class="material-nav" ${!state.find.material || state.find.material === "exam" ? "hidden" : ""}><label>자료 종류<select data-filter="material" data-group="find">${options([{value:"exam",label:"학교 기출"},{value:"nonexam",label:"기출 외 전체"},{value:"similar",label:"유사문제 · 유형"},{value:"unit",label:"단원평가"},{value:"other",label:"기타 자료"}],state.find.material,"전체 자료")}</select></label></div>${finderSearchMarkup(state.find)}${finderActiveMarkup(state.find)}${finderPrimaryFilterMarkup(state.find)}<details class="finder-detail-filters"${detailOpen}><summary>상세 필터</summary>${finderDetailFilterMarkup(state.find)}</details></section>
       ${state.find.material && state.find.material !== "exam" ? '<a class="assessment-entry" href="assessment/assessment-mvp.html"><span><strong>평가 보관함</strong><small>진단·단원·학기 평가용으로 준비된 시험지</small></span><span>시험지 보기 →</span></a>' : ""}
-      <div class="resultbar"><strong>${state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
-      <div class="exam-list">${page
+      <div class="resultbar finder-resultbar"><strong>${state.find.material && state.find.material !== "exam" ? "기출 외 시험지" : "시험지"} ${exams.length.toLocaleString()}개</strong><span class="muted">시험지 확인 · 반·학생 출제</span></div>
+      <div class="finder-results-wrap"><div class="exam-list">${page
         .map((e) => {
           const n = state.catalog.exams.indexOf(e),
             selected = state.sources.includes(e.file);
           return `<article class="exam ${selected ? "selected" : ""}"><div class="exam-identity"><div class="head">${badge(e.grade)}${badge(e.contentType)}${e.gradeConflict ? badge("학년 충돌", "warn") : ""}</div><h2><button class="exam-title" data-action="source-preview" data-exam="${n}">${esc(O.displayTitle(e))}</button></h2></div><div class="exam-range"><div class="inline"><strong>${esc(e.primaryStandardCourse || unique((e.courseRanges || []).map((r) => r.standardCourse)).join(" · ") || e.subject)}</strong><span class="muted">${esc(e.semester || "")}학기 ${e.examType === "mid" ? "중간" : e.examType === "final" ? "기말" : "자료"}</span></div><p class="range">${(e.courseRanges || []).map((r) => esc(`${r.standardCourse} · ${r.rangeStartUnit || ""}${r.rangeEndUnit !== r.rangeStartUnit ? " ~ " + r.rangeEndUnit : ""}`)).join("<br>")}</p></div><div class="exam-count"><strong>${e.qCount}<small>문항</small></strong><span class="muted">${O.materialKind(e) === "exam" ? "원본 전체" : "시험지 전체"}</span></div><div class="actions">${button("source-issue", "바로 출제", `data-exam="${n}" class="small primary"`)}${button("source-preview", "시험지 확인", `data-exam="${n}" class="small"`)}${button("source-toggle", selected ? "선택됨" : "문항 선택", `data-exam="${n}" aria-pressed="${selected}" class="small"`)}</div></article>`;
         })
-        .join("")}</div>
+        .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
-      ${state.sources.length ? `<div class="floating"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}`;
+      ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}</div>`;
   }
+
   function renderScopes() {
     if (
       C.isHighSemanticSubjectGrade?.(state.filters.grade) &&
@@ -1799,11 +1967,33 @@
         delete state.filters.L4;
         urlState();
         render();
+      } else if (a === "finder-search") {
+        state.find.query = $("finder-query")?.value || "";
+        state.page = 0;
+        urlState();
+        render();
+      } else if (a === "finder-reset") {
+        for (const key of [
+          "curriculumKey",
+          "courseKey",
+          "semanticSubject",
+          "school",
+          "axis",
+          "yearFrom",
+          "yearTo",
+          "family",
+          "query",
+        ])
+          state.find[key] = "";
+        state.page = 0;
+        urlState();
+        render();
       } else if (a === "page-prev") {
         state.page--;
         render();
       } else if (a === "material") {
         state.find.material = b.dataset.material;
+        reconcileFinderSchool(state.find);
         state.page = 0;
         urlState();
         render();
@@ -2077,6 +2267,12 @@
               state.find,
               C.reconcileFinderFilters(state.find, state.catalog.taxonomy),
             );
+          if (
+            ["material", "grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
+              el.dataset.filter,
+            )
+          )
+            reconcileFinderSchool(state.find);
           state.page = 0;
           urlState();
         }
@@ -2225,7 +2421,7 @@
       state.busy ||
       event.isComposing ||
       event.key !== "Enter" ||
-      event.target.dataset.filter !== "query"
+      event.target.id !== "finder-query"
     )
       return;
     event.preventDefault();
