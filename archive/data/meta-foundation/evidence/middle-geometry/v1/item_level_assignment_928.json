@@ -7209,13 +7209,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -7233,8 +7233,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "각 범위로 두 절댓값의 부호를 판단해 식을 정리한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_0199a1c441ee7ba78c363fbb7e300158bdfc81a46179f946d304b0f7cf90ad20",
@@ -12579,12 +12598,12 @@
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -12603,8 +12622,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "단위원 그림에서 읽은 두 근삿값을 직접 뺀다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_22e92e22abe34042641d8cff44d6d8ce2bead9b56d4c34f8a98928fa62257894",
@@ -16119,13 +16157,13 @@
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
+      "difficultyBucket": 3,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -16145,8 +16183,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "정사각형과 내부 정사각형의 겹친 영역을 두 직각삼각형으로 분해해 여러 길이와 넓이를 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_35dcd2a9965ece1571d38f00cebfdbc6fcada74344985ee37808a8bec5cd099b",
@@ -17725,11 +17782,11 @@
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 1,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -17747,8 +17804,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "특수각 삼각비 값을 식에 직접 대입하는 기본 계산형."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_3ca47c3786b0ba4bb767511563af851ed796198ae7d1044ca418eeaab90291b3",
@@ -22408,13 +22484,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 1,
+      "difficultyBucket": 3,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -22432,8 +22508,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "좌표에서 세 변의 길이를 구하고 직각·이등변 구조를 판정해 각의 삼각비를 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_5361653de294f74db3c4578552d42ffaed59e52771c7e5118e97730b854d8c70",
@@ -22523,12 +22618,12 @@
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -22547,8 +22642,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "수선으로 생긴 삼각형의 닮음으로 목표각을 원래 각에 대응해 탄젠트를 구한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_53ef9bf3ecbe0d5b35ecfce969e59f661f90b33356ba03e648c1f5b17b5e1efc",
@@ -28743,12 +28857,12 @@
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 1,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -28766,8 +28880,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "직각삼각형에서 주어진 변을 코사인 정의에 직접 대응한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_6dc78147b75fc71f0eb1eba45354cd6bc3aa12950fbc011fb9798fd686e20eb1",
@@ -31159,13 +31292,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -31184,8 +31317,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "수선으로 나눈 두 직각삼각형에서 높이와 밑변을 복원해 넓이를 구한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_7859ec53bd889fdea8d35f22e7323df9bd1b658aa0d8c94fadad7249ffca57ad",
@@ -32980,13 +33132,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -33005,8 +33157,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "절댓값 부호를 범위로 정리한 뒤 사인·코사인·탄젠트를 순차 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_7f4f0997648908a732f3c0ff1bc4c1badf60c52d3af9e4920464df70e4a35f02",
@@ -34918,13 +35089,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -34942,8 +35113,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "두 직각삼각형의 같은 높이를 탄젠트로 나타내 미지수 방정식을 푼다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_8816278d03ba533549c076149c15a7d7349754434514d94e93dda3d0dc907e60",
@@ -36782,13 +36972,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -36808,8 +36998,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "평행사변형의 대응변과 끼인각 넓이 공식을 직접 적용한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_90ae56eed6029cb817a5d760d30ef3a4c4847e6076f996cc1eed1bc0c07d3e22",
@@ -37148,11 +37357,11 @@
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -37171,8 +37380,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "사인 비에서 나머지 변을 피타고라스로 구하고 탄젠트를 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_91cf132f70ed7fda51e475594f5450b9964e7594f9c365921e0a2aab29e9f3b6",
@@ -42895,13 +43123,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -42919,8 +43147,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "두 관측각에서 높이에 대한 거리식을 만들고 합 조건으로 높이를 구한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_a8bf3b379efa6be01e0eeb43ca48e189edc8dc8ec2992a63a176e0feaff914c2",
@@ -44053,13 +44300,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -44077,8 +44324,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "두 관측점의 탄젠트식으로 건물 높이와 거리를 연립한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_add0145ba3ff99270bed5f582002dc72d07e7eb4d6e7c55508304906ae224365",
@@ -47789,13 +48055,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -47814,8 +48080,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "대각선으로 사각형을 두 삼각형으로 나누고 두 넓이를 직접 합산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
@@ -48076,12 +48361,12 @@
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -48100,8 +48385,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "두 변과 120도 끼인각으로 넓이 공식을 직접 적용한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_bc92164a5cc53e32e29f59bfaa5ad2be4378dd68398c275728ac982774f23916",
@@ -48190,13 +48494,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -48215,8 +48519,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "단위원 좌표와 여각 관계로 보기의 근삿값을 비교한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_bcaffd2248f2b961017c8f134b1652fe281e413c6394453bc1d9e4982d7e036f",
@@ -49415,13 +49738,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 1,
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -49439,8 +49762,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "이차방정식의 두 근 중 예각의 사인 범위에 맞는 근을 선택하고 삼각비 항등식을 사용한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_c23cd794995f2092597e22f1af7b0f35423e538d15e1582f803e5969020177a3",
@@ -50900,11 +51242,11 @@
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 4,
       "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -50924,8 +51266,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "정육면체의 면·공간 대각선과 높이로 닮음 삼각형을 구성해 세 삼각비 식을 결합한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_ca9668a1ebdfda727a4dbda5ccd194f99e69acf80c24433d61827ffa9c52f8bc",
@@ -51511,12 +51872,12 @@
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -51534,8 +51895,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "눈높이 위 높이에 탄젠트를 적용하고 눈높이를 더한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_cd28c7a0b278f890343ab76b6c2da6959f68cb98cc9b099512b40718c600b9c8",
@@ -55097,13 +55477,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -55121,8 +55501,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "수선으로 30도·45도 두 직각삼각형을 만들고 길이를 순차 복원한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_de05c8f5bd81a6127d8730a8e09746a4a840f731aee7e66995f28d1aa969cba6",
@@ -57880,13 +58279,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -57904,8 +58303,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "직선의 방향에서 탄젠트로 기울기 부호와 크기를 정하고 절편으로 식을 완성한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_e8cec6640682d8f85852202cc3fd12915a9de5fd9c08ca1a45309e8294f90025",
@@ -58346,13 +58764,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 1,
+      "difficultyBucket": 2,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -58370,8 +58788,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "각의 비를 30·60·90도로 환산해 특수각 삼각비를 대입한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
@@ -59579,13 +60016,13 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
+      "difficultyBucket": 2,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -59603,8 +60040,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "특수각 값을 각 보기에서 직접 계산해 참인 식을 찾는다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_f0fae6e4811f93eff8f17c4ffa0d1ede0917587ad651ea204321572c3a528452",
@@ -61906,11 +62362,11 @@
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
       "difficultyBucket": 2,
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -61929,8 +62385,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M3_TRIG_101_125",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "사인 비에서 3-4-5 관계를 만들어 코사인을 계산한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_fd1b64c0f8298556be66546d494cc80c7e7a997d4fed32e3f88952a7941e4432",
@@ -62897,9 +63372,9 @@
     "schemaVersion": "middle-geometry-blind-review-progress-v1",
     "status": "BLIND_REVIEW_IN_PROGRESS",
     "denominator": 923,
-    "reviewedCount": 100,
-    "remainingCount": 823,
-    "batchCount": 4,
+    "reviewedCount": 125,
+    "remainingCount": 798,
+    "batchCount": 5,
     "batches": [
       {
         "batchId": "M3_TRIG_001_025",
@@ -62922,6 +63397,12 @@
       {
         "batchId": "M3_TRIG_076_100",
         "file": "difficulty_blind_batch_04_m3_trig_076_100.json",
+        "count": 25,
+        "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+      },
+      {
+        "batchId": "M3_TRIG_101_125",
+        "file": "difficulty_blind_batch_05_m3_trig_101_125.json",
         "count": 25,
         "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
       }
