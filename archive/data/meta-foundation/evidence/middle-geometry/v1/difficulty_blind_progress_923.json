@@ -1,10 +1,10 @@
 {
   "schemaVersion": "middle-geometry-blind-review-progress-v1",
-  "status": "BLIND_REVIEW_IN_PROGRESS",
+  "status": "BLIND_REVIEW_COMPLETE_PENDING_FREEZE",
   "denominator": 923,
-  "reviewedCount": 894,
-  "remainingCount": 29,
-  "batchCount": 37,
+  "reviewedCount": 923,
+  "remainingCount": 0,
+  "batchCount": 39,
   "batches": [
     {
       "batchId": "M3_TRIG_001_025",
@@ -227,9 +227,21 @@
       "file": "difficulty_blind_batch_37_m2_m3_mixed_401_425.json",
       "count": 25,
       "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+    },
+    {
+      "batchId": "M2_M3_MIXED_426_450",
+      "file": "difficulty_blind_batch_38_m2_m3_mixed_426_450.json",
+      "count": 25,
+      "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+    },
+    {
+      "batchId": "M2_M3_MIXED_451_454",
+      "file": "difficulty_blind_batch_39_m2_m3_mixed_451_454.json",
+      "count": 4,
+      "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
     }
   ],
   "legacyUsedDuringBlind": false,
   "automaticPromotion": false,
-  "nextStart": "next unreviewed mapped UID batch"
+  "nextStart": "blind freeze → legacy compare → trigger union"
 }
