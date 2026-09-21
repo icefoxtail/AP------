@@ -10,6 +10,7 @@ const runtime = JSON.parse(fs.readFileSync(path.join(root, 'candidate_runtime_mi
 const recheck = JSON.parse(fs.readFileSync(path.join(root, 'independent_recheck_manifest_928.json'), 'utf8'));
 const taxonomy = JSON.parse(fs.readFileSync(path.join(candidateRoot, 'taxonomy.json'), 'utf8'));
 const bindings = JSON.parse(fs.readFileSync(path.join(candidateRoot, 'bindings.json'), 'utf8'));
+const builderSource = fs.readFileSync(path.resolve('archive/tools/meta-foundation/build-middle-geometry-candidate.mjs'), 'utf8');
 
 assert.equal(ledger.records.length, 928);
 assert.equal(new Set(ledger.records.map(record => record.questionUid)).size, 928);
@@ -46,5 +47,18 @@ assert.ok(recheck.triggerUnionCount >= recheck.targetCount);
 assert.equal(taxonomy.status, 'CANDIDATE');
 assert.ok(taxonomy.templates.every(template => template.promotionStatus === 'REVIEW_REQUIRED'));
 assert.equal(audit.productionPromotion, 'NOT_ATTEMPTED');
+
+// Semantic taxonomy regression guard: heuristic/regex outputs may only be hints.
+assert.match(builderSource, /semanticLedgerPath/);
+assert.match(builderSource, /SEMANTIC_LEDGER_MISSING_FAIL_CLOSED/);
+assert.match(builderSource, /problemTypeHintKey/);
+assert.match(builderSource, /templateHintKey/);
+assert.match(builderSource, /crossConceptHints/);
+assert.match(builderSource, /HOLD_FOR_SEMANTIC_LEDGER/);
+assert.match(builderSource, /hintToSemanticLeakageCount/);
+assert.doesNotMatch(builderSource, /problemTypeKey:\s*l3\.problemTypeKey/);
+assert.doesNotMatch(builderSource, /templateKey:\s*l4\.templateKey/);
+assert.doesNotMatch(builderSource, /crossConceptKeys:\s*cross\.map\(/);
+assert.doesNotMatch(builderSource, /canonicalLabelKo:\s*['"]Middle Geometry candidate template['"]/);
 
 console.log(JSON.stringify({ status: 'PASS', records: ledger.records.length, reviewTargets: recheck.targetCount, aliasCollisionCount: audit.gates.aliasCollisionCount }, null, 2));
