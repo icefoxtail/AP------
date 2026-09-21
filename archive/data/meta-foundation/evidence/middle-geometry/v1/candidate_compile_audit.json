@@ -39,7 +39,15 @@
     "identityJoinMissing": [],
     "archive2JoinMissing": [],
     "aliasAuditStatus": "EXECUTED",
-    "aliasLookupEntryCount": 134,
+    "aliasLookupEntryCount": 177,
+    "aliasAuthoritySource": "compiled/aliases.json plus canonical pack/shard embedded alias parity",
+    "aliasAuthorityParity": {
+      "compiledAliasCount": 177,
+      "compiledDistinctAliasCount": 177,
+      "rawAliasRows": 274,
+      "rawAliasDistinct": 177,
+      "rawToCompiledDistinctParity": true
+    },
     "aliasCollisionCount": 0,
     "aliasCollisions": [],
     "candidateLeakageIntoProduction": 0
@@ -59,12 +67,9 @@
       "UNKNOWN": 5
     },
     "compatibilityCounts": {
-      "BORDERLINE_REVIEW": 89,
-      "NORMAL": 415,
-      "STRONG_CONFLICT": 419,
-      "UNKNOWN": 5
+      "UNKNOWN": 928
     },
-    "independentRecheckTargetCount": 913
+    "independentRecheckTargetCount": 928
   },
   "nextGate": "Independent GPT review, then explicit approval before any canonical/compiled/runtime production promotion"
 }

@@ -18,7 +18,7 @@
 - candidate binding parent mismatch: **0**
 - pack owned-domain violation: **0**
 - source/working metadata confusion: **0**
-- actual alias audit: **EXECUTED** / lookup entries **134** / collision count **0**
+- actual global alias audit: **EXECUTED** / compiled authority **177** distinct aliases / raw canonical rows **274** / raw distinct **177** / parity **PASS** / collision count **0**
 - duplicate relational assignment: **0**
 - candidate leakage into production: **0**
 
@@ -29,10 +29,10 @@
 - identity map join: **928 / 928**
 - defaultSelectable candidate records: **0**
 - auto-eligible now: **0**
-- independent recheck trigger union: **913**
+- current pre-blind review trigger union: **928** (`difficulty_boundary_or_unresolved` is intentionally unresolved for all mapped items; route-out 5 is separate HOLD)
 - review hold/manual or route-out records: **928**
 
-All 928 records are intentionally retained in the candidate runtime projection but excluded from automatic eligibility until the difficulty/recheck and route-out gates are independently closed. This is not a production runtime claim.
+All records are intentionally retained in the candidate runtime projection but excluded from automatic eligibility until the 923-item fresh blind difficulty review and route-out/source-defect gates are independently closed. This is not a production runtime claim.
 
 ## Production boundary
 

@@ -29,11 +29,11 @@ const M3_TARGETS = new Set([
 ]);
 
 const M2_ROUTE_OUT = new Map([
-    ['original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js#15', { route: 'M2-07-PYTHAGOREAN_APPLICATION', reason: '세 변 제곱 비교로 예각삼각형 판정' }],
-    ['original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js#16', { route: 'M2-07-PYTHAGOREAN_APPLICATION', reason: '세 변 제곱 비교로 둔각삼각형 판정; source solution numeric contradiction retained' }],
-    ['original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js#20', { route: 'M1-06-PLANE_FIGURE_MEASURE', reason: '삼각형 성립조건/삼각부등식; current M2-05 L3 신규 생성 금지; content/solution mismatch' }],
-    ['original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js#20', { route: 'M1-06-PLANE_FIGURE_MEASURE', reason: '평행선 사이 같은 높이로 삼각형 넓이 동일' }],
-    ['original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js#17', { route: 'M1-06-PLANE_FIGURE_MEASURE', reason: '같은 높이 삼각형의 넓이비와 밑변비' }]
+    ['original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js#15', { route: 'M2-07-PYTHAGOREAN_APPLICATION', reason: '세 변 제곱 비교로 예각삼각형 판정', sourceDefect: null }],
+    ['original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js#16', { route: 'M2-07-PYTHAGOREAN_APPLICATION', reason: '세 변 제곱 비교로 둔각삼각형 판정; source solution numeric contradiction retained', sourceDefect: 'solution numeric comparison contradiction' }],
+    ['original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js#20', { route: 'M1-06-PLANE_FIGURE_MEASURE', reason: '삼각형 성립조건/삼각부등식; current M2-05 L3 신규 생성 금지; content/solution mismatch', sourceDefect: 'content/solution mismatch' }],
+    ['original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js#20', { route: 'M1-06-PLANE_FIGURE_MEASURE', reason: '평행선 사이 같은 높이로 삼각형 넓이 동일', sourceDefect: null }],
+    ['original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js#17', { route: 'M1-06-PLANE_FIGURE_MEASURE', reason: '같은 높이 삼각형의 넓이비와 밑변비', sourceDefect: null }]
 ]);
 const M2_CENTROID = new Set([
     'original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js#7',
@@ -308,15 +308,7 @@ function difficulty(question, problemTypeKey, l4Key, cross, condition, integrati
     else if (steps <= 3 && cross.length <= 1 && condition.length === 0) bucket = 2;
     else if (steps >= 5 || cross.length >= 2 || integration.key !== 'NONE') bucket = 4;
     const confidence = solution.length > 100 && !/그림/.test(content) ? 'high' : 'medium';
-    const expected = bucket <= 1 ? '하' : bucket <= 3 ? '중' : '상';
-    const legacy = text(question.level);
-    const compatibility = legacy === expected ? 'NORMAL' : Math.abs((legacy === '하' ? 1 : legacy === '중' ? 2.5 : 4.5) - bucket) <= 1 ? 'BORDERLINE_REVIEW' : 'STRONG_CONFLICT';
-    const boundary = compatibility === 'NORMAL'
-        ? 'NONE'
-        : compatibility === 'BORDERLINE_REVIEW'
-            ? (bucket <= 2 ? 'B12' : bucket <= 4 ? 'B34' : 'B45')
-            : 'UNKNOWN';
-    return { bucket, confidence, boundary, compatibility, status: 'PENDING_INDEPENDENT_REVIEW', heuristicCandidate: true, reason: `heuristic candidate only; blind structure: steps=${steps}; application=${application}; cross=${cross.length}; conditions=${condition.length}; integration=${integration.key}; insight=${insight}` };
+    return { bucket, confidence, boundary: 'UNKNOWN', compatibility: 'UNKNOWN', heuristicCandidate: true, status: 'PENDING_INDEPENDENT_REVIEW', reason: `heuristic candidate only; blind boundary and legacy comparison intentionally unresolved; blind structure: steps=${steps}; application=${application}; cross=${cross.length}; conditions=${condition.length}; integration=${integration.key}; insight=${insight}` };
 }
 
 function loadCanonical() {
@@ -427,7 +419,7 @@ function buildReviewTargets(records, candidateL4Usage) {
         if (record.legacyLevelCompatibility === 'STRONG_CONFLICT') add(record, 'strong_legacy_conflict');
         if (record.legacyLevelCompatibility === 'BORDERLINE_REVIEW' || record.legacyLevelCompatibility === 'BORDERLINE_ACCEPTABLE') add(record, 'legacy_borderline_mismatch');
         if (record.visualRisk) add(record, 'visual_or_direct_source_high_risk');
-        if (record.evidence.sourceDefectOrRoute) add(record, 'source_or_solution_defect');
+        if (record.evidence.sourceDefectEvidence) add(record, 'source_or_solution_defect');
         if (record.templateKey && record.l4Status === 'CANDIDATE_SUGGESTION' && candidateL4Usage[record.templateKey] <= 1) add(record, 'semantic_outlier_or_singleton_l4_suggestion');
     }
     for (const group of groups.values()) {
@@ -508,7 +500,8 @@ function build() {
                 difficultyBlindReason: diff.reason,
                 difficultyStatus: mapped ? 'heuristic candidate evidence; independent review required' : 'route-out hold',
                 legacyCompareAfterBlind: true,
-                sourceDefectOrRoute: M2_ROUTE_OUT.get(`${item.sourceArchiveFile}#${item.sourceOrdinal}`) || null
+                routeOutEvidence: M2_ROUTE_OUT.get(`${item.sourceArchiveFile}#${item.sourceOrdinal}`) || null,
+                sourceDefectEvidence: M2_ROUTE_OUT.get(`${item.sourceArchiveFile}#${item.sourceOrdinal}`)?.sourceDefect || null
             }
         };
         return record;
