@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "probability-statistics-stage3b-compiled-byte-parity-v1",
+  "status": "PASS",
+  "baseMain": "843d26d60780ae1502dd53d75c8f2b064b98174f",
+  "projectionDetachedCommit": "a024dfeb6b31f6130b3a95d6e074a403019e631a",
+  "checks": [
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "bytes": 750125,
+      "gitBlobSha": "12ec314d7b1d06478c7392dd470ed9f279e3abde",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "bytes": 381347,
+      "gitBlobSha": "55b5ec05f7aae5c8731a3126ec94be8fc47292fd",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/aliases.json",
+      "bytes": 34868,
+      "gitBlobSha": "071e0ff968d7f3e9bcff2150337f6a2f5b11cdd7",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "bytes": 962,
+      "gitBlobSha": "858d631e77d1ef67e4b70fcc6e06a820c4318507",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "bytes": 143614,
+      "gitBlobSha": "31eb02e5d12f81d4f3c7d4f8fbada4299da00d8e",
+      "byteEqual": true
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "bytes": 1668,
+      "gitBlobSha": "a9f96a07f3c8b51169c314f9031cb4a628f7370b",
+      "byteEqual": true
+    }
+  ],
+  "mismatchCount": 0,
+  "note": "Each projected compiled artifact was independently regenerated from current-main compiled inputs plus the Stage3A candidate and compared byte-for-byte with the stored isolated projection."
+}
