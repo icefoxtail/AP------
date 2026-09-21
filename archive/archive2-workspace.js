@@ -39,6 +39,48 @@
   const badge = (label, type = "") =>
     `<span class="badge ${type}">${esc(label)}</span>`;
   const unique = (values) => [...new Set(values.filter(Boolean))];
+  const HOME_PRODUCT_REGISTRY = Object.freeze([
+    Object.freeze({
+      productKey: "school-exams",
+      label: "학교 기출",
+      availability: true,
+      routeOwner: "finder",
+      routeResolver: () =>
+        new URL("workspace.html?view=find&material=exam", location.href).href,
+    }),
+    Object.freeze({
+      productKey: "five-minute-test",
+      label: "5분 테스트",
+      availability: false,
+      routeOwner: "common-pack",
+      routeResolver: null,
+    }),
+    Object.freeze({
+      productKey: "unit-assessment",
+      label: "단원평가",
+      availability: false,
+      routeOwner: "unit-assessment-v2",
+      routeResolver: null,
+    }),
+    Object.freeze({
+      productKey: "exam-prep",
+      label: "시험 대비",
+      availability: false,
+      routeOwner: "exam-prep-v2",
+      routeResolver: null,
+    }),
+  ]);
+  function homeProductMarkup(product) {
+    const attrs = `data-product-key="${esc(product.productKey)}" data-route-owner="${esc(product.routeOwner || "")}" data-availability="${String(product.availability)}"`;
+    if (product.availability && typeof product.routeResolver === "function")
+      return button(
+        "home-product",
+        esc(product.label),
+        `type="button" class="archive-home-product is-available" ${attrs}`,
+      );
+    return `<div class="archive-home-product is-unavailable" ${attrs} aria-disabled="true"><span>${esc(product.label)}</span></div>`;
+  }
+
   const courseGrades = Object.freeze({
     "공통수학1": "고1",
     "공통수학2": "고1",
@@ -972,6 +1014,10 @@
           ${button("home-search", "검색", 'type="button" class="primary archive-home-search-submit"')}
         </form>
         <div class="archive-home-grades" aria-label="학년 빠른 진입">${grades.map((grade) => button("home-grade", grade, `data-grade="${grade}"`)).join("")}</div>
+      </section>
+      <section class="archive-home-products-section">
+        <div class="archive-home-section-head"><h2>바로 쓰는 자료·평가</h2></div>
+        <div class="archive-home-products">${HOME_PRODUCT_REGISTRY.map(homeProductMarkup).join("")}</div>
       </section>
       <section class="archive-home-drafts-section">
         <div class="archive-home-section-head"><h2>만들던 문제지</h2></div>
@@ -1976,6 +2022,17 @@
       }
       if (a === "close-dialog") {
         if (!originalIssueBusy()) $("modal").close();
+      } else if (a === "home-product") {
+        const product = HOME_PRODUCT_REGISTRY.find(
+          (item) => item.productKey === b.dataset.productKey,
+        );
+        if (
+          !product?.availability ||
+          typeof product.routeResolver !== "function"
+        )
+          return;
+        const target = product.routeResolver();
+        if (target) location.href = String(target);
       } else if (a === "home-grade") {
         state.find = { grade: b.dataset.grade || "" };
         state.view = "find";
