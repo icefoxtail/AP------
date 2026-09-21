@@ -13,6 +13,7 @@ const identityPath = path.join(archiveDir, 'data', 'question_identity_map.json')
 const handoffPath = path.join(archiveDir, 'data', 'meta-foundation', 'evidence', 'middle-geometry', 'm2_stage2_semantic_freeze_20260921.json');
 const outputDir = path.join(archiveDir, 'data', 'meta-foundation', 'candidates', 'middle-geometry', 'v1');
 const evidenceDir = path.join(archiveDir, 'data', 'meta-foundation', 'evidence', 'middle-geometry', 'v1');
+const semanticLedgerPath = path.join(evidenceDir, 'semantic_assignment_input_928.json');
 const baseMainSha = '843d26d60780ae1502dd53d75c8f2b064b98174f';
 
 const M2_TARGETS = new Set([
@@ -434,22 +435,102 @@ function buildReviewTargets(records, candidateL4Usage) {
     return [...triggers.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([questionUid, reasons]) => ({ questionUid, triggerReasons: [...reasons].sort() }));
 }
 
+function loadSemanticAssignments(source) {
+    if (!fs.existsSync(semanticLedgerPath)) {
+        return {
+            status: 'SEMANTIC_LEDGER_MISSING_FAIL_CLOSED',
+            byUid: new Map(),
+            reviewedCount: 0,
+            path: semanticLedgerPath
+        };
+    }
+    const payload = JSON.parse(fs.readFileSync(semanticLedgerPath, 'utf8'));
+    if (!Array.isArray(payload.records)) throw new Error('semantic ledger records must be an array');
+    const sourceByUid = new Map(source.map(item => [item.questionUid, item]));
+    const byUid = new Map();
+    for (const decision of payload.records) {
+        if (!decision?.questionUid) throw new Error('semantic decision missing questionUid');
+        if (byUid.has(decision.questionUid)) throw new Error(`duplicate semantic decision UID: ${decision.questionUid}`);
+        const sourceItem = sourceByUid.get(decision.questionUid);
+        if (!sourceItem) throw new Error(`semantic decision UID outside denominator: ${decision.questionUid}`);
+        if (decision.reviewStatus !== 'REVIEWED') continue;
+        if (!decision.primaryMethod || !decision.decisiveStep || !decision.semanticReason) {
+            throw new Error(`semantic decision missing primaryMethod/decisiveStep/semanticReason: ${decision.questionUid}`);
+        }
+        if (decision.sourceArchiveFile !== sourceItem.sourceArchiveFile || Number(decision.sourceOrdinal) !== sourceItem.sourceOrdinal) {
+            throw new Error(`semantic source tuple mismatch: ${decision.questionUid}`);
+        }
+        if (decision.sourceFingerprint !== sourceItem.sourceFingerprint) {
+            throw new Error(`semantic source fingerprint mismatch: ${decision.questionUid}`);
+        }
+        const problemTypeKey = decision.problemTypeKey ?? null;
+        const templateKey = decision.templateKey ?? null;
+        if (problemTypeKey && !templateKey) {
+            throw new Error(`semantic mapped record missing templateKey: ${decision.questionUid}`);
+        }
+        if (!Array.isArray(decision.crossConceptKeys || [])) {
+            throw new Error(`semantic crossConceptKeys must be an array: ${decision.questionUid}`);
+        }
+        byUid.set(decision.questionUid, {
+            ...decision,
+            problemTypeKey,
+            templateKey,
+            crossConceptKeys: [...new Set(decision.crossConceptKeys || [])],
+            conditionKeys: [...new Set(decision.conditionKeys || [])],
+            integrationPattern: decision.integrationPattern || 'NONE'
+        });
+    }
+    return {
+        status: 'SEMANTIC_LEDGER_LOADED',
+        byUid,
+        reviewedCount: byUid.size,
+        path: semanticLedgerPath
+    };
+}
+
 function build() {
     const canonical = loadCanonical();
     const handoff = JSON.parse(fs.readFileSync(handoffPath, 'utf8'));
     const source = collect();
     if (source.length !== 928) throw new Error(`expected 928 records, got ${source.length}`);
+    const semanticAssignments = loadSemanticAssignments(source);
     const records = source.map(item => {
         const question = item._question;
-        const l3 = l3Decision(question, item.sourceArchiveFile, item.sourceOrdinal, item.workingSubUnitKey, handoff);
-        const l4 = l4Decision(question, l3.problemTypeKey);
-        const cross = l3.problemTypeKey ? crossConcepts(question, l3.problemTypeKey) : [];
-        const condition = l3.problemTypeKey ? conditions(question) : [];
-        const join = l3.problemTypeKey ? integration(question, cross) : { key: 'NONE', reason: 'route-out' };
-        const diff = difficulty(question, l3.problemTypeKey, l4.templateKey, cross, condition, join);
-        const activeL3Owner = l3.problemTypeKey ? canonical.activeL3.get(l3.problemTypeKey) : null;
-        const activeL4 = l4.templateKey ? canonical.activeL4.has(l4.templateKey) : false;
-        const mapped = Boolean(l3.problemTypeKey);
+        const l3Hint = l3Decision(question, item.sourceArchiveFile, item.sourceOrdinal, item.workingSubUnitKey, handoff);
+        const l4Hint = l4Decision(question, l3Hint.problemTypeKey);
+        const crossHints = l3Hint.problemTypeKey ? crossConcepts(question, l3Hint.problemTypeKey) : [];
+        const conditionHints = l3Hint.problemTypeKey ? conditions(question) : [];
+        const integrationHint = l3Hint.problemTypeKey ? integration(question, crossHints) : { key: 'NONE', reason: 'route-out or no semantic L3' };
+        const semantic = semanticAssignments.byUid.get(item.questionUid) || null;
+        const explicitRouteOut = l3Hint.status === 'OUT_OF_SCOPE' && !semantic;
+        const problemTypeKey = semantic?.problemTypeKey ?? null;
+        const templateKey = semantic?.templateKey ?? null;
+        const crossConceptKeys = semantic?.crossConceptKeys || [];
+        const conditionKeys = semantic?.conditionKeys || [];
+        const integrationPattern = semantic?.integrationPattern || 'NONE';
+        const activeL3Owner = problemTypeKey ? canonical.activeL3.get(problemTypeKey) : null;
+        const activeL4 = templateKey ? canonical.activeL4.has(templateKey) : false;
+        const mapped = Boolean(problemTypeKey);
+        const semanticReviewed = Boolean(semantic);
+        const diff = mapped
+            ? difficulty(
+                question,
+                problemTypeKey,
+                templateKey,
+                crossConceptKeys.map(key => ({ key })),
+                conditionKeys.map(key => ({ key })),
+                { key: integrationPattern }
+            )
+            : {
+                bucket: 'UNKNOWN',
+                confidence: 'UNKNOWN',
+                boundary: 'UNKNOWN',
+                compatibility: 'UNKNOWN',
+                status: explicitRouteOut ? 'HOLD' : 'PENDING_SEMANTIC_REVIEW',
+                reason: explicitRouteOut
+                    ? 'route-out item; difficulty is not forced in current pack'
+                    : 'semantic ledger required before difficulty candidate generation'
+            };
         const record = {
             questionUid: item.questionUid,
             grade: item.grade,
@@ -467,38 +548,64 @@ function build() {
             workingStandardUnitKey: item.workingStandardUnitKey,
             workingSubUnitKey: item.workingSubUnitKey,
             legacyLevel: item.legacyLevel,
-            problemTypeKey: l3.problemTypeKey,
-            l3Status: l3.status,
-            l3Action: l3.action,
-            l3OwnerPack: activeL3Owner || 'MIDDLE_GEOMETRY',
-            templateKey: l4.templateKey,
-            l4Status: activeL4 ? 'REUSE_ACTIVE' : l4.status,
-            l4Action: l4.action,
-            l4ReviewStatus: mapped ? 'PENDING_SEMANTIC_REVIEW' : 'NOT_APPLICABLE',
-            crossConceptKeys: cross.map(item => item.key),
-            conditionKeys: condition.map(item => item.key),
-            integrationPattern: join.key,
-            relationalMetadataStatus: mapped ? 'PENDING_SEMANTIC_REVIEW' : 'NOT_APPLICABLE',
+            semanticAuthority: semanticReviewed ? 'SEMANTIC_LEDGER_REVIEWED' : explicitRouteOut ? 'FROZEN_ROUTE_OUT' : 'HEURISTIC_HINT_ONLY',
+            semanticReviewStatus: semanticReviewed ? 'REVIEWED' : explicitRouteOut ? 'NOT_APPLICABLE' : 'PENDING_SEMANTIC_REVIEW',
+            primaryMethod: semantic?.primaryMethod || null,
+            decisiveStep: semantic?.decisiveStep || null,
+            semanticReason: semantic?.semanticReason || null,
+            problemTypeHintKey: l3Hint.problemTypeKey,
+            problemTypeKey,
+            l3Status: semanticReviewed
+                ? (activeL3Owner ? 'REUSE_ACTIVE' : 'CANDIDATE')
+                : explicitRouteOut ? 'OUT_OF_SCOPE' : 'PENDING_SEMANTIC_REVIEW',
+            l3Action: semanticReviewed
+                ? (activeL3Owner ? 'REUSE' : 'ASSIGN_FROM_SEMANTIC_LEDGER')
+                : explicitRouteOut ? 'ROUTE_OUT' : 'HOLD_FOR_SEMANTIC_LEDGER',
+            l3OwnerPack: semanticReviewed ? (activeL3Owner || 'MIDDLE_GEOMETRY') : null,
+            templateHintKey: l4Hint.templateKey,
+            templateKey,
+            templateLabelKo: semantic?.templateLabelKo || null,
+            templateDefinition: semantic?.templateDefinition || null,
+            l4Status: !semanticReviewed
+                ? (explicitRouteOut ? 'OUT_OF_SCOPE' : 'PENDING_SEMANTIC_REVIEW')
+                : activeL4 ? 'REUSE_ACTIVE' : 'CANDIDATE_SUGGESTION',
+            l4Action: !semanticReviewed
+                ? (explicitRouteOut ? 'ROUTE_OUT' : 'HOLD_FOR_SEMANTIC_LEDGER')
+                : activeL4 ? 'REUSE' : 'CANDIDATE_FROM_SEMANTIC_LEDGER',
+            l4ReviewStatus: semanticReviewed ? 'REVIEWED' : explicitRouteOut ? 'NOT_APPLICABLE' : 'PENDING_SEMANTIC_REVIEW',
+            crossConceptHints: crossHints,
+            crossConceptKeys,
+            conditionHints,
+            conditionKeys,
+            integrationPatternHint: integrationHint,
+            integrationPattern,
+            relationalMetadataStatus: semanticReviewed ? 'REVIEWED' : explicitRouteOut ? 'NOT_APPLICABLE' : 'PENDING_SEMANTIC_REVIEW',
             difficultyBucket: diff.bucket,
             difficultyConfidence: diff.confidence,
             difficultyBoundaryFlag: diff.boundary,
             legacyLevelCompatibility: diff.compatibility,
             reviewStatus: diff.status,
             heuristicCandidate: diff.heuristicCandidate === true,
-            eligibilityStatus: mapped ? 'PENDING_INDEPENDENT_REVIEW' : 'OUT_OF_SCOPE_HOLD',
-            curriculumApplicability: l3.status === 'OUT_OF_SCOPE' ? 'SUPPLEMENTARY_OUTSIDE_CORE' : 'CORE',
+            eligibilityStatus: semanticReviewed ? 'PENDING_INDEPENDENT_REVIEW' : explicitRouteOut ? 'OUT_OF_SCOPE_HOLD' : 'PENDING_SEMANTIC_REVIEW',
+            curriculumApplicability: explicitRouteOut ? 'SUPPLEMENTARY_OUTSIDE_CORE' : 'CORE',
             defaultSelectable: false,
             evidence: {
-                sourceFreshness: 'current source JS content + choices + answer + solution read; legacy metadata is comparison only',
+                sourceFreshness: 'current source JS content + choices + answer + solution loaded for source identity/fingerprint',
                 contentCue: item.contentSnippet,
                 solutionCue: item.solutionSnippet,
-                l3Decision: l3.reason,
-                l3CanonicalReuse: activeL3Owner ? `ACTIVE owner ${activeL3Owner}` : 'candidate-only; no production canonical promotion',
-                l4Decision: l4.reason,
-                l4Status: mapped ? 'candidate suggestion only; decisive skeleton not independently reviewed' : 'not applicable',
-                relationalDecision: [...cross.map(item => item.reason), ...condition.map(item => item.reason), join.reason],
+                semanticAuthority: semanticReviewed
+                    ? 'reviewed semantic ledger'
+                    : explicitRouteOut ? 'frozen route-out evidence' : 'regex/keyword result retained as non-authoritative hint only',
+                primaryMethod: semantic?.primaryMethod || null,
+                decisiveStep: semantic?.decisiveStep || null,
+                semanticReason: semantic?.semanticReason || null,
+                l3Hint: l3Hint.reason,
+                l4Hint: l4Hint.reason,
+                crossConceptHintReasons: crossHints.map(item => item.reason),
+                conditionHintReasons: conditionHints.map(item => item.reason),
+                integrationHintReason: integrationHint.reason,
                 difficultyBlindReason: diff.reason,
-                difficultyStatus: mapped ? 'heuristic candidate evidence; independent review required' : 'route-out hold',
+                difficultyStatus: mapped ? 'heuristic candidate evidence; independent review required' : 'not generated before semantic review',
                 legacyCompareAfterBlind: true,
                 routeOutEvidence: M2_ROUTE_OUT.get(`${item.sourceArchiveFile}#${item.sourceOrdinal}`) || null,
                 sourceDefectEvidence: M2_ROUTE_OUT.get(`${item.sourceArchiveFile}#${item.sourceOrdinal}`)?.sourceDefect || null
@@ -527,19 +634,28 @@ function build() {
         action: 'ADD',
         promotionStatus: 'REVIEW_REQUIRED'
     }));
-    const candidateTemplates = Object.entries(candidateL4Usage).map(([templateKey, supportingItemCount]) => ({
-        templateKey,
-        canonicalLabelKo: 'Middle Geometry candidate template',
-        definition: 'Same L3 semantic with a repeatable decisive condition/solution skeleton; candidate-only until independent review.',
-        aliases: [],
-        internalSkeleton: 'candidate item-level skeleton retained in evidence; numeric and wording variants are compressed',
-        parentProblemTypeKey: templateKey.replace(/^TPL_MIDDLE_GEOMETRY_/, 'PT_').replace(/_(DIRECT|APPLICATION|PROOF_OR_MULTI_STATEMENT|RATIO_RELATION)$/, ''),
-        status: 'CANDIDATE',
-        ownerPack: 'MIDDLE_GEOMETRY',
-        supportingItemCount,
-        action: 'ADD',
-        promotionStatus: 'REVIEW_REQUIRED'
-    }));
+    const candidateTemplates = Object.entries(candidateL4Usage).map(([templateKey, supportingItemCount]) => {
+        const supporting = records.filter(record => record.templateKey === templateKey && record.semanticReviewStatus === 'REVIEWED');
+        const labels = [...new Set(supporting.map(record => record.templateLabelKo).filter(Boolean))];
+        const definitions = [...new Set(supporting.map(record => record.templateDefinition).filter(Boolean))];
+        if (labels.length !== 1 || definitions.length !== 1) {
+            throw new Error(`candidate L4 requires one reviewed semantic label/definition: ${templateKey}`);
+        }
+        const parentKeys = [...new Set(supporting.map(record => record.problemTypeKey))];
+        if (parentKeys.length !== 1) throw new Error(`candidate L4 parent ambiguity: ${templateKey}`);
+        return {
+            templateKey,
+            canonicalLabelKo: labels[0],
+            definition: definitions[0],
+            aliases: [],
+            parentProblemTypeKey: parentKeys[0],
+            status: 'CANDIDATE',
+            ownerPack: 'MIDDLE_GEOMETRY',
+            supportingItemCount,
+            action: 'ADD',
+            promotionStatus: 'REVIEW_REQUIRED'
+        };
+    });
     const bindings = [...new Set(records.filter(record => record.problemTypeKey).map(record => [record.curriculum, record.standardCourse, record.workingStandardUnitKey, record.workingSubUnitKey, record.problemTypeKey].join('|')))]
         .map(key => { const [curriculum, standardCourse, standardUnitKey, subUnitKey, problemTypeKey] = key.split('|'); return { curriculum, standardCourse, standardUnitKey, subUnitKey, problemTypeKey, status: 'CANDIDATE', ownerPack: 'MIDDLE_GEOMETRY' }; });
     const ledger = {
@@ -550,6 +666,12 @@ function build() {
         branch: 'codex/meta-foundation/middle-geometry',
         denominator: { total: 928, m2: 402, m3: 526, uidMissing: 0, uidDuplicate: 928 - byUid.size, sourceDuplicate: 928 - bySource.size },
         stage: { m2: 'M2_ITEM_LEDGER_MATERIALIZED_FROM_FROZEN_SEMANTICS', m3: 'STAGE_2_L3_FRESH_ASSIGNMENT' },
+        semanticLedger: {
+            status: semanticAssignments.status,
+            path: path.relative(repoRoot, semanticAssignments.path).replace(/\\/g, '/'),
+            reviewedCount: semanticAssignments.reviewedCount,
+            requiredAuthority: 'item-level content+solution semantic ledger'
+        },
         reviewManifestStatus: 'REVIEW_PENDING',
         reviewTargetCount: reviewTargets.length,
         reviewTargets,
@@ -602,8 +724,18 @@ function build() {
             runtimeProductionMutation: false,
             difficultyBlindOrderRecorded: records.every(record => record.problemTypeKey ? record.evidence.legacyCompareAfterBlind === true : true),
             heuristicDifficultyFailClosed: records.filter(record => record.problemTypeKey).every(record => record.reviewStatus === 'PENDING_INDEPENDENT_REVIEW' && record.defaultSelectable === false),
-            relationalMetadataFailClosed: records.filter(record => record.problemTypeKey).every(record => record.relationalMetadataStatus === 'PENDING_SEMANTIC_REVIEW'),
-            l4SuggestionFailClosed: records.filter(record => record.problemTypeKey && record.l4Status === 'CANDIDATE_SUGGESTION').every(record => record.l4ReviewStatus === 'PENDING_SEMANTIC_REVIEW'),
+            semanticLedgerStatus: semanticAssignments.status,
+            semanticReviewedCount: semanticAssignments.reviewedCount,
+            hintToSemanticLeakageCount: records.filter(record =>
+                record.semanticAuthority === 'HEURISTIC_HINT_ONLY' &&
+                (record.problemTypeKey || record.templateKey || record.crossConceptKeys.length > 0 || record.conditionKeys.length > 0 || record.integrationPattern !== 'NONE')
+            ).length,
+            semanticReviewedSourceIntegrity: records.filter(record => record.semanticAuthority === 'SEMANTIC_LEDGER_REVIEWED').every(record =>
+                record.semanticReviewStatus === 'REVIEWED' &&
+                Boolean(record.primaryMethod) &&
+                Boolean(record.decisiveStep) &&
+                Boolean(record.semanticReason)
+            ),
             independentGptReview: 'PENDING_EXTERNAL_REVIEW'
         },
         l3Usage: ledger.summary.l3Usage,
