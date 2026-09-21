@@ -69,13 +69,13 @@
     const active = currentKey(mode);
     const mobileItems = [home, ...tasks];
     return `<aside class="archive-sidebar">
-        <a class="archive-navigation-brand" href="workspace.html?view=home"><span class="archive-brand-mark">A</span><span class="archive-brand-copy"><strong>Archive 2.0</strong><small>AP MATH 문제은행</small></span></a>
+        <a class="archive-navigation-brand" href="workspace.html?view=home"><span class="archive-brand-mark">A</span><span class="archive-brand-copy"><strong>JS 아카이브 <span>2.0</span></strong></span></a>
         <div class="archive-sidebar-home">${itemMarkup(mode, home, active, "home")}</div>
         <nav class="archive-navigation-tasks" aria-label="아카이브 작업">${tasks.map((item) => itemMarkup(mode, item, active, "task")).join("")}</nav>
         <div class="archive-navigation-tools">${secondaryMarkup(mode)}</div>
       </aside>
       <div class="archive-mobile-topbar">
-        <a class="archive-mobile-brand" href="workspace.html?view=home">Archive 2.0</a>
+        <a class="archive-mobile-brand" href="workspace.html?view=home">JS 아카이브 <span>2.0</span></a>
         <div class="archive-mobile-tools">
           <button type="button" class="archive-mobile-tools-trigger" aria-label="아카이브 1.0 · 자료 점검" aria-haspopup="menu" aria-expanded="false" aria-controls="archive-mobile-tools-menu">•••</button>
           <div id="archive-mobile-tools-menu" class="archive-mobile-tools-menu" role="menu" hidden>${secondaryMarkup(mode, true)}</div>
