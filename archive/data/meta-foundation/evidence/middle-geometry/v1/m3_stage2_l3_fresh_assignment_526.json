@@ -41424,13 +41424,13 @@
       "conditionKeys": [],
       "integrationPattern": "INTERDEPENDENT",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "UNKNOWN",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
-      "reviewStatus": "PENDING_INDEPENDENT_REVIEW",
-      "heuristicCandidate": true,
-      "eligibilityStatus": "PENDING_INDEPENDENT_REVIEW",
+      "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
+      "heuristicCandidate": false,
+      "eligibilityStatus": "PENDING_LEGACY_COMPARE_AND_RECHECK",
       "curriculumApplicability": "CORE",
       "defaultSelectable": false,
       "evidence": {
@@ -41449,8 +41449,27 @@
         "difficultyStatus": "heuristic candidate evidence; independent review required",
         "legacyCompareAfterBlind": true,
         "routeOutEvidence": null,
-        "sourceDefectEvidence": null
-      }
+        "sourceDefectEvidence": null,
+        "blindReview": {
+          "batchId": "M2_M3_MIXED_351_375",
+          "status": "BLIND_REVIEWED",
+          "inputs": [
+            "content",
+            "choices",
+            "visualCue",
+            "solution",
+            "curriculumContext"
+          ],
+          "hiddenInputs": [
+            "legacyLevel",
+            "legacyDifficultyBucket",
+            "legacyCompatibility",
+            "priorReviewerVerdict"
+          ],
+          "reason": "원호 위 세 점으로 두 현을 만들고 수직이등분선의 교점으로 원의 중심을 작도한다."
+        }
+      },
+      "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
     },
     {
       "questionUid": "qid_v1_d5647fc0b6ae1c7a9e44653ea0d80f476b08792c2620f3777960d4124e2e35d2",
@@ -47604,9 +47623,9 @@
     "schemaVersion": "middle-geometry-blind-review-progress-v1",
     "status": "BLIND_REVIEW_IN_PROGRESS",
     "denominator": 923,
-    "reviewedCount": 819,
-    "remainingCount": 104,
-    "batchCount": 34,
+    "reviewedCount": 844,
+    "remainingCount": 79,
+    "batchCount": 35,
     "batches": [
       {
         "batchId": "M3_TRIG_001_025",
@@ -47809,6 +47828,12 @@
       {
         "batchId": "M2_M3_MIXED_326_350",
         "file": "difficulty_blind_batch_34_m2_m3_mixed_326_350.json",
+        "count": 25,
+        "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
+      },
+      {
+        "batchId": "M2_M3_MIXED_351_375",
+        "file": "difficulty_blind_batch_35_m2_m3_mixed_351_375.json",
         "count": 25,
         "status": "BLIND_REVIEWED_CANDIDATE_PENDING_FREEZE"
       }
