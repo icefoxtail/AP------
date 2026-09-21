@@ -969,7 +969,7 @@
       <section class="panel archive-home-start">
         <form id="archive-home-search" class="archive-home-search" role="search">
           <label class="archive-home-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="archive-home-query" placeholder="학교명, 과목, 단원으로 검색" autocomplete="off"></label>
-          ${button("home-search", "검색", 'class="primary archive-home-search-submit"')}
+          ${button("home-search", "검색", 'type="button" class="primary archive-home-search-submit"')}
         </form>
         <div class="archive-home-grades" aria-label="학년 빠른 진입">${grades.map((grade) => button("home-grade", grade, `data-grade="${grade}"`)).join("")}</div>
       </section>
