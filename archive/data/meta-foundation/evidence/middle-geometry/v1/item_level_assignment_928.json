@@ -7440,7 +7440,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "각의 비를 특수각으로 환산하고 삼각비를 대입한다."
+          "reason": "사인·코사인·탄젠트의 단조성과 특수각 값을 비교해 다섯 값을 작은 순서로 정렬한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -10899,7 +10899,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "눈높이 위 높이를 탄젠트로 구하고 눈높이를 더한다."
+          "reason": "두 변 7cm, 10cm와 끼인각 45도의 삼각형 넓이 공식에 직접 대입한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -17607,7 +17607,7 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 3,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
@@ -17648,7 +17648,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "두 관측각의 탄젠트식과 거리 합으로 높이를 구한다."
+          "reason": "빗변 9와 34도의 사인·코사인 표 값을 각각 곱해 a+b를 계산한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -19375,7 +19375,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "단위원 좌표와 여각 관계를 이용해 보기의 근삿값을 판정한다."
+          "reason": "직각삼각형의 각을 30도로 정하고 분수식을 통분해 특수각 탄젠트로 계산한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -21578,7 +21578,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "수선으로 생긴 닮음에서 목표각을 원래 각에 대응해 탄젠트를 구한다."
+          "reason": "예각 조건에서 tan x와 cos y를 각각 30도와 60도로 해석해 sin(y-x)를 구한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -22406,7 +22406,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "좌표에서 거리와 직각·이등변 구조를 판정한 뒤 각의 곱을 구한다."
+          "reason": "45도 직각삼각형에서 AC와 한 삼각형 넓이를 복원하고 CD와 30도 끼인각으로 다른 삼각형 넓이를 더한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -22981,7 +22981,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "좌표에서 세 변의 길이를 구하고 직각·이등변 구조를 판정해 각의 삼각비를 계산한다."
+          "reason": "좌표로 AB=AC와 AB^2+AC^2=BC^2를 확인해 직각·이등변 구조를 얻고 sin B cos B를 계산한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -33156,8 +33156,8 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 4,
-      "difficultyConfidence": "medium",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
       "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
@@ -33197,7 +33197,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "정육면체 공간 대각선과 수선 닮음으로 세 삼각비 표현을 결합한다."
+          "reason": "직육면체 밑면 대각선과 공간 대각선을 두 번의 피타고라스로 구한 뒤 cos x를 직접 계산한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -33858,7 +33858,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "절댓값 부호를 범위로 정리한 뒤 사인·코사인·탄젠트를 순차 계산한다."
+          "reason": "45도보다 큰 범위에서 두 제곱근을 절댓값으로 바꾸고 합을 2sin x로 정리한 뒤 sin x, cos x를 거쳐 tan x를 구한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -39624,7 +39624,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "두 변과 120도 끼인각 넓이 공식을 직접 적용한다."
+          "reason": "범위에서 2x+10도의 값을 30도로 정해 일차방정식으로 x를 구한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -45925,8 +45925,8 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "high",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
       "reviewStatus": "BLIND_REVIEWED_PENDING_FREEZE",
@@ -45967,7 +45967,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "대각선으로 사각형을 두 삼각형으로 나눠 넓이를 합산한다."
+          "reason": "좌표에서 세 변을 구하고 수선의 발을 두어 두 피타고라스 식을 소거한 뒤 tan B를 계산한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -46293,7 +46293,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "평행사변형 대응변과 45도 넓이 공식을 직접 적용한다."
+          "reason": "수평거리 50m와 올려본각 38도에서 탄젠트로 눈높이 위 높이를 구하고 눈높이 1.5m를 더한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -48708,7 +48708,7 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 3,
+      "difficultyBucket": 1,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
@@ -48749,7 +48749,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "수선으로 만든 30도·45도 삼각형에서 길이를 순차 계산한다."
+          "reason": "삼각비표에서 tan 12도의 행과 cos 13도의 값을 읽어 x+y를 더한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -58385,7 +58385,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "절댓값 부호를 범위로 판단한 뒤 사인·코사인·탄젠트를 순차 계산한다."
+          "reason": "호의 비에서 중심각 120도를 복원한 뒤 반지름 두 개와 끼인각으로 삼각형 넓이를 구한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -59557,7 +59557,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "사인 비에서 피타고라스로 나머지 변을 구해 탄젠트를 계산한다."
+          "reason": "반지름 1인 직각삼각형에서 OH를 cos 35도로 읽고 BH=1-OH를 구한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
@@ -64020,7 +64020,7 @@
       "conditionKeys": [],
       "integrationPattern": "NONE",
       "relationalMetadataStatus": "PENDING_SEMANTIC_REVIEW",
-      "difficultyBucket": 2,
+      "difficultyBucket": 3,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "UNKNOWN",
@@ -64061,7 +64061,7 @@
             "legacyCompatibility",
             "priorReviewerVerdict"
           ],
-          "reason": "특수각 값을 각 보기별로 대입해 참인 식을 찾는다."
+          "reason": "선형식에서 sin A를 먼저 풀고 예각의 항등식으로 cos A와 tan A를 구한 뒤 여각인 cos B를 이용해 식을 계산한다."
         }
       },
       "difficultyReviewStatus": "BLIND_REVIEWED_PENDING_FREEZE"
