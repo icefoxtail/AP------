@@ -12,6 +12,16 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+
+### Codex Meta Foundation 작업 선행 규칙
+
+Codex가 Meta Foundation 단원 정리를 수행할 때는 GPT 격리 작업 규칙의 기본 실행형을 그대로 적용하지 않고
+`02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md`를 Codex 실행 정본으로 함께 적용한다.
+
+Codex Meta Foundation 작업은 `최신 main → 전용 branch → GOAL 완주 → checkpoint/evidence 보존 → branch 종료 → GPT 독립검수 → 사용자 승인 후 main`이 기본 흐름이다.
+checkpoint는 사용자 승인 대기 지점이 아니며, 실제 HARD BLOCKER가 아니면 프로토콜의 DONE 조건까지 계속 진행한다.
+완료 branch는 main merge 전에 GPT가 전체 diff·ledger/evidence·canonical/compiled/runtime/Archive2 parity를 독립검수한다.
+
 ## 1. 현재 읽기 순서
 
 ### 신규 JS 추출·변환
