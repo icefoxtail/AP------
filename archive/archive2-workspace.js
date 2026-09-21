@@ -94,7 +94,7 @@
     catalog: null,
     byUid: new Map(),
     busy: false,
-    view: "find",
+    view: "home",
     page: 0,
     find: { grade: "고1" },
     sources: [],
@@ -961,6 +961,27 @@
     } catch (error) { popup?.close(); throw error; }
   }
 
+  function renderHome() {
+    const recent = drafts().slice(0, 3);
+    const grades = ["중1", "중2", "중3", "고1", "고2", "고3"];
+    return `<section class="archive-home">
+      <header class="archive-home-heading"><h1>홈</h1></header>
+      <section class="panel archive-home-start">
+        <form id="archive-home-search" class="archive-home-search" role="search">
+          <label class="archive-home-search-box" aria-label="학교·단원·과목 검색"><span aria-hidden="true">⌕</span><input id="archive-home-query" placeholder="학교명, 과목, 단원으로 검색" autocomplete="off"></label>
+          ${button("home-search", "검색", 'type="button" class="primary archive-home-search-submit"')}
+        </form>
+        <div class="archive-home-grades" aria-label="학년 빠른 진입">${grades.map((grade) => button("home-grade", grade, `data-grade="${grade}"`)).join("")}</div>
+      </section>
+      <section class="archive-home-drafts-section">
+        <div class="archive-home-section-head"><h2>만들던 문제지</h2></div>
+        <div class="archive-home-drafts">${recent.length
+          ? recent.map((d, i) => `<article class="archive-home-draft"><div><h3>${esc(d.header?.title || d.title || "문제지")}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div>${button("restore", "이어하기", `data-draft="${i}"`)}</article>`).join("")
+          : '<div class="empty archive-home-empty">저장된 작업이 없습니다.</div>'}</div>
+      </section>
+    </section>`;
+  }
+
   function renderFind() {
     reconcileFinderSchool(state.find);
     const exams = findExams(),
@@ -1330,14 +1351,17 @@
         b.dataset.view === state.view ? "page" : "false",
       );
     });
+    document.body.dataset.archiveView = state.view;
     $("content").innerHTML =
-      state.view === "find"
-        ? renderFind()
-        : state.view === "recent"
-          ? renderRecent()
-          : state.view === "health"
-            ? renderHealth()
-            : renderCompose();
+      state.view === "home"
+        ? renderHome()
+        : state.view === "find"
+          ? renderFind()
+          : state.view === "recent"
+            ? renderRecent()
+            : state.view === "health"
+              ? renderHealth()
+              : renderCompose();
     if (state.view === "compose" && state.selected.length) updatePreview();
   }
   async function prepare() {
@@ -1952,6 +1976,19 @@
       }
       if (a === "close-dialog") {
         if (!originalIssueBusy()) $("modal").close();
+      } else if (a === "home-grade") {
+        state.find = { grade: b.dataset.grade || "" };
+        state.view = "find";
+        state.page = 0;
+        urlState();
+        render();
+      } else if (a === "home-search") {
+        const query = $("archive-home-query")?.value.trim() || "";
+        state.find = query ? { query } : {};
+        state.view = "find";
+        state.page = 0;
+        urlState();
+        render();
       } else if (a === "go-compose") {
         state.view = "compose";
         if (state.find.grade) state.filters.grade = state.find.grade;
@@ -2195,6 +2232,16 @@
     } catch (e) {
       status(e.message, true);
     }
+  });
+  document.addEventListener("submit", (event) => {
+    if (event.target.id !== "archive-home-search") return;
+    event.preventDefault();
+    const query = $("archive-home-query")?.value.trim() || "";
+    state.find = query ? { query } : {};
+    state.view = "find";
+    state.page = 0;
+    urlState();
+    render();
   });
   document.addEventListener("change", async (event) => {
     if (state.busy) return;
@@ -2467,9 +2514,9 @@
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
-    state.view = ["find", "compose", "recent", "health"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "recent", "health"].includes(p.get("view"))
       ? p.get("view")
-      : "find";
+      : "home";
     state.find = {};
     for (const k of [
       "grade",
