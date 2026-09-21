@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "middle-geometry-candidate-compile-audit-v1",
+  "status": "CANDIDATE_COMPILE_PASS_RUNTIME_RECHECK_PENDING",
+  "productionPromotion": "NOT_ATTEMPTED",
+  "productionCompiledMutation": 0,
+  "productionRuntimeMutation": 0,
+  "mergedCounts": {
+    "problemTypes": 125,
+    "templates": 431,
+    "bindings": 302,
+    "concepts": 88,
+    "conditions": 6
+  },
+  "candidateCounts": {
+    "problemTypes": 11,
+    "templates": 36,
+    "bindings": 23,
+    "runtimeRecords": 928,
+    "archive2Joined": 928,
+    "autoEligible": 415
+  },
+  "gates": {
+    "exactDenominator": true,
+    "uniqueUid": true,
+    "uniqueSourceIdentity": true,
+    "candidateL3KeyCollision": [],
+    "candidateL4KeyCollision": [],
+    "unregisteredL3": [],
+    "brokenL4Parent": [],
+    "brokenBinding": [],
+    "unregisteredCrossConcept": [],
+    "unregisteredCondition": [],
+    "duplicateRelational": [],
+    "identityJoinMissing": [],
+    "archive2JoinMissing": [],
+    "aliasCollision": 0,
+    "candidateLeakageIntoProduction": 0
+  },
+  "runtimeStatus": "RECHECK_HOLD_FOR_NON_REVIEWED_PASS",
+  "difficulty": {
+    "bucketCounts": {
+      "1": 168,
+      "2": 436,
+      "3": 15,
+      "4": 304,
+      "UNKNOWN": 5
+    },
+    "confidenceCounts": {
+      "high": 304,
+      "medium": 619,
+      "UNKNOWN": 5
+    },
+    "compatibilityCounts": {
+      "BORDERLINE_REVIEW": 89,
+      "NORMAL": 415,
+      "STRONG_CONFLICT": 419,
+      "UNKNOWN": 5
+    },
+    "independentRecheckTargetCount": 508
+  },
+  "nextGate": "Independent GPT review, then explicit approval before any canonical/compiled/runtime production promotion"
+}
