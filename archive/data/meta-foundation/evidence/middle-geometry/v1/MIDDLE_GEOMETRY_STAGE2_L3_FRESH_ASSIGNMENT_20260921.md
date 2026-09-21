@@ -84,12 +84,12 @@ The 13 M3 candidate/existing L3 axes are not 13 new canonical definitions: the t
 - candidate binding parent mismatch: `0`
 - pack owned-domain violation: `0`
 - source/working metadata confusion: `0`
-- actual alias audit: `EXECUTED`, lookup entries `134`, collision count `0`
+- actual global alias audit: `EXECUTED`, compiled authority `177` distinct aliases, raw canonical rows `274`, raw distinct `177`, parity `PASS`, collision count `0`
 - unregistered CrossConcept / Condition references: `0`
 - source / canonical / compiled / runtime mutation: `0`
 - current compiler/runtime capability: `ENGINE_CAPABILITY_BLOCK` — `compile-meta-foundation.mjs` is still hard-coded to `GEOMETRY_EQUATIONS`/400, so no middle-geometry canonical promotion or runtime claim was made.
 - GPT independent branch review: `PENDING_EXTERNAL_REVIEW`
-- independent recheck trigger union: **913** UID targets
+- pre-blind unresolved trigger union: **928** UID targets; after the 923-item fresh blind review this manifest must be recalculated from actual boundary/conflict/outlier evidence.
 
 ## Artifacts
 

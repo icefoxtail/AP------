@@ -57,9 +57,18 @@ function loadCanonical() {
         const aliasFile = path.join(packsRoot, entry.name, 'aliases.json');
         if (fs.existsSync(aliasFile)) aliases.push(...(readJson(aliasFile).aliases || []));
     }
+    const compiledAliases = readJson(path.join(archiveDir, 'data', 'meta-foundation', 'compiled', 'aliases.json'));
+    const rawEmbeddedAliases = [
+        ...problemTypes.flatMap(item => (item.aliases || []).map(alias => ({ alias, canonicalKey: item.problemTypeKey, canonicalKind: 'problemType', status: item.status || 'ACTIVE', source: 'embedded-taxonomy' }))),
+        ...templates.flatMap(item => (item.aliases || []).map(alias => ({ alias, canonicalKey: item.templateKey, canonicalKind: 'template', status: item.status || 'ACTIVE', source: 'embedded-taxonomy' }))),
+        ...concepts.flatMap(item => (item.aliases || []).map(alias => ({ alias, canonicalKey: item.conceptKey, canonicalKind: 'crossConcept', status: item.status || 'ACTIVE', source: 'embedded-concept' }))),
+        ...conditions.flatMap(item => (item.aliases || []).map(alias => ({ alias, canonicalKey: item.conditionKey, canonicalKind: 'condition', status: item.status || 'ACTIVE', source: 'embedded-condition' })))
+    ];
+    const rawAliasRows = [...aliases, ...rawEmbeddedAliases].filter(item => item.status === 'ACTIVE');
+    const rawAliasDistinct = new Set(rawAliasRows.map(item => String(item.alias || '').normalize('NFC').trim())).size;
     const master = readJson(path.join(archiveDir, 'data', 'master_tables', 'js_archive_tag_master.json'));
     const subUnits = new Map(master.filter(item => item.keyType === 'subUnitKey' && item.status === 'active').map(item => [item.subUnitKey, item]));
-    return { problemTypes, templates, bindings, concepts, conditions, aliases, subUnits };
+    return { problemTypes, templates, bindings, concepts, conditions, aliases: compiledAliases.aliases || [], aliasAuthority: { compiledAliasCount: compiledAliases.aliasCount, compiledDistinctAliasCount: new Set((compiledAliases.aliases || []).map(item => item.alias)).size, rawAliasRows: rawAliasRows.length, rawAliasDistinct, rawToCompiledDistinctParity: rawAliasDistinct === new Set((compiledAliases.aliases || []).map(item => item.alias)).size }, subUnits };
 }
 
 function bindingKey(record) {
@@ -237,6 +246,8 @@ function build() {
             archive2JoinMissing: missingCatalog,
             aliasAuditStatus: aliasAudit.aliasAuditStatus,
             aliasLookupEntryCount: aliasAudit.aliasLookupEntryCount,
+            aliasAuthoritySource: 'compiled/aliases.json plus canonical pack/shard embedded alias parity',
+            aliasAuthorityParity: canonical.aliasAuthority,
             aliasCollisionCount: aliasAudit.aliasCollisionCount,
             aliasCollisions: aliasAudit.aliasCollisions,
             candidateLeakageIntoProduction: 0
