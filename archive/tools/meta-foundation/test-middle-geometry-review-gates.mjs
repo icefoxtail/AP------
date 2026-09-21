@@ -33,7 +33,12 @@ assert.equal(audit.gates.aliasAuthorityParity.rawToCompiledDistinctParity, true)
 assert.equal(audit.candidateCounts.autoEligible, 0);
 assert.equal(runtime.counts.autoEligible, 0);
 assert.ok(ledger.records.filter(record => record.problemTypeKey).every(record => ['UNKNOWN', 'NONE', 'B12', 'B23', 'B34', 'B45'].includes(record.difficultyBoundaryFlag)));
-assert.ok(ledger.records.filter(record => record.problemTypeKey).every(record => record.legacyLevelCompatibility === 'UNKNOWN'));
+assert.ok(ledger.records.every(record => ['NORMAL', 'BORDERLINE_REVIEW', 'BORDERLINE_ACCEPTABLE', 'STRONG_CONFLICT', 'UNKNOWN'].includes(record.legacyLevelCompatibility)));
+if (ledger.legacyCompare?.status === 'COMPLETE_RECHECK_PENDING') {
+  assert.ok(ledger.records.filter(record => record.problemTypeKey).every(record => record.legacyLevelCompatibility !== 'UNKNOWN'));
+} else {
+  assert.ok(ledger.records.filter(record => record.problemTypeKey).every(record => record.legacyLevelCompatibility === 'UNKNOWN'));
+}
 assert.equal(ledger.records.filter(record => record.l3Status === 'OUT_OF_SCOPE').length, 5);
 assert.equal(ledger.records.filter(record => record.evidence.sourceDefectEvidence).length, 2);
 assert.ok(recheck.targetCount > 0);
