@@ -457,10 +457,10 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 삼각형의 두 변의 중점을 이은 선분의 길이는 나머지 한 변의 길이의 절반이다.\n$DE=\\dfrac12AC=5$ cm, $EF=\\dfrac12AB=4$ cm, $FD=\\dfrac12BC=6$ cm이다.\n따라서 $\\triangle DEF$의 둘레는 $5+4+6=15$ cm이다.\n정답은 ④이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q15.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 16,
@@ -561,12 +561,12 @@ window.questionBank = [
   {
     "id": 19,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -585,10 +585,10 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 무게중심이 같은 중선 위에서 선분을 나누는 비를 이용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다.\n$G'$은 $\\triangle GBC$의 무게중심이므로 $GG':G'D=2:1$이다.\n$GG'=4$ cm이므로 $G'D=2$ cm, 따라서 $GD=GG'+G'D=6$ cm이다.\n$AG:GD=2:1$이므로 $AG=12$ cm이다.\n따라서 $AD=AG+GD=12+6=18$ cm이므로 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q19.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -732,12 +732,12 @@ window.questionBank = [
   {
     "id": 25,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -750,9 +750,9 @@ window.questionBank = [
     "answer": "$3:1:2$, $3:1:4$",
     "solution": "[키포인트] $F,E,D$는 각 변의 중점이고, 무게중심과 중점연결정리를 함께 이용한다.\n$G$는 무게중심이므로 $AG:GD=2:1$이다.\n$F,E$는 각각 $AB,AC$의 중점이므로 $FE\\parallel BC$이고, $H$는 $AD$의 중점이다. 따라서 $AH:HD=1:1$이다.\n$AD$를 6등분하면 $AH=3$, $AG=4$, $GD=2$에 해당하므로 $HG=AG-AH=1$이다.\n따라서 $AH:HG:GD=3:1:2$이다.\n전체 $\\triangle ABC$의 넓이를 12라 하자. $\\triangle AFE\\sim\\triangle ABC$이고 닮음비가 $1:2$이므로 $[AFE]=3$이다.\n$G$에서 $BC$까지의 높이는 전체 높이의 $\\dfrac13$이므로 $[GBC]=\\dfrac13[ABC]=4$이다.\n또 $FE=\\dfrac12BC$이고 $G$와 $FE$ 사이의 높이는 전체 높이의 $\\dfrac16$이므로 $[FGE]=1$이다.\n따라서 $[AFE]:[FGE]:[GBC]=3:1:4$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q25.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

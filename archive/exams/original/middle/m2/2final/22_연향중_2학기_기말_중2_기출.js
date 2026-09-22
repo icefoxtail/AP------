@@ -89,10 +89,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 사다리꼴의 양 옆변의 중점을 이은 선분은 두 밑변과 평행하고, 그 선은 두 대각선의 중점을 지난다.\n$M$, $N$이 각각 $\\overline{AB}$, $\\overline{DC}$의 중점이므로 $\\overline{MN}$은 두 밑변과 평행하다.\n따라서 $P$, $Q$는 각각 두 대각선의 중점이 되고, $\\overline{PQ}$의 길이는 두 밑변의 길이의 차의 절반이다.\n즉 $PQ=\\dfrac{14-8}{2}=3\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -128,12 +128,12 @@ window.questionBank = [
   {
     "id": 5,
     "level": "중",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -150,20 +150,20 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 무게중심은 세 중선의 교점이고 각 중선을 꼭짓점 쪽에서 $2:1$로 나누며, 세 중선은 삼각형의 넓이를 같은 $6$부분으로 나눈다.\nㄱ. 무게중심의 성질에 의해 $AG:GQ=2:1$이므로 $AG=2GQ$이다. 따라서 참이다.\nㄴ. $P$는 $\\overline{AB}$의 중점이므로 $AP=PB$이고 $GP$는 공통이지만, 이것만으로 $\\triangle GAP$과 $\\triangle GBP$가 합동이라고 할 수 없다. 따라서 거짓이다.\nㄷ. 세 중선이 만든 작은 삼각형 하나의 넓이를 $1$이라 하면 $\\triangle GBQ$의 넓이는 $1$이고 $\\triangle GCA$의 넓이는 $2$이므로 $\\triangle GBQ=\\dfrac12\\triangle GCA$이다. 따라서 참이다.\nㄹ. $\\triangle ABQ$의 넓이는 전체의 $\\dfrac12$이고 $\\triangle GQC$의 넓이는 전체의 $\\dfrac16$이므로 $\\triangle ABQ=3\\triangle GQC$이다. 따라서 거짓이다.\n그러므로 옳은 것은 ㄱ, ㄷ이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -181,10 +181,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 무게중심의 중선 분할비와 삼각형의 중점 연결 관계를 차례로 이용한다.\n$G$가 무게중심이고 $B$, $G$, $E$가 한 중선 위에 있으므로 $E$는 $\\overline{AC}$의 중점이고 $BG:GE=2:1$이다.\n그림에서 $BG=6$이므로 $GE=x=3$이고, $BE=9$이다.\n또 $EF=FC$이므로 $F$는 $\\overline{EC}$의 중점이다. $D$는 $\\overline{BC}$의 중점이므로 $\\triangle BCE$에서 $\\overline{DF}$는 두 변의 중점을 이은 선분이다.\n따라서 $DF=\\dfrac12BE=\\dfrac92$이므로 $y=\\dfrac92$이다.\n그러므로 $x+y=3+\\dfrac92=\\dfrac{15}{2}$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 7,

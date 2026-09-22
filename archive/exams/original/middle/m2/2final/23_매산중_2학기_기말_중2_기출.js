@@ -66,12 +66,12 @@ window.questionBank = [
   {
     "id": 3,
     "level": "중",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -89,10 +89,10 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점에서 $2:1$로 나눈다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GM=2:1$이다. 따라서 $GM=36\\times\\dfrac13=12\\,\\mathrm{cm}$이고 $AG=24\\,\\mathrm{cm}$이다.\n$G'$은 $\\triangle GBC$의 무게중심이고 $M$은 $\\overline{BC}$의 중점이므로 $GG':G'M=2:1$이다. 따라서 $GG'=12\\times\\dfrac23=8\\,\\mathrm{cm}$이다.\n그러므로 $AG'=AG+GG'=24+8=32\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q3.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 4,
@@ -611,12 +611,12 @@ window.questionBank = [
   {
     "id": 21,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -629,10 +629,10 @@ window.questionBank = [
     "answer": "① $18\\,\\mathrm{cm}^2$, ② $\\dfrac{100}{3}\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] ① 무게중심이 만드는 작은 삼각형들의 넓이 관계, ② 중점 연결 정리와 무게중심의 $2:1$ 성질을 이용한다.\n① 세 중선은 삼각형을 넓이가 같은 $6$개의 작은 삼각형으로 나눈다. $\\triangle GDC$의 넓이가 $3\\,\\mathrm{cm}^2$이므로 $\\triangle ABC$의 넓이는 $3\\times6=18\\,\\mathrm{cm}^2$이다.\n② 그림에서 $AB=15$, $AC=20$, $BC=25$이므로 $15^2+20^2=25^2$이다. 따라서 $\\angle A=90^\\circ$이고 $[\\triangle ABC]=\\dfrac12\\times15\\times20=150$이다.\n$M$, $N$을 각각 $\\overline{BD}$, $\\overline{DC}$의 중점이라 하자. 그러면 $MN=\\dfrac12BC$이고 $[\\triangle AMN]=\\dfrac12[\\triangle ABC]=75$이다.\n$G$, $G'$은 각각 $\\triangle ABD$, $\\triangle ADC$의 무게중심이므로 $AG:AM=AG':AN=2:3$이다. 따라서 $\\triangle AGG'\\sim\\triangle AMN$이고 닮음비는 $2:3$이다.\n그러므로 $[\\triangle AGG']=75\\times\\left(\\dfrac23\\right)^2=\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 값은 ① $18\\,\\mathrm{cm}^2$, ② $\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q21.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 22,

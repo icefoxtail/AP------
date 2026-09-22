@@ -125,12 +125,12 @@ window.questionBank = [
   {
     "id": 5,
     "level": "상",
-    "category": "피타고라스 정리",
-    "originalCategory": "피타고라스 정리",
+    "category": "도형의 닮음",
+    "originalCategory": "도형의 닮음",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-07",
-    "standardUnit": "피타고라스 정리",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -148,10 +148,10 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 직사각형의 중심과 평행·수직 관계를 이용해 닮은 직각삼각형을 만든다.\n$BD=2BO=10\\rm\\,cm$이고, 직사각형의 세로 길이는 $6\\rm\\,cm$이므로 점 $O$에서 $AD$까지의 수직거리는 $3\\rm\\,cm$이다.\n점 $O$에서 $AD$에 수직선을 내려 그 발을 $H$라 하면 $OH=3\\rm\\,cm$이다.\n$EO\\perp BD$, $EH\\parallel BC$, $OH\\parallel DC$이므로 $\\triangle EOH\\sim\\triangle BCD$이다.\n따라서 $EO:BD=OH:BC=3:8$이므로 $EO=10\\times\\dfrac{3}{8}=\\dfrac{15}{4}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q5.png",
-    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-    "subUnit": "피타고라스 정리의 활용",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -241,10 +241,10 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 삼각형의 두 변의 중점을 이은 선분의 길이는 나머지 한 변의 절반이다.\n$DE=\\dfrac12 AC=5\\rm\\,cm$, $EF=\\dfrac12 AB=4\\rm\\,cm$, $FD=\\dfrac12 BC=6\\rm\\,cm$이다.\n따라서 $\\triangle DEF$의 둘레는 $5+4+6=15\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q8.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 9,
@@ -303,20 +303,20 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 사다리꼴의 두 옆변을 연장하여 닮은 삼각형으로 바꾼다.\n$AB=AM+MB=10+4=14\\rm\\,cm$이다.\n두 옆변 $AB$, $DC$를 위쪽으로 연장하여 만나는 점을 $P$라 하면 $\\triangle PAD\\sim\\triangle PBC$이다.\n$AD:BC=7:14=1:2$이므로 $PA:PB=1:2$이다. 또한 $PB-PA=AB=14$이므로 $PA=14$, $PB=28$이다.\n$PM=PA+AM=24$이고 $\\triangle PMN\\sim\\triangle PBC$이므로 $MN:14=24:28=6:7$이다.\n따라서 $MN=12\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q10.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 11,
     "level": "중",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -335,20 +335,20 @@ window.questionBank = [
     "answer": "②, ⑤",
     "solution": "[키포인트] 무게중심은 각 중선을 꼭짓점 쪽부터 $2:1$로 나누고, 세 중선은 삼각형을 넓이가 같은 6개의 작은 삼각형으로 나눈다.\n①에서 $BG:GE=2:1$이므로 옳다.\n②의 $GE$와 $GF$는 서로 다른 중선 위의 길이이므로 일반적으로 같지 않아 옳지 않다.\n③에서 $\\triangle GBD$는 6개의 같은 넓이의 작은 삼각형 중 하나이므로 $\\dfrac16\\triangle ABC$가 맞다.\n④에서 $\\square FBDG$는 같은 넓이의 작은 삼각형 2개로 이루어져 전체의 $\\dfrac13$이므로 옳다.\n⑤에서 $\\triangle AGE$는 전체의 $\\dfrac16$이고 $\\triangle ADC$는 전체의 $\\dfrac12$이므로 $\\triangle AGE=\\dfrac13\\triangle ADC$이다. 따라서 제시된 $\\dfrac12$는 옳지 않다.\n따라서 정답은 ②, ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q11.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -366,10 +366,10 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심이 밑변에서 차지하는 높이의 비를 차례로 적용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 밑변 $BC$에서 $G$까지의 높이는 $A$에서 $BC$까지 높이의 $\\dfrac13$이다.\n또 $G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지 높이의 $\\dfrac13$, 즉 원래 높이의 $\\dfrac19$이다.\n$D$는 $BC$의 중점이므로 $BD=\\dfrac12 BC$이다.\n따라서 $[\\triangle G'BD]=\\dfrac12\\times\\dfrac12 BC\\times\\dfrac19 h=\\dfrac1{18}[\\triangle ABC]$이다.\n$5=\\dfrac1{18}[\\triangle ABC]$이므로 $[\\triangle ABC]=90\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q12.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -617,8 +617,8 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $EF\\parallel AB$가 되도록 긋는다. (2) AA 닮음. (3) $EF$, $EC$, 평행사변형, $DB$, $DB$, $EC$.",
     "solution": "[키포인트] 보조선을 그어 닮은 삼각형과 평행사변형을 함께 만든다.\n(1) 점 $E$를 지나 $AB$에 평행한 직선을 그어 $BC$와 만나는 점을 $F$라 한다.\n(2) $AD$와 $EF$가 평행이고 $DE$와 $FC$가 평행이므로 대응하는 두 각의 크기가 각각 같다. 따라서 $\\triangle ADE\\sim\\triangle EFC$이며 닮음 조건은 AA 닮음이다.\n(3) 닮음에서 $AD:EF=AE:EC$이다.\n또 $DB\\parallel EF$, $DE\\parallel BF$이므로 $\\square DBFE$는 평행사변형이고 $EF=DB$이다.\n따라서 $AD:DB=AE:EC$이다.\n따라서 빈칸은 차례로 $EF$, $EC$, 평행사변형, $DB$, $DB$, $EC$이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
