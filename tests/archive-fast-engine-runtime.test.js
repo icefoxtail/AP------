@@ -1,9 +1,12 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const N = require('../archive/render-state-normalizer.js');
 const R = require('../archive/screen-runtime.js');
 const L = require('../archive/side-effect-ledger.js');
 const M = require('../archive/mathjax_render_loop.js');
+const screenRuntimeAdapter = fs.readFileSync(path.join(__dirname, '..', 'archive', 'screen-runtime-adapter.js'), 'utf8');
 
 function candidate(targetSessionId, mode = 'exam', input = {}) {
     return N.createCandidate({ mode, qpp: 4, input,
@@ -29,6 +32,11 @@ function fixture(overrides = {}) {
     return { runtime, adapter, state: () => ({ visible, committed, effectCount, releaseCount }) };
 }
 const req = (type, payload) => ({ type, payload, foreground: true });
+
+test('production prewarm is opt-in while snapshot caching remains available', () => {
+    assert.match(screenRuntimeAdapter, /params\.get\('prewarm'\) !== '1'/);
+    assert.match(screenRuntimeAdapter, /cacheModes: new URLSearchParams\(location\.search\)\.get\('snapshotCache'\) === '0' \? \[\] : \['ans', 'sol', 'exam'\]/);
+});
 
 test('candidate recursively copies choices and rejects unsupported graphs without freezing raw input', () => {
     const raw = { choices: [{ text: 'before' }], nested: { imageSize: 'full' } };
@@ -85,6 +93,72 @@ test('successful commit binds state, active status and current session; stale pr
     assert.equal(first.status, 'EVICTED');
     assert.equal(first.builtRequestGeneration, 1);
     assert.equal(runtime.inspect().attempts.every(a => a.keyBuildParity), true);
+});
+
+test('initial source load queues a foreground mode change instead of discarding the source transaction', async () => {
+    const f = fixture();
+    let releaseSource;
+    let sourceBuildStarted;
+    const sourceBuildStartedPromise = new Promise(resolve => { sourceBuildStarted = resolve; });
+    const sourceRelease = new Promise(resolve => { releaseSource = resolve; });
+    const originalBuild = f.adapter.build;
+    f.adapter.build = async ctx => {
+        if (ctx.candidate.mode === 'exam') {
+            sourceBuildStarted();
+            await sourceRelease;
+        }
+        return originalBuild(ctx);
+    };
+
+    const source = f.runtime.request(req('SOURCE_CHANGE'));
+    await sourceBuildStartedPromise;
+    const mode = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'sol', foreground: true });
+    releaseSource();
+
+    assert.equal((await source).ok, true);
+    assert.equal((await mode).ok, true);
+    assert.equal(f.runtime.activeSnapshot.mode, 'sol');
+    assert.deepEqual(
+        f.runtime.inspect().attempts.map(attempt => [attempt.intentType, attempt.requestGeneration, attempt.state]),
+        [['SOURCE_CHANGE', 1, 'SUCCEEDED'], ['MODE_CHANGE', 2, 'SUCCEEDED']]
+    );
+});
+
+test('foreground request starts before an active background prewarm finishes', async () => {
+    const f = fixture({ enablePrewarm: true, cacheModes: ['exam', 'sol', 'ans'] });
+    await f.runtime.request(req('SOURCE_CHANGE'));
+    let backgroundEntered;
+    const backgroundEnteredPromise = new Promise(resolve => { backgroundEntered = resolve; });
+    let releaseBackground;
+    const backgroundRelease = new Promise(resolve => { releaseBackground = resolve; });
+    let foregroundStarted = false;
+    let foregroundStartedResolve;
+    const foregroundStartedPromise = new Promise(resolve => { foregroundStartedResolve = resolve; });
+    const originalBuild = f.adapter.build;
+    f.adapter.build = async ctx => {
+        if (ctx.background) {
+            backgroundEntered();
+            await backgroundRelease;
+        } else {
+            foregroundStarted = true;
+            foregroundStartedResolve();
+        }
+        return originalBuild(ctx);
+    };
+
+    const background = f.runtime.prewarm('sol');
+    await backgroundEnteredPromise;
+    const foreground = f.runtime.request({ type: 'MODE_CHANGE', requestedMode: 'ans', foreground: true });
+    await Promise.race([foregroundStartedPromise, new Promise(resolve => setTimeout(resolve, 0))]);
+    assert.equal(foregroundStarted, true);
+    releaseBackground();
+
+    assert.equal((await foreground).ok, true);
+    assert.equal((await background).code, 'DISCARDED_STALE');
+    assert.equal(f.runtime.activeSnapshot.mode, 'ans');
+    const attempts = f.runtime.inspect().attempts;
+    assert.equal(attempts.some(attempt => attempt.intentType === 'MODE_CHANGE' && attempt.requestGeneration === 2 && attempt.state === 'DISCARDED_STALE'), true);
+    assert.equal(attempts.some(attempt => attempt.intentType === 'MODE_CHANGE' && attempt.requestGeneration === 3 && attempt.state === 'SUCCEEDED'), true);
 });
 
 test('PREPARE failure and history-like synchronous COMMIT failure preserve old state and status', async () => {
