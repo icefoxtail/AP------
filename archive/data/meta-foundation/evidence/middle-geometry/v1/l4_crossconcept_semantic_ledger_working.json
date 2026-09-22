@@ -19,7 +19,7 @@
     "mapped": 921,
     "routeOut": 7
   },
-  "completedMappedCount": 550,
+  "completedMappedCount": 600,
   "records": [
     {
       "questionUid": "qid_v1_010d977d0827aa4d3e791212a20950580803d68b8f456496cdc5e3bd1ea14415",
@@ -9610,6 +9610,902 @@
       "semanticReason": "탄젠트 정의와 피타고라스·코사인 정의를 결합한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
       "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_108"
+    },
+    {
+      "questionUid": "qid_v1_c020e0a1d08c78e200bec946309e5f15331bc45af0177e22e49d938668c6c7c9",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#4",
+      "sourceFingerprint": "f77b56466496aa7424f0358ee9bb2a0a7ca8758c64acdcfee23085cd1651ec87",
+      "inputBundleSha": "9da4de6a460ef045b9c621fea8557fc68d58c9f94adfeed23c91c7ffeb60e996",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "tan x=1.5399을 표에서 x=57°로 조회하고 여각·평행 관계로 y=33°를 얻어 cos y를 조회한다.",
+      "decisiveStep": "tan x=1.5399을 표에서 x=57°로 조회하고 여각·평행 관계로 y=33°를 얻어 cos y를 조회한다.",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "l4SemanticReason": "삼각비표와 여각·평행 관계로 목표 삼각비를 역조회한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각비표와 여각·평행 관계로 목표 삼각비를 역조회한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_109"
+    },
+    {
+      "questionUid": "qid_v1_c12f9fcda8c6522021a9902d12ddb0a1dd5b8a9772dabab979891ed6297a7a1f",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#21",
+      "sourceFingerprint": "ad9a6ddb1c21aaac14d5a1910833c58449b1cf240e27d44f3b5076f0a414d503",
+      "inputBundleSha": "0823d4776ccb8c6be3f321fd973f59bd23bd6932824d112275bed8c18d95da50",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "빗변 10과 sin24°, cos24° 표 값으로 두 직각변 x,y를 직접 계산한다.",
+      "decisiveStep": "빗변 10과 sin24°, cos24° 표 값으로 두 직각변 x,y를 직접 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "삼각비표의 값을 목표 길이에 직접 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각비표의 값을 목표 길이에 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_109"
+    },
+    {
+      "questionUid": "qid_v1_c17d34311e8456c431f15a5111a37fe43dd34d42b626d8b9ff78f7c7f066f456",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#9",
+      "sourceFingerprint": "3a1b966bf287c562540e7ef18de745860a05808609f6fe4b0ea517806d19d6d2",
+      "inputBundleSha": "5cff7c7eb3fd19d65bc117c57e87dd68b7c7a7ee10c95cc7ab1a278cd668518d",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "서로 수직인 두 직선의 각 관계로 x=∠A를 확인하고 피타고라스로 AC를 구해 cos A를 계산한다.",
+      "decisiveStep": "서로 수직인 두 직선의 각 관계로 x=∠A를 확인하고 피타고라스로 AC를 구해 cos A를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "도형의 각 관계와 피타고라스 길이 복원을 삼각비에 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AB=2, BC=5에서 AC=√29를 피타고라스로 계산한다."
+      },
+      "semanticReason": "도형의 각 관계와 피타고라스 길이 복원을 삼각비에 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_109"
+    },
+    {
+      "questionUid": "qid_v1_c1d77426ac2e7e632abcc52d04d7ff5f890bd9300c37b2f23d8e2fc8abe7ffa0",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#9",
+      "sourceFingerprint": "98a2e25770f8ab2fad04eb0a487599f3bf748ceb60f4616ff44d648056ee411b",
+      "inputBundleSha": "13eb3468563e54a1da26795abc1d9b5d496ecf7f380e0ae54ba59bfa8291512d",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "수선으로 BD·AD를 구하고 DC를 만든 뒤 ADC에서 피타고라스로 AC를 계산한다.",
+      "decisiveStep": "수선으로 BD·AD를 구하고 DC를 만든 뒤 ADC에서 피타고라스로 AC를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "첫 직각삼각형 삼각비 결과를 두 번째 길이 계산으로 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AD=3√3, DC=5에서 AC=2√13을 피타고라스로 계산한다."
+      },
+      "semanticReason": "첫 직각삼각형 삼각비 결과를 두 번째 길이 계산으로 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_109"
+    },
+    {
+      "questionUid": "qid_v1_c1e53b22da5971db1f65d867e3b0ae33cd422f13079d9e5d4a6db8be3a59957d",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#7",
+      "sourceFingerprint": "b48009cd6ab8ac0c2ed240e7e8b00ebea8b87d9d48514f599a1b7d4d92922bf9",
+      "inputBundleSha": "1d5f840db92209fa69e1cb8c090e98611f477faf50f63d8d72625360bb8b77d9",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "이차방정식의 두 근 중 예각 사인 범위에 맞는 3/4를 선택하고 cos a·tan a=sin a로 정리한다.",
+      "decisiveStep": "이차방정식의 두 근 중 예각 사인 범위에 맞는 3/4를 선택하고 cos a·tan a=sin a로 정리한다.",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "l4SemanticReason": "근의 범위 조건과 삼각비 항등 관계로 값을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "근의 범위 조건과 삼각비 항등 관계로 값을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_109"
+    },
+    {
+      "questionUid": "qid_v1_c2f8b89b4e54fa22d893e1aa837c3f600e40d9d9496792ba21e4e9a5f95f15b3",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#13",
+      "sourceFingerprint": "78c3d59f33cffcdfc48fee088c8c978b189f9e97701fdd325b1972ebe8bc3f94",
+      "inputBundleSha": "5066bceb85c0da7ad580596f10f4f7155ffab00e57604e955b6c7d027a56ac73",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "30°·45° 직각삼각형의 변을 차례로 구하고 15°가 들어 있는 직각삼각형에서 cos15°를 계산한다.",
+      "decisiveStep": "30°·45° 직각삼각형의 변을 차례로 구하고 15°가 들어 있는 직각삼각형에서 cos15°를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "특수각 삼각형의 길이 관계를 다른 각의 삼각비로 연결한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 삼각형의 길이 관계를 다른 각의 삼각비로 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_110"
+    },
+    {
+      "questionUid": "qid_v1_c60eb1ec277931476109399e0b39e2b9b5e866e1aefec8962f802149eb2cd3c3",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#12",
+      "sourceFingerprint": "720f5fb2e147145e4c7ec3e34861bd1f8711441db0023c802d361b4b01727ce8",
+      "inputBundleSha": "d43832c29106867b61e9224a4a9efea2e87110de3f618cd27b3cc56e3c803977",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "반지름 1인 직각삼각형에서 cos x=OB/OA를 적용해 길이와 삼각비를 대응시킨다.",
+      "decisiveStep": "반지름 1인 직각삼각형에서 cos x=OB/OA를 적용해 길이와 삼각비를 대응시킨다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "기본 코사인 정의를 사분원 도형에 직접 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "기본 코사인 정의를 사분원 도형에 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_110"
+    },
+    {
+      "questionUid": "qid_v1_c6406ed5ada6bf1bba425cc8a0e8bcd461ba3501e34a7e51c659a4c6b3475d94",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#5",
+      "sourceFingerprint": "5719c733c0989d6466d29d16a0396939841c9935ee8f451625e3cd3803db232c",
+      "inputBundleSha": "9b9096ba75f87cf80d5789c963916651e95b0d3602b23288bcf36d9906bca17b",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "8-15-17 길이와 빗변 높이의 닮음으로 CD·AD를 구한 뒤 작은 삼각형의 tan x와 cos y를 계산한다.",
+      "decisiveStep": "8-15-17 길이와 빗변 높이의 닮음으로 CD·AD를 구한 뒤 작은 삼각형의 tan x와 cos y를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "직각삼각형 높이·닮음으로 두 삼각비를 복원한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AC=8, BC=15에서 AB=17을 구한다.",
+        "CC_TRIANGLE_AREA": "큰 삼각형 넓이와 밑변 AB의 높이로 CD를 구한다."
+      },
+      "semanticReason": "직각삼각형 높이·닮음으로 두 삼각비를 복원한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_110"
+    },
+    {
+      "questionUid": "qid_v1_c6cb2f7b40eba6d81db9e932c3c6439e61b55c5fd27effbebcad22eaaf28ad34",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#1",
+      "sourceFingerprint": "3e1d4be3214af3b1f53214d1333291c001f62ff6c7925c0951aa45c544322b8b",
+      "inputBundleSha": "32944af1b5378c3d53df5e70b49d751c225cbcf40987f925cbab39e381e25678",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "AC와 AB로 BC를 구하고 중점 BD와 직각삼각형 ABD의 빗변 AD를 복원해 sin x를 계산한다.",
+      "decisiveStep": "AC와 AB로 BC를 구하고 중점 BD와 직각삼각형 ABD의 빗변 AD를 복원해 sin x를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "중점·피타고라스·직각삼각형 삼각비를 결합한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "BC와 BD, AD를 차례로 피타고라스로 계산한다."
+      },
+      "semanticReason": "중점·피타고라스·직각삼각형 삼각비를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_110"
+    },
+    {
+      "questionUid": "qid_v1_c70d30edca03dce3ae98aeeaea2e0de04c0a4113903f23a65cc8ec90edd32148",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#22",
+      "sourceFingerprint": "aa43537802aad12d28fc11fd79cfd29c52c7791038034c88e22d85747a193804",
+      "inputBundleSha": "2e47333882c4bd0aebeeac9e6662f6e0deff43e04b76c32b50a27a4bb54d4e98",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "일직선 각으로 ABD의 두 밑각을 같게 해 AD=BD를 얻고, 30° 직각삼각형으로 BC를 구성해 tan15°를 계산한다.",
+      "decisiveStep": "일직선 각으로 ABD의 두 밑각을 같게 해 AD=BD를 얻고, 30° 직각삼각형으로 BC를 구성해 tan15°를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "이등변삼각형과 특수각 직각삼각형의 기하 관계로 삼각비를 유도한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "이등변삼각형과 특수각 직각삼각형의 기하 관계로 삼각비를 유도한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_110"
+    },
+    {
+      "questionUid": "qid_v1_c8ea036aa76e2046e6d1b6ce62b0f95f053d89f06a08f31b90a78b8d3b4110c9",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#2",
+      "sourceFingerprint": "6b21ec0169a5873cf08f8d15c4deac0dbf9c46ec4965b77f7717c92801399fe0",
+      "inputBundleSha": "8e84d337fb20589b0678b04336c186427a8dae04863c2801426c4bfe653dce96",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "tan A=12/5에서 5:12:13 직각삼각형 비를 만들고 cos A=5/13을 적용한다.",
+      "decisiveStep": "tan A=12/5에서 5:12:13 직각삼각형 비를 만들고 cos A=5/13을 적용한다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "탄젠트 변비와 피타고라스·코사인 정의를 결합한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "5:12 직각변비에서 빗변 13을 피타고라스로 구한다."
+      },
+      "semanticReason": "탄젠트 변비와 피타고라스·코사인 정의를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_111"
+    },
+    {
+      "questionUid": "qid_v1_c9c3f23437c9db41e99e412f28cbb7eee2b6442dbf996d59307708b4fb862366",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#21",
+      "sourceFingerprint": "e0ddad391ac228e0079970241d04fc6556825545ea6fbaa91617afcdbd1c8393",
+      "inputBundleSha": "bf9a54670be7e7219202081fed2f80805d1d79eccd9cebfb29ae0ca419b4055e",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "정육면체 면·공간 대각선과 빗변에 내린 높이의 닮음으로 sin, cos, tan을 계산한다.",
+      "decisiveStep": "정육면체 면·공간 대각선과 빗변에 내린 높이의 닮음으로 sin, cos, tan을 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "입체 도형의 길이 관계와 닮음을 삼각비 식으로 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "면 대각선·공간 대각선을 피타고라스로 계산한다."
+      },
+      "semanticReason": "입체 도형의 길이 관계와 닮음을 삼각비 식으로 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_111"
+    },
+    {
+      "questionUid": "qid_v1_ca9668a1ebdfda727a4dbda5ccd194f99e69acf80c24433d61827ffa9c52f8bc",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#3",
+      "sourceFingerprint": "68232c2310bf4d1e7609c31ffe8a1f57be68319b952ac1634e47ddbc35a4739e",
+      "inputBundleSha": "e8af9b3d3a9d83879ddb350190eb52fd3003caeb7badd86fbad4702ce863c0a7",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "tan45°=1과 sin60°=√3/2를 식에 대입해 계산한다.",
+      "decisiveStep": "tan45°=1과 sin60°=√3/2를 식에 대입해 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "l4SemanticReason": "특수각 삼각비를 직접 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 삼각비를 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_111"
+    },
+    {
+      "questionUid": "qid_v1_cafbde01d6a8fd4209d56828060b5090bb09b725ecf15de2a21c6933d5bd80ed",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#6",
+      "sourceFingerprint": "5cadee80f59c9fad9ab6abb4abdd4aa0d400178597dd26482c54280e3d804132",
+      "inputBundleSha": "976e788e940ce4c3c14074c437a6ea991b26477a72d17938dbf58d93246872dd",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "cos90°=0과 tan0°=0을 대입해 두 항이 모두 0임을 확인한다.",
+      "decisiveStep": "cos90°=0과 tan0°=0을 대입해 두 항이 모두 0임을 확인한다.",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "l4SemanticReason": "특수각 삼각비를 직접 대입한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 삼각비를 직접 대입한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_111"
+    },
+    {
+      "questionUid": "qid_v1_cc44d06ccfc5958c4d46719cdc85dadbe422808e0824e171a71989f8d413bd03",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#13",
+      "sourceFingerprint": "5a586db6866f1662d49999b510ef7deeb3c7e9ff3fcb7118767c2b1418210953",
+      "inputBundleSha": "21c2991ee67341647b7914d71085a4d27ac482dfac0a1f6fd656567a56522897",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "z와 x가 여각이므로 sin z=cos x로 바꾸고 반지름 1 사분원의 OB 선분과 대응시킨다.",
+      "decisiveStep": "z와 x가 여각이므로 sin z=cos x로 바꾸고 반지름 1 사분원의 OB 선분과 대응시킨다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "여각의 사인·코사인 관계와 기본 정의를 결합한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "여각의 사인·코사인 관계와 기본 정의를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_111"
+    },
+    {
+      "questionUid": "qid_v1_cd253142b9b146b73dad00fade31e4c3529bc3aa65e7c235deb347f29ec452e2",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#11",
+      "sourceFingerprint": "6d3554e777bae746f1e207585b7389913404e4983a0c8b2cf13dd5eb4b910de0",
+      "inputBundleSha": "fc22f272f3576c4c29f460a1bca3c5b007d91f463eddb921d340e7efed370cb2",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "수평거리 50m와 tan38°로 눈높이 위 나무 길이를 구해 전체 높이를 계산한다.",
+      "decisiveStep": "수평거리 50m와 tan38°로 눈높이 위 나무 길이를 구해 전체 높이를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "직각삼각형 측량으로 목표 높이를 직접 구한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "직각삼각형 측량으로 목표 높이를 직접 구한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_112"
+    },
+    {
+      "questionUid": "qid_v1_cdf16d69f5e1daa2eef9ccf8e34b631844c4cfb6b3f9aaf6825912494f422228",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#21",
+      "sourceFingerprint": "d6f5e07b0eccbe8b579cf81689f5ea807d0a2ad3269d7ae8f8c299f0144e94fd",
+      "inputBundleSha": "e6d5e9b3d319343e41cff5ad5f6cb0c750c698fecd4c242c9357f118ccc58995",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "두 변 AB,BC와 끼인각 B의 사인값을 넓이 공식에 대입한다.",
+      "decisiveStep": "두 변 AB,BC와 끼인각 B의 사인값을 넓이 공식에 대입한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "주어진 사인값으로 삼각형 넓이를 직접 계산한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "두 변과 끼인각의 사인으로 삼각형 넓이를 계산한다."
+      },
+      "semanticReason": "주어진 사인값으로 삼각형 넓이를 직접 계산한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_112"
+    },
+    {
+      "questionUid": "qid_v1_ce908404875d39119a8d396184bf95d567562a8a1a5e84623473ca4825f6705e",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#10",
+      "sourceFingerprint": "5bc33871b4f5cd9094f5b987a72416f191bdaafb9383589a2589fb9246c2c022",
+      "inputBundleSha": "24256608f5eecc5d4add436ddccf49c66773186207727deac316bfdde6bc51e8",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "정사각형 중점 구조에서 BEF 넓이를 구하고 수선으로 sin x를 얻은 뒤 항등식으로 cos x를 계산한다.",
+      "decisiveStep": "정사각형 중점 구조에서 BEF 넓이를 구하고 수선으로 sin x를 얻은 뒤 항등식으로 cos x를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "도형 넓이·피타고라스·삼각비 항등을 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "BE, BF와 수선 직각삼각형의 길이를 피타고라스로 계산한다.",
+        "CC_TRIANGLE_AREA": "정사각형에서 세 삼각형을 빼 BEF 넓이를 구한다."
+      },
+      "semanticReason": "도형 넓이·피타고라스·삼각비 항등을 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_112"
+    },
+    {
+      "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#10",
+      "sourceFingerprint": "db2607cfb1a8425ccc84dc8a00da2006dbe5e11f55857804815d13ab1bab5f7f",
+      "inputBundleSha": "0bfa849c4553b6815d54c86161f499d827eba3625e670bd9a989c323b3d1338b",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "직선의 기울기를 tan30°로 정하고 x절편을 이용해 한 점을 지나는 일차함수식을 만든다.",
+      "decisiveStep": "직선의 기울기를 tan30°로 정하고 x절편을 이용해 한 점을 지나는 일차함수식을 만든다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "삼각비를 기울기와 직선식으로 변환한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각비를 기울기와 직선식으로 변환한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_112"
+    },
+    {
+      "questionUid": "qid_v1_d0e77d798224e9f9c2f800343a11de99f3df9da77933bf37d1116c275e9859e2",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#21",
+      "sourceFingerprint": "02ca6a67fb3485c30670eae3673dea1ccfe8d9cf91c9de86132a1aec8cda5d39",
+      "inputBundleSha": "b3328e1b0e36102a5a4d1515302fb90ef11dee8695e85afbef6c55688c272fc6",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "합차공식으로 1−tan²30°로 바꾸고 특수각 탄젠트값을 대입한다.",
+      "decisiveStep": "합차공식으로 1−tan²30°로 바꾸고 특수각 탄젠트값을 대입한다.",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "l4SemanticReason": "대수 항등식과 특수각 값으로 식을 단순화한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "대수 항등식과 특수각 값으로 식을 단순화한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_112"
+    },
+    {
+      "questionUid": "qid_v1_d0ef81f1a68d86ace97107fdec8d9a5e92e8a93afb470fc8b304e6196329d21f",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#24",
+      "sourceFingerprint": "8fc67f037fffceef521e0698c78e1b1976af501658c4a3f8e49fd8a6218a91c1",
+      "inputBundleSha": "179241bc022b5be80bbba96a3bace09b91ccdffcbb0d93aaa870ddad9ce28f9f",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "AC와 BC의 중점·60° 삼각비로 CD와 BC를 구한 뒤 BCD에서 BD를 피타고라스로 계산한다.",
+      "decisiveStep": "AC와 BC의 중점·60° 삼각비로 CD와 BC를 구한 뒤 BCD에서 BD를 피타고라스로 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "특수각 길이 계산과 중점 조건, 피타고라스를 연쇄한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "BC=4√3, CD=2에서 BD=2√13을 피타고라스로 구한다."
+      },
+      "semanticReason": "특수각 길이 계산과 중점 조건, 피타고라스를 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_113"
+    },
+    {
+      "questionUid": "qid_v1_d1086ae360a89dbbbbf250902596402a4b32e395a270183eeb7263afc65de432",
+      "sourceIdentity": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js#7",
+      "sourceFingerprint": "b55c715fef7c67985b16dd674f16c79465cf1bc97a1899c4a05b0461ba4f16e2",
+      "inputBundleSha": "a9e1403627f25c9503bfe83204bc57671197fd1dacfecb2fe84812b1d8ec8f31",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "120°의 보조 예각 60°에서 높이를 10sin60°로 구하고 밑변과 곱해 넓이를 계산한다.",
+      "decisiveStep": "120°의 보조 예각 60°에서 높이를 10sin60°로 구하고 밑변과 곱해 넓이를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "둔각의 보조각 사인으로 삼각형 높이와 넓이를 직접 구한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "구한 높이와 밑변으로 삼각형 넓이를 계산한다."
+      },
+      "semanticReason": "둔각의 보조각 사인으로 삼각형 높이와 넓이를 직접 구한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_113"
+    },
+    {
+      "questionUid": "qid_v1_d34d5cae69eef26f3dab533aa8dc973fc1b53b76dfc19f44f079a2ca4e9aff99",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#1",
+      "sourceFingerprint": "a5fd1125ab2d4928b1400ee0c4772e71a79e43fe402492bcc31f1081bc503960",
+      "inputBundleSha": "783653f31874a6ae346e1af1e72a2d400977446fbb1fb60865dd08fc0eb0d688",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "3-4-5 직각삼각형에서 각 A의 코사인과 사인을 변비로 구해 뺀다.",
+      "decisiveStep": "3-4-5 직각삼각형에서 각 A의 코사인과 사인을 변비로 구해 뺀다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "삼각비의 기본 정의를 직접 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각비의 기본 정의를 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_113"
+    },
+    {
+      "questionUid": "qid_v1_d45521fc7fb98052bd19d164ef4b5301285b307d9421bf85d70c358691d85dc8",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#6",
+      "sourceFingerprint": "820d8ec85fda6ac0a43b8ae72d2a07bc4e066c73f891dc595ede3abf0b1dfb36",
+      "inputBundleSha": "807729af8affa3a8cda158ca1ebf66866f02607192dbfb4f5217d19570fbb805",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "두 변 AB,BC와 120° 끼인각의 사인으로 삼각형 넓이를 계산한다.",
+      "decisiveStep": "두 변 AB,BC와 120° 끼인각의 사인으로 삼각형 넓이를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "끼인각 사인 넓이 공식을 직접 적용한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "두 변과 끼인각으로 삼각형 넓이를 계산한다."
+      },
+      "semanticReason": "끼인각 사인 넓이 공식을 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_113"
+    },
+    {
+      "questionUid": "qid_v1_d5647fc0b6ae1c7a9e44653ea0d80f476b08792c2620f3777960d4124e2e35d2",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#11",
+      "sourceFingerprint": "a630006eecbb3a90fd7a525b8895e270f565bb6b2a5b03a9cc131aef1e725971",
+      "inputBundleSha": "e484a55bac0d7d0b3de81fdfe4f318abb98d0f7287298b49fc1a24e2febe23e5",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "75° 이등변삼각형을 45°·30° 직각삼각형으로 분해하고 길이식을 연립해 AB를 계산한다.",
+      "decisiveStep": "75° 이등변삼각형을 45°·30° 직각삼각형으로 분해하고 길이식을 연립해 AB를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "특수각 보조선과 이등변 구조를 연쇄해 목표 변을 구한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 보조선과 이등변 구조를 연쇄해 목표 변을 구한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_113"
+    },
+    {
+      "questionUid": "qid_v1_d923745c2dc8001bd522354fa916db2c9b9c1938f6a617df5e9ae826b9b3fedb",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#6",
+      "sourceFingerprint": "3599810c3238dc9f9a07521c445ffe218e7841528b126fd24755f1024b6fe548",
+      "inputBundleSha": "e2cb44888eebcadf8e2c24203e6fd28ebe9487c41f0b7c0468acc0f7cbed4c76",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "30° 직각삼각형의 변을 구하고 A의 각 이등분선 정리로 BC의 BD 비를 적용한다.",
+      "decisiveStep": "30° 직각삼각형의 변을 구하고 A의 각 이등분선 정리로 BC의 BD 비를 적용한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "특수각 길이 계산과 각의 이등분선 비례를 연쇄한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 길이 계산과 각의 이등분선 비례를 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_114"
+    },
+    {
+      "questionUid": "qid_v1_d938153ef69147163e468bf140ffeb8fe076c277e3f9050cad372965754f74ef",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#3",
+      "sourceFingerprint": "0c56a6d201f0c3bd881be8afa485acd5a5c1db27c4c506b8c9e2ea76add65a49",
+      "inputBundleSha": "16ca8e9572871921394cb99c268b7fa619c99421814034e70a5f9e9fc980b451",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "빗변 높이로 생긴 두 직각삼각형의 닮음으로 AD를 구하고 AB·AC를 복원해 cos A를 계산한다.",
+      "decisiveStep": "빗변 높이로 생긴 두 직각삼각형의 닮음으로 AD를 구하고 AB·AC를 복원해 cos A를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "직각삼각형 닮음과 피타고라스 길이 관계를 삼각비에 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AC=20을 직각삼각형 ACD의 피타고라스로 확인한다."
+      },
+      "semanticReason": "직각삼각형 닮음과 피타고라스 길이 관계를 삼각비에 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_114"
+    },
+    {
+      "questionUid": "qid_v1_dda144a88b0d2464c2a75a16dad3cd548ff789565eea548bf5072e06b0911463",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#8",
+      "sourceFingerprint": "eea0a172b896e86e637774652f682101eef6909ae3730f27b5a7a66c105f3fee",
+      "inputBundleSha": "7a1b8d3e1db8ee680141731b0e3c0a7a169a1494d43594d7960b918e217511f1",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "30° 직각삼각형에서 CH를 구하고 45° 직각이등변삼각형에서 AC를 계산한다.",
+      "decisiveStep": "30° 직각삼각형에서 CH를 구하고 45° 직각이등변삼각형에서 AC를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "특수각 수선 구조와 길이 계산을 연쇄한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AC=10√2를 직각이등변삼각형의 길이 관계로 계산한다."
+      },
+      "semanticReason": "특수각 수선 구조와 길이 계산을 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_114"
+    },
+    {
+      "questionUid": "qid_v1_de675307d366fac5f87e13b3be648813d2f8731c1694460b0c8aeabf2142beb9",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#4",
+      "sourceFingerprint": "dcb33cb68418cec4ffee28c70d3ea71e3a01d5c276fae3fcb3e93d8fed2eb688",
+      "inputBundleSha": "c08506f2a0164fd4c00caa681ebebe87a262b9910b0287adbe9918d46d83e9f1",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "사분원 OB=cos x=0.72에 해당하는 x=44°를 표에서 찾고 cos46°=sin44°를 조회한다.",
+      "decisiveStep": "사분원 OB=cos x=0.72에 해당하는 x=44°를 표에서 찾고 cos46°=sin44°를 조회한다.",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "l4SemanticReason": "삼각비표와 여각 관계로 값을 역조회한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각비표와 여각 관계로 값을 역조회한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_114"
+    },
+    {
+      "questionUid": "qid_v1_e198032f3c2ec1a939f07ab5e913e53bb77069acd79fdfbe3cd1c632308f2a26",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#22",
+      "sourceFingerprint": "cec8d8452e5562793fa205f97696a043e6bd0665d91ed0ce4066af166aa76aec",
+      "inputBundleSha": "36d4aceecea4bd7a410d18fa68b5bd9678b999f11c33b57472def53e7ebb04ac",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "직선의 절편으로 직각삼각형의 변을 만들고 피타고라스로 AB와 tan b를 구해 항등식과 함께 식을 계산한다.",
+      "decisiveStep": "직선의 절편으로 직각삼각형의 변을 만들고 피타고라스로 AB와 tan b를 구해 항등식과 함께 식을 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "좌표 절편·피타고라스·삼각비 기본 관계를 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AO=8, BO=4에서 AB=4√5를 피타고라스로 계산한다."
+      },
+      "semanticReason": "좌표 절편·피타고라스·삼각비 기본 관계를 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_114"
+    },
+    {
+      "questionUid": "qid_v1_e40c204b4fce0ff09ba2e294b82f5f03a4392492b96973867e07d14e10cc54ab",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#2",
+      "sourceFingerprint": "cf85b15369c27211fb334fd8a204516768949e8e80090c84a2164357391e1f01",
+      "inputBundleSha": "04730f84e70440d1535df9299881cc4dbbe84be041010eacf6196c34a0f152a6",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "tan A=3/4에서 3-4-5 빗변비를 만들고 sin A+cos A를 계산한다.",
+      "decisiveStep": "tan A=3/4에서 3-4-5 빗변비를 만들고 sin A+cos A를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "탄젠트 변비와 피타고라스·사인·코사인 정의를 결합한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "3:4 직각변비에서 빗변 5를 피타고라스로 구한다."
+      },
+      "semanticReason": "탄젠트 변비와 피타고라스·사인·코사인 정의를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_115"
+    },
+    {
+      "questionUid": "qid_v1_e4ba2b9da32f044d69365ba770f627de7a5c507022acc721246243608a99f94a",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#12",
+      "sourceFingerprint": "c2725a23507235777a2d59af351abe0f0c046b4b21839e04fc9bed727ca28e2f",
+      "inputBundleSha": "bd01b847acdb18307e7868fc08d8ea7f50ca185d5e9afbab1a243fbc062ad779",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "호 비에서 중심각 120°를 구하고 반지름 8인 두 변과 끼인각의 사인으로 삼각형 ABO 넓이를 계산한다.",
+      "decisiveStep": "호 비에서 중심각 120°를 구하고 반지름 8인 두 변과 끼인각의 사인으로 삼각형 ABO 넓이를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "중심각과 끼인각 넓이 공식을 직접 적용한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "두 반지름과 중심각의 사인으로 삼각형 넓이를 계산한다."
+      },
+      "semanticReason": "중심각과 끼인각 넓이 공식을 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_115"
+    },
+    {
+      "questionUid": "qid_v1_e53b04a03bdf1c7327c16e57feae1db89e04158b384dbcbd71910c0c8763ca5c",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#6",
+      "sourceFingerprint": "f3bd1108e14a355347626cfbb8de896c0782cc9401e6d4a7fea46d9f565f204a",
+      "inputBundleSha": "041d797e247114252f6b5a6dc7bb3e6fefa1fa9ce3978927d3a9534ec16b9ff8",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "첫 직각삼각형에서 BC를 구한 뒤 같은 30°의 두 직각삼각형에서 BD와 BE를 차례로 계산한다.",
+      "decisiveStep": "첫 직각삼각형에서 BC를 구한 뒤 같은 30°의 두 직각삼각형에서 BD와 BE를 차례로 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "같은 특수각 코사인 측정을 세 단계로 연쇄한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "같은 특수각 코사인 측정을 세 단계로 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_115"
+    },
+    {
+      "questionUid": "qid_v1_e771d1868a3d5de23ae8c85ae25f0da7d495ccc96d7f96697c491595376895bc",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#22",
+      "sourceFingerprint": "3fd892c58cbc4ca86dd5bce1022047f3fd4acba786301cb1b388c7b01d9c5e88",
+      "inputBundleSha": "82e12fb1d8613c88bd1d10b64466a588d2bf9833f067408891ed7fce6dc75643",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "수평거리 4.5m와 tan54°로 눈높이 위 고양이 높이를 구하고 눈높이를 더한다.",
+      "decisiveStep": "수평거리 4.5m와 tan54°로 눈높이 위 고양이 높이를 구하고 눈높이를 더한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "직각삼각형 측량으로 지면 높이를 직접 계산한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "직각삼각형 측량으로 지면 높이를 직접 계산한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_115"
+    },
+    {
+      "questionUid": "qid_v1_e86a1351bc58f9e590ba4441ac1be35acc83122f1a0f96dd48abf67f7f7816d0",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#5",
+      "sourceFingerprint": "3ac236b5fcdd113226fd19fe75e6976370f768bd310a0026b57ed2af498c6aa6",
+      "inputBundleSha": "bac57eb04defcffd3ead1f2f6bf63bd951b700b2bd254971ef8a73df72424403",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "반지름 1인 직각삼각형에서 cos35°=OH를 구하고 OB−OH로 BH를 계산한다.",
+      "decisiveStep": "반지름 1인 직각삼각형에서 cos35°=OH를 구하고 OB−OH로 BH를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "코사인의 기본 정의와 선분 차를 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "코사인의 기본 정의와 선분 차를 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_115"
+    },
+    {
+      "questionUid": "qid_v1_e8ab52161b0fd0f2ee407fcdeb2969363da34a0bf6706cf9c06d2488d87a6c58",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#4",
+      "sourceFingerprint": "bbf5c1260ef6552d43038d290f9121a10d7ab0176a2d507e8362a6054fd29ae9",
+      "inputBundleSha": "45771fd28ab912bf4f428d7d07a1ec4d072e76b257fb68c5647da4b9de98d3c9",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "직선의 방향에서 기울기의 부호를 정하고 tan60°와 y절편으로 직선식을 구성한다.",
+      "decisiveStep": "직선의 방향에서 기울기의 부호를 정하고 tan60°와 y절편으로 직선식을 구성한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "삼각비를 기울기와 일차함수식으로 변환한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각비를 기울기와 일차함수식으로 변환한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_116"
+    },
+    {
+      "questionUid": "qid_v1_ea5d42b90e7b81ab4b878475cbbf77af95a9031e3de6101047f33d81dbab69f8",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#7",
+      "sourceFingerprint": "bf7837c03bd46a2cb6084662be941946b4f0b82f7c9a8df4bacb3a35c222fafc",
+      "inputBundleSha": "a331c8af42b451223b4abe9f7e6530c6bae5846b05d14da97219a84ec8e591cc",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "각의 비와 직각 조건으로 30°·60°·90°를 정하고 특수각 값을 식에 대입한다.",
+      "decisiveStep": "각의 비와 직각 조건으로 30°·60°·90°를 정하고 특수각 값을 식에 대입한다.",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "l4SemanticReason": "특수각 삼각비와 각의 비가 식을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 삼각비와 각의 비가 식을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_116"
+    },
+    {
+      "questionUid": "qid_v1_ed8c659723c152cd673b945ea1ee3f6cd440496d8b5d45972715b8817a436534",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#16",
+      "sourceFingerprint": "34c04d3b8bde5543eb6912d8fe50d7c4b077519633521ed966e30104f51a37bf",
+      "inputBundleSha": "d2819b3e84c5fdf789c45ecaa82995832ccc41e62bbf41e62fb0437c8340f683",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "빗변 c에서 AC=c cos A, BC=c sin A를 구해 길이·둘레·넓이 보기의 차원을 판정한다.",
+      "decisiveStep": "빗변 c에서 AC=c cos A, BC=c sin A를 구해 길이·둘레·넓이 보기의 차원을 판정한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "빗변 기준 삼각비를 측정값과 넓이식에 직접 적용한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "넓이는 두 직각변의 곱을 사용하므로 c² sinA cosA가 필요함을 검증한다."
+      },
+      "semanticReason": "빗변 기준 삼각비를 측정값과 넓이식에 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_116"
+    },
+    {
+      "questionUid": "qid_v1_f082c7f54847431451ab99767e3604118fa14ac2d0b973c935d6c065b735c04d",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#2",
+      "sourceFingerprint": "91177b04665793d528bb5a2c9a9296a9b5e23076b3cdded7073060bb2dea5fa6",
+      "inputBundleSha": "0fd3ddbd7789cebd2cc3e45bcc7901e103ed09d992ef7a17009f004ea705a1fb",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "특수각 삼각비 값을 각 보기의 식에 대입해 참인 식을 판정한다.",
+      "decisiveStep": "특수각 삼각비 값을 각 보기의 식에 대입해 참인 식을 판정한다.",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "l4SemanticReason": "특수각 값의 산술 비교가 정답을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수각 값의 산술 비교가 정답을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_116"
+    },
+    {
+      "questionUid": "qid_v1_f2017060fc1f204684e65e89c115081a67f270bf57bb95869dc457e418039615",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#8",
+      "sourceFingerprint": "87b2dc98598fcd83a9d49cecadf3c4564bfc2d11074a8d0b79ffaa84c468ea6e",
+      "inputBundleSha": "7662b3b7ae04ed2f6e2152f787fc7050783e9de276bc230d6c87eb5b7961f019",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "수선으로 BH·AH를 구하고 AHC에서 피타고라스로 HC를 구해 BC를 계산한다.",
+      "decisiveStep": "수선으로 BH·AH를 구하고 AHC에서 피타고라스로 HC를 구해 BC를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "특수각 측정과 피타고라스 길이 계산을 연쇄한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AH=2√3, AC=6에서 HC=2√6을 피타고라스로 계산한다."
+      },
+      "semanticReason": "특수각 측정과 피타고라스 길이 계산을 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_116"
+    },
+    {
+      "questionUid": "qid_v1_f26021a209da10baa794e5e28af8c27bce173504c4e62e430327426db91635b7",
+      "sourceIdentity": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js#22",
+      "sourceFingerprint": "0529418b6057fb77f1fa77a774189739debfb8d6ca682b5cce2b5a58b6b5e419",
+      "inputBundleSha": "90502db4d5b525fcaa935e73d8d2c8ddc2bad688a38119398ce6a6c2f38cc935",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "정육면체 절단면의 정삼각형 밑면 넓이를 구하고 AH=6cos a를 높이로 두어 부피를 계산한다.",
+      "decisiveStep": "정육면체 절단면의 정삼각형 밑면 넓이를 구하고 AH=6cos a를 높이로 두어 부피를 계산한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "입체 도형 밑면 넓이와 삼각비 높이를 부피 공식으로 연결한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "입체 도형 밑면 넓이와 삼각비 높이를 부피 공식으로 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_117"
+    },
+    {
+      "questionUid": "qid_v1_f267a46179b0b74d1907a495314f08cecc72fa79608ddb747213a778b62de3ad",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#12",
+      "sourceFingerprint": "574d7a6fade270007580cf45907735c00bfaad3e9e76b5c57c98d4bd9c7dc83f",
+      "inputBundleSha": "8eeb1163c21207b4f08df7ac46d624f521fd964af9c45e8c2ff799135af024b7",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "두 직각삼각형에서 같은 tan a로 BH·HC를 정하고 두 빗변을 피타고라스로 계산해 둘레를 구한다.",
+      "decisiveStep": "두 직각삼각형에서 같은 tan a로 BH·HC를 정하고 두 빗변을 피타고라스로 계산해 둘레를 구한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "l4SemanticReason": "공통 탄젠트 측량을 길이·둘레 계산으로 연쇄한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AB=6√5, AC=3√5를 각각 피타고라스로 계산한다."
+      },
+      "semanticReason": "공통 탄젠트 측량을 길이·둘레 계산으로 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_117"
+    },
+    {
+      "questionUid": "qid_v1_f75a27ad85b4d180da6c0214a3f5342ab91121d55466b03cddafcc1f70ec6b35",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#10",
+      "sourceFingerprint": "c9d8c5c63245986036f6a5c1364b4fadb38eb9d73fe4c59c426f5022d282429b",
+      "inputBundleSha": "d604517a670eb053dfca04c05afa193e86b297167ea9d71e59b03a4be2932050",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "빗변 수선으로 x=∠B, y=∠A를 확인하고 6-12-6√5 직각삼각형에서 두 사인을 더한다.",
+      "decisiveStep": "빗변 수선으로 x=∠B, y=∠A를 확인하고 6-12-6√5 직각삼각형에서 두 사인을 더한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "수선이 만드는 각 관계와 피타고라스로 원래 삼각형의 삼각비를 복원한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AC=6, BC=12에서 AB=6√5를 구한다."
+      },
+      "semanticReason": "수선이 만드는 각 관계와 피타고라스로 원래 삼각형의 삼각비를 복원한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_117"
+    },
+    {
+      "questionUid": "qid_v1_f7ada0a57ec4aa02f4dbb6f16e28fb60d17c3421a23bff850378a67e6fb2c83d",
+      "sourceIdentity": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js#1",
+      "sourceFingerprint": "ada9fa19615286da0f3978aa17123146790d6227072b74830c81710ae895b40e",
+      "inputBundleSha": "8abaa928d11faf6461a0b115b91fbb1d5b674baf91ee004d2c766ce9e770e941",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "기준각 A에서 이웃한 변 c와 빗변 b를 구분해 cos A=c/b를 선택한다.",
+      "decisiveStep": "기준각 A에서 이웃한 변 c와 빗변 b를 구분해 cos A=c/b를 선택한다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "코사인의 기본 정의를 기준각의 변 위치에 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "코사인의 기본 정의를 기준각의 변 위치에 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_117"
+    },
+    {
+      "questionUid": "qid_v1_f986e90cb0aa6a725664045aba43a9ff2201df618521e5465b838fc015eb6361",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#2",
+      "sourceFingerprint": "d2024474f3743a00d22a7b1995fa5ca22d49ea823b2ced369488daec40e4e040",
+      "inputBundleSha": "ec5bc91def39867c9e5a5f7770f2bfa55198d837f842895d29ca50de6cc426c7",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "tan α=AC/BC로 x=4를 구하고 직각삼각형에서 y=AB를 피타고라스로 계산해 xy를 구한다.",
+      "decisiveStep": "tan α=AC/BC로 x=4를 구하고 직각삼각형에서 y=AB를 피타고라스로 계산해 xy를 구한다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "탄젠트 정의와 피타고라스 관계를 결합한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AC=2, BC=4에서 AB=2√5를 피타고라스로 구한다."
+      },
+      "semanticReason": "탄젠트 정의와 피타고라스 관계를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_117"
+    },
+    {
+      "questionUid": "qid_v1_f9a434a40a552ae6151d573e1d4368c0d2c7a5d4b63cab18517284e6fc8c056c",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#22",
+      "sourceFingerprint": "c64dbd624da819ce31e900deeeca3bc1a0540d15a3bab1b399b2ea4d2dcde3c7",
+      "inputBundleSha": "f565a6d2bac7d13fe6695157c91c0d98044a174fd416b11694be78d7139f5355",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "두 관측점에서 열기구까지의 수평거리를 h와 h/√3으로 나타내 합이 50이 되는 공통 높이식을 푼다.",
+      "decisiveStep": "두 관측점에서 열기구까지의 수평거리를 h와 h/√3으로 나타내 합이 50이 되는 공통 높이식을 푼다.",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "l4SemanticReason": "두 관측점의 탄젠트 식을 공통 높이에 대해 연립한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "두 관측점의 탄젠트 식을 공통 높이에 대해 연립한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_118"
+    },
+    {
+      "questionUid": "qid_v1_fbdeee5711b3cf1e18ac2cad7191837b07e015d3edd55af92bda1fc2b73c0c8c",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#15",
+      "sourceFingerprint": "c20dfe85b0213dcdb12f287bf653399cf6a10752bc4a8b2da7518623c70825ef",
+      "inputBundleSha": "227169234ad628f920b5144d1971d484daca013ad765e1e2e502cb39e5ee7293",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "primaryMethod": "코사인과 탄젠트 정의로 빗변·직각변을 기준으로 x,y를 각각 표현한다.",
+      "decisiveStep": "코사인과 탄젠트 정의로 빗변·직각변을 기준으로 x,y를 각각 표현한다.",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4SemanticReason": "한 직각삼각형에서 두 삼각비로 목표 변을 직접 나타낸다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "한 직각삼각형에서 두 삼각비로 목표 변을 직접 나타낸다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_118"
+    },
+    {
+      "questionUid": "qid_v1_fc7031dcd660e5d84aa3a872886dc2b24e74bf279cd18f55e12edf1b4ef46486",
+      "sourceIdentity": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js#17",
+      "sourceFingerprint": "7faab6458a749d552ce14a91be5e248491bb8ba097829031a9ee1eb5986b6f82",
+      "inputBundleSha": "785334ba16e4b64cfe59b82273f21d87ad9ba61e31a6ac6b9927616e075e31cc",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "sin A=3/5에서 3-4-5 직각삼각형을 만들고 코사인 정의를 적용한다.",
+      "decisiveStep": "sin A=3/5에서 3-4-5 직각삼각형을 만들고 코사인 정의를 적용한다.",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "l4SemanticReason": "사인 변비와 피타고라스·코사인 정의를 결합한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "5,3 변비에서 나머지 변 4를 피타고라스로 구한다."
+      },
+      "semanticReason": "사인 변비와 피타고라스·코사인 정의를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_118"
+    },
+    {
+      "questionUid": "qid_v1_fdbd516ce3ca19531a267d28aef6270435b38bf63621e30e1400f6f22a4ba1cf",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#2",
+      "sourceFingerprint": "a808cd9b93cde8c5edec8e9e6c1f1f007b555e873a73b30a03221ca2024754db",
+      "inputBundleSha": "86c1f7199e740191844ac22d8e0a535da970c229261e0ab9b7b8ff22702ccb23",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "선형식으로 sin A=4/5를 구하고 여각 관계와 tan A=sin A/cos A를 식에 대입한다.",
+      "decisiveStep": "선형식으로 sin A=4/5를 구하고 여각 관계와 tan A=sin A/cos A를 식에 대입한다.",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "l4SemanticReason": "대수식·여각·삼각비 항등을 결합해 값을 계산한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "대수식·여각·삼각비 항등을 결합해 값을 계산한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_118"
+    },
+    {
+      "questionUid": "qid_v1_fe451846427d635ab8dc8b4d529a24bad3ada9271b20cdc4b98427fbb5c9584a",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#9",
+      "sourceFingerprint": "c64d00e6e8cc354ffad4bc86831c012b7403c55ff656718e0a2e22321e029c78",
+      "inputBundleSha": "55e455a67ca73499090542eafe78d460a154fedd3a6ad106e50b044c2d3569d4",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "primaryMethod": "수직선의 각 관계로 x=∠A를 확인하고 큰 직각삼각형의 변으로 sin x·tan x를 계산한다.",
+      "decisiveStep": "수직선의 각 관계로 x=∠A를 확인하고 큰 직각삼각형의 변으로 sin x·tan x를 계산한다.",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "l4SemanticReason": "도형의 각 관계와 피타고라스 길이를 삼각비 식으로 연결한다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "AB=3√5를 피타고라스로 계산한다."
+      },
+      "semanticReason": "도형의 각 관계와 피타고라스 길이를 삼각비 식으로 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_118"
     }
   ]
 }
