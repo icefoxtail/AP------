@@ -32,8 +32,10 @@
 
     function create(adapter) {
         let currentRequestGeneration = 0, currentSession = null, activeSnapshot = null, committedCandidate = null;
-        let tail = Promise.resolve(), activeContext = null, latestReady = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
+        let foregroundTail = Promise.resolve(), backgroundTail = Promise.resolve(), latestReady = Promise.resolve({ ok: false, code: 'RENDER_NOT_STARTED' });
+        const activeContexts = new Set();
         let desired = null;
+        let initialSourcePending = false;
         let pendingCount = 0;
         let pendingForegroundCount = 0;
         const backgroundControllers = new Set();
@@ -52,7 +54,7 @@
         }
         async function run(ctx) {
             if (!isLatest(ctx)) return { ok: false, code: 'DISCARDED_STALE' };
-            activeContext = ctx;
+            activeContexts.add(ctx);
             const oldSnapshot = activeSnapshot;
             const oldSession = currentSession;
             try {
@@ -177,15 +179,25 @@
             } finally {
                 try { await adapter.release?.(ctx); }
                 catch (error) { observe('STAGING_CLEANUP_FAILED', { ...ctx, error }); await cleanup(ctx.stagingHost, null, null); }
-                if (activeContext === ctx) activeContext = null;
+                activeContexts.delete(ctx);
                 // Do not retain failed/pending DOM or copied data in diagnostic history.
                 attempts.push({ transactionId: ctx.transactionId, requestGeneration: ctx.requestGeneration, intentType: ctx.intentType, cacheStatus: ctx.cacheStatus, state: ctx.state, committed: !!ctx.committed, error: ctx.error || null, requestedTargetSessionId: ctx.requestedTargetSessionId, keyBuildParity: ctx.keyInputDigest === ctx.buildInputDigest, visibleReadyMs: ctx.visibleReadyMs || null, metrics: ctx.metrics || null });
                 if (attempts.length > 50) attempts.shift();
             }
         }
-        function request(value) {
+        function request(value, afterQueuedInitialSource = false) {
             if (!Object.hasOwn(RenderIntentType, value?.type)) return Promise.resolve({ ok: false, code: 'UNKNOWN_RENDER_INTENT' });
             const foreground = value.foreground !== false;
+            // A review bridge can deliver the initial frozen SOURCE_CHANGE and
+            // its requested MODE_CHANGE in the same event turn. Do not let the
+            // mode request abort a source transaction that has not committed a
+            // session yet; apply it immediately after the source becomes ready.
+            if (foreground && initialSourcePending && value.type !== 'SOURCE_CHANGE') {
+                const waiting = foregroundTail;
+                const queued = waiting.then(() => request(value, true));
+                foregroundTail = queued.catch(() => {});
+                return queued;
+            }
             if (!foreground) {
                 if (!adapter.enablePrewarm) return Promise.resolve({ ok: false, code: 'BACKGROUND_NOT_ENABLED' });
                 if (value.type !== 'MODE_CHANGE') return Promise.resolve({ ok: false, code: 'BACKGROUND_INTENT_FORBIDDEN' });
@@ -201,21 +213,40 @@
             } catch (error) { return Promise.resolve({ ok: false, code: String(error.message || error) }); }
             if (foreground) desired = input;
             const abort = new AbortController();
-            activeContext?.abortController.abort();
+            for (const active of activeContexts) {
+                if (foreground || active.background) active.abortController.abort();
+            }
+            const initialSource = foreground && intent.type === 'SOURCE_CHANGE' && !currentSession && !committedCandidate;
+            if (initialSource) initialSourcePending = true;
             const ctx = { transactionId: unique('render'), requestGeneration: ++currentRequestGeneration, intentType: intent.type, intent, input, foreground, background: !foreground, sideEffectsAllowed: false, abortController: abort, abortSignal: abort.signal, state: 'QUEUED', createdAt: Date.now(), committed: false };
             pendingCount += 1;
             if (foreground) pendingForegroundCount += 1;
             else backgroundControllers.add(abort);
-            const pending = tail.then(() => run(ctx)).finally(() => {
+            const laneTail = foreground ? foregroundTail : backgroundTail;
+            const pending = (afterQueuedInitialSource ? Promise.resolve() : laneTail).then(() => run(ctx)).finally(() => {
                 pendingCount -= 1;
                 if (foreground) pendingForegroundCount -= 1;
                 else backgroundControllers.delete(abort);
+                if (initialSource) initialSourcePending = false;
             });
-            tail = pending.catch(() => {});
-            if (foreground) { latestReady = pending; adapter.onRequest?.(pending, ctx); }
+            if (foreground) {
+                foregroundTail = pending.catch(() => {});
+                latestReady = pending;
+                adapter.onRequest?.(pending, ctx);
+            } else {
+                backgroundTail = pending.catch(() => {});
+            }
             return pending;
         }
-        async function whenIdle() { let pending; do { pending = tail; await pending; } while (pending !== tail); return latestReady; }
+        async function whenIdle() {
+            let foregroundPending, backgroundPending;
+            do {
+                foregroundPending = foregroundTail;
+                backgroundPending = backgroundTail;
+                await Promise.all([foregroundPending, backgroundPending]);
+            } while (foregroundPending !== foregroundTail || backgroundPending !== backgroundTail);
+            return latestReady;
+        }
         function cancelBackground() { for (const controller of backgroundControllers) controller.abort(); }
         return Object.freeze({ request, whenIdle, cancelBackground, prewarm: mode => request({ type: 'MODE_CHANGE', requestedMode: mode, foreground: false }), get busy() { return pendingCount > 0; }, get currentSession() { return currentSession; }, get activeSnapshot() { return activeSnapshot; }, get committedCandidate() { return committedCandidate; }, get requestGeneration() { return currentRequestGeneration; }, inspect: () => ({ requestGeneration: currentRequestGeneration, currentSession, activeSnapshot, attempts: attempts.slice(), cleanupPending: cleanupPending.length, backgroundSideEffectCount: 0 }) });
     }
