@@ -1,8 +1,9 @@
 {
   "schemaVersion": "h1-stage2-sol-semantic-summary-v1",
-  "status": "BATCH_SOL_REVIEW_COMPLETE_WITH_HOLDS",
+  "status": "BATCH_SOL_REVIEW_ARTIFACT_COMPLETE_WITH_HOLDS",
   "authority": "SOL_EXHAUSTIVE_SOURCE_REVIEW",
   "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "branch": "meta-foundation-h1-preprocess-sol-review",
   "batchNo": 6,
   "unit": "EQINEQ",
@@ -15,7 +16,16 @@
     "rows": 70,
     "uniqueUid": 70,
     "uniqueSourceIdentity": 70,
-    "fingerprintMismatch": 0
+    "fingerprintMismatch": 0,
+    "missingDecisionEvidence": 0,
+    "forbiddenCandidateInputLeakage": 0
+  },
+  "inputBundle": {
+    "inputBundleSha": "1c85635e7751791b3d253f8cdae1bf0beb767a08f2b3e61d12e16c0634e4caf5",
+    "sourcePackRows": 70,
+    "sourceContentSolutionImageOnly": true,
+    "sameStageCandidateInputExcluded": true,
+    "sourcePackSha256": "5525b896e72fea4f8803d09d7dfc391610bd90a8a95da79dcdd3207617320a26"
   },
   "holdCount": 0,
   "sourceIssues": [],
@@ -46,5 +56,5 @@
     "checkpoint": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_420.json",
     "pointers": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_420_POINTERS.json"
   },
-  "note": "Stage 2 Single Semantic Pass only. No PT/TPL/CrossConcept/difficulty canonical synthesis; existing legacy labels were not used as authority."
+  "note": "Stage 2 Single Semantic Pass only. No PT/TPL/CrossConcept/difficulty canonical synthesis; existing legacy labels were not used as authority. Codex did not generate canonical FINAL/PASS."
 }
