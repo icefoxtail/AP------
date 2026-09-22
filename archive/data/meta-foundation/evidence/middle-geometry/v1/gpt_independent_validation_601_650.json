@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "gpt-middle-geometry-independent-validation-v2",
+  "status": "PASS_POSTCOMMIT_WITH_HOLDS",
+  "date": "2026-09-22",
+  "blindFreezeCommit": "a583f72146c1a5c0e096ff37b6b6e35ef62b37d6",
+  "frozenSemanticCheckpoint": "ce81fc3623a417b069a6b289efe7c7adcaabe8d9",
+  "appliedCorrectionCommit": "ee515c04a23030f3b233d362114568895230e95f",
+  "checks": {
+    "scopeRows": 50,
+    "blindArtifactRows": 50,
+    "frozenUidParity": true,
+    "blindMetadataCompareStartedOnlyAfterPhysicalFreeze": true,
+    "combinedLedgerRows": 650,
+    "combinedLedgerCompletedMappedCount": 650,
+    "duplicateUidCount": 0,
+    "l2CorrectionCount": 1,
+    "l3CorrectionCount": 0,
+    "l4CorrectionCount": 3,
+    "l3L4ParentMismatch601_650": 0,
+    "sourceL2Corrections": 1,
+    "sourceJsFilesChanged": 1,
+    "protectedStudentFieldMutationCount": 0,
+    "sourceExactDeltaOnlyTwoL2Fields": true,
+    "crossConceptRecordCount": 8,
+    "crossConceptKeyAdditionCount": 10,
+    "crossConceptRemovalCount": 0,
+    "addedCrossConceptKeysAllCanonicalActive": true,
+    "holdCount": 3,
+    "holdQuestionNumbers": [
+      608,
+      621,
+      629
+    ],
+    "mediumConfidenceNoMutationQuestionNumbers": [
+      647
+    ]
+  },
+  "correctionSummary": {
+    "l2": [
+      637
+    ],
+    "l4": [
+      627,
+      645,
+      650
+    ],
+    "crossConceptAdds": {
+      "603": [
+        "CC_PYTHAGOREAN"
+      ],
+      "606": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "608": [
+        "CC_TANGENCY",
+        "CC_PYTHAGOREAN"
+      ],
+      "614": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "619": [
+        "CC_SQUARE",
+        "CC_PYTHAGOREAN"
+      ],
+      "621": [
+        "CC_TANGENCY"
+      ],
+      "625": [
+        "CC_REFLECTION"
+      ],
+      "650": [
+        "CC_TRIANGLE_CENTROID"
+      ]
+    }
+  },
+  "holdReason": "608/621/629은 현재 TM_TWO_CIRCLES_COMMON_CHORD_LENGTH가 실제로 공통현 구조가 아니지만, PT_TWO_CIRCLES 아래 정확히 맞는 기존 canonical L4가 없어 새 키를 임의 생성하지 않음.",
+  "nextStart": 651
+}
