@@ -1,6 +1,6 @@
 # H1 Common Math1 Sol Semantic Checkpoint — 280/583
 
-- Base main: `794283ca9bdfb584aae44395a7e132830f448568`
+- Base main: `54b3f2aee093c9f25b27a618630fe2ebac9c2d46`
 - Branch: `meta-foundation-h1-preprocess-sol-review`
 - Overall semantic progress: **497/1170**
 - Polynomial: **217/217 CLOSED**
@@ -15,7 +15,7 @@ Codex is preprocessing only: mechanical join, source packing, provenance/fingerp
 Sol is final semantic authority: exhaustive source reading, mathematical verification, HOLD/source-defect judgment, L1/L2 rejoin, final semantic decisions.
 
 ## Preserved payload
-The ZIP contains the physically preserved semantic artifacts listed in `H1_COMMON_MATH1_SOL_CHECKPOINT_280.json`.
+The physical checkpoint is authoritative. `POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl` is the canonical Polynomial UID-level ledger; the ZIP is the earlier checkpoint payload and is not the sole authority.
 
 ## Polynomial physical recovery
 Polynomial semantic authority is now physically materialized **217/217 UID** in:
