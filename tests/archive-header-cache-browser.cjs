@@ -15,10 +15,10 @@ const runtimeVersions = Object.freeze({
     'exam-render-executor': '20260914.1',
     'render-state-normalizer': '20260911.5',
     'side-effect-ledger': '20260911.5',
-    'screen-runtime': '20260913.1',
+    'screen-runtime': '20260922.2',
     'snapshot-contract': '20260911.5',
     'question-image-readiness': '20260915.2',
-    'screen-runtime-adapter': '20260914.1'
+    'screen-runtime-adapter': '20260922.2'
 });
 const version = '20260915.2';
 
