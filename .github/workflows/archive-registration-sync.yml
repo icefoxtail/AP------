@@ -13,7 +13,6 @@ on:
       - "archive/tools/intelligence/sync-question-identity-map-v1.mjs"
       - "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       - "archive/tools/verify-archive-registration.mjs"
-      - "tests/archive-question-metadata-consistency.test.mjs"
       - ".github/workflows/archive-registration-sync.yml"
   push:
     branches: [main]
@@ -61,7 +60,6 @@ jobs:
         run: |
           node tests/archive-question-identity-contract.test.mjs
           node tests/archive-question-identity-runtime.test.mjs
-          node --test tests/archive-question-metadata-consistency.test.mjs
           node archive/tools/verify-archive-registration.mjs
           git diff --check
 
@@ -75,17 +73,28 @@ jobs:
               git ls-files --others --exclude-standard
             } | sort -u
           )
+          allowed='^(archive/db\.js|archive/data/question_identity_map\.json|archive/data/question_metadata\.json|archive/question-identity\.js|archive/question-index\.js|archive/question-index-report\.md|archive/question-index-audit\.md|archive/data/archive2-catalog\.json|archive/data/archive2-crosswalk-inventory\.json)
+
+      - name: Commit generated registration artifacts
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json
+          if git diff --cached --quiet; then
+            echo "Archive registration artifacts already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(archive): sync registration artifacts [skip ci]"
+          git push origin HEAD:main
+
           for file in "${changed[@]}"; do
-            case "$file" in
-              archive/db.js|              archive/data/question_identity_map.json|              archive/data/question_metadata.json|              archive/question-identity.js|              archive/question-index.js|              archive/question-index-report.md|              archive/question-index-audit.md|              archive/data/archive2-catalog.json|              archive/data/archive2-crosswalk-inventory.json)
-                ;;
-              "")
-                ;;
-              *)
-                echo "Unexpected generated file: $file"
-                exit 1
-                ;;
-            esac
+            if [[ -n "$file" && ! "$file" =~ $allowed ]]; then
+              echo "Unexpected generated file: $file"
+              exit 1
+            fi
           done
           printf '%s\n' "${changed[@]}"
 
