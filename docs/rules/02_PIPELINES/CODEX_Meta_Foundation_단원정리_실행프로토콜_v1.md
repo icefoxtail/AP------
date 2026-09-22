@@ -87,6 +87,7 @@ latest main
 checkpoint는 사용자 승인 대기 지점이 아니라 상태 보존·복구·사후 감사용이다.
 
 작업 상태 source:
+- **task-scoped physical working inventory / stage artifacts**
 - 전용 branch
 - checkpoint commits
 - item-level assignment ledger
@@ -95,7 +96,9 @@ checkpoint는 사용자 승인 대기 지점이 아니라 상태 보존·복구�
 - review receipt
 - test / validation 결과
 
-별도 임시 INVENTORY 파일을 작업 중심으로 만들지 않는다.
+**작업 결과의 본체는 물리파일이다.** 장시간·다단계 작업은 다음 세션이 채팅/Notion 없이도 재개할 수 있도록 task-scoped physical working inventory를 유지한다. 기존 evidence 디렉터리를 우선 사용하고, 최소 STATE / INVENTORY / CHECKPOINTS와 stage별 machine-readable artifact(JSON/JSONL/TSV 등)를 실제 파일로 남긴다.
+
+Notion은 진행 checkpoint/index일 뿐 item-level 작업 결과 저장소가 아니다. **Notion 기록이나 채팅 보고만 있고 physical artifact가 없으면 해당 stage는 DONE으로 인정하지 않는다.**
 
 ## 3. GPT → Codex 짧은 GOAL 지시서
 
@@ -369,13 +372,18 @@ production JS metadata migration은 별도 승인 없이 수행 금지.
 Checkpoint는 **멈춤 지점이 아니다.**
 
 각 checkpoint에서:
-- actual ledger/evidence 저장
+- 해당 stage의 **실제 physical artifact**를 먼저 생성/freeze
+- item-level 결과는 JSON/JSONL/TSV 등 machine-readable 형식을 우선하고 필요 시 MD 요약을 함께 저장
+- artifact 실제 존재 / 0 byte 아님 / denominator·UID coverage / duplicate / fingerprint 또는 hash 검증
+- STATE / INVENTORY / CHECKPOINTS의 현재 stage, 완료 범위, artifact path, 다음 시작점 갱신
 - `git status`/변경 파일/denominator/gate 확인
 - checkpoint commit
+- checkpoint 기록에 **artifact path / row·UID count / coverage / fingerprint/hash / checkpoint commit SHA** 포함
 - **처음 받은 original GOAL과 DONE 조건을 다시 확인**
 - 현재 완료 checkpoint와 남은 stage를 대조
 - 다음 미완료 stage로 자동 진행
 
+**physical artifact가 없으면 checkpoint DONE이 아니다.** Notion summary나 chat report는 물리 결과물을 대체하지 않는다.
 checkpoint commit 이후에는 새 작업으로 재해석하거나 범위를 임의로 바꾸지 않는다. **항상 original GOAL을 기준으로 남은 단계만 이어서 수행하고, DONE 조건 충족 또는 실제 HARD BLOCKER까지 계속 진행한다.**
 
 의미 없는 소량 commit, scratch/backup/temp artifact commit 금지.
@@ -391,8 +399,15 @@ current branch
 → 정확한 다음 stage
 ```
 
-새 inventory부터 만들지 않는다.
-branch + checkpoint + ledger/evidence가 상태 source다.
+새 inventory부터 만들지 않는다. 기존 physical working inventory와 stage artifact를 먼저 복원한다.
+
+재개 authority 우선순위:
+1. **physical working inventory / stage artifact**
+2. checkpoint commit
+3. Notion progress summary
+4. chat report
+
+Notion이나 채팅의 DONE 표기가 물리파일과 충돌하면 물리 artifact와 checkpoint를 기준으로 실제 상태를 다시 판정한다.
 
 ## 9. HARD BLOCKER
 
@@ -456,6 +471,8 @@ GPT PASS 후에도 사용자 명시 승인 전 main merge 금지.
 - [ ] duplicate UID/source identity 0
 - [ ] alias/ownership/global integrity PASS
 - [ ] 최신 main drift 처리
+- [ ] physical working inventory / stage artifact가 실제 파일로 존재하고 denominator·coverage·fingerprint 검증 완료
+- [ ] 각 checkpoint가 artifact path / row·UID count / coverage / fingerprint/hash / commit SHA로 복구 가능
 - [ ] branch 상태로 GPT 독립검수 handoff
 
 ## 13. 한 줄 운영 정의
