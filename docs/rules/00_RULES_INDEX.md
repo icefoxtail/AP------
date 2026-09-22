@@ -49,6 +49,8 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지하고,
   L3/L4/CrossConcept/Condition/alias/curriculum binding의 정의·승격·검증 authority는
   `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`가 정본이다.
+- 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
+  `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
 - L3/L4/CrossConcept semantic assignment의 FINAL authority는 **decision-isolated input bundle + item-level semantic evidence + deterministic validator**의 결합으로만 생성한다.
 - 같은 stage의 기존 candidate/templateKey/CrossConcept suggestion/heuristic hint를 semantic decision 입력으로 사용한 결과는 구조 검사가 PASS여도 semantic authority가 아니다.
 - `sourceReadStatus` 같은 모델 자기보고만으로 FINAL을 허용하지 않으며, validator 미구현·미실행 상태에서는 semantic FINAL/PASS/promotion을 금지한다.
@@ -79,7 +81,8 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 독립검수·source conflict·실렌더·봉인 조건을 공통으로 적용한다.
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
-2. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0
+2. `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`
+3. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0
 3. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
 4. L3/L4/CrossConcept/Condition 메타를 생성·수정·검수하는 작업이면 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
 5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
@@ -148,6 +151,7 @@ coordinate parity 부록을 함께 적용한다. render/asset PASS는 SVG geomet
 - `01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md`
 - `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
 - `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
+- `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`
 - `04_VISUAL/도형추출.md` v3.0 (그래프·도형·hybrid 세부 수치와 출판 gate의 canonical source)
 - `archive/data/master_tables/js_archive_tag_master.json`
 - `archive/data/meta-foundation/canonical/`의 ACTIVE Pack / Concept Shard / Condition Registry
