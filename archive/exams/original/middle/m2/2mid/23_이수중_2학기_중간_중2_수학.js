@@ -604,10 +604,10 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 평행한 두 밑변 때문에 교점에서 만들어지는 두 삼각형이 닮음이다.\n조건 정리: $BD=25$, $AD=10$이므로 $AB=25-10=15$이고 $DE=12$이다.\n풀이 방향: $\\triangle ADE$와 $\\triangle ABC$의 닮음비를 이용한다.\n정석 풀이: $DE\\parallel BC$이므로 $\\angle ADE=\\angle ABC$, $\\angle AED=\\angle ACB$이다. 따라서 $\\triangle ADE\\sim\\triangle ABC$이다. $AD:AB=10:15=2:3$이므로 $DE:BC=2:3$이다. 따라서 $12:x=2:3$에서 $x=18$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q19.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -688,8 +688,8 @@ window.questionBank = [
     "answer": "$65^\\circ$",
     "solution": "[키포인트] 정사각형의 대각선이 꼭지각을 이등분하는 성질로 두 삼각형의 SAS 합동을 만든다.\n조건 정리: 정사각형이므로 $AD=CD$, $\\angle ADC=90^\\circ$이고 대각선 $BD$가 $\\angle ADC$를 이등분하여 $\\angle ADE=\\angle CDE=45^\\circ$이다.\n풀이 방향: $\\triangle ADE$와 $\\triangle CDE$의 합동으로 $\\angle DCE$를 구한 뒤 외각의 성질을 적용한다.\n정석 풀이: $AD=CD$, $DE$는 공통, $\\angle ADE=\\angle CDE=45^\\circ$이므로 $\\triangle ADE\\equiv\\triangle CDE$이다(SAS 합동). 따라서 대응각 $\\angle DCE=\\angle DAE=20^\\circ$이다. $B,E,D$는 한 직선 위에 있으므로 $\\angle BEC$는 $\\triangle CDE$의 꼭짓점 $E$에서의 한 외각이다. 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같으므로 $\\angle BEC=\\angle CDE+\\angle DCE=45^\\circ+20^\\circ=65^\\circ$이다.\n따라서 구하는 각의 크기는 $65^\\circ$이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q22.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

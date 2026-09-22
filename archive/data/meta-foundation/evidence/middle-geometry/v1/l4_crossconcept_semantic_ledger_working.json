@@ -45,13 +45,17 @@
       "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
       "primaryMethod": "이등변삼각형의 꼭지각과 두 외각 이등분선의 교점각 관계",
       "decisiveStep": "교점각이 꼭지각의 절반이라는 관계를 적용해 38°/2를 계산한다.",
-      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "l4SemanticReason": "이등변 구조에서 꼭지각·밑각 관계를 정리하는 skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "각의 이등분선은 조건에 포함되지만 독립 decisive CrossConcept로 분리하지 않았다.",
+      "templateKey": null,
+      "l4SemanticReason": "이등변삼각형의 밑각 관계는 primary로 유지하되 내각·외각 이등분선의 교점 구조는 기존 base-angle L4 하나로 정직하게 설명되지 않는다. CC_ANGLE_BISECTOR를 추가하고 L4는 승격 검토 전 HOLD한다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "∠B의 내각 이등분선과 ∠C의 외각 이등분선 조건이 교점각을 결정하는 필수 구조다."
+      },
+      "semanticReason": "이등변삼각형의 밑각 관계는 primary로 유지하되 내각·외각 이등분선의 교점 구조는 기존 base-angle L4 하나로 정직하게 설명되지 않는다. CC_ANGLE_BISECTOR를 추가하고 L4는 승격 검토 전 HOLD한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_01"
+      "semanticReviewStatus": "EXPLICIT_HOLD"
     },
     {
       "questionUid": "qid_v1_01b63ab1f20fee132af096170dcf8e8f4d99023cfa56b2e8b94c225f8240c748",
@@ -263,17 +267,23 @@
       "questionUid": "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
       "sourceIdentity": "original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js#11",
       "sourceFingerprint": "1ccc868287f5a48cb4bc63b4ebbd740e17c3451e95be9bfa93e2f78566fea775",
-      "inputBundleSha": "8d85c217f8ae2f6e1a053204b47b3fb1ecc04debd5a10edc95705defc1d1b311",
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "inputBundleSha": "4a3e471c76d7b3918c132393fb5e84ca9d62bda5e666a6fb8e7426de3e3f773d",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "무게중심·중점연결선·닮음·넓이비를 주로 사용하며 현재 L3 parent인 이등변삼각형과 solution decisive path가 불일치한다.",
       "decisiveStep": "무게중심·중점연결선·닮음·넓이비를 주로 사용하며 현재 L3 parent인 이등변삼각형과 solution decisive path가 불일치한다.",
-      "templateKey": null,
-      "l4SemanticReason": "현재 source+solution만으로 PT_ISOSCELES_TRIANGLE 내부의 반복 L4를 정직하게 확정할 수 없어 HOLD한다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "현재 source+solution만으로 PT_ISOSCELES_TRIANGLE 내부의 반복 L4를 정직하게 확정할 수 없어 HOLD한다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "D,E,F가 중점이고 AD,BE,CF의 교점 G가 무게중심인 구조가 primary다. 무게중심의 2:1을 출발점으로 평행선 닮음과 넓이비를 추가 사용하므로 PT_COORD_CENTROID / TPL_CENTROID_APPLICATION으로 재분류한다.",
+      "crossConceptKeys": [
+        "CC_SIMILARITY",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_SIMILARITY": "G를 지나 BC에 평행한 IJ로 △AIJ∼△ABC를 만들고 2:3 닮음비를 넓이비 4:9로 바꾼다.",
+        "CC_TRIANGLE_AREA": "중점연결선 FE와 무게중심 위치에서 생기는 높이비를 넓이비로 바꾸어 보기 ㉡·㉢을 판정한다."
+      },
+      "semanticReason": "D,E,F가 중점이고 AD,BE,CF의 교점 G가 무게중심인 구조가 primary다. 무게중심의 2:1을 출발점으로 평행선 닮음과 넓이비를 추가 사용하므로 PT_COORD_CENTROID / TPL_CENTROID_APPLICATION으로 재분류한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "EXPLICIT_HOLD"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_0aef5c619ecaca39ef3db1c007a6fcc085d4b7dfa4a6bedd7a8750bb3233a00a",
@@ -934,12 +944,12 @@
       "primaryMethod": "정사각형 대각선 이등분과 SAS 합동·외각을 결합해 각을 구한다.",
       "decisiveStep": "정사각형 대각선 이등분과 SAS 합동·외각을 결합해 각을 구한다.",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "l4SemanticReason": "정사각형의 대각선·합동·외각 성질을 결합하는 special-quadrilateral skeleton이다.",
+      "l4SemanticReason": "정사각형의 대각선·SAS 합동·외각을 다루는 사각형 문항으로 삼각형 세부단원이 아니다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "정사각형의 대각선·합동·외각 성질을 결합하는 special-quadrilateral skeleton이다.",
+      "semanticReason": "정사각형의 대각선·SAS 합동·외각을 다루는 사각형 문항으로 삼각형 세부단원이 아니다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_11"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_2991bbaff1c2939d0130bcc79ecc202b0bb291e4b8b0b241da392d3d9ad620e3",
@@ -1030,12 +1040,12 @@
       "primaryMethod": "평행선으로 생긴 두 닮음 삼각형의 대응변비로 x를 구한다.",
       "decisiveStep": "평행선으로 생긴 두 닮음 삼각형의 대응변비로 x를 구한다.",
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-      "l4SemanticReason": "삼각형 내부 parallel-segment-ratio skeleton이다.",
+      "l4SemanticReason": "DE∥BC에서 생기는 선분비/닮음비로 길이를 구하는 전형적인 평행선 선분비 문항이다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "삼각형 내부 parallel-segment-ratio skeleton이다.",
+      "semanticReason": "DE∥BC에서 생기는 선분비/닮음비로 길이를 구하는 전형적인 평행선 선분비 문항이다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_13"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_2f487d17b6f153e99b356a260e90fc122b3fd41c1b2a88ccabae04d1abebfe8b",
@@ -1073,17 +1083,21 @@
       "questionUid": "qid_v1_3020187f0f9569e2e4e66b35c983eaa5901a6ac9cd50d42911621d9b2af60cca",
       "sourceIdentity": "original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js#23",
       "sourceFingerprint": "0aefe07c8c9119fe6cd7c3ca168b1f8c9d095f02b76f73fe175ef5b377d6ca65",
-      "inputBundleSha": "4b516644a0d4972d1aec5a57e3f948cbaa4e57d74b01eda9693583baad41772d",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "d886edaa024658018cf50558d3d363fcedcd6ca37c715bb2e018f84678ac1140",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "무게중심 중선의 2:1과 삼각형 넓이 분할을 결합해 목표 넓이를 구한다.",
       "decisiveStep": "무게중심 중선의 2:1과 삼각형 넓이 분할을 결합해 목표 넓이를 구한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-      "l4SemanticReason": "넓이비·분할비를 중심으로 하는 similar-figures area skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "넓이비·분할비를 중심으로 하는 similar-figures area skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "핵심 전략은 닮음이 아니라 무게중심의 중선 2:1과 넓이 분할이다. 기존 ACTIVE PT_COORD_CENTROID 정의가 무게중심의 중선 관계 활용을 포함하며, 넓이는 primary 밖의 결정적 추가 개념이다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "무게중심의 2:1 중선 성질로 구조를 잡은 뒤 목표인 삼각형 넓이를 실제로 계산·분할해야 한다."
+      },
+      "semanticReason": "핵심 전략은 닮음이 아니라 무게중심의 중선 2:1과 넓이 분할이다. 기존 ACTIVE PT_COORD_CENTROID 정의가 무게중심의 중선 관계 활용을 포함하며, 넓이는 primary 밖의 결정적 추가 개념이다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_13"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_304940a2ece198d78736764fc51ac99ae07ed62428f0f20e44f735174063ac65",
@@ -1386,18 +1400,20 @@
       "primaryMethod": "넓이로 BC를 구한 뒤 각의 이등분선에서 만든 두 직각삼각형의 RHA 합동과 피타고라스를 결합한다.",
       "decisiveStep": "넓이로 BC를 구한 뒤 각의 이등분선에서 만든 두 직각삼각형의 RHA 합동과 피타고라스를 결합한다.",
       "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-      "l4SemanticReason": "RHA 합동이 중심이지만 넓이·각 이등분 조건이 별도 decisive 단계다.",
+      "l4SemanticReason": "피타고라스 정리가 최종 미지 길이를 결정하는 필수 decisive 단계인데 누락되었다.",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA",
-        "CC_ANGLE_BISECTOR"
+        "CC_ANGLE_BISECTOR",
+        "CC_PYTHAGOREAN"
       ],
       "crossConceptReasons": {
         "CC_TRIANGLE_AREA": "초기 BC를 삼각형 넓이 조건으로 구한다.",
-        "CC_ANGLE_BISECTOR": "AD의 각 이등분선 조건이 두 직각삼각형의 예각 대응을 만든다."
+        "CC_ANGLE_BISECTOR": "AD의 각 이등분선 조건이 두 직각삼각형의 예각 대응을 만든다.",
+        "CC_PYTHAGOREAN": "RHA 합동으로 DE=DC를 얻은 뒤 직각삼각형 BDE에서 피타고라스 정리를 사용해야 DC가 결정된다."
       },
-      "semanticReason": "RHA 합동이 중심이지만 넓이·각 이등분 조건이 별도 decisive 단계다.",
+      "semanticReason": "피타고라스 정리가 최종 미지 길이를 결정하는 필수 decisive 단계인데 누락되었다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_17"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_3efbaf5c4240f764cb4ccdae67a5d0910d37bad861db3f5de987e2ccb4443cfc",
@@ -1567,17 +1583,17 @@
       "questionUid": "qid_v1_4400f43c0d22b4b2b02489c120621148e432e94443fa131496dbd6f33701f32d",
       "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#4",
       "sourceFingerprint": "0914b85567617171e58dd305a089271c0476a7d2272993ecef242e98419c78d2",
-      "inputBundleSha": "fa434bd03cc52df77f9cf88472df9744f9f43d52e8d01fb5011241c9fc047af1",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "a1f2292a4ef92763b03c652fed3fbccc292ca060493ca8b1e3f7e66a3b610720",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "무게중심 중선 2:1을 반복 적용해 같은 중선 길이와 BG를 계산한다.",
       "decisiveStep": "무게중심 중선 2:1을 반복 적용해 같은 중선 길이와 BG를 계산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "반복되는 중선 분할비를 이용하는 ratio skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "두 삼각형의 무게중심 2:1 관계를 연속 적용하는 문항으로 닮은 도형의 대응비 문항이 아니다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "반복되는 중선 분할비를 이용하는 ratio skeleton이다.",
+      "semanticReason": "두 삼각형의 무게중심 2:1 관계를 연속 적용하는 문항으로 닮은 도형의 대응비 문항이 아니다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_19"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_44075fefcf3301081be856834227bb16403f426f3117a67b2d765dc9cd6da273",
@@ -1651,13 +1667,13 @@
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "primaryMethod": "평행사변형 내부 점이 만드는 마주 보는 삼각형 넓이 합 관계를 이용한다.",
       "decisiveStep": "평행사변형 내부 점이 만드는 마주 보는 삼각형 넓이 합 관계를 이용한다.",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "l4SemanticReason": "평행사변형의 넓이 분할 성질을 적용하는 special-quadrilateral skeleton이다.",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "l4SemanticReason": "일반 평행사변형 내부점의 넓이 분할 성질 문항이며 정사각형·마름모·직사각형 같은 특수 사각형 skeleton이 아니다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "평행사변형의 넓이 분할 성질을 적용하는 special-quadrilateral skeleton이다.",
+      "semanticReason": "일반 평행사변형 내부점의 넓이 분할 성질 문항이며 정사각형·마름모·직사각형 같은 특수 사각형 skeleton이 아니다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_20"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_47270ba1ad4ca5a05e0b5932b65002380c116d650b4e427ce4bee974f32dc615",
@@ -1683,13 +1699,13 @@
       "problemTypeKey": "PT_SIMILAR_FIGURES",
       "primaryMethod": "도형별 모양 결정 조건을 비교해 항상 닮음 여부를 판정한다.",
       "decisiveStep": "도형별 모양 결정 조건을 비교해 항상 닮음 여부를 판정한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "닮은 도형의 대응 비·각 조건을 비교하는 ratio/criterion skeleton이다.",
+      "templateKey": null,
+      "l4SemanticReason": "항상 닮은 도형인지 판정하는 조건 비교 skeleton은 직접 닮음비 계산형과 결정적 구조가 다르다. 정본 승격 전 HOLD한다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "닮은 도형의 대응 비·각 조건을 비교하는 ratio/criterion skeleton이다.",
+      "semanticReason": "항상 닮은 도형인지 판정하는 조건 비교 skeleton은 직접 닮음비 계산형과 결정적 구조가 다르다. 정본 승격 전 HOLD한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_20"
+      "semanticReviewStatus": "EXPLICIT_HOLD"
     },
     {
       "questionUid": "qid_v1_48699887eeb8beecdc4efaed4c1641d2b568d63481c1ca6023ca225626b730f1",
@@ -1764,16 +1780,16 @@
       "primaryMethod": "평행한 밑변의 길이비와 같은 높이를 이용해 삼각형 넓이비를 계산한다.",
       "decisiveStep": "평행한 밑변의 길이비와 같은 높이를 이용해 삼각형 넓이비를 계산한다.",
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-      "l4SemanticReason": "삼각형 내부 평행선 선분비에서 넓이비로 이어가는 skeleton이다.",
+      "l4SemanticReason": "평행한 밑변으로 대응 선분비를 먼저 확정하고 그 비를 넓이비로 넘기는 문항이므로 L3와 parent L2를 정렬한다.",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA"
       ],
       "crossConceptReasons": {
         "CC_TRIANGLE_AREA": "선분비를 최종 삼각형 넓이로 변환하는 별도 decisive 단계가 있다."
       },
-      "semanticReason": "삼각형 내부 평행선 선분비에서 넓이비로 이어가는 skeleton이다.",
+      "semanticReason": "평행한 밑변으로 대응 선분비를 먼저 확정하고 그 비를 넓이비로 넘기는 문항이므로 L3와 parent L2를 정렬한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_21"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_4c376dd77a6acae5fd4b1dd1fd227570d18a6ef8b783a69b00d3d4a1e8b8dc1b",
@@ -1783,13 +1799,13 @@
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "primaryMethod": "삼각형 내부의 내심과 그 내부 삼각형의 내심을 연속으로 적용한다.",
       "decisiveStep": "삼각형 내부의 내심과 그 내부 삼각형의 내심을 연속으로 적용한다.",
-      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-      "l4SemanticReason": "두 단계 내심 구조를 결합하는 combined-centers skeleton이다.",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "l4SemanticReason": "내심 공식을 원래 삼각형과 내부 삼각형에 연속 적용할 뿐 서로 다른 center를 결합하지 않는다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "두 단계 내심 구조를 결합하는 combined-centers skeleton이다.",
+      "semanticReason": "내심 공식을 원래 삼각형과 내부 삼각형에 연속 적용할 뿐 서로 다른 center를 결합하지 않는다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_22"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_4fed26b676eeb692a532ccbe037c13db8c9e8bd611e22aef6ff093a0fd84d18d",
@@ -1831,17 +1847,21 @@
       "questionUid": "qid_v1_51a14de06bf7de273aaa6b3fc37896007f3b73ec106d885b4eaff7d96d203b8a",
       "sourceIdentity": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js#18",
       "sourceFingerprint": "444dc769808bba5ffa596382696f17adaaa1699b15418fb99c663d8fe3e1f49a",
-      "inputBundleSha": "dd033675d37b7070c72a66ec5d6ae472e67cb5ae63ff1aac2b748b194f95cd3c",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "a739a4a9d007f2b8d34f4a608dbae40901b81b698adb7602f44204815ec2f7a3",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "중첩된 두 무게중심에서 높이비를 연속으로 줄여 넓이비를 계산한다.",
       "decisiveStep": "중첩된 두 무게중심에서 높이비를 연속으로 줄여 넓이비를 계산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-      "l4SemanticReason": "중선 높이비를 넓이비로 변환하는 area/volume skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "중선 높이비를 넓이비로 변환하는 area/volume skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "닮음 없이 두 무게중심의 2:1을 연속 적용하며 넓이 변환이 별도 decisive 단계다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "중첩된 무게중심의 높이 축소비를 실제 삼각형 넓이비로 바꾸어 목표 넓이를 결정한다."
+      },
+      "semanticReason": "닮음 없이 두 무게중심의 2:1을 연속 적용하며 넓이 변환이 별도 decisive 단계다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_22"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_51cc84ebcd574fe7c01c26f74510211b1842175d9cd05a83aac9ef912eba6be9",
@@ -1931,17 +1951,21 @@
       "questionUid": "qid_v1_558f7c5725426f9ce05bc399fcd25c538848151c7898cfdfe7146c1fe0ed3b5d",
       "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#21",
       "sourceFingerprint": "8aa8ddb3caa451ad1d490455f19fda61e5b7d6f39b22c592dfa50061ea0c0a56",
-      "inputBundleSha": "95822ec24e6c3436894c367747f2c20768844492322aee8fd1f71c50ef834717",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "60dce3d6660c504248b87def605107f82e63433b550d80e1b5da03b92491c2e3",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
       "primaryMethod": "사다리꼴 중점연결선의 길이를 두 밑변 평균으로 변환해 둘레를 계산한다.",
       "decisiveStep": "사다리꼴 중점연결선의 길이를 두 밑변 평균으로 변환해 둘레를 계산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "평행선·중점·길이비를 닮음/비례로 연결하는 ratio skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "평행선·중점·길이비를 닮음/비례로 연결하는 ratio skeleton이다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "l4SemanticReason": "사다리꼴 두 옆변의 중점과 중점연결선 EF=(AD+BC)/2를 쓰는 문항이다.",
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "crossConceptReasons": {
+        "CC_MIDPOINT": "AE=BE, DF=CF로 두 옆변의 중점을 확보해야 중점연결선 길이 공식을 적용할 수 있다."
+      },
+      "semanticReason": "사다리꼴 두 옆변의 중점과 중점연결선 EF=(AD+BC)/2를 쓰는 문항이다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_23"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_56134964da05fe0b1f0c03da443c3f5b954bf9479a9ee8b7250ff9363f2db98d",
@@ -1979,17 +2003,21 @@
       "questionUid": "qid_v1_56f0de5e7ff0f2af8cb788f50c49214a03027419f7e8199ef2d4d3c0598fbb17",
       "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#3",
       "sourceFingerprint": "deeb1c0536486446ea17e7e62fbc9296bcc9c8b68f3a1a37f9d9fe3222bbd91a",
-      "inputBundleSha": "b1b6ca0e4bb0ac55f0fdad804ed75c07a22dc9de1372f1884d220bcf92cb0573",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "5d24e5e82cb9e696a45fba68ec08ba4384e2b935c481567ab761fbdbfd243749",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "중선·무게중심의 분할비를 넓이비로 변환해 색칠 영역을 합산한다.",
       "decisiveStep": "중선·무게중심의 분할비를 넓이비로 변환해 색칠 영역을 합산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-      "l4SemanticReason": "넓이 분할비를 중심으로 하는 similar-figures area skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "넓이 분할비를 중심으로 하는 similar-figures area skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "무게중심 중선 2:1을 넓이비로 바꾸어 색칠 영역을 구하며 닮음은 사용하지 않는다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "무게중심의 중선 분할비를 같은 높이의 삼각형 넓이비로 바꾸어 색칠 영역을 계산한다."
+      },
+      "semanticReason": "무게중심 중선 2:1을 넓이비로 바꾸어 색칠 영역을 구하며 닮음은 사용하지 않는다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_24"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_570bbbed926ec01b30b4dfa165542da89697458db171362c75379dac5145b896",
@@ -2000,12 +2028,16 @@
       "primaryMethod": "평행사변형 각 이등분선이 만드는 직사각형의 성질을 판정한다.",
       "decisiveStep": "평행사변형 각 이등분선이 만드는 직사각형의 성질을 판정한다.",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "l4SemanticReason": "직사각형의 변·각·대각선 성질을 비교하는 special-quadrilateral skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "직사각형의 변·각·대각선 성질을 비교하는 special-quadrilateral skeleton이다.",
+      "l4SemanticReason": "네 내각의 이등분선이 만드는 직사각형 구조가 판정의 전제다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "네 내각의 이등분선이 이루는 직각 관계로 PQRS가 직사각형이 되는 구조를 확보한다."
+      },
+      "semanticReason": "네 내각의 이등분선이 만드는 직사각형 구조가 판정의 전제다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_24"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_585c526fe1d0285c6fc1ef6ddf17e9d6bf9786d3fdabb5dac927d17b94fe5810",
@@ -2203,13 +2235,13 @@
       "problemTypeKey": "PT_SIMILAR_FIGURES",
       "primaryMethod": "도형별 모양이 변하는지 판단해 항상 닮음인 도형을 판정한다.",
       "decisiveStep": "도형별 모양이 변하는지 판단해 항상 닮음인 도형을 판정한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "닮음의 대응각·비 조건을 비교하는 ratio/criterion skeleton이다.",
+      "templateKey": null,
+      "l4SemanticReason": "항상 닮음 여부 판정은 직접 닮음비 계산형과 다른 skeleton이다. 동일 candidate family로 묶되 정본 승격 전 HOLD한다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "닮음의 대응각·비 조건을 비교하는 ratio/criterion skeleton이다.",
+      "semanticReason": "항상 닮음 여부 판정은 직접 닮음비 계산형과 다른 skeleton이다. 동일 candidate family로 묶되 정본 승격 전 HOLD한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_27"
+      "semanticReviewStatus": "EXPLICIT_HOLD"
     },
     {
       "questionUid": "qid_v1_60bbe428780c7a29cbb9d7eadaca8c51c14947e59328186e74c10641f7bf8ea5",
@@ -2256,28 +2288,32 @@
       "primaryMethod": "사다리꼴 대각선 교점의 밑변비와 평행선 닮음으로 PQ를 구한다.",
       "decisiveStep": "사다리꼴 대각선 교점의 밑변비와 평행선 닮음으로 PQ를 구한다.",
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-      "l4SemanticReason": "일반 도형의 대각선 교점·평행선 선분비 skeleton이다.",
+      "l4SemanticReason": "사다리꼴 대각선 교점의 밑변비와 PQ∥AD∥BC의 선분비가 primary다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "일반 도형의 대각선 교점·평행선 선분비 skeleton이다.",
+      "semanticReason": "사다리꼴 대각선 교점의 밑변비와 PQ∥AD∥BC의 선분비가 primary다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_27"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
       "sourceIdentity": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js#13",
       "sourceFingerprint": "0fa760783449195c173ab12d38665ce30f71e62e6a64a53f747bdc9039b11504",
-      "inputBundleSha": "1898e89c7d80e52a7203d226fa41ca5a6a92344aee191fd0f23ab6f49636bc8a",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "63e5be845f85136117318c76d646d05d5a3a5f51f85541533cb6b7a17bd871ce",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "중점연결선과 무게중심 위치에서 높이비를 넓이비로 변환한다.",
       "decisiveStep": "중점연결선과 무게중심 위치에서 높이비를 넓이비로 변환한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-      "l4SemanticReason": "같은 밑변의 높이비를 넓이비로 바꾸는 area/volume skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "같은 밑변의 높이비를 넓이비로 바꾸는 area/volume skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "두 중선의 교점인 무게중심과 높이비→넓이비가 핵심이다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "무게중심 위치에서 얻은 높이비를 같은 밑변의 넓이비로 바꾸어 최종 비를 결정한다."
+      },
+      "semanticReason": "두 중선의 교점인 무게중심과 높이비→넓이비가 핵심이다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_27"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_63c0908f41680d48a7e7501a85e90bfbb8dac2751e7340e0025313e084eb4402",
@@ -2384,12 +2420,16 @@
       "primaryMethod": "이등변삼각형의 밑각 관계와 두 밑각 이등분선의 교점각을 순차 계산한다.",
       "decisiveStep": "이등변삼각형의 밑각 관계와 두 밑각 이등분선의 교점각을 순차 계산한다.",
       "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "l4SemanticReason": "이등변 밑각과 각 이등분 관계를 결합하는 skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "이등변 밑각과 각 이등분 관계를 결합하는 skeleton이다.",
+      "l4SemanticReason": "BD와 CE가 두 밑각을 각각 절반으로 나누는 관계를 모두 사용해야 한다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "BD와 CE가 두 밑각을 각각 절반으로 나누는 관계를 두 번 사용한다."
+      },
+      "semanticReason": "BD와 CE가 두 밑각을 각각 절반으로 나누는 관계를 모두 사용해야 한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_29"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_67cc6c5364dd12a7cb4826058ebbb07bf0dce8c0b0d9fbdf2388fef2175f74e1",
@@ -2411,21 +2451,21 @@
       "questionUid": "qid_v1_68e5639fd02859cf3ce3ea8a1769718128adb62db590823aa8d31856c9c89e68",
       "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#23",
       "sourceFingerprint": "6d56fe0ff4380519b78c72ca2cf4063d30721f32445e1a85e96d6812cc814b07",
-      "inputBundleSha": "d46b903256a3a8a7cd5444a5aed6a1937719163e8e2dbb58011444c93dc264d1",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "dce5a0b3ac85288871a566fbe3e5ed5f20150d1458fe629a8e4dda7b28ba7893",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "평행사변형 대각선 중점과 무게중심 2:1로 두 삼각형의 EF 길이를 계산한다.",
       "decisiveStep": "평행사변형 대각선 중점과 무게중심 2:1로 두 삼각형의 EF 길이를 계산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "중점·무게중심 분할비로 길이를 계산하는 ratio skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "평행사변형 대각선 이등분은 보조 개념이고 E,F를 무게중심으로 만든 뒤 2:1을 쓰는 것이 primary다.",
       "crossConceptKeys": [
         "CC_PARALLELOGRAM_PROPERTIES"
       ],
       "crossConceptReasons": {
         "CC_PARALLELOGRAM_PROPERTIES": "대각선의 서로 이등분 성질로 두 삼각형의 중선을 확보하는 데 평행사변형 성질이 필수다."
       },
-      "semanticReason": "중점·무게중심 분할비로 길이를 계산하는 ratio skeleton이다.",
+      "semanticReason": "평행사변형 대각선 이등분은 보조 개념이고 E,F를 무게중심으로 만든 뒤 2:1을 쓰는 것이 primary다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_29"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_690290ce536c25bf0faaf7fc85faf8b79473bd4791ba7a06b2dbfb0a35a1ae65",
@@ -2435,13 +2475,13 @@
       "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
       "primaryMethod": "두 직각삼각형의 합동조건이 H/RHA 두 key로 명확히 분류되지 않는 leg-angle/vertical-angle 결합이다.",
       "decisiveStep": "두 직각삼각형의 합동조건이 H/RHA 두 key로 명확히 분류되지 않는 leg-angle/vertical-angle 결합이다.",
-      "templateKey": null,
-      "l4SemanticReason": "현재 frozen L4 keyset으로는 하나를 강제하지 않고 explicit HOLD한다.",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "l4SemanticReason": "△AMD와 △BMC는 직각삼각형이고 AM=BM인 빗변, ∠AMD=∠BMC인 한 예각이 같아 정확히 RHA 합동이다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "현재 frozen L4 keyset으로는 하나를 강제하지 않고 explicit HOLD한다.",
+      "semanticReason": "△AMD와 △BMC는 직각삼각형이고 AM=BM인 빗변, ∠AMD=∠BMC인 한 예각이 같아 정확히 RHA 합동이다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "EXPLICIT_HOLD"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_690fd1045c3a7cd2da706f114daa752158a33534a02f245be04df11c92477af1",
@@ -2463,21 +2503,21 @@
       "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
       "sourceIdentity": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js#22",
       "sourceFingerprint": "2dc39038a8f51efb1a83caa4006b355ffc70f1938497185b1163ccf170534d48",
-      "inputBundleSha": "8e074c0410fd3f2d8543e592212c82115b5ef4b8dd0fe852b1ae6486fe130cd8",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "18c96a6eda0dfb1704e65c29b6cdc4864a42eb243cce3f8cf645575d54347d36",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "무게중심 중선비와 직각삼각형 빗변 중점 성질을 결합해 길이를 계산한다.",
       "decisiveStep": "무게중심 중선비와 직각삼각형 빗변 중점 성질을 결합해 길이를 계산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "길이·분할비를 중심으로 하는 ratio skeleton이다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "무게중심 2:1로 AD를 먼저 결정하고 피타고라스 정리를 쓰며 닮음은 사용하지 않는다.",
       "crossConceptKeys": [
         "CC_PYTHAGOREAN"
       ],
       "crossConceptReasons": {
         "CC_PYTHAGOREAN": "직각삼각형의 미지변을 결정하는 최종 단계에서 피타고라스 정리를 실제 사용한다."
       },
-      "semanticReason": "길이·분할비를 중심으로 하는 ratio skeleton이다.",
+      "semanticReason": "무게중심 2:1로 AD를 먼저 결정하고 피타고라스 정리를 쓰며 닮음은 사용하지 않는다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_30"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_69881034f7dde819ed1a2eaf0d4de808efbf9c724d6c402bbcfcd9ac4235d250",
@@ -2667,13 +2707,13 @@
       "problemTypeKey": "PT_SIMILAR_FIGURES",
       "primaryMethod": "도형 종류별로 모양이 고정되는지 비교해 항상 닮음 여부를 판정한다.",
       "decisiveStep": "도형 종류별로 모양이 고정되는지 비교해 항상 닮음 여부를 판정한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "닮음 조건을 비교하는 ratio/criterion skeleton이다.",
+      "templateKey": null,
+      "l4SemanticReason": "정삼각형·원·정다각형 등 두 도형이 항상 닮는지 판정하는 조건 비교 skeleton으로 직접 닮음비 계산형과 결정적 구조가 다르다. #100·#131과 같은 반복 family이므로 정본 승격 전 HOLD한다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "닮음 조건을 비교하는 ratio/criterion skeleton이다.",
+      "semanticReason": "정삼각형·원·정다각형 등 두 도형이 항상 닮는지 판정하는 조건 비교 skeleton으로 직접 닮음비 계산형과 결정적 구조가 다르다. #100·#131과 같은 반복 family이므로 정본 승격 전 HOLD한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_32"
+      "semanticReviewStatus": "EXPLICIT_HOLD"
     },
     {
       "questionUid": "qid_v1_6dc78147b75fc71f0eb1eba45354cd6bc3aa12950fbc011fb9798fd686e20eb1",
@@ -2800,16 +2840,18 @@
       "primaryMethod": "평행사변형·대각선·평행선 닮음으로 여러 삼각형의 넓이를 비교한다.",
       "decisiveStep": "평행사변형·대각선·평행선 닮음으로 여러 삼각형의 넓이를 비교한다.",
       "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "l4SemanticReason": "평행사변형 성질과 넓이 분할을 결합하는 properties skeleton이다.",
+      "l4SemanticReason": "primary는 평행사변형의 성질이므로 사각형 L2가 맞고, 평행선으로 생긴 닮음이 넓이 비교 전에 실제 필수 단계다.",
       "crossConceptKeys": [
-        "CC_TRIANGLE_AREA"
+        "CC_TRIANGLE_AREA",
+        "CC_SIMILARITY"
       ],
       "crossConceptReasons": {
-        "CC_TRIANGLE_AREA": "같은 높이·대각선 분할을 통해 삼각형 넓이 동치가 최종 decisive 단계다."
+        "CC_TRIANGLE_AREA": "같은 높이·대각선 분할을 통해 삼각형 넓이 동치가 최종 decisive 단계다.",
+        "CC_SIMILARITY": "EF∥BD에서 △CEF∼△CBD를 사용해 CF:CD=CE:CB를 만든 뒤 DF:DC=BE:BC를 얻는 필수 bridge다."
       },
-      "semanticReason": "평행사변형 성질과 넓이 분할을 결합하는 properties skeleton이다.",
+      "semanticReason": "primary는 평행사변형의 성질이므로 사각형 L2가 맞고, 평행선으로 생긴 닮음이 넓이 비교 전에 실제 필수 단계다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_34"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_72c0c65c4562f4f08b129facdbd54539c282965850d165142d0263962be17557",
@@ -2872,12 +2914,16 @@
       "primaryMethod": "두 서브문항에서 이등변삼각형 각 관계와 접힌 점의 등거리로 목표각을 계산한다.",
       "decisiveStep": "두 서브문항에서 이등변삼각형 각 관계와 접힌 점의 등거리로 목표각을 계산한다.",
       "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "l4SemanticReason": "이등변 각 관계를 반복 적용하는 base-angle skeleton이다.",
-      "crossConceptKeys": [],
-      "crossConceptReasons": {},
-      "semanticReason": "이등변 각 관계를 반복 적용하는 base-angle skeleton이다.",
+      "l4SemanticReason": "서브문항 (2)의 접기/겹침이 정답 도달에 실제 필요하며 기존 ACTIVE CC_REFLECTION을 재사용할 수 있다.",
+      "crossConceptKeys": [
+        "CC_REFLECTION"
+      ],
+      "crossConceptReasons": {
+        "CC_REFLECTION": "접는 선 DE로 A와 B가 겹친다는 조건에서 E가 A와 B까지 같은 거리에 있다는 대칭이동 성질을 사용한다."
+      },
+      "semanticReason": "서브문항 (2)의 접기/겹침이 정답 도달에 실제 필요하며 기존 ACTIVE CC_REFLECTION을 재사용할 수 있다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_35"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_73bb5ce851767f1e8a79140ef29e341c9c4927f0077ddc41c340ab50eaf0cb3e",
@@ -3052,12 +3098,12 @@
       "primaryMethod": "추가 카드별로 AA 또는 SAS 닮음 조건이 완성되는지를 판별해 유리한 경우의 수를 센다.",
       "decisiveStep": "추가 카드별로 AA 또는 SAS 닮음 조건이 완성되는지를 판별해 유리한 경우의 수를 센다.",
       "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
-      "l4SemanticReason": "주어진 한 쌍의 대응각과 변의 비에 추가 조건을 결합해 삼각형의 닮음 조건을 판정한다.",
+      "l4SemanticReason": "4장의 카드 중 유리한 2장을 판정한 뒤 2/4=1/2의 확률 계산이 필수다. 현재 canonical에는 확률 자체를 나타내는 CrossConcept가 없어 신규 key를 임의 생성하지 않고 HOLD한다.",
       "crossConceptKeys": [],
       "crossConceptReasons": {},
-      "semanticReason": "주어진 한 쌍의 대응각과 변의 비에 추가 조건을 결합해 삼각형의 닮음 조건을 판정한다.",
+      "semanticReason": "4장의 카드 중 유리한 2장을 판정한 뒤 2/4=1/2의 확률 계산이 필수다. 현재 canonical에는 확률 자체를 나타내는 CrossConcept가 없어 신규 key를 임의 생성하지 않고 HOLD한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_38"
+      "semanticReviewStatus": "EXPLICIT_HOLD"
     },
     {
       "questionUid": "qid_v1_7a1260fc04746ac8eb84be65f89688da0ea35c5b450742cae97586c85eb2e850",
@@ -3136,16 +3182,18 @@
       "primaryMethod": "직사각형의 대각선 교점에 대한 180도 회전대칭으로 EB=DF를 얻고, BD의 수직이등분선 위 점의 등거리 성질로 DF=BF를 연결한다.",
       "decisiveStep": "직사각형의 대각선 교점에 대한 180도 회전대칭으로 EB=DF를 얻고, BD의 수직이등분선 위 점의 등거리 성질로 DF=BF를 연결한다.",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "l4SemanticReason": "직사각형의 점대칭과 수직이등분선의 등거리 성질을 결합해 EB=BF를 결정한다.",
+      "l4SemanticReason": "수직이등분선뿐 아니라 180° 점대칭이 EB=DF를 만드는 별도 필수 단계이며 ACTIVE CC_REFLECTION으로 재사용 가능하다.",
       "crossConceptKeys": [
-        "CC_PERPENDICULAR_BISECTOR"
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_REFLECTION"
       ],
       "crossConceptReasons": {
-        "CC_PERPENDICULAR_BISECTOR": "E와 F가 BD의 수직이등분선 위에 있다는 조건이 EB=ED, FB=FD 및 최종 등거리 연결을 직접 결정한다."
+        "CC_PERPENDICULAR_BISECTOR": "F가 BD의 수직이등분선 위에 있어 DF=BF를 결정한다.",
+        "CC_REFLECTION": "직사각형의 대각선 교점 O에 대한 180° 점대칭으로 E↔F, B↔D가 대응하여 EB=DF를 얻는다."
       },
-      "semanticReason": "직사각형의 점대칭과 수직이등분선의 등거리 성질을 결합해 EB=BF를 결정한다.",
+      "semanticReason": "수직이등분선뿐 아니라 180° 점대칭이 EB=DF를 만드는 별도 필수 단계이며 ACTIVE CC_REFLECTION으로 재사용 가능하다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_39"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_7c9d598bba3366f93955cd82474ee50bb1abeed074102cee59b7e02b952409d7",
@@ -3225,23 +3273,17 @@
       "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
       "sourceIdentity": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js#12",
       "sourceFingerprint": "0eebdad698c32b0f1bcbef5de0701f4b419e6a55e949cdf23fc365a1ba72688f",
-      "inputBundleSha": "60186b4bcad55e2746ccc25d381b138f6d5b6b28aba17f90cf4e045ce68a7902",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "inputBundleSha": "df289e923cc53a6a315ba353a7afa2e6a93db97060fef88d9395bac17b63be8f",
+      "problemTypeKey": "PT_COORD_CENTROID",
       "primaryMethod": "두 중선의 교점을 무게중심으로 확인하고 무게중심의 2:1 분할 및 이등변삼각형의 대칭인 중선 길이를 이용해 CG를 계산한다.",
       "decisiveStep": "두 중선의 교점을 무게중심으로 확인하고 무게중심의 2:1 분할 및 이등변삼각형의 대칭인 중선 길이를 이용해 CG를 계산한다.",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "l4SemanticReason": "중점으로 생긴 두 중선과 무게중심의 2:1 분할이 주어진 GE에서 목표 CG를 결정한다.",
-      "crossConceptKeys": [
-        "CC_MIDPOINT",
-        "CC_TRIANGLE_CENTROID"
-      ],
-      "crossConceptReasons": {
-        "CC_MIDPOINT": "D와 E가 각각 변의 중점이라는 조건이 두 선분을 중선으로 확정한다.",
-        "CC_TRIANGLE_CENTROID": "두 중선의 교점 G가 무게중심이고 중선을 2:1로 나눈다는 성질이 CG를 결정한다."
-      },
-      "semanticReason": "중점으로 생긴 두 중선과 무게중심의 2:1 분할이 주어진 GE에서 목표 CG를 결정한다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "D,E가 중점이어서 BE,CD가 중선이고 그 교점 G를 무게중심으로 확정한 뒤 2:1 분할을 적용하는 것이 primary다. 닮음은 사용하지 않으며 중점/무게중심은 centroid primary skeleton 내부 요소라 CrossConcept로 중복 저장하지 않는다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "D,E가 중점이어서 BE,CD가 중선이고 그 교점 G를 무게중심으로 확정한 뒤 2:1 분할을 적용하는 것이 primary다. 닮음은 사용하지 않으며 중점/무게중심은 centroid primary skeleton 내부 요소라 CrossConcept로 중복 저장하지 않는다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_40"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_8198263fbeeaf9c2750683b42669fb1902881ab1b4becee81688f24eebbaa755",
@@ -3366,16 +3408,16 @@
       "primaryMethod": "평행선으로 생긴 두 삼각형의 닮음에서 먼저 AB:AD를 사용해 BC:DE의 비를 세우고 x를 계산한다.",
       "decisiveStep": "평행선으로 생긴 두 삼각형의 닮음에서 먼저 AB:AD를 사용해 BC:DE의 비를 세우고 x를 계산한다.",
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-      "l4SemanticReason": "평행 조건으로 생긴 삼각형 닮음과 대응변의 비가 미지 선분을 결정한다.",
+      "l4SemanticReason": "BC∥DE로 △ABC∼△ADE를 만들고 AB:AD=BC:DE 비례식으로 x를 구하는 평행선 선분비 primary다.",
       "crossConceptKeys": [
         "CC_SIMILARITY"
       ],
       "crossConceptReasons": {
         "CC_SIMILARITY": "BC와 DE의 평행으로 ABC와 ADE의 닮음이 성립하고 AB:AD=BC:DE의 비례식이 x를 직접 결정한다."
       },
-      "semanticReason": "평행 조건으로 생긴 삼각형 닮음과 대응변의 비가 미지 선분을 결정한다.",
+      "semanticReason": "BC∥DE로 △ABC∼△ADE를 만들고 AB:AD=BC:DE 비례식으로 x를 구하는 평행선 선분비 primary다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
-      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_41"
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_GPT_CORRECTED"
     },
     {
       "questionUid": "qid_v1_842210b8cb13f092a4ba105fecf209695b6d507a286dd0cb01e9a7c7fcf9de0f",

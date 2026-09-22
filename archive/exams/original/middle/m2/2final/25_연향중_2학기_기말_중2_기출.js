@@ -145,10 +145,10 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 사다리꼴의 두 대각선의 교점은 두 대각선을 평행한 두 밑변의 길이의 비로 나눈다.\n풀이 방향: 대각선에서 $AP:PC$를 구한 뒤 $\\triangle CPQ\\sim\\triangle CAD$를 이용한다.\n정석 풀이: 사다리꼴에서 두 대각선의 교점은 각 대각선을 두 밑변의 길이의 비로 나누므로 $AP:PC=AD:BC=4:8=1:2$이다. 따라서 $CP:CA=2:3$이다. $P$는 $AC$ 위, $Q$는 $DC$ 위에 있고 $PQ\\parallel AD$이므로 $\\triangle CPQ\\sim\\triangle CAD$이다. 그러므로 $PQ:AD=CP:CA=2:3$이고, $PQ=4\\times\\dfrac23=\\dfrac83\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q5.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 6,
@@ -619,12 +619,12 @@ window.questionBank = [
   {
     "id": 22,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -637,10 +637,10 @@ window.questionBank = [
     "answer": "(1) $10\\rm\\,cm$ (2) $16\\rm\\,cm$",
     "solution": "[키포인트] 무게중심의 $2:1$ 성질과 직각삼각형의 빗변의 중점 성질을 차례로 이용한다.\n(1) $G$는 무게중심이므로 중선 $AD$를 $AG:GD=2:1$로 나눈다. 따라서 $AD=3\\times GD=3\\times\\dfrac{10}{3}=10\\rm\\,cm$이다.\n(2) $D$는 $BC$의 중점이고 $\\angle A=90^\\circ$이므로 직각삼각형의 빗변의 중점 성질에 따라 $AD=BD=CD=10\\rm\\,cm$이다. 따라서 $BC=20\\rm\\,cm$이다. 피타고라스 정리를 적용하면 $AB^2+AC^2=BC^2$이므로 $AB^2+12^2=20^2$, $AB^2=256$이다. 길이는 양수이므로 $AB=16\\rm\\,cm$이다.\n따라서 (1) $10\\rm\\,cm$, (2) $16\\rm\\,cm$이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q22.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 23,
