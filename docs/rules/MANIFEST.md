@@ -9,16 +9,16 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 14241 bytes | sha256 0b3070517d9776f731b172004ff517a20b90fa2877e1b68169808e2240078845
+- 00_RULES_INDEX.md | 15005 bytes | sha256 d75ecd009448472e8fe918f499b2a315e15c9c0ea340cc8725c4d27d199c3051
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18705 bytes | sha256 c50300c09804be646ae024c42421187242d2fd20122611eb3bc8edac27a961f6
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
-- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 41036 bytes | sha256 1905ef435962e2eb080a08ef7f18a0c18b005e1321aa60ef16abda04e5b55151
+- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 45163 bytes | sha256 ccb1eafdc6cfb30722c4ab45bbeccd0fef0f8e12571386a6353175a313a7ec98
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 94556 bytes | sha256 88668b3e35b813bef036571686e8205d2e6189601ce3c25b09ae14032c328213
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
-- 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 17288 bytes | sha256 dd945ff79630bed52efe5d8f3072ce087fb46bff81424275fcb6c9e76062d41d
+- 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 19394 bytes | sha256 7c82538f693390d6adab6f39cee4c9fb11af0d449e9b8d3a6e12276d46d404a3
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17795 bytes | sha256 efa2cc23237b12ffa2508d998dfb78612738359e8c1bca11cf97513f03d609a5
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 130796 bytes | sha256 5fbe4daf2a8fb7a70602dee2a9849ba0285b2030b3b9d0a10783b573debd150b
 - 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140

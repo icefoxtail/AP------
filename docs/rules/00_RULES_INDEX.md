@@ -49,6 +49,10 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지하고,
   L3/L4/CrossConcept/Condition/alias/curriculum binding의 정의·승격·검증 authority는
   `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`가 정본이다.
+- L3/L4/CrossConcept semantic assignment의 FINAL authority는 **decision-isolated input bundle + item-level semantic evidence + deterministic validator**의 결합으로만 생성한다.
+- 같은 stage의 기존 candidate/templateKey/CrossConcept suggestion/heuristic hint를 semantic decision 입력으로 사용한 결과는 구조 검사가 PASS여도 semantic authority가 아니다.
+- `sourceReadStatus` 같은 모델 자기보고만으로 FINAL을 허용하지 않으며, validator 미구현·미실행 상태에서는 semantic FINAL/PASS/promotion을 금지한다.
+- Middle Geometry `96e4605d` / `93bc935f` L4·CrossConcept 산출물은 `SUPERSEDED_INVALID_SEMANTIC_PROVENANCE` negative regression fixture이며 현재 authority로 사용하지 않는다.
 
 이 실행 권위는 신규 기출 JS 추출·변환, 기존 JS 정리·업그레이드, 해설 생성·업그레이드,
 visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출시·봉인에 공통 적용한다.
