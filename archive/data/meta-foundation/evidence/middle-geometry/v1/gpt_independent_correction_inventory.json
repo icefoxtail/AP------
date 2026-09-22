@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "gpt-middle-geometry-correction-inventory-v1",
+  "status": "IN_PROGRESS",
+  "date": "2026-09-22",
+  "branch": "gpt/middle-geometry-corrections-001-400-20260922",
+  "recoveredBranchHead": "2587a12aa47b143a003c01f7640cd7b9473fcf55",
+  "scope": {
+    "globalDenominator": 928,
+    "requestedFrom": 601,
+    "requestedTo": 800,
+    "requestedCount": 200
+  },
+  "priorPhysicalCheckpoints": [
+    {
+      "range": "1-200",
+      "commit": "8d3aead2a1e696ef4d3303fcff0afe49aa878aeb",
+      "status": "APPLIED_CHECKPOINT"
+    },
+    {
+      "range": "201-400",
+      "commit": "72a2d19785b792290f5b877a97285069f3aad6bd",
+      "formatPreservationCommit": "ee793b245e94881cf4ce5afdad70816b5920f8bf",
+      "status": "APPLIED_CHECKPOINT"
+    },
+    {
+      "range": "401-600",
+      "blindArtifact": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_blind_semantic_review_401_600.json",
+      "blindFreezeCommit": "435037651e454e592636c40fc19a8fbd491a95a7",
+      "correctionCommit": "aa36992609d6ea791456e4b36599f407cf51ecf7",
+      "provenanceRepairCommit": "2587a12aa47b143a003c01f7640cd7b9473fcf55",
+      "validationArtifact": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_independent_validation_401_600.json",
+      "status": "PASS_POSTCOMMIT"
+    }
+  ],
+  "staleArtifactsExcludedAsResumeAuthority": [
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/STATE.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/INVENTORY.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/CHECKPOINTS.json"
+  ],
+  "reviewContract601_800": {
+    "phase1BlindInputs": [
+      "questionUid",
+      "sourceIdentity",
+      "sourceFingerprint",
+      "source content",
+      "source solution"
+    ],
+    "phase1Excluded": [
+      "current L2/subUnit",
+      "current L3/problemType",
+      "current L4/template",
+      "current CrossConcept",
+      "candidate verdicts",
+      "parent metadata"
+    ],
+    "phase2ArtifactRule": "freeze independent semantic ledger physically before opening current metadata",
+    "phase3Compare": "open current L2/L3/L4/CrossConcept only after blind freeze",
+    "defectPolicy": "confirm only clear semantic mismatch; ambiguous cases HOLD",
+    "sourceProtection": "content/choices/answer/solution/image remain protected; metadata-only correction unless separately justified"
+  },
+  "completedThrough": 600,
+  "currentBatch": "601-650",
+  "completedRequestedCount": 0,
+  "remainingRequestedCount": 200,
+  "nextStartPoint": 601,
+  "blockingIssues": []
+}
