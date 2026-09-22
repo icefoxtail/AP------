@@ -28,8 +28,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 각을 기준으로 빗변, 높이, 밑변을 정확히 구분한다.\n조건 정리: 직각은 $C$에 있고, 빗변은 $AB=c$, $A$의 맞은편 변은 $BC=a$, $A$에 이웃한 변은 $AC=b$이다.\n풀이 방향: 각 $A$와 각 $B$에 대한 삼각비를 각각 정의에 따라 확인한다.\n정석 풀이: $\\sin A=\\dfrac{a}{c}$, $\\cos A=\\dfrac{b}{c}$, $\\tan A=\\dfrac{a}{b}$이다. 각 $B$에 대해서는 맞은편 변이 $AC=b$, 이웃한 변이 $BC=a$이므로 $\\tan B=\\dfrac{b}{a}$이다. 또한 $\\cos B$는 빗변에 대한 이웃한 변의 비이므로 $\\cos B=\\dfrac{a}{c}$이다. 따라서 $\\cos B=\\dfrac{c}{a}$라고 한 ③은 옳지 않다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_신흥중_2학기_중간_중3_수학/q1.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -1,0 +1,571 @@
+{
+  "schemaVersion": "gpt-middle-geometry-independent-adjudication-v1",
+  "status": "LOCKED_FOR_APPLY",
+  "date": "2026-09-22",
+  "frozenSemanticCheckpoint": {
+    "commitSha": "3af94706d8c87aa4a422dd317cfa266d1a42fd58",
+    "scope": "401-600",
+    "mappedCount": 600
+  },
+  "blindArtifact": {
+    "path": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_blind_semantic_review_401_600.json",
+    "commitSha": "435037651e454e592636c40fc19a8fbd491a95a7",
+    "rowCount": 200
+  },
+  "method": {
+    "sourceRead": "content + choices + answer + solution",
+    "metadataCompareOrder": "source-only review first; L2/L3/L4/CrossConcept opened only after blind artifact freeze",
+    "l2Policy": "L2 was not inferred from L3. Only a source-level unambiguous mismatch is corrected.",
+    "l3Result": "No L3 correction required in 401-600."
+  },
+  "blindFamilyAdjudication": [
+    {
+      "n": 414,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "목표가 삼각비 값이 아니라 선분 DP의 길이 표현이다."
+    },
+    {
+      "n": 429,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "목표가 AC 길이의 삼각비 표현이다."
+    },
+    {
+      "n": 446,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "보기의 핵심이 삼각비로 여러 길이를 직접 검증하는 활용이다."
+    },
+    {
+      "n": 490,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "목표가 선분 AB의 길이 표현이다."
+    },
+    {
+      "n": 492,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "목표가 AB, AC 길이의 삼각비 표현이다."
+    },
+    {
+      "n": 570,
+      "from": "TRIG_SPECIAL_ANGLE_CALC",
+      "to": "TRIG_ALGEBRAIC_RELATION",
+      "reason": "합차공식으로 1-tan²30°로 변형하는 대수 단계가 skeleton이다."
+    },
+    {
+      "n": 585,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "목표가 선분 BH의 길이다."
+    },
+    {
+      "n": 588,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "길이·둘레·넓이 표현을 삼각비로 판정하는 활용이다."
+    },
+    {
+      "n": 597,
+      "from": "TRIG_DIRECT_DEFINITION_RELATION",
+      "to": "MEASURE_DIRECT",
+      "reason": "목표가 두 변 x,y의 길이 표현이다."
+    }
+  ],
+  "summary": {
+    "reviewed": 200,
+    "l2CorrectionCount": 1,
+    "l3CorrectionCount": 0,
+    "l4CorrectionCount": 16,
+    "crossConceptRecordCount": 32,
+    "crossConceptKeyAdditionCount": 36,
+    "semanticExplanationCorrectionCount": 2,
+    "uniqueDefectUidCount": 46,
+    "sourceJsQuestionCorrectionCount": 1,
+    "protectedStudentFieldMutationCount": 0
+  },
+  "l2Corrections": [
+    {
+      "n": 412,
+      "questionUid": "qid_v1_1b65b306112cfae1d945882887ec02d62706fd0ce916e42c442412268067ccce",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#1",
+      "from": {
+        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+        "subUnit": "삼각비의 활용"
+      },
+      "to": {
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비"
+      },
+      "reason": "삼각비 정의 자체의 옳고 그름만 판정하는 순수 정의 문항이며 같은 family의 나머지 문항과 달리 활용 L2에 단독으로 들어가 있다."
+    }
+  ],
+  "l3Corrections": [],
+  "l4Corrections": [
+    {
+      "n": 423,
+      "questionUid": "qid_v1_3142a341af486b666497acb9b742790afab1a51247110198a31d3c130ceb4af6",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#2",
+      "from": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "to": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "reason": "수직선의 각 관계와 직각삼각형 길이 복원 뒤 삼각비 값을 구하므로 도형에서 삼각비 값 유도에 해당한다."
+    },
+    {
+      "n": 429,
+      "questionUid": "qid_v1_371cc3047f35b0620d63012e6f0437a20331e5f6bdd5201e1512b2c6a8bf0f6d",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#12",
+      "from": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "to": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "빗변 5와 두 예각의 삼각비로 목표 길이 AC를 직접 표현·판정한다."
+    },
+    {
+      "n": 437,
+      "questionUid": "qid_v1_40842ba63c3b292d05dcbea469caf5937e11e2343dd63d8df0c2fdeb921397db",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#5",
+      "from": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "to": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "reason": "예각 범위에서 사인·코사인·탄젠트의 증감과 범위를 이용해 명제를 판정한다."
+    },
+    {
+      "n": 464,
+      "questionUid": "qid_v1_592d007d20506d0f363be5673ec3cc884ad0ca4da02500740ee97e4a3e02b4da",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#8",
+      "from": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "to": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "reason": "45°를 기준으로 일반 예각의 삼각비 대소 관계와 범위를 비교한다."
+    },
+    {
+      "n": 470,
+      "questionUid": "qid_v1_5deb7c5d441ef68f0cf4992c484ee0a99854f181a58053f8ce0778a1e889797b",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#24",
+      "from": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "알려진 높이 500m에서 두 각의 탄젠트로 두 수평거리를 각각 구해 합산하므로 공통 미지량 연립이 아니다."
+    },
+    {
+      "n": 484,
+      "questionUid": "qid_v1_77d78f3bca75f44ef9f2544cb25f62c7e8d7c01cbea94128c2b169e1d8146023",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#11",
+      "from": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "tan30°를 직선의 기울기로 바꾸고 y절편과 연결해 직선의 방정식을 만든다."
+    },
+    {
+      "n": 490,
+      "questionUid": "qid_v1_7e4c4f76abfe907ff6fad0c46b596d11534da80bc620ce0e70ae42c2d6d924cc",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#7",
+      "from": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "반지름 2인 직각삼각형에서 삼각비로 목표 선분 AB를 직접 나타낸다."
+    },
+    {
+      "n": 492,
+      "questionUid": "qid_v1_829ffa6e425a6e9aac06edd0b63e877f2646badd503227461e4ab326b7697d46",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#11",
+      "from": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "주어진 BC=a를 기준으로 삼각비 정의를 이용해 목표 선분 AB, AC의 표현을 직접 판정한다."
+    },
+    {
+      "n": 500,
+      "questionUid": "qid_v1_8c3e021e1c230fb9510ea988a98c546487bf0080419e49c0fcaaee8b2ed11a96",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#8",
+      "from": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "to": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "reason": "특수값과 일반 예각에서의 증감·범위를 함께 이용해 삼각비들의 대소를 정한다."
+    },
+    {
+      "n": 518,
+      "questionUid": "qid_v1_9d2409d65b0e6dd5a4f2b3e314baf4f331d7b137713c03673eed50f494bc7791",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#5",
+      "from": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "to": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "reason": "예각에서 사인·탄젠트의 증가, 코사인의 감소와 범위를 이용해 설명의 참거짓을 판정한다."
+    },
+    {
+      "n": 522,
+      "questionUid": "qid_v1_9f6d97bddf206cfeca068b1c95be9afad4b599440e3c4aafe1f3f6d676df2382",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#9",
+      "from": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "to": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "reason": "내심과 각의 이등분선으로 A, B의 각을 먼저 복원한 뒤 삼각비의 비를 구한다."
+    },
+    {
+      "n": 532,
+      "questionUid": "qid_v1_afb7405379a870f39cd14d9ace9aa55ff5da0588d0f033a133985fe701b81e6a",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#6",
+      "from": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "to": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "reason": "수선과 닮음으로 여러 직각삼각형의 각·대응관계를 확인한 뒤 sin x 표현을 판정한다."
+    },
+    {
+      "n": 569,
+      "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#10",
+      "from": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "tan30°를 기울기로 바꾸고 x절편을 이용해 일차함수식을 구성한다."
+    },
+    {
+      "n": 585,
+      "questionUid": "qid_v1_e86a1351bc58f9e590ba4441ac1be35acc83122f1a0f96dd48abf67f7f7816d0",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#5",
+      "from": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "reason": "cos35°로 OH를 구한 뒤 OB-OH로 목표 길이 BH를 직접 계산한다."
+    },
+    {
+      "n": 586,
+      "questionUid": "qid_v1_e8ab52161b0fd0f2ee407fcdeb2969363da34a0bf6706cf9c06d2488d87a6c58",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#4",
+      "from": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "tan60°로 직선의 기울기와 부호를 정하고 y절편과 연결해 직선식을 만든다."
+    },
+    {
+      "n": 595,
+      "questionUid": "qid_v1_f986e90cb0aa6a725664045aba43a9ff2201df618521e5465b838fc015eb6361",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#2",
+      "from": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "to": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "reason": "탄젠트로 x를 구한 뒤 피타고라스 정리로 y를 복원하여 최종 길이곱 xy를 계산한다."
+    }
+  ],
+  "crossConceptCorrections": [
+    {
+      "n": 407,
+      "questionUid": "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#8",
+      "add": {
+        "CC_PYTHAGOREAN": "AH=4, HC=6에서 최종 길이 AC를 구하는 데 피타고라스 정리가 필수다."
+      }
+    },
+    {
+      "n": 408,
+      "questionUid": "qid_v1_171c3168d2b05fe8278d13ea71e6c69f5e11be9d8c516c9e1f6c382fdacba166",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#11",
+      "add": {
+        "CC_TRIANGLE_AREA": "두 변과 끼인각의 사인으로 삼각형 넓이를 직접 계산한다."
+      }
+    },
+    {
+      "n": 413,
+      "questionUid": "qid_v1_1c2bc8d09671077119a3b1413455123a40412e5232561eeee8fe7bead26d2c7d",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#11",
+      "add": {
+        "CC_TRIANGLE_AREA": "삼각비로 높이를 만든 뒤 밑변과 높이로 삼각형 넓이를 계산한다."
+      }
+    },
+    {
+      "n": 415,
+      "questionUid": "qid_v1_204c9c507435ce4171a09b13314cb48788595ef9a1eb4e6c534ecd8c362b9e4f",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#22",
+      "add": {
+        "CC_REFLECTION": "접기 전후 대응 선분과 각의 대칭 관계가 AB=BC를 만드는 데 필수다."
+      }
+    },
+    {
+      "n": 419,
+      "questionUid": "qid_v1_25c7a6f96303eaa85b941ec574e332e678a473d6fc0ea9a36e448cf0ccc8c6b1",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#13",
+      "add": {
+        "CC_ANGLE_BISECTOR": "A의 이등분선이 120°를 두 60°로 나누어 부분 삼각형의 구조를 결정한다.",
+        "CC_TRIANGLE_AREA": "전체 넓이와 두 부분 삼각형 넓이의 합을 비교해 AP를 구한다."
+      }
+    },
+    {
+      "n": 420,
+      "questionUid": "qid_v1_28f9bf57454f0a261784dcace2ab93458cbefb98f38bfd3bf4603c8818fb1095",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#21",
+      "add": {
+        "CC_TRIANGLE_AREA": "두 변과 끼인각의 사인으로 삼각형 넓이를 계산한다."
+      }
+    },
+    {
+      "n": 425,
+      "questionUid": "qid_v1_32c8608ad82c5fafe0d02cc716756c9a42b7cf1d8a4a44de9bc6a06676ab9463",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#13",
+      "add": {
+        "CC_MIDPOINT": "정사각형 변의 중점 M,N과 MN의 중점 K가 필요한 길이 관계를 결정한다."
+      }
+    },
+    {
+      "n": 430,
+      "questionUid": "qid_v1_3790c11315df0ebacdd1eff21b1643595c1ea717d43243fae488870ce69fcf6b",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#24",
+      "add": {
+        "CC_MIDPOINT": "AD의 중점 M과 FG의 중점 N이 FM, GM 및 높이 계산의 구조를 결정한다."
+      }
+    },
+    {
+      "n": 436,
+      "questionUid": "qid_v1_3da247cda73b23960952fca24f1c30f747772d5e7048cd724fdcfbc9bc68b63e",
+      "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#19",
+      "add": {
+        "CC_MIDPOINT": "빗변 AC의 중점 M 성질로 BM=AC/2를 정하는 단계가 필수다."
+      }
+    },
+    {
+      "n": 450,
+      "questionUid": "qid_v1_4d2a3881b6936db54a92228ce62519b15a03a402eef992ff1b67f370b83c4f0e",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#7",
+      "add": {
+        "CC_SLOPE": "일차함수의 기울기 1/2를 tan a로 해석하는 연결이 풀이의 출발점이다."
+      }
+    },
+    {
+      "n": 456,
+      "questionUid": "qid_v1_53db40513556246bee82e8e2d41a6268023050dd427fcba4528f9e485646ed69",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#6",
+      "add": {
+        "CC_SIMILARITY": "빗변에 내린 높이로 생긴 직각삼각형의 닮음이 x와 B의 각 관계를 결정한다."
+      }
+    },
+    {
+      "n": 457,
+      "questionUid": "qid_v1_53ef9bf3ecbe0d5b35ecfce969e59f661f90b33356ba03e648c1f5b17b5e1efc",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#12",
+      "add": {
+        "CC_REFLECTION": "접기 전후 대응 선분과 각의 대칭 관계가 길이 복원의 전제다."
+      }
+    },
+    {
+      "n": 484,
+      "questionUid": "qid_v1_77d78f3bca75f44ef9f2544cb25f62c7e8d7c01cbea94128c2b169e1d8146023",
+      "sourceIdentity": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js#11",
+      "add": {
+        "CC_SLOPE": "직선의 기울기를 x축과 이루는 각의 탄젠트로 해석해 직선식을 만든다."
+      }
+    },
+    {
+      "n": 496,
+      "questionUid": "qid_v1_8721e0e4ac93bd352f70ee08fe14807dfacfaef9b37196ca5021fb417ae7aa19",
+      "sourceIdentity": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js#18",
+      "add": {
+        "CC_SIMILARITY": "공통각을 가진 두 직각삼각형의 닮음이 길이비와 여각 관계를 결정한다."
+      }
+    },
+    {
+      "n": 503,
+      "questionUid": "qid_v1_9085daae1976da47ba5f2e7cdd228aa87af076292981d26101827622ab38feca",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#10",
+      "add": {
+        "CC_PARALLELOGRAM_PROPERTIES": "평행사변형의 마주 보는 변이 같아 BC=AD가 되는 성질을 넓이 계산에 사용한다."
+      }
+    },
+    {
+      "n": 509,
+      "questionUid": "qid_v1_934643f2f1a0267dceff561827bf4442393a4686adb8e04d06225826ebfb9b51",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#16",
+      "add": {
+        "CC_SIMILARITY": "이등변삼각형 내부의 닮음으로 목표 변 길이를 먼저 결정한다."
+      }
+    },
+    {
+      "n": 521,
+      "questionUid": "qid_v1_9ee84629c993c881702ce3002bfbeed2feab345942000aed68de0733fd2e8e9b",
+      "sourceIdentity": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js#20",
+      "add": {
+        "CC_CIRCUMCIRCLE": "정삼각형의 외접원 반지름 R이 내접원 반지름과의 비 및 넓이차 계산에 직접 쓰인다.",
+        "CC_MIDPOINT": "변 BC의 중점 M이 직각삼각형 OBM과 반변 길이를 만든다.",
+        "CC_TRIANGLE_AREA": "구한 한 변과 높이로 정삼각형의 넓이를 최종 계산한다."
+      }
+    },
+    {
+      "n": 522,
+      "questionUid": "qid_v1_9f6d97bddf206cfeca068b1c95be9afad4b599440e3c4aafe1f3f6d676df2382",
+      "sourceIdentity": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js#9",
+      "add": {
+        "CC_ANGLE_BISECTOR": "내심에서 BI와 CI가 두 각을 이등분한다는 성질로 A, B의 각을 결정한다."
+      }
+    },
+    {
+      "n": 523,
+      "questionUid": "qid_v1_a4106036235b3eef539123ae337e7b98be5da922e6fb49e50d3cee85f2ee45d6",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#19",
+      "add": {
+        "CC_PARALLELOGRAM_PROPERTIES": "두 대각선이 서로를 이등분한다는 성질로 전체 대각선 길이를 결정한다.",
+        "CC_TRIANGLE_AREA": "대각선 교점이 만드는 네 삼각형 넓이를 합쳐 평행사변형 넓이를 계산한다."
+      }
+    },
+    {
+      "n": 532,
+      "questionUid": "qid_v1_afb7405379a870f39cd14d9ace9aa55ff5da0588d0f033a133985fe701b81e6a",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#6",
+      "add": {
+        "CC_SIMILARITY": "빗변에 내린 수선으로 생긴 직각삼각형의 닮음이 sin x의 여러 표현을 연결한다."
+      }
+    },
+    {
+      "n": 544,
+      "questionUid": "qid_v1_b9615c6b1c214e23271e9efd37238a3a5c3e1bde638739d38c4e2f7070b5a414",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#10",
+      "add": {
+        "CC_MIDPOINT": "정사각형 변의 중점 E,F가 BEF의 길이·넓이 구조를 결정한다."
+      }
+    },
+    {
+      "n": 558,
+      "questionUid": "qid_v1_c6406ed5ada6bf1bba425cc8a0e8bcd461ba3501e34a7e51c659a4c6b3475d94",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#5",
+      "add": {
+        "CC_SIMILARITY": "빗변에 내린 높이로 생긴 직각삼각형의 닮음이 CD와 AD를 결정한다."
+      }
+    },
+    {
+      "n": 559,
+      "questionUid": "qid_v1_c6cb2f7b40eba6d81db9e932c3c6439e61b55c5fd27effbebcad22eaaf28ad34",
+      "sourceIdentity": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js#1",
+      "add": {
+        "CC_MIDPOINT": "BC의 중점 D가 BD를 결정해 직각삼각형 ABD의 길이 계산을 가능하게 한다."
+      }
+    },
+    {
+      "n": 562,
+      "questionUid": "qid_v1_c9c3f23437c9db41e99e412f28cbb7eee2b6442dbf996d59307708b4fb862366",
+      "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#21",
+      "add": {
+        "CC_SIMILARITY": "빗변에 내린 높이로 생긴 두 직각삼각형의 닮음이 x를 원래 삼각형의 각과 연결한다."
+      }
+    },
+    {
+      "n": 568,
+      "questionUid": "qid_v1_ce908404875d39119a8d396184bf95d567562a8a1a5e84623473ca4825f6705e",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#10",
+      "add": {
+        "CC_MIDPOINT": "정사각형 변의 중점 E,F가 BEF의 길이와 넓이를 결정한다."
+      }
+    },
+    {
+      "n": 569,
+      "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#10",
+      "add": {
+        "CC_SLOPE": "직선의 기울기를 tan30°로 정해 x절편을 지나는 일차함수식을 구성한다."
+      }
+    },
+    {
+      "n": 571,
+      "questionUid": "qid_v1_d0ef81f1a68d86ace97107fdec8d9a5e92e8a93afb470fc8b304e6196329d21f",
+      "sourceIdentity": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js#24",
+      "add": {
+        "CC_MIDPOINT": "AC의 중점 D가 CD=AC/2를 정해 BD 계산의 한 변을 제공한다."
+      }
+    },
+    {
+      "n": 575,
+      "questionUid": "qid_v1_d5647fc0b6ae1c7a9e44653ea0d80f476b08792c2620f3777960d4124e2e35d2",
+      "sourceIdentity": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js#11",
+      "add": {
+        "CC_MIDPOINT": "이등변삼각형 꼭짓점에서 밑변에 내린 수선이 밑변을 이등분해 BD를 결정한다."
+      }
+    },
+    {
+      "n": 576,
+      "questionUid": "qid_v1_d923745c2dc8001bd522354fa916db2c9b9c1938f6a617df5e9ae826b9b3fedb",
+      "sourceIdentity": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js#6",
+      "add": {
+        "CC_ANGLE_BISECTOR_THEOREM": "A의 각 이등분선 정리로 BD:DC=AB:AC를 적용해 목표 길이를 구한다."
+      }
+    },
+    {
+      "n": 577,
+      "questionUid": "qid_v1_d938153ef69147163e468bf140ffeb8fe076c277e3f9050cad372965754f74ef",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#3",
+      "add": {
+        "CC_SIMILARITY": "빗변 높이로 생긴 직각삼각형의 닮음으로 AD를 먼저 구한다."
+      }
+    },
+    {
+      "n": 586,
+      "questionUid": "qid_v1_e8ab52161b0fd0f2ee407fcdeb2969363da34a0bf6706cf9c06d2488d87a6c58",
+      "sourceIdentity": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js#4",
+      "add": {
+        "CC_SLOPE": "직선이 x축과 이루는 각의 탄젠트로 기울기 크기와 부호를 정한다."
+      }
+    },
+    {
+      "n": 591,
+      "questionUid": "qid_v1_f26021a209da10baa794e5e28af8c27bce173504c4e62e430327426db91635b7",
+      "sourceIdentity": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js#22",
+      "add": {
+        "CC_TRIANGLE_AREA": "정육면체 절단면인 정삼각형 BCD의 넓이를 구해 삼각뿔의 밑면 넓이로 사용한다."
+      }
+    }
+  ],
+  "semanticExplanationCorrections": [
+    {
+      "n": 461,
+      "questionUid": "qid_v1_55a11f5983c5e410f65c7b2480c11370f2ef562971049f23c1468b62fb4f8a3b",
+      "sourceIdentity": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js#12",
+      "changes": {
+        "primaryMethod": "건물 높이를 h, B에서 건물까지의 거리를 x로 두고 tan45°에서 h=x, tan30°에서 h/(x+30)=√3/3을 세워 연립한다.",
+        "decisiveStep": "AB=30이므로 먼 지점 A에서 건물까지의 수평거리는 x+30이고, 두 탄젠트 식을 같은 높이 h로 연결한다.",
+        "l4SemanticReason": "30m 떨어진 두 관측점이 공유하는 건물 높이에 대해 tan45°와 tan30°의 측량식을 연립한다.",
+        "semanticReason": "30m 떨어진 두 관측점이 공유하는 건물 높이에 대해 tan45°와 tan30°의 측량식을 연립한다."
+      }
+    },
+    {
+      "n": 465,
+      "questionUid": "qid_v1_596eb5a67f7de198f8062a2605bbd5afed283e807b0cdff1862cb61bd8f0cbda",
+      "sourceIdentity": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js#10",
+      "changes": {
+        "primaryMethod": "tan x=3/4에서 3:4:5 비로 AB=12, OB=16을 구하고 반지름 20에서 BC=4, CD=15를 얻어 사다리꼴 넓이를 계산한다.",
+        "decisiveStep": "두 직각삼각형에 같은 tan x=3/4를 적용해 사다리꼴의 두 밑변 AB, CD와 높이 BC를 복원한다.",
+        "l4SemanticReason": "같은 탄젠트비와 반지름 20을 두 직각삼각형에 연쇄 적용해 사다리꼴 넓이에 필요한 세 길이를 만든다.",
+        "semanticReason": "같은 탄젠트비와 반지름 20을 두 직각삼각형에 연쇄 적용해 사다리꼴 넓이에 필요한 세 길이를 만든다."
+      }
+    }
+  ],
+  "defectQuestionNumbers": [
+    407,
+    408,
+    412,
+    413,
+    415,
+    419,
+    420,
+    423,
+    425,
+    429,
+    430,
+    436,
+    437,
+    450,
+    456,
+    457,
+    461,
+    464,
+    465,
+    470,
+    484,
+    490,
+    492,
+    496,
+    500,
+    503,
+    509,
+    518,
+    521,
+    522,
+    523,
+    532,
+    544,
+    558,
+    559,
+    562,
+    568,
+    569,
+    571,
+    575,
+    576,
+    577,
+    585,
+    586,
+    591,
+    595
+  ],
+  "nextStart": 601
+}
