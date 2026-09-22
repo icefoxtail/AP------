@@ -1,6 +1,6 @@
 {
   "schemaVersion": "gpt-middle-geometry-correction-inventory-v1",
-  "status": "IN_PROGRESS",
+  "status": "IN_PROGRESS_WITH_HOLDS",
   "date": "2026-09-22",
   "branch": "gpt/middle-geometry-corrections-001-400-20260922",
   "recoveredBranchHead": "2587a12aa47b143a003c01f7640cd7b9473fcf55",
@@ -58,10 +58,44 @@
     "defectPolicy": "confirm only clear semantic mismatch; ambiguous cases HOLD",
     "sourceProtection": "content/choices/answer/solution/image remain protected; metadata-only correction unless separately justified"
   },
-  "completedThrough": 600,
-  "currentBatch": "601-650",
-  "completedRequestedCount": 0,
-  "remainingRequestedCount": 200,
-  "nextStartPoint": 601,
-  "blockingIssues": []
+  "completedThrough": 650,
+  "currentBatch": "651-700",
+  "completedRequestedCount": 50,
+  "remainingRequestedCount": 150,
+  "nextStartPoint": 651,
+  "blockingIssues": [
+    {
+      "scope": "601-650",
+      "n": 608,
+      "type": "L4_CANONICAL_GAP",
+      "detail": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH semantic mismatch; no exact existing PT_TWO_CIRCLES L4. HOLD; review continuation allowed."
+    },
+    {
+      "scope": "601-650",
+      "n": 621,
+      "type": "L4_CANONICAL_GAP",
+      "detail": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH semantic mismatch; no exact existing PT_TWO_CIRCLES L4. HOLD; review continuation allowed."
+    },
+    {
+      "scope": "601-650",
+      "n": 629,
+      "type": "L4_CANONICAL_GAP",
+      "detail": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH semantic mismatch; no exact existing PT_TWO_CIRCLES L4. HOLD; review continuation allowed."
+    }
+  ],
+  "lastCompletedItem": 650,
+  "currentCheckpoint": {
+    "range": "601-650",
+    "blindArtifact": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_blind_semantic_review_601_650.json",
+    "blindFreezeCommit": "a583f72146c1a5c0e096ff37b6b6e35ef62b37d6",
+    "correctionArtifact": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_independent_adjudication_601_650.json",
+    "correctionCommit": "ee515c04a23030f3b233d362114568895230e95f",
+    "validationArtifact": "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_independent_validation_601_650.json",
+    "status": "PASS_POSTCOMMIT_WITH_HOLDS"
+  },
+  "artifactPaths": [
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_blind_semantic_review_601_650.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_independent_adjudication_601_650.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_independent_validation_601_650.json"
+  ]
 }
