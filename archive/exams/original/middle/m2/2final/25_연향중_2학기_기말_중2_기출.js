@@ -184,12 +184,12 @@ window.questionBank = [
   {
     "id": 7,
     "level": "중",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -207,10 +207,10 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n정석 풀이: $D$는 $BC$의 중점이다. $G'$는 $\\triangle GBC$의 무게중심이므로 중선 $GD$에서 $GG':G'D=2:1$이다. $GG'=2\\rm\\,cm$이므로 $GD=3\\rm\\,cm$이다. 또한 $G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다. 따라서 $AG=2\\times3=6\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q7.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 8,

@@ -409,12 +409,12 @@ window.questionBank = [
   {
     "id": 13,
     "level": "상",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "사각형의 성질",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -436,10 +436,10 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 같은 밑변과 같은 높이를 가지는 삼각형의 넓이 관계를 이용한다.\n$\\triangle DBC$는 선분 $OC$에 의해 $\\triangle OBC$와 $\\triangle OCD$로 나뉜다.\n따라서 $[\\triangle OCD]=90-75=15\\mathrm{cm}^2$이다.\n$AD\\parallel BC$이므로 $\\triangle ADB$와 $\\triangle ADC$는 밑변 $AD$가 같고, 점 $B$, $C$에서 직선 $AD$까지의 높이가 같아 넓이가 같다.\n$[\\triangle ADB]=[\\triangle AOB]+[\\triangle AOD]$, $[\\triangle ADC]=[\\triangle AOD]+[\\triangle OCD]$이므로 $[\\triangle AOB]=[\\triangle OCD]=15\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_연향중_2학기_중간_중2_수학/q13.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -643,10 +643,10 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 중점 연결선과 닮음을 이용하여 작은 삼각형의 넓이가 전체의 몇 배인지 구한다.\n$P$, $R$는 각각 $AB$, $CD$의 중점이므로 $PR\\parallel BC$이고, $PR$와 $BC$ 사이의 높이는 평행사변형 높이의 절반이다.\n$Q$는 $BC$의 중점이다. $\\triangle ABQ$에서 $P$는 $AB$의 중점이고 $PM\\parallel BQ$이므로 $M$은 $AQ$의 중점이며 $PM=\\dfrac12BQ=\\dfrac14BC$이다.\n마찬가지로 $RN=\\dfrac14BC$이다. 따라서 $MN=PR-PM-RN=BC-\\dfrac14BC-\\dfrac14BC=\\dfrac12BC$이다.\n$\\triangle MQN$의 높이는 평행사변형 높이의 절반이므로\n$[\\triangle MQN]=\\dfrac12\\times\\dfrac12BC\\times\\dfrac12h=\\dfrac18BC\\cdot h$이다.\n즉, $\\triangle MQN$의 넓이는 평행사변형 넓이의 $\\dfrac18$이다. 따라서 평행사변형의 넓이는 $6\\times8=48\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_2학기_중간_중2_수학/q19.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,

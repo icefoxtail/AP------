@@ -656,7 +656,7 @@ window.questionBank = [
   {
     "id": 22,
     "level": "중",
-    "category": "도형의 성질",
+    "category": "사각형의 성질",
     "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-05",
@@ -674,8 +674,8 @@ window.questionBank = [
     "choices": [],
     "answer": "두 각과 그 사이의 변이 각각 같으므로 $\\triangle ABC\\cong\\triangle CDA$",
     "solution": "[키포인트] 평행선에서 생기는 엇각 두 쌍과 공통변을 이용한다.\n조건 정리: $AB\\parallel CD$, $BC\\parallel AD$이고 대각선 $AC$가 그어져 있다.\n풀이 방향: $\\triangle ABC$와 $\\triangle CDA$에서 두 각과 그 사이의 변을 비교한다.\n정석 풀이: $AB\\parallel CD$이므로 엇각인 $\\angle BAC=\\angle DCA$이다. 또 $BC\\parallel AD$이므로 엇각인 $\\angle BCA=\\angle DAC$이다. 그리고 $AC$는 두 삼각형의 공통인 변이다. 따라서 두 각과 그 사이의 변이 각각 같으므로 $\\triangle ABC\\cong\\triangle CDA$이다. 합동인 삼각형의 대응변은 같으므로 $AB=CD$, $BC=AD$이다.\n따라서 두 삼각형은 두 각과 그 사이의 변이 각각 같아서 합동이다.",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
