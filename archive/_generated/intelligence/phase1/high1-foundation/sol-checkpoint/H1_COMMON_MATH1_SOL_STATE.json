@@ -169,19 +169,21 @@
     }
   },
   "holdResolution": {
-    "resolved": 28,
-    "unresolved": 12,
+    "resolved": 33,
+    "unresolved": 7,
     "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
-    "blocker": "UID-level identities for historical Eq/Ineq batch1-4 cumulative HOLD=12 are absent; the preserved ZIP is truncated/corrupt and cannot be decompressed."
+    "blocker": "Seven historical Eq/Ineq batch1-4 HOLD identities remain unavailable after recovering five source-audit HOLD rows; original semantic ledger/payload is still required for exact UID closure."
   },
   "holdInventory": {
     "totalReported": 40,
-    "itemLevelKnown": 28,
-    "itemLevelResolvedOrRouted": 28,
-    "legacyAggregateGap": 12,
-    "unresolvedUidCount": 12,
-    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_INVENTORY_1170.jsonl"
+    "itemLevelKnown": 33,
+    "itemLevelResolvedOrRouted": 33,
+    "legacyAggregateGap": 7,
+    "unresolvedUidCount": 7,
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
+    "recoveredLegacyRows": 5,
+    "recoveryArtifact": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl"
   },
   "finalSummary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
-  "finalSummarySha256": "7063538f2c16024cc0fe2b1a89072ba30709e1c706063f5bd56d18f3194cc853"
+  "finalSummarySha256": "fda1a79cded790a2a7eb38c67e8216a29ee4483c8b5907caf0fffcee275dbfb1"
 }
