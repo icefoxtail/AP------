@@ -1,36 +1,33 @@
 {
   "schemaVersion": "h1-stage2-semantic-state-v1",
-  "status": "STAGE2_PARTIAL",
+  "status": "STAGE2_COMPLETE",
   "authority": "Physical batch ledgers and checkpoint commits; no Notion-only state.",
   "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
   "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "branch": "meta-foundation-h1-preprocess-sol-review",
   "lastBatch": {
     "unit": "MATRIX",
-    "start": 1,
-    "end": 70,
+    "start": 71,
+    "end": 83,
     "denominator": 83,
-    "rows": 70
+    "rows": 13
   },
-  "overallCompleted": 1157,
+  "overallCompleted": 1170,
   "overallDenominator": 1170,
   "unitCompleted": {
     "POLYNOMIAL": 217,
     "EQINEQ": 583,
     "PERMCOMB": 287,
-    "MATRIX": 70
+    "MATRIX": 83
   },
   "totalHold": 40,
   "currentBatchHold": 0,
-  "currentBatchInputBundleSha": "150ae4a1e59050d5db5199572fb8760f2a1640f6e628b7f61bdd790cf0428645",
+  "currentBatchInputBundleSha": "a8ae8c72faf4e972f421b1d61826debe3f23c9c38174fdfabc1aa3bd3f84bd79",
   "currentBatchForbiddenCandidateInputLeakage": 0,
   "next": {
     "unit": "MATRIX",
-    "workIndex": 71,
-    "questionUid": "qid_v1_7c00bae04ed35a5d5820de70773f41ff8a378dea9907cb3d017681cd0b4790af",
-    "sourceArchiveFile": "original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js",
-    "sourceOrdinal": 9,
-    "queueId": "H22-C-09"
+    "workIndex": 84,
+    "questionUid": null
   },
   "batchHistory": [
     {
@@ -131,6 +128,16 @@
       "rows": 70,
       "decisionLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl",
       "summary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/MATRIX_BATCH15_SOL_SUMMARY_1_70.json",
+      "holdCount": 0
+    },
+    {
+      "unit": "MATRIX",
+      "start": 71,
+      "end": 83,
+      "denominator": 83,
+      "rows": 13,
+      "decisionLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl",
+      "summary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/MATRIX_BATCH16_SOL_SUMMARY_71_83.json",
       "holdCount": 0
     }
   ],
