@@ -16,7 +16,7 @@ const inventoryPath = path.join(dir, 'INVENTORY.json');
 const checkpointsPath = path.join(dir, 'CHECKPOINTS.json');
 
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
-const sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p, 'utf8').replace(/\r\n/g, '\n')).digest('hex');
 const digestText = (value) => crypto.createHash('sha256').update(value).digest('hex');
 const repoPath = (p) => path.relative(ROOT, p).split(path.sep).join('/');
 const assert = (ok, msg) => { if (!ok) throw new Error(msg); };
