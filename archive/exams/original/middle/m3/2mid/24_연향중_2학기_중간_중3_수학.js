@@ -685,30 +685,30 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
-  {
-    "id": 23,
-    "level": "상",
-    "category": "원의 성질",
-    "originalCategory": "원의 성질",
-    "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-06",
-    "standardUnit": "원의 성질",
-    "standardUnitOrder": 6,
-    "questionType": "서술형",
-    "layoutTag": "grid",
-    "tags": [
-      "서술형",
-      "도형"
-    ],
-    "wide": false,
-    "content": "[서·논술형 3] 다음 그림과 같이 중심이 같고 반지름의 길이가 서로 다른 두 원에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{OA}=6\\,\\mathrm{cm}$, $\\overline{OM}=2\\,\\mathrm{cm}$, $\\overline{DB}=\\sqrt2\\,\\mathrm{cm}$일 때, $\\overline{OD}$의 길이를 구하시오. [7점]",
-    "choices": [],
-    "answer": "$3\\sqrt6\\,\\mathrm{cm}$",
-    "solution": "[키포인트] 안쪽 원의 현 $AB$의 절반을 먼저 구한 뒤, 바깥 원의 반지름에 해당하는 직각삼각형을 만든다.\\n조건 정리: $OA=OB=6\\,\\mathrm{cm}$이고, 중심에서 현 $AB$에 내린 수선은 현을 이등분하므로 $M$은 $AB$의 중점이다. 점 $B$는 $M$과 $D$ 사이에 있고 $DB=\\sqrt2\\,\\mathrm{cm}$이다.\\n풀이 방향: 직각삼각형 $OMB$에서 $MB$를 구하고, $MD=MB+BD$를 이용한 뒤 직각삼각형 $OMD$에서 $OD$를 구한다.\\n정석 풀이: $MB^2=OB^2-OM^2=6^2-2^2=32$이므로 $MB=4\\sqrt2\\,\\mathrm{cm}$이다. 따라서 $MD=MB+BD=4\\sqrt2+\\sqrt2=5\\sqrt2\\,\\mathrm{cm}$이다. $OM\\perp AB$이고 $A,B,C,D$가 같은 직선 위에 있으므로 $OM\\perp MD$이다. 그러므로 $OD^2=OM^2+MD^2=2^2+(5\\sqrt2)^2=4+50=54$이고 $OD=3\\sqrt6\\,\\mathrm{cm}$이다.\\n따라서 구하는 길이는 $3\\sqrt6\\,\\mathrm{cm}$이다.",
-    "image": "assets/images/24_연향중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
-  }
+{
+  "id": 23,
+  "level": "상",
+  "category": "원의 성질",
+  "originalCategory": "원의 성질",
+  "standardCourse": "중3 수학",
+  "standardUnitKey": "M3-06",
+  "standardUnit": "원의 성질",
+  "standardUnitOrder": 6,
+  "questionType": "서술형",
+  "layoutTag": "grid",
+  "tags": [
+    "서술형",
+    "도형"
+  ],
+  "wide": false,
+  "content": "[서·논술형 3] 다음 그림과 같이 중심이 같고 반지름의 길이가 서로 다른 두 원에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{OA}=6\\,\\mathrm{cm}$, $\\overline{OM}=2\\,\\mathrm{cm}$, $\\overline{DB}=\\sqrt2\\,\\mathrm{cm}$일 때, $\\overline{OD}$의 길이를 구하시오. [7점]",
+  "choices": [],
+  "answer": "$3\\sqrt6\\,\\mathrm{cm}$",
+  "solution": "[키포인트] 안쪽 원의 현 $AB$의 절반을 먼저 구한 뒤, 바깥 원의 반지름에 해당하는 직각삼각형을 만든다.\\n조건 정리: $OA=OB=6\\,\\mathrm{cm}$이고, 중심에서 현 $AB$에 내린 수선은 현을 이등분하므로 $M$은 $AB$의 중점이다. 점 $B$는 $M$과 $D$ 사이에 있고 $DB=\\sqrt2\\,\\mathrm{cm}$이다.\\n풀이 방향: 직각삼각형 $OMB$에서 $MB$를 구하고, $MD=MB+BD$를 이용한 뒤 직각삼각형 $OMD$에서 $OD$를 구한다.\\n정석 풀이: $MB^2=OB^2-OM^2=6^2-2^2=32$이므로 $MB=4\\sqrt2\\,\\mathrm{cm}$이다. 따라서 $MD=MB+BD=4\\sqrt2+\\sqrt2=5\\sqrt2\\,\\mathrm{cm}$이다. $OM\\perp AB$이고 $A,B,C,D$가 같은 직선 위에 있으므로 $OM\\perp MD$이다. 그러므로 $OD^2=OM^2+MD^2=2^2+(5\\sqrt2)^2=54$이므로 $OD=3\\sqrt6\\,\\mathrm{cm}$이다.\\n따라서 구하는 길이는 $3\\sqrt6\\,\\mathrm{cm}$이다.",
+  "image": "assets/images/24_연향중_2학기_중간_중3_수학/q23.png",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "subUnit": "원과 직선",
+  "subUnitConfidence": "rule_inferred",
+  "subUnitClassificationDepth": "complete_rule"
+}
 ];
