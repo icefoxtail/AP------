@@ -157,6 +157,40 @@ semantic 작업 전에 확인:
 - 사용자 지시가 engine 보강까지 포함하면 같은 branch에서 별도 checkpoint로 보강 후 regression.
 - 범위 밖 engine 보강 임의 수행 금지.
 
+## 5-1. SEMANTIC PROVENANCE ISOLATION HARD GATE
+
+본 절은 Stage 2(L3), Stage 4~6(L4/CrossConcept)의 semantic 완료 조건에 적용한다. 상세 의미 계약은 Foundation 운영규칙 §3-1이 authority다.
+
+1. semantic 판정 전에 stage별 **decision-isolated input bundle**을 물리 파일로 생성·freeze한다.
+2. source file/ordinal/fingerprint, current content, verified solution, 필요한 image dependency와 각 hash, input field inventory, `inputBundleSha`를 기록한다.
+3. 현재 stage에 필요한 검증된 upstream FINAL만 허용한다. 예: L4 판정의 FINAL L3 parent.
+4. same-stage 기존 `templateKey`, `crossConceptKeys`, candidate/heuristic/regex hint, relational freeze, prior verdict는 semantic decision input에서 제거한다.
+5. mapped row마다 `primaryMethod`, `decisiveStep`, L1/L2 reason, L3/L4 semantic reason, CrossConcept별 reason과 source hash를 물리 ledger에 남긴다.
+6. source-derived-looking reason을 candidate-derived key에 사후 부착한 결과는 fresh semantic 판정으로 인정하지 않는다.
+7. Codex/모델은 `FINAL`을 직접 쓰지 않는다. provenance·evidence completeness·forbidden input leakage 0·parent/registry/duplicate를 deterministic validator가 확인한 뒤에만 FINAL을 생성한다.
+8. validator가 없거나 미실행이면 해당 stage는 FINAL/PASS가 아니며 후속 semantic stage·candidate materialize·promotion의 authority가 될 수 없다.
+
+필수 failure code:
+
+```text
+SEMANTIC_PROVENANCE_LEAKAGE
+FORBIDDEN_CANDIDATE_INPUT
+MISSING_DECISION_ISOLATED_BUNDLE
+MISSING_SEMANTIC_EVIDENCE
+DECISION_COPIED_FROM_CANDIDATE
+```
+
+Mandatory negative regression fixture:
+
+```text
+Middle Geometry 96e4605d / 93bc935f
+candidate templateKey + 기존 CrossConcept suggestion
++ 구조 validator PASS
++ source+solution semantic decision provenance 없음
+=> FINAL 거부
+```
+
+위 두 commit의 L4/CrossConcept artifact는 `SUPERSEDED_INVALID_SEMANTIC_PROVENANCE`로 보존하며 Middle Geometry semantic authority 또는 Condition/IntegrationPattern/candidate materialize 입력으로 사용하지 않는다.
 ## 6. 표준 실행 순서
 
 ### Stage 1 — Source / Curriculum Baseline
