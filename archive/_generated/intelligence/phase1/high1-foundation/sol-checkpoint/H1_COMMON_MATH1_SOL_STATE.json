@@ -1,6 +1,6 @@
 {
   "schemaVersion": "h1-stage2-semantic-state-v1",
-  "status": "STAGE2_1170_COMPLETE_HOLD_RESOLUTION_BLOCKED",
+  "status": "STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED",
   "authority": "Physical batch ledgers and checkpoint commits; no Notion-only state.",
   "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
   "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
@@ -20,7 +20,7 @@
     "PERMCOMB": 287,
     "MATRIX": 83
   },
-  "totalHold": 40,
+  "totalHold": 41,
   "currentBatchHold": 0,
   "currentBatchInputBundleSha": "a8ae8c72faf4e972f421b1d61826debe3f23c9c38174fdfabc1aa3bd3f84bd79",
   "currentBatchForbiddenCandidateInputLeakage": 0,
@@ -144,46 +144,34 @@
   "productionCanonicalCompiledRuntimeMutation": 0,
   "mainMerge": 0,
   "stage2": {
-    "completed": 1170,
-    "denominator": 1170,
+    "rows": 1170,
     "uidUnique": 1170,
     "sourceIdentityUnique": 1170,
+    "missingUid": 0,
+    "duplicateUid": 0,
     "fingerprintMismatch": 0,
-    "workUnits": {
-      "POLYNOMIAL": {
-        "completed": 217,
-        "denominator": 217
-      },
-      "EQINEQ": {
-        "completed": 583,
-        "denominator": 583
-      },
-      "PERMCOMB": {
-        "completed": 287,
-        "denominator": 287
-      },
-      "MATRIX": {
-        "completed": 83,
-        "denominator": 83
-      }
-    }
+    "requiredSemanticFieldMissing": 0,
+    "semanticDispositionPresent": 1170
   },
   "holdResolution": {
-    "resolved": 33,
+    "closed": 33,
     "unresolved": 7,
-    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
-    "blocker": "Seven historical Eq/Ineq batch1-4 HOLD identities remain unavailable after recovering five source-audit HOLD rows; original semantic ledger/payload is still required for exact UID closure."
+    "openReviewRequired": 0,
+    "path": "H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
+    "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json",
+    "blocker": "Seven historical Eq/Ineq batch1-4 aggregate HOLD identities remain unavailable; exact UID inference is prohibited."
   },
   "holdInventory": {
-    "totalReported": 40,
+    "totalReported": 41,
     "itemLevelKnown": 33,
     "itemLevelResolvedOrRouted": 33,
+    "openReviewRequired": 0,
     "legacyAggregateGap": 7,
     "unresolvedUidCount": 7,
-    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
-    "recoveredLegacyRows": 5,
-    "recoveryArtifact": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl"
+    "path": "H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
+    "recoveryArtifact": "H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl",
+    "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json"
   },
-  "finalSummary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
-  "finalSummarySha256": "fda1a79cded790a2a7eb38c67e8216a29ee4483c8b5907caf0fffcee275dbfb1"
+  "finalSummary": "H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
+  "finalSummarySha256": "f246f292172a071fce653e8d8910ece9d9b8b20e2fbcb13da978aa354c5b8881"
 }
