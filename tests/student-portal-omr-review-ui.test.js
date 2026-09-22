@@ -36,6 +36,7 @@ assert(
   studentPortal.includes('function buildOmrReviewUrl') &&
     studentPortal.includes('function isOmrReviewAvailable') &&
     studentPortal.includes('function renderOmrReviewActions') &&
+    studentPortal.includes("url.searchParams.set('studentReview','1')") &&
     studentPortal.includes('packId') &&
     studentPortal.includes('시험지 보기') &&
     studentPortal.includes('정답 보기') &&
