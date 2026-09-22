@@ -84,7 +84,7 @@ function createArchiveScreenRuntime() {
     }
     function schedulePrewarm(ctx) {
         const params = new URL(ctx.candidate.environment.url).searchParams;
-        if (ctx.background || params.get('prewarm') === '0' || params.get('snapshotCache') === '0' || params.get('qr') === '1') return;
+        if (ctx.background || params.get('prewarm') !== '1' || params.get('snapshotCache') === '0' || params.get('qr') === '1') return;
         cancelIdlePrewarm();
         const candidate = ctx.candidate;
         const warm = async () => {
