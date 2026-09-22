@@ -16,7 +16,7 @@ const runtimeVersions = Object.freeze({
     'render-state-normalizer': '20260911.5',
     'side-effect-ledger': '20260911.5',
     'screen-runtime': '20260922.2',
-    'snapshot-contract': '20260911.5',
+    'snapshot-contract': '20260923.1',
     'question-image-readiness': '20260915.2',
     'screen-runtime-adapter': '20260922.2'
 });
