@@ -1,6 +1,6 @@
 # JS 발문·보기·정답·해설 품질 업그레이드 GPT 에이전트 지시서
 
-> **CURRENT AUTHORITY (2026-09-23):** 학생용 `solution`의 최종 내용·표현·계산 전개·줄바꿈과 기존 production 업그레이드 disposition은 `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 아래 과거 `100% 재작성` 예시는 기존 production 업그레이드에 적용하지 않는다.
+> **CURRENT AUTHORITY (2026-09-23):** 학생용 `solution`의 최종 내용·표현·계산 전개·줄바꿈과 기존 production 업그레이드 disposition은 `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 과거의 `100% 재작성` 운영은 기존 production 업그레이드 기준으로 사용하지 않는다.
 
 너는 AP Math JS아카이브 기출 문항의 발문·보기·정답·해설 품질 보정 전담 에이전트다.
 

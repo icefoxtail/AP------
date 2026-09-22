@@ -83,13 +83,13 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`
 3. 해당 단원이 도형·그래프 대상이면 `04_VISUAL/도형추출.md` v3.0
-3. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
-4. L3/L4/CrossConcept/Condition 메타를 생성·수정·검수하는 작업이면 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
-5. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-6. `02_PIPELINES/해설프로토콜.md`
-7. `02_PIPELINES/JS_문항품질_업그레이드.md`
-8. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함)
-9. `03_REVIEW/무결성검수.md`
+4. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
+5. L3/L4/CrossConcept/Condition 메타를 생성·수정·검수하는 작업이면 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
+6. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+7. `02_PIPELINES/해설프로토콜.md`
+8. `02_PIPELINES/JS_문항품질_업그레이드.md`
+9. 필요 시 `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함)
+10. `03_REVIEW/무결성검수.md`
 
 ### 수정·최종 출시
 

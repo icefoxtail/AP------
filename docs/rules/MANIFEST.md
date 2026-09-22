@@ -9,9 +9,9 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 15448 bytes | sha256 700a1236787cf3e4305e018017349d2d0d18d1a9e7c7dee3917e530a1d2cf813
+- 00_RULES_INDEX.md | 15449 bytes | sha256 9e590e2372d9f6a4f7f38cc7b1f41649788d406c6f3882e8f1d3b2fa2e70d5a5
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
-- 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 12902 bytes | sha256 6a01dfc09989ce30019dd11bba443a71981ad7b8956ff4569c2731498fca7cd0
+- 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 13168 bytes | sha256 c6651c936d4300a83a1ca11948de4bd9ced02307e7e78af498b908e927779f61
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
 - 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 45163 bytes | sha256 ccb1eafdc6cfb30722c4ab45bbeccd0fef0f8e12571386a6353175a313a7ec98
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
@@ -23,12 +23,12 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17795 bytes | sha256 efa2cc23237b12ffa2508d998dfb78612738359e8c1bca11cf97513f03d609a5
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 130796 bytes | sha256 5fbe4daf2a8fb7a70602dee2a9849ba0285b2030b3b9d0a10783b573debd150b
 - 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140
-- 02_PIPELINES/수정프로토콜.md | 31593 bytes | sha256 dc9fff93942de26b753db9444ee0a1d759d35723d0beed960e90070ddf0505e3
+- 02_PIPELINES/수정프로토콜.md | 31703 bytes | sha256 4b6d1d2d75630b1420a418ef2fcc64cd8af71eae3f09b1b7cc75e3eacfb58b82
 - 02_PIPELINES/작업방식_적응형배치루프_v1.md | 9468 bytes | sha256 ce4166be64d437a98eebcacbb728e6625dd4ba6472f0d6d20295767265c71685
 - 02_PIPELINES/수정후보고프로토콜.md | 880 bytes | sha256 bbdd866d15e6dc7e03ee265cf3b02571f6ef3ed4a15c03ebacb816d3311cbc4f
 - 02_PIPELINES/작업방식_5문항배치루프_필수.md | 5586 bytes | sha256 03ff3af80c2ce350181a142377955cc6657fa7f2d419c7461c6a09e7b1013858
-- 02_PIPELINES/해설프로토콜.md | 42135 bytes | sha256 fdc0fddae4401e8bf44ae7088c8f1bc895ddf72fee330300c89fb84f41f57141
-- 02_PIPELINES/JS_문항품질_업그레이드.md | 22799 bytes | sha256 9f9c8715fb4b105cf6d79a029aa0cd32dff93ce6c681a5da3e986cc6aae1d95c
+- 02_PIPELINES/해설프로토콜.md | 42613 bytes | sha256 4edb9d8799dc2ebdf4d96986c5a5aca78b1caa11fa8beceb08e9d05f47e593d1
+- 02_PIPELINES/JS_문항품질_업그레이드.md | 22805 bytes | sha256 3bc9c334b0eb26e2d1bf5cd902faf209477d3d14d2cad3f199ea0992eb47a265
 - 02_PIPELINES/JS_변환_프롬프트.md | 11131 bytes | sha256 bcd93c977920a7b5c70f8c9433cde1cbe8a14de2a362fd566865a63aa36285eb
 - 03_REVIEW/무결성검수.md | 48464 bytes | sha256 6ce2455c8408f3ce2c1902f27daecb37facf3961d3f5eb116ac6dfae40f2fdd6
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 7420 bytes | sha256 dfb942f5b68446948c396305f547e0a39ba6c0776790f1d89f15ee28af0f9487
