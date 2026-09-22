@@ -745,7 +745,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.27.1';
+    const STUDENT_APP_VERSION = '2026.09.22.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1924,7 +1924,7 @@
 
       url.searchParams.set('mode', isExam ? 'exam' : (isSolution ? 'sol' : 'ans'));
       url.searchParams.set('fit', 'screen');
-      if(rc2){url.searchParams.set('qpp',String(frozenPayload.meta.qpp||4));url.searchParams.set('studio','1');url.searchParams.set('submitQr','0');url.searchParams.set('solQr','0');url.searchParams.set('preRegistered','1');url.searchParams.set('assignmentRegistered','1');url.searchParams.set('assignmentId',exam.assignment_id);}
+      if(rc2){url.searchParams.set('qpp',String(frozenPayload.meta.qpp||4));url.searchParams.set('studio','1');url.searchParams.set('studentReview','1');url.searchParams.set('submitQr','0');url.searchParams.set('solQr','0');url.searchParams.set('preRegistered','1');url.searchParams.set('assignmentRegistered','1');url.searchParams.set('assignmentId',exam.assignment_id);}
       else if (isSolution) url.searchParams.set('solQr', '1');
       return url.toString();
     }
