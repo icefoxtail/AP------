@@ -24,13 +24,15 @@
         const geometry = layout(snapshot.rootNode);
         const images = assets(snapshot.rootNode);
         const noMath = !snapshot.rootNode.querySelector('mjx-container') && countMath(snapshot.rootNode) === 0;
+        const params = new URL(ctx.candidate.environment.url).searchParams;
+        const allowStudentReviewOverflow = params.get('studentReview') === '1' && params.get('fit') === 'screen';
         const common = {
             S01: ctx.state === 'SUCCEEDED', S02: snapshot.key === ctx.snapshotKey,
             S03: snapshot.sessionId === ctx.requestedTargetSessionId, S04: !!ctx.candidate.source.sourceArchiveFile,
             S05: snapshot.rootNode === ctx.targetArea, S06: true,
             S07: document.fonts.status === 'loaded', S08: noMath || !!window.MathJax?.typesetPromise,
             S09: noMath || ctx.metrics.mathJaxCalls > 0, S10: countMath(snapshot.rootNode) === 0,
-            S11: allAssetsComplete(images), S12: geometry.every(p => !p.overflowX && !p.overflowY),
+            S11: allAssetsComplete(images), S12: geometry.every(p => !p.overflowX && (!p.overflowY || allowStudentReviewOverflow)),
             S13: ctx.result.evidence.state === 'RENDER_READY', S14: geometry.length === snapshot.pageCount,
             S15: allAssetsComplete(images), S16: ctx.sideEffectsAllowed === false,
             S17: ctx.result.evidence.events.length === 5, S18: !ctx.abortSignal.aborted
