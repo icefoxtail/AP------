@@ -19,7 +19,7 @@
     "mapped": 921,
     "routeOut": 7
   },
-  "completedMappedCount": 300,
+  "completedMappedCount": 350,
   "records": [
     {
       "questionUid": "qid_v1_010d977d0827aa4d3e791212a20950580803d68b8f456496cdc5e3bd1ea14415",
@@ -5164,6 +5164,906 @@
       "semanticReason": "한 문항에서 여러 직각삼각형 합동 skeleton을 동시에 비교하는 선택형이므로 단일 L4 key로 강제하지 않고 명시적 HOLD한다.",
       "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
       "semanticReviewStatus": "EXPLICIT_HOLD"
+    },
+    {
+      "questionUid": "qid_v1_c6f036b50b8bc1718b49da15858eb640d591dcc6665ea8118dc9aaaaf11cdf10",
+      "sourceIdentity": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js#4",
+      "sourceFingerprint": "e7d8b3d975ee909b9dd69727bf1e64aabd2fb4f4dc687f1fce380b9e614e0a9f",
+      "inputBundleSha": "037e2cdd1b645be5bb539ab412ed7c4a01e6919879f373624a6485593cac5af7",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "부피비 27:64에서 닮음비 3:4를 복원하고, 겉넓이비를 닮음비의 제곱으로 계산한다.",
+      "decisiveStep": "부피비 27:64에서 닮음비 3:4를 복원하고, 겉넓이비를 닮음비의 제곱으로 계산한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "l4SemanticReason": "입체도형의 닮음비가 부피와 겉넓이에 각각 세제곱·제곱으로 변환된다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "입체도형의 닮음비가 부피와 겉넓이에 각각 세제곱·제곱으로 변환된다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_62"
+    },
+    {
+      "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+      "sourceIdentity": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js#7",
+      "sourceFingerprint": "80b06c0c216d7b8b23dc6f015a5a5438096cb1f7b875b27f379da2549f3b289a",
+      "inputBundleSha": "8a394ab08085bca10f36d422b416bfb932a6d67195ebb514b6a2a3e8cdca2f4f",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "primaryMethod": "무게중심의 중선 2:1과 중점으로 생긴 여섯 등분 넓이 관계를 각 보기의 길이·넓이 조건에 적용한다.",
+      "decisiveStep": "무게중심의 중선 2:1과 중점으로 생긴 여섯 등분 넓이 관계를 각 보기의 길이·넓이 조건에 적용한다.",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "l4SemanticReason": "무게중심의 중선 분할과 넓이 분할이 명제 판정을 결정한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CENTROID",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_CENTROID": "G가 세 중선의 교점이므로 AG:GD=2:1과 CG:GF=2:1이 성립한다.",
+        "CC_TRIANGLE_AREA": "여섯 개 같은 넓이의 작은 삼각형으로 전체 넓이와 사각형 넓이를 비교한다."
+      },
+      "semanticReason": "무게중심의 중선 분할과 넓이 분할이 명제 판정을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_62"
+    },
+    {
+      "questionUid": "qid_v1_c8a5e1820215e7468f382af7e81321e41dae636f0ed1c7a2e46642eae9adae02",
+      "sourceIdentity": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js#17",
+      "sourceFingerprint": "99764082097a683ce9446eed66ff526b4ca3d63512b163a70ef6af170977eb5d",
+      "inputBundleSha": "de3696dde4c6d068f3a180bcf341f02d9e185a576c210127c6492516d40d247f",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "평행사변형 대각선이 만드는 네 삼각형의 넓이와 중심대칭 대응을 사용해 옳지 않은 넓이 명제를 판정한다.",
+      "decisiveStep": "평행사변형 대각선이 만드는 네 삼각형의 넓이와 중심대칭 대응을 사용해 옳지 않은 넓이 명제를 판정한다.",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "l4SemanticReason": "대각선의 넓이 분할과 중심대칭이 영역 넓이 관계를 결정한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "대각선이 평행사변형을 네 같은 넓이 삼각형으로 나누고 같은 높이 넓이 관계를 만든다."
+      },
+      "semanticReason": "대각선의 넓이 분할과 중심대칭이 영역 넓이 관계를 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_62"
+    },
+    {
+      "questionUid": "qid_v1_c8c011841066ee28a93fce7a86c89f102c9f371de4d2fe011803006b57751f63",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#21",
+      "sourceFingerprint": "47c7e00d99d2ad0a7a1c2a5b0639d0d04dcac4ee9f64cb47dc6dc77209afb4d4",
+      "inputBundleSha": "58149354d2a848fafc63510c6f7b184659d08799824c4229dad62cfbf362891a",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "primaryMethod": "수선으로 만든 두 직각삼각형의 빗변·예각 RHA 합동으로 AD와 AE를 구하고, 피타고라스와 직각삼각형 넓이로 ABC를 계산한다.",
+      "decisiveStep": "수선으로 만든 두 직각삼각형의 빗변·예각 RHA 합동으로 AD와 AE를 구하고, 피타고라스와 직각삼각형 넓이로 ABC를 계산한다.",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "l4SemanticReason": "RHA 합동이 두 보조변을 결정하고 후속 길이·넓이 계산으로 연결된다.",
+      "crossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_PYTHAGOREAN": "합동으로 얻은 두 직각변 6,8에서 빗변 AB=10을 계산한다.",
+        "CC_TRIANGLE_AREA": "직각삼각형 ABC의 두 직각변으로 넓이를 계산한다."
+      },
+      "semanticReason": "RHA 합동이 두 보조변을 결정하고 후속 길이·넓이 계산으로 연결된다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_62"
+    },
+    {
+      "questionUid": "qid_v1_c961f1a5ee08148d71e1e1b8cd0df068707114f8d57392581a5b42bf5031898e",
+      "sourceIdentity": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js#12",
+      "sourceFingerprint": "888bb3292ecb3aade2fa58a3247dd582e7b00c6cd00f2c8e550360fac6282a27",
+      "inputBundleSha": "33414cfe57d83c6db181d042b98917e034ef6d8a34b2f7d4de79bf486090db84",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "primaryMethod": "이등변삼각형의 밑각과 B의 각 이등분으로 작은 삼각형의 각을 구하고, 두 삼각형이 이등변임을 확인해 잘못된 각을 판정한다.",
+      "decisiveStep": "이등변삼각형의 밑각과 B의 각 이등분으로 작은 삼각형의 각을 구하고, 두 삼각형이 이등변임을 확인해 잘못된 각을 판정한다.",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+      "l4SemanticReason": "각의 이등분선이 이등변삼각형 내부의 두 이등변 구조를 연쇄적으로 만든다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "B의 이등분선이 ∠ABD=∠DBC=36°을 만들어 두 작은 삼각형의 이등변 조건을 결정한다."
+      },
+      "semanticReason": "각의 이등분선이 이등변삼각형 내부의 두 이등변 구조를 연쇄적으로 만든다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_62"
+    },
+    {
+      "questionUid": "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
+      "sourceIdentity": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js#14",
+      "sourceFingerprint": "8989915f362ec246c3530e8f1b325ece08ef447e72e7d97f70726581bcbf4d02",
+      "inputBundleSha": "69157edd4767d8cd1c54598fb6d125af8b4fd85084eee29673919408d5eec483",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "세 평행선이 두 직선을 자를 때 대응하는 선분비를 세워 x:(10-x)=5:7의 비례식을 푼다.",
+      "decisiveStep": "세 평행선이 두 직선을 자를 때 대응하는 선분비를 세워 x:(10-x)=5:7의 비례식을 푼다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "l4SemanticReason": "일반 두 직선과 세 평행선의 대응 선분비가 미지 길이를 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "일반 두 직선과 세 평행선의 대응 선분비가 미지 길이를 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_63"
+    },
+    {
+      "questionUid": "qid_v1_cbce79d66d044679031372d0ff5232970943ba595f1ea3cf7155ec62d5625ef1",
+      "sourceIdentity": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js#19",
+      "sourceFingerprint": "75ade13b77d41c124fa23a72434207bb506d1383a66bf4dd99ae677666a9bf65",
+      "inputBundleSha": "a3013dfa58c72eddfed8fbabc89c69d0ccfde06f90e197b43934e7c2a9117d65",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "수선으로 생긴 직각삼각형 DCP에서 각을 구하고 평행사변형의 이웃각 합으로 ∠ABC를 계산한다.",
+      "decisiveStep": "수선으로 생긴 직각삼각형 DCP에서 각을 구하고 평행사변형의 이웃각 합으로 ∠ABC를 계산한다.",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "l4SemanticReason": "수선의 직각과 평행사변형 각 관계를 순차 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "수선의 직각과 평행사변형 각 관계를 순차 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_63"
+    },
+    {
+      "questionUid": "qid_v1_ccb0885c708a4548b4b785c378cd6907d3c677bbe9369ab9ecf75f8643efaac3",
+      "sourceIdentity": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js#21",
+      "sourceFingerprint": "0fc24210ab324098af274a51bc7ade9a7f7eeaa72967624bae48af7e1f06a9f7",
+      "inputBundleSha": "3ff2cfbe802993901841b895a357be40f7b59e5b990880509cba767b623ae8e6",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "primaryMethod": "AB=BC에서 밑각을 같게 하고 C의 각 이등분으로 BCD를 이등변삼각형으로 만든 뒤 ACD의 각 관계로 AC를 구한다.",
+      "decisiveStep": "AB=BC에서 밑각을 같게 하고 C의 각 이등분으로 BCD를 이등변삼각형으로 만든 뒤 ACD의 각 관계로 AC를 구한다.",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+      "l4SemanticReason": "이등변삼각형의 밑각과 각 이등분선이 만드는 두 이등변 구조를 연쇄한다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "CD가 ∠C의 이등분선이어서 BCD에서 두 각을 같게 만들고 BD=DC를 결정한다."
+      },
+      "semanticReason": "이등변삼각형의 밑각과 각 이등분선이 만드는 두 이등변 구조를 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_63"
+    },
+    {
+      "questionUid": "qid_v1_cd28c7a0b278f890343ab76b6c2da6959f68cb98cc9b099512b40718c600b9c8",
+      "sourceIdentity": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js#11",
+      "sourceFingerprint": "87dc5a711580e92c521abc186d54287e44fccc19af72ca4a8ba6f435491cc2fd",
+      "inputBundleSha": "44159fb8ba3d9b6313f3a8b2b162a2a42e5b5651cfcc6dbecbc58df01f55bf19",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "primaryMethod": "외각과 이웃한 내각의 합으로 C의 내각을 구하고 이등변삼각형의 두 밑각 및 내각의 합을 적용한다.",
+      "decisiveStep": "외각과 이웃한 내각의 합으로 C의 내각을 구하고 이등변삼각형의 두 밑각 및 내각의 합을 적용한다.",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "l4SemanticReason": "외각에서 밑각을 복원해 이등변삼각형의 꼭짓각을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "외각에서 밑각을 복원해 이등변삼각형의 꼭짓각을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_63"
+    },
+    {
+      "questionUid": "qid_v1_cd6d35a7c21bc99be28e5b8c72b373fe999a0e83c95531d487762b8e2a73a863",
+      "sourceIdentity": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js#18",
+      "sourceFingerprint": "c6d71f713524f64be7c6f5c0e963138606c2f69de234c9b0b2f6bbeb054e6190",
+      "inputBundleSha": "dd6e3f0ebc10e2644bb9e467c3166a96eb10cbbd3e4076edb92605927189fde0",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "정사각형·정삼각형 등 항상 닮은 도형의 대응각 같음과 대응변 비 일정함을 이용해 예시와 이유를 설명한다.",
+      "decisiveStep": "정사각형·정삼각형 등 항상 닮은 도형의 대응각 같음과 대응변 비 일정함을 이용해 예시와 이유를 설명한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "l4SemanticReason": "닮음의 정의인 대응각의 같음과 일정한 대응변비를 직접 설명한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "닮음의 정의인 대응각의 같음과 일정한 대응변비를 직접 설명한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_63"
+    },
+    {
+      "questionUid": "qid_v1_cdf01ad0c92eb6bbebeb49d10acfbea6c45e2104925c7d98eec6913f20aafdbf",
+      "sourceIdentity": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js#8",
+      "sourceFingerprint": "ca79237ec72e09d27ad0fb87089a12d161203e0e4a7223a4bbb6af065a729f5f",
+      "inputBundleSha": "79d6c4d8849528254ef3cf311bcb62a4e1de3352eafc78a58e96d326d0ecbfc5",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "닮음비 2:3을 높이비에도 적용하고 부피비를 닮음비의 세제곱으로 계산한다.",
+      "decisiveStep": "닮음비 2:3을 높이비에도 적용하고 부피비를 닮음비의 세제곱으로 계산한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "l4SemanticReason": "닮은 입체도형의 길이비에서 부피비를 도출한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "닮은 입체도형의 길이비에서 부피비를 도출한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_64"
+    },
+    {
+      "questionUid": "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
+      "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#1",
+      "sourceFingerprint": "8919a8483dce8e9dfb24a3eb91e9a3f033329cde427cb6e845a4249d86dfa1d7",
+      "inputBundleSha": "3961256a8dac8a2ebb989a1ba9560c91ddf9f13a497c0663fe390e0e9b9b2d7b",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "AB∥DE로 생기는 두 삼각형의 AA 닮음을 확인하고 대응변비로 x를 계산한다.",
+      "decisiveStep": "AB∥DE로 생기는 두 삼각형의 AA 닮음을 확인하고 대응변비로 x를 계산한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "l4SemanticReason": "삼각형 내부 평행선이 만드는 닮음비가 미지 길이를 결정한다.",
+      "crossConceptKeys": [
+        "CC_SIMILARITY"
+      ],
+      "crossConceptReasons": {
+        "CC_SIMILARITY": "AB∥DE와 공통각이 ACB= DCE의 닮음을 만들어 CB:CE와 AB:DE를 연결한다."
+      },
+      "semanticReason": "삼각형 내부 평행선이 만드는 닮음비가 미지 길이를 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_64"
+    },
+    {
+      "questionUid": "qid_v1_d143c4903e7842b0b13c8e8335d1f552eb7b206512ea33a8d6083ba0b51eeb73",
+      "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#8",
+      "sourceFingerprint": "84b00d7fea91e70ec61b98b187eb3f1bc34a3e4650a7a3bea7882e672899ac40",
+      "inputBundleSha": "9ecc684993ed4d71143d56402806de6a269d31e657956edf7241adfe351ef123",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "primaryMethod": "접기 대칭으로 대응변 길이를 확정하고 두 삼각형의 세 변비를 비교해 SSS 닮음을 판정한 뒤 접힌 선의 각 관계를 검토한다.",
+      "decisiveStep": "접기 대칭으로 대응변 길이를 확정하고 두 삼각형의 세 변비를 비교해 SSS 닮음을 판정한 뒤 접힌 선의 각 관계를 검토한다.",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "l4SemanticReason": "접기에서 보존된 길이와 직각삼각형 계산이 SSS 닮음 조건을 완성한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "접기에서 보존된 길이와 직각삼각형 계산이 SSS 닮음 조건을 완성한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_64"
+    },
+    {
+      "questionUid": "qid_v1_d260452eb4b9eeab948cf46d6861aba3e37da755dc333f670f589ca34c912220",
+      "sourceIdentity": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js#20",
+      "sourceFingerprint": "ddc99ab88bc77f9222de3e99f3154a162c6abe7458c1229b2a850de084b264a0",
+      "inputBundleSha": "7a80ba43ef0f349b6d7d269508c0f0af41a0a3fde7644fe8aa114f54fe93e326",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "내접원에서 한 점에 그은 두 접선의 길이가 같다는 성질로 AF와 FC를 더해 AC를 계산한다.",
+      "decisiveStep": "내접원에서 한 점에 그은 두 접선의 길이가 같다는 성질로 AF와 FC를 더해 AC를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "l4SemanticReason": "내심의 접점과 접선 길이 관계가 목표 변을 결정한다.",
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "crossConceptReasons": {
+        "CC_TANGENCY": "같은 외부점에서 내접원에 그은 두 접선의 길이가 같다는 성질이 AF와 FC를 정한다."
+      },
+      "semanticReason": "내심의 접점과 접선 길이 관계가 목표 변을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_64"
+    },
+    {
+      "questionUid": "qid_v1_d263b796e661da93d9dc42c1519a0f064c1fe87d40f95c80a12e45d1e0cd7ffe",
+      "sourceIdentity": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js#20",
+      "sourceFingerprint": "3d6dfe9819015c1740e6b90e5ad636f935075e84ec5adca760d87b57a65ca1e8",
+      "inputBundleSha": "086d1a83efd4b2b138bc5fe5a79525f8fbc4e747fb7de31940dfe266b5dadbc6",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "이등변삼각형 판정, RHA 합동, 내심과 외심의 성질을 순서대로 참거짓 판정해 흐름의 경로를 찾는다.",
+      "decisiveStep": "이등변삼각형 판정, RHA 합동, 내심과 외심의 성질을 순서대로 참거짓 판정해 흐름의 경로를 찾는다.",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "l4SemanticReason": "한 문항에서 삼각형의 이등변·직각합동·두 중심의 정의를 함께 비교한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "한 문항에서 삼각형의 이등변·직각합동·두 중심의 정의를 함께 비교한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_64"
+    },
+    {
+      "questionUid": "qid_v1_d31a0ac582f6caf524088510149a1a99cb521778936702dd9f903793769d2dc2",
+      "sourceIdentity": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js#16",
+      "sourceFingerprint": "3195c6b74099f34ec852e946ca52b75d84e341d9e9d460599f7e46a8fb44add3",
+      "inputBundleSha": "464895ec570d4c6ce595b183056034e46d3c861ebc4a408e056cec86748eac56",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "닮음비 3:4를 겉넓이비 9:16으로 제곱 변환하고 주어진 겉넓이에서 큰 사각기둥의 넓이를 계산한다.",
+      "decisiveStep": "닮음비 3:4를 겉넓이비 9:16으로 제곱 변환하고 주어진 겉넓이에서 큰 사각기둥의 넓이를 계산한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "l4SemanticReason": "입체도형 닮음의 길이비가 겉넓이비로 변환된다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "입체도형 닮음의 길이비가 겉넓이비로 변환된다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_65"
+    },
+    {
+      "questionUid": "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+      "sourceIdentity": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js#5",
+      "sourceFingerprint": "dfa7eb68ed4e02caee0a2b82f34dc0fe05f13c3381f465ce6012f8052e316357",
+      "inputBundleSha": "6ddd70ed146f68b7d50284eecce1658ff2581141cf04a022d68711ce1e534243",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "중점연결정리를 이용해 ED와 GC의 관계로 x를 구하고, 다시 AEF에서 중점 관계로 EF와 y를 구한다.",
+      "decisiveStep": "중점연결정리를 이용해 ED와 GC의 관계로 x를 구하고, 다시 AEF에서 중점 관계로 EF와 y를 구한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "l4SemanticReason": "삼각형 내부의 중점 조건과 평행선이 두 선분비를 차례로 결정한다.",
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "crossConceptReasons": {
+        "CC_MIDPOINT": "E,D와 G,C가 각각 중점 관계를 이루어 두 번의 중점연결정리를 적용한다."
+      },
+      "semanticReason": "삼각형 내부의 중점 조건과 평행선이 두 선분비를 차례로 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_65"
+    },
+    {
+      "questionUid": "qid_v1_d44910ac4eed7ee435978bcdb8620a485723d0c56533c3c9735bb50d053bfec3",
+      "sourceIdentity": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js#7",
+      "sourceFingerprint": "52bd1266eba1a5e818182e41b7c8577d67f1a153730f5082c9848f650b801065",
+      "inputBundleSha": "fa9bbc545f7124cc35b4d20d6ea7cae2a6d834011b80511718f5c383f9190f25",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "primaryMethod": "M이 BC의 중점이므로 MB=MC를 얻고, 두 수선으로 만든 직각삼각형에서 빗변과 한 직각변이 같음을 확인해 RHS 합동을 판정한다.",
+      "decisiveStep": "M이 BC의 중점이므로 MB=MC를 얻고, 두 수선으로 만든 직각삼각형에서 빗변과 한 직각변이 같음을 확인해 RHS 합동을 판정한다.",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "l4SemanticReason": "중점이 제공하는 빗변 대응과 주어진 수선 길이가 RHS 합동을 완성한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "중점이 제공하는 빗변 대응과 주어진 수선 길이가 RHS 합동을 완성한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_65"
+    },
+    {
+      "questionUid": "qid_v1_d4aa1b6dd61fdb3a5410a6ba95022cd647543979c1ee19a50edeab454180e6b8",
+      "sourceIdentity": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js#20",
+      "sourceFingerprint": "335de902e2a6c461020682c97743f78543ae69d5073544aa867b8b1a04d8f821",
+      "inputBundleSha": "627b653576c507c83b19acd461b78bd3dfea8ee7d2be310f0c628b9d440d41a9",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "외심의 등거리로 OAB와 OBC의 이등변삼각형 각을 구하고, 현에 내린 수선이 중심각을 이등분하는 성질로 x를 계산한다.",
+      "decisiveStep": "외심의 등거리로 OAB와 OBC의 이등변삼각형 각을 구하고, 현에 내린 수선이 중심각을 이등분하는 성질로 x를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "l4SemanticReason": "외심·현의 수선과 중심각 이등분 관계를 결합한다.",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_PERPENDICULAR_BISECTOR": "외심에서 현 BC에 내린 수선 OD가 중심각 BOC를 이등분해 x를 결정한다."
+      },
+      "semanticReason": "외심·현의 수선과 중심각 이등분 관계를 결합한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_65"
+    },
+    {
+      "questionUid": "qid_v1_d4edb719f8af918f15ffc77a3eec6158c856bb18dba548ad89d3e8de9b43bf9b",
+      "sourceIdentity": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js#11",
+      "sourceFingerprint": "a89368ff41c94bcd83032385d8c21b9a884528732b291f022a8d9cf12beb3202",
+      "inputBundleSha": "cdd7db14026c451ad29a746599729956b89b40ae1debf999df9e0f2d1336353d",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "마름모 대각선의 서로 이등분과 꼭지각 이등분, 평행사변형 이웃각으로 x와 y를 계산한다.",
+      "decisiveStep": "마름모 대각선의 서로 이등분과 꼭지각 이등분, 평행사변형 이웃각으로 x와 y를 계산한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "마름모의 대각선·각 성질과 평행사변형의 각 관계를 순차 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "마름모의 대각선·각 성질과 평행사변형의 각 관계를 순차 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_65"
+    },
+    {
+      "questionUid": "qid_v1_d51fcaa9d38ad85c26bcccf8e01fa07e14299e7aca2728d32c5b129fd2bb9c4e",
+      "sourceIdentity": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js#23",
+      "sourceFingerprint": "6d133343b32d0416e29216e9a2e11c6e85966abbe04fd38d939e79550609ecb6",
+      "inputBundleSha": "80aec8996dafffaa1ac46edab1d0710718f50e2f2851826e2a19e14475d52d70",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "직각삼각형 외심이 빗변 중점이라는 성질로 R을 구하고, 직각삼각형 넓이와 반둘레 관계로 내심 반지름 r을 구한다.",
+      "decisiveStep": "직각삼각형 외심이 빗변 중점이라는 성질로 R을 구하고, 직각삼각형 넓이와 반둘레 관계로 내심 반지름 r을 구한다.",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "l4SemanticReason": "외심과 내심의 반지름을 각각 다른 중심 성질로 결정한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_AREA": "직각삼각형의 넓이와 rs 관계로 내접원 반지름을 계산한다."
+      },
+      "semanticReason": "외심과 내심의 반지름을 각각 다른 중심 성질로 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_66"
+    },
+    {
+      "questionUid": "qid_v1_d52b98d397b36d4690ffd2d5aeae3e4ededc63f975e6751acdb8e998d38abcf3",
+      "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#19",
+      "sourceFingerprint": "f3971b6611a41ccdd0a066f35d83849214ecdc8f7110bacd9319e2cfd995e036",
+      "inputBundleSha": "07dc9a0eba387eea04b42e4a79e37973ba31bd1b21ad10536c6f4c80695cfb84",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "무게중심의 중선 2:1과 평행선 닮음으로 DG:BL, 중점연결정리로 MP와 DG를 구해 길이비를 만들고 같은 높이 넓이비를 계산한다.",
+      "decisiveStep": "무게중심의 중선 2:1과 평행선 닮음으로 DG:BL, 중점연결정리로 MP와 DG를 구해 길이비를 만들고 같은 높이 넓이비를 계산한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "l4SemanticReason": "삼각형 내부의 중점·무게중심·평행선이 길이비와 넓이비를 함께 결정한다.",
+      "crossConceptKeys": [
+        "CC_SIMILARITY",
+        "CC_TRIANGLE_CENTROID",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_SIMILARITY": "DG∥BL과 MN∥DE에서 생긴 닮음이 DG,MP의 길이를 결정한다.",
+        "CC_TRIANGLE_CENTROID": "G가 무게중심이어서 AG:AL=2:3과 중선 분할비가 성립한다.",
+        "CC_TRIANGLE_AREA": "같은 높이에서 DG:MP를 넓이비로 변환해 z를 구한다."
+      },
+      "semanticReason": "삼각형 내부의 중점·무게중심·평행선이 길이비와 넓이비를 함께 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_66"
+    },
+    {
+      "questionUid": "qid_v1_d534b474a17fd63c95d863ca79a657960a9616319f64f553b57f0ce886698e9b",
+      "sourceIdentity": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js#21",
+      "sourceFingerprint": "b6e8f50472bd3fcddf20881b455b5f3feeb4966daff5a35298667beb6889ae48",
+      "inputBundleSha": "62a07810b1eb3fbab494142f7b1c10426b46115a878712e67f9e7008f4af54f9",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "내심에서 한 변에 내린 수선 IH를 반지름으로 잡고, 그 발에 직각 표시를 하여 내접원을 작도한다.",
+      "decisiveStep": "내심에서 한 변에 내린 수선 IH를 반지름으로 잡고, 그 발에 직각 표시를 하여 내접원을 작도한다.",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "l4SemanticReason": "내심의 세 변까지 등거리 성질이 내접원 반지름과 작도 방법을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "내심의 세 변까지 등거리 성질이 내접원 반지름과 작도 방법을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_66"
+    },
+    {
+      "questionUid": "qid_v1_d73f321d3488f5b6c220bd5cfc4b742cef64f34861434d3447e3c22a24fd6a09",
+      "sourceIdentity": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js#12",
+      "sourceFingerprint": "a093762f5a187b6fe45287143c7c22e42fc4adb278d927a233ba306233f087d9",
+      "inputBundleSha": "5bfab8816bd306feba770f7897af6b51994a2fd242a426a746d180e99f99d197",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "직사각형 대각선 교점에서 OB=OC와 OB=OD를 사용해 두 이등변삼각형의 각을 계산한다.",
+      "decisiveStep": "직사각형 대각선 교점에서 OB=OC와 OB=OD를 사용해 두 이등변삼각형의 각을 계산한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "직사각형 대각선의 길이·이등분 성질이 이등변삼각형의 각 관계를 만든다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "직사각형 대각선의 길이·이등분 성질이 이등변삼각형의 각 관계를 만든다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_66"
+    },
+    {
+      "questionUid": "qid_v1_d7e5277f2acfc875e8776a50f3095f27f4d5f933567e0af5cf5a50c8f80752aa",
+      "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#4",
+      "sourceFingerprint": "4692ccdc4fa73cfecccf8b4bd71ec980b9e071fae3c13a79f6382ef19e5b6ae6",
+      "inputBundleSha": "c04e4de5cc4bb988d044de11ebd5e967eb2f73e277ac5ff31eaa305b468c2edc",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "세 평행선 사이의 선분 길이를 먼저 차로 구하고 대응 선분비로 x를 계산한다.",
+      "decisiveStep": "세 평행선 사이의 선분 길이를 먼저 차로 구하고 대응 선분비로 x를 계산한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "l4SemanticReason": "일반 두 직선과 세 평행선의 대응 선분비를 직접 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "일반 두 직선과 세 평행선의 대응 선분비를 직접 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_66"
+    },
+    {
+      "questionUid": "qid_v1_d862d59f4625031a650a248354067f171f186055685e14c5585f2e70891288bf",
+      "sourceIdentity": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js#18",
+      "sourceFingerprint": "4828971950c48afd1f1f03b0a13c510c7dbb36467e1ee3a7501fa8569d177998",
+      "inputBundleSha": "b394c20551f6e48b045e459bd60261712ffabad496fa73a84d514eb3b99fc97f",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "정사각형 대각선의 각 이등분으로 BEC의 각을 구하고, AB=AD·공통변·45도 각으로 ABE와 ADE의 SAS 합동을 적용한다.",
+      "decisiveStep": "정사각형 대각선의 각 이등분으로 BEC의 각을 구하고, AB=AD·공통변·45도 각으로 ABE와 ADE의 SAS 합동을 적용한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "정사각형 대각선과 합동 성질이 목표각을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "정사각형 대각선과 합동 성질이 목표각을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_67"
+    },
+    {
+      "questionUid": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+      "sourceIdentity": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js#3",
+      "sourceFingerprint": "61ee02ce6222e200b04360e4addfff3a4ceaf48ffff8dc50acaf85634ea0b5ad",
+      "inputBundleSha": "17ff75f686ce483ee704077913d497d7522e3d018684a571d0fea8588ae0adc4",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "첫 무게중심 G의 중선 2:1로 GM과 AG를 구하고, 두 번째 무게중심 G′의 중선 2:1로 GG′를 구해 AG′를 계산한다.",
+      "decisiveStep": "첫 무게중심 G의 중선 2:1로 GM과 AG를 구하고, 두 번째 무게중심 G′의 중선 2:1로 GG′를 구해 AG′를 계산한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "l4SemanticReason": "두 무게중심의 중선 분할비를 연속 적용한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CENTROID"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_CENTROID": "G와 G′가 각각 무게중심이어서 같은 중선 위에서 두 번의 2:1 분할이 성립한다."
+      },
+      "semanticReason": "두 무게중심의 중선 분할비를 연속 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_67"
+    },
+    {
+      "questionUid": "qid_v1_d9144370e24221fb5dbfafe0ca335142b274253161bc0c8da5b5051dd3c53b80",
+      "sourceIdentity": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js#12",
+      "sourceFingerprint": "d271cd7902d30695a3c7a03794cc147e37685f7986dc3fe189e524ab7d6b979f",
+      "inputBundleSha": "7571739dde88f383ea80f33ccbd3a02bbee693644941ea44a71092666f2dba87",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "primaryMethod": "이등변삼각형의 두 밑각이 같다는 성질과 삼각형 내각의 합으로 B를 계산한다.",
+      "decisiveStep": "이등변삼각형의 두 밑각이 같다는 성질과 삼각형 내각의 합으로 B를 계산한다.",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "l4SemanticReason": "이등변삼각형의 밑각 관계가 목표각을 직접 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "이등변삼각형의 밑각 관계가 목표각을 직접 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_67"
+    },
+    {
+      "questionUid": "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
+      "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#2",
+      "sourceFingerprint": "94446a38ad01f00da2db206e464357e1c072a99726476f7787736e8a744caa89",
+      "inputBundleSha": "f052c0b4af7ba66c7a4f47a84cab9bfb0676e552ac912f1b2f3a70b03845788b",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "DE∥BC에서 ADE와 ABC의 닮음으로 AC와 AE를 구하고, 각의 이등분선 정리로 DF:FE를 구한 뒤 다시 닮음으로 BC를 계산한다.",
+      "decisiveStep": "DE∥BC에서 ADE와 ABC의 닮음으로 AC와 AE를 구하고, 각의 이등분선 정리로 DF:FE를 구한 뒤 다시 닮음으로 BC를 계산한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "l4SemanticReason": "평행선 닮음과 각의 이등분선 정리를 연속 적용한다.",
+      "crossConceptKeys": [
+        "CC_SIMILARITY",
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_SIMILARITY": "DE∥BC가 ADE와 ABC의 두 대응변비를 결정한다.",
+        "CC_ANGLE_BISECTOR": "AG가 각의 이등분선이어서 DF:FE=AD:AE를 결정한다."
+      },
+      "semanticReason": "평행선 닮음과 각의 이등분선 정리를 연속 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_67"
+    },
+    {
+      "questionUid": "qid_v1_d95b323069d9e36833f9646a3db0dbc8e5942b6696da48bdebc6e69e081f2e74",
+      "sourceIdentity": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js#10",
+      "sourceFingerprint": "6ae8109e81f0639b47a906e8ba56ef56879e4a58f01849db0ff1ecb01bc66531",
+      "inputBundleSha": "88b4194802f6477207983a269a5564a7ae0ed76749e956f7261e7378581ed0da",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "외심의 등거리로 ABO와 ACO의 밑각 관계를 만들고 주어진 ∠OBC와 삼각형 ABC 내각 합으로 A를 계산한다.",
+      "decisiveStep": "외심의 등거리로 ABO와 ACO의 밑각 관계를 만들고 주어진 ∠OBC와 삼각형 ABC 내각 합으로 A를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "l4SemanticReason": "외심의 등거리와 삼각형 내각 합이 목표 꼭짓각을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "외심의 등거리와 삼각형 내각 합이 목표 꼭짓각을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_67"
+    },
+    {
+      "questionUid": "qid_v1_da67635473b15e366800e4e59d9fd943df3dd6f734f0ac0636d3ac0f3476249c",
+      "sourceIdentity": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js#24",
+      "sourceFingerprint": "55aefe9ad717ef35cd73a8dd551708d586d5f9ee9544d4f0841d6c6e8e685f96",
+      "inputBundleSha": "d4af50f4084933e10b81368441eaf02c832e54631e0fe1699c2ae376adaa2143",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "primaryMethod": "빗변에 내린 높이로 생긴 ABH와 CBA의 AA 닮음을 세워 BC를 구하고 BH를 빼 CH를 계산한다.",
+      "decisiveStep": "빗변에 내린 높이로 생긴 ABH와 CBA의 AA 닮음을 세워 BC를 구하고 BH를 빼 CH를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "l4SemanticReason": "삼각형 닮음으로 확보한 대응변비를 목표 길이 계산에 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "삼각형 닮음으로 확보한 대응변비를 목표 길이 계산에 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_68"
+    },
+    {
+      "questionUid": "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#18",
+      "sourceFingerprint": "c480b1f3e1d9ec239681440694a02a6104775d616f776de1385aee88910ebe1e",
+      "inputBundleSha": "a492c233fa178a48c429b6bf1d97c701b03cf37ff930908888faa8a50a160da9",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "DF:FE에서 같은 평행선 구조의 BG:GC를 구하고, ADE와 ABC의 닮음으로 AC와 EC를 계산한다.",
+      "decisiveStep": "DF:FE에서 같은 평행선 구조의 BG:GC를 구하고, ADE와 ABC의 닮음으로 AC와 EC를 계산한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "l4SemanticReason": "평행선이 만드는 선분비와 두 삼각형 닮음을 연속 적용한다.",
+      "crossConceptKeys": [
+        "CC_SIMILARITY"
+      ],
+      "crossConceptReasons": {
+        "CC_SIMILARITY": "DE∥BC로 ADE와 ABC의 닮음이 성립하고 DF:FE에서 얻은 선분비와 연결된다."
+      },
+      "semanticReason": "평행선이 만드는 선분비와 두 삼각형 닮음을 연속 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_68"
+    },
+    {
+      "questionUid": "qid_v1_da9fe12023001cefbadb3fa9c9602455b1cc8312427154fc4019740bf2de0526",
+      "sourceIdentity": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js#19",
+      "sourceFingerprint": "f499c70b22858db53e9d53953fa28ca789bcbb8ef4ffb49496115c3d39c5df6e",
+      "inputBundleSha": "3d2b3dab7c2e771e31f887c2f1418f87adc4de5915300ebb0f522de54271d5bc",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "AB∥CD와 두 수선으로 AF⊥AB를 얻고, 직각에서 주어진 20도를 빼서 EAF를 계산한다.",
+      "decisiveStep": "AB∥CD와 두 수선으로 AF⊥AB를 얻고, 직각에서 주어진 20도를 빼서 EAF를 계산한다.",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "l4SemanticReason": "평행사변형의 평행 관계와 수선의 직각 관계가 목표각을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "평행사변형의 평행 관계와 수선의 직각 관계가 목표각을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_68"
+    },
+    {
+      "questionUid": "qid_v1_dac810bf3b89381938743c5d437577d0a6f110a2aca3b641cb951416b1e8e053",
+      "sourceIdentity": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js#5",
+      "sourceFingerprint": "3381aaa19b73396c962346e86ab52bfa73d3b8ea36800c232fa4baf57bca9d4c",
+      "inputBundleSha": "f7c3093be4ca62db7767187c2cab71eb0fcf529bc62cda40572ece8145404865",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "외심의 반지름·현 수선 이등분·등변삼각형·RHS 합동 성질을 보기별로 적용해 옳지 않은 명제를 찾는다.",
+      "decisiveStep": "외심의 반지름·현 수선 이등분·등변삼각형·RHS 합동 성질을 보기별로 적용해 옳지 않은 명제를 찾는다.",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "l4SemanticReason": "외심의 기본 성질과 현에 대한 수선 관계를 함께 검증한다.",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_PERPENDICULAR_BISECTOR": "외심에서 현에 내린 수선이 현을 이등분한다는 관계로 BE=CE를 판정한다."
+      },
+      "semanticReason": "외심의 기본 성질과 현에 대한 수선 관계를 함께 검증한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_68"
+    },
+    {
+      "questionUid": "qid_v1_dae9924d1894bb1e01d68e12a0b43b70b55ad749b62662630e0b6f3ee640eb48",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#20",
+      "sourceFingerprint": "89ea3a3286ee52cc9adc57c35687b1dff234b55a57feb7098e6106610be69e7e",
+      "inputBundleSha": "0107913bc4984ddab1a17782391a4388b2941ec1e81f15f2f7f12031348db2f4",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "각의 이등분선에서 직접 얻는 같은 각과 평행선으로 만드는 대응각을 구분해 각의 이등분선 정리 유도 과정의 잘못된 빈칸을 찾는다.",
+      "decisiveStep": "각의 이등분선에서 직접 얻는 같은 각과 평행선으로 만드는 대응각을 구분해 각의 이등분선 정리 유도 과정의 잘못된 빈칸을 찾는다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "l4SemanticReason": "삼각형의 각·평행 관계와 각의 이등분선에서 출발하는 비례 구조를 검증한다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "AD가 ∠A의 이등분선이라는 조건에서 ∠BAD=∠CAD가 첫 단계로 직접 결정된다."
+      },
+      "semanticReason": "삼각형의 각·평행 관계와 각의 이등분선에서 출발하는 비례 구조를 검증한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_68"
+    },
+    {
+      "questionUid": "qid_v1_db427fd87ee953052befca90424b5296ceaef7541eb354749506efb82a12c628",
+      "sourceIdentity": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js#17",
+      "sourceFingerprint": "92b2b4ff4b0a92ade059af1689dafb093c54b3e2ed3a84aea746f0b02e4dca5d",
+      "inputBundleSha": "7a9bea9ba84dbbaf82ef9b94b5ede03e5c07fbaba3910aefa2ec17a334522dc4",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "평행사변형·마름모·직사각형·정사각형의 추가 조건이 각각 어떤 도형을 보장하는지 판단한다.",
+      "decisiveStep": "평행사변형·마름모·직사각형·정사각형의 추가 조건이 각각 어떤 도형을 보장하는지 판단한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "특수한 사각형의 포함 관계와 판정 조건을 비교한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수한 사각형의 포함 관계와 판정 조건을 비교한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_69"
+    },
+    {
+      "questionUid": "qid_v1_dbb60c41a9f4c54ce180f53a1d60c0ba6fb10202262959097d6550a59d356f40",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#16",
+      "sourceFingerprint": "2904e4eef66ecac95b33ca3f0bfa5cd07912ce2114d70c7ef66c7868a3c36776",
+      "inputBundleSha": "b753b3221ac199814a881a2ffcba82645abcc6c3868303ecd768f425fec5e94c",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "primaryMethod": "두 쌍의 대응각이 같으므로 ABC와 BCD의 AA 닮음을 세우고 대응 순서에 맞춰 AB를 계산한다.",
+      "decisiveStep": "두 쌍의 대응각이 같으므로 ABC와 BCD의 AA 닮음을 세우고 대응 순서에 맞춰 AB를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "l4SemanticReason": "대응각의 순서를 정확히 정렬해 닮음비를 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "대응각의 순서를 정확히 정렬해 닮음비를 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_69"
+    },
+    {
+      "questionUid": "qid_v1_dbbaac91c93f140d081752884fa5aabf89303ae007578b5e4eb86e0c5ce389c6",
+      "sourceIdentity": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js#17",
+      "sourceFingerprint": "c96e2d1742da1d00ec41d2c6ac05554bdd2a2130492e22f21e1b169bc316e56a",
+      "inputBundleSha": "f0cb56e78e3de400e02beb72623b031529f23709616f8e9eda3aece05c0afb69",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "정사각형 대각선이 만드는 45도에서 PDB를 빼 APD의 밑각을 구하고, AP=AD와 AP=AB인 두 이등변삼각형의 각을 계산한다.",
+      "decisiveStep": "정사각형 대각선이 만드는 45도에서 PDB를 빼 APD의 밑각을 구하고, AP=AD와 AP=AB인 두 이등변삼각형의 각을 계산한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "정사각형 대각선과 이등변삼각형의 밑각 관계를 연쇄한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "정사각형 대각선과 이등변삼각형의 밑각 관계를 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_69"
+    },
+    {
+      "questionUid": "qid_v1_dbe75705e39c315c4f85d2f3ab8400eceadbd3427c4f826b9ed75874359fe2a1",
+      "sourceIdentity": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js#16",
+      "sourceFingerprint": "4555fe354e125149f36fe9241d8d00c376cd95930576abc78c8cd1151dd8f46a",
+      "inputBundleSha": "b914d821f2ff5c64325b2e1d04ce3ca168e3f6f9381cc0540f99334375933811",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "접기 선이 AC의 수직이등분선임을 이용해 AEC의 이등변삼각형 각을 나누고 접힌 대응각으로 GFE를 계산한다.",
+      "decisiveStep": "접기 선이 AC의 수직이등분선임을 이용해 AEC의 이등변삼각형 각을 나누고 접힌 대응각으로 GFE를 계산한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "직사각형 접기에서 수직이등분선과 대칭 각 관계를 연결한다.",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_PERPENDICULAR_BISECTOR": "접는 선 EF가 AC의 수직이등분선이어서 EA=EC와 꼭짓각 이등분을 결정한다."
+      },
+      "semanticReason": "직사각형 접기에서 수직이등분선과 대칭 각 관계를 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_69"
+    },
+    {
+      "questionUid": "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+      "sourceIdentity": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js#19",
+      "sourceFingerprint": "c20185a7a1c3154e1af65c825138cbadedd562f9e34cbac49cafcbb8b3654c8c",
+      "inputBundleSha": "b60fcfceb1974b4457e543d1941f803a1ac405d0502d540673a5503b3216c7e7",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "첫 무게중심의 중선 2:1로 AG와 GD를 연결하고, 두 번째 무게중심의 같은 중선 분할로 GD를 구해 AD를 계산한다.",
+      "decisiveStep": "첫 무게중심의 중선 2:1로 AG와 GD를 연결하고, 두 번째 무게중심의 같은 중선 분할로 GD를 구해 AD를 계산한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "l4SemanticReason": "두 무게중심이 같은 중선에서 만드는 2:1 분할을 연쇄한다.",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_CENTROID"
+      ],
+      "crossConceptReasons": {
+        "CC_TRIANGLE_CENTROID": "G와 G′가 각각 무게중심이므로 GG′:G′D=2:1 및 AG:GD=2:1이 성립한다."
+      },
+      "semanticReason": "두 무게중심이 같은 중선에서 만드는 2:1 분할을 연쇄한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_69"
+    },
+    {
+      "questionUid": "qid_v1_de05c8f5bd81a6127d8730a8e09746a4a840f731aee7e66995f28d1aa969cba6",
+      "sourceIdentity": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js#19",
+      "sourceFingerprint": "7f88216504eb35dc39782f14624684f3ede438379b8bf93dee001e5fcd0f8bb5",
+      "inputBundleSha": "f9e96c466c6ba7065785913a4add7478c012b5e8d6f63ead685a8f942aba9765",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "외심의 등거리로 AOB와 BOC를 각각 이등변삼각형으로 나타내고 중심 O 둘레의 각 합으로 AOC를 계산한다.",
+      "decisiveStep": "외심의 등거리로 AOB와 BOC를 각각 이등변삼각형으로 나타내고 중심 O 둘레의 각 합으로 AOC를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "l4SemanticReason": "외심의 등거리와 중심 주변 각의 합이 목표 중심각을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "외심의 등거리와 중심 주변 각의 합이 목표 중심각을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_70"
+    },
+    {
+      "questionUid": "qid_v1_de4fac88f4d698894be503f3de503378196069a66a58ffef4916eaa4e7988b02",
+      "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#10",
+      "sourceFingerprint": "827285a9e4629543470cd705b4501356d86c0a6b3dcda92dc8f26df2ebcbfbf4",
+      "inputBundleSha": "70a7939e0adcb458255cec815c6dda12a162ba549ea4f86f62da664a8875221c",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "primaryMethod": "중점과 평행선이 만드는 두 닮음으로 대각선 분할비를 구하고, 같은 높이 넓이비로 PMNQ의 넓이를 계산한다.",
+      "decisiveStep": "중점과 평행선이 만드는 두 닮음으로 대각선 분할비를 구하고, 같은 높이 넓이비로 PMNQ의 넓이를 계산한다.",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "l4SemanticReason": "일반 사각형의 평행선·닮음비를 영역 넓이로 변환한다.",
+      "crossConceptKeys": [
+        "CC_SIMILARITY",
+        "CC_TRIANGLE_AREA"
+      ],
+      "crossConceptReasons": {
+        "CC_SIMILARITY": "BMP와 DAP, DQN과 BQA의 닮음이 BP=PQ=QD를 결정한다.",
+        "CC_TRIANGLE_AREA": "대각선으로 나뉜 삼각형과 작은 삼각형의 넓이비가 PMNQ를 결정한다."
+      },
+      "semanticReason": "일반 사각형의 평행선·닮음비를 영역 넓이로 변환한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_70"
+    },
+    {
+      "questionUid": "qid_v1_dec067c9ca0ebaf07a77c62585767f039ddea8bbff0a8ac9dffa5a49950cf6c2",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#1",
+      "sourceFingerprint": "4e0154db470a7d074bad71ff23e6f416c943f3e240ff021ca3cbb24f5be5e949",
+      "inputBundleSha": "691635a33d82ede279356ea46bc327e66589c2b33d7355657625f109a1cdb789",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "primaryMethod": "이등변삼각형의 꼭짓각 이등분선이 밑변의 수직이등분선임을 이용해 PB=PC와 두 삼각형의 합동을 판정한다.",
+      "decisiveStep": "이등변삼각형의 꼭짓각 이등분선이 밑변의 수직이등분선임을 이용해 PB=PC와 두 삼각형의 합동을 판정한다.",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+      "l4SemanticReason": "각의 이등분선과 이등변삼각형의 대칭 성질이 여러 보기의 길이·합동을 결정한다.",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_ANGLE_BISECTOR": "AD가 꼭짓각의 이등분선이어서 BC의 수직이등분선이 되고 PB=PC를 결정한다."
+      },
+      "semanticReason": "각의 이등분선과 이등변삼각형의 대칭 성질이 여러 보기의 길이·합동을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_70"
+    },
+    {
+      "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
+      "sourceIdentity": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js#21",
+      "sourceFingerprint": "76f5e0e2a2be6958caa399d68936cb6f7259c4ee2528dc9286f7198c784ef97c",
+      "inputBundleSha": "c879aee5c8fbffa46ef346f7facd4c96da5679014daf93c0f7e5c2e3d1c23e0a",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "primaryMethod": "DG∥BC에서 ADG와 ABC의 AA 닮음을 증명하고, DE=EF와 중점 조건으로 DG와 BF의 길이비를 계산한다.",
+      "decisiveStep": "DG∥BC에서 ADG와 ABC의 AA 닮음을 증명하고, DE=EF와 중점 조건으로 DG와 BF의 길이비를 계산한다.",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "l4SemanticReason": "평행선에서 생기는 AA 닮음과 두 중점 조건을 길이 계산에 연결한다.",
+      "crossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "crossConceptReasons": {
+        "CC_MIDPOINT": "AD=DB, DE=EF가 각각 중점과 동일비를 제공해 BF=3DG를 결정한다."
+      },
+      "semanticReason": "평행선에서 생기는 AA 닮음과 두 중점 조건을 길이 계산에 연결한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_70"
+    },
+    {
+      "questionUid": "qid_v1_e008cc68f69707730a000c9063558b24f6d943a0d3701d34f05dbdfc8f088e8a",
+      "sourceIdentity": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js#7",
+      "sourceFingerprint": "900e1910b70f3a5b78326cf35c5edab7e3e8efad6cdf4d08c17c8b8b54419eda",
+      "inputBundleSha": "63fcc781db7c906b3e01730c9bde15a8b8f390c2e368ca4b3e5dbcdd2c01303c",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "primaryMethod": "기준 직각삼각형의 다른 예각을 구한 뒤 각 보기에서 빗변과 한 예각이 같은 RHA 조건을 확인한다.",
+      "decisiveStep": "기준 직각삼각형의 다른 예각을 구한 뒤 각 보기에서 빗변과 한 예각이 같은 RHA 조건을 확인한다.",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "l4SemanticReason": "직각삼각형의 예각 합과 RHA 합동 조건이 합동 도형을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "직각삼각형의 예각 합과 RHA 합동 조건이 합동 도형을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_70"
+    },
+    {
+      "questionUid": "qid_v1_e11db8dac2a4bbd8f08184a744f69b637af2ed747ce9082785460fcd4fe69267",
+      "sourceIdentity": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js#20",
+      "sourceFingerprint": "107d6d30ac80e0570d48c01ba946302e18918ab18804675e86a11a105bf6f779",
+      "inputBundleSha": "de921c1baa9e3dda88cbe28d8294e704eb5bf0125fc34001fb001f5086c38ec6",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "각 변의 중점을 연결한 사각형의 종류를 원래 사각형 대각선의 길이 같음·수직 관계와 대응시켜 보기별로 판정한다.",
+      "decisiveStep": "각 변의 중점을 연결한 사각형의 종류를 원래 사각형 대각선의 길이 같음·수직 관계와 대응시켜 보기별로 판정한다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "특수한 사각형의 대각선 성질이 중점 연결 사각형의 종류를 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "특수한 사각형의 대각선 성질이 중점 연결 사각형의 종류를 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_71"
+    },
+    {
+      "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+      "sourceIdentity": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js#18",
+      "sourceFingerprint": "a74a9e99b227b8b5e7307ca2d7bb13c35f4890ebcfacb85f485d46c01cd58a39",
+      "inputBundleSha": "d9fcd6a96175921d8eb7fb71ea82b79b7739b993da46b28984cf37bcbd513c4d",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "primaryMethod": "밑면에 평행한 단면으로 생긴 작은 원뿔과 원래 원뿔의 높이비 2:3을 반지름비에 적용한다.",
+      "decisiveStep": "밑면에 평행한 단면으로 생긴 작은 원뿔과 원래 원뿔의 높이비 2:3을 반지름비에 적용한다.",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "l4SemanticReason": "닮은 입체도형의 대응 길이비가 단면 반지름을 결정한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "닮은 입체도형의 대응 길이비가 단면 반지름을 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_71"
+    },
+    {
+      "questionUid": "qid_v1_e15ab35f7d9b353f63623bd7f715e95be6ca54ea7c0548869435fbe8fc67be6c",
+      "sourceIdentity": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js#16",
+      "sourceFingerprint": "4d30bec45686ebccdbf4a18e28f284997bbd378927dc805a54677a7c01299609",
+      "inputBundleSha": "ebdfc9ed8df7a358efff660c404239fb0e07a3b7553d93fac3b0ddd3ed7dfdd0",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "primaryMethod": "두 번 접은 뒤 펼친 도형이 네 변의 길이가 같은 마름모임을 확인하고, 마름모의 대각선·각 성질과 맞지 않는 설명을 찾는다.",
+      "decisiveStep": "두 번 접은 뒤 펼친 도형이 네 변의 길이가 같은 마름모임을 확인하고, 마름모의 대각선·각 성질과 맞지 않는 설명을 찾는다.",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "l4SemanticReason": "접기 대칭으로 만들어진 특수 사각형의 정의와 성질을 비교한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "접기 대칭으로 만들어진 특수 사각형의 정의와 성질을 비교한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_71"
+    },
+    {
+      "questionUid": "qid_v1_e29f99cb82ec526660f02a841ec71e1776e52198b9cde253e41bee5dc5aa8b41",
+      "sourceIdentity": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js#24",
+      "sourceFingerprint": "733deaa57f469b35d0afba01e751302d388ac8be8dce631665112314b936b5df",
+      "inputBundleSha": "f6b7ea30a13fa523138f6ac21ad85d23123f206ab2f13759a7fce5e35f3c440c",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "세 지점에서 같은 거리에 있는 점을 외심으로 식별하고, 두 변의 수직이등분선 교점 구성과 등거리 성질을 설명한다.",
+      "decisiveStep": "세 지점에서 같은 거리에 있는 점을 외심으로 식별하고, 두 변의 수직이등분선 교점 구성과 등거리 성질을 설명한다.",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "l4SemanticReason": "외심의 정의와 수직이등분선 작도 방법이 목표 위치를 결정한다.",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "crossConceptReasons": {
+        "CC_PERPENDICULAR_BISECTOR": "두 선분의 수직이등분선 교점이 세 꼭짓점에서 같은 거리를 갖는 위치를 만든다."
+      },
+      "semanticReason": "외심의 정의와 수직이등분선 작도 방법이 목표 위치를 결정한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_71"
+    },
+    {
+      "questionUid": "qid_v1_e2b72faac9c9014cbe224d70a4fa9e4779bc00ad402cdcdbd49cd2cbd455507c",
+      "sourceIdentity": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js#13",
+      "sourceFingerprint": "9163cb5640f892d696f1c088fa15b5cf57bbd2545c90555d96ea0ddad7ef4cbf",
+      "inputBundleSha": "aad028f5499a97cea1592d2a323b3ad2b8b27898b249c4e360104f7cefc12ef2",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "primaryMethod": "두 내각의 이등분선 교점이 내심임을 확인하고, 내심의 변까지 거리와 내접원 넓이로 보기의 참거짓을 판정한다.",
+      "decisiveStep": "두 내각의 이등분선 교점이 내심임을 확인하고, 내심의 변까지 거리와 내접원 넓이로 보기의 참거짓을 판정한다.",
+      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "l4SemanticReason": "내심의 각 이등분선·등거리·내접원 반지름 성질을 함께 적용한다.",
+      "crossConceptKeys": [],
+      "crossConceptReasons": {},
+      "semanticReason": "내심의 각 이등분선·등거리·내접원 반지름 성질을 함께 적용한다.",
+      "sourceReadStatus": "SOURCE_AND_SOLUTION_READ",
+      "semanticReviewStatus": "SEMANTIC_REVIEWED_BATCH_71"
     }
   ]
 }
