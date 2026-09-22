@@ -1,0 +1,105 @@
+name: Archive Registration Sync
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "archive/exams/**/*.js"
+      - "archive/db.js"
+      - "archive/build_db.py"
+      - "archive/tools/build-question-index.mjs"
+      - "archive/tools/build-archive2-catalog.mjs"
+      - "archive/tools/build-archive2-crosswalk-inventory.mjs"
+      - "archive/tools/intelligence/sync-question-identity-map-v1.mjs"
+      - "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      - "archive/tools/verify-archive-registration.mjs"
+      - "tests/archive-question-metadata-consistency.test.mjs"
+      - ".github/workflows/archive-registration-sync.yml"
+  push:
+    branches: [main]
+    paths:
+      - "archive/exams/**/*.js"
+      - "archive/db.js"
+      - "archive/build_db.py"
+      - "archive/tools/intelligence/sync-question-identity-map-v1.mjs"
+      - "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      - "archive/tools/verify-archive-registration.mjs"
+      - ".github/workflows/archive-registration-sync.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-registration-sync-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run archive registration sync
+        run: python archive/build_db.py
+
+      - name: Targeted registration tests
+        run: |
+          node tests/archive-question-identity-contract.test.mjs
+          node tests/archive-question-identity-runtime.test.mjs
+          node --test tests/archive-question-metadata-consistency.test.mjs
+          node archive/tools/verify-archive-registration.mjs
+          git diff --check
+
+      - name: Guard generated scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t changed < <(
+            {
+              git diff --name-only
+              git ls-files --others --exclude-standard
+            } | sort -u
+          )
+          for file in "${changed[@]}"; do
+            case "$file" in
+              archive/db.js|              archive/data/question_identity_map.json|              archive/data/question_metadata.json|              archive/question-identity.js|              archive/question-index.js|              archive/question-index-report.md|              archive/question-index-audit.md|              archive/data/archive2-catalog.json|              archive/data/archive2-crosswalk-inventory.json)
+                ;;
+              "")
+                ;;
+              *)
+                echo "Unexpected generated file: $file"
+                exit 1
+                ;;
+            esac
+          done
+          printf '%s\n' "${changed[@]}"
+
+      - name: Commit generated registration artifacts
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add --             archive/db.js             archive/data/question_identity_map.json             archive/data/question_metadata.json             archive/question-identity.js             archive/question-index.js             archive/question-index-report.md             archive/question-index-audit.md             archive/data/archive2-catalog.json             archive/data/archive2-crosswalk-inventory.json
+          if git diff --cached --quiet; then
+            echo "Archive registration artifacts already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(archive): sync registration artifacts [skip ci]"
+          git push origin HEAD:main
