@@ -60,7 +60,14 @@ const permSourceFiles = [
 const permSource = new Map(permSourceFiles.flatMap(readJsonl).map((row) => [row.questionUid, row]));
 const permTargetUids = new Set(readJsonl('H1_PERMCOMB_PINPOINT_REPAIR_DECISIONS.jsonl').map((row) => row.questionUid));
 const permRows = permFiles.flatMap(readJsonl).filter((row) => permTargetUids.has(row.questionUid));
-const permDirect = permRows.map((row) => directRow(row, permSource.get(row.questionUid), 'PERMCOMB'));
+const permDirectBase = permRows.map((row) => directRow(row, permSource.get(row.questionUid), 'PERMCOMB'));
+const permOverrides = readJsonl('H1_SEMANTIC_REPAIR_PERMCOMB_DECISIONS_001_030.jsonl');
+const permDirect = permDirectBase.map((row, index) => {
+  const override = permOverrides.find((candidate) => candidate.ordinal === index + 1);
+  if (!override) return row;
+  const { ordinal, ...semantic } = override;
+  return { ...row, ...semantic, reviewBasis: 'DIRECT_SOURCE_SOLUTION_SEMANTIC_REVIEW' };
+});
 if (permDirect.length !== 186) throw new Error(`Expected 186 affected PermComb rows, got ${permDirect.length}`);
 writeJsonl('H1_SEMANTIC_REPAIR_PERMCOMB_001_070.jsonl', permDirect.slice(0, 70));
 writeJsonl('H1_SEMANTIC_REPAIR_PERMCOMB_071_140.jsonl', permDirect.slice(70, 140));
@@ -70,7 +77,14 @@ const matrixFiles = ['MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl', 'MATRIX_BATCH16_
 const matrixSourceFiles = ['MATRIX_BATCH15_SOURCE_PACK_1_70.jsonl', 'MATRIX_BATCH16_SOURCE_PACK_71_83.jsonl'];
 const matrixSource = new Map(matrixSourceFiles.flatMap(readJsonl).map((row) => [row.questionUid, row]));
 const matrixRows = readJsonl('H1_MATRIX_PINPOINT_REPAIR_DECISIONS.jsonl');
-const matrixDirect = matrixRows.map((row) => directRow(row, matrixSource.get(row.questionUid), 'MATRIX'));
+const matrixDirectBase = matrixRows.map((row) => directRow(row, matrixSource.get(row.questionUid), 'MATRIX'));
+const matrixOverrides = readJsonl('H1_SEMANTIC_REPAIR_MATRIX_DECISIONS_001_026.jsonl');
+const matrixDirect = matrixDirectBase.map((row, index) => {
+  const override = matrixOverrides.find((candidate) => candidate.ordinal === index + 1);
+  if (!override) return row;
+  const { ordinal, ...semantic } = override;
+  return { ...row, ...semantic, reviewBasis: 'DIRECT_SOURCE_SOLUTION_SEMANTIC_REVIEW' };
+});
 if (matrixDirect.length !== 26) throw new Error(`Expected 26 affected Matrix rows, got ${matrixDirect.length}`);
 writeJsonl('H1_SEMANTIC_REPAIR_MATRIX_001_026.jsonl', matrixDirect);
 
