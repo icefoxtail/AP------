@@ -1,12 +1,15 @@
 {
-  "schemaVersion": "h1-stage2-semantic-ledger-index-v1",
-  "status": "STAGE2_1170_COMPLETE_HOLD_RESOLUTION_BLOCKED",
+  "schemaVersion": "h1-stage2-semantic-ledger-index-v2",
+  "status": "STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED",
   "goal": "1170/1170 Stage 2 Single Semantic Pass physical coverage",
   "ledgerCoverage": {
     "rows": 1170,
     "uidUnique": 1170,
     "sourceIdentityUnique": 1170,
+    "missingUid": 0,
+    "duplicateUid": 0,
     "fingerprintMismatch": 0,
+    "requiredSemanticFieldMissing": 0,
     "workUnits": {
       "POLYNOMIAL": 217,
       "EQINEQ": 583,
@@ -18,95 +21,127 @@
     {
       "file": "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl",
       "rows": 217,
-      "sha256": "20a1b2b85ab0ddde26420842ca713a6b3ba1540b5b270aa2f958addcbbbc0c19",
-      "authority": "existing physical checkpoint"
+      "sha256": "32deb58b5be6a22686c31c7b570c74d285d2a189ee9eddcb7af1b9189d6a7344",
+      "authority": "existing physical checkpoint backfilled from current source"
+    },
+    {
+      "file": "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl",
+      "rows": 70,
+      "sha256": "411705763b34deff239a25d37a6f3333a4460c4b500bfaf68b1e8637255754ed",
+      "authority": "current source+solution physical restore"
+    },
+    {
+      "file": "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl",
+      "rows": 70,
+      "sha256": "0603d90b251447315ef6335d293602eac3ade3222daae470ac11a368c947ac90",
+      "authority": "current source+solution physical restore"
+    },
+    {
+      "file": "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl",
+      "rows": 70,
+      "sha256": "7cda228bbf3a2d322f582b33dc9bcd393ed23c283453a91b9c2f59e2d6f9ed98",
+      "authority": "current source+solution physical restore"
+    },
+    {
+      "file": "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl",
+      "rows": 70,
+      "sha256": "ad977ac613e36b6d9dc65a8cc6792f396d6375b82aad9741e899000b0f94a39e",
+      "authority": "current source+solution physical restore"
     },
     {
       "file": "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl",
       "rows": 70,
-      "sha256": "17b20c3e1b210d85c39585d5aa80439c44c1e55f95db190e67dcd5ec052036f9",
-      "authority": "existing Sol checkpoint"
+      "sha256": "0428aae5cdd23228dece415ebec758336ad0d12ef3f8edaf9dd6a7cdc6f0ea46",
+      "authority": "current source pack semantic checkpoint backfilled"
     },
     {
       "file": "EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl",
       "rows": 70,
-      "sha256": "2322d792226d3ac809eab44536e5f60c33857fe3a4c35a967de924eb482a9dec",
+      "sha256": "04fdf0a38a3f7e235afe20ca2b00f4d1c65d46c4770fa6f36ebc00a260709a2a",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl",
       "rows": 70,
-      "sha256": "b761add68f712914f51c3ca476da94ba2a70226d098d2f2ee50d7955aafb702e",
+      "sha256": "b33186bb002a7c3c16f32f7961caa8a63a31fcce6abe3565b2e9e9e5ae47f43d",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl",
       "rows": 70,
-      "sha256": "555f11b6123f772aa2cd59f4425214b12e0f3081852e3a79b632e5cdd3ac410e",
+      "sha256": "2f32184cca91b11f343540118eb0fcae2b18f02edb9c5a9c8d1dee4ea7ef71ff",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl",
       "rows": 23,
-      "sha256": "2e81b924828451317233f1b86e495f9d509588e1352eeb44cab0213a367179cf",
+      "sha256": "bf539a3c80242c497a5757ad256190f2034128a2c307f1aed00c9d1521773028",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl",
       "rows": 70,
-      "sha256": "453df8e69f2e55ec43bd57ec1da5bdfdad6744878e4829bf51ac1cc53f9749fc",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "cce563d3e600d68cdf96b0abe80b8ae12e2aacc418d05f44f4de62bbb93bfdf0",
+      "authority": "current source-semantic pass with pinpoint overlay"
     },
     {
       "file": "PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl",
       "rows": 70,
-      "sha256": "f3b5a6548ac1ef425b70b0a7d91308e10497f91a9f264f6314145d8b02844e77",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "ae0f28798eda31630d7e4fd28eaa6b058229a393cf419acf3b5743347ea91bf5",
+      "authority": "current source-semantic pass with pinpoint overlay"
     },
     {
       "file": "PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl",
       "rows": 70,
-      "sha256": "14c5c34a93e97dad2592f92b906cdcd16f097852f313109c63d0cd108b18d7c4",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "a126dbf842748a8b0ebea9ce9921e2630505a005a139b306e3fc4fc49ef59a5b",
+      "authority": "current source-semantic pass with pinpoint overlay"
     },
     {
       "file": "PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl",
       "rows": 70,
-      "sha256": "6ed37246988d4c14c6db2ee88f03819abcdd5037e886496b9bee3fd12a3f48fc",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "00d13a142112be9e3c470ba92aa35b4d9075b61fe4fb8cfa06ad0f4db3505e2b",
+      "authority": "current source-semantic pass with pinpoint overlay"
     },
     {
       "file": "PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl",
       "rows": 7,
-      "sha256": "35075778c5290302c12af5f5ca87d09dd81f1436e8ae24bf4d696a37a5f70210",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "66a8cba4589524a24a4980c20a394cdc42463c4fe7fbadb8ceb31f93d0709111",
+      "authority": "current source-semantic pass with pinpoint overlay"
     },
     {
       "file": "MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl",
       "rows": 70,
-      "sha256": "0095ef571fc9eb2e451c0f785b2471a360b110fb5bd86fe88e3c05e2436ddd59",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "692e888c5c7189ab773d7939a7b5ab6c7be22371b560714f5e9d5564a7291d1f",
+      "authority": "current source-semantic pass with pinpoint overlay"
     },
     {
       "file": "MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl",
       "rows": 13,
-      "sha256": "026ff08b9184cf00dd1ac4aac8009ef4190b128a10e7034e0ade305ea9374e71",
-      "authority": "current Stage 2 source-semantic pass"
+      "sha256": "731b24bdbfd5909bf7b7bcd14ac66280569c33ea7a2c040752facd369a62a184",
+      "authority": "current source-semantic pass with pinpoint overlay"
     }
   ],
   "legacyPhysicalCoverage": {
     "eqineqPriorTo281": 280,
+    "restoredLedgers": [
+      "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl",
+      "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl",
+      "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl",
+      "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl"
+    ],
     "artifact": "H1_COMMON_MATH1_SOL_SEMANTIC_PAYLOAD_280.zip",
-    "holdUidGap": 7,
-    "note": "Prior Eq/Ineq batch1-4 semantic bytes are preserved only as a truncated/corrupt legacy payload; their cumulative HOLD count is known but UID-level HOLD identities are not recoverable.",
-    "recoveredLegacyHoldRows": 5,
-    "recoveryArtifact": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl"
+    "artifactAuthority": false,
+    "artifactStatus": "TRUNCATED_CORRUPT_NOT_USED"
   },
   "holdResolution": {
+    "inventoryRows": 34,
     "knownItemLevelHoldRows": 33,
-    "legacyUidGap": 7,
+    "closedOrRouted": 33,
+    "openReviewRequired": 0,
+    "aggregateBlocked": 7,
     "unresolved": 7,
     "inventory": "H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
-    "resolution": "H1_STAGE2_HOLD_RESOLUTION_1170.jsonl"
+    "resolution": "H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
+    "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json"
   }
 }

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "h1-stage2-legacy-hold-residual-audit-v1",
+  "status": "AGGREGATE_BLOCKER_UID_UNRESOLVED",
+  "unit": "EQINEQ",
+  "aggregateCount": 7,
+  "exactUidRecovery": false,
+  "evidenceSearch": [
+    "git history: all reachable commits/refs searched for EQINEQ_BATCH1-4 semantic ledgers and legacy payload objects",
+    "local Git objects: legacy ZIP blob exists but is 15009 bytes with no EOCD; no valid original ledger object found",
+    "current checkpoint: H1_COMMON_MATH1_SOL_CHECKPOINT_280.json contains aggregate count/checksums but no UID list",
+    "source-audit/evidence: five UID-level HOLD rows recovered into H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl; no additional seven exact UIDs",
+    "current source inventory and batch summaries: no item-level identity that can be proven to be the remaining seven historical HOLD rows"
+  ],
+  "disposition": "SOURCE_BLOCKED",
+  "resolutionStatus": "UNRESOLVED_UID_REQUIRED",
+  "note": "Do not infer or fabricate the seven UIDs. Preserve as explicit aggregate blocker until original item-level payload or exact historical ledger is recovered."
+}
