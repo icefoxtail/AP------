@@ -1,6 +1,8 @@
 {
   "schemaVersion": "h1-stage2-semantic-ledger-index-v2",
   "status": "STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED",
+  "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
+  "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "goal": "1170/1170 Stage 2 Single Semantic Pass physical coverage",
   "ledgerCoverage": {
     "rows": 1170,
@@ -21,104 +23,104 @@
     {
       "file": "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl",
       "rows": 217,
-      "sha256": "32deb58b5be6a22686c31c7b570c74d285d2a189ee9eddcb7af1b9189d6a7344",
-      "authority": "existing physical checkpoint backfilled from current source"
+      "sha256": "06eaee4b317ac7fe0d9cf97ea3b0435c39187d9a2885deb6f23caecb05e50c95",
+      "authority": "existing semantic checkpoint preserved; provenance rechecked"
     },
     {
       "file": "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "411705763b34deff239a25d37a6f3333a4460c4b500bfaf68b1e8637255754ed",
-      "authority": "current source+solution physical restore"
+      "sha256": "59b6710a7d9135679dde112c3d3db0bc2d56bc1ac03be80858780ad9a7eaafb8",
+      "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "0603d90b251447315ef6335d293602eac3ade3222daae470ac11a368c947ac90",
-      "authority": "current source+solution physical restore"
+      "sha256": "eaa41fddaa6259fba73d475183cc25213828ac0c0e65f0ed4eee0437c6cb3d4d",
+      "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "7cda228bbf3a2d322f582b33dc9bcd393ed23c283453a91b9c2f59e2d6f9ed98",
-      "authority": "current source+solution physical restore"
+      "sha256": "3bea1a92e166e8333ba45a19fece153736ac99d4c1f4af61fa3207bd982d6ef8",
+      "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "ad977ac613e36b6d9dc65a8cc6792f396d6375b82aad9741e899000b0f94a39e",
-      "authority": "current source+solution physical restore"
+      "sha256": "13ab1d66568954ae95c8ca7cdd15c1d8a2fe529f8b23db7d8d958dc8dda7865f",
+      "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl",
       "rows": 70,
-      "sha256": "0428aae5cdd23228dece415ebec758336ad0d12ef3f8edaf9dd6a7cdc6f0ea46",
-      "authority": "current source pack semantic checkpoint backfilled"
+      "sha256": "d632b84fd4f963db2a8fb7d989f2cf768bd4dfabdd623a3388dd6c960caef7fe",
+      "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl",
       "rows": 70,
-      "sha256": "04fdf0a38a3f7e235afe20ca2b00f4d1c65d46c4770fa6f36ebc00a260709a2a",
+      "sha256": "ab260f9a5a5f25a0244fcbb8ec706281973ec99d379fa3dd8ab686985c948263",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl",
       "rows": 70,
-      "sha256": "b33186bb002a7c3c16f32f7961caa8a63a31fcce6abe3565b2e9e9e5ae47f43d",
+      "sha256": "c0faad12c8250cb47ec23a85f3fb3fd052d57b873c2fcc1a1ae2898965ab9ca1",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl",
       "rows": 70,
-      "sha256": "2f32184cca91b11f343540118eb0fcae2b18f02edb9c5a9c8d1dee4ea7ef71ff",
+      "sha256": "33feddbac128c50eb4bc738a6dab52e477eb8bd852e82b238896ae6256829681",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl",
       "rows": 23,
-      "sha256": "bf539a3c80242c497a5757ad256190f2034128a2c307f1aed00c9d1521773028",
+      "sha256": "1a60b4f96ea2106e9dfc7c2be76d0d4c1a1788998676f4103a5424e3f232da10",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl",
       "rows": 70,
-      "sha256": "cce563d3e600d68cdf96b0abe80b8ae12e2aacc418d05f44f4de62bbb93bfdf0",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "7d32d6d04e1bbbdf512324e675f4f1aa5be17d274a04dcdffdb8d260722bc4b7",
+      "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
       "file": "PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl",
       "rows": 70,
-      "sha256": "ae0f28798eda31630d7e4fd28eaa6b058229a393cf419acf3b5743347ea91bf5",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "5f6557b178fabd2326cf9e02487840481b4026c935d69615137e06aaa801a264",
+      "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
       "file": "PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl",
       "rows": 70,
-      "sha256": "a126dbf842748a8b0ebea9ce9921e2630505a005a139b306e3fc4fc49ef59a5b",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "b797f159a33c7ee92619c9df1fa7ce5698f6fb5f2bfd160e4b4ea8128b66a95e",
+      "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
       "file": "PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl",
       "rows": 70,
-      "sha256": "00d13a142112be9e3c470ba92aa35b4d9075b61fe4fb8cfa06ad0f4db3505e2b",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "ca9bb8b8e13c3cd6e3387476d6e5743892da650d341160e1903353b4460fe5a3",
+      "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
       "file": "PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl",
       "rows": 7,
-      "sha256": "66a8cba4589524a24a4980c20a394cdc42463c4fe7fbadb8ceb31f93d0709111",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "d7e1b2c56063e2eba6b6b0ce15dd03baadc5b3bf309f6bebfbb9500c83f9072b",
+      "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
       "file": "MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl",
       "rows": 70,
-      "sha256": "692e888c5c7189ab773d7939a7b5ab6c7be22371b560714f5e9d5564a7291d1f",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "bd184829d2492b853aab96975141f4df49eb523fb47d0498bbf8a2ca9f5a53dc",
+      "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
       "file": "MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl",
       "rows": 13,
-      "sha256": "731b24bdbfd5909bf7b7bcd14ac66280569c33ea7a2c040752facd369a62a184",
-      "authority": "current source-semantic pass with pinpoint overlay"
+      "sha256": "8f1668f1483f8e58fd6ac7639bd2939f6ad4fa783ed1099c7f108fcc5c0c7e3e",
+      "authority": "direct source+solution targeted semantic repair materialized"
     }
   ],
   "legacyPhysicalCoverage": {

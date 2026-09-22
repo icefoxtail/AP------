@@ -6,30 +6,32 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const OUT = path.join(ROOT, 'archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint');
 const INV = JSON.parse(fs.readFileSync(path.join(ROOT, 'archive/_generated/intelligence/phase1/high1-foundation/h1_fresh_inventory.json'), 'utf8'));
+const REPAIR_START_HEAD = 'afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2';
+const REPAIR_START_ORIGIN_MAIN = '0487238c8a137fcf5853d5202663dec04f893a01';
 const shaBytes = (file) => crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT, file))).digest('hex');
 const readJsonl = (file) => fs.readFileSync(path.join(OUT, file), 'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
 const writeJson = (file, value) => fs.writeFileSync(path.join(OUT, file), `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 
 const ledgerSpecs = [
-  ['POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl', 217, 'existing physical checkpoint backfilled from current source'],
-  ['EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl', 70, 'current source+solution physical restore'],
-  ['EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl', 70, 'current source+solution physical restore'],
-  ['EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl', 70, 'current source+solution physical restore'],
-  ['EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl', 70, 'current source+solution physical restore'],
-  ['EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl', 70, 'current source pack semantic checkpoint backfilled'],
+  ['POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl', 217, 'existing semantic checkpoint preserved; provenance rechecked'],
+  ['EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl', 70, 'direct source+solution semantic repair materialized'],
+  ['EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl', 70, 'direct source+solution semantic repair materialized'],
+  ['EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl', 70, 'direct source+solution semantic repair materialized'],
+  ['EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl', 70, 'direct source+solution semantic repair materialized'],
+  ['EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl', 70, 'direct source+solution semantic repair materialized'],
   ['EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl', 70, 'current Stage 2 source-semantic pass'],
   ['EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl', 70, 'current Stage 2 source-semantic pass'],
   ['EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl', 70, 'current Stage 2 source-semantic pass'],
   ['EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl', 23, 'current Stage 2 source-semantic pass'],
-  ['PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl', 70, 'current source-semantic pass with pinpoint overlay'],
-  ['PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl', 70, 'current source-semantic pass with pinpoint overlay'],
-  ['PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl', 70, 'current source-semantic pass with pinpoint overlay'],
-  ['PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl', 70, 'current source-semantic pass with pinpoint overlay'],
-  ['PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl', 7, 'current source-semantic pass with pinpoint overlay'],
-  ['MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl', 70, 'current source-semantic pass with pinpoint overlay'],
-  ['MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl', 13, 'current source-semantic pass with pinpoint overlay'],
+  ['PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl', 70, 'direct source+solution targeted semantic repair materialized'],
+  ['PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl', 70, 'direct source+solution targeted semantic repair materialized'],
+  ['PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl', 70, 'direct source+solution targeted semantic repair materialized'],
+  ['PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl', 70, 'direct source+solution targeted semantic repair materialized'],
+  ['PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl', 7, 'direct source+solution targeted semantic repair materialized'],
+  ['MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl', 70, 'direct source+solution targeted semantic repair materialized'],
+  ['MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl', 13, 'direct source+solution targeted semantic repair materialized'],
 ];
-const required = ['questionUid', 'sourceIdentity', 'sourceFingerprint', 'primaryMethod', 'decisiveStep', 'supportingConcepts', 'conditions', 'compositionPattern', 'curriculumNotes', 'sourceIssue', 'semanticConfidence', 'semanticReasonShort'];
+const required = ['questionUid', 'sourceIdentity', 'sourceFingerprint', 'contentHash', 'solutionHash', 'primaryMethod', 'decisiveStep', 'supportingConcepts', 'conditions', 'compositionPattern', 'curriculumNotes', 'sourceIssue', 'semanticConfidence', 'semanticReasonShort', 'reviewBasis'];
 const ledgers = ledgerSpecs.flatMap(([file, expected]) => {
   const rows = readJsonl(file);
   if (rows.length !== expected) throw new Error(`${file} rows ${rows.length} !== ${expected}`);
@@ -55,6 +57,8 @@ const ledgerFiles = ledgerSpecs.map(([file, rows, authority]) => ({ file, rows, 
 const index = {
   schemaVersion: 'h1-stage2-semantic-ledger-index-v2',
   status: 'STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED',
+  repairStartHead: REPAIR_START_HEAD,
+  repairStartOriginMainSha: REPAIR_START_ORIGIN_MAIN,
   goal: '1170/1170 Stage 2 Single Semantic Pass physical coverage',
   ledgerCoverage: { rows: ledgers.length, uidUnique: uidSet.size, sourceIdentityUnique: sourceSet.size, missingUid: 0, duplicateUid: 1170 - uidSet.size, fingerprintMismatch, requiredSemanticFieldMissing: missingFields.length, workUnits: { POLYNOMIAL: 217, EQINEQ: 583, PERMCOMB: 287, MATRIX: 83 } },
   ledgerFiles,
@@ -66,8 +70,10 @@ writeJson('H1_STAGE2_SEMANTIC_LEDGER_INDEX_1170.json', index);
 const summary = {
   schemaVersion: 'h1-stage2-full-goal-summary-v2',
   status: 'STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED',
-  baseMainSha: '54b3f2aee093c9f25b27a618630fe2ebac9c2d46',
-  currentOriginMainSha: '0487238c8a137fcf5853d5202663dec04f893a01',
+  baseMainSha: REPAIR_START_HEAD,
+  currentOriginMainSha: REPAIR_START_ORIGIN_MAIN,
+  repairStartHead: REPAIR_START_HEAD,
+  repairStartOriginMainSha: REPAIR_START_ORIGIN_MAIN,
   branch: 'meta-foundation-h1-preprocess-sol-review',
   stage2: { rows: ledgers.length, uidUnique: uidSet.size, sourceIdentityUnique: sourceSet.size, missingUid: 0, duplicateUid: 1170 - uidSet.size, fingerprintMismatch, requiredSemanticFieldMissing: missingFields.length, semanticDispositionPresent: ledgers.filter((row) => row.semanticReasonShort).length },
   workUnits: { POLYNOMIAL: { completed: 217, denominator: 217 }, EQINEQ: { completed: 583, denominator: 583 }, PERMCOMB: { completed: 287, denominator: 287 }, MATRIX: { completed: 83, denominator: 83 } },
@@ -79,6 +85,10 @@ const summary = {
 writeJson('H1_STAGE2_FULL_GOAL_SUMMARY_1170.json', summary);
 const state = JSON.parse(fs.readFileSync(path.join(OUT, 'H1_COMMON_MATH1_SOL_STATE.json'), 'utf8'));
 state.status = 'STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED';
+state.baseMainSha = REPAIR_START_HEAD;
+state.currentOriginMainSha = REPAIR_START_ORIGIN_MAIN;
+state.repairStartHead = REPAIR_START_HEAD;
+state.repairStartOriginMainSha = REPAIR_START_ORIGIN_MAIN;
 state.overallCompleted = ledgers.length; state.overallDenominator = 1170; state.totalHold = inventory.length + aggregate;
 state.stage2 = summary.stage2;
 state.holdResolution = { closed: holdClosed, unresolved: aggregate, openReviewRequired: 0, path: 'H1_STAGE2_HOLD_RESOLUTION_1170.jsonl', residualAudit: 'H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json', blocker: 'Seven historical Eq/Ineq batch1-4 aggregate HOLD identities remain unavailable; exact UID inference is prohibited.' };
