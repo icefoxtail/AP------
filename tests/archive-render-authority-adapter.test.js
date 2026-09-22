@@ -27,8 +27,8 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
       'solution-render-executor': '20260914\\.1',
       'exam-render-executor': '20260915\\.1',
       'question-image-readiness': '20260915\\.2',
-      'screen-runtime-adapter': '20260914\\.1',
-      'screen-runtime': '20260913\\.1'
+      'screen-runtime-adapter': '20260922\\.2',
+      'screen-runtime': '20260922\\.2'
     }[script] || (script === 'snapshot-contract' ? '20260922\\.1' : '20260911\\.5');
     assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
   }
