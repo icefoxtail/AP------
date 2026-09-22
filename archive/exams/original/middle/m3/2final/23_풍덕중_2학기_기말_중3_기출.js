@@ -658,8 +658,8 @@ window.questionBank=[
     "answer": "$2x$",
     "solution": "[키포인트] 지름 $PQ$ 위의 중심 $O$를 이용해 $\\angle QOA$, $\\angle QOB$를 각각 $a,b$로 나타낸다.\n조건 정리: $OP=OA=OB$이고 $Q,O,P$는 한 직선 위이다. 또한 그림에서 $x=\\angle APB=b-a$이다.\n풀이 방향: 두 이등변삼각형 $AOP$, $BOP$의 밑각을 이용한다.\n정석 풀이: $\\triangle AOP$에서 $OP=OA$이므로 $\\angle OPA=\\angle OAP=a$이다. 따라서 $\\angle AOP=180^\\circ-2a$이고, $Q,O,P$가 한 직선 위이므로 $\\angle QOA=2a$이다. 같은 방법으로 $\\triangle BOP$에서 $\\angle OPB=\\angle OBP=b$이므로 $\\angle QOB=2b$이다. 따라서 $\\angle AOB=\\angle QOB-\\angle QOA=2b-2a=2(b-a)$이다. 그런데 $\\angle APB=b-a=x$이므로 $\\angle AOB=2x$이다.\n따라서 구하는 값은 $2x$이다.",
     "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q22.png",
-    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-    "subUnit": "원주각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
