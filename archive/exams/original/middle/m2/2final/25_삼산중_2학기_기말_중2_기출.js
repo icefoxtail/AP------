@@ -658,12 +658,12 @@ window.questionBank = [
   {
     "id": 23,
     "level": "중",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -676,10 +676,10 @@ window.questionBank = [
     "solution": "[키포인트] 평행사변형의 대각선이 서로를 이등분한다는 성질로 각 삼각형의 두 중선을 찾는다.\n(1) 두 대각선의 교점을 $O$라 하면 평행사변형의 성질에 의해 $O$는 $AC$와 $BD$의 중점이다. $M$은 $BC$의 중점이므로 $AM$과 $BO$는 $\\triangle ABC$의 두 중선이고 그 교점 $E$는 무게중심이다. 같은 이유로 $N$은 $CD$의 중점이고 $AN$, $DO$는 $\\triangle ACD$의 두 중선이므로 그 교점 $F$는 무게중심이다.\n(2) $BD=18\\rm\\,cm$이므로 $BO=DO=9\\rm\\,cm$이다. 무게중심은 중선을 꼭짓점에서 $2:1$로 나누므로 $BE=DF=6\\rm\\,cm$, 따라서 $EO=OF=3\\rm\\,cm$이다.\n$B-E-O-F-D$ 순서이므로 $EF=EO+OF=3+3=6\\rm\\,cm$이다.\n따라서 구하는 길이는 $6\\rm\\,cm$이다.",
     "choices": [],
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q23.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 24,

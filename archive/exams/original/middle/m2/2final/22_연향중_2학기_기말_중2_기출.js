@@ -644,12 +644,12 @@ window.questionBank = [
   {
     "id": 23,
     "level": "중",
-    "category": "도형의 닮음",
-    "originalCategory": "도형의 닮음",
+    "category": "삼각형의 무게중심",
+    "originalCategory": "도형의 성질",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-06",
-    "standardUnit": "도형의 닮음",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M2-05",
+    "standardUnit": "도형의 성질",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -661,9 +661,9 @@ window.questionBank = [
     "choices": [],
     "answer": "$45\\rm\\,cm^2$",
     "solution": "[키포인트] 무게중심은 중선 위에 있으므로 중점과 넓이비를 차례로 이용한다.\n(1) $G$가 무게중심이므로 $AD$는 중선이고 $D$는 $\\overline{BC}$의 중점이다. 따라서 $BC=2DC=18\\rm\\,cm$이다.\n(2) $\\angle C=90^\\circ$이므로 $\\triangle ABC$의 넓이는 $\\dfrac12\\times18\\times15=135\\rm\\,cm^2$이다.\n(3) 중선 $AD$는 $\\triangle ABC$의 넓이를 반으로 나누므로 $\\triangle ABD$의 넓이는 $\\dfrac{135}{2}\\rm\\,cm^2$이다.\n또 무게중심은 중선을 $AG:GD=2:1$로 나눈다. $\\triangle ABG$와 $\\triangle DBG$는 꼭짓점 $B$에서 직선 $AD$에 내린 높이가 같으므로 넓이의 비도 $2:1$이다.\n따라서 $\\triangle ABG$의 넓이는 $\\dfrac23\\times\\dfrac{135}{2}=45\\rm\\,cm^2$이다.\n따라서 구하는 넓이는 $45\\rm\\,cm^2$이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   }
 ];

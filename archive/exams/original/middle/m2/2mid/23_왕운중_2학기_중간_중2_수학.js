@@ -439,8 +439,8 @@ window.questionBank = [
     ],
     "answer": "②, ④",
     "solution": "[키포인트] 닮은 삼각형으로 선분의 비를 구하고, 같은 높이를 가진 삼각형의 넓이의 비를 이용한다.\n조건 정리: $E$는 $BC$ 위, $F$는 $CD$ 위에 있고 $EF\\parallel BD$이다.\n풀이 방향: $BE:BC$와 $DF:DC$가 같음을 보인 뒤 넓이를 비교한다.\n정석 풀이: $EF\\parallel BD$이므로 $\\triangle CEF\\sim\\triangle CBD$이다. 따라서 $\\dfrac{CF}{CD}=\\dfrac{CE}{CB}$이고, $\\dfrac{DF}{DC}=1-\\dfrac{CF}{CD}=1-\\dfrac{CE}{CB}=\\dfrac{BE}{BC}$이다. $\\triangle ABE$와 $\\triangle ABC$는 높이가 같으므로 $[ABE]=\\dfrac{BE}{BC}[ABC]$이다. 또한 $\\triangle AFD$와 $\\triangle ADC$, $\\triangle DBF$와 $\\triangle DBC$는 각각 같은 높이를 가지므로 $[AFD]=\\dfrac{DF}{DC}[ADC]$, $[DBF]=\\dfrac{DF}{DC}[DBC]$이다. 평행사변형의 대각선은 넓이를 반으로 나누므로 $[ABC]=[ADC]=[DBC]$이다. 따라서 $[ABE]=[AFD]=[DBF]$이다.\n따라서 정답은 ②, ④이다.",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

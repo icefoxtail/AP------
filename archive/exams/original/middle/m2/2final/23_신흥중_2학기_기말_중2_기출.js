@@ -592,10 +592,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{16}{5}\\rm\\,cm$",
     "solution": "[키포인트] $BC\\parallel DE$이므로 작은 삼각형과 큰 삼각형이 닮음이다.\n$AB=4\\rm\\,cm$, $BD=6\\rm\\,cm$이므로 $AD=10\\rm\\,cm$이다.\n$BC\\parallel DE$이므로 $\\triangle ABC\\sim\\triangle ADE$이다.\n따라서 $AB:AD=BC:DE$이므로 $4:10=x:8$이다.\n$10x=32$이므로 $x=\\dfrac{16}{5}$이다.\n따라서 구하는 값은 $\\dfrac{16}{5}\\rm\\,cm$이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
