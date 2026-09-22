@@ -17,7 +17,13 @@ Sol is final semantic authority: exhaustive source reading, mathematical verific
 ## Preserved payload
 The ZIP contains the physically preserved semantic artifacts listed in `H1_COMMON_MATH1_SOL_CHECKPOINT_280.json`.
 
-Important limitation: Polynomial Batch 1–2 exact UID-level physical ledger files are **not present in the current runtime**. Their semantic completion is recorded in Notion/state, but this branch must not invent or reconstruct those missing rows from aggregate counts. Polynomial Batch 3 (77 rows) is physically preserved and included.
+## Polynomial physical recovery
+Polynomial semantic authority is now physically materialized **217/217 UID** in:
+- `POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl`
+- `POLYNOMIAL_SEMANTIC_SUMMARY_217.json`
+
+Coverage: **217 rows / 217 unique UID / 217 unique source identity / fingerprint mismatch 0**.
+The missing historical Batch1–2 file bytes were not fabricated. Instead, the completed Sol checkpoint decisions were re-materialized UID-by-UID against the current source content+solution, with known HOLD/WARN/rejoin decisions preserved and legacy L3/L4/difficulty excluded from semantic authority.
 
 ## Do not
 - Do not use legacy L3/L4/difficulty as semantic authority.
